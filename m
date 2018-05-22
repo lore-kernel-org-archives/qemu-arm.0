@@ -1,142 +1,224 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1219081wme;
-        Tue, 22 May 2018 01:41:05 -0700 (PDT)
-X-Received: by 2002:a9d:2b37:: with SMTP id o52-v6mr14518735otb.60.1526978465262;
-        Tue, 22 May 2018 01:41:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526978465; cv=none;
-        d=google.com; s=arc-20160816;
-        b=kRBBtAhWp6isvXTXLn9QUx+9d5a6ykUvsyESZwsukWzFNbAFBigW5ID4yhfJ669660
-         iZFUddTXuc0bcpu1tCPjuBvtw2LtOVWvMgNg21B/BtV5mKII+Rl+PmDR6kO8222j5UY6
-         hakuKc421APUqwV0eCWlIP5HELC3ti7DqAXXyQY+s3SFHhjMeT1l1yMIqHiUB8zX/4t/
-         66rderp38oiPEtZ3WzqM+rk6G//mV2u6E5CMd2IfUpP3ynLtARKf0D0iB+IZE4e/Fg11
-         EHrP7KhZZpXTGF94voOJK3s5I/qrF+z3GB+Apslf5CIW+rxJt1PDaMbA9giiiYQ7Cegv
-         qzrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=ziFr6Qd8Ow3XQV0ADS4LVPLX6Wf8jcmiM6D1SD0gTKE=;
-        b=f40ItmTk6WTMPVgxoccsKTpbxjgAqfy93cpvgaDdMLnar0nJ58pAhh3ZaEng40SaCv
-         zABNzNSIJESXCJ8vfpS67UoSjkI7pGHv3K8RLbude3jMAF0eXFNt4SDoiDlWxJ6UM/Hm
-         QvJXgN5NVJe468Mj+pBWQK9GhFzuW4IBLmzIfJ2S1qmjwfPcg1+slbUiWAIaE1lP/XqZ
-         jO8m2Y+sGi9VKB0m1lr093ZIj/jzgOacsvv5H1R9pk9W9Ct6XLFY/1RVGdhXYHjDDjw4
-         tB3dklgtC4WmRfy57E5Ff5xgX1YvltBHKx5lZId7+1QQM6LXfyocRV5NHs61TEMxdV5f
-         12Qg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MlqB2LAc;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y199-v6sor7772599oie.299.2018.05.22.01.41.05
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 May 2018 01:41:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MlqB2LAc;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=ziFr6Qd8Ow3XQV0ADS4LVPLX6Wf8jcmiM6D1SD0gTKE=;
-        b=MlqB2LAcXmNJBC60v7JjK4YI3ghLGWfBxkb/YgKSGVj+2KIQiJF/2lNkSoDiB70lZ/
-         BmVNDM7FOCr4ke4MZ/EJEv0n7vfaJZ8cZKOxxOxOSuipMjrfmxJipJ9PNNOu6/klchIf
-         ZIDLodfFg/Hm1s24a+WK9yTJbPaPNxt887HrY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=ziFr6Qd8Ow3XQV0ADS4LVPLX6Wf8jcmiM6D1SD0gTKE=;
-        b=rJ44KXwh5F/13NiB7nx7U56QXvpvcNvD8tgbThQD0icjCblgTralMTgLK8YbJ3Ewro
-         AN0IOJuUb/XRNF9G7QmMivxFfOjqkyMrQn543rHGB5i0ll/lAJmu0mut/JTaVIQP9C5E
-         2b15cSQVTPmLbpitu8S3E3wHtlkPwMUyH9YVy93VzRzdjgwQXu5fLdoE4/pXDyMfWfmT
-         lo6dZl3ULepE0dU5fYwNDQ2KxOUMLjL5yvXWbEdel+dkPHGojy3CFi7pH8DttT6L/I5O
-         SeFWWASQ28bNbp/obRP2msGRzI/PzouXczr9bn5di3vGxEx5eWJcuVJ3ZVNxx1vjuQUe
-         JaCA==
-X-Gm-Message-State: ALKqPwfSNSwgJMvq3FLf3R0G5lJNp7AUm/4Ctvaahb+mu15ktwDw/rZu
-	1g7+m4h9cea9bObq6kPRlf1M0zynOGN8mbToBjCP67iy
-X-Google-Smtp-Source: AB8JxZpKrdWGnjJ3TfTxa4GxMA/GmyFcEcWjhbwiKEJjSaV1/Md2y5J7xYreQr99A+N+g1K21lthvR1WbCbh3l0Llho=
-X-Received: by 2002:aca:f141:: with SMTP id p62-v6mr14001677oih.80.1526978464886;
- Tue, 22 May 2018 01:41:04 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id l20-v6sm19155843wrf.90.2018.05.22.02.16.47
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 May 2018 02:16:47 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id DFCB43E01DB;
+	Tue, 22 May 2018 10:16:46 +0100 (BST)
+References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-2-peter.maydell@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Subject: Re: [PATCH 01/27] memory.h: Improve IOMMU related documentation
+In-reply-to: <20180521140402.23318-2-peter.maydell@linaro.org>
+Date: Tue, 22 May 2018 10:16:46 +0100
+Message-ID: <87o9h8uk1t.fsf@linaro.org>
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 01:40:44
- -0700 (PDT)
-In-Reply-To: <20180522030333.GB17282@xz-mi>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-15-peter.maydell@linaro.org> <20180522030333.GB17282@xz-mi>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 09:40:44 +0100
-Message-ID: <CAFEAcA-iOYhuPfvDv+iD6jBqXMXqN-jfTpSSBub1Zp1i-JcDbQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
- IOMMU API
-To: Peter Xu <peterx@redhat.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"patches@linaro.org" <patches@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 4GP7n5GDeP2X
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: xPVtY4myNi9/
 
-On 22 May 2018 at 04:03, Peter Xu <peterx@redhat.com> wrote:
-> On Mon, May 21, 2018 at 03:03:49PM +0100, Peter Maydell wrote:
->> If an IOMMU supports mappings that care about the memory
->> transaction attributes, then it no longer has a unique
->> address -> output mapping, but more than one. We can
->> represent these using an IOMMU index, analogous to TCG's
->> mmu indexes.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  include/exec/memory.h | 52 +++++++++++++++++++++++++++++++++++++++++++
->>  memory.c              | 23 +++++++++++++++++++
->>  2 files changed, 75 insertions(+)
->>
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index 309fdfb89b..f6226fb263 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -206,6 +206,20 @@ enum IOMMUMemoryRegionAttr {
->>   * to report whenever mappings are changed, by calling
->>   * memory_region_notify_iommu() (or, if necessary, by calling
->>   * memory_region_notify_one() for each registered notifier).
->> + *
->> + * Conceptually an IOMMU provides a mapping from input address
->> + * to an output TLB entry. If the IOMMU is aware of memory transaction
->> + * attributes and the output TLB entry depends on the transaction
->> + * attributes, we represent this using IOMMU indexes. Each index
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> Add more detail to the documentation for memory_region_init_iommu()
+> and other IOMMU-related functions and data structures.
 >
-> Hi, Peter,
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+> v2->v3 changes:
+>  * minor wording tweaks per Eric's review
+>  * moved the bit about requirements to notify out from the translate
+>    method docs to the top level class doc comment
+>  * added description of flags argument and in particular that it's
+>    just an optimization and callers can pass IOMMU_NONE to get the
+>    full permissions
+> v1 -> v2 changes:
+>  * documented replay method
+>  * added note about wanting RCU or big qemu lock while calling
+>    translate
+> ---
+>  include/exec/memory.h | 105 ++++++++++++++++++++++++++++++++++++++----
+>  1 file changed, 95 insertions(+), 10 deletions(-)
 >
-> In what case will an IOMMU translation depend on translation
-> attributes?  It seems to me that we should always pass in the
-> translation attributes into the translate() function.  The translate()
-> function can omit that parameter if the specific IOMMU does not need
-> that information, but still I am confused about why we need to index
-> IOMMU by translation attributes.
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 4fa1227f13..cce355d2d8 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -194,29 +194,100 @@ enum IOMMUMemoryRegionAttr {
+>      IOMMU_ATTR_SPAPR_TCE_FD
+>  };
+>
+> +/**
+> + * IOMMUMemoryRegionClass:
+> + *
+> + * All IOMMU implementations need to subclass TYPE_IOMMU_MEMORY_REGION
+> + * and provide an implementation of at least the @translate method here
+> + * to handle requests to the memory region. Other methods are optional.
+> + *
+> + * The IOMMU implementation must use the IOMMU notifier infrastructure
+> + * to report whenever mappings are changed, by calling
+> + * memory_region_notify_iommu() (or, if necessary, by calling
+> + * memory_region_notify_one() for each registered notifier).
+> + */
+>  typedef struct IOMMUMemoryRegionClass {
+>      /* private */
+>      struct DeviceClass parent_class;
+>
+>      /*
+> -     * Return a TLB entry that contains a given address. Flag should
+> -     * be the access permission of this translation operation. We can
+> -     * set flag to IOMMU_NONE to mean that we don't need any
+> -     * read/write permission checks, like, when for region replay.
+> +     * Return a TLB entry that contains a given address.
+> +     *
+> +     * The IOMMUAccessFlags indicated via @flag are optional and may
+> +     * be specified as IOMMU_NONE to indicate that the caller needs
+> +     * the full translation information for both reads and writes. If
+> +     * the access flags are specified then the IOMMU implementation
+> +     * may use this as an optimization, to stop doing a page table
+> +     * walk as soon as it knows that the requested permissions are not
+> +     * allowed. If IOMMU_NONE is passed then the IOMMU must do the
+> +     * full page table walk and report the permissions in the returned
+> +     * IOMMUTLBEntry. (Note that this implies that an IOMMU may not
+> +     * return different mappings for reads and writes.)
+> +     *
+> +     * The returned information remains valid while the caller is
+> +     * holding the big QEMU lock or is inside an RCU critical section;
+> +     * if the caller wishes to cache the mapping beyond that it must
+> +     * register an IOMMU notifier so it can invalidate its cached
+> +     * information when the IOMMU mapping changes.
+> +     *
+> +     * @iommu: the IOMMUMemoryRegion
+> +     * @hwaddr: address to be translated within the memory region
+> +     * @flag: requested access permissions
+>       */
+>      IOMMUTLBEntry (*translate)(IOMMUMemoryRegion *iommu, hwaddr addr,
+>                                 IOMMUAccessFlags flag);
+> -    /* Returns minimum supported page size */
+> +    /* Returns minimum supported page size in bytes.
+> +     * If this method is not provided then the minimum is assumed to
+> +     * be TARGET_PAGE_SIZE.
+> +     *
+> +     * @iommu: the IOMMUMemoryRegion
+> +     */
+>      uint64_t (*get_min_page_size)(IOMMUMemoryRegion *iommu);
+> -    /* Called when IOMMU Notifier flag changed */
+> +    /* Called when IOMMU Notifier flag changes (ie when the set of
+> +     * events which IOMMU users are requesting notification for changes).
+> +     * Optional method -- need not be provided if the IOMMU does not
+> +     * need to know exactly which events must be notified.
+> +     *
+> +     * @iommu: the IOMMUMemoryRegion
+> +     * @old_flags: events which previously needed to be notified
+> +     * @new_flags: events which now need to be notified
+> +     */
+>      void (*notify_flag_changed)(IOMMUMemoryRegion *iommu,
+>                                  IOMMUNotifierFlag old_flags,
+>                                  IOMMUNotifierFlag new_flags);
+> -    /* Set this up to provide customized IOMMU replay function */
+> +    /* Called to handle memory_region_iommu_replay().
+> +     *
+> +     * The default implementation of memory_region_iommu_replay() is to
+> +     * call the IOMMU translate method for every page in the address spa=
+ce
+> +     * with flag =3D=3D IOMMU_NONE and then call the notifier if transla=
+te
+> +     * returns a valid mapping. If this method is implemented then it
+> +     * overrides the default behaviour, and must provide the full semant=
+ics
+> +     * of memory_region_iommu_replay(), by calling @notifier for every
+> +     * translation present in the IOMMU.
+> +     *
+> +     * Optional method -- an IOMMU only needs to provide this method
+> +     * if the default is inefficient or produces undesirable side effect=
+s.
+> +     *
+> +     * Note: this is not related to record-and-replay functionality.
+> +     */
+>      void (*replay)(IOMMUMemoryRegion *iommu, IOMMUNotifier *notifier);
+>
+> -    /* Get IOMMU misc attributes */
+> -    int (*get_attr)(IOMMUMemoryRegion *iommu, enum IOMMUMemoryRegionAttr,
+> +    /* Get IOMMU misc attributes. This is an optional method that
+> +     * can be used to allow users of the IOMMU to get implementation-spe=
+cific
+> +     * information. The IOMMU implements this method to handle calls
+> +     * by IOMMU users to memory_region_iommu_get_attr() by filling in
+> +     * the arbitrary data pointer for any IOMMUMemoryRegionAttr values t=
+hat
+> +     * the IOMMU supports. If the method is unimplemented then
+> +     * memory_region_iommu_get_attr() will always return -EINVAL.
+> +     *
+> +     * @iommu: the IOMMUMemoryRegion
+> +     * @attr: attribute being queried
+> +     * @data: memory to fill in with the attribute data
+> +     *
+> +     * Returns 0 on success, or a negative errno; in particular
+> +     * returns -EINVAL for unrecognized or unimplemented attribute types.
+> +     */
+> +    int (*get_attr)(IOMMUMemoryRegion *iommu, enum IOMMUMemoryRegionAttr=
+ attr,
+>                      void *data);
+>  } IOMMUMemoryRegionClass;
+>
+> @@ -705,6 +776,14 @@ static inline void memory_region_init_reservation(Me=
+moryRegion *mr,
+>   * An IOMMU region translates addresses and forwards accesses to a target
+>   * memory region.
+>   *
+> + * The IOMMU implementation must define a subclass of TYPE_IOMMU_MEMORY_=
+REGION.
+> + * @_iommu_mr should be a pointer to enough memory for an instance of
+> + * that subclass, @instance_size is the size of that subclass, and
+> + * @mrtypename is its name. This function will initialize @_iommu_mr as =
+an
+> + * instance of the subclass, and its methods will then be called to hand=
+le
+> + * accesses to the memory region. See the documentation of
+> + * #IOMMUMemoryRegionClass for further details.
+> + *
+>   * @_iommu_mr: the #IOMMUMemoryRegion to be initialized
+>   * @instance_size: the IOMMUMemoryRegion subclass instance size
+>   * @mrtypename: the type name of the #IOMMUMemoryRegion
+> @@ -953,6 +1032,8 @@ void memory_region_register_iommu_notifier(MemoryReg=
+ion *mr,
+>   * a notifier with the minimum page granularity returned by
+>   * mr->iommu_ops->get_page_size().
+>   *
+> + * Note: this is not related to record-and-replay functionality.
+> + *
+>   * @iommu_mr: the memory region to observe
+>   * @n: the notifier to which to replay iommu mappings
+>   */
+> @@ -962,6 +1043,8 @@ void memory_region_iommu_replay(IOMMUMemoryRegion *i=
+ommu_mr, IOMMUNotifier *n);
+>   * memory_region_iommu_replay_all: replay existing IOMMU translations
+>   * to all the notifiers registered.
+>   *
+> + * Note: this is not related to record-and-replay functionality.
+> + *
+>   * @iommu_mr: the memory region to observe
+>   */
+>  void memory_region_iommu_replay_all(IOMMUMemoryRegion *iommu_mr);
+> @@ -981,7 +1064,9 @@ void memory_region_unregister_iommu_notifier(MemoryR=
+egion *mr,
+>   * memory_region_iommu_get_attr: return an IOMMU attr if get_attr() is
+>   * defined on the IOMMU.
+>   *
+> - * Returns 0 if succeded, error code otherwise.
+> + * Returns 0 on success, or a negative errno otherwise. In particular,
+> + * -EINVAL indicates that the IOMMU does not support the requested
+> + * attribute.
+>   *
+>   * @iommu_mr: the memory region
+>   * @attr: the requested attribute
 
-The MPC implementation at the tail end of the patchset is
-one example -- it needs to look at attrs.secure, because
-"translation for secure access to address X" differs from
-that for address Y". The Arm SMMUv3 is the same when it supports
-TrustZone (the implementation in-tree does not), and it can also
-give different permissions for transactions with attrs.user = 0 vs 1.
 
-The reason for not just passing in the transaction attributes to
-translate is that
-(a) the iommu index abstraction makes the notifier setup simpler:
-rather than having to have some indication in the API of which
-of the transaction attributes are important and which the notifier
-cares about, we can just use indexs
-(b) it means that it's harder to write an iommu with the bug that
-it looks at parts of the transaction attributes that it didn't
-claim were important in the notifier API
-
-> The num_indexes() definition is missing, and I saw that in the next
-> patch.  We'll possibly want to move it here.
-
-Huh. I ran into that and thought I'd fixed it in my local tree -- I must have
-failed to actually move the change to the right patch. Sorry about that.
-
-thanks
--- PMM
+--
+Alex Benn=C3=A9e

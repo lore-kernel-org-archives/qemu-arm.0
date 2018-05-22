@@ -1,83 +1,80 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1792305wme;
-        Tue, 22 May 2018 10:52:50 -0700 (PDT)
-X-Received: by 2002:a17:902:22a:: with SMTP id 39-v6mr25576382plc.146.1527011569943;
-        Tue, 22 May 2018 10:52:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527011569; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1806762wme;
+        Tue, 22 May 2018 11:06:20 -0700 (PDT)
+X-Received: by 2002:a62:1fc8:: with SMTP id l69-v6mr25335811pfj.49.1527012380200;
+        Tue, 22 May 2018 11:06:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527012380; cv=none;
         d=google.com; s=arc-20160816;
-        b=rgb6xvdqYcn2e6vyINhiSuAWkMo7xyssPQDXIcZgQ2E2bjPvRTiaf5ViFQS0M8dcCL
-         u7Ymxi0PqwTfZv8jo94lgKd6jlEQph842LsreJ3AzzmWRUZbCPtdF3R0J0TiylggJgoB
-         e5x4fJos9cJ8D4K27inE70Uw1gIHy2KkJkJMFqVnrBF25oeY4x/jMBdJ07t62nChW/eJ
-         4F0frjM/s89O6CEQDtBa+kcNd1gZONRxRlJWeVUJleaWK2dTOb+l/q4QoK2HvIpZsaGo
-         KMWFvMJp8WekIRTxVDoYyg1DMVF+jwNFAKA/s7zOEmWmrTEYzoHMawKLuX8W5+w/Uu/c
-         dWDQ==
+        b=TQyfM4gKw7yve0EoNIv91Clkg6yFmWsKf8S9CSnEGFccCn/Pkocwfj1S5egOGu5tjJ
+         UjXBPGnC4L1c9ZohABxLdKy5P1ocYLGd2Tajn/A0aU4jHdkYAULVXpaks1QH+puLOnup
+         fnPUN9iLAIHRk/d9OuRptjMkNxs+KGKOynveQDyUAqGKxZ30eOvMjRWWkvQtAHbNBtFk
+         yRLL2GlSgopHhjI/jsXrqk0y8d/dL4g/h8ibBQi3aJTXrfqm/v5iTQkkAqRh9rw9Z9Cg
+         WmKWkOEKajIyNXRblbQ2cMwHQU0ac0NfB5Ob0nVh9mLzMrMsBX2eWhs8fxrz5OgOvqsp
+         jalw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
          :subject:sender:dkim-signature:arc-authentication-results;
-        bh=wcbqY2226DMbVLM+sivOuHF3yN/FkFBzhMI3pZOwRaU=;
-        b=c/k6I5kWT+HcYjJEjTINMs9G0CkzE6mhfLW3V/WNplkdJHE9omROQNuVG8ek7r+8gh
-         3Paz+oocQMnpW5OnQjCIT984Q+lWp5gLOxeRvlsyCpFwX7CdhULCIWyD6cGYub1wbI2E
-         nPao1olpXlr05UK5+wUS+7EVWgpRQ6XonsK3eoEyeojvh3m6CtQvfPftoR0sPC3dH368
-         Tv7Zq/+fYiwAFmXsmEEsTfTMoMKvivDpYad8exAWxxU6HPjvodMR6cTlMhjbgxCmIM+e
-         S+g5iO1k1bHhpzCGWVUBfwND5FCcas6KDhUYMP+Hl7dc2vfYJRaOH3HI3jnsJuIzrSWv
-         3ELQ==
+        bh=kVF90YaENbufVLOpnUwnkcNJZWzTi/3I1BatEHhIQoc=;
+        b=J6tgsHpsWb/GxHBwwq/v+4ek8Uu2mQ1Pg4fvab8yjzpxt++a+/lS+lIllSGSd8f+CQ
+         KrFXofQF5eDTnuebTQZWBp3Li0Sih/aMH/5I4SnCvrStL8Byvwim4PNCqyMAdGzgNoAA
+         V3/igXZ4khjYCN/cayzFF3BLqZ/zI6jM34Pc4THy8ykwIw+m/ScRWIw/FHHpSMLA4peE
+         v3e0hjhKD8ek19Wnfmd0irtu1dclUt5A+0trJWxWyIS9YDPy/IuFKLod/ov9DvtXtqPS
+         Ikhn4JUMshdZDyjK5FSDfukv5hy3QgBQe1LbWMKd8P1M2007i9l7qmZZF12yzSvGnMcW
+         2BFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l54SmvAz;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gxk0eHVU;
        spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 Return-Path: <rth7680@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 97-v6sor7397269plm.90.2018.05.22.10.52.49
+        by mx.google.com with SMTPS id t125-v6sor5176008pgc.259.2018.05.22.11.06.19
         (Google Transport Security);
-        Tue, 22 May 2018 10:52:49 -0700 (PDT)
+        Tue, 22 May 2018 11:06:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l54SmvAz;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gxk0eHVU;
        spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=wcbqY2226DMbVLM+sivOuHF3yN/FkFBzhMI3pZOwRaU=;
-        b=l54SmvAzsTbuqz/rTDixxpmPN1ZDbj/YS72igPRd3Vw+zVOsYoKYR05GA+jsTXaW+k
-         vlKAI2yYnD3FDl/VqCu6zltDFzODJ0pWMJkVhdjVynGNPHm6sHR2N0q5Vsc3mkcpS4cg
-         3FIOD31CDoZ4J3fe7//Knt29vMhbT6vngjcGBqR2I2EIgeflW9chZjelJNrbf9qK5mmO
-         3BE1LOh8Qx0ioWxZX2aFPGMsPAhlMuOoDid40zpUuoDUgRoRnjYmLZT+h+xwaA4Yyr8G
-         uLFEzvYm+IgnYkCI6OKxULDyL4rQjsW5LJf9cNRoBEdhQxnSg+3bUjVJIObJe061QOmr
-         mevw==
+        bh=kVF90YaENbufVLOpnUwnkcNJZWzTi/3I1BatEHhIQoc=;
+        b=Gxk0eHVUn+vPQialy4FfCoSowCCGjT6ixAelE6Fz1OgvoCz1dD2UCQz2PH2F1FcFX+
+         VRjSgmiCztiXRTbvkdDqFTBZAitihgM2tnTKOQ9z0ug2vNsj6DakHQUGF6jKn/jPrJoQ
+         eFgs2sUCkMNEEdFMsjsTwU+cpg4Kdy+j95EgfVDYi9jM5f3imRwEc4T1/dGlkhoo4Aw0
+         fV4zeKAqjtjO2mDmkq+Mqfdq38ZQTdVvO5zOuOp6FOZiqr9lkT0qe6VGgsiUyq9rljDk
+         IRRJrU2mvWcvTCXeW+e8DSExY86LQ/t6RNvcWEkCNFFlJmdjSlq2yyMnL5ve7UNpyC+J
+         vmxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
          :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
          :content-language:content-transfer-encoding;
-        bh=wcbqY2226DMbVLM+sivOuHF3yN/FkFBzhMI3pZOwRaU=;
-        b=qUMOidveppT2aQ62MEoUgRdzGYUzjM/ox2W3atlKdxOjVpAgLnYzc2v/im+ZPsHJnL
-         I9u2zp4djlNtIba+m5k2YRRqDhtT0Yd7NRoT+xIOfxZXVwsLSE+QNyV485c08HyR4Edq
-         xaDnlwAg9FOhPjoqSDdLt2fETPRPD9qkTH1dQHzgNwl20mNlrcy93GZ6zW7D0F3EEUfy
-         fljlSFvrWFEc3FEZZJcygLZQmPfadL9pyhZqeuOHjQ6cGhDSq87jtk0sTw7w7/y4tbY0
-         mmfWq2qymCJ59HhnV0IVSwEGsCFqOadv3j6mr0B2MGE0/KQfA6H6RzuqRbqG7QXJrL+r
-         Nt0g==
-X-Gm-Message-State: ALKqPwdx5qywzpgjlKx08XPt510dUiJarKnf8FdrIg93sJ+nwfG40l9k
-	LN0oqpwDWsmIPGQxuF342vxJI1Q6
-X-Google-Smtp-Source: AB8JxZojmtkzSyfZnoO7xT5D7VWENahS3zXr6TvbbixbZfANHsZYbfa38dP9obGexDaBwPkrIIx1yA==
-X-Received: by 2002:a17:902:bcc4:: with SMTP id o4-v6mr17579876pls.308.1527011569308;
-        Tue, 22 May 2018 10:52:49 -0700 (PDT)
+        bh=kVF90YaENbufVLOpnUwnkcNJZWzTi/3I1BatEHhIQoc=;
+        b=BDKldpS1HWX2kHAPHKc5NzAe5SwGUAxWa7rwu1ceF0WZJ8+uKr52RS7qa/OeKSAQis
+         7QUgYSwiIZzpQBz9u9Z1tjNZPcZgx/3V/MP/vPeJd24pQNXBPc2ARxfq927TEIeThk9N
+         R3NAnhw/GR6lzTZkoLlV6ZZ9g9+PIdRWK6Cr8jHXP9eHd8z+8/gVgUoHihavvXTprs6e
+         UoGRYlz45m+Lrwh/fYXLnPzfdl5joRQR8Ebi8SAOisE/ieD5m6/udH11ZUSv9ZI0UpMF
+         l/ruQlQJ8FONT6y8HglkKrf/YHga3kb1eLiNdk3kUUwPOlJZmI7PgZBVek6nCov3DGLX
+         vuHw==
+X-Gm-Message-State: ALKqPwdiN7K0scBzbc07kmXSziSgNJxMRO7rVQ0L+JkuDtznsbjOdIkO
+	b3dT5l8Ey9JMAII0QRuutLGkluL8
+X-Google-Smtp-Source: AB8JxZreJQNcYrKFkNjKM2knMHUgsxsn8VG4cQMrAb9R4pnsTwIr3X+w8Ayv6ghKODYXdBjwccFBzQ==
+X-Received: by 2002:a65:498e:: with SMTP id r14-v6mr19408564pgs.78.1527012379511;
+        Tue, 22 May 2018 11:06:19 -0700 (PDT)
 Return-Path: <rth7680@gmail.com>
 Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
-        by smtp.googlemail.com with ESMTPSA id s88-v6sm40441338pfe.43.2018.05.22.10.52.48
+        by smtp.googlemail.com with ESMTPSA id y83-v6sm42415347pfd.21.2018.05.22.11.06.18
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 May 2018 10:52:48 -0700 (PDT)
+        Tue, 22 May 2018 11:06:18 -0700 (PDT)
 Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH 14/27] iommu: Add IOMMU index concept to IOMMU API
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "patches@linaro.org" <patches@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
+Subject: Re: [PATCH 16/27] iommu: Add IOMMU index argument to translate method
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-15-peter.maydell@linaro.org>
- <5655dec4-6d82-a02c-2155-300c4baf1adf@twiddle.net>
- <CAFEAcA-Cb2sLTz1RNiiPLm=+92poENNF9WHuJrgLe1VGHnPV8A@mail.gmail.com>
+ <20180521140402.23318-17-peter.maydell@linaro.org>
 From: Richard Henderson <rth@twiddle.net>
 Openpgp: preference=signencrypt
 Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
@@ -104,26 +101,26 @@ Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
  /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
  jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
  VcROBqvtH3ecaIL9iw==
-Message-ID: <7c4c3d1f-d83f-cac4-adb7-a677a60dff07@twiddle.net>
-Date: Tue, 22 May 2018 10:52:47 -0700
+Message-ID: <23332ec0-bf12-7e04-8261-533c52c3f314@twiddle.net>
+Date: Tue, 22 May 2018 11:06:16 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-Cb2sLTz1RNiiPLm=+92poENNF9WHuJrgLe1VGHnPV8A@mail.gmail.com>
+In-Reply-To: <20180521140402.23318-17-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: gLOC9HWM7om1
+X-TUID: 8UtI5qq9Wke9
 
-On 05/22/2018 10:51 AM, Peter Maydell wrote:
-> That wouldn't allow for multiple instances of the same class where the
-> answer is different (eg "my_iommu->has_trustzone_support ? 2 : 1" where
-> the answer depends on how the instance is configured via QOM properties).
-
-Ah.  I had somehow been assuming those would be different classes.
-Ok then,
+On 05/21/2018 07:03 AM, Peter Maydell wrote:
+> Add an IOMMU index argument to the translate method of
+> IOMMUs. Since all of our current IOMMU implementations
+> support only a single IOMMU index, this has no effect
+> on the behaviour.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
-

@@ -1,100 +1,100 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1429854wme;
-        Tue, 22 May 2018 05:28:19 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZovu3flsX7PkRnmUTIhcxvvWes47fMwuU1BFyWxF75w0+rTQ8KKN6wXdwzxCVdKgBZ9SUF7
-X-Received: by 2002:ac8:2edc:: with SMTP id i28-v6mr21011818qta.401.1526992099594;
-        Tue, 22 May 2018 05:28:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526992099; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1436262wme;
+        Tue, 22 May 2018 05:34:03 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqEkktfZq7UVwv/U42m+xS2CUnB+bP5KTt5/YCB+5Fq4Nsy+6mHn623SgL1/ZuTLwMtIohh
+X-Received: by 2002:a37:ba42:: with SMTP id k63-v6mr20940859qkf.436.1526992442965;
+        Tue, 22 May 2018 05:34:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526992442; cv=none;
         d=google.com; s=arc-20160816;
-        b=w3MtPXutukM6c+2KVMVQWuPZbLe9B1xdwrDxZxkqy+d7WqVhlTvSpurRlvngM2dOhd
-         P3DlgPon7hCMxcyY1RC4gDyfpV1gJSayrLkulBg4QmLAKKqnDqtuRtVzcH1zcDmgomMG
-         VkdPyOY1w861jTT6K7d6K4IdDWF8SLiiiZ42z7tMR0wbkgvJrC2ObR/FAUws3CW2Nwcx
-         kqlVDViclp9d2REaODYCN3OU+xF5COofcVnmg0eolSNqSZ+Dm14l9PzGgXQwHfy4Fass
-         APa/6b1st6Bs76zO/fXRNYeFkCUG2vPqpNkuVF1LytFtnkfJGHrdKo8GZymJyfsXIwAp
-         kvzg==
+        b=YJdbW+FXEv/cg/Jlg+6rZ2OBpwdkWmNZIttPAACoKwd68LN4n7rBM3uwqjkr+VpvNI
+         XmtpqLnakqu0jfKGdKsOi2vrDu+FDMYRjGaWXuFqbu8mAfGHqsYvrGMHheH/siSz5CCU
+         IhWUKNRKl+kT3JKzNlatlJ3IlnzwtmdBckdAXygqmhng3lj/khyjp8KHGIIzFIkp6Aym
+         SIZuwlMj3DXpUsnYRxgKFMs2q0ojR4BVRM4jB62uGpTxAvrL3cxHyfVRoXTrBP0MY4Av
+         SVe9a+NLIxk/UUP5yavlySlTb528qsDcJOMUnD4C43G4QUMH0vUt1IlyZMaUjhv8k9aL
+         yE8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=pcMbbYkIW1hk3SXz2PYlFb9Vv1IhMlCfLsuQZG2inxI=;
-        b=TFkF1SpQ59z8aAPz2SgdWyI/8ubrlmG9NbzOQOGPJDxLUvSvVVd/HlA9TnBLfg/4zM
-         4tzHyLgi8ofaoojO6RUlLMAuxRH5Z3rgOmjYymrMbojKuOfqVTfqiGMFDjo4t42COkQq
-         nBFUVLA6NGWo9CWcWA/rnyRbFPTWbPY/2+o2xjciANIrbnkYJc36e9iYYCsyET0QNnzC
-         L3pzaj0lhlO1mFwEJaVdvInQ/QPAuaqYYk8MDPlq8okcNPIGt+vO03mMNn471vbqIpQJ
-         SO8K5xQuMddAjkZ3VtbRiGQJn6qy8plslh8sJyeLvvlvMMsQPdT36EbKAJXhuojIlrnX
-         XfQw==
+        bh=F4XVp8mj9LxzT1QsJhWaDywfp1TMSNS/g42EXg+n/0I=;
+        b=iK4JiBivkhIbNr+aqRsk3YX0E7eruGXWPyWpRAZ/TK0zUMK/HOszt1eWhLqF07pTdq
+         m/i+cGlSoV5fWN+UAupQrBMfs6bcjumMASlf8WcQwgJ57V/9jcwgiVJWg5abROFw0omx
+         1wc0WTla7xEVR8RzbsJsZ+g7QGqCM53gmCU4iI3RcIT6vtZt0LflvXIcELChI0dv4NbT
+         YMRTWnIyeMAf8gZqjLnuSHf/9y41t1e5dMEgrhR5wMV74BREyf/GrUNbVwVWq7RCzP2P
+         MdowkBfAfKviIStA85+qMpdlTOstoq54yBE56WbVsJJJd4BXsyO/JDtC9r9xt+bsYxDb
+         no9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ecwwEuQI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UUBUSa32;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l2-v6si8266766qvm.227.2018.05.22.05.28.19
+        by mx.google.com with ESMTPS id 44-v6si1548151qte.76.2018.05.22.05.34.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 May 2018 05:28:19 -0700 (PDT)
+        Tue, 22 May 2018 05:34:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ecwwEuQI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UUBUSa32;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55474 helo=lists.gnu.org)
+Received: from localhost ([::1]:55494 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fL6Op-0007dJ-3q
-	for alex.bennee@linaro.org; Tue, 22 May 2018 08:28:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34456)
+	id 1fL6UM-0001Ix-Eb
+	for alex.bennee@linaro.org; Tue, 22 May 2018 08:34:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35735)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fL6Oh-0007d3-1Y
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 08:28:12 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fL6UB-0001Ip-VT
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 08:33:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fL6Ob-0007GQ-2C
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 08:28:11 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:42758)
+	(envelope-from <peter.maydell@linaro.org>) id 1fL6UB-0000td-39
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 08:33:52 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:41112)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fL6Oa-0007G6-Rq
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 08:28:04 -0400
-Received: by mail-ot0-x244.google.com with SMTP id l13-v6so20685561otk.9
-	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 05:28:04 -0700 (PDT)
+	id 1fL6UA-0000tK-Tq
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 08:33:51 -0400
+Received: by mail-oi0-x243.google.com with SMTP id 11-v6so16011300ois.8
+	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 05:33:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=pcMbbYkIW1hk3SXz2PYlFb9Vv1IhMlCfLsuQZG2inxI=;
-	b=ecwwEuQICBsIPpPqss6YZptB2lG+XYKDsI8LU12Ual22ynwwrWSEEjcxZkdVunyxjH
-	Mfbg+NlZpetlZTEnZDC1sOJQMbJAHicCpyTarvlpYySBOg2Z8yrAy30R2wgjndeasrnz
-	uRT7fB9WPPLnnL87rvFYmgixxtd6zXxbAGYPg=
+	:cc; bh=F4XVp8mj9LxzT1QsJhWaDywfp1TMSNS/g42EXg+n/0I=;
+	b=UUBUSa32S+iG/Pbtao2GNRyiDaB3H5g5wUc6geuiN51GCSJK3fSpXSw3uzxDeKfV3L
+	M7f/A4gPMsghcYd49Opj9cG/Gi2kwHq+g72kPFBMfF+KTSnX1GKHDsnPDnmx7DrRXYCd
+	xi6vFCiXey2TbGh9v0zjMncfskkQ9z2OqG86E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=pcMbbYkIW1hk3SXz2PYlFb9Vv1IhMlCfLsuQZG2inxI=;
-	b=QMBo0yE7wAzm4KQqhThmTxELFzFXWbxyOnnBuK/3WJq+1NWbTxgwkSRKR6qn8pjDF3
-	kFsUTBR8bRNSKxrPahrIfsHNlIcrK3c8Qv6Zn9s1KPBXD5J/L9h/oE3KGR1Vg0PD2BCI
-	IJe3vSemHKmh22GcnxHyqLRIhOKmYiKjaA2WOFJ87sf/HADaJ/apZuG2WyJQcyiAaMn2
-	BGm9Sz33kUvT8XDjXgGiMPe0B/YLWHuQVKZnil99mSPPuyY6iz5HC9NGeJG0ueHmTJ/N
-	qdwjbm5Tz5+fpxfsJRjvmuGhJJnKaECLuZHuKuAold5U1d2+QdvfpgrBZlZdhPBeMT0K
-	1Dfw==
-X-Gm-Message-State: ALKqPwcvJ1YwgtQ+uvp9drsnxyb+hdCy3eLqP2Uy/WCMVnwzB/JqeDxu
-	2VwEFTU3s5AAAEKKga7kSB2ytYuE6qaPM8VjEXuvaw==
-X-Received: by 2002:a9d:2013:: with SMTP id
-	n19-v6mr15157882ota.258.1526992084108; 
-	Tue, 22 May 2018 05:28:04 -0700 (PDT)
+	bh=F4XVp8mj9LxzT1QsJhWaDywfp1TMSNS/g42EXg+n/0I=;
+	b=CDHLc3mth5jNonYMpdeWZv02v+k3p+KUYkqX4+dfeTQOeujfIafMtKs9FlZvng9i2/
+	l0cwXVeM6WQgSXPUK9xTUJdTwEpb2/QKZ/sxsDQtsIR5O/HvycIeviU0GX+FKVwGPHc5
+	FM7eTWRll6shmSSLdXQLwY21hRlBWL0EI7lPjJOvA9zWuugGRqkJZzc/dtSuBSJnEJtT
+	WszuJAquHOQvRYaKNAlkbIkJqVXwnT2Yx0+HaEt7uN32tlrtCZsOutWmbLX2aGCUzJWr
+	TZY6Ugthd5a16fpP/L35YxpHyj6T8eZq5VxShzeuN0Nv9Xp5GxkcuEbhWgOx0fe4+x4x
+	dCkQ==
+X-Gm-Message-State: ALKqPwfuFlutyAj7XAZg9Y5rMRK48a+pidwsAizLLMfJHihjHMRCuGZC
+	Ifhplbep0vj50rF4gj/TnIMqJ+L3+n/phj0tPDxb9w==
+X-Received: by 2002:aca:d447:: with SMTP id
+	l68-v6mr14462958oig.102.1526992430079; 
+	Tue, 22 May 2018 05:33:50 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 05:27:43
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 05:33:29
 	-0700 (PDT)
-In-Reply-To: <1526222114-5324-4-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1526222114-5324-3-git-send-email-eric.auger@redhat.com>
 References: <1526222114-5324-1-git-send-email-eric.auger@redhat.com>
-	<1526222114-5324-4-git-send-email-eric.auger@redhat.com>
+	<1526222114-5324-3-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 13:27:43 +0100
-Message-ID: <CAFEAcA8yo_NKY=mHNYFFTA1+eR-731ePUb5hDum0ubUM2XOxxg@mail.gmail.com>
+Date: Tue, 22 May 2018 13:33:29 +0100
+Message-ID: <CAFEAcA8T0sQ_dZ7079WSx0FHp21F3xiWfNY6OFgO4Z0uBAPpLA@mail.gmail.com>
 To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [RFC v2 3/7] hw/intc/arm_gicv3: Introduce
- redist-region-count array property
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [RFC v2 2/7] target/arm: Allow KVM device address
+ overwriting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,129 +113,56 @@ Cc: Andrew Jones <drjones@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
 	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ojrXR4jAnzte
+X-TUID: Lh8Edu1IlVAU
 
 On 13 May 2018 at 15:35, Eric Auger <eric.auger@redhat.com> wrote:
-> To prepare for multiple redistributor regions, we introduce
-> an array of uint32_t properties that stores the redistributor
-> count of each redistributor region.
+> for KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION attribute, the attribute
+> data pointed to by kvm_device_attr.addr is a OR of the
+> redistributor region address and other fields such as the index
+> of the redistributor region and the number of redistributors the
+> region can contain.
 >
-> Non accelerated VGICv3 only supports a single redistributor region.
-> The capacity of all redist regions is checked against the number of
-> vcpus.
+> The existing machine init done notifier framework sets the address
+> field to the actual address of the device and does not allow to OR
+> this value with other fields.
 >
-> Machvirt is updated to set the count to 123 vcpus for the unique
-> redistributor region we currently have.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/virt.c                      |  6 ++++++
->  hw/intc/arm_gicv3.c                | 11 ++++++++++-
->  hw/intc/arm_gicv3_common.c         | 35 ++++++++++++++++++++++++++++++-----
->  hw/intc/arm_gicv3_kvm.c            |  9 +++++++--
->  include/hw/intc/arm_gicv3_common.h |  6 ++++--
->  5 files changed, 57 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 11b9f59..c9d842d 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -525,6 +525,12 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->      if (!kvm_irqchip_in_kernel()) {
->          qdev_prop_set_bit(gicdev, "has-security-extensions", vms->secure);
->      }
-> +
-> +    if (type == 3) {
-> +        qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
-> +        qdev_prop_set_uint32(gicdev , "redist-region-count[0]",
-> +                             vms->memmap[VIRT_GIC_REDIST].size / 0x20000);
+> This patch extends the KVMDevice struct with a new kda_addr_fixup
+> member. Its value is passed at registration time and OR'ed with the
+> resolved address on kvm_arm_set_device_addr().
 
-We used to create a region which had num_cpu redistributors in it;
-won't this cause us to create one which has as many redistributors
-as will fit in the space ?
 
-> +    }
->      qdev_init_nofail(gicdev);
->      gicbusdev = SYS_BUS_DEVICE(gicdev);
->      sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
-> diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-> index 479c667..38d57ac 100644
-> --- a/hw/intc/arm_gicv3.c
-> +++ b/hw/intc/arm_gicv3.c
-> @@ -373,7 +373,16 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->
-> -    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
-> +    if (s->nb_redist_regions != 1) {
-> +        error_setg(errp, "VGICv3 redist region number(%d) not equal to 1",
-> +                   s->nb_redist_regions);
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 1e23640..4050017 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -34,6 +34,7 @@ int kvm_arm_vcpu_init(CPUState *cs);
+>   * @group: device control API group for setting addresses
+>   * @attr: device control API address type
+>   * @dev_fd: device control device file descriptor (or -1 if not supported)
+> + * @addr_fixup: value to be OR'ed with resolved address
 
-Missing 'return' ?
+I think addr_fixup is a bit vague; how about
+ addr_fixed_bits ?
+(here and in the function argument name). Or something else if
+somebody has a better idea.
 
-> +    }
-> +
-> +    gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
+>   *
+>   * Remember the memory region @mr, and when it is mapped by the
+>   * machine model, tell the kernel that base address using the
+> @@ -45,7 +46,7 @@ int kvm_arm_vcpu_init(CPUState *cs);
+>   * address at the point where machine init is complete.
+>   */
+>  void kvm_arm_register_device(MemoryRegion *mr, uint64_t devid, uint64_t group,
+> -                             uint64_t attr, int dev_fd);
+> +                             uint64_t attr, int dev_fd, uint64_t addr_fixup);
 >
->      gicv3_init_cpuif(s);
->  }
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 7b54d52..f405ae1 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -169,9 +169,10 @@ static const VMStateDescription vmstate_gicv3 = {
->  };
->
->  void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
-> -                              const MemoryRegionOps *ops)
-> +                              const MemoryRegionOps *ops, Error **errp)
->  {
->      SysBusDevice *sbd = SYS_BUS_DEVICE(s);
-> +    int rdist_capacity = 0;
->      int i;
->
->      /* For the GIC, also expose incoming GPIO lines for PPIs for each CPU.
-> @@ -199,11 +200,25 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
->
->      memory_region_init_io(&s->iomem_dist, OBJECT(s), ops, s,
->                            "gicv3_dist", 0x10000);
-> -    memory_region_init_io(&s->iomem_redist, OBJECT(s), ops ? &ops[1] : NULL, s,
-> -                          "gicv3_redist", 0x20000 * s->num_cpu);
-> -
->      sysbus_init_mmio(sbd, &s->iomem_dist);
-> -    sysbus_init_mmio(sbd, &s->iomem_redist);
-> +
-> +    s->iomem_redist = g_new0(MemoryRegion, s->nb_redist_regions);
-> +    for (i = 0; i < s->nb_redist_regions; i++) {
-> +        char *name = g_strdup_printf("gicv3_redist_region[%d]", i);
-> +
-> +        memory_region_init_io(&s->iomem_redist[i], OBJECT(s),
-> +                              ops ? &ops[1] : NULL, s,
-> +                              name, 0x20000 * s->redist_region_count[i]);
-> +        sysbus_init_mmio(sbd, &s->iomem_redist[i]);
-> +        rdist_capacity += s->redist_region_count[i];
-> +        g_free(name);
-> +    }
-> +    if (rdist_capacity < s->num_cpu) {
-> +        error_setg(errp, "Capacity of the redist regions(%d) "
-> +                   "is less than number of vcpus(%d)",
-> +                   rdist_capacity, s->num_cpu);
+>  /**
+>   * kvm_arm_init_cpreg_list:
+> --
+> 2.5.5
 
-It would be better to make this check before we create a lot of
-memory regions, I think. (Though I'm very unsure of the rules about
-how to unwind what you've done in a realize method that's about to fail;
-we probably get it wrong a lot and don't care because realize failure
-is fatal for most uses of most devices.)
-
-> +    }
-> +
->  }
->
->  static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

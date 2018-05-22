@@ -1,183 +1,142 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp311567wme;
-        Mon, 21 May 2018 07:04:24 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZr+j85gX+tHOirQfoe9/Uv5/4GVMsfkexyH8AVnHm/q6w0gCGDxxEj7JbPWH99GbWBh/E0f
-X-Received: by 2002:a65:628a:: with SMTP id f10-v6mr15931859pgv.6.1526911464845;
-        Mon, 21 May 2018 07:04:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526911464; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1782312wme;
+        Tue, 22 May 2018 10:42:24 -0700 (PDT)
+X-Received: by 2002:a63:91c4:: with SMTP id l187-v6mr19809652pge.261.1527010944682;
+        Tue, 22 May 2018 10:42:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527010944; cv=none;
         d=google.com; s=arc-20160816;
-        b=h+kNR75rPSIv6WAbKIxqL6rAFgHDbQ8rHImlsO94mI+es2ordPkGX6nL4jx8Cd8IYZ
-         VqOz0P3FRunGhLdX5raSb3zvb4ilkYDysTkwM3cSBr1+jATuyv8wkvbeezgs/gS5KGdt
-         RO5X1BCVNcUpS0YgxixSeTFs7Dg/ZxvFox4i4krSMZDivvfBhAiDXSqE5y/E1PereYL4
-         QhC7rGFWXzBuUs3DAweslcIpc1+3YmOpShXlzPa9udHHM5/Ip3R4zJ20UxwhJXLzJCPK
-         eYhiAr0Y3F7SZPMjldQqe+BHvyM/fzYtt+JyrMwN6/OI8Lg0FIiqIjp59iThCO/iPy5u
-         TDog==
+        b=jVAmc+eUrnVxzsUyOQfuibX8a0wjxj98P6iORqlZO6o2E1uDbtbaH4d/cTw4MphfuK
+         T1RLu5bXaEc9PmKT5KFZURER2TNhJb/oEUPvYW8QqGH3QiFCwMQu+jn6ydrE7sMWS2jn
+         BpQoMWrhMb63JuvCENasJfcE4f5YEWDNYCXEy4/MzJEk7q08U+hYoCea6ebz/RVmkEA6
+         9NETjRG/n+PTiFR5Ms96R3KosKePz9dIPZFqqZZlN46+HBozreS7QpGwTMhZvivsqzA6
+         Kj5yGlwgl0NuSSonDABGIX4gCR8PBxjjfnNE2AtVbm1+sx5fh4QMfINCQK2a81C7zy5O
+         ugNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=ZiTZxFw6f0WYjsMC6xikBpYm7+xV1HTY1yB1krVoX1c=;
-        b=x15boc9Vxom9ESK3weczZn9F2Ocsl1G8Bzd+EcGH7CDyPmpb5qYWnLFDU9a1yL5r4x
-         rPSVdz1cJoY0FArrBIg0s7x0QqRCLaWhl4uMitSoiDE/vb1+9jibK2TpqYHDb5+VJAVR
-         JL1cCVkZUPhLoUJAkhLjtldrP5mFRu+O/vdozE3QgGn0Y8Hajx9+tT/Pp8Tf/QYL7E48
-         eKPOXQqTmoL12wn2HUAhglNsOrcGRDmawUyUJ8G+noZiY6oM4XaFJ/sVgvlk2nVgKVB4
-         gulWjJi4kiO2PPcl0o+oSLMvq3BhA8ajJwePJ2Jv8Ex89kyTzIQGApUnhPUxkwr08VpS
-         wsuQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
+         :subject:sender:dkim-signature:arc-authentication-results;
+        bh=8YGO+IQnbC6ZhclzEWExqafQn9wCQkfgR7bVsd6yKoQ=;
+        b=d2MtakupnOk3UtakJOyGoX8Jd1iYNk1lKkl73eNCyCmFWE/kYlxq9onz6F3NlwXTEB
+         /MpvtyXgZ8wLm/UcthshKqQnVyVivzdPveBhEtsvK6V8UWeKDCOf5qEKFEG9aQRYxQHs
+         ne8fsxI0MASBKXFmyqXAIKx+YXxsrG8e/jPGe3PuOfDUESxd3+o0rmsxR+W+3d1Yp2yD
+         WdSswpQq0g7G2+MwvHFtkjLmLTNx9po8y31JKy7uImqy60cLCgg17izpq1rtmBDfjf+1
+         Wd9MVKVGQBkbqhaoqLITtFLu/VyzEPA2oixeU6PuZJwmyQYMwVmdjWkGmwAGINVNtG8K
+         CvgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id v190-v6si14132382pfb.324.2018.05.21.07.04.23
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 May 2018 07:04:24 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m/2JAUTQ;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d8-v6sor4629513pgv.72.2018.05.22.10.42.24
+        (Google Transport Security);
+        Tue, 22 May 2018 10:42:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fKlQC-0007oi-Uj; Mon, 21 May 2018 15:04:20 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 24/27] hw/misc/iotkit-secctl.c: Implement SECMPCINTSTATUS
-Date: Mon, 21 May 2018 15:03:59 +0100
-Message-Id: <20180521140402.23318-25-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <20180521140402.23318-1-peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=m/2JAUTQ;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=8YGO+IQnbC6ZhclzEWExqafQn9wCQkfgR7bVsd6yKoQ=;
+        b=m/2JAUTQt18RK4tK/SjbunRvlcT1KlEePe6Ffk3xN8TAYNkS2IyUql3l+Y7scBdC/E
+         wGdcY4W1YY2TtoAnq48WAfGVL4/ZIXmUsJxGRzi7o8K3WhQV8jvSE80iFNnQpGPATj5N
+         dIdBq3hx2CItN/E5A88ZgUm5ge4XDTLGsoDLg4xnYEaAlmt/5DV7e+mjIyy+oPmWIkFT
+         7/nIu8HjNxho4m14NlK9+PUZx0JBgg/e5owdqvw3Z1GdTBfGYO9kmoXBYSX1uAaMjnZW
+         lOgMvAQd+aYF0KUCDCTPaTbcuSAz42mZL2Od2gpixeRaT4/5NVDvQa5544MNWmoBK0Or
+         HA2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=8YGO+IQnbC6ZhclzEWExqafQn9wCQkfgR7bVsd6yKoQ=;
+        b=cCtf1lWVL33JSL/qeUKTO6YsK++JXh6RzuUzdsbkGCM4n32QevLxwR5lK7/dmMZLhA
+         KbFK/OuRjX754P9CxBUWPa4+qbjGMbvWKTwKQHYIw7+dZIrTGgZlEcvF9j7RksV9hv9a
+         tjttVNErFP11Nn70n1Hz8Q6VVUR1oUhUJ9bI33FOAuP9znN2eZ3/Yqb6GdmBA6wRSdOV
+         PbCIT8ts9aX9O6sZe5Xi9x4Va7nTG5UE2cf7xpfG/Ur6ZJFRyQea9fCWkN2xrR8GTXhb
+         ZurkT+uu5NhluJloQ24+G7vrm4etaIec+poXtfiToqQY9IT8sUDGbLjV9MNAfnIfEjUW
+         tWiA==
+X-Gm-Message-State: ALKqPweZpDQIAk0ZSJfj8nyCTGo9aUVCspnAjU6dG/iJf024NC+UiuhS
+	aKYrHMd4dQKbh00x4oTZp2TvkHpt
+X-Google-Smtp-Source: AB8JxZqyvxX8CrxV346+MUDxSu+KGW2GGqUKJvzSERswahu3pVU15jF9/6zcHMG/9YJJAAYhmp1QKQ==
+X-Received: by 2002:a63:2d83:: with SMTP id t125-v6mr19879672pgt.336.1527010943638;
+        Tue, 22 May 2018 10:42:23 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
+        by smtp.googlemail.com with ESMTPSA id l9-v6sm39024118pfg.146.2018.05.22.10.42.22
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 May 2018 10:42:22 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH 14/27] iommu: Add IOMMU index concept to IOMMU API
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
-X-TUID: 11sjFr/D9Hjk
+ <20180521140402.23318-15-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+ xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+ n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+ rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+ Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+ n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+ AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+ cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+ Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+ eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+ LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+ Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
+ 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+ 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+ I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+ VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+ +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
+ AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+ Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+ prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+ /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+ jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+ VcROBqvtH3ecaIL9iw==
+Message-ID: <5655dec4-6d82-a02c-2155-300c4baf1adf@twiddle.net>
+Date: Tue, 22 May 2018 10:42:21 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
+MIME-Version: 1.0
+In-Reply-To: <20180521140402.23318-15-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: cWVh+qXT/DYa
 
-Implement the SECMPCINTSTATUS register. This is the only register
-in the security controller that deals with Memory Protection
-Controllers, and it simply provides a read-only view of the
-interrupt lines from the various MPCs in the system.
+On 05/21/2018 07:03 AM, Peter Maydell wrote:
+> +    /* Return the IOMMU index to use for a given set of transaction attributes.
+> +     *
+> +     * Optional method: if an IOMMU only supports a single IOMMU index then
+> +     * the default implementation of memory_region_iommu_attrs_to_index()
+> +     * will return 0.
+> +     *
+> +     * The indexes supported by an IOMMU must be contiguous, starting at 0.
+> +     *
+> +     * @iommu: the IOMMUMemoryRegion
+> +     * @attrs: memory transaction attributes
+> +     */
+> +    int (*attrs_to_index)(IOMMUMemoryRegion *iommu, MemTxAttrs attrs);
+> +
+> +    /* Return the number of IOMMU indexes this IOMMU supports.
+> +     *
+> +     * Optional method: if this method is not provided, then
+> +     * memory_region_iommu_num_indexes() will return 1, indicating that
+> +     * only a single IOMMU index is supported.
+> +     */
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/misc/iotkit-secctl.h |  8 +++++++
- hw/misc/iotkit-secctl.c         | 38 +++++++++++++++++++++++++++++++--
- 2 files changed, 44 insertions(+), 2 deletions(-)
+The mispatched callback has been discussed, but would it be equally useful to
+simply have a variable here instead of a callback?  Perhaps max_index instead
+of num_indexes so that zero-initialization of the structure does the right
+thing for existing iommu's.
 
-diff --git a/include/hw/misc/iotkit-secctl.h b/include/hw/misc/iotkit-secctl.h
-index faad0c9190..082c14c925 100644
---- a/include/hw/misc/iotkit-secctl.h
-+++ b/include/hw/misc/iotkit-secctl.h
-@@ -39,6 +39,11 @@
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_enable
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_clear
-  *  + named GPIO inputs ahb_ppcexp{0,1,2,3}_irq_status
-+ * Controlling the MPC in the IoTKit:
-+ *  + named GPIO input mpc_status
-+ * Controlling each of the 16 expansion MPCs which a system using the IoTKit
-+ * might provide:
-+ *  + named GPIO inputs mpcexp_status[0..15]
-  */
- 
- #ifndef IOTKIT_SECCTL_H
-@@ -55,6 +60,8 @@
- #define IOTS_NUM_APB_PPC 2
- #define IOTS_NUM_APB_EXP_PPC 4
- #define IOTS_NUM_AHB_EXP_PPC 4
-+#define IOTS_NUM_EXP_MPC 16
-+#define IOTS_NUM_MPC 1
- 
- typedef struct IoTKitSecCtl IoTKitSecCtl;
- 
-@@ -94,6 +101,7 @@ struct IoTKitSecCtl {
-     uint32_t secrespcfg;
-     uint32_t nsccfg;
-     uint32_t brginten;
-+    uint32_t mpcintstatus;
- 
-     IoTKitSecCtlPPC apb[IOTS_NUM_APB_PPC];
-     IoTKitSecCtlPPC apbexp[IOTS_NUM_APB_EXP_PPC];
-diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-index ddd1584d34..de4fd8e36d 100644
---- a/hw/misc/iotkit-secctl.c
-+++ b/hw/misc/iotkit-secctl.c
-@@ -139,6 +139,9 @@ static MemTxResult iotkit_secctl_s_read(void *opaque, hwaddr addr,
-     case A_NSCCFG:
-         r = s->nsccfg;
-         break;
-+    case A_SECMPCINTSTATUS:
-+        r = s->mpcintstatus;
-+        break;
-     case A_SECPPCINTSTAT:
-         r = s->secppcintstat;
-         break;
-@@ -186,7 +189,6 @@ static MemTxResult iotkit_secctl_s_read(void *opaque, hwaddr addr,
-     case A_APBSPPPCEXP3:
-         r = s->apbexp[offset_to_ppc_idx(offset)].sp;
-         break;
--    case A_SECMPCINTSTATUS:
-     case A_SECMSCINTSTAT:
-     case A_SECMSCINTEN:
-     case A_NSMSCEXP:
-@@ -572,6 +574,20 @@ static void iotkit_secctl_reset(DeviceState *dev)
-     foreach_ppc(s, iotkit_secctl_reset_ppc);
- }
- 
-+static void iotkit_secctl_mpc_status(void *opaque, int n, int level)
-+{
-+    IoTKitSecCtl *s = IOTKIT_SECCTL(opaque);
-+
-+    s->mpcintstatus = deposit32(s->mpcintstatus, 0, 1, !!level);
-+}
-+
-+static void iotkit_secctl_mpcexp_status(void *opaque, int n, int level)
-+{
-+    IoTKitSecCtl *s = IOTKIT_SECCTL(opaque);
-+
-+    s->mpcintstatus = deposit32(s->mpcintstatus, n + 16, 1, !!level);
-+}
-+
- static void iotkit_secctl_ppc_irqstatus(void *opaque, int n, int level)
- {
-     IoTKitSecCtlPPC *ppc = opaque;
-@@ -640,6 +656,10 @@ static void iotkit_secctl_init(Object *obj)
-     qdev_init_gpio_out_named(dev, &s->sec_resp_cfg, "sec_resp_cfg", 1);
-     qdev_init_gpio_out_named(dev, &s->nsc_cfg_irq, "nsc_cfg", 1);
- 
-+    qdev_init_gpio_in_named(dev, iotkit_secctl_mpc_status, "mpc_status", 1);
-+    qdev_init_gpio_in_named(dev, iotkit_secctl_mpcexp_status,
-+                            "mpcexp_status", IOTS_NUM_EXP_MPC);
-+
-     memory_region_init_io(&s->s_regs, obj, &iotkit_secctl_s_ops,
-                           s, "iotkit-secctl-s-regs", 0x1000);
-     memory_region_init_io(&s->ns_regs, obj, &iotkit_secctl_ns_ops,
-@@ -660,6 +680,16 @@ static const VMStateDescription iotkit_secctl_ppc_vmstate = {
-     }
- };
- 
-+static const VMStateDescription iotkit_secctl_mpcintstatus_vmstate = {
-+    .name = "iotkit-secctl-mpcintstatus",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(mpcintstatus, IoTKitSecCtl),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription iotkit_secctl_vmstate = {
-     .name = "iotkit-secctl",
-     .version_id = 1,
-@@ -677,7 +707,11 @@ static const VMStateDescription iotkit_secctl_vmstate = {
-         VMSTATE_STRUCT_ARRAY(ahbexp, IoTKitSecCtl, IOTS_NUM_AHB_EXP_PPC, 1,
-                              iotkit_secctl_ppc_vmstate, IoTKitSecCtlPPC),
-         VMSTATE_END_OF_LIST()
--    }
-+    },
-+    .subsections = (const VMStateDescription*[]) {
-+        &iotkit_secctl_mpcintstatus_vmstate,
-+        NULL
-+    },
- };
- 
- static void iotkit_secctl_class_init(ObjectClass *klass, void *data)
--- 
-2.17.0
+
+r~

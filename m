@@ -1,143 +1,95 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1550297wme;
-        Tue, 22 May 2018 07:11:53 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZp2MHN6KakjtNwsQRHZRmTbE66TxxruNwc1VL5Ro1HUSU6NCDKkFzEf4F5FX9OhQqhsWlrg
-X-Received: by 2002:ac8:194c:: with SMTP id g12-v6mr2942132qtk.53.1526998313681;
-        Tue, 22 May 2018 07:11:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526998313; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1560094wme;
+        Tue, 22 May 2018 07:19:59 -0700 (PDT)
+X-Received: by 2002:a54:4d02:: with SMTP id v2-v6mr13425918oix.190.1526998799252;
+        Tue, 22 May 2018 07:19:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1526998799; cv=none;
         d=google.com; s=arc-20160816;
-        b=I2a3vQCVhaxK5LcZfWkn0PGzVJj8ELbK8xMZyNbkuoWnHgsdXw34ydeXhe4CmD3v3y
-         AMH0ZmmtCmcqnUbR1NucL7rKEWmPlKKG/9fZZykNAlsJsgNBl1wtUyeK12aSJ2DcTYhM
-         jjBBG6wWdx9GXwLgJNgf4oUgR0FVMmN+p/1wlSVkY3xy+/WNsTLTAZzcz5/wFFKhQ0F+
-         L7zkAMTqsFjEt1LVDVZ2h+d7JrXJ/fGpWHzxyf+nsbYgJWoO+pVqOKBkytUnqG09AjSu
-         d9BsLwioHfry0nLikKXCxvRC1LZGB7KJ4KKm76h6O/Nwjjlhc9gF/rTKahQbZYnEF+ZI
-         jdjQ==
+        b=kkJJHUa7rqBlsDGmHy98eFZCou8K983AqW+2/aCOFMw82A20c4RF80eKdtbh0KiPNs
+         3OTTzOvY/7DYdVX9Djg6skBJdXy4Hk7YQK8r5FStgaGOII4gMouRIiIPiWbsiRDDBGfV
+         vfTNDBXhHTAWUAE6FAIpEn53j2Upo5XgITZrn+j9UoxR2qAUPEerZlFgsqamDSjrg8hO
+         QsSuXL9gZHwSK/L4Ki6PAbP92Yxl0KFa2fyeU2QVQIjb8KBLUn3d+WLjNAsGcGU3LvUp
+         h19ZLUXjq1hJhF/0bFCuL6GY42i2MBT0KG9H4QieHQEL4WXa8f3D9OGTepSfbfgNjqeP
+         Lpaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:cc:references:to:subject:arc-authentication-results;
-        bh=DpKgljne/e9QSmbIskryyGgbJVde3xYuSB7kuxjflu4=;
-        b=dSAA5nyo2SDB9RmVdzaQexxLvNfZ4OkPdSWPRvAV0B5Bg7LQCK/TF2+3OE+9IpXYdV
-         oS/I5DVhi1qkI8jML35Xgitq/JYdf9Y++iRyPwtQCH2Mbo+d1BhsKEVuP5d9PlsBramj
-         VqzHTFpk/ujY25MCdfqOn1vN2H50Cr2UkDYCDYZfMED6bVQFjwZMhXUycKFjklM0CsjC
-         lZjVmDDZK7hdmpk0PnaAkNReL3OFOcZptGydUb8hpPQovAPg69hRbLcarvNt5BtMBSHR
-         fwmBTCxWvlU2BkL4tWKCZQxh+qmusM+rpkwcLquXHcs+ks+sBcD3t5w3YPdhPxbYLxUM
-         bTFg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=qntkmGhhzzkHW7eGMXsK5WhLrwS29V5DwLeEWo5mPJI=;
+        b=EE+CWgDXsgc6Ag8JLrXaiZdLUxxEKhNTAkcR+mm74j2clsFMYqpDmMw90nsKBr/1Qt
+         XG60JSYUKMikJB6vMGQOebrYSOf8LR779Y+f48wZ49DlHKCcq/u5Kc43pVfCzHeG0Aex
+         4KpEqw9zcKc/FqHmaJSPpX66OHk0rINr0+is0xQPxe0wooCD0Iw1Cdj0GgIJtHAEul3t
+         iy4SajXiySddozd65xNIM+0taBfKzaQEgeuvOW9tjJvyoLY5bfjuP+8a6/wA4co8WgcW
+         B/l06YLZihvmfR7C0X3lxjspWYpf+oOmaYGJeTuTqSpzo3IDUTzGeXWkX8FgbsHyHJj0
+         nIaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id r17-v6si206120qvm.9.2018.05.22.07.11.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 May 2018 07:11:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c5bf5xbi;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g23-v6sor8074915otc.166.2018.05.22.07.19.59
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 22 May 2018 07:19:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2484E81FE14A;
-	Tue, 22 May 2018 14:11:53 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com [10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 17E21215CDA7;
-	Tue, 22 May 2018 14:11:51 +0000 (UTC)
+       dkim=pass header.i=@linaro.org header.s=google header.b=c5bf5xbi;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=qntkmGhhzzkHW7eGMXsK5WhLrwS29V5DwLeEWo5mPJI=;
+        b=c5bf5xbi9QmgLRLuNwBWOr0Zhrn9cjOwY9ZA6X+P1Leaphs7zyRQXWRUzpLmQmze5f
+         RbY+KhLm2NZinFil5dIbs9KqXwD0mxnWo13jet/c9wnfPQzQ1rtDbQt3+Vm50n5NbnY7
+         DTPPGJGNOrmvrj1suJJxNGe2WSPLkiTnXmKm4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=qntkmGhhzzkHW7eGMXsK5WhLrwS29V5DwLeEWo5mPJI=;
+        b=cPOj13II9CfSaJNmrUgTHMc7bUoh81iWr873xayGbIXHWnPTV32q2mTDnW7Es3XZfr
+         /cNGk3bh5LOYf6OSA/XqpkW34uUF67wb8l2PZec3TOXt6JYxZa0A7fQlN7mGDxNe5SD2
+         vRQoZzeOC0EGoMq8Uh1Q/V820yoNzrIGHqp/YaN3sCj/NnjRKPicN30qFC5/6Kq3RlwY
+         21ke7dvsYVgb3aFUFGVO0GyNPlg2zTdU2KEL5BPYpR611CV8EWtieUUYYjrcOoAFnp2z
+         yKW4iEeaSGBg3rbUJBDChrZCeNzISh0T3Vm7AZqXun25NpsGUlW3fWgu2CKMBOOoiMwj
+         FzTA==
+X-Gm-Message-State: ALKqPwfCUu/XeGCGpvOYuNhw4fZmofbpZFdnR38ThI1GB8QZZGn6+TXr
+	CHlCslxOjsOwUKrCIIxfRxbZ2cBqtbLyPaBewIyKp/UP
+X-Google-Smtp-Source: AB8JxZor+twoe9LEBNugBvQky6woW05xXjhYeSIFCi6dCQREUJaH1jbZ/i+PfAqCpD1WSv4Y4WtufzcIZ2nssx8ovQk=
+X-Received: by 2002:a9d:2842:: with SMTP id h2-v6mr17460088otd.210.1526998798913;
+ Tue, 22 May 2018 07:19:58 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 07:19:38
+ -0700 (PDT)
+In-Reply-To: <595dcb89-3856-3755-e8db-7791c1374284@redhat.com>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+ <20180521140402.23318-15-peter.maydell@linaro.org> <47281818-f0cf-0ed1-c479-fbcaca5c5167@redhat.com>
+ <CAFEAcA-R9t4K488viYM9ipmfArA=ijMMJn+FD1wekPdAbNOHvQ@mail.gmail.com> <595dcb89-3856-3755-e8db-7791c1374284@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 May 2018 15:19:38 +0100
+Message-ID: <CAFEAcA8Eq+EvtL1JuqtHePWMLPdkHG9zzAh7Wkrw7sNYw8jzUQ@mail.gmail.com>
 Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
  IOMMU API
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-15-peter.maydell@linaro.org>
- <47281818-f0cf-0ed1-c479-fbcaca5c5167@redhat.com>
- <CAFEAcA-R9t4K488viYM9ipmfArA=ijMMJn+FD1wekPdAbNOHvQ@mail.gmail.com>
-Cc: "patches@linaro.org" <patches@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Richard Henderson <rth@twiddle.net>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <595dcb89-3856-3755-e8db-7791c1374284@redhat.com>
-Date: Tue, 22 May 2018 16:11:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.4.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-R9t4K488viYM9ipmfArA=ijMMJn+FD1wekPdAbNOHvQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Tue, 22 May 2018 14:11:53 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Tue, 22 May 2018 14:11:53 +0000 (UTC) for IP:'10.11.54.6' DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-TUID: kU0H9oemu3pK
+To: Auger Eric <eric.auger@redhat.com>
+Cc: "patches@linaro.org" <patches@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: SeHhxuI/KwIn
 
-Hi Peter,
+On 22 May 2018 at 15:11, Auger Eric <eric.auger@redhat.com> wrote:
+> Hi Peter,
+>
+> On 05/22/2018 03:22 PM, Peter Maydell wrote:
+>> How many substream IDs do we expect to see in practice?
+>
+> Spec says max 20 bits, matching the max size of the PASID
 
-On 05/22/2018 03:22 PM, Peter Maydell wrote:
-> On 22 May 2018 at 13:58, Auger Eric <eric.auger@redhat.com> wrote:
->> Hi Peter,
->> On 05/21/2018 04:03 PM, Peter Maydell wrote:
->>> If an IOMMU supports mappings that care about the memory
->>> transaction attributes, then it no longer has a unique
->>> address -> output mapping, but more than one. We can
->>> represent these using an IOMMU index, analogous to TCG's
->>> mmu indexes.
->>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>>  include/exec/memory.h | 52 +++++++++++++++++++++++++++++++++++++++++++
->>>  memory.c              | 23 +++++++++++++++++++
->>>  2 files changed, 75 insertions(+)
->>>
->>> diff --git a/include/exec/memory.h b/include/exec/memory.h
->>> index 309fdfb89b..f6226fb263 100644
->>> --- a/include/exec/memory.h
->>> +++ b/include/exec/memory.h
->>> @@ -206,6 +206,20 @@ enum IOMMUMemoryRegionAttr {
->>>   * to report whenever mappings are changed, by calling
->>>   * memory_region_notify_iommu() (or, if necessary, by calling
->>>   * memory_region_notify_one() for each registered notifier).
->>> + *
->>> + * Conceptually an IOMMU provides a mapping from input address
->>> + * to an output TLB entry.
->> actually it takes a source identifier too (ARM streamid + substreamID,
->> this latter is not yet supported).
->> At the moment we have 1 IOMMUMRRegion per sid on ARM. For each
->> IOMMUMRRegion we would now have 2 indexes (1 for secure and 1 for
->> unsecure). How do you see the implementation of PASIDs (substreamids).
->> Would that be based on indexes or not?
-> 
-> Good question. I guess we would set that up so that the
-> substream ID is in the memory transaction attributes as the
-> requester_id and then use that as part of the IOMMU index ?
-> Or you could use the indirection between tx attrs and indexes
-> to allow you to map down a potentially large space of substream
-> ID values to a smaller set of actually different configurations.
-> 
-> How many substream IDs do we expect to see in practice?
+Right, but do we actually expect to see transactions from
+devices that use the whole 2^20 possible values, or will
+they in practice mostly use 1..5, or somethnig else?
 
-Spec says max 20 bits, matching the max size of the PASID
-
-Thanks
-
-Eric
-
-> 
->>> +/**
->>> + * memory_region_iommu_attrs_to_index: return the IOMMU index to
->>> + * use for translations with the given memory transaction attributes.
->>> + *
->>> + * @iommu_mr: the memory region
->>> + * @attrs: the memory transaction attributes
->>> + */
->>> +int memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
->>> +                                       MemTxAttrs attrs);
->>> +
->>> +/**
->>> + * memory_region_iommu_num_indexes: return the total number of IOMMU
->>> + * indexes that this IOMMU supports.
->> is it IOMMU wide characteristics or per IOMMUMRRegion (SID)?
-> 
-> I generally in this API document have been treating "IOMMU" and
-> "IOMMURegion" as synonymous, since from the perspective of the API
-> we don't care whether there's a bigger underlying thing in common
-> between IOMMURegions.
-> 
-> thanks
-> -- PMM
-> 
+thanks
+-- PMM

@@ -1,86 +1,134 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id w40-v6sm28682866wrc.69.2018.05.22.03.56.42
+        by smtp.gmail.com with ESMTPSA id 5-v6sm3722091wre.41.2018.05.22.03.57.13
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 May 2018 03:56:43 -0700 (PDT)
+        Tue, 22 May 2018 03:57:13 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 81A403E01DB;
-	Tue, 22 May 2018 11:56:41 +0100 (BST)
-References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-7-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 094763E01DB;
+	Tue, 22 May 2018 11:57:12 +0100 (BST)
+References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-8-peter.maydell@linaro.org>
 User-agent: mu4e 1.1.0; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 06/27] Make flatview_extend_translation() take a MemTxAttrs argument
-In-reply-to: <20180521140402.23318-7-peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 11:56:41 +0100
-Message-ID: <87h8n0uffa.fsf@linaro.org>
+Subject: Re: [PATCH 07/27] Make memory_region_access_valid() take a MemTxAttrs argument
+In-reply-to: <20180521140402.23318-8-peter.maydell@linaro.org>
+Date: Tue, 22 May 2018 11:57:12 +0100
+Message-ID: <87fu2kufef.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: MbdX6ti3nEa1
+X-TUID: O25nK6s4CYkh
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
 > As part of plumbing MemTxAttrs down to the IOMMU translate method,
-> add MemTxAttrs as an argument to flatview_extend_translation().
+> add MemTxAttrs as an argument to memory_region_access_valid().
 > Its callers either have an attrs value to hand, or don't care
 > and can use MEMTXATTRS_UNSPECIFIED.
+>
+> The callsite in flatview_access_valid() is part of a recursive
+> loop flatview_access_valid() -> memory_region_access_valid() ->
+>  subpage_accepts() -> flatview_access_valid(); we make it pass
+> MEMTXATTRS_UNSPECIFIED for now, until the next several commits
+> have plumbed an attrs parameter through the rest of the loop
+> and we can add an attrs parameter to flatview_access_valid().
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  exec.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
+>  include/exec/memory-internal.h | 3 ++-
+>  exec.c                         | 4 +++-
+>  hw/s390x/s390-pci-inst.c       | 3 ++-
+>  memory.c                       | 7 ++++---
+>  4 files changed, 11 insertions(+), 6 deletions(-)
 >
+> diff --git a/include/exec/memory-internal.h b/include/exec/memory-interna=
+l.h
+> index 58399b9318..56c25c0ef7 100644
+> --- a/include/exec/memory-internal.h
+> +++ b/include/exec/memory-internal.h
+> @@ -37,7 +37,8 @@ void flatview_unref(FlatView *view);
+>  extern const MemoryRegionOps unassigned_mem_ops;
+>
+>  bool memory_region_access_valid(MemoryRegion *mr, hwaddr addr,
+> -                                unsigned size, bool is_write);
+> +                                unsigned size, bool is_write,
+> +                                MemTxAttrs attrs);
+>
+>  void flatview_add_to_dispatch(FlatView *fv, MemoryRegionSection *section=
+);
+>  AddressSpaceDispatch *address_space_dispatch_new(FlatView *fv);
 > diff --git a/exec.c b/exec.c
-> index 22af4e8cb9..718b33921b 100644
+> index 718b33921b..6cf97b5d28 100644
 > --- a/exec.c
 > +++ b/exec.c
-> @@ -3495,9 +3495,9 @@ bool address_space_access_valid(AddressSpace *as, h=
-waddr addr,
+> @@ -3468,7 +3468,9 @@ static bool flatview_access_valid(FlatView *fv, hwa=
+ddr addr, int len,
+>          mr =3D flatview_translate(fv, addr, &xlat, &l, is_write);
+>          if (!memory_access_is_direct(mr, is_write)) {
+>              l =3D memory_access_size(mr, l, addr);
+> -            if (!memory_region_access_valid(mr, xlat, l, is_write)) {
+> +            /* When our callers all have attrs we'll pass them through h=
+ere */
+> +            if (!memory_region_access_valid(mr, xlat, l, is_write,
+> +                                            MEMTXATTRS_UNSPECIFIED)) {
+>                  return false;
+>              }
+>          }
+> diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+> index 02a815fd31..d1a5f79678 100644
+> --- a/hw/s390x/s390-pci-inst.c
+> +++ b/hw/s390x/s390-pci-inst.c
+> @@ -762,7 +762,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, uin=
+t8_t r3, uint64_t gaddr,
+>      mr =3D s390_get_subregion(mr, offset, len);
+>      offset -=3D mr->addr;
 >
->  static hwaddr
->  flatview_extend_translation(FlatView *fv, hwaddr addr,
-> -                                 hwaddr target_len,
-> -                                 MemoryRegion *mr, hwaddr base, hwaddr l=
-en,
-> -                                 bool is_write)
-> +                            hwaddr target_len,
-> +                            MemoryRegion *mr, hwaddr base, hwaddr len,
-> +                            bool is_write, MemTxAttrs attrs)
+> -    if (!memory_region_access_valid(mr, offset, len, true)) {
+> +    if (!memory_region_access_valid(mr, offset, len, true,
+> +                                    MEMTXATTRS_UNSPECIFIED)) {
+>          s390_program_interrupt(env, PGM_OPERAND, 6, ra);
+>          return 0;
+>      }
+> diff --git a/memory.c b/memory.c
+> index fc7f9b782b..279f7c9b4a 100644
+> --- a/memory.c
+> +++ b/memory.c
+> @@ -1347,7 +1347,8 @@ static const MemoryRegionOps ram_device_mem_ops =3D=
+ {
+>  bool memory_region_access_valid(MemoryRegion *mr,
+>                                  hwaddr addr,
+>                                  unsigned size,
+> -                                bool is_write)
+> +                                bool is_write,
+> +                                MemTxAttrs attrs)
 >  {
->      hwaddr done =3D 0;
->      hwaddr xlat;
-> @@ -3574,7 +3574,7 @@ void *address_space_map(AddressSpace *as,
+>      int access_size_min, access_size_max;
+>      int access_size, i;
+> @@ -1416,7 +1417,7 @@ MemTxResult memory_region_dispatch_read(MemoryRegio=
+n *mr,
+>  {
+>      MemTxResult r;
 >
->      memory_region_ref(mr);
->      *plen =3D flatview_extend_translation(fv, addr, len, mr, xlat,
-> -                                             l, is_write);
-> +                                        l, is_write, attrs);
->      ptr =3D qemu_ram_ptr_length(mr->ram_block, xlat, plen, true);
->      rcu_read_unlock();
->
-> @@ -3659,8 +3659,13 @@ int64_t address_space_cache_init(MemoryRegionCache=
- *cache,
->      mr =3D cache->mrs.mr;
->      memory_region_ref(mr);
->      if (memory_access_is_direct(mr, is_write)) {
-> +        /* We don't care about the memory attributes here as we're only
-> +         * doing this if we found actual RAM, which behaves the same
-> +         * regardless of attributes; so UNSPECIFIED is fine.
-> +         */
->          l =3D flatview_extend_translation(cache->fv, addr, len, mr,
-> -                                        cache->xlat, l, is_write);
-> +                                        cache->xlat, l, is_write,
-> +                                        MEMTXATTRS_UNSPECIFIED);
->          cache->ptr =3D qemu_ram_ptr_length(mr->ram_block, cache->xlat, &=
-l, true);
->      } else {
->          cache->ptr =3D NULL;
+> -    if (!memory_region_access_valid(mr, addr, size, false)) {
+> +    if (!memory_region_access_valid(mr, addr, size, false, attrs)) {
+>          *pval =3D unassigned_mem_read(mr, addr, size);
+>          return MEMTX_DECODE_ERROR;
+>      }
+> @@ -1458,7 +1459,7 @@ MemTxResult memory_region_dispatch_write(MemoryRegi=
+on *mr,
+>                                           unsigned size,
+>                                           MemTxAttrs attrs)
+>  {
+> -    if (!memory_region_access_valid(mr, addr, size, true)) {
+> +    if (!memory_region_access_valid(mr, addr, size, true, attrs)) {
+>          unassigned_mem_write(mr, addr, data, size);
+>          return MEMTX_DECODE_ERROR;
+>      }
 
 
 --

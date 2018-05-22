@@ -1,83 +1,100 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1865842wme;
-        Tue, 22 May 2018 12:07:03 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpeCvCXKNuNdli03ElkP8zcExeXjWHuKE+2yWTI1s6yF8mfqhzjyt2OwymyHOnZRSxo01Yt
-X-Received: by 2002:aed:2374:: with SMTP id i49-v6mr23830370qtc.412.1527016023716;
-        Tue, 22 May 2018 12:07:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527016023; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1884298wme;
+        Tue, 22 May 2018 12:26:42 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZrA7sHyYPSXhi5ddONt8Qr/IkcJeaIR/+mEAsxMVgsx9MM0wmMrblKwd59jYr/kCWnilM3u
+X-Received: by 2002:aed:3536:: with SMTP id a51-v6mr23808469qte.96.1527017202077;
+        Tue, 22 May 2018 12:26:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527017202; cv=none;
         d=google.com; s=arc-20160816;
-        b=U4GvuoUC3h7wc9jClZJtjytcvHj8NLZR4wYDeWEHYTLrCo5W5R0k17m//g4LfM7A3j
-         wqvbopiW2NHvExWK0eUg0V+kBYyWVMrt/kNvU/qW7r2RmG284aqVytQr4/oxeWTOp2lC
-         XplUFGEnpr0D+yqsoXvTLeoYIvXZfKe2cunhylTLj4QBtV4dmKRRHClv0lJZlD6jdGuL
-         cUI4UwreKDmL/QNlWnJuZJbDL9QjiO23GqtQnUaSx6mQJTBSRgGvjPXjA2lLZsVEO5FR
-         3XvJB8vKk9SusauLU0ckq83LpYwIbDRSdPwbeNEKXETVPL4JkWCBC+eD8ygLCJiVJS5h
-         9a3A==
+        b=1CnbXCDqBadfL7DGYQUESUKiiQvHTToW3BtW+ad13j6vd6HEofQDqRYLRIWDds50Wg
+         j+sUgwKL8XS++ioIhT5R/Do7O5CyswSeuE4nPoFTv5gVG0SPRpQ+Qrw+Jf8gAGJf4Zvt
+         L32DqFVnIOKpgsqAvU/rOEHHxruhWIvMWdPjr0PDiHAH4TeZ45u18hqaTN/VCZi5Kfvz
+         6zQGUKNWiJuakAL/asXbw4Py5Hb1SrHQNBwznx3V96h8r9Xh/kRAuumcoYeGDhMDt1Cv
+         1cKwG6ehaBIHdnTgdSDTOEdHq2NWzD75CkLmAOzH8su/MO3WQD4MmAXtL4H6qtn4mQYm
+         mKoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=K3Dabk15YfXfGR8FL/8BAwUFZIgVJIKyW+AizoVwArw=;
-        b=HPoNvL2IZzt41UQ3FESPbvMoC0YTzn8DI4YqmJZtt90eOVDNZfkUtk0haYKG7FZOTa
-         favBOndbMUhzpCXFWqjGYjegcXMFIVl6BFEEFAMAOzag9im2thUM3ee/gEBaqZJrmwwS
-         eUJvAmq7vKscgXuQ7UNCxKZmLEHjPdJhdTNhT5QuvwxCuFAIh8Lzrj6J5tKNYJw2a89z
-         aKmoA8fgeADbhTxaM8enjX92Jj8PXQMQCPboRDUfqc7VhrOkmkYTe4YYJZ+HWhwQovj3
-         bR+L/poz4ntHM3YcGuWkv5XDYaELRvf0wNfWwZiWgdUrsApqSuWjRGhifSMq0W6BBCQe
-         4FOA==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=p9tzXXdUlzg7WInvqLDVl2M0bz39WuPD+utdAo3YPLU=;
+        b=VIDXvaznoK93uc05ouityAlgcaLxLU/ycKVE3nTh4+yDLtGvXdbUXV/HsBy2NL+duX
+         nyDdIKiiAmT2E584l1kz+Zb/ppo3GlDBVm3VExUWZjFAGveYkfXL9KVz6ezFSP4dwYkk
+         BXS3VQFD8kR31pSY8zYICLuyO5v+fJcprD5ccBBLviDyJ3RcYlKFIESep5DJrGWzMXo+
+         x27zutUt9TreGCRpgAsDDTNRVxR5vhxbNlE3zw0exYQ4JpxCz0sUYWqh4srXNDQkkcRy
+         hSletvy77zkPPQVqaRFkPaHhuLy8zhjpnFqzVRubn+XIPV0bLolE8Z/Ob7gDWiJs1JF+
+         Qhww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=DjyDJwo8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a94-v6si2042600qkh.179.2018.05.22.12.07.03
+        by mx.google.com with ESMTPS id s2-v6si1324218qti.304.2018.05.22.12.26.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 May 2018 12:07:03 -0700 (PDT)
+        Tue, 22 May 2018 12:26:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57435 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=DjyDJwo8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57524 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLCch-00061H-6W
-	for alex.bennee@linaro.org; Tue, 22 May 2018 15:07:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54788)
+	id 1fLCvh-0004ih-Kz
+	for alex.bennee@linaro.org; Tue, 22 May 2018 15:26:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fLCcX-000610-Ad
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:06:54 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fLCvW-0004iK-Mq
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:26:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fLCcU-0005ru-4H
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:06:53 -0400
-Received: from 20.mo4.mail-out.ovh.net ([46.105.33.73]:47080)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fLCcT-0005q6-U0
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:06:50 -0400
-Received: from player715.ha.ovh.net (unknown [10.109.108.12])
-	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 3EBDE1755B3
-	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 21:06:41 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
-	[86.201.141.10]) (Authenticated sender: postmaster@kaod.org)
-	by player715.ha.ovh.net (Postfix) with ESMTPSA id B05DC1C00B5;
-	Tue, 22 May 2018 21:06:37 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180522173713.26282-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
-Date: Tue, 22 May 2018 21:06:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <peter.maydell@linaro.org>) id 1fLCvV-0006R6-R9
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:26:30 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:38784)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fLCvV-0006Qn-MI
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:26:29 -0400
+Received: by mail-ot0-x244.google.com with SMTP id n3-v6so22337061ota.5
+	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 12:26:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=p9tzXXdUlzg7WInvqLDVl2M0bz39WuPD+utdAo3YPLU=;
+	b=DjyDJwo8lrl+X+X2aCGKASc/8V3i4Oip9/lRC68i2dsfBDKzumN7Mwt0Wk2IZPQbK2
+	x3cA0CuychweJvVS7zq6Qlbp6/qop44/kUXzKl6+rNIxIgKNoT6f3rZYmEy13QNBQUzC
+	8YU6P4OHWylu50/IFbq0rndwdkOWTbE0w/x+8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=p9tzXXdUlzg7WInvqLDVl2M0bz39WuPD+utdAo3YPLU=;
+	b=hMQZuDV6z64uH3tkRIGJx98RKyei7NT8vWh1xKc3lKr3DAJvmFvZftpv/w2hZt55Ga
+	V1nEtIIVkjVz7ANiqiEM51gMd8Va3lemIUh5+DKxLdwZf9+NisVg3m/Z9DmhDyw07ZrQ
+	YEjJ6o25fCtMOI9piIJdAhsuSCD/W/sT6DKO1zLf9CcFgPk600GhvelHZ7xE/mv2INhn
+	+bUuY4JhXWCAH/5XKZ4G0CExM7B845TolFqTAeILQHtDFA/JiBNnZliqJuSxuDZbyRsg
+	nJ7bU5je7nchfPxPD5Lo1VYhh2iD17r3MVMk6rhuaPfFqvH3P9mdbXUon/5u5ezkKtrK
+	aVtw==
+X-Gm-Message-State: ALKqPwfkrXGqqvlGkQvC+SCYL10WJ4WbxnF8g/6rJObs69WjbLM2zRe7
+	hS1+jOqvgFq7Tds2LLoPHzs6cLbSjiat1XXw30TSIg==
+X-Received: by 2002:a9d:16d0:: with SMTP id
+	s16-v6mr17783101ots.294.1527017189010; 
+	Tue, 22 May 2018 12:26:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180522173713.26282-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 7656119367972915971
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrgedugddufedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 12:26:08
+	-0700 (PDT)
+In-Reply-To: <d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
+References: <20180522173713.26282-1-peter.maydell@linaro.org>
+	<d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 May 2018 20:26:08 +0100
+Message-ID: <CAFEAcA_3P-JEsiz_3ZdVhG2kcQ+Y3yOAufLQtHknuzufRosANQ@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.33.73
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
 Subject: Re: [Qemu-arm] [PATCH] Correct CPACR reset value for v7 cores
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -90,83 +107,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z2nt2R27isun
+X-TUID: w9KDhRpJU3Gl
 
-On 05/22/2018 07:37 PM, Peter Maydell wrote:
-> In commit f0aff255700 we made cpacr_write() enforce that some CPACR
-> bits are RAZ/WI and some are RAO/WI for ARMv7 cores. Unfortunately
-> we forgot to also update the register's reset value. The effect
-> was that (a) a guest that read CPACR on reset would not see ones in
-> the RAO bits, and (b) if you did a migration before the guest did
-> a write to the CPACR then the migration would fail because the
-> destination would enforce the RAO bits and then complain that they
-> didn't match the zero value from the source.
->=20
-> Implement reset for the CPACR using a custom reset function
-> that just calls cpacr_write(), to avoid having to duplicate
-> the logic for which bits are RAO.
->=20
-> This bug would affect migration for TCG CPUs which are ARMv7
-> with VFP but without one of Neon or VFPv3.
->=20
-> Reported-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 22 May 2018 at 20:06, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> On 05/22/2018 07:37 PM, Peter Maydell wrote:
+>> This is sufficient that a save-and-reload while the romulus-bmc
+>> machine is in the bootloader will work. On the other hand if
+>> I do a save-and-reload after the kernel has started booting
+>> then we get the classic "guest hang after reload", so some
+>> state is still not being transferred somewhere (probably in
+>> a device in the machine model?)
+>
+> I see the problem. Bizarre.
 
-Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Usually it means that something in the path from timer device
+through to the CPU has failed to save-and-reload the state
+that it needs to, so that when the timer fires post-reload
+it doesn't actually cause a CPU interrupt. You can probably
+debug by putting a breakpoint on whatever looks like a likely
+timer device's 'set the irq line' function and stepping
+through to figure out what's happening.
 
-> ---
-> This is sufficient that a save-and-reload while the romulus-bmc
-> machine is in the bootloader will work. On the other hand if
-> I do a save-and-reload after the kernel has started booting
-> then we get the classic "guest hang after reload", so some
-> state is still not being transferred somewhere (probably in
-> a device in the machine model?)
+(You're not using trustzone, are you? I know of a bug with
+migration of cpus with TZ enabled which I'm probably going to
+look at later this week)
 
-I see the problem. Bizarre.
-
-Thanks,
-
-C. =20
-
-> ---
->  target/arm/helper.c | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
->=20
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index c0f739972e..6023bf6046 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -863,6 +863,14 @@ static void cpacr_write(CPUARMState *env, const AR=
-MCPRegInfo *ri,
->      env->cp15.cpacr_el1 =3D value;
->  }
-> =20
-> +static void cpacr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-> +{
-> +    /* Call cpacr_write() so that we reset with the correct RAO bits s=
-et
-> +     * for our CPU features.
-> +     */
-> +    cpacr_write(env, ri, 0);
-> +}
-> +
->  static CPAccessResult cpacr_access(CPUARMState *env, const ARMCPRegInf=
-o *ri,
->                                     bool isread)
->  {
-> @@ -920,7 +928,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] =3D {
->      { .name =3D "CPACR", .state =3D ARM_CP_STATE_BOTH, .opc0 =3D 3,
->        .crn =3D 1, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 2, .accessfn =3D =
-cpacr_access,
->        .access =3D PL1_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.=
-cpacr_el1),
-> -      .resetvalue =3D 0, .writefn =3D cpacr_write },
-> +      .resetfn =3D cpacr_reset, .writefn =3D cpacr_write },
->      REGINFO_SENTINEL
->  };
-> =20
->=20
-
+thanks
+-- PMM

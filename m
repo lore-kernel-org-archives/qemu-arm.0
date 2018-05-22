@@ -1,152 +1,135 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp651495wre;
-        Wed, 23 May 2018 04:55:02 -0700 (PDT)
-X-Received: by 2002:aca:4a4e:: with SMTP id x75-v6mr1343883oia.211.1527076502567;
-        Wed, 23 May 2018 04:55:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527076502; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1710549wme;
+        Tue, 22 May 2018 09:33:03 -0700 (PDT)
+X-Received: by 2002:a17:902:bd0a:: with SMTP id p10-v6mr25681340pls.69.1527006783140;
+        Tue, 22 May 2018 09:33:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527006783; cv=none;
         d=google.com; s=arc-20160816;
-        b=rwTF7QqvTCpOHLLq3ckt1JywCucZcIVili5Qrp837Ns4iV10uZzZZ3wMm03vwEYndj
-         zGyMSG4uqoX2z1Nq7waJmbXgKhQAeIBKDmfkqLD27SAe2RqmVpFwBhQHwzT7tLqLGopR
-         c3GmGU7TL/koLsDu4yuWYt8OZWCZB1gB8+AKPoZl/1qO7M17K33+oehq0Dp7zfs/8jkU
-         KNOt5JtavmXGNfl7zJqbZB8lhTp1Mpcdptxyf1eCMj3/W4/69FjEo/pGpEhgg+E6aIRA
-         uUDMleIpzmAz6AGG1xkpLea2vkYxE1n12458IwV4qbIvr80WxoY6CEUgGHOICg6kA6hR
-         J3dQ==
+        b=tbgq9G/0prGnYAFLdGaYWJyasro+VnmzNJmMa2CwhWdA9JLn7FaGZ8LtJmitjxJGzX
+         S6ndG8XKljmyT/FmDpPpiqUs4abQmaYZNNY1bclY5AcCM03GrYXSriwKidYHWXKo+qGZ
+         TNU4HmZQLHCZmIceHswQo80jT0z9eadkKO2Cm3s6+Rs0AvQaqOUccz2jS+ryxt+ghFzV
+         xdURMRle4UT7fLonwX63HjGrXtBWqTM2+IIShtoJDj5YEld952YeycLJVpVt85AdTTe6
+         NzFX+oL6OVF/mNKFZ9Sc2zOrDYN/Ldjy4BT/tZV2K6+tT/53DmVWWJnTFvFm+wnZhO1G
+         RBGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=/7cKuQ+Z8+ixzlgV6CD1xCbhzy7+ZwDbJTJo0fkSEcA=;
-        b=fOPOkfJYRrIg5i/qmaxq0LXtR3xaojHmE/QvNO0ssjHq8L9CSIg0O0dq3WLWF5F5kd
-         T0QdCDVnXHCRYM+SaDQxgB0WwoEdUqWmDm/WH9wtbk47HY9SjyYjdzckuMfvKTF+mmhO
-         PPXay2FDxQfoBWJa6nGJ4U8F1k98e8NlMGoWQLeJC3CjYCpgKUcQjrjNWGXgaeQTtL6A
-         zoHRy8QxJOxqIcOZc7ICNW7qTvUC6ujUaOfldek7rucMF2JXOivsHiUHxWel8q31Dz1X
-         guE8S3b5IXOQe0smLGcy+JMaTOuCfLwn/XWTgfkig7HJpvYPZmM5/bX9uUXDPunqKxqj
-         L9iA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
+         :subject:sender:dkim-signature:arc-authentication-results;
+        bh=ecTDH7igiwayc/9sv1n3mFzd+4hyV2eeeAdpBBKMbag=;
+        b=O2Gc4sxu7FTq4Kfvh7QnMx4ALl26w/xcA81nD7m+S8gf136trcs4tMfiSxps/JSPVj
+         7Zv2axIpq+YmBSJ0q83FimWklfPbXkcQRmCs8owTgXNVEIoekt3MsRhllNRe584WAv7H
+         f7/Ap5vrHqrs4tq6xtHU3cHgUNdW81zznZc46oUqtOg84vDsdup1hl7FQG+TWvox0yQi
+         72N4h6EKkjf9XNUjbpgisZ6rERIHhzWX+hYcjG6Jw2/sORf929MMoMa+/mt9zaUqLdJE
+         fu2BVwQJUbFtexOCAx2Hplzukdh7Be7D5RFWnLIjyVFzt0hNR+FgR7vgRP/YLphq8p/x
+         jbpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CHrG/jGL;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KSKQWJGX;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
+Return-Path: <rth7680@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id e17-v6sor8994926otj.306.2018.05.23.04.55.02
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id k185-v6sor1248647pgc.140.2018.05.22.09.33.02
         (Google Transport Security);
-        Wed, 23 May 2018 04:55:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Tue, 22 May 2018 09:33:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CHrG/jGL;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KSKQWJGX;
+       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=/7cKuQ+Z8+ixzlgV6CD1xCbhzy7+ZwDbJTJo0fkSEcA=;
-        b=CHrG/jGLmrHkjQJe2Vwxp5A9uVVFtb6it+5KQJW1fB/RhYoSRneZ/0NeCrKvhjjS2R
-         6d9MWDtvzItvMR/P25jkHQbbL3nr/NCXAhaJqZnXF9Ls9GFRCjuxh/UCp1sAf3Ct51/G
-         U54xjjkgOofzdviWipcYI3Z3s93CO2auK5S1E=
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=ecTDH7igiwayc/9sv1n3mFzd+4hyV2eeeAdpBBKMbag=;
+        b=KSKQWJGXiGFdl9oYYe4ybJ/BbArS9atNSAof+p6izxz8jd5ybtFEIOwgIb2LXkq9DZ
+         L4GE7ge/QmShaNzm6zDJlTefIF0UmCF20nzTvDVsq6QCN5JM+VyaojSWsJqO4bWCsLaF
+         dDZCs8PiuCZ+YG/VH22nqGedyljDfBEmS7dYfMyk9IOx+8yRTmMNppCC5uwi5vtDK0rY
+         069BsTNfn6mbyKY22XQ665E3GN6InYRRhdCm83aeusrwjiy6qeVbU4AlRRQeRMWdn5bo
+         qPurLXBYqIagIuciWFD1abg+81Ejkh/TjgQVM75U5K3+GhXDvZq+9PzerKq31eWkrQkx
+         l7JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=/7cKuQ+Z8+ixzlgV6CD1xCbhzy7+ZwDbJTJo0fkSEcA=;
-        b=NpCfdKuppVMGoLkYkGL1BiVJvrQlb+QDeGYw1ptBuzHZHhnSlVdOZ5mK1Mx1r1ue8p
-         y7y2u6xOnYQMTfZZDVNrnG/aiFU/mtmC38kMKtEIDTYqD06cuszo3Kb3SrlW6Q4IaIW/
-         afpq/VozdfWwMVIqfK5t0yrF5D+BmfX02bXFiIz6icDyY77Qvj+7D2cJ7SM/Zl01o8sw
-         7xwTZORxfk+g8ILpabOQMjOoVEev9iKDSKzPcMQJrll0O1+SzDo7Y9n0oura7WOh7R9d
-         74buP9CQoR+AKGSNeWySl7QvSQcDiGiWkaNrOV1ExwppfhSYjS41CQLXO3kw/s4wM7fY
-         avdA==
-X-Gm-Message-State: ALKqPwfEJ4rcyPJ+OFtS58gtpIMmCUaccdxv5HU+CC2DfDJhpiMoxkDl
-	XuTLlbqWXlgoJk+A8EyU7jL0Tx69lK/huuAXklf7tRFnCHA=
-X-Google-Smtp-Source: AB8JxZqesVoKn+XWwDppFPiCg/OD1vV209FFMvXtRjS7WBLYQFx3wFI6R+DpfzR0CLT7yRCSXB+vrQ49X86dK0/+Qpg=
-X-Received: by 2002:a9d:429c:: with SMTP id r28-v6mr1436900ote.126.1527076502107;
- Wed, 23 May 2018 04:55:02 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Wed, 23 May 2018 04:54:41
- -0700 (PDT)
-In-Reply-To: <87y3gatznc.fsf@linaro.org>
+        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=ecTDH7igiwayc/9sv1n3mFzd+4hyV2eeeAdpBBKMbag=;
+        b=lcQvt+QMs2gyg+qTvcP3B6doKOLl/7QIalydLWGfeg1VKRzqF5OPrL90im4QF+ua2f
+         9s67WJXoVAVSe0y/hEWE8g7FdT+NGRbQEPaLd8A0CNAY5o3UjV7wcStBXLVTvRHBteBO
+         MO+8DQf5A2OGhXwjGGRuXAQxSturCjML+zWvZ+R51ZDbHg2iEkCXmsD7W+3pggxvgrTp
+         JD5ugVcqSBaMO0xnXHiBJFQdF3xoi4pZNhYwodKeXh+CO9Vmpl2oXoltoc65W3Jo8k0M
+         l+U6OZcM5GbjrLLMpd04G/Us7LBkN0YHp6vkXrte7TiTTZU9hn7J0jGw7vBf1A9yJaBU
+         1qZQ==
+X-Gm-Message-State: ALKqPwdugzqzhl+XjknB/rDh8gWBp/ZLVlvJL5+GEplTW2zTh0Tp97dV
+	CM8czAcoFRWexS7Dezj6RVuLR7mY
+X-Google-Smtp-Source: AB8JxZpZ5HpPgALejCnGxtmdBhIFE7zUGFtOTANGKqU/WUzsOBYoZrggHemysn4JEbwWXgYpaDu95g==
+X-Received: by 2002:a63:734f:: with SMTP id d15-v6mr8643105pgn.149.1527006782363;
+        Tue, 22 May 2018 09:33:02 -0700 (PDT)
+Return-Path: <rth7680@gmail.com>
+Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
+        by smtp.googlemail.com with ESMTPSA id 23-v6sm38498523pfs.147.2018.05.22.09.33.01
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 May 2018 09:33:01 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+Subject: Re: [PATCH 09/27] Make flatview_access_valid() take a MemTxAttrs
+ argument
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-21-peter.maydell@linaro.org> <87y3gatznc.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 23 May 2018 12:54:41 +0100
-Message-ID: <CAFEAcA82=CU=Pksgs5YO9_Vw5jqFgQqxnuFN+KZ1dw-ao8D7Xw@mail.gmail.com>
-Subject: Re: [PATCH 20/27] hw/misc/tz-mpc.c: Implement correct blocked-access behaviour
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 0uYs6uNzBl7Z
+ <20180521140402.23318-10-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+ xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+ n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+ rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+ Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+ n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+ AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+ cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+ Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+ eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+ LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+ Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
+ 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+ 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+ I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+ VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+ +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
+ AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+ Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+ prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+ /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+ jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+ VcROBqvtH3ecaIL9iw==
+Message-ID: <d022028c-624d-ed88-9ba6-d0fe88d8adcf@twiddle.net>
+Date: Tue, 22 May 2018 09:33:00 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.7.0
+MIME-Version: 1.0
+In-Reply-To: <20180521140402.23318-10-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: AzLVF/CJAjSu
 
-On 23 May 2018 at 11:49, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> The MPC is guest-configurable for whether blocked accesses:
->>  * should be RAZ/WI or cause a bus error
->>  * should generate an interrupt or not
->>
->> Implement this behaviour in the blocked-access handlers.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  hw/misc/tz-mpc.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++--
->>  1 file changed, 48 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
->> index 93453cbef2..39a72563b7 100644
->> --- a/hw/misc/tz-mpc.c
->> +++ b/hw/misc/tz-mpc.c
->> @@ -43,6 +43,9 @@ REG32(INT_EN, 0x28)
->>      FIELD(INT_EN, IRQ, 0, 1)
->>  REG32(INT_INFO1, 0x2c)
->>  REG32(INT_INFO2, 0x30)
->> +    FIELD(INT_INFO2, HMASTER, 0, 16)
->> +    FIELD(INT_INFO2, HNONSEC, 16, 1)
->> +    FIELD(INT_INFO2, CFG_NS, 17, 1)
->>  REG32(INT_SET, 0x34)
->>      FIELD(INT_SET, IRQ, 0, 1)
->>  REG32(PIDR4, 0xfd0)
->> @@ -266,6 +269,45 @@ static const MemoryRegionOps tz_mpc_reg_ops =3D {
->>      .impl.max_access_size =3D 4,
->>  };
->>
->> +static inline bool tz_mpc_cfg_ns(TZMPC *s, hwaddr addr)
->> +{
->> +    /* Return the cfg_ns bit from the LUT for the specified address */
->> +    hwaddr blknum =3D addr / s->blocksize;
->> +    hwaddr blkword =3D blknum / 32;
->> +    uint32_t blkbit =3D 1U << (blknum % 32);
->> +
->> +    /* This would imply the address was larger than the size we
->> +     * defined this memory region to be, so it can't happen.
->> +     */
->> +    assert(blkword < s->blk_max);
->> +    return s->blk_lut[blkword] & blkbit;
->> +}
->> +
->> +static MemTxResult tz_mpc_handle_block(TZMPC *s, hwaddr addr, MemTxAttr=
-s attrs)
->> +{
->> +    /* Handle a blocked transaction: raise IRQ, capture info, etc */
->> +    if (!s->int_stat) {
->> +        /* First blocked transfer: capture information into INT_INFO1 a=
-nd
->> +         * INT_INFO2. Subsequent transfers are still blocked but don't
->> +         * capture information until the guest clears the interrupt.
->> +         */
->> +
->> +        s->int_info1 =3D addr;
->> +        s->int_info2 =3D 0;
->> +        s->int_info2 =3D FIELD_DP32(s->int_info2, INT_INFO2, HMASTER,
->> +                                  attrs.requester_id & 0xffff);
->
-> Does this actually need masking given the source is a 16 bit wide bitfiel=
-d?
+On 05/21/2018 07:03 AM, Peter Maydell wrote:
+> As part of plumbing MemTxAttrs down to the IOMMU translate method,
+> add MemTxAttrs as an argument to flatview_access_valid().
+> Its callers now all have an attrs value to hand, so we can
+> correct our earlier temporary use of MEMTXATTRS_UNSPECIFIED.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
 
-That might change in future (eg Eric was talking about wanting
-to put SMMUv3 substream IDs in transaction attributes, and those
-are 20 bits wide, so we might want to widen requester_id to fit them).
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+>              /* When our callers all have attrs we'll pass them through here */
+> -            if (!memory_region_access_valid(mr, xlat, l, is_write,
+> -                                            MEMTXATTRS_UNSPECIFIED)) {
+> +            if (!memory_region_access_valid(mr, xlat, l, is_write, attrs)) {
+
+Kill the temporary comment too.
+
+
+r~

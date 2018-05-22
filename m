@@ -1,73 +1,84 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5462759wre;
-        Wed, 30 May 2018 20:48:44 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJHhr3nmQ4GmwPCtkZT5P6oaizThhWpMh55hs1gZzgUu6dUiY04uKE69gc3IEF2byvXtMPX
-X-Received: by 2002:a0c:b99f:: with SMTP id v31-v6mr5091222qvf.159.1527738524602;
-        Wed, 30 May 2018 20:48:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527738524; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1865842wme;
+        Tue, 22 May 2018 12:07:03 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpeCvCXKNuNdli03ElkP8zcExeXjWHuKE+2yWTI1s6yF8mfqhzjyt2OwymyHOnZRSxo01Yt
+X-Received: by 2002:aed:2374:: with SMTP id i49-v6mr23830370qtc.412.1527016023716;
+        Tue, 22 May 2018 12:07:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527016023; cv=none;
         d=google.com; s=arc-20160816;
-        b=gDBeKeZcwG8mlKFOKgvhF3/WIas9EafnR96LJ4oCjdamOqVkq3kxG6zT/MbWEBEDyW
-         jF2LzQ1NQXosb73yvJlra5hN1dSB3cMwIGY92346j/enyt8boHlS4UjVpzs2bPkDEAaZ
-         r7jReZMVzI5pJo8XQTKbfAyhBUctOVWG/c4XisTmUG45lP6fB2SbS/hI+G/0iij+4MFQ
-         AvqZ0JRcI01hb9scv3bLC0JRVxns/KKGWOUtHY+x86ucNpITj/GBRi7jnNCjU81ZsIjb
-         9R9w3RdRgW1bcuEr53oMEdKOQNfwL4UM8QI4WGZ82/ePR1tZdXUxtMd+u6MRDaXGa28i
-         Ed0Q==
+        b=U4GvuoUC3h7wc9jClZJtjytcvHj8NLZR4wYDeWEHYTLrCo5W5R0k17m//g4LfM7A3j
+         wqvbopiW2NHvExWK0eUg0V+kBYyWVMrt/kNvU/qW7r2RmG284aqVytQr4/oxeWTOp2lC
+         XplUFGEnpr0D+yqsoXvTLeoYIvXZfKe2cunhylTLj4QBtV4dmKRRHClv0lJZlD6jdGuL
+         cUI4UwreKDmL/QNlWnJuZJbDL9QjiO23GqtQnUaSx6mQJTBSRgGvjPXjA2lLZsVEO5FR
+         3XvJB8vKk9SusauLU0ckq83LpYwIbDRSdPwbeNEKXETVPL4JkWCBC+eD8ygLCJiVJS5h
+         9a3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:to:from:arc-authentication-results;
-        bh=xJqwZ9uihxNgAm5/W3K49JL4ecLXCZb9C4CKaO4LGlw=;
-        b=bY6ZyjLlOV0uzeqSit2NAkNc5kRWZXKtziIlVTq1jQnb/blgQt2clKH+IPV65xfvR5
-         b8MPUHreYxO/+tHd3hOSIUAp/xnNg1ksdEneBibFJwJ+yqRKvWcIDQzQC2HsON521gUE
-         Z+p09zrtQ6v1Vz1yOp8S9viCW7DB83a+2QJJx2CI4e/5SqqbjFB0PfFQbaEnLmjbsX2U
-         uTJtNG3jph87jRmxJWoapERq0q2RA0M+yJFy2utoGH9DQJOOC/EQznADqEHbEScUWOJX
-         EW1qoU+OaCeTh152B5VIcki1be76asx4cUhplIbcFNkebAkdeNilvvK3e+3ycPJ1zSqM
-         sLbA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=K3Dabk15YfXfGR8FL/8BAwUFZIgVJIKyW+AizoVwArw=;
+        b=HPoNvL2IZzt41UQ3FESPbvMoC0YTzn8DI4YqmJZtt90eOVDNZfkUtk0haYKG7FZOTa
+         favBOndbMUhzpCXFWqjGYjegcXMFIVl6BFEEFAMAOzag9im2thUM3ee/gEBaqZJrmwwS
+         eUJvAmq7vKscgXuQ7UNCxKZmLEHjPdJhdTNhT5QuvwxCuFAIh8Lzrj6J5tKNYJw2a89z
+         aKmoA8fgeADbhTxaM8enjX92Jj8PXQMQCPboRDUfqc7VhrOkmkYTe4YYJZ+HWhwQovj3
+         bR+L/poz4ntHM3YcGuWkv5XDYaELRvf0wNfWwZiWgdUrsApqSuWjRGhifSMq0W6BBCQe
+         4FOA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o8-v6si3492212qte.112.2018.05.30.20.48.44
+        by mx.google.com with ESMTPS id a94-v6si2042600qkh.179.2018.05.22.12.07.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 20:48:44 -0700 (PDT)
+        Tue, 22 May 2018 12:07:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:41850 helo=lists.gnu.org)
+Received: from localhost ([::1]:57435 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOEZw-0007Ac-4M
-	for alex.bennee@linaro.org; Wed, 30 May 2018 23:48:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56221)
+	id 1fLCch-00061H-6W
+	for alex.bennee@linaro.org; Tue, 22 May 2018 15:07:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54788)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1fOEZm-0007AT-S8
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 23:48:35 -0400
+	(envelope-from <clg@kaod.org>) id 1fLCcX-000610-Ad
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:06:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1fOEZh-0003Ux-V4
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 23:48:34 -0400
-Received: from [45.249.212.32] (port=36520 helo=huawei.com)
+	(envelope-from <clg@kaod.org>) id 1fLCcU-0005ru-4H
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:06:53 -0400
+Received: from 20.mo4.mail-out.ovh.net ([46.105.33.73]:47080)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1fOEZh-0003UO-L1; Wed, 30 May 2018 23:48:29 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
-	by Forcepoint Email with ESMTP id 056B4A68E66C8;
-	Thu, 31 May 2018 11:48:25 +0800 (CST)
-Received: from localhost.localdomain (10.143.28.90) by
-	DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server
-	id 14.3.382.0; Thu, 31 May 2018 11:48:20 +0800
-From: Dongjiu Geng <gengdongjiu@huawei.com>
-To: <peter.maydell@linaro.org>, <james.morse@arm.com>, <qemu-arm@nongnu.org>, 
-	<qemu-devel@nongnu.org>, <linuxarm@huawei.com>
-Date: Thu, 31 May 2018 19:53:47 +0800
-Message-ID: <1527767630-6479-1-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 1.9.1
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fLCcT-0005q6-U0
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:06:50 -0400
+Received: from player715.ha.ovh.net (unknown [10.109.108.12])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 3EBDE1755B3
+	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 21:06:41 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: postmaster@kaod.org)
+	by player715.ha.ovh.net (Postfix) with ESMTPSA id B05DC1C00B5;
+	Tue, 22 May 2018 21:06:37 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180522173713.26282-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
+Date: Tue, 22 May 2018 21:06:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.143.28.90]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [PATCH RESEND v1 0/3] add support for VCPU event states
+In-Reply-To: <20180522173713.26282-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 7656119367972915971
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrgedugddufedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.33.73
+Subject: Re: [Qemu-arm] [PATCH] Correct CPACR reset value for v7 cores
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,40 +90,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nzVpXOFo9IjT
+X-TUID: Z2nt2R27isun
 
-support for KVM_GET/SET_VCPU_EVENTS to get/set the SError exception
-state, and support the state migration.
+On 05/22/2018 07:37 PM, Peter Maydell wrote:
+> In commit f0aff255700 we made cpacr_write() enforce that some CPACR
+> bits are RAZ/WI and some are RAO/WI for ARMv7 cores. Unfortunately
+> we forgot to also update the register's reset value. The effect
+> was that (a) a guest that read CPACR on reset would not see ones in
+> the RAO bits, and (b) if you did a migration before the guest did
+> a write to the CPACR then the migration would fail because the
+> destination would enforce the RAO bits and then complain that they
+> didn't match the zero value from the source.
+>=20
+> Implement reset for the CPACR using a custom reset function
+> that just calls cpacr_write(), to avoid having to duplicate
+> the logic for which bits are RAO.
+>=20
+> This bug would affect migration for TCG CPUs which are ARMv7
+> with VFP but without one of Neon or VFPv3.
+>=20
+> Reported-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Dongjiu Geng (3):
-  linux-headers: update to v4.17-rc7
-  kvm: sync linux headers
-  target: arm: Add support for VCPU event states
+Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
- include/standard-headers/asm-x86/hyperv.h       |   1 -
- include/standard-headers/asm-x86/kvm_para.h     |   2 +-
- include/standard-headers/linux/ethtool.h        |  36 ++-
- include/standard-headers/linux/input.h          |   4 +-
- include/standard-headers/linux/pci_regs.h       |   7 +-
- include/standard-headers/linux/virtio_balloon.h |  15 +
- include/standard-headers/linux/virtio_gpu.h     |   1 -
- include/standard-headers/rdma/vmw_pvrdma-abi.h  |  49 ++--
- linux-headers/COPYING                           | 358 +-----------------------
- linux-headers/asm-arm/kvm.h                     |  15 +
- linux-headers/asm-arm64/kvm.h                   |  19 ++
- linux-headers/asm-x86/hyperv.h                  |   1 -
- linux-headers/asm-x86/kvm.h                     |  19 +-
- linux-headers/linux/kvm.h                       |  31 +-
- linux-headers/linux/vfio.h                      |  27 ++
- target/arm/cpu.h                                |   5 +
- target/arm/kvm64.c                              |  64 +++++
- target/arm/machine.c                            |   3 +
- 18 files changed, 268 insertions(+), 389 deletions(-)
- delete mode 100644 include/standard-headers/asm-x86/hyperv.h
- delete mode 100644 linux-headers/asm-x86/hyperv.h
+> ---
+> This is sufficient that a save-and-reload while the romulus-bmc
+> machine is in the bootloader will work. On the other hand if
+> I do a save-and-reload after the kernel has started booting
+> then we get the classic "guest hang after reload", so some
+> state is still not being transferred somewhere (probably in
+> a device in the machine model?)
 
--- 
-2.7.4
+I see the problem. Bizarre.
+
+Thanks,
+
+C. =20
+
+> ---
+>  target/arm/helper.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index c0f739972e..6023bf6046 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -863,6 +863,14 @@ static void cpacr_write(CPUARMState *env, const AR=
+MCPRegInfo *ri,
+>      env->cp15.cpacr_el1 =3D value;
+>  }
+> =20
+> +static void cpacr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+> +{
+> +    /* Call cpacr_write() so that we reset with the correct RAO bits s=
+et
+> +     * for our CPU features.
+> +     */
+> +    cpacr_write(env, ri, 0);
+> +}
+> +
+>  static CPAccessResult cpacr_access(CPUARMState *env, const ARMCPRegInf=
+o *ri,
+>                                     bool isread)
+>  {
+> @@ -920,7 +928,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] =3D {
+>      { .name =3D "CPACR", .state =3D ARM_CP_STATE_BOTH, .opc0 =3D 3,
+>        .crn =3D 1, .crm =3D 0, .opc1 =3D 0, .opc2 =3D 2, .accessfn =3D =
+cpacr_access,
+>        .access =3D PL1_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.=
+cpacr_el1),
+> -      .resetvalue =3D 0, .writefn =3D cpacr_write },
+> +      .resetfn =3D cpacr_reset, .writefn =3D cpacr_write },
+>      REGINFO_SENTINEL
+>  };
+> =20
+>=20
 

@@ -1,125 +1,481 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1770652wme;
-        Tue, 22 May 2018 10:30:27 -0700 (PDT)
-X-Received: by 2002:a17:902:a717:: with SMTP id w23-v6mr25533746plq.130.1527010227256;
-        Tue, 22 May 2018 10:30:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527010227; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1796283wme;
+        Tue, 22 May 2018 10:56:51 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZpdRBx9CdyzW/Lh0DVECufniFd7RiEHmr1LeHZQiugAGDSrshO5i/ofzYorqF8Mse1qHonm
+X-Received: by 2002:ac8:22a1:: with SMTP id f30-v6mr23615186qta.358.1527011811599;
+        Tue, 22 May 2018 10:56:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527011811; cv=none;
         d=google.com; s=arc-20160816;
-        b=H3UxYz6RtMPAkTpQ+T1G2f8CrCykos4t4brkqELmW0S3ni/fyTKP98Zn6Vpz/+2q9j
-         +0lO+A98KN6+3ElrODFHFzUK+34ohblw7ZnZ6ugqoorv5nADG02FMFH8XbiRIDfyft44
-         EbGVjQxy04DrcKj2QRJEvOdjPAfum4wpW23YGW0zFZCNa6E3UTDWv9H/Az9B65FrHonx
-         bkwimd5lkD5R7gARBXqjB3ZimQvzdz4X2J3d1c0ZnZBMIYVcJkUDt7RV1/NmkN/sh5OV
-         fyvtfIZv8dq4Lr4JtCEOi/R5jfernwRRpVDQaUa+zI0+fREHezs1E8XJud6UYgu758wX
-         XKdw==
+        b=Nb3kKYu4pQaLpCShPNE5s2UMKmxTwwd7M+j4TaM2mP20woemlgA3Qv1eNRs0d7lkaH
+         C3WRgtS6R/+j+tdPWW7TYJchbSBp335dn9dxqjGyOf4KBaxIRlmjAyGI3rW03afUV76w
+         t9+XW+aKt3RgrmzK6IMDR+E61Szjx+q6tACLq1SLSZwnzOR9+YgjcI5XCgnsT46cmuop
+         0vdj+iEiV5U/s5eYQUUN1Tqz2Z6X8DbXNfwCYa6yWx1Uyyil6q4Q0tSirhX3+DbHYItG
+         tw/YmUPAaYZzV5Yd7OpTiirtAT12Ojvr44SShY6yiKEGWHYcu3IyjBHojoKXyf49OWIC
+         fJOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject:sender:dkim-signature:arc-authentication-results;
-        bh=c1ugl8LuwnojklsjgaBeH+LAgNPYyffccuOYjHiSBj8=;
-        b=odn8jaMSOkxvnVEbhdwTan4Zq8EYL+W+CjpvMhAKn+22ptKtpEMIggSK/4HrfD0Baj
-         w9ELBEHQmcTDxNV1CBSPpdYlk8XzkEASuRi+wxczRFPqlZoVZvwosS/zVxPyBpaMJ5RM
-         JNvlWWCi/HwHu4bZdvMVWP7U3p1Nviy93EPXbqNxy+yLh6BHX6L9EV+57oaBtbEXbTXM
-         yc5XbQX8pZLkWE3wlmjEgUw4OQ6QWZZkdv/zQqgcPEaS9u/bwvPQ4bNANE3yUvyCEIH/
-         nUCYsC6hciLH3PhPks6dia79oS5ZKexKoBUy5nvM8DcANzD8E46MiES+BGgXqaiZ5/Ln
-         Pwfw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=WSx0uH6TDE+8MVLnVszQRo6ojFtdilYOH7wvntqDQXw=;
+        b=s04EJHLUMokAKGAqdx3FIVIkmg9BJY/sNoM3wkZt/jd2YM7Q64pj2Uzp/5VqKgt9KZ
+         LrtYONBUWlO1ZZeL08I2VCFTXAKBNf65rmW/4Ra18pMA1xKLi8tkbc0Lm23bc097upkI
+         MPObPyP13BwseSpx1NGOS/Jb2wFN8Kp6CBIrRZVx+COsdu8vvqb2k3GNo8KDUI9W0vjD
+         kkm1dDOa12l7S/QsS9Qf1XzNNCE3GXXiUkNqg4//f3q9f77E21GCAxrYO3IjeDxSvtVq
+         2GzH8ztfJdt/Yz9Y/cMfHieDSzs8cMTivHCAml8by7NbNJ9J/oyYQJ2nUFdd56//PsZi
+         MEPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mBVQX5EO;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id e87-v6sor6735374pfl.135.2018.05.22.10.30.27
-        (Google Transport Security);
-        Tue, 22 May 2018 10:30:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ivlZSd5O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 32-v6si1287040qvr.24.2018.05.22.10.56.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 22 May 2018 10:56:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mBVQX5EO;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=c1ugl8LuwnojklsjgaBeH+LAgNPYyffccuOYjHiSBj8=;
-        b=mBVQX5EOK1WwFUvFWwAZU/0TMqmjT+0kvy5GMhQ4gOiqglOjJgrdh+IZQ7clvAAEr/
-         4TIbQNIaJUjDzA8SjLDGC7R/x1ozoL0J0DNdxi47Fj6iWEtVG4r4Hh1xJbQ1lb5wIzDh
-         zqjwuiTSZ40wg8yq6A3MQFRzamqzMQvLepAsXwT8l4HB2QmoZKVYMXv4apyLXzjOuH24
-         NRs5ovIJuJCIFAdpMfQaccJU0ByPJjNWVcLxYQxBnI84YxecdBVT2iimCaO2I7wnMXJn
-         GcWcRzrmdHzDIML8Ovh/y/aMb/CRm8JrYTrZicQ8Dy4DM2rF9MUSyB3FmRK3jj5IbWtz
-         OcyQ==
+       dkim=fail header.i=@linaro.org header.s=google header.b=ivlZSd5O;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57148 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fLBWl-0002f7-4L
+	for alex.bennee@linaro.org; Tue, 22 May 2018 13:56:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39978)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1fLBWX-0002eZ-Tq
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 13:56:40 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1fLBWS-0004mE-Ra
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 13:56:37 -0400
+Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:41769)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fLBWS-0004la-I8
+	for qemu-arm@nongnu.org; Tue, 22 May 2018 13:56:32 -0400
+Received: by mail-pl0-x243.google.com with SMTP id az12-v6so11345968plb.8
+	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 10:56:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=WSx0uH6TDE+8MVLnVszQRo6ojFtdilYOH7wvntqDQXw=;
+	b=ivlZSd5OhFIDNkjBCi1rD/+ISbcuo+QveZVHVkDMea3bu+88yHf7BdM6iuBSeJyvFD
+	Qi+BFJmLIaB8/wjr3DNNz5AiTCW8ak4uVjNFLMU6koqfWAHdYSywxvSCyLn57LK56ATG
+	vcvcuAOzrTC7Ky8YhhB3LacCT8B1amNPTxu0k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=c1ugl8LuwnojklsjgaBeH+LAgNPYyffccuOYjHiSBj8=;
-        b=DsrQ1jKdXXixfRopAaGNZYSkxWO/T8CGicDoCDgA9y0qf+j/x17iuima2gCFuB7vkZ
-         ruIvG5SILMHeWe6QyAXgvucnHhbGWf2PIQIs+7HI3tlLH0jBYuOUj1N96wgPW0ub4Hbe
-         TMKQkZtaA4bL5Bjpxu+PRMGEzX6hf93/QPPOhr7qG26uA955Tk3YEGF8htXvVSosNnYX
-         5S95LJ+luQujqyHe/aKGog5L6X+SbbuJfEhpfxPP6DkjFMYKw/oVF6SOR1iNO+KNFCv0
-         8SmzF9l03zRhnk6/rT3zNxBUrqyWzO0mBlw+x7rCLx3udnVC4zzanGLzleSM7l6o5Bzr
-         e9VQ==
-X-Gm-Message-State: ALKqPwc+p5TGFDEq7nmMBoiNIrAkN8ChtdPX2uzxVRZtsUM+glBJoEsG
-	HOA5VkhJM57Jn9Xp7ZuWN/mNEKMf
-X-Google-Smtp-Source: AB8JxZqgcjEybEjnHuJzJ6nHvNCwNCt9vDnK/MFthQ150T5Dt/iguhGTTVuo9PAQLpRFp4I+VR95Tg==
-X-Received: by 2002:aa7:80c6:: with SMTP id a6-v6mr25046265pfn.120.1527010226189;
-        Tue, 22 May 2018 10:30:26 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
-        by smtp.googlemail.com with ESMTPSA id 73-v6sm37814771pfo.153.2018.05.22.10.30.17
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 May 2018 10:30:26 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH 13/27] Make address_space_translate_iommu take a
- MemTxAttrs argument
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-14-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
- xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
- n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
- rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
- Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
- n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
- AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
- cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
- Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
- eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
- LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
- Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
- 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
- 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
- I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
- VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
- +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
- AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
- Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
- prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
- /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
- jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
- VcROBqvtH3ecaIL9iw==
-Message-ID: <a8bcf03c-3132-127d-741f-fcb6472b0bc9@twiddle.net>
-Date: Tue, 22 May 2018 10:30:16 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
-MIME-Version: 1.0
-In-Reply-To: <20180521140402.23318-14-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: NGzbx4c/psFW
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=WSx0uH6TDE+8MVLnVszQRo6ojFtdilYOH7wvntqDQXw=;
+	b=lZ3XmjvizFnZkxIY9rUdnR4VhdNQ+Ekeo3zgLzubPw0WM5/iD9DA6RaL0Vg5Wh6KZb
+	z9x4yVI4vKfdi3mPaCH5VFRfl6XFNUJGv2G6haW+dFg4OfBEk+dTJJZRMgu4yCHRmsgs
+	o3jxfgjX+4wQACTwJjQUHMiqkIRtkhq97OjhZPtOl4rfy5NSciDk/hVAw9s1v9fuqNaH
+	+DOx5gut6vzTZgUDrRLzaaho1JGS0hU5xN++lWPI78wBG+vxmwBGLTDHrdZbHETvgiNs
+	sIsqwQg+aSu0qzuoFs8vonYHZriSBpyQrlGeWWgeCXypDRaFiyk3RilTMlyqSxKlehGJ
+	Vcww==
+X-Gm-Message-State: ALKqPwf8G2402UkbsDxJYiIVWaZSOR9AZTtBWUvfcP+x4uFyrngUHVVZ
+	z85Pw92d/fqw3JpUF3m5NVKvCA==
+X-Received: by 2002:a17:902:850a:: with SMTP id
+	bj10-v6mr25174875plb.239.1527011791205; 
+	Tue, 22 May 2018 10:56:31 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net.
+	[97.113.173.254]) by smtp.gmail.com with ESMTPSA id
+	v16-v6sm29617724pfl.12.2018.05.22.10.56.29
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 22 May 2018 10:56:30 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 22 May 2018 10:56:29 -0700
+Message-Id: <20180522175629.24932-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c01::243
+Subject: [Qemu-arm] [PATCH] tcg: Fix helper function vs host abi for float16
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WzLpVozmdazN
 
-On 05/21/2018 07:03 AM, Peter Maydell wrote:
-> As part of plumbing MemTxAttrs down to the IOMMU translate method,
-> add MemTxAttrs as an argument to address_space_translate_iommu().
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
+Depending on the host abi, float16, aka uint16_t, values are
+passed and returned either zero-extended in the host register
+or with garbage at the top of the host register.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+The tcg code generator has so far been assuming garbage, as that
+matches the x86 abi, but this is incorrect for other host abis.
+Further, target/arm has so far been assuming zero-extended results,
+so that it may store the 16-bit value into a 32-bit slot with the
+high 16-bits already clear.
 
-r~
+Rectify both problems by mapping "f16" in the helper definition
+to uint32_t instead of (a typedef for) uint16_t.  This forces
+the host compiler to assume garbage in the upper 16 bits on input
+and to zero-extend the result on output.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/exec/helper-head.h |  2 +-
+ target/arm/helper-a64.c    | 35 +++++++++--------
+ target/arm/helper.c        | 80 +++++++++++++++++++-------------------
+ 3 files changed, 59 insertions(+), 58 deletions(-)
+
+diff --git a/include/exec/helper-head.h b/include/exec/helper-head.h
+index 15b6a68de3..276dd5afce 100644
+--- a/include/exec/helper-head.h
++++ b/include/exec/helper-head.h
+@@ -39,7 +39,7 @@
+ #define dh_ctype_int int
+ #define dh_ctype_i64 uint64_t
+ #define dh_ctype_s64 int64_t
+-#define dh_ctype_f16 float16
++#define dh_ctype_f16 uint32_t
+ #define dh_ctype_f32 float32
+ #define dh_ctype_f64 float64
+ #define dh_ctype_ptr void *
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index f92bdea732..6ee5f684cf 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -85,12 +85,12 @@ static inline uint32_t float_rel_to_flags(int res)
+     return flags;
+ }
+ 
+-uint64_t HELPER(vfp_cmph_a64)(float16 x, float16 y, void *fp_status)
++uint64_t HELPER(vfp_cmph_a64)(uint32_t x, uint32_t y, void *fp_status)
+ {
+     return float_rel_to_flags(float16_compare_quiet(x, y, fp_status));
+ }
+ 
+-uint64_t HELPER(vfp_cmpeh_a64)(float16 x, float16 y, void *fp_status)
++uint64_t HELPER(vfp_cmpeh_a64)(uint32_t x, uint32_t y, void *fp_status)
+ {
+     return float_rel_to_flags(float16_compare(x, y, fp_status));
+ }
+@@ -214,7 +214,7 @@ uint64_t HELPER(neon_cgt_f64)(float64 a, float64 b, void *fpstp)
+ #define float64_three make_float64(0x4008000000000000ULL)
+ #define float64_one_point_five make_float64(0x3FF8000000000000ULL)
+ 
+-float16 HELPER(recpsf_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(recpsf_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+ 
+@@ -259,7 +259,7 @@ float64 HELPER(recpsf_f64)(float64 a, float64 b, void *fpstp)
+     return float64_muladd(a, b, float64_two, 0, fpst);
+ }
+ 
+-float16 HELPER(rsqrtsf_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(rsqrtsf_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+ 
+@@ -366,7 +366,7 @@ uint64_t HELPER(neon_addlp_u16)(uint64_t a)
+ }
+ 
+ /* Floating-point reciprocal exponent - see FPRecpX in ARM ARM */
+-float16 HELPER(frecpx_f16)(float16 a, void *fpstp)
++uint32_t HELPER(frecpx_f16)(uint32_t a, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     uint16_t val16, sbit;
+@@ -695,7 +695,7 @@ void HELPER(casp_be_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
+ #define ADVSIMD_HELPER(name, suffix) HELPER(glue(glue(advsimd_, name), suffix))
+ 
+ #define ADVSIMD_HALFOP(name) \
+-float16 ADVSIMD_HELPER(name, h)(float16 a, float16 b, void *fpstp) \
++uint32_t ADVSIMD_HELPER(name, h)(uint32_t a, uint32_t b, void *fpstp) \
+ { \
+     float_status *fpst = fpstp; \
+     return float16_ ## name(a, b, fpst);    \
+@@ -755,7 +755,8 @@ ADVSIMD_HALFOP(mulx)
+ ADVSIMD_TWOHALFOP(mulx)
+ 
+ /* fused multiply-accumulate */
+-float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
++uint32_t HELPER(advsimd_muladdh)(uint32_t a, uint32_t b, uint32_t c,
++                                 void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     return float16_muladd(a, b, c, 0, fpst);
+@@ -786,14 +787,14 @@ uint32_t HELPER(advsimd_muladd2h)(uint32_t two_a, uint32_t two_b,
+ 
+ #define ADVSIMD_CMPRES(test) (test) ? 0xffff : 0
+ 
+-uint32_t HELPER(advsimd_ceq_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(advsimd_ceq_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     int compare = float16_compare_quiet(a, b, fpst);
+     return ADVSIMD_CMPRES(compare == float_relation_equal);
+ }
+ 
+-uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(advsimd_cge_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     int compare = float16_compare(a, b, fpst);
+@@ -801,14 +802,14 @@ uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
+                           compare == float_relation_equal);
+ }
+ 
+-uint32_t HELPER(advsimd_cgt_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(advsimd_cgt_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     int compare = float16_compare(a, b, fpst);
+     return ADVSIMD_CMPRES(compare == float_relation_greater);
+ }
+ 
+-uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(advsimd_acge_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     float16 f0 = float16_abs(a);
+@@ -818,7 +819,7 @@ uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
+                           compare == float_relation_equal);
+ }
+ 
+-uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
++uint32_t HELPER(advsimd_acgt_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     float16 f0 = float16_abs(a);
+@@ -828,12 +829,12 @@ uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
+ }
+ 
+ /* round to integral */
+-float16 HELPER(advsimd_rinth_exact)(float16 x, void *fp_status)
++uint32_t HELPER(advsimd_rinth_exact)(uint32_t x, void *fp_status)
+ {
+     return float16_round_to_int(x, fp_status);
+ }
+ 
+-float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
++uint32_t HELPER(advsimd_rinth)(uint32_t x, void *fp_status)
+ {
+     int old_flags = get_float_exception_flags(fp_status), new_flags;
+     float16 ret;
+@@ -857,7 +858,7 @@ float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
+  * setting the mode appropriately before calling the helper.
+  */
+ 
+-uint32_t HELPER(advsimd_f16tosinth)(float16 a, void *fpstp)
++uint32_t HELPER(advsimd_f16tosinth)(uint32_t a, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+ 
+@@ -869,7 +870,7 @@ uint32_t HELPER(advsimd_f16tosinth)(float16 a, void *fpstp)
+     return float16_to_int16(a, fpst);
+ }
+ 
+-uint32_t HELPER(advsimd_f16touinth)(float16 a, void *fpstp)
++uint32_t HELPER(advsimd_f16touinth)(uint32_t a, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+ 
+@@ -885,7 +886,7 @@ uint32_t HELPER(advsimd_f16touinth)(float16 a, void *fpstp)
+  * Square Root and Reciprocal square root
+  */
+ 
+-float16 HELPER(sqrt_f16)(float16 a, void *fpstp)
++uint32_t HELPER(sqrt_f16)(uint32_t a, void *fpstp)
+ {
+     float_status *s = fpstp;
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c0f739972e..a4bfac3932 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11344,35 +11344,35 @@ DO_VFP_cmp(d, float64)
+ 
+ /* Integer to float and float to integer conversions */
+ 
+-#define CONV_ITOF(name, fsz, sign) \
+-    float##fsz HELPER(name)(uint32_t x, void *fpstp) \
+-{ \
+-    float_status *fpst = fpstp; \
+-    return sign##int32_to_##float##fsz((sign##int32_t)x, fpst); \
++#define CONV_ITOF(name, ftype, fsz, sign)                           \
++ftype HELPER(name)(uint32_t x, void *fpstp)                         \
++{                                                                   \
++    float_status *fpst = fpstp;                                     \
++    return sign##int32_to_##float##fsz((sign##int32_t)x, fpst);     \
+ }
+ 
+-#define CONV_FTOI(name, fsz, sign, round) \
+-uint32_t HELPER(name)(float##fsz x, void *fpstp) \
+-{ \
+-    float_status *fpst = fpstp; \
+-    if (float##fsz##_is_any_nan(x)) { \
+-        float_raise(float_flag_invalid, fpst); \
+-        return 0; \
+-    } \
+-    return float##fsz##_to_##sign##int32##round(x, fpst); \
++#define CONV_FTOI(name, ftype, fsz, sign, round)                \
++uint32_t HELPER(name)(ftype x, void *fpstp)                     \
++{                                                               \
++    float_status *fpst = fpstp;                                 \
++    if (float##fsz##_is_any_nan(x)) {                           \
++        float_raise(float_flag_invalid, fpst);                  \
++        return 0;                                               \
++    }                                                           \
++    return float##fsz##_to_##sign##int32##round(x, fpst);       \
+ }
+ 
+-#define FLOAT_CONVS(name, p, fsz, sign) \
+-CONV_ITOF(vfp_##name##to##p, fsz, sign) \
+-CONV_FTOI(vfp_to##name##p, fsz, sign, ) \
+-CONV_FTOI(vfp_to##name##z##p, fsz, sign, _round_to_zero)
++#define FLOAT_CONVS(name, p, ftype, fsz, sign)            \
++    CONV_ITOF(vfp_##name##to##p, ftype, fsz, sign)        \
++    CONV_FTOI(vfp_to##name##p, ftype, fsz, sign, )        \
++    CONV_FTOI(vfp_to##name##z##p, ftype, fsz, sign, _round_to_zero)
+ 
+-FLOAT_CONVS(si, h, 16, )
+-FLOAT_CONVS(si, s, 32, )
+-FLOAT_CONVS(si, d, 64, )
+-FLOAT_CONVS(ui, h, 16, u)
+-FLOAT_CONVS(ui, s, 32, u)
+-FLOAT_CONVS(ui, d, 64, u)
++FLOAT_CONVS(si, h, uint32_t, 16, )
++FLOAT_CONVS(si, s, float32, 32, )
++FLOAT_CONVS(si, d, float64, 64, )
++FLOAT_CONVS(ui, h, uint32_t, 16, u)
++FLOAT_CONVS(ui, s, float32, 32, u)
++FLOAT_CONVS(ui, d, float64, 64, u)
+ 
+ #undef CONV_ITOF
+ #undef CONV_FTOI
+@@ -11465,22 +11465,22 @@ static float16 do_postscale_fp16(float64 f, int shift, float_status *fpst)
+     return float64_to_float16(float64_scalbn(f, -shift, fpst), true, fpst);
+ }
+ 
+-float16 HELPER(vfp_sltoh)(uint32_t x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_sltoh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return do_postscale_fp16(int32_to_float64(x, fpst), shift, fpst);
+ }
+ 
+-float16 HELPER(vfp_ultoh)(uint32_t x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_ultoh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return do_postscale_fp16(uint32_to_float64(x, fpst), shift, fpst);
+ }
+ 
+-float16 HELPER(vfp_sqtoh)(uint64_t x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_sqtoh)(uint64_t x, uint32_t shift, void *fpst)
+ {
+     return do_postscale_fp16(int64_to_float64(x, fpst), shift, fpst);
+ }
+ 
+-float16 HELPER(vfp_uqtoh)(uint64_t x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_uqtoh)(uint64_t x, uint32_t shift, void *fpst)
+ {
+     return do_postscale_fp16(uint64_to_float64(x, fpst), shift, fpst);
+ }
+@@ -11504,32 +11504,32 @@ static float64 do_prescale_fp16(float16 f, int shift, float_status *fpst)
+     }
+ }
+ 
+-uint32_t HELPER(vfp_toshh)(float16 x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_toshh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return float64_to_int16(do_prescale_fp16(x, shift, fpst), fpst);
+ }
+ 
+-uint32_t HELPER(vfp_touhh)(float16 x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_touhh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return float64_to_uint16(do_prescale_fp16(x, shift, fpst), fpst);
+ }
+ 
+-uint32_t HELPER(vfp_toslh)(float16 x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_toslh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return float64_to_int32(do_prescale_fp16(x, shift, fpst), fpst);
+ }
+ 
+-uint32_t HELPER(vfp_toulh)(float16 x, uint32_t shift, void *fpst)
++uint32_t HELPER(vfp_toulh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return float64_to_uint32(do_prescale_fp16(x, shift, fpst), fpst);
+ }
+ 
+-uint64_t HELPER(vfp_tosqh)(float16 x, uint32_t shift, void *fpst)
++uint64_t HELPER(vfp_tosqh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return float64_to_int64(do_prescale_fp16(x, shift, fpst), fpst);
+ }
+ 
+-uint64_t HELPER(vfp_touqh)(float16 x, uint32_t shift, void *fpst)
++uint64_t HELPER(vfp_touqh)(uint32_t x, uint32_t shift, void *fpst)
+ {
+     return float64_to_uint64(do_prescale_fp16(x, shift, fpst), fpst);
+ }
+@@ -11565,7 +11565,7 @@ uint32_t HELPER(set_neon_rmode)(uint32_t rmode, CPUARMState *env)
+ }
+ 
+ /* Half precision conversions.  */
+-float32 HELPER(vfp_fcvt_f16_to_f32)(float16 a, void *fpstp, uint32_t ahp_mode)
++float32 HELPER(vfp_fcvt_f16_to_f32)(uint32_t a, void *fpstp, uint32_t ahp_mode)
+ {
+     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
+      * it would affect flushing input denormals.
+@@ -11578,7 +11578,7 @@ float32 HELPER(vfp_fcvt_f16_to_f32)(float16 a, void *fpstp, uint32_t ahp_mode)
+     return r;
+ }
+ 
+-float16 HELPER(vfp_fcvt_f32_to_f16)(float32 a, void *fpstp, uint32_t ahp_mode)
++uint32_t HELPER(vfp_fcvt_f32_to_f16)(float32 a, void *fpstp, uint32_t ahp_mode)
+ {
+     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
+      * it would affect flushing output denormals.
+@@ -11591,7 +11591,7 @@ float16 HELPER(vfp_fcvt_f32_to_f16)(float32 a, void *fpstp, uint32_t ahp_mode)
+     return r;
+ }
+ 
+-float64 HELPER(vfp_fcvt_f16_to_f64)(float16 a, void *fpstp, uint32_t ahp_mode)
++float64 HELPER(vfp_fcvt_f16_to_f64)(uint32_t a, void *fpstp, uint32_t ahp_mode)
+ {
+     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
+      * it would affect flushing input denormals.
+@@ -11604,7 +11604,7 @@ float64 HELPER(vfp_fcvt_f16_to_f64)(float16 a, void *fpstp, uint32_t ahp_mode)
+     return r;
+ }
+ 
+-float16 HELPER(vfp_fcvt_f64_to_f16)(float64 a, void *fpstp, uint32_t ahp_mode)
++uint32_t HELPER(vfp_fcvt_f64_to_f16)(float64 a, void *fpstp, uint32_t ahp_mode)
+ {
+     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
+      * it would affect flushing output denormals.
+@@ -11742,7 +11742,7 @@ static bool round_to_inf(float_status *fpst, bool sign_bit)
+     g_assert_not_reached();
+ }
+ 
+-float16 HELPER(recpe_f16)(float16 input, void *fpstp)
++uint32_t HELPER(recpe_f16)(uint32_t input, void *fpstp)
+ {
+     float_status *fpst = fpstp;
+     float16 f16 = float16_squash_input_denormal(input, fpst);
+@@ -11937,7 +11937,7 @@ static uint64_t recip_sqrt_estimate(int *exp , int exp_off, uint64_t frac)
+     return extract64(estimate, 0, 8) << 44;
+ }
+ 
+-float16 HELPER(rsqrte_f16)(float16 input, void *fpstp)
++uint32_t HELPER(rsqrte_f16)(uint32_t input, void *fpstp)
+ {
+     float_status *s = fpstp;
+     float16 f16 = float16_squash_input_denormal(input, s);
+-- 
+2.17.0
+

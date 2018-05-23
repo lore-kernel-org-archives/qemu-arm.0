@@ -1,85 +1,93 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp886520wre;
-        Wed, 23 May 2018 09:06:54 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLkuSy9fVnFpjVvkoXOSETb9ryN3DI8SkWjQCmaS/b2c2u+DwUnKA5dtXjyQnk+efYeF23A
-X-Received: by 2002:ac8:3faf:: with SMTP id d44-v6mr3252292qtk.169.1527091614765;
-        Wed, 23 May 2018 09:06:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527091614; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp975197wre;
+        Wed, 23 May 2018 10:46:08 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJqWidJ22b5C1Km9VsMJxspsl/ijHozfUo+/tTA1xVdJLuUPMs4xt8GZongNSyY0YPKjTPS
+X-Received: by 2002:a37:9782:: with SMTP id z124-v6mr3467407qkd.214.1527097568271;
+        Wed, 23 May 2018 10:46:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527097568; cv=none;
         d=google.com; s=arc-20160816;
-        b=PmLO/g9syrzn/zkZUgj5XjQVAQrEQCi1f5EZKlTwJ43uKrDyVf4dIXHC98fXuRc8ej
-         IyVlCF84nDr+BbS8Y8Ax6kyudc576J3iWv/WzRPqaCBrHAuhvX8HaGUKK/O3ea7/1BS5
-         sxelKkqfBz3p1GPE7kl22iRil5KVoV4Y180wMVXW2xn6Ti0wJoFadUkFGdG2et/vSzzB
-         E6QiengzVcPrmf2i/qIUhwobRiNuZlLaGKzqBf7aPjsA6ZRiOG2KY0dokVshXNtKJThX
-         qnrJkJS4piMkmKlJ7BK84yRqdtHevDpiFB40z1RgCDEHGRKXZcEBSzz4kuwOIU3JZM1i
-         l4Cg==
+        b=NjyQnsU/FFszDkzeidDUJ5Ar11MJsOVeIWWl6lB58YkGGwefwKUVqkvCquiOmH9eyW
+         Bx9hIAAw/+yASMp8fPdZvPhLmJmeVC0lkUzCwJlNw2QnFtN2SSL19wM92vXQ5kyuLDzx
+         +YIPubJS4I/9/QyoqeyFIkksteyq3j0Lv7U4jrUTvcs7ohOQ+vvFji6NisCboZGBYTCk
+         Gc2i8gXFxATe0Dki9R5ayrxt6rwnEWKX9xTyKxYWglOeeq1bqrxWPEtiz0+xlp5yEE/h
+         ksU2X7qbnko6tn4kyuXlLCR8VC8fQpujUuQomiKuTGmWTGXomw/2zQ92BX43DNUkCBiB
+         jblg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=i0zYOIU3p3toCZKr15cLS2REVFbMha8oyR/7IBsVNXw=;
-        b=B44CnQ99d1wAinNzxM/kqk/QW6EERVu7Wdc1h3viq257OjemFsZa+9R+T2WxXymOKB
-         N2svpiSd0NfrFRiuKQTaYhDPVtImLyBEQFqNa7ol2im4s0eIZTQKaCkaG4SnpeTlO+Gk
-         8Tc+011RO4OvEEA8VHj8zFntUIjHJO65DHY1XNJkEF9d/1ox9cnfEt+cF3Fjvbm0tN9H
-         bKbERu2TYTzFXoz4tLtl/IywE3qXyAwgiUzVioM3XgImP+mqv9zPhmgmhmNJ2ytOC3JA
-         XZlkpxtR9Peje0QjjVD0Z2DEoM7aMikF9uYvEjIulkrfmiWj7YVwYbITmsB74biLS4OY
-         pOhw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=k8l8ElwizZd4hIQrer7lDG2IxwP+83Tz/ME4mxtmarE=;
+        b=St8bPSwAqX8mL+9ol7qDcRox4D/8WiX9WSEhT5ikBIJQRGYEMbgKxvdI8o3RdHdeiz
+         s5vHlb/cEBcSfgLnPfJVfDMLm3zgcyvt+E8mZ3u39jXfnahVe/xrBup+A36jK6DR3ADq
+         GwrylPpoqQEPArC8DfspxzXgurGy9qiXGwxJJVhtJUB/Q8dwkk9OcudMpaet4rWGV/8s
+         o9uERSXl+QY4x4oBRjiUDvPAY3F++aJ1hqbuGC0fGRL2YVTr0siGF2Sl8wi1qKLjFoJp
+         xjUnw6s8v8fLNjYYXN6MOaNw0CPtRd/+ZvGngERFPaSpmE9A89ppLQkvyKvAqMkCPw6u
+         GQRw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l36-v6si1394928qvl.199.2018.05.23.09.06.54
+        by mx.google.com with ESMTPS id b75-v6si3702295qkc.118.2018.05.23.10.46.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 23 May 2018 09:06:54 -0700 (PDT)
+        Wed, 23 May 2018 10:46:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34412 helo=lists.gnu.org)
+Received: from localhost ([::1]:34784 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLWHu-00051k-7F
-	for alex.bennee@linaro.org; Wed, 23 May 2018 12:06:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43356)
+	id 1fLXpv-0001m4-S6
+	for alex.bennee@linaro.org; Wed, 23 May 2018 13:46:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fLWF4-000329-H5
-	for qemu-arm@nongnu.org; Wed, 23 May 2018 12:04:04 -0400
+	(envelope-from <lersek@redhat.com>) id 1fLXpl-0001ly-Bq
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 13:45:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fLWEw-0004DP-Ic
-	for qemu-arm@nongnu.org; Wed, 23 May 2018 12:03:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51860 helo=mx1.redhat.com)
+	(envelope-from <lersek@redhat.com>) id 1fLXph-0001pZ-Gb
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 13:45:57 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38098 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fLWEw-0004DI-DV; Wed, 23 May 2018 12:03:50 -0400
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1fLXph-0001pK-Ba; Wed, 23 May 2018 13:45:53 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 007064187E3F;
-	Wed, 23 May 2018 16:03:50 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-116-69.ams2.redhat.com
-	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6F67484425;
-	Wed, 23 May 2018 16:03:48 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Wed, 23 May 2018 18:03:37 +0200
-Message-Id: <1527091418-11874-2-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id A8A79BD98;
+	Wed, 23 May 2018 17:45:52 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-208.rdu2.redhat.com
+	[10.10.120.208])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id CD8AD6466E;
+	Wed, 23 May 2018 17:45:45 +0000 (UTC)
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
 References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
+Date: Wed, 23 May 2018 19:45:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
+MIME-Version: 1.0
+In-Reply-To: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Wed, 23 May 2018 16:03:50 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Wed, 23 May 2018 16:03:50 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.1]);
+	Wed, 23 May 2018 17:45:52 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Wed, 23 May 2018 17:45:52 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 1/2] hw/arm/virt: Add a new 256MB ECAM region
+Subject: Re: [Qemu-arm] [RFC 0/2] ARM virt: Support up to 256 PCIe buses
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,168 +99,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, ard.biesheuvel@linaro.org, lersek@redhat.com,
-	zhaoshenglong@huawei.com
+Cc: drjones@redhat.com, ard.biesheuvel@linaro.org, zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5oXTAxCjlPBF
+X-TUID: uYzozANOHJWu
 
-This patch defines a new ECAM region located after the 256GB limit.
+Hi Eric,
 
-The virt machine state is augmented with a new highmem_ecam field
-which guards the usage of this new ECAM region instead of the legacy
-16MB one. With the highmem ECAM region, up to 256 PCIe buses can be
-used.
+On 05/23/18 18:03, Eric Auger wrote:
+> Current Machvirt PCI host controller's ECAM region is 16MB large.
+> This limits the number of PCIe buses to 16.
+>
+> PC/Q35 machines have a 256MB region allowing up to 256 buses.
+> This series tries to bridge the gap.
+>
+> It declares a new ECAM region located beyond 256GB, of size 256MB
+> (just after the hypothetical new GICv3 RDIST region). The new
+> ECAM region is used as soon as the highmem option is set (default)
+> and disabled for machines older than 3.0.
+>
+> Best Regards
+>
+> Eric
+>
+> Git: complete series available at
+> https://github.com/eauger/qemu/tree/v2.12.0-256MB-ECAM-RFCv1
+>
+> - Tested with guest running in aarch64 and aarch32 modes (aarch64=off)
+> - In aarch32 mode I encountered the issue the vmalloc region may be
+>   reported too small for the needs (dmesg excerpt below). So I had to
+>   extend the vmalloc size by passing the "vmalloc=512M" option to the
+>   bootargs and this eventually booted fine.
+>
+> [    1.399581] pl061_gpio 9030000.pl061: PL061 GPIO chip @0x0000000009030000 registered
+> [    1.402636] OF: PCI: host bridge /pcie@10000000 ranges:
+> [    1.404506] OF: PCI:    IO 0x3eff0000..0x3effffff -> 0x00000000
+> [    1.406606] OF: PCI:   MEM 0x10000000..0x3efeffff -> 0x10000000
+> [    1.408690] OF: PCI:   MEM 0x8000000000..0xffffffffff -> 0x8000000000
+> [    1.411992] vmap allocation for size 1052672 failed: use vmalloc=<size> to increase size
+> [    1.414895] pci-host-generic 4010000000.pcie: ECAM ioremap failed
+> [    1.427472] pci-host-generic: probe of 4010000000.pcie failed with error -12
+>
+> - Maybe this issue deserves introducing a new highmem_ecam option?
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt-acpi-build.c | 22 ++++++++++++++--------
- hw/arm/virt.c            | 12 ++++++++----
- include/hw/arm/virt.h    |  2 ++
- 3 files changed, 24 insertions(+), 12 deletions(-)
+I refer to my earlier email here:
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 92ceee9..b72f041 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -150,16 +150,17 @@ static void acpi_dsdt_add_virtio(Aml *scope,
- }
- 
- static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
--                              uint32_t irq, bool use_highmem)
-+                              uint32_t irq, bool use_highmem, bool highmem_ecam)
- {
-+    int ecam_id = highmem_ecam ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM;
-     Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
-     int i, bus_no;
-     hwaddr base_mmio = memmap[VIRT_PCIE_MMIO].base;
-     hwaddr size_mmio = memmap[VIRT_PCIE_MMIO].size;
-     hwaddr base_pio = memmap[VIRT_PCIE_PIO].base;
-     hwaddr size_pio = memmap[VIRT_PCIE_PIO].size;
--    hwaddr base_ecam = memmap[VIRT_PCIE_ECAM].base;
--    hwaddr size_ecam = memmap[VIRT_PCIE_ECAM].size;
-+    hwaddr base_ecam = memmap[ecam_id].base;
-+    hwaddr size_ecam = memmap[ecam_id].size;
-     int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
- 
-     Aml *dev = aml_device("%s", "PCI0");
-@@ -173,7 +174,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
- 
-     /* Declare the PCI Routing Table. */
--    Aml *rt_pkg = aml_package(nr_pcie_buses * PCI_NUM_PINS);
-+    Aml *rt_pkg = aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
-     for (bus_no = 0; bus_no < nr_pcie_buses; bus_no++) {
-         for (i = 0; i < PCI_NUM_PINS; i++) {
-             int gsi = (i + bus_no) % PCI_NUM_PINS;
-@@ -316,10 +317,14 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-     Aml *dev_res0 = aml_device("%s", "RES0");
-     aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
-     crs = aml_resource_template();
--    aml_append(crs, aml_memory32_fixed(base_ecam, size_ecam, AML_READ_WRITE));
-+    aml_append(crs,
-+        aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
-+                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_ecam,
-+                         base_ecam + size_ecam - 1, 0x0000, size_ecam));
-     aml_append(dev_res0, aml_name_decl("_CRS", crs));
-     aml_append(dev, dev_res0);
-     aml_append(scope, dev);
-+
- }
- 
- static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
-@@ -563,16 +568,17 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-     AcpiTableMcfg *mcfg;
-     const MemMapEntry *memmap = vms->memmap;
-+    int ecam_id = vms->highmem_ecam ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM;
-     int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
-     int mcfg_start = table_data->len;
- 
-     mcfg = acpi_data_push(table_data, len);
--    mcfg->allocation[0].address = cpu_to_le64(memmap[VIRT_PCIE_ECAM].base);
-+    mcfg->allocation[0].address = cpu_to_le64(memmap[ecam_id].base);
- 
-     /* Only a single allocation so no need to play with segments */
-     mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-     mcfg->allocation[0].start_bus_number = 0;
--    mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
-+    mcfg->allocation[0].end_bus_number = (memmap[ecam_id].size
-                                           / PCIE_MMCFG_SIZE_MIN) - 1;
- 
-     build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
-@@ -747,7 +753,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
-                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
-     acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
--                      vms->highmem);
-+                      vms->highmem, vms->highmem_ecam);
-     acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
-                        (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
-     acpi_dsdt_add_power_button(scope);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a3a28e2..a35550b 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -149,6 +149,7 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
-     [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
-     [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
-+    [VIRT_PCIE_ECAM_HIGH] =     { 0x4010000000ULL, 0x10000000 },
-     /* Second PCIe window, 512GB wide at the 512GB boundary */
-     [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
- };
-@@ -1001,10 +1002,9 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
-     hwaddr size_mmio_high = vms->memmap[VIRT_PCIE_MMIO_HIGH].size;
-     hwaddr base_pio = vms->memmap[VIRT_PCIE_PIO].base;
-     hwaddr size_pio = vms->memmap[VIRT_PCIE_PIO].size;
--    hwaddr base_ecam = vms->memmap[VIRT_PCIE_ECAM].base;
--    hwaddr size_ecam = vms->memmap[VIRT_PCIE_ECAM].size;
-+    hwaddr base_ecam, size_ecam;
-     hwaddr base = base_mmio;
--    int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
-+    int nr_pcie_buses;
-     int irq = vms->irqmap[VIRT_PCIE];
-     MemoryRegion *mmio_alias;
-     MemoryRegion *mmio_reg;
-@@ -1012,12 +1012,16 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
-     MemoryRegion *ecam_reg;
-     DeviceState *dev;
-     char *nodename;
--    int i;
-+    int i, ecam_memmap_id;
-     PCIHostState *pci;
- 
-     dev = qdev_create(NULL, TYPE_GPEX_HOST);
-     qdev_init_nofail(dev);
- 
-+    ecam_memmap_id = vms->highmem ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM;
-+    base_ecam = vms->memmap[ecam_memmap_id].base;
-+    size_ecam = vms->memmap[ecam_memmap_id].size;
-+    nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
-     /* Map only the first size_ecam bytes of ECAM space */
-     ecam_alias = g_new0(MemoryRegion, 1);
-     ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 4ac7ef6..e9423a7 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -69,6 +69,7 @@ enum {
-     VIRT_PCIE_MMIO,
-     VIRT_PCIE_PIO,
-     VIRT_PCIE_ECAM,
-+    VIRT_PCIE_ECAM_HIGH,
-     VIRT_PLATFORM_BUS,
-     VIRT_PCIE_MMIO_HIGH,
-     VIRT_GPIO,
-@@ -103,6 +104,7 @@ typedef struct {
-     FWCfgState *fw_cfg;
-     bool secure;
-     bool highmem;
-+    bool highmem_ecam;
-     bool its;
-     bool virt;
-     int32_t gic_version;
--- 
-2.5.5
+  http://mid.mail-archive.com/13d95529-d61e-fc30-ffd4-f1ef93edad40@redhat.com
 
+This series flips the sole ECAM range that is exposed to the guest to a
+large one that is located above 4GB. That's a problem because -- to my
+understanding -- it breaks 32-bit ARM UEFI builds, unless you change the
+QEMU command line.
+
+(1) Please enable the "firmware repo" from Gerd's site:
+
+https://www.kraxel.org/repos/
+
+(2) Please install the "edk2.git-arm" package.
+
+(3) Please run the 32-bit ARM UEFI firmware, with qemu-system-aarch64,
+in a separate directory, as follows (note: TCG only, KVM not needed):
+
+  cp /usr/share/edk2.git/arm/vars-template-pflash.raw vars
+  FWBIN=/usr/share/edk2.git/arm/QEMU_EFI-pflash.raw
+
+  qemu-system-aarch64 \
+    -nodefaults \
+    -no-user-config \
+    \
+    -M virt \
+    -cpu cortex-a15 \
+    -m 1024 \
+    \
+    -drive if=pflash,format=raw,file=$FWBIN,readonly \
+    -drive if=pflash,format=raw,file=vars \
+    \
+    -device virtio-gpu-pci \
+    -device qemu-xhci \
+    -device usb-kbd \
+    \
+    -chardev stdio,signal=off,mux=on,id=char0 \
+    -mon chardev=char0,mode=readline \
+    -serial chardev:char0
+
+This will boot the UEFI shell for you in a graphical window and take
+input from the keyboard in that window. A virtio-gpu-pci device is used
+as GPU (a PCI Express virtio device) and a USB3.0 keyboard is used as
+human input device (the USB3.0 controller is also PCI Express).
+
+
+I didn't test it, but I expect that this series, when applied as-is,
+will break the above use case, unless highmem is explicitly disabled.
+
+I think the first patch is OK (modulo the runaway empty line at the end
+of acpi_dsdt_add_pci()), while realizing my review cannot be complete.
+:)
+
+Regarding the second patch, I do believe we need "more sophistication"
+there. For example, I guess it could be possible to distinguish "-cpu
+cortex-a15" from "-cpu cortex-a57" somehow, and stick with the low/small
+ECAM in the former case. (The 32-bit firmware already runs on cortex-a15
+only, and not on cortex-a57, according to my testing.)
+
+Thanks,
+Laszlo

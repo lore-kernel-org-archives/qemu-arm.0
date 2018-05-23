@@ -1,100 +1,158 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1806163wre;
-        Thu, 24 May 2018 05:29:28 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL/ori1Fjx4HyfZW1o5USz4Ph6auCOVchmtTgFsi7lu+b3sJ/qD9SoQ9xyc8qSyG1BRMte1
-X-Received: by 2002:a37:ddce:: with SMTP id u75-v6mr5570958qku.147.1527164968181;
-        Thu, 24 May 2018 05:29:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527164968; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp774736wre;
+        Wed, 23 May 2018 07:08:33 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLSNz0WK6AZJ4j7uVqNZU+j4jAjYF8cPzWim2O1nUlYwrZtFG6KEtFuLMNpfr/zA78Qm6i1
+X-Received: by 2002:aed:22b6:: with SMTP id p51-v6mr2865431qtc.222.1527084513018;
+        Wed, 23 May 2018 07:08:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527084513; cv=none;
         d=google.com; s=arc-20160816;
-        b=KEgzTYvFO/4l2skQ6y1iKgz6aQo/0boUMko4r2wT+TFQSkK7v9JFLhjhbFjoIMZn+a
-         yxhcNWIBp1tEViZ2LJE6xr+CKDsxOqareY1E2oYHto/Z6EjLnv4CkocfIf+XsRVAclea
-         IdqfOzOunONZfmfMOq+77Yr4bYrsb3kkdl53S+uUAyFDPE6Hov+wD34d6N8KoDofBVy9
-         tm3zLiZXKMUg4BcVXlz7ykRYWYAV9nqX5EoBKuqVGQSwSI8mwuEyCrs4srPbLQtXorMv
-         27IN+f1DuhswrYglXXD9NOdwz5IYz9KfaN4prolkfntPCaN/njUTnHDpJyc1aF0VQfe0
-         8WxQ==
+        b=UyRbEdY5toh/XE3MGkITASJ79ogRn4wOjZEEkgaUqIfcV2HRFvs4v7dWDU+oXMpAvG
+         gpPPnE+jGkii2Ys61JY7BWAWQvt6l/oF7TSp6okALL7Awk3Ibqp2k9rGxbCznek9BIXq
+         hTLxundz40Fb2Tfq878P8wXSwvvWQ3PdMV6ZXtea3ozOeRUCc08Ycv3wOllCgHxLO6V8
+         +Uf16/l0dqp8TH1+bHrosLSdEoxgRSVByTquvR0I+mRAjiliHtH1gRII/tU07xIx56i8
+         oDgqXhwvsr1hqsnl5tkkMYswJ2qOXAanYJRq1jNlVajCDp76WmvVoeLXhc2W/a3ai5r1
+         2G/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=89M9EwgyGk+Pi134D7dU7Mc/PgKUqk/GkOvkZc/vT48=;
-        b=e5JeJEQqZnhlXa4gNTTrCjLGjVsCGcVjsavr+9WyPaKmkkq9v1I2xe+KSUbNpjG/B5
-         EZPwMFtxGcqjux6OIi61ZbLufZ4guFkcEKjQH+nQzjzuN6z7JX7pvOwg8FSslP67bqDI
-         2mnMMCtYNEY91PgN6hiklbP1oGoL2aPsLzhezxx0KnPMDtGxxi62PQeY238CsezIFX4H
-         XaIsLHLPGxD4gcUiyW4RHIQGBjrzGrv9DXQvgOqX9ya6m0UHlJ5K0wHNPxIjy11wIRHM
-         kLcCIPJ8DTyfd2ZAJ/asLEyWbBi2KpvCXWP55LdeoEslcx2aLzjlmvQe8JYEpBqUu6zV
-         2tNA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=8C2kIoXddiW373POWM2oC1LVAyCwwMQQ9nubWS0OPys=;
+        b=OSK5Gf6eS6SbN+ZpJoSAvhcZKHhMwRWfmDGISJOd2eSOArVHMt3/tm0go0VUslndlh
+         phF2LlfAYpxXRwW021Zr7obHtMOb/vlrDz0zblKXBLJoD6YNqVvHUzLhb0TMak5MjRgs
+         J6+eQoMzsOd6gZGSio1BfVAlUd1Pfo9oCBnmiQto8vx1sc7aWSIO+7r/XRe+WJNMPKjr
+         JP+4eLTjUMphacYIZIt2n/qtb4zZPxgfrtAlbZ6nP1yqEnAuDWZlHVSUTzC37Fs+0Nsk
+         8u5znhrNigtUsdqWBBMw736O5L+OvDp9P00xDc71kZaEfICTa/qPkjSIFm4c412gEnXI
+         nblA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HdadXFk2;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TVaJACnR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l7-v6si7839852qkd.186.2018.05.24.05.29.28
+        by mx.google.com with ESMTPS id v47-v6si8653070qtg.82.2018.05.23.07.08.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 05:29:28 -0700 (PDT)
+        Wed, 23 May 2018 07:08:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HdadXFk2;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TVaJACnR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38375 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33650 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLpN1-0001eQ-PI
-	for alex.bennee@linaro.org; Thu, 24 May 2018 08:29:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36346)
+	id 1fLURM-0006xb-G4
+	for alex.bennee@linaro.org; Wed, 23 May 2018 10:08:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41464)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLpMu-0001cd-9K
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:29:21 -0400
+	(envelope-from <mdavidsaver@gmail.com>) id 1fLUR5-0006q1-1z
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 10:08:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLpMt-0004qg-Bt
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:29:20 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:38590)
+	(envelope-from <mdavidsaver@gmail.com>) id 1fLUR0-0004Jt-8E
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 10:08:15 -0400
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:46382)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fLpMt-0004qE-7A
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:29:19 -0400
-Received: by mail-oi0-x243.google.com with SMTP id k17-v6so1256234oih.5
-	for <qemu-arm@nongnu.org>; Thu, 24 May 2018 05:29:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=89M9EwgyGk+Pi134D7dU7Mc/PgKUqk/GkOvkZc/vT48=;
-	b=HdadXFk2bf2GIcNlO9wiWfaBVcou+vJJQXe2Z8mIcjULVJJSYKjcNpXd2UjBGumUaf
-	NmoyNDSJDAsj/BVIf3xTcF1i422IdBKr+XqcE3ixNBibrKhYftZ7PJyPUVSjEZHWUh0j
-	0h7lLYLj6u/2i4X6QJ0ibLKF29hH9yLimcwSc=
+	(Exim 4.71) (envelope-from <mdavidsaver@gmail.com>)
+	id 1fLUQz-0004JS-Uy; Wed, 23 May 2018 10:08:10 -0400
+Received: by mail-pf0-x243.google.com with SMTP id p12-v6so10544469pff.13;
+	Wed, 23 May 2018 07:08:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=subject:to:cc:references:from:openpgp:autocrypt:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=8C2kIoXddiW373POWM2oC1LVAyCwwMQQ9nubWS0OPys=;
+	b=TVaJACnRMBFOUECi59y0OtlyvKTiDA4GiKR+SYAMP/0M6kJLNz30+Ax306ZkJgUkqa
+	sCpWNdfU8hKm8vgoXjEtEk4kVrusJvZgN+FaEoB/FLLnfyB7VpkESDcqtfwMH98+GF5r
+	+BFTzS4V5Nr00avIMsMFbBEBLd4wLIz6gLwUVtv7msmj98Kcbva/KZ/NbNaZVqgaUtGh
+	2uqdMXs+fcB/ZDj2H31Ka3dmKGVZ7e2IqLjtjcgeGKhG8jpSbpzR0at+On4pVI6Wocda
+	DQRg3eqxqJkl7BaWcEcoYj/jzAkHmKtFwmyQHT73ecoEtaUyOy2/r02AGblS01hk3Oio
+	bjKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=89M9EwgyGk+Pi134D7dU7Mc/PgKUqk/GkOvkZc/vT48=;
-	b=NYjz0XOmDLVKhojLppnkOJnGixSA4GFYoa6tJFk3ytnVY7MJsgG698NaD0Q82nZxcD
-	Te/o6YqX6GBL7wSNmYPU+mUUse2QmoL0wf3b1lW2fiiE4mh7FqR8Gt75d6/2yES72Cq3
-	XXeULBsXIgybgFLnc1f9aRkCdd/TSK2xZMTPJk9uDYBvwGmfbVZWPUgBInXgFQvdJsMG
-	5Wp95ummeTKNIwg7stPxiJEiSikMqsAL/WQ0CJVuSY4/lEVGWRhENt1ECkq82kJKkSTt
-	bf2qfJ/OjiqDYpaEVWvP9yEs4cmtgF1Od5MVFBBkQejIkJyQXOwOf+n/ppR7P9fSbeA8
-	pX9Q==
-X-Gm-Message-State: ALKqPwc3nyDLOGlGmCgHNBUg8jGN2p8Rzxo2jdkK/zUVu6IWi/972TBP
-	k0s1RGVbFzlPsswpouqlmeajBEJ1FQMgsd22Q23yPQ==
-X-Received: by 2002:aca:b855:: with SMTP id
-	i82-v6mr3878067oif.12.1527164958396; 
-	Thu, 24 May 2018 05:29:18 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=8C2kIoXddiW373POWM2oC1LVAyCwwMQQ9nubWS0OPys=;
+	b=J7GguNnCm6zaC3oc8+ZofLZQWlGDJHlWznGwdRQGb5F5tkytNgJY+b1/rJDRz9nl2Z
+	xKfD21gEQJm969ieurQ4el3CcZ6cy47X+d2Ocu7aSNJZ1pb8bbz8s2VWF/6mALNZ2dDZ
+	64Z+6I8ahfYK12LjhVYcQmpZKNvEThp6WhvI3lej1vpvL3Y380apERti2lIV0uJpRZpm
+	q2RdASovqQOdNMSKgZcieeknqs4OG7cFR3GVXDE9+SaB6wufJL2hGFsoLNfmmZphuGJj
+	WAfgal7HZtWArDhfcH0nqzUe0zk2/BovTsOEBXKqpBjhwgevP8DPHQ4+FU4v2FLa5QqO
+	L5AQ==
+X-Gm-Message-State: ALKqPweufqf5eLHODvTmsuCBEbF4/g6NedOxivIXM2FM/e161vts6BoG
+	KKr8y3Wfp9HTPKBGzjLoL9sYag==
+X-Received: by 2002:a63:6445:: with SMTP id
+	y66-v6mr2376656pgb.283.1527084487947; 
+	Wed, 23 May 2018 07:08:07 -0700 (PDT)
+Received: from [10.166.151.145] (c-73-158-53-43.hsd1.ca.comcast.net.
+	[73.158.53.43]) by smtp.gmail.com with ESMTPSA id
+	k193-v6sm24126891pgc.39.2018.05.23.07.08.05
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 23 May 2018 07:08:06 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+References: <20180522191743.12872-1-pbonzini@redhat.com>
+	<336d4fa2-623c-1cb6-829d-71cf7039431e@redhat.com>
+From: Michael Davidsaver <mdavidsaver@gmail.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=mdavidsaver@gmail.com; prefer-encrypt=mutual; keydata=
+	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
+	K+n7samiPH8tvucm6sW8SnE=
+Message-ID: <f2d5a6ca-6342-0e59-0003-7a6ec3a7275d@gmail.com>
+Date: Wed, 23 May 2018 07:08:05 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 24 May 2018 05:28:58
-	-0700 (PDT)
-In-Reply-To: <CABoDooOCO+NCjZaPVa6jFzEWztHSBDEMfsmjbJ_gOGNk3PRWNw@mail.gmail.com>
-References: <20180522175629.24932-1-richard.henderson@linaro.org>
-	<CABoDooOCO+NCjZaPVa6jFzEWztHSBDEMfsmjbJ_gOGNk3PRWNw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 May 2018 13:28:58 +0100
-Message-ID: <CAFEAcA_YoGsJ_Yuc5EFBJwnANdNXb6YQ3tV5pyDr8RD=0itXbg@mail.gmail.com>
-To: Laurent Desnogues <laurent.desnogues@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <336d4fa2-623c-1cb6-829d-71cf7039431e@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] tcg: Fix helper function vs
- host abi for float16
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH] ppc: move at24c to its own
+ CONFIG_ symbol
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,38 +164,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1R7Yukjqr3pU
+X-TUID: W5m5j/UeF0rl
 
-On 23 May 2018 at 06:10, Laurent Desnogues <laurent.desnogues@gmail.com> wrote:
-> Some AArch64 tests I had that previously failed on a x86-64 host now pass.
->
-> Tested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+On 05/22/2018 10:30 PM, Thomas Huth wrote:
+> On 22.05.2018 21:17, Paolo Bonzini wrote:
+>> AT24c EEPROM is currently gated by CONFIG_I2C, and as such it is
+>> being included in all emulators that use I2C, even if they do not
+>> really need it.  Separate it and, since it was added for the e500
+>> machines, add it to qemu-system-ppc and qemu-system-ppc64.
+>> ---
+>>  default-configs/ppc-softmmu.mak | 1 +
+>>  hw/nvram/Makefile.objs          | 2 +-
+>>  2 files changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
+>> index 4d7be45ac5..c57e568121 100644
+>> --- a/default-configs/ppc-softmmu.mak
+>> +++ b/default-configs/ppc-softmmu.mak
+>> @@ -26,6 +26,7 @@ CONFIG_USB_EHCI_SYSBUS=y
+>>  CONFIG_SM501=y
+>>  CONFIG_IDE_SII3112=y
+>>  CONFIG_I2C=y
+>> +CONFIG_AT24C=y
+>>  
+>>  # For Macs
+>>  CONFIG_MAC=y
+>> diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
+>> index a912d25391..b318e53a43 100644
+>> --- a/hw/nvram/Makefile.objs
+>> +++ b/hw/nvram/Makefile.objs
+>> @@ -1,6 +1,6 @@
+>>  common-obj-$(CONFIG_DS1225Y) += ds1225y.o
+>>  common-obj-y += eeprom93xx.o
+>> -common-obj-$(CONFIG_I2C) += eeprom_at24c.o
+>> +common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
+>>  common-obj-y += fw_cfg.o
+>>  common-obj-y += chrp_nvram.o
+>>  common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
+> 
+> Since this is a device that can only be added by the user (no board is
+> using it automatically, as far as I can see),
 
-Thanks for the testing.
+The board which prompted me to add this device is still out there and
+I'm still intent on pursuing getting it into QEMU.  It's clearly going
+to be some time before this can happen as there are RTC and e500
+patches that would need to get in first, and my time to spend on this
+has been non-existent in recent months.
 
-> Perhaps the two occurrences of the following comment in
-> target/arm/translate-a64.c could be removed along with this patch:
->
->             /* write_fp_sreg is OK here because top half of tcg_rd is zero */
+https://github.com/mdavidsaver/qemu/commits/vme
 
-I think this comment remains correct, doesn't it? At this point
-we've just called a helper routine which is 'f16' return. With
-this patch, that means that (by virtue of being uint16_t return
-type as far as C is concerned), it will have returned a 32 bit
-value into the TCGv_i32 whose bits [31:16] are zero, as the
-comment says. We require that because we're using
-write_fp_sreg() to update the vector register, and that function
-zeroes out bits [127:32] and assumes [31:16] from its input
-should all go into the vector register; but the instruction's
-semantics require [127:16] to be zeroed, and it's only because
-we know [31:16] are zero in the return value that we can
-get away with calling write_fp_sreg() rather than requiring a
-new write_fp_hreg().
+> it could be useful for
+> other machines, too, I guess? Anyway, it's a good idea to have a
+> separate config switch available for it, and we can add it to other
+> machines again later if somebody feels that it is necessary, so (once
+> you add your SoB):
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> 
 
-thanks
--- PMM

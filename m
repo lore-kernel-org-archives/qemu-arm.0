@@ -1,126 +1,206 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1806762wme;
-        Tue, 22 May 2018 11:06:20 -0700 (PDT)
-X-Received: by 2002:a62:1fc8:: with SMTP id l69-v6mr25335811pfj.49.1527012380200;
-        Tue, 22 May 2018 11:06:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527012380; cv=none;
+Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp225629wme;
+        Tue, 22 May 2018 18:06:44 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZoY7xwe/xCSxW257zuIpal7ecaKCGE5mjZNYmTjLhWHlF8Ai+6HB2aG4mvAjnttFGx2a6Rm
+X-Received: by 2002:ac8:2a2f:: with SMTP id k44-v6mr777331qtk.180.1527037604379;
+        Tue, 22 May 2018 18:06:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527037604; cv=none;
         d=google.com; s=arc-20160816;
-        b=TQyfM4gKw7yve0EoNIv91Clkg6yFmWsKf8S9CSnEGFccCn/Pkocwfj1S5egOGu5tjJ
-         UjXBPGnC4L1c9ZohABxLdKy5P1ocYLGd2Tajn/A0aU4jHdkYAULVXpaks1QH+puLOnup
-         fnPUN9iLAIHRk/d9OuRptjMkNxs+KGKOynveQDyUAqGKxZ30eOvMjRWWkvQtAHbNBtFk
-         yRLL2GlSgopHhjI/jsXrqk0y8d/dL4g/h8ibBQi3aJTXrfqm/v5iTQkkAqRh9rw9Z9Cg
-         WmKWkOEKajIyNXRblbQ2cMwHQU0ac0NfB5Ob0nVh9mLzMrMsBX2eWhs8fxrz5OgOvqsp
-         jalw==
+        b=FF3AFEMA90IdPA0evMWKtJyYl1wcglRdRrnMgf+PFUHCgD5FtczYIyxNGSx5RIhlu9
+         XGFWaACuq2NQXv6uJmWTyQ/7xFeoZWgV9cVQijB9pS/UXHoM4ODlr93aEtJlYHXPRGGN
+         OhWLM82SVmmhZNMF9ecd5CHLBmT/gUayLei3Q0w7VByZa3LDlAeRBB7lj92M107Usc7Y
+         hjsKp6fJNEI8s3nA6ZoW3edQT5nM4buFShcPTHaURo2/hJezYIWygPQa4Ewe5aQxu9RH
+         6PLU+E9R1G7eNP6Mb4CXTL/y73fveKiTs0lTqe4wY+abb3rzFqFoTtHqI1xYkx8nhNYK
+         nNKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject:sender:dkim-signature:arc-authentication-results;
-        bh=kVF90YaENbufVLOpnUwnkcNJZWzTi/3I1BatEHhIQoc=;
-        b=J6tgsHpsWb/GxHBwwq/v+4ek8Uu2mQ1Pg4fvab8yjzpxt++a+/lS+lIllSGSd8f+CQ
-         KrFXofQF5eDTnuebTQZWBp3Li0Sih/aMH/5I4SnCvrStL8Byvwim4PNCqyMAdGzgNoAA
-         V3/igXZ4khjYCN/cayzFF3BLqZ/zI6jM34Pc4THy8ykwIw+m/ScRWIw/FHHpSMLA4peE
-         v3e0hjhKD8ek19Wnfmd0irtu1dclUt5A+0trJWxWyIS9YDPy/IuFKLod/ov9DvtXtqPS
-         Ikhn4JUMshdZDyjK5FSDfukv5hy3QgBQe1LbWMKd8P1M2007i9l7qmZZF12yzSvGnMcW
-         2BFQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=Z8mF2lhUyYJYP0xmw/DRM38iyWuLLO3CcJxVCgf+Di4=;
+        b=JV7DfHqqzVo/2G5nakyOUEajGuEq3rtJtn6V4dkalg61qBsk38nEMbsWbi8LDhluek
+         g5KF3RfdAA+6NAv80feXjlNYe4vIsn0tDOHccCUv/mQxT8wiaubX2/hnccWJD1Su7lc4
+         EAohBjgvVxsW1eaX9OwE44uPlKXxDvHU4rhU2fpOhfiCg2Spm3gsvjEo6Y2byyF71dk0
+         A4eniu8pj/1Qd6jd2k1mac1FANT4+XzDzkrbBnMF3QD0TsYESOYtp4t9qq7l83Hc6WTH
+         tJedqMeTMFeHt4h9B8qVDuIjSmKRnrAMMjgU3s8XQ40YLdYx6RCaq6mmvKKHPr+c5Dpe
+         eQmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gxk0eHVU;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t125-v6sor5176008pgc.259.2018.05.22.11.06.19
-        (Google Transport Security);
-        Tue, 22 May 2018 11:06:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gxk0eHVU;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=kVF90YaENbufVLOpnUwnkcNJZWzTi/3I1BatEHhIQoc=;
-        b=Gxk0eHVUn+vPQialy4FfCoSowCCGjT6ixAelE6Fz1OgvoCz1dD2UCQz2PH2F1FcFX+
-         VRjSgmiCztiXRTbvkdDqFTBZAitihgM2tnTKOQ9z0ug2vNsj6DakHQUGF6jKn/jPrJoQ
-         eFgs2sUCkMNEEdFMsjsTwU+cpg4Kdy+j95EgfVDYi9jM5f3imRwEc4T1/dGlkhoo4Aw0
-         fV4zeKAqjtjO2mDmkq+Mqfdq38ZQTdVvO5zOuOp6FOZiqr9lkT0qe6VGgsiUyq9rljDk
-         IRRJrU2mvWcvTCXeW+e8DSExY86LQ/t6RNvcWEkCNFFlJmdjSlq2yyMnL5ve7UNpyC+J
-         vmxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=kVF90YaENbufVLOpnUwnkcNJZWzTi/3I1BatEHhIQoc=;
-        b=BDKldpS1HWX2kHAPHKc5NzAe5SwGUAxWa7rwu1ceF0WZJ8+uKr52RS7qa/OeKSAQis
-         7QUgYSwiIZzpQBz9u9Z1tjNZPcZgx/3V/MP/vPeJd24pQNXBPc2ARxfq927TEIeThk9N
-         R3NAnhw/GR6lzTZkoLlV6ZZ9g9+PIdRWK6Cr8jHXP9eHd8z+8/gVgUoHihavvXTprs6e
-         UoGRYlz45m+Lrwh/fYXLnPzfdl5joRQR8Ebi8SAOisE/ieD5m6/udH11ZUSv9ZI0UpMF
-         l/ruQlQJ8FONT6y8HglkKrf/YHga3kb1eLiNdk3kUUwPOlJZmI7PgZBVek6nCov3DGLX
-         vuHw==
-X-Gm-Message-State: ALKqPwdiN7K0scBzbc07kmXSziSgNJxMRO7rVQ0L+JkuDtznsbjOdIkO
-	b3dT5l8Ey9JMAII0QRuutLGkluL8
-X-Google-Smtp-Source: AB8JxZreJQNcYrKFkNjKM2knMHUgsxsn8VG4cQMrAb9R4pnsTwIr3X+w8Ayv6ghKODYXdBjwccFBzQ==
-X-Received: by 2002:a65:498e:: with SMTP id r14-v6mr19408564pgs.78.1527012379511;
-        Tue, 22 May 2018 11:06:19 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
-        by smtp.googlemail.com with ESMTPSA id y83-v6sm42415347pfd.21.2018.05.22.11.06.18
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <peterx@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id o14-v6si789604qta.356.2018.05.22.18.06.43
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 May 2018 11:06:18 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH 16/27] iommu: Add IOMMU index argument to translate method
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+        Tue, 22 May 2018 18:06:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 33E6E40BC050;
+	Wed, 23 May 2018 01:06:43 +0000 (UTC)
+Received: from xz-mi (ovpn-12-63.pek2.redhat.com [10.72.12.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4E934200BC5E;
+	Wed, 23 May 2018 01:06:39 +0000 (UTC)
+Date: Wed, 23 May 2018 09:06:36 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
+ IOMMU API
+Message-ID: <20180523010636.GC31932@xz-mi>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-17-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
- xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
- n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
- rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
- Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
- n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
- AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
- cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
- Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
- eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
- LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
- Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
- 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
- 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
- I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
- VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
- +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
- AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
- Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
- prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
- /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
- jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
- VcROBqvtH3ecaIL9iw==
-Message-ID: <23332ec0-bf12-7e04-8261-533c52c3f314@twiddle.net>
-Date: Tue, 22 May 2018 11:06:16 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+ <20180521140402.23318-15-peter.maydell@linaro.org>
+ <20180522030333.GB17282@xz-mi>
+ <CAFEAcA-iOYhuPfvDv+iD6jBqXMXqN-jfTpSSBub1Zp1i-JcDbQ@mail.gmail.com>
+ <20180522110236.GB31932@xz-mi>
+ <CAFEAcA9b6dmpj+B=SO2YsB5sXsh=UPjkjN_U0i-uJhiDn20HHw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20180521140402.23318-17-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 8UtI5qq9Wke9
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9b6dmpj+B=SO2YsB5sXsh=UPjkjN_U0i-uJhiDn20HHw@mail.gmail.com>
+User-Agent: Mutt/1.9.5 (2018-04-13)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]); Wed, 23 May 2018 01:06:43 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]); Wed, 23 May 2018 01:06:43 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'peterx@redhat.com' RCPT:''
+X-TUID: W6zCbdNyFVPf
 
-On 05/21/2018 07:03 AM, Peter Maydell wrote:
-> Add an IOMMU index argument to the translate method of
-> IOMMUs. Since all of our current IOMMU implementations
-> support only a single IOMMU index, this has no effect
-> on the behaviour.
+On Tue, May 22, 2018 at 12:11:38PM +0100, Peter Maydell wrote:
+> On 22 May 2018 at 12:02, Peter Xu <peterx@redhat.com> wrote:
+> > On Tue, May 22, 2018 at 09:40:44AM +0100, Peter Maydell wrote:
+> >> On 22 May 2018 at 04:03, Peter Xu <peterx@redhat.com> wrote:
+> >> The reason for not just passing in the transaction attributes to
+> >> translate is that
+> >> (a) the iommu index abstraction makes the notifier setup simpler:
+> >> rather than having to have some indication in the API of which
+> >> of the transaction attributes are important and which the notifier
+> >> cares about, we can just use indexs
+> >
+> > Hmm, so here IIUC we'll have a new IOMMU notifier that will only
+> > listen to part of the IOMMU notifies, e.g., when attrs.secure=true.
+> > Yes I think adding something into IOMMUNotifier might work, but just
+> > to mention that in IOMMUTLBEntry we have IOMMUTLBEntry.target_as
+> > defined.  Until now it's hardly used at least on x86 platform since
+> > all of the translations on x86 are targeted to the system RAM.
+> > However it seems to be quite tailored in this case since it seems to
+> > me that different attrs.secure value for translations should be based
+> > on different address spaces too.  Then in the IOMMU notifiers that
+> > would care about MemTxAttrs, could it be possible to identify that by
+> > check against the IOMMUTLBEntry.target_as?
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
+> No, because you can have a single address space that receives
+> transactions with various attributes. (Again, the MPC is an
+> example of this.)
+> 
+> >> (b) it means that it's harder to write an iommu with the bug that
+> >> it looks at parts of the transaction attributes that it didn't
+> >> claim were important in the notifier API
+> >
+> > It is just confusing to me when I looked at current translate()
+> > interface (I copied it from some other patch of the series):
+> >
+> > @@ -252,9 +252,10 @@ typedef struct IOMMUMemoryRegionClass {
+> >       * @iommu: the IOMMUMemoryRegion
+> >       * @hwaddr: address to be translated within the memory region
+> >       * @flag: requested access permissions
+> > +     * @iommu_idx: IOMMU index for the translation
+> >       */
+> >      IOMMUTLBEntry (*translate)(IOMMUMemoryRegion *iommu, hwaddr addr,
+> > -                               IOMMUAccessFlags flag);
+> > +                               IOMMUAccessFlags flag, int iommu_idx);
+> >
+> > The "iommu_idx" parameter is really hard to understand here at the
+> > first glance.  Now I think I understand that it is somehow related to
+> > the MemTxAttrs, but still it will take time to understand.
+> 
+> The part of the documentation where I try to explain the general
+> idea is in this patch, in the comment at the top of the struct:
+> 
+> + * Conceptually an IOMMU provides a mapping from input address
+> + * to an output TLB entry. If the IOMMU is aware of memory transaction
+> + * attributes and the output TLB entry depends on the transaction
+> + * attributes, we represent this using IOMMU indexes. Each index
+> + * selects a particular translation table that the IOMMU has:
+> + *   @attrs_to_index returns the IOMMU index for a set of transaction
+> attributes
+> + *   @translate takes an input address and an IOMMU index
+> + * and the mapping returned can only depend on the input address and the
+> + * IOMMU index.
+> + *
+> + * Most IOMMUs don't care about the transaction attributes and support
+> + * only a single IOMMU index. A more complex IOMMU might have one index
+> + * for secure transactions and one for non-secure transactions.
+> 
+> Do you have suggestions for how to improve on this?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Not yet.  But I have some other questions below...
 
-r~
+> 
+> > And if we see current implementation for this (still, I copied code
+> > from other patch in the series to here to ease discussion):
+> >
+> > @@ -498,8 +498,15 @@ static MemoryRegionSection address_space_translate_iommu(IOMMUMemoryRegion *iomm
+> >      do {
+> >          hwaddr addr = *xlat;
+> >          IOMMUMemoryRegionClass *imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
+> > -        IOMMUTLBEntry iotlb = imrc->translate(iommu_mr, addr, is_write ?
+> > -                                              IOMMU_WO : IOMMU_RO);
+> > +        int iommu_idx = 0;
+> > +        IOMMUTLBEntry iotlb;
+> > +
+> > +        if (imrc->attrs_to_index) {
+> > +            iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
+> > +        }
+> > +
+> > +        iotlb = imrc->translate(iommu_mr, addr, is_write ?
+> > +                                IOMMU_WO : IOMMU_RO, iommu_idx);
+> >
+> > Here what if we pass attrs directly into imrc->translate() and just
+> > call imrc->attrs_to_index() inside the arch-dependent translate()
+> > function?  Will that work too?
+> 
+> You don't always have the attributes at the point where you want
+> to call translate. (For instance, memory_region_notify_iommu()
+> doesn't have attributes.)
+> 
+> I started off with "pass the tx attrs into the translate method",
+> which is fine for the code flows which are actually doing
+> memory transactions, but breaks down when you try to incorporate
+> notifiers.
+
+Could you elaborate a bit more on why IOMMU notifier failed to
+corporate when passing in MemTxAttrs?  I am not sure I caught the idea
+here, but can we copy the MemTxAttrs into IOMMUTLBEntry when
+translating, then in IOMMU notifiers we can know the attrs (if that is
+what MPC wants)?
+
+> 
+> > I had a quick glance at the series, I have no thorough idea on the
+> > whole stuff, but I'd say some of the patches are exactly what I wanted
+> > if to support MemTxAttrs in VT-d emulation one day (now DMAR of VT-d
+> > is bypassing MemTxAttrs and IMHO that's incorrect).  If we can somehow
+> > pass in the MemTxAttrs then that'll be perfect and I can continue to
+> > work on that.  If we pass in iommu_idx now instead, it would take some
+> > time for me to figure out how to further achieve the same goal for
+> > VT-d in the future, e.g., I would still want to pass in MemTxAttrs,
+> > but that's obviously duplicated with iommu_idx.
+> 
+> The idea is that you should never need to pass in the MemTxAttrs,
+> because everything that the IOMMU might care about in the tx attrs
+> must be encoded into the iommu index. (The point where the IOMMU
+> gets to do that encoding is in its attrs_to_index() method.)
+
+For the DMAR issue I would care about MemTxAttrs.requester_id.  Just
+to confirm - do you mean I encode the 16bits field into iommu_idx too,
+or is there any smarter way to do so?  Asked since otherwise iommu_idx
+will gradually grow into another MemTxAttrs to me.
+
+Thanks,
+
+-- 
+Peter Xu

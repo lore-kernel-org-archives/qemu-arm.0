@@ -1,92 +1,85 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp379350wre;
-        Tue, 22 May 2018 22:30:51 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLwy9qBOBBsOlst6fsT3tkvR/P5vALxwJc9tHAklb945o6IQHrbcm4z/ZquYF6Pva0tY0vn
-X-Received: by 2002:a37:b746:: with SMTP id h67-v6mr1169090qkf.119.1527053451095;
-        Tue, 22 May 2018 22:30:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527053451; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp527671wre;
+        Wed, 23 May 2018 02:13:46 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJGGt+CfYGloyG3N+VZbyyfiQOMmh19RFN2yEEOWoTHbREBkWPIpxncJxYHRAbVsTU8K7os
+X-Received: by 2002:ac8:376b:: with SMTP id p40-v6mr1848800qtb.282.1527066826806;
+        Wed, 23 May 2018 02:13:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527066826; cv=none;
         d=google.com; s=arc-20160816;
-        b=yttji3F2UrzMVBjmNKq5FA6lKIFyefLA7OwEa99eDIVAaQfhH/QlrlQFtVcL1rz4dd
-         W/EK+tVqnWBOmIv9z/sHLGmc2BdN7rTsXzWbpkm10QZjAwxhcSITb3ykXxMD8yEO5+kx
-         Yj18JVgr7WPqphTIcwI8m5YozlEHAEIquAvXekKQtA14UEd8XVKKMUnEwg6j5ndSHKZT
-         mi6+JItp2L+xB+rOjDJnHrHmO6vrDnzZ7YiDRdTrLL4epCZpZvblEE8iPD3bRwcwMEC9
-         5/fNE8/vmGj3ktRnuvjE4QYsk+VVu5XyG/qRxVXAjXmX72VACnMpnQxniJ9ot+MFeydl
-         57Pw==
+        b=WS2mNcaNAQ4/X2Qk4ypQOcFX8E/ZJvE6xYK2rMHmVlTbmnLl6c8BwpE3IQa1y0N0oX
+         /gXAhy0+YWuPGWFVCImRYfXdqq8L28Ojqb7sSEhq7mjAONCHS/cP+rUqr85ZMCeZdkKH
+         /IlfbAbKSwfyKbP478Lbq60cVkhidXBaqBgxxtDQGmonRcmmsyKqhWqI2Xb1w2wKi9RM
+         /c+wzkFEPXL8dg4m+ZD/UhtKB+rsFcUCH3U2rk6/s4FVJlVdrOr1YgqB//Rph0sdt2Cu
+         6WkVZCMzZa+FkjARrxNoNdVM1UnmHNq1hsx+syWrEBlJIHFUdbc3t+17NaLinBZf5KT5
+         i3uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=A8TDcUaLiPoQUA/cWPCPCz+BfnlXKXGJrFhmNHB19lc=;
-        b=DDutWR6FQ84JagLlw451oD+yd2vUztcV1X3PrTXcYyoj1vuG0t855ANw/PKadO8OaZ
-         QDYeHGNmunIJVMSiSn8cLX8nyF5+TdbkVYWvtLO41oYvpjvok4hfD30gUlTpUAspyeo+
-         MIVC2+P6cOJO9FNAjCZA/X79R1UYMftZOrDV8gNuZKccLQnRvcZgUbtWtp3n4nWLQXsc
-         gBVXoUILi9Sd6DHQtgpSVUP9XqGGKphy13aZNTCvbNME8Y9ZkccA5utqgbViBd2Bv3ll
-         BvMkKKDYreTFFKtG/nhfpnwRibJQNOfb5gcVfiP6mrklNYl8cRr4HfrDrCRU3DA9XXLu
-         ps8w==
+        bh=Q3bODcTXRdyyZTlum98wNPa3QiWZvyhqu2gVaHvfLa0=;
+        b=dwFLZ0L/QUFlLQkgv/+SejJ/5rAYtI7KKZJLdBbUWMoC5+Y8f5xPB34Mzb9YFPaAtZ
+         UMGT5Eo72aF9Ehh98bJom2XKWyhJoMW5L5H3ttCmGyxCM5TYtIl9CB7Am+GiLbUZPoze
+         GnjpOi1ln560AdaicKpgbhaXzzgwEma3h1UDCG/F4rZAxz5AdOKBn13o2NdltApnkggV
+         LOWMjhqlkDxCCLBPQWF8CyE+V+kBcbFfJb4jnEXl1nzxzulb4Os5j//+M3IcyuhARlwl
+         EwSq1iYJq7+I8WggcglgQyHqQ9E/JpcldQGnb/VH9cjDSRG9Eb5+XUCvz3MHV6ONZGcm
+         Ns/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s3-v6si13059488qte.232.2018.05.22.22.30.50
+        by mx.google.com with ESMTPS id g186-v6si1275636qkg.63.2018.05.23.02.13.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 May 2018 22:30:51 -0700 (PDT)
+        Wed, 23 May 2018 02:13:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59312 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:59996 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLMMM-0007Py-Ko
-	for alex.bennee@linaro.org; Wed, 23 May 2018 01:30:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37138)
+	id 1fLPq6-0004EI-B4
+	for alex.bennee@linaro.org; Wed, 23 May 2018 05:13:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fLMMF-0007Ps-EG
-	for qemu-arm@nongnu.org; Wed, 23 May 2018 01:30:44 -0400
+	(envelope-from <clg@kaod.org>) id 1fLPpv-0004Cv-GN
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 05:13:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fLMMA-0004Vl-J1
-	for qemu-arm@nongnu.org; Wed, 23 May 2018 01:30:43 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50992 helo=mx1.redhat.com)
+	(envelope-from <clg@kaod.org>) id 1fLPps-0004hW-7H
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 05:13:35 -0400
+Received: from 3.mo173.mail-out.ovh.net ([46.105.34.1]:42392)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fLMMA-0004VX-Et; Wed, 23 May 2018 01:30:38 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DBF8C4022909;
-	Wed, 23 May 2018 05:30:37 +0000 (UTC)
-Received: from [10.36.116.80] (ovpn-116-80.ams2.redhat.com [10.36.116.80])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0841D20A8471;
-	Wed, 23 May 2018 05:30:35 +0000 (UTC)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20180522191743.12872-1-pbonzini@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <336d4fa2-623c-1cb6-829d-71cf7039431e@redhat.com>
-Date: Wed, 23 May 2018 07:30:34 +0200
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fLPps-0004gy-0O
+	for qemu-arm@nongnu.org; Wed, 23 May 2018 05:13:32 -0400
+Received: from player714.ha.ovh.net (unknown [10.109.120.111])
+	by mo173.mail-out.ovh.net (Postfix) with ESMTP id 4EF97C08AD
+	for <qemu-arm@nongnu.org>; Wed, 23 May 2018 11:13:30 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: postmaster@kaod.org)
+	by player714.ha.ovh.net (Postfix) with ESMTPSA id D21F73C00BE;
+	Wed, 23 May 2018 11:13:26 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20180522173713.26282-1-peter.maydell@linaro.org>
+	<d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
+	<CAFEAcA_3P-JEsiz_3ZdVhG2kcQ+Y3yOAufLQtHknuzufRosANQ@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <013774a0-6ec4-7a37-79c7-d3068b4cc5bc@kaod.org>
+Date: Wed, 23 May 2018 11:13:25 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <20180522191743.12872-1-pbonzini@redhat.com>
+In-Reply-To: <CAFEAcA_3P-JEsiz_3ZdVhG2kcQ+Y3yOAufLQtHknuzufRosANQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Wed, 23 May 2018 05:30:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Wed, 23 May 2018 05:30:37 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-Ovh-Tracer-Id: 3510837388035721987
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrgeeggddufecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH] ppc: move at24c to its own
- CONFIG_ symbol
+X-Received-From: 46.105.34.1
+Subject: Re: [Qemu-arm] [PATCH] Correct CPACR reset value for v7 cores
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,52 +91,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Michael Davidsaver <mdavidsaver@gmail.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aQAvhFbocZ9P
+X-TUID: F6lWden9/BJD
 
-On 22.05.2018 21:17, Paolo Bonzini wrote:
-> AT24c EEPROM is currently gated by CONFIG_I2C, and as such it is
-> being included in all emulators that use I2C, even if they do not
-> really need it.  Separate it and, since it was added for the e500
-> machines, add it to qemu-system-ppc and qemu-system-ppc64.
-> ---
->  default-configs/ppc-softmmu.mak | 1 +
->  hw/nvram/Makefile.objs          | 2 +-
->  2 files changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
-> index 4d7be45ac5..c57e568121 100644
-> --- a/default-configs/ppc-softmmu.mak
-> +++ b/default-configs/ppc-softmmu.mak
-> @@ -26,6 +26,7 @@ CONFIG_USB_EHCI_SYSBUS=y
->  CONFIG_SM501=y
->  CONFIG_IDE_SII3112=y
->  CONFIG_I2C=y
-> +CONFIG_AT24C=y
->  
->  # For Macs
->  CONFIG_MAC=y
-> diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
-> index a912d25391..b318e53a43 100644
-> --- a/hw/nvram/Makefile.objs
-> +++ b/hw/nvram/Makefile.objs
-> @@ -1,6 +1,6 @@
->  common-obj-$(CONFIG_DS1225Y) += ds1225y.o
->  common-obj-y += eeprom93xx.o
-> -common-obj-$(CONFIG_I2C) += eeprom_at24c.o
-> +common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
->  common-obj-y += fw_cfg.o
->  common-obj-y += chrp_nvram.o
->  common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
+On 05/22/2018 09:26 PM, Peter Maydell wrote:
+> On 22 May 2018 at 20:06, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>> On 05/22/2018 07:37 PM, Peter Maydell wrote:
+>>> This is sufficient that a save-and-reload while the romulus-bmc
+>>> machine is in the bootloader will work. On the other hand if
+>>> I do a save-and-reload after the kernel has started booting
+>>> then we get the classic "guest hang after reload", so some
+>>> state is still not being transferred somewhere (probably in
+>>> a device in the machine model?)
+>>
+>> I see the problem. Bizarre.
+>=20
+> Usually it means that something in the path from timer device
+> through to the CPU has failed to save-and-reload the state
+> that it needs to, so that when the timer fires post-reload
+> it doesn't actually cause a CPU interrupt. You can probably
+> debug by putting a breakpoint on whatever looks like a likely
+> timer device's 'set the irq line' function and stepping
+> through to figure out what's happening.
 
-Since this is a device that can only be added by the user (no board is
-using it automatically, as far as I can see), it could be useful for
-other machines, too, I guess? Anyway, it's a good idea to have a
-separate config switch available for it, and we can add it to other
-machines again later if somebody feels that it is necessary, so (once
-you add your SoB):
+OK. I will take a look.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+What is bizarre is that the romulus-bmc and the palmetto-bmc
+machines use the same timer controller model and the same Linux=20
+driver. So only the CPU type would differ.
+=20
+> (You're not using trustzone, are you? I know of a bug with
+> migration of cpus with TZ enabled which I'm probably going to
+> look at later this week)
+
+The PSR is :
+
+	PSR=3D20000093 --C- A S svc32
+
+'S' for secure. Is that also trustzone ?
+
+Thanks,
+
+C.=20

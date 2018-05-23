@@ -1,191 +1,172 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id q12-v6sm9624514wrp.54.2018.05.23.04.39.36
+        by smtp.gmail.com with ESMTPSA id a129-v6sm1901148wme.34.2018.05.23.04.41.19
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 May 2018 04:39:36 -0700 (PDT)
+        Wed, 23 May 2018 04:41:19 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 79E233E006A;
-	Wed, 23 May 2018 12:39:36 +0100 (BST)
-References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-27-peter.maydell@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 84ABF3E006A;
+	Wed, 23 May 2018 12:41:19 +0100 (BST)
+References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-28-peter.maydell@linaro.org>
 User-agent: mu4e 1.1.0; emacs 26.1
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 26/27] hw/arm/iotkit: Wire up MPC interrupt lines
-In-reply-to: <20180521140402.23318-27-peter.maydell@linaro.org>
-Date: Wed, 23 May 2018 12:39:36 +0100
-Message-ID: <87tvqytxc7.fsf@linaro.org>
+Subject: Re: [PATCH 27/27] hw/arm/mps2-tz.c: Instantiate MPCs
+In-reply-to: <20180521140402.23318-28-peter.maydell@linaro.org>
+Date: Wed, 23 May 2018 12:41:19 +0100
+Message-ID: <87sh6itx9c.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: NeWyAqPbySJ+
+X-TUID: 8YtlYLxFmAo5
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> The interrupt outputs from the MPC in the IoTKit and the expansion
-> MPCs in the board must be wired up to the security controller, and
-> also all ORed together to produce a single line to the NVIC.
+> Instantiate and wire up the Memory Protection Controllers
+> in the MPS2 board itself.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  include/hw/arm/iotkit.h |  6 ++++
->  hw/arm/iotkit.c         | 74 +++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 80 insertions(+)
+>  hw/arm/mps2-tz.c | 71 ++++++++++++++++++++++++++++++------------------
+>  1 file changed, 44 insertions(+), 27 deletions(-)
 >
-> diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
-> index b21cf1ab9d..2cddde55dd 100644
-> --- a/include/hw/arm/iotkit.h
-> +++ b/include/hw/arm/iotkit.h
-> @@ -42,6 +42,9 @@
->   *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_enable
->   *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_clear
->   *  + named GPIO inputs ahb_ppcexp{0,1,2,3}_irq_status
-> + * Controlling each of the 16 expansion MPCs which a system using the Io=
-TKit
-> + * might provide:
-> + *  + named GPIO inputs mpcexp_status[0..15]
+> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+> index 8dc8bfd4ab..a58b5dea79 100644
+> --- a/hw/arm/mps2-tz.c
+> +++ b/hw/arm/mps2-tz.c
+> @@ -44,6 +44,7 @@
+>  #include "hw/timer/cmsdk-apb-timer.h"
+>  #include "hw/misc/mps2-scc.h"
+>  #include "hw/misc/mps2-fpgaio.h"
+> +#include "hw/misc/tz-mpc.h"
+>  #include "hw/arm/iotkit.h"
+>  #include "hw/devices.h"
+>  #include "net/net.h"
+> @@ -64,13 +65,12 @@ typedef struct {
+>
+>      IoTKit iotkit;
+>      MemoryRegion psram;
+> -    MemoryRegion ssram1;
+> +    MemoryRegion ssram[3];
+>      MemoryRegion ssram1_m;
+> -    MemoryRegion ssram23;
+>      MPS2SCC scc;
+>      MPS2FPGAIO fpgaio;
+>      TZPPC ppc[5];
+> -    UnimplementedDeviceState ssram_mpc[3];
+> +    TZMPC ssram_mpc[3];
+>      UnimplementedDeviceState spi[5];
+>      UnimplementedDeviceState i2c[4];
+>      UnimplementedDeviceState i2s_audio;
+> @@ -95,16 +95,6 @@ typedef struct {
+>  /* Main SYSCLK frequency in Hz */
+>  #define SYSCLK_FRQ 20000000
+>
+> -/* Initialize the auxiliary RAM region @mr and map it into
+> - * the memory map at @base.
+> - */
+> -static void make_ram(MemoryRegion *mr, const char *name,
+> -                     hwaddr base, hwaddr size)
+> -{
+> -    memory_region_init_ram(mr, NULL, name, size, &error_fatal);
+> -    memory_region_add_subregion(get_system_memory(), base, mr);
+> -}
+> -
+>  /* Create an alias of an entire original MemoryRegion @orig
+>   * located at @base in the memory map.
 >   */
->
->  #ifndef IOTKIT_H
-> @@ -81,6 +84,8 @@ typedef struct IoTKit {
->      qemu_or_irq ppc_irq_orgate;
->      SplitIRQ sec_resp_splitter;
->      SplitIRQ ppc_irq_splitter[NUM_PPCS];
-> +    SplitIRQ mpc_irq_splitter[IOTS_NUM_EXP_MPC + IOTS_NUM_MPC];
-> +    qemu_or_irq mpc_irq_orgate;
->
->      UnimplementedDeviceState dualtimer;
->      UnimplementedDeviceState s32ktimer;
-> @@ -99,6 +104,7 @@ typedef struct IoTKit {
->      qemu_irq nsc_cfg_in;
->
->      qemu_irq irq_status_in[NUM_EXTERNAL_PPCS];
-> +    qemu_irq mpcexp_status_in[IOTS_NUM_EXP_MPC];
->
->      uint32_t nsccfg;
->
-> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-> index 160e40c744..133d5bb34f 100644
-> --- a/hw/arm/iotkit.c
-> +++ b/hw/arm/iotkit.c
-> @@ -131,6 +131,18 @@ static void iotkit_init(Object *obj)
->      init_sysbus_child(obj, "apb-ppc1", &s->apb_ppc1, sizeof(s->apb_ppc1),
->                        TYPE_TZ_PPC);
->      init_sysbus_child(obj, "mpc", &s->mpc, sizeof(s->mpc), TYPE_TZ_MPC);
-> +    object_initialize(&s->mpc_irq_orgate, sizeof(s->mpc_irq_orgate),
-> +                      TYPE_OR_IRQ);
-> +    object_property_add_child(obj, "mpc-irq-orgate",
-> +                              OBJECT(&s->mpc_irq_orgate), &error_abort);
-> +    for (i =3D 0; i < ARRAY_SIZE(s->mpc_irq_splitter); i++) {
-> +        char *name =3D g_strdup_printf("mpc-irq-splitter-%d", i);
-> +        SplitIRQ *splitter =3D &s->mpc_irq_splitter[i];
-> +
-> +        object_initialize(splitter, sizeof(*splitter), TYPE_SPLIT_IRQ);
-> +        object_property_add_child(obj, name, OBJECT(splitter), &error_ab=
-ort);
-> +        g_free(name);
-> +    }
->      init_sysbus_child(obj, "timer0", &s->timer0, sizeof(s->timer0),
->                        TYPE_CMSDK_APB_TIMER);
->      init_sysbus_child(obj, "timer1", &s->timer1, sizeof(s->timer1),
-> @@ -163,6 +175,12 @@ static void iotkit_exp_irq(void *opaque, int n, int =
-level)
->      qemu_set_irq(s->exp_irqs[n], level);
+> @@ -224,6 +214,44 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState =
+*mms, void *opaque,
+>      return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
 >  }
 >
-> +static void iotkit_mpcexp_status(void *opaque, int n, int level)
+> +static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
+> +                              const char *name, hwaddr size)
 > +{
-> +    IoTKit *s =3D IOTKIT(opaque);
-> +    qemu_set_irq(s->mpcexp_status_in[n], level);
+> +    TZMPC *mpc =3D opaque;
+> +    int i =3D mpc - &mms->ssram_mpc[0];
+> +    MemoryRegion *ssram =3D &mms->ssram[i];
+> +    MemoryRegion *upstream;
+> +    char *mpcname =3D g_strdup_printf("%s-mpc", name);
+> +    static uint32_t ramsize[] =3D { 0x00400000, 0x00200000, 0x00200000 };
+> +    static uint32_t rambase[] =3D { 0x00000000, 0x28000000, 0x28200000 };
+> +
+> +    memory_region_init_ram(ssram, NULL, name, ramsize[i], &error_fatal);
+> +
+> +    init_sysbus_child(OBJECT(mms), mpcname, mpc,
+> +                      sizeof(mms->ssram_mpc[0]), TYPE_TZ_MPC);
+> +    object_property_set_link(OBJECT(mpc), OBJECT(ssram),
+> +                             "downstream", &error_fatal);
+> +    object_property_set_bool(OBJECT(mpc), true, "realized", &error_fatal=
+);
+> +    /* Map the upstream end of the MPC into system memory */
+> +    upstream =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 1);
+> +    memory_region_add_subregion(get_system_memory(), rambase[i], upstrea=
+m);
+> +    /* and connect its interrupt to the IoTKit */
+> +    qdev_connect_gpio_out_named(DEVICE(mpc), "irq", 0,
+> +                                qdev_get_gpio_in_named(DEVICE(&mms->iotk=
+it),
+> +                                                       "mpcexp_status", =
+i));
+> +
+> +    /* The first SSRAM is a special case as it has an alias; accesses to
+> +     * the alias region at 0x00400000 must also go to the MPC upstream.
+> +     */
+> +    if (i =3D=3D 0) {
+> +        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", upstream, 0x00400=
+000);
+> +    }
+> +
+> +    g_free(mpcname);
+> +    /* Return the register interface MR for our caller to map behind the=
+ PPC */
+> +    return sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 0);
 > +}
 > +
->  static void iotkit_realize(DeviceState *dev, Error **errp)
+>  static void mps2tz_common_init(MachineState *machine)
 >  {
->      IoTKit *s =3D IOTKIT(dev);
-> @@ -328,6 +346,22 @@ static void iotkit_realize(DeviceState *dev, Error *=
-*errp)
->                                  sysbus_mmio_get_region(SYS_BUS_DEVICE(&s=
-->mpc),
->                                                         0));
+>      MPS2TZMachineState *mms =3D MPS2TZ_MACHINE(machine);
+> @@ -285,14 +313,6 @@ static void mps2tz_common_init(MachineState *machine)
+>                                           NULL, "mps.ram", 0x01000000);
+>      memory_region_add_subregion(system_memory, 0x80000000, &mms->psram);
 >
-> +    /* We must OR together lines from the MPC splitters to go to the NVI=
-C */
-> +    object_property_set_int(OBJECT(&s->mpc_irq_orgate),
-> +                            IOTS_NUM_EXP_MPC + IOTS_NUM_MPC, "num-lines"=
-, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    object_property_set_bool(OBJECT(&s->mpc_irq_orgate), true,
-> +                             "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    qdev_connect_gpio_out(DEVICE(&s->mpc_irq_orgate), 0,
-> +                          qdev_get_gpio_in(DEVICE(&s->armv7m), 9));
-> +
->      /* Devices behind APB PPC0:
->       *   0x40000000: timer0
->       *   0x40001000: timer1
-> @@ -536,6 +570,46 @@ static void iotkit_realize(DeviceState *dev, Error *=
-*errp)
->          g_free(gpioname);
->      }
->
-> +    /* Wire up the splitters for the MPC IRQs */
-> +    for (i =3D 0; i < IOTS_NUM_EXP_MPC + IOTS_NUM_MPC; i++) {
-> +        SplitIRQ *splitter =3D &s->mpc_irq_splitter[i];
-> +        DeviceState *dev_splitter =3D DEVICE(splitter);
-> +
-> +        object_property_set_int(OBJECT(splitter), 2, "num-lines", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        object_property_set_bool(OBJECT(splitter), true, "realized", &er=
-r);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +
-> +        if (i < IOTS_NUM_EXP_MPC) {
-> +            /* Splitter input is from GPIO input line */
-> +            s->mpcexp_status_in[i] =3D qdev_get_gpio_in(dev_splitter, 0);
-> +            qdev_connect_gpio_out(dev_splitter, 0,
-> +                                  qdev_get_gpio_in_named(dev_secctl,
-> +                                                         "mpcexp_status"=
-, i));
-> +        } else {
-> +            /* Splitter input is from our own MPC */
-> +            qdev_connect_gpio_out_named(DEVICE(&s->mpc), "irq", 0,
-> +                                        qdev_get_gpio_in(dev_splitter, 0=
-));
-> +            qdev_connect_gpio_out(dev_splitter, 0,
-> +                                  qdev_get_gpio_in_named(dev_secctl,
-> +                                                         "mpc_status", 0=
-));
-> +        }
-> +
-> +        qdev_connect_gpio_out(dev_splitter, 1,
-> +                              qdev_get_gpio_in(DEVICE(&s->mpc_irq_orgate=
-), i));
-> +    }
-> +    /* Create GPIO inputs which will pass the line state for our
-> +     * mpcexp_irq inputs to the correct splitter devices.
-> +     */
-> +    qdev_init_gpio_in_named(dev, iotkit_mpcexp_status, "mpcexp_status",
-> +                            IOTS_NUM_EXP_MPC);
-> +
->      iotkit_forward_sec_resp_cfg(s);
->
->      system_clock_scale =3D NANOSECONDS_PER_SECOND / s->mainclk_frq;
+> -    /* The SSRAM memories should all be behind Memory Protection Control=
+lers,
+> -     * but we don't implement that yet.
+> -     */
+> -    make_ram(&mms->ssram1, "mps.ssram1", 0x00000000, 0x00400000);
+> -    make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x00400=
+000);
+> -
+> -    make_ram(&mms->ssram23, "mps.ssram23", 0x28000000, 0x00400000);
+> -
+>      /* The overflow IRQs for all UARTs are ORed together.
+>       * Tx, Rx and "combined" IRQs are sent to the NVIC separately.
+>       * Create the OR gate for this.
+> @@ -322,12 +342,9 @@ static void mps2tz_common_init(MachineState *machine)
+>      const PPCInfo ppcs[] =3D { {
+>              .name =3D "apb_ppcexp0",
+>              .ports =3D {
+> -                { "ssram-mpc0", make_unimp_dev, &mms->ssram_mpc[0],
+> -                  0x58007000, 0x1000 },
+> -                { "ssram-mpc1", make_unimp_dev, &mms->ssram_mpc[1],
+> -                  0x58008000, 0x1000 },
+> -                { "ssram-mpc2", make_unimp_dev, &mms->ssram_mpc[2],
+> -                  0x58009000, 0x1000 },
+> +                { "ssram-0", make_mpc, &mms->ssram_mpc[0], 0x58007000, 0=
+x1000 },
+> +                { "ssram-1", make_mpc, &mms->ssram_mpc[1], 0x58008000, 0=
+x1000 },
+> +                { "ssram-2", make_mpc, &mms->ssram_mpc[2], 0x58009000, 0=
+x1000 },
+>              },
+>          }, {
+>              .name =3D "apb_ppcexp1",
 
 
 --

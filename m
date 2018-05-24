@@ -1,99 +1,97 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1815711wre;
-        Thu, 24 May 2018 05:39:20 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZr3hdPqn1gJS/JSwoxEv4oTvceKVHxtQlXEUwB3uE28OtaEw/pd3PjduP/HMWBoF6C53jv1
-X-Received: by 2002:ac8:2779:: with SMTP id h54-v6mr6523789qth.85.1527165560277;
-        Thu, 24 May 2018 05:39:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527165560; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1833850wre;
+        Thu, 24 May 2018 05:59:58 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL1Sqs52CCe263+cL6xR4o7G2yQR4X4wWm1IJB/+UFlSXmob5BopQadAhSzkXm7kX0pTs+z
+X-Received: by 2002:ac8:2b50:: with SMTP id 16-v6mr7068492qtv.260.1527166798140;
+        Thu, 24 May 2018 05:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527166798; cv=none;
         d=google.com; s=arc-20160816;
-        b=aO7/ZW8WRyEda8EmVSkvMd83QSG4+2BO43gJgFgL/vhKqhqMkr1Gl4maCG1Jgnf8pd
-         cg1rLIYUJ/glkNj4OFfrWaS+nLwlDoaHNIJQ9wI4/ZohrgWFctK368VXlJSVkyLADVNj
-         Vzjx+VRlzNpcXqEkiWyo1spcERH6Z7zpx+V8/ps7b5d7Q4rNENNXTL05aB3pqSGwO5lM
-         Sjuez4PE5WW4F/hMh7YwXLswraXFlqvuQ48HgfdAcA4WVh/d3qMqX//tmtSebyshTcIH
-         3CYkNWoOIT64ruzcTNTGheJepO4cOsHSmPuTxiAAPVB4coO8/lbhy2htWtvcLN5ZHgud
-         eGAQ==
+        b=Hl82y/4H4Hr2ufMgvfaE9HFMHM+2YIJOMQxAhWxbebfc8iYOkZrz7JZvJlS3aMtUI6
+         +4KTl3X1nuC5EkND+pcX5e3ez9DBnjZJB11QyoXTKnrgvAzm4U+0JkDXG6LSkFM0cpH3
+         THlFNTAeY/XUCPsAtV1DxME1Jau+TXx6L4zb2WykF3qRXBYBsQE9Tdp4M9UcoJNOVy1N
+         XCjOXokmp9k5HVy18T4P16oh5igBl0h5nFoGxGxT0tGjGadbsQIu9yv8VNgtZCn7RMqu
+         sb5HPm8c0UmnI0tVaAfXkup+fdJZWcJKKnV7Ehy+BnmQXFXltH4Vt3ohNvrV+40fiMlQ
+         WwFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=fky+y5+jXKLoaNi4IKmpmF3Hg0T1JJppbkBHLHJstJI=;
-        b=ISz6ojtnThVDu6dcBXZleibLodThbmbWn56xfbDF4/xyIp+2zAq7VHMGPGKgQnwQjN
-         JY5V+qBA/FFBswfj4Kmr6iLCB3w/BMvVDL1aG7ZZRmbFIxVKlqjeNNOGe+jrxGafv++K
-         FyUCKoh1vgVncuBGOX0sbk11ifTv8guxa6UD8eMD3rB4+gBtiGrGGHH0rKhFj8WV3ofD
-         XyETs9S8iRnIZpclkf2fHjLMCm7jcAayKMqXY70l3muP/3TS18EW0RkuzBh+K9MYY0If
-         1r6aegeXZjNV3BgZjZ7vb3zdKy/ASLYQ1nQposTY+TCWNa8mzEKx5S8nWmeMaYCIUFSO
-         l/4A==
+        bh=IfyxMzsvA40lKXL7xyWWTFESCs88CBTKIpQH530YwjU=;
+        b=jw0C/5+hiD/wzJ9XdCIl/AKfhJHej8y6i1FyNQG7/tV1e082AFy0C3n4gZyCZi4rqB
+         w1mzz2VfBlJQCGb0yo0yU2i8YD/eftB2eetmywpsES6/TPa6YcvWvmg8d6QeFStXJKAT
+         IBmfalH44oStJ3XzsCfGtP6h8KWtMMIjfoOXwsNlmBDtE0N7Q0Gzw1BWoqVFXtWtkCKt
+         slEklGLoUdv19mhceFuuKfiuxRKkO8Jjf+G+3tjnPlKghRoRLwrockKxWHv2cmX11WFj
+         JygOqL7lFpQWYfKQsXqPQdrjuLzAThHd3SIlFyqteRzA9rwfMcVudDwXqdA1gJwYeFYP
+         fYCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eUmCXj70;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k17-v6si3741699qtk.362.2018.05.24.05.39.20
+        by mx.google.com with ESMTPS id f9-v6si4088714qvh.216.2018.05.24.05.59.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 05:39:20 -0700 (PDT)
+        Thu, 24 May 2018 05:59:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eUmCXj70;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38465 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38543 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLpWZ-0005C9-Q5
-	for alex.bennee@linaro.org; Thu, 24 May 2018 08:39:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39122)
+	id 1fLpqX-0000ta-NV
+	for alex.bennee@linaro.org; Thu, 24 May 2018 08:59:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43666)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLpWQ-0005BY-28
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:39:11 -0400
+	(envelope-from <lersek@redhat.com>) id 1fLpqN-0000tS-Al
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:59:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLpWO-0008CP-Us
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:39:10 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:39689)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fLpWO-0008C8-Pq
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:39:08 -0400
-Received: by mail-ot0-x244.google.com with SMTP id l12-v6so1716861oth.6
-	for <qemu-arm@nongnu.org>; Thu, 24 May 2018 05:39:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=fky+y5+jXKLoaNi4IKmpmF3Hg0T1JJppbkBHLHJstJI=;
-	b=eUmCXj70ioal3gVCq45ooYokuN3004ChklXlpfh73JKlKkaSNdC3G+OnpjJVjGiU4l
-	mMgbLsfgvda83vvYkzbdy2IvG16wRbAevGZmTuYyFbUtBJUmUqiheI2ePk9OEBIZQqF4
-	/uNaJ2S+05J342SLOC3Ez1/W2bN3x8B8brheE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=fky+y5+jXKLoaNi4IKmpmF3Hg0T1JJppbkBHLHJstJI=;
-	b=W9QEGc2XVXcj53Ii43F7kck/R9wKhrI4Pc+X6iGyVifT+jN/jjsF5E4gy+Zh91ObpX
-	86O/yvxdRwn0xUyPcJ+COqZloRFNRHopuYY7UrXV2DQx1krwbLjAfG7FmiHCeg6CZfLd
-	aco5j826ESxotFyhVEOc0NMmGBExqFl4dx54mlDq0HVrdEwaATiH+8cKmt2QOJ1oexKs
-	+lazokrYy94F8ZcXA39vMR+zWy4fi7mUh4mEkTsD7xTdF3X5zgO4u7VIBvynUeQgXF65
-	qPrAYmZn8CNQQDFondTlmOuR/u1XU5XCopVPtz8V4sEc8ZhUj6JV/5XrxvuZMZQz17Cc
-	l6SQ==
-X-Gm-Message-State: ALKqPwf3DgoI2hnqsyaaVMchc+Y2i1+e7cf/z8FpH+JjGEvuBX5K9xuI
-	KVsHeJBsccHWQfB7T+veNqi6kNU0VnQdK9Cse6+Wgg==
-X-Received: by 2002:a9d:5014:: with SMTP id
-	a20-v6mr4145130oth.205.1527165548071; 
-	Thu, 24 May 2018 05:39:08 -0700 (PDT)
+	(envelope-from <lersek@redhat.com>) id 1fLpqK-00089K-AN
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:59:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48416 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1fLpqK-00083S-59; Thu, 24 May 2018 08:59:44 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 011EF402178A;
+	Thu, 24 May 2018 12:59:41 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-84.rdu2.redhat.com
+	[10.10.121.84])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 219C82166BB2;
+	Thu, 24 May 2018 12:59:39 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
+	<ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
+	<bf99311a-823d-34e8-1892-be27534afc32@redhat.com>
+	<22c4e504-a7b4-e6dd-b2cc-618d306b6f0c@redhat.com>
+	<CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
+Date: Thu, 24 May 2018 14:59:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 24 May 2018 05:38:47
-	-0700 (PDT)
-In-Reply-To: <1527047633-12368-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1527047633-12368-1-git-send-email-zhaoshenglong@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 May 2018 13:38:47 +0100
-Message-ID: <CAFEAcA-2kQ2pHz=8Hm=fE-3qJ8U29nmUaPC6SdEtmC7pJVKWeA@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH V3 1/2] arm_gicv3_kvm: increase clroffset
- accordingly
+In-Reply-To: <CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Thu, 24 May 2018 12:59:41 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Thu, 24 May 2018 12:59:41 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/2] ARM virt: Support up to 256
+ PCIe buses
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,45 +103,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: Andrew Jones <drjones@redhat.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>
+	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GCBseAan+soR
+X-TUID: sVEPGbmT/Z2Z
 
-On 23 May 2018 at 04:53, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> It forgot to increase clroffset during the loop. So it only clear the
-> first 4 bytes.
->
-> Fixes: 367b9f527becdd20ddf116e17a3c0c2bbc486920
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> ---
-> Changes in V3: Add reviewed-by tag
-> ---
->  hw/intc/arm_gicv3_kvm.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> index ec37177..3536795 100644
-> --- a/hw/intc/arm_gicv3_kvm.c
-> +++ b/hw/intc/arm_gicv3_kvm.c
-> @@ -243,6 +243,7 @@ static void kvm_dist_putbmp(GICv3State *s, uint32_t offset,
->          if (clroffset != 0) {
->              reg = 0;
->              kvm_gicd_access(s, clroffset, &reg, true);
-> +            clroffset += 4;
->          }
->          reg = *gic_bmp_ptr32(bmp, irq);
->          kvm_gicd_access(s, offset, &reg, true);
-> --
+On 05/24/18 11:11, Peter Maydell wrote:
+> On 23 May 2018 at 21:52, Laszlo Ersek <lersek@redhat.com> wrote:
+>> On 05/23/18 22:40, Auger Eric wrote:
+>>> On 05/23/2018 07:45 PM, Laszlo Ersek wrote:
+>>
+>>>> Regarding the second patch, I do believe we need "more sophistication"
+>>>> there. For example, I guess it could be possible to distinguish "-cpu
+>>>> cortex-a15" from "-cpu cortex-a57" somehow, and stick with the low/small
+>>>> ECAM in the former case. (The 32-bit firmware already runs on cortex-a15
+>>>> only, and not on cortex-a57, according to my testing.)
+>>>
+>>> So we should detect we are in ACPI boot  + aarch32 mode to force legacy
+>>> ECAM region, right?
+>>
+>> Agree about the aarch32 subcondition.
+>>
+>> However, "ACPI vs. DT" is not the right "other" subcondition here;
+>> instead we should (minimally) check "firmware vs. no firmware". See the
+>> "firmware_loaded" boolean field.
+> 
+> Won't it also break a guest which is just Linux loaded not via
+> firmware which is an aarch32 kernel without LPAE support?
 
-Applied this patch to target-arm.next.
+Does such a thing exist? (I honestly have no clue.)
 
-PS: if you could remember to always provide a cover letter
-for multi-patch series that would be helpful.
+If it does, then there are two options:
+- don't enable the new ECAM range by default (always take an explicit
+option),
+- offer both ECAM ranges and let the guest pick one (I should add that I
+have no idea whether exposing such *alternatives* is possible via DT and
+ACPI; i.e., "pick one but not both").
 
-thanks
--- PMM
+Thanks
+Laszlo

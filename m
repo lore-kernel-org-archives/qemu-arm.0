@@ -1,125 +1,308 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1769928wme;
-        Tue, 22 May 2018 10:29:47 -0700 (PDT)
-X-Received: by 2002:a17:902:b582:: with SMTP id a2-v6mr17852341pls.371.1527010187331;
-        Tue, 22 May 2018 10:29:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527010187; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1994883wre;
+        Thu, 24 May 2018 08:29:31 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLTCPwnKbaKd1TSXxo42DTc//CUqCQZFLqeTHWcNYl3k7mMgv9DBUXHM1yZzgJuYTxOXisP
+X-Received: by 2002:a37:83c4:: with SMTP id f187-v6mr6750247qkd.97.1527175771201;
+        Thu, 24 May 2018 08:29:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527175771; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/mxM6cXpYq4anOgJToC1VUuCXC0dX4xEH7H7dyR/3XT2Csb95WSNhHQSERXqBcXg/
-         XKQnzCfhCYXw5cB/Sq7iEve9udOyk7cI9xbFef2orZ+eVDy0Zt+nP/lLNwjFQjHVQGvN
-         8VjR5/KHqEb+gvkpO1TOpBGYQ+GrORNuVu6OPgFNFbpAaHcu+OA+B68ZG2UJHZStPX/6
-         DMZ0kuj3/tFeUgOX27CPxMqXpI2JJiEIMdJ3yeJ/HQIEZIEDP8zMgtt/Pao4110DYoDN
-         NV0eFrG4LsXDfnzRI/ixWBs6SXTuN5FqQz+CphWrtH2qIOz7WGrMAeF2shZD6nbVycjo
-         Y5Ew==
+        b=mfHRwQnQjQH24Gp63YINklEWTkW7yP1Bk3jWoKKZDvYffpknuHyBuTdpbkhx0GF+OA
+         Cw+HYWfZVTSVe7ruJY0VVV6V5YOvZGpVMICP6Jcnpm+VlwDk1usXlAQGt2KA3CmVnaQl
+         2V9QbZSsv6nZk6H3QgWbLbVBd34eHzwbDTqteKidg/sdFjRUNjxNudaKOibJVnzi4/fx
+         Uh14NYxjNBWCRCsepCFQjixH53bWMxSvhZZFnWP+WyPQsd3eYKyA1fun84NYtIRnR9DS
+         YQT7EnsRIPMPwp81WWRLd1bO6bcGA1+gNnR/O7M+L0LN8xrjbiVxDO0jZc6xEUDF6+yy
+         cpFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject:sender:dkim-signature:arc-authentication-results;
-        bh=984BbO/TmRGXZlP9fBjcqonvYg3O9hcTEUWgmwdkYQI=;
-        b=YM9xZNM3ma21leFkLsWFR8VOOtii0VQbVUyExNcFw65skIsjg6jR6/rRppAFQOtjup
-         zsGlgIUAFVEzn5bDMABLT/a2tKRMOXIeEpD3YAUjAC0Gm1ufrmmskQEXvXR+r9cjTK0/
-         cRIQvZbm6+moA9NK3mZ9UuiayvqPxM6FKCIR1Fr7bXDgvtcSmEPf8IhrCDIqz+Mrza9I
-         Krhx5/Mn9hF3tFnUcx1FE8EhDqqKkh8dcUh6iWvlnn9+MSnKQ4GM9zQF8GP4omd17Mt1
-         PzgWFKBDmEtSBB/dwSmFJvJpf59Tt4V8wWsPXyjGzI+OpX1+dMS0io619Xz5CZ5pkcAq
-         lXPA==
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:cc:references:to:subject:arc-authentication-results;
+        bh=YNEdE92roAKoLspWOoTB0oPzGXkeW5d/05/8su4NYug=;
+        b=auFg25CaT4tbJPf+FfcKYbaoiDfProMYcMHKB8rNSSIkF3Ws4If65Zz56Lhhjd5Wqh
+         LrcqCRuKfvUr+/gyAzPXurlQeZB9U0kvjw3vV5M+wpTMMw6Kumrl3il+u272lbubf9dj
+         M6WgJgNidmkyIVQwYABCn0H0zoL5Zzv/DNiAdTY/4QHxHNy6x8Gzx38flqps9Lx+wqQi
+         msFuHcdNBER8WaFVtgMMdWcZnxycN8qAP0tTJkHZiF/7aiFBkbEwXj8cLnIdXPJYTA+H
+         ML3z2oHjVMzBHIynutTtudBJh+myJgyl68R4Mo9of/feCEa0V5p85q+LjHdim/41F8zQ
+         ZbaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YYQJ+haE;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-Return-Path: <rth7680@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m14-v6sor7294274pfa.67.2018.05.22.10.29.47
-        (Google Transport Security);
-        Tue, 22 May 2018 10:29:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YYQJ+haE;
-       spf=pass (google.com: domain of rth7680@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=rth7680@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=984BbO/TmRGXZlP9fBjcqonvYg3O9hcTEUWgmwdkYQI=;
-        b=YYQJ+haEqZxxvPb+ilduNvE3oASnvYbqWXCf4IG12IVK3bfcCsPbcd2nPM5l6/vnOb
-         a3gkInE0dCnYNoavMKXXy1CcTgF2AX127su4Zdc8KciUTG+2M8HIsGXbO/ps72R3Zp2q
-         k7+CSyXQng2+Xr65DzHZFM/i9++qkzJqT3CuTzqzHtAIMwtlcEjw6xprx457z0ZB04j5
-         cbVYycogXxNVILqdf6dWxRjHLaxAuDSHeduuzW2Bd8D4p/QyJofaGUgXUBNBi8wdvEfs
-         OvP8OsPW8qBBHDIZwwUct+zWNwpTfpqbfsFpZUniV953uSD6xSMYHZjDFsD7bVL7V2Ye
-         RZkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=984BbO/TmRGXZlP9fBjcqonvYg3O9hcTEUWgmwdkYQI=;
-        b=SPJjDppohDAeiYcg7GpeVPCQNhuuVllrY1KcOcMhHe8k4ikPVZZzk79PVM4EQskGf1
-         h5ZLu8/lC+yv8G1Z+GhO8hhZQbDL/Nv6+wdyxlgeByyehkDjiMAgiQFALGu5iBZhE6gq
-         +/SoIOwuKP+1tApQYezXcZT5Izr4g5bWTpKqT6va2CAiERib5Ko5j6BU6/g2+FPhsKVF
-         +eHE2YqZjnRVRUhwTQ22yN1uW5DU7jG76OiWgntd3Pmo2CS9VP832WjTzZxCQfhLOg0v
-         1jIOApJp7SWTayGrqV6P5K+OHpcMM2ypr4oiWQ/cE7hnrnyWWSGclY2QHY9IYrjNeCF8
-         dGkQ==
-X-Gm-Message-State: ALKqPwdCxwkJHR8YKWu7yf9VjG1IUgbmw6znyvRiIr5TZUcWeaAuRkYl
-	INiIXryvUwuwP9iegNkvhypXTzL1
-X-Google-Smtp-Source: AB8JxZqM34cvhGGxZHtXCZfMIp+y0IvnqI6cSZirS2SQiYXvuEjZIc4yHzSJbSkfoViAuVodfAjE/Q==
-X-Received: by 2002:a62:b909:: with SMTP id z9-v6mr25219439pfe.254.1527010186614;
-        Tue, 22 May 2018 10:29:46 -0700 (PDT)
-Return-Path: <rth7680@gmail.com>
-Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net. [97.113.173.254])
-        by smtp.googlemail.com with ESMTPSA id h65-v6sm40529037pfj.54.2018.05.22.10.29.45
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id f48-v6si5678132qta.78.2018.05.24.08.29.31
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 May 2018 10:29:46 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-Subject: Re: [PATCH 12/27] Make flatview_do_translate() take a MemTxAttrs
- argument
+        Thu, 24 May 2018 08:29:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A5309818BAF8;
+	Thu, 24 May 2018 15:29:30 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com [10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6E5EB946B0;
+	Thu, 24 May 2018 15:29:29 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH 15/27] iommu: Add IOMMU index argument to
+ notifier APIs
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-13-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
- xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
- n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
- rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
- Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
- n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
- AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
- cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
- Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
- eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
- LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
- Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
- 94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
- 86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
- I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
- VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
- +PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
- AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
- Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
- prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
- /E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
- jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
- VcROBqvtH3ecaIL9iw==
-Message-ID: <c3b76288-a06a-96df-368a-814a4087d1cc@twiddle.net>
-Date: Tue, 22 May 2018 10:29:44 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+ <20180521140402.23318-16-peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <0774094d-d3e1-5983-ccb8-3d3412bf44fc@redhat.com>
+Date: Thu, 24 May 2018 17:29:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20180521140402.23318-13-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <20180521140402.23318-16-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-TUID: D8t1h/9buTTe
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 24 May 2018 15:29:30 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 24 May 2018 15:29:30 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-TUID: 433N3wcGoaeN
 
-On 05/21/2018 07:03 AM, Peter Maydell wrote:
-> As part of plumbing MemTxAttrs down to the IOMMU translate method,
-> add MemTxAttrs as an argument to flatview_do_translate().
+Hi Peter,
+
+On 05/21/2018 04:03 PM, Peter Maydell wrote:
+> Add support for multiple IOMMU indexes to the IOMMU notifier APIs.
+> When initializing a notifier with iommu_notifier_init(), the caller
+> must pass the IOMMU index that it is interested in. When a change
+> happens, the IOMMU implementation must pass
+> memory_region_notify_iommu() the IOMMU index that has changed and
+> that notifiers must be called for.
+> 
+> IOMMUs which support only a single index don't need to change.
+> Callers which only really support working with IOMMUs with a single
+> index can use the result of passing MEMTXATTRS_UNSPECIFIED to
+> memory_region_iommu_attrs_to_index().
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
+>  include/exec/memory.h    | 11 ++++++++++-
+>  hw/i386/intel_iommu.c    |  4 ++--
+>  hw/ppc/spapr_iommu.c     |  2 +-
+>  hw/s390x/s390-pci-inst.c |  4 ++--
+>  hw/vfio/common.c         |  6 +++++-
+>  hw/virtio/vhost.c        |  7 ++++++-
+>  memory.c                 |  8 +++++++-
+>  7 files changed, 33 insertions(+), 9 deletions(-)
+> 
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index f6226fb263..4e6b125add 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -71,6 +71,7 @@ struct IOMMUTLBEntry {
+>      hwaddr           iova;
+>      hwaddr           translated_addr;
+>      hwaddr           addr_mask;  /* 0xfff = 4k translation */
+> +    int              iommu_idx;
+I don't get why ne need iommu_idx field here. On translate the caller
+has it. On notify the notifier has it?
+>      IOMMUAccessFlags perm;
+>  };
+>  
+> @@ -98,18 +99,21 @@ struct IOMMUNotifier {
+>      /* Notify for address space range start <= addr <= end */
+>      hwaddr start;
+>      hwaddr end;
+> +    int iommu_idx;
+>      QLIST_ENTRY(IOMMUNotifier) node;
+>  };
+>  typedef struct IOMMUNotifier IOMMUNotifier;
+>  
+>  static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
+>                                         IOMMUNotifierFlag flags,
+> -                                       hwaddr start, hwaddr end)
+> +                                       hwaddr start, hwaddr end,
+> +                                       int iommu_idx)
+>  {
+>      n->notify = fn;
+>      n->notifier_flags = flags;
+>      n->start = start;
+>      n->end = end;
+> +    n->iommu_idx = iommu_idx;
+>  }
+>  
+>  /*
+> @@ -323,7 +327,10 @@ typedef struct IOMMUMemoryRegionClass {
+>       * Optional method: if this method is not provided, then
+>       * memory_region_iommu_num_indexes() will return 1, indicating that
+>       * only a single IOMMU index is supported.
+> +     *
+> +     * @iommu: the IOMMUMemoryRegion
+>       */
+> +    int (*num_indexes)(IOMMUMemoryRegion *iommu);
+>  } IOMMUMemoryRegionClass;
+>  
+>  typedef struct CoalescedMemoryRange CoalescedMemoryRange;
+> @@ -1028,11 +1035,13 @@ uint64_t memory_region_iommu_get_min_page_size(IOMMUMemoryRegion *iommu_mr);
+>   * should be notified with an UNMAP followed by a MAP.
+>   *
+>   * @iommu_mr: the memory region that was changed
+> + * @iommu_idx: the IOMMU index for the translation table which has changed
+>   * @entry: the new entry in the IOMMU translation table.  The entry
+>   *         replaces all old entries for the same virtual I/O address range.
+>   *         Deleted entries have .@perm == 0.
+>   */
+>  void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+> +                                int iommu_idx,
+>                                  IOMMUTLBEntry entry);
+>  
+>  /**
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index fb31de9416..b8c9354b0b 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -1376,7 +1376,7 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
+>  static int vtd_page_invalidate_notify_hook(IOMMUTLBEntry *entry,
+>                                             void *private)
+>  {
+> -    memory_region_notify_iommu((IOMMUMemoryRegion *)private, *entry);
+> +    memory_region_notify_iommu((IOMMUMemoryRegion *)private, 0, *entry);
+>      return 0;
+>  }
+>  
+> @@ -1826,7 +1826,7 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
+>      entry.iova = addr;
+>      entry.perm = IOMMU_NONE;
+>      entry.translated_addr = 0;
+> -    memory_region_notify_iommu(&vtd_dev_as->iommu, entry);
+> +    memory_region_notify_iommu(&vtd_dev_as->iommu, 0, entry);
+>  
+>  done:
+>      return true;
+> diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+> index aaa6010d5c..301708e45e 100644
+> --- a/hw/ppc/spapr_iommu.c
+> +++ b/hw/ppc/spapr_iommu.c
+> @@ -428,7 +428,7 @@ static target_ulong put_tce_emu(sPAPRTCETable *tcet, target_ulong ioba,
+>      entry.translated_addr = tce & page_mask;
+>      entry.addr_mask = ~page_mask;
+>      entry.perm = spapr_tce_iommu_access_flags(tce);
+> -    memory_region_notify_iommu(&tcet->iommu, entry);
+> +    memory_region_notify_iommu(&tcet->iommu, 0, entry);
+>  
+>      return H_SUCCESS;
+>  }
+> diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+> index d1a5f79678..7b61367ee3 100644
+> --- a/hw/s390x/s390-pci-inst.c
+> +++ b/hw/s390x/s390-pci-inst.c
+> @@ -589,7 +589,7 @@ static void s390_pci_update_iotlb(S390PCIIOMMU *iommu, S390IOTLBEntry *entry)
+>              }
+>  
+>              notify.perm = IOMMU_NONE;
+> -            memory_region_notify_iommu(&iommu->iommu_mr, notify);
+> +            memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
+>              notify.perm = entry->perm;
+>          }
+>  
+> @@ -601,7 +601,7 @@ static void s390_pci_update_iotlb(S390PCIIOMMU *iommu, S390IOTLBEntry *entry)
+>          g_hash_table_replace(iommu->iotlb, &cache->iova, cache);
+>      }
+>  
+> -    memory_region_notify_iommu(&iommu->iommu_mr, notify);
+> +    memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
+>  }
+>  
+>  int rpcit_service_call(S390CPU *cpu, uint8_t r1, uint8_t r2, uintptr_t ra)
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index 8e57265edf..fb396cf00a 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -507,6 +507,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>      if (memory_region_is_iommu(section->mr)) {
+>          VFIOGuestIOMMU *giommu;
+>          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
+> +        int iommu_idx;
+>  
+>          trace_vfio_listener_region_add_iommu(iova, end);
+>          /*
+> @@ -523,10 +524,13 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>          llend = int128_add(int128_make64(section->offset_within_region),
+>                             section->size);
+>          llend = int128_sub(llend, int128_one());
+> +        iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
+> +                                                       MEMTXATTRS_UNSPECIFIED);
+In that case VFIO ideally wants to be notified for any guest update
+(whatever the page set) to reprogram the physical IOMMU corresponding
+entries and doesn't want to register a notifier per iommu_idx. Also it
+does not know which ones are supported. Is there a corresponding
+iommu_idx value? MEMTXATTRS_ANY?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Thanks
 
-r~
+Eric
+>          iommu_notifier_init(&giommu->n, vfio_iommu_map_notify,
+>                              IOMMU_NOTIFIER_ALL,
+>                              section->offset_within_region,
+> -                            int128_get64(llend));
+> +                            int128_get64(llend),
+> +                            iommu_idx);
+>          QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
+>  
+>          memory_region_register_iommu_notifier(section->mr, &giommu->n);
+> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+> index 48f4fd7cc9..6218df7683 100644
+> --- a/hw/virtio/vhost.c
+> +++ b/hw/virtio/vhost.c
+> @@ -657,6 +657,8 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+>                                           iommu_listener);
+>      struct vhost_iommu *iommu;
+>      Int128 end;
+> +    int iommu_idx;
+> +    IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
+>  
+>      if (!memory_region_is_iommu(section->mr)) {
+>          return;
+> @@ -666,10 +668,13 @@ static void vhost_iommu_region_add(MemoryListener *listener,
+>      end = int128_add(int128_make64(section->offset_within_region),
+>                       section->size);
+>      end = int128_sub(end, int128_one());
+> +    iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
+> +                                                   MEMTXATTRS_UNSPECIFIED);
+>      iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
+>                          IOMMU_NOTIFIER_UNMAP,
+>                          section->offset_within_region,
+> -                        int128_get64(end));
+> +                        int128_get64(end),
+> +                        iommu_idx);
+>      iommu->mr = section->mr;
+>      iommu->iommu_offset = section->offset_within_address_space -
+>                            section->offset_within_region;
+> diff --git a/memory.c b/memory.c
+> index 07d5fa7862..accb28d694 100644
+> --- a/memory.c
+> +++ b/memory.c
+> @@ -1802,6 +1802,9 @@ void memory_region_register_iommu_notifier(MemoryRegion *mr,
+>      iommu_mr = IOMMU_MEMORY_REGION(mr);
+>      assert(n->notifier_flags != IOMMU_NOTIFIER_NONE);
+>      assert(n->start <= n->end);
+> +    assert(n->iommu_idx >= 0 &&
+> +           n->iommu_idx < memory_region_iommu_num_indexes(iommu_mr));
+> +
+>      QLIST_INSERT_HEAD(&iommu_mr->iommu_notify, n, node);
+>      memory_region_update_iommu_notify_flags(iommu_mr);
+>  }
+> @@ -1894,6 +1897,7 @@ void memory_region_notify_one(IOMMUNotifier *notifier,
+>  }
+>  
+>  void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+> +                                int iommu_idx,
+>                                  IOMMUTLBEntry entry)
+>  {
+>      IOMMUNotifier *iommu_notifier;
+> @@ -1901,7 +1905,9 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+>      assert(memory_region_is_iommu(MEMORY_REGION(iommu_mr)));
+>  
+>      IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
+> -        memory_region_notify_one(iommu_notifier, &entry);
+> +        if (iommu_notifier->iommu_idx == iommu_idx) {
+> +            memory_region_notify_one(iommu_notifier, &entry);
+> +        }
+>      }
+>  }
+>  
+> 

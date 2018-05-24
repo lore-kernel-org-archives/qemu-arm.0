@@ -1,99 +1,101 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4091290wrq;
-        Mon, 11 Jun 2018 07:07:28 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKI29gKLGVlji4Hn45fQhOUCDIxRJEM5y0WTm30RarIkn/xOVKoNXp2jlzz3kEgqGndZ1J1M
-X-Received: by 2002:a37:1707:: with SMTP id i7-v6mr14678594qkh.433.1528726048099;
-        Mon, 11 Jun 2018 07:07:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528726048; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2110305wre;
+        Thu, 24 May 2018 10:21:02 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLQrzhGDPJXMUY4qecV8puO4wLqUq4YCZ5YH8/e1i3vY0LF+AQATtz9F6ODvqrdEbrcq9vO
+X-Received: by 2002:aed:374a:: with SMTP id i68-v6mr1079820qtb.129.1527182462009;
+        Thu, 24 May 2018 10:21:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527182462; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ne7TpmbAwGrTUXEHibNXwV/Nor9VanEyxHTez8KwPnPnkG80GywZvU8GUbXRQvnejZ
-         X4eN8vJKxgruXIyDAhC+3dhfuTwfQNOy6PXUoBOu10TpeGrOqV/a26MYDNVDwJ7AfiSS
-         1nO4mdpKJn6CfqA1PN9PCYiTd0JTF90OniQZv+PQtajjVgsTaJ2/VUtAOdoWYiQnQXjr
-         454qHyreeVEDIP5Iv8w/DlZmPlg3jitZgVF5VUwY1vq4Fj8MqDZ8PlxzZqcmjKAjUjNW
-         oGCUMP5UCdW8r9zy8SEisbTZvhqwzS8T6Lqix9dQEuDQkMK5Afb0DKekN6qiqtagOpPc
-         OvMA==
+        b=XOGo0AyFMUFcJ+RxNg61Yb2mz3WOv8m/WHtxmcMvNMnf5HjPGZ96VLt+nCDj46bt+a
+         uBCWKwNm+1F26WT66X2i1L8imO0tKY3Gm8rYMYwc3ej72rVo81XPSxsv4ucv1sahevKm
+         wky+5BVZ8rQFrsK3qNL4DollaU4RcVXQCKq1lFz0V9GrgCbkitxKWLeANOi29xejWS9Y
+         5xuWir28SEUqczKn9JDHh2VIo9bIHr9qkOqE0kPc59NCIICSik1K34K+P2RPocx0z0Hy
+         a0tugc7NDWc7fJZDMTX+zjgpU4a5VXGyyg9j6DQbC+4sqeLf9UT97VeOtxu0xcpZzVCw
+         lIdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=8jeWzZoZtWyfcHqfAqlnO9+a4IWX9mV7nq+jZ2nni1o=;
-        b=xqjstMf1dnthr/3uISx9PJke1g+U8K2Ht0ZNhFbeE8XUdXI/qAaLB2xWuTNRjVVFfm
-         9bKbbbmv0RGh81ERlTZVxRnr+eoKhEI1xUe3eiujHzK2XcGCh3KFzKmtVB1G/hylYa0u
-         o482u7Uq7LJgQSsoUTA5U2P3buj349RhvXSHGOY6PIK2xIkWN9j4sxmQLr4z3ZItXwsn
-         Ni40o74Zj4/XjUelrWbxtf0L5nKQOZ2rIis4zWQ27D48EfiqZySP2Uf2Tqge88Jexj8O
-         FpRHrMMrmZoXOjaYvf3HPMedefiFzuX3vRUwchr9do+BhexxbPO0c2rd5XzsYD6ZtrU+
-         iv6w==
+        bh=tkdT2h6D77jNiAs0RArABaz+BPTMwXGURHb35Z29Mek=;
+        b=msbNzIpeaVnqOFAy7gyyZf882vWHa7KT0GykfPN92hyha9JM4TkQrXVLYhm2efzPik
+         uzKYfF2ExceqZpLQNbvfnMkvijD6xT5BwJ6mKdBo/grlqiwpXPE8Mj8sqFRO0NO1Atd3
+         yM+3e/OZZyfi7Th65PMJ2usQVnkCXktjBq9XJ+QmCopgiQV06Xf/V0VF7gU7GoEno9GY
+         T4dGApULHt23rFQvrEOB0HzEiCR76okcCksiysklE6fbnB3Eg4nMJYJrauUzKA1W9nJL
+         mCAg/4rWdetfwIbkIdn1WPl939fQofSUN28AII8l9q2sbvZEMpAd2Riba81Na1O6h8JI
+         5hZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FsQst+r5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l63-v6si3012990qkd.301.2018.06.11.07.07.27
+        by mx.google.com with ESMTPS id b26-v6si3045392qto.48.2018.05.24.10.21.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jun 2018 07:07:28 -0700 (PDT)
+        Thu, 24 May 2018 10:21:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FsQst+r5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49037 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39922 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSNTj-0003Uf-E5
-	for alex.bennee@linaro.org; Mon, 11 Jun 2018 10:07:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47256)
+	id 1fLtvB-0001d7-Hg
+	for alex.bennee@linaro.org; Thu, 24 May 2018 13:21:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50101)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fSNSU-0002gj-C8
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:06:11 -0400
+	(envelope-from <lersek@redhat.com>) id 1fLtv4-0001cp-As
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 13:20:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fSNSK-0001LQ-Ix
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:06:10 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:33328)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fSNSK-0001L5-E6
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:06:00 -0400
-Received: by mail-ot0-x244.google.com with SMTP id h6-v6so23903765otj.0
-	for <qemu-arm@nongnu.org>; Mon, 11 Jun 2018 07:06:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8jeWzZoZtWyfcHqfAqlnO9+a4IWX9mV7nq+jZ2nni1o=;
-	b=FsQst+r5ljzpUsgzLm5DMLTOmMbb3SnmgclGPTIr3rABu7X3LSQjunmIM81oPaI6+3
-	t1xMp4kf0T3VWa56NC9jsz4E09JUaPTHgRE1MZtrnJXztsw/Lle9KJp7qnMiuj394h9+
-	XAE1BW/haABHuow/pteS6TLxwHuoItpVVsV9s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=8jeWzZoZtWyfcHqfAqlnO9+a4IWX9mV7nq+jZ2nni1o=;
-	b=hdzhM+0clvqzdDge05oPkdrHnzyKcn89o18EzMqyBMiraz4g4tG0CjqKWD1aA+5Goi
-	N9EE9SVw6GQbkTmC9VgFhEg/uO/+m+8Q8enIMp4MN6LyUbdP/pzJ837L+UscsFYQTF9+
-	M9FQlXgS+wU/qXdfA0VcNiIhsBM3d332+XRToKBebQE5NzVFx95UUQVD7ZbwrVMtbd/H
-	l0m0Hs2u9scN3TdN06dNxgD5RAE/bkn5q3syVqq3C9O8tOQyrXg+LAg1+EWk250Mr50y
-	XecgF8TJvWyNQozWeFvJsd1Bj8QS4UkgmkOp32wjk7TX6pONmCfb1j18yBE4BbAOBXtv
-	T3Lg==
-X-Gm-Message-State: APt69E0Q8JtT6N1IeZ5SDhmmvVGd0NJkABMJ1oJXsfkjI6nocpkWeB45
-	9gqWu0xq8CM87J8v1qt4xiGSBh95SjedJgJVO5Q0eKWs
-X-Received: by 2002:a9d:705d:: with SMTP id
-	x29-v6mr10461662otj.308.1528725959690; 
-	Mon, 11 Jun 2018 07:05:59 -0700 (PDT)
+	(envelope-from <lersek@redhat.com>) id 1fLtuz-0003s4-DQ
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 13:20:54 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34898 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1fLtuz-0003rg-8D; Thu, 24 May 2018 13:20:49 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D2B19BB414;
+	Thu, 24 May 2018 17:20:48 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-84.rdu2.redhat.com
+	[10.10.121.84])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3DFC32026985;
+	Thu, 24 May 2018 17:20:47 +0000 (UTC)
+To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
+	<ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
+	<bf99311a-823d-34e8-1892-be27534afc32@redhat.com>
+	<22c4e504-a7b4-e6dd-b2cc-618d306b6f0c@redhat.com>
+	<CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
+	<550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
+	<CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
+	<ee204f5f-600f-2425-a1ff-0418b4611e96@redhat.com>
+	<CAKv+Gu8Lp7gUqdurVSYF2wVP0TPHY7Vox5J8ZdT=g0UytoKOUg@mail.gmail.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <e5dc23df-6400-d9ea-ef83-814663b35ef9@redhat.com>
+Date: Thu, 24 May 2018 19:20:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 11 Jun 2018 07:05:39
-	-0700 (PDT)
-In-Reply-To: <20180601160355.15393-1-peter.maydell@linaro.org>
-References: <20180601160355.15393-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Jun 2018 15:05:39 +0100
-Message-ID: <CAFEAcA-9skxQ7AifPvL+BbUuPKm4PWQ+CycuERahpfNvettO3A@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH] arm: Don't crash if user tries to use a
- Cortex-M CPU without an NVIC
+In-Reply-To: <CAKv+Gu8Lp7gUqdurVSYF2wVP0TPHY7Vox5J8ZdT=g0UytoKOUg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Thu, 24 May 2018 17:20:48 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Thu, 24 May 2018 17:20:48 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/2] ARM virt: Support up to 256
+ PCIe buses
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,112 +107,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T8o6wQy1tppS
+X-TUID: 1a4+P8JVn8s8
 
-Ping for code review?
+On 05/24/18 16:14, Ard Biesheuvel wrote:
+> On 24 May 2018 at 15:59, Laszlo Ersek <lersek@redhat.com> wrote:
+>> On 05/24/18 15:07, Peter Maydell wrote:
+>>> On 24 May 2018 at 13:59, Laszlo Ersek <lersek@redhat.com> wrote:
+>>>> On 05/24/18 11:11, Peter Maydell wrote:
+>>>>> Won't it also break a guest which is just Linux loaded not via
+>>>>> firmware which is an aarch32 kernel without LPAE support?
+>>>>
+>>>> Does such a thing exist? (I honestly have no clue.)
+>>>
+>>> Yes, it does; LPAE isn't a mandatory kernel config option.
+>>> This is why we have the machine 'highmem' option, so that
+>>> we can run on those kernels by not putting anything above
+>>> the 4G boundary. Looking back at the history on that, we
+>>> opted at the time for "default to highmem on, and if you're
+>>> running an non-lpae kernel you need to turn it off manually".
+>>
+>> Ah, OK, I didn't know that.
+>>
+>>> So we can handle those kernels by just not putting ECAM
+>>> above 4G if highmem is false.
+>>
+>> The problem is we can have a combination of 32-bit UEFI firmware (which
+>> certainly lacks LPAE) and a 32-bit kernel which supports LPAE.
+>> Previously, you wouldn't specify highmem=off, and things would just work
+>> -- the firmware would simply ignore the >=4GB MMIO aperture, and use the
+>> 32-bit MMIO aperture only (and use the sole 32-bit ECAM). The kernel
+>> could then use both low and high MMIO apertures, however (I gather?).
+>>
+>> The difference with "high ECAM" is that it is *moved* (not *added*), so
+>> the 32-bit firmware is left with nothing for config space access. For
+>> booting the same combination as above, you are suddenly forced to add
+>> highmem=off, just to keep the ECAM low -- and that, while it keeps the
+>> firmware happy, prevents the LPAE-capable kernel from using the high
+>> MMIO aperture.
+>>
+>> So I think "highmem_ecam" should be computed like this:
+>>
+>>   highmem_ecam = highmem_ecam_machtype_default &&
+>>                  highmem &&
+>>                  (!firmware_loaded || aarch64);
+>>
+> 
+> Given that the firmware is tightly coupled to the platform, we may
+> decide not to care about ECAM for UEFI itself, and invent a secondary
+> config space access mechanism that does not consume such a huge amount
+> of address space. For instance, legacy PCI uses a pair of I/O ports
+> for this, one to set the address and one to perform the actual read or
+> write, and we could easily implement something similar (such an
+> interface is problematic in SMP context but we don't care about that
+> anyway)
+> 
+> Just a thought - perhaps we don't care enough about 32-bit to go
+> through the trouble, but it would be nice if LPAE capable 32-bit
+> guests could make use of the expanded PCIe config space as well.
 
-thanks
--- PMM
+Under the above proposal, they could, they'd just have to be launched
+without firmware:
 
-On 1 June 2018 at 17:03, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The Cortex-M CPU and its NVIC are two intimately intertwined parts of
-> the same hardware; it is not possible to use one without the other.
-> Unfortunately a lot of our board models don't do any sanity checking
-> on the CPU type the user asks for, so a command line like
->     qemu-system-arm -M versatilepb -cpu cortex-m3
-> will create an M3 without an NVIC, and coredump immediately.
-> In the other direction, trying a non-M-profile CPU in an M-profile
-> board won't blow up, but doesn't do anything useful either:
->     qemu-system-arm -M lm3s6965evb -cpu arm926
->
-> Add some checking in the NVIC and CPU realize functions that the
-> user isn't trying to use an NVIC without an M-profile CPU or
-> an M-profile CPU without an NVIC, so we can produce a helpful
-> error message rather than a core dump.
->
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1766896
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/armv7m.c       |  7 ++++++-
->  hw/intc/armv7m_nvic.c |  6 +++++-
->  target/arm/cpu.c      | 18 ++++++++++++++++++
->  3 files changed, 29 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index a4ab7d2069..9e00d4037c 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -178,6 +178,12 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->              return;
->          }
->      }
-> +
-> +    /* Tell the CPU where the NVIC is; it will fail realize if it doesn't
-> +     * have one.
-> +     */
-> +    s->cpu->env.nvic = &s->nvic;
-> +
->      object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
->      if (err != NULL) {
->          error_propagate(errp, err);
-> @@ -202,7 +208,6 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
->      sbd = SYS_BUS_DEVICE(&s->nvic);
->      sysbus_connect_irq(sbd, 0,
->                         qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
-> -    s->cpu->env.nvic = &s->nvic;
->
->      memory_region_add_subregion(&s->container, 0xe000e000,
->                                  sysbus_mmio_get_region(sbd, 0));
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index c51151fa8a..661be8878a 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -2183,7 +2183,11 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
->      int regionlen;
->
->      s->cpu = ARM_CPU(qemu_get_cpu(0));
-> -    assert(s->cpu);
-> +
-> +    if (!s->cpu || !arm_feature(&s->cpu->env, ARM_FEATURE_M)) {
-> +        error_setg(errp, "The NVIC can only be used with a Cortex-M CPU");
-> +        return;
-> +    }
->
->      if (s->num_irq > NVIC_MAX_IRQ) {
->          error_setg(errp, "num-irq %d exceeds NVIC maximum", s->num_irq);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 5d60893a07..eda1ce14fc 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -767,6 +767,24 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->          return;
->      }
->
-> +#ifndef CONFIG_USER_ONLY
-> +    /* The NVIC and M-profile CPU are two halves of a single piece of
-> +     * hardware; trying to use one without the other is a command line
-> +     * error and will result in segfaults if not caught here.
-> +     */
-> +    if (arm_feature(env, ARM_FEATURE_M)) {
-> +        if (!env->nvic) {
-> +            error_setg(errp, "This board cannot be used with Cortex-M CPUs");
-> +            return;
-> +        }
-> +    } else {
-> +        if (env->nvic) {
-> +            error_setg(errp, "This board can only be used with Cortex-M CPUs");
-> +            return;
-> +        }
-> +    }
-> +#endif
-> +
->      cpu_exec_realizefn(cs, &local_err);
->      if (local_err != NULL) {
->          error_propagate(errp, local_err);
-> --
-> 2.17.1
->
->
+  highmem_ecam_machtype_default = true;
+  highmem = true;
+  firmware_loaded = false;
+  aarch64 = false;
+
+  highmem_ecam = true &&
+                 true &&
+                 (!false || false);
+
+I see a return to the 0xCF8/0xCFC pattern regressive; I'd rather
+restrict the large/high ECAM feature to 64-bit guests (with or without
+firmware), and to 32-bit LPAE kernels that are launched without firmware
+(which, I think, has been the case for most of their history).
+
+Personally I don't have a stake in 32-bit ARM, so do take my opinion
+with a grain of salt. Wearing my upstream ArmVirtQemu co-maintainer hat,
+my sole 32-bit interest is in keeping command lines working, *if* they
+once worked. Not extending new QEMU features to 32-bit firmware is fine
+with me -- in fact I would value that over seeing more quirky firmware
+code just for 32-bit's sake.
+
+Side topic: the last subcondition basically says, "IF we use firmware
+THEN the VM had better be 64-bit". This is a "logical implication":
+A-->B. The C language doesn't have an "implication operator", so I
+rewrote it equivalently with the logical negation and logical OR
+operators: A-->B is equivalent to (!A || B). (If A is true, then B must
+hold; if A is false, then B doesn't matter.)
+
+Thanks,
+Laszlo

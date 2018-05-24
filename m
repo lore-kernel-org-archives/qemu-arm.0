@@ -1,173 +1,232 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id a129-v6sm1901148wme.34.2018.05.23.04.41.19
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 May 2018 04:41:19 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 84ABF3E006A;
-	Wed, 23 May 2018 12:41:19 +0100 (BST)
-References: <20180521140402.23318-1-peter.maydell@linaro.org> <20180521140402.23318-28-peter.maydell@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org, Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH 27/27] hw/arm/mps2-tz.c: Instantiate MPCs
-In-reply-to: <20180521140402.23318-28-peter.maydell@linaro.org>
-Date: Wed, 23 May 2018 12:41:19 +0100
-Message-ID: <87sh6itx9c.fsf@linaro.org>
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1719659wre;
+        Thu, 24 May 2018 03:54:38 -0700 (PDT)
+X-Received: by 2002:a9d:6059:: with SMTP id v25-v6mr4563017otj.100.1527159278204;
+        Thu, 24 May 2018 03:54:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527159278; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WXmXbzNnEAmEQjXqB9UBJ8zQviN6tIYIFSd+ekAZHG65oUZ/EJ1vm99PLC4bTGA7GJ
+         C4okgmFBzRU8Ed86Ud4fGkUV8x583OWCXOjFQ8W2lNelQWB7BNHbx2yz+mZFuWNdA9wy
+         wX8r8+yJDsWqGHID+fO34Ha+5I2EQM17cKYHaePDnxZXhdo7N8YzXTjuo/v63juVHScZ
+         wuxn9IQ2KWy7uVDppOGbx1QAYLIzsvNMvZOLsMLpbJt6UvVxnLO4yxE/QVJvb4cnnDxH
+         j7SB/0YCg37d8kMDREUXNhB4Rq3I50QsNdUwh7Yb7eZjluyLfDYBqOuNrqShnIw/Cgq1
+         c/Yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=wlU4K/d2OQ7VbiWzq7+v4lsnI/ieYxkoWyogMqq4FKY=;
+        b=lC+ubG6dQVd4ikHnqyvBnCet5J+nUoTRkAVijaf01b0jc1k99xT8VOlJURWGAMvWXd
+         I4X5SGnQdaqMVfzBgim9mQGikDBkbQLXf6JoF/QK44UUyRW8nVYI0eGz1ueMRUuHOjmt
+         z9ccaOvwug1/6YLNnIIVUjQ0vS4rAXDLBNbdKO7m3ttkqam6tqL9XGAjFsaxmbbifEpQ
+         03LxVCtC1L99wX/c/U61lWTxfWjOEfslCo8ZtxM7Mo8ESWAiT68DureuFKSK4Wh8ba1x
+         1brPGqnZrxsCjuXKUXgo9PIu+Jqv066LnvK/7y3e7TWxcFrAXIwmuBz167HzEX/9e92v
+         D27A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JDyxCYbo;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id p124-v6sor10312456oif.302.2018.05.24.03.54.37
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 24 May 2018 03:54:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JDyxCYbo;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=wlU4K/d2OQ7VbiWzq7+v4lsnI/ieYxkoWyogMqq4FKY=;
+        b=JDyxCYborLXS0FtclaCeVPpF6DbYtXYN1Rj/X6Fezn3jL2QXunRL3J9ZiMgIF59TUx
+         ty3ASYqYyBwEfE7/wIBdtrlDiFR07WNJpaAoJ7E2u8jLODXR7w8W5m3zUO5eUV8j9w+o
+         Dd5tJXwy+XhGyPTbkQatvuemE9Cc9Pgv1WMRg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=wlU4K/d2OQ7VbiWzq7+v4lsnI/ieYxkoWyogMqq4FKY=;
+        b=BjiJslQq1tfPIo0o2yf7H5qv2hGrFH9zaZs+uGQeX4WEpkAfIBCAlehWSBZo7ZQsOn
+         E/ObHgiQETNSYNyUfH+YoJTxIGS7o/iQORlCpX0N5JwcxkoJoZYBFGN585X0I0ZYQUnd
+         gVlsOyNKuBoQQuZalQg43ci9cP2R+vHf0nVwjint8JnPJawXleVT5Tq88AyZiW2vtE0Q
+         F5h+A/IGD2eoVIQ7QMS4vGRrpFKtZs22bvCttcQ07/X8I17eAz9sDktwjYE+7xdHp/vg
+         KC4te4LIto/6GCi3ZpNSTcmRMVpjhdIcML/iau7xrGeTgTIbhLcryRBSbSy+O9rxkJ+c
+         1Zpg==
+X-Gm-Message-State: ALKqPwev4QVQs6uixqoVsaJMrmehZTOyxVkouKGRttJZDJKxcjyXQJTX
+	3XK7hxpDOaS5LbWz2dPYVVhMnzc3ejDauXXkAKsFe9uy
+X-Google-Smtp-Source: AB8JxZp9BBU0asNpE/hH7VoKO60WWtXRr3V9ONi+IfVfzm7xxFno+JAIpoK+4Jd0XZXrQmbUfyicjyqpQlNrT5ZtpbQ=
+X-Received: by 2002:aca:d447:: with SMTP id l68-v6mr3788267oig.102.1527159277696;
+ Thu, 24 May 2018 03:54:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 8YtlYLxFmAo5
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 24 May 2018 03:54:17
+ -0700 (PDT)
+In-Reply-To: <20180524062352.GA12122@xz-mi>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+ <20180521140402.23318-15-peter.maydell@linaro.org> <20180522030333.GB17282@xz-mi>
+ <CAFEAcA-iOYhuPfvDv+iD6jBqXMXqN-jfTpSSBub1Zp1i-JcDbQ@mail.gmail.com>
+ <20180522110236.GB31932@xz-mi> <CAFEAcA9b6dmpj+B=SO2YsB5sXsh=UPjkjN_U0i-uJhiDn20HHw@mail.gmail.com>
+ <20180523010636.GC31932@xz-mi> <CAFEAcA840qn7Ms9hph9zzZgMbL8C7kN=cs4esGO9kxGXsgBg1A@mail.gmail.com>
+ <20180524062352.GA12122@xz-mi>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 24 May 2018 11:54:17 +0100
+Message-ID: <CAFEAcA9SXirTw=H3wznVZDTmO1OB-LRNJAQ1MsyYm62SqvMqRQ@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
+ IOMMU API
+To: Peter Xu <peterx@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"patches@linaro.org" <patches@linaro.org>, David Gibson <david@gibson.dropbear.id.au>, 
+	Alex Williamson <alex.williamson@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: cN4W9UEwf0Wm
 
-
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> Instantiate and wire up the Memory Protection Controllers
-> in the MPS2 board itself.
+On 24 May 2018 at 07:23, Peter Xu <peterx@redhat.com> wrote:
+> On Wed, May 23, 2018 at 12:47:16PM +0100, Peter Maydell wrote:
+>> On 23 May 2018 at 02:06, Peter Xu <peterx@redhat.com> wrote:
+>> > Could you elaborate a bit more on why IOMMU notifier failed to
+>> > corporate when passing in MemTxAttrs?  I am not sure I caught the idea
+>> > here, but can we copy the MemTxAttrs into IOMMUTLBEntry when
+>> > translating, then in IOMMU notifiers we can know the attrs (if that is
+>> > what MPC wants)?
+>>
+>> (1) The notifier API lets you register a notifier before you've
+>> called the translate API
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Yes.
+>
+>> (2) An IOMMUTLBEntry can be valid for more than just the txattrs
+>> that it was passed in (for instance, if an IOMMU doesn't care
+>> about txattrs at all, then the resulting TLB entry is valid for
+>> any txattrs; or if the IOMMU only cares about attrs.secure the
+>> resulting TLB entries are valid for both attrs.user=0 and
+>> attrs.user=1).
+>
+> [1]
+>
+> Yes exactly, that's why I thought copying the txattrs into IOTLB
+> should work.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+I'm a bit confused about why the IOMMUTLBEntry is relevant here.
+That's the thing returned from the translate method, so there's
+no point in copying txattrs into it, because the caller by definition
+already had them. At the point where the IOMMU notices a guest
+changed the config, it doesn't have an IOMMUTLBEntry or a set of
+tx attrs.
 
-> ---
->  hw/arm/mps2-tz.c | 71 ++++++++++++++++++++++++++++++------------------
->  1 file changed, 44 insertions(+), 27 deletions(-)
+>> (3) when the IOMMU calls the notifier because the guest config
+>> changed it doesn't have tx attributes, so it would have to
+>> fabricate some; and the guest config will invalidate transactions
+>> with some combinations of tx attributes and not others.
 >
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 8dc8bfd4ab..a58b5dea79 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -44,6 +44,7 @@
->  #include "hw/timer/cmsdk-apb-timer.h"
->  #include "hw/misc/mps2-scc.h"
->  #include "hw/misc/mps2-fpgaio.h"
-> +#include "hw/misc/tz-mpc.h"
->  #include "hw/arm/iotkit.h"
->  #include "hw/devices.h"
->  #include "net/net.h"
-> @@ -64,13 +65,12 @@ typedef struct {
+> IMHO it doesn't directly matter with what we are discussing now.  That
+> IOMMU_NOTIFIER_[UN]MAP flag tells what kind of message would the
+> notifier be interested in from "what kind of mapping it is".  IMHO
+> it's not really related to some other attributes when translation
+> happens - in our case, it does not directly related to what txattrs
+> value is.  Here as mentioned at [1] above IMHO we can still check this
+> against txattrs in the notifier handler, then we ignore messages that
+> we don't care about.  Actually the IOMMU_NOTIFIER_[UN]MAP flags can be
+> removed and we can just do similar things (e.g., we can skip MAP
+> messages if we only care about UNMAP messages), but since it's a
+> general concept and easy to be generalized, so we provided these
+> MAP/UNMAP flags to ease the notifier hooks.
 >
->      IoTKit iotkit;
->      MemoryRegion psram;
-> -    MemoryRegion ssram1;
-> +    MemoryRegion ssram[3];
->      MemoryRegion ssram1_m;
-> -    MemoryRegion ssram23;
->      MPS2SCC scc;
->      MPS2FPGAIO fpgaio;
->      TZPPC ppc[5];
-> -    UnimplementedDeviceState ssram_mpc[3];
-> +    TZMPC ssram_mpc[3];
->      UnimplementedDeviceState spi[5];
->      UnimplementedDeviceState i2c[4];
->      UnimplementedDeviceState i2s_audio;
-> @@ -95,16 +95,6 @@ typedef struct {
->  /* Main SYSCLK frequency in Hz */
->  #define SYSCLK_FRQ 20000000
->
-> -/* Initialize the auxiliary RAM region @mr and map it into
-> - * the memory map at @base.
-> - */
-> -static void make_ram(MemoryRegion *mr, const char *name,
-> -                     hwaddr base, hwaddr size)
-> -{
-> -    memory_region_init_ram(mr, NULL, name, size, &error_fatal);
-> -    memory_region_add_subregion(get_system_memory(), base, mr);
-> -}
-> -
->  /* Create an alias of an entire original MemoryRegion @orig
->   * located at @base in the memory map.
->   */
-> @@ -224,6 +214,44 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState =
-*mms, void *opaque,
->      return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
->  }
->
-> +static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
-> +                              const char *name, hwaddr size)
-> +{
-> +    TZMPC *mpc =3D opaque;
-> +    int i =3D mpc - &mms->ssram_mpc[0];
-> +    MemoryRegion *ssram =3D &mms->ssram[i];
-> +    MemoryRegion *upstream;
-> +    char *mpcname =3D g_strdup_printf("%s-mpc", name);
-> +    static uint32_t ramsize[] =3D { 0x00400000, 0x00200000, 0x00200000 };
-> +    static uint32_t rambase[] =3D { 0x00000000, 0x28000000, 0x28200000 };
-> +
-> +    memory_region_init_ram(ssram, NULL, name, ramsize[i], &error_fatal);
-> +
-> +    init_sysbus_child(OBJECT(mms), mpcname, mpc,
-> +                      sizeof(mms->ssram_mpc[0]), TYPE_TZ_MPC);
-> +    object_property_set_link(OBJECT(mpc), OBJECT(ssram),
-> +                             "downstream", &error_fatal);
-> +    object_property_set_bool(OBJECT(mpc), true, "realized", &error_fatal=
-);
-> +    /* Map the upstream end of the MPC into system memory */
-> +    upstream =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 1);
-> +    memory_region_add_subregion(get_system_memory(), rambase[i], upstrea=
-m);
-> +    /* and connect its interrupt to the IoTKit */
-> +    qdev_connect_gpio_out_named(DEVICE(mpc), "irq", 0,
-> +                                qdev_get_gpio_in_named(DEVICE(&mms->iotk=
-it),
-> +                                                       "mpcexp_status", =
-i));
-> +
-> +    /* The first SSRAM is a special case as it has an alias; accesses to
-> +     * the alias region at 0x00400000 must also go to the MPC upstream.
-> +     */
-> +    if (i =3D=3D 0) {
-> +        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", upstream, 0x00400=
-000);
-> +    }
-> +
-> +    g_free(mpcname);
-> +    /* Return the register interface MR for our caller to map behind the=
- PPC */
-> +    return sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 0);
-> +}
-> +
->  static void mps2tz_common_init(MachineState *machine)
->  {
->      MPS2TZMachineState *mms =3D MPS2TZ_MACHINE(machine);
-> @@ -285,14 +313,6 @@ static void mps2tz_common_init(MachineState *machine)
->                                           NULL, "mps.ram", 0x01000000);
->      memory_region_add_subregion(system_memory, 0x80000000, &mms->psram);
->
-> -    /* The SSRAM memories should all be behind Memory Protection Control=
-lers,
-> -     * but we don't implement that yet.
-> -     */
-> -    make_ram(&mms->ssram1, "mps.ssram1", 0x00000000, 0x00400000);
-> -    make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x00400=
-000);
-> -
-> -    make_ram(&mms->ssram23, "mps.ssram23", 0x28000000, 0x00400000);
-> -
->      /* The overflow IRQs for all UARTs are ORed together.
->       * Tx, Rx and "combined" IRQs are sent to the NVIC separately.
->       * Create the OR gate for this.
-> @@ -322,12 +342,9 @@ static void mps2tz_common_init(MachineState *machine)
->      const PPCInfo ppcs[] =3D { {
->              .name =3D "apb_ppcexp0",
->              .ports =3D {
-> -                { "ssram-mpc0", make_unimp_dev, &mms->ssram_mpc[0],
-> -                  0x58007000, 0x1000 },
-> -                { "ssram-mpc1", make_unimp_dev, &mms->ssram_mpc[1],
-> -                  0x58008000, 0x1000 },
-> -                { "ssram-mpc2", make_unimp_dev, &mms->ssram_mpc[2],
-> -                  0x58009000, 0x1000 },
-> +                { "ssram-0", make_mpc, &mms->ssram_mpc[0], 0x58007000, 0=
-x1000 },
-> +                { "ssram-1", make_mpc, &mms->ssram_mpc[1], 0x58008000, 0=
-x1000 },
-> +                { "ssram-2", make_mpc, &mms->ssram_mpc[2], 0x58009000, 0=
-x1000 },
->              },
->          }, {
->              .name =3D "apb_ppcexp1",
+> In other words, I think we can also add more flags for SECURE or not.
+> However I still don't see a reason (from above three points) on why we
+> can't pass in txattrs directly into translate(), and at the same time
+> we copy the txattrs into IOTLB so that IOMMUTLBEntry can contain some
+> context information. [2]
 
+I'm afraid I really don't understand the design you're proposing
+here. But overall I think the point of divergence is that
+the mapping from "transaction attributes" to "translation contexts"
+(ie, effectively different page tables) is not 1:1. So for instance:
 
---
-Alex Benn=C3=A9e
+Our current IOMMUs which don't care about txattrs:
+
+  [any txattr at all] -> the one and only translation context
+
+An IOMMU which cares about attrs.secure, and also treats
+attrs.unspecified like secure:
+  [any txattr with attrs.secure = 1]  \-> 'secure' context'
+  MEMATTRS_UNSPECIFIED                /
+
+  [txattrs with secure = 1] -> 'nonsecure' context
+
+An IOMMU which cares about attrs.secure and attrs.user:
+  [secure=1,user=1]   -> 'secure user' context
+  [secure=0,user=1]   -> 'ns user' context
+  [secure=1,user=0]   -> 's priv' context
+  [secure=0,user=0]   -> 'ns priv' context
+
+The IOMMU index captures this idea that there is not a 1:1
+mapping, so we have a way to think about and refer to the
+actual set of translation contexts that the IOMMU has.
+
+>> As Paolo pointed out you could also implement this by rather
+>> of having an iommu_index concept, instead having some kind
+>> of "here is a mask of which txattrs fields matter, and here's
+>> another parameter with which txattrs fields are affected".
+>> That makes it awkward though to implement "txattrs.unspecified
+>> acts like txattrs.secure == 1" type behaviour, though, which is
+>> easy with an index abstraction layer. It also would be harder
+>> to implement the default 'replay' method, I think.
+>
+> Please refer to my above comment at [2] - I am still confused on why
+> we must use this iommu_idx concept.  How about we just introduce
+> IOMMU_NOTIFIER_SECURE (or something similar) and let TCG code register
+> with that?  Though for the rest of notifiers we'll need to touch up
+> too to make sure all existing notifiers will still receive all the
+> message, no matter whether it's secure or not.
+
+I think I would definitely prefer not to have the secure/nonsecure
+specific thing in the API. We've got good experience with TCG
+where we abstract away the specifics of what an MMU cares about
+into an mmu_index, and I'd like to keep that approach. Otherwise,
+you immediately get into "and now we need to change the API again
+to handle IOMMUs which care about attrs.user"; and then again
+for attrs.requester_id; and now what about IOMMUs that care
+about both secure and user... Better to have an abstraction so
+that we don't need to keep changing the core code. In particular,
+TCG doesn't know whether it's secure/nonsecure that matters -- that
+is mostly handled by the target-specific parts, and TCG core code
+just passes attributes around.
+
+> I'd also appreciate if you could paste me the link for Paolo's
+> message, since I cannot find it.
+
+This is the one I had in mind:
+https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg03522.html
+
+>> It will only need to do so for IOMMUs that care about that field.
+>>
+>> (See also the other thread with Eric Auger talking about
+>> maybe caring about requester_id like that. Needing to look
+>> at requester_id is an area I haven't thought too much about,
+>> and it is a bit of an odd one because it's a much larger
+>> space than any of the other parts of the txattrs. In some
+>> cases it ought to be possible to say "requester_id lets
+>> us determine an iommu index, and there are a lot fewer
+>> than 2^16 actual iommu indexes because a lot of the requestor_id
+>> values indicate the same actual iommu translation", I suspect.)
+>
+> AFAIK requester_id will only be the same in very rare cases, for
+> example, when multiple PCI devices (no matter whether it's PCI or
+> PCIe) are under the same PCIe-to-PCI bridge, then all these devices
+> will use the bridge's requester ID as their own.  In most cases, each
+> PCIe device will have their own unique requester ID.  So it'll be
+> common that requester ID number can be at least equal to the number of
+> devices.
+
+I haven't looked at this, but my understanding is that at the moment
+we do per-device requester_id by having each PCI device get its own
+IOMMUMemoryRegion mapped into its address space. So we'd only need
+to look at requester_id for the case of devices with multiple
+subfunctions(?), and presumably most devices only have a handful
+of those.
+
+thanks
+-- PMM

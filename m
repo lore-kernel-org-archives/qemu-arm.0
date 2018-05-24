@@ -1,101 +1,89 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1884298wme;
-        Tue, 22 May 2018 12:26:42 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZrA7sHyYPSXhi5ddONt8Qr/IkcJeaIR/+mEAsxMVgsx9MM0wmMrblKwd59jYr/kCWnilM3u
-X-Received: by 2002:aed:3536:: with SMTP id a51-v6mr23808469qte.96.1527017202077;
-        Tue, 22 May 2018 12:26:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527017202; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1517589wre;
+        Wed, 23 May 2018 23:32:21 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZo0F24Io6gf1XRBONC0adeYI4woQrD6NV9+W+3mypKSqNhKWendETXozndwzWhrgVxKsZf+
+X-Received: by 2002:a37:5445:: with SMTP id i66-v6mr5107833qkb.392.1527143541273;
+        Wed, 23 May 2018 23:32:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527143541; cv=none;
         d=google.com; s=arc-20160816;
-        b=1CnbXCDqBadfL7DGYQUESUKiiQvHTToW3BtW+ad13j6vd6HEofQDqRYLRIWDds50Wg
-         j+sUgwKL8XS++ioIhT5R/Do7O5CyswSeuE4nPoFTv5gVG0SPRpQ+Qrw+Jf8gAGJf4Zvt
-         L32DqFVnIOKpgsqAvU/rOEHHxruhWIvMWdPjr0PDiHAH4TeZ45u18hqaTN/VCZi5Kfvz
-         6zQGUKNWiJuakAL/asXbw4Py5Hb1SrHQNBwznx3V96h8r9Xh/kRAuumcoYeGDhMDt1Cv
-         1cKwG6ehaBIHdnTgdSDTOEdHq2NWzD75CkLmAOzH8su/MO3WQD4MmAXtL4H6qtn4mQYm
-         mKoQ==
+        b=hohCNcd+k/reqZ1usKOdJNyG44bFJHEKMJH27XODJtj8UTFxrH9E7fefKb7qOjabpE
+         0VRO2KU5FYVBwG7iYUG/B6XA4FSKOe0LBUjn/OeJGBvF+mTLChsBSCSK2GkpQJkCAsVR
+         glgr4NULebOW4W0gKyjqozdkuaHGeLlbwK2ym8PEF53+voWUpC3UP18mUr+iOM3+d6IN
+         S2zK8j6O1/B6CKwSVgwBIf5vxRSo1RNbrUeOi6f0mFUwIRR6vcaYyeaEau+0nKPqPfr5
+         K5u9Po6H4ieCdr5jVFaOufKbk+L3FmFcSAwo15WclDiSDKjJqQOOa2z4Vd9poFDCtRp3
+         kqkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=p9tzXXdUlzg7WInvqLDVl2M0bz39WuPD+utdAo3YPLU=;
-        b=VIDXvaznoK93uc05ouityAlgcaLxLU/ycKVE3nTh4+yDLtGvXdbUXV/HsBy2NL+duX
-         nyDdIKiiAmT2E584l1kz+Zb/ppo3GlDBVm3VExUWZjFAGveYkfXL9KVz6ezFSP4dwYkk
-         BXS3VQFD8kR31pSY8zYICLuyO5v+fJcprD5ccBBLviDyJ3RcYlKFIESep5DJrGWzMXo+
-         x27zutUt9TreGCRpgAsDDTNRVxR5vhxbNlE3zw0exYQ4JpxCz0sUYWqh4srXNDQkkcRy
-         hSletvy77zkPPQVqaRFkPaHhuLy8zhjpnFqzVRubn+XIPV0bLolE8Z/Ob7gDWiJs1JF+
-         Qhww==
+         :content-transfer-encoding:in-reply-to:references:to:mime-version
+         :user-agent:from:date:message-id:arc-authentication-results;
+        bh=o/Uo4nXp0Trn4XdIc5YnzXQRNts78tpC40o12uR1e8A=;
+        b=mfXX/pWOyGwWh2hangf1n3RIDwpWXbysyypiPYcSPLX29yqEQcj/keAKbTMNfYDfr/
+         6o36hrbRcah81hrQ0hTEYSGzKomvh1kiccBC+0YOcpzlQ88q/DkkFz+TWIn5JKDIVkKN
+         fa63Twdk5dlre2pZZoLIOl0dddkXm0EodRFQ22tkYKi28CpRF1zU5ibwpYrWIgRhxvrg
+         jyUR17IDPIzIqv0+r4HoXea+C4gmJjbGsgjigZbxF1pwYuHZyjDJl5tDZpwSPMY+3OpJ
+         UXwRMXCGY5gEMR+Yj6VZlv97rjDz5Vs/AhZvZYg7iE3toz0f2zxpMT4j1FMphyw1cb3/
+         ERVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DjyDJwo8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s2-v6si1324218qti.304.2018.05.22.12.26.41
+        by mx.google.com with ESMTPS id q1-v6si1658608qkl.139.2018.05.23.23.32.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 May 2018 12:26:42 -0700 (PDT)
+        Wed, 23 May 2018 23:32:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DjyDJwo8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57524 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36831 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLCvh-0004ih-Kz
-	for alex.bennee@linaro.org; Tue, 22 May 2018 15:26:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60677)
+	id 1fLjnQ-0006Df-QW
+	for alex.bennee@linaro.org; Thu, 24 May 2018 02:32:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLCvW-0004iK-Mq
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:26:31 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fLjnG-0006DE-Rg
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 02:32:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLCvV-0006R6-R9
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:26:30 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:38784)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fLCvV-0006Qn-MI
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 15:26:29 -0400
-Received: by mail-ot0-x244.google.com with SMTP id n3-v6so22337061ota.5
-	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 12:26:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=p9tzXXdUlzg7WInvqLDVl2M0bz39WuPD+utdAo3YPLU=;
-	b=DjyDJwo8lrl+X+X2aCGKASc/8V3i4Oip9/lRC68i2dsfBDKzumN7Mwt0Wk2IZPQbK2
-	x3cA0CuychweJvVS7zq6Qlbp6/qop44/kUXzKl6+rNIxIgKNoT6f3rZYmEy13QNBQUzC
-	8YU6P4OHWylu50/IFbq0rndwdkOWTbE0w/x+8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=p9tzXXdUlzg7WInvqLDVl2M0bz39WuPD+utdAo3YPLU=;
-	b=hMQZuDV6z64uH3tkRIGJx98RKyei7NT8vWh1xKc3lKr3DAJvmFvZftpv/w2hZt55Ga
-	V1nEtIIVkjVz7ANiqiEM51gMd8Va3lemIUh5+DKxLdwZf9+NisVg3m/Z9DmhDyw07ZrQ
-	YEjJ6o25fCtMOI9piIJdAhsuSCD/W/sT6DKO1zLf9CcFgPk600GhvelHZ7xE/mv2INhn
-	+bUuY4JhXWCAH/5XKZ4G0CExM7B845TolFqTAeILQHtDFA/JiBNnZliqJuSxuDZbyRsg
-	nJ7bU5je7nchfPxPD5Lo1VYhh2iD17r3MVMk6rhuaPfFqvH3P9mdbXUon/5u5ezkKtrK
-	aVtw==
-X-Gm-Message-State: ALKqPwfkrXGqqvlGkQvC+SCYL10WJ4WbxnF8g/6rJObs69WjbLM2zRe7
-	hS1+jOqvgFq7Tds2LLoPHzs6cLbSjiat1XXw30TSIg==
-X-Received: by 2002:a9d:16d0:: with SMTP id
-	s16-v6mr17783101ots.294.1527017189010; 
-	Tue, 22 May 2018 12:26:29 -0700 (PDT)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fLjnD-00010i-MM
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 02:32:10 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2619 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1fLjnD-000100-7h; Thu, 24 May 2018 02:32:07 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id 97BFD8EA734E9;
+	Thu, 24 May 2018 14:31:47 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by DGGEMS408-HUB.china.huawei.com
+	(10.3.19.208) with Microsoft SMTP Server id 14.3.382.0; Thu, 24 May 2018
+	14:31:40 +0800
+Message-ID: <5B065BCA.6090607@huawei.com>
+Date: Thu, 24 May 2018 14:29:30 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 12:26:08
-	-0700 (PDT)
-In-Reply-To: <d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
-References: <20180522173713.26282-1-peter.maydell@linaro.org>
-	<d8c13782-48b1-0975-ee2c-0d2ec2eecebe@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 20:26:08 +0100
-Message-ID: <CAFEAcA_3P-JEsiz_3ZdVhG2kcQ+Y3yOAufLQtHknuzufRosANQ@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
+	<1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
+	<CAFEAcA96qV_f7i_36Yzb-QV7W9SRHKfJpg=rvv3tia2X-Xi7QQ@mail.gmail.com>
+	<5AB0F254.3050503@huawei.com>
+	<CAFEAcA-Ct3qa0OFZ4U+9RH68SQJgmkxJKKS5e+if_MuL2pSu3A@mail.gmail.com>
+	<5AB21130.2020309@huawei.com>
+	<CAFEAcA8yr+KJFwBSksMP-VjNbsSd190VCzB4wGwOCoaX2ScDiA@mail.gmail.com>
+	<CAFEAcA_r=S=YWAuZue1zZnFdtFYK2wU7NnaCcGThZU_u33qD4g@mail.gmail.com>
+	<CAFEAcA_JYyHj6NGJahGPQ9p9XQz6rkmhWMfheW96DzkciModDA@mail.gmail.com>
+	<CAFEAcA_GwG-80oNHHb1wcJxkzS5YcbH335JHBo48_ksFmgRB7A@mail.gmail.com>
+	<5AC97568.2040502@huawei.com>
+	<CAFEAcA8M4-2sAr84kA-1m-0ydw_Xy27A6qK4BEwEzRTdCNahgg@mail.gmail.com>
+In-Reply-To: <CAFEAcA8M4-2sAr84kA-1m-0ydw_Xy27A6qK4BEwEzRTdCNahgg@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH] Correct CPACR reset value for v7 cores
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.190
+Subject: Re: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip
+ the registers banked by GICR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,34 +95,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Juan Quintela <quintela@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w9KDhRpJU3Gl
+X-TUID: DihmLxqXSaV1
 
-On 22 May 2018 at 20:06, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> On 05/22/2018 07:37 PM, Peter Maydell wrote:
->> This is sufficient that a save-and-reload while the romulus-bmc
->> machine is in the bootloader will work. On the other hand if
->> I do a save-and-reload after the kernel has started booting
->> then we get the classic "guest hang after reload", so some
->> state is still not being transferred somewhere (probably in
->> a device in the machine model?)
->
-> I see the problem. Bizarre.
 
-Usually it means that something in the path from timer device
-through to the CPU has failed to save-and-reload the state
-that it needs to, so that when the timer fires post-reload
-it doesn't actually cause a CPU interrupt. You can probably
-debug by putting a breakpoint on whatever looks like a likely
-timer device's 'set the irq line' function and stepping
-through to figure out what's happening.
 
-(You're not using trustzone, are you? I know of a bug with
-migration of cpus with TZ enabled which I'm probably going to
-look at later this week)
+On 2018/5/22 17:13, Peter Maydell wrote:
+> On 8 April 2018 at 02:50, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+>> On 2018/4/6 17:36, Peter Maydell wrote:
+>>> On reflection, I think I'd aim for 2.13 for this, since:
+>>>  * it's not a regression
+>>>  * it doesn't actually affect any of our boards, because
+>>>    none of them define enough interrupt lines that they
+>>>    would actually be using the top 32 that we fail to migrate
+>>>  * getting the migration compat right is a bit tricky and
+>>>    will benefit from having the time for careful review and testing
+>>>
+>>> Let me know if I'm wrong with any of those assumptions.
+>>
+>> Yes, it's no need to merge this for 2.12. I'll respin this patch later.
+> 
+> Looking at another GIC related patch this morning reminded me
+> about this one. Shannon, are you planning to respin this now we've
+> reopened for 2.13 development?
+> 
+Yeah, I've sent new version yesterday. Please have a look.
+http://patchwork.ozlabs.org/patch/918734/
 
-thanks
--- PMM
+Thanks,
+-- 
+Shannon
+

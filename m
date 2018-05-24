@@ -1,97 +1,103 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1833850wre;
-        Thu, 24 May 2018 05:59:58 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL1Sqs52CCe263+cL6xR4o7G2yQR4X4wWm1IJB/+UFlSXmob5BopQadAhSzkXm7kX0pTs+z
-X-Received: by 2002:ac8:2b50:: with SMTP id 16-v6mr7068492qtv.260.1527166798140;
-        Thu, 24 May 2018 05:59:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527166798; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1842606wre;
+        Thu, 24 May 2018 06:07:19 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKwNQyUgQk0v48YGh3iejT2UkBBog4S3YwCHmDu1wbntb13MUKTucAd+dLHpvfo4MDiCcGj
+X-Received: by 2002:a37:8484:: with SMTP id g126-v6mr6660155qkd.273.1527167239064;
+        Thu, 24 May 2018 06:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527167239; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hl82y/4H4Hr2ufMgvfaE9HFMHM+2YIJOMQxAhWxbebfc8iYOkZrz7JZvJlS3aMtUI6
-         +4KTl3X1nuC5EkND+pcX5e3ez9DBnjZJB11QyoXTKnrgvAzm4U+0JkDXG6LSkFM0cpH3
-         THlFNTAeY/XUCPsAtV1DxME1Jau+TXx6L4zb2WykF3qRXBYBsQE9Tdp4M9UcoJNOVy1N
-         XCjOXokmp9k5HVy18T4P16oh5igBl0h5nFoGxGxT0tGjGadbsQIu9yv8VNgtZCn7RMqu
-         sb5HPm8c0UmnI0tVaAfXkup+fdJZWcJKKnV7Ehy+BnmQXFXltH4Vt3ohNvrV+40fiMlQ
-         WwFA==
+        b=zfhrwXN1OcIipzIkEaVMDmXJjUwlxC6tK5ipkloTk7xgU38PvzY7cf+CK43AKmEDAG
+         KKpYGu6aZ5Tl1bhtV7AWOZDrF6soQbVKje0GBcIArdsMKY69yhi4lwSgVKF5KzMweLsf
+         OdYy8Q75HgDa0kFcEn5dbo2WaBhJ26luprrekO8Bsb04XgTBEmbSVadWmDFvtS2F1CGJ
+         cdWmU/sn84vDcCssqnxYTUzbZzXrCtGDpK87fs2prLJpX41dl6xrj582b9xo4gUh31i/
+         j1eriUTC1qpPjUBH/SwAWmvmWS0sjktdXpPTQCv3bqTPy2fnloL5iaCNeW2MLQbBzkNT
+         lXAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=IfyxMzsvA40lKXL7xyWWTFESCs88CBTKIpQH530YwjU=;
-        b=jw0C/5+hiD/wzJ9XdCIl/AKfhJHej8y6i1FyNQG7/tV1e082AFy0C3n4gZyCZi4rqB
-         w1mzz2VfBlJQCGb0yo0yU2i8YD/eftB2eetmywpsES6/TPa6YcvWvmg8d6QeFStXJKAT
-         IBmfalH44oStJ3XzsCfGtP6h8KWtMMIjfoOXwsNlmBDtE0N7Q0Gzw1BWoqVFXtWtkCKt
-         slEklGLoUdv19mhceFuuKfiuxRKkO8Jjf+G+3tjnPlKghRoRLwrockKxWHv2cmX11WFj
-         JygOqL7lFpQWYfKQsXqPQdrjuLzAThHd3SIlFyqteRzA9rwfMcVudDwXqdA1gJwYeFYP
-         fYCQ==
+        bh=kJLTxDledDlNlQEoZBJmoVF0BxL9pVLRAcCUYJquCHQ=;
+        b=C9aqRgwwC5KUml4YnWo9MWbFUtHIgcyMVVAljnogim4qLIeC85M1+QAIGHubpUpeme
+         tuRAEmv8pWUNS/+7cEG651FRo9jOSxQaWc+xh0U7ZXt73LRJ7fnQYQH4aTq3+3NEmcdC
+         UKafa1xTkb6w5NXCTJbm0/RFZSjkS8qkVCmPYnOmzkc5TAPeK/96fLvlgUpDJEbrZSm/
+         Q6gwUjlCFN5w1ddUdHz+Pye6HpXjFYRxAq1Ix7X9PY0ov3Q1iTuhyffTNueHm1U2YDGs
+         KizKcsSk0Dl9tCMHCEv6QDjnSvpsv1rM0+amzWHc9HLW2vILVw2TgwZ+ZSJ1OiCZJ24s
+         frVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ljQznomZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f9-v6si4088714qvh.216.2018.05.24.05.59.57
+        by mx.google.com with ESMTPS id e29-v6si3188598qvb.30.2018.05.24.06.07.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 05:59:58 -0700 (PDT)
+        Thu, 24 May 2018 06:07:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ljQznomZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38543 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38611 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLpqX-0000ta-NV
-	for alex.bennee@linaro.org; Thu, 24 May 2018 08:59:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43666)
+	id 1fLpxe-0002vI-Hv
+	for alex.bennee@linaro.org; Thu, 24 May 2018 09:07:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45198)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fLpqN-0000tS-Al
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:59:48 -0400
+	(envelope-from <laurent.desnogues@gmail.com>) id 1fLpxT-0002uM-M2
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:07:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fLpqK-00089K-AN
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:59:47 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48416 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1fLpqK-00083S-59; Thu, 24 May 2018 08:59:44 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 011EF402178A;
-	Thu, 24 May 2018 12:59:41 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-84.rdu2.redhat.com
-	[10.10.121.84])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 219C82166BB2;
-	Thu, 24 May 2018 12:59:39 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
-	<ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
-	<bf99311a-823d-34e8-1892-be27534afc32@redhat.com>
-	<22c4e504-a7b4-e6dd-b2cc-618d306b6f0c@redhat.com>
-	<CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
-Date: Thu, 24 May 2018 14:59:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <laurent.desnogues@gmail.com>) id 1fLpxO-0002wz-0e
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:07:07 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:35549)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
+	id 1fLpx6-0002p5-Es; Thu, 24 May 2018 09:06:44 -0400
+Received: by mail-oi0-x243.google.com with SMTP id a6-v6so1364737oia.2;
+	Thu, 24 May 2018 06:06:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=kJLTxDledDlNlQEoZBJmoVF0BxL9pVLRAcCUYJquCHQ=;
+	b=ljQznomZLVjJ3EExh1BpAJ5hO9KCHwUI2IkUd5+57irN0n3fdH857UhXDIkQbX7OtB
+	zUHDJTyGJ5GP47xuxHKKiQWSEqu1ENbmDUUhAaUDsbQxZiEpbhvLWfyYjLYtOPlKZpN0
+	wmuOk23ZiE2pdtIq4iAoFRFJnGO5p5OsyQlz1Q12IzqkvBkN6Dkguvho2KohdI57vFqW
+	C2EtgSNTv8IZIfWGz5G8gWW8bwNrKdy22C3HOHeWb486hWlqCV2Ly0jn9q+ax0OAnHUv
+	2A5asi+mFZ18lNmldAqnx/uSh7MVPkl75I5zkmw/rN5277CRltcBBc8tVLNQFkFzIhuR
+	+b4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=kJLTxDledDlNlQEoZBJmoVF0BxL9pVLRAcCUYJquCHQ=;
+	b=GmhXYq8DIXXCAysYOPzgGehSsy5mb4j0mhyNMYueowN2TTixuHJRGIZKQjhca8pJB4
+	a8CJWvNk9kCLYKJngGmwk3QHzhmHe1Bd6evnnLQYIhGdoAcoDg0ojWx2wlTCX34ynXgm
+	MOAhztUYEm3YZFNGuDhPDYA7vHeRqrAC5AuG+EyAjXAOJ2k/yOqvo0z8tkBaEqk3L2mt
+	hYG7JhmNoxDKtpEaVxPKOeYxjIO2CACaL/0N8JUjVZIePSfbVPjdvO0uZ3OuSzTYFsPn
+	XpMbcsIpIIUqj+Eh6mGLSuRtEfjhUyrcdIvbrGl0V7o4ub0Nd7fBijmYgeGMG7Sjo3ee
+	xA5A==
+X-Gm-Message-State: ALKqPwcjMopIZz6StddcZNTbi8HC/eRAfvnyto49P/L3nmEe73YuiaOf
+	tAMwIHnmVnHqIep2q4HaDMTPQlyWCM9OACaOdrw=
+X-Received: by 2002:a54:4e8b:: with SMTP id
+	c11-v6mr4055346oiy.250.1527167203392; 
+	Thu, 24 May 2018 06:06:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Thu, 24 May 2018 12:59:41 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Thu, 24 May 2018 12:59:41 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/2] ARM virt: Support up to 256
- PCIe buses
+Received: by 2002:a9d:4187:0:0:0:0:0 with HTTP; Thu, 24 May 2018 06:06:42
+	-0700 (PDT)
+In-Reply-To: <CAFEAcA_YoGsJ_Yuc5EFBJwnANdNXb6YQ3tV5pyDr8RD=0itXbg@mail.gmail.com>
+References: <20180522175629.24932-1-richard.henderson@linaro.org>
+	<CABoDooOCO+NCjZaPVa6jFzEWztHSBDEMfsmjbJ_gOGNk3PRWNw@mail.gmail.com>
+	<CAFEAcA_YoGsJ_Yuc5EFBJwnANdNXb6YQ3tV5pyDr8RD=0itXbg@mail.gmail.com>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Thu, 24 May 2018 15:06:42 +0200
+Message-ID: <CABoDooMkt37WuJOmztQi0128Rv6YXrboqmmKkgAqQNXQ23L1fg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] tcg: Fix helper function vs
+ host abi for float16
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,47 +109,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sVEPGbmT/Z2Z
+X-TUID: dKOxcLP8/UNe
 
-On 05/24/18 11:11, Peter Maydell wrote:
-> On 23 May 2018 at 21:52, Laszlo Ersek <lersek@redhat.com> wrote:
->> On 05/23/18 22:40, Auger Eric wrote:
->>> On 05/23/2018 07:45 PM, Laszlo Ersek wrote:
+On Thu, May 24, 2018 at 2:28 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 23 May 2018 at 06:10, Laurent Desnogues <laurent.desnogues@gmail.com> wrote:
+>> Some AArch64 tests I had that previously failed on a x86-64 host now pass.
 >>
->>>> Regarding the second patch, I do believe we need "more sophistication"
->>>> there. For example, I guess it could be possible to distinguish "-cpu
->>>> cortex-a15" from "-cpu cortex-a57" somehow, and stick with the low/small
->>>> ECAM in the former case. (The 32-bit firmware already runs on cortex-a15
->>>> only, and not on cortex-a57, according to my testing.)
->>>
->>> So we should detect we are in ACPI boot  + aarch32 mode to force legacy
->>> ECAM region, right?
+>> Tested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+>
+> Thanks for the testing.
+>
+>> Perhaps the two occurrences of the following comment in
+>> target/arm/translate-a64.c could be removed along with this patch:
 >>
->> Agree about the aarch32 subcondition.
->>
->> However, "ACPI vs. DT" is not the right "other" subcondition here;
->> instead we should (minimally) check "firmware vs. no firmware". See the
->> "firmware_loaded" boolean field.
-> 
-> Won't it also break a guest which is just Linux loaded not via
-> firmware which is an aarch32 kernel without LPAE support?
+>>             /* write_fp_sreg is OK here because top half of tcg_rd is zero */
+>
+> I think this comment remains correct, doesn't it? At this point
+> we've just called a helper routine which is 'f16' return. With
+> this patch, that means that (by virtue of being uint16_t return
+> type as far as C is concerned), it will have returned a 32 bit
+> value into the TCGv_i32 whose bits [31:16] are zero, as the
+> comment says. We require that because we're using
+> write_fp_sreg() to update the vector register, and that function
+> zeroes out bits [127:32] and assumes [31:16] from its input
+> should all go into the vector register; but the instruction's
+> semantics require [127:16] to be zeroed, and it's only because
+> we know [31:16] are zero in the return value that we can
+> get away with calling write_fp_sreg() rather than requiring a
+> new write_fp_hreg().
 
-Does such a thing exist? (I honestly have no clue.)
+I was reading the comment as somehow explaining the assumption of the
+ABI clearing the top 16-bit of 16-bit return value.  But I agree it
+still makes sense as it is.
 
-If it does, then there are two options:
-- don't enable the new ECAM range by default (always take an explicit
-option),
-- offer both ECAM ranges and let the guest pick one (I should add that I
-have no idea whether exposing such *alternatives* is possible via DT and
-ACPI; i.e., "pick one but not both").
+Thanks,
 
-Thanks
-Laszlo
+Laurent

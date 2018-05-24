@@ -1,94 +1,100 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1788656wre;
-        Thu, 24 May 2018 05:10:32 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpKddCQ88nSY04KZTWfq1ZCVr9xGP1mFp2alkBmtLDcDmK9j+QZsjDWqKcehIzcB8DfDNYe
-X-Received: by 2002:a0c:b61f:: with SMTP id f31-v6mr6409436qve.103.1527163832244;
-        Thu, 24 May 2018 05:10:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527163832; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1806163wre;
+        Thu, 24 May 2018 05:29:28 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL/ori1Fjx4HyfZW1o5USz4Ph6auCOVchmtTgFsi7lu+b3sJ/qD9SoQ9xyc8qSyG1BRMte1
+X-Received: by 2002:a37:ddce:: with SMTP id u75-v6mr5570958qku.147.1527164968181;
+        Thu, 24 May 2018 05:29:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527164968; cv=none;
         d=google.com; s=arc-20160816;
-        b=CEIcRdqn9lAy+1IMnksHfrLGTFl81hVf8M7wFhDV4KG0UdmT5gRw1UjwTSP5yCe/Ao
-         4cRsh1LlU+erHtR8JoR67acrB7jKuksq44Q0VfgCJqZk4hIS3n/ADCQxiqeLh+/k42g1
-         vX0BqdHAEgeWFYk6nx7ODO4F53Wpl0ew4vQOBr4tu5qCPSR8tndzN/4yHWCPHMg9nQlL
-         l6GWjHB05SSBu7WEVIUWgF6o1BZjR250MDEweufsgMkQPsJo43e4eEzPoSmGZLktWoiL
-         jdNOme7hqOP/P6OcIyCx2K7iKMhlg/8XnqjUPq/RnNWrUoqsD1YDEG7B0rxAO8RhYBU1
-         ad3g==
+        b=KEgzTYvFO/4l2skQ6y1iKgz6aQo/0boUMko4r2wT+TFQSkK7v9JFLhjhbFjoIMZn+a
+         yxhcNWIBp1tEViZ2LJE6xr+CKDsxOqareY1E2oYHto/Z6EjLnv4CkocfIf+XsRVAclea
+         IdqfOzOunONZfmfMOq+77Yr4bYrsb3kkdl53S+uUAyFDPE6Hov+wD34d6N8KoDofBVy9
+         tm3zLiZXKMUg4BcVXlz7ykRYWYAV9nqX5EoBKuqVGQSwSI8mwuEyCrs4srPbLQtXorMv
+         27IN+f1DuhswrYglXXD9NOdwz5IYz9KfaN4prolkfntPCaN/njUTnHDpJyc1aF0VQfe0
+         8WxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=KTDBq5eJA34JBNd9Ovptf7HophjaiKG4WdzZaq0Kgtc=;
-        b=R36B1Ig/R39PUioRuC7GjDAJiaNPwrNXippcY1OOwNlr9uNU3iNvFmYnz/Kq+s7Q7n
-         mvDmlf0gat+O3Xe0iNHVdjI4yErUHObWKveiR2xQXSE0HQxSJ5xZpgJ63n0bTn1P7Q/k
-         +IMMKzxJ7mdqFQADULVBy3unoS4jDLZGhoUV0YRJOhwU7wrJW6986WRoeN/s/uAtWzhg
-         ipxtUtb1Z+XA6vAZecnSJmDZ/ZCr3aiBV3XXor7cDIOFMTlGwEALy1u+S3EHqVMmFhAv
-         uEwlkAQTiSYt02TAyPEPo9kkLJeFHRsH4Vm+InaMBHS6lGJmkH8KKH+hKW0RTaxeNn5M
-         XkOQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=89M9EwgyGk+Pi134D7dU7Mc/PgKUqk/GkOvkZc/vT48=;
+        b=e5JeJEQqZnhlXa4gNTTrCjLGjVsCGcVjsavr+9WyPaKmkkq9v1I2xe+KSUbNpjG/B5
+         EZPwMFtxGcqjux6OIi61ZbLufZ4guFkcEKjQH+nQzjzuN6z7JX7pvOwg8FSslP67bqDI
+         2mnMMCtYNEY91PgN6hiklbP1oGoL2aPsLzhezxx0KnPMDtGxxi62PQeY238CsezIFX4H
+         XaIsLHLPGxD4gcUiyW4RHIQGBjrzGrv9DXQvgOqX9ya6m0UHlJ5K0wHNPxIjy11wIRHM
+         kLcCIPJ8DTyfd2ZAJ/asLEyWbBi2KpvCXWP55LdeoEslcx2aLzjlmvQe8JYEpBqUu6zV
+         2tNA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HdadXFk2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v189-v6si5760146qkc.379.2018.05.24.05.10.32
+        by mx.google.com with ESMTPS id l7-v6si7839852qkd.186.2018.05.24.05.29.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 05:10:32 -0700 (PDT)
+        Thu, 24 May 2018 05:29:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HdadXFk2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38323 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38375 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLp4h-0006kO-Mm
-	for alex.bennee@linaro.org; Thu, 24 May 2018 08:10:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59302)
+	id 1fLpN1-0001eQ-PI
+	for alex.bennee@linaro.org; Thu, 24 May 2018 08:29:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36346)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fLp4R-0006jl-Jz
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:10:21 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fLpMu-0001cd-9K
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:29:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fLp4N-0006Wo-2A
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:10:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56086 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fLp4M-0006WU-Rp; Thu, 24 May 2018 08:10:10 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 85B0C401EF0E;
-	Thu, 24 May 2018 12:10:09 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
-	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5A4EB2166BB2;
-	Thu, 24 May 2018 12:10:08 +0000 (UTC)
-To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
-References: <1527047633-12368-1-git-send-email-zhaoshenglong@huawei.com>
-	<1527047633-12368-2-git-send-email-zhaoshenglong@huawei.com>
-	<acca5b80-f527-bc39-0b63-147e53affb4b@redhat.com>
-	<5B0683FB.4000602@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b0b8a3b0-c55e-3aae-7fb6-28ea732a04f9@redhat.com>
-Date: Thu, 24 May 2018 14:10:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fLpMt-0004qg-Bt
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:29:20 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:38590)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fLpMt-0004qE-7A
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 08:29:19 -0400
+Received: by mail-oi0-x243.google.com with SMTP id k17-v6so1256234oih.5
+	for <qemu-arm@nongnu.org>; Thu, 24 May 2018 05:29:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=89M9EwgyGk+Pi134D7dU7Mc/PgKUqk/GkOvkZc/vT48=;
+	b=HdadXFk2bf2GIcNlO9wiWfaBVcou+vJJQXe2Z8mIcjULVJJSYKjcNpXd2UjBGumUaf
+	NmoyNDSJDAsj/BVIf3xTcF1i422IdBKr+XqcE3ixNBibrKhYftZ7PJyPUVSjEZHWUh0j
+	0h7lLYLj6u/2i4X6QJ0ibLKF29hH9yLimcwSc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=89M9EwgyGk+Pi134D7dU7Mc/PgKUqk/GkOvkZc/vT48=;
+	b=NYjz0XOmDLVKhojLppnkOJnGixSA4GFYoa6tJFk3ytnVY7MJsgG698NaD0Q82nZxcD
+	Te/o6YqX6GBL7wSNmYPU+mUUse2QmoL0wf3b1lW2fiiE4mh7FqR8Gt75d6/2yES72Cq3
+	XXeULBsXIgybgFLnc1f9aRkCdd/TSK2xZMTPJk9uDYBvwGmfbVZWPUgBInXgFQvdJsMG
+	5Wp95ummeTKNIwg7stPxiJEiSikMqsAL/WQ0CJVuSY4/lEVGWRhENt1ECkq82kJKkSTt
+	bf2qfJ/OjiqDYpaEVWvP9yEs4cmtgF1Od5MVFBBkQejIkJyQXOwOf+n/ppR7P9fSbeA8
+	pX9Q==
+X-Gm-Message-State: ALKqPwc3nyDLOGlGmCgHNBUg8jGN2p8Rzxo2jdkK/zUVu6IWi/972TBP
+	k0s1RGVbFzlPsswpouqlmeajBEJ1FQMgsd22Q23yPQ==
+X-Received: by 2002:aca:b855:: with SMTP id
+	i82-v6mr3878067oif.12.1527164958396; 
+	Thu, 24 May 2018 05:29:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5B0683FB.4000602@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 24 May 2018 12:10:09 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 24 May 2018 12:10:09 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V3 2/2] arm_gicv3_kvm:
- kvm_dist_get/put: skip the registers banked by GICR
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 24 May 2018 05:28:58
+	-0700 (PDT)
+In-Reply-To: <CABoDooOCO+NCjZaPVa6jFzEWztHSBDEMfsmjbJ_gOGNk3PRWNw@mail.gmail.com>
+References: <20180522175629.24932-1-richard.henderson@linaro.org>
+	<CABoDooOCO+NCjZaPVa6jFzEWztHSBDEMfsmjbJ_gOGNk3PRWNw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 24 May 2018 13:28:58 +0100
+Message-ID: <CAFEAcA_YoGsJ_Yuc5EFBJwnANdNXb6YQ3tV5pyDr8RD=0itXbg@mail.gmail.com>
+To: Laurent Desnogues <laurent.desnogues@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] tcg: Fix helper function vs
+ host abi for float16
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,159 +106,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UWtTI4fvhmIm
+X-TUID: 1R7Yukjqr3pU
 
-Hi Shannon,
+On 23 May 2018 at 06:10, Laurent Desnogues <laurent.desnogues@gmail.com> wrote:
+> Some AArch64 tests I had that previously failed on a x86-64 host now pass.
+>
+> Tested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
 
-On 05/24/2018 11:20 AM, Shannon Zhao wrote:
-> 
-> 
-> On 2018/5/24 17:04, Auger Eric wrote:
->> Hi Shannon,
->>
->> On 05/23/2018 05:53 AM, Shannon Zhao wrote:
->>> While we skip the GIC_INTERNAL irqs, we don't change the register offset
->>> accordingly. This will overlap the GICR registers value and leave the
->>> last GIC_INTERNAL irq's registers out of update.
->>>
->>> Fix this by skipping the registers banked by GICR.
->>>
->>> Also for migration compatibility if the migration source (old version
->>> qemu) doesn't send gicd_no_shift_bug = 1 to destination, then we shift
->>> the data of PPI to get the right data for SPI.
->>>
->>> Fixes: 367b9f527becdd20ddf116e17a3c0c2bbc486920
->>> Cc: qemu-stable@nongnu.org
->>> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
->>> ---
->>> Changes in V3: add migration compatibility and fix code style
->>> ---
->>>  hw/intc/arm_gicv3_common.c         | 36 ++++++++++++++++++++++++
->>>  hw/intc/arm_gicv3_kvm.c            | 56 +++++++++++++++++++++++++++++++++++++-
->>>  include/hw/intc/arm_gicv3_common.h |  1 +
->>>  3 files changed, 92 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
->>> index 7b54d52..f93e5d2 100644
->>> --- a/hw/intc/arm_gicv3_common.c
->>> +++ b/hw/intc/arm_gicv3_common.c
->>> @@ -141,6 +141,38 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->>>      }
->>>  };
->>>  
->>> +static int gicv3_gicd_no_shift_bug_pre_load(void *opaque)
->>> +{
->>> +    GICv3State *cs = opaque;
->>> +
->>> +   /*
->>> +    * If the gicd_no_shift_bug subsection is not transferred this
->>> +    * means gicd_no_shift_bug is 0x0 (which might not be the same as
->>> +    * our reset value).
->>> +    */
->>> +    cs->gicd_no_shift_bug = 0x0;
->>> +    return 0;
->>> +}
->>> +
->>> +static bool gicv3_gicd_no_shift_bug_needed(void *opaque)
->>> +{
->>> +    GICv3State *cs = opaque;
->>> +
->>> +    return cs->gicd_no_shift_bug;
->>> +}
->>> +
->>> +const VMStateDescription vmstate_gicv3_gicd_no_shift_bug = {
->>> +    .name = "arm_gicv3/gicd_no_shift_bug",
->>> +    .version_id = 1,
->>> +    .minimum_version_id = 1,
->>> +    .pre_load = gicv3_gicd_no_shift_bug_pre_load,
->>> +    .needed = gicv3_gicd_no_shift_bug_needed,
->>> +    .fields = (VMStateField[]) {
->>> +        VMSTATE_BOOL(gicd_no_shift_bug, GICv3State),
->>> +        VMSTATE_END_OF_LIST()
->>> +    }
->>> +};
->>> +
->>>  static const VMStateDescription vmstate_gicv3 = {
->>>      .name = "arm_gicv3",
->>>      .version_id = 1,
->>> @@ -165,6 +197,10 @@ static const VMStateDescription vmstate_gicv3 = {
->>>          VMSTATE_STRUCT_VARRAY_POINTER_UINT32(cpu, GICv3State, num_cpu,
->>>                                               vmstate_gicv3_cpu, GICv3CPUState),
->>>          VMSTATE_END_OF_LIST()
->>> +    },
->>> +    .subsections = (const VMStateDescription * []) {
->>> +        &vmstate_gicv3_gicd_no_shift_bug,
->>> +        NULL
->>>      }
->>>  };
->>>  
->>> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
->>> index 3536795..bd961f1 100644
->>> --- a/hw/intc/arm_gicv3_kvm.c
->>> +++ b/hw/intc/arm_gicv3_kvm.c
->>> @@ -136,6 +136,12 @@ static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
->>>      int irq;
->>>  
->>>      field = (uint32_t *)bmp;
->>> +    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
->>> +     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
->>> +     * functionality is replaced by GICR_IPRIORITYR<n>. So it doesn't need to
->>> +     * sync them.
->>> +     */
->>> +    offset += (8 * sizeof(uint32_t));
->> Now I am unclear about the semantics of the s->gicd_ipriority & friends.
->> With that change, is it supposed to contain only the states of SPIs or
->> contain the RAZ states of PPI/SGIs + states of SPIs. The array is
->> dimensionned to contain states for PPI/SGI+SPIs, right? In other words,
->> shouldn't we also shift field?
->>
-> Yes, it should also shift the field. But not sure if this will affect
-> the new to old migration scenario. Let me think about this.
+Thanks for the testing.
 
-Assuming we shift "field" and leave the space meant for PPI/SGI then my
-understanding is we wouldn't need the subsection. We would just add the
-last 32 SPI states in the array/bitmap.
+> Perhaps the two occurrences of the following comment in
+> target/arm/translate-a64.c could be removed along with this patch:
+>
+>             /* write_fp_sreg is OK here because top half of tcg_rd is zero */
 
-Thanks
+I think this comment remains correct, doesn't it? At this point
+we've just called a helper routine which is 'f16' return. With
+this patch, that means that (by virtue of being uint16_t return
+type as far as C is concerned), it will have returned a 32 bit
+value into the TCGv_i32 whose bits [31:16] are zero, as the
+comment says. We require that because we're using
+write_fp_sreg() to update the vector register, and that function
+zeroes out bits [127:32] and assumes [31:16] from its input
+should all go into the vector register; but the instruction's
+semantics require [127:16] to be zeroed, and it's only because
+we know [31:16] are zero in the return value that we can
+get away with calling write_fp_sreg() rather than requiring a
+new write_fp_hreg().
 
-Eric
-> 
->> Thanks
->>
->> Eric
->>>      for_each_dist_irq_reg(irq, s->num_irq, 8) {
->>>          kvm_gicd_access(s, offset, &reg, false);
->>>          *field = reg;
->>> @@ -149,7 +155,18 @@ static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
->>>      uint32_t reg, *field;
->>>      int irq;
->>>  
->>> -    field = (uint32_t *)bmp;
->>> +    if (!s->gicd_no_shift_bug) {
->>> +        field = (uint32_t *)(bmp + 8 * sizeof(uint32_t));
->>> +    } else {
->>> +        field = (uint32_t *)bmp;
->>> +    }
->>> +
->>> +    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
->>> +     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
->>> +     * functionality is replaced by GICR_IPRIORITYR<n>. So it doesn't need to
->>> +     * sync them.
->>> +     */
->>> +    offset += (8 * sizeof(uint32_t));
->> in the old to new migration scenario, IIUC,
->> bmp contains state of 32 internal PPI/SGI(RAZ) + s->num_irq-32 SPIs
->> Here aren't you "putting" the RAZ state of the 32 PPI/SGIs into the
->> first 32 SPIs here?
->>
-> Please see above code, this new version patch I add a flag for migration
-> compat suggested as Peter. If it migrates from old qemu, the
-> gicd_no_shift_bug will be 0, then it will shift the bmp, while that will
-> drop the data of PPI/SGI and also the last 32 SPIs info will be empty.
-> None of current machines use last 32 SPIs, so it's fine for the moment.
-> 
-> Thanks,
-> 
+thanks
+-- PMM

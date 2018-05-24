@@ -1,481 +1,228 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1796283wme;
-        Tue, 22 May 2018 10:56:51 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpdRBx9CdyzW/Lh0DVECufniFd7RiEHmr1LeHZQiugAGDSrshO5i/ofzYorqF8Mse1qHonm
-X-Received: by 2002:ac8:22a1:: with SMTP id f30-v6mr23615186qta.358.1527011811599;
-        Tue, 22 May 2018 10:56:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527011811; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1511913wre;
+        Wed, 23 May 2018 23:24:01 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKA4Ea7CNIDbQDJk0/NFi2pLQwbJD8PqI9Ov2kkLSslj7QXC6vZQN0mjLhpi12aR4tNtpSh
+X-Received: by 2002:a37:e103:: with SMTP id c3-v6mr5267563qkm.438.1527143041048;
+        Wed, 23 May 2018 23:24:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527143041; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nb3kKYu4pQaLpCShPNE5s2UMKmxTwwd7M+j4TaM2mP20woemlgA3Qv1eNRs0d7lkaH
-         C3WRgtS6R/+j+tdPWW7TYJchbSBp335dn9dxqjGyOf4KBaxIRlmjAyGI3rW03afUV76w
-         t9+XW+aKt3RgrmzK6IMDR+E61Szjx+q6tACLq1SLSZwnzOR9+YgjcI5XCgnsT46cmuop
-         0vdj+iEiV5U/s5eYQUUN1Tqz2Z6X8DbXNfwCYa6yWx1Uyyil6q4Q0tSirhX3+DbHYItG
-         tw/YmUPAaYZzV5Yd7OpTiirtAT12Ojvr44SShY6yiKEGWHYcu3IyjBHojoKXyf49OWIC
-         fJOg==
+        b=ohGSqLBcBJSJhy6WQqc0ivn38p6B4w2ZV5L7u/zIp0elLVWBrvVc3vh1ZKp9fr1i7J
+         B2JuWIRFVR/t1bE8kJK/aXM72IeGYTDRiyOtyFnQKIhI3i5DVzFILhPPSmM/frG1+MCn
+         eiJK/UdeivTme5B+JTEw5/uCwTx+FzmMNTf0FhHhsFqrvhQ0pJNQRnwABvRzfLL2M0+l
+         czOuuz/DXgdKKAk9FxQN+rSRHiSaLbO5fnguu9tFn4/eIJHTbJKWKA6p77UwiK+KyMvm
+         mAzK264sQ/T1fiahvsQ0h+lA7DtYzQPI2KNRj//zeqKwNqWxzphTufaLpOIi4iSiiJG9
+         84PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=WSx0uH6TDE+8MVLnVszQRo6ojFtdilYOH7wvntqDQXw=;
-        b=s04EJHLUMokAKGAqdx3FIVIkmg9BJY/sNoM3wkZt/jd2YM7Q64pj2Uzp/5VqKgt9KZ
-         LrtYONBUWlO1ZZeL08I2VCFTXAKBNf65rmW/4Ra18pMA1xKLi8tkbc0Lm23bc097upkI
-         MPObPyP13BwseSpx1NGOS/Jb2wFN8Kp6CBIrRZVx+COsdu8vvqb2k3GNo8KDUI9W0vjD
-         kkm1dDOa12l7S/QsS9Qf1XzNNCE3GXXiUkNqg4//f3q9f77E21GCAxrYO3IjeDxSvtVq
-         2GzH8ztfJdt/Yz9Y/cMfHieDSzs8cMTivHCAml8by7NbNJ9J/oyYQJ2nUFdd56//PsZi
-         MEPA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=jRSHUf722HcnY0qfh1jh7vHbBNCXRvM3s4gKagJIFB8=;
+        b=kTuRkQWoaXOzts6yacxRP4sY523n6Y3MZntnS2vllkaMjqPIwl2nC0QlsOtZetA52c
+         UCPYMfkTk472vbq8PxeyVWJecHnH2l6g9ZmoDiHmNCVl06ezKN/haEZXMLhRSHtdK82V
+         ktVhAwVgF4GS/HuhvO2AHglVtb+Vt9DP+1AhUlfGCO8KnDA1V7FrDXPhVeqIXscP08Hf
+         GIJJcDAitkv0heV0Giz9ShItYsgnHt/b2S1wYx/V5nwCG52QEkPB6EgQOeDsPXMPw2bE
+         m4wHKQexae4Xbts8Mb/1Mppfxz6CG+cojkQuNHXhtZF0auhUCjyCJqVLnLbJ3MH3gzvm
+         5A5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ivlZSd5O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 32-v6si1287040qvr.24.2018.05.22.10.56.51
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 May 2018 10:56:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <peterx@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id o22-v6si5653551qka.165.2018.05.23.23.24.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 23 May 2018 23:24:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ivlZSd5O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57148 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLBWl-0002f7-4L
-	for alex.bennee@linaro.org; Tue, 22 May 2018 13:56:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39978)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fLBWX-0002eZ-Tq
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 13:56:40 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fLBWS-0004mE-Ra
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 13:56:37 -0400
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:41769)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fLBWS-0004la-I8
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 13:56:32 -0400
-Received: by mail-pl0-x243.google.com with SMTP id az12-v6so11345968plb.8
-	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 10:56:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id;
-	bh=WSx0uH6TDE+8MVLnVszQRo6ojFtdilYOH7wvntqDQXw=;
-	b=ivlZSd5OhFIDNkjBCi1rD/+ISbcuo+QveZVHVkDMea3bu+88yHf7BdM6iuBSeJyvFD
-	Qi+BFJmLIaB8/wjr3DNNz5AiTCW8ak4uVjNFLMU6koqfWAHdYSywxvSCyLn57LK56ATG
-	vcvcuAOzrTC7Ky8YhhB3LacCT8B1amNPTxu0k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=WSx0uH6TDE+8MVLnVszQRo6ojFtdilYOH7wvntqDQXw=;
-	b=lZ3XmjvizFnZkxIY9rUdnR4VhdNQ+Ekeo3zgLzubPw0WM5/iD9DA6RaL0Vg5Wh6KZb
-	z9x4yVI4vKfdi3mPaCH5VFRfl6XFNUJGv2G6haW+dFg4OfBEk+dTJJZRMgu4yCHRmsgs
-	o3jxfgjX+4wQACTwJjQUHMiqkIRtkhq97OjhZPtOl4rfy5NSciDk/hVAw9s1v9fuqNaH
-	+DOx5gut6vzTZgUDrRLzaaho1JGS0hU5xN++lWPI78wBG+vxmwBGLTDHrdZbHETvgiNs
-	sIsqwQg+aSu0qzuoFs8vonYHZriSBpyQrlGeWWgeCXypDRaFiyk3RilTMlyqSxKlehGJ
-	Vcww==
-X-Gm-Message-State: ALKqPwf8G2402UkbsDxJYiIVWaZSOR9AZTtBWUvfcP+x4uFyrngUHVVZ
-	z85Pw92d/fqw3JpUF3m5NVKvCA==
-X-Received: by 2002:a17:902:850a:: with SMTP id
-	bj10-v6mr25174875plb.239.1527011791205; 
-	Tue, 22 May 2018 10:56:31 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net.
-	[97.113.173.254]) by smtp.gmail.com with ESMTPSA id
-	v16-v6sm29617724pfl.12.2018.05.22.10.56.29
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 22 May 2018 10:56:30 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 22 May 2018 10:56:29 -0700
-Message-Id: <20180522175629.24932-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-arm] [PATCH] tcg: Fix helper function vs host abi for float16
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WzLpVozmdazN
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 753AB5BCB6;
+	Thu, 24 May 2018 06:24:00 +0000 (UTC)
+Received: from xz-mi (ovpn-12-95.pek2.redhat.com [10.72.12.95])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 79FDB2026DEF;
+	Thu, 24 May 2018 06:23:55 +0000 (UTC)
+Date: Thu, 24 May 2018 14:23:52 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
+ IOMMU API
+Message-ID: <20180524062352.GA12122@xz-mi>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+ <20180521140402.23318-15-peter.maydell@linaro.org>
+ <20180522030333.GB17282@xz-mi>
+ <CAFEAcA-iOYhuPfvDv+iD6jBqXMXqN-jfTpSSBub1Zp1i-JcDbQ@mail.gmail.com>
+ <20180522110236.GB31932@xz-mi>
+ <CAFEAcA9b6dmpj+B=SO2YsB5sXsh=UPjkjN_U0i-uJhiDn20HHw@mail.gmail.com>
+ <20180523010636.GC31932@xz-mi>
+ <CAFEAcA840qn7Ms9hph9zzZgMbL8C7kN=cs4esGO9kxGXsgBg1A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA840qn7Ms9hph9zzZgMbL8C7kN=cs4esGO9kxGXsgBg1A@mail.gmail.com>
+User-Agent: Mutt/1.9.5 (2018-04-13)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Thu, 24 May 2018 06:24:00 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Thu, 24 May 2018 06:24:00 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'peterx@redhat.com' RCPT:''
+X-TUID: blEVay/VM64R
 
-Depending on the host abi, float16, aka uint16_t, values are
-passed and returned either zero-extended in the host register
-or with garbage at the top of the host register.
+On Wed, May 23, 2018 at 12:47:16PM +0100, Peter Maydell wrote:
+> On 23 May 2018 at 02:06, Peter Xu <peterx@redhat.com> wrote:
+> > On Tue, May 22, 2018 at 12:11:38PM +0100, Peter Maydell wrote:
+> >> On 22 May 2018 at 12:02, Peter Xu <peterx@redhat.com> wrote:
+> >> > On Tue, May 22, 2018 at 09:40:44AM +0100, Peter Maydell wrote:
+> 
+> >> > And if we see current implementation for this (still, I copied code
+> >> > from other patch in the series to here to ease discussion):
+> >> >
+> >> > @@ -498,8 +498,15 @@ static MemoryRegionSection address_space_translate_iommu(IOMMUMemoryRegion *iomm
+> >> >      do {
+> >> >          hwaddr addr = *xlat;
+> >> >          IOMMUMemoryRegionClass *imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
+> >> > -        IOMMUTLBEntry iotlb = imrc->translate(iommu_mr, addr, is_write ?
+> >> > -                                              IOMMU_WO : IOMMU_RO);
+> >> > +        int iommu_idx = 0;
+> >> > +        IOMMUTLBEntry iotlb;
+> >> > +
+> >> > +        if (imrc->attrs_to_index) {
+> >> > +            iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
+> >> > +        }
+> >> > +
+> >> > +        iotlb = imrc->translate(iommu_mr, addr, is_write ?
+> >> > +                                IOMMU_WO : IOMMU_RO, iommu_idx);
+> >> >
+> >> > Here what if we pass attrs directly into imrc->translate() and just
+> >> > call imrc->attrs_to_index() inside the arch-dependent translate()
+> >> > function?  Will that work too?
+> >>
+> >> You don't always have the attributes at the point where you want
+> >> to call translate. (For instance, memory_region_notify_iommu()
+> >> doesn't have attributes.)
+> >>
+> >> I started off with "pass the tx attrs into the translate method",
+> >> which is fine for the code flows which are actually doing
+> >> memory transactions, but breaks down when you try to incorporate
+> >> notifiers.
+> >
+> > Could you elaborate a bit more on why IOMMU notifier failed to
+> > corporate when passing in MemTxAttrs?  I am not sure I caught the idea
+> > here, but can we copy the MemTxAttrs into IOMMUTLBEntry when
+> > translating, then in IOMMU notifiers we can know the attrs (if that is
+> > what MPC wants)?
+> 
+> (1) The notifier API lets you register a notifier before you've
+> called the translate API
 
-The tcg code generator has so far been assuming garbage, as that
-matches the x86 abi, but this is incorrect for other host abis.
-Further, target/arm has so far been assuming zero-extended results,
-so that it may store the 16-bit value into a 32-bit slot with the
-high 16-bits already clear.
+Yes.
 
-Rectify both problems by mapping "f16" in the helper definition
-to uint32_t instead of (a typedef for) uint16_t.  This forces
-the host compiler to assume garbage in the upper 16 bits on input
-and to zero-extend the result on output.
+> (2) An IOMMUTLBEntry can be valid for more than just the txattrs
+> that it was passed in (for instance, if an IOMMU doesn't care
+> about txattrs at all, then the resulting TLB entry is valid for
+> any txattrs; or if the IOMMU only cares about attrs.secure the
+> resulting TLB entries are valid for both attrs.user=0 and
+> attrs.user=1).
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- include/exec/helper-head.h |  2 +-
- target/arm/helper-a64.c    | 35 +++++++++--------
- target/arm/helper.c        | 80 +++++++++++++++++++-------------------
- 3 files changed, 59 insertions(+), 58 deletions(-)
+[1]
 
-diff --git a/include/exec/helper-head.h b/include/exec/helper-head.h
-index 15b6a68de3..276dd5afce 100644
---- a/include/exec/helper-head.h
-+++ b/include/exec/helper-head.h
-@@ -39,7 +39,7 @@
- #define dh_ctype_int int
- #define dh_ctype_i64 uint64_t
- #define dh_ctype_s64 int64_t
--#define dh_ctype_f16 float16
-+#define dh_ctype_f16 uint32_t
- #define dh_ctype_f32 float32
- #define dh_ctype_f64 float64
- #define dh_ctype_ptr void *
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index f92bdea732..6ee5f684cf 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -85,12 +85,12 @@ static inline uint32_t float_rel_to_flags(int res)
-     return flags;
- }
- 
--uint64_t HELPER(vfp_cmph_a64)(float16 x, float16 y, void *fp_status)
-+uint64_t HELPER(vfp_cmph_a64)(uint32_t x, uint32_t y, void *fp_status)
- {
-     return float_rel_to_flags(float16_compare_quiet(x, y, fp_status));
- }
- 
--uint64_t HELPER(vfp_cmpeh_a64)(float16 x, float16 y, void *fp_status)
-+uint64_t HELPER(vfp_cmpeh_a64)(uint32_t x, uint32_t y, void *fp_status)
- {
-     return float_rel_to_flags(float16_compare(x, y, fp_status));
- }
-@@ -214,7 +214,7 @@ uint64_t HELPER(neon_cgt_f64)(float64 a, float64 b, void *fpstp)
- #define float64_three make_float64(0x4008000000000000ULL)
- #define float64_one_point_five make_float64(0x3FF8000000000000ULL)
- 
--float16 HELPER(recpsf_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(recpsf_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
- 
-@@ -259,7 +259,7 @@ float64 HELPER(recpsf_f64)(float64 a, float64 b, void *fpstp)
-     return float64_muladd(a, b, float64_two, 0, fpst);
- }
- 
--float16 HELPER(rsqrtsf_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(rsqrtsf_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
- 
-@@ -366,7 +366,7 @@ uint64_t HELPER(neon_addlp_u16)(uint64_t a)
- }
- 
- /* Floating-point reciprocal exponent - see FPRecpX in ARM ARM */
--float16 HELPER(frecpx_f16)(float16 a, void *fpstp)
-+uint32_t HELPER(frecpx_f16)(uint32_t a, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     uint16_t val16, sbit;
-@@ -695,7 +695,7 @@ void HELPER(casp_be_parallel)(CPUARMState *env, uint32_t rs, uint64_t addr,
- #define ADVSIMD_HELPER(name, suffix) HELPER(glue(glue(advsimd_, name), suffix))
- 
- #define ADVSIMD_HALFOP(name) \
--float16 ADVSIMD_HELPER(name, h)(float16 a, float16 b, void *fpstp) \
-+uint32_t ADVSIMD_HELPER(name, h)(uint32_t a, uint32_t b, void *fpstp) \
- { \
-     float_status *fpst = fpstp; \
-     return float16_ ## name(a, b, fpst);    \
-@@ -755,7 +755,8 @@ ADVSIMD_HALFOP(mulx)
- ADVSIMD_TWOHALFOP(mulx)
- 
- /* fused multiply-accumulate */
--float16 HELPER(advsimd_muladdh)(float16 a, float16 b, float16 c, void *fpstp)
-+uint32_t HELPER(advsimd_muladdh)(uint32_t a, uint32_t b, uint32_t c,
-+                                 void *fpstp)
- {
-     float_status *fpst = fpstp;
-     return float16_muladd(a, b, c, 0, fpst);
-@@ -786,14 +787,14 @@ uint32_t HELPER(advsimd_muladd2h)(uint32_t two_a, uint32_t two_b,
- 
- #define ADVSIMD_CMPRES(test) (test) ? 0xffff : 0
- 
--uint32_t HELPER(advsimd_ceq_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(advsimd_ceq_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     int compare = float16_compare_quiet(a, b, fpst);
-     return ADVSIMD_CMPRES(compare == float_relation_equal);
- }
- 
--uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(advsimd_cge_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     int compare = float16_compare(a, b, fpst);
-@@ -801,14 +802,14 @@ uint32_t HELPER(advsimd_cge_f16)(float16 a, float16 b, void *fpstp)
-                           compare == float_relation_equal);
- }
- 
--uint32_t HELPER(advsimd_cgt_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(advsimd_cgt_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     int compare = float16_compare(a, b, fpst);
-     return ADVSIMD_CMPRES(compare == float_relation_greater);
- }
- 
--uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(advsimd_acge_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     float16 f0 = float16_abs(a);
-@@ -818,7 +819,7 @@ uint32_t HELPER(advsimd_acge_f16)(float16 a, float16 b, void *fpstp)
-                           compare == float_relation_equal);
- }
- 
--uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
-+uint32_t HELPER(advsimd_acgt_f16)(uint32_t a, uint32_t b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     float16 f0 = float16_abs(a);
-@@ -828,12 +829,12 @@ uint32_t HELPER(advsimd_acgt_f16)(float16 a, float16 b, void *fpstp)
- }
- 
- /* round to integral */
--float16 HELPER(advsimd_rinth_exact)(float16 x, void *fp_status)
-+uint32_t HELPER(advsimd_rinth_exact)(uint32_t x, void *fp_status)
- {
-     return float16_round_to_int(x, fp_status);
- }
- 
--float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
-+uint32_t HELPER(advsimd_rinth)(uint32_t x, void *fp_status)
- {
-     int old_flags = get_float_exception_flags(fp_status), new_flags;
-     float16 ret;
-@@ -857,7 +858,7 @@ float16 HELPER(advsimd_rinth)(float16 x, void *fp_status)
-  * setting the mode appropriately before calling the helper.
-  */
- 
--uint32_t HELPER(advsimd_f16tosinth)(float16 a, void *fpstp)
-+uint32_t HELPER(advsimd_f16tosinth)(uint32_t a, void *fpstp)
- {
-     float_status *fpst = fpstp;
- 
-@@ -869,7 +870,7 @@ uint32_t HELPER(advsimd_f16tosinth)(float16 a, void *fpstp)
-     return float16_to_int16(a, fpst);
- }
- 
--uint32_t HELPER(advsimd_f16touinth)(float16 a, void *fpstp)
-+uint32_t HELPER(advsimd_f16touinth)(uint32_t a, void *fpstp)
- {
-     float_status *fpst = fpstp;
- 
-@@ -885,7 +886,7 @@ uint32_t HELPER(advsimd_f16touinth)(float16 a, void *fpstp)
-  * Square Root and Reciprocal square root
-  */
- 
--float16 HELPER(sqrt_f16)(float16 a, void *fpstp)
-+uint32_t HELPER(sqrt_f16)(uint32_t a, void *fpstp)
- {
-     float_status *s = fpstp;
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c0f739972e..a4bfac3932 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11344,35 +11344,35 @@ DO_VFP_cmp(d, float64)
- 
- /* Integer to float and float to integer conversions */
- 
--#define CONV_ITOF(name, fsz, sign) \
--    float##fsz HELPER(name)(uint32_t x, void *fpstp) \
--{ \
--    float_status *fpst = fpstp; \
--    return sign##int32_to_##float##fsz((sign##int32_t)x, fpst); \
-+#define CONV_ITOF(name, ftype, fsz, sign)                           \
-+ftype HELPER(name)(uint32_t x, void *fpstp)                         \
-+{                                                                   \
-+    float_status *fpst = fpstp;                                     \
-+    return sign##int32_to_##float##fsz((sign##int32_t)x, fpst);     \
- }
- 
--#define CONV_FTOI(name, fsz, sign, round) \
--uint32_t HELPER(name)(float##fsz x, void *fpstp) \
--{ \
--    float_status *fpst = fpstp; \
--    if (float##fsz##_is_any_nan(x)) { \
--        float_raise(float_flag_invalid, fpst); \
--        return 0; \
--    } \
--    return float##fsz##_to_##sign##int32##round(x, fpst); \
-+#define CONV_FTOI(name, ftype, fsz, sign, round)                \
-+uint32_t HELPER(name)(ftype x, void *fpstp)                     \
-+{                                                               \
-+    float_status *fpst = fpstp;                                 \
-+    if (float##fsz##_is_any_nan(x)) {                           \
-+        float_raise(float_flag_invalid, fpst);                  \
-+        return 0;                                               \
-+    }                                                           \
-+    return float##fsz##_to_##sign##int32##round(x, fpst);       \
- }
- 
--#define FLOAT_CONVS(name, p, fsz, sign) \
--CONV_ITOF(vfp_##name##to##p, fsz, sign) \
--CONV_FTOI(vfp_to##name##p, fsz, sign, ) \
--CONV_FTOI(vfp_to##name##z##p, fsz, sign, _round_to_zero)
-+#define FLOAT_CONVS(name, p, ftype, fsz, sign)            \
-+    CONV_ITOF(vfp_##name##to##p, ftype, fsz, sign)        \
-+    CONV_FTOI(vfp_to##name##p, ftype, fsz, sign, )        \
-+    CONV_FTOI(vfp_to##name##z##p, ftype, fsz, sign, _round_to_zero)
- 
--FLOAT_CONVS(si, h, 16, )
--FLOAT_CONVS(si, s, 32, )
--FLOAT_CONVS(si, d, 64, )
--FLOAT_CONVS(ui, h, 16, u)
--FLOAT_CONVS(ui, s, 32, u)
--FLOAT_CONVS(ui, d, 64, u)
-+FLOAT_CONVS(si, h, uint32_t, 16, )
-+FLOAT_CONVS(si, s, float32, 32, )
-+FLOAT_CONVS(si, d, float64, 64, )
-+FLOAT_CONVS(ui, h, uint32_t, 16, u)
-+FLOAT_CONVS(ui, s, float32, 32, u)
-+FLOAT_CONVS(ui, d, float64, 64, u)
- 
- #undef CONV_ITOF
- #undef CONV_FTOI
-@@ -11465,22 +11465,22 @@ static float16 do_postscale_fp16(float64 f, int shift, float_status *fpst)
-     return float64_to_float16(float64_scalbn(f, -shift, fpst), true, fpst);
- }
- 
--float16 HELPER(vfp_sltoh)(uint32_t x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_sltoh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return do_postscale_fp16(int32_to_float64(x, fpst), shift, fpst);
- }
- 
--float16 HELPER(vfp_ultoh)(uint32_t x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_ultoh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return do_postscale_fp16(uint32_to_float64(x, fpst), shift, fpst);
- }
- 
--float16 HELPER(vfp_sqtoh)(uint64_t x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_sqtoh)(uint64_t x, uint32_t shift, void *fpst)
- {
-     return do_postscale_fp16(int64_to_float64(x, fpst), shift, fpst);
- }
- 
--float16 HELPER(vfp_uqtoh)(uint64_t x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_uqtoh)(uint64_t x, uint32_t shift, void *fpst)
- {
-     return do_postscale_fp16(uint64_to_float64(x, fpst), shift, fpst);
- }
-@@ -11504,32 +11504,32 @@ static float64 do_prescale_fp16(float16 f, int shift, float_status *fpst)
-     }
- }
- 
--uint32_t HELPER(vfp_toshh)(float16 x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_toshh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return float64_to_int16(do_prescale_fp16(x, shift, fpst), fpst);
- }
- 
--uint32_t HELPER(vfp_touhh)(float16 x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_touhh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return float64_to_uint16(do_prescale_fp16(x, shift, fpst), fpst);
- }
- 
--uint32_t HELPER(vfp_toslh)(float16 x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_toslh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return float64_to_int32(do_prescale_fp16(x, shift, fpst), fpst);
- }
- 
--uint32_t HELPER(vfp_toulh)(float16 x, uint32_t shift, void *fpst)
-+uint32_t HELPER(vfp_toulh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return float64_to_uint32(do_prescale_fp16(x, shift, fpst), fpst);
- }
- 
--uint64_t HELPER(vfp_tosqh)(float16 x, uint32_t shift, void *fpst)
-+uint64_t HELPER(vfp_tosqh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return float64_to_int64(do_prescale_fp16(x, shift, fpst), fpst);
- }
- 
--uint64_t HELPER(vfp_touqh)(float16 x, uint32_t shift, void *fpst)
-+uint64_t HELPER(vfp_touqh)(uint32_t x, uint32_t shift, void *fpst)
- {
-     return float64_to_uint64(do_prescale_fp16(x, shift, fpst), fpst);
- }
-@@ -11565,7 +11565,7 @@ uint32_t HELPER(set_neon_rmode)(uint32_t rmode, CPUARMState *env)
- }
- 
- /* Half precision conversions.  */
--float32 HELPER(vfp_fcvt_f16_to_f32)(float16 a, void *fpstp, uint32_t ahp_mode)
-+float32 HELPER(vfp_fcvt_f16_to_f32)(uint32_t a, void *fpstp, uint32_t ahp_mode)
- {
-     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
-      * it would affect flushing input denormals.
-@@ -11578,7 +11578,7 @@ float32 HELPER(vfp_fcvt_f16_to_f32)(float16 a, void *fpstp, uint32_t ahp_mode)
-     return r;
- }
- 
--float16 HELPER(vfp_fcvt_f32_to_f16)(float32 a, void *fpstp, uint32_t ahp_mode)
-+uint32_t HELPER(vfp_fcvt_f32_to_f16)(float32 a, void *fpstp, uint32_t ahp_mode)
- {
-     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
-      * it would affect flushing output denormals.
-@@ -11591,7 +11591,7 @@ float16 HELPER(vfp_fcvt_f32_to_f16)(float32 a, void *fpstp, uint32_t ahp_mode)
-     return r;
- }
- 
--float64 HELPER(vfp_fcvt_f16_to_f64)(float16 a, void *fpstp, uint32_t ahp_mode)
-+float64 HELPER(vfp_fcvt_f16_to_f64)(uint32_t a, void *fpstp, uint32_t ahp_mode)
- {
-     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
-      * it would affect flushing input denormals.
-@@ -11604,7 +11604,7 @@ float64 HELPER(vfp_fcvt_f16_to_f64)(float16 a, void *fpstp, uint32_t ahp_mode)
-     return r;
- }
- 
--float16 HELPER(vfp_fcvt_f64_to_f16)(float64 a, void *fpstp, uint32_t ahp_mode)
-+uint32_t HELPER(vfp_fcvt_f64_to_f16)(float64 a, void *fpstp, uint32_t ahp_mode)
- {
-     /* Squash FZ16 to 0 for the duration of conversion.  In this case,
-      * it would affect flushing output denormals.
-@@ -11742,7 +11742,7 @@ static bool round_to_inf(float_status *fpst, bool sign_bit)
-     g_assert_not_reached();
- }
- 
--float16 HELPER(recpe_f16)(float16 input, void *fpstp)
-+uint32_t HELPER(recpe_f16)(uint32_t input, void *fpstp)
- {
-     float_status *fpst = fpstp;
-     float16 f16 = float16_squash_input_denormal(input, fpst);
-@@ -11937,7 +11937,7 @@ static uint64_t recip_sqrt_estimate(int *exp , int exp_off, uint64_t frac)
-     return extract64(estimate, 0, 8) << 44;
- }
- 
--float16 HELPER(rsqrte_f16)(float16 input, void *fpstp)
-+uint32_t HELPER(rsqrte_f16)(uint32_t input, void *fpstp)
- {
-     float_status *s = fpstp;
-     float16 f16 = float16_squash_input_denormal(input, s);
+Yes exactly, that's why I thought copying the txattrs into IOTLB
+should work.
+
+> (3) when the IOMMU calls the notifier because the guest config
+> changed it doesn't have tx attributes, so it would have to
+> fabricate some; and the guest config will invalidate transactions
+> with some combinations of tx attributes and not others.
+
+IMHO it doesn't directly matter with what we are discussing now.  That
+IOMMU_NOTIFIER_[UN]MAP flag tells what kind of message would the
+notifier be interested in from "what kind of mapping it is".  IMHO
+it's not really related to some other attributes when translation
+happens - in our case, it does not directly related to what txattrs
+value is.  Here as mentioned at [1] above IMHO we can still check this
+against txattrs in the notifier handler, then we ignore messages that
+we don't care about.  Actually the IOMMU_NOTIFIER_[UN]MAP flags can be
+removed and we can just do similar things (e.g., we can skip MAP
+messages if we only care about UNMAP messages), but since it's a
+general concept and easy to be generalized, so we provided these
+MAP/UNMAP flags to ease the notifier hooks.
+
+In other words, I think we can also add more flags for SECURE or not.
+However I still don't see a reason (from above three points) on why we
+can't pass in txattrs directly into translate(), and at the same time
+we copy the txattrs into IOTLB so that IOMMUTLBEntry can contain some
+context information. [2]
+
+> 
+> As Paolo pointed out you could also implement this by rather
+> of having an iommu_index concept, instead having some kind
+> of "here is a mask of which txattrs fields matter, and here's
+> another parameter with which txattrs fields are affected".
+> That makes it awkward though to implement "txattrs.unspecified
+> acts like txattrs.secure == 1" type behaviour, though, which is
+> easy with an index abstraction layer. It also would be harder
+> to implement the default 'replay' method, I think.
+
+Please refer to my above comment at [2] - I am still confused on why
+we must use this iommu_idx concept.  How about we just introduce
+IOMMU_NOTIFIER_SECURE (or something similar) and let TCG code register
+with that?  Though for the rest of notifiers we'll need to touch up
+too to make sure all existing notifiers will still receive all the
+message, no matter whether it's secure or not.
+
+I'd also appreciate if you could paste me the link for Paolo's
+message, since I cannot find it.
+
+> 
+> Plus I think that handling this the same way TCG does is a
+> reasonable approach -- we know that it's a usefully flexible
+> concept.
+> 
+> >> > I had a quick glance at the series, I have no thorough idea on the
+> >> > whole stuff, but I'd say some of the patches are exactly what I wanted
+> >> > if to support MemTxAttrs in VT-d emulation one day (now DMAR of VT-d
+> >> > is bypassing MemTxAttrs and IMHO that's incorrect).  If we can somehow
+> >> > pass in the MemTxAttrs then that'll be perfect and I can continue to
+> >> > work on that.  If we pass in iommu_idx now instead, it would take some
+> >> > time for me to figure out how to further achieve the same goal for
+> >> > VT-d in the future, e.g., I would still want to pass in MemTxAttrs,
+> >> > but that's obviously duplicated with iommu_idx.
+> >>
+> >> The idea is that you should never need to pass in the MemTxAttrs,
+> >> because everything that the IOMMU might care about in the tx attrs
+> >> must be encoded into the iommu index. (The point where the IOMMU
+> >> gets to do that encoding is in its attrs_to_index() method.)
+> >
+> > For the DMAR issue I would care about MemTxAttrs.requester_id.  Just
+> > to confirm - do you mean I encode the 16bits field into iommu_idx too,
+> > or is there any smarter way to do so?  Asked since otherwise iommu_idx
+> > will gradually grow into another MemTxAttrs to me.
+> 
+> It will only need to do so for IOMMUs that care about that field.
+> 
+> (See also the other thread with Eric Auger talking about
+> maybe caring about requester_id like that. Needing to look
+> at requester_id is an area I haven't thought too much about,
+> and it is a bit of an odd one because it's a much larger
+> space than any of the other parts of the txattrs. In some
+> cases it ought to be possible to say "requester_id lets
+> us determine an iommu index, and there are a lot fewer
+> than 2^16 actual iommu indexes because a lot of the requestor_id
+> values indicate the same actual iommu translation", I suspect.)
+
+AFAIK requester_id will only be the same in very rare cases, for
+example, when multiple PCI devices (no matter whether it's PCI or
+PCIe) are under the same PCIe-to-PCI bridge, then all these devices
+will use the bridge's requester ID as their own.  In most cases, each
+PCIe device will have their own unique requester ID.  So it'll be
+common that requester ID number can be at least equal to the number of
+devices.
+
+Thanks,
+
 -- 
-2.17.0
-
+Peter Xu

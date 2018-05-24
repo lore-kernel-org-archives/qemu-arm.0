@@ -1,232 +1,340 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1719659wre;
-        Thu, 24 May 2018 03:54:38 -0700 (PDT)
-X-Received: by 2002:a9d:6059:: with SMTP id v25-v6mr4563017otj.100.1527159278204;
-        Thu, 24 May 2018 03:54:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527159278; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2253327wre;
+        Thu, 24 May 2018 12:54:21 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKK74MbJSI7WWpaJCdMcaWhOv+vDJY4d4WGe2PcidOy6YKhV0gTn3OvUO6EeugeKcv+WNwnB
+X-Received: by 2002:ac8:30c8:: with SMTP id w8-v6mr8347389qta.226.1527191661770;
+        Thu, 24 May 2018 12:54:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527191661; cv=none;
         d=google.com; s=arc-20160816;
-        b=WXmXbzNnEAmEQjXqB9UBJ8zQviN6tIYIFSd+ekAZHG65oUZ/EJ1vm99PLC4bTGA7GJ
-         C4okgmFBzRU8Ed86Ud4fGkUV8x583OWCXOjFQ8W2lNelQWB7BNHbx2yz+mZFuWNdA9wy
-         wX8r8+yJDsWqGHID+fO34Ha+5I2EQM17cKYHaePDnxZXhdo7N8YzXTjuo/v63juVHScZ
-         wuxn9IQ2KWy7uVDppOGbx1QAYLIzsvNMvZOLsMLpbJt6UvVxnLO4yxE/QVJvb4cnnDxH
-         j7SB/0YCg37d8kMDREUXNhB4Rq3I50QsNdUwh7Yb7eZjluyLfDYBqOuNrqShnIw/Cgq1
-         c/Yg==
+        b=cjs0h0ANT3c32qS5Z4sQpsiQ4haPpDPlrxcPOVZp83Snvl7PI1mfYdBY9hoZJBPERF
+         Hham9fLTQpuAZoNJ7ET5Q2HkSLlGIY17dTjrKVB+e0LWFBiYmgSZtCg/WbUnkOwTG654
+         P9yPX6BfNSm0RozGwR/oYduP58fFGrSZ5rgMdFnc97BOSF9ql5Jhk3HL+ptqD5RomNwm
+         Wcs9yeIS5oNGKKXgjL0LJDsLqr3gfqMGaJZfmCEhhqgLvssay3BUdEA/CP12sgWwbz7V
+         itqxktu9M5EsX03IMvDABZdyLPsoZCZnV/S4LPbdB565dNA8eQuclpPPY6xKUWvd8iVp
+         MAkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=wlU4K/d2OQ7VbiWzq7+v4lsnI/ieYxkoWyogMqq4FKY=;
-        b=lC+ubG6dQVd4ikHnqyvBnCet5J+nUoTRkAVijaf01b0jc1k99xT8VOlJURWGAMvWXd
-         I4X5SGnQdaqMVfzBgim9mQGikDBkbQLXf6JoF/QK44UUyRW8nVYI0eGz1ueMRUuHOjmt
-         z9ccaOvwug1/6YLNnIIVUjQ0vS4rAXDLBNbdKO7m3ttkqam6tqL9XGAjFsaxmbbifEpQ
-         03LxVCtC1L99wX/c/U61lWTxfWjOEfslCo8ZtxM7Mo8ESWAiT68DureuFKSK4Wh8ba1x
-         1brPGqnZrxsCjuXKUXgo9PIu+Jqv066LnvK/7y3e7TWxcFrAXIwmuBz167HzEX/9e92v
-         D27A==
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:cc:references:to:subject:arc-authentication-results;
+        bh=Cru/PphX7pyszXgwrLpzjSShXyoGQcE0HRahQdCgvf0=;
+        b=pAj+tNBeR1l8vpF77oTCifkjIVT1egUMmElqb5fKBWsu1k9BbBX4Fu/VZjsOzCCixp
+         m0zrFL1QKekWOpw/kpvLjx3VduOi4fMmV1L9Qw1/64/9M+x6/8RR5SwaQxhHBfXpPm3p
+         T57B1u+e0vqb9Q1UYyXhcIvfpVanL86kE4y1kjilshwHRgxdxE4qN/4BJAWoFqJfFfCc
+         eePLeDKdOHTS37Xf9NNXgYXj3CTYZfIMakvF2CJ+a/4XgL4ZB1Mg5m7Ztt1OOJTqixN8
+         gS5DPl0g9XkS5JAZfFx8Rjqf4vDXtkWdxvUamtwu858vCJedB9wSpN8Kn59EUJfOFvAn
+         lEKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JDyxCYbo;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p124-v6sor10312456oif.302.2018.05.24.03.54.37
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 24 May 2018 03:54:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id l184-v6si5753873qkd.287.2018.05.24.12.54.21
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 May 2018 12:54:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JDyxCYbo;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=wlU4K/d2OQ7VbiWzq7+v4lsnI/ieYxkoWyogMqq4FKY=;
-        b=JDyxCYborLXS0FtclaCeVPpF6DbYtXYN1Rj/X6Fezn3jL2QXunRL3J9ZiMgIF59TUx
-         ty3ASYqYyBwEfE7/wIBdtrlDiFR07WNJpaAoJ7E2u8jLODXR7w8W5m3zUO5eUV8j9w+o
-         Dd5tJXwy+XhGyPTbkQatvuemE9Cc9Pgv1WMRg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=wlU4K/d2OQ7VbiWzq7+v4lsnI/ieYxkoWyogMqq4FKY=;
-        b=BjiJslQq1tfPIo0o2yf7H5qv2hGrFH9zaZs+uGQeX4WEpkAfIBCAlehWSBZo7ZQsOn
-         E/ObHgiQETNSYNyUfH+YoJTxIGS7o/iQORlCpX0N5JwcxkoJoZYBFGN585X0I0ZYQUnd
-         gVlsOyNKuBoQQuZalQg43ci9cP2R+vHf0nVwjint8JnPJawXleVT5Tq88AyZiW2vtE0Q
-         F5h+A/IGD2eoVIQ7QMS4vGRrpFKtZs22bvCttcQ07/X8I17eAz9sDktwjYE+7xdHp/vg
-         KC4te4LIto/6GCi3ZpNSTcmRMVpjhdIcML/iau7xrGeTgTIbhLcryRBSbSy+O9rxkJ+c
-         1Zpg==
-X-Gm-Message-State: ALKqPwev4QVQs6uixqoVsaJMrmehZTOyxVkouKGRttJZDJKxcjyXQJTX
-	3XK7hxpDOaS5LbWz2dPYVVhMnzc3ejDauXXkAKsFe9uy
-X-Google-Smtp-Source: AB8JxZp9BBU0asNpE/hH7VoKO60WWtXRr3V9ONi+IfVfzm7xxFno+JAIpoK+4Jd0XZXrQmbUfyicjyqpQlNrT5ZtpbQ=
-X-Received: by 2002:aca:d447:: with SMTP id l68-v6mr3788267oig.102.1527159277696;
- Thu, 24 May 2018 03:54:37 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 24 May 2018 03:54:17
- -0700 (PDT)
-In-Reply-To: <20180524062352.GA12122@xz-mi>
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B29FC12C3;
+	Thu, 24 May 2018 19:54:21 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com [10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A4B8B11166F0;
+	Thu, 24 May 2018 19:54:19 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH 17/27] exec.c: Handle IOMMUs in
+ address_space_translate_for_iotlb()
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-15-peter.maydell@linaro.org> <20180522030333.GB17282@xz-mi>
- <CAFEAcA-iOYhuPfvDv+iD6jBqXMXqN-jfTpSSBub1Zp1i-JcDbQ@mail.gmail.com>
- <20180522110236.GB31932@xz-mi> <CAFEAcA9b6dmpj+B=SO2YsB5sXsh=UPjkjN_U0i-uJhiDn20HHw@mail.gmail.com>
- <20180523010636.GC31932@xz-mi> <CAFEAcA840qn7Ms9hph9zzZgMbL8C7kN=cs4esGO9kxGXsgBg1A@mail.gmail.com>
- <20180524062352.GA12122@xz-mi>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 May 2018 11:54:17 +0100
-Message-ID: <CAFEAcA9SXirTw=H3wznVZDTmO1OB-LRNJAQ1MsyYm62SqvMqRQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
- IOMMU API
-To: Peter Xu <peterx@redhat.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	"patches@linaro.org" <patches@linaro.org>, David Gibson <david@gibson.dropbear.id.au>, 
-	Alex Williamson <alex.williamson@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: cN4W9UEwf0Wm
+ <20180521140402.23318-18-peter.maydell@linaro.org>
+ <8736yivgw3.fsf@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <f568933d-2d8c-da22-c588-3ca4d3140538@redhat.com>
+Date: Thu, 24 May 2018 21:54:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <8736yivgw3.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Thu, 24 May 2018 19:54:21 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Thu, 24 May 2018 19:54:21 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-TUID: Yi/tSsB/sTcd
 
-On 24 May 2018 at 07:23, Peter Xu <peterx@redhat.com> wrote:
-> On Wed, May 23, 2018 at 12:47:16PM +0100, Peter Maydell wrote:
->> On 23 May 2018 at 02:06, Peter Xu <peterx@redhat.com> wrote:
->> > Could you elaborate a bit more on why IOMMU notifier failed to
->> > corporate when passing in MemTxAttrs?  I am not sure I caught the idea
->> > here, but can we copy the MemTxAttrs into IOMMUTLBEntry when
->> > translating, then in IOMMU notifiers we can know the attrs (if that is
->> > what MPC wants)?
+Hi Peter,
+
+On 05/23/2018 11:51 AM, Alex Bennée wrote:
+> 
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> 
+>> Currently we don't support board configurations that put an IOMMU
+>> in the path of the CPU's memory transactions, and instead just
+>> assert() if the memory region fonud in address_space_translate_for_iotlb()
+found
+>> is an IOMMUMemoryRegion.
 >>
->> (1) The notifier API lets you register a notifier before you've
->> called the translate API
->
-> Yes.
->
->> (2) An IOMMUTLBEntry can be valid for more than just the txattrs
->> that it was passed in (for instance, if an IOMMU doesn't care
->> about txattrs at all, then the resulting TLB entry is valid for
->> any txattrs; or if the IOMMU only cares about attrs.secure the
->> resulting TLB entries are valid for both attrs.user=0 and
->> attrs.user=1).
->
-> [1]
->
-> Yes exactly, that's why I thought copying the txattrs into IOTLB
-> should work.
+>> Remove this limitation by having the function handle IOMMUs.
+>> This is mostly straightforward, but we must make sure we have
+>> a notifier registered for every IOMMU that a transaction has
+>> passed through, so that we can flush the TLB appropriately
+Can you elaborate on what (TCG) TLB we are talking about?
 
-I'm a bit confused about why the IOMMUTLBEntry is relevant here.
-That's the thing returned from the translate method, so there's
-no point in copying txattrs into it, because the caller by definition
-already had them. At the point where the IOMMU notices a guest
-changed the config, it doesn't have an IOMMUTLBEntry or a set of
-tx attrs.
-
->> (3) when the IOMMU calls the notifier because the guest config
->> changed it doesn't have tx attributes, so it would have to
->> fabricate some; and the guest config will invalidate transactions
->> with some combinations of tx attributes and not others.
->
-> IMHO it doesn't directly matter with what we are discussing now.  That
-> IOMMU_NOTIFIER_[UN]MAP flag tells what kind of message would the
-> notifier be interested in from "what kind of mapping it is".  IMHO
-> it's not really related to some other attributes when translation
-> happens - in our case, it does not directly related to what txattrs
-> value is.  Here as mentioned at [1] above IMHO we can still check this
-> against txattrs in the notifier handler, then we ignore messages that
-> we don't care about.  Actually the IOMMU_NOTIFIER_[UN]MAP flags can be
-> removed and we can just do similar things (e.g., we can skip MAP
-> messages if we only care about UNMAP messages), but since it's a
-> general concept and easy to be generalized, so we provided these
-> MAP/UNMAP flags to ease the notifier hooks.
->
-> In other words, I think we can also add more flags for SECURE or not.
-> However I still don't see a reason (from above three points) on why we
-> can't pass in txattrs directly into translate(), and at the same time
-> we copy the txattrs into IOTLB so that IOMMUTLBEntry can contain some
-> context information. [2]
-
-I'm afraid I really don't understand the design you're proposing
-here. But overall I think the point of divergence is that
-the mapping from "transaction attributes" to "translation contexts"
-(ie, effectively different page tables) is not 1:1. So for instance:
-
-Our current IOMMUs which don't care about txattrs:
-
-  [any txattr at all] -> the one and only translation context
-
-An IOMMU which cares about attrs.secure, and also treats
-attrs.unspecified like secure:
-  [any txattr with attrs.secure = 1]  \-> 'secure' context'
-  MEMATTRS_UNSPECIFIED                /
-
-  [txattrs with secure = 1] -> 'nonsecure' context
-
-An IOMMU which cares about attrs.secure and attrs.user:
-  [secure=1,user=1]   -> 'secure user' context
-  [secure=0,user=1]   -> 'ns user' context
-  [secure=1,user=0]   -> 's priv' context
-  [secure=0,user=0]   -> 'ns priv' context
-
-The IOMMU index captures this idea that there is not a 1:1
-mapping, so we have a way to think about and refer to the
-actual set of translation contexts that the IOMMU has.
-
->> As Paolo pointed out you could also implement this by rather
->> of having an iommu_index concept, instead having some kind
->> of "here is a mask of which txattrs fields matter, and here's
->> another parameter with which txattrs fields are affected".
->> That makes it awkward though to implement "txattrs.unspecified
->> acts like txattrs.secure == 1" type behaviour, though, which is
->> easy with an index abstraction layer. It also would be harder
->> to implement the default 'replay' method, I think.
->
-> Please refer to my above comment at [2] - I am still confused on why
-> we must use this iommu_idx concept.  How about we just introduce
-> IOMMU_NOTIFIER_SECURE (or something similar) and let TCG code register
-> with that?  Though for the rest of notifiers we'll need to touch up
-> too to make sure all existing notifiers will still receive all the
-> message, no matter whether it's secure or not.
-
-I think I would definitely prefer not to have the secure/nonsecure
-specific thing in the API. We've got good experience with TCG
-where we abstract away the specifics of what an MMU cares about
-into an mmu_index, and I'd like to keep that approach. Otherwise,
-you immediately get into "and now we need to change the API again
-to handle IOMMUs which care about attrs.user"; and then again
-for attrs.requester_id; and now what about IOMMUs that care
-about both secure and user... Better to have an abstraction so
-that we don't need to keep changing the core code. In particular,
-TCG doesn't know whether it's secure/nonsecure that matters -- that
-is mostly handled by the target-specific parts, and TCG core code
-just passes attributes around.
-
-> I'd also appreciate if you could paste me the link for Paolo's
-> message, since I cannot find it.
-
-This is the one I had in mind:
-https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg03522.html
-
->> It will only need to do so for IOMMUs that care about that field.
+The concept of IOMMUs downstream to a CPU is not obvious to me. Maybe an
+example may be documented in the commit message?
+>> when any of the IOMMUs change their mappings.
 >>
->> (See also the other thread with Eric Auger talking about
->> maybe caring about requester_id like that. Needing to look
->> at requester_id is an area I haven't thought too much about,
->> and it is a bit of an odd one because it's a much larger
->> space than any of the other parts of the txattrs. In some
->> cases it ought to be possible to say "requester_id lets
->> us determine an iommu index, and there are a lot fewer
->> than 2^16 actual iommu indexes because a lot of the requestor_id
->> values indicate the same actual iommu translation", I suspect.)
->
-> AFAIK requester_id will only be the same in very rare cases, for
-> example, when multiple PCI devices (no matter whether it's PCI or
-> PCIe) are under the same PCIe-to-PCI bridge, then all these devices
-> will use the bridge's requester ID as their own.  In most cases, each
-> PCIe device will have their own unique requester ID.  So it'll be
-> common that requester ID number can be at least equal to the number of
-> devices.
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  include/exec/exec-all.h |   3 +-
+>>  include/qom/cpu.h       |   3 +
+>>  accel/tcg/cputlb.c      |   3 +-
+>>  exec.c                  | 147 +++++++++++++++++++++++++++++++++++++++-
+>>  4 files changed, 152 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+>> index 4d09eaba72..e0ff19b711 100644
+>> --- a/include/exec/exec-all.h
+>> +++ b/include/exec/exec-all.h
+>> @@ -469,7 +469,8 @@ void tb_flush_jmp_cache(CPUState *cpu, target_ulong addr);
+>>
+>>  MemoryRegionSection *
+>>  address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+>> -                                  hwaddr *xlat, hwaddr *plen);
+>> +                                  hwaddr *xlat, hwaddr *plen,
+>> +                                  MemTxAttrs attrs, int *prot);
+>>  hwaddr memory_region_section_get_iotlb(CPUState *cpu,
+>>                                         MemoryRegionSection *section,
+>>                                         target_ulong vaddr,
+>> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+>> index 9d3afc6c75..d4a30149dd 100644
+>> --- a/include/qom/cpu.h
+>> +++ b/include/qom/cpu.h
+>> @@ -429,6 +429,9 @@ struct CPUState {
+>>      uint16_t pending_tlb_flush;
+>>
+>>      int hvf_fd;
+>> +
+>> +    /* track IOMMUs whose translations we've cached in the TCG TLB */
+>> +    GSList *iommu_notifiers;
+> 
+> So we are only concerned about TCG IOMMU notifiers here, specifically
+> TCGIOMMUNotifier structures. Why not just use a GArray and save
+> ourselves chasing pointers?
+> 
+>>  };
+>>
+>>  QTAILQ_HEAD(CPUTailQ, CPUState);
+>> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+>> index 05439039e9..c8acaf21e9 100644
+>> --- a/accel/tcg/cputlb.c
+>> +++ b/accel/tcg/cputlb.c
+>> @@ -632,7 +632,8 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+>>      }
+>>
+>>      sz = size;
+>> -    section = address_space_translate_for_iotlb(cpu, asidx, paddr, &xlat, &sz);
+>> +    section = address_space_translate_for_iotlb(cpu, asidx, paddr, &xlat, &sz,
+>> +                                                attrs, &prot);
+>>      assert(sz >= TARGET_PAGE_SIZE);
+>>
+>>      tlb_debug("vaddr=" TARGET_FMT_lx " paddr=0x" TARGET_FMT_plx
+>> diff --git a/exec.c b/exec.c
+>> index c9285c9c39..6c8f2dcc3f 100644
+>> --- a/exec.c
+>> +++ b/exec.c
+>> @@ -650,18 +650,158 @@ MemoryRegion *flatview_translate(FlatView *fv, hwaddr addr, hwaddr *xlat,
+>>      return mr;
+>>  }
+>>
+>> +typedef struct TCGIOMMUNotifier {
+>> +    IOMMUNotifier n;
+>> +    MemoryRegion *mr;
+>> +    CPUState *cpu;
+> 
+> This seems superfluous if we are storing the list of notifiers in the CPUState
+> 
+>> +    int iommu_idx;
+>> +    bool active;
+>> +} TCGIOMMUNotifier;
+>> +
+>> +static void tcg_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+>> +{
+>> +    TCGIOMMUNotifier *notifier = container_of(n, TCGIOMMUNotifier, n);
+>> +
+>> +    if (!notifier->active) {
+>> +        return;
+>> +    }
+>> +    tlb_flush(notifier->cpu);
+>> +    notifier->active = false;
+>> +    /* We leave the notifier struct on the list to avoid reallocating it later.
+>> +     * Generally the number of IOMMUs a CPU deals with will be small.
+>> +     * In any case we can't unregister the iommu notifier from a notify
+>> +     * callback.
+>> +     */
+I don't get the life cycle of the notifier and why it becomes inactive
+after the invalidate. Could you detail the specificity of this one?
+>> +}
+>> +
+>> +static gint tcg_iommu_find_notifier(gconstpointer a, gconstpointer b)
+>> +{
+>> +    TCGIOMMUNotifier *notifier = (TCGIOMMUNotifier *)a;
+>> +    TCGIOMMUNotifier *seeking = (TCGIOMMUNotifier *)b;
+>> +
+>> +    if (notifier->mr == seeking->mr &&
+>> +        notifier->iommu_idx == seeking->iommu_idx) {
+>> +        return 0;
+>> +    }
+>> +    return 1;
+>> +}
+>> +
+>> +static void tcg_register_iommu_notifier(CPUState *cpu,
+>> +                                        IOMMUMemoryRegion *iommu_mr,
+>> +                                        int iommu_idx)
+>> +{
+>> +    /* Make sure this CPU has an IOMMU notifier registered for this
+>> +     * IOMMU/IOMMU index combination, so that we can flush its TLB
+>> +     * when the IOMMU tells us the mappings we've cached have changed.
+>> +     */
+>> +    TCGIOMMUNotifier seeking = {
+>> +        .mr = MEMORY_REGION(iommu_mr),
+>> +        .iommu_idx = iommu_idx,
+>> +    };
+>> +    TCGIOMMUNotifier *notifier;
+>> +    GSList *found = g_slist_find_custom(cpu->iommu_notifiers,
+>> +                                        &seeking,
+>> +                                        tcg_iommu_find_notifier);
+>> +    if (found) {
+>> +        notifier = found->data;
+>> +    } else {
+>> +        notifier = g_new0(TCGIOMMUNotifier, 1);
+>> +        notifier->mr = seeking.mr;
+>> +        notifier->iommu_idx = iommu_idx;
+>> +        notifier->cpu = cpu;
+>> +        /* Rather than trying to register interest in the specific part
+>> +         * of the iommu's address space that we've accessed and then
+>> +         * expand it later as subsequent accesses touch more of it, we
+>> +         * just register interest in the whole thing, on the assumption
+>> +         * that iommu reconfiguration will be rare.
+>> +         */
+>> +        iommu_notifier_init(&notifier->n,
+>> +                            tcg_iommu_unmap_notify,
+>> +                            IOMMU_NOTIFIER_UNMAP,
+>> +                            0,
+>> +                            HWADDR_MAX,
+>> +                            iommu_idx);
+>> +        memory_region_register_iommu_notifier(notifier->mr, &notifier->n);
+>> +        cpu->iommu_notifiers = g_slist_prepend(cpu->iommu_notifiers,
+>> +                                               notifier);
+>> +    }
+>> +    if (!notifier->active) {
+>> +        notifier->active = true;
+>> +    }
+>> +}
+>> +
+>> +static void tcg_iommu_notifier_destroy(gpointer data)
+>> +{
+>> +    TCGIOMMUNotifier *notifier = data;
+>> +
+>> +    if (notifier->active) {
+>> +        memory_region_unregister_iommu_notifier(notifier->mr, &notifier->n);
+>> +    }
+Is it safe to leave the notifier registered to an IOMMU whereas it gets
+freed?
 
-I haven't looked at this, but my understanding is that at the moment
-we do per-device requester_id by having each PCI device get its own
-IOMMUMemoryRegion mapped into its address space. So we'd only need
-to look at requester_id for the case of devices with multiple
-subfunctions(?), and presumably most devices only have a handful
-of those.
+Thanks
 
-thanks
--- PMM
+Eric
+>> +    g_free(notifier);
+>> +}
+>> +
+>> +static void tcg_iommu_free_notifier_list(CPUState *cpu)
+>> +{
+>> +    /* Destroy the CPU's notifier list */
+>> +    g_slist_free_full(cpu->iommu_notifiers, tcg_iommu_notifier_destroy);
+>> +    cpu->iommu_notifiers = NULL;
+>> +}
+>> +
+>>  /* Called from RCU critical section */
+>>  MemoryRegionSection *
+>>  address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+>> -                                  hwaddr *xlat, hwaddr *plen)
+>> +                                  hwaddr *xlat, hwaddr *plen,
+>> +                                  MemTxAttrs attrs, int *prot)
+>>  {
+>>      MemoryRegionSection *section;
+>> +    IOMMUMemoryRegion *iommu_mr;
+>> +    IOMMUMemoryRegionClass *imrc;
+>> +    IOMMUTLBEntry iotlb;
+>> +    int iommu_idx;
+>>      AddressSpaceDispatch *d = atomic_rcu_read(&cpu->cpu_ases[asidx].memory_dispatch);
+>>
+>> -    section = address_space_translate_internal(d, addr, xlat, plen, false);
+>> +    for (;;) {
+>> +        section = address_space_translate_internal(d, addr, &addr, plen, false);
+>> +
+>> +        iommu_mr = memory_region_get_iommu(section->mr);
+>> +        if (!iommu_mr) {
+>> +            break;
+>> +        }
+>> +
+>> +        imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
+>> +
+>> +        iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
+>> +        tcg_register_iommu_notifier(cpu, iommu_mr, iommu_idx);
+>> +        /* We need all the permissions, so pass IOMMU_NONE so the IOMMU
+>> +         * doesn't short-cut its translation table walk.
+it is not clear to me why you don't use the access flag as you seem to
+handle the perm fault after the translate() call.
+
+Thanks
+
+Eric
+>> +         */
+>> +        iotlb = imrc->translate(iommu_mr, addr, IOMMU_NONE, iommu_idx);
+>> +        addr = ((iotlb.translated_addr & ~iotlb.addr_mask)
+>> +                | (addr & iotlb.addr_mask));
+>> +        /* Update the caller's prot bits to remove permissions the IOMMU
+>> +         * is giving us a failure response for. If we get down to no
+>> +         * permissions left at all we can give up now.
+>> +         */
+>> +        if (!(iotlb.perm & IOMMU_RO)) {
+>> +            *prot &= ~(PAGE_READ | PAGE_EXEC);
+>> +        }
+>> +        if (!(iotlb.perm & IOMMU_WO)) {
+>> +            *prot &= ~PAGE_WRITE;
+>> +        }
+>> +
+>> +        if (!*prot) {
+>> +            goto translate_fail;
+>> +        }
+>> +
+>> +        d = flatview_to_dispatch(address_space_to_flatview(iotlb.target_as));
+>> +    }
+>>
+>>      assert(!memory_region_is_iommu(section->mr));
+>> +    *xlat = addr;
+>>      return section;
+>> +
+>> +translate_fail:
+>> +    return &d->map.sections[PHYS_SECTION_UNASSIGNED];
+>>  }
+>>  #endif
+>>
+>> @@ -820,6 +960,9 @@ void cpu_exec_unrealizefn(CPUState *cpu)
+>>      if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+>>          vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
+>>      }
+>> +#ifndef CONFIG_USER_ONLY
+>> +    tcg_iommu_free_notifier_list(cpu);
+>> +#endif
+>>  }
+>>
+>>  Property cpu_common_props[] = {
+> 
+> 
+> --
+> Alex Bennée
+> 

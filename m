@@ -1,99 +1,94 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1894070wre;
-        Thu, 24 May 2018 06:59:38 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIRmTK4fI8FO6fLwJ2PScbtGFBbCYYBm++iJmXAgjbpiKNWt71HDWD47VRPCn9Z11uoK9eP
-X-Received: by 2002:a37:85c6:: with SMTP id h189-v6mr6417041qkd.360.1527170378187;
-        Thu, 24 May 2018 06:59:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527170378; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1894187wre;
+        Thu, 24 May 2018 06:59:45 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIyYlDm2bNcaYnQj1kSxZ/N0xNn5cHKA2hg/lKT5IoHhNUocK50C4lcLStM9blJmFYUnTGB
+X-Received: by 2002:a37:8484:: with SMTP id g126-v6mr6878561qkd.273.1527170385589;
+        Thu, 24 May 2018 06:59:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527170385; cv=none;
         d=google.com; s=arc-20160816;
-        b=iN1UJQhrAu/F3T1yr8Gf264Y1u0mA+0XgF5fHJcWa9VPWl7m0q3a0RLt5ZGZ5Psien
-         fC7cqb0TTobFhTJrokYyjvvhk1mbq838mdfN3Rv2KJap7VrhnmXJ29MgR9CgAX2M7GtJ
-         yYREmpUrsf4Z8LxuzXZ9T9TCqNGF4+acQJiWT90XJ2c3ckhHVrcWCm2ZA7ic0YCagZbg
-         jVZitvisgCG1n8RNZrwrleUq5qxbcI8P62Wx3FvfVh/mrNSasV3fwKks1CXdOeF5UtMz
-         /tPgU7i2GH1c+ZclIGDMVcfuFcoin4VaZVm6vwm9Rr9oVHGEPSbs19x7Nh+WwVrO/ccw
-         MQ9A==
+        b=WgrLz/lzQL5uPAYP2H8eszKOiYdAHcWAlwi0ekt22dLWOLg2WUFvWYWcqCot7LgERo
+         qesxD4o+3IsAdaBpigqnQtZhv/je+7FviTtdZSaHRf11tzwHgZKT7FYdTybkjvx9669U
+         RnpN+S5jQta/z18blWqw/CN8u8NoAaqZX2f+dpg14joj0ywtAJmzlCkZVd6Vqltl+VTL
+         hCQQ3slCA6DLOVf880mn/rxNG9TufQxBUCyfgIlZdYQ7pyWEkms7pQdhFsAHz1Z2I9Jf
+         kZC3AkUVfYMGMPrg9LfcfzfSO7eIxp+kq7B8OU9gjJR/1QuXQJVxosfhK4bDvraCOHV5
+         zPUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=9bHmTp1Te+Cn6mzD+06dxksSCDkpWjTLc5CV7YVRh5s=;
-        b=gfwGfHTHbdNsEfvGCfr9k3GzgenLz401WAbf+OVQ8EotEo9WakgcqtNVfXOte9F58h
-         N4ULG6hW1RhMTY4cW5bprx0RNDL74SlgtvZ+1Cpg3EH7B76AP+CIMK67pOQWJebt9XuW
-         LGOMCks6OUo4DuhusEq8v7JU6D8SIfzgYGKuN+PZ680ZKjLbhBxtUGY9ndleYM29YuI9
-         rQ36SNHAwAx0TQd/DlmT9xfZ4YM9axEOr48/B4TG3dhfNtI24UW6VZkb4UVWb0Np7Otz
-         9S6Z33pJBS9c7AkObOBUU+SJJkbttRjiV2Nwom4kLJUJnEOFHtJ+8TPRynhsQdsnjXrg
-         nHdA==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=lo324QGhyMwWfsxWjVujk1fgKkWdWAaMHtrN+6POIGk=;
+        b=X8mDd7PDDMuXV/APtGwjOYKr0CjrelOmtiS9S2qhxxOi4+OEi6zb6O3K3n6ldYRkQl
+         A4JwK1LM2AHeuBKzc1LkvRl/w7/vlRyTvAsBrv9VC2O/aZjkLnwsTvBmULBbXbG0pw55
+         9nttPDPsuMZyhk2GBQ53VHy7tRioOTRGTO8hkOfqSFISv8cFHu7WQkz/t1HWHuBFxNCo
+         z6dstv+jc4H3cZRCZT4sx2P+oqqCD++cURX31iSF0a+HWMdxUR6vvqXaSWOx8XGC29yg
+         EfgWlDYD3EGCo3KDNG/s1tUpf5PcG6fOKIHL2NdIzQSeDS73K0orOZxzusmnjiCcJWIa
+         qXSw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 44-v6si5657364qvw.123.2018.05.24.06.59.38
+        by mx.google.com with ESMTPS id y55-v6si3334331qtc.117.2018.05.24.06.59.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 06:59:38 -0700 (PDT)
+        Thu, 24 May 2018 06:59:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38841 helo=lists.gnu.org)
+Received: from localhost ([::1]:38843 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLqmH-0005Eb-OY
-	for alex.bennee@linaro.org; Thu, 24 May 2018 09:59:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56500)
+	id 1fLqmP-0005IN-46
+	for alex.bennee@linaro.org; Thu, 24 May 2018 09:59:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fLqm7-0005E0-Lq
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:59:32 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fLqmE-0005En-3S
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:59:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fLqm4-0005vl-Mo
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:59:27 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55066 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fLqm8-0005yR-JS
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:59:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50452 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1fLqm4-0005v1-Ix; Thu, 24 May 2018 09:59:24 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fLqm8-0005y7-EA; Thu, 24 May 2018 09:59:28 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F31A55BCB6;
-	Thu, 24 May 2018 13:59:23 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-84.rdu2.redhat.com
-	[10.10.121.84])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 013321117652;
-	Thu, 24 May 2018 13:59:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C52BE7D83A;
+	Thu, 24 May 2018 13:59:27 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E55DE2026DEF;
+	Thu, 24 May 2018 13:59:26 +0000 (UTC)
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
-	<ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
-	<bf99311a-823d-34e8-1892-be27534afc32@redhat.com>
-	<22c4e504-a7b4-e6dd-b2cc-618d306b6f0c@redhat.com>
-	<CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
-	<550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
-	<CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <ee204f5f-600f-2425-a1ff-0418b4611e96@redhat.com>
-Date: Thu, 24 May 2018 15:59:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+References: <1527047633-12368-1-git-send-email-zhaoshenglong@huawei.com>
+	<1527047633-12368-2-git-send-email-zhaoshenglong@huawei.com>
+	<acca5b80-f527-bc39-0b63-147e53affb4b@redhat.com>
+	<CAFEAcA-xbHtxora5TU9psYnBgP0+N8_nznhVppEkg7fmmwip3w@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <10801e6c-5028-add6-b082-22c5dc9758ca@redhat.com>
+Date: Thu, 24 May 2018 15:59:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-xbHtxora5TU9psYnBgP0+N8_nznhVppEkg7fmmwip3w@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Thu, 24 May 2018 13:59:24 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Thu, 24 May 2018 13:59:24 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.2]);
+	Thu, 24 May 2018 13:59:27 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Thu, 24 May 2018 13:59:27 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/2] ARM virt: Support up to 256
- PCIe buses
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V3 2/2] arm_gicv3_kvm:
+ kvm_dist_get/put: skip the registers banked by GICR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,55 +100,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+	Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zmqkJctWH36w
+X-TUID: ScH8JbJU8zGD
 
-On 05/24/18 15:07, Peter Maydell wrote:
-> On 24 May 2018 at 13:59, Laszlo Ersek <lersek@redhat.com> wrote:
->> On 05/24/18 11:11, Peter Maydell wrote:
->>> Won't it also break a guest which is just Linux loaded not via
->>> firmware which is an aarch32 kernel without LPAE support?
->>
->> Does such a thing exist? (I honestly have no clue.)
+Hi,
+
+On 05/24/2018 03:14 PM, Peter Maydell wrote:
+> On 24 May 2018 at 10:04, Auger Eric <eric.auger@redhat.com> wrote:
+>> Now I am unclear about the semantics of the s->gicd_ipriority & friends.
+>> With that change, is it supposed to contain only the states of SPIs or
+>> contain the RAZ states of PPI/SGIs + states of SPIs. The array is
+>> dimensionned to contain states for PPI/SGI+SPIs, right? In other words,
+>> shouldn't we also shift field?
 > 
-> Yes, it does; LPAE isn't a mandatory kernel config option.
-> This is why we have the machine 'highmem' option, so that
-> we can run on those kernels by not putting anything above
-> the 4G boundary. Looking back at the history on that, we
-> opted at the time for "default to highmem on, and if you're
-> running an non-lpae kernel you need to turn it off manually".
+> The semantics of the gicd_ipriority and other data structures are
+> set by the TCG GIC implementation, and include blank space at
+> the start where the PPI/SGI bits would live. See this comment
+> from arm_gicv3_common.h:
+> 
+>  * Each bitmap contains a bit for each interrupt. Although there is
+>  * space for the PPIs and SGIs, those bits (the first 32) are never
+>  * used as that state lives in the redistributor. The unused bits are
+>  * provided purely so that interrupt X's state is always in bit X; this
+>  * avoids bugs where we forget to subtract GIC_INTERNAL from an
+>  * interrupt number.
 
-Ah, OK, I didn't know that.
+If I understand Shannon's code correctly, the space for PPIs/SGIs is
+currently overwritten by SPI state, hence my comment. If we stick to the
+current semantics, can't we just add the last missing 32 SPI states and
+we don't need the subsection?
 
-> So we can handle those kernels by just not putting ECAM
-> above 4G if highmem is false.
+Thanks
 
-The problem is we can have a combination of 32-bit UEFI firmware (which
-certainly lacks LPAE) and a 32-bit kernel which supports LPAE.
-Previously, you wouldn't specify highmem=off, and things would just work
--- the firmware would simply ignore the >=4GB MMIO aperture, and use the
-32-bit MMIO aperture only (and use the sole 32-bit ECAM). The kernel
-could then use both low and high MMIO apertures, however (I gather?).
-
-The difference with "high ECAM" is that it is *moved* (not *added*), so
-the 32-bit firmware is left with nothing for config space access. For
-booting the same combination as above, you are suddenly forced to add
-highmem=off, just to keep the ECAM low -- and that, while it keeps the
-firmware happy, prevents the LPAE-capable kernel from using the high
-MMIO aperture.
-
-So I think "highmem_ecam" should be computed like this:
-
-  highmem_ecam = highmem_ecam_machtype_default &&
-                 highmem &&
-                 (!firmware_loaded || aarch64);
-
-Thanks,
-Laszlo
+Eric
+> 
+> thanks
+> -- PMM
+> 

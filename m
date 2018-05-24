@@ -1,102 +1,95 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1843256wre;
-        Thu, 24 May 2018 06:07:57 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqO67jxAdMOtTAVQok9EvasA52EbHe5IUWdPYOWZjl2TA5vGT5K4ezg71S6+DNH57ZdgQOX
-X-Received: by 2002:a0c:d290:: with SMTP id q16-v6mr6598007qvh.145.1527167277169;
-        Thu, 24 May 2018 06:07:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527167277; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1846661wre;
+        Thu, 24 May 2018 06:11:07 -0700 (PDT)
+X-Google-Smtp-Source: AB8JxZqEXwr9ZtSAgwmdMCZ0Jkyf9n8kyIyTeVeRxEhsddaSLqJmKp7Z88Kk8aqmoOCzWhFvBvZg
+X-Received: by 2002:a37:338f:: with SMTP id z137-v6mr6192962qkz.233.1527167467307;
+        Thu, 24 May 2018 06:11:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527167467; cv=none;
         d=google.com; s=arc-20160816;
-        b=jOa6whG3K6H+qWFbC7LLDP9uogUnUhUMw7dQ4G4nX9JYTjlXyxxYajgEqV2YRBqBM7
-         KOsWwOW0pj+sAiPQLkKjTWQnstYPf9673jzJy/c1PBbsKOTSkugi3J0vt7MhS2XbWpUK
-         mvBOHzsEBArdqxbjuoO46vCYE++ETJ4r591RlcgVIMRqTFfvuKiPzzY6poi1oyTZEKpB
-         anK1UST/JWw5AQdax0X05hedGXCCv41xSLyhDQbfv5oPHmCNWOoERVWAEQdjbz2Gof+F
-         HDs+KKO7UB7gYBY/i9DHOPfKzo9s5Z7Fdog6/wK+yONToSF1TpOm6rbCbf2GufO3hJT8
-         2n/A==
+        b=uBqqdGbCgytmPDtlZbkVdTbVOBuFiYq/fWLy41NF9G46ALz4uFXPOeGOGmDQqfZD5B
+         0se4bWgMdh+HSnlNIXpv9krtkXf8hX+TP/G703kZJpYKx/b7qR/jnzB4dhqSovu/feJw
+         V9PNn1OCWR2fG7CiQecE4M1S9jMLXyrr1Y7T3Romk4GbyF6yUFgdy6qIBq3yjYnjKOxo
+         WLGT5psQqkXvqcQASUaydq70ZDI9nwW8jdDZZjswLToeRKtHcIG5r+BoEnTrZIvKQWWS
+         mAuDkwJeHXwh5x/iDFmXjUmI6XvZTyfF2f5ifA32I4PyxHbwDyvjsjLtkOpEvnnHquAV
+         zIXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=GBVyBzSKCV2iiwwQ3z12gC6ILTkjtAWep/nE/Z8vbXU=;
-        b=rKtXwjCQ+otS9XsCyt62Y0pCT5UZ3j1zwKnc1ui0INvjjbKCRLIuOnl/8afYObB98m
-         n1NN2OwTaSrMEP0XnCO7jXsnt04fD5woU+h14plWqD0/mmgQASmFHpKzofaK0HGBkLFj
-         OllxZ1xeqcUXf29Pr2G7OeGDusFGpt69kHrGlrBkbE+70S2cTSYtekfwBD4dU3tulpKl
-         2rumJ2o4bncBea6TKMX0DEwVBb2tp54SQxJ1QB7Y+ImEEb14QM0E04kgQCBeXSkKQX6X
-         8BMvLPgmEMq6Nwc694wziT1vod9GIH9aKEd1KbkwMSw6hEqZRtwUMx0OLgOUuKjVYic/
-         APsA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=wgZkJlxBdTagtK+3Go8xLHiKxQBZ7Z+Kb6mAlDMxgXY=;
+        b=SH1uWjGJu1tdPJv50z2vJVGLzBrL3Ow1jS7y+FqeUG9g4qQRdmMr+BQc/U3FVE9C3b
+         k2B3+0v56CqUJHtsUlxcABQxTte4OigQhz4+rbb2xOphHRYUZpjc0fIgaxZV1/rR4Ek8
+         lpO9VMQ9n1Owdz/vu84Ky7qlc07GbHYw5gkVIAJwFRuujT4A3obDDY+6pq0J6ymNMzhz
+         oM+Ccmmi+T2pOxHLMB9cu+lpNkANsIjB53m7QhA/+1djrPmzO7KfmJedeu5N51+Z84Cd
+         SdfV7uxsOs7m8l5iC8lXfxOZoAti5eshhO4RJGEbZE8TeLGPrHtpSIVOE2kiSoz0Uw2U
+         R0Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JGO9Nkos;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z16-v6si2708951qvn.132.2018.05.24.06.07.57
+        by mx.google.com with ESMTPS id d14-v6si4307160qkc.48.2018.05.24.06.11.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 06:07:57 -0700 (PDT)
+        Thu, 24 May 2018 06:11:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JGO9Nkos;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38614 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38630 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLpyG-0003HU-Lg
-	for alex.bennee@linaro.org; Thu, 24 May 2018 09:07:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45324)
+	id 1fLq1K-0005CP-Pc
+	for alex.bennee@linaro.org; Thu, 24 May 2018 09:11:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLpy2-0003Dq-2o
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:07:48 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fLq1A-00059u-Ex
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:11:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fLpxw-0003BG-H7
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:07:42 -0400
-Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:46200)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fLpxw-0003Ap-Bw
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:07:36 -0400
-Received: by mail-ot0-x241.google.com with SMTP id t1-v6so1808379ott.13
-	for <qemu-arm@nongnu.org>; Thu, 24 May 2018 06:07:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=GBVyBzSKCV2iiwwQ3z12gC6ILTkjtAWep/nE/Z8vbXU=;
-	b=JGO9Nkos3hKL0WsLth2ORLprTbpWJnI5P7W5l38qoV28HYJh4y8DMmNmDW8CRcuLdQ
-	D+jTuwBdvBS4GQTWtv4klyuCqmz4wRbShzu2Q9ih2FyykGfacoxSbGBT7E0TeYGTWbWn
-	PGlAg6WzDBBQb0cdWFL9O2SYjVrGAaZPhhgMw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=GBVyBzSKCV2iiwwQ3z12gC6ILTkjtAWep/nE/Z8vbXU=;
-	b=WaMkVPZq+n56BGVk6+uvpqaUIC3F2sCsFF8ADzk2DRWBCc8F8Y/EC+IgCCX1pxuiNA
-	B9ci+7Qc8mTIO6ypm9o27h39gqTmOiS8M1E4Yp7L2PF3RGkyi1l1OJ3+2dATWC07MEo1
-	ifJkHcoGMWYvweYUroRUtexhcmc3/hDCL/f2bdHY+7kcz3AWqudY54hOYoYMwuSrUYyS
-	GoCqMQmr6ALbZJu9roINkXTumHSPEv5ihrd9+DBkQQK6htuxLDmmbJDdDeQkb5ubxi9y
-	aLEVBF8Hy1rAp8Dax8fmc0YguvyFiRFMxq9RYFznnQ+Gl5yoXFv7FjFvhbppgECzDMhi
-	S4fw==
-X-Gm-Message-State: ALKqPweYE4znDy6dOyc7Co9CiyByTMtPeSLLcjkj0sIfjPiLx6vqXe+Q
-	cpz0A7Lthma1NiwKRT+rwu5SVWuCRHg1sSAbw6LcXQ==
-X-Received: by 2002:a9d:2842:: with SMTP id
-	h2-v6mr4885378otd.210.1527167255644; 
-	Thu, 24 May 2018 06:07:35 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 24 May 2018 06:07:15
-	-0700 (PDT)
-In-Reply-To: <550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
+	(envelope-from <eric.auger@redhat.com>) id 1fLq11-0004jO-6M
+	for qemu-arm@nongnu.org; Thu, 24 May 2018 09:10:56 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56386 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fLq11-0004j5-10; Thu, 24 May 2018 09:10:47 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 23740819028F;
+	Thu, 24 May 2018 13:10:46 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 61FE9ED154;
+	Thu, 24 May 2018 13:10:42 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, Laszlo Ersek <lersek@redhat.com>
 References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
 	<ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
 	<bf99311a-823d-34e8-1892-be27534afc32@redhat.com>
 	<22c4e504-a7b4-e6dd-b2cc-618d306b6f0c@redhat.com>
 	<CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
 	<550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 May 2018 14:07:15 +0100
-Message-ID: <CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::241
+	<CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <8a2e04d2-68a8-5ea6-b0a6-6df4b6c029e2@redhat.com>
+Date: Thu, 24 May 2018 15:10:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Thu, 24 May 2018 13:10:46 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Thu, 24 May 2018 13:10:46 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/2] ARM virt: Support up to 256
  PCIe buses
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,29 +105,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jones <drjones@redhat.com>,
 	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Shannon Zhao <zhaoshenglong@huawei.com>,
 	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ELeAhmVyJZ+
+X-TUID: mErFnzcScnTn
 
-On 24 May 2018 at 13:59, Laszlo Ersek <lersek@redhat.com> wrote:
-> On 05/24/18 11:11, Peter Maydell wrote:
->> Won't it also break a guest which is just Linux loaded not via
->> firmware which is an aarch32 kernel without LPAE support?
->
-> Does such a thing exist? (I honestly have no clue.)
+Hi Peter, Laszlo,
 
-Yes, it does; LPAE isn't a mandatory kernel config option.
-This is why we have the machine 'highmem' option, so that
-we can run on those kernels by not putting anything above
-the 4G boundary. Looking back at the history on that, we
-opted at the time for "default to highmem on, and if you're
-running an non-lpae kernel you need to turn it off manually".
-So we can handle those kernels by just not putting ECAM
-above 4G if highmem is false.
+On 05/24/2018 03:07 PM, Peter Maydell wrote:
+> On 24 May 2018 at 13:59, Laszlo Ersek <lersek@redhat.com> wrote:
+>> On 05/24/18 11:11, Peter Maydell wrote:
+>>> Won't it also break a guest which is just Linux loaded not via
+>>> firmware which is an aarch32 kernel without LPAE support?
+>>
+>> Does such a thing exist? (I honestly have no clue.)
+> 
+> Yes, it does; LPAE isn't a mandatory kernel config option.
+> This is why we have the machine 'highmem' option, so that
+> we can run on those kernels by not putting anything above
+> the 4G boundary. Looking back at the history on that, we
+> opted at the time for "default to highmem on, and if you're
+> running an non-lpae kernel you need to turn it off manually".
+> So we can handle those kernels by just not putting ECAM
+> above 4G if highmem is false.
 
-thanks
--- PMM
+Actually that's what my series does. If highmem=off then we use the
+legacy ECAM.
+
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

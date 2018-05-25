@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id y129-v6sm7608297wmg.44.2018.05.25.07.19.04
+        by smtp.gmail.com with ESMTPSA id 75-v6sm7553119wmw.37.2018.05.25.07.19.04
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 25 May 2018 07:19:04 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 17E6D3E0312;
+	by zen.linaro.local (Postfix) with ESMTP id 2BECD3E05B2;
 	Fri, 25 May 2018 15:19:04 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: cota@braap.org,
@@ -19,9 +19,9 @@ Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v5 25/49] tests/tcg: move ARM specific tests into subdir
-Date: Fri, 25 May 2018 15:18:59 +0100
-Message-Id: <20180525141903.6257-4-alex.bennee@linaro.org>
+Subject: [PATCH v5 26/49] tests/tcg: enable building for ARM
+Date: Fri, 25 May 2018 15:19:00 +0100
+Message-Id: <20180525141903.6257-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180525141903.6257-1-alex.bennee@linaro.org>
 References: <20180525133851.27161-1-alex.bennee@linaro.org>
@@ -29,110 +29,55 @@ References: <20180525133851.27161-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kKZladpzMj9S
+X-TUID: pOauQe2qlkF1
 
-These only need to be built for ARM guests.
+This allows us to use the docker cross compiler image to build these
+tests.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
 ---
-v2
-  - do VPATH manipulation in tests/tcg/arm/Makefile.target
-  - merge with fix hello-arm test
-v4
-  - update MAINTAINERS
+v5
+  - add EXTRA_RUNS for mmap tests
 ---
- MAINTAINERS                           |  1 +
- tests/tcg/README                      |  9 ---------
- tests/tcg/arm/Makefile.target         | 13 +++++++++++++
- tests/tcg/arm/README                  | 11 +++++++++++
- tests/tcg/{ => arm}/hello-arm.c       |  0
- tests/tcg/{ => arm}/test-arm-iwmmxt.s |  0
- 6 files changed, 25 insertions(+), 9 deletions(-)
- create mode 100644 tests/tcg/arm/Makefile.target
- create mode 100644 tests/tcg/arm/README
- rename tests/tcg/{ => arm}/hello-arm.c (100%)
- rename tests/tcg/{ => arm}/test-arm-iwmmxt.s (100%)
+ tests/tcg/arm/Makefile.include | 8 ++++++++
+ tests/tcg/arm/Makefile.target  | 5 ++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/arm/Makefile.include
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 366f1c3694..e8abe172f5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -135,6 +135,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: target/arm/
-+F: tests/tcg/arm/
- F: hw/arm/
- F: hw/cpu/a*mpcore.c
- F: include/hw/cpu/a*mpcore.h
-diff --git a/tests/tcg/README b/tests/tcg/README
-index 469504c4cb..625f2326e6 100644
---- a/tests/tcg/README
-+++ b/tests/tcg/README
-@@ -5,15 +5,6 @@ or they are architecture specific.
- 
- 
- 
--ARM
--===
--
--hello-arm
-----------
--
--test-arm-iwmmxt
-----------------
--
- MIPS
- ====
- 
+diff --git a/tests/tcg/arm/Makefile.include b/tests/tcg/arm/Makefile.include
+new file mode 100644
+index 0000000000..8e7eac008f
+--- /dev/null
++++ b/tests/tcg/arm/Makefile.include
+@@ -0,0 +1,8 @@
++# Makefile.include for all ARM targets
++#
++# We don't have any bigendian build tools so we only use this for armhf
++
++ifeq ($(TARGET_NAME),arm)
++DOCKER_IMAGE=debian-armhf-cross
++DOCKER_CROSS_COMPILER=arm-linux-gnueabihf-gcc
++endif
 diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-new file mode 100644
-index 0000000000..bc6962ecc6
---- /dev/null
+index bc6962ecc6..0312293dca 100644
+--- a/tests/tcg/arm/Makefile.target
 +++ b/tests/tcg/arm/Makefile.target
-@@ -0,0 +1,13 @@
-+# -*- Mode: makefile -*-
-+#
-+# ARM - included from tests/tcg/Makefile.target
-+#
+@@ -1,6 +1,6 @@
+ # -*- Mode: makefile -*-
+ #
+-# ARM - included from tests/tcg/Makefile.target
++# ARM - included from tests/tcg/Makefile
+ #
+ 
+ ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+@@ -11,3 +11,6 @@ VPATH 		+= $(ARM_SRC)
+ 
+ hello-arm: CFLAGS+=-marm -ffreestanding
+ hello-arm: LDFLAGS+=-nostdlib
 +
-+ARM_SRC=$(SRC_PATH)/tests/tcg/arm
-+
-+# Set search path for all sources
-+VPATH 		+= $(ARM_SRC)
-+
-+
-+hello-arm: CFLAGS+=-marm -ffreestanding
-+hello-arm: LDFLAGS+=-nostdlib
-diff --git a/tests/tcg/arm/README b/tests/tcg/arm/README
-new file mode 100644
-index 0000000000..e6307116e2
---- /dev/null
-+++ b/tests/tcg/arm/README
-@@ -0,0 +1,11 @@
-+These are ARM specific guest programs
-+
-+hello-arm
-+---------
-+
-+A very simple inline assembly, write syscall based hello world
-+
-+test-arm-iwmmxt
-+---------------
-+
-+A simple test case for older iwmmxt extended ARMs
-diff --git a/tests/tcg/hello-arm.c b/tests/tcg/arm/hello-arm.c
-similarity index 100%
-rename from tests/tcg/hello-arm.c
-rename to tests/tcg/arm/hello-arm.c
-diff --git a/tests/tcg/test-arm-iwmmxt.s b/tests/tcg/arm/test-arm-iwmmxt.s
-similarity index 100%
-rename from tests/tcg/test-arm-iwmmxt.s
-rename to tests/tcg/arm/test-arm-iwmmxt.s
++# On ARM Linux only supports 4k pages
++EXTRA_RUNS+=run-test-mmap-4096
 -- 
 2.17.0

@@ -1,564 +1,290 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7258364wrq;
-        Thu, 28 Jun 2018 03:39:09 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdIy53YufiPKHHqN5mYtM2CT1EVdG5jvUdoGNHB6BNG1PqaqfhCsRvR2qbyMrpBYZ23CYNK
-X-Received: by 2002:aed:30cd:: with SMTP id 71-v6mr8842358qtf.274.1530182349500;
-        Thu, 28 Jun 2018 03:39:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530182349; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2561347wre;
+        Thu, 24 May 2018 19:50:55 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIUcYYel33oRmLf4RYMWz84/IEdp0SPFSPGHyrKMuyWviIxdIsYLyg7HiQS+s7+tqhtKREa
+X-Received: by 2002:ac8:514a:: with SMTP id h10-v6mr492096qtn.115.1527216655333;
+        Thu, 24 May 2018 19:50:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527216655; cv=none;
         d=google.com; s=arc-20160816;
-        b=IjvcD97fPPbdujVXCxwEm1pFCGlSXpFAN75x5A/0TutN91Gzw52AwTYJFSiJ1kOXfc
-         zPwRM6uLQ91DYXGG4iPriie7s0BrSoG4pgL4UtmEerWhqjdrSkoAok3lgHRzd5ZYQWOA
-         7EdwkU0Wp95bnMbW0YplezkkWfdUVgPeZq6jt5ofBgC1g0prWXplTHXxOjtUPnr34xW4
-         rODrOkWiqkRhenByauns4VzsW4j0V6NtcwmLIRf10dt3kpMeK732e3V16vZal2sJJTMz
-         zGutE0FvgrjfF5UY9HkeMDsTpn2JY2mkqaAP8Ys5obY+kkCzMwRmohAMsszUWvarEjDJ
-         L//Q==
+        b=nLXV7uMwndedfKFiVUkVnM2AwUpqEGw7Ewb402jF+sJsjBdBr7b/G++9meyvv/KV9b
+         Mx80a12SaUz1knU2Ya65unT6An2pTKpKSEHT4WO7yjM7ARDqcwX8Iu/EVe8BfP3diKcj
+         ac5hTzwp5eW4gqrTwQT0ZqOFQ+j45IFEIIq8Xzv2Dfl0G4aBW7OynqB5KtBZA2e16chb
+         YocljpGJSI1M4/HW4YOgTDIiCjMny4uw1STnPttXEsE2ZpqLSyiNs4xkn2gUO2DzS0ng
+         nNLoIzo4zckb5sykXsjVRS2xql9aqIjWoeXnIgL8GIOxm9zA3AXk1LTmBL0ugxQGv7YD
+         0yNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=foOVifZRixCd68UPzOva0DJoMZu+WqyQ9AnS06V/jnE=;
-        b=Qo4qGsbJNDT4ZjqQbaaXz3bYt17GeIwmPwRDaFTR+W7YGix7+CRbiiNB1PMvi6Dmzj
-         CQO7ArOhElOwjJhkFj+Iy4UToE7siW4TfF5VZb00MOs70XPuDqGUsmcID8C/xiCjsrr3
-         VPzcDhfBLzbo5rZUgH+ZMnSNr9RHn0pdQBGFHci2Dwg7LTWh4ffiUzCgy4t8yBuAY6km
-         RYky+0EX+Wf5G/620v3b8mUi6RyNXQHDGoc8NBlvL0E/BDvn5Pw1xRHVzSM9X6/x4iR/
-         yPlEdF2ynAAHfXj5fk9Tl2ipH+hGvvmbNT+zO6jIBBFPHLIJgoMOCY5WDse07eKNdI28
-         DbtQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=OX9tVhVSuRNBX0c/4xr0qJJ5zPMKYBwmFNKnOYVm6yQ=;
+        b=VtwdQsOTqef5RHnYqy0zIrpROXDL7kNd+rAWQ10Bbf2rZ/sJDUxHMMIHdneN4kUFv6
+         Hhi8w9yMTF54on47ED6eDkiAmqS0nNb1oenGEq63STtMPxrT85nuzmzWFtRm9B4Nxbj1
+         YCnBhgn3tjD3ebf3r5d0Y8nMqG9ANjbPmDoDvUgWgdGk0m3CFXNUU/WWpZejOnpxE+FV
+         sTjZ95C3AwHbgUWVFKTvIgWp15T3yTMQkdLQOuRKB2gDhkyVtyYfjq69bJFa5sO/i1Su
+         /gT16NCR1Eomh7VHEJxer9C9kxw5qc221GoQalH2eQi5kofCLj37GDH4rXQTJwbI7W7b
+         TkHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WPppn7OS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e21-v6si2754148qtp.63.2018.06.28.03.39.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 28 Jun 2018 03:39:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <peterx@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id b20-v6si744279qvd.78.2018.05.24.19.50.55
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 24 May 2018 19:50:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WPppn7OS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35649 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYUKT-0001Uw-07
-	for alex.bennee@linaro.org; Thu, 28 Jun 2018 06:39:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42500)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1fYUJw-0001T0-Kv
-	for qemu-devel@nongnu.org; Thu, 28 Jun 2018 06:38:39 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1fYUJu-0001CB-30
-	for qemu-devel@nongnu.org; Thu, 28 Jun 2018 06:38:36 -0400
-Received: from mail-it0-x243.google.com ([2607:f8b0:4001:c0b::243]:35100)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
-	id 1fYUJt-0001BF-SX
-	for qemu-devel@nongnu.org; Thu, 28 Jun 2018 06:38:34 -0400
-Received: by mail-it0-x243.google.com with SMTP id l16-v6so11068405ita.0
-	for <qemu-devel@nongnu.org>; Thu, 28 Jun 2018 03:38:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=foOVifZRixCd68UPzOva0DJoMZu+WqyQ9AnS06V/jnE=;
-	b=WPppn7OSujdG/aiHVCxkbLk6clA8YpSnHdrsfy4LiKTRl3L4rGd0lX1wJT07JZ/Vhy
-	Op7KZcZYRW9EFCoaA+xdJcqxQrh3f5snF78E3e6zfNh/RzlxlTYiVBxCBp/WpBgsMtPU
-	PtvD+xlUoz4D8vHpcukmNVWPpE8SQAoyjO9/k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=foOVifZRixCd68UPzOva0DJoMZu+WqyQ9AnS06V/jnE=;
-	b=BmS7czQtfJQDpBq9L4XpdUi/aI4h621dHAy4/I72DtjuyLsL65iSS2PG/nYxo5DYq8
-	C2Bs9fFv3JyqvYR2PoflIU4SMhtiA70Z8+zj6bCbSAW7N3whurSKvFoKqQX/hWod73N9
-	lJdv8uVA04+xA2UqzUxIFCL8rmWk1PyoVs8kKQh8DaTOWxKzJuVA9i24ERa+dyHdWAbl
-	ACZFXYsZbV31nQPWoBV2fUbJhje057w3jsIZD5oWvjYSNXHSJ/9XyEb2wqTaD/MRasY+
-	45nSfC6Rntm0iGrVD92dDME1z7gX37DlO6M753LFly9bCvWE5wWy/s7jDCRSTMeHrW47
-	ck2Q==
-X-Gm-Message-State: APt69E09IlGgo3JFevoA95+l/VCZ+cmzeQSTj/OBujuRK/PU2nHNcX3S
-	2g0cBUIjctjOo7mM60ctNLPJTLX3FSGNpfVLHJYx/w==
-X-Received: by 2002:a24:28c9:: with SMTP id
-	h192-v6mr7908518ith.124.1530182312991; 
-	Thu, 28 Jun 2018 03:38:32 -0700 (PDT)
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AC51A40BC064;
+	Fri, 25 May 2018 02:50:54 +0000 (UTC)
+Received: from xz-mi (ovpn-12-42.pek2.redhat.com [10.72.12.42])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A935111765C;
+	Fri, 25 May 2018 02:50:48 +0000 (UTC)
+Date: Fri, 25 May 2018 10:50:45 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH 14/27] iommu: Add IOMMU index concept to
+ IOMMU API
+Message-ID: <20180525025045.GJ12122@xz-mi>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+ <20180521140402.23318-15-peter.maydell@linaro.org>
+ <20180522030333.GB17282@xz-mi>
+ <CAFEAcA-iOYhuPfvDv+iD6jBqXMXqN-jfTpSSBub1Zp1i-JcDbQ@mail.gmail.com>
+ <20180522110236.GB31932@xz-mi>
+ <CAFEAcA9b6dmpj+B=SO2YsB5sXsh=UPjkjN_U0i-uJhiDn20HHw@mail.gmail.com>
+ <20180523010636.GC31932@xz-mi>
+ <CAFEAcA840qn7Ms9hph9zzZgMbL8C7kN=cs4esGO9kxGXsgBg1A@mail.gmail.com>
+ <20180524062352.GA12122@xz-mi>
+ <CAFEAcA9SXirTw=H3wznVZDTmO1OB-LRNJAQ1MsyYm62SqvMqRQ@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:ac0:a65a:0:0:0:0:0 with HTTP; Thu, 28 Jun 2018 03:38:32
-	-0700 (PDT)
-In-Reply-To: <208784f8-ad5a-ee6c-0322-e4206c4fa11b@redhat.com>
-References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
-	<208784f8-ad5a-ee6c-0322-e4206c4fa11b@redhat.com>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Thu, 28 Jun 2018 18:38:32 +0800
-Message-ID: <CAHmQWvA3LmsDhFB05uRXacxJ8RRL9TSuG3XP57=J5nkAXhN9nw@mail.gmail.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::243
-Subject: Re: [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /+3A+vNt4sEl
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9SXirTw=H3wznVZDTmO1OB-LRNJAQ1MsyYm62SqvMqRQ@mail.gmail.com>
+User-Agent: Mutt/1.9.5 (2018-04-13)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]); Fri, 25 May 2018 02:50:54 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]); Fri, 25 May 2018 02:50:54 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'peterx@redhat.com' RCPT:''
+X-TUID: k0U59yjwzk+y
 
-On 28 June 2018 at 17:31, Laszlo Ersek <lersek@redhat.com> wrote:
-> On 06/27/18 12:13, Hongbo Zhang wrote:
->> This patch introduces a new Arm machine type 'SBSA' with features:
->>  - Based on legacy 'virt' machine type.
->
-> My understanding is that this new machine type serves a different use
-> case than the "virt" machine type; i.e. it is not primarily meant to run
-> on KVM and execute virtualization workloads. Instead, it is meant to
-> provide an environment as faithful as possible to physical hardware, for
-> supporting firmware and OS development for physical ARM64 machines.
->
-> In other words, this machine type is not a "goal" for running production
-> workloads (on KVM); instead it is a development and testbed "means",
-> where the end-goal is writing OS and firmware code for physical machines
-> that conform to the SBSA spec. Thus, the machine type is similar to e.g.
-> the "vexpress" machine types, except the emulated hardware platform is
-> "SBSA".
->
-> Can you please confirm that?
->
-Yes, yes, yes.
-You describe much better than me, thanks.
+On Thu, May 24, 2018 at 11:54:17AM +0100, Peter Maydell wrote:
+> On 24 May 2018 at 07:23, Peter Xu <peterx@redhat.com> wrote:
+> > On Wed, May 23, 2018 at 12:47:16PM +0100, Peter Maydell wrote:
+> >> On 23 May 2018 at 02:06, Peter Xu <peterx@redhat.com> wrote:
+> >> > Could you elaborate a bit more on why IOMMU notifier failed to
+> >> > corporate when passing in MemTxAttrs?  I am not sure I caught the idea
+> >> > here, but can we copy the MemTxAttrs into IOMMUTLBEntry when
+> >> > translating, then in IOMMU notifiers we can know the attrs (if that is
+> >> > what MPC wants)?
+> >>
+> >> (1) The notifier API lets you register a notifier before you've
+> >> called the translate API
+> >
+> > Yes.
+> >
+> >> (2) An IOMMUTLBEntry can be valid for more than just the txattrs
+> >> that it was passed in (for instance, if an IOMMU doesn't care
+> >> about txattrs at all, then the resulting TLB entry is valid for
+> >> any txattrs; or if the IOMMU only cares about attrs.secure the
+> >> resulting TLB entries are valid for both attrs.user=0 and
+> >> attrs.user=1).
+> >
+> > [1]
+> >
+> > Yes exactly, that's why I thought copying the txattrs into IOTLB
+> > should work.
+> 
+> I'm a bit confused about why the IOMMUTLBEntry is relevant here.
+> That's the thing returned from the translate method, so there's
+> no point in copying txattrs into it, because the caller by definition
+> already had them. At the point where the IOMMU notices a guest
+> changed the config, it doesn't have an IOMMUTLBEntry or a set of
+> tx attrs.
 
-> If that's the case, then please remove the word "legacy" from the commit
-> message (multiple instances). This machine type does not obsolete or
-> replace "virt", for "virt"'s stated use case; this machine type is for
-> an independent use case.
->
-Good suggestion.
-I didn't want make 'virt' obsolete at all, English isn't my mother
-language, this should be my misunderstanding of term 'legacy' some
-how, I just meant SBSA based on 'virt' :)
+Yes the txattrs is not for the translate() callers, but for IOMMU
+notifiers only.  Thanks for the pointer below [1], I think it's very
+similar to what Paolo mentioned there at [1], the major difference is
+that Paolo suggested to put txattrs into both IOMMUNotify and
+memory_region_notify_one(), while my above suggestion is that we can
+directly copy it into IOMMUTLBEntry - note that both IOMMUNotify and
+memory_region_notify_one will have a IOMMUTLBEntry parameter.  Though
+I am not 100% clear on Paolo's suggestion on why to add two txattrs
+parameters for each function (since I thought all the values in
+txattrs to be passed to either IOMMUNotify or memory_region_notify_one
+should be valid, so I am not sure why we need to "indicate which
+attributes matter (0 = indifferent, 1 = matter)").
 
-> One consequence of this would be that performance isn't as important.
->
-> Another consequence is that paravirt devices are less desirable.
->
-> I have another question:
->
->>  - Newly designed memory map.
->>  - EL2 and EL3 are enabled by default.
->>  - AHCI controller attached to system bus, and then CDROM and hard disc
->>    can be added to it.
->>  - EHCI controller attached to system bus, with USB mouse and key board
->>    installed by default.
->>  - E1000 ethernet card on PCIE bus.
->>  - VGA display adaptor on PCIE bus.
->>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
->>  - No virtio functions enabled, since this is to emulate real hardware.
->>
->> This is the prototype, more features can be added in futrue.
->>
->> Purpose of this is to have a standard QEMU platform for Arm firmware
->> developement etc. where the legacy machines cannot meets requirements.
->>
->> Arm Trusted Firmware and UEFI porting to this are done seperately.
->>
->> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
->> ---
->>  hw/arm/virt-acpi-build.c |  59 +++++++++++++-
->>  hw/arm/virt.c            | 196 ++++++++++++++++++++++++++++++++++++++++++++++-
->>  include/hw/arm/virt.h    |   3 +
->>  3 files changed, 254 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 6ea47e2..60af414 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -84,6 +84,52 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->>      aml_append(scope, dev);
->>  }
->>
->> +static void acpi_dsdt_add_ahci(Aml *scope, const MemMapEntry *ahci_memmap,
->> +                                           uint32_t ahci_irq)
->> +{
->> +    Aml *dev = aml_device("AHC0");
->> +    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO001E")));
->> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->> +
->> +    Aml *crs = aml_resource_template();
->> +    aml_append(crs, aml_memory32_fixed(ahci_memmap->base,
->> +                                       ahci_memmap->size, AML_READ_WRITE));
->> +    aml_append(crs,
->> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
->> +                             AML_EXCLUSIVE, &ahci_irq, 1));
->> +    aml_append(dev, aml_name_decl("_CRS", crs));
->> +
->> +    Aml *pkg = aml_package(3);
->> +    aml_append(pkg, aml_int(0x1));
->> +    aml_append(pkg, aml_int(0x6));
->> +    aml_append(pkg, aml_int(0x1));
->> +
->> +    /* append the SATA class id */
->> +    aml_append(dev, aml_name_decl("_CLS", pkg));
->> +
->> +    aml_append(scope, dev);
->> +}
->> +
->> +static void acpi_dsdt_add_ehci(Aml *scope, const MemMapEntry *ehci_memmap,
->> +                                           uint32_t ehci_irq)
->> +{
->> +    Aml *dev = aml_device("EHC0");
->> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0D20")));
->> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->> +
->> +    Aml *crs = aml_resource_template();
->> +    aml_append(crs, aml_memory32_fixed(ehci_memmap->base,
->> +                                       ehci_memmap->size, AML_READ_WRITE));
->> +    aml_append(crs,
->> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
->> +                             AML_EXCLUSIVE, &ehci_irq, 1));
->> +    aml_append(dev, aml_name_decl("_CRS", crs));
->> +
->> +    aml_append(scope, dev);
->> +}
->> +
->>  static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
->>  {
->>      Aml *dev = aml_device("FWCF");
->> @@ -768,14 +814,23 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
->>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
->>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->> -    acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->> -                    (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
->> +    if (!vms->sbsa) {
->> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->> +                   (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
->> +    }
->>      acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
->>                        vms->highmem, vms->highmem_ecam);
->>      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
->>                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
->>      acpi_dsdt_add_power_button(scope);
->>
->> +    if (vms->sbsa) {
->> +        acpi_dsdt_add_ahci(scope, &memmap[VIRT_AHCI],
->> +                           (irqmap[VIRT_AHCI] + ARM_SPI_BASE));
->> +        acpi_dsdt_add_ehci(scope, &memmap[VIRT_EHCI],
->> +                           (irqmap[VIRT_EHCI] + ARM_SPI_BASE));
->> +    }
->> +
->>      aml_append(dsdt, scope);
->>
->>      /* copy AML table into ACPI tables blob and patch header there */
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 742f68a..491f23b 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -59,6 +59,10 @@
->>  #include "qapi/visitor.h"
->>  #include "standard-headers/linux/input.h"
->>  #include "hw/arm/smmuv3.h"
->> +#include "hw/ide/internal.h"
->> +#include "hw/ide/ahci_internal.h"
->> +#include "hw/usb.h"
->> +#include "qemu/cutils.h"
->>
->>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
->> @@ -94,6 +98,8 @@
->>
->>  #define PLATFORM_BUS_NUM_IRQS 64
->>
->> +#define SATA_NUM_PORTS 6
->> +
->>  /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
->>   * RAM can go up to the 256GB mark, leaving 256GB of the physical
->>   * address space unallocated and free for future use between 256G and 512G.
->> @@ -168,6 +174,47 @@ static const int a15irqmap[] = {
->>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
->>  };
->>
->> +static const MemMapEntry sbsa_memmap[] = {
->> +    /* Space up to 0x8000000 is reserved for a boot ROM */
->> +    [VIRT_FLASH] =              {          0, 0x08000000 },
->> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
->> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
->> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
->> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
->> +    [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
->> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
->> +    [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
->> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
->> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
->> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
->> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
->> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
->
-> It's hard for any device to be *more* paravirtual than fw_cfg is --
-> given that (to my understanding) paravirtualization is an explicit
-> non-goal for this machine type, what do you need fw_cfg for? Is it an
-> oversight in the memory map, or is it an exception -- a limited paravirt
-> info channel -- because you need *some* way for passing information from
-> QEMU to a small subset of guest code?
->
-Well, when design discussed, fw_cfg wasn't mentioned at all, so I
-didn't pay much attention to it.
-Will double check, I think this should be removed.
+> 
+> >> (3) when the IOMMU calls the notifier because the guest config
+> >> changed it doesn't have tx attributes, so it would have to
+> >> fabricate some; and the guest config will invalidate transactions
+> >> with some combinations of tx attributes and not others.
+> >
+> > IMHO it doesn't directly matter with what we are discussing now.  That
+> > IOMMU_NOTIFIER_[UN]MAP flag tells what kind of message would the
+> > notifier be interested in from "what kind of mapping it is".  IMHO
+> > it's not really related to some other attributes when translation
+> > happens - in our case, it does not directly related to what txattrs
+> > value is.  Here as mentioned at [1] above IMHO we can still check this
+> > against txattrs in the notifier handler, then we ignore messages that
+> > we don't care about.  Actually the IOMMU_NOTIFIER_[UN]MAP flags can be
+> > removed and we can just do similar things (e.g., we can skip MAP
+> > messages if we only care about UNMAP messages), but since it's a
+> > general concept and easy to be generalized, so we provided these
+> > MAP/UNMAP flags to ease the notifier hooks.
+> >
+> > In other words, I think we can also add more flags for SECURE or not.
+> > However I still don't see a reason (from above three points) on why we
+> > can't pass in txattrs directly into translate(), and at the same time
+> > we copy the txattrs into IOTLB so that IOMMUTLBEntry can contain some
+> > context information. [2]
+> 
+> I'm afraid I really don't understand the design you're proposing
+> here. But overall I think the point of divergence is that
+> the mapping from "transaction attributes" to "translation contexts"
+> (ie, effectively different page tables) is not 1:1. So for instance:
+> 
+> Our current IOMMUs which don't care about txattrs:
+> 
+>   [any txattr at all] -> the one and only translation context
+> 
+> An IOMMU which cares about attrs.secure, and also treats
+> attrs.unspecified like secure:
+>   [any txattr with attrs.secure = 1]  \-> 'secure' context'
+>   MEMATTRS_UNSPECIFIED                /
+> 
+>   [txattrs with secure = 1] -> 'nonsecure' context
 
-Thanks for review.
+(This part is a bit interesting - the "secure" bit is actually flipped
+ between txattrs and the context...)
 
-> Thanks
-> Laszlo
->
->> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
->> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
->> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
->> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
->> +    [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
->> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
->> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
->> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
->> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
->> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
->> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
->> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
->> +};
->> +
->> +static const int sbsa_irqmap[] = {
->> +    [VIRT_UART] = 1,
->> +    [VIRT_RTC] = 2,
->> +    [VIRT_PCIE] = 3, /* ... to 6 */
->> +    [VIRT_GPIO] = 7,
->> +    [VIRT_SECURE_UART] = 8,
->> +    [VIRT_AHCI] = 9,
->> +    [VIRT_EHCI] = 10,
->> +    [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
->> +    [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
->> +};
->> +
->>  static const char *valid_cpus[] = {
->>      ARM_CPU_TYPE_NAME("cortex-a15"),
->>      ARM_CPU_TYPE_NAME("cortex-a53"),
->> @@ -696,6 +743,72 @@ static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
->>      g_free(nodename);
->>  }
->>
->> +static void create_ahci(const VirtMachineState *vms, qemu_irq *pic)
->> +{
->> +    char *nodename;
->> +    hwaddr base = vms->memmap[VIRT_AHCI].base;
->> +    hwaddr size = vms->memmap[VIRT_AHCI].size;
->> +    int irq = vms->irqmap[VIRT_AHCI];
->> +    const char compat[] = "qemu,mach-virt-ahci\0generic-ahci";
->> +    DeviceState *dev;
->> +    DriveInfo *hd[SATA_NUM_PORTS];
->> +    SysbusAHCIState *sysahci;
->> +    AHCIState *ahci;
->> +    int i;
->> +
->> +    dev = qdev_create(NULL, "sysbus-ahci");
->> +    qdev_prop_set_uint32(dev, "num-ports", SATA_NUM_PORTS);
->> +    qdev_init_nofail(dev);
->> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
->> +
->> +    sysahci = SYSBUS_AHCI(dev);
->> +    ahci = &sysahci->ahci;
->> +    ide_drive_get(hd, ARRAY_SIZE(hd));
->> +    for (i = 0; i < ahci->ports; i++) {
->> +        if (hd[i] == NULL) {
->> +            continue;
->> +        }
->> +        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
->> +    }
->> +
->> +    nodename = g_strdup_printf("/sata@%" PRIx64, base);
->> +    qemu_fdt_add_subnode(vms->fdt, nodename);
->> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
->> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
->> +                                 2, base, 2, size);
->> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
->> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
->> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->> +    g_free(nodename);
->> +}
->> +
->> +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
->> +{
->> +    char *nodename;
->> +    hwaddr base = vms->memmap[VIRT_EHCI].base;
->> +    hwaddr size = vms->memmap[VIRT_EHCI].size;
->> +    int irq = vms->irqmap[VIRT_EHCI];
->> +    const char compat[] = "qemu,mach-virt-ehci\0generic-ehci";
->> +    USBBus *usb_bus;
->> +
->> +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
->> +
->> +    usb_bus = usb_bus_find(-1);
->> +    usb_create_simple(usb_bus, "usb-kbd");
->> +    usb_create_simple(usb_bus, "usb-mouse");
->> +
->> +    nodename = g_strdup_printf("/ehci@%" PRIx64, base);
->> +    qemu_fdt_add_subnode(vms->fdt, nodename);
->> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
->> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
->> +                                 2, base, 2, size);
->> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
->> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
->> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->> +    g_free(nodename);
->> +}
->> +
->>  static DeviceState *gpio_key_dev;
->>  static void virt_powerdown_req(Notifier *n, void *opaque)
->>  {
->> @@ -1107,13 +1220,21 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
->>              NICInfo *nd = &nd_table[i];
->>
->>              if (!nd->model) {
->> -                nd->model = g_strdup("virtio");
->> +                if (vms->sbsa) {
->> +                    nd->model = g_strdup("e1000");
->> +                } else {
->> +                    nd->model = g_strdup("virtio");
->> +                }
->>              }
->>
->>              pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
->>          }
->>      }
->>
->> +    if (vms->sbsa) {
->> +        pci_create_simple(pci->bus, -1, "VGA");
->> +    }
->> +
->>      nodename = g_strdup_printf("/pcie@%" PRIx64, base);
->>      qemu_fdt_add_subnode(vms->fdt, nodename);
->>      qemu_fdt_setprop_string(vms->fdt, nodename,
->> @@ -1502,11 +1623,18 @@ static void machvirt_init(MachineState *machine)
->>
->>      create_gpio(vms, pic);
->>
->> +    if (vms->sbsa) {
->> +        create_ahci(vms, pic);
->> +        create_ehci(vms, pic);
->> +    }
->> +
->>      /* Create mmio transports, so the user can create virtio backends
->>       * (which will be automatically plugged in to the transports). If
->>       * no backend is created the transport will just sit harmlessly idle.
->>       */
->> -    create_virtio_devices(vms, pic);
->> +    if (!vms->sbsa) {
->> +        create_virtio_devices(vms, pic);
->> +    }
->>
->>      vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
->>      rom_set_fw(vms->fw_cfg);
->> @@ -1818,6 +1946,7 @@ static void virt_3_0_instance_init(Object *obj)
->>
->>      vms->memmap = a15memmap;
->>      vms->irqmap = a15irqmap;
->> +    vms->sbsa = false;
->>  }
->>
->>  static void virt_machine_3_0_options(MachineClass *mc)
->> @@ -1950,3 +2079,66 @@ static void virt_machine_2_6_options(MachineClass *mc)
->>      vmc->no_pmu = true;
->>  }
->>  DEFINE_VIRT_MACHINE(2, 6)
->> +
->> +static void sbsa_instance_init(Object *obj)
->> +{
->> +    VirtMachineState *vms = VIRT_MACHINE(obj);
->> +
->> +    vms->secure = true;
->> +    object_property_add_bool(obj, "secure", virt_get_secure,
->> +                             virt_set_secure, NULL);
->> +    object_property_set_description(obj, "secure",
->> +                                    "Set on/off to enable/disable the ARM "
->> +                                    "Security Extensions (TrustZone)",
->> +                                    NULL);
->> +
->> +    vms->virt = true;
->> +    object_property_add_bool(obj, "virtualization", virt_get_virt,
->> +                             virt_set_virt, NULL);
->> +    object_property_set_description(obj, "virtualization",
->> +                                    "Set on/off to enable/disable emulating a "
->> +                                    "guest CPU which implements the ARM "
->> +                                    "Virtualization Extensions",
->> +                                    NULL);
->> +
->> +    vms->highmem = true;
->> +
->> +    /* This can be changed to GICv3 when firmware is ready*/
->> +    vms->gic_version = 2;
->> +    object_property_add_str(obj, "gic-version", virt_get_gic_version,
->> +                        virt_set_gic_version, NULL);
->> +    object_property_set_description(obj, "gic-version",
->> +                                    "Set GIC version. "
->> +                                    "Valid values are 2, 3, host, max", NULL);
->> +    vms->its = true;
->> +
->> +    vms->memmap = sbsa_memmap;
->> +    vms->irqmap = sbsa_irqmap;
->> +    vms->sbsa = true;
->> +}
->> +
->> +static void sbsa_class_init(ObjectClass *oc, void *data)
->> +{
->> +    MachineClass *mc = MACHINE_CLASS(oc);
->> +
->> +    mc->max_cpus = 246;
->> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
->> +    mc->block_default_type = IF_IDE;
->> +    mc->default_ram_size = 1 * G_BYTE;
->> +    mc->default_cpus = 4;
->> +    mc->desc = "QEMU 'SBSA' ARM Virtual Machine";
->> +}
->> +
->> +static const TypeInfo sbsa_info = {
->> +    .name          = MACHINE_TYPE_NAME("sbsa"),
->> +    .parent        = TYPE_VIRT_MACHINE,
->> +    .instance_init = sbsa_instance_init,
->> +    .class_init    = sbsa_class_init,
->> +};
->> +
->> +static void sbsa_machine_init(void)
->> +{
->> +    type_register_static(&sbsa_info);
->> +}
->> +
->> +type_init(sbsa_machine_init);
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index 9a870cc..619473e 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -78,6 +78,8 @@ enum {
->>      VIRT_GPIO,
->>      VIRT_SECURE_UART,
->>      VIRT_SECURE_MEM,
->> +    VIRT_AHCI,
->> +    VIRT_EHCI,
->>  };
->>
->>  typedef enum VirtIOMMUType {
->> @@ -124,6 +126,7 @@ typedef struct {
->>      uint32_t msi_phandle;
->>      uint32_t iommu_phandle;
->>      int psci_conduit;
->> +    bool sbsa;
->>  } VirtMachineState;
->>
->>  #define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM)
->>
->
+> 
+> An IOMMU which cares about attrs.secure and attrs.user:
+>   [secure=1,user=1]   -> 'secure user' context
+>   [secure=0,user=1]   -> 'ns user' context
+>   [secure=1,user=0]   -> 's priv' context
+>   [secure=0,user=0]   -> 'ns priv' context
+> 
+> The IOMMU index captures this idea that there is not a 1:1
+> mapping, so we have a way to think about and refer to the
+> actual set of translation contexts that the IOMMU has.
+
+Yes.  I'd say I am not really against this iommu_idx idea.  My only
+worry is that I'm not sure whether that'll be good enough for the
+future usage of IOMMU, e.g., the requester ID issue to be discussed
+and solved.  My understanding is that the txattrs is already a
+superset of the iommu_idx concept.  Meanwhile, the iommu_idx concept
+is not easy to understand.  So it'll be nice if we can solve the
+problem with what we already have now (no new concept like iommu_idx),
+easier to understand, meanwhile it even covers more possibilities in
+the future (we can easily generate iommu_idx by txattrs, but not other
+way round).
+
+> 
+> >> As Paolo pointed out you could also implement this by rather
+> >> of having an iommu_index concept, instead having some kind
+> >> of "here is a mask of which txattrs fields matter, and here's
+> >> another parameter with which txattrs fields are affected".
+> >> That makes it awkward though to implement "txattrs.unspecified
+> >> acts like txattrs.secure == 1" type behaviour, though, which is
+> >> easy with an index abstraction layer. It also would be harder
+> >> to implement the default 'replay' method, I think.
+> >
+> > Please refer to my above comment at [2] - I am still confused on why
+> > we must use this iommu_idx concept.  How about we just introduce
+> > IOMMU_NOTIFIER_SECURE (or something similar) and let TCG code register
+> > with that?  Though for the rest of notifiers we'll need to touch up
+> > too to make sure all existing notifiers will still receive all the
+> > message, no matter whether it's secure or not.
+> 
+> I think I would definitely prefer not to have the secure/nonsecure
+> specific thing in the API. We've got good experience with TCG
+> where we abstract away the specifics of what an MMU cares about
+> into an mmu_index, and I'd like to keep that approach. Otherwise,
+> you immediately get into "and now we need to change the API again
+> to handle IOMMUs which care about attrs.user"; and then again
+> for attrs.requester_id; and now what about IOMMUs that care
+> about both secure and user... Better to have an abstraction so
+> that we don't need to keep changing the core code. In particular,
+> TCG doesn't know whether it's secure/nonsecure that matters -- that
+> is mostly handled by the target-specific parts, and TCG core code
+> just passes attributes around.
+
+IMHO the notifier flags are of course extra - we can introduce new
+flags, or we can just handle them in the notifier hooks without
+touching that part (especially if we copy the txattrs into
+IOMMUTLBEntry we don't even need to touch the notifier API).  IMHO the
+thing that matters more is what we need to pass to the translate() and
+whether the iommu_idx concept is a must.  I am really fine with either
+way to implement the IOMMU notifiers when we can make sure whether
+iommu_idx is a must.
+
+Again, I am totally not against the iommu_idx concept - I am just
+afraid one day that'll be not enough for us and we still need to
+rework on that part.
+
+> 
+> > I'd also appreciate if you could paste me the link for Paolo's
+> > message, since I cannot find it.
+> 
+> This is the one I had in mind:
+> https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg03522.html
+
+[1]
+
+Really sorry to chime in so late no matter what; I didn't noticed the
+RFC series.  These comments are for sure more suitable for RFCs.
+
+> 
+> >> It will only need to do so for IOMMUs that care about that field.
+> >>
+> >> (See also the other thread with Eric Auger talking about
+> >> maybe caring about requester_id like that. Needing to look
+> >> at requester_id is an area I haven't thought too much about,
+> >> and it is a bit of an odd one because it's a much larger
+> >> space than any of the other parts of the txattrs. In some
+> >> cases it ought to be possible to say "requester_id lets
+> >> us determine an iommu index, and there are a lot fewer
+> >> than 2^16 actual iommu indexes because a lot of the requestor_id
+> >> values indicate the same actual iommu translation", I suspect.)
+> >
+> > AFAIK requester_id will only be the same in very rare cases, for
+> > example, when multiple PCI devices (no matter whether it's PCI or
+> > PCIe) are under the same PCIe-to-PCI bridge, then all these devices
+> > will use the bridge's requester ID as their own.  In most cases, each
+> > PCIe device will have their own unique requester ID.  So it'll be
+> > common that requester ID number can be at least equal to the number of
+> > devices.
+> 
+> I haven't looked at this, but my understanding is that at the moment
+> we do per-device requester_id by having each PCI device get its own
+> IOMMUMemoryRegion mapped into its address space. So we'd only need
+> to look at requester_id for the case of devices with multiple
+> subfunctions(?), and presumably most devices only have a handful
+> of those.
+
+Not sure I fully understand this, do you mean that requester ID can
+actually be bound to the DMA address space (and the IOMMU memory
+regions) for the device?  I am not sure, maybe yes...
+
+Though ppassing txattrs (and requester ID) from the translate()
+function still seems more reasonable. I assume that looks more like
+what the real hardware does - the requester ID should be embeded in
+the PCIe packet when sending the DMA request (or page translation
+request).  And for me the translate() emulates the page translation
+requests, that's why passing in txattrs is very easy to understand at
+least for me (while the iommu_idx is not easy to understand;
+especially the "index" let me think about "which IOMMU is responsible
+for this").
+
+Thanks,
+
+-- 
+Peter Xu

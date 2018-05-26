@@ -1,113 +1,78 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2354314wre;
-        Thu, 24 May 2018 14:55:35 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKK1rWoKFAglFjFRIEceBawhiwPq1YxqyM1hxhw8z+mSmPxJ6PPLbeLVaZIDeRg2IDM0dKpT
-X-Received: by 2002:ac8:2534:: with SMTP id 49-v6mr1971490qtm.82.1527198935549;
-        Thu, 24 May 2018 14:55:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527198935; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp202138wre;
+        Fri, 25 May 2018 17:42:22 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIFvVI28gyz7oloCKPbP9Pj3qMpNQDE2W+d2phREkaxGFZVeEj4hrBkWTZA4LZc11iY/TEp
+X-Received: by 2002:a37:3507:: with SMTP id c7-v6mr4157244qka.58.1527295342346;
+        Fri, 25 May 2018 17:42:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527295342; cv=none;
         d=google.com; s=arc-20160816;
-        b=pIE7Zp6AFqc8Vkwiel0aSbvVrVaKzYkvJqo/etoRwWgTisVh/Ppzrjy63W2jAWNJ/V
-         I8JWqOQQT9lGBSBTj6eXD0gyJ7/zmPF/dof3glF9VZtQahFmJIxl3kuIXPo5NVnxCy5t
-         rYtghveX+fJQp2b0g7hraOKbTKNNj/IzENp87yOIPYjFY8bxrCZm3a1zbiTT4a3uSnwu
-         W4nygOCQiNDHWkPoH8UYD3jRg8pfEbZGl/MBBZHkdu34bQjEegqcqRtxZQ7Oit6LmpyR
-         m+Yk68+wPX2mS6YXxnDF4io+2EHO+JLkOkEORJTLpcRRZdbQtpeYm1oip7v7Gv+rRw2o
-         aDKA==
+        b=vaxGLldYB7F4BGrmhRHIZpof9C1TrlBVxGtbKywSKcDITkatdx1CXfk9hE2C3S/1e9
+         4EdeEdTlU/5dOrTI5QrdKZsRdiz5FcoClD3Ban0ohfy1cnzS2QyE7Q3QJpgk8zTbfgt0
+         TF3KUF2TS30yVf3tMhpFMC7jq2loW+R9H9QOXFb5dIl57K0Qwf5QlZWWcQqBvsNKgZ1M
+         Ow+tTGMnyUetEdvBtKRL+agY0BtOdomtlFfPB4eT8+VwuA7WJlFow2uKax2ZmBFXUHMm
+         lV/6mx7y66Tn63R1swKqNn6lLQQp3tF08tOXU7jAohGS0q/Fd0T35LV+XyQ7rhajHO0Q
+         yAMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=nwSkekwLYkXSnjObOAJcq41ONj5vs/sGCLwZcAg4Zo0=;
-        b=nkYy3rl1mTWALPfFWwPfYiU4K7+yXQSFONKc8Ew//hIrw8LwvtHA/SHr4pNHFsm7eh
-         o985isY6fFcRLbAOT/Na5pk8UEg+Z/uZKWsYDcQIWyJu6l0v7XwpmUjTy0quxQoRZxMf
-         2P3X0zn8yakqbZAtZaT6KAhiLWpEgK6ZyBC06SGpRTAfnxs23GlpxEq4lzmPORTtBDwO
-         KmkKLDDgAU8c/rIuhLSk473d6D++4bM634NhGNyQ1Dh5CVx8iqW/c7T0lOKK7eUsjG2V
-         bS/xdGGmHOrnWdkCBJ7+/yUiYJcMGrd7pV3fMN+fsrKwAQnz245jO5d5WRSSmXZ6735f
-         7X3w==
+         :content-transfer-encoding:in-reply-to:references:to:mime-version
+         :user-agent:from:date:message-id:arc-authentication-results;
+        bh=AN09N50TtcBQs4pKJ9n1hcXhi9t2FHNpfnObhk7wq4Q=;
+        b=delh/9wO/dpp8jhD1N5qjgt3qgdME90vVav5W5BKzAgN+oJ6M2YvBdl+E+T7pH6oEd
+         qf4IskTu+fCADPUEZs3sURKmQw4wDimCb24ajAVTO2DdlQ74UYD+57k08Un3laiYAAAA
+         AdDZ3zljgMTh+P7dKlH8lFuNRalQyd6d2RiL0gl986bWOKHRd74lColW5RvzbKGfeVPG
+         DDyeZsSNI1hdFTajr/BboCD4QtYAe5nPOjJaPLHnPasoJa6fywVqMUY3SFPAYRckN9j7
+         JAEx4YqltYmbApXiSWC1ylj+o57Fvu2Z5dQBE/9/wzpPZ7qSMdA8OOVVSrDZ0Qhg9uoE
+         hu/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J8m1rsxY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o82-v6si2370115qki.221.2018.05.24.14.55.35
+        by mx.google.com with ESMTPS id a23-v6si5513970qtn.388.2018.05.25.17.42.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 14:55:35 -0700 (PDT)
+        Fri, 25 May 2018 17:42:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J8m1rsxY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40797 helo=lists.gnu.org)
+Received: from localhost ([::1]:47227 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLyCt-000446-0q
-	for alex.bennee@linaro.org; Thu, 24 May 2018 17:55:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50900)
+	id 1fMNHp-0006Lq-St
+	for alex.bennee@linaro.org; Fri, 25 May 2018 20:42:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fLyCh-000401-8U
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 17:55:24 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fMNHe-0006LT-T7
+	for qemu-arm@nongnu.org; Fri, 25 May 2018 20:42:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fLyCg-0003ZW-FY
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 17:55:23 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:36528)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fLyCa-0003Os-3n; Thu, 24 May 2018 17:55:16 -0400
-Received: by mail-qt0-x242.google.com with SMTP id q6-v6so4111195qtn.3;
-	Thu, 24 May 2018 14:55:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=nwSkekwLYkXSnjObOAJcq41ONj5vs/sGCLwZcAg4Zo0=;
-	b=J8m1rsxYyKHQTjJBbxQ6VR5HGYtsll76cEzBUorxHAMS9Oalu2PlM7RqwT8dTleNhh
-	GRrEzE66seTy3y369qE85K58vk606/IoBHPr5UKuUs4DB7f4s2gPLZdM2PKS6aPG47io
-	usbRurQylJBO1ueOgGDrvcIdtaJvKnO4sIXN4QH+m9ZDdmCcjhCO2huz19KKMG8tGead
-	N3PnJQj46Lh8V0ecEHo7ZnofI8SPD4TBVYvYK3QpQs79LrFmJclugz9gT2qEPmudknKa
-	zO+2bOT2Fg3AVJji0QeEvdGVvjj/dcpiXNDJvWNq2qN6SOZF8eDQZ4eaDOZauhk/5JdO
-	67FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=nwSkekwLYkXSnjObOAJcq41ONj5vs/sGCLwZcAg4Zo0=;
-	b=Xkvi5dUvCGHd+etAtvGwhwg8BneiYOrQY4WildWJ+cBTFHV2TWBXqJtxW34BXrSrNh
-	blc9YfruUogHXXeivQuMfT9q3Ma6wVX38qk7jMFDevdjPGQFben4epNFNtzQ7FUOyLxh
-	gDsN1FrX4CdNswGh2aOkV5i2lexHteheHM2DU8EdOFSSBF8In5aIHwFLepzTo1nZw3p2
-	npXlm3+iZNskTRDigYT+Qufd2gbNWRG6tfbEqCui0SSEwItCGJrUViABvlJz9EvPpZ28
-	Af2GBO4Im5/xBG3dwaQfq3C6BAYXEXQ0sQM9o5LoSb4ApF73iLmP8VvXD9/xUtzgh6Dd
-	53uw==
-X-Gm-Message-State: ALKqPwcL3hjcH2POu8uqpglWzS8tDW5O1LE4jH38BT2zrU6BAOTtEJdi
-	fZ4D+1qd9wHhbbaIk8Fok87FEfSg
-X-Received: by 2002:aed:3c7a:: with SMTP id
-	u55-v6mr8628607qte.391.1527198915218; 
-	Thu, 24 May 2018 14:55:15 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	141-v6sm1558165qkn.38.2018.05.24.14.55.12
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 24 May 2018 14:55:14 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <20180524213756.7528-1-pbonzini@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <b3d15f99-2e67-c0d4-7741-3af67d566734@amsat.org>
-Date: Thu, 24 May 2018 18:55:11 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fMNHb-0001bg-Rc
+	for qemu-arm@nongnu.org; Fri, 25 May 2018 20:42:10 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2621 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1fMNHb-0001WP-H2; Fri, 25 May 2018 20:42:07 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 67FB36EE5F253;
+	Sat, 26 May 2018 08:41:51 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by DGGEMS403-HUB.china.huawei.com
+	(10.3.19.203) with Microsoft SMTP Server id 14.3.382.0; Sat, 26 May 2018
+	08:41:44 +0800
+Message-ID: <5B08AD46.9020101@huawei.com>
+Date: Sat, 26 May 2018 08:41:42 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-In-Reply-To: <20180524213756.7528-1-pbonzini@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [PATCH] arm: fix malloc type mismatch
+To: <qemu-devel@nongnu.org>
+References: <152724816757.234.340581049808773005@d39dc562802a>
+In-Reply-To: <152724816757.234.340581049808773005@d39dc562802a>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.190
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 0/2] Fix ARM KVM GICv3
+ get/put data shift bug
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,37 +84,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, famz@redhat.com,
+	eric.auger@redhat.com, shannon.zhaosl@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GMZUsRfXjgGh
+X-TUID: Ewy2K/ffr8JE
 
-Cc'ing qemu-devel for patchew and co
 
-On 05/24/2018 06:37 PM, Paolo Bonzini wrote:
-> cpregs_keys is an uint32_t* so the allocation should use uint32_t.
-> g_new is even better because it is type-safe.
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On 2018/5/25 19:36, no-reply@patchew.org wrote:
+> /tmp/qemu-test/src/hw/intc/arm_gicv3_common.c: In function 'gicv3_gicd_no_migration_shift_bug_post_load':
+> /tmp/qemu-test/src/hw/intc/arm_gicv3_common.c:165:9: error: 'gicd_no_migration_shift_bug' undeclared (first use in this function); did you mean 'gicv3_gicd_no_migration_shift_bug_pre_load'?
+>      if (gicd_no_migration_shift_bug) {
+>          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+>          gicv3_gicd_no_migration_shift_bug_pre_load
 
-> ---
->  target/arm/gdbstub.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index e80cfb47c7..0c64c0292e 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -157,8 +157,7 @@ int arm_gen_dynamic_xml(CPUState *cs)
->      RegisterSysregXmlParam param = {cs, s};
->  
->      cpu->dyn_xml.num_cpregs = 0;
-> -    cpu->dyn_xml.cpregs_keys = g_malloc(sizeof(uint32_t *) *
-> -                                        g_hash_table_size(cpu->cp_regs));
-> +    cpu->dyn_xml.cpregs_keys = g_new(uint32_t, g_hash_table_size(cpu->cp_regs));
->      g_string_printf(s, "<?xml version=\"1.0\"?>");
->      g_string_append_printf(s, "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">");
->      g_string_append_printf(s, "<feature name=\"org.qemu.gdb.arm.sys.regs\">");
-> 
+After compiling the patches, I add this check while forgot to use
+cs->gicd_no_migration_shift_bug. My bad. I'll address this with other
+comments in next version.
+
+Thanks,
+-- 
+Shannon
+

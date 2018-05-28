@@ -1,99 +1,91 @@
-Received: by 10.28.71.27 with SMTP id u27csp4681453wma;
-        Tue, 27 Feb 2018 02:53:49 -0800 (PST)
-X-Google-Smtp-Source: AG47ELvCm4GeAYxgoxhXFToUqU+kTf5SYVgQp8gHmT95rvCnv8vahi0MKmqa1a+pS4FxM/431nWu
-X-Received: by 2002:a25:e791:: with SMTP id e139-v6mr9242551ybh.457.1519728829639;
-        Tue, 27 Feb 2018 02:53:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519728829; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2252648wre;
+        Mon, 28 May 2018 02:08:02 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJmzCxYmBDxhRImaY2WqoL2d105HMRjaPX7v508yi2hG0jRq0noibfRanIOatpGIoGWcx3Y
+X-Received: by 2002:a37:af05:: with SMTP id y5-v6mr10637461qke.55.1527498482595;
+        Mon, 28 May 2018 02:08:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527498482; cv=none;
         d=google.com; s=arc-20160816;
-        b=hq7Hr2DAbzrb4RC4my8Ne5bG6yeBAUMUpCE4iSCjqLKJx1rsU2AemtmXdwsQ9Ly3AC
-         OpRjgPf4W5TRmNHBudi3jyBCOQcWWll2BkULjIWC+C6JgHkXlrv0aLBKcSKMajUmm4/l
-         MtVORqFrHGtJFSmvl9tMHMMQ7SNvVGxHuoQukO7wR/D4u/l+qG4rK5st1M0nusP9cvTV
-         h9lC2IxoayVtRbXFesRWrtvejl2zZ+5oGSi5i/5KYS7pqf8e9WYn0WDPUwpkh57JnkUx
-         9ivCigoBNozLPQxYjZ8kyxcs3FggBzueMmBJJH1th11zBDGp8JINZ1c8YOIOiOJ9DNw1
-         rSig==
+        b=drmOOqq/70uMAAy0sYkm5QlfLUBruPWnTtFWT67OrIon3psqB+3ZosfZGgN96+oiiD
+         7cPJX41ogxGRQqN4Plp2fKfdnYPOgEl1yN6Joo8ZsBLqZ+LN5iWCU49o2TnB3E6cmTVf
+         2Ca5EvRY5l6oXjDXWRIRAes78KNQbWFbdqV+1H2Kq5wAkgdpT1QFHUmuk9NlYjFMXTVW
+         meEz0vtYbfuyV0aLKIpwWJz7NvSSBKzYpPWIRjp4TFXtcamMTpIVQ6XIFiUwMuPJ2Pu9
+         c1ucEVfAKBD8WD2M7CGMvF323sp6wBW4AVirVHFsUHMSxVYNof0klcQUbNQJhDPLnH1t
+         kPoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=B3h3ngm0OffOmfESZWBoAmx9C3pRmKhosswAThUpbIU=;
-        b=u2b/OK1Re2mp9AAc2Qh6p4Z2ExgKSgLTfZbE8KTkS171wbsGZ6twEYEp9xtO0q4TSD
-         irzaaUgsmOPdUb0pI/c1Afchp7X4naQeljtZbgaErULb5xw5CkZbbKbqfjBoYIFjWkWv
-         Jwo32klXlNg6q7CKShBjhtPiKUdUXPmSjAK6/Bi6+I8Onxa7hiiziz6FcvkCgNwuZqWb
-         rEiVF1c5ns6PL+u6bGRzZZ5ouR/eYyhKeg6PNFvNxp7sWK0gPqI9uAeJwF4qfYI42qvR
-         R0S5ImT6gTRWTxHD0CWWMWi/K8/L8e0NMBOrNZUE5sqxQi0/hAKyAJQZSZBIGkV0M+Y5
-         oaMA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=46qQsEvUuu/UiOVrwowmwEt8lF4nzgg3P5BHDfuYXBI=;
+        b=qg/cj4TvXY4cRwjyPfIcGUjk3ZA3v4mdh99epOt94Hp8sf/xu6zcX0O6wlRqgBGpVV
+         YGlLdElDo3uEY5KYNRxnNZTbCZC+p8Hwu8ZLW+U3etsMs7lt1FHt7t04Cs2aE5WCaoVS
+         x52zbejdAJUFGhsAOgshTs0v2Tdj70JKHkMSDwmiXyr8F9/vG3a+JhIMkvYVwDh54lUS
+         VjT9ni1EnKZOJASRPZRT/IV5DJM7o/Q21VslJ2SG5NQXW8J/Fnk2yucpdfjhNEtfrlI8
+         U09TOAClWAv9TuDQaxE/Z70q7819Zr7ugn47r8yIEA9OT+RQVJjvghPCUTWd2WZKcD2J
+         07gA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jzIh9rUc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e64si1813003ywc.206.2018.02.27.02.53.49
+        by mx.google.com with ESMTPS id q36-v6si1748205qtf.211.2018.05.28.02.08.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Feb 2018 02:53:49 -0800 (PST)
+        Mon, 28 May 2018 02:08:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jzIh9rUc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36189 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54937 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eqctJ-0001F3-3S
-	for alex.bennee@linaro.org; Tue, 27 Feb 2018 05:53:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54805)
+	id 1fNE8I-0005Hx-4V
+	for alex.bennee@linaro.org; Mon, 28 May 2018 05:08:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55130)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linus.walleij@linaro.org>) id 1eqcoz-0006Q6-RL
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:49:24 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1fNE83-0005Hk-6w
+	for qemu-arm@nongnu.org; Mon, 28 May 2018 05:07:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linus.walleij@linaro.org>) id 1eqcow-0004E5-LX
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:49:21 -0500
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:45834)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <linus.walleij@linaro.org>)
-	id 1eqcow-0004Dg-DK
-	for qemu-arm@nongnu.org; Tue, 27 Feb 2018 05:49:18 -0500
-Received: by mail-lf0-x241.google.com with SMTP id x196so26793788lfd.12
-	for <qemu-arm@nongnu.org>; Tue, 27 Feb 2018 02:49:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=B3h3ngm0OffOmfESZWBoAmx9C3pRmKhosswAThUpbIU=;
-	b=jzIh9rUcL3FhJchz31Dvo+GGKt9uVzm1K0LoeoDuq1KtiAAHvn6ypRaWeubj96cP5n
-	LJspgHzdxRviIbBEMpzj1vzZKIJCY8W/9tJy8PPFAlHj5pqToK8u3oZii6M98mxCkAC2
-	BCaruBWdnqUz9/W2sJy7NtQ2Qf1unMYl2136Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=B3h3ngm0OffOmfESZWBoAmx9C3pRmKhosswAThUpbIU=;
-	b=dJ+cj1i4Q5Hk6E9fMh1TQe4lr06FKEWz8nWJeWg12Df9a5ymozWcEfVMh8rkyOBIDe
-	4xemlpIoV3djGPaFU8G9fL5rL//Z8O41RCoYb+L9nAb//JHq9MBFhjb3Fyt9YtoYWYWG
-	4hUTMdSVGYQWhPpHLrlMQ+IqF/Yi6TDpZj/RENOn5zmwb1Ty/TfnEyHmktYlhVia3ESs
-	I5PVZgC5DHbDfltH5fK8FQhhKXTuMFmw6a2E6QQRblDLn1lVvhz2DZrCs4+JzctU5Ntu
-	QQgDuUfVFPceSNEJ7dS8ImJZx61dcgsVX8K64gI/N6GQPmfvxkWXvgOlqezbXUmAm1HC
-	Ao1Q==
-X-Gm-Message-State: APf1xPAS2fEQn+K2N+wntuD7TYERj09O+Rsd9XXCZ7FMT9bsTTxHUS1C
-	Nc2G9u51FHKazR4AjHX1RlEdEw==
-X-Received: by 10.46.23.68 with SMTP id l65mr9791189lje.56.1519728557120;
-	Tue, 27 Feb 2018 02:49:17 -0800 (PST)
-Received: from genomnajs.ideon.se ([85.235.10.227])
-	by smtp.gmail.com with ESMTPSA id 74sm2484148ljq.32.2018.02.27.02.49.15
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 27 Feb 2018 02:49:16 -0800 (PST)
-From: Linus Walleij <linus.walleij@linaro.org>
-To: qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Feb 2018 11:49:03 +0100
-Message-Id: <20180227104903.21353-6-linus.walleij@linaro.org>
-X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20180227104903.21353-1-linus.walleij@linaro.org>
-References: <20180227104903.21353-1-linus.walleij@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: [Qemu-arm] [PATCH 5/5] arm/vexpress: Add proper display connector
- emulation
+	(envelope-from <eric.auger@redhat.com>) id 1fNE82-0006za-1v
+	for qemu-arm@nongnu.org; Mon, 28 May 2018 05:07:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41780 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fNE81-0006yZ-SF; Mon, 28 May 2018 05:07:45 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E4926402243B;
+	Mon, 28 May 2018 09:07:44 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1A1611C730;
+	Mon, 28 May 2018 09:07:43 +0000 (UTC)
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
+References: <1527496946-12036-1-git-send-email-zhaoshenglong@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b26a7a34-7090-b108-0b96-e4dd6ab09017@redhat.com>
+Date: Mon, 28 May 2018 11:07:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
+MIME-Version: 1.0
+In-Reply-To: <1527496946-12036-1-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Mon, 28 May 2018 09:07:44 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Mon, 28 May 2018 09:07:44 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH] ARM: ACPI: Fix use-after-free due to memory
+ realloc
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,84 +97,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
-	Linus Walleij <linus.walleij@linaro.org>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5FMAHj8pc7nj
+X-TUID: l0Oud9P452TV
 
-This adds the SiI9022 and EDID I2C devices to the ARM Versatile
-Express machine, and selects the two I2C devices necessary in the
-arm-softmmy.mak configuration so everything will build smoothly.
+Hi Shannon,
 
-I am implementing proper handling of the graphics in the Linux
-kernel and adding proper emulation of SiI9022 and EDID makes the
-driver probe as nicely as before, retrieveing the resolutions
-supported by the "QEMU monitor" and overall just working nice.
+On 05/28/2018 10:42 AM, Shannon Zhao wrote:
+> acpi_data_push uses g_array_set_size to resize the memory size. If there
+> is no enough contiguous memory, the address will be changed. So previous
+> pointer could not be used any more. It must update the pointer and use
+> the new one.
+> 
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-The assignment of the SiI9022 at address 0x39 and the EDID
-DDC I2C at address 0x50 is not strictly correct: the DDC I2C
-is there all the time but in the actual component it only
-appears once activated inside the SiI9022, so ideally it should
-be added and removed to the bus by the SiI9022. However for this
-purpose it works fine to just have it around.
+Thanks!
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
----
-ChangeLog v1->v2:
-- Only add the SII9022 now that it will by itself realize
-  the DDCI2C as part of the bridge.
----
- default-configs/arm-softmmu.mak | 2 ++
- hw/arm/vexpress.c               | 6 +++++-
- 2 files changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index ca34cf446242..54f855d07206 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -21,6 +21,8 @@ CONFIG_STELLARIS_INPUT=y
- CONFIG_STELLARIS_ENET=y
- CONFIG_SSD0303=y
- CONFIG_SSD0323=y
-+CONFIG_DDC=y
-+CONFIG_SII9022=y
- CONFIG_ADS7846=y
- CONFIG_MAX111X=y
- CONFIG_SSI=y
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index dc5928ae1ab5..9fad79177a19 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -29,6 +29,7 @@
- #include "hw/arm/arm.h"
- #include "hw/arm/primecell.h"
- #include "hw/devices.h"
-+#include "hw/i2c/i2c.h"
- #include "net/net.h"
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
-@@ -537,6 +538,7 @@ static void vexpress_common_init(MachineState *machine)
-     uint32_t sys_id;
-     DriveInfo *dinfo;
-     pflash_t *pflash0;
-+    I2CBus *i2c;
-     ram_addr_t vram_size, sram_size;
-     MemoryRegion *sysmem = get_system_memory();
-     MemoryRegion *vram = g_new(MemoryRegion, 1);
-@@ -628,7 +630,9 @@ static void vexpress_common_init(MachineState *machine)
-     sysbus_create_simple("sp804", map[VE_TIMER01], pic[2]);
-     sysbus_create_simple("sp804", map[VE_TIMER23], pic[3]);
- 
--    /* VE_SERIALDVI: not modelled */
-+    dev = sysbus_create_simple("versatile_i2c", map[VE_SERIALDVI], NULL);
-+    i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
-+    i2c_create_slave(i2c, "sii9022", 0x39);
- 
-     sysbus_create_simple("pl031", map[VE_RTC], pic[4]); /* RTC */
- 
--- 
-2.14.3
-
+Eric
+> ---
+>  hw/arm/virt-acpi-build.c | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 92ceee9..30584ee 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      AcpiIortItsGroup *its;
+>      AcpiIortTable *iort;
+>      AcpiIortSmmu3 *smmu;
+> -    size_t node_size, iort_length, smmu_offset = 0;
+> +    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
+>      AcpiIortRC *rc;
+>  
+>      iort = acpi_data_push(table_data, sizeof(*iort));
+> @@ -414,6 +414,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      iort_length = sizeof(*iort);
+>      iort->node_count = cpu_to_le32(nb_nodes);
+>      iort->node_offset = cpu_to_le32(sizeof(*iort));
+> +    iort_node_offset = iort->node_offset;
+>  
+>      /* ITS group node */
+>      node_size =  sizeof(*its) + sizeof(uint32_t);
+> @@ -429,7 +430,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          int irq =  vms->irqmap[VIRT_SMMU];
+>  
+>          /* SMMUv3 node */
+> -        smmu_offset = iort->node_offset + node_size;
+> +        smmu_offset = iort_node_offset + node_size;
+>          node_size = sizeof(*smmu) + sizeof(*idmap);
+>          iort_length += node_size;
+>          smmu = acpi_data_push(table_data, node_size);
+> @@ -450,7 +451,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          idmap->id_count = cpu_to_le32(0xFFFF);
+>          idmap->output_base = 0;
+>          /* output IORT node is the ITS group node (the first node) */
+> -        idmap->output_reference = cpu_to_le32(iort->node_offset);
+> +        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>      }
+>  
+>      /* Root Complex Node */
+> @@ -479,9 +480,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          idmap->output_reference = cpu_to_le32(smmu_offset);
+>      } else {
+>          /* output IORT node is the ITS group node (the first node) */
+> -        idmap->output_reference = cpu_to_le32(iort->node_offset);
+> +        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>      }
+>  
+> +    /*
+> +     * Update the pointer address in case table_data->data moved during above
+> +     * acpi_data_push operations.
+> +     */
+> +    iort = (AcpiIortTable *)(table_data->data + iort_start);
+>      iort->length = cpu_to_le32(iort_length);
+>  
+>      build_header(linker, table_data, (void *)(table_data->data + iort_start),
+> 

@@ -1,191 +1,173 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2536969wre;
-        Mon, 28 May 2018 07:29:54 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIbmM7TMmYwjp8gNA9HsEXk/Sb3Op5Lk5F7ymM+smwNCh/6UuCOLSzmP626o/qf4/eqpfJR
-X-Received: by 2002:a37:82c6:: with SMTP id e189-v6mr11152559qkd.322.1527517794596;
-        Mon, 28 May 2018 07:29:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527517794; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2567331wre;
+        Mon, 28 May 2018 08:02:20 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKI8ZQtM0nkf6TdTPg1rJ07tEqpDXthFHEW+t3l78FtgjgyjfKMUn3ljBi65krNvUItt5isA
+X-Received: by 2002:aed:3c7a:: with SMTP id u55-v6mr12269327qte.391.1527519740820;
+        Mon, 28 May 2018 08:02:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527519740; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZcXDuKhvm6Ph6apd50Cta1mzwJx27UPW6DdvUvCxOZQ45ep//v/OIpdU5fTJAPecj
-         hEkaOwPUmaEaXqhuGzjEW307Bo2VO/C+AGVpRJhBiC0eV3djKnN14LRv3KDiJbuJGacf
-         yumKvv0gzvYsyLSHaQPseXum6VVxwUKxylVGXwdksC7ILJF2cPVfCsLp3y8sVE/qogN3
-         5Z/adFsdgweYs9VPh2ELpXqdIx1xghF9yKJfrMvAepj95OzZ00wkVoeQtEDt7skc7x0N
-         pALYdyryTPKepw6ECHwoD6hX8C9dJMJMbnXDYZbNaGniiCwfBwi540m3wqvmiXpuwLfx
-         LxAA==
+        b=uTii8uihpEXmu5viq9jVusctm8dpzlDO1/nt36tMJnrutFy7xWsbT3klVHinli0YsV
+         JVoTybx0jAyeQILB9iuPqYCoKFIlUuHpYl8EpKJc3ydD1/P4tvFjs1DqafNteYZEAvCb
+         E2olJ4FcMSIRcIGk7jAGRwglAaHpKeblobm8vewrD41AQ+Vogd+qbhDMy/bvjiQ47zg9
+         vh6YW1l0y7IzHJ1NpZEHqJgcEA2DjRb2h9y+HAK0kJiCy4B+DeGy0FOEKAKf23h9Pa+O
+         dhRAr7z+t/gTVO/RBu4PCPz71e5zaM67r9KCeNSOyl9td4hYAP7ZMNKwvdPkrA3SkXMd
+         zCCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:dkim-signature
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=ciWwWP1hIgykExERQLD3CZAzfJcTnvyo84csvXIXtSo=;
-        b=tg0z7XyFB+zGaN7lrLAatVw22le51nQZxOcMyecB5hCL6/RQzocgrjn6e2nXLv7HtP
-         eIXoKa/pDML2sJG0ui83YApHERwUyYrM2WVkBZjd4QNCTmFKY2EFNkrqNK8+zupe7EBG
-         XYFOBokTxEwJw+uW3fc61qh1Htve86PsCI5l+atE0Zc6oJ11gbLwAxLEnhrwxd1BhR9e
-         X5Dus1Qv4Dk2yu52F99GS0E5BaNEV4LpOH00Dm47g8Y7C5M/tRF32l/622lNMIJQFAIr
-         00MPwy5ChPoXhjRPda7E7Z7/97ykudayzAbHJkRt8/wsrXP2Ox8XbsN0xWmguZv4xPn2
-         d5rw==
+        bh=2lBaO8le3bcdCuXfyr6awUs2rp70K+UNoCZ17rN3wLM=;
+        b=FJ/lkVJ1qLR/b6xSKujBR91gsvnBsrRpo5Y6Ls41IxKDwUsSg4LWfxN7u0TdiT8oWv
+         9HEkluE4Iu2PE7JNyccoQRKpwJZkn8yc4hvWfzHnldA5Bp5LyVofeToqGo8nxviU6wGQ
+         uhApX/boclZ5Bjg3lhhb+/qDKioLAO8VRsjUfKz0Izgxzuk2JKuQEV/+dMGRUpQ4V4Hj
+         CvOCwV7zCvMV7p7qWu5Jb+27g/KzlcX62aHAW60eajWAwBgwqjY551nIrMyt1+RdJAoK
+         D7L9lFTeRxa80QVftsDqu0EnzVEz9TwmQOOsMpba4QwOmBP9d/GfA3T3jl/LwMha2O75
+         NKvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=o/dVGpj+;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=BRSb8LIf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x1-v6si1368242qvc.198.2018.05.28.07.29.54
+        by mx.google.com with ESMTPS id 18-v6si2685102qku.348.2018.05.28.08.02.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 07:29:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 28 May 2018 08:02:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=o/dVGpj+;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=BRSb8LIf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56536 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56652 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNJ9m-000592-3V
-	for alex.bennee@linaro.org; Mon, 28 May 2018 10:29:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47122)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNJfA-0005WE-AC
+	for alex.bennee@linaro.org; Mon, 28 May 2018 11:02:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNJ9a-00057V-AX
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:29:43 -0400
+	(envelope-from <clg@kaod.org>) id 1fNJek-0005Vr-2Y
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 11:01:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNJ9Z-0002Ki-An
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:29:42 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:33494)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fNJ9W-0002Iq-Px; Mon, 28 May 2018 10:29:39 -0400
-Received: by mail-qk0-x241.google.com with SMTP id h7-v6so2109995qkm.0;
-	Mon, 28 May 2018 07:29:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=ciWwWP1hIgykExERQLD3CZAzfJcTnvyo84csvXIXtSo=;
-	b=o/dVGpj+h/e39WRulIg9k7Cvx7BWu8OoI5DhNYow+50om6bnpxMGPn/ERqT1j8wuCR
-	fRXzkRWuA/OmD68KnqDFWqqkGbAMAx6jyHzXxLUbmNvsmTNb1Ksmun4zWRdbpxxRzU8S
-	RcyjfGSKlgxJNOoIDGiE+svJ+Go0BzQjF3JqNw2KuTxvQFvBdF/QuwXDBVaoGwtpq1XC
-	8CQVYWy6FiMJYEKj9oGBg5pzDZVP0r4hMHXvUKt18kO+w0u0nDVGBN5XkXd1U96vJ4zU
-	csLYjLC9qXjdMr0gwzne2CXd/2Cu2v3AQU01poTQbtrmEnMEJkP3hTl9VqYG3w2ABTif
-	OZKQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=ciWwWP1hIgykExERQLD3CZAzfJcTnvyo84csvXIXtSo=;
-	b=BRSb8LIfiJYtCKF1eEPhWkPNf29Y2YBuvL8PJyHlLquG1WADwhugngO6BkK1jTh2gk
-	b6elORNEODNGach9Emkjmx0GnS5QGBTW2L6mke/vVs5ZOPwzthO52FOxWkncIoK0IohG
-	VImPIidWNtog+pI2qmsqnuOnuLhrv+a5BR8SE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=ciWwWP1hIgykExERQLD3CZAzfJcTnvyo84csvXIXtSo=;
-	b=YAR7E2g2cVaMoAlm4VdLmtiwmk1jO8IpWpCEt/x/kUnFZwvEYUs6vo2WqeWMlEHP7q
-	ct+xI0jq9slSWeLsHxour5faZKNL9RQoCv0OAne8W9qFu83afLrDle9TwhkLfXQK+z39
-	TCH23r0FVygwxNyE+3u7JVlMjGc9THQDk6r7HnEZlDWfLXR/LwFJXR7QfOCHNxy+5ndP
-	FLWzxfm1Nhzt9xC6vKAsjEPTEz5hjoIAuyV3Bal/DsSXtaj6mtX2jefDcwFGkJTt+0tV
-	x3ZUmvGSkfkYG5pG3IQUl5oKTzhn1BE2B2quQpblqo7LPAMC3FoDaeymbloLE2MmpGZO
-	nMbw==
-X-Gm-Message-State: ALKqPwe60bGAvHbWbi/tyexVnpHiY/fJTwFOlAan0GxyFR8BaPNZDyUg
-	v0HyTHZpwl1BdMLabvk0FdQQ8bWnkm4IAEJPSf0=
-X-Received: by 2002:a37:1314:: with SMTP id
-	d20-v6mr11698766qkh.422.1527517778077; 
-	Mon, 28 May 2018 07:29:38 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:ac8:184d:0:0:0:0:0 with HTTP; Mon, 28 May 2018 07:29:17
-	-0700 (PDT)
-In-Reply-To: <CACPK8Xe5+-zVfoS-g2Te7YOuT5emT-i=JsNDrF52WLVzLERQcw@mail.gmail.com>
+	(envelope-from <clg@kaod.org>) id 1fNJeg-0007zA-Tc
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 11:01:54 -0400
+Received: from 18.mo4.mail-out.ovh.net ([188.165.54.143]:54838)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNJeg-0007vn-JN
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 11:01:50 -0400
+Received: from player796.ha.ovh.net (unknown [10.109.105.25])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id EB4D9174A91
+	for <qemu-devel@nongnu.org>; Mon, 28 May 2018 16:57:43 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: postmaster@kaod.org)
+	by player796.ha.ovh.net (Postfix) with ESMTPSA id AB9B95C00A4;
+	Mon, 28 May 2018 16:57:34 +0200 (CEST)
+To: Joel Stanley <joel@jms.id.au>
 References: <20180528124621.22977-1-joel@jms.id.au>
 	<9959794d-6d3b-b797-bfc8-b548d54378ad@kaod.org>
 	<CACPK8Xe5+-zVfoS-g2Te7YOuT5emT-i=JsNDrF52WLVzLERQcw@mail.gmail.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 28 May 2018 23:59:17 +0930
-X-Google-Sender-Auth: jYpH0nOGOOl3n4Lo_LzHRzMmkW4
-Message-ID: <CACPK8Xc1xwKBoYYQW0Uzd4keBjspw3uasdTx5OyikaxPmZacgw@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
+	<CACPK8Xc1xwKBoYYQW0Uzd4keBjspw3uasdTx5OyikaxPmZacgw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d390376b-1c0d-9fa1-d58e-fbecf127c5a7@kaod.org>
+Date: Mon, 28 May 2018 16:57:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <CACPK8Xc1xwKBoYYQW0Uzd4keBjspw3uasdTx5OyikaxPmZacgw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 1793840030087023531
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheeigdekvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-arm] [PATCH] aspeed_scu: Implement RNG register
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 188.165.54.143
+Subject: Re: [Qemu-devel] [PATCH] aspeed_scu: Implement RNG register
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u1KrfJK+xRlr
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DM8gF0shdF+X
 
-On 28 May 2018 at 23:33, Joel Stanley <joel@jms.id.au> wrote:
-> On 28 May 2018 at 23:17, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->> Hello Joel,
+On 05/28/2018 04:29 PM, Joel Stanley wrote:
+> On 28 May 2018 at 23:33, Joel Stanley <joel@jms.id.au> wrote:
+>> On 28 May 2018 at 23:17, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>>> Hello Joel,
+>>>
+>>> On 05/28/2018 02:46 PM, Joel Stanley wrote:
+>>>> The ASPEED SoCs contain a single register that returns random data w=
+hen
+>>>> read. This models that register so that guests can use it.
+>>>>
+>>>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>>>> ---
+>>>>  hw/misc/aspeed_scu.c | 19 +++++++++++++++++++
+>>>>  1 file changed, 19 insertions(+)
+>>>>
+>>>> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+>>>> index 5e6d5744eeca..8fa0cecf0fa1 100644
+>>>> --- a/hw/misc/aspeed_scu.c
+>>>> +++ b/hw/misc/aspeed_scu.c
+>>>> @@ -16,6 +16,7 @@
+>>>>  #include "qapi/visitor.h"
+>>>>  #include "qemu/bitops.h"
+>>>>  #include "qemu/log.h"
+>>>> +#include "crypto/random.h"
+>>>>  #include "trace.h"
+>>>>
+>>>>  #define TO_REG(offset) ((offset) >> 2)
+>>>> @@ -154,6 +155,18 @@ static const uint32_t ast2500_a1_resets[ASPEED_=
+SCU_NR_REGS] =3D {
+>>>>       [BMC_DEV_ID]      =3D 0x00002402U
+>>>>  };
+>>>>
+>>>> +static uint32_t aspeed_scu_get_random(void)
+>>>> +{
+>>>> +    Error *err =3D NULL;
+>>>> +    uint32_t num;
+>>>> +
+>>>> +    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
+>>>> +        error_report_err(err);
+>>>> +    }
+>>>> +
+>>>> +    return num;
+>>>> +}
+>>>> +
+>>>>  static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsign=
+ed size)
+>>>>  {
+>>>>      AspeedSCUState *s =3D ASPEED_SCU(opaque);
+>>>> @@ -167,6 +180,9 @@ static uint64_t aspeed_scu_read(void *opaque, hw=
+addr offset, unsigned size)
+>>>>      }
+>>>>
+>>>>      switch (reg) {
+>>>> +    case RNG_DATA:
+>>>> +        return aspeed_scu_get_random();
+>>>
+>>> may be we could test bit 1 of RNG_CTRL to check if it is enabled or n=
+ot.
 >>
->> On 05/28/2018 02:46 PM, Joel Stanley wrote:
->>> The ASPEED SoCs contain a single register that returns random data when
->>> read. This models that register so that guests can use it.
->>>
->>> Signed-off-by: Joel Stanley <joel@jms.id.au>
->>> ---
->>>  hw/misc/aspeed_scu.c | 19 +++++++++++++++++++
->>>  1 file changed, 19 insertions(+)
->>>
->>> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
->>> index 5e6d5744eeca..8fa0cecf0fa1 100644
->>> --- a/hw/misc/aspeed_scu.c
->>> +++ b/hw/misc/aspeed_scu.c
->>> @@ -16,6 +16,7 @@
->>>  #include "qapi/visitor.h"
->>>  #include "qemu/bitops.h"
->>>  #include "qemu/log.h"
->>> +#include "crypto/random.h"
->>>  #include "trace.h"
->>>
->>>  #define TO_REG(offset) ((offset) >> 2)
->>> @@ -154,6 +155,18 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU=
-_NR_REGS] =3D {
->>>       [BMC_DEV_ID]      =3D 0x00002402U
->>>  };
->>>
->>> +static uint32_t aspeed_scu_get_random(void)
->>> +{
->>> +    Error *err =3D NULL;
->>> +    uint32_t num;
->>> +
->>> +    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
->>> +        error_report_err(err);
->>> +    }
->>> +
->>> +    return num;
->>> +}
->>> +
->>>  static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned =
-size)
->>>  {
->>>      AspeedSCUState *s =3D ASPEED_SCU(opaque);
->>> @@ -167,6 +180,9 @@ static uint64_t aspeed_scu_read(void *opaque, hwadd=
-r offset, unsigned size)
->>>      }
->>>
->>>      switch (reg) {
->>> +    case RNG_DATA:
->>> +        return aspeed_scu_get_random();
->>
->> may be we could test bit 1 of RNG_CTRL to check if it is enabled or not.
->
-> The RNG is enabled by default, and I didn't find any software that
-> disables it, but it can't hurt to have that check.
+>> The RNG is enabled by default, and I didn't find any software that
+>> disables it, but it can't hurt to have that check.
+>=20
+> I did some testing on hardware, and the rng still outputs a different
+> number each time I ask for one regardless of the state of the enabled
+> bit.
+>=20
+> How should we model that?
+>=20
 
-I did some testing on hardware, and the rng still outputs a different
-number each time I ask for one regardless of the state of the enabled
-bit.
+I confirm that the HW doesn't really care about the enabled bit.
+Let's ignore it then ?
 
-How should we model that?
+C.=20

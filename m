@@ -1,90 +1,90 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2662693wre;
-        Mon, 28 May 2018 09:47:29 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKJnPijP3xKNrUO0p4rso5ejA7Ui0cOjJ9/hUyUVVQ0HhBMeYtteQMIDeC9CAlfPlrliUX4
-X-Received: by 2002:a37:4bc5:: with SMTP id y188-v6mr12097178qka.309.1527526049791;
-        Mon, 28 May 2018 09:47:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527526049; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2675796wre;
+        Mon, 28 May 2018 10:02:48 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIJm88Xg4jhoySjPxwb0AObde1k51PMvofZfSKNd7TxaBqeeWVPiiMpramLlj9mm8YdB/rN
+X-Received: by 2002:a37:7346:: with SMTP id o67-v6mr4396045qkc.137.1527526968644;
+        Mon, 28 May 2018 10:02:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527526968; cv=none;
         d=google.com; s=arc-20160816;
-        b=u4rLWMLe9AmEwFsbm8HVVJg4SZDft48s+K3u8m7Sv/4zixKPPNDbjv2vJ1CG581yQ8
-         VlY5Eg2NeYnGZWKo1Z+49xfPnZVmvDjggVCBEyxFv2Sy/wbg7mVWiBUWpq36SXcShc3r
-         de+Fq7R8rfzlRLmYNGDuab8MiyRtMU2jCuHmHht10pmD9PcCvA5rfz+vZ2i99kyYaZaN
-         ycE3tYKhdg8rgZtIWcTp69Et6qs6db80HJVeV892J6CePGHLgx6eelVcMYmfKJF+Ox6u
-         4oZo6JrEjrJLcNVN870oaWJDtv+Oksg7e+7eMFcsAafe7xI+ClmTEvnOzCnD7HY+O1Ix
-         iXpg==
+        b=nYS/AD2C+icx3/m186AGcVX1c8ooel+zgk0cGXOfa8WXF461n2jhSGeyLXhjYyUkTV
+         c93IItbrO7YLURbZ0340mbPTUAEME03pK7SIdb+Khcot/SYOThr8CONWVdvE0ojfrLkT
+         mn+ps3ap8wHhAofYpDmuwq5gL2E6KFgbTZDW5Euc4u4BCx8Bt/GKcfpsKvtUK3jSgsaH
+         IFxv5m6g7WeokTBPTL+SPmifHrcV7NfRRAjsvsRFx3zz8wZgXi7oh9aagnEgg5x+Ol7j
+         ygWfmZ59SFNw0npJnph0HP6vk4u+Dp4SVc8zp6RNwMR3JVmzcPk0M9Jcxm1r3TfZLFM7
+         3k/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=yA5c1caq+UVH/LJXL6YFxiid7zOWdHgurPrKE795+nQ=;
-        b=G1BUorKJvSamy03+jk5VKR9DdvsPlV5LdZw0uT1fC9AIoWYFe9SZ6kKg654gIVRgM4
-         0QT+QukFZZUrYJXHa+1Ii7fC2mxRmO9q1AcVjclXRAVG0X7rCrVJentlGWhH7qJ3ZVKU
-         2AD/4iP7sZ4wAS/NpEwdnuNQ3tnoZae+MtaW2uiukx0cpSMzDQ+1cfmpzvmIaG/TD7tk
-         fpzgrMuhbvRwSzl9INnrzgmFZAYDAc3LWBokv1SuZrMA9Pc03xTMV3YV6kKSUxq1+wO2
-         u+AfToknWOBI7HpJL0jbcaaZD5k4oPWaAwHCBsw33eeTeMyiixfxMkOLJ2oS930Lczff
-         YN9A==
+        bh=+8LqV6Y+x0k9GNqa1oo6QYBGArHpJ5uLrtnZE8IdObE=;
+        b=SO2aEd6GpVs4bV5u8Aq/t5Y2t8PRuMW2V8xvqTsJnvtUP2rG7bFsnR57CU//pqxYgc
+         njMx1sjuvyut2PsC0r2U85VkDrH5j9t23heqOb7uKg0Jq01LMWBdi80JB7mFqpGFFHm+
+         9b0MuRHme6qHULN5VvUv/whQMWol5C/BXbe4c9P8GM+Vj7miojyam31l94gl9xLVuyDJ
+         mjo3K+yYWBRBJQkmTu71HpdrfFpCq21cJCmTrYI+XW2qA/kmF31OXTApCZ0VH45tgbG0
+         fIaiatUCgQqqtheT+AAwxqF0k+8BgQhk8W5TOurMDgVxq4JhtSxwcVNCw/aYEHjihHiT
+         Zj+w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 50-v6si8130656qvi.158.2018.05.28.09.47.29
+        by mx.google.com with ESMTPS id y9-v6si2835215qtb.265.2018.05.28.10.02.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 09:47:29 -0700 (PDT)
+        Mon, 28 May 2018 10:02:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57172 helo=lists.gnu.org)
+Received: from localhost ([::1]:57199 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNLIv-0001wJ-9t
-	for alex.bennee@linaro.org; Mon, 28 May 2018 12:47:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52815)
+	id 1fNLXk-0003sN-6R
+	for alex.bennee@linaro.org; Mon, 28 May 2018 13:02:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fNLIn-0001wE-P1
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 12:47:22 -0400
+	(envelope-from <drjones@redhat.com>) id 1fNLXW-0003s3-G8
+	for qemu-arm@nongnu.org; Mon, 28 May 2018 13:02:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fNLIj-0004Zd-Nv
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 12:47:21 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33848 helo=mx1.redhat.com)
+	(envelope-from <drjones@redhat.com>) id 1fNLXT-0006Re-5T
+	for qemu-arm@nongnu.org; Mon, 28 May 2018 13:02:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55674 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fNLIj-0004ZP-Gb; Mon, 28 May 2018 12:47:17 -0400
+	id 1fNLXS-0006RH-Vz; Mon, 28 May 2018 13:02:31 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C77A07C6C4;
-	Mon, 28 May 2018 16:47:15 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 43B094070481;
+	Mon, 28 May 2018 17:02:30 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3B8002024CA1;
-	Mon, 28 May 2018 16:47:14 +0000 (UTC)
-Date: Mon, 28 May 2018 18:47:12 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B17502026609;
+	Mon, 28 May 2018 17:02:28 +0000 (UTC)
+Date: Mon, 28 May 2018 19:02:26 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20180528164712.y5rjhu7xixqkjgoe@kamzik.brq.redhat.com>
+Message-ID: <20180528170226.3ynif3r34yejf7tp@kamzik.brq.redhat.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-3-shameerali.kolothum.thodi@huawei.com>
+	<20180516152026.2920-6-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20180516152026.2920-3-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20180516152026.2920-6-shameerali.kolothum.thodi@huawei.com>
 User-Agent: Mutt/1.6.0.1 (2016-04-01)
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Mon, 28 May 2018 16:47:15 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Mon, 28 May 2018 16:47:15 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.7]);
+	Mon, 28 May 2018 17:02:30 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Mon, 28 May 2018 17:02:30 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 2/6] hw/arm/virt: Enable
- dynamic generation of guest RAM memory regions
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 5/6] hw/arm: ACPI SRAT changes
+ to accommodate non-contiguous mem
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,109 +102,70 @@ Cc: peter.maydell@linaro.org, zhaoshenglong@huawei.com, linuxarm@huawei.com,
 	jonathan.cameron@huawei.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cQBjGfXtBvdf
+X-TUID: KkhDW9pj1Gcg
 
-On Wed, May 16, 2018 at 04:20:22PM +0100, Shameer Kolothum wrote:
-> Register ram_memory_region_init notifier to allocate memory region
-> from system memory.
+On Wed, May 16, 2018 at 04:20:25PM +0100, Shameer Kolothum wrote:
+> This is in preparation for the next patch where initial ram is split
+> into a non-pluggable chunk and a pc-dimm modeled mem if  the vaild
+> iova regions are non-contiguous.
 > 
-> Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/arm/virt.c         | 28 ++++++++++++++++++++++------
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 23 insertions(+), 6 deletions(-)
+>  hw/arm/virt-acpi-build.c | 24 ++++++++++++++++++++----
+>  1 file changed, 20 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 94dcb12..05fcb62 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1171,6 +1171,19 @@ void virt_machine_done(Notifier *notifier, void *data)
->      virt_build_smbios(vms);
->  }
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index c7c6a57..8d17b40 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -488,7 +488,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      AcpiSratProcessorGiccAffinity *core;
+>      AcpiSratMemoryAffinity *numamem;
+>      int i, srat_start;
+> -    uint64_t mem_base;
+> +    uint64_t mem_base, mem_sz, mem_len;
+>      MachineClass *mc = MACHINE_GET_CLASS(vms);
+>      const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
 >  
-> +static void virt_ram_memory_region_init(Notifier *notifier, void *data)
-> +{
-> +    MemoryRegion *sysmem = get_system_memory();
-> +    MemoryRegion *ram = g_new(MemoryRegion, 1);
-> +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-> +                                         ram_memory_region_init);
-> +    MachineState *machine = MACHINE(vms);
-> +
-> +    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> +                                         machine->ram_size);
-> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-> +}
-> +
->  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->  {
->      uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
-> @@ -1204,7 +1217,6 @@ static void machvirt_init(MachineState *machine)
->      MemoryRegion *sysmem = get_system_memory();
->      MemoryRegion *secure_sysmem = NULL;
->      int n, virt_max_cpus;
-> -    MemoryRegion *ram = g_new(MemoryRegion, 1);
->      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+> @@ -505,12 +505,28 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          core->flags = cpu_to_le32(1);
+>      }
 >  
->      /* We can probe only here because during property set
-> @@ -1361,10 +1373,6 @@ static void machvirt_init(MachineState *machine)
->      fdt_add_timer_nodes(vms);
->      fdt_add_cpu_nodes(vms);
->  
-> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> -                                         machine->ram_size);
-> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-> -
->      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
->  
->      create_gic(vms, pic);
-> @@ -1405,15 +1413,23 @@ static void machvirt_init(MachineState *machine)
->      vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
->      vms->bootinfo.get_dtb = machvirt_dtb;
->      vms->bootinfo.firmware_loaded = firmware_loaded;
-> +
-> +    /* Register notifiers. They are executed in registration reverse order */
->      arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
->  
->      /*
->       * arm_load_kernel machine init done notifier registration must
->       * happen before the platform_bus_create call. In this latter,
->       * another notifier is registered which adds platform bus nodes.
-> -     * Notifiers are executed in registration reverse order.
->       */
->      create_platform_bus(vms, pic);
-> +
-> +    /*
-> +     * Register memory region notifier last as this has to be executed
-> +     * first.
-> +     */
-> +    vms->ram_memory_region_init.notify = virt_ram_memory_region_init;
-> +    qemu_add_machine_init_done_notifier(&vms->ram_memory_region_init);
+> -    mem_base = vms->memmap[VIRT_MEM].base;
+> +    mem_base = vms->bootinfo.loader_start;
+> +    mem_sz = vms->bootinfo.loader_start;
 
-I realize we've been slow to get to this for reviewing, but a lot has
-changed here since this patch was written. virt now only has a single
-machine done notifier. On rebase we should attempt to integrate with
-that one rather than introduce a new one.
+mem_sz = vms->bootinfo.ram_size;
 
-Thanks,
-drew
+Assuming the DT generator was correct, meaning bootinfo.ram_size will
+be the size of the non-pluggable dimm.
 
 
->  }
+>      for (i = 0; i < nb_numa_nodes; ++i) {
+>          numamem = acpi_data_push(table_data, sizeof(*numamem));
+> -        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
+> +        mem_len = MIN(numa_info[i].node_mem, mem_sz);
+> +        build_srat_memory(numamem, mem_base, mem_len, i,
+>                            MEM_AFFINITY_ENABLED);
+> -        mem_base += numa_info[i].node_mem;
+> +        mem_base += mem_len;
+> +        mem_sz -= mem_len;
+> +        if (!mem_sz) {
+> +            break;
+> +        }
+> +    }
+> +
+> +    /* Create table for initial pc-dimm ram, if any */
+> +    if (vms->bootinfo.dimm_mem) {
+> +        numamem = acpi_data_push(table_data, sizeof(*numamem));
+> +        build_srat_memory(numamem, vms->bootinfo.dimm_mem->base,
+> +                          vms->bootinfo.dimm_mem->size,
+> +                          vms->bootinfo.dimm_mem->node,
+> +                          MEM_AFFINITY_ENABLED);
+> +
+>      }
 >  
->  static bool virt_get_secure(Object *obj, Error **errp)
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index ba0c1a4..fc24f3a 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -91,6 +91,7 @@ typedef struct {
->  typedef struct {
->      MachineState parent;
->      Notifier machine_done;
-> +    Notifier ram_memory_region_init;
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
+>      build_header(linker, table_data, (void *)(table_data->data + srat_start),
 > -- 
 > 2.7.4
 > 

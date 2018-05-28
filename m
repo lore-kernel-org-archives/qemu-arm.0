@@ -1,103 +1,107 @@
-Received: by 10.28.71.27 with SMTP id u27csp1606196wma;
-        Wed, 7 Feb 2018 21:54:17 -0800 (PST)
-X-Google-Smtp-Source: AH8x226vIhmBJ1WnCiyP9WMmgBhdn2qMfWVB6Np+1spALD97aU4OX/TodwHocrqzO3YpuKH7Mvkx
-X-Received: by 10.13.245.193 with SMTP id e184mr5524674ywf.410.1518069257090;
-        Wed, 07 Feb 2018 21:54:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518069257; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2961889wre;
+        Mon, 28 May 2018 16:34:48 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIm7rKzZAoTARHIRo0bLtoFzBi+StUUzZjjCrJQlbd4zlI/Mm1+I7uhCDtKNRYPK0yR/mZ1
+X-Received: by 2002:ac8:2acc:: with SMTP id c12-v6mr13735002qta.389.1527550487925;
+        Mon, 28 May 2018 16:34:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527550487; cv=none;
         d=google.com; s=arc-20160816;
-        b=Un5m2vNcY0qu4vjq0nHR6aylk9zWBUpSrjTmXd8zxprVVhOelGhSqfedevlh10Diq2
-         iAWG+hJmRkcAoxnFobmBOn65DCiT/P52al+FlzaxdGD9NMUUcIiITNIL/ls12hi8xKMb
-         H+z9eK5+4Q7Etibt6g0YfnstpY8Rt5vKkHSAc5RlnmsD5As19yjo3U3Pyn/WDkQibAS1
-         TUUVPljiZ97Lr9AGXiw9T+LCYvMl9OtyDs8ub8HR+hIckoFfOClIyBBciGn34we48d96
-         siYhkHRPxHV8/B1UgckHdLvi42/xgDuWg41DPnvAzRcaegDzVBd9NPnfYlcx6BFNKbM4
-         ELQQ==
+        b=rK4gtAQTbJPQSB8Sf4G6/kezo3OhtY3zxLKmjXShq2gfeWhmDFXRuC5Wp2dSgFUMuw
+         CV57bVc5PaICDsskLYmp7hIj/Dg8jtcFK/f3b45Ngzq/T70l4FSMOJ57M5Lpx3DK+cuR
+         wN1/cdtlqU1doVQHshERShr33lfg9mp7z9mEci1jsQv7MTnz3HA1RkQFU8aBzS9/uGyr
+         I8Bl6ZQTk96DXlMK4Q5/MfNCJ69kZLOLGrar+EPSuxTAMKuI2B/iWlhEybztF1S0uhfI
+         iPIMqD03i+oVgmzbWBPvzYA5GaEKoCmK8Z7KOtVfUZhjYkbErHSFVPFsoVrK32Q79nQZ
+         ePFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=gsI41yUflBN/sQ70WetF37+jFA+IW07JvL0bXId/0rQ=;
-        b=KKqghnHu4NiZSZAMnSsgW+NmKuOtlq0teKHqiVhK7O3wgADoyo8mIDfJCVYhLj1Bov
-         kSdiyfCd9wKkGAXpsTH1VwPYcZSeI86JxqL/IkjuQGBb0uVwMbMJEkIpQ1+B86F4SfaG
-         MfRsWj5Y9hFarI5KSOE2fIVBJKma5d0anaVmLeY7CkemFOGwdOSKq4pfY559KEce3T58
-         vFrqpsG7vPYPb7dPWUT95TGnFA9ZBdZqEnGJk46UOzW3/fN+0jtYjC/t7o0igQt6e78y
-         Fn+J20YZkHqKvkh/n+0RD7YW6T3jGqu6C6Y7Vp2pRY48JNTQggkLSN539EhX5ZawWa2b
-         +WmA==
+        bh=Li1wVyuiQXKmAFo26FEcGMtBaKBErHDK52LJ93ejEyE=;
+        b=EY8EZOKULNsvhbKsRUJ2kLk/H5f+7CricJuFG2XsiaDDR2F/V9f2JeBkwrpswjDzIw
+         9CFeOcICM2z5fCjw/cV4Aof3beMEz9En4CyflgozI/dRUGGf925oT8OTRkSAZdRxLK1J
+         y9z6gD4guXJc3Fcx/YhLCNedpAphi4/pVxjHEZRy3QvIWWPC4WMZ5Ouu29AR56/ue6Sv
+         YH4Thm58mDMm6uBifEcxMdP7ZM/ezvMeF+N0s9jXjH9g0y1R8qV5Ak7KrBsF7eHgR/xS
+         hdMPUFHdqCmllVz7trlDZe7QH5lYXIkhVPmRvsoh7bAv5bu62ocellI4wIutZ6UDrF4z
+         7eeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ohQr8nhY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jz04blsz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k30si534111ywh.539.2018.02.07.21.54.16
+        by mx.google.com with ESMTPS id n1-v6si2883690qvo.72.2018.05.28.16.34.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Feb 2018 21:54:17 -0800 (PST)
+        Mon, 28 May 2018 16:34:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ohQr8nhY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jz04blsz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:47658 helo=lists.gnu.org)
+Received: from localhost ([::1]:58199 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejfA0-0003Y9-Ir
-	for alex.bennee@linaro.org; Thu, 08 Feb 2018 00:54:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50630)
+	id 1fNRf5-0002ww-Bz
+	for alex.bennee@linaro.org; Mon, 28 May 2018 19:34:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <penberg@gmail.com>) id 1ejf7E-0001sc-3u
-	for qemu-devel@nongnu.org; Thu, 08 Feb 2018 00:51:25 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNRYr-0007KQ-FX
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 19:28:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <penberg@gmail.com>) id 1ejf7C-0000QL-S7
-	for qemu-devel@nongnu.org; Thu, 08 Feb 2018 00:51:24 -0500
-Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36227)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNRYp-0001E9-FW
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 19:28:21 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:35512)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <penberg@gmail.com>)
-	id 1ejf7C-0000Pq-GM; Thu, 08 Feb 2018 00:51:22 -0500
-Received: by mail-lf0-x243.google.com with SMTP id t79so4722471lfe.3;
-	Wed, 07 Feb 2018 21:51:22 -0800 (PST)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNRYp-0001Dv-8y; Mon, 28 May 2018 19:28:19 -0400
+Received: by mail-qk0-x244.google.com with SMTP id d130-v6so4782707qkc.2;
+	Mon, 28 May 2018 16:28:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=gsI41yUflBN/sQ70WetF37+jFA+IW07JvL0bXId/0rQ=;
-	b=ohQr8nhYx3cYzMZd1grGvIpmbPD8W+G0s3IzRJWG9Q5pvn0MAkYhEdxWdkKz/F3oh7
-	8FpGZ4l1lfjsrG6JAeEAoSDP77Hm21zIMcf6Yn7nY4pMe7XL267SCUDqr+Jrw9P00fNF
-	TzXRW96ctpUB03MzHPA6ga3uO/fWSTJxoEnUfUqT06V/8HXpgjEFxMn7OLC/NsS3RAbw
-	OrqZMIFaD/NtTo7TJnaOm7j1IoAzGR/mh/b/qjpxqmI4VWi71OmT5WZpYl0QsCc2Pfh+
-	tu4UxNqwlw/fjieCoF1dQwjgIR3JZEX/ch5uG2BF+DUGivPuUsLFqa3Z810VjEVKLcd3
-	/5tQ==
+	bh=Li1wVyuiQXKmAFo26FEcGMtBaKBErHDK52LJ93ejEyE=;
+	b=Jz04blsz0nokPxPZZIpXNiodIJ5X3LR1L/ZxtKGkt90YvdR5811omRm9U5RzMVvgV5
+	+V6/R6oWZj27zM2xJkaBhMQ+NBrr50WYY34lG7uKFvYa2rwvxuOppyVRmsIRVOJtLs1v
+	t7QOPkTNVZwipwzzMIuUNLPnUqbvtjVh729Glm422tXjEgJXrwGFZATa+dXEijKNxSdR
+	wzGILbTB7AuLYNmjWnw+KV8tIAhZmF+a5uNtWLIxR4xmmJt6sYXLu0fDcOIG97xfZZcN
+	kSPbeA5hmSoD8RzeGf2lyY615lViL1mQwp8yG5B6UhaXqdMJi55WwrTLOLZHnArthAWp
+	n9YA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=gsI41yUflBN/sQ70WetF37+jFA+IW07JvL0bXId/0rQ=;
-	b=Xqnar8FpBPojt7oWBRN0iP9cmL23/x7yUSp8Kxj6zagvaavASrn8/y1IY/whYQ2PA9
-	bK9y09ifG6LqZHhP06T6FNGh3V9UsFBD4TCjlmff8/4owCoIESITa546k0s/6EpcnGVE
-	Fna4sCpsvAtU8x13F8PSyVNO3Zf02tdLGVkZuyLWVLzUIdIYAvNpoqOqZ+TPun+k+NZg
-	H3YrfhQP4OaQ6DGkkaUEIFJo5KldOdwaDhJemhvTreeJ+QtJDYDuSM7tsjaw75AKmIuV
-	GX4PASMdNlz1WlHzMcuEQQUeJ+9fkX+mM4/8ZZRBY0fpSyF8FhTna1qHMTnTJIc7+mT0
-	FJ5g==
-X-Gm-Message-State: APf1xPCpo4lfWyBYMAANhSWsmy0y/39kGuVgaitYQ+5gb69aYlShtKpR
-	+hUK20r2LrnbRkh4y8Nys3v1d0Nm
-X-Received: by 10.25.216.233 with SMTP id r102mr6127077lfi.139.1518069080839; 
-	Wed, 07 Feb 2018 21:51:20 -0800 (PST)
-Received: from localhost.localdomain (81-175-247-183.bb.dnainternet.fi.
-	[81.175.247.183])
-	by smtp.gmail.com with ESMTPSA id u24sm222525lje.5.2018.02.07.21.51.19
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 07 Feb 2018 21:51:20 -0800 (PST)
-From: Pekka Enberg <penberg@iki.fi>
-To: qemu-devel@nongnu.org
-Date: Thu,  8 Feb 2018 07:50:38 +0200
-Message-Id: <20180208055039.24666-3-penberg@iki.fi>
-X-Mailer: git-send-email 2.14.3
-In-Reply-To: <20180208055039.24666-1-penberg@iki.fi>
-References: <20180208055039.24666-1-penberg@iki.fi>
+	bh=Li1wVyuiQXKmAFo26FEcGMtBaKBErHDK52LJ93ejEyE=;
+	b=W/g6Q/URDv3drpABkqGmYGIek1bQFYKxwLT4C0OygPLwCDsO3YSwPvqFCs3eUVWifl
+	WQ7FDxG6y16zJw9RSpp2PcIQQdSSkQqtC3obKpoi2Dd83vTIVLwILlvL14g8u6Q8+8nI
+	bKwRyV8IzDZV2vlGBOAsveCMnCIotRvXc6QxHxgEzfIIGTx2eoMDKgO5kWE2XpiiQver
+	zUwisMqh3PxThhEktOHFPSUF7HZ6OHx75esJwZu1pWT533ID1xb+/Ep3p94gNLwB2PjI
+	RkNez6Ihxp8lnzz7d3gue7SNlGPcP4eiAB9Xjgmtnp0xN5tAjJ7Gg82UfOgTjYFwEOUY
+	uWvw==
+X-Gm-Message-State: ALKqPwcGEcNhGvtiCIK9iTlL9WI4SS39RO/A7Bx1mcHsymVokI78vZEm
+	Y1imoNisZUaqjJB9iSnnKG4=
+X-Received: by 2002:a37:6216:: with SMTP id
+	w22-v6mr13124659qkb.312.1527550098504; 
+	Mon, 28 May 2018 16:28:18 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	s19-v6sm23756182qki.62.2018.05.28.16.28.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 May 2018 16:28:18 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Thomas Huth <thuth@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Date: Mon, 28 May 2018 20:27:09 -0300
+Message-Id: <20180528232719.4721-12-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180528232719.4721-1-f4bug@amsat.org>
+References: <20180528232719.4721-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::243
-Subject: [Qemu-devel] [PATCH v1 2/3] raspi: Raspberry Pi 3 support
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-devel] [PATCH v4 11/21] hw: Do not include
+ "exec/address-spaces.h" if it is not necessary
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,125 +113,399 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	Pekka Enberg <penberg@iki.fi>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Palmer Dabbelt <palmer@sifive.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>, qemu-trivial@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Jason Wang <jasowang@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+	Thomas Huth <huth@tuxfamily.org>, Paul Burton <paul.burton@mips.com>,
+	Michael Clark <mjc@sifive.com>, "open list:ARM" <qemu-arm@nongnu.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bdodsQ04fUWm
+X-TUID: 31RMdwHOhaL8
 
-This patch adds Raspberry Pi 3 support to hw/arm/raspi.c. The
-differences to Pi 2 are:
+Code change produced with:
+    $ git grep '#include "exec/address-spaces.h"' hw include/hw | \
+      cut -d: -f-1 | \
+      xargs egrep -L "(get_system_|address_space_)" | \
+      xargs sed -i.bak '/#include "exec\/address-spaces.h"/d'
 
- - Firmware address
- - Board ID
- - Board revision
-
-The CPU is different too, but that's going to be configured as part of
-the machine default CPU when we introduce a new machine type.
-
-The patch was written from scratch by me but the logic is similar to
-Zoltán Baldaszti's previous work, which I used as a reference (with
-permission from the author):
-
-  https://github.com/bztsrc/qemu-raspi3
-
-Signed-off-by: Pekka Enberg <penberg@iki.fi>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/raspi.c | 31 +++++++++++++++++++++----------
- 1 file changed, 21 insertions(+), 10 deletions(-)
+ include/hw/arm/allwinner-a10.h       | 1 -
+ include/hw/arm/bcm2835_peripherals.h | 1 -
+ include/hw/display/bcm2835_fb.h      | 1 -
+ include/hw/dma/bcm2835_dma.h         | 1 -
+ include/hw/misc/bcm2835_mbox.h       | 1 -
+ include/hw/misc/bcm2835_property.h   | 1 -
+ include/hw/sh4/sh_intc.h             | 1 -
+ include/hw/virtio/virtio-access.h    | 1 -
+ hw/arm/bcm2836.c                     | 1 -
+ hw/arm/xlnx-zcu102.c                 | 1 -
+ hw/block/onenand.c                   | 1 -
+ hw/block/pflash_cfi01.c              | 1 -
+ hw/block/pflash_cfi02.c              | 1 -
+ hw/char/mcf_uart.c                   | 1 -
+ hw/char/serial.c                     | 1 -
+ hw/char/sh_serial.c                  | 1 -
+ hw/core/loader-fit.c                 | 1 -
+ hw/core/platform-bus.c               | 1 -
+ hw/display/sm501.c                   | 1 -
+ hw/m68k/mcf5206.c                    | 1 -
+ hw/m68k/mcf_intc.c                   | 1 -
+ hw/misc/arm_integrator_debug.c       | 1 -
+ hw/net/mcf_fec.c                     | 1 -
+ hw/net/ne2000-isa.c                  | 1 -
+ hw/pci-host/versatile.c              | 1 -
+ hw/riscv/riscv_htif.c                | 1 -
+ hw/sh4/sh7750.c                      | 1 -
+ hw/timer/sh_timer.c                  | 1 -
+ 28 files changed, 28 deletions(-)
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index c24a4a1b14..66fe10e376 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -5,6 +5,9 @@
-  * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-  *
-+ * Raspberry Pi 3 emulation Copyright (c) 2018 Zoltán Baldaszti
-+ * Upstream code cleanup (c) 2018 Pekka Enberg 
-+ *
-  * This code is licensed under the GNU GPLv2 and later.
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index 6b32a99e21..efb8fc8123 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -11,7 +11,6 @@
+ #include "hw/ide/ahci.h"
+ 
+ #include "sysemu/sysemu.h"
+-#include "exec/address-spaces.h"
+ 
+ 
+ #define AW_A10_PIC_REG_BASE     0x01c20400
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index 122b286de7..f5b193f670 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -12,7 +12,6 @@
+ #define BCM2835_PERIPHERALS_H
+ 
+ #include "qemu-common.h"
+-#include "exec/address-spaces.h"
+ #include "hw/sysbus.h"
+ #include "hw/char/bcm2835_aux.h"
+ #include "hw/display/bcm2835_fb.h"
+diff --git a/include/hw/display/bcm2835_fb.h b/include/hw/display/bcm2835_fb.h
+index 9a12d7afa2..ae0a3807f2 100644
+--- a/include/hw/display/bcm2835_fb.h
++++ b/include/hw/display/bcm2835_fb.h
+@@ -12,7 +12,6 @@
+ #define BCM2835_FB_H
+ 
+ #include "hw/sysbus.h"
+-#include "exec/address-spaces.h"
+ #include "ui/console.h"
+ 
+ #define TYPE_BCM2835_FB "bcm2835-fb"
+diff --git a/include/hw/dma/bcm2835_dma.h b/include/hw/dma/bcm2835_dma.h
+index 75312e2e17..60138f4d31 100644
+--- a/include/hw/dma/bcm2835_dma.h
++++ b/include/hw/dma/bcm2835_dma.h
+@@ -7,7 +7,6 @@
+ #define BCM2835_DMA_H
+ 
+ #include "qemu-common.h"
+-#include "exec/address-spaces.h"
+ #include "hw/sysbus.h"
+ 
+ typedef struct {
+diff --git a/include/hw/misc/bcm2835_mbox.h b/include/hw/misc/bcm2835_mbox.h
+index f4e9ff9ef6..7e8f3ce86d 100644
+--- a/include/hw/misc/bcm2835_mbox.h
++++ b/include/hw/misc/bcm2835_mbox.h
+@@ -8,7 +8,6 @@
+ 
+ #include "bcm2835_mbox_defs.h"
+ #include "hw/sysbus.h"
+-#include "exec/address-spaces.h"
+ 
+ #define TYPE_BCM2835_MBOX "bcm2835-mbox"
+ #define BCM2835_MBOX(obj) \
+diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_property.h
+index edcab603ce..11be0dbeac 100644
+--- a/include/hw/misc/bcm2835_property.h
++++ b/include/hw/misc/bcm2835_property.h
+@@ -7,7 +7,6 @@
+ #define BCM2835_PROPERTY_H
+ 
+ #include "hw/sysbus.h"
+-#include "exec/address-spaces.h"
+ #include "net/net.h"
+ #include "hw/display/bcm2835_fb.h"
+ 
+diff --git a/include/hw/sh4/sh_intc.h b/include/hw/sh4/sh_intc.h
+index 7913bc48a2..fbcee94ed7 100644
+--- a/include/hw/sh4/sh_intc.h
++++ b/include/hw/sh4/sh_intc.h
+@@ -3,7 +3,6 @@
+ 
+ #include "qemu-common.h"
+ #include "hw/irq.h"
+-#include "exec/address-spaces.h"
+ 
+ typedef unsigned char intc_enum;
+ 
+diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
+index 2e92074bd1..bdf58f3119 100644
+--- a/include/hw/virtio/virtio-access.h
++++ b/include/hw/virtio/virtio-access.h
+@@ -18,7 +18,6 @@
+ 
+ #include "hw/virtio/virtio.h"
+ #include "hw/virtio/virtio-bus.h"
+-#include "exec/address-spaces.h"
+ 
+ #if defined(TARGET_PPC64) || defined(TARGET_ARM)
+ #define LEGACY_VIRTIO_IS_BIENDIAN 1
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 3c4b44a53e..6805a7d7c8 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -15,7 +15,6 @@
+ #include "hw/arm/bcm2836.h"
+ #include "hw/arm/raspi_platform.h"
+ #include "hw/sysbus.h"
+-#include "exec/address-spaces.h"
+ 
+ /* Peripheral base address seen by the CPU */
+ #define BCM2836_PERI_BASE       0x3F000000
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index b126cf148b..c70278c8c1 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -22,7 +22,6 @@
+ #include "hw/arm/xlnx-zynqmp.h"
+ #include "hw/boards.h"
+ #include "qemu/error-report.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/log.h"
+ #include "sysemu/qtest.h"
+ 
+diff --git a/hw/block/onenand.c b/hw/block/onenand.c
+index ed77f859e9..ab0c7ea1b3 100644
+--- a/hw/block/onenand.c
++++ b/hw/block/onenand.c
+@@ -27,7 +27,6 @@
+ #include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "exec/memory.h"
+-#include "exec/address-spaces.h"
+ #include "hw/sysbus.h"
+ #include "qemu/error-report.h"
+ 
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index 2e8284001d..e4b5b3c273 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -43,7 +43,6 @@
+ #include "qapi/error.h"
+ #include "qemu/timer.h"
+ #include "qemu/bitops.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/host-utils.h"
+ #include "qemu/log.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 75d1ae1026..a8b3f7f978 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -41,7 +41,6 @@
+ #include "qapi/error.h"
+ #include "qemu/timer.h"
+ #include "sysemu/block-backend.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/host-utils.h"
+ #include "hw/sysbus.h"
+ 
+diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
+index faae083e78..787f985db6 100644
+--- a/hw/char/mcf_uart.c
++++ b/hw/char/mcf_uart.c
+@@ -10,7 +10,6 @@
+ #include "hw/sysbus.h"
+ #include "hw/m68k/mcf.h"
+ #include "chardev/char-fe.h"
+-#include "exec/address-spaces.h"
+ 
+ typedef struct {
+     SysBusDevice parent_obj;
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index 2c080c9862..605b0d02f9 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -28,7 +28,6 @@
+ #include "chardev/char-serial.h"
+ #include "qapi/error.h"
+ #include "qemu/timer.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
+ 
+ //#define DEBUG_SERIAL
+diff --git a/hw/char/sh_serial.c b/hw/char/sh_serial.c
+index 835b5378a0..373a40595f 100644
+--- a/hw/char/sh_serial.c
++++ b/hw/char/sh_serial.c
+@@ -28,7 +28,6 @@
+ #include "hw/hw.h"
+ #include "hw/sh4/sh.h"
+ #include "chardev/char-fe.h"
+-#include "exec/address-spaces.h"
+ #include "qapi/error.h"
+ 
+ //#define DEBUG_SERIAL
+diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
+index 0c4a7207f4..6387854b54 100644
+--- a/hw/core/loader-fit.c
++++ b/hw/core/loader-fit.c
+@@ -18,7 +18,6 @@
   */
  
-@@ -22,10 +25,11 @@
- #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
- #define MVBAR_ADDR      0x400 /* secure vectors */
- #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
--#define FIRMWARE_ADDR   0x8000 /* Pi loads kernel.img here by default */
-+#define FIRMWARE_ADDR_2 0x8000 /* Pi 2 loads kernel.img here by default */
-+#define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
+ #include "qemu/osdep.h"
+-#include "exec/address-spaces.h"
+ #include "exec/memory.h"
+ #include "hw/loader.h"
+ #include "hw/loader-fit.h"
+diff --git a/hw/core/platform-bus.c b/hw/core/platform-bus.c
+index 807cb5ccda..e473a44746 100644
+--- a/hw/core/platform-bus.c
++++ b/hw/core/platform-bus.c
+@@ -21,7 +21,6 @@
  
- /* Table of Linux board IDs for different Pi versions */
--static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43};
-+static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
+ #include "qemu/osdep.h"
+ #include "hw/platform-bus.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/sysemu.h"
  
- typedef struct RasPiState {
-     BCM2836State soc;
-@@ -83,8 +87,8 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-     binfo.secure_board_setup = true;
-     binfo.secure_boot = true;
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index f4bb33c279..e47be99451 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -36,7 +36,6 @@
+ #include "hw/pci/pci.h"
+ #include "qemu/range.h"
+ #include "ui/pixel_ops.h"
+-#include "exec/address-spaces.h"
  
--    /* Pi2 requires SMP setup */
--    if (version == 2) {
-+    /* Pi2 and Pi3 requires SMP setup */
-+    if (version >= 2) {
-         binfo.smp_loader_start = SMPBOOT_ADDR;
-         binfo.write_secondary_boot = write_smpboot;
-         binfo.secondary_cpu_reset_hook = reset_secondary;
-@@ -94,15 +98,16 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-      * the normal Linux boot process
-      */
-     if (machine->firmware) {
-+        hwaddr firmware_addr = version == 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
-         /* load the firmware image (typically kernel.img) */
--        r = load_image_targphys(machine->firmware, FIRMWARE_ADDR,
--                                ram_size - FIRMWARE_ADDR);
-+        r = load_image_targphys(machine->firmware, firmware_addr,
-+                                ram_size - firmware_addr);
-         if (r < 0) {
-             error_report("Failed to load firmware from %s", machine->firmware);
-             exit(1);
-         }
+ /*
+  * Status: 2010/05/07
+diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
+index 6ad1e4bd2d..7abd84ac47 100644
+--- a/hw/m68k/mcf5206.c
++++ b/hw/m68k/mcf5206.c
+@@ -14,7 +14,6 @@
+ #include "qemu/timer.h"
+ #include "hw/ptimer.h"
+ #include "sysemu/sysemu.h"
+-#include "exec/address-spaces.h"
  
--        binfo.entry = FIRMWARE_ADDR;
-+        binfo.entry = firmware_addr;
-         binfo.firmware_loaded = true;
-     } else {
-         binfo.kernel_filename = machine->kernel_filename;
-@@ -113,7 +118,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-     arm_load_kernel(ARM_CPU(first_cpu), &binfo);
- }
+ /* General purpose timer module.  */
+ typedef struct {
+diff --git a/hw/m68k/mcf_intc.c b/hw/m68k/mcf_intc.c
+index 8198afac1e..393ce284a2 100644
+--- a/hw/m68k/mcf_intc.c
++++ b/hw/m68k/mcf_intc.c
+@@ -11,7 +11,6 @@
+ #include "hw/hw.h"
+ #include "hw/sysbus.h"
+ #include "hw/m68k/mcf.h"
+-#include "exec/address-spaces.h"
  
--static void raspi2_init(MachineState *machine)
-+static void raspi_init(MachineState *machine, int version)
- {
-     RasPiState *s = g_new0(RasPiState, 1);
-     uint32_t vcram_size;
-@@ -139,7 +144,8 @@ static void raspi2_init(MachineState *machine)
-                             &error_abort);
-     object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
-                             &error_abort);
--    object_property_set_int(OBJECT(&s->soc), 0xa21041, "board-rev",
-+    int board_rev = version == 3 ? 0xa02082 : 0xa21041;
-+    object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
-                             &error_abort);
-     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
+ #define TYPE_MCF_INTC "mcf-intc"
+ #define MCF_INTC(obj) OBJECT_CHECK(mcf_intc_state, (obj), TYPE_MCF_INTC)
+diff --git a/hw/misc/arm_integrator_debug.c b/hw/misc/arm_integrator_debug.c
+index 8a5f29559d..533e6e3208 100644
+--- a/hw/misc/arm_integrator_debug.c
++++ b/hw/misc/arm_integrator_debug.c
+@@ -17,7 +17,6 @@
+ #include "qemu/osdep.h"
+ #include "hw/hw.h"
+ #include "hw/sysbus.h"
+-#include "exec/address-spaces.h"
+ #include "hw/misc/arm_integrator_debug.h"
+ #include "qemu/log.h"
  
-@@ -157,7 +163,12 @@ static void raspi2_init(MachineState *machine)
+diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
+index bfa6b4bcce..0091e4ecdd 100644
+--- a/hw/net/mcf_fec.c
++++ b/hw/net/mcf_fec.c
+@@ -14,7 +14,6 @@
+ #include "hw/sysbus.h"
+ /* For crc32 */
+ #include <zlib.h>
+-#include "exec/address-spaces.h"
  
-     vcram_size = object_property_get_uint(OBJECT(&s->soc), "vcram-size",
-                                           &error_abort);
--    setup_boot(machine, 2, machine->ram_size - vcram_size);
-+    setup_boot(machine, version, machine->ram_size - vcram_size);
-+}
-+
-+static void raspi2_init(MachineState *machine)
-+{
-+    raspi_init(machine, 2);
- }
+ //#define DEBUG_FEC 1
  
- static void raspi2_machine_init(MachineClass *mc)
+diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
+index 70e5c1d3d4..c7fdeb0f6c 100644
+--- a/hw/net/ne2000-isa.c
++++ b/hw/net/ne2000-isa.c
+@@ -27,7 +27,6 @@
+ #include "hw/qdev.h"
+ #include "ne2000.h"
+ #include "sysemu/sysemu.h"
+-#include "exec/address-spaces.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ 
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index d0b02bdc47..7b19078c80 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -12,7 +12,6 @@
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci/pci_host.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/log.h"
+ 
+ /* Old and buggy versions of QEMU used the wrong mapping from
+diff --git a/hw/riscv/riscv_htif.c b/hw/riscv/riscv_htif.c
+index f73512941f..4f7b11dc37 100644
+--- a/hw/riscv/riscv_htif.c
++++ b/hw/riscv/riscv_htif.c
+@@ -29,7 +29,6 @@
+ #include "chardev/char-fe.h"
+ #include "hw/riscv/riscv_htif.h"
+ #include "qemu/timer.h"
+-#include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
+ 
+ #define RISCV_DEBUG_HTIF 0
+diff --git a/hw/sh4/sh7750.c b/hw/sh4/sh7750.c
+index 5a7d47d31e..2dc07a904b 100644
+--- a/hw/sh4/sh7750.c
++++ b/hw/sh4/sh7750.c
+@@ -31,7 +31,6 @@
+ #include "hw/sh4/sh_intc.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+-#include "exec/address-spaces.h"
+ 
+ #define NB_DEVICES 4
+ 
+diff --git a/hw/timer/sh_timer.c b/hw/timer/sh_timer.c
+index 9afb2d048c..5f8736cf10 100644
+--- a/hw/timer/sh_timer.c
++++ b/hw/timer/sh_timer.c
+@@ -13,7 +13,6 @@
+ #include "hw/sh4/sh.h"
+ #include "qemu/timer.h"
+ #include "qemu/main-loop.h"
+-#include "exec/address-spaces.h"
+ #include "hw/ptimer.h"
+ 
+ //#define DEBUG_TIMER
 -- 
-2.14.3
+2.17.0
 

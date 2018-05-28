@@ -1,208 +1,284 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2531930wre;
-        Mon, 28 May 2018 07:24:21 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKis8YBxEhRpooNAjUPTLhdlTe3veU7hmBmaoRWwaUeWXIAdpe0Zwac3vHXG45pUgtx6nXz
-X-Received: by 2002:ae9:de85:: with SMTP id s127-v6mr11680236qkf.34.1527517461632;
-        Mon, 28 May 2018 07:24:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527517461; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2532405wre;
+        Mon, 28 May 2018 07:24:52 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIRtXhPUnkRhnVD+RZM5dYTYgmQ2uE8CWoi43reiGcCMbrzIAV79My2RWR0RIE6pGzq5Az6
+X-Received: by 2002:a37:c402:: with SMTP id d2-v6mr11671420qki.79.1527517492734;
+        Mon, 28 May 2018 07:24:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527517492; cv=none;
         d=google.com; s=arc-20160816;
-        b=Oe28BTrvA3mVAPnIWsKIFZf4+uIxcgFubP+kmRGa5Yygkee0nD3JyC5qdC6Go7KbuC
-         9JjfKUR0R+Z5XaPFzcsdTLp1toth8Vhta8qvtoNkxTg63s/ghfKFVE1zC6JgF9RTueEO
-         DrDuMmfKSlZwDa6vp7+C/SwGNgKd9DrrOX1hKRqu+gxGiFYABiDM/JbA+m8V+bcIJVuU
-         dxtTUL4/FB0127QuZjRMz1K73MtQNobj9dfMZ1m+SAZayedaficu7CrzjOcO62fTEk6N
-         dPBTVvPuTnLN5wi+Uc6FI/RA4VzbR6IzFOqSQx/gE9Cw67tyTesHCtipdPOAa42sPui8
-         wiIg==
+        b=vkvM5XeJT8VtJ6PTJJjWkbpQgWZhaKq4DhDEObRVN9Us5Vw5mFciS5oLZ2emcM+ozE
+         oOEpKFYGt5dj5dcCHrOyxAnhU9jB4+jVBEspCeCDnrFYluHDK2BgSaLiRF+DpW/RCd6e
+         40B90N3cfG1TOzsRaPT3LulbgninjZYvA8B+y9bmxwopM8FMkuF38kL8X4CjVFqqZbf9
+         AoxBevrb4Q/aOsAeI7Xn7l+X5F6XvlcAKz/j/be0b3eeiEaoUhFmd15eRR39yWwvalWl
+         3+IE1VDLpEP2j+ycvulVhkE9bepgQb4NQlDpTNGsPT5Fuf/v8UroKPsWeKY5Pnps/ZKr
+         1OHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:arc-authentication-results;
-        bh=CKqKyteBciPgXpVq+NQxMcJR9tLUPh+lD5TEWv102Jw=;
-        b=OBZTpawV1r9E1XKRmJCpPnFl9B8Avauef1EKFBontfl0z7Tta+L29h97NmLOyNOKPc
-         M69A6EdzNqrkQvFm39xNXAwc5rWI7Ib+x+nQWjgEJoHrCMhgCkuNUf8oYVJ2A2uYYlvs
-         EAgiYPyTh0nC7Ek7x4dm5UCLqEQE0f0yB9z+L4ULxXeTAJ9aWgK6Q53ysWd97YBktAz5
-         WuftXWwlIR4Ful/OfeKYtJvazBs7S/xrLOvcv+HAYjX+h0YgAOYAiEM2P5Ghdzstc8qu
-         TiZICNWxJv0QjTU3abKCf5iaLa1c8iZFbxaSBVdncG30YSZxGiqQGGjAtNQwYq7RdKaN
-         jXeA==
+        bh=YNVS3rXNEeUFIJPW1fO2AQQfFFRaLcURqvYTcbqt/Yo=;
+        b=zOzNrhtH2a2mXd0hrm6x9bVwl5VUVi0dje1ZGedinM4SQo6ZETUrkdZ3N4BzjZa2jF
+         CYvEqUFOjH0WgHFl3DqjnAZ6uTTNY1EULhsEYw8Shm08ZaOOkgjRqaXZ016YLUhqYjHo
+         onscIKevj4XKLmQydywy9wRe4VWUEEijgKnFlUQg875aumjdGEhpW+D+/aHR7qJBm5+V
+         x7oiczkI0T1pXwCc2OFehZbOs4yiEweGIK1NwmZTpCnyGV5VQwPFNcD0Z+RIGOnOHvjO
+         SyXgv5jlhPj0FDOxOQF6bS2DlcmRuFZTGCHLadZEJMiJaEv7E5OAixrv+WA9ASNFrGHz
+         uKAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j32-v6si3986253qtj.47.2018.05.28.07.24.21
+        by mx.google.com with ESMTPS id i20-v6si4161988qti.354.2018.05.28.07.24.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 07:24:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 28 May 2018 07:24:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56498 helo=lists.gnu.org)
+Received: from localhost ([::1]:56500 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNJ4P-0001Fe-46
-	for alex.bennee@linaro.org; Mon, 28 May 2018 10:24:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45336)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNJ4u-0001Zk-5H
+	for alex.bennee@linaro.org; Mon, 28 May 2018 10:24:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45290)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fNJ2D-00088h-JC
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:22:06 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fNJ23-000822-Ir
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 10:21:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fNJ2A-0006UK-Bc
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:22:05 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56574 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fNJ22-0006RL-5y
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 10:21:55 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56554 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fNJ2A-0006Tr-6O; Mon, 28 May 2018 10:22:02 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fNJ1z-0006Pm-77; Mon, 28 May 2018 10:21:51 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C29E27D84D;
-	Mon, 28 May 2018 14:22:01 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id CD16E7CBBA;
+	Mon, 28 May 2018 14:21:50 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
 	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 549E32026609;
-	Mon, 28 May 2018 14:22:00 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 176BD1117642;
+	Mon, 28 May 2018 14:21:46 +0000 (UTC)
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-3-shameerali.kolothum.thodi@huawei.com>
+	<20180516152026.2920-4-shameerali.kolothum.thodi@huawei.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <58fb3661-8c2a-7fef-aeaa-ab175ea5bdd9@redhat.com>
-Date: Mon, 28 May 2018 16:21:58 +0200
+Message-ID: <1f8e3cd4-1e54-5350-3804-c77bbbfbd3e4@redhat.com>
+Date: Mon, 28 May 2018 16:21:44 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20180516152026.2920-3-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20180516152026.2920-4-shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.2]);
-	Mon, 28 May 2018 14:22:01 +0000 (UTC)
+	Mon, 28 May 2018 14:21:50 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Mon, 28 May 2018 14:22:01 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	Mon, 28 May 2018 14:21:50 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC v2 2/6] hw/arm/virt: Enable dynamic generation
- of guest RAM memory regions
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug
+ framework
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, jonathan.cameron@huawei.com,
 	linuxarm@huawei.com, alex.williamson@redhat.com,
 	zhaoshenglong@huawei.com, imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OC1TEwiwV5Qb
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ev/peFTPtosK
 
 Hi Shameer,
-On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> Register ram_memory_region_init notifier to allocate memory region
-> from system memory.
 
-At this stage the commit message does not explain why you need a machine
-init done notifier. Also the commit title does not summarize the actual
-change.
+On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
+> This will be used in subsequent patches to model a chunk of
+> memory as pc-dimm(cold plug) if the valid iova regions are
+> non-contiguous. This is not yet a full hotplug support.
+Please can you give more details about this restriction?
+> 
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  default-configs/aarch64-softmmu.mak |  1 +
+>  hw/arm/virt.c                       | 82 +++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h               |  2 +
+>  3 files changed, 85 insertions(+)
+> 
+> diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
+> index 9ddccf8..7a82ed8 100644
+> --- a/default-configs/aarch64-softmmu.mak
+> +++ b/default-configs/aarch64-softmmu.mak
+> @@ -8,3 +8,4 @@ CONFIG_DDC=y
+>  CONFIG_DPCD=y
+>  CONFIG_XLNX_ZYNQMP=y
+>  CONFIG_XLNX_ZYNQMP_ARM=y
+> +CONFIG_MEM_HOTPLUG=y
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 05fcb62..be3ad14 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1552,9 +1552,82 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
+>      return ms->possible_cpus;
+>  }
+>  
+> +static void virt_dimm_plug(HotplugHandler *hotplug_dev,
+> +                         DeviceState *dev, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    PCDIMMDevice *dimm = PC_DIMM(dev);
+> +    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
+> +    MemoryRegion *mr;
+> +    uint64_t align;
+> +    Error *local_err = NULL;
+> +
+> +    mr = ddc->get_memory_region(dimm, &local_err);
+> +    if (local_err) {
+> +        goto out;
+> +    }
+> +
+> +    align = memory_region_get_alignment(mr);
+I see that on PC machine class they have an "enforce_aligned_dimm"
+option. Also looks memory_region_get_alignment(mr) can return 0.
+
+if (memory_region_get_alignment(mr) && pcmc->enforce_aligned_dimm) {
+
+
+> +    pc_dimm_memory_plug(dev, &vms->hotplug_memory, mr, align, &local_err);
+> +    if (local_err) {
+> +        goto out;
+> +    }
+useless block and error_propagate does nothing if local_err is NULL so
+we are fine.
+> +
+> +out:
+> +    error_propagate(errp, local_err);
+> +}
+> +
+> +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+> +                           DeviceState *dev, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    PCDIMMDevice *dimm = PC_DIMM(dev);
+> +    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
+> +    MemoryRegion *mr;
+> +    Error *local_err = NULL;
+> +
+> +    mr = ddc->get_memory_region(dimm, &local_err);
+don't you want to avoid executing the following if local_err?
+> +    pc_dimm_memory_unplug(dev, &vms->hotplug_memory, mr);
+needs a rebase on top of "pc-dimm: no need to pass the memory region"
+in master pc_dimm_memory_unplug we now have
+ MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
+
 Thanks
 
 Eric
-> 
-> Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/virt.c         | 28 ++++++++++++++++++++++------
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 23 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 94dcb12..05fcb62 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1171,6 +1171,19 @@ void virt_machine_done(Notifier *notifier, void *data)
->      virt_build_smbios(vms);
->  }
->  
-> +static void virt_ram_memory_region_init(Notifier *notifier, void *data)
-> +{
-> +    MemoryRegion *sysmem = get_system_memory();
-> +    MemoryRegion *ram = g_new(MemoryRegion, 1);
-> +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-> +                                         ram_memory_region_init);
-> +    MachineState *machine = MACHINE(vms);
+> +    object_unparent(OBJECT(dev));
 > +
-> +    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> +                                         machine->ram_size);
-> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
+> +    error_propagate(errp, local_err);
 > +}
 > +
->  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+> +static void virt_machinedevice_plug_cb(HotplugHandler *hotplug_dev,
+> +                                      DeviceState *dev, Error **errp)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_dimm_plug(hotplug_dev, dev, errp);
+> +    } else {
+> +        error_setg(errp, "device plug request for not supported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+> +static void virt_machinedevice_unplug_cb(HotplugHandler *hotplug_dev,
+> +                                        DeviceState *dev, Error **errp)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_dimm_unplug(hotplug_dev, dev, errp);
+> +    } else {
+> +        error_setg(errp, "device unplug for not supported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+> +static HotplugHandler *virt_get_hotplug_handler(MachineState *machine,
+> +                                             DeviceState *dev)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        return HOTPLUG_HANDLER(machine);
+> +    }
+> +    return NULL;
+> +}
+> +
+>  static void virt_machine_class_init(ObjectClass *oc, void *data)
 >  {
->      uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
-> @@ -1204,7 +1217,6 @@ static void machvirt_init(MachineState *machine)
->      MemoryRegion *sysmem = get_system_memory();
->      MemoryRegion *secure_sysmem = NULL;
->      int n, virt_max_cpus;
-> -    MemoryRegion *ram = g_new(MemoryRegion, 1);
->      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
+>      MachineClass *mc = MACHINE_CLASS(oc);
+> +    HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
 >  
->      /* We can probe only here because during property set
-> @@ -1361,10 +1373,6 @@ static void machvirt_init(MachineState *machine)
->      fdt_add_timer_nodes(vms);
->      fdt_add_cpu_nodes(vms);
->  
-> -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> -                                         machine->ram_size);
-> -    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-> -
->      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
->  
->      create_gic(vms, pic);
-> @@ -1405,15 +1413,23 @@ static void machvirt_init(MachineState *machine)
->      vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
->      vms->bootinfo.get_dtb = machvirt_dtb;
->      vms->bootinfo.firmware_loaded = firmware_loaded;
+>      mc->init = machvirt_init;
+>      /* Start max_cpus at the maximum QEMU supports. We'll further restrict
+> @@ -1573,6 +1646,11 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
+>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
+>      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
 > +
-> +    /* Register notifiers. They are executed in registration reverse order */
->      arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
->  
->      /*
->       * arm_load_kernel machine init done notifier registration must
->       * happen before the platform_bus_create call. In this latter,
->       * another notifier is registered which adds platform bus nodes.
-> -     * Notifiers are executed in registration reverse order.
->       */
->      create_platform_bus(vms, pic);
+> +    mc->get_hotplug_handler = virt_get_hotplug_handler;
+This requires a rebase on top of Igor's  and David's series.
+
+Thanks
+
+Eric
+> +    hc->plug = virt_machinedevice_plug_cb;
+> +    hc->unplug = virt_machinedevice_unplug_cb;
 > +
-> +    /*
-> +     * Register memory region notifier last as this has to be executed
-> +     * first.
-> +     */
-> +    vms->ram_memory_region_init.notify = virt_ram_memory_region_init;
-> +    qemu_add_machine_init_done_notifier(&vms->ram_memory_region_init);
 >  }
 >  
->  static bool virt_get_secure(Object *obj, Error **errp)
+>  static const TypeInfo virt_machine_info = {
+> @@ -1582,6 +1660,10 @@ static const TypeInfo virt_machine_info = {
+>      .instance_size = sizeof(VirtMachineState),
+>      .class_size    = sizeof(VirtMachineClass),
+>      .class_init    = virt_machine_class_init,
+> +    .interfaces = (InterfaceInfo[]) {
+> +         { TYPE_HOTPLUG_HANDLER },
+> +         { }
+> +    },
+>  };
+>  
+>  static void machvirt_machine_init(void)
 > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index ba0c1a4..fc24f3a 100644
+> index fc24f3a..a39f29e 100644
 > --- a/include/hw/arm/virt.h
 > +++ b/include/hw/arm/virt.h
-> @@ -91,6 +91,7 @@ typedef struct {
->  typedef struct {
->      MachineState parent;
->      Notifier machine_done;
-> +    Notifier ram_memory_region_init;
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
+> @@ -35,6 +35,7 @@
+>  #include "qemu/notify.h"
+>  #include "hw/boards.h"
+>  #include "hw/arm/arm.h"
+> +#include "hw/mem/pc-dimm.h"
+>  
+>  #define NUM_GICV2M_SPIS       64
+>  #define NUM_VIRTIO_TRANSPORTS 32
+> @@ -108,6 +109,7 @@ typedef struct {
+>      uint32_t gic_phandle;
+>      uint32_t msi_phandle;
+>      int psci_conduit;
+> +    MemoryHotplugState hotplug_memory;
+>  } VirtMachineState;
+>  
+>  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
 > 

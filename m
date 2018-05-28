@@ -1,279 +1,205 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2629321wre;
-        Mon, 28 May 2018 09:07:28 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJIvo88p70SGuJFMd7IChnGSsg3iF3h4lzPmzTLjMOukY7YcdzXmT0ma4V+5Z1YJATR/Y2c
-X-Received: by 2002:a37:4a8d:: with SMTP id x135-v6mr11991632qka.100.1527523648822;
-        Mon, 28 May 2018 09:07:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527523648; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2647885wre;
+        Mon, 28 May 2018 09:29:29 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIn/HDwZtl1gxEfFYJZOm8Pe1EeC0Vbun329JndkTNUnIoGthvla2id281XOJ1kO48KRNYK
+X-Received: by 2002:ac8:70c3:: with SMTP id g3-v6mr12495768qtp.95.1527524969636;
+        Mon, 28 May 2018 09:29:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527524969; cv=none;
         d=google.com; s=arc-20160816;
-        b=XuFH492NODXSKYpMIcIQnhBCWM/4v5GiNL2L5DtpsLJEaU+Ex1nI6C3Q+xJ4ZwbOJc
-         +KLbZEDANykxIxr7SbsAP7wqp/5B+FrHqPxdkSJNu0gx5XQnIqKY2jBayjTTQ9uFMib7
-         UKHyKOK33ZayqpyvjrHkhDB+8lt69tOu59qGTkI55XQxfP54Z31jyaM+pdbm4Pkmw8xp
-         2fuI8Cf1Ho7EHlWAUeJsCax6h8lbuOObDOfO/DXiEzVXJqoDfNaadv5YZemNzvKO/a+I
-         02nefdW+dNBv6WKzjf4OA5wfslU0NORFLw5zBoPecTuM+dUr4WBEZmTiDWU9R2zeVPIN
-         cj/g==
+        b=CX5zdmMAVeb0Fh7TrsCtMLfWAoXjsCsrLyBuDUJzbY8dHkGTVxhnY5Pj/g6jEErulS
+         TNYgDgri99riW87bFkhJibVGMGhLoWfMGNldKyiEqSUh3WUnQNJbVXh5OCZxcptvrmqc
+         pbdmpTNWurxlhvwQsHu2MEka/1hhEOvDEefobcuZTziF2ci1ZsR5XT+rqnIRcZfDn6FC
+         lt3j9OzOYiGZlqonn6hv5uMOhLTkBuBCm6KZOyyRfafyAufwcS52Nh3CTDQ8ORz3X9nj
+         07fWOprjWJSLMWlmpMUYtbLhWq30sCHFYbuP3iOfrW7n6oDFEeMT+T35ucmc1kcFfwpt
+         Ei2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=iMdgdh2t6ugGHgohetVGoBxE7hCfZJFnGO9gzTABYb4=;
-        b=Pt/AA8aEiXth76mnZgDPuv7BwuJzqXAopVh4jQhIsIooXueMiHDvLLXBIlkH1hAHbZ
-         iVed6p4v1dxESLgsOsRMKFpRosX2CLNA3Pd99KJMrnTTCOZ01A6YFeL9jxemZeSqUl9W
-         8rZd4yjYW2fNL4xvXrd6htMFp8VWcFLSBiD2CLhZuiutb+uHCFc9NRInhzTclflYmmFO
-         4QaRvqjsXUohGkWJ5ldskTQAurzi5573LDeA5+QFOteT2+yc3srag6ijIVy7CVlKTWVR
-         86/g4DWfNnMEkY9QHvD6oFgtoRB9oxeaZJE2q5GY8/Fz4zJp4i7jikda8X0gjS/p7B7K
-         UYXQ==
+        bh=OLWyiqbGlt2sYj78FxItHVhwIY/s3idrjBLJPl4nCQM=;
+        b=DpVkgHGRvS2rvtdLPiDkTlKjo28AZW3w3bQ99GLNiKUlGNVfQGk1OfMZ06LxORGX9j
+         2VFI4zvjJNPAcsqia+H0XFhZ9HAe1FiVLwA5gYnHhM9f8CA2uDsGPIdRbNhJKA84nDFo
+         Q1RtqolRQkDckYRdcmsVkGWy44VSU6Mzc/KxsOkaYmYFaaqSXTNNjJ2GjS4n36/hIztA
+         tleJUXQWSkC2AbKCgHBF8WvFqeQzbtPjOlfgnimfAOLzTMKpeOA+KP9cl2kXABgKSK5Z
+         R026n5cJjN7AcY+iIijZtu6htgsVbhrCk6RdlsFULy5XiNGTxezBW6G0LO4IDv8sneq1
+         l1XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p+468WZk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=moMVDVyJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d14-v6si863388qtb.70.2018.05.28.09.07.28
+        by mx.google.com with ESMTPS id d19-v6si811460qtd.162.2018.05.28.09.29.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 09:07:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 28 May 2018 09:29:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p+468WZk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57077 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=moMVDVyJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57128 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNKgC-0002NK-BO
-	for alex.bennee@linaro.org; Mon, 28 May 2018 12:07:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45160)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNL1V-0006xc-6g
+	for alex.bennee@linaro.org; Mon, 28 May 2018 12:29:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48665)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNKg4-0002ND-Iv
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 12:07:21 -0400
+	id 1fNKzy-0006UK-55
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 12:27:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNKg0-0004EW-Im
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 12:07:20 -0400
-Received: from mail-qt0-x231.google.com ([2607:f8b0:400d:c0d::231]:43221)
+	id 1fNKzu-0000xf-Uv
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 12:27:54 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:43062)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNKg0-0004EM-Bh; Mon, 28 May 2018 12:07:16 -0400
-Received: by mail-qt0-x231.google.com with SMTP id f13-v6so15390594qtp.10;
-	Mon, 28 May 2018 09:07:16 -0700 (PDT)
+	id 1fNKzu-0000xR-RF; Mon, 28 May 2018 12:27:50 -0400
+Received: by mail-qk0-x243.google.com with SMTP id h19-v6so9495142qkj.10;
+	Mon, 28 May 2018 09:27:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=iMdgdh2t6ugGHgohetVGoBxE7hCfZJFnGO9gzTABYb4=;
-	b=p+468WZkyNDsyCoIKjnHEWAgUkq4aetvpoIJitA8X2hRmmIS7+uMD6HeT9JZvFEIqJ
-	y/kWbpgqT44Jee8/usK9iqwl/WRXZPI7EW2EgaM8MyKUXUEMKQ9njoeg3S6+ElU8tgms
-	eGzZyuFKtVwqE4VruIVhWVCG7LWTFUNW+9hlOapqNKnuOuE/YhQr7Ar+8wxzCgf4uBU4
-	zGp2WSE/i5CFh+hW+RLiqkLvg8ExYGTwHhoI6UDKI2y4toTzfUZEnfn7oIW2rGBPNWqt
-	dvebLVirGWYPN47HqYG3Oue8gJKmc7wqI/wfBywwJHsHRFvAGyyVNRuFnf3Orf6PWzar
-	4Iiw==
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=OLWyiqbGlt2sYj78FxItHVhwIY/s3idrjBLJPl4nCQM=;
+	b=moMVDVyJrAWnTra94FAT7JgC0BoAT/BAxFDh0A8C9uRWTahlbCZkVp4UgJ7XVE/e4q
+	Y1H5PPNJPz9VQ7K5o60IFOXTmlQNr+zZB8ZHl6ZMNNYN5euOQ4zmAQh/WDA4AsowiQbC
+	PT33tjlasdsWlCWYSik1Cigp7Ro+BoTVCOpsF7gE9rbE8pWuI58SYJYu8M9OhQJVKQfo
+	LH+c4gc2JoF6YcLCWaCSWFeOZYeyDVeC/xjnjpjxRW0yBZ7Ms2qroQTgmkKzoAlNEywq
+	eFVW08w9ySp9iijrSepZF5oIgRYQEm7st4yu2fG8QnHf4B1Aef3b2XIGNJDQlQY/2EJF
+	LqCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=iMdgdh2t6ugGHgohetVGoBxE7hCfZJFnGO9gzTABYb4=;
-	b=S6WLar6lEyjvK1UpZWEsakdmiMNcWvsTvwm9JTrxC3fJXoVx5qPlACglbk5ly9UKCt
-	XxwtDI+sBWddY54jikaCS0QIwq4Oc90Sjl1Wt4t+WEs5G/7BBk2/NDGi+JpC7eAHbsrc
-	kH/Z+Q+p/GPFLMFEB0gtV8TWrGkFKX8y+bujb4enWyCpriWVF4ym3SGtR580K6an+n0U
-	Ip84KdcGdlUA2/396XCMfWP48JbEvYQjQ2hRWbFU6lO1Dlx/nEUrXUEjQFivXOkTsAU4
-	X2X8Q2qC7bG++A+bUXTFSFfmKzZ51/BGkib3GoVNERzCeQF85R5tsZQi3xNt9ST3gqy6
-	yD6Q==
-X-Gm-Message-State: ALKqPwe2WDPvyWJK4SUECNQQd921/TNCKou4+4gKsNXrxVBSLCgzVIvO
-	OBylg5k3NtTndnZz7Ii1Ak8=
-X-Received: by 2002:a0c:e4d3:: with SMTP id
-	g19-v6mr2508372qvm.242.1527523635796; 
-	Mon, 28 May 2018 09:07:15 -0700 (PDT)
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=OLWyiqbGlt2sYj78FxItHVhwIY/s3idrjBLJPl4nCQM=;
+	b=mBor+vOJuRCkVqwPcf3rWvrAjkeaj2V/nCrrF0aSK0Ofs/EOD7gAhcbw4+LNfNitjh
+	7zKbFfYUPAO6UZfCEe+H61SNvkfJ9c9QzAFR4Phkx8ZxA+CpJyNxEnIz4EnAUQ+61xg8
+	1NnGoylb6mmHm7YqGLStzyrHivboOH8Qtokzx+0t6YxD62GDYrbUj0P4yenmbHXdX/z8
+	iB4x72puOXgmkhDlpXnXwjEkKQLQd1R05U8rWC+G4RpPJTxNtRMNsql+hQGrhq+MSnvz
+	LTosuJ1/4cUozTVrS/8BBFfBh5GUOm08G7wRXnlD5RVDupWCMZtlD7gPFnaHYiqjohbZ
+	w4jQ==
+X-Gm-Message-State: ALKqPwd73t/selJED7d8D/yqKWGK5Eoicu3RlOn21X3PRVgYBzbNbMcR
+	8WP3H1yu/N0j08T35ujIZTY=
+X-Received: by 2002:ae9:ed02:: with SMTP id
+	c2-v6mr11173216qkg.127.1527524870263; 
+	Mon, 28 May 2018 09:27:50 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	w13-v6sm20866441qto.44.2018.05.28.09.07.13
+	v26-v6sm2987306qtc.12.2018.05.28.09.27.46
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 May 2018 09:07:15 -0700 (PDT)
-To: Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20180528152225.7108-1-joel@jms.id.au>
+	Mon, 28 May 2018 09:27:49 -0700 (PDT)
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
+References: <1527496946-12036-1-git-send-email-zhaoshenglong@huawei.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <45bcd928-b328-0a0b-a0a2-6b4c4f0b560e@amsat.org>
-Date: Mon, 28 May 2018 13:07:05 -0300
+Message-ID: <8b06a7d9-49d4-9d22-d357-5448fbaf7a56@amsat.org>
+Date: Mon, 28 May 2018 13:27:44 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180528152225.7108-1-joel@jms.id.au>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="QTuJrhHzBXk2Y45fV4J8jFMTiSVIDzHYo"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::231
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] aspeed_scu: Implement RNG
- register
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZgQaq7pyUoqK
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---QTuJrhHzBXk2Y45fV4J8jFMTiSVIDzHYo
-Content-Type: multipart/mixed; boundary="AQ3GusOqf0kBPHtEhxFlL8h7C3emPPvy2";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-Message-ID: <45bcd928-b328-0a0b-a0a2-6b4c4f0b560e@amsat.org>
-Subject: Re: [Qemu-devel] [PATCH v2] aspeed_scu: Implement RNG register
-References: <20180528152225.7108-1-joel@jms.id.au>
-In-Reply-To: <20180528152225.7108-1-joel@jms.id.au>
-
---AQ3GusOqf0kBPHtEhxFlL8h7C3emPPvy2
+In-Reply-To: <1527496946-12036-1-git-send-email-zhaoshenglong@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] ARM: ACPI: Fix use-after-free
+ due to memory realloc
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+	shannon.zhaosl@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZBmdwu6T2mFS
 
-Hi Joel,
-
-On 05/28/2018 12:22 PM, Joel Stanley wrote:
-> The ASPEED SoCs contain a single register that returns random data when=
-
-> read. This models that register so that guests can use it.
->=20
-> The random number data register has a corresponding control register,
-> data returns a different number regardless of the state of the enabled
-> bit, so the model follows this behaviour.
-
-I have been bugging C=C3=A9dric to check specs for the RNG_CTRL register =
-and
-he sent me the v1 of this patch than I missed:
-
-    >>> may be we could test bit 1 of RNG_CTRL to check if it is enabled
-or not.
-    >>
-    >> The RNG is enabled by default, and I didn't find any software that=
-
-    >> disables it, but it can't hurt to have that check.
-    >
-    > I did some testing on hardware, and the rng still outputs a differe=
-nt
-    > number each time I ask for one regardless of the state of the enabl=
-ed
-    > bit.
-    >
-    I confirm that the HW doesn't really care about the enabled bit.
-    Let's ignore it then ?
-
-Now your comment makes more sens, however I think it would be more
-useful to add it in aspeed_scu_read() to make it obvious.
-
->=20
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+On 05/28/2018 05:42 AM, Shannon Zhao wrote:
+> acpi_data_push uses g_array_set_size to resize the memory size. If there
+> is no enough contiguous memory, the address will be changed. So previous
+> pointer could not be used any more. It must update the pointer and use
+> the new one.
+> 
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
 > ---
-> v2:
->  - Remove call to qcrypto_random_init as this is done in main()
-> ---
->  hw/misc/aspeed_scu.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->=20
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index 5e6d5744eeca..29e58527793b 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -16,6 +16,7 @@
->  #include "qapi/visitor.h"
->  #include "qemu/bitops.h"
->  #include "qemu/log.h"
-> +#include "crypto/random.h"
->  #include "trace.h"
-> =20
->  #define TO_REG(offset) ((offset) >> 2)
-> @@ -154,6 +155,18 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU=
-_NR_REGS] =3D {
->       [BMC_DEV_ID]      =3D 0x00002402U
->  };
-> =20
-> +static uint32_t aspeed_scu_get_random(void)
-> +{
-> +    Error *err =3D NULL;
-> +    uint32_t num;
-> +
-> +    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
-> +        error_report_err(err);
-> +    }
-> +
-> +    return num;
-> +}
+>  hw/arm/virt-acpi-build.c | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 92ceee9..30584ee 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      AcpiIortItsGroup *its;
+>      AcpiIortTable *iort;
+>      AcpiIortSmmu3 *smmu;
+> -    size_t node_size, iort_length, smmu_offset = 0;
+> +    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
+>      AcpiIortRC *rc;
+>  
+>      iort = acpi_data_push(table_data, sizeof(*iort));
+> @@ -414,6 +414,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      iort_length = sizeof(*iort);
+>      iort->node_count = cpu_to_le32(nb_nodes);
+>      iort->node_offset = cpu_to_le32(sizeof(*iort));
 
-This function duplicates bcm2835_rng::get_random_bytes() except it
-doesn't exit(), is that on purpose?
+Eventually similar comment to explain why you also use another var:
 
-What about refactoring, inlining bcm2835_rng::get_random_bytes() in a
-new include/hw/misc/rng.h?
+       /*
+        * Use a copy in case table_data->data moves during
+        * acpi_data_push operations.
+        */
+> +    iort_node_offset = iort->node_offset;
 
-(This can be later patch)
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> +
->  static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned =
-size)
->  {
->      AspeedSCUState *s =3D ASPEED_SCU(opaque);
-> @@ -167,6 +180,9 @@ static uint64_t aspeed_scu_read(void *opaque, hwadd=
-r offset, unsigned size)
+>  
+>      /* ITS group node */
+>      node_size =  sizeof(*its) + sizeof(uint32_t);
+> @@ -429,7 +430,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          int irq =  vms->irqmap[VIRT_SMMU];
+>  
+>          /* SMMUv3 node */
+> -        smmu_offset = iort->node_offset + node_size;
+> +        smmu_offset = iort_node_offset + node_size;
+>          node_size = sizeof(*smmu) + sizeof(*idmap);
+>          iort_length += node_size;
+>          smmu = acpi_data_push(table_data, node_size);
+> @@ -450,7 +451,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          idmap->id_count = cpu_to_le32(0xFFFF);
+>          idmap->output_base = 0;
+>          /* output IORT node is the ITS group node (the first node) */
+> -        idmap->output_reference = cpu_to_le32(iort->node_offset);
+> +        idmap->output_reference = cpu_to_le32(iort_node_offset);
 >      }
-> =20
->      switch (reg) {
-
-       case RNG_CTRL:
-           /* The RNG_DATA returns a different number regardless of
-            * the state of the enabled bit in RNG_CTRL,
-            * so the model follows this behaviour.
-            */
-           break;
-
-With a comment:
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-> +    case RNG_DATA:
-> +        s->regs[RNG_DATA] =3D aspeed_scu_get_random();
-> +        break;
->      case WAKEUP_EN:
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: Read of write-only offset 0x%" HWADDR_PRIx =
-"\n",
->=20
-
-
---AQ3GusOqf0kBPHtEhxFlL8h7C3emPPvy2--
-
---QTuJrhHzBXk2Y45fV4J8jFMTiSVIDzHYo
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAlsMKSkACgkQ4+MsLN6t
-wN7SOg/7Bn5OZMy1MUYoJUXVoa00ki4k/I/S57/4FqosqBXQ9650KqIrUCzqJdlG
-F5CAgaGS/zLlNf+6jO/kv24NSn9p99LN0+4kR+C6sDHLtBiND28wbOGgRonsnkJC
-HYng9ussjBp6Y5Kid2Y6/0tScHWI4Bg0wc7JBC5s0/WHvYRZZAjeGCW1XquoSB2L
-wl/t4ghSG05lduv0oCG9HGevOEXMmFaCxLNhw4KUdJWt3lwSEfUmr9dNV0JUG/V7
-/e+ZgraHipQaxJeM79E/eAWfiB5TPTyxHyBFrkas3BHqhtwoxWcIJBSPOIfM/uiH
-TdrAGcoKi8vMJ49Eb/OIynN02NfMct++HImbmXKYkZFl1OLGU1afyqgCLOHIPdgh
-DAC7AnDLlgpXUPLVlowPy1dq/htBub4wcHT4bp4zcD32/SSWpc4DddulUUC2Qs9d
-r0NXXL7MvTBpbvbk8LkPCzSNvAK/GSekU3W9mr934PpQ7DmKsL7nO5WS+ZMM1qLZ
-77z3mwakkALXT9cuYngTe9m76/HCuRgKRvrt7eeB1ljVz7igMV8vmk/hk/cdaCIK
-ifRtYrA8cXNBb3KhLlCu9wTx3PiL9HdfvMyA0IgZPB/2JA357AMCZU40kfrILepG
-lc9r8m0xfYnXSEibNINqnXioxlMw5n6uGkj1EBgXWYFMiggsCSc=
-=CGxm
------END PGP SIGNATURE-----
-
---QTuJrhHzBXk2Y45fV4J8jFMTiSVIDzHYo--
+>  
+>      /* Root Complex Node */
+> @@ -479,9 +480,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          idmap->output_reference = cpu_to_le32(smmu_offset);
+>      } else {
+>          /* output IORT node is the ITS group node (the first node) */
+> -        idmap->output_reference = cpu_to_le32(iort->node_offset);
+> +        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>      }
+>  
+> +    /*
+> +     * Update the pointer address in case table_data->data moved during above
+> +     * acpi_data_push operations.
+> +     */
+> +    iort = (AcpiIortTable *)(table_data->data + iort_start);
+>      iort->length = cpu_to_le32(iort_length);
+>  
+>      build_header(linker, table_data, (void *)(table_data->data + iort_start),
+> 

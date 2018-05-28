@@ -1,131 +1,168 @@
-Received: by 10.28.71.27 with SMTP id u27csp438578wma;
-        Wed, 24 Jan 2018 02:14:18 -0800 (PST)
-X-Google-Smtp-Source: AH8x2246BRChpVGX2X9Dk2mfC4Okzqeeoyt0LDWx2Fb0qbUhar2K9bQ8UdNHMjf5M0c3571UPtoX
-X-Received: by 10.37.224.6 with SMTP id x6mr5113877ybg.82.1516788858345;
-        Wed, 24 Jan 2018 02:14:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516788858; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2495180wre;
+        Mon, 28 May 2018 06:48:47 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKKPBW7va06yEgLVHFZWVt1peQgcUe41o1+x7b80HrNu+zlL+gKEhi/1O/8ipww8EBE5HE3
+X-Received: by 2002:ac8:2724:: with SMTP id g33-v6mr12222283qtg.37.1527515327282;
+        Mon, 28 May 2018 06:48:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527515327; cv=none;
         d=google.com; s=arc-20160816;
-        b=A7X04BvvjPAQgfj/zL5jezvA6qGAdlE2jK9Jds1Xb+btIgC8RxDaklk7ePUGcSDHcE
-         YXLkQJdDVNI4otUm8o8kR/iFzaYGHhRUoovu0mVNCdFQ18kRQg/oemwLYreyLDxtykeK
-         WtO9jtX8xOuWw8SUg/4q4ZoA05ATcaQgIUipvFUe5Ketr4lnolfzo/E7ooTvcucXmNZe
-         aDw7v0P9RvSvzIZP54l1xMEuXlxwphI58Gjdvq5p72YNgGTey47ma7KUnEHXc7vQHlvL
-         G/2hGcG9L5JQ5gv4ZZW0h/Ab+JR/7mulmX4V3aqM6QGT2bk1jJzdfY7F8FAATG8xUlhb
-         jxig==
+        b=Ldr3opW5lZejdnT8GMALlaCvrkh/7rCFq6Swo7iOgcKGkL64fC8IxD2i7jvAX4G350
+         0nNS6K6MkA651bWy4yX76dmPF83xHq4bzoyNRlqvOMi2aR8WcBfM+xqeU4PqAIUdWbxU
+         1V+MfFrVZyPAFYXxU3p5kYudkZ3LWKAZ+DxRLag2uibJC/KmTCNNmVgO3mVu5+3wnw0c
+         hvSmzOCdIcdtkN8Hqg0EZ/bAYbLVLqySl7Yt0wX/6gvwZViAobZW8lwf53zlKRZgPBoQ
+         uzOehEXaLH8RYze05+H63AdwVaYFOPyCRg2zD5TNVXoqpiVN6CI2J0OUvDXQf64pHCBS
+         k/Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:content-disposition
-         :mime-version:message-id:to:from:date:arc-authentication-results;
-        bh=XhOEYeXtqwZRy5fvf/hXcLASaG7tfuW/+jdkT7YeecY=;
-        b=kufjT2eHxKN8ygmT0y7XRIa7aI4AHkfROJY/zj8cLoevo+/PDdraikBYA/sv+2tsej
-         KvqPz8ji455yRZFcnT1VPPv/GazjF3GdawaBpGkQtsjOh92P7wLdJ3guGgro50P65SOG
-         zm+lCFLf3+TBsdXHCcVB8cHrzCbxp3BnQu6S2V3FgdhJelsdN9xGAHDcR6X6NjK8BdpV
-         Wn2LlwDu8Q2wbZ5W8sO2BspNYXp/4Dozfx01XP1MkiE05hRzGXcJ2a0wDIfxcx0uMFMN
-         dn082DC9ejt0air135GQmhA5a6XHdbizrjBIa+G8rM2AgoTn8pztez+a5G6Jhofk0Ogk
-         iOlw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:to:from
+         :arc-authentication-results;
+        bh=MrXl9RURvPYTzCQ8/CsDOERhy9m93oxk/U4+bb/r2Hk=;
+        b=CHS5iY/01NuJafzAb3kRtpOWt85iCGdzrHtRNuFHofXMsxvmjDQvtFCXx8YjKXq8lQ
+         cgxcOGYaO3xbHk25eQjhCFGpGtQ6qt604MZ/YhJdkXgnaVKQ8xjvlS7kNqjO//Mq1p1o
+         3hshDMe94tHPthCg5/jPbVIkngUrpZbVaogblBWI8alSZaNM5rXb0HJmuakVoik9PpZB
+         XSIuXrtfqS54GlJqqz4nF7faZlwC3E4ozGbrFvfkFp9ETxuTJgdwaNAs6FCIL165W4Df
+         IDZPi0HSTjqZnQYV0NOyOgxM1J40k4zid7B2N/0KitSaX/YxwXYygVhJqllum2ryZkXQ
+         aWuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d10si2813982ybi.758.2018.01.24.02.14.18
+        by mx.google.com with ESMTPS id p10-v6si1896170qvn.220.2018.05.28.06.48.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Jan 2018 02:14:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 28 May 2018 06:48:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:38994 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:56348 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eeI4P-0002xG-PF
-	for alex.bennee@linaro.org; Wed, 24 Jan 2018 05:14:17 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48802)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNIVy-00070h-Rc
+	for alex.bennee@linaro.org; Mon, 28 May 2018 09:48:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34433)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <agx@sigxcpu.org>) id 1eeI4D-0002v3-JR
-	for qemu-arm@nongnu.org; Wed, 24 Jan 2018 05:14:06 -0500
+	(envelope-from <clg@kaod.org>) id 1fNIUe-0006fr-Fi
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 09:47:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <agx@sigxcpu.org>) id 1eeI49-0003WS-JX
-	for qemu-arm@nongnu.org; Wed, 24 Jan 2018 05:14:05 -0500
-Received: from honk.sigxcpu.org ([24.134.29.49]:46900)
+	(envelope-from <clg@kaod.org>) id 1fNIUZ-0008Al-Fb
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 09:47:24 -0400
+Received: from 17.mo3.mail-out.ovh.net ([87.98.178.58]:34227)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <agx@sigxcpu.org>)
-	id 1eeI49-0003UX-Bv; Wed, 24 Jan 2018 05:14:01 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by honk.sigxcpu.org (Postfix) with ESMTP id 55B38FB03;
-	Wed, 24 Jan 2018 11:13:59 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at honk.sigxcpu.org
-Received: from honk.sigxcpu.org ([127.0.0.1])
-	by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jS_DxjBQ_6ik; Wed, 24 Jan 2018 11:13:58 +0100 (CET)
-Received: by bogon.sigxcpu.org (Postfix, from userid 1000)
-	id 123F345ED5; Wed, 24 Jan 2018 11:13:58 +0100 (CET)
-Date: Wed, 24 Jan 2018 11:13:58 +0100
-From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
-To: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <20180124101358.GA5028@bogon.m.sigxcpu.org>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNIUZ-00089W-8j
+	for qemu-devel@nongnu.org; Mon, 28 May 2018 09:47:19 -0400
+Received: from player729.ha.ovh.net (unknown [10.109.108.70])
+	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 7A2BE1B999A
+	for <qemu-devel@nongnu.org>; Mon, 28 May 2018 15:47:16 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: postmaster@kaod.org)
+	by player729.ha.ovh.net (Postfix) with ESMTPSA id 591A65E00E0;
+	Mon, 28 May 2018 15:47:11 +0200 (CEST)
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+To: Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20180528124621.22977-1-joel@jms.id.au>
+Message-ID: <9959794d-6d3b-b797-bfc8-b548d54378ad@kaod.org>
+Date: Mon, 28 May 2018 15:47:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-User-Agent: Mutt/1.9.2 (2017-12-15)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 24.134.29.49
-Subject: [Qemu-arm] [PATCH] linux-user: Fix register used for 6th and 7th
- syscall argument on aarch64
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20180528124621.22977-1-joel@jms.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 604608251877034923
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheeigdeijecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 87.98.178.58
+Subject: Re: [Qemu-devel] [PATCH] aspeed_scu: Implement RNG register
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Riku Voipio <riku.voipio@iki.fi>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V5phE1VaNEbF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8+6G2CC+hlOP
 
-Unbreaks the testcase from
+Hello Joel, 
 
-    http://lists.nongnu.org/archive/html/qemu-arm/2018-01/msg00514.html
+On 05/28/2018 02:46 PM, Joel Stanley wrote:
+> The ASPEED SoCs contain a single register that returns random data when
+> read. This models that register so that guests can use it.
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  hw/misc/aspeed_scu.c | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index 5e6d5744eeca..8fa0cecf0fa1 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -16,6 +16,7 @@
+>  #include "qapi/visitor.h"
+>  #include "qemu/bitops.h"
+>  #include "qemu/log.h"
+> +#include "crypto/random.h"
+>  #include "trace.h"
+>  
+>  #define TO_REG(offset) ((offset) >> 2)
+> @@ -154,6 +155,18 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU_NR_REGS] = {
+>       [BMC_DEV_ID]      = 0x00002402U
+>  };
+>  
+> +static uint32_t aspeed_scu_get_random(void)
+> +{
+> +    Error *err = NULL;
+> +    uint32_t num;
+> +
+> +    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
+> +        error_report_err(err);
+> +    }
+> +
+> +    return num;
+> +}
+> +
+>  static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
+>  {
+>      AspeedSCUState *s = ASPEED_SCU(opaque);
+> @@ -167,6 +180,9 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
+>      }
+>  
+>      switch (reg) {
+> +    case RNG_DATA:
+> +        return aspeed_scu_get_random();
 
-Thanks to Laurent Vivier for spotting the 7th one.
-Signed-off-by: Guido G=FCnther <agx@sigxcpu.org>
----
- linux-user/host/aarch64/safe-syscall.inc.S | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+may be we could test bit 1 of RNG_CTRL to check if it is enabled or not.
 
-diff --git a/linux-user/host/aarch64/safe-syscall.inc.S b/linux-user/host=
-/aarch64/safe-syscall.inc.S
-index 58a2329b37..bc1f5a9792 100644
---- a/linux-user/host/aarch64/safe-syscall.inc.S
-+++ b/linux-user/host/aarch64/safe-syscall.inc.S
-@@ -36,7 +36,7 @@ safe_syscall_base:
- 	 *               and return the result in x0
- 	 * and the syscall instruction needs
- 	 *               x8 =3D=3D syscall number
--	 *               x0 ... x7 =3D=3D syscall arguments
-+	 *               x0 ... x6 =3D=3D syscall arguments
- 	 *               and returns the result in x0
- 	 * Shuffle everything around appropriately.
- 	 */
-@@ -47,8 +47,8 @@ safe_syscall_base:
- 	mov	x2, x4
- 	mov	x3, x5
- 	mov	x4, x6
--	mov	x6, x7
--	ldr	x7, [sp]
-+	mov	x5, x7
-+	ldr	x6, [sp]
-=20
- 	/* This next sequence of code works in conjunction with the
- 	 * rewind_if_safe_syscall_function(). If a signal is taken
---=20
-2.15.1
+> +        break;
+>      case WAKEUP_EN:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: Read of write-only offset 0x%" HWADDR_PRIx "\n",
+> @@ -287,6 +303,9 @@ static void aspeed_scu_realize(DeviceState *dev, Error **errp)
+>                            TYPE_ASPEED_SCU, SCU_IO_REGION_SIZE);
+>  
+>      sysbus_init_mmio(sbd, &s->iomem);
+> +
+> +    if (qcrypto_random_init(errp))
+> +        return;
+>  }
+
+Isn't this routine called from main() already ? 
+
+C. 
+
+>  
+>  static const VMStateDescription vmstate_aspeed_scu = {
+> 
 

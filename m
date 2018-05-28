@@ -1,93 +1,93 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2529807wre;
-        Mon, 28 May 2018 07:22:08 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJpQggazFK1q/XT8u2m/k7FBHyXnBTbSshpdRdMVuYe+VTDZlPRXIinbjCVdL0byoDHKaqG
-X-Received: by 2002:ac8:3212:: with SMTP id x18-v6mr5219565qta.44.1527517328644;
-        Mon, 28 May 2018 07:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527517328; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2529862wre;
+        Mon, 28 May 2018 07:22:12 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJ5MBUGlSDJs6q1ZLxqY3M+RSnBSt9pVOYwpjAo6d9ItmjU+ppprMqwg+YOXJnNUa68SBEw
+X-Received: by 2002:a0c:8cc5:: with SMTP id q5-v6mr12436801qvb.60.1527517332543;
+        Mon, 28 May 2018 07:22:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527517332; cv=none;
         d=google.com; s=arc-20160816;
-        b=zM8QvJE5tQFHfd++u/qhzsp+iMvkVVladNQ3GIipUfZxgfKet9tnYvXufzbByiYhv2
-         iftZgA/SG2+hxDw9JwaSfjr9W6x4XWH6KPLCnNQ90zYZ70qkD6zQq0wqV3Ksmq4tadaa
-         jEuyFaQ02oEVyqWKRT6bWIXmPOtR03iX+FcedKrPtcJNaVkK0VYzYo5e5/MVM0nVl7AM
-         7kmMxQLifNn5t4InJDsxFstPVkpGPxWsISJ5pYmMAFzxhCnzJE4Df0c8PD5A2c4PyVq/
-         kBfpdLRTbNI1xrmKdXtC8VRhshx/UjegN4RwJM1jEYj6gAq45ggfuIP0kbhhOqItaZvo
-         deVg==
+        b=08B7FCvSQ2x6UDkgiGfadUnliqvH70fWTlkY3tAoKWsTWdGxF1/kzVi9yWryBvb4kG
+         mY2QUNAqQlBdLpJi7wFkq0vmarapJD78P2x1CadVWKC9X7Sfi+eI3i19S8CkIpnWbl9Z
+         JDw3/ctYmBJR+yDzM5naqhn7zNDxElUjJ0bSRjryjdimliZHS4bdjBpeyAP2w8l3fxxI
+         XCHTRzTpWEMqHUfQVug9uWtorSJ7kFr8h14C+LC4XiO0RecT6pzWG5ButugBKvELODDg
+         BPFmJDIFLp3thrnUAVJjia18rdOsQ3q7DogHet/egquRlwYZPMgxHmTIBOXTdCS9zULo
+         uqoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:arc-authentication-results;
-        bh=XNxWiIDFsgsyIxisDD3R/8b++KK4xFKrrGak0JFMiqs=;
-        b=Gv4QL9p7bsjzOThuc5bL8gNQqb19/ssvmSSd0kbS2nZqE4orDHjLNUdJpKh7FJ6kGs
-         2V+JXuDkBzOzvqLjR4oBD5HPXm2HoqdGtuIUdkTESFC80g1vTiYvrfG+ePqMZOq+eZQj
-         kJnkjVYhd0dolwnTlHTIYonGCzJw9E4N2Guyx3PPHAc5tkpKed9rbhC/9Bf/mAt/y4+C
-         ynvnETTwXoYo96Yg3GBCri7+tcIJY1WJHbd51lVDooEdou543NYScgzlR/EhgrU1l75+
-         BIqw3XXd45bO9Ys3LEOUHUyxIOO4KRSBte4puAPKnlXhEOh585MO6UIk+cPJIZ7n1b7A
-         +e9w==
+        bh=UGJOftHOwOKL3YYxEDbX4oYX5Iy5ZWP+UQ5QeLvr8oE=;
+        b=ZnBErYE/YDUMa3UwYqeCRxh/eFmAdI0OwXdOx32Niy9pH0WEOUSvHLeDEeYgGEr6sm
+         hpuh6dStr46TAZo7JtEnulpt6MigWmOmZ85IbI6To4/8HPoqvz7Gfaz2a2xsf+shScoP
+         XmQuT1bvxXMiIceISvNTpWDSPGL1RBAjXryF3rEOvP6peL3/dkwS/TaxbMk4R97QQJVG
+         joPKfuwEsfIsT71VqVCUaZqu+cVYCuvEmlfo83dyX5r0NUTW1Ev95YDVg1IW9VEUaQWz
+         rLgJmNuYVQl3JJGupBEjthO4+23slTktpV7sJIM6W8w9lPx0WOQov3vcOmFwqe9+5+NM
+         fboA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 18-v6si814909qvy.277.2018.05.28.07.22.08
+        by mx.google.com with ESMTPS id n7-v6si4675179qvh.44.2018.05.28.07.22.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 07:22:08 -0700 (PDT)
+        Mon, 28 May 2018 07:22:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56485 helo=lists.gnu.org)
+Received: from localhost ([::1]:56487 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNJ2G-0007yg-3m
-	for alex.bennee@linaro.org; Mon, 28 May 2018 10:22:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45220)
+	id 1fNJ2K-00083v-0q
+	for alex.bennee@linaro.org; Mon, 28 May 2018 10:22:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45236)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fNJ1y-0007x1-Lc
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:21:51 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fNJ1z-0007xv-Qu
+	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:21:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fNJ1v-0006O0-FB
-	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:21:50 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59172 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fNJ1y-0006PK-Bb
+	for qemu-arm@nongnu.org; Mon, 28 May 2018 10:21:51 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59178 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fNJ1v-0006NS-AD; Mon, 28 May 2018 10:21:47 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fNJ1y-0006P5-5n; Mon, 28 May 2018 10:21:50 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D4B29401EF04;
-	Mon, 28 May 2018 14:21:46 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B7BFC401EF05;
+	Mon, 28 May 2018 14:21:49 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
 	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 255151C596;
-	Mon, 28 May 2018 14:21:37 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1DCB82166BB2;
+	Mon, 28 May 2018 14:21:47 +0000 (UTC)
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-6-shameerali.kolothum.thodi@huawei.com>
+	<20180516152026.2920-5-shameerali.kolothum.thodi@huawei.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <12945c4d-97f6-df0c-1046-b5d981624c18@redhat.com>
-Date: Mon, 28 May 2018 16:21:36 +0200
+Message-ID: <fb37761c-6e74-5aca-b258-8d8c060ca4dc@redhat.com>
+Date: Mon, 28 May 2018 16:21:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20180516152026.2920-6-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20180516152026.2920-5-shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.5]);
-	Mon, 28 May 2018 14:21:46 +0000 (UTC)
+	Mon, 28 May 2018 14:21:49 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 28 May 2018 14:21:46 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	Mon, 28 May 2018 14:21:49 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC v2 5/6] hw/arm: ACPI SRAT changes to
- accommodate non-contiguous mem
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 4/6] hw/arm: Changes required
+ to accommodate non-contiguous DT mem nodes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,69 +104,196 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, jonathan.cameron@huawei.com,
 	zhaoshenglong@huawei.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UhgWE802mSyA
+X-TUID: D905HiomkMFC
 
 Hi Shameer,
 
 On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> This is in preparation for the next patch where initial ram is split
-> into a non-pluggable chunk and a pc-dimm modeled mem if  the vaild
-valid
-> iova regions are non-contiguous.
+> This makes changes to the DT mem node creation such that its easier
+> to add non-contiguous mem modeled as non-pluggable and a pc-dimm
+> mem later.
+See comments below. I think you should augment the description here with
+what the patch exactly adds:
+- a new helper function
+- a new dimm node?
+
+and if possible split functional changes into separate patches?
 > 
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/arm/virt-acpi-build.c | 24 ++++++++++++++++++++----
->  1 file changed, 20 insertions(+), 4 deletions(-)
+>  hw/arm/boot.c        | 91 ++++++++++++++++++++++++++++++++++++----------------
+>  include/hw/arm/arm.h | 12 +++++++
+>  2 files changed, 75 insertions(+), 28 deletions(-)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index c7c6a57..8d17b40 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -488,7 +488,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      AcpiSratProcessorGiccAffinity *core;
->      AcpiSratMemoryAffinity *numamem;
->      int i, srat_start;
-> -    uint64_t mem_base;
-> +    uint64_t mem_base, mem_sz, mem_len;
->      MachineClass *mc = MACHINE_GET_CLASS(vms);
->      const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 26184bc..73db0aa 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -486,6 +486,27 @@ static void fdt_add_psci_node(void *fdt)
+>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+>  }
 >  
-> @@ -505,12 +505,28 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->          core->flags = cpu_to_le32(1);
+> +static char *create_memory_fdt(void *fdt, uint32_t acells, hwaddr mem_base,
+> +                                          uint32_t scells, hwaddr mem_len)
+Other dt node creation functions are named fdt_add_*_node
+> +{
+> +    char *nodename = NULL;
+> +    int rc;
+> +
+> +    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+> +    qemu_fdt_add_subnode(fdt, nodename);
+> +    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+> +    rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
+> +                                      scells, mem_len);
+> +    if (rc < 0) {
+> +        fprintf(stderr, "couldn't set %s/reg\n", nodename);
+> +        g_free(nodename);
+> +        return NULL;
+> +    }
+> +
+> +    return nodename;
+> +}
+> +
+> +
+>  /**
+>   * load_dtb() - load a device tree binary image into memory
+>   * @addr:       the address to load the image at
+> @@ -567,50 +588,64 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>          goto fail;
 >      }
 >  
-> -    mem_base = vms->memmap[VIRT_MEM].base;
-> +    mem_base = vms->bootinfo.loader_start;
-> +    mem_sz = vms->bootinfo.loader_start;
->      for (i = 0; i < nb_numa_nodes; ++i) {
->          numamem = acpi_data_push(table_data, sizeof(*numamem));
-> -        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
-> +        mem_len = MIN(numa_info[i].node_mem, mem_sz);
-same question as in previous patch
+> +    /*
+> +     * Turn the /memory node created before into a NOP node, then create
+> +     * /memory@addr nodes for all numa nodes respectively.
+> +     */
+> +    qemu_fdt_nop_node(fdt, "/memory");
+I don't really understand why this gets moved outside of the if
+(nb_numa_nodes > 0) { check. Also the comment above mention numa nodes
+whereas it are not necessarily in the numa case anymore.
+> +
+>      if (nb_numa_nodes > 0) {
+> -        /*
+> -         * Turn the /memory node created before into a NOP node, then create
+> -         * /memory@addr nodes for all numa nodes respectively.
+> -         */
+> -        qemu_fdt_nop_node(fdt, "/memory");
+> +        hwaddr mem_sz;
+> +
+>          mem_base = binfo->loader_start;
+> +        mem_sz = binfo->ram_size;
+>          for (i = 0; i < nb_numa_nodes; i++) {
+> -            mem_len = numa_info[i].node_mem;
+> -            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+> -            qemu_fdt_add_subnode(fdt, nodename);
+> -            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+> -            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+> -                                              acells, mem_base,
+> +            mem_len = MIN(numa_info[i].node_mem, mem_sz);
+I fail to understand how this change relates to the topic of this patch.
+If this adds a consistency check, this may be put in another patch?
+> +
+> +            nodename = create_memory_fdt(fdt, acells, mem_base,
+>                                                scells, mem_len);
+You could simplify the review by just introducing the new dt node
+creation function in a 1st patch and then introduce the changes to
+support non contiguous DT mem nodes.
+> -            if (rc < 0) {
+> -                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
+> -                        i);
+> +            if (!nodename) {
+>                  goto fail;
+>              }
+>  
+>              qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
+> -            mem_base += mem_len;
+>              g_free(nodename);
+> +            mem_base += mem_len;
+> +            mem_sz -= mem_len;
+> +            if (!mem_sz) {
+> +                break;
+So what does it mean practically if we break here. Not all the num nodes
+will function? Outputting a mesg for the end user may be useful.
+> +           }
+>          }
+> -    } else {
+> -        Error *err = NULL;
+>  
+> -        rc = fdt_path_offset(fdt, "/memory");
+> -        if (rc < 0) {
+> -            qemu_fdt_add_subnode(fdt, "/memory");
+> -        }
+> +        /* Create the node for initial pc-dimm ram, if any */
+> +        if (binfo->dimm_mem) {
+>  
+> -        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
+> -            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
+> +            nodename = create_memory_fdt(fdt, acells, binfo->dimm_mem->base,
+> +                                              scells, binfo->dimm_mem->size);
+> +            if (!nodename) {
+> +                goto fail;
+> +            }
+> +            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id",
+> +                                                 binfo->dimm_mem->node);
+> +            g_free(nodename);
+>          }
+>  
+> -        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+> -                                          acells, binfo->loader_start,
+> -                                          scells, binfo->ram_size);
+> -        if (rc < 0) {
+> -            fprintf(stderr, "couldn't set /memory/reg\n");
+> +    } else {
+> +
+> +        nodename = create_memory_fdt(fdt, acells, binfo->loader_start,
+> +                                         scells, binfo->ram_size);
+> +        if (!nodename) {
+>              goto fail;
+>          }
+> +
+> +        if (binfo->dimm_mem) {
+> +            nodename = create_memory_fdt(fdt, acells, binfo->dimm_mem->base,
+> +                                              scells, binfo->dimm_mem->size);
+> +            if (!nodename) {
+> +                goto fail;
+> +            }
+> +            g_free(nodename);
+> +        }
+as this code gets duplicated, a helper function may be relevant?
 
 Thanks
 
 Eric
-> +        build_srat_memory(numamem, mem_base, mem_len, i,
->                            MEM_AFFINITY_ENABLED);
-> -        mem_base += numa_info[i].node_mem;
-> +        mem_base += mem_len;
-> +        mem_sz -= mem_len;
-> +        if (!mem_sz) {
-> +            break;
-> +        }
-> +    }
-> +
-> +    /* Create table for initial pc-dimm ram, if any */
-> +    if (vms->bootinfo.dimm_mem) {
-> +        numamem = acpi_data_push(table_data, sizeof(*numamem));
-> +        build_srat_memory(numamem, vms->bootinfo.dimm_mem->base,
-> +                          vms->bootinfo.dimm_mem->size,
-> +                          vms->bootinfo.dimm_mem->node,
-> +                          MEM_AFFINITY_ENABLED);
-> +
 >      }
 >  
->      build_header(linker, table_data, (void *)(table_data->data + srat_start),
+>      rc = fdt_path_offset(fdt, "/chosen");
+> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
+> index ce769bd..0ee3b4e 100644
+> --- a/include/hw/arm/arm.h
+> +++ b/include/hw/arm/arm.h
+> @@ -48,6 +48,12 @@ typedef struct {
+>      ARMCPU *cpu; /* handle to the first cpu object */
+>  } ArmLoadKernelNotifier;
+>  
+> +struct dimm_mem_info {
+> +    int node;
+> +    hwaddr base;
+> +    hwaddr size;
+> +};
+> +
+>  /* arm_boot.c */
+>  struct arm_boot_info {
+>      uint64_t ram_size;
+> @@ -124,6 +130,12 @@ struct arm_boot_info {
+>      bool secure_board_setup;
+>  
+>      arm_endianness endianness;
+> +
+> +    /* This is used to model a pc-dimm based mem if the valid iova region
+> +     * is non-contiguous.
+> +     */
+> +    struct dimm_mem_info *dimm_mem;
+> +
+>  };
+>  
+>  /**
 > 

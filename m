@@ -1,86 +1,87 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3785864wre;
-        Tue, 29 May 2018 09:57:49 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIDAZCDr5PMaH6fymFWfJC867UU6kUbckDdZ48ctM4MAn6aZWcL7fu7IP162zkTF+vNNDyQ
-X-Received: by 2002:a37:cbd3:: with SMTP id u80-v6mr15129566qkl.290.1527613069474;
-        Tue, 29 May 2018 09:57:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527613069; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3801440wre;
+        Tue, 29 May 2018 10:12:38 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJPkKlCy6t9whUiUSj29SvfgwYtziq0rE+Np9HiyNu9trCu/n23u1OopbRsOWUrkdlFQoA+
+X-Received: by 2002:a37:88c1:: with SMTP id k184-v6mr16666427qkd.365.1527613958323;
+        Tue, 29 May 2018 10:12:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527613958; cv=none;
         d=google.com; s=arc-20160816;
-        b=AhVIjr2BByIyb+CarVcjrTTgp7Md5NyqzP8cMljJJX1bNOMWcDmQXVjeOEuix+kmwO
-         tWhVhvaHwtdBQ/nwqSsV/iK2ybLegSPNJuK6Tc759Zb5IHtunSwz1PlmWLNHj3fW0o+4
-         wGGGfxDZlr1iCoJy3s4yTcSq7k0D3GwaSQTDvbGa9chMLJrBKOjcmsEauyWpZfko6Q0w
-         OwxM8R2hQvplORrDRu9pI04FChsetUXJKmboMWeqt+oQzO19Lm++J51gyhc6OkduknDP
-         NQqqwa/DT/LhAWnyDnI1jU+19VhH79vNGWecG0svSOFoiz8knXpubRAK0aqDTvJ45IQc
-         OkhA==
+        b=Fyj61BKTfIhWDZqXJGHjJrZd8rBAvFESovowYimNltUg7hMg34uxS40wLFMo59LE/R
+         sw5XAmdmGkBD69IZHUP0pkw5whLAEkAnElsyCB+6DI2snGT/+oJOeeQQpHgiWJUE0Xu6
+         PCZggqOhcGDCj7EfYygqDe13SSOSXCUh6bRoVWqb1yZBuKW9KHrV/QNeJK0JMv5JrLsi
+         HnYMrc0IUAN3yzkBpnvI/rBQ7k4eHpkkGvlMeI2zzKBihHHvXiGitZn/xn3YMQr28HUm
+         12gu/mtHfzIqCpi6PhbcP0XS/Ttqo+xxcLhnIH0q/7tBiBBRKHoOKPvGnu77IIJccuHD
+         wSKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=Q10GVMNOLsLs7RLoiNP+ClbpVGkXldYCu7pOif+kUKQ=;
-        b=O92e6VeAhr0snTY3ZHTT9lSyss7y8oSEx10MIfvnnsXzDGbA0KKqyDOtpdwlMBZdp5
-         NflOMWiawAszF11Vzqvy4eqPwY3v7ysxd9w3KYS0iVtCUwoHkIbLxJS+6MuN6UpDPPc9
-         rN3Ks06ptdklPumycYgC/eu1E/ZjpboSYNw9jWbbLMe8cL29D0g9Przr7SNaTsiHKlqJ
-         3Tngaf4MpM1tgye4fUuSlIGFJiS9eNF56qRUi3hUMA6pJA5g8EXGjsByUIeBfluhXqaL
-         eHOjAXbfMR17l3fWSJ0E1ic6Bp2WqxwHjkpdpATyRamyyRwRe2O2L2luQr/GIn61zBOn
-         BGWA==
+        bh=4PBDXEGTvfCiF6nMYcu7aJ+htHShZRxB1qbNLelIvvk=;
+        b=ChfDF1aa9tDir584f6daGd7VWjPIwoJS2sCXKpx2x+pU5/tpoWxg3Bh+Cc5/PkYig3
+         Sm74DlNH/MetZ/yAIWdGFwh8+bHWLEC8fVzzSL8MxBa5sEQFWtNt9M8P7xYFR23T0+zV
+         sx98PjdPMZQ57i3ixLyzNlE+EjSSriGrUgGjYCdbU7fQdDptVd/DoNr6yUFN+lNu7PR4
+         2/Qf6LpGEPI/LrLdL0Zaj1opLTVjAiTYj4Ev5z8iXW9xXtTclPNbQb1nVoK0/NbmZXI5
+         UCzjh1OayexK46EvUZJZGvdUjHGJi6SuaNq1oTo29bByuQRdwfXVwtTxnW2UA0ePhHzy
+         o76g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e31-v6si3471293qve.100.2018.05.29.09.57.49
+        by mx.google.com with ESMTPS id j32-v6si6671320qtj.47.2018.05.29.10.12.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 09:57:49 -0700 (PDT)
+        Tue, 29 May 2018 10:12:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34008 helo=lists.gnu.org)
+Received: from localhost ([::1]:34050 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNhwT-0008T0-42
-	for alex.bennee@linaro.org; Tue, 29 May 2018 12:57:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52183)
+	id 1fNiAn-0002GY-QF
+	for alex.bennee@linaro.org; Tue, 29 May 2018 13:12:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNhwL-0008RY-8i
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 12:57:42 -0400
+	(envelope-from <clg@kaod.org>) id 1fNiAb-0002G9-Lo
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 13:12:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNhwH-0005wu-Br
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 12:57:41 -0400
-Received: from 8.mo178.mail-out.ovh.net ([46.105.74.227]:58143)
+	(envelope-from <clg@kaod.org>) id 1fNiAY-000766-FY
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 13:12:25 -0400
+Received: from 9.mo173.mail-out.ovh.net ([46.105.72.44]:51997)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNhwH-0005vv-5Y
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 12:57:37 -0400
-Received: from player771.ha.ovh.net (unknown [10.109.105.30])
-	by mo178.mail-out.ovh.net (Postfix) with ESMTP id A358B166F7
-	for <qemu-arm@nongnu.org>; Tue, 29 May 2018 18:57:35 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNiAY-00070L-8i
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 13:12:22 -0400
+Received: from player693.ha.ovh.net (unknown [10.109.122.81])
+	by mo173.mail-out.ovh.net (Postfix) with ESMTP id 59CF6C32E7
+	for <qemu-arm@nongnu.org>; Tue, 29 May 2018 19:12:20 +0200 (CEST)
 Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
 	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
-	by player771.ha.ovh.net (Postfix) with ESMTPSA id 101488400AA;
-	Tue, 29 May 2018 18:57:30 +0200 (CEST)
+	by player693.ha.ovh.net (Postfix) with ESMTPSA id DDD9C44008E;
+	Tue, 29 May 2018 19:12:14 +0200 (CEST)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	qemu-arm@nongnu.org
 References: <20180529062838.20556-1-clg@kaod.org>
-	<fac124fe-d816-1bb2-c8b3-d1a0213f968b@amsat.org>
+	<20180529062838.20556-6-clg@kaod.org>
+	<48fac48c-168d-70b6-5020-1faac584804e@amsat.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <15666557-66b1-78e0-1062-b3a28ecaf580@kaod.org>
-Date: Tue, 29 May 2018 18:57:30 +0200
+Message-ID: <9849ec14-a8c6-99a6-ac64-5561dd7334fb@kaod.org>
+Date: Tue, 29 May 2018 19:12:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.5.2
 MIME-Version: 1.0
-In-Reply-To: <fac124fe-d816-1bb2-c8b3-d1a0213f968b@amsat.org>
+In-Reply-To: <48fac48c-168d-70b6-5020-1faac584804e@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 9691464923922467648
+X-Ovh-Tracer-Id: 9940570279085640512
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheekgddutdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheekgdduudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.74.227
-Subject: Re: [Qemu-arm] [PATCH 0/6] ftgmac100 and NC-SI enhancements for the
- Aspeed SoC
+X-Received-From: 46.105.72.44
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 5/6] slirp/ncsi: add a "Get
+ Parameter" response
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,47 +97,96 @@ Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QfTVmk3wHmHT
+X-TUID: 3eWOhAcHk9Sy
 
-On 05/29/2018 02:34 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+On 05/29/2018 03:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
 > Hi C=C3=A9dric,
 >=20
-> On 05/29/2018 03:28 AM, C=C3=A9dric Le Goater wrote:
->> Hello,
->>
->> Here is a couple of enhancements and fixes for the ftgmac100 NIC used
->> on the Aspeed SoC. It includes VLAN and multicast support.
->>
->> Following is an assorted set of changes for the NC-SI backend also
->> used on the Aspeed SoC when soldered on OpenPOWER boards. These fix a
->> few problems found when running OpenBMC on aspeed QEMU machines.
->>
->> Thanks,
->>
->> C=C3=A9dric.
->>
->> C=C3=A9dric Le Goater (6):
->>   ftgmac100: compute maximum frame size depending on the protocol
->>   ftgmac100: add IEEE 802.1Q VLAN support
->>   net/ftgmac100: fix multicast hash routine
->>   slirp/ncsi: fix "Get Version ID" payload length
->>   slirp/ncsi: add a "Get Parameter" response
->>   slirp/ncsi: add checksum support
+> In title: "Get Parameters" (plural)
 >=20
-> Doesn't it make more sens to have slirp patches applied previous to the
-> ftgmac100 model?
+> On 05/29/2018 03:28 AM, C=C3=A9dric Le Goater wrote:
+>> This is a minimum response to exercise the kernel.
+>=20
+> This type is mandatory in DMTF Standard v1.0.1 indeed (DSP0222).
+>=20
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> ---
+>>  slirp/ncsi.c | 23 ++++++++++++++++++++++-
+>>  1 file changed, 22 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/slirp/ncsi.c b/slirp/ncsi.c
+>> index 02d0e9def3e8..f00253641ea4 100644
+>> --- a/slirp/ncsi.c
+>> +++ b/slirp/ncsi.c
+>> @@ -35,6 +35,27 @@ static int ncsi_rsp_handler_gls(struct ncsi_rsp_pkt=
+_hdr *rnh)
+>>      return 0;
+>>  }
+>> =20
+>> +/* Get Parameter */
+>=20
+> "Parameters"
+>=20
+>> +static int ncsi_rsp_handler_gp(struct ncsi_rsp_pkt_hdr *rnh)
+>> +{
+>> +    struct ncsi_rsp_gp_pkt *rsp =3D (struct ncsi_rsp_gp_pkt *) rnh;
+>> +
+>> +    rsp->mac_cnt =3D 0x0;
+>=20
+> "MAC Address Count: The number of MAC addresses supported by the channe=
+l"
+>=20
+> 0 means "no [MAC Address] filter [in use]"
+>=20
+>> +    rsp->mac_enable =3D 0x0;
+>=20
+> "MAC Address Flags: all [MAC Address filters] disabled" ...
+>=20
+>> +
+>> +    /* TODO: provide the guest configured MAC */
+>> +    rsp->mac[0] =3D 0xaa;
+>> +    rsp->mac[1] =3D 0xbb;
+>> +    rsp->mac[2] =3D 0xcc;
+>> +    rsp->mac[3] =3D 0xdd;
+>> +    rsp->mac[4] =3D 0xee;
+>> +    rsp->mac[5] =3D 0xff;
+>=20
+> So there is no need to set this filter,
+> or you have to set:
+>=20
+>     rsp->mac_cnt =3D 1;
+>     rsp->mac_enable =3D 1 << 0;
+>=20
+> Also, you forgot to set:
+>=20
+>     rsp->vlan_cnt =3D 0;
+>     rsp->vlan_enable =3D 0;
 
-why ? They are not necessarily dependent.=20
+
+yes. I will clean up the handler.
+
+Thanks,
 
 C.
 
->=20
->>
->>  include/hw/net/ftgmac100.h |  7 +++++-
->>  hw/net/ftgmac100.c         | 59 +++++++++++++++++++++++++++++++++++--=
----------
->>  slirp/ncsi.c               | 54 +++++++++++++++++++++++++++++++++++++=
------
->>  3 files changed, 99 insertions(+), 21 deletions(-)
+>> +
+>> +    /* more data follows */
+>> +
+>> +    return 0;
+>> +}
+>> +
+>>  static const struct ncsi_rsp_handler {
+>>          unsigned char   type;
+>>          int             payload;
+>> @@ -62,7 +83,7 @@ static const struct ncsi_rsp_handler {
+>>          { NCSI_PKT_RSP_SNFC,    4, NULL },
+>>          { NCSI_PKT_RSP_GVI,    40, NULL },
+>>          { NCSI_PKT_RSP_GC,     32, ncsi_rsp_handler_gc },
+>> -        { NCSI_PKT_RSP_GP,     -1, NULL },
+>> +        { NCSI_PKT_RSP_GP,     40, ncsi_rsp_handler_gp },
+>>          { NCSI_PKT_RSP_GCPS,  172, NULL },
+>>          { NCSI_PKT_RSP_GNS,   172, NULL },
+>>          { NCSI_PKT_RSP_GNPTS, 172, NULL },
 >>
 

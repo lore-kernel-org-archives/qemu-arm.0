@@ -1,192 +1,159 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3801440wre;
-        Tue, 29 May 2018 10:12:38 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJPkKlCy6t9whUiUSj29SvfgwYtziq0rE+Np9HiyNu9trCu/n23u1OopbRsOWUrkdlFQoA+
-X-Received: by 2002:a37:88c1:: with SMTP id k184-v6mr16666427qkd.365.1527613958323;
-        Tue, 29 May 2018 10:12:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527613958; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3835086wre;
+        Tue, 29 May 2018 10:50:48 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIbgsuuOQ+d12dNLtbJc0Zn2X6ofhdpmE/FXgGvIpL6xxlV4MtDO/EUFyE1WEaSwXdsAwuk
+X-Received: by 2002:ac8:2b5c:: with SMTP id 28-v6mr17451165qtv.117.1527616248241;
+        Tue, 29 May 2018 10:50:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527616248; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fyj61BKTfIhWDZqXJGHjJrZd8rBAvFESovowYimNltUg7hMg34uxS40wLFMo59LE/R
-         sw5XAmdmGkBD69IZHUP0pkw5whLAEkAnElsyCB+6DI2snGT/+oJOeeQQpHgiWJUE0Xu6
-         PCZggqOhcGDCj7EfYygqDe13SSOSXCUh6bRoVWqb1yZBuKW9KHrV/QNeJK0JMv5JrLsi
-         HnYMrc0IUAN3yzkBpnvI/rBQ7k4eHpkkGvlMeI2zzKBihHHvXiGitZn/xn3YMQr28HUm
-         12gu/mtHfzIqCpi6PhbcP0XS/Ttqo+xxcLhnIH0q/7tBiBBRKHoOKPvGnu77IIJccuHD
-         wSKA==
+        b=m80Q1w4qwgt/Ony4gjfffxQlMWpLemZdOF+GSny6GgR2rbgpeMh6IyN4MFZ4ZWT6wh
+         BWR0zF7BD2oZZ5VzKhcu+tZ/skHis3oVk9b4+XlSx1pfD2kjdS84mP8wvZMYljsaNA0c
+         c6CmchfU6wTwHKIhNQe/fI6LcRcCUHHmlQjbOyBXM68g6HWVv0Mn74QMj74RNrd1kjwM
+         dVn7FW+HeLmSXbl+ObLQHoTU+RGg7MWzJoZUE+q8wvjtyKhiUxU9wqb3ZJZtI6PJGUpI
+         YVfnJ5lY0bIyobLt19JH7qiDYYTI5V6z8mJT5DCcPKEJGJqj5mfnwkjR7D1fc3VGeMYA
+         FBxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=4PBDXEGTvfCiF6nMYcu7aJ+htHShZRxB1qbNLelIvvk=;
-        b=ChfDF1aa9tDir584f6daGd7VWjPIwoJS2sCXKpx2x+pU5/tpoWxg3Bh+Cc5/PkYig3
-         Sm74DlNH/MetZ/yAIWdGFwh8+bHWLEC8fVzzSL8MxBa5sEQFWtNt9M8P7xYFR23T0+zV
-         sx98PjdPMZQ57i3ixLyzNlE+EjSSriGrUgGjYCdbU7fQdDptVd/DoNr6yUFN+lNu7PR4
-         2/Qf6LpGEPI/LrLdL0Zaj1opLTVjAiTYj4Ev5z8iXW9xXtTclPNbQb1nVoK0/NbmZXI5
-         UCzjh1OayexK46EvUZJZGvdUjHGJi6SuaNq1oTo29bByuQRdwfXVwtTxnW2UA0ePhHzy
-         o76g==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=PQP2J5H1byVn15zhYlrWEBPIIi4aeUQ+7v92hykcci0=;
+        b=dyMr7Mxv4QJ1RitPtGXFwHoxjvcgNAdsxm0iivKVatZZ3CwIzjwJTsQfUS/ArDmEt9
+         suvaTsOiPtVTZrKKWDuTse9zhRPYiMqCktJ3EqWmfQXQfZYRL/OFJce2512HXTvqgx+C
+         IvDnTASY2Lq1ZmPqtHaMIRZ4/JUp7c9O0bjB/8q9RV7Iw1VehYbQ522XKqGvYpHkp3qU
+         Hk7pQqXVUd6ibCFRJeT+z3oLuCa+7Cq2BKapQWaUBZgTrIlzisRH5QJXWMXkqtuD4GJ6
+         /Z9EEoioOb/c3d70Bh2VSLVAjQor82IjqLIW4+A54Xb1lXJSPqeu8uIkgLHcmGjWY0E/
+         vajg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R/dOXEer;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j32-v6si6671320qtj.47.2018.05.29.10.12.38
+        by mx.google.com with ESMTPS id m5-v6si2484920qvf.19.2018.05.29.10.50.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 10:12:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 29 May 2018 10:50:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34050 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=R/dOXEer;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34249 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNiAn-0002GY-QF
-	for alex.bennee@linaro.org; Tue, 29 May 2018 13:12:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55736)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNilj-0005Vw-Kt
+	for alex.bennee@linaro.org; Tue, 29 May 2018 13:50:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36323)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNiAb-0002G9-Lo
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 13:12:26 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNijZ-0004Gg-DJ
+	for qemu-devel@nongnu.org; Tue, 29 May 2018 13:48:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNiAY-000766-FY
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 13:12:25 -0400
-Received: from 9.mo173.mail-out.ovh.net ([46.105.72.44]:51997)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNiAY-00070L-8i
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 13:12:22 -0400
-Received: from player693.ha.ovh.net (unknown [10.109.122.81])
-	by mo173.mail-out.ovh.net (Postfix) with ESMTP id 59CF6C32E7
-	for <qemu-arm@nongnu.org>; Tue, 29 May 2018 19:12:20 +0200 (CEST)
-Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
-	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
-	by player693.ha.ovh.net (Postfix) with ESMTPSA id DDD9C44008E;
-	Tue, 29 May 2018 19:12:14 +0200 (CEST)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org
-References: <20180529062838.20556-1-clg@kaod.org>
-	<20180529062838.20556-6-clg@kaod.org>
-	<48fac48c-168d-70b6-5020-1faac584804e@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9849ec14-a8c6-99a6-ac64-5561dd7334fb@kaod.org>
-Date: Tue, 29 May 2018 19:12:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNijW-00054r-By
+	for qemu-devel@nongnu.org; Tue, 29 May 2018 13:48:33 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:44727)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNijW-00054W-8B; Tue, 29 May 2018 13:48:30 -0400
+Received: by mail-qt0-x243.google.com with SMTP id d3-v6so19721921qtp.11;
+	Tue, 29 May 2018 10:48:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=PQP2J5H1byVn15zhYlrWEBPIIi4aeUQ+7v92hykcci0=;
+	b=R/dOXEerii6GPSryBjjMZMNWcKpABl7nWCH0TCsHLP6azf4buQLN1TM/HA6cZ8DXpa
+	04ckwM0ksvlE1BI+XIWQoFvKGnR5CN/fWRDYWiBlh3ojpoOS/0Yl7jVNEnd59PSnKm/O
+	fkvha50CxqAZf5Q/5aN72eEwrcArXBSxjgB6A4EpE0pD+urfIk4+tR9jXF9Ki3S+bA41
+	HxmfaPD9X/PbneLFytmais5jQ7tJ4zAh7mezIuEBi5u1XSSlc3kXybQz35//2wfKg0Gr
+	ETiJ95v7Vra/P6Maen4N8Op+8eXwQ4bkEi3AWAt4l3bQ6/CZFXIBIUdSuhVgFXugmBW+
+	9oig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=PQP2J5H1byVn15zhYlrWEBPIIi4aeUQ+7v92hykcci0=;
+	b=EcPP1KlZkKO5EVWN43kYkRPVz9dQn2yFoiHHDoHNWH8ERFTaQMw7afP06Yb6HUtRe0
+	nse7YWKaUFf3ftfyXel48K3ludxojma+e/eofK6h4fIwc/3dB50+GeujtPSQYH9HAvJZ
+	eL2TwKZtnPLT8c83xiaUg/Vz+xqcecA/IvXkPynL9CqVnkxu8FKEbLQXAZn2zV/0YGse
+	XxqbdobGZdsIvAPYvNbCsc9bUO/P2QCDTdRooFZMpADefBK1PCcWtHenKYl+fUnVVpU9
+	PcI2zJTm9dCqLVAwHCnw6w8P70IFuP2r/rqnCi+LHMRBfwYgVsnphlnHw2yc9TJgCoLe
+	xB2w==
+X-Gm-Message-State: ALKqPwdX4Ebjq2MO1erUlc00brYc9qJ10kuAg6+vGKP8AwGYqwPxKu/L
+	5kA9xCUcwjOU+UdxmkAiqns=
+X-Received: by 2002:a0c:b25b:: with SMTP id
+	k27-v6mr11853381qve.231.1527616109635; 
+	Tue, 29 May 2018 10:48:29 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	q8-v6sm25564308qtb.13.2018.05.29.10.48.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 29 May 2018 10:48:29 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
+Date: Tue, 29 May 2018 14:48:17 -0300
+Message-Id: <20180529174821.19964-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-In-Reply-To: <48fac48c-168d-70b6-5020-1faac584804e@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 9940570279085640512
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheekgdduudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.72.44
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 5/6] slirp/ncsi: add a "Get
- Parameter" response
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-devel] [PATCH 0/4] qapi/error: converts
+ error_setg(&error_fatal) to error_report() + exit()
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3eWOhAcHk9Sy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-block@nongnu.org, Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Sbtmx61Visu3
 
-On 05/29/2018 03:11 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi C=C3=A9dric,
->=20
-> In title: "Get Parameters" (plural)
->=20
-> On 05/29/2018 03:28 AM, C=C3=A9dric Le Goater wrote:
->> This is a minimum response to exercise the kernel.
->=20
-> This type is mandatory in DMTF Standard v1.0.1 indeed (DSP0222).
->=20
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> ---
->>  slirp/ncsi.c | 23 ++++++++++++++++++++++-
->>  1 file changed, 22 insertions(+), 1 deletion(-)
->>
->> diff --git a/slirp/ncsi.c b/slirp/ncsi.c
->> index 02d0e9def3e8..f00253641ea4 100644
->> --- a/slirp/ncsi.c
->> +++ b/slirp/ncsi.c
->> @@ -35,6 +35,27 @@ static int ncsi_rsp_handler_gls(struct ncsi_rsp_pkt=
-_hdr *rnh)
->>      return 0;
->>  }
->> =20
->> +/* Get Parameter */
->=20
-> "Parameters"
->=20
->> +static int ncsi_rsp_handler_gp(struct ncsi_rsp_pkt_hdr *rnh)
->> +{
->> +    struct ncsi_rsp_gp_pkt *rsp =3D (struct ncsi_rsp_gp_pkt *) rnh;
->> +
->> +    rsp->mac_cnt =3D 0x0;
->=20
-> "MAC Address Count: The number of MAC addresses supported by the channe=
-l"
->=20
-> 0 means "no [MAC Address] filter [in use]"
->=20
->> +    rsp->mac_enable =3D 0x0;
->=20
-> "MAC Address Flags: all [MAC Address filters] disabled" ...
->=20
->> +
->> +    /* TODO: provide the guest configured MAC */
->> +    rsp->mac[0] =3D 0xaa;
->> +    rsp->mac[1] =3D 0xbb;
->> +    rsp->mac[2] =3D 0xcc;
->> +    rsp->mac[3] =3D 0xdd;
->> +    rsp->mac[4] =3D 0xee;
->> +    rsp->mac[5] =3D 0xff;
->=20
-> So there is no need to set this filter,
-> or you have to set:
->=20
->     rsp->mac_cnt =3D 1;
->     rsp->mac_enable =3D 1 << 0;
->=20
-> Also, you forgot to set:
->=20
->     rsp->vlan_cnt =3D 0;
->     rsp->vlan_enable =3D 0;
+Hi,
 
+This series converts error_setg(&error_fatal) to error_report() + exit() as
+suggested by the "qapi/error.h" documentation.
 
-yes. I will clean up the handler.
+This reduce Coverity and Clang static analyzer positive falses.
 
-Thanks,
+See http://lists.nongnu.org/archive/html/qemu-devel/2017-07/msg07585.html:
 
-C.
+    On 07/24/2017 04:52 PM, Eric Blake wrote:
+    That's a shame.  Rather, we should patch this file (and others) to avoid
+    all the inconsistent uses of error_setg(&error_*), to comply with the
+    error.h documentation.
 
->> +
->> +    /* more data follows */
->> +
->> +    return 0;
->> +}
->> +
->>  static const struct ncsi_rsp_handler {
->>          unsigned char   type;
->>          int             payload;
->> @@ -62,7 +83,7 @@ static const struct ncsi_rsp_handler {
->>          { NCSI_PKT_RSP_SNFC,    4, NULL },
->>          { NCSI_PKT_RSP_GVI,    40, NULL },
->>          { NCSI_PKT_RSP_GC,     32, ncsi_rsp_handler_gc },
->> -        { NCSI_PKT_RSP_GP,     -1, NULL },
->> +        { NCSI_PKT_RSP_GP,     40, ncsi_rsp_handler_gp },
->>          { NCSI_PKT_RSP_GCPS,  172, NULL },
->>          { NCSI_PKT_RSP_GNS,   172, NULL },
->>          { NCSI_PKT_RSP_GNPTS, 172, NULL },
->>
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (4):
+  hw/block/fdc: Replace error_setg(&error_abort) by error_report() + abort()
+  hw/ppc/spapr_drc: Replace error_setg(&error_abort) by error_report() +
+    abort()
+  hw/arm/sysbus-fdt: Replace error_setg(&error_fatal) by error_report()
+    + exit()
+  device_tree: Replace error_setg(&error_fatal) by error_report() + exit()
+
+ device_tree.c       | 23 +++++++++++++----------
+ hw/arm/sysbus-fdt.c | 45 ++++++++++++++++++++++++++-------------------
+ hw/block/fdc.c      |  7 ++++---
+ hw/ppc/spapr_drc.c  |  3 ++-
+ 4 files changed, 45 insertions(+), 33 deletions(-)
+
+-- 
+2.17.0
 

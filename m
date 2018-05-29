@@ -1,102 +1,90 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3342280wre;
-        Tue, 29 May 2018 02:13:32 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKK74x1w8H3ZZJ2d45OfWsdsG+4IFjiSFMXPHdynI01dnqKanEcUlGALRx0tQU6qpR64x1Yf
-X-Received: by 2002:a37:1828:: with SMTP id j40-v6mr13821206qkh.11.1527585212524;
-        Tue, 29 May 2018 02:13:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527585212; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3389690wre;
+        Tue, 29 May 2018 03:14:40 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKK0E7d343devLNGur72TMN/tKM7g2Fp7ekfV9k+l2v4WW5H4e9cUAKitGNLL2gj1pjtEOi4
+X-Received: by 2002:ac8:2acc:: with SMTP id c12-v6mr15077418qta.389.1527588880766;
+        Tue, 29 May 2018 03:14:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527588880; cv=none;
         d=google.com; s=arc-20160816;
-        b=JcQiOitjkukUTxecxnMLe1bFozMejVe2R4qCZjhH98LzbyWyL3vqh6HZJx40wCSkOl
-         /+o2KA6Kq1DfScNtasilB45wTxpCXQbJ8Woi9SUXoQCDjZDN69yhhKA81zR64IXCVsQd
-         u2J8rSj3p7CqgdYG4Hj4nXRMsMhDBzpIOa63SdUUARkmCWxuLtcKaXLBs3N/XQ/OEw5f
-         epSosS4baFA5ySwbbpx6tOuBCTgRIfzCzstMSup8I5jyhlgoP0ihrjZV/BJ+ha9VyYFp
-         XZaus2kZ7gFoLNGTOv26LpzzKrmsrXdy9vDBgdrWBinX0wyp2RdYl2JlvlQvXKQ1seAz
-         PKYw==
+        b=LKv1h75BWC33j6OPl1nGwcrasnVnStX6gAmkyGVF+FBhVkvzfEvuU4b0OqbtVVdSB5
+         cjBwzCMaC5jE5eFWPQ0X45ti98idm1IAJe5HFRmCb8+9FRybrnO2AtDXU3oMDHp7Z6On
+         u2DWR8WECvNDPVoCi1zKYeWzLTnQzuxenUcyu8SI9Yu4YaW9Eta/fFDz+b23jLIU6L/A
+         jVtVMaCdCZbXWUh0kAB5dhnCZsWgh6VQJsCVxqvnUV+/tU9JNA5cJTb7VjbgkNkCIp5G
+         LfsSiZNqtNM8cEp9WplirgwrVGhOvJCidAnVzAc0JQo/xo9w34uGhVGGg4ysJc/m8K74
+         oddQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Xqs2r1/nr82fh4uCSXOWK60zUls5lNl58E2ffx6Ne5g=;
-        b=RPrBxvnCgopXRA6mZteadDxL6WUWLRQtv0z3IZQT425vZKF7qliERMGIvr4EGijmXu
-         iKd90xI2Oic4X2Wvny13lPX6mqIcfS6bHs37JarXYGGTxH2LabEzDHRSvNGZLIi1qLGF
-         HI8rv2L+mVMW6uR7LHa8iQzhho6cECn2RHcb2DAshlfnZxhpzszBzDxrGHoJCJDd18BM
-         i4soIU1zMUv8gWRuzIc7qq8JV9mH7w05Gv5w3x9pARaEh7h47RCAsRFvWPSnK2DwwTUu
-         2UqMP/zSjOCOjWftQcF8iA4bODF3KRNMXdPlA2Lb2j+95W7SZydVxBZyZxVZ/HJaB6OX
-         waqg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date:arc-authentication-results;
+        bh=SmM029IJBhO4MabUF8ehmZE6h2l9br0vE4WVrjrYqVc=;
+        b=qI5e5Ar4PPwy7yLwiddP6Mt3qPcSS1YqZRqVnoaOwNCpY4d/5dzpj44P7FDd6wjx5L
+         ygsZ3kqVZcrCh6suleqNOl5M4s3YceTrQLVtxSXKEY+1jQBqRb4iqcP+/4x9if58PpdK
+         wl9ak0dBgkC1SROeTvHCY904qp93mIHzX/jY2Pe/YT4RAuw9Z1Ahof91UlYii9x6q0l/
+         IpVritH8u+fTUDB6yMiyY0VgO5/HbBd7ge2VypkbsuvljwiuJKFDeu7cy+Sd+qN83dC0
+         PPRjZtYLc93IRRJunPNLKxufpOQSwEHT8/2caxrsmelfldZacp++1xclz3HgOA7K6f/q
+         mf1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N2ktSvNm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m62-v6si15484672qkf.304.2018.05.29.02.13.32
+        by mx.google.com with ESMTPS id t126-v6si5714391qkc.131.2018.05.29.03.14.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 02:13:32 -0700 (PDT)
+        Tue, 29 May 2018 03:14:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=N2ktSvNm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59739 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59941 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNahA-0002eA-0K
-	for alex.bennee@linaro.org; Tue, 29 May 2018 05:13:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43758)
+	id 1fNbeH-0000SF-PU
+	for alex.bennee@linaro.org; Tue, 29 May 2018 06:14:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58220)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fNah2-0002c3-43
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 05:13:25 -0400
+	(envelope-from <cohuck@redhat.com>) id 1fNbe7-0000QL-Gm
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 06:14:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fNah1-0007SM-6e
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 05:13:24 -0400
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:42144)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fNah0-0007RZ-QA
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 05:13:23 -0400
-Received: by mail-ot0-x243.google.com with SMTP id l13-v6so16131737otk.9
-	for <qemu-arm@nongnu.org>; Tue, 29 May 2018 02:13:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Xqs2r1/nr82fh4uCSXOWK60zUls5lNl58E2ffx6Ne5g=;
-	b=N2ktSvNm8c+r+qiGOarmRlxbCRt6F5qzvf08eku+L0bqjW89izlZg7hF/COOgKtihD
-	dqLXBSZLrS7PHoY+5ZCr4c7kqvAGN0JnwALqx9nvigLf5UsxhoqqTpcA+PGSeccx2nEu
-	0D4Bxb9C1mHXW7QcePregiMyf07nhdEiRM/34=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Xqs2r1/nr82fh4uCSXOWK60zUls5lNl58E2ffx6Ne5g=;
-	b=Mi1NnUfbIkYxlrIEsp3fuRc8XdsNyFfR9ZRYU/dC87pUVFF1eRZ/R3crHCVm1i8tuI
-	N9NorjQpwf14Zi/WDnVhEwHB6mHWZ2wbE5t7hjor3lsPmiRl5JHvufBCa60glS0Ujhfc
-	sP5MVb67XY/L7N13leiYIAO0kaIIXRy0spBloEO4uDfsZSZGOvY7MslizFH4tkqLr0uv
-	C+JPYYfBwlSXWTeksCSlFFT7HcLOrIa61zEwtp4kkCPsBkf01YKZ65ldIj9L0ZwF3tYR
-	tUABEjvMr+xHo1QHze7WX8HG4yxZDatjauoPAS7D2dtTB0vS9AnR5fikRmUGauU6Sk4v
-	3lWA==
-X-Gm-Message-State: ALKqPweKzv1f7kTzvfCazvtqyxIS+0ycsjOmAqY74LRpvuoM/mBTAU4d
-	Jc3YxfDPgMfrCcPOoQ7mg0dCOoBG5JloSSKku9/DRg==
-X-Received: by 2002:a9d:5014:: with SMTP id
-	a20-v6mr9935880oth.205.1527585202252; 
-	Tue, 29 May 2018 02:13:22 -0700 (PDT)
+	(envelope-from <cohuck@redhat.com>) id 1fNbe6-00044H-FD
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 06:14:27 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35686 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1fNbe6-00043y-B9; Tue, 29 May 2018 06:14:26 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AD705BD9E;
+	Tue, 29 May 2018 10:14:25 +0000 (UTC)
+Received: from gondolin (dhcp-192-222.str.redhat.com [10.33.192.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DA9762026609;
+	Tue, 29 May 2018 10:14:19 +0000 (UTC)
+Date: Tue, 29 May 2018 12:14:17 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Message-ID: <20180529121417.1e44484b.cohuck@redhat.com>
+In-Reply-To: <20180528232719.4721-13-f4bug@amsat.org>
+References: <20180528232719.4721-1-f4bug@amsat.org>
+	<20180528232719.4721-13-f4bug@amsat.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Tue, 29 May 2018 02:13:01
-	-0700 (PDT)
-In-Reply-To: <929ce9c7-afae-7978-ed35-3789fcbf026a@redhat.com>
-References: <1526222114-5324-1-git-send-email-eric.auger@redhat.com>
-	<1526222114-5324-4-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA8yo_NKY=mHNYFFTA1+eR-731ePUb5hDum0ubUM2XOxxg@mail.gmail.com>
-	<929ce9c7-afae-7978-ed35-3789fcbf026a@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 29 May 2018 10:13:01 +0100
-Message-ID: <CAFEAcA-yWBexVnpd9_iicL0o8A3TNZ2ezAf8nrYJ_ZPmB+xocg@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-arm] [RFC v2 3/7] hw/intc/arm_gicv3: Introduce
- redist-region-count array property
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Tue, 29 May 2018 10:14:25 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Tue, 29 May 2018 10:14:25 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v4 12/21] hw: Do not include
+ "sysemu/block-backend.h" if it is not necessary
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,49 +96,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
-	Christoffer Dall <christoffer.dall@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Max Filippov <jcmvbkbc@gmail.com>, Yongbok Kim <yongbok.kim@mips.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	"open list:virtio-blk" <qemu-block@nongnu.org>,
+	qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
+	Magnus Damm <magnus.damm@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	"open list:X86" <xen-devel@lists.xenproject.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Thomas Huth <thuth@redhat.com>, Fam Zheng <famz@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	"open list:virtio-ccw" <qemu-s390x@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	Michael Walle <michael@walle.cc>, "open
+	list:sPAPR" <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0e/gzJhrHM+z
+X-TUID: 8lIuZa6/OSFK
 
-On 29 May 2018 at 10:08, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
-> On 05/22/2018 02:27 PM, Peter Maydell wrote:
->> On 13 May 2018 at 15:35, Eric Auger <eric.auger@redhat.com> wrote:
->>> To prepare for multiple redistributor regions, we introduce
->>> an array of uint32_t properties that stores the redistributor
->>> count of each redistributor region.
->>>
->>> Non accelerated VGICv3 only supports a single redistributor region.
->>> The capacity of all redist regions is checked against the number of
->>> vcpus.
->>>
->>> Machvirt is updated to set the count to 123 vcpus for the unique
->>> redistributor region we currently have.
+On Mon, 28 May 2018 20:27:10 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
->>> +
->>> +    if (type == 3) {
->>> +        qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
->>> +        qdev_prop_set_uint32(gicdev , "redist-region-count[0]",
->>> +                             vms->memmap[VIRT_GIC_REDIST].size / 0x20000);
->>
->> We used to create a region which had num_cpu redistributors in it;
->> won't this cause us to create one which has as many redistributors
->> as will fit in the space ?
-> Is that an issue? From a machine perspective the whole region is
-> reserved for rdist. dt and ACPI will expose this whole region and the
-> device will use a subset of it? I agree I need to document this change
-> in the commit message though.
+> Remove those unneeded includes to speed up the compilation
+> process a little bit. (Continue 7eceff5b5a1fa cleanup)
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/collie.c                          | 1 -
+>  hw/arm/gumstix.c                         | 1 -
+>  hw/arm/mainstone.c                       | 1 -
+>  hw/arm/nseries.c                         | 1 -
+>  hw/arm/omap1.c                           | 1 -
+>  hw/arm/omap2.c                           | 1 -
+>  hw/arm/omap_sx1.c                        | 1 -
+>  hw/arm/pxa2xx.c                          | 1 -
+>  hw/arm/spitz.c                           | 1 -
+>  hw/arm/versatilepb.c                     | 1 -
+>  hw/arm/vexpress.c                        | 1 -
+>  hw/arm/virt.c                            | 1 -
+>  hw/arm/xilinx_zynq.c                     | 1 -
+>  hw/arm/z2.c                              | 1 -
+>  hw/block/dataplane/virtio-blk.c          | 1 -
+>  hw/block/virtio-blk.c                    | 1 -
+>  hw/core/qdev-properties.c                | 1 -
+>  hw/cris/axis_dev88.c                     | 1 -
+>  hw/display/tc6393xb.c                    | 1 -
+>  hw/ide/pci.c                             | 1 -
+>  hw/ide/via.c                             | 1 -
+>  hw/isa/isa-superio.c                     | 1 -
+>  hw/lm32/lm32_boards.c                    | 1 -
+>  hw/lm32/milkymist.c                      | 1 -
+>  hw/microblaze/petalogix_ml605_mmu.c      | 1 -
+>  hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 -
+>  hw/mips/mips_r4k.c                       | 1 -
+>  hw/ppc/spapr.c                           | 1 -
+>  hw/ppc/virtex_ml507.c                    | 2 --
+>  hw/s390x/virtio-ccw.c                    | 1 -
+>  hw/scsi/mptsas.c                         | 1 -
+>  hw/sd/pl181.c                            | 1 -
+>  hw/sd/sdhci.c                            | 1 -
+>  hw/sd/ssi-sd.c                           | 1 -
+>  hw/sh4/r2d.c                             | 1 -
+>  hw/virtio/virtio-pci.c                   | 1 -
+>  hw/xen/xen_devconfig.c                   | 1 -
+>  hw/xtensa/xtfpga.c                       | 1 -
+>  38 files changed, 39 deletions(-)
 
-It's a difference, and a guest-visible difference too. This
-patchset is supposed to be introducing split-redistributor-regions,
-not changing the behaviour of other configs. Also, I don't think
-it makes sense to model a GIC with more redistributors than CPUs:
-real hardware doesn't look like that AFAIK.
-
-thanks
--- PMM
+Acked-by: Cornelia Huck <cohuck@redhat.com>

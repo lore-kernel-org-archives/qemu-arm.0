@@ -1,80 +1,80 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3227041wre;
-        Mon, 28 May 2018 23:33:22 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL3ZWpiXKvwfQn/Dlbnf86sWaOWZqBdLzmAclukSmsUCwlQW1aCEQN0bVCSdgpwiUkQ89ph
-X-Received: by 2002:a37:9f0b:: with SMTP id i11-v6mr13828204qke.171.1527575602725;
-        Mon, 28 May 2018 23:33:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527575602; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3227150wre;
+        Mon, 28 May 2018 23:33:31 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKfNfAt5NU5AioEisYCHJLwOY3pYK7jw3O0Ig3dFbcdIUpYlyrRjUdorhO+TzMehlb5qFUB
+X-Received: by 2002:ac8:b4d:: with SMTP id m13-v6mr15932098qti.9.1527575611816;
+        Mon, 28 May 2018 23:33:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527575611; cv=none;
         d=google.com; s=arc-20160816;
-        b=PsgcbcMs+lrmhSU+11kpZ7YUb07dnbGtFGZd/NBLaYZiG6I3Z+T/XLqvz/IIcg41hc
-         c2lSrDO7O+Y92C5ybxJVEBXNpsaIfqSdi65ovIYuawTl7IzuoaMqAYSpokheBrojwq5g
-         N8M46xmvPtDGOzgej7q8ogCaLzumDqfJNrSOLlSbTAxfI8ihjZCuAKYGP1VPShIAdhc2
-         PMjdibZXRvpCaB8qnzXSLUb6XZrYZKooBIbuGNmtGgOv7f5WWQzJApYfRtrhhKyHM559
-         FO6M5l0XwaMqcJpy43h47leW+5fTxyD/C+2zqchHFW4IU8yL6P4HZdXOHjlqFVtHvFZ5
-         r1/w==
+        b=bpy10B228PIVMLkpuJkCu8/Zne8H5cmJU12CP+7XvSaFw+UQl4Ph3BiPc+CXnpW7kz
+         oIEyNOlo5hZrHsx5wSNx2BciWaP4GrfAQnqilqd48/Q8YtUg0BqDZsCiDY7vYkKnmmex
+         57Wa7PZGiEKmT2LNqguWf3zmE2He6ZJ726VL5S8NMtVad2a/VIkJSPy+Cc6QWtopX7Aw
+         H3VMx7sMJZZm19zVSH0BV1dScAoLR860rg79oHVa2rl1QJQM74gLUjXe99YY/AKi4HHw
+         1i8cXJl+ihAR2R+tbKbSJT+rF7IbNkM7ptvFYZw8puEgspJ/8awN70HV3PghhTTS0Zj2
+         F6Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=TsFHY4re0kfFNdXwJQzcAfMbXzL4mmLhMVTC2rR3euY=;
-        b=KyGnZuDu+1cnZb/njZ0VPueeLVaNYdeLof9oUvsOUvTbzsuUZ4EBlLs5Gh9wdmN226
-         JGWQidh/cZsYepeQDgngCyrvWWgUuCfDhhHrv0Nk3A6bCObGxUx2hViqJtvSkufAFR7e
-         /ShIPWvL1OjF5OjGmpvgu1hSh+tyteYi3F4SiDYUeTTmiySPHUM8ErvCapJIeBAlWZ1X
-         hkOzm0xFnP/tznutF5fD0TjrkwMboy83N+thW54A26eECt2k2olDzH0mZGIDgQGV2mXU
-         uedR4nw1pBAXuS8zIHGC1n2DCET/46vL8Hge/XwcvNHqDl7fTKdsiIWTSU6t5PXTijZ+
-         Ogxw==
+        bh=x9eyOx38l5tAwYEwNGq5zzibQsSh32rbtdAVDWk6bBg=;
+        b=aGI4L18KdpBGXjBfPa3vgfR5gBUgFi4II1q2mgQ1yuRRIn0qpx84dpx5vfM1QuxPk1
+         0aKI6pBgGPkwhAhCqlpT0irZ93SrZsZXdglQ/MGfXePKrel6+bDQBf83GaBYKcPjXMOE
+         xb+kyfbAeXWXAfWqCvIRCp3HeeibEt5/2u7HwbNBoCXjDX+ReWmzh1LUE0Vfj9ovBsRF
+         In2t5aNf8YcRG/vAz2/er8wI76OD9WF76iP8vf0dXnBQVoAQV8YTxpfkbrqebKHmjy+m
+         SvnfIcLuaCfhAFmNFufOW2t/sAoq6qG3udfjiySHhoHIAg3E2cq6lpMcE9K4Yx1OsJjh
+         JJpg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o6-v6si2314705qkl.124.2018.05.28.23.33.22
+        by mx.google.com with ESMTPS id x17-v6si83667qvh.260.2018.05.28.23.33.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 28 May 2018 23:33:22 -0700 (PDT)
+        Mon, 28 May 2018 23:33:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:59220 helo=lists.gnu.org)
+Received: from localhost ([::1]:59223 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNYCA-00047n-5u
-	for alex.bennee@linaro.org; Tue, 29 May 2018 02:33:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36778)
+	id 1fNYCJ-0004Cl-6S
+	for alex.bennee@linaro.org; Tue, 29 May 2018 02:33:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNY8K-0001cF-57
-	for qemu-devel@nongnu.org; Tue, 29 May 2018 02:29:25 -0400
+	(envelope-from <clg@kaod.org>) id 1fNY8E-0001U9-AM
+	for qemu-devel@nongnu.org; Tue, 29 May 2018 02:29:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNY8H-0001it-1A
-	for qemu-devel@nongnu.org; Tue, 29 May 2018 02:29:24 -0400
-Received: from 17.mo6.mail-out.ovh.net ([46.105.36.150]:59573)
+	(envelope-from <clg@kaod.org>) id 1fNY8B-0001fA-7Y
+	for qemu-devel@nongnu.org; Tue, 29 May 2018 02:29:18 -0400
+Received: from 6.mo179.mail-out.ovh.net ([46.105.56.76]:40000)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNY8G-0001hw-RM
-	for qemu-devel@nongnu.org; Tue, 29 May 2018 02:29:20 -0400
-Received: from player718.ha.ovh.net (unknown [10.109.120.102])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id EFC8215ED2C
-	for <qemu-devel@nongnu.org>; Tue, 29 May 2018 08:29:18 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNY8B-0001eM-1O
+	for qemu-devel@nongnu.org; Tue, 29 May 2018 02:29:15 -0400
+Received: from player718.ha.ovh.net (unknown [10.109.108.14])
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 6C2DFC8A6D
+	for <qemu-devel@nongnu.org>; Tue, 29 May 2018 08:29:13 +0200 (CEST)
 Received: from zorba.kaod.org.com (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
 	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
-	by player718.ha.ovh.net (Postfix) with ESMTPSA id 5EC8F4E00A8;
-	Tue, 29 May 2018 08:29:13 +0200 (CEST)
+	by player718.ha.ovh.net (Postfix) with ESMTPSA id 2AD5D4E008A;
+	Tue, 29 May 2018 08:29:08 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-arm@nongnu.org
-Date: Tue, 29 May 2018 08:28:38 +0200
-Message-Id: <20180529062838.20556-7-clg@kaod.org>
+Date: Tue, 29 May 2018 08:28:37 +0200
+Message-Id: <20180529062838.20556-6-clg@kaod.org>
 X-Mailer: git-send-email 2.13.6
 In-Reply-To: <20180529062838.20556-1-clg@kaod.org>
 References: <20180529062838.20556-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 17527446800400747440
+X-Ovh-Tracer-Id: 17526039427134753712
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheejgddutdelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.36.150
-Subject: [Qemu-devel] [PATCH 6/6] slirp/ncsi: add checksum support
+X-Received-From: 46.105.56.76
+Subject: [Qemu-devel] [PATCH 5/6] slirp/ncsi: add a "Get Parameter" response
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,88 +91,57 @@ Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oAgXlxINByMy
+X-TUID: Ta8z9x7AdpFL
 
-The checksum field of a NC-SI packet contains a value that may be
-included in each command and response. The verification is optional
-but the Linux driver does so when a non-zero value is provided. Let's
-extend the model to compute the checksum value and exercise a little
-more the Linux driver.
-
-See section "8.2.2.3 - 2's Complement Checksum Compensation" in the
-Network Controller Sideband Interface (NC-SI) Specification for more
-details.
+This is a minimum response to exercise the kernel.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- slirp/ncsi.c | 29 +++++++++++++++++++++++++----
- 1 file changed, 25 insertions(+), 4 deletions(-)
+ slirp/ncsi.c | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/slirp/ncsi.c b/slirp/ncsi.c
-index f00253641ea4..fbfb79713f23 100644
+index 02d0e9def3e8..f00253641ea4 100644
 --- a/slirp/ncsi.c
 +++ b/slirp/ncsi.c
-@@ -8,9 +8,23 @@
-  */
- #include "qemu/osdep.h"
- #include "slirp.h"
-+#include "net/checksum.h"
+@@ -35,6 +35,27 @@ static int ncsi_rsp_handler_gls(struct ncsi_rsp_pkt_hd=
+r *rnh)
+     return 0;
+ }
 =20
- #include "ncsi-pkt.h"
-=20
-+static uint32_t ncsi_calculate_checksum(unsigned char *data, int len)
++/* Get Parameter */
++static int ncsi_rsp_handler_gp(struct ncsi_rsp_pkt_hdr *rnh)
 +{
-+    uint32_t checksum =3D 0;
-+    int i;
++    struct ncsi_rsp_gp_pkt *rsp =3D (struct ncsi_rsp_gp_pkt *) rnh;
 +
-+    for (i =3D 0; i < len; i +=3D 2) {
-+        checksum +=3D (((uint32_t)data[i] << 8) | data[i + 1]);
-+    }
++    rsp->mac_cnt =3D 0x0;
++    rsp->mac_enable =3D 0x0;
 +
-+    checksum =3D (~checksum + 1);
-+    return checksum;
++    /* TODO: provide the guest configured MAC */
++    rsp->mac[0] =3D 0xaa;
++    rsp->mac[1] =3D 0xbb;
++    rsp->mac[2] =3D 0xcc;
++    rsp->mac[3] =3D 0xdd;
++    rsp->mac[4] =3D 0xee;
++    rsp->mac[5] =3D 0xff;
++
++    /* more data follows */
++
++    return 0;
 +}
 +
- /* Get Capabilities */
- static int ncsi_rsp_handler_gc(struct ncsi_rsp_pkt_hdr *rnh)
- {
-@@ -108,6 +122,9 @@ void ncsi_input(Slirp *slirp, const uint8_t *pkt, int=
- pkt_len)
-         (ncsi_reply + ETH_HLEN);
-     const struct ncsi_rsp_handler *handler =3D NULL;
-     int i;
-+    int ncsi_rsp_len =3D sizeof(*nh);
-+    uint32_t checksum;
-+    uint32_t *pchecksum;
-=20
-     memset(ncsi_reply, 0, sizeof(ncsi_reply));
-=20
-@@ -137,15 +154,19 @@ void ncsi_input(Slirp *slirp, const uint8_t *pkt, i=
-nt pkt_len)
-             /* TODO: handle errors */
-             handler->handler(rnh);
-         }
-+        ncsi_rsp_len +=3D handler->payload;
-     } else {
-         rnh->common.length =3D 0;
-         rnh->code          =3D htons(NCSI_PKT_RSP_C_UNAVAILABLE);
-         rnh->reason        =3D htons(NCSI_PKT_RSP_R_UNKNOWN);
-     }
-=20
--    /* TODO: add a checksum at the end of the frame but the specs
--     * allows it to be zero */
-+    /* add a checksum at the end of the frame (the specs allows it to
-+     * be zero */
-+    checksum =3D ncsi_calculate_checksum((unsigned char *) rnh, ncsi_rsp=
-_len);
-+    pchecksum =3D (uint32_t *)((void *) rnh + ncsi_rsp_len);
-+    *pchecksum =3D htonl(checksum);
-+    ncsi_rsp_len +=3D 4;
-=20
--    slirp_output(slirp->opaque, ncsi_reply, ETH_HLEN + sizeof(*nh) +
--                 (handler ? handler->payload : 0) + 4);
-+    slirp_output(slirp->opaque, ncsi_reply, ETH_HLEN + ncsi_rsp_len);
- }
+ static const struct ncsi_rsp_handler {
+         unsigned char   type;
+         int             payload;
+@@ -62,7 +83,7 @@ static const struct ncsi_rsp_handler {
+         { NCSI_PKT_RSP_SNFC,    4, NULL },
+         { NCSI_PKT_RSP_GVI,    40, NULL },
+         { NCSI_PKT_RSP_GC,     32, ncsi_rsp_handler_gc },
+-        { NCSI_PKT_RSP_GP,     -1, NULL },
++        { NCSI_PKT_RSP_GP,     40, ncsi_rsp_handler_gp },
+         { NCSI_PKT_RSP_GCPS,  172, NULL },
+         { NCSI_PKT_RSP_GNS,   172, NULL },
+         { NCSI_PKT_RSP_GNPTS, 172, NULL },
 --=20
 2.13.6
 

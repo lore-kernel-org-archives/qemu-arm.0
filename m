@@ -1,90 +1,114 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3462502wre;
-        Tue, 29 May 2018 04:41:12 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIosERl6BYsaDZ849wlLMRVfqyQCtWbYTqdskyfWCMFsyb2Y/na/uCPvM2+S5WeSawhElPT
-X-Received: by 2002:a0c:f9ca:: with SMTP id j10-v6mr15447654qvo.36.1527594072473;
-        Tue, 29 May 2018 04:41:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527594072; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3515452wre;
+        Tue, 29 May 2018 05:34:51 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJwpl845HBu+6rCf5nBbF3Z7N0ttkLQGMtsoOK6ZaablwCQik8rBIyD1q44X2hlxDsLIdTZ
+X-Received: by 2002:ac8:3183:: with SMTP id h3-v6mr16079490qte.173.1527597291547;
+        Tue, 29 May 2018 05:34:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527597291; cv=none;
         d=google.com; s=arc-20160816;
-        b=W/+5TqBzMw1HixuPqhMUhPj4/jGISUTPS3tdxcTFIlTnEsi7VB2twTRT/PyLddb8xx
-         NTBNw+9WPYiwDKzgPG+xWRmHrVcWbEORfHGhAYDS7rtMh40Eh15Kf/KwDZ7xhCuLRARd
-         j7+rDpk8q6oTGCzAtSi2fBpTddI5HYMA9axoR6B83FAfum48+y/fL0o59HWZQEv2+him
-         0okzL5m7Fqqyp1k4fHZYPAWGhGGygBDeQ7In51TMsj7AWi6rGsiKNMpdvUxWesdc1Rne
-         i1oi/T5DsgGaqlf0anfYe6VmTTfATxUuDIU/XWcz+S4LPZ/2sS2HxT2S2wB3up6GCqZV
-         CWxQ==
+        b=o5wL+3yiqQPyzQ1A7+rdQ99K0DJxDGavlrYjeoCmXpbo6actS42Q9ofI2t7Lh+T8Gr
+         Z8NzjodFJTqRZmEw9zphhMagvLK0+EQcJqfPQPt6vbfX2oHqradcP5DSoXSZRzJuyILN
+         veXCeZHwC4F0oXB/gB4uytK2DZmbYy4UDlwegL7/JpwmrbPbnyntxULAvAWkN30gfpn8
+         ATZ9Yth1np7x3r6FEGFp6T48WrukUGxEK89qD/jEydAnvDHZd05G5IQJiUfQ9HodurDt
+         xGU5aExH6oyHGC01nKNZUAuicE6VaMZMrH/rZoCrTiQ5SR4fADeiCItFKpQYvyCz/Anr
+         fj3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date:arc-authentication-results;
-        bh=klTCe/rph17QYtfDWjMY7ZbVpNzi64oRPrdTbJ/sqNM=;
-        b=q/qSTmHhP9lxor+STfOXBT/S7O7amgwNtmycAiPnfKZaAwqyje72o78NjfmlQ8btwm
-         mS01jyxAL7TD9ajg8EnaQxuVK4it/JQK0ppDyTrrlhaKcBn3i6Uvvmnl2myGv1czkccH
-         tavXoOyDC2nB8vO3JL94/dmOzI9VAK8xjMjxHyKIu7sY7eWRc51jg3cYuqXS0Ji6X3GB
-         6AshIZMwuSH0ge9XicmhQSdnNXpR51RAjq8vQ4YFqU7uTF+0wx8OQYQCcBnvFostP4Rf
-         nu6K2iBU7nbthqOm1DPZCOsIYcYndmyINyA+qxwRuOdlHyaHMUAcrfQh1sKc3xIgUrRm
-         MY6w==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=Vo4JPmxWuAhjskPXlGj8EAr76vBWWpxAJbnGwGXgTMs=;
+        b=d6p+PfdUu4wYyU7Jgs94Hgkw2tEIlvJQ2smV5644AAmxIHX/0NBtZ1g+mjuOgVVW2Z
+         8kzEHDEPrCnYNaybUsgCvdvl7N/mbzacE79RkkfjUM0bq761SN3whQxTqdFOddA6dqBW
+         b1NBcxT7lUW3cOEssbOysWLCYD/ejPY711b2KQtJhIEOJUn1xGdAzlYK7PNllq8a+i0k
+         b49euR5bcwo2d+t13Z27raDCNaRwDSx5ROAYYs6NFWvRzjh5d0cqBUc0yRsH++we39Kq
+         ykWlH2hi26pxTwe6QH4lKOMebJCwcKAR4DmZJo/9obTiwXCjCwL+VevrhG3FacUOcyPo
+         bzfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C+6UmY8y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p69-v6si4167049qkp.98.2018.05.29.04.41.12
+        by mx.google.com with ESMTPS id a22-v6si339545qka.184.2018.05.29.05.34.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 04:41:12 -0700 (PDT)
+        Tue, 29 May 2018 05:34:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60379 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C+6UmY8y;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:60896 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNd03-0007S3-V4
-	for alex.bennee@linaro.org; Tue, 29 May 2018 07:41:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49949)
+	id 1fNdpz-0005mw-1g
+	for alex.bennee@linaro.org; Tue, 29 May 2018 08:34:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37802)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fNczv-0007Rt-Le
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 07:41:04 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNdpc-0005kd-Gp
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 08:34:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fNczs-00042p-AM
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 07:41:03 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34294 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fNczs-00042e-2W; Tue, 29 May 2018 07:41:00 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 12562401EF09;
-	Tue, 29 May 2018 11:40:59 +0000 (UTC)
-Received: from gondolin (dhcp-192-222.str.redhat.com [10.33.192.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7C636200A4B6;
-	Tue, 29 May 2018 11:40:55 +0000 (UTC)
-Date: Tue, 29 May 2018 13:40:53 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Message-ID: <20180529134053.1ea9f46d.cohuck@redhat.com>
-In-Reply-To: <20180528232719.4721-10-f4bug@amsat.org>
-References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-10-f4bug@amsat.org>
-Organization: Red Hat GmbH
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNdpb-0007RR-Mk
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 08:34:28 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:34972)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNdpX-0007Nu-Ba; Tue, 29 May 2018 08:34:23 -0400
+Received: by mail-qt0-x242.google.com with SMTP id j1-v6so18349248qtp.2;
+	Tue, 29 May 2018 05:34:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Vo4JPmxWuAhjskPXlGj8EAr76vBWWpxAJbnGwGXgTMs=;
+	b=C+6UmY8yNjo7YIvwN2d+mb9aNoXc2smBxFPmJPHNO/dDJJXaaWDlOg2rcx7bV6Igtd
+	neQYqjNESC/N2w07JWvCfkjI8fgDK806xcta9kjsI0gMDoJq5PfUM/tHZp5ZgjitOj1Q
+	1tznopFSTvXLZmlrUE5GeUftsUOTcmHiyhmrJcBkmn39z7jmFiYSHdWyQRUMEbdVq7Cj
+	6XsVp5Df7qB0BL4tqT6pPsMNjVa+DM56+6wjfSc8bQvqzgJbx4mhWA8LS5dBW4R9PKOe
+	IOi7dYaeiC3OTf0BtR31hJQD63SEWE9P8b/PSMhxm6zZ1wBYLKBZ0+mpjmJuAiiWY/Me
+	Jtew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=Vo4JPmxWuAhjskPXlGj8EAr76vBWWpxAJbnGwGXgTMs=;
+	b=F1jKIbBQVKvNqhYCeRo2c+vKdL1oTyBYmmIKfMp/qH28KSvjiU7eSOE/+Y4Nc5Qm6M
+	0b7gnubRkIBcdlhfooahUu/68Im2eKhThO87qSozlInDCezU7RcmRRCNRo7qmu7S35nX
+	EkYud4xP50DhvvWGco7O9+3aWSVUbAR475sXYAKIbJrS/HtlcNafFCJPVk5MpqmVqmgz
+	7dogoZroRWyRUeZ1P3SNRhaSxT0OFOZBhWmlS44LWgZRJ4mD3ucX3hce9ZXiZ5VHXilT
+	ynZQmCPPHJKzcGLCkc+cmB4cfGfQrmimYPvl3lUtvMhgYFE/qX2sTO4mY3t/nbPxWHdi
+	xlKw==
+X-Gm-Message-State: ALKqPwd/EpxJA0Fd/FmrFWi182g2F8w+U20fAD18bfEXLR1e7AaNulWT
+	0cf7o0Ev0z6u7K8FVQsukbbDYrrSnbk=
+X-Received: by 2002:aed:3b94:: with SMTP id
+	r20-v6mr16576261qte.364.1527597262454; 
+	Tue, 29 May 2018 05:34:22 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	c20-v6sm21573921qkm.59.2018.05.29.05.34.19
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 29 May 2018 05:34:21 -0700 (PDT)
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org
+References: <20180529062838.20556-1-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <fac124fe-d816-1bb2-c8b3-d1a0213f968b@amsat.org>
+Date: Tue, 29 May 2018 09:34:17 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 29 May 2018 11:40:59 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 29 May 2018 11:40:59 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v4 09/21] target: Do not include
- "exec/exec-all.h" if it is not necessary
+In-Reply-To: <20180529062838.20556-1-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [PATCH 0/6] ftgmac100 and NC-SI enhancements for the
+ Aspeed SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,36 +120,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, "open
-	list:S390" <qemu-s390x@nongnu.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Anthony Green <green@moxielogic.com>,
-	David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, Laurent Vivier <laurent@vivier.eu>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ASq+PUu7pLvY
+X-TUID: VMef1TmPgkb9
 
-On Mon, 28 May 2018 20:27:07 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+Hi Cédric,
 
-> Code change produced with:
->     $ git grep '#include "exec/exec-all.h"' | \
->       cut -d: -f-1 | \
->       xargs egrep -L "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GETPC|si=
-nglestep|TranslationBlock)" | \
+On 05/29/2018 03:28 AM, Cédric Le Goater wrote:
+> Hello,
+> 
+> Here is a couple of enhancements and fixes for the ftgmac100 NIC used
+> on the Aspeed SoC. It includes VLAN and multicast support.
+> 
+> Following is an assorted set of changes for the NC-SI backend also
+> used on the Aspeed SoC when soldered on OpenPOWER boards. These fix a
+> few problems found when running OpenBMC on aspeed QEMU machines.
+> 
+> Thanks,
+> 
+> Cédric.
+> 
+> Cédric Le Goater (6):
+>   ftgmac100: compute maximum frame size depending on the protocol
+>   ftgmac100: add IEEE 802.1Q VLAN support
+>   net/ftgmac100: fix multicast hash routine
+>   slirp/ncsi: fix "Get Version ID" payload length
+>   slirp/ncsi: add a "Get Parameter" response
+>   slirp/ncsi: add checksum support
 
-Hm, does this expression catch all files that need to include
-exec-all.h? The resulting patch seems fine, though.
+Doesn't it make more sens to have slirp patches applied previous to the
+ftgmac100 model?
 
->       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> 
+>  include/hw/net/ftgmac100.h |  7 +++++-
+>  hw/net/ftgmac100.c         | 59 +++++++++++++++++++++++++++++++++++-----------
+>  slirp/ncsi.c               | 54 +++++++++++++++++++++++++++++++++++++-----
+>  3 files changed, 99 insertions(+), 21 deletions(-)
+> 

@@ -1,90 +1,86 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3704303wre;
-        Tue, 29 May 2018 08:35:35 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJl+sYpmu2R3tH5a3gXfQIwz7pS7rq1vMoeYHUtJmld9OlFVfxuGyn8H+FLk352M2naApTo
-X-Received: by 2002:a0c:b128:: with SMTP id q37-v6mr16532180qvc.19.1527608135182;
-        Tue, 29 May 2018 08:35:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527608135; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3784853wre;
+        Tue, 29 May 2018 09:56:34 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJdJgltKr+0C31SvdE8jzEqGVyzmI+VbWwfQ3YjZ+vEXSj215i1Yj6NuXebatNUAnwzrBl8
+X-Received: by 2002:ac8:6612:: with SMTP id c18-v6mr17469752qtp.343.1527612994886;
+        Tue, 29 May 2018 09:56:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527612994; cv=none;
         d=google.com; s=arc-20160816;
-        b=ciCrU6rkl5OAgQoo57pvnsDGZjyeQcW2x9PpPFlZRD4ygbAcif2/jgofB4kL8kPsJv
-         gwlJHObzkWiRejJXKo7AKcqd6C8ClhOO1himwjHoj8xFezDGbE4HgTClF9rugnxY45gw
-         Rz+wL8zoQeRGFL+QvAcbQbNIO948AXSkDSbp2bcOmIaIdcqjE+FDFpudoqMRK0hvtvVG
-         ABIpBDFzUrj6HlkkyLcYUpo1/AFrQG18uwg4eJKl/fa2z8rfsULcOAOQfc/bTri9h3IO
-         AzSonsfT9eMLkUoOvNouSrTzC0EcPAv/p6hSXzBw9MOxVN8kwojOzWeTdGH7Njijy04J
-         OWKA==
+        b=uW83HrPVwnHJVUHoBeZU7elnNiCvWX5TjrXVSb4D5O0En9K0HvRT1JO7xrz5CwGkKY
+         4Oeu37m/x1Rc++h/ofj9WYJb7pzJdp3vIg2stY4au8PIbKs+OHD1pg0wa79nuEJzSU/p
+         xMDTIq1xr7/e/G9YsLSQ2wjVvr14su1aOerrtgHBe4xNrRGaZp8mG/XDs43k4gQziYO5
+         VT2+0vcjgFWKUzBYoN/XdqtJXsO1dBvhWrwmg9D8JyGBLs4cwK9x9nUdkcScWgaYguZ+
+         g0XN/yk+IkMyN2h3r06oq1eN3ayQXMr3eaENkeoZdTwJpLDQr9NN8KvuGUYaB2nIvo0D
+         rOYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:references
-         :message-id:content-transfer-encoding:date:in-reply-to:from
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=dzpAljTZvkOCJaimkTYWAtXYRPJvDSYadyu4Q520JDM=;
-        b=k/Fqh6pD1aCVTTLX0cTDyRQifXRBVu/RBJCUdhele3oG99DNn9bqi11uU5lLLZa0HV
-         /kE/cDD6nFuAVh/tLYU1nPDNdSzdQ1qCLoxPXQR+fXxhP9mRBpnt5HV+Fw5Jo4ZcAQmP
-         IVzgiceJF40/yIFAoMFASlfL1MxMs2Rv3xiWK3DSecgTmJAkVsn5LEvv0JFEH7wmcP0O
-         //+mUW0n9w+/ZE4FDLyDD6BTwSXjbLdR3EeI/srZEnnE/NapTsVk+/cmGUU1R0Ub8GmE
-         hCSkCWcYENy+amNIDAJbDi75YKerCKkEs28UaV4ivEl2myiKFSP6fis3qoE8/rKajbuw
-         S+nA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=M1NczByVIF+DIQWRO5gGcloBf33+elcCsGnh/VTzXDA=;
+        b=U5iaxwJn8M0xMS4TzUbEHwN1J4MlG04jqy/Sa9F3Z0L05AotA9bNDOiisWls8oWLfs
+         LtXfZ+cb+Efwsu92eKowMwJp49hvDcPLbBBJQ82hdGBEaEo1h3bNY39a7SeELqnZtz3X
+         S1lXfvjypD42MWVhf3JVP8deyO+kqxZNG/jlsitsoD/E9d9LWjnYebqebqKlbBwsqkjd
+         u1ZGCsrwc5/0HqM6B4nZY0N5d8gBs/YNP8DOAJcqebickRuPYHp4IBC3Uel2pJk0WQqL
+         ba62VS/yYZrmqtiqZ2BQyBm2x+bgFEaar7KVbdHpXKtXloorJ3+Ftb3eWQsz8qRiC0UP
+         C9qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@163.com header.s=s110527 header.b=DjIRbuRK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t17-v6si9441403qth.259.2018.05.29.08.35.35
+        by mx.google.com with ESMTPS id 19-v6si14337186qts.53.2018.05.29.09.56.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 08:35:35 -0700 (PDT)
+        Tue, 29 May 2018 09:56:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@163.com header.s=s110527 header.b=DjIRbuRK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33603 helo=lists.gnu.org)
+Received: from localhost ([::1]:34003 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNges-0000yq-Jo
-	for alex.bennee@linaro.org; Tue, 29 May 2018 11:35:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60450)
+	id 1fNhvG-0007le-Ev
+	for alex.bennee@linaro.org; Tue, 29 May 2018 12:56:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51804)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaosl1988@163.com>) id 1fNfJi-0005Eu-2f
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 10:09:39 -0400
+	(envelope-from <clg@kaod.org>) id 1fNhv7-0007jS-6R
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 12:56:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaosl1988@163.com>) id 1fNfJd-0000hG-8J
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 10:09:38 -0400
-Received: from m12-14.163.com ([220.181.12.14]:43041)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaosl1988@163.com>)
-	id 1fNfJc-0000bu-FU; Tue, 29 May 2018 10:09:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Mime-Version:Subject:From:Date:Message-Id; bh=dzpAl
-	jTZvkOCJaimkTYWAtXYRPJvDSYadyu4Q520JDM=; b=DjIRbuRKs6XPE2BX85O6O
-	7i94lwyyENjLtbUQSgfg9H/2VxWp4iyYocrXfmTdlr/hC5GtxTuR8h9zAFggNTWF
-	WyM5wK9ftv7w6ZJOnaN4wOItLnP2lt9y8ZOfYPQsI3hwxV6t13bATuHXa0Vds+/t
-	1q0ADeCPXtMbOYbvHEF6sA=
-Received: from [10.157.129.113] (unknown [112.17.244.92])
-	by smtp10 (Coremail) with SMTP id DsCowACnRB4TXw1boSztDQ--.8413S2;
-	Tue, 29 May 2018 22:09:24 +0800 (CST)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (1.0)
-From: Shannon Zhao <zhaosl1988@163.com>
-X-Mailer: iPhone Mail (15E216)
-In-Reply-To: <CAFEAcA-LoTOnTnSYBpzuyUDFZBsVBaB2qjvzAP_94rou8ob6Tg@mail.gmail.com>
-Date: Tue, 29 May 2018 22:09:22 +0800
+	(envelope-from <clg@kaod.org>) id 1fNhv3-0004ng-AV
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 12:56:25 -0400
+Received: from 9.mo177.mail-out.ovh.net ([46.105.72.238]:36204)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNhv3-0004n4-3P
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 12:56:21 -0400
+Received: from player695.ha.ovh.net (unknown [10.109.105.30])
+	by mo177.mail-out.ovh.net (Postfix) with ESMTP id 309AEB32EE
+	for <qemu-arm@nongnu.org>; Tue, 29 May 2018 18:56:19 +0200 (CEST)
+Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
+	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
+	by player695.ha.ovh.net (Postfix) with ESMTPSA id 2230946009D;
+	Tue, 29 May 2018 18:56:13 +0200 (CEST)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org
+References: <20180529062838.20556-1-clg@kaod.org>
+	<20180529062838.20556-3-clg@kaod.org>
+	<b0cb42ea-16f7-7806-814c-f472867e1a6a@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <e21c77e5-c1de-eaf9-5357-1147f5d14ca0@kaod.org>
+Date: Tue, 29 May 2018 18:56:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
+MIME-Version: 1.0
+In-Reply-To: <b0cb42ea-16f7-7806-814c-f472867e1a6a@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 9669791353862392640
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheekgddutdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <65E224A1-C972-4C38-BD6E-41C59191D999@163.com>
-References: <1527563283-13148-1-git-send-email-zhaoshenglong@huawei.com>
-	<CAFEAcA-LoTOnTnSYBpzuyUDFZBsVBaB2qjvzAP_94rou8ob6Tg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-CM-TRANSID: DsCowACnRB4TXw1boSztDQ--.8413S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxWF4DAr1UAFy7uw1UKFy3Arb_yoWruw48pr
-	WDGa4FqrW3J34Igwn7trZIy34kZws7Kw4jyrWkuFyakF95Kr1xtFWUKr9a9as8Zr1kur48
-	Zr1YqF1DuF4kAr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07bYkucUUUUU=
-X-Originating-IP: [112.17.244.92]
-X-CM-SenderInfo: 52kd02borzmmi6rwjhhfrp/xtbBSRRVS1aDx2ej3wAAsK
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 220.181.12.14
-X-Mailman-Approved-At: Tue, 29 May 2018 11:35:21 -0400
-Subject: Re: [Qemu-arm] [PATCH v2] ARM: ACPI: Fix use-after-free due to
- memory realloc
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.72.238
+Subject: Re: [Qemu-arm] [PATCH 2/6] ftgmac100: add IEEE 802.1Q VLAN support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,135 +92,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0cPFZQ78CrSH
+X-TUID: r8tuikcIMOS+
 
-
-
-> =E5=9C=A8 2018=E5=B9=B45=E6=9C=8829=E6=97=A5=EF=BC=8C21:53=EF=BC=8CPeter M=
-aydell <peter.maydell@linaro.org> =E5=86=99=E9=81=93=EF=BC=9A
+On 05/29/2018 03:34 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi C=C3=A9dric,
 >=20
->> On 29 May 2018 at 04:08, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
->> acpi_data_push uses g_array_set_size to resize the memory size. If there
->> is no enough contiguous memory, the address will be changed. So previous
->> pointer could not be used any more. It must update the pointer and use
->> the new one.
->>=20
->> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> On 05/29/2018 03:28 AM, C=C3=A9dric Le Goater wrote:
+>> The ftgmac100 NIC supports VLAN tag insertion and the MAC engine also
+>> has a control to remove VLAN tags from received packets.
+>>
+>> The VLAN control bits and VLAN tag information are contained in the
+>> second word of the transmit and receive descriptors. The Insert VLAN
+>> bit and the VLAN Tag available bit are only valid in the first segment
+>> of the packet.
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 >> ---
->> V2: add comments for iort_node_offset and reviewed tags
->> ---
->> hw/arm/virt-acpi-build.c | 19 +++++++++++++++----
->> 1 file changed, 15 insertions(+), 4 deletions(-)
->>=20
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 92ceee9..6209138 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
->>     AcpiIortItsGroup *its;
->>     AcpiIortTable *iort;
->>     AcpiIortSmmu3 *smmu;
->> -    size_t node_size, iort_length, smmu_offset =3D 0;
->> +    size_t node_size, iort_node_offset, iort_length, smmu_offset =3D 0;
->>     AcpiIortRC *rc;
->>=20
->>     iort =3D acpi_data_push(table_data, sizeof(*iort));
->> @@ -415,6 +415,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, V=
-irtMachineState *vms)
->>     iort->node_count =3D cpu_to_le32(nb_nodes);
->>     iort->node_offset =3D cpu_to_le32(sizeof(*iort));
->>=20
->> +    /*
->> +     * Use a copy in case table_data->data moves duringa acpi_data_push
->> +     * operations.
->> +     */
->> +    iort_node_offset =3D sizeof(*iort);
+>>  hw/net/ftgmac100.c | 32 +++++++++++++++++++++++++++++++-
+>>  1 file changed, 31 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+>> index 7598d08c9cb9..50af1222464a 100644
+>> --- a/hw/net/ftgmac100.c
+>> +++ b/hw/net/ftgmac100.c
+>> @@ -443,6 +443,24 @@ static void ftgmac100_do_tx(FTGMAC100State *s, ui=
+nt32_t tx_ring,
+>>              break;
+>>          }
+>> =20
+>> +        /* Check for VLAN */
+>> +        if (bd.des0 & FTGMAC100_TXDES0_FTS &&
+>> +            bd.des1 & FTGMAC100_TXDES1_INS_VLANTAG &&
+>> +            be16_to_cpu(PKT_GET_ETH_HDR(ptr)->h_proto) !=3D ETH_P_VLA=
+N) {
+>> +            if (frame_size + len + 4 > sizeof(s->frame)) {
+>> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too big : %=
+d bytes\n",
+>> +                              __func__, len);
+>> +                s->isr |=3D FTGMAC100_INT_XPKT_LOST;
+>> +                len =3D  sizeof(s->frame) - frame_size - 4;
+>> +            }
+>> +            memmove(ptr + 16, ptr + 12, len - 12);
+>> +            ptr[12] =3D 0x81;
+>> +            ptr[13] =3D 0x00;
+>=20
+>                stw_be_p(ptr + 12, ETH_P_VLAN);
+>=20
+>> +            ptr[14] =3D (uint8_t) bd.des1 >> 8;
+>> +            ptr[15] =3D (uint8_t) bd.des1;
+>=20
+>                stw_be_p(ptr + 12, bd.des1);
+
+ptr + 14
+
+>> +            len +=3D 4;
+>> +        }
 >> +
->>     /* ITS group node */
->>     node_size =3D  sizeof(*its) + sizeof(uint32_t);
->>     iort_length +=3D node_size;
->> @@ -429,7 +435,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
->>         int irq =3D  vms->irqmap[VIRT_SMMU];
->>=20
->>         /* SMMUv3 node */
->> -        smmu_offset =3D iort->node_offset + node_size;
->> +        smmu_offset =3D iort_node_offset + node_size;
+>>          ptr +=3D len;
+>>          frame_size +=3D len;
+>>          if (bd.des0 & FTGMAC100_TXDES0_LTS) {
+>> @@ -858,7 +876,19 @@ static ssize_t ftgmac100_receive(NetClientState *=
+nc, const uint8_t *buf,
+>>              buf_len +=3D size - 4;
+>>          }
+>>          buf_addr =3D bd.des3;
+>> -        dma_memory_write(&address_space_memory, buf_addr, buf, buf_le=
+n);
+>> +        if (first && proto =3D=3D ETH_P_VLAN && buf_len >=3D 18) {
+>> +            bd.des1 =3D (buf[14] << 8) | buf[15] | FTGMAC100_RXDES1_V=
+LANTAG_AVAIL;
 >=20
-> In the old code, we used iort->node_offset directly as a CPU
-> endianness order bitmap, which is initialized above using
->    iort->node_offset =3D cpu_to_le32(sizeof(*iort));
-> In this version, we use iort_node_offset, which is
-> initialized using
->    iort_node_offset =3D sizeof(*iort);
+>                bd.des1 =3D lduw_be_p(buf + 14) |
+> FTGMAC100_RXDES1_VLANTAG_AVAIL;
 >=20
-> So we've lost an endianness conversion on big-endian systems.
-> Which is correct, the old code or the new?
-I think it=E2=80=99s the new one. I found this bug later and wanted to send a=
-nother patch to fix it. But to address Philippe=E2=80=99s comment I folder t=
-hem together.
+>> +            if (s->maccr & FTGMAC100_MACCR_RM_VLAN) {
+>> +                dma_memory_write(&address_space_memory, buf_addr, buf=
+, 12);
+>> +                dma_memory_write(&address_space_memory, buf_addr + 12=
+, buf + 16,
+>> +                                 buf_len - 16);
+>> +            } else {
+>> +                dma_memory_write(&address_space_memory, buf_addr, buf=
+, buf_len);
+>> +            }
+>> +        } else {
+>> +            bd.des1 =3D 0;
+>> +            dma_memory_write(&address_space_memory, buf_addr, buf, bu=
+f_len);
+>> +        }
+>>          buf +=3D buf_len;
+>>          if (size < 4) {
+>>              dma_memory_write(&address_space_memory, buf_addr + buf_le=
+n,
+>>
+>=20
+> With ldst API uses:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>=20
 
->=20
->>         node_size =3D sizeof(*smmu) + sizeof(*idmap);
->>         iort_length +=3D node_size;
->>         smmu =3D acpi_data_push(table_data, node_size);
->> @@ -450,7 +456,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
->>         idmap->id_count =3D cpu_to_le32(0xFFFF);
->>         idmap->output_base =3D 0;
->>         /* output IORT node is the ITS group node (the first node) */
->> -        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
->> +        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
->=20
-> Here we're doing an endianness conversion on iort_node_offset.
->=20
-> Overall something is weird here, even in the previous version:
-> if we wrote iort->node_offset with cpu_to_le32(), that implies
-> that it's little-endian; so why are we reading it with cpu_to_le32()
-> here rather than le32_to_cpu() ?
-> Both cpu_to_le32() and le32_to_cpu() are the same operation,
-> mathematically, but we should use the version which indicates
-> our intent, ie which of source and destination is the always-LE
-> data, and which is the host-order data.
->=20
->>     }
->>=20
->>     /* Root Complex Node */
->> @@ -479,9 +485,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, V=
-irtMachineState *vms)
->>         idmap->output_reference =3D cpu_to_le32(smmu_offset);
->>     } else {
->>         /* output IORT node is the ITS group node (the first node) */
->> -        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
->> +        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
->>     }
->>=20
->> +    /*
->> +     * Update the pointer address in case table_data->data moves during a=
-bove
->> +     * acpi_data_push operations.
->> +     */
->> +    iort =3D (AcpiIortTable *)(table_data->data + iort_start);
->>     iort->length =3D cpu_to_le32(iort_length);
->>=20
->>     build_header(linker, table_data, (void *)(table_data->data + iort_sta=
-rt),
->=20
-> This could just use 'iort' now, right?
-Right, but for consistent as other places I think it=E2=80=99s fine to remai=
-n unchanged.=20
->=20
->> --
->=20
-> thanks
-> -- PMM
+Sure, I will fix these.
+
+Thanks,
+
+C.=20
 
 

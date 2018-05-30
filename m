@@ -1,88 +1,111 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4347344wre;
-        Tue, 29 May 2018 22:26:48 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIuATWo28bqgHvMzADIojAugbdKrrZRAEoXP2OajjnCr4gFyH9b7uJmcvca11XxSzI3uLED
-X-Received: by 2002:a37:10a4:: with SMTP id 36-v6mr1090497qkq.349.1527658008554;
-        Tue, 29 May 2018 22:26:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527658008; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4353603wre;
+        Tue, 29 May 2018 22:36:00 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLvfytcLR9AIW8fxksJCxduh1l6pZw6XTzI9fcBQlmPBwdvA3WtqzSkopggSfd5N+KCfb/b
+X-Received: by 2002:a0c:85e6:: with SMTP id o93-v6mr1205427qva.27.1527658560785;
+        Tue, 29 May 2018 22:36:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527658560; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iufc21DPbB00d4oIWTeCfZxCH26volP0CSQKzwXEAzu1khgFU70K0lC4buGeq5VEaZ
-         Q2hy/V6/DLE2dp8BYNuyIhVUABBeSbcxZeFylQ5RWUFr+UuFb6U/1OERwAbrOZMoYEB5
-         HghjJyCu+1ity8t5If0Y97ibdxVyXWjSVntIKDi2eTYwdQgdlWnxj+rFKkR8QD8+MygL
-         6NnffOIVCHEKnuMcK+W3HYoUQ8ZIcrxfiYeOKRzfxbTUNhBM0hYKfabsMBP/9WDbYxT/
-         AoktuoF38wiPgx8+xgfWhqgACfHz3IjoM7OvL+AmrXicQmsBJh4nQrszsnb9QMEmpTnE
-         HRBA==
+        b=tPNNbT+ZuSXgOctOSlKBXe/Gy2T9/XctWVF90hje8C6hw/y64p1vOq1pdRANlgAyH8
+         sU1qck0QQhZr2xyTSsJd6ZwvPPau7ndILk2ToyV1rKzgYd/hXmW6V2kcEqp7MIYTzrIT
+         pkX7L2Bjv/jpboOHuzq3hzEyQSUFkHvr2A7mXMcPHIbMGY9Z8vzmKEztMW9PoXYZYfTB
+         tfVXD6L0r77LDUPrfLUBOcm1rGSfbs2sgWzCv4jEhrtz1jAzaHTrW1u8VNUFifvlPCMz
+         REQkR/cKp5jn11YK2/3oPq+/nbG9z6TPbQrqG2qu2sUXRm+hELHD3wWmrapG5OICQAs3
+         xxTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=I5sxmFVm6AWKpW1oZDgETosEztE9DcpMxpa2tkxal2E=;
-        b=O0Eet1jGNxmQ+UL1Sh/hF9ZcFhxSInS60nntZYMrvOBHGmCqEZjSdbFUmgrTvtBl5z
-         VdJpu1bw3Ohm4s1FAk3szbdD2Xx+KIRIqbxbF+XnYJpZPWlZvWI2MdAKLANwo92gDNqG
-         FYc3x0t7ZtzeabJmF756yj+AhR0HwnupA+3G+G+8LlzLCnwZh5jcpTIcxRs2nV2LAHiY
-         yc7pmLKNdP+efY92GAx0D+BpVih4toUY2Dtuz8fndmM6ZHN6K81cgZldR5hUJypYhPN5
-         pcIUtGvItWIfFsWoS8GJAAz/iqsNb2Q+hd71J868gRKLFSQEv/s308RYrLAek4MM0iHT
-         uUdA==
+        bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
+        b=NbNjMOqVzB+9dmJSX5Uaj/KLb4QyRpZmfKkj5monZdb3M1hoAwMDZR+BawP+rlXftZ
+         hm4UKB1gF3hAu5sMbDE0tMjfvfHd0TaQpsFKLMDTMaRTofbxRa5MmXzPTFsMuMcs9yx0
+         SzKSE0CTSdKAsh/MyIMm0W8KmwJ0trBouESn6liMyRFyGTpTCooZNHSoEn90GrBVq7kL
+         acbU2mCT08VGPmeRDCPcpHn2usarJwqj0qDQa51rKdj6tWH8Am1qgy2QHNI7Skg09Moj
+         aS4gIdWXnnFPh7vNOb3fFTxbIMMadD/zWUYpyhgcB7vf1UFeH/DraGKnwlTp2DoGBZbb
+         MhHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=im0NFFme;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=Gys5EvN5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k66-v6si4700861qte.7.2018.05.29.22.26.48
+        by mx.google.com with ESMTPS id n20-v6si4599247qtk.219.2018.05.29.22.36.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 22:26:48 -0700 (PDT)
+        Tue, 29 May 2018 22:36:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=im0NFFme;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=Gys5EvN5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36263 helo=lists.gnu.org)
+Received: from localhost ([::1]:36300 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNtdI-00006f-2K
-	for alex.bennee@linaro.org; Wed, 30 May 2018 01:26:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51378)
+	id 1fNtmC-0002qB-9j
+	for alex.bennee@linaro.org; Wed, 30 May 2018 01:36:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52782)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNtd8-00006A-Oj
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:26:39 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1fNtm1-0002q2-Gx
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:35:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNtd5-0006ek-LB
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:26:38 -0400
-Received: from 3.mo178.mail-out.ovh.net ([46.105.44.197]:55823)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNtd5-0006dt-FJ
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:26:35 -0400
-Received: from player786.ha.ovh.net (unknown [10.109.122.10])
-	by mo178.mail-out.ovh.net (Postfix) with ESMTP id 7058618B09
-	for <qemu-arm@nongnu.org>; Wed, 30 May 2018 07:26:33 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
-	[86.201.141.10]) (Authenticated sender: postmaster@kaod.org)
-	by player786.ha.ovh.net (Postfix) with ESMTPSA id B294C380083;
-	Wed, 30 May 2018 07:26:27 +0200 (CEST)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org
-References: <20180529062838.20556-1-clg@kaod.org>
-	<fac124fe-d816-1bb2-c8b3-d1a0213f968b@amsat.org>
-	<15666557-66b1-78e0-1062-b3a28ecaf580@kaod.org>
-	<b83a5cd3-5918-e063-86ef-c65f1d44641e@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9c347664-ef30-b407-f3f8-14390121a9a5@kaod.org>
-Date: Wed, 30 May 2018 07:26:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <joel.stan@gmail.com>) id 1fNtm0-0001Z9-8o
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:35:49 -0400
+Received: from mail-qt0-x22d.google.com ([2607:f8b0:400d:c0d::22d]:43117)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1fNtlz-0001Yx-Qv; Wed, 30 May 2018 01:35:48 -0400
+Received: by mail-qt0-x22d.google.com with SMTP id f13-v6so21772800qtp.10;
+	Tue, 29 May 2018 22:35:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
+	b=im0NFFmeVvpv2blbdBnqHsodMEdeEwkK6LFZtUGJNwl8j6NIW/InJ1RkcUm2eDp85m
+	fLoZoKJr5NdxPYJFyzilVboXh1GwNpwwQlmb/7zHSk8PtOirpFMn7FUuHpHS6jo6kbMx
+	EtVWJGndm7Tac8lr9A4aYjueGL7sDO3kKEZNc3euvc5UaHUjYFrUI/8+iZdhO5pSAHHD
+	RLSKRFXqOJjPjJD/p5g233Ys1dsn/qRUQC9q4rG7GK+YbCljRZ/aQjGNk0HSXHEUTut6
+	3EIc4EGwpMLBsMNROU4lq/o5pmf+v4SfcWvNB5nRjVtK/8FJZgFyUNJpqZ4z699hk0Ao
+	Lv/A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
+	b=Gys5EvN5W8oQuj7x+yRBaUW/XIdOtG378Jdeg9kY3psV0/UWe8SRm+nudxkQ8qq4PW
+	bVzPUNcEekj+k1G5Yj6AKCdY2xyNAsTYuX+OX/OJxMw+IUiH0ubNQhQ6H+5z+22nCi4D
+	cejB0GMifW9K46xRWXpYs+pqiHDJ/6gzyZYlY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
+	b=o95/jnbJWgkcDSVA3poIro5JaihT58cMq9rIiQLdMHxcScFk9Bw9xXH4RGJePiTs4F
+	dnU65omw/GaBqz8CBqD+A/MB5sFNAAPD98OCYmMvs6LPofEzegigdTIs9jre2xU6ViCP
+	JuwdeCwoaJUgj5+DYrJiPEmJyQCGeCUuc1ycEjwdmxNaLOmcOjAccirS19/osepGRrZ9
+	dV4ISBLeqsvW15RXwBHFx9o7cjY7xBidzhzsNNxFUFKy0SIqCjx7E6DsjOJVniKxpyi8
+	Ua6LlHOQ6g6tzMc19jFmnQLHYTSRY8m2RZG2pupM4RUzwqMGFWeXcxQVkAPSx6hdQCkm
+	enXA==
+X-Gm-Message-State: APt69E0L66zwO+DRGz5zjbTUQn083C7+g7Xkb5D2C9w6IkZEpx8ObXUi
+	XK7Fs+jqN4NUyL5Ecmf76i3HygVr5ugjOzOqZy0=
+X-Received: by 2002:a0c:8cc5:: with SMTP id q5-v6mr1216838qvb.60.1527658547030;
+	Tue, 29 May 2018 22:35:47 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <b83a5cd3-5918-e063-86ef-c65f1d44641e@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 3893643356087159616
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheelgdelhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Received: by 2002:ac8:184d:0:0:0:0:0 with HTTP; Tue, 29 May 2018 22:35:26
+	-0700 (PDT)
+In-Reply-To: <20180529062838.20556-1-clg@kaod.org>
+References: <20180529062838.20556-1-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Wed, 30 May 2018 15:05:26 +0930
+X-Google-Sender-Auth: cOvd7wpbr4EeNqtTBq4sFOFjga8
+Message-ID: <CACPK8Xe9a5q5tvFJ=Q0ArkDnf1-e=cW+bVY6a-peD7hpyLn_jw@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.44.197
-Subject: Re: [Qemu-arm] [PATCH 0/6] ftgmac100 and NC-SI enhancements for the
- Aspeed SoC
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::22d
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/6] ftgmac100 and NC-SI
+ enhancements for the Aspeed SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,50 +118,88 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
+	Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0LBhSQfzw6Ze
+X-TUID: AQSF4S4TlkBW
 
-On 05/30/2018 05:04 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 05/29/2018 01:57 PM, C=C3=A9dric Le Goater wrote:
->> On 05/29/2018 02:34 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>> Hi C=C3=A9dric,
->>>
->>> On 05/29/2018 03:28 AM, C=C3=A9dric Le Goater wrote:
->>>> Hello,
->>>>
->>>> Here is a couple of enhancements and fixes for the ftgmac100 NIC use=
-d
->>>> on the Aspeed SoC. It includes VLAN and multicast support.
->>>>
->>>> Following is an assorted set of changes for the NC-SI backend also
->>>> used on the Aspeed SoC when soldered on OpenPOWER boards. These fix =
-a
->>>> few problems found when running OpenBMC on aspeed QEMU machines.
->>>>
->>>> Thanks,
->>>>
->>>> C=C3=A9dric.
->>>>
->>>> C=C3=A9dric Le Goater (6):
->>>>   ftgmac100: compute maximum frame size depending on the protocol
->>>>   ftgmac100: add IEEE 802.1Q VLAN support
->>>>   net/ftgmac100: fix multicast hash routine
->>>>   slirp/ncsi: fix "Get Version ID" payload length
->>>>   slirp/ncsi: add a "Get Parameter" response
->>>>   slirp/ncsi: add checksum support
->>>
->>> Doesn't it make more sens to have slirp patches applied previous to t=
-he
->>> ftgmac100 model?
->>
->> why ? They are not necessarily dependent.=20
->=20
-> OK, no worries.
->=20
+On 29 May 2018 at 15:58, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> Hello,
+>
+> Here is a couple of enhancements and fixes for the ftgmac100 NIC used
+> on the Aspeed SoC. It includes VLAN and multicast support.
+>
+> Following is an assorted set of changes for the NC-SI backend also
+> used on the Aspeed SoC when soldered on OpenPOWER boards. These fix a
+> few problems found when running OpenBMC on aspeed QEMU machines.
+>
+> Thanks,
+>
+> C=C3=A9dric.
+>
+> C=C3=A9dric Le Goater (6):
+>   ftgmac100: compute maximum frame size depending on the protocol
+>   ftgmac100: add IEEE 802.1Q VLAN support
+>   net/ftgmac100: fix multicast hash routine
+>   slirp/ncsi: fix "Get Version ID" payload length
+>   slirp/ncsi: add a "Get Parameter" response
+>   slirp/ncsi: add checksum support
 
-bah, I will just resend two distinct series one for 'slirp'=20
-and one for 'net'.
+I tested these with -M palmetto-bmc and linux-next as the guest, and
+networking appeared to work fine. For the series:
 
-C. =20
+Tested-by: Joel Stanley <joel@jms.id.au>
+
+One question I had. I get these messages on boot:
+
+[    1.184472] ftgmac100 1e660000.ethernet: Read MAC address
+52:54:00:12:34:56 from chip
+[    1.184751] ftgmac100 1e660000.ethernet: Using NCSI interface
+[    1.197107] ftgmac100 1e660000.ethernet eth0: irq 19, mapped at b30b8905
+[    1.904237] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.905682] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.905943] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.906182] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.906415] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.906643] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.906873] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    1.907103] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[    2.024094] ftgmac100 1e660000.ethernet eth0: NCSI: configuring channel =
+0
+[    2.025428] ftgmac100 1e660000.ethernet eth0: NCSI: channel 0 config don=
+e
+[    2.025544] ftgmac100 1e660000.ethernet eth0: NCSI: No more
+channels to process
+[    2.025608] ftgmac100 1e660000.ethernet eth0: NCSI interface up
+
+
+Comparing to hardware, I see:
+
+[    4.071159] ftgmac100 1e660000.ethernet: Read MAC address
+98:be:94:83:00:ad from chip
+[    4.079024] ftgmac100 1e660000.ethernet: Using NCSI interface
+[    4.085976] ftgmac100 1e660000.ethernet eth0: irq 19, mapped at a0963000
+[   40.670099] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
+packet type 0x82 returned -19
+[   43.852036] ftgmac100 1e660000.ethernet eth0: NCSI: configuring channel =
+1
+[   43.877060] ftgmac100 1e660000.ethernet eth0: NCSI: channel 1 config don=
+e
+[   43.877093] ftgmac100 1e660000.ethernet eth0: NCSI: No more
+channels to process
+[   43.877112] ftgmac100 1e660000.ethernet eth0: NCSI interface up
+
+Is it expected that we get multiple ENODEVs for packet type 0x82 in qemu?
+
+Cheers,
+
+Joel

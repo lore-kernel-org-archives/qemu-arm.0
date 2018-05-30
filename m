@@ -1,175 +1,191 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4453013wre;
-        Wed, 30 May 2018 00:55:30 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLmQ+RhO6hfVPAPsuteVkADT0Y/FYO0ICcCwi+rjR1bxItuSRuZbOAM/7Q9NRzP1Dv45pBH
-X-Received: by 2002:a0c:d80f:: with SMTP id h15-v6mr1471037qvj.3.1527666929945;
-        Wed, 30 May 2018 00:55:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527666929; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4506057wre;
+        Wed, 30 May 2018 02:03:57 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLOKaFVg6VumKelOp/y1aM35WC2mjrZ1PL6Vrzom0qRwhKZaTvboLjvpEWcBvoAWKmijmcJ
+X-Received: by 2002:ac8:4312:: with SMTP id z18-v6mr1648810qtm.417.1527671037531;
+        Wed, 30 May 2018 02:03:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527671037; cv=none;
         d=google.com; s=arc-20160816;
-        b=qUWKsvEXJFoqgPWwJGbR418+NLTTsO5LKcWOzID866grpmM/s+EyuLU/DqqwDHlsyR
-         8s54O+mkOfMZ4wENM6QOCcrNnKWexo6VbnJeFjZGnC1DKt5kBqCdbWGpi4iU7gY9n3tA
-         DbnX0YTC7bMJJGNr50+YHLSyX1CfvZGvFd6MJlrWkePBcYg1Jyxs0EEAG6kRrJrKjj6x
-         TLIdyacvOYgDm8cVokM1FmPqhT/JPCIvyiTbTWgdBXF04v4kduIbnD3teyaRsFXQ1EN9
-         vLA/fiNULXEKvuQ7q2rwMWjW6RrNWZNJ63ZoE6ldKs81IhVLf5xVFEitGoScmtWGt9SF
-         hg5Q==
+        b=GF6UikAHLeWtI4T+hRDUT9qBXUdgygy2JTeObjHST5mwBrNfELenm1lR3VwdWMVpNQ
+         0hUAZNcvSSAytVnrh1lBNXnK1V9YxAsG+2i10yq9JRo1YsDk36vJwwxJ0vKaNN5nN2yo
+         MpgcHbsYSw8vAxA4s+axysg0lA+tM9iHXclNBaeo3bmJt1pvg2YUwnPW25+2qLlMeQKW
+         Tf4UBM2bv25W+nAmBf1Pb7YgxNcC2+2RjDxjLG6yx9Nvy16UZb0y+cSQwUW5tgM8QWoI
+         jbsCIUcjggZa0kU/BDrua+VLB2oZ6/GpVR8fh61uKLKpbJpQOiR20SY5cIk/OV77DP/R
+         c85Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=qXtD52UbUMZE9YJJpHrl2XEhH+kub4il+KeTUZOahfU=;
-        b=vUvkBsIygkusy1g3el+YC1d4ZcyGAuikV+Y6MMzkAF23POuLmDUTk4kl+x0atgB4/X
-         A2Tp9zBZgA7ZGDwvTqcxplxjPz1vjeie+z4rW2dNtzIivme3Lk9ZmTPdKGqP8mRZI96M
-         kGvcRTKeRbveTQQyl1AaJULGOM61QxTnweCQ5oxPXuZ+36gMj+CmQGB0JFbRz6HIso2K
-         0YeSHhHHS1m+2yFEHmhrv6tFsH+hO3E+WTzdKPBODat83zFk2gu/1UuRDCnmffaHS6XH
-         R0+6wm5Hyj+bGrTc2RO1OByurnc1r/B2f0TKMTlUslUca+l/XNqCaUUNSboUDO0JX9Mn
-         Ncew==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=on+909E7DumSJFHRJvwCaep8hANiaVgTtdooLi97Nd0=;
+        b=Fyes12sCvpva8KpjMoeKkcqI/YuVqMVNmwVM0aD9b6U0ZKoy5KI2Ea/N9eWPWif+7u
+         STqosGhu2+0xPVzexoXMR5T7c60H2ORn6beGIPntrTay34mvvQzCdGI/6uz2DC+Tbdmv
+         LcstUdyJ4yGQ/q+a5iXMMR28gvRNSZtbedhPauYr8NqhuDiE0cxPUOUnqYUqPWQ5co0V
+         ebNgPtZUDlgFew8J6NEtAFqTwhAK075wxYXRS2hh6tHBhYAhRy5dorsCQRqJFsHSLOFH
+         iJalO7hfQiFZyba/ueX06X0tRaXw9NpjUnSEJz14ae6zOAubR25D0Y+6tdwRX5G+NHYm
+         9bXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i7-v6si7027613qtb.85.2018.05.30.00.55.29
+        by mx.google.com with ESMTPS id 42-v6si941630qvk.274.2018.05.30.02.03.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 00:55:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 May 2018 02:03:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36872 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37076 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNvxB-0001Kx-Ft
-	for alex.bennee@linaro.org; Wed, 30 May 2018 03:55:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47295)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNx1R-000674-48
+	for alex.bennee@linaro.org; Wed, 30 May 2018 05:03:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59747)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNvsW-0006Mi-7f
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 03:50:41 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fNx1B-00063q-RL
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 05:03:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNvsU-0001GZ-28
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 03:50:40 -0400
-Received: from 8.mo68.mail-out.ovh.net ([46.105.74.219]:40268)
+	(envelope-from <eric.auger@redhat.com>) id 1fNx15-0001iw-PG
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 05:03:39 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59514 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNvsT-0001GD-Qx
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 03:50:37 -0400
-Received: from player770.ha.ovh.net (unknown [10.109.108.50])
-	by mo68.mail-out.ovh.net (Postfix) with ESMTP id 7BA64E5546
-	for <qemu-devel@nongnu.org>; Wed, 30 May 2018 09:50:36 +0200 (CEST)
-Received: from zorba.kaod.org.com (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
-	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
-	by player770.ha.ovh.net (Postfix) with ESMTPSA id 356BDC007F;
-	Wed, 30 May 2018 09:50:30 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 30 May 2018 09:50:02 +0200
-Message-Id: <20180530075002.4618-5-clg@kaod.org>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20180530075002.4618-1-clg@kaod.org>
-References: <20180530075002.4618-1-clg@kaod.org>
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fNx15-0001iL-Kl; Wed, 30 May 2018 05:03:35 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A1999BB415;
+	Wed, 30 May 2018 09:03:34 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D3656B59A;
+	Wed, 30 May 2018 09:03:32 +0000 (UTC)
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
+References: <1527663951-14552-1-git-send-email-zhaoshenglong@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <e6827289-812c-eb87-ad52-43094917bb7f@redhat.com>
+Date: Wed, 30 May 2018 11:03:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 6326431577016339217
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheelgdduvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1527663951-14552-1-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Wed, 30 May 2018 09:03:34 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Wed, 30 May 2018 09:03:34 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.74.219
-Subject: [Qemu-devel] [PATCH 4/4] hw/arm/aspeed: boot from the FMC CE0 flash
- module
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] ARM: ACPI: Fix
+ use-after-free due to memory realloc
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: giMv9PdZ/zdH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
+	f4bug@amsat.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3t8iXBWzSui9
 
-When MMIO execution is activated on the FMC controller, remove the
-copy of the flash module contents in a ROM memory region and boot
-directly from CE0.
+Hi Shannon,
 
-Booting from an alternate module (FMC CE1) should be possible. There
-is still some work to support the module swap when the watchdog resets
-the system.
+On 05/30/2018 09:05 AM, Shannon Zhao wrote:
+> acpi_data_push uses g_array_set_size to resize the memory size. If there
+> is no enough contiguous memory, the address will be changed. So previous
+> pointer could not be used any more. It must update the pointer and use
+> the new one.
+> 
+> Also, previous codes wrongly use le32 conversion of iort->node_offset
+> for subsequent computations that will result incorrect value if host is
+> not litlle endian. So use the non-converted one instead.
+> 
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 41 +++++++++++++++++++++++++++--------------
- 1 file changed, 27 insertions(+), 14 deletions(-)
+Thanks
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index e28170b7e1d8..e87a5899845f 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -160,6 +160,32 @@ static void write_boot_rom(DriveInfo *dinfo, hwaddr =
-addr, size_t rom_size,
-     g_free(storage);
- }
-=20
-+static void install_boot_rom(AspeedBoardState *bmc, DriveInfo *drive,
-+                             hwaddr addr)
-+{
-+    AspeedSMCState *fmc =3D &bmc->soc.fmc;
-+    AspeedSMCFlash *fl =3D &fmc->flashes[0];
-+    bool mmio_exec =3D object_property_get_bool(OBJECT(fmc), "mmio-exec"=
-,
-+                                              &error_abort);
-+    if (mmio_exec) {
-+        memory_region_add_subregion(get_system_memory(), addr,
-+                                    &fl->mmio_rom);
-+    } else {
-+        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
-+
-+        /*
-+         * create a ROM region using the default mapping window size of
-+         * the flash module. The window size is 64MB for the AST2400
-+         * SoC and 128MB for the AST2500 SoC, which is twice as big as
-+         * needed by the flash modules of the Aspeed machines.
-+         */
-+        memory_region_init_rom(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
-+                               fl->size, &error_abort);
-+        memory_region_add_subregion(get_system_memory(), addr, boot_rom)=
-;
-+        write_boot_rom(drive, addr, fl->size, &error_abort);
-+    }
-+}
-+
- static void aspeed_board_init_flashes(AspeedSMCState *s, const char *fla=
-shtype,
-                                       Error **errp)
- {
-@@ -232,20 +258,7 @@ static void aspeed_board_init(MachineState *machine,
-=20
-     /* Install first FMC flash content as a boot rom. */
-     if (drive0) {
--        AspeedSMCFlash *fl =3D &bmc->soc.fmc.flashes[0];
--        MemoryRegion *boot_rom =3D g_new(MemoryRegion, 1);
--
--        /*
--         * create a ROM region using the default mapping window size of
--         * the flash module. The window size is 64MB for the AST2400
--         * SoC and 128MB for the AST2500 SoC, which is twice as big as
--         * needed by the flash modules of the Aspeed machines.
--         */
--        memory_region_init_rom(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
--                               fl->size, &error_abort);
--        memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
--                                    boot_rom);
--        write_boot_rom(drive0, FIRMWARE_ADDR, fl->size, &error_abort);
-+        install_boot_rom(bmc, drive0, FIRMWARE_ADDR);
-     }
-=20
-     aspeed_board_binfo.kernel_filename =3D machine->kernel_filename;
---=20
-2.13.6
-
+Eric
+> ---
+> V3: Fix typo and add some words in commit message to explain another bug
+> ---
+>  hw/arm/virt-acpi-build.c | 20 +++++++++++++++-----
+>  1 file changed, 15 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 92ceee9..74f5744 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      AcpiIortItsGroup *its;
+>      AcpiIortTable *iort;
+>      AcpiIortSmmu3 *smmu;
+> -    size_t node_size, iort_length, smmu_offset = 0;
+> +    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
+>      AcpiIortRC *rc;
+>  
+>      iort = acpi_data_push(table_data, sizeof(*iort));
+> @@ -413,7 +413,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  
+>      iort_length = sizeof(*iort);
+>      iort->node_count = cpu_to_le32(nb_nodes);
+> -    iort->node_offset = cpu_to_le32(sizeof(*iort));
+> +    /*
+> +     * Use a copy in case table_data->data moves during acpi_data_push
+> +     * operations.
+> +     */
+> +    iort_node_offset = sizeof(*iort);
+> +    iort->node_offset = cpu_to_le32(iort_node_offset);
+>  
+>      /* ITS group node */
+>      node_size =  sizeof(*its) + sizeof(uint32_t);
+> @@ -429,7 +434,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          int irq =  vms->irqmap[VIRT_SMMU];
+>  
+>          /* SMMUv3 node */
+> -        smmu_offset = iort->node_offset + node_size;
+> +        smmu_offset = iort_node_offset + node_size;
+>          node_size = sizeof(*smmu) + sizeof(*idmap);
+>          iort_length += node_size;
+>          smmu = acpi_data_push(table_data, node_size);
+> @@ -450,7 +455,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          idmap->id_count = cpu_to_le32(0xFFFF);
+>          idmap->output_base = 0;
+>          /* output IORT node is the ITS group node (the first node) */
+> -        idmap->output_reference = cpu_to_le32(iort->node_offset);
+> +        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>      }
+>  
+>      /* Root Complex Node */
+> @@ -479,9 +484,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          idmap->output_reference = cpu_to_le32(smmu_offset);
+>      } else {
+>          /* output IORT node is the ITS group node (the first node) */
+> -        idmap->output_reference = cpu_to_le32(iort->node_offset);
+> +        idmap->output_reference = cpu_to_le32(iort_node_offset);
+>      }
+>  
+> +    /*
+> +     * Update the pointer address in case table_data->data moves during above
+> +     * acpi_data_push operations.
+> +     */
+> +    iort = (AcpiIortTable *)(table_data->data + iort_start);
+>      iort->length = cpu_to_le32(iort_length);
+>  
+>      build_header(linker, table_data, (void *)(table_data->data + iort_start),
+> 

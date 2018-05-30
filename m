@@ -1,100 +1,100 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5026992wre;
-        Wed, 30 May 2018 11:09:23 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJtgmjjRnlYIPpjTRoHuhYnKija1ZGPnEc9CKebIAmMGtl44NKUegN1j5uCFeJKlBSIemSa
-X-Received: by 2002:a0c:9c49:: with SMTP id w9-v6mr3564609qve.193.1527703763834;
-        Wed, 30 May 2018 11:09:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527703763; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5027361wre;
+        Wed, 30 May 2018 11:09:45 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJV79fM9mZFxjHTUKp7U9u2m6+/UkQelj8kA4XL5kwIQpzRqgTtErbaRMWTfOYM3dPJYRe1
+X-Received: by 2002:ac8:834:: with SMTP id u49-v6mr3650567qth.250.1527703785169;
+        Wed, 30 May 2018 11:09:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527703785; cv=none;
         d=google.com; s=arc-20160816;
-        b=HjVt9m5xhr1NLDGDIvzUAdilNCpDMuxEKTqHF/Bo8uf+h3HHGP1ZJgMIICgruIr8/v
-         tcCFgTakQIIRbg+Ck5OmqDsQEEDXTEw7h/xHdL7Jex+2H+mgFGg1JC7j+r2DYCyP/kri
-         o7avs55Anw+EQ0uvJ/ToqNTjT6Y1c0bvPUq4L2FEKB69ow83eKOTJRA3f7xb4pDtOR6O
-         1zQNRr79t5Nj/Sn+PL00W3RoLD/87jv4J28iwjsKm6AWUi4uxeAxgrLjaIV+FPxox7Xt
-         T3MvPyOn4qHFEx8sVkwDzxNwirvXTdbEVBICZoy1qOL1JYKfHkbVTlg8bM1H/Zu5gplJ
-         VktQ==
+        b=NG+t+DAHijpgCAPXWMPKVopg3C2eMqB1reTnFMLMAzDwMYLRGJppFY4KFVPa/BnO+X
+         v2TzLZeYU0FS2uy0zNoAF6sJB0z952viXJFI3y3+JaNr1mM0iJ1YLKk5s4/+vtALXP30
+         u/W9gtzdKjXdFQHiw1reoPCRzWra2n/7cSZtXHG0TfbcbshX1tFwAtk9iFCnW/mGO6y+
+         oksawZOnYZX3Lxx5pOCnKSpEfbOf9nTIsD1gRYEwolto7WsYWalp33XlT5CGI7Y4OXYt
+         V1WnCnxjvKY/K+Y09MIOf33f664LrShBA70LSiWexMq2pHak8uoTliVUBLQbyMFYSMs5
+         +d2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=fLlTkQZMBKLlfK4X9k246o+TLhUSnciff9gKTmqGISo=;
-        b=f6T+2i8MT72JzSXHS4Tf08GjRgGO0gj1YSWfuU0SIVZeL7bDLxkLQscx5zE7+NBFni
-         tq/YhE+MAOd9gxyQtZnTSQl0DdcziopkpTukVHlWeoMhFyYvbHxWZJAGApqiakgeIERp
-         5VNv+OHlQc5vFMPsg3FrqlnzUBVj4rckIVGpvpwKzfDAqjEaX0D81sZd9zqqpuR5So20
-         moKoo6vS2IAHd/ZUSPheBiu6Ba9aUOHOKGmtUnyr6O7HlDpoObd0XWzhrgCzWD/ncAq2
-         ui47jDSQ5F5gPwldR0obrWJuwlJ9iUeiJ0P00pUCcpELobCgsMJsHUtdpWvro22Hv/ac
-         g9cA==
+        bh=B9ekVgR/sp50y+9jw/muU0H/7AM7yNdC4FiG/uIbNMA=;
+        b=g8TokgTRbXIco38APa2MkPck9ubziPvVXU40MvU3FJwf6Xjgua3Z90gexSpKq9xyux
+         JgJ0fskpgZD7pvx+CZC9llYBJMcEMUv1HwrTn0+wR/PtnoOIomQdKTq8izny/skp3yop
+         ltgXOf4J4wWRtDrroiYz0lKNypObrj6/b1WL55uZaEBMBx3Fn2yYqSW9/2hnYB+NtLxf
+         h+F7t5idImN6h7GmhVC+6NqLklx8lcI2EclKycjsDpj1BseNAIMxlk9xl0uVDKgfwhJQ
+         NJX01BZtebZYZeoP2Qs+29oXkAgH44x+sMagz8PAyL6ftwg1/4a4OQj8AP8oYGjpF8g9
+         RVFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QD/MRrQs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=W9blBZ0N;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t74-v6si3147894qkl.41.2018.05.30.11.09.23
+        by mx.google.com with ESMTPS id d24-v6si2479725qve.70.2018.05.30.11.09.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 11:09:23 -0700 (PDT)
+        Wed, 30 May 2018 11:09:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=QD/MRrQs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=W9blBZ0N;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40083 helo=lists.gnu.org)
+Received: from localhost ([::1]:40087 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO5XH-0007bH-8v
-	for alex.bennee@linaro.org; Wed, 30 May 2018 14:09:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33781)
+	id 1fO5Xc-0007tD-Kj
+	for alex.bennee@linaro.org; Wed, 30 May 2018 14:09:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33295)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fO5Q2-0002Bq-4X
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 14:01:59 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fO5Pk-0001tm-CC
+	for qemu-devel@nongnu.org; Wed, 30 May 2018 14:01:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fO5Q0-0004sM-Kl
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 14:01:54 -0400
-Received: from mail-pl0-x22c.google.com ([2607:f8b0:400e:c01::22c]:38157)
+	(envelope-from <richard.henderson@linaro.org>) id 1fO5Ph-0004Vi-NN
+	for qemu-devel@nongnu.org; Wed, 30 May 2018 14:01:36 -0400
+Received: from mail-pl0-x229.google.com ([2607:f8b0:400e:c01::229]:33979)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fO5Q0-0004rA-2P
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 14:01:52 -0400
-Received: by mail-pl0-x22c.google.com with SMTP id c11-v6so11554558plr.5
-	for <qemu-devel@nongnu.org>; Wed, 30 May 2018 11:01:51 -0700 (PDT)
+	id 1fO5Ph-0004Uv-Cb
+	for qemu-devel@nongnu.org; Wed, 30 May 2018 14:01:33 -0400
+Received: by mail-pl0-x229.google.com with SMTP id ay10-v6so11557962plb.1
+	for <qemu-devel@nongnu.org>; Wed, 30 May 2018 11:01:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=fLlTkQZMBKLlfK4X9k246o+TLhUSnciff9gKTmqGISo=;
-	b=QD/MRrQs/mRoxQOz0SRevXZxidLNSrLaU44VMTLX6tfUKhz0+0gX5KdCZp6PoyZFKZ
-	MyikSPJRIRQqeumkj54dNFQ/5k8qibZtXLUCXYC+nT+iA5q0C27uK4XM2KhtPYwMUCbr
-	G4WMWSdyPUh/jHiTPMlr7SxPjecMfzFlmCGcc=
+	bh=B9ekVgR/sp50y+9jw/muU0H/7AM7yNdC4FiG/uIbNMA=;
+	b=W9blBZ0ND+ZWQSRMaHBGYuNOmX8KIzh+nUWXcNElUrRtIypq9SXB4pCsrqjjJHadJE
+	PLhSQxraDrivO+CACeYhIiNl11b+nz/PRE/adE9Zwm0ZTZu7AAQyu/gazutmYkqq/ow0
+	hpl9WRTEuDkoO83bFX8E1g7u63jTZI3dAvR+w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=fLlTkQZMBKLlfK4X9k246o+TLhUSnciff9gKTmqGISo=;
-	b=nHWq5xwIZi5idTgm699kGkqws+5yZwfozZCotoS1Jz11vt5WA75wRJhOpKp7hpjKJr
-	b6Ir3taDHbseRU3tWVtjCjIHbetEk6W649nFfvA+MDIsO4jMjG7nxrRn71wRKFOv6Jke
-	etiCvQ1VeoaoGJJGBJFT3Tlc2njQnBZTbA0E34xgYr2hXf/OyGoJ7bl8+plLx23iQJgs
-	u9P069wyyEYse+MIpDZwR2sOtwXp1NlW/0NJHQCQJ1wIbtpYoImzNSyOklzdvWHuVdPX
-	d3G+1f7QLVZDhovFnkzxnSdrSXMitFV2uCGffE3viZKdJaN+p/eS+77vx/XtReX76umu
-	4RCQ==
-X-Gm-Message-State: ALKqPweoh63LjPOdpzEkCDhGI8mzNQSkMUgb2+H0JMrEVSE7Nct0lKXI
-	ZFxHZPjPOZ9itogZmGjdp3QCPVjYkxQ=
-X-Received: by 2002:a17:902:6ac7:: with SMTP id
-	i7-v6mr3737493plt.288.1527703310718; 
-	Wed, 30 May 2018 11:01:50 -0700 (PDT)
+	bh=B9ekVgR/sp50y+9jw/muU0H/7AM7yNdC4FiG/uIbNMA=;
+	b=ZFVBp8XCRGY/tha1wyBsOapKl+/Hduk+Eo5y7IRaZIM6uiQGPsei8mh7N/SmjQR/mo
+	V6FaIHORUn3RTf/VCvQ5jr5tEgLf+EG89QZuqwZm2M8Nz0LJ4JwoB4IEaML81viARSrt
+	voYExeheipTUsYODICHWv/mCo4TCRWhPbxzLgZa51yVKV5XFgVMil7R2qI+M5qGPG4J8
+	7mLhe/bV5ii+5eZ+/JwUVqhIbDDpw+peL6xsldz8N7Yam3P+7EE4dzcRfT4G0W7B3j4C
+	cdvr63Y6e48czI9EOiktXr6fZCF/AAlkRKf9bZYOhFDVWfv7T2F/pXEsmJjBue0E1jui
+	vPig==
+X-Gm-Message-State: ALKqPwclJ5M3pbwq8IBkOHGFP7FLrle3LTFFV7CPXUAOkPmhNs2Wqc1o
+	AJ+aXcxyDXp4qgxR1T4CF91i+L6ah/c=
+X-Received: by 2002:a17:902:7244:: with SMTP id
+	c4-v6mr3771026pll.265.1527703291688; 
+	Wed, 30 May 2018 11:01:31 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
 	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	b84-v6sm28179157pfm.123.2018.05.30.11.01.49
+	b84-v6sm28179157pfm.123.2018.05.30.11.01.30
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 30 May 2018 11:01:49 -0700 (PDT)
+	Wed, 30 May 2018 11:01:30 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 30 May 2018 11:01:20 -0700
-Message-Id: <20180530180120.13355-19-richard.henderson@linaro.org>
+Date: Wed, 30 May 2018 11:01:08 -0700
+Message-Id: <20180530180120.13355-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180530180120.13355-1-richard.henderson@linaro.org>
 References: <20180530180120.13355-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::22c
-Subject: [Qemu-devel] [PATCH v3b 18/18] target/arm: Implement SVE Floating
- Point Arithmetic - Unpredicated Group
+X-Received-From: 2607:f8b0:400e:c01::229
+Subject: [Qemu-devel] [PATCH v3b 06/18] target/arm: Implement SVE
+ conditionally broadcast/extract element
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,220 +109,408 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nDDGw1yueDs1
+X-TUID: VCOdbjZYnlhv
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    | 14 ++++++++
- target/arm/helper.h        | 19 +++++++++++
- target/arm/translate-sve.c | 42 +++++++++++++++++++++++
- target/arm/vec_helper.c    | 69 ++++++++++++++++++++++++++++++++++++++
- target/arm/sve.decode      | 10 ++++++
- 5 files changed, 154 insertions(+)
+ target/arm/helper-sve.h    |   2 +
+ target/arm/sve_helper.c    |  11 ++
+ target/arm/translate-sve.c | 318 +++++++++++++++++++++++++++++++++++++
+ target/arm/sve.decode      |  20 +++
+ 4 files changed, 351 insertions(+)
 
 diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 97bfe0f47b..2e76084992 100644
+index d977aea00d..a58fb4ba01 100644
 --- a/target/arm/helper-sve.h
 +++ b/target/arm/helper-sve.h
-@@ -705,3 +705,17 @@ DEF_HELPER_FLAGS_4(sve_umini_b, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
- DEF_HELPER_FLAGS_4(sve_umini_h, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
- DEF_HELPER_FLAGS_4(sve_umini_s, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
- DEF_HELPER_FLAGS_4(sve_umini_d, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
-+
-+DEF_HELPER_FLAGS_5(gvec_recps_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_recps_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_recps_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_5(gvec_rsqrts_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_rsqrts_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_rsqrts_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 0c6a144458..879a7229e9 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -601,6 +601,25 @@ DEF_HELPER_FLAGS_5(gvec_fcmlas_idx, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_5(gvec_fcmlad, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
+@@ -463,6 +463,8 @@ DEF_HELPER_FLAGS_4(sve_trn_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_compact_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_compact_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
  
-+DEF_HELPER_FLAGS_5(gvec_fadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_2(sve_last_active_element, TCG_CALL_NO_RWG, s32, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(gvec_fsub_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fsub_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fsub_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_and_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_bic_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_eor_pppp, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index ed3c6d4ca9..941a098234 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -2070,3 +2070,14 @@ void HELPER(sve_compact_d)(void *vd, void *vn, void *vg, uint32_t desc)
+         d[j] = 0;
+     }
+ }
 +
-+DEF_HELPER_FLAGS_5(gvec_fmul_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fmul_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fmul_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++/* Similar to the ARM LastActiveElement pseudocode function, except the
++   result is multiplied by the element size.  This includes the not found
++   indication; e.g. not found for esz=3 is -8.  */
++int32_t HELPER(sve_last_active_element)(void *vg, uint32_t pred_desc)
++{
++    intptr_t oprsz = extract32(pred_desc, 0, SIMD_OPRSZ_BITS) + 2;
++    intptr_t esz = extract32(pred_desc, SIMD_DATA_SHIFT, 2);
 +
-+DEF_HELPER_FLAGS_5(gvec_ftsmul_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_ftsmul_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_ftsmul_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+
- #ifdef TARGET_AARCH64
- #include "helper-a64.h"
- #include "helper-sve.h"
++    return last_active_element(vg, DIV_ROUND_UP(oprsz, 8), esz);
++}
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 78e74047c8..cea64dfc18 100644
+index ed0f48a927..edcef277f8 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -3364,6 +3364,48 @@ DO_ZZI(UMIN, umin)
+@@ -2296,6 +2296,324 @@ static bool trans_COMPACT(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
+     return do_zpz_ool(s, a, fns[a->esz]);
+ }
  
- #undef DO_ZZI
- 
-+/*
-+ *** SVE Floating Point Arithmetic - Unpredicated Group
-+ */
-+
-+static bool do_zzz_fp(DisasContext *s, arg_rrr_esz *a,
-+                      gen_helper_gvec_3_ptr *fn)
++/* Call the helper that computes the ARM LastActiveElement pseudocode
++   function, scaled by the element size.  This includes the not found
++   indication; e.g. not found for esz=3 is -8.  */
++static void find_last_active(DisasContext *s, TCGv_i32 ret, int esz, int pg)
 +{
-+    if (fn == NULL) {
-+        return false;
++    /* Predicate sizes may be smaller and cannot use simd_desc.  We cannot
++       round up, as we do elsewhere, because we need the exact size.  */
++    TCGv_ptr t_p = tcg_temp_new_ptr();
++    TCGv_i32 t_desc;
++    unsigned vsz = pred_full_reg_size(s);
++    unsigned desc;
++
++    desc = vsz - 2;
++    desc = deposit32(desc, SIMD_DATA_SHIFT, 2, esz);
++
++    tcg_gen_addi_ptr(t_p, cpu_env, pred_full_reg_offset(s, pg));
++    t_desc = tcg_const_i32(desc);
++
++    gen_helper_sve_last_active_element(ret, t_p, t_desc);
++
++    tcg_temp_free_i32(t_desc);
++    tcg_temp_free_ptr(t_p);
++}
++
++/* Increment LAST to the offset of the next element in the vector,
++   wrapping around to 0.  */
++static void incr_last_active(DisasContext *s, TCGv_i32 last, int esz)
++{
++    unsigned vsz = vec_full_reg_size(s);
++
++    tcg_gen_addi_i32(last, last, 1 << esz);
++    if (is_power_of_2(vsz)) {
++        tcg_gen_andi_i32(last, last, vsz - 1);
++    } else {
++        TCGv_i32 max = tcg_const_i32(vsz);
++        TCGv_i32 zero = tcg_const_i32(0);
++        tcg_gen_movcond_i32(TCG_COND_GEU, last, last, max, zero, last);
++        tcg_temp_free_i32(max);
++        tcg_temp_free_i32(zero);
 +    }
-+    if (sve_access_check(s)) {
-+        unsigned vsz = vec_full_reg_size(s);
-+        TCGv_ptr status = get_fpstatus_ptr(a->esz == MO_16);
-+        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
-+                           vec_full_reg_offset(s, a->rn),
-+                           vec_full_reg_offset(s, a->rm),
-+                           status, vsz, vsz, 0, fn);
-+        tcg_temp_free_ptr(status);
++}
++
++/* If LAST < 0, set LAST to the offset of the last element in the vector.  */
++static void wrap_last_active(DisasContext *s, TCGv_i32 last, int esz)
++{
++    unsigned vsz = vec_full_reg_size(s);
++
++    if (is_power_of_2(vsz)) {
++        tcg_gen_andi_i32(last, last, vsz - 1);
++    } else {
++        TCGv_i32 max = tcg_const_i32(vsz - (1 << esz));
++        TCGv_i32 zero = tcg_const_i32(0);
++        tcg_gen_movcond_i32(TCG_COND_LT, last, last, zero, max, last);
++        tcg_temp_free_i32(max);
++        tcg_temp_free_i32(zero);
++    }
++}
++
++/* Load an unsigned element of ESZ from BASE+OFS.  */
++static TCGv_i64 load_esz(TCGv_ptr base, int ofs, int esz)
++{
++    TCGv_i64 r = tcg_temp_new_i64();
++
++    switch (esz) {
++    case 0:
++        tcg_gen_ld8u_i64(r, base, ofs);
++        break;
++    case 1:
++        tcg_gen_ld16u_i64(r, base, ofs);
++        break;
++    case 2:
++        tcg_gen_ld32u_i64(r, base, ofs);
++        break;
++    case 3:
++        tcg_gen_ld_i64(r, base, ofs);
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    return r;
++}
++
++/* Load an unsigned element of ESZ from RM[LAST].  */
++static TCGv_i64 load_last_active(DisasContext *s, TCGv_i32 last,
++                                 int rm, int esz)
++{
++    TCGv_ptr p = tcg_temp_new_ptr();
++    TCGv_i64 r;
++
++    /* Convert offset into vector into offset into ENV.
++       The final adjustment for the vector register base
++       is added via constant offset to the load.  */
++#ifdef HOST_WORDS_BIGENDIAN
++    /* Adjust for element ordering.  See vec_reg_offset.  */
++    if (esz < 3) {
++        tcg_gen_xori_i32(last, last, 8 - (1 << esz));
++    }
++#endif
++    tcg_gen_ext_i32_ptr(p, last);
++    tcg_gen_add_ptr(p, p, cpu_env);
++
++    r = load_esz(p, vec_full_reg_offset(s, rm), esz);
++    tcg_temp_free_ptr(p);
++
++    return r;
++}
++
++/* Compute CLAST for a Zreg.  */
++static bool do_clast_vector(DisasContext *s, arg_rprr_esz *a, bool before)
++{
++    if (!sve_access_check(s)) {
++        return true;
++    }
++
++    TCGv_i32 last = tcg_temp_local_new_i32();
++    TCGLabel *over = gen_new_label();
++    TCGv_i64 ele;
++    unsigned vsz, esz = a->esz;
++
++    find_last_active(s, last, esz, a->pg);
++
++    /* There is of course no movcond for a 2048-bit vector,
++       so we must branch over the actual store.  */
++    tcg_gen_brcondi_i32(TCG_COND_LT, last, 0, over);
++
++    if (!before) {
++        incr_last_active(s, last, esz);
++    }
++
++    ele = load_last_active(s, last, a->rm, esz);
++    tcg_temp_free_i32(last);
++
++    vsz = vec_full_reg_size(s);
++    tcg_gen_gvec_dup_i64(esz, vec_full_reg_offset(s, a->rd), vsz, vsz, ele);
++    tcg_temp_free_i64(ele);
++
++    /* If this insn used MOVPRFX, we may need a second move.  */
++    if (a->rd != a->rn) {
++        TCGLabel *done = gen_new_label();
++        tcg_gen_br(done);
++
++        gen_set_label(over);
++        do_mov_z(s, a->rd, a->rn);
++
++        gen_set_label(done);
++    } else {
++        gen_set_label(over);
 +    }
 +    return true;
 +}
 +
-+
-+#define DO_FP3(NAME, name) \
-+static bool trans_##NAME(DisasContext *s, arg_rrr_esz *a, uint32_t insn) \
-+{                                                                   \
-+    static gen_helper_gvec_3_ptr * const fns[4] = {                 \
-+        NULL, gen_helper_gvec_##name##_h,                           \
-+        gen_helper_gvec_##name##_s, gen_helper_gvec_##name##_d      \
-+    };                                                              \
-+    return do_zzz_fp(s, a, fns[a->esz]);                            \
++static bool trans_CLASTA_z(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
++{
++    return do_clast_vector(s, a, false);
 +}
 +
-+DO_FP3(FADD_zzz, fadd)
-+DO_FP3(FSUB_zzz, fsub)
-+DO_FP3(FMUL_zzz, fmul)
-+DO_FP3(FTSMUL, ftsmul)
-+DO_FP3(FRECPS, recps)
-+DO_FP3(FRSQRTS, rsqrts)
++static bool trans_CLASTB_z(DisasContext *s, arg_rprr_esz *a, uint32_t insn)
++{
++    return do_clast_vector(s, a, true);
++}
 +
-+#undef DO_FP3
++/* Compute CLAST for a scalar.  */
++static void do_clast_scalar(DisasContext *s, int esz, int pg, int rm,
++                            bool before, TCGv_i64 reg_val)
++{
++    TCGv_i32 last = tcg_temp_new_i32();
++    TCGv_i64 ele, cmp, zero;
++
++    find_last_active(s, last, esz, pg);
++
++    /* Extend the original value of last prior to incrementing.  */
++    cmp = tcg_temp_new_i64();
++    tcg_gen_ext_i32_i64(cmp, last);
++
++    if (!before) {
++        incr_last_active(s, last, esz);
++    }
++
++    /* The conceit here is that while last < 0 indicates not found, after
++       adjusting for cpu_env->vfp.zregs[rm], it is still a valid address
++       from which we can load garbage.  We then discard the garbage with
++       a conditional move.  */
++    ele = load_last_active(s, last, rm, esz);
++    tcg_temp_free_i32(last);
++
++    zero = tcg_const_i64(0);
++    tcg_gen_movcond_i64(TCG_COND_GE, reg_val, cmp, zero, ele, reg_val);
++
++    tcg_temp_free_i64(zero);
++    tcg_temp_free_i64(cmp);
++    tcg_temp_free_i64(ele);
++}
++
++/* Compute CLAST for a Vreg.  */
++static bool do_clast_fp(DisasContext *s, arg_rpr_esz *a, bool before)
++{
++    if (sve_access_check(s)) {
++        int esz = a->esz;
++        int ofs = vec_reg_offset(s, a->rd, 0, esz);
++        TCGv_i64 reg = load_esz(cpu_env, ofs, esz);
++
++        do_clast_scalar(s, esz, a->pg, a->rn, before, reg);
++        write_fp_dreg(s, a->rd, reg);
++        tcg_temp_free_i64(reg);
++    }
++    return true;
++}
++
++static bool trans_CLASTA_v(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_clast_fp(s, a, false);
++}
++
++static bool trans_CLASTB_v(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_clast_fp(s, a, true);
++}
++
++/* Compute CLAST for a Xreg.  */
++static bool do_clast_general(DisasContext *s, arg_rpr_esz *a, bool before)
++{
++    if (!sve_access_check(s)) {
++        return true;
++    }
++
++    TCGv_i64 reg = cpu_reg(s, a->rd);
++
++    switch (a->esz) {
++    case 0:
++        tcg_gen_ext8u_i64(reg, reg);
++        break;
++    case 1:
++        tcg_gen_ext16u_i64(reg, reg);
++        break;
++    case 2:
++        tcg_gen_ext32u_i64(reg, reg);
++        break;
++    case 3:
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    do_clast_scalar(s, a->esz, a->pg, a->rn, before, cpu_reg(s, a->rd));
++    return true;
++}
++
++static bool trans_CLASTA_r(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_clast_general(s, a, false);
++}
++
++static bool trans_CLASTB_r(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_clast_general(s, a, true);
++}
++
++/* Compute LAST for a scalar.  */
++static TCGv_i64 do_last_scalar(DisasContext *s, int esz,
++                               int pg, int rm, bool before)
++{
++    TCGv_i32 last = tcg_temp_new_i32();
++    TCGv_i64 ret;
++
++    find_last_active(s, last, esz, pg);
++    if (before) {
++        wrap_last_active(s, last, esz);
++    } else {
++        incr_last_active(s, last, esz);
++    }
++
++    ret = load_last_active(s, last, rm, esz);
++    tcg_temp_free_i32(last);
++    return ret;
++}
++
++/* Compute LAST for a Vreg.  */
++static bool do_last_fp(DisasContext *s, arg_rpr_esz *a, bool before)
++{
++    if (sve_access_check(s)) {
++        TCGv_i64 val = do_last_scalar(s, a->esz, a->pg, a->rn, before);
++        write_fp_dreg(s, a->rd, val);
++        tcg_temp_free_i64(val);
++    }
++    return true;
++}
++
++static bool trans_LASTA_v(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_last_fp(s, a, false);
++}
++
++static bool trans_LASTB_v(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_last_fp(s, a, true);
++}
++
++/* Compute LAST for a Xreg.  */
++static bool do_last_general(DisasContext *s, arg_rpr_esz *a, bool before)
++{
++    if (sve_access_check(s)) {
++        TCGv_i64 val = do_last_scalar(s, a->esz, a->pg, a->rn, before);
++        tcg_gen_mov_i64(cpu_reg(s, a->rd), val);
++        tcg_temp_free_i64(val);
++    }
++    return true;
++}
++
++static bool trans_LASTA_r(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_last_general(s, a, false);
++}
++
++static bool trans_LASTB_r(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_last_general(s, a, true);
++}
 +
  /*
   *** SVE Memory - 32-bit Gather and Unsized Contiguous Group
   */
-diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-index ec705cfca5..4b5ec94698 100644
---- a/target/arm/vec_helper.c
-+++ b/target/arm/vec_helper.c
-@@ -427,3 +427,72 @@ void HELPER(gvec_fcmlad)(void *vd, void *vn, void *vm,
-     }
-     clear_tail(d, opr_sz, simd_maxsz(desc));
- }
-+
-+/* Floating-point trigonometric starting value.
-+ * See the ARM ARM pseudocode function FPTrigSMul.
-+ */
-+static float16 float16_ftsmul(float16 op1, uint16_t op2, float_status *stat)
-+{
-+    float16 result = float16_mul(op1, op1, stat);
-+    if (!float16_is_any_nan(result)) {
-+        result = float16_set_sign(result, op2 & 1);
-+    }
-+    return result;
-+}
-+
-+static float32 float32_ftsmul(float32 op1, uint32_t op2, float_status *stat)
-+{
-+    float32 result = float32_mul(op1, op1, stat);
-+    if (!float32_is_any_nan(result)) {
-+        result = float32_set_sign(result, op2 & 1);
-+    }
-+    return result;
-+}
-+
-+static float64 float64_ftsmul(float64 op1, uint64_t op2, float_status *stat)
-+{
-+    float64 result = float64_mul(op1, op1, stat);
-+    if (!float64_is_any_nan(result)) {
-+        result = float64_set_sign(result, op2 & 1);
-+    }
-+    return result;
-+}
-+
-+#define DO_3OP(NAME, FUNC, TYPE) \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, void *stat, uint32_t desc) \
-+{                                                                          \
-+    intptr_t i, oprsz = simd_oprsz(desc);                                  \
-+    TYPE *d = vd, *n = vn, *m = vm;                                        \
-+    for (i = 0; i < oprsz / sizeof(TYPE); i++) {                           \
-+        d[i] = FUNC(n[i], m[i], stat);                                     \
-+    }                                                                      \
-+}
-+
-+DO_3OP(gvec_fadd_h, float16_add, float16)
-+DO_3OP(gvec_fadd_s, float32_add, float32)
-+DO_3OP(gvec_fadd_d, float64_add, float64)
-+
-+DO_3OP(gvec_fsub_h, float16_sub, float16)
-+DO_3OP(gvec_fsub_s, float32_sub, float32)
-+DO_3OP(gvec_fsub_d, float64_sub, float64)
-+
-+DO_3OP(gvec_fmul_h, float16_mul, float16)
-+DO_3OP(gvec_fmul_s, float32_mul, float32)
-+DO_3OP(gvec_fmul_d, float64_mul, float64)
-+
-+DO_3OP(gvec_ftsmul_h, float16_ftsmul, float16)
-+DO_3OP(gvec_ftsmul_s, float32_ftsmul, float32)
-+DO_3OP(gvec_ftsmul_d, float64_ftsmul, float64)
-+
-+#ifdef TARGET_AARCH64
-+
-+DO_3OP(gvec_recps_h, helper_recpsf_f16, float16)
-+DO_3OP(gvec_recps_s, helper_recpsf_f32, float32)
-+DO_3OP(gvec_recps_d, helper_recpsf_f64, float64)
-+
-+DO_3OP(gvec_rsqrts_h, helper_rsqrtsf_f16, float16)
-+DO_3OP(gvec_rsqrts_s, helper_rsqrtsf_f32, float32)
-+DO_3OP(gvec_rsqrts_d, helper_rsqrtsf_f64, float64)
-+
-+#endif
-+#undef DO_3OP
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index eee8726bdf..6f436f9096 100644
+index 9da6566d32..1226867f69 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -648,6 +648,16 @@ UMIN_zzi        00100101 .. 101 011 110 ........ .....          @rdn_i8u
- # SVE integer multiply immediate (unpredicated)
- MUL_zzi         00100101 .. 110 000 110 ........ .....          @rdn_i8s
+@@ -430,6 +430,26 @@ TRN2_z          00000101 .. 1 ..... 011 101 ..... .....         @rd_rn_rm
+ # Note esz >= 2
+ COMPACT         00000101 .. 100001 100 ... ..... .....          @rd_pg_rn
  
-+### SVE Floating Point Arithmetic - Unpredicated Group
++# SVE conditionally broadcast element to vector
++CLASTA_z        00000101 .. 10100 0 100 ... ..... .....         @rdn_pg_rm
++CLASTB_z        00000101 .. 10100 1 100 ... ..... .....         @rdn_pg_rm
 +
-+# SVE floating-point arithmetic (unpredicated)
-+FADD_zzz        01100101 .. 0 ..... 000 000 ..... .....         @rd_rn_rm
-+FSUB_zzz        01100101 .. 0 ..... 000 001 ..... .....         @rd_rn_rm
-+FMUL_zzz        01100101 .. 0 ..... 000 010 ..... .....         @rd_rn_rm
-+FTSMUL          01100101 .. 0 ..... 000 011 ..... .....         @rd_rn_rm
-+FRECPS          01100101 .. 0 ..... 000 110 ..... .....         @rd_rn_rm
-+FRSQRTS         01100101 .. 0 ..... 000 111 ..... .....         @rd_rn_rm
++# SVE conditionally copy element to SIMD&FP scalar
++CLASTA_v        00000101 .. 10101 0 100 ... ..... .....         @rd_pg_rn
++CLASTB_v        00000101 .. 10101 1 100 ... ..... .....         @rd_pg_rn
 +
- ### SVE Memory - 32-bit Gather and Unsized Contiguous Group
++# SVE conditionally copy element to general register
++CLASTA_r        00000101 .. 11000 0 101 ... ..... .....         @rd_pg_rn
++CLASTB_r        00000101 .. 11000 1 101 ... ..... .....         @rd_pg_rn
++
++# SVE copy element to SIMD&FP scalar register
++LASTA_v         00000101 .. 10001 0 100 ... ..... .....         @rd_pg_rn
++LASTB_v         00000101 .. 10001 1 100 ... ..... .....         @rd_pg_rn
++
++# SVE copy element to general register
++LASTA_r         00000101 .. 10000 0 101 ... ..... .....         @rd_pg_rn
++LASTB_r         00000101 .. 10000 1 101 ... ..... .....         @rd_pg_rn
++
+ ### SVE Predicate Logical Operations Group
  
- # SVE load predicate register
+ # SVE predicate logical operations
 -- 
 2.17.0
 

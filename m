@@ -1,78 +1,81 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4399813wre;
-        Tue, 29 May 2018 23:41:34 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKdEIody6NmM/Gk+oBAM911Kf4N/ZZDyOmtbwP2rCrgUP4o3Qb4ivoxaOO2cGTcuWvaMhWQ
-X-Received: by 2002:a37:678b:: with SMTP id b133-v6mr1258960qkc.54.1527662494765;
-        Tue, 29 May 2018 23:41:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527662494; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4399958wre;
+        Tue, 29 May 2018 23:41:50 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJ7rhaO0vu2eFkI1VlChxufbGpnw/tA+JdwnXQrL0uIbGrBAG0qoYeQM7MFr06hrTBk6+4X
+X-Received: by 2002:a37:7e87:: with SMTP id z129-v6mr1195152qkc.298.1527662509957;
+        Tue, 29 May 2018 23:41:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527662509; cv=none;
         d=google.com; s=arc-20160816;
-        b=velu3L11xKTw0a978sKPDGBAhxB8ZmyC1iTbhXYQkjgUjIDF+Iw+VbdnqiQ5nKsp8l
-         7KpNDzBHRNpd/GJUlOiIp73egazbKFjKw2C7rxOIoniScq+fkqud1U3Ralr2VaVc2Jdf
-         PSIgRQIhqeyqm+R77CpLtSzlNoofGQ9AC2AwYgXWvRxTLvAqbfCwQqJHOyVBX7B+/XgF
-         TU/87DqZr+GU16cZrynroSuwQxkRvgPUexuPVEinkHNMqB16b2DOyMNDTiwTzP7EFyul
-         QxLSzeVbd9DITjuqvYUgd3uZr5PS/DfyJ+6mr2Int+97Bc0MQt1KltLuUnaSnDM4Laom
-         ij7w==
+        b=h8Njys9xdX2VIxmtOObMunWfSfBe+f6anAmmmcI+0EhE8Gin+MbS/dZQ1zCZxAen0k
+         6u/f7MED5Hi9kFC4HX+Qam4nMAecj6Hp3FDRui98wKftsSD3p1eEKJKjttN6crCNWvpd
+         yylGQeABuiSuSGbFbEIbgnwIY7u3SQFQRLvoQnMCOv9+j6UKjrEEfU5egutSB5H9fhb/
+         IjVh/k+BP0AJy1gTPjxW7R7O4DNdQdQBqKQCjC9c0/DtHZlrUHExFguVK/gmqiT7zX4p
+         RP8Grq8d69Yi3yDzYPC6hohUDdAOF2Pp1mYGOx0DFtUEGJYBobljpjO4c58agrx+WCS6
+         5FrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :arc-authentication-results;
-        bh=0JR8zvtxURI18hxuBbjtirh3IEB4w6bQjgnuT61DFdo=;
-        b=DAATdeGL8Lrg/FjJQkyLYRQCuNsbjfuatIfET89IryF0WlGvaH4Mg9iURyWK2lrrpD
-         U9PqcS48Q0b+jk2tw0tb+NZ8mnYinYFzRQtk13Oflglw5MYKYVYs56h/09wZs7SSDEhT
-         rU+X3oQ/OMeQy/B65hWLB9Rl3NgIWlFdENbjiIxk1KwxbfepON+OGpnWcb1SzqHFsCv5
-         fNp/ZrbLMGyqs7QeMunEn0PVxfEC0Wo0MW8GndhzleTjYypK0poP3LdwAZm0VnUkNSy+
-         AL+DzntAaIp5WxSbWYxnDnbkxiDi2XpEb1QPDhxa6T5H032+FfG4CdkaxnFUKNfDg36u
-         5arA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=SulYmTddhPNhZbiSjCH+Obud2l7Hym3I6iBvf+WdHfU=;
+        b=ppOH1CU7IyzZ9EEa3KMuKLZkjQGTzC80IgYH5WuzOyBe1s/IDTXq7y1yL7GRtpM2Vx
+         SDegxNFC5njNgzVHq4y85yMATMAYkranY8nC5zNfp1fH2cyU6wz1R06H3DPKqhL/LUo1
+         AhyorT63Ieb+iWkYcNOW5GrOAJDzxgI1hIRjpVA2zUO4kEh185NVJOBLDjvtsHHSsSug
+         TtD1PvNMAk6Vd4llU2WT2sKdhKNbe/paROQisi7gehV5jsomBz1Ln5AXEIiUER0e6PwF
+         0MWxtz97bxY2V3VmKNAhDaht9Fgs8Z+AB/gIg8Mi0+wsfnwQ6nUyagKENBLoobmLEZXV
+         5e5w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j4-v6si822822qvb.41.2018.05.29.23.41.34
+        by mx.google.com with ESMTPS id w33-v6si521010qtb.152.2018.05.29.23.41.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 23:41:34 -0700 (PDT)
+        Tue, 29 May 2018 23:41:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36505 helo=lists.gnu.org)
+Received: from localhost ([::1]:36507 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNune-0002CB-70
-	for alex.bennee@linaro.org; Wed, 30 May 2018 02:41:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34633)
+	id 1fNunt-0002Lq-BK
+	for alex.bennee@linaro.org; Wed, 30 May 2018 02:41:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34684)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNunS-0002Ac-5b
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:41:23 -0400
+	(envelope-from <clg@kaod.org>) id 1fNunY-0002Hv-QL
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:41:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fNunO-00013v-8Z
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:41:22 -0400
-Received: from 4.mo6.mail-out.ovh.net ([87.98.184.159]:42076)
+	(envelope-from <clg@kaod.org>) id 1fNunU-00017s-Te
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:41:28 -0400
+Received: from 14.mo5.mail-out.ovh.net ([188.165.51.82]:42602)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNunO-00011g-2f
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:41:18 -0400
-Received: from player159.ha.ovh.net (unknown [10.109.105.97])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 7B52B15CA5B
-	for <qemu-arm@nongnu.org>; Wed, 30 May 2018 08:41:08 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNunU-00016Y-LB
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:41:24 -0400
+Received: from player159.ha.ovh.net (unknown [10.109.108.82])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id E6C741AD844
+	for <qemu-arm@nongnu.org>; Wed, 30 May 2018 08:41:15 +0200 (CEST)
 Received: from zorba.kaod.org.com (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
 	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
-	by player159.ha.ovh.net (Postfix) with ESMTPSA id 687024800B2;
-	Wed, 30 May 2018 08:40:59 +0200 (CEST)
+	by player159.ha.ovh.net (Postfix) with ESMTPSA id 14C88480096;
+	Wed, 30 May 2018 08:41:08 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 30 May 2018 08:40:42 +0200
-Message-Id: <20180530064049.27976-1-clg@kaod.org>
+Date: Wed, 30 May 2018 08:40:43 +0200
+Message-Id: <20180530064049.27976-2-clg@kaod.org>
 X-Mailer: git-send-email 2.13.6
+In-Reply-To: <20180530064049.27976-1-clg@kaod.org>
+References: <20180530064049.27976-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 5153243877037148945
+X-Ovh-Tracer-Id: 5155214201444797201
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheelgdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheelgdduudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 87.98.184.159
-Subject: [Qemu-arm] [PATCH v7 0/7] aspeed: add a witherspoon-bmc machine
+X-Received-From: 188.165.51.82
+Subject: [Qemu-arm] [PATCH v7 1/7] aspeed: remove
+ ignore_memory_transaction_failures on all boards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,52 +94,45 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
 	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yQPIDWM7hBpA
+X-TUID: dmusZdyjhr96
 
-Hello
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/aspeed.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-This series adds a new Aspeed machine to emulate the BMC of a
-Witherspoon system. It also extends the other Aspeed machines with I2C
-devices and adds a simple model for the pca9552 LED blinker present on
-the Witherspoon board.
-
-Thanks,
-
-C.
-
-Changes since v6:
-
- - removed code duplication in the pca9552 test
- - removed the ROM memory region catching invalid writes
-
-C=C3=A9dric Le Goater (7):
-  aspeed: remove ignore_memory_transaction_failures on all boards
-  aspeed: add support for the witherspoon-bmc board
-  aspeed: add an I2C RTC device to all machines
-  smbus: add a smbus_eeprom_init_one() routine
-  aspeed: Add EEPROM I2C devices
-  misc: add pca9552 LED blinker model
-  aspeed: add the pc9552 chips to the witherspoon machine
-
- default-configs/arm-softmmu.mak |   1 +
- include/hw/i2c/smbus.h          |   1 +
- include/hw/misc/pca9552.h       |  32 ++++++
- include/hw/misc/pca9552_regs.h  |  32 ++++++
- tests/libqos/i2c.h              |   2 +
- hw/arm/aspeed.c                 |  88 ++++++++++++++-
- hw/i2c/smbus_eeprom.c           |  16 ++-
- hw/misc/pca9552.c               | 240 ++++++++++++++++++++++++++++++++++=
-++++++
- tests/pca9552-test.c            | 116 +++++++++++++++++++
- tests/tmp105-test.c             |   2 -
- hw/misc/Makefile.objs           |   1 +
- tests/Makefile.include          |   2 +
- 12 files changed, 523 insertions(+), 10 deletions(-)
- create mode 100644 include/hw/misc/pca9552.h
- create mode 100644 include/hw/misc/pca9552_regs.h
- create mode 100644 hw/misc/pca9552.c
- create mode 100644 tests/pca9552-test.c
-
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index aecb3c1e7578..133614a4384d 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -279,7 +279,6 @@ static void palmetto_bmc_class_init(ObjectClass *oc, =
+void *data)
+     mc->no_floppy =3D 1;
+     mc->no_cdrom =3D 1;
+     mc->no_parallel =3D 1;
+-    mc->ignore_memory_transaction_failures =3D true;
+ }
+=20
+ static const TypeInfo palmetto_bmc_type =3D {
+@@ -312,7 +311,6 @@ static void ast2500_evb_class_init(ObjectClass *oc, v=
+oid *data)
+     mc->no_floppy =3D 1;
+     mc->no_cdrom =3D 1;
+     mc->no_parallel =3D 1;
+-    mc->ignore_memory_transaction_failures =3D true;
+ }
+=20
+ static const TypeInfo ast2500_evb_type =3D {
+@@ -337,7 +335,6 @@ static void romulus_bmc_class_init(ObjectClass *oc, v=
+oid *data)
+     mc->no_floppy =3D 1;
+     mc->no_cdrom =3D 1;
+     mc->no_parallel =3D 1;
+-    mc->ignore_memory_transaction_failures =3D true;
+ }
+=20
+ static const TypeInfo romulus_bmc_type =3D {
 --=20
 2.13.6
 

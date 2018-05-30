@@ -1,89 +1,99 @@
-Received: by 10.28.4.212 with SMTP id 203csp449749wme;
-        Fri, 4 May 2018 01:12:42 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZqLwfUeMyFb0gMHlnZ42uBiItGY32KxelAOvRaY02gyeCut09iXkaswfzw+lerErhYbabp2
-X-Received: by 10.28.118.9 with SMTP id r9mr18799092wmc.111.1525421562392;
-        Fri, 04 May 2018 01:12:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1525421562; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4997102wre;
+        Wed, 30 May 2018 10:35:46 -0700 (PDT)
+X-Received: by 2002:aca:5d8a:: with SMTP id r132-v6mr2133712oib.41.1527701746302;
+        Wed, 30 May 2018 10:35:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527701746; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z2qBRNLF3zzKKLnEpJSwXVEHbwnoTOtljIveCGCxavL4e8d+O9BNqtsWVrcP1MrC4a
-         heeCx42UXdmnvZp81PmuB58WYezBVvrXY4yEpb2liFog44Z9xviJE5it54WXlhdiTFhr
-         OjyOnchQCitYrE21YbJ8Of0XxdrDjhoLmCnOcax+3n/IbE04kEiwRrZM4QxDsEMjMacQ
-         /hfmaIKGPM04aYK2HeFP9lxMQrB7sp4K2hziGAC35qh1m+8sTjQkyXwxCpVm079bVrjM
-         SDzzlZZ7QtiSkAQZ6MiQSS5HMY5EHXgZ7Wz9taABX9YmUJDGRd5La9vsUx33+m855kAF
-         iI7A==
+        b=bfTPKs7zdLyEx0AILqg6CmFnA4xh6vMFz+E6TSA6msXTLfDn5Lo2qUM2M3stbXfkAe
+         L+kpCS7cfyyrn3zTPQXZH3ciZ5yPEcuDRDQpzv6SCw85lHMjsFBwiuXgUcEfe4iLT7CK
+         JByTnhjyP2ABv6wazJjWJohbFcibsUrSoFO4++anfIcSsmPe7weL/a/U2Qsn4nC+A0+3
+         TfuPpSCMo5QxPIwDq7CszArZD1rFiYh4tfL4Aw+hExJq59OMzB77U7MPlMfsxktYEKml
+         +fmwsbnpAGRzSpl8RQjZ+BDye6bh+FjYoqnBXF2hinM8LN+v98NY7QMW/Q6I3qp4xphY
+         2CUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :arc-authentication-results;
-        bh=JK/J7O1Tvw5cujPJeNcFL97dTv+7I9TMwHfzOltjgcs=;
-        b=YJaiq1xwMbv4Of1/ezU/FwqQhZ9MTpAlB9M/7EQ/IBCwHl0UEqrV82EM39/nVFAH65
-         FcBYHpzGBxFX5h10e7K6qRxzT7atDMg87OFuqDL/U56oC92NQyfXwm+gU+1tKh4sxVfx
-         ohAP3tX/gKihREDe55hB7yUFpf5VEV/mvmWzVxwQi4sOHmH+Dik0j4wpTnpRVth5yIdf
-         ERZ+F6m7mMWt6mxYvmEURf4S8PEzmUyzjkY1oMbK/Py0o/PMT1O5/ORj7IIwb+j3Fl3v
-         1fmJocyVaqv97j17/rsY8O9s/IzzLc1CAw3ayDtQBXqtDlqrL54vD+sNMbptxqHoSHWt
-         5obg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=SUX8D75PwDZrFduRFNtRIhp+nQ5a91O39vfR/kdPEiY=;
+        b=wulBNLN7xvtXTbBeWCVBoLtMr+1nc5u7j13Tt5Cs29HCn9x57KPkNSbIuzf2T0Y9r6
+         wnJn1Ax28NSN1CCwgcJzffPo6P0lTGaeXo3NvZvB+U6NDQlRrHByNq0Zpm90YJ2ZLsDK
+         GsUvwHDihej137+UL4lNUAlD4kXSRLvcIsYisHzuX5gMIlNpack/9BJDPlXHfTaSdB/D
+         FvJnKqRePTGE0MOB5WiznUYkEXSAdUHYX0DmZf1RUGnw1oea9iDnypmQD/8XlOJR96VW
+         31hRry5Kp+tDgoc9a40p/8mQJXxNBJ3LcqcnR8NdJjnd0YsZjN0KAYwvfRttqnXZ3Pbp
+         CY2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
-Return-Path: <abdallah.bouassida@lauterbach.com>
-Received: from smtp1.lauterbach.com (smtp1.lauterbach.com. [62.154.241.196])
-        by mx.google.com with ESMTPS id d13-v6si14336450wri.245.2018.05.04.01.12.42
+       dkim=pass header.i=@linaro.org header.s=google header.b=de+92RBe;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g16-v6sor16343475otj.234.2018.05.30.10.35.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 May 2018 01:12:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) client-ip=62.154.241.196;
+        (Google Transport Security);
+        Wed, 30 May 2018 10:35:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
-Received: (qmail 16914 invoked by uid 484); 4 May 2018 08:12:41 -0000
-X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com (envelope-from <abdallah.bouassida@lauterbach.com>, uid 484) with qmail-scanner-2.11 
- (mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
- Clear:RC:1(41.224.44.126):. 
- Processed in 0.176381 secs); 04 May 2018 08:12:41 -0000
-Received: from unknown (HELO [192.168.187.23]) (Authenticated_SSL:abouassida@[41.224.44.126])
-          (envelope-sender <abdallah.bouassida@lauterbach.com>)
-          by smtp1.lauterbach.com (qmail-ldap-1.03) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-          for <khaled.jmal@lauterbach.com>; 4 May 2018 08:12:41 -0000
-Subject: Re: [PATCH v6 0/3] target/arm: Add a dynamic XML-description of the
- cp-registers to GDB
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- khaled.jmal@lauterbach.com
-References: <1524153386-3550-1-git-send-email-abdallah.bouassida@lauterbach.com>
- <87zi1g8qrd.fsf@linaro.org>
-From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Message-ID: <21a8cd56-b57a-31d9-36ac-131bd5996be0@lauterbach.com>
-Date: Fri, 4 May 2018 09:12:42 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=de+92RBe;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=SUX8D75PwDZrFduRFNtRIhp+nQ5a91O39vfR/kdPEiY=;
+        b=de+92RBedkP2by3pd4DN40x6FlmCudzb9fQadXrjc6A5e21aaRDxoOB6CZzL9MFQ1U
+         XVHLCHKsOCHk4GNBhWTaxSfca0yjHcUJ2s/S1GOfKo61DV0LeZDj6Sz/ko/N8Eqz8gJI
+         024F9ghbAHexOD5a/QqUg3TLZx8m6bq8IKbRU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=SUX8D75PwDZrFduRFNtRIhp+nQ5a91O39vfR/kdPEiY=;
+        b=ebjjT8B91j9dgm1a/qq1vDjH+u5CydDAZ3bPfTHTgSfM6jsPiI5gdKZl1ZVHnrE6cZ
+         NSuTK9/IlECXmu7e5HRhGIBbwZzRAy8P0FhbCIozV0dEY241YqLxcWJIr/FUyYXgG4kh
+         3vszkUtcXyyqQM+dqrsWfupXd/Ap5q2kWweqkAjx6H2ihdptUck207rX1Hxc0dNnVYuN
+         Rtx7oLtfRcPPVmFysROyHIuRnO9sFHyIAL4+cnHhrpF48wxHiDqFKt/4WbsZXkOaFAVR
+         a5DSiCnfLNDRekbrK3F2+FARDtFBTkJJWZkG3COyIIKk2zXOMnNmbSyENGO1aaB5Lno3
+         raCA==
+X-Gm-Message-State: ALKqPwdnACFjPTOWnDywQxBagihf+qmBxu9cOohz8XRn7z6R8nWmSYNX
+	l6r8X/gi7MjbbyEPVB9tewxgDlSRPy71F+xVV0sBppG0
+X-Google-Smtp-Source: ADUXVKLzDzYztc6BoOJnBWTvM4LVEGeZVSpdzzRUgXXGSAJWoUQXXtONXzCoGherI1czfAjJ/o0gqXoOUyLXL3HH+pg=
+X-Received: by 2002:a9d:2371:: with SMTP id k46-v6mr2572417otd.210.1527701745895;
+ Wed, 30 May 2018 10:35:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87zi1g8qrd.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TUID: hp9qeldgXvzc
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Wed, 30 May 2018 10:35:25
+ -0700 (PDT)
+In-Reply-To: <530bef1b-a143-1566-3089-32629ab250b8@redhat.com>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+ <20180521140402.23318-24-peter.maydell@linaro.org> <c049f864-304d-f8ee-4b2f-1476a602be30@redhat.com>
+ <CAFEAcA_ErfYKnVrp=Dv9mNg55Y+=fFmg4eEMddGdMxUGVb9ztA@mail.gmail.com> <530bef1b-a143-1566-3089-32629ab250b8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 30 May 2018 18:35:25 +0100
+Message-ID: <CAFEAcA94JAccGhbhSrBkTHUV+dLR-EvYQW_nuB9FodtLTDQPZw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 23/27] hw/core/or-irq: Support more than 16
+ inputs to an OR gate
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, "patches@linaro.org" <patches@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: UAXICjjiD8Ct
 
+On 30 May 2018 at 17:59, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> On 21/05/2018 17:02, Peter Maydell wrote:
+>> On 21 May 2018 at 15:34, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>>> Why do the levels have to be migrated at all?  It should be enough if
+>>> the IRQ level is either migrated manually, or restored (e.g. in
+>>> post_save callbacks) through other data that is migrated.
+>> This is standard behaviour for devices: they track their
+>> inbound irq/gpio lines, and then that becomes internal state for
+>> them that must be migrated.
+>
+> But or_irq's input are another device's outbound lines, so tracking them
+> should not be necessary.  The other device would do it for or_irq.
 
-> Abdallah Bouassida <abdallah.bouassida@lauterbach.com> writes:
->
->> The previous version:
->> http://patchwork.ozlabs.org/project/qemu-devel/list/?series=33714
-> I was trying to do some testing but I was finding it very hard to do at
-> gdb kept throwing up errors like:
->
-> (gdb) x/10i $pc
-> => 0xffffff8008097760 <check_and_switch_context>:       Cannot access memory at address 0xffffff8008097760
-> Detaching from program: /home/alex/lsrc/qemu/kernel-v8-plain.build/vmlinux, Remote target
-> Ending remote debugging.
->
-> However this seems to be the same on master as well so I wonder there is
-> a regression somewhere.
->
-> What was the last QEMU master commit you've tested these patches on?
-> I'll do some more digging tomorrow.
-It was:
-    commit 0e87fdc966d05f4e5ad868034fcd8ee2a08ca62d
-    Author: Peter Maydell <peter.maydell@linaro.org>
-    Date:   Wed Apr 4 20:37:20 2018 +0100
-        Update version for v2.12.0-rc2 release
+There's no mechanism in qemu_irq for the destination end to ask
+the source end about its current value. The information flow
+is strictly one-way.
 
-Best regards,
-Abdallah
+thanks
+-- PMM

@@ -1,77 +1,79 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4821589wre;
-        Wed, 30 May 2018 07:39:44 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJAQe1pH9ebvkd/zIsE55YLqPHHtCP9T7p9KV4fxs+0ypCFfVER62xRo+j1NWZqyOwGtJ7O
-X-Received: by 2002:a37:8542:: with SMTP id h63-v6mr2526160qkd.342.1527691183970;
-        Wed, 30 May 2018 07:39:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527691183; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4825708wre;
+        Wed, 30 May 2018 07:44:07 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKK25CcHLml0xkUMgrTfJGu607sI0TETTO6PJ3DyRbDEDIaorxUo3DfxeEp7a+yTH2SCIdOB
+X-Received: by 2002:a0c:bfd4:: with SMTP id u20-v6mr2787899qvj.102.1527691447872;
+        Wed, 30 May 2018 07:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527691447; cv=none;
         d=google.com; s=arc-20160816;
-        b=hhHjXPxpp2Si+rF3PQfZl9EqhgkPdGYv4ag7ezvqEp9b246dQxrtcmlF7Rem5BESww
-         AL/ra9wJIrbcBZBo2OAACbFAsdLBIvXFaLTW1Tkc46k3YC5DpNUAzLDtmxK19iQy/lX8
-         15aRdi3x43l6P3VUUSYNeYLVqWcC4VginPckBGoXF50GG8swwQ63iPV3o8DImQdVXzEp
-         u8C4Fw4B19QMlTo2wGHxXhO3hWDR0JBU0ZbInQWSg3mldc7m7M/033EOYjoEZVhuDFj9
-         AJTHlr5sy+tA+0z3hC6cKmX1XWAuIG+YoVJZCSqG3q53Gkxog+K7w+2LVjigSyAcuJcR
-         DHNA==
+        b=u1Pf3Ren7HaRX/tNP5y4Ee9bMB2HWhIZ8P9htXKyTalAWenpznBFuNTwY2wBmSBf2t
+         bGWN6/7dzmRutBXHBmG9BYYSRKB40fV8wqc2knlNoCz/WXr08HbxaMUDYy/9hvS+VhvW
+         67Z0WFIGtxPG7G6KxpmF6DsY18h4q9Iz6iNv78kWzo6fXf/XDvtukC+QL3QOI+JvNvo+
+         ch6AVTD6XjyDxFDi+QJIyKEFb9/vm2BPPaVnZzrra5P/kdgunIVzseb2jOStqun9x66J
+         qcgi+8O8F0/wFcqgLMVXrn+inXdZbvzP3E0YbtggrJlORyvdqe8YFosAAgWCm0yDHtFb
+         AMUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic:to
          :from:arc-authentication-results;
-        bh=3m9KIEwutCTGqGtoGSayox8pNts84lwpLaXDgGrbhuw=;
-        b=QpG7nSZavDVnhzefNRPILyanK+gNJw1aTeih9CAWFDrM1wKutQOG3yopXSWgnsfWGy
-         0fEE+AFL53cU2LKFSQqi0BFfaKNjOu9xqfp7nzfBanZNlKLPYC2K4HAdRqJbIHdfxMtk
-         KHHulY5vaD1xH8vULY6WJ25HsqAEg7EOS//v4sFcULVSDgCkoPSG9M0aPWqtGUZZHl8R
-         bRM7qMXHbqcYtmH0TnRqZDMzwaYMOgqnim8XtfVgDapWU6MQ59aCSTNn4PNKUFmQ5jtc
-         EgJPZlHAAoatyoCrcXCg8vDJyHn1p5fU7pD9B0iJsSn1hKVF4aFm5eflRqMeVy/EHSA/
-         k3EQ==
+        bh=0dLyL2ihOoCX63VLFjUA/pCTw+NuDLo9N4raVfEt5HE=;
+        b=aCbhZaWmmcgZZXvlJoLhiXFfpwwLoJbzkHLDbH6YhOfbjAAsDIOTdA78XKLLJw2GSa
+         A6/LJXGRrtOltpRZ6YPht31bd4XpLGLS51mhnMk22PdYDbTJMS2ybRr2O33TDZjN5ZKr
+         qP4mq3/7dykkyFR2PlPkApA0pbgKN0qyp43NRq921isfJuG86ktvTMIVajWo9/YsbuZW
+         JFXwToTnQ6bv5jaUbPjls8p6KaDBocXy1e76SktxPnbERQtD3+Iq2kWzq4YaQrcbhSp1
+         HNAb7QjISIOKfDl6HxIKHgbNICEZcAETzIA1Z7Rb8W+nAUCYN3lOi9U8Hl5QMU8rNrfw
+         Y7Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g66-v6si5430836qke.363.2018.05.30.07.39.43
+        by mx.google.com with ESMTPS id n1-v6si5606574qti.383.2018.05.30.07.44.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 07:39:43 -0700 (PDT)
+        Wed, 30 May 2018 07:44:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39028 helo=lists.gnu.org)
+Received: from localhost ([::1]:39063 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO2GN-00026K-E0
-	for alex.bennee@linaro.org; Wed, 30 May 2018 10:39:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37579)
+	id 1fO2Kd-00050x-De
+	for alex.bennee@linaro.org; Wed, 30 May 2018 10:44:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38744)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2GA-00024Z-ME
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:39:32 -0400
+	id 1fO2KV-00050J-AX
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:44:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2G7-00060w-0m
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:39:30 -0400
-Received: from lhrrgout.huawei.com ([194.213.3.17]:4225 helo=huawei.com)
+	id 1fO2KR-00080N-AI
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:43:59 -0400
+Received: from lhrrgout.huawei.com ([194.213.3.17]:4226 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2G6-0005xd-Qz; Wed, 30 May 2018 10:39:26 -0400
-Received: from LHREML710-CAH.china.huawei.com (unknown [172.18.7.107])
-	by Forcepoint Email with ESMTP id 30EFC437F817D;
-	Wed, 30 May 2018 15:39:20 +0100 (IST)
-Received: from FRAEMA706-CHM.china.huawei.com (10.206.14.55) by
-	LHREML710-CAH.china.huawei.com (10.201.108.33) with Microsoft SMTP
-	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:39:21 +0100
+	id 1fO2KQ-0007zq-Vs; Wed, 30 May 2018 10:43:55 -0400
+Received: from LHREML714-CAH.china.huawei.com (unknown [172.18.7.107])
+	by Forcepoint Email with ESMTP id F3B91631B1107;
+	Wed, 30 May 2018 15:43:50 +0100 (IST)
+Received: from FRAEMA702-CHM.china.huawei.com (10.206.14.51) by
+	LHREML714-CAH.china.huawei.com (10.201.108.37) with Microsoft SMTP
+	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:43:52 +0100
 Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.176]) by
-	FRAEMA706-CHM.china.huawei.com ([169.254.6.146]) with mapi id
-	14.03.0382.000; Wed, 30 May 2018 16:39:14 +0200
+	FRAEMA702-CHM.china.huawei.com ([169.254.2.111]) with mapi id
+	14.03.0382.000; Wed, 30 May 2018 16:43:42 +0200
 From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
 	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [RFC v2 0/6] hw/arm: Add support for non-contiguous iova regions
-Thread-Index: AQHT7Smax6XNQgKXY0+403Fmg8dvxKRFIqSAgAMLyyA=
-Date: Wed, 30 May 2018 14:39:13 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F1799@FRAEML521-MBX.china.huawei.com>
+Thread-Topic: [Qemu-devel] [RFC v2 1/6] hw/vfio: Retrieve valid iova ranges
+	from kernel
+Thread-Index: AQHT7SmdOLuYlAIGX0G1dL1A7nkLzaRFIm8AgAMXKrA=
+Date: Wed, 30 May 2018 14:43:40 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F17B0@FRAEML521-MBX.china.huawei.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<f365f305-175c-db54-677d-6f66719b24cd@redhat.com>
-In-Reply-To: <f365f305-175c-db54-677d-6f66719b24cd@redhat.com>
+	<20180516152026.2920-2-shameerali.kolothum.thodi@huawei.com>
+	<216b4fba-c14a-fd9e-86ae-dda5a3d1cbcf@redhat.com>
+In-Reply-To: <216b4fba-c14a-fd9e-86ae-dda5a3d1cbcf@redhat.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -83,8 +85,8 @@ MIME-Version: 1.0
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 194.213.3.17
-Subject: Re: [Qemu-arm] [RFC v2 0/6] hw/arm: Add support for non-contiguous
- iova regions
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 1/6] hw/vfio: Retrieve valid
+ iova ranges from kernel
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,117 +107,307 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RlghD1v0nDFS
+X-TUID: puksZ9YPLS78
 
 Hi Eric,
 
 > -----Original Message-----
 > From: Auger Eric [mailto:eric.auger@redhat.com]
-> Sent: Monday, May 28, 2018 3:22 PM
+> Sent: Monday, May 28, 2018 3:21 PM
 > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
 > qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: drjones@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
+> Cc: peter.maydell@linaro.org; drjones@redhat.com; Jonathan Cameron
+> <jonathan.cameron@huawei.com>; Linuxarm <linuxarm@huawei.com>;
 > alex.williamson@redhat.com; Zhaoshenglong <zhaoshenglong@huawei.com>;
-> Jonathan Cameron <jonathan.cameron@huawei.com>; Linuxarm
-> <linuxarm@huawei.com>
-> Subject: Re: [RFC v2 0/6] hw/arm: Add support for non-contiguous iova reg=
-ions
+> imammedo@redhat.com
+> Subject: Re: [Qemu-devel] [RFC v2 1/6] hw/vfio: Retrieve valid iova range=
+s
+> from kernel
 >=20
 > Hi Shameer,
->=20
 > On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> > When the kernel reports valid iova ranges as non-contiguous,
-> > memory should be allocated to Guest in such a way that
-> > reserved regions(holes) are not visible by Guest.
+> > This makes use of the newly introduced iova cap chains added
+> > to the  type1 VFIO_IOMMU_GET_INFO ioctl.
 > >
-> > This series retrieves the valid iova ranges based on the new
-> > proposed VFIO interface for kernel [1]. It then populates the
-> > first 1GB ram as a non-pluggable dimm and rest as a pc-dimm if
-> > the valid iova ranges are non-contiguous.
+> > The retrieved iova info is stored in a list for later use.
+> >
+> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> > ---
+> >  hw/vfio/common.c              | 108
+> +++++++++++++++++++++++++++++++++++++++---
+> >  include/hw/vfio/vfio-common.h |   7 +++
+> >  linux-headers/linux/vfio.h    |  23 +++++++++
+> >  3 files changed, 132 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> > index 07ffa0b..94d7b24 100644
+> > --- a/hw/vfio/common.c
+> > +++ b/hw/vfio/common.c
+> > @@ -40,6 +40,8 @@ struct vfio_group_head vfio_group_list =3D
+> >      QLIST_HEAD_INITIALIZER(vfio_group_list);
+> >  struct vfio_as_head vfio_address_spaces =3D
+> >      QLIST_HEAD_INITIALIZER(vfio_address_spaces);
+> > +struct vfio_iova_head vfio_iova_regions =3D
+> > +    QLIST_HEAD_INITIALIZER(vfio_iova_regions);
+> >
+> >  #ifdef CONFIG_KVM
+> >  /*
+> > @@ -1030,6 +1032,85 @@ static void
+> vfio_put_address_space(VFIOAddressSpace *space)
+> >      }
+> >  }
+> >
+> > +static void vfio_iommu_get_iova_ranges(struct vfio_iommu_type1_info
+> *info)
+> > +{
+> > +    struct vfio_info_cap_header *hdr;
+> > +    struct vfio_iommu_type1_info_cap_iova_range *cap_iova;
+> > +    VFIOIovaRange *iova, *tmp, *prev =3D NULL;
+> nit: s/iova/iova_range?
+
+Ok.
+
+> > +    void *ptr =3D info;
+> > +    bool found =3D false;
+> > +    int i;
+> > +
+> > +    if (!(info->flags & VFIO_IOMMU_INFO_CAPS)) {
+> > +        return;
+> > +    }
+> > +
+> > +    for (hdr =3D ptr + info->cap_offset; hdr !=3D ptr; hdr =3D ptr + h=
+dr->next) {
+> > +        if (hdr->id =3D=3D VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE) {
+> > +            found =3D true;
+> > +            break;
+> > +        }
+> > +    }
+> > +
+> > +    if (!found) {
+> > +        return;
+> > +    }
+> > +
+> > +    /* purge the current iova list, if any */
+> > +    QLIST_FOREACH_SAFE(iova, &vfio_iova_regions, next, tmp) {
+> > +        QLIST_REMOVE(iova, next);
+> > +        g_free(iova);
+> > +    }
+> > +
+> > +    cap_iova =3D container_of(hdr, struct
+> vfio_iommu_type1_info_cap_iova_range,
+> > +                            header);
+> > +
+> > +    /* populate the list */
+> > +    for (i =3D 0; i < cap_iova->nr_iovas; i++) {
+> > +        iova =3D g_malloc0(sizeof(*iova));
+> nit: g_new0 is preferred
+
+Sure.
+
+> > +        iova->start =3D cap_iova->iova_ranges[i].start;
+> > +        iova->end =3D cap_iova->iova_ranges[i].end;
+> > +
+> > +        if (prev) {
+> > +            QLIST_INSERT_AFTER(prev, iova, next);
+> > +        } else {
+> > +            QLIST_INSERT_HEAD(&vfio_iova_regions, iova, next);
+> > +        }
+> > +        prev =3D iova;
+> > +    }
+> > +
+> > +    return;
+> > +}
+> > +
+> > +static int vfio_get_iommu_info(VFIOContainer *container,
+> > +                         struct vfio_iommu_type1_info **info)
+> > +{
+> > +
+> > +    size_t argsz =3D sizeof(struct vfio_iommu_type1_info);
+> > +
+> > +
+> > +    *info =3D g_malloc0(argsz);
+> > +
+> > +retry:
+> > +    (*info)->argsz =3D argsz;
+> > +
+> > +    if (ioctl(container->fd, VFIO_IOMMU_GET_INFO, *info)) {
+> > +        g_free(*info);
+> > +        *info =3D NULL;
+> > +        return -errno;
+> > +    }
+> > +
+> > +    if (((*info)->argsz > argsz)) {
+> > +        argsz =3D (*info)->argsz;
+> > +        *info =3D g_realloc(*info, argsz);
+> > +        goto retry;
+> > +    }
+> > +
+> > +    vfio_iommu_get_iova_ranges(*info);
+> > +
+> > +    return 0;
+> > +}
+> > +
+> >  static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+> >                                    Error **errp)
+> >  {
+> > @@ -1044,6 +1125,15 @@ static int vfio_connect_container(VFIOGroup
+> *group, AddressSpace *as,
+> >              group->container =3D container;
+> >              QLIST_INSERT_HEAD(&container->group_list, group, container=
+_next);
+> >              vfio_kvm_device_add_group(group);
+> > +
+> > +            /* New group might change the valid iovas. Get the updated=
+ list */
+> > +            if ((container->iommu_type =3D=3D VFIO_TYPE1_IOMMU) ||
+> > +                (container->iommu_type =3D=3D VFIO_TYPE1v2_IOMMU)) {
+> > +                struct vfio_iommu_type1_info *info;
+> > +
+> > +                vfio_get_iommu_info(container, &info);
+> > +                g_free(info);
+> > +            }
+> >              return 0;
+> >          }
+> >      }
+> > @@ -1071,7 +1161,7 @@ static int vfio_connect_container(VFIOGroup
+> *group, AddressSpace *as,
+> >      if (ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_TYPE1_IOMMU) ||
+> >          ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_TYPE1v2_IOMMU)) {
+> >          bool v2 =3D !!ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_TYPE1v2_IOM=
+MU);
+> > -        struct vfio_iommu_type1_info info;
+> > +        struct vfio_iommu_type1_info *info;
+> >
+> >          ret =3D ioctl(group->fd, VFIO_GROUP_SET_CONTAINER, &fd);
+> >          if (ret) {
+> > @@ -1095,14 +1185,14 @@ static int vfio_connect_container(VFIOGroup
+> *group, AddressSpace *as,
+> >           * existing Type1 IOMMUs generally support any IOVA we're
+> >           * going to actually try in practice.
+> >           */
+> > -        info.argsz =3D sizeof(info);
+> > -        ret =3D ioctl(fd, VFIO_IOMMU_GET_INFO, &info);
+> > +        ret =3D vfio_get_iommu_info(container, &info);
+> >          /* Ignore errors */
+> > -        if (ret || !(info.flags & VFIO_IOMMU_INFO_PGSIZES)) {
+> > +        if (ret || !(info->flags & VFIO_IOMMU_INFO_PGSIZES)) {
+> >              /* Assume 4k IOVA page size */
+> > -            info.iova_pgsizes =3D 4096;
+> > +            info->iova_pgsizes =3D 4096;
+> >          }
+> > -        vfio_host_win_add(container, 0, (hwaddr)-1, info.iova_pgsizes)=
+;
+> > +        vfio_host_win_add(container, 0, (hwaddr)-1, info->iova_pgsizes=
+);
+> > +        g_free(info);
+> >      } else if (ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_SPAPR_TCE_IOMMU) |=
+|
+> >                 ioctl(fd, VFIO_CHECK_EXTENSION, VFIO_SPAPR_TCE_v2_IOMMU=
+)) {
+> >          struct vfio_iommu_spapr_tce_info info;
+> > @@ -1256,6 +1346,7 @@ static void vfio_disconnect_container(VFIOGroup
+> *group)
+> >      if (QLIST_EMPTY(&container->group_list)) {
+> >          VFIOAddressSpace *space =3D container->space;
+> >          VFIOGuestIOMMU *giommu, *tmp;
+> > +        VFIOIovaRange *iova, *next_iova;
+> not: I would prefer range naming
+
+Ok.
+=20
+> >
+> >          QLIST_REMOVE(container, next);
+> >
+> > @@ -1266,6 +1357,11 @@ static void vfio_disconnect_container(VFIOGroup
+> *group)
+> >              g_free(giommu);
+> >          }
+> >
+> > +        QLIST_FOREACH_SAFE(iova, &vfio_iova_regions, next, next_iova) =
+{
+> > +            QLIST_REMOVE(iova, next);
+> > +            g_free(iova);
+> > +        }
+> > +
+> >          trace_vfio_disconnect_container(container->fd);
+> >          close(container->fd);
+> >          g_free(container);
+> > diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-commo=
+n.h
+> > index d936014..874fe2c 100644
+> > --- a/include/hw/vfio/vfio-common.h
+> > +++ b/include/hw/vfio/vfio-common.h
+> > @@ -164,6 +164,12 @@ typedef struct VFIODisplay {
+> >      } dmabuf;
+> >  } VFIODisplay;
+> >
+> > +typedef struct VFIOIovaRange {
+> > +    uint64_t start;
+> > +    uint64_t end;
+> > +    QLIST_ENTRY(VFIOIovaRange) next;
+> > +} VFIOIovaRange;
+> > +
+> >  void vfio_put_base_device(VFIODevice *vbasedev);
+> >  void vfio_disable_irqindex(VFIODevice *vbasedev, int index);
+> >  void vfio_unmask_single_irqindex(VFIODevice *vbasedev, int index);
+> > @@ -187,6 +193,7 @@ int vfio_get_device(VFIOGroup *group, const char
+> *name,
+> >  extern const MemoryRegionOps vfio_region_ops;
+> >  extern QLIST_HEAD(vfio_group_head, VFIOGroup) vfio_group_list;
+> >  extern QLIST_HEAD(vfio_as_head, VFIOAddressSpace) vfio_address_spaces;
+> > +extern QLIST_HEAD(vfio_iova_head, VFIOIovaRange) vfio_iova_regions;
+> >
+> >  #ifdef CONFIG_LINUX
+> >  int vfio_get_region_info(VFIODevice *vbasedev, int index,
+> > diff --git a/linux-headers/linux/vfio.h b/linux-headers/linux/vfio.h
+> > index 3a0a305..117341d 100644
+> > --- a/linux-headers/linux/vfio.h
+> > +++ b/linux-headers/linux/vfio.h
+> > @@ -589,7 +589,30 @@ struct vfio_iommu_type1_info {
+> >  	__u32	argsz;
+> >  	__u32	flags;
+> >  #define VFIO_IOMMU_INFO_PGSIZES (1 << 0)	/* supported page sizes info =
+*/
+> > +#define VFIO_IOMMU_INFO_CAPS	(1 << 1)	/* Info supports caps */
+> >  	__u64	iova_pgsizes;		/* Bitmap of supported page sizes */
+> > +	__u32   cap_offset;	/* Offset within info struct of first cap */
+> > +};
+> > +
+> > +/*
+> > + * The IOVA capability allows to report the valid IOVA range(s)
+> > + * excluding any reserved regions associated with dev group. Any dma
+> > + * map attempt outside the valid iova range will return error.
+> > + *
+> > + * The structures below define version 1 of this capability.
+> > + */
+> > +#define VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE  1
+> > +
+> > +struct vfio_iova_range {
+> > +	__u64	start;
+> > +	__u64	end;
+> > +};
+> > +
+> > +struct vfio_iommu_type1_info_cap_iova_range {
+> > +	struct vfio_info_cap_header header;
+> > +	__u32	nr_iovas;
+> > +	__u32	reserved;
+> > +	struct vfio_iova_range iova_ranges[];
+> >  };
+> >
+> >  #define VFIO_IOMMU_GET_INFO _IO(VFIO_TYPE, VFIO_BASE + 12)
+> >
+> You need to update the header in a separate patch using
+> scripts/update-linux-headers.sh
 >=20
-> Some general comments:
+> Until the kernel series is not fully upstream you can just pickup the
+> VFIO related changes you are interested in (partial update) but when
+> this series becomes a patch, a full header update is generally used.
 
-Thanks for going through this series.
-
-> - what are your plans with respect to VFIO device hot-plug handling?
-> IIUC, at the moment, any collision between reserved regions induces by
-> hot-plugged devices are not detected/handled. I understand mem hotplug
-> is not supported on aarch64. Would you simply reject the vfio device
-> hotplug.
-
-As per the new kernel changes, the _attach_group() will fail if the device=
-=20
-reserved regions conflicts with any existing dma mappings of the VM.=20
-So my understanding is that, host kernel will in effect reject any hot-plug
-device that has a reserved region conflicting with dma mappings.
-
-> - IIUC any reserved window colliding with [4000000, 1GB] cold-plug RAM
-> segment is show-stopper. How was this 1GB size chosen exactly?
-
-Yes, any reserved window in that region might prevent the Guest from bootin=
-g
-with UEFI as the current solution will move the base start address . I thin=
-k this is
-because the EDK2 UEFI expects the base to start at 0x4000000[1]. I am not s=
-ure
-why this is required by the UEFI as without the "-bios" option, the Guest c=
-an be
-booted as long as base addr < 4GB.
-
-> - Currently you create a single PC-DIMM node whereas several ones may be
-> possible & necessary? Do you plan to support multiple PC-DIMMS node?
-
-Yes, that is correct. This is mainly to keep it simple and with the expecta=
-tion that
-the valid host iova regions may not be that fragmented. I can look into ext=
-ent this
-to support multiple pc-dimms if there is an immediate requirement to do so.
-=20
-> - I have started looking at RAM extension on machvirt. I think adding
-> support of PC-DIMMS through the qemu cmd line is something that we need
-> to work on, in paralell.
-
-Ok. Do you have more info that you can share on this? Please let me know.
+Ok. I will take care of this in the next revision.
 
 Thanks,
 Shameer
-
-[1] https://github.com/tianocore/edk2/blob/master/ArmVirtPkg/ArmVirtQemu.ds=
-c#L133
-
+=20
 > Thanks
 >=20
 > Eric
-> >
-> > Patch #3 of this series is loosely based on an earlier attempt
-> > by Kwangwoo Lee to add hotplug/pc-dimm support to arm64[2]
-> >
-> > RFC v1[3] --> RFCv2
-> >  -Based on new VFIO kernel interface
-> >  -Part of Mem modelled as pc-dimm
-> >  -Rebased to qemu 2.12.0
-> >
-> > [1] https://lkml.org/lkml/2018/4/18/293
-> > [2] https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg04600.html
-> > [3] https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg02412.html
-> >
-> > Shameer Kolothum (6):
-> >   hw/vfio: Retrieve valid iova ranges from kernel
-> >   hw/arm/virt: Enable dynamic generation of guest RAM memory regions
-> >   hw/arm/virt: Add pc-dimm mem hotplug framework
-> >   hw/arm: Changes required to accommodate non-contiguous DT mem nodes
-> >   hw/arm: ACPI SRAT changes to accommodate non-contiguous mem
-> >   hw/arm: Populate non-contiguous memory regions
-> >
-> >  default-configs/aarch64-softmmu.mak |   1 +
-> >  hw/arm/boot.c                       |  91 ++++++---
-> >  hw/arm/virt-acpi-build.c            |  24 ++-
-> >  hw/arm/virt.c                       | 367
-> +++++++++++++++++++++++++++++++++++-
-> >  hw/vfio/common.c                    | 108 ++++++++++-
-> >  include/hw/arm/arm.h                |  12 ++
-> >  include/hw/arm/virt.h               |   3 +
-> >  include/hw/vfio/vfio-common.h       |   7 +
-> >  linux-headers/linux/vfio.h          |  23 +++
-> >  9 files changed, 589 insertions(+), 47 deletions(-)
-> >

@@ -1,108 +1,78 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4363192wre;
-        Tue, 29 May 2018 22:51:05 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLAXhYLe0dSUNWJeyY81hZIwQzZ1mY4HqSl6JsDPrQPjAlSinGqNn7vEnqXmvY1Y63GmYQv
-X-Received: by 2002:ac8:3441:: with SMTP id v1-v6mr1216700qtb.315.1527659465109;
-        Tue, 29 May 2018 22:51:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527659465; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4382824wre;
+        Tue, 29 May 2018 23:17:43 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL4kL5m8vbyfbV+c/h7M95hypVTSRjjbS5RuKVTQD4uMod01Xf/frUozR8r2vBCZ4F88ees
+X-Received: by 2002:a37:10a4:: with SMTP id 36-v6mr1187364qkq.349.1527661063312;
+        Tue, 29 May 2018 23:17:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527661063; cv=none;
         d=google.com; s=arc-20160816;
-        b=jkew5LmRP1vUT0tokyZXMqZtJR8VV0DIFOhzWkrRcEMUE5ZI1g08VjVG6Oe0LrxWZL
-         ecPZhtxzeeidApczp357aHMvcr0AuxVhwC3yeyACI6+xg7hxIb5HzOgdpPvMsOegXhI/
-         Z4kKpGQok2KJoBqZ1WbUHKVwJm8pwNQZ8+o8okrsMAf9QwFFZRFGrmeszkW6/J6bPLIE
-         O4LWVy8llLY+2SJqgIAqqPMEUR4EVMWZdr25287tvf9E6DgWcqmOaqedyCiv12HKt+rd
-         vyZWRmmdbr8wi4waCftHFP6/BtuwpBhuZsLGjvsDaUPW9pFp9a1YPXevC4o/kzMVImGp
-         extA==
+        b=pUYVgtP19PvCnKDnmFeCf/C/rhEI8IhTpavN6+1rYsa8ZxI4OnqAQU772gsARCFcJD
+         bLYcxBo3v7TkJGxF41lDZLA6mSkImJ7A7qiIyKUAqi60HQhJk9p+j9fs8VK9dD//jVdV
+         DklDSqJfob6T9/w6s2+HHmx0JtYZEJ3FMkHLTveXsLEP8tYgooinOaigMNG0zZu1y19O
+         wXu94SQm3OjEm5/M5Q5VNncsbAoGBkLUPrUtxeaN6sfXM3Ycc9OaymzNGrl3cegEOLBQ
+         K/R7ft4a8P/ccaAdWWVfMgGvnuo7QvZsEMipEk8TYarGoMM3Pmrnp25ZQtPOnP2OFUC6
+         NS3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
-        b=oluRjWE9gjjPc5VMujgNxlXnHu6Utnv7/pkud2Ef5vGzw1F3il/2QaVLqMqiaLzfmw
-         oNxS//Jrzp8vs9R7Iy6W/pUX62aNyL7yEaiDa2IAXdUGCIbheBGLvPA+rif4r7xwMS//
-         cmF4b23kg1SOXwhmQVmdOGMLMVC2t2QtmyR4dSgefuf8a/9xilejht+OBEkFx9KLSN5F
-         NJPpzpCI22HNs7PLnKHObh8zsb3iiFE0z7p5tKEck8BV2pc1bLD7c/y8u9dp7mZV7CHy
-         Gj0kMbUdsgImRexyL7WLRgI+mWBuxMrEohq+5VlY8QxMW2Se7UERTWJjvf2xE+u955KQ
-         d3PQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :arc-authentication-results;
+        bh=rryevtmpCo5rtBU81jmDg+hmak+EBvct30ixxBLAZks=;
+        b=l9oQ5nqaBcc5UFD2v632qmqPacVQqSzKgyDsEsWb4KbnxHjT8RjaSve4d5IvyERyHq
+         +KU/xW2+gIXhh+BK5glmT3vG5a5hh7SFjtbFZNseBPGFfvSZY4S78DUJm4kcAlk4zNtU
+         yPRpfcHEADC5PB5egd21AJQfl1BguIIrwAaHiXLrf0v1kzqrW3krncs7jBeY720Y3itW
+         05nDP06IhVGll2X84rZw+EvjURHYDxedL3A3QNmGRNX/4T2y7jw6t1/q/jMBabW8islZ
+         59fx8iitWmmQ9Y0HIt+FW4kWENiJ8VfZkFxfeKdtL93sUYdinel3Kpk08U1qUdOhT2fV
+         AfVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qQCeG1Ia;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d25-v6si6081866qto.282.2018.05.29.22.51.04
+        by mx.google.com with ESMTPS id e48-v6si1124331qtc.97.2018.05.29.23.17.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 22:51:05 -0700 (PDT)
+        Tue, 29 May 2018 23:17:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qQCeG1Ia;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36329 helo=lists.gnu.org)
+Received: from localhost ([::1]:36407 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNu0l-0004gv-Tn
-	for alex.bennee@linaro.org; Wed, 30 May 2018 01:51:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54825)
+	id 1fNuQY-00021O-NB
+	for alex.bennee@linaro.org; Wed, 30 May 2018 02:17:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58436)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNu0W-0004eq-1o
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:50:49 -0400
+	(envelope-from <clg@kaod.org>) id 1fNuQI-0001zn-7G
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:17:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNu0V-0007Ug-5T
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:50:48 -0400
-Received: from mail-yb0-x244.google.com ([2607:f8b0:4002:c09::244]:42379)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNu0Q-0007Ty-Ok; Wed, 30 May 2018 01:50:42 -0400
-Received: by mail-yb0-x244.google.com with SMTP id d123-v6so5947841ybh.9;
-	Tue, 29 May 2018 22:50:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
-	b=qQCeG1IaiYB62mWn3A5aIGL5JvoDJVGMBShTUdtWBxYIvxLfAGFQ+WAHSlynG22PXU
-	QFWM8d9sZzYTSFOkeJd0D+Cu+F1ZRz/OgBowYvjhUhvialQXIejtCS06Q65dSUuub/jk
-	GlKjFChMX/s3nYdaZmlZ2+VrJsMwItfe7jZAT9sG4fbiaU7yar5qdLPrlEKTaBVyF3J7
-	8z+yOadf52tN7TZuvPlabZwmlTwUEF0SNUaVMXx4o9b4cKIJK/PWIGLCM0HSbmwZWO5A
-	hH+4seGJDB3wRMQNu6+ncej7Lc6FdNt4YCs/jovpW9QWMKjPEXfT68d8rMdujgbwn4im
-	n8Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
-	b=Eo/TUyYLp+0vlmNst5+DCGBbZDofasipioME5Ddcxpu7GjKydbdQ4XB9BU9jJ+VHmI
-	D5Wr1Jwq92py2XdkL40vSLBaGfJD97JW5aEbHpidpvFOIUbRYZOoHhIwlJl35oLtFoCs
-	fiS9eqFtpNwEOffZUL68kn/l3EFN7PoyYu4cPydVjbBZUol/1YB0tYXZZZbEDnWw1m9B
-	e/2RJKRaGXfMgQoibRPnvyEaTYOtveM8StOzZEnNe6jSGPVcwYTsnEvdgzQBTek78YO7
-	bSPUK4PAv8UXMEjQ2+A9VQSN6W07Xa7lW6L1eK/QDKWpz9JI+k3Jr4hxbTBbVZuGuPpa
-	9u/g==
-X-Gm-Message-State: APt69E2KJi5zwBULkCZtgE0byvBkOplw2TsGyyRwt2MVkk14eFsu4/1e
-	MD7YuOv+UPLsoxVly7xhLSZpo1xoYpeYge4MBWE=
-X-Received: by 2002:a25:d1c5:: with SMTP id
-	i188-v6mr738478ybg.114.1527659441791; 
-	Tue, 29 May 2018 22:50:41 -0700 (PDT)
+	(envelope-from <clg@kaod.org>) id 1fNuQF-00019b-21
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:17:26 -0400
+Received: from 2.mo179.mail-out.ovh.net ([178.33.250.45]:40416)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fNuQE-00017J-St
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 02:17:23 -0400
+Received: from player718.ha.ovh.net (unknown [10.109.105.119])
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 5E7E8C9076
+	for <qemu-arm@nongnu.org>; Wed, 30 May 2018 08:17:21 +0200 (CEST)
+Received: from zorba.kaod.org.com (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
+	by player718.ha.ovh.net (Postfix) with ESMTPSA id 521414E00A5;
+	Wed, 30 May 2018 08:17:15 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Jason Wang <jasowang@redhat.com>
+Date: Wed, 30 May 2018 08:17:07 +0200
+Message-Id: <20180530061711.23673-1-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
 MIME-Version: 1.0
-Received: by 2002:a25:3d7:0:0:0:0:0 with HTTP;
-	Tue, 29 May 2018 22:50:41 -0700 (PDT)
-In-Reply-To: <20180530074026-mutt-send-email-mst@kernel.org>
-References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-10-f4bug@amsat.org>
-	<20180529134053.1ea9f46d.cohuck@redhat.com>
-	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
-	<20180530074026-mutt-send-email-mst@kernel.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Wed, 30 May 2018 02:50:41 -0300
-X-Google-Sender-Auth: MTQLDqEjj_pSZ-qkUhcUVkcgSOw
-Message-ID: <CAAdtpL7sDOg2m+Ffsbc3f_Za6fr3in5ZfBJ2BAtGNJ1j4vbhJQ@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 4751579081886764031
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheelgddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c09::244
-Subject: Re: [Qemu-arm] [PATCH v4 09/21] target: Do not include
- "exec/exec-all.h" if it is not necessary
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 178.33.250.45
+Subject: [Qemu-arm] [PATCH v2 0/4] net: ftgmac100 enhancements
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -114,82 +84,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>,
-	David Hildenbrand <david@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Anthony Green <green@moxielogic.com>, Cornelia Huck <cohuck@redhat.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alexander Graf <agraf@suse.de>, Laurent Vivier <laurent@vivier.eu>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 76zaejdqcbIR
+X-TUID: oHfgxrAMU6mC
 
-On Wed, May 30, 2018 at 1:42 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=C3=A9 wro=
-te:
->> Hi Cornelia,
->>
->> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
->> > On Mon, 28 May 2018 20:27:07 -0300
->> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
->> >
->> >> Code change produced with:
->> >>     $ git grep '#include "exec/exec-all.h"' | \
->> >>       cut -d: -f-1 | \
->> >>       xargs egrep -L "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GETP=
-C|singlestep|TranslationBlock)" | \
->> >
->> > Hm, does this expression catch all files that need to include
->> > exec-all.h? The resulting patch seems fine, though.
->>
->> No, not all :/
->> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until no
->> more errors appear. In 2 more steps I added "cpu_address_space_init|"
->> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for my
->> goal than trying to build a regex to explode function/struct names from
->> headers. This is a clever way to do it for long term command reuse taken
->> from commit messages...
->
-> Brutebuilding isn't a good way to find unused includes, some other header
-> might pull in an include you are trying to remove for its own purposes.
-> If you want to try brutebuilding you must also verify that's
-> not the case - e.g. look at the dependency file generated.
+Hello,
 
-Hmm you mean the .d files in the build dir?
+Here is a couple of enhancements and fixes for the ftgmac100 NIC used
+on the Aspeed SoC. It includes VLAN and multicast support.
 
-i.e.
-$ find lm32-softmmu -name \*.d -exec fgrep -L exec-all.h {} \; | sed
--e 's/.*-softmmu\/\(.*\)d$/\1c/'
-dump.c
-numa.c
-tcg/tcg-common.c
-tcg/optimize.c
-tcg/tcg-op-gvec.c
-tcg/tcg-op-vec.c
-accel/tcg/tcg-runtime-gvec.c
-accel/tcg/tcg-all.c
-accel/accel.c
-accel/stubs/whpx-stub.c
-accel/stubs/hvf-stub.c
-accel/stubs/kvm-stub.c
-accel/stubs/hax-stub.c
-hw/lm32/milkymist.c
-hw/lm32/lm32_boards.c
-hw/core/generic-loader.c
-...
+Thanks,
 
-Then look why each .c included it?
+C=C3=A9dric.
 
->
->> >>       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
->> >>
->> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+C=C3=A9dric Le Goater (4):
+  ftgmac100: compute maximum frame size depending on the protocol
+  ftgmac100: add IEEE 802.1Q VLAN support
+  ftgmac100: fix multicast hash routine
+  ftgmac100: remove check on runt messages
+
+ include/hw/net/ftgmac100.h |  7 ++++-
+ hw/net/ftgmac100.c         | 64 +++++++++++++++++++++++++++++++---------=
+------
+ 2 files changed, 50 insertions(+), 21 deletions(-)
+
+--=20
+2.13.6
+

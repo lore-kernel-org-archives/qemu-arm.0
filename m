@@ -1,96 +1,83 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4709361wre;
-        Wed, 30 May 2018 05:55:33 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKswxie2lFwrQoxH9K3JPdiMdZNNwIURpbyjy/f725oy17/E+PHJ5L7kb6ZTQYyvSHsAqxV
-X-Received: by 2002:a37:af05:: with SMTP id y5-v6mr2150622qke.55.1527684933359;
-        Wed, 30 May 2018 05:55:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527684933; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4807989wre;
+        Wed, 30 May 2018 07:26:44 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIuhjkY82tetwGgKrrzX3PQ7jUxIRVFZ4PaZThW3kO3QoNWieIJHV5nwNVIaLtRpsufHaA+
+X-Received: by 2002:a37:4f10:: with SMTP id d16-v6mr2548334qkb.323.1527690404299;
+        Wed, 30 May 2018 07:26:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527690404; cv=none;
         d=google.com; s=arc-20160816;
-        b=YFx0Pll2mBy/t0Xnst7BWl6tcJo2DQNTKRhdm0tOAT01AXBb2LtPm1J9MxJ9wiRk5W
-         KeVDIyN8lZt/rRlNM8CPjp9db+eWlpT8cQMQYs4tiG+l/NEJxegVlcLLTUYLcU8UAghZ
-         3sfyO4nAG8cDBReMSVsIaAgEfFsWflUc+oJu/JzZvbA3KeclCvXZowvWsNvspYj8iUMG
-         7tx0Bqck0eGPKp5oDv0wi8vg9Y8fdL6r0XL5FcglLsI2a5BF1mMzZQ4tYjrloC+aVKGz
-         OJduZyZqMpLqHRoO9PgZrhPxhLnRGB006HGYf6lJZWdu6IArQvOdiw/p+0c2Yrq2QYWK
-         Tbmg==
+        b=Hf4PG04lAF5kFBiA7kcjsjcwa61JTkzuWFwDAGty93vmDWV+/a2XVVxUyIxyHrtTsR
+         GK/Ug+V10u79CAFEkm+4lfFZu6ArDCKJzFvM4+I3OJ1ExKFLEzxHOj36PQoV36k4fMTK
+         AOBzXjWJj2ENkUGia3Zx2ZHijzKkNhfMWXysJQ95J04+RpdvWhjwVArosaMOi0Msf4AV
+         9QFYufNraTeS5pA89roeSYeNUP1oPy7M2rxFZ8ndAqWgJ4JZQSTQsDF1ZtQ9qRkh/Z/k
+         bi0zROfuvv9hQWuL5RYpSv9U8nPx1VmidEvlE+Uhi2KFYbGyllyjLAcP2ddfqsyS8T+W
+         drhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:content-disposition
-         :mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=97NRZqQHAXP5WGgV6qZB18rs+y2kjwgG7GRfavfFmzI=;
-        b=JTEX8/+vNDcFhY3ydkGxMvMqHHNuW5VhyxH8Szui/1NvxpeNyP/zbT4AnBf/c22cq4
-         Q1z227mFnXHa5RqMfG4gR9YZSQ0pNltTg9tWagGQeiy//NP56pRbOqvIObFrXSrgywt2
-         lADsjQKg16X5dube5kJKbIJ9ke43l6phM2pPVn0CN7DxTJ9ldF5+kCAaPDjcwZl8Cwo1
-         qurptzlvd2wnRJo6OMACJh0XWmfNha/AR8p0ubppEoYmOg/61tJo4m0YdFThJQLhGTJi
-         WGia3IjJXjywb/pdjiRXN1m7lq8g+5x1cxMbfVG/HteDgZ3J2ooesjZP0wolRPM/7xMI
-         PdhQ==
+        bh=6J+Nuinn/8kqxPKxz44iNp6LTdFZ4RHAb2F41qfYd6E=;
+        b=S+lwz3Zq5WkCSZnsk0r2DzVqIJHYwlTAGxONQ/IcgV7DtIS72mSvzO6U28r+c3MioE
+         Yf6Lc5WEwc1iuybx3tYv58V0CIr+b19E1N0LWQb0bpacag6RBCQVfg5DJ0lVhwWv4ac3
+         FwQHzTvsOdj8SQZqWETsLpGMTioXxDmingKq09ZT+9W/Ht3325R3C1/xf8Slia+nYhtE
+         wc7a3LWirIyINegIOjKEQbMO/+eAzte9jhT292WNwxWmKdBYYjPOFII7KgWRSJc08csy
+         Vqzju2JikfHgDPS7eb9KsWWr4D7l0AZ5Q+rl2hhPS9N/XmwZEKqRazTBdYhe/9dq0TE5
+         hJCg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n184-v6si3407529qkb.113.2018.05.30.05.55.33
+        by mx.google.com with ESMTPS id e64-v6si7408945qtd.286.2018.05.30.07.26.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 05:55:33 -0700 (PDT)
+        Wed, 30 May 2018 07:26:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38507 helo=lists.gnu.org)
+Received: from localhost ([::1]:38971 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO0dY-0002q0-PK
-	for alex.bennee@linaro.org; Wed, 30 May 2018 08:55:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41606)
+	id 1fO23n-0003uU-NY
+	for alex.bennee@linaro.org; Wed, 30 May 2018 10:26:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33769)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fO0dM-0002oB-4q
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 08:55:21 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fO23c-0003tW-GA
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:26:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fO0dI-0005Kh-0t
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 08:55:20 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43542 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fO23Y-0000Gh-22
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:26:32 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55908 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1fO0dH-0005K0-Qi; Wed, 30 May 2018 08:55:15 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fO23X-0000Gc-Tt; Wed, 30 May 2018 10:26:27 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0147940BC04F;
-	Wed, 30 May 2018 12:55:15 +0000 (UTC)
-Received: from redhat.com (ovpn-120-96.rdu2.redhat.com [10.10.120.96])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 56A012166BCC;
-	Wed, 30 May 2018 12:55:12 +0000 (UTC)
-Date: Wed, 30 May 2018 15:55:12 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20180530155301-mutt-send-email-mst@kernel.org>
-References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-10-f4bug@amsat.org>
-	<20180529134053.1ea9f46d.cohuck@redhat.com>
-	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
-	<20180530074026-mutt-send-email-mst@kernel.org>
-	<CAAdtpL7sDOg2m+Ffsbc3f_Za6fr3in5ZfBJ2BAtGNJ1j4vbhJQ@mail.gmail.com>
-	<CAAdtpL6eW5=djFE-k7bHUR6s_b=wAmMuOLM8Djb_CYPf54L8CA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <CAAdtpL6eW5=djFE-k7bHUR6s_b=wAmMuOLM8Djb_CYPf54L8CA@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+	by mx1.redhat.com (Postfix) with ESMTPS id 353C4818BAF8;
+	Wed, 30 May 2018 14:26:27 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AE47763F3E;
+	Wed, 30 May 2018 14:26:21 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org
+Date: Wed, 30 May 2018 16:26:18 +0200
+Message-Id: <1527690380-9782-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 30 May 2018 12:55:15 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 30 May 2018 12:55:15 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 30 May 2018 14:26:27 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 30 May 2018 14:26:27 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v4 09/21] target: Do not include
- "exec/exec-all.h" if it is not necessary
+Subject: [Qemu-arm] [PATCH 0/2] ARM virt: Support up to 256 PCIe buses
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,115 +89,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>,
-	David Hildenbrand <david@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Anthony Green <green@moxielogic.com>, Cornelia Huck <cohuck@redhat.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Alexander Graf <agraf@suse.de>, Laurent Vivier <laurent@vivier.eu>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
+Cc: drjones@redhat.com, ard.biesheuvel@linaro.org, lersek@redhat.com,
+	zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ijul5It+I64x
+X-TUID: Hoa4rzHVtqaA
 
-On Wed, May 30, 2018 at 03:19:19AM -0300, Philippe Mathieu-Daud=E9 wrote:
-> Le mer. 30 mai 2018 02:50, Philippe Mathieu-Daud=E9 <f4bug@amsat.org> a=
- =E9crit=A0:
->=20
->     On Wed, May 30, 2018 at 1:42 AM, Michael S. Tsirkin <mst@redhat.com=
-> wrote:
->     > On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=E9=
- wrote:
->     >> Hi Cornelia,
->     >>
->     >> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
->     >> > On Mon, 28 May 2018 20:27:07 -0300
->     >> > Philippe Mathieu-Daud=E9 <f4bug@amsat.org> wrote:
->     >> >
->     >> >> Code change produced with:
->     >> >>=A0 =A0 =A0$ git grep '#include "exec/exec-all.h"' | \
->     >> >>=A0 =A0 =A0 =A0cut -d: -f-1 | \
->     >> >>=A0 =A0 =A0 =A0xargs egrep -L "(cpu_address_space_init|cpu_loo=
-p_|tlb_|tb_|
->     GETPC|singlestep|TranslationBlock)" | \
->     >> >
->     >> > Hm, does this expression catch all files that need to include
->     >> > exec-all.h? The resulting patch seems fine, though.
->     >>
->     >> No, not all :/
->     >> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding un=
-til no
->     >> more errors appear. In 2 more steps I added "cpu_address_space_i=
-nit|"
->     >> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enoug=
-h for my
->     >> goal than trying to build a regex to explode function/struct nam=
-es from
->     >> headers. This is a clever way to do it for long term command reu=
-se taken
->     >> from commit messages...
->     >
->     > Brutebuilding isn't a good way to find unused includes, some othe=
-r header
->     > might pull in an include you are trying to remove for its own pur=
-poses.
->     > If you want to try brutebuilding you must also verify that's
->     > not the case - e.g. look at the dependency file generated.
->=20
->=20
-> I think I get it for headers, but here I'm only modifying .c source fil=
-es.=A0
+Current Machvirt PCI host controller's ECAM region is 16MB large.
+This limits the number of PCIe buses to 16.
 
-Same thing - if you call a function from a header, you should include
-that header even if some other header happens to pull it in.
-Otherwise someone might cleanup that other header and suddenly
-your build breaks.
+PC/Q35 machines have a 256MB region allowing up to 256 buses.
+This series tries to bridge the gap.
+
+It declares a new ECAM region located beyond 256GB, of size 256MB
+The new ECAM region is used if:
+- highmem option is set (default) and,
+- either FW is not loaded or we are run an aarch64 guest
+- machine type >= 3.0.
+
+aarch32 FW does not support this highmem ECAM region. For guests without
+LPAE support the highmem option must be turned off.
+
+Best Regards
+
+Eric
+
+Git: complete series available at
+https://github.com/eauger/qemu/tree/v2.12.0-256MB-ECAM-PATCH-v1
+Previous version:
+https://github.com/eauger/qemu/tree/v2.12.0-256MB-ECAM-RFCv1
+
+- Tested with guest running in aarch64 and aarch32 modes (aarch64=off)
+- Tested with aarch32 FW
+- In aarch32 mode I encountered the issue the vmalloc region may be
+  reported too small for the needs (dmesg excerpt below). So I had to
+  extend the vmalloc size by passing the "vmalloc=512M" option to the
+  bootargs and this eventually booted fine.
+
+[    1.399581] pl061_gpio 9030000.pl061: PL061 GPIO chip @0x0000000009030000 registered
+[    1.402636] OF: PCI: host bridge /pcie@10000000 ranges:
+[    1.404506] OF: PCI:    IO 0x3eff0000..0x3effffff -> 0x00000000
+[    1.406606] OF: PCI:   MEM 0x10000000..0x3efeffff -> 0x10000000
+[    1.408690] OF: PCI:   MEM 0x8000000000..0xffffffffff -> 0x8000000000
+[    1.411992] vmap allocation for size 1052672 failed: use vmalloc=<size> to increase size
+[    1.414895] pci-host-generic 4010000000.pcie: ECAM ioremap failed
+[    1.427472] pci-host-generic: probe of 4010000000.pcie failed with error -12
 
 
+Eric Auger (2):
+  hw/arm/virt: Add a new 256MB ECAM region
+  hw/arm/virt: Add virt-3.0 machine type
 
-> I'll restrict the shell command to .c=A0
+ hw/arm/virt-acpi-build.c | 21 +++++++++++++--------
+ hw/arm/virt.c            | 43 ++++++++++++++++++++++++++++++++++++-------
+ include/hw/arm/virt.h    |  3 +++
+ 3 files changed, 52 insertions(+), 15 deletions(-)
 
-I don't think it matters.
+-- 
+2.5.5
 
->=20
->=20
->     Hmm you mean the .d files in the build dir?
->=20
->     i.e.
->     $ find lm32-softmmu -name \*.d -exec fgrep -L exec-all.h {} \; | se=
-d
->     -e 's/.*-softmmu\/\(.*\)d$/\1c/'
->     dump.c
->     numa.c
->     tcg/tcg-common.c
->     tcg/optimize.c
->     tcg/tcg-op-gvec.c
->     tcg/tcg-op-vec.c
->     accel/tcg/tcg-runtime-gvec.c
->     accel/tcg/tcg-all.c
->     accel/accel.c
->     accel/stubs/whpx-stub.c
->     accel/stubs/hvf-stub.c
->     accel/stubs/kvm-stub.c
->     accel/stubs/hax-stub.c
->     hw/lm32/milkymist.c
->     hw/lm32/lm32_boards.c
->     hw/core/generic-loader.c
->     ...
->=20
->     Then look why each .c included it?
->=20
->     >
->     >> >>=A0 =A0 =A0 =A0xargs sed -i.bak '/#include "exec\/exec-all.h"/=
-d'
->     >> >>
->     >> >> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
->=20

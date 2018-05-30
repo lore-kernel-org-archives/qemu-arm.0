@@ -1,126 +1,195 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5405239wre;
-        Wed, 30 May 2018 19:13:06 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKImjj8W5ccA3cyPMBPyRpXu6Jfg4iS9i9HR3JzcFSMBVjNVTyHWJc6RtoLBxVnKT1gXzoSA
-X-Received: by 2002:a0c:d6c1:: with SMTP id l1-v6mr4868885qvi.45.1527732786138;
-        Wed, 30 May 2018 19:13:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527732786; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4363192wre;
+        Tue, 29 May 2018 22:51:05 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLAXhYLe0dSUNWJeyY81hZIwQzZ1mY4HqSl6JsDPrQPjAlSinGqNn7vEnqXmvY1Y63GmYQv
+X-Received: by 2002:ac8:3441:: with SMTP id v1-v6mr1216700qtb.315.1527659465109;
+        Tue, 29 May 2018 22:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527659465; cv=none;
         d=google.com; s=arc-20160816;
-        b=ExWMrNviThbikUZeI3Xg6h3asIxndwRxm0bQxnZkY1WXKpDhulWk8Tn4vUdaPIHMZz
-         OsQOKAjRjr8PeGjv/yV0/ggNpA71ov+cD42lMUpBIOf2ruHqYgTLpbr1kDJ5miF1xOb7
-         ze8eUSOLXxpfmFXDZRLQ9eYI9QZnORKePX7vdozcMaXdT+KJN75zjSwUmDaK8ddt3IXK
-         GpgdjRtcL1sc2S9s3WW5z+dVJRRtPli6NdAkKDzTpRmyqCwnE7kT77Kz8VQEuVFE6vbI
-         LcAW+pY0oZ7rDqvjpQtHPYJUIOw6kVZzBF5uX4vcntUlc2PoicgMjJShVJD/nJGhwAZQ
-         mN+g==
+        b=jkew5LmRP1vUT0tokyZXMqZtJR8VV0DIFOhzWkrRcEMUE5ZI1g08VjVG6Oe0LrxWZL
+         ecPZhtxzeeidApczp357aHMvcr0AuxVhwC3yeyACI6+xg7hxIb5HzOgdpPvMsOegXhI/
+         Z4kKpGQok2KJoBqZ1WbUHKVwJm8pwNQZ8+o8okrsMAf9QwFFZRFGrmeszkW6/J6bPLIE
+         O4LWVy8llLY+2SJqgIAqqPMEUR4EVMWZdr25287tvf9E6DgWcqmOaqedyCiv12HKt+rd
+         vyZWRmmdbr8wi4waCftHFP6/BtuwpBhuZsLGjvsDaUPW9pFp9a1YPXevC4o/kzMVImGp
+         extA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:references
          :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=2ozjCOigz3XOccO+3njxECFVvWLAZvL79RXZFnzWpPY=;
-        b=A7uuA582Ot0a1KJsRPaRVcoJJ4foTpjHqB3/3lhSI9nlXp2dFiSUTIoKWNoOjzsT83
-         wizeo8+BjwWpdnyvXRzPnL1LTY9ez4FQ3pjnllWDa0T9ujXoTHQeL3L9KDx7pgpF80HK
-         KsZwc8N2lPWRTBdrIBwQVm4ekCqg7Uh8NopUjNlibN5Yiq8dbXY3QWKUUhkwiO/VtZbj
-         MefiA1WadxCUbrS4kt9KYt87f5zTBaIuD5P/waMiinPmrVqlR2WTEUDxwukzeWzr/4yt
-         c0wmL9aG3NSmmP8JF7MwFtX2VWWXKzi86rzSXo1tQYh7s0fXdvItOwCni3DsB3eunsPX
-         Y2pg==
+        bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
+        b=oluRjWE9gjjPc5VMujgNxlXnHu6Utnv7/pkud2Ef5vGzw1F3il/2QaVLqMqiaLzfmw
+         oNxS//Jrzp8vs9R7Iy6W/pUX62aNyL7yEaiDa2IAXdUGCIbheBGLvPA+rif4r7xwMS//
+         cmF4b23kg1SOXwhmQVmdOGMLMVC2t2QtmyR4dSgefuf8a/9xilejht+OBEkFx9KLSN5F
+         NJPpzpCI22HNs7PLnKHObh8zsb3iiFE0z7p5tKEck8BV2pc1bLD7c/y8u9dp7mZV7CHy
+         Gj0kMbUdsgImRexyL7WLRgI+mWBuxMrEohq+5VlY8QxMW2Se7UERTWJjvf2xE+u955KQ
+         d3PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@zx2c4.com header.s=mail header.b=A3s3d9zP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qQCeG1Ia;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 81-v6si3125212qkp.244.2018.05.30.19.13.05
+        by mx.google.com with ESMTPS id d25-v6si6081866qto.282.2018.05.29.22.51.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 19:13:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 29 May 2018 22:51:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@zx2c4.com header.s=mail header.b=A3s3d9zP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
-Received: from localhost ([::1]:41572 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qQCeG1Ia;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36329 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOD5N-00070G-MI
-	for alex.bennee@linaro.org; Wed, 30 May 2018 22:13:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40793)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNu0l-0004gv-Tn
+	for alex.bennee@linaro.org; Wed, 30 May 2018 01:51:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54825)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1fOD55-0006zv-Jg
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 22:12:48 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNu0W-0004eq-1o
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:50:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Jason@zx2c4.com>) id 1fOD52-0001eP-Dx
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 22:12:47 -0400
-Received: from frisell.zx2c4.com ([192.95.5.64]:56009)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
-	id 1fOD52-0001e7-87; Wed, 30 May 2018 22:12:44 -0400
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 2f1cdebc;
-	Thu, 31 May 2018 02:09:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
-	:in-reply-to:references:from:date:message-id:subject:to:cc
-	:content-type:content-transfer-encoding; s=mail; bh=0RvOvKvCIggA
-	6T/a4vhNiY2f+2g=; b=A3s3d9zPyVKv3wi0rIzNES/pSc9MpIidn0eSEsaHTlYl
-	Rc2TSa81yISNOUW1eeqFIdRg+inauupRjBSH8TcrajxcC3xU6FFOf5AW6B/G7abR
-	OZfMQCcyOoe4/kngMzsUvPnj0bqE25NGPLu7LeIcQA0SDyeeeZHJsxC9hazmjamc
-	+TbhUxRc+oiX3MAeg0jnw7rIJ6R1c6C+AF3KefSVpIdButacl5VhYMuqFx4ysKuF
-	bd9vwmNIiHWdrcG9b1xtFFOc7t21+wd/+EXj+u71NzrMdpUnBf2GLZnSDOfhO7Cm
-	V7n8YDs/rbL2qDVUXMbG3JfzWBfPy+xbc0ZLEvF1NQ==
-Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 72ea8d93
-	(TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128:NO); 
-	Thu, 31 May 2018 02:09:17 +0000 (UTC)
-Received: by mail-oi0-f41.google.com with SMTP id t133-v6so14572819oif.10;
-	Wed, 30 May 2018 19:12:41 -0700 (PDT)
-X-Gm-Message-State: ALKqPwduXYe/FUZPtMY1ZExDW+LgHKjaFDYgyZSHDHgyM3UMkRkJwOK0
-	7G5X2cvFiyLcBFXuDMor4N4/EyGkyhtyTTbIx2w=
-X-Received: by 2002:aca:5250:: with SMTP id
-	g77-v6mr3027783oib.241.1527732760791; 
-	Wed, 30 May 2018 19:12:40 -0700 (PDT)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNu0V-0007Ug-5T
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:50:48 -0400
+Received: from mail-yb0-x244.google.com ([2607:f8b0:4002:c09::244]:42379)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNu0Q-0007Ty-Ok; Wed, 30 May 2018 01:50:42 -0400
+Received: by mail-yb0-x244.google.com with SMTP id d123-v6so5947841ybh.9;
+	Tue, 29 May 2018 22:50:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc:content-transfer-encoding;
+	bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
+	b=qQCeG1IaiYB62mWn3A5aIGL5JvoDJVGMBShTUdtWBxYIvxLfAGFQ+WAHSlynG22PXU
+	QFWM8d9sZzYTSFOkeJd0D+Cu+F1ZRz/OgBowYvjhUhvialQXIejtCS06Q65dSUuub/jk
+	GlKjFChMX/s3nYdaZmlZ2+VrJsMwItfe7jZAT9sG4fbiaU7yar5qdLPrlEKTaBVyF3J7
+	8z+yOadf52tN7TZuvPlabZwmlTwUEF0SNUaVMXx4o9b4cKIJK/PWIGLCM0HSbmwZWO5A
+	hH+4seGJDB3wRMQNu6+ncej7Lc6FdNt4YCs/jovpW9QWMKjPEXfT68d8rMdujgbwn4im
+	n8Pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc:content-transfer-encoding;
+	bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
+	b=Eo/TUyYLp+0vlmNst5+DCGBbZDofasipioME5Ddcxpu7GjKydbdQ4XB9BU9jJ+VHmI
+	D5Wr1Jwq92py2XdkL40vSLBaGfJD97JW5aEbHpidpvFOIUbRYZOoHhIwlJl35oLtFoCs
+	fiS9eqFtpNwEOffZUL68kn/l3EFN7PoyYu4cPydVjbBZUol/1YB0tYXZZZbEDnWw1m9B
+	e/2RJKRaGXfMgQoibRPnvyEaTYOtveM8StOzZEnNe6jSGPVcwYTsnEvdgzQBTek78YO7
+	bSPUK4PAv8UXMEjQ2+A9VQSN6W07Xa7lW6L1eK/QDKWpz9JI+k3Jr4hxbTBbVZuGuPpa
+	9u/g==
+X-Gm-Message-State: APt69E2KJi5zwBULkCZtgE0byvBkOplw2TsGyyRwt2MVkk14eFsu4/1e
+	MD7YuOv+UPLsoxVly7xhLSZpo1xoYpeYge4MBWE=
+X-Received: by 2002:a25:d1c5:: with SMTP id
+	i188-v6mr738478ybg.114.1527659441791; 
+	Tue, 29 May 2018 22:50:41 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a4a:c606:0:0:0:0:0 with HTTP; Wed, 30 May 2018 19:12:40
-	-0700 (PDT)
-In-Reply-To: <CAFEAcA-t7XFxizUQMdo_JYTLet_a8ZL-Omg54gLOQC-=o+vjuA@mail.gmail.com>
-References: <1512745328-5109-1-git-send-email-peter.maydell@linaro.org>
-	<1512745328-5109-3-git-send-email-peter.maydell@linaro.org>
-	<20171212144513.sutjfenbjh33fm5n@kamzik.brq.redhat.com>
-	<CAFEAcA-DyuObZjx-g2k9SkofLZ_akadfGYZCMum=3hQQLEdN_w@mail.gmail.com>
-	<20171212151605.v2eoestysaogzymm@kamzik.brq.redhat.com>
-	<CAFEAcA-t7XFxizUQMdo_JYTLet_a8ZL-Omg54gLOQC-=o+vjuA@mail.gmail.com>
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-Date: Thu, 31 May 2018 04:12:40 +0200
-X-Gmail-Original-Message-ID: <CAHmME9oda=T6C53BYi-Op3cWbG2auBjVDoUWuiJoCyxxR298fQ@mail.gmail.com>
-Message-ID: <CAHmME9oda=T6C53BYi-Op3cWbG2auBjVDoUWuiJoCyxxR298fQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
+Received: by 2002:a25:3d7:0:0:0:0:0 with HTTP;
+	Tue, 29 May 2018 22:50:41 -0700 (PDT)
+In-Reply-To: <20180530074026-mutt-send-email-mst@kernel.org>
+References: <20180528232719.4721-1-f4bug@amsat.org>
+	<20180528232719.4721-10-f4bug@amsat.org>
+	<20180529134053.1ea9f46d.cohuck@redhat.com>
+	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
+	<20180530074026-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Wed, 30 May 2018 02:50:41 -0300
+X-Google-Sender-Auth: MTQLDqEjj_pSZ-qkUhcUVkcgSOw
+Message-ID: <CAAdtpL7sDOg2m+Ffsbc3f_Za6fr3in5ZfBJ2BAtGNJ1j4vbhJQ@mail.gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 192.95.5.64
-Subject: Re: [Qemu-devel] [PATCH 2/3] hw/arm/virt: Add another UART to the
- virt board
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c09::244
+Subject: Re: [Qemu-arm] [PATCH v4 09/21] target: Do not include
+ "exec/exec-all.h" if it is not necessary
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Shannon Zhao <shannon.zhao@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3CaqW8Ddbt9a
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	David Hildenbrand <david@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Anthony Green <green@moxielogic.com>, Cornelia Huck <cohuck@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alexander Graf <agraf@suse.de>, Laurent Vivier <laurent@vivier.eu>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 76zaejdqcbIR
 
-Hi Peter,
+On Wed, May 30, 2018 at 1:42 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
+> On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+>> Hi Cornelia,
+>>
+>> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
+>> > On Mon, 28 May 2018 20:27:07 -0300
+>> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+>> >
+>> >> Code change produced with:
+>> >>     $ git grep '#include "exec/exec-all.h"' | \
+>> >>       cut -d: -f-1 | \
+>> >>       xargs egrep -L "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GETP=
+C|singlestep|TranslationBlock)" | \
+>> >
+>> > Hm, does this expression catch all files that need to include
+>> > exec-all.h? The resulting patch seems fine, though.
+>>
+>> No, not all :/
+>> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until no
+>> more errors appear. In 2 more steps I added "cpu_address_space_init|"
+>> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for my
+>> goal than trying to build a regex to explode function/struct names from
+>> headers. This is a clever way to do it for long term command reuse taken
+>> from commit messages...
+>
+> Brutebuilding isn't a good way to find unused includes, some other header
+> might pull in an include you are trying to remove for its own purposes.
+> If you want to try brutebuilding you must also verify that's
+> not the case - e.g. look at the dependency file generated.
 
-What ever became of this? I still really could use a second UART in
-the standard configuration. I'm still building with this cludge --
-https://=D7=90.cc/RXI3ssWV -- in order to run the test suite on
-build.wireguard.com.
+Hmm you mean the .d files in the build dir?
 
-Thanks,
-Jason
+i.e.
+$ find lm32-softmmu -name \*.d -exec fgrep -L exec-all.h {} \; | sed
+-e 's/.*-softmmu\/\(.*\)d$/\1c/'
+dump.c
+numa.c
+tcg/tcg-common.c
+tcg/optimize.c
+tcg/tcg-op-gvec.c
+tcg/tcg-op-vec.c
+accel/tcg/tcg-runtime-gvec.c
+accel/tcg/tcg-all.c
+accel/accel.c
+accel/stubs/whpx-stub.c
+accel/stubs/hvf-stub.c
+accel/stubs/kvm-stub.c
+accel/stubs/hax-stub.c
+hw/lm32/milkymist.c
+hw/lm32/lm32_boards.c
+hw/core/generic-loader.c
+...
+
+Then look why each .c included it?
+
+>
+>> >>       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
+>> >>
+>> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>

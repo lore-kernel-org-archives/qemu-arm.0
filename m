@@ -1,78 +1,78 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4830611wre;
-        Wed, 30 May 2018 07:49:17 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJu/8hTwZlCy+WvWh0mLWHsLQN8R9oJ+mAQe6Eynf72rwmg87qciln9FuafY8nShFqg1c0f
-X-Received: by 2002:a37:29dd:: with SMTP id p90-v6mr2626655qkp.390.1527691757592;
-        Wed, 30 May 2018 07:49:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527691757; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4832824wre;
+        Wed, 30 May 2018 07:51:36 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKK029PmhhzqSHA6H9AA1co/C6WAuv+WFX1Sni4Iz168K21njZySpM4kmQ3SU/uUddyHprJ1
+X-Received: by 2002:aed:2d07:: with SMTP id h7-v6mr2763979qtd.252.1527691896704;
+        Wed, 30 May 2018 07:51:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527691896; cv=none;
         d=google.com; s=arc-20160816;
-        b=wtznhxmr4fylOw7uMbk1e5HfPrNUgBnhPKUBSubYe8yqokMHzyJTrdVTckNWr2n5k+
-         BqJCer7FJMCzNyRgJHaS7qNc9eVNUNLxTCiKmA8EkJyrZksMp0LQAxxJDIXOk1IlP2fD
-         xvz9XbWCF4jGPADz9H27FgwDghBPL2ZJWkdYNoT5hyauBPk699U4+Lb0MYWEUKkZxdJF
-         yw9hPse5nUz877nVHSODaEO1SlbhJ+seRTyz+AyqpWd/VJ82abP3EkT/2G0wexEvRS8Y
-         F3cwbDLJ+7L7Y5hMYw2ODh7+H7GlKFp9uAZ8RhBvw3mQtEe9UphJkXkiTqeJBZJdVh6H
-         TgpA==
+        b=G4+qsZ/xgX+VzXVBTb25IJ7dviQfRCMQHGvqvGCV4Q09Ix6lVWAUbnvCk9Javf7XtG
+         jUKjDtlRaRogFqL/E2xD32kFWBGSTIzZ/Wd7edxIVaUPtZMbUE4sYePR1vSx0FnKVFrv
+         uWn4mMLOVPC4kXRJsX7uu0gP6P550miTb2WziKjk+/bH30XjJse0pH21fEBqSG1Q/1zb
+         Qrs32I5j6jRoMhglLx7K9kVnK1oSW1GUKzFcV6IiBZydoudvk7H7jw6a2xVwx1KUDUqV
+         AgQIyzRItEleXBXLs4C8FwCcUvPqVxwyVzLD4/2O9SQdCwUsn9cOISTFlfAwWWFNq1lL
+         Y25w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic:to
          :from:arc-authentication-results;
-        bh=L2SkzR+qQEko20JxmLlQA4V8lEWITSJK2MgajrxwaeA=;
-        b=Y0/npsp8x4JOy1c4KURw2Z/RTtYbjYEdwojHPkUAFk2FrTKqE3306VZ6P5R9pF/GLQ
-         zCpDovJVo3kCBVD9nDxFC9NVCqcKM/dchPBlYyVIbj588tDJJHIE81QKiGDpfgR84Tuu
-         qsjde40WUIl8MZYF2YS2uTE1w5yQeFfHYGpUIpm9mRMOR0HN1ovmb3ME4dXtIZmppjlV
-         RJUz1jnkIeQJ5g9IEZ5P8RseOVUc/GS6WzC24rd3MTd6vCTK+xXPOSWvMLUPYJLWyjX4
-         kPvQg9EtblAinm0JFIfapLiwq04vQRAcNNV558KAqlgX3lNjuif+WSTSJ38QypdDT1fj
-         bQlA==
+        bh=wkurIzBG1CqCBhc41xrK/phV0xbH8K8HvsNfrXJhi0A=;
+        b=RoXpAUCR5DCqNbYbr42salhKW4MrC+mmN31oLUsDt6raQvPPh1a9t1g5SfPaAjmSTN
+         OqlMmB437x9hm1ovpZgJ0pZOExequsMstkZvKLQ8N0APSHMnYO2IR29Ugg/xUjqVziGe
+         5OYMRHpJwCO4QyFl6qpluwIeEEQrTLpAn/sZNZPt+myiJ29ho8BeWbrL235GP1WI1MJK
+         gvLjwwAmfIb9PegBF73todq+S+zyFwyrJugmauAvYZLWaH97REIKjvySNZ7U5ayfFfb3
+         I6bmtxbE66ZttIcDmt+Hlnf0gLRE44jcsuC5lSt8/SfxwIZBNBPMH4XBpK7Aj0hA6S8a
+         dI+w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m8-v6si13139219qvk.180.2018.05.30.07.49.17
+        by mx.google.com with ESMTPS id v24-v6si7795393qtp.358.2018.05.30.07.51.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 07:49:17 -0700 (PDT)
+        Wed, 30 May 2018 07:51:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39105 helo=lists.gnu.org)
+Received: from localhost ([::1]:39125 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO2Pd-0008Hk-3W
-	for alex.bennee@linaro.org; Wed, 30 May 2018 10:49:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40210)
+	id 1fO2Rs-0001Th-4M
+	for alex.bennee@linaro.org; Wed, 30 May 2018 10:51:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40603)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2PO-0008F5-Cc
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:49:05 -0400
+	id 1fO2Qe-0000dy-80
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:50:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2PK-00024w-Hb
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:49:02 -0400
-Received: from lhrrgout.huawei.com ([194.213.3.17]:4230 helo=huawei.com)
+	id 1fO2QY-0002xL-0U
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:50:20 -0400
+Received: from lhrrgout.huawei.com ([194.213.3.17]:4231 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2PK-00024T-6T; Wed, 30 May 2018 10:48:58 -0400
-Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.106])
-	by Forcepoint Email with ESMTP id E73CE118C5F96;
-	Wed, 30 May 2018 15:48:54 +0100 (IST)
-Received: from FRAEMA707-CHM.china.huawei.com (10.206.14.56) by
-	lhreml707-cah.china.huawei.com (10.201.108.48) with Microsoft SMTP
-	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:48:56 +0100
+	id 1fO2QX-0002v1-QJ; Wed, 30 May 2018 10:50:13 -0400
+Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.107])
+	by Forcepoint Email with ESMTP id 7D06637B207CA;
+	Wed, 30 May 2018 15:50:10 +0100 (IST)
+Received: from FRAEML704-CAH.china.huawei.com (10.206.14.35) by
+	lhreml709-cah.china.huawei.com (10.201.108.32) with Microsoft SMTP
+	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:50:11 +0100
 Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.176]) by
-	FRAEMA707-CHM.china.huawei.com ([169.254.7.63]) with mapi id
-	14.03.0382.000; Wed, 30 May 2018 16:48:50 +0200
+	FRAEML704-CAH.china.huawei.com ([10.206.14.35]) with mapi id
+	14.03.0382.000; Wed, 30 May 2018 16:50:02 +0200
 From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [RFC v2 6/6] hw/arm: Populate non-contiguous memory regions
-Thread-Index: AQHT7Smp6QHgsUaqbU6E/UX/WhtxEaRFIoCAgAMh+zA=
-Date: Wed, 30 May 2018 14:48:48 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F1807@FRAEML521-MBX.china.huawei.com>
+To: Andrew Jones <drjones@redhat.com>
+Thread-Topic: [Qemu-devel] [RFC v2 2/6] hw/arm/virt: Enable dynamic
+	generation of guest RAM memory regions
+Thread-Index: AQHT7SmgQBrabppeFUSzP8q+EArFi6RFSzIAgAMdXDA=
+Date: Wed, 30 May 2018 14:50:01 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F181E@FRAEML521-MBX.china.huawei.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-7-shameerali.kolothum.thodi@huawei.com>
-	<bd67ed40-81d6-58dc-ccaf-efd8a40ca96f@redhat.com>
-In-Reply-To: <bd67ed40-81d6-58dc-ccaf-efd8a40ca96f@redhat.com>
+	<20180516152026.2920-3-shameerali.kolothum.thodi@huawei.com>
+	<20180528164712.y5rjhu7xixqkjgoe@kamzik.brq.redhat.com>
+In-Reply-To: <20180528164712.y5rjhu7xixqkjgoe@kamzik.brq.redhat.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -84,8 +84,8 @@ MIME-Version: 1.0
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 194.213.3.17
-Subject: Re: [Qemu-arm] [RFC v2 6/6] hw/arm: Populate non-contiguous memory
- regions
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 2/6] hw/arm/virt: Enable
+ dynamic generation of guest RAM memory regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,449 +98,149 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"drjones@redhat.com" <drjones@redhat.com>,
-	Jonathan Cameron <jonathan.cameron@huawei.com>,
-	Linuxarm <linuxarm@huawei.com>,
+	Zhaoshenglong <zhaoshenglong@huawei.com>, Linuxarm <linuxarm@huawei.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>,
 	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	Zhaoshenglong <zhaoshenglong@huawei.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Jonathan Cameron <jonathan.cameron@huawei.com>,
 	"imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UdpxMYiPW5G1
+X-TUID: uxE08alj8Xh2
 
+Hi Drew,
 
+Thanks for going through this.
 
 > -----Original Message-----
-> From: Auger Eric [mailto:eric.auger@redhat.com]
-> Sent: Monday, May 28, 2018 3:22 PM
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
-> qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: drjones@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
-> alex.williamson@redhat.com; Zhaoshenglong <zhaoshenglong@huawei.com>;
-> Jonathan Cameron <jonathan.cameron@huawei.com>; Linuxarm
-> <linuxarm@huawei.com>
-> Subject: Re: [RFC v2 6/6] hw/arm: Populate non-contiguous memory regions
+> From: Andrew Jones [mailto:drjones@redhat.com]
+> Sent: Monday, May 28, 2018 5:47 PM
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> peter.maydell@linaro.org; Jonathan Cameron
+> <jonathan.cameron@huawei.com>; Linuxarm <linuxarm@huawei.com>;
+> eric.auger@redhat.com; alex.williamson@redhat.com; Zhaoshenglong
+> <zhaoshenglong@huawei.com>; imammedo@redhat.com
+> Subject: Re: [Qemu-devel] [RFC v2 2/6] hw/arm/virt: Enable dynamic
+> generation of guest RAM memory regions
 >=20
-> Hi Shameer,
->=20
-> On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> > In case valid iova regions are non-contiguous, split the
-> > RAM mem into a 1GB non-pluggable dimm and remaining as a
-> > single pc-dimm mem.
->=20
-> Please can you explain where does this split come from? Currently we
-> have 254 GB non pluggable RAM. I read the discussion started with Drew
-> on RFC v1 where he explained we cannot change the RAM base without
-> crashing the FW. However we should at least document this  1GB split.
-
-The comments were mainly to use the pc-dimm model instead of "mem alias"
-method used on RFC v1 as this will help to add the mem hot-plug support=20
-in future.=20
-
-I am not sure about the motive behind Drew's idea of splitting the first
-1GB as non-plug and remaining as a pc-dimm(cold). May it is to attempt a=20
-best effort scenario, but as I mentioned in reply to 0/6, the current solut=
-ion
-will end up changing the base address if the 0x4000000 falls under a reserv=
-ed
-region.
-
-Again, not sure whether we should enforce a strict check on base address
-start or just warn the user that it will fail on Guest with UEFI boot[1].
-
-Hi Drew,=20
-
-Please let me know your thoughts on this.
-
+> On Wed, May 16, 2018 at 04:20:22PM +0100, Shameer Kolothum wrote:
+> > Register ram_memory_region_init notifier to allocate memory region
+> > from system memory.
+> >
+> > Signed-off-by: Zhu Yijun <zhuyijun@huawei.com>
 > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > > ---
-> >  hw/arm/virt.c | 261
-> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
-> >  1 file changed, 256 insertions(+), 5 deletions(-)
+> >  hw/arm/virt.c         | 28 ++++++++++++++++++++++------
+> >  include/hw/arm/virt.h |  1 +
+> >  2 files changed, 23 insertions(+), 6 deletions(-)
 > >
 > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index be3ad14..562e389 100644
+> > index 94dcb12..05fcb62 100644
 > > --- a/hw/arm/virt.c
 > > +++ b/hw/arm/virt.c
-> > @@ -58,6 +58,12 @@
-> >  #include "hw/smbios/smbios.h"
-> >  #include "qapi/visitor.h"
-> >  #include "standard-headers/linux/input.h"
-> > +#include "hw/vfio/vfio-common.h"
-> > +#include "qemu/config-file.h"
-> > +#include "monitor/qdev.h"
-> > +#include "qom/object_interfaces.h"
-> > +#include "qapi/qmp/qdict.h"
-> > +#include "qemu/option.h"
->=20
-> The comment at the beginning of virt.c would need to be reworked with
-> your changes.
-
-Ok.
-
-> >  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-> >      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-> > @@ -110,7 +116,10 @@ static ARMPlatformBusSystemParams
-> platform_bus_params;
-> >   * terabyte of physical address space.)
-> >   */
-> >  #define RAMLIMIT_GB 255
-> > -#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
-> > +#define SZ_1G (1024ULL * 1024 * 1024)
-> > +#define RAMLIMIT_BYTES (RAMLIMIT_GB * SZ_1G)
-> > +
-> > +#define ALIGN_1G (1ULL << 30)
-> >
-> >  /* Addresses and sizes of our components.
-> >   * 0..128MB is space for a flash device so we can run bootrom code suc=
-h as
-> UEFI.
-> > @@ -1171,6 +1180,236 @@ void virt_machine_done(Notifier *notifier, void
+> > @@ -1171,6 +1171,19 @@ void virt_machine_done(Notifier *notifier, void
 > *data)
 > >      virt_build_smbios(vms);
 > >  }
 > >
-> > +static void free_iova_copy(struct vfio_iova_head *iova_copy)
+> > +static void virt_ram_memory_region_init(Notifier *notifier, void *data=
+)
 > > +{
-> > +    VFIOIovaRange *iova, *tmp;
-> > +
-> > +    QLIST_FOREACH_SAFE(iova, iova_copy, next, tmp) {
-> > +        QLIST_REMOVE(iova, next);
-> > +        g_free(iova);
-> > +    }
-> > +}
-> > +
-> > +static void get_iova_copy(struct vfio_iova_head *iova_copy)
-> > +{
-> > +    VFIOIovaRange *iova, *new, *prev_iova =3D NULL;
-> > +
-> > +    QLIST_FOREACH(iova, &vfio_iova_regions, next) {
-> > +        new =3D g_malloc0(sizeof(*iova));
-> > +        new->start =3D iova->start;
-> > +        new->end =3D iova->end;
-> > +
-> > +        if (prev_iova) {
-> > +            QLIST_INSERT_AFTER(prev_iova, new, next);
-> > +        } else {
-> > +            QLIST_INSERT_HEAD(iova_copy, new, next);
-> > +        }
-> > +        prev_iova =3D new;
-> > +    }
-> > +}
-> > +
-> > +static hwaddr find_memory_chunk(VirtMachineState *vms,
-> > +                   struct vfio_iova_head *iova_copy,
-> > +                   hwaddr req_size, bool pcdimm)
-> > +{
-> > +    VFIOIovaRange *iova, *tmp;
-> > +    hwaddr new_start, new_size, sz_align;
-> > +    hwaddr virt_start =3D vms->memmap[VIRT_MEM].base;
-> > +    hwaddr addr_align =3D ALIGN_1G; /* Set to max ARM64 hugepage size =
-*/
-> > +
-> > +    /* Size alignment */
-> > +    sz_align =3D (pcdimm) ? MAX(TARGET_PAGE_SIZE,
-> QEMU_VMALLOC_ALIGN) :
-> > +                                                      TARGET_PAGE_SIZE=
-;
-> > +
-> > +    QLIST_FOREACH_SAFE(iova, iova_copy, next, tmp) {
-> > +        if (virt_start >=3D iova->end) {
-> > +            continue;
-> > +        }
-> > +
-> > +        /* Align addr */
-> > +        new_start =3D ROUND_UP(MAX(virt_start, iova->start), addr_alig=
-n);
-> > +        if (new_start >=3D iova->end) {
-> > +            continue;
-> > +        }
-> > +
-> > +        if (req_size > iova->end - new_start + 1) {
-> > +            continue;
-> > +        }
-> don't you want to check directly with new_size?
-
-Yes. I think that should do.
-
-> > +
-> > +        /*
-> > +         * Check the region can hold any size alignment requirement.
-> > +         */
-> > +        new_size =3D QEMU_ALIGN_UP(req_size, sz_align);
-> > +
-> > +        if ((new_start + new_size - 1 > iova->end) ||
-> > +                 (new_start + new_size >=3D virt_start + RAMLIMIT_BYTE=
-S)) {
-> > +            continue;
-> > +        }
-> > +
-> > +        /*
-> > +         * Modify the iova list entry for non pc-dimm case so that it
-> > +         * is not used again for pc-dimm allocation.
-> > +         */
-> > +        if (!pcdimm) {
-> > +            if (new_size - req_size) {
-> I don't get this check, Don't you want to check the node's range is
-> fully consumed and in the positive remove the node?
->=20
-> (new_size !=3D iova->end - iova-> start + 1)
-
-Hmm..looks like I missed that.
-
-> > +                iova->start =3D new_start + new_size;
-> > +            } else {
-> > +                QLIST_REMOVE(iova, next);
-> > +            }
-> > +        }
-> > +        return new_start;
-> > +    }
-> > +
-> > +    return -1;
-> > +}
-> > +
-> > +static void update_memory_regions(VirtMachineState *vms)
-> > +{
-> > +    hwaddr addr;
-> > +    VFIOIovaRange *iova;
+> > +    MemoryRegion *sysmem =3D get_system_memory();
+> > +    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+> > +    VirtMachineState *vms =3D container_of(notifier, VirtMachineState,
+> > +                                         ram_memory_region_init);
 > > +    MachineState *machine =3D MACHINE(vms);
-> > +    hwaddr virt_start =3D vms->memmap[VIRT_MEM].base;
-> > +    hwaddr req_size, ram_size =3D machine->ram_size;
-> > +    struct vfio_iova_head iova_copy =3D QLIST_HEAD_INITIALIZER(iova_co=
-py);
 > > +
-> > +    /* No valid iova regions, use default */
-> > +    if (QLIST_EMPTY(&vfio_iova_regions)) {
-> > +        vms->bootinfo.loader_start =3D vms->memmap[VIRT_MEM].base;
-> > +        vms->bootinfo.ram_size =3D ram_size;
-> > +        return;
-> > +    }
+> > +    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+> > +                                         machine->ram_size);
+> > +    memory_region_add_subregion(sysmem, vms-
+> >memmap[VIRT_MEM].base, ram);
+> > +}
+> > +
+> >  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+> >  {
+> >      uint8_t clustersz =3D ARM_DEFAULT_CPUS_PER_CLUSTER;
+> > @@ -1204,7 +1217,6 @@ static void machvirt_init(MachineState *machine)
+> >      MemoryRegion *sysmem =3D get_system_memory();
+> >      MemoryRegion *secure_sysmem =3D NULL;
+> >      int n, virt_max_cpus;
+> > -    MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+> >      bool firmware_loaded =3D bios_name || drive_get(IF_PFLASH, 0, 0);
+> >
+> >      /* We can probe only here because during property set
+> > @@ -1361,10 +1373,6 @@ static void machvirt_init(MachineState *machine)
+> >      fdt_add_timer_nodes(vms);
+> >      fdt_add_cpu_nodes(vms);
+> >
+> > -    memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+> > -                                         machine->ram_size);
+> > -    memory_region_add_subregion(sysmem, vms-
+> >memmap[VIRT_MEM].base, ram);
+> > -
+> >      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+> >
+> >      create_gic(vms, pic);
+> > @@ -1405,15 +1413,23 @@ static void machvirt_init(MachineState
+> *machine)
+> >      vms->bootinfo.loader_start =3D vms->memmap[VIRT_MEM].base;
+> >      vms->bootinfo.get_dtb =3D machvirt_dtb;
+> >      vms->bootinfo.firmware_loaded =3D firmware_loaded;
+> > +
+> > +    /* Register notifiers. They are executed in registration reverse o=
+rder */
+> >      arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
+> >
+> >      /*
+> >       * arm_load_kernel machine init done notifier registration must
+> >       * happen before the platform_bus_create call. In this latter,
+> >       * another notifier is registered which adds platform bus nodes.
+> > -     * Notifiers are executed in registration reverse order.
+> >       */
+> >      create_platform_bus(vms, pic);
 > > +
 > > +    /*
-> > +     * If valid iovas has only one entry, check the req size fits in
-> > +     * and can have the loader start < 4GB. This will make sure platfo=
-rms
-> > +     * with no holes in mem will have the same mem model as before.
+> > +     * Register memory region notifier last as this has to be executed
+> > +     * first.
 > > +     */
-> > +    req_size =3D ram_size;
-> > +    iova =3D QLIST_NEXT(QLIST_FIRST(&vfio_iova_regions), next);
-> > +    if (!iova) {
-> > +        iova =3D QLIST_FIRST(&vfio_iova_regions);
-> > +        addr =3D ROUND_UP(MAX(virt_start, iova->start), ALIGN_1G);
-> > +        if ((addr < 4 * SZ_1G) && (ram_size <=3D iova->end - addr + 1)=
- &&
-> > +                  (addr + ram_size < virt_start + RAMLIMIT_BYTES)) {
-> > +            vms->bootinfo.loader_start =3D addr;
-> > +            vms->bootinfo.ram_size =3D ram_size;
-> > +            return;
-> > +        }
-> > +    }
-> > +
-> > +    /* Get a copy of valid iovas and work on it */
-> > +    get_iova_copy(&iova_copy);
-> > +
-> > +    /* Split the mem as first 1GB non-pluggable and rest as pc-dimm */
-> > +    req_size =3D MIN(ram_size, SZ_1G);
-> > +    addr =3D find_memory_chunk(vms, &iova_copy, req_size, false);
-> According to what Drew reported, the base address of the cold-plug RAM
-> must stay at 1GB otherwise the FW will be lost. So I think you must
-> check the addr =3D 1GB
+> > +    vms->ram_memory_region_init.notify =3D virt_ram_memory_region_init=
+;
+> > +    qemu_add_machine_init_done_notifier(&vms-
+> >ram_memory_region_init);
+>=20
+> I realize we've been slow to get to this for reviewing, but a lot has
+> changed here since this patch was written. virt now only has a single
+> machine done notifier. On rebase we should attempt to integrate with
+> that one rather than introduce a new one.
 
-Please see my above comment on the base address.
-
-> > +    if (addr =3D=3D -1 || addr >=3D 4 * SZ_1G) {
-> > +        goto out;
-> > +    }
-> > +
-> > +    /*Update non-pluggable mem details */
-> > +    machine->ram_size =3D req_size;
-> > +    vms->bootinfo.loader_start =3D addr;
-> > +    vms->bootinfo.ram_size =3D machine->ram_size;
-> > +
-> > +    req_size =3D ram_size - req_size;
-> > +    if (!req_size) {
-> > +        goto done;
-> > +    }
-> > +
-> > +    /* Remaining memory is modeled as a pc-dimm. */
-> > +    addr =3D find_memory_chunk(vms, &iova_copy, req_size, true);
-> > +    if (addr =3D=3D -1) {
-> > +        goto out;
-> > +    }
-> > +
-> > +    /*Update pc-dimm mem details */
-> > +    vms->bootinfo.dimm_mem =3D g_new(struct dimm_mem_info, 1);
-> > +    vms->bootinfo.dimm_mem->base =3D addr;
-> > +    vms->bootinfo.dimm_mem->size =3D req_size;
-> > +    machine->maxram_size =3D machine->ram_size + req_size;
-> > +    machine->ram_slots +=3D 1;
-> > +
-> > +done:
-> > +    free_iova_copy(&iova_copy);
-> > +    return;
-> > +
-> > +out:
-> > +    free_iova_copy(&iova_copy);
-> > +    error_report("mach-virt: Not enough contiguous memory to model ram=
-");
-> Output the requested size would help debug (and maybe the available IOVA
-> ranges)
-
-Agree. I will change that.
+Ok. I will take a look on that one.
 
 Thanks,
 Shameer
 
-[1] https://github.com/tianocore/edk2/blob/master/ArmVirtPkg/ArmVirtQemu.ds=
-c#L133=20
-
-> Thanks
+> Thanks,
+> drew
 >=20
-> Eric
-> > +    exit(1);
-> > +}
-> > +
-> > +static void create_pcdimms(VirtMachineState *vms,
-> > +                             MemoryRegion *sysmem,
-> > +                             MemoryRegion *ram)
-> > +{
-> > +    hwaddr addr, size;
-> > +    Error *local_err =3D NULL;
-> > +    QDict *qdict;
-> > +    QemuOpts *opts;
-> > +    char *tmp;
-> > +
-> > +    if (!vms->bootinfo.dimm_mem) {
-> > +        return;
-> > +    }
-> > +
-> > +    addr =3D vms->bootinfo.dimm_mem->base;
-> > +    size =3D vms->bootinfo.dimm_mem->size;
-> > +
-> > +    /*Create hotplug address space */
-> > +    vms->hotplug_memory.base =3D ROUND_UP(addr, ALIGN_1G);
-> > +    size =3D ROUND_UP(size, MAX(TARGET_PAGE_SIZE,
-> QEMU_VMALLOC_ALIGN));
-> > +
-> > +    memory_region_init(&vms->hotplug_memory.mr, OBJECT(vms),
-> > +                                      "hotplug-memory", size);
-> > +    memory_region_add_subregion(sysmem, vms->hotplug_memory.base,
-> > +                                        &vms->hotplug_memory.mr);
-> > +    /* Create backend mem object */
-> > +    qdict =3D qdict_new();
-> > +    qdict_put_str(qdict, "qom-type", "memory-backend-ram");
-> > +    qdict_put_str(qdict, "id", "mem1");
-> > +    tmp =3D g_strdup_printf("%"PRIu64 "M", size / (1024 * 1024));
-> > +    qdict_put_str(qdict, "size", tmp);
-> > +    g_free(tmp);
-> > +
-> > +    opts =3D qemu_opts_from_qdict(qemu_find_opts("object"), qdict,
-> &local_err);
-> > +    if (local_err) {
-> > +        goto err;
-> > +    }
-> > +
-> > +    user_creatable_add_opts(opts, &local_err);
-> > +    qemu_opts_del(opts);
-> > +    QDECREF(qdict);
-> > +    if (local_err) {
-> > +        goto err;
-> > +    }
-> > +
-> > +    /* Create pc-dimm dev*/
-> > +    qdict =3D qdict_new();
-> > +    qdict_put_str(qdict, "driver", "pc-dimm");
-> > +    qdict_put_str(qdict, "id", "dimm1");
-> > +    qdict_put_str(qdict, "memdev", "mem1");
-> > +
-> > +    opts =3D qemu_opts_from_qdict(qemu_find_opts("device"), qdict,
-> &local_err);
-> > +    if (local_err) {
-> > +        goto err;
-> > +    }
-> > +
-> > +    qdev_device_add(opts, &local_err);
-> > +    qemu_opts_del(opts);
-> > +    QDECREF(qdict);
-> > +    if (local_err) {
-> > +        goto err;
-> > +    }
-> > +
-> > +    return;
-> > +
-> > +err:
-> > +    error_report_err(local_err);
-> > +    exit(1);
-> > +}
-> > +
-> >  static void virt_ram_memory_region_init(Notifier *notifier, void *data=
-)
-> >  {
-> >      MemoryRegion *sysmem =3D get_system_memory();
-> > @@ -1179,9 +1418,14 @@ static void virt_ram_memory_region_init(Notifier
-> *notifier, void *data)
-> >                                           ram_memory_region_init);
-> >      MachineState *machine =3D MACHINE(vms);
-> >
-> > +    update_memory_regions(vms);
-> >      memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
-> >                                           machine->ram_size);
-> > -    memory_region_add_subregion(sysmem, vms-
-> >memmap[VIRT_MEM].base, ram);
-> > +    memory_region_add_subregion(sysmem, vms->bootinfo.loader_start,
-> ram);
-> > +
-> > +    if (vms->bootinfo.dimm_mem) {
-> > +        create_pcdimms(vms, sysmem, ram);
-> > +    }
+>=20
 > >  }
 > >
-> >  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
-> > @@ -1404,13 +1648,11 @@ static void machvirt_init(MachineState
-> *machine)
-> >      vms->machine_done.notify =3D virt_machine_done;
-> >      qemu_add_machine_init_done_notifier(&vms->machine_done);
+> >  static bool virt_get_secure(Object *obj, Error **errp)
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > index ba0c1a4..fc24f3a 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -91,6 +91,7 @@ typedef struct {
+> >  typedef struct {
+> >      MachineState parent;
+> >      Notifier machine_done;
+> > +    Notifier ram_memory_region_init;
+> >      FWCfgState *fw_cfg;
+> >      bool secure;
+> >      bool highmem;
+> > --
+> > 2.7.4
 > >
-> > -    vms->bootinfo.ram_size =3D machine->ram_size;
-> >      vms->bootinfo.kernel_filename =3D machine->kernel_filename;
-> >      vms->bootinfo.kernel_cmdline =3D machine->kernel_cmdline;
-> >      vms->bootinfo.initrd_filename =3D machine->initrd_filename;
-> >      vms->bootinfo.nb_cpus =3D smp_cpus;
-> >      vms->bootinfo.board_id =3D -1;
-> > -    vms->bootinfo.loader_start =3D vms->memmap[VIRT_MEM].base;
-> >      vms->bootinfo.get_dtb =3D machvirt_dtb;
-> >      vms->bootinfo.firmware_loaded =3D firmware_loaded;
 > >
-> > @@ -1559,7 +1801,7 @@ static void virt_dimm_plug(HotplugHandler
-> *hotplug_dev,
-> >      PCDIMMDevice *dimm =3D PC_DIMM(dev);
-> >      PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
-> >      MemoryRegion *mr;
-> > -    uint64_t align;
-> > +    uint64_t align, addr;
-> >      Error *local_err =3D NULL;
-> >
-> >      mr =3D ddc->get_memory_region(dimm, &local_err);
-> > @@ -1573,6 +1815,15 @@ static void virt_dimm_plug(HotplugHandler
-> *hotplug_dev,
-> >          goto out;
-> >      }
-> >
-> > +    addr =3D object_property_get_uint(OBJECT(dimm),
-> PC_DIMM_ADDR_PROP,
-> > +                                                       &error_fatal);
-> > +    /* Assign the node for pc-dimm initial ram */
-> > +    if (vms->bootinfo.dimm_mem && (addr =3D=3D vms->bootinfo.dimm_mem-
-> >base)
-> > +                                                 && (nb_numa_nodes > 0=
-)) {
-> > +        vms->bootinfo.dimm_mem->node =3D
-> object_property_get_uint(OBJECT(dev),
-> > +                                           PC_DIMM_NODE_PROP, &error_f=
-atal);
-> > +    }
-> > +
-> >  out:
-> >      error_propagate(errp, local_err);
-> >  }
 > >

@@ -1,200 +1,153 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4306047wre;
-        Tue, 29 May 2018 21:22:58 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLFqnRZLc3qzpjhOehgaPZ+qF8ALmU5hqnDlKK+RikSuNzLFpCLF2ltpMVh2XZYhxBYCuKS
-X-Received: by 2002:a37:2a8e:: with SMTP id q14-v6mr1031521qkq.380.1527654178778;
-        Tue, 29 May 2018 21:22:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527654178; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4318028wre;
+        Tue, 29 May 2018 21:42:21 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJCZ8NA415dG6c3ViaBbCf5bFtKwagPUg8dtZxJwfTktRt/zGFlEJk0rBjnxP/EXMotqDRU
+X-Received: by 2002:a37:c40d:: with SMTP id d13-v6mr1031846qki.340.1527655341257;
+        Tue, 29 May 2018 21:42:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527655341; cv=none;
         d=google.com; s=arc-20160816;
-        b=klSInG2KDYgDD9owQPqNeFWLDqa7vL1ISUcfXflRmcq+WzoqOUYAVjUnkQX9ca+EZj
-         IQ7gqE/QI5EuuX+LgphWbuQ6rosHcYe89Aq6d5Cv+lFUSDOV8PFCjJAnL/4Q0su7UAiY
-         x2QxWDagNBu7IT/nK0Sp4t1ibuzbKrDJVpdojriUr8fvqHFxvUsUobFgTxYcBC+p/uYb
-         +lo1mKIfBkx1pYqrPrjBXLXCYw2/pzw4pJULJ6kyxwhuFfEPsN4gTklOFBFEWj+HtMY6
-         uWjgWkrY30mOocG9wvjtJaE6EGXbVj0ytEfxQwAj3mBK6Yc3dAjpDKYUMqGvCJocSHUX
-         fIpw==
+        b=ObXlrUj2/ZHvnm6yKK2SxCCf/J3x7zquF1qcCgDLe6pb+jjiAzrcxV+OsqJXcb5D/P
+         Lxh8fufBKTn1a3a+9d70LFaY/lULCyHRsMgGJVb9drc7sChr1ZJ/iTl6OJ+009ssfwhe
+         eMzEFtR0GBrakUJCmmCfcrLe6YnHEOH7mEBXsuX8oifHeEUTqysxxZf+z4RehQAT0z+F
+         Dd4Ih5VgK7k13hAV/+QZJhBAEfKzXvelrkXanJIOVWPtbkpDkn1RGBlGBZyK8jJpOeiX
+         oOBpk1Od28V8g9Mp7xw7+mXzqOvgEY9p1k7tna8mtVAbQaF7bh7x1SzN7Iao+DYElYov
+         b0Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:dkim-signature
+         :content-transfer-encoding:in-reply-to:content-disposition
+         :mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=aS16ySES7C539vrw68iJEtl7Wzq7DsnT9V0bunrfE0s=;
-        b=kN5QLpzjPPAb1t+2oPg+FDrHYN61ieyvX3LZdt+25GKgk/iZ3Ky5bH/PsBqhEDcd6O
-         vJYz+wQ5eP/SClryGYvUJzcPyHiCYgrlcEy+lZYlcTtz4lB8CcR548PzDZ6CS7vaoMpI
-         b8Hy2Nr2QORVuyvrkr/HmuEHYwLLw3qwseNTndTYUffOL/mNliBVd5G+vW4Jwo8xH06f
-         7hx21j5Bxj/xM/iMv88ti8txflTLTtElgZtRq4dV1A7xY1cQ9tXXpFCo8OtHW5/rG8Qy
-         nAVZjta907+rzLBcRZA2OsisegbrohkUNvJmLvOUCIBTrYJgjDNGRgYc4VAfcjnGh2uM
-         p9gA==
+        bh=v3jGKvftPZfZbmcMtXwMaxT14KyaQF3SiHjYSYBUAz8=;
+        b=OA0wqCKLUxS/YnOdjbllugA3OSH8S9muq0K7SIC7xd5Bv/hz5+EPrXb1DYi5inkEyg
+         gzz0/BbenAmYlhsG+0SzUTTe7knEx6cl/g7RUQwb1BHQpBShgIHbLdI7AcSrXct14pAf
+         mVM9UmrhoCYsvbfPS842fM9GaW4HE3wP8kzF39E5DcCvUEBckNt3nnRz19LSpC63ymwo
+         84xos4aoQDmig81yT8j5AbUdnuk5SYIanLa84oiodYInBH/R/iqLBGvDByBf17HJSly0
+         GkgWNdTxnj6fLze9qgiUK9mENEOgqr8+4VKCicfcHMOOwR2kQrNIJGTmSb2YQ4IV4gCk
+         r68g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VFYMRikY;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=RZAJ/a57;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h11-v6si3444653qth.29.2018.05.29.21.22.58
+        by mx.google.com with ESMTPS id v3-v6si9569960qkl.237.2018.05.29.21.42.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 21:22:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 29 May 2018 21:42:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VFYMRikY;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=RZAJ/a57;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36111 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36169 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNsdT-0005Po-P7
-	for alex.bennee@linaro.org; Wed, 30 May 2018 00:22:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43163)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNswG-0002ZC-Qu
+	for alex.bennee@linaro.org; Wed, 30 May 2018 00:42:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45685)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNsd5-0005PW-UT
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 00:22:32 -0400
+	(envelope-from <mst@redhat.com>) id 1fNsw6-0002Z1-PY
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 00:42:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNsd4-0000hv-RS
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 00:22:31 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:42771)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fNsd4-0000hf-Kk; Wed, 30 May 2018 00:22:30 -0400
-Received: by mail-qk0-x244.google.com with SMTP id j80-v6so11626721qke.9;
-	Tue, 29 May 2018 21:22:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=aS16ySES7C539vrw68iJEtl7Wzq7DsnT9V0bunrfE0s=;
-	b=VFYMRikYxIvG4I/dBH0PVB8FcoTVokY/iPCIKMBQMedmOYzFrOZlqS25BuOUR5CNSX
-	YDMojOOd5L9b2HsPrNe5U2fPRx25G+82OqByPcrhdK+Nr1cTNs7LH6kV5raOs8zBctmx
-	E8aqji6HztGE3WghXpsR8vivPiqHnJal5ILFLN8yK/p+Gi+Uafzli0wmrz72JOH83pqb
-	LEsW0Lix53yXqRzO2dtO9lH+5dPotZs3N/CKlyJnWkNq6dY+wQzwaYE1gF9m/nkXzb6J
-	rHEyG+Qv4Uqc6sw+tKBMaEf3zc8AiU9J9yZV/TnnaGJkgUf5Pz3MnkB22W6KEUZpUqh+
-	U/YA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=aS16ySES7C539vrw68iJEtl7Wzq7DsnT9V0bunrfE0s=;
-	b=RZAJ/a57N2UdeBgjXFni6A+nHJUZ0H/VZubQ2U3jJ+sbkV7+jaCqHGaw7VrlxJpLKZ
-	auOKGGTBu/6JBUvI9FwRIFnbVIBdiPkc9tgKOOtaomKL58Ux+J3Q9ccG4+ncIi3skOTT
-	+G5iE1gH/Eb3lckO4NBU0bedDNRRoHgSou2cQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=aS16ySES7C539vrw68iJEtl7Wzq7DsnT9V0bunrfE0s=;
-	b=lBhwdmm4m9uuhMSIcoUfv28kVDL2sRZMp7IEwJ1rxvvx5RNbg9QhbxPPmiRJwycqp8
-	0Nkr+otVCgiDZ6hqF+X1bRh4Kihl89vtCt0JklP3Q4CeM8mcVR07fOBJpwMG1vMkjF0d
-	3T54i48edm0ptyA1T2d5U09hznNQzS0O47/XDalD+87xVXpel6UVZ5cXRjK6oZcresls
-	56/FQPKeMLWZq+C8kWxls4s2wluy5F2NXMEKfh1HgPjfrUtdSUMqt1kqIwl2ToN8vvh8
-	Rm669Sc4TKBPtu55O4Xr+GF+WG97Xaz1zM4j5+l0O5CmGnOql9imLnhG7DDs4D88GNIx
-	sl4w==
-X-Gm-Message-State: APt69E2csflgL3X7xwpZl2TdOFfVnj+IGdTIb3+/LS7iPGjo2NFcnIn/
-	VQJKJfqg0EH9rjBheYxUoL29hFmN7585vubefrE=
-X-Received: by 2002:a37:1314:: with SMTP id
-	d20-v6mr992715qkh.422.1527654148469; 
-	Tue, 29 May 2018 21:22:28 -0700 (PDT)
+	(envelope-from <mst@redhat.com>) id 1fNsw3-0007K6-O0
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 00:42:10 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49314 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1fNsw3-0007Jk-I4; Wed, 30 May 2018 00:42:07 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 525D676F91;
+	Wed, 30 May 2018 04:42:04 +0000 (UTC)
+Received: from redhat.com (ovpn-120-96.rdu2.redhat.com [10.10.120.96])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C76532166BB2;
+	Wed, 30 May 2018 04:42:01 +0000 (UTC)
+Date: Wed, 30 May 2018 07:42:01 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20180530074026-mutt-send-email-mst@kernel.org>
+References: <20180528232719.4721-1-f4bug@amsat.org>
+	<20180528232719.4721-10-f4bug@amsat.org>
+	<20180529134053.1ea9f46d.cohuck@redhat.com>
+	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
 MIME-Version: 1.0
-Received: by 2002:ac8:184d:0:0:0:0:0 with HTTP; Tue, 29 May 2018 21:22:08
-	-0700 (PDT)
-In-Reply-To: <CAFEAcA8H66jcoi2FXWPRpyoQ4OT955awzLEj+gMKTMctoYxqEQ@mail.gmail.com>
-References: <20180529041946.9481-1-joel@jms.id.au>
-	<CAFEAcA8H66jcoi2FXWPRpyoQ4OT955awzLEj+gMKTMctoYxqEQ@mail.gmail.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 30 May 2018 13:52:08 +0930
-X-Google-Sender-Auth: Zl5L5zRplZ19XDZPW5HNYhxklAo
-Message-ID: <CACPK8Xcf8m+MfJjJWeqs5t1UkgfBaGr5T47N_0bmNqtR99VgkQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Wed, 30 May 2018 04:42:04 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Wed, 30 May 2018 04:42:04 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v3] aspeed_scu: Implement RNG
- register
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v4 09/21] target: Do not include
+ "exec/exec-all.h" if it is not necessary
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /YSHV5l+SnCu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
+	Anthony Green <green@moxielogic.com>,
+	Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+	Alexander Graf <agraf@suse.de>, Laurent Vivier <laurent@vivier.eu>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vApD8VbjYf17
 
-On 30 May 2018 at 00:52, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 29 May 2018 at 05:19, Joel Stanley <joel@jms.id.au> wrote:
->> The ASPEED SoCs contain a single register that returns random data when
->> read. This models that register so that guests can use it.
->>
->> The random number data register has a corresponding control register,
->> however it returns data regardless of the state of the enabled bit, so
->> the model follows this behaviour.
->>
->> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> Signed-off-by: Joel Stanley <joel@jms.id.au>
->> ---
->> v2:
->>  - Remove call to qcrypto_random_init as this is done in main()
->> v3:
->>  - Add C=C3=A9dric's reviewed-by
->>  - Add a comment about why we don't check for the rng enable bit
->> ---
->>  hw/misc/aspeed_scu.c | 19 +++++++++++++++++++
->>  1 file changed, 19 insertions(+)
->>
->> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
->> index 5e6d5744eeca..96db052389cc 100644
->> --- a/hw/misc/aspeed_scu.c
->> +++ b/hw/misc/aspeed_scu.c
->> @@ -16,6 +16,7 @@
->>  #include "qapi/visitor.h"
->>  #include "qemu/bitops.h"
->>  #include "qemu/log.h"
->> +#include "crypto/random.h"
->>  #include "trace.h"
->>
->>  #define TO_REG(offset) ((offset) >> 2)
->> @@ -154,6 +155,18 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU_=
-NR_REGS] =3D {
->>       [BMC_DEV_ID]      =3D 0x00002402U
->>  };
->>
->> +static uint32_t aspeed_scu_get_random(void)
->> +{
->> +    Error *err =3D NULL;
->> +    uint32_t num;
->> +
->> +    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
->> +        error_report_err(err);
->> +    }
->> +
->> +    return num;
->> +}
->
-> This will return an uninitialized value if qcrypto_random_bytes()
-> fails.
+On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=E9 wrote:
+> Hi Cornelia,
+>=20
+> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
+> > On Mon, 28 May 2018 20:27:07 -0300
+> > Philippe Mathieu-Daud=E9 <f4bug@amsat.org> wrote:
+> >=20
+> >> Code change produced with:
+> >>     $ git grep '#include "exec/exec-all.h"' | \
+> >>       cut -d: -f-1 | \
+> >>       xargs egrep -L "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GET=
+PC|singlestep|TranslationBlock)" | \
+> >=20
+> > Hm, does this expression catch all files that need to include
+> > exec-all.h? The resulting patch seems fine, though.
+>=20
+> No, not all :/
+> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until no
+> more errors appear. In 2 more steps I added "cpu_address_space_init|"
+> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for m=
+y
+> goal than trying to build a regex to explode function/struct names from
+> headers. This is a clever way to do it for long term command reuse take=
+n
+> from commit messages...
 
-Good catch.
+Brutebuilding isn't a good way to find unused includes, some other header
+might pull in an include you are trying to remove for its own purposes.
+If you want to try brutebuilding you must also verify that's
+not the case - e.g. look at the dependency file generated.
 
-> Does the guest use this value for cryptographic purposes?
-
-The guest runs Linux, and Linux has a driver to expose this as a
-hardware random number device.
-
-As I said in the v2 thread, the aspeed model is for smoketesting of
-firmware builds. I can't imagine a situation where it would make sense
-to run a production BMC workload on qemu.
-
-> In hw/misc/bcm2835_rng.c we opted to make qcrypto_random_bytes()
-> failing be fatal (for reasons noted in the comment there),
-> though that is a bit rough. exynos4210_rng() is more conveniently
-> able to just never report to the guest that the PRNG is ready.
-
-The hardware doesn't have the facility to indicate this to the guest.
-If we want to be strict about handling the case where qcrypto has
-failed, I will implement the same error handling as bcm2835_rng.
+> >>       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
+> >>
+> >> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>

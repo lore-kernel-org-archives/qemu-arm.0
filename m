@@ -1,96 +1,82 @@
-Received: by 10.28.71.155 with SMTP id m27csp1635513wmi;
-        Thu, 12 Apr 2018 01:20:39 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49U5rFUKEiQ8gO1n4Jw5eTrktLVszfkLFI+1N89kzSpqyVBdW5e+p3DNqhWbRmJ1JhOYtq9
-X-Received: by 10.55.24.214 with SMTP id 83mr11639116qky.267.1523521239073;
-        Thu, 12 Apr 2018 01:20:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523521239; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4188319wre;
+        Tue, 29 May 2018 18:15:53 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLG4oh+R2ML21YkTTbtso52tWC08Pz6C4sDry+OuRvNQWcnzAg9iYAGBdCLJLEoV+L11Afq
+X-Received: by 2002:ac8:6612:: with SMTP id c18-v6mr652748qtp.343.1527642953292;
+        Tue, 29 May 2018 18:15:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527642953; cv=none;
         d=google.com; s=arc-20160816;
-        b=nhlNGA1L002bbxyqCeRMnPDXr4uTPkXvxSrDJweDnbTJar2b9bHZ0gxuiarT2ly2ej
-         zu9WIV1fejzVlJNShTouoy9uEUH5tqr9HOx2g5btvnP7VqMNLtt2wDXFyr+GlA7IqBT2
-         gsFaXxiJJH1+ntNQLCgMvTNClsCb2TAxazwWEPZejFNF/8KXvnPEkZ+FDrIltlUQfjqc
-         phFYnlV0UsbA55nRXpv+NThaDi3VZ71FNCyjIx+qVvbNpYrs4Dhm6uBe3EBBZ2ax9iq3
-         LdAuLbFIHSefWLtZrMvHMvmReW5x5OPjT72Xd9fsWd+FezoCRLJ5UZ5ToO8Q6IpKOXrp
-         4WLg==
+        b=PmrKA7kYAc8gieM/bzZKPAeFhsDj6AHogfO4uFqlXAJNxyoSKv3rmhDUpfHwy/Mx5o
+         RNNDc2cV2/DL/+Ap8NepAsO3Z+c4+ce/r0V9Q8o8Q2zs1+sBDwfmjUjFxm6XwLRruWbj
+         ztGS5NRfQRSYUJF8UMfybQmuun3japV+mAjSbg/LonUI5+awVD8McxYZlDMObCsW3zr4
+         wyC6wvzopnvpbfmhow5kMinGiRZ2Z9KGO422pzgH/XkpgxwNPAcj//8WuzYkBnoRiRP8
+         pjXtacX6mgWtcDsdc2njiZB0wt4Lmv/uVYpR7inrdFKN9i+y6kC5jym9ArLntIbb0Ztu
+         3fag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=GR7uBTHX3HedyLkWMoUFsfqtm56P9ihdY3p5yJ3onfw=;
-        b=uvHe1p0bMl29fBKSre//mjYE55JU5PxGOUToPZmBgUpaMVTbw42MXeAcaK99SISeF8
-         VK2UyOQ+QMKmDr0S2A0QUMhtvV5szjV54Jm5t1AZTsjM0L3DXuC07WaUlO/7q1i4if8t
-         mBQzRfvtjKLnRSSNyPJg16FumtVxTEbHTMB/t0h8iOOqQXs4/QngrL2ZOiDALT2LsGqN
-         XKsFnqfZJ/yibybithmsi9jd2TA+qGNFOIQ2RDWlKAzfI64hCkWR9NZ2S3Ay8MFvHuXb
-         jLqdilRMi4BK3UmKyHUIg0hjMs4B4qZljQYSoVxFExn2G6LRr0hOWuizKoBNIKO9UDOo
-         mJSQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:references:to:mime-version
+         :user-agent:from:date:message-id:arc-authentication-results;
+        bh=w2+I4ayhfjv1NSAEWWudwWZe26rULBgWEBDVLvqBhNQ=;
+        b=IeGPeyu9wN+W+iTjPS/kzM0QOWq4dsuWLKFFq6lrvjfDKFLJtWs/kvSK9sc1EBL0bK
+         +J8+wp//FFbWWOdOlD2zSqsaJ88lRvFkYdQgb62mInKo1HjMgIdXJfoZITODvH5Yz7pY
+         7ny681xG0p9k7uYbrCUfjLUjTwFa5k63zEJbytJNULzbvaeWGYtqPDku3fg89rFRkEh7
+         jGy0qcX0UIYBms5sQczazF7nXUN2lpfpgS1BpvPVnF6+zayOgq0sn4kF8OjQO0AMR2bL
+         k8Aa7GfT/SWr8VF+Tl5oftlLVIUFvAytLS8O8HpUac/Y0PvchU3Z+mctrm6ecl5r+sNi
+         FLFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w131si2002733qkw.40.2018.04.12.01.20.38
+        by mx.google.com with ESMTPS id e48-v6si672243qtc.97.2018.05.29.18.15.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Apr 2018 01:20:39 -0700 (PDT)
+        Tue, 29 May 2018 18:15:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46749 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:35688 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f6XTC-0005Zp-HJ
-	for alex.bennee@linaro.org; Thu, 12 Apr 2018 04:20:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46086)
+	id 1fNpiS-0008Ai-O4
+	for alex.bennee@linaro.org; Tue, 29 May 2018 21:15:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1f6XSo-0005QX-2A
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 04:20:20 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fNpiM-0008AP-0k
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 21:15:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1f6XSh-0005l3-1U
-	for qemu-arm@nongnu.org; Thu, 12 Apr 2018 04:20:12 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58432 helo=mx1.redhat.com)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fNpiH-0006gB-Tk
+	for qemu-arm@nongnu.org; Tue, 29 May 2018 21:15:45 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2623 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1f6XSg-0005k3-RQ; Thu, 12 Apr 2018 04:20:06 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 302638DC2D;
-	Thu, 12 Apr 2018 08:20:02 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 883B7215CDC6;
-	Thu, 12 Apr 2018 08:19:56 +0000 (UTC)
-Date: Thu, 12 Apr 2018 09:19:54 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Andrea Bolognani <abologna@redhat.com>
-Message-ID: <20180412081954.GB31024@redhat.com>
-References: <20180409154921.29906-1-wei@redhat.com>
-	<20180409155634.GO18283@redhat.com>
-	<6bb12858-3b4e-e92f-93ea-b8708c8be870@redhat.com>
-	<1523346093.16671.23.camel@redhat.com>
-	<20180410085200.GD5155@redhat.com>
-	<1523460955.2942.5.camel@redhat.com>
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1fNpiH-0006da-He; Tue, 29 May 2018 21:15:41 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id E3289F82505B1;
+	Wed, 30 May 2018 09:15:22 +0800 (CST)
+Received: from [127.0.0.1] (10.177.16.142) by DGGEMS409-HUB.china.huawei.com
+	(10.3.19.209) with Microsoft SMTP Server id 14.3.382.0; Wed, 30 May 2018
+	09:15:15 +0800
+Message-ID: <5B0DFB0C.3000002@huawei.com>
+Date: Wed, 30 May 2018 09:14:52 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.1;
+	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1523460955.2942.5.camel@redhat.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 12 Apr 2018 08:20:02 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 12 Apr 2018 08:20:02 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
+To: Auger Eric <eric.auger@redhat.com>, Peter Maydell
+	<peter.maydell@linaro.org>
+References: <1527563283-13148-1-git-send-email-zhaoshenglong@huawei.com>
+	<CAFEAcA-LoTOnTnSYBpzuyUDFZBsVBaB2qjvzAP_94rou8ob6Tg@mail.gmail.com>
+	<65E224A1-C972-4C38-BD6E-41C59191D999@163.com>
+	<383b0c0b-4406-869c-5493-df2f48896113@redhat.com>
+In-Reply-To: <383b0c0b-4406-869c-5493-df2f48896113@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/1] mach-virt: Change default
- cpu and gic-version setting to "max"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.190
+Subject: Re: [Qemu-arm] [PATCH v2] ARM: ACPI: Fix use-after-free due to
+ memory realloc
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,68 +88,193 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Kf/S8JjSlvcF
+X-TUID: irCAAc69CZrS
 
-On Wed, Apr 11, 2018 at 05:35:55PM +0200, Andrea Bolognani wrote:
-> On Tue, 2018-04-10 at 09:52 +0100, Daniel P. Berrang=C3=A9 wrote:
-> > On Tue, Apr 10, 2018 at 09:41:33AM +0200, Andrea Bolognani wrote:
-> > > I figure the people not explicitly specifying a CPU model on the
-> > > command line will probably also use '-M virt' instead of versioned
-> > > machine types, which means they will get a different guest behavior
-> > > after upgrading QEMU regardless.
-> >=20
-> > Libvirt uses versioned machine types and does not specify -cpu unless=
- the
-> > user has added <cpu> to their XML. IOW libvirt assumes the default CP=
-U
-> > model is stable because that's what QEMU has promised in the past.
->=20
-> Hm, you have a point.
->=20
-> I wonder how well that works in practice, though. I started a guest
-> with no <cpu> element on my laptop and it ended up having
->=20
->   vendor_id	 : GenuineIntel
->   cpu family : 6
->   model      : 6
->   model name : QEMU Virtual CPU version 2.5+
->   stepping   : 3
->=20
-> which I guess translates to the qemu64 CPU model, based on the
-> description. I have verified the -cpu option is not present on the
-> command line.
->=20
-> The name seems to imply that if I were using a QEMU release older
-> than 2.5 I would get a different CPU model, but maybe the stable CPU
-> guarantee you mention is just a fairly recent development.
 
-That model ID string is tied to the machine type, so it is stable. Older
-machine types use PC_CPU_MODEL_IDS() in pc.h to ensure they have not
-changed.
 
-> I also know that ppc64 performs some trickery if you don't specify a
-> CPU model, so by default you get a behavior which is pretty close to
-> using -cpu host.
+On 2018/5/30 3:53, Auger Eric wrote:
+> Hi Shannon,
 >=20
-> Basically I'm wondering how reasonable it is to expect a migratable
-> machine and a stable guest ABI when relying on QEMU defaults instead
-> of explicitly picking a CPU model.
+> On 05/29/2018 04:09 PM, Shannon Zhao wrote:
+>>
+>>
+>>> =E5=9C=A8 2018=E5=B9=B45=E6=9C=8829=E6=97=A5=EF=BC=8C21:53=EF=BC=8CPe=
+ter Maydell <peter.maydell@linaro.org> =E5=86=99=E9=81=93=EF=BC=9A
+>>>
+>>>> On 29 May 2018 at 04:08, Shannon Zhao <zhaoshenglong@huawei.com> wro=
+te:
+>>>> acpi_data_push uses g_array_set_size to resize the memory size. If t=
+here
+>>>> is no enough contiguous memory, the address will be changed. So prev=
+ious
+>>>> pointer could not be used any more. It must update the pointer and u=
+se
+>>>> the new one.
+>>>>
+>>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>>> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+>>>> ---
+>>>> V2: add comments for iort_node_offset and reviewed tags
+>>>> ---
+>>>> hw/arm/virt-acpi-build.c | 19 +++++++++++++++----
+>>>> 1 file changed, 15 insertions(+), 4 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>>> index 92ceee9..6209138 100644
+>>>> --- a/hw/arm/virt-acpi-build.c
+>>>> +++ b/hw/arm/virt-acpi-build.c
+>>>> @@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linke=
+r, VirtMachineState *vms)
+>>>>     AcpiIortItsGroup *its;
+>>>>     AcpiIortTable *iort;
+>>>>     AcpiIortSmmu3 *smmu;
+>>>> -    size_t node_size, iort_length, smmu_offset =3D 0;
+>>>> +    size_t node_size, iort_node_offset, iort_length, smmu_offset =3D=
+ 0;
+>>>>     AcpiIortRC *rc;
+>>>>
+>>>>     iort =3D acpi_data_push(table_data, sizeof(*iort));
+>>>> @@ -415,6 +415,12 @@ build_iort(GArray *table_data, BIOSLinker *link=
+er, VirtMachineState *vms)
+>>>>     iort->node_count =3D cpu_to_le32(nb_nodes);
+>>>>     iort->node_offset =3D cpu_to_le32(sizeof(*iort));
+>>>>
+>>>> +    /*
+>>>> +     * Use a copy in case table_data->data moves duringa acpi_data_=
+push
+>>>> +     * operations.
+>>>> +     */
+>>>> +    iort_node_offset =3D sizeof(*iort);
+>>>> +
+>>>>     /* ITS group node */
+>>>>     node_size =3D  sizeof(*its) + sizeof(uint32_t);
+>>>>     iort_length +=3D node_size;
+>>>> @@ -429,7 +435,7 @@ build_iort(GArray *table_data, BIOSLinker *linke=
+r, VirtMachineState *vms)
+>>>>         int irq =3D  vms->irqmap[VIRT_SMMU];
+>>>>
+>>>>         /* SMMUv3 node */
+>>>> -        smmu_offset =3D iort->node_offset + node_size;
+>>>> +        smmu_offset =3D iort_node_offset + node_size;
+>>>
+>>> In the old code, we used iort->node_offset directly as a CPU
+>>> endianness order bitmap, which is initialized above using
+>>>    iort->node_offset =3D cpu_to_le32(sizeof(*iort));
+>>> In this version, we use iort_node_offset, which is
+>>> initialized using
+>>>    iort_node_offset =3D sizeof(*iort);
+>>>
+>>> So we've lost an endianness conversion on big-endian systems.
+>>> Which is correct, the old code or the new?
+>> I think it=E2=80=99s the new one. I found this bug later and wanted to=
+ send another patch to fix it. But to address Philippe=E2=80=99s comment =
+I folder them together.
+> Shouldn't we have
+> iort_node_offset =3D iort->node_offset;
+> iort->node_offset =3D cpu_to_le32(iort_node_offset);
+> instead?
+>=20
+Hi Eric,
+Have you read this patch and code carefully?
 
-Provided you have picked a versioned machine type, it is expected that al=
-l
-other defaults are stable, and that includes CPU models.
+I think you mean
+iort_node_offset =3D sizeof(*iort);
+iort->node_offset =3D cpu_to_le32(iort_node_offset);
 
-Regards,
-Daniel
+Right? If so it's almost same with what I write. I just use sizeof twice.
+
+iort->node_offset =3D cpu_to_le32(sizeof(*iort));
+iort_node_offset =3D sizeof(*iort);
+
+> Otherwise subsequent computations are done with the node_offset already
+> converted to le32 whereas the cpu mode may be "be"?
+>=20
+What I did here is to avoid the case you mentioned.
+The iort_node_offset is host order, right? And I use iort_node_offset
+instead of iort->node_offset for subsequent computations not the le32
+one. So smmu_offset =3D iort_node_offset + node_size; will get the right
+value as well as below ones.
+
+Thanks,
+
+> Shouldn't conversions to le32 being done at the last stage when
+> populating the structs?
+>=20
+> May be worth splitting this into 2 patches then or at least mentioning
+> this other fix in the commit message?
+>=20
+> Thanks
+>=20
+> Eric
+>=20
+>>
+>>>
+>>>>         node_size =3D sizeof(*smmu) + sizeof(*idmap);
+>>>>         iort_length +=3D node_size;
+>>>>         smmu =3D acpi_data_push(table_data, node_size);
+>>>> @@ -450,7 +456,7 @@ build_iort(GArray *table_data, BIOSLinker *linke=
+r, VirtMachineState *vms)
+>>>>         idmap->id_count =3D cpu_to_le32(0xFFFF);
+>>>>         idmap->output_base =3D 0;
+>>>>         /* output IORT node is the ITS group node (the first node) *=
+/
+>>>> -        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
+>>>> +        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
+>>>
+>>> Here we're doing an endianness conversion on iort_node_offset.
+>>>
+>>> Overall something is weird here, even in the previous version:
+>>> if we wrote iort->node_offset with cpu_to_le32(), that implies
+>>> that it's little-endian; so why are we reading it with cpu_to_le32()
+>>> here rather than le32_to_cpu() ?
+>>> Both cpu_to_le32() and le32_to_cpu() are the same operation,
+>>> mathematically, but we should use the version which indicates
+>>> our intent, ie which of source and destination is the always-LE
+>>> data, and which is the host-order data.
+>>>
+>>>>     }
+>>>>
+>>>>     /* Root Complex Node */
+>>>> @@ -479,9 +485,14 @@ build_iort(GArray *table_data, BIOSLinker *link=
+er, VirtMachineState *vms)
+>>>>         idmap->output_reference =3D cpu_to_le32(smmu_offset);
+>>>>     } else {
+>>>>         /* output IORT node is the ITS group node (the first node) *=
+/
+>>>> -        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
+>>>> +        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
+>>>>     }
+>>>>
+>>>> +    /*
+>>>> +     * Update the pointer address in case table_data->data moves du=
+ring above
+>>>> +     * acpi_data_push operations.
+>>>> +     */
+>>>> +    iort =3D (AcpiIortTable *)(table_data->data + iort_start);
+>>>>     iort->length =3D cpu_to_le32(iort_length);
+>>>>
+>>>>     build_header(linker, table_data, (void *)(table_data->data + ior=
+t_start),
+>>>
+>>> This could just use 'iort' now, right?
+>> Right, but for consistent as other places I think it=E2=80=99s fine to=
+ remain unchanged.=20
+>>>
+>>>> --
+>>>
+>>> thanks
+>>> -- PMM
+>>
+>>
+>=20
+> .
+>=20
+
 --=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+Shannon
+

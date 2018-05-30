@@ -1,78 +1,78 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4828979wre;
-        Wed, 30 May 2018 07:47:37 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKIeOBmDl60/jEc7TcORe3cjJihsB9/7uBlAGWVBdm2Tv8DOovwQynYbMS8CsWwYWeNiDFx
-X-Received: by 2002:a0c:bfaa:: with SMTP id s39-v6mr2789040qvj.2.1527691657509;
-        Wed, 30 May 2018 07:47:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527691657; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4830611wre;
+        Wed, 30 May 2018 07:49:17 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJu/8hTwZlCy+WvWh0mLWHsLQN8R9oJ+mAQe6Eynf72rwmg87qciln9FuafY8nShFqg1c0f
+X-Received: by 2002:a37:29dd:: with SMTP id p90-v6mr2626655qkp.390.1527691757592;
+        Wed, 30 May 2018 07:49:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527691757; cv=none;
         d=google.com; s=arc-20160816;
-        b=j6oLtRNyuA0uWCJvzAf8NRN1YUB6C7a+/RAQXheQ2GYUfmieBg2C1loqyoCoGx9iP2
-         BDEMoVs09cp6oD7NwoDMa4vvYIJE72aLCE/dgHjarmTxvbpM7IVaVZaIo+4X/0CLTYCL
-         LgnzCokyBotm2UJwEQ5B4NH9pI3y7t+6VW7mC2puQ0ThanV33rOwXzQNoLGPyWsiiXta
-         pl3EvRX+o3maAZB8TiTZ9e51FVPltDgrH5dzZXa6toj2SH0bUi9VBx8ceMpZ/upQj4+k
-         1YHup3k8cmWDymNEUn1A7z2xdcPPk2oXZjQpsxCrKqhnQ9REnrS+lKNtOCPyzNTrav0d
-         F88A==
+        b=wtznhxmr4fylOw7uMbk1e5HfPrNUgBnhPKUBSubYe8yqokMHzyJTrdVTckNWr2n5k+
+         BqJCer7FJMCzNyRgJHaS7qNc9eVNUNLxTCiKmA8EkJyrZksMp0LQAxxJDIXOk1IlP2fD
+         xvz9XbWCF4jGPADz9H27FgwDghBPL2ZJWkdYNoT5hyauBPk699U4+Lb0MYWEUKkZxdJF
+         yw9hPse5nUz877nVHSODaEO1SlbhJ+seRTyz+AyqpWd/VJ82abP3EkT/2G0wexEvRS8Y
+         F3cwbDLJ+7L7Y5hMYw2ODh7+H7GlKFp9uAZ8RhBvw3mQtEe9UphJkXkiTqeJBZJdVh6H
+         TgpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic:to
          :from:arc-authentication-results;
-        bh=0sNy5GYn6/6f4Y9kOSGeSOkK47Y9h9u1ZY7zcmr48zc=;
-        b=nTKAgdl368c0DCWSErG6FFnxA+z5ztO08YfHMxjz5e7F8wjv/B1EN02TCFF757Zf+u
-         2LfF70Ugkrw9itMWVn93H0VlUDvOzkxfMv+dqwHU5Kh2RpQ3QGes62k4DtxJ5g+gTt9Q
-         L44GvsCd85DqAvWlmcPOY8zFKRNUsqyhOliSV7mf88XRMEE7IeCWrUn/SrUL+hlcSMtV
-         nUZObE5nOuxXLRTr2mdyk+VPrgkNpN/QKWiqfVEF+36kJnDebWpljrUR8CKVqgJb8SHm
-         r6G9WZVSifSI0/XraNmpRWIiprYML/os9UUIG2+GwBnzbPClR47JLLVuwuy8Iv3oT/Gh
-         efDQ==
+        bh=L2SkzR+qQEko20JxmLlQA4V8lEWITSJK2MgajrxwaeA=;
+        b=Y0/npsp8x4JOy1c4KURw2Z/RTtYbjYEdwojHPkUAFk2FrTKqE3306VZ6P5R9pF/GLQ
+         zCpDovJVo3kCBVD9nDxFC9NVCqcKM/dchPBlYyVIbj588tDJJHIE81QKiGDpfgR84Tuu
+         qsjde40WUIl8MZYF2YS2uTE1w5yQeFfHYGpUIpm9mRMOR0HN1ovmb3ME4dXtIZmppjlV
+         RJUz1jnkIeQJ5g9IEZ5P8RseOVUc/GS6WzC24rd3MTd6vCTK+xXPOSWvMLUPYJLWyjX4
+         kPvQg9EtblAinm0JFIfapLiwq04vQRAcNNV558KAqlgX3lNjuif+WSTSJ38QypdDT1fj
+         bQlA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b10-v6si6159588qvj.239.2018.05.30.07.47.37
+        by mx.google.com with ESMTPS id m8-v6si13139219qvk.180.2018.05.30.07.49.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 07:47:37 -0700 (PDT)
+        Wed, 30 May 2018 07:49:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39093 helo=lists.gnu.org)
+Received: from localhost ([::1]:39105 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO2O0-0007C4-WF
-	for alex.bennee@linaro.org; Wed, 30 May 2018 10:47:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39498)
+	id 1fO2Pd-0008Hk-3W
+	for alex.bennee@linaro.org; Wed, 30 May 2018 10:49:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40210)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2Mh-0006Rl-Vg
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:46:17 -0400
+	id 1fO2PO-0008F5-Cc
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:49:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2Me-00013z-1A
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:46:16 -0400
-Received: from lhrrgout.huawei.com ([194.213.3.17]:4228 helo=huawei.com)
+	id 1fO2PK-00024w-Hb
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:49:02 -0400
+Received: from lhrrgout.huawei.com ([194.213.3.17]:4230 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2Md-00013W-M3; Wed, 30 May 2018 10:46:11 -0400
-Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.108])
-	by Forcepoint Email with ESMTP id 735AF3C0C19AE;
-	Wed, 30 May 2018 15:46:07 +0100 (IST)
-Received: from FRAEMA702-CHM.china.huawei.com (10.206.14.51) by
-	lhreml703-cah.china.huawei.com (10.201.108.44) with Microsoft SMTP
-	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:46:09 +0100
+	id 1fO2PK-00024T-6T; Wed, 30 May 2018 10:48:58 -0400
+Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.106])
+	by Forcepoint Email with ESMTP id E73CE118C5F96;
+	Wed, 30 May 2018 15:48:54 +0100 (IST)
+Received: from FRAEMA707-CHM.china.huawei.com (10.206.14.56) by
+	lhreml707-cah.china.huawei.com (10.201.108.48) with Microsoft SMTP
+	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:48:56 +0100
 Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.176]) by
-	FRAEMA702-CHM.china.huawei.com ([169.254.2.111]) with mapi id
-	14.03.0382.000; Wed, 30 May 2018 16:46:00 +0200
+	FRAEMA707-CHM.china.huawei.com ([169.254.7.63]) with mapi id
+	14.03.0382.000; Wed, 30 May 2018 16:48:50 +0200
 From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
 	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug framework
-Thread-Index: AQHT7SmjT2WlRv77+ka6DLGT7z11zaRFIo4AgAMYAcA=
-Date: Wed, 30 May 2018 14:46:00 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F17D9@FRAEML521-MBX.china.huawei.com>
+Thread-Topic: [RFC v2 6/6] hw/arm: Populate non-contiguous memory regions
+Thread-Index: AQHT7Smp6QHgsUaqbU6E/UX/WhtxEaRFIoCAgAMh+zA=
+Date: Wed, 30 May 2018 14:48:48 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F1807@FRAEML521-MBX.china.huawei.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-4-shameerali.kolothum.thodi@huawei.com>
-	<1f8e3cd4-1e54-5350-3804-c77bbbfbd3e4@redhat.com>
-In-Reply-To: <1f8e3cd4-1e54-5350-3804-c77bbbfbd3e4@redhat.com>
+	<20180516152026.2920-7-shameerali.kolothum.thodi@huawei.com>
+	<bd67ed40-81d6-58dc-ccaf-efd8a40ca96f@redhat.com>
+In-Reply-To: <bd67ed40-81d6-58dc-ccaf-efd8a40ca96f@redhat.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -84,8 +84,8 @@ MIME-Version: 1.0
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 194.213.3.17
-Subject: Re: [Qemu-arm] [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug
- framework
+Subject: Re: [Qemu-arm] [RFC v2 6/6] hw/arm: Populate non-contiguous memory
+ regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,9 +106,9 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iFFr50LN8G9i
+X-TUID: UdpxMYiPW5G1
 
-Hi Eric,
+
 
 > -----Original Message-----
 > From: Auger Eric [mailto:eric.auger@redhat.com]
@@ -119,205 +119,428 @@ Hi Eric,
 > alex.williamson@redhat.com; Zhaoshenglong <zhaoshenglong@huawei.com>;
 > Jonathan Cameron <jonathan.cameron@huawei.com>; Linuxarm
 > <linuxarm@huawei.com>
-> Subject: Re: [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug framework
+> Subject: Re: [RFC v2 6/6] hw/arm: Populate non-contiguous memory regions
 >=20
 > Hi Shameer,
 >=20
 > On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> > This will be used in subsequent patches to model a chunk of
-> > memory as pc-dimm(cold plug) if the valid iova regions are
-> > non-contiguous. This is not yet a full hotplug support.
-> Please can you give more details about this restriction?
-> >
+> > In case valid iova regions are non-contiguous, split the
+> > RAM mem into a 1GB non-pluggable dimm and remaining as a
+> > single pc-dimm mem.
+>=20
+> Please can you explain where does this split come from? Currently we
+> have 254 GB non pluggable RAM. I read the discussion started with Drew
+> on RFC v1 where he explained we cannot change the RAM base without
+> crashing the FW. However we should at least document this  1GB split.
+
+The comments were mainly to use the pc-dimm model instead of "mem alias"
+method used on RFC v1 as this will help to add the mem hot-plug support=20
+in future.=20
+
+I am not sure about the motive behind Drew's idea of splitting the first
+1GB as non-plug and remaining as a pc-dimm(cold). May it is to attempt a=20
+best effort scenario, but as I mentioned in reply to 0/6, the current solut=
+ion
+will end up changing the base address if the 0x4000000 falls under a reserv=
+ed
+region.
+
+Again, not sure whether we should enforce a strict check on base address
+start or just warn the user that it will fail on Guest with UEFI boot[1].
+
+Hi Drew,=20
+
+Please let me know your thoughts on this.
+
 > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > > ---
-> >  default-configs/aarch64-softmmu.mak |  1 +
-> >  hw/arm/virt.c                       | 82
-> +++++++++++++++++++++++++++++++++++++
-> >  include/hw/arm/virt.h               |  2 +
-> >  3 files changed, 85 insertions(+)
+> >  hw/arm/virt.c | 261
+> ++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+> >  1 file changed, 256 insertions(+), 5 deletions(-)
 > >
-> > diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarc=
-h64-
-> softmmu.mak
-> > index 9ddccf8..7a82ed8 100644
-> > --- a/default-configs/aarch64-softmmu.mak
-> > +++ b/default-configs/aarch64-softmmu.mak
-> > @@ -8,3 +8,4 @@ CONFIG_DDC=3Dy
-> >  CONFIG_DPCD=3Dy
-> >  CONFIG_XLNX_ZYNQMP=3Dy
-> >  CONFIG_XLNX_ZYNQMP_ARM=3Dy
-> > +CONFIG_MEM_HOTPLUG=3Dy
 > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 05fcb62..be3ad14 100644
+> > index be3ad14..562e389 100644
 > > --- a/hw/arm/virt.c
 > > +++ b/hw/arm/virt.c
-> > @@ -1552,9 +1552,82 @@ static const CPUArchIdList
-> *virt_possible_cpu_arch_ids(MachineState *ms)
-> >      return ms->possible_cpus;
-> >  }
-> >
-> > +static void virt_dimm_plug(HotplugHandler *hotplug_dev,
-> > +                         DeviceState *dev, Error **errp)
-> > +{
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +    PCDIMMDevice *dimm =3D PC_DIMM(dev);
-> > +    PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
-> > +    MemoryRegion *mr;
-> > +    uint64_t align;
-> > +    Error *local_err =3D NULL;
-> > +
-> > +    mr =3D ddc->get_memory_region(dimm, &local_err);
-> > +    if (local_err) {
-> > +        goto out;
-> > +    }
-> > +
-> > +    align =3D memory_region_get_alignment(mr);
-> I see that on PC machine class they have an "enforce_aligned_dimm"
-> option. Also looks memory_region_get_alignment(mr) can return 0.
+> > @@ -58,6 +58,12 @@
+> >  #include "hw/smbios/smbios.h"
+> >  #include "qapi/visitor.h"
+> >  #include "standard-headers/linux/input.h"
+> > +#include "hw/vfio/vfio-common.h"
+> > +#include "qemu/config-file.h"
+> > +#include "monitor/qdev.h"
+> > +#include "qom/object_interfaces.h"
+> > +#include "qapi/qmp/qdict.h"
+> > +#include "qemu/option.h"
 >=20
-> if (memory_region_get_alignment(mr) && pcmc->enforce_aligned_dimm) {
+> The comment at the beginning of virt.c would need to be reworked with
+> your changes.
 
 Ok.
-=20
+
+> >  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+> >      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+> > @@ -110,7 +116,10 @@ static ARMPlatformBusSystemParams
+> platform_bus_params;
+> >   * terabyte of physical address space.)
+> >   */
+> >  #define RAMLIMIT_GB 255
+> > -#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
+> > +#define SZ_1G (1024ULL * 1024 * 1024)
+> > +#define RAMLIMIT_BYTES (RAMLIMIT_GB * SZ_1G)
+> > +
+> > +#define ALIGN_1G (1ULL << 30)
+> >
+> >  /* Addresses and sizes of our components.
+> >   * 0..128MB is space for a flash device so we can run bootrom code suc=
+h as
+> UEFI.
+> > @@ -1171,6 +1180,236 @@ void virt_machine_done(Notifier *notifier, void
+> *data)
+> >      virt_build_smbios(vms);
+> >  }
+> >
+> > +static void free_iova_copy(struct vfio_iova_head *iova_copy)
+> > +{
+> > +    VFIOIovaRange *iova, *tmp;
+> > +
+> > +    QLIST_FOREACH_SAFE(iova, iova_copy, next, tmp) {
+> > +        QLIST_REMOVE(iova, next);
+> > +        g_free(iova);
+> > +    }
+> > +}
+> > +
+> > +static void get_iova_copy(struct vfio_iova_head *iova_copy)
+> > +{
+> > +    VFIOIovaRange *iova, *new, *prev_iova =3D NULL;
+> > +
+> > +    QLIST_FOREACH(iova, &vfio_iova_regions, next) {
+> > +        new =3D g_malloc0(sizeof(*iova));
+> > +        new->start =3D iova->start;
+> > +        new->end =3D iova->end;
+> > +
+> > +        if (prev_iova) {
+> > +            QLIST_INSERT_AFTER(prev_iova, new, next);
+> > +        } else {
+> > +            QLIST_INSERT_HEAD(iova_copy, new, next);
+> > +        }
+> > +        prev_iova =3D new;
+> > +    }
+> > +}
+> > +
+> > +static hwaddr find_memory_chunk(VirtMachineState *vms,
+> > +                   struct vfio_iova_head *iova_copy,
+> > +                   hwaddr req_size, bool pcdimm)
+> > +{
+> > +    VFIOIovaRange *iova, *tmp;
+> > +    hwaddr new_start, new_size, sz_align;
+> > +    hwaddr virt_start =3D vms->memmap[VIRT_MEM].base;
+> > +    hwaddr addr_align =3D ALIGN_1G; /* Set to max ARM64 hugepage size =
+*/
+> > +
+> > +    /* Size alignment */
+> > +    sz_align =3D (pcdimm) ? MAX(TARGET_PAGE_SIZE,
+> QEMU_VMALLOC_ALIGN) :
+> > +                                                      TARGET_PAGE_SIZE=
+;
+> > +
+> > +    QLIST_FOREACH_SAFE(iova, iova_copy, next, tmp) {
+> > +        if (virt_start >=3D iova->end) {
+> > +            continue;
+> > +        }
+> > +
+> > +        /* Align addr */
+> > +        new_start =3D ROUND_UP(MAX(virt_start, iova->start), addr_alig=
+n);
+> > +        if (new_start >=3D iova->end) {
+> > +            continue;
+> > +        }
+> > +
+> > +        if (req_size > iova->end - new_start + 1) {
+> > +            continue;
+> > +        }
+> don't you want to check directly with new_size?
+
+Yes. I think that should do.
+
+> > +
+> > +        /*
+> > +         * Check the region can hold any size alignment requirement.
+> > +         */
+> > +        new_size =3D QEMU_ALIGN_UP(req_size, sz_align);
+> > +
+> > +        if ((new_start + new_size - 1 > iova->end) ||
+> > +                 (new_start + new_size >=3D virt_start + RAMLIMIT_BYTE=
+S)) {
+> > +            continue;
+> > +        }
+> > +
+> > +        /*
+> > +         * Modify the iova list entry for non pc-dimm case so that it
+> > +         * is not used again for pc-dimm allocation.
+> > +         */
+> > +        if (!pcdimm) {
+> > +            if (new_size - req_size) {
+> I don't get this check, Don't you want to check the node's range is
+> fully consumed and in the positive remove the node?
 >=20
-> > +    pc_dimm_memory_plug(dev, &vms->hotplug_memory, mr, align,
-> &local_err);
-> > +    if (local_err) {
+> (new_size !=3D iova->end - iova-> start + 1)
+
+Hmm..looks like I missed that.
+
+> > +                iova->start =3D new_start + new_size;
+> > +            } else {
+> > +                QLIST_REMOVE(iova, next);
+> > +            }
+> > +        }
+> > +        return new_start;
+> > +    }
+> > +
+> > +    return -1;
+> > +}
+> > +
+> > +static void update_memory_regions(VirtMachineState *vms)
+> > +{
+> > +    hwaddr addr;
+> > +    VFIOIovaRange *iova;
+> > +    MachineState *machine =3D MACHINE(vms);
+> > +    hwaddr virt_start =3D vms->memmap[VIRT_MEM].base;
+> > +    hwaddr req_size, ram_size =3D machine->ram_size;
+> > +    struct vfio_iova_head iova_copy =3D QLIST_HEAD_INITIALIZER(iova_co=
+py);
+> > +
+> > +    /* No valid iova regions, use default */
+> > +    if (QLIST_EMPTY(&vfio_iova_regions)) {
+> > +        vms->bootinfo.loader_start =3D vms->memmap[VIRT_MEM].base;
+> > +        vms->bootinfo.ram_size =3D ram_size;
+> > +        return;
+> > +    }
+> > +
+> > +    /*
+> > +     * If valid iovas has only one entry, check the req size fits in
+> > +     * and can have the loader start < 4GB. This will make sure platfo=
+rms
+> > +     * with no holes in mem will have the same mem model as before.
+> > +     */
+> > +    req_size =3D ram_size;
+> > +    iova =3D QLIST_NEXT(QLIST_FIRST(&vfio_iova_regions), next);
+> > +    if (!iova) {
+> > +        iova =3D QLIST_FIRST(&vfio_iova_regions);
+> > +        addr =3D ROUND_UP(MAX(virt_start, iova->start), ALIGN_1G);
+> > +        if ((addr < 4 * SZ_1G) && (ram_size <=3D iova->end - addr + 1)=
+ &&
+> > +                  (addr + ram_size < virt_start + RAMLIMIT_BYTES)) {
+> > +            vms->bootinfo.loader_start =3D addr;
+> > +            vms->bootinfo.ram_size =3D ram_size;
+> > +            return;
+> > +        }
+> > +    }
+> > +
+> > +    /* Get a copy of valid iovas and work on it */
+> > +    get_iova_copy(&iova_copy);
+> > +
+> > +    /* Split the mem as first 1GB non-pluggable and rest as pc-dimm */
+> > +    req_size =3D MIN(ram_size, SZ_1G);
+> > +    addr =3D find_memory_chunk(vms, &iova_copy, req_size, false);
+> According to what Drew reported, the base address of the cold-plug RAM
+> must stay at 1GB otherwise the FW will be lost. So I think you must
+> check the addr =3D 1GB
+
+Please see my above comment on the base address.
+
+> > +    if (addr =3D=3D -1 || addr >=3D 4 * SZ_1G) {
 > > +        goto out;
 > > +    }
-> useless block and error_propagate does nothing if local_err is NULL so
-> we are fine.
-
-Ok. I will remove this from this patch.
-
+> > +
+> > +    /*Update non-pluggable mem details */
+> > +    machine->ram_size =3D req_size;
+> > +    vms->bootinfo.loader_start =3D addr;
+> > +    vms->bootinfo.ram_size =3D machine->ram_size;
+> > +
+> > +    req_size =3D ram_size - req_size;
+> > +    if (!req_size) {
+> > +        goto done;
+> > +    }
+> > +
+> > +    /* Remaining memory is modeled as a pc-dimm. */
+> > +    addr =3D find_memory_chunk(vms, &iova_copy, req_size, true);
+> > +    if (addr =3D=3D -1) {
+> > +        goto out;
+> > +    }
+> > +
+> > +    /*Update pc-dimm mem details */
+> > +    vms->bootinfo.dimm_mem =3D g_new(struct dimm_mem_info, 1);
+> > +    vms->bootinfo.dimm_mem->base =3D addr;
+> > +    vms->bootinfo.dimm_mem->size =3D req_size;
+> > +    machine->maxram_size =3D machine->ram_size + req_size;
+> > +    machine->ram_slots +=3D 1;
+> > +
+> > +done:
+> > +    free_iova_copy(&iova_copy);
+> > +    return;
 > > +
 > > +out:
-> > +    error_propagate(errp, local_err);
-> > +}
-> > +
-> > +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-> > +                           DeviceState *dev, Error **errp)
-> > +{
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +    PCDIMMDevice *dimm =3D PC_DIMM(dev);
-> > +    PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
-> > +    MemoryRegion *mr;
-> > +    Error *local_err =3D NULL;
-> > +
-> > +    mr =3D ddc->get_memory_region(dimm, &local_err);
-> don't you want to avoid executing the following if local_err?
+> > +    free_iova_copy(&iova_copy);
+> > +    error_report("mach-virt: Not enough contiguous memory to model ram=
+");
+> Output the requested size would help debug (and maybe the available IOVA
+> ranges)
 
-True.
-
-> > +    pc_dimm_memory_unplug(dev, &vms->hotplug_memory, mr);
-> needs a rebase on top of "pc-dimm: no need to pass the memory region"
-> in master pc_dimm_memory_unplug we now have
->  MemoryRegion *mr =3D ddc->get_memory_region(dimm, &error_abort);
-
-Right. I will follow that then.
-
-> Thanks
->=20
-> Eric
-> > +    object_unparent(OBJECT(dev));
-> > +
-> > +    error_propagate(errp, local_err);
-> > +}
-> > +
-> > +static void virt_machinedevice_plug_cb(HotplugHandler *hotplug_dev,
-> > +                                      DeviceState *dev, Error **errp)
-> > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_dimm_plug(hotplug_dev, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "device plug request for not supported device=
-"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> > +}
-> > +
-> > +static void virt_machinedevice_unplug_cb(HotplugHandler *hotplug_dev,
-> > +                                        DeviceState *dev, Error **errp=
-)
-> > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_dimm_unplug(hotplug_dev, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "device unplug for not supported device"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> > +}
-> > +
-> > +static HotplugHandler *virt_get_hotplug_handler(MachineState *machine,
-> > +                                             DeviceState *dev)
-> > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        return HOTPLUG_HANDLER(machine);
-> > +    }
-> > +    return NULL;
-> > +}
-> > +
-> >  static void virt_machine_class_init(ObjectClass *oc, void *data)
-> >  {
-> >      MachineClass *mc =3D MACHINE_CLASS(oc);
-> > +    HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(oc);
-> >
-> >      mc->init =3D machvirt_init;
-> >      /* Start max_cpus at the maximum QEMU supports. We'll further rest=
-rict
-> > @@ -1573,6 +1646,11 @@ static void virt_machine_class_init(ObjectClass
-> *oc, void *data)
-> >      mc->cpu_index_to_instance_props =3D virt_cpu_index_to_props;
-> >      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a15");
-> >      mc->get_default_cpu_node_id =3D virt_get_default_cpu_node_id;
-> > +
-> > +    mc->get_hotplug_handler =3D virt_get_hotplug_handler;
-> This requires a rebase on top of Igor's  and David's series.
->=20
-Sure.
+Agree. I will change that.
 
 Thanks,
 Shameer
 
+[1] https://github.com/tianocore/edk2/blob/master/ArmVirtPkg/ArmVirtQemu.ds=
+c#L133=20
+
 > Thanks
 >=20
 > Eric
-> > +    hc->plug =3D virt_machinedevice_plug_cb;
-> > +    hc->unplug =3D virt_machinedevice_unplug_cb;
+> > +    exit(1);
+> > +}
 > > +
+> > +static void create_pcdimms(VirtMachineState *vms,
+> > +                             MemoryRegion *sysmem,
+> > +                             MemoryRegion *ram)
+> > +{
+> > +    hwaddr addr, size;
+> > +    Error *local_err =3D NULL;
+> > +    QDict *qdict;
+> > +    QemuOpts *opts;
+> > +    char *tmp;
+> > +
+> > +    if (!vms->bootinfo.dimm_mem) {
+> > +        return;
+> > +    }
+> > +
+> > +    addr =3D vms->bootinfo.dimm_mem->base;
+> > +    size =3D vms->bootinfo.dimm_mem->size;
+> > +
+> > +    /*Create hotplug address space */
+> > +    vms->hotplug_memory.base =3D ROUND_UP(addr, ALIGN_1G);
+> > +    size =3D ROUND_UP(size, MAX(TARGET_PAGE_SIZE,
+> QEMU_VMALLOC_ALIGN));
+> > +
+> > +    memory_region_init(&vms->hotplug_memory.mr, OBJECT(vms),
+> > +                                      "hotplug-memory", size);
+> > +    memory_region_add_subregion(sysmem, vms->hotplug_memory.base,
+> > +                                        &vms->hotplug_memory.mr);
+> > +    /* Create backend mem object */
+> > +    qdict =3D qdict_new();
+> > +    qdict_put_str(qdict, "qom-type", "memory-backend-ram");
+> > +    qdict_put_str(qdict, "id", "mem1");
+> > +    tmp =3D g_strdup_printf("%"PRIu64 "M", size / (1024 * 1024));
+> > +    qdict_put_str(qdict, "size", tmp);
+> > +    g_free(tmp);
+> > +
+> > +    opts =3D qemu_opts_from_qdict(qemu_find_opts("object"), qdict,
+> &local_err);
+> > +    if (local_err) {
+> > +        goto err;
+> > +    }
+> > +
+> > +    user_creatable_add_opts(opts, &local_err);
+> > +    qemu_opts_del(opts);
+> > +    QDECREF(qdict);
+> > +    if (local_err) {
+> > +        goto err;
+> > +    }
+> > +
+> > +    /* Create pc-dimm dev*/
+> > +    qdict =3D qdict_new();
+> > +    qdict_put_str(qdict, "driver", "pc-dimm");
+> > +    qdict_put_str(qdict, "id", "dimm1");
+> > +    qdict_put_str(qdict, "memdev", "mem1");
+> > +
+> > +    opts =3D qemu_opts_from_qdict(qemu_find_opts("device"), qdict,
+> &local_err);
+> > +    if (local_err) {
+> > +        goto err;
+> > +    }
+> > +
+> > +    qdev_device_add(opts, &local_err);
+> > +    qemu_opts_del(opts);
+> > +    QDECREF(qdict);
+> > +    if (local_err) {
+> > +        goto err;
+> > +    }
+> > +
+> > +    return;
+> > +
+> > +err:
+> > +    error_report_err(local_err);
+> > +    exit(1);
+> > +}
+> > +
+> >  static void virt_ram_memory_region_init(Notifier *notifier, void *data=
+)
+> >  {
+> >      MemoryRegion *sysmem =3D get_system_memory();
+> > @@ -1179,9 +1418,14 @@ static void virt_ram_memory_region_init(Notifier
+> *notifier, void *data)
+> >                                           ram_memory_region_init);
+> >      MachineState *machine =3D MACHINE(vms);
+> >
+> > +    update_memory_regions(vms);
+> >      memory_region_allocate_system_memory(ram, NULL, "mach-virt.ram",
+> >                                           machine->ram_size);
+> > -    memory_region_add_subregion(sysmem, vms-
+> >memmap[VIRT_MEM].base, ram);
+> > +    memory_region_add_subregion(sysmem, vms->bootinfo.loader_start,
+> ram);
+> > +
+> > +    if (vms->bootinfo.dimm_mem) {
+> > +        create_pcdimms(vms, sysmem, ram);
+> > +    }
 > >  }
 > >
-> >  static const TypeInfo virt_machine_info =3D {
-> > @@ -1582,6 +1660,10 @@ static const TypeInfo virt_machine_info =3D {
-> >      .instance_size =3D sizeof(VirtMachineState),
-> >      .class_size    =3D sizeof(VirtMachineClass),
-> >      .class_init    =3D virt_machine_class_init,
-> > +    .interfaces =3D (InterfaceInfo[]) {
-> > +         { TYPE_HOTPLUG_HANDLER },
-> > +         { }
-> > +    },
-> >  };
+> >  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+> > @@ -1404,13 +1648,11 @@ static void machvirt_init(MachineState
+> *machine)
+> >      vms->machine_done.notify =3D virt_machine_done;
+> >      qemu_add_machine_init_done_notifier(&vms->machine_done);
 > >
-> >  static void machvirt_machine_init(void)
-> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > index fc24f3a..a39f29e 100644
-> > --- a/include/hw/arm/virt.h
-> > +++ b/include/hw/arm/virt.h
-> > @@ -35,6 +35,7 @@
-> >  #include "qemu/notify.h"
-> >  #include "hw/boards.h"
-> >  #include "hw/arm/arm.h"
-> > +#include "hw/mem/pc-dimm.h"
+> > -    vms->bootinfo.ram_size =3D machine->ram_size;
+> >      vms->bootinfo.kernel_filename =3D machine->kernel_filename;
+> >      vms->bootinfo.kernel_cmdline =3D machine->kernel_cmdline;
+> >      vms->bootinfo.initrd_filename =3D machine->initrd_filename;
+> >      vms->bootinfo.nb_cpus =3D smp_cpus;
+> >      vms->bootinfo.board_id =3D -1;
+> > -    vms->bootinfo.loader_start =3D vms->memmap[VIRT_MEM].base;
+> >      vms->bootinfo.get_dtb =3D machvirt_dtb;
+> >      vms->bootinfo.firmware_loaded =3D firmware_loaded;
 > >
-> >  #define NUM_GICV2M_SPIS       64
-> >  #define NUM_VIRTIO_TRANSPORTS 32
-> > @@ -108,6 +109,7 @@ typedef struct {
-> >      uint32_t gic_phandle;
-> >      uint32_t msi_phandle;
-> >      int psci_conduit;
-> > +    MemoryHotplugState hotplug_memory;
-> >  } VirtMachineState;
+> > @@ -1559,7 +1801,7 @@ static void virt_dimm_plug(HotplugHandler
+> *hotplug_dev,
+> >      PCDIMMDevice *dimm =3D PC_DIMM(dev);
+> >      PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
+> >      MemoryRegion *mr;
+> > -    uint64_t align;
+> > +    uint64_t align, addr;
+> >      Error *local_err =3D NULL;
 > >
-> >  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+> >      mr =3D ddc->get_memory_region(dimm, &local_err);
+> > @@ -1573,6 +1815,15 @@ static void virt_dimm_plug(HotplugHandler
+> *hotplug_dev,
+> >          goto out;
+> >      }
+> >
+> > +    addr =3D object_property_get_uint(OBJECT(dimm),
+> PC_DIMM_ADDR_PROP,
+> > +                                                       &error_fatal);
+> > +    /* Assign the node for pc-dimm initial ram */
+> > +    if (vms->bootinfo.dimm_mem && (addr =3D=3D vms->bootinfo.dimm_mem-
+> >base)
+> > +                                                 && (nb_numa_nodes > 0=
+)) {
+> > +        vms->bootinfo.dimm_mem->node =3D
+> object_property_get_uint(OBJECT(dev),
+> > +                                           PC_DIMM_NODE_PROP, &error_f=
+atal);
+> > +    }
+> > +
+> >  out:
+> >      error_propagate(errp, local_err);
+> >  }
 > >

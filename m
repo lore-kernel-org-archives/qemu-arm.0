@@ -1,79 +1,78 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4828732wre;
-        Wed, 30 May 2018 07:47:25 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKF4GvmsoIhBpTZvLqNm+8ByuEJC7nvvdfD+nXbR5Z/RcU/MnEjxAeqTL9UtHWbr493ROAr
-X-Received: by 2002:ae9:c00f:: with SMTP id u15-v6mr2611905qkk.383.1527691645105;
-        Wed, 30 May 2018 07:47:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527691645; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4828979wre;
+        Wed, 30 May 2018 07:47:37 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKIeOBmDl60/jEc7TcORe3cjJihsB9/7uBlAGWVBdm2Tv8DOovwQynYbMS8CsWwYWeNiDFx
+X-Received: by 2002:a0c:bfaa:: with SMTP id s39-v6mr2789040qvj.2.1527691657509;
+        Wed, 30 May 2018 07:47:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527691657; cv=none;
         d=google.com; s=arc-20160816;
-        b=e7O5V+EMP2fpyoqd5d0S3elkfNDvKokdNiNJnXuPVG8YpEopnRk4pKks0QkJWn0Zwm
-         YQ6wYPgt8fyGEfSIPS7E71ecUi5nHrP8F5X+znwDND7M4NsiDgLOCXrSIkKJLBGhat+J
-         cvNOsRns919oKCiISoLpXGbFhfVd8LEY5WAjcptpaMvedz8L/F0gH0n/i7Hao6gjoj/c
-         k5+hyP1q3A644kH+WNisrNqh9q2FIP8UZEQ+2sfNv1EaOX/HTIy58aP3tRzsYIz8a88k
-         T2XjfGRgUCvxZCEPSXtIT5JBD9GLx7OrfHYHcl7znc9vaF2hLxsGoQ/h4YVfO2k013Od
-         Khhg==
+        b=j6oLtRNyuA0uWCJvzAf8NRN1YUB6C7a+/RAQXheQ2GYUfmieBg2C1loqyoCoGx9iP2
+         BDEMoVs09cp6oD7NwoDMa4vvYIJE72aLCE/dgHjarmTxvbpM7IVaVZaIo+4X/0CLTYCL
+         LgnzCokyBotm2UJwEQ5B4NH9pI3y7t+6VW7mC2puQ0ThanV33rOwXzQNoLGPyWsiiXta
+         pl3EvRX+o3maAZB8TiTZ9e51FVPltDgrH5dzZXa6toj2SH0bUi9VBx8ceMpZ/upQj4+k
+         1YHup3k8cmWDymNEUn1A7z2xdcPPk2oXZjQpsxCrKqhnQ9REnrS+lKNtOCPyzNTrav0d
+         F88A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic:to
          :from:arc-authentication-results;
-        bh=ZtmfxIaCiVBfE5seAQLSgqq6lqHXNO/jZvusZKfZERI=;
-        b=nkURFJogsHwlPaMWKTzOXf/GSdd7JQX8wWOLuaQhvLFoYUxfhCXud+mv5URmKpxqP1
-         FvnScHrWuK7xRDFTvKjYOesEDdxeczubezdpM4kOkr4psmM682qivH++YWcScN76kph7
-         tsVsS1XQ5BXhn7x9Lm1CdHZGGSDEHF/p+xyDU/bdH8Mep4QkzWEfGw2pZojXhtDLLiKH
-         YB+rFqiwz01M2l3UAzfsLirsqdiSwROJ1bNhk4TsBzpPBOmnmZilaf/CGhyfG5EOBYXn
-         M38vNIMLrQduBp4QWseMomdbpp9y4kRN16SRfhNWsNvkCnyiju+Zs+HNBWpMmNBLmgc+
-         gO3w==
+        bh=0sNy5GYn6/6f4Y9kOSGeSOkK47Y9h9u1ZY7zcmr48zc=;
+        b=nTKAgdl368c0DCWSErG6FFnxA+z5ztO08YfHMxjz5e7F8wjv/B1EN02TCFF757Zf+u
+         2LfF70Ugkrw9itMWVn93H0VlUDvOzkxfMv+dqwHU5Kh2RpQ3QGes62k4DtxJ5g+gTt9Q
+         L44GvsCd85DqAvWlmcPOY8zFKRNUsqyhOliSV7mf88XRMEE7IeCWrUn/SrUL+hlcSMtV
+         nUZObE5nOuxXLRTr2mdyk+VPrgkNpN/QKWiqfVEF+36kJnDebWpljrUR8CKVqgJb8SHm
+         r6G9WZVSifSI0/XraNmpRWIiprYML/os9UUIG2+GwBnzbPClR47JLLVuwuy8Iv3oT/Gh
+         efDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c37-v6si5071427qta.384.2018.05.30.07.47.24
+        by mx.google.com with ESMTPS id b10-v6si6159588qvj.239.2018.05.30.07.47.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 07:47:25 -0700 (PDT)
+        Wed, 30 May 2018 07:47:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:39089 helo=lists.gnu.org)
+Received: from localhost ([::1]:39093 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO2No-00073D-HZ
-	for alex.bennee@linaro.org; Wed, 30 May 2018 10:47:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39711)
+	id 1fO2O0-0007C4-WF
+	for alex.bennee@linaro.org; Wed, 30 May 2018 10:47:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39498)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2NV-00070N-SD
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:47:07 -0400
+	id 1fO2Mh-0006Rl-Vg
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:46:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2NR-0001Rb-Bq
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:47:05 -0400
-Received: from lhrrgout.huawei.com ([194.213.3.17]:4229 helo=huawei.com)
+	id 1fO2Me-00013z-1A
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 10:46:16 -0400
+Received: from lhrrgout.huawei.com ([194.213.3.17]:4228 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
-	id 1fO2NR-0001Qr-1Z; Wed, 30 May 2018 10:47:01 -0400
-Received: from lhreml701-cah.china.huawei.com (unknown [172.18.7.108])
-	by Forcepoint Email with ESMTP id 29424297139F6;
-	Wed, 30 May 2018 15:46:58 +0100 (IST)
-Received: from FRAEMA707-CHM.china.huawei.com (10.206.14.56) by
-	lhreml701-cah.china.huawei.com (10.201.108.42) with Microsoft SMTP
-	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:46:59 +0100
+	id 1fO2Md-00013W-M3; Wed, 30 May 2018 10:46:11 -0400
+Received: from lhreml703-cah.china.huawei.com (unknown [172.18.7.108])
+	by Forcepoint Email with ESMTP id 735AF3C0C19AE;
+	Wed, 30 May 2018 15:46:07 +0100 (IST)
+Received: from FRAEMA702-CHM.china.huawei.com (10.206.14.51) by
+	lhreml703-cah.china.huawei.com (10.201.108.44) with Microsoft SMTP
+	Server (TLS) id 14.3.382.0; Wed, 30 May 2018 15:46:09 +0100
 Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.176]) by
-	FRAEMA707-CHM.china.huawei.com ([169.254.7.63]) with mapi id
-	14.03.0382.000; Wed, 30 May 2018 16:46:50 +0200
+	FRAEMA702-CHM.china.huawei.com ([169.254.2.111]) with mapi id
+	14.03.0382.000; Wed, 30 May 2018 16:46:00 +0200
 From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 To: Auger Eric <eric.auger@redhat.com>, "qemu-devel@nongnu.org"
 	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [Qemu-devel] [RFC v2 4/6] hw/arm: Changes required to
-	accommodate non-contiguous DT mem nodes
-Thread-Index: AQHT7SmmjI9wXobakkeIh2MtVt+x86RFIokAgAMZtSA=
-Date: Wed, 30 May 2018 14:46:49 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F17E6@FRAEML521-MBX.china.huawei.com>
+Thread-Topic: [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug framework
+Thread-Index: AQHT7SmjT2WlRv77+ka6DLGT7z11zaRFIo4AgAMYAcA=
+Date: Wed, 30 May 2018 14:46:00 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8386F17D9@FRAEML521-MBX.china.huawei.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
-	<20180516152026.2920-5-shameerali.kolothum.thodi@huawei.com>
-	<fb37761c-6e74-5aca-b258-8d8c060ca4dc@redhat.com>
-In-Reply-To: <fb37761c-6e74-5aca-b258-8d8c060ca4dc@redhat.com>
+	<20180516152026.2920-4-shameerali.kolothum.thodi@huawei.com>
+	<1f8e3cd4-1e54-5350-3804-c77bbbfbd3e4@redhat.com>
+In-Reply-To: <1f8e3cd4-1e54-5350-3804-c77bbbfbd3e4@redhat.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -85,8 +84,8 @@ MIME-Version: 1.0
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 194.213.3.17
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 4/6] hw/arm: Changes required
- to accommodate non-contiguous DT mem nodes
+Subject: Re: [Qemu-arm] [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug
+ framework
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,7 +106,7 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wn9qSKjbXXA0
+X-TUID: iFFr50LN8G9i
 
 Hi Eric,
 
@@ -116,220 +115,167 @@ Hi Eric,
 > Sent: Monday, May 28, 2018 3:22 PM
 > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
 > qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: peter.maydell@linaro.org; drjones@redhat.com; Jonathan Cameron
-> <jonathan.cameron@huawei.com>; Linuxarm <linuxarm@huawei.com>;
+> Cc: drjones@redhat.com; imammedo@redhat.com; peter.maydell@linaro.org;
 > alex.williamson@redhat.com; Zhaoshenglong <zhaoshenglong@huawei.com>;
-> imammedo@redhat.com
-> Subject: Re: [Qemu-devel] [RFC v2 4/6] hw/arm: Changes required to
-> accommodate non-contiguous DT mem nodes
+> Jonathan Cameron <jonathan.cameron@huawei.com>; Linuxarm
+> <linuxarm@huawei.com>
+> Subject: Re: [RFC v2 3/6] hw/arm/virt: Add pc-dimm mem hotplug framework
 >=20
 > Hi Shameer,
 >=20
 > On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> > This makes changes to the DT mem node creation such that its easier
-> > to add non-contiguous mem modeled as non-pluggable and a pc-dimm
-> > mem later.
-> See comments below. I think you should augment the description here with
-> what the patch exactly adds:
-> - a new helper function
-> - a new dimm node?
->=20
-> and if possible split functional changes into separate patches?
-
-Agree. It is better to split this.
-
+> > This will be used in subsequent patches to model a chunk of
+> > memory as pc-dimm(cold plug) if the valid iova regions are
+> > non-contiguous. This is not yet a full hotplug support.
+> Please can you give more details about this restriction?
+> >
 > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > > ---
-> >  hw/arm/boot.c        | 91 ++++++++++++++++++++++++++++++++++++--------=
---
-> ------
-> >  include/hw/arm/arm.h | 12 +++++++
-> >  2 files changed, 75 insertions(+), 28 deletions(-)
+> >  default-configs/aarch64-softmmu.mak |  1 +
+> >  hw/arm/virt.c                       | 82
+> +++++++++++++++++++++++++++++++++++++
+> >  include/hw/arm/virt.h               |  2 +
+> >  3 files changed, 85 insertions(+)
 > >
-> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> > index 26184bc..73db0aa 100644
-> > --- a/hw/arm/boot.c
-> > +++ b/hw/arm/boot.c
-> > @@ -486,6 +486,27 @@ static void fdt_add_psci_node(void *fdt)
-> >      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> > diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarc=
+h64-
+> softmmu.mak
+> > index 9ddccf8..7a82ed8 100644
+> > --- a/default-configs/aarch64-softmmu.mak
+> > +++ b/default-configs/aarch64-softmmu.mak
+> > @@ -8,3 +8,4 @@ CONFIG_DDC=3Dy
+> >  CONFIG_DPCD=3Dy
+> >  CONFIG_XLNX_ZYNQMP=3Dy
+> >  CONFIG_XLNX_ZYNQMP_ARM=3Dy
+> > +CONFIG_MEM_HOTPLUG=3Dy
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 05fcb62..be3ad14 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -1552,9 +1552,82 @@ static const CPUArchIdList
+> *virt_possible_cpu_arch_ids(MachineState *ms)
+> >      return ms->possible_cpus;
 > >  }
 > >
-> > +static char *create_memory_fdt(void *fdt, uint32_t acells, hwaddr
-> mem_base,
-> > +                                          uint32_t scells, hwaddr mem_=
-len)
-> Other dt node creation functions are named fdt_add_*_node
-
-Ok.
-
+> > +static void virt_dimm_plug(HotplugHandler *hotplug_dev,
+> > +                         DeviceState *dev, Error **errp)
 > > +{
-> > +    char *nodename =3D NULL;
-> > +    int rc;
+> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> > +    PCDIMMDevice *dimm =3D PC_DIMM(dev);
+> > +    PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
+> > +    MemoryRegion *mr;
+> > +    uint64_t align;
+> > +    Error *local_err =3D NULL;
 > > +
-> > +    nodename =3D g_strdup_printf("/memory@%" PRIx64, mem_base);
-> > +    qemu_fdt_add_subnode(fdt, nodename);
-> > +    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
-> > +    rc =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells,
-> mem_base,
-> > +                                      scells, mem_len);
-> > +    if (rc < 0) {
-> > +        fprintf(stderr, "couldn't set %s/reg\n", nodename);
-> > +        g_free(nodename);
-> > +        return NULL;
+> > +    mr =3D ddc->get_memory_region(dimm, &local_err);
+> > +    if (local_err) {
+> > +        goto out;
 > > +    }
 > > +
-> > +    return nodename;
-> > +}
-> > +
-> > +
-> >  /**
-> >   * load_dtb() - load a device tree binary image into memory
-> >   * @addr:       the address to load the image at
-> > @@ -567,50 +588,64 @@ static int load_dtb(hwaddr addr, const struct
-> arm_boot_info *binfo,
-> >          goto fail;
-> >      }
-> >
-> > +    /*
-> > +     * Turn the /memory node created before into a NOP node, then crea=
-te
-> > +     * /memory@addr nodes for all numa nodes respectively.
-> > +     */
-> > +    qemu_fdt_nop_node(fdt, "/memory");
-> I don't really understand why this gets moved outside of the if
-> (nb_numa_nodes > 0) { check. Also the comment above mention numa nodes
-> whereas it are not necessarily in the numa case anymore.
-
-Hmm..I think this is because virt.c has a create_fdt() where "/memory " sub=
-node
-is created. May be I can keep that and update with non-plug mem and create =
-a new
-"/memory @" for pc-dimm case. I will double check.
-
-> > +
-> >      if (nb_numa_nodes > 0) {
-> > -        /*
-> > -         * Turn the /memory node created before into a NOP node, then =
-create
-> > -         * /memory@addr nodes for all numa nodes respectively.
-> > -         */
-> > -        qemu_fdt_nop_node(fdt, "/memory");
-> > +        hwaddr mem_sz;
-> > +
-> >          mem_base =3D binfo->loader_start;
-> > +        mem_sz =3D binfo->ram_size;
-> >          for (i =3D 0; i < nb_numa_nodes; i++) {
-> > -            mem_len =3D numa_info[i].node_mem;
-> > -            nodename =3D g_strdup_printf("/memory@%" PRIx64, mem_base)=
-;
-> > -            qemu_fdt_add_subnode(fdt, nodename);
-> > -            qemu_fdt_setprop_string(fdt, nodename, "device_type", "mem=
-ory");
-> > -            rc =3D qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-> > -                                              acells, mem_base,
-> > +            mem_len =3D MIN(numa_info[i].node_mem, mem_sz);
-> I fail to understand how this change relates to the topic of this patch.
-> If this adds a consistency check, this may be put in another patch?
-
-Yes. It is not related to this patch per se. But without this and some of t=
-he=20
-related mem_len/ mem_sz  changes below it will end up creating more num
-of memory nodes as the numa mem info is populated much earlier than we
-modify the ram_size(non-plug) info. I can move this and your related commen=
-t
-for acpi patch (5/6) to a separate patch.
-
-> > +
-> > +            nodename =3D create_memory_fdt(fdt, acells, mem_base,
-> >                                                scells, mem_len);
-> You could simplify the review by just introducing the new dt node
-> creation function in a 1st patch and then introduce the changes to
-> support non contiguous DT mem nodes.
-
-Ok. I will split.
-
-> > -            if (rc < 0) {
-> > -                fprintf(stderr, "couldn't set %s/reg for node %d\n", n=
-odename,
-> > -                        i);
-> > +            if (!nodename) {
-> >                  goto fail;
-> >              }
-> >
-> >              qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
-> > -            mem_base +=3D mem_len;
-> >              g_free(nodename);
-> > +            mem_base +=3D mem_len;
-> > +            mem_sz -=3D mem_len;
-> > +            if (!mem_sz) {
-> > +                break;
-> So what does it mean practically if we break here. Not all the num nodes
-> will function? Outputting a mesg for the end user may be useful.
-
-The break here means we have populated mem nodes for non-plug ram case
-and the remaining mem(if any) will be based on the pc-dimm case. Yes, it=20
-is possible that Guest kernel will report memory-less numa nodes. I will ad=
-d
-a msg here.
-
-> > +           }
-> >          }
-> > -    } else {
-> > -        Error *err =3D NULL;
-> >
-> > -        rc =3D fdt_path_offset(fdt, "/memory");
-> > -        if (rc < 0) {
-> > -            qemu_fdt_add_subnode(fdt, "/memory");
-> > -        }
-> > +        /* Create the node for initial pc-dimm ram, if any */
-> > +        if (binfo->dimm_mem) {
-> >
-> > -        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &er=
-r)) {
-> > -            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "me=
-mory");
-> > +            nodename =3D create_memory_fdt(fdt, acells, binfo->dimm_me=
-m-
-> >base,
-> > +                                              scells, binfo->dimm_mem-=
->size);
-> > +            if (!nodename) {
-> > +                goto fail;
-> > +            }
-> > +            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id",
-> > +                                                 binfo->dimm_mem->node=
-);
-> > +            g_free(nodename);
-> >          }
-> >
-> > -        rc =3D qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
-> > -                                          acells, binfo->loader_start,
-> > -                                          scells, binfo->ram_size);
-> > -        if (rc < 0) {
-> > -            fprintf(stderr, "couldn't set /memory/reg\n");
-> > +    } else {
-> > +
-> > +        nodename =3D create_memory_fdt(fdt, acells, binfo->loader_star=
-t,
-> > +                                         scells, binfo->ram_size);
-> > +        if (!nodename) {
-> >              goto fail;
-> >          }
-> > +
-> > +        if (binfo->dimm_mem) {
-> > +            nodename =3D create_memory_fdt(fdt, acells, binfo->dimm_me=
-m-
-> >base,
-> > +                                              scells, binfo->dimm_mem-=
->size);
-> > +            if (!nodename) {
-> > +                goto fail;
-> > +            }
-> > +            g_free(nodename);
-> > +        }
-> as this code gets duplicated, a helper function may be relevant?
+> > +    align =3D memory_region_get_alignment(mr);
+> I see that on PC machine class they have an "enforce_aligned_dimm"
+> option. Also looks memory_region_get_alignment(mr) can return 0.
+>=20
+> if (memory_region_get_alignment(mr) && pcmc->enforce_aligned_dimm) {
 
 Ok.
+=20
+>=20
+> > +    pc_dimm_memory_plug(dev, &vms->hotplug_memory, mr, align,
+> &local_err);
+> > +    if (local_err) {
+> > +        goto out;
+> > +    }
+> useless block and error_propagate does nothing if local_err is NULL so
+> we are fine.
+
+Ok. I will remove this from this patch.
+
+> > +
+> > +out:
+> > +    error_propagate(errp, local_err);
+> > +}
+> > +
+> > +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+> > +                           DeviceState *dev, Error **errp)
+> > +{
+> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> > +    PCDIMMDevice *dimm =3D PC_DIMM(dev);
+> > +    PCDIMMDeviceClass *ddc =3D PC_DIMM_GET_CLASS(dimm);
+> > +    MemoryRegion *mr;
+> > +    Error *local_err =3D NULL;
+> > +
+> > +    mr =3D ddc->get_memory_region(dimm, &local_err);
+> don't you want to avoid executing the following if local_err?
+
+True.
+
+> > +    pc_dimm_memory_unplug(dev, &vms->hotplug_memory, mr);
+> needs a rebase on top of "pc-dimm: no need to pass the memory region"
+> in master pc_dimm_memory_unplug we now have
+>  MemoryRegion *mr =3D ddc->get_memory_region(dimm, &error_abort);
+
+Right. I will follow that then.
+
+> Thanks
+>=20
+> Eric
+> > +    object_unparent(OBJECT(dev));
+> > +
+> > +    error_propagate(errp, local_err);
+> > +}
+> > +
+> > +static void virt_machinedevice_plug_cb(HotplugHandler *hotplug_dev,
+> > +                                      DeviceState *dev, Error **errp)
+> > +{
+> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > +        virt_dimm_plug(hotplug_dev, dev, errp);
+> > +    } else {
+> > +        error_setg(errp, "device plug request for not supported device=
+"
+> > +                   " type: %s", object_get_typename(OBJECT(dev)));
+> > +    }
+> > +}
+> > +
+> > +static void virt_machinedevice_unplug_cb(HotplugHandler *hotplug_dev,
+> > +                                        DeviceState *dev, Error **errp=
+)
+> > +{
+> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > +        virt_dimm_unplug(hotplug_dev, dev, errp);
+> > +    } else {
+> > +        error_setg(errp, "device unplug for not supported device"
+> > +                   " type: %s", object_get_typename(OBJECT(dev)));
+> > +    }
+> > +}
+> > +
+> > +static HotplugHandler *virt_get_hotplug_handler(MachineState *machine,
+> > +                                             DeviceState *dev)
+> > +{
+> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > +        return HOTPLUG_HANDLER(machine);
+> > +    }
+> > +    return NULL;
+> > +}
+> > +
+> >  static void virt_machine_class_init(ObjectClass *oc, void *data)
+> >  {
+> >      MachineClass *mc =3D MACHINE_CLASS(oc);
+> > +    HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(oc);
+> >
+> >      mc->init =3D machvirt_init;
+> >      /* Start max_cpus at the maximum QEMU supports. We'll further rest=
+rict
+> > @@ -1573,6 +1646,11 @@ static void virt_machine_class_init(ObjectClass
+> *oc, void *data)
+> >      mc->cpu_index_to_instance_props =3D virt_cpu_index_to_props;
+> >      mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a15");
+> >      mc->get_default_cpu_node_id =3D virt_get_default_cpu_node_id;
+> > +
+> > +    mc->get_hotplug_handler =3D virt_get_hotplug_handler;
+> This requires a rebase on top of Igor's  and David's series.
+>=20
+Sure.
 
 Thanks,
 Shameer
@@ -337,38 +283,41 @@ Shameer
 > Thanks
 >=20
 > Eric
-> >      }
-> >
-> >      rc =3D fdt_path_offset(fdt, "/chosen");
-> > diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> > index ce769bd..0ee3b4e 100644
-> > --- a/include/hw/arm/arm.h
-> > +++ b/include/hw/arm/arm.h
-> > @@ -48,6 +48,12 @@ typedef struct {
-> >      ARMCPU *cpu; /* handle to the first cpu object */
-> >  } ArmLoadKernelNotifier;
-> >
-> > +struct dimm_mem_info {
-> > +    int node;
-> > +    hwaddr base;
-> > +    hwaddr size;
-> > +};
+> > +    hc->plug =3D virt_machinedevice_plug_cb;
+> > +    hc->unplug =3D virt_machinedevice_unplug_cb;
 > > +
-> >  /* arm_boot.c */
-> >  struct arm_boot_info {
-> >      uint64_t ram_size;
-> > @@ -124,6 +130,12 @@ struct arm_boot_info {
-> >      bool secure_board_setup;
+> >  }
 > >
-> >      arm_endianness endianness;
-> > +
-> > +    /* This is used to model a pc-dimm based mem if the valid iova reg=
-ion
-> > +     * is non-contiguous.
-> > +     */
-> > +    struct dimm_mem_info *dimm_mem;
-> > +
+> >  static const TypeInfo virt_machine_info =3D {
+> > @@ -1582,6 +1660,10 @@ static const TypeInfo virt_machine_info =3D {
+> >      .instance_size =3D sizeof(VirtMachineState),
+> >      .class_size    =3D sizeof(VirtMachineClass),
+> >      .class_init    =3D virt_machine_class_init,
+> > +    .interfaces =3D (InterfaceInfo[]) {
+> > +         { TYPE_HOTPLUG_HANDLER },
+> > +         { }
+> > +    },
 > >  };
 > >
-> >  /**
+> >  static void machvirt_machine_init(void)
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > index fc24f3a..a39f29e 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -35,6 +35,7 @@
+> >  #include "qemu/notify.h"
+> >  #include "hw/boards.h"
+> >  #include "hw/arm/arm.h"
+> > +#include "hw/mem/pc-dimm.h"
+> >
+> >  #define NUM_GICV2M_SPIS       64
+> >  #define NUM_VIRTIO_TRANSPORTS 32
+> > @@ -108,6 +109,7 @@ typedef struct {
+> >      uint32_t gic_phandle;
+> >      uint32_t msi_phandle;
+> >      int psci_conduit;
+> > +    MemoryHotplugState hotplug_memory;
+> >  } VirtMachineState;
+> >
+> >  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
 > >

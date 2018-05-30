@@ -1,109 +1,178 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4403290wre;
-        Tue, 29 May 2018 23:46:47 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJBy2FqCLnSOi5zlEC11a+UN4V8n4bvM1he31gO4qIStbmki7n05zJLlm0JMv60uE/N5SYE
-X-Received: by 2002:ac8:31b7:: with SMTP id h52-v6mr1359139qte.100.1527662807060;
-        Tue, 29 May 2018 23:46:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527662807; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4418191wre;
+        Wed, 30 May 2018 00:07:20 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLObLHNf/I2VlRpU31nJ4mbS5fn/E/pSEtf/RPrIk6FmXhW4ivYKQW4C5nv35/+I5S9+dvG
+X-Received: by 2002:aed:2448:: with SMTP id s8-v6mr1380052qtc.336.1527664039941;
+        Wed, 30 May 2018 00:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527664039; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltp5jEQd+qoGIWezx9sBF3OstKjGpPrQ46MupcQSMCWtX2NlN56lgbqM9FCh5Vvq91
-         1JkoUzsVev4MSAAgiO08fG0XXaJZl56hE7QZkEGR9PRloWowdoVBa42TkfsI/15Mraws
-         3q+HD/w9YAvutWwsAMbiA+6Cfknnczw3sNo7npqMyI+OH2l5Ek5XQDw6wAzowBo80T2k
-         6c5uuTcLxLjAmIwt9+cuHNcoXKvPill5hu8Mj+CfiaUXY+BTprpOG/39yqwk4p52LYKV
-         lMJAY810ui6S6T2JniRE74ZemaBb3EHxQbaRNNqadx8Pad3TsoPeRjxckdpIHAnyHeKG
-         DLYg==
+        b=OczeA4xLFbLcpAd140Z6YNy4wJIOIIwOboeJc/9x2RTX+fpOqxfKlWV1u2FNa/diYy
+         lVppXQoT0jb6Fy06fgPZHMj1xnq4nIQ0hqMDckzrSqy+AwcssOGAgcAAqJl4MqhuMCKS
+         OJMzI81XAeyLyp1bGemkoS9xZ6veWTi5bn+RI1H4KvsikVDG0EctvqMkZE9UyIxCBVVQ
+         qxsQoQEETUdsyy9ejd8dv+ILoHI9Te/umWM+kVnzh5u18CZXoWLHuFrUAGgEfEcCMwKX
+         Ti5ts1CD41DMnGs6oK/nw3+WQmYPDvKl7hlNKYm8cOyVm6hLNHNLgRsoRbivm9zu27t+
+         LBFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:references:to:mime-version
-         :user-agent:from:date:message-id:arc-authentication-results;
-        bh=mZW7DUSKXmjilSIxX0Ci3k8IQvaKkAuOhzePLZkwwTI=;
-        b=OoyAVN+edzxGsyhJSo3Pbm42EYoN28lMG+MLUf6aDzhRwLtU75KRBu6B+5i9mYA0z+
-         TEIpI7csHjGIMNyfzH7U0tAlTj5b/Cnnw8dQekNp2FUeoKAF/qlQWQyR4bpRh2IuWIvr
-         rQbnn71p43Du0tZszoC3AH0rH2KryfQZGoSThTShdbW9yenyZqjD9UQMP5XNXAi0aN3B
-         t56h8iryklmbsuhukAZLzixU4idRHx3XpHSBb92J1CwCinw+npqGcra93WW3+uHMKOJV
-         2g880ZF0z3WEYgQ6c+xUUJMLm6vnNV208QcqPc4Y2QjrTOXl9WXHzzP/6tzQNaA1bwms
-         9WfQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :arc-authentication-results;
+        bh=dmphkCmWZv3j+6J5IT7Cazi/Bw49vGe7+mh011MtRr8=;
+        b=Do63kjzUDwXpoOrmU1v0i3mnk+u3GNButQ52nQOLtSQbJVkKwfNgrJc+pvAon2PDQt
+         4FQ/1c8zxMLBz28Gpw0y8JeU5SPCKFP0qwBDEI9yok/5efn7Xnu6OERsiwDy3WZit8Oi
+         DDc3MLXfTs/+7jC7iMSU+7qP8GOWSnaTBV/+zytSFsp2OCaJ0nOcqSfwngwaoEQ5sbPx
+         c40UCQ+fGDEOcmfXii3pxZPPMWNd0Nx88lrItPfmuL2m6vmd/+RJN9aAG7VAoaciVzYF
+         dW8qLUMmtsz54y+X/D4GspQKJ+EPn27i7tIrhU8536VfldV0SkKo+BgX3kZW+iG4bRFm
+         sUug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b10-v6si5354638qvj.239.2018.05.29.23.46.46
+        by mx.google.com with ESMTPS id e30-v6si6183971qtg.171.2018.05.30.00.07.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 23:46:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 May 2018 00:07:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36538 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:36605 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNusg-0006CN-HM
-	for alex.bennee@linaro.org; Wed, 30 May 2018 02:46:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35563)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fNvCZ-0003IP-FD
+	for alex.bennee@linaro.org; Wed, 30 May 2018 03:07:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1fNuq8-0004Nn-7A
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 02:44:09 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fNvCJ-0003Ch-Pf
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 03:07:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1fNuq7-0002a5-JP
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 02:44:08 -0400
-Received: from [45.249.212.35] (port=38744 helo=huawei.com)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fNvCG-0007WI-LT
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 03:07:03 -0400
+Received: from [45.249.212.32] (port=34630 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1fNuq2-0002Vy-Cf; Wed, 30 May 2018 02:44:02 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
-	by Forcepoint Email with ESMTP id A8E618ADB6618;
-	Wed, 30 May 2018 14:43:57 +0800 (CST)
-Received: from [127.0.0.1] (10.177.16.142) by DGGEMS413-HUB.china.huawei.com
-	(10.3.19.213) with Microsoft SMTP Server id 14.3.382.0; Wed, 30 May 2018
-	14:43:52 +0800
-Message-ID: <5B0E4813.7030403@huawei.com>
-Date: Wed, 30 May 2018 14:43:31 +0800
+	id 1fNvCG-0007Uh-AG; Wed, 30 May 2018 03:07:00 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id AF1C3215E4417;
+	Wed, 30 May 2018 15:06:53 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server
+	id 14.3.382.0; Wed, 30 May 2018 15:06:47 +0800
 From: Shannon Zhao <zhaoshenglong@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.1;
-	rv:24.0) Gecko/20100101 Thunderbird/24.4.0
+To: <qemu-arm@nongnu.org>
+Date: Wed, 30 May 2018 15:05:51 +0800
+Message-ID: <1527663951-14552-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-To: Auger Eric <eric.auger@redhat.com>, Peter Maydell
-	<peter.maydell@linaro.org>
-References: <1527563283-13148-1-git-send-email-zhaoshenglong@huawei.com>
-	<CAFEAcA-LoTOnTnSYBpzuyUDFZBsVBaB2qjvzAP_94rou8ob6Tg@mail.gmail.com>
-	<65E224A1-C972-4C38-BD6E-41C59191D999@163.com>
-	<383b0c0b-4406-869c-5493-df2f48896113@redhat.com>
-	<5B0DFB0C.3000002@huawei.com>
-	<81226dc7-4b0a-bd1b-6910-0b9a94b0128f@redhat.com>
-In-Reply-To: <81226dc7-4b0a-bd1b-6910-0b9a94b0128f@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.177.16.142]
 X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.35
-Subject: Re: [Qemu-devel] [PATCH v2] ARM: ACPI: Fix use-after-free due to
- memory realloc
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 45.249.212.32
+Subject: [Qemu-arm] [PATCH v3] ARM: ACPI: Fix use-after-free due to memory
+ realloc
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UmKME0jmUFWO
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	f4bug@amsat.org, shannon.zhaosl@gmail.com,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fVbM3VM5u4pH
 
-Hi Eric,
+acpi_data_push uses g_array_set_size to resize the memory size. If there
+is no enough contiguous memory, the address will be changed. So previous
+pointer could not be used any more. It must update the pointer and use
+the new one.
 
-On 2018/5/30 14:38, Auger Eric wrote:
-> I checked against the v1 in my branch thinking you did not change
-> anything besides the comment (your log history?).
-Sorry about this, I'll add some words in commit message.
+Also, previous codes wrongly use le32 conversion of iort->node_offset
+for subsequent computations that will result incorrect value if host is
+not litlle endian. So use the non-converted one instead.
 
-Thanks,
--- 
-Shannon
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+---
+V3: Fix typo and add some words in commit message to explain another bug
+---
+ hw/arm/virt-acpi-build.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 92ceee9..74f5744 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+     AcpiIortItsGroup *its;
+     AcpiIortTable *iort;
+     AcpiIortSmmu3 *smmu;
+-    size_t node_size, iort_length, smmu_offset =3D 0;
++    size_t node_size, iort_node_offset, iort_length, smmu_offset =3D 0;
+     AcpiIortRC *rc;
+=20
+     iort =3D acpi_data_push(table_data, sizeof(*iort));
+@@ -413,7 +413,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, V=
+irtMachineState *vms)
+=20
+     iort_length =3D sizeof(*iort);
+     iort->node_count =3D cpu_to_le32(nb_nodes);
+-    iort->node_offset =3D cpu_to_le32(sizeof(*iort));
++    /*
++     * Use a copy in case table_data->data moves during acpi_data_push
++     * operations.
++     */
++    iort_node_offset =3D sizeof(*iort);
++    iort->node_offset =3D cpu_to_le32(iort_node_offset);
+=20
+     /* ITS group node */
+     node_size =3D  sizeof(*its) + sizeof(uint32_t);
+@@ -429,7 +434,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+         int irq =3D  vms->irqmap[VIRT_SMMU];
+=20
+         /* SMMUv3 node */
+-        smmu_offset =3D iort->node_offset + node_size;
++        smmu_offset =3D iort_node_offset + node_size;
+         node_size =3D sizeof(*smmu) + sizeof(*idmap);
+         iort_length +=3D node_size;
+         smmu =3D acpi_data_push(table_data, node_size);
+@@ -450,7 +455,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
+rtMachineState *vms)
+         idmap->id_count =3D cpu_to_le32(0xFFFF);
+         idmap->output_base =3D 0;
+         /* output IORT node is the ITS group node (the first node) */
+-        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
++        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
+     }
+=20
+     /* Root Complex Node */
+@@ -479,9 +484,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, V=
+irtMachineState *vms)
+         idmap->output_reference =3D cpu_to_le32(smmu_offset);
+     } else {
+         /* output IORT node is the ITS group node (the first node) */
+-        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
++        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
+     }
+=20
++    /*
++     * Update the pointer address in case table_data->data moves during =
+above
++     * acpi_data_push operations.
++     */
++    iort =3D (AcpiIortTable *)(table_data->data + iort_start);
+     iort->length =3D cpu_to_le32(iort_length);
+=20
+     build_header(linker, table_data, (void *)(table_data->data + iort_st=
+art),
+--=20
+2.0.4
+
 

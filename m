@@ -1,154 +1,101 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp3695830wre;
-        Tue, 29 May 2018 08:27:23 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKXI2xcfdJfAN/WdOsN8AtBrya2A5H/5B72Guw6O1tytr1douSQDSsUeWlZnJHCvaxx+xyG
-X-Received: by 2002:ac8:30b1:: with SMTP id v46-v6mr7765802qta.353.1527607643225;
-        Tue, 29 May 2018 08:27:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527607643; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5725700wre;
+        Thu, 31 May 2018 02:54:49 -0700 (PDT)
+X-Received: by 2002:a9d:7147:: with SMTP id y7-v6mr4441184otj.206.1527760489063;
+        Thu, 31 May 2018 02:54:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527760489; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tu6q9EJfi6HAR+AYBgJv6iHXhJfVtZ1kTKtu+WlG9xLL/4l8FE2UtSpZ1QsuIw5OmQ
-         S/FUzACQHT+5ZWWwAj/6CCeuFOJVPwSTZTwRpvWY/UquqAerX/ISHNJS95LvCRSy/Lek
-         Lsi8a2b/I7rWgQtrElOgw/Fi+4GGcQs7KkdH4zOzuEOjgseL2TWoD3XJpptfBJbp7zuq
-         a63TqWbLBUDliWBEqkLsk9h3eyT0nboNLik2QWfOmG62zm2utQFnDjgGxaW475FRv497
-         3m+T0uAieKqE+AvXm/IS8LkqCHc0IPzeKwiQ5W5Q0LT2zQQEUPOZyXu6F0YFJYcCJVeU
-         Q73g==
+        b=DYBf6Y1cUwjtRfU+sfRYY3qFB8Idd/zhZEr9s2t/Jdkc38Xw3Z+uezQfqRMgh5fR6T
+         W6yW+HCniLWvlxLvEowpjr1tX7acEtDROl3yt/2/P5so8u0ba5YViCyjs0TjXuapFxML
+         8uPXRVaWkWp5aE88Eng3RIr1TWWJhy4IdhSONH8AQ0wRZv5Le/dB/7JgyQJllwA9V7ee
+         PhUwODT4Xy8lhghd0KCKVWrS5WqJyzTbTg6s+fO9DuIVCFxvNGYvwi6+3dUN5xOliZns
+         wePCqeDNXIg2Dx8WAUmBJrTvmpOdm3Rd88KwdCEqtidEOG+ZtfqWQkE65SV+FRugqGzR
+         Wcgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:to
-         :arc-authentication-results;
-        bh=n9M1rDbRqSYTQC2kzgBNiXNAZqxoQv2iIwtxXb4vfYg=;
-        b=sLwo440L/SGWHzjio6F4sXieK+4FW1Fd73wAs2gJwG5T+r5iuIIaa0C4+l41W5Gpx6
-         g+qkwi7YPx2KTfJYyQNUdBe19TbivOs6qf5ILdJsb6kL1nID/YdTohcJvW5yfAbhzh49
-         2NAwg14h1GpicTNpc+GZkSJA6LfzaX7c7xUJ/kCKfURoPuZsCsexvpqnjSYNetcwzHEO
-         9FxxXLjYrBM2ydBBDTT4nLZLOANuC42011tHajFuT0/2o8rFgArr86rHyXamNfuSju8B
-         q5S6La48MEYDbdSCxLTl2kmAPld98zl2A7RSukJ29Iic5NzDbsSDBP47XuUFvMW5NXy9
-         e3jw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=0f5c8Y50xoKL7CHQwI1uvvxJomJJar9688DFu2VIzbU=;
+        b=RyqSx0xjyYgTDTQs8n3BSKAc+UrxFVUp+RZpCM9pXZPj7R0pQr4DEQXprZzK6eqpqm
+         llmx6ch2bI4NCNACFr/A7DrpmfHkLO4m/F6T60oqBwFC4CQMOBGUnJAu9Q1GCbOFO0UE
+         ahKWlWILJtPXYijHcT3awx13PB788U9f5IU/Dd3AlPChZ3Wpkllsv8/Vv89zHxJF7UbD
+         TII71qV39PNyL+xzfi7hiRQSMjVsir4OGF+EKkehTfdmLEJ59CaAffRPRhzlzXJiNGew
+         beeqUzl9UvHx1wLtrZ0u7M9KFyXVkeYQwDW/m6i+E7+ICaWOsCZo0Itu1vPNJhHoquVP
+         Wb2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l7-v6si5540036qkd.186.2018.05.29.08.27.23
+       dkim=pass header.i=@linaro.org header.s=google header.b=QtoIEbGj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b202-v6sor16582300oih.242.2018.05.31.02.54.48
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 08:27:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Thu, 31 May 2018 02:54:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33546 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNgWw-0003cD-Np
-	for alex.bennee@linaro.org; Tue, 29 May 2018 11:27:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55320)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1fNgWl-0003aU-QS
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 11:27:13 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1fNgWi-0001uv-HX
-	for qemu-arm@nongnu.org; Tue, 29 May 2018 11:27:11 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35148 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1fNgWi-0001uj-EA; Tue, 29 May 2018 11:27:08 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 03E11406E89B;
-	Tue, 29 May 2018 15:27:08 +0000 (UTC)
-Received: from [10.10.125.63] (ovpn-125-63.rdu2.redhat.com [10.10.125.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 462582026DEF;
-	Tue, 29 May 2018 15:27:07 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-22-f4bug@amsat.org>
-	<CAFEAcA_PRH_BuUOTtC=cvRFT7Gtiwt50T6C3avm+Sy13aDS4tg@mail.gmail.com>
-	<ae090923-3523-3e56-fbc1-65b270680939@amsat.org>
-	<e0d37c83-537a-5288-b033-e5be3b8858ca@redhat.com>
-	<c1078250-30a0-0d4c-d830-88591fb6ba43@redhat.com>
-	<713f16f9-3faa-7644-38c6-0797252d5922@amsat.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <63a61375-ef2e-970c-7f43-6cfe1d7666b1@redhat.com>
-Date: Tue, 29 May 2018 10:27:03 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=QtoIEbGj;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=0f5c8Y50xoKL7CHQwI1uvvxJomJJar9688DFu2VIzbU=;
+        b=QtoIEbGjZNcBjnKAnK7fUwhQ6IYjQ3m36CsWCFr/E8q56L+F6hqvyB0deJViZF+5H1
+         edBCwvn89mcjMmgXnaojBU5w4+zu2EsPLrU3Epljtp9X5yTsiY4E474fwNYtNUA3e1qS
+         +1uhzJNSpvTUNM0eLiRlIU5fUofv0GbYHgC/Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=0f5c8Y50xoKL7CHQwI1uvvxJomJJar9688DFu2VIzbU=;
+        b=Q+hmfags3bf0m2mXzxIGOU7yTkbwjx5hLyxAYcIN5Up5/8YoPYk5DX9hEQqw9wsHu7
+         W50qRwvLRNDpBAIBfrO5wd6u/trJpSJAp5CVLJS/BPw+On/fVZgFYJ+S6kie5QqbsEg6
+         HwmV2lc097RLb4GazEgQiGJpcVTEs9w4t0riW4roYL7ZbwoylNa62KACOE4KyMxvAFfC
+         cPike/hW2EIY8xopBodWn+fxcmSblgjOhlWmfDfsPLe8rwuu3ddgcUyhVuVlIXlhx85p
+         VaD/LmeKqwQidMps20Ku86IUIwA0ke+/qiKEqShFOxCDawilCbM9lmHt8C9jYWAulgte
+         6KGw==
+X-Gm-Message-State: APt69E0pSlahlf69OBLEBI2gytRkrWfNytscLq6vk9+y1cEaRDIOv/Ju
+	0JASyw2SHarQq4QZAL5wVh1srjy24Th+5mVtaBuUt2n6
+X-Google-Smtp-Source: ADUXVKL/HqdbcB7+kAIYDf37RIwyMiwQqjgXbGEIK7GBJGV7CZHKr2kMm/XG3OKD+Nq6pSt+SzJjAVpuhOuBJAYyLsE=
+X-Received: by 2002:aca:4ad2:: with SMTP id x201-v6mr3210816oia.11.1527760488631;
+ Thu, 31 May 2018 02:54:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <713f16f9-3faa-7644-38c6-0797252d5922@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 29 May 2018 15:27:08 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 29 May 2018 15:27:08 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for 2.10 21/35] arm/sysbus-fdt:
- fix null pointer dereference
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wdIxD2AjpFzr
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Thu, 31 May 2018 02:54:28
+ -0700 (PDT)
+In-Reply-To: <87a9fff7-0a53-6b52-eb2c-e721556cf87b@redhat.com>
+References: <20180521140402.23318-1-peter.maydell@linaro.org> <87a9fff7-0a53-6b52-eb2c-e721556cf87b@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 31 May 2018 10:54:28 +0100
+Message-ID: <CAFEAcA8XkCAK1GKHXKEBgxrVW75E9i3cDFw0iF68V7y7x8h-0A@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 00/27] iommu: support txattrs, support TCG
+ execution, implement TZ MPC
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Richard Henderson <rth@twiddle.net>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	"patches@linaro.org" <patches@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: jxjLusgVu1rR
 
-[adding Markus, as the error maintainer]
+On 30 May 2018 at 17:58, Paolo Bonzini <pbonzini@redhat.com> wrote:
+> On 21/05/2018 16:03, Peter Maydell wrote:
+>> This patchset is a rather large one, but the first half is all
+>> fairly simple plumbing. It does four things:
+>>  * support IOMMUs that are aware of memory transaction attributes and
+>>    may generate different translations for different attributes
+>>  * support TCG execution out of memory which is behind an IOMMU
+>>  * implement the Arm TrustZone Memory Protection Controller
+>>    (which needs both the above features in the IOMMU core code)
+>>  * use the MPC in the mps2-an505 board
+>
+> Go ahead and apply it through the ARM tree.  Thanks!
 
-On 05/29/2018 09:33 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+It needs a v2 (there are some patches that need fixing),
+and some of the tail end of the patchset hasn't been reviewed,
+and I'm not sure if we have consensus on the IOMMU API changes
+completely yet. But if you're happy we're going in the right
+direction I can apply 1-13 via target-arm.next (that's the
+"plumb TxAttrs through various functions" patches). That will
+reduce the size of the patchset and make conflicts less likely.
 
->>>> Ok I see, Clang is unaware than error_setg(&error_fatal) is a noretu=
-rn.
->>>
->>> Indeed, and that's because error_setg(&error_fatal) is not in preferr=
-ed
->>> form.
->>>
->>>>
->>>> Patch dropped.
->>>
->>> That's a shame.  Rather, we should patch this file (and others) to av=
-oid
->>> all the inconsistent uses of error_setg(&error_*), to comply with the
->>> error.h documentation.
->=20
-> I started to port/clean this up.
-> To avoid future inconsistencies, do you think we should/can enforce thi=
-s
-> check in checkpatch (which is stricter than human review)?
-
-Sure, automating good code style is worthwhile.
-
-> Is the "Qemu error function tests" section a good place to put this che=
-ck?
-
-Probably works.  I'm not familiar enough with checkpatch as a whole to=20
-have any different suggestions off the top of my head (basically, any=20
-time I've touched that file, it's been grepping for something that is=20
-similar to what I want to be tweaking, rather than reading the whole thin=
-g).
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+thanks
+-- PMM

@@ -1,166 +1,142 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp507012wme;
-        Fri, 18 May 2018 08:58:41 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpcFF0IXZGU/RalrNLW3F6U81UpaErMEusly8A3hzHT1EIJJrPQ05pBTsAmePB+YKfOwVpB
-X-Received: by 2002:ac8:73cc:: with SMTP id v12-v6mr9949981qtp.208.1526659120954;
-        Fri, 18 May 2018 08:58:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526659120; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5444037wre;
+        Wed, 30 May 2018 20:17:00 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLxR76oM0D566E7mRw6I0QDfTgMe5s/85TQ2NYRDev72JFM24BEVuUCB8TArlJislU5BbzC
+X-Received: by 2002:a0c:f288:: with SMTP id k8-v6mr5056370qvl.14.1527736620158;
+        Wed, 30 May 2018 20:17:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527736620; cv=none;
         d=google.com; s=arc-20160816;
-        b=p7/4aLXehPN/5buDKiskFMKBH6ZzFiyL83xM/vNgonp/VWt4GPJfIQg5J9aUSCfFsj
-         0Om6X4PRUy1/jHbzdIuLiu51mIQVjB7WBO5ByBj3wj6ZauwwEXOaHvE1r8aLQVf2RQaI
-         9D+VWk6lB+nW2RLP1hnak5gc/cl7kkZI6qrQR3RZnxpP0g9Cm4223zt+8mPePeOdQXOu
-         aTx/vkj2CarSNSGnBMqYffwllCwXoah1HDRC3NqEYGO4+idPRaK5TwNQiHE2Qf3Y/8Ow
-         00YVy3qxb2TfQZ2wlnv36wwX7KQ+qPSdvlWVGHuxHBDuHb29z1Y9mZWNvW9Q/ZW8juiO
-         qzFQ==
+        b=koJWQdqW+co1dKR82TZNZpidR8xdM0l2tnbzpyQwoaiCrARdHDq/uxRbyfCC2xgCla
+         K5MfvckNQfHS9WII/+Os9O+GZGe2Is8uAbGHqIxTgtVru6kROx9q+prejXB6pVidS9rc
+         LZ9stUY2EtEZhSPYxVqX+fQwYV2s/8ZDU+/UNKCf3pkhNKI5h07Ydl2yycZyxQtApH4v
+         +ejjnbLsxNmNwKQxSN6XAnsSV7I86ANHu9Vf9gy30eys49kIeWwTAERCbMhaeyBHAPl5
+         VbdcWwcl/E5jNbpBMiPtXy2P81X18r/ilgtk88opnyXKjxSVDa3rOeKYyVjFv/ZdmaEY
+         lhRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=3GdGHB3zqtNCnJ5APdUZVoVeZDu1QqYnX602Ml0xPoM=;
-        b=Pog6g91cgHDilPgIf7T8IB8BrbMQCyJL607f6r2D8YuJR4zdwaQ/ufCkkr3umMOFLg
-         VpbqljdwMg34y6RPdmqYa9lao6gaUxwfifEkQ/cH4tpZCCEKxhERFLadU+t88AsHLkSv
-         ln9rT/eaa/CdUEeL56JicU5urjlvefozU/0z7jL98CJIk/AHG4llQ7bD8J3Tc3/8MuEF
-         XquAdn5SBvyt5nCWZPw8S8f3h5/hgPRkv3Qut3BukYR5W+YkRPzIkWovDkBHeaEa7sV3
-         L/GhGENWnBIw/LFuU1EKFosVOPmwySmRqqwiRmX4kpcQHNxtQSIg+BBeNQrp1qktDVgR
-         HjTQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=32HNVgkLdpIMgJuM/IwD2UagXYNDQFL8E/w2hxbw1II=;
+        b=us6btv933VFVYK5ju2EEbeaQtNJPWiqak/qL/mrtWXOinFkZcO8HpQoIzxqJFZw14T
+         a3sOF+2qE7+Dn8uDGbCjHnE85HK2f90gwSQD7E6S0ZcLOxIqEFWZt8jwbMQBdxCZNlMf
+         Roc67BDBMYRu+M2F6hX7T2rGLZPMF1aaVLB64Mpnm7C7q71pPZDFNi4oycv71vZuk3Kj
+         QR2JJKnOODgokQiTU1t5EztgLO+2FEtNfJY3c2pq01fpHR0t9X+1sHZp6MuB2tcXO5CM
+         dvDUnycokDcOaoUHQ3YAT1J/MN6/5S+kF45/UeWPr8Q5vov9JB+LVzPhl4A7iZQtUaRr
+         A/pA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=frsuvOVY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h20-v6si7356011qvb.51.2018.05.18.08.58.40
+        by mx.google.com with ESMTPS id e1-v6si8104194qtc.6.2018.05.30.20.17.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 18 May 2018 08:58:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 May 2018 20:17:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=frsuvOVY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39683 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41755 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fJhmC-00015s-HZ
-	for alex.bennee@linaro.org; Fri, 18 May 2018 11:58:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44876)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fOE5D-0004OY-Ff
+	for alex.bennee@linaro.org; Wed, 30 May 2018 23:16:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50554)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fJhl8-0000l5-VG
-	for qemu-devel@nongnu.org; Fri, 18 May 2018 11:57:35 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fOE54-0004Nw-18
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 23:16:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fJhl5-0000I4-TB
-	for qemu-devel@nongnu.org; Fri, 18 May 2018 11:57:35 -0400
-Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:43880)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fJhl5-0000Hc-Nj
-	for qemu-devel@nongnu.org; Fri, 18 May 2018 11:57:31 -0400
-Received: by mail-pl0-x242.google.com with SMTP id c41-v6so4815187plj.10
-	for <qemu-devel@nongnu.org>; Fri, 18 May 2018 08:57:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=3GdGHB3zqtNCnJ5APdUZVoVeZDu1QqYnX602Ml0xPoM=;
-	b=frsuvOVYIvVuTDumpTSSGHMmuY6Y4iNLKX4OX7hfrVzO5RBRMPlucTh2PdhNjP7LfS
-	f544qarOQt+aIa5XCWMpy6xftNgVcd71f4Mv71/axGjm7jEk9yph/5w4xvGrs7S0JFd2
-	4SxRb01zxx/YAaJjBtx5XrzoA5xMsduKjmUDE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=3GdGHB3zqtNCnJ5APdUZVoVeZDu1QqYnX602Ml0xPoM=;
-	b=NEHgdKLeWnMBgeloEpwh6xIJ9nGnhf0cX5+rlLDuLRvk1+n6ow02lDuEYvb+BswOeB
-	IbYZVl5T33yIm4/ru3mW1zjMY5aXqtDE5u6uX7oWqN05rek5XetEMYjfTjjRC7BhHufL
-	0mVgF7EtxbY0GjZnYMzg+PWisLP+tL+w6wlWd0UdxmqaKejx1KDrqG30N+BNSHiKxkVV
-	X5HFAh/V25zkOc71S58CIimzCXmLxjf2P4hP2Q20+lHsjLz1sJYeIwoDGPHB+pS4haDx
-	+zcI+R0yzvZbY6WXyP2XaUXW6Yewpkq6P+PC+EwrcmZl0dF0AAkvM6yvaRQcWX3xSk7S
-	pFJg==
-X-Gm-Message-State: ALKqPwdDx5gdQ+h/I7NQUQroMVMpctOJVsaHVcClhf/xY9Hx0+R38zxt
-	yIhsWkJgyOXFPxAmNHyOkSJg7Kx4rm8=
-X-Received: by 2002:a17:902:164:: with SMTP id
-	91-v6mr10203680plb.134.1526659050198; 
-	Fri, 18 May 2018 08:57:30 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-113-2-170.tukw.qwest.net.
-	[97.113.2.170]) by smtp.gmail.com with ESMTPSA id
-	v23-v6sm12627399pfe.166.2018.05.18.08.57.28
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 18 May 2018 08:57:29 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <rth@twiddle.net>
-References: <20180513090613.27960-1-sw@weilnetz.de>
-	<cc3f26a7-a8b7-35a8-9ffa-c5940c9c1927@weilnetz.de>
-	<CAFEAcA9kcKb28uQJOnqCAC4Gf9b7Hnu0wJbG1nHQLF4U1T9sKA@mail.gmail.com>
-	<99693ba4-c282-a10b-e811-697617f7ee06@weilnetz.de>
-	<CAFEAcA81y1r5N2zi5fPoV5iZ9dd0YBeThcX=qXdJXdNSNO8nsA@mail.gmail.com>
-	<291b8b6f-1692-a5ee-f44c-4f8c4dd614fa@twiddle.net>
-	<CAFEAcA_REPB2kdppWCo+YbBekLp+FfPVr_rvWVQU2F=H1EsOCA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <3e9041c0-b482-84e2-5a4d-b86e12b04a44@linaro.org>
-Date: Fri, 18 May 2018 08:57:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fOE50-0004WX-01
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 23:16:50 -0400
+Received: from [45.249.212.35] (port=40702 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1fOE4z-0004Us-Kp; Wed, 30 May 2018 23:16:45 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id B5F6920FF1A53;
+	Thu, 31 May 2018 11:16:39 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server
+	id 14.3.382.0; Thu, 31 May 2018 11:16:32 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>
+Date: Thu, 31 May 2018 11:15:56 +0800
+Message-ID: <1527736557-11084-2-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
+In-Reply-To: <1527736557-11084-1-git-send-email-zhaoshenglong@huawei.com>
+References: <1527736557-11084-1-git-send-email-zhaoshenglong@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_REPB2kdppWCo+YbBekLp+FfPVr_rvWVQU2F=H1EsOCA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::242
-Subject: Re: [Qemu-devel] [PATCH] disas/libvixl: Fix VIXL_FALLTHROUGH macro
- for QEMU
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+Subject: [Qemu-arm] [PATCH v5 1/2] arm_gicv3_kvm: kvm_dist_get/put_priority:
+ skip the registers banked by GICR_IPRIORITYR
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 82kbR/ocyeku
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, eric.auger@redhat.com, qemu-stable@nongnu.org,
+	qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Pn8bZZBcBLxX
 
-On 05/18/2018 03:34 AM, Peter Maydell wrote:
-> On 15 May 2018 at 15:46, Richard Henderson <rth@twiddle.net> wrote:
->> On 05/15/2018 06:25 AM, Peter Maydell wrote:
->>> That said, I think we're planning to deprecate vixl now we have the
->>> capstone support. Richard, what's the status here? Could we just remove
->>> the vixl code now?
->>
->> We could just remove vixl, yes.  I'd like to see updates to capstone to support
->> instructions post v8.0, but it's not like we have those with vixl either...
-> 
-> Just to check my understanding: with QEMU at the moment, you
-> always get the capstone disassembler unless you specifically
-> turn it off by passing --disable-capstone to configure, right
-> (since we provide it as a submodule)?
+While for_each_dist_irq_reg loop starts from GIC_INTERNAL, it forgot to
+offset the date array and index. This will overlap the GICR registers
+value and leave the last GIC_INTERNAL irq's registers out of update.
 
-Correct.
+Fixes: 367b9f527becdd20ddf116e17a3c0c2bbc486920
+Cc: qemu-stable@nongnu.org
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+---
+ hw/intc/arm_gicv3_kvm.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-> We put that in in September last year, and we haven't had a
-> pile of complaints about the disassembly (or indeed any
-> complaints that I can recall), so I think we can consider it
-> a success, and remove both vixl and the ancient binutils arm
-> disassembler.
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 3536795..147e691 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -135,7 +135,14 @@ static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+     uint32_t reg, *field;
+     int irq;
+ 
+-    field = (uint32_t *)bmp;
++    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
++     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
++     * functionality is replaced by GICR_IPRIORITYR<n>. It doesn't need to
++     * sync them. So it needs to skip the field of GIC_INTERNAL irqs in bmp and
++     * offset.
++     */
++    field = (uint32_t *)(bmp + GIC_INTERNAL);
++    offset += (GIC_INTERNAL * 8) / 8;
+     for_each_dist_irq_reg(irq, s->num_irq, 8) {
+         kvm_gicd_access(s, offset, &reg, false);
+         *field = reg;
+@@ -149,7 +156,14 @@ static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+     uint32_t reg, *field;
+     int irq;
+ 
+-    field = (uint32_t *)bmp;
++    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
++     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
++     * functionality is replaced by GICR_IPRIORITYR<n>. It doesn't need to
++     * sync them. So it needs to skip the field of GIC_INTERNAL irqs in bmp and
++     * offset.
++     */
++    field = (uint32_t *)(bmp + GIC_INTERNAL);
++    offset += (GIC_INTERNAL * 8) / 8;
+     for_each_dist_irq_reg(irq, s->num_irq, 8) {
+         reg = *field;
+         kvm_gicd_access(s, offset, &reg, true);
+-- 
+2.0.4
 
-Yep.
 
-> It would also be interesting to try interacting with capstone
-> upstream about adding support for newer instructions (for
-> instance they don't do the v8M insns). Do you know if capstone
-> deals with new insns via resync from LLVM or if they've
-> entirely forked and just make changes locally by hand?
-
-They seem to have entirely forked, but I'm not completely sure.
-
-
-r~

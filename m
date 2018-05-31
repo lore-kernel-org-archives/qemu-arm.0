@@ -1,101 +1,92 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp625714wre;
-        Fri, 1 Jun 2018 06:26:07 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIDFk92nVN/aI/EbxxO6DrK7W/j5HdRySFeGRbxcJ2kk/4Tn8dZbINik0pYuoW9Hr7GQZLW
-X-Received: by 2002:ac8:3ff0:: with SMTP id v45-v6mr10788159qtk.57.1527859567060;
-        Fri, 01 Jun 2018 06:26:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527859567; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5781876wre;
+        Thu, 31 May 2018 04:02:03 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIuPjeTMfpH2ZjDl3Jj6WBoL4DOsYXq6HFLg4zLlJROuy15IvRqfwaYIaGanVbpd4OPtc9x
+X-Received: by 2002:a37:c08e:: with SMTP id v14-v6mr6001902qkv.23.1527764523321;
+        Thu, 31 May 2018 04:02:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527764523; cv=none;
         d=google.com; s=arc-20160816;
-        b=N56szEK91Sm2WXv8ueCrAvf0x/jV3C5rdSNfMN1IR1U1wWWaioh7QkqAi1D8FgnUip
-         IOvulkZcYQhcBYCj1caHTo1hOzqfLyNuQdpgIZPPVv7W+/MDm1SKP5Yig+mY8rdNt7Rk
-         0oK8vuzV8TZMKig7Hl4UAmGq+59Me4K+gUVV4CFeTllabG7LMI8LurvTUL4pw+elmq+E
-         ZLQHxcJq2+TLxfqsHMTNV/589s2MoVru5dXO1gNG0xi/0sg+OOf1cbLNiPXSeSNCZ1Af
-         iRE2F1F2svW1vdvuA6fhu4RpEcwuEiBByf6TpQP/e/21yQDU8gfACnyVD9xj5Kr5Tnbx
-         i9SA==
+        b=ecKkAtOKtEMzWQSSxCitIo/sTVqJoZuoIGZPbXJ1cpoD2JlpN80wzPVrDrlwwUW+7p
+         xZeetmr3p4QfiPfLsOdOB/wYH5b9mJBo/Fg8kcI56WIFUFXQHz50ltcVzBk7a+ULECMB
+         PWtTUhWAwcYeUyD9Pc7ssjUSBVLrImALNUYaC9eKOT0QLIYX1PKemWFjpxsSpNx/9j3W
+         MmAjsi7V+tOa4qOHq7IJBiLIefA/HbMCl5q67Q4j73Bp6mCyXZUUrwoJzmNlLSklCfck
+         hbbAqaFWsqHZymmAcWGGLaFs9eImX+RZpi7RgdlANPr34n14y9euCOk7u3s9Xnx1BLHD
+         G32w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=iDcqQ/Cucdvyc3PLcUDH9N+4zz12bR4uSIxFYN04dJM=;
-        b=zwa9+aRfPYR7tE5pG9tvng7AbhPTTwNPSnD9A1NX4K0yGpJTesc9zqrUcUqlsFMXBG
-         Cze9SPHBeCKburKC1NHoxpzlwHQBYj77TMNtc4F2hEtBI+CHmsJyXpbOhMpMlhMsEKp3
-         TEQ6jjCFyCf/fsIBXKhCJ52bIo8MjsxHGa/nHtQPU0GB1SoNXPM7h9DGnZKNdbsMdIZE
-         TzcI1eGzJJw5vNvucTZfllxzJXWnkQqxmEcRE5eE+NrRIUDL9xEnux4T90lNa9zxLtc5
-         X7jxThBDPv9nhuoXK53aEwt1A7TqGFYhkNj6bu3enSBmlIBF4iUrCNba5/aq8IwQFXNz
-         UyOQ==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=8NAX21FOBfx4OOdBqUxUYcrrA8THKgimI+1M2MMpnrk=;
+        b=t4X5ybENINhPRfUqeXypkFosBz5n8Bs6KLZA2fVOOvx4NmwnFb1fCuEtRWUtseXc3V
+         s6kCV4jqkYTptqON8HyGvDmrWj/Ov/+D0mJj9SdLwlpd6GTVomSuHdOo/XVhBia7Ehgl
+         zrzk4AZEOJtqnqri6RTdLR4XJ/2e1AzlEPcsRAarzeZd6VlamNQGFxc5nss+PqudkkIt
+         K2sJDL/q6fAdW5TwjvIbhCWumITZpLiQPBHfi+WWiDNtNMCkeiYs/wBwF2jP8Pz7PNFj
+         sXeGZkTwkGa/PQsYV2pUHjOGSDtIFaMt1wOWyJ9w/FV0wll+fBpbmdmLtbV7rUfVoW8n
+         Diyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TYIsP2po;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 7-v6si3186236qtg.212.2018.06.01.06.26.06
+        by mx.google.com with ESMTPS id u89-v6si1253517qvu.3.2018.05.31.04.02.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jun 2018 06:26:07 -0700 (PDT)
+        Thu, 31 May 2018 04:02:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TYIsP2po;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55727 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43114 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOk4E-0007vx-Hk
-	for alex.bennee@linaro.org; Fri, 01 Jun 2018 09:26:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53800)
+	id 1fOLLG-00018o-SM
+	for alex.bennee@linaro.org; Thu, 31 May 2018 07:02:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fOk46-0007vk-87
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 09:25:59 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fOLL3-00017q-6A
+	for qemu-arm@nongnu.org; Thu, 31 May 2018 07:01:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fOk45-0005ND-6a
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 09:25:58 -0400
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:35097)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fOk45-0005Mu-0r
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 09:25:57 -0400
-Received: by mail-ot0-x243.google.com with SMTP id q17-v6so18678106otg.2
-	for <qemu-arm@nongnu.org>; Fri, 01 Jun 2018 06:25:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=iDcqQ/Cucdvyc3PLcUDH9N+4zz12bR4uSIxFYN04dJM=;
-	b=TYIsP2poSEHkPP6crS26UKM0wxJgtQM3pDl0qFcFn2Vp4WI5wKcnTnmwaqVZqib6WP
-	54mOI5aFwykV8u/YoO9nsND3HZx2W0B0IuQS4Er01sH/kLw2R79QkNdTMNydoxAY2tjd
-	nrK8q2jj4x1LfME92/GqYlEQdORzOAezI0KHQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=iDcqQ/Cucdvyc3PLcUDH9N+4zz12bR4uSIxFYN04dJM=;
-	b=spw8bSQkceTK9fW2lAKeWlxDGaGi4teVm9/mUmmauCTsAr/LIW0o8IqsaFmkHtu3UJ
-	M7IXPraV7yWR6PxKyK9dShqz02Hg4coEsut6iSnXBCSNGFOuiKmVn3grlgBArIM9P4d1
-	s8CdYi9T4Azp1Hd8hPZq7ZXtTmSE2+STuzujc1FWJQ62FIxMlE92CAmxN7D3k3ChvAvo
-	ROKYfTUPgSIv6FGQKTfvdtIkXkF0Ab24duAm4xmuy465x/bUOozBTSnsbU3uoqX+jiHh
-	zuTtENfNgyZccN1u8Y7QXYHkzMl56hzTgFKxU8mHvSzmn9REcGYM0hzOkHfCaO39jkWb
-	b/uw==
-X-Gm-Message-State: APt69E2oaHJmSQPWeMNMDrTHIrMmpzJF0yXUgpO9R2Q/fY8X65ax0X8Q
-	p0PS00oIKSi4UBf5KnJFlAnJZNPhSNGz1EM4V/1+cA==
-X-Received: by 2002:a9d:705d:: with SMTP id
-	x29-v6mr7707624otj.308.1527859556264; 
-	Fri, 01 Jun 2018 06:25:56 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1fOLKz-000836-8r
+	for qemu-arm@nongnu.org; Thu, 31 May 2018 07:01:49 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50860 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fOLKz-00082A-3K; Thu, 31 May 2018 07:01:45 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 691524023B91;
+	Thu, 31 May 2018 11:01:44 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5C52583B9C;
+	Thu, 31 May 2018 11:01:43 +0000 (UTC)
+To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
+References: <1527736557-11084-1-git-send-email-zhaoshenglong@huawei.com>
+	<1527736557-11084-2-git-send-email-zhaoshenglong@huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <e7bb1cbd-7fad-5bd2-641c-885f0f473680@redhat.com>
+Date: Thu, 31 May 2018 13:01:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
-	Fri, 1 Jun 2018 06:25:35 -0700 (PDT)
-In-Reply-To: <0184EA26B2509940AA629AE1405DD7F201CAECD7@DGGEMA503-MBX.china.huawei.com>
-References: <0184EA26B2509940AA629AE1405DD7F201CAECD7@DGGEMA503-MBX.china.huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 Jun 2018 14:25:35 +0100
-Message-ID: <CAFEAcA9y_A5x-ELXbOGFp34FGKBED0v568tD8=corZn9cjJGzA@mail.gmail.com>
-To: gengdongjiu <gengdongjiu@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH RESEND v1 0/3] add support for
- VCPU event states
+In-Reply-To: <1527736557-11084-2-git-send-email-zhaoshenglong@huawei.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Thu, 31 May 2018 11:01:44 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Thu, 31 May 2018 11:01:44 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH v5 1/2] arm_gicv3_kvm:
+ kvm_dist_get/put_priority: skip the registers banked by GICR_IPRIORITYR
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,57 +98,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "famz@redhat.com" <famz@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Linuxarm <linuxarm@huawei.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"james.morse@arm.com" <james.morse@arm.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+	shannon.zhaosl@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HA/kmXCChQ2y
+X-TUID: xcxBUFaxhRT6
 
-On 1 June 2018 at 14:17, gengdongjiu <gengdongjiu@huawei.com> wrote:
-> Hi Peter,
->> This series failed build test on s390x host. Please find the details bel=
-ow.
+Hi,
 
->> /var/tmp/patchew-tester-tmp-hwsn3wsl/src/hw/display/virtio-gpu-3d.c: In =
-function =E2=80=98virgl_cmd_get_capset_info=E2=80=99:
->> /var/tmp/patchew-tester-tmp-hwsn3wsl/src/hw/display/virtio-gpu-3d.c:366:=
-26: error: =E2=80=98VIRTIO_GPU_CAPSET_VIRGL2=E2=80=99 undeclared (first
->> use in this function); did you mean =E2=80=98VIRTIO_GPU_CAPSET_VIRGL=E2=
-=80=99?
->>          resp.capset_id =3D VIRTIO_GPU_CAPSET_VIRGL2;
->>                           ^~~~~~~~~~~~~~~~~~~~~~~~
->>                           VIRTIO_GPU_CAPSET_VIRGL
->> /var/tmp/patchew-tester-tmp-hwsn3wsl/src/hw/display/virtio-gpu-3d.c:366:=
-26: note: each undeclared identifier is reported only once for
->> each function it appears in
->> /var/tmp/patchew-tester-tmp-hwsn3wsl/src/hw/display/virtio-gpu-3d.c: In =
-function =E2=80=98virtio_gpu_virgl_get_num_capsets=E2=80=99:
->> /var/tmp/patchew-tester-tmp-hwsn3wsl/src/hw/display/virtio-gpu-3d.c:646:=
-32: error: =E2=80=98VIRTIO_GPU_CAPSET_VIRGL2=E2=80=99 undeclared (first
->> use in this function); did you mean =E2=80=98VIRTIO_GPU_CAPSET_VIRGL=E2=
-=80=99?
+On 05/31/2018 05:15 AM, Shannon Zhao wrote:
+> While for_each_dist_irq_reg loop starts from GIC_INTERNAL, it forgot to
+> offset the date array and index. This will overlap the GICR registers
+> value and leave the last GIC_INTERNAL irq's registers out of update.
+> 
+> Fixes: 367b9f527becdd20ddf116e17a3c0c2bbc486920
+> Cc: qemu-stable@nongnu.org
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-> This build failure is due to kernel missing the definition of "VIRTIO_GPU=
-_CAPSET_VIRGL2", I sync the mainline kernel tree header file to the mainlin=
-e QEMU using the scripts[1],
-> So happen this failure, It does not related with myself patch, so can I d=
-iscard the patch [1] or add the =E2=80=98VIRTIO_GPU_CAPSET_VIRGL2=E2=80=99 =
-definition to mainline kernel tree?
+Thanks
 
-This is a known issue with the kernel headers (hopefully somebody
-will fix them). There are several nits and also bugs in the
-update-headers script that I sent a patchset to fix recently:
- https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05803.html
-
-You should wait for that to get into master (it is in Paolo's
-most recent patchset but that has an issue with a different
-patch, so is waiting on Paolo to do a respin). Then you can
-base on that. At that point a simple script update should
-work fine (if you need anything in rc7 that wasn't in rc6).
-
-thanks
--- PMM
+Eric
+> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+> ---
+>  hw/intc/arm_gicv3_kvm.c | 18 ++++++++++++++++--
+>  1 file changed, 16 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+> index 3536795..147e691 100644
+> --- a/hw/intc/arm_gicv3_kvm.c
+> +++ b/hw/intc/arm_gicv3_kvm.c
+> @@ -135,7 +135,14 @@ static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+>      uint32_t reg, *field;
+>      int irq;
+>  
+> -    field = (uint32_t *)bmp;
+> +    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
+> +     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
+> +     * functionality is replaced by GICR_IPRIORITYR<n>. It doesn't need to
+> +     * sync them. So it needs to skip the field of GIC_INTERNAL irqs in bmp and
+> +     * offset.
+> +     */
+> +    field = (uint32_t *)(bmp + GIC_INTERNAL);
+> +    offset += (GIC_INTERNAL * 8) / 8;
+>      for_each_dist_irq_reg(irq, s->num_irq, 8) {
+>          kvm_gicd_access(s, offset, &reg, false);
+>          *field = reg;
+> @@ -149,7 +156,14 @@ static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
+>      uint32_t reg, *field;
+>      int irq;
+>  
+> -    field = (uint32_t *)bmp;
+> +    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
+> +     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
+> +     * functionality is replaced by GICR_IPRIORITYR<n>. It doesn't need to
+> +     * sync them. So it needs to skip the field of GIC_INTERNAL irqs in bmp and
+> +     * offset.
+> +     */
+> +    field = (uint32_t *)(bmp + GIC_INTERNAL);
+> +    offset += (GIC_INTERNAL * 8) / 8;
+>      for_each_dist_irq_reg(irq, s->num_irq, 8) {
+>          reg = *field;
+>          kvm_gicd_access(s, offset, &reg, true);
+> 

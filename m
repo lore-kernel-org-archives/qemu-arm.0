@@ -1,205 +1,1118 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4353603wre;
-        Tue, 29 May 2018 22:36:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLvfytcLR9AIW8fxksJCxduh1l6pZw6XTzI9fcBQlmPBwdvA3WtqzSkopggSfd5N+KCfb/b
-X-Received: by 2002:a0c:85e6:: with SMTP id o93-v6mr1205427qva.27.1527658560785;
-        Tue, 29 May 2018 22:36:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527658560; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5367099wre;
+        Wed, 30 May 2018 18:14:58 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLpcB3YkgjtSrBWZvYhpIf+2AGesjJwQn1J7Tmrif8ULTeGmXF11ZPphLQG+lg/dAmlnOFs
+X-Received: by 2002:a0c:e987:: with SMTP id z7-v6mr4828910qvn.202.1527729298816;
+        Wed, 30 May 2018 18:14:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527729298; cv=none;
         d=google.com; s=arc-20160816;
-        b=tPNNbT+ZuSXgOctOSlKBXe/Gy2T9/XctWVF90hje8C6hw/y64p1vOq1pdRANlgAyH8
-         sU1qck0QQhZr2xyTSsJd6ZwvPPau7ndILk2ToyV1rKzgYd/hXmW6V2kcEqp7MIYTzrIT
-         pkX7L2Bjv/jpboOHuzq3hzEyQSUFkHvr2A7mXMcPHIbMGY9Z8vzmKEztMW9PoXYZYfTB
-         tfVXD6L0r77LDUPrfLUBOcm1rGSfbs2sgWzCv4jEhrtz1jAzaHTrW1u8VNUFifvlPCMz
-         REQkR/cKp5jn11YK2/3oPq+/nbG9z6TPbQrqG2qu2sUXRm+hELHD3wWmrapG5OICQAs3
-         xxTg==
+        b=rV7vwoNTvNBtEFOX14hW2CJF7/CJPnWGT0okcbEzxa+EXfTk72Rit3bGZjccSAdHxs
+         4RIfcP3B3E+HPXyUpvsBpbTjH0yxO6iGivaMVHUr2G/LSi7VZqM6nBT4PxBcRFI+qPuW
+         aoIOVOixYswDrn77VWKDzS803YiqxqQU6jiyvdCjS6i3EFtSjkJ5v2kYn29+nrqvU04X
+         WvW30RV8yj4TdrQvWI03aib3ZwwmVt3fhB+8ZJM+iRgG1rZ2rbQn2ebuI8SRsiI0vktU
+         fClr9wOpo+rdadQ73GsER7yd6bAD426WDFiSfxvgivKPOjeGtCQBJoa4IDmOTmVXe7hQ
+         FLRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
-        b=NbNjMOqVzB+9dmJSX5Uaj/KLb4QyRpZmfKkj5monZdb3M1hoAwMDZR+BawP+rlXftZ
-         hm4UKB1gF3hAu5sMbDE0tMjfvfHd0TaQpsFKLMDTMaRTofbxRa5MmXzPTFsMuMcs9yx0
-         SzKSE0CTSdKAsh/MyIMm0W8KmwJ0trBouESn6liMyRFyGTpTCooZNHSoEn90GrBVq7kL
-         acbU2mCT08VGPmeRDCPcpHn2usarJwqj0qDQa51rKdj6tWH8Am1qgy2QHNI7Skg09Moj
-         aS4gIdWXnnFPh7vNOb3fFTxbIMMadD/zWUYpyhgcB7vf1UFeH/DraGKnwlTp2DoGBZbb
-         MhHQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=SuqwkXirLUSTan6bmjJZFiVPxLoftQ+nJJlDpI0M09A=;
+        b=pj+T21Pv2q7I6E/ElDXL1AmgOmm5YlCDw/e0/ZdU44cleYJyQBF4SzumMXa/CqTq2+
+         /8mQyTz9eYTLHIibmKmCTM1yRt7PSvDoJo7WYekgvCPGKFSBcGp663BRaee3MOtYkQWb
+         fiJz0vxGrHRy9tj4lDBOMKO/N0Vr09FSOn4ILJ24B3Fht2FVKNKz7ZBSlJuEyWrjf0RH
+         MgEyTLvrMcopTm9Up2WBjSpoiurp8zdTAabnKfMug1EpX+QYP5C3q/mucQo4oeqKlODF
+         UeZ6DayDpGYUa3N1iZS0TgDg16KEhAQ9Ndd5IBc7TiefuNXawvnibg6NW2q2+T85wQjj
+         QgLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=im0NFFme;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=Gys5EvN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=VewasHr1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n20-v6si4599247qtk.219.2018.05.29.22.36.00
+        by mx.google.com with ESMTPS id q3-v6si165046qtk.65.2018.05.30.18.14.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 22:36:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 30 May 2018 18:14:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=im0NFFme;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=Gys5EvN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36300 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=VewasHr1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41435 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNtmC-0002qB-9j
-	for alex.bennee@linaro.org; Wed, 30 May 2018 01:36:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52782)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fOCB8-00043G-AL
+	for alex.bennee@linaro.org; Wed, 30 May 2018 21:14:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34501)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNtm1-0002q2-Gx
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:35:50 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fOC9i-0003Jf-Gk
+	for qemu-devel@nongnu.org; Wed, 30 May 2018 21:13:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fNtm0-0001Z9-8o
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 01:35:49 -0400
-Received: from mail-qt0-x22d.google.com ([2607:f8b0:400d:c0d::22d]:43117)
+	(envelope-from <richard.henderson@linaro.org>) id 1fOC9d-0001lw-Hh
+	for qemu-devel@nongnu.org; Wed, 30 May 2018 21:13:30 -0400
+Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:47056)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fNtlz-0001Yx-Qv; Wed, 30 May 2018 01:35:48 -0400
-Received: by mail-qt0-x22d.google.com with SMTP id f13-v6so21772800qtp.10;
-	Tue, 29 May 2018 22:35:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
-	b=im0NFFmeVvpv2blbdBnqHsodMEdeEwkK6LFZtUGJNwl8j6NIW/InJ1RkcUm2eDp85m
-	fLoZoKJr5NdxPYJFyzilVboXh1GwNpwwQlmb/7zHSk8PtOirpFMn7FUuHpHS6jo6kbMx
-	EtVWJGndm7Tac8lr9A4aYjueGL7sDO3kKEZNc3euvc5UaHUjYFrUI/8+iZdhO5pSAHHD
-	RLSKRFXqOJjPjJD/p5g233Ys1dsn/qRUQC9q4rG7GK+YbCljRZ/aQjGNk0HSXHEUTut6
-	3EIc4EGwpMLBsMNROU4lq/o5pmf+v4SfcWvNB5nRjVtK/8FJZgFyUNJpqZ4z699hk0Ao
-	Lv/A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
-	b=Gys5EvN5W8oQuj7x+yRBaUW/XIdOtG378Jdeg9kY3psV0/UWe8SRm+nudxkQ8qq4PW
-	bVzPUNcEekj+k1G5Yj6AKCdY2xyNAsTYuX+OX/OJxMw+IUiH0ubNQhQ6H+5z+22nCi4D
-	cejB0GMifW9K46xRWXpYs+pqiHDJ/6gzyZYlY=
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fOC9d-0001l2-6m
+	for qemu-devel@nongnu.org; Wed, 30 May 2018 21:13:25 -0400
+Received: by mail-pl0-x244.google.com with SMTP id 30-v6so12130659pld.13
+	for <qemu-devel@nongnu.org>; Wed, 30 May 2018 18:13:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=SuqwkXirLUSTan6bmjJZFiVPxLoftQ+nJJlDpI0M09A=;
+	b=VewasHr1iDc/rXBHY4tF5pzHYwIxThz4uAHAr2iKHne3HRcQgQA5fmUnqtSH+vR63m
+	9rqarclL1jOwb1cJqUKbwFlBDq+kmMjp1UfsRRnqM33cmVD853p21hJPK7ooa4ZsEZkP
+	FwBRXW2K2J0FRFI87s+kwlyq9JsZ+iaGvSmS0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=PhQoZWkzj/g5gcbbeJL+RK7mJIPQm8MlVHRJm79RAc8=;
-	b=o95/jnbJWgkcDSVA3poIro5JaihT58cMq9rIiQLdMHxcScFk9Bw9xXH4RGJePiTs4F
-	dnU65omw/GaBqz8CBqD+A/MB5sFNAAPD98OCYmMvs6LPofEzegigdTIs9jre2xU6ViCP
-	JuwdeCwoaJUgj5+DYrJiPEmJyQCGeCUuc1ycEjwdmxNaLOmcOjAccirS19/osepGRrZ9
-	dV4ISBLeqsvW15RXwBHFx9o7cjY7xBidzhzsNNxFUFKy0SIqCjx7E6DsjOJVniKxpyi8
-	Ua6LlHOQ6g6tzMc19jFmnQLHYTSRY8m2RZG2pupM4RUzwqMGFWeXcxQVkAPSx6hdQCkm
-	enXA==
-X-Gm-Message-State: APt69E0L66zwO+DRGz5zjbTUQn083C7+g7Xkb5D2C9w6IkZEpx8ObXUi
-	XK7Fs+jqN4NUyL5Ecmf76i3HygVr5ugjOzOqZy0=
-X-Received: by 2002:a0c:8cc5:: with SMTP id q5-v6mr1216838qvb.60.1527658547030;
-	Tue, 29 May 2018 22:35:47 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:ac8:184d:0:0:0:0:0 with HTTP; Tue, 29 May 2018 22:35:26
-	-0700 (PDT)
-In-Reply-To: <20180529062838.20556-1-clg@kaod.org>
-References: <20180529062838.20556-1-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Wed, 30 May 2018 15:05:26 +0930
-X-Google-Sender-Auth: cOvd7wpbr4EeNqtTBq4sFOFjga8
-Message-ID: <CACPK8Xe9a5q5tvFJ=Q0ArkDnf1-e=cW+bVY6a-peD7hpyLn_jw@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=SuqwkXirLUSTan6bmjJZFiVPxLoftQ+nJJlDpI0M09A=;
+	b=RJaBF7qNo8SB9S4ty4OXqSEerUpKBGHP7HLprdAXQ7cVsXSHjdmlhRtxpmk5NOZmHV
+	W4ce2iLV7FFiha29jqdrSrFBxRFvGT+TIuJomcVXfiqxWbjELnS6Y0RAhUtvPc+77ciL
+	ZaSSei4Oh3eH36ZpUIyV6KHNImBm/XqFdvtFDhDk4F49c1obtTuatrDRsyVDzYjOPtOJ
+	5c8a6pA3+POmWjzC6p0Q+RNq792zlDoa2XnLHAyHL3kgLJZsO2jG7BSkaHz23xQkfpIf
+	g//XI1k0fB46iIJLPkJb3Y7scbBhFyUj04hBAJ1yt3nC52qgU9Sfy9tWsNf/O+28UzoN
+	88Vw==
+X-Gm-Message-State: ALKqPwdH6g/H5jRI2BEiXFl/oYKDAPhWQ3/CyQrtpzB3vfvwIpWvB0DG
+	kE5uCo1eE42N4l513NK1i9bQNoB7Ns4=
+X-Received: by 2002:a17:902:7008:: with SMTP id
+	y8-v6mr4880096plk.141.1527729203738; 
+	Wed, 30 May 2018 18:13:23 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	v6-v6sm56478075pfm.120.2018.05.30.18.13.21
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 30 May 2018 18:13:22 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Wed, 30 May 2018 18:13:21 -0700
+Message-Id: <20180531011321.3119-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22d
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/6] ftgmac100 and NC-SI
- enhancements for the Aspeed SoC
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400e:c01::244
+Subject: [Qemu-devel] [PATCH] tcg: Pass tb and index to tcg_gen_exit_tb
+ separately
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AQSF4S4TlkBW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	David Hildenbrand <david@redhat.com>, Anthony Green <green@moxielogic.com>,
+	Palmer Dabbelt <palmer@sifive.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Yongbok Kim <yongbok.kim@mips.com>, Marek Vasut <marex@denx.de>,
+	Alexander Graf <agraf@suse.de>, Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+	Michael Walle <michael@walle.cc>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BzSHSPuNW2rr
 
-On 29 May 2018 at 15:58, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> Hello,
->
-> Here is a couple of enhancements and fixes for the ftgmac100 NIC used
-> on the Aspeed SoC. It includes VLAN and multicast support.
->
-> Following is an assorted set of changes for the NC-SI backend also
-> used on the Aspeed SoC when soldered on OpenPOWER boards. These fix a
-> few problems found when running OpenBMC on aspeed QEMU machines.
->
-> Thanks,
->
-> C=C3=A9dric.
->
-> C=C3=A9dric Le Goater (6):
->   ftgmac100: compute maximum frame size depending on the protocol
->   ftgmac100: add IEEE 802.1Q VLAN support
->   net/ftgmac100: fix multicast hash routine
->   slirp/ncsi: fix "Get Version ID" payload length
->   slirp/ncsi: add a "Get Parameter" response
->   slirp/ncsi: add checksum support
+Do the cast to uintptr_t within the helper, so that the compiler
+can type check the pointer argument.  We can also do some more
+sanity checking of the index argument.
 
-I tested these with -M palmetto-bmc and linux-next as the guest, and
-networking appeared to work fine. For the series:
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/exec/gen-icount.h     |  2 +-
+ tcg/tcg-op.h                  | 17 +++++++++++++----
+ target/alpha/translate.c      | 12 ++++++------
+ target/arm/translate-a64.c    |  6 +++---
+ target/arm/translate.c        |  8 ++++----
+ target/cris/translate.c       |  6 +++---
+ target/hppa/translate.c       |  6 +++---
+ target/i386/translate.c       |  8 ++++----
+ target/lm32/translate.c       |  6 +++---
+ target/m68k/translate.c       |  6 +++---
+ target/microblaze/translate.c |  6 +++---
+ target/mips/translate.c       |  4 ++--
+ target/moxie/translate.c      | 14 +++++++-------
+ target/nios2/translate.c      |  8 ++++----
+ target/openrisc/translate.c   |  6 +++---
+ target/ppc/translate.c        |  4 ++--
+ target/riscv/translate.c      | 20 ++++++++++----------
+ target/s390x/translate.c      | 10 +++++-----
+ target/sh4/translate.c        |  8 ++++----
+ target/sparc/translate.c      | 16 ++++++++--------
+ target/tilegx/translate.c     |  4 ++--
+ target/tricore/translate.c    | 20 ++++++++++----------
+ target/unicore32/translate.c  |  6 +++---
+ target/xtensa/translate.c     |  4 ++--
+ tcg/tcg-op.c                  | 20 +++++++++++++++++++-
+ 25 files changed, 127 insertions(+), 100 deletions(-)
 
-Tested-by: Joel Stanley <joel@jms.id.au>
+diff --git a/include/exec/gen-icount.h b/include/exec/gen-icount.h
+index 54aaa61d65..24f7991781 100644
+--- a/include/exec/gen-icount.h
++++ b/include/exec/gen-icount.h
+@@ -52,7 +52,7 @@ static inline void gen_tb_end(TranslationBlock *tb, int num_insns)
+     }
+ 
+     gen_set_label(tcg_ctx->exitreq_label);
+-    tcg_gen_exit_tb((uintptr_t)tb + TB_EXIT_REQUESTED);
++    tcg_gen_exit_tb(tb, TB_EXIT_REQUESTED);
+ }
+ 
+ static inline void gen_io_start(void)
+diff --git a/tcg/tcg-op.h b/tcg/tcg-op.h
+index 04eb3e9e17..7513c1eb7c 100644
+--- a/tcg/tcg-op.h
++++ b/tcg/tcg-op.h
+@@ -782,10 +782,19 @@ static inline void tcg_gen_insn_start(target_ulong pc, target_ulong a1,
+ # error "Unhandled number of operands to insn_start"
+ #endif
+ 
+-static inline void tcg_gen_exit_tb(uintptr_t val)
+-{
+-    tcg_gen_op1i(INDEX_op_exit_tb, val);
+-}
++/**
++ * tcg_gen_exit_tb() - output exit_tb TCG operation
++ * @tb: The TranslationBlock from which we are exiting
++ * @idx: Direct jump slot index, or exit request
++ *
++ * See tcg/README for more info about this TCG operation.
++ * See also tcg.h and the block comment above TB_EXIT_MASK.
++ *
++ * For a normal exit from the TB, back to the main loop, @tb should
++ * be NULL and @idx should be 0.  Otherwise, @tb should be valid and
++ * @idx should be one of the TB_EXIT_ values.
++ */
++void tcg_gen_exit_tb(TranslationBlock *tb, unsigned idx);
+ 
+ /**
+  * tcg_gen_goto_tb() - output goto_tb TCG operation
+diff --git a/target/alpha/translate.c b/target/alpha/translate.c
+index 15eca71d49..e5d62850c5 100644
+--- a/target/alpha/translate.c
++++ b/target/alpha/translate.c
+@@ -488,7 +488,7 @@ static DisasJumpType gen_bdirect(DisasContext *ctx, int ra, int32_t disp)
+     } else if (use_goto_tb(ctx, dest)) {
+         tcg_gen_goto_tb(0);
+         tcg_gen_movi_i64(cpu_pc, dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb);
++        tcg_gen_exit_tb(ctx->base.tb, 0);
+         return DISAS_NORETURN;
+     } else {
+         tcg_gen_movi_i64(cpu_pc, dest);
+@@ -507,12 +507,12 @@ static DisasJumpType gen_bcond_internal(DisasContext *ctx, TCGCond cond,
+ 
+         tcg_gen_goto_tb(0);
+         tcg_gen_movi_i64(cpu_pc, ctx->base.pc_next);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb);
++        tcg_gen_exit_tb(ctx->base.tb, 0);
+ 
+         gen_set_label(lab_true);
+         tcg_gen_goto_tb(1);
+         tcg_gen_movi_i64(cpu_pc, dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb + 1);
++        tcg_gen_exit_tb(ctx->base.tb, 1);
+ 
+         return DISAS_NORETURN;
+     } else {
+@@ -1273,7 +1273,7 @@ static DisasJumpType gen_call_pal(DisasContext *ctx, int palcode)
+         if (!use_exit_tb(ctx)) {
+             tcg_gen_goto_tb(0);
+             tcg_gen_movi_i64(cpu_pc, entry);
+-            tcg_gen_exit_tb((uintptr_t)ctx->base.tb);
++            tcg_gen_exit_tb(ctx->base.tb, 0);
+             return DISAS_NORETURN;
+         } else {
+             tcg_gen_movi_i64(cpu_pc, entry);
+@@ -3009,7 +3009,7 @@ static void alpha_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         if (use_goto_tb(ctx, ctx->base.pc_next)) {
+             tcg_gen_goto_tb(0);
+             tcg_gen_movi_i64(cpu_pc, ctx->base.pc_next);
+-            tcg_gen_exit_tb((uintptr_t)ctx->base.tb);
++            tcg_gen_exit_tb(ctx->base.tb, 0);
+         }
+         /* FALLTHRU */
+     case DISAS_PC_STALE:
+@@ -3025,7 +3025,7 @@ static void alpha_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         if (ctx->base.singlestep_enabled) {
+             gen_excp_1(EXCP_DEBUG, 0);
+         } else {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         }
+         break;
+     default:
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index b32332ce2c..8d8a4cecb0 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -383,7 +383,7 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
+     if (use_goto_tb(s, n, dest)) {
+         tcg_gen_goto_tb(n);
+         gen_a64_set_pc_im(dest);
+-        tcg_gen_exit_tb((intptr_t)tb + n);
++        tcg_gen_exit_tb(tb, n);
+         s->base.is_jmp = DISAS_NORETURN;
+     } else {
+         gen_a64_set_pc_im(dest);
+@@ -13883,7 +13883,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             gen_a64_set_pc_im(dc->pc);
+             /* fall through */
+         case DISAS_EXIT:
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_JUMP:
+             tcg_gen_lookup_and_goto_ptr();
+@@ -13912,7 +13912,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             /* The helper doesn't necessarily throw an exception, but we
+              * must go back to the main loop to check for interrupts anyway.
+              */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         }
+         }
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 46a9725bfd..0ff5edf2ce 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -995,7 +995,7 @@ static inline void gen_bx_excret_final_code(DisasContext *s)
+     if (is_singlestepping(s)) {
+         gen_singlestep_exception(s);
+     } else {
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+     gen_set_label(excret_label);
+     /* Yes: this is an exception return.
+@@ -4263,7 +4263,7 @@ static void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
+     if (use_goto_tb(s, dest)) {
+         tcg_gen_goto_tb(n);
+         gen_set_pc_im(s, dest);
+-        tcg_gen_exit_tb((uintptr_t)s->base.tb + n);
++        tcg_gen_exit_tb(s->base.tb, n);
+     } else {
+         gen_set_pc_im(s, dest);
+         gen_goto_ptr();
+@@ -12699,7 +12699,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             /* fall through */
+         default:
+             /* indicate that the hash table must be used to find the next TB */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_NORETURN:
+             /* nothing more to generate */
+@@ -12714,7 +12714,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             /* The helper doesn't necessarily throw an exception, but we
+              * must go back to the main loop to check for interrupts anyway.
+              */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         }
+         case DISAS_WFE:
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index d2f05971ab..4ae1c04daf 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -540,10 +540,10 @@ static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
+     if (use_goto_tb(dc, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_tl(env_pc, dest);
+-                tcg_gen_exit_tb((uintptr_t)dc->tb + n);
++        tcg_gen_exit_tb(dc->tb, n);
+     } else {
+         tcg_gen_movi_tl(env_pc, dest);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -3276,7 +3276,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+         case DISAS_UPDATE:
+             /* indicate that the hash table must be used
+                    to find the next TB */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_SWI:
+         case DISAS_TB_JUMP:
+diff --git a/target/hppa/translate.c b/target/hppa/translate.c
+index 5320b217de..ce05d5619d 100644
+--- a/target/hppa/translate.c
++++ b/target/hppa/translate.c
+@@ -779,7 +779,7 @@ static void gen_goto_tb(DisasContext *ctx, int which,
+         tcg_gen_goto_tb(which);
+         tcg_gen_movi_reg(cpu_iaoq_f, f);
+         tcg_gen_movi_reg(cpu_iaoq_b, b);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb + which);
++        tcg_gen_exit_tb(ctx->base.tb, which);
+     } else {
+         copy_iaoq_entry(cpu_iaoq_f, f, cpu_iaoq_b);
+         copy_iaoq_entry(cpu_iaoq_b, b, ctx->iaoq_n_var);
+@@ -2303,7 +2303,7 @@ static DisasJumpType trans_rfi(DisasContext *ctx, uint32_t insn,
+     if (ctx->base.singlestep_enabled) {
+         gen_excp_1(EXCP_DEBUG);
+     } else {
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ 
+     /* Exit the TB to recognize new interrupts.  */
+@@ -4844,7 +4844,7 @@ static void hppa_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+         if (ctx->base.singlestep_enabled) {
+             gen_excp_1(EXCP_DEBUG);
+         } else if (is_jmp == DISAS_IAQ_N_STALE_EXIT) {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         } else {
+             tcg_gen_lookup_and_goto_ptr();
+         }
+diff --git a/target/i386/translate.c b/target/i386/translate.c
+index 7c21814676..697a918c11 100644
+--- a/target/i386/translate.c
++++ b/target/i386/translate.c
+@@ -2193,7 +2193,7 @@ static inline void gen_goto_tb(DisasContext *s, int tb_num, target_ulong eip)
+         /* jump to same page: we can use a direct jump */
+         tcg_gen_goto_tb(tb_num);
+         gen_jmp_im(eip);
+-        tcg_gen_exit_tb((uintptr_t)s->base.tb + tb_num);
++        tcg_gen_exit_tb(s->base.tb, tb_num);
+         s->base.is_jmp = DISAS_NORETURN;
+     } else {
+         /* jump to another page */
+@@ -2572,13 +2572,13 @@ do_gen_eob_worker(DisasContext *s, bool inhibit, bool recheck_tf, bool jr)
+         gen_helper_debug(cpu_env);
+     } else if (recheck_tf) {
+         gen_helper_rechecking_single_step(cpu_env);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     } else if (s->tf) {
+         gen_helper_single_step(cpu_env);
+     } else if (jr) {
+         tcg_gen_lookup_and_goto_ptr();
+     } else {
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+@@ -7402,7 +7402,7 @@ static target_ulong disas_insn(DisasContext *s, CPUState *cpu)
+             gen_jmp_im(pc_start - s->cs_base);
+             gen_helper_vmrun(cpu_env, tcg_const_i32(s->aflag - 1),
+                              tcg_const_i32(s->pc - pc_start));
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             s->base.is_jmp = DISAS_NORETURN;
+             break;
+ 
+diff --git a/target/lm32/translate.c b/target/lm32/translate.c
+index fdd206a860..b32feb7564 100644
+--- a/target/lm32/translate.c
++++ b/target/lm32/translate.c
+@@ -159,13 +159,13 @@ static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
+     if (use_goto_tb(dc, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_tl(cpu_pc, dest);
+-        tcg_gen_exit_tb((uintptr_t)dc->tb + n);
++        tcg_gen_exit_tb(dc->tb, n);
+     } else {
+         tcg_gen_movi_tl(cpu_pc, dest);
+         if (dc->singlestep_enabled) {
+             t_gen_raise_exception(dc, EXCP_DEBUG);
+         }
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -1137,7 +1137,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+         case DISAS_UPDATE:
+             /* indicate that the hash table must be used
+                to find the next TB */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_TB_JUMP:
+             /* nothing more to generate */
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 8959e4d0f0..37d6ffd853 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -1491,10 +1491,10 @@ static void gen_jmp_tb(DisasContext *s, int n, uint32_t dest)
+     } else if (use_goto_tb(s, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_i32(QREG_PC, dest);
+-        tcg_gen_exit_tb((uintptr_t)s->tb + n);
++        tcg_gen_exit_tb(s->tb, n);
+     } else {
+         gen_jmp_im(s, dest);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+     s->is_jmp = DISAS_TB_JUMP;
+ }
+@@ -6147,7 +6147,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+         case DISAS_UPDATE:
+             update_cc_op(dc);
+             /* indicate that the hash table must be used to find the next TB */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_TB_JUMP:
+             /* nothing more to generate */
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index b79600cba5..6c64946398 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -143,10 +143,10 @@ static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
+     if (use_goto_tb(dc, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_i64(cpu_SR[SR_PC], dest);
+-        tcg_gen_exit_tb((uintptr_t)dc->tb + n);
++        tcg_gen_exit_tb(dc->tb, n);
+     } else {
+         tcg_gen_movi_i64(cpu_SR[SR_PC], dest);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -1766,7 +1766,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+             case DISAS_UPDATE:
+                 /* indicate that the hash table must be used
+                    to find the next TB */
+-                tcg_gen_exit_tb(0);
++                tcg_gen_exit_tb(NULL, 0);
+                 break;
+             case DISAS_TB_JUMP:
+                 /* nothing more to generate */
+diff --git a/target/mips/translate.c b/target/mips/translate.c
+index e88f983ae7..e57d71e485 100644
+--- a/target/mips/translate.c
++++ b/target/mips/translate.c
+@@ -4291,7 +4291,7 @@ static inline void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
+     if (use_goto_tb(ctx, dest)) {
+         tcg_gen_goto_tb(n);
+         gen_save_pc(dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb + n);
++        tcg_gen_exit_tb(ctx->base.tb, n);
+     } else {
+         gen_save_pc(dest);
+         if (ctx->base.singlestep_enabled) {
+@@ -20344,7 +20344,7 @@ static void mips_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+             gen_goto_tb(ctx, 0, ctx->base.pc_next);
+             break;
+         case DISAS_EXIT:
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_NORETURN:
+             break;
+diff --git a/target/moxie/translate.c b/target/moxie/translate.c
+index 28b405f0e4..29da02bc05 100644
+--- a/target/moxie/translate.c
++++ b/target/moxie/translate.c
+@@ -132,13 +132,13 @@ static inline void gen_goto_tb(CPUMoxieState *env, DisasContext *ctx,
+     if (use_goto_tb(ctx, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_i32(cpu_pc, dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
++        tcg_gen_exit_tb(ctx->tb, n);
+     } else {
+         tcg_gen_movi_i32(cpu_pc, dest);
+         if (ctx->singlestep_enabled) {
+             gen_helper_debug(cpu_env);
+         }
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -328,7 +328,7 @@ static int decode_opc(MoxieCPU *cpu, DisasContext *ctx)
+                 tcg_temp_free_i32(t1);
+ 
+                 /* Jump... */
+-                tcg_gen_exit_tb(0);
++                tcg_gen_exit_tb(NULL, 0);
+ 
+                 ctx->bstate = BS_BRANCH;
+             }
+@@ -472,14 +472,14 @@ static int decode_opc(MoxieCPU *cpu, DisasContext *ctx)
+                 tcg_gen_mov_i32(cpu_pc, REG(fnreg));
+                 tcg_temp_free_i32(t1);
+                 tcg_temp_free_i32(t2);
+-                tcg_gen_exit_tb(0);
++                tcg_gen_exit_tb(NULL, 0);
+                 ctx->bstate = BS_BRANCH;
+             }
+             break;
+         case 0x1a: /* jmpa */
+             {
+                 tcg_gen_movi_i32(cpu_pc, cpu_ldl_code(env, ctx->pc+2));
+-                tcg_gen_exit_tb(0);
++                tcg_gen_exit_tb(NULL, 0);
+                 ctx->bstate = BS_BRANCH;
+                 length = 6;
+             }
+@@ -584,7 +584,7 @@ static int decode_opc(MoxieCPU *cpu, DisasContext *ctx)
+             {
+                 int reg = (opcode >> 4) & 0xf;
+                 tcg_gen_mov_i32(cpu_pc, REG(reg));
+-                tcg_gen_exit_tb(0);
++                tcg_gen_exit_tb(NULL, 0);
+                 ctx->bstate = BS_BRANCH;
+             }
+             break;
+@@ -878,7 +878,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+             gen_goto_tb(env, &ctx, 0, ctx.pc);
+             break;
+         case BS_EXCP:
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case BS_BRANCH:
+         default:
+diff --git a/target/nios2/translate.c b/target/nios2/translate.c
+index cb8624e8d2..7fa03ed05a 100644
+--- a/target/nios2/translate.c
++++ b/target/nios2/translate.c
+@@ -171,10 +171,10 @@ static void gen_goto_tb(DisasContext *dc, int n, uint32_t dest)
+     if (use_goto_tb(dc, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_tl(dc->cpu_R[R_PC], dest);
+-        tcg_gen_exit_tb((uintptr_t)tb + n);
++        tcg_gen_exit_tb(tb, n);
+     } else {
+         tcg_gen_movi_tl(dc->cpu_R[R_PC], dest);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -880,14 +880,14 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+     case DISAS_NEXT:
+         /* Save the current PC back into the CPU register */
+         tcg_gen_movi_tl(cpu_R[R_PC], dc->pc);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         break;
+ 
+     default:
+     case DISAS_JUMP:
+     case DISAS_UPDATE:
+         /* The jump will already have updated the PC register */
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         break;
+ 
+     case DISAS_TB_JUMP:
+diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+index e7c96ca990..d69f8d0422 100644
+--- a/target/openrisc/translate.c
++++ b/target/openrisc/translate.c
+@@ -183,13 +183,13 @@ static void gen_goto_tb(DisasContext *dc, int n, target_ulong dest)
+     if (use_goto_tb(dc, dest)) {
+         tcg_gen_movi_tl(cpu_pc, dest);
+         tcg_gen_goto_tb(n);
+-        tcg_gen_exit_tb((uintptr_t)dc->base.tb + n);
++        tcg_gen_exit_tb(dc->base.tb, n);
+     } else {
+         tcg_gen_movi_tl(cpu_pc, dest);
+         if (dc->base.singlestep_enabled) {
+             gen_exception(dc, EXCP_DEBUG);
+         }
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -1473,7 +1473,7 @@ static void openrisc_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+         case DISAS_UPDATE:
+             /* indicate that the hash table must be used
+                to find the next TB */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         default:
+             g_assert_not_reached();
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index e30d99fcbc..b28e8b91d3 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -3422,7 +3422,7 @@ static void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
+     if (use_goto_tb(ctx, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_tl(cpu_nip, dest & ~3);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb + n);
++        tcg_gen_exit_tb(ctx->base.tb, n);
+     } else {
+         tcg_gen_movi_tl(cpu_nip, dest & ~3);
+         if (unlikely(ctx->singlestep_enabled)) {
+@@ -7410,7 +7410,7 @@ static void ppc_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+             gen_debug_exception(ctx);
+         }
+         /* Generate the return instruction */
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+diff --git a/target/riscv/translate.c b/target/riscv/translate.c
+index ee2bbc55b0..0b6be74f2d 100644
+--- a/target/riscv/translate.c
++++ b/target/riscv/translate.c
+@@ -129,13 +129,13 @@ static void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
+         /* chaining is only allowed when the jump is to the same page */
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_tl(cpu_pc, dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb + n);
++        tcg_gen_exit_tb(ctx->base.tb, n);
+     } else {
+         tcg_gen_movi_tl(cpu_pc, dest);
+         if (ctx->base.singlestep_enabled) {
+             gen_exception_debug();
+         } else {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         }
+     }
+ }
+@@ -548,7 +548,7 @@ static void gen_jalr(CPURISCVState *env, DisasContext *ctx, uint32_t opc,
+         if (rd != 0) {
+             tcg_gen_movi_tl(cpu_gpr[rd], ctx->pc_succ_insn);
+         }
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+ 
+         if (misaligned) {
+             gen_set_label(misaligned);
+@@ -1303,12 +1303,12 @@ static void gen_system(CPURISCVState *env, DisasContext *ctx, uint32_t opc,
+         case 0x0: /* ECALL */
+             /* always generates U-level ECALL, fixed in do_interrupt handler */
+             generate_exception(ctx, RISCV_EXCP_U_ECALL);
+-            tcg_gen_exit_tb(0); /* no chaining */
++            tcg_gen_exit_tb(NULL, 0); /* no chaining */
+             ctx->base.is_jmp = DISAS_NORETURN;
+             break;
+         case 0x1: /* EBREAK */
+             generate_exception(ctx, RISCV_EXCP_BREAKPOINT);
+-            tcg_gen_exit_tb(0); /* no chaining */
++            tcg_gen_exit_tb(NULL, 0); /* no chaining */
+             ctx->base.is_jmp = DISAS_NORETURN;
+             break;
+ #ifndef CONFIG_USER_ONLY
+@@ -1318,7 +1318,7 @@ static void gen_system(CPURISCVState *env, DisasContext *ctx, uint32_t opc,
+         case 0x102: /* SRET */
+             if (riscv_has_ext(env, RVS)) {
+                 gen_helper_sret(cpu_pc, cpu_env, cpu_pc);
+-                tcg_gen_exit_tb(0); /* no chaining */
++                tcg_gen_exit_tb(NULL, 0); /* no chaining */
+                 ctx->base.is_jmp = DISAS_NORETURN;
+             } else {
+                 gen_exception_illegal(ctx);
+@@ -1329,7 +1329,7 @@ static void gen_system(CPURISCVState *env, DisasContext *ctx, uint32_t opc,
+             break;
+         case 0x302: /* MRET */
+             gen_helper_mret(cpu_pc, cpu_env, cpu_pc);
+-            tcg_gen_exit_tb(0); /* no chaining */
++            tcg_gen_exit_tb(NULL, 0); /* no chaining */
+             ctx->base.is_jmp = DISAS_NORETURN;
+             break;
+         case 0x7b2: /* DRET */
+@@ -1378,7 +1378,7 @@ static void gen_system(CPURISCVState *env, DisasContext *ctx, uint32_t opc,
+         gen_set_gpr(rd, dest);
+         /* end tb since we may be changing priv modes, to get mmu_index right */
+         tcg_gen_movi_tl(cpu_pc, ctx->pc_succ_insn);
+-        tcg_gen_exit_tb(0); /* no chaining */
++        tcg_gen_exit_tb(NULL, 0); /* no chaining */
+         ctx->base.is_jmp = DISAS_NORETURN;
+         break;
+     }
+@@ -1771,7 +1771,7 @@ static void decode_RV32_64G(CPURISCVState *env, DisasContext *ctx)
+             /* FENCE_I is a no-op in QEMU,
+              * however we need to end the translation block */
+             tcg_gen_movi_tl(cpu_pc, ctx->pc_succ_insn);
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             ctx->base.is_jmp = DISAS_NORETURN;
+         } else {
+             /* FENCE is a full memory barrier. */
+@@ -1872,7 +1872,7 @@ static void riscv_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         if (ctx->base.singlestep_enabled) {
+             gen_exception_debug();
+         } else {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         }
+         break;
+     case DISAS_NORETURN:
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index 82309faa11..fdfec7feba 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -1159,7 +1159,7 @@ static DisasJumpType help_goto_direct(DisasContext *s, uint64_t dest)
+         per_breaking_event(s);
+         tcg_gen_goto_tb(0);
+         tcg_gen_movi_i64(psw_addr, dest);
+-        tcg_gen_exit_tb((uintptr_t)s->base.tb);
++        tcg_gen_exit_tb(s->base.tb, 0);
+         return DISAS_GOTO_TB;
+     } else {
+         tcg_gen_movi_i64(psw_addr, dest);
+@@ -1220,14 +1220,14 @@ static DisasJumpType help_branch(DisasContext *s, DisasCompare *c,
+             /* Branch not taken.  */
+             tcg_gen_goto_tb(0);
+             tcg_gen_movi_i64(psw_addr, s->pc_tmp);
+-            tcg_gen_exit_tb((uintptr_t)s->base.tb + 0);
++            tcg_gen_exit_tb(s->base.tb, 0);
+ 
+             /* Branch taken.  */
+             gen_set_label(lab);
+             per_breaking_event(s);
+             tcg_gen_goto_tb(1);
+             tcg_gen_movi_i64(psw_addr, dest);
+-            tcg_gen_exit_tb((uintptr_t)s->base.tb + 1);
++            tcg_gen_exit_tb(s->base.tb, 1);
+ 
+             ret = DISAS_GOTO_TB;
+         } else {
+@@ -1250,7 +1250,7 @@ static DisasJumpType help_branch(DisasContext *s, DisasCompare *c,
+             update_cc_op(s);
+             tcg_gen_goto_tb(0);
+             tcg_gen_movi_i64(psw_addr, s->pc_tmp);
+-            tcg_gen_exit_tb((uintptr_t)s->base.tb + 0);
++            tcg_gen_exit_tb(s->base.tb, 0);
+ 
+             gen_set_label(lab);
+             if (is_imm) {
+@@ -6240,7 +6240,7 @@ static void s390x_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+             gen_exception(EXCP_DEBUG);
+         } else if (use_exit_tb(dc) ||
+                    dc->base.is_jmp == DISAS_PC_STALE_NOCHAIN) {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         } else {
+             tcg_gen_lookup_and_goto_ptr();
+         }
+diff --git a/target/sh4/translate.c b/target/sh4/translate.c
+index 58bdfeb4fb..c716b74a0f 100644
+--- a/target/sh4/translate.c
++++ b/target/sh4/translate.c
+@@ -242,13 +242,13 @@ static void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
+     if (use_goto_tb(ctx, dest)) {
+         tcg_gen_goto_tb(n);
+         tcg_gen_movi_i32(cpu_pc, dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->base.tb + n);
++        tcg_gen_exit_tb(ctx->base.tb, n);
+     } else {
+         tcg_gen_movi_i32(cpu_pc, dest);
+         if (ctx->base.singlestep_enabled) {
+             gen_helper_debug(cpu_env);
+         } else if (use_exit_tb(ctx)) {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         } else {
+             tcg_gen_lookup_and_goto_ptr();
+         }
+@@ -266,7 +266,7 @@ static void gen_jump(DisasContext * ctx)
+         if (ctx->base.singlestep_enabled) {
+             gen_helper_debug(cpu_env);
+         } else if (use_exit_tb(ctx)) {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         } else {
+             tcg_gen_lookup_and_goto_ptr();
+         }
+@@ -2343,7 +2343,7 @@ static void sh4_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+         if (ctx->base.singlestep_enabled) {
+             gen_helper_debug(cpu_env);
+         } else {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         }
+         break;
+     case DISAS_NEXT:
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index 40b2eaad39..f3d430c1b2 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -360,12 +360,12 @@ static inline void gen_goto_tb(DisasContext *s, int tb_num,
+         tcg_gen_goto_tb(tb_num);
+         tcg_gen_movi_tl(cpu_pc, pc);
+         tcg_gen_movi_tl(cpu_npc, npc);
+-        tcg_gen_exit_tb((uintptr_t)s->base.tb + tb_num);
++        tcg_gen_exit_tb(s->base.tb, tb_num);
+     } else {
+         /* jump to another page: currently not optimized */
+         tcg_gen_movi_tl(cpu_pc, pc);
+         tcg_gen_movi_tl(cpu_npc, npc);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -4329,7 +4329,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                                 /* End TB to notice changed ASI.  */
+                                 save_state(dc);
+                                 gen_op_next_insn();
+-                                tcg_gen_exit_tb(0);
++                                tcg_gen_exit_tb(NULL, 0);
+                                 dc->base.is_jmp = DISAS_NORETURN;
+                                 break;
+                             case 0x6: /* V9 wrfprs */
+@@ -4338,7 +4338,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                                 dc->fprs_dirty = 0;
+                                 save_state(dc);
+                                 gen_op_next_insn();
+-                                tcg_gen_exit_tb(0);
++                                tcg_gen_exit_tb(NULL, 0);
+                                 dc->base.is_jmp = DISAS_NORETURN;
+                                 break;
+                             case 0xf: /* V9 sir, nop if user */
+@@ -4466,7 +4466,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                             dc->cc_op = CC_OP_FLAGS;
+                             save_state(dc);
+                             gen_op_next_insn();
+-                            tcg_gen_exit_tb(0);
++                            tcg_gen_exit_tb(NULL, 0);
+                             dc->base.is_jmp = DISAS_NORETURN;
+ #endif
+                         }
+@@ -4622,7 +4622,7 @@ static void disas_sparc_insn(DisasContext * dc, unsigned int insn)
+                                                         hpstate));
+                                 save_state(dc);
+                                 gen_op_next_insn();
+-                                tcg_gen_exit_tb(0);
++                                tcg_gen_exit_tb(NULL, 0);
+                                 dc->base.is_jmp = DISAS_NORETURN;
+                                 break;
+                             case 1: // htstate
+@@ -5793,7 +5793,7 @@ static bool sparc_tr_breakpoint_check(DisasContextBase *dcbase, CPUState *cs,
+         save_state(dc);
+     }
+     gen_helper_debug(cpu_env);
+-    tcg_gen_exit_tb(0);
++    tcg_gen_exit_tb(NULL, 0);
+     dc->base.is_jmp = DISAS_NORETURN;
+     /* update pc_next so that the current instruction is included in tb->size */
+     dc->base.pc_next += 4;
+@@ -5832,7 +5832,7 @@ static void sparc_tr_tb_stop(DisasContextBase *dcbase, CPUState *cs)
+                 tcg_gen_movi_tl(cpu_pc, dc->pc);
+             }
+             save_npc(dc);
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         }
+     }
+ }
+diff --git a/target/tilegx/translate.c b/target/tilegx/translate.c
+index 6c53c5e767..f201150fc7 100644
+--- a/target/tilegx/translate.c
++++ b/target/tilegx/translate.c
+@@ -2362,7 +2362,7 @@ static void translate_one_bundle(DisasContext *dc, uint64_t bundle)
+             tcg_temp_free_i64(next);
+         }
+         tcg_temp_free_i64(dc->jmp.dest);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         dc->exit_tb = true;
+     } else if (dc->atomic_excp != TILEGX_EXCP_NONE) {
+         gen_exception(dc, dc->atomic_excp);
+@@ -2419,7 +2419,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+             || tcg_op_buf_full()) {
+             /* Ending the TB due to TB size or page boundary.  Set PC.  */
+             tcg_gen_movi_tl(cpu_pc, dc->pc);
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         }
+     }
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index aef0d9cf06..b5ab40d4a2 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -3253,13 +3253,13 @@ static inline void gen_goto_tb(DisasContext *ctx, int n, target_ulong dest)
+     if (use_goto_tb(ctx, dest)) {
+         tcg_gen_goto_tb(n);
+         gen_save_pc(dest);
+-        tcg_gen_exit_tb((uintptr_t)ctx->tb + n);
++        tcg_gen_exit_tb(ctx->tb, n);
+     } else {
+         gen_save_pc(dest);
+         if (ctx->singlestep_enabled) {
+             /* raise exception debug */
+         }
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -3327,7 +3327,7 @@ static void gen_fret(DisasContext *ctx)
+     tcg_gen_qemu_ld_tl(cpu_gpr_a[11], cpu_gpr_a[10], ctx->mem_idx, MO_LESL);
+     tcg_gen_addi_tl(cpu_gpr_a[10], cpu_gpr_a[10], 4);
+     tcg_gen_mov_tl(cpu_PC, temp);
+-    tcg_gen_exit_tb(0);
++    tcg_gen_exit_tb(NULL, 0);
+     ctx->bstate = BS_BRANCH;
+ 
+     tcg_temp_free(temp);
+@@ -3431,12 +3431,12 @@ static void gen_compute_branch(DisasContext *ctx, uint32_t opc, int r1,
+ /* SR-format jumps */
+     case OPC1_16_SR_JI:
+         tcg_gen_andi_tl(cpu_PC, cpu_gpr_a[r1], 0xfffffffe);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         break;
+     case OPC2_32_SYS_RET:
+     case OPC2_16_SR_RET:
+         gen_helper_ret(cpu_env);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         break;
+ /* B-format */
+     case OPC1_32_B_CALLA:
+@@ -3939,7 +3939,7 @@ static void decode_sr_system(CPUTriCoreState *env, DisasContext *ctx)
+         break;
+     case OPC2_16_SR_RFE:
+         gen_helper_rfe(cpu_env);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         ctx->bstate = BS_BRANCH;
+         break;
+     case OPC2_16_SR_DEBUG:
+@@ -6578,7 +6578,7 @@ static void decode_rr_idirect(CPUTriCoreState *env, DisasContext *ctx)
+     default:
+         generate_trap(ctx, TRAPC_INSN_ERR, TIN2_IOPC);
+     }
+-    tcg_gen_exit_tb(0);
++    tcg_gen_exit_tb(NULL, 0);
+     ctx->bstate = BS_BRANCH;
+ }
+ 
+@@ -8398,7 +8398,7 @@ static void decode_sys_interrupts(CPUTriCoreState *env, DisasContext *ctx)
+         break;
+     case OPC2_32_SYS_RFE:
+         gen_helper_rfe(cpu_env);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+         ctx->bstate = BS_BRANCH;
+         break;
+     case OPC2_32_SYS_RFM:
+@@ -8411,7 +8411,7 @@ static void decode_sys_interrupts(CPUTriCoreState *env, DisasContext *ctx)
+             tcg_gen_brcondi_tl(TCG_COND_NE, tmp, 1, l1);
+             gen_helper_rfm(cpu_env);
+             gen_set_label(l1);
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             ctx->bstate = BS_BRANCH;
+             tcg_temp_free(tmp);
+         } else {
+@@ -8845,7 +8845,7 @@ void gen_intermediate_code(CPUState *cs, struct TranslationBlock *tb)
+ 
+         if (num_insns >= max_insns || tcg_op_buf_full()) {
+             gen_save_pc(ctx.next_pc);
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         }
+         ctx.pc = ctx.next_pc;
+diff --git a/target/unicore32/translate.c b/target/unicore32/translate.c
+index 3cae111955..002569ff3b 100644
+--- a/target/unicore32/translate.c
++++ b/target/unicore32/translate.c
+@@ -1106,10 +1106,10 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint32_t dest)
+     if (use_goto_tb(s, dest)) {
+         tcg_gen_goto_tb(n);
+         gen_set_pc_im(dest);
+-        tcg_gen_exit_tb((uintptr_t)s->tb + n);
++        tcg_gen_exit_tb(s->tb, n);
+     } else {
+         gen_set_pc_im(dest);
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+@@ -2002,7 +2002,7 @@ void gen_intermediate_code(CPUState *cs, TranslationBlock *tb)
+         case DISAS_JUMP:
+         case DISAS_UPDATE:
+             /* indicate that the hash table must be used to find the next TB */
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_TB_JUMP:
+             /* nothing more to generate */
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index 720bc592e1..89db23852b 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -377,9 +377,9 @@ static void gen_jump_slot(DisasContext *dc, TCGv dest, int slot)
+     } else {
+         if (slot >= 0) {
+             tcg_gen_goto_tb(slot);
+-            tcg_gen_exit_tb((uintptr_t)dc->tb + slot);
++            tcg_gen_exit_tb(dc->tb, slot);
+         } else {
+-            tcg_gen_exit_tb(0);
++            tcg_gen_exit_tb(NULL, 0);
+         }
+     }
+     dc->is_jmp = DISAS_UPDATE;
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index 6a914654f5..4f5f35fb04 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -2574,6 +2574,24 @@ void tcg_gen_extr32_i64(TCGv_i64 lo, TCGv_i64 hi, TCGv_i64 arg)
+ 
+ /* QEMU specific operations.  */
+ 
++void tcg_gen_exit_tb(TranslationBlock *tb, unsigned idx)
++{
++    uintptr_t val = (uintptr_t)tb + idx;
++
++    if (tb == NULL) {
++        tcg_debug_assert(idx == 0);
++    } else if (idx <= 1) {
++        /* This is an exit following a goto_tb.  Verify that we have
++           seen this numbered exit before, via tcg_gen_goto_tb.  */
++        tcg_debug_assert(tcg_ctx->goto_tb_issue_mask & (1 << idx));
++    } else {
++        /* This is an exit via the exitreq label.  */
++        tcg_debug_assert(idx == TB_EXIT_REQUESTED);
++    }
++
++    tcg_gen_op1i(INDEX_op_exit_tb, val);
++}
++
+ void tcg_gen_goto_tb(unsigned idx)
+ {
+     /* We only support two chained exits.  */
+@@ -2594,7 +2612,7 @@ void tcg_gen_lookup_and_goto_ptr(void)
+         tcg_gen_op1i(INDEX_op_goto_ptr, tcgv_ptr_arg(ptr));
+         tcg_temp_free_ptr(ptr);
+     } else {
+-        tcg_gen_exit_tb(0);
++        tcg_gen_exit_tb(NULL, 0);
+     }
+ }
+ 
+-- 
+2.17.0
 
-One question I had. I get these messages on boot:
-
-[    1.184472] ftgmac100 1e660000.ethernet: Read MAC address
-52:54:00:12:34:56 from chip
-[    1.184751] ftgmac100 1e660000.ethernet: Using NCSI interface
-[    1.197107] ftgmac100 1e660000.ethernet eth0: irq 19, mapped at b30b8905
-[    1.904237] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.905682] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.905943] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.906182] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.906415] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.906643] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.906873] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    1.907103] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[    2.024094] ftgmac100 1e660000.ethernet eth0: NCSI: configuring channel =
-0
-[    2.025428] ftgmac100 1e660000.ethernet eth0: NCSI: channel 0 config don=
-e
-[    2.025544] ftgmac100 1e660000.ethernet eth0: NCSI: No more
-channels to process
-[    2.025608] ftgmac100 1e660000.ethernet eth0: NCSI interface up
-
-
-Comparing to hardware, I see:
-
-[    4.071159] ftgmac100 1e660000.ethernet: Read MAC address
-98:be:94:83:00:ad from chip
-[    4.079024] ftgmac100 1e660000.ethernet: Using NCSI interface
-[    4.085976] ftgmac100 1e660000.ethernet eth0: irq 19, mapped at a0963000
-[   40.670099] ftgmac100 1e660000.ethernet eth0: NCSI: Handler for
-packet type 0x82 returned -19
-[   43.852036] ftgmac100 1e660000.ethernet eth0: NCSI: configuring channel =
-1
-[   43.877060] ftgmac100 1e660000.ethernet eth0: NCSI: channel 1 config don=
-e
-[   43.877093] ftgmac100 1e660000.ethernet eth0: NCSI: No more
-channels to process
-[   43.877112] ftgmac100 1e660000.ethernet eth0: NCSI interface up
-
-Is it expected that we get multiple ENODEVs for packet type 0x82 in qemu?
-
-Cheers,
-
-Joel

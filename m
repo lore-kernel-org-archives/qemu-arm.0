@@ -1,93 +1,107 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5657833wre;
-        Thu, 31 May 2018 01:27:58 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJWtOAZxn3n2xqC9uF9gKagEA3ZBD2AZ34O/Sgtms5oQA+0izB0+g3WYS4RTQFF8Rfb7rnj
-X-Received: by 2002:a37:8846:: with SMTP id k67-v6mr5419562qkd.250.1527755278399;
-        Thu, 31 May 2018 01:27:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527755278; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5662490wre;
+        Thu, 31 May 2018 01:33:24 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLM7X9p72XQAgYEnrLoizKfUxZ3gbBaYKrbZ59OzhCjvhYhWIf2CAhG7wB56Oo0Ul7zNYiM
+X-Received: by 2002:a37:6e43:: with SMTP id j64-v6mr5443362qkc.216.1527755604253;
+        Thu, 31 May 2018 01:33:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527755604; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZiyrHCAJn+jxkl7vS95W/gkpwfTS4ZSTfwBLRR1/QpwwDHei4n5O7eDJY2w71iCZF
-         LtkWnRQiGg5/kXN8+a6Vp3TWmZlpBgpZPWKKNgX7gjj6CNQF+f8QGuZ6MtbVd6TLYtlD
-         hUeZ30gyNY7+vX5pQ0nn8NfkR7nxS7xhMr/9pTnm72Nm75zqzv/d2FswymIq2bvOixty
-         96WYgy8YEQLepsIcSuLBwXD1Nflyb5jAUJXQkDTuU4pDmirjWr268m8kqZOW0jrmX/oS
-         xlu2w6nDs5Omh3FbQvqVHeTJmp6R13RTpFLlD+JXVn57FOHqvF2ZWPt8vwKRvuBmEppP
-         gwqQ==
+        b=qjNXHA0roqUgqzEgaKU2GzuwsR1ZcsD8ui4TgsrZLv2aeqcCkWTl40c6bUj0z8OVEZ
+         ggSp+aVWJZL7JmDbXvjAgynS13f9zNjYryK8DovM2xQNy/Kva/Omb1Xic1qz7ag1vw3w
+         LqgTnU33zU3FD/K+aOywR92k8OJRj3iTXILKrBg4HFSfQTmDciOCiXwrpp1C/z8LtlDH
+         WLXGmvHCe6TJyEfieltZ/2Kod0tb8I+lAWISPZEHU9EdxR5jV4vl80upqQ6HlN6TdfFr
+         WIPWXFeNRiuqNNEdWT1miK561rAazoPDCTzYty84XbtIYh2mxrlEW3gwHZP8CpOwnMRG
+         o9Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=ZGf2mAux65uLrhu9msMHtX7A0k9Ko2Z2aUtjIAIuiYA=;
-        b=IYJQUW2gadgi3imVKbwswjpOYAhrFK9NZmgroWUfh+x3WG9uRJsgyxauRSxc4TaTQt
-         8bHr+YK2OXtaTbvyXKukup4wVS+NQAY7vbn9j9KDd7OyTMkGHsrAI6xkYqsNvQowsos0
-         XEf/OVa9p6FPY2+eu622zl0lnJ3fA1AuXxQKgxRFamaxu3N7ZgJKbRRKXPep62dh4Yju
-         Y6qE48+szQYMth4ZD3EN744QSTXRq4UhKzCDm5owJvFbLEvPlc3vlT/xnnIvl1gStFSV
-         YekSAxBqbayVLtKNW8Rhrx1P2Caesi6t/DreMn6xJkzuKht7JnGVmv+hAJtBiyxXig0d
-         EGSg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=rNIWm3eGmvEjFUH5pi7dLPXIFqiFyXhhi6R8eM5mTIY=;
+        b=hfpNrub48s6n2Bi9RypYH69f1AeJ/kI4gKRe73QxehAphmUPvlptj4uPURm0IdOoyx
+         ueFaQpHrfqc4h1+I6wSps0aXSySgipDJ9EmUqx+jzsilvxcmFN+qQEHz1tQRwBazi69U
+         WXPMvJM1YKm+HrsqpGNF9k4nXtdX1a8e1EEc4jggnlUat9vTQ6iDpd5M5xOOVuFW5D84
+         0ese2w9kjlPgHCeqtzRGhK6ZaoiBbOfh6rajuSucvlje6OsBcMgSjkMCK4cs0zv+j0H1
+         PtZJ/+JEyK7s6nbQq6fTCqZHHxio1U9Yfe9JQddLWg4qrzBPWS4LOehe8/6G1oqbLXwK
+         91kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Qcx/0n98;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b32-v6si609118qvh.18.2018.05.31.01.27.58
+        by mx.google.com with ESMTPS id 22-v6si1279457qkz.388.2018.05.31.01.33.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 31 May 2018 01:27:58 -0700 (PDT)
+        Thu, 31 May 2018 01:33:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Qcx/0n98;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42592 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42610 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOIw9-0007DD-TM
-	for alex.bennee@linaro.org; Thu, 31 May 2018 04:27:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41579)
+	id 1fOJ1P-0000ZA-OJ
+	for alex.bennee@linaro.org; Thu, 31 May 2018 04:33:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42409)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fOIw1-0007D5-HA
-	for qemu-arm@nongnu.org; Thu, 31 May 2018 04:27:50 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fOJ1G-0000Ya-D3
+	for qemu-arm@nongnu.org; Thu, 31 May 2018 04:33:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fOIvy-0005x5-CX
-	for qemu-arm@nongnu.org; Thu, 31 May 2018 04:27:49 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53978 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fOIvy-0005tl-7G; Thu, 31 May 2018 04:27:46 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4D19F76F91;
-	Thu, 31 May 2018 08:27:45 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
-	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5AB5A20A8472;
-	Thu, 31 May 2018 08:27:44 +0000 (UTC)
-To: Shannon Zhao <zhaoshenglong@huawei.com>, qemu-arm@nongnu.org
-References: <1527750994-14360-1-git-send-email-zhaoshenglong@huawei.com>
-	<84171c12-e281-8de5-ec3d-ac0aaf3c3dbb@redhat.com>
-	<5B0FAC9E.6090306@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <a61f1fe2-a53a-f57a-34d9-1d1da907e635@redhat.com>
-Date: Thu, 31 May 2018 10:27:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fOJ1F-0000ZV-Hp
+	for qemu-arm@nongnu.org; Thu, 31 May 2018 04:33:14 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:33971)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fOJ1F-0000Z4-53
+	for qemu-arm@nongnu.org; Thu, 31 May 2018 04:33:13 -0400
+Received: by mail-ot0-x244.google.com with SMTP id i5-v6so24415627otf.1
+	for <qemu-arm@nongnu.org>; Thu, 31 May 2018 01:33:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=rNIWm3eGmvEjFUH5pi7dLPXIFqiFyXhhi6R8eM5mTIY=;
+	b=Qcx/0n982YG0X/rfpjqtGcP6ZJbqxVYQorHB+mgv6juAtpc5JgEg8FmOWujT33YwrP
+	uwJ7QuOXowNhC0UFS9SR1ljQUSR3dmp7ZcdVh9RbVtwuA8/7KRygAeV4EuxrmNc214Sj
+	bAivKBfQzpif7QYnH0UFsJ1PwURYdBhTUDGh8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=rNIWm3eGmvEjFUH5pi7dLPXIFqiFyXhhi6R8eM5mTIY=;
+	b=PQExpGaWGYckePfyOmVx8f2SI0Aox2R+bQgSyDL5iJkzv5u0bjHZZWZNFyn44iX7zA
+	rB+W3WAnHV22fh8VXn3ne4a/tHZGQ8LsimVtjWaffvk5LVxk6c86qGTtf43h0Ic06bm/
+	CUIzSktxPVeo/XJ5Xh/QkuTL99IxIVSn+VirzCUDUX6qTpLfV6rNze6tEwXEgGemvbIZ
+	V6yNAMcRN2IKfmZtWsbsn8OnoWKYyljoDzMsQdZbCYFUxJeVemORm2VDM8H6l2LfSEsM
+	YZ2GCaKy2QYd6mgo0oH4mBaiOKADljYWNTweWwSp/GhjqW/7c4AZKB/tH4GiQ2FgmRma
+	iV6g==
+X-Gm-Message-State: ALKqPwcIxZeGf+5Oie3RVok2u8AlwJFqsulUFdK9CgfelYChPrsP8UCE
+	c2pVHbgEThnt4PBxmOf9PwYL6BchW1b23W1RoBgw5w==
+X-Received: by 2002:a9d:2371:: with SMTP id
+	k46-v6mr4278469otd.210.1527755592363; 
+	Thu, 31 May 2018 01:33:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5B0FAC9E.6090306@huawei.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Thu, 31 May 2018 08:27:45 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Thu, 31 May 2018 08:27:45 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] KVM: GIC: Fix memory leak due
- to calling kvm_init_irq_routing twice
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Thu, 31 May 2018 01:32:51
+	-0700 (PDT)
+In-Reply-To: <CAHmME9oda=T6C53BYi-Op3cWbG2auBjVDoUWuiJoCyxxR298fQ@mail.gmail.com>
+References: <1512745328-5109-1-git-send-email-peter.maydell@linaro.org>
+	<1512745328-5109-3-git-send-email-peter.maydell@linaro.org>
+	<20171212144513.sutjfenbjh33fm5n@kamzik.brq.redhat.com>
+	<CAFEAcA-DyuObZjx-g2k9SkofLZ_akadfGYZCMum=3hQQLEdN_w@mail.gmail.com>
+	<20171212151605.v2eoestysaogzymm@kamzik.brq.redhat.com>
+	<CAFEAcA-t7XFxizUQMdo_JYTLet_a8ZL-Omg54gLOQC-=o+vjuA@mail.gmail.com>
+	<CAHmME9oda=T6C53BYi-Op3cWbG2auBjVDoUWuiJoCyxxR298fQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 31 May 2018 09:32:51 +0100
+Message-ID: <CAFEAcA_Ut0hjQ=25anhHtGgyY92++eTgyBwY1KbqRbLUeje0Hg@mail.gmail.com>
+To: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/3] hw/arm/virt: Add another
+ UART to the virt board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,81 +113,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <shannon.zhao@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ML3bt053mJ+j
+X-TUID: mE4Uv3LKRkCn
 
-Hi Shannon,
+On 31 May 2018 at 03:12, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
+> Hi Peter,
+>
+> What ever became of this? I still really could use a second UART in
+> the standard configuration. I'm still building with this cludge --
+> https://=D7=90.cc/RXI3ssWV -- in order to run the test suite on
+> build.wireguard.com.
 
-On 05/31/2018 10:04 AM, Shannon Zhao wrote:
-> 
-> 
-> On 2018/5/31 15:54, Auger Eric wrote:
->> Hi Shannon,
->>
->> On 05/31/2018 09:16 AM, Shannon Zhao wrote:
->>> kvm_irqchip_create called by kvm_init will call kvm_init_irq_routing to
->>> initialize global capability variables. If we call kvm_init_irq_routing in
->>> GIC realize function, previous allocated memory will leak.
->>>
->>> Fix this by deleting the unnecessary call.
->>>
->>> Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
->> openpic_kvm seems to suffer the same leak. Don't you want to fix it as
->> well?
->>
-> I have a look at below patch of openpic_kvm which says on ppc it doesn't
-> call kvm_irqchip_create. So no such issue for it.
-> 
-> commit d85937e683f6ff4d68293cb24c780fb1f6820d2c
-> Author: Scott Wood <scottwood@freescale.com>
-> Date:   Wed Jun 12 15:32:51 2013 -0500
-> 
->     kvm/openpic: in-kernel mpic support
+It stalled on the fact that adding the second UART breaks
+UEFI images (annoyingly, UEFI iterates through UARTs in
+the DTB in the opposite direction to Linux, so if you add
+a second UART then it picks that one to use rather than
+the first one, IIRC). So it would have to be an awkward
+thing with a new machine option to request the extra UART.
 
-Ah OK. Thanks for the pointer.
-
-Eric
-> 
->> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->>
-> Thanks.
-> 
->> Thanks
->>
->> Eric
->>> ---
->>>  hw/intc/arm_gic_kvm.c   | 1 -
->>>  hw/intc/arm_gicv3_kvm.c | 1 -
->>>  2 files changed, 2 deletions(-)
->>>
->>> diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
->>> index 6f467e6..204369d 100644
->>> --- a/hw/intc/arm_gic_kvm.c
->>> +++ b/hw/intc/arm_gic_kvm.c
->>> @@ -572,7 +572,6 @@ static void kvm_arm_gic_realize(DeviceState *dev, Error **errp)
->>>  
->>>      if (kvm_has_gsi_routing()) {
->>>          /* set up irq routing */
->>> -        kvm_init_irq_routing(kvm_state);
->>>          for (i = 0; i < s->num_irq - GIC_INTERNAL; ++i) {
->>>              kvm_irqchip_add_irq_route(kvm_state, i, 0, i);
->>>          }
->>> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
->>> index 001d82b..aa4c7c5 100644
->>> --- a/hw/intc/arm_gicv3_kvm.c
->>> +++ b/hw/intc/arm_gicv3_kvm.c
->>> @@ -813,7 +813,6 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
->>>  
->>>      if (kvm_has_gsi_routing()) {
->>>          /* set up irq routing */
->>> -        kvm_init_irq_routing(kvm_state);
->>>          for (i = 0; i < s->num_irq - GIC_INTERNAL; ++i) {
->>>              kvm_irqchip_add_irq_route(kvm_state, i, 0, i);
->>>          }
->>>
->>
->> .
->>
-> 
+thanks
+-- PMM

@@ -1,109 +1,72 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp1247213wme;
-        Tue, 22 May 2018 02:14:06 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZrR5WoVFKP5A3/xXhJsdow8bQfIcAusppNqTC+pqpZhHBuaSMtGSD1vW6LplT8YpgUkjHxf
-X-Received: by 2002:ac8:334c:: with SMTP id u12-v6mr21730963qta.127.1526980446679;
-        Tue, 22 May 2018 02:14:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526980446; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5444062wre;
+        Wed, 30 May 2018 20:17:02 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKItbFQIGOKQ8DvfhV1qf5jXNYLR3YktUgoGdu3rYxAbseenO/PzmsVm5BZm93SQNEwcgMEB
+X-Received: by 2002:a37:654c:: with SMTP id z73-v6mr4929824qkb.289.1527736622632;
+        Wed, 30 May 2018 20:17:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527736622; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q+TSYnPYuW1gRi/B8b9y21AvSEEod8fZ/8uKJ1SJ6Kj3bkumT9yzGk4TN57+Zhyo2k
-         bKQJSLpdMfR0pAwPgL4/FpRvj8CKCKGETgHYvDwmt41ULovE6X5akbyFPEGkm8WPucyo
-         2S49eW5awXpmf0TeX7T8aYSYBjQZv42fJ26JH3ZyceHDSaHwUixLLgnIK9sADaf9vA+U
-         O9/9OZ0bkuY2rwL7gTBALCVnXF+ASS7SkIfsrwy4GajemRGRpgTR7EVwizyw3/aKnUR9
-         vR+RrHUS3z13OY+vkf+T+FJvJyEmn4f9/epZaa2ejfyQu+xyArT2yg6zpgB2iV0PrMYY
-         aY0g==
+        b=nnk/qBgsEuc5mYzBgospxlk4s5U9O0xcbimMxtdS2Le9vV74gQMLhTEzm0N2F9cIQg
+         qAb5XM+cVlyHmz/UN6C+2Jv58thZOPKj0ROVl3TicjipuASj++1ULHzcdWgA3rLOCkF9
+         dNg+Lf3MuVgX+2RcYTkBsCPtaTjRFL5rI3Hnezw1CqgvPkS+QDBInpc/A/2or/P2uJTc
+         TN3UEH++ct4XaHkHut23agKYX5ipYYTtHtDiozqBUDAE9MTiPwL1kqatDZxB5Nkoydl2
+         oArLRFE9GM1V9bzukbHgil2WKTUZanzeHo/pybkfYSAljZTt4QWNYUqTiWEWyoi0ZS+Z
+         OAUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=RclRs90U2y/6OefBXKyIFQi7x++MVqV/naARx9iLe1Y=;
-        b=hMS28khq8rTcKYsTVYjrqLNwaKpDe5dXnQVUULdEjJRV3MS7X+ciPN2Tp8BVbQbdfR
-         AelFidQckYL7UQVS6tPhcSqVjG8H1i8/Zwi8UDGTYeXifBF1pO2IoV1HNsZlG0M5GcUi
-         kbPDUcuFRxFIw1r7Q8e5ku5AV0w35aDoe5jSPQ0zmOe9zG+nWy9BT0t9afN74LvNj5M2
-         HELFunRQMeJT0oW4A8fR62Bwtp2M504q5pv50yw0jJJsdSsN6q+AoIYFRoZidaVL2XlF
-         7qcDUVw2BduJOg9qxJ+SumvAJGpiNNMJ4N06b1mc0GrxYJiy/6st9E0TMqqRaXk+1RD3
-         EVbw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from:arc-authentication-results;
+        bh=QBbEfhnzoEHbgECab84C4RSZdlRVBliM59RxCWgKwyc=;
+        b=ljwK5vEn/19E8lboJQde62m8EVFalzMbDEC+dBJ17LMBopune3HwZsriEXQceijoxh
+         3C6Xe6UQANRKylUJG8quapKtanxiCirKHUJvwMUkjqNQI0EE5YeUY1LNYsQ4Pbu2TqW7
+         UxYFC4NUF7SxXk+ygRN0s5QO61B1qtd5o3bQ/eoJaJAFK1CKjktgX1hJxR4Zda3Lkhef
+         jl9ogmw+rglhcvVS7tmry15kmmfc4ITIfbdu49lA1/MXc/mZpBbXGP1FsYd2SLMd98jW
+         QGIiUsthZJXLI6QLh4j2OchX83dUfq/kpEBWtob/Ya0yE2RLlYvOGVARBZz0wnCCAxOc
+         tDWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YEWndVfA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z17-v6si978431qtz.71.2018.05.22.02.14.06
+        by mx.google.com with ESMTPS id l12-v6si4235552qve.23.2018.05.30.20.17.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 22 May 2018 02:14:06 -0700 (PDT)
+        Wed, 30 May 2018 20:17:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YEWndVfA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54324 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:41756 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fL3Ms-00061S-7r
-	for alex.bennee@linaro.org; Tue, 22 May 2018 05:14:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48329)
+	id 1fOE5G-0004PO-3M
+	for alex.bennee@linaro.org; Wed, 30 May 2018 23:17:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50562)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fL3Mi-00060P-BE
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 05:13:57 -0400
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fOE55-0004OE-6j
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 23:16:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fL3Md-00041b-Og
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 05:13:56 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:45505)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fL3Md-00041J-Jg
-	for qemu-arm@nongnu.org; Tue, 22 May 2018 05:13:51 -0400
-Received: by mail-oi0-x241.google.com with SMTP id b130-v6so15541163oif.12
-	for <qemu-arm@nongnu.org>; Tue, 22 May 2018 02:13:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=RclRs90U2y/6OefBXKyIFQi7x++MVqV/naARx9iLe1Y=;
-	b=YEWndVfAI86WnRf4Ec2eaSiYYtqKHc/f1jlIBW3+sj6q2dV/s723Gi+kRSbdaIXZmA
-	iIRJpkIS8sbGxgXGtZNqRN/5CWi/9U8N9YvfdIpUQ6SauxpldhBHcDDwow5IYidZcpj9
-	b0+GsAl/u1KjT6kdzhex71MublqNrO+lbTxRQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=RclRs90U2y/6OefBXKyIFQi7x++MVqV/naARx9iLe1Y=;
-	b=kRRjGoH2Zn092vKhFRKQ2wthGT+VjTJqRPCzVBf3zAsYVY1/tXE6NSj4kGA5sbGp2k
-	H81L/A2ylW3af2oIU8HXQ4FYvd2S1vovPLcoTgh6RZC5uLMFlD5Gm9zClHaRpCpe5Ql+
-	UkbjvV3uCeLrvRMaCR4RNF0ZADiDFHYoTORmhXXAF/gFc0VPJnagd7ODS9e1Nt+3tOXs
-	KNxyuRoQStvqBv2/UclD9i8M0/UX2G7Hocxj2R/gVCQA13qbKrnoQfmgnL6yE2yaCrcS
-	P3inTujflp3+F/DeVLtXGjUKlbwuy6n1TyrSuQD2AM4XSjx29uVlD0PqSNrDzqIeYCc/
-	GjNw==
-X-Gm-Message-State: ALKqPwc4f3/Z1TwkHzZq7VK8DLFuiHbzdjQj1LNwIegXyGl3SqoEFOBQ
-	N5D4ddzwFadL1idJYQw9CAYkeMb1hoeSlRZ4CXtB7g==
-X-Received: by 2002:aca:d447:: with SMTP id
-	l68-v6mr14104102oig.102.1526980430732; 
-	Tue, 22 May 2018 02:13:50 -0700 (PDT)
+	(envelope-from <zhaoshenglong@huawei.com>) id 1fOE50-0004Wf-0N
+	for qemu-arm@nongnu.org; Wed, 30 May 2018 23:16:50 -0400
+Received: from [45.249.212.35] (port=40703 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
+	id 1fOE4z-0004Uv-La; Wed, 30 May 2018 23:16:45 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id C50C18A32C9E8;
+	Thu, 31 May 2018 11:16:39 +0800 (CST)
+Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
+	DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server
+	id 14.3.382.0; Thu, 31 May 2018 11:16:31 +0800
+From: Shannon Zhao <zhaoshenglong@huawei.com>
+To: <qemu-arm@nongnu.org>
+Date: Thu, 31 May 2018 11:15:55 +0800
+Message-ID: <1527736557-11084-1-git-send-email-zhaoshenglong@huawei.com>
+X-Mailer: git-send-email 1.9.0.msysgit.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 22 May 2018 02:13:30
-	-0700 (PDT)
-In-Reply-To: <5AC97568.2040502@huawei.com>
-References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
-	<1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
-	<CAFEAcA96qV_f7i_36Yzb-QV7W9SRHKfJpg=rvv3tia2X-Xi7QQ@mail.gmail.com>
-	<5AB0F254.3050503@huawei.com>
-	<CAFEAcA-Ct3qa0OFZ4U+9RH68SQJgmkxJKKS5e+if_MuL2pSu3A@mail.gmail.com>
-	<5AB21130.2020309@huawei.com>
-	<CAFEAcA8yr+KJFwBSksMP-VjNbsSd190VCzB4wGwOCoaX2ScDiA@mail.gmail.com>
-	<CAFEAcA_r=S=YWAuZue1zZnFdtFYK2wU7NnaCcGThZU_u33qD4g@mail.gmail.com>
-	<CAFEAcA_JYyHj6NGJahGPQ9p9XQz6rkmhWMfheW96DzkciModDA@mail.gmail.com>
-	<CAFEAcA_GwG-80oNHHb1wcJxkzS5YcbH335JHBo48_ksFmgRB7A@mail.gmail.com>
-	<5AC97568.2040502@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 22 May 2018 10:13:30 +0100
-Message-ID: <CAFEAcA8M4-2sAr84kA-1m-0ydw_Xy27A6qK4BEwEzRTdCNahgg@mail.gmail.com>
-To: Shannon Zhao <zhaoshenglong@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip
- the registers banked by GICR
+Content-Type: text/plain
+X-Originating-IP: [10.177.16.142]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+Subject: [Qemu-arm] [PATCH v5 0/2] Fix ARM KVM GICv3 get/put data shift bug
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,32 +78,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
-	Juan Quintela <quintela@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>, peter.maydell@linaro.org,
+	shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: izwXoJC8zN1k
+X-TUID: fPLFFi5xl07B
 
-On 8 April 2018 at 02:50, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
-> On 2018/4/6 17:36, Peter Maydell wrote:
->> On reflection, I think I'd aim for 2.13 for this, since:
->>  * it's not a regression
->>  * it doesn't actually affect any of our boards, because
->>    none of them define enough interrupt lines that they
->>    would actually be using the top 32 that we fail to migrate
->>  * getting the migration compat right is a bit tricky and
->>    will benefit from having the time for careful review and testing
->>
->> Let me know if I'm wrong with any of those assumptions.
->
-> Yes, it's no need to merge this for 2.12. I'll respin this patch later.
+These two patches fix ARM KVM GICv3 get/put data shift bug and add
+compatibility fro migration from old qemu to new one.
 
-Looking at another GIC related patch this morning reminded me
-about this one. Shannon, are you planning to respin this now we've
-reopened for 2.13 development?
+Major Changes in V5: 
+* Add detailed comment as suggested by Peter
+* Use memmove instead of memcpy
+* Delete .need callback
+* set gicd_no_migration_shift_bug to true after move the data
 
-thanks
--- PMM
+Shannon Zhao (2):
+  arm_gicv3_kvm: kvm_dist_get/put_priority: skip the registers banked by
+    GICR_IPRIORITYR
+  arm_gicv3_kvm: kvm_dist_get/put: skip the registers banked by GICR
+
+ hw/intc/arm_gicv3_common.c         | 79 ++++++++++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv3_kvm.c            | 56 ++++++++++++++++++++++++++-
+ include/hw/intc/arm_gicv3_common.h |  1 +
+ 3 files changed, 134 insertions(+), 2 deletions(-)
+
+-- 
+2.0.4
+
+

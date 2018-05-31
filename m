@@ -1,213 +1,177 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5981261wre;
-        Thu, 31 May 2018 07:19:32 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIQ1IoOeiSa3UgH0rQJGrUhZygY8TluoVcTTXpWEa15XAnOuGaGPDtocbuUAeFkOEZejudk
-X-Received: by 2002:ac8:78c:: with SMTP id l12-v6mr3273082qth.101.1527776372045;
-        Thu, 31 May 2018 07:19:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527776372; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp6007443wre;
+        Thu, 31 May 2018 07:44:53 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIff2hY0OAh9v1eUGq59yR8UEBo4WCTPeOH9Un8+l55RO6r+ViuOsEYQFPaLuRIlQ7R6yvS
+X-Received: by 2002:a37:6f01:: with SMTP id k1-v6mr6508191qkc.140.1527777893344;
+        Thu, 31 May 2018 07:44:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527777893; cv=none;
         d=google.com; s=arc-20160816;
-        b=tZh7Ta3DcosxtqCenmz3JOaSYTjI40o34UmU2LIWSAitcVWrWqUpE8D3ewhUkrTdN/
-         ZKe+IaPDURq++/zVQwX+GKj0zBLn6NWmQTh+HXI9SPq79RqHA6D/ciajpBw1MMeTrkBA
-         bWvZS3Npri7Kvadcglqsucwm0y8WWKM2SdHp6iWhgiZMDttmTSe/4tl7JvonjwlhU70F
-         YL9XiiHXpkdYLF4gV4hBj0YrQZJeYANilgyivaEXA+/EfoxHxaNL6fGdE3t8q3lyjIGu
-         Hvve1IpTDjUthxIDSyCltwTXAl8m3c1K5I5YJmcUJoq/pfrH2JJfqwfd4enFMw56pNtN
-         y3QA==
+        b=DW8RrCskQA/cHzr62MKyMxAAwEPEs19NqhSsByhnXcLVtvZEeI022B7/PzOPmHm8A+
+         TkCRWxbbP6KuGfB+Xc9L15z8VgRpVLZkP0EEBz6ghms3ylL+9rPRDjLG5181apDNIBuE
+         eGtBkk/g9jPsb51tELpwkhKlI/4ZboillSvkxFY+h4NqQAiZu7IlX59ZOE7LTMkBgams
+         CnN5O312he9VKv7ffbCrcuB8lFH7I0uT+TyQwFBXiQUD4bDTdnrpVgm24J9CvCvB3skE
+         Q1xdMLlDYACIflsk/9OMkOeXISUN+7nI6K6IUEQJBiy4vf71epMhtmgzzdhvUPJLpOOW
+         ptqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=ykSnLQSmvUHjx0oESrhNSVGBOcifkjM7aMGUd0849fg=;
-        b=dwJK7BBh4g1ojGjl94LTAS0wz62L0XtDpyZJ96tmYnDJK/tZV7flT/JV74Qq2vCIFV
-         irXzFMr4X6j0moMQ9uyUM8BajoW1rpxr29HL/aQBatCtkOGzKVD1p8jEHmtVVUicNQzD
-         boeLbqG/zuaNhEDPo2aVJFddIBQMcKzQ56J6lemVHdsQ3SudD+k2kF81QBFJtKz2iSQ0
-         N97DamPfZVIzvqawVBNKtB+8ZnltWMeCIZhTZI7i7iB79nqi0fUNDHyLI3qWf8/R9o3F
-         JQoSYY2hZEf+oS/Br2BBkCfo09joDmxE/Lv3N0XW69vh6RtK9uEEq17jHd9qTriJIEvi
-         ldKQ==
+        bh=7xwyQ3Ti6AhZuDgv0d7YZvQds+uuRmKWbvgQzeBjbQI=;
+        b=KB6VBV8D1Ym4/UOHOb8Hu79c4N9BSCNHXQgvCyTkPk21kTtCZcWfreGdJzckYkRRaZ
+         War/OPv9PezfaO8D28JGpoXzzrTJhJ11ku13OvqL0pNbyR1YHOkurLRC1OjJKerFXd8h
+         pXco0/ipeYevhMBa3lTL2nO7/8IrX1D9zTk12EiZLBbSXLl3xrM9yPFZ7MZNEVrZXMg5
+         uY64D02h9682pyQc5NESCwm4S5LYyxoUyZvbatPXAFZh+lStByOls4CsklR88jO/tY8H
+         7ECIJFJIf0mTg+rkccjPDoLI893wY0PhMnI3iOoQf+cHhpPJEii5ufK0PxIREHEkEA59
+         u7Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=abIo0WaA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=t8ULZgdn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z12-v6si8457620qvi.101.2018.05.31.07.19.31
+        by mx.google.com with ESMTPS id q42-v6si10695746qvh.26.2018.05.31.07.44.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 31 May 2018 07:19:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 31 May 2018 07:44:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=abIo0WaA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44366 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=t8ULZgdn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44511 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOOQM-0007l2-7J
-	for alex.bennee@linaro.org; Thu, 31 May 2018 10:19:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40502)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fOOou-00006a-Rw
+	for alex.bennee@linaro.org; Thu, 31 May 2018 10:44:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45177)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fOOQ9-0007jZ-EB
-	for qemu-arm@nongnu.org; Thu, 31 May 2018 10:19:18 -0400
+	(envelope-from <shannon.zhaosl@gmail.com>) id 1fOOgb-00028H-PZ
+	for qemu-devel@nongnu.org; Thu, 31 May 2018 10:36:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fOOQ8-0002pi-CJ
-	for qemu-arm@nongnu.org; Thu, 31 May 2018 10:19:17 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:45710)
+	(envelope-from <shannon.zhaosl@gmail.com>) id 1fOOga-0006gC-JX
+	for qemu-devel@nongnu.org; Thu, 31 May 2018 10:36:17 -0400
+Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:37680)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fOOQ8-0002pL-6w
-	for qemu-arm@nongnu.org; Thu, 31 May 2018 10:19:16 -0400
-Received: by mail-oi0-x242.google.com with SMTP id b130-v6so19603006oif.12
-	for <qemu-arm@nongnu.org>; Thu, 31 May 2018 07:19:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(Exim 4.71) (envelope-from <shannon.zhaosl@gmail.com>)
+	id 1fOOgU-0006ae-D1; Thu, 31 May 2018 10:36:10 -0400
+Received: by mail-lf0-x244.google.com with SMTP id r2-v6so10091769lff.4;
+	Thu, 31 May 2018 07:36:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=ykSnLQSmvUHjx0oESrhNSVGBOcifkjM7aMGUd0849fg=;
-	b=abIo0WaAtg/H1zP4a8H9UXgpC88e09WSlDKStfN3zlqaWW+1ANzW+T2YLGZpWKIt8d
-	WaDjQYbO2pLXaWOh/djSvrwVCWClb0Hxjd08MyY3ebTt82fKr9Kkm3h1dg5Ns0yQtKbN
-	7EfzYNlvAY7v9Fq6AioFPiJvfV13aaUUrE3mM=
+	:cc; bh=YCzl1cWYi6wMmtNwq6b1indlTO9Enqdr3gFRbTqQWko=;
+	b=t8ULZgdnP+ZUIHSXEV0JoR1N2pQUK8D7yE/ipztdnsBqayu7TASZ3p7MwNSSxqyiql
+	7pRNnQr06ELaBJ9nCu1u1JS0ybCGvpoL3yb1oxEs7YnIV37KLt1TbLzi+Tce7E3RXlZL
+	cNufvilZHsQNBioqR0y6IJuAFEJuOzzuOsC2VBvPs7edBsG+mKum4G8qhxr6M0P6lr+2
+	ZCBJQXU0L4S+GSYSla+G4t423RtpqIrvxR1C8pRnK7s1YIrC4LE0Ut2kWsBmAchYjfmw
+	fZ6d61kwM2bTawpojtm847urwe5xmom4z9wW1guueDQzANt6sYFuD/7HkNeLzHxDdEac
+	XhdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=ykSnLQSmvUHjx0oESrhNSVGBOcifkjM7aMGUd0849fg=;
-	b=Q5HPSX9xvOZplOlg3H5vpLz9IFEYjMbem3m9yfSX6GR6dAsgDmZ1Gd50eWWfVtpxH3
-	jjFMuQyj/hohqBWPWEFeIWddQxGBUXEDSfVLBvlsFukY4MLMNB9gt/ecw8JBkeTFzzO0
-	RD8utn6/E756OH8KuW5EDD+Bti7NiSEZ7ACLAur2HM4SUGFJ3KkIwn+oqVcMy2ZfSZ/P
-	1ndbIujdbPXWLnSif8im8mCcSWYRBVbIZvu/44IGyJs/pWTHt4KxOGyf3eFXBbqHiF0A
-	ewT//l7XWoChzcyF+b/ksI8iKOLysUctYg6RlXQLGp3WihV17Gp6KdEgYFNpEDGgHyp1
-	LOKQ==
-X-Gm-Message-State: APt69E33ZVDO59jU2H6IXw7gSBWEaTET9wJp03EsZApbfyR63YRFrzLE
-	sJx5V16MO8lOGHgtzgNFgW1gmdC/TBFhIDAJ6oQqLg==
-X-Received: by 2002:aca:bec6:: with SMTP id
-	o189-v6mr3824722oif.337.1527776355398; 
-	Thu, 31 May 2018 07:19:15 -0700 (PDT)
+	bh=YCzl1cWYi6wMmtNwq6b1indlTO9Enqdr3gFRbTqQWko=;
+	b=CdJzHWJDcmkYYr1Gx/COfabFStjjc75aslORXWcKZruqBdEM44mtfeM6O8/H8Xddye
+	rC8SfOUGlRd4GkB2zjUndnEG0qmwNDoUxLVhgHJDs1B6qZmJH01cE+2W2Jo/DmHS081X
+	GjugribaobwD28h/BRpiK4+TQ8jS5q0EaOgf0+j6IRedyTAZpxZ2EMAgNTvKpEMsb1DU
+	H0M/a2/VmBme1n8oM1XUyAHgVq4lzd5a/mQ6i+LhQAuvQ7uD4WwUwjln15izUwx+Y4IL
+	mjkRNyzRgvDKYO7H3QCaXIoYZ68gDkSTWt0PU84I031DIAPek4rua/+yuOsf4EU5Y6vT
+	/tDw==
+X-Gm-Message-State: ALKqPwcF/qkblLdM5ik927MNDkns09fQzFhkxj6TuCrQKpuFueOzk26n
+	fKr1hYaD3pez3E1I/mzBnTEwCkMmmjH1j9GjN5Q=
+X-Received: by 2002:a19:7515:: with SMTP id
+	y21-v6mr4308309lfe.107.1527777368590; 
+	Thu, 31 May 2018 07:36:08 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Thu, 31 May 2018 07:18:54
+Received: by 2002:a19:9308:0:0:0:0:0 with HTTP; Thu, 31 May 2018 07:36:08
 	-0700 (PDT)
-In-Reply-To: <20180517193104.GB4771@codeaurora.org>
-References: <1521232280-13089-1-git-send-email-alindsay@codeaurora.org>
-	<1521232280-13089-16-git-send-email-alindsay@codeaurora.org>
-	<CAFEAcA9bYdwByseqCMKSVtWV59mNruT3jJfWWLju1koCnwSb=Q@mail.gmail.com>
-	<20180417142318.GO24561@codeaurora.org>
-	<CAFEAcA8RwC7DSbo+mMqYUS6tL5UwfQGMa_r5AnAkJqm7v63HWw@mail.gmail.com>
-	<20180517193104.GB4771@codeaurora.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 31 May 2018 15:18:54 +0100
-Message-ID: <CAFEAcA-+sO3oUqfQXHcHRBu2i-WFzvFKObcBz26qeLS_0+3s2Q@mail.gmail.com>
-To: Aaron Lindsay <alindsay@codeaurora.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA-qWkhueUUnZ1RmhRuhHLstGpwmameHgsOM7UautJVxpw@mail.gmail.com>
+References: <1527736557-11084-1-git-send-email-zhaoshenglong@huawei.com>
+	<1527736557-11084-3-git-send-email-zhaoshenglong@huawei.com>
+	<CAFEAcA-qWkhueUUnZ1RmhRuhHLstGpwmameHgsOM7UautJVxpw@mail.gmail.com>
+From: Shannon Zhao <shannon.zhaosl@gmail.com>
+Date: Thu, 31 May 2018 22:36:08 +0800
+Message-ID: <CAOMwq8-H+iZ1L996G4jdky__zstwFo6x0qTucqLRstuXhs1CEA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [PATCH v3 15/22] target/arm: Add ARM_FEATURE_V7VE
- for v7 Virtualization Extensions
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4010:c07::244
+Content-Type: text/plain; charset="UTF-8"
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [PATCH v5 2/2] arm_gicv3_kvm: kvm_dist_get/put:
+ skip the registers banked by GICR
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HrAPHJS8kxov
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-stable <qemu-stable@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4HIdBcXjq7uc
 
-On 17 May 2018 at 20:31, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> On Apr 17 16:00, Peter Maydell wrote:
->> So, the underlying issue here is that there's a QEMU specific
->> fudge going on. Architecturally, if the CPU implements the
->> Virtualization Extensions, then:
->>  * it has Hyp mode
->>  * it must also implement the Security Extensions
->>  * on reset it starts in the Secure world
->>  * it has LPAE
->>  * it has some stuff that is not inherently tied to having EL2,
->>    like the SDIV and UDIV instructions, and the presence of
->>    PMOVSSET
->>
->> In an ideal world, we'd just have a feature flag that turned
->> all that on. Unfortunately, a combination of backwards compatibility
->> issues, the order in which various features were implemented
->> in QEMU, and the fact that KVM can't emulate a guest CPU with
->> the Security Extensions means that we want to be able to model
->> variants of some CPUs that don't really exist in real hardware:
->> Cortex-A15 and -A7 which only implement EL0/EL1 but still have
->> all the v7VE features that you can see from those ELs. But we
->> didn't really properly lay out guidelines for how the feature
->> bits should work in this case, with the result that we have
->> a bunch of local hacks (for instance get_S1prot() has a check
->> on the LPAE feature bit, since in practice that bit is set in
->> exactly the CPUs that have v7VE; and the UDIV/SDIV insns have
->> their own feature bits.)
->>
->> So we should probably sort out this mess first, either by:
->>
->> (a) state that we use ARM_FEATURE_LPAE for all checks for
->> features that are architecturally v7VE but which we want to
->> exist even on our v7VE-no-Hyp-no-Secure oddballs
->> (b) define an ARM_FEATURE_V7VE for them
->> (c) define separate feature bits for them individually
+2018-05-31 21:50 GMT+08:00 Peter Maydell <peter.maydell@linaro.org>:
+
+> On 31 May 2018 at 04:15, Shannon Zhao <zhaoshenglong@huawei.com> wrote:
+> > While we skip the GIC_INTERNAL irqs, we don't change the register offset
+> > accordingly. This will overlap the GICR registers value and leave the
+> > last GIC_INTERNAL irq's registers out of update.
+> >
+> > Fix this by skipping the registers banked by GICR.
+> >
+> > Also for migration compatibility if the migration source (old version
+> > qemu) doesn't send gicd_no_migration_shift_bug = 1 to destination, then
+> > we shift the data of PPI to get the right data for SPI.
+> >
+> > Fixes: 367b9f527becdd20ddf116e17a3c0c2bbc486920
+> > Cc: qemu-stable@nongnu.org
+> > Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
 >
-> From what I can tell, using ARM_FEATURE_LPAE to represent all the
-> almost-v7ve misfits won't work well because ARM_FEATURE_ARM_DIV may be
-> supported on some platforms for which ARM_FEATURE_LPAE is not (Cortex
-> R5), and ARM_FEATURE_ARM_DIV is read from ID_ISAR0 in
-> kvm_arm_get_host_cpu_features() (and may be set/not set independently of
-> ARM_FEATURE_LPAE). It appears there is a need to independently
-> distinguish between them.
-
-We need (and already have) a separate feature bit for ARM_DIV
-exactly because it's present on some CPUs which don't have V7VE;
-so we don't want to roll that back into a V7VE feature bit.
-
-> The same reasoning also seems to rule out
-> option (b) "one ARM_FEATURE_V7VE to rule them all", leaving me with
-> option (c).
+> > +    /*
+> > +     * While this new version QEMU doesn't have this kind of bug as we
+> fix it,
+> > +     * so it's need to set the flag to true to indicate that and it's
+> neccessary
+> > +     * for next migration to work from this new version QEMU.
+> > +     */
+> > +    cs->gicd_no_migration_shift_bug = true;
 >
-> It almost seems silly to create ARM_FEATURE_PMOVSSET, but I'm not sure
-> what else makes sense to do here. Am I missing something (I'm almost
-> hoping I am)?
+> Nice catch; I would have forgotten that we needed to do this...
+>
+>
+> >
+> > +    /* For the KVM GICv3, affinity routing is always enabled, and the
+> > +     * GICD_IGROUPR0/GICD_IGRPMODR0/GICD_ISENABLER0/GICD_ISPENDR0/
+> > +     * GICD_ISACTIVER0 registers are always RAZ/WI. The corresponding
+> > +     * functionality is replaced by the GICR registers. It doesn't need
+> to sync
+> > +     * them. So it should increase the offset to skip GIC_INTERNAL irqs.
+> > +     * This matches the for_each_dist_irq_reg() macro which also skips
+> the
+> > +     * first GIC_INTERNAL irqs.
+> > +     */
+> > +    offset += (GIC_INTERNAL * 1) / 8;
+> > +    if (clroffset != 0) {
+> > +        clroffset += (1 * sizeof(uint32_t));
+> > +    }
+> > +
+>
+> Shouldn't we be adding the same thing to clroffset that we add to offset ?
+>
+> Yeah, right. It should like this
 
-Sorry, I forgot I hadn't replied to this email yet. Let's do this:
+  clroffset += (GIC_INTERNAL * 1) / 8;
 
- * define a new ARM_FEATURE_V7VE:
+I don't remember why I didn't write this way. Anyway, Could you please fix
+this when you apply this patch or I send a new version?
 
-  ARM_FEATURE_V7VE, /* v7 Virtualization Extensions (non-EL2 parts) */
-
-In arm_cpu_realizefn:
-
- * change the existing "FEATURE_V8 implies V7/ARM_DIV/LPAE" to
-   "FEATURE_V8 implies V7VE"
- * below that put
-
-   if (arm_feature(env, ARM_FEATURE_V7VE) {
-       /* v7 Virtualization Extensions. In real hardware this implies
-        * EL2 and also the presence of the Security Extensions.
-        * For QEMU, for backwards-compatibility we implement some
-        * CPUs or CPU configs which have no actual EL2 or EL3 but do
-        * include the various other features that V7VE implies.
-        * Presence of EL2 itself is ARM_FEATURE_EL2, and of the
-        * Security Extensions is ARM_FEATURE_EL3.
-        */
-       set_feature(env, ARM_FEATURE_ARM_DIV);
-       set_feature(env, ARM_FEATURE_LPAE);
-       set_feature(env, ARM_FEATURE_V7);
-   }
-
- * in kvm_arm_get_host_cpu_features() in kvm32.c add
-   set_feature(&features, ARM_FEATURE_V7VE);
-   where we currently set V7, LPAE, etc.
-   (by definition a host CPU which supports KVM has v7VE.)
-
- * perhaps some followon patches that correct checks that were
-   testing something else and can now use the new V7VE feature bit.
-
-thanks
--- PMM
+Thanks,
+--
+Shannon

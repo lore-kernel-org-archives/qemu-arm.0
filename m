@@ -1,72 +1,71 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp3757293wrq;
-        Tue, 10 Jul 2018 09:25:14 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfRSC8ewZ0Mj00vFCag4cmtYLyqeo/tkMDT9dLsCvEM3oxbPIi0yPvY146moD3O60+EPjzz
-X-Received: by 2002:a37:9444:: with SMTP id w65-v6mr22117687qkd.268.1531239914613;
-        Tue, 10 Jul 2018 09:25:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531239914; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp707951wre;
+        Fri, 1 Jun 2018 07:43:41 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJjV6Ptsr6n0aNzrPBCyHy6ZPfBZ5nWBulRSyYP2M91Bbu4YvuJjvoMbEJUMsePpvXpJFiq
+X-Received: by 2002:ac8:21a7:: with SMTP id 36-v6mr3337523qty.252.1527864221691;
+        Fri, 01 Jun 2018 07:43:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527864221; cv=none;
         d=google.com; s=arc-20160816;
-        b=HDeOyr67atu7d3S/c2iV42TM5MxIDg4g+kKMJexzWelbzBF5mPv7Hy2NjH/vkCDVqE
-         cuzM3y6MCu5JFrgRtw4hJfs2fWmtOl0T1om0OLHJAiCEwL5jdFHl4uRw2CK3naAnCSo8
-         nA/zbiOB3z38Ux3NosrLZFx4efXGA3dDgB6EdiY6s5ze8ldjGn5jz0TxInp2LHThHk5e
-         /Rwo38K7UoBBERe8PtbgiEcU3R9XZ8hHV+5n955zYc5skgBP/aME4qa7W6xiL8gv2vqM
-         Y6L84wjEchLOX14wDdVZRP7ABiQP1+s0EJ0a5uyDmLdy/hR141Rk7dCBMGvZEr5fmsof
-         3y2w==
+        b=uVMp/I9YNnOueZVgnW+JvF4R/t8IU+k8gVMKKb0RNTi05BxETqXt8jLMoht+TNfQXx
+         fbWjMJ9ZqWt4/a/pEv/fVoAWQ7sjKW+uDPqLGhiJfo7ggi54gzSD1DMdctR9ocKxPgFC
+         2FXYS+d1Xm6KAD0nDNYq4BZPIL5NHHhLzHQ2n0mfjvFFgrA9+7AcU8V3pQozJn65irYN
+         NkzUNiP1ox718ay6g4lGrs0spTi2HK0GYZViCQzRw+A677Roo2/ItgIsoRp+suOMPmM1
+         /74ukCgqjk4+xRcHrY6E58xZKIZtrBqzap/wOn4zr8FxU1m36Je4Voe1SD+nmS3GmYjG
+         dDrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=1VsL72s3i2h5MzsUfVBZAWn2SyPwxjyiJIbCxv9KcS0=;
-        b=mJnjcgcqFvzNFYgKf59iWpqC65uVouD1drOCaLdWimNPYHwrB/JH/98Ai6PgfmRCbJ
-         nJdQqe1rWkNN22m30QwB+T0Jd8/GulFLvMLOr0PDhszRWE6CFxNBZnoguZOzjvcTdEvz
-         8ahocoB65i36mJQTnSaHSXySJCpBq4+ZJJJhI/eMWGuaFnEwt9040u9kmQh5cGM481kH
-         6sLBWMUTxqj/csoR6QnwjvDKyANiGs39FmT1FGQ0eNhc7nKesVvNNkjAQ+GxtzFcdpsk
-         WtPYK59DS+GJ93F3com8H8lgvq4EHEznxq8HLXgjAfPi2AhR2d6IxC5pTwKSpYtSyTUA
-         oYuw==
+        bh=md5CzOwfzp6x9w0ab2GFuNtdfXVHTUCzNzCqNTcdzlk=;
+        b=LdF4keUq45yyQXiB8EaX1OkpuT4oVQEzXXXKPABVXA4/ulTac9DlXSGL0TLAvzyFPV
+         lZ98HFRG/6KQPezMOxB3F/lFs788yPK9UieoJMfvUI+GBsFcg9MaWlmNwjEc9jC0/W5R
+         ScruOsXGL+GuI674l1Xa1chmaQ6MyZNWeOPSpvuBAdVEFtE5LN8xo3XoT87ZCyK2Lr/H
+         RlWYxiMN1ciHmnr5fIf1m+9daTL44lNwBJjKXUnMUmKL1rkOKeGA+AnE8Rya2DWc0l74
+         AaxDdjr0xQbOpbciVtOAEVcGyn8n49Ut7x45qQYF7JRtLZb/pvsY8+bQq5quqQpFFOAx
+         10NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q16-v6si4029415qtf.380.2018.07.10.09.25.14
+        by mx.google.com with ESMTPS id u18-v6si10549954qvc.168.2018.06.01.07.43.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Jul 2018 09:25:14 -0700 (PDT)
+        Fri, 01 Jun 2018 07:43:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48802 helo=lists.gnu.org)
+Received: from localhost ([::1]:56073 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fcvRy-0005U7-2V
-	for alex.bennee@linaro.org; Tue, 10 Jul 2018 12:25:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57365)
+	id 1fOlHJ-0001nM-8X
+	for alex.bennee@linaro.org; Fri, 01 Jun 2018 10:43:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46522)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fcvRe-0005Kz-U2
-	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 12:24:56 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fOlHB-0001nF-Nw
+	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 10:43:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fcvRd-0006XN-NQ
-	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 12:24:54 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43454)
+	(envelope-from <pm215@archaic.org.uk>) id 1fOlHA-0005Nw-QA
+	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 10:43:33 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:42372)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fcvRd-0006Tu-E1; Tue, 10 Jul 2018 12:24:53 -0400
+	id 1fOlHA-0005Mh-Is; Fri, 01 Jun 2018 10:43:32 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fcv3q-0001po-QQ; Tue, 10 Jul 2018 17:00:18 +0100
+	id 1fOlH8-00047W-7x; Fri, 01 Jun 2018 15:43:30 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 10 Jul 2018 17:00:12 +0100
-Message-Id: <20180710160013.26559-6-peter.maydell@linaro.org>
+Date: Fri,  1 Jun 2018 15:43:27 +0100
+Message-Id: <20180601144328.23817-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180710160013.26559-1-peter.maydell@linaro.org>
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
+In-Reply-To: <20180601144328.23817-1-peter.maydell@linaro.org>
+References: <20180601144328.23817-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 5/6] accel/tcg: Return -1 for execution from MMIO
- regions in get_page_addr_code()
+Subject: [Qemu-arm] [PATCH 1/2] stellaris: Stop using armv7m_init()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,153 +77,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, KONRAD Frederic <frederic.konrad@adacore.com>,
-	"Emilio G . Cota" <cota@braap.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Jim Mussared <jim@groklearning.com>,
+	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <mail@steffen-goertz.de>,
+	patches@linaro.org, Joel Stanley <joel@jms.id.au>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XGVZtfMPXtO1
+X-TUID: TBX2iuPM8OMs
 
-Now that all the callers can handle get_page_addr_code() returning -1,
-remove all the code which tries to handle execution from MMIO regions
-or small-MMU-region RAM areas. This will mean that we can correctly
-execute from these areas, rather than ending up either aborting QEMU
-or delivering an incorrect guest exception.
+The stellaris board is still using the legacy armv7m_init() function,
+which predates conversion of the ARMv7M into a proper QOM container
+object. Make the board code directly create the ARMv7M object instead.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- accel/tcg/cputlb.c | 95 +++++-----------------------------------------
- 1 file changed, 10 insertions(+), 85 deletions(-)
+ hw/arm/stellaris.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index c491703f15f..abb0225dc79 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -741,39 +741,6 @@ void tlb_set_page(CPUState *cpu, target_ulong vaddr,
-                             prot, mmu_idx, size);
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index e886f54976..1b2c383e9f 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -20,6 +20,7 @@
+ #include "qemu/log.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/sysemu.h"
++#include "hw/arm/armv7m.h"
+ #include "hw/char/pl011.h"
+ #include "hw/misc/unimp.h"
+ #include "cpu.h"
+@@ -1297,8 +1298,13 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+                            &error_fatal);
+     memory_region_add_subregion(system_memory, 0x20000000, sram);
+ 
+-    nvic = armv7m_init(system_memory, flash_size, NUM_IRQ_LINES,
+-                       ms->kernel_filename, ms->cpu_type);
++    nvic = qdev_create(NULL, TYPE_ARMV7M);
++    qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
++    qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
++    object_property_set_link(OBJECT(nvic), OBJECT(get_system_memory()),
++                                     "memory", &error_abort);
++    /* This will exit with an error if the user passed us a bad cpu_type */
++    qdev_init_nofail(nvic);
+ 
+     qdev_connect_gpio_out_named(nvic, "SYSRESETREQ", 0,
+                                 qemu_allocate_irq(&do_sys_reset, NULL, 0));
+@@ -1430,6 +1436,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     create_unimplemented_device("analogue-comparator", 0x4003c000, 0x1000);
+     create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
+     create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, flash_size);
  }
  
--static void report_bad_exec(CPUState *cpu, target_ulong addr)
--{
--    /* Accidentally executing outside RAM or ROM is quite common for
--     * several user-error situations, so report it in a way that
--     * makes it clear that this isn't a QEMU bug and provide suggestions
--     * about what a user could do to fix things.
--     */
--    error_report("Trying to execute code outside RAM or ROM at 0x"
--                 TARGET_FMT_lx, addr);
--    error_printf("This usually means one of the following happened:\n\n"
--                 "(1) You told QEMU to execute a kernel for the wrong machine "
--                 "type, and it crashed on startup (eg trying to run a "
--                 "raspberry pi kernel on a versatilepb QEMU machine)\n"
--                 "(2) You didn't give QEMU a kernel or BIOS filename at all, "
--                 "and QEMU executed a ROM full of no-op instructions until "
--                 "it fell off the end\n"
--                 "(3) Your guest kernel has a bug and crashed by jumping "
--                 "off into nowhere\n\n"
--                 "This is almost always one of the first two, so check your "
--                 "command line and that you are using the right type of kernel "
--                 "for this machine.\n"
--                 "If you think option (3) is likely then you can try debugging "
--                 "your guest with the -d debug options; in particular "
--                 "-d guest_errors will cause the log to include a dump of the "
--                 "guest register state at this point.\n\n"
--                 "Execution cannot continue; stopping here.\n\n");
--
--    /* Report also to the logs, with more detail including register dump */
--    qemu_log_mask(LOG_GUEST_ERROR, "qemu: fatal: Trying to execute code "
--                  "outside RAM or ROM at 0x" TARGET_FMT_lx "\n", addr);
--    log_cpu_state_mask(LOG_GUEST_ERROR, cpu, CPU_DUMP_FPU | CPU_DUMP_CCOP);
--}
--
- static inline ram_addr_t qemu_ram_addr_from_host_nofail(void *ptr)
- {
-     ram_addr_t ram_addr;
-@@ -963,7 +930,6 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
-     MemoryRegionSection *section;
-     CPUState *cpu = ENV_GET_CPU(env);
-     CPUIOTLBEntry *iotlbentry;
--    hwaddr physaddr, mr_offset;
- 
-     index = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
-     mmu_idx = cpu_mmu_index(env, true);
-@@ -977,65 +943,24 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
-                   (TLB_RECHECK | TLB_INVALID_MASK)) == TLB_RECHECK)) {
-         /*
-          * This is a TLB_RECHECK access, where the MMU protection
--         * covers a smaller range than a target page, and we must
--         * repeat the MMU check here. This tlb_fill() call might
--         * longjump out if this access should cause a guest exception.
--         */
--        int index;
--        target_ulong tlb_addr;
--
--        tlb_fill(cpu, addr, 0, MMU_INST_FETCH, mmu_idx, 0);
--
--        index = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
--        tlb_addr = env->tlb_table[mmu_idx][index].addr_code;
--        if (!(tlb_addr & ~(TARGET_PAGE_MASK | TLB_RECHECK))) {
--            /* RAM access. We can't handle this, so for now just stop */
--            cpu_abort(cpu, "Unable to handle guest executing from RAM within "
--                      "a small MPU region at 0x" TARGET_FMT_lx, addr);
--        }
--        /*
--         * Fall through to handle IO accesses (which will almost certainly
--         * also result in failure)
-+         * covers a smaller range than a target page. Return -1 to
-+         * indicate that we cannot simply execute from RAM here;
-+         * we will perform the necessary repeat of the MMU check
-+         * when the "execute a single insn" code performs the
-+         * load of the guest insn.
-          */
-+        return -1;
-     }
- 
-     iotlbentry = &env->iotlb[mmu_idx][index];
-     section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
-     mr = section->mr;
-     if (memory_region_is_unassigned(mr)) {
--        qemu_mutex_lock_iothread();
--        if (memory_region_request_mmio_ptr(mr, addr)) {
--            qemu_mutex_unlock_iothread();
--            /* A MemoryRegion is potentially added so re-run the
--             * get_page_addr_code.
--             */
--            return get_page_addr_code(env, addr);
--        }
--        qemu_mutex_unlock_iothread();
--
--        /* Give the new-style cpu_transaction_failed() hook first chance
--         * to handle this.
--         * This is not the ideal place to detect and generate CPU
--         * exceptions for instruction fetch failure (for instance
--         * we don't know the length of the access that the CPU would
--         * use, and it would be better to go ahead and try the access
--         * and use the MemTXResult it produced). However it is the
--         * simplest place we have currently available for the check.
-+        /*
-+         * Not guest RAM, so there is no ram_addr_t for it. Return -1,
-+         * and we will execute a single insn from this device.
-          */
--        mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
--        physaddr = mr_offset +
--            section->offset_within_address_space -
--            section->offset_within_region;
--        cpu_transaction_failed(cpu, physaddr, addr, 0, MMU_INST_FETCH, mmu_idx,
--                               iotlbentry->attrs, MEMTX_DECODE_ERROR, 0);
--
--        cpu_unassigned_access(cpu, addr, false, true, 0, 4);
--        /* The CPU's unassigned access hook might have longjumped out
--         * with an exception. If it didn't (or there was no hook) then
--         * we can't proceed further.
--         */
--        report_bad_exec(cpu, addr);
--        exit(1);
-+        return -1;
-     }
-     p = (void *)((uintptr_t)addr + env->tlb_table[mmu_idx][index].addend);
-     return qemu_ram_addr_from_host_nofail(p);
+ /* FIXME: Figure out how to generate these from stellaris_boards.  */
 -- 
 2.17.1
 

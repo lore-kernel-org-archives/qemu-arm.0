@@ -1,75 +1,83 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4418191wre;
-        Wed, 30 May 2018 00:07:20 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLObLHNf/I2VlRpU31nJ4mbS5fn/E/pSEtf/RPrIk6FmXhW4ivYKQW4C5nv35/+I5S9+dvG
-X-Received: by 2002:aed:2448:: with SMTP id s8-v6mr1380052qtc.336.1527664039941;
-        Wed, 30 May 2018 00:07:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527664039; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1752333wre;
+        Sat, 2 Jun 2018 07:15:31 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJup+5iby8YlSTZ/fsJd98LvVjLIFMRvISolMLWDJFLBIbKJe8IOCc2NH6VuK29gFY8pQ5X
+X-Received: by 2002:ac8:26b0:: with SMTP id 45-v6mr14541475qto.318.1527948930974;
+        Sat, 02 Jun 2018 07:15:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527948930; cv=none;
         d=google.com; s=arc-20160816;
-        b=OczeA4xLFbLcpAd140Z6YNy4wJIOIIwOboeJc/9x2RTX+fpOqxfKlWV1u2FNa/diYy
-         lVppXQoT0jb6Fy06fgPZHMj1xnq4nIQ0hqMDckzrSqy+AwcssOGAgcAAqJl4MqhuMCKS
-         OJMzI81XAeyLyp1bGemkoS9xZ6veWTi5bn+RI1H4KvsikVDG0EctvqMkZE9UyIxCBVVQ
-         qxsQoQEETUdsyy9ejd8dv+ILoHI9Te/umWM+kVnzh5u18CZXoWLHuFrUAGgEfEcCMwKX
-         Ti5ts1CD41DMnGs6oK/nw3+WQmYPDvKl7hlNKYm8cOyVm6hLNHNLgRsoRbivm9zu27t+
-         LBFA==
+        b=fz1DKMRAVCncT2OHFupknIMyfgaSV84MWec5bH62kK3rhPVYucTjfdzLxbCudVVR4R
+         MLzmm9iA5dbFZSYSdkzIjJf5V4g7TjqUH/zUDsawTMLjjjrrzqepYhxWvhYZlMyA4Q65
+         pIjJEdP709g2PGMJr65G1aDYOl7/5J2Ez0mMwD163yjTzFHB08OpVe1CQduTGvw2gsxQ
+         uRSfNmNf/UFXa5aXQAf3SQLSjJMxrjTdyxevuef5WIA5baK7HsjeDTt+M2dhYa4hKyDZ
+         phBLG7PAWtxSk+aznRvA55oJzhKhYF4u3xBEjr/m9W5RBkVZSmCjCRYFJ15Ows1DnDWH
+         mTww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :arc-authentication-results;
-        bh=dmphkCmWZv3j+6J5IT7Cazi/Bw49vGe7+mh011MtRr8=;
-        b=Do63kjzUDwXpoOrmU1v0i3mnk+u3GNButQ52nQOLtSQbJVkKwfNgrJc+pvAon2PDQt
-         4FQ/1c8zxMLBz28Gpw0y8JeU5SPCKFP0qwBDEI9yok/5efn7Xnu6OERsiwDy3WZit8Oi
-         DDc3MLXfTs/+7jC7iMSU+7qP8GOWSnaTBV/+zytSFsp2OCaJ0nOcqSfwngwaoEQ5sbPx
-         c40UCQ+fGDEOcmfXii3pxZPPMWNd0Nx88lrItPfmuL2m6vmd/+RJN9aAG7VAoaciVzYF
-         dW8qLUMmtsz54y+X/D4GspQKJ+EPn27i7tIrhU8536VfldV0SkKo+BgX3kZW+iG4bRFm
-         sUug==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=Eb4iOifk8vdQ6euEoZbZ6LIzsXsq5nn4VoCO4D+i6cQ=;
+        b=TdNGn8oYTkTupd4vxT6xqc41lhJZgQO9YR9CJJNw8zVfn0Bk2cVj2KEHFHCqNinwmL
+         yp31SVb+BOWW/h6Y1YEJzTiORjly30o2bG1H2wkCj77P7Wfj+1U8ex6w0x0VRyHtZVSe
+         Lsy/YkWLG/ncnCv8WLdT9qrYYvD/ToSnO8viayVxnu2V7pqMG0yd7NDvwn3Fl6E8RgvE
+         RramXW3DhUchqQ+YsKyqudo/uBXZ4pHDe8INRtiU1ufbC7NMLmfydrhYjE8ZH/Gyuo7t
+         4ACapFZTdxqT1fxL6OlAKdnVEo3dYBPIFGaMEWdRb5iByvLjbrGkmvAbWjtcVblE139D
+         LibQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e30-v6si6183971qtg.171.2018.05.30.00.07.19
+        by mx.google.com with ESMTPS id e31-v6si6410135qve.100.2018.06.02.07.15.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 00:07:19 -0700 (PDT)
+        Sat, 02 Jun 2018 07:15:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:36605 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59989 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNvCZ-0003IP-FD
-	for alex.bennee@linaro.org; Wed, 30 May 2018 03:07:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39467)
+	id 1fP7Ja-0001Wj-Dn
+	for alex.bennee@linaro.org; Sat, 02 Jun 2018 10:15:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1fNvCJ-0003Ch-Pf
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 03:07:04 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fP7J4-0001Fv-7S
+	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 10:14:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1fNvCG-0007WI-LT
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 03:07:03 -0400
-Received: from [45.249.212.32] (port=34630 helo=huawei.com)
+	(envelope-from <stefanha@redhat.com>) id 1fP7J2-00075w-7a
+	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 10:14:58 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59816 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1fNvCG-0007Uh-AG; Wed, 30 May 2018 03:07:00 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id AF1C3215E4417;
-	Wed, 30 May 2018 15:06:53 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server
-	id 14.3.382.0; Wed, 30 May 2018 15:06:47 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>
-Date: Wed, 30 May 2018 15:05:51 +0800
-Message-ID: <1527663951-14552-1-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [PATCH v3] ARM: ACPI: Fix use-after-free due to memory
- realloc
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1fP7J2-00074j-3K; Sat, 02 Jun 2018 10:14:56 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9548B818BAFB;
+	Sat,  2 Jun 2018 14:14:55 +0000 (UTC)
+Received: from localhost (ovpn-116-55.ams2.redhat.com [10.36.116.55])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 857F61C707;
+	Sat,  2 Jun 2018 14:14:52 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: <qemu-devel@nongnu.org>
+Date: Sat,  2 Jun 2018 15:14:45 +0100
+Message-Id: <20180602141446.29982-2-stefanha@redhat.com>
+In-Reply-To: <20180602141446.29982-1-stefanha@redhat.com>
+References: <20180602141446.29982-1-stefanha@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Sat, 02 Jun 2018 14:14:55 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Sat, 02 Jun 2018 14:14:55 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [RFC 1/2] target/arm: add "cortex-m0" CPU model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,98 +89,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	f4bug@amsat.org, shannon.zhaosl@gmail.com,
-	Shannon Zhao <zhaoshenglong@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
+	mail@steffen-goertz.de, qemu-arm@nongnu.org, joel@jms.id.au,
+	Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fVbM3VM5u4pH
+X-TUID: LQMgduHIoncB
 
-acpi_data_push uses g_array_set_size to resize the memory size. If there
-is no enough contiguous memory, the address will be changed. So previous
-pointer could not be used any more. It must update the pointer and use
-the new one.
+Define a "cortex-m0" ARMv6-M CPU model.
 
-Also, previous codes wrongly use le32 conversion of iort->node_offset
-for subsequent computations that will result incorrect value if host is
-not litlle endian. So use the non-converted one instead.
+Most of the register reset values set by other CPU models are not
+relevant for the cut-down ARMv6-M architecture.
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
-V3: Fix typo and add some words in commit message to explain another bug
----
- hw/arm/virt-acpi-build.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+ target/arm/cpu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 92ceee9..74f5744 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -400,7 +400,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
-     AcpiIortItsGroup *its;
-     AcpiIortTable *iort;
-     AcpiIortSmmu3 *smmu;
--    size_t node_size, iort_length, smmu_offset =3D 0;
-+    size_t node_size, iort_node_offset, iort_length, smmu_offset =3D 0;
-     AcpiIortRC *rc;
-=20
-     iort =3D acpi_data_push(table_data, sizeof(*iort));
-@@ -413,7 +413,12 @@ build_iort(GArray *table_data, BIOSLinker *linker, V=
-irtMachineState *vms)
-=20
-     iort_length =3D sizeof(*iort);
-     iort->node_count =3D cpu_to_le32(nb_nodes);
--    iort->node_offset =3D cpu_to_le32(sizeof(*iort));
-+    /*
-+     * Use a copy in case table_data->data moves during acpi_data_push
-+     * operations.
-+     */
-+    iort_node_offset =3D sizeof(*iort);
-+    iort->node_offset =3D cpu_to_le32(iort_node_offset);
-=20
-     /* ITS group node */
-     node_size =3D  sizeof(*its) + sizeof(uint32_t);
-@@ -429,7 +434,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
-         int irq =3D  vms->irqmap[VIRT_SMMU];
-=20
-         /* SMMUv3 node */
--        smmu_offset =3D iort->node_offset + node_size;
-+        smmu_offset =3D iort_node_offset + node_size;
-         node_size =3D sizeof(*smmu) + sizeof(*idmap);
-         iort_length +=3D node_size;
-         smmu =3D acpi_data_push(table_data, node_size);
-@@ -450,7 +455,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
-         idmap->id_count =3D cpu_to_le32(0xFFFF);
-         idmap->output_base =3D 0;
-         /* output IORT node is the ITS group node (the first node) */
--        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
-+        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
-     }
-=20
-     /* Root Complex Node */
-@@ -479,9 +484,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, V=
-irtMachineState *vms)
-         idmap->output_reference =3D cpu_to_le32(smmu_offset);
-     } else {
-         /* output IORT node is the ITS group node (the first node) */
--        idmap->output_reference =3D cpu_to_le32(iort->node_offset);
-+        idmap->output_reference =3D cpu_to_le32(iort_node_offset);
-     }
-=20
-+    /*
-+     * Update the pointer address in case table_data->data moves during =
-above
-+     * acpi_data_push operations.
-+     */
-+    iort =3D (AcpiIortTable *)(table_data->data + iort_start);
-     iort->length =3D cpu_to_le32(iort_length);
-=20
-     build_header(linker, table_data, (void *)(table_data->data + iort_st=
-art),
---=20
-2.0.4
-
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5d60893a07..aac224d809 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1215,6 +1215,16 @@ static void arm11mpcore_initfn(Object *obj)
+     cpu->reset_auxcr = 1;
+ }
+ 
++static void cortex_m0_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    set_feature(&cpu->env, ARM_FEATURE_V6);
++    set_feature(&cpu->env, ARM_FEATURE_M);
++
++    /* TODO ARMv6-M doesn't support coprocessors, so how is this value accessed? */
++    cpu->midr = 0x410cc200;
++}
++
+ static void cortex_m3_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -1796,6 +1806,8 @@ static const ARMCPUInfo arm_cpus[] = {
+     { .name = "arm1136",     .initfn = arm1136_initfn },
+     { .name = "arm1176",     .initfn = arm1176_initfn },
+     { .name = "arm11mpcore", .initfn = arm11mpcore_initfn },
++    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
++                             .class_init = arm_v7m_class_init /* TODO rename? */ },
+     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
+                              .class_init = arm_v7m_class_init },
+     { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
+-- 
+2.17.0
 

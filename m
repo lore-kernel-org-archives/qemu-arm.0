@@ -1,111 +1,105 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp964101wre;
-        Fri, 1 Jun 2018 12:13:03 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLslXpaGJm5+HvxwfwwYbDhrco7wCUwkGCx2etiWXAkdqJoMcQnqAPjkqa3ImM5KfcK51mt
-X-Received: by 2002:ac8:3511:: with SMTP id y17-v6mr11959192qtb.205.1527880383707;
-        Fri, 01 Jun 2018 12:13:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527880383; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2022851wre;
+        Sat, 2 Jun 2018 13:55:47 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKSu9aUnZvtSQwEAhwESd+6TLaggs89jm9i6oGkO06criw+pnITEtht8lChbFnTZitkC71J
+X-Received: by 2002:ae9:f449:: with SMTP id z9-v6mr6452145qkl.241.1527972947563;
+        Sat, 02 Jun 2018 13:55:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527972947; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tp1pgAI0bmGlmggWK1apgSO2uvzLJdXP30RKTM1O8ZsztXYQXfoC0LanRg18CC4J7v
-         guwxgIoCg0Yr84n40v/G4m6Ay1zajRQ6VP5HWoXwHN+bCGy/rXnHOT19ZYl8mtEyjUFg
-         HH2U33t76Eai+VgiU1vR7BYoWkFf6IU/33xNmKkGUaI9mpUgbJGH4iAj/9uZwJ1wizzq
-         lJxoNlxSyWEsTKBq0hffa6RqvbaqgXWrcKEFk32ba63bqDz2C3DuwFrm2L4qZ9TRGocT
-         Ivm+3A4LJBAk3sF0CU+3aenxy4eKqkGxSS9KOUNLXzxzUfNwAOgFLd4395bQ9YwmE08/
-         Gd7g==
+        b=TcLEigomb7Vkzl41hxo6WTW6W2bu/7Sv3Ij+jP7nmeTE2PDfJp4xAbc1TP0B0lLjXJ
+         ux3mdv6XTO0NlwsZYQD5L/ibdFgGeSPHVOeXhMY406dLGhhQfwNCdwSpQ40jRgn9crV8
+         KVxI01LEGhdXwIkhsW4CzYapNVhHuQ47zi5XXlaCgsNxyf3hABp1vA4LMoC0QsSh3+fn
+         wCox5eO+bIRMd8UlXTJfyqcpIc1/bQEr3Spxh0Z2JZLw1Rla3/pTwFmCB2WB2/q0GxyL
+         kdyj80z9W5jkzoKazV4PsrojI96i/FbDE6xOWJZKFqCCHsMffpsuXsfNpOn+8K3pJwkZ
+         EMiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dmarc-filter:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=q3/QHu4K59OR8BUUtcv2B7h9uRZx0US+fBQ1co+cOgE=;
-        b=X0wKr+ot6AOxBLkDjNBJ5t2FB3nDaSumGz4KUDa5S5gafscEn0hYqBrtWlACKdy7+e
-         OExxNqvqaqkGpQmWAF3HVd6ku+bYjWpusir3WPdYrY1Zx2m/xpJNnHZjMDREMEz67Gyp
-         sF29uUOTA+yiThMK5r6rD/7JzWy6P4B9CJMOsiJNl2BTEFKs173I4CKJSH5u4H6JSB8P
-         J1qzQ2Dl6nYh8jHc82Q/2jWiK3kPt7/PAeo1USeudphKQIIkbwv5FD3YojtgqgoYmwZq
-         i/mAN4MBkmKFB/vS4jK3jDiLsmUdBRAMoKvEo4p5BvsvihLDJ7A1JU4f2LGkK2kJfThM
-         xVtQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=tbsZRzCEBpr8bRJLDMRDqDaMOoyT4vgHKL9jHD/ablE=;
+        b=cBCOdzt1TbTwswIjeQtlCmEMVu9Bm0IU9aTRi4ZR2LJ7OfiBfb5xkhio7L0ZdrUS0L
+         8uXvYtkisQ70RpyhtECjOG9lLe10rUwj9nx9f+Qx/mLA8j3V+ZDa34i630IOO4F772U1
+         2YFh/UBc2G0kPwtQfXLmzG5MeMXmFuwnPaxfRL5mSW+BE61T7HcTz3k9b1ERfwBfE31E
+         OQkK9BWueVYx6T2+rXBFHFyx4izpGEabvOfq3i+Q5TheR/p5S1vQkInhTPOfSuGN4eXi
+         gt7LGmj5p98gd1OxpHTsINEzsl6GPBBCHFhkR+pVAacegqlmWNV0p7LypZCBPsGo49dl
+         JAJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=k40Etoaa;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=IDXlZaGu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=obzbiX4c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r2-v6si1713508qtj.249.2018.06.01.12.13.03
+        by mx.google.com with ESMTPS id o22-v6si13690183qvh.104.2018.06.02.13.55.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jun 2018 12:13:03 -0700 (PDT)
+        Sat, 02 Jun 2018 13:55:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=k40Etoaa;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=IDXlZaGu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=obzbiX4c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:57211 helo=lists.gnu.org)
+Received: from localhost ([::1]:32776 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOpTz-0000E3-8Z
-	for alex.bennee@linaro.org; Fri, 01 Jun 2018 15:13:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41073)
+	id 1fPDYx-0003Nr-4M
+	for alex.bennee@linaro.org; Sat, 02 Jun 2018 16:55:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1fOpTt-0000Di-5k
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 15:12:58 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fPDYi-0003Le-30
+	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 16:55:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1fOpTp-000734-U5
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 15:12:57 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:54306)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1fOpTp-00072A-L5; Fri, 01 Jun 2018 15:12:53 -0400
-Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 7BA2B605A4; Fri,  1 Jun 2018 19:12:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1527880372;
-	bh=FsBwMbUJMH/rW5b355Q7rd8/wQbRXTAkJDXrHHcl7oI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=k40EtoaawZzvcSMrBmS1gXXiwJmMqrX4lVMvNkIpDQfbiQFwK6GiUjD9BryA6HIeP
-	GegqUGOSM48nhddZuqB51Wf5cPttxHthXrQt3LfBXBuVJ6C3AcQ0zWCBBbiqGatows
-	GfzHR7QxOpSH0wwW34p+sCWHDVRz5rsFYShJ6MvY=
-Received: from codeaurora.org (global_nat1_iad_fw.qualcomm.com [129.46.232.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 1B476605A4;
-	Fri,  1 Jun 2018 19:12:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1527880371;
-	bh=FsBwMbUJMH/rW5b355Q7rd8/wQbRXTAkJDXrHHcl7oI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IDXlZaGunUL0HSgbagK9QIGb1FwAyPznDcZpdGthVlTOyPu9iUNNgyOrVw2464++h
-	FfeZYhaYiA96FqsyMlcUqJYIK64CaNRhYd5Q9fg2bb3OfUEjoWKK6w8Vsq4qP367dn
-	JUJrlK6civVYm3VT3PVxpMBqHvKP7W7aTXK8gt9k=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 1B476605A4
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: pdx-caf-mail.web.codeaurora.org;
-	spf=none smtp.mailfrom=alindsay@codeaurora.org
-Date: Fri, 1 Jun 2018 15:12:49 -0400
-From: Aaron Lindsay <alindsay@codeaurora.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180601191249.GC12424@codeaurora.org>
-References: <1521232280-13089-16-git-send-email-alindsay@codeaurora.org>
-	<CAFEAcA9bYdwByseqCMKSVtWV59mNruT3jJfWWLju1koCnwSb=Q@mail.gmail.com>
-	<20180417142318.GO24561@codeaurora.org>
-	<CAFEAcA8RwC7DSbo+mMqYUS6tL5UwfQGMa_r5AnAkJqm7v63HWw@mail.gmail.com>
-	<20180517193104.GB4771@codeaurora.org>
-	<CAFEAcA-+sO3oUqfQXHcHRBu2i-WFzvFKObcBz26qeLS_0+3s2Q@mail.gmail.com>
-	<20180531203906.GA12424@codeaurora.org>
-	<CAFEAcA_2z-2utCiPQM0DtZGXgiE2qbVsB=Nn81j9DP7Z8keRqw@mail.gmail.com>
-	<20180601153423.GB12424@codeaurora.org>
-	<CAFEAcA-A824jUKK1bTg4-fVs10iotYu0wMkSk-tUfj+tZkpbug@mail.gmail.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fPDYg-00087c-30
+	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 16:55:32 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:39314)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fPDYa-00085K-D6; Sat, 02 Jun 2018 16:55:24 -0400
+Received: by mail-qk0-x243.google.com with SMTP id g14-v6so10204908qkm.6;
+	Sat, 02 Jun 2018 13:55:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=tbsZRzCEBpr8bRJLDMRDqDaMOoyT4vgHKL9jHD/ablE=;
+	b=obzbiX4c+yI1Z25Ebh5F00ujs8sMdDzQczFdkwEWD2dxBB8eljZn9DKGGKKptqE5Ys
+	xcsFs4otvD/IfcnXGs+Fp4NcgyTom5a11FMnHhnwHowghocikhSwK/4iZ1K91pYmuWIr
+	TFRiauCNd6mS98/moVPf3IDwAzs6WYHNCLUvTw50aHiaGkM1uMyapWU4bjtK7EwfJ4g2
+	VJfIzkz7FkbocAUCOohUjUYDeNSghog13RG5nEc5IKyHvkKvfreI1rchH/MmK3pUH2zE
+	H2dWDVglyeZ3V0FLbFXQgfGqe52GJ6uwerPl3Z0ch/e1v4ngwR1bW2DB2dXsbn6qf4Tu
+	X9og==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=tbsZRzCEBpr8bRJLDMRDqDaMOoyT4vgHKL9jHD/ablE=;
+	b=HzKZhvRJ1mLyEqoxn23c2r136Prur+4Z9Pp8pAYn8L+A6MCSrKWg/XnBABWofF0/+L
+	D+T80qWnYIOJ526L/9cnqLycxv7Eq1G6EUKuMa+/aujucNMei2akqdt11ecHWArk57GQ
+	1a5m/TaEyTzjrwV5fFYWRLqBhxAogQRoukgnSLAwPGLP1d4nRmuOPxQdnRDoLfSnsagx
+	UJctz3y1hCWSKUP1Nl7EOQCPbTUzrel+gpB1unHWIW8yLYkH+i65WrlpebkxYgwUzxYk
+	pCJwkPYf9tKhTv9zu+7xyCqyL0w2ONVKjSH/uu4DXCmMtF9bxL+w0XxY75sntCm961WO
+	TWdA==
+X-Gm-Message-State: APt69E3Y03mepNkRwOc6KayBKodaVu0y0FXF31dMww65Ewi8kn1mliL4
+	/3naN/p0G5T1t8FNQDBqtuM=
+X-Received: by 2002:a37:4946:: with SMTP id
+	w67-v6mr1781113qka.394.1527972923447; 
+	Sat, 02 Jun 2018 13:55:23 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	b12-v6sm34679400qtb.57.2018.06.02.13.55.19
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 02 Jun 2018 13:55:22 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Alistair Francis <alistair@alistair23.me>, Eric Blake <eblake@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Sat,  2 Jun 2018 17:55:11 -0300
+Message-Id: <20180602205511.6077-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-A824jUKK1bTg4-fVs10iotYu0wMkSk-tUfj+tZkpbug@mail.gmail.com>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 198.145.29.96
-Subject: Re: [Qemu-arm] [PATCH v3 15/22] target/arm: Add ARM_FEATURE_V7VE
- for v7 Virtualization Extensions
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-arm] [RFC PATCH] hw/registerfields: Deposit fields "in place"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,42 +111,330 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E7N6WW6NcNvv
+X-TUID: QRQybbRVcgh8
 
-On Jun 01 16:59, Peter Maydell wrote:
-> On 1 June 2018 at 16:34, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> >> switch (extract32(id_isar0, 24, 4)) {
-> >> case 1:
-> >>     set_feature(&features, ARM_FEATURE_THUMB_DIV);
-> >>     break;
-> >> case 2:
-> >>     set_feature(&features, ARM_FEATURE_ARM_DIV);
-> >>     set_feature(&features, ARM_FEATURE_THUMB_DIV);
-> >>     break;
-> >> default:
-> >>     break;
-> >> }
-> >
-> > Should this switch/case be removed entirely?
-> 
-> Yes, I think so (and also the id_isar0 variable and the
-> idregs[] entry which arranges to initialize it). We should
-> just set the THUMB_DIV and ARM_DIV features explicitly.
+These macros are always used to deposit a field in place.
+Update them to take the pointer argument.
 
-Okay, thanks for straightening me out! I sensed there was some
-inconsistency, but misjudged exactly where. I'll include this change in
-my next patchset.
+As these macros are constructed using compound statements,
+it is easy to not use the return value, and the compiler
+doesn't warn. Thus this change makes these macros safer.
 
--Aaron
+This also helps having a simpler/shorter code to review.
 
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/smmuv3-internal.h    |  2 +-
+ include/hw/registerfields.h | 14 +++++-----
+ hw/arm/smmuv3.c             | 28 +++++++++----------
+ hw/dma/xlnx-zdma.c          |  6 ++--
+ hw/sd/sd.c                  |  4 +--
+ hw/sd/sdhci.c               | 56 ++++++++++++++++++-------------------
+ 6 files changed, 53 insertions(+), 57 deletions(-)
+
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index a9d714b56e..2f020e2e90 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -203,7 +203,7 @@ static inline bool smmuv3_eventq_enabled(SMMUv3State *s)
+ 
+ static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
+ {
+-    s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
++    FIELD_DP32(&s->cmdq.cons, CMDQ_CONS, ERR, err_type);
+ }
+ 
+ /* Commands */
+diff --git a/include/hw/registerfields.h b/include/hw/registerfields.h
+index 2659a58737..14a12f6a48 100644
+--- a/include/hw/registerfields.h
++++ b/include/hw/registerfields.h
+@@ -45,7 +45,7 @@
+ #define ARRAY_FIELD_EX32(regs, reg, field)                                \
+     FIELD_EX32((regs)[R_ ## reg], reg, field)
+ 
+-/* Deposit a register field.
++/* Deposit a register field (in place).
+  * Assigning values larger then the target field will result in
+  * compilation warnings.
+  */
+@@ -54,20 +54,20 @@
+         unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+     } v = { .v = val };                                                   \
+     uint32_t d;                                                           \
+-    d = deposit32((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
+-                  R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+-    d; })
++    d = deposit32(*(storage), R_ ## reg ## _ ## field ## _SHIFT,          \
++                  R_ ## reg ## _ ## field ## _LENGTH, v.v);                \
++    *(storage) = d; })
+ #define FIELD_DP64(storage, reg, field, val) ({                           \
+     struct {                                                              \
+         unsigned int v:R_ ## reg ## _ ## field ## _LENGTH;                \
+     } v = { .v = val };                                                   \
+     uint64_t d;                                                           \
+-    d = deposit64((storage), R_ ## reg ## _ ## field ## _SHIFT,           \
++    d = deposit64(*(storage), R_ ## reg ## _ ## field ## _SHIFT,          \
+                   R_ ## reg ## _ ## field ## _LENGTH, v.v);               \
+-    d; })
++    *(storage) = d; })
+ 
+ /* Deposit a field to array of registers.  */
+ #define ARRAY_FIELD_DP32(regs, reg, field, val)                           \
+-    (regs)[R_ ## reg] = FIELD_DP32((regs)[R_ ## reg], reg, field, val);
++    FIELD_DP32(&(regs)[R_ ## reg], reg, field, val);
+ 
+ #endif
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 42dc521c13..6406b69d68 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -238,25 +238,25 @@ static void smmuv3_init_regs(SMMUv3State *s)
+      * IDR0: stage1 only, AArch64 only, coherent access, 16b ASID,
+      *       multi-level stream table
+      */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S1P, 1); /* stage 1 supported */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TTF, 2); /* AArch64 PTW only */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, COHACC, 1); /* IO coherent */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ASID16, 1); /* 16-bit ASID */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TTENDIAN, 2); /* little endian */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STALL_MODEL, 1); /* No stall */
++    FIELD_DP32(&s->idr[0], IDR0, S1P, 1); /* stage 1 supported */
++    FIELD_DP32(&s->idr[0], IDR0, TTF, 2); /* AArch64 PTW only */
++    FIELD_DP32(&s->idr[0], IDR0, COHACC, 1); /* IO coherent */
++    FIELD_DP32(&s->idr[0], IDR0, ASID16, 1); /* 16-bit ASID */
++    FIELD_DP32(&s->idr[0], IDR0, TTENDIAN, 2); /* little endian */
++    FIELD_DP32(&s->idr[0], IDR0, STALL_MODEL, 1); /* No stall */
+     /* terminated transaction will always be aborted/error returned */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, TERM_MODEL, 1);
++    FIELD_DP32(&s->idr[0], IDR0, TERM_MODEL, 1);
+     /* 2-level stream table supported */
+-    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, STLEVEL, 1);
++    FIELD_DP32(&s->idr[0], IDR0, STLEVEL, 1);
+ 
+-    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SIDSIZE, SMMU_IDR1_SIDSIZE);
+-    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, EVENTQS, SMMU_EVENTQS);
+-    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, CMDQS,   SMMU_CMDQS);
++    FIELD_DP32(&s->idr[1], IDR1, SIDSIZE, SMMU_IDR1_SIDSIZE);
++    FIELD_DP32(&s->idr[1], IDR1, EVENTQS, SMMU_EVENTQS);
++    FIELD_DP32(&s->idr[1], IDR1, CMDQS,   SMMU_CMDQS);
+ 
+    /* 4K and 64K granule support */
+-    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
+-    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
+-    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
++    FIELD_DP32(&s->idr[5], IDR5, GRAN4K, 1);
++    FIELD_DP32(&s->idr[5], IDR5, GRAN64K, 1);
++    FIELD_DP32(&s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
+ 
+     s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
+     s->cmdq.prod = 0;
+diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+index 8eea757aff..82fa3ea672 100644
+--- a/hw/dma/xlnx-zdma.c
++++ b/hw/dma/xlnx-zdma.c
+@@ -426,10 +426,8 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+         }
+ 
+         /* Write back to buffered descriptor.  */
+-        s->dsc_dst.words[2] = FIELD_DP32(s->dsc_dst.words[2],
+-                                         ZDMA_CH_DST_DSCR_WORD2,
+-                                         SIZE,
+-                                         dst_size);
++        FIELD_DP32(&s->dsc_dst.words[2],
++                   ZDMA_CH_DST_DSCR_WORD2, SIZE, dst_size);
+     }
+ }
+ 
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index 7af19fa06c..0f41028e91 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -301,10 +301,10 @@ static void sd_ocr_powerup(void *opaque)
+     assert(!FIELD_EX32(sd->ocr, OCR, CARD_POWER_UP));
+ 
+     /* card power-up OK */
+-    sd->ocr = FIELD_DP32(sd->ocr, OCR, CARD_POWER_UP, 1);
++    FIELD_DP32(&sd->ocr, OCR, CARD_POWER_UP, 1);
+ 
+     if (sd->size > 1 * G_BYTE) {
+-        sd->ocr = FIELD_DP32(sd->ocr, OCR, CARD_CAPACITY, 1);
++        FIELD_DP32(&sd->ocr, OCR, CARD_CAPACITY, 1);
+     }
+ }
+ 
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 63c44a4ee8..d42492f60a 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -94,21 +94,21 @@ static void sdhci_check_capareg(SDHCIState *s, Error **errp)
+     case 4:
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS64BIT_V4);
+         trace_sdhci_capareg("64-bit system bus (v4)", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, BUS64BIT_V4, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, BUS64BIT_V4, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, UHS_II);
+         trace_sdhci_capareg("UHS-II", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, UHS_II, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, UHS_II, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA3);
+         trace_sdhci_capareg("ADMA3", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA3, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, ADMA3, 0);
+ 
+     /* fallthrough */
+     case 3:
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ASYNC_INT);
+         trace_sdhci_capareg("async interrupt", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, ASYNC_INT, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, ASYNC_INT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SLOT_TYPE);
+         if (val) {
+@@ -116,70 +116,70 @@ static void sdhci_check_capareg(SDHCIState *s, Error **errp)
+             return;
+         }
+         trace_sdhci_capareg("slot type", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, SLOT_TYPE, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, SLOT_TYPE, 0);
+ 
+         if (val != 2) {
+             val = FIELD_EX64(s->capareg, SDHC_CAPAB, EMBEDDED_8BIT);
+             trace_sdhci_capareg("8-bit bus", val);
+         }
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, EMBEDDED_8BIT, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, EMBEDDED_8BIT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS_SPEED);
+         trace_sdhci_capareg("bus speed mask", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, BUS_SPEED, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, BUS_SPEED, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, DRIVER_STRENGTH);
+         trace_sdhci_capareg("driver strength mask", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, DRIVER_STRENGTH, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, DRIVER_STRENGTH, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, TIMER_RETUNING);
+         trace_sdhci_capareg("timer re-tuning", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, TIMER_RETUNING, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, TIMER_RETUNING, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SDR50_TUNING);
+         trace_sdhci_capareg("use SDR50 tuning", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, SDR50_TUNING, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, SDR50_TUNING, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, RETUNING_MODE);
+         trace_sdhci_capareg("re-tuning mode", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, RETUNING_MODE, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, RETUNING_MODE, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, CLOCK_MULT);
+         trace_sdhci_capareg("clock multiplier", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, CLOCK_MULT, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, CLOCK_MULT, 0);
+ 
+     /* fallthrough */
+     case 2: /* default version */
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA2);
+         trace_sdhci_capareg("ADMA2", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA2, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, ADMA2, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, ADMA1);
+         trace_sdhci_capareg("ADMA1", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, ADMA1, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, ADMA1, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BUS64BIT);
+         trace_sdhci_capareg("64-bit system bus (v3)", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, BUS64BIT, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, BUS64BIT, 0);
+ 
+     /* fallthrough */
+     case 1:
+         y = FIELD_EX64(s->capareg, SDHC_CAPAB, TOUNIT);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, TOUNIT, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, TOUNIT, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, TOCLKFREQ);
+         trace_sdhci_capareg(y ? "timeout (MHz)" : "Timeout (KHz)", val);
+         if (sdhci_check_capab_freq_range(s, "timeout", val, errp)) {
+             return;
+         }
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, TOCLKFREQ, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, TOCLKFREQ, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, BASECLKFREQ);
+         trace_sdhci_capareg(y ? "base (MHz)" : "Base (KHz)", val);
+         if (sdhci_check_capab_freq_range(s, "base", val, errp)) {
+             return;
+         }
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, BASECLKFREQ, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, BASECLKFREQ, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, MAXBLOCKLENGTH);
+         if (val >= 3) {
+@@ -187,31 +187,31 @@ static void sdhci_check_capareg(SDHCIState *s, Error **errp)
+             return;
+         }
+         trace_sdhci_capareg("max block length", sdhci_get_fifolen(s));
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, MAXBLOCKLENGTH, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, MAXBLOCKLENGTH, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, HIGHSPEED);
+         trace_sdhci_capareg("high speed", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, HIGHSPEED, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, HIGHSPEED, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SDMA);
+         trace_sdhci_capareg("SDMA", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, SDMA, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, SDMA, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, SUSPRESUME);
+         trace_sdhci_capareg("suspend/resume", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, SUSPRESUME, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, SUSPRESUME, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V33);
+         trace_sdhci_capareg("3.3v", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, V33, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, V33, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V30);
+         trace_sdhci_capareg("3.0v", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, V30, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, V30, 0);
+ 
+         val = FIELD_EX64(s->capareg, SDHC_CAPAB, V18);
+         trace_sdhci_capareg("1.8v", val);
+-        msk = FIELD_DP64(msk, SDHC_CAPAB, V18, 0);
++        FIELD_DP64(&msk, SDHC_CAPAB, V18, 0);
+         break;
+ 
+     default:
+@@ -1017,10 +1017,8 @@ static uint64_t sdhci_read(void *opaque, hwaddr offset, unsigned size)
+         break;
+     case SDHC_PRNSTS:
+         ret = s->prnsts;
+-        ret = FIELD_DP32(ret, SDHC_PRNSTS, DAT_LVL,
+-                         sdbus_get_dat_lines(&s->sdbus));
+-        ret = FIELD_DP32(ret, SDHC_PRNSTS, CMD_LVL,
+-                         sdbus_get_cmd_line(&s->sdbus));
++        FIELD_DP32(&ret, SDHC_PRNSTS, DAT_LVL, sdbus_get_dat_lines(&s->sdbus));
++        FIELD_DP32(&ret, SDHC_PRNSTS, CMD_LVL, sdbus_get_cmd_line(&s->sdbus));
+         break;
+     case SDHC_HOSTCTL:
+         ret = s->hostctl1 | (s->pwrcon << 8) | (s->blkgap << 16) |
 -- 
-Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
-Qualcomm Technologies, Inc. is a member of the
-Code Aurora Forum, a Linux Foundation Collaborative Project.
+2.17.1
+

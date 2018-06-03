@@ -1,96 +1,96 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2136974wre;
-        Sat, 2 Jun 2018 17:09:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKVOwOvkKktLgZCTxinawoBuknWSKicbjraaFXp7mGcaw/nm3LOIDMNpiX/9BKtCiO2hQuW
-X-Received: by 2002:aed:3ce8:: with SMTP id e37-v6mr15984863qtf.295.1527984540640;
-        Sat, 02 Jun 2018 17:09:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527984540; cv=none;
+Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2137205wre;
+        Sat, 2 Jun 2018 17:09:22 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJ1qD7G3PSubxULJzdLpw6yRwlWeyJFODVsZJlinBbPUP1R3hPBNU7s0u+FfjyZkYA1t1Sb
+X-Received: by 2002:ac8:40e:: with SMTP id v14-v6mr5967791qtg.32.1527984562101;
+        Sat, 02 Jun 2018 17:09:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1527984562; cv=none;
         d=google.com; s=arc-20160816;
-        b=WlOx1CiK7ewvTewKUCdKpcKeWE21few2jLjxrrcefNnmKF7Jr1HIyzRaZnoLXlSjib
-         ax5uByMIOZkEgWVglT6jlxYaDBBWiSGFSbqVaxWiJK7jHr3/7ddFFEKvnA4Wv9rP+4Xh
-         1aVuReU2tgmmN1MFFAuJzIRlst5Tm+okas5JQXmFS4jXpX3QPD4IkC8IPc1DSovPcFPc
-         MNVBByH4Bx4oeyvQ/3Y6M+vnGrjGbek2sUYm+Y1bR2T1h6mlkXh4AB9Bk5MItcX0yTlv
-         IlqHZCo/+TaLhGKTXhn7aMRMH9qFEcLE3WINtyS7sBoM7oyBsrUhV1RKM7KdhqHB+YYI
-         f1UA==
+        b=NFc+16CQJr4JRTFhj0qez9KZL2Q2vZj0ofRqeFs6bM8t4ttivD+jlCvYKnUr7ujy8R
+         +tya8meKHB/TWb/WhAQYNMBwMJ8udyiVhM23Fm+d/AAY9Y7ivSuhuBytPeH/S9T5slA0
+         sFZu5wZGu3FJMXQ1FaN2uu/pfrBl2lP5LNpODXR4g4+LAVERgaK3x3oGccKLeysdqYU9
+         97chc8fjNSy0UjdX3d42lnGaoOP+UNrhMCZovJ1zKQ9sVNFx3bIW1DrsMuIkPY23iXhM
+         CTvoXQh+OteK0KkWelGe7d7Iq5SGQPLzijqIMM26OHmAACyvZzzd4haLN+uktC5jIL6r
+         WahA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=Kfb3Zgxde4K04GDGwPruMPMUzW7ywonlxLgymJq+28w=;
-        b=MwvDlxvT5oDC9TNPUUsC8CMJurF2ifp7uX1Qju1WMeyB2Wi3BQ3OERH49SMCDv3eB/
-         voKF20IHPH5bV10A0G7Q6buEEsctvs0KZdpvA2I8C8ra9btcpyA1SNc3/IpE3mFdCu3b
-         HFgSv2QrVAu5uHdiA7ZpiUbLOc0T5g6P9vHK+Y3B6oN93SYIVHI63lZ9j+iiRuknIVAo
-         vHfoA9SHnQlzb+kjwItY5kg0XL6swSl2nLX20MRm/NGji0E2HeEpkxauWFu0TZP6W8vH
-         l9AnYIrnV1dptUd+k3ls90dc+Vj1yQljkJ0OFe/o5XPvQM0U8IEavte7If8WJe3+V7gy
-         ILUg==
+        bh=8hDwejCWx11ArNCUrJgK57kvn6QwEkI8TsaoZIyD2nw=;
+        b=mL1IYaFzoPl+ngGSAIIi+dZx9A1n7/YBehGZLeqL+cYUWoBwD9/+hYevUqKNFhWr4z
+         /yg8y0LvWBJSKihAlpZz24z7I+7JBklca92kKLlCUewF6Ct1hPf7ifqbi03sSq5Ykcho
+         RI9yjWJkAASKQjTjVU49cRJbT7oPcVRsfRgATDRr33JtbYm6bMgbUD5k8tVeQnlDDj+u
+         BOSNbF4zYewvQD5WqmtCoYjxvx2ddTLhDxmAksQtbFTKEDHufjtXKkk469ZdhAnW/cq6
+         pxl8Q6pyVLiDsBcSGETVUZ7p2xCdRezoO65Q0V6ZynJ4x/4exCodblX30Mo4XNFqi8am
+         hL+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j7A33qYC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aemB3cWo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r51-v6si8513839qvr.205.2018.06.02.17.09.00
+        by mx.google.com with ESMTPS id d13-v6si3946072qki.85.2018.06.02.17.09.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 02 Jun 2018 17:09:00 -0700 (PDT)
+        Sat, 02 Jun 2018 17:09:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j7A33qYC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aemB3cWo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33114 helo=lists.gnu.org)
+Received: from localhost ([::1]:33117 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fPGZw-0003sn-3C
-	for alex.bennee@linaro.org; Sat, 02 Jun 2018 20:09:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59484)
+	id 1fPGaH-0004Aj-IV
+	for alex.bennee@linaro.org; Sat, 02 Jun 2018 20:09:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59516)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fPGZi-0003rr-5J
-	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 20:08:49 -0400
+	id 1fPGZm-0003t3-Fj
+	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 20:08:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fPGZh-0002uf-5Z
-	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 20:08:46 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:46175)
+	id 1fPGZl-0002wc-J6
+	for qemu-arm@nongnu.org; Sat, 02 Jun 2018 20:08:50 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:42647)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fPGZf-0002th-4A; Sat, 02 Jun 2018 20:08:43 -0400
-Received: by mail-qk0-x242.google.com with SMTP id k86-v6so22643674qkh.13;
-	Sat, 02 Jun 2018 17:08:43 -0700 (PDT)
+	id 1fPGZh-0002un-LA; Sat, 02 Jun 2018 20:08:45 -0400
+Received: by mail-qt0-x241.google.com with SMTP id y31-v6so6606837qty.9;
+	Sat, 02 Jun 2018 17:08:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Kfb3Zgxde4K04GDGwPruMPMUzW7ywonlxLgymJq+28w=;
-	b=j7A33qYCntLxv7I4151KpWX6l/dP9xS9460anu+HpXPyZFdc8DpK3EOdK/aUjyrguF
-	87wXp/BQFv8YGLcqRn9a5YDXkiGyDS70TdoU8KX80AcCNyE7v4DjebWM2fM2id1bsz2+
-	JTh+ZJufx0Vq9Oe2svdDfnHKafgvS3weFK0Br1LvpUmtVTZpv2BTmnxBP8kBWd1x+hSs
-	gUnPI6Auyx06CsS5FYHOYTO/wTUbqYX6f6ob16sfAksliec8uJzZozMaeQULg8wBP3KT
-	RKgK4b3DN29UIkW3AGVumSXvejQInwx03TsCphm5W3CVlAYb3VVCi+RJSIth0TvZGYR3
-	4lZw==
+	bh=8hDwejCWx11ArNCUrJgK57kvn6QwEkI8TsaoZIyD2nw=;
+	b=aemB3cWoNlPmUfM3sJonXvBTSzU9wlr0R1uw1QwI7d6kyajGJdcoE9Fy7z9dvzvsVe
+	nSWfM5Mf1/HZneGgsA0OQAlMp/6b3hHClcaIYwy0iVEmDe3C0s4yun3To2TB9adheYEG
+	JfgYv0AM/pamv+IfYHEo3lrxarQYmeB22mh2XXqKIJxWVBei51f5du5HuzQdzrGbbBWi
+	BNwci0JrKbzY2v1RPVtGI01oX93l5SKZ4IbGUA1IjEysYJRx7XNxxGcylhZ3rUM/922+
+	6Hsk1p0xGYG4nzUOXDk3V7yG03AEqifc+5Ww1TFf7UQ6Mbuq7/iKC+MM5JNHzz+IialY
+	Cb3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Kfb3Zgxde4K04GDGwPruMPMUzW7ywonlxLgymJq+28w=;
-	b=gb7QXY+lDUWRcVFXRg4UQ0fystpVhK3ypHGvzIlti9kJ8iVHGvUm3YrhUh+2c89T+L
-	S1N1M5C4/KP8Z3GapxanbQXqoCjTAHYzS762CJCrgvasfIrqk35CkIOnKV5xlgi5lxje
-	5fl/4+IJhy1t1QCdBpANYC8Sk/Hnx8hyFXQA43ha6EbrMXqJTJgfdUsqLhKC5shyh5v+
-	t2sljgHU5bTKAsfw0gtocD9YX0U+oI0vHs7MeiUZ/WPCaeIqQs5GEyvCAqicudtwyeSc
-	eyzjFdavHYvASMxJN/nCeqgOZ3+CU3GQ9cTgHuDKawFtjRo1IAxU48uC7q/zSxkBUSJi
-	lFSQ==
-X-Gm-Message-State: APt69E0PfQjsx3XcOb3x8PE+qjqbqlzllNouPw63yqg5hgIpznFChqSf
-	/Qcx0bDYvhF1v4phdh0jG/0=
-X-Received: by 2002:a37:1624:: with SMTP id
-	g36-v6mr14241620qkh.327.1527984522674; 
-	Sat, 02 Jun 2018 17:08:42 -0700 (PDT)
+	bh=8hDwejCWx11ArNCUrJgK57kvn6QwEkI8TsaoZIyD2nw=;
+	b=oJDZjSU6ipHq0dPQhvlaj1lRXhaWwu6mQtMquSgHT4tvVDZ1Yrn3iEAAqv2Bluss0Y
+	tZfvQxK5Hj883YKA5Y3dTU5awjLsSyLpGupOGNi6ZGUx7CboNBGg98UDcGunCQhLcX3p
+	q9HZUXhRuU31lUaxUKzP24JBpk52vBk0kWcEBt0GbSJackApBZUmGEp9HA4mnDKaAoHQ
+	VuleNAW47x1FTJ/OkcQPBQzNsxTpbDITRHRFmDTQWbvPGQgReu9VvS915PqegC3D7shg
+	gG7S+mijmgCfihfIDxbpE8BwI8pbvb8E5UGykRp7aq88TOkfqBwVOPitQmR1/Jmd0A8M
+	gxXg==
+X-Gm-Message-State: APt69E0MoWwHo05nBLVndL0Gd4FoNhRx55NLy4OTqKrNesxsGF/Hoigb
+	cYiktVE9ppTZELUdzVTJIXQ=
+X-Received: by 2002:ac8:8d4:: with SMTP id
+	y20-v6mr16417607qth.187.1527984525205; 
+	Sat, 02 Jun 2018 17:08:45 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	17-v6sm10610894qkg.97.2018.06.02.17.08.39
+	17-v6sm10610894qkg.97.2018.06.02.17.08.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 02 Jun 2018 17:08:42 -0700 (PDT)
+	Sat, 02 Jun 2018 17:08:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Alistair Francis <alistair@alistair23.me>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Sat,  2 Jun 2018 21:08:21 -0300
-Message-Id: <20180603000827.30872-3-f4bug@amsat.org>
+Date: Sat,  2 Jun 2018 21:08:22 -0300
+Message-Id: <20180603000827.30872-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180603000827.30872-1-f4bug@amsat.org>
 References: <20180603000827.30872-1-f4bug@amsat.org>
@@ -99,8 +99,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-arm] [PATCH 2/8] sdcard: Allow commands valid in SPI mode
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-arm] [PATCH 3/8] sdcard: Add a 'spec_version' property
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,70 +117,65 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5vaY/Zvd+oN2
-
-From the "Physical Layer Simplified Specification Version 1.10"
-  Chapter 7.3 "SPI Mode Transaction Packets"
-    Table 57: "Commands and arguments"
+X-TUID: JGrN91/n9O6T
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sd.c | 14 --------------
- 1 file changed, 14 deletions(-)
+ include/hw/sd/sd.h |  4 ++++
+ hw/sd/sd.c         | 11 +++++++++++
+ 2 files changed, 15 insertions(+)
 
+diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
+index 9bdb3c9285..49f22b0b89 100644
+--- a/include/hw/sd/sd.h
++++ b/include/hw/sd/sd.h
+@@ -54,6 +54,10 @@
+ #define APP_CMD			(1 << 5)
+ #define AKE_SEQ_ERROR		(1 << 3)
+ 
++enum SDPhySpecificationVersion {
++    SD_PHY_SPECv1_10_VERS     = 1,
++};
++
+ typedef enum {
+     SD_VOLTAGE_0_4V     = 400,  /* currently not supported */
+     SD_VOLTAGE_1_8V     = 1800,
 diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index e1218d1fb6..80e70dd93e 100644
+index 80e70dd93e..5ddd211114 100644
 --- a/hw/sd/sd.c
 +++ b/hw/sd/sd.c
-@@ -960,8 +960,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-         return sd_illegal;
+@@ -91,6 +91,7 @@ struct SDState {
+     uint8_t sd_status[64];
  
-     case 6:	/* CMD6:   SWITCH_FUNCTION */
--        if (sd->spi)
--            goto bad_cmd;
-         switch (sd->mode) {
-         case sd_data_transfer_mode:
-             sd_function_switch(sd, req.arg);
-@@ -1190,9 +1188,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
+     /* Configurable properties */
++    uint8_t spec_version;
+     BlockBackend *blk;
+     bool spi;
  
-     /* Block write commands (Class 4) */
-     case 24:	/* CMD24:  WRITE_SINGLE_BLOCK */
--        if (sd->spi) {
--            goto unimplemented_spi_cmd;
--        }
-         switch (sd->state) {
-         case sd_transfer_state:
-             /* Writing in SPI mode not implemented.  */
-@@ -1217,9 +1212,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-         break;
+@@ -2058,6 +2059,14 @@ static void sd_realize(DeviceState *dev, Error **errp)
  
-     case 25:	/* CMD25:  WRITE_MULTIPLE_BLOCK */
--        if (sd->spi) {
--            goto unimplemented_spi_cmd;
--        }
-         switch (sd->state) {
-         case sd_transfer_state:
-             /* Writing in SPI mode not implemented.  */
-@@ -1259,9 +1251,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
-         break;
+     sd->proto_name = sd->spi ? "SPI" : "SD";
  
-     case 27:	/* CMD27:  PROGRAM_CSD */
--        if (sd->spi) {
--            goto unimplemented_spi_cmd;
--        }
-         switch (sd->state) {
-         case sd_transfer_state:
-             sd->state = sd_receivingdata_state;
-@@ -1371,9 +1360,6 @@ static sd_rsp_type_t sd_normal_command(SDState *sd, SDRequest req)
++    switch (sd->spec_version) {
++    case SD_PHY_SPECv1_10_VERS:
++        break;
++    default:
++        error_setg(errp, "Invalid SD card Spec version: %u", sd->spec_version);
++        return;
++    }
++
+     if (sd->blk && blk_is_read_only(sd->blk)) {
+         error_setg(errp, "Cannot use read-only drive as SD card");
+         return;
+@@ -2074,6 +2083,8 @@ static void sd_realize(DeviceState *dev, Error **errp)
+ }
  
-     /* Lock card commands (Class 7) */
-     case 42:	/* CMD42:  LOCK_UNLOCK */
--        if (sd->spi) {
--            goto unimplemented_spi_cmd;
--        }
-         switch (sd->state) {
-         case sd_transfer_state:
-             sd->state = sd_receivingdata_state;
+ static Property sd_properties[] = {
++    DEFINE_PROP_UINT8("spec_version", SDState,
++                      spec_version, SD_PHY_SPECv1_10_VERS),
+     DEFINE_PROP_DRIVE("drive", SDState, blk),
+     /* We do not model the chip select pin, so allow the board to select
+      * whether card should be in SSI or MMC/SD mode.  It is also up to the
 -- 
 2.17.1
 

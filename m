@@ -1,41 +1,41 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743529wrq;
-        Mon, 4 Jun 2018 08:29:47 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLvx9djxWrI6Kf5yze24TFaUU+6Atv02Dr0vZYoAmW4dJa03YwmKqwC1TLbO+BLspVY2Sv3
-X-Received: by 2002:adf:fe4c:: with SMTP id m12-v6mr4734433wrs.171.1528126187801;
-        Mon, 04 Jun 2018 08:29:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528126187; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743542wrq;
+        Mon, 4 Jun 2018 08:29:48 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLzzQYunBaMzwetPonZiKVm44N79TYHDZVarCq9gNaDc1M755j4in0HPPVQ9XZKWvQAvLE0
+X-Received: by 2002:a1c:3c3:: with SMTP id 186-v6mr10290354wmd.140.1528126188489;
+        Mon, 04 Jun 2018 08:29:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528126188; cv=none;
         d=google.com; s=arc-20160816;
-        b=FXWgkbGp/APHOhiMGJ83ZeIO2T8UfYZTeX3QyDwokuJe5QqQslT32Pq/Z4upShCKkQ
-         dsDJUqLNy7MuGxQr+2OcPNeZ59VVC33DX27dxNdd4ab8QHRiwPmsExKFMpjvkRVNuX1I
-         fwWJh3KzHuoSYlo6nCzPOuFfxUezjrVmuclv1wSsY0LTnStE9OwZHjS5PQZR86YquwpC
-         Jvl5Fs5qxigNdPCD3gfgsaSqGZC2OzjrFnbF6l2l0e/8+Efq+Z6PYI+cq1eui0O0vrFK
-         BSg8LVhxiIEbLChkMqiQOtncV5IfV1PliMdRS/AA9ovQ2Nw2M+1serEJWnkTFWs+UucY
-         rZqg==
+        b=Qg8dN6TdEiggXG1txMjCobMkkCZ+uM68iVOKyq1hTOqdeodU9MZzwV9MT1bqfU2ySP
+         nt8oDXEmz8olhfWQ6RDC1HBOJLn9JO/bnSiDGd+BaQRMjeDOi5pfmowqrGwrNZMMJoEJ
+         F+NTWY3jb+BJXtdJKLDA1kRfVN/RB7p+aHvf7piQUNGXdCCRD7EK5RBHuEoztdN8+99F
+         t/KKJx/ruVfZATNIRzXGgTrHX34k6L9QSHsMKHwmgLaObrRuuKHOxLbr7G/FeqOk5PHQ
+         YpsxePTCfkE9hdwFJgHh/vvbOW3nUDhD594z5M7uEcqMdY5DAfoOFefL/Ay5+zRdBGX9
+         QIOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=M3JHZPieYW3g9nd9i/iWHQgUIIzTAGQNvNVkdnZAzd0=;
-        b=h7L2Fdda0qzmWetGlAs8pV35xFEpIuAKSOU1wSVw8T2/yqg1DxPyyvAlv4l2Nrmn1z
-         ShaWZUlNAiLBbBrEybIx9f0UoWXzr9ugjxeyutpryL2lEUipwuD19PIMs9GTfsPJNq7W
-         3eM02qmzowr4VW+QgngbOJuFf57DavGD+YlpA5GvSvZ9yDvUZbIuzlZzTaQOhJ/lwdnf
-         wJjcVF1m6OPHYlme+TNaGALu+jq7FwLx7TVUMoZNuSH2woD/sAkRowp/aEbZyjZkv+VQ
-         TNvs/9ZB0VHvjkreTPafWQo1T6QraFUojSuG0d1pAS5q3uGON4SBRXRf2WfzLPiTc/9A
-         CSiA==
+        bh=SBmC+CIDQ9cicWS+jc0Sv1kadBKNrr5ghsVG+Qhs6DM=;
+        b=OtIhBWtt+gBX+0wthiFFO+DfORq4kqGYkh3iELwxvBVRNoD8ivBNqD+eTImjoT6m/Q
+         xaKUAJSLpYTjjSuV8YAFzDOBEQetGmV/53Q0Wk6hXrKlm7L3uXT/LMBJx+dfuE41/7UH
+         +DS7zMXNzxR7WNfh74ZkeZVyz4D4MyitAPzZLSvCyU1qBH5sNya/eSxS+ZbGPCohgYeR
+         f/DfRnEbwq2zsSnqiD8VZaMwPkNUTmzT0ToUeXkpZQl2X7DNcJfuvFYK5vjINQCStDvg
+         b5qYb8lAyS6Y7KCn1M6y9YbnjdvP/n9nSeJliQqTxum7QW2tA9yXibXOTY/33vTN03HA
+         lknA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id 127-v6si333221wms.73.2018.06.04.08.29.47
+        by mx.google.com with ESMTPS id p109-v6si25071722wrc.248.2018.06.04.08.29.48
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jun 2018 08:29:47 -0700 (PDT)
+        Mon, 04 Jun 2018 08:29:48 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fPrQZ-00072x-0f; Mon, 04 Jun 2018 16:29:47 +0100
+	id 1fPrQZ-00073M-VT; Mon, 04 Jun 2018 16:29:47 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -45,258 +45,110 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 06/13] hw/misc/tz-mpc.c: Implement registers
-Date: Mon,  4 Jun 2018 16:29:34 +0100
-Message-Id: <20180604152941.20374-7-peter.maydell@linaro.org>
+Subject: [PATCH v2 07/13] hw/misc/tz-mpc.c: Implement correct blocked-access behaviour
+Date: Mon,  4 Jun 2018 16:29:35 +0100
+Message-Id: <20180604152941.20374-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180604152941.20374-1-peter.maydell@linaro.org>
 References: <20180604152941.20374-1-peter.maydell@linaro.org>
-X-TUID: /Y9hWNt8JOWb
+X-TUID: Rf9nbWSQyHGx
 
-Implement the missing registers for the TZ MPC.
+The MPC is guest-configurable for whether blocked accesses:
+ * should be RAZ/WI or cause a bus error
+ * should generate an interrupt or not
+
+Implement this behaviour in the blocked-access handlers.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/misc/tz-mpc.h |  10 +++
- hw/misc/tz-mpc.c         | 137 ++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 144 insertions(+), 3 deletions(-)
+ hw/misc/tz-mpc.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 48 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/misc/tz-mpc.h b/include/hw/misc/tz-mpc.h
-index b5eaf1699ea..1fff4d6029a 100644
---- a/include/hw/misc/tz-mpc.h
-+++ b/include/hw/misc/tz-mpc.h
-@@ -48,6 +48,16 @@ struct TZMPC {
- 
-     /*< public >*/
- 
-+    /* State */
-+    uint32_t ctrl;
-+    uint32_t blk_idx;
-+    uint32_t int_stat;
-+    uint32_t int_en;
-+    uint32_t int_info1;
-+    uint32_t int_info2;
-+
-+    uint32_t *blk_lut;
-+
-     qemu_irq irq;
- 
-     /* Properties */
 diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
-index d4467ccc3b2..9db55e23daf 100644
+index 9db55e23daf..704bb3fb44d 100644
 --- a/hw/misc/tz-mpc.c
 +++ b/hw/misc/tz-mpc.c
-@@ -28,16 +28,23 @@ enum {
- 
- /* Config registers */
- REG32(CTRL, 0x00)
-+    FIELD(CTRL, SEC_RESP, 4, 1)
-+    FIELD(CTRL, AUTOINC, 8, 1)
-+    FIELD(CTRL, LOCKDOWN, 31, 1)
- REG32(BLK_MAX, 0x10)
- REG32(BLK_CFG, 0x14)
- REG32(BLK_IDX, 0x18)
- REG32(BLK_LUT, 0x1c)
- REG32(INT_STAT, 0x20)
-+    FIELD(INT_STAT, IRQ, 0, 1)
- REG32(INT_CLEAR, 0x24)
-+    FIELD(INT_CLEAR, IRQ, 0, 1)
- REG32(INT_EN, 0x28)
-+    FIELD(INT_EN, IRQ, 0, 1)
+@@ -43,6 +43,9 @@ REG32(INT_EN, 0x28)
+     FIELD(INT_EN, IRQ, 0, 1)
  REG32(INT_INFO1, 0x2c)
  REG32(INT_INFO2, 0x30)
++    FIELD(INT_INFO2, HMASTER, 0, 16)
++    FIELD(INT_INFO2, HNONSEC, 16, 1)
++    FIELD(INT_INFO2, CFG_NS, 17, 1)
  REG32(INT_SET, 0x34)
-+    FIELD(INT_SET, IRQ, 0, 1)
+     FIELD(INT_SET, IRQ, 0, 1)
  REG32(PIDR4, 0xfd0)
- REG32(PIDR5, 0xfd4)
- REG32(PIDR6, 0xfd8)
-@@ -57,14 +64,55 @@ static const uint8_t tz_mpc_idregs[] = {
-     0x0d, 0xf0, 0x05, 0xb1,
+@@ -266,6 +269,45 @@ static const MemoryRegionOps tz_mpc_reg_ops = {
+     .impl.max_access_size = 4,
  };
  
-+static void tz_mpc_irq_update(TZMPC *s)
++static inline bool tz_mpc_cfg_ns(TZMPC *s, hwaddr addr)
 +{
-+    qemu_set_irq(s->irq, s->int_stat && s->int_en);
++    /* Return the cfg_ns bit from the LUT for the specified address */
++    hwaddr blknum = addr / s->blocksize;
++    hwaddr blkword = blknum / 32;
++    uint32_t blkbit = 1U << (blknum % 32);
++
++    /* This would imply the address was larger than the size we
++     * defined this memory region to be, so it can't happen.
++     */
++    assert(blkword < s->blk_max);
++    return s->blk_lut[blkword] & blkbit;
 +}
 +
- static MemTxResult tz_mpc_reg_read(void *opaque, hwaddr addr,
-                                    uint64_t *pdata,
-                                    unsigned size, MemTxAttrs attrs)
- {
-+    TZMPC *s = TZ_MPC(opaque);
-     uint64_t r;
-     uint32_t offset = addr & ~0x3;
- 
-     switch (offset) {
-+    case A_CTRL:
-+        r = s->ctrl;
-+        break;
-+    case A_BLK_MAX:
-+        r = s->blk_max;
-+        break;
-+    case A_BLK_CFG:
-+        /* We are never in "init in progress state", so this just indicates
-+         * the block size. s->blocksize == (1 << BLK_CFG + 5), so
-+         * BLK_CFG == ctz32(s->blocksize) - 5
++static MemTxResult tz_mpc_handle_block(TZMPC *s, hwaddr addr, MemTxAttrs attrs)
++{
++    /* Handle a blocked transaction: raise IRQ, capture info, etc */
++    if (!s->int_stat) {
++        /* First blocked transfer: capture information into INT_INFO1 and
++         * INT_INFO2. Subsequent transfers are still blocked but don't
++         * capture information until the guest clears the interrupt.
 +         */
-+        r = ctz32(s->blocksize) - 5;
-+        break;
-+    case A_BLK_IDX:
-+        r = s->blk_idx;
-+        break;
-+    case A_BLK_LUT:
-+        r = s->blk_lut[s->blk_idx];
-+        if (size == 4) {
-+            s->blk_idx++;
-+            s->blk_idx %= s->blk_max;
-+        }
-+        break;
-+    case A_INT_STAT:
-+        r = s->int_stat;
-+        break;
-+    case A_INT_EN:
-+        r = s->int_en;
-+        break;
-+    case A_INT_INFO1:
-+        r = s->int_info1;
-+        break;
-+    case A_INT_INFO2:
-+        r = s->int_info2;
-+        break;
-     case A_PIDR4:
-     case A_PIDR5:
-     case A_PIDR6:
-@@ -110,6 +158,7 @@ static MemTxResult tz_mpc_reg_write(void *opaque, hwaddr addr,
-                                     uint64_t value,
-                                     unsigned size, MemTxAttrs attrs)
- {
-+    TZMPC *s = TZ_MPC(opaque);
-     uint32_t offset = addr & ~0x3;
- 
-     trace_tz_mpc_reg_write(addr, value, size);
-@@ -122,9 +171,15 @@ static MemTxResult tz_mpc_reg_write(void *opaque, hwaddr addr,
-         uint32_t oldval;
- 
-         switch (offset) {
--            /* As we add support for registers which need expansions
--             * other than zeroes we'll fill in cases here.
--             */
-+        case A_CTRL:
-+            oldval = s->ctrl;
-+            break;
-+        case A_BLK_IDX:
-+            oldval = s->blk_idx;
-+            break;
-+        case A_BLK_LUT:
-+            oldval = s->blk_lut[s->blk_idx];
-+            break;
-         default:
-             oldval = 0;
-             break;
-@@ -132,7 +187,51 @@ static MemTxResult tz_mpc_reg_write(void *opaque, hwaddr addr,
-         value = deposit32(oldval, (addr & 3) * 8, size * 8, value);
-     }
- 
-+    if ((s->ctrl & R_CTRL_LOCKDOWN_MASK) &&
-+        (offset == A_CTRL || offset == A_BLK_LUT || offset == A_INT_EN)) {
-+        /* Lockdown mode makes these three registers read-only, and
-+         * the only way out of it is to reset the device.
-+         */
-+        qemu_log_mask(LOG_GUEST_ERROR, "TZ MPC register write to offset 0x%x "
-+                      "while MPC is in lockdown mode\n", offset);
-+        return MEMTX_OK;
-+    }
 +
-     switch (offset) {
-+    case A_CTRL:
-+        /* We don't implement the 'data gating' feature so all other bits
-+         * are reserved and we make them RAZ/WI.
-+         */
-+        s->ctrl = value & (R_CTRL_SEC_RESP_MASK |
-+                           R_CTRL_AUTOINC_MASK |
-+                           R_CTRL_LOCKDOWN_MASK);
-+        break;
-+    case A_BLK_IDX:
-+        s->blk_idx = value % s->blk_max;
-+        break;
-+    case A_BLK_LUT:
-+        s->blk_lut[s->blk_idx] = value;
-+        if (size == 4) {
-+            s->blk_idx++;
-+            s->blk_idx %= s->blk_max;
-+        }
-+        break;
-+    case A_INT_CLEAR:
-+        if (value & R_INT_CLEAR_IRQ_MASK) {
-+            s->int_stat = 0;
-+            tz_mpc_irq_update(s);
-+        }
-+        break;
-+    case A_INT_EN:
-+        s->int_en = value & R_INT_EN_IRQ_MASK;
++        s->int_info1 = addr;
++        s->int_info2 = 0;
++        s->int_info2 = FIELD_DP32(s->int_info2, INT_INFO2, HMASTER,
++                                  attrs.requester_id & 0xffff);
++        s->int_info2 = FIELD_DP32(s->int_info2, INT_INFO2, HNONSEC,
++                                  ~attrs.secure);
++        s->int_info2 = FIELD_DP32(s->int_info2, INT_INFO2, CFG_NS,
++                                  tz_mpc_cfg_ns(s, addr));
++        s->int_stat |= R_INT_STAT_IRQ_MASK;
 +        tz_mpc_irq_update(s);
-+        break;
-+    case A_INT_SET:
-+        if (value & R_INT_SET_IRQ_MASK) {
-+            s->int_stat = R_INT_STAT_IRQ_MASK;
-+            tz_mpc_irq_update(s);
-+        }
-+        break;
-     case A_PIDR4:
-     case A_PIDR5:
-     case A_PIDR6:
-@@ -248,6 +347,16 @@ static int tz_mpc_num_indexes(IOMMUMemoryRegion *iommu)
- 
- static void tz_mpc_reset(DeviceState *dev)
- {
-+    TZMPC *s = TZ_MPC(dev);
++    }
 +
-+    s->ctrl = 0x00000100;
-+    s->blk_idx = 0;
-+    s->int_stat = 0;
-+    s->int_en = 1;
-+    s->int_info1 = 0;
-+    s->int_info2 = 0;
-+
-+    memset(s->blk_lut, 0, s->blk_max * sizeof(uint32_t));
- }
- 
- static void tz_mpc_init(Object *obj)
-@@ -321,13 +430,35 @@ static void tz_mpc_realize(DeviceState *dev, Error **errp)
-                        "tz-mpc-downstream");
-     address_space_init(&s->blocked_io_as, &s->blocked_io,
-                        "tz-mpc-blocked-io");
-+
-+    s->blk_lut = g_new(uint32_t, s->blk_max);
++    /* Generate bus error if desired; otherwise RAZ/WI */
++    return (s->ctrl & R_CTRL_SEC_RESP_MASK) ? MEMTX_ERROR : MEMTX_OK;
 +}
 +
-+static int tz_mpc_post_load(void *opaque, int version_id)
-+{
+ /* Accesses only reach these read and write functions if the MPC is
+  * blocking them; non-blocked accesses go directly to the downstream
+  * memory region without passing through this code.
+@@ -274,19 +316,23 @@ static MemTxResult tz_mpc_mem_blocked_read(void *opaque, hwaddr addr,
+                                            uint64_t *pdata,
+                                            unsigned size, MemTxAttrs attrs)
+ {
 +    TZMPC *s = TZ_MPC(opaque);
 +
-+    /* Check the incoming data doesn't point blk_idx off the end of blk_lut. */
-+    if (s->blk_idx >= s->blk_max) {
-+        return -1;
-+    }
-+    return 0;
+     trace_tz_mpc_mem_blocked_read(addr, size, attrs.secure);
+ 
+     *pdata = 0;
+-    return MEMTX_OK;
++    return tz_mpc_handle_block(s, addr, attrs);
  }
  
- static const VMStateDescription tz_mpc_vmstate = {
-     .name = "tz-mpc",
-     .version_id = 1,
-     .minimum_version_id = 1,
-+    .post_load = tz_mpc_post_load,
-     .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(ctrl, TZMPC),
-+        VMSTATE_UINT32(blk_idx, TZMPC),
-+        VMSTATE_UINT32(int_stat, TZMPC),
-+        VMSTATE_UINT32(int_en, TZMPC),
-+        VMSTATE_UINT32(int_info1, TZMPC),
-+        VMSTATE_UINT32(int_info2, TZMPC),
-+        VMSTATE_VARRAY_UINT32(blk_lut, TZMPC, blk_max,
-+                              0, vmstate_info_uint32, uint32_t),
-         VMSTATE_END_OF_LIST()
-     }
- };
+ static MemTxResult tz_mpc_mem_blocked_write(void *opaque, hwaddr addr,
+                                             uint64_t value,
+                                             unsigned size, MemTxAttrs attrs)
+ {
++    TZMPC *s = TZ_MPC(opaque);
++
+     trace_tz_mpc_mem_blocked_write(addr, value, size, attrs.secure);
+ 
+-    return MEMTX_OK;
++    return tz_mpc_handle_block(s, addr, attrs);
+ }
+ 
+ static const MemoryRegionOps tz_mpc_mem_blocked_ops = {
 -- 
 2.17.1

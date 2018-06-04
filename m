@@ -1,79 +1,100 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp2866898wme;
-        Sun, 13 May 2018 02:06:39 -0700 (PDT)
-X-Google-Smtp-Source: AB8JxZpf665VMghGJhbSRXn3mWme5mUV0JRyzj6fggx2W20x4AlkwPa0kgBYpCSViyeKIrAmSqnI
-X-Received: by 2002:aed:2785:: with SMTP id a5-v6mr4624073qtd.249.1526202399243;
-        Sun, 13 May 2018 02:06:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526202399; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp388376wrq;
+        Mon, 4 Jun 2018 02:30:11 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKwI3H/jvIRHcrSLnyddqA4P4WpJs5z4A/yuebMSR4HLIzXyFUAgquW/AKm/QBUB8TW1Wz1
+X-Received: by 2002:aed:3b94:: with SMTP id r20-v6mr20506934qte.364.1528104611743;
+        Mon, 04 Jun 2018 02:30:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528104611; cv=none;
         d=google.com; s=arc-20160816;
-        b=eaeXL9RwJ72M8AbR2cn7o6GZNx3vFFgjIBY6FCsn3E1mCHR6NPnqWrk71eIqv/FhYP
-         ygLV/B8hOy1JQZp2rPX7WjpQWAoGT8Q1GvVqBUVlWGtavW5yEJ+Ek1yxCzUYbz+rGkuW
-         IF36RGDEkAUEOkCtSn83w/JWNmHBHhLEZZbspuvYPLqXybFl9yaMuk3BoiKXFahGM9rg
-         LapAcSgNVMT/Z65tse9E1CYPJjCzH+Yt77RBG1old+usOYIX8JNsb9L25hjcvRI9IsvP
-         IDSlTZvUsjD80wfWPNMTWOPYGpPYS7jYVDFET2rye6O7OHBkw+ceQ4RhW5lhGurWe1yR
-         rhMg==
+        b=fG/MOOLY1scZOtGmIXiUh6hluYgeX0JQGUR5oW8nGDXm5+1aW9PKHXGVIRi+Oud8KB
+         kKUmBJpZcuuIDAMZUbuEAF/yIgfRE1my22KJvowHSHO7Y+3YtkptpPwElcC01NJ7HBHe
+         7cn6+NdIKA9MYU3lrcYT/8uqmENkxvRUP/8aLSU1Pfq19sovoTguayHZiSF0K0Xs2IoX
+         lBXLW6QgBZjWHI7HQd2oKZ4XQ0fuUd9GSYfyNXkvso5cuXxG/Kr/XaKL0fB3NFZxgCNj
+         MP/xmPyoYepo/tQevRqtHWfzNzR8ZkYr0SWffR0j0pL+9StXATDYRplbPkPd8Yo8y4S6
+         h7xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=by84IM5/Xh5UyF/ep2/UJOwBJ+Df6/3YRZ1lVjvKr5Y=;
-        b=Qhvq/1IYnDLb6Dp5tz7FzNHGGiDFqYBAtSdPhU9pcocL1S5O8yArT+p5ctWIeEoxQG
-         EreSIokT5V4LFS07sZOSBDi6VZALY2zqsaR5jy56Fyc+Yp7U0WfnDvwV69nECdFQkUqx
-         wM0MhB5TOzy3eGbIvzBocT62/CgUtKPmnfTAQ83WYU8Hh3S2W28iqIaKZpa2hizkVLMm
-         VQ/X67oEuwv3x5oQzB2bngegGSUpv/NsxiuPGJiM15Z/48c9svcjhLs3lc2+g5AB9HMf
-         r2WBqo/7VZSxTJQB3zHNJNy/92tLbGzjy2UQ5uUj3CRND2N1NszTlb1bL39y4/aFTB85
-         3cvQ==
+        bh=V2Zdh6MMb3IrM5OZRqVW9Pct1nE5eHXm/zv2oZCqfjs=;
+        b=J+70B1IeOCajvQQ5rzuoOQMuPrGv7hEx+SVqNqe7yAkq38oWnB+7tAHUihb4bvxjAC
+         ol41DTMn29Bho0ZGjzJyGl2mYa6YhoN9gW2aYxtQOnhNZVb+pNoz4nG2BRD+EWuRFUFO
+         DzxdRB5RaqDWPwtfDJ/2iYUI+CRGYK6PW0bL9fkm243TSbSAZGvRfm61AUEv0uAKH0ZU
+         L7SW0H9P+ADMmK+hGtzsINRgZiN8CV5dTmAVKWhNu+TXD9UV/62Wk0Ao89oumhNvCrsq
+         nhW/oI1pc++TJZTU/M8Qpd1yjRbk0EpkjVQul9myu77tx6wylITbv/EBW5W422IB+Vd6
+         X56Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZKqYRd6c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k31-v6si2747091qvh.111.2018.05.13.02.06.39
+        by mx.google.com with ESMTPS id n64-v6si1400134qkf.210.2018.06.04.02.30.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 13 May 2018 02:06:39 -0700 (PDT)
+        Mon, 04 Jun 2018 02:30:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53786 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZKqYRd6c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38510 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fHmxi-0004IO-QL
-	for alex.bennee@linaro.org; Sun, 13 May 2018 05:06:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34016)
+	id 1fPloZ-0005Ii-8t
+	for alex.bennee@linaro.org; Mon, 04 Jun 2018 05:30:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40541)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1fHmxb-0003K7-Bf
-	for qemu-arm@nongnu.org; Sun, 13 May 2018 05:06:32 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fPloQ-0005HE-75
+	for qemu-arm@nongnu.org; Mon, 04 Jun 2018 05:30:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1fHmxY-0003qd-7B
-	for qemu-arm@nongnu.org; Sun, 13 May 2018 05:06:31 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:41714
-	helo=v2201612906741603.powersrv.de)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefan@weilnetz.de>)
-	id 1fHmxY-0003qL-0m; Sun, 13 May 2018 05:06:28 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 7BC0FDAC716;
-	Sun, 13 May 2018 11:06:26 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id jdN7jQC1xjEU; Sun, 13 May 2018 11:06:23 +0200 (CEST)
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id A1286DAC715;
-	Sun, 13 May 2018 11:06:23 +0200 (CEST)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id 8FD46460013; Sun, 13 May 2018 11:06:23 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developer <qemu-devel@nongnu.org>
-Date: Sun, 13 May 2018 11:06:13 +0200
-Message-Id: <20180513090613.27960-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 37.120.169.71
-Subject: [Qemu-arm] [PATCH] disas/libvixl: Fix VIXL_FALLTHROUGH macro for
- QEMU
+	(envelope-from <peter.maydell@linaro.org>) id 1fPloP-0000IU-DN
+	for qemu-arm@nongnu.org; Mon, 04 Jun 2018 05:30:02 -0400
+Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:44251)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fPloP-0000Hf-7n
+	for qemu-arm@nongnu.org; Mon, 04 Jun 2018 05:30:01 -0400
+Received: by mail-ot0-x234.google.com with SMTP id w13-v6so9353974ote.11
+	for <qemu-arm@nongnu.org>; Mon, 04 Jun 2018 02:30:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=V2Zdh6MMb3IrM5OZRqVW9Pct1nE5eHXm/zv2oZCqfjs=;
+	b=ZKqYRd6chEeZOSzvmGz5weIFLYse5AAu3taMSrBUBIumW1bTdybcPJ3pZ/3duYaWv1
+	NnqZqmkVh3+hYy3V0ueQlVnaOEaCF9tqj8e3D2rmpp4UoPxMrYy3vA9Db2tgQl33kETg
+	vveXd/wbZ3mZIr/KsMmdIdNt3CH2wL/sWU1Dw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=V2Zdh6MMb3IrM5OZRqVW9Pct1nE5eHXm/zv2oZCqfjs=;
+	b=MsLlBmeCddSdajdvu/cMsPf7V5dAZJjX+BvoRExNBpm97gJT+t8gvdusRbi5uUVl+3
+	5wKNi35Fxd3dSUUsEvX4JsgO+2FNlh/koJQQnxLPBNRtUbp0kHjC5n3QDuJBxGCBnMsl
+	f03hsH+9a3JCVkpzTxvbB4jQiIall92T8wS5RxubTWZ+bumRcTJH6em3DXnRrNOU7lxl
+	PcCbPL5ngRh9p3bxMdjk9VCowgsjURSvJv3Zvy02iaRrC3l0M99c7PLHnqjegktBKHHQ
+	VFzQc1sxN1y4E7EWkaX06YIVe4QvErEV7COZshaIm+gUAxr89tXw43dQSCQ8ApyS16Xx
+	4qPw==
+X-Gm-Message-State: APt69E1EiEsyWgAh4BPpU2Bx+Ei+IzJBkP9AmZxybUBp8i+D30iBUwRU
+	PzeveBg7GZjvcu4BvN9Izyb2pNuY2lzqPRLx15Ztog==
+X-Received: by 2002:a9d:1a0b:: with SMTP id
+	a11-v6mr4420274ote.205.1528104600513; 
+	Mon, 04 Jun 2018 02:30:00 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
+	Mon, 4 Jun 2018 02:29:40 -0700 (PDT)
+In-Reply-To: <20180604092008.GA13674@stefanha-x1.localdomain>
+References: <20180603203412.11033-1-contrib@steffen-goertz.de>
+	<20180604092008.GA13674@stefanha-x1.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Jun 2018 10:29:40 +0100
+Message-ID: <CAFEAcA9kdvxa61HNxv-cDhcv07E_NUpwVcSJVYNw4weS3k7nUw@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::234
+Subject: Re: [Qemu-arm] [RFC v3] qapi: command category to stimulate
+ high-level machine devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,40 +106,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-arm@nongnu.org
+Cc: Jim Mussared <jim@groklearning.com>, Eric Blake <eblake@redhat.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>,
+	Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iO6vgFHjq4ij
+X-TUID: h5WEnudUzxTe
 
-It now prevents compiler warnings (enabled with -Wimplicit-fallthrough=
-or -Wextra) as intended.
+On 4 June 2018 at 10:20, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> Many of these inputs/outputs can be tied to an external UI.  A degree of
+> timing precision is required so that the UI is responsive, although
+> cycle-accurate timing is not what I'd expect from QMP.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
+Would we also be able to tie them to an internal UI, ie
+something that appears as another view in the GTK/etc
+UI frontends we have?
 
-I suggest to add and use a similar macro QEMU_FALLTHROUGH()
-for the rest of the code and can provide a patch if that's
-fine for everyone.
-
-Regards
-Stefan
-
- disas/libvixl/vixl/globals.h | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/disas/libvixl/vixl/globals.h b/disas/libvixl/vixl/globals.h
-index 61dc9f7f7e..33c4231d91 100644
---- a/disas/libvixl/vixl/globals.h
-+++ b/disas/libvixl/vixl/globals.h
-@@ -112,6 +112,8 @@ inline void USE(T1, T2, T3, T4) {}
- // C++11(201103L).
- #if __has_warning("-Wimplicit-fallthrough") && __cplusplus >= 201103L
-   #define VIXL_FALLTHROUGH() [[clang::fallthrough]] //NOLINT
-+#elif defined(__GNUC__)
-+  #define VIXL_FALLTHROUGH() __attribute__((fallthrough))
- #else
-   #define VIXL_FALLTHROUGH() do {} while (0)
- #endif
--- 
-2.11.0
-
+thanks
+-- PMM

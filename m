@@ -1,130 +1,184 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1279591wrq;
-        Fri, 22 Jun 2018 14:13:57 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJMh2loEYzAgq9UDUboxkovvkCHWeDy9UJ4Y/4qtBrxB39Qt2xW4pNl6nQO8aYHkbWTT+vK
-X-Received: by 2002:aed:3025:: with SMTP id 34-v6mr2923713qte.182.1529702037481;
-        Fri, 22 Jun 2018 14:13:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529702037; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743461wrq;
+        Mon, 4 Jun 2018 08:29:44 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIR+ExvtnLUdpfFwbll0Nx95A0DkLwkQlnMw77F+pJ7Y5W01j/VlhHAla+L+48+Hv+Yszc2
+X-Received: by 2002:a19:c004:: with SMTP id q4-v6mr5687713lff.16.1528126184886;
+        Mon, 04 Jun 2018 08:29:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528126184; cv=none;
         d=google.com; s=arc-20160816;
-        b=KIlzOqy2qdHWhHx2V2rG+8Be15ip08g5SL5xMtILJnNQaUEB4NAg+fP/IP+TOX0YuV
-         +/h2Id3+WR0/BvIF5XC+ecLkX7APIfm6qufEk8VuF1Ma03XX2fB7mEkTCE93Vs6EFafY
-         tSbVjXguyXtOGC+w28ewgJnVl5fDV9KGlXrG7h4uiQFNG6UydPQlOzoe3BYW0Z8YeKFD
-         nah19A83K4bQMdIxOEct3vpZ3DeTAiNF4z9CFKp9jFuaoA5T0ZtjTvvXT8AwKd3BFdzx
-         MfeCtqIVnqjPYQg26LIdYb7tpPeLvZ02d7LKBajRf+CiqWXqSp7LyzMG29Gh0Nw60cug
-         uvUA==
+        b=FYFiQkeb7rh8FxE96VvxCcDGy7oSrHg9kJ+BcLSMAIiznGZT34YYWj/gPQZ8LRAxm5
+         fiTRiC4XikegDwJhr7CS5xalILXhs4QfBnRth/CrvP4ZOBgoM37MSBHg0hqrvwIybpQD
+         4V+Tu8fq+bhpP5Uq1tHF5ayfVf2ZBgoK/5lGVGYyt5ru7kNccipjf/wkdHAtpeJrijG0
+         4du3BC7XS4B0DfzmheYX6AmNIqZ+K49NuL0sSW7hTjet2ltrgdJCYf2AfMKVyTM9JU+5
+         QY1YEphVhldzKcuOzJNGLYTc+ESclxTEWW6To7ougRwMxPK/AVoICWpKdIjc1yLIZE//
+         3kfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:dkim-signature:arc-authentication-results;
-        bh=pAonXuwlGeLITCqBRlwerrIszJkDvczbw2dcWQVEqro=;
-        b=r2EUdspHJ+/F81rVvGi0osrMQ7l61OX1w6Ll3snGmqQ7Ept7slXDMyxo+hyCZ5yLIz
-         pHgaEjmqCY1WU7Vo86GLw94BOnpBL+kKSiskziIpT2unrFNAnq7CiDvWGRudLJfNvAnE
-         mbGSxYs53r1RJO54nbp5+KgbyqE09aAMQ2lVgs8FICM8Voh85Sj8YMETrOutuHokBWt0
-         DS/XWHwVVaePiGVkP6+U0t36BBtqkQf40DdpGJtkRV/3n2HgN/TLwkXE1+8EBtoXo/i7
-         0vnqRmIefwe8M+/auUjysZJowP76HwmV47gh+L3M47v2yWPmiU8x5aEkkh0oRda6BPCL
-         lJPA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :arc-authentication-results;
+        bh=O8kwIomHqWoXliOp05PIwKGInP2VgHyvT5wUya7fjJI=;
+        b=C6+PK9e8F510fV3vnE8h/cwBYTctrRD3O70VseKgBdp+IuyzceW59xDeLdoarar5BQ
+         EEnu6w/F2vTJ7jy4KRSFU62eyPlg4Sd6rpbQ0ApGAj/WpnfOl1YC914xxXFm7cT5SOze
+         1T2KjIEXxYxryvep611TijBX0L6ySG4iLhkueHdSDznO+e1piNpWhLpJ7zSoje0XNceg
+         rPneio594Vk369Ly1QLTE/g15PXeO0U15dw6Dixc6KNcZPXoVP/30CA7aAuNstw3e3Ga
+         QEmtqI+5tNYmqf6BQOWqXWFFIztKqwozM2LNB6YmP5VYy7MEK9HzAq5fBHxL9Fp4Jmrx
+         dNZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=D1BLvLP0;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=UTVOrq2J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l7-v6si3564823qvi.12.2018.06.22.14.13.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 14:13:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id 38-v6si12507192lfv.341.2018.06.04.08.29.44
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Jun 2018 08:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=D1BLvLP0;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=UTVOrq2J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36232 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWTNV-00051Y-1N
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 17:13:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33194)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1fWTNL-00050e-7l
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 17:13:48 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1fWTNG-0001iD-8S
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 17:13:47 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:41491)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1fWTNG-0001i1-3Q; Fri, 22 Jun 2018 17:13:42 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id D005520F29;
-	Fri, 22 Jun 2018 17:13:41 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-	by compute4.internal (MEProxy); Fri, 22 Jun 2018 17:13:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-	mesmtp; bh=pAonXuwlGeLITCqBRlwerrIszJkDvczbw2dcWQVEqro=; b=D1BLv
-	LP0f05emRgXCZR8xJWJ84f9ls3qwA2egUtqiEJ6hsNrqETuV0W/Wd7+kkscqdHAQ
-	vxZzcxdrpsvudo7X6CWjH5HHC1i+SrWnd2W+arzLia554jG06pMqGakRKrcxsA0Z
-	fb2vSB0A1uEz9QwNvg1ILlXtmR/DzTEnDZD7Ok=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; bh=pAonXuwlGeLITCqBRlwerrIszJkDv
-	czbw2dcWQVEqro=; b=UTVOrq2JYlAWQIarvQzyiZQG29ZQOYXQw7Pi1npZl57At
-	rFcLuvp+cZ8GjCbEyrWC9X3MXxEiadCAqD9+nK+/4rAv2QIMj4YE8ip0zl5n+L/l
-	wOtQbVvq7rK/rkkQ7G/4DSx/kzMEMon0HiZJdS5QA966CLmydxh8b715ujgIqDXU
-	X4s2SaDHIk5wK3T3DOWPRk15rn5J/9toAA3PoP5BIfGWeoJ32IjTpbRlsJmUnw69
-	9VGCPcnnsKl1l16rFCBb/DvZIBCsdyAHQA+5Qe8fj980Q4uQ+qImEfTvx67rXVS3
-	EGeyCub10u5RrgddHaKNqQ7sfpZQFFEDRpiil42vg==
-X-ME-Proxy: <xmx:hWYtW4CmdwSWHIRQ4UGXwzkNveZvkRyW8p5EGDX86WxyLUmi3lJriQ>
-	<xmx:hWYtW1cDuXPqt9_xACRbYXNqvsOh9LiuV-Ud4orVRxeYzbF9CHC0pQ>
-	<xmx:hWYtW6kMAxN2-f0VEL5Q39FcV1cCSSvnPPAeiIMJwPAYG6miV1b0bQ>
-	<xmx:hWYtW0E-Rg7UMgKzcGEX6lQAhZQooRvGOCXrrpaN5LonJuZOo3EHeA>
-	<xmx:hWYtW67DBt1mvsABuw1uFzgtfZA9oiZ-ojU_OkVhE80YmB-EY_BBJQ>
-	<xmx:hWYtW7tPAtIKAR0QTmYaZMRKmAEFzGYcs-l-0CvXU2Pw_E0cP1297g>
-X-ME-Sender: <xms:hWYtWz3APt-_AKr9KVduFjP4NJPO4OezwGu3ZZYk1A3MpvpFBDhqSQ>
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 84C1EE446F;
-	Fri, 22 Jun 2018 17:13:41 -0400 (EDT)
-Date: Fri, 22 Jun 2018 17:13:41 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20180622211341.GB11346@flamenco>
-References: <20180621173635.21537-1-richard.henderson@linaro.org>
-	<20180621173635.21537-3-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180621173635.21537-3-richard.henderson@linaro.org>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.111.4.26
-Subject: Re: [Qemu-arm] [PATCH 2/2] linux-user: Use pthread_rwlock_t for
- mmap_rd/wrlock
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, laurent@vivier.eu
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5NpLSqm8sgpw
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fPrQU-00070p-Tz; Mon, 04 Jun 2018 16:29:42 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v2 01/13] iommu: Add IOMMU index concept to IOMMU API
+Date: Mon,  4 Jun 2018 16:29:29 +0100
+Message-Id: <20180604152941.20374-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180604152941.20374-1-peter.maydell@linaro.org>
+References: <20180604152941.20374-1-peter.maydell@linaro.org>
+X-TUID: JtutZ84iUWit
 
-On Thu, Jun 21, 2018 at 07:36:35 -1000, Richard Henderson wrote:
->  void mmap_wrlock(void)
->  {
-> -    mmap_lock_internal();
-> +    if (likely(mmap_lock_held == 0)) {
-> +        pthread_rwlock_rdlock(&mmap_rwlock);
+If an IOMMU supports mappings that care about the memory
+transaction attributes, then it no longer has a unique
+address -> output mapping, but more than one. We can
+represent these using an IOMMU index, analogous to TCG's
+mmu indexes.
 
-s/rwlock_rdlock/rwlock_wrlock/
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/exec/memory.h | 55 +++++++++++++++++++++++++++++++++++++++++++
+ memory.c              | 23 ++++++++++++++++++
+ 2 files changed, 78 insertions(+)
 
-		E.
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index eb2ba065195..fa6e98ee7be 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -206,6 +206,20 @@ enum IOMMUMemoryRegionAttr {
+  * to report whenever mappings are changed, by calling
+  * memory_region_notify_iommu() (or, if necessary, by calling
+  * memory_region_notify_one() for each registered notifier).
++ *
++ * Conceptually an IOMMU provides a mapping from input address
++ * to an output TLB entry. If the IOMMU is aware of memory transaction
++ * attributes and the output TLB entry depends on the transaction
++ * attributes, we represent this using IOMMU indexes. Each index
++ * selects a particular translation table that the IOMMU has:
++ *   @attrs_to_index returns the IOMMU index for a set of transaction attributes
++ *   @translate takes an input address and an IOMMU index
++ * and the mapping returned can only depend on the input address and the
++ * IOMMU index.
++ *
++ * Most IOMMUs don't care about the transaction attributes and support
++ * only a single IOMMU index. A more complex IOMMU might have one index
++ * for secure transactions and one for non-secure transactions.
+  */
+ typedef struct IOMMUMemoryRegionClass {
+     /* private */
+@@ -290,6 +304,29 @@ typedef struct IOMMUMemoryRegionClass {
+      */
+     int (*get_attr)(IOMMUMemoryRegion *iommu, enum IOMMUMemoryRegionAttr attr,
+                     void *data);
++
++    /* Return the IOMMU index to use for a given set of transaction attributes.
++     *
++     * Optional method: if an IOMMU only supports a single IOMMU index then
++     * the default implementation of memory_region_iommu_attrs_to_index()
++     * will return 0.
++     *
++     * The indexes supported by an IOMMU must be contiguous, starting at 0.
++     *
++     * @iommu: the IOMMUMemoryRegion
++     * @attrs: memory transaction attributes
++     */
++    int (*attrs_to_index)(IOMMUMemoryRegion *iommu, MemTxAttrs attrs);
++
++    /* Return the number of IOMMU indexes this IOMMU supports.
++     *
++     * Optional method: if this method is not provided, then
++     * memory_region_iommu_num_indexes() will return 1, indicating that
++     * only a single IOMMU index is supported.
++     *
++     * @iommu: the IOMMUMemoryRegion
++     */
++    int (*num_indexes)(IOMMUMemoryRegion *iommu);
+ } IOMMUMemoryRegionClass;
+ 
+ typedef struct CoalescedMemoryRange CoalescedMemoryRange;
+@@ -1054,6 +1091,24 @@ int memory_region_iommu_get_attr(IOMMUMemoryRegion *iommu_mr,
+                                  enum IOMMUMemoryRegionAttr attr,
+                                  void *data);
+ 
++/**
++ * memory_region_iommu_attrs_to_index: return the IOMMU index to
++ * use for translations with the given memory transaction attributes.
++ *
++ * @iommu_mr: the memory region
++ * @attrs: the memory transaction attributes
++ */
++int memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
++                                       MemTxAttrs attrs);
++
++/**
++ * memory_region_iommu_num_indexes: return the total number of IOMMU
++ * indexes that this IOMMU supports.
++ *
++ * @iommu_mr: the memory region
++ */
++int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr);
++
+ /**
+  * memory_region_name: get a memory region's name
+  *
+diff --git a/memory.c b/memory.c
+index 3212acc7f49..64f4a55d546 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1915,6 +1915,29 @@ int memory_region_iommu_get_attr(IOMMUMemoryRegion *iommu_mr,
+     return imrc->get_attr(iommu_mr, attr, data);
+ }
+ 
++int memory_region_iommu_attrs_to_index(IOMMUMemoryRegion *iommu_mr,
++                                       MemTxAttrs attrs)
++{
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
++
++    if (!imrc->attrs_to_index) {
++        return 0;
++    }
++
++    return imrc->attrs_to_index(iommu_mr, attrs);
++}
++
++int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr)
++{
++    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
++
++    if (!imrc->num_indexes) {
++        return 1;
++    }
++
++    return imrc->num_indexes(iommu_mr);
++}
++
+ void memory_region_set_log(MemoryRegion *mr, bool log, unsigned client)
+ {
+     uint8_t mask = 1 << client;
+-- 
+2.17.1

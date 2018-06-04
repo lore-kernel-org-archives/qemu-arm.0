@@ -1,41 +1,41 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743586wrq;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743596wrq;
         Mon, 4 Jun 2018 08:29:51 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJhDk+CyKF819dGQyPQEY1x6iKzabZKJtnCWAQgFiQV+4gXs9Vy1BY38UwNkpOcnwYbt+sd
-X-Received: by 2002:a1c:b70b:: with SMTP id h11-v6mr9367594wmf.1.1528126190941;
-        Mon, 04 Jun 2018 08:29:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528126190; cv=none;
+X-Google-Smtp-Source: ADUXVKL1+tHgqEYHMjIEX3wiAs6aW1HLnMVAtlyHAbeyQh4VqWNEFfvIcF9pZeKXgVxGciwrnWEp
+X-Received: by 2002:adf:cd85:: with SMTP id q5-v6mr15782038wrj.275.1528126191693;
+        Mon, 04 Jun 2018 08:29:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528126191; cv=none;
         d=google.com; s=arc-20160816;
-        b=uHxt93XApKJU69QMk6Ft9gEaNQRVN3X4od8FLfMErba3Hvro0K7OseYk01b6hIRMTz
-         tpi4oOAi8NqHEUqHESFW8XeXCxco/N1tX82KXnG7tWSStx4PYzSN8Z3YUqXXmV0Cm1IA
-         fIKKB5gqwVLlUSiFwKHvdqpwVHrzV8xz9U1h66AjKzUXWBS0yFa0omzWCgHYr3fwnSKd
-         AEaq9ULWWu8e2Q7XsDhPFSSp5PK6bpADB6AK1deC/42y0uzAXbrbZz5ppUluxzlUQa1z
-         Dhcfxl+D5psacNl20n0rhZp1B6YKGAcbV6bMkU7kHDWRNiAb3pO2s3Bcvf5jecphwXQg
-         e28g==
+        b=IwhbCFV6pWpeop/MJX8QibV77abmc0g/CozpeOAcZuVBlGUWA5M0gxi0dpUNWFY2D8
+         HYkjmNmGSHOcm64E1ObmTArb5on+Azf468YklLNEO9ivaFVZSfPA7y68vsAc4BXES3wK
+         bNC1lezrB1zzmtV0tVlSgt3qe9q7MkbSG1zoTRx/njAD4G6Cu51j4WESj2a+u/MK5O63
+         JDZERgRV4sEyvhWkpqmrSah3ZVL3NbuvVvqtxU2H18c6dhbnZZ676oqFHxglWeRH4lXT
+         tBIR03/8/50JaMcb2whYG5lsyNtShAvin+3ASEpaeXb4ZFw9EiIU9ThzvRG9u3+bSdus
+         IMQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :arc-authentication-results;
-        bh=m73m1D3jF1u6/fPO7NJlqLCPaBmELMcfvEt2Dcf7X74=;
-        b=ejjLAMkbFhe4Bsig5OLop0T9ZyVqhyUeWSUG9m0JPOkE9s6YBnIf3klcoQKUhN6b7i
-         mAscSgP8H730FqmEG7MweHAkJjoVTw5Za0Fw6iiy9x1n0mvxK9P7dn4K64FUnHTcF9SI
-         qpE+TnJ2SAKi3xLtcHV0sDc7Zo/yhohaNZP6mhS4GjUcCtgWpFuNzS+seIFMcDI8Wc0D
-         fs3jKwKly1rFsMNIG6EJn6PNeUbvVnIEleZR4udD8RPSUiIQ2xvPj2Y6k/KC4elPDJPJ
-         qhB0y50A1FkuIKT2oOZDHeOcFK6sGWC6c5tyQ4dKfXaWkPMvK570me89InQvV60ar8UK
-         7pkA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:arc-authentication-results;
+        bh=NdGvu8DSxSkqTnAcIC0lWaImKZxdeqClYOoKlOXbiTQ=;
+        b=ps0Jn67WyA8tHhgeVWG5UZiTUpaizf8T3WhsVLVl5dSWB+leH6fySSKWG0e+W0oe8Y
+         LJwLb3NNPCTnLPlLKGiDnIF8fqk553FxYAWy+P3XSjc698EUiBJtZz69AI4tzLRLc8SC
+         aBTi10j0OD9o5KfX+1DTpHbrpIeqhzZ+KiIey+Ozu8qJ4umReo5GTgAyFiObjZj26xHh
+         I3BZLBeOaQQRtF7HmAOH7SxXcuQA0iKxLYulN92vzuzPE0CE7XET3hY5R43O4KG1YPl9
+         +CkjMxJ9+3H0f2ZQp2EavzOy700qunf+uSN++mnYT6o0CE2yxMa2SC+jDDHp0m4GUxkZ
+         QFpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id v67-v6si317414wmv.148.2018.06.04.08.29.50
+        by mx.google.com with ESMTPS id b125-v6si337771wme.127.2018.06.04.08.29.51
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jun 2018 08:29:50 -0700 (PDT)
+        Mon, 04 Jun 2018 08:29:51 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fPrQc-000756-DB; Mon, 04 Jun 2018 16:29:50 +0100
+	id 1fPrQd-000764-6b; Mon, 04 Jun 2018 16:29:51 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -45,141 +45,116 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 10/13] hw/misc/iotkit-secctl.c: Implement SECMPCINTSTATUS
-Date: Mon,  4 Jun 2018 16:29:38 +0100
-Message-Id: <20180604152941.20374-11-peter.maydell@linaro.org>
+Subject: [PATCH v2 11/13] hw/arm/iotkit: Instantiate MPC
+Date: Mon,  4 Jun 2018 16:29:39 +0100
+Message-Id: <20180604152941.20374-12-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180604152941.20374-1-peter.maydell@linaro.org>
 References: <20180604152941.20374-1-peter.maydell@linaro.org>
-X-TUID: Wf/upqKBE5bA
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: m351Yg7wIwvy
 
-Implement the SECMPCINTSTATUS register. This is the only register
-in the security controller that deals with Memory Protection
-Controllers, and it simply provides a read-only view of the
-interrupt lines from the various MPCs in the system.
+Wire up the one MPC that is part of the IoTKit itself. For the
+moment we don't wire up its interrupt line.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/hw/misc/iotkit-secctl.h |  8 +++++++
- hw/misc/iotkit-secctl.c         | 38 +++++++++++++++++++++++++++++++--
- 2 files changed, 44 insertions(+), 2 deletions(-)
+ include/hw/arm/iotkit.h |  2 ++
+ hw/arm/iotkit.c         | 38 +++++++++++++++++++++++++++-----------
+ 2 files changed, 29 insertions(+), 11 deletions(-)
 
-diff --git a/include/hw/misc/iotkit-secctl.h b/include/hw/misc/iotkit-secctl.h
-index faad0c91901..082c14c925e 100644
---- a/include/hw/misc/iotkit-secctl.h
-+++ b/include/hw/misc/iotkit-secctl.h
-@@ -39,6 +39,11 @@
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_enable
-  *  + named GPIO outputs ahb_ppcexp{0,1,2,3}_irq_clear
-  *  + named GPIO inputs ahb_ppcexp{0,1,2,3}_irq_status
-+ * Controlling the MPC in the IoTKit:
-+ *  + named GPIO input mpc_status
-+ * Controlling each of the 16 expansion MPCs which a system using the IoTKit
-+ * might provide:
-+ *  + named GPIO inputs mpcexp_status[0..15]
-  */
+diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+index c6129d926b6..b21cf1ab9d1 100644
+--- a/include/hw/arm/iotkit.h
++++ b/include/hw/arm/iotkit.h
+@@ -51,6 +51,7 @@
+ #include "hw/arm/armv7m.h"
+ #include "hw/misc/iotkit-secctl.h"
+ #include "hw/misc/tz-ppc.h"
++#include "hw/misc/tz-mpc.h"
+ #include "hw/timer/cmsdk-apb-timer.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/or-irq.h"
+@@ -74,6 +75,7 @@ typedef struct IoTKit {
+     IoTKitSecCtl secctl;
+     TZPPC apb_ppc0;
+     TZPPC apb_ppc1;
++    TZMPC mpc;
+     CMSDKAPBTIMER timer0;
+     CMSDKAPBTIMER timer1;
+     qemu_or_irq ppc_irq_orgate;
+diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+index 234185e8f78..160e40c7449 100644
+--- a/hw/arm/iotkit.c
++++ b/hw/arm/iotkit.c
+@@ -130,6 +130,7 @@ static void iotkit_init(Object *obj)
+                       TYPE_TZ_PPC);
+     init_sysbus_child(obj, "apb-ppc1", &s->apb_ppc1, sizeof(s->apb_ppc1),
+                       TYPE_TZ_PPC);
++    init_sysbus_child(obj, "mpc", &s->mpc, sizeof(s->mpc), TYPE_TZ_MPC);
+     init_sysbus_child(obj, "timer0", &s->timer0, sizeof(s->timer0),
+                       TYPE_CMSDK_APB_TIMER);
+     init_sysbus_child(obj, "timer1", &s->timer1, sizeof(s->timer1),
+@@ -266,15 +267,6 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+      */
+     make_alias(s, &s->alias3, "alias 3", 0x50000000, 0x10000000, 0x40000000);
  
- #ifndef IOTKIT_SECCTL_H
-@@ -55,6 +60,8 @@
- #define IOTS_NUM_APB_PPC 2
- #define IOTS_NUM_APB_EXP_PPC 4
- #define IOTS_NUM_AHB_EXP_PPC 4
-+#define IOTS_NUM_EXP_MPC 16
-+#define IOTS_NUM_MPC 1
- 
- typedef struct IoTKitSecCtl IoTKitSecCtl;
- 
-@@ -94,6 +101,7 @@ struct IoTKitSecCtl {
-     uint32_t secrespcfg;
-     uint32_t nsccfg;
-     uint32_t brginten;
-+    uint32_t mpcintstatus;
- 
-     IoTKitSecCtlPPC apb[IOTS_NUM_APB_PPC];
-     IoTKitSecCtlPPC apbexp[IOTS_NUM_APB_EXP_PPC];
-diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-index ddd1584d341..de4fd8e36d2 100644
---- a/hw/misc/iotkit-secctl.c
-+++ b/hw/misc/iotkit-secctl.c
-@@ -139,6 +139,9 @@ static MemTxResult iotkit_secctl_s_read(void *opaque, hwaddr addr,
-     case A_NSCCFG:
-         r = s->nsccfg;
-         break;
-+    case A_SECMPCINTSTATUS:
-+        r = s->mpcintstatus;
-+        break;
-     case A_SECPPCINTSTAT:
-         r = s->secppcintstat;
-         break;
-@@ -186,7 +189,6 @@ static MemTxResult iotkit_secctl_s_read(void *opaque, hwaddr addr,
-     case A_APBSPPPCEXP3:
-         r = s->apbexp[offset_to_ppc_idx(offset)].sp;
-         break;
--    case A_SECMPCINTSTATUS:
-     case A_SECMSCINTSTAT:
-     case A_SECMSCINTEN:
-     case A_NSMSCEXP:
-@@ -572,6 +574,20 @@ static void iotkit_secctl_reset(DeviceState *dev)
-     foreach_ppc(s, iotkit_secctl_reset_ppc);
- }
- 
-+static void iotkit_secctl_mpc_status(void *opaque, int n, int level)
-+{
-+    IoTKitSecCtl *s = IOTKIT_SECCTL(opaque);
-+
-+    s->mpcintstatus = deposit32(s->mpcintstatus, 0, 1, !!level);
-+}
-+
-+static void iotkit_secctl_mpcexp_status(void *opaque, int n, int level)
-+{
-+    IoTKitSecCtl *s = IOTKIT_SECCTL(opaque);
-+
-+    s->mpcintstatus = deposit32(s->mpcintstatus, n + 16, 1, !!level);
-+}
-+
- static void iotkit_secctl_ppc_irqstatus(void *opaque, int n, int level)
- {
-     IoTKitSecCtlPPC *ppc = opaque;
-@@ -640,6 +656,10 @@ static void iotkit_secctl_init(Object *obj)
-     qdev_init_gpio_out_named(dev, &s->sec_resp_cfg, "sec_resp_cfg", 1);
-     qdev_init_gpio_out_named(dev, &s->nsc_cfg_irq, "nsc_cfg", 1);
- 
-+    qdev_init_gpio_in_named(dev, iotkit_secctl_mpc_status, "mpc_status", 1);
-+    qdev_init_gpio_in_named(dev, iotkit_secctl_mpcexp_status,
-+                            "mpcexp_status", IOTS_NUM_EXP_MPC);
-+
-     memory_region_init_io(&s->s_regs, obj, &iotkit_secctl_s_ops,
-                           s, "iotkit-secctl-s-regs", 0x1000);
-     memory_region_init_io(&s->ns_regs, obj, &iotkit_secctl_ns_ops,
-@@ -660,6 +680,16 @@ static const VMStateDescription iotkit_secctl_ppc_vmstate = {
-     }
- };
- 
-+static const VMStateDescription iotkit_secctl_mpcintstatus_vmstate = {
-+    .name = "iotkit-secctl-mpcintstatus",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(mpcintstatus, IoTKitSecCtl),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription iotkit_secctl_vmstate = {
-     .name = "iotkit-secctl",
-     .version_id = 1,
-@@ -677,7 +707,11 @@ static const VMStateDescription iotkit_secctl_vmstate = {
-         VMSTATE_STRUCT_ARRAY(ahbexp, IoTKitSecCtl, IOTS_NUM_AHB_EXP_PPC, 1,
-                              iotkit_secctl_ppc_vmstate, IoTKitSecCtlPPC),
-         VMSTATE_END_OF_LIST()
+-    /* This RAM should be behind a Memory Protection Controller, but we
+-     * don't implement that yet.
+-     */
+-    memory_region_init_ram(&s->sram0, NULL, "iotkit.sram0", 0x00008000, &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
 -    }
-+    },
-+    .subsections = (const VMStateDescription*[]) {
-+        &iotkit_secctl_mpcintstatus_vmstate,
-+        NULL
-+    },
- };
+-    memory_region_add_subregion(&s->container, 0x20000000, &s->sram0);
  
- static void iotkit_secctl_class_init(ObjectClass *klass, void *data)
+     /* Security controller */
+     object_property_set_bool(OBJECT(&s->secctl), true, "realized", &err);
+@@ -310,6 +302,32 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out_named(dev_secctl, "sec_resp_cfg", 0,
+                                 qdev_get_gpio_in(dev_splitter, 0));
+ 
++    /* This RAM lives behind the Memory Protection Controller */
++    memory_region_init_ram(&s->sram0, NULL, "iotkit.sram0", 0x00008000, &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    object_property_set_link(OBJECT(&s->mpc), OBJECT(&s->sram0),
++                             "downstream", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    object_property_set_bool(OBJECT(&s->mpc), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    /* Map the upstream end of the MPC into the right place... */
++    memory_region_add_subregion(&s->container, 0x20000000,
++                                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mpc),
++                                                       1));
++    /* ...and its register interface */
++    memory_region_add_subregion(&s->container, 0x50083000,
++                                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mpc),
++                                                       0));
++
+     /* Devices behind APB PPC0:
+      *   0x40000000: timer0
+      *   0x40001000: timer1
+@@ -473,8 +491,6 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("NS watchdog", 0x40081000, 0x1000);
+     create_unimplemented_device("S watchdog", 0x50081000, 0x1000);
+ 
+-    create_unimplemented_device("SRAM0 MPC", 0x50083000, 0x1000);
+-
+     for (i = 0; i < ARRAY_SIZE(s->ppc_irq_splitter); i++) {
+         Object *splitter = OBJECT(&s->ppc_irq_splitter[i]);
+ 
 -- 
 2.17.1

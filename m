@@ -1,171 +1,127 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743446wrq;
-        Mon, 4 Jun 2018 08:29:44 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJgBhbWrQWFhZJgbQPJ5f75Tq7kOZotdcSZK+n2XLca5B2yDwVbGmc4uy4ulxD0FbRv1BuH
-X-Received: by 2002:a1c:7e87:: with SMTP id z129-v6mr9695023wmc.131.1528126184285;
-        Mon, 04 Jun 2018 08:29:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528126184; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp878272wrq;
+        Mon, 4 Jun 2018 10:36:56 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJZ3JcVXlZWtaJAjXj++AKiCLipcdj4oJJcXXxdfUKf8FkKk4vQZ+Mhp+WrR9L0oF9rj1tN
+X-Received: by 2002:a37:1a1d:: with SMTP id a29-v6mr19890142qka.426.1528133816702;
+        Mon, 04 Jun 2018 10:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528133816; cv=none;
         d=google.com; s=arc-20160816;
-        b=eb7x0P1pehkhSZflOJJRXTdqSrd2N7FlqdI3A+yiTaIcBnCM9/3x6LHNpSiGhBD1sH
-         N3lu9MlfiWaDTUdhNaddnoP0TAii7XQfUkeVU0CcjiMJig13OXKpplkvCQ1kBtXpmHaY
-         otJzSyFAUH5pNHu2F8/5Ci9oWcJkfSEmzkYRZGpbJZ50QvlnkNra9ARfqQ3zwGXUQA1N
-         M2xJEQ4EFJWNTArs6SNLyk5G7j6Nrx+XI+S/fgampR3UkX5uyBbN1PGS16QSPZKEVy/o
-         fPaRP8nTAbklNNQYEuVBgdb1+EDlvG+tWIraC7iK5Fkh5DscR/9OURu5gUDKGOAR1Al8
-         oHZg==
+        b=CW6Xe6qOXGEGoz4KbZVmLsOO4KVmY6wAp5Ac7spgrRhz6v/BFIPlT42IU2+cMaQfQU
+         qOT4My1Z3H74xYPhUZRq0FU7FXTMelzfS7xX/k7CmCyFNPCukDpSkYhp7Ce3axVJUd7g
+         DoIjLRNAlL6niwG575EAdXo5U9zcvRg6TZYO8K/MsJNBgQmsJQxJMGeP0mABvEvHAyWI
+         wNxp8/GTKX4udIHklIJvpyL89GJvmnGPPdyRPiFNHxIQSptZpQh151LbS5svcK8vERl7
+         /2zVo+fP4PKj0V7j/RqShiJkkhVSxXDJIWoClEh3JzwdTCqiN6UWi/Rg24jW6oW+iK0+
+         ZsYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:arc-authentication-results;
-        bh=97b3E/2rRWx2tOqehjmZi1tEAzjdko7QwghJuDn8dbo=;
-        b=iFoC7sQYL0tcJ1Xdq5jYc5a8kdVwhJrL0WrS38uQEtQe6hnkRvzvIVS27VPy01DuIK
-         67ENl4v7jtwCH6wUEeh5xH2bphHEseGM3NbVbuwCYeGUvTheEuGmltFrGpfHe/1QFn7o
-         rhOkr7hAP47TvXVWXtIpZQUguPCQRDD6/nUEzz2qAiTvtvf4BqdQ7nyue+eRbog7539q
-         3jeHbYq2WSun6pGLbzKauSjNIukwm26magdNXHlM35afoTvZ/YBd3U5MBdfDmxuoQ09e
-         rXq8ZDsBiyCsyKiTd+ymSNV2naB2qiz8xPSvyNeoW/PqiMMyVcFDJQQ8krcU2FiUHmx7
-         NAUQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=cIRklwnJWdU9a5mTM+zpLYwblNoBY4nD0nM5kTqho/U=;
+        b=RdPr3rxU0GGcE/E/n9ZguuUBdRs9v/n+xpqMXwQ/C+VHGANxLgjWgDEvk/QZpguAsq
+         CzHV6Rk+zf7H//wRxybCVwiSm1787kujCyYKrMEvhnjcpdumqGZHFqF+suJFlCm8Qi6o
+         vtAoI5Sf7K7DEMwvWhZ7903ZHIMcFkfw4Fu7qGUjct94F4ZgEufS9VaIHm8ugrBbsyj5
+         /f2pESQxSqUbp4j+Zl4CV4hmKuGlKJdjckBH0Qrh8DfVa92X21Hfr4bsvcFKTG21NmGu
+         43j28l11bxhPlW4rhv4gWsf8Lu6PXixd9WNxVDlp42dko0/bWWhXLrSSnP6Y4wu8M22G
+         jmow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WWfKJV9/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id k184-v6si316771wmg.182.2018.06.04.08.29.44
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jun 2018 08:29:44 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id f6-v6si2581857qvf.25.2018.06.04.10.36.56
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 04 Jun 2018 10:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WWfKJV9/;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fPrQU-00070c-6x; Mon, 04 Jun 2018 16:29:42 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 00/13] iommu: support txattrs, support TCG execution, implement TZ MPC
-Date: Mon,  4 Jun 2018 16:29:28 +0100
-Message-Id: <20180604152941.20374-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
+Received: from localhost ([::1]:41236 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fPtPc-000780-8X
+	for alex.bennee@linaro.org; Mon, 04 Jun 2018 13:36:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51098)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1fPtPT-00077m-QM
+	for qemu-arm@nongnu.org; Mon, 04 Jun 2018 13:36:48 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1fPtPT-0007ax-1s
+	for qemu-arm@nongnu.org; Mon, 04 Jun 2018 13:36:47 -0400
+Received: from mail-oi0-x231.google.com ([2607:f8b0:4003:c06::231]:33769)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fPtPS-0007aF-Ns
+	for qemu-arm@nongnu.org; Mon, 04 Jun 2018 13:36:46 -0400
+Received: by mail-oi0-x231.google.com with SMTP id k5-v6so29169237oiw.0
+	for <qemu-arm@nongnu.org>; Mon, 04 Jun 2018 10:36:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=cIRklwnJWdU9a5mTM+zpLYwblNoBY4nD0nM5kTqho/U=;
+	b=WWfKJV9/IiL0RnZtqbUR5dh9LGrFcAt2Jmew6viqatajJ6uOU6UhY+Wqo1UlZkJho2
+	CUJSsQTWJcdl69Qh6Qbtla3IoBbEDYAodfXleiq7IzJcHA7B/RnSjA5A8pvpC9cmHCvl
+	NfAm58veFvW98WzOyhXV8Lkp7lU314obIVLAs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=cIRklwnJWdU9a5mTM+zpLYwblNoBY4nD0nM5kTqho/U=;
+	b=rJuHfh17zqytOjMyJTVKKN+xC8hjXaGh8VybVJ5V9Ww2Ydj0dG/Ow0xL+kUkMef/rN
+	aTg07LAGjq/FD9CjTwgcch0pDWD3w2A4wHqMdwtRFuH6w4YxAg0Z/+MFAOAoPHpagPIo
+	XwZiLVoc9weQ97CfsrWDfBz1yEkymW1lM8ZLlqj5clEi9rbirZukF//7krxVkZRODwoz
+	ENEWTDBvEvjvRvkOmzEa31NfgOf869Kw4nfh71CGgNOIvOn+wHaH6NAgmsp1o8eFGdOB
+	goQQFqdB6P3s7hGFJcg+oCJFNrl6JEKpyc41KOC4oCWfifPdnZGuvt8jF/P5OJjg5onN
+	tT7A==
+X-Gm-Message-State: APt69E2YKkyo+8ELszsQR8NXO5rmlSVBhZwAb8Uu7DgbPKhcfQLpoquk
+	dIcumNnlllLYm/wQYgIzsde/rTgTdekF1hCiR+Nd0A==
+X-Received: by 2002:aca:4384:: with SMTP id
+	q126-v6mr11682783oia.164.1528133805893; 
+	Mon, 04 Jun 2018 10:36:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: ecjrj11B8JF7
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
+	Mon, 4 Jun 2018 10:36:25 -0700 (PDT)
+In-Reply-To: <20180530180120.13355-13-richard.henderson@linaro.org>
+References: <20180530180120.13355-1-richard.henderson@linaro.org>
+	<20180530180120.13355-13-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Jun 2018 18:36:25 +0100
+Message-ID: <CAFEAcA-LSPY-_6SwH-Rx1tcK7DGE0PX0xVYVt_SwtChKuxTKLg@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::231
+Subject: Re: [Qemu-arm] [PATCH v3b 12/18] target/arm: Implement SVE Integer
+ Compare - Immediate Group
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EB2pI/1DFApN
 
-Hi; this is v2 of my iommu patchset, which does:
- * support IOMMUs that are aware of memory transaction attributes and
-   may generate different translations for different attributes
- * support TCG execution out of memory which is behind an IOMMU
- * implement the Arm TrustZone Memory Protection Controller
-   (which needs both the above features in the IOMMU core code)
- * use the MPC in the mps2-an505 board
-
-Patches 1-3 add the support for memory-transaction-aware
-IOMMUs. The general approach is that we have the concept of an
-IOMMU index (similar to the TCG MMU index), which selects which of
-multiple possible translation tables in the IOMMU we're trying to use.
-Most IOMMUs will support just a single index. When you register an
-IOMMU notifier and when you call the translate method you have to
-specify which IOMMU index you want. There's a method for getting the
-index that applies for a particular set of transaction attributes.
-All the current IOMMU implementations have just one iommu index, and
-all the current users of the notify API assume that.
-
-Patch 4 adds the support for TCG execution from memory that sits
-behind an IOMMU. We do this in a fairly simple way on the assumption
-that changes to the IOMMU config at runtime will be fairly uncommon:
-we just flush the CPU TLB so it forgets about any cached results
-when we get an IOMMU unmap notification. (This is similar to how
-we handle reconfigurations of the memory map done by mapping or
-unmapping MemoryRegions.) NB: I'm not completely sure that calling
-tlb_flush() here is sufficient to be non-racy in the case where CPU A
-has triggered the IOMMU unmap notify by changing the IOMMU config
-while CPU B is executing from memory behind the IOMMU, but tlb_flush()
-is what tcg_commit() uses so I guess it's OK. I think the idea here
-is that any delay in flushing B's TLB is just equivalent to B having
-executed a little bit further before A got to changing the config?
-
-Patches 5-8 implement the TrustZone Memory Protection Controller,
-which is a fairly simple piece of hardware that just configurably
-either allows or blocks transactions depending on attrs.secure.
-
-Patch 9 deals with a limitation in our or-irq device, which
-currently only allows 16 input lines (we need 17 for one of the OR
-gates in the IoTKit object). The patch raisees the limit to 32, but
-in a way that means we can easily raise it further in future without
-migration compatibility problems.
-
-Patches 10-13 add MPCs to the IoTKit SoC object and to the mps2-an505
-board model, and wire them up appropriately.
-
-Unreviewed patches: 4, 6, 7, 8, 9, 10
-
-v1->v2 changes:
- * the initial "attribute plumbing" patches are now in master
- * the patch to add VMSTATE_BOOL_SUB_ARRAY is also in master now
- * minor rebase fixup to patch 4 for changes in hw/i386/intel_iommu.c
- * moved the num_indexes method definition to the right patch
- * dropped unused iommu_idx field from IOMMUTLBEntry struct
- * tcg_iommu_notifier_destroy now unconditionally unregisters the notifier
- * patch 4: switched from GSList to GArray
- * patch 6: fixed reset values for MPC CTRL and INT_EN registers
- * I have left iommu_idx as signed, because that follows what we've
-   done for TCG mmu indexes (and using 'int' for this kind of
-   thing is common C practice IMHO)
+On 30 May 2018 at 19:01, Richard Henderson <richard.henderson@linaro.org> wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-sve.h    | 44 +++++++++++++++++++
+>  target/arm/sve_helper.c    | 88 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c | 66 ++++++++++++++++++++++++++++
+>  target/arm/sve.decode      | 23 ++++++++++
+>  4 files changed, 221 insertions(+)
 
 
-Peter Maydell (13):
-  iommu: Add IOMMU index concept to IOMMU API
-  iommu: Add IOMMU index argument to notifier APIs
-  iommu: Add IOMMU index argument to translate method
-  exec.c: Handle IOMMUs in address_space_translate_for_iotlb()
-  hw/misc/tz-mpc.c: Implement the Arm TrustZone Memory Protection
-    Controller
-  hw/misc/tz-mpc.c: Implement registers
-  hw/misc/tz-mpc.c: Implement correct blocked-access behaviour
-  hw/misc/tz_mpc.c: Honour the BLK_LUT settings in translate
-  hw/core/or-irq: Support more than 16 inputs to an OR gate
-  hw/misc/iotkit-secctl.c: Implement SECMPCINTSTATUS
-  hw/arm/iotkit: Instantiate MPC
-  hw/arm/iotkit: Wire up MPC interrupt lines
-  hw/arm/mps2-tz.c: Instantiate MPCs
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
- hw/misc/Makefile.objs           |   1 +
- include/exec/exec-all.h         |   3 +-
- include/exec/memory.h           |  65 +++-
- include/hw/arm/iotkit.h         |   8 +
- include/hw/misc/iotkit-secctl.h |   8 +
- include/hw/misc/tz-mpc.h        |  80 +++++
- include/hw/or-irq.h             |   5 +-
- include/qom/cpu.h               |   3 +
- accel/tcg/cputlb.c              |   3 +-
- exec.c                          | 146 +++++++-
- hw/alpha/typhoon.c              |   3 +-
- hw/arm/iotkit.c                 | 112 +++++-
- hw/arm/mps2-tz.c                |  71 ++--
- hw/arm/smmuv3.c                 |   2 +-
- hw/core/or-irq.c                |  39 ++-
- hw/dma/rc4030.c                 |   2 +-
- hw/i386/amd_iommu.c             |   2 +-
- hw/i386/intel_iommu.c           |   8 +-
- hw/misc/iotkit-secctl.c         |  38 +-
- hw/misc/tz-mpc.c                | 604 ++++++++++++++++++++++++++++++++
- hw/ppc/spapr_iommu.c            |   5 +-
- hw/s390x/s390-pci-bus.c         |   2 +-
- hw/s390x/s390-pci-inst.c        |   4 +-
- hw/sparc/sun4m_iommu.c          |   3 +-
- hw/sparc64/sun4u_iommu.c        |   2 +-
- hw/vfio/common.c                |   6 +-
- hw/virtio/vhost.c               |   7 +-
- memory.c                        |  33 +-
- MAINTAINERS                     |   2 +
- default-configs/arm-softmmu.mak |   1 +
- hw/misc/trace-events            |   8 +
- 31 files changed, 1206 insertions(+), 70 deletions(-)
- create mode 100644 include/hw/misc/tz-mpc.h
- create mode 100644 hw/misc/tz-mpc.c
-
--- 
-2.17.1
+thanks
+-- PMM

@@ -1,32 +1,32 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743463wrq;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743485wrq;
         Mon, 4 Jun 2018 08:29:45 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKBFoBNsJYZ98QYLc/WSrbweVNRop2qsGWw2okOZ6kCHPxNQd1N4nSswKNW7bDwfgT7iSoT
-X-Received: by 2002:a1c:9189:: with SMTP id t131-v6mr10063498wmd.89.1528126185093;
+X-Google-Smtp-Source: ADUXVKKu+LP8q2ETinPx5mLjg+1SgeP62zcSQqF/fQV5fRZ9cWSbyV7qg3Z3/DB2Id8RKUFveTb7
+X-Received: by 2002:adf:f6c9:: with SMTP id y9-v6mr17741309wrp.4.1528126185867;
         Mon, 04 Jun 2018 08:29:45 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1528126185; cv=none;
         d=google.com; s=arc-20160816;
-        b=kqE28LRhacjee2Fa7sHu279kOuQ5TyNnMX/iptXrMX4kPaslTO/BEbgZOdsMQnxRaN
-         c620BijjXH8WT8DTzYtITjE7db1LxiRWy1aWXQvTm8g/T4r0YdUk00OWKsqfFXfTaEsI
-         f2KJ9rg+FLx9ZYebxEmivFoXV75JmQPBy874lanMeqdm09/UuYPQwLzuVQ2sABeYkt6i
-         M5ep5Tqm0HS9z9nvRgR+6/UiIIJPBpjevS1NPgpP2DL5BmK5LA3uAm0aOPCHQg073JX6
-         ZY1NQTo8vFYyWD0ePHkXq6wHX5cAfD+T3WIV3lc0XnLhQ1wt7xRsezlwqQJaDIYBmn1X
-         3eOg==
+        b=0yKUa9Ol96aDZYkoWkspKI+Zdq+auPLllZmBNtJtrPFLJVgzV4KrPwo/alNIrE5t5p
+         DF0npCMoOwXsc7GPI2AlshLqk1mnIYPLgsyY2mKML8nsYNLKbYOdRltpTBuna5Gd4k/v
+         3JLz2URQUimtIYsw4CR+2Jb8M77xss5gxjjf8w61Dp83YLSbpD8DZ2M0JQMFdXQJvrMg
+         HAQoebhxheauUgJGBf+HMioQZHQBCeIOxcLgudtEeQc4hXiLuIaSFCL2h3+A1LyJDxet
+         eKs9mmcxXAfZxdv2xqu8eAOVOsOJ1lcg6KLpGFu6x+6TfYdnzj9m2lTJ6/DGajOR7+Z/
+         2wtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=gDuteApgBnr6ZfYSZox/M1xAxjVuMxr/Ebya2fupsj4=;
-        b=KVLTHvPGRut+IRfAJ5o22gSDoxvigw+N0RdeSl3kS7s+jP8F+/MzEEuEHQazJCwUZf
-         AP+yJYp89dYKkEMUc2T+HiKqzzaUj0dfQC8HGwr4gYjFWKQjJZBpiFOAdxLO78MPLX1z
-         aknZ6tsx15pQcigqijD/jPLxOTP4m2ullEjbDll/x1bFdxF8mTxiHlXa4l+JSQJcuRBr
-         3lkUNHXbyu5MfHTDzo6/2mjxGOsctQJXwu/B3UgRBiVBT6QbIl59BZ0fxu2tKnpWdtzE
-         P+iWzElMVmdMqU4Vft7IkPh2NcKeas0p9o/LXsxLBKQ56d/pxRMO79dtoqy7ZYra+Tcp
-         NZKg==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :arc-authentication-results;
+        bh=qjfPopazJ/3+HLicJbW3yIXIdx5xyjNyTiWgSxPgV8w=;
+        b=P3fJe/ELFY1SBBRbGvDt9LsohqhZXu6vE7oziBye4yqCYYvntnPqklUHd//39bD94E
+         OyGydNqHVgiaVCGQsGAp1lR8Ewi8dJmb4oitdRDKSRla7/kRevPI2jyb49sxvs0FtWDG
+         5K4wdXAKPlsesuUsZuFUyUD0tc+HAoOpnuAfky2tKBMz/CQfQHGChCRSMD8Ql16uAPe5
+         saZjV9g9j3qMj+NmudnzgaGwMGUEsIUhIfyCW2OQsutwkBack5xMFm9fgya0OLDDYbJc
+         m4YL+vrrlnC7Fjsz44J2xE4LntSJPqdtSdNuk8q5yuAvfkRObi2VN3tOs2X5r9vP/7v1
+         dZAA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id j9-v6si25170690wra.424.2018.06.04.08.29.44
+        by mx.google.com with ESMTPS id r10-v6si4652182wrs.69.2018.06.04.08.29.45
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 04 Jun 2018 08:29:45 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
@@ -35,7 +35,7 @@ Authentication-Results: mx.google.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fPrQW-00071Q-GX; Mon, 04 Jun 2018 16:29:44 +0100
+	id 1fPrQX-00071o-AR; Mon, 04 Jun 2018 16:29:45 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -45,210 +45,244 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 03/13] iommu: Add IOMMU index argument to translate method
-Date: Mon,  4 Jun 2018 16:29:31 +0100
-Message-Id: <20180604152941.20374-4-peter.maydell@linaro.org>
+Subject: [PATCH v2 04/13] exec.c: Handle IOMMUs in address_space_translate_for_iotlb()
+Date: Mon,  4 Jun 2018 16:29:32 +0100
+Message-Id: <20180604152941.20374-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180604152941.20374-1-peter.maydell@linaro.org>
 References: <20180604152941.20374-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: fDd3wVXP3VNU
+X-TUID: uBsP9rxEO0jt
 
-Add an IOMMU index argument to the translate method of
-IOMMUs. Since all of our current IOMMU implementations
-support only a single IOMMU index, this has no effect
-on the behaviour.
+Currently we don't support board configurations that put an IOMMU
+in the path of the CPU's memory transactions, and instead just
+assert() if the memory region fonud in address_space_translate_for_iotlb()
+is an IOMMUMemoryRegion.
+
+Remove this limitation by having the function handle IOMMUs.
+This is mostly straightforward, but we must make sure we have
+a notifier registered for every IOMMU that a transaction has
+passed through, so that we can flush the TLB appropriately
+when any of the IOMMUs change their mappings.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/exec/memory.h    |  3 ++-
- exec.c                   | 11 +++++++++--
- hw/alpha/typhoon.c       |  3 ++-
- hw/arm/smmuv3.c          |  2 +-
- hw/dma/rc4030.c          |  2 +-
- hw/i386/amd_iommu.c      |  2 +-
- hw/i386/intel_iommu.c    |  2 +-
- hw/ppc/spapr_iommu.c     |  3 ++-
- hw/s390x/s390-pci-bus.c  |  2 +-
- hw/sparc/sun4m_iommu.c   |  3 ++-
- hw/sparc64/sun4u_iommu.c |  2 +-
- memory.c                 |  2 +-
- 12 files changed, 24 insertions(+), 13 deletions(-)
+ include/exec/exec-all.h |   3 +-
+ include/qom/cpu.h       |   3 +
+ accel/tcg/cputlb.c      |   3 +-
+ exec.c                  | 135 +++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 140 insertions(+), 4 deletions(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index ec75c45296e..050323f5323 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -251,9 +251,10 @@ typedef struct IOMMUMemoryRegionClass {
-      * @iommu: the IOMMUMemoryRegion
-      * @hwaddr: address to be translated within the memory region
-      * @flag: requested access permissions
-+     * @iommu_idx: IOMMU index for the translation
-      */
-     IOMMUTLBEntry (*translate)(IOMMUMemoryRegion *iommu, hwaddr addr,
--                               IOMMUAccessFlags flag);
-+                               IOMMUAccessFlags flag, int iommu_idx);
-     /* Returns minimum supported page size in bytes.
-      * If this method is not provided then the minimum is assumed to
-      * be TARGET_PAGE_SIZE.
-diff --git a/exec.c b/exec.c
-index f3fa4e9117f..033e74c36e4 100644
---- a/exec.c
-+++ b/exec.c
-@@ -498,8 +498,15 @@ static MemoryRegionSection address_space_translate_iommu(IOMMUMemoryRegion *iomm
-     do {
-         hwaddr addr = *xlat;
-         IOMMUMemoryRegionClass *imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
--        IOMMUTLBEntry iotlb = imrc->translate(iommu_mr, addr, is_write ?
--                                              IOMMU_WO : IOMMU_RO);
-+        int iommu_idx = 0;
-+        IOMMUTLBEntry iotlb;
-+
-+        if (imrc->attrs_to_index) {
-+            iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
-+        }
-+
-+        iotlb = imrc->translate(iommu_mr, addr, is_write ?
-+                                IOMMU_WO : IOMMU_RO, iommu_idx);
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 4d09eaba72d..e0ff19b7112 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -469,7 +469,8 @@ void tb_flush_jmp_cache(CPUState *cpu, target_ulong addr);
  
-         if (!(iotlb.perm & (1 << is_write))) {
-             goto unassigned;
-diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-index 6a40869488e..d3ed7cdbe82 100644
---- a/hw/alpha/typhoon.c
-+++ b/hw/alpha/typhoon.c
-@@ -666,7 +666,8 @@ static bool window_translate(TyphoonWindow *win, hwaddr addr,
-    Pchip and generate a machine check interrupt.  */
- static IOMMUTLBEntry typhoon_translate_iommu(IOMMUMemoryRegion *iommu,
-                                              hwaddr addr,
--                                             IOMMUAccessFlags flag)
-+                                             IOMMUAccessFlags flag,
-+                                             int iommu_idx)
- {
-     TyphoonPchip *pchip = container_of(iommu, TyphoonPchip, iommu);
-     IOMMUTLBEntry ret;
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 42dc521c13a..978330900d5 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -538,7 +538,7 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
- }
+ MemoryRegionSection *
+ address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+-                                  hwaddr *xlat, hwaddr *plen);
++                                  hwaddr *xlat, hwaddr *plen,
++                                  MemTxAttrs attrs, int *prot);
+ hwaddr memory_region_section_get_iotlb(CPUState *cpu,
+                                        MemoryRegionSection *section,
+                                        target_ulong vaddr,
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index 9d3afc6c759..cce2fd6acc2 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -429,6 +429,9 @@ struct CPUState {
+     uint16_t pending_tlb_flush;
  
- static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
--                                      IOMMUAccessFlags flag)
-+                                      IOMMUAccessFlags flag, int iommu_idx)
- {
-     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-     SMMUv3State *s = sdev->smmu;
-diff --git a/hw/dma/rc4030.c b/hw/dma/rc4030.c
-index 5d4833eeca3..ccd8612888e 100644
---- a/hw/dma/rc4030.c
-+++ b/hw/dma/rc4030.c
-@@ -491,7 +491,7 @@ static const MemoryRegionOps jazzio_ops = {
+     int hvf_fd;
++
++    /* track IOMMUs whose translations we've cached in the TCG TLB */
++    GArray *iommu_notifiers;
  };
  
- static IOMMUTLBEntry rc4030_dma_translate(IOMMUMemoryRegion *iommu, hwaddr addr,
--                                          IOMMUAccessFlags flag)
-+                                          IOMMUAccessFlags flag, int iommu_idx)
- {
-     rc4030State *s = container_of(iommu, rc4030State, dma_mr);
-     IOMMUTLBEntry ret = {
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 63d46ff6ee2..1fd669fef8a 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -991,7 +991,7 @@ static inline bool amdvi_is_interrupt_addr(hwaddr addr)
+ QTAILQ_HEAD(CPUTailQ, CPUState);
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 05439039e91..c8acaf21e9f 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -632,7 +632,8 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+     }
+ 
+     sz = size;
+-    section = address_space_translate_for_iotlb(cpu, asidx, paddr, &xlat, &sz);
++    section = address_space_translate_for_iotlb(cpu, asidx, paddr, &xlat, &sz,
++                                                attrs, &prot);
+     assert(sz >= TARGET_PAGE_SIZE);
+ 
+     tlb_debug("vaddr=" TARGET_FMT_lx " paddr=0x" TARGET_FMT_plx
+diff --git a/exec.c b/exec.c
+index 033e74c36e4..28181115cc2 100644
+--- a/exec.c
++++ b/exec.c
+@@ -650,18 +650,144 @@ MemoryRegion *flatview_translate(FlatView *fv, hwaddr addr, hwaddr *xlat,
+     return mr;
  }
  
- static IOMMUTLBEntry amdvi_translate(IOMMUMemoryRegion *iommu, hwaddr addr,
--                                     IOMMUAccessFlags flag)
-+                                     IOMMUAccessFlags flag, int iommu_idx)
++typedef struct TCGIOMMUNotifier {
++    IOMMUNotifier n;
++    MemoryRegion *mr;
++    CPUState *cpu;
++    int iommu_idx;
++    bool active;
++} TCGIOMMUNotifier;
++
++static void tcg_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
++{
++    TCGIOMMUNotifier *notifier = container_of(n, TCGIOMMUNotifier, n);
++
++    if (!notifier->active) {
++        return;
++    }
++    tlb_flush(notifier->cpu);
++    notifier->active = false;
++    /* We leave the notifier struct on the list to avoid reallocating it later.
++     * Generally the number of IOMMUs a CPU deals with will be small.
++     * In any case we can't unregister the iommu notifier from a notify
++     * callback.
++     */
++}
++
++static void tcg_register_iommu_notifier(CPUState *cpu,
++                                        IOMMUMemoryRegion *iommu_mr,
++                                        int iommu_idx)
++{
++    /* Make sure this CPU has an IOMMU notifier registered for this
++     * IOMMU/IOMMU index combination, so that we can flush its TLB
++     * when the IOMMU tells us the mappings we've cached have changed.
++     */
++    MemoryRegion *mr = MEMORY_REGION(iommu_mr);
++    TCGIOMMUNotifier *notifier;
++    int i;
++
++    for (i = 0; i < cpu->iommu_notifiers->len; i++) {
++        notifier = &g_array_index(cpu->iommu_notifiers, TCGIOMMUNotifier, i);
++        if (notifier->mr == mr && notifier->iommu_idx == iommu_idx) {
++            break;
++        }
++    }
++    if (i == cpu->iommu_notifiers->len) {
++        /* Not found, add a new entry at the end of the array */
++        cpu->iommu_notifiers = g_array_set_size(cpu->iommu_notifiers, i + 1);
++        notifier = &g_array_index(cpu->iommu_notifiers, TCGIOMMUNotifier, i);
++
++        notifier->mr = mr;
++        notifier->iommu_idx = iommu_idx;
++        notifier->cpu = cpu;
++        /* Rather than trying to register interest in the specific part
++         * of the iommu's address space that we've accessed and then
++         * expand it later as subsequent accesses touch more of it, we
++         * just register interest in the whole thing, on the assumption
++         * that iommu reconfiguration will be rare.
++         */
++        iommu_notifier_init(&notifier->n,
++                            tcg_iommu_unmap_notify,
++                            IOMMU_NOTIFIER_UNMAP,
++                            0,
++                            HWADDR_MAX,
++                            iommu_idx);
++        memory_region_register_iommu_notifier(notifier->mr, &notifier->n);
++    }
++
++    if (!notifier->active) {
++        notifier->active = true;
++    }
++}
++
++static void tcg_iommu_free_notifier_list(CPUState *cpu)
++{
++    /* Destroy the CPU's notifier list */
++    int i;
++    TCGIOMMUNotifier *notifier;
++
++    for (i = 0; i < cpu->iommu_notifiers->len; i++) {
++        notifier = &g_array_index(cpu->iommu_notifiers, TCGIOMMUNotifier, i);
++        memory_region_unregister_iommu_notifier(notifier->mr, &notifier->n);
++    }
++    g_array_free(cpu->iommu_notifiers, true);
++}
++
+ /* Called from RCU critical section */
+ MemoryRegionSection *
+ address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+-                                  hwaddr *xlat, hwaddr *plen)
++                                  hwaddr *xlat, hwaddr *plen,
++                                  MemTxAttrs attrs, int *prot)
  {
-     AMDVIAddressSpace *as = container_of(iommu, AMDVIAddressSpace, iommu);
-     AMDVIState *s = as->iommu_state;
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 9c0b45963b5..0a8cd4e9ccf 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -2471,7 +2471,7 @@ static void vtd_mem_write(void *opaque, hwaddr addr,
+     MemoryRegionSection *section;
++    IOMMUMemoryRegion *iommu_mr;
++    IOMMUMemoryRegionClass *imrc;
++    IOMMUTLBEntry iotlb;
++    int iommu_idx;
+     AddressSpaceDispatch *d = atomic_rcu_read(&cpu->cpu_ases[asidx].memory_dispatch);
+ 
+-    section = address_space_translate_internal(d, addr, xlat, plen, false);
++    for (;;) {
++        section = address_space_translate_internal(d, addr, &addr, plen, false);
++
++        iommu_mr = memory_region_get_iommu(section->mr);
++        if (!iommu_mr) {
++            break;
++        }
++
++        imrc = memory_region_get_iommu_class_nocheck(iommu_mr);
++
++        iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
++        tcg_register_iommu_notifier(cpu, iommu_mr, iommu_idx);
++        /* We need all the permissions, so pass IOMMU_NONE so the IOMMU
++         * doesn't short-cut its translation table walk.
++         */
++        iotlb = imrc->translate(iommu_mr, addr, IOMMU_NONE, iommu_idx);
++        addr = ((iotlb.translated_addr & ~iotlb.addr_mask)
++                | (addr & iotlb.addr_mask));
++        /* Update the caller's prot bits to remove permissions the IOMMU
++         * is giving us a failure response for. If we get down to no
++         * permissions left at all we can give up now.
++         */
++        if (!(iotlb.perm & IOMMU_RO)) {
++            *prot &= ~(PAGE_READ | PAGE_EXEC);
++        }
++        if (!(iotlb.perm & IOMMU_WO)) {
++            *prot &= ~PAGE_WRITE;
++        }
++
++        if (!*prot) {
++            goto translate_fail;
++        }
++
++        d = flatview_to_dispatch(address_space_to_flatview(iotlb.target_as));
++    }
+ 
+     assert(!memory_region_is_iommu(section->mr));
++    *xlat = addr;
+     return section;
++
++translate_fail:
++    return &d->map.sections[PHYS_SECTION_UNASSIGNED];
+ }
+ #endif
+ 
+@@ -820,6 +946,9 @@ void cpu_exec_unrealizefn(CPUState *cpu)
+     if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+         vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
+     }
++#ifndef CONFIG_USER_ONLY
++    tcg_iommu_free_notifier_list(cpu);
++#endif
  }
  
- static IOMMUTLBEntry vtd_iommu_translate(IOMMUMemoryRegion *iommu, hwaddr addr,
--                                         IOMMUAccessFlags flag)
-+                                         IOMMUAccessFlags flag, int iommu_idx)
- {
-     VTDAddressSpace *vtd_as = container_of(iommu, VTDAddressSpace, iommu);
-     IntelIOMMUState *s = vtd_as->iommu_state;
-diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
-index 301708e45eb..1b0880ac9ed 100644
---- a/hw/ppc/spapr_iommu.c
-+++ b/hw/ppc/spapr_iommu.c
-@@ -112,7 +112,8 @@ static void spapr_tce_free_table(uint64_t *table, int fd, uint32_t nb_table)
- /* Called from RCU critical section */
- static IOMMUTLBEntry spapr_tce_translate_iommu(IOMMUMemoryRegion *iommu,
-                                                hwaddr addr,
--                                               IOMMUAccessFlags flag)
-+                                               IOMMUAccessFlags flag,
-+                                               int iommu_idx)
- {
-     sPAPRTCETable *tcet = container_of(iommu, sPAPRTCETable, iommu);
-     uint64_t tce;
-diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
-index 10da87458ee..e3e0ebb7f6c 100644
---- a/hw/s390x/s390-pci-bus.c
-+++ b/hw/s390x/s390-pci-bus.c
-@@ -484,7 +484,7 @@ uint16_t s390_guest_io_table_walk(uint64_t g_iota, hwaddr addr,
+ Property cpu_common_props[] = {
+@@ -867,6 +996,8 @@ void cpu_exec_realizefn(CPUState *cpu, Error **errp)
+     if (cc->vmsd != NULL) {
+         vmstate_register(NULL, cpu->cpu_index, cc->vmsd, cpu);
+     }
++
++    cpu->iommu_notifiers = g_array_new(false, true, sizeof(TCGIOMMUNotifier));
+ #endif
  }
  
- static IOMMUTLBEntry s390_translate_iommu(IOMMUMemoryRegion *mr, hwaddr addr,
--                                          IOMMUAccessFlags flag)
-+                                          IOMMUAccessFlags flag, int iommu_idx)
- {
-     S390PCIIOMMU *iommu = container_of(mr, S390PCIIOMMU, iommu_mr);
-     S390IOTLBEntry *entry;
-diff --git a/hw/sparc/sun4m_iommu.c b/hw/sparc/sun4m_iommu.c
-index b677601fc6b..7ca1e3fce41 100644
---- a/hw/sparc/sun4m_iommu.c
-+++ b/hw/sparc/sun4m_iommu.c
-@@ -282,7 +282,8 @@ static void iommu_bad_addr(IOMMUState *s, hwaddr addr,
- /* Called from RCU critical section */
- static IOMMUTLBEntry sun4m_translate_iommu(IOMMUMemoryRegion *iommu,
-                                            hwaddr addr,
--                                           IOMMUAccessFlags flags)
-+                                           IOMMUAccessFlags flags,
-+                                           int iommu_idx)
- {
-     IOMMUState *is = container_of(iommu, IOMMUState, iommu);
-     hwaddr page, pa;
-diff --git a/hw/sparc64/sun4u_iommu.c b/hw/sparc64/sun4u_iommu.c
-index eb3aaa87e64..1ef7645ba5f 100644
---- a/hw/sparc64/sun4u_iommu.c
-+++ b/hw/sparc64/sun4u_iommu.c
-@@ -73,7 +73,7 @@
- /* Called from RCU critical section */
- static IOMMUTLBEntry sun4u_translate_iommu(IOMMUMemoryRegion *iommu,
-                                            hwaddr addr,
--                                           IOMMUAccessFlags flag)
-+                                           IOMMUAccessFlags flag, int iommu_idx)
- {
-     IOMMUState *is = container_of(iommu, IOMMUState, iommu);
-     hwaddr baseaddr, offset;
-diff --git a/memory.c b/memory.c
-index 7aa75ff02d3..21aa57d24cb 100644
---- a/memory.c
-+++ b/memory.c
-@@ -1832,7 +1832,7 @@ void memory_region_iommu_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNotifier *n)
-     granularity = memory_region_iommu_get_min_page_size(iommu_mr);
- 
-     for (addr = 0; addr < memory_region_size(mr); addr += granularity) {
--        iotlb = imrc->translate(iommu_mr, addr, IOMMU_NONE);
-+        iotlb = imrc->translate(iommu_mr, addr, IOMMU_NONE, n->iommu_idx);
-         if (iotlb.perm != IOMMU_NONE) {
-             n->notify(n, &iotlb);
-         }
 -- 
 2.17.1

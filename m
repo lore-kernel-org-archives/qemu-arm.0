@@ -1,106 +1,171 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp737204wrq;
-        Mon, 4 Jun 2018 08:23:52 -0700 (PDT)
-X-Received: by 2002:a9d:2371:: with SMTP id k46-v6mr15989242otd.210.1528125832862;
-        Mon, 04 Jun 2018 08:23:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528125832; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743446wrq;
+        Mon, 4 Jun 2018 08:29:44 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJgBhbWrQWFhZJgbQPJ5f75Tq7kOZotdcSZK+n2XLca5B2yDwVbGmc4uy4ulxD0FbRv1BuH
+X-Received: by 2002:a1c:7e87:: with SMTP id z129-v6mr9695023wmc.131.1528126184285;
+        Mon, 04 Jun 2018 08:29:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528126184; cv=none;
         d=google.com; s=arc-20160816;
-        b=byOB9MCCvu3M4hbwM4cNENLzKOlEq1hp9+fynVPSc9014jqyuiIHYJ/pXs2TSvro1T
-         bbohKWnICyGq5J/5LTdyHeINB/C5R2X+pKkRvOs3ZKpPf2US8j7mWYrLa7OQ0rGTXfj8
-         hZOY2wVL1mRhK2NRnafOWQ+KEXj4dGaDxnfRnBGZls+3r+zOJM9J7OyqY4u/LOdHx3q/
-         JY8AkQ4AQC+qD0ENE5PVybql6AlXiiH+DyZfwlJyNunEdyqCRxurCoetrPrTPBVxg/pH
-         ZMMUeM4Ei6liP8o0ODLBjZpTuT18IrxFn3oGQvDhGefIb8k1oCjkbYf+jAhu3PN7srEC
-         XiKw==
+        b=eb7x0P1pehkhSZflOJJRXTdqSrd2N7FlqdI3A+yiTaIcBnCM9/3x6LHNpSiGhBD1sH
+         N3lu9MlfiWaDTUdhNaddnoP0TAii7XQfUkeVU0CcjiMJig13OXKpplkvCQ1kBtXpmHaY
+         otJzSyFAUH5pNHu2F8/5Ci9oWcJkfSEmzkYRZGpbJZ50QvlnkNra9ARfqQ3zwGXUQA1N
+         M2xJEQ4EFJWNTArs6SNLyk5G7j6Nrx+XI+S/fgampR3UkX5uyBbN1PGS16QSPZKEVy/o
+         fPaRP8nTAbklNNQYEuVBgdb1+EDlvG+tWIraC7iK5Fkh5DscR/9OURu5gUDKGOAR1Al8
+         oHZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Za/TQp5ek7RUTdgPESbCFiaBgH0N6ep42euGU2TQVvQ=;
-        b=mtusPWv7mo3QThogs8JsEZsvqfuXJ/LaY5YXGcPEP+UGaBuv/IJbaZUQRimPX+JKlN
-         FO95+A5bYcZjupm+DACX1Pfk0m4TukSYrdp4wLRNNmMK6Hd5r/T4+fKsz5suJoVdZThx
-         gQ88DpNSuiN5s+QriOps6qURGXYOtG6fHEwoXwd5SivtQSxO7bNSH81lnNrHvmluIHoc
-         oPoF8IIpQAXOObVXD70F5QArwNYL3659Ne37divKcESl/Kev3/dslI9tt4Xkau/byQIC
-         ajYAWOTa89yrU59OYQseR3fHwUG4y+yWZ+pJu9mqoIj8+8nQKXuQsAI22hckn6aef/1+
-         TMXw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:arc-authentication-results;
+        bh=97b3E/2rRWx2tOqehjmZi1tEAzjdko7QwghJuDn8dbo=;
+        b=iFoC7sQYL0tcJ1Xdq5jYc5a8kdVwhJrL0WrS38uQEtQe6hnkRvzvIVS27VPy01DuIK
+         67ENl4v7jtwCH6wUEeh5xH2bphHEseGM3NbVbuwCYeGUvTheEuGmltFrGpfHe/1QFn7o
+         rhOkr7hAP47TvXVWXtIpZQUguPCQRDD6/nUEzz2qAiTvtvf4BqdQ7nyue+eRbog7539q
+         3jeHbYq2WSun6pGLbzKauSjNIukwm26magdNXHlM35afoTvZ/YBd3U5MBdfDmxuoQ09e
+         rXq8ZDsBiyCsyKiTd+ymSNV2naB2qiz8xPSvyNeoW/PqiMMyVcFDJQQ8krcU2FiUHmx7
+         NAUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NqhBSWva;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v101-v6sor3302476ota.33.2018.06.04.08.23.52
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 04 Jun 2018 08:23:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pm215@archaic.org.uk>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+        by mx.google.com with ESMTPS id k184-v6si316771wmg.182.2018.06.04.08.29.44
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Jun 2018 08:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NqhBSWva;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=Za/TQp5ek7RUTdgPESbCFiaBgH0N6ep42euGU2TQVvQ=;
-        b=NqhBSWvagWGM6u8ieCsZyCkWvGy0VaTVYcdS3RGshB05MSdmtbAHgxlxdX06kXCa7B
-         5RnJU9aEdHY2eKMomSGfK7UFauVYs44ecbOqTRAYelGEjClmNOse/PNTxmMnSI/3Ck3t
-         mTG3T+SgrBPbGa1zd/NL+2p1w+h/Xughd4rIw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Za/TQp5ek7RUTdgPESbCFiaBgH0N6ep42euGU2TQVvQ=;
-        b=bd/VOz6EiUhL8tqRHjnKinXKFaQPsgfC8fAE56/hrQq7alKlVIRBiXd8NWMLjPjNSL
-         bC12jlZQPKOcob41CCSZa+uOsnCz0nBRZJDhs41/wjSzXrbTWzsDLDcXA83QQ//DKw5M
-         cU0VB9m4B2i7wtD9I0EEOZld2ZK5+gj1YnWo+/6IWpyDF24dA4gkfyPIG+k5xXt+L1y4
-         0Va1pCsAjJh1Ey8dN7wri7ikn8hLbkunlgmdJPWRsj+GEz3/jx9GYsdYsYjacnxkglFs
-         M3+HWTpl4fx7P5v5jmk/3Wkjq/hyE3xVCjOGfFD11+HTrCf61+7jjsC7hTJvsD6eFXk9
-         LPCw==
-X-Gm-Message-State: ALKqPwdsZ0q5AmSaS/WiAIXBVKZ94yWeMcgB9T/VpO52yYRB2UsAhCOA
-	JjCtOzHy4DKedYlmWLx+INnK/gxy5QQGaLqNth1+bLY/p3I=
-X-Google-Smtp-Source: ADUXVKJ2GaBudUXa9DsBqjryThA7TZQXrYufoQxZV95aRtSJs3fC0r2HG3qaj2zPG1/mnECVm+8+HsIo9LNcAtdPf3U=
-X-Received: by 2002:a9d:2371:: with SMTP id k46-v6mr15989004otd.210.1528125827470;
- Mon, 04 Jun 2018 08:23:47 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 4 Jun 2018 08:23:26 -0700 (PDT)
-In-Reply-To: <87k1red1w8.fsf@linaro.org>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-16-peter.maydell@linaro.org> <87603evivz.fsf@linaro.org>
- <CAFEAcA8xRj5CWkAMdUVvT_cZJWSL5ysvt8qb6fbypSp5ZJF1sg@mail.gmail.com> <87k1red1w8.fsf@linaro.org>
+       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fPrQU-00070c-6x; Mon, 04 Jun 2018 16:29:42 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Jun 2018 16:23:26 +0100
-Message-ID: <CAFEAcA9+KRDi0PVLV-YZgYNF-Vr=Jy5AjThom_MSio1WWmHWjQ@mail.gmail.com>
-Subject: Re: [PATCH 15/27] iommu: Add IOMMU index argument to notifier APIs
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: hjYtw711gs3L
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: patches@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v2 00/13] iommu: support txattrs, support TCG execution, implement TZ MPC
+Date: Mon,  4 Jun 2018 16:29:28 +0100
+Message-Id: <20180604152941.20374-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: ecjrj11B8JF7
 
-On 4 June 2018 at 16:09, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> On 23 May 2018 at 10:08, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote=
-:
->>> Its a minor thing but are we ever expecting iommu_idx to ever be
->>> negative?
->>
->> Coming back to this one -- no, we don't expect negative iommu_idxs.
->> But on the other hand we don't ever expect negative TCG mmu_indexes
->> either, and we use 'int' for those...
->
-> That's a clean-up right there ;-)
->
-> As I said it's a minor thing but I generally favour clearest type for
-> the range you are going to see. That said the enum stuff on the older
-> clangs did confuse me so there is that...
+Hi; this is v2 of my iommu patchset, which does:
+ * support IOMMUs that are aware of memory transaction attributes and
+   may generate different translations for different attributes
+ * support TCG execution out of memory which is behind an IOMMU
+ * implement the Arm TrustZone Memory Protection Controller
+   (which needs both the above features in the IOMMU core code)
+ * use the MPC in the mps2-an505 board
 
-I prefer the "don't use unsigned unless you need the
-unsigned-integer semantics" approach. (For instance most
-loop indexes won't ever be negative, but "int i" is the
-usual thing there.)
+Patches 1-3 add the support for memory-transaction-aware
+IOMMUs. The general approach is that we have the concept of an
+IOMMU index (similar to the TCG MMU index), which selects which of
+multiple possible translation tables in the IOMMU we're trying to use.
+Most IOMMUs will support just a single index. When you register an
+IOMMU notifier and when you call the translate method you have to
+specify which IOMMU index you want. There's a method for getting the
+index that applies for a particular set of transaction attributes.
+All the current IOMMU implementations have just one iommu index, and
+all the current users of the notify API assume that.
 
-thanks
--- PMM
+Patch 4 adds the support for TCG execution from memory that sits
+behind an IOMMU. We do this in a fairly simple way on the assumption
+that changes to the IOMMU config at runtime will be fairly uncommon:
+we just flush the CPU TLB so it forgets about any cached results
+when we get an IOMMU unmap notification. (This is similar to how
+we handle reconfigurations of the memory map done by mapping or
+unmapping MemoryRegions.) NB: I'm not completely sure that calling
+tlb_flush() here is sufficient to be non-racy in the case where CPU A
+has triggered the IOMMU unmap notify by changing the IOMMU config
+while CPU B is executing from memory behind the IOMMU, but tlb_flush()
+is what tcg_commit() uses so I guess it's OK. I think the idea here
+is that any delay in flushing B's TLB is just equivalent to B having
+executed a little bit further before A got to changing the config?
+
+Patches 5-8 implement the TrustZone Memory Protection Controller,
+which is a fairly simple piece of hardware that just configurably
+either allows or blocks transactions depending on attrs.secure.
+
+Patch 9 deals with a limitation in our or-irq device, which
+currently only allows 16 input lines (we need 17 for one of the OR
+gates in the IoTKit object). The patch raisees the limit to 32, but
+in a way that means we can easily raise it further in future without
+migration compatibility problems.
+
+Patches 10-13 add MPCs to the IoTKit SoC object and to the mps2-an505
+board model, and wire them up appropriately.
+
+Unreviewed patches: 4, 6, 7, 8, 9, 10
+
+v1->v2 changes:
+ * the initial "attribute plumbing" patches are now in master
+ * the patch to add VMSTATE_BOOL_SUB_ARRAY is also in master now
+ * minor rebase fixup to patch 4 for changes in hw/i386/intel_iommu.c
+ * moved the num_indexes method definition to the right patch
+ * dropped unused iommu_idx field from IOMMUTLBEntry struct
+ * tcg_iommu_notifier_destroy now unconditionally unregisters the notifier
+ * patch 4: switched from GSList to GArray
+ * patch 6: fixed reset values for MPC CTRL and INT_EN registers
+ * I have left iommu_idx as signed, because that follows what we've
+   done for TCG mmu indexes (and using 'int' for this kind of
+   thing is common C practice IMHO)
+
+
+Peter Maydell (13):
+  iommu: Add IOMMU index concept to IOMMU API
+  iommu: Add IOMMU index argument to notifier APIs
+  iommu: Add IOMMU index argument to translate method
+  exec.c: Handle IOMMUs in address_space_translate_for_iotlb()
+  hw/misc/tz-mpc.c: Implement the Arm TrustZone Memory Protection
+    Controller
+  hw/misc/tz-mpc.c: Implement registers
+  hw/misc/tz-mpc.c: Implement correct blocked-access behaviour
+  hw/misc/tz_mpc.c: Honour the BLK_LUT settings in translate
+  hw/core/or-irq: Support more than 16 inputs to an OR gate
+  hw/misc/iotkit-secctl.c: Implement SECMPCINTSTATUS
+  hw/arm/iotkit: Instantiate MPC
+  hw/arm/iotkit: Wire up MPC interrupt lines
+  hw/arm/mps2-tz.c: Instantiate MPCs
+
+ hw/misc/Makefile.objs           |   1 +
+ include/exec/exec-all.h         |   3 +-
+ include/exec/memory.h           |  65 +++-
+ include/hw/arm/iotkit.h         |   8 +
+ include/hw/misc/iotkit-secctl.h |   8 +
+ include/hw/misc/tz-mpc.h        |  80 +++++
+ include/hw/or-irq.h             |   5 +-
+ include/qom/cpu.h               |   3 +
+ accel/tcg/cputlb.c              |   3 +-
+ exec.c                          | 146 +++++++-
+ hw/alpha/typhoon.c              |   3 +-
+ hw/arm/iotkit.c                 | 112 +++++-
+ hw/arm/mps2-tz.c                |  71 ++--
+ hw/arm/smmuv3.c                 |   2 +-
+ hw/core/or-irq.c                |  39 ++-
+ hw/dma/rc4030.c                 |   2 +-
+ hw/i386/amd_iommu.c             |   2 +-
+ hw/i386/intel_iommu.c           |   8 +-
+ hw/misc/iotkit-secctl.c         |  38 +-
+ hw/misc/tz-mpc.c                | 604 ++++++++++++++++++++++++++++++++
+ hw/ppc/spapr_iommu.c            |   5 +-
+ hw/s390x/s390-pci-bus.c         |   2 +-
+ hw/s390x/s390-pci-inst.c        |   4 +-
+ hw/sparc/sun4m_iommu.c          |   3 +-
+ hw/sparc64/sun4u_iommu.c        |   2 +-
+ hw/vfio/common.c                |   6 +-
+ hw/virtio/vhost.c               |   7 +-
+ memory.c                        |  33 +-
+ MAINTAINERS                     |   2 +
+ default-configs/arm-softmmu.mak |   1 +
+ hw/misc/trace-events            |   8 +
+ 31 files changed, 1206 insertions(+), 70 deletions(-)
+ create mode 100644 include/hw/misc/tz-mpc.h
+ create mode 100644 hw/misc/tz-mpc.c
+
+-- 
+2.17.1

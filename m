@@ -1,41 +1,41 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743563wrq;
-        Mon, 4 Jun 2018 08:29:49 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJm6TnVOovX8g9M4dD496hIiVPwjslv4mKAmkTLM2Z7guJIGz/XBCtM7EHYZxzJeBxnhpqp
-X-Received: by 2002:a5d:45cb:: with SMTP id b11-v6mr10245610wrs.106.1528126189312;
-        Mon, 04 Jun 2018 08:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528126189; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743575wrq;
+        Mon, 4 Jun 2018 08:29:50 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLcns8WYzShaIUdDREwP9FCjzDiqTFfnvX7Xc1jrp78YKrHtI7YIiQ+sOktW0FbBOGjlkze
+X-Received: by 2002:a1c:ca01:: with SMTP id a1-v6mr10268671wmg.128.1528126190167;
+        Mon, 04 Jun 2018 08:29:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528126190; cv=none;
         d=google.com; s=arc-20160816;
-        b=gXo+4rEWUfdP+QhNTXSwLUz1xSWupG82nndTCudDLfN5cls+33hm2R6D0NcQa1vnPO
-         q1Q/oEcttJKMCPGkQNvuAVsO9D6guaMsbxg7GvYA2AbVCHrkfyEr4t5U15sBUIarWd4h
-         R4pbS6cq7iS+t/KoCCellHf2xTLJcHRWxJh9qmdtvsJwz6ZoQSiWTQPKRkdGsK8QuzMh
-         1yxPAPfMFNfU00Ok2vp3Ju/fQdRqpsy4bCERTmC6TfAfaQkzP/Ol5zavOWktnSf0mhCo
-         QD2FnLYWRxFhOWkf+7b7ADzlp9U3bpwL6/hf8FyA/VV1JiofyXfiw+72glBf4tcJEAWU
-         rCuw==
+        b=tWKX/c6zqjFYK/NBh1qTwXcLUHS4LSdqp6BjOWBXYKZoNNhVERPjubPhjwYgZOyvLi
+         IGEE7CwggoHVns4yOFS3lddg4fdpSJNGPM39Er1bOYkdRUi8pdyc51ohtF7OAEZkReUq
+         VTfPBH89+oe45gm1fwt2D62iYpi3Wn2RyNkzSa+hqiCfdVvsSDnHJvAHrnsTZVwm1tPN
+         f0r4FeN/V1WUNdKX+NDIs+idUslc5Pjxk7O5YaFJ8qEUKY6duqO4MVA6jqfiCGWXWYui
+         w1THMh5bZiZ6hYp9Pp27JAGqnt/9szyaCKT+IrBnSx3Ksdz2eavhxVrAe5eJOFBmZ1R/
+         eKCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :arc-authentication-results;
-        bh=hNvrcm+vVuj0vQairARxE8JVFvRa7XBKTjyniIGMGvs=;
-        b=DJPEEEAACcRIOFJY0CaZuFo42oVlblMOpttYFAn3jwXLsmHq0NGeb6I2pogwzeCxuw
-         WgB7ja9Lwctdt095qkE1dW4x0Qy2RLksKahUC1sbBTle4FAeyjSqBaMeI9wZD3xIV1ep
-         zoUt4u+bAm9i+Z5+FZtICQFa//Svs52sQ7k6fuODH7bhhHfAc7n/hcgIPUYOCmCCd+sF
-         3+4gAwvk93X2Kk3Q+dfaQD4Fha44BviavRuSWurZ7tlcyWg51camEvFc+HycPR6kdyBf
-         Mlpy0vIfreuTECo3v6Pg7k5HV8wyRB8YczxGMVlVGV2hqCRgXIA1xfamMIDs63GRtlGb
-         x1YQ==
+        bh=cTPJ8T7/6EXDqFLMnC9pILz9AAdp4r1VabGtriV5MIk=;
+        b=pagLnp3GGB+OKRHYujcIMoK/haX3EiX/P7gQDBz8EcFirdtY7Cw5/404GknI8FhdK9
+         3Q1svl9G6NFIw5JKavFO9sZhdagatd/9W0VNhVj0JcpMDuN03yH2FzpgWurKzHbqI9dK
+         X1hsNVvuib/BZvU4KQZ/1wjFxPSHYxI1nS74cpFq0AjAN1ri0vbnE/mUNZaOl03PxFkf
+         eGs4qR9logFvccL7+jVPgijTUd2GlOqBvlM5FF/V2ilGkB3fgLvD+6ggYEUcTKSXVrwJ
+         ZloNw2+EyL2zfhn6OjOC9m2wLOE2OrzadRZOfC0Z0Sxc7/oGqt+euKt4WG770ZFuAIAc
+         zutw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <pm215@archaic.org.uk>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id h2-v6si311141wmg.141.2018.06.04.08.29.49
+        by mx.google.com with ESMTPS id z88-v6si25796893wrc.423.2018.06.04.08.29.50
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jun 2018 08:29:49 -0700 (PDT)
+        Mon, 04 Jun 2018 08:29:50 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fPrQa-00073u-Pq; Mon, 04 Jun 2018 16:29:48 +0100
+	id 1fPrQb-00074j-Ji; Mon, 04 Jun 2018 16:29:49 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -45,115 +45,103 @@ Cc: patches@linaro.org,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Xu <peterx@redhat.com>,
 	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 08/13] hw/misc/tz_mpc.c: Honour the BLK_LUT settings in translate
-Date: Mon,  4 Jun 2018 16:29:36 +0100
-Message-Id: <20180604152941.20374-9-peter.maydell@linaro.org>
+Subject: [PATCH v2 09/13] hw/core/or-irq: Support more than 16 inputs to an OR gate
+Date: Mon,  4 Jun 2018 16:29:37 +0100
+Message-Id: <20180604152941.20374-10-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180604152941.20374-1-peter.maydell@linaro.org>
 References: <20180604152941.20374-1-peter.maydell@linaro.org>
-X-TUID: UwoZpkUkcqbv
+X-TUID: 52I1y6xrcKnh
 
-The final part of the Memory Protection Controller we need to
-implement is actually using the BLK_LUT data programmed by the
-guest to determine whether to block the transaction or not.
+For the IoTKit MPC support, we need to wire together the
+interrupt outputs of 17 MPCs; this exceeds the current
+value of MAX_OR_LINES. Increase MAX_OR_LINES to 32 (which
+should be enough for anyone).
 
-Since this means we now change transaction mappings when
-the guest writes to BLK_LUT, we must also call the IOMMU
-notifiers at that point.
+The tricky part is retaining the migration compatibility for
+existing OR gates; we add a subsection which is only used
+for larger OR gates, and define it such that we can freely
+increase MAX_OR_LINES in future (or even move to a dynamically
+allocated levels[] array without an upper size limit) without
+breaking compatibility.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/tz-mpc.c     | 50 ++++++++++++++++++++++++++++++++++++++++++--
- hw/misc/trace-events |  1 +
- 2 files changed, 49 insertions(+), 2 deletions(-)
+ include/hw/or-irq.h |  5 ++++-
+ hw/core/or-irq.c    | 39 +++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 41 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
-index 704bb3fb44d..7a6117c90b3 100644
---- a/hw/misc/tz-mpc.c
-+++ b/hw/misc/tz-mpc.c
-@@ -72,6 +72,50 @@ static void tz_mpc_irq_update(TZMPC *s)
-     qemu_set_irq(s->irq, s->int_stat && s->int_en);
+diff --git a/include/hw/or-irq.h b/include/hw/or-irq.h
+index 3f6fc1b58a4..5a31e5a1881 100644
+--- a/include/hw/or-irq.h
++++ b/include/hw/or-irq.h
+@@ -31,7 +31,10 @@
+ 
+ #define TYPE_OR_IRQ "or-irq"
+ 
+-#define MAX_OR_LINES      16
++/* This can safely be increased if necessary without breaking
++ * migration compatibility (as long as it remains greater than 15).
++ */
++#define MAX_OR_LINES      32
+ 
+ typedef struct OrIRQState qemu_or_irq;
+ 
+diff --git a/hw/core/or-irq.c b/hw/core/or-irq.c
+index f9d76c46415..a86901b673c 100644
+--- a/hw/core/or-irq.c
++++ b/hw/core/or-irq.c
+@@ -66,14 +66,49 @@ static void or_irq_init(Object *obj)
+     qdev_init_gpio_out(DEVICE(obj), &s->out_irq, 1);
  }
  
-+static void tz_mpc_iommu_notify(TZMPC *s, uint32_t lutidx,
-+                                uint32_t oldlut, uint32_t newlut)
++/* The original version of this device had a fixed 16 entries in its
++ * VMState array; devices with more inputs than this need to
++ * migrate the extra lines via a subsection.
++ * The subsection migrates as much of the levels[] array as is needed
++ * (including repeating the first 16 elements), to avoid the awkwardness
++ * of splitting it in two to meet the requirements of VMSTATE_VARRAY_UINT16.
++ */
++#define OLD_MAX_OR_LINES 16
++#if MAX_OR_LINES < OLD_MAX_OR_LINES
++#error MAX_OR_LINES must be at least 16 for migration compatibility
++#endif
++
++static bool vmstate_extras_needed(void *opaque)
 +{
-+    /* Called when the LUT word at lutidx has changed from oldlut to newlut;
-+     * must call the IOMMU notifiers for the changed blocks.
-+     */
-+    IOMMUTLBEntry entry = {
-+        .addr_mask = s->blocksize - 1,
-+    };
-+    hwaddr addr = lutidx * s->blocksize * 32;
-+    int i;
++    qemu_or_irq *s = OR_IRQ(opaque);
 +
-+    for (i = 0; i < 32; i++, addr += s->blocksize) {
-+        if (!((oldlut ^ newlut) & (1 << i))) {
-+            continue;
-+        }
-+        /* This changes the mappings for both the S and the NS space,
-+         * so we need to do four notifies: an UNMAP then a MAP for each.
-+         */
-+
-+        trace_tz_mpc_iommu_notify(addr);
-+        entry.iova = addr;
-+        entry.translated_addr = addr;
-+
-+        entry.perm = IOMMU_NONE;
-+        memory_region_notify_iommu(&s->upstream, IOMMU_IDX_S, entry);
-+        memory_region_notify_iommu(&s->upstream, IOMMU_IDX_NS, entry);
-+
-+        entry.perm = IOMMU_RW;
-+        if (newlut & (1 << i)) {
-+            entry.target_as = &s->blocked_io_as;
-+        } else {
-+            entry.target_as = &s->downstream_as;
-+        }
-+        memory_region_notify_iommu(&s->upstream, IOMMU_IDX_S, entry);
-+        if (newlut & (1 << i)) {
-+            entry.target_as = &s->downstream_as;
-+        } else {
-+            entry.target_as = &s->blocked_io_as;
-+        }
-+        memory_region_notify_iommu(&s->upstream, IOMMU_IDX_NS, entry);
-+    }
++    return s->num_lines >= OLD_MAX_OR_LINES;
 +}
 +
- static MemTxResult tz_mpc_reg_read(void *opaque, hwaddr addr,
-                                    uint64_t *pdata,
-                                    unsigned size, MemTxAttrs attrs)
-@@ -213,6 +257,7 @@ static MemTxResult tz_mpc_reg_write(void *opaque, hwaddr addr,
-         s->blk_idx = value % s->blk_max;
-         break;
-     case A_BLK_LUT:
-+        tz_mpc_iommu_notify(s, s->blk_idx, s->blk_lut[s->blk_idx], value);
-         s->blk_lut[s->blk_idx] = value;
-         if (size == 4) {
-             s->blk_idx++;
-@@ -362,9 +407,10 @@ static IOMMUTLBEntry tz_mpc_translate(IOMMUMemoryRegion *iommu,
-     /* Look at the per-block configuration for this address, and
-      * return a TLB entry directing the transaction at either
-      * downstream_as or blocked_io_as, as appropriate.
--     * For the moment, always permit accesses.
-+     * If the LUT cfg_ns bit is 1, only non-secure transactions
-+     * may pass. If the bit is 0, only secure transactions may pass.
-      */
--    ok = true;
-+    ok = tz_mpc_cfg_ns(s, addr) == (iommu_idx == IOMMU_IDX_NS);
++static const VMStateDescription vmstate_or_irq_extras = {
++    .name = "or-irq-extras",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = vmstate_extras_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_VARRAY_UINT16_UNSAFE(levels, qemu_or_irq, num_lines, 0,
++                                     vmstate_info_bool, bool),
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
+ static const VMStateDescription vmstate_or_irq = {
+     .name = TYPE_OR_IRQ,
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_BOOL_ARRAY(levels, qemu_or_irq, MAX_OR_LINES),
++        VMSTATE_BOOL_SUB_ARRAY(levels, qemu_or_irq, 0, OLD_MAX_OR_LINES),
+         VMSTATE_END_OF_LIST(),
+-    }
++    },
++    .subsections = (const VMStateDescription*[]) {
++        &vmstate_or_irq_extras,
++        NULL
++    },
+ };
  
-     trace_tz_mpc_translate(addr, flags,
-                            iommu_idx == IOMMU_IDX_S ? "S" : "NS",
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 72bf9d57000..c956e1419b7 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -90,6 +90,7 @@ tz_mpc_reg_write(uint32_t offset, uint64_t data, unsigned size) "TZ MPC regs wri
- tz_mpc_mem_blocked_read(uint64_t addr, unsigned size, bool secure) "TZ MPC blocked read: offset 0x%" PRIx64 " size %u secure %d"
- tz_mpc_mem_blocked_write(uint64_t addr, uint64_t data, unsigned size, bool secure) "TZ MPC blocked write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u secure %d"
- tz_mpc_translate(uint64_t addr, int flags, const char *idx, const char *res) "TZ MPC translate: addr 0x%" PRIx64 " flags 0x%x iommu_idx %s: %s"
-+tz_mpc_iommu_notify(uint64_t addr) "TZ MPC iommu: notifying UNMAP/MAP for 0x%" PRIx64
- 
- # hw/misc/tz-ppc.c
- tz_ppc_reset(void) "TZ PPC: reset"
+ static Property or_irq_properties[] = {
 -- 
 2.17.1

@@ -1,129 +1,133 @@
-Received: by 10.28.71.155 with SMTP id m27csp966337wmi;
-        Fri, 6 Apr 2018 10:28:03 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4/M0x85hyYvi0qvqIui9fpJjgZaj6tDD/QsXkOARYlv2tKp6bN/vk/80NFfpG33jk33S1wl
-X-Received: by 10.223.168.4 with SMTP id l4mr18029943wrc.170.1523035683865;
-        Fri, 06 Apr 2018 10:28:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523035683; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp583171wrq;
+        Mon, 4 Jun 2018 06:03:24 -0700 (PDT)
+X-Received: by 2002:a9d:73d2:: with SMTP id m18-v6mr1151174otk.332.1528117403939;
+        Mon, 04 Jun 2018 06:03:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528117403; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fxkwonz84teuLoAz87o5gYJ/c2hhbPvGHCvU+QIfHmCM2Op1tGrknS2z4W606Bm2zB
-         fj19SfYCXl9fJ6NwJTk8RPK3j2n8yFtpgOSFPmKHtYO4zcbvy1Qp2Na84IlaqToGqUOX
-         3WEocwq2m8fj8Ajz/tIfnrFYZVpALLcz2ZFZjP8bMH+GIgFldDwZGz3bZ9rxFKsGxVsO
-         rYCDLqGLy/riGN4to3GXWgz81nLEERl34Tw/AE7ejMHW1ZmQe598PTyGCIcxo+SqjboG
-         C/bGsYUoRbb1L9x9k2WnB75m1TOeO6DJti+vWMcXYAOK9q5Q5LwPwodUjR+mstyEqlAR
-         cdsA==
+        b=u9b+lOWxvXeiaK2s40+dIzlFd+lTwey7Kw4iKLcjAD1HxqUdX0szYCnCPGY0ba4+9a
+         bvYCXDPhWKtJ7S/dvgr8EkDGH1UCDsg40YiiVSU/lnDOfW+X/8DxnTiHhagQzNb5/tDx
+         X5gmfi0Mqg5hvswaDphAceKmL1JGzQ5cz6vgiDHiOiQjwDtcbzaU4OAJP11qGX08jdkp
+         zhk3n43gnA02oHikkFLhrZnpx9MT0/0sAQDoxU1jlU+DeWMpBmJnuLbE8PCtV2jLW7mN
+         sQt33eOtDHjYntducDzRkrl8+W2nWUJKiIFfcObA7rYgWULhyD+Nh1dMZgbwU9QErU59
+         n8sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=au/mpbww5qOQkj002BPaM6M8foWm83TpFi3c1/biqPo=;
-        b=gxO3wdjlEQ6EuFg+AFRcwCdrnKv4kGXQmsRFurWFZQgPtwd/ZTqmQQWcjECV8e8Dd8
-         Qap5AwJF6dOvCXXVtPaM1xeJGmK5LMs4ZgOQWi9DKBPEcxlMtnLNBVEcOiVzzdnVsxYv
-         3OSznKsAJt6Dy+jl1nM8cqq/b1mpqYmai7n8dMadX3KsP5CL85ggPHFkQovjg3c1L5/x
-         MgtdoN7fwRqwVf65obefXMu3mEPz/HW33ic7xgCwHVvzjnnK+67WHMNexY6Fx+GmpOa0
-         nFWDjraAHvp1L7EfLEpg4KfQKOnz1ofGpf5CjkuKx42EePUD0fMnFUpYCz3N989FEzvu
-         rruw==
+        bh=IPeEf2U3xQG1FGYL5r04UhLBkNt0WAj4W4uj8QuEyg4=;
+        b=C3Tg7lbHwgtHjMZYxgmhfL2ttzpm4urDqEVDzRPHvTzTK2aNN6ugBZjUfxQTpylebV
+         +LHzb5f48/4hkyJEvqObK0g885F89B2AEqQ4kZYNEWxF8AA/Ty2UHaWxbMoZsfB7uvag
+         WiZKq7FY2tBh5Ul+gDLZBfSOy8kwpxqDyYEdNBYMA6hHWDIGu7LO6ZKtP6vfb7zqvBp0
+         DuJquBl8qjXm1QETdy9s54OSf9Akngc6oaMKLCH4nQw4WU6N5alNzCps2ar6kf6sQmNe
+         nTHjbtdMxwzTGRRDTTd9zH+7kuO7QuuFsMa1BX+ttYeAEOqEF2L3c3ACZLkEAMAFJxGT
+         pm6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
-Return-Path: <abdallah.bouassida@lauterbach.com>
-Received: from smtp1.lauterbach.com (smtp1.lauterbach.com. [62.154.241.196])
-        by mx.google.com with ESMTPS id 22si7636873wrw.358.2018.04.06.10.28.03
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ncezua9Y;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m89-v6sor4385494oik.58.2018.06.04.06.03.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Apr 2018 10:28:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) client-ip=62.154.241.196;
+        (Google Transport Security);
+        Mon, 04 Jun 2018 06:03:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
-Received: (qmail 9370 invoked by uid 484); 6 Apr 2018 17:28:03 -0000
-X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com (envelope-from <abdallah.bouassida@lauterbach.com>, uid 484) with qmail-scanner-2.11 
- (mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
- Clear:RC:1(41.224.44.126):. 
- Processed in 0.190145 secs); 06 Apr 2018 17:28:03 -0000
-Received: from unknown (HELO [192.168.187.23]) (Authenticated_SSL:abouassida@[41.224.44.126])
-          (envelope-sender <abdallah.bouassida@lauterbach.com>)
-          by smtp1.lauterbach.com (qmail-ldap-1.03) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-          for <qemu-arm@nongnu.org>; 6 Apr 2018 17:28:02 -0000
-Subject: Re: [Qemu-arm] [PATCH v5 3/3] target/arm: Add the XML dynamic
- generation
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org, khaled.jmal@lauterbach.com, qemu-arm@nongnu.org
-References: <1521034084-17344-1-git-send-email-abdallah.bouassida@lauterbach.com>
- <1521034084-17344-4-git-send-email-abdallah.bouassida@lauterbach.com>
- <87h8orcg3a.fsf@linaro.org>
-From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Message-ID: <7a39d3f5-af2b-e21d-fa10-798b67fe4f63@lauterbach.com>
-Date: Fri, 6 Apr 2018 18:28:05 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ncezua9Y;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=IPeEf2U3xQG1FGYL5r04UhLBkNt0WAj4W4uj8QuEyg4=;
+        b=Ncezua9YuJhYC0Spq4GYBN2amgxDGr4IQ/hPadTaz2JCtGlTdvyvM0mtAdD50h5TBX
+         dFlBK7rv/1kw9zTV6AQ5QEZa+ntNkKMtS5k+KiiTwvwKCzK0O+fV2sOhYYLetPAyYGBx
+         r8gMV/yXqRFqIVQHBCwNnLpGloM7n81qNa3k4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=IPeEf2U3xQG1FGYL5r04UhLBkNt0WAj4W4uj8QuEyg4=;
+        b=JjdpsjfVgM0k5R0FZgycrPYiiEZEcPjqL4l9oMyi55jmaLoYWZQRO7ZW1tNMV3+bOH
+         k5L2txMVprWFQmIHiYNxjTKjDwcZBvmZ7aUFhYT/DUq94q+NGGDsxBMzxVATEX7pLnLi
+         mG19nbDJIL9OhN9oVR/ExMBUFLVV+F888/WuN54yl9EKU6zy4FK8EHb2SYd2ZmrFLROw
+         pAtRrhUyInUPF8DmUcvX+aKlaeK83ACYVUpykgAvwX/zKZNOaB0zTyDk406GzANBYGRr
+         h3eEFbAp3ySGytaJoCKVJtQkZVOZ5uUMFFryy/natr//DhPUzP4Ys9YcBNyYAKYBbDBu
+         locw==
+X-Gm-Message-State: ALKqPwfZz/MvvrQizrxOuhABUVVkA+v81D2fNT/o6SEmU7X2s7wOFXDu
+	r3OzMEsXpbRHR51S9ebbIOeNILrKbHSVDlgPqhkCqFovA+M=
+X-Google-Smtp-Source: ADUXVKJTx+wIypclzO5h2p89MMxstv0VK2eFuE1zygGpjzh6rwmNPpCdjKhIfGgTwFeRa91qMfcyfn8nzVuE9x0nhjA=
+X-Received: by 2002:aca:a846:: with SMTP id r67-v6mr11971184oie.12.1528117403444;
+ Mon, 04 Jun 2018 06:03:23 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87h8orcg3a.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-TUID: CRnPKufvc6VI
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 4 Jun 2018 06:03:03 -0700 (PDT)
+In-Reply-To: <87603evivz.fsf@linaro.org>
+References: <20180521140402.23318-1-peter.maydell@linaro.org>
+ <20180521140402.23318-16-peter.maydell@linaro.org> <87603evivz.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Jun 2018 14:03:03 +0100
+Message-ID: <CAFEAcA8xRj5CWkAMdUVvT_cZJWSL5ysvt8qb6fbypSp5ZJF1sg@mail.gmail.com>
+Subject: Re: [PATCH 15/27] iommu: Add IOMMU index argument to notifier APIs
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	"patches@linaro.org" <patches@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: qrb1InhNImwA
 
-Hi Alex,
-
-First of all, thanks for the review!
->> +static int arm_gdb_get_sysreg(CPUARMState *env, uint8_t *buf, int reg)
->> +{
->> +    ARMCPU *cpu = arm_env_get_cpu(env);
->> +    const ARMCPRegInfo *ri;
->> +    uint32_t key;
->> +
->> +    key = cpu->dyn_xml.cpregs_keys[reg];
->> +    ri = get_arm_cp_reginfo(cpu->cp_regs, key);
->> +    if (ri) {
->> +        if (cpreg_field_is_64bit(ri)) {
->> +            return gdb_get_reg64(buf, (uint64_t)read_raw_cp_reg(env, ri));
->> +        } else {
->> +            return gdb_get_reg32(buf, (uint32_t)read_raw_cp_reg(env, ri));
->> +        }
->> +    }
->> +    return 0;
-> There is something odd going on here because if I run a simple little
-> features binary
-> (https://github.com/stsquad/testcases/blob/master/aarch64/features.c) I
-> get:
+On 23 May 2018 at 10:08, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
 >
->   ID_AA64ISAR0_EL1    : 0x0000000000011120
->   ID_AA64ISAR1_EL1    : 0x0000000000000000
->   ID_AA64MMFR0_EL1    : 0x00000000ff000000
->   ID_AA64MMFR1_EL1    : 0x0000000000000000
->   ID_AA64PFR0_EL1     : 0x0000000000000011
->   ID_AA64PFR1_EL1     : 0x0000000000000000
->   ID_AA64DFR0_EL1     : 0x0000000000000006
->   ID_AA64DFR1_EL1     : 0x0000000000000000
->   MIDR_EL1            : 0x00000000411fd070
->   MPIDR_EL1           : 0x0000000080000000
->   REVIDR_EL1          : 0x0000000000000000
+> Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> However in the gdb output we see:
+>> Add support for multiple IOMMU indexes to the IOMMU notifier APIs.
+>> When initializing a notifier with iommu_notifier_init(), the caller
+>> must pass the IOMMU index that it is interested in. When a change
+>> happens, the IOMMU implementation must pass
+>> memory_region_notify_iommu() the IOMMU index that has changed and
+>> that notifiers must be called for.
+>>
+>> IOMMUs which support only a single index don't need to change.
+>> Callers which only really support working with IOMMUs with a single
+>> index can use the result of passing MEMTXATTRS_UNSPECIFIED to
+>> memory_region_iommu_attrs_to_index().
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>>  include/exec/memory.h    | 11 ++++++++++-
+>>  hw/i386/intel_iommu.c    |  4 ++--
+>>  hw/ppc/spapr_iommu.c     |  2 +-
+>>  hw/s390x/s390-pci-inst.c |  4 ++--
+>>  hw/vfio/common.c         |  6 +++++-
+>>  hw/virtio/vhost.c        |  7 ++++++-
+>>  memory.c                 |  8 +++++++-
+>>  7 files changed, 33 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/include/exec/memory.h b/include/exec/memory.h
+>> index f6226fb263..4e6b125add 100644
+>> --- a/include/exec/memory.h
+>> +++ b/include/exec/memory.h
+>> @@ -71,6 +71,7 @@ struct IOMMUTLBEntry {
+>>      hwaddr           iova;
+>>      hwaddr           translated_addr;
+>>      hwaddr           addr_mask;  /* 0xfff =3D 4k translation */
+>> +    int              iommu_idx;
+>>      IOMMUAccessFlags perm;
+>>  };
+>>
+>> @@ -98,18 +99,21 @@ struct IOMMUNotifier {
+>>      /* Notify for address space range start <=3D addr <=3D end */
+>>      hwaddr start;
+>>      hwaddr end;
+>> +    int iommu_idx;
 >
->   ID_AA64ISAR0_EL1           0x11120	69920
->   ID_AA64ISAR1_EL1           0x0	0
->   ID_AA64MMFR0_EL1           0x1124	4388  <-?
->   ID_AA64MMFR1_EL1           0x0	0
->   ID_PFR0                    0x131	305   <-name and value?
->   ID_AA64PFR1_EL1            0x0	0
->   ID_AA64DFR0_EL1            0x10305106	271601926 <-?
->   ID_AA64DFR1_EL1            0x0	0
->   REVIDR_EL1                 0x0	0
->
-> So why the discrepancies?
+> Its a minor thing but are we ever expecting iommu_idx to ever be
+> negative?
 
->  ID_AA64MMFR0_EL1           0x1124	4388  <-?
->  ID_AA64DFR0_EL1            0x10305106	271601926 <-?
-I get the same value in x1 (= 0x1124) and x2 (= 0x10305106) when I execute 
-the following instructions on the guest:
-  MRS x1, ID_AA64MMFR0_EL1
-  MRS x2, ID_AA64DFR0_EL1
-So, I think that there is no problem on how GDB is reading these registers!
+Coming back to this one -- no, we don't expect negative iommu_idxs.
+But on the other hand we don't ever expect negative TCG mmu_indexes
+either, and we use 'int' for those...
 
->  ID_PFR0                    0x131	305   <-name and value?
-This is not ID_AA64PFR0_EL1 - the ID_AA64PFR0_EL1 is not registered in our
-dynamic XML as it has "ARM_CP_NO_RAW" type.
-So should we add some modifications to handle this special case?
-
-Best regards,
-Abdallah
+thanks
+-- PMM

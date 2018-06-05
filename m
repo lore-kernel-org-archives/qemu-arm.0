@@ -1,85 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp964416wrq;
-        Tue, 5 Jun 2018 06:44:28 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKqjctAK8soPxKa+/Bh9ULjRh4iANG7kpqyZWC/i5EP62oGD/NZt/QoQMb/Q7400hVX3Pbr
-X-Received: by 2002:a0c:9308:: with SMTP id d8-v6mr23894139qvd.191.1528206267955;
-        Tue, 05 Jun 2018 06:44:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528206267; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp188644wrq;
+        Tue, 5 Jun 2018 10:10:57 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLSEnQ+UUPWVWLgVb4BHCg7a8RO7W/EUVf05sg0eHHLUyobApsSDcou8MeS1EN7UrLBtX3R
+X-Received: by 2002:ac8:948:: with SMTP id z8-v6mr9008308qth.211.1528218657008;
+        Tue, 05 Jun 2018 10:10:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528218657; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y3jWFIDbUDkSVvfqnb/FPsNZuR5lJNNXHhZxf2txbdVN8nQyJ2p9UAj1ThoPq3OBhN
-         Q9wub2EngSDLD5BmrRVJdo2AsbWR6NkG4s0eenomqoVK03cxJzHBHDGO5fd2kAyxkzLW
-         84Znd4yTawV784JxN3Yxh43E4Ng1P/wGQRz8cxLHb8bbR0ppi49SrO3YQqDlfM2UL8Sj
-         8P/jX8wmUmv6nWw6sx8tMVEUwB9JtM1HULMvc6/YLo5pomjEf1aNdYl+EFXo2ab1e1rL
-         GbPOs+JDv2faio/fkc7pjVmbtfLfQ+KWB4TwJzg2JcZjrEamYN2yM+8JClktSUUVFYrt
-         z0yg==
+        b=VJmJYPmibZ7FhaYs821OOU+7xoKRIsqFr5GrneT6tHcX484qnusjvT6j1OrRgzxbSJ
+         uuuAKv1qS60znHbol3jMoSXOWxN3pNuCAsIoIOLmvQpeYSLYRzgFuGJq/i3EMywTERV0
+         1edu/r3W0hQmYmy6TIoDOu3UHvDdKXgmQLBhNLopbXKROiYB8R4pc3KC10yP8TvnWbQs
+         Rf4xlgGGzogasPXJnJN5HrXnVVxuasx7KlsbAVizsawaIs+ZMj8N7SsTwLzpm15RSn3c
+         LZ8l2KfZYzk5OegM1erGZ2Q8mQurjccHwL5AJQyJuJuIGrwgB0h9yxVcSXtApGXpaVfS
+         F9MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=U35P5RcaM5ytgKj2Iba42DNqYA1gomACrpQ5GhaC6co=;
-        b=um8t8yYtObg7E+6ut5HctQEXBn+ckI5IXECDzSH/UgwjBGw4maZ0KOM1RKlpR5HJsr
-         KH40BOcOiepwmqMQT6FhytNxhr2yWp1a66fmCUYqk/nspfphyuxZwnfSHjeYyWeSzXjr
-         YPXRI6LtQMDa33fhG/yjtksksWNxdoekGv02SlGa3XWXvWLAKB4KwG9nCgwYwGVm/v+b
-         svuVhTSf4GRWg0NjcL0mjYq5B8fR8/6xnx8Ik9sXDWNPRiB6YMS9yrmh7sKlj9AG8gpg
-         lncpNdFSfExVwu84fxx9eBOg8arVBm8VRIv+mZf8++fbzmjn1OofI+VTvciYZNZ1PPHT
-         fcCg==
+        bh=dRZXz9bM1GxlZu9Xz0WALZBTRLMggTCVXOMXCRrAWds=;
+        b=SOVool5k4XWC4UGQRM58kzVYFr9oRjJ5o5pL/XvxEKio0VD1kG8uwp6rS8yxMqHUzT
+         mqf18UMSeeZNq3SodwcOi5J/Ki07V6BVATuoITNfWu19TnzN9KpDtJV04BZFlDpcXcpz
+         KxIZ8xqgs2jKTvH2r2qh0r2Qg8kqMnmHCNhg0nxIxJ7/1XwjRZSVxQw7zICmEBytQv+J
+         HXnDCQq7W3rTy4esgaTocl9Ss1SSo/PIy0TDFf4yfTzigWRyvtaIA6Nuag4WDa2rLOqo
+         rpfwmmtiW50zIfIwSnuGVZ1VkyhlXpWzs6+xgk4Gc72mme16gBRCX65H5oc7oVYU7M03
+         i4Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZYQJZjBT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x18-v6si4996199qva.53.2018.06.05.06.44.27
+        by mx.google.com with ESMTPS id k31-v6si17802774qvf.138.2018.06.05.10.10.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Jun 2018 06:44:27 -0700 (PDT)
+        Tue, 05 Jun 2018 10:10:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46824 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZYQJZjBT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48170 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fQCGB-0007JF-FO
-	for alex.bennee@linaro.org; Tue, 05 Jun 2018 09:44:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59316)
+	id 1fQFU0-0000NZ-Hp
+	for alex.bennee@linaro.org; Tue, 05 Jun 2018 13:10:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47174)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fQCFt-0007J4-W3
-	for qemu-devel@nongnu.org; Tue, 05 Jun 2018 09:44:10 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fQFTh-0000NM-U3
+	for qemu-devel@nongnu.org; Tue, 05 Jun 2018 13:10:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fQCFq-00027R-3I
-	for qemu-devel@nongnu.org; Tue, 05 Jun 2018 09:44:10 -0400
-Received: from 7.mo6.mail-out.ovh.net ([46.105.59.196]:38729)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fQCFp-00026r-Se
-	for qemu-devel@nongnu.org; Tue, 05 Jun 2018 09:44:06 -0400
-Received: from player732.ha.ovh.net (unknown [10.109.120.11])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 35BC2161373
-	for <qemu-devel@nongnu.org>; Tue,  5 Jun 2018 15:44:04 +0200 (CEST)
-Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
-	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
-	by player732.ha.ovh.net (Postfix) with ESMTPSA id 2F9FB200BB;
-	Tue,  5 Jun 2018 15:43:57 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180530075002.4618-1-clg@kaod.org>
-	<CAFEAcA_a+nduAKWhLiwoKvoybL+cKN=51xV5M9f-VatPdbnf6w@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <e4840353-abf9-868f-20f1-3f07d13b84c8@kaod.org>
-Date: Tue, 5 Jun 2018 15:43:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	(envelope-from <peter.maydell@linaro.org>) id 1fQFTg-00035Z-U5
+	for qemu-devel@nongnu.org; Tue, 05 Jun 2018 13:10:37 -0400
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:35197)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fQFTg-000355-NW
+	for qemu-devel@nongnu.org; Tue, 05 Jun 2018 13:10:36 -0400
+Received: by mail-ot0-x241.google.com with SMTP id q17-v6so3724319otg.2
+	for <qemu-devel@nongnu.org>; Tue, 05 Jun 2018 10:10:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=dRZXz9bM1GxlZu9Xz0WALZBTRLMggTCVXOMXCRrAWds=;
+	b=ZYQJZjBTOKLf9vlmssu8xT5dlYe4Fj676vI7VmET4baNILWvsnj3HH9gDwKAJaeTxP
+	Tt63r3zvpFLmB2jDnwU8t3ustLfk8NqHrNPDypuQGR0H4CjFJNEmr5F8hrXwlA9V6PTn
+	XuX7S682SxvxHelT72yF9b7EyO0Nj03deNpuE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=dRZXz9bM1GxlZu9Xz0WALZBTRLMggTCVXOMXCRrAWds=;
+	b=aDUQrDq8vgxbpiorFprDI51eFzfDNWB5eeK6lth8oqIbDb4WhFnZQnMFCZQOxkJ92X
+	fDGCr0032RXsM/JgNx+jPWe1jSd8GKnd5P7c4eanmn3GsBmX33iuxHHpBmariex3XMM8
+	4EBeIQfRHVqg287XYOiO2f5Nve+upBI2p65FxvAzAkIvVv/EW/2L4yXe1+60Nlzpz4eO
+	KG8/gFHHPzdN8S1X+Zr+ElntD6bxgHWIaaQqw2PsNta8GnNzo79NUKHO8hfbahRDtOW8
+	hEnNArjZE/n+G1IdNn/6KJKLewWj4kyTJS/PsmjYuvkbzAuF5OLdK8ys1mjhlO/U4wNB
+	qJLA==
+X-Gm-Message-State: ALKqPwebYH0CUkV1GDVu8ycoCXDV1Pxr51AVl9qWoUmTKvg8UAprsn/I
+	72LtPQuWoXHRb/ajXE5h/n9R5idqrxDYvqJE0bJrZQ==
+X-Received: by 2002:a9d:2371:: with SMTP id
+	k46-v6mr19417762otd.210.1528218635927; 
+	Tue, 05 Jun 2018 10:10:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_a+nduAKWhLiwoKvoybL+cKN=51xV5M9f-VatPdbnf6w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 10638065271636003767
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrjeefgdeijecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.59.196
-Subject: Re: [Qemu-devel] [PATCH 0/4] aspeed: add MMIO exec support to the
- FMC controller
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
+	Tue, 5 Jun 2018 10:10:15 -0700 (PDT)
+In-Reply-To: <20180530180120.13355-14-richard.henderson@linaro.org>
+References: <20180530180120.13355-1-richard.henderson@linaro.org>
+	<20180530180120.13355-14-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Jun 2018 18:10:15 +0100
+Message-ID: <CAFEAcA-OJhenKFwXtentkb-pgg87a_Lzf8WP6TuoVif-Uaj2tg@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-devel] [PATCH v3b 13/18] target/arm: Implement SVE
+ Partition Break Group
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,32 +106,71 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PadCTFtsidF9
+X-TUID: 325ZOBM0G+Vh
 
-On 05/30/2018 02:40 PM, Peter Maydell wrote:
-> On 30 May 2018 at 08:49, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->> Hello,
->>
->> When MMIO execution support is active, these changes let the Aspeed
->> SoC machine boot directly from CE0. As there is still some
->> issues, the feature is disabled by default and should be activated
->> with :
->>
->>         -global driver=3Daspeed.smc,property=3Dmmio-exec,value=3Dtrue
->=20
-> I'd really rather not add another mmio-exec device until
-> we've sorted out making it actually work properly...
+On 30 May 2018 at 19:01, Richard Henderson <richard.henderson@linaro.org> wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/helper-sve.h    |  18 +++
+>  target/arm/sve_helper.c    | 247 +++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c | 106 ++++++++++++++++
+>  target/arm/sve.decode      |  19 +++
+>  4 files changed, 390 insertions(+)
 
-Could we still take patch 1-2 which are good model cleanups
-for the flash controller ?=20
+> +static bool compute_brk(uint64_t *retb, uint64_t n, uint64_t g,
+> +                        bool brk, bool after)
+> +{
+> +    uint64_t b;
+> +
+> +    if (brk) {
+> +        b = 0;
+> +    } else if ((g & n) == 0) {
+> +        /* For all G, no N are set; break not found.  */
+> +        b = g;
+> +    } else {
+> +        /* Break somewhere in N.  Locate it.  */
+> +        b = g & n;            /* guard true, pred true*/
 
-Thanks,
+Missing space before '*/'.
 
-C.=20
+> +        b = b & -b;           /* first such */
+> +        if (after) {
+> +            b = b | (b - 1);  /* break after same */
+> +        } else {
+> +            b = b - 1;        /* break before same */
+> +        }
+> +        brk = true;
+> +    }
+> +
+> +    *retb = b;
+> +    return brk;
+> +}
 
+> +
+> +/* Given a computation function, compute a merging BRK.  */
+> +static void compute_brk_m(uint64_t *d, uint64_t *n, uint64_t *g,
+> +                          intptr_t oprsz, bool after)
 
+Comment suggests function should take a function pointer argument,
+but it doesn't ?
+
+> +{
+> +    bool brk = false;
+> +    intptr_t i;
+> +
+> +    for (i = 0; i < DIV_ROUND_UP(oprsz, 8); ++i) {
+> +        uint64_t this_b, this_g = g[i];
+> +
+> +        brk = compute_brk(&this_b, n[i], this_g, brk, after);
+> +        d[i] = (this_b & this_g) | (d[i] & ~this_g);
+> +    }
+> +}
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

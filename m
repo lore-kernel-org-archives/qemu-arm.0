@@ -1,114 +1,115 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp693980wrq;
-        Tue, 5 Jun 2018 02:13:33 -0700 (PDT)
-X-Received: by 2002:a9d:5b3a:: with SMTP id x55-v6mr11543223oth.127.1528190013785;
-        Tue, 05 Jun 2018 02:13:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528190013; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp941186wrq;
+        Tue, 5 Jun 2018 06:25:08 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJQIGbW8Kf6ONu2TAZHp7BDaIzxl7+iWh/pzLcoZNkw+U2E86g4DfcNzsvhx+CIz1AsktV9
+X-Received: by 2002:a0c:f4c5:: with SMTP id o5-v6mr23979212qvm.123.1528205108641;
+        Tue, 05 Jun 2018 06:25:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528205108; cv=none;
         d=google.com; s=arc-20160816;
-        b=d2k5oNo2rmG4soyWQcVLCOE4Dt0evAEIO6EGPPO17qglH6GI9N4zpd8Bo8sN/fb8SX
-         KjMmve8iF46fNQg5QN415FvwfBrE7jg08vgpNnCkaNq/BododYCZhsSoamo9exGpHgf3
-         +diAkEdsVu4+uZB2C+csgxIK4gr+L3h7Y9B+61MjmxhUUHp0p7dGxxw4UV6r7Zcxy4N/
-         MZVziKDm1paUZwTD49kSYuBzgVtn8CJLePIpv8XOmmf4yOY7D1/B5+XQ0LosTHYd4tFc
-         m7sMWSPvemVwYA/B7MHJXyBDfliXRrxoARv8O5QZCcP7wPSF/+xFOhxTV83pJCESRD3G
-         93zw==
+        b=f4mApalpz3Mu3MT7WiYgaepyRjHa1Q6LGVWz97KDdQRrO+PYNa6keIy08Crk15Rqd+
+         X9wEoi5djXoGZ2T72RDTNy6hRxukcp+UxD5eq9huMYnGE4qkcIMaQwV2pt8sO1KBdRWT
+         GzZuKC9XUitGw//KicwKWwBPRaFCnx0cb50FG3AxGNl4hrixPJDD5YfejzrhUir1Cqfz
+         Loh8fH/tLGbpwYvsVtpuh+HbhjdFTIi7w6qDSH/3vMPa+PgWIvO0oeAY6GDXjoenOnns
+         g3B2qsoyF/c5QBg3k4k+2WHQCls74mjXoBz8P4kmM00KSjEBH/CkRnHWf3c8XFCEuprP
+         7/lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=nO5lgxDj5+MlcSvj8eEJ76rA/ZL+dh1JEZm+vBnSNUA=;
-        b=JpGzU4/+ehTdtoBNE8SWzAxPO4KCZCdv1gfi7sTKNAh7nsfptbnvgOkaqiQINHtIUp
-         QzfwbXPtIpbqst6FcU4l4qhg8/FEb0I8lvcwwaSTjPvq8GCxwQyUHJV0pCVQL8s5VmpK
-         T9hf+U1ggaPIvS0DkMaU6uJiiA4pmxOCSne9k66A88hF/Q/naPEqBoiiogZEEn7+14sx
-         3zAQvHzl4gggyEdZIpn/rplsIt8upHzNu4xsDIvylqaO1JVt2Kp2LBGWSrH3QhjAfSTs
-         iikAUDXUIui/vVcbnAOPyRSnDsrTJrIynYrW/cEX95Emeon5H5rYXyGl69IglP16Zjaz
-         /Z6Q==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=z6Iw/UZa45bw0H4RVVOwSEYTt7iFRM/o2akkJ3HEiPw=;
+        b=bd9JdN+yoJvF+tiIr65rMIVketIatFotuHJUKaCgPGmxeUYzCe3VXOx949sWf7Cd0d
+         NI0A1UDpThMYvGWbL8kqJcfxwRF6unC4UFujlwNtCpCOYHf4WqJ3wwtlpoI489zdOC1p
+         +t6GkFy3WSmxYYSB5i1N4Oket2HBbMwUS29Q2nNmz4DLKncR7MZZIrpmIKvkXS8eGSMx
+         O6/Ava6YfORyoVTI9TZC/MAdGfT9bNQBOaDBzxCHYOWeGcYP9dVB8wmOM/V9N7dDi5W1
+         7YQvrrrlzZkei0iGS11vUrD5TyBNdT2Y82XC1f0N2FfMN1fvRff/xUmvOJjg+sXTZxW1
+         wotg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YbjDKxhL;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 31-v6sor22054543otf.157.2018.06.05.02.13.33
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 05 Jun 2018 02:13:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <peterx@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id u1-v6si26821114qvg.40.2018.06.05.06.25.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 05 Jun 2018 06:25:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YbjDKxhL;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=nO5lgxDj5+MlcSvj8eEJ76rA/ZL+dh1JEZm+vBnSNUA=;
-        b=YbjDKxhLwzfbPmIrTbSKc11N+tbblFrPYgAgoHf7BEwUoPfJcPN2sFbB2MHvBpLuuf
-         QciDlLuC6a7508XaH+E5isiP+TIXq2y66WeJzbl5/iOwA3R/UBPKBg4AGO5XsfE9WPZB
-         pnQ0WcB1G018ca5EBl7ud2RqLjjEYwRxI9i+E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=nO5lgxDj5+MlcSvj8eEJ76rA/ZL+dh1JEZm+vBnSNUA=;
-        b=GUWWg+4N8FrltJOVXAuUNl0kRZhN3Eh+h4Yu2EjJn0Cg6LW4YmZrBneLQugiBU6CIr
-         ftjUBoe9Hxy2dy2DFCSx/SLfSGykV318Eswzy0VH8QpGbGkm3xrarU58DwUWDVGQ6baf
-         KxRJDvz7DAX+s2vJ+vqT8U7Y9zY6YkHiqETsEZalI7ncxJvR38+qWL1d7NsFDyi08L+i
-         kdxl+hOuQQ4NKlP97uQY1u5H8r6ICfg2SrFNM8/ws7QhPjdN8wVjCeVKvdYjvTr0jgqs
-         4TYAYoGGjJlhXpZZkWXTHBDoZmY4HD/uFSIwFMS3FrBDy+Eln1DhSaL+gv0tFYMyKB/h
-         KZug==
-X-Gm-Message-State: APt69E3SAwiSEj31cEzZoaf4nyXoUYAkXBIvPWeYPcrIK2K6ZsWV7cWN
-	M6bmO+veqgb818V+TK6oAxKuHtKofy6M5L/SOkfQNYik
-X-Google-Smtp-Source: ADUXVKJqKvsZZhFSH84LYZ8NsKSL/0oLoGofPH87u19y2sSaT6iozN0ksLCS+oCNYbSR7D3SNFEVzXnWB6ReV9J13zQ=
-X-Received: by 2002:a9d:3fda:: with SMTP id i26-v6mr16031673ote.126.1528190013323;
- Tue, 05 Jun 2018 02:13:33 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Tue, 5 Jun 2018 02:13:12 -0700 (PDT)
-In-Reply-To: <20180605073937.GD9216@xz-mi>
-References: <20180604152941.20374-1-peter.maydell@linaro.org> <20180605073937.GD9216@xz-mi>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Jun 2018 10:13:12 +0100
-Message-ID: <CAFEAcA-=WtB8bCM2Q=CATM9YBM7whRf5uK1fLhaJH_mfkip1uw@mail.gmail.com>
+       spf=pass (google.com: domain of peterx@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=peterx@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3AD9D40BC070;
+	Tue,  5 Jun 2018 13:25:08 +0000 (UTC)
+Received: from xz-mi (dhcp-14-151.nay.redhat.com [10.66.14.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EE9AE2026988;
+	Tue,  5 Jun 2018 13:25:04 +0000 (UTC)
+Date: Tue, 5 Jun 2018 21:25:01 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eric Auger <eric.auger@redhat.com>
 Subject: Re: [PATCH v2 00/13] iommu: support txattrs, support TCG execution,
  implement TZ MPC
-To: Peter Xu <peterx@redhat.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: Y1XAT7qsefqN
+Message-ID: <20180605132501.GH9216@xz-mi>
+References: <20180604152941.20374-1-peter.maydell@linaro.org>
+ <20180605073937.GD9216@xz-mi>
+ <CAFEAcA-=WtB8bCM2Q=CATM9YBM7whRf5uK1fLhaJH_mfkip1uw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-=WtB8bCM2Q=CATM9YBM7whRf5uK1fLhaJH_mfkip1uw@mail.gmail.com>
+User-Agent: Mutt/1.9.5 (2018-04-13)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]); Tue, 05 Jun 2018 13:25:08 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]); Tue, 05 Jun 2018 13:25:08 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'peterx@redhat.com' RCPT:''
+X-TUID: K2oQwaEvP9J/
 
-On 5 June 2018 at 08:39, Peter Xu <peterx@redhat.com> wrote:
-> On Mon, Jun 04, 2018 at 04:29:28PM +0100, Peter Maydell wrote:
->> Hi; this is v2 of my iommu patchset, which does:
->>  * support IOMMUs that are aware of memory transaction attributes and
->>    may generate different translations for different attributes
->>  * support TCG execution out of memory which is behind an IOMMU
->>  * implement the Arm TrustZone Memory Protection Controller
->>    (which needs both the above features in the IOMMU core code)
->>  * use the MPC in the mps2-an505 board
+On Tue, Jun 05, 2018 at 10:13:12AM +0100, Peter Maydell wrote:
+> On 5 June 2018 at 08:39, Peter Xu <peterx@redhat.com> wrote:
+> > On Mon, Jun 04, 2018 at 04:29:28PM +0100, Peter Maydell wrote:
+> >> Hi; this is v2 of my iommu patchset, which does:
+> >>  * support IOMMUs that are aware of memory transaction attributes and
+> >>    may generate different translations for different attributes
+> >>  * support TCG execution out of memory which is behind an IOMMU
+> >>  * implement the Arm TrustZone Memory Protection Controller
+> >>    (which needs both the above features in the IOMMU core code)
+> >>  * use the MPC in the mps2-an505 board
+> 
+> > It seems that this series is still using the IOMMU index way.  In case
+> > I missed anything... Could you elaborate a bit on why this IOMMU index
+> > solution is preferred comparing to the way to pass in MemTxAttrs?  Or
+> > was there any further discussion I missed on the topic?
+> >
+> > My last post to previous series is here:
+> >
+> > https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05702.html
+> >
+> > In that, I was still confused on why we couldn't use the existing
+> > MemTxAttrs directly instead of the new IOMMU index (and I explained on
+> > why that was prefered at least to me). I didn't see replies
+> > afterwards.
+> 
+> Broadly speaking I didn't think I had any further better
+> explanation than I'd already given in that thread, eg here:
+> https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05250.html
+> and here:
+> https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05513.html
+> 
+> If you want to make a specific (detailed) counterproposal of a
+> different API, I'm happy to look at whether that works for
+> the use cases I care about and whether it's a nicer way to do it.
 
-> It seems that this series is still using the IOMMU index way.  In case
-> I missed anything... Could you elaborate a bit on why this IOMMU index
-> solution is preferred comparing to the way to pass in MemTxAttrs?  Or
-> was there any further discussion I missed on the topic?
->
-> My last post to previous series is here:
->
-> https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05702.html
->
-> In that, I was still confused on why we couldn't use the existing
-> MemTxAttrs directly instead of the new IOMMU index (and I explained on
-> why that was prefered at least to me). I didn't see replies
-> afterwards.
+I posted a few pesudo code (ok, it can actually compile...) to show
+what I meant.  Please have a look there:
 
-Broadly speaking I didn't think I had any further better
-explanation than I'd already given in that thread, eg here:
-https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05250.html
-and here:
-https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg05513.html
+  [RFC 0/3] memory: enhance IOMMU notifier to support USER bit
 
-If you want to make a specific (detailed) counterproposal of a
-different API, I'm happy to look at whether that works for
-the use cases I care about and whether it's a nicer way to do it.
+I very suspect I missed some important requirement there but I cannot
+really figure it out myself.  Hope these patches can either provide an
+alternative solution on the problem, or help me to figure out what I
+missed.   Thanks,
 
-thanks
--- PMM
+-- 
+Peter Xu

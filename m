@@ -1,91 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp497738wrq;
-        Thu, 7 Jun 2018 23:27:28 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLtGMfrv42RNEIWrv5UWH/Z/xWRcQChYrA6ZcGXEz7SI1pehpQfZgQMPSxKu/3PY8CMqlY5
-X-Received: by 2002:a37:204c:: with SMTP id g73-v6mr4323942qkg.164.1528439248604;
-        Thu, 07 Jun 2018 23:27:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528439248; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp120343wrq;
+        Tue, 5 Jun 2018 16:10:01 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJxojYz9V4x8xPp6qBgnSAL2S2PyWaLvAs41EIk54gQhVjf5OSAlHdYQbLq697WIPuAyvQM
+X-Received: by 2002:a0c:b665:: with SMTP id q37-v6mr610452qvf.43.1528240201142;
+        Tue, 05 Jun 2018 16:10:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528240201; cv=none;
         d=google.com; s=arc-20160816;
-        b=LwWGhB+tUmBeaC6Z37RzPWLqABCOuHhiVXv6lul7/+r2wULAE7EiF7QuZUdgdRpREr
-         o3obDQGLLGNPqYq8bJl2TWZSUpjOHYYHRcU7iL8pgNZfz3lyNQSwIK+n2Y2ftJ8KEKbw
-         BHIFA/J5nTpKZlVDucouN/ESk/qX7qSvd6oBAAx/B/Z2eUJPzuTXDs9TOf4yYfgBctPL
-         4Ozt2aWQwsh83QoArx2voy2/Wp9WzIXXMKAvDLryKC51LE39ukDWZBG3NL0zCuqXwM79
-         kY4VluqsB4ZOi5p0VEeFfxrv9d+jXG7j2Bx4rey/xcdcsRL5KIpySKJr3ELJFMPIOUG9
-         OZnQ==
+        b=km9ePt15/lND0IFhqGcMcrJbm5CdkxivzGSOWRQKqdZ+9cZQBMMbDCwDpAPW3m0pM/
+         sUxo51hmm5AFFvVEkGFJKteGFmjtF8CcwzrDM3ik1FUeuo4ucgrocnPXtEPi9M4pCw8I
+         /Hv2asloEoZ6kflD/+zxQjFoP2BdKtyIdFmLcoUi71RA4w9Iz4YfWvpO2RCKMBY6rIV0
+         8lvON5ShNn5wC1RGUO2vKJ09uiPGbX32rKMwo68l7Mk6DSzgv+9EvpqwyJCkFn9Rg196
+         1nLec1ddiISQnbtLgwpPfhZUJyRJh4zQ7POQTx3x1GgqFjRnhSV+lTpfgmomPKmSOPp6
+         jgCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:to:from:arc-authentication-results;
-        bh=dRxIT0EN/RW5nW11UEpWiZ594HNib1vQV+z7RIn5cAk=;
-        b=AetBWMEhVPJuoN7PaBhODkP6N8Dh+K/cnpMTXDVDzNwuVmk4wPCwGtV5xhI3cmNjDJ
-         wIWECo3NuL7E29MC3XesvyIKcEktc7gpCUPnRpEC427/0Q6I2K1KSo1C+hQ1a2Qepr8w
-         LVq2qStWT1gwhw/i9E9qUDo02w3bXFH+bsx78MVD9CSHWOVnke7+UJzBYI7Q4nMdsR3g
-         BVlRtwXOTmsqnpdn8Rib9DfbQaadtUZxVYfoVX31zhlz6XE+9IgnvdH2Sgs/SoZvo58F
-         O2wYCxz8xf47R/bWJ7c9ZJIs9HUCG2lgQP1GHHnN6yQtBQeLkyzlmx3WKw09d+XEtGA1
-         tLeA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=v0RanHkJaJx7URtrzYeOL5rkXUVW1+pHmQfT9PGi6nk=;
+        b=i+Sx1tAcKTLCxFvstK+TUzvT3pgwG7djxaqu+57blNfPzW889mNq4gtoHhs7TqFgbk
+         CJ+LyvZN6uG7ee2PwNjZ0y165zZZsEX/fmMLxUXB1WK1jMIxm2mJKXaRJgCEyupXE7aV
+         P3kDcw9L8dt5lqspYG8coVO1stjVqqSBkA1x73fj+zh93A1DCkisElPmVXDfjrQsFEy/
+         RuLpevVlGQT0k2n/dgfdVU1A3uu+uGLxFucyNIy8fP1aOWTfV/XpxzrHrteM8/yWORJI
+         UBbyAqWdNG0m5RGNLdzNYWNl9gUk1RDnrwPuf/Q1zSlOqjsKGNhX9LqElLCUrgEAKNJx
+         TCkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EGWJCJSC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m20-v6si3199579qvl.87.2018.06.07.23.27.28
+        by mx.google.com with ESMTPS id m24-v6si1249123qtb.86.2018.06.05.16.10.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Jun 2018 23:27:28 -0700 (PDT)
+        Tue, 05 Jun 2018 16:10:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33429 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EGWJCJSC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:49514 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fRArw-00087K-3O
-	for alex.bennee@linaro.org; Fri, 08 Jun 2018 02:27:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48228)
+	id 1fQL5U-0001td-Jk
+	for alex.bennee@linaro.org; Tue, 05 Jun 2018 19:10:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59599)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fRArp-000879-IB
-	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 02:27:22 -0400
+	(envelope-from <alistair23@gmail.com>) id 1fQL5K-0001ls-FF
+	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 19:09:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fRArm-0004ks-Fr
-	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 02:27:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39814)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fRArm-0004kY-9D; Fri, 08 Jun 2018 02:27:18 -0400
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com
-	[10.5.11.25])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6392A4ACA0;
-	Fri,  8 Jun 2018 06:27:17 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-48.ams2.redhat.com
-	[10.36.116.48])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 258B02016361;
-	Fri,  8 Jun 2018 06:27:17 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id DAD241138645; Fri,  8 Jun 2018 08:27:15 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-References: <20180607144645.10187-1-f4bug@amsat.org>
-	<20180607144645.10187-4-f4bug@amsat.org>
-Date: Fri, 08 Jun 2018 08:27:15 +0200
-In-Reply-To: <20180607144645.10187-4-f4bug@amsat.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 7 Jun 2018 11:46:44
-	-0300")
-Message-ID: <877en9bxoc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
+	(envelope-from <alistair23@gmail.com>) id 1fQL5J-0006nC-8O
+	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 19:09:50 -0400
+Received: from mail-lf0-x242.google.com ([2a00:1450:4010:c07::242]:43332)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1fQL5G-0006lh-ES; Tue, 05 Jun 2018 19:09:46 -0400
+Received: by mail-lf0-x242.google.com with SMTP id n15-v6so6140644lfn.10;
+	Tue, 05 Jun 2018 16:09:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=v0RanHkJaJx7URtrzYeOL5rkXUVW1+pHmQfT9PGi6nk=;
+	b=EGWJCJSCa7I7Yr9luipW4oH7fBDS+TsccZj5BW0dlIVPsg8JaqR/Z9TOp1MdjU78wM
+	y5JCwyDkiTdVzWRnmp+RPnWlMv9Wsg22SM0q7rU2pekf0lznV6w37XaiINqRqGROqxXy
+	+/gx0cKyTNR0dEMqCjmXqm8QrOL5oqt+1rzvrnxT5yjXCJnjsPkr5DbITo1qtTdlMV4h
+	wuo7vT+ii20pmLv22FVjRm+Ioq78uXJZWndLDbVHRaergGlTAKGCkyIBIWR8cw6w7j7w
+	A5k6VlwalGR0ORw87t7IUaCJdCsnLBJpGPXVV/3OpbtFXtzkUac2NWx9vGeKE/ymUego
+	Eo9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=v0RanHkJaJx7URtrzYeOL5rkXUVW1+pHmQfT9PGi6nk=;
+	b=qe1qn6w6dRDwjwtp9RIxxHQ3qV0jhAv3pIsU6umwoTb3Cu5FBsMjUT30KVnRuVGdsB
+	v14o6Mt+6idty9RbnStk/DkkXZiAVK+Touw+yIBAWNTn0bxPwWuGjCItJlMTcKCjSWPA
+	934+ykzgsP036WPvogLMGvcuoSd/H7KK51MXRv9C2TprK09yyB7G7zrOlnVIVb9bDApg
+	2NFKbntZdhi42i9UDfOj++ENDf1h7Bjjg2KXJw9J4EX9Ci1gYRxdmskOFDf68qq39/aH
+	jyCZwxIW1nPz6vR+GR9JbZL2YJQcooLnFqTOeY3y7PivLzJBoLo4TiUXXp3hsc/daiNP
+	wZqQ==
+X-Gm-Message-State: APt69E3LXSbEbcn3/a9Glm1ZjXWSPYGtnLMdAz3frAuWpiNM3PJT9fQT
+	Dt9DuMpgN4aZrIywpNjOktFW2mPJvWwC78SRBmc=
+X-Received: by 2002:a19:b2c2:: with SMTP id t63-v6mr325917lfk.27.1528240183657;
+	Tue, 05 Jun 2018 16:09:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.25
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 08 Jun 2018 06:27:17 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 3/4] hw/arm/sysbus-fdt:
- Replace error_setg(&error_fatal) by error_report() + exit()
+Received: by 2002:a2e:20e2:0:0:0:0:0 with HTTP;
+	Tue, 5 Jun 2018 16:09:13 -0700 (PDT)
+In-Reply-To: <1528233505-25842-1-git-send-email-thuth@redhat.com>
+References: <1528233505-25842-1-git-send-email-thuth@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 5 Jun 2018 16:09:13 -0700
+X-Google-Sender-Auth: LxyWXlsmKdWPbLiL1l5TGkr1SK8
+Message-ID: <CAKmqyKM0O+oLZyxXuW+tdydgrHEi1SpJdTkO_5ixT8pXGGZrKA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm: Remove the deprecated
+ xlnx-ep108 machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,70 +106,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@suse.de>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t9Beh/1WNLPH
+X-TUID: PmcYI7t8z55m
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> Use error_report() + exit() instead of error_setg(&error_fatal),
-> as suggested by the "qapi/error.h" documentation:
+On Tue, Jun 5, 2018 at 2:18 PM, Thomas Huth <thuth@redhat.com> wrote:
+> It has been marked as deprecated since QEMU v2.11, so it is time to
+> remove this now. The xlnx-zcu102 machine is very much the same and
+> can be used as a replacement instead.
 >
->    Please don't error_setg(&error_fatal, ...), use error_report() and
->    exit(), because that's more obvious.
->
-> This fixes CID 1352173:
->     "Passing null pointer dt_name to qemu_fdt_node_path, which dereferenc=
-es it."
->
-> And this also fixes:
->
->     hw/arm/sysbus-fdt.c:322:9: warning: Array access (from variable 'node=
-_path') results in a null pointer dereference
->         if (node_path[1]) {
->             ^~~~~~~~~~~~
->
-> Fixes: Coverity CID 1352173 (Dereference after null check)
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-You lost
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-  Suggested-by: Eric Blake <eblake@redhat.com>
+Alistair
 
-Intentional?
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/arm/sysbus-fdt.c | 42 +++++++++++++++++++++++-------------------
->  1 file changed, 23 insertions(+), 19 deletions(-)
+>  hw/arm/xlnx-zcu102.c | 62 ++--------------------------------------------------
+>  qemu-doc.texi        |  5 -----
+>  2 files changed, 2 insertions(+), 65 deletions(-)
 >
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index e4c492ea44..8e2784fa11 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -91,7 +91,7 @@ static void copy_properties_from_host(HostProperty *pro=
-ps, int nb_props,
->          r =3D qemu_fdt_getprop(host_fdt, node_path,
->                               props[i].name,
->                               &prop_len,
-> -                             props[i].optional ? &err : &error_fatal);
-> +                             &err);
->          if (r) {
->              qemu_fdt_setprop(guest_fdt, nodename,
->                               props[i].name, r, prop_len);
-> @@ -102,6 +102,7 @@ static void copy_properties_from_host(HostProperty *p=
-rops, int nb_props,
->              } else {
->                  error_free(err);
->              }
-> +            assert(props[i].optional); /* mandatory property not found */
->          }
->      }
+> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+> index c70278c..f26fd8e 100644
+> --- a/hw/arm/xlnx-zcu102.c
+> +++ b/hw/arm/xlnx-zcu102.c
+> @@ -39,10 +39,6 @@ typedef struct XlnxZCU102 {
+>  #define ZCU102_MACHINE(obj) \
+>      OBJECT_CHECK(XlnxZCU102, (obj), TYPE_ZCU102_MACHINE)
+>
+> -#define TYPE_EP108_MACHINE   MACHINE_TYPE_NAME("xlnx-ep108")
+> -#define EP108_MACHINE(obj) \
+> -    OBJECT_CHECK(XlnxZCU102, (obj), TYPE_EP108_MACHINE)
+> -
+>  static struct arm_boot_info xlnx_zcu102_binfo;
+>
+>  static bool zcu102_get_secure(Object *obj, Error **errp)
+> @@ -73,8 +69,9 @@ static void zcu102_set_virt(Object *obj, bool value, Error **errp)
+>      s->virt = value;
 >  }
-
-This is not the conversion the commit message promised: it replaces
-exit(1) by abort().  Why?
-
-[Remainder of the patch is unchanged]
+>
+> -static void xlnx_zynqmp_init(XlnxZCU102 *s, MachineState *machine)
+> +static void xlnx_zcu102_init(MachineState *machine)
+>  {
+> +    XlnxZCU102 *s = ZCU102_MACHINE(machine);
+>      int i;
+>      uint64_t ram_size = machine->ram_size;
+>
+> @@ -183,60 +180,6 @@ static void xlnx_zynqmp_init(XlnxZCU102 *s, MachineState *machine)
+>      arm_load_kernel(s->soc.boot_cpu_ptr, &xlnx_zcu102_binfo);
+>  }
+>
+> -static void xlnx_ep108_init(MachineState *machine)
+> -{
+> -    XlnxZCU102 *s = EP108_MACHINE(machine);
+> -
+> -    if (!qtest_enabled()) {
+> -        info_report("The Xilinx EP108 machine is deprecated, please use the "
+> -                    "ZCU102 machine (which has the same features) instead.");
+> -    }
+> -
+> -    xlnx_zynqmp_init(s, machine);
+> -}
+> -
+> -static void xlnx_ep108_machine_instance_init(Object *obj)
+> -{
+> -    XlnxZCU102 *s = EP108_MACHINE(obj);
+> -
+> -    /* EP108, we don't support setting secure or virt */
+> -    s->secure = false;
+> -    s->virt = false;
+> -}
+> -
+> -static void xlnx_ep108_machine_class_init(ObjectClass *oc, void *data)
+> -{
+> -    MachineClass *mc = MACHINE_CLASS(oc);
+> -
+> -    mc->desc = "Xilinx ZynqMP EP108 board (Deprecated, please use xlnx-zcu102)";
+> -    mc->init = xlnx_ep108_init;
+> -    mc->block_default_type = IF_IDE;
+> -    mc->units_per_default_bus = 1;
+> -    mc->ignore_memory_transaction_failures = true;
+> -    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
+> -    mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
+> -}
+> -
+> -static const TypeInfo xlnx_ep108_machine_init_typeinfo = {
+> -    .name       = MACHINE_TYPE_NAME("xlnx-ep108"),
+> -    .parent     = TYPE_MACHINE,
+> -    .class_init = xlnx_ep108_machine_class_init,
+> -    .instance_init = xlnx_ep108_machine_instance_init,
+> -    .instance_size = sizeof(XlnxZCU102),
+> -};
+> -
+> -static void xlnx_ep108_machine_init_register_types(void)
+> -{
+> -    type_register_static(&xlnx_ep108_machine_init_typeinfo);
+> -}
+> -
+> -static void xlnx_zcu102_init(MachineState *machine)
+> -{
+> -    XlnxZCU102 *s = ZCU102_MACHINE(machine);
+> -
+> -    xlnx_zynqmp_init(s, machine);
+> -}
+> -
+>  static void xlnx_zcu102_machine_instance_init(Object *obj)
+>  {
+>      XlnxZCU102 *s = ZCU102_MACHINE(obj);
+> @@ -289,4 +232,3 @@ static void xlnx_zcu102_machine_init_register_types(void)
+>  }
+>
+>  type_init(xlnx_zcu102_machine_init_register_types)
+> -type_init(xlnx_ep108_machine_init_register_types)
+> diff --git a/qemu-doc.texi b/qemu-doc.texi
+> index f00706b..2effe66 100644
+> --- a/qemu-doc.texi
+> +++ b/qemu-doc.texi
+> @@ -2965,11 +2965,6 @@ support page sizes < 4096 any longer.
+>
+>  @section System emulator machines
+>
+> -@subsection Xilinx EP108 (since 2.11.0)
+> -
+> -The ``xlnx-ep108'' machine has been replaced by the ``xlnx-zcu102'' machine.
+> -The ``xlnx-zcu102'' machine has the same features and capabilites in QEMU.
+> -
+>  @section Block device options
+>
+>  @subsection "backing": "" (since 2.12.0)
+> --
+> 1.8.3.1
+>
+>

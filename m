@@ -1,84 +1,82 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1123843wrq;
-        Wed, 13 Jun 2018 12:51:12 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIVUuL+CrYDVQiV5+zcbpw6DwVMEzrAqg8FJR2qaWZs0zaMWmNFzMaU3Jj97bLyEq73ERp5
-X-Received: by 2002:ac8:783:: with SMTP id l3-v6mr5930218qth.381.1528919472548;
-        Wed, 13 Jun 2018 12:51:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528919472; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp32153wrq;
+        Tue, 5 Jun 2018 14:18:46 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL+15xl1LDDnfQ9vmgHIlALjvQ+ISq1EP0Gctn3I3S3sp/BGQYuYPwYB6ea2nlQ6pPnYLWo
+X-Received: by 2002:a0c:b620:: with SMTP id f32-v6mr315158qve.3.1528233526120;
+        Tue, 05 Jun 2018 14:18:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528233526; cv=none;
         d=google.com; s=arc-20160816;
-        b=y6Q/AqrfFt29PNUXhBZu0VREe77Ac5JrtS16/aKxqI2Q71E5BsaBJay+nHQu63S5cU
-         RzKcJqO9PoHH7h6Z021RI69OFPz1o2X/8uUCU1nkz/sz40wkaYYGly3crVkfr74UspdQ
-         mYFRJ3jVesXh5yW/t5Bta2fH6J/XL7RRk/w6mgIGI22qNNzeXDIpFPiEKfPe+ZuQKHsq
-         NQ0Pm9ew02IiLiatvoMNmC/7QTevCTeRNF4rm0HWMZ7foGi4Gapu8RW8o0b0Tw8tC64V
-         1jw9jt65PYbAEpnatAvh8hYWcT+zABOu1MPKjyb5+7D9CJywwO8PQ2aPeSfZhUWqCwY4
-         X8fg==
+        b=FMvPMOkJwQtT/L/Vj0SjgIjAgm0xh08g+AzRKW8/PfQgr6xhW/EYWbjwTpTABO7W1l
+         VKTIYZ3b4RFA4kt4fFBDLVR6ob+CE9nYDtOHb4zdNDGHE8TZCwlbZBk8LHs7bIfK/C2c
+         E1SZIcGuDZ70mZAKhrHr6O/0c/+7Al7it+b7ysxjgl/HPBlnS/yx4x+9axJ4FSaX6Y55
+         lC+goY5Pva55FL0dPldEhK7oPHVgtLlgPPF1TfdwuqZVF7feAb0YOXgPQTlbUqXw4FQz
+         xyBLSF0QuNgUSjIQUO4hi/bB7exRc6VTFM0GoQ/4RyU9xbhJkY7PbSihQKLQ538fBc7Q
+         yuSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:arc-authentication-results;
-        bh=6Xf5/YvElCVOZB/N3/axepbVF7l5cIxcBk76oQ59HY4=;
-        b=cqouC4Yl2159hEmd0GdGsRRDGOi/PowHjl8f6aOAsktBYHf29OoK/wpwzkliO7re1u
-         EMAKY850qLg+Lu0ifi3IzVDrY5G8sk1Kn8Ri/r6Cn9LjtE8Nhmb3Xf5M4ReAzcZinawL
-         WRkz9NybB3h+CrAZ5b5segxi9S4MDsXMaIFbYn9fzkEo9fDJ7xtxoNhLaKuEjVvdVyJ1
-         fP5XN3bt1bBM79XwaAvdeWfZJTGrVrr80hZG238j5hqK0mLfO8Jrz5GTDJwljvdCeg1C
-         3Ql5iaPwpDI2uYWRe6EDd3RYkw7CWM79HqudxifETqRs4UPkYv0Lds3EZZAHQcF+OGCl
-         VApg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=xdBAyB3oORTvX3zUqZSismGCVuMu8pJJumfiEDcfo14=;
+        b=M6xWQNMkjBRAzUYCDHK4KxLjfSofpU1iTv1FMTP9PkwuHGNSeoSiVSETe0CTWVOL69
+         E5KbFvId5IMkzpMpZ62iTyxw1FlXm1ZC0D+FdStZhjlgjR7julKrOni/RngE0HSilQo8
+         Rk3uiUNe7ggbGqfWZfuJeGyq9zQHESNgbCVEMk/vUseWrW1qss3mgRqbspfRge/hK5PV
+         cUXK5xmxXe+JZw0s8EufHQdnka1KOHDm9OKkYCNzzLE17o4SqISyH4ue40yOD0p3Iw2D
+         SIvCbm4N2Uk3T7PlQhhATwJQChC0kDy21mncU71uUGIjGLarUu3VN9ou/OXSVemDpZTX
+         Ogzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p2-v6si923965qvj.20.2018.06.13.12.51.12
+        by mx.google.com with ESMTPS id p124-v6si8589964qkd.304.2018.06.05.14.18.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Jun 2018 12:51:12 -0700 (PDT)
+        Tue, 05 Jun 2018 14:18:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36628 helo=lists.gnu.org)
+Received: from localhost ([::1]:49161 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTBnU-0006Uh-1k
-	for alex.bennee@linaro.org; Wed, 13 Jun 2018 15:51:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39130)
+	id 1fQJLp-0000wM-3V
+	for alex.bennee@linaro.org; Tue, 05 Jun 2018 17:18:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42119)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1fTBnM-0006UY-RH
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 15:51:06 -0400
+	(envelope-from <thuth@redhat.com>) id 1fQJLe-0000w3-1W
+	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 17:18:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1fTBnJ-00042n-MB
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 15:51:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34538)
+	(envelope-from <thuth@redhat.com>) id 1fQJLZ-0005O8-4r
+	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 17:18:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51340 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1fTBnJ-00040v-Dj; Wed, 13 Jun 2018 15:51:01 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fQJLY-0005Ns-Vl; Tue, 05 Jun 2018 17:18:29 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B83ACC057F9F;
-	Wed, 13 Jun 2018 19:50:59 +0000 (UTC)
-Received: from w520.home (ovpn-116-135.phx2.redhat.com [10.3.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6E5C4500DF;
-	Wed, 13 Jun 2018 19:50:47 +0000 (UTC)
-Date: Wed, 13 Jun 2018 13:50:47 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20180613135047.5c1ce227@w520.home>
-In-Reply-To: <20180613084149.14523-4-kraxel@redhat.com>
-References: <20180613084149.14523-1-kraxel@redhat.com>
-	<20180613084149.14523-4-kraxel@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+	by mx1.redhat.com (Postfix) with ESMTPS id 147EAE44B5;
+	Tue,  5 Jun 2018 21:18:28 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-99.ams2.redhat.com [10.36.116.99])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 69EF06B43F;
+	Tue,  5 Jun 2018 21:18:26 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Alistair Francis <alistair@alistair23.me>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
+Date: Tue,  5 Jun 2018 23:18:25 +0200
+Message-Id: <1528233505-25842-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 13 Jun 2018 19:50:59 +0000 (UTC)
+	(mx1.redhat.com [10.11.55.1]);
+	Tue, 05 Jun 2018 21:18:28 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Tue, 05 Jun 2018 21:18:28 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v4 3/3] hw/vfio/display: add ramfb support
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH] hw/arm: Remove the deprecated xlnx-ep108 machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,141 +88,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
-	Erik Skultety <eskultet@redhat.com>, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, Laine Stump <laine@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?B?TMOhc3psw7Mgw4lyc2Vr?= <lersek@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mZr9EDWqGBmf
+X-TUID: CQUveEivUbRh
 
-On Wed, 13 Jun 2018 10:41:49 +0200
-Gerd Hoffmann <kraxel@redhat.com> wrote:
+It has been marked as deprecated since QEMU v2.11, so it is time to
+remove this now. The xlnx-zcu102 machine is very much the same and
+can be used as a replacement instead.
 
-> So we have a boot display when using a vgpu as primary display.
-> 
-> Use vfio-pci-ramfb instead of vfio-pci to enable it.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/arm/xlnx-zcu102.c | 62 ++--------------------------------------------------
+ qemu-doc.texi        |  5 -----
+ 2 files changed, 2 insertions(+), 65 deletions(-)
 
-Using a different device here seems like it almost guarantees a very
-complicated path to support under libvirt.  What necessitates this
-versus a simple ramfb=on option to vfio-pci?
-
-I'm also not sure I understand the usage model, SeaBIOS and OVMF know
-how to write to this display, but it seems that the guest does not.  I
-suppose in the UEFI case runtime services can be used to continue
-writing this display, but BIOS doesn't have such an option, unless
-we're somehow emulating VGA here.  So for UEFI, I can imagine this
-covers us from power on through firmware boot and up to guest drivers
-initializing the GPU (assuming the vGPU supports a kernel mode driver,
-does NVIDIA?), but for BIOS it seems we likely still have a break from
-the bootloader to GPU driver initialization. For instance, what driver
-is used to draw the boot animation (or blue screen) on SeaBIOS Windows
-VM?  I'm assuming that this display and the vGPU display are one in the
-same, so there's some cut from one to the other.  Thanks,
-
-Alex
-
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  include/hw/vfio/vfio-common.h |  2 ++
->  hw/vfio/display.c             | 10 ++++++++++
->  hw/vfio/pci.c                 | 15 +++++++++++++++
->  3 files changed, 27 insertions(+)
-> 
-> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
-> index a9036929b2..a58d7e7e77 100644
-> --- a/include/hw/vfio/vfio-common.h
-> +++ b/include/hw/vfio/vfio-common.h
-> @@ -26,6 +26,7 @@
->  #include "qemu/queue.h"
->  #include "qemu/notify.h"
->  #include "ui/console.h"
-> +#include "hw/display/ramfb.h"
->  #ifdef CONFIG_LINUX
->  #include <linux/vfio.h>
->  #endif
-> @@ -143,6 +144,7 @@ typedef struct VFIODMABuf {
->  
->  typedef struct VFIODisplay {
->      QemuConsole *con;
-> +    RAMFBState *ramfb;
->      struct {
->          VFIORegion buffer;
->          DisplaySurface *surface;
-> diff --git a/hw/vfio/display.c b/hw/vfio/display.c
-> index 59c0e5d1d7..409d5a2e3a 100644
-> --- a/hw/vfio/display.c
-> +++ b/hw/vfio/display.c
-> @@ -124,6 +124,9 @@ static void vfio_display_dmabuf_update(void *opaque)
->  
->      primary = vfio_display_get_dmabuf(vdev, DRM_PLANE_TYPE_PRIMARY);
->      if (primary == NULL) {
-> +        if (dpy->ramfb) {
-> +            ramfb_display_update(dpy->con, dpy->ramfb);
-> +        }
->          return;
->      }
->  
-> @@ -181,6 +184,8 @@ static int vfio_display_dmabuf_init(VFIOPCIDevice *vdev, Error **errp)
->      vdev->dpy->con = graphic_console_init(DEVICE(vdev), 0,
->                                            &vfio_display_dmabuf_ops,
->                                            vdev);
-> +    if (strcmp(object_get_typename(OBJECT(vdev)), "vfio-pci-ramfb") == 0)
-> +        vdev->dpy->ramfb = ramfb_setup(errp);
->      return 0;
->  }
->  
-> @@ -228,6 +233,9 @@ static void vfio_display_region_update(void *opaque)
->          return;
->      }
->      if (!plane.drm_format || !plane.size) {
-> +        if (dpy->ramfb) {
-> +            ramfb_display_update(dpy->con, dpy->ramfb);
-> +        }
->          return;
->      }
->      format = qemu_drm_format_to_pixman(plane.drm_format);
-> @@ -300,6 +308,8 @@ static int vfio_display_region_init(VFIOPCIDevice *vdev, Error **errp)
->      vdev->dpy->con = graphic_console_init(DEVICE(vdev), 0,
->                                            &vfio_display_region_ops,
->                                            vdev);
-> +    if (strcmp(object_get_typename(OBJECT(vdev)), "vfio-pci-ramfb") == 0)
-> +        vdev->dpy->ramfb = ramfb_setup(errp);
->      return 0;
->  }
->  
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 18c493b49e..6a2b42a595 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -3234,9 +3234,24 @@ static const TypeInfo vfio_pci_dev_info = {
->      },
->  };
->  
-> +static void vfio_pci_ramfb_dev_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->hotpluggable = false;
-> +}
-> +
-> +static const TypeInfo vfio_pci_ramfb_dev_info = {
-> +    .name = "vfio-pci-ramfb",
-> +    .parent = "vfio-pci",
-> +    .instance_size = sizeof(VFIOPCIDevice),
-> +    .class_init = vfio_pci_ramfb_dev_class_init,
-> +};
-> +
->  static void register_vfio_pci_dev_type(void)
->  {
->      type_register_static(&vfio_pci_dev_info);
-> +    type_register_static(&vfio_pci_ramfb_dev_info);
->  }
->  
->  type_init(register_vfio_pci_dev_type)
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index c70278c..f26fd8e 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -39,10 +39,6 @@ typedef struct XlnxZCU102 {
+ #define ZCU102_MACHINE(obj) \
+     OBJECT_CHECK(XlnxZCU102, (obj), TYPE_ZCU102_MACHINE)
+ 
+-#define TYPE_EP108_MACHINE   MACHINE_TYPE_NAME("xlnx-ep108")
+-#define EP108_MACHINE(obj) \
+-    OBJECT_CHECK(XlnxZCU102, (obj), TYPE_EP108_MACHINE)
+-
+ static struct arm_boot_info xlnx_zcu102_binfo;
+ 
+ static bool zcu102_get_secure(Object *obj, Error **errp)
+@@ -73,8 +69,9 @@ static void zcu102_set_virt(Object *obj, bool value, Error **errp)
+     s->virt = value;
+ }
+ 
+-static void xlnx_zynqmp_init(XlnxZCU102 *s, MachineState *machine)
++static void xlnx_zcu102_init(MachineState *machine)
+ {
++    XlnxZCU102 *s = ZCU102_MACHINE(machine);
+     int i;
+     uint64_t ram_size = machine->ram_size;
+ 
+@@ -183,60 +180,6 @@ static void xlnx_zynqmp_init(XlnxZCU102 *s, MachineState *machine)
+     arm_load_kernel(s->soc.boot_cpu_ptr, &xlnx_zcu102_binfo);
+ }
+ 
+-static void xlnx_ep108_init(MachineState *machine)
+-{
+-    XlnxZCU102 *s = EP108_MACHINE(machine);
+-
+-    if (!qtest_enabled()) {
+-        info_report("The Xilinx EP108 machine is deprecated, please use the "
+-                    "ZCU102 machine (which has the same features) instead.");
+-    }
+-
+-    xlnx_zynqmp_init(s, machine);
+-}
+-
+-static void xlnx_ep108_machine_instance_init(Object *obj)
+-{
+-    XlnxZCU102 *s = EP108_MACHINE(obj);
+-
+-    /* EP108, we don't support setting secure or virt */
+-    s->secure = false;
+-    s->virt = false;
+-}
+-
+-static void xlnx_ep108_machine_class_init(ObjectClass *oc, void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-
+-    mc->desc = "Xilinx ZynqMP EP108 board (Deprecated, please use xlnx-zcu102)";
+-    mc->init = xlnx_ep108_init;
+-    mc->block_default_type = IF_IDE;
+-    mc->units_per_default_bus = 1;
+-    mc->ignore_memory_transaction_failures = true;
+-    mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
+-    mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
+-}
+-
+-static const TypeInfo xlnx_ep108_machine_init_typeinfo = {
+-    .name       = MACHINE_TYPE_NAME("xlnx-ep108"),
+-    .parent     = TYPE_MACHINE,
+-    .class_init = xlnx_ep108_machine_class_init,
+-    .instance_init = xlnx_ep108_machine_instance_init,
+-    .instance_size = sizeof(XlnxZCU102),
+-};
+-
+-static void xlnx_ep108_machine_init_register_types(void)
+-{
+-    type_register_static(&xlnx_ep108_machine_init_typeinfo);
+-}
+-
+-static void xlnx_zcu102_init(MachineState *machine)
+-{
+-    XlnxZCU102 *s = ZCU102_MACHINE(machine);
+-
+-    xlnx_zynqmp_init(s, machine);
+-}
+-
+ static void xlnx_zcu102_machine_instance_init(Object *obj)
+ {
+     XlnxZCU102 *s = ZCU102_MACHINE(obj);
+@@ -289,4 +232,3 @@ static void xlnx_zcu102_machine_init_register_types(void)
+ }
+ 
+ type_init(xlnx_zcu102_machine_init_register_types)
+-type_init(xlnx_ep108_machine_init_register_types)
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index f00706b..2effe66 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -2965,11 +2965,6 @@ support page sizes < 4096 any longer.
+ 
+ @section System emulator machines
+ 
+-@subsection Xilinx EP108 (since 2.11.0)
+-
+-The ``xlnx-ep108'' machine has been replaced by the ``xlnx-zcu102'' machine.
+-The ``xlnx-zcu102'' machine has the same features and capabilites in QEMU.
+-
+ @section Block device options
+ 
+ @subsection "backing": "" (since 2.12.0)
+-- 
+1.8.3.1
 

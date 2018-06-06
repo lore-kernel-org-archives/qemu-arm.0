@@ -1,111 +1,112 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp588948wrq;
-        Wed, 6 Jun 2018 02:32:07 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJTUBz4GuKV9XyfTf4kyI7rvS+XxXZLzGGdDV7kmiF+eICQOw3Uyf1KnKqwVCb+S+Uw3nzB
-X-Received: by 2002:a0c:b116:: with SMTP id q22-v6mr454948qvc.19.1528277527165;
-        Wed, 06 Jun 2018 02:32:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528277527; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp589055wrq;
+        Wed, 6 Jun 2018 02:32:13 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL1pfj5cNQp2UPiR8B57QAZiw4jm0Yu9mhIsm+3QcWUZ9GsOeKjT2r7wMnsmbm6rvGHxMjz
+X-Received: by 2002:ac8:678c:: with SMTP id b12-v6mr1907143qtp.314.1528277532960;
+        Wed, 06 Jun 2018 02:32:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528277532; cv=none;
         d=google.com; s=arc-20160816;
-        b=EVX6WdzE8AB4uVX97BALT7s3skIzV5idQJWBRwDXNgB/HdLz1uiqlMYqa2yseH0Gqy
-         lW7NvrT8i/6LOVJZAua8Qnr//cGcoEcRSS0y7DxBHA2hMxYktI2zxDTGHi/3ZDyIWffy
-         3cLles28yzJxAj/KaskaRpHlQFGBou2c+cmiJ6vuTTAo+ldkvheHjAzdrTyv2+axYbvZ
-         vTYYhF09hHHnSk6peccq0+4txelw1si2ChYf9ADMBFd64LzluELl54JcMCtRCYLxVd/O
-         /RhAoT744CiDRkfbWHtMHHllnlGO0rOHrEroXoGQtIT4dyu8guc/qRf3HISYhKhciB63
-         e7eg==
+        b=aaIycau8jUXkFthDQghvtxsgDdDAmz3hkzDs2241oX0MJkZ/X30ecP4ccNfWz4ZtCn
+         OJw66ISaOcL1SqTLU5PC4aEbgqZJK/I4/pCJY3JdgedKvE95NDbCWV5o5BBJgFT1ymAt
+         h6zizMH+XbRkTCGkqlFXxlhKQY+iWf8Ird+BPJaLLlyaOUQKBVcKRF0rCIX+/rGfoMDQ
+         5Nio1UlzRATOm0TJX2bsJbsCCbtIhNFTllsMKdXID0yQnLM6H2KqxaF8rYIIEe3ggGnb
+         Lml2ABDNdF98qVJrjaPMbbs5Wm8m2SllFe5Hh2tz79SeDhKnKBI4VUHKJJtU2MUHRUmy
+         EWGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature:arc-authentication-results;
-        bh=BsJQxZpN6KFA3toqOpRwYkiWDh77Bk0n0Tjv1fYBeD4=;
-        b=kPjPQSzjEtWSLJ+8AkFXJe01Jo96yzPM6qqFTuOxMrV9YDwfDhobxoa/HKjd+fGqL1
-         iHhDfcgUSz3TGPJcbEgFyDWiPMyr0Z86EHjQoPAMCSJ38d/G2twwM9wwPZnPsi/HUNl3
-         Z+EUMzLBKTlAUjZd8F+wUJQ7ACU4/GQov7UtixlvMMlPtVt02+k36Yy7PbLMRHCBcNt+
-         AbPv7ZLaNu8oauoOu0xWYfBLC+qPwRuWjgXOFHsy7P7iPeVwZxbBINFjx2+Z7tLfqRPp
-         rodWW0+k6xHpJtkpILbUZItWkNILVvLNGBaLU6RCa8iwTWq4ZqL/b2XYSabUllAO3M/s
-         503w==
+        bh=par5BFbGlkDzrToWMjDjEaNL0L9+ebvHbuKlzz7+Dro=;
+        b=tlVVWriexB1Sgf752ii0fsjOufhQkvI/A6ay/lC76xpak9YodugbIlBzlaNODbB3np
+         U+ED2+qZTR7ji3vReKvHBydcSDTeCQ4h0uPB4dc61YZk1xdj6c4CuZXXwJnVfewZyabj
+         OPC429yhmJDDpvgsLrZOJWdinspHqg4QTdVUfipjuv6gvl3ifWAvnbaX1g23U8awMwgR
+         XVmb/Kszgue7SXzoIaREc3yXBCWdQp/MsbEdtlKoRuKkRxEpVAuEr3lZJkd4U2gkJsB2
+         MaHb13KqLml2UeH0CU9fsKSzPgS8WGUwid1X6Yzl9x61ASowckIawXjhLaF0lFstVmi1
+         d+ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=yUmO7zdN;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Cz+c3ZY4;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Cz+c3ZY4;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=HtSQ2mGv;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=Mvc5u4bQ;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=Mvc5u4bQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y67-v6si4059503qkd.160.2018.06.06.02.32.07
+        by mx.google.com with ESMTPS id m5-v6si9415114qvf.19.2018.06.06.02.32.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 06 Jun 2018 02:32:07 -0700 (PDT)
+        Wed, 06 Jun 2018 02:32:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=yUmO7zdN;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Cz+c3ZY4;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Cz+c3ZY4;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=HtSQ2mGv;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=Mvc5u4bQ;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=Mvc5u4bQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:51015 helo=lists.gnu.org)
+Received: from localhost ([::1]:51022 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fQUnW-0001it-JH
-	for alex.bennee@linaro.org; Wed, 06 Jun 2018 05:32:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33812)
+	id 1fQUnc-0001pO-9o
+	for alex.bennee@linaro.org; Wed, 06 Jun 2018 05:32:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33843)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fQUnG-0001iM-8L
-	for qemu-arm@nongnu.org; Wed, 06 Jun 2018 05:31:51 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fQUnH-0001iT-Cx
+	for qemu-arm@nongnu.org; Wed, 06 Jun 2018 05:31:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fQUnD-0003hM-NN
-	for qemu-arm@nongnu.org; Wed, 06 Jun 2018 05:31:50 -0400
-Received: from greensocs.com ([193.104.36.180]:53737)
+	(envelope-from <luc.michel@greensocs.com>) id 1fQUnD-0003hA-7C
+	for qemu-arm@nongnu.org; Wed, 06 Jun 2018 05:31:51 -0400
+Received: from greensocs.com ([193.104.36.180]:53692)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fQUnD-0003h6-CU; Wed, 06 Jun 2018 05:31:47 -0400
+	id 1fQUnC-0003fY-IU; Wed, 06 Jun 2018 05:31:47 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id DBC5244355F;
+	by greensocs.com (Postfix) with ESMTP id 667DB44355B;
 	Wed,  6 Jun 2018 11:31:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1528277500;
-	bh=CMmVzt4a3RYYkoxTChm+EUJm/11QFvwCw2sxhsnogis=;
+	bh=0Xp6d7pgvmgQgpHf8TZ1OIS9JCT1uOP3xPaOXbfw7OM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=yUmO7zdN5nziO+ryCfJ5RRkQMs/bNzRljyrVV5ZdjYrsJp/obm4g4RJZiURmzrkLm
-	Jj7JKZ5kxn8mAC/hnKXnhC75RTTWcCAs13oYmQuou1o16fejNZSjVtgsMng6dc7BBk
-	V36jxhwA7Otz1kgbFVZr2WWHUNENp9xMkOPZzTUk=
+	b=HtSQ2mGvIcPVtWRQruTCR3aXd5uIRG1l0R5jenmF8HHk27dP5QFZBijIsYoMKVbIW
+	JzFYsdDYrVc7eoUvdf8e4RUWxJV0MVAjVb1CJuPAkm0DyQBrjKl35UaslaBuifxuhw
+	e26u+fHtIr8esaueGz6/4mbCfO0ldmSjEL7owiFk=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Cz+c3ZY4;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Cz+c3ZY4
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Mvc5u4bQ;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Mvc5u4bQ
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p0Ovs-wvChz5; Wed,  6 Jun 2018 11:31:39 +0200 (CEST)
+	with ESMTP id 3BKMZik57S_i; Wed,  6 Jun 2018 11:31:38 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id F22D144354B; Wed,  6 Jun 2018 11:31:38 +0200 (CEST)
+	id 73328443557; Wed,  6 Jun 2018 11:31:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1528277498;
-	bh=CMmVzt4a3RYYkoxTChm+EUJm/11QFvwCw2sxhsnogis=;
+	bh=0Xp6d7pgvmgQgpHf8TZ1OIS9JCT1uOP3xPaOXbfw7OM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Cz+c3ZY4hwSorA02wdw3JshB8XyBD+2TNKpmUthoxf9bs71S/frU5TLAXeXs5NRH6
-	BwTFDViglBUZO2xIrKNbrjMm1yVbxZadXQ0awop9yAqcF6fQrJ4EOvGrtwq7TSo9tj
-	VtwlveRaL9jE3BKcbUrX3snViF4bDJK/yn3e9jmY=
+	b=Mvc5u4bQqEtLmB2BDWSkcW7zEAAq6p1mKDukuZ1sicC5upa67hXVOyCB7rp7xB1vq
+	HLcoeA9+GJXsn9RxxtNgHofLM2CBtlkCpA1kdyY0PczgqJGfDjpuGz1nH34lzcO1vy
+	euceMldv3AsYBJoYQpuzKYF6B35u1in5WR5z/QbM=
 Received: from michell-laptop.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 74EB344355E;
+	by greensocs.com (Postfix) with ESMTPSA id 0F6C2443552;
 	Wed,  6 Jun 2018 11:31:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1528277498;
-	bh=CMmVzt4a3RYYkoxTChm+EUJm/11QFvwCw2sxhsnogis=;
+	bh=0Xp6d7pgvmgQgpHf8TZ1OIS9JCT1uOP3xPaOXbfw7OM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Cz+c3ZY4hwSorA02wdw3JshB8XyBD+2TNKpmUthoxf9bs71S/frU5TLAXeXs5NRH6
-	BwTFDViglBUZO2xIrKNbrjMm1yVbxZadXQ0awop9yAqcF6fQrJ4EOvGrtwq7TSo9tj
-	VtwlveRaL9jE3BKcbUrX3snViF4bDJK/yn3e9jmY=
+	b=Mvc5u4bQqEtLmB2BDWSkcW7zEAAq6p1mKDukuZ1sicC5upa67hXVOyCB7rp7xB1vq
+	HLcoeA9+GJXsn9RxxtNgHofLM2CBtlkCpA1kdyY0PczgqJGfDjpuGz1nH34lzcO1vy
+	euceMldv3AsYBJoYQpuzKYF6B35u1in5WR5z/QbM=
 From: luc.michel@greensocs.com
 To: qemu-devel@nongnu.org
-Date: Wed,  6 Jun 2018 11:31:00 +0200
-Message-Id: <20180606093101.30518-6-luc.michel@greensocs.com>
+Date: Wed,  6 Jun 2018 11:30:59 +0200
+Message-Id: <20180606093101.30518-5-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180606093101.30518-1-luc.michel@greensocs.com>
 References: <20180606093101.30518-1-luc.michel@greensocs.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH 5/6] intc/arm_gic: Improve traces
+Subject: [Qemu-arm] [PATCH 4/6] intc/arm_gic: Add virtualization extensions
+ logic
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,162 +123,1151 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
 	Jan Kiszka <jan.kiszka@web.de>, Luc MICHEL <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wlktucc8Cq6/
+X-TUID: ELZhbS6SNNLc
 
 From: Luc MICHEL <luc.michel@greensocs.com>
 
-Add some traces to the ARM GIC to catch register accesses (distributor,
-(v)cpu interface and virtual interface), and to take into account
-virtualization extensions (print `vcpu` instead of `cpu` when needed).
+This commit adds the actual implementation of the GICv2 virtualization
+extensions logic.
 
-Also add some virtualization extensions specific traces: LR updating
-and maintenance IRQ generation.
+For the vCPU interfaces, most of the existing CPU interface code is
+reused. Calls to macros or functions modifying the distributor state are
+replaced with equivalent generic inline functions that act either on the
+distributor or on the virtual interface, given that the current CPU is a
+physical or a virtual one. For vCPU MMIO, the call is simply forwarded
+to the CPU read/write functions, with the CPU id being incremented by
+GIC_CPU_NR (vCPU id = CPU id + GIC_CPU_NR), and by faking a secure
+access (exposed vCPU interfaces do not implement security extensions.
+Faking a secure access allows to go through the "secure or no security
+extension" logic in the CPU interface).
+
+The gic_update logic is generalized to handle vCPUs. The main difference
+is the way the best IRQ is selected. This part has been split into two
+inline functions `gic_get_best_(v)irq`. The other difference is how we
+determine if IRQ distribution is enabled or not (split in
+`gic_dist_enabled`).
+
+Regarding list registers (LR) handling, some caching is done in the GIC
+state to avoid repetitive LR iteration. The following information is
+cached:
+  * vIRQ to LR mapping, in s->virq_lr_entry,
+  * the EISR and ELRSR registers,
+  * the LRs in the pending state, in s->pending_lrs.
+This cache is kept up-to-date with some maintenance functions, and is
+recomputed when the GIC state is loaded from a VMState restoration.
 
 Signed-off-by: Luc MICHEL <luc.michel@greensocs.com>
 ---
- hw/intc/arm_gic.c    | 31 +++++++++++++++++++++++++------
- hw/intc/trace-events | 12 ++++++++++--
- 2 files changed, 35 insertions(+), 8 deletions(-)
+ hw/intc/arm_gic.c      | 626 +++++++++++++++++++++++++++++++++++------
+ hw/intc/gic_internal.h | 198 +++++++++++++
+ 2 files changed, 734 insertions(+), 90 deletions(-)
 
 diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 6105f930c4..a0ffd85fdf 100644
+index e96f195997..6105f930c4 100644
 --- a/hw/intc/arm_gic.c
 +++ b/hw/intc/arm_gic.c
-@@ -179,8 +179,10 @@ static inline void gic_update_internal(GICState *s, bool virt)
+@@ -61,6 +61,11 @@ static inline int gic_get_current_cpu(GICState *s)
+     return 0;
+ }
+ 
++static inline int gic_get_current_vcpu(GICState *s)
++{
++    return gic_get_current_cpu(s) + GIC_NCPU;
++}
++
+ /* Return true if this GIC config has interrupt groups, which is
+  * true if we're a GICv2, or a GICv1 with the security extensions.
+  */
+@@ -69,74 +74,215 @@ static inline bool gic_has_groups(GICState *s)
+     return s->revision == 2 || s->security_extn;
+ }
+ 
++static inline void gic_get_best_irq(GICState *s, int cpu,
++                                    int *best_irq, int *best_prio, int *group)
++{
++    int irq;
++    int cm = 1 << cpu;
++
++    *best_irq = 1023;
++    *best_prio = 0x100;
++
++    for (irq = 0; irq < s->num_irq; irq++) {
++        if (GIC_DIST_TEST_ENABLED(irq, cm) && gic_test_pending(s, irq, cm) &&
++            (!GIC_DIST_TEST_ACTIVE(irq, cm)) &&
++            (irq < GIC_INTERNAL || GIC_DIST_TARGET(irq) & cm)) {
++            if (GIC_DIST_GET_PRIORITY(irq, cpu) < *best_prio) {
++                *best_prio = GIC_DIST_GET_PRIORITY(irq, cpu);
++                *best_irq = irq;
++            }
++        }
++    }
++
++    if (*best_irq < 1023) {
++        *group = GIC_DIST_TEST_GROUP(*best_irq, cm);
++    }
++}
++
++static inline void gic_get_best_virq(GICState *s, int cpu,
++                                     int *best_irq, int *best_prio, int *group)
++{
++    int lr = 0;
++    uint64_t lrs_in_use;
++
++    /* In-use LRs have their corresponding bit cleared. */
++    lrs_in_use = ~(s->h_elrsr[cpu]);
++
++#if GIC_NR_LR < 64
++    /* Ignore unimplemented LRs */
++    lrs_in_use &= (1 << GIC_NR_LR) - 1;
++#endif
++
++    *best_irq = 1023;
++    *best_prio = 0x100;
++
++    while (lrs_in_use) {
++        if (lrs_in_use & 0x1) {
++            uint32_t lr_entry = s->h_lr[lr][cpu];
++            int state = GICH_LR_STATE(lr_entry);
++
++            if (state == GICH_LR_STATE_PENDING) {
++                int prio = GICH_LR_PRIORITY(lr_entry);
++
++                if (prio < *best_prio) {
++                    *best_prio = prio;
++                    *best_irq = GICH_LR_VIRT_ID(lr_entry);
++                    *group = GICH_LR_GROUP(lr_entry);
++                }
++            }
++        }
++
++        lrs_in_use >>= 1;
++        lr++;
++    }
++}
++
++/* Return true if IRQ distribution is enabled:
++ *      - in the distributor, for the given group mask if virt if false,
++ *      - in the given CPU virtual interface if virt is true. */
++static inline bool gic_dist_enabled(GICState *s, int cpu, bool virt,
++                                    int group_mask)
++{
++    return (virt && (s->h_hcr[cpu] & GICH_HCR_EN))
++        || (!virt && (s->ctlr & group_mask));
++}
++
+ /* TODO: Many places that call this routine could be optimized.  */
+ /* Update interrupt status after enabled or pending bits have been changed.  */
+-static void gic_update(GICState *s)
++static inline void gic_update_internal(GICState *s, bool virt)
+ {
+     int best_irq;
+     int best_prio;
+-    int irq;
+     int irq_level, fiq_level;
+-    int cpu;
+-    int cm;
++    int cpu, cpu_iface;
++    int group = 0;
++    qemu_irq *irq_lines = virt ? s->parent_virq : s->parent_irq;
++    qemu_irq *fiq_lines = virt ? s->parent_vfiq : s->parent_fiq;
+ 
+     for (cpu = 0; cpu < s->num_cpu; cpu++) {
+-        cm = 1 << cpu;
+-        s->current_pending[cpu] = 1023;
+-        if (!(s->ctlr & (GICD_CTLR_EN_GRP0 | GICD_CTLR_EN_GRP1))
+-            || !(s->cpu_ctlr[cpu] & (GICC_CTLR_EN_GRP0 | GICC_CTLR_EN_GRP1))) {
+-            qemu_irq_lower(s->parent_irq[cpu]);
+-            qemu_irq_lower(s->parent_fiq[cpu]);
++        cpu_iface = virt ? (cpu + GIC_NCPU) : cpu;
++
++        s->current_pending[cpu_iface] = 1023;
++        if (!gic_dist_enabled(s, cpu, virt,
++                              GICD_CTLR_EN_GRP0 | GICD_CTLR_EN_GRP1)
++            || !(s->cpu_ctlr[cpu_iface] &
++                 (GICC_CTLR_EN_GRP0 | GICC_CTLR_EN_GRP1))) {
++            qemu_irq_lower(irq_lines[cpu]);
++            qemu_irq_lower(fiq_lines[cpu]);
+             continue;
+         }
+-        best_prio = 0x100;
+-        best_irq = 1023;
+-        for (irq = 0; irq < s->num_irq; irq++) {
+-            if (GIC_DIST_TEST_ENABLED(irq, cm) &&
+-                gic_test_pending(s, irq, cm) &&
+-                (!GIC_DIST_TEST_ACTIVE(irq, cm)) &&
+-                (irq < GIC_INTERNAL || GIC_DIST_TARGET(irq) & cm)) {
+-                if (GIC_DIST_GET_PRIORITY(irq, cpu) < best_prio) {
+-                    best_prio = GIC_DIST_GET_PRIORITY(irq, cpu);
+-                    best_irq = irq;
+-                }
+-            }
++
++        if (virt) {
++            gic_get_best_virq(s, cpu, &best_irq, &best_prio, &group);
++        } else {
++            gic_get_best_irq(s, cpu, &best_irq, &best_prio, &group);
          }
  
          if (best_irq != 1023) {
--            trace_gic_update_bestirq(cpu, best_irq, best_prio,
--                s->priority_mask[cpu_iface], s->running_priority[cpu_iface]);
-+            trace_gic_update_bestirq(virt ? "vcpu" : "cpu", cpu,
-+                                     best_irq, best_prio,
-+                                     s->priority_mask[cpu_iface],
-+                                     s->running_priority[cpu_iface]);
+             trace_gic_update_bestirq(cpu, best_irq, best_prio,
+-                s->priority_mask[cpu], s->running_priority[cpu]);
++                s->priority_mask[cpu_iface], s->running_priority[cpu_iface]);
          }
  
          irq_level = fiq_level = 0;
-@@ -268,6 +270,7 @@ static void gic_update_maintenance(GICState *s)
-         gic_compute_misr(s, cpu);
-         maint_level = (s->h_hcr[cpu] & GICH_HCR_EN) && s->h_misr[cpu];
  
-+        trace_gic_update_maintenance_irq(cpu, maint_level);
-         qemu_set_irq(s->maintenance_irq[cpu], maint_level);
+-        if (best_prio < s->priority_mask[cpu]) {
+-            s->current_pending[cpu] = best_irq;
+-            if (best_prio < s->running_priority[cpu]) {
+-                int group = GIC_DIST_TEST_GROUP(best_irq, cm);
+-
+-                if (extract32(s->ctlr, group, 1) &&
+-                    extract32(s->cpu_ctlr[cpu], group, 1)) {
+-                    if (group == 0 && s->cpu_ctlr[cpu] & GICC_CTLR_FIQ_EN) {
++        if (best_prio < s->priority_mask[cpu_iface]) {
++            s->current_pending[cpu_iface] = best_irq;
++            if (best_prio < s->running_priority[cpu_iface]) {
++                if (gic_dist_enabled(s, cpu, virt, 1 << group) &&
++                    extract32(s->cpu_ctlr[cpu_iface], group, 1)) {
++                    if (group == 0 &&
++                        s->cpu_ctlr[cpu_iface] & GICC_CTLR_FIQ_EN) {
+                         DPRINTF("Raised pending FIQ %d (cpu %d)\n",
+-                                best_irq, cpu);
++                                best_irq, cpu_iface);
+                         fiq_level = 1;
+-                        trace_gic_update_set_irq(cpu, "fiq", fiq_level);
++                        trace_gic_update_set_irq(cpu, virt ? "vfiq" : "fiq",
++                                                 fiq_level);
+                     } else {
+                         DPRINTF("Raised pending IRQ %d (cpu %d)\n",
+-                                best_irq, cpu);
++                                best_irq, cpu_iface);
+                         irq_level = 1;
+-                        trace_gic_update_set_irq(cpu, "irq", irq_level);
++                        trace_gic_update_set_irq(cpu, virt ? "virq" : "irq",
++                                                 irq_level);
+                     }
+                 }
+             }
+         }
+ 
+-        qemu_set_irq(s->parent_irq[cpu], irq_level);
+-        qemu_set_irq(s->parent_fiq[cpu], fiq_level);
++        qemu_set_irq(irq_lines[cpu], irq_level);
++        qemu_set_irq(fiq_lines[cpu], fiq_level);
      }
  }
-@@ -524,7 +527,8 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
+ 
++static void gic_compute_misr(GICState *s, int cpu)
++{
++    int val;
++    int vcpu = cpu + GIC_NCPU;
++
++    /* EOI */
++    val = s->h_eisr[cpu] != 0;
++    s->h_misr[cpu] = val << 0;
++
++    /* U: true if only 0 or 1 LR entry is valid */
++    val = s->h_hcr[cpu] & GICH_HCR_UIE &&
++        ((GIC_NR_LR - ctpop64(s->h_elrsr[cpu])) < 2);
++    s->h_misr[cpu] |= val << 1;
++
++    /* LRENP: EOICount is not 0 */
++    val = s->h_hcr[cpu] & GICH_HCR_LRENPIE &&
++        ((s->h_hcr[cpu] & GICH_HCR_EOICOUNT) != 0);
++    s->h_misr[cpu] |= val << 2;
++
++    /* NP: no pending interrupts. The number of LRs in pending state is cached
++     * in s->pending_lrs[cpu]. */
++    val = s->h_hcr[cpu] & GICH_HCR_NPIE &&
++        (s->pending_lrs[cpu] == 0);
++    s->h_misr[cpu] |= val << 3;
++
++    /* VGrp0E: group0 virq signaling enabled */
++    val = s->h_hcr[cpu] & GICH_HCR_VGRP0EIE &&
++        (s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP0);
++    s->h_misr[cpu] |= val << 4;
++
++    /* VGrp0D: group0 virq signaling disabled */
++    val = s->h_hcr[cpu] & GICH_HCR_VGRP0DIE &&
++        !(s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP0);
++    s->h_misr[cpu] |= val << 5;
++
++    /* VGrp1E: group1 virq signaling enabled */
++    val = s->h_hcr[cpu] & GICH_HCR_VGRP1EIE &&
++        (s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP1);
++    s->h_misr[cpu] |= val << 6;
++
++    /* VGrp1D: group1 virq signaling disabled */
++    val = s->h_hcr[cpu] & GICH_HCR_VGRP1DIE &&
++        !(s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP1);
++    s->h_misr[cpu] |= val << 7;
++}
++
++static void gic_update_maintenance(GICState *s)
++{
++    int cpu = 0;
++    int maint_level;
++
++    for (cpu = 0; cpu < s->num_cpu; cpu++) {
++        gic_compute_misr(s, cpu);
++        maint_level = (s->h_hcr[cpu] & GICH_HCR_EN) && s->h_misr[cpu];
++
++        qemu_set_irq(s->maintenance_irq[cpu], maint_level);
++    }
++}
++
++static void gic_update(GICState *s)
++{
++    gic_update_internal(s, false);
++}
++
++static void gic_update_virt(GICState *s)
++{
++    gic_update_internal(s, true);
++    gic_update_maintenance(s);
++}
++
+ static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
+                                  int cm, int target)
+ {
+@@ -212,7 +358,8 @@ static uint16_t gic_get_current_pending_irq(GICState *s, int cpu,
+     uint16_t pending_irq = s->current_pending[cpu];
+ 
+     if (pending_irq < GIC_MAXIRQ && gic_has_groups(s)) {
+-        int group = GIC_DIST_TEST_GROUP(pending_irq, (1 << cpu));
++        int group = gic_test_group(s, pending_irq, cpu);
++
+         /* On a GIC without the security extensions, reading this register
+          * behaves in the same way as a secure access to a GIC with them.
+          */
+@@ -243,7 +390,7 @@ static int gic_get_group_priority(GICState *s, int cpu, int irq)
+ 
+     if (gic_has_groups(s) &&
+         !(s->cpu_ctlr[cpu] & GICC_CTLR_CBPR) &&
+-        GIC_DIST_TEST_GROUP(irq, (1 << cpu))) {
++        gic_test_group(s, irq, cpu)) {
+         bpr = s->abpr[cpu] - 1;
+         assert(bpr >= 0);
+     } else {
+@@ -256,7 +403,7 @@ static int gic_get_group_priority(GICState *s, int cpu, int irq)
+      */
+     mask = ~0U << ((bpr & 7) + 1);
+ 
+-    return GIC_DIST_GET_PRIORITY(irq, cpu) & mask;
++    return gic_get_priority(s, irq, cpu) & mask;
+ }
+ 
+ static void gic_activate_irq(GICState *s, int cpu, int irq)
+@@ -265,18 +412,19 @@ static void gic_activate_irq(GICState *s, int cpu, int irq)
+      * and update the running priority.
+      */
+     int prio = gic_get_group_priority(s, cpu, irq);
+-    int preemption_level = prio >> (GIC_MIN_BPR + 1);
++    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
++    int preemption_level = prio >> (min_bpr + 1);
+     int regno = preemption_level / 32;
+     int bitno = preemption_level % 32;
+ 
+-    if (gic_has_groups(s) && GIC_DIST_TEST_GROUP(irq, (1 << cpu))) {
++    if (!gic_is_vcpu(cpu) && gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
+         s->nsapr[regno][cpu] |= (1 << bitno);
+     } else {
+         s->apr[regno][cpu] |= (1 << bitno);
+     }
+ 
+     s->running_priority[cpu] = prio;
+-    GIC_DIST_SET_ACTIVE(irq, 1 << cpu);
++    gic_set_active(s, irq, cpu);
+ }
+ 
+ static int gic_get_prio_from_apr_bits(GICState *s, int cpu)
+@@ -285,12 +433,20 @@ static int gic_get_prio_from_apr_bits(GICState *s, int cpu)
+      * on the set bits in the Active Priority Registers.
+      */
+     int i;
+-    for (i = 0; i < GIC_NR_APRS; i++) {
+-        uint32_t apr = s->apr[i][cpu] | s->nsapr[i][cpu];
++    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
++    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
++
++    for (i = 0; i < nr_aprs; i++) {
++        uint32_t apr = s->apr[i][cpu];
++
++        if (!gic_is_vcpu(cpu)) {
++            apr |= s->nsapr[i][cpu];
++        }
++
+         if (!apr) {
+             continue;
+         }
+-        return (i * 32 + ctz32(apr)) << (GIC_MIN_BPR + 1);
++        return (i * 32 + ctz32(apr)) << (min_bpr + 1);
+     }
+     return 0x100;
+ }
+@@ -314,9 +470,12 @@ static void gic_drop_prio(GICState *s, int cpu, int group)
+      * might not do so, and interrupts that should not preempt might do so.
+      */
+     int i;
++    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
++
++    for (i = 0; i < nr_aprs; i++) {
++        uint32_t *papr = (!gic_is_vcpu(cpu) && group) ?
++            &s->nsapr[i][cpu] : &s->apr[i][cpu];
+ 
+-    for (i = 0; i < GIC_NR_APRS; i++) {
+-        uint32_t *papr = group ? &s->nsapr[i][cpu] : &s->apr[i][cpu];
+         if (!*papr) {
+             continue;
+         }
+@@ -328,24 +487,51 @@ static void gic_drop_prio(GICState *s, int cpu, int group)
+     s->running_priority[cpu] = gic_get_prio_from_apr_bits(s, cpu);
+ }
+ 
++static inline uint32_t gic_clear_pending_sgi(GICState *s, int irq, int cpu)
++{
++    int src;
++    uint32_t ret;
++
++    if (!gic_is_vcpu(cpu)) {
++        /* Lookup the source CPU for the SGI and clear this in the
++         * sgi_pending map.  Return the src and clear the overall pending
++         * state on this CPU if the SGI is not pending from any CPUs.
++         */
++        assert(s->sgi_pending[irq][cpu] != 0);
++        src = ctz32(s->sgi_pending[irq][cpu]);
++        s->sgi_pending[irq][cpu] &= ~(1 << src);
++        if (s->sgi_pending[irq][cpu] == 0) {
++            gic_clear_pending(s, irq, cpu);
++        }
++        ret = irq | ((src & 0x7) << 10);
++    } else {
++        uint32_t *lr_entry = gic_get_lr_entry(s, irq, cpu);
++        src = GICH_LR_CPUID(*lr_entry);
++
++        gic_clear_pending(s, irq, cpu);
++        ret = irq | (src << 10);
++    }
++
++    return ret;
++}
++
+ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
+ {
+-    int ret, irq, src;
+-    int cm = 1 << cpu;
++    int ret, irq;
+ 
+     /* gic_get_current_pending_irq() will return 1022 or 1023 appropriately
+      * for the case where this GIC supports grouping and the pending interrupt
       * is in the wrong group.
       */
      irq = gic_get_current_pending_irq(s, cpu, attrs);
--    trace_gic_acknowledge_irq(gic_get_vcpu_real_id(cpu), irq);
-+    trace_gic_acknowledge_irq(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
-+                              gic_get_vcpu_real_id(cpu), irq);
+-    trace_gic_acknowledge_irq(cpu, irq);
++    trace_gic_acknowledge_irq(gic_get_vcpu_real_id(cpu), irq);
  
      if (irq >= GIC_MAXIRQ) {
          DPRINTF("ACK, no pending interrupt or it is hidden: %d\n", irq);
-@@ -1002,20 +1006,23 @@ static MemTxResult gic_dist_read(void *opaque, hwaddr offset, uint64_t *data,
-     switch (size) {
-     case 1:
-         *data = gic_dist_readb(opaque, offset, attrs);
--        return MEMTX_OK;
-+        break;
-     case 2:
-         *data = gic_dist_readb(opaque, offset, attrs);
-         *data |= gic_dist_readb(opaque, offset + 1, attrs) << 8;
--        return MEMTX_OK;
-+        break;
-     case 4:
-         *data = gic_dist_readb(opaque, offset, attrs);
-         *data |= gic_dist_readb(opaque, offset + 1, attrs) << 8;
-         *data |= gic_dist_readb(opaque, offset + 2, attrs) << 16;
-         *data |= gic_dist_readb(opaque, offset + 3, attrs) << 24;
--        return MEMTX_OK;
-+        break;
-     default:
-         return MEMTX_ERROR;
+         return irq;
      }
-+
-+    trace_gic_dist_read(offset, size, *data);
-+    return MEMTX_OK;
+ 
+-    if (GIC_DIST_GET_PRIORITY(irq, cpu) >= s->running_priority[cpu]) {
++    if (gic_get_priority(s, irq, cpu) >= s->running_priority[cpu]) {
+         DPRINTF("ACK, pending interrupt (%d) has insufficient priority\n", irq);
+         return 1023;
+     }
+@@ -354,37 +540,23 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemTxAttrs attrs)
+         /* Clear pending flags for both level and edge triggered interrupts.
+          * Level triggered IRQs will be reasserted once they become inactive.
+          */
+-        GIC_DIST_CLEAR_PENDING(irq, GIC_DIST_TEST_MODEL(irq) ? ALL_CPU_MASK
+-                                                             : cm);
++        gic_clear_pending(s, irq, cpu);
+         ret = irq;
+     } else {
+         if (irq < GIC_NR_SGIS) {
+-            /* Lookup the source CPU for the SGI and clear this in the
+-             * sgi_pending map.  Return the src and clear the overall pending
+-             * state on this CPU if the SGI is not pending from any CPUs.
+-             */
+-            assert(s->sgi_pending[irq][cpu] != 0);
+-            src = ctz32(s->sgi_pending[irq][cpu]);
+-            s->sgi_pending[irq][cpu] &= ~(1 << src);
+-            if (s->sgi_pending[irq][cpu] == 0) {
+-                GIC_DIST_CLEAR_PENDING(irq,
+-                                       GIC_DIST_TEST_MODEL(irq) ? ALL_CPU_MASK
+-                                                                : cm);
+-            }
+-            ret = irq | ((src & 0x7) << 10);
++            ret = gic_clear_pending_sgi(s, irq, cpu);
+         } else {
+-            /* Clear pending state for both level and edge triggered
+-             * interrupts. (level triggered interrupts with an active line
+-             * remain pending, see gic_test_pending)
+-             */
+-            GIC_DIST_CLEAR_PENDING(irq, GIC_DIST_TEST_MODEL(irq) ? ALL_CPU_MASK
+-                                                                 : cm);
++            gic_clear_pending(s, irq, cpu);
+             ret = irq;
+         }
+     }
+ 
+     gic_activate_irq(s, cpu, irq);
+-    gic_update(s);
++    if (gic_is_vcpu(cpu)) {
++        gic_update_virt(s);
++    } else {
++        gic_update(s);
++    }
+     DPRINTF("ACK %d\n", irq);
+     return ret;
+ }
+@@ -534,8 +706,7 @@ static bool gic_eoi_split(GICState *s, int cpu, MemTxAttrs attrs)
+ 
+ static void gic_deactivate_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+ {
+-    int cm = 1 << cpu;
+-    int group = gic_has_groups(s) && GIC_DIST_TEST_GROUP(irq, cm);
++    int group = gic_has_groups(s) && gic_test_group(s, irq, cpu);
+ 
+     if (!gic_eoi_split(s, cpu, attrs)) {
+         /* This is UNPREDICTABLE; we choose to ignore it */
+@@ -549,7 +720,7 @@ static void gic_deactivate_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+         return;
+     }
+ 
+-    GIC_DIST_CLEAR_ACTIVE(irq, cm);
++    gic_clear_active(s, irq, cpu);
  }
  
- static void gic_dist_writeb(void *opaque, hwaddr offset,
-@@ -1309,6 +1316,8 @@ static void gic_dist_writel(void *opaque, hwaddr offset,
- static MemTxResult gic_dist_write(void *opaque, hwaddr offset, uint64_t data,
-                                   unsigned size, MemTxAttrs attrs)
- {
-+    trace_gic_dist_write(offset, size, data);
+ static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+@@ -558,6 +729,20 @@ static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+     int group;
+ 
+     DPRINTF("EOI %d\n", irq);
++    if (gic_is_vcpu(cpu) && !gic_virq_is_valid(s, irq, cpu)) {
++        /* This vIRQ does not have a valid LR entry. Increment EOICount and
++         * ignore the write. */
 +
-     switch (size) {
-     case 1:
-         gic_dist_writeb(opaque, offset, data, attrs);
-@@ -1463,12 +1472,18 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
-         *data = 0;
++        int rcpu = gic_get_vcpu_real_id(cpu);
++        int eoicount = extract32(s->h_hcr[rcpu], 27, 5) + 1;
++
++        /* This 5 bits counter wraps to 0 */
++        eoicount &= 0x1f;
++
++        s->h_hcr[rcpu] = deposit32(s->h_hcr[rcpu], 27, 5, eoicount);
++        return;
++    }
++
+     if (irq >= s->num_irq) {
+         /* This handles two cases:
+          * 1. If software writes the ID of a spurious interrupt [ie 1023]
+@@ -584,7 +769,7 @@ static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+         }
+     }
+ 
+-    group = gic_has_groups(s) && GIC_DIST_TEST_GROUP(irq, cm);
++    group = gic_has_groups(s) && gic_test_group(s, irq, cpu);
+ 
+     if (s->security_extn && !attrs.secure && !group) {
+         DPRINTF("Non-secure EOI for Group0 interrupt %d ignored\n", irq);
+@@ -600,9 +785,14 @@ static void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
+ 
+     /* In GICv2 the guest can choose to split priority-drop and deactivate */
+     if (!gic_eoi_split(s, cpu, attrs)) {
+-        GIC_DIST_CLEAR_ACTIVE(irq, cm);
++        gic_clear_active(s, irq, cpu);
++    }
++
++    if (gic_is_vcpu(cpu)) {
++        gic_update_virt(s);
++    } else {
++        gic_update(s);
+     }
+-    gic_update(s);
+ }
+ 
+ static uint32_t gic_dist_readb(void *opaque, hwaddr offset, MemTxAttrs attrs)
+@@ -888,8 +1078,9 @@ static void gic_dist_writeb(void *opaque, hwaddr offset,
+ 
+         for (i = 0; i < 8; i++) {
+             if (value & (1 << i)) {
+-                int mask = (irq < GIC_INTERNAL) ? (1 << cpu)
+-                                                : GIC_DIST_TARGET(irq + i);
++                int mask =
++                    (irq < GIC_INTERNAL) ? (1 << cpu)
++                                         : GIC_DIST_TARGET(irq + i);
+                 int cm = (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
+ 
+                 if (s->security_extn && !attrs.secure &&
+@@ -1242,8 +1433,9 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
+     case 0xd0: case 0xd4: case 0xd8: case 0xdc:
+     {
+         int regno = (offset - 0xd0) / 4;
++        int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
+ 
+-        if (regno >= GIC_NR_APRS || s->revision != 2) {
++        if (regno >= nr_aprs || s->revision != 2) {
+             *data = 0;
+         } else if (s->security_extn && !attrs.secure) {
+             /* NS view of GICC_APR<n> is the top half of GIC_NSAPR<n> */
+@@ -1258,7 +1450,7 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
+         int regno = (offset - 0xe0) / 4;
+ 
+         if (regno >= GIC_NR_APRS || s->revision != 2 || !gic_has_groups(s) ||
+-            (s->security_extn && !attrs.secure)) {
++            (s->security_extn && !attrs.secure) || gic_is_vcpu(cpu)) {
+             *data = 0;
+         } else {
+             *data = s->nsapr[regno][cpu];
+@@ -1293,7 +1485,8 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+                 s->abpr[cpu] = MAX(value & 0x7, GIC_MIN_ABPR);
+             }
+         } else {
+-            s->bpr[cpu] = MAX(value & 0x7, GIC_MIN_BPR);
++            int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
++            s->bpr[cpu] = MAX(value & 0x7, min_bpr);
+         }
+         break;
+     case 0x10: /* End Of Interrupt */
+@@ -1310,8 +1503,9 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+     case 0xd0: case 0xd4: case 0xd8: case 0xdc:
+     {
+         int regno = (offset - 0xd0) / 4;
++        int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
+ 
+-        if (regno >= GIC_NR_APRS || s->revision != 2) {
++        if (regno >= nr_aprs || s->revision != 2) {
+             return MEMTX_OK;
+         }
+         if (s->security_extn && !attrs.secure) {
+@@ -1332,6 +1526,9 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+         if (!gic_has_groups(s) || (s->security_extn && !attrs.secure)) {
+             return MEMTX_OK;
+         }
++        if (gic_is_vcpu(cpu)) {
++            return MEMTX_OK;
++        }
+         s->nsapr[regno][cpu] = value;
          break;
      }
-+
-+    trace_gic_cpu_read(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
-+                       gic_get_vcpu_real_id(cpu), offset, *data);
-     return MEMTX_OK;
- }
- 
- static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
-                                  uint32_t value, MemTxAttrs attrs)
- {
-+    trace_gic_cpu_write(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
-+                        gic_get_vcpu_real_id(cpu), offset, value);
-+
-     switch (offset) {
-     case 0x00: /* Control */
-         gic_set_cpu_control(s, cpu, value, attrs);
-@@ -1679,6 +1694,7 @@ static void gic_set_lr_entry(GICState *s, int cpu, int lr_num, uint32_t entry)
-     }
- 
-     s->h_lr[lr_num][cpu] = entry;
-+    trace_gic_lr_entry(cpu, lr_num, entry);
-     is_free = gic_lr_update(s, lr_num, cpu);
- 
-     if (!is_free) {
-@@ -1749,6 +1765,7 @@ static MemTxResult gic_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
+@@ -1344,7 +1541,13 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+                       "gic_cpu_write: Bad offset %x\n", (int)offset);
          return MEMTX_OK;
      }
- 
-+    trace_gic_hyp_read(addr, *data);
+-    gic_update(s);
++
++    if (gic_is_vcpu(cpu)) {
++        gic_update_virt(s);
++    } else {
++        gic_update(s);
++    }
++
      return MEMTX_OK;
  }
  
-@@ -1759,6 +1776,8 @@ static MemTxResult gic_hyp_write(void *opaque, hwaddr addr, uint64_t value,
-     int cpu = gic_get_current_cpu(s);
-     int vcpu = gic_get_current_vcpu(s);
- 
-+    trace_gic_hyp_write(addr, value);
+@@ -1384,6 +1587,218 @@ static MemTxResult gic_do_cpu_write(void *opaque, hwaddr addr,
+     GICState *s = *backref;
+     int id = (backref - s->backref);
+     return gic_cpu_write(s, id, addr, value, attrs);
 +
-     switch (addr) {
-     case 0x0: /* Hypervisor Control */
-         s->h_hcr[cpu] = value & 0xf80000ff;
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 55e8c2570c..16d02fa8cf 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -92,9 +92,17 @@ aspeed_vic_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64
- gic_enable_irq(int irq) "irq %d enabled"
- gic_disable_irq(int irq) "irq %d disabled"
- gic_set_irq(int irq, int level, int cpumask, int target) "irq %d level %d cpumask 0x%x target 0x%x"
--gic_update_bestirq(int cpu, int irq, int prio, int priority_mask, int running_priority) "cpu %d irq %d priority %d cpu priority mask %d cpu running priority %d"
-+gic_update_bestirq(const char *s, int cpu, int irq, int prio, int priority_mask, int running_priority) "%s %d irq %d priority %d cpu priority mask %d cpu running priority %d"
- gic_update_set_irq(int cpu, const char *name, int level) "cpu[%d]: %s = %d"
--gic_acknowledge_irq(int cpu, int irq) "cpu %d acknowledged irq %d"
-+gic_acknowledge_irq(const char *s, int cpu, int irq) "%s %d acknowledged irq %d"
-+gic_cpu_write(const char *s, int cpu, int addr, uint32_t val) "%s %d iface write at 0x%08x 0x%08" PRIx32
-+gic_cpu_read(const char *s, int cpu, int addr, uint32_t val) "%s %d iface write at 0x%08x: 0x%08" PRIx32
-+gic_hyp_read(int addr, uint32_t val) "hyp read at 0x%08x: 0x%08" PRIx32
-+gic_hyp_write(int addr, uint32_t val) "hyp write at 0x%08x: 0x%08" PRIx32
-+gic_dist_read(int addr, unsigned int size, uint32_t val) "dist read at 0x%08x size %u: 0x%08" PRIx32
-+gic_dist_write(int addr, unsigned int size, uint32_t val) "dist write at 0x%08x size %u: 0x%08" PRIx32
-+gic_lr_entry(int cpu, int entry, uint32_t val) "cpu %d: new lr entry %d: 0x%08" PRIx32
-+gic_update_maintenance_irq(int cpu, int val) "cpu %d: maintenance = %d"
++}
++
++static MemTxResult gic_thisvcpu_read(void *opaque, hwaddr addr, uint64_t *data,
++                                    unsigned size, MemTxAttrs attrs)
++{
++    GICState *s = (GICState *)opaque;
++
++    /* The exposed vCPU interface does not implement security extensions.
++     * Pretend this access is secure to go through the "no security extension
++     * or secure access" path in the CPU interface. */
++    attrs.secure = 1;
++
++    return gic_cpu_read(s, gic_get_current_cpu(s) + GIC_NCPU,
++                        addr, data, attrs);
++}
++
++static MemTxResult gic_thisvcpu_write(void *opaque, hwaddr addr,
++                                     uint64_t value, unsigned size,
++                                     MemTxAttrs attrs)
++{
++    GICState *s = (GICState *)opaque;
++
++    attrs.secure = 1;
++
++    return gic_cpu_write(s, gic_get_current_cpu(s) + GIC_NCPU,
++                         addr, value, attrs);
++}
++
++static MemTxResult gic_do_vcpu_read(void *opaque, hwaddr addr, uint64_t *data,
++                                    unsigned size, MemTxAttrs attrs)
++{
++    GICState **backref = (GICState **)opaque;
++    GICState *s = *backref;
++    int id = (backref - s->backref);
++
++    attrs.secure = 1;
++
++    return gic_cpu_read(s, id + GIC_NCPU, addr, data, attrs);
++}
++
++static MemTxResult gic_do_vcpu_write(void *opaque, hwaddr addr,
++                                     uint64_t value, unsigned size,
++                                     MemTxAttrs attrs)
++{
++    GICState **backref = (GICState **)opaque;
++    GICState *s = *backref;
++    int id = (backref - s->backref);
++
++    attrs.secure = 1;
++
++    return gic_cpu_write(s, id + GIC_NCPU, addr, value, attrs);
++
++}
++
++static void gic_vmcr_write(GICState *s, uint32_t value)
++{
++    int vcpu = gic_get_current_vcpu(s);
++    uint32_t ctlr;
++    uint32_t abpr;
++    uint32_t bpr;
++    uint32_t prio_mask;
++
++    /* Always pretend to do a secure access */
++    MemTxAttrs attrs = { .secure = 1 };
++
++    ctlr = extract32(value, 0, 5) & 0x0000021f;
++    abpr = extract32(value, 18, 3);
++    bpr = extract32(value, 21, 3);
++    prio_mask = extract32(value, 27, 5) << 3;
++
++    gic_set_cpu_control(s, vcpu, ctlr, attrs);
++    s->abpr[vcpu] = MAX(abpr, GIC_VIRT_MIN_ABPR);
++    s->bpr[vcpu] = MAX(bpr, GIC_VIRT_MIN_BPR);
++    gic_set_priority_mask(s, vcpu, prio_mask, attrs);
++}
++
++static void gic_set_lr_entry(GICState *s, int cpu, int lr_num, uint32_t entry)
++{
++    assert(lr_num < GIC_NR_LR);
++
++    uint32_t prev_entry = s->h_lr[lr_num][cpu];
++    int irq;
++    bool is_free;
++
++    if (!gic_lr_entry_is_free(prev_entry)) {
++        /* The entry was valid, flush it */
++        irq = GICH_LR_VIRT_ID(prev_entry);
++        gic_clear_virq_cache(s, irq, cpu);
++    }
++
++    s->h_lr[lr_num][cpu] = entry;
++    is_free = gic_lr_update(s, lr_num, cpu);
++
++    if (!is_free) {
++        /* Update the vIRQ -> LR entry cache */
++        irq = GICH_LR_VIRT_ID(entry);
++        gic_set_virq_cache(s, irq, cpu, lr_num);
++    }
++}
++
++static MemTxResult gic_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
++                                unsigned size, MemTxAttrs attrs)
++{
++    GICState *s = ARM_GIC(opaque);
++    int cpu = gic_get_current_cpu(s);
++    int vcpu = gic_get_current_vcpu(s);
++
++    switch (addr) {
++    case 0x0: /* Hypervisor Control */
++        *data = s->h_hcr[cpu];
++        break;
++
++    case 0x4: /* VGIC Type */
++        *data = ((6 - GIC_VIRT_MIN_BPR) << 29)
++            | ((GIC_VIRT_MAX_GROUP_PRIO_BITS - 1) << 26)
++            | (GIC_NR_LR - 1);
++        break;
++
++    case 0x8: /* Virtual Machine Control */
++        *data = extract32(s->cpu_ctlr[vcpu], 0, 10);
++        *data |= extract32(s->abpr[vcpu], 0, 3) << 18;
++        *data |= extract32(s->bpr[vcpu], 0, 3) << 21;
++        *data |= extract32(s->priority_mask[vcpu], 3, 5) << 27;
++        break;
++
++    case 0x10: /* Maintenance Interrupt Status */
++        *data = s->h_misr[cpu];
++        break;
++
++    case 0x20: /* End of Interrupt Status 0 and 1 */
++    case 0x24:
++        *data = (uint32_t) extract64(s->h_eisr[cpu], (addr - 0x20) * 8, 32);
++        break;
++
++    case 0x30: /* Empty List Status 0 and 1 */
++    case 0x34:
++        *data = (uint32_t) extract64(s->h_elrsr[cpu], (addr - 0x30) * 8, 32);
++        break;
++
++    case 0xf0: /* Active Priorities */
++        *data = s->apr[0][vcpu];
++        break;
++
++    case 0x100 ... 0x1fc: /* List Registers */
++    {
++        int lr_num = (addr - 0x100) / 4;
++
++        if (lr_num > GIC_NR_LR) {
++            *data = 0;
++        } else {
++            *data = s->h_lr[lr_num][cpu];
++        }
++        break;
++    }
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "gic_hyp_read: Bad offset %" HWADDR_PRIx "\n", addr);
++        return MEMTX_OK;
++    }
++
++    return MEMTX_OK;
++}
++
++static MemTxResult gic_hyp_write(void *opaque, hwaddr addr, uint64_t value,
++                                 unsigned size, MemTxAttrs attrs)
++{
++    GICState *s = ARM_GIC(opaque);
++    int cpu = gic_get_current_cpu(s);
++    int vcpu = gic_get_current_vcpu(s);
++
++    switch (addr) {
++    case 0x0: /* Hypervisor Control */
++        s->h_hcr[cpu] = value & 0xf80000ff;
++        break;
++
++    case 0x8: /* Virtual Machine Control */
++        gic_vmcr_write(s, value);
++        break;
++
++    case 0xf0: /* Active Priorities */
++        s->apr[0][vcpu] = value;
++        break;
++
++    case 0x100 ... 0x1fc: /* List Registers */
++    {
++        int lr_num = (addr - 0x100) / 4;
++
++        if (lr_num > GIC_NR_LR) {
++            return MEMTX_OK;
++        }
++
++        gic_set_lr_entry(s, cpu, lr_num, value & 0xff8fffff);
++        break;
++    }
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "gic_hyp_write: Bad offset %" HWADDR_PRIx "\n", addr);
++        return MEMTX_OK;
++    }
++
++    gic_update_virt(s);
++    return MEMTX_OK;
++}
++
++static void arm_gic_post_load(GICState *s)
++{
++    if (s->virt_extn) {
++        gic_recompute_virt_cache(s);
++    }
+ }
  
- # hw/intc/arm_gicv3_cpuif.c
- gicv3_icc_pmr_read(uint32_t cpu, uint64_t val) "GICv3 ICC_PMR read cpu 0x%x value 0x%" PRIx64
+ static const MemoryRegionOps gic_ops[2] = {
+@@ -1405,6 +1820,25 @@ static const MemoryRegionOps gic_cpu_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
++static const MemoryRegionOps gic_virt_ops[2] = {
++    {
++        .read_with_attrs = gic_hyp_read,
++        .write_with_attrs = gic_hyp_write,
++        .endianness = DEVICE_NATIVE_ENDIAN,
++    },
++    {
++        .read_with_attrs = gic_thisvcpu_read,
++        .write_with_attrs = gic_thisvcpu_write,
++        .endianness = DEVICE_NATIVE_ENDIAN,
++    }
++};
++
++static const MemoryRegionOps gic_vcpu_ops = {
++    .read_with_attrs = gic_do_vcpu_read,
++    .write_with_attrs = gic_do_vcpu_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
+ static void arm_gic_realize(DeviceState *dev, Error **errp)
+ {
+     /* Device instance realize function for the GIC sysbus device */
+@@ -1427,7 +1861,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* This creates distributor and main CPU interface (s->cpuiomem[0]) */
+-    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, NULL);
++    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, gic_virt_ops);
+ 
+     /* Extra core-specific regions for the CPU interfaces. This is
+      * necessary for "franken-GIC" implementations, for example on
+@@ -1439,17 +1873,29 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+      */
+     for (i = 0; i < s->num_cpu; i++) {
+         s->backref[i] = s;
+-        memory_region_init_io(&s->cpuiomem[i+1], OBJECT(s), &gic_cpu_ops,
++        memory_region_init_io(&s->cpuiomem[i + 1], OBJECT(s), &gic_cpu_ops,
+                               &s->backref[i], "gic_cpu", 0x100);
+-        sysbus_init_mmio(sbd, &s->cpuiomem[i+1]);
++        sysbus_init_mmio(sbd, &s->cpuiomem[i + 1]);
+     }
++
++    if (s->virt_extn) {
++        for (i = 0; i < s->num_cpu; i++) {
++            memory_region_init_io(&s->vcpuiomem[i + 1], OBJECT(s),
++                                  &gic_vcpu_ops, &s->backref[i],
++                                  "gic_vcpu", 0x2000);
++            sysbus_init_mmio(sbd, &s->vcpuiomem[i + 1]);
++        }
++    }
++
+ }
+ 
+ static void arm_gic_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
++    ARMGICCommonClass *agcc = ARM_GIC_COMMON_CLASS(klass);
+     ARMGICClass *agc = ARM_GIC_CLASS(klass);
+ 
++    agcc->post_load = arm_gic_post_load;
+     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
+ }
+ 
+diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
+index c85427c8e3..998e4b7854 100644
+--- a/hw/intc/gic_internal.h
++++ b/hw/intc/gic_internal.h
+@@ -64,6 +64,34 @@
+ #define GICC_CTLR_EOIMODE    (1U << 9)
+ #define GICC_CTLR_EOIMODE_NS (1U << 10)
+ 
++#define GICH_HCR_EN       (1U << 0)
++#define GICH_HCR_UIE      (1U << 1)
++#define GICH_HCR_LRENPIE  (1U << 2)
++#define GICH_HCR_NPIE     (1U << 3)
++#define GICH_HCR_VGRP0EIE (1U << 4)
++#define GICH_HCR_VGRP0DIE (1U << 5)
++#define GICH_HCR_VGRP1EIE (1U << 6)
++#define GICH_HCR_VGRP1DIE (1U << 7)
++#define GICH_HCR_EOICOUNT (0x1fU << 27)
++
++#define GICH_LR_STATE_INVALID         0
++#define GICH_LR_STATE_PENDING         1
++#define GICH_LR_STATE_ACTIVE          2
++#define GICH_LR_STATE_ACTIVE_PENDING  3
++
++#define GICH_LR_VIRT_ID(entry) (extract32(entry, 0, 10))
++#define GICH_LR_PHYS_ID(entry) (extract32(entry, 10, 10))
++#define GICH_LR_PRIORITY(entry) (extract32(entry, 23, 5) << 3)
++#define GICH_LR_STATE(entry) (extract32(entry, 28, 2))
++#define GICH_LR_GROUP(entry) (extract32(entry, 30, 1))
++#define GICH_LR_HW(entry) (extract32(entry, 31, 1))
++#define GICH_LR_EOI(entry) (extract32(entry, 19, 1))
++#define GICH_LR_CPUID(entry) (extract32(entry, 10, 3))
++
++#define GICH_LR_CLEAR_PENDING(entry) ((entry) &= ~(1 << 28))
++#define GICH_LR_SET_ACTIVE(entry) ((entry) |= (1 << 29))
++#define GICH_LR_CLEAR_ACTIVE(entry) ((entry) &= ~(1 << 29))
++
+ /* Valid bits for GICC_CTLR for GICv1, v1 with security extensions,
+  * GICv2 and GICv2 with security extensions:
+  */
+@@ -99,4 +127,174 @@ static inline bool gic_is_vcpu(int cpu)
+     return cpu >= GIC_NCPU;
+ }
+ 
++static inline int gic_get_vcpu_real_id(int cpu)
++{
++    return (cpu >= GIC_NCPU) ? (cpu - GIC_NCPU) : cpu;
++}
++
++static inline bool gic_lr_entry_is_free(uint32_t entry)
++{
++    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
++        && (GICH_LR_HW(entry) || !GICH_LR_EOI(entry));
++}
++
++static inline bool gic_lr_entry_is_eoi(uint32_t entry)
++{
++    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
++        && !GICH_LR_HW(entry) && GICH_LR_EOI(entry);
++}
++
++static inline bool gic_virq_is_valid(GICState *s, int irq, int vcpu)
++{
++    int cpu = gic_get_vcpu_real_id(vcpu);
++    return s->virq_lr_entry[irq][cpu] != GIC_NR_LR;
++}
++
++/* Return a pointer on the LR entry for a given (irq,vcpu) couple.
++ * This function requires that the entry actually exists somewhere in
++ * the LRs. */
++static inline uint32_t *gic_get_lr_entry(GICState *s, int irq, int vcpu)
++{
++    int cpu = gic_get_vcpu_real_id(vcpu);
++    int lr_num = s->virq_lr_entry[irq][cpu];
++
++    assert(lr_num >= 0 && lr_num < GIC_NR_LR);
++    return &s->h_lr[lr_num][cpu];
++}
++
++static inline void gic_set_virq_cache(GICState *s, int irq,
++                                      int vcpu, int lr_num)
++{
++    int cpu = gic_get_vcpu_real_id(vcpu);
++    s->virq_lr_entry[irq][cpu] = lr_num;
++}
++
++static inline void gic_clear_virq_cache(GICState *s, int irq, int vcpu)
++{
++    gic_set_virq_cache(s, irq, vcpu, GIC_NR_LR);
++}
++
++static inline bool gic_lr_update(GICState *s, int lr_num, int vcpu)
++{
++    int cpu = gic_get_vcpu_real_id(vcpu);
++
++    assert(lr_num >= 0 && lr_num < GIC_NR_LR);
++    uint32_t *entry = &s->h_lr[lr_num][cpu];
++
++    int is_eoi = gic_lr_entry_is_eoi(*entry);
++    int is_free = gic_lr_entry_is_free(*entry);
++    int is_pending = (GICH_LR_STATE(*entry) == GICH_LR_STATE_PENDING);
++
++    s->h_eisr[cpu] = deposit64(s->h_eisr[cpu], lr_num, 1, is_eoi);
++    s->h_elrsr[cpu] = deposit64(s->h_elrsr[cpu], lr_num, 1, is_free);
++    s->pending_lrs[cpu] = deposit64(s->pending_lrs[cpu], lr_num, 1, is_pending);
++
++    return is_free;
++}
++
++static inline void gic_lr_update_by_irq(GICState *s, int irq, int vcpu)
++{
++    int cpu = gic_get_vcpu_real_id(vcpu);
++    int lr_num = s->virq_lr_entry[irq][cpu];
++
++    assert(lr_num != GIC_NR_LR);
++    bool is_free = gic_lr_update(s, lr_num, vcpu);
++
++    if (is_free) {
++        gic_clear_virq_cache(s, irq, vcpu);
++    }
++}
++
++/* Recompute the whole virt cache, including the vIRQ to LR mapping, the EISR
++ * and ELRSR registers, and the LRs in the pending state.
++ * This function is called after restoring the GIC state from a VMState. */
++static inline void gic_recompute_virt_cache(GICState *s)
++{
++    int cpu, lr_num;
++
++    for (cpu = 0; cpu < s->num_cpu; cpu++) {
++        for (lr_num = 0; lr_num < GIC_NR_LR; lr_num++) {
++            bool is_free = gic_lr_update(s, lr_num, cpu);
++            uint32_t entry = s->h_lr[lr_num][cpu];
++
++            if (!is_free) {
++                int irq = GICH_LR_VIRT_ID(entry);
++                gic_set_virq_cache(s, irq, cpu, lr_num);
++            }
++        }
++    }
++}
++
++static inline bool gic_test_group(GICState *s, int irq, int cpu)
++{
++    if (gic_is_vcpu(cpu)) {
++        uint32_t *entry = gic_get_lr_entry(s, irq, cpu);
++        return GICH_LR_GROUP(*entry);
++    } else {
++        return GIC_DIST_TEST_GROUP(irq, 1 << cpu);
++    }
++}
++
++static inline void gic_clear_pending(GICState *s, int irq, int cpu)
++{
++    if (gic_is_vcpu(cpu)) {
++        uint32_t *entry = gic_get_lr_entry(s, irq, cpu);
++        GICH_LR_CLEAR_PENDING(*entry);
++        /* Don't recompute the LR cache yet as a clear pending request is
++         * always followed by a set active one. */
++    } else {
++        /* Clear pending state for both level and edge triggered
++         * interrupts. (level triggered interrupts with an active line
++         * remain pending, see gic_test_pending)
++         */
++        GIC_DIST_CLEAR_PENDING(irq, GIC_DIST_TEST_MODEL(irq) ? ALL_CPU_MASK
++                                                             : (1 << cpu));
++    }
++}
++
++static inline void gic_set_active(GICState *s, int irq, int cpu)
++{
++    if (gic_is_vcpu(cpu)) {
++        uint32_t *entry = gic_get_lr_entry(s, irq, cpu);
++        GICH_LR_SET_ACTIVE(*entry);
++        gic_lr_update_by_irq(s, irq, cpu);
++    } else {
++        GIC_DIST_SET_ACTIVE(irq, 1 << cpu);
++    }
++}
++
++static inline void gic_clear_active(GICState *s, int irq, int cpu)
++{
++    if (gic_is_vcpu(cpu)) {
++        uint32_t *entry = gic_get_lr_entry(s, irq, cpu);
++        GICH_LR_CLEAR_ACTIVE(*entry);
++
++        if (GICH_LR_HW(*entry)) {
++            /* Hardware interrupt. We must forward the deactivation request to
++             * the distributor */
++            int phys_irq = GICH_LR_PHYS_ID(*entry);
++            int rcpu = gic_get_vcpu_real_id(cpu);
++
++            /* Group 0 IRQs deactivation requests are ignored. */
++            if (GIC_DIST_TEST_GROUP(phys_irq, 1 << rcpu)) {
++                GIC_DIST_CLEAR_ACTIVE(phys_irq, 1 << rcpu);
++            }
++        }
++
++        gic_lr_update_by_irq(s, irq, cpu);
++    } else {
++        GIC_DIST_CLEAR_ACTIVE(irq, 1 << cpu);
++    }
++}
++
++static inline int gic_get_priority(GICState *s, int irq, int cpu)
++{
++    if (gic_is_vcpu(cpu)) {
++        uint32_t *entry = gic_get_lr_entry(s, irq, cpu);
++        return GICH_LR_PRIORITY(*entry);
++    } else {
++        return GIC_DIST_GET_PRIORITY(irq, cpu);
++    }
++}
++
+ #endif /* QEMU_ARM_GIC_INTERNAL_H */
 -- 
 2.17.0
+
 

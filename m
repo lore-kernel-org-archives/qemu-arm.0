@@ -1,154 +1,156 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2116767wrq;
-        Thu, 7 Jun 2018 06:40:20 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLnm2WyZybjioud2d/9kcsd5RFnCka5x5PZHK3ueBnqoDae80o0DVg1es3OqlwdZjmXma9M
-X-Received: by 2002:a0c:cc91:: with SMTP id f17-v6mr1637485qvl.239.1528378820219;
-        Thu, 07 Jun 2018 06:40:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528378820; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2125802wrq;
+        Thu, 7 Jun 2018 06:49:02 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL+ZbJlPYEr7TKMZYvQm6UWhJh7H0/otL5QzKka7kGl70Xw2WMi63966sMWs0jWUtpe2T1b
+X-Received: by 2002:ac8:2429:: with SMTP id c38-v6mr1765412qtc.122.1528379342406;
+        Thu, 07 Jun 2018 06:49:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528379342; cv=none;
         d=google.com; s=arc-20160816;
-        b=a7VfxA8+rzp7hLUzB9rjh996N1jkFFYZH9/Jcjlo6rVHoCpU9buX4DHaWyFZur8Hkr
-         0o+3FKhGNp2A0nSjPkpev459qQYKjNSByhT129gxR4aVnx7LiFI9yfTypx2LQEalfOS2
-         SYbwnmkF5RvDq+BhGjaQnlhQJtWtcEdEA24nBqaSRty8fOTeVbYVLQv3eUhoWNjdUEqC
-         gZtBYZ0p/CdpZlR/eEiSvO7lMfSPGG3Pg05MsJryusibENwEZNt3kyFbhrOM436rzTcK
-         YAeOs0SReiExLAhmrt4olBPZll6AX5SiOlBVogZqF+1yHLvjM9VBQBWqor4a/9CLUKyx
-         8lmA==
+        b=vrH4cLTCscjq1OiiCtY5zNkeGLnvxD7wfCC4/HKSpnANu/Yl9gRo7JzsCtQZiRuqf/
+         Vx/9K/FrV/3In8BxaNq7k07EK9AP52YdgWKVWI/CwPiRN4sS+WrZr1vbSrg/F/VAJd1c
+         6y4OjoShgq6rBhrSvpqoulAljGCGNrovd00bQF1Dl461TwS3uNAjbqmE0aotfhb8e9X4
+         3PCfzw/gU/TAXUf2pXgRBdEZT3LwPJ9SeehSkE/gfQTikUM022bofju4TLNKQM7Nl262
+         +vzOPYDSQoz3PTjYWlYpF8BbZ/0E4GtXQIUNGQSgufa0dieXp3pFrsmLwGdV4oHLpmIJ
+         q3wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=1vrhyT8HF44cLZdJwR7N9x8zVeEaOpAcxXNO5utbPcg=;
-        b=fMspbD+EpWrABYRLb24PguPJ3Y7ax4pPkwAQvjs/P5gocczH5hmHhtMIK5d7o91nWq
-         DG8ll+50t40Y8d+jlKZGh1IdmdIaGci1h+3KWpX1P6SoU6kbmkWKbou0fy//UmST6qEt
-         A71S3+gLMwgMVljt1Kb1jgJVmsNgkWwSZb/4a08sASY5l5Da5Xe1YNvk7xB1JVwtrCW4
-         ZXiu5Wh9+c8Dmlyn5Z5gGorEv0RzMG5AhwqjknGsbqYR6qEL+0bXpN+rlUorMkMAmJPe
-         5HWrZKiZ4yhBc5qj5w/6jnlYwatNGbxs9APTWzUGb6iWpuULHweFrbaM5U1YGLcJYptH
-         v8ng==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:user-agent:message-id
+         :in-reply-to:date:references:to:from:arc-authentication-results;
+        bh=s/CD0vU1K0vr6wV4ua9KI4JAGsCeB7mOVdFnCySl8rg=;
+        b=UWxoxIcVW+R/WnHrw0ketvyf4RbwU4xkvt01o/xUqd2Ps1sBApKEh3xq4RT6Wc0H3X
+         odTNpq6iQuKS8F5srO1X/Yp1cMEYcCxOuK5I4WitCVgl7NmTq9iCB2c8v/D+grXKu3JI
+         r0ofPWisNUgUCH3UFDYFPvncctQ4AGDEKcoTiNKr40A51xZ5oSme9SCLiSWKhNai0EZ5
+         281lYfmMjXPQ7HzRR1plLF0dyiRbVXoHNOD5f5pciy6SVbq7HI/ez0fCiREdY6XL3GAL
+         Y0iuWm3biBtHlOd8kGKG3d851WbR74Eq2ds//RmumUeRrw6rhg6ISoHI5+l+U0rCMlXg
+         IcHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R6/6LFJv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n64-v6si1013297qkf.210.2018.06.07.06.40.20
+        by mx.google.com with ESMTPS id 52-v6si2161028qtv.160.2018.06.07.06.49.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Jun 2018 06:40:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 07 Jun 2018 06:49:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R6/6LFJv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58040 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58087 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fQv9H-0007Zk-Pf
-	for alex.bennee@linaro.org; Thu, 07 Jun 2018 09:40:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35439)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fQvHh-0004He-TP
+	for alex.bennee@linaro.org; Thu, 07 Jun 2018 09:49:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQv8y-0007Wm-88
-	for qemu-devel@nongnu.org; Thu, 07 Jun 2018 09:40:01 -0400
+	(envelope-from <armbru@redhat.com>) id 1fQvHY-0004HP-S3
+	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 09:48:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQv8x-0006BZ-G3
-	for qemu-devel@nongnu.org; Thu, 07 Jun 2018 09:40:00 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:33403)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fQv8x-0006BA-AF
-	for qemu-devel@nongnu.org; Thu, 07 Jun 2018 09:39:59 -0400
-Received: by mail-ot0-x244.google.com with SMTP id h6-v6so11572927otj.0
-	for <qemu-devel@nongnu.org>; Thu, 07 Jun 2018 06:39:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=1vrhyT8HF44cLZdJwR7N9x8zVeEaOpAcxXNO5utbPcg=;
-	b=R6/6LFJvSW+qhd89nJJIIxNThvzQTfdVX1KeQ5VHMgXN6tpLKPor4et4o8BycGzbnh
-	p5ULgz7165HnyDFitR54kHuDeAy/wpkNDNgbJdalFrWntQUTE5nJLiRQ9yFlEDhc2xMc
-	PfJLh3+yFQprNBET6K5tgE37s00b9tpWJ5qZA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=1vrhyT8HF44cLZdJwR7N9x8zVeEaOpAcxXNO5utbPcg=;
-	b=pMRds9pY841JqQ4MWly1xluy46Chj9fHBtila4ai2MeC9D9yKMU7T4i9KByYvh9xkd
-	/7CmL+LHmtvF2zv/0zcM7GhHeU7ODogdi5cUK8LZhSFRfuRKNW6Xzfa0B+pQkJUQQ+UD
-	gs0HPart2N+7uxqVA6gY+HCkuLS/JWHxOgZxMAeZiB6p4uh/eDTYB9ubpi+xhX1QZmIy
-	Arsb9tSTc6cskONqvgOKwdzSYvn1aPzLYYxMDr2f5XuvFyPzE6gYCJOIZGRripjDkxpG
-	u3l+LQ8tQSGBoGoYMGrubQwK84LUPMXxkpSlDHGpDBBPHF9ou0KtBSJZgdegDJFE+8bc
-	CCxQ==
-X-Gm-Message-State: APt69E2uvC1WWwqwRpz16sUWcqw4Lvb16S5n8M+x8pUCPpmaj7D9i/HQ
-	xiwT3I36hHGKa3rp2bx8SZfPDFeqqn2+Kzd/0+/oVw==
-X-Received: by 2002:a9d:34db:: with SMTP id
-	t27-v6mr1120519otd.316.1528378798544; 
-	Thu, 07 Jun 2018 06:39:58 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>) id 1fQvHV-00024G-R3
+	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 09:48:52 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40922 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fQvHV-000242-Lv; Thu, 07 Jun 2018 09:48:49 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1A05E401EF06;
+	Thu,  7 Jun 2018 13:48:49 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-48.ams2.redhat.com
+	[10.36.116.48])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CD5992026DEF;
+	Thu,  7 Jun 2018 13:48:48 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id B08ED1138645; Thu,  7 Jun 2018 15:48:47 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+References: <20180529174821.19964-1-f4bug@amsat.org>
+Date: Thu, 07 Jun 2018 15:48:47 +0200
+In-Reply-To: <20180529174821.19964-1-f4bug@amsat.org> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue,
+	29 May 2018 14:48:17 -0300")
+Message-ID: <87lgbqvha8.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/25.3 (gnu/linux)
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
-	Thu, 7 Jun 2018 06:39:38 -0700 (PDT)
-In-Reply-To: <1528378684-14487-1-git-send-email-hejianet@gmail.com>
-References: <1528378684-14487-1-git-send-email-hejianet@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Jun 2018 14:39:38 +0100
-Message-ID: <CAFEAcA__8bZEku0vUAVQzheb8kjgZeRbKw_TXy6bY9RnKi+U9A@mail.gmail.com>
-To: Jia He <hejianet@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-devel] [PATCH] hw/arm/smmuv3: fix smmu emulation when
- guest smmu is in passthrough mode
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 07 Jun 2018 13:48:49 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 07 Jun 2018 13:48:49 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/4] qapi/error: converts
+ error_setg(&error_fatal) to error_report() + exit()
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jia.he@hxt-semitech.com, Eric Auger <eric.auger@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G8xc8/i1cYg/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-block@nongnu.org, John Snow <jsnow@redhat.com>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Max Reitz <mreitz@redhat.com>, Eric Blake <eblake@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DaHuKLLKj4ms
 
-On 7 June 2018 at 14:38, Jia He <hejianet@gmail.com> wrote:
-> There is an exception when I passes iommu.passthrough=1 to guest's
-> kernel boot parameter(host QDF2400 kernel 4.17, guest kernel 4.14).
-> The guest will be hang when booting up.
->
-> When guest smmu is in passthrough mode, entry.perm will not be assigned
-> to flag in smmuv3_translate. It seems not be correct.
->
-> After this patch, I have tested in 4 cases and all passed.
-> host smmu on/passthrough + guest smmu on/passthrough
->
-> Signed-off-by: jia.he@hxt-semitech.com
-> ---
->  hw/arm/smmuv3.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 42dc521..5c46102 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -560,6 +560,12 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->      }
->
->      ret = smmuv3_decode_config(mr, &cfg, &event);
-> +
-> +    if (cfg.bypassed) {
-> +        ret = 0;
-> +        goto out;
-> +    }
-> +
->      if (ret) {
->          goto out;
->      }
-> --
-> 1.8.3.1
->
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Ccing Eric as the author of the smmuv3 code.
+> Hi,
+>
+> This series converts error_setg(&error_fatal) to error_report() + exit() =
+as
+> suggested by the "qapi/error.h" documentation.
 
-thanks
--- PMM
+Appreciated!
+
+The series actually converts two anti-patterns.
+
+1. From
+
+    if (COND) {
+        error_setg(&error_fatal, ...);
+    }
+
+to
+
+    if (COND) {
+        error_report(...);
+        exit(1);
+    }
+
+This is exactly what error.h asks for.
+
+2. From
+
+    if (COND) {
+        error_setg(&error_abort, ...);
+    }
+to
+
+    if (COND) {
+        error_report(...);
+        abort();
+    }
+
+error.h asks for
+
+    assert(!COND);
+
+instead.  See my reply to PATCH 1 for why.

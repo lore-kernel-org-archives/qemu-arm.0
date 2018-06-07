@@ -1,96 +1,86 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2068285wrq;
-        Thu, 7 Jun 2018 05:59:08 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLIKngh5Ef0EPrJSw1Vo5U3y325a+P4E7uOKdFyKxPOov+oWNhgQOoPSXwU7xY4UcPVu0Kl
-X-Received: by 2002:ac8:2fec:: with SMTP id m41-v6mr1620934qta.55.1528376348446;
-        Thu, 07 Jun 2018 05:59:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528376348; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2106128wrq;
+        Thu, 7 Jun 2018 06:31:00 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJMBO7BMGhlhVNoVqTR5yYa0OPO99M99mXwPKs3+myGpd4EY0yDnFEN6HAOXFtk2A8R469U
+X-Received: by 2002:a37:2999:: with SMTP id p25-v6mr1478328qkp.61.1528378260483;
+        Thu, 07 Jun 2018 06:31:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528378260; cv=none;
         d=google.com; s=arc-20160816;
-        b=tD2euJpYyydmA63mFtUJo5FICbP435vMpbHmYKHHD0CvmdorLS6A2OlI8XH3cljNIu
-         b9NPPR8WjVyKlBlLed+w9mzVV5zBNugy/FDpjECoT/JMKjq7URpbdbNk29XbuUETIt9Z
-         dpv1kwAQ+SrQvK2LLtiXC1W6vErGILIqM2IHy9x+DOkNWBcwE5DeWatah/xSdZSKwAdP
-         kbtJxljZVGRMnteu1Uoabw1+NRPDgR1Hca7cE7HnYfoiDXYmTwRYR+kqMKl48KALCHuY
-         fqvdEgLQcV19bmcNjnp2KIHpwzvROFBAaDY6bd5fPekT7h4/igjykiXnhrZgTYvZOdZx
-         NRlg==
+        b=n+mEHgFsMu/GQQiuy46Jc7Q7tNk4ZwXXS4WWHUbgS6htOwSridTnj8Bs+pZcrhwfbq
+         lgoIIbN1jYb43empVjWtqg7mf9o6bz8C5vi64hVRPfETo303PMc/aE21WdmRlLyHwD5A
+         U0ebqMVSC4GC4LGPq9WkVRP8fybe+vJIJVhLQrc0/zl+9GW6Ga+C3CLuTcKVI6maz5Rj
+         I84ny386Ueymqka+aigv4j7Pwm0OGUTpS6s6Tjdtaet94OfmHoPvKRxxmaXNCYITqIeR
+         xhMB67MH/WFDAudcLeDy8yfl/DZ2hHG8pZMDDWgOgaX8VUu4vDWpkTTv2+wQUBzI2sLA
+         EbSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=x0crRKEUAWnnh51gazKQwYxSvpFKr5jUJtIA+zB445E=;
-        b=EgyH+2o0Bcbtj6zWRb2Dj3WtQJK5E4lFjWWiqIZ+gBw5zoo0+mxgmVHlrs1nvPGJI/
-         8ZMeIhqiBmrE4SkuaXetNCsvgXVRwKbg/kYetJz8XfJrhz2q9H7xbW4+LyHlAx4m9qyM
-         84HQSnTpecnyQronidChYaR+EPHKGMoA3wjWLAUwAjgcqgDMKi2FSE1zct88vJqgYUkM
-         cEirDZ3FG397VgGBhL0hHnAlBpawPoX3t/4NoH/YUgYwZPI3LRr7Og74Q33iL/uJcvfv
-         oxc3gj8GS8OtbJraoh8VQeSR2YDqJ05+fAfjmFqUPjKAOwj2wQBB7KqCabDj0jWex2Y2
-         GSDQ==
+        bh=cIa8hH1oGHApZCVEDRwRig+WdGVzq7/KjgNiCRjJSVw=;
+        b=aiFXwdNN4+y129VbnHM4JkS3Bf0SylT2tV94HbbqtY0wjnPqRnk8ZJJ6EXCv5xrNRn
+         ZPp5CXj+M97CdrhI9PauQeMwGcnDpbREVu7j4LusvHNuTQyl4C4B3f/AwfU+ZP0r6Bgb
+         GZqADhPS/QjJGbSzeo//oelXdBAyKrWVBYPH5WL7M4AyqRgiDnP2aF1pghAsuORnUCjB
+         NWb7WEYnUypSOIavrxVdSzHG9IcQNnwWU+YGtMG6j4DQO25wrM38TuGC/VU9rmm4Aip3
+         /aNsC57RxcDOan1IStmoIRQdbAaWWk6EO2D/qfFxVSKCIZqEkaWjNP8FE7uWPn7XR+tw
+         FuNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r71-v6si1515197qkl.257.2018.06.07.05.59.08
+        by mx.google.com with ESMTPS id m63-v6si2605714qte.200.2018.06.07.06.31.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 07 Jun 2018 05:59:08 -0700 (PDT)
+        Thu, 07 Jun 2018 06:31:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57778 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:57999 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fQuVP-0002nM-VX
-	for alex.bennee@linaro.org; Thu, 07 Jun 2018 08:59:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53825)
+	id 1fQv0F-0004m9-W5
+	for alex.bennee@linaro.org; Thu, 07 Jun 2018 09:31:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33439)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fQuVG-0002mL-LN
-	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 08:58:59 -0400
+	(envelope-from <clg@kaod.org>) id 1fQuzy-0004jn-EL
+	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 09:30:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fQuVD-0006YY-Jw
-	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 08:58:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56590 helo=mx1.redhat.com)
+	(envelope-from <clg@kaod.org>) id 1fQuzu-0001CP-B6
+	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 09:30:42 -0400
+Received: from 8.mo2.mail-out.ovh.net ([188.165.52.147]:45994)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fQuVD-0006Xp-FR; Thu, 07 Jun 2018 08:58:55 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 48AA1401DEA4;
-	Thu,  7 Jun 2018 12:58:54 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-24.ams2.redhat.com
-	[10.36.116.24])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C71932026993;
-	Thu,  7 Jun 2018 12:58:53 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 3555531F63; Thu,  7 Jun 2018 14:58:53 +0200 (CEST)
-Date: Thu, 7 Jun 2018 14:58:53 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Message-ID: <20180607125853.5hcd2bhhjedfngre@sirius.home.kraxel.org>
-References: <20180603203412.11033-1-contrib@steffen-goertz.de>
-	<20180604092008.GA13674@stefanha-x1.localdomain>
-	<CAFEAcA9kdvxa61HNxv-cDhcv07E_NUpwVcSJVYNw4weS3k7nUw@mail.gmail.com>
-	<20180604101221.nhvjum467ier3txx@sirius.home.kraxel.org>
-	<20180607102455.GD19032@stefanha-x1.localdomain>
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fQuzu-00011r-43
+	for qemu-arm@nongnu.org; Thu, 07 Jun 2018 09:30:38 -0400
+Received: from player796.ha.ovh.net (unknown [10.109.105.52])
+	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 43A8C13BDF6
+	for <qemu-arm@nongnu.org>; Thu,  7 Jun 2018 15:30:28 +0200 (CEST)
+Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
+	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
+	by player796.ha.ovh.net (Postfix) with ESMTPSA id 025115C00B9;
+	Thu,  7 Jun 2018 15:30:22 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20180530061711.23673-1-clg@kaod.org>
+	<20180530061711.23673-3-clg@kaod.org>
+	<CAFEAcA-=ViCUNBj3H6q0h-=k5ROG=RKy50TRFVd_9aNPiu7Fdw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <e9021749-fcb8-a9d3-1cdd-396bc7d68fc2@kaod.org>
+Date: Thu, 7 Jun 2018 15:30:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.5.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180607102455.GD19032@stefanha-x1.localdomain>
-User-Agent: NeoMutt/20180512
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 07 Jun 2018 12:58:54 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 07 Jun 2018 12:58:54 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+In-Reply-To: <CAFEAcA-=ViCUNBj3H6q0h-=k5ROG=RKy50TRFVd_9aNPiu7Fdw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 3707306920590478276
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrjeejgdeiiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC v3] qapi: command category to stimulate
- high-level machine devices
+X-Received-From: 188.165.52.147
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/4] ftgmac100: add IEEE
+ 802.1Q VLAN support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,31 +92,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Jim Mussared <jim@groklearning.com>, Eric Blake <eblake@redhat.com>,
-	Steffen =?utf-8?B?R8O2cnR6?= <contrib@steffen-goertz.de>,
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: St9t03S50GH9
+X-TUID: rzfBIv8EOT97
 
-  Hi,
+On 06/07/2018 02:41 PM, Peter Maydell wrote:
+> On 30 May 2018 at 07:17, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>> The ftgmac100 NIC supports VLAN tag insertion and the MAC engine also
+>> has a control to remove VLAN tags from received packets.
+>>
+>> The VLAN control bits and VLAN tag information are contained in the
+>> second word of the transmit and receive descriptors. The Insert VLAN
+>> bit and the VLAN Tag available bit are only valid in the first segment
+>> of the packet.
+>>
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>=20
+>> +        /* Check for VLAN */
+>> +        if (bd.des0 & FTGMAC100_TXDES0_FTS &&
+>> +            bd.des1 & FTGMAC100_TXDES1_INS_VLANTAG &&
+>> +            be16_to_cpu(PKT_GET_ETH_HDR(ptr)->h_proto) !=3D ETH_P_VLA=
+N) {
+>=20
+> This is kind of bogus because there's no guarantee that h_proto here
+> is sufficiently aligned to do a halfword load. However this is
+> a problem common to all the PKT_GET_* macros so we should probably
+> attack it separately to this series.
+>=20
+> Getting the ethernet h_proto field seems common enough that
+> something like
+>=20
+> static inline uint16_t eth_get_proto(uint8_t *pkt)
+> {
+>     return lduw_be_p(&PKT_GET_ETH_HDR(pkt)->h_proto);
+> }
+>=20
+> would be handy in eth.h.
 
-> I prefer the WebSocket route over creating a fake display that will not
-> be able to implement complex widgets well.
+yes. There are a few candidates :
 
-Makes sense.
+hw/net/virtio-net.c:        int vid =3D lduw_be_p(ptr + 14) & 0xfff;
+hw/net/e1000e_core.c:        uint16_t vid =3D lduw_be_p(buf + 14);
+hw/net/rtl8139.c:            lduw_be_p(&buf[ETH_ALEN * 2]) =3D=3D ETH_P_V=
+LAN) {
+hw/net/e1000x_common.c:    uint16_t eth_proto =3D lduw_be_p(buf + 12);
+hw/net/e1000.c:        uint16_t vid =3D lduw_be_p(buf + 14);
+hw/net/e1000.c:        vlan_special =3D cpu_to_le16(lduw_be_p(filter_buf =
++ 14));
 
-> Gerd: What is your preference?  Do you want board-specific fake displays
-> inside the QEMU process as the long-term direction for UIs?
+Thanks,
 
-Well, it isn't the one or the other, we could actually do both.  For the
-deployments you are looking for the websocket approach proably works
-best.  Being able to do at least simple stuff (say led display and
-a+b+reset buttons) with a fake display, without requiring setting up
-something separate for the UI can be quite useful too.
+C.=20
 
-Your call.
+> Anyway, I've applied this series to target-arm.next.
+>=20
+> thanks
+> -- PMM
+>=20
+

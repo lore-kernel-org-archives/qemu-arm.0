@@ -1,198 +1,523 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp997337wrq;
-        Fri, 8 Jun 2018 08:09:41 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLoxBI/L74CsC8EXfvnIe11XvmNWH3ItmlSz4JZXiU5M5dRwRwJ9Y2FFdl1ZJHlfDln8j+N
-X-Received: by 2002:a37:3147:: with SMTP id x68-v6mr5640663qkx.358.1528470581872;
-        Fri, 08 Jun 2018 08:09:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528470581; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1316727wrq;
+        Fri, 8 Jun 2018 13:42:29 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJgn2qe0YbMjNRRbRS7JKB8N8Y1Xz8uyoTCG1CznZlogeA0e+SKbDuWd89KPaKlXNEwoX35
+X-Received: by 2002:a37:2150:: with SMTP id h77-v6mr6951486qkh.424.1528490549307;
+        Fri, 08 Jun 2018 13:42:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528490549; cv=none;
         d=google.com; s=arc-20160816;
-        b=eRFgx8YbOJ4Myn1BaUOkS1/4dJ8P2mDTwtO5vfIhYK6FuvYYPWQIiXdCLd6q4cRdy/
-         ln1BBWhckB0nXV5i6wewsmT754GD0sKh/l9iXwmOT+9J/tbwliXgxZ33MAmBsK7CLBW6
-         mXujTCwO2LUWCPTqZLC3dKieUH37+MAl5Tm6NmVi4Q6sFYYGwUWSCg7JtcNuT5bN8Dxb
-         XwplH4qlr6+kCidxDNWpt7VssKMadxxBwaE+pT6qxiNvcJQTH32UCOmqtgv+u2FtynNt
-         bV28+b6yRv2tzKIAYclbJAOtTqh1a5arEhCVZhHjfmvEuwgVuCoHz833xnADI4+trmn8
-         Sp0g==
+        b=WdNCgIYB/Q1/tgvwUq5kKXOf9zS/40lR8L/Smy44+xcWWvav2I0gC5EmVswtCY7qbA
+         CUYmmvhLyRQDqivZ3WV41IZGXaV9beFjh5gFib/g68h4oU7L0Y5Vl7m2XJrGl+aY706j
+         cM1DFBRCRMguoWJr4SPZLlaRe9+JVIbW4TJ3lUlu4v9pIYoc7b9K+2lA9xBvKnYlPht6
+         Ib9iHbeoR9JoCbTUPHtKFuqfqTdAiaZyiotvriZorQqv6IQeKiio7SxRJlbqrTgSttzJ
+         U/5lwGLgVBszKOJTuEt1kf5wBWOs+tTEejRSsigKwTFxTD+0I5nbjZN0YVYdRkFdbGp/
+         7sZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :arc-authentication-results;
-        bh=QOt505UZCAePdr5ioHaIY34FQ7qc6OihUeYBCZti3gI=;
-        b=F3l10UlVJM1WrE39WvOvA4cTOAZ2FZzciOM+JtOdCO3+KfRFVoXLl9JDqA71TXwTYx
-         GmXSiPkD8B+UALAg5wHXs3Z4g7vvr3y4DLlx3RxZ7V5sqW1aZ0TUKGQtIaJZFdbIu8wq
-         G4NwTerI/8PXyT/Wq9+lXx5dx28SbZLdhAw13FCNoBofnJYR95o2jxPBtTxLB1/tA1M6
-         VxoS52MUPy73Az/j4K48UpfaaX0f1GMeEeZ+87W6eTU5u0tWghQSMspe7jjN+u1i6uzy
-         ISKQOHBieyhYgKIeahlcfqjZCr9G+EszWRND9aZVZTp+BSyaWu9Gh7rR4Fpe8DgamtNi
-         KldA==
+         :user-agent:date:message-id:openpgp:references:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=RRdMMSt8ilypsZIdgYO7sbJUKz/hWdQNqg0GKtHp8kY=;
+        b=EvdtapGwgNB2HdJlv3jNXf4rJ58s/0CTuScIgVXThrvM0OPz/FvkDeMwnhgXa5utHr
+         szCG2GmwVF0KtkMGUqgrF/I8cBEomINM+dornJT5oHPrVvK+AUgEU+Cv0AMsoB0zwZgV
+         C4dGX0rwJ5+jHbSeRCVlKrcoTs2mDeISEK/Nogdy40ZJgVazj4hRIImn5DkPccCrgBVP
+         jkg3I/SUiKKypxUdvwcGDZMorK2gs+zkiE8e5bMuFuPjUC9PKVFI16ZzBCbNKzCXdv9s
+         wkTUH4DWfOcGYraR5TDRYOJkebqPkbljkx2j69gvgOxfvs2Y+ub1eYbL80DtJN32pegO
+         1uUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kujP1OR5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e187-v6si1410049qkc.193.2018.06.08.08.09.41
+        by mx.google.com with ESMTPS id a22-v6si11038490qka.184.2018.06.08.13.42.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Jun 2018 08:09:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 08 Jun 2018 13:42:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36446 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kujP1OR5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:38145 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fRJ1J-0008Lh-9l
-	for alex.bennee@linaro.org; Fri, 08 Jun 2018 11:09:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36175)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fRODM-0001t5-QJ
+	for alex.bennee@linaro.org; Fri, 08 Jun 2018 16:42:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fRIzF-0006iR-54
-	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 11:07:33 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fROCD-0001QH-Ht
+	for qemu-devel@nongnu.org; Fri, 08 Jun 2018 16:41:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fRIzD-00059c-7Y
-	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 11:07:33 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43946 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1fRIzD-00058c-1f; Fri, 08 Jun 2018 11:07:31 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0B0CC40251D5;
-	Fri,  8 Jun 2018 15:07:30 +0000 (UTC)
-Received: from [10.10.123.151] (ovpn-123-151.rdu2.redhat.com [10.10.123.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 125071C73B;
-	Fri,  8 Jun 2018 15:07:28 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180606152128.449-1-f4bug@amsat.org>
-	<b4903491-f450-1a54-2a70-a084c30cd8c6@redhat.com>
-	<CAFEAcA_xP37u4KMdvPe8MyU3y_6re88pAx3KTLY_DOP0qWQzqA@mail.gmail.com>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
-Message-ID: <e67c1e7c-a720-beb9-4858-2459f7001091@redhat.com>
-Date: Fri, 8 Jun 2018 11:07:27 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fROC7-0002gc-S9
+	for qemu-devel@nongnu.org; Fri, 08 Jun 2018 16:41:17 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:42958)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fROC7-0002gK-L6; Fri, 08 Jun 2018 16:41:11 -0400
+Received: by mail-qk0-x241.google.com with SMTP id j80-v6so9566494qke.9;
+	Fri, 08 Jun 2018 13:41:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:from:to:cc:references:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=RRdMMSt8ilypsZIdgYO7sbJUKz/hWdQNqg0GKtHp8kY=;
+	b=kujP1OR51jHu9RQ6jiofrdhoUZaMBPFqnYDXBRea6jzEp7CztMwYJIbDuOtdRER03Y
+	i/a0FvPiNahyWIa+seTSJZUg3AsSI5qag4GBR90fLNX1TzU4cHSuHKM0f0Cd5I+Z8mVb
+	2fw3EWqCttqARQ32CguZky6NWIvR9EVFGTZ3n7KcdHO8jbu1wIkUi+cWQovP0vsAEONm
+	g/7EIJg9HjSxi2PeFE8695TxDgYOCGVN42Of0V1RQjqKN2NOzQKzVLZbYvHn+itckhTf
+	8X+8IQIGjHWK2+U0jZv2ZP0tpRpkI6+fFY0mFM0rEYVF50eq/0auKZud/tL1zCisW5zs
+	D9MQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:from:to:cc:references:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=RRdMMSt8ilypsZIdgYO7sbJUKz/hWdQNqg0GKtHp8kY=;
+	b=AwvyRRGPwapogKXFv+MulQDqp2mapvtvY4yX6Q0EN8uiYyJDUIr+mA0AGTMO+5I6IP
+	ynp8qzZC9bRIhA1A1joH6pJZDEuISS2J3X0eASSsHbCeSllA88W8n7rc5N3+WQ3nZkUY
+	4RUVJsar3IC7Rda/Vv6yEEieV0URHVq8tNhMxBwxN3XeRI91do4TfOfi99MAcZPHXe42
+	geCkE5mywmZyKQMrbXzag7zddp73PwRNVcGsFt6PGBevOb8lqmkFd4+6LNxDWXMGlHdG
+	UZ0gBBeQzEIc1EegekZfnDhf9h/0ToaZTiwmaPuDUorK5t3qCN/xtG7gJFVn4dGw78jV
+	sdUg==
+X-Gm-Message-State: APt69E2+NLLYezaJ20azXF6Qo8zQrwfSvSQYnWVIY2+7SaGrbCL0ho+W
+	sps1MBMlPx75VOy7NEhO1UGEmIJk
+X-Received: by 2002:a37:678b:: with SMTP id
+	b133-v6mr6798216qkc.54.1528490470681; 
+	Fri, 08 Jun 2018 13:41:10 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	b3-v6sm9751585qtj.85.2018.06.08.13.41.07
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 08 Jun 2018 13:41:09 -0700 (PDT)
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Andrzej Zaborowski <balrogg@gmail.com>
+References: <1515506513-31961-1-git-send-email-peter.maydell@linaro.org>
+	<1515506513-31961-5-git-send-email-peter.maydell@linaro.org>
+	<92c12802-3cd5-48ef-ac9e-555946cb1d5c@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <594da42f-4108-76f1-2c85-242a0e021829@amsat.org>
+Date: Fri, 8 Jun 2018 17:41:06 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_xP37u4KMdvPe8MyU3y_6re88pAx3KTLY_DOP0qWQzqA@mail.gmail.com>
+In-Reply-To: <92c12802-3cd5-48ef-ac9e-555946cb1d5c@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Fri, 08 Jun 2018 15:07:30 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 08 Jun 2018 15:07:30 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/11] misc: Add trailing '\n'
- to qemu_log() calls
-X-BeenThere: qemu-arm@nongnu.org
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-devel] [PATCH 4/4] hw/sd/omap_mmc: Reset SD card on
+ controller reset
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Palmer Dabbelt <palmer@sifive.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Walle <michael@walle.cc>, Michael Clark <mjc@sifive.com>,
-	qemu-ppc <qemu-ppc@nongnu.org>, Paul Burton <paul.burton@mips.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Yongbok Kim <yongbok.kim@mips.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Antony Pavlov <antonynpavlov@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HLS1ruff72ZC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fW6rEMpoTxGv
 
-
-
-On 06/08/2018 06:54 AM, Peter Maydell wrote:
-> On 6 June 2018 at 20:43, John Snow <jsnow@redhat.com> wrote:
->> so error_setg must be used WITHOUT \n and logging must happen with \n?
+On 06/08/2018 12:44 AM, Philippe Mathieu-Daudé wrote:
+> On 01/09/2018 11:01 AM, Peter Maydell wrote:
+>> Since omap_mmc is still using the legacy SD card API, the SD
+>> card created by sd_init() is not plugged into any bus. This
+>> means that the controller has to reset it manually.
 >>
->> If we're sure that's the way we want to have things laid out, we really
->> ought to augment checkpatch to catch this -- because there's 0% chance
->> that we'll keep it straight on our own otherwise.
+>> Failing to do this mostly didn't affect the guest since the
+>> guest typically does a programmed SD card reset as part of
+>> its SD controller driver initialization, but would mean that
+>> migration fails because it's only in sd_reset() that we
+>> set up the wpgrps_size field.
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> This one isn't cc-stable because the OMAP boards don't
+>> support migration at all anyway, being un-QOMified.
+>> ---
+>>  hw/sd/omap_mmc.c | 14 ++++++++++----
+>>  1 file changed, 10 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
+>> index e934cd3..5b47cad 100644
+>> --- a/hw/sd/omap_mmc.c
+>> +++ b/hw/sd/omap_mmc.c
+>> @@ -305,6 +305,12 @@ void omap_mmc_reset(struct omap_mmc_s *host)
+>>      host->cdet_enable = 0;
+>>      qemu_set_irq(host->coverswitch, host->cdet_state);
+>>      host->clkdiv = 0;
+>> +
+>> +    /* Since we're still using the legacy SD API the card is not plugged
+>> +     * into any bus, and we must reset it manually. When omap_mmc is
+>> +     * QOMified this must move into the QOM reset function.
+>> +     */
+>> +    device_reset(DEVICE(host->card));
+>>  }
+>>  
+>>  static uint64_t omap_mmc_read(void *opaque, hwaddr offset,
+>> @@ -587,8 +593,6 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
+>>      s->lines = 1;	/* TODO: needs to be settable per-board */
+>>      s->rev = 1;
+>>  
+>> -    omap_mmc_reset(s);
+>> -
+>>      memory_region_init_io(&s->iomem, NULL, &omap_mmc_ops, s, "omap.mmc", 0x800);
+>>      memory_region_add_subregion(sysmem, base, &s->iomem);
+>>  
+>> @@ -598,6 +602,8 @@ struct omap_mmc_s *omap_mmc_init(hwaddr base,
+>>          exit(1);
+>>      }
+>>  
+>> +    omap_mmc_reset(s);
+>> +
+>>      return s;
+>>  }
+>>  
+>> @@ -613,8 +619,6 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
+>>      s->lines = 4;
+>>      s->rev = 2;
+>>  
+>> -    omap_mmc_reset(s);
+>> -
+>>      memory_region_init_io(&s->iomem, NULL, &omap_mmc_ops, s, "omap.mmc",
+>>                            omap_l4_region_size(ta, 0));
+>>      omap_l4_attach(ta, 0, &s->iomem);
+>> @@ -628,6 +632,8 @@ struct omap_mmc_s *omap2_mmc_init(struct omap_target_agent_s *ta,
+>>      s->cdet = qemu_allocate_irq(omap_mmc_cover_cb, s, 0);
+>>      sd_set_cb(s->card, NULL, s->cdet);
+>>  
+>> +    omap_mmc_reset(s);
+>> +
+>>      return s;
+>>  }
 > 
-> It's a historical side effect of them being basically separately
-> designed APIs. error_setg() takes the "give it the entire error
-> message" approach. logging is printf-style and gives the caller
-> flexibility to compose more complicated lines of logging with
-> multiple calls. Consistency between the two might be nice but
-> there are an awful lot of qemu_log calls in the codebase to check
-> and change to the other convention...
+> This patch broke something in the Nokia N810 tablet.
+
+Correction, this patch is correct :)
+
+It triggered a latent bug in omap_mmc_write(MMC_CON).
+
+I'll submit a fix.
+
 > 
-
-Well, there's a pragmatic reason against having it be uniform.
-
-If logging lets you build more complicated statements, perhaps a
-checkpatch /warning/ that you've omitted the newline might be nice.
-
---js
+> I used your image:
+> 
+> http://people.linaro.org/~peter.maydell/n8x0-images.tgz
+> 
+>     ecd219f7abbc17b9d9170206410355bba287831f is the first bad commit
+>     commit ecd219f7abbc17b9d9170206410355bba287831f
+>     Author: Peter Maydell <peter.maydell@linaro.org>
+>     Date:   Tue Jan 16 13:28:13 2018 +0000
+> 
+>         hw/sd/omap_mmc: Reset SD card on controller reset
+> 
+>         Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>         Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>         Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> Using: -append "console=ttyS1"
+> 
+> Before:
+> 
+> [    1.239471] mmci-omap mmci-omap.0: command timeout (CMD52)
+> [    1.240356] mmci-omap mmci-omap.0: command timeout (CMD52)
+> [    1.253967] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.254364] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.254730] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.255096] mmci-omap mmci-omap.0: command timeout (CMD5)
+> omap_dma4_write: Read-only register 0x000034
+> omap_dma4_write: Read-only register 0x000038
+> omap_dma4_write: Read-only register 0x00003c
+> omap_dma4_write: Read-only register 0x000040
+> omap_dma4_write: Read-only register 0x000038
+> [    1.263275] mmc0: host does not support reading read-only switch.
+> assuming write-enable.
+> [    1.264038] mmc0: new SDHC card at address 4567
+> omap_uart_read: Bad register 0x000034
+> omap_uart_write: Bad register 0x000034
+> omap_uart_read: Bad register 0x000034
+> omap_uart_write: Bad register 0x000034
+> [    1.327514] Waiting for root device /dev/mmcblk0p1...
+> [    1.329925] mmcblk0: mmc0:4567 QEMU! 1.81 GiB
+> [    1.333831]  mmcblk0:omap_dma4_write: Read-only register 0x000038
+>  p1 p2
+> [    1.425537] mmci-omap mmci-omap.0: command timeout (CMD52)
+> [    1.426727] mmci-omap mmci-omap.0: command timeout (CMD52)
+> omap_dma4_write: Read-only register 0x000038
+> [    1.478668] mmci-omap mmci-omap.0: command timeout (CMD8)
+> omap_dma4_write: Read-only register 0x000038
+> omap_dma4_write: Read-only register 0x000038
+> [    1.484436] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.485015] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.485595] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.486022] mmci-omap mmci-omap.0: command timeout (CMD5)
+> [    1.486480] mmci-omap mmci-omap.0: command timeout (CMD55)
+> [    1.487030] mmci-omap mmci-omap.0: command timeout (CMD55)
+> omap_dma4_write: Read-only register 0x000038
+> [    1.490600] EXT3-fs (mmcblk0p1): recovery required on readonly filesystem
+> [    1.491149] EXT3-fs (mmcblk0p1): write access will be enabled during
+> recovery
+> omap_dma4_write: Read-only register 0x000038
+> [    1.498779] mmci-omap mmci-omap.0: command timeout (CMD55)
+> [    1.499359] mmci-omap mmci-omap.0: command timeout (CMD55)
+> [    1.499908] mmci-omap mmci-omap.0: command timeout (CMD1)
+> [    1.502319] EXT3-fs: barriers not enabled
+> omap_dma4_write: Read-only register 0x000038
+> [    1.633636] EXT3-fs (mmcblk0p1): recovery complete
+> omap_dma4_write: Read-only register 0x000034
+> omap_dma4_write: Read-only register 0x000038
+> omap_dma4_write: Read-only register 0x00003c
+> omap_dma4_write: Read-only register 0x000040
+> omap_dma4_write: Read-only register 0x000034
+> omap_dma4_write: Read-only register 0x000038
+> omap_dma4_write: Read-only register 0x00003c
+> omap_dma4_write: Read-only register 0x000040
+> omap_dma4_write: Read-only register 0x000038
+> [    1.639495] kjournald starting.  Commit interval 5 seconds
+> [    1.641113] EXT3-fs (mmcblk0p1): mounted filesystem with writeback
+> data mode
+> [    1.645233] VFS: Mounted root (ext3 filesystem) readonly on device 179:1.
+> 
+> After:
+> 
+> omap_dma4_write: Read-only register 0x000034
+> omap_dma4_write: Read-only register 0x000038
+> omap_dma4_write: Read-only register 0x00003c
+> omap_dma4_write: Read-only register 0x000040
+> omap_dma4_write: Read-only register 0x000038
+> [    1.733459] mmc0: host does not support reading read-only switch.
+> assuming write-enable.
+> [    1.736083] mmc0: new SDHC card at address 4567
+> [    1.738494] Power Management for OMAP2 initializing
+> [    1.740753] PRCM revision 1.0
+> omap_prcm_write: Read-only register 0x0002c8
+> omap_prcm_write: Read-only register 0x0002c8
+> omap_prcm_write: Read-only register 0x0002c8
+> omap_prcm_read: Bad register 0x000048
+> omap_prcm_write: Bad register 0x000048
+> omap_prcm_read: Bad register 0x000048
+> omap_prcm_write: Bad register 0x000048
+> omap_prcm_read: Bad register 0x0004c8
+> omap_prcm_write: Bad register 0x0004c8
+> omap_prcm_write: Read-only register 0x0002c8
+> omap_prcm_read: Bad register 0x0004c8
+> omap_prcm_write: Bad register 0x0004c8
+> omap_prcm_write: Bad register 0x000030
+> [    1.744873] VFP support v0.3: implementor 41 architecture 1 part 20
+> variant b rev 4
+> [    1.795288] mmcblk0: mmc0:4567 QEMU! 1.81 GiB
+> [    1.802581]  mmcblk0:omap_dma4_write: Read-only register 0x000038
+>  p1 p2
+> omap_uart_read: Bad register 0x000034
+> omap_uart_write: Bad register 0x000034
+> omap_uart_read: Bad register 0x000034
+> omap_uart_write: Bad register 0x000034
+> [    1.867645] VFS: Cannot open root device "(null)" or unknown-block(0,0)
+> [    1.870056] Please append a correct "root=" boot option; here are the
+> available partitions:
+> [    1.874938] 1f00             128 mtdblock0 (driver?)
+> [    1.877746] 1f01             384 mtdblock1 (driver?)
+> [    1.880340] 1f02            2048 mtdblock2 (driver?)
+> [    1.882629] 1f03            4096 mtdblock3 (driver?)
+> [    1.884887] 1f04          255488 mtdblock4 (driver?)
+> [    1.887207] b300         1900544 mmcblk0 driver: mmcblk
+> [    1.889526]   b301         1562480 mmcblk0p1
+> [    1.891723]   b302          249984 mmcblk0p2
+> [    1.894165] Kernel panic - not syncing: VFS: Unable to mount root fs
+> on unknown-block(0,0)
+> [    1.897583] [<c002fa1c>] (unwind_backtrace+0x0/0xf0) from
+> [<c02b7938>] (panic+0x5c/0xe0)
+> [    1.900177] [<c02b7938>] (panic+0x5c/0xe0) from [<c0009054>]
+> (mount_block_root+0x258/0x2a8)
+> [    1.903137] [<c0009054>] (mount_block_root+0x258/0x2a8) from
+> [<c0009268>] (prepare_namespace+0x160/0x1c4)
+> [    1.909240] [<c0009268>] (prepare_namespace+0x160/0x1c4) from
+> [<c0008600>] (kernel_init+0x120/0x168)
+> [    1.914886] [<c0008600>] (kernel_init+0x120/0x168) from [<c002af04>]
+> (kernel_thread_exit+0x0/0x8)
+> omap_dma4_write: Read-only register 0x000034
+> omap_dma4_write: Read-only register 0x000038
+> omap_dma4_write: Read-only register 0x00003c
+> omap_dma4_write: Read-only register 0x000040
+> 
+> Diff using -append "console=ttyS1 printk.time=0":
+> 
+>  mmci-omap mmci-omap.0: command timeout (CMD5)
+>  mmc0: host does not support reading read-only switch. assuming
+> write-enable.
+>  mmc0: new SDHC card at address 4567
+> -Waiting for root device /dev/mmcblk0p1...
+>  mmcblk0: mmc0:4567 QEMU! 1.81 GiB
+>   mmcblk0: p1 p2
+> -EXT3-fs: barriers not enabled
+> -EXT3-fs (mmcblk0p1): mounted filesystem with writeback data mode
+> -VFS: Mounted root (ext3 filesystem) readonly on device 179:1.
+> -kjournald starting.  Commit interval 5 seconds
+> -devtmpfs: mounted
+> -Freeing init memory: 132K
+> -mmci-omap mmci-omap.0: command timeout (CMD52)
+> -mmci-omap mmci-omap.0: command timeout (CMD52)
+> -mmci-omap mmci-omap.0: command timeout (CMD8)
+> -mmci-omap mmci-omap.0: command timeout (CMD5)
+> -mmci-omap mmci-omap.0: command timeout (CMD5)
+> -mmci-omap mmci-omap.0: command timeout (CMD5)
+> -mmci-omap mmci-omap.0: command timeout (CMD5)
+> -mmci-omap mmci-omap.0: command timeout (CMD55)
+> -mmci-omap mmci-omap.0: command timeout (CMD55)
+> -mmci-omap mmci-omap.0: command timeout (CMD55)
+> -mmci-omap mmci-omap.0: command timeout (CMD55)
+> -mmci-omap mmci-omap.0: command timeout (CMD1)
+> -lcd_mipid spi1.1: performing LCD ESD recovery
+> -lcd_mipid spi1.1: performing LCD ESD recovery
+> +mmci-omap mmci-omap.0: command timeout (CMD18)
+> +mmcblk0: retrying using single block read
+> +mmci-omap mmci-omap.0: command timeout (CMD17)
+> +Unable to handle kernel NULL pointer dereference at virtual address
+> 00000018
+> +pgd = c0004000
+> +[00000018] *pgd=00000000
+> +Internal error: Oops: 5 [#1] PREEMPT
+> +last sysfs file:
+> +Modules linked in:
+> +CPU: 0    Tainted: G        W    (2.6.35~rc4-129.1-n8x0 #1)
+> +PC is at mmc_omap_dma_cb+0xb8/0x174
+> +LR is at omap2_dma_irq_handler+0x240/0x294
+> +pc : [<c0219504>]    lr : [<c003c3ac>]    psr: 20000193
+> +sp : c7d49db8  ip : c7c4c800  fp : 00000001
+> +r10: 00000060  r9 : c7c4c950  r8 : 00000001
+> +r7 : 0000032c  r6 : 00000007  r5 : 00000150  r4 : c7d4ba00
+> +r3 : 00000000  r2 : 00000007  r1 : 00000060  r0 : 00000007
+> +Flags: nzCv  IRQs off  FIQs on  Mode SVC_32  ISA ARM  Segment kernel
+> +Control: 00c5387d  Table: 80004008  DAC: 00000017
+> +Process mmcqd (pid: 462, stack limit = 0xc7d48268)
+> +Stack: (0xc7d49db8 to 0xc7d4a000)
+> +9da0:                                                       c03baed4
+> 00000150
+> +9dc0: 00000007 0000032c 00000001 c003c3ac 0000000c 00000000 c7d49e18
+> c0399a20
+> +9de0: 00000000 00000000 0000000c 00000000 c7d48000 00000001 00000001
+> c0081318
+> +9e00: c039ccc8 0000000c c0399a20 00000001 00000000 c00834c8 0000000c
+> 00000000
+> +9e20: 00000001 c002906c ffffffff fa0fe000 00000001 c0029ac8 c7d5ed24
+> c7d5ed24
+> +9e40: c7d49e68 00000001 c7d57320 c7d64400 00000001 c7d5ed24 c7d49e90
+> c7d48000
+> +9e60: 00000001 00000001 00000ffe c7d49e80 c0215fa8 c0215ffc 60000013
+> ffffffff
+> +9e80: 00000001 29e8d608 c7d57320 c7d49ea4 c7d49ea4 c7d49efc 00000000
+> c7d49e64
+> +9ea0: c0210128 00000011 00000022 00000000 00000000 00000000 00000000
+> 000000b5
+> +9ec0: 00000000 ffffff92 c7d49efc c7d49e90 0000000c 00000000 00000000
+> 00000000
+> +9ee0: 00000000 00000000 0000049d 00000000 00000000 00000000 00000000
+> 05f5e100
+> +9f00: 00000000 00000200 00000001 00000000 00000200 00000000 00000000
+> c7d49e90
+> +9f20: 00000001 c7d64800 c7eca800 c7d60980 c7d57320 c0171dc4 c7eca800
+> c7d60980
+> +9f40: c7d57320 00000000 000001b1 c01729a0 c7ec4e40 00000000 00000000
+> c7d48000
+> +9f60: c7ec4e40 00000000 c7d48000 c7ec4e40 00000000 c7d49f84 c7d57320
+> c0167680
+> +9f80: c7ec4e40 c7d48000 c7d5ed24 c7d5ed2c c7ec4e40 00000000 c7ec4fb0
+> 00000001
+> +9fa0: c7d57320 c02169b8 00000000 c7c6be28 c7d49fd4 c02168c0 c7d5ed24
+> 00000000
+> +9fc0: 00000000 00000000 00000000 c00692dc 00000000 00000000 c7d49fd8
+> c7d49fd8
+> +9fe0: 00000000 00000000 00000000 00000000 00000000 c002af04 00000000
+> 00000000
+> +[<c0219504>] (mmc_omap_dma_cb+0xb8/0x174) from [<c003c3ac>]
+> (omap2_dma_irq_handler+0x240/0x294)
+> +[<c003c3ac>] (omap2_dma_irq_handler+0x240/0x294) from [<c0081318>]
+> (handle_IRQ_event+0x24/0xe4)
+> +[<c0081318>] (handle_IRQ_event+0x24/0xe4) from [<c00834c8>]
+> (handle_level_irq+0xd4/0x16c)
+> +[<c00834c8>] (handle_level_irq+0xd4/0x16c) from [<c002906c>]
+> (asm_do_IRQ+0x6c/0x8c)
+> +[<c002906c>] (asm_do_IRQ+0x6c/0x8c) from [<c0029ac8>] (__irq_svc+0x48/0xac)
+> +Exception stack(0xc7d49e38 to 0xc7d49e80)
+> +9e20:                                                       c7d5ed24
+> c7d5ed24
+> +9e40: c7d49e68 00000001 c7d57320 c7d64400 00000001 c7d5ed24 c7d49e90
+> c7d48000
+> +9e60: 00000001 00000001 00000ffe c7d49e80 c0215fa8 c0215ffc 60000013
+> ffffffff
+> +[<c0029ac8>] (__irq_svc+0x48/0xac) from [<c0215ffc>]
+> (mmc_blk_issue_rq+0x240/0x590)
+> +[<c0215ffc>] (mmc_blk_issue_rq+0x240/0x590) from [<c02169b8>]
+> (mmc_queue_thread+0xf8/0xfc)
+> +[<c02169b8>] (mmc_queue_thread+0xf8/0xfc) from [<c00692dc>]
+> (kthread+0x78/0x80)
+> +[<c00692dc>] (kthread+0x78/0x80) from [<c002af04>]
+> (kernel_thread_exit+0x0/0x8)
+> +Code: e59f00c0 eafffff0 e3110020 08bd81f0 (e5931018)
+> +---[ end trace 1b75b31a2719ed20 ]---
+> +Kernel panic - not syncing: Fatal exception in interrupt
+> 
+> Trace diff:
+> 
+> @@ -245,6 +247,7 @@
+>   16-bit register 0x000004
+>   16-bit register 0x000003
+>   16-bit register 0x000004
+> +sdcard_reset
+>   Read-only register 0x0002c8
+>   Read-only register 0x0002c8
+>   Read-only register 0x0002c8
+> @@ -308,10 +311,6 @@
+>  sdcard_response RESP#1 (normal cmd) (sz:4)
+>  sdcard_app_command SD           SET_BUS_WIDTH/ACMD06 arg 0x00000002
+> (state transfer)
+>  sdcard_response RESP#1 (normal cmd) (sz:4)
+> - Bad register 0x000034
+> - Bad register 0x000034
+> - Bad register 0x000034
+> - Bad register 0x000034
+>  sdcard_normal_command SD  READ_MULTIPLE_BLOCK/ CMD18 arg 0x00000000
+> (state transfer)
+>  sdcard_response RESP#1 (normal cmd) (sz:4)
+>  sdcard_read_block addr 0x0 size 0x200
+> @@ -325,532 +324,17 @@
+>  sdcard_read_block addr 0xe00 size 0x200
+>  sdcard_normal_command SD    STOP_TRANSMISSION/ CMD12 arg 0x00000000
+> (state sendingdata)
+>  sdcard_response RESP#1 (normal cmd) (sz:4)
+> + Bad register 0x000034
+> + Bad register 0x000034
+> + Bad register 0x000034
+> + Bad register 0x000034
+>  sdcard_normal_command SD          SEND_STATUS/ CMD13 arg 0x45670000
+> (state transfer)
+>  sdcard_response RESP#1 (normal cmd) (sz:4)
+> -sdcard_normal_command SD  READ_MULTIPLE_BLOCK/ CMD18 arg 0x00000022
+> (state transfer)
+> -sdcard_response RESP#1 (normal cmd) (sz:4)
+> -sdcard_read_block addr 0x4400 size 0x200
+> - Read-only register 0x000038
+> -sdcard_read_block addr 0x4600 size 0x200
+> -sdcard_normal_command SD    STOP_TRANSMISSION/ CMD12 arg 0x00000000
+> (state sendingdata)
+> -sdcard_response RESP#1 (normal cmd) (sz:4)
+> -sdcard_normal_command SD  READ_MULTIPLE_BLOCK/ CMD18 arg 0x00000020
+> (state transfer)
+> -sdcard_response RESP#1 (normal cmd) (sz:4)
+> -sdcard_read_block addr 0x4000 size 0x200
+> ...
+> 
+> Regards,
+> 
+> Phil.
+> 

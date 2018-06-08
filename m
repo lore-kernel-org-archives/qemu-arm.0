@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id s2-v6sm35159251wrn.75.2018.06.08.05.39.12
+        by smtp.gmail.com with ESMTPSA id m58-v6sm62895795wrf.61.2018.06.08.05.39.16
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Jun 2018 05:39:19 -0700 (PDT)
+        Fri, 08 Jun 2018 05:39:24 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 1606D3E01A5;
-	Fri,  8 Jun 2018 13:33:09 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTP id E24BF3E0A43;
+	Fri,  8 Jun 2018 13:33:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: cota@braap.org,
 	famz@redhat.com,
@@ -23,57 +23,64 @@ Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM)
-Subject: [PATCH v6 24/49] tests/tcg: enable building for AArch64
-Date: Fri,  8 Jun 2018 13:32:42 +0100
-Message-Id: <20180608123307.24773-25-alex.bennee@linaro.org>
+Subject: [PATCH v6 22/49] tests/tcg: enable building for ARM
+Date: Fri,  8 Jun 2018 13:32:40 +0100
+Message-Id: <20180608123307.24773-23-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180608123307.24773-1-alex.bennee@linaro.org>
 References: <20180608123307.24773-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: S6ptNy7400sw
+X-TUID: 82h9BcOYFY7q
 
-We only have compilers for the (default) little endian variants.
+This allows us to use the docker cross compiler image to build these
+tests.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v4
-  - update MAINTAINERS
+v5
+  - add EXTRA_RUNS for mmap tests
 ---
- MAINTAINERS                        | 1 +
- tests/tcg/aarch64/Makefile.include | 8 ++++++++
- 2 files changed, 9 insertions(+)
- create mode 100644 tests/tcg/aarch64/Makefile.include
+ tests/tcg/arm/Makefile.include | 8 ++++++++
+ tests/tcg/arm/Makefile.target  | 5 ++++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+ create mode 100644 tests/tcg/arm/Makefile.include
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c9b440344e..b8fbef495b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -136,6 +136,7 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: target/arm/
- F: tests/tcg/arm/
-+F: tests/tcg/aarch64/
- F: hw/arm/
- F: hw/cpu/a*mpcore.c
- F: include/hw/cpu/a*mpcore.h
-diff --git a/tests/tcg/aarch64/Makefile.include b/tests/tcg/aarch64/Makefile.include
+diff --git a/tests/tcg/arm/Makefile.include b/tests/tcg/arm/Makefile.include
 new file mode 100644
-index 0000000000..de32c91235
+index 0000000000..8e7eac008f
 --- /dev/null
-+++ b/tests/tcg/aarch64/Makefile.include
++++ b/tests/tcg/arm/Makefile.include
 @@ -0,0 +1,8 @@
-+# Makefile.include for AArch64 targets
++# Makefile.include for all ARM targets
 +#
-+# We don't have any bigendian build tools so we only use this for AArch64
++# We don't have any bigendian build tools so we only use this for armhf
 +
-+ifeq ($(TARGET_NAME),aarch64)
-+DOCKER_IMAGE=debian-arm64-cross
-+DOCKER_CROSS_COMPILER=aarch64-linux-gnu-gcc
++ifeq ($(TARGET_NAME),arm)
++DOCKER_IMAGE=debian-armhf-cross
++DOCKER_CROSS_COMPILER=arm-linux-gnueabihf-gcc
 +endif
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index bc6962ecc6..0312293dca 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -1,6 +1,6 @@
+ # -*- Mode: makefile -*-
+ #
+-# ARM - included from tests/tcg/Makefile.target
++# ARM - included from tests/tcg/Makefile
+ #
+ 
+ ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+@@ -11,3 +11,6 @@ VPATH 		+= $(ARM_SRC)
+ 
+ hello-arm: CFLAGS+=-marm -ffreestanding
+ hello-arm: LDFLAGS+=-nostdlib
++
++# On ARM Linux only supports 4k pages
++EXTRA_RUNS+=run-test-mmap-4096
 -- 
 2.17.1

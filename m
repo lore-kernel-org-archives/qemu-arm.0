@@ -1,85 +1,77 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp752776wrq;
-        Fri, 8 Jun 2018 04:24:46 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIBhMSbkR7caMrdOPISXOtZbto5JfXr31yu/KNiR3ySvin256szxl5DfzFpv+4wKQSgG/Hl
-X-Received: by 2002:aed:2221:: with SMTP id n30-v6mr5584602qtc.416.1528457086434;
-        Fri, 08 Jun 2018 04:24:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528457086; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp774852wrq;
+        Fri, 8 Jun 2018 04:46:44 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLeKRlS4WuLhy7q0UXKPEk16IPCTropULmrN0RJC/QICeQrHknvNwnLZtHJlCD2WatH+JqG
+X-Received: by 2002:a37:997:: with SMTP id 145-v6mr5155689qkj.366.1528458404277;
+        Fri, 08 Jun 2018 04:46:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528458404; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZTF6bJX/skmenWp9zcEFv+vAkn8jCJYecV7lEm0kp5+0p3P3OhRGFQf8GrLdKwKxeC
-         1mmlNgY6plPORGByjNuZ4yjmKQb5VNiH5H/bNdFCKvzVGPylrVOgjWHW1QHAzQih6VKT
-         2g2Ipk6C145IIO4h1xtBvJtK6+7Y/PSjrAR646893o3cFUp7SoGAP4AK0ECUfLX7dr1P
-         q4r/tu/ALpYTqYA3jRVwUuu0ap9IyiBbkUyy1ehDiK1sLlFytCuC/x/LLG4jAx0XY1Y2
-         w9SgvP0yl/tiUvrkz07CxS9kMBySd4s18cTvIisAGUiUMe+ML9ikyJ7z36SZVh+2dLdr
-         TW1g==
+        b=K+X5GE8fFbjGfWuaRsDv1Z+oiZKWOiZsuRlDxI6V8BPa1Zz+jcA4a+SkOGhExfHmLu
+         PEU6ggztDd2yYayxHn9NT5i7+Vr+qj2WGgpda88BeNFWP9mai7qbRdcVAl+EVJXfRAsx
+         VxCm7lNjazYuIXBRo6KPQRUcbAUEhS3EKH0lrKRyUEpFv7H5CPrfnBxdGgSlLUIKOyiT
+         bcCVo2q2YFKtHM+VVD41TV21x2RNQuiuYg4RiCV0q0dOt7E9wVkVMmdmY/7+nkGVhsRK
+         00T5Kbm7tj2HOyvd2LR2ZryuhddGF09E35AtSXIPb9v7DmL4l2AGuhK6X8aO+l/o+we2
+         usAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
+         :from:resent-from:content-transfer-encoding:mime-version:message-id
+         :in-reply-to:resent-message-id:resent-date
          :arc-authentication-results;
-        bh=jtcRUnEphkb3lwxWSTYoZ+sYDfkHA+eXscCqXVrK6ZI=;
-        b=VzAMIAsEJmmT9eE4BePnPWl0CwpFVCaOElKfhd2XKh19Z4XzkXoPkwr0OUwIFCTYsS
-         pW6gESpJJ7t7c2EpOuN24mblqtNMUR1BIAPQJQX5VJtGC0IPhKHacoXBce53e9KvkJi2
-         lFXn5mmIpRGrjpRc85AHZwDhJya2ZaZDZA5HOa06cwv3yLfqG6QIjjr7SZXQEaToiTO3
-         kAgT9iZxhB7Nw4S/9wnweHzDOwAsoNlygsI71l0vLIMyfZENExW/zXSUUkqB6SHF6+aC
-         45lCXCTuf+mOfoIG6MA5H2t//EBsAbkAhkwu0tl4LmqqyYUnih9m/+XIMuEzCVJr0iqa
-         dMwQ==
+        bh=OxbFw/iv/9W8FlPVjsudF1MVjm+6Q38cMyu680LHGyo=;
+        b=XYMuc3BVqljNIXCTtdSGq3Fz1QLEVfCQpCEsqqIaEhwYc1tGy+TRjp3KPmUpQ+3qr8
+         ZvyJ4zrebseBIKsy9QxpAQyGkc4HY5Xh/RsV7CUnEs3hs025wqI4OB/+Ds0H6ykMNAWw
+         He5O0x95OqPcnybGs2GusFX3YugO9zCT0Oih32EqSXRp1KF7Xc8rtlii4hGK5fvM7TaW
+         QIPbmo32IHWOX474WHi1UahnIKUG9JnbV7RQ8uKxcj/v5BN2hGr1U+dVY7tDzUWGdKp5
+         0BVEyomu72UP8BHi5Y6wnFR/4ID3T+e7Idqq0hotY1nkR7Dcei+OxUf2Z6jc2gEG2FPx
+         xRTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r42-v6si496059qtc.401.2018.06.08.04.24.46
+        by mx.google.com with ESMTPS id z54-v6si707101qtb.193.2018.06.08.04.46.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 08 Jun 2018 04:24:46 -0700 (PDT)
+        Fri, 08 Jun 2018 04:46:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34757 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:34826 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fRFVe-0002vU-0C
-	for alex.bennee@linaro.org; Fri, 08 Jun 2018 07:24:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58059)
+	id 1fRFqt-00016R-Rc
+	for alex.bennee@linaro.org; Fri, 08 Jun 2018 07:46:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34738)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fRFRH-000833-3I
-	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 07:20:17 -0400
+	(envelope-from <no-reply@patchew.org>) id 1fRFqh-00014Q-U8
+	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 07:46:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fRFRF-0001mS-Q9
-	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 07:20:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36762 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fRFRF-0001mF-LP; Fri, 08 Jun 2018 07:20:13 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 33E17401DEB2;
-	Fri,  8 Jun 2018 11:20:13 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-117-155.ams2.redhat.com
-	[10.36.117.155])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D2CB71C73F;
-	Fri,  8 Jun 2018 11:20:02 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id AE3F140DF6; Fri,  8 Jun 2018 13:20:01 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri,  8 Jun 2018 13:19:55 +0200
-Message-Id: <20180608112001.14729-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Fri, 08 Jun 2018 11:20:13 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 08 Jun 2018 11:20:13 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+	(envelope-from <no-reply@patchew.org>) id 1fRFqf-00036A-Lt
+	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 07:46:31 -0400
+Resent-Date: Fri, 08 Jun 2018 07:46:31 -0400
+Resent-Message-Id: <E1fRFqf-00036A-Lt@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21098)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1fRFqf-00035l-GS
+	for qemu-arm@nongnu.org; Fri, 08 Jun 2018 07:46:29 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 152845745050098.86865693280197;
+	Fri, 8 Jun 2018 04:30:50 -0700 (PDT)
+In-Reply-To: <20180608112001.14729-1-kraxel@redhat.com>
+Message-ID: <152845744972.456.1789810180257987315@d39dc562802a>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: kraxel@redhat.com
+Date: Fri, 8 Jun 2018 04:30:50 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v3 0/6] ramfb: simple boot framebuffer,
- no legacy vga
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 0/6] ramfb: simple boot
+ framebuffer, no legacy vga
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,154 +83,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?L=C3=A1szl=C3=B3=20=C3=89rsek?= <lersek@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, famz@redhat.com, ehabkost@redhat.com,
+	mst@redhat.com, qemu-devel@nongnu.org,
+	alex.williamson@redhat.com, qemu-arm@nongnu.org,
+	kraxel@redhat.com, pbonzini@redhat.com, lersek@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EvFpKWiGUFpc
+X-TUID: D3dS+5F3aPsS
 
-  Hi,
-
-Ok folks, here is a experimental patch series for a legacy free boot
-framebuffer.  If you want play with it I recommend getting the bits from
-
-	https://www.kraxel.org/cgit/qemu/log/?h=sirius/ramfb
-
-because they come with an updated seabios and a new vgabios rom and an
-experimental OVMF build.
-
-Functional overview
--------------------
-
-The boot framebuffer is expected to be configured by the firmware, so it
-uses fw_cfg as interface.  Initialization goes as follows:
-
-  (1) Check whenever etc/ramfb is present.
-  (2) Allocate framebuffer from RAM.
-  (3) Fill struct RAMFBCfg, write it to etc/ramfb.
-
-Done.  You can write stuff to the framebuffer now, and it should appear
-automagically on the screen.
-
-Note that this isn't very efficient because it does a full display
-update on each refresh.  No dirty tracking.  Dirty tracking would have
-to be active for the whole ram slot, so that wouldn't be very efficient
-either.
-
-Firmware support -- seabios
----------------------------
-
-seavgabios is able to emulate vga text mode on top of a framebuffer, for
-coreboot native graphics initialialization.  Which works fine for
-everything which writes text using the vgabios interface (basically
-everyhing which works with sgabios).
-
-So I hacked that up to work with ramfb (and, while being at it,
-bochs-display too).  Right now it's proof-of-concept code with fwcfg
-support being cut+paste, so it'll need cleanups before merging.
-Look here:
-
-	https://www.kraxe.org/cgit/seabios/log/?h=bochs
-
-Firmware support -- edk2
-------------------------
-
-There is a EFI driver too.  Code is here:
-
-	https://github.com/kraxel/edk2/commits/ramfb
-
-Firmware blob is in pc-bios/OVMF-ramfb.fd, to be used with -bios.
-
-So, how to play?
-----------------
-
-There is ramfb.  Standalone device.
-
-There is virtio-ramfb.  Simliar to virtio-vga, but using ramfb instead of
-adding vga compatibility.  Shows how you can wire up ramfb support to
-some display device.  Unlike virtio-vga it should work fine on arm.  Use
-"qemu -vga none -device virtio-ramfb" for this one.  Not clear whenever
-this will be actually be merged, given that edk2 has a native virtio-gpu
-driver.
-
-There is virtio-pci-ramfb, which provides boot display support to vgpu
-devices.
-
-What works?
------------
-
-Both windows (x86 tested) and linux (x86 + arm tested) UEFI guests
-handle the ramfb GOP just fine.
-
-BIOS boot loaders for linux all use vgabios calls for text mode, so they
-show up just fine.  Also ipxe, seabios itself of course.  So you can
-boot up your linux guest.  vesafb works too.
-
-Windows in BIOS mode doesn't use text mode and works fine too.
-
-What doesn't work?
-------------------
-
-vgacon (direct vga hardware access).  Linux boots just fine
-nevertheless, the only effect is that you don't see any boot messages
-until the drm driver loads.
-
-Known issues
-------------
-
-Handover from ramfb-backed efifb to the native linux driver is tricky.
-Usually efifb gets kicked out when the native driver loads because of
-overlapping ressources.  With efifb being in RAM instead of using a GPU
-PCI bar this doesn't happen though, so you'll end up with two
-framebuffer devices.
-
-In case vgaarb classifies the GPU as primary display device fbcon will
-switch all VTs over to the framebuffer device of the real GPU, so there
-isn't a noticable difference.  Otherwise you'll end up with a
-non-visible fbcon, because it continues to run on ramfb whereas qemu
-switched over to the GPU because the native linux driver initialized the
-display.
-
-xorg/wayland will show up on the GPU in any case because they prefer drm
-over fbdev, so they wouldn't run on efifb.
-
-enjoy,
-  Gerd
-
-Gerd Hoffmann (6):
-  hw/display: add ramfb, a simple boot framebuffer living in guest ram
-  hw/display: add standalone ramfb device
-  hw/display: add virtio-ramfb device
-  hw/vfio/display: add ramfb support
-  ramfb: enable vgabios
-  bochs-display: enable vgabios
-
- include/hw/display/ramfb.h    |  12 ++++
- include/hw/vfio/vfio-common.h |   2 +
- hw/arm/sysbus-fdt.c           |   7 ++
- hw/arm/virt.c                 |   2 +
- hw/display/bochs-display.c    |   1 +
- hw/display/ramfb-standalone.c |  62 ++++++++++++++++++
- hw/display/ramfb.c            |  96 +++++++++++++++++++++++++++
- hw/display/virtio-ramfb.c     | 149 ++++++++++++++++++++++++++++++++++++++++++
- hw/i386/pc_piix.c             |   2 +
- hw/i386/pc_q35.c              |   2 +
- hw/vfio/display.c             |  10 +++
- hw/vfio/pci.c                 |  15 +++++
- hw/display/Makefile.objs      |   5 +-
- 13 files changed, 364 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/display/ramfb.h
- create mode 100644 hw/display/ramfb-standalone.c
- create mode 100644 hw/display/ramfb.c
- create mode 100644 hw/display/virtio-ramfb.c
-
--- 
-2.9.3
+SGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1z
+LiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMTgwNjA4MTEyMDAxLjE0NzI5LTEta3JheGVsQHJlZGhhdC5jb20KU3ViamVj
+dDogW1FlbXUtZGV2ZWxdIFtQQVRDSCB2MyAwLzZdIHJhbWZiOiBzaW1wbGUgYm9vdCBmcmFtZWJ1
+ZmZlciwgbm8gbGVnYWN5IHZnYQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
+aAoKQkFTRT1iYXNlCm49MQp0b3RhbD0kKGdpdCBsb2cgLS1vbmVsaW5lICRCQVNFLi4gfCB3YyAt
+bCkKZmFpbGVkPTAKCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNv
+bmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFs
+Z29yaXRobSBoaXN0b2dyYW0KCmNvbW1pdHM9IiQoZ2l0IGxvZyAtLWZvcm1hdD0lSCAtLXJldmVy
+c2UgJEJBU0UuLikiCmZvciBjIGluICRjb21taXRzOyBkbwogICAgZWNobyAiQ2hlY2tpbmcgUEFU
+Q0ggJG4vJHRvdGFsOiAkKGdpdCBsb2cgLW4gMSAtLWZvcm1hdD0lcyAkYykuLi4iCiAgICBpZiAh
+IGdpdCBzaG93ICRjIC0tZm9ybWF0PWVtYWlsIHwgLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1t
+YWlsYmFjayAtOyB0aGVuCiAgICAgICAgZmFpbGVkPTEKICAgICAgICBlY2hvCiAgICBmaQogICAg
+bj0kKChuKzEpKQpkb25lCgpleGl0ICRmYWlsZWQKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVw
+ZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRw
+czovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICAgYTY3NGRhMGFiNy4uYmFjNWJh
+M2RjNSAgbWFzdGVyICAgICAtPiBtYXN0ZXIKICogW25ldyB0YWddICAgICAgICAgICAgICAgcGF0
+Y2hldy8yMDE4MDYwODExMjAwMS4xNDcyOS0xLWtyYXhlbEByZWRoYXQuY29tIC0+IHBhdGNoZXcv
+MjAxODA2MDgxMTIwMDEuMTQ3MjktMS1rcmF4ZWxAcmVkaGF0LmNvbQpTd2l0Y2hlZCB0byBhIG5l
+dyBicmFuY2ggJ3Rlc3QnCmIzYjc2OGJkY2YgYm9jaHMtZGlzcGxheTogZW5hYmxlIHZnYWJpb3MK
+YmUwOGVkMTRiZSByYW1mYjogZW5hYmxlIHZnYWJpb3MKZjJmMjA2OTYyNSBody92ZmlvL2Rpc3Bs
+YXk6IGFkZCByYW1mYiBzdXBwb3J0CjcxN2VkYjJmNGQgaHcvZGlzcGxheTogYWRkIHZpcnRpby1y
+YW1mYiBkZXZpY2UKY2ZiODdjOWIzYiBody9kaXNwbGF5OiBhZGQgc3RhbmRhbG9uZSByYW1mYiBk
+ZXZpY2UKYWRkMzljZTUxOCBody9kaXNwbGF5OiBhZGQgcmFtZmIsIGEgc2ltcGxlIGJvb3QgZnJh
+bWVidWZmZXIgbGl2aW5nIGluIGd1ZXN0IHJhbQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KQ2hlY2tp
+bmcgUEFUQ0ggMS82OiBody9kaXNwbGF5OiBhZGQgcmFtZmIsIGEgc2ltcGxlIGJvb3QgZnJhbWVi
+dWZmZXIgbGl2aW5nIGluIGd1ZXN0IHJhbS4uLgpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVs
+ZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiM0MTogCm5ldyBm
+aWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDEwOSBsaW5lcyBj
+aGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElm
+IGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0
+aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBB
+VENIIDIvNjogaHcvZGlzcGxheTogYWRkIHN0YW5kYWxvbmUgcmFtZmIgZGV2aWNlLi4uCldBUk5J
+Tkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJTlRBSU5FUlMgbmVl
+ZCB1cGRhdGluZz8KIzcxOiAKbmV3IGZpbGUgbW9kZSAxMDA2NDQKCnRvdGFsOiAwIGVycm9ycywg
+MSB3YXJuaW5ncywgMTQxIGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxlIHByb2Js
+ZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9z
+aXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBN
+QUlOVEFJTkVSUy4KQ2hlY2tpbmcgUEFUQ0ggMy82OiBody9kaXNwbGF5OiBhZGQgdmlydGlvLXJh
+bWZiIGRldmljZS4uLgpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBk
+b2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMzMjogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0
+Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDE1NyBsaW5lcyBjaGVja2VkCgpZb3VyIHBh
+dGNoIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBl
+cnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwg
+c2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBBVENIIDQvNjogaHcvdmZp
+by9kaXNwbGF5OiBhZGQgcmFtZmIgc3VwcG9ydC4uLgpFUlJPUjogYnJhY2VzIHt9IGFyZSBuZWNl
+c3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRoaXMgc3RhdGVtZW50CiMzMTogRklMRTogaHcvdmZpby9k
+aXNwbGF5LmM6MTg3OgorICAgIGlmIChzdHJjbXAob2JqZWN0X2dldF90eXBlbmFtZShPQkpFQ1Qo
+dmRldikpLCAidmZpby1wY2ktcmFtZmIiKSA9PSAwKQpbLi4uXQoKRVJST1I6IGJyYWNlcyB7fSBh
+cmUgbmVjZXNzYXJ5IGZvciBhbGwgYXJtcyBvZiB0aGlzIHN0YXRlbWVudAojNTA6IEZJTEU6IGh3
+L3ZmaW8vZGlzcGxheS5jOjMxMToKKyAgICBpZiAoc3RyY21wKG9iamVjdF9nZXRfdHlwZW5hbWUo
+T0JKRUNUKHZkZXYpKSwgInZmaW8tcGNpLXJhbWZiIikgPT0gMCkKWy4uLl0KCnRvdGFsOiAyIGVy
+cm9ycywgMCB3YXJuaW5ncywgNzIgbGluZXMgY2hlY2tlZAoKWW91ciBwYXRjaCBoYXMgc3R5bGUg
+cHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxz
+ZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENI
+IGluIE1BSU5UQUlORVJTLgoKQ2hlY2tpbmcgUEFUQ0ggNS82OiByYW1mYjogZW5hYmxlIHZnYWJp
+b3MuLi4KQ2hlY2tpbmcgUEFUQ0ggNi82OiBib2Nocy1kaXNwbGF5OiBlbmFibGUgdmdhYmlvcy4u
+Lgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoK
+LS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRj
+aGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVk
+aGF0LmNvbQ==
 

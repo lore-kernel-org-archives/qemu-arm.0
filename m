@@ -1,105 +1,169 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp5748777wre;
-        Thu, 31 May 2018 03:21:24 -0700 (PDT)
-X-Received: by 2002:adf:db4a:: with SMTP id f10-v6mr4692511wrj.271.1527762084425;
-        Thu, 31 May 2018 03:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527762084; cv=none;
-        d=google.com; s=arc-20160816;
-        b=F7nBdX4cLxdZYMlnyrkisBFm/Gi2Scd+iLX+q15PpKYz7+eLcMiJGjlyDp1KQo31q+
-         8EGJrE8V46Z5vfAtk9rO6SIlhT0+ySVuPQJ0bHzjfWpx2o73KTFKldbdmBe993RquSOc
-         km+su7pgSDjmO9mZCeQS5yRSqyDd6hWoz83O/qHI1YJv7pcEn4cDahV0KHZuj5LA1XYs
-         MBM3fwWMtESKFgx2cnDYkiYmHiIkU6y7q9rrb9js4uCGEz3FLXAMdcUeKL3FzwzLfYkL
-         /oRCDVa/c2Ra1n5/Wvlf/E2XCnqTyJPATcsZExzWFWtq494MC3g50ayLxpRYFJXIe1q7
-         4Mhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :arc-authentication-results;
-        bh=GbjePLG6RfUCvbbJrrUTVLrvyrlUeb7Hx1XcTvot9B0=;
-        b=MIJ5F6f3nF8gFGk02kN/1QdupfEapcqyZl7ZhXlJ2SkN8IXZX7z4OD/F5Wx8iNHNIi
-         //hYR4eLeZYkpMUvbIWWx+S8uEU3FOx1gdErkuuw1QgcZbll4k+ZoGX5rMO53NWf6wZb
-         kExWMT/BYGZRlW1UGmAzJtZWn6PdvrblUJyrc2XS8VVfLydl5e1lXcSVmnuArAlFHEJ8
-         lqgzNRq+/XwUcQNjqPpLXBUlu8CDYaZIYPZnkQVEgx3A//ESX4Wf4ATH2UFtYorUyyd7
-         F5oAvwpxuMGz7KYS+xeAvxeiiAycpnzX3Y6bzo8mD+ug8d857eHARz4JJvOqIpgOZMMd
-         VIKA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f11-v6sor5797279wre.53.2018.05.31.03.21.24
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 31 May 2018 03:21:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=GbjePLG6RfUCvbbJrrUTVLrvyrlUeb7Hx1XcTvot9B0=;
-        b=hE7q4o/7vmlipJYcndL20WujeYBoxhTY8efCjcxHNmP+FWFpLQW6alkAn1ihN1qBPf
-         +eGcjRk5x440Rgbem6mqeEhnKn3Ay/wh+bXWm2884c678YS79ZJcr7pxFbm0Iozix0lI
-         a9+Zy+1pLhKRlCPbguDuVFpyCF+YVZ7BErbC+wswNLCEHbXlD5HNPT/Lkta/YBVFMZNZ
-         dsiNoaxXUQOeLhAIjEd0UO4dwaF2YKD5gFPzlHDcQdmK6gczczpVfpdMxygG9PROBL1n
-         dAU8mpiVprzSHxbD4d851VRCDahR12eX1Er62PhLxPzycKGIeIsO2EaLDKkImDT1Sf9v
-         ilaA==
-X-Gm-Message-State: ALKqPwcj5LjMDw73aM0p3pidrTLHh7ILM437JS15jHFhqp7ksoS+0fgy
-	foBUHZ/dHi1FrF305jVDUkpWyQ==
-X-Google-Smtp-Source: ADUXVKJCnCGKvAQK/FVtBrgza+04gZNYs38Webi5W1c3ZuCq+5l7l56ZLX6GbQdJ9r4Oa+rNaGb3Fw==
-X-Received: by 2002:adf:aadd:: with SMTP id i29-v6mr4833129wrc.149.1527762084160;
-        Thu, 31 May 2018 03:21:24 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from [192.168.10.150] (dynamic-adsl-78-12-189-60.clienti.tiscali.it. [78.12.189.60])
-        by smtp.gmail.com with ESMTPSA id e81-v6sm1517355wmi.28.2018.05.31.03.21.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 31 May 2018 03:21:23 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 23/27] hw/core/or-irq: Support more than 16
- inputs to an OR gate
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "patches@linaro.org" <patches@linaro.org>,
- Richard Henderson <rth@twiddle.net>
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-24-peter.maydell@linaro.org>
- <c049f864-304d-f8ee-4b2f-1476a602be30@redhat.com>
- <CAFEAcA_ErfYKnVrp=Dv9mNg55Y+=fFmg4eEMddGdMxUGVb9ztA@mail.gmail.com>
- <530bef1b-a143-1566-3089-32629ab250b8@redhat.com>
- <CAFEAcA94JAccGhbhSrBkTHUV+dLR-EvYQW_nuB9FodtLTDQPZw@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <c7e4c537-2174-005b-fa15-0e8286e540ad@redhat.com>
-Date: Thu, 31 May 2018 12:21:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id b204-v6sm1641332wmh.22.2018.06.08.05.39.08
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 08 Jun 2018 05:39:08 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 017E63E0D8A;
+	Fri,  8 Jun 2018 13:33:11 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: cota@braap.org,
+	famz@redhat.com,
+	berrange@redhat.com,
+	f4bug@amsat.org,
+	richard.henderson@linaro.org,
+	balrogg@gmail.com,
+	aurelien@aurel32.net,
+	agraf@suse.de,
+	pbonzini@redhat.com,
+	stefanha@redhat.com,
+	stefanb@linux.vnet.ibm.com,
+	marcandre.lureau@redhat.com
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [PATCH v6 44/49] tests/tcg: add run, diff, and skip helper macros
+Date: Fri,  8 Jun 2018 13:33:02 +0100
+Message-Id: <20180608123307.24773-45-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180608123307.24773-1-alex.bennee@linaro.org>
+References: <20180608123307.24773-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA94JAccGhbhSrBkTHUV+dLR-EvYQW_nuB9FodtLTDQPZw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: mhTYOUtKlMW5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: DB8xoaqpmGKW
 
-On 30/05/2018 19:35, Peter Maydell wrote:
-> On 30 May 2018 at 17:59, Paolo Bonzini <pbonzini@redhat.com> wrote:
->> On 21/05/2018 17:02, Peter Maydell wrote:
->>> On 21 May 2018 at 15:34, Paolo Bonzini <pbonzini@redhat.com> wrote:
->>>> Why do the levels have to be migrated at all?  It should be enough if
->>>> the IRQ level is either migrated manually, or restored (e.g. in
->>>> post_save callbacks) through other data that is migrated.
->>> This is standard behaviour for devices: they track their
->>> inbound irq/gpio lines, and then that becomes internal state for
->>> them that must be migrated.
->>
->> But or_irq's input are another device's outbound lines, so tracking them
->> should not be necessary.  The other device would do it for or_irq.
-> 
-> There's no mechanism in qemu_irq for the destination end to ask
-> the source end about its current value. The information flow
-> is strictly one-way.
+As we aren't using the default runners for all the test cases it is
+easy to miss out things like timeouts. To help with this we add some
+helpers and use them so we only need to make core changes in one
+place.
 
-On postload, the source must call qemu_set_irq and that will cause an
-update of the or_irq, won't it?
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Paolo
+---
+v5
+  - new for v5
+v5.1
+  - diff-test->diff-out
+---
+ tests/tcg/Makefile                  | 13 ++++++++++---
+ tests/tcg/aarch64/Makefile.target   |  6 ++----
+ tests/tcg/arm/Makefile.target       |  6 ++----
+ tests/tcg/i386/Makefile.target      | 10 ++++------
+ tests/tcg/multiarch/Makefile.target |  4 ++--
+ 5 files changed, 20 insertions(+), 19 deletions(-)
+
+diff --git a/tests/tcg/Makefile b/tests/tcg/Makefile
+index e7dbcdb5bf..d4c5140210 100644
+--- a/tests/tcg/Makefile
++++ b/tests/tcg/Makefile
+@@ -34,6 +34,15 @@
+ 
+ quiet-command = $(if $(V),$1,$(if $(2),@printf "  %-7s %s\n" $2 $3 && $1, @$1))
+ 
++# $1 = test name, $2 = cmd, $3 = desc
++run-test = $(call quiet-command, timeout $(TIMEOUT) $2 > $1.out,"TEST",$3)
++
++# $1 = test name, $2 = reference
++diff-out = $(call quiet-command, diff -u $1.out $2 | head -n 10,"DIFF","$1.out with $2")
++
++# $1 = test name, $2 = reason
++skip-test = @printf "  SKIPPED %s because %s\n" $1 $2
++
+ # Tests we are building
+ TESTS=
+ 
+@@ -84,9 +93,7 @@ RUN_TESTS=$(patsubst %,run-%, $(TESTS))
+ RUN_TESTS+=$(EXTRA_RUNS)
+ 
+ run-%: %
+-	$(call quiet-command, \
+-		timeout $(TIMEOUT) $(QEMU) $< > $<.out, \
+-		"TEST", "$< on $(TARGET_NAME)")
++	$(call run-test, $<, $(QEMU) $<, "$< on $(TARGET_NAME)")
+ 
+ .PHONY: run
+ run: $(RUN_TESTS)
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 7dba32138d..08c45b8470 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -13,7 +13,5 @@ TESTS:=$(AARCH64_TESTS)
+ fcvt: LDFLAGS+=-lm
+ 
+ run-fcvt: fcvt
+-	$(call quiet-command, \
+-		$(QEMU) $< > fcvt.out && \
+-		diff -u $(AARCH64_SRC)/fcvt.ref fcvt.out, \
+-		"TEST", "$< (default) on $(TARGET_NAME)")
++	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
++	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 14b5435fc6..aa4e4e3782 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -24,10 +24,8 @@ fcvt: LDFLAGS+=-lm
+ # fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+ 
+ run-fcvt: fcvt
+-	$(call quiet-command, \
+-		$(QEMU) $< > fcvt.out && \
+-		diff -u $(ARM_SRC)/fcvt.ref fcvt.out, \
+-		"TEST", "$< (default) on $(TARGET_NAME)")
++	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
++	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+ endif
+ 
+ # On ARM Linux only supports 4k pages
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index cd173363ee..97b7c23cf1 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -31,7 +31,7 @@ test-i386: test-i386.c test-i386-code16.S test-i386-vm86.S test-i386.h test-i386
+ 
+ # Specialist test runners
+ run-runcom: runcom pi_10.com
+-	$(call quiet-command, $(QEMU) ./runcom $(I386_SRC)/pi_10.com > runcom.out, "TEST", "$< on $(TARGET_NAME)")
++	$(call run-test,$<,$(QEMU) ./runcom $(I386_SRC)/pi_10.com,"$< on $(TARGET_NAME)")
+ 
+ ifeq ($(SPEED), slow)
+ 
+@@ -40,13 +40,11 @@ test-i386-fprem.ref: test-i386-fprem
+ 
+ run-test-i386-fprem: TIMEOUT=60
+ run-test-i386-fprem: test-i386-fprem
+-	$(call quiet-command, \
+-		$(QEMU) $< > $<.out && \
+-		diff -u $(I386_SRC)/$<.ref $<.out, \
+-		"TEST", "$< (default) on $(TARGET_NAME)")
++	$(call run-test,test-i386-fprem, $(QEMU) $<,"$< on $(TARGET_NAME)")
++	$(call diff-out,test-i386-fprem, $(I386_SRC)/$<.ref)
+ else
+ run-test-i386-fprem: test-i386-fprem
+-	$(call quiet-command, /bin/true, "SLOW TEST", "$< SKIPPED on $(TARGET_NAME)")
++	$(call skip-test, $<, "SLOW")
+ endif
+ 
+ # On i386 and x86_64 Linux only supports 4k pages (large pages are a different hack)
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 90e45a881e..b77084c146 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -27,10 +27,10 @@ testthread: LDFLAGS+=-lpthread
+ 
+ # default case (host page size)
+ run-test-mmap: test-mmap
+-	$(call quiet-command, $(QEMU) $< > test-mmap.out, "TEST", \
++	$(call run-test, test-mmap, $(QEMU) $<, \
+ 		"$< (default) on $(TARGET_NAME)")
+ 
+ # additional page sizes (defined by each architecture adding to EXTRA_RUNS)
+ run-test-mmap-%: test-mmap
+-	$(call quiet-command, $(QEMU) -p $* $< > test-mmap-$*.out, "TEST", \
++	$(call run-test, test-mmap-$*, $(QEMU) -p $* $<,\
+ 		"$< ($* byte pages) on $(TARGET_NAME)")
+-- 
+2.17.1

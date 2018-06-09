@@ -1,291 +1,215 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4931954wre;
-        Wed, 30 May 2018 09:26:48 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJwknHfkEbJkUxJeRzKbkZIIQAW3YxQ1wrfjDWCws6+zdVu5TbiQLFFS69SSR3px+MCQEzU
-X-Received: by 2002:ac8:2447:: with SMTP id d7-v6mr3326587qtd.50.1527697607963;
-        Wed, 30 May 2018 09:26:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527697607; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2100051wrq;
+        Sat, 9 Jun 2018 07:37:28 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJMIdIuNoqzMA3HXjMnJdiewPlOl9G9vSwn9iY4tpW/Kwf/TrJGAPSMlR1SNDpfzrJ9+5aj
+X-Received: by 2002:a37:1624:: with SMTP id g36-v6mr8775805qkh.327.1528555048449;
+        Sat, 09 Jun 2018 07:37:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528555048; cv=none;
         d=google.com; s=arc-20160816;
-        b=EZ7UUfNum1VnJDM7oKEOom7cJ+BqgsaySQPde7HUPKzeMKWeFObdkjt/g6M0HLHS1+
-         js7DopbAdTxdtYxQdWk8fp9sHAid4HPJ+32mxTGpQ+bI6iB+32H3DRsumlEtsFlcEOL/
-         yEXJXMn12lJLPoPcyAKd2AnseDqJh3B/PYx9SIJytiDWFhTSyBZ6r1v9Zu25YDQFQq62
-         Lsr7vCYyhqGAdEUHfbp0uZCUb8v2us42oZB80QCq97De2m9JIbuDtb4wk5IxW/CcbuwC
-         0XYAAuF4b3TTMRpj/7CWBTgVptwSlR4P+YodK165PLKe7JQjD/ea/cKP2fpIa1akZwc0
-         DE3Q==
+        b=nqn1fRhLkSlR2dZdGiP1AYin/SV039eLXMhORhkh/d7c8VaZKDRyvpksU6cOswOqrI
+         mT+mR9AVgTgKiRzbO57Wa3BO6sDG4xWKxVPuQVlPv0AKt+1Sou8ldJ7OK1KN/jafYf6h
+         AaWgGJbq+4rxedHUBrS+F9BFV56smDS1nwR0TvrtOvuYi8TnBNPWgjYdWa1iKeAEyWfO
+         4/JdJOX+FojCQ0HMGmg5LNK+cl5B3K0mJAH78oK4IrmdKZ2pF+MxOl1QJ8oFPudQ9NnD
+         LpaAnxzeXvAHQoH8osMTS+WneuShWFx7n1sFCJsy1SITOqp5OADzno3IkyH/VAl+hPlx
+         i0Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=bDWJlkrevX0IzR6LtrULj1YWdQdPH9f421qaQxO0bkc=;
-        b=BfuaEuxyWjWJRZgIWnUU5kNkKr2N5HBJea+ZgV/tkVRBeZr+Zv+zBxEgo3t3kbOJIv
-         RlOVetlsNM/Jt2wqM2CMC82iclYrafrHbx+OjtZ6vPkgvheNsw+Aw0V0t61UbVRh7pix
-         L/ODmQ/Kyykg/dIMZIPQPxLXYxC3zS0Lx70ePcjhTPDy6ybVmJ24+jCpgbEnPhLWXEme
-         40BxTvjkcRiW7/j+jYmChXlBbR/JDnsF3IrxlpkkddfLIKtCCT6y4By9s33mLAEZFK19
-         rnhFx0vDF76k9PY4MjiBv0yHTfw6ol+g2WPpyIzNtV8bzqnG0o0lFO6rw5D36LMqrCgJ
-         rWXA==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=KQIITEr+wGCbZTICnbnmRVwFc0SiVDSBK/SvvYh4mGw=;
+        b=E5JAQLk6SDrhpL2ISLKrSTndebbndVtYfkXSpQLUTh/olOCEFqFPWLKsaijaLLJkwL
+         6LZRm1gwQ56A+KWBgJRh+M6RHIxR+Hzkcwdl4WoCFLaeZ55dc5s4EBZYGy5ayJn+PXGV
+         gpfZETB6C1Hf9trhD2K0DhbMdH909tyir4KJwvHkGlwbiKt4EvMSOKqwQl5UnamKoJGU
+         Iqz4MNxJ97nV7gC54bI2cc8e0wb3Nb6FVeAUrPpDwrhehjQfhamWaEgbALGdaXiToShb
+         IQLskAymaFoUQZC5h5+QLqy2oFKynif928DrnBBk67geJ8ln+ckoNlLko8DZxOmkwh6H
+         Dahg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XICy2AOz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t6-v6si1345417qtc.298.2018.05.30.09.26.47
+        by mx.google.com with ESMTPS id z16-v6si2873418qta.244.2018.06.09.07.37.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 30 May 2018 09:26:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 09 Jun 2018 07:37:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39599 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XICy2AOz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:40527 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fO3vz-0004Gs-Dj
-	for alex.bennee@linaro.org; Wed, 30 May 2018 12:26:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59416)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fRezg-0002y6-1E
+	for alex.bennee@linaro.org; Sat, 09 Jun 2018 10:37:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59946)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fO3gu-0001xr-Cs
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 12:11:14 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fRezV-0002xo-P2
+	for qemu-arm@nongnu.org; Sat, 09 Jun 2018 10:37:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fO3gs-0004d6-UG
-	for qemu-devel@nongnu.org; Wed, 30 May 2018 12:11:12 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49900 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1fO3gn-0004ZE-GV; Wed, 30 May 2018 12:11:05 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4F35D40137F6;
-	Wed, 30 May 2018 16:11:04 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-212.rdu2.redhat.com
-	[10.10.120.212])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5D432208C167;
-	Wed, 30 May 2018 16:11:02 +0000 (UTC)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fRezS-00024Q-LJ
+	for qemu-arm@nongnu.org; Sat, 09 Jun 2018 10:37:17 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38929)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fRezS-000248-Ef; Sat, 09 Jun 2018 10:37:14 -0400
+Received: by mail-qt0-x241.google.com with SMTP id p23-v6so16346484qtn.6;
+	Sat, 09 Jun 2018 07:37:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=KQIITEr+wGCbZTICnbnmRVwFc0SiVDSBK/SvvYh4mGw=;
+	b=XICy2AOzNjn+K1Oucr5Q+LqORRJ34mO/BuX6ZVmQvvQnh/hKIn84OdRQUPQZJBNBJc
+	IdsiwPzkvWcJAPxoXGzQ8/p4yq7cYoX64gpoLB7d7sAgJpDePsSVP3fOJvLcFzmR7mKU
+	qnTd4hYlkR2ZY2FHGlj6dPB55gjDxClV1gogwc45xzzyljDNpuEqiOHLeFrzIRmfEP28
+	HfD34FHxVRwI5m1jJFrGioq9HQnIj/Wct93AFFw5r2hMJzE8P0DbqOiSmRznihyaIwjQ
+	hks3u6Yc0H4v9iHnNlXwPmYg0GlwgaQfYrPMhHqdd1PNwHZPUpcC27/6tBCBZCCwuIoA
+	vQGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=KQIITEr+wGCbZTICnbnmRVwFc0SiVDSBK/SvvYh4mGw=;
+	b=esh6mAZP0ctS8lokvVvoT+VE2hXXW7VAwhWOaQ6TK/rs3tR2FzQ8E/anWGZuIC6w0S
+	Wq5PmtF1fDIXOr1HNRKfoXxBTXorX9TSBx/XrwZ6FXi+SjFcYt/oGyGkHmGBXrM092+t
+	bCfpvKuM38Jln+gLXLunsiAxw2lwD3WqGLNk3aEPakCXyrC/LOu4d0MwidQXudlGS5N3
+	hx6n+MdHuyfl5401N7UgulvfgM+7U18tR02BNStx2yBQ4o+WZocSufWPoyxfd6iLk3WJ
+	BA8LmJI94VFsq3iD8YGl6eG+GeoX6MvdmRhto5VhLk8KCZjqPqqilHlqlAWNLGyIM3nK
+	MXuQ==
+X-Gm-Message-State: APt69E2bE/YWqO+676HYehBFHVCep+5W7he+svE8hqyg3JDlRTDGgh+x
+	00mCrxde1zbbm5YJOATLWbQ=
+X-Received: by 2002:aed:3541:: with SMTP id b1-v6mr9788769qte.68.1528555033902;
+	Sat, 09 Jun 2018 07:37:13 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	s81-v6sm26495422qke.47.2018.06.09.07.37.11
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 09 Jun 2018 07:37:13 -0700 (PDT)
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <1527690380-9782-1-git-send-email-eric.auger@redhat.com>
-	<1527690380-9782-2-git-send-email-eric.auger@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <f80946ef-0bf6-7e8b-e421-86dc3555fa80@redhat.com>
-Date: Wed, 30 May 2018 18:11:01 +0200
+References: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
+	<1528554193-27270-3-git-send-email-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <0bdf92a5-7500-028c-5043-3d082b7051e8@amsat.org>
+Date: Sat, 9 Jun 2018 11:37:09 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1527690380-9782-2-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1528554193-27270-3-git-send-email-eric.auger@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Wed, 30 May 2018 16:11:04 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Wed, 30 May 2018 16:11:04 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [PATCH 1/2] hw/arm/virt: Add a new 256MB ECAM
- region
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/virt: Silence dtc /memory warning
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: wei@redhat.com, drjones@redhat.com, ard.biesheuvel@linaro.org,
-	zhaoshenglong@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DGar9/mh/2Jf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iqfXeIVYZgf+
 
-On 05/30/18 16:26, Eric Auger wrote:
-> This patch defines a new ECAM region located after the 256GB limit.
+Hi Eric,
+
+On 06/09/2018 11:23 AM, Eric Auger wrote:
+> When running dtc on the guest /proc/device-tree we get the
+> following warning: Warning (unit_address_vs_reg): Node /memory
+> has a reg or ranges property, but no unit name".
 > 
-> The virt machine state is augmented with a new highmem_ecam field
-> which guards the usage of this new ECAM region instead of the legacy
-> 16MB one. With the highmem ECAM region, up to 256 PCIe buses can be
-> used.
+> Let's fix that by adding the unit address to the node name. We also
+> don't create the /memory node anymore in create_fdt(). We directly
+> create it in load_dtb. /chosen still needs to be created in create_fdt
+> as the uart needs it. In case the user provided his own dtb, either
+> the bank is added to the existing /memory node or if this latter is
+> not found we create a new separate memory node.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
 > ---
+>  hw/arm/boot.c | 20 ++++++++++++++------
+>  hw/arm/virt.c |  6 ------
+>  2 files changed, 14 insertions(+), 12 deletions(-)
 > 
-> RFC -> PATCH:
-> - remove the newline at the end of acpi_dsdt_add_pci
-> - use vms->highmem_ecam to select the memmap id
-> ---
->  hw/arm/virt-acpi-build.c | 21 +++++++++++++--------
->  hw/arm/virt.c            | 12 ++++++++----
->  include/hw/arm/virt.h    |  2 ++
->  3 files changed, 23 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 92ceee9..c0370b2 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -150,16 +150,17 @@ static void acpi_dsdt_add_virtio(Aml *scope,
->  }
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 1e2be20..2054670 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -593,24 +593,32 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>              g_free(nodename);
+>          }
+>      } else {
+> +        char *nodename = g_strdup("/memory");
+>          Error *err = NULL;
 >  
->  static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-> -                              uint32_t irq, bool use_highmem)
-> +                              uint32_t irq, bool use_highmem, bool highmem_ecam)
->  {
-> +    int ecam_id = highmem_ecam ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM;
->      Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
->      int i, bus_no;
->      hwaddr base_mmio = memmap[VIRT_PCIE_MMIO].base;
->      hwaddr size_mmio = memmap[VIRT_PCIE_MMIO].size;
->      hwaddr base_pio = memmap[VIRT_PCIE_PIO].base;
->      hwaddr size_pio = memmap[VIRT_PCIE_PIO].size;
-> -    hwaddr base_ecam = memmap[VIRT_PCIE_ECAM].base;
-> -    hwaddr size_ecam = memmap[VIRT_PCIE_ECAM].size;
-> +    hwaddr base_ecam = memmap[ecam_id].base;
-> +    hwaddr size_ecam = memmap[ecam_id].size;
->      int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
+> -        rc = fdt_path_offset(fdt, "/memory");
+> +        /* If there is an existing /memory node (user provided dtb), we add the
+> +         * new bank into it, otherwise we create a /memory@addr node
+> +         */
+> +        rc = fdt_path_offset(fdt, nodename);
+>          if (rc < 0) {
+> -            qemu_fdt_add_subnode(fdt, "/memory");
+> +            g_free(nodename);
+> +            nodename = g_strdup_printf("/memory@%" PRIx64, binfo->loader_start);
+> +
+> +            qemu_fdt_add_subnode(fdt, nodename);
+>          }
 >  
->      Aml *dev = aml_device("%s", "PCI0");
-> @@ -173,7 +174,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> -        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
+> -            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
+> +        if (!qemu_fdt_getprop(fdt, nodename, "device_type", NULL, &err)) {
+> +            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+>          }
 >  
->      /* Declare the PCI Routing Table. */
-> -    Aml *rt_pkg = aml_package(nr_pcie_buses * PCI_NUM_PINS);
-> +    Aml *rt_pkg = aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
->      for (bus_no = 0; bus_no < nr_pcie_buses; bus_no++) {
->          for (i = 0; i < PCI_NUM_PINS; i++) {
->              int gsi = (i + bus_no) % PCI_NUM_PINS;
-> @@ -316,7 +317,10 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->      Aml *dev_res0 = aml_device("%s", "RES0");
->      aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
->      crs = aml_resource_template();
-> -    aml_append(crs, aml_memory32_fixed(base_ecam, size_ecam, AML_READ_WRITE));
-> +    aml_append(crs,
-> +        aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
-> +                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_ecam,
-> +                         base_ecam + size_ecam - 1, 0x0000, size_ecam));
->      aml_append(dev_res0, aml_name_decl("_CRS", crs));
->      aml_append(dev, dev_res0);
->      aml_append(scope, dev);
-> @@ -563,16 +567,17 @@ build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
->      AcpiTableMcfg *mcfg;
->      const MemMapEntry *memmap = vms->memmap;
-> +    int ecam_id = vms->highmem_ecam ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM;
->      int len = sizeof(*mcfg) + sizeof(mcfg->allocation[0]);
->      int mcfg_start = table_data->len;
+> -        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+> +        rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+>                                            acells, binfo->loader_start,
+>                                            scells, binfo->ram_size);
+>          if (rc < 0) {
+> -            fprintf(stderr, "couldn't set /memory/reg\n");
+> +            fprintf(stderr, "couldn't set %s reg\n", nodename);
+>              goto fail;
+>          }
+> +        g_free(nodename);
+>      }
+
+This part looks good.
+
 >  
->      mcfg = acpi_data_push(table_data, len);
-> -    mcfg->allocation[0].address = cpu_to_le64(memmap[VIRT_PCIE_ECAM].base);
-> +    mcfg->allocation[0].address = cpu_to_le64(memmap[ecam_id].base);
->  
->      /* Only a single allocation so no need to play with segments */
->      mcfg->allocation[0].pci_segment = cpu_to_le16(0);
->      mcfg->allocation[0].start_bus_number = 0;
-> -    mcfg->allocation[0].end_bus_number = (memmap[VIRT_PCIE_ECAM].size
-> +    mcfg->allocation[0].end_bus_number = (memmap[ecam_id].size
->                                            / PCIE_MMCFG_SIZE_MIN) - 1;
->  
->      build_header(linker, table_data, (void *)(table_data->data + mcfg_start),
-> @@ -747,7 +752,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
->      acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
-> -                      vms->highmem);
-> +                      vms->highmem, vms->highmem_ecam);
->      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
->                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
->      acpi_dsdt_add_power_button(scope);
+>      rc = fdt_path_offset(fdt, "/chosen");
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a3a28e2..d4247d0 100644
+> index b1e9a6b..46c5c3f 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -149,6 +149,7 @@ static const MemMapEntry a15memmap[] = {
->      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
->      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
->      [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
-> +    [VIRT_PCIE_ECAM_HIGH] =     { 0x4010000000ULL, 0x10000000 },
->      /* Second PCIe window, 512GB wide at the 512GB boundary */
->      [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
->  };
-> @@ -1001,10 +1002,9 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
->      hwaddr size_mmio_high = vms->memmap[VIRT_PCIE_MMIO_HIGH].size;
->      hwaddr base_pio = vms->memmap[VIRT_PCIE_PIO].base;
->      hwaddr size_pio = vms->memmap[VIRT_PCIE_PIO].size;
-> -    hwaddr base_ecam = vms->memmap[VIRT_PCIE_ECAM].base;
-> -    hwaddr size_ecam = vms->memmap[VIRT_PCIE_ECAM].size;
-> +    hwaddr base_ecam, size_ecam;
->      hwaddr base = base_mmio;
-> -    int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
-> +    int nr_pcie_buses;
->      int irq = vms->irqmap[VIRT_PCIE];
->      MemoryRegion *mmio_alias;
->      MemoryRegion *mmio_reg;
-> @@ -1012,12 +1012,16 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
->      MemoryRegion *ecam_reg;
->      DeviceState *dev;
->      char *nodename;
-> -    int i;
-> +    int i, ecam_memmap_id;
->      PCIHostState *pci;
+> @@ -203,13 +203,7 @@ static void create_fdt(VirtMachineState *vms)
+>      qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+>      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
 >  
->      dev = qdev_create(NULL, TYPE_GPEX_HOST);
->      qdev_init_nofail(dev);
+> -    /*
+> -     * /chosen and /memory nodes must exist for load_dtb
+> -     * to fill in necessary properties later
+> -     */
+>      qemu_fdt_add_subnode(fdt, "/chosen");
+
+Here I think you should keep the comment, but update it (info from your
+commit message).
+
+> -    qemu_fdt_add_subnode(fdt, "/memory");
+> -    qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
 >  
-> +    ecam_memmap_id = vms->highmem_ecam ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM;
-> +    base_ecam = vms->memmap[ecam_memmap_id].base;
-> +    size_ecam = vms->memmap[ecam_memmap_id].size;
-> +    nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
->      /* Map only the first size_ecam bytes of ECAM space */
->      ecam_alias = g_new0(MemoryRegion, 1);
->      ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 4ac7ef6..e9423a7 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -69,6 +69,7 @@ enum {
->      VIRT_PCIE_MMIO,
->      VIRT_PCIE_PIO,
->      VIRT_PCIE_ECAM,
-> +    VIRT_PCIE_ECAM_HIGH,
->      VIRT_PLATFORM_BUS,
->      VIRT_PCIE_MMIO_HIGH,
->      VIRT_GPIO,
-> @@ -103,6 +104,7 @@ typedef struct {
->      FWCfgState *fw_cfg;
->      bool secure;
->      bool highmem;
-> +    bool highmem_ecam;
->      bool its;
->      bool virt;
->      int32_t gic_version;
+>      /* Clock node, for the benefit of the UART. The kernel device tree
+>       * binding documentation claims the PL011 node clock properties are
 > 
-
-At this point, the order (and values) of the VIRT_* enum constants look
-mostly random :) , but I'm unaware of anything why that should be a problem.
-
-I compared this against the RFC version; from my side:
-
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-
-Can you please do the following additionally:
-
-- The aarch64 firmware packaged in Gerd's repo is built with the verbose
-  log enabled, as far as I can see. Can you please capture two boot logs
-  (from the serial console) until the guest kernel is reached, and send
-  them to me (off-list if you prefer)? The first log should have the new
-  feature disabled, the second one enabled; I'd like to compare them.
-
-- (I think the same test is useful with the guest kernel dmesg as well,
-  passing ignore_loglevel, but I don't think my assistance in reviewing
-  that difference is necessary or helpful :) )
-
-Thanks!
-Laszlo

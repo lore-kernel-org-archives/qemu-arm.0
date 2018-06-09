@@ -1,174 +1,178 @@
-Received: by 10.28.4.212 with SMTP id 203csp2432578wme;
-        Mon, 16 Apr 2018 02:21:58 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+OMotG8Q7WI50Z7QuqIwPYzDbBQrF0FZP6AoMRQH6UHLCmqTXkzCPlSi/+go/Yk2T+2brk
-X-Received: by 10.237.37.1 with SMTP id v1mr11120959qtc.66.1523870518839;
-        Mon, 16 Apr 2018 02:21:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523870518; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2089273wrq;
+        Sat, 9 Jun 2018 07:23:40 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLVwUN+JjFjJMYNaxzUkaXE4BmFgeslK6PvcZooRV+6kaXnZbjFtaiumpnMDqZsSWP7eFWB
+X-Received: by 2002:ac8:440a:: with SMTP id j10-v6mr10181066qtn.113.1528554220878;
+        Sat, 09 Jun 2018 07:23:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528554220; cv=none;
         d=google.com; s=arc-20160816;
-        b=rSQbF684YXyCPGoUJY/VNgfdKGDKoHnTK1jP5Za11jACI7vV6zeJOVZc1hGRhfYIBg
-         ILtVSsJCJqiLjIgoKI9WKZNlrO07CCCut0JxJMNUmlz9ad/8IsseZ0KZ/SEjIx9ucEc0
-         1+28Y7+i6JbxOnlncKqUumm5bdZD3NU9Umo+Pqwphqiz86mpPcgV9Bb9rUJHfwgClZB4
-         QmrqIk6bKqpgi2fAFgCovflm9uNLqunc+Sy6XEWSruR1d4VDcUfP3hwlp3aG+pqb41x4
-         XwQnDL+tDHoszfwiLxJzHfsXXlP9F8UhsbTcqGbkox2ec8B2iaPP/psp7jaYKb1dh3SR
-         9DGA==
+        b=Y0e414SPeiHojFNwfKq5KGwBKHlJf10YBBRF5vuSHRexYdqInmfgJy6j9e/pOYMLhY
+         UmonR1bwiZsBTbYXoEELD0jnWj7n7XsKv+nrQizkGsHRzbzDUuRF9VyycA/2YxKAx8Gy
+         HOiCdsaqHwhJQf8RTi3b565UFHJgQZV6TMSTdFOBlC82Sama0v2oTGg2A8BD8o2+rJC9
+         dotcyIjpbxdPSPKC89McgGSkN7KVBXavV+BxykSJkIe88fupTMRc1DIY8eBlJw4+wW6W
+         OTkffvQu6SmnS0SaoDpa4UPN9ZvIo+obb+N21h+xTRybrs4Wea5LMba9GCfSMQd5i+yW
+         Gkpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=Sy93TMXOzV2uH1HvI7h8cG9M/35DqeTKee2gvPn6i0w=;
-        b=apHUMXrZ8V4CelQJQmJqvRW/YtyxPpE5D9610k9/L0k5Y0dV+mxDQ4AJTERgFBl237
-         hg3ULZ1Fluk/sjlgEBtVQfRZQQkXLJ18tawO83Q4IMn81+vLC5LevH4bgPEYDZI8f7dO
-         CxrGTPdVXjLV7va1aXxotMz9pJ5zsDXeIduRwQkdy259Ki4DwHeRJF4aCGovdm4GqDiL
-         QMk86u0tfGfISCFBkrydTYizIpMeBNniL8UJ525HwyAnBL844e15BmX298CxNJBT6MGN
-         kaMTHZPVgraHS/f0FEVUlkm4Vw/udmJZmdmZ7e82wlTemL+Z9Uvf1FNfNQSfYGM22ore
-         lOhQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=+2OUyOX7K5A17lbpsSAuCpprM8+OUUvtoUylggX4kPA=;
+        b=BJHbhsQWG7wa6oT56uHX+yXwQ2xqLnXvZ4SxIES8mFWjApuVFI6l228Ogtbtd4vxBz
+         rMlw4htGBLL4ckcQqA782Ar9QuE7Oiwpril0ydDMdYi1xXTOKnmGRhHH4wih8uxcUGJ5
+         ZbF/sb91D5knAoxjlPEu43cbpz3jA8IW8rH4S3maTjuzd7mznny/1yoYufuQHp5ZrVtk
+         kBOSZ6Enw1v/F6p3jIGjnOfiePojJ4oyJxjWg1TUZBMiRBUZx+EPEBU3+GRJhiJ+5dme
+         n3QRKgHNYgOe/KnzPEtDi51NBbAZ3NGcHk3tROLFWgFKjaN0038jRyY59cNMUJshZGIF
+         fXwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z19si3306367qtz.140.2018.04.16.02.21.58
+        by mx.google.com with ESMTPS id k8-v6si3223375qvm.265.2018.06.09.07.23.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Apr 2018 02:21:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 09 Jun 2018 07:23:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59294 helo=lists.gnu.org)
+Received: from localhost ([::1]:40486 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f80Kk-0006Pe-7s
-	for alex.bennee@linaro.org; Mon, 16 Apr 2018 05:21:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40901)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fRemK-0007fF-Bc
+	for alex.bennee@linaro.org; Sat, 09 Jun 2018 10:23:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58719)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1f80Io-0005Lx-29
-	for qemu-devel@nongnu.org; Mon, 16 Apr 2018 05:19:59 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fRem4-0007e4-U4
+	for qemu-arm@nongnu.org; Sat, 09 Jun 2018 10:23:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1f80In-0005cj-3L
-	for qemu-devel@nongnu.org; Mon, 16 Apr 2018 05:19:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58368 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fRem1-0004MU-RU
+	for qemu-arm@nongnu.org; Sat, 09 Jun 2018 10:23:24 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57030 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1f80Ig-0005ay-Du; Mon, 16 Apr 2018 05:19:50 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fRem1-0004Lv-LY; Sat, 09 Jun 2018 10:23:21 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A04C48182D1C;
-	Mon, 16 Apr 2018 09:19:49 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AFC997C5C;
-	Mon, 16 Apr 2018 09:19:43 +0000 (UTC)
-Date: Mon, 16 Apr 2018 11:19:41 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20180416091941.7n24dd3qjyuqh4h6@kamzik.brq.redhat.com>
-References: <1522160122-10744-1-git-send-email-eric.auger@redhat.com>
-	<1522160122-10744-9-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA_O3QK0t5DHfnAFEOHv_yyxvL9HZX+0geHs0ibVVwTbNQ@mail.gmail.com>
-	<57b01152-1179-9735-eb6a-a9dbfc933a6c@redhat.com>
-	<CAFEAcA-wT8vERbkjq_HoROi1ymPauAe+y3oc16zoCJXsHKqBoQ@mail.gmail.com>
-	<94299045-3027-517c-d634-4613f78de163@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <94299045-3027-517c-d634-4613f78de163@redhat.com>
-User-Agent: Mutt/1.6.0.1 (2016-04-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+	by mx1.redhat.com (Postfix) with ESMTPS id B35FF80125D6;
+	Sat,  9 Jun 2018 14:23:20 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C2AE5217B409;
+	Sat,  9 Jun 2018 14:23:19 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org
+Date: Sat,  9 Jun 2018 16:23:13 +0200
+Message-Id: <1528554193-27270-3-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
+References: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.8]);
-	Mon, 16 Apr 2018 09:19:49 +0000 (UTC)
+	Sat, 09 Jun 2018 14:23:20 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 16 Apr 2018 09:19:49 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+	Sat, 09 Jun 2018 14:23:20 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [RFC 8/8] hw/arm/virt: Allow up to 512 vcpus along
- with KVM VGICv3
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH 2/2] hw/arm/virt: Silence dtc /memory warning
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Wei Huang <wei@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Christoffer Dall <cdall@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LlB8eK6hsJb5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BUMpy6XkEO4o
 
-On Fri, Apr 13, 2018 at 04:11:24PM +0200, Auger Eric wrote:
-> Hi Peter,
-> 
-> On 13/04/18 16:06, Peter Maydell wrote:
-> > On 13 April 2018 at 15:01, Auger Eric <eric.auger@redhat.com> wrote:
-> >> On 13/04/18 15:41, Peter Maydell wrote:
-> >>> I think it would be better to explicitly check "do we have
-> >>> support for split redistributors" rather than looking at
-> >>> KVM_MAX_VCPUS. It's not impossible that a distro kernel
-> >>> might have chosen to backport support for one but not the
-> >>> other.
-> >>
-> >> The issue is we have race here:
-> >> to check whether the new ATTR is supported I need to query the GICV3 KVM
-> >> device. This later is created in the GICv3 initialize. But to initialize
-> >> the VGIC I need the VCPUs to be created. And to create the VCPUs I need
-> >> to check their max number. Or do I miss somethinh?
-> >>
-> >> The KVM device create dry-run mode cannot be used here. I would need to
-> >> really create the KVM device and then delete it. The issue is there is
-> >> no kvm device DELETE ioctl at kernel level since KVM devices are deleted
-> >> on VM deletion if I understand correctly. Adding a KVM device delete at
-> >> kernel level may not be straightforward as I suspect some
-> >> simplifications could be made in KVM device deletion knowing the VM was
-> >> under deletion.
-> > 
-> > Two possibilities:
-> > 
-> > (1) do like we do in kvm_arm_get_host_cpu_features() where we
-> > create a scratch VM to interrogate it and then throw it away
-> > when we have the info we need
-> Oh OK. I did not know this was in place. At first sight, this looks
-> simpler than (2) to me. I will investigate this solution.
+When running dtc on the guest /proc/device-tree we get the
+following warning: Warning (unit_address_vs_reg): Node /memory
+has a reg or ranges property, but no unit name".
 
-But (1) isn't awesome. It'd be better if we could avoid scratch VMs
-altogether as they slow VM launch and create confusing traces when
-debugging. Also, it's just not a pretty way to do things. If we must
-keep a scratch VM, then let's at least make sure we only have one,
-i.e. put all probing into a single scratch VM.
+Let's fix that by adding the unit address to the node name. We also
+don't create the /memory node anymore in create_fdt(). We directly
+create it in load_dtb. /chosen still needs to be created in create_fdt
+as the uart needs it. In case the user provided his own dtb, either
+the bank is added to the existing /memory node or if this latter is
+not found we create a new separate memory node.
 
-> 
-> Thanks!
-> 
-> Eric
-> > 
-> > (2) add an API to the kernel to make it easier to query it
-> > for this sort of feature
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/arm/boot.c | 20 ++++++++++++++------
+ hw/arm/virt.c |  6 ------
+ 2 files changed, 14 insertions(+), 12 deletions(-)
 
-This is the cleaner choice, but I wasn't opposed to the max-vcpus
-query getting double-duty though. While the backporting argument is
-a good point, I'm not sure we've ever really cared about what
-issues backporters have had to endure when they cherry-pick features
-before.
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 1e2be20..2054670 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -593,24 +593,32 @@ static int load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+             g_free(nodename);
+         }
+     } else {
++        char *nodename = g_strdup("/memory");
+         Error *err = NULL;
+ 
+-        rc = fdt_path_offset(fdt, "/memory");
++        /* If there is an existing /memory node (user provided dtb), we add the
++         * new bank into it, otherwise we create a /memory@addr node
++         */
++        rc = fdt_path_offset(fdt, nodename);
+         if (rc < 0) {
+-            qemu_fdt_add_subnode(fdt, "/memory");
++            g_free(nodename);
++            nodename = g_strdup_printf("/memory@%" PRIx64, binfo->loader_start);
++
++            qemu_fdt_add_subnode(fdt, nodename);
+         }
+ 
+-        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
+-            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
++        if (!qemu_fdt_getprop(fdt, nodename, "device_type", NULL, &err)) {
++            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+         }
+ 
+-        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
++        rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+                                           acells, binfo->loader_start,
+                                           scells, binfo->ram_size);
+         if (rc < 0) {
+-            fprintf(stderr, "couldn't set /memory/reg\n");
++            fprintf(stderr, "couldn't set %s reg\n", nodename);
+             goto fail;
+         }
++        g_free(nodename);
+     }
+ 
+     rc = fdt_path_offset(fdt, "/chosen");
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b1e9a6b..46c5c3f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -203,13 +203,7 @@ static void create_fdt(VirtMachineState *vms)
+     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+ 
+-    /*
+-     * /chosen and /memory nodes must exist for load_dtb
+-     * to fill in necessary properties later
+-     */
+     qemu_fdt_add_subnode(fdt, "/chosen");
+-    qemu_fdt_add_subnode(fdt, "/memory");
+-    qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
+ 
+     /* Clock node, for the benefit of the UART. The kernel device tree
+      * binding documentation claims the PL011 node clock properties are
+-- 
+2.5.5
 
-Thanks,
-drew
-
-
-> > 
-> > thanks
-> > -- PMM
-> > 
-> 

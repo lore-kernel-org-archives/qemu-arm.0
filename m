@@ -1,763 +1,408 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3519006wrq;
-        Sun, 10 Jun 2018 19:28:03 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKSx6eFNyTHc1tYlVvdlxmj+iI97OJIoID8no1OQKwMvUeDSzWDvGp+MYxMcJwg4Y04lWhT
-X-Received: by 2002:a0c:8f12:: with SMTP id z18-v6mr13495087qvd.222.1528684083350;
-        Sun, 10 Jun 2018 19:28:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528684083; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3522114wrq;
+        Sun, 10 Jun 2018 19:32:51 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKXUWip95FpZ7n5jRj2feN2/gfaES/nFjN6sc620GRmmE2RkWAdGy/dq3Ln8RMUGamwotbl
+X-Received: by 2002:a0c:f6d1:: with SMTP id d17-v6mr13619156qvo.67.1528684371517;
+        Sun, 10 Jun 2018 19:32:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528684371; cv=none;
         d=google.com; s=arc-20160816;
-        b=GugoPYXTxpVZebJC5iZEnmZ2697Ws8jxHDMyn1HsNRCqdPxUd2WfQt8SagDp65d2u3
-         9C62omZt0ynqAOcQDxlumq+SEKU2S2PMyzUyV94RwI6Gljx4udEEuywWCDiUOUinwXOf
-         N9XVBQ2VYALgw2AKxdl/A2G8PfCra1Dzef/XVB+ly5L7T/PAS2e0XFBJWn04WGv7HE8o
-         3ytZ1eXhWs9R0q4qazNQ1Zu7l+vMbU3UGU79D6kC0D34YqXaOPYJHfC2HnaUCyc7MoSO
-         SknRE5pq9EDbUDGN0lHzB5EUMig1LNHx3ommz9L/9yK5Tu7aAF+oRWCUdUsXngPhNy1E
-         Hr4w==
+        b=lPGG0OiNHTkyNlcSCaejfdWWTi+WtmAvTHeH08AuNGvP4TXENilfsBYpDs4i8+ldK9
+         eCsp6oVcIzZ2kdrBk8MmCTJqpTbIBqwgvEpcJdifkT2llacM0lOx7zeA//HZmePgw+GN
+         7oxHj6BWXgw3GBtRgrR0WMBTBOcZN32kryYr3h/xoQS5RZcXXmdQQleDQHaSI6CuK8gN
+         HQlPx0HhBjT++mHVWH2x3spmeqW3Cl0BDAObruMpvWek4c18OaP6GGnuhKptPgS63wkL
+         xceSWwoe91DrhY3bcOaVmQq7V/v1CSTg0hQ3miBlvjYYFBu+cAtJ+UWzmpd+LrsznF8Q
+         Bi3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=LIzCyFfttTp0aeKUbVt/UDhO7RoILF32cKx4dgmIfA8=;
-        b=vfmAWlBKN6Y5vLKPCjU18D6ATo1x10SuZ8IcJPoIxHJHnjbuAjVlphYuh1oA/jbThr
-         aJAhyIQ5OKKxkU2JuvIu0mKZBJ7dONDnxbKH1wsKwQoP2Fypvs+sak/VWyGu4q3fcHu/
-         Hylm5YUGGVc/EyEEmfoanz5y+VjgZ97gn47oeZgiGKRufcPNvgZbcu3bdeENC5YnVE21
-         ScN+QYTihXatE38V9vIqCFr0ViRb7BoMNuoQHq8W0HpFZr2xjTg/gTL+ch5VmUlZX0RK
-         m9aR2HpbiU89VVZ7s9QnB9L9IdoTGceHOfk9KtK4ffNyosCSNq5Tgff9NCLNoxPj68nP
-         b1Mg==
+        bh=S92ah6Wax7gI5ceKxduFX1n6ktmqzdx2Gm6mshqKnp0=;
+        b=WVPYcESBd4e5Hniho01xY/FSnkrinPwBsP0gciKXwB96+gPehziQAWslpTEt5zBTMd
+         hFb0wxvnAwIJdyshQ6zZFDY8i3Ri9A/+ppacFU7v0IjqI+quHIXARcp5JiuZzyvvzsLP
+         nnjqvV8LkpdN9w0vKoe6ndnKLZaIgfFt6FCL803V0iPxuRtgG330fn1DzjSv2r0Vb31O
+         UcCFSVGKt4gYqaLrnyRYoKzy/kfZeEkUzOBvUCNf94G32HrfZu2dKcyvtnbTq1l9wlGf
+         yi3qXNdatYEiu7UvE4fP+olNl2VVujIcVLJIFOyCvsNEfL8g9/Dpa7bhn2nLWLsVnPc7
+         BPWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=oEd4Jvkc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KGtWEUTe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e6-v6si2382862qvj.61.2018.06.10.19.28.03
+        by mx.google.com with ESMTPS id d192-v6si2324353qkb.390.2018.06.10.19.32.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 10 Jun 2018 19:28:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 10 Jun 2018 19:32:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=oEd4Jvkc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46087 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KGtWEUTe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46115 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSCYs-0003oP-Ry
-	for alex.bennee@linaro.org; Sun, 10 Jun 2018 22:28:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54068)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fSCdX-0006Rr-2j
+	for alex.bennee@linaro.org; Sun, 10 Jun 2018 22:32:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55536)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fSCX4-0002jm-Hw
-	for qemu-devel@nongnu.org; Sun, 10 Jun 2018 22:26:13 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fSCdI-0006Pr-4F
+	for qemu-arm@nongnu.org; Sun, 10 Jun 2018 22:32:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fSCX2-00080s-03
-	for qemu-devel@nongnu.org; Sun, 10 Jun 2018 22:26:10 -0400
-Received: from ozlabs.org ([203.11.71.1]:60575)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1fSCWu-0007qH-Dt; Sun, 10 Jun 2018 22:26:01 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 413xhL41VRz9ryk; Mon, 11 Jun 2018 12:25:54 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1528683954;
-	bh=ZYMqED4Jp4YqDRabqGRdkB1oYA0UCS1CzcpsPo4g7QM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oEd4Jvkcgc6MvqSoNYzVkYRQGD3ve1MY4cju9iJ75LbuKb7oCHVbR+1IOYUnZxKGX
-	SPkK/o+lJxtQKv2nWjpJoJBAdI9RnlhnswSSVPETmJH+YLFubSUPrpjOmVxJj9W9gv
-	32ai4sFj/Bv7VQmAmR6pw613RQR+AoR3c/BcGxhY=
-Date: Mon, 11 Jun 2018 12:11:46 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20180611021146.GD2737@umbus.fritz.box>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fSCdG-0004mf-EL
+	for qemu-arm@nongnu.org; Sun, 10 Jun 2018 22:32:36 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35315)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fSCdA-0004hb-7H; Sun, 10 Jun 2018 22:32:28 -0400
+Received: by mail-qt0-x242.google.com with SMTP id s9-v6so18973182qtg.2;
+	Sun, 10 Jun 2018 19:32:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=S92ah6Wax7gI5ceKxduFX1n6ktmqzdx2Gm6mshqKnp0=;
+	b=KGtWEUTe/n5jvu9MbfGciliauR1YtV3b4QjQTJrff04G1bgGTmGHBYQpRNafswCL16
+	0bybpM/7aU4VBb7QEKBEgJfN13WlU4t7zDj8o3SwxrT7M1rGoDInWYkq92vh1AZVFXNG
+	0aBnf9kmrklBtDNiCSV/7Fz4bohIisTBRTC8IgtR8B0NMh8BImxJuSo9RZh2gd143V4G
+	ZoOrQ1+pXmU7KagDlS6zicXU6PaA0MGLujenPbvPSQWhG8plHZExAD/IWg/bZkGDXyab
+	+l6jmsYq8AH9uWpuzXxei4k0eJ0OBr/DH+Iw3aEOuc2p0cp7u7lM5bijJc6aiFNQb63c
+	b31w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=S92ah6Wax7gI5ceKxduFX1n6ktmqzdx2Gm6mshqKnp0=;
+	b=sLHcFXl2AqZxwtiVjQoECgUHNLpib2BmrINKgLuxYi4tN9QUKgWXu6XP6sYM7cZahm
+	Vofk1kmql0iMnmov5TW7iutnwyLZzCveVwzRThTpaWqCeoixunF/8XrMOVWreoIlZ3zn
+	KDRWTYVezD3lOnjwNUiiDJB/FMK1HdK5nBoEsI2UXfmGJq4wHYmsibjpr/7git86UwvC
+	Ovj3zEBy0jSZPno5FT5/r2XkOBd4QZVmzrKH4KXBkhE6fXySPYAJjXk6YQgDCyxnZ4ZE
+	3GkXROkXnEiUj8aCcNc9v2UjS/VHwewV4S0CZyuR+HaOtVDtb8EV4QHrID8ERxk1Tvou
+	z49Q==
+X-Gm-Message-State: APt69E31ic3WwXDg4dohfct9Y9Yd5AEzS0FYVMcwtBV3S5Yl4bCPpQSv
+	G8K23YsAJgnKbXzG5W9L7Tg=
+X-Received: by 2002:ac8:35ee:: with SMTP id
+	l43-v6mr14671298qtb.209.1528684347489; 
+	Sun, 10 Jun 2018 19:32:27 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	p51-v6sm18446920qtc.43.2018.06.10.19.32.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 10 Jun 2018 19:32:26 -0700 (PDT)
+To: "Michael S. Tsirkin" <mst@redhat.com>
 References: <20180611011501.10235-1-f4bug@amsat.org>
-	<20180611011501.10235-6-f4bug@amsat.org>
+	<20180611052040-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <90571f8d-78d1-cde2-679a-7089c88821c5@amsat.org>
+Date: Sun, 10 Jun 2018 23:32:12 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="SFyWQ0h3ruR435lw"
-Content-Disposition: inline
-In-Reply-To: <20180611011501.10235-6-f4bug@amsat.org>
-User-Agent: Mutt/1.10.0 (2018-05-17)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-devel] [PATCH v4 05/40] hw: Use IEC binary prefix
- definitions from "qemu/units.h"
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20180611052040-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-arm] [PATCH v4 00/40] Use the IEC binary prefix
+ definitions
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Palmer Dabbelt <palmer@sifive.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Michael Clark <mjc@sifive.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Yongbok Kim <yongbok.kim@mips.com>, Marek Vasut <marex@denx.de>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>,
+	qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+	Magnus Damm <magnus.damm@gmail.com>, Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Thomas Huth <thuth@redhat.com>, Fam Zheng <famz@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>,
-	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Paul Burton <paul.burton@mips.com>, "open list:ARM" <qemu-arm@nongnu.org>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cTJbd3qyezOl
+	Stefan Weil <sw@weilnetz.de>, Alistair Francis <alistair@alistair23.me>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-s390x@nongnu.org,
+	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+	Yuval Shaia <yuval.shaia@oracle.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
+	Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Chris Wulff <crwulff@gmail.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
+	qemu-ppc@nongnu.org, Paul Burton <paul.burton@mips.com>,
+	Cornelia Huck <cohuck@redhat.com>, Peter Chubb <peter.chubb@nicta.com.au>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4o/TBqoBY1Rr
 
+On 06/10/2018 11:22 PM, Michael S. Tsirkin wrote:
+> On Sun, Jun 10, 2018 at 10:14:21PM -0300, Philippe Mathieu-Daudé wrote:
+>> Hi,
+>>
+>> This series:
+>>
+>> - split the byte-based definitions from "qemu/cutils.h" to "qemu/units.h"
+>>   (this now triggers WARNING: 1 added file, does MAINTAINERS need updating?)
+>> - clean hw/ includes;
+>> - replace different constants used for byte size with their corresponding
+>>   IEC binary prefix definitions.
+>>
+>> Since v3:
+>> - use IEC binary prefix definitions (Stefan Weil)
+>> - rebased
+>> - added R-b tags
+> 
+> It violates our coding style which requires KIB for macros.
+> But strangely, I like how this looks anyway.
 
---SFyWQ0h3ruR435lw
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Each use this saves 3 char of the 80 columns limit!
 
-On Sun, Jun 10, 2018 at 10:14:26PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> Code change produced with:
->=20
->   $ git ls-files | egrep '\.[ch]$' | \
->     xargs sed -i -e 's/\(\W[KMGTPE]\)_BYTE/\1iB/g'
->=20
-> Suggested-by: Stefan Weil <sw@weilnetz.de>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> 
+> So series
+> 
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-ppc parts
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Thanks!
 
-> ---
->  include/qemu/cutils.h  |  8 +-------
->  hw/arm/msf2-soc.c      |  4 ++--
->  hw/arm/msf2-som.c      |  6 +++---
->  hw/core/loader-fit.c   |  3 ++-
->  hw/core/machine.c      |  2 +-
->  hw/display/sm501.c     | 14 +++++++-------
->  hw/hppa/machine.c      |  2 +-
->  hw/mips/boston.c       | 28 ++++++++++++++--------------
->  hw/ppc/pnv.c           |  4 ++--
->  hw/ppc/ppc440_uc.c     | 26 +++++++++++++-------------
->  hw/ppc/prep.c          |  2 +-
->  hw/ppc/sam460ex.c      |  2 +-
->  hw/ppc/spapr.c         | 10 +++++-----
->  hw/ppc/spapr_rtas.c    |  2 +-
->  hw/sd/sd.c             |  4 ++--
->  hw/sd/sdhci.c          |  2 +-
->  tests/test-cutils.c    | 18 +++++++++---------
->  tests/test-keyval.c    |  6 +++---
->  tests/test-qemu-opts.c |  7 +++----
->  19 files changed, 72 insertions(+), 78 deletions(-)
->=20
-> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-> index a663340b23..056e6629bb 100644
-> --- a/include/qemu/cutils.h
-> +++ b/include/qemu/cutils.h
-> @@ -2,6 +2,7 @@
->  #define QEMU_CUTILS_H
-> =20
->  #include "qemu/fprintf-fn.h"
-> +#include "qemu/units.h"
-> =20
->  /**
->   * pstrcpy:
-> @@ -147,13 +148,6 @@ int qemu_strtosz(const char *nptr, char **end, uint6=
-4_t *result);
->  int qemu_strtosz_MiB(const char *nptr, char **end, uint64_t *result);
->  int qemu_strtosz_metric(const char *nptr, char **end, uint64_t *result);
-> =20
-> -#define K_BYTE     (1ULL << 10)
-> -#define M_BYTE     (1ULL << 20)
-> -#define G_BYTE     (1ULL << 30)
-> -#define T_BYTE     (1ULL << 40)
-> -#define P_BYTE     (1ULL << 50)
-> -#define E_BYTE     (1ULL << 60)
-> -
->  /* used to print char* safely */
->  #define STR_OR_NULL(str) ((str) ? (str) : "null")
-> =20
-> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-> index 75c44adf7d..530e461c42 100644
-> --- a/hw/arm/msf2-soc.c
-> +++ b/hw/arm/msf2-soc.c
-> @@ -40,14 +40,14 @@
-> =20
->  #define SRAM_BASE_ADDRESS     0x20000000
-> =20
-> -#define MSF2_ENVM_MAX_SIZE    (512 * K_BYTE)
-> +#define MSF2_ENVM_MAX_SIZE    (512 * KiB)
-> =20
->  /*
->   * eSRAM max size is 80k without SECDED(Single error correction and
->   * dual error detection) feature and 64k with SECDED.
->   * We do not support SECDED now.
->   */
-> -#define MSF2_ESRAM_MAX_SIZE       (80 * K_BYTE)
-> +#define MSF2_ESRAM_MAX_SIZE       (80 * KiB)
-> =20
->  static const uint32_t spi_addr[MSF2_NUM_SPIS] =3D { 0x40001000 , 0x40011=
-000 };
->  static const uint32_t uart_addr[MSF2_NUM_UARTS] =3D { 0x40000000 , 0x400=
-10000 };
-> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-> index 0795a3a3a1..ed533bbde1 100644
-> --- a/hw/arm/msf2-som.c
-> +++ b/hw/arm/msf2-som.c
-> @@ -33,10 +33,10 @@
->  #include "cpu.h"
-> =20
->  #define DDR_BASE_ADDRESS      0xA0000000
-> -#define DDR_SIZE              (64 * M_BYTE)
-> +#define DDR_SIZE              (64 * MiB)
-> =20
-> -#define M2S010_ENVM_SIZE      (256 * K_BYTE)
-> -#define M2S010_ESRAM_SIZE     (64 * K_BYTE)
-> +#define M2S010_ENVM_SIZE      (256 * KiB)
-> +#define M2S010_ESRAM_SIZE     (64 * KiB)
-> =20
->  static void emcraft_sf2_s2s010_init(MachineState *machine)
->  {
-> diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
-> index 6387854b54..447f60857d 100644
-> --- a/hw/core/loader-fit.c
-> +++ b/hw/core/loader-fit.c
-> @@ -18,6 +18,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "exec/memory.h"
->  #include "hw/loader.h"
->  #include "hw/loader-fit.h"
-> @@ -194,7 +195,7 @@ static int fit_load_fdt(const struct fit_loader *ldr,=
- const void *itb,
-> =20
->      err =3D fit_image_addr(itb, img_off, "load", &load_addr);
->      if (err =3D=3D -ENOENT) {
-> -        load_addr =3D ROUND_UP(kernel_end, 64 * K_BYTE) + (10 * M_BYTE);
-> +        load_addr =3D ROUND_UP(kernel_end, 64 * KiB) + (10 * MiB);
->      } else if (err) {
->          ret =3D err;
->          goto out;
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 617e5f8d75..ccf3a4b9c7 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -522,7 +522,7 @@ static void machine_class_init(ObjectClass *oc, void =
-*data)
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> =20
->      /* Default 128 MB as guest ram size */
-> -    mc->default_ram_size =3D 128 * M_BYTE;
-> +    mc->default_ram_size =3D 128 * MiB;
->      mc->rom_file_has_mr =3D true;
-> =20
->      /* numa node memory size aligned on 8MB by default.
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index e47be99451..1c6c9445c5 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -452,12 +452,12 @@
-> =20
->  /* SM501 local memory size taken from "linux/drivers/mfd/sm501.c" */
->  static const uint32_t sm501_mem_local_size[] =3D {
-> -    [0] =3D 4 * M_BYTE,
-> -    [1] =3D 8 * M_BYTE,
-> -    [2] =3D 16 * M_BYTE,
-> -    [3] =3D 32 * M_BYTE,
-> -    [4] =3D 64 * M_BYTE,
-> -    [5] =3D 2 * M_BYTE,
-> +    [0] =3D 4 * MiB,
-> +    [1] =3D 8 * MiB,
-> +    [2] =3D 16 * MiB,
-> +    [3] =3D 32 * MiB,
-> +    [4] =3D 64 * MiB,
-> +    [5] =3D 2 * MiB,
->  };
->  #define get_local_mem_size(s) sm501_mem_local_size[(s)->local_mem_size_i=
-ndex]
-> =20
-> @@ -1826,7 +1826,7 @@ static void sm501_realize_pci(PCIDevice *dev, Error=
- **errp)
->  }
-> =20
->  static Property sm501_pci_properties[] =3D {
-> -    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * M_BYT=
-E),
-> +    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * MiB),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> =20
-> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-> index aba269bb85..2ba26962f9 100644
-> --- a/hw/hppa/machine.c
-> +++ b/hw/hppa/machine.c
-> @@ -275,7 +275,7 @@ static void machine_hppa_machine_init(MachineClass *m=
-c)
->      mc->max_cpus =3D HPPA_MAX_CPUS;
->      mc->default_cpus =3D 1;
->      mc->is_default =3D 1;
-> -    mc->default_ram_size =3D 512 * M_BYTE;
-> +    mc->default_ram_size =3D 512 * MiB;
->      mc->default_boot_order =3D "cd";
->  }
-> =20
-> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-> index 52cce19766..512c60c03e 100644
-> --- a/hw/mips/boston.c
-> +++ b/hw/mips/boston.c
-> @@ -200,7 +200,7 @@ static uint64_t boston_platreg_read(void *opaque, hwa=
-ddr addr,
->          val |=3D PLAT_BUILD_CFG_PCIE2_EN;
->          return val;
->      case PLAT_DDR_CFG:
-> -        val =3D s->mach->ram_size / G_BYTE;
-> +        val =3D s->mach->ram_size / GiB;
->          assert(!(val & ~PLAT_DDR_CFG_SIZE));
->          val |=3D PLAT_DDR_CFG_MHZ;
->          return val;
-> @@ -355,7 +355,7 @@ static const void *boston_fdt_filter(void *opaque, co=
-nst void *fdt_orig,
->          return NULL;
->      }
-> =20
-> -    ram_low_sz =3D MIN(256 * M_BYTE, machine->ram_size);
-> +    ram_low_sz =3D MIN(256 * MiB, machine->ram_size);
->      ram_high_sz =3D machine->ram_size - ram_low_sz;
->      qemu_fdt_setprop_sized_cells(fdt, "/memory@0", "reg",
->                                   1, 0x00000000, 1, ram_low_sz,
-> @@ -436,8 +436,8 @@ static void boston_mach_init(MachineState *machine)
->      int fw_size, fit_err;
->      bool is_64b;
-> =20
-> -    if ((machine->ram_size % G_BYTE) ||
-> -        (machine->ram_size > (2 * G_BYTE))) {
-> +    if ((machine->ram_size % GiB) ||
-> +        (machine->ram_size > (2 * GiB))) {
->          error_report("Memory size must be 1GB or 2GB");
->          exit(1);
->      }
-> @@ -472,7 +472,7 @@ static void boston_mach_init(MachineState *machine)
-> =20
->      flash =3D  g_new(MemoryRegion, 1);
->      memory_region_init_rom_nomigrate(flash, NULL,
-> -                                     "boston.flash", 128 * M_BYTE, &err);
-> +                                     "boston.flash", 128 * MiB, &err);
->      memory_region_add_subregion_overlap(sys_mem, 0x18000000, flash, 0);
-> =20
->      ddr =3D g_new(MemoryRegion, 1);
-> @@ -482,22 +482,22 @@ static void boston_mach_init(MachineState *machine)
-> =20
->      ddr_low_alias =3D g_new(MemoryRegion, 1);
->      memory_region_init_alias(ddr_low_alias, NULL, "boston_low.ddr",
-> -                             ddr, 0, MIN(machine->ram_size, (256 * M_BYT=
-E)));
-> +                             ddr, 0, MIN(machine->ram_size, (256 * MiB))=
-);
->      memory_region_add_subregion_overlap(sys_mem, 0, ddr_low_alias, 0);
-> =20
->      xilinx_pcie_init(sys_mem, 0,
-> -                     0x10000000, 32 * M_BYTE,
-> -                     0x40000000, 1 * G_BYTE,
-> +                     0x10000000, 32 * MiB,
-> +                     0x40000000, 1 * GiB,
->                       get_cps_irq(s->cps, 2), false);
-> =20
->      xilinx_pcie_init(sys_mem, 1,
-> -                     0x12000000, 32 * M_BYTE,
-> -                     0x20000000, 512 * M_BYTE,
-> +                     0x12000000, 32 * MiB,
-> +                     0x20000000, 512 * MiB,
->                       get_cps_irq(s->cps, 1), false);
-> =20
->      pcie2 =3D xilinx_pcie_init(sys_mem, 2,
-> -                             0x14000000, 32 * M_BYTE,
-> -                             0x16000000, 1 * M_BYTE,
-> +                             0x14000000, 32 * MiB,
-> +                             0x16000000, 1 * MiB,
->                               get_cps_irq(s->cps, 0), true);
-> =20
->      platreg =3D g_new(MemoryRegion, 1);
-> @@ -527,7 +527,7 @@ static void boston_mach_init(MachineState *machine)
-> =20
->      if (machine->firmware) {
->          fw_size =3D load_image_targphys(machine->firmware,
-> -                                      0x1fc00000, 4 * M_BYTE);
-> +                                      0x1fc00000, 4 * MiB);
->          if (fw_size =3D=3D -1) {
->              error_printf("unable to load firmware image '%s'\n",
->                            machine->firmware);
-> @@ -553,7 +553,7 @@ static void boston_mach_class_init(MachineClass *mc)
->      mc->desc =3D "MIPS Boston";
->      mc->init =3D boston_mach_init;
->      mc->block_default_type =3D IF_IDE;
-> -    mc->default_ram_size =3D 1 * G_BYTE;
-> +    mc->default_ram_size =3D 1 * GiB;
->      mc->max_cpus =3D 16;
->      mc->default_cpu_type =3D MIPS_CPU_TYPE_NAME("I6400");
->  }
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index 0314881316..bdb6f63d2c 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -559,7 +559,7 @@ static void pnv_init(MachineState *machine)
->      char *chip_typename;
-> =20
->      /* allocate RAM */
-> -    if (machine->ram_size < (1 * G_BYTE)) {
-> +    if (machine->ram_size < (1 * GiB)) {
->          warn_report("skiboot may not work with < 1GB of RAM");
->      }
-> =20
-> @@ -1096,7 +1096,7 @@ static void pnv_machine_class_init(ObjectClass *oc,=
- void *data)
->                                        * storage */
->      mc->no_parallel =3D 1;
->      mc->default_boot_order =3D NULL;
-> -    mc->default_ram_size =3D 1 * G_BYTE;
-> +    mc->default_ram_size =3D 1 * GiB;
->      xic->icp_get =3D pnv_icp_get;
->      xic->ics_get =3D pnv_ics_get;
->      xic->ics_resend =3D pnv_ics_resend;
-> diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
-> index 123f4ac09d..b5b31b4b9b 100644
-> --- a/hw/ppc/ppc440_uc.c
-> +++ b/hw/ppc/ppc440_uc.c
-> @@ -215,13 +215,13 @@ void ppc4xx_l2sram_init(CPUPPCState *env)
->      l2sram =3D g_malloc0(sizeof(*l2sram));
->      /* XXX: Size is 4*64kB for 460ex, cf. U-Boot, ppc4xx-isram.h */
->      memory_region_init_ram(&l2sram->bank[0], NULL, "ppc4xx.l2sram_bank0",
-> -                           64 * K_BYTE, &error_abort);
-> +                           64 * KiB, &error_abort);
->      memory_region_init_ram(&l2sram->bank[1], NULL, "ppc4xx.l2sram_bank1",
-> -                           64 * K_BYTE, &error_abort);
-> +                           64 * KiB, &error_abort);
->      memory_region_init_ram(&l2sram->bank[2], NULL, "ppc4xx.l2sram_bank2",
-> -                           64 * K_BYTE, &error_abort);
-> +                           64 * KiB, &error_abort);
->      memory_region_init_ram(&l2sram->bank[3], NULL, "ppc4xx.l2sram_bank3",
-> -                           64 * K_BYTE, &error_abort);
-> +                           64 * KiB, &error_abort);
->      qemu_register_reset(&l2sram_reset, l2sram);
->      ppc_dcr_register(env, DCR_L2CACHE_CFG,
->                       l2sram, &dcr_read_l2sram, &dcr_write_l2sram);
-> @@ -513,28 +513,28 @@ static uint32_t sdram_bcr(hwaddr ram_base, hwaddr r=
-am_size)
->      uint32_t bcr;
-> =20
->      switch (ram_size) {
-> -    case (8 * M_BYTE):
-> +    case (8 * MiB):
->          bcr =3D 0xffc0;
->          break;
-> -    case (16 * M_BYTE):
-> +    case (16 * MiB):
->          bcr =3D 0xff80;
->          break;
-> -    case (32 * M_BYTE):
-> +    case (32 * MiB):
->          bcr =3D 0xff00;
->          break;
-> -    case (64 * M_BYTE):
-> +    case (64 * MiB):
->          bcr =3D 0xfe00;
->          break;
-> -    case (128 * M_BYTE):
-> +    case (128 * MiB):
->          bcr =3D 0xfc00;
->          break;
-> -    case (256 * M_BYTE):
-> +    case (256 * MiB):
->          bcr =3D 0xf800;
->          break;
-> -    case (512 * M_BYTE):
-> +    case (512 * MiB):
->          bcr =3D 0xf000;
->          break;
-> -    case (1 * G_BYTE):
-> +    case (1 * GiB):
->          bcr =3D 0xe000;
->          break;
->      default:
-> @@ -561,7 +561,7 @@ static target_ulong sdram_size(uint32_t bcr)
->      if (sh =3D=3D 0) {
->          size =3D -1;
->      } else {
-> -        size =3D 8 * M_BYTE * sh;
-> +        size =3D 8 * MiB * sh;
->      }
-> =20
->      return size;
-> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index a1e7219db6..a8d26f74fc 100644
-> --- a/hw/ppc/prep.c
-> +++ b/hw/ppc/prep.c
-> @@ -886,7 +886,7 @@ static void ibm_40p_machine_init(MachineClass *mc)
->      mc->init =3D ibm_40p_init;
->      mc->max_cpus =3D 1;
->      mc->pci_allow_0_address =3D true;
-> -    mc->default_ram_size =3D 128 * M_BYTE;
-> +    mc->default_ram_size =3D 128 * MiB;
->      mc->block_default_type =3D IF_SCSI;
->      mc->default_boot_order =3D "c";
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("604");
-> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-> index bdc53d2603..2a98c10664 100644
-> --- a/hw/ppc/sam460ex.c
-> +++ b/hw/ppc/sam460ex.c
-> @@ -597,7 +597,7 @@ static void sam460ex_machine_init(MachineClass *mc)
->      mc->desc =3D "aCube Sam460ex";
->      mc->init =3D sam460ex_init;
->      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("460exb");
-> -    mc->default_ram_size =3D 512 * M_BYTE;
-> +    mc->default_ram_size =3D 512 * MiB;
->  }
-> =20
->  DEFINE_MACHINE("sam460ex", sam460ex_machine_init)
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index 2375cbee12..3ba3bc8b6c 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -2317,7 +2317,7 @@ static void spapr_validate_node_memory(MachineState=
- *machine, Error **errp)
->          error_setg(errp, "Memory size 0x" RAM_ADDR_FMT
->                     " is not aligned to %llu MiB",
->                     machine->ram_size,
-> -                   SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
-> +                   SPAPR_MEMORY_BLOCK_SIZE / MiB);
->          return;
->      }
-> =20
-> @@ -2325,7 +2325,7 @@ static void spapr_validate_node_memory(MachineState=
- *machine, Error **errp)
->          error_setg(errp, "Maximum memory size 0x" RAM_ADDR_FMT
->                     " is not aligned to %llu MiB",
->                     machine->ram_size,
-> -                   SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
-> +                   SPAPR_MEMORY_BLOCK_SIZE / MiB);
->          return;
->      }
-> =20
-> @@ -2335,7 +2335,7 @@ static void spapr_validate_node_memory(MachineState=
- *machine, Error **errp)
->                         "Node %d memory size 0x%" PRIx64
->                         " is not aligned to %llu MiB",
->                         i, numa_info[i].node_mem,
-> -                       SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
-> +                       SPAPR_MEMORY_BLOCK_SIZE / MiB);
->              return;
->          }
->      }
-> @@ -3195,7 +3195,7 @@ static void spapr_memory_pre_plug(HotplugHandler *h=
-otplug_dev, DeviceState *dev,
-> =20
->      if (size % SPAPR_MEMORY_BLOCK_SIZE) {
->          error_setg(errp, "Hotplugged memory size must be a multiple of "
-> -                      "%lld MB", SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
-> +                      "%lld MB", SPAPR_MEMORY_BLOCK_SIZE / MiB);
->          return;
->      }
-> =20
-> @@ -3975,7 +3975,7 @@ static void spapr_machine_class_init(ObjectClass *o=
-c, void *data)
->      mc->max_cpus =3D 1024;
->      mc->no_parallel =3D 1;
->      mc->default_boot_order =3D "";
-> -    mc->default_ram_size =3D 512 * M_BYTE;
-> +    mc->default_ram_size =3D 512 * MiB;
->      mc->kvm_type =3D spapr_kvm_type;
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SPAPR_PCI_HOST_BRIDG=
-E);
->      mc->pci_allow_0_address =3D true;
-> diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
-> index 7f9738daed..f32740b947 100644
-> --- a/hw/ppc/spapr_rtas.c
-> +++ b/hw/ppc/spapr_rtas.c
-> @@ -241,7 +241,7 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU =
-*cpu,
->                                            "DesProcs=3D%d,"
->                                            "MaxPlatProcs=3D%d",
->                                            max_cpus,
-> -                                          current_machine->ram_size / M_=
-BYTE,
-> +                                          current_machine->ram_size / Mi=
-B,
->                                            smp_cpus,
->                                            max_cpus);
->          ret =3D sysparm_st(buffer, length, param_val, strlen(param_val) =
-+ 1);
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 540bccb8d1..9a16b768ed 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -305,7 +305,7 @@ static void sd_ocr_powerup(void *opaque)
->      /* card power-up OK */
->      sd->ocr =3D FIELD_DP32(sd->ocr, OCR, CARD_POWER_UP, 1);
-> =20
-> -    if (sd->size > 1 * G_BYTE) {
-> +    if (sd->size > 1 * GiB) {
->          sd->ocr =3D FIELD_DP32(sd->ocr, OCR, CARD_CAPACITY, 1);
->      }
->  }
-> @@ -377,7 +377,7 @@ static void sd_set_csd(SDState *sd, uint64_t size)
->      uint32_t sectsize =3D (1 << (SECTOR_SHIFT + 1)) - 1;
->      uint32_t wpsize =3D (1 << (WPGROUP_SHIFT + 1)) - 1;
-> =20
-> -    if (size <=3D 1 * G_BYTE) { /* Standard Capacity SD */
-> +    if (size <=3D 1 * GiB) { /* Standard Capacity SD */
->          sd->csd[0] =3D 0x00;	/* CSD structure */
->          sd->csd[1] =3D 0x26;	/* Data read access-time-1 */
->          sd->csd[2] =3D 0x00;	/* Data read access-time-2 */
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index 3017e5a95a..a11e802485 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -414,7 +414,7 @@ static void sdhci_end_transfer(SDHCIState *s)
->  /*
->   * Programmed i/o data transfer
->   */
-> -#define BLOCK_SIZE_MASK (4 * K_BYTE - 1)
-> +#define BLOCK_SIZE_MASK (4 * KiB - 1)
-> =20
->  /* Fill host controller's read buffer with BLKSIZE bytes of data from ca=
-rd */
->  static void sdhci_read_block_from_card(SDHCIState *s)
-> diff --git a/tests/test-cutils.c b/tests/test-cutils.c
-> index 64a489c2e9..ee543ac4bf 100644
-> --- a/tests/test-cutils.c
-> +++ b/tests/test-cutils.c
-> @@ -2022,7 +2022,7 @@ static void test_qemu_strtosz_units(void)
->      /* default is M */
->      err =3D qemu_strtosz_MiB(none, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, M_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, MiB);
->      g_assert(endptr =3D=3D none + 1);
-> =20
->      err =3D qemu_strtosz(b, &endptr, &res);
-> @@ -2032,32 +2032,32 @@ static void test_qemu_strtosz_units(void)
-> =20
->      err =3D qemu_strtosz(k, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, K_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, KiB);
->      g_assert(endptr =3D=3D k + 2);
-> =20
->      err =3D qemu_strtosz(m, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, M_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, MiB);
->      g_assert(endptr =3D=3D m + 2);
-> =20
->      err =3D qemu_strtosz(g, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, G_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, GiB);
->      g_assert(endptr =3D=3D g + 2);
-> =20
->      err =3D qemu_strtosz(t, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, T_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, TiB);
->      g_assert(endptr =3D=3D t + 2);
-> =20
->      err =3D qemu_strtosz(p, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, P_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, PiB);
->      g_assert(endptr =3D=3D p + 2);
-> =20
->      err =3D qemu_strtosz(e, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, E_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, EiB);
->      g_assert(endptr =3D=3D e + 2);
->  }
-> =20
-> @@ -2070,7 +2070,7 @@ static void test_qemu_strtosz_float(void)
-> =20
->      err =3D qemu_strtosz(str, &endptr, &res);
->      g_assert_cmpint(err, =3D=3D, 0);
-> -    g_assert_cmpint(res, =3D=3D, 12.345 * M_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, 12.345 * MiB);
->      g_assert(endptr =3D=3D str + 7);
->  }
-> =20
-> @@ -2106,7 +2106,7 @@ static void test_qemu_strtosz_trailing(void)
-> =20
->      str =3D "123xxx";
->      err =3D qemu_strtosz_MiB(str, &endptr, &res);
-> -    g_assert_cmpint(res, =3D=3D, 123 * M_BYTE);
-> +    g_assert_cmpint(res, =3D=3D, 123 * MiB);
->      g_assert(endptr =3D=3D str + 3);
-> =20
->      err =3D qemu_strtosz(str, NULL, &res);
-> diff --git a/tests/test-keyval.c b/tests/test-keyval.c
-> index 63cb14629b..92d8e9fa89 100644
-> --- a/tests/test-keyval.c
-> +++ b/tests/test-keyval.c
-> @@ -457,11 +457,11 @@ static void test_keyval_visit_size(void)
->      visit_type_size(v, "sz2", &sz, &error_abort);
->      g_assert_cmpuint(sz, =3D=3D, 1536);
->      visit_type_size(v, "sz3", &sz, &error_abort);
-> -    g_assert_cmphex(sz, =3D=3D, 2 * M_BYTE);
-> +    g_assert_cmphex(sz, =3D=3D, 2 * MiB);
->      visit_type_size(v, "sz4", &sz, &error_abort);
-> -    g_assert_cmphex(sz, =3D=3D, G_BYTE / 10);
-> +    g_assert_cmphex(sz, =3D=3D, GiB / 10);
->      visit_type_size(v, "sz5", &sz, &error_abort);
-> -    g_assert_cmphex(sz, =3D=3D, 16777215 * T_BYTE);
-> +    g_assert_cmphex(sz, =3D=3D, 16777215 * TiB);
->      visit_check_struct(v, &error_abort);
->      visit_end_struct(v, NULL);
->      visit_free(v);
-> diff --git a/tests/test-qemu-opts.c b/tests/test-qemu-opts.c
-> index 7092e216f7..7074a176d7 100644
-> --- a/tests/test-qemu-opts.c
-> +++ b/tests/test-qemu-opts.c
-> @@ -704,13 +704,12 @@ static void test_opts_parse_size(void)
->      g_assert_cmpuint(opts_count(opts), =3D=3D, 3);
->      g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), =3D=3D, 8);
->      g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), =3D=3D, 1536);
-> -    g_assert_cmphex(qemu_opt_get_size(opts, "size3", 0), =3D=3D, 2 * M_B=
-YTE);
-> +    g_assert_cmphex(qemu_opt_get_size(opts, "size3", 0), =3D=3D, 2 * MiB=
-);
->      opts =3D qemu_opts_parse(&opts_list_02, "size1=3D0.1G,size2=3D167772=
-15T",
->                             false, &error_abort);
->      g_assert_cmpuint(opts_count(opts), =3D=3D, 2);
-> -    g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), =3D=3D, G_BYTE =
-/ 10);
-> -    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0),
-> -                     =3D=3D, 16777215 * T_BYTE);
-> +    g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), =3D=3D, GiB / 1=
-0);
-> +    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), =3D=3D, 1677721=
-5 * TiB);
-> =20
->      /* Beyond limit with suffix */
->      opts =3D qemu_opts_parse(&opts_list_02, "size1=3D16777216T",
+> 
+> 
+> but I think you need to update the coding style explaining
+> that there's an exception.
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+OK, if there is no NACK/negative comment I'll simply add a patch
+Based-on this series.
 
---SFyWQ0h3ruR435lw
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsd2mAACgkQbDjKyiDZ
-s5KASw/+PZUM4YIRcKovX/DJO6Fy52RFTbT+IzULR3jeN7uqikDBf3J6Db+NwccK
-enP6TcTPP6vbfjbHeBrrAQDNaJOYUoMhWtjtDCJaLvA261PG6JXB1SxkKVXPOU8v
-Zspe578OugDPjlnB6+mupphKQfTKWUEbzPxy9dmOY+Mci5mvGjWC0KUGnbFGgiQ8
-RyC56Fw3HUA3xXHFBkGxs84cKOfPIEYlTiWE2ey27rG2kqDF31F/2JJGgvOHfS2o
-4+BSEqSNPjAeg/Aeb+20wAyyt+HWW60CDcI82b6HCIQbFRwx2WpzLo7sfdXcTSuh
-Zu0j87dwsaLERg6eZ2GzCzkMWzuov+XXxGZ/HxWE57oKVAeth6X/eQ9VJdJqAyIz
-wqLX8o4N7JwrUPWqnK8IOmm2uWxlRS5kWyhePOZJ5Wynxh2C8mivmBAQ0rwyLKf4
-0L9k8MDzPrLPuxv9qEZaHFoNKkbmziagXblhcdC9OSLDu7uagqr05mNo9NZ7VPi0
-hmlYc7Vst/Ye+L45m71SI6iUwDj8Q/gbOJDLd/HelyYwrqFWrbWGXEsXUkcxYU0X
-0fG2IHVqVMx78nw8F2OXEKsFWClTDi90a/6f8CavDEEjTN0dW/7vqMRqOcTza5YH
-k4t6GNfkWtsnurz7JJymhWUYR+5z/pxhoKJ6aqkhDEa1AbzRHqA=
-=OP37
------END PGP SIGNATURE-----
-
---SFyWQ0h3ruR435lw--
+> 
+>> Since v2:
+>> - use "qemu/units.h" instead of "qemu/cunits.h" (Daniel P. Berrangé)
+>> - avoid rebuilding the world including "qemu/units.h" in "hw/hw.h" (Thomas Huth)
+>> - more constant replaced
+>>
+>> Since v1:
+>> - corrected Xen mult -> div (Alan Robinson)
+>> - tagged 'include "qemu/cunits.h" in "hw/hw.h" as RFC
+>> - fixed mips_r4k 'params_size' (Thomas Huth)
+>> - added command used to generate patch in each commit (Alistair Francis)
+>> - use G_BYTE for the raspi3 machine
+>> - added Reviewed-by tags
+>>
+>> Regards,
+>>
+>> Phil.
+>>
+>> Philippe Mathieu-Daudé (40):
+>>   include: Add IEC binary prefixes in "qemu/units.h"
+>>   vdi: Use definitions from "qemu/units.h"
+>>   x86/cpu: Use definitions from "qemu/units.h"
+>>   checkpatch: Recognize IEC binary prefix definitions
+>>   hw: Use IEC binary prefix definitions from "qemu/units.h"
+>>   hw: Directly use "qemu/units.h" instead of "qemu/cutils.h"
+>>   hw/ivshmem: Use the IEC binary prefix definitions
+>>   hw/ipack: Use the IEC binary prefix definitions
+>>   hw/scsi: Use the IEC binary prefix definitions
+>>   hw/smbios: Use the IEC binary prefix definitions
+>>   hw/xen: Use the IEC binary prefix definitions
+>>   hw/tpm: Use the IEC binary prefix definitions
+>>   hw/block: Use the IEC binary prefix definitions
+>>   hw/display: Use the IEC binary prefix definitions
+>>   hw/misc: Use the IEC binary prefix definitions
+>>   hw/riscv: Use the IEC binary prefix definitions
+>>   hw/m68k: Use the IEC binary prefix definitions
+>>   hw/sparc: Use the IEC binary prefix definitions
+>>   hw/s390x: Use the IEC binary prefix definitions
+>>   hw/hppa: Use the IEC binary prefix definitions
+>>   hw/xtensa: Use the IEC binary prefix definitions
+>>   hw/alpha: Use the IEC binary prefix definitions
+>>   hw/tricore: Use the IEC binary prefix definitions
+>>   hw/microblaze: Use the IEC binary prefix definitions
+>>   hw/nios2: Use the IEC binary prefix definitions
+>>   hw/cris: Use the IEC binary prefix definitions
+>>   hw/lm32: Use the IEC binary prefix definitions
+>>   hw/sh4: Use the IEC binary prefix definitions
+>>   hw/mips/r4k: Constify params_size
+>>   hw/mips: Use the IEC binary prefix definitions
+>>   hw/arm: Use the IEC binary prefix definitions
+>>   hw/ppc: Use the IEC binary prefix definitions
+>>   hw/i386: Use the IEC binary prefix definitions
+>>   hw/net: Use the IEC binary prefix definitions
+>>   hw/usb: Use the IEC binary prefix definitions
+>>   hw/sd: Use the IEC binary prefix definitions
+>>   hw/vfio: Use the IEC binary prefix definitions
+>>   hw/virtio: Use the IEC binary prefix definitions
+>>   hw/rdma: Use the IEC binary prefix definitions
+>>   cutils: Do not include "qemu/units.h" directly
+>>
+>>  hw/net/ne2000.h                          |  5 ++--
+>>  hw/ppc/mac.h                             |  3 ++-
+>>  hw/rdma/vmw/pvrdma.h                     |  3 ++-
+>>  include/hw/acpi/tpm.h                    |  3 ++-
+>>  include/hw/arm/fsl-imx7.h                |  5 ++--
+>>  include/hw/arm/stm32f205_soc.h           |  5 ++--
+>>  include/hw/display/xlnx_dp.h             |  5 ++--
+>>  include/hw/i386/ich9.h                   |  3 ++-
+>>  include/hw/intc/mips_gic.h               |  3 ++-
+>>  include/hw/mips/bios.h                   |  3 ++-
+>>  include/hw/net/allwinner_emac.h          |  5 ++--
+>>  include/hw/ppc/spapr.h                   |  5 ++--
+>>  include/hw/virtio/virtio-net.h           |  3 ++-
+>>  include/qemu/cutils.h                    |  7 ------
+>>  include/qemu/units.h                     | 20 ++++++++++++++++
+>>  block/vdi.c                              |  8 +++----
+>>  hw/alpha/typhoon.c                       | 17 +++++++-------
+>>  hw/arm/bcm2835_peripherals.c             |  3 ++-
+>>  hw/arm/boot.c                            |  7 +++---
+>>  hw/arm/collie.c                          |  5 ++--
+>>  hw/arm/digic_boards.c                    |  7 +++---
+>>  hw/arm/exynos4_boards.c                  |  3 ++-
+>>  hw/arm/gumstix.c                         |  3 ++-
+>>  hw/arm/integratorcp.c                    |  3 ++-
+>>  hw/arm/mainstone.c                       |  3 ++-
+>>  hw/arm/msf2-soc.c                        |  6 ++---
+>>  hw/arm/msf2-som.c                        |  8 +++----
+>>  hw/arm/musicpal.c                        |  9 +++----
+>>  hw/arm/omap_sx1.c                        | 11 +++++----
+>>  hw/arm/raspi.c                           |  5 ++--
+>>  hw/arm/smmu-common.c                     |  3 ++-
+>>  hw/arm/stellaris.c                       |  5 ++--
+>>  hw/arm/versatilepb.c                     |  5 ++--
+>>  hw/arm/vexpress.c                        |  7 +++---
+>>  hw/arm/virt.c                            |  5 ++--
+>>  hw/arm/xilinx_zynq.c                     |  7 +++---
+>>  hw/block/m25p80.c                        |  5 ++--
+>>  hw/block/nvme.c                          |  3 ++-
+>>  hw/block/tc58128.c                       |  3 ++-
+>>  hw/block/xen_disk.c                      |  5 ++--
+>>  hw/core/loader-fit.c                     |  3 ++-
+>>  hw/core/machine.c                        |  4 ++--
+>>  hw/cris/axis_dev88.c                     |  3 ++-
+>>  hw/display/bochs-display.c               |  9 +++----
+>>  hw/display/cirrus_vga.c                  | 10 ++++----
+>>  hw/display/g364fb.c                      |  4 ++--
+>>  hw/display/qxl.c                         | 28 ++++++++++------------
+>>  hw/display/sm501.c                       | 16 ++++++-------
+>>  hw/display/vga-isa-mm.c                  |  5 ++--
+>>  hw/display/vga.c                         |  5 ++--
+>>  hw/display/virtio-gpu.c                  |  4 ++--
+>>  hw/display/vmware_vga.c                  |  3 ++-
+>>  hw/display/xenfb.c                       |  3 ++-
+>>  hw/hppa/dino.c                           |  3 ++-
+>>  hw/hppa/machine.c                        | 12 +++++-----
+>>  hw/i386/acpi-build.c                     |  5 ++--
+>>  hw/i386/pc.c                             | 19 ++++++++-------
+>>  hw/i386/pc_piix.c                        |  4 ++--
+>>  hw/i386/pc_q35.c                         |  3 ++-
+>>  hw/i386/pc_sysfw.c                       |  9 +++----
+>>  hw/i386/xen/xen-mapcache.c               |  3 ++-
+>>  hw/intc/apic_common.c                    |  3 ++-
+>>  hw/ipack/tpci200.c                       |  5 ++--
+>>  hw/lm32/lm32_boards.c                    | 13 +++++-----
+>>  hw/lm32/milkymist.c                      | 10 ++++----
+>>  hw/m68k/mcf5208.c                        |  3 ++-
+>>  hw/microblaze/petalogix_ml605_mmu.c      |  7 +++---
+>>  hw/microblaze/petalogix_s3adsp1800_mmu.c |  7 +++---
+>>  hw/mips/boston.c                         | 30 ++++++++++++------------
+>>  hw/mips/mips_fulong2e.c                  |  7 +++---
+>>  hw/mips/mips_malta.c                     | 23 ++++++++++--------
+>>  hw/mips/mips_r4k.c                       | 15 ++++++------
+>>  hw/misc/aspeed_sdmc.c                    |  9 +++----
+>>  hw/misc/auxbus.c                         |  3 ++-
+>>  hw/misc/edu.c                            |  3 ++-
+>>  hw/misc/imx7_gpr.c                       |  3 ++-
+>>  hw/misc/ivshmem.c                        |  3 ++-
+>>  hw/misc/mips_itu.c                       |  3 ++-
+>>  hw/misc/omap_gpmc.c                      |  5 ++--
+>>  hw/net/e1000e.c                          |  7 +++---
+>>  hw/net/e1000x_common.c                   |  3 ++-
+>>  hw/net/eepro100.c                        |  3 +--
+>>  hw/nios2/boot.c                          |  6 ++---
+>>  hw/nvram/spapr_nvram.c                   | 10 ++++----
+>>  hw/pci-host/designware.c                 |  3 ++-
+>>  hw/pci-host/gpex.c                       |  3 ++-
+>>  hw/pci-host/piix.c                       |  5 ++--
+>>  hw/pci-host/prep.c                       |  3 ++-
+>>  hw/pci-host/q35.c                        | 17 +++++++-------
+>>  hw/pci-host/xilinx-pcie.c                |  5 ++--
+>>  hw/ppc/e500.c                            | 13 +++++-----
+>>  hw/ppc/e500plat.c                        |  3 ++-
+>>  hw/ppc/mac_newworld.c                    |  1 -
+>>  hw/ppc/mac_oldworld.c                    |  9 ++++---
+>>  hw/ppc/pnv.c                             |  6 ++---
+>>  hw/ppc/ppc405_boards.c                   |  9 +++----
+>>  hw/ppc/ppc405_uc.c                       |  7 +++---
+>>  hw/ppc/ppc440_bamboo.c                   |  6 +++--
+>>  hw/ppc/ppc440_uc.c                       | 28 +++++++++++-----------
+>>  hw/ppc/ppc4xx_devs.c                     | 22 +++++++++--------
+>>  hw/ppc/ppce500_spin.c                    |  3 ++-
+>>  hw/ppc/prep.c                            |  6 ++---
+>>  hw/ppc/rs6000_mc.c                       | 13 +++++-----
+>>  hw/ppc/sam460ex.c                        | 20 +++++++++-------
+>>  hw/ppc/spapr.c                           | 12 +++++-----
+>>  hw/ppc/spapr_rtas.c                      |  2 +-
+>>  hw/ppc/virtex_ml507.c                    |  7 +++---
+>>  hw/riscv/virt.c                          |  3 ++-
+>>  hw/s390x/s390-skeys.c                    |  3 ++-
+>>  hw/s390x/s390-stattrib.c                 |  3 ++-
+>>  hw/s390x/sclp.c                          |  4 ++--
+>>  hw/scsi/scsi-disk.c                      |  9 +++----
+>>  hw/sd/sd.c                               |  8 +++----
+>>  hw/sd/sdhci.c                            |  6 ++---
+>>  hw/sh4/r2d.c                             |  3 ++-
+>>  hw/smbios/smbios.c                       | 15 +++++-------
+>>  hw/sparc/leon3.c                         |  9 +++----
+>>  hw/sparc/sun4m.c                         |  9 ++++---
+>>  hw/sparc64/niagara.c                     |  3 ++-
+>>  hw/sparc64/sun4u.c                       |  4 ++--
+>>  hw/ssi/aspeed_smc.c                      | 29 ++++++++++++-----------
+>>  hw/tricore/tricore_testboard.c           | 13 +++++-----
+>>  hw/usb/ccid-card-passthru.c              |  5 ++--
+>>  hw/usb/combined-packet.c                 |  3 ++-
+>>  hw/usb/dev-smartcard-reader.c            |  3 ++-
+>>  hw/usb/redirect.c                        |  3 ++-
+>>  hw/vfio/pci-quirks.c                     |  9 +++----
+>>  hw/vfio/pci.c                            |  3 ++-
+>>  hw/xenpv/xen_domainbuild.c               | 13 +++++-----
+>>  hw/xtensa/xtfpga.c                       |  5 ++--
+>>  target/i386/cpu.c                        |  4 +---
+>>  tests/test-cutils.c                      | 18 +++++++-------
+>>  tests/test-keyval.c                      |  6 ++---
+>>  tests/test-qemu-opts.c                   |  7 +++---
+>>  scripts/checkpatch.pl                    |  1 +
+>>  135 files changed, 533 insertions(+), 431 deletions(-)
+>>  create mode 100644 include/qemu/units.h
+>>
+>> -- 
+>> 2.17.1
+> 

@@ -1,192 +1,763 @@
-Received: by 10.28.4.212 with SMTP id 203csp2908207wme;
-        Mon, 16 Apr 2018 10:35:20 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx483EBU2FKnl3vwsYxQldvktDfUbrAwimfHFPIdG5Eu7juhx9rYPJ2Ifqwg/8Ba3QsDkKBB3
-X-Received: by 10.129.61.15 with SMTP id k15mr4797946ywa.257.1523900120064;
-        Mon, 16 Apr 2018 10:35:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523900120; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3519006wrq;
+        Sun, 10 Jun 2018 19:28:03 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKSx6eFNyTHc1tYlVvdlxmj+iI97OJIoID8no1OQKwMvUeDSzWDvGp+MYxMcJwg4Y04lWhT
+X-Received: by 2002:a0c:8f12:: with SMTP id z18-v6mr13495087qvd.222.1528684083350;
+        Sun, 10 Jun 2018 19:28:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528684083; cv=none;
         d=google.com; s=arc-20160816;
-        b=PpVVTmMT75SxQCnqBTRWn5YOAh749cY+XDoY5yWGCqKebwu+JNnh/8IcmpDCNLI0Uf
-         YzQoodk577tdymr7yj6L/03L4yR4NNbWSWrRNRKBE6BIHLDYUT0onirxovyCVfVIPKaA
-         1S6YWVexJyLe5ee+FK6+WrQ5F/US8aBaDNyU/QG446KSjfibDnWe8wVuS2ZPad4l8dWj
-         jh3oGHK/sy5Q32FIFG6zsgnysn9Uiq1fpXNmIDgJb7HFH0v8ucOa0Ru4B58FINbJnQoD
-         z2EiO1UjOGWr61goJUUJa9nHZuslb5qrGbBgUanUYa/9TWW1t2XeNC5h2S4diXbxQQ6G
-         qPwQ==
+        b=GugoPYXTxpVZebJC5iZEnmZ2697Ws8jxHDMyn1HsNRCqdPxUd2WfQt8SagDp65d2u3
+         9C62omZt0ynqAOcQDxlumq+SEKU2S2PMyzUyV94RwI6Gljx4udEEuywWCDiUOUinwXOf
+         N9XVBQ2VYALgw2AKxdl/A2G8PfCra1Dzef/XVB+ly5L7T/PAS2e0XFBJWn04WGv7HE8o
+         3ytZ1eXhWs9R0q4qazNQ1Zu7l+vMbU3UGU79D6kC0D34YqXaOPYJHfC2HnaUCyc7MoSO
+         SknRE5pq9EDbUDGN0lHzB5EUMig1LNHx3ommz9L/9yK5Tu7aAF+oRWCUdUsXngPhNy1E
+         Hr4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=dXE+2nYss3TRBwyTjdLcP/Z3HPDQa/qDITdWHBDril0=;
-        b=eKK0e/SeA1XJkW0eVVtMdFz2WTPJK5ts3avmZ03QJn1Orq3Njj+O2Pg/+lAKcHco12
-         2k6opie/wg2dqbfJVzKzUDi5udIMiedUjvLE3ipBu9Fb85RZ8caxHdegLhyP6YeGamkc
-         xvnvqof+LSf/aIrdyKMnyY/3PErpv0b0/FVXJjnSa++CtdqFORsqv8P5BFH8sUiNKXo/
-         YVdPGJXfrKVOx/Hw/1Raij42jSBvhpt6KW5aABPqkLDwhyU1McXSD7h/ANaUFgLjb7rg
-         yu6v5rEt1V41/AMtG3Xu/iMaq+p8AoIBskUvUjoLwLz+eOHbEfTu9vq5OvuUainUq5y4
-         cbRw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=LIzCyFfttTp0aeKUbVt/UDhO7RoILF32cKx4dgmIfA8=;
+        b=vfmAWlBKN6Y5vLKPCjU18D6ATo1x10SuZ8IcJPoIxHJHnjbuAjVlphYuh1oA/jbThr
+         aJAhyIQ5OKKxkU2JuvIu0mKZBJ7dONDnxbKH1wsKwQoP2Fypvs+sak/VWyGu4q3fcHu/
+         Hylm5YUGGVc/EyEEmfoanz5y+VjgZ97gn47oeZgiGKRufcPNvgZbcu3bdeENC5YnVE21
+         ScN+QYTihXatE38V9vIqCFr0ViRb7BoMNuoQHq8W0HpFZr2xjTg/gTL+ch5VmUlZX0RK
+         m9aR2HpbiU89VVZ7s9QnB9L9IdoTGceHOfk9KtK4ffNyosCSNq5Tgff9NCLNoxPj68nP
+         b1Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=H+baVAhC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=oEd4Jvkc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f4si5133320qkj.380.2018.04.16.10.35.19
+        by mx.google.com with ESMTPS id e6-v6si2382862qvj.61.2018.06.10.19.28.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Apr 2018 10:35:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 10 Jun 2018 19:28:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=H+baVAhC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60550 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=oEd4Jvkc;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Received: from localhost ([::1]:46087 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f882B-00013L-IB
-	for alex.bennee@linaro.org; Mon, 16 Apr 2018 13:35:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57499)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fSCYs-0003oP-Ry
+	for alex.bennee@linaro.org; Sun, 10 Jun 2018 22:28:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54068)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f881x-00011A-4W
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 13:35:06 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1fSCX4-0002jm-Hw
+	for qemu-devel@nongnu.org; Sun, 10 Jun 2018 22:26:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f881w-0006zX-0w
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 13:35:05 -0400
-Received: from mail-ot0-x242.google.com ([2607:f8b0:4003:c0f::242]:44097)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f881v-0006z5-SH
-	for qemu-arm@nongnu.org; Mon, 16 Apr 2018 13:35:03 -0400
-Received: by mail-ot0-x242.google.com with SMTP id p33-v6so18282848otp.11
-	for <qemu-arm@nongnu.org>; Mon, 16 Apr 2018 10:35:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=dXE+2nYss3TRBwyTjdLcP/Z3HPDQa/qDITdWHBDril0=;
-	b=H+baVAhC9cnLCpSLJotf4xjXdoQqL7iyA8HRTlVsZEyY1Jz3/XHwQTpf7yI8Xc45Cw
-	oO3SKII3yz/XfCrx2iars4HGrM45aKiIRv4hrzl98MljSwOtrp3ONK1xp3BxJ5WxWait
-	/j07EsiABHsdxquoUysAr+YnIW31NV+a3Q49s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=dXE+2nYss3TRBwyTjdLcP/Z3HPDQa/qDITdWHBDril0=;
-	b=nfb8v4FUl7hf1/OyUsYBtbb3UffQSNB5HfNwOl9yiYZG+ssUCLR3ANPp3ws/1aeX5M
-	61jcQFUOuNS0PojwoJTgrURaWvz+Zdu+MNaJ58jSV+vqrv2Jky80qgNXwuVluVm2glEc
-	18wOjR02qD7dJUvo/DWJXgvpaQ5y9iCT6NW23ggADakLeeW7m5H3GAmxucjlu9P/MBTs
-	NLvEJuzLvh2lKPnWmWhkWwRoUE5UklBudnUt9siGMFrbAlNpbsptNDafZZnPyzuazREN
-	T8EHL/1y+UDDzSRSXcXpzWlju6x/T9mUuM6jQ2onSXOdEzc5Am/JdKjcmvVkT7jOTWrE
-	6+4Q==
-X-Gm-Message-State: ALQs6tDrr20d+DhyWbpIDvLabUGl9qMiws9wmeRp4ttJiCibozq5D90r
-	U145N4gcoKEeI+i5g8vwRwY9bB5xCHLcj0oJcj0Gpg==
-X-Received: by 2002:a9d:4a90:: with SMTP id
-	i16-v6mr4997120otf.294.1523900103202; 
-	Mon, 16 Apr 2018 10:35:03 -0700 (PDT)
+	(envelope-from <dgibson@ozlabs.org>) id 1fSCX2-00080s-03
+	for qemu-devel@nongnu.org; Sun, 10 Jun 2018 22:26:10 -0400
+Received: from ozlabs.org ([203.11.71.1]:60575)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1fSCWu-0007qH-Dt; Sun, 10 Jun 2018 22:26:01 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 413xhL41VRz9ryk; Mon, 11 Jun 2018 12:25:54 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1528683954;
+	bh=ZYMqED4Jp4YqDRabqGRdkB1oYA0UCS1CzcpsPo4g7QM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oEd4Jvkcgc6MvqSoNYzVkYRQGD3ve1MY4cju9iJ75LbuKb7oCHVbR+1IOYUnZxKGX
+	SPkK/o+lJxtQKv2nWjpJoJBAdI9RnlhnswSSVPETmJH+YLFubSUPrpjOmVxJj9W9gv
+	32ai4sFj/Bv7VQmAmR6pw613RQR+AoR3c/BcGxhY=
+Date: Mon, 11 Jun 2018 12:11:46 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Message-ID: <20180611021146.GD2737@umbus.fritz.box>
+References: <20180611011501.10235-1-f4bug@amsat.org>
+	<20180611011501.10235-6-f4bug@amsat.org>
 MIME-Version: 1.0
-Received: by 2002:a9d:2286:0:0:0:0:0 with HTTP; Mon, 16 Apr 2018 10:34:42
-	-0700 (PDT)
-In-Reply-To: <1523551221-11612-5-git-send-email-imammedo@redhat.com>
-References: <1523551221-11612-1-git-send-email-imammedo@redhat.com>
-	<1523551221-11612-5-git-send-email-imammedo@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Apr 2018 18:34:42 +0100
-Message-ID: <CAFEAcA94GLNWcG=cMkg93hfqMZ7UdE9Vsx01FP_o6J5a_jRzBQ@mail.gmail.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::242
-Subject: Re: [Qemu-arm] [PATCH for-2.13 4/4] arm/boot: split load_dtb() from
- arm_load_kernel()
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="SFyWQ0h3ruR435lw"
+Content-Disposition: inline
+In-Reply-To: <20180611011501.10235-6-f4bug@amsat.org>
+User-Agent: Mutt/1.10.0 (2018-05-17)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-devel] [PATCH v4 05/40] hw: Use IEC binary prefix
+ definitions from "qemu/units.h"
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QwKrJ5ZZ0K5M
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>,
+	qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Paul Burton <paul.burton@mips.com>, "open list:ARM" <qemu-arm@nongnu.org>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cTJbd3qyezOl
 
-On 12 April 2018 at 17:40, Igor Mammedov <imammedo@redhat.com> wrote:
-> load_dtb() depends on arm_load_kernel() to figure out place
-> in RAM where it should be loaded, but it's not required for
-> arm_load_kernel() to work. Sometimes it's neccesary for
-> devices added with -device/device_add to be enumerated in
-> DTB as well, which's lead to [1] and surrounding commits to
-> add 2 more machine_done notifiers with non obvious ordering
-> to make dynamic sysbus devices initialization happen in
-> the right order.
->
-> However instead of moving whole arm_load_kernel() in to
-> machine_done, it's sufficient to move only load_dtb() into
-> virt_machine_done() notifier and remove ArmLoadKernelNotifier/
-> /PlatformBusFDTNotifierParams notifiers, which saves us ~90LOC
-> and simplifies code flow quite a bit.
-> Later would allow to consolidate DTB generation within one
-> function for 'mach-virt' board and make it reentrant so it
-> could generate updated DTB in device hotplug secenarios.
->
-> While at it rename load_dtb() to arm_load_dtb() since it's
-> public now.
->
-> Add additional field skip_dtb_autoload to struct arm_boot_info
-> to allow manual DTB load later in mach-virt and to avoid touching
-> all other boards to explicitly call arm_load_dtb().
->
->  1) (ac9d32e hw/arm/boot: arm_load_kernel implemented as a machine init done notifier)
->
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+
+--SFyWQ0h3ruR435lw
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Jun 10, 2018 at 10:14:26PM -0300, Philippe Mathieu-Daud=E9 wrote:
+> Code change produced with:
+>=20
+>   $ git ls-files | egrep '\.[ch]$' | \
+>     xargs sed -i -e 's/\(\W[KMGTPE]\)_BYTE/\1iB/g'
+>=20
+> Suggested-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+
+ppc parts
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  include/hw/arm/arm.h        | 37 ++++++++++++++++++-------
->  include/hw/arm/sysbus-fdt.h | 37 +++++--------------------
->  hw/arm/boot.c               | 67 +++++++++++----------------------------------
->  hw/arm/sysbus-fdt.c         | 64 ++++---------------------------------------
->  hw/arm/virt.c               | 64 ++++++++++++++++++++-----------------------
->  5 files changed, 86 insertions(+), 183 deletions(-)
->
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index 188d18b..312e533 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -39,15 +39,6 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
->   */
->  void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size);
->
-> -/*
-> - * struct used as a parameter of the arm_load_kernel machine init
-> - * done notifier
-> - */
-> -typedef struct {
-> -    Notifier notifier; /* actual notifier */
-> -    ARMCPU *cpu; /* handle to the first cpu object */
-> -} ArmLoadKernelNotifier;
+>  include/qemu/cutils.h  |  8 +-------
+>  hw/arm/msf2-soc.c      |  4 ++--
+>  hw/arm/msf2-som.c      |  6 +++---
+>  hw/core/loader-fit.c   |  3 ++-
+>  hw/core/machine.c      |  2 +-
+>  hw/display/sm501.c     | 14 +++++++-------
+>  hw/hppa/machine.c      |  2 +-
+>  hw/mips/boston.c       | 28 ++++++++++++++--------------
+>  hw/ppc/pnv.c           |  4 ++--
+>  hw/ppc/ppc440_uc.c     | 26 +++++++++++++-------------
+>  hw/ppc/prep.c          |  2 +-
+>  hw/ppc/sam460ex.c      |  2 +-
+>  hw/ppc/spapr.c         | 10 +++++-----
+>  hw/ppc/spapr_rtas.c    |  2 +-
+>  hw/sd/sd.c             |  4 ++--
+>  hw/sd/sdhci.c          |  2 +-
+>  tests/test-cutils.c    | 18 +++++++++---------
+>  tests/test-keyval.c    |  6 +++---
+>  tests/test-qemu-opts.c |  7 +++----
+>  19 files changed, 72 insertions(+), 78 deletions(-)
+>=20
+> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+> index a663340b23..056e6629bb 100644
+> --- a/include/qemu/cutils.h
+> +++ b/include/qemu/cutils.h
+> @@ -2,6 +2,7 @@
+>  #define QEMU_CUTILS_H
+> =20
+>  #include "qemu/fprintf-fn.h"
+> +#include "qemu/units.h"
+> =20
+>  /**
+>   * pstrcpy:
+> @@ -147,13 +148,6 @@ int qemu_strtosz(const char *nptr, char **end, uint6=
+4_t *result);
+>  int qemu_strtosz_MiB(const char *nptr, char **end, uint64_t *result);
+>  int qemu_strtosz_metric(const char *nptr, char **end, uint64_t *result);
+> =20
+> -#define K_BYTE     (1ULL << 10)
+> -#define M_BYTE     (1ULL << 20)
+> -#define G_BYTE     (1ULL << 30)
+> -#define T_BYTE     (1ULL << 40)
+> -#define P_BYTE     (1ULL << 50)
+> -#define E_BYTE     (1ULL << 60)
 > -
->  /* arm_boot.c */
->  struct arm_boot_info {
->      uint64_t ram_size;
-> @@ -56,6 +47,9 @@ struct arm_boot_info {
->      const char *initrd_filename;
->      const char *dtb_filename;
->      hwaddr loader_start;
-> +    hwaddr dtb_start;
-> +    hwaddr dtb_limit;
-> +    bool skip_dtb_autoload;
+>  /* used to print char* safely */
+>  #define STR_OR_NULL(str) ((str) ? (str) : "null")
+> =20
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index 75c44adf7d..530e461c42 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -40,14 +40,14 @@
+> =20
+>  #define SRAM_BASE_ADDRESS     0x20000000
+> =20
+> -#define MSF2_ENVM_MAX_SIZE    (512 * K_BYTE)
+> +#define MSF2_ENVM_MAX_SIZE    (512 * KiB)
+> =20
+>  /*
+>   * eSRAM max size is 80k without SECDED(Single error correction and
+>   * dual error detection) feature and 64k with SECDED.
+>   * We do not support SECDED now.
+>   */
+> -#define MSF2_ESRAM_MAX_SIZE       (80 * K_BYTE)
+> +#define MSF2_ESRAM_MAX_SIZE       (80 * KiB)
+> =20
+>  static const uint32_t spi_addr[MSF2_NUM_SPIS] =3D { 0x40001000 , 0x40011=
+000 };
+>  static const uint32_t uart_addr[MSF2_NUM_UARTS] =3D { 0x40000000 , 0x400=
+10000 };
+> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+> index 0795a3a3a1..ed533bbde1 100644
+> --- a/hw/arm/msf2-som.c
+> +++ b/hw/arm/msf2-som.c
+> @@ -33,10 +33,10 @@
+>  #include "cpu.h"
+> =20
+>  #define DDR_BASE_ADDRESS      0xA0000000
+> -#define DDR_SIZE              (64 * M_BYTE)
+> +#define DDR_SIZE              (64 * MiB)
+> =20
+> -#define M2S010_ENVM_SIZE      (256 * K_BYTE)
+> -#define M2S010_ESRAM_SIZE     (64 * K_BYTE)
+> +#define M2S010_ENVM_SIZE      (256 * KiB)
+> +#define M2S010_ESRAM_SIZE     (64 * KiB)
+> =20
+>  static void emcraft_sf2_s2s010_init(MachineState *machine)
+>  {
+> diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
+> index 6387854b54..447f60857d 100644
+> --- a/hw/core/loader-fit.c
+> +++ b/hw/core/loader-fit.c
+> @@ -18,6 +18,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "exec/memory.h"
+>  #include "hw/loader.h"
+>  #include "hw/loader-fit.h"
+> @@ -194,7 +195,7 @@ static int fit_load_fdt(const struct fit_loader *ldr,=
+ const void *itb,
+> =20
+>      err =3D fit_image_addr(itb, img_off, "load", &load_addr);
+>      if (err =3D=3D -ENOENT) {
+> -        load_addr =3D ROUND_UP(kernel_end, 64 * K_BYTE) + (10 * M_BYTE);
+> +        load_addr =3D ROUND_UP(kernel_end, 64 * KiB) + (10 * MiB);
+>      } else if (err) {
+>          ret =3D err;
+>          goto out;
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 617e5f8d75..ccf3a4b9c7 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -522,7 +522,7 @@ static void machine_class_init(ObjectClass *oc, void =
+*data)
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> =20
+>      /* Default 128 MB as guest ram size */
+> -    mc->default_ram_size =3D 128 * M_BYTE;
+> +    mc->default_ram_size =3D 128 * MiB;
+>      mc->rom_file_has_mr =3D true;
+> =20
+>      /* numa node memory size aligned on 8MB by default.
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index e47be99451..1c6c9445c5 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -452,12 +452,12 @@
+> =20
+>  /* SM501 local memory size taken from "linux/drivers/mfd/sm501.c" */
+>  static const uint32_t sm501_mem_local_size[] =3D {
+> -    [0] =3D 4 * M_BYTE,
+> -    [1] =3D 8 * M_BYTE,
+> -    [2] =3D 16 * M_BYTE,
+> -    [3] =3D 32 * M_BYTE,
+> -    [4] =3D 64 * M_BYTE,
+> -    [5] =3D 2 * M_BYTE,
+> +    [0] =3D 4 * MiB,
+> +    [1] =3D 8 * MiB,
+> +    [2] =3D 16 * MiB,
+> +    [3] =3D 32 * MiB,
+> +    [4] =3D 64 * MiB,
+> +    [5] =3D 2 * MiB,
+>  };
+>  #define get_local_mem_size(s) sm501_mem_local_size[(s)->local_mem_size_i=
+ndex]
+> =20
+> @@ -1826,7 +1826,7 @@ static void sm501_realize_pci(PCIDevice *dev, Error=
+ **errp)
+>  }
+> =20
+>  static Property sm501_pci_properties[] =3D {
+> -    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * M_BYT=
+E),
+> +    DEFINE_PROP_UINT32("vram-size", SM501PCIState, vram_size, 64 * MiB),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+> =20
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index aba269bb85..2ba26962f9 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -275,7 +275,7 @@ static void machine_hppa_machine_init(MachineClass *m=
+c)
+>      mc->max_cpus =3D HPPA_MAX_CPUS;
+>      mc->default_cpus =3D 1;
+>      mc->is_default =3D 1;
+> -    mc->default_ram_size =3D 512 * M_BYTE;
+> +    mc->default_ram_size =3D 512 * MiB;
+>      mc->default_boot_order =3D "cd";
+>  }
+> =20
+> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+> index 52cce19766..512c60c03e 100644
+> --- a/hw/mips/boston.c
+> +++ b/hw/mips/boston.c
+> @@ -200,7 +200,7 @@ static uint64_t boston_platreg_read(void *opaque, hwa=
+ddr addr,
+>          val |=3D PLAT_BUILD_CFG_PCIE2_EN;
+>          return val;
+>      case PLAT_DDR_CFG:
+> -        val =3D s->mach->ram_size / G_BYTE;
+> +        val =3D s->mach->ram_size / GiB;
+>          assert(!(val & ~PLAT_DDR_CFG_SIZE));
+>          val |=3D PLAT_DDR_CFG_MHZ;
+>          return val;
+> @@ -355,7 +355,7 @@ static const void *boston_fdt_filter(void *opaque, co=
+nst void *fdt_orig,
+>          return NULL;
+>      }
+> =20
+> -    ram_low_sz =3D MIN(256 * M_BYTE, machine->ram_size);
+> +    ram_low_sz =3D MIN(256 * MiB, machine->ram_size);
+>      ram_high_sz =3D machine->ram_size - ram_low_sz;
+>      qemu_fdt_setprop_sized_cells(fdt, "/memory@0", "reg",
+>                                   1, 0x00000000, 1, ram_low_sz,
+> @@ -436,8 +436,8 @@ static void boston_mach_init(MachineState *machine)
+>      int fw_size, fit_err;
+>      bool is_64b;
+> =20
+> -    if ((machine->ram_size % G_BYTE) ||
+> -        (machine->ram_size > (2 * G_BYTE))) {
+> +    if ((machine->ram_size % GiB) ||
+> +        (machine->ram_size > (2 * GiB))) {
+>          error_report("Memory size must be 1GB or 2GB");
+>          exit(1);
+>      }
+> @@ -472,7 +472,7 @@ static void boston_mach_init(MachineState *machine)
+> =20
+>      flash =3D  g_new(MemoryRegion, 1);
+>      memory_region_init_rom_nomigrate(flash, NULL,
+> -                                     "boston.flash", 128 * M_BYTE, &err);
+> +                                     "boston.flash", 128 * MiB, &err);
+>      memory_region_add_subregion_overlap(sys_mem, 0x18000000, flash, 0);
+> =20
+>      ddr =3D g_new(MemoryRegion, 1);
+> @@ -482,22 +482,22 @@ static void boston_mach_init(MachineState *machine)
+> =20
+>      ddr_low_alias =3D g_new(MemoryRegion, 1);
+>      memory_region_init_alias(ddr_low_alias, NULL, "boston_low.ddr",
+> -                             ddr, 0, MIN(machine->ram_size, (256 * M_BYT=
+E)));
+> +                             ddr, 0, MIN(machine->ram_size, (256 * MiB))=
+);
+>      memory_region_add_subregion_overlap(sys_mem, 0, ddr_low_alias, 0);
+> =20
+>      xilinx_pcie_init(sys_mem, 0,
+> -                     0x10000000, 32 * M_BYTE,
+> -                     0x40000000, 1 * G_BYTE,
+> +                     0x10000000, 32 * MiB,
+> +                     0x40000000, 1 * GiB,
+>                       get_cps_irq(s->cps, 2), false);
+> =20
+>      xilinx_pcie_init(sys_mem, 1,
+> -                     0x12000000, 32 * M_BYTE,
+> -                     0x20000000, 512 * M_BYTE,
+> +                     0x12000000, 32 * MiB,
+> +                     0x20000000, 512 * MiB,
+>                       get_cps_irq(s->cps, 1), false);
+> =20
+>      pcie2 =3D xilinx_pcie_init(sys_mem, 2,
+> -                             0x14000000, 32 * M_BYTE,
+> -                             0x16000000, 1 * M_BYTE,
+> +                             0x14000000, 32 * MiB,
+> +                             0x16000000, 1 * MiB,
+>                               get_cps_irq(s->cps, 0), true);
+> =20
+>      platreg =3D g_new(MemoryRegion, 1);
+> @@ -527,7 +527,7 @@ static void boston_mach_init(MachineState *machine)
+> =20
+>      if (machine->firmware) {
+>          fw_size =3D load_image_targphys(machine->firmware,
+> -                                      0x1fc00000, 4 * M_BYTE);
+> +                                      0x1fc00000, 4 * MiB);
+>          if (fw_size =3D=3D -1) {
+>              error_printf("unable to load firmware image '%s'\n",
+>                            machine->firmware);
+> @@ -553,7 +553,7 @@ static void boston_mach_class_init(MachineClass *mc)
+>      mc->desc =3D "MIPS Boston";
+>      mc->init =3D boston_mach_init;
+>      mc->block_default_type =3D IF_IDE;
+> -    mc->default_ram_size =3D 1 * G_BYTE;
+> +    mc->default_ram_size =3D 1 * GiB;
+>      mc->max_cpus =3D 16;
+>      mc->default_cpu_type =3D MIPS_CPU_TYPE_NAME("I6400");
+>  }
+> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+> index 0314881316..bdb6f63d2c 100644
+> --- a/hw/ppc/pnv.c
+> +++ b/hw/ppc/pnv.c
+> @@ -559,7 +559,7 @@ static void pnv_init(MachineState *machine)
+>      char *chip_typename;
+> =20
+>      /* allocate RAM */
+> -    if (machine->ram_size < (1 * G_BYTE)) {
+> +    if (machine->ram_size < (1 * GiB)) {
+>          warn_report("skiboot may not work with < 1GB of RAM");
+>      }
+> =20
+> @@ -1096,7 +1096,7 @@ static void pnv_machine_class_init(ObjectClass *oc,=
+ void *data)
+>                                        * storage */
+>      mc->no_parallel =3D 1;
+>      mc->default_boot_order =3D NULL;
+> -    mc->default_ram_size =3D 1 * G_BYTE;
+> +    mc->default_ram_size =3D 1 * GiB;
+>      xic->icp_get =3D pnv_icp_get;
+>      xic->ics_get =3D pnv_ics_get;
+>      xic->ics_resend =3D pnv_ics_resend;
+> diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
+> index 123f4ac09d..b5b31b4b9b 100644
+> --- a/hw/ppc/ppc440_uc.c
+> +++ b/hw/ppc/ppc440_uc.c
+> @@ -215,13 +215,13 @@ void ppc4xx_l2sram_init(CPUPPCState *env)
+>      l2sram =3D g_malloc0(sizeof(*l2sram));
+>      /* XXX: Size is 4*64kB for 460ex, cf. U-Boot, ppc4xx-isram.h */
+>      memory_region_init_ram(&l2sram->bank[0], NULL, "ppc4xx.l2sram_bank0",
+> -                           64 * K_BYTE, &error_abort);
+> +                           64 * KiB, &error_abort);
+>      memory_region_init_ram(&l2sram->bank[1], NULL, "ppc4xx.l2sram_bank1",
+> -                           64 * K_BYTE, &error_abort);
+> +                           64 * KiB, &error_abort);
+>      memory_region_init_ram(&l2sram->bank[2], NULL, "ppc4xx.l2sram_bank2",
+> -                           64 * K_BYTE, &error_abort);
+> +                           64 * KiB, &error_abort);
+>      memory_region_init_ram(&l2sram->bank[3], NULL, "ppc4xx.l2sram_bank3",
+> -                           64 * K_BYTE, &error_abort);
+> +                           64 * KiB, &error_abort);
+>      qemu_register_reset(&l2sram_reset, l2sram);
+>      ppc_dcr_register(env, DCR_L2CACHE_CFG,
+>                       l2sram, &dcr_read_l2sram, &dcr_write_l2sram);
+> @@ -513,28 +513,28 @@ static uint32_t sdram_bcr(hwaddr ram_base, hwaddr r=
+am_size)
+>      uint32_t bcr;
+> =20
+>      switch (ram_size) {
+> -    case (8 * M_BYTE):
+> +    case (8 * MiB):
+>          bcr =3D 0xffc0;
+>          break;
+> -    case (16 * M_BYTE):
+> +    case (16 * MiB):
+>          bcr =3D 0xff80;
+>          break;
+> -    case (32 * M_BYTE):
+> +    case (32 * MiB):
+>          bcr =3D 0xff00;
+>          break;
+> -    case (64 * M_BYTE):
+> +    case (64 * MiB):
+>          bcr =3D 0xfe00;
+>          break;
+> -    case (128 * M_BYTE):
+> +    case (128 * MiB):
+>          bcr =3D 0xfc00;
+>          break;
+> -    case (256 * M_BYTE):
+> +    case (256 * MiB):
+>          bcr =3D 0xf800;
+>          break;
+> -    case (512 * M_BYTE):
+> +    case (512 * MiB):
+>          bcr =3D 0xf000;
+>          break;
+> -    case (1 * G_BYTE):
+> +    case (1 * GiB):
+>          bcr =3D 0xe000;
+>          break;
+>      default:
+> @@ -561,7 +561,7 @@ static target_ulong sdram_size(uint32_t bcr)
+>      if (sh =3D=3D 0) {
+>          size =3D -1;
+>      } else {
+> -        size =3D 8 * M_BYTE * sh;
+> +        size =3D 8 * MiB * sh;
+>      }
+> =20
+>      return size;
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index a1e7219db6..a8d26f74fc 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -886,7 +886,7 @@ static void ibm_40p_machine_init(MachineClass *mc)
+>      mc->init =3D ibm_40p_init;
+>      mc->max_cpus =3D 1;
+>      mc->pci_allow_0_address =3D true;
+> -    mc->default_ram_size =3D 128 * M_BYTE;
+> +    mc->default_ram_size =3D 128 * MiB;
+>      mc->block_default_type =3D IF_SCSI;
+>      mc->default_boot_order =3D "c";
+>      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("604");
+> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+> index bdc53d2603..2a98c10664 100644
+> --- a/hw/ppc/sam460ex.c
+> +++ b/hw/ppc/sam460ex.c
+> @@ -597,7 +597,7 @@ static void sam460ex_machine_init(MachineClass *mc)
+>      mc->desc =3D "aCube Sam460ex";
+>      mc->init =3D sam460ex_init;
+>      mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("460exb");
+> -    mc->default_ram_size =3D 512 * M_BYTE;
+> +    mc->default_ram_size =3D 512 * MiB;
+>  }
+> =20
+>  DEFINE_MACHINE("sam460ex", sam460ex_machine_init)
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 2375cbee12..3ba3bc8b6c 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -2317,7 +2317,7 @@ static void spapr_validate_node_memory(MachineState=
+ *machine, Error **errp)
+>          error_setg(errp, "Memory size 0x" RAM_ADDR_FMT
+>                     " is not aligned to %llu MiB",
+>                     machine->ram_size,
+> -                   SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
+> +                   SPAPR_MEMORY_BLOCK_SIZE / MiB);
+>          return;
+>      }
+> =20
+> @@ -2325,7 +2325,7 @@ static void spapr_validate_node_memory(MachineState=
+ *machine, Error **errp)
+>          error_setg(errp, "Maximum memory size 0x" RAM_ADDR_FMT
+>                     " is not aligned to %llu MiB",
+>                     machine->ram_size,
+> -                   SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
+> +                   SPAPR_MEMORY_BLOCK_SIZE / MiB);
+>          return;
+>      }
+> =20
+> @@ -2335,7 +2335,7 @@ static void spapr_validate_node_memory(MachineState=
+ *machine, Error **errp)
+>                         "Node %d memory size 0x%" PRIx64
+>                         " is not aligned to %llu MiB",
+>                         i, numa_info[i].node_mem,
+> -                       SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
+> +                       SPAPR_MEMORY_BLOCK_SIZE / MiB);
+>              return;
+>          }
+>      }
+> @@ -3195,7 +3195,7 @@ static void spapr_memory_pre_plug(HotplugHandler *h=
+otplug_dev, DeviceState *dev,
+> =20
+>      if (size % SPAPR_MEMORY_BLOCK_SIZE) {
+>          error_setg(errp, "Hotplugged memory size must be a multiple of "
+> -                      "%lld MB", SPAPR_MEMORY_BLOCK_SIZE / M_BYTE);
+> +                      "%lld MB", SPAPR_MEMORY_BLOCK_SIZE / MiB);
+>          return;
+>      }
+> =20
+> @@ -3975,7 +3975,7 @@ static void spapr_machine_class_init(ObjectClass *o=
+c, void *data)
+>      mc->max_cpus =3D 1024;
+>      mc->no_parallel =3D 1;
+>      mc->default_boot_order =3D "";
+> -    mc->default_ram_size =3D 512 * M_BYTE;
+> +    mc->default_ram_size =3D 512 * MiB;
+>      mc->kvm_type =3D spapr_kvm_type;
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SPAPR_PCI_HOST_BRIDG=
+E);
+>      mc->pci_allow_0_address =3D true;
+> diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+> index 7f9738daed..f32740b947 100644
+> --- a/hw/ppc/spapr_rtas.c
+> +++ b/hw/ppc/spapr_rtas.c
+> @@ -241,7 +241,7 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU =
+*cpu,
+>                                            "DesProcs=3D%d,"
+>                                            "MaxPlatProcs=3D%d",
+>                                            max_cpus,
+> -                                          current_machine->ram_size / M_=
+BYTE,
+> +                                          current_machine->ram_size / Mi=
+B,
+>                                            smp_cpus,
+>                                            max_cpus);
+>          ret =3D sysparm_st(buffer, length, param_val, strlen(param_val) =
++ 1);
+> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> index 540bccb8d1..9a16b768ed 100644
+> --- a/hw/sd/sd.c
+> +++ b/hw/sd/sd.c
+> @@ -305,7 +305,7 @@ static void sd_ocr_powerup(void *opaque)
+>      /* card power-up OK */
+>      sd->ocr =3D FIELD_DP32(sd->ocr, OCR, CARD_POWER_UP, 1);
+> =20
+> -    if (sd->size > 1 * G_BYTE) {
+> +    if (sd->size > 1 * GiB) {
+>          sd->ocr =3D FIELD_DP32(sd->ocr, OCR, CARD_CAPACITY, 1);
+>      }
+>  }
+> @@ -377,7 +377,7 @@ static void sd_set_csd(SDState *sd, uint64_t size)
+>      uint32_t sectsize =3D (1 << (SECTOR_SHIFT + 1)) - 1;
+>      uint32_t wpsize =3D (1 << (WPGROUP_SHIFT + 1)) - 1;
+> =20
+> -    if (size <=3D 1 * G_BYTE) { /* Standard Capacity SD */
+> +    if (size <=3D 1 * GiB) { /* Standard Capacity SD */
+>          sd->csd[0] =3D 0x00;	/* CSD structure */
+>          sd->csd[1] =3D 0x26;	/* Data read access-time-1 */
+>          sd->csd[2] =3D 0x00;	/* Data read access-time-2 */
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index 3017e5a95a..a11e802485 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -414,7 +414,7 @@ static void sdhci_end_transfer(SDHCIState *s)
+>  /*
+>   * Programmed i/o data transfer
+>   */
+> -#define BLOCK_SIZE_MASK (4 * K_BYTE - 1)
+> +#define BLOCK_SIZE_MASK (4 * KiB - 1)
+> =20
+>  /* Fill host controller's read buffer with BLKSIZE bytes of data from ca=
+rd */
+>  static void sdhci_read_block_from_card(SDHCIState *s)
+> diff --git a/tests/test-cutils.c b/tests/test-cutils.c
+> index 64a489c2e9..ee543ac4bf 100644
+> --- a/tests/test-cutils.c
+> +++ b/tests/test-cutils.c
+> @@ -2022,7 +2022,7 @@ static void test_qemu_strtosz_units(void)
+>      /* default is M */
+>      err =3D qemu_strtosz_MiB(none, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, M_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, MiB);
+>      g_assert(endptr =3D=3D none + 1);
+> =20
+>      err =3D qemu_strtosz(b, &endptr, &res);
+> @@ -2032,32 +2032,32 @@ static void test_qemu_strtosz_units(void)
+> =20
+>      err =3D qemu_strtosz(k, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, K_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, KiB);
+>      g_assert(endptr =3D=3D k + 2);
+> =20
+>      err =3D qemu_strtosz(m, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, M_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, MiB);
+>      g_assert(endptr =3D=3D m + 2);
+> =20
+>      err =3D qemu_strtosz(g, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, G_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, GiB);
+>      g_assert(endptr =3D=3D g + 2);
+> =20
+>      err =3D qemu_strtosz(t, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, T_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, TiB);
+>      g_assert(endptr =3D=3D t + 2);
+> =20
+>      err =3D qemu_strtosz(p, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, P_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, PiB);
+>      g_assert(endptr =3D=3D p + 2);
+> =20
+>      err =3D qemu_strtosz(e, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, E_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, EiB);
+>      g_assert(endptr =3D=3D e + 2);
+>  }
+> =20
+> @@ -2070,7 +2070,7 @@ static void test_qemu_strtosz_float(void)
+> =20
+>      err =3D qemu_strtosz(str, &endptr, &res);
+>      g_assert_cmpint(err, =3D=3D, 0);
+> -    g_assert_cmpint(res, =3D=3D, 12.345 * M_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, 12.345 * MiB);
+>      g_assert(endptr =3D=3D str + 7);
+>  }
+> =20
+> @@ -2106,7 +2106,7 @@ static void test_qemu_strtosz_trailing(void)
+> =20
+>      str =3D "123xxx";
+>      err =3D qemu_strtosz_MiB(str, &endptr, &res);
+> -    g_assert_cmpint(res, =3D=3D, 123 * M_BYTE);
+> +    g_assert_cmpint(res, =3D=3D, 123 * MiB);
+>      g_assert(endptr =3D=3D str + 3);
+> =20
+>      err =3D qemu_strtosz(str, NULL, &res);
+> diff --git a/tests/test-keyval.c b/tests/test-keyval.c
+> index 63cb14629b..92d8e9fa89 100644
+> --- a/tests/test-keyval.c
+> +++ b/tests/test-keyval.c
+> @@ -457,11 +457,11 @@ static void test_keyval_visit_size(void)
+>      visit_type_size(v, "sz2", &sz, &error_abort);
+>      g_assert_cmpuint(sz, =3D=3D, 1536);
+>      visit_type_size(v, "sz3", &sz, &error_abort);
+> -    g_assert_cmphex(sz, =3D=3D, 2 * M_BYTE);
+> +    g_assert_cmphex(sz, =3D=3D, 2 * MiB);
+>      visit_type_size(v, "sz4", &sz, &error_abort);
+> -    g_assert_cmphex(sz, =3D=3D, G_BYTE / 10);
+> +    g_assert_cmphex(sz, =3D=3D, GiB / 10);
+>      visit_type_size(v, "sz5", &sz, &error_abort);
+> -    g_assert_cmphex(sz, =3D=3D, 16777215 * T_BYTE);
+> +    g_assert_cmphex(sz, =3D=3D, 16777215 * TiB);
+>      visit_check_struct(v, &error_abort);
+>      visit_end_struct(v, NULL);
+>      visit_free(v);
+> diff --git a/tests/test-qemu-opts.c b/tests/test-qemu-opts.c
+> index 7092e216f7..7074a176d7 100644
+> --- a/tests/test-qemu-opts.c
+> +++ b/tests/test-qemu-opts.c
+> @@ -704,13 +704,12 @@ static void test_opts_parse_size(void)
+>      g_assert_cmpuint(opts_count(opts), =3D=3D, 3);
+>      g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), =3D=3D, 8);
+>      g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), =3D=3D, 1536);
+> -    g_assert_cmphex(qemu_opt_get_size(opts, "size3", 0), =3D=3D, 2 * M_B=
+YTE);
+> +    g_assert_cmphex(qemu_opt_get_size(opts, "size3", 0), =3D=3D, 2 * MiB=
+);
+>      opts =3D qemu_opts_parse(&opts_list_02, "size1=3D0.1G,size2=3D167772=
+15T",
+>                             false, &error_abort);
+>      g_assert_cmpuint(opts_count(opts), =3D=3D, 2);
+> -    g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), =3D=3D, G_BYTE =
+/ 10);
+> -    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0),
+> -                     =3D=3D, 16777215 * T_BYTE);
+> +    g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), =3D=3D, GiB / 1=
+0);
+> +    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), =3D=3D, 1677721=
+5 * TiB);
+> =20
+>      /* Beyond limit with suffix */
+>      opts =3D qemu_opts_parse(&opts_list_02, "size1=3D16777216T",
 
-skip_dtb_autoload is a flag that the board code needs to set, so can
-we have a comment documenting what it does, please?
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
->      /* multicore boards that use the default secondary core boot functions
->       * need to put the address of the secondary boot code, the boot reg,
->       * and the GIC address in the next 3 values, respectively. boards that
+--SFyWQ0h3ruR435lw
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Otherwise this looks good, especially the diffstat :-)
-I'm assuming Eric will check the platform-bus/sysbus-fdt parts
-of this patch.
+-----BEGIN PGP SIGNATURE-----
 
-thanks
--- PMM
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsd2mAACgkQbDjKyiDZ
+s5KASw/+PZUM4YIRcKovX/DJO6Fy52RFTbT+IzULR3jeN7uqikDBf3J6Db+NwccK
+enP6TcTPP6vbfjbHeBrrAQDNaJOYUoMhWtjtDCJaLvA261PG6JXB1SxkKVXPOU8v
+Zspe578OugDPjlnB6+mupphKQfTKWUEbzPxy9dmOY+Mci5mvGjWC0KUGnbFGgiQ8
+RyC56Fw3HUA3xXHFBkGxs84cKOfPIEYlTiWE2ey27rG2kqDF31F/2JJGgvOHfS2o
+4+BSEqSNPjAeg/Aeb+20wAyyt+HWW60CDcI82b6HCIQbFRwx2WpzLo7sfdXcTSuh
+Zu0j87dwsaLERg6eZ2GzCzkMWzuov+XXxGZ/HxWE57oKVAeth6X/eQ9VJdJqAyIz
+wqLX8o4N7JwrUPWqnK8IOmm2uWxlRS5kWyhePOZJ5Wynxh2C8mivmBAQ0rwyLKf4
+0L9k8MDzPrLPuxv9qEZaHFoNKkbmziagXblhcdC9OSLDu7uagqr05mNo9NZ7VPi0
+hmlYc7Vst/Ye+L45m71SI6iUwDj8Q/gbOJDLd/HelyYwrqFWrbWGXEsXUkcxYU0X
+0fG2IHVqVMx78nw8F2OXEKsFWClTDi90a/6f8CavDEEjTN0dW/7vqMRqOcTza5YH
+k4t6GNfkWtsnurz7JJymhWUYR+5z/pxhoKJ6aqkhDEa1AbzRHqA=
+=OP37
+-----END PGP SIGNATURE-----
+
+--SFyWQ0h3ruR435lw--

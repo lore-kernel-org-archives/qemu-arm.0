@@ -1,102 +1,99 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp2086917wre;
-        Thu, 24 May 2018 09:58:45 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLXxAu2rxLTVNWwCw3X2lF3+alvn3PkS8Me9p1nkESnRrBbNH1lMe47moq3XMHCkMjPonMx
-X-Received: by 2002:ac8:2947:: with SMTP id z7-v6mr7493599qtz.251.1527181125750;
-        Thu, 24 May 2018 09:58:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527181125; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4091290wrq;
+        Mon, 11 Jun 2018 07:07:28 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKI29gKLGVlji4Hn45fQhOUCDIxRJEM5y0WTm30RarIkn/xOVKoNXp2jlzz3kEgqGndZ1J1M
+X-Received: by 2002:a37:1707:: with SMTP id i7-v6mr14678594qkh.433.1528726048099;
+        Mon, 11 Jun 2018 07:07:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528726048; cv=none;
         d=google.com; s=arc-20160816;
-        b=nwaQau1lpl4VczvZ8UFcTmDEcc5sFgDiyh33b0n+k34Roo23eLHDWVfL9224hJMMLl
-         fSSiSxUzKm7eRstcfhD39YUb/i9bXlxRfXFmXDjVwoqWwyzpiaI33kjIZtWjKYDlXilF
-         ETofc3ILdDm+1M19cZ08KN/J1wTd68WArc3xYDNVEq8dQp5M6JpxiyIoYVQKWkGlgkxS
-         f3GaUlq2p4Y14UMKr/aaMkYF0sPbNM+V+ONxeUTHS09SzX87hOJmq2ltAJrixm0MOAnR
-         7TqBnsu86Tqb13QZ/CSOTJk5CNQA9UIQNkhlR0D/CrLkMi/tVhjcqJCgmJ4lz2cKz/Fg
-         Liog==
+        b=Ne7TpmbAwGrTUXEHibNXwV/Nor9VanEyxHTez8KwPnPnkG80GywZvU8GUbXRQvnejZ
+         X4eN8vJKxgruXIyDAhC+3dhfuTwfQNOy6PXUoBOu10TpeGrOqV/a26MYDNVDwJ7AfiSS
+         1nO4mdpKJn6CfqA1PN9PCYiTd0JTF90OniQZv+PQtajjVgsTaJ2/VUtAOdoWYiQnQXjr
+         454qHyreeVEDIP5Iv8w/DlZmPlg3jitZgVF5VUwY1vq4Fj8MqDZ8PlxzZqcmjKAjUjNW
+         oGCUMP5UCdW8r9zy8SEisbTZvhqwzS8T6Lqix9dQEuDQkMK5Afb0DKekN6qiqtagOpPc
+         OvMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=2uLLLulBK7rPbOqPJsQvzqbmcMO4iTj3QFeOeD6oMCI=;
-        b=zYV4d1GV+1aLcJntN3dwenHREgNmwdRLBtsq2CczMpBki4S3GFOgfcIq94brihdY74
-         HUJ5vfbt8KMnIwmpUlp7H2mrKOTqV/37geYujhbPpvXNqN36YQXE3KjiauiYpds2nrZK
-         +Sz/tMCGvnVKX/vU+NzRRiHX27HIBPactwea8D5lDdcA/DRAL3C6qhsEL8dvZ74DJbJE
-         7h88i347PPzf/XpJJMKC6mD2OxVVEsVqpy9F1TkqXe4cagTgHvEfFUBKk6TdT2MA072K
-         WdSOFl+TwVFLkpvVM9Eo6D+06xTozJNfAnjauzR3mGFYmwtSVR22NoZUnaLJHEyNkhT2
-         7+Rw==
+        bh=8jeWzZoZtWyfcHqfAqlnO9+a4IWX9mV7nq+jZ2nni1o=;
+        b=xqjstMf1dnthr/3uISx9PJke1g+U8K2Ht0ZNhFbeE8XUdXI/qAaLB2xWuTNRjVVFfm
+         9bKbbbmv0RGh81ERlTZVxRnr+eoKhEI1xUe3eiujHzK2XcGCh3KFzKmtVB1G/hylYa0u
+         o482u7Uq7LJgQSsoUTA5U2P3buj349RhvXSHGOY6PIK2xIkWN9j4sxmQLr4z3ZItXwsn
+         Ni40o74Zj4/XjUelrWbxtf0L5nKQOZ2rIis4zWQ27D48EfiqZySP2Uf2Tqge88Jexj8O
+         FpRHrMMrmZoXOjaYvf3HPMedefiFzuX3vRUwchr9do+BhexxbPO0c2rd5XzsYD6ZtrU+
+         iv6w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FsQst+r5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t17-v6si3797968qth.259.2018.05.24.09.58.45
+        by mx.google.com with ESMTPS id l63-v6si3012990qkd.301.2018.06.11.07.07.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 24 May 2018 09:58:45 -0700 (PDT)
+        Mon, 11 Jun 2018 07:07:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FsQst+r5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39847 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49037 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fLtZd-0002Io-AE
-	for alex.bennee@linaro.org; Thu, 24 May 2018 12:58:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45064)
+	id 1fSNTj-0003Uf-E5
+	for alex.bennee@linaro.org; Mon, 11 Jun 2018 10:07:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47256)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fLtZT-0002IW-QA
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 12:58:36 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fSNSU-0002gj-C8
+	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:06:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1fLtZQ-000588-Nn
-	for qemu-arm@nongnu.org; Thu, 24 May 2018 12:58:35 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55696 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1fLtZQ-00057n-JR; Thu, 24 May 2018 12:58:32 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E259A4022407;
-	Thu, 24 May 2018 16:58:30 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-84.rdu2.redhat.com
-	[10.10.121.84])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 54DBD11166E3;
-	Thu, 24 May 2018 16:58:23 +0000 (UTC)
-To: Auger Eric <eric.auger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <1527091418-11874-1-git-send-email-eric.auger@redhat.com>
-	<ec6bc0b3-5f0b-bf0c-7d9b-0382e114ee9e@redhat.com>
-	<bf99311a-823d-34e8-1892-be27534afc32@redhat.com>
-	<22c4e504-a7b4-e6dd-b2cc-618d306b6f0c@redhat.com>
-	<CAFEAcA9LMV_-vVAwUkuY=uw2Gf6XLvsgmi8y0PgHPJnQZkWC0w@mail.gmail.com>
-	<550464ac-5155-6311-d0f7-92c7c0813f82@redhat.com>
-	<CAFEAcA-hobu_=VKhYQ+UZ1WX_JFfwCarkPKQhiBtXc3fre57rg@mail.gmail.com>
-	<ee204f5f-600f-2425-a1ff-0418b4611e96@redhat.com>
-	<a8485329-0986-c99b-ad64-ec5af0a987b8@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <694034a3-9d4c-3e7e-759d-6fd8f8cfd9c8@redhat.com>
-Date: Thu, 24 May 2018 18:58:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fSNSK-0001LQ-Ix
+	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:06:10 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:33328)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fSNSK-0001L5-E6
+	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 10:06:00 -0400
+Received: by mail-ot0-x244.google.com with SMTP id h6-v6so23903765otj.0
+	for <qemu-arm@nongnu.org>; Mon, 11 Jun 2018 07:06:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=8jeWzZoZtWyfcHqfAqlnO9+a4IWX9mV7nq+jZ2nni1o=;
+	b=FsQst+r5ljzpUsgzLm5DMLTOmMbb3SnmgclGPTIr3rABu7X3LSQjunmIM81oPaI6+3
+	t1xMp4kf0T3VWa56NC9jsz4E09JUaPTHgRE1MZtrnJXztsw/Lle9KJp7qnMiuj394h9+
+	XAE1BW/haABHuow/pteS6TLxwHuoItpVVsV9s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=8jeWzZoZtWyfcHqfAqlnO9+a4IWX9mV7nq+jZ2nni1o=;
+	b=hdzhM+0clvqzdDge05oPkdrHnzyKcn89o18EzMqyBMiraz4g4tG0CjqKWD1aA+5Goi
+	N9EE9SVw6GQbkTmC9VgFhEg/uO/+m+8Q8enIMp4MN6LyUbdP/pzJ837L+UscsFYQTF9+
+	M9FQlXgS+wU/qXdfA0VcNiIhsBM3d332+XRToKBebQE5NzVFx95UUQVD7ZbwrVMtbd/H
+	l0m0Hs2u9scN3TdN06dNxgD5RAE/bkn5q3syVqq3C9O8tOQyrXg+LAg1+EWk250Mr50y
+	XecgF8TJvWyNQozWeFvJsd1Bj8QS4UkgmkOp32wjk7TX6pONmCfb1j18yBE4BbAOBXtv
+	T3Lg==
+X-Gm-Message-State: APt69E0Q8JtT6N1IeZ5SDhmmvVGd0NJkABMJ1oJXsfkjI6nocpkWeB45
+	9gqWu0xq8CM87J8v1qt4xiGSBh95SjedJgJVO5Q0eKWs
+X-Received: by 2002:a9d:705d:: with SMTP id
+	x29-v6mr10461662otj.308.1528725959690; 
+	Mon, 11 Jun 2018 07:05:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <a8485329-0986-c99b-ad64-ec5af0a987b8@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 24 May 2018 16:58:30 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 24 May 2018 16:58:30 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 0/2] ARM virt: Support up to 256
- PCIe buses
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 11 Jun 2018 07:05:39
+	-0700 (PDT)
+In-Reply-To: <20180601160355.15393-1-peter.maydell@linaro.org>
+References: <20180601160355.15393-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 11 Jun 2018 15:05:39 +0100
+Message-ID: <CAFEAcA-9skxQ7AifPvL+BbUuPKm4PWQ+CycuERahpfNvettO3A@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH] arm: Don't crash if user tries to use a
+ Cortex-M CPU without an NVIC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,45 +105,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Eric Auger <eric.auger.pro@gmail.com>
+Cc: "patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pZrovgbpCMQA
+X-TUID: T8o6wQy1tppS
 
-On 05/24/18 16:09, Auger Eric wrote:
-> Hi Laszlo,
-> 
-> On 05/24/2018 03:59 PM, Laszlo Ersek wrote:
->> On 05/24/18 15:07, Peter Maydell wrote:
->>> On 24 May 2018 at 13:59, Laszlo Ersek <lersek@redhat.com> wrote:
->>>> On 05/24/18 11:11, Peter Maydell wrote:
->>>>> Won't it also break a guest which is just Linux loaded not via
->>>>> firmware which is an aarch32 kernel without LPAE support?
->>>>
->>>> Does such a thing exist? (I honestly have no clue.)
->>>
->>> Yes, it does; LPAE isn't a mandatory kernel config option.
->>> This is why we have the machine 'highmem' option, so that
->>> we can run on those kernels by not putting anything above
->>> the 4G boundary. Looking back at the history on that, we
->>> opted at the time for "default to highmem on, and if you're
->>> running an non-lpae kernel you need to turn it off manually".
->>
->> Ah, OK, I didn't know that.
->>
->>> So we can handle those kernels by just not putting ECAM
->>> above 4G if highmem is false.
->>
->> The problem is we can have a combination of 32-bit UEFI firmware (which
->> certainly lacks LPAE) and a 32-bit kernel which supports LPAE.
-> 
-> Is it what happens with the FW you provided to me? There is no LPAE in it?
+Ping for code review?
 
-That's the case, to my knowledge.
+thanks
+-- PMM
 
-Thanks
-Laszlo
+On 1 June 2018 at 17:03, Peter Maydell <peter.maydell@linaro.org> wrote:
+> The Cortex-M CPU and its NVIC are two intimately intertwined parts of
+> the same hardware; it is not possible to use one without the other.
+> Unfortunately a lot of our board models don't do any sanity checking
+> on the CPU type the user asks for, so a command line like
+>     qemu-system-arm -M versatilepb -cpu cortex-m3
+> will create an M3 without an NVIC, and coredump immediately.
+> In the other direction, trying a non-M-profile CPU in an M-profile
+> board won't blow up, but doesn't do anything useful either:
+>     qemu-system-arm -M lm3s6965evb -cpu arm926
+>
+> Add some checking in the NVIC and CPU realize functions that the
+> user isn't trying to use an NVIC without an M-profile CPU or
+> an M-profile CPU without an NVIC, so we can produce a helpful
+> error message rather than a core dump.
+>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1766896
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/armv7m.c       |  7 ++++++-
+>  hw/intc/armv7m_nvic.c |  6 +++++-
+>  target/arm/cpu.c      | 18 ++++++++++++++++++
+>  3 files changed, 29 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index a4ab7d2069..9e00d4037c 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -178,6 +178,12 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>              return;
+>          }
+>      }
+> +
+> +    /* Tell the CPU where the NVIC is; it will fail realize if it doesn't
+> +     * have one.
+> +     */
+> +    s->cpu->env.nvic = &s->nvic;
+> +
+>      object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
+>      if (err != NULL) {
+>          error_propagate(errp, err);
+> @@ -202,7 +208,6 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>      sbd = SYS_BUS_DEVICE(&s->nvic);
+>      sysbus_connect_irq(sbd, 0,
+>                         qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
+> -    s->cpu->env.nvic = &s->nvic;
+>
+>      memory_region_add_subregion(&s->container, 0xe000e000,
+>                                  sysbus_mmio_get_region(sbd, 0));
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index c51151fa8a..661be8878a 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -2183,7 +2183,11 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
+>      int regionlen;
+>
+>      s->cpu = ARM_CPU(qemu_get_cpu(0));
+> -    assert(s->cpu);
+> +
+> +    if (!s->cpu || !arm_feature(&s->cpu->env, ARM_FEATURE_M)) {
+> +        error_setg(errp, "The NVIC can only be used with a Cortex-M CPU");
+> +        return;
+> +    }
+>
+>      if (s->num_irq > NVIC_MAX_IRQ) {
+>          error_setg(errp, "num-irq %d exceeds NVIC maximum", s->num_irq);
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 5d60893a07..eda1ce14fc 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -767,6 +767,24 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>
+> +#ifndef CONFIG_USER_ONLY
+> +    /* The NVIC and M-profile CPU are two halves of a single piece of
+> +     * hardware; trying to use one without the other is a command line
+> +     * error and will result in segfaults if not caught here.
+> +     */
+> +    if (arm_feature(env, ARM_FEATURE_M)) {
+> +        if (!env->nvic) {
+> +            error_setg(errp, "This board cannot be used with Cortex-M CPUs");
+> +            return;
+> +        }
+> +    } else {
+> +        if (env->nvic) {
+> +            error_setg(errp, "This board can only be used with Cortex-M CPUs");
+> +            return;
+> +        }
+> +    }
+> +#endif
+> +
+>      cpu_exec_realizefn(cs, &local_err);
+>      if (local_err != NULL) {
+>          error_propagate(errp, local_err);
+> --
+> 2.17.1
+>
+>

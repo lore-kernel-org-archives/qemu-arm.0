@@ -1,84 +1,86 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4235258wrq;
-        Mon, 11 Jun 2018 09:19:47 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJt96G2Y38zF5vpd1tzVLZQvI6M/HIDQaIZZHKrjDY/qzscZr4dzGHqB2RXF2u34DBJddvh
-X-Received: by 2002:a37:82c7:: with SMTP id e190-v6mr81173qkd.313.1528733987604;
-        Mon, 11 Jun 2018 09:19:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528733987; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4243687wrq;
+        Mon, 11 Jun 2018 09:28:19 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJuviqcCFaAcBYa/dEor9P2eJRYZsQloiZqaqL6FhODHOPs06OWWh+MCNyUIvmQ9NYRXzCC
+X-Received: by 2002:ae9:dd06:: with SMTP id r6-v6mr7632450qkf.417.1528734499326;
+        Mon, 11 Jun 2018 09:28:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528734499; cv=none;
         d=google.com; s=arc-20160816;
-        b=rgTkeYLkg5K/13JzR0I0x6AYhr06fvdU2WSGg5JFAuRllqgzMBnEKGuiUxIzNn6eff
-         R1tDGo5ce3LpgZFZIV9Kg3vhhBCQuAtyalzmirwILktHJl4IuqhFs26CYBnPbDfobeNl
-         Pms8QiDWZDmhDqBQmBgtsjCmj1gLUyObDQ3ipYM/z3LvvWFp76DlgYOiFJuOk4HU8z/L
-         Oc+HX4uljyI1n/38KG1rVG/6XWAixCGiEUVkU5A/E+6qVE7YF9ihPHVWwXJjnhdx5EhQ
-         cXCy+PiCv75GJ5Oq2jcXHJYnQIPiWIwtu3rFRUU3B7onrFez1jQDp7wR5j9z7CuoKyfa
-         DL+Q==
+        b=ziZlGOXwzHzBpADQrhkURNV2hPbfJX6ZsG2Rb2u7SiGAa5WlWO/HKe0DBRxn2IPJmN
+         7rqJVyfQFY59tNa7zurV9j07twND4CyVN7wgoI/mc1BopgJuC3UoUnhjzIZheQdm9IGw
+         x4HSqVQuPfiuz1T7Oqy1P6wtnncuZthR58gS1kt1vkvEHm4h1FSWO2SNzzcTzLjqJeGS
+         PC9fSuokEp1KrRFTSyequJ9hez8dogdgRNXkRXktGYflPfTW6CL27DKFukdmzLJDl0Nn
+         J6LVkeHINBc2jMWbJd5vD+2Yyw+aSVt7f0EHdYzs+pAdAhnUvgQJ4c8/wIBxSngiZcGK
+         sARw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date:arc-authentication-results;
-        bh=bt3qS6K9qzO1cUqljFrHXw+0mZzb7/sPzCkYTVuhmK0=;
-        b=j54GW3GlIkLYacg/jPEteXIQgFVD+2+ZmmROziIEIJs9ZdIa5G4a6Kcnqjvy8NP0Ka
-         AQnZjE+akDA6w8Exa+WOTw4XWtUVOpkbR+27TkbLde7KgxARrH1cqtMNHik/Sr1raLuk
-         wfbySaUtJE8WjKAyNWTGOOrUvDrXy02LCnToFV5pe/7dpkyQZm+WaSrdRXn1OQNHLhCw
-         fJm/mGL7b+NiMHxzsrqXdWK8UwvmQ2nIIqSjw8BmNAhhHubL1m5V7CouQjmbl9Fro/dG
-         CR3YFJcKw/4CIVcoNExD1tGvTsliyt0XkTX8xOqz5T3sIMAb91XUCZ+KjwNwHAceKr2a
-         6omw==
+         :content-transfer-encoding:in-reply-to:content-disposition
+         :mime-version:references:message-id:to:from:date
+         :arc-authentication-results;
+        bh=605JhgJ3ORk1gPuSgkCNfM/j5xzdTQ9i0BIyhHbE5zs=;
+        b=Z9nRtDvQjBKKUcNT7/e7GH0/T/2p02tSwjYwuyrnMa1NoPt2iy1j3Q2stK69ENVOB8
+         8sVj3bXFy8RQekmP9vwyx7BG0m+20uL9aWlt9a+fqoNZdIzRuoBos0TNfXUp76dHigjp
+         iMudPAs05kEMWJWJmybgSK4/2FR5iEyznN/AH/gMqklzcHZ9DsFu5FajAXWzSnUmuZrI
+         KUZGwEdOqPQ4XqwGfP61gOL0PNw+koWF/I+4x2l07ZnxrygwoTo6S8euvRLznSC2drn8
+         RnMpqy4kKoMt6cNkz7gYyCmzuonF0PobvTKy24JqpI6gkcOz2AGFQsElHiSs8LKTUi05
+         202w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l1-v6si5065368qvm.219.2018.06.11.09.19.47
+        by mx.google.com with ESMTPS id m44-v6si17720150qta.390.2018.06.11.09.28.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 11 Jun 2018 09:19:47 -0700 (PDT)
+        Mon, 11 Jun 2018 09:28:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50001 helo=lists.gnu.org)
+Received: from localhost ([::1]:50100 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSPXn-0001O7-2R
-	for alex.bennee@linaro.org; Mon, 11 Jun 2018 12:19:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36426)
+	id 1fSPg2-0006w9-T1
+	for alex.bennee@linaro.org; Mon, 11 Jun 2018 12:28:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fSPXY-0001My-DD
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 12:19:33 -0400
+	(envelope-from <mst@redhat.com>) id 1fSPfr-0006uR-LK
+	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 12:28:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fSPXU-0004rS-BS
-	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 12:19:32 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38800 helo=mx1.redhat.com)
+	(envelope-from <mst@redhat.com>) id 1fSPfo-0001H6-Ei
+	for qemu-arm@nongnu.org; Mon, 11 Jun 2018 12:28:07 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59722 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fSPXU-0004rI-5b; Mon, 11 Jun 2018 12:19:28 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1fSPfo-0001GS-8l; Mon, 11 Jun 2018 12:28:04 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 17660808255D;
-	Mon, 11 Jun 2018 16:19:27 +0000 (UTC)
-Received: from gondolin (ovpn-117-32.ams2.redhat.com [10.36.117.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 80834112D18D;
-	Mon, 11 Jun 2018 16:19:00 +0000 (UTC)
-Date: Mon, 11 Jun 2018 18:18:56 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Message-ID: <20180611181856.71bf285a.cohuck@redhat.com>
-In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id 1872D406E8A1;
+	Mon, 11 Jun 2018 16:28:03 +0000 (UTC)
+Received: from redhat.com (ovpn-122-170.rdu2.redhat.com [10.10.122.170])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 56E8C2024CA2;
+	Mon, 11 Jun 2018 16:27:57 +0000 (UTC)
+Date: Mon, 11 Jun 2018 19:27:57 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Message-ID: <20180611192510-mutt-send-email-mst@kernel.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
-Organization: Red Hat GmbH
+	<54eb6ae9-d7e0-8a4d-6bd4-f8f1d0f00b92@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <54eb6ae9-d7e0-8a4d-6bd4-f8f1d0f00b92@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 11 Jun 2018 16:19:27 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 11 Jun 2018 16:19:27 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.7]);
+	Mon, 11 Jun 2018 16:28:03 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Mon, 11 Jun 2018 16:28:03 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -102,7 +104,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
 	Palmer Dabbelt <palmer@sifive.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
 	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
 	Michael Clark <mjc@sifive.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Max Reitz <mreitz@redhat.com>,
@@ -110,12 +112,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Alberto Garcia <berto@igalia.com>, qemu-block@nongnu.org,
 	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+	qemu-trivial@nongnu.org, Jiri Slaby <jslaby@suse.cz>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
 	Michael Walle <michael@walle.cc>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
 	Antony Pavlov <antonynpavlov@gmail.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Anthony Perard <anthony.perard@citrix.com>,
@@ -129,33 +131,81 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Fabien Chouteau <chouteau@adacore.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-s390x@nongnu.org,
 	qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	Yuval Shaia <yuval.shaia@oracle.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Jiri Slaby <jslaby@suse.cz>,
-	David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
+	Yuval Shaia <yuval.shaia@oracle.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Kevin Wolf <kwolf@redhat.com>, Alexander Graf <agraf@suse.de>,
 	Igor Mitsyanko <i.mitsyanko@gmail.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Chris Wulff <crwulff@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
 	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	Paul Burton <paul.burton@mips.com>, qemu-ppc@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+	Cornelia Huck <cohuck@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z8lYNPOfTeZ9
+X-TUID: dnvw/3BLV7tF
 
-On Sun, 10 Jun 2018 22:14:21 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-
-> Hi,
+On Mon, Jun 11, 2018 at 10:55:17AM -0500, Eric Blake wrote:
+> On 06/10/2018 08:14 PM, Philippe Mathieu-Daud=E9 wrote:
+> > Hi,
+> >=20
+> > This series:
+> >=20
+> > - split the byte-based definitions from "qemu/cutils.h" to "qemu/unit=
+s.h"
+> >    (this now triggers WARNING: 1 added file, does MAINTAINERS need up=
+dating?)
+> > - clean hw/ includes;
+> > - replace different constants used for byte size with their correspon=
+ding
+> >    IEC binary prefix definitions.
+> >=20
+> > Since v3:
+> > - use IEC binary prefix definitions (Stefan Weil)
+> > - rebased
+> > - added R-b tags
+> >=20
 >=20
-> This series:
+> >   hw/net/ne2000.h                          |  5 ++--
+> ...
+> >   tests/test-qemu-opts.c                   |  7 +++---
+> >   scripts/checkpatch.pl                    |  1 +
+> >   135 files changed, 533 insertions(+), 431 deletions(-)
+> >   create mode 100644 include/qemu/units.h
+> >=20
 >=20
-> - split the byte-based definitions from "qemu/cutils.h" to "qemu/units.h"
->   (this now triggers WARNING: 1 added file, does MAINTAINERS need updatin=
-g?)
-> - clean hw/ includes;
-> - replace different constants used for byte size with their corresponding
->   IEC binary prefix definitions.
+> At least monitor.c and vl.c are missing from this list; a more general =
+grep
+> shows that the following are all potential candidates for this cleanup:
+>=20
+> $ git grep -n '[<>][<>]=3D [1-5]0'
+> disas/m68k.c:787:      val >>=3D 10;
+> hw/mips/mips_malta.c:194:    ram_size >>=3D 20;
+> hw/ppc/sam460ex.c:129:    ram_size >>=3D 20;
+> hw/timer/sh_timer.c:112:        case 4: freq >>=3D 10; break;
 
-Do we document preference for this somewhere? Can we automatically
-check for this?
+Most likely not 4 kilobyte.
+
+
+> linux-user/mips/cpu_loop.c:641:                                code >>=3D=
+ 10;
+> linux-user/mips/cpu_loop.c:664:                        code >>=3D 10;
+
+Seems to do with decoding machine code. Also unlikely to be in bytes.
+
+> monitor.c:3198:                    val <<=3D 20;
+> target/m68k/helper.c:386:    size >>=3D 10;
+> target/m68k/helper.c:390:        size >>=3D 10;
+> target/m68k/helper.c:394:            size >>=3D 10;
+> target/xtensa/helper.c:729:            sz >>=3D 20;
+> target/xtensa/helper.c:732:            sz >>=3D 10;
+> vl.c:2793:            sz <<=3D 20;
+
+
+
+
+> --=20
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3266
+> Virtualization:  qemu.org | libvirt.org

@@ -1,34 +1,33 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5152385wrq;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5152391wrq;
         Tue, 12 Jun 2018 03:45:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKtIevKoix+kiMRJ9AjgxnAMHN2vhylQNKaljQPhMG8a65zUMpF6jFCj3nXjIPfYhF7Yw3s
-X-Received: by 2002:a37:1193:: with SMTP id 19-v6mr2739260qkr.379.1528800300314;
+X-Google-Smtp-Source: ADUXVKKo+hkj6dZiVq5QIKKGkiuOb0B/ylX9JSzdGOHmdBawcrilIjcug+sbCfDLyrK5ZBsQ/A7K
+X-Received: by 2002:a0c:96ed:: with SMTP id b42-v6mr2761040qvd.135.1528800300703;
         Tue, 12 Jun 2018 03:45:00 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1528800300; cv=none;
         d=google.com; s=arc-20160816;
-        b=uKbEHcfFjZb2PHQ3M/mvdN14tZOBqBZ44AxQN4+lMFSyupdVwhDs1UFybewxqQ+yka
-         wDWY/uvqw4GK8MVeHnYRZ1bGGOJZuzT31Tt/zgx97p59X4G6vD7ghkxkuVv2xiRdNPQE
-         KofjlmaUTD/onDMrjTdofcwtp9BSYQeHCZtslm33J5Uml68PW77TER3wbCcxuZOBOsHy
-         J464bqYCz3mJ0TkGrMEfxdtkJ6Dfo8WMFNwjnhpX2XdVWUUqDhacNSgHnRDZPnI0N8/T
-         Ag1yqzwZrGqffoz9WgJWzwU+5oLcCwZwFYqF+QPjqL35cXPSMK20hIhEukbLQbugnTsW
-         bLoQ==
+        b=YihQkL6FlAwSvX0+BTgcNG/rvZFeJkeTXYxWqZUFiV2MyPML7lQ/UOBcZBYaetNrbe
+         Z6a9oFQm165LLuFWBOxL7jb8fOzO7uvyGpTihuKytZrj69irmoEBtZgO7Lwx2ijULdbI
+         mJp8E+DbAO/OviFwzKO9bd8NT7gtVc3DikRXlSU3zz4DLv8eKumQdhBPuGIzbN8wFZWE
+         TyGJx5vtXa3p+Qa5by97dKOkBK+Bl+SNkRDBInTmO6mtxkmIOQYU2+4ECuiKVfYqUQ8q
+         NRCYcMvA1Ah392/iswin/zkgUZiWe01/mN1QxfTOpw0/N9FPQvlvVpCedNAqv2Ff2FXy
+         XxIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :arc-authentication-results;
-        bh=bhqOtyKf0ntvEk9KhGYNgte34eNE9lMC9P53eQY+lYI=;
-        b=PPnLVg5VrmE06alWGylZQB0fWOSaYxRJ2dhgh9Lm4UPjOJcYpq9l5uBpDx7YmJuyb6
-         iKr4bCicts5TzSWJluAvEHvjrmHD1fmfUqi2vFKymWZSZiQ2ReuMm5aHtdViICDX+kF1
-         Dw1rzsQmxGrB9QDq/P0aK+8OAfILk2twEtraJP+6PeB17/SxHz7cTYOM+qVFc5PVXpQF
-         +gJcTWZkEwUu6ojQMmj+mUhvQWJPzO1B1z7iin3r0okfBcKHN6UjN3O0U8+xPzs5g2XP
-         TJZvXoexPNuqMAqresMQyn5M9mY1t3/Q500U89xUSMR/USYPP0Jjqd2bWAscmCyZvMMT
-         5YrQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=m7B8DMUGyO2Jk+yqxgL2cxvyM3hkE4aWAx1gM0hLDWM=;
+        b=KPYOhfl1aPfkXz57+jQ/HL5BahNjoObDUAEdd9kDJRr2TYnZ1R9oqmCbn1VbVyTmhK
+         IPlcWja+8fYDDnL8cOXuXcSQzOTsCgc9m7p487s8hsh3NIvFbBEDSN3P7EBDNRKdwsQ3
+         FCMKN0dk+80uR6+NCvoM4wPFF7a6fGF/T5ZJYQjbHLwEWFHBOVjL1APmd3S3MJOVnpXh
+         exS5lyLqafohNvG6sRM3++lTvGHU9F46SN3mXHQD64F5EalNrCTxICtcLKNBm9DGlq61
+         qpgsQQGkkL/yLXUZJ08c6ejJPQyTsA1pB8d6LMRD9uP5FrbZ1qYxKutM+Y8syhDZOkYe
+         BMUg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o26-v6si612818qko.344.2018.06.12.03.45.00
+        by mx.google.com with ESMTPS id b20-v6si620322qka.169.2018.06.12.03.45.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 12 Jun 2018 03:45:00 -0700 (PDT)
@@ -36,53 +35,52 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54375 helo=lists.gnu.org)
+Received: from localhost ([::1]:54378 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSgnL-0002of-OG
-	for alex.bennee@linaro.org; Tue, 12 Jun 2018 06:44:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46782)
+	id 1fSgnM-0002pB-2Z
+	for alex.bennee@linaro.org; Tue, 12 Jun 2018 06:45:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fSgmy-0002ne-7s
+	(envelope-from <kraxel@redhat.com>) id 1fSgmy-0002nb-5y
 	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 06:44:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fSgmv-0007rS-51
+	(envelope-from <kraxel@redhat.com>) id 1fSgmv-0007rp-83
 	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 06:44:36 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49278 helo=mx1.redhat.com)
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58888 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fSgmu-0007qw-WC; Tue, 12 Jun 2018 06:44:33 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fSgmv-0007r4-28; Tue, 12 Jun 2018 06:44:33 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EBFCE77884;
-	Tue, 12 Jun 2018 10:44:31 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 643C84000B74;
+	Tue, 12 Jun 2018 10:44:32 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
 	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 18CDE2024CA1;
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2029D20284D6;
 	Tue, 12 Jun 2018 10:44:31 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 7210424EF00; Tue, 12 Jun 2018 12:44:30 +0200 (CEST)
+	id 78EDB24EF05; Tue, 12 Jun 2018 12:44:30 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 12 Jun 2018 12:44:22 +0200
-Message-Id: <20180612104430.25745-1-kraxel@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+Date: Tue, 12 Jun 2018 12:44:23 +0200
+Message-Id: <20180612104430.25745-2-kraxel@redhat.com>
+In-Reply-To: <20180612104430.25745-1-kraxel@redhat.com>
+References: <20180612104430.25745-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
+	(mx1.redhat.com [10.11.55.7]);
 	Tue, 12 Jun 2018 10:44:32 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Tue, 12 Jun 2018 10:44:32 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Tue, 12 Jun 2018 10:44:32 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PULL 0/8] Usb 20180612 patches
+Subject: [Qemu-arm] [PULL 1/8] usb: update docs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,70 +104,182 @@ Cc: Corey Minyard <minyard@acm.org>, Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h6TMuU5vr6RH
+X-TUID: J4tuyPUSKxco
 
-The following changes since commit 2afc4e3df80d947dd1bd42ce80278f591b35c7=
-4a:
+xhci is rock solid meanwhile.  So move it up in the docs and feature it
+as prefered usb host adapter, instead of the old shy version saying "you
+might want try ...".
 
-  Merge remote-tracking branch 'remotes/maxreitz/tags/pull-block-2018-06-=
-11' into staging (2018-06-11 15:31:20 +0100)
+While being at it rework the text on ehci and companion controllers too.
 
-are available in the git repository at:
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Message-id: 20180605132915.3640-1-kraxel@redhat.com
+---
+ docs/usb2.txt | 99 +++++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 55 insertions(+), 44 deletions(-)
 
-  git://git.kraxel.org/qemu tags/usb-20180612-pull-request
-
-for you to fetch changes up to 3c969a6022438cf59de10d2dc3c58f4807788f98:
-
-  usb-mtp: Return error on suspicious TYPE_DATA packet from initiator (20=
-18-06-12 12:08:12 +0200)
-
-----------------------------------------------------------------
-usb: bug fix collection, doc update.
-
-----------------------------------------------------------------
-
-Bandan Das (1):
-  usb-mtp: Return error on suspicious TYPE_DATA packet from initiator
-
-Gerd Hoffmann (1):
-  usb: update docs
-
-Marc-Andr=C3=A9 Lureau (4):
-  bus: do not unref the added child bus on realize
-  object: fix OBJ_PROP_LINK_UNREF_ON_RELEASE ambivalence
-  usb-ccid: fix bus leak
-  usb-hcd-xhci-test: add a test for ccid hotplug
-
-Philippe Mathieu-Daud=C3=A9 (2):
-  usb: correctly handle Zero Length Packets
-  usb/dev-mtp: Fix use of uninitialized values
-
- docs/usb2.txt                 | 99 ++++++++++++++++++++++++-------------=
-------
- include/qom/object.h          | 12 ++++--
- hw/core/bus.c                 |  1 -
- hw/core/qdev-properties.c     |  2 +-
- hw/core/qdev.c                |  2 +-
- hw/display/xlnx_dp.c          |  2 +-
- hw/dma/xilinx_axidma.c        |  4 +-
- hw/dma/xlnx-zdma.c            |  2 +-
- hw/i386/pc.c                  |  2 +-
- hw/i386/pc_piix.c             |  2 +-
- hw/i386/pc_q35.c              |  2 +-
- hw/ipmi/ipmi.c                |  2 +-
- hw/net/xilinx_axienet.c       |  4 +-
- hw/ssi/xilinx_spips.c         |  2 +-
- hw/usb/dev-mtp.c              | 11 ++++-
- hw/usb/dev-smartcard-reader.c |  1 +
- hw/usb/redirect.c             |  2 +-
- net/can/can_host.c            |  2 +-
- net/colo-compare.c            |  2 +-
- qom/object.c                  |  8 ++--
- target/arm/cpu.c              |  4 +-
- tests/usb-hcd-xhci-test.c     | 10 +++++
- ui/console.c                  |  2 +-
- 23 files changed, 109 insertions(+), 71 deletions(-)
-
---=20
+diff --git a/docs/usb2.txt b/docs/usb2.txt
+index 09df45b5b1..e2fa2cfde0 100644
+--- a/docs/usb2.txt
++++ b/docs/usb2.txt
+@@ -1,16 +1,42 @@
+ 
+-USB 2.0 Quick Start
+-===================
++USB Quick Start
++===============
+ 
+-The QEMU EHCI Adapter can be used with and without companion
+-controllers.  See below for the companion controller mode.
++XHCI controller support
++-----------------------
+ 
+-When not running in companion controller mode there are two completely
+-separate USB busses: One USB 1.1 bus driven by the UHCI controller and
+-one USB 2.0 bus driven by the EHCI controller.  Devices must be
+-attached to the correct controller manually.
++QEMU has XHCI host adapter support.  The XHCI hardware design is much
++more virtualization-friendly when compared to EHCI and UHCI, thus XHCI
++emulation uses less resources (especially cpu).  So if your guest
++supports XHCI (which should be the case for any operating system
++released around 2010 or later) we recommend using it:
+ 
+-The '-usb' switch will make qemu create the UHCI controller as part of
++    qemu -device qemu-xhci
++
++XHCI supports USB 1.1, USB 2.0 and USB 3.0 devices, so this is the
++only controller you need.  With only a single USB controller (and
++therefore only a single USB bus) present in the system there is no
++need to use the bus= parameter when adding USB devices.
++
++
++EHCI controller support
++-----------------------
++
++The QEMU EHCI Adapter supports USB 2.0 devices.  It can be used either
++standalone or with companion controllers (UHCI, OHCI) for USB 1.1
++devices.  The companion controller setup is more convenient to use
++because it provides a single USB bus supporting both USB 2.0 and USB
++1.1 devices.  See next section for details.
++
++When running EHCI in standalone mode you can add UHCI or OHCI
++controllers for USB 1.1 devices too.  Each controller creates its own
++bus though, so there are two completely separate USB buses: One USB
++1.1 bus driven by the UHCI controller and one USB 2.0 bus driven by
++the EHCI controller.  Devices must be attached to the correct
++controller manually.
++
++The easiest way to add a UHCI controller to a 'pc' machine is the
++'-usb' switch.  QEMU will create the UHCI controller as function of
+ the PIIX3 chipset.  The USB 1.1 bus will carry the name "usb-bus.0".
+ 
+ You can use the standard -device switch to add a EHCI controller to
+@@ -19,9 +45,8 @@ the controller so the USB 2.0 bus gets a individual name, for example
+ '-device usb-ehci,id=ehci".  This will give you a USB 2.0 bus named
+ "ehci.0".
+ 
+-I strongly recommend to also use -device to attach usb devices because
+-you can specify the bus they should be attached to this way.  Here is
+-a complete example:
++When adding USB devices using the -device switch you can specify the
++bus they should be attached to.  Here is a complete example:
+ 
+     qemu -M pc ${otheroptions}                           \
+         -drive if=none,id=usbstick,file=/path/to/image   \
+@@ -30,58 +55,44 @@ a complete example:
+         -device usb-tablet,bus=usb-bus.0                 \
+         -device usb-storage,bus=ehci.0,drive=usbstick
+ 
+-This attaches a usb tablet to the UHCI adapter and a usb mass storage
++This attaches a USB tablet to the UHCI adapter and a USB mass storage
+ device to the EHCI adapter.
+ 
+ 
+ Companion controller support
+ ----------------------------
+ 
+-Companion controller support has been added recently.  The operational
+-model described above with two completely separate busses still works
+-fine.  Additionally the UHCI and OHCI controllers got the ability to
+-attach to a usb bus created by EHCI as companion controllers.  This is
+-done by specifying the masterbus and firstport properties.  masterbus
+-specifies the bus name the controller should attach to.  firstport
+-specifies the first port the controller should attach to, which is
+-needed as usually one ehci controller with six ports has three uhci
+-companion controllers with two ports each.
++The UHCI and OHCI controllers can attach to a USB bus created by EHCI
++as companion controllers.  This is done by specifying the masterbus
++and firstport properties.  masterbus specifies the bus name the
++controller should attach to.  firstport specifies the first port the
++controller should attach to, which is needed as usually one EHCI
++controller with six ports has three UHCI companion controllers with
++two ports each.
+ 
+-There is a config file in docs which will do all this for you, just
+-try ...
++There is a config file in docs which will do all this for
++you, just try ...
+ 
+     qemu -readconfig docs/config/ich9-ehci-uhci.cfg
+ 
+-... then use "bus=ehci.0" to assign your usb devices to that bus.
++... then use "bus=ehci.0" to assign your USB devices to that bus.
+ 
+-
+-xhci controller support
+------------------------
+-
+-There is also xhci host controller support available.  It got a lot
+-less testing than ehci and there are a bunch of known limitations, so
+-ehci may work better for you.  On the other hand the xhci hardware
+-design is much more virtualization-friendly, thus xhci emulation uses
+-less resources (especially cpu).  If you want to give xhci a try
+-use this to add the host controller ...
+-
+-    qemu -device nec-usb-xhci,id=xhci
+-
+-... then use "bus=xhci.0" when assigning usb devices.
++Using the '-usb' switch for 'q35' machines will create a similar
++USB controller configuration.
+ 
+ 
+ More USB tips & tricks
+ ======================
+ 
+-Recently the usb pass through driver (also known as usb-host) and the
+-qemu usb subsystem gained a few capabilities which are available only
++Recently the USB pass through driver (also known as usb-host) and the
++QEMU USB subsystem gained a few capabilities which are available only
+ via qdev properties, i,e. when using '-device'.
+ 
+ 
+ physical port addressing
+ ------------------------
+ 
+-First you can (for all usb devices) specify the physical port where
++First you can (for all USB devices) specify the physical port where
+ the device will show up in the guest.  This can be done using the
+ "port" property.  UHCI has two root ports (1,2).  EHCI has four root
+ ports (1-4), the emulated (1.1) USB hub has eight ports.
+@@ -94,7 +105,7 @@ Plugging a hub into UHCI port 2 works like this:
+ 
+         -device usb-hub,bus=usb-bus.0,port=2
+ 
+-Plugging a virtual usb stick into port 4 of the hub just plugged works
++Plugging a virtual USB stick into port 4 of the hub just plugged works
+ this way:
+ 
+         -device usb-storage,bus=usb-bus.0,port=2.4,drive=...
+@@ -143,7 +154,7 @@ practice only a few combinations are useful:
+ 
+ Note that USB 1.1 devices are handled by UHCI/OHCI and USB 2.0 by
+ EHCI.  That means a device plugged into the very same physical port
+-may show up on different busses depending on the speed.  The port I'm
++may show up on different buses depending on the speed.  The port I'm
+ using for testing is bus 1 + port 1 for 2.0 devices and bus 3 + port 1
+ for 1.1 devices.  Passing through any device plugged into that port
+ and also assign them to the correct bus can be done this way:
+-- 
 2.9.3
 

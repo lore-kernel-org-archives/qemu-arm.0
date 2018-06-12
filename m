@@ -1,34 +1,34 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5152368wrq;
-        Tue, 12 Jun 2018 03:44:59 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJCHqa35dZMh5HLy2gzBGUUNf8AkSARlK5j2dhSunkEgHBuCS1HcJQTIWbCq5mMwMPx8iM7
-X-Received: by 2002:a0c:ab42:: with SMTP id i2-v6mr2709371qvb.225.1528800299571;
-        Tue, 12 Jun 2018 03:44:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528800299; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5152381wrq;
+        Tue, 12 Jun 2018 03:45:00 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL0vG8zhJuxcfRlrESU+RiOi+UXtnsDCqsnCZ+IKKPaMORUrSduNpcYn4W7p3OSAWJ5bGoR
+X-Received: by 2002:a37:444c:: with SMTP id r73-v6mr2609871qka.351.1528800300004;
+        Tue, 12 Jun 2018 03:45:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528800300; cv=none;
         d=google.com; s=arc-20160816;
-        b=TS+mZFpkn4C4jIZtSPd5r9COIJ+W1FPanmLKl2wR8nMWbwst3+FKe0ExlGtNwo97KQ
-         kwfb3eky2QBJj6M6yY9/8EnQu8ixp8zEYYXl/QUMbNW70C+Ipnn1ClX+7kAvMDAzQFiO
-         o5RQw0te0gJPrj6EFo3awRGpXpuFHVnXqtaRRpuma723fycl3S2ndVeYBuw6E+zfVWcY
-         0XzYWmzkfHUHBi1+LsDMIu00X2QjujLU/dwDZW77kC0xo56V4L6rMh3YQRiYWRCaY+YG
-         LQQydh7/XwnmObmalmtmDNbyYBlCPESjjXa9BYGGnJxt1H16KbXasKax7tPdPha4QSOc
-         XiKw==
+        b=dpY2DmtO93i4LC3WgI9beDPwmQ3ElSTEyrGbuoIBET0dKCse5NI6fBi5l74GWbqUbA
+         bFtaCDSy7x5+aAyyumhcUJTmJKV58OUJPESnX780PNwj5uHmMKnFhfqnldOvqlVst5JZ
+         k55+uCNdUSvcozpZ29hpcXOk7IEG2Z2xKBT0ifbNnjJQ4WXydtVObNCE4kt/MUxSqbNO
+         WbH8fTmDOuaXvRjPk0QQ0JxbQkYSEVrb2nyTOpD3MpP8xd4O/5HvBKelDGwSBtB6DFxE
+         lSNIcLYLAmksPHFMw2Q38Yv8aMYUs0BkgREfTKP0SIAERgKAXVncMpv3qBoKq0bn84aZ
+         g1Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=6PJvSH90968EBQqoPLyLj8D2K6UMdd24REb9JqSM7jc=;
-        b=A1i/LbNwvkGbyy8XvJEGB/ePNTMBDAF0bGDgNBtzHatapBJ3t0T9JXO9yNemwjrSQH
-         Z1indya4ZX58Q/B3mo0LbYyavT4CU/nRSX8wqX3fSUQCmaJwP5XjvvOOUrxE4TLzhSDn
-         7fNqesh3LF2tPEUuouHm/NJD2OR4yOdCjN1MK5/oJrrRx3sRw4z0Q0U+ufyN4BchXso+
-         pP7s3bL92qUlI7/2SAaTtZ0TBfj0rED2aMzA6dKSo5WpRKJbeZjdZoK572e/n7AhRMoI
-         i/tZXukvbdrIXEH87Z5TGgvc/iLnWGWTigRskti+yDpryq3g21L3NliN0wSxY9hDeh7o
-         erxw==
+        bh=BHxqy+ZIEGsXIHjHWI/lrdrJjGTNDbq8siKexpztT/s=;
+        b=eM8824+kgrvTbrvzyaMydVp6Ik6nsoPtzac8Ls9CKq+Dca1a21S4+FnUF7ehfVTp+Q
+         jhyfwX0vQp7nReYUXe3qodRZHup/cKjOtCaV7+e3uB+aAbm4sI1G8rB7pu5nqXyPMOB3
+         UsFX/8xBLJJZ2OxR0yMH7aSknAysrSfd9U+SQwCb5FjuiiIqXytdLdKixFuG11gOADLp
+         5fA9j2cn5cEKPN8FPlaYtisbLt1DYTc4tXrc9bqDwQCntZ/1ou95opQvbWYHvm4USU2Q
+         ypRHfCaw8lZ1ykj+HrNw3OrOAgZ/On0234Cn48CQ159VjGPxJb89zCx/iLZB7q0Sb4dC
+         QWtg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h17-v6si590844qvk.152.2018.06.12.03.44.59
+        by mx.google.com with ESMTPS id m55-v6si295033qtc.214.2018.06.12.03.44.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Tue, 12 Jun 2018 03:44:59 -0700 (PDT)
@@ -36,55 +36,55 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54379 helo=lists.gnu.org)
+Received: from localhost ([::1]:54376 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSgnL-0002po-1n
+	id 1fSgnL-0002oo-FX
 	for alex.bennee@linaro.org; Tue, 12 Jun 2018 06:44:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46831)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46783)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fSgn0-0002nh-Js
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 06:44:39 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fSgmz-0007vV-6J
+	(envelope-from <kraxel@redhat.com>) id 1fSgmy-0002nf-7i
 	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 06:44:38 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37708 helo=mx1.redhat.com)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <kraxel@redhat.com>) id 1fSgmw-0007sW-3h
+	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 06:44:36 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41628 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fSgmz-0007vD-0S; Tue, 12 Jun 2018 06:44:37 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fSgmv-0007s8-VA; Tue, 12 Jun 2018 06:44:34 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6501A818BAF4;
-	Tue, 12 Jun 2018 10:44:36 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 59653401EF23;
+	Tue, 12 Jun 2018 10:44:33 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
 	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1AC6210193;
-	Tue, 12 Jun 2018 10:44:31 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 162822024CA1;
+	Tue, 12 Jun 2018 10:44:33 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 8065724EF0D; Tue, 12 Jun 2018 12:44:30 +0200 (CEST)
+	id B82E8422FF; Tue, 12 Jun 2018 12:44:30 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 12 Jun 2018 12:44:24 +0200
-Message-Id: <20180612104430.25745-3-kraxel@redhat.com>
+Date: Tue, 12 Jun 2018 12:44:29 +0200
+Message-Id: <20180612104430.25745-8-kraxel@redhat.com>
 In-Reply-To: <20180612104430.25745-1-kraxel@redhat.com>
 References: <20180612104430.25745-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Tue, 12 Jun 2018 10:44:36 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Tue, 12 Jun 2018 10:44:36 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.5]);
+	Tue, 12 Jun 2018 10:44:33 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Tue, 12 Jun 2018 10:44:33 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PULL 2/8] usb: correctly handle Zero Length Packets
+Subject: [Qemu-arm] [PULL 7/8] usb-hcd-xhci-test: add a test for ccid hotplug
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,7 +101,7 @@ Cc: Corey Minyard <minyard@acm.org>, Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
 	Zhang Chen <zhangckid@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -110,46 +110,46 @@ Cc: Corey Minyard <minyard@acm.org>, Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dgAYJkKfv/wv
+X-TUID: MiEXeKvc9eO3
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-USB Specification Revision 2.0, =C2=A75.5.3:
-  The Data stage of a control transfer from an endpoint to the host is co=
-mplete when the endpoint does one of the following:
-  =E2=80=A2 Has transferred exactly the amount of data specified during t=
-he Setup stage
-  =E2=80=A2 Transfers a packet with a payload size less than wMaxPacketSi=
-ze or transfers a zero-length packet"
-
-hw/usb/redirect.c:802:9: warning: Declared variable-length array (VLA) ha=
-s zero size
-        uint8_t buf[size];
-        ^~~~~~~~~~~ ~~~~
-
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Message-id: 20180604151421.23385-2-f4bug@amsat.org
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Message-id: 20180531195119.22021-5-marcandre.lureau@redhat.com
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/usb/redirect.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/usb-hcd-xhci-test.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 65a9196c1a..58e8f7f5bd 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -795,7 +795,7 @@ static void usbredir_handle_bulk_data(USBRedirDevice =
-*dev, USBPacket *p,
-            usbredirparser_peer_has_cap(dev->parser,
-                                        usb_redir_cap_32bits_bulk_length)=
-);
+diff --git a/tests/usb-hcd-xhci-test.c b/tests/usb-hcd-xhci-test.c
+index 9c14e3053a..5b1b681bf2 100644
+--- a/tests/usb-hcd-xhci-test.c
++++ b/tests/usb-hcd-xhci-test.c
+@@ -35,6 +35,15 @@ static void test_usb_uas_hotplug(void)
+     qtest_qmp_device_del("uas");
+ }
 =20
--    if (ep & USB_DIR_IN) {
-+    if (ep & USB_DIR_IN || size =3D=3D 0) {
-         usbredirparser_send_bulk_packet(dev->parser, p->id,
-                                         &bulk_packet, NULL, 0);
-     } else {
++static void test_usb_ccid_hotplug(void)
++{
++    qtest_qmp_device_add("usb-ccid", "ccid", NULL);
++    qtest_qmp_device_del("ccid");
++    /* check the device can be added again */
++    qtest_qmp_device_add("usb-ccid", "ccid", NULL);
++    qtest_qmp_device_del("ccid");
++}
++
+ int main(int argc, char **argv)
+ {
+     int ret;
+@@ -44,6 +53,7 @@ int main(int argc, char **argv)
+     qtest_add_func("/xhci/pci/init", test_xhci_init);
+     qtest_add_func("/xhci/pci/hotplug", test_xhci_hotplug);
+     qtest_add_func("/xhci/pci/hotplug/usb-uas", test_usb_uas_hotplug);
++    qtest_add_func("/xhci/pci/hotplug/usb-ccid", test_usb_ccid_hotplug);
+=20
+     qtest_start("-device nec-usb-xhci,id=3Dxhci"
+                 " -drive id=3Ddrive0,if=3Dnone,file=3Dnull-co://,format=3D=
+raw");
 --=20
 2.9.3
 

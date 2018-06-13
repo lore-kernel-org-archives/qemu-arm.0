@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id n23-v6sm2705505wmh.6.2018.06.13.05.56.03
+        by smtp.gmail.com with ESMTPSA id b204-v6sm3108925wmh.22.2018.06.13.05.56.03
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 13 Jun 2018 05:56:05 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 875D53E119C;
+	by zen.linaro.local (Postfix) with ESMTP id 943663E11E6;
 	Wed, 13 Jun 2018 13:56:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
@@ -12,162 +12,106 @@ Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH v3 07/22] risugen: add --sve support
-Date: Wed, 13 Jun 2018 13:55:46 +0100
-Message-Id: <20180613125601.14371-8-alex.bennee@linaro.org>
+Subject: [RISU PATCH v3 08/22] risugen: Initialize sve predicates with random data
+Date: Wed, 13 Jun 2018 13:55:47 +0100
+Message-Id: <20180613125601.14371-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180613125601.14371-1-alex.bennee@linaro.org>
 References: <20180613125601.14371-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4Y14r7/YNgyv
+X-TUID: N5luMtXM5idm
 
-This is similar to the approach used by the FP/simd data in so far as
-we generate a block of random data and then load into it. The loading
-is actually done by the current vector length but that is implicit in
-the run anyway.
+From: Richard Henderson <richard.henderson@linaro.org>
 
+Using ptrue makes most of the uses of predicates trivial.
+Therefore, initialize them to something interesting.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - only one SIMD/FP/SVE block as they alias
-  - move efficient loading as suggested by Dave
----
- risugen        |  3 +++
- risugen_arm.pm | 56 ++++++++++++++++++++++++++++++++++++++++++--------
- 2 files changed, 50 insertions(+), 9 deletions(-)
+ risugen_arm.pm | 48 ++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 34 insertions(+), 14 deletions(-)
 
-diff --git a/risugen b/risugen
-index 488d804..de3f5ea 100755
---- a/risugen
-+++ b/risugen
-@@ -319,6 +319,7 @@ sub main()
-     my $condprob = 0;
-     my $fpscr = 0;
-     my $fp_enabled = 1;
-+    my $sve_enabled = 1;
-     my $big_endian = 0;
-     my ($infile, $outfile);
- 
-@@ -336,6 +337,7 @@ sub main()
-                 },
-                 "be" => sub { $big_endian = 1; },
-                 "no-fp" => sub { $fp_enabled = 0; },
-+                "sve" => sub { $sve_enabled = 1; },
-         ) or return 1;
-     # allow "--pattern re,re" and "--pattern re --pattern re"
-     @pattern_re = split(/,/,join(',',@pattern_re));
-@@ -363,6 +365,7 @@ sub main()
-         'fpscr' => $fpscr,
-         'numinsns' => $numinsns,
-         'fp_enabled' => $fp_enabled,
-+        'sve_enabled' => $sve_enabled,
-         'outfile' => $outfile,
-         'details' => \%insn_details,
-         'keys' => \@insn_keys,
 diff --git a/risugen_arm.pm b/risugen_arm.pm
-index 2f10d58..bb3ee90 100644
+index bb3ee90..83e521d 100644
 --- a/risugen_arm.pm
 +++ b/risugen_arm.pm
-@@ -472,14 +472,51 @@ sub write_random_aarch64_fpdata()
-     }
+@@ -174,6 +174,24 @@ sub write_sxt32($$)
+     insn32(0x93407c00 | $rn << 5 | $rd);
  }
  
--sub write_random_aarch64_regdata($)
-+sub write_random_aarch64_svedata()
- {
--    my ($fp_enabled) = @_;
-+    # Load SVE registers
-+    my $align = 16;
-+    my $vq = 16;                             # quadwords per vector
-+    my $datalen = (32 * $vq * 16) + $align;
++sub write_add_rri($$$)
++{
++    my ($rd, $rn, $i) = @_;
++    my $sh;
 +
-+    write_pc_adr(0, (3 * 4) + ($align - 1)); # insn 1
-+    write_align_reg(0, $align);              # insn 2
-+    write_jump_fwd($datalen);                # insn 3
++    die "write_add_rri: invalid operation for this arch.\n" if (!$is_aarch64);
 +
-+    # align safety
-+    for (my $i = 0; $i < ($align / 4); $i++) {
-+        # align with nops
-+        insn32(0xd503201f);
-+    };
-+
-+    for (my $rt = 0; $rt <= 31; $rt++) {
-+        for (my $q = 0; $q < $vq; $q++) {
-+            write_random_fpreg_var(4); # quad
-+        }
++    if ($i >= 0 && $i < 0x1000) {
++        $sh = 0;
++    } elsif (($i & 0xfff) || $i >= 0x1000000) {
++        die "invalid immediate for this arch,\n";
++    } else {
++        $sh = 1;
++        $i >>= 12;
 +    }
-+
-+    # Reset all the predicate registers to all true
-+    for (my $p = 0; $p < 16; $p++) {
-+        insn32(0x2518e3e0 | $p);
-+    }
-+
-+    for (my $rt = 0; $rt <= 31; $rt++) {
-+        # ldr z$rt, [x0, #$rt, mul vl]
-+        insn32(0x85804000 + $rt + (($rt & 7) << 10) + (($rt & 0x18) << 13));
-+    }
++    insn32(0x91000000 | ($rd << 0) | ($rn << 5) | ($i << 10) | ($sh << 22));
 +}
 +
-+sub write_random_aarch64_regdata($$)
-+{
-+    my ($fp_enabled, $sve_enabled) = @_;
-     # clear flags
-     insn32(0xd51b421f);     # msr nzcv, xzr
+ sub write_sub_rrr($$$)
+ {
+     my ($rd, $rn, $rm) = @_;
+@@ -477,33 +495,35 @@ sub write_random_aarch64_svedata()
+     # Load SVE registers
+     my $align = 16;
+     my $vq = 16;                             # quadwords per vector
+-    my $datalen = (32 * $vq * 16) + $align;
+-
+-    write_pc_adr(0, (3 * 4) + ($align - 1)); # insn 1
+-    write_align_reg(0, $align);              # insn 2
+-    write_jump_fwd($datalen);                # insn 3
++    my $veclen = 32 * $vq * 16;
++    my $predlen = 16 * $vq * 2;
++    my $datalen = $veclen + $predlen;
  
--    if ($fp_enabled) {
--        # load floating point / SIMD registers
-+    # Load floating point / SIMD registers
-+    # (one or the other as they overlap)
-+    if ($sve_enabled) {
-+        write_random_aarch64_svedata();
-+    } elsif ($fp_enabled) {
-         write_random_aarch64_fpdata();
+-    # align safety
+-    for (my $i = 0; $i < ($align / 4); $i++) {
+-        # align with nops
+-        insn32(0xd503201f);
+-    };
++    write_pc_adr(0, 2 * 4);     # insn 1
++    write_jump_fwd($datalen);   # insn 2
+ 
+     for (my $rt = 0; $rt <= 31; $rt++) {
+         for (my $q = 0; $q < $vq; $q++) {
+             write_random_fpreg_var(4); # quad
+         }
+     }
+-
+-    # Reset all the predicate registers to all true
+-    for (my $p = 0; $p < 16; $p++) {
+-        insn32(0x2518e3e0 | $p);
++    for (my $rt = 0; $rt <= 15; $rt++) {
++        for (my $q = 0; $q < $vq; $q++) {
++            insn16(rand(0xffff));
++        }
      }
  
-@@ -490,12 +527,12 @@ sub write_random_aarch64_regdata($)
+     for (my $rt = 0; $rt <= 31; $rt++) {
+         # ldr z$rt, [x0, #$rt, mul vl]
+         insn32(0x85804000 + $rt + (($rt & 7) << 10) + (($rt & 0x18) << 13));
      }
++
++    write_add_rri(0, 0, $veclen);
++
++    for (my $rt = 0; $rt <= 15; $rt++) {
++        # ldr p$rt, [x0, #$pt, mul vl]
++        insn32(0x85800000 + $rt + (($rt & 7) << 10) + (($rt & 0x18) << 13));
++    }
  }
  
--sub write_random_register_data($)
-+sub write_random_register_data($$)
- {
--    my ($fp_enabled) = @_;
-+    my ($fp_enabled, $sve_enabled) = @_;
- 
-     if ($is_aarch64) {
--        write_random_aarch64_regdata($fp_enabled);
-+        write_random_aarch64_regdata($fp_enabled, $sve_enabled);
-     } else {
-         write_random_arm_regdata($fp_enabled);
-     }
-@@ -893,6 +930,7 @@ sub write_test_code($$$$$$$$)
-     my $fpscr = $params->{ 'fpscr' };
-     my $numinsns = $params->{ 'numinsns' };
-     my $fp_enabled = $params->{ 'fp_enabled' };
-+    my $sve_enabled = $params->{ 'sve_enabled' };
-     my $outfile = $params->{ 'outfile' };
- 
-     my %insn_details = %{ $params->{ 'details' } };
-@@ -918,7 +956,7 @@ sub write_test_code($$$$$$$$)
-         write_memblock_setup();
-     }
-     # memblock setup doesn't clean its registers, so this must come afterwards.
--    write_random_register_data($fp_enabled);
-+    write_random_register_data($fp_enabled, $sve_enabled);
-     write_switch_to_test_mode();
- 
-     for my $i (1..$numinsns) {
-@@ -930,7 +968,7 @@ sub write_test_code($$$$$$$$)
-         # Rewrite the registers periodically. This avoids the tendency
-         # for the VFP registers to decay to NaNs and zeroes.
-         if ($periodic_reg_random && ($i % 100) == 0) {
--            write_random_register_data($fp_enabled);
-+            write_random_register_data($fp_enabled, $sve_enabled);
-             write_switch_to_test_mode();
-         }
-         progress_update($i);
+ sub write_random_aarch64_regdata($$)
 -- 
 2.17.1

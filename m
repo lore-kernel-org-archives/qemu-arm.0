@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id f24-v6sm1927940wmc.0.2018.06.13.05.56.02
+        by smtp.gmail.com with ESMTPSA id n23-v6sm2705505wmh.6.2018.06.13.05.56.03
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jun 2018 05:56:03 -0700 (PDT)
+        Wed, 13 Jun 2018 05:56:05 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 6EF5D3E1154;
+	by zen.linaro.local (Postfix) with ESMTP id 875D53E119C;
 	Wed, 13 Jun 2018 13:56:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
@@ -12,47 +12,162 @@ Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH v3 05/22] risu: add zlib indication to help text
-Date: Wed, 13 Jun 2018 13:55:44 +0100
-Message-Id: <20180613125601.14371-6-alex.bennee@linaro.org>
+Subject: [RISU PATCH v3 07/22] risugen: add --sve support
+Date: Wed, 13 Jun 2018 13:55:46 +0100
+Message-Id: <20180613125601.14371-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180613125601.14371-1-alex.bennee@linaro.org>
 References: <20180613125601.14371-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BqNTRQYI2k6l
+X-TUID: 4Y14r7/YNgyv
 
-This is a simple aide-memoir as it can be tricky to determine this
-with a simple statically compiled binary.
+This is similar to the approach used by the FP/simd data in so far as
+we generate a block of random data and then load into it. The loading
+is actually done by the current vector length but that is implicit in
+the run anyway.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- risu.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/risu.c b/risu.c
-index 616fc33..c684c90 100644
---- a/risu.c
-+++ b/risu.c
-@@ -39,6 +39,9 @@ size_t signal_count;
- #ifdef HAVE_ZLIB
- #include <zlib.h>
- gzFile gz_trace_file;
-+#define TRACE_TYPE "compressed"
-+#else
-+#define TRACE_TYPE "uncompressed"
- #endif
+---
+v2
+  - only one SIMD/FP/SVE block as they alias
+  - move efficient loading as suggested by Dave
+---
+ risugen        |  3 +++
+ risugen_arm.pm | 56 ++++++++++++++++++++++++++++++++++++++++++--------
+ 2 files changed, 50 insertions(+), 9 deletions(-)
+
+diff --git a/risugen b/risugen
+index 488d804..de3f5ea 100755
+--- a/risugen
++++ b/risugen
+@@ -319,6 +319,7 @@ sub main()
+     my $condprob = 0;
+     my $fpscr = 0;
+     my $fp_enabled = 1;
++    my $sve_enabled = 1;
+     my $big_endian = 0;
+     my ($infile, $outfile);
  
- sigjmp_buf jmpbuf;
-@@ -273,7 +276,7 @@ void usage(void)
-     fprintf(stderr, "between master and apprentice risu processes.\n\n");
-     fprintf(stderr, "Options:\n");
-     fprintf(stderr, "  --master          Be the master (server)\n");
--    fprintf(stderr, "  -t, --trace=FILE  Record/playback trace file\n");
-+    fprintf(stderr, "  -t, --trace=FILE  Record/playback " TRACE_TYPE " trace file\n");
-     fprintf(stderr,
-             "  -h, --host=HOST   Specify master host machine (apprentice only)"
-             "\n");
+@@ -336,6 +337,7 @@ sub main()
+                 },
+                 "be" => sub { $big_endian = 1; },
+                 "no-fp" => sub { $fp_enabled = 0; },
++                "sve" => sub { $sve_enabled = 1; },
+         ) or return 1;
+     # allow "--pattern re,re" and "--pattern re --pattern re"
+     @pattern_re = split(/,/,join(',',@pattern_re));
+@@ -363,6 +365,7 @@ sub main()
+         'fpscr' => $fpscr,
+         'numinsns' => $numinsns,
+         'fp_enabled' => $fp_enabled,
++        'sve_enabled' => $sve_enabled,
+         'outfile' => $outfile,
+         'details' => \%insn_details,
+         'keys' => \@insn_keys,
+diff --git a/risugen_arm.pm b/risugen_arm.pm
+index 2f10d58..bb3ee90 100644
+--- a/risugen_arm.pm
++++ b/risugen_arm.pm
+@@ -472,14 +472,51 @@ sub write_random_aarch64_fpdata()
+     }
+ }
+ 
+-sub write_random_aarch64_regdata($)
++sub write_random_aarch64_svedata()
+ {
+-    my ($fp_enabled) = @_;
++    # Load SVE registers
++    my $align = 16;
++    my $vq = 16;                             # quadwords per vector
++    my $datalen = (32 * $vq * 16) + $align;
++
++    write_pc_adr(0, (3 * 4) + ($align - 1)); # insn 1
++    write_align_reg(0, $align);              # insn 2
++    write_jump_fwd($datalen);                # insn 3
++
++    # align safety
++    for (my $i = 0; $i < ($align / 4); $i++) {
++        # align with nops
++        insn32(0xd503201f);
++    };
++
++    for (my $rt = 0; $rt <= 31; $rt++) {
++        for (my $q = 0; $q < $vq; $q++) {
++            write_random_fpreg_var(4); # quad
++        }
++    }
++
++    # Reset all the predicate registers to all true
++    for (my $p = 0; $p < 16; $p++) {
++        insn32(0x2518e3e0 | $p);
++    }
++
++    for (my $rt = 0; $rt <= 31; $rt++) {
++        # ldr z$rt, [x0, #$rt, mul vl]
++        insn32(0x85804000 + $rt + (($rt & 7) << 10) + (($rt & 0x18) << 13));
++    }
++}
++
++sub write_random_aarch64_regdata($$)
++{
++    my ($fp_enabled, $sve_enabled) = @_;
+     # clear flags
+     insn32(0xd51b421f);     # msr nzcv, xzr
+ 
+-    if ($fp_enabled) {
+-        # load floating point / SIMD registers
++    # Load floating point / SIMD registers
++    # (one or the other as they overlap)
++    if ($sve_enabled) {
++        write_random_aarch64_svedata();
++    } elsif ($fp_enabled) {
+         write_random_aarch64_fpdata();
+     }
+ 
+@@ -490,12 +527,12 @@ sub write_random_aarch64_regdata($)
+     }
+ }
+ 
+-sub write_random_register_data($)
++sub write_random_register_data($$)
+ {
+-    my ($fp_enabled) = @_;
++    my ($fp_enabled, $sve_enabled) = @_;
+ 
+     if ($is_aarch64) {
+-        write_random_aarch64_regdata($fp_enabled);
++        write_random_aarch64_regdata($fp_enabled, $sve_enabled);
+     } else {
+         write_random_arm_regdata($fp_enabled);
+     }
+@@ -893,6 +930,7 @@ sub write_test_code($$$$$$$$)
+     my $fpscr = $params->{ 'fpscr' };
+     my $numinsns = $params->{ 'numinsns' };
+     my $fp_enabled = $params->{ 'fp_enabled' };
++    my $sve_enabled = $params->{ 'sve_enabled' };
+     my $outfile = $params->{ 'outfile' };
+ 
+     my %insn_details = %{ $params->{ 'details' } };
+@@ -918,7 +956,7 @@ sub write_test_code($$$$$$$$)
+         write_memblock_setup();
+     }
+     # memblock setup doesn't clean its registers, so this must come afterwards.
+-    write_random_register_data($fp_enabled);
++    write_random_register_data($fp_enabled, $sve_enabled);
+     write_switch_to_test_mode();
+ 
+     for my $i (1..$numinsns) {
+@@ -930,7 +968,7 @@ sub write_test_code($$$$$$$$)
+         # Rewrite the registers periodically. This avoids the tendency
+         # for the VFP registers to decay to NaNs and zeroes.
+         if ($periodic_reg_random && ($i % 100) == 0) {
+-            write_random_register_data($fp_enabled);
++            write_random_register_data($fp_enabled, $sve_enabled);
+             write_switch_to_test_mode();
+         }
+         progress_update($i);
 -- 
 2.17.1

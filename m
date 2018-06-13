@@ -1,106 +1,84 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp579657wrq;
-        Wed, 13 Jun 2018 04:49:07 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLblQwdVDrINh3AJBS509ENYzlACmJXGztCfHRK4ph4Mo1HCfP+4ublL938UkkmQV5MWlTX
-X-Received: by 2002:a37:d746:: with SMTP id m67-v6mr3937259qki.267.1528890547859;
-        Wed, 13 Jun 2018 04:49:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528890547; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp625320wrq;
+        Wed, 13 Jun 2018 05:30:09 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKV3nZzCMFD0ndo4T25WR/A6kLWCZpI72BWuS1ZK6me0XV26IcZvHScGV6/kMuTDs9nZf/x
+X-Received: by 2002:ac8:31d9:: with SMTP id i25-v6mr4064669qte.247.1528893009173;
+        Wed, 13 Jun 2018 05:30:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528893009; cv=none;
         d=google.com; s=arc-20160816;
-        b=TadrJ61IO3y0C7ScEm10YlPPSFG5OI2tTnHa61ZxK0YPOXlw5O/NI8B0QBMs9tBbus
-         dGJyacXg3nx9ps7Q9cKV80qjengZFTVr2vt8kIRuwBU9flXNKE0T0UPPv6k4nrd8yO1e
-         D1XuGOw1w3r425rZOBY75y9Ou/QnF7x+Bm+LAmFVk0SUGpxGkN+WvtbLhW+SMnErWFtk
-         ovOu+VkDY6yZTtdjCtIKo5cdBKozMhst61j/iH2zfBp8pGiB7SrvfqG/bpnWGQNe+thl
-         l5jpgQuH2snCIS8P/F+hkQnef79x2CsTuc4awyupjx/ZyOF5OMoUl3snNS5LpTCKNSoh
-         9cZw==
+        b=pLlO40UKNf81hTxX0WEomuz4au/cJ/AoF4VhMOenBK1+Zz8MwIwqBax0ikSqyANeWZ
+         LCHl1vi1I2AL3FaK0/VYLqelRPbI97NSk/mBeY0qxjsGaSgRN33u8Cw/bUynkbKvDk1F
+         l5AU9KWuqadOIPx3GP5unmWKUFstLzY+HnXRKIM9m1h4cvVjNRSIjdumYMgW2hkAPhAI
+         dfLJgGMpf2ZseHIaoqNAYbjFJC+QCxROVTSdWgRo5Tm1CjOxJH99n789zgkuicrRpwh4
+         ojhrR2rFUt78UhM6hgBzFzMBdU90nI3JRhWrbGvBNGbAyXOWjgao0TPRk78DKCakIjbr
+         ho1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=jgwnPRRh27YQYslsZ8Dh2Suw4Hfu3PHVCPixgXnYnqw=;
-        b=o2i3er1RUHqQgePuJdGhyrRHolB3B9B1npv+P3NaKnsYo4lrYYio3khIjxTA/pb47W
-         fseCV0TfOCHuSfoMXMctZBZ0j3ikXnAI5rVgSW/Sj1JLY+rt+O47tCsEkF1b6JYpwD6B
-         lKj6LMZ+NDqwNfoBZwL0+aT2bR+6icGj467KlWKMi6BiIEev+s4OD1DEUmdlMm2qeZ0w
-         9QslBKYsvcVmqn2HLyqEktgTxRtUf+8GvdviciS5g5MnmAwSU0tYHAjCRwyS/GXN4d75
-         W70IvcRRINoby2AWPpo8B/gguAMUiJoQapCzp7q2OkoH+qyBU1gWOnSJacrDtBKE+bTp
-         5+yw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=QhvoJeclAPLtXwaljbJvEAR0OIfk5Oc270HrnhEx2Xw=;
+        b=LQs6yXdhpBWrsvNYX+K5q/0qaB8kWGSiCRYd+Exs78NWEkTPCKPAkjK066mnMDJCfY
+         MlUas0A208G0BH8B47+ki+fJ/IUcdCo8sd+N6Zgi+wuW3twfPSoVt5KrGHfu2wOs4xmZ
+         dsasBb67JYkoh5yI7hpP9mTqr/30OanGPE+GFxRobo9UUhoX0V3+A3Ukg4VBAaBO0Mrv
+         5tpB8mxdYnVmV+/81HSaN2mH4IvnKrDpjVvq2Q8MTRYhd71JUiKW+s/mlaAue5EUPTG/
+         IhaeC62j1Qtwbw823AaqxaaeqE4V2ufi1JqHi77r/S9bpF+yQpjLoURnueA/MaRgXEkf
+         B7Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aTuvvlVt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i36-v6si2526261qvc.148.2018.06.13.04.49.07
+        by mx.google.com with ESMTPS id 14-v6si2389089qkf.324.2018.06.13.05.30.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Jun 2018 04:49:07 -0700 (PDT)
+        Wed, 13 Jun 2018 05:30:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aTuvvlVt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33336 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33800 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fT4Gx-0000Fe-CF
-	for alex.bennee@linaro.org; Wed, 13 Jun 2018 07:49:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34438)
+	id 1fT4ue-0002sm-Kd
+	for alex.bennee@linaro.org; Wed, 13 Jun 2018 08:30:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43259)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fT4Gp-0000Eh-MC
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 07:49:00 -0400
+	(envelope-from <kraxel@redhat.com>) id 1fT4uS-0002rB-6I
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 08:29:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fT4Go-0006Cx-OF
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 07:48:59 -0400
-Received: from mail-pl0-x244.google.com ([2607:f8b0:400e:c01::244]:42942)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fT4Gi-00069L-MY; Wed, 13 Jun 2018 07:48:52 -0400
-Received: by mail-pl0-x244.google.com with SMTP id w17-v6so1402688pll.9;
-	Wed, 13 Jun 2018 04:48:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=jgwnPRRh27YQYslsZ8Dh2Suw4Hfu3PHVCPixgXnYnqw=;
-	b=aTuvvlVtO60afbdMg1IDTDK64KZZcsjYJlMu/QNzbGEaq0FRSg03CirOZAZ/InZpzt
-	Jslc14b/RduTYM9d48UgL3TjZh8KHCPaZ2MCGYvHUxMfLqAzDXwB2ApxJjNmzBNvOHUb
-	oYir9ujvm8GnDsshZZfU8x271dFXNfqE2K/oP2NCB/keRf2aVJjQJogcwfmPWu5VAGAO
-	PN0zb04XTcYYIQ8qcdDeJWvaciZw++nRox22Agc302Kdv6VRh4EDZrtqUF97EmxKgtf6
-	U+JlaJw9RipGdRIy8UzYrNUDrOR6wFO/owBqY9U3n2h2xwsHqaK6ZpVxU6Ciubpmclln
-	J4Fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=jgwnPRRh27YQYslsZ8Dh2Suw4Hfu3PHVCPixgXnYnqw=;
-	b=dhDDPBpkfuQ5Rw0WnAF/xZe46UMcQ1r7ppdqzaZrLya4dMrmyFpxjlD2hkZW8uW2sW
-	uTTp/LjLRUgx+24Xse2pLIMatG4OlsxD43rVaQJ5UoYFUaXg0SvF1QfPrQdC2hnbNezz
-	1jBCppb9cyvSBbqSudkoGrq/tfBkmjhg4+9kywDAU0m/Zkf3qvNctKXbSu1x2WGHVaS6
-	5Q2hXZcT8Y9IhVVhXDhDbJN42ioGl9Ksq2A87p2ptvVDmj0hxHSFTEwlfb0QrxvpasNu
-	Vpj5hZqOcJxrgb2PVM2lzRGVNhYBzksjXDdOKwHrvKt2OYrUbLPJsq/iCRVyKSUquzX3
-	NSnQ==
-X-Gm-Message-State: APt69E2Fm5Q+6a/yQddFVbE3BsvDjX/NcjvIj9XV8L3Vjen6GBWSciGR
-	FEBRnkwfeGM/4Xo0vy4w1ko=
-X-Received: by 2002:a17:902:1029:: with SMTP id
-	b38-v6mr4771604pla.277.1528890531113; 
-	Wed, 13 Jun 2018 04:48:51 -0700 (PDT)
-Received: from aurora.jms.id.au ([45.124.203.19])
-	by smtp.gmail.com with ESMTPSA id
-	c67-v6sm4988328pfj.173.2018.06.13.04.48.47
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 13 Jun 2018 04:48:50 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Wed, 13 Jun 2018 21:18:44 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Wed, 13 Jun 2018 21:18:36 +0930
-Message-Id: <20180613114836.9265-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::244
-Subject: [Qemu-arm] [PATCH v4] aspeed_scu: Implement RNG register
+	(envelope-from <kraxel@redhat.com>) id 1fT4uO-0005qq-Vo
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 08:29:56 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53084 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1fT4uO-0005oG-Rg; Wed, 13 Jun 2018 08:29:52 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9E6C98185331;
+	Wed, 13 Jun 2018 12:29:51 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
+	[10.36.116.109])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 226CE2024CA6;
+	Wed, 13 Jun 2018 12:29:51 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id E9A6724EF16; Wed, 13 Jun 2018 14:29:48 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 13 Jun 2018 14:29:44 +0200
+Message-Id: <20180613122948.18149-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 13 Jun 2018 12:29:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 13 Jun 2018 12:29:51 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v5 0/4] ramfb: simple boot framebuffer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,81 +90,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?L=C3=A1szl=C3=B3=20=C3=89rsek?= <lersek@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eCYiH9kae/kR
+X-TUID: nNlfnBbrh2K4
 
-The ASPEED SoCs contain a single register that returns random data when
-read. This models that register so that guests can use it.
+  Hi,
 
-The random number data register has a corresponding control register,
-however it returns data regardless of the state of the enabled bit, so
-the model follows this behaviour.
+So, the first ramfb bits should be ready for merge.  This series
+includes the ramfb core support bits, the ramfb standalone device
+and vfio-pci-ramfb device for vgpu boot display support.
 
-When the qcrypto call fails we exit as the guest uses the random number
-device to feed it's entropy pool, which is used for cryptographic
-purposes.
+If you want play with it I recommend getting the bits from
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
-v2:
- - Remove call to qcrypto_random_init as this is done in main()
-v3:
- - Add Cédric's reviewed-by
- - Add a comment about why we don't check for the rng enable bit
-v4:
- - Bail out when random number api fails
----
- hw/misc/aspeed_scu.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+	https://www.kraxel.org/cgit/qemu/log/?h=sirius/ramfb
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 5e6d5744eeca..59315010db9a 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -16,6 +16,7 @@
- #include "qapi/visitor.h"
- #include "qemu/bitops.h"
- #include "qemu/log.h"
-+#include "crypto/random.h"
- #include "trace.h"
- 
- #define TO_REG(offset) ((offset) >> 2)
-@@ -154,6 +155,19 @@ static const uint32_t ast2500_a1_resets[ASPEED_SCU_NR_REGS] = {
-      [BMC_DEV_ID]      = 0x00002402U
- };
- 
-+static uint32_t aspeed_scu_get_random(void)
-+{
-+    Error *err = NULL;
-+    uint32_t num;
-+
-+    if (qcrypto_random_bytes((uint8_t *)&num, sizeof(num), &err)) {
-+        error_report_err(err);
-+        exit(1);
-+    }
-+
-+    return num;
-+}
-+
- static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
- {
-     AspeedSCUState *s = ASPEED_SCU(opaque);
-@@ -167,6 +181,12 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
-     }
- 
-     switch (reg) {
-+    case RNG_DATA:
-+        /* On hardware, RNG_DATA works regardless of
-+         * the state of the enable bit in RNG_CTRL
-+         */
-+        s->regs[RNG_DATA] = aspeed_scu_get_random();
-+        break;
-     case WAKEUP_EN:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Read of write-only offset 0x%" HWADDR_PRIx "\n",
+because they come with an updated seabios and a new vgabios rom and an
+experimental OVMF build.  Firmware patches are here:
+
+	https://www.kraxe.org/cgit/seabios/log/?h=ramfb
+	https://github.com/kraxel/edk2/commits/ramfb
+
+They should land upstream soon.
+
+changes:
+ v5: codestyle fixes.
+
+cheers,
+  Gerd
+
+Gerd Hoffmann (4):
+  hw/display: add ramfb, a simple boot framebuffer living in guest ram
+  hw/display: add standalone ramfb device
+  hw/vfio/display: add ramfb support
+  Add ramfb MAINTAINERS entry
+
+ include/hw/display/ramfb.h    | 12 ++++++
+ include/hw/vfio/vfio-common.h |  2 +
+ hw/arm/sysbus-fdt.c           |  7 ++++
+ hw/arm/virt.c                 |  2 +
+ hw/display/ramfb-standalone.c | 62 ++++++++++++++++++++++++++++
+ hw/display/ramfb.c            | 95 +++++++++++++++++++++++++++++++++++++++++++
+ hw/i386/pc_piix.c             |  2 +
+ hw/i386/pc_q35.c              |  2 +
+ hw/vfio/display.c             | 12 ++++++
+ hw/vfio/pci.c                 | 15 +++++++
+ MAINTAINERS                   |  6 +++
+ hw/display/Makefile.objs      |  3 ++
+ 12 files changed, 220 insertions(+)
+ create mode 100644 include/hw/display/ramfb.h
+ create mode 100644 hw/display/ramfb-standalone.c
+ create mode 100644 hw/display/ramfb.c
+
 -- 
-2.17.1
+2.9.3
 

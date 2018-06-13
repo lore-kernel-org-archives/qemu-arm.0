@@ -1,86 +1,86 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp403650wrq;
-        Wed, 13 Jun 2018 01:49:22 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKinFYF7+dVAYilBIxjq9MmIqTPP1IDvG8AcUlh0e4WA/fGyaAo1R9y1SaA+A2pJGq5+ibu
-X-Received: by 2002:a37:5687:: with SMTP id k129-v6mr3634957qkb.163.1528879762201;
-        Wed, 13 Jun 2018 01:49:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528879762; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp403729wrq;
+        Wed, 13 Jun 2018 01:49:27 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIOeYAyOBMkplvHqvIeCkBHfFJ0Zl/5ol5/dtG3K3FUvInAacAVjrayelyFIaQlRBU8iTMu
+X-Received: by 2002:ac8:2d6c:: with SMTP id o41-v6mr3685267qta.107.1528879767481;
+        Wed, 13 Jun 2018 01:49:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528879767; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/7UaYvVHiRfiTIy5sW8vY+1nA0neKOnosrju88QMz1YveToGOV674MB+MFPsrfHaG
-         5gsSuotNXHYcdHy5MauRyFjFElhkF+mX5yuarVP8H6IlJW6JjIrtNuImDiK30wrwSP6M
-         5zv8RfCc04LNsm8EcLFCqLV1EAhnnF4Leid3CZdEMVMqcH65VmUBclOUeINhfwF/+Gu/
-         3Fpnp3mBj03UHYtwzi4Hu8yDd9qnkjJArPHCFD8XMBGweHXUrQJQMacNjxqRTZFcdhBs
-         ZkcYSAVCD7683xSXKeZMmw4EYpx+d4yh2hgQyG1Yzy0C4nFiPZnJql4LK6MGXp2ASob/
-         FSbQ==
+        b=outK/Lysl6AIxsPLzEPUZ0+6XDNK8sjUpzeXNGciK/gBUc4uEmiRdq8Ye83AxOnmd+
+         sxvGiaiVla0+RbEz1IsSB5+N2i8HwmPJCXOgkCH+bWdz8j16zTsdOuSJu4YDm36QysTw
+         h1ihUquBoFflteqrmsFcjFPmVQVbV/gNtigHHtVw3cyUhdk5endc4Rb9XauZsOY1+sZj
+         +6SE8kwMwv67FcmkPrXiu3q4nUc4KnReFxydG08l34sITjWRDYfloqn5O8BkdkwqrQKp
+         abcqriKMDYyM5/zJOYA3JYvebzHlh+T5KcG/BpvVJZdInrh9gdaS5F2tjpW1T4bKeMUH
+         gGDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=An8l0BjhRSu6NhAMIdvqi9KK8DEAY3SLB1+/c3U8npU=;
-        b=nh8cfAJqyTggJFbcXgMCK4c70BERWWN67K+4omT66Tqx1c+FDB2BNXXRwe5UD9A+25
-         aYqg63GqRSowdGRYj4/2bkPrKsHou6VYKBENeBQ1K4P2qnlJK1kyeaW2gc+YltGBNdN7
-         3+QwgFbyYsfSC0VFkZWfOfmgACFz/57LI1vUqb499+OSV0HCtBZcV2asrsc1dAEIXHvB
-         irWBKNCeu8ZMZA7h6aIxDZ9qy/l+tfQwxayZodHFFowK4f5qKFOS7TbOpMZva92tTlFx
-         IHmd4Ip6GEasHh7pS7Bf/m4LLXv5/o6Azuq35I+4krSWdICyL81XMgJbVRlttmbBB10f
-         K98w==
+        bh=KiG1nxuDp8zsyfU4JCd29fi0zu15T+buVBLDVMqdUA8=;
+        b=GklClK/q1EeLJgUT4ENR/2d4s3CyBPpnXW5pn3zexmH9n1+6HnCYzFKYPoNbDYP+pL
+         yI6VY4uY74izJH1OG1QJpSOvYO18D3VPsp/Yg9cVkXRNPE6wSDDW+LrCn9s8gUO0iUc0
+         K1xeckaaN7l9AXY7zI73XUMKnJKmxj35SvbihBk0O5RdPtApdnlNJco39rHnaZCd1pc4
+         wqy6y/tT3TgqcaB0NsJkmbooJzxVb03CNKoeevZrmQkjSqG5/Wxw/bnGpk6TU0cTOaYp
+         Bcnit5WRaYICf37IdaNHMo/5jI2HxmBbjkAbcgJNH7GpV/hgN9WwjUWNjlHOPZaGrHRe
+         gdPw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v7-v6si2081197qve.239.2018.06.13.01.49.22
+        by mx.google.com with ESMTPS id c10-v6si2011979qvn.121.2018.06.13.01.49.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Jun 2018 01:49:22 -0700 (PDT)
+        Wed, 13 Jun 2018 01:49:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60761 helo=lists.gnu.org)
+Received: from localhost ([::1]:60763 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fT1Sz-0002HJ-IE
-	for alex.bennee@linaro.org; Wed, 13 Jun 2018 04:49:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56410)
+	id 1fT1T5-0002Le-0k
+	for alex.bennee@linaro.org; Wed, 13 Jun 2018 04:49:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fT1Si-0002A2-5F
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:49:07 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fT1Sm-0002F0-I0
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:49:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fT1Sh-0003si-65
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:49:04 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51082 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fT1Sl-0003uZ-OP
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:49:08 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46564 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fT1Sh-0003sQ-1R; Wed, 13 Jun 2018 04:49:03 -0400
+	id 1fT1Sl-0003uA-Ih; Wed, 13 Jun 2018 04:49:07 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7BBD7401EF05;
-	Wed, 13 Jun 2018 08:49:02 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C54D818BAF3;
+	Wed, 13 Jun 2018 08:49:06 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-69.ams2.redhat.com
 	[10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A72DE1116703;
-	Wed, 13 Jun 2018 08:49:00 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C38961116703;
+	Wed, 13 Jun 2018 08:49:04 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Wed, 13 Jun 2018 10:48:38 +0200
-Message-Id: <1528879723-24675-5-git-send-email-eric.auger@redhat.com>
+Date: Wed, 13 Jun 2018 10:48:40 +0200
+Message-Id: <1528879723-24675-7-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1528879723-24675-1-git-send-email-eric.auger@redhat.com>
 References: <1528879723-24675-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Wed, 13 Jun 2018 08:49:02 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Wed, 13 Jun 2018 08:49:02 +0000 (UTC) for IP:'10.11.54.3'
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 13 Jun 2018 08:49:06 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 13 Jun 2018 08:49:06 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH 4/9] hw/intc/arm_gicv3_kvm: Get prepared to
- handle multiple redist regions
+Subject: [Qemu-arm] [PATCH 6/9] hw/arm/virt-acpi-build: Advertise one or two
+ GICR structures
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,86 +96,43 @@ Cc: drjones@redhat.com, ard.biesheuvel@linaro.org, marc.zyngier@arm.com,
 	christoffer.dall@arm.com, zhaoshenglong@huawei.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1eIWxknizRTZ
+X-TUID: h9qoz3A+SVPU
 
-Let's check if KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION is supported.
-If not, we check the number of redist region is equal to 1 and use the
-legacy KVM_VGIC_V3_ADDR_TYPE_REDIST attribute. Otherwise we use
-the new attribute and allow to register multiple regions to the
-KVM device.
+Depending on the number of smp_cpus we now register one or two
+GICR structures.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
 ---
+ hw/arm/virt-acpi-build.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-v2 -> v3:
-- In kvm_arm_gicv3_realize rename val into add_ormask local variable and
-  add a comment
-- start the redist region registration  from s->nb_redist_regions - 1
-  downwards
----
- hw/intc/arm_gicv3_kvm.c | 33 ++++++++++++++++++++++++++++++---
- 1 file changed, 30 insertions(+), 3 deletions(-)
-
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index ed7b719..52e6e70 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -753,6 +753,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
- {
-     GICv3State *s = KVM_ARM_GICV3(dev);
-     KVMARMGICv3Class *kgc = KVM_ARM_GICV3_GET_CLASS(s);
-+    bool multiple_redist_region_allowed;
-     Error *local_err = NULL;
-     int i;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 74f5744..eefd1d4 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -670,6 +670,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  
-@@ -789,6 +790,18 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-         return;
-     }
+     if (vms->gic_version == 3) {
+         AcpiMadtGenericTranslator *gic_its;
++        int nb_redist_regions = virt_gicv3_redist_region_count(vms);
+         AcpiMadtGenericRedistributor *gicr = acpi_data_push(table_data,
+                                                          sizeof *gicr);
  
-+    multiple_redist_region_allowed =
-+        kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ADDR,
-+                              KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION);
-+
-+    if (!multiple_redist_region_allowed && s->nb_redist_regions > 1) {
-+        error_setg(errp, "Multiple VGICv3 redistributor regions are not "
-+                   "supported by this host kernel");
-+        error_append_hint(errp, "A maximum of %d VCPUs can be used",
-+                          s->redist_region_count[0]);
-+        return;
-+    }
-+
-     kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_NR_IRQS,
-                       0, &s->num_irq, true, &error_abort);
+@@ -678,6 +679,14 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         gicr->base_address = cpu_to_le64(memmap[VIRT_GIC_REDIST].base);
+         gicr->range_length = cpu_to_le32(memmap[VIRT_GIC_REDIST].size);
  
-@@ -798,9 +811,23 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
- 
-     kvm_arm_register_device(&s->iomem_dist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
-                             KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd, 0);
--    kvm_arm_register_device(&s->iomem_redist[0], -1,
--                            KVM_DEV_ARM_VGIC_GRP_ADDR,
--                            KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd, 0);
-+
-+    if (!multiple_redist_region_allowed) {
-+        kvm_arm_register_device(&s->iomem_redist[0], -1,
-+                                KVM_DEV_ARM_VGIC_GRP_ADDR,
-+                                KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd, 0);
-+    } else {
-+        for (i = s->nb_redist_regions - 1; i >= 0; i--) {
-+            /* Address mask made of the rdist region index and count */
-+            uint64_t addr_ormask =
-+                        i | ((uint64_t)s->redist_region_count[i] << 52);
-+
-+            kvm_arm_register_device(&s->iomem_redist[i], -1,
-+                                    KVM_DEV_ARM_VGIC_GRP_ADDR,
-+                                    KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION,
-+                                    s->dev_fd, addr_ormask);
++        if (nb_redist_regions == 2) {
++            gicr = acpi_data_push(table_data, sizeof(*gicr));
++            gicr->type = ACPI_APIC_GENERIC_REDISTRIBUTOR;
++            gicr->length = sizeof(*gicr);
++            gicr->base_address = cpu_to_le64(memmap[VIRT_GIC_REDIST2].base);
++            gicr->range_length = cpu_to_le32(memmap[VIRT_GIC_REDIST2].size);
 +        }
-+    }
- 
-     if (kvm_has_gsi_routing()) {
-         /* set up irq routing */
++
+         if (its_class_name() && !vmc->no_its) {
+             gic_its = acpi_data_push(table_data, sizeof *gic_its);
+             gic_its->type = ACPI_APIC_GENERIC_TRANSLATOR;
 -- 
 2.5.5
 

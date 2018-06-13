@@ -1,87 +1,86 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp397585wrq;
-        Wed, 13 Jun 2018 01:42:10 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKLYJegbwrlVlDUg8q5USCDiZVRPirxiKeb+bnWjdEgHh3z+zx9Suawwdw5IaL0pUzbDT/b
-X-Received: by 2002:a37:a08b:: with SMTP id j133-v6mr3578537qke.74.1528879330675;
-        Wed, 13 Jun 2018 01:42:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528879330; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp397718wrq;
+        Wed, 13 Jun 2018 01:42:20 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKI3eZpG3tvYpgWg1Xsvl0xnE7MTaWCsTqSAkVZq+ezn1Xze+Me4LMH6vQ8kwOyYTdiwKF+z
+X-Received: by 2002:a37:7b02:: with SMTP id w2-v6mr3411621qkc.247.1528879339970;
+        Wed, 13 Jun 2018 01:42:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528879339; cv=none;
         d=google.com; s=arc-20160816;
-        b=aOWIFNcYlvAznMiL0+TSTNrO2ykAXT6HBDIoj9Z4oLGMT2Gp43HrNGD48Ps9P/rGyQ
-         lhsdZv4wW/aPrVVIND4ne6EagmdExkA32dtgoRZSDyGz8WiWHCcbpbCfIc70nnyn076f
-         fWtbIGzusUlVMWlriLHA4zrLR2FN2iB/96dJZkfKqSIQ4BFL1p37S4YKRK3tDWIV5BxP
-         u3HP8RW54zNIJw0rcgSh8WhVUFBo463lkSNGyD91nLfZ+hvV6Zm3uJTLV7jA3nHqxIWZ
-         QMmZRwmjVvKyCQ9ylM0oobJkQCDqivSj8GVCTgah+Gv0laoSK2TDuF6EDmBG+yO1Ph4x
-         Ak2w==
+        b=HqoTiqTDIT422h/y+KikqDr9Av6c3PLNvINHbCqiGJqLAdDG7RQXrV7TISZhSIab5e
+         +IQq+aZQOvBRY5SejVV9bwwxTWBByurDYE6HYkI+t5l0fq19wSt6k9l3Hg7zroy4g5ZI
+         eG6IA896h689l1JZcfxqT+DFxJE2LOUAbUagmLMlEhV49WxJi9D+MOy0aOlYctUJNuSW
+         Nt9WJfbwo6E9+GsmvmgTFHMsBYagFX1c2NMIqI8Xp1bOh50SMSrQIrpilx2Bol67HyBq
+         C8Jcx/5jdVCmGrCjSPhi+gRR4zY5H8X6BRuS14eTFXXjqpYPeO+p6U4ayMozLyZNRxJ/
+         00UQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=z+I02w5NIYoUgefKkiEVXHFGv0w7l2/9PfeD8qLXXrQ=;
-        b=wjXuZVRonbykwQgfKkwnNpp46VhNhkg8T6eeHs8csySjHfbWjUdOQaQoS3S/QbvjpT
-         HuyTA8lwgNx0juByw7RQM/EuWcae7iXD14NrOtKcvoiJHWXIb4VudPqSO6g+sdhgqzqm
-         VI7DAhpX3bcew0LH+q8hNVaTML+3Bvu81lp9rDo0NnxbOCtJeJ19ijonXysgbtf6h/Rz
-         DbQV3gYm3xK9t7KJAXy7DgySXdldr9Tb3GbAY8X+KOW0RcI9S62gimJEdsb0uqraslRS
-         Bf5DiWvTvAh5AjDG6MU6oMeR7SMoSoSuWxC7uPSornv7ikZBC7YHAih85ykEKkB0CcLy
-         C43g==
+        bh=d8LTerYFUbu3tAuGJkhu5PV3U/AK2MBLRnqFnJiq7kM=;
+        b=LR19vq99SLf8JVv/PUQWkObsQnWb8RRsumqhQrgeWWCHGjZexgEGoK1htdST1z5F/V
+         4isHz7CZm2zsiMiVvSoNbQIFND4smtKOzMH1C4FAR5+mRoudoYZ2JsAQxnGs4+MuYpmW
+         7xctC3j4DBSa6XUYSQ416SP+2brT0bQmDyMf6a6NZ/QCTafq+yDVP6Yot+/BjcJw9oMR
+         HzfHpTB6AtFZZAnmS/33jCNPHMv6VQgX+29DmbcxfMyl6g/XSaaffFFQ5vYJcLpoltsA
+         nEpl+K+VtYq1Z4zCjPjkzQ0Irc05rGHdy4AuJgf5NnTmiU0BlOnsFHddJonaZ+bWTmLL
+         qgTA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l25-v6si2140941qtk.158.2018.06.13.01.42.10
+        by mx.google.com with ESMTPS id b12-v6si1972908qtq.229.2018.06.13.01.42.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 13 Jun 2018 01:42:10 -0700 (PDT)
+        Wed, 13 Jun 2018 01:42:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60722 helo=lists.gnu.org)
+Received: from localhost ([::1]:60723 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fT1M2-0005mD-42
-	for alex.bennee@linaro.org; Wed, 13 Jun 2018 04:42:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54742)
+	id 1fT1MB-0005q2-F5
+	for alex.bennee@linaro.org; Wed, 13 Jun 2018 04:42:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fT1Lq-0005jX-Ri
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:42:00 -0400
+	(envelope-from <kraxel@redhat.com>) id 1fT1Lm-0005gY-IA
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:41:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fT1Lp-00018S-Oe
-	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:41:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50876 helo=mx1.redhat.com)
+	(envelope-from <kraxel@redhat.com>) id 1fT1Lj-00016A-GH
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:41:54 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38758 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fT1Lp-00018B-Ik; Wed, 13 Jun 2018 04:41:57 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fT1Lj-00015v-BJ; Wed, 13 Jun 2018 04:41:51 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0D623401EF05;
-	Wed, 13 Jun 2018 08:41:57 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id DA21A4000D0B;
+	Wed, 13 Jun 2018 08:41:50 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
 	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B87C21C597;
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BC2CF20244E1;
 	Wed, 13 Jun 2018 08:41:49 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 23E62204B7; Wed, 13 Jun 2018 10:41:49 +0200 (CEST)
+	id 3CD5424EF16; Wed, 13 Jun 2018 10:41:49 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed, 13 Jun 2018 10:41:47 +0200
-Message-Id: <20180613084149.14523-2-kraxel@redhat.com>
+Date: Wed, 13 Jun 2018 10:41:49 +0200
+Message-Id: <20180613084149.14523-4-kraxel@redhat.com>
 In-Reply-To: <20180613084149.14523-1-kraxel@redhat.com>
 References: <20180613084149.14523-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Wed, 13 Jun 2018 08:41:57 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Wed, 13 Jun 2018 08:41:57 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.7]);
+	Wed, 13 Jun 2018 08:41:50 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Wed, 13 Jun 2018 08:41:50 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v4 1/3] hw/display: add ramfb,
- a simple boot framebuffer living in guest ram
+Subject: [Qemu-arm] [PATCH v4 3/3] hw/vfio/display: add ramfb support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,163 +103,110 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BUusrJ22V8BA
+X-TUID: prrmmjB+4ud3
 
-The boot framebuffer is expected to be configured by the firmware, so it
-uses fw_cfg as interface.  Initialization goes as follows:
+So we have a boot display when using a vgpu as primary display.
 
-  (1) Check whenever etc/ramfb is present.
-  (2) Allocate framebuffer from RAM.
-  (3) Fill struct RAMFBCfg, write it to etc/ramfb.
-
-Done.  You can write stuff to the framebuffer now, and it should appear
-automagically on the screen.
-
-Note that this isn't very efficient because it does a full display
-update on each refresh.  No dirty tracking.  Dirty tracking would have
-to be active for the whole ram slot, so that wouldn't be very efficient
-either.  For a boot display which is active for a short time only this
-isn't a big deal.  As permanent guest display something better should be
-used (if possible).
-
-This is the ramfb core code.  Some windup is needed for display devices
-which want have a ramfb boot display.
+Use vfio-pci-ramfb instead of vfio-pci to enable it.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/display/ramfb.h |  9 +++++
- hw/display/ramfb.c         | 95 ++++++++++++++++++++++++++++++++++++++++++++++
- hw/display/Makefile.objs   |  2 +
- 3 files changed, 106 insertions(+)
- create mode 100644 include/hw/display/ramfb.h
- create mode 100644 hw/display/ramfb.c
+ include/hw/vfio/vfio-common.h |  2 ++
+ hw/vfio/display.c             | 10 ++++++++++
+ hw/vfio/pci.c                 | 15 +++++++++++++++
+ 3 files changed, 27 insertions(+)
 
-diff --git a/include/hw/display/ramfb.h b/include/hw/display/ramfb.h
-new file mode 100644
-index 0000000000..a3d4c79942
---- /dev/null
-+++ b/include/hw/display/ramfb.h
-@@ -0,0 +1,9 @@
-+#ifndef RAMFB_H
-+#define RAMFB_H
-+
-+/* ramfb.c */
-+typedef struct RAMFBState RAMFBState;
-+void ramfb_display_update(QemuConsole *con, RAMFBState *s);
-+RAMFBState *ramfb_setup(Error **errp);
-+
-+#endif /* RAMFB_H */
-diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
-new file mode 100644
-index 0000000000..6867bce8ae
---- /dev/null
-+++ b/hw/display/ramfb.c
-@@ -0,0 +1,95 @@
-+/*
-+ * early boot framebuffer in guest ram
-+ * configured using fw_cfg
-+ *
-+ * Copyright Red Hat, Inc. 2017
-+ *
-+ * Author:
-+ *     Gerd Hoffmann <kraxel@redhat.com>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/loader.h"
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index a9036929b2..a58d7e7e77 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -26,6 +26,7 @@
+ #include "qemu/queue.h"
+ #include "qemu/notify.h"
+ #include "ui/console.h"
 +#include "hw/display/ramfb.h"
-+#include "ui/console.h"
-+#include "sysemu/sysemu.h"
+ #ifdef CONFIG_LINUX
+ #include <linux/vfio.h>
+ #endif
+@@ -143,6 +144,7 @@ typedef struct VFIODMABuf {
+ 
+ typedef struct VFIODisplay {
+     QemuConsole *con;
++    RAMFBState *ramfb;
+     struct {
+         VFIORegion buffer;
+         DisplaySurface *surface;
+diff --git a/hw/vfio/display.c b/hw/vfio/display.c
+index 59c0e5d1d7..409d5a2e3a 100644
+--- a/hw/vfio/display.c
++++ b/hw/vfio/display.c
+@@ -124,6 +124,9 @@ static void vfio_display_dmabuf_update(void *opaque)
+ 
+     primary = vfio_display_get_dmabuf(vdev, DRM_PLANE_TYPE_PRIMARY);
+     if (primary == NULL) {
++        if (dpy->ramfb) {
++            ramfb_display_update(dpy->con, dpy->ramfb);
++        }
+         return;
+     }
+ 
+@@ -181,6 +184,8 @@ static int vfio_display_dmabuf_init(VFIOPCIDevice *vdev, Error **errp)
+     vdev->dpy->con = graphic_console_init(DEVICE(vdev), 0,
+                                           &vfio_display_dmabuf_ops,
+                                           vdev);
++    if (strcmp(object_get_typename(OBJECT(vdev)), "vfio-pci-ramfb") == 0)
++        vdev->dpy->ramfb = ramfb_setup(errp);
+     return 0;
+ }
+ 
+@@ -228,6 +233,9 @@ static void vfio_display_region_update(void *opaque)
+         return;
+     }
+     if (!plane.drm_format || !plane.size) {
++        if (dpy->ramfb) {
++            ramfb_display_update(dpy->con, dpy->ramfb);
++        }
+         return;
+     }
+     format = qemu_drm_format_to_pixman(plane.drm_format);
+@@ -300,6 +308,8 @@ static int vfio_display_region_init(VFIOPCIDevice *vdev, Error **errp)
+     vdev->dpy->con = graphic_console_init(DEVICE(vdev), 0,
+                                           &vfio_display_region_ops,
+                                           vdev);
++    if (strcmp(object_get_typename(OBJECT(vdev)), "vfio-pci-ramfb") == 0)
++        vdev->dpy->ramfb = ramfb_setup(errp);
+     return 0;
+ }
+ 
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 18c493b49e..6a2b42a595 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -3234,9 +3234,24 @@ static const TypeInfo vfio_pci_dev_info = {
+     },
+ };
+ 
++static void vfio_pci_ramfb_dev_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+struct QEMU_PACKED RAMFBCfg {
-+    uint64_t addr;
-+    uint32_t fourcc;
-+    uint32_t flags;
-+    uint32_t width;
-+    uint32_t height;
-+    uint32_t stride;
++    dc->hotpluggable = false;
++}
++
++static const TypeInfo vfio_pci_ramfb_dev_info = {
++    .name = "vfio-pci-ramfb",
++    .parent = "vfio-pci",
++    .instance_size = sizeof(VFIOPCIDevice),
++    .class_init = vfio_pci_ramfb_dev_class_init,
 +};
 +
-+struct RAMFBState {
-+    DisplaySurface *ds;
-+    uint32_t width, height;
-+    struct RAMFBCfg cfg;
-+};
-+
-+static void ramfb_fw_cfg_write(void *dev, off_t offset, size_t len)
-+{
-+    RAMFBState *s = dev;
-+    void *framebuffer;
-+    uint32_t stride, fourcc, format;
-+    hwaddr addr, length;
-+
-+    s->width  = be32_to_cpu(s->cfg.width);
-+    s->height = be32_to_cpu(s->cfg.height);
-+    stride    = be32_to_cpu(s->cfg.stride);
-+    fourcc    = be32_to_cpu(s->cfg.fourcc);
-+    addr      = be64_to_cpu(s->cfg.addr);
-+    length    = stride * s->height;
-+    format    = qemu_drm_format_to_pixman(fourcc);
-+
-+    fprintf(stderr, "%s: %dx%d @ 0x%" PRIx64 "\n", __func__,
-+            s->width, s->height, addr);
-+    framebuffer = address_space_map(&address_space_memory,
-+                                    addr, &length, false,
-+                                    MEMTXATTRS_UNSPECIFIED);
-+    if (!framebuffer || length < stride * s->height) {
-+        s->width = 0;
-+        s->height = 0;
-+        return;
-+    }
-+    s->ds = qemu_create_displaysurface_from(s->width, s->height,
-+                                            format, stride, framebuffer);
-+}
-+
-+void ramfb_display_update(QemuConsole *con, RAMFBState *s)
-+{
-+    if (!s->width || !s->height) {
-+        return;
-+    }
-+
-+    if (s->ds) {
-+        dpy_gfx_replace_surface(con, s->ds);
-+        s->ds = NULL;
-+    }
-+
-+    /* simple full screen update */
-+    dpy_gfx_update_full(con);
-+}
-+
-+RAMFBState *ramfb_setup(Error **errp)
-+{
-+    FWCfgState *fw_cfg = fw_cfg_find();
-+    RAMFBState *s;
-+
-+    if (!fw_cfg || !fw_cfg->dma_enabled) {
-+        error_setg(errp, "ramfb device requires fw_cfg with DMA");
-+        return NULL;
-+    }
-+
-+    s = g_new0(RAMFBState, 1);
-+
-+    fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
-+                             NULL, ramfb_fw_cfg_write, s,
-+                             &s->cfg, sizeof(s->cfg), false);
-+    return s;
-+}
-diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
-index b5d97ab26d..0af04985d2 100644
---- a/hw/display/Makefile.objs
-+++ b/hw/display/Makefile.objs
-@@ -1,3 +1,5 @@
-+common-obj-y += ramfb.o
-+
- common-obj-$(CONFIG_ADS7846) += ads7846.o
- common-obj-$(CONFIG_VGA_CIRRUS) += cirrus_vga.o
- common-obj-$(CONFIG_G364FB) += g364fb.o
+ static void register_vfio_pci_dev_type(void)
+ {
+     type_register_static(&vfio_pci_dev_info);
++    type_register_static(&vfio_pci_ramfb_dev_info);
+ }
+ 
+ type_init(register_vfio_pci_dev_type)
 -- 
 2.9.3
 

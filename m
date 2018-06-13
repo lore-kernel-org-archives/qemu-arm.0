@@ -1,190 +1,150 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp743632wrq;
-        Mon, 4 Jun 2018 08:29:53 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLmFdm+XP2DV2XGfMEFTA6J6m7aXWuHysfqCTxfBjzHjG2GUgRSLqWl8wX08q17glSVQ5sY
-X-Received: by 2002:a1c:1050:: with SMTP id 77-v6mr1989366wmq.136.1528126193303;
-        Mon, 04 Jun 2018 08:29:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528126193; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp397508wrq;
+        Wed, 13 Jun 2018 01:42:04 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJHcikVVBX9NnjX8pBD501g5aPepvBXFCcHwM9xHIyqNoZJOT7Y1uWS/WyKk32omUhPtIC6
+X-Received: by 2002:aed:2448:: with SMTP id s8-v6mr3680734qtc.336.1528879324060;
+        Wed, 13 Jun 2018 01:42:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528879324; cv=none;
         d=google.com; s=arc-20160816;
-        b=JLdvnbAyIwwReRLC04b+8fGHH64A77DXzjSKV4goP/ti9hafT4k+6yEG7bJwb065bu
-         SnnBM9ZpvAjEmxx6AW81QxToQBbRP7Vr43uKuRy1h+NeSxTJRWI700Xp9JBZm/g8A4he
-         82bvsl4J+A2DeJ7UStUouMOzuF/ST7Er83TR5plkJyy1RQMUdDs1nAstXoCsbG2BTqLY
-         3Lb4q1j3O+iw/R+Di37ebFtjtt6t7meold78svRYmj2R4qiyMaiz44yuqkEfFNP7OL3+
-         xJ5R6kWutmkjKzxNPHqs/+ZqzROZmw4bJ9bmOXq+hYPLA6tlCpb5F59K6mrammA5E2zs
-         COCw==
+        b=l43Aj+zl28xlI7egVl3+9aIyUWoX/a5Uzp/zspBSepPtPm+G3wboGNtGfBum91W4Sp
+         EBe7yZ5/gWnymlstMoIkBGK3qRe7NmYKeFe1sn4u4p0EiofT/KOZUTLFE3+7TvOxNJ42
+         EDzBwSfLjNNNmlb+mE0fayV5Q/M0oWpVt1MO2zQZrlm1V3r/ATfTikwufrZD3MtGSz9z
+         oDdTEBhZw7a4lS8y8oUwa2lBM7eQ7oxM1yU9DuGOtJ2h97nYKFE5MafFQsx1yIWxHQfd
+         +HqOv3GVJA/vFKTxRZ4MQiwfPDjDi74fc/Q0Qr/6A1pgKUMc0ey1fIXoWcub5/uhQB3W
+         GpMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=2Ma5RmBDcZGDRc9kRktEKkj5b0qnc5qOd02LGRjpJdM=;
-        b=oJq2MbgwvDq2tiWEmpXtQgLMeoY4ohaOY2bakOPjgtdH2q/nF5Isnd5SBD0ojlSfY+
-         KZp3w84Skq6EmFSIYn0pSskgbh4U6+uZCWd+c7Jof9/L0CS28U3xV23JKw7KdEiHrada
-         c8clfhDgJW9PC386vTPA23CRfkB6yubvlRlQZ0xC+ZgeTAFGQIW4Z2bEC1ElJdJHnWUM
-         gO77IGEmuUc6G9qWB4F4zMWGnKf9DQwp/OBAgK8ChR39xX2iRSLe2Vmhn7oWNGQFeN++
-         WYIg0rlPklOZtiztjGoDGzP4CKdVxYBxFaPEGWi9xelz7aSMIOkk9oThStQRaE2DmhHf
-         I5fg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=/SnrIl+XFMKCC/FXFMCbiY2n5q2hfgqxyDz6uX6MRNo=;
+        b=KTU0xzKye+RN9AXrzGsoUkeGmDPMdG25oGjiuE/MSDRogizwVSct2wcMuLPOpftLa/
+         ZVVO/iUA7s1z65raCaM/HcGP+CXJcGVekHixGkL/iC2ox4SHV2IpLORThAqDqdtMTMob
+         Ewu4tAackXfSFvyQXv71mZ3GZt+LxN1rzcEBduSD5v7tXXLp5JFQZwYISWKqww/BZt1W
+         XzSHMC5mYoKCZ55KiC4xYrA2fUB/g8ayCGhhx1vXS+3OS9zavD+1lwfXCudZkp6r0RUT
+         R9nS2cJDLRySJn0+6zXHAcCvRoieF8GnZxTAZuoyT3G4xoJLbuG/557mH5xhIDyBKdN6
+         t86Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pm215@archaic.org.uk>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by mx.google.com with ESMTPS id x15-v6si303147wmf.202.2018.06.04.08.29.53
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Jun 2018 08:29:53 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) client-ip=2001:8b0:1d0::2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id x25-v6si516541qtm.155.2018.06.13.01.42.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 13 Jun 2018 01:42:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of pm215@archaic.org.uk designates 2001:8b0:1d0::2 as permitted sender) smtp.mailfrom=pm215@archaic.org.uk;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fPrQe-00076r-OQ; Mon, 04 Jun 2018 16:29:52 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>,
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60718 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fT1Lv-0005gl-Hh
+	for alex.bennee@linaro.org; Wed, 13 Jun 2018 04:42:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54686)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <kraxel@redhat.com>) id 1fT1Lm-0005gX-I9
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:41:55 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <kraxel@redhat.com>) id 1fT1Lj-000163-F9
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 04:41:54 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46398 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1fT1Lj-00015n-A1; Wed, 13 Jun 2018 04:41:51 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7F9A6818BAF3;
+	Wed, 13 Jun 2018 08:41:50 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
+	[10.36.116.109])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B6A0420244E0;
+	Wed, 13 Jun 2018 08:41:49 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 1AC5011AB8; Wed, 13 Jun 2018 10:41:49 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 13 Jun 2018 10:41:46 +0200
+Message-Id: <20180613084149.14523-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 13 Jun 2018 08:41:50 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 13 Jun 2018 08:41:50 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v4 0/3] ramfb: simple boot framebuffer
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>
-Subject: [PATCH v2 13/13] hw/arm/mps2-tz.c: Instantiate MPCs
-Date: Mon,  4 Jun 2018 16:29:41 +0100
-Message-Id: <20180604152941.20374-14-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180604152941.20374-1-peter.maydell@linaro.org>
-References: <20180604152941.20374-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: uqMtkqnEKfR3
+	=?UTF-8?q?L=C3=A1szl=C3=B3=20=C3=89rsek?= <lersek@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XdFK98WtGINf
 
-Instantiate and wire up the Memory Protection Controllers
-in the MPS2 board itself.
+  Hi,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- hw/arm/mps2-tz.c | 71 ++++++++++++++++++++++++++++++------------------
- 1 file changed, 44 insertions(+), 27 deletions(-)
+So, the first ramfb bits should be ready for merge.  This series
+includes the ramfb core support bits, the ramfb standalone device
+and vfio-pci-ramfb device for vgpu boot display support.
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 8dc8bfd4ab2..a58b5dea79f 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -44,6 +44,7 @@
- #include "hw/timer/cmsdk-apb-timer.h"
- #include "hw/misc/mps2-scc.h"
- #include "hw/misc/mps2-fpgaio.h"
-+#include "hw/misc/tz-mpc.h"
- #include "hw/arm/iotkit.h"
- #include "hw/devices.h"
- #include "net/net.h"
-@@ -64,13 +65,12 @@ typedef struct {
- 
-     IoTKit iotkit;
-     MemoryRegion psram;
--    MemoryRegion ssram1;
-+    MemoryRegion ssram[3];
-     MemoryRegion ssram1_m;
--    MemoryRegion ssram23;
-     MPS2SCC scc;
-     MPS2FPGAIO fpgaio;
-     TZPPC ppc[5];
--    UnimplementedDeviceState ssram_mpc[3];
-+    TZMPC ssram_mpc[3];
-     UnimplementedDeviceState spi[5];
-     UnimplementedDeviceState i2c[4];
-     UnimplementedDeviceState i2s_audio;
-@@ -95,16 +95,6 @@ typedef struct {
- /* Main SYSCLK frequency in Hz */
- #define SYSCLK_FRQ 20000000
- 
--/* Initialize the auxiliary RAM region @mr and map it into
-- * the memory map at @base.
-- */
--static void make_ram(MemoryRegion *mr, const char *name,
--                     hwaddr base, hwaddr size)
--{
--    memory_region_init_ram(mr, NULL, name, size, &error_fatal);
--    memory_region_add_subregion(get_system_memory(), base, mr);
--}
--
- /* Create an alias of an entire original MemoryRegion @orig
-  * located at @base in the memory map.
-  */
-@@ -224,6 +214,44 @@ static MemoryRegion *make_fpgaio(MPS2TZMachineState *mms, void *opaque,
-     return sysbus_mmio_get_region(SYS_BUS_DEVICE(fpgaio), 0);
- }
- 
-+static MemoryRegion *make_mpc(MPS2TZMachineState *mms, void *opaque,
-+                              const char *name, hwaddr size)
-+{
-+    TZMPC *mpc = opaque;
-+    int i = mpc - &mms->ssram_mpc[0];
-+    MemoryRegion *ssram = &mms->ssram[i];
-+    MemoryRegion *upstream;
-+    char *mpcname = g_strdup_printf("%s-mpc", name);
-+    static uint32_t ramsize[] = { 0x00400000, 0x00200000, 0x00200000 };
-+    static uint32_t rambase[] = { 0x00000000, 0x28000000, 0x28200000 };
-+
-+    memory_region_init_ram(ssram, NULL, name, ramsize[i], &error_fatal);
-+
-+    init_sysbus_child(OBJECT(mms), mpcname, mpc,
-+                      sizeof(mms->ssram_mpc[0]), TYPE_TZ_MPC);
-+    object_property_set_link(OBJECT(mpc), OBJECT(ssram),
-+                             "downstream", &error_fatal);
-+    object_property_set_bool(OBJECT(mpc), true, "realized", &error_fatal);
-+    /* Map the upstream end of the MPC into system memory */
-+    upstream = sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 1);
-+    memory_region_add_subregion(get_system_memory(), rambase[i], upstream);
-+    /* and connect its interrupt to the IoTKit */
-+    qdev_connect_gpio_out_named(DEVICE(mpc), "irq", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&mms->iotkit),
-+                                                       "mpcexp_status", i));
-+
-+    /* The first SSRAM is a special case as it has an alias; accesses to
-+     * the alias region at 0x00400000 must also go to the MPC upstream.
-+     */
-+    if (i == 0) {
-+        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", upstream, 0x00400000);
-+    }
-+
-+    g_free(mpcname);
-+    /* Return the register interface MR for our caller to map behind the PPC */
-+    return sysbus_mmio_get_region(SYS_BUS_DEVICE(mpc), 0);
-+}
-+
- static void mps2tz_common_init(MachineState *machine)
- {
-     MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
-@@ -285,14 +313,6 @@ static void mps2tz_common_init(MachineState *machine)
-                                          NULL, "mps.ram", 0x01000000);
-     memory_region_add_subregion(system_memory, 0x80000000, &mms->psram);
- 
--    /* The SSRAM memories should all be behind Memory Protection Controllers,
--     * but we don't implement that yet.
--     */
--    make_ram(&mms->ssram1, "mps.ssram1", 0x00000000, 0x00400000);
--    make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x00400000);
--
--    make_ram(&mms->ssram23, "mps.ssram23", 0x28000000, 0x00400000);
--
-     /* The overflow IRQs for all UARTs are ORed together.
-      * Tx, Rx and "combined" IRQs are sent to the NVIC separately.
-      * Create the OR gate for this.
-@@ -322,12 +342,9 @@ static void mps2tz_common_init(MachineState *machine)
-     const PPCInfo ppcs[] = { {
-             .name = "apb_ppcexp0",
-             .ports = {
--                { "ssram-mpc0", make_unimp_dev, &mms->ssram_mpc[0],
--                  0x58007000, 0x1000 },
--                { "ssram-mpc1", make_unimp_dev, &mms->ssram_mpc[1],
--                  0x58008000, 0x1000 },
--                { "ssram-mpc2", make_unimp_dev, &mms->ssram_mpc[2],
--                  0x58009000, 0x1000 },
-+                { "ssram-0", make_mpc, &mms->ssram_mpc[0], 0x58007000, 0x1000 },
-+                { "ssram-1", make_mpc, &mms->ssram_mpc[1], 0x58008000, 0x1000 },
-+                { "ssram-2", make_mpc, &mms->ssram_mpc[2], 0x58009000, 0x1000 },
-             },
-         }, {
-             .name = "apb_ppcexp1",
+If you want play with it I recommend getting the bits from
+
+	https://www.kraxel.org/cgit/qemu/log/?h=sirius/ramfb
+
+because they come with an updated seabios and a new vgabios rom and an
+experimental OVMF build.  Firmware patches are here:
+
+	https://www.kraxe.org/cgit/seabios/log/?h=ramfb
+	https://github.com/kraxel/edk2/commits/ramfb
+
+They should land upstream soon.
+
+cheers,
+  Gerd
+
+Gerd Hoffmann (3):
+  hw/display: add ramfb, a simple boot framebuffer living in guest ram
+  hw/display: add standalone ramfb device
+  hw/vfio/display: add ramfb support
+
+ include/hw/display/ramfb.h    | 12 ++++++
+ include/hw/vfio/vfio-common.h |  2 +
+ hw/arm/sysbus-fdt.c           |  7 ++++
+ hw/arm/virt.c                 |  2 +
+ hw/display/ramfb-standalone.c | 62 ++++++++++++++++++++++++++++
+ hw/display/ramfb.c            | 95 +++++++++++++++++++++++++++++++++++++++++++
+ hw/i386/pc_piix.c             |  2 +
+ hw/i386/pc_q35.c              |  2 +
+ hw/vfio/display.c             | 10 +++++
+ hw/vfio/pci.c                 | 15 +++++++
+ hw/display/Makefile.objs      |  3 ++
+ 11 files changed, 212 insertions(+)
+ create mode 100644 include/hw/display/ramfb.h
+ create mode 100644 hw/display/ramfb-standalone.c
+ create mode 100644 hw/display/ramfb.c
+
 -- 
-2.17.1
+2.9.3
+

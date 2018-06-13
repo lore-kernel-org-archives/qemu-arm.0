@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id s10-v6sm4512025wmb.12.2018.06.13.05.56.06
+        by smtp.gmail.com with ESMTPSA id j4-v6sm2566981wrr.47.2018.06.13.06.04.45
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Jun 2018 05:56:09 -0700 (PDT)
+        Wed, 13 Jun 2018 06:04:45 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 0C6603E12E5;
+	by zen.linaro.local (Postfix) with ESMTP id 24DA33E1305;
 	Wed, 13 Jun 2018 13:56:02 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
@@ -12,171 +12,227 @@ Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH v3 17/22] risu_reginfo: introduce reginfo_size()
-Date: Wed, 13 Jun 2018 13:55:56 +0100
-Message-Id: <20180613125601.14371-18-alex.bennee@linaro.org>
+Subject: [RISU PATCH v3 19/22] risu_reginfo_aarch64: add support for copying SVE register state
+Date: Wed, 13 Jun 2018 13:55:58 +0100
+Message-Id: <20180613125601.14371-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180613125601.14371-1-alex.bennee@linaro.org>
 References: <20180613125601.14371-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 31AqWPTnMo3Y
+X-TUID: DjYozdiUMBNn
 
-In preparation for conditionally supporting SVE we need to be able to
-have different sized reginfos. This introduces reginfo_size() to
-abstract the size away to the code the actually knows. For aarch64 we
-also use this while initialising the block.
+Add the ability to save SVE registers from the signal context. This is
+controlled with an optional flag --test-sve. The whole thing is
+conditionally compiled when SVE support is in the sigcontext headers.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- reginfo.c              |  6 +++---
- risu.h                 |  3 +++
- risu_reginfo_aarch64.c | 11 ++++++++++-
- risu_reginfo_aarch64.h |  1 +
- risu_reginfo_arm.c     |  5 +++++
- risu_reginfo_m68k.c    |  5 +++++
- risu_reginfo_ppc64.c   |  5 +++++
- 7 files changed, 32 insertions(+), 4 deletions(-)
 
-diff --git a/reginfo.c b/reginfo.c
-index 1f55d06..dd42ae2 100644
---- a/reginfo.c
-+++ b/reginfo.c
-@@ -39,7 +39,7 @@ int send_register_info(write_fn write_fn, void *uc)
- 
-     switch (op) {
-     case OP_TESTEND:
--        write_fn(&ri, sizeof(ri));
-+        write_fn(&ri, reginfo_size());
-         /* if we are tracing write_fn will return 0 unlike a remote
-            end, hence we force return of 1 here */
-         return 1;
-@@ -58,7 +58,7 @@ int send_register_info(write_fn write_fn, void *uc)
-         /* Do a simple register compare on (a) explicit request
-          * (b) end of test (c) a non-risuop UNDEF
-          */
--        return write_fn(&ri, sizeof(ri));
-+        return write_fn(&ri, reginfo_size());
-     }
-     return 0;
- }
-@@ -101,7 +101,7 @@ int recv_and_compare_register_info(read_fn read_fn,
-         /* Do a simple register compare on (a) explicit request
-          * (b) end of test (c) a non-risuop UNDEF
-          */
--        if (read_fn(&apprentice_ri, sizeof(apprentice_ri))) {
-+        if (read_fn(&apprentice_ri, reginfo_size())) {
-             packet_mismatch = 1;
-             resp = 2;
-         } else if (!reginfo_is_eq(&master_ri, &apprentice_ri)) {
-diff --git a/risu.h b/risu.h
-index 48c50d9..8d2d646 100644
---- a/risu.h
-+++ b/risu.h
-@@ -133,4 +133,7 @@ int reginfo_dump(struct reginfo *ri, FILE * f);
- /* reginfo_dump_mismatch: print mismatch details to a stream, ret nonzero=ok */
- int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE *f);
- 
-+/* return size of reginfo */
-+const int reginfo_size(void);
-+
- #endif /* RISU_H */
+---
+v2
+  - support EXTRA_MAGIC contexts
+v3
+  - handle conditional bits
+  - include <signal.h> in reginfo.h
+  - move from helper function to main init function
+  - (void *) cast for memcpy
+  - additional ifdef SVE_MAGIC stuff
+---
+ risu_reginfo_aarch64.c | 107 ++++++++++++++++++++++++++++++++++++-----
+ risu_reginfo_aarch64.h |  16 ++++++
+ 2 files changed, 110 insertions(+), 13 deletions(-)
+
 diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
-index 62a5599..5da9e39 100644
+index 3ccaf0e..79db5dd 100644
 --- a/risu_reginfo_aarch64.c
 +++ b/risu_reginfo_aarch64.c
-@@ -15,6 +15,8 @@
- #include <string.h>
+@@ -16,13 +16,26 @@
  #include <signal.h> /* for FPSIMD_MAGIC */
  #include <stdlib.h>
-+#include <stddef.h>
-+#include <assert.h>
+ #include <stddef.h>
+-#include <assert.h>
++#include <stdbool.h>
  
  #include "risu.h"
  #include "risu_reginfo_aarch64.h"
-@@ -27,6 +29,13 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
+ 
++#ifndef SVE_MAGIC
+ const struct option * const arch_long_opts;
+ const char * const arch_extra_help;
++#else
++
++/* Should we test SVE register state */
++static int test_sve;
++static const struct option extra_opts[] = {
++    {"test-sve", no_argument, &test_sve, 1},
++    {0, 0, 0, 0}
++};
++
++const struct option * const arch_long_opts = &extra_opts[0];
++const char * const arch_extra_help = "  --test-sve        Compare SVE registers\n";
++#endif
+ 
+ void process_arch_opt(int opt, const char *arg)
+ {
+@@ -31,8 +44,12 @@ void process_arch_opt(int opt, const char *arg)
+ 
+ const int reginfo_size(void)
+ {
+-    const int size = offsetof(struct reginfo, simd.end);
+-    assert(sizeof(struct reginfo)==size);
++    int size = offsetof(struct reginfo, simd.end);
++#ifdef SVE_MAGIC
++    if (test_sve) {
++        size = offsetof(struct reginfo, sve.end);
++    }
++#endif
+     return size;
  }
  
-+const int reginfo_size(void)
-+{
-+    const int size = offsetof(struct reginfo, simd.end);
-+    assert(sizeof(struct reginfo)==size);
-+    return size;
-+}
-+
- /* reginfo_init: initialize with a ucontext */
+@@ -40,8 +57,12 @@ const int reginfo_size(void)
  void reginfo_init(struct reginfo *ri, ucontext_t *uc)
  {
-@@ -71,7 +80,7 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
- /* reginfo_is_eq: compare the reginfo structs, returns nonzero if equal */
- int reginfo_is_eq(struct reginfo *r1, struct reginfo *r2)
- {
--    return memcmp(r1, r2, sizeof(*r1)) == 0;
-+    return memcmp(r1, r2, reginfo_size()) == 0;
- }
+     int i;
+-    struct _aarch64_ctx *ctx;
+-    struct fpsimd_context *fp;
++    struct _aarch64_ctx *ctx, *extra = NULL;
++    struct fpsimd_context *fp = NULL;
++#ifdef SVE_MAGIC
++    struct sve_context *sve = NULL;
++#endif
++
+     /* necessary to be able to compare with memcmp later */
+     memset(ri, 0, sizeof(*ri));
  
- /* reginfo_dump: print state to a stream, returns nonzero on success */
+@@ -57,21 +78,81 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
+     ri->faulting_insn = *((uint32_t *) uc->uc_mcontext.pc);
+ 
+     ctx = (struct _aarch64_ctx *) &uc->uc_mcontext.__reserved[0];
+-
+-    while (ctx->magic != FPSIMD_MAGIC && ctx->size != 0) {
+-        ctx += (ctx->size + sizeof(*ctx) - 1) / sizeof(*ctx);
++    while (ctx) {
++        switch (ctx->magic) {
++        case FPSIMD_MAGIC:
++            fp = (void *)ctx;
++            break;
++#ifdef SVE_MAGIC
++        case SVE_MAGIC:
++            sve = (void *)ctx;
++            break;
++        case EXTRA_MAGIC:
++            extra = (void *)((struct extra_context *)(ctx))->datap;
++            break;
++#endif
++        case 0:
++            /* End of list.  */
++            ctx = extra;
++            extra = NULL;
++            continue;
++        default:
++            /* Unknown record -- skip it.  */
++            break;
++        }
++        ctx = (void *)ctx + ctx->size;
+     }
+ 
+-    if (ctx->magic != FPSIMD_MAGIC || ctx->size != sizeof(*fp)) {
+-        fprintf(stderr,
+-                "risu_reginfo_aarch64: failed to get FP/SIMD state\n");
++    if (!fp || fp->head.size != sizeof(*fp)) {
++        fprintf(stderr, "risu_reginfo_aarch64: failed to get FP/SIMD state\n");
+         return;
+     }
+-
+-    fp = (struct fpsimd_context *) ctx;
+     ri->fpsr = fp->fpsr;
+     ri->fpcr = fp->fpcr;
+ 
++#ifdef SVE_MAGIC
++    if (test_sve) {
++        int vq = sve_vq_from_vl(sve->vl); /* number of quads for whole vl */
++
++        if (sve == NULL) {
++            fprintf(stderr, "risu_reginfo_aarch64: failed to get SVE state\n");
++            return;
++        }
++
++        ri->sve.vl = sve->vl;
++
++        if (sve->head.size < SVE_SIG_CONTEXT_SIZE(vq)) {
++            if (sve->head.size == sizeof(*sve)) {
++                /* SVE state is empty -- not an error.  */
++            } else {
++                fprintf(stderr, "risu_reginfo_aarch64: "
++                        "failed to get complete SVE state\n");
++            }
++            return;
++        }
++
++        /* Copy ZREG's one at a time */
++        for (i = 0; i < SVE_NUM_ZREGS; i++) {
++            memcpy(&ri->sve.zregs[i],
++                   (void *)sve + SVE_SIG_ZREG_OFFSET(vq, i),
++                   SVE_SIG_ZREG_SIZE(vq));
++        }
++
++        /* Copy PREG's one at a time */
++        for (i = 0; i < SVE_NUM_PREGS; i++) {
++            memcpy(&ri->sve.pregs[i],
++                   (void *)sve + SVE_SIG_PREG_OFFSET(vq, i),
++                   SVE_SIG_PREG_SIZE(vq));
++        }
++
++        /* Finally the FFR */
++        memcpy(&ri->sve.ffr,(void *)sve + SVE_SIG_FFR_OFFSET(vq),
++               SVE_SIG_FFR_SIZE(vq));
++
++        return;
++    }
++#endif
++
+     for (i = 0; i < 32; i++) {
+         ri->simd.vregs[i] = fp->vregs[i];
+     }
 diff --git a/risu_reginfo_aarch64.h b/risu_reginfo_aarch64.h
-index a1c708b..ef97622 100644
+index ef97622..b3701b3 100644
 --- a/risu_reginfo_aarch64.h
 +++ b/risu_reginfo_aarch64.h
-@@ -15,6 +15,7 @@
+@@ -13,11 +13,24 @@
+ #ifndef RISU_REGINFO_AARCH64_H
+ #define RISU_REGINFO_AARCH64_H
  
++#include <signal.h> /* for SVE_MAGIC */
++
  struct simd_reginfo {
      __uint128_t vregs[32];
-+    char end[0];
+     char end[0];
  };
  
++#ifdef SVE_MAGIC
++struct sve_reginfo {
++    /* SVE */
++    uint16_t    vl; /* current VL */
++    __uint128_t zregs[SVE_NUM_ZREGS][SVE_VQ_MAX];
++    uint16_t    pregs[SVE_NUM_PREGS][SVE_VQ_MAX];
++    uint16_t    ffr[SVE_VQ_MAX];
++    char end[0];
++};
++#endif
++
  struct reginfo {
-diff --git a/risu_reginfo_arm.c b/risu_reginfo_arm.c
-index 12ad0ef..3662f12 100644
---- a/risu_reginfo_arm.c
-+++ b/risu_reginfo_arm.c
-@@ -36,6 +36,11 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
- }
+     uint64_t fault_address;
+     uint64_t regs[31];
+@@ -32,6 +45,9 @@ struct reginfo {
  
-+const int reginfo_size(void)
-+{
-+    return sizeof(struct reginfo);
-+}
-+
- static void reginfo_init_vfp(struct reginfo *ri, ucontext_t *uc)
- {
-     /* Read VFP registers. These live in uc->uc_regspace, which is
-diff --git a/risu_reginfo_m68k.c b/risu_reginfo_m68k.c
-index 7a1c5a9..32b28c8 100644
---- a/risu_reginfo_m68k.c
-+++ b/risu_reginfo_m68k.c
-@@ -23,6 +23,11 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
- }
+     union {
+         struct simd_reginfo simd;
++#ifdef SVE_MAGIC
++        struct sve_reginfo sve;
++#endif
+     };
+ };
  
-+const int reginfo_size(void)
-+{
-+    return sizeof(struct reginfo);
-+}
-+
- /* reginfo_init: initialize with a ucontext */
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
- {
-diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
-index 4b70460..f9d2f0d 100644
---- a/risu_reginfo_ppc64.c
-+++ b/risu_reginfo_ppc64.c
-@@ -31,6 +31,11 @@ void process_arch_opt(int opt, const char *arg)
-     abort();
- }
- 
-+const int reginfo_size(void)
-+{
-+    return sizeof(struct reginfo);
-+}
-+
- /* reginfo_init: initialize with a ucontext */
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
- {
 -- 
 2.17.1

@@ -1,99 +1,84 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp246885wrq;
-        Tue, 5 Jun 2018 11:05:49 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLsgD9kTsikSKHk7qMoYrRQJCsA5Vw8s7ek4eiMGq1FLO+a3AwM9qAPNvv2uxo8DhWmLIVZ
-X-Received: by 2002:a37:21de:: with SMTP id f91-v6mr23885041qki.395.1528221949343;
-        Tue, 05 Jun 2018 11:05:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528221949; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1123843wrq;
+        Wed, 13 Jun 2018 12:51:12 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIVUuL+CrYDVQiV5+zcbpw6DwVMEzrAqg8FJR2qaWZs0zaMWmNFzMaU3Jj97bLyEq73ERp5
+X-Received: by 2002:ac8:783:: with SMTP id l3-v6mr5930218qth.381.1528919472548;
+        Wed, 13 Jun 2018 12:51:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528919472; cv=none;
         d=google.com; s=arc-20160816;
-        b=na+6LHGC0cEmrhEhllyO8KzxBPP0ed/RYY3z4RBYkCigLKknhsOTz3IvtCoFkave+4
-         B0qbl2yhXadhmMhAMMK8lbNBlNgPAjb6TH6yllul/4bj5DzfHd5KsnV9bhoYV8aNHcsW
-         rK6aOQsYzre0E3FgA0FObwklwff9CiMcDd8CRMK6zK+1gwCFFMC/PntlO5Ak8WVWEW+R
-         krx+hoqru8/ZKCqdjJ09UmFkk4/3/36giOHzqgKrEj4gmG0N7UOAJqVZcbgfc7Xu4h19
-         pxXHZcbGfwBihibZVrw/z/r4twORXcuLvErmxCjG/suI2UKPSYNDre1m2+ZYp5yl2kL9
-         Hipg==
+        b=y6Q/AqrfFt29PNUXhBZu0VREe77Ac5JrtS16/aKxqI2Q71E5BsaBJay+nHQu63S5cU
+         RzKcJqO9PoHH7h6Z021RI69OFPz1o2X/8uUCU1nkz/sz40wkaYYGly3crVkfr74UspdQ
+         mYFRJ3jVesXh5yW/t5Bta2fH6J/XL7RRk/w6mgIGI22qNNzeXDIpFPiEKfPe+ZuQKHsq
+         NQ0Pm9ew02IiLiatvoMNmC/7QTevCTeRNF4rm0HWMZ7foGi4Gapu8RW8o0b0Tw8tC64V
+         1jw9jt65PYbAEpnatAvh8hYWcT+zABOu1MPKjyb5+7D9CJywwO8PQ2aPeSfZhUWqCwY4
+         X8fg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=sVFW5fwaBeT7RSVXqs+2VGIVzYeP/OxeQd7f3JpcZVc=;
-        b=lzz1QI30qXbEERQr9S8uJhpyCd5J95aRVaJ8fjihqsXUw5sKvUCmsrcDmucV6m2qhu
-         XVrmcTFCprs8B3UtHwCgzSkXbaLDYIwKdDUt/iXhVj7UrxnVUcTwbp92xQJhiS99/GUy
-         xtEUMlYdLlHBOcLG+L0y4pDset0584JPhOXgTCWyY9xM7rlhvbIPm/8Dzk6Y0lNFeu9W
-         47uD5K6oGgRvIrkZOPOUCDz5WlT5iWfO9mC4KeP3/pzrudgDtf0XWvYz0cM00vcwgAQ5
-         ipTuFCyrcw87wsXTDY2VeakEsrsIz/anO0Asv9x2MjTGR2nXADi7IZRWoKeIpFHdEAbz
-         Ha0w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=6Xf5/YvElCVOZB/N3/axepbVF7l5cIxcBk76oQ59HY4=;
+        b=cqouC4Yl2159hEmd0GdGsRRDGOi/PowHjl8f6aOAsktBYHf29OoK/wpwzkliO7re1u
+         EMAKY850qLg+Lu0ifi3IzVDrY5G8sk1Kn8Ri/r6Cn9LjtE8Nhmb3Xf5M4ReAzcZinawL
+         WRkz9NybB3h+CrAZ5b5segxi9S4MDsXMaIFbYn9fzkEo9fDJ7xtxoNhLaKuEjVvdVyJ1
+         fP5XN3bt1bBM79XwaAvdeWfZJTGrVrr80hZG238j5hqK0mLfO8Jrz5GTDJwljvdCeg1C
+         3Ql5iaPwpDI2uYWRe6EDd3RYkw7CWM79HqudxifETqRs4UPkYv0Lds3EZZAHQcF+OGCl
+         VApg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OntOownt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y125-v6si5922821qka.194.2018.06.05.11.05.49
+        by mx.google.com with ESMTPS id p2-v6si923965qvj.20.2018.06.13.12.51.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 05 Jun 2018 11:05:49 -0700 (PDT)
+        Wed, 13 Jun 2018 12:51:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OntOownt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48365 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36628 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fQGL6-0005fS-SF
-	for alex.bennee@linaro.org; Tue, 05 Jun 2018 14:05:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57982)
+	id 1fTBnU-0006Uh-1k
+	for alex.bennee@linaro.org; Wed, 13 Jun 2018 15:51:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39130)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQGKx-0005df-Ko
-	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 14:05:41 -0400
+	(envelope-from <alex.williamson@redhat.com>) id 1fTBnM-0006UY-RH
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 15:51:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQGKv-00071O-Sv
-	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 14:05:39 -0400
-Received: from mail-ot0-x22b.google.com ([2607:f8b0:4003:c0f::22b]:44958)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fQGKv-00070K-OB
-	for qemu-arm@nongnu.org; Tue, 05 Jun 2018 14:05:37 -0400
-Received: by mail-ot0-x22b.google.com with SMTP id w13-v6so3908536ote.11
-	for <qemu-arm@nongnu.org>; Tue, 05 Jun 2018 11:05:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=sVFW5fwaBeT7RSVXqs+2VGIVzYeP/OxeQd7f3JpcZVc=;
-	b=OntOownt0rsKXllDJjJJoJTyZHEjLsK2sXzxpUoOoeCiKvsFd9W+DCVlRMvgn6peU1
-	5FchUNNGJFEib1F27JpkJBws4siIsyru9YkkDfzKUc2nS8K/h3lhnClwFedRGJFpI1qK
-	FH3AAxbErwDs479ObsSjEsqjaP8qGW+HTMyz4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=sVFW5fwaBeT7RSVXqs+2VGIVzYeP/OxeQd7f3JpcZVc=;
-	b=HoMl5WHr0CXszNwpeaAqYNpJMmr6qSaN0751hbH8nH45XEZhEryyEA9QHofwk1BIc1
-	cWujtoJSzfX9lyUSWvo6xxSzeAze269tI+d1uZCa+ZYLwUUyR6q1lJb3rGlXePVCtWvG
-	EG9nHAINuljVX2GNSOZ69FqIEJiZignPMdH+PAIfUEz2s/x5orM0GwVzpXJM/kvtCyYM
-	dWhGNZ3fsTleN1ZvrC7/0Wv4o51pC9241hLZgb74vMHsuayiY0SJwpHl5nc1HXabb5TV
-	TgOY+rhw2AXHr/v2CswKqr+UgIywZtv8Rw5guFbQjUxdRaOfntn/K1khil320FufSrIZ
-	JRuQ==
-X-Gm-Message-State: APt69E3pOjXOs3D5cLbrWewmekEgt/NIyQDyuYyVo3wK9Fyl1r9xTD1V
-	yc5CiY95hYADnr+JLl0ib+VzfHjZWp1mMe/ayZQzlA==
-X-Received: by 2002:a9d:34db:: with SMTP id
-	t27-v6mr15941496otd.316.1528221937026; 
-	Tue, 05 Jun 2018 11:05:37 -0700 (PDT)
+	(envelope-from <alex.williamson@redhat.com>) id 1fTBnJ-00042n-MB
+	for qemu-arm@nongnu.org; Wed, 13 Jun 2018 15:51:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34538)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+	id 1fTBnJ-00040v-Dj; Wed, 13 Jun 2018 15:51:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B83ACC057F9F;
+	Wed, 13 Jun 2018 19:50:59 +0000 (UTC)
+Received: from w520.home (ovpn-116-135.phx2.redhat.com [10.3.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6E5C4500DF;
+	Wed, 13 Jun 2018 19:50:47 +0000 (UTC)
+Date: Wed, 13 Jun 2018 13:50:47 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20180613135047.5c1ce227@w520.home>
+In-Reply-To: <20180613084149.14523-4-kraxel@redhat.com>
+References: <20180613084149.14523-1-kraxel@redhat.com>
+	<20180613084149.14523-4-kraxel@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
-	Tue, 5 Jun 2018 11:05:16 -0700 (PDT)
-In-Reply-To: <20180530180120.13355-17-richard.henderson@linaro.org>
-References: <20180530180120.13355-1-richard.henderson@linaro.org>
-	<20180530180120.13355-17-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Jun 2018 19:05:16 +0100
-Message-ID: <CAFEAcA-O7DuYhFgMAY41BLQUs18+BECJ4D=hKfhgVdLUf-Ub+g@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::22b
-Subject: Re: [Qemu-arm] [PATCH v3b 16/18] target/arm: Implement FDUP/DUP
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 13 Jun 2018 19:50:59 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v4 3/3] hw/vfio/display: add ramfb support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,20 +90,141 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+	Erik Skultety <eskultet@redhat.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Laine Stump <laine@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?B?TMOhc3psw7Mgw4lyc2Vr?= <lersek@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ris+yYBfUBXN
+X-TUID: mZr9EDWqGBmf
 
-On 30 May 2018 at 19:01, Richard Henderson <richard.henderson@linaro.org> wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On Wed, 13 Jun 2018 10:41:49 +0200
+Gerd Hoffmann <kraxel@redhat.com> wrote:
+
+> So we have a boot display when using a vgpu as primary display.
+> 
+> Use vfio-pci-ramfb instead of vfio-pci to enable it.
+
+Using a different device here seems like it almost guarantees a very
+complicated path to support under libvirt.  What necessitates this
+versus a simple ramfb=on option to vfio-pci?
+
+I'm also not sure I understand the usage model, SeaBIOS and OVMF know
+how to write to this display, but it seems that the guest does not.  I
+suppose in the UEFI case runtime services can be used to continue
+writing this display, but BIOS doesn't have such an option, unless
+we're somehow emulating VGA here.  So for UEFI, I can imagine this
+covers us from power on through firmware boot and up to guest drivers
+initializing the GPU (assuming the vGPU supports a kernel mode driver,
+does NVIDIA?), but for BIOS it seems we likely still have a break from
+the bootloader to GPU driver initialization. For instance, what driver
+is used to draw the boot animation (or blue screen) on SeaBIOS Windows
+VM?  I'm assuming that this display and the vGPU display are one in the
+same, so there's some cut from one to the other.  Thanks,
+
+Alex
+
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 > ---
->  target/arm/translate-sve.c | 37 +++++++++++++++++++++++++++++++++++++
->  target/arm/sve.decode      |  8 ++++++++
->  2 files changed, 45 insertions(+)
->
+>  include/hw/vfio/vfio-common.h |  2 ++
+>  hw/vfio/display.c             | 10 ++++++++++
+>  hw/vfio/pci.c                 | 15 +++++++++++++++
+>  3 files changed, 27 insertions(+)
+> 
+> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+> index a9036929b2..a58d7e7e77 100644
+> --- a/include/hw/vfio/vfio-common.h
+> +++ b/include/hw/vfio/vfio-common.h
+> @@ -26,6 +26,7 @@
+>  #include "qemu/queue.h"
+>  #include "qemu/notify.h"
+>  #include "ui/console.h"
+> +#include "hw/display/ramfb.h"
+>  #ifdef CONFIG_LINUX
+>  #include <linux/vfio.h>
+>  #endif
+> @@ -143,6 +144,7 @@ typedef struct VFIODMABuf {
+>  
+>  typedef struct VFIODisplay {
+>      QemuConsole *con;
+> +    RAMFBState *ramfb;
+>      struct {
+>          VFIORegion buffer;
+>          DisplaySurface *surface;
+> diff --git a/hw/vfio/display.c b/hw/vfio/display.c
+> index 59c0e5d1d7..409d5a2e3a 100644
+> --- a/hw/vfio/display.c
+> +++ b/hw/vfio/display.c
+> @@ -124,6 +124,9 @@ static void vfio_display_dmabuf_update(void *opaque)
+>  
+>      primary = vfio_display_get_dmabuf(vdev, DRM_PLANE_TYPE_PRIMARY);
+>      if (primary == NULL) {
+> +        if (dpy->ramfb) {
+> +            ramfb_display_update(dpy->con, dpy->ramfb);
+> +        }
+>          return;
+>      }
+>  
+> @@ -181,6 +184,8 @@ static int vfio_display_dmabuf_init(VFIOPCIDevice *vdev, Error **errp)
+>      vdev->dpy->con = graphic_console_init(DEVICE(vdev), 0,
+>                                            &vfio_display_dmabuf_ops,
+>                                            vdev);
+> +    if (strcmp(object_get_typename(OBJECT(vdev)), "vfio-pci-ramfb") == 0)
+> +        vdev->dpy->ramfb = ramfb_setup(errp);
+>      return 0;
+>  }
+>  
+> @@ -228,6 +233,9 @@ static void vfio_display_region_update(void *opaque)
+>          return;
+>      }
+>      if (!plane.drm_format || !plane.size) {
+> +        if (dpy->ramfb) {
+> +            ramfb_display_update(dpy->con, dpy->ramfb);
+> +        }
+>          return;
+>      }
+>      format = qemu_drm_format_to_pixman(plane.drm_format);
+> @@ -300,6 +308,8 @@ static int vfio_display_region_init(VFIOPCIDevice *vdev, Error **errp)
+>      vdev->dpy->con = graphic_console_init(DEVICE(vdev), 0,
+>                                            &vfio_display_region_ops,
+>                                            vdev);
+> +    if (strcmp(object_get_typename(OBJECT(vdev)), "vfio-pci-ramfb") == 0)
+> +        vdev->dpy->ramfb = ramfb_setup(errp);
+>      return 0;
+>  }
+>  
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 18c493b49e..6a2b42a595 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -3234,9 +3234,24 @@ static const TypeInfo vfio_pci_dev_info = {
+>      },
+>  };
+>  
+> +static void vfio_pci_ramfb_dev_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->hotpluggable = false;
+> +}
+> +
+> +static const TypeInfo vfio_pci_ramfb_dev_info = {
+> +    .name = "vfio-pci-ramfb",
+> +    .parent = "vfio-pci",
+> +    .instance_size = sizeof(VFIOPCIDevice),
+> +    .class_init = vfio_pci_ramfb_dev_class_init,
+> +};
+> +
+>  static void register_vfio_pci_dev_type(void)
+>  {
+>      type_register_static(&vfio_pci_dev_info);
+> +    type_register_static(&vfio_pci_ramfb_dev_info);
+>  }
+>  
+>  type_init(register_vfio_pci_dev_type)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM

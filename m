@@ -1,98 +1,96 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5481503wrq;
-        Tue, 12 Jun 2018 08:43:19 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL7Q/byFsgycarUf1Ikz/vRNIZT1KNWW+34TYN4N2lYLE5CFYARpVV/pSebUa+kBRwwKAuR
-X-Received: by 2002:a0c:e610:: with SMTP id z16-v6mr985741qvm.246.1528818199637;
-        Tue, 12 Jun 2018 08:43:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528818199; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1765031wrq;
+        Thu, 14 Jun 2018 02:03:56 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKo8kUlzLmEvPXXlAV3T+tJp8DEprBEGekal9d9KIZxzrNGuSWsgXDooUYI5u0s2ynWsLry
+X-Received: by 2002:ac8:2e1c:: with SMTP id r28-v6mr1425780qta.156.1528967036581;
+        Thu, 14 Jun 2018 02:03:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528967036; cv=none;
         d=google.com; s=arc-20160816;
-        b=EtjYDMbe3SwGWMRgTP0R7+ca4oIVWr6XZQY36lcW0Z6vuUv5lmUlMf9EyJWyLlWgpu
-         fuQ9QgT+oGrmMjdqUbL2iSfIWQcrSHA2Xl13doYlsqK6iK0iz/bMwcaUg+unBz1Y+/cP
-         EbPqqwnjOUQ86ez+N4QIs6YqCkgVkHe4jA9BMpCUIMcDgVZuAKpRvxhT4DQEoPc8d4gb
-         W0H9hkO20Bf9DWLxKu86WVK7eyDnn1RMjNOqszTKjQKFL+TMcj1Qe/WDOmfCnA2t1/pf
-         CuENWW0SpecG4fApmR2tNrpysw7Kdn1Fyaa0bzhjVV4jo159Yl9+RdbWzsIeP5h/BDpW
-         MT5Q==
+        b=njMGqcpNkdb/O5D1JNeVtU/lXvJ+UrmqqCkMXe0hyhEfVIB5fJ0XbwNHhoRVFRqO/s
+         l99BSvEekHIf5cC8rgiXj+Vt+1iesxW1SWIKbsxUuKLFEhyXAgph4JMSuOdOZxycKmRX
+         wsWmwHyE7IiIy+zutvY6nBmSE3eXz3nE3fUbfckPp0PSMWw3OAYqGCKXA5WrmpqLSvVU
+         plJg+nvKLE6WXIhr25/O33sGCMl4YqAMHFeGl0iIOJPyt7Qc+UApkZGFEb/2BfXb0Ncz
+         adMfEw94k1+gD89CNzxOzS+kARLX+OSKMZi06eDr7ZFkhI6yF/geBvIm6ALrfZd0qzmn
+         ymWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=eYUAzgPu+F3gPCHisWvB64gCFyq1mH+/BukWwyRXjyY=;
-        b=vxgZ+BdPYcWG9ECPidZt4sNXU9QrzYMe6x2b/A0I9+JkDFPyJiNSnuwJL5iyrP59mY
-         aLWeFxt27AUAvQit/q/gt3ueiGGH0AcXDdMlT/Z18ht45kD2YWVmb/Od4laNYsbjb+41
-         ifUwY2WgN7Aq0DnHcoFek7dij6EJ2uYZyHY8DEargjBtZBlTRLFtGfkIK5BIgUHiRv7U
-         5sKI7ovLl1hf+OWA/htvWSa3mISDbR/kVrFQ8id1Ah+tUi865ROxGE81qQ6Ey9VD1wM4
-         QIggvhJq5EcyyovXvzW6PhocDkG2/gKE5OVlqwVW9YbCFsprh1Lfqay5ONnoT5nOILQl
-         zfbw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=G7esCIwPqJrnkboW72N+eayfdAtg2uPKf7Ehtd5wxE0=;
+        b=N89+EDAQ4vC6s5hBVDustqrAtfDk7ucTiJ4yJpn1PbmE+Jj0QsPQbYQuEJDPMvlVxw
+         yLWQkHN6dgB8rRTy9qAaCWNGuwfGR/WqG2E8Sm3EsE8FSkx5XBU9Y4TJy1EZmmmzWOs1
+         nyIbGiFOTkHZUEU6ts1POQIuzHX0WYoYFvapUj+TxWOdMvzwdKZE385VDu94Dpaasm3v
+         pd/9+hEplETNQJgOzVdcjNadW966M7YDhWCypPxBFKXiztg/jYlNZgUUYbQ3G6KlN5Ym
+         Iyzn6DBzTrOdctVreTUpW5liwjtjFq8iF4AlXVjzzsiSLLbo6mNdGYQ80O7t6ElRLE2K
+         JRrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JR9363i3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i23-v6si463575qkh.374.2018.06.12.08.43.19
+        by mx.google.com with ESMTPS id o86-v6si4711350qkl.255.2018.06.14.02.03.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Jun 2018 08:43:19 -0700 (PDT)
+        Thu, 14 Jun 2018 02:03:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JR9363i3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56981 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39327 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSlS3-0003Gp-5C
-	for alex.bennee@linaro.org; Tue, 12 Jun 2018 11:43:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44932)
+	id 1fTOAe-0003MJ-4J
+	for alex.bennee@linaro.org; Thu, 14 Jun 2018 05:03:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fSlRm-0003F7-54
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 11:43:03 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fTOAL-0003IS-GM
+	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 05:03:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fSlRl-0003J8-C1
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 11:43:02 -0400
-Received: from mail-ot0-x231.google.com ([2607:f8b0:4003:c0f::231]:42213)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fSlRk-0003Ic-US
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 11:43:01 -0400
-Received: by mail-ot0-x231.google.com with SMTP id 92-v6so28571368otw.9
-	for <qemu-arm@nongnu.org>; Tue, 12 Jun 2018 08:43:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=eYUAzgPu+F3gPCHisWvB64gCFyq1mH+/BukWwyRXjyY=;
-	b=JR9363i38DMy0mdep57pIc+MP18hCOsjQ6wDZESY1dk1uMH5Tfk3D064V4FSTp+zwQ
-	Smq+9mKkARm9sOMXTBFBZBXBQSqTcZFPMToGBg/DZbz5vVxnJ9mn+xL0KTrPVu4f9Jmh
-	xk7HRn+GFtuJHL+1IRNfro0b/w4NOempyWxvI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=eYUAzgPu+F3gPCHisWvB64gCFyq1mH+/BukWwyRXjyY=;
-	b=DkP0h4BffYwWv9NCT9sSFBx29X1DRiPkx/P/e4+MvljqgofGz/CbmFo3GgsV4w78Le
-	fW8pjzV/iR6I64pVhH5eru2yI66XbGWZ9rWwRVfhlf9Ec7irkCpyWj5lOCqG7ntkJWFQ
-	JRYAdUuP5pPwITDTIXq4U0tMTGP+4CBWp83WsjDeHDcEa5dW9W8N9Ojyheyismj5kWvg
-	H6oRFYijEGXtyvXB4pI4HGQRm/BGlAK9R9BTko+qvPMMuNiJQJBMFhrhEeSkLhx1Bp+t
-	xvGPvu/QAe3j3vp8/Sx4I05a1IaIgeIV4M8iFHiogu0C7ASdzHXAfaJniwjErduorkiJ
-	6OPQ==
-X-Gm-Message-State: APt69E1N66wne/JMkWFp7ZEOe1ZblGdsYR39a0+RMRp0pHQJSYh0UdCM
-	2Rfldv8jMzgDd2vZdxL+6vGZvHg+YPx6eZ43d1onog==
-X-Received: by 2002:a9d:34db:: with SMTP id
-	t27-v6mr690307otd.316.1528818180187; 
-	Tue, 12 Jun 2018 08:43:00 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1fTOAI-0002or-C4
+	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 05:03:37 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56578 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fTOAI-0002oe-6D; Thu, 14 Jun 2018 05:03:34 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 43B8C87AC7;
+	Thu, 14 Jun 2018 09:03:33 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com
+	[10.36.116.69])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AA4AB11166E1;
+	Thu, 14 Jun 2018 09:03:28 +0000 (UTC)
+To: Laszlo Ersek <lersek@redhat.com>, eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <1528879723-24675-1-git-send-email-eric.auger@redhat.com>
+	<1528879723-24675-10-git-send-email-eric.auger@redhat.com>
+	<8bf1bccc-b32a-9982-6123-b644c41a96d3@redhat.com>
+	<33a3fa10-bf1a-45cd-73bd-403cbd8d4792@redhat.com>
+	<fbd7ea65-8f3e-bda3-1bb6-09b3b67d2543@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <36f03e6d-2960-f4c7-8b60-c462e6e01b35@redhat.com>
+Date: Thu, 14 Jun 2018 11:03:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Tue, 12 Jun 2018 08:42:39
-	-0700 (PDT)
-In-Reply-To: <20180612104430.25745-1-kraxel@redhat.com>
-References: <20180612104430.25745-1-kraxel@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Jun 2018 16:42:39 +0100
-Message-ID: <CAFEAcA9SWjaB-CxwJTH=jtkw6dYdWNhhW40v+fnz+9vZXzKF8A@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::231
-Subject: Re: [Qemu-arm] [PULL 0/8] Usb 20180612 patches
+In-Reply-To: <fbd7ea65-8f3e-bda3-1bb6-09b3b67d2543@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Thu, 14 Jun 2018 09:03:33 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Thu, 14 Jun 2018 09:03:33 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 9/9] hw/arm/virt: Add virt-3.0
+ machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,37 +102,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <minyard@acm.org>, Alistair Francis <alistair@alistair23.me>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>, Jason Wang <jasowang@redhat.com>,
-	Zhang Chen <zhangckid@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-	Richard Henderson <rth@twiddle.net>
+Cc: drjones@redhat.com, ard.biesheuvel@linaro.org, marc.zyngier@arm.com,
+	christoffer.dall@arm.com, zhaoshenglong@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0RirGPFMOVLX
+X-TUID: UKMtq0ht+JMm
 
-On 12 June 2018 at 11:44, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> The following changes since commit 2afc4e3df80d947dd1bd42ce80278f591b35c74a:
->
->   Merge remote-tracking branch 'remotes/maxreitz/tags/pull-block-2018-06-11' into staging (2018-06-11 15:31:20 +0100)
->
-> are available in the git repository at:
->
->   git://git.kraxel.org/qemu tags/usb-20180612-pull-request
->
-> for you to fetch changes up to 3c969a6022438cf59de10d2dc3c58f4807788f98:
->
->   usb-mtp: Return error on suspicious TYPE_DATA packet from initiator (2018-06-12 12:08:12 +0200)
->
-> ----------------------------------------------------------------
-> usb: bug fix collection, doc update.
->
-> ----------------------------------------------------------------
+Hi Laszlo,
+On 06/14/2018 10:56 AM, Laszlo Ersek wrote:
+> Hi Eric,
+> 
+> On 06/14/18 08:27, Auger Eric wrote:
+>> Hi Laszlo,
+>>
+>> On 06/13/2018 11:05 PM, Laszlo Ersek wrote:
+>>> On 06/13/18 10:48, Eric Auger wrote:
+>>>
+>>>> PATCH: merge of ECAM and VCPU extension
+>>>> - Laszlo reviewed the ECAM changes but I dropped his R-b
+>>>>   due to the squash
+>>>
+>>> Was there any particular reason why the previous patch set (with only
+>>> the ECAM enlargement) couldn't be merged first? To be honest I'm not
+>>> super happy when my R-b is dropped for non-technical reasons; it seems
+>>> like wasted work for both of us.
+>>>
+>>> Obviously if there's a technical dependency or some other reason why
+>>> committing the ECAM enlargement in separation would be *wrong*, that's
+>>> different. Even in that case, wouldn't it be possible to keep the
+>>> initial virt-3.0 machtype addition as I reviewed it, and then add the
+>>> rest in an incremental patch?
+>>
+>> Sorry about that. My fear was about migration. We would have had 2 virt
+>> 3.0 machine models not supporting the same features. While bisecting
+>> migration we could have had the source using the high mem ECAM and the
+>> destination not supporting it. So I preferred to avoid this trouble by
+>> merging the 2 features in one patch. However I may have kept your R-b
+>> restricting its scope to the ECAM stuff.
+> 
+> to my understanding, it is normal to *gradually* add new properties
+> during the development cycle, to the new machine type of the upcoming
+> QEMU release. To my understanding, it's not expected that migration work
+> between development snapshots built from git. What matters is that two
+> official releases, specifying the same machine type, enable the user to
+> migrate a guest between them (in forward direction).
+> 
+> In every release, so many new features are introduced that it's
+> impossible to introduce the new machine type with all the compat knobs
+> added at once. Instead, the new machine type is introduced when the
+> first feature that requires a compat knob is added to git. All other
+> such features extend the compat knobs gradually, during the development
+> cycle. Until the new official release is made (which contains all the
+> compat knobs for all the new features), the new machine type simply
+> doesn't exist, as far as the public is concerned, so it cannot partake
+> in migration either.
+> 
+> This is my understanding anyway.
 
-Applied, thanks.
+Thank you for sharing your understanding. Maybe my concerns were
+superficial indeed. If Peter confirms there is no concern with
+bisection, I can easily repost the series splitting the virt machine
+model modifications in several patches, keeping your R-b ;-)
 
--- PMM
+Thanks
+
+Eric
+> 
+> Thanks!
+> Laszlo
+> 

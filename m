@@ -1,92 +1,92 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2077614wrq;
-        Thu, 14 Jun 2018 07:05:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJW7AvBSVx/d0sjr/3+Kqc3ZKCNa0ToQ4pu+cqCQMi4rJ9wkG4FvgmLMiCv054j95yQwfWW
-X-Received: by 2002:aed:2311:: with SMTP id h17-v6mr2448532qtc.144.1528985099929;
-        Thu, 14 Jun 2018 07:04:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528985099; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2080761wrq;
+        Thu, 14 Jun 2018 07:07:16 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKICJG39ZWUOCgAh6jMGVr+/B2vojngQ0Fp+kjEEUYS374dvSIP9USg3iyRAEGYfMES/FOJw
+X-Received: by 2002:a0c:f806:: with SMTP id r6-v6mr2448189qvn.214.1528985236700;
+        Thu, 14 Jun 2018 07:07:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1528985236; cv=none;
         d=google.com; s=arc-20160816;
-        b=kVi04SBJLoWAF45baruV+hIHHXlahVf0c9pSQsVgIyXqVoz8ramp/bSi8zrZTw1Noj
-         9oT6dNJd8+H8Rzksp2oN96d+lbxdDIA4fdy76byZoyaqo7BF0UGcTfuZnQwbDiJV584S
-         xf/bfrrITl9ja01COXvetEiimxIoyWhwjTSMDfEqRfQnLdjv6GHfA029TLs7pxj82EWt
-         yQ9L1Kbef9xmDIAevr9IyXcCfpKOG8glTj3O4+9ryqvd1mA1xxkivaXAGc0DSXYg+A/L
-         HmU4SmUefn2NFU7fGDLRM3xw6Ts0HGeAWl3Bd0F9Io5aXLY0yOd6JZynDJ2KPlYCIRRD
-         zwGw==
+        b=dBNMv0yg4jlsERabwpv24xxJ+OMXgQBICGkBUrGBgZ2mM40Y0hAV1qaH2Q4hetLdRF
+         1Yvsoz+Xv9FwjTw7jS/GcQ26XnXbrA7HomeartuM8LtHTfZFYv3Gxn3nyF9JZ2jA9GfR
+         IOsdbZwTUu+f/qYNnjet+PpY+Km7SRkOAJgYJsw35xJCY38ayOWZrv3eS+8I/JwQ7hEe
+         /AKoUdSj19s4MuF9DiSynN17P13Ada3D4C83li8JwhZZ8IfxYGCsoxFEgFtRnjTc8HLV
+         FEq9DBlqJwOwEI3vQ2hDBXX0CgUO7vVBZpjJtciJUh5bVS29hMDPiP6a33uG2KifcESf
+         QI+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=Rt/1NIunI46YFmjGdrg/fSqSXWkzL7AyLr73WyyzlXc=;
-        b=XzT/jkFPYO4aNveveH6AWbgWfz9xOWsVsbAuZsPBn/hSoZ3PX5af5xu2LRaddnR/Ku
-         xukudh7ZmXiaiH9qvOYZ4WW+S+GRheuZBlUO43MeEo2nza4EsnNNVOUxSTrt547L8/f5
-         8mpH0kxPT0Z+KtjOee0c+d4Kx/6vQ05lYFfuodfM90Onq+z85G6+GO/NeQzLAmCInhL4
-         hx1U8b9aF4vYmjzKszFf9nxPr/chJaBi3AW8z5a9ExGXTwLCbkwrkJJ86umPfCP7nbP7
-         476SxSBAb7JdDt6hRzqfdLWzzmC3lekyhEG3+PvUTMwlR39Q2eLE2Sawykll9buLykL/
-         hbSw==
+        bh=lXJTzG4CUJp8mRTn7eGntGE/oeAAtA8SZ36Z+xrIkyA=;
+        b=cKT9uE2PvHzsXJuZtboZGiS5jASdVY82zCZqlOyTQVjMM9nNmUZH6/xL5a/zm6WmT/
+         +3AXC5O2mFKg2H78aOd+C9EdAQAOKmVrsQrEi3eQduAsySov6ah8mNTOp4MuYjx7jQZE
+         zoArTJWo3Ttq5cUYA9kOPE9Lmx/0WtoHut0SYgk/k5HD7+BjpEwx3S8owoSplIRt0UjB
+         0vH6JzIvNrAH/vjNKmZVtEpqNtyNJGRbp6qscqrKmUkuqXRjSJTXaWL/tOAqJSNsvl5l
+         clM0dh3GWl3vtpkSDzIlJE0Kj7blv6VYRoLPfQOQoLiMSSo2ALzqxjg1cRCkqZAvHNqq
+         V2Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n16-v6si5125483qkn.352.2018.06.14.07.04.59
+        by mx.google.com with ESMTPS id p4-v6si2441614qtb.276.2018.06.14.07.07.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jun 2018 07:04:59 -0700 (PDT)
+        Thu, 14 Jun 2018 07:07:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40871 helo=lists.gnu.org)
+Received: from localhost ([::1]:40883 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTSrz-0002RQ-C8
-	for alex.bennee@linaro.org; Thu, 14 Jun 2018 10:04:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55176)
+	id 1fTSuC-00042E-4S
+	for alex.bennee@linaro.org; Thu, 14 Jun 2018 10:07:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56375)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fTSqL-0000zi-CT
-	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 10:03:18 -0400
+	(envelope-from <drjones@redhat.com>) id 1fTStH-0003U3-W0
+	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 10:06:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fTSqH-0000o2-6l
-	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 10:03:17 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33870 helo=mx1.redhat.com)
+	(envelope-from <drjones@redhat.com>) id 1fTStC-00027S-89
+	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 10:06:19 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51234 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fTSqH-0000np-0V; Thu, 14 Jun 2018 10:03:13 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	id 1fTStC-00027K-1m; Thu, 14 Jun 2018 10:06:14 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4AE80402346D;
-	Thu, 14 Jun 2018 14:03:12 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8B9F67D858;
+	Thu, 14 Jun 2018 14:06:13 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 555E411166E1;
-	Thu, 14 Jun 2018 14:03:06 +0000 (UTC)
-Date: Thu, 14 Jun 2018 16:03:04 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DE18A20244E2;
+	Thu, 14 Jun 2018 14:06:11 +0000 (UTC)
+Date: Thu, 14 Jun 2018 16:06:09 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20180614140304.bmcznq65cccpzigk@kamzik.brq.redhat.com>
+Message-ID: <20180614140609.tc6npczkt2fitgnu@kamzik.brq.redhat.com>
 References: <1528879723-24675-1-git-send-email-eric.auger@redhat.com>
-	<1528879723-24675-5-git-send-email-eric.auger@redhat.com>
-	<20180614133904.bic4wwjeed4ybu2u@kamzik.brq.redhat.com>
-	<29a2642b-87e4-b4c3-b7b9-632a3c0adc87@redhat.com>
+	<1528879723-24675-4-git-send-email-eric.auger@redhat.com>
+	<20180614133215.khbod4vx4w6drh2x@kamzik.brq.redhat.com>
+	<38a734ec-e813-03c9-d110-50dd327a60be@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <29a2642b-87e4-b4c3-b7b9-632a3c0adc87@redhat.com>
+In-Reply-To: <38a734ec-e813-03c9-d110-50dd327a60be@redhat.com>
 User-Agent: NeoMutt/20180512
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Thu, 14 Jun 2018 14:03:12 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Thu, 14 Jun 2018 14:03:12 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.2]);
+	Thu, 14 Jun 2018 14:06:13 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Thu, 14 Jun 2018 14:06:13 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/9] hw/intc/arm_gicv3_kvm: Get
- prepared to handle multiple redist regions
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/9] hw/intc/arm_gicv3:
+ Introduce redist-region-count array property
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,120 +104,71 @@ Cc: peter.maydell@linaro.org, ard.biesheuvel@linaro.org, marc.zyngier@arm.com,
 	eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8uIeuSzA4bkz
+X-TUID: pCenpJsTPhtZ
 
-On Thu, Jun 14, 2018 at 03:48:52PM +0200, Auger Eric wrote:
+On Thu, Jun 14, 2018 at 03:55:56PM +0200, Auger Eric wrote:
 > Hi Drew,
 > 
-> On 06/14/2018 03:39 PM, Andrew Jones wrote:
-> > On Wed, Jun 13, 2018 at 10:48:38AM +0200, Eric Auger wrote:
-> >> Let's check if KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION is supported.
-> >> If not, we check the number of redist region is equal to 1 and use the
-> >> legacy KVM_VGIC_V3_ADDR_TYPE_REDIST attribute. Otherwise we use
-> >> the new attribute and allow to register multiple regions to the
-> >> KVM device.
+> On 06/14/2018 03:32 PM, Andrew Jones wrote:
+> > On Wed, Jun 13, 2018 at 10:48:37AM +0200, Eric Auger wrote:
+> >> To prepare for multiple redistributor regions, we introduce
+> >> an array of uint32_t properties that stores the redistributor
+> >> count of each redistributor region.
+> >>
+> >> Non accelerated VGICv3 only supports a single redistributor region.
+> >> The capacity of all redist regions is checked against the number of
+> >> vcpus.
+> >>
+> >> Machvirt is updated to set those properties, ie. a single
+> >> redistributor region with count set to the number of vcpus
+> >> capped by 123.
 > >>
 > >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > >>
 > >> ---
-> >>
 > >> v2 -> v3:
-> >> - In kvm_arm_gicv3_realize rename val into add_ormask local variable and
-> >>   add a comment
-> >> - start the redist region registration  from s->nb_redist_regions - 1
-> >>   downwards
+> >> - add missing return in arm_gic_realize
+> >> - in gicv3_init_irqs_and_mmio, compute/check rdist_capacity first
+> >> - rdist region 0 size set to MIN(smp_cpus, redist0_capacity)
+> >> - add GICV3_REDIST_SIZE
 > >> ---
-> >>  hw/intc/arm_gicv3_kvm.c | 33 ++++++++++++++++++++++++++++++---
-> >>  1 file changed, 30 insertions(+), 3 deletions(-)
+> >>  hw/arm/virt.c                      | 11 ++++++++++-
+> >>  hw/intc/arm_gicv3.c                | 12 +++++++++++-
+> >>  hw/intc/arm_gicv3_common.c         | 38 +++++++++++++++++++++++++++++++++-----
+> >>  hw/intc/arm_gicv3_kvm.c            |  9 +++++++--
+> >>  include/hw/intc/arm_gicv3_common.h |  8 ++++++--
+> >>  5 files changed, 67 insertions(+), 11 deletions(-)
 > >>
-> >> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-> >> index ed7b719..52e6e70 100644
-> >> --- a/hw/intc/arm_gicv3_kvm.c
-> >> +++ b/hw/intc/arm_gicv3_kvm.c
-> >> @@ -753,6 +753,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-> >>  {
-> >>      GICv3State *s = KVM_ARM_GICV3(dev);
-> >>      KVMARMGICv3Class *kgc = KVM_ARM_GICV3_GET_CLASS(s);
-> >> +    bool multiple_redist_region_allowed;
-> >>      Error *local_err = NULL;
-> >>      int i;
-> >>  
-> >> @@ -789,6 +790,18 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-> >>          return;
+> >> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >> index f0a4fa0..2885d18 100644
+> >> --- a/hw/arm/virt.c
+> >> +++ b/hw/arm/virt.c
+> >> @@ -522,6 +522,15 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
+> >>      if (!kvm_irqchip_in_kernel()) {
+> >>          qdev_prop_set_bit(gicdev, "has-security-extensions", vms->secure);
 > >>      }
-> >>  
-> >> +    multiple_redist_region_allowed =
-> >> +        kvm_device_check_attr(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_ADDR,
-> >> +                              KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION);
 > >> +
-> >> +    if (!multiple_redist_region_allowed && s->nb_redist_regions > 1) {
-> >> +        error_setg(errp, "Multiple VGICv3 redistributor regions are not "
-> >> +                   "supported by this host kernel");
-> >> +        error_append_hint(errp, "A maximum of %d VCPUs can be used",
-> >> +                          s->redist_region_count[0]);
-> >> +        return;
-> >> +    }
+> >> +    if (type == 3) {
+> >> +        uint32_t redist0_capacity =
+> >> +                    vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
+> >> +        uint32_t redist0_count = MIN(smp_cpus, redist0_capacity);
 > >> +
-> >>      kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_NR_IRQS,
-> >>                        0, &s->num_irq, true, &error_abort);
-> >>  
-> >> @@ -798,9 +811,23 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
-> >>  
-> >>      kvm_arm_register_device(&s->iomem_dist, -1, KVM_DEV_ARM_VGIC_GRP_ADDR,
-> >>                              KVM_VGIC_V3_ADDR_TYPE_DIST, s->dev_fd, 0);
-> >> -    kvm_arm_register_device(&s->iomem_redist[0], -1,
-> >> -                            KVM_DEV_ARM_VGIC_GRP_ADDR,
-> >> -                            KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd, 0);
-> >> +
-> >> +    if (!multiple_redist_region_allowed) {
-> >> +        kvm_arm_register_device(&s->iomem_redist[0], -1,
-> >> +                                KVM_DEV_ARM_VGIC_GRP_ADDR,
-> >> +                                KVM_VGIC_V3_ADDR_TYPE_REDIST, s->dev_fd, 0);
-> >> +    } else {
-> >> +        for (i = s->nb_redist_regions - 1; i >= 0; i--) {
+> >> +        qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
 > > 
-> > So we register in reverse-index order? Looking at your update to Linux doc
-> > Documentation/virtual/kvm/devices/arm-vgic-v3.txt, shouldn't they be
-> > registered in index-order? The doc says "Redistributor regions must be
-> > registered in the incremental index order, starting from index 0."
-> kvm_arm_register_device adds the device in a QSLIST using
-> QSLIST_INSERT_HEAD. Then the list is read by kvm_arm_machine_init_done
-> from the HEAD. So we need to register in reversed order.
+> > I don't see where this property is defined or used.
+> 
+> This is due to the fact we have an array property. nb_redist_regions is
+> the storage of this value. len-redist-region-count is the name of the
+> field (size of the array) from the user point of view.
+> 
+> DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
+>                       redist_region_count, qdev_prop_uint32, uint32_t),
+> 
+> see len-db-voltage property in hw/arm/vexpress.c and
+> hw/misc/arm_sysctl.c for a similar usage.
 
-Oh, that's sort of horrible, as I can't even see where that's documented
-anywhere. Can we at least document it here in a comment? Actually, we
-should probably reverse the list first in kvm_arm_machine_init_done()
-and document that devices should be registered in the order KVM needs
-them to be - just in the name of sanity. But, I'm not sure what we'd
-break if we reversed the order now though...
+Thanks. I see '#define PROP_ARRAY_LEN_PREFIX "len-"' now too. That's just
+the kind of magic that makes us all <blank> QEMU. Fill in <blank> as you
+wish. I know what I'd fill it in with...
 
-Thanks,
 drew
-
-> 
-> Thanks
-> 
-> Eric
-> > 
-> > Thanks,
-> > drew
-> > 
-> >> +            /* Address mask made of the rdist region index and count */
-> >> +            uint64_t addr_ormask =
-> >> +                        i | ((uint64_t)s->redist_region_count[i] << 52);
-> >> +
-> >> +            kvm_arm_register_device(&s->iomem_redist[i], -1,
-> >> +                                    KVM_DEV_ARM_VGIC_GRP_ADDR,
-> >> +                                    KVM_VGIC_V3_ADDR_TYPE_REDIST_REGION,
-> >> +                                    s->dev_fd, addr_ormask);
-> >> +        }
-> >> +    }
-> >>  
-> >>      if (kvm_has_gsi_routing()) {
-> >>          /* set up irq routing */
-> >> -- 
-> >> 2.5.5
-> >>
-> >>
-> 

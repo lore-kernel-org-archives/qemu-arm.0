@@ -1,95 +1,89 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp543753wrq;
-        Fri, 15 Jun 2018 00:53:37 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKvf1l5YFQjSshVb8+3o7bAW9xD5q54JLvEtpH0TZMgdWui6ts42eSFwOxwNdxohP0yr/aA
-X-Received: by 2002:a37:70c1:: with SMTP id l184-v6mr475996qkc.86.1529049217760;
-        Fri, 15 Jun 2018 00:53:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529049217; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp546990wrq;
+        Fri, 15 Jun 2018 00:58:15 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKL6xmClDqoHH8DGr5F0apt+nzODgXY8xVw4qAHBcXZJkTK4vFgt5PwjEkZ0rILRquhZjDye
+X-Received: by 2002:ac8:3338:: with SMTP id t53-v6mr485772qta.312.1529049495309;
+        Fri, 15 Jun 2018 00:58:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529049495; cv=none;
         d=google.com; s=arc-20160816;
-        b=A3YE9XYzNSFp7cGqZaOScV8bQCo4p064s65qlu9Jg2s8TkTG+laBzjVak401vcu2wx
-         1dA9I33xD7RpRMV6viZQ2lt35joms7zgAvHFun7NrgzJp9VvEuWPUlZVxoxUWsQzrmQl
-         l+xSDQUEe2ZLI/dOpFwgyMw6bOhgeK7xWzA5/up3wUknuurb0swzdZcJPNRfeAf5gar2
-         SOIwIy92ynQk/P0zq5/4DtKHDqpLvJen4tFAJWGxEVHzzDV0IWyq7cwOUgobVHTo75ts
-         irQi1OS4gO3e3YGcid1ODhdEioXJrxJLmqkF4iquAujDMSuV9dtyTXRu5NLP8iynzKQ+
-         R0nw==
+        b=bGG3VL+ZQVfWxRgd1EtgI2Vb/mxd4jOmVTVOZmDaxNpRKP9DH7/FTGjMqcQXQj1f6h
+         mEdmfLnKBLAd0mB5QDYeWOGebN8sc1a9MpHER8Ro+EI5Fv8gn25KG7oSZRX49FZCJqDd
+         7x63sQXF0LYY80OI7rKdkoLpRDZAYRyyPLtqtxJLThydIySEDe24l7YtbHdLbEut0gYc
+         1ki2s2Du49l3jYcwBC8/Rnbs2DlA70zAeRZSnyKxid413zaow0VwZByz+fnH2Y914Qda
+         bn+hVW6DK45IBx71CJu6stYs3G7bJ8M1L4g2Tz2iXgU2AlTUBDbe3HjsmJDeTHUUE9qA
+         SCmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=KlSHzjTfAC5BGnm20yTi4rrmUO022zr+sJn9I+wGM34=;
-        b=wSgNEEnnd7tvRLeR/GMhh6/osrENiL04fJG79fPEfhOSGzQvmKEcXJ+Qzg1NSnjNVl
-         9CkYMSOW2yz/k+/e/O/R9fmhHn/S/76pfVfoau9wQ2//vqbj2ZX4tx5Ucy/uh94WpM7w
-         WdzGpzBsaGcOlXJJU+rAfRs1+zcGIfqdD2nNOtBj9trDk4fTEXuQtwmAfi8Hb3qGmB+l
-         SWY0XV7ys/Qd0PbEH8DFytJY1oZ/0CzlUX5V806n6kKyWaMkAvCw3XQESYvBihIg3zq5
-         G3gxp74b0nynW1HYKi40p1tecMddLhWOT4b5yop8UMb/uNMYOe1VoJKYWkFUIEBe1+ik
-         CXcA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date:arc-authentication-results;
+        bh=3+vz0qhiugU3Uj/hSa9JOUhymGYLVYL5iQSsJrmXYKE=;
+        b=M5XO0utR/Aq5SNlOSybRhNZpt9wbyHQIrxUXooXxDUdXWcA2h0jPsmLbGagvtgt1+a
+         tO+dzuPJsamhD3doCLSRsNgOotbAET6Oo1l9BOm8QpCKCn0o0DBOaCC0euQNRc2oIJYc
+         YNWGT6KpL/4Gdh5nhdEHAg2Koh+OljSIeBX9ckzRKQ/Pd6h4LU20ztgHM7ju1xWcaK2t
+         yAqblu3vNryRu6umSmB6B7pRXGRSlQTOYO7EWYbQY5tsdR0E3Yq0hO2pjQyFY+URNTrB
+         jrPU4hJRLV/jq36AzAqljUFr6QdF5uHrzHR4T7S2DI1eHdDr0+o5rEwCfKkdV23HSEVE
+         uctw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w17-v6si3494583qtk.146.2018.06.15.00.53.37
+        by mx.google.com with ESMTPS id t184-v6si166883qkf.59.2018.06.15.00.58.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jun 2018 00:53:37 -0700 (PDT)
+        Fri, 15 Jun 2018 00:58:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44872 helo=lists.gnu.org)
+Received: from localhost ([::1]:44897 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTjY9-0005ZE-9a
-	for alex.bennee@linaro.org; Fri, 15 Jun 2018 03:53:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53232)
+	id 1fTjcc-0007Ig-Si
+	for alex.bennee@linaro.org; Fri, 15 Jun 2018 03:58:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fTjY1-0005Z0-Bh
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 03:53:30 -0400
+	(envelope-from <cohuck@redhat.com>) id 1fTjcQ-0007H4-B9
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 03:58:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fTjXy-0006Jd-6Z
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 03:53:29 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:39448 helo=mx1.redhat.com)
+	(envelope-from <cohuck@redhat.com>) id 1fTjcL-00030d-DW
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 03:58:02 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59800 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fTjXy-0006IJ-1k; Fri, 15 Jun 2018 03:53:26 -0400
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1fTjcL-0002zu-78; Fri, 15 Jun 2018 03:57:57 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 84A7D81663F2;
-	Fri, 15 Jun 2018 07:53:24 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
-	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4E0961116718;
-	Fri, 15 Jun 2018 07:53:15 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id A8E203B6; Fri, 15 Jun 2018 09:53:14 +0200 (CEST)
-Date: Fri, 15 Jun 2018 09:53:14 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Erik Skultety <eskultet@redhat.com>
-Message-ID: <20180615075314.fc3jattcaizpf6yd@sirius.home.kraxel.org>
-References: <20180613084149.14523-1-kraxel@redhat.com>
-	<20180613084149.14523-4-kraxel@redhat.com>
-	<20180613135047.5c1ce227@w520.home>
-	<20180613223625.lf6xkzgipzkfslit@sirius.home.kraxel.org>
-	<20180614094856.GD2220@beluga.usersys.redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 887FE859AA;
+	Fri, 15 Jun 2018 07:57:56 +0000 (UTC)
+Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8A39B10FD2A9;
+	Fri, 15 Jun 2018 07:57:54 +0000 (UTC)
+Date: Fri, 15 Jun 2018 09:57:52 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20180615095752.536f4642.cohuck@redhat.com>
+In-Reply-To: <1529045897-25260-1-git-send-email-thuth@redhat.com>
+References: <1529045897-25260-1-git-send-email-thuth@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180614094856.GD2220@beluga.usersys.redhat.com>
-User-Agent: NeoMutt/20180512
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 15 Jun 2018 07:53:24 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 15 Jun 2018 07:53:24 +0000 (UTC) for IP:'10.11.54.3'
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 15 Jun 2018 07:57:56 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 15 Jun 2018 07:57:56 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v4 3/3] hw/vfio/display: add ramfb support
+Subject: Re: [Qemu-arm] [PATCH] loader: Check access size when calling
+ rom_ptr() to avoid crashes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,53 +95,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
-	qemu-devel@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Laine Stump <laine@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?utf-8?B?TMOhc3psw7Mgw4lyc2Vr?= <lersek@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fsjKVt+CMY2A
+X-TUID: qZi6VQPcPy0x
 
-> > Well, it's simliar to qxl vs. qxl-vga.  It's not qxl,vga={on,off} and
-> > libvirt has no problems to deal with that ...
-> >
-> > Another more technical reason is (again) hotplug.  ramfb needs an fw_cfg
-> > entry for configuration, and fw_cfg entries can't be hotplugged.  So
-> > hotplugging vfio-pci with ramfb=on isn't going to fly.  So we need a
-> > separate device with hotplug turned off.
+On Fri, 15 Jun 2018 08:58:17 +0200
+Thomas Huth <thuth@redhat.com> wrote:
+
+> The rom_ptr() function allows direct access to the ROM blobs that we
+> load during startup. However, there are currently no checks for the
+> size of the accesses, so it's currently possible to crash QEMU for
+> example with:
 > 
-> Well if that's not supposed to work ever, libvirt's hotplug code could format
-> the following FWIW:
-> "-device vfio-pci [opts],ramfb=off"
+> $ echo "Insane in the mainframe" > /tmp/test.txt
+> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
+> Segmentation fault (core dumped)
+> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
+> Segmentation fault (core dumped)
+
+It seems nobody managed to trigger the other places yet?
+
 > 
-> As such, new device wouldn't be that of an issue for libvirt if vfio-pci and
-> vfio-pci-ramfb are back to back compatible with all the device options that are
-> available for vfio-pci (I mean in terms of using an mdev). Because in that
-> case, what libvirt could do is to look whether we're supposed to turn on the
-> display, if so, then we need support for this in capabilities to query and then
-> we could prefer this new device over the "legacy" vfio-pci one. However, if we
-> expect a case where QEMU would succeed to start with an mdev mapped to this
-> new ramfb device but not with vfio-pci, then that's an issue.
+> We need a possibility to check the size of the ROM area that we want
+> to access, thus let's add a size parameter to the rom_ptr() function
+> to avoid these problems.
 
-vfio-pci and vfio-pci-ramfb are identical, except for the later having a
-boot display (with display=on), and vfio-pci-ramfb not being
-hotplugable.  So, yes, all pcu/mdev devices should work with both
-vfio-pci variants.
+Makes sense.
 
-> But I'm still curious about the ramfb=off possibility I asked above
-> for hotplug nonetheless.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/core/loader.c     | 10 +++++-----
+>  hw/mips/mips_malta.c |  6 ++++--
+>  hw/s390x/ipl.c       | 13 ++++++++++---
+>  hw/sparc/sun4m.c     |  2 +-
+>  hw/sparc64/sun4u.c   |  2 +-
+>  include/hw/loader.h  |  2 +-
+>  target/arm/cpu.c     |  2 +-
+>  7 files changed, 23 insertions(+), 14 deletions(-)
+> 
 
-Well, the problem is introspection.  qemu can report via qmp whenever a
-specific device supports hotplug.  A device which can both be
-hot-pluggable or not hot-pluggable depending on some condition is a
-problem here ...
-
-cheers,
-  Gerd
-
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>

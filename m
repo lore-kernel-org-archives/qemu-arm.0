@@ -1,71 +1,71 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp568109wrq;
-        Fri, 15 Jun 2018 01:23:11 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJp25sEuyOwdVIkBFXhf1yPha6KLliLUB74925lRsyAVF0ARrw2DzrkjBbQYd3keC9el5hn
-X-Received: by 2002:ac8:1342:: with SMTP id f2-v6mr568618qtj.25.1529050991657;
-        Fri, 15 Jun 2018 01:23:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529050991; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp578551wrq;
+        Fri, 15 Jun 2018 01:35:38 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLPicHpcXobCUmEk0ntxT0RskKx8oP8oFyrW3q1x4cnxS5o4CMebHija/OqQx7yP1GM7OXb
+X-Received: by 2002:a0c:e8cf:: with SMTP id m15-v6mr573751qvo.52.1529051738058;
+        Fri, 15 Jun 2018 01:35:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529051738; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mmxx7WqpCgRhniYUZ1/Kkc2QFbYuoVxQJZMbDX4Jvpbm3itZwAI9GakL1A8wuIYqnv
-         3z+o6YSibp9R+xVs2UXIRytJjeBVZA0mmDUheOGITjT1BtU96RVz7eIv7erN0V7MAhpa
-         bUKFvUGcRRbv9XracJWxFMq5CNfqYCRsdMfhG7bsXOQMitcixPPdXjsPZb2BFVimj2OX
-         hW0+IONYT0KGYOfdNUWl/e5wUvPgAHkQF5SixgzW3NveFOFStgQEq8tweQQo+tT1CB/x
-         uGv32RWs9k52ZjMnUSRHufmw+eYTw5P8pT30DNbvfWs33dkse6ZNji9dyUDgnll/G+tr
-         SqcQ==
+        b=lqoa+q0+TtbtGCD4ycg7GK44J9BJluYMB5bMzU3J83bjLAuU+L2RfsR/R5D1jtLGKC
+         Hp0G/hHIPqtzCnV/EYB0QnHdHE4X8zCS9rGKY7mX3487O1G9xqHWFomb3wtwtUOasitm
+         3rWHmnLQGjdulXKMbAFaeuYcFgbEM8FeYlhgpVZgGN/sburWco3Jrs8GzA5pvRKQs0Uv
+         TTqFi+Tr/ivuahmuHUHjL0nKMtnSxBm57rc6gvvMCsBTyT+Zt4ORAdLGi9CQamaFiLkE
+         bwO0PN9H9hggWD+RoO9ERtvTlQnKRbc4ORaDBsU8tX3G44efwLpdThilvWgTk0puqJzJ
+         jKjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :user-agent:date:message-id:autocrypt:openpgp:references:to:from
          :arc-authentication-results;
-        bh=82XrcAPUG2H2mlsJKsUQq8z5bMwrh+G8Zrv/Yo8a4G4=;
-        b=R/7+cuJ5gYk5aOBN6GGjq/AGtrvHF2jzeu96Y+liVm09d/bOVpSenpY8syLWwm6qP2
-         O1cqgOnhyzB2vMbnnfy36Jn1UX77SGkkh0K9VVgdZhdvz4pzrBb8sqqPSboK8C2Q5heB
-         If0bQ4Fs1yRGjeFepnCEIFQg23ZsJdAgBTTDb5kJmjj0yG/EUritA1sFwryOna5cGlq2
-         9w/tWb+emg7YzvZ1JJgJUlgC0u+3XjXCWkHrxIa4OqdWSFzLFKmTxUGzGtDVsq6fyql6
-         QRbsX17eNJG7srooFKc/vYlI8YqTyIkJ6O8XxymnNGh9KDEAKtGvPycSTTLMzpYeZZzN
-         X6/g==
+        bh=5OEEHyV/k6xyLCueq2ngl6lb00MJBPg8jSl/KRTEc9A=;
+        b=QKB+2ZBzmSBWy2Jucw1NZHNf+TarP+X2vRvtF/QJRbw/8ZtDi+hJWhUgwkmMmWYXty
+         6pYj+jDa7hWwyhJBr3bpvjIb6R8thQjdV5wX08lsVWbBvaedeYA/sA9Ppck9AZwWc7M/
+         WyH43VBWSqMO+KYRjsyuxTT0KzLy/9tsqaJvPdPsUhb1CSIi7uBRkt1erqNUfMarjgj0
+         VkfE22a7mKjvgqWFMya1Cc0Gkd0oNnNcgmarTBy059AUAlOFgv7cP99OEZBUtzgcVWnJ
+         jlmaLHmwtqMKgItmw392GAzTYNoKURYmTglrNZtZ6IZOUgtTtDov37H0Gm6oqlJTJTAk
+         37UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c21-v6si4512522qkm.241.2018.06.15.01.23.11
+        by mx.google.com with ESMTPS id i66-v6si6383587qtb.200.2018.06.15.01.35.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jun 2018 01:23:11 -0700 (PDT)
+        Fri, 15 Jun 2018 01:35:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45014 helo=lists.gnu.org)
+Received: from localhost ([::1]:45053 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTk0l-00082a-67
-	for alex.bennee@linaro.org; Fri, 15 Jun 2018 04:23:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59376)
+	id 1fTkCn-0003I3-Er
+	for alex.bennee@linaro.org; Fri, 15 Jun 2018 04:35:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60531)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fTk0a-00082J-2z
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 04:23:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1fTkB5-00020r-2E
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 04:33:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fTk0W-0000k7-0j
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 04:23:00 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44070 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fTkB1-000429-Td
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 04:33:51 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59600 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fTk0V-0000jS-Rw; Fri, 15 Jun 2018 04:22:55 -0400
+	id 1fTkB1-00040N-OO; Fri, 15 Jun 2018 04:33:47 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BF19B401EF03;
-	Fri, 15 Jun 2018 08:22:54 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E668F406DE3D;
+	Fri, 15 Jun 2018 08:33:46 +0000 (UTC)
 Received: from [10.36.116.79] (ovpn-116-79.ams2.redhat.com [10.36.116.79])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E26A563A6E;
-	Fri, 15 Jun 2018 08:22:51 +0000 (UTC)
-To: Cornelia Huck <cohuck@redhat.com>
-References: <1529045897-25260-1-git-send-email-thuth@redhat.com>
-	<20180615095752.536f4642.cohuck@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 11D8D63A7D;
+	Fri, 15 Jun 2018 08:33:43 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
+	Cornelia Huck <cohuck@redhat.com>
+References: <1529045897-25260-1-git-send-email-thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -109,28 +109,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <4cc50226-8510-4343-8913-538d8f35c543@redhat.com>
-Date: Fri, 15 Jun 2018 10:22:50 +0200
+Message-ID: <5ab4dd7b-b717-5e58-41d8-1d996c515a10@redhat.com>
+Date: Fri, 15 Jun 2018 10:33:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180615095752.536f4642.cohuck@redhat.com>
+In-Reply-To: <1529045897-25260-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 15 Jun 2018 08:22:54 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 15 Jun 2018 08:22:54 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.7]);
+	Fri, 15 Jun 2018 08:33:47 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Fri, 15 Jun 2018 08:33:47 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH] loader: Check access size when calling
- rom_ptr() to avoid crashes
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] loader: Check access size when
+ calling rom_ptr() to avoid crashes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,89 +143,61 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JSx8YRWgNFhk
+X-TUID: sIwpwkN0OYCt
 
-On 15.06.2018 09:57, Cornelia Huck wrote:
-> On Fri, 15 Jun 2018 08:58:17 +0200
-> Thomas Huth <thuth@redhat.com> wrote:
+On 15.06.2018 08:58, Thomas Huth wrote:
+> The rom_ptr() function allows direct access to the ROM blobs that we
+> load during startup. However, there are currently no checks for the
+> size of the accesses, so it's currently possible to crash QEMU for
+> example with:
 > 
->> The rom_ptr() function allows direct access to the ROM blobs that we
->> load during startup. However, there are currently no checks for the
->> size of the accesses, so it's currently possible to crash QEMU for
->> example with:
->>
->> $ echo "Insane in the mainframe" > /tmp/test.txt
->> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
->> Segmentation fault (core dumped)
->> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
->> Segmentation fault (core dumped)
+> $ echo "Insane in the mainframe" > /tmp/test.txt
+> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
+> Segmentation fault (core dumped)
+> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
+> Segmentation fault (core dumped)
 > 
-> It seems nobody managed to trigger the other places yet?
+> We need a possibility to check the size of the ROM area that we want
+> to access, thus let's add a size parameter to the rom_ptr() function
+> to avoid these problems.
+[...]
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 0ee779f..2375cb2 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -272,7 +272,7 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
+>          }
+>          if (initrd_size > 0) {
+>              for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
+> -                ptr = rom_ptr(KERNEL_LOAD_ADDR + i);
+> +                ptr = rom_ptr(KERNEL_LOAD_ADDR + i, 24);
+>                  if (ldl_p(ptr) == 0x48647253) { // HdrS
 
-mips_malta.c already seems to check bios_size, so it's not affected as
-far as I can tell.
+Darn, that should check for ptr != NULL ...
 
-But you can crash sparc64 like this:
+>                      stl_p(ptr + 16, INITRD_LOAD_ADDR);
+>                      stl_p(ptr + 20, initrd_size);
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index 1bede85..8b09090 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -186,7 +186,7 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
+>          }
+>          if (*initrd_size > 0) {
+>              for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
+> -                ptr = rom_ptr(*kernel_addr + i);
+> +                ptr = rom_ptr(*kernel_addr + i, 32);
+>                  if (ldl_p(ptr + 8) == 0x48647253) { /* HdrS */
 
-$ echo -n HdrS > /tmp/test.txt
-$ sparc64-softmmu/qemu-system-sparc64 -kernel /tmp/test.txt \
-                                      -initrd /tmp/test.txt
-Segmentation fault (core dumped)
+... dito ...
 
-I was not able to crash sparc32 in the same way, but you can see the bad
-access with valgrind there:
-
-$ valgrind sparc-softmmu/qemu-system-sparc -kernel /tmp/test.txt -initrd
-/tmp/test.txt
-==14301== Memcheck, a memory error detector
-==14301== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==14301== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==14301== Command: sparc-softmmu/qemu-system-sparc -kernel /tmp/test.txt
--initrd /tmp/test.txt
-==14301==
-==14301== Invalid write of size 4
-==14301==    at 0x2C8477: memcpy (string3.h:51)
-==14301==    by 0x2C8477: stl_he_p (bswap.h:342)
-==14301==    by 0x2C8477: stl_be_p (bswap.h:449)
-==14301==    by 0x2C8477: sun4m_load_kernel (sun4m.c:277)
-==14301==    by 0x2C8477: sun4m_hw_init (sun4m.c:992)
-==14301==    by 0x3272F9: machine_run_board_init (machine.c:830)
-==14301==    by 0x23F809: main (vl.c:4477)
-==14301==  Address 0x2702fac0 is 12 bytes after a block of size 4 alloc'd
-==14301==    at 0x4C2B955: calloc (vg_replace_malloc.c:711)
-==14301==    by 0x77B5F55: g_malloc0 (in /usr/lib64/libglib-2.0.so.0.5400.2)
-==14301==    by 0x3282A8: rom_add_file (loader.c:950)
-==14301==    by 0x3285EB: load_image_targphys_as (loader.c:153)
-==14301==    by 0x2C8BDD: sun4m_load_kernel (sun4m.c:253)
-==14301==    by 0x2C8BDD: sun4m_hw_init (sun4m.c:992)
-==14301==    by 0x3272F9: machine_run_board_init (machine.c:830)
-==14301==    by 0x23F809: main (vl.c:4477)
-==14301==
-==14301== Invalid write of size 4
-==14301==    at 0x2C847E: memcpy (string3.h:51)
-==14301==    by 0x2C847E: stl_he_p (bswap.h:342)
-==14301==    by 0x2C847E: stl_be_p (bswap.h:449)
-==14301==    by 0x2C847E: sun4m_load_kernel (sun4m.c:278)
-==14301==    by 0x2C847E: sun4m_hw_init (sun4m.c:992)
-==14301==    by 0x3272F9: machine_run_board_init (machine.c:830)
-==14301==    by 0x23F809: main (vl.c:4477)
-==14301==  Address 0x2702fac4 is 16 bytes after a block of size 4 alloc'd
-==14301==    at 0x4C2B955: calloc (vg_replace_malloc.c:711)
-==14301==    by 0x77B5F55: g_malloc0 (in /usr/lib64/libglib-2.0.so.0.5400.2)
-==14301==    by 0x3282A8: rom_add_file (loader.c:950)
-==14301==    by 0x3285EB: load_image_targphys_as (loader.c:153)
-==14301==    by 0x2C8BDD: sun4m_load_kernel (sun4m.c:253)
-==14301==    by 0x2C8BDD: sun4m_hw_init (sun4m.c:992)
-==14301==    by 0x3272F9: machine_run_board_init (machine.c:830)
-==14301==    by 0x23F809: main (vl.c:4477)
-==14301==
+I'll send a v2.
 
  Thomas

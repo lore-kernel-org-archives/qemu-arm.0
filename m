@@ -1,100 +1,97 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp680354wrq;
-        Fri, 15 Jun 2018 03:36:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJq5SHlme0dVBkmKwdP6h5uMXIINjCo4vgvxWm5Xi7FDVemHcJcEottJ0tdMuI1zy4lvuhJ
-X-Received: by 2002:a0c:b2ca:: with SMTP id d10-v6mr842372qvf.16.1529058960044;
-        Fri, 15 Jun 2018 03:36:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529058960; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp783537wrq;
+        Fri, 15 Jun 2018 05:23:20 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJR0jLAASlCb6al1PY9+a2+V+Aotb4JqjWeRG+yzT0EPpG3lCFT51c93C9a2bB+0XjMkH+2
+X-Received: by 2002:a37:ab04:: with SMTP id u4-v6mr1047456qke.92.1529065400600;
+        Fri, 15 Jun 2018 05:23:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529065400; cv=none;
         d=google.com; s=arc-20160816;
-        b=JSj3rGSmu5beA8tkLqWz38RFX1l3vZ/N8s7GBHAbG9RYNx6lMT06VoDBCPfYXKNRR8
-         lc9e4Q8mY6LEfOwB989qmARPax2+QkXLs/9xKBY54pUfJwbJxTkL0a7hI8G2b6PjdJtq
-         sfKbRS0CsRxDHWcSoq5mQfp4WcG3zqibL+QZ2NaV009t/8WAOryJM7p6gbEBnDrmfuwF
-         C4V02N202l/90sYbEvLG6ej28M3Dvh24nzr8XqlvxKbkDBxUGL894jSVwNjC6cy3koaQ
-         BaD4sx0VNtWDdyXXc+jgFnLSJ344pGoZB601rnzjLmqsrb3cv6cWovBI0awTa5SencJO
-         LLOg==
+        b=u9TdCD0OwgQ8Un05UUYrUKQ9lPyBqDzOF3iGTRyfauf5B0Yxsb+3GWvpPm59g0QaR6
+         /38NEdThIdPd+lQy9rstVCIxO+geYqRAViBtPg+RW3C+g5zpD/nMUuiUOJeTbLw3NKS2
+         pEvyH0HZlaLHV3ceGMU68BsWfEfYqkezRq/JWrCpM1OVkiroHierMSOQ/pSQVZsLcCRt
+         0XEsV9V/nEQ5cdZkVzq9c6+OAMaCVMh8FPtRfIDHmNR0rZWMQHCWw4kObzxctYCs4PbI
+         V7g8vvuTNEeoPzMBw5aOsJQdLmXJMeMA/mG7W1aqEMOeuIxXmQFB0uLjjQWJryI8EjWA
+         /tiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=F4uBFim3WKMdlu5kMoCrPeeUELJZ+EnorbUcMGRibBo=;
-        b=OO0G1yPjOKWkESxsE/LNiXmx6c92N4qpDSontpEPnb9MQDxmTyx+cAueaSsaAQGu7X
-         CSXLTavtT8S2BuDTMCngs3Y/p/Tb1UgL2XiCNcVtyhJ7rtZDJCc4xdh5uzR0E0sFeDuK
-         k+0tCAyYKtALoOPpkvDGByup5Fe5mXOH2bEvmYkUD9uWeqfTfC8JtVzl/Yj7I3kkOWJM
-         21BHgsOjYcEDksZlt6KpXTRFBC9Fp6OyiAabuD+SkXAKDJS+FOV1VlV89H4/1MYxbVS8
-         nz+f/ChoZH0T9zcF++Sy8eVhZlohjVZ1p/84Ro0HT420EqBxFkxT1Ir+KeWCGQUGJhe+
-         2mkA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=qoEc1wQpTrhjORCACKoRYT73kKL/wHHoKXzN3F1yewE=;
+        b=HZyxrmQCRvwvaq3ZWfMOE9r4TVRU41ltDL4ulxMQTSPomfX8mpbR9dDIJMOmnD0KPS
+         DqOlmHFzC5EwPritEOLku5sni/VddVweQFfwj9dyz6UEApcM6ShuPc6lciOnTF3cWjpC
+         vtEeaPSw8a/7m69O43I8OyvHOacHB876HmX1VJEMkW/w4vLHi2q5LB1we2RxlycX54nZ
+         7QZwhKnfDM670julYC9lP+mQFwYTm7YhZLdZt9pSAmE/cZvypN/q2ai9QoGTMo2FOY5g
+         Kw2/SUlsEwR/hsx+iGDi87c2YWFEEw8Syml32Q3tK2Vsrih/xDIX3U61VwBY3j/oTG/N
+         7H8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Iw48Y7kI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=I9bNLDpE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m31-v6si5175635qva.9.2018.06.15.03.35.59
+        by mx.google.com with ESMTPS id p85-v6si7812725qkl.132.2018.06.15.05.23.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jun 2018 03:36:00 -0700 (PDT)
+        Fri, 15 Jun 2018 05:23:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Iw48Y7kI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=I9bNLDpE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45728 helo=lists.gnu.org)
+Received: from localhost ([::1]:46474 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTm5H-0006qJ-JP
-	for alex.bennee@linaro.org; Fri, 15 Jun 2018 06:35:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33026)
+	id 1fTnlA-0001Hw-2b
+	for alex.bennee@linaro.org; Fri, 15 Jun 2018 08:23:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59879)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fTm55-0006o4-K5
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 06:35:48 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fTnkz-0001FK-N6
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 08:23:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fTm54-0006ID-Ag
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 06:35:47 -0400
-Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:32900)
+	(envelope-from <peter.maydell@linaro.org>) id 1fTnky-0001gx-R3
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 08:23:09 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:39156)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fTm54-0006GT-5O
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 06:35:46 -0400
-Received: by mail-ot0-x244.google.com with SMTP id h6-v6so10495779otj.0
-	for <qemu-arm@nongnu.org>; Fri, 15 Jun 2018 03:35:45 -0700 (PDT)
+	id 1fTnky-0001gX-Lz
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 08:23:08 -0400
+Received: by mail-oi0-x242.google.com with SMTP id t22-v6so8623143oih.6
+	for <qemu-arm@nongnu.org>; Fri, 15 Jun 2018 05:23:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=F4uBFim3WKMdlu5kMoCrPeeUELJZ+EnorbUcMGRibBo=;
-	b=Iw48Y7kIqTIQ5J6Y3fB0g1M8pns2D7klMbPbHDaVBXFd7BxX6aBvHtVpFrBrDkwtiX
-	igmCPbQYmm3tL+hnA6Lq+ixnUxKtQlQUldD4BeN4+FcJa7CFbAkFIvGoiFf4AnQr6LBk
-	L9RPzercs3jw2kSkoZxvSdgCWck5SAvqFoZ/c=
+	:cc; bh=qoEc1wQpTrhjORCACKoRYT73kKL/wHHoKXzN3F1yewE=;
+	b=I9bNLDpEIC547gOMRFK16Wk/ifY2920D4bYJiKAA+VRzlWwJ/Pczrt4Zd8YoFvicxE
+	CYq7nAvIYGUBf263zzuZjkPqf92JJ0ySnqJHWD75a166f2ax6wFO4ItrSpApF7kmXxx7
+	Ekwg0n55e3ct94+Zm4/DbXmEgbewEQ75qHyBA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=F4uBFim3WKMdlu5kMoCrPeeUELJZ+EnorbUcMGRibBo=;
-	b=WxRPsQyAnQ74cNtMUeBTCwPPRn6wdDgqMrSeJhr6xWZx9S115cNMkVWPHHv5mRe7Dz
-	2iaDfe419oiMA/2lkIPKlhrro4MkSTFz+tRPnkKuNBYmxpDOVg+b2tIhOnpfTsqjRI5L
-	exoHnfu8eiAH7ggeBd77fpV5g6VJ+7gp9VwIBNl65tjC1ZOdU9ugiqoJjng3rxUhvXNn
-	ofglyEcg1vqj2E/InyfD5stvZrftwraPpQqIxqEEvRhtHbkhRFa7Mjebs8rX7zilCf+b
-	OjCBPgquKEtY0DqymKgeB3zKf4vi41Xx8JLQQyr0ngnt+qNjiV4NMaYptH82x29ROFQa
-	kp/A==
-X-Gm-Message-State: APt69E1kRqmYUozIpNCJX+C5BicmyP8CmEPOohve9U0LZs50/i87Ww1t
-	g6n6/FyZNPaVpi64oR6ucZ0ePOAlgQHdPIzpm3xv/Q==
-X-Received: by 2002:a9d:1a0b:: with SMTP id
-	a11-v6mr561641ote.205.1529058945366; 
-	Fri, 15 Jun 2018 03:35:45 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=qoEc1wQpTrhjORCACKoRYT73kKL/wHHoKXzN3F1yewE=;
+	b=kmmKCKg9Y0PSnHAGJLh0jlrdeFAxZLi/fywopKNBh1jS64xh6WqH7obAVcxe0rqeMG
+	a/IeLHKVfD5FDGuJekQqmpTEMASrA5KtBRziNay7Vaa2KKzM/FWoq/lX30D4TD6DdPn1
+	NbVyWTF6GJbJEa8AgxeAA4Hs3JYS5+4vZwM5BLkPiVdF/7b448fMZhTltdhX4OBXvF2H
+	m+JwrFR0kxRTLHhmL0jLplUe4RjRZjGdziRaeD3WWmrDT3eJHn0T4STqX5u6TwG+YN2R
+	IU5YFinLy/duwWWg9o1qKqFmuDUXt8sYE4I8S5D58JvUgL8qe5cVdxsLAV3sv/8iBr9K
+	cYlQ==
+X-Gm-Message-State: APt69E2NESASRisqdHmdSGjIxMkq++a2b2++l2NkqB2ulYE4RPCiEzmA
+	Sttm4ca6Ug88gaYJ/EKWufPkoRs5+Asd5Q9n4XXlIw==
+X-Received: by 2002:aca:a846:: with SMTP id r67-v6mr782953oie.12.1529065388006;
+	Fri, 15 Jun 2018 05:23:08 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 03:35:25
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 05:22:47
 	-0700 (PDT)
-In-Reply-To: <20180613114836.9265-1-joel@jms.id.au>
-References: <20180613114836.9265-1-joel@jms.id.au>
+In-Reply-To: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
+References: <1528554193-27270-1-git-send-email-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jun 2018 11:35:25 +0100
-Message-ID: <CAFEAcA9zpvd2Ztmc9pAiSkv3g1m3H=udqtek2gv0oA+2dvFZtQ@mail.gmail.com>
-To: Joel Stanley <joel@jms.id.au>
+Date: Fri, 15 Jun 2018 13:22:47 +0100
+Message-ID: <CAFEAcA-PJe+hwmL+vtLKNoCCb+2c5e8tx6kWnE0AuOiB_3HR+w@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::244
-Subject: Re: [Qemu-arm] [PATCH v4] aspeed_scu: Implement RNG register
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH 0/2] ARM virt: Silence dtc warnings
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,31 +103,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +b2dwn4D/8BE
+X-TUID: NDofKLv++Xi9
 
-On 13 June 2018 at 12:48, Joel Stanley <joel@jms.id.au> wrote:
-> The ASPEED SoCs contain a single register that returns random data when
-> read. This models that register so that guests can use it.
+On 9 June 2018 at 15:23, Eric Auger <eric.auger@redhat.com> wrote:
+> When running dtc on the guest /proc/device-tree, we get the
+> following warnings: "Warning (unit_address_vs_reg): Node <name>
+> has a reg or ranges property, but no unit name", with name:
+> /intc, /intc/its, /intc/v2m, /memory.
 >
-> The random number data register has a corresponding control register,
-> however it returns data regardless of the state of the enabled bit, so
-> the model follows this behaviour.
->
-> When the qcrypto call fails we exit as the guest uses the random number
-> device to feed it's entropy pool, which is used for cryptographic
-> purposes.
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> ---
+> This series removes those warnings by adding the unit address to
+> the corresponding node names.
 
+Thanks for this patchset -- Marc Z reported this ages ago
+but I never got round to looking at it.
 
+Patch 1 looks fine, but patch 2 changing the "/memory" node
+handling I'm less happy with. Currently we're consistent: we
+assume that the memory node must always be called "/memory",
+and we look for an existing node that way and create our own
+with that name. If in fact memory nodes might not be named
+"/memory" then we need to look for any preexisting "/memory@*" node,
+not just "/memory", don't we?
 
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

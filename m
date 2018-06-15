@@ -1,34 +1,34 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp846853wrq;
-        Fri, 15 Jun 2018 06:23:11 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLqNwCAtNaqzdB1lcXG6CgRVmNNupwdBk68c9fk03kKYeMsFbl4irLsT8QdtKF3FcJMgv7v
-X-Received: by 2002:a0c:ae0a:: with SMTP id y10-v6mr1337136qvc.157.1529068991852;
-        Fri, 15 Jun 2018 06:23:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529068991; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp848622wrq;
+        Fri, 15 Jun 2018 06:24:59 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJL0Mj7D9FIB+7oeRAnQUdsuqDC2SMcjAqpaZ7rxBezesVj+d4Mq0y90xujVeVQ7uWgHw8q
+X-Received: by 2002:a0c:de13:: with SMTP id t19-v6mr1348698qvk.93.1529069099662;
+        Fri, 15 Jun 2018 06:24:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529069099; cv=none;
         d=google.com; s=arc-20160816;
-        b=UqSQAtZSMhIgIqsNZTEU4T4748EylrTYSnX4JsFq93WC1jLM9nneMYmtyP/DrPG+bt
-         DyN73/DcyfWxNUUKblbSKkgMP0/GxxszfPjBhMnhpeHl1iXh+vP8efn5mEbTfUFZoJzY
-         xQ+VDqiQRwS5kLVMI4Jp3V310FeDkMOpxuoButGfTxsocZxwA1AIf8lHpD2K0a7ARHnt
-         oGVthXS/v976Ty527RvjMJbShlU6zNnx/xaCmEVKzg72c1P7ow9zbtjzi8UbXtA3Jx2n
-         kNfh8EoaFlAKAfZTID4/wdugQljBdXgSRALgE5vULhQRgByKb+EJfaZdxnEjigutcDOe
-         krjA==
+        b=srT3IvhblKm972FRE1i71X8ThqgF7c1frrP10vve9LcpO2Twch6DBJxdf7q+Li9IzI
+         WvSpS6tomQkAAkUWnB9yxlrA8+f4eJQ3BVmx9oTux2neuHlRApf5M/DkEDTcPJaEmPYm
+         N3tfBX/0oHAWGJBJ4OmJ5X9X0hsYbDicG43hg+i7wPH2s8+5VZEoFICGewcWGpgMnoGd
+         nB7m27Lrp0jDdT2CM6FSZ0hAmZZgA7ry6LXi3rlDZXZ+mVJG9yUiT5FbcqpTxoFZJLjB
+         sXhE/CecmmAES7qW4rhUIlrE1FC5756qTmknV/OMrRQEiKs8GUwdqLMyXwK0Pe0I6u1O
+         3W0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:cc:references:to:subject:arc-authentication-results;
-        bh=IwCann3dthMCbWQb8GZwUG55n4+F7sG3dC8QQe94ymY=;
-        b=dC7FyFX/UwAGi2OngmJHXI5R3ZYCB4LoRfFA8PqSRr2kY6sJX5IlBuJWK6vxppffnY
-         R+Pr+xau0K3/FO8B0A9IP6FhWlmBh8X0391y8ec0AH588nIIMzSkVlU+tg/juXHJ/MFI
-         pRQl9Tr99jRNz70SUOfH0YPD+tk/wtnHPD6gb9povhWX1n4D8OCVpEkite029PoiAUGc
-         uBAOXG+YxtzRHz5Bv/dqwysK0igFoQ4j9XPmL8oFIMr7OsdfCAed/u51xI3qL55P5Cwu
-         5JAsCnZdfBXXPC/cQ4koP5KidgvYywPSz7S2b1Pp5KFQamcILopqZK+h/ZBOZk+8QdWH
-         IoHg==
+        bh=4zNrvSmhS8pwhB2eUE3M4MhAWx/PUk6OnWbWhehYzHU=;
+        b=ZFIsV+M4Qj9m+nxF4QaLsprY+bW2mkPZv7r8t0EvzAt1U9fpMw4d+UdSppMhYKdmrE
+         tI/HIbkLXWBIQ5Y9V5U5oT+dtYfYeMFuzl9q7mYsOi43rgwt2yXGDx3AsBnLpU/eF2Lt
+         jzSIVgOh5v7XajqwgvwxbGUGpaLokCfG5Z+DFDNk9wGOpevvLvNyCOpe+zkJgBdp7+rK
+         TwAbhWFhFJnrRSzdYhrqNc2bGhTsZzTdi5k8PYJ7ufG4AZ2YimjJvr8ZmzpwAwMxYUZZ
+         gqwvzy85cPGlcCAuw0djOdzgSJyiwHRctSZRDZx6PDdPonm2SP6DXYJuE7AscorHNmCJ
+         ydmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id 9-v6si7243778qtp.121.2018.06.15.06.23.11
+        by mx.google.com with ESMTPS id c45-v6si1153200qvc.60.2018.06.15.06.24.59
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Jun 2018 06:23:11 -0700 (PDT)
+        Fri, 15 Jun 2018 06:24:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
@@ -36,57 +36,71 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 51BA6402312B;
-	Fri, 15 Jun 2018 13:23:11 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 43FF640122CE;
+	Fri, 15 Jun 2018 13:24:59 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-117-106.ams2.redhat.com [10.36.117.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D79FC2024CA1;
-	Fri, 15 Jun 2018 13:23:09 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH v2 05/13] hw/misc/tz-mpc.c: Implement the Arm
- TrustZone Memory Protection Controller
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EA78C2024CA2;
+	Fri, 15 Jun 2018 13:24:57 +0000 (UTC)
+Subject: Re: [PATCH v2 06/13] hw/misc/tz-mpc.c: Implement registers
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20180604152941.20374-1-peter.maydell@linaro.org>
- <20180604152941.20374-6-peter.maydell@linaro.org>
- <e2f81a60-6b05-1240-ab18-69d46a29185e@redhat.com>
- <CAFEAcA-kmhb4igH2gihSsOe4JFP1u8yienOBDqWvCvqjexftFg@mail.gmail.com>
+ <20180604152941.20374-7-peter.maydell@linaro.org>
+ <45d89f39-7397-bd71-5cd4-fdb1ea47595e@redhat.com>
+ <CAFEAcA_OpQYq6XuKhAsP-W9pimWpF49XVcttcV7rqpOgJu2ihA@mail.gmail.com>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "patches@linaro.org" <patches@linaro.org>, Peter Xu <peterx@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Richard Henderson <rth@twiddle.net>
+ "patches@linaro.org" <patches@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Xu <peterx@redhat.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <680af824-0d38-d690-95b8-e64949820e39@redhat.com>
-Date: Fri, 15 Jun 2018 15:23:08 +0200
+Message-ID: <b3163a63-ae4a-9526-79a9-42cce6ae0eb7@redhat.com>
+Date: Fri, 15 Jun 2018 15:24:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
  Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-kmhb4igH2gihSsOe4JFP1u8yienOBDqWvCvqjexftFg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_OpQYq6XuKhAsP-W9pimWpF49XVcttcV7rqpOgJu2ihA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Fri, 15 Jun 2018 13:23:11 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Fri, 15 Jun 2018 13:23:11 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-TUID: Lz45gViEzmvD
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Fri, 15 Jun 2018 13:24:59 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Fri, 15 Jun 2018 13:24:59 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-TUID: njSjDKSV8knD
 
 Hi Peter,
 
-On 06/15/2018 10:53 AM, Peter Maydell wrote:
-> On 15 June 2018 at 08:10, Auger Eric <eric.auger@redhat.com> wrote:
->> after reading 8/13, I have a doubt here about the ret.perm value that
->> stays IOMMU_RW independently on the translation success. Usually if the
->> translation failn perm is set to IOMMU_NONE. In your case you also play
->> with the output address space which switches to the blocked one in case
->> of failure and you handle access failure through that means. So maybe
->> the end result is the same but I am not sure.
+On 06/15/2018 11:04 AM, Peter Maydell wrote:
+> On 14 June 2018 at 21:36, Auger Eric <eric.auger@redhat.com> wrote:
+>> Hi Peter,
+>>
+>> On 06/04/2018 05:29 PM, Peter Maydell wrote:
+>>> Implement the missing registers for the TZ MPC.
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > 
-> The end result is different, which is why we have to return RW here.
-> If we return NONE we are telling the caller that this will be
-> a memory transaction failure, so the CPU emulation will generate
-> a bus-error kind of exception. By returning RW we tell the caller
-> that it should make transactions for this address. We can then
-> handle them in the MPC with the correct behaviour for a blocked
-> access (generating an interrupt, and configurably either completing
-> the access as RAZ/WI or returning MEMTX_ERROR to cause a busfault.)
+>>> +    case A_INT_CLEAR:
+>>> +        if (value & R_INT_CLEAR_IRQ_MASK) {
+>>> +            s->int_stat = 0;
+>>> +            tz_mpc_irq_update(s);
+>> don't you need to clear the info regs. spec says:
+>> the [info] register retains its value until mpc_irq is cleared.
+> 
+> The full sentence is "Subsequent security violating transfers
+> remain blocked, that is, not captured in this register
+> and the register retains its value until mpc_irq is cleared."
+> I interpret "until mpc_irq is cleared" as applying to the
+> entire thing, ie mpc_irq being cleared is what allows a
+> subsequent transfer to be captured in this register.
+> (Hardware actively clearing itself to zero is unlikely,
+> because that costs extra gates which designers don't tend
+> to do unless there's a reason for it.)
+> 
+> From a guest point of view (which is kind of the pov the
+> docs are written from), the guest can't rely on the register
+> value once mpc_irq is cleared (because another transaction
+> might come along and cause the value to be overwritten).
+OK
 
-OK thank you for the explanation
+Thanks
 
 Eric
 > 

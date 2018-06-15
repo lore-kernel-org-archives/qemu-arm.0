@@ -1,89 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp646618wrq;
-        Fri, 15 Jun 2018 02:59:32 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIK8BmfPRdfRPoxh67l8T/Rl2urlsPRJJo7EMld4NdusKG773AAuBRPvDo0OPyRSq0MI40j
-X-Received: by 2002:a37:4249:: with SMTP id p70-v6mr656270qka.297.1529056772207;
-        Fri, 15 Jun 2018 02:59:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529056772; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp680354wrq;
+        Fri, 15 Jun 2018 03:36:00 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJq5SHlme0dVBkmKwdP6h5uMXIINjCo4vgvxWm5Xi7FDVemHcJcEottJ0tdMuI1zy4lvuhJ
+X-Received: by 2002:a0c:b2ca:: with SMTP id d10-v6mr842372qvf.16.1529058960044;
+        Fri, 15 Jun 2018 03:36:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529058960; cv=none;
         d=google.com; s=arc-20160816;
-        b=PpCy0Gd5yqQTXSGkrXZKCi1TW9F3RccXCCHnEH5KdPDcE6r011lPrbSDkEw1bpm2c+
-         rVQy1Tp2eqAeGX1xCDZVZrBCPfKMw3oqdeblSMtuEAgTcz0QqOYvP5q/Pw2fT78r5YuS
-         Op2WuBAOPbEdnI8JT9juqxTWINUsWYG+WyoXNRCtJSoedykZhotGk+N3S+UtMF/hHDW6
-         miPvGU2NsHWAH9FVJyww7+ZPBStoORAxZZsZamyoDa+C7dZWumVq7Kft16BOryZCAouo
-         7WTmJi5CjZXXFdIvSF4V6bbpuXsHOXoXXwE3vK1AxpLd1rmkRv5EHHDlgh4mxPRbEX9T
-         KjUg==
+        b=JSj3rGSmu5beA8tkLqWz38RFX1l3vZ/N8s7GBHAbG9RYNx6lMT06VoDBCPfYXKNRR8
+         lc9e4Q8mY6LEfOwB989qmARPax2+QkXLs/9xKBY54pUfJwbJxTkL0a7hI8G2b6PjdJtq
+         sfKbRS0CsRxDHWcSoq5mQfp4WcG3zqibL+QZ2NaV009t/8WAOryJM7p6gbEBnDrmfuwF
+         C4V02N202l/90sYbEvLG6ej28M3Dvh24nzr8XqlvxKbkDBxUGL894jSVwNjC6cy3koaQ
+         BaD4sx0VNtWDdyXXc+jgFnLSJ344pGoZB601rnzjLmqsrb3cv6cWovBI0awTa5SencJO
+         LLOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date:arc-authentication-results;
-        bh=3n/0lGCGuiuwv2VPUguj+t65KycJXs3d5rLO1zHgO2s=;
-        b=TuFHnQ3Y727BJiVgOOKGlgd6q2GsBpNu2JmLIZMxSaQ1LxOgTfkBrVujaU8ACIfEeo
-         PhDLV2u4jV38sh+vtL+YFOmyVZr8uB4Yglxe2KkLy8R2GgBiOKEeDGk0k9EbsrtErTCq
-         nPDgo7FnTUTOuI8Dc3rOa7N969VHPHcOaTkTzikTDdv3pwkGvsRQTZElL2i7KC8LsULx
-         tJM9whQGsVY6+PRqY7UE7ps5AJuN/py5blsEPUp2J0zw8xUD7j0onO5T6H/nEmOD5s9I
-         /Cpc/ObFIM3g3Lw13+GwEr3yeJrV2jN/Mux6S7QhbZrBKRl2tYYNUTvywOUBsIiHTFy4
-         DIig==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=F4uBFim3WKMdlu5kMoCrPeeUELJZ+EnorbUcMGRibBo=;
+        b=OO0G1yPjOKWkESxsE/LNiXmx6c92N4qpDSontpEPnb9MQDxmTyx+cAueaSsaAQGu7X
+         CSXLTavtT8S2BuDTMCngs3Y/p/Tb1UgL2XiCNcVtyhJ7rtZDJCc4xdh5uzR0E0sFeDuK
+         k+0tCAyYKtALoOPpkvDGByup5Fe5mXOH2bEvmYkUD9uWeqfTfC8JtVzl/Yj7I3kkOWJM
+         21BHgsOjYcEDksZlt6KpXTRFBC9Fp6OyiAabuD+SkXAKDJS+FOV1VlV89H4/1MYxbVS8
+         nz+f/ChoZH0T9zcF++Sy8eVhZlohjVZ1p/84Ro0HT420EqBxFkxT1Ir+KeWCGQUGJhe+
+         2mkA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Iw48Y7kI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l3-v6si2729677qte.81.2018.06.15.02.59.32
+        by mx.google.com with ESMTPS id m31-v6si5175635qva.9.2018.06.15.03.35.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jun 2018 02:59:32 -0700 (PDT)
+        Fri, 15 Jun 2018 03:36:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Iw48Y7kI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45517 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45728 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTlVz-0001z2-Nw
-	for alex.bennee@linaro.org; Fri, 15 Jun 2018 05:59:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52344)
+	id 1fTm5H-0006qJ-JP
+	for alex.bennee@linaro.org; Fri, 15 Jun 2018 06:35:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fTlVl-0001xI-Pu
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 05:59:19 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fTm55-0006o4-K5
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 06:35:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fTlVi-0007kf-Nk
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 05:59:17 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46696 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fTlVi-0007j5-HX; Fri, 15 Jun 2018 05:59:14 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 52FB440122A1;
-	Fri, 15 Jun 2018 09:59:13 +0000 (UTC)
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 73CE92166BB6;
-	Fri, 15 Jun 2018 09:59:11 +0000 (UTC)
-Date: Fri, 15 Jun 2018 11:59:09 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Message-ID: <20180615115909.1c7df252.cohuck@redhat.com>
-In-Reply-To: <1529056145-6404-1-git-send-email-thuth@redhat.com>
-References: <1529056145-6404-1-git-send-email-thuth@redhat.com>
-Organization: Red Hat GmbH
+	(envelope-from <peter.maydell@linaro.org>) id 1fTm54-0006ID-Ag
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 06:35:47 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:32900)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fTm54-0006GT-5O
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 06:35:46 -0400
+Received: by mail-ot0-x244.google.com with SMTP id h6-v6so10495779otj.0
+	for <qemu-arm@nongnu.org>; Fri, 15 Jun 2018 03:35:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=F4uBFim3WKMdlu5kMoCrPeeUELJZ+EnorbUcMGRibBo=;
+	b=Iw48Y7kIqTIQ5J6Y3fB0g1M8pns2D7klMbPbHDaVBXFd7BxX6aBvHtVpFrBrDkwtiX
+	igmCPbQYmm3tL+hnA6Lq+ixnUxKtQlQUldD4BeN4+FcJa7CFbAkFIvGoiFf4AnQr6LBk
+	L9RPzercs3jw2kSkoZxvSdgCWck5SAvqFoZ/c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=F4uBFim3WKMdlu5kMoCrPeeUELJZ+EnorbUcMGRibBo=;
+	b=WxRPsQyAnQ74cNtMUeBTCwPPRn6wdDgqMrSeJhr6xWZx9S115cNMkVWPHHv5mRe7Dz
+	2iaDfe419oiMA/2lkIPKlhrro4MkSTFz+tRPnkKuNBYmxpDOVg+b2tIhOnpfTsqjRI5L
+	exoHnfu8eiAH7ggeBd77fpV5g6VJ+7gp9VwIBNl65tjC1ZOdU9ugiqoJjng3rxUhvXNn
+	ofglyEcg1vqj2E/InyfD5stvZrftwraPpQqIxqEEvRhtHbkhRFa7Mjebs8rX7zilCf+b
+	OjCBPgquKEtY0DqymKgeB3zKf4vi41Xx8JLQQyr0ngnt+qNjiV4NMaYptH82x29ROFQa
+	kp/A==
+X-Gm-Message-State: APt69E1kRqmYUozIpNCJX+C5BicmyP8CmEPOohve9U0LZs50/i87Ww1t
+	g6n6/FyZNPaVpi64oR6ucZ0ePOAlgQHdPIzpm3xv/Q==
+X-Received: by 2002:a9d:1a0b:: with SMTP id
+	a11-v6mr561641ote.205.1529058945366; 
+	Fri, 15 Jun 2018 03:35:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 15 Jun 2018 09:59:13 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 15 Jun 2018 09:59:13 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v3] loader: Check access size when calling
- rom_ptr() to avoid crashes
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 03:35:25
+	-0700 (PDT)
+In-Reply-To: <20180613114836.9265-1-joel@jms.id.au>
+References: <20180613114836.9265-1-joel@jms.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 15 Jun 2018 11:35:25 +0100
+Message-ID: <CAFEAcA9zpvd2Ztmc9pAiSkv3g1m3H=udqtek2gv0oA+2dvFZtQ@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH v4] aspeed_scu: Implement RNG register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,73 +106,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rMrMS5kMXlQU
+X-TUID: +b2dwn4D/8BE
 
-On Fri, 15 Jun 2018 11:49:05 +0200
-Thomas Huth <thuth@redhat.com> wrote:
-
-> The rom_ptr() function allows direct access to the ROM blobs that we
-> load during startup. However, there are currently no checks for the
-> size of the accesses, so it's currently possible to crash QEMU for
-> example with:
-> 
-> $ echo "Insane in the mainframe" > /tmp/test.txt
-> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
-> Segmentation fault (core dumped)
-> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
-> Segmentation fault (core dumped)
-> $ echo -n HdrS > /tmp/hdr.txt
-> $ sparc64-softmmu/qemu-system-sparc64 -kernel /tmp/hdr.txt -initrd /tmp/hdr.txt
-> Segmentation fault (core dumped)
-> 
-> We need a possibility to check the size of the ROM area that we want
-> to access, thus let's add a size parameter to the rom_ptr() function
-> to avoid these problems.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 13 June 2018 at 12:48, Joel Stanley <joel@jms.id.au> wrote:
+> The ASPEED SoCs contain a single register that returns random data when
+> read. This models that register so that guests can use it.
+>
+> The random number data register has a corresponding control register,
+> however it returns data regardless of the state of the enabled bit, so
+> the model follows this behaviour.
+>
+> When the qcrypto call fails we exit as the guest uses the random number
+> device to feed it's entropy pool, which is used for cryptographic
+> purposes.
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
 > ---
->  v3: Fix the check in find_rom()
-> 
->  hw/core/loader.c     | 10 +++++-----
->  hw/mips/mips_malta.c |  6 ++++--
->  hw/s390x/ipl.c       | 13 ++++++++++---
->  hw/sparc/sun4m.c     |  4 ++--
->  hw/sparc64/sun4u.c   |  4 ++--
->  include/hw/loader.h  |  2 +-
->  target/arm/cpu.c     |  2 +-
->  7 files changed, 25 insertions(+), 16 deletions(-)
 
-> diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
-> index 04245b5..bcac204 100644
-> --- a/hw/s390x/ipl.c
-> +++ b/hw/s390x/ipl.c
 
-> @@ -195,8 +199,11 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
->               * we have to overwrite values in the kernel image,
->               * which are "rom"
->               */
-> -            stq_p(rom_ptr(INITRD_PARM_START), initrd_offset);
-> -            stq_p(rom_ptr(INITRD_PARM_SIZE), initrd_size);
-> +            romptr = rom_ptr(INITRD_PARM_START, 16);
-> +            if (romptr) {
-> +                stq_p(romptr, initrd_offset);
-> +                stq_p(romptr + 1, initrd_size);
 
-INITRD_PARM_SIZE seems to be unused now. We can remove it in a separate
-patch if you don't respin, though.
+Applied to target-arm.next, thanks.
 
-> +            }
->          }
->      }
->      /*
-
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+-- PMM

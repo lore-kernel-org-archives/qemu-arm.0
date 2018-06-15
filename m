@@ -1,57 +1,57 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1154395wrq;
-        Fri, 15 Jun 2018 11:13:44 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKbi05tUo81+xOUniEtq419kzJ0KBIeXscb2lwpsHKcdhthGDpyRWidZtx8gK+9/n4RufVN
-X-Received: by 2002:a0c:a3c3:: with SMTP id v61-v6mr2318465qvv.99.1529086424907;
-        Fri, 15 Jun 2018 11:13:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529086424; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1389901wrq;
+        Fri, 15 Jun 2018 15:50:23 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKSPadhZG53RTYOfak44evieVVvw46X+sUopz+w1jsIKKz4Dh6CjANkHSHJeKL+uoScAjfd
+X-Received: by 2002:a0c:99df:: with SMTP id y31-v6mr3179900qve.156.1529103023429;
+        Fri, 15 Jun 2018 15:50:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529103023; cv=none;
         d=google.com; s=arc-20160816;
-        b=KO6C//WbEo34xdyScIxQmlY394QDSt6xOQraTHusFUB1kxxR+ogWr8twNMoPyQNHWZ
-         xhg9UCwHt3YuoeBoeXBmgQmnhQ093y4Qi385rUVux3WbU5QCUE22SsjvaoTbmsopL20x
-         VJv4khIFbnrkFRSTQyl98btyU9hJyR4R4soxCFHunvo+ShAsZBX4SUfASxaeOnc07OjL
-         4TzyiCHmdwP3d24iElcG9f6WIzhi6sSbUlpIW8osYmNm69s0mTZLPsFOFYBg3ubNlj5v
-         OFmy8ocXAAqJkyCX+3fAaeu5l51a6tisS6jjHoAORdF0wyxzc4tORsdPl8pJk4PRcZqb
-         qGpg==
+        b=0DfG8WgXDEtrObu24KmATqsrB+JO/Gql7csOUpFSxPsUb7AyTLl27SynFqPFV5TcXY
+         xuBIxHzXPBend0j1j04XJJYuf/AMR1OYtBP72GgtpAnzc4vRuVnmYESAsr/ZhNvC5pUB
+         Hqka/5iCqxTziMP1TE0e4MtowJt1C69ITJpugeNlu+STrOydQFsHVo0f4BKOtm7sdcTA
+         XNedVSmRAFD5sg1rmE6N7yzYnklJ4owD2WVKscDGDo1S9RorGLBn6aDKHlUzCFRuLp3u
+         fVigM7O5yZyyYsI3/mD2p4h5A3xHYcHjbmTeodiqIxecl5S3jGkY9oKPHpTW4tmB19Y2
+         oTIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:arc-authentication-results;
-        bh=hksGn7tM2aB8+qGjF8YmXo7qDDU3nMo3blMCqZx8VZk=;
-        b=bMkUzWk30eNuO9PKm9IQzUg+AAidwVOUqdCp8ES9YY3uFm2JXY2cuZtvJ4veGMwJ/G
-         L6mOBPxo1egETHUgqIsfxSILbtqA01rmKCmV69GnGTuW08m9VL9gCBj6q6f9LXDX+6o3
-         5h6UCVDbO5MHXBN4zDgeOm2UTYCeLqi70ML3DIGp2/hKXgi0XyrfzJCjvhfC8iZV2yo2
-         cTINKj9EqzvIQHn/Jo6yMXSsFC3FPFO6Q87Q5wPg6mFwcUBarfrP6jCvKHNGRnbZSw9z
-         G8ofdd4ISNyrfR25G0jbLcIfX5evAETjFH0TAjD4YWPoEqT92MSupfDO+XhmbWVDXt++
-         velA==
+        bh=t+rfMC2+TwgIZWNjVlaGjkXEEDVpiLSYAFVEId2fUOU=;
+        b=W26iN3YFNnbBz7ybfKYXrYZOMBmn+FfnTzdle2oQgWXzul9Yo+zgGPFLDQPah2kUWZ
+         iUUUV1Q6oKyjsmkq1/2YfLXShmQbcu7U3WpUEHck6HrSwaqzFbUbSjfd6oEx8QyzM3Hu
+         iF47iMQcLX1p5T8Y3KHOTOFWEgSCWZgmF8i7OIFYPr4VQ70+3anzxp1ItecP6xCc7pZT
+         OPkVAx2HqQNPo98ezfHdzaz2oP4aqyi36pDBSqLs2IwUEfwUuYJH3q5Gi4gqGcPWu++h
+         YQQT1w4i5Khu8xi4wO/u2PQzOnJBZhI9H+7cpIY7ahJKfwk74fG7eOEmiYlTI7W+bYFl
+         NhbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@roeck-us.net header.s=default header.b="A/TcW2Al";
+       dkim=fail header.i=@roeck-us.net header.s=default header.b=sR3bezcx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j32-v6si8009655qtj.47.2018.06.15.11.13.44
+        by mx.google.com with ESMTPS id m47-v6si2875472qtk.212.2018.06.15.15.50.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jun 2018 11:13:44 -0700 (PDT)
+        Fri, 15 Jun 2018 15:50:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@roeck-us.net header.s=default header.b="A/TcW2Al";
+       dkim=fail header.i=@roeck-us.net header.s=default header.b=sR3bezcx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48694 helo=lists.gnu.org)
+Received: from localhost ([::1]:49657 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTtEG-0004yk-Fr
-	for alex.bennee@linaro.org; Fri, 15 Jun 2018 14:13:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37368)
+	id 1fTxXz-0002Xu-0r
+	for alex.bennee@linaro.org; Fri, 15 Jun 2018 18:50:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33899)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1fTtEA-0004yF-JL
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 14:13:39 -0400
+	(envelope-from <linux@roeck-us.net>) id 1fTxXs-0002XQ-54
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 18:50:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1fTtE6-0000WI-KA
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 14:13:38 -0400
-Received: from bh-25.webhostbox.net ([208.91.199.152]:41268)
+	(envelope-from <linux@roeck-us.net>) id 1fTxXp-0007mI-1k
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 18:50:16 -0400
+Received: from bh-25.webhostbox.net ([208.91.199.152]:42007)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <linux@roeck-us.net>) id 1fTtE6-0000Vz-Ci
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 14:13:34 -0400
+	(Exim 4.71) (envelope-from <linux@roeck-us.net>) id 1fTxXo-0007Ww-PQ
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 18:50:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=roeck-us.net; s=default;
 	h=In-Reply-To:Content-Type:MIME-Version:References
@@ -59,30 +59,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=hksGn7tM2aB8+qGjF8YmXo7qDDU3nMo3blMCqZx8VZk=;
-	b=A/TcW2Al3rmme9/W7qvEEc0x5o
-	tMEZdGr3V3+pTw+tAbzQKOztWHUNwlT9/smo3EzrXQA4pzDwRt/DqY+PUXE7WhOTy9T9iRUV1rgF7
-	Ur4r3e71s1iDfoCAlETbXmpArWtCXnnx1xZaizaAuWerr6Q6qLydgrcoBnShbLq/Avu5SU1MrvRzY
-	Os+s8eEif8r/54RTOvUVtaxQkSgmKmeFv5ckxl98zMiDIWU8W1p6oGOq/nykG0DdLVUYfiB/W0Np7
-	A17Yc9keuLMFhq22XOCldaGBwsAT8ZlVGFzkalu4gvuWyyI6NKtPZkEsQQnWMER+PNKZ47Djp9oBA
-	QHSfZD1A==;
+	bh=t+rfMC2+TwgIZWNjVlaGjkXEEDVpiLSYAFVEId2fUOU=;
+	b=sR3bezcxvYEse1ybKCDTzsIZkL
+	l54t34SD1Caosf1C8B7etj6GZ+9frCljY/T31lL+PGKFzDj4PRz8jP2D++d1gn8Deh3YYx+qCB/0u
+	OvaSVVkkp+2p9BsNJbtknRz+KTWHS3tbs7AGfJRZkfgw2D95ujhvpQxjpql0NIu5sj3pGpKX/dzYD
+	FU8ActObmPAritmAnzsjNlpggqRS34RqWbw4lrxujj75DPZJAPhv2KgKOBoHSiTCHc6fFov8OrPt4
+	Fmac93bzfO2zePUOAq6PZ7KxyGonvx4irMaz41goEhU+/eVJt44B+3ZQrGp/VJQXWfOxNsWH25R0f
+	Kqlc3/RA==;
 Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
-	([108.223.40.66]:48618 helo=localhost)
+	([108.223.40.66]:49756 helo=localhost)
 	by bh-25.webhostbox.net with esmtpa (Exim 4.89)
 	(envelope-from <linux@roeck-us.net>)
-	id 1fTtE4-004qIv-UT; Fri, 15 Jun 2018 18:13:33 +0000
-Date: Fri, 15 Jun 2018 11:13:31 -0700
+	id 1fTxXc-00As9z-4f; Fri, 15 Jun 2018 22:50:00 +0000
+Date: Fri, 15 Jun 2018 15:49:59 -0700
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180615181331.GA29302@roeck-us.net>
+Message-ID: <20180615224959.GA3257@roeck-us.net>
 References: <20180614215422.GA29690@roeck-us.net>
 	<CAFEAcA-t9G=HAPH2325rduAKFNUEXNE-Jp_m9fMhfdTCbtm28g@mail.gmail.com>
 	<4ff384cf-14ad-ef33-5532-4f8dbb8d0ff6@roeck-us.net>
 	<CAFEAcA9+nW7nZb0ZaN__xBGGV9WFcBJ0_q=EYTA_DM6=bVfhNg@mail.gmail.com>
+	<20180615181331.GA29302@roeck-us.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA9+nW7nZb0ZaN__xBGGV9WFcBJ0_q=EYTA_DM6=bVfhNg@mail.gmail.com>
+In-Reply-To: <20180615181331.GA29302@roeck-us.net>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 X-Authenticated_sender: guenter@roeck-us.net
 X-OutGoing-Spam-Status: No, score=-1.0
@@ -115,28 +116,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EfP+PRMJ0Qn2
+X-TUID: LArvcuvJA1ol
 
-Hi Peter,
-
-On Fri, Jun 15, 2018 at 02:54:33PM +0100, Peter Maydell wrote:
+On Fri, Jun 15, 2018 at 11:13:31AM -0700, Guenter Roeck wrote:
+> Hi Peter,
 > 
-> Note that for M profile QEMU, the thing you pass to -kernel
-> must be be either (a) a raw image file which starts with a
-> vector table and is intended to be loaded at address zero,
-> or (b) be an ELF file which we will load at whatever address
-> it asks, but which must include a vector table at address
-> zero, because we don't honour the ELF entrypoint address
-> but instead always load the initial SP and PC from the
-> vector table.
+> On Fri, Jun 15, 2018 at 02:54:33PM +0100, Peter Maydell wrote:
+> > 
+> > Note that for M profile QEMU, the thing you pass to -kernel
+> > must be be either (a) a raw image file which starts with a
+> > vector table and is intended to be loaded at address zero,
+> > or (b) be an ELF file which we will load at whatever address
+> > it asks, but which must include a vector table at address
+> > zero, because we don't honour the ELF entrypoint address
+> > but instead always load the initial SP and PC from the
+> > vector table.
+> > 
+> That was useful.
 > 
-That was useful.
+> After hacking qemu to accept the ELF start address and to set
+> initial_msp to 0 (a whopping 6-line patch), I get a bit further.
+> The boot now hangs because the devicetree blob is not recognized.
+> Does qemu load and pass the provided dtb file ? I didn't
+> immediately find any code doing it for armv7m/an385.
+> 
 
-After hacking qemu to accept the ELF start address and to set
-initial_msp to 0 (a whopping 6-line patch), I get a bit further.
-The boot now hangs because the devicetree blob is not recognized.
-Does qemu load and pass the provided dtb file ? I didn't
-immediately find any code doing it for armv7m/an385.
+So, I didn't find anything because it is not there. I was able to pass
+the fdt in some hackish way. This is the end of the resulting log (with
+-d exec):
 
-Thanks,
+Trace 0: 0x7fffcf797400 [00000000/210d2440/0x11280001] mps2_early_write
+Trace 0: 0x7fffcf7975c0 [00000000/210d170a/0x11280001] uart_console_write
+Linking TBs 0x7fffcf7975c0 [210d170a] index 0 -> 0x7fffcf797940 [210d171a]
+Trace 0: 0x7fffcf797940 [00000000/210d171a/0x11280001] uart_console_write
+Linking TBs 0x7fffcf797940 [210d171a] index 0 -> 0x7fffcf797ac0 [210d1728]
+Trace 0: 0x7fffcf797ac0 [00000000/210d1728/0x11280001] uart_console_write
+Trace 0: 0x7fffcf797c00 [00000000/210d2424/0x11280001] mps2_early_putchar
+Linking TBs 0x7fffcf797c00 [210d2424] index 1 -> 0x7fffcf797e00 [210d2432]
+Trace 0: 0x7fffcf797e00 [00000000/210d2432/0x11280001] mps2_early_putchar
+Trace 0: 0x7fffcf797fc0 [00000000/210d1730/0x11280001] uart_console_write
+Linking TBs 0x7fffcf797fc0 [210d1730] index 0 -> 0x7fffcf798080 [210d1714]
+Trace 0: 0x7fffcf798080 [00000000/210d1714/0x11280001] uart_console_write
+Linking TBs 0x7fffcf798080 [210d1714] index 0 -> 0x7fffcf797940 [210d171a]
+Trace 0: 0x7fffcf797940 [00000000/210d171a/0x11280001] uart_console_write
+Chain 0: 0x7fffcf797c00 [00000000/210d2424/0x11280001] mps2_early_putchar
+Linking TBs 0x7fffcf797c00 [210d2424] index 0 -> 0x7fffcf7981c0 [210d243e]
+Trace 0: 0x7fffcf7981c0 [00000000/210d243e/0x11280001] mps2_early_putchar
+Linking TBs 0x7fffcf7981c0 [210d243e] index 0 -> 0x7fffcf797c00 [210d2424]
+Trace 0: 0x7fffcf797c00 [00000000/210d2424/0x11280001] mps2_early_putchar
+
+At this point it is stuck. I'll try to find out why.
+
 Guenter

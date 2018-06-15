@@ -1,102 +1,95 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp805413wrq;
-        Fri, 15 Jun 2018 05:46:15 -0700 (PDT)
-X-Received: by 2002:a9d:e24:: with SMTP id c33-v6mr982418otc.118.1529066775707;
-        Fri, 15 Jun 2018 05:46:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529066775; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp846853wrq;
+        Fri, 15 Jun 2018 06:23:11 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLqNwCAtNaqzdB1lcXG6CgRVmNNupwdBk68c9fk03kKYeMsFbl4irLsT8QdtKF3FcJMgv7v
+X-Received: by 2002:a0c:ae0a:: with SMTP id y10-v6mr1337136qvc.157.1529068991852;
+        Fri, 15 Jun 2018 06:23:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529068991; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vzc+RUDtaXrmSuLgucCjCI48jCJhJV5XN/rP/YjvBoBLbWBTw0NtvZW8FkUGMCQ8nM
-         bwKAI4UxWpafB9R+MG0If7Zyl0OcMZxT3HYdOtHySBzcDg2IS1eYaf6XnERyvjh2VcSB
-         vAznYB/Tmi5gNzCM2dDTRfA4NO3zzpSG6l6y2wbo9uwC4haeHkUb8k3UZUAK6ebOYl9i
-         0cIWsedt2t/rK+8zHpiRD6VzZsgVq+hvfm+IxKW//jFH+eUxspqXkzhrqdxY2ZP3LLYp
-         27yHC3ydYTFvlycwiTHI5+601hcuiVf9XLLW2SaSoXvaQZEPPax1L9ffStkKJnQkM+Ht
-         HTHA==
+        b=UqSQAtZSMhIgIqsNZTEU4T4748EylrTYSnX4JsFq93WC1jLM9nneMYmtyP/DrPG+bt
+         DyN73/DcyfWxNUUKblbSKkgMP0/GxxszfPjBhMnhpeHl1iXh+vP8efn5mEbTfUFZoJzY
+         xQ+VDqiQRwS5kLVMI4Jp3V310FeDkMOpxuoButGfTxsocZxwA1AIf8lHpD2K0a7ARHnt
+         oGVthXS/v976Ty527RvjMJbShlU6zNnx/xaCmEVKzg72c1P7ow9zbtjzi8UbXtA3Jx2n
+         kNfh8EoaFlAKAfZTID4/wdugQljBdXgSRALgE5vULhQRgByKb+EJfaZdxnEjigutcDOe
+         krjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=JXy/wppQYWVAzbOxsWK9vHKL9QD16WSLjwiuk4RNM8k=;
-        b=vYVlQb6UHOiMQDnHDhsQ01zY37usa7FSSdrKd0/vne9nKfck1Ro3VN59igO4pvh3Yt
-         HjiNNp9mVK3lyE3C9JkVCclFOGj6l9INey8ogZ1KPN30tdntuQ83BvtgjnYL0yl4Ui7X
-         CXaD/QXsKmBv8GVwvqZLCS4/mg+EncrVW+alN1/zTKq1+9qQpP0NGrFfzhO6+aH9UCNs
-         /wCGOaiEhd2GOEkbbG8Vh1bLJTup3x1eyQ3OWKrLYKeuXDg3wxlXJe5EkOn7Ybwbz4cp
-         vKo+vLXEKZCruzij/DqDqf+uRzEbYru6AViYEsmj7nVqsQZ/ZcqGA7aNmS4pJYtehab1
-         qajg==
+        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:cc:references:to:subject:arc-authentication-results;
+        bh=IwCann3dthMCbWQb8GZwUG55n4+F7sG3dC8QQe94ymY=;
+        b=dC7FyFX/UwAGi2OngmJHXI5R3ZYCB4LoRfFA8PqSRr2kY6sJX5IlBuJWK6vxppffnY
+         R+Pr+xau0K3/FO8B0A9IP6FhWlmBh8X0391y8ec0AH588nIIMzSkVlU+tg/juXHJ/MFI
+         pRQl9Tr99jRNz70SUOfH0YPD+tk/wtnHPD6gb9povhWX1n4D8OCVpEkite029PoiAUGc
+         uBAOXG+YxtzRHz5Bv/dqwysK0igFoQ4j9XPmL8oFIMr7OsdfCAed/u51xI3qL55P5Cwu
+         5JAsCnZdfBXXPC/cQ4koP5KidgvYywPSz7S2b1Pp5KFQamcILopqZK+h/ZBOZk+8QdWH
+         IoHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CD4UkOWD;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t18-v6sor2798373otk.3.2018.06.15.05.46.15
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 15 Jun 2018 05:46:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id 9-v6si7243778qtp.121.2018.06.15.06.23.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Jun 2018 06:23:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CD4UkOWD;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=JXy/wppQYWVAzbOxsWK9vHKL9QD16WSLjwiuk4RNM8k=;
-        b=CD4UkOWD0EqcwDLTOVMS9tZMFpYOXHPGcVjY++EDkxWWzv5iwvinXma0H2p92Ql3U8
-         8QHJ412qHcDR+vEJavZmI6niUl2L45lQj/5/KyPOcFPrVrx5VnYMDAwGVnCWFhOJCsqk
-         NPvooKjDzW5gEKLZ49mkHKuz95Ey9oJ88oZNA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=JXy/wppQYWVAzbOxsWK9vHKL9QD16WSLjwiuk4RNM8k=;
-        b=We4EA82oIjApDPI6ShhF+EX28IzEwbqk9LJHlDtYpIcsFlyICEgdX4jNgecuS8X4Pa
-         32HO1pzBRBKuK6XmtaS7KwqqgFF6oz7XFGVKIMT976ciy0LcKfVOHEvwSXE6uDgRBpt2
-         WbkPvRCNlG7v23XZe/w0tmezQTf9prWdSnBfd794D9RYIJzY0lilIo0T9zzGzEr/jRP0
-         EbLaryBOqpZebI0ceJTbeLfSTkpcLnCXhMqlTt4Hkj8za720wrgQzgAdL6DTBIJUuvz1
-         Fjlv/N0lj0nkcLnY7C3XenK0/T5o2nFvknAlwOYxtxXBai/FdJr0KaT0tp8rzz3/YL9w
-         Pz+A==
-X-Gm-Message-State: APt69E2tiTjpqwt+6dNZONF0UPQ/1SViKknuxxbOpOXIeU+7fi6bzjsK
-	0zyAqV2GPwRdTjbUo9g00JcEYhdAXe9lK5lBkaq0TaNa
-X-Google-Smtp-Source: ADUXVKKRD+Ue/uznXTy7vDTyav+wnqcskwCCpLA6ES2ZfJzcgwVKW5EmcxWLWy5ndZL7ji7i8Kpw2hSmG7XtxrxUv9o=
-X-Received: by 2002:a9d:3d76:: with SMTP id a109-v6mr960045otc.294.1529066775282;
- Fri, 15 Jun 2018 05:46:15 -0700 (PDT)
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 51BA6402312B;
+	Fri, 15 Jun 2018 13:23:11 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-117-106.ams2.redhat.com [10.36.117.106])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D79FC2024CA1;
+	Fri, 15 Jun 2018 13:23:09 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH v2 05/13] hw/misc/tz-mpc.c: Implement the Arm
+ TrustZone Memory Protection Controller
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20180604152941.20374-1-peter.maydell@linaro.org>
+ <20180604152941.20374-6-peter.maydell@linaro.org>
+ <e2f81a60-6b05-1240-ab18-69d46a29185e@redhat.com>
+ <CAFEAcA-kmhb4igH2gihSsOe4JFP1u8yienOBDqWvCvqjexftFg@mail.gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "patches@linaro.org" <patches@linaro.org>, Peter Xu <peterx@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Richard Henderson <rth@twiddle.net>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <680af824-0d38-d690-95b8-e64949820e39@redhat.com>
+Date: Fri, 15 Jun 2018 15:23:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+ Thunderbird/45.4.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 05:45:54
- -0700 (PDT)
-In-Reply-To: <CAFEAcA8OO0SdmE4nJhcQg6kWPcqs-5g8BkjOREw40aUchc6RXw@mail.gmail.com>
-References: <20180604152941.20374-1-peter.maydell@linaro.org> <CAFEAcA8OO0SdmE4nJhcQg6kWPcqs-5g8BkjOREw40aUchc6RXw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jun 2018 13:45:54 +0100
-Message-ID: <CAFEAcA-2xOnL=U1VGVAP8uZhgJBYffohM0rE6XO7_bRr_XaU9Q@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 00/13] iommu: support txattrs, support TCG
- execution, implement TZ MPC
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Cc: "patches@linaro.org" <patches@linaro.org>, Peter Xu <peterx@redhat.com>, 
-	Eric Auger <eric.auger@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: OelDSrCL0s2e
+In-Reply-To: <CAFEAcA-kmhb4igH2gihSsOe4JFP1u8yienOBDqWvCvqjexftFg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Fri, 15 Jun 2018 13:23:11 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Fri, 15 Jun 2018 13:23:11 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-TUID: Lz45gViEzmvD
 
-On 14 June 2018 at 17:51, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 4 June 2018 at 16:29, Peter Maydell <peter.maydell@linaro.org> wrote:
->> Hi; this is v2 of my iommu patchset, which does:
->>  * support IOMMUs that are aware of memory transaction attributes and
->>    may generate different translations for different attributes
->>  * support TCG execution out of memory which is behind an IOMMU
->>  * implement the Arm TrustZone Memory Protection Controller
->>    (which needs both the above features in the IOMMU core code)
->>  * use the MPC in the mps2-an505 board
->
->> Unreviewed patches: 4, 6, 7, 8, 9, 10
->
-> Ping for further reviews, comments, etc, please. I'd like
-> to put this in via target-arm.next in the not too distant
-> future.
+Hi Peter,
 
-Thanks for the reviews; since 1-5 and 9 have been reviewed and
-have no issues, I'm going to put those into target-arm.next
-(to reduce the size of v3 of this series and avoid possible
-issues with conflicts with other iommu related patchsets).
+On 06/15/2018 10:53 AM, Peter Maydell wrote:
+> On 15 June 2018 at 08:10, Auger Eric <eric.auger@redhat.com> wrote:
+>> after reading 8/13, I have a doubt here about the ret.perm value that
+>> stays IOMMU_RW independently on the translation success. Usually if the
+>> translation failn perm is set to IOMMU_NONE. In your case you also play
+>> with the output address space which switches to the blocked one in case
+>> of failure and you handle access failure through that means. So maybe
+>> the end result is the same but I am not sure.
+> 
+> The end result is different, which is why we have to return RW here.
+> If we return NONE we are telling the caller that this will be
+> a memory transaction failure, so the CPU emulation will generate
+> a bus-error kind of exception. By returning RW we tell the caller
+> that it should make transactions for this address. We can then
+> handle them in the MPC with the correct behaviour for a blocked
+> access (generating an interrupt, and configurably either completing
+> the access as RAZ/WI or returning MEMTX_ERROR to cause a busfault.)
 
-thanks
--- PMM
+OK thank you for the explanation
+
+Eric
+> 
+> thanks
+> -- PMM
+> 

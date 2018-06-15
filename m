@@ -1,82 +1,82 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp596800wrq;
-        Fri, 15 Jun 2018 01:59:32 -0700 (PDT)
-X-Received: by 2002:a9d:5a99:: with SMTP id w25-v6mr436539oth.130.1529053172569;
-        Fri, 15 Jun 2018 01:59:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529053172; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp602468wrq;
+        Fri, 15 Jun 2018 02:04:47 -0700 (PDT)
+X-Received: by 2002:aca:a846:: with SMTP id r67-v6mr436780oie.12.1529053487673;
+        Fri, 15 Jun 2018 02:04:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529053487; cv=none;
         d=google.com; s=arc-20160816;
-        b=UcG5m8Q6YVtOnInTATEDGByd4DdG8lFly/tSc+ADrKrO9rNZlJhPSbniJ2niXPTdV2
-         nT441CSLEFiafGS0IqTmPjTzXVvheorYv+/bHh3pjuiGGwAX7T721TgXC+tHJkn4fSSE
-         kAIbJkFzYfMZuQpy3oAZhW8jURYqwTBSXmKL3BH7sq5Nq03V+BBdD5PqTGB/hoqGyEqw
-         igvyFKqOS1qh58szuC2FNnEC5M0SBaSpZNWkdVxhh68rRjr/9+ko4dl1ODt6AVVBc2j/
-         Xbrafq9Ua5cmFXiOtlY5cHq4qV2w2xr8kg4J+KIX+SpsU9qmEPhchJnh2IZBi5aku3FY
-         uVCQ==
+        b=ezp14gOeIH+blHps3B6pvOUPOA+ybvfkmBW1pSqyFJbgvCOje6wv0zZ/+dBTLdSZV5
+         J6k9qGSlIczI+drMe0iU5tnIsSgI8uGoxaCAKLA3kx3DowSrHiIUFRIQkxZks2unOR4m
+         XrTQZ/fhDHlN6C8DJnQIWT84OJoyDZZGlHBVPPVo1bIXoJhqPeAlZKgKUPYtGjn2D46C
+         hy6RsIgo6BxB3D5vxLN1z6opqIUbxNjMNcx+klZeJ+Dg00ZpeXN6/eP04S4r/xyS3a8c
+         ZukzspGeJAS5EI5aKkfcNf0N+x2V+CjEg2oJY9HCn8U28tK3Bu6sLK3IWJEmE7W4wKLv
+         G/cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature:arc-authentication-results;
-        bh=/5/Ae02ncNF6YPcM9nZeGsNaiHkUgt3r6seawGl9Tbk=;
-        b=0J+Yn2EYC46qr+h/AOZ7GE9+a8tEc00qOZbQRolbaPidcHh8BEER+VrfaoRbV3CSXz
-         LnoOeLUX+2dWYxGVeFkk8cSHqyhGCQABV8YIN8hORebr64mrF19gazLJ8K2rMQ+wWLvG
-         GwuaassgEyB4n9DxSJAAsjQh10u+NfrutE5D5BaPx+iIV0GE/5r4vnecSXPstpaMrwgX
-         oFjXqg0fjwYya8o90ImzMEsD6QPbCAQ08PykfgHxQgz+37OsbKuPd0wANQmP7ZANVvYR
-         dFaefmxFAa51x2S4ILTgCVkiJFnmzE/eOxbVlrc9GwnXewWF3azKq2n62povSbn1mAGn
-         UbgA==
+        bh=crymNtFmgQ4u5F+z6NU70D0934qjsa1d9FO75ENH2+0=;
+        b=VwZUEI13vd5DpPQC3NX7qfkSqRFFmOS36fVdaN4Vs5TrmQmNzIL+NK50SoD8C1XuKz
+         uN+iUd7jeL1fCfRymFHESay8FMDNpkCTvu3Jc7sq8eD1YtRX7mnyqq3fIpg9u/RNV4Vd
+         /zaM7U/6x/ImgY32bre0nW9DvTdwLG1lh1qxsyC/Uc+5y3qiYoE2o2lwZahKAJF4kSeL
+         n5txg+OPF5j31Ns5h6fjnSBAU58s6N66bGVaAkL9i6B1Gs8YA5ToxVVDuJg5t27JKYl4
+         eyCEzOfZN3hGe7L/P64dmf6QxnISyPo9Y1qoSXhO3IiLbERbpnFNZwYml/XGGi7C5kuv
+         D/hA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ehhkGZgG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HwX4RAdb;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 30-v6sor3070585otk.7.2018.06.15.01.59.32
+        by mx.google.com with SMTPS id 89-v6sor3306074otw.163.2018.06.15.02.04.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 15 Jun 2018 01:59:32 -0700 (PDT)
+        Fri, 15 Jun 2018 02:04:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ehhkGZgG;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HwX4RAdb;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=/5/Ae02ncNF6YPcM9nZeGsNaiHkUgt3r6seawGl9Tbk=;
-        b=ehhkGZgGvUss/KOokjFQ8la4a9/xPBmwB3dsCznXrlJSyCoyz/E+TDQ7U4d6uU3ZSH
-         KCjBBbpvBKc2vEiJYgEa3SOSHKZ3x9rXs1ko7fWwgnlxvgs1W2RKTNIJldvjxzv0aQtc
-         brz7R1redYPoYoZHQlu7qxtajCiJjPJmf6RPc=
+        bh=crymNtFmgQ4u5F+z6NU70D0934qjsa1d9FO75ENH2+0=;
+        b=HwX4RAdbFxTFdYLcubBPv0S9Rru1LBhY0f8BFFEtr9MjNMCEZ0G/W8oAcBp8oTsIw0
+         VXOLZnxHQPasBjW+wHzSXR8mViMaFUOL7y5lOa8POyVh4TojpsFqfcEpLwK12jGaDEfp
+         oAMOYTL2EF3YDvRQcMoN7DnqG9LA7c8QCiWzQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=/5/Ae02ncNF6YPcM9nZeGsNaiHkUgt3r6seawGl9Tbk=;
-        b=eyHcEADnYszA5Yjtf1NAwMNs1CQXuyTt51eA/YKQmHvw8nlLHikxO3hofIKqZF3zDg
-         pgs669qeU5iHI3eJqBeh1wEntjcUlQy17fxWSRse9ze0KD+ku4aQMK1xnL0EB96BKkST
-         PamOKqMYHoeYF0UTCXmozfFX/hG3gH5cikDjIESMmvyZM1rW9W1tRlD14K+z+RLBntCh
-         gLWN+ZDazhxlFD6tAVd1AAfN8tARMpwhp36U4vWo7gfzIa/CkvOgsRh2DTQXbZc6AVoF
-         BKaNxd/XDaMBeG2FXWVAY2YT5KVi6M9VhIRzJspSv4hZxdD1P0uFLRI0ApZxiG4Q9lBv
-         3ViQ==
-X-Gm-Message-State: APt69E1EkGT9ffHq+pFxGjd5gGU7Jhg7BvTNWIZ5c8kgq5657zUubAkr
-	OBCUJQSjfmy7U6TBzX9RhB6m3YnNbdVUSJPk0mUnGY1M
-X-Google-Smtp-Source: ADUXVKLCR1PhkyuuYOM2eDWX/vu/+jpDIF1IJidCWFlOB2F8to8gmAxgsbFZCfWYGNEkw+So6NCk2xx/bsNXODQFfb0=
-X-Received: by 2002:a9d:1a0b:: with SMTP id a11-v6mr408642ote.205.1529053172218;
- Fri, 15 Jun 2018 01:59:32 -0700 (PDT)
+        bh=crymNtFmgQ4u5F+z6NU70D0934qjsa1d9FO75ENH2+0=;
+        b=JTbS8BV69RMjrHXtkbkGqpJRl/N9Nhy1YNW20h3UBf1Pusd2gGDvLE7tB/k9hq6th9
+         pQb7LKKPKUvkG6TkSjG//k7LVcdUHyay3+y2hrS0xNdEctec0xf0BIZ4EzdBs99eNAKC
+         3bNYLGv4XOz6nnoK3wYmUom3yk0z4+SyL67V+RnvUVNMRXeifXFyZdD7mop0zkxeP9Jt
+         aLiCGwPiLxyhuYZOhudEOCivXR1557aTbrGndvpdnkLzDoPvEKvYOuNRCSWLr9UenBAb
+         lEFyBp1kQk8N+8wYajFkO5Ef3aHQtYw7+XqhJCPLyopmaN93wcFhqr8e8X0Rmm8bsU7Z
+         2JzQ==
+X-Gm-Message-State: APt69E17Hcv05udjZaN+JfddqgbAawrmZtMiFn26ShuikFYRzHALrr1z
+	pacDOc9zSMKqlL/N+4jrhQhGeDvnuTk98e407VcYTPac
+X-Google-Smtp-Source: ADUXVKLZunEO35duhrBS8s2aax0rE6gclV91RrrNb7P2ETtJzu6cN+/ZPAAcXUX4cATbRrwpQbWOkfgprLrMdFtcwHE=
+X-Received: by 2002:a9d:705d:: with SMTP id x29-v6mr487808otj.308.1529053485838;
+ Fri, 15 Jun 2018 02:04:45 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 01:59:11
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 02:04:25
  -0700 (PDT)
-In-Reply-To: <a99ad0cb-89f5-1241-7992-d133546e28c7@redhat.com>
+In-Reply-To: <45d89f39-7397-bd71-5cd4-fdb1ea47595e@redhat.com>
 References: <20180604152941.20374-1-peter.maydell@linaro.org>
- <20180604152941.20374-7-peter.maydell@linaro.org> <a99ad0cb-89f5-1241-7992-d133546e28c7@redhat.com>
+ <20180604152941.20374-7-peter.maydell@linaro.org> <45d89f39-7397-bd71-5cd4-fdb1ea47595e@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jun 2018 09:59:11 +0100
-Message-ID: <CAFEAcA8AfiaJqJxgbOothdY8JDZ3dK9qLCVZL=k=J_nxtwMXJQ@mail.gmail.com>
+Date: Fri, 15 Jun 2018 10:04:25 +0100
+Message-ID: <CAFEAcA_OpQYq6XuKhAsP-W9pimWpF49XVcttcV7rqpOgJu2ihA@mail.gmail.com>
 Subject: Re: [PATCH v2 06/13] hw/misc/tz-mpc.c: Implement registers
 To: Auger Eric <eric.auger@redhat.com>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
 	"patches@linaro.org" <patches@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Richard Henderson <rth@twiddle.net>, Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: FK3g7laP69TJ
+X-TUID: LIAxfzWgKp3E
 
-On 14 June 2018 at 21:14, Auger Eric <eric.auger@redhat.com> wrote:
+On 14 June 2018 at 21:36, Auger Eric <eric.auger@redhat.com> wrote:
 > Hi Peter,
 >
 > On 06/04/2018 05:29 PM, Peter Maydell wrote:
@@ -84,23 +84,27 @@ On 14 June 2018 at 21:14, Auger Eric <eric.auger@redhat.com> wrote:
 >>
 >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
->>  static MemTxResult tz_mpc_reg_read(void *opaque, hwaddr addr,
->>                                     uint64_t *pdata,
->>                                     unsigned size, MemTxAttrs attrs)
->>  {
->> +    TZMPC *s = TZ_MPC(opaque);
->>      uint64_t r;
->>      uint32_t offset = addr & ~0x3;
-> I don't get where do we check if the access is secure or not. Shouldn't
-> we test attrs.secure somewhere (PPROT[1] == 0)? Also the spec says
-> IDregs can be read by any type of access. Where is this differentiation
-> done?
+>> +    case A_INT_CLEAR:
+>> +        if (value & R_INT_CLEAR_IRQ_MASK) {
+>> +            s->int_stat = 0;
+>> +            tz_mpc_irq_update(s);
+> don't you need to clear the info regs. spec says:
+> the [info] register retains its value until mpc_irq is cleared.
 
-I'd missed that bit of the spec -- yes, we should be checking
-attrs.secure to see if we should allow access to the non-ID registers.
-For the MPS2 boards it doesn't matter because the registers are
-in a part of the memory map that is enforced as secure-access-only
-by the IDAU.
+The full sentence is "Subsequent security violating transfers
+remain blocked, that is, not captured in this register
+and the register retains its value until mpc_irq is cleared."
+I interpret "until mpc_irq is cleared" as applying to the
+entire thing, ie mpc_irq being cleared is what allows a
+subsequent transfer to be captured in this register.
+(Hardware actively clearing itself to zero is unlikely,
+because that costs extra gates which designers don't tend
+to do unless there's a reason for it.)
+
+From a guest point of view (which is kind of the pov the
+docs are written from), the guest can't rely on the register
+value once mpc_irq is cleared (because another transaction
+might come along and cause the value to be overwritten).
 
 thanks
 -- PMM

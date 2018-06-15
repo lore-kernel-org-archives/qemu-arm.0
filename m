@@ -1,90 +1,101 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1040874wrq;
-        Fri, 15 Jun 2018 09:22:08 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKZGQNMcjg9f+wfc08WketnUaDdjMm3HLcM3pX6IpCHIE7xk0zZ05soBYhxg+CvElTzhvPb
-X-Received: by 2002:ac8:1944:: with SMTP id g4-v6mr1993134qtk.395.1529079728576;
-        Fri, 15 Jun 2018 09:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529079728; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1050832wrq;
+        Fri, 15 Jun 2018 09:31:45 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLIQeKmhuE9fqom2FQQ5MPjrmHZnYD1XLal4GFb6RjP06v0y/bz2OIWptrS1vIOeM1zSL/F
+X-Received: by 2002:ac8:3fb2:: with SMTP id d47-v6mr2038247qtk.401.1529080305749;
+        Fri, 15 Jun 2018 09:31:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529080305; cv=none;
         d=google.com; s=arc-20160816;
-        b=kIJsUiBOfD4eUL3dRhdO2eQw9a6k7OnCHr115hRsyrJnGrFtTqQwWZOx36OJzh04Pj
-         p5JAqtXx9CGOQjeRNNtuvTR/1TlWGsI1cKM0vNClX93eIJAxPizqrrfJ624KmYQnjHbO
-         OI1WIvYTB9mOEFZk2JagBC8HDS8BwjhGqAaR9QPkIAR+dbnwhhZs9DUJZLhMgN42SXqv
-         6xYBN+LWZ5mNkJ50zrNBEmy4uOaJYivA7f4JAboXeJcHCj57MeRrw4ShwRKxd8c5UA1H
-         FS2AObOsubHst9gCnt3uKc7csCf9HgrhrcRYL9YPXdzS3ugl2FtbsNYpYhBAxU2+xro6
-         HdEA==
+        b=TyrHVd0g/qhHm+ux4QrNAxzvRXiJHzKTUiexZgHij52ljvblIJWoRshKC9ogbKVGFp
+         wHzMlraLwMnIPUuuxGUELeucMVecidtHp7J/6uNS9IfwfYnIbWOClY0MvZ70oNj+6EiM
+         TLNIxEG0U96ZueA/64+D8C4emhSCMZgU+oDjgiZkjZbmXHEAtq+6i6hVR3zPUyDk9oFn
+         HRuCIcQioHYCt274bGSQH+k9SoYbwiom95ySw7R6cOBATnbEyiKM29alaYuYd5C95VH+
+         GMbYff5mm0SNDvcXcyFP85M1bexRj5ODrqC1kwBpZw1+lz7HoB/+xuVLIaj5ZAUaHRV7
+         jB0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=HdbQyAbsN94uTd/LYhmWcy8mS0tlY5rVrD92EUTQz5w=;
-        b=btmcpSFECwoUCtWQjRaZ6uwTfrKiiLcTnemh6ihT3w2skWCvoKNbqBUahUbiEGYrNR
-         IxhN/9ZerK7HYKx4pNFMcMJWxsq3ElLRr7mBdnJJ3waMqLdQE44zxhuhMJ4Q+aJGef9c
-         VbVcGInBbWE29R1RTtqGXOjTMc8srkAkpcu1vEHYEydzp4VQGGrMSZ/0rjd4fJBFVsw3
-         yY8y1CigYj/MO6esnmgHUE6Xzx0scgN73FhfwxZMkkf3eYLllBSrHYzMDk7qCYB+I67o
-         O1xgHp7Ab2T938Emh1fQ0cLIs158TVhlYpJFMGsNFu0No65Hzi1/F5W6xS3xN5ogl7dt
-         gZrg==
+        bh=UxJqR0QEXBmjYZysbEjt7gAkvRAkxb4KkqAG9Z72StE=;
+        b=RwKB0OkB9hr1sMrpe+a+6qH7KMrjuzjqhgVfnPRSbqHDVmLrhF9MXG2mLknTNksMy5
+         la+7iF5S8u/csTKxD4iloGKEpaosvQGrN1o4BzrAI50sKUDlk0kbotZk57f5nzL5Vsoy
+         Oe5og0vho22tOKGxuiSwKSNP/SLIQkEHeVVKnKX6vagDiTv4S0axkHOxTksjQjvIlZKF
+         69UO7SuNipxuNsIe63WfCDn/apPhHRzXIbh+cy7U83V8KaJjAEiRAQmK/jR641kGHVYU
+         A3nZUO/cgtBkYTXUif3zwdWFdTgkxayK16OjTHrMlZF/AouFAOMVXmIFIgWy27qgzjdV
+         +YxA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jZ8cOnqH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 68-v6si3479765qkc.114.2018.06.15.09.22.08
+        by mx.google.com with ESMTPS id u20-v6si8207730qth.247.2018.06.15.09.31.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jun 2018 09:22:08 -0700 (PDT)
+        Fri, 15 Jun 2018 09:31:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jZ8cOnqH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47968 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48049 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTrUG-0000KI-22
-	for alex.bennee@linaro.org; Fri, 15 Jun 2018 12:22:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57306)
+	id 1fTrdZ-00005w-6t
+	for alex.bennee@linaro.org; Fri, 15 Jun 2018 12:31:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59848)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fTquE-0003OV-58
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 11:44:55 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fTr3Y-0002f6-QQ
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 11:54:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fTquB-0002cL-2U
-	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 11:44:54 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53022 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fTquA-0002bb-Hd; Fri, 15 Jun 2018 11:44:50 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0718280125D6;
-	Fri, 15 Jun 2018 15:44:50 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 171376352F;
-	Fri, 15 Jun 2018 15:44:43 +0000 (UTC)
-Date: Fri, 15 Jun 2018 17:44:41 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20180615154441.4rr5mtcnran5cf3s@kamzik.brq.redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fTr3X-000088-Oy
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 11:54:32 -0400
+Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:45986)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fTr3X-00007p-IX
+	for qemu-arm@nongnu.org; Fri, 15 Jun 2018 11:54:31 -0400
+Received: by mail-ot0-x234.google.com with SMTP id a5-v6so11492262otf.12
+	for <qemu-arm@nongnu.org>; Fri, 15 Jun 2018 08:54:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=UxJqR0QEXBmjYZysbEjt7gAkvRAkxb4KkqAG9Z72StE=;
+	b=jZ8cOnqHj6fwaCYeFjaO2qs2YVQx4RRJhxA6bccWhioyynGouxGzVAbf5FZ7G3sEkF
+	B/384COyRrM6/Xx9E91cVjtqRWkw4+pNBUb2bPTzVcJQbf3ozdZ54FoRHkjbA7nVI2Bh
+	q/GodQqLfmCBthPdTSh7aTNhmF+jcuWTZ/8XM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=UxJqR0QEXBmjYZysbEjt7gAkvRAkxb4KkqAG9Z72StE=;
+	b=JDKkkysw9sJHN5MqaAZ26w3gEDTm50VdRNMIqCo1r89XE9xAiIAGosEbnqoO6TjBd4
+	L+jra2MgBUwdyrjFAOb0oxPxCklSUEyIMcagp9oFcpJVxyLhCSNowTuFrtX70d8XTX4X
+	Rtk+sDOQ1FsPPxh/teFjoCit8Cjx294jMrjWm7Dy8nehwMaMMboTFU4OyeB8Ezoq54Ix
+	2rQiDHQHNqoRHmq7a5rPHaW999fNzUunJa6RtkiEZeI4NBXXvwWLv8d6m86JLzF1rjeg
+	L9B8HIa57th3mtUwZrqdMLt9eIBbQUBqk8SMiK1HYm4cTkZjD4ZIyRovjC99G7S429M+
+	ZJqw==
+X-Gm-Message-State: APt69E3mc63M0AOgwOxzKIxRoXFOji7wnr4mEVhmQVpn0pqcb6dZhPPc
+	eYOFfuWweUJkkDgmVCDS6UyLxyIbQgdh7a+68fRpoQ==
+X-Received: by 2002:a9d:3d76:: with SMTP id
+	a109-v6mr1435310otc.294.1529078070727; 
+	Fri, 15 Jun 2018 08:54:30 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 08:54:10
+	-0700 (PDT)
+In-Reply-To: <20180615154441.4rr5mtcnran5cf3s@kamzik.brq.redhat.com>
 References: <20180516152026.2920-1-shameerali.kolothum.thodi@huawei.com>
 	<20180516152026.2920-7-shameerali.kolothum.thodi@huawei.com>
 	<bd67ed40-81d6-58dc-ccaf-efd8a40ca96f@redhat.com>
 	<5FC3163CFD30C246ABAA99954A238FA8386F6E04@FRAEML521-MBX.china.huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8386F6E04@FRAEML521-MBX.china.huawei.com>
-User-Agent: NeoMutt/20180512
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 15 Jun 2018 15:44:50 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 15 Jun 2018 15:44:50 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+	<20180615154441.4rr5mtcnran5cf3s@kamzik.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 15 Jun 2018 16:54:10 +0100
+Message-ID: <CAFEAcA-nG4Xv=PmxzW3tzs-TStziMDHMFxYi6_teSe1GhLH=hw@mail.gmail.com>
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::234
 Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 6/6] hw/arm: Populate
  non-contiguous memory regions
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,8 +109,8 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	Zhaoshenglong <zhaoshenglong@huawei.com>, Linuxarm <linuxarm@huawei.com>,
+Cc: Zhaoshenglong <zhaoshenglong@huawei.com>, Linuxarm <linuxarm@huawei.com>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Auger Eric <eric.auger@redhat.com>,
 	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
@@ -108,66 +119,17 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
 	"imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8HsFD2JCRODq
+X-TUID: WlKOqKzmAAiW
 
-On Tue, Jun 05, 2018 at 07:49:44AM +0000, Shameerali Kolothum Thodi wrote:
-> > > On 05/16/2018 05:20 PM, Shameer Kolothum wrote:
-> > > > In case valid iova regions are non-contiguous, split the
-> > > > RAM mem into a 1GB non-pluggable dimm and remaining as a
-> > > > single pc-dimm mem.
-> > >
-> > > Please can you explain where does this split come from? Currently we
-> > > have 254 GB non pluggable RAM. I read the discussion started with Drew
-> > > on RFC v1 where he explained we cannot change the RAM base without
-> > > crashing the FW. However we should at least document this  1GB split.
-> > 
-> > The comments were mainly to use the pc-dimm model instead of "mem alias"
-> > method used on RFC v1 as this will help to add the mem hot-plug support
-> > in future.
-> > 
-> > I am not sure about the motive behind Drew's idea of splitting the first
-> > 1GB as non-plug and remaining as a pc-dimm(cold). May it is to attempt a
-> > best effort scenario, but as I mentioned in reply to 0/6, the current solution
-> > will end up changing the base address if the 0x4000000 falls under a reserved
-> > region.
-> > 
-> > Again, not sure whether we should enforce a strict check on base address
-> > start or just warn the user that it will fail on Guest with UEFI boot[1].
-> > 
-> > Hi Drew,
-> > 
-> > Please let me know your thoughts on this.
-> 
-> Could you please take a look at the above discussion and let us
-> know your thoughts on the split of mem regions as 1GB non-pluggable
-> and rest as pc-dimm.
-> 
+On 15 June 2018 at 16:44, Andrew Jones <drjones@redhat.com> wrote:
+> If 0x40000000 falls into a reserved address region on some host, then
+> I'm afraid the mach-virt model won't work with those devices unless the
+> guest doesn't use UEFI and Peter is open to providing a machine property
+> that one can enable in order to move the base address of memory.
 
-Hi Shameer,
+Why should the VM ever care about where the address regions in the
+host happen to be when it comes to where it's putting its RAM
+in the VM's address layout? I feel like I'm missing something here...
 
-Sorry for the slow reply - I've been slowly catching back up after
-vacation. There are two reasons to have one non-pluggable memory region
-and the rest of memory in a single pluggable pc-dimm.
-
-1) For mach-virt we must have the base of memory at the 1G boundary,
-   both because otherwise we'll break ArmVirt UEFI and because that's
-   a guarantee that Peter has stated he'd like to keep for mach-virt.
-
-2) Memory split in this way already has precedent in the x86 PC
-   machine models.
-
-It's debatable how much memory we should allocate to the non-pluggable
-region. It doesn't need to be 1G, it could be smaller. The default
-memory size allocated to a mach-virt guest that doesn't provide '-m'
-on the command line is 128M. Maybe we should use that size?
-
-If 0x40000000 falls into a reserved address region on some host, then
-I'm afraid the mach-virt model won't work with those devices unless the
-guest doesn't use UEFI and Peter is open to providing a machine property
-that one can enable in order to move the base address of memory.
-
-I know Eric is looking at this problem too. I hope you guys are
-coordinating your efforts.
-
-Thanks,
-drew
+thanks
+-- PMM

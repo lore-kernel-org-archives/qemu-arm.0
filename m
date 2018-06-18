@@ -1,89 +1,88 @@
-Received: by 10.28.71.27 with SMTP id u27csp1562873wma;
-        Thu, 1 Feb 2018 13:55:12 -0800 (PST)
-X-Google-Smtp-Source: AH8x224xIe1tOQlZFtUiPgkZ3n36Pf7Zl1AhYdROTS7eXCrUxlnQoUyxA1Bq2lFi6Eu0YXjbkjz9
-X-Received: by 10.13.239.3 with SMTP id y3mr25661743ywe.330.1517522112603;
-        Thu, 01 Feb 2018 13:55:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1517522112; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3721013wrq;
+        Mon, 18 Jun 2018 02:58:43 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKK2E6r9urusn8Ox/wWPs9XuBQVQsSZbsrcRCMsKz+yKbHZ5pVTy1K+AX3UZun+RouQiV3oH
+X-Received: by 2002:a0c:e610:: with SMTP id z16-v6mr9926057qvm.246.1529315923582;
+        Mon, 18 Jun 2018 02:58:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529315923; cv=none;
         d=google.com; s=arc-20160816;
-        b=c7SZfi/FWdRMkGNZ51bN5dQoZAKXcz3SQRDWfvXWTZkZ915H0p8X1zRLyJIgJeoMeE
-         2PnVowLBeoOrqkIfM/e2OlV4kGS7xG6jo0jLdJthej8kIrXr4FHch8golchtbl2HH67U
-         4MrTPtoIBnr3nJwBCzn2uVjHw+138Xe4prtN2tCucwyiCN+8h6jQ8mlPokg7tT5q+wLq
-         1ZfMxgQQT18r4gaOpRjoB4i6i4Nu3ieKM/DuqVwt8kdMsWHZY1LO8ravw1SrtqvDuvc2
-         bWO81uSRYXsBOwHPWIs9bld5wfYfA4HrjJZR2iuyLMrFQ/nAXiKTQ3QLYLS6wg4SfhOf
-         vZKg==
+        b=TUaT9HQT8dms+jtVOHn0VXg+HpGnAyZk/93xM6PoXBy6tCe7w96xDmID3cmKPCM2LG
+         ZfQj5H9peMXkOjhauTrJoUXC5kccyt2kGrgm8MU/lhbz5XTjZTHKcCb0IjURudiv1A37
+         5/uigMTjzpY5h492blOPlZx7CzwQMar7/pcEz7X72aJVsaVLQac83ZO86ozfGdRwmp9D
+         L74upNn+YfMn2ZMZ9sJ5nRKGN7A4BiISZrhnEFCagH+ia1vRC3S0CYFyXI3R1TA/TB1P
+         MHd8rkmHzxn70KNj+PRm/R7c7dThha08ZRmAGWsoLp3Wq+lq/0GQluQ6j5THocVwC5ma
+         Ab9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :arc-authentication-results;
-        bh=pS+oBy+CX9eWf3XP6wXCbI3HEacVdKzNFB+W6slNRD8=;
-        b=J4xxe9tx6puNa2xNxjV54dykknOIPOAx9OZfWs8o1KpArlVlDLECOTGD4Ry6NRbXmn
-         qJxmVwHCz55wSR/mQ2iquw86qWeGqHBou6sff9/k7z2Xwil0TNhoHn3rluIrlvuAHyAk
-         90G7Jk0kxXidyRBZmSU76vLsS009baq59QMa+8S/TO57cMkOk7JdYLmVLaqlbMlp6KIy
-         37pshB3aU1J+WDT4nncb22I07uRkmZk4BHWGY1XeYWOcphIok8e/h1LpT9kz/ZfbxrGB
-         prs3j39srs0Se/tvkWsI1aawz4zOtDtqgut7atEorNw33LKSYwwdSLcLOtdbaiith0i9
-         hLvQ==
+        bh=dlJup3t4o/EPyi5xVRrFlsZWgi8q0TxYAT12KqVt4zM=;
+        b=TqkKgs/wVQz36iQRAL2wB633jlHL/FhtciZQJQFsW7ar07iScfjn3svN4pIVaL8fsw
+         XmVELwTLfJr7H5VkDG/F6kkohZQtBQetdqGcmq6BKBjy5UwJOnAWiRjU169HHQCtZXix
+         LkyBIoY01/Nk55OpezIv1jZX8m8sJ22YTJjgbIeJDhDOlAG8hIZndTzicRdYw6eIoxr1
+         UP8uG5WeaKC1LRdL6fayEzYV0UbGvGhoDRzDgv1CNbrE+rU+gOZx+10hU/+hznatFR8/
+         8kAJw0x0qn2pHwAyMHXaez6hd56+ebQjnUcCmd2wRvVtnlF/R967F39o29Avx9YeFk0M
+         q16w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 201si108214ybd.61.2018.02.01.13.55.12
+        by mx.google.com with ESMTPS id s11-v6si2639899qvb.73.2018.06.18.02.58.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Feb 2018 13:55:12 -0800 (PST)
+        Mon, 18 Jun 2018 02:58:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38075 helo=lists.gnu.org)
+Received: from localhost ([::1]:33737 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ehMp6-0001jO-2r
-	for alex.bennee@linaro.org; Thu, 01 Feb 2018 16:55:12 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:43554)
+	id 1fUqvr-0001bZ-2x
+	for alex.bennee@linaro.org; Mon, 18 Jun 2018 05:58:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45570)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ehMnw-0007jk-Jh
-	for qemu-arm@nongnu.org; Thu, 01 Feb 2018 16:55:06 -0500
+	(envelope-from <kraxel@redhat.com>) id 1fUqvD-0001Ij-Sl
+	for qemu-arm@nongnu.org; Mon, 18 Jun 2018 05:58:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ehMlt-0003on-CW
-	for qemu-arm@nongnu.org; Thu, 01 Feb 2018 16:52:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45332)
+	(envelope-from <kraxel@redhat.com>) id 1fUqvA-0003IO-UA
+	for qemu-arm@nongnu.org; Mon, 18 Jun 2018 05:58:03 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59272 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ehMlt-0003nK-2F; Thu, 01 Feb 2018 16:51:53 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1fUqvA-0003Hv-Pi; Mon, 18 Jun 2018 05:58:00 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5619E356C1;
-	Thu,  1 Feb 2018 21:51:51 +0000 (UTC)
-Received: from [10.36.116.52] (ovpn-116-52.ams2.redhat.com [10.36.116.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7909760BE3;
-	Thu,  1 Feb 2018 21:51:47 +0000 (UTC)
-To: Wei Huang <wei@redhat.com>, qemu-devel@nongnu.org
-References: <1517506091-10396-1-git-send-email-wei@redhat.com>
-	<1517506091-10396-2-git-send-email-wei@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <b27de831-936a-39e3-6335-b21cb78d05d6@redhat.com>
-Date: Thu, 1 Feb 2018 22:51:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	by mx1.redhat.com (Postfix) with ESMTPS id 451547DAC5;
+	Mon, 18 Jun 2018 09:58:00 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
+	[10.36.116.109])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 39AFE2156A20;
+	Mon, 18 Jun 2018 09:57:59 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 6229596A42; Mon, 18 Jun 2018 11:57:58 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 18 Jun 2018 11:57:54 +0200
+Message-Id: <20180618095758.5006-1-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1517506091-10396-2-git-send-email-wei@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 01 Feb 2018 21:51:51 +0000 (UTC)
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 18 Jun 2018 09:58:00 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 18 Jun 2018 09:58:00 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/4] tests/boot-serial-test: Add
- support for the aarch64 virt machine
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PULL 0/4] Vga 20180618 patches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,60 +94,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nC/cgZSlSqhu
+X-TUID: 3PQ6/mCM7QF5
 
-On 01.02.2018 18:28, Wei Huang wrote:
-> This patch adds a small binary kernel to test aarch64 virt machine's
-> UART.
-> 
-> Signed-off-by: Wei Huang <wei@redhat.com>
-> ---
->  tests/Makefile.include   | 1 +
->  tests/boot-serial-test.c | 9 +++++++++
->  2 files changed, 10 insertions(+)
-> 
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index ca82e0c..ebdb151 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -367,6 +367,7 @@ gcov-files-arm-y += hw/timer/arm_mptimer.c
->  check-qtest-arm-y += tests/boot-serial-test$(EXESUF)
->  
->  check-qtest-aarch64-y = tests/numa-test$(EXESUF)
-> +check-qtest-aarch64-y += tests/boot-serial-test$(EXESUF)
->  
->  check-qtest-microblazeel-y = $(check-qtest-microblaze-y)
->  
-> diff --git a/tests/boot-serial-test.c b/tests/boot-serial-test.c
-> index 418c5b9..66f7a84 100644
-> --- a/tests/boot-serial-test.c
-> +++ b/tests/boot-serial-test.c
-> @@ -55,6 +55,13 @@ static const uint8_t bios_raspi2[] = {
->      0x00, 0x10, 0x20, 0x3f,                 /* 0x3f201000 = UART0 base addr */
->  };
->  
-> +static const uint8_t kernel_aarch64[] = {
-> +    0x81, 0x0a, 0x80, 0x52,                 /* mov     w1, #0x54 */
-> +    0x02, 0x20, 0xa1, 0xd2,                 /* mov     x2, #0x9000000 */
-> +    0x41, 0x00, 0x00, 0x39,                 /* strb    w1, [x2] */
-> +    0xfd, 0xff, 0xff, 0x17,                 /* b       -12 (loop) */
-> +};
-> +
->  typedef struct testdef {
->      const char *arch;       /* Target architecture */
->      const char *machine;    /* Name of the machine */
-> @@ -87,6 +94,8 @@ static testdef_t tests[] = {
->        sizeof(kernel_plml605), kernel_plml605 },
->      { "moxie", "moxiesim", "", "TT", sizeof(bios_moxiesim), 0, bios_moxiesim },
->      { "arm", "raspi2", "", "TT", sizeof(bios_raspi2), 0, bios_raspi2 },
-> +    { "aarch64", "virt", "-cpu cortex-a57", "TT", sizeof(kernel_aarch64),
-> +      kernel_aarch64 },
->  
->      { NULL }
->  };
-> 
+The following changes since commit 2ef2f16781af9dee6ba6517755e9073ba5799f=
+a2:
 
-Acked-by: Thomas Huth <thuth@redhat.com>
+  Merge remote-tracking branch 'remotes/dgilbert/tags/pull-migration-2018=
+0615a' into staging (2018-06-15 18:13:35 +0100)
+
+are available in the git repository at:
+
+  git://git.kraxel.org/qemu tags/vga-20180618-pull-request
+
+for you to fetch changes up to 58d632c7ce66c272868b057491cec7ee5a6a1050:
+
+  Add ramfb MAINTAINERS entry (2018-06-18 11:24:25 +0200)
+
+----------------------------------------------------------------
+vga: add ramfb, print virglrenderer version
+
+----------------------------------------------------------------
+
+Gerd Hoffmann (3):
+  hw/display: add ramfb, a simple boot framebuffer living in guest ram
+  hw/display: add standalone ramfb device
+  Add ramfb MAINTAINERS entry
+
+Marc-Andr=C3=A9 Lureau (1):
+  configure: print virglrenderer version
+
+ configure                     |  3 +-
+ include/hw/display/ramfb.h    | 12 ++++++
+ hw/arm/sysbus-fdt.c           |  7 ++++
+ hw/arm/virt.c                 |  2 +
+ hw/display/ramfb-standalone.c | 62 ++++++++++++++++++++++++++++
+ hw/display/ramfb.c            | 95 +++++++++++++++++++++++++++++++++++++=
+++++++
+ hw/i386/pc_piix.c             |  2 +
+ hw/i386/pc_q35.c              |  2 +
+ MAINTAINERS                   |  6 +++
+ hw/display/Makefile.objs      |  3 ++
+ 10 files changed, 193 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/display/ramfb.h
+ create mode 100644 hw/display/ramfb-standalone.c
+ create mode 100644 hw/display/ramfb.c
+
+--=20
+2.9.3
+

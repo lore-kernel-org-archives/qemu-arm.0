@@ -1,112 +1,87 @@
-Received: by 10.28.71.27 with SMTP id u27csp858917wma;
-        Fri, 26 Jan 2018 07:59:01 -0800 (PST)
-X-Google-Smtp-Source: AH8x2272Q3vWJzdbBPneS0Xfktj9BnC1wPreq4ebFg+vJ2/qG9aAqoLrxQaOgx5HRlKxhVepRV+N
-X-Received: by 10.37.165.35 with SMTP id h32mr11770590ybi.297.1516982341004;
-        Fri, 26 Jan 2018 07:59:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516982341; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3721228wrq;
+        Mon, 18 Jun 2018 02:59:00 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKDxfHlYaL1n7u8x3rh22hK7pS+rqnou3xpr5znn9/zYWTfrQkDczOfSMhpZxhZ95RStWXN
+X-Received: by 2002:a37:2e46:: with SMTP id u67-v6mr9110484qkh.106.1529315940709;
+        Mon, 18 Jun 2018 02:59:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529315940; cv=none;
         d=google.com; s=arc-20160816;
-        b=uBmkMLjNKmaXXjYDl9OuQJ7AkqcumuCrZ0qzl3ac+YpBM7YrAeX8wLjq+utFfXHadi
-         2/mla6U65c4JCeQs4/PAzR3MguPWkdSjCcaQmJPGZ/kTWoL42pCxTqzAts6HkMIhSlL9
-         gjTCv9wzYgMrfFYFT2F/YWG6lCtfOr2Rh94d5u0HdHwpVahJQg5NlycA/VklRBe5B21D
-         QEaiK5Q4tki6apbt3ispXawQ07i/SumnG2lYxIBqbrFKBe5T52JukOS5CA8TzdA405lE
-         8GmdbH9LznJqGERGqGP/y7XDb4PDth9m+iH+TNTmbbNvnjp1ngDVSh0b0C4tQT12h33k
-         W2AA==
+        b=H1MU1GYT5ALqheJnb1Auo+s/Tz7CvZFtXh7qrGXKV885C31E7MzDoUZ7b99Ibcm1SO
+         UpfsSrn2CAs1O+NPuSSTcamsElzDO+ELkwwBvrzcqpQngm2XTJh99zBIIArxo/KXaCUM
+         LYBQhFoJOx3cdPAXC12Mvxw75DZgDljtKfM+rb8bpr0JGIogGnrpY4WOJ6hq8p04zMvE
+         kXwwwww06hyNOk30MYiInBUMyhIqqSO9cuLoxYHTeCqsUYvKIOGQKAW5fGgOwqkFz2Dx
+         sM5kY2NiDQtcXj9XjjXagbUzwzsVAGNVrtjPNRpU+RZZZzA3BAu1gmvzzBagi6RKZ6Bz
+         daTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=Tt5QWbc699BE3F+nrrv2m5/3xUxC3NUiSOsD9AsvqOA=;
-        b=V77Qll3fhTg6neoIdEZtsKlH8vQjfvej8AJzi2oNNSdkoTIkFFbWvw7tyD9qmCsnd6
-         nyvO4zTx8GCy8rtg1HigyJakJlRnYhGE9PaZE7eqGatwV5C3TcoJUFyGUuWwSEGlc1BP
-         no+qfostCkveGE8m8PgmmM/6jxY5XS31NyVWxP4LjgB2I9cLG7IIqKhZ3IgQOqSZwmb1
-         mG2K2E8Sjmxw4CRuD3nymQ0BLTqjJD75+QbFRqGPPGvTVRPrxFHqTABZewXp2TYahzwv
-         SQkV52nXgvd/SRnL8S6rQ373EpvzH7vVQ+Nsi9MSg10g27gK+MApGNJxPkVSushNodmp
-         WxrQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=ub0OT4BU1ACcRlvehk3Up8SCJMGVBg16/2VW6IfIExE=;
+        b=KmPE8XqyAscOBA8wFDJbU/+ZlH0CqrWMAGYUSogAfX8zE9nf71p3wy90NCp7H0TfJC
+         JnGJu+zWCp2kHfp6vcwpaxZuT5xkfVqWDipZpW0e94GCvY//czdgYpIpvv3j/9Syfi23
+         R+fH14fUO9mmj7ESxaOIMdmL05y9VJKyiPFIFOWfDn1qoe+EJNbe1fznhYcsQd0EZfFL
+         oZfQfcEex+2tc7j4fmQEHFvYHYlbNGTPygHELUmHURHWWRbt68RAThxJ774LQQShx6ZT
+         p2A6VfZPsfuAZRRRRXQdhfsJs4b0nb1MRgkuU5bPmwOgc9bRjddhflPhTSIP4VPrQf2k
+         yewQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T6WQ+3Ut;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i29si3705950ybj.701.2018.01.26.07.59.00
+        by mx.google.com with ESMTPS id u188-v6si7212104qkb.204.2018.06.18.02.59.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Jan 2018 07:59:00 -0800 (PST)
+        Mon, 18 Jun 2018 02:59:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T6WQ+3Ut;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:35252 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ef6P6-0008MU-CX
-	for alex.bennee@linaro.org; Fri, 26 Jan 2018 10:59:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57625)
+	id 1fUqw8-0001ZW-6p
+	for alex.bennee@linaro.org; Mon, 18 Jun 2018 05:59:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45655)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ef6N1-0007Gi-FG
-	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 10:56:52 -0500
+	(envelope-from <kraxel@redhat.com>) id 1fUqvN-0001PT-60
+	for qemu-devel@nongnu.org; Mon, 18 Jun 2018 05:58:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ef6Mx-0004qW-F1
-	for qemu-devel@nongnu.org; Fri, 26 Jan 2018 10:56:51 -0500
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:43646)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ef6Mx-0004pz-62; Fri, 26 Jan 2018 10:56:47 -0500
-Received: by mail-qt0-x244.google.com with SMTP id s3so2340738qtb.10;
-	Fri, 26 Jan 2018 07:56:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Tt5QWbc699BE3F+nrrv2m5/3xUxC3NUiSOsD9AsvqOA=;
-	b=T6WQ+3UtJmHRphW6AZiMjNpD1YdauOBmaxGkI0wJryiaPFNBtGsXrCxoVTKJevWNOk
-	rc9jDkYJWcBavKKQHL0OAq2j0k0ouhMwyRtsQ2gbgshG5UAnejrdtvbxAnIA3LvddxjD
-	LYJOACii09joASBDv6aewAV8K8E1Mv7L0kCg8GwOqm3ylVxwxc2bDpRrUZGfo/p9y39v
-	sCxDVDsLVca3fAat7QkgKuivTWECrE2O915NvjBVXkZivnXXQzyG2tno9xX8d7U6fseZ
-	iNKKcwgpz44Lt6aYbQveM8fhpyFKuhc5/UfYmKB4che/9Vc3+qAUhj6RGomo9S0ame1X
-	8yBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Tt5QWbc699BE3F+nrrv2m5/3xUxC3NUiSOsD9AsvqOA=;
-	b=su69FTAj0MB/PYB0kG8PSuimVRl2G1xMxMCo0F/hbQJy9406oz3Wbr3HnubO0TnrP/
-	Rvc3paItfMmGuVf5v8OsIQLXIN0rP9Htvl/DsS3TYeaPxjq0UA/BXXRS76EuSCNgu3SD
-	CCKQsHP6YVXjAQKzNcgIcDWfZPBGF3lKLhzA2yDA7kFB7mX+y7NbOYfI7vm9NI11bI4H
-	s4Ag5e2Nj0Baxok5zNzDvUhsRyBEHHPOPT7mpHROm/w2CJMblU9Gx2RWdGrSFok0VdeE
-	p+ES8W+BRsfCeGI03wso7wTtSCzajheRf2I3zJ6/EVMrEYb640jIHmCbe+nO6T9o6JWN
-	D76Q==
-X-Gm-Message-State: AKwxytdcJxJu5ifYFycltg9YQmU+IxS9v6c9oP56SwM2jqZNH0JTJ4hp
-	O4CNOMqZqhdKKYnjpAPyhFuyJxRS
-X-Received: by 10.55.150.6 with SMTP id y6mr19927888qkd.155.1516976976832;
-	Fri, 26 Jan 2018 06:29:36 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id m1sm3396307qkf.8.2018.01.26.06.29.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 26 Jan 2018 06:29:36 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1512670493-18114-1-git-send-email-peter.maydell@linaro.org>
-	<1512670493-18114-5-git-send-email-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <d8c2c2ca-5046-f19b-9514-d3cbef3b7c3a@amsat.org>
-Date: Fri, 26 Jan 2018 11:29:33 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
-MIME-Version: 1.0
-In-Reply-To: <1512670493-18114-5-git-send-email-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-devel] [PATCH 4/6] target/arm: Add "-cpu max" support
+	(envelope-from <kraxel@redhat.com>) id 1fUqvM-0003L1-33
+	for qemu-devel@nongnu.org; Mon, 18 Jun 2018 05:58:13 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57158 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1fUqvE-0003JH-Tl; Mon, 18 Jun 2018 05:58:05 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 62C6A81663C3;
+	Mon, 18 Jun 2018 09:58:04 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
+	[10.36.116.109])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4D29C7C4F;
+	Mon, 18 Jun 2018 09:57:59 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 7371624EF0F; Mon, 18 Jun 2018 11:57:58 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 18 Jun 2018 11:57:56 +0200
+Message-Id: <20180618095758.5006-3-kraxel@redhat.com>
+In-Reply-To: <20180618095758.5006-1-kraxel@redhat.com>
+References: <20180618095758.5006-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 18 Jun 2018 09:58:04 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 18 Jun 2018 09:58:04 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-devel] [PULL 2/4] hw/display: add ramfb,
+ a simple boot framebuffer living in guest ram
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,137 +93,173 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	"Richard W . M . Jones" <rjones@redhat.com>
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QyHyBgMbhjzd
+X-TUID: Ipbnh6sx30vk
 
-Hi Peter,
+The boot framebuffer is expected to be configured by the firmware, so it
+uses fw_cfg as interface.  Initialization goes as follows:
 
-On 12/07/2017 03:14 PM, Peter Maydell wrote:
-> Add support for "-cpu max" for ARM guests. This CPU type behaves
-> like "-cpu host" when KVM is enabled, and like a system CPU with
-> the maximum possible feature set otherwise. (Note that this means
-> it won't be migratable across versions, as we will likely add
-> features to it in future.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/cpu-qom.h |  2 ++
->  target/arm/cpu.c     | 24 ++++++++++++++++++++++++
->  target/arm/cpu64.c   | 21 +++++++++++++++++++++
->  3 files changed, 47 insertions(+)
-> 
-> diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-> index a42495b..d135ff8 100644
-> --- a/target/arm/cpu-qom.h
-> +++ b/target/arm/cpu-qom.h
-> @@ -33,6 +33,8 @@ struct arm_boot_info;
->  #define ARM_CPU_GET_CLASS(obj) \
->      OBJECT_GET_CLASS(ARMCPUClass, (obj), TYPE_ARM_CPU)
->  
-> +#define TYPE_ARM_MAX_CPU "max-" TYPE_ARM_CPU
-> +
->  /**
->   * ARMCPUClass:
->   * @parent_realize: The parent class' realize handler.
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 9304277..190da97 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1628,6 +1628,27 @@ static void pxa270c5_initfn(Object *obj)
->      cpu->reset_sctlr = 0x00000078;
->  }
->  
-> +#ifndef TARGET_AARCH64
-> +/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-> + * otherwise, a CPU with as many features enabled as our emulation supports.
-> + * The version of '-cpu max' for qemu-system-aarch64 is defined in cpu64.c;
-> + * this only needs to handle 32 bits.
-> + */
-> +static void arm_max_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    if (kvm_enabled()) {
-> +        kvm_arm_set_cpu_features_from_host(cpu);
-> +    } else {
-> +        cortex_a15_initfn(obj);> +        /* In future we might add feature bits here even if the
-> +         * real-world A15 doesn't implement them.
-> +         */
+  (1) Check whenever etc/ramfb is present.
+  (2) Allocate framebuffer from RAM.
+  (3) Fill struct RAMFBCfg, write it to etc/ramfb.
 
-Why not use arm_any_initfn() here?
+Done.  You can write stuff to the framebuffer now, and it should appear
+automagically on the screen.
 
-Actually what seems cleaner is to move "any" features here, and kill the
-"any" cpu, using "max" for this purpose.
+Note that this isn't very efficient because it does a full display
+update on each refresh.  No dirty tracking.  Dirty tracking would have
+to be active for the whole ram slot, so that wouldn't be very efficient
+either.  For a boot display which is active for a short time only this
+isn't a big deal.  As permanent guest display something better should be
+used (if possible).
 
-> +    }
-> +}
-> +#endif
-> +
->  #ifdef CONFIG_USER_ONLY
->  static void arm_any_initfn(Object *obj)
->  {
-> @@ -1691,6 +1712,9 @@ static const ARMCPUInfo arm_cpus[] = {
->      { .name = "pxa270-b1",   .initfn = pxa270b1_initfn },
->      { .name = "pxa270-c0",   .initfn = pxa270c0_initfn },
->      { .name = "pxa270-c5",   .initfn = pxa270c5_initfn },
-> +#ifndef TARGET_AARCH64
-> +    { .name = "max",         .initfn = arm_max_initfn },
-> +#endif
+This is the ramfb core code.  Some windup is needed for display devices
+which want have a ramfb boot display.
 
->  #ifdef CONFIG_USER_ONLY
->      { .name = "any",         .initfn = arm_any_initfn },
->  #endif
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Tested-by: Laszlo Ersek <lersek@redhat.com>
+Message-id: 20180613122948.18149-2-kraxel@redhat.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/hw/display/ramfb.h |  9 +++++
+ hw/display/ramfb.c         | 95 ++++++++++++++++++++++++++++++++++++++++++++++
+ hw/display/Makefile.objs   |  2 +
+ 3 files changed, 106 insertions(+)
+ create mode 100644 include/hw/display/ramfb.h
+ create mode 100644 hw/display/ramfb.c
 
-and we can remove the last 3 lines.
+diff --git a/include/hw/display/ramfb.h b/include/hw/display/ramfb.h
+new file mode 100644
+index 0000000000..a3d4c79942
+--- /dev/null
++++ b/include/hw/display/ramfb.h
+@@ -0,0 +1,9 @@
++#ifndef RAMFB_H
++#define RAMFB_H
++
++/* ramfb.c */
++typedef struct RAMFBState RAMFBState;
++void ramfb_display_update(QemuConsole *con, RAMFBState *s);
++RAMFBState *ramfb_setup(Error **errp);
++
++#endif /* RAMFB_H */
+diff --git a/hw/display/ramfb.c b/hw/display/ramfb.c
+new file mode 100644
+index 0000000000..6867bce8ae
+--- /dev/null
++++ b/hw/display/ramfb.c
+@@ -0,0 +1,95 @@
++/*
++ * early boot framebuffer in guest ram
++ * configured using fw_cfg
++ *
++ * Copyright Red Hat, Inc. 2017
++ *
++ * Author:
++ *     Gerd Hoffmann <kraxel@redhat.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/loader.h"
++#include "hw/display/ramfb.h"
++#include "ui/console.h"
++#include "sysemu/sysemu.h"
++
++struct QEMU_PACKED RAMFBCfg {
++    uint64_t addr;
++    uint32_t fourcc;
++    uint32_t flags;
++    uint32_t width;
++    uint32_t height;
++    uint32_t stride;
++};
++
++struct RAMFBState {
++    DisplaySurface *ds;
++    uint32_t width, height;
++    struct RAMFBCfg cfg;
++};
++
++static void ramfb_fw_cfg_write(void *dev, off_t offset, size_t len)
++{
++    RAMFBState *s = dev;
++    void *framebuffer;
++    uint32_t stride, fourcc, format;
++    hwaddr addr, length;
++
++    s->width  = be32_to_cpu(s->cfg.width);
++    s->height = be32_to_cpu(s->cfg.height);
++    stride    = be32_to_cpu(s->cfg.stride);
++    fourcc    = be32_to_cpu(s->cfg.fourcc);
++    addr      = be64_to_cpu(s->cfg.addr);
++    length    = stride * s->height;
++    format    = qemu_drm_format_to_pixman(fourcc);
++
++    fprintf(stderr, "%s: %dx%d @ 0x%" PRIx64 "\n", __func__,
++            s->width, s->height, addr);
++    framebuffer = address_space_map(&address_space_memory,
++                                    addr, &length, false,
++                                    MEMTXATTRS_UNSPECIFIED);
++    if (!framebuffer || length < stride * s->height) {
++        s->width = 0;
++        s->height = 0;
++        return;
++    }
++    s->ds = qemu_create_displaysurface_from(s->width, s->height,
++                                            format, stride, framebuffer);
++}
++
++void ramfb_display_update(QemuConsole *con, RAMFBState *s)
++{
++    if (!s->width || !s->height) {
++        return;
++    }
++
++    if (s->ds) {
++        dpy_gfx_replace_surface(con, s->ds);
++        s->ds = NULL;
++    }
++
++    /* simple full screen update */
++    dpy_gfx_update_full(con);
++}
++
++RAMFBState *ramfb_setup(Error **errp)
++{
++    FWCfgState *fw_cfg = fw_cfg_find();
++    RAMFBState *s;
++
++    if (!fw_cfg || !fw_cfg->dma_enabled) {
++        error_setg(errp, "ramfb device requires fw_cfg with DMA");
++        return NULL;
++    }
++
++    s = g_new0(RAMFBState, 1);
++
++    fw_cfg_add_file_callback(fw_cfg, "etc/ramfb",
++                             NULL, ramfb_fw_cfg_write, s,
++                             &s->cfg, sizeof(s->cfg), false);
++    return s;
++}
+diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
+index b5d97ab26d..0af04985d2 100644
+--- a/hw/display/Makefile.objs
++++ b/hw/display/Makefile.objs
+@@ -1,3 +1,5 @@
++common-obj-y += ramfb.o
++
+ common-obj-$(CONFIG_ADS7846) += ads7846.o
+ common-obj-$(CONFIG_VGA_CIRRUS) += cirrus_vga.o
+ common-obj-$(CONFIG_G364FB) += g364fb.o
+-- 
+2.9.3
 
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 670c07a..38dcf32 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -28,6 +28,7 @@
->  #include "hw/arm/arm.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/kvm.h"
-> +#include "kvm_arm.h"
->  
->  static inline void set_feature(CPUARMState *env, int feature)
->  {
-> @@ -212,6 +213,25 @@ static void aarch64_a53_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortex_a57_a53_cp_reginfo);
->  }
->  
-> +/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-> + * otherwise, a CPU with as many features enabled as our emulation supports.
-> + * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-> + * this only needs to handle 64 bits.
-> + */
-> +static void aarch64_max_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    if (kvm_enabled()) {
-> +        kvm_arm_set_cpu_features_from_host(cpu);
-> +    } else {
-> +        aarch64_a57_initfn(obj);
-> +        /* In future we might add feature bits here even if the
-> +         * real-world A57 doesn't implement them.
-> +         */
-> +    }
-> +}
-> +
->  #ifdef CONFIG_USER_ONLY
->  static void aarch64_any_initfn(Object *obj)
->  {
-> @@ -240,6 +260,7 @@ typedef struct ARMCPUInfo {
->  static const ARMCPUInfo aarch64_cpus[] = {
->      { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
->      { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-> +    { .name = "max",                .initfn = aarch64_max_initfn },
->  #ifdef CONFIG_USER_ONLY
->      { .name = "any",         .initfn = aarch64_any_initfn },
->  #endif
-> 

@@ -1,106 +1,106 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4911468wrq;
-        Tue, 19 Jun 2018 02:31:59 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJmTaJNWcT5708i7edVg67cJxo7TZlGQ3LC5t9CkzIoJgSBg+dEMMJdy2VjAf9/BerT9EQ9
-X-Received: by 2002:ac8:172a:: with SMTP id w39-v6mr13898740qtj.96.1529400719028;
-        Tue, 19 Jun 2018 02:31:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529400719; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4911639wrq;
+        Tue, 19 Jun 2018 02:32:10 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLoqs36ZluzQGY8Effyxlv81Ho0RjqZ0XtSihyAcvx1wC0VlR5nWFYGG0UUzixMtuhx6zoa
+X-Received: by 2002:ae9:ebcf:: with SMTP id b198-v6mr12946926qkg.113.1529400730549;
+        Tue, 19 Jun 2018 02:32:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529400730; cv=none;
         d=google.com; s=arc-20160816;
-        b=w5q2xDS2vB8pj+ImjWOYS4Y6XMzgx5oPErgTVqAd/WYL4R1H3BUhj2bH/B6IxKmf1Z
-         Y5LEdAfeaJveRVAm+ahR3PFgZ7XDKiQj6jP3dn5VYdklxHrIdOJtJoOb52oQW42do2Tg
-         X5d2i9wY9gmYNJMIMZ7jX3GqJ7ZvgmLfqGI44CWSKfd9r5ynSocvMnPZg7eJL3wcQYmr
-         ZIXJlQEuYkmE0kZTcr7y8uV/9juMlpPWaC2ghixiKZxDOCI6swQTabRlNShq00uMVDEb
-         BlMfPWqqDNJSyACBz9w+WwG2qBK3IeiAp6kPUkOhovoP1QiKykT6P7VOE61IQdFe0UUc
-         TXew==
+        b=Wq4mXzifdqXCjK2GMSrENrTVxQV1Z/nxzntsa87VT4g6wnpNlWb6fZtKxQXTFO9seQ
+         /si6sy4Mh9kpmmYfuCKyp6+u2kXJ/I9lF8BvlgPY8L3QhB+Ug2IbhUWILj9ZbELhnV7m
+         juFV63GW36PKpB/bVJorePP0lwJ4JXCtNdpjzxRYZtUPoIRGh4a+F8f9wvPrAIF/Ye9M
+         WdxBCzphDHNA3McB7NDP3O4MJQVr9ZhY78r0awwt3rDHXPKFWz+6vUqgyjWDE6oiwR82
+         1cBtfKDMsLn47fXX9us+V2UD3f5Th9JXleYC8EzhtaRsdBowMOYGwcmXmZa3tLAkZGhl
+         xifA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature:arc-authentication-results;
-        bh=Z+wIoPw9hBlkyZbx9AIjqQSrryq+nckiwVFPYLWoAzM=;
-        b=PWuejkmT9W84aa62vyITSNhey05XOerAA/q1X3OPvgTkoU5xjfLJbZTIBu64cUgBCv
-         OoO6Bs9JCeTtiA58AqJFmzXUjIpOx1GLS3/qWK1ULernSiGLuKo7N3MXvmLX89kCGFgp
-         IDSvZRSJE2aDwjjmPTfH0wrOGKcVYZCXiFV2CkWdqGXguUgGFpOtdfH38lNo9NySc4ST
-         epZS0UPV5Anj4CCtc3sFCZtwe8uHhi5plWo0NgCVo5ST6URxHrOND439CW73GZr4wV9j
-         ldRD7+F+DC3Drd0vqkYmsQay8CdyUwjokR/KIUy7aDCPoqsbpVdS0gDQKb1iccYNCS+m
-         8lkw==
+        bh=YUxLJ5jhGTFtABBG6OGbPPFL6pZvCkHJ/ztZC5zyYPg=;
+        b=fxHOXYI7McJeVRsceMBxW7I/S3XQRvBkDfg8p1cf0BcwTXeTmU8UWf8iG6yjcU3856
+         nAtNDla0gqsnJ/CLhiPOB70HOa92cDAxbGayXSdvAQwacwbQUtVXkb09igPabgGnUdRl
+         jyLKPqbRhI40JcZdb5Jmyd9qxViQ/BocBT3W3kkMBifge0+CFFmJQ2aizjqCFFT5q/5A
+         ItN9TquBjWuP4EQtibZmyeRrON+GDtF++kWud6AKZSYyhwpD24AJgcoLVx0iUOfcuOPT
+         6oOyoeZ6mmkAf4zHvbm5VwQiKHDVgVsezqNNlTB7j1TPygczg99pnlNx++4Nl2zshTX6
+         7ZXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=bgh1Spmx;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=DDF6FXMd;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=DDF6FXMd;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="hah/rorK";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=U+eKRhe3;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=U+eKRhe3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z11-v6si11325031qkg.1.2018.06.19.02.31.58
+        by mx.google.com with ESMTPS id b27-v6si1606419qtb.275.2018.06.19.02.32.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Jun 2018 02:31:59 -0700 (PDT)
+        Tue, 19 Jun 2018 02:32:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=bgh1Spmx;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=DDF6FXMd;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=DDF6FXMd;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="hah/rorK";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=U+eKRhe3;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=U+eKRhe3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40253 helo=lists.gnu.org)
+Received: from localhost ([::1]:40255 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fVCzW-0005TQ-FN
-	for alex.bennee@linaro.org; Tue, 19 Jun 2018 05:31:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38104)
+	id 1fVCzi-0005ge-12
+	for alex.bennee@linaro.org; Tue, 19 Jun 2018 05:32:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38110)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fVCzG-0005Ph-67
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 05:31:45 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fVCzG-0005Pm-6r
+	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 05:31:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fVCzB-0006GY-F8
+	(envelope-from <luc.michel@greensocs.com>) id 1fVCzC-0006Go-0Q
 	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 05:31:42 -0400
-Received: from greensocs.com ([193.104.36.180]:42311)
+Received: from greensocs.com ([193.104.36.180]:42325)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fVCzA-0006Fi-Qi; Tue, 19 Jun 2018 05:31:37 -0400
+	id 1fVCzB-0006GR-Kp; Tue, 19 Jun 2018 05:31:37 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 0864744B87F;
-	Tue, 19 Jun 2018 11:31:29 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 482A5428984;
+	Tue, 19 Jun 2018 11:31:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1529400689;
-	bh=Q48xUE827ZNe3zLRodRvl3zGa09WaYkHutYJzVY87pU=;
+	s=mail; t=1529400691;
+	bh=cDP7AKA+0AbszTm7zc2svxuoTOxVOao6HgwwSykwt4A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=bgh1Spmx7358bIM0krbDFrC5s3a/rGB2WDfDct75k+YtUlbZ5TIFObdDtLb2/IPh9
-	TdGL/4U47Q0oXnz4m3Mqzdj3vTEGBP12fKfhP5tRW6fG7HfhtnfQWM+FYOdIY0VHLf
-	vaBykh5algK55GUMBQYzl5kRct94z6uCLoD94MwA=
+	b=hah/rorKrY3FTC2kiK9+9hWb6pa16Zunk9ovJJJrgCYhHD0xeXOJ1xm0Ma4UZtA8i
+	Qr4s6miFis+nVBS+8k+sAWfsOpWpYITCGAgSTW/tJ84NOqa8I6YWqta7kGfh34vT+Q
+	sskVDa1Zg7bgcLZZ9CVTx2So3vlxMrbu5cMy5ZvA=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=DDF6FXMd;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=DDF6FXMd
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=U+eKRhe3;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=U+eKRhe3
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uY_yR94HhuzZ; Tue, 19 Jun 2018 11:31:27 +0200 (CEST)
+	with ESMTP id vG0DU7fgj0nC; Tue, 19 Jun 2018 11:31:30 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 9865144B870; Tue, 19 Jun 2018 11:31:27 +0200 (CEST)
+	id 8B4EF44B867; Tue, 19 Jun 2018 11:31:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1529400687;
-	bh=Q48xUE827ZNe3zLRodRvl3zGa09WaYkHutYJzVY87pU=;
+	s=mail; t=1529400689;
+	bh=cDP7AKA+0AbszTm7zc2svxuoTOxVOao6HgwwSykwt4A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=DDF6FXMd7NggMl81IVuEecUedGxUQ6uFukm5PMg3yoW4h8mXTx6TRh9uu6597OuZM
-	E8p2VvzgiX0pXTI73L3qllB00rlkBs8iQvlg0YkfOmV+RaWw8szY0byRbUE+SQ/s/d
-	vtor4cllWkv/RvS5oiRA1ROskURZOFb/7W6rToME=
+	b=U+eKRhe3RMXBbTalr1j3uoAjZmiB4OtB/2Qy7L/wGoLPYwZ9zBs0k0VqFVhR1qLM5
+	+lBzn6IUXu3ZgK/gzQTpf7PIIOmwmIXmUfJSHd+QYyMuUhFBwk3OZetEhqluFV6dOM
+	+rf9V5FPjor0xzC+hCvp2m2R6/WdRrszLI7O2JqE=
 Received: from michell-laptop.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 354AC44B864;
-	Tue, 19 Jun 2018 11:31:27 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 1F448400FEF;
+	Tue, 19 Jun 2018 11:31:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1529400687;
-	bh=Q48xUE827ZNe3zLRodRvl3zGa09WaYkHutYJzVY87pU=;
+	s=mail; t=1529400689;
+	bh=cDP7AKA+0AbszTm7zc2svxuoTOxVOao6HgwwSykwt4A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=DDF6FXMd7NggMl81IVuEecUedGxUQ6uFukm5PMg3yoW4h8mXTx6TRh9uu6597OuZM
-	E8p2VvzgiX0pXTI73L3qllB00rlkBs8iQvlg0YkfOmV+RaWw8szY0byRbUE+SQ/s/d
-	vtor4cllWkv/RvS5oiRA1ROskURZOFb/7W6rToME=
+	b=U+eKRhe3RMXBbTalr1j3uoAjZmiB4OtB/2Qy7L/wGoLPYwZ9zBs0k0VqFVhR1qLM5
+	+lBzn6IUXu3ZgK/gzQTpf7PIIOmwmIXmUfJSHd+QYyMuUhFBwk3OZetEhqluFV6dOM
+	+rf9V5FPjor0xzC+hCvp2m2R6/WdRrszLI7O2JqE=
 From: luc.michel@greensocs.com
 To: qemu-devel@nongnu.org
-Date: Tue, 19 Jun 2018 11:31:18 +0200
-Message-Id: <20180619093124.24011-2-luc.michel@greensocs.com>
+Date: Tue, 19 Jun 2018 11:31:23 +0200
+Message-Id: <20180619093124.24011-7-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180619093124.24011-1-luc.michel@greensocs.com>
 References: <20180619093124.24011-1-luc.michel@greensocs.com>
@@ -109,8 +109,7 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v2 1/7] intc/arm_gic: Refactor operations on the
- distributor
+Subject: [Qemu-arm] [PATCH v2 6/7] intc/arm_gic: Improve traces
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -127,821 +126,189 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
 	Jan Kiszka <jan.kiszka@web.de>, Luc MICHEL <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0/FtR2rAB80B
+X-TUID: v3OIYWgfhjoi
 
 From: Luc MICHEL <luc.michel@greensocs.com>
 
-In preparation for the virtualization extensions implementation,
-refactor the name of the functions and macros that act on the GIC
-distributor to make that fact explicit. It will be useful to
-differentiate them from the ones that will act on the virtual
-interfaces.
+Add some traces to the ARM GIC to catch register accesses (distributor,
+(v)cpu interface and virtual interface), and to take into account
+virtualization extensions (print `vcpu` instead of `cpu` when needed).
+
+Also add some virtualization extensions specific traces: LR updating
+and maintenance IRQ generation.
 
 Signed-off-by: Luc MICHEL <luc.michel@greensocs.com>
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gic.c        | 164 ++++++++++++++++++++-------------------
- hw/intc/arm_gic_common.c |   6 +-
- hw/intc/arm_gic_kvm.c    |  23 +++---
- hw/intc/gic_internal.h   |  51 ++++++------
- 4 files changed, 127 insertions(+), 117 deletions(-)
+ hw/intc/arm_gic.c    | 31 +++++++++++++++++++++++++------
+ hw/intc/trace-events | 12 ++++++++++--
+ 2 files changed, 35 insertions(+), 8 deletions(-)
 
 diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index ea0323f969..141f3e7a48 100644
+index 834caa8504..a128fb3f4d 100644
 --- a/hw/intc/arm_gic.c
 +++ b/hw/intc/arm_gic.c
-@@ -92,11 +92,12 @@ void gic_update(GICState *s)
-         best_prio =3D 0x100;
-         best_irq =3D 1023;
-         for (irq =3D 0; irq < s->num_irq; irq++) {
--            if (GIC_TEST_ENABLED(irq, cm) && gic_test_pending(s, irq, cm=
-) &&
--                (!GIC_TEST_ACTIVE(irq, cm)) &&
--                (irq < GIC_INTERNAL || GIC_TARGET(irq) & cm)) {
--                if (GIC_GET_PRIORITY(irq, cpu) < best_prio) {
--                    best_prio =3D GIC_GET_PRIORITY(irq, cpu);
-+            if (GIC_DIST_TEST_ENABLED(irq, cm) &&
-+                gic_test_pending(s, irq, cm) &&
-+                (!GIC_DIST_TEST_ACTIVE(irq, cm)) &&
-+                (irq < GIC_INTERNAL || GIC_DIST_TARGET(irq) & cm)) {
-+                if (GIC_DIST_GET_PRIORITY(irq, cpu) < best_prio) {
-+                    best_prio =3D GIC_DIST_GET_PRIORITY(irq, cpu);
-                     best_irq =3D irq;
-                 }
-             }
-@@ -112,7 +113,7 @@ void gic_update(GICState *s)
-         if (best_prio < s->priority_mask[cpu]) {
-             s->current_pending[cpu] =3D best_irq;
-             if (best_prio < s->running_priority[cpu]) {
--                int group =3D GIC_TEST_GROUP(best_irq, cm);
-+                int group =3D GIC_DIST_TEST_GROUP(best_irq, cm);
-=20
-                 if (extract32(s->ctlr, group, 1) &&
-                     extract32(s->cpu_ctlr[cpu], group, 1)) {
-@@ -145,7 +146,7 @@ void gic_set_pending_private(GICState *s, int cpu, in=
-t irq)
-     }
-=20
-     DPRINTF("Set %d pending cpu %d\n", irq, cpu);
--    GIC_SET_PENDING(irq, cm);
-+    GIC_DIST_SET_PENDING(irq, cm);
-     gic_update(s);
- }
-=20
-@@ -153,13 +154,13 @@ static void gic_set_irq_11mpcore(GICState *s, int i=
-rq, int level,
-                                  int cm, int target)
- {
-     if (level) {
--        GIC_SET_LEVEL(irq, cm);
--        if (GIC_TEST_EDGE_TRIGGER(irq) || GIC_TEST_ENABLED(irq, cm)) {
-+        GIC_DIST_SET_LEVEL(irq, cm);
-+        if (GIC_DIST_TEST_EDGE_TRIGGER(irq) || GIC_DIST_TEST_ENABLED(irq=
-, cm)) {
-             DPRINTF("Set %d pending mask %x\n", irq, target);
--            GIC_SET_PENDING(irq, target);
-+            GIC_DIST_SET_PENDING(irq, target);
+@@ -179,8 +179,10 @@ static inline void gic_update_internal(GICState *s, =
+bool virt)
          }
-     } else {
--        GIC_CLEAR_LEVEL(irq, cm);
-+        GIC_DIST_CLEAR_LEVEL(irq, cm);
-     }
- }
 =20
-@@ -167,13 +168,13 @@ static void gic_set_irq_generic(GICState *s, int ir=
-q, int level,
-                                 int cm, int target)
- {
-     if (level) {
--        GIC_SET_LEVEL(irq, cm);
-+        GIC_DIST_SET_LEVEL(irq, cm);
-         DPRINTF("Set %d pending mask %x\n", irq, target);
--        if (GIC_TEST_EDGE_TRIGGER(irq)) {
--            GIC_SET_PENDING(irq, target);
-+        if (GIC_DIST_TEST_EDGE_TRIGGER(irq)) {
-+            GIC_DIST_SET_PENDING(irq, target);
+         if (best_irq !=3D 1023) {
+-            trace_gic_update_bestirq(cpu, best_irq, best_prio,
+-                s->priority_mask[cpu_iface], s->running_priority[cpu_ifa=
+ce]);
++            trace_gic_update_bestirq(virt ? "vcpu" : "cpu", cpu,
++                                     best_irq, best_prio,
++                                     s->priority_mask[cpu_iface],
++                                     s->running_priority[cpu_iface]);
          }
-     } else {
--        GIC_CLEAR_LEVEL(irq, cm);
-+        GIC_DIST_CLEAR_LEVEL(irq, cm);
+=20
+         irq_level =3D fiq_level =3D 0;
+@@ -268,6 +270,7 @@ static void gic_update_maintenance(GICState *s)
+         gic_compute_misr(s, cpu);
+         maint_level =3D (s->h_hcr[cpu] & GICH_HCR_EN) && s->h_misr[cpu];
+=20
++        trace_gic_update_maintenance_irq(cpu, maint_level);
+         qemu_set_irq(s->maintenance_irq[cpu], maint_level);
      }
  }
-=20
-@@ -192,7 +193,7 @@ static void gic_set_irq(void *opaque, int irq, int le=
-vel)
-         /* The first external input line is internal interrupt 32.  */
-         cm =3D ALL_CPU_MASK;
-         irq +=3D GIC_INTERNAL;
--        target =3D GIC_TARGET(irq);
-+        target =3D GIC_DIST_TARGET(irq);
-     } else {
-         int cpu;
-         irq -=3D (s->num_irq - GIC_INTERNAL);
-@@ -204,7 +205,7 @@ static void gic_set_irq(void *opaque, int irq, int le=
-vel)
-=20
-     assert(irq >=3D GIC_NR_SGIS);
-=20
--    if (level =3D=3D GIC_TEST_LEVEL(irq, cm)) {
-+    if (level =3D=3D GIC_DIST_TEST_LEVEL(irq, cm)) {
-         return;
-     }
-=20
-@@ -224,7 +225,7 @@ static uint16_t gic_get_current_pending_irq(GICState =
-*s, int cpu,
-     uint16_t pending_irq =3D s->current_pending[cpu];
-=20
-     if (pending_irq < GIC_MAXIRQ && gic_has_groups(s)) {
--        int group =3D GIC_TEST_GROUP(pending_irq, (1 << cpu));
-+        int group =3D GIC_DIST_TEST_GROUP(pending_irq, (1 << cpu));
-         /* On a GIC without the security extensions, reading this regist=
-er
-          * behaves in the same way as a secure access to a GIC with them=
-.
-          */
-@@ -255,7 +256,7 @@ static int gic_get_group_priority(GICState *s, int cp=
-u, int irq)
-=20
-     if (gic_has_groups(s) &&
-         !(s->cpu_ctlr[cpu] & GICC_CTLR_CBPR) &&
--        GIC_TEST_GROUP(irq, (1 << cpu))) {
-+        GIC_DIST_TEST_GROUP(irq, (1 << cpu))) {
-         bpr =3D s->abpr[cpu] - 1;
-         assert(bpr >=3D 0);
-     } else {
-@@ -268,7 +269,7 @@ static int gic_get_group_priority(GICState *s, int cp=
-u, int irq)
+@@ -539,7 +542,8 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, Me=
+mTxAttrs attrs)
+      * is in the wrong group.
       */
-     mask =3D ~0U << ((bpr & 7) + 1);
+     irq =3D gic_get_current_pending_irq(s, cpu, attrs);
+-    trace_gic_acknowledge_irq(gic_get_vcpu_real_id(cpu), irq);
++    trace_gic_acknowledge_irq(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
++                              gic_get_vcpu_real_id(cpu), irq);
 =20
--    return GIC_GET_PRIORITY(irq, cpu) & mask;
-+    return GIC_DIST_GET_PRIORITY(irq, cpu) & mask;
+     if (irq >=3D GIC_MAXIRQ) {
+         DPRINTF("ACK, no pending interrupt or it is hidden: %d\n", irq);
+@@ -1017,20 +1021,23 @@ static MemTxResult gic_dist_read(void *opaque, hw=
+addr offset, uint64_t *data,
+     switch (size) {
+     case 1:
+         *data =3D gic_dist_readb(opaque, offset, attrs);
+-        return MEMTX_OK;
++        break;
+     case 2:
+         *data =3D gic_dist_readb(opaque, offset, attrs);
+         *data |=3D gic_dist_readb(opaque, offset + 1, attrs) << 8;
+-        return MEMTX_OK;
++        break;
+     case 4:
+         *data =3D gic_dist_readb(opaque, offset, attrs);
+         *data |=3D gic_dist_readb(opaque, offset + 1, attrs) << 8;
+         *data |=3D gic_dist_readb(opaque, offset + 2, attrs) << 16;
+         *data |=3D gic_dist_readb(opaque, offset + 3, attrs) << 24;
+-        return MEMTX_OK;
++        break;
+     default:
+         return MEMTX_ERROR;
+     }
++
++    trace_gic_dist_read(offset, size, *data);
++    return MEMTX_OK;
  }
 =20
- static void gic_activate_irq(GICState *s, int cpu, int irq)
-@@ -281,14 +282,14 @@ static void gic_activate_irq(GICState *s, int cpu, =
-int irq)
-     int regno =3D preemption_level / 32;
-     int bitno =3D preemption_level % 32;
-=20
--    if (gic_has_groups(s) && GIC_TEST_GROUP(irq, (1 << cpu))) {
-+    if (gic_has_groups(s) && GIC_DIST_TEST_GROUP(irq, (1 << cpu))) {
-         s->nsapr[regno][cpu] |=3D (1 << bitno);
-     } else {
-         s->apr[regno][cpu] |=3D (1 << bitno);
-     }
-=20
-     s->running_priority[cpu] =3D prio;
--    GIC_SET_ACTIVE(irq, 1 << cpu);
-+    GIC_DIST_SET_ACTIVE(irq, 1 << cpu);
- }
-=20
- static int gic_get_prio_from_apr_bits(GICState *s, int cpu)
-@@ -357,7 +358,7 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, Me=
-mTxAttrs attrs)
-         return irq;
-     }
-=20
--    if (GIC_GET_PRIORITY(irq, cpu) >=3D s->running_priority[cpu]) {
-+    if (GIC_DIST_GET_PRIORITY(irq, cpu) >=3D s->running_priority[cpu]) {
-         DPRINTF("ACK, pending interrupt (%d) has insufficient priority\n=
-", irq);
-         return 1023;
-     }
-@@ -366,7 +367,8 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, Me=
-mTxAttrs attrs)
-         /* Clear pending flags for both level and edge triggered interru=
-pts.
-          * Level triggered IRQs will be reasserted once they become inac=
-tive.
-          */
--        GIC_CLEAR_PENDING(irq, GIC_TEST_MODEL(irq) ? ALL_CPU_MASK : cm);
-+        GIC_DIST_CLEAR_PENDING(irq, GIC_DIST_TEST_MODEL(irq) ? ALL_CPU_M=
-ASK
-+                                                             : cm);
-         ret =3D irq;
-     } else {
-         if (irq < GIC_NR_SGIS) {
-@@ -378,7 +380,9 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, Me=
-mTxAttrs attrs)
-             src =3D ctz32(s->sgi_pending[irq][cpu]);
-             s->sgi_pending[irq][cpu] &=3D ~(1 << src);
-             if (s->sgi_pending[irq][cpu] =3D=3D 0) {
--                GIC_CLEAR_PENDING(irq, GIC_TEST_MODEL(irq) ? ALL_CPU_MAS=
-K : cm);
-+                GIC_DIST_CLEAR_PENDING(irq,
-+                                       GIC_DIST_TEST_MODEL(irq) ? ALL_CP=
-U_MASK
-+                                                                : cm);
-             }
-             ret =3D irq | ((src & 0x7) << 10);
-         } else {
-@@ -386,7 +390,8 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, Me=
-mTxAttrs attrs)
-              * interrupts. (level triggered interrupts with an active li=
-ne
-              * remain pending, see gic_test_pending)
-              */
--            GIC_CLEAR_PENDING(irq, GIC_TEST_MODEL(irq) ? ALL_CPU_MASK : =
-cm);
-+            GIC_DIST_CLEAR_PENDING(irq, GIC_DIST_TEST_MODEL(irq) ? ALL_C=
-PU_MASK
-+                                                                 : cm);
-             ret =3D irq;
-         }
-     }
-@@ -397,11 +402,11 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, =
-MemTxAttrs attrs)
-     return ret;
- }
-=20
--void gic_set_priority(GICState *s, int cpu, int irq, uint8_t val,
-+void gic_dist_set_priority(GICState *s, int cpu, int irq, uint8_t val,
-                       MemTxAttrs attrs)
- {
-     if (s->security_extn && !attrs.secure) {
--        if (!GIC_TEST_GROUP(irq, (1 << cpu))) {
-+        if (!GIC_DIST_TEST_GROUP(irq, (1 << cpu))) {
-             return; /* Ignore Non-secure access of Group0 IRQ */
-         }
-         val =3D 0x80 | (val >> 1); /* Non-secure view */
-@@ -414,13 +419,13 @@ void gic_set_priority(GICState *s, int cpu, int irq=
-, uint8_t val,
-     }
- }
-=20
--static uint32_t gic_get_priority(GICState *s, int cpu, int irq,
-+static uint32_t gic_dist_get_priority(GICState *s, int cpu, int irq,
-                                  MemTxAttrs attrs)
- {
--    uint32_t prio =3D GIC_GET_PRIORITY(irq, cpu);
-+    uint32_t prio =3D GIC_DIST_GET_PRIORITY(irq, cpu);
-=20
-     if (s->security_extn && !attrs.secure) {
--        if (!GIC_TEST_GROUP(irq, (1 << cpu))) {
-+        if (!GIC_DIST_TEST_GROUP(irq, (1 << cpu))) {
-             return 0; /* Non-secure access cannot read priority of Group=
-0 IRQ */
-         }
-         prio =3D (prio << 1) & 0xff; /* Non-secure view */
-@@ -543,7 +548,7 @@ static bool gic_eoi_split(GICState *s, int cpu, MemTx=
-Attrs attrs)
- static void gic_deactivate_irq(GICState *s, int cpu, int irq, MemTxAttrs=
- attrs)
- {
-     int cm =3D 1 << cpu;
--    int group =3D gic_has_groups(s) && GIC_TEST_GROUP(irq, cm);
-+    int group =3D gic_has_groups(s) && GIC_DIST_TEST_GROUP(irq, cm);
-=20
-     if (!gic_eoi_split(s, cpu, attrs)) {
-         /* This is UNPREDICTABLE; we choose to ignore it */
-@@ -557,7 +562,7 @@ static void gic_deactivate_irq(GICState *s, int cpu, =
-int irq, MemTxAttrs attrs)
-         return;
-     }
-=20
--    GIC_CLEAR_ACTIVE(irq, cm);
-+    GIC_DIST_CLEAR_ACTIVE(irq, cm);
- }
-=20
- void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs)
-@@ -584,14 +589,15 @@ void gic_complete_irq(GICState *s, int cpu, int irq=
-, MemTxAttrs attrs)
-     if (s->revision =3D=3D REV_11MPCORE) {
-         /* Mark level triggered interrupts as pending if they are still
-            raised.  */
--        if (!GIC_TEST_EDGE_TRIGGER(irq) && GIC_TEST_ENABLED(irq, cm)
--            && GIC_TEST_LEVEL(irq, cm) && (GIC_TARGET(irq) & cm) !=3D 0)=
- {
-+        if (!GIC_DIST_TEST_EDGE_TRIGGER(irq) && GIC_DIST_TEST_ENABLED(ir=
-q, cm)
-+            && GIC_DIST_TEST_LEVEL(irq, cm)
-+            && (GIC_DIST_TARGET(irq) & cm) !=3D 0) {
-             DPRINTF("Set %d pending mask %x\n", irq, cm);
--            GIC_SET_PENDING(irq, cm);
-+            GIC_DIST_SET_PENDING(irq, cm);
-         }
-     }
-=20
--    group =3D gic_has_groups(s) && GIC_TEST_GROUP(irq, cm);
-+    group =3D gic_has_groups(s) && GIC_DIST_TEST_GROUP(irq, cm);
-=20
-     if (s->security_extn && !attrs.secure && !group) {
-         DPRINTF("Non-secure EOI for Group0 interrupt %d ignored\n", irq)=
-;
-@@ -607,7 +613,7 @@ void gic_complete_irq(GICState *s, int cpu, int irq, =
-MemTxAttrs attrs)
-=20
-     /* In GICv2 the guest can choose to split priority-drop and deactiva=
-te */
-     if (!gic_eoi_split(s, cpu, attrs)) {
--        GIC_CLEAR_ACTIVE(irq, cm);
-+        GIC_DIST_CLEAR_ACTIVE(irq, cm);
-     }
-     gic_update(s);
- }
-@@ -655,7 +661,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr o=
-ffset, MemTxAttrs attrs)
-                     goto bad_reg;
-                 }
-                 for (i =3D 0; i < 8; i++) {
--                    if (GIC_TEST_GROUP(irq + i, cm)) {
-+                    if (GIC_DIST_TEST_GROUP(irq + i, cm)) {
-                         res |=3D (1 << i);
-                     }
-                 }
-@@ -675,11 +681,11 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr=
- offset, MemTxAttrs attrs)
-         res =3D 0;
-         for (i =3D 0; i < 8; i++) {
-             if (s->security_extn && !attrs.secure &&
--                !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
-=20
--            if (GIC_TEST_ENABLED(irq + i, cm)) {
-+            if (GIC_DIST_TEST_ENABLED(irq + i, cm)) {
-                 res |=3D (1 << i);
-             }
-         }
-@@ -696,7 +702,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr o=
-ffset, MemTxAttrs attrs)
-         mask =3D (irq < GIC_INTERNAL) ?  cm : ALL_CPU_MASK;
-         for (i =3D 0; i < 8; i++) {
-             if (s->security_extn && !attrs.secure &&
--                !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
-=20
-@@ -713,11 +719,11 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr=
- offset, MemTxAttrs attrs)
-         mask =3D (irq < GIC_INTERNAL) ?  cm : ALL_CPU_MASK;
-         for (i =3D 0; i < 8; i++) {
-             if (s->security_extn && !attrs.secure &&
--                !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
-=20
--            if (GIC_TEST_ACTIVE(irq + i, mask)) {
-+            if (GIC_DIST_TEST_ACTIVE(irq + i, mask)) {
-                 res |=3D (1 << i);
-             }
-         }
-@@ -726,7 +732,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr o=
-ffset, MemTxAttrs attrs)
-         irq =3D (offset - 0x400) + GIC_BASE_IRQ;
-         if (irq >=3D s->num_irq)
-             goto bad_reg;
--        res =3D gic_get_priority(s, cpu, irq, attrs);
-+        res =3D gic_dist_get_priority(s, cpu, irq, attrs);
-     } else if (offset < 0xc00) {
-         /* Interrupt CPU Target.  */
-         if (s->num_cpu =3D=3D 1 && s->revision !=3D REV_11MPCORE) {
-@@ -740,7 +746,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr o=
-ffset, MemTxAttrs attrs)
-             if (irq >=3D 29 && irq <=3D 31) {
-                 res =3D cm;
-             } else {
--                res =3D GIC_TARGET(irq);
-+                res =3D GIC_DIST_TARGET(irq);
-             }
-         }
-     } else if (offset < 0xf00) {
-@@ -751,14 +757,16 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr=
- offset, MemTxAttrs attrs)
-         res =3D 0;
-         for (i =3D 0; i < 4; i++) {
-             if (s->security_extn && !attrs.secure &&
--                !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
-=20
--            if (GIC_TEST_MODEL(irq + i))
-+            if (GIC_DIST_TEST_MODEL(irq + i)) {
-                 res |=3D (1 << (i * 2));
--            if (GIC_TEST_EDGE_TRIGGER(irq + i))
-+            }
-+            if (GIC_DIST_TEST_EDGE_TRIGGER(irq + i)) {
-                 res |=3D (2 << (i * 2));
-+            }
-         }
-     } else if (offset < 0xf10) {
-         goto bad_reg;
-@@ -776,7 +784,7 @@ static uint32_t gic_dist_readb(void *opaque, hwaddr o=
-ffset, MemTxAttrs attrs)
-         }
-=20
-         if (s->security_extn && !attrs.secure &&
--            !GIC_TEST_GROUP(irq, 1 << cpu)) {
-+            !GIC_DIST_TEST_GROUP(irq, 1 << cpu)) {
-             res =3D 0; /* Ignore Non-secure access of Group0 IRQ */
-         } else {
-             res =3D s->sgi_pending[irq][cpu];
-@@ -872,10 +880,10 @@ static void gic_dist_writeb(void *opaque, hwaddr of=
+ static void gic_dist_writeb(void *opaque, hwaddr offset,
+@@ -1324,6 +1331,8 @@ static void gic_dist_writel(void *opaque, hwaddr of=
 fset,
-                     int cm =3D (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_C=
-PU_MASK;
-                     if (value & (1 << i)) {
-                         /* Group1 (Non-secure) */
--                        GIC_SET_GROUP(irq + i, cm);
-+                        GIC_DIST_SET_GROUP(irq + i, cm);
-                     } else {
-                         /* Group0 (Secure) */
--                        GIC_CLEAR_GROUP(irq + i, cm);
-+                        GIC_DIST_CLEAR_GROUP(irq + i, cm);
-                     }
-                 }
-             }
-@@ -893,26 +901,26 @@ static void gic_dist_writeb(void *opaque, hwaddr of=
-fset,
-=20
-         for (i =3D 0; i < 8; i++) {
-             if (value & (1 << i)) {
--                int mask =3D
--                    (irq < GIC_INTERNAL) ? (1 << cpu) : GIC_TARGET(irq +=
- i);
-+                int mask =3D (irq < GIC_INTERNAL) ? (1 << cpu)
-+                                                : GIC_DIST_TARGET(irq + =
-i);
-                 int cm =3D (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_M=
-ASK;
-=20
-                 if (s->security_extn && !attrs.secure &&
--                    !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                    !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                     continue; /* Ignore Non-secure access of Group0 IRQ =
-*/
-                 }
-=20
--                if (!GIC_TEST_ENABLED(irq + i, cm)) {
-+                if (!GIC_DIST_TEST_ENABLED(irq + i, cm)) {
-                     DPRINTF("Enabled IRQ %d\n", irq + i);
-                     trace_gic_enable_irq(irq + i);
-                 }
--                GIC_SET_ENABLED(irq + i, cm);
-+                GIC_DIST_SET_ENABLED(irq + i, cm);
-                 /* If a raised level triggered IRQ enabled then mark
-                    is as pending.  */
--                if (GIC_TEST_LEVEL(irq + i, mask)
--                        && !GIC_TEST_EDGE_TRIGGER(irq + i)) {
-+                if (GIC_DIST_TEST_LEVEL(irq + i, mask)
-+                        && !GIC_DIST_TEST_EDGE_TRIGGER(irq + i)) {
-                     DPRINTF("Set %d pending mask %x\n", irq + i, mask);
--                    GIC_SET_PENDING(irq + i, mask);
-+                    GIC_DIST_SET_PENDING(irq + i, mask);
-                 }
-             }
-         }
-@@ -930,15 +938,15 @@ static void gic_dist_writeb(void *opaque, hwaddr of=
-fset,
-                 int cm =3D (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_M=
-ASK;
-=20
-                 if (s->security_extn && !attrs.secure &&
--                    !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                    !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                     continue; /* Ignore Non-secure access of Group0 IRQ =
-*/
-                 }
-=20
--                if (GIC_TEST_ENABLED(irq + i, cm)) {
-+                if (GIC_DIST_TEST_ENABLED(irq + i, cm)) {
-                     DPRINTF("Disabled IRQ %d\n", irq + i);
-                     trace_gic_disable_irq(irq + i);
-                 }
--                GIC_CLEAR_ENABLED(irq + i, cm);
-+                GIC_DIST_CLEAR_ENABLED(irq + i, cm);
-             }
-         }
-     } else if (offset < 0x280) {
-@@ -953,11 +961,11 @@ static void gic_dist_writeb(void *opaque, hwaddr of=
-fset,
-         for (i =3D 0; i < 8; i++) {
-             if (value & (1 << i)) {
-                 if (s->security_extn && !attrs.secure &&
--                    !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                    !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                     continue; /* Ignore Non-secure access of Group0 IRQ =
-*/
-                 }
-=20
--                GIC_SET_PENDING(irq + i, GIC_TARGET(irq + i));
-+                GIC_DIST_SET_PENDING(irq + i, GIC_DIST_TARGET(irq + i));
-             }
-         }
-     } else if (offset < 0x300) {
-@@ -971,7 +979,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offs=
-et,
-=20
-         for (i =3D 0; i < 8; i++) {
-             if (s->security_extn && !attrs.secure &&
--                !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
-=20
-@@ -979,7 +987,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offs=
-et,
-                for per-CPU interrupts.  It's unclear whether this is the
-                corect behavior.  */
-             if (value & (1 << i)) {
--                GIC_CLEAR_PENDING(irq + i, ALL_CPU_MASK);
-+                GIC_DIST_CLEAR_PENDING(irq + i, ALL_CPU_MASK);
-             }
-         }
-     } else if (offset < 0x400) {
-@@ -990,7 +998,7 @@ static void gic_dist_writeb(void *opaque, hwaddr offs=
-et,
-         irq =3D (offset - 0x400) + GIC_BASE_IRQ;
-         if (irq >=3D s->num_irq)
-             goto bad_reg;
--        gic_set_priority(s, cpu, irq, value, attrs);
-+        gic_dist_set_priority(s, cpu, irq, value, attrs);
-     } else if (offset < 0xc00) {
-         /* Interrupt CPU Target. RAZ/WI on uniprocessor GICs, with the
-          * annoying exception of the 11MPCore's GIC.
-@@ -1016,21 +1024,21 @@ static void gic_dist_writeb(void *opaque, hwaddr =
-offset,
-             value |=3D 0xaa;
-         for (i =3D 0; i < 4; i++) {
-             if (s->security_extn && !attrs.secure &&
--                !GIC_TEST_GROUP(irq + i, 1 << cpu)) {
-+                !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                 continue; /* Ignore Non-secure access of Group0 IRQ */
-             }
-=20
-             if (s->revision =3D=3D REV_11MPCORE) {
-                 if (value & (1 << (i * 2))) {
--                    GIC_SET_MODEL(irq + i);
-+                    GIC_DIST_SET_MODEL(irq + i);
-                 } else {
--                    GIC_CLEAR_MODEL(irq + i);
-+                    GIC_DIST_CLEAR_MODEL(irq + i);
-                 }
-             }
-             if (value & (2 << (i * 2))) {
--                GIC_SET_EDGE_TRIGGER(irq + i);
-+                GIC_DIST_SET_EDGE_TRIGGER(irq + i);
-             } else {
--                GIC_CLEAR_EDGE_TRIGGER(irq + i);
-+                GIC_DIST_CLEAR_EDGE_TRIGGER(irq + i);
-             }
-         }
-     } else if (offset < 0xf10) {
-@@ -1044,10 +1052,10 @@ static void gic_dist_writeb(void *opaque, hwaddr =
-offset,
-         irq =3D (offset - 0xf10);
-=20
-         if (!s->security_extn || attrs.secure ||
--            GIC_TEST_GROUP(irq, 1 << cpu)) {
-+            GIC_DIST_TEST_GROUP(irq, 1 << cpu)) {
-             s->sgi_pending[irq][cpu] &=3D ~value;
-             if (s->sgi_pending[irq][cpu] =3D=3D 0) {
--                GIC_CLEAR_PENDING(irq, 1 << cpu);
-+                GIC_DIST_CLEAR_PENDING(irq, 1 << cpu);
-             }
-         }
-     } else if (offset < 0xf30) {
-@@ -1058,8 +1066,8 @@ static void gic_dist_writeb(void *opaque, hwaddr of=
-fset,
-         irq =3D (offset - 0xf20);
-=20
-         if (!s->security_extn || attrs.secure ||
--            GIC_TEST_GROUP(irq, 1 << cpu)) {
--            GIC_SET_PENDING(irq, 1 << cpu);
-+            GIC_DIST_TEST_GROUP(irq, 1 << cpu)) {
-+            GIC_DIST_SET_PENDING(irq, 1 << cpu);
-             s->sgi_pending[irq][cpu] |=3D value;
-         }
-     } else {
-@@ -1106,7 +1114,7 @@ static void gic_dist_writel(void *opaque, hwaddr of=
-fset,
-             mask =3D ALL_CPU_MASK;
-             break;
-         }
--        GIC_SET_PENDING(irq, mask);
-+        GIC_DIST_SET_PENDING(irq, mask);
-         target_cpu =3D ctz32(mask);
-         while (target_cpu < GIC_NCPU) {
-             s->sgi_pending[irq][target_cpu] |=3D (1 << cpu);
-diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-index aee50a20e0..295ee9cc5e 100644
---- a/hw/intc/arm_gic_common.c
-+++ b/hw/intc/arm_gic_common.c
-@@ -204,8 +204,8 @@ static void arm_gic_common_reset(DeviceState *dev)
-         }
-     }
-     for (i =3D 0; i < GIC_NR_SGIS; i++) {
--        GIC_SET_ENABLED(i, ALL_CPU_MASK);
--        GIC_SET_EDGE_TRIGGER(i);
-+        GIC_DIST_SET_ENABLED(i, ALL_CPU_MASK);
-+        GIC_DIST_SET_EDGE_TRIGGER(i);
-     }
-=20
-     for (i =3D 0; i < ARRAY_SIZE(s->priority2); i++) {
-@@ -222,7 +222,7 @@ static void arm_gic_common_reset(DeviceState *dev)
-     }
-     if (s->security_extn && s->irq_reset_nonsecure) {
-         for (i =3D 0; i < GIC_MAXIRQ; i++) {
--            GIC_SET_GROUP(i, ALL_CPU_MASK);
-+            GIC_DIST_SET_GROUP(i, ALL_CPU_MASK);
-         }
-     }
-=20
-diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-index 204369d0e2..799136732a 100644
---- a/hw/intc/arm_gic_kvm.c
-+++ b/hw/intc/arm_gic_kvm.c
-@@ -140,10 +140,10 @@ static void translate_group(GICState *s, int irq, i=
-nt cpu,
-     int cm =3D (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
-=20
-     if (to_kernel) {
--        *field =3D GIC_TEST_GROUP(irq, cm);
-+        *field =3D GIC_DIST_TEST_GROUP(irq, cm);
-     } else {
-         if (*field & 1) {
--            GIC_SET_GROUP(irq, cm);
-+            GIC_DIST_SET_GROUP(irq, cm);
-         }
-     }
- }
-@@ -154,10 +154,10 @@ static void translate_enabled(GICState *s, int irq,=
- int cpu,
-     int cm =3D (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
-=20
-     if (to_kernel) {
--        *field =3D GIC_TEST_ENABLED(irq, cm);
-+        *field =3D GIC_DIST_TEST_ENABLED(irq, cm);
-     } else {
-         if (*field & 1) {
--            GIC_SET_ENABLED(irq, cm);
-+            GIC_DIST_SET_ENABLED(irq, cm);
-         }
-     }
- }
-@@ -171,7 +171,7 @@ static void translate_pending(GICState *s, int irq, i=
-nt cpu,
-         *field =3D gic_test_pending(s, irq, cm);
-     } else {
-         if (*field & 1) {
--            GIC_SET_PENDING(irq, cm);
-+            GIC_DIST_SET_PENDING(irq, cm);
-             /* TODO: Capture is level-line is held high in the kernel */
-         }
-     }
-@@ -183,10 +183,10 @@ static void translate_active(GICState *s, int irq, =
-int cpu,
-     int cm =3D (irq < GIC_INTERNAL) ? (1 << cpu) : ALL_CPU_MASK;
-=20
-     if (to_kernel) {
--        *field =3D GIC_TEST_ACTIVE(irq, cm);
-+        *field =3D GIC_DIST_TEST_ACTIVE(irq, cm);
-     } else {
-         if (*field & 1) {
--            GIC_SET_ACTIVE(irq, cm);
-+            GIC_DIST_SET_ACTIVE(irq, cm);
-         }
-     }
- }
-@@ -195,10 +195,10 @@ static void translate_trigger(GICState *s, int irq,=
- int cpu,
-                               uint32_t *field, bool to_kernel)
+ static MemTxResult gic_dist_write(void *opaque, hwaddr offset, uint64_t =
+data,
+                                   unsigned size, MemTxAttrs attrs)
  {
-     if (to_kernel) {
--        *field =3D (GIC_TEST_EDGE_TRIGGER(irq)) ? 0x2 : 0x0;
-+        *field =3D (GIC_DIST_TEST_EDGE_TRIGGER(irq)) ? 0x2 : 0x0;
-     } else {
-         if (*field & 0x2) {
--            GIC_SET_EDGE_TRIGGER(irq);
-+            GIC_DIST_SET_EDGE_TRIGGER(irq);
-         }
++    trace_gic_dist_write(offset, size, data);
++
+     switch (size) {
+     case 1:
+         gic_dist_writeb(opaque, offset, data, attrs);
+@@ -1480,12 +1489,18 @@ static MemTxResult gic_cpu_read(GICState *s, int =
+cpu, int offset,
+         *data =3D 0;
+         break;
      }
++
++    trace_gic_cpu_read(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
++                       gic_get_vcpu_real_id(cpu), offset, *data);
+     return MEMTX_OK;
  }
-@@ -207,9 +207,10 @@ static void translate_priority(GICState *s, int irq,=
- int cpu,
-                                uint32_t *field, bool to_kernel)
+=20
+ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+                                  uint32_t value, MemTxAttrs attrs)
  {
-     if (to_kernel) {
--        *field =3D GIC_GET_PRIORITY(irq, cpu) & 0xff;
-+        *field =3D GIC_DIST_GET_PRIORITY(irq, cpu) & 0xff;
-     } else {
--        gic_set_priority(s, cpu, irq, *field & 0xff, MEMTXATTRS_UNSPECIF=
-IED);
-+        gic_dist_set_priority(s, cpu, irq,
-+                              *field & 0xff, MEMTXATTRS_UNSPECIFIED);
++    trace_gic_cpu_write(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
++                        gic_get_vcpu_real_id(cpu), offset, value);
++
+     switch (offset) {
+     case 0x00: /* Control */
+         gic_set_cpu_control(s, cpu, value, attrs);
+@@ -1698,6 +1713,7 @@ static void gic_set_lr_entry(GICState *s, int cpu, =
+int lr_num, uint32_t entry)
      }
+=20
+     s->h_lr[lr_num][cpu] =3D entry;
++    trace_gic_lr_entry(cpu, lr_num, entry);
+     is_free =3D gic_lr_update(s, lr_num, cpu);
+=20
+     if (!is_free) {
+@@ -1768,6 +1784,7 @@ static MemTxResult gic_hyp_read(void *opaque, hwadd=
+r addr, uint64_t *data,
+         return MEMTX_OK;
+     }
+=20
++    trace_gic_hyp_read(addr, *data);
+     return MEMTX_OK;
  }
 =20
-diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
-index 7fe87b13de..6f8d242904 100644
---- a/hw/intc/gic_internal.h
-+++ b/hw/intc/gic_internal.h
-@@ -27,30 +27,31 @@
+@@ -1777,6 +1794,8 @@ static MemTxResult gic_hyp_write(void *opaque, hwad=
+dr addr, uint64_t value,
+     GICState *s =3D ARM_GIC(opaque);
+     int cpu =3D gic_get_current_cpu(s);
 =20
- #define GIC_BASE_IRQ 0
++    trace_gic_hyp_write(addr, value);
++
+     switch (addr) {
+     case 0x0: /* Hypervisor Control */
+         s->h_hcr[cpu] =3D value & 0xf80000ff;
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 55e8c2570c..16d02fa8cf 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -92,9 +92,17 @@ aspeed_vic_write(uint64_t offset, unsigned size, uint3=
+2_t data) "To 0x%" PRIx64
+ gic_enable_irq(int irq) "irq %d enabled"
+ gic_disable_irq(int irq) "irq %d disabled"
+ gic_set_irq(int irq, int level, int cpumask, int target) "irq %d level %=
+d cpumask 0x%x target 0x%x"
+-gic_update_bestirq(int cpu, int irq, int prio, int priority_mask, int ru=
+nning_priority) "cpu %d irq %d priority %d cpu priority mask %d cpu runni=
+ng priority %d"
++gic_update_bestirq(const char *s, int cpu, int irq, int prio, int priori=
+ty_mask, int running_priority) "%s %d irq %d priority %d cpu priority mas=
+k %d cpu running priority %d"
+ gic_update_set_irq(int cpu, const char *name, int level) "cpu[%d]: %s =3D=
+ %d"
+-gic_acknowledge_irq(int cpu, int irq) "cpu %d acknowledged irq %d"
++gic_acknowledge_irq(const char *s, int cpu, int irq) "%s %d acknowledged=
+ irq %d"
++gic_cpu_write(const char *s, int cpu, int addr, uint32_t val) "%s %d ifa=
+ce write at 0x%08x 0x%08" PRIx32
++gic_cpu_read(const char *s, int cpu, int addr, uint32_t val) "%s %d ifac=
+e write at 0x%08x: 0x%08" PRIx32
++gic_hyp_read(int addr, uint32_t val) "hyp read at 0x%08x: 0x%08" PRIx32
++gic_hyp_write(int addr, uint32_t val) "hyp write at 0x%08x: 0x%08" PRIx3=
+2
++gic_dist_read(int addr, unsigned int size, uint32_t val) "dist read at 0=
+x%08x size %u: 0x%08" PRIx32
++gic_dist_write(int addr, unsigned int size, uint32_t val) "dist write at=
+ 0x%08x size %u: 0x%08" PRIx32
++gic_lr_entry(int cpu, int entry, uint32_t val) "cpu %d: new lr entry %d:=
+ 0x%08" PRIx32
++gic_update_maintenance_irq(int cpu, int val) "cpu %d: maintenance =3D %d=
+"
 =20
--#define GIC_SET_ENABLED(irq, cm) s->irq_state[irq].enabled |=3D (cm)
--#define GIC_CLEAR_ENABLED(irq, cm) s->irq_state[irq].enabled &=3D ~(cm)
--#define GIC_TEST_ENABLED(irq, cm) ((s->irq_state[irq].enabled & (cm)) !=3D=
- 0)
--#define GIC_SET_PENDING(irq, cm) s->irq_state[irq].pending |=3D (cm)
--#define GIC_CLEAR_PENDING(irq, cm) s->irq_state[irq].pending &=3D ~(cm)
--#define GIC_SET_ACTIVE(irq, cm) s->irq_state[irq].active |=3D (cm)
--#define GIC_CLEAR_ACTIVE(irq, cm) s->irq_state[irq].active &=3D ~(cm)
--#define GIC_TEST_ACTIVE(irq, cm) ((s->irq_state[irq].active & (cm)) !=3D=
- 0)
--#define GIC_SET_MODEL(irq) s->irq_state[irq].model =3D true
--#define GIC_CLEAR_MODEL(irq) s->irq_state[irq].model =3D false
--#define GIC_TEST_MODEL(irq) s->irq_state[irq].model
--#define GIC_SET_LEVEL(irq, cm) s->irq_state[irq].level |=3D (cm)
--#define GIC_CLEAR_LEVEL(irq, cm) s->irq_state[irq].level &=3D ~(cm)
--#define GIC_TEST_LEVEL(irq, cm) ((s->irq_state[irq].level & (cm)) !=3D 0=
-)
--#define GIC_SET_EDGE_TRIGGER(irq) s->irq_state[irq].edge_trigger =3D tru=
-e
--#define GIC_CLEAR_EDGE_TRIGGER(irq) s->irq_state[irq].edge_trigger =3D f=
-alse
--#define GIC_TEST_EDGE_TRIGGER(irq) (s->irq_state[irq].edge_trigger)
--#define GIC_GET_PRIORITY(irq, cpu) (((irq) < GIC_INTERNAL) ?            =
-\
-+#define GIC_DIST_SET_ENABLED(irq, cm) (s->irq_state[irq].enabled |=3D (c=
-m))
-+#define GIC_DIST_CLEAR_ENABLED(irq, cm) (s->irq_state[irq].enabled &=3D =
-~(cm))
-+#define GIC_DIST_TEST_ENABLED(irq, cm) ((s->irq_state[irq].enabled & (cm=
-)) !=3D 0)
-+#define GIC_DIST_SET_PENDING(irq, cm) (s->irq_state[irq].pending |=3D (c=
-m))
-+#define GIC_DIST_CLEAR_PENDING(irq, cm) (s->irq_state[irq].pending &=3D =
-~(cm))
-+#define GIC_DIST_SET_ACTIVE(irq, cm) (s->irq_state[irq].active |=3D (cm)=
-)
-+#define GIC_DIST_CLEAR_ACTIVE(irq, cm) (s->irq_state[irq].active &=3D ~(=
-cm))
-+#define GIC_DIST_TEST_ACTIVE(irq, cm) ((s->irq_state[irq].active & (cm))=
- !=3D 0)
-+#define GIC_DIST_SET_MODEL(irq) (s->irq_state[irq].model =3D true)
-+#define GIC_DIST_CLEAR_MODEL(irq) (s->irq_state[irq].model =3D false)
-+#define GIC_DIST_TEST_MODEL(irq) (s->irq_state[irq].model)
-+#define GIC_DIST_SET_LEVEL(irq, cm) (s->irq_state[irq].level |=3D (cm))
-+#define GIC_DIST_CLEAR_LEVEL(irq, cm) (s->irq_state[irq].level &=3D ~(cm=
-))
-+#define GIC_DIST_TEST_LEVEL(irq, cm) ((s->irq_state[irq].level & (cm)) !=
-=3D 0)
-+#define GIC_DIST_SET_EDGE_TRIGGER(irq) (s->irq_state[irq].edge_trigger =3D=
- true)
-+#define GIC_DIST_CLEAR_EDGE_TRIGGER(irq) \
-+    (s->irq_state[irq].edge_trigger =3D false)
-+#define GIC_DIST_TEST_EDGE_TRIGGER(irq) (s->irq_state[irq].edge_trigger)
-+#define GIC_DIST_GET_PRIORITY(irq, cpu) (((irq) < GIC_INTERNAL) ?       =
-     \
-                                     s->priority1[irq][cpu] :            =
-\
-                                     s->priority2[(irq) - GIC_INTERNAL])
--#define GIC_TARGET(irq) s->irq_target[irq]
--#define GIC_CLEAR_GROUP(irq, cm) (s->irq_state[irq].group &=3D ~(cm))
--#define GIC_SET_GROUP(irq, cm) (s->irq_state[irq].group |=3D (cm))
--#define GIC_TEST_GROUP(irq, cm) ((s->irq_state[irq].group & (cm)) !=3D 0=
-)
-+#define GIC_DIST_TARGET(irq) (s->irq_target[irq])
-+#define GIC_DIST_CLEAR_GROUP(irq, cm) (s->irq_state[irq].group &=3D ~(cm=
-))
-+#define GIC_DIST_SET_GROUP(irq, cm) (s->irq_state[irq].group |=3D (cm))
-+#define GIC_DIST_TEST_GROUP(irq, cm) ((s->irq_state[irq].group & (cm)) !=
-=3D 0)
-=20
- #define GICD_CTLR_EN_GRP0 (1U << 0)
- #define GICD_CTLR_EN_GRP1 (1U << 1)
-@@ -79,8 +80,8 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, MemT=
-xAttrs attrs);
- void gic_complete_irq(GICState *s, int cpu, int irq, MemTxAttrs attrs);
- void gic_update(GICState *s);
- void gic_init_irqs_and_distributor(GICState *s);
--void gic_set_priority(GICState *s, int cpu, int irq, uint8_t val,
--                      MemTxAttrs attrs);
-+void gic_dist_set_priority(GICState *s, int cpu, int irq, uint8_t val,
-+                           MemTxAttrs attrs);
-=20
- static inline bool gic_test_pending(GICState *s, int irq, int cm)
- {
-@@ -93,7 +94,7 @@ static inline bool gic_test_pending(GICState *s, int ir=
-q, int cm)
-          * GICD_ISPENDR to set the state pending.
-          */
-         return (s->irq_state[irq].pending & cm) ||
--            (!GIC_TEST_EDGE_TRIGGER(irq) && GIC_TEST_LEVEL(irq, cm));
-+            (!GIC_DIST_TEST_EDGE_TRIGGER(irq) && GIC_DIST_TEST_LEVEL(irq=
-, cm));
-     }
- }
-=20
+ # hw/intc/arm_gicv3_cpuif.c
+ gicv3_icc_pmr_read(uint32_t cpu, uint64_t val) "GICv3 ICC_PMR read cpu 0=
+x%x value 0x%" PRIx64
 --=20
 2.17.1
 

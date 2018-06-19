@@ -1,112 +1,94 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5416096wrq;
-        Tue, 19 Jun 2018 10:44:37 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJMojdECH8ipJ2zcvnWfnBgwvwpmnmOTWaOKwTE7CoLQa63uLhrRcKZ3VrwZpmUPfrrT5EV
-X-Received: by 2002:ac8:17eb:: with SMTP id r40-v6mr15902808qtk.75.1529430277324;
-        Tue, 19 Jun 2018 10:44:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529430277; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5483466wrq;
+        Tue, 19 Jun 2018 11:53:49 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJgxo7PWQZJ2euVfQLS/ERp5qfpsznPJhd7N3rjfwYUCrtiU59+VFx/iUCp/HkFN0sWDbL3
+X-Received: by 2002:aed:3e87:: with SMTP id n7-v6mr16620205qtf.189.1529434429181;
+        Tue, 19 Jun 2018 11:53:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529434429; cv=none;
         d=google.com; s=arc-20160816;
-        b=wC/+zasIxgvpdjVwW/sElJzc5kQ3wKQFm2bS9CIi4v9uhvflCAYsXbin9oygIh8msO
-         b8ZXKt8+I0DttFOoRtkbhc4ruGMKlx1LsSkrcQZ+DmTdW/ClNq439ToxkiGoplwkUV5K
-         NaRJnfBEqssaOP/OOwpURp6CX+U4XnJBOFTQ2uoxKIfp5C7s61saNjqyowR8pQDd0QMm
-         JPGnntBVLy5REH95uK/V6zLPH1DxVBuxHDOeQvCBwk1w1qGV0faI049e6kRxv1SWpkSk
-         UkymsxY1ssyVXNJniBgXaKFCSwz4aIPcESy3SWTcOkUW+RC0MywPYZ7cQO9tw6WGfWxo
-         2B9g==
+        b=JISEDOyLfIIp9Yqdb+qpkPwuKbZFikUZG4nKR24rQ1z39dqkhbR/ZXgVkHJaVfBbOx
+         CTTyK2pR+NrrUxh+cQlZ9eRi/oVFQ/Y5KJHtiNJopQhPKes5oxwlCHV76dgeOkirmQ7W
+         HaiogfS3yRB+TdlBD9lcQu7K+MGtucUPLz4maX665oml+cTDYk+j6/JJ636XPVBlVs4J
+         jW6DE1Cpct+oURN9pY3Eq3r+2v/4RLeHeRFhr6UiCjFv4SGy547MLAAxb6FJeS3lTq0D
+         Zb5tWYHMQh8Vpfp5DxvimgnnU71cBUpofocuEHPjaIKcvmwmDFgE02YIxg5S8Coczdd3
+         BkLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=bOXjzZGs2a/R3FDR1WwveAo7fZyADIglrCFlbO1Q4Y8=;
-        b=FP2azBhv/WZgHaiaEmLwE0eEPTgIS7AIqcUZEXpKTbnZVmyuvg4TZN3M1rvhK01bv8
-         eUR6uJHmAKqSinzY+J1HNmEpoVSxtbwzCz1auPmS6UpQO4HKT1gGbglJoGQE24akERfz
-         nGMS12y9PcswKETQyB8idNqIXQ+W6KuyzSknG48J9JMhYGJPvUWxcF1kqnUY2bSfv1Io
-         YZhfXR+1aIKGhSU2Um+Yj4qLVq7ohYZqeuct2EQ+keIxvbDsClNhAl3WOGwyrh/YLYxU
-         6ScUgPW2rRfEm0KQJUH4PoiCemOa/nDEB/oNjur2EA2BZRIiMbyWT1OedTY81TPMUsTO
-         vETw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=R7de7UGpB2OPWx5iylhc6Mv7uXeZbM9PCXp84YEb+2U=;
+        b=XmZGC4Dq/Ow3q/1OTF8sOZy7+7HCJJ0rCtFjMkGPtHRVjFwXbCtdfmPkrxzsmOXZzT
+         RXZsxYRVGS/uyhFvN5GTFUAn52RXNAbWe6OnuYuGkE2YpT8ixJJBxCs+AdG0v+KNVV6n
+         1+9cgrvqQySq3caEds+QpXaKCCU3VeWhCHs7GI8jiw6afVrjZWS89y0IGYaZfAECVKqA
+         r+kxcNjmUCliRpn8IFXOj4tGzktn2KUU6nW6HJmigL+E8YojBCwSqHTLUMpcE3zld5kc
+         bUxagxYPuvPW3++bB+e99Ba96cS1h5hm1Z6osXu9yyYCnQaSDi3Kb2Kjm57XxAqVSyKe
+         zdTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@roeck-us.net header.s=default header.b=CQ3Z1p6g;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v15-v6si253106qth.399.2018.06.19.10.44.37
+        by mx.google.com with ESMTPS id h41-v6si429813qtf.277.2018.06.19.11.53.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Jun 2018 10:44:37 -0700 (PDT)
+        Tue, 19 Jun 2018 11:53:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@roeck-us.net header.s=default header.b=CQ3Z1p6g;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44189 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44475 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fVKgG-0004GH-UQ
-	for alex.bennee@linaro.org; Tue, 19 Jun 2018 13:44:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50096)
+	id 1fVLlE-0003Jt-La
+	for alex.bennee@linaro.org; Tue, 19 Jun 2018 14:53:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58124)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1fVKfW-0003ud-SL
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 13:43:52 -0400
+	(envelope-from <lersek@redhat.com>) id 1fVLl2-0003H3-S2
+	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 14:53:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1fVKfT-0000eB-KD
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 13:43:50 -0400
-Received: from bh-25.webhostbox.net ([208.91.199.152]:35678)
+	(envelope-from <lersek@redhat.com>) id 1fVLl1-0004OM-Gw
+	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 14:53:36 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54692 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <linux@roeck-us.net>) id 1fVKfT-0000dW-C2
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 13:43:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=roeck-us.net; s=default;
-	h=In-Reply-To:Content-Type:MIME-Version:References
-	:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
-	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=bOXjzZGs2a/R3FDR1WwveAo7fZyADIglrCFlbO1Q4Y8=;
-	b=CQ3Z1p6g7rzCkodYGvhKhxQfKv
-	FViOt7qx/YpF2hkNZ7pLkwFX6kTHFaDwPWNJexoyC/p1sO+e+wFiIQZjD/qpNfaXbbfvXtGb8ejTu
-	NowwrFE9Q2U2s5RiZR/9MBHvURCuYZLuJFeXvi9n0YifYGlTyR6WX9a5gUSnKLE4nnlt4BS9jl7SH
-	iK5Sl+ODxWpV9SexHMp8MYZ2NevKqwLbQ8maAYLMxoA9u+fGmWAFbBWtQQ32xqHQIP6xu7JqsrDGO
-	IPWL1ua4lxQQoDJ5/D8lES06+Qy37oh5K0DWmOfUv65OP1Eb+PnPjBGNisqs8BaAcDwu+n7pplnLQ
-	gAP6ge/g==;
-Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
-	([108.223.40.66]:45380 helo=localhost)
-	by bh-25.webhostbox.net with esmtpa (Exim 4.89)
-	(envelope-from <linux@roeck-us.net>)
-	id 1fVKfR-005U8R-Ri; Tue, 19 Jun 2018 17:43:46 +0000
-Date: Tue, 19 Jun 2018 10:43:45 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180619174345.GC16846@roeck-us.net>
-References: <20180614215422.GA29690@roeck-us.net>
-	<CAFEAcA-t9G=HAPH2325rduAKFNUEXNE-Jp_m9fMhfdTCbtm28g@mail.gmail.com>
-	<4ff384cf-14ad-ef33-5532-4f8dbb8d0ff6@roeck-us.net>
-	<CAFEAcA9+nW7nZb0ZaN__xBGGV9WFcBJ0_q=EYTA_DM6=bVfhNg@mail.gmail.com>
-	<20180615181331.GA29302@roeck-us.net>
-	<CAFEAcA_ua-FMw_SCYExPNPyFoY_jvokns7R=weoODbfVuP82+g@mail.gmail.com>
-	<5ebbb70a-79dd-b3b0-6d87-10a1942af1f4@roeck-us.net>
-	<CAFEAcA-Jiu-93wqtWuCQqJsQ47g=Zeb4J7y+eAZBsv1ct_QxYw@mail.gmail.com>
-	<c7910c30-6b71-a376-e945-e30a6f954c0e@roeck-us.net>
-	<CAFEAcA_8c6awzGcik2Hzs8zrHpkqGG=tCt_ykjVnSSa1fkkpzQ@mail.gmail.com>
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1fVLl1-0004Mz-96; Tue, 19 Jun 2018 14:53:35 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 10C84400B45C;
+	Tue, 19 Jun 2018 18:53:34 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-221.rdu2.redhat.com
+	[10.10.120.221])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BEB6C2156880;
+	Tue, 19 Jun 2018 18:53:31 +0000 (UTC)
+To: Eric Auger <eric.auger@redhat.com>, ard.biesheuvel@linaro.org
+References: <1529072910-16156-1-git-send-email-eric.auger@redhat.com>
+	<1529072910-16156-6-git-send-email-eric.auger@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <a4204e03-735d-28b9-7cc5-d51fd727b91f@redhat.com>
+Date: Tue, 19 Jun 2018 20:53:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_8c6awzGcik2Hzs8zrHpkqGG=tCt_ykjVnSSa1fkkpzQ@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Authenticated_sender: guenter@roeck-us.net
-X-OutGoing-Spam-Status: No, score=-1.0
-X-AntiAbuse: This header was added to track abuse,
-	please include it with any abuse report
-X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
-X-AntiAbuse: Original Domain - nongnu.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - roeck-us.net
-X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
-	guenter@roeck-us.net
-X-Authenticated-Sender: bh-25.webhostbox.net: guenter@roeck-us.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 208.91.199.152
-Subject: Re: [Qemu-arm] Booting Cortex-M3 Linux kernels in qemu
+In-Reply-To: <1529072910-16156-6-git-send-email-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 19 Jun 2018 18:53:34 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 19 Jun 2018 18:53:34 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'lersek@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 05/11] hw/arm/virt: GICv3 DT
+ node with one or two redistributor regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,53 +100,149 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, marc.zyngier@arm.com,
+	qemu-devel@nongnu.org, christoffer.dall@arm.com,
+	qemu-arm@nongnu.org, zhaoshenglong@huawei.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tM6D9Bvjmppt
+X-TUID: /+uTO/OTwSHj
 
-On Tue, Jun 19, 2018 at 01:41:06PM +0100, Peter Maydell wrote:
-> On 16 June 2018 at 19:53, Guenter Roeck <linux@roeck-us.net> wrote:
-> > On 06/16/2018 11:08 AM, Peter Maydell wrote:
-> >> My general view is that where QEMU takes the path of "do what
-> >> the hardware does", that is straightforward and doesn't lead
-> >> us into future annoying deadends or misdesigns. Where QEMU
-> >> does things that are not what the hardware does, that is where
-> >> it's easy to go wrong. Real MPS2 hardware doesn't magically
-> >> load Linux kernels and DTBs (it boots whatever the firmware
-> >> image is).
-> >
-> > ... while mine is that I have no trouble running Linux test images
-> > in qemu when it supports options such as -dtb and -initrd, while it
-> > is a pain to run and maintain if I have to have a secondary loader
-> > that isn't part of qemu. Guess we just have different perspectives.
-> 
-> Well, somebody has to write and maintain the code that deals
-> with the mismatch between how hardware starts up and how
-> the kernel wants to be started. The question seems to me
-> to be whether that should be in QEMU, in the kernel or a
-> standalone bit of code... I don't think the overall effort
-> required changes much. (Personally I'd put the code in the
-> kernel, since it's about a dozen lines of asm and a linker
-> script or two.)
-> 
-> You need a boot-wrapper bit of code to run the kernel on the
-> real hardware too. I haven't actually tested it but
-> I think it ought to work in QEMU too (and if it doesn't
-> that's a bug I'd like to fix):
->  https://github.com/ARM-software/bootwrapper/tree/cortex-m-linux
-> 
+Hi Eric,
 
-Thanks a lot for the link; that gave me enough information to find
-a solution that is not too invasive and works for me.
+sorry about the late followup. I have one question (mainly for Ard):
 
-I need to be able to run a single kernel image against multiple
-devicetree files and root file systems. This doesn't work with
-above solution since it bundles everything together (or, rather,
-it would break my workflow). However, it was easy enough to tweak the
-boot wrapper and load it using "-bios". I added support for "-bios",
-"-initrd", and "-dtb" to mps2_common_init(). That change is simple
-enough to carry in my private qemu branch.
+On 06/15/18 16:28, Eric Auger wrote:
+> This patch allows the creation of a GICv3 node with 1 or 2
+> redistributor regions depending on the number of smu_cpus.
+> The second redistributor region is located just after the
+> existing RAM region, at 256GB and contains up to up to 512 vcpus.
+>
+> Please refer to kernel documentation for further node details:
+> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>
+> ---
+> v1 (virt3.0) -> v2
+> - Added Drew's R-b
+>
+> v2 -> v3:
+> - VIRT_GIC_REDIST2 is now 64MB large, ie. 512 redistributor capacity
+> - virt_gicv3_redist_region_count does not test kvm_irqchip_in_kernel
+>   anymore
+> ---
+>  hw/arm/virt.c         | 29 ++++++++++++++++++++++++-----
+>  include/hw/arm/virt.h | 14 ++++++++++++++
+>  2 files changed, 38 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 2885d18..d9f72eb 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -148,6 +148,8 @@ static const MemMapEntry a15memmap[] = {
+>      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+>      [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
+> +    /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+> +    [VIRT_GIC_REDIST2] =        { 0x4000000000ULL, 0x4000000 },
+>      /* Second PCIe window, 512GB wide at the 512GB boundary */
+>      [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
+>  };
+> @@ -401,13 +403,30 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+>      qemu_fdt_setprop_cell(vms->fdt, "/intc", "#size-cells", 0x2);
+>      qemu_fdt_setprop(vms->fdt, "/intc", "ranges", NULL, 0);
+>      if (vms->gic_version == 3) {
+> +        int nb_redist_regions = virt_gicv3_redist_region_count(vms);
+> +
+>          qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
+>                                  "arm,gic-v3");
+> -        qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
+> -                                     2, vms->memmap[VIRT_GIC_DIST].base,
+> -                                     2, vms->memmap[VIRT_GIC_DIST].size,
+> -                                     2, vms->memmap[VIRT_GIC_REDIST].base,
+> -                                     2, vms->memmap[VIRT_GIC_REDIST].size);
+> +
+> +        qemu_fdt_setprop_cell(vms->fdt, "/intc",
+> +                              "#redistributor-regions", nb_redist_regions);
+> +
+> +        if (nb_redist_regions == 1) {
+> +            qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
+> +                                         2, vms->memmap[VIRT_GIC_DIST].base,
+> +                                         2, vms->memmap[VIRT_GIC_DIST].size,
+> +                                         2, vms->memmap[VIRT_GIC_REDIST].base,
+> +                                         2, vms->memmap[VIRT_GIC_REDIST].size);
+> +        } else {
+> +            qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
+> +                                         2, vms->memmap[VIRT_GIC_DIST].base,
+> +                                         2, vms->memmap[VIRT_GIC_DIST].size,
+> +                                         2, vms->memmap[VIRT_GIC_REDIST].base,
+> +                                         2, vms->memmap[VIRT_GIC_REDIST].size,
+> +                                         2, vms->memmap[VIRT_GIC_REDIST2].base,
+> +                                         2, vms->memmap[VIRT_GIC_REDIST2].size);
+> +        }
+> +
+>          if (vms->virt) {
+>              qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
+>                                     GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
 
-Thanks,
-Guenter
+In edk2, we have the following code in
+"ArmVirtPkg/Library/ArmVirtGicArchLib/ArmVirtGicArchLib.c":
+
+  switch (GicRevision) {
+
+  case 3:
+    //
+    // The GIC v3 DT binding describes a series of at least 3 physical (base
+    // addresses, size) pairs: the distributor interface (GICD), at least one
+    // redistributor region (GICR) containing dedicated redistributor
+    // interfaces for all individual CPUs, and the CPU interface (GICC).
+    // Under virtualization, we assume that the first redistributor region
+    // listed covers the boot CPU. Also, our GICv3 driver only supports the
+    // system register CPU interface, so we can safely ignore the MMIO version
+    // which is listed after the sequence of redistributor interfaces.
+    // This means we are only interested in the first two memory regions
+    // supplied, and ignore everything else.
+    //
+    ASSERT (RegSize >= 32);
+
+    // RegProp[0..1] == { GICD base, GICD size }
+    DistBase = SwapBytes64 (Reg[0]);
+    ASSERT (DistBase < MAX_UINTN);
+
+    // RegProp[2..3] == { GICR base, GICR size }
+    RedistBase = SwapBytes64 (Reg[2]);
+    ASSERT (RedistBase < MAX_UINTN);
+
+    PcdStatus = PcdSet64S (PcdGicDistributorBase, DistBase);
+    ASSERT_RETURN_ERROR (PcdStatus);
+    PcdStatus = PcdSet64S (PcdGicRedistributorsBase, RedistBase);
+    ASSERT_RETURN_ERROR (PcdStatus);
+
+    DEBUG ((EFI_D_INFO, "Found GIC v3 (re)distributor @ 0x%Lx (0x%Lx)\n",
+      DistBase, RedistBase));
+
+(I vaguely recall that I may have quoted this already, but I'm not
+sure.)
+
+My understanding is that this will continue working -- as long as we
+don't want to boot up multiple CPUs in UEFI, anyway.
+
+I think we have no plans for adding (well, for implementing)
+EFI_PEI_MP_SERVICES_PPI or EFI_MP_SERVICES_PROTOCOL for ARM -- do you
+agree, Ard?
+
+(That PPI and PROTOCOL are totally unnecessary unless it is
+architecturally required to configure various CPU features on each
+(V)CPU *individually*, before leaving the firmware. Unfortunately, x86
+has some CPU warts like that, and said PPI and PROTOCOL implementations
+for x86 have given us a good dose of grief over time. I very much hope
+the PPI and the PROTOCOL will never be needed on ARM!)
+
+
+Eric, I reckon you tested this patch with the ArmVirtQemu firmware too,
+covering both branches of the code, and with multiple VCPUs in both
+cases. Can you please confirm?
+
+Thanks
+Laszlo

@@ -1,162 +1,115 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2447334wrq;
-        Sat, 23 Jun 2018 21:10:48 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcA15JXYYsN4g6HZ3aW2ab2rrtqNKoWsYx1ZRIySAJqAPeitHcnOun6BkJ4eC9wCdWrPT/B
-X-Received: by 2002:a0c:bd0e:: with SMTP id m14-v6mr6736115qvg.164.1529813448640;
-        Sat, 23 Jun 2018 21:10:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529813448; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4835788wrq;
+        Tue, 19 Jun 2018 00:59:58 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLv4tG9AaV1C9eVIcEy9Y7g2UoHSThxDH2kvany6+X0L3htsnC4DI8ir6pA1MpimXYp3BMZ
+X-Received: by 2002:a37:9486:: with SMTP id w128-v6mr13115225qkd.119.1529395198763;
+        Tue, 19 Jun 2018 00:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529395198; cv=none;
         d=google.com; s=arc-20160816;
-        b=g6gfeb+TlW0jIJHjp4lGyAQyIdrkwfAN0swbe3jNzphdKjI1io9gwZetNhBE1f1I3V
-         fMtgF2DCZqnsq4h6UG2DV+O2YYAClFZ5g1nvLr0B0UEyy56113lquaJFP1nlMndJXn6G
-         meGjvxMDJ3jZUa7AsEY4qssBo7IL5qV2gDgCfB1lAt8uFdgtRthJ8YL9Ae2L4qGvAqwK
-         TtgO7PpCOAuNuJcbsnJBkho8tEVGjskAVLBfMXnCA3YPtIl5kzLSreaXhKU8ez0rpi2c
-         G5YwDECqBkLPqWP3jghUDyh5LrFKTBSgyVqz6aqAmN0FEtyZdXJcSFbY0lG5UnTq0+Au
-         DgXw==
+        b=TnxxvbtwNDrWU4iLJcaODOdzu/qDN0B/E7bHds6TC4gWnEZxecff0F3rnQeXEbeixw
+         FQpp4ZzBRn7E5YuTFka2BPsxVKfnpf81xz6e+Dtxqew8GQ4fQ1gjXZoAmmw/1wGQAe9f
+         Wavd18Tm1xtkrm7ZKJfpvuv5+e6ZWj9lGrn5MF94PVZQEPfXzAb4Ygx/8jxroVQ8w7bn
+         h6A4e/lu6Cip/Gs669QCLp/ae7JfDTltxAWwdBwMZDWJBMvVgpDJl+9fsGrjgi2o1v/w
+         cFr+r+nvjldkKa/1DpU0ltVhZO4F91ASARFRq11l7JVQi2m+p2gchfvdfQEdiW+okPOQ
+         v9OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=hK9QEGg5qg6ckCjOXMcitnFzKOYf48jdhPmYlKTayek=;
-        b=vuRDCCpuyAun6qmMW/rmUv0rxkBsnAfitxaGHuhJ8XmVAY+3WcaMCPGPUEWCgGsMyf
-         ZuHroVmkpYKNJEFx6wovoI4f8KasZ1feoGWEFnJtEIIUi2L8THyHFkgB00feGMCVl62k
-         jjI6jX2SPqpWlBd5k5PM0MH/tK1f1ltALDzxpI7GiogIFSsr45QcbrGlZ3vOFZlVjJ7I
-         JyvQV2WhDRZJdxrErjb7hZku/58M+JrlQoCHI/PhKfF9KJa43Yx0oA0NKLysdHHmjkjK
-         UI1rKz7zh1Kam+V6dowAJbn8z4rLZcO2vlqgyhL3T9VPAO1l8TCk/4qei282RXF5Qjpq
-         4Fvg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from:arc-authentication-results;
+        bh=8r/Vhn+cl37F0xFyfCZIZ9h0BMq7WUrX94v/MW2thyk=;
+        b=NuhMcISHCgKbgLAm1dKrnK4ruSQlCZdlIAlwEs0+NJU00vfXlf1jRtK5IY6OWvQ3Sb
+         pKwqnBUvWC5xndGXJAVE0YUMhE6R0aEXTQXGhvfHNiFDq+z2BpluqkiWq0w0gyY4Ofz0
+         oto/EbOoUng3qlV0Z38r0QSETOxGJWbBAhiX6FF/0tXRN7KGmiTFu+HbJ7AxqUcrcvex
+         vTA/vpOVDtV2EqTlth7SNACkgoUDbw47fin5yBEmxFGbekNqKtOt/VGz/Egzj1jca1or
+         aTbiaRA8b4YbJw+YlweWHt24RRFojzqqugFtbBM9OMAdEmSUw+9y7oq5KxHw/G2oCI8w
+         mGjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=siNHgui5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h47-v6si7874436qvi.184.2018.06.23.21.10.48
+        by mx.google.com with ESMTPS id g26-v6si1574808qvb.82.2018.06.19.00.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 23 Jun 2018 21:10:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 19 Jun 2018 00:59:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=siNHgui5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40513 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39894 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWwMS-0007AS-4P
-	for alex.bennee@linaro.org; Sun, 24 Jun 2018 00:10:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42426)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fVBYU-00088H-BO
+	for alex.bennee@linaro.org; Tue, 19 Jun 2018 03:59:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50435)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIe-00044o-77
-	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 00:06:53 -0400
+	(envelope-from <zhengxiang9@huawei.com>) id 1fVBY3-00086q-GJ
+	for qemu-devel@nongnu.org; Tue, 19 Jun 2018 03:59:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIZ-0003y6-8M
-	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 00:06:52 -0400
-Received: from mail-qk0-x22a.google.com ([2607:f8b0:400d:c09::22a]:33964)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIU-0003r6-5S; Sun, 24 Jun 2018 00:06:42 -0400
-Received: by mail-qk0-x22a.google.com with SMTP id b66-v6so348540qkj.1;
-	Sat, 23 Jun 2018 21:06:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=hK9QEGg5qg6ckCjOXMcitnFzKOYf48jdhPmYlKTayek=;
-	b=siNHgui5LVnwZh9ZfjiZyOGzJLyoVhHIr7vRxeVzBM8N742Ng6lqDepB5iml6pDI1k
-	+7NN/yDWOFU927YGy4u923Vv56MgVJnLxAaOxrip8Rck6V9z1uevf4WdGqULFgqIFAbe
-	lykaVitHxaPC40cS/O7wZkwTkjmoF+N3RSvxUMIcoI1Q9O7hRGyL8igBfiJpeSCZOGUz
-	c8iszncxMHscwMCWFtDpM6qkn/T23cxGX2d4phV6RrjarFX6fdhyGOYwIPnqkH/Kp06D
-	l0jFbEvU19HI8yv7hhHyA0S7IyFjdB6TylOXq7B/PkCyAtzmivYV0S2CGXgqWzXLzMd4
-	5Cuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=hK9QEGg5qg6ckCjOXMcitnFzKOYf48jdhPmYlKTayek=;
-	b=jbtH6lYGPrhUAm9hlInqUyY+mDiPjARAKGAeftw6WMv4TUr4MMIZYRJMN2VKqF68Bu
-	2CRyMIk0Z2wMJhR2sk7jm3u0sXpZRusd5XZzlH8JhJpb70ruOZPh9kA+xv73yNzPPchA
-	WHdAGrenK02Pf3kaXDQsWj8oINtkg6/lsY4Mi8v+acCd6hM5Y8ziAOMsbswT1VX9Vw0I
-	mBinajcJwFSm71p+AGntZNGDwu+7uyU54ftlrgGuujRrLY7OjiFxmgAiI81T0JSoDiae
-	/hLQfwGI3n3QCp+XIpMfpnhOKDqifKvFeIZRi+Beebz0yUvQH812tdWx0Y4hyQlT2fCb
-	IUBg==
-X-Gm-Message-State: APt69E0qmUUR2L4WoWpQFkWIDs9BbptWGhx7bn+Yfmn7EmwUG1o4AkLm
-	ec72uEaSnx/X4OHRtUcJa3k=
-X-Received: by 2002:a37:a3d2:: with SMTP id
-	m201-v6mr6460403qke.121.1529813201676; 
-	Sat, 23 Jun 2018 21:06:41 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	d14-v6sm7145313qtn.90.2018.06.23.21.06.39
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 23 Jun 2018 21:06:41 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>
-Date: Sun, 24 Jun 2018 01:05:59 -0300
-Message-Id: <20180624040609.17572-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20180624040609.17572-1-f4bug@amsat.org>
-References: <20180624040609.17572-1-f4bug@amsat.org>
+	(envelope-from <zhengxiang9@huawei.com>) id 1fVBY2-0008Jv-QG
+	for qemu-devel@nongnu.org; Tue, 19 Jun 2018 03:59:31 -0400
+Received: from [45.249.212.35] (port=43844 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <zhengxiang9@huawei.com>)
+	id 1fVBXw-0008GH-Gp; Tue, 19 Jun 2018 03:59:24 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 73B90CEECB070;
+	Tue, 19 Jun 2018 15:59:15 +0800 (CST)
+Received: from HGHY1z004218071.china.huawei.com (10.177.29.32) by
+	DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server
+	id 14.3.382.0; Tue, 19 Jun 2018 15:59:09 +0800
+From: Zheng Xiang <zhengxiang9@huawei.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Date: Tue, 19 Jun 2018 15:58:21 +0800
+Message-ID: <20180619075821.9884-1-zhengxiang9@huawei.com>
+X-Mailer: git-send-email 2.15.1.windows.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22a
-Subject: [Qemu-arm] [PATCH v3 06/16] hw/sd/omap_mmc: Use
- qemu_log_mask(UNIMP) instead of printf
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-Originating-IP: [10.177.29.32]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.35
+Subject: [Qemu-devel] [PATCH] target-arm: fix a segmentation fault due to
+ illegal memory access
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XJNVgKagrYqt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Zheng Xiang <xiang.zheng@linaro.org>,
+	zhaoshenglong@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ws72uLOe/Y39
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+From: Zheng Xiang <xiang.zheng@linaro.org>
+
+The elements of kvm_devices_head list are freed in kvm_arm_machine_init_done(),
+but we still access these illegal memory in kvm_arm_devlistener_del().
+
+This will cause segment fault when booting guest with MALLOC_PERTURB_=1.
+
+Signed-off-by: Zheng Xiang <xiang.zheng@linaro.org>
 ---
- hw/sd/omap_mmc.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ target/arm/kvm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index 5b47cadf11..aa2a816f76 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -17,6 +17,7 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "hw/hw.h"
- #include "hw/arm/omap.h"
- #include "hw/sd/sd.h"
-@@ -449,10 +450,14 @@ static void omap_mmc_write(void *opaque, hwaddr offset,
-         s->enable = (value >> 11) & 1;
-         s->be = (value >> 10) & 1;
-         s->clkdiv = (value >> 0) & (s->rev >= 2 ? 0x3ff : 0xff);
--        if (s->mode != 0)
--            printf("SD mode %i unimplemented!\n", s->mode);
--        if (s->be != 0)
--            printf("SD FIFO byte sex unimplemented!\n");
-+        if (s->mode != 0) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "omap_mmc_wr: mode #%i unimplemented\n", s->mode);
-+        }
-+        if (s->be != 0) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "omap_mmc_wr: Big Endian not implemented\n");
-+        }
-         if (s->dw != 0 && s->lines < 4)
-             printf("4-bit SD bus enabled\n");
-         if (!s->enable)
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 98f5006..5bf41e1 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -256,6 +256,7 @@ static void kvm_arm_machine_init_done(Notifier *notifier, void *data)
+             kvm_arm_set_device_addr(kd);
+         }
+         memory_region_unref(kd->mr);
++        QSLIST_REMOVE_HEAD(&kvm_devices_head, entries);
+         g_free(kd);
+     }
+     memory_listener_unregister(&devlistener);
 -- 
-2.18.0
+1.8.3.1
+
 

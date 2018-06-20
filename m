@@ -1,198 +1,278 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3804344wrq;
-        Mon, 25 Jun 2018 06:20:19 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKG6ZpEVHMKMkS4LFxroYxN9SPFzBOxjnCnDQG3R0CgCBCKtUFeQ4HbopXdCKxT798g99RP
-X-Received: by 2002:a37:4946:: with SMTP id w67-v6mr10976365qka.394.1529932819726;
-        Mon, 25 Jun 2018 06:20:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529932819; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp425093wrq;
+        Wed, 20 Jun 2018 00:10:54 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIpjinigwgoNeywn9puI0RygbHeMEt97zE9OkbkuKV2Hgwl09OFgT4MtLZs7pdn6lxQ1LGE
+X-Received: by 2002:a0c:d0eb:: with SMTP id b40-v6mr17095612qvh.236.1529478654148;
+        Wed, 20 Jun 2018 00:10:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529478654; cv=none;
         d=google.com; s=arc-20160816;
-        b=o16FE4gLuqybr89F6RmwVPGEcZWOWAdj8lBrDdHPhgn9xOI6TKz2gvcyXQTIH7ItA7
-         +dUJurABnq7fJwrpgO3+R/aEoYbHD55eaS2W8sE87XyO+dx4VSZBZETZB6cX9iWcOTZZ
-         uaPimWvLgLzWurjpvnyN0r45GnQxxni7KPdcGTFIPL//Kw6SbEwmeKKMF5q0mUpT53C+
-         KpoiugnWNZfxaPu+F4t7D8xspgmMbi76soy5WA6uOYncz/qz/+wHRp/FnbTXgdOqmCOV
-         fzT9y10o7WeX5Sc54/bZrQAJZB8IVEkSBs9aSYHkbkzlDWbSMI76Flf2AbEVFPoy094+
-         zMsw==
+        b=mFbpsqKlC2pnDz66LXle8YAD3sLbtx9q4dDFNRv1hg6wGK69yG281UM17OjP99ysm4
+         eVMxzwRE2JLMPg3qQ3cYcZH4E+JPGIw4Uys2EojLDKk04LhToQ9iNXSa0hIwAdFPC6lE
+         3bQbncBfIaVo6bWztCAgDUEISRjvow4kWu6Ty5FmaU/vCw72Nwe8NgKO+b2l4Xd5MYez
+         fF6d6waimv+r1akfwXJ0uvlX9o7u9X8EDZ3vhCHy8kW5UnXWV9sVWR4niQNnFByueqXs
+         IweAAuXcaeVBWEljee//oHB6RBIkPewIFku0nol+if/n4A8nZoJS9fF2a/r10TCDmeXY
+         IsKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
-        b=CF/HZoDSGLzn7/g89ovF8auoJnkH9fFYMXvI3JUvb0iJv1gHZP2BtRb2gNP1nrO1rS
-         x/c54vUxzg/doRJftgo1yQeOHDQ5K5Xfs++p0jfOnQeFmLx1ec7Hz4/OVPj9X9Y8GqMw
-         kaMuutdpY45rwX6GnOXm1Xk1rfQaYsVKRUypxBZb1PtCh8HuYvP9NKD3y1toZezWECCC
-         K84niubkfM8EbvHQ1Vc7hfPl2mmGdU0LVWXef4DQ8Duzjq5pKwSDbkqqYPhqOodCd1eF
-         eZIgtCmCRCcasiVlETRWSNWr9RafrVmT3Ek0JVbo/rallE0Gygz66++YQKGI1apwKhBh
-         Bc/A==
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=yUWsEokq7QQdhpclUWkuajkTXAeqgJ1nkz8ddxUSrY0=;
+        b=SiLfKsmWN6JTjymB1pV0T9qGdTvTUKaP0eODZ06zp+zIc7lBVASDM/dxau4iCYlvIN
+         eEak6lRfQuTh1YRJti3YrKSAbz84BgX9RMQXjDhI4nmuzgJC/PS5PBPgDbmsRYFQ5r60
+         rZCVtSX5Wis4ZBk8EKyFOt6GunwlNSt0OvPZ5plyMPAy1wu4Qkky76AvOBsPUv2zK35l
+         Y+zspcfx+96A//Df+OZIBGkxov1DQVvm8wQCYKSNMjozF68V6Pgr5in3jgVmpeXRtXF6
+         P4ignozh+6zW4V57VII0n4TbPV4YGTd6qLYavPXRodlf2cNA4WA1nSWK35vavgmi4ppH
+         Viiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SEma1cNv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o10-v6si1035842qto.347.2018.06.25.06.20.19
+        by mx.google.com with ESMTPS id 32-v6si1810653qvn.112.2018.06.20.00.10.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 25 Jun 2018 06:20:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 20 Jun 2018 00:10:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SEma1cNv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46859 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46365 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXRPn-0005FA-0B
-	for alex.bennee@linaro.org; Mon, 25 Jun 2018 09:20:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57266)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fVXGX-0000UM-Kv
+	for alex.bennee@linaro.org; Wed, 20 Jun 2018 03:10:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47371)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQyp-00008J-Md
-	for qemu-devel@nongnu.org; Mon, 25 Jun 2018 08:52:28 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fVXGN-0000UB-5H
+	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 03:10:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQyo-0002go-LN
-	for qemu-devel@nongnu.org; Mon, 25 Jun 2018 08:52:27 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:38728)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQyc-0002ds-Iy; Mon, 25 Jun 2018 08:52:14 -0400
-Received: by mail-qk0-x244.google.com with SMTP id y4-v6so7381453qka.5;
-	Mon, 25 Jun 2018 05:52:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
-	b=SEma1cNvwoIpiVfmMzPm65aId82pj4vCJZQARzAxHqoE2Uv6s+b+QoCn8TDo3Bazpz
-	eZlajNUqcDj92Ndo8ndyFvWEZqtuBb4msOI1EqGDlaoKGCJ2hddJJOxhhWY8Iy+SF4WS
-	0Oy/w/r+dqeuf1QJMU7j/74+SW7Vhb773/xOlN6cioBp6RpMjjRWCKwTY9sGn2VkgrRm
-	NASHt1wCKhZwcR5Rh9c0ToLeDBS2FxFpiHDAXus7G/sVzJr4a+AHiqO101HZsCJ5v7zp
-	PtEI8P2Q6pSyKl8nUaTuJ9CjA13Ug87/CJ7iChBxtIlCzVVYJyNspByZ16YwlkPUQZpa
-	WKxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
-	b=HRqcP7LjnfMb88rV7EI+lg7LbhhGFo1p0s/R1tm86KsA2En62orYhRBUD3nFhX52zn
-	io02/RgFFtsk26bJTYgralCl0lf7bfPtbUtQ/dmDioQbJ/i9uy0ZcV9+4Qr1ENj6wJDg
-	vRIrjHIWLNenXTuQqdWfsJmNvWOrZdhFAEzq4/48Yll74y67hKNJ7GKTeePoCx8sVDzb
-	OM4D3wXx2TLfehdLiWzn0uCcISFsrKDND5j3d77gSxh8wQ81iOH5NJQGGZUuMUO9jE9d
-	JTcC2k+dtUh4ljnQIZU5FahwxLwhCnzutn0S5STdCdRk3yqmL8G9zkPdfiMqb7S0FAyQ
-	jjnw==
-X-Gm-Message-State: APt69E0MN35Q/q8hf//FMgU9r6vQ5PyYrVUqQL6ie/KpRx+/RTVfBIBq
-	FwsQrjMwLzIaVliBj110pZephy1nmQM=
-X-Received: by 2002:a37:8fc3:: with SMTP id
-	r186-v6mr10467566qkd.27.1529931133839; 
-	Mon, 25 Jun 2018 05:52:13 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	f9-v6sm9254645qkb.43.2018.06.25.05.52.11
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 25 Jun 2018 05:52:13 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>
-References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-8-f4bug@amsat.org>
-	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
-	<8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
-	<0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <57e04a05-442c-bd4a-2daa-1b690540c061@amsat.org>
-Date: Mon, 25 Jun 2018 09:52:10 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <eric.auger@redhat.com>) id 1fVXGL-0002lE-Ja
+	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 03:10:42 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52820 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fVXGL-0002kE-Cd; Wed, 20 Jun 2018 03:10:41 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7D1BE805A531;
+	Wed, 20 Jun 2018 07:10:39 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-117-106.ams2.redhat.com
+	[10.36.117.106])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DE56C7C20;
+	Wed, 20 Jun 2018 07:10:35 +0000 (UTC)
+To: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+	Laszlo Ersek <lersek@redhat.com>
+References: <1529072910-16156-1-git-send-email-eric.auger@redhat.com>
+	<1529072910-16156-6-git-send-email-eric.auger@redhat.com>
+	<a4204e03-735d-28b9-7cc5-d51fd727b91f@redhat.com>
+	<CAKv+Gu9wYtzo86-hqVDX=79cKix_BfVGCh5Wn08ApRZ5Km_Vjg@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <51b9c330-ed48-e75c-0c8a-ffa8e1794e95@redhat.com>
+Date: Wed, 20 Jun 2018 09:10:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
+In-Reply-To: <CAKv+Gu9wYtzo86-hqVDX=79cKix_BfVGCh5Wn08ApRZ5Km_Vjg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-devel] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
- qemu_log_mask(UNIMP) instead of fprintf
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 20 Jun 2018 07:10:39 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 20 Jun 2018 07:10:39 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 05/11] hw/arm/virt: GICv3 DT
+ node with one or two redistributor regions
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SSkb0fjFW9lQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Marc Zyngier <marc.zyngier@arm.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Christoffer Dall <christoffer.dall@arm.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Shannon Zhao <zhaoshenglong@huawei.com>,
+	Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nPPnDG8RPAnW
 
-On 06/25/2018 03:08 AM, Thomas Huth wrote:
-> On 22.06.2018 22:10, Philippe Mathieu-Daudé wrote:
->> On 06/22/2018 04:38 PM, Thomas Huth wrote:
->>> On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
->>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>> ---
->>>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
->>>>  1 file changed, 12 insertions(+), 8 deletions(-)
->>>>
->>>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
->>>> index 26e3e5ebf6..690876e43e 100644
->>>> --- a/hw/i2c/omap_i2c.c
->>>> +++ b/hw/i2c/omap_i2c.c
->>>> @@ -17,6 +17,7 @@
->>>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
->>>>   */
->>>>  #include "qemu/osdep.h"
->>>> +#include "qemu/log.h"
->>>>  #include "hw/hw.h"
->>>>  #include "hw/i2c/i2c.h"
->>>>  #include "hw/arm/omap.h"
->>>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
->>>>              }
->>>>              break;
->>>>          }
->>>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
->>>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
->>>> -                            __func__);
->>>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+Hi Laszlo,
+
+On 06/19/2018 09:02 PM, Ard Biesheuvel wrote:
+> On 19 June 2018 at 20:53, Laszlo Ersek <lersek@redhat.com> wrote:
+>> Hi Eric,
+>>
+>> sorry about the late followup. I have one question (mainly for Ard):
+>>
+>> On 06/15/18 16:28, Eric Auger wrote:
+>>> This patch allows the creation of a GICv3 node with 1 or 2
+>>> redistributor regions depending on the number of smu_cpus.
+>>> The second redistributor region is located just after the
+>>> existing RAM region, at 256GB and contains up to up to 512 vcpus.
 >>>
->>> Please keep the white spaces before the comment if you don't change
->>> anything else.
+>>> Please refer to kernel documentation for further node details:
+>>> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>>>
+>>> ---
+>>> v1 (virt3.0) -> v2
+>>> - Added Drew's R-b
+>>>
+>>> v2 -> v3:
+>>> - VIRT_GIC_REDIST2 is now 64MB large, ie. 512 redistributor capacity
+>>> - virt_gicv3_redist_region_count does not test kvm_irqchip_in_kernel
+>>>   anymore
+>>> ---
+>>>  hw/arm/virt.c         | 29 ++++++++++++++++++++++++-----
+>>>  include/hw/arm/virt.h | 14 ++++++++++++++
+>>>  2 files changed, 38 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 2885d18..d9f72eb 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -148,6 +148,8 @@ static const MemMapEntry a15memmap[] = {
+>>>      [VIRT_PCIE_PIO] =           { 0x3eff0000, 0x00010000 },
+>>>      [VIRT_PCIE_ECAM] =          { 0x3f000000, 0x01000000 },
+>>>      [VIRT_MEM] =                { 0x40000000, RAMLIMIT_BYTES },
+>>> +    /* Additional 64 MB redist region (can contain up to 512 redistributors) */
+>>> +    [VIRT_GIC_REDIST2] =        { 0x4000000000ULL, 0x4000000 },
+>>>      /* Second PCIe window, 512GB wide at the 512GB boundary */
+>>>      [VIRT_PCIE_MMIO_HIGH] =   { 0x8000000000ULL, 0x8000000000ULL },
+>>>  };
+>>> @@ -401,13 +403,30 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+>>>      qemu_fdt_setprop_cell(vms->fdt, "/intc", "#size-cells", 0x2);
+>>>      qemu_fdt_setprop(vms->fdt, "/intc", "ranges", NULL, 0);
+>>>      if (vms->gic_version == 3) {
+>>> +        int nb_redist_regions = virt_gicv3_redist_region_count(vms);
+>>> +
+>>>          qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
+>>>                                  "arm,gic-v3");
+>>> -        qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
+>>> -                                     2, vms->memmap[VIRT_GIC_DIST].base,
+>>> -                                     2, vms->memmap[VIRT_GIC_DIST].size,
+>>> -                                     2, vms->memmap[VIRT_GIC_REDIST].base,
+>>> -                                     2, vms->memmap[VIRT_GIC_REDIST].size);
+>>> +
+>>> +        qemu_fdt_setprop_cell(vms->fdt, "/intc",
+>>> +                              "#redistributor-regions", nb_redist_regions);
+>>> +
+>>> +        if (nb_redist_regions == 1) {
+>>> +            qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
+>>> +                                         2, vms->memmap[VIRT_GIC_DIST].base,
+>>> +                                         2, vms->memmap[VIRT_GIC_DIST].size,
+>>> +                                         2, vms->memmap[VIRT_GIC_REDIST].base,
+>>> +                                         2, vms->memmap[VIRT_GIC_REDIST].size);
+>>> +        } else {
+>>> +            qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
+>>> +                                         2, vms->memmap[VIRT_GIC_DIST].base,
+>>> +                                         2, vms->memmap[VIRT_GIC_DIST].size,
+>>> +                                         2, vms->memmap[VIRT_GIC_REDIST].base,
+>>> +                                         2, vms->memmap[VIRT_GIC_REDIST].size,
+>>> +                                         2, vms->memmap[VIRT_GIC_REDIST2].base,
+>>> +                                         2, vms->memmap[VIRT_GIC_REDIST2].size);
+>>> +        }
+>>> +
+>>>          if (vms->virt) {
+>>>              qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
+>>>                                     GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
 >>
->> This is a <tab> and checkpatch complains...
+>> In edk2, we have the following code in
+>> "ArmVirtPkg/Library/ArmVirtGicArchLib/ArmVirtGicArchLib.c":
 >>
->> I can use 4 spaces for this tab. I tried to align with other tab-aligned
->> comments I didn't modify, but the result is messier. Thus a simple space.
+>>   switch (GicRevision) {
+>>
+>>   case 3:
+>>     //
+>>     // The GIC v3 DT binding describes a series of at least 3 physical (base
+>>     // addresses, size) pairs: the distributor interface (GICD), at least one
+>>     // redistributor region (GICR) containing dedicated redistributor
+>>     // interfaces for all individual CPUs, and the CPU interface (GICC).
+>>     // Under virtualization, we assume that the first redistributor region
+>>     // listed covers the boot CPU. Also, our GICv3 driver only supports the
+>>     // system register CPU interface, so we can safely ignore the MMIO version
+>>     // which is listed after the sequence of redistributor interfaces.
+>>     // This means we are only interested in the first two memory regions
+>>     // supplied, and ignore everything else.
+>>     //
+>>     ASSERT (RegSize >= 32);
+>>
+>>     // RegProp[0..1] == { GICD base, GICD size }
+>>     DistBase = SwapBytes64 (Reg[0]);
+>>     ASSERT (DistBase < MAX_UINTN);
+>>
+>>     // RegProp[2..3] == { GICR base, GICR size }
+>>     RedistBase = SwapBytes64 (Reg[2]);
+>>     ASSERT (RedistBase < MAX_UINTN);
+>>
+>>     PcdStatus = PcdSet64S (PcdGicDistributorBase, DistBase);
+>>     ASSERT_RETURN_ERROR (PcdStatus);
+>>     PcdStatus = PcdSet64S (PcdGicRedistributorsBase, RedistBase);
+>>     ASSERT_RETURN_ERROR (PcdStatus);
+>>
+>>     DEBUG ((EFI_D_INFO, "Found GIC v3 (re)distributor @ 0x%Lx (0x%Lx)\n",
+>>       DistBase, RedistBase));
+>>
+>> (I vaguely recall that I may have quoted this already, but I'm not
+>> sure.)
+I don't remember you did ;-)
+>>
+>> My understanding is that this will continue working -- as long as we
+>> don't want to boot up multiple CPUs in UEFI, anyway.
+>>
+>> I think we have no plans for adding (well, for implementing)
+>> EFI_PEI_MP_SERVICES_PPI or EFI_MP_SERVICES_PROTOCOL for ARM -- do you
+>> agree, Ard?
+>>
 > 
-> Oh, sorry, I didn't notice that you've replaced a TAB here. I guess it's
-> ok then. But why does checkpatch complain if it is just in the context
-> of your modification? That's weird.
+> Yes I agree. Only the boot cpu should enter UEFI, and although there
+> are some remnants of multi core ARM stuff in the EDK2 tree, I would
+> prefer to get rid of that as soon as we can.
+> 
+>> (That PPI and PROTOCOL are totally unnecessary unless it is
+>> architecturally required to configure various CPU features on each
+>> (V)CPU *individually*, before leaving the firmware. Unfortunately, x86
+>> has some CPU warts like that, and said PPI and PROTOCOL implementations
+>> for x86 have given us a good dose of grief over time. I very much hope
+>> the PPI and the PROTOCOL will never be needed on ARM!)
+>>
+> 
+> That kind of configuration typically occurs in the secure firmware on
+> an ARM system, and not at all on a virtual machine.
+> 
+>>
+>> Eric, I reckon you tested this patch with the ArmVirtQemu firmware too,
+>> covering both branches of the code, and with multiple VCPUs in both
+>> cases. Can you please confirm?
+I tested the high ECAM part with both 32b and 64b FW. However the
+multiple redistributor region part only was tested with 64b FW. The
+reason is Moonshot which I used to test accelerated aarch32 guest has a
+GICv2 so I can't test the GICv3 redist part on it.
 
-The first 2 contexts (MST and XA) are fine, however checkpatch complains
-with the last one (ST_EN):
+However if my understanding is correct as the above check only is done
+on the 1st redist, which is located in the low redist region, this
+series shouldn't introduce any regression.
 
-ERROR: code indent should never use tabs
-#38: FILE: hw/i2c/omap_i2c.c:397:
-+        if (value & (1 << 15)) {^I^I^I^I^I/* ST_EN */$
+Thanks
 
-Since I replaced this one, I also did with the 2 previous.
-
-Now I realize I can _not_ add the brackets so I don't have to update the
-<tabs>:
-
-         if (value & (1 << 15))^I^I^I^I^I/* ST_EN */
--            fprintf(stderr, "%s: System Test not supported\n", __func__);
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: System Test not supported\n", __func__);
-         break;
-
-I think if it better to unify the code style when possible, but it is up
-to you, if you prefer I can resend with tabs and no brackets.
-
-Regards,
-
-Phil.
+Eric
+>>
+>> Thanks
+>> Laszlo

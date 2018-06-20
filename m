@@ -1,115 +1,136 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp731121wrq;
-        Fri, 29 Jun 2018 06:32:12 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpenRBdQrinaApTbjfvhGT7uoX82Amyubu1W8xsvixtnqB/rTU0eNhRiK7hbAuLNTVhyGlrs
-X-Received: by 2002:aed:36e7:: with SMTP id f94-v6mr13650371qtb.276.1530279132485;
-        Fri, 29 Jun 2018 06:32:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530279132; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1129388wrq;
+        Wed, 20 Jun 2018 12:22:44 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJbD1yWvNKB++haki78Ic0qc0S4se/mD/s8bvE31RkVKa2OueCwdSuP4wio/rJYfBsTbd/t
+X-Received: by 2002:aed:24fa:: with SMTP id u55-v6mr19338660qtc.400.1529522564787;
+        Wed, 20 Jun 2018 12:22:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529522564; cv=none;
         d=google.com; s=arc-20160816;
-        b=F9QheI9LL6Nuj0z7DOK4m4LMsNuEeHU9ymTDM+GV3jdMaYcJCGQ0J3vJjXQdIMetsh
-         nYNXxcpN3LeD89ICr8pWIBOTgSFRvT4k5y+TpiDnJ01hDGco8c7+NvWtGdSFdhNcoe8B
-         mGR8Keb880AAfjdRcRs684CjdQ/hMekMZ0HIwck8WdG6Ywj21JWeS2EL7jJWZhg0+Zir
-         pxRCahtk7MywIdK6HwtLzz35tP5sjhbiPvm2EzsNud7KLhPKdDlpOuDLj86vNyjGUBIL
-         Nm3VMziKpvoJYznxGbBtEMra7SodSWiMseSeS5RXsoxEcwKlOzFpe7qxR7wV5hiygNCW
-         Pg2g==
+        b=BzKIyKVL3UmPmUoylVocj2ubeECgwpEnqlc7wWoWSuCOltR7jHGcObxAzY6coY15Je
+         fiBX8B3apaVsGdKCBQhn8lnTP48OfsYkdatjBzEFE3K/5KLWXgNkYxS/EM/Uyy23XAWV
+         3XFm1Ry/bzTP/urhIB5iI9QgFH1uogUFOsmTigPTRMYdfReOCEwecMid9mzMDi43AYBL
+         /CIigpd4UxLFqUbpXTDlSHgGNIEwJh5XvVhCBQQoYKcYQ4Ch+S6R+7OCP+bEu9IqSo9G
+         E4zgqEc8CxAtXsb/65mtpPtmfmfvxZftaj+d/E9uTI67i1hHs2Qr6+LQF2ttLGmv0I+1
+         shfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:dkim-signature
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=qXtqN1QK+gN3aK2cM5ZdSStfdhsi6NAznL0VYa/c0xU=;
-        b=bnlqt94HK9Iqo3SuI138X3ccNivpeWKgLvBEgMKXU4lTuVO8XIt2YrFmd8x96E8mOS
-         CYICPr7eVzxeqz+SkOnBCcgqd7mKNXSbTth5Uyw+2bJ3bBgzmY9yfo+c1Uh38ehLF9cz
-         J7w/zPrxqYLrFoxSbJZ4njA0paT7/jZ94AxcsS4XYUD9FdgvoeBkr4rWFNvHVVif8tCN
-         sBDIdrwEXlmPi+nNCVnEt2HOzzgOaUZc9HAXv6HmLsrUd5Sc1O0C09NsbxWFJOoYmdj7
-         y0GRNJnHtIXib1Mi173IdOIcHcfhq+pBO+TLlMefXI57uIotlgHl5seR0ZdGo6/OYbWS
-         R4Nw==
+        bh=MCdB8ERgbmCJ+DA5vD0FVi5gDwPs6SgAwzaev614fwI=;
+        b=C0hHqxDyihOkt4Slo40B7GoLOGReNNZuUQDK9hegYmLO7zHStMyudq5VuibNgP8Muk
+         jleYbx4ztWMxGbIgcZgv070MhvSU8ltLHzSGysjdPMZfZychJUtyroXnCkimICInKkBd
+         rM8gAmea47pokpA67YSJ9VYRiQ/bBRFKjiO+ad4c/OfZw35zxPy5DS72P8pezLCnICfv
+         OwNekoc0FulkYADwU4hgP5VZhcQd3HtxgNxC4ub9UHABXQOGYXfVjhX7cI8rrYvv78dm
+         KbOEbl7/gmM6cwPH0puk+xMhLfGQrZK1jnwXQS9upAQIrYIXcxTRGNzXgXw+QzdgNEgo
+         5log==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="0K//EYf7";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CH84hPtv;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=zF8hNKUM;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E+kTVs5Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w1-v6si8806627qvf.185.2018.06.29.06.32.12
+        by mx.google.com with ESMTPS id u25-v6si3044923qtk.313.2018.06.20.12.22.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jun 2018 06:32:12 -0700 (PDT)
+        Wed, 20 Jun 2018 12:22:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="0K//EYf7";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CH84hPtv;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=zF8hNKUM;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E+kTVs5Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42154 helo=lists.gnu.org)
+Received: from localhost ([::1]:51438 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYtVT-0008WB-Rh
-	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:32:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37931)
+	id 1fVigm-0005R7-7t
+	for alex.bennee@linaro.org; Wed, 20 Jun 2018 15:22:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43438)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtUA-0007aK-74
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:53 -0400
+	(envelope-from <rth7680@gmail.com>) id 1fVigZ-0005PD-Fo
+	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 15:22:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtU3-0006tV-Oo
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:50 -0400
-Received: from greensocs.com ([193.104.36.180]:58616)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1fYtU3-0006mV-Db; Fri, 29 Jun 2018 09:30:43 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 101154434A8;
-	Fri, 29 Jun 2018 15:30:43 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279043;
-	bh=JXnfvnQvRli+fPXG5DPmVsRnNaeRyhVEbA5DGp3+TWo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=0K//EYf7T/ir8ZJE5ly38+aQmMGY+k3vf33cpWMXvAARb7ZNEx1LooWh6DMuHb0t8
-	sYHljrg4A30WDBRXBHtSgXMAbnEP5KbwqVVhl+vHWzB8x2zEPQmvCc51O7L/ous6IU
-	oFx3XtxUGan+giC0SIIoBm+exG1qcv2Pb1jhRroo=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=CH84hPtv;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=zF8hNKUM
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id abAPlla9AiuM; Fri, 29 Jun 2018 15:30:42 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id 0076C443495; Fri, 29 Jun 2018 15:30:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279042;
-	bh=JXnfvnQvRli+fPXG5DPmVsRnNaeRyhVEbA5DGp3+TWo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=CH84hPtvpTks3wWfsQX5pqP3JSCOidnjSqPXVUcq4z0kDwzXCvyIYS5wAB33R31Hm
-	jwbPwMUfOB4/2dcdx0En1/LFi8i3gHxUxCi4gH+tMGb/ejwP2xEp/A/LUkKx8yyHEF
-	1gahXvIXBpwwyapmWASBEfXZU7E5XTbOJkmBptn0=
-Received: from michell-laptop.hive.antfield.fr
-	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 953B84434BA;
-	Fri, 29 Jun 2018 15:30:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279041;
-	bh=JXnfvnQvRli+fPXG5DPmVsRnNaeRyhVEbA5DGp3+TWo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=zF8hNKUMVarzSQ30Am/o4h0DucBAzby8CFYSAO1XAjvCbajGWQmrvYUUeG6aMBLVp
-	2PTH6+3lMceouK2RljBwQNECpMC78cHFi0A8+uv/v0ywa6+HtxqYdvEXZqc6/KjT+Q
-	Vos3DvzbO0MDEqxFHdtLyejTjldIG0ppVDEeBnyk=
-From: Luc Michel <luc.michel@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 29 Jun 2018 15:29:52 +0200
-Message-Id: <20180629132954.24269-19-luc.michel@greensocs.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180629132954.24269-1-luc.michel@greensocs.com>
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
+	(envelope-from <rth7680@gmail.com>) id 1fVigY-0000Tz-G8
+	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 15:22:31 -0400
+Received: from mail-pg0-x243.google.com ([2607:f8b0:400e:c05::243]:44458)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1fVigT-0000R1-M4; Wed, 20 Jun 2018 15:22:25 -0400
+Received: by mail-pg0-x243.google.com with SMTP id g26-v6so252065pgn.11;
+	Wed, 20 Jun 2018 12:22:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=MCdB8ERgbmCJ+DA5vD0FVi5gDwPs6SgAwzaev614fwI=;
+	b=E+kTVs5YurrEs6BL+6l+aKGliy+H/ppxZeJDfkfpnkw7sqWCmdR/6DQXFjnA2cPBUE
+	lLAmoT6xFHID3exElILaqgi/6jz8N/4Px0m5JLXnWBbGI+04mBtmuwQItFSumn8ZIx1Y
+	mHPOcalRoh+1YVNY9mYJ0Hpmhai/uFmI0onQUkq27o7cNfFyenRzwgqPueCjVsq4UBGY
+	KRSUF61s8C4Ms0jCz+voKOM6jSuuGlJYGLcbCLxcjX9DhZlezRm/X/KklLsuyXt36xOt
+	D/GIEjmdxQYAWhKfuPLJ868MhWDp1pw4iB+7qA2blOJPcypI0snt97GBnCyp82EmXGKg
+	tOzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=MCdB8ERgbmCJ+DA5vD0FVi5gDwPs6SgAwzaev614fwI=;
+	b=p0e+ufaPd8KsK8TtdiCebLVDfrVdPom0keYfcPi7InpEJzOVSK4sDZhTG4QMZ35DWL
+	aWVTg0kJ1YGlZOE23CJjF8mul5RKh8iuMsm1mPu4Lzdymjd4ehOcfhH30oTjbHMK3crM
+	l5UGbf4RTAlfmtCtEj7rulmjiEtAly990DP+3ScqW4NVLwj3/bsmYeubrG+ugbcvk07S
+	lqNY30Y//b4T5W1lMI/5inXtliC2h4X3DJitwnikYZMCklMOrrUv6i9HIFoKFov5I2jk
+	kflmhlRBJ11Wgp29QNEcUDeWQNNFDrvCqpqeL0bfBtsqOva+9psbYgUZ1DRehaENjoGS
+	m2hg==
+X-Gm-Message-State: APt69E0+W6tSrkocuHqijVqZcSOm10FAyT9sKqtE3bQSRcMKVfS0EBZr
+	E7U8/kYeyRJ9ViYtkMIMPuM=
+X-Received: by 2002:a62:1747:: with SMTP id
+	68-v6mr23874918pfx.69.1529522544438; 
+	Wed, 20 Jun 2018 12:22:24 -0700 (PDT)
+Received: from cloudburst.twiddle.net (mta-98-147-121-51.hawaii.rr.com.
+	[98.147.121.51]) by smtp.googlemail.com with ESMTPSA id
+	f30-v6sm9957821pgn.76.2018.06.20.12.22.22
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 20 Jun 2018 12:22:23 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180620130619.11362-1-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
+	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
+	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
+	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+	VcROBqvtH3ecaIL9iw==
+Message-ID: <a5c5975a-0860-01d4-8ff9-b69fcc91dac8@twiddle.net>
+Date: Wed, 20 Jun 2018 09:22:20 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v3 18/20] intc/arm_gic: Improve traces
+In-Reply-To: <20180620130619.11362-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c05::243
+Subject: Re: [Qemu-arm] [PATCH 0/3] Support M-profile MPU regions smaller
+ than 1K
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,194 +142,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7M/ecdfbC2G/
+X-TUID: dDJQyaGtH6Sh
 
-Add some traces to the ARM GIC to catch register accesses (distributor,
-(v)cpu interface and virtual interface), and to take into account
-virtualization extensions (print `vcpu` instead of `cpu` when needed).
+On 06/20/2018 03:06 AM, Peter Maydell wrote:
+> The Arm M-profile MPU allows the guest to specify access
+> permissions at a very fine granularity (down to a 32-byte
+> alignment for region start and and addresses). Currently
+> we insist that regions are page-aligned because the core
+> TCG code can't handle anything else.
+> 
+> This patchset relaxes that restriction, so that we can handle
+> small MPU regions for reading and writing (but not yet for
+> execution). It does that by  marking the TLB entry for any
+> page which includes a small region with a flag TLB_RECHECK.
+> This flag causes us to always take the slow-path for accesses.
+> In the slow path we can then special case them to always call
+> tlb_fill() again, so we have the correct information for the
+> exact address being accessed.
+> 
+> Patch 1 adds support to the accel/tcg code. Patch 2 then
+> enables using it for the PMSAv7 (v7M) MPU, and patch 3
+> does the same for the PMSAv8 (v8M) MPU and SAU.
+> Because we don't yet support execution from small regions,
+> the PMSA code has some corner cases where it retains the
+> previous behaviour so we don't break previously-working
+> guests:
+>  * if the MPU region is small, we don't mark it PROT_EXEC
+>    even if the guest asked for it (so execution will cause
+>    an MPU exception)
+>  * we ignore the fact that the SAU region might be smaller
+>    than a page
+> 
+> (Unfortunately the old code *intended* to make small-region
+> accesses non-executable but due to bugs didn't actually
+> succeed in doing that, so this might possibly cause some
+> previously working-by-accident code to break.)
+>  
+> I would ideally in future like to add execution support, but
+> this is somewhat tricky. My rough sketch for it looks like:
+>  * get_page_addr_code() should return -1 for "not actually
+>    a full page of RAM" (deleting all the current tricky code
+>    for trying to handle it being a memory region or unmapped)
+>  * its callsites in the TB hashtable lookup code should handle
+>    -1 by returning "no TB found"
+>  * the weird call to get_page_addr_code() in the xtensa itlb_hit_test
+>    helper should be replaced by a call to tlb_fill() or some
+>    xtensa-internal function (I think all it is trying to do is
+>    cause the exceptions for MMU faults)
+>  * tb_gen_code() should in this case generate a one-instruction
+>    TB and tell its caller not to cache it
+>  * the translate.c code for targets that need this probably needs
+>    fixing up to make sure it can handle the case of "the load
+>    code byte/word/etc functions might return failure or cause
+>    an exception"
+> 
+> This would also have the advantage that it naturally allows
+> you to execute (slowly) from any MMIO region, and we could drop
+> the broken request-mmio-pointer machinery.
+> 
+> In any case that is too much for 3.0, I think; I'd like to get this
+> R/W small-region code into 3.0, though.
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (3):
+>   tcg: Support MMU protection regions smaller than TARGET_PAGE_SIZE
+>   target/arm: Set page (region) size in get_phys_addr_pmsav7()
+>   target/arm: Handle small regions in get_phys_addr_pmsav8()
 
-Also add some virtualization extensions specific traces: LR updating
-and maintenance IRQ generation.
+Whole series:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gic.c    | 31 +++++++++++++++++++++++++------
- hw/intc/trace-events | 12 ++++++++++--
- 2 files changed, 35 insertions(+), 8 deletions(-)
+I assume you'll take this all via target-arm.next?
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 10300e9b4c..7d24348d96 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -172,8 +172,10 @@ static inline void gic_update_internal(GICState *s, =
-bool virt)
-         }
-=20
-         if (best_irq !=3D 1023) {
--            trace_gic_update_bestirq(cpu, best_irq, best_prio,
--                s->priority_mask[cpu_iface], s->running_priority[cpu_ifa=
-ce]);
-+            trace_gic_update_bestirq(virt ? "vcpu" : "cpu", cpu,
-+                                     best_irq, best_prio,
-+                                     s->priority_mask[cpu_iface],
-+                                     s->running_priority[cpu_iface]);
-         }
-=20
-         irq_level =3D fiq_level =3D 0;
-@@ -290,6 +292,7 @@ static void gic_update_maintenance(GICState *s)
-         gic_compute_misr(s, cpu);
-         maint_level =3D (s->h_hcr[cpu] & R_GICH_HCR_EN_MASK) && s->h_mis=
-r[cpu];
-=20
-+        trace_gic_update_maintenance_irq(cpu, maint_level);
-         qemu_set_irq(s->maintenance_irq[cpu], maint_level);
-     }
- }
-@@ -561,7 +564,8 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, Me=
-mTxAttrs attrs)
-      * is in the wrong group.
-      */
-     irq =3D gic_get_current_pending_irq(s, cpu, attrs);
--    trace_gic_acknowledge_irq(gic_get_vcpu_real_id(cpu), irq);
-+    trace_gic_acknowledge_irq(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
-+                              gic_get_vcpu_real_id(cpu), irq);
-=20
-     if (irq >=3D GIC_MAXIRQ) {
-         DPRINTF("ACK, no pending interrupt or it is hidden: %d\n", irq);
-@@ -1040,20 +1044,23 @@ static MemTxResult gic_dist_read(void *opaque, hw=
-addr offset, uint64_t *data,
-     switch (size) {
-     case 1:
-         *data =3D gic_dist_readb(opaque, offset, attrs);
--        return MEMTX_OK;
-+        break;
-     case 2:
-         *data =3D gic_dist_readb(opaque, offset, attrs);
-         *data |=3D gic_dist_readb(opaque, offset + 1, attrs) << 8;
--        return MEMTX_OK;
-+        break;
-     case 4:
-         *data =3D gic_dist_readb(opaque, offset, attrs);
-         *data |=3D gic_dist_readb(opaque, offset + 1, attrs) << 8;
-         *data |=3D gic_dist_readb(opaque, offset + 2, attrs) << 16;
-         *data |=3D gic_dist_readb(opaque, offset + 3, attrs) << 24;
--        return MEMTX_OK;
-+        break;
-     default:
-         return MEMTX_ERROR;
-     }
-+
-+    trace_gic_dist_read(offset, size, *data);
-+    return MEMTX_OK;
- }
-=20
- static void gic_dist_writeb(void *opaque, hwaddr offset,
-@@ -1384,6 +1391,8 @@ static void gic_dist_writel(void *opaque, hwaddr of=
-fset,
- static MemTxResult gic_dist_write(void *opaque, hwaddr offset, uint64_t =
-data,
-                                   unsigned size, MemTxAttrs attrs)
- {
-+    trace_gic_dist_write(offset, size, data);
-+
-     switch (size) {
-     case 1:
-         gic_dist_writeb(opaque, offset, data, attrs);
-@@ -1540,12 +1549,18 @@ static MemTxResult gic_cpu_read(GICState *s, int =
-cpu, int offset,
-         *data =3D 0;
-         break;
-     }
-+
-+    trace_gic_cpu_read(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
-+                       gic_get_vcpu_real_id(cpu), offset, *data);
-     return MEMTX_OK;
- }
-=20
- static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
-                                  uint32_t value, MemTxAttrs attrs)
- {
-+    trace_gic_cpu_write(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
-+                        gic_get_vcpu_real_id(cpu), offset, value);
-+
-     switch (offset) {
-     case 0x00: /* Control */
-         gic_set_cpu_control(s, cpu, value, attrs);
-@@ -1820,6 +1835,7 @@ static MemTxResult gic_hyp_read(void *opaque, hwadd=
-r addr, uint64_t *data,
-         return MEMTX_OK;
-     }
-=20
-+    trace_gic_hyp_read(addr, *data);
-     return MEMTX_OK;
- }
-=20
-@@ -1830,6 +1846,8 @@ static MemTxResult gic_hyp_write(void *opaque, hwad=
-dr addr, uint64_t value,
-     int cpu =3D gic_get_current_cpu(s);
-     int vcpu =3D gic_get_current_vcpu(s);
-=20
-+    trace_gic_hyp_write(addr, value);
-+
-     switch (addr) {
-     case A_GICH_HCR: /* Hypervisor Control */
-         s->h_hcr[cpu] =3D value & GICH_HCR_MASK;
-@@ -1853,6 +1871,7 @@ static MemTxResult gic_hyp_write(void *opaque, hwad=
-dr addr, uint64_t value,
-         }
-=20
-         s->h_lr[lr_idx][cpu] =3D value & GICH_LR_MASK;
-+        trace_gic_lr_entry(cpu, lr_idx, s->h_lr[lr_idx][cpu]);
-         break;
-     }
-=20
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 55e8c2570c..47fa4ad5c1 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -92,9 +92,17 @@ aspeed_vic_write(uint64_t offset, unsigned size, uint3=
-2_t data) "To 0x%" PRIx64
- gic_enable_irq(int irq) "irq %d enabled"
- gic_disable_irq(int irq) "irq %d disabled"
- gic_set_irq(int irq, int level, int cpumask, int target) "irq %d level %=
-d cpumask 0x%x target 0x%x"
--gic_update_bestirq(int cpu, int irq, int prio, int priority_mask, int ru=
-nning_priority) "cpu %d irq %d priority %d cpu priority mask %d cpu runni=
-ng priority %d"
-+gic_update_bestirq(const char *s, int cpu, int irq, int prio, int priori=
-ty_mask, int running_priority) "%s %d irq %d priority %d cpu priority mas=
-k %d cpu running priority %d"
- gic_update_set_irq(int cpu, const char *name, int level) "cpu[%d]: %s =3D=
- %d"
--gic_acknowledge_irq(int cpu, int irq) "cpu %d acknowledged irq %d"
-+gic_acknowledge_irq(const char *s, int cpu, int irq) "%s %d acknowledged=
- irq %d"
-+gic_cpu_write(const char *s, int cpu, int addr, uint32_t val) "%s %d ifa=
-ce write at 0x%08x 0x%08" PRIx32
-+gic_cpu_read(const char *s, int cpu, int addr, uint32_t val) "%s %d ifac=
-e read at 0x%08x: 0x%08" PRIx32
-+gic_hyp_read(int addr, uint32_t val) "hyp read at 0x%08x: 0x%08" PRIx32
-+gic_hyp_write(int addr, uint32_t val) "hyp write at 0x%08x: 0x%08" PRIx3=
-2
-+gic_dist_read(int addr, unsigned int size, uint32_t val) "dist read at 0=
-x%08x size %u: 0x%08" PRIx32
-+gic_dist_write(int addr, unsigned int size, uint32_t val) "dist write at=
- 0x%08x size %u: 0x%08" PRIx32
-+gic_lr_entry(int cpu, int entry, uint32_t val) "cpu %d: new lr entry %d:=
- 0x%08" PRIx32
-+gic_update_maintenance_irq(int cpu, int val) "cpu %d: maintenance =3D %d=
-"
-=20
- # hw/intc/arm_gicv3_cpuif.c
- gicv3_icc_pmr_read(uint32_t cpu, uint64_t val) "GICv3 ICC_PMR read cpu 0=
-x%x value 0x%" PRIx64
---=20
-2.17.1
 
+r~

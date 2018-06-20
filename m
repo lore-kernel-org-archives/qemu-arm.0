@@ -1,141 +1,450 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp908617wrq;
-        Wed, 20 Jun 2018 08:37:33 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLD6XCerN/aJchq0A0w758AoyTM7cVjQIy/KMem+cSCOJA43HEuF3csbteINjhHckELqNkz
-X-Received: by 2002:ac8:44d3:: with SMTP id b19-v6mr18574472qto.167.1529509053007;
-        Wed, 20 Jun 2018 08:37:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529509053; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp919013wrq;
+        Wed, 20 Jun 2018 08:48:04 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJzcpuF6LxgjuTp/w1j2rJEYDvLdpk7qygrECtKnTRpMgc3vWea9Z/hSl0LsG9ay71xVmCX
+X-Received: by 2002:ac8:1e87:: with SMTP id c7-v6mr18408559qtm.322.1529509684795;
+        Wed, 20 Jun 2018 08:48:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529509684; cv=none;
         d=google.com; s=arc-20160816;
-        b=qPcYfbjd4mACJaFKLwK4jIGC4BxfNNTm4w4ADxm9V8ra5RXtcPXBb9Yhwo8QTP3Zyi
-         umcJsbCO9bHjIW4oAb2oO54wafa1WAxVZJJYGYt9Y7JxPSNlxVuo6qfXVYWAJG0WQNok
-         0Go6LQjJB/I6QTxGVwA5JCV/9MqYOl/tRtkkEB3KyEq4kfoIXPkimtVa0HgkegbqbCkT
-         PU+tOGILFGGyZevuB8Yc1dIE46PFk8HMQIy0AeP6ZhTtmwmFd6a1b1WLE6ZtJebJ75yk
-         jLqDE7NASMOME8luPl6NgYsHGEo4xrOSUeXxWha7/G1IMgAxw1NyG10tok2x8rKnvzHK
-         /Xqw==
+        b=gHlcoGYvkXR1pcTIrDYoyDXx+LaQXyBwcYAbgQfAwNQ7XHvCu8sPg6y6vjdsb+DhKI
+         /RWVEKqPJrUao37BpcM7X8YgumEVlbEu5QKl+rRuZ3s1fMi3Htb6dJmS1CWSir1AhAl1
+         V/acvw8f/ZoCPAS+ivyLP431l6XBSFfFQQosoC+tQ3sCIh+OBOv7phxTRcAGRxouM//c
+         jZVQqnbGsQFsM2Nugx/s9dUmNEvpl4ekRyvSD3H7dpukH0XJdbSHqgJhG8Fpo2akj4O/
+         cdFst9YJyS25SnlHtwqTYUhPgZcuNr7L3KMmawpOXzzClvtRHBRoTF1aT0zgi4cgpM/1
+         YLBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=8VRmGrcN/OHggoDfxN/t4rbh7OFjrLaov6kjrKWntoc=;
-        b=ROaEx4qJ0mO9f5c8BXIv8HWjzgSy7Z0UyB6KqtNRXolKkzWPNGTDEIcxUjyBEQnDt6
-         l7hPPxksZtFN2D7Gslo9SXNXWciiKpB7E/Nn+9OAccaeDLPl/WM14fJMIMmazFtQxUIz
-         vRKUfi3nb3VF1BLZxn9nKRWPXEcVpaZ9TSGcBJtWtFsW0ia8EuAGnFtBsnROEb/55n8J
-         X6XDWy7pIZt7V/lZRuqfCjkF4eYknlPJjyyZG/MvejbetpwmMO4FV0fKT1YyV3SbcXpc
-         IVUFkepgoo7gm2/o411vTInWNE0WtiOhW0EJIq05vULJ//5Sq3yD7NxnrImUwO5L1MeL
-         Y2MA==
+        bh=0Zstxu+FvC/nfslVL2Q/bYOglcaBBwa58JyXdgmQ92s=;
+        b=vizYBx9Oj4YtpXsPKBLgzIsTVc7aE9yuFpDI2FUEV7QIvwckDHr0FKRp1jn2DZmXIO
+         /+1TALSXPhhwvjzKTfpG4mwhbeCnbogDxz8Xjumlc/RW1ZxS2kkT9/sGyZ1eVnFb68dp
+         j55hiMl695UUcIrWXHzFIXs748Yhr6VNNRCl1/wOhz/aLy+qT47MNhbbgVAE1l93SdpE
+         zjavXfNuC7e5tyYmA/wlqEeWAIUCue7YpYLIHIGtbs7y2vVDMiUT/0nnxVdARVpUfDra
+         nWoNgz2vmA1b6w3movqS6k5QGKbX1j28qzEvlxE82xoZ+R+DNWzmVTfgJSrpqoAv00Ix
+         vOAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=grMEY+js;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t37-v6si2650434qvt.22.2018.06.20.08.37.32
+        by mx.google.com with ESMTPS id o3-v6si2693142qtc.210.2018.06.20.08.48.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Jun 2018 08:37:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 20 Jun 2018 08:48:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=grMEY+js;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50352 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50417 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fVfAq-0005Uq-E2
-	for alex.bennee@linaro.org; Wed, 20 Jun 2018 11:37:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33029)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fVfL2-0004oH-6G
+	for alex.bennee@linaro.org; Wed, 20 Jun 2018 11:48:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37364)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fVfAd-0005U0-SW
-	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 11:37:21 -0400
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1fVfKO-0004kn-Es
+	for qemu-devel@nongnu.org; Wed, 20 Jun 2018 11:47:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fVfAc-0002iD-Uc
-	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 11:37:19 -0400
-Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:45895)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fVfAc-0002hv-NG
-	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 11:37:18 -0400
-Received: by mail-ot0-x234.google.com with SMTP id a5-v6so4161737otf.12
-	for <qemu-arm@nongnu.org>; Wed, 20 Jun 2018 08:37:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=8VRmGrcN/OHggoDfxN/t4rbh7OFjrLaov6kjrKWntoc=;
-	b=grMEY+jsgWmAChlULTUSQpIDxMRa04jhJfUJULRsvT9ts67ncazr7UD2jkpkIGef3b
-	4fhGok8516CXbe0bL4T5YeCTHli8nSI5P8YTCy6HApvOz/+sRoK42T5ieV75BLtdnBEd
-	mJ1XcFo6UvLePEOyzrVQdsZZR4XkOGDpegNbY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=8VRmGrcN/OHggoDfxN/t4rbh7OFjrLaov6kjrKWntoc=;
-	b=Tvr43ug7+aBVjlXQdwU1bLApll4G/6i4uF0kbRSma00qcPi4GDc3BnC5WLZS481xj+
-	IOhuFbq28glHL/bIj9gD9isM/kulG0/YLa1Bk1YgyVXSJIe/xD/bo4+MZ7pPdAqvj5Ru
-	oM4WCYcB2zkiNTGr0lCgo5MaJLL0VXCMffHfgsBHXH0TWmtUj3qIULbVhPIkFObfG8/E
-	o470xf9XpsS+jDg2S0xN8sF5VavB/M92WyfgA9TC14MW843oGF7SEzsDeTAk7kPeDJYH
-	ycF7cNJkSRU2Oj0Ktsy0xZ6wrai+YukASRXSr0u+wzhtFQ5pnEwXPaSh90ue+6M9sKRj
-	e2pg==
-X-Gm-Message-State: APt69E2Km631mUTvERYTzUbEEWXeZhP0vDvz0T1lHGvRe+rGJD00qsfC
-	arZKK6WskMDvRHEuiMMowIaVGQkd6uV7hEoDxxyYfA==
-X-Received: by 2002:a9d:2371:: with SMTP id
-	k46-v6mr14235415otd.210.1529509037967; 
-	Wed, 20 Jun 2018 08:37:17 -0700 (PDT)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1fVfKL-0000EM-9D
+	for qemu-devel@nongnu.org; Wed, 20 Jun 2018 11:47:24 -0400
+Received: from chuckie.co.uk ([82.165.15.123]:55970
+	helo=s16892447.onlinehome-server.info)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1fVfKK-00007s-U9; Wed, 20 Jun 2018 11:47:21 -0400
+Received: from host86-162-6-60.range86-162.btcentralplus.com ([86.162.6.60]
+	helo=[192.168.1.65]) by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1fVfKI-0005SR-VJ; Wed, 20 Jun 2018 16:47:21 +0100
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180620130619.11362-1-peter.maydell@linaro.org>
+	<20180620130619.11362-2-peter.maydell@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-ID: <dabacef8-081c-8808-d42e-ebb6fd0e6012@ilande.co.uk>
+Date: Wed, 20 Jun 2018 16:46:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Wed, 20 Jun 2018 08:36:57
-	-0700 (PDT)
-In-Reply-To: <1528790908-23441-2-git-send-email-eric.auger@redhat.com>
-References: <1528790908-23441-1-git-send-email-eric.auger@redhat.com>
-	<1528790908-23441-2-git-send-email-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 20 Jun 2018 16:36:57 +0100
-Message-ID: <CAFEAcA_YbwG=1OUxAutMwyYjQSV=QvcN2Us1EUUvVkCmRJn1ug@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::234
-Subject: Re: [Qemu-arm] [PATCH v2 1/4] hw/arm/smmuv3: Fix translate error
- handling
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20180620130619.11362-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.162.6.60
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-devel] [PATCH 1/3] tcg: Support MMU protection regions
+ smaller than TARGET_PAGE_SIZE
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jia.he@hxt-semitech.com, Jia He <hejianet@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Eric Auger <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gartd7ggjogg
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, patches@linaro.org,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S28pHB+fb5b7
 
-On 12 June 2018 at 09:08, Eric Auger <eric.auger@redhat.com> wrote:
-> From: Jia He <hejianet@gmail.com>
->
-> In case the STE's config is "Bypass" we currently don't set the
-> IOMMUTLBEntry perm flags and the access does not succeed. Also
-> if the config is 0b0xx (Aborted/Reserved), decode_ste and
-> smmuv3_decode_config currently returns -EINVAL and we don't enter
-> the expected code path: we record an event whereas we should not.
->
-> This patch fixes those bugs and simplifies the error handling.
-> decode_ste and smmuv3_decode_config now return 0 if aborted or
-> bypassed config was found. Only bad config info produces negative
-> error values. In smmuv3_translate we more clearly differentiate
-> errors, bypass/smmu disabled, aborted and success cases. Also
-> trace points are differentiated.
->
-> Fixes: 9bde7f0674fe ("hw/arm/smmuv3: Implement translate callback")
-> Reported-by: jia.he@hxt-semitech.com
-> Signed-off-by: jia.he@hxt-semitech.com
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
+On 20/06/18 14:06, Peter Maydell wrote:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Add support for MMU protection regions that are smaller than
+> TARGET_PAGE_SIZE. We do this by marking the TLB entry for those
+> pages with a flag TLB_RECHECK. This flag causes us to always
+> take the slow-path for accesses. In the slow path we can then
+> special case them to always call tlb_fill() again, so we have
+> the correct information for the exact address being accessed.
+> 
+> This change allows us to handle reading and writing from small
+> regions; we cannot deal with execution from the small region.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   accel/tcg/softmmu_template.h |  24 ++++---
+>   include/exec/cpu-all.h       |   5 +-
+>   accel/tcg/cputlb.c           | 131 +++++++++++++++++++++++++++++------
+>   3 files changed, 130 insertions(+), 30 deletions(-)
+> 
+> diff --git a/accel/tcg/softmmu_template.h b/accel/tcg/softmmu_template.h
+> index 239ea6692b4..c47591c9709 100644
+> --- a/accel/tcg/softmmu_template.h
+> +++ b/accel/tcg/softmmu_template.h
+> @@ -98,10 +98,12 @@
+>   static inline DATA_TYPE glue(io_read, SUFFIX)(CPUArchState *env,
+>                                                 size_t mmu_idx, size_t index,
+>                                                 target_ulong addr,
+> -                                              uintptr_t retaddr)
+> +                                              uintptr_t retaddr,
+> +                                              bool recheck)
+>   {
+>       CPUIOTLBEntry *iotlbentry = &env->iotlb[mmu_idx][index];
+> -    return io_readx(env, iotlbentry, mmu_idx, addr, retaddr, DATA_SIZE);
+> +    return io_readx(env, iotlbentry, mmu_idx, addr, retaddr, recheck,
+> +                    DATA_SIZE);
+>   }
+>   #endif
+>   
+> @@ -138,7 +140,8 @@ WORD_TYPE helper_le_ld_name(CPUArchState *env, target_ulong addr,
+>   
+>           /* ??? Note that the io helpers always read data in the target
+>              byte ordering.  We should push the LE/BE request down into io.  */
+> -        res = glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr);
+> +        res = glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr,
+> +                                    tlb_addr & TLB_RECHECK);
+>           res = TGT_LE(res);
+>           return res;
+>       }
+> @@ -205,7 +208,8 @@ WORD_TYPE helper_be_ld_name(CPUArchState *env, target_ulong addr,
+>   
+>           /* ??? Note that the io helpers always read data in the target
+>              byte ordering.  We should push the LE/BE request down into io.  */
+> -        res = glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr);
+> +        res = glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr,
+> +                                    tlb_addr & TLB_RECHECK);
+>           res = TGT_BE(res);
+>           return res;
+>       }
+> @@ -259,10 +263,12 @@ static inline void glue(io_write, SUFFIX)(CPUArchState *env,
+>                                             size_t mmu_idx, size_t index,
+>                                             DATA_TYPE val,
+>                                             target_ulong addr,
+> -                                          uintptr_t retaddr)
+> +                                          uintptr_t retaddr,
+> +                                          bool recheck)
+>   {
+>       CPUIOTLBEntry *iotlbentry = &env->iotlb[mmu_idx][index];
+> -    return io_writex(env, iotlbentry, mmu_idx, val, addr, retaddr, DATA_SIZE);
+> +    return io_writex(env, iotlbentry, mmu_idx, val, addr, retaddr,
+> +                     recheck, DATA_SIZE);
+>   }
+>   
+>   void helper_le_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
+> @@ -298,7 +304,8 @@ void helper_le_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
+>           /* ??? Note that the io helpers always read data in the target
+>              byte ordering.  We should push the LE/BE request down into io.  */
+>           val = TGT_LE(val);
+> -        glue(io_write, SUFFIX)(env, mmu_idx, index, val, addr, retaddr);
+> +        glue(io_write, SUFFIX)(env, mmu_idx, index, val, addr,
+> +                               retaddr, tlb_addr & TLB_RECHECK);
+>           return;
+>       }
+>   
+> @@ -375,7 +382,8 @@ void helper_be_st_name(CPUArchState *env, target_ulong addr, DATA_TYPE val,
+>           /* ??? Note that the io helpers always read data in the target
+>              byte ordering.  We should push the LE/BE request down into io.  */
+>           val = TGT_BE(val);
+> -        glue(io_write, SUFFIX)(env, mmu_idx, index, val, addr, retaddr);
+> +        glue(io_write, SUFFIX)(env, mmu_idx, index, val, addr, retaddr,
+> +                               tlb_addr & TLB_RECHECK);
+>           return;
+>       }
+>   
+> diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+> index 7fa726b8e36..7338f57062f 100644
+> --- a/include/exec/cpu-all.h
+> +++ b/include/exec/cpu-all.h
+> @@ -330,11 +330,14 @@ CPUArchState *cpu_copy(CPUArchState *env);
+>   #define TLB_NOTDIRTY        (1 << (TARGET_PAGE_BITS - 2))
+>   /* Set if TLB entry is an IO callback.  */
+>   #define TLB_MMIO            (1 << (TARGET_PAGE_BITS - 3))
+> +/* Set if TLB entry must have MMU lookup repeated for every access */
+> +#define TLB_RECHECK         (1 << (TARGET_PAGE_BITS - 4))
+>   
+>   /* Use this mask to check interception with an alignment mask
+>    * in a TCG backend.
+>    */
+> -#define TLB_FLAGS_MASK  (TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_MMIO)
+> +#define TLB_FLAGS_MASK  (TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_MMIO \
+> +                         | TLB_RECHECK)
+>   
+>   void dump_exec_info(FILE *f, fprintf_function cpu_fprintf);
+>   void dump_opcount_info(FILE *f, fprintf_function cpu_fprintf);
+> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+> index 0a721bb9c40..d893452295f 100644
+> --- a/accel/tcg/cputlb.c
+> +++ b/accel/tcg/cputlb.c
+> @@ -621,27 +621,42 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+>       target_ulong code_address;
+>       uintptr_t addend;
+>       CPUTLBEntry *te, *tv, tn;
+> -    hwaddr iotlb, xlat, sz;
+> +    hwaddr iotlb, xlat, sz, paddr_page;
+> +    target_ulong vaddr_page;
+>       unsigned vidx = env->vtlb_index++ % CPU_VTLB_SIZE;
+>       int asidx = cpu_asidx_from_attrs(cpu, attrs);
+>   
+>       assert_cpu_is_self(cpu);
+> -    assert(size >= TARGET_PAGE_SIZE);
+> -    if (size != TARGET_PAGE_SIZE) {
+> -        tlb_add_large_page(env, vaddr, size);
+> -    }
+>   
+> -    sz = size;
+> -    section = address_space_translate_for_iotlb(cpu, asidx, paddr, &xlat, &sz,
+> -                                                attrs, &prot);
+> +    if (size < TARGET_PAGE_SIZE) {
+> +        sz = TARGET_PAGE_SIZE;
+> +    } else {
+> +        if (size > TARGET_PAGE_SIZE) {
+> +            tlb_add_large_page(env, vaddr, size);
+> +        }
+> +        sz = size;
+> +    }
+> +    vaddr_page = vaddr & TARGET_PAGE_MASK;
+> +    paddr_page = paddr & TARGET_PAGE_MASK;
+> +
+> +    section = address_space_translate_for_iotlb(cpu, asidx, paddr_page,
+> +                                                &xlat, &sz, attrs, &prot);
+>       assert(sz >= TARGET_PAGE_SIZE);
+>   
+>       tlb_debug("vaddr=" TARGET_FMT_lx " paddr=0x" TARGET_FMT_plx
+>                 " prot=%x idx=%d\n",
+>                 vaddr, paddr, prot, mmu_idx);
+>   
+> -    address = vaddr;
+> -    if (!memory_region_is_ram(section->mr) && !memory_region_is_romd(section->mr)) {
+> +    address = vaddr_page;
+> +    if (size < TARGET_PAGE_SIZE) {
+> +        /*
+> +         * Slow-path the TLB entries; we will repeat the MMU check and TLB
+> +         * fill on every access.
+> +         */
+> +        address |= TLB_RECHECK;
+> +    }
+> +    if (!memory_region_is_ram(section->mr) &&
+> +        !memory_region_is_romd(section->mr)) {
+>           /* IO memory case */
+>           address |= TLB_MMIO;
+>           addend = 0;
+> @@ -651,10 +666,10 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+>       }
+>   
+>       code_address = address;
+> -    iotlb = memory_region_section_get_iotlb(cpu, section, vaddr, paddr, xlat,
+> -                                            prot, &address);
+> +    iotlb = memory_region_section_get_iotlb(cpu, section, vaddr_page,
+> +                                            paddr_page, xlat, prot, &address);
+>   
+> -    index = (vaddr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+> +    index = (vaddr_page >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+>       te = &env->tlb_table[mmu_idx][index];
+>       /* do not discard the translation in te, evict it into a victim tlb */
+>       tv = &env->tlb_v_table[mmu_idx][vidx];
+> @@ -670,18 +685,18 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+>        * TARGET_PAGE_BITS, and either
+>        *  + the ram_addr_t of the page base of the target RAM (if NOTDIRTY or ROM)
+>        *  + the offset within section->mr of the page base (otherwise)
+> -     * We subtract the vaddr (which is page aligned and thus won't
+> +     * We subtract the vaddr_page (which is page aligned and thus won't
+>        * disturb the low bits) to give an offset which can be added to the
+>        * (non-page-aligned) vaddr of the eventual memory access to get
+>        * the MemoryRegion offset for the access. Note that the vaddr we
+>        * subtract here is that of the page base, and not the same as the
+>        * vaddr we add back in io_readx()/io_writex()/get_page_addr_code().
+>        */
+> -    env->iotlb[mmu_idx][index].addr = iotlb - vaddr;
+> +    env->iotlb[mmu_idx][index].addr = iotlb - vaddr_page;
+>       env->iotlb[mmu_idx][index].attrs = attrs;
+>   
+>       /* Now calculate the new entry */
+> -    tn.addend = addend - vaddr;
+> +    tn.addend = addend - vaddr_page;
+>       if (prot & PAGE_READ) {
+>           tn.addr_read = address;
+>       } else {
+> @@ -702,7 +717,7 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulong vaddr,
+>               tn.addr_write = address | TLB_MMIO;
+>           } else if (memory_region_is_ram(section->mr)
+>                      && cpu_physical_memory_is_clean(
+> -                        memory_region_get_ram_addr(section->mr) + xlat)) {
+> +                       memory_region_get_ram_addr(section->mr) + xlat)) {
+>               tn.addr_write = address | TLB_NOTDIRTY;
+>           } else {
+>               tn.addr_write = address;
+> @@ -775,7 +790,8 @@ static inline ram_addr_t qemu_ram_addr_from_host_nofail(void *ptr)
+>   
+>   static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+>                            int mmu_idx,
+> -                         target_ulong addr, uintptr_t retaddr, int size)
+> +                         target_ulong addr, uintptr_t retaddr,
+> +                         bool recheck, int size)
+>   {
+>       CPUState *cpu = ENV_GET_CPU(env);
+>       hwaddr mr_offset;
+> @@ -785,6 +801,29 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+>       bool locked = false;
+>       MemTxResult r;
+>   
+> +    if (recheck) {
+> +        /*
+> +         * This is a TLB_RECHECK access, where the MMU protection
+> +         * covers a smaller range than a target page, and we must
+> +         * repeat the MMU check here. This tlb_fill() call might
+> +         * longjump out if this access should cause a guest exception.
+> +         */
+> +        int index;
+> +        target_ulong tlb_addr;
+> +
+> +        tlb_fill(cpu, addr, size, MMU_DATA_LOAD, mmu_idx, retaddr);
+> +
+> +        index = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+> +        tlb_addr = env->tlb_table[mmu_idx][index].addr_read;
+> +        if (!(tlb_addr & ~(TARGET_PAGE_MASK | TLB_RECHECK))) {
+> +            /* RAM access */
+> +            uintptr_t haddr = addr + env->tlb_table[mmu_idx][index].addend;
+> +
+> +            return ldn_p((void *)haddr, size);
+> +        }
+> +        /* Fall through for handling IO accesses */
+> +    }
+> +
+>       section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
+>       mr = section->mr;
+>       mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+> @@ -819,7 +858,7 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+>   static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+>                         int mmu_idx,
+>                         uint64_t val, target_ulong addr,
+> -                      uintptr_t retaddr, int size)
+> +                      uintptr_t retaddr, bool recheck, int size)
+>   {
+>       CPUState *cpu = ENV_GET_CPU(env);
+>       hwaddr mr_offset;
+> @@ -828,6 +867,30 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+>       bool locked = false;
+>       MemTxResult r;
+>   
+> +    if (recheck) {
+> +        /*
+> +         * This is a TLB_RECHECK access, where the MMU protection
+> +         * covers a smaller range than a target page, and we must
+> +         * repeat the MMU check here. This tlb_fill() call might
+> +         * longjump out if this access should cause a guest exception.
+> +         */
+> +        int index;
+> +        target_ulong tlb_addr;
+> +
+> +        tlb_fill(cpu, addr, size, MMU_DATA_STORE, mmu_idx, retaddr);
+> +
+> +        index = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+> +        tlb_addr = env->tlb_table[mmu_idx][index].addr_write;
+> +        if (!(tlb_addr & ~(TARGET_PAGE_MASK | TLB_RECHECK))) {
+> +            /* RAM access */
+> +            uintptr_t haddr = addr + env->tlb_table[mmu_idx][index].addend;
+> +
+> +            stn_p((void *)haddr, size, val);
+> +            return;
+> +        }
+> +        /* Fall through for handling IO accesses */
+> +    }
+> +
+>       section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
+>       mr = section->mr;
+>       mr_offset = (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+> @@ -911,6 +974,32 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+>               tlb_fill(ENV_GET_CPU(env), addr, 0, MMU_INST_FETCH, mmu_idx, 0);
+>           }
+>       }
+> +
+> +    if (unlikely(env->tlb_table[mmu_idx][index].addr_code & TLB_RECHECK)) {
+> +        /*
+> +         * This is a TLB_RECHECK access, where the MMU protection
+> +         * covers a smaller range than a target page, and we must
+> +         * repeat the MMU check here. This tlb_fill() call might
+> +         * longjump out if this access should cause a guest exception.
+> +         */
+> +        int index;
+> +        target_ulong tlb_addr;
+> +
+> +        tlb_fill(cpu, addr, 0, MMU_INST_FETCH, mmu_idx, 0);
+> +
+> +        index = (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+> +        tlb_addr = env->tlb_table[mmu_idx][index].addr_code;
+> +        if (!(tlb_addr & ~(TARGET_PAGE_MASK | TLB_RECHECK))) {
+> +            /* RAM access. We can't handle this, so for now just stop */
+> +            cpu_abort(cpu, "Unable to handle guest executing from RAM within "
+> +                      "a small MPU region at 0x" TARGET_FMT_lx, addr);
+> +        }
+> +        /*
+> +         * Fall through to handle IO accesses (which will almost certainly
+> +         * also result in failure)
+> +         */
+> +    }
+> +
+>       iotlbentry = &env->iotlb[mmu_idx][index];
+>       section = iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs);
+>       mr = section->mr;
+> @@ -1019,8 +1108,8 @@ static void *atomic_mmu_lookup(CPUArchState *env, target_ulong addr,
+>           tlb_addr = tlbe->addr_write & ~TLB_INVALID_MASK;
+>       }
+>   
+> -    /* Notice an IO access  */
+> -    if (unlikely(tlb_addr & TLB_MMIO)) {
+> +    /* Notice an IO access or a needs-MMU-lookup access */
+> +    if (unlikely(tlb_addr & (TLB_MMIO | TLB_RECHECK))) {
+>           /* There's really nothing that can be done to
+>              support this apart from stop-the-world.  */
+>           goto stop_the_world;
 
-thanks
--- PMM
+This patch is very interesting as forcing the slow path is something 
+required to implement the sun4u MMU IE (invert endian) bit - for some 
+background see Richard's email at 
+https://lists.gnu.org/archive/html/qemu-devel/2017-08/msg02835.html.
+
+Presumably there is nothing here that would prevent the slow path being 
+used outside of TLB_RECHECK?
+
+
+ATB,
+
+Mark.

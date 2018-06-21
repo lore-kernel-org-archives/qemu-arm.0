@@ -1,100 +1,80 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2279502wrq;
-        Thu, 21 Jun 2018 10:37:10 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKVA/299Go/WenZtIxYI6LeXxbQhd1esRtYHAzSlRVRe6EAABtKETaJsdF0nSj8sHO8f5G+
-X-Received: by 2002:a0c:b3d5:: with SMTP id b21-v6mr23298487qvf.80.1529602630063;
-        Thu, 21 Jun 2018 10:37:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529602630; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp154487wrq;
+        Thu, 21 Jun 2018 15:40:25 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIySQ5o7bkpUP420o4zHAonJilEwmyEsfOBA2fbpnummfjGrgaIX+7dp8++lLgWyleiW7sD
+X-Received: by 2002:a37:5bc6:: with SMTP id p189-v6mr23176718qkb.212.1529620825410;
+        Thu, 21 Jun 2018 15:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529620825; cv=none;
         d=google.com; s=arc-20160816;
-        b=zAgp+Jy/Lmrnbl8dkzbe2VdvdRkIk6K58owUAh5K+c4JtVlXUX1P05LUNRrZXOUkzq
-         /C6EHKAL339MkBbmEFHVZkRdermaGKxk0Udln9XrfsOemF1Ghmf2Y5VQvc0Si4NuYHT7
-         BnceBtSaD6xDgmzDJw+Jm4u4896y0Z18zn8wup8Bn2nBsVz+KXG90KE5PRsnEgpTLD4l
-         wQZdsXKxjedsQfqKKS2fuuBUAyT6BE7AFOkbO9l1yXgf9N+Xega4/jWXq/qmMs1lncYN
-         7pTk6J3a3pSKpkc7Q+MtaIRDZWVP7hQc3YyxZxmW6EEkCzCgziz2NvZoaeW0wO3OebTY
-         FJ9w==
+        b=NX9yMv5UzndkzU1ym8fSctrBzpl44ufIm9A/lY1GhCYcGZ2bNNjb8hU06lZOtNP1Ox
+         JCMd2nQjFqG3cSuP/M1e0sCpYtHSmeS/g/9OVc9q27x65OdOGbv5k68z5YZJVmSPuSX1
+         V5Yi4AuA/1AmTNqoIiwc2zr2c580IThprOyF1pE08lvbMROEOWzpxpr73QHOSdP1I3x8
+         o6ELUgEP/XCmdwIoPGkdk+NCv3kYcHXf2GNKJLxNH/SjUjc8TqRHDU7ldk4T2fQohNxw
+         EoANIE+n629RheJaZicGsTqZDKEThry8z++bhrZhpTNiyJbE+S8PbBJzFYOjJKTxGPm7
+         WPvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=dymgG+Lj6AEEhFfH5KrDyexbVF7WGuf7sAlMRIoBv8U=;
-        b=va1PzRnysLw8ClKYqeGiKzdEuyaASw7BKHiMbJHxO5mI7N0obsf/EV5Md98aBTLuDD
-         7+nVC7ceu8N3B2IGvrt7JJFpKUC0hSC0o1TlzsJMarzTZX8s6+gXJv4OYW5tDWR8oPX3
-         XYp9vPZWj3eQMMLv+eYIoEf32izx+K/gHlKvNWUbKTeepNu3rVd26vcfbNpOMki+H2eD
-         5uXDv0JBBFHhVFelRI/ZaMRr95wewTLlnpShY2iSM/wKdFFZC7KBF6Ua5cPom7Ql/Sct
-         HxL386sROEXLPdmbjko7yT3Ic6kMeK8FmtBrOCSrvFfZbR70p+gv9TVqj1XfXh1SKVTB
-         A9vg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=4/hKPIIz8gNvKAPD0Ql97Fk7YUxH6nEP6dSNVgiv2Xc=;
+        b=qWMMpdn5au9Nq0vKMcXsycHr3ECMUy2vOjNB48bAO1YMU3xYoG2p95p2FoY6WOfoVx
+         ROJOn20NBUZaIdYLt38fAE+B92aDmcmDZ4Q1SGi2XaZyMp5m8O0eSFSjsv60AUOTy1Cy
+         g79YWXhsIdMxNizJYBAcHm3m7PQ4h8CmRLIAJXILsMCbQyijBwNn8UHMS2ukjjJR2ekH
+         z1JoZqJ7uGcvmyseQWCliJvm4iQI4KrpKXxEqcAicdhgqpuhMvDIS2vGEPk0Or5SOUtO
+         +F8eoezzsAkTM1bFjs3pU2peshAmOapG0mqL3Uxn7sthrYhPUDUUCuUFcRcyEPUOKZnX
+         MApw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W2fDl7Lx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c18-v6si5288894qtc.33.2018.06.21.10.37.09
+        by mx.google.com with ESMTPS id f2-v6si6107448qta.209.2018.06.21.15.40.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Jun 2018 10:37:10 -0700 (PDT)
+        Thu, 21 Jun 2018 15:40:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W2fDl7Lx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56911 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57896 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fW3W9-00012z-CZ
-	for alex.bennee@linaro.org; Thu, 21 Jun 2018 13:37:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54954)
+	id 1fW8Fc-0000Yy-Pa
+	for alex.bennee@linaro.org; Thu, 21 Jun 2018 18:40:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55863)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fW3Vm-0000r6-KZ
-	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 13:36:49 -0400
+	(envelope-from <clg@kaod.org>) id 1fW8FQ-0000Wy-07
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 18:40:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fW3Vk-0004Mb-9M
-	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 13:36:46 -0400
-Received: from mail-pf0-x241.google.com ([2607:f8b0:400e:c00::241]:40089)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fW3Vk-0004LZ-18
-	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 13:36:44 -0400
-Received: by mail-pf0-x241.google.com with SMTP id z24-v6so1869317pfe.7
-	for <qemu-arm@nongnu.org>; Thu, 21 Jun 2018 10:36:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=dymgG+Lj6AEEhFfH5KrDyexbVF7WGuf7sAlMRIoBv8U=;
-	b=W2fDl7LxG844Of4dfpnPOaZPkrQzilaQxgdf4ZNnOCsZGtL0MpTTOt/RbckoFP7Xf5
-	FC2yPrACcpUcIUdiqAAvVb/RhY8tXrc2Zyf/OidHqZr3M6wmxS7wKxOk7+qS/Ghmqqw0
-	eA+zztoMoh9BJ5iJtCqGyL/xxrMikzTLvtzpo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=dymgG+Lj6AEEhFfH5KrDyexbVF7WGuf7sAlMRIoBv8U=;
-	b=iapnrD80bLsqbMpAXJn9j21byXIyXm2BzmGWXqDUvF5eMHwNnba7FOk9bejWV7s7SY
-	tsDlS+oyNQpPdsdBJablETTVVurRmMvi0hgJDCkpA9EFv5E4zSD9lZ/X3HL2wYU6njyn
-	OVRf01i2jHyXMI1Lfq2nlcGsIYgyVFFZe9V1ISq0JbxJxlzIycz7BsNxGqXnoSf39pag
-	nhFS0YhQoemS9t0wI8D/wQ794AGzKO9kQ/tcK3tPke6Hq4+Wl1JNkUYYYSgkm5YQXd6d
-	aBD0GpuuM8TxhVPrglwQ3LVIKrg+GXr1lJpoTmZw97m81uMM7iKlOvakVJYWZS5/I1zP
-	przw==
-X-Gm-Message-State: APt69E1QU4DxD0FbDXv7FP2fJ53GJtUi+rdhydnYT4JF2XsBWHhwPOZ0
-	o7QD3FQGq5tkfPG2Xkpd3/BzEg==
-X-Received: by 2002:a65:4b46:: with SMTP id
-	k6-v6mr23619171pgt.113.1529602602891; 
-	Thu, 21 Jun 2018 10:36:42 -0700 (PDT)
-Received: from cloudburst.twiddle.net (mta-98-147-121-51.hawaii.rr.com.
-	[98.147.121.51]) by smtp.gmail.com with ESMTPSA id
-	e192-v6sm9642897pfg.187.2018.06.21.10.36.40
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 21 Jun 2018 10:36:42 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
+	(envelope-from <clg@kaod.org>) id 1fW8FM-0001rX-O9
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 18:40:12 -0400
+Received: from 10.mo177.mail-out.ovh.net ([46.105.73.133]:42669)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fW8FM-0001rC-Dh
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 18:40:08 -0400
+Received: from player696.ha.ovh.net (unknown [10.109.120.60])
+	by mo177.mail-out.ovh.net (Postfix) with ESMTP id C4536B684D
+	for <qemu-arm@nongnu.org>; Fri, 22 Jun 2018 00:40:06 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
+	by player696.ha.ovh.net (Postfix) with ESMTPSA id 510253C0080;
+	Fri, 22 Jun 2018 00:40:00 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-devel@nongnu.org
-Date: Thu, 21 Jun 2018 07:36:34 -1000
-Message-Id: <20180621173635.21537-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180621173635.21537-1-richard.henderson@linaro.org>
-References: <20180621173635.21537-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::241
-Subject: [Qemu-arm] [PATCH 1/2] exec: Split mmap_lock to
- mmap_rdlock/mmap_wrlock
+Date: Fri, 22 Jun 2018 00:39:44 +0200
+Message-Id: <20180621223946.20738-2-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
+In-Reply-To: <20180621223946.20738-1-clg@kaod.org>
+References: <20180621223946.20738-1-clg@kaod.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 2974064604084341568
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtiedrtdehgdduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.73.133
+Subject: [Qemu-arm] [PATCH 1/3] aspeed/scu: introduce clock frequencies
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,397 +86,300 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: cota@braap.org, laurent@vivier.eu, qemu-arm@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kNEd1fDeBhSR
+X-TUID: NhI/gtfAGTUy
 
-Do not yet change the backing implementation, but split intent
-of users for reading or modification of the memory map.
+All Aspeed SoC clocks are driven by an input source clock which can
+have different frequencies : 24MHz or 25MHz, and also, on the Aspeed
+AST2400 SoC, 48MHz. The H-PLL (CPU) clock is defined from a
+calculation using parameters in the H-PLL Parameter register or from a
+predefined set of frequencies if the setting is strapped by hardware
+(Aspeed AST2400 SoC). The other clocks of the SoC are then defined
+from the H-PLL using dividers.
 
-Uses within accel/tcg/ and exec.c are expecting exclusivity
-while manipulating TranslationBlock data structures, so consider
-those writers.
+We introduce first the APB clock because it drives the timer.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/exec/exec-all.h    |  6 ++++--
- accel/tcg/cpu-exec.c       |  8 ++++----
- accel/tcg/translate-all.c  |  4 ++--
- bsd-user/mmap.c            | 18 ++++++++++++++----
- exec.c                     |  6 +++---
- linux-user/elfload.c       |  2 +-
- linux-user/mips/cpu_loop.c |  2 +-
- linux-user/mmap.c          | 22 ++++++++++++++++------
- linux-user/ppc/cpu_loop.c  |  2 +-
- linux-user/syscall.c       |  4 ++--
- target/arm/sve_helper.c    | 10 +++-------
- target/xtensa/op_helper.c  |  2 +-
- 12 files changed, 52 insertions(+), 34 deletions(-)
+ include/hw/misc/aspeed_scu.h |  70 ++++++++++++++++++++++++++--
+ hw/misc/aspeed_scu.c         | 106 +++++++++++++++++++++++++++++++++++++=
+++++++
+ 2 files changed, 172 insertions(+), 4 deletions(-)
 
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 25a6f28ab8..a57764b693 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -468,7 +468,8 @@ void tlb_fill(CPUState *cpu, target_ulong addr, int size,
- #endif
- 
- #if defined(CONFIG_USER_ONLY)
--void mmap_lock(void);
-+void mmap_rdlock(void);
-+void mmap_wrlock(void);
- void mmap_unlock(void);
- bool have_mmap_lock(void);
- 
-@@ -477,7 +478,8 @@ static inline tb_page_addr_t get_page_addr_code(CPUArchState *env1, target_ulong
-     return addr;
- }
- #else
--static inline void mmap_lock(void) {}
-+static inline void mmap_rdlock(void) {}
-+static inline void mmap_wrlock(void) {}
- static inline void mmap_unlock(void) {}
- 
- /* cputlb.c */
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index c738b7f7d6..59bdedb6c7 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -212,7 +212,7 @@ static void cpu_exec_nocache(CPUState *cpu, int max_cycles,
-        We only end up here when an existing TB is too long.  */
-     cflags |= MIN(max_cycles, CF_COUNT_MASK);
- 
--    mmap_lock();
-+    mmap_wrlock();
-     tb = tb_gen_code(cpu, orig_tb->pc, orig_tb->cs_base,
-                      orig_tb->flags, cflags);
-     tb->orig_tb = orig_tb;
-@@ -222,7 +222,7 @@ static void cpu_exec_nocache(CPUState *cpu, int max_cycles,
-     trace_exec_tb_nocache(tb, tb->pc);
-     cpu_tb_exec(cpu, tb);
- 
--    mmap_lock();
-+    mmap_wrlock();
-     tb_phys_invalidate(tb, -1);
-     mmap_unlock();
-     tcg_tb_remove(tb);
-@@ -243,7 +243,7 @@ void cpu_exec_step_atomic(CPUState *cpu)
-     if (sigsetjmp(cpu->jmp_env, 0) == 0) {
-         tb = tb_lookup__cpu_state(cpu, &pc, &cs_base, &flags, cf_mask);
-         if (tb == NULL) {
--            mmap_lock();
-+            mmap_wrlock();
-             tb = tb_gen_code(cpu, pc, cs_base, flags, cflags);
-             mmap_unlock();
-         }
-@@ -397,7 +397,7 @@ static inline TranslationBlock *tb_find(CPUState *cpu,
- 
-     tb = tb_lookup__cpu_state(cpu, &pc, &cs_base, &flags, cf_mask);
-     if (tb == NULL) {
--        mmap_lock();
-+        mmap_wrlock();
-         tb = tb_gen_code(cpu, pc, cs_base, flags, cf_mask);
-         mmap_unlock();
-         /* We add the TB in the virtual pc hash table for the fast lookup */
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index f0c3fd4d03..48a71af392 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -1214,7 +1214,7 @@ static gboolean tb_host_size_iter(gpointer key, gpointer value, gpointer data)
- /* flush all the translation blocks */
- static void do_tb_flush(CPUState *cpu, run_on_cpu_data tb_flush_count)
- {
--    mmap_lock();
-+    mmap_wrlock();
-     /* If it is already been done on request of another CPU,
-      * just retry.
-      */
-@@ -2563,7 +2563,7 @@ int page_unprotect(target_ulong address, uintptr_t pc)
-     /* Technically this isn't safe inside a signal handler.  However we
-        know this only ever happens in a synchronous SEGV handler, so in
-        practice it seems to be ok.  */
--    mmap_lock();
-+    mmap_wrlock();
- 
-     p = page_find(address >> TARGET_PAGE_BITS);
-     if (!p) {
-diff --git a/bsd-user/mmap.c b/bsd-user/mmap.c
-index 17f4cd80aa..4f6fe3cf4e 100644
---- a/bsd-user/mmap.c
-+++ b/bsd-user/mmap.c
-@@ -28,13 +28,23 @@
- static pthread_mutex_t mmap_mutex = PTHREAD_MUTEX_INITIALIZER;
- static __thread int mmap_lock_count;
- 
--void mmap_lock(void)
-+static void mmap_lock_internal(void)
- {
-     if (mmap_lock_count++ == 0) {
-         pthread_mutex_lock(&mmap_mutex);
-     }
- }
- 
-+void mmap_rdlock(void)
-+{
-+    mmap_lock_internal();
-+}
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index d70cc0aeca61..f662c38188f4 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -30,6 +30,10 @@ typedef struct AspeedSCUState {
+     uint32_t hw_strap1;
+     uint32_t hw_strap2;
+     uint32_t hw_prot_key;
 +
-+void mmap_wrlock(void)
-+{
-+    mmap_lock_internal();
-+}
++    uint32_t clkin;
++    uint32_t hpll;
++    uint32_t apb_freq;
+ } AspeedSCUState;
+=20
+ #define AST2400_A0_SILICON_REV   0x02000303U
+@@ -58,7 +62,64 @@ extern bool is_supported_silicon_rev(uint32_t silicon_=
+rev);
+  *       1. 2012/12/29 Ryan Chen Create
+  */
+=20
+-/* Hardware Strapping Register definition (for Aspeed AST2400 SOC)
++/* SCU08   Clock Selection Register
++ *
++ *  31     Enable Video Engine clock dynamic slow down
++ *  30:28  Video Engine clock slow down setting
++ *  27     2D Engine GCLK clock source selection
++ *  26     2D Engine GCLK clock throttling enable
++ *  25:23  APB PCLK divider selection
++ *  22:20  LPC Host LHCLK divider selection
++ *  19     LPC Host LHCLK clock generation/output enable control
++ *  18:16  MAC AHB bus clock divider selection
++ *  15     SD/SDIO clock running enable
++ *  14:12  SD/SDIO divider selection
++ *  11     Reserved
++ *  10:8   Video port output clock delay control bit
++ *  7      ARM CPU/AHB clock slow down enable
++ *  6:4    ARM CPU/AHB clock slow down setting
++ *  3:2    ECLK clock source selection
++ *  1      CPU/AHB clock slow down idle timer
++ *  0      CPU/AHB clock dynamic slow down enable (defined in bit[6:4])
++ */
++#define SCU_CLK_GET_PCLK_DIV(x)                    (((x) >> 23) & 0x7)
 +
- void mmap_unlock(void)
- {
-     if (--mmap_lock_count == 0) {
-@@ -87,7 +97,7 @@ int target_mprotect(abi_ulong start, abi_ulong len, int prot)
-     if (len == 0)
-         return 0;
- 
--    mmap_lock();
-+    mmap_wrlock();
-     host_start = start & qemu_host_page_mask;
-     host_end = HOST_PAGE_ALIGN(end);
-     if (start > host_start) {
-@@ -248,7 +258,7 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
-     abi_ulong ret, end, real_start, real_end, retaddr, host_offset, host_len;
-     unsigned long host_start;
- 
--    mmap_lock();
-+    mmap_wrlock();
- #ifdef DEBUG_MMAP
-     {
-         printf("mmap: start=0x" TARGET_FMT_lx
-@@ -424,7 +434,7 @@ int target_munmap(abi_ulong start, abi_ulong len)
-     len = TARGET_PAGE_ALIGN(len);
-     if (len == 0)
-         return -EINVAL;
--    mmap_lock();
-+    mmap_wrlock();
-     end = start + len;
-     real_start = start & qemu_host_page_mask;
-     real_end = HOST_PAGE_ALIGN(end);
-diff --git a/exec.c b/exec.c
-index 28f9bdcbf9..27d9c2ab0c 100644
---- a/exec.c
-+++ b/exec.c
-@@ -1030,7 +1030,7 @@ const char *parse_cpu_model(const char *cpu_model)
- #if defined(CONFIG_USER_ONLY)
- static void breakpoint_invalidate(CPUState *cpu, target_ulong pc)
- {
--    mmap_lock();
-+    mmap_wrlock();
-     tb_invalidate_phys_page_range(pc, pc + 1, 0);
-     mmap_unlock();
- }
-@@ -2743,7 +2743,7 @@ static void check_watchpoint(int offset, int len, MemTxAttrs attrs, int flags)
-                 }
-                 cpu->watchpoint_hit = wp;
- 
--                mmap_lock();
-+                mmap_wrlock();
-                 tb_check_watchpoint(cpu);
-                 if (wp->flags & BP_STOP_BEFORE_ACCESS) {
-                     cpu->exception_index = EXCP_DEBUG;
-@@ -3143,7 +3143,7 @@ static void invalidate_and_set_dirty(MemoryRegion *mr, hwaddr addr,
-     }
-     if (dirty_log_mask & (1 << DIRTY_MEMORY_CODE)) {
-         assert(tcg_enabled());
--        mmap_lock();
-+        mmap_wrlock();
-         tb_invalidate_phys_range(addr, addr + length);
-         mmap_unlock();
-         dirty_log_mask &= ~(1 << DIRTY_MEMORY_CODE);
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index bdb023b477..9ef8ab972a 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -2196,7 +2196,7 @@ static void load_elf_image(const char *image_name, int image_fd,
-     info->nsegs = 0;
-     info->pt_dynamic_addr = 0;
- 
--    mmap_lock();
-+    mmap_wrlock();
- 
-     /* Find the maximum size of the image and allocate an appropriate
-        amount of memory to handle that.  */
-diff --git a/linux-user/mips/cpu_loop.c b/linux-user/mips/cpu_loop.c
-index 084ad6a041..9d7399c6d1 100644
---- a/linux-user/mips/cpu_loop.c
-+++ b/linux-user/mips/cpu_loop.c
-@@ -405,7 +405,7 @@ static int do_store_exclusive(CPUMIPSState *env)
-     addr = env->lladdr;
-     page_addr = addr & TARGET_PAGE_MASK;
-     start_exclusive();
--    mmap_lock();
-+    mmap_rdlock();
-     flags = page_get_flags(page_addr);
-     if ((flags & PAGE_READ) == 0) {
-         segv = 1;
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 9168a2051c..71b6bed5e2 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -27,13 +27,23 @@
- static pthread_mutex_t mmap_mutex = PTHREAD_MUTEX_INITIALIZER;
- static __thread int mmap_lock_count;
- 
--void mmap_lock(void)
-+static void mmap_lock_internal(void)
- {
-     if (mmap_lock_count++ == 0) {
-         pthread_mutex_lock(&mmap_mutex);
-     }
- }
- 
-+void mmap_rdlock(void)
-+{
-+    mmap_lock_internal();
-+}
++/* SCU24   H-PLL Parameter Register (for Aspeed AST2400 SOC)
++ *
++ *  18     H-PLL parameter selection
++ *           0: Select H-PLL by strapping resistors
++ *           1: Select H-PLL by the programmed registers (SCU24[17:0])
++ *  17     Enable H-PLL bypass mode
++ *  16     Turn off H-PLL
++ *  10:5   H-PLL Numerator
++ *  4      H-PLL Output Divider
++ *  3:0    H-PLL Denumerator
++ *
++ *  (Output frequency) =3D 24MHz * (2-OD) * [(Numerator+2) / (Denumerato=
+r+1)]
++ */
 +
-+void mmap_wrlock(void)
-+{
-+    mmap_lock_internal();
-+}
++#define SCU_AST2400_H_PLL_PROGRAMMED               (0x1 << 18)
++#define SCU_AST2400_H_PLL_BYPASS_EN                (0x1 << 17)
++#define SCU_AST2400_H_PLL_OFF                      (0x1 << 16)
 +
- void mmap_unlock(void)
- {
-     if (--mmap_lock_count == 0) {
-@@ -87,7 +97,7 @@ int target_mprotect(abi_ulong start, abi_ulong len, int prot)
-     if (len == 0)
-         return 0;
- 
--    mmap_lock();
-+    mmap_wrlock();
-     host_start = start & qemu_host_page_mask;
-     host_end = HOST_PAGE_ALIGN(end);
-     if (start > host_start) {
-@@ -251,7 +261,7 @@ static abi_ulong mmap_find_vma_reserved(abi_ulong start, abi_ulong size)
++/* SCU24   H-PLL Parameter Register (for Aspeed AST2500 SOC)
++ *
++ *  21     Enable H-PLL reset
++ *  20     Enable H-PLL bypass mode
++ *  19     Turn off H-PLL
++ *  18:13  H-PLL Post Divider
++ *  12:5   H-PLL Numerator (M)
++ *  4:0    H-PLL Denumerator (N)
++ *
++ *  (Output frequency) =3D CLKIN(24MHz) * [(M+1) / (N+1)] / (P+1)
++ *
++ * The default frequency is 792Mhz when CLKIN =3D 24MHz
++ */
++
++#define SCU_H_PLL_BYPASS_EN                        (0x1 << 20)
++#define SCU_H_PLL_OFF                              (0x1 << 19)
++
++/* SCU70  Hardware Strapping Register definition (for Aspeed AST2400 SOC=
+)
+  *
+  * 31:29  Software defined strapping registers
+  * 28:27  DRAM size setting (for VGA driver use)
+@@ -107,12 +168,13 @@ extern bool is_supported_silicon_rev(uint32_t silic=
+on_rev);
+ #define SCU_AST2400_HW_STRAP_GET_CLK_SOURCE(x)     (((((x) >> 23) & 0x1)=
+ << 1) \
+                                                     | (((x) >> 18) & 0x1=
+))
+ #define SCU_AST2400_HW_STRAP_CLK_SOURCE_MASK       ((0x1 << 23) | (0x1 <=
+< 18))
+-#define     AST2400_CLK_25M_IN                         (0x1 << 23)
++#define SCU_HW_STRAP_CLK_25M_IN                    (0x1 << 23)
+ #define     AST2400_CLK_24M_IN                         0
+ #define     AST2400_CLK_48M_IN                         1
+ #define     AST2400_CLK_25M_IN_24M_USB_CKI             2
+ #define     AST2400_CLK_25M_IN_48M_USB_CKI             3
+=20
++#define SCU_HW_STRAP_CLK_48M_IN                    (0x1 << 18)
+ #define SCU_HW_STRAP_2ND_BOOT_WDT                  (0x1 << 17)
+ #define SCU_HW_STRAP_SUPER_IO_CONFIG               (0x1 << 16)
+ #define SCU_HW_STRAP_VGA_CLASS_CODE                (0x1 << 15)
+@@ -160,8 +222,8 @@ extern bool is_supported_silicon_rev(uint32_t silicon=
+_rev);
+ #define     AST2400_DIS_BOOT                           3
+=20
  /*
-  * Find and reserve a free memory area of size 'size'. The search
-  * starts at 'start'.
-- * It must be called with mmap_lock() held.
-+ * It must be called with mmap_wrlock() held.
-  * Return -1 if error.
-  */
- abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size)
-@@ -364,7 +374,7 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
- {
-     abi_ulong ret, end, real_start, real_end, retaddr, host_offset, host_len;
- 
--    mmap_lock();
-+    mmap_wrlock();
- #ifdef DEBUG_MMAP
-     {
-         printf("mmap: start=0x" TARGET_ABI_FMT_lx
-@@ -627,7 +637,7 @@ int target_munmap(abi_ulong start, abi_ulong len)
-         return -TARGET_EINVAL;
-     }
- 
--    mmap_lock();
-+    mmap_wrlock();
-     end = start + len;
-     real_start = start & qemu_host_page_mask;
-     real_end = HOST_PAGE_ALIGN(end);
-@@ -688,7 +698,7 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
-         return -1;
-     }
- 
--    mmap_lock();
-+    mmap_wrlock();
- 
-     if (flags & MREMAP_FIXED) {
-         host_addr = mremap(g2h(old_addr), old_size, new_size,
-diff --git a/linux-user/ppc/cpu_loop.c b/linux-user/ppc/cpu_loop.c
-index 2fb516cb00..d7cd5f4a50 100644
---- a/linux-user/ppc/cpu_loop.c
-+++ b/linux-user/ppc/cpu_loop.c
-@@ -76,7 +76,7 @@ static int do_store_exclusive(CPUPPCState *env)
-     addr = env->reserve_ea;
-     page_addr = addr & TARGET_PAGE_MASK;
-     start_exclusive();
--    mmap_lock();
-+    mmap_rdlock();
-     flags = page_get_flags(page_addr);
-     if ((flags & PAGE_READ) == 0) {
-         segv = 1;
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 2117fb13b4..4104444764 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -4989,7 +4989,7 @@ static inline abi_ulong do_shmat(CPUArchState *cpu_env,
-         return -TARGET_EINVAL;
-     }
- 
--    mmap_lock();
-+    mmap_wrlock();
- 
-     if (shmaddr)
-         host_raddr = shmat(shmid, (void *)g2h(shmaddr), shmflg);
-@@ -5034,7 +5034,7 @@ static inline abi_long do_shmdt(abi_ulong shmaddr)
-     int i;
-     abi_long rv;
- 
--    mmap_lock();
-+    mmap_wrlock();
- 
-     for (i = 0; i < N_SHM_REGIONS; ++i) {
-         if (shm_regions[i].in_use && shm_regions[i].start == shmaddr) {
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index cd3dfc8b26..086547c7e5 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -4071,10 +4071,6 @@ record_fault(CPUARMState *env, intptr_t i, intptr_t oprsz)
-  * between page_check_range and the load operation.  We expect the
-  * usual case to have no faults at all, so we check the whole range
-  * first and if successful defer to the normal load operation.
-- *
-- * TODO: Change mmap_lock to a rwlock so that multiple readers
-- * can run simultaneously.  This will probably help other uses
-- * within QEMU as well.
-  */
- #define DO_LDFF1(PART, FN, TYPEE, TYPEM, H)                             \
- static void do_sve_ldff1##PART(CPUARMState *env, void *vd, void *vg,    \
-@@ -4107,7 +4103,7 @@ void HELPER(sve_ldff1##PART)(CPUARMState *env, void *vg,                \
-     intptr_t oprsz = simd_oprsz(desc);                                  \
-     unsigned rd = simd_data(desc);                                      \
-     void *vd = &env->vfp.zregs[rd];                                     \
--    mmap_lock();                                                        \
-+    mmap_rdlock();                                                      \
-     if (likely(page_check_range(addr, oprsz, PAGE_READ) == 0)) {        \
-         do_sve_ld1##PART(env, vd, vg, addr, oprsz, GETPC());            \
-     } else {                                                            \
-@@ -4126,7 +4122,7 @@ void HELPER(sve_ldnf1##PART)(CPUARMState *env, void *vg,                \
-     intptr_t oprsz = simd_oprsz(desc);                                  \
-     unsigned rd = simd_data(desc);                                      \
-     void *vd = &env->vfp.zregs[rd];                                     \
--    mmap_lock();                                                        \
-+    mmap_rdlock();                                                      \
-     if (likely(page_check_range(addr, oprsz, PAGE_READ) == 0)) {        \
-         do_sve_ld1##PART(env, vd, vg, addr, oprsz, GETPC());            \
-     } else {                                                            \
-@@ -4500,7 +4496,7 @@ void HELPER(NAME)(CPUARMState *env, void *vd, void *vg, void *vm,       \
-     unsigned scale = simd_data(desc);                                   \
-     uintptr_t ra = GETPC();                                             \
-     bool first = true;                                                  \
--    mmap_lock();                                                        \
-+    mmap_rdlock();                                                      \
-     for (i = 0; i < oprsz; i++) {                                       \
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));                 \
-         do {                                                            \
-diff --git a/target/xtensa/op_helper.c b/target/xtensa/op_helper.c
-index 8a8c763c63..251fa27d43 100644
---- a/target/xtensa/op_helper.c
-+++ b/target/xtensa/op_helper.c
-@@ -114,7 +114,7 @@ static void tb_invalidate_virtual_addr(CPUXtensaState *env, uint32_t vaddr)
- 
- static void tb_invalidate_virtual_addr(CPUXtensaState *env, uint32_t vaddr)
- {
--    mmap_lock();
-+    mmap_wrlock();
-     tb_invalidate_phys_range(vaddr, vaddr + 1);
-     mmap_unlock();
+- * Hardware strapping register definition (for Aspeed AST2500 SoC and
+- * higher)
++ * SCU70  Hardware strapping register definition (for Aspeed AST2500
++ *        SoC and higher)
+  *
+  * 31     Enable SPI Flash Strap Auto Fetch Mode
+  * 30     Enable GPIO Strap Mode
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 59315010db9a..a17d50edd78d 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -168,6 +168,27 @@ static uint32_t aspeed_scu_get_random(void)
+     return num;
  }
--- 
-2.17.1
+=20
++static void aspeed_scu_set_apb_freq(AspeedSCUState *s)
++{
++    uint32_t apb_divider;
++
++    switch (s->silicon_rev) {
++    case AST2400_A0_SILICON_REV:
++    case AST2400_A1_SILICON_REV:
++        apb_divider =3D 2;
++        break;
++    case AST2500_A0_SILICON_REV:
++    case AST2500_A1_SILICON_REV:
++        apb_divider =3D 4;
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    s->apb_freq =3D s->hpll / (SCU_CLK_GET_PCLK_DIV(s->regs[CLK_SEL]) + =
+1)
++        / apb_divider;
++}
++
+ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned si=
+ze)
+ {
+     AspeedSCUState *s =3D ASPEED_SCU(opaque);
+@@ -222,6 +243,10 @@ static void aspeed_scu_write(void *opaque, hwaddr of=
+fset, uint64_t data,
+     case PROT_KEY:
+         s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
+         return;
++    case CLK_SEL:
++        s->regs[reg] =3D data;
++        aspeed_scu_set_apb_freq(s);
++        break;
+=20
+     case FREQ_CNTR_EVAL:
+     case VGA_SCRATCH1 ... VGA_SCRATCH8:
+@@ -247,19 +272,93 @@ static const MemoryRegionOps aspeed_scu_ops =3D {
+     .valid.unaligned =3D false,
+ };
+=20
++static uint32_t aspeed_scu_get_clkin(AspeedSCUState *s)
++{
++    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN) {
++        return 25000000;
++    } else if (s->hw_strap1 & SCU_HW_STRAP_CLK_48M_IN) {
++        return 48000000;
++    } else {
++        return 24000000;
++    }
++}
++
++/*
++ * Strapped frequencies for the AST2400 in MHz. They depend on the
++ * clkin frequency.
++ */
++static const uint32_t hpll_ast2400_freqs[][4] =3D {
++    { 384, 360, 336, 408 }, /* 24MHz or 48MHz */
++    { 400, 375, 350, 425 }, /* 25MHz */
++};
++
++static uint32_t aspeed_scu_calc_hpll_ast2400(AspeedSCUState *s)
++{
++    uint32_t hpll_reg =3D s->regs[HPLL_PARAM];
++    uint8_t freq_select;
++    bool clk_25m_in;
++
++    if (hpll_reg & SCU_AST2400_H_PLL_OFF) {
++        return 0;
++    }
++
++    if (hpll_reg & SCU_AST2400_H_PLL_PROGRAMMED) {
++        uint32_t multiplier =3D 1;
++
++        if (!(hpll_reg & SCU_AST2400_H_PLL_BYPASS_EN)) {
++            uint32_t n  =3D (hpll_reg >> 5) & 0x3f;
++            uint32_t od =3D (hpll_reg >> 4) & 0x1;
++            uint32_t d  =3D hpll_reg & 0xf;
++
++            multiplier =3D (2 - od) * ((n + 2) / (d + 1));
++        }
++
++        return s->clkin * multiplier;
++    }
++
++    /* HW strapping */
++    clk_25m_in =3D (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN);
++    freq_select =3D SCU_AST2400_HW_STRAP_GET_H_PLL_CLK(s->hw_strap1);
++
++    return hpll_ast2400_freqs[clk_25m_in][freq_select] * 1000000;
++}
++
++static uint32_t aspeed_scu_calc_hpll_ast2500(AspeedSCUState *s)
++{
++    uint32_t hpll_reg   =3D s->regs[HPLL_PARAM];
++    uint32_t multiplier =3D 1;
++
++    if (hpll_reg & SCU_H_PLL_OFF) {
++        return 0;
++    }
++
++    if (!(hpll_reg & SCU_H_PLL_BYPASS_EN)) {
++        uint32_t p =3D (hpll_reg >> 13) & 0x3f;
++        uint32_t m =3D (hpll_reg >> 5) & 0xff;
++        uint32_t n =3D hpll_reg & 0x1f;
++
++        multiplier =3D ((m + 1) / (n + 1)) / (p + 1);
++    }
++
++    return s->clkin * multiplier;
++}
++
+ static void aspeed_scu_reset(DeviceState *dev)
+ {
+     AspeedSCUState *s =3D ASPEED_SCU(dev);
+     const uint32_t *reset;
++    uint32_t (*calc_hpll)(AspeedSCUState *s);
+=20
+     switch (s->silicon_rev) {
+     case AST2400_A0_SILICON_REV:
+     case AST2400_A1_SILICON_REV:
+         reset =3D ast2400_a0_resets;
++        calc_hpll =3D aspeed_scu_calc_hpll_ast2400;
+         break;
+     case AST2500_A0_SILICON_REV:
+     case AST2500_A1_SILICON_REV:
+         reset =3D ast2500_a1_resets;
++        calc_hpll =3D aspeed_scu_calc_hpll_ast2500;
+         break;
+     default:
+         g_assert_not_reached();
+@@ -270,6 +369,13 @@ static void aspeed_scu_reset(DeviceState *dev)
+     s->regs[HW_STRAP1] =3D s->hw_strap1;
+     s->regs[HW_STRAP2] =3D s->hw_strap2;
+     s->regs[PROT_KEY] =3D s->hw_prot_key;
++
++    /*
++     * All registers are set. Now compute the frequencies of the main cl=
+ocks
++     */
++    s->clkin =3D aspeed_scu_get_clkin(s);
++    s->hpll =3D calc_hpll(s);
++    aspeed_scu_set_apb_freq(s);
+ }
+=20
+ static uint32_t aspeed_silicon_revs[] =3D {
+--=20
+2.13.6
 

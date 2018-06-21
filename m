@@ -1,110 +1,155 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp913116wrq;
-        Wed, 20 Jun 2018 08:41:53 -0700 (PDT)
-X-Received: by 2002:a9d:577d:: with SMTP id x58-v6mr14246483oti.196.1529509313799;
-        Wed, 20 Jun 2018 08:41:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529509313; cv=none;
-        d=google.com; s=arc-20160816;
-        b=utV3Bl1kdu4y/aOr4X6tPFYEPp9ca+hmRHPUCyRbrpVd+dcK4OeHczovoA5jYIMzPA
-         HWrygA3+b9CMMKkXJUm72DRI31HwKQNETiQDg7BpD2PRgiQ9EyxxwE1wwZ4LToeZbTJb
-         0YRXfYBV9KJ56xLQ5yVB8szHB2i0I7YnogbG1CDDl4x5qlfGbRH1GoKFVY02YLx0eRio
-         Z7qMQHtbp/6KKxq/5ReOkkq9RspA6YsZWQeqZMALmdqG7f9KmVgPjRK/y6hFdq/lgsjF
-         oy9/yhDHa0ylUpwLKvgG3VsPu7mdS02gFc6uMIvlinhYqx2BZf3KIpU+Z7j9jUyjK4qT
-         xXvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=iTxIst6HifHtGWVTKLjnF78MbaQJ4mPhS2teeIDpHyQ=;
-        b=YSPcGEfilMhQmqaE7bkkDr4d5LkjkObTR46sxjl5NKtQMusTePviHhMJTfzz4DONZi
-         XSKRGJyp1hwwpgpaXpkNoRqBEyeMPOQvMCAqzpSgsJm7q80Ucyssy/zZ3P9qrG7n7YmZ
-         KRAInxmGjtMbqr2NJ12NCMphEOZDjf7WuyqkTuefhIbuncKH4d7BeGxu1GeWPX+t+2Mq
-         ZK+gcxmvH7OmzMHq7W7LgMOkHYcBvl20/MI1/orkY/yzZgdqoQTKWJGkk8EweODCmIIV
-         SGaoSYMzbJ4Uib85lmJjzt1tzEOpN1olPbjcdtBKOVXdIUnEGnZl7Wa39xmMC1OYUzQz
-         CnJw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="J/hbQJdh";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v197-v6sor1058761oie.61.2018.06.20.08.41.53
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 20 Jun 2018 08:41:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="J/hbQJdh";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=iTxIst6HifHtGWVTKLjnF78MbaQJ4mPhS2teeIDpHyQ=;
-        b=J/hbQJdhxW12FZZF9sS9QckoK7aBmfIGQqgipdSYAIpFDMs+SiNaXJKXpTzZuONDK1
-         4/P0gCutTU3hb5/WEZRKTxQliG54fKToU9bCVfW7r6Anf4GeDNuOBoMXqHGoTs8+eZRo
-         H5qtTuA6FRaO5gvQXV7+3k/r6qe+cblEJKqA4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=iTxIst6HifHtGWVTKLjnF78MbaQJ4mPhS2teeIDpHyQ=;
-        b=frDrRrEnmCx0soNhlFtE5stctz3m8yVLtTm7HPBP4pPUKUqCOkDf2oT9RBFPTOef4V
-         yA2RPFms6B+FFaqU/mHIdn5ftfJXbHxa64AEtYb7Zx5keRhciGJvpRM/hVWnNjDWNGyV
-         HKeU51m/NcKnglYXCZptaIcNqdamQD7IM7aH8dEEhzA5dFwnqIf6IkT5gqnfxPVOs8C/
-         zUY0N0O1ff+cXlMMAsFo+LGumlcNcAYi7TjJGhl/C+myxlDk774QzQ+rjN9SJVkM2OO3
-         vpfBztOc587JOpufI58p3QRbVqdx0JP0SLIvfjNtd3tMHzBCrJqgNkW3fcFhygGWMhmv
-         Tl3g==
-X-Gm-Message-State: APt69E3E4j8mIUn6XuKVSvAdlcqZPztt9fj0xw8clBVJOs15pHe6qiek
-	VL3flbKkgw0HP8v/g0+4iED5jEvJKO/zWFmFiKj5O82A
-X-Google-Smtp-Source: ADUXVKKfpCWQbl3YT2ZdiTHLJvFwTjUa2c6sOICxFA0luFKV2Ib1sDRKvOMiOBPQ0sWIAeTrXu17a4IxyGd8rUgNyGE=
-X-Received: by 2002:aca:f10b:: with SMTP id p11-v6mr12686911oih.80.1529509313471;
- Wed, 20 Jun 2018 08:41:53 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id l142-v6sm7599212wmd.16.2018.06.20.23.31.54
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 20 Jun 2018 23:31:56 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 5D7CA3E1504;
+	Thu, 21 Jun 2018 07:26:09 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	cota@braap.org,
+	famz@redhat.com,
+	berrange@redhat.com,
+	f4bug@amsat.org,
+	richard.henderson@linaro.org,
+	balrogg@gmail.com,
+	aurelien@aurel32.net,
+	agraf@suse.de,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-arm@nongnu.org (open list:ARM)
+Subject: [PULL v2 47/57] tests/tcg: add run, diff, and skip helper macros
+Date: Thu, 21 Jun 2018 07:25:55 +0100
+Message-Id: <20180621062605.941-48-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180621062605.941-1-alex.bennee@linaro.org>
+References: <20180621062605.941-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Wed, 20 Jun 2018 08:41:33
- -0700 (PDT)
-In-Reply-To: <8ba4603d-8b79-ccef-907b-98254ccd7e71@redhat.com>
-References: <20180620132032.28865-1-peter.maydell@linaro.org>
- <20180620132032.28865-3-peter.maydell@linaro.org> <8ba4603d-8b79-ccef-907b-98254ccd7e71@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 20 Jun 2018 16:41:33 +0100
-Message-ID: <CAFEAcA-Lx0-MQYAQJ53fTP90LC1uzdnsMC1eO2VMR_2B3mUZJQ@mail.gmail.com>
-Subject: Re: [PATCH v3 2/8] hw/misc/tz-mpc.c: Implement registers
-To: Auger Eric <eric.auger@redhat.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: gQhIq6JElLYJ
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: xUkAYDJmc3dS
 
-On 20 June 2018 at 16:26, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
->
-> On 06/20/2018 03:20 PM, Peter Maydell wrote:
->> Implement the missing registers for the TZ MPC.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+As we aren't using the default runners for all the test cases it is
+easy to miss out things like timeouts. To help with this we add some
+helpers and use them so we only need to make core changes in one
+place.
 
->> @@ -127,7 +182,7 @@ static MemTxResult tz_mpc_reg_write(void *opaque, hwaddr addr,
->>      if (!attrs.secure && offset < A_PIDR4) {
->>          /* NS accesses can only see the ID registers */
-> When reading
-> "Identification registers can be read by any type of access." I
-> understand all others can only be read by secure accesses. So I would
-> have expected the same check on read side.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The check is there for reads too, it's in patch 1.
-
-> Eric
->>          qemu_log_mask(LOG_GUEST_ERROR,
->> -                      "TZ MPC register read: NS access to offset 0x%x\n",
->> +                      "TZ MPC register write: NS access to offset 0x%x\n",
->>                        offset);
-
-...this change should have been squashed into patch 2 (I cut-n-pasted
-the check from the read function to the write function, forgot
-to update the string, noticed that later but put the string fix into
-the wrong patch).
-
-Sorry about the confusion.
-
-thanks
--- PMM
+diff --git a/tests/tcg/Makefile b/tests/tcg/Makefile
+index e7dbcdb5bf..bf06415390 100644
+--- a/tests/tcg/Makefile
++++ b/tests/tcg/Makefile
+@@ -34,6 +34,15 @@
+ 
+ quiet-command = $(if $(V),$1,$(if $(2),@printf "  %-7s %s\n" $2 $3 && $1, @$1))
+ 
++# $1 = test name, $2 = cmd, $3 = desc
++run-test = $(call quiet-command, timeout $(TIMEOUT) $2 > $1.out,"TEST",$3)
++
++# $1 = test name, $2 = reference
++diff-out = $(call quiet-command, diff -u $1.out $2 | head -n 10,"DIFF","$1.out with $2")
++
++# $1 = test name, $2 = reason
++skip-test = @printf "  SKIPPED %s on $(TARGET_NAME) because %s\n" $1 $2
++
+ # Tests we are building
+ TESTS=
+ 
+@@ -84,9 +93,7 @@ RUN_TESTS=$(patsubst %,run-%, $(TESTS))
+ RUN_TESTS+=$(EXTRA_RUNS)
+ 
+ run-%: %
+-	$(call quiet-command, \
+-		timeout $(TIMEOUT) $(QEMU) $< > $<.out, \
+-		"TEST", "$< on $(TARGET_NAME)")
++	$(call run-test, $<, $(QEMU) $<, "$< on $(TARGET_NAME)")
+ 
+ .PHONY: run
+ run: $(RUN_TESTS)
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 7dba32138d..08c45b8470 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -13,7 +13,5 @@ TESTS:=$(AARCH64_TESTS)
+ fcvt: LDFLAGS+=-lm
+ 
+ run-fcvt: fcvt
+-	$(call quiet-command, \
+-		$(QEMU) $< > fcvt.out && \
+-		diff -u $(AARCH64_SRC)/fcvt.ref fcvt.out, \
+-		"TEST", "$< (default) on $(TARGET_NAME)")
++	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
++	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 14b5435fc6..aa4e4e3782 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -24,10 +24,8 @@ fcvt: LDFLAGS+=-lm
+ # fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+ 
+ run-fcvt: fcvt
+-	$(call quiet-command, \
+-		$(QEMU) $< > fcvt.out && \
+-		diff -u $(ARM_SRC)/fcvt.ref fcvt.out, \
+-		"TEST", "$< (default) on $(TARGET_NAME)")
++	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
++	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+ endif
+ 
+ # On ARM Linux only supports 4k pages
+diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+index cd173363ee..97b7c23cf1 100644
+--- a/tests/tcg/i386/Makefile.target
++++ b/tests/tcg/i386/Makefile.target
+@@ -31,7 +31,7 @@ test-i386: test-i386.c test-i386-code16.S test-i386-vm86.S test-i386.h test-i386
+ 
+ # Specialist test runners
+ run-runcom: runcom pi_10.com
+-	$(call quiet-command, $(QEMU) ./runcom $(I386_SRC)/pi_10.com > runcom.out, "TEST", "$< on $(TARGET_NAME)")
++	$(call run-test,$<,$(QEMU) ./runcom $(I386_SRC)/pi_10.com,"$< on $(TARGET_NAME)")
+ 
+ ifeq ($(SPEED), slow)
+ 
+@@ -40,13 +40,11 @@ test-i386-fprem.ref: test-i386-fprem
+ 
+ run-test-i386-fprem: TIMEOUT=60
+ run-test-i386-fprem: test-i386-fprem
+-	$(call quiet-command, \
+-		$(QEMU) $< > $<.out && \
+-		diff -u $(I386_SRC)/$<.ref $<.out, \
+-		"TEST", "$< (default) on $(TARGET_NAME)")
++	$(call run-test,test-i386-fprem, $(QEMU) $<,"$< on $(TARGET_NAME)")
++	$(call diff-out,test-i386-fprem, $(I386_SRC)/$<.ref)
+ else
+ run-test-i386-fprem: test-i386-fprem
+-	$(call quiet-command, /bin/true, "SLOW TEST", "$< SKIPPED on $(TARGET_NAME)")
++	$(call skip-test, $<, "SLOW")
+ endif
+ 
+ # On i386 and x86_64 Linux only supports 4k pages (large pages are a different hack)
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 90e45a881e..b77084c146 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -27,10 +27,10 @@ testthread: LDFLAGS+=-lpthread
+ 
+ # default case (host page size)
+ run-test-mmap: test-mmap
+-	$(call quiet-command, $(QEMU) $< > test-mmap.out, "TEST", \
++	$(call run-test, test-mmap, $(QEMU) $<, \
+ 		"$< (default) on $(TARGET_NAME)")
+ 
+ # additional page sizes (defined by each architecture adding to EXTRA_RUNS)
+ run-test-mmap-%: test-mmap
+-	$(call quiet-command, $(QEMU) -p $* $< > test-mmap-$*.out, "TEST", \
++	$(call run-test, test-mmap-$*, $(QEMU) -p $* $<,\
+ 		"$< ($* byte pages) on $(TARGET_NAME)")
+-- 
+2.17.1

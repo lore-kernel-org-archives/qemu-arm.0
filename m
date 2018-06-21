@@ -1,100 +1,100 @@
-Received: by 10.28.4.212 with SMTP id 203csp603092wme;
-        Fri, 20 Apr 2018 03:41:43 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx4+egStKHyf4BstIL44IpN0RRxGeHrpnTj5Di1sJUfDhrk1tfGrQ9bq8dU2ZZZlAd4YCZ+V+
-X-Received: by 10.55.41.149 with SMTP id p21mr10263641qkp.397.1524220902966;
-        Fri, 20 Apr 2018 03:41:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524220902; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2279281wrq;
+        Thu, 21 Jun 2018 10:36:56 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKZbK7F0o2CeE3BWfTLIVl9bpYHqzoEfi0Et0+TDV0Pp7sRHzE6wYy/5XeEELl/DVVFWzMi
+X-Received: by 2002:ac8:2db3:: with SMTP id p48-v6mr24939523qta.345.1529602616715;
+        Thu, 21 Jun 2018 10:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529602616; cv=none;
         d=google.com; s=arc-20160816;
-        b=msPElOMUp6UbvKFiZRVOmw7Yv0hB+f49PUiB9IrHkHBp/d7W6j4GHgoQutjPcHet8l
-         q2KT5jdgOGjwth4bQvzt1DWyiYXk+AQ+yJpsSoxf04EykeySuRodEJwB3PB15BPvUMbD
-         dfwvixykEkWP0rjRegUxvuUK4ranUOFLQD7uCaPG5SmqpPwNngJpqv967Lw+bTbAfdVM
-         pY+0GeltYRu29Tehc1Q3bUFebiWqVk1lCT09MLAW9XDjn6idDoLHpNHsBVge/SmLuUV3
-         R1sUEaeLigCMD0KEgyvIUeSmjjt6onPWKmjFjrzog8L+VBcKal0WXTYwzNxTEHUnQ4Lu
-         MyMg==
+        b=YWT+RCaS/h7X72AzlP1/vY4tEJ6TniZ8brXlgG25ukVbKwY2G74Fhm8UrzMvTUuNRP
+         DUy8gRGe0lYcpkvl/J/YM0T8+CDENtAfvci4f55DcwhjxGTkvIdkwV7htsFU3/7hotP0
+         pa5QoWuN4IlJBUlCXzzMyIgVP+pkrqQuLADTEaa03GqXQHEpxixWxtXaNFJtiR1VMO+b
+         /pXhsILUPBtyVyVQptB7VVRgF7DKNyeS/OrDGoz/04ILDw86EzgCxrFO3VcCT65ZfOL/
+         /9YZ5IB6mpY6iemyb71W2cheudQUVvlzn8399AIt7gikxJfjVmGA8CcBiRXVN6CP62s7
+         BYAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=Krr7K82K9sHRohpIhxcSVhF7wvAn58wWV4LnEKlIGmg=;
-        b=IqrsxlUz72pPy89wwCsgasOks+x4iwD+EDdsbes+0hlzzGcd4xoKb3EW+pkf/4Gw6i
-         2B4wxPXKGlSUnYiT5p4IB+mMtQR4h6/Q4UkGfNcjvauO6L1FQezgcWPrl2dHI0hTlSqH
-         p7/sbmQ3yOukQ7g4gezK39XnijhrUoI3KI+NeYt1Mbb61IZw6AEABDn86vUpVmEoficO
-         XSXoIKVBsYlIvrKg0yeP5BJfaosika7gTFlhkgznVhZH1MpROKSnnXdSLQ3a13+RehLG
-         pxu112tNNjYRJGU5sXhh03f/1Uo5RPcmAE8nwZ8ETmF6JNEJx5wYq/OaLoSi/HT4uAN8
-         qS2A==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=dAGvimUHj8i54umH7c4ck5t1ysicwOLXz6VvcrwBBVo=;
+        b=GddirzKaiA1iscUnuNp4brwmi7FjAPV/zfhyrdaLnBI0wQAp5cTvpx57tUVJLv6n9c
+         C3cq8oZG61lx10aBTyKFJ6H3fS4YvZ4GGaILr/+VNxTalz/LcKNhm+SvUz9MjPUMtM9R
+         UcBNx9OQ0h25L0sY+U+j/Vvcvc5VwgRZhyCgtPw3+0yZ/YhXStptVa+HD/PeYUdfXA5M
+         FBig8sCXlaUnxQEOGSzqf2wjTQHPNK1R3lwXdrSCdjzYuLnBTV0TNZvJcbtGETIkxcvm
+         k98OPHG/bu9fLTm9aOGy+r4QvXzpxSmS1sT0jmvhtaEOhDFUfKKYLROwa0QpCpoUq2n1
+         McPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h5oZ3TXH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a3dng0iw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u72si7030530qku.141.2018.04.20.03.41.42
+        by mx.google.com with ESMTPS id a125-v6si5277400qkb.287.2018.06.21.10.36.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Apr 2018 03:41:42 -0700 (PDT)
+        Thu, 21 Jun 2018 10:36:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h5oZ3TXH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a3dng0iw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46280 helo=lists.gnu.org)
+Received: from localhost ([::1]:56909 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1f9TU6-0007ui-HT
-	for alex.bennee@linaro.org; Fri, 20 Apr 2018 06:41:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56082)
+	id 1fW3Vw-0000sa-4e
+	for alex.bennee@linaro.org; Thu, 21 Jun 2018 13:36:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54974)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f9TTr-0007u7-W9
-	for qemu-arm@nongnu.org; Fri, 20 Apr 2018 06:41:29 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fW3Vn-0000rL-Jr
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 13:36:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1f9TTr-00084d-4j
-	for qemu-arm@nongnu.org; Fri, 20 Apr 2018 06:41:28 -0400
-Received: from mail-ot0-x232.google.com ([2607:f8b0:4003:c0f::232]:33886)
+	(envelope-from <richard.henderson@linaro.org>) id 1fW3Vm-0004Nr-HN
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 13:36:47 -0400
+Received: from mail-pf0-x235.google.com ([2607:f8b0:400e:c00::235]:46428)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1f9TTq-00083s-VS
-	for qemu-arm@nongnu.org; Fri, 20 Apr 2018 06:41:27 -0400
-Received: by mail-ot0-x232.google.com with SMTP id i5-v6so9126061oth.1
-	for <qemu-arm@nongnu.org>; Fri, 20 Apr 2018 03:41:26 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fW3Vl-0004NA-QQ
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 13:36:46 -0400
+Received: by mail-pf0-x235.google.com with SMTP id q1-v6so1864139pff.13
+	for <qemu-arm@nongnu.org>; Thu, 21 Jun 2018 10:36:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Krr7K82K9sHRohpIhxcSVhF7wvAn58wWV4LnEKlIGmg=;
-	b=h5oZ3TXHihACVzChSHbjRxnsYHs0psBJlQ2XxoEaMMSW0M/EGZYfJypdYPjn84Eji9
-	MFiZzUluqRnJDfjHpfR0kLgHjUGh45PNmQSg427CGmutaXt/P4cozk0usIhqrA9/mrXZ
-	EERi61XW0QKJRkXHM0QvA9iyRb+VoTPuaCWxk=
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=dAGvimUHj8i54umH7c4ck5t1ysicwOLXz6VvcrwBBVo=;
+	b=a3dng0iwajn81tYrivszbJwfLRCggA4jVOIOOmZ+uQ8sgblEQzwWV8X3N9v9e3UWnX
+	so36Y8C++rWMYjpPTonROLhcq9g727K1sPaz+0Zr7RzY9sKecjqPp9WKlxsw/f2TiSdd
+	cn8DXkvqP6fdOrmvieuSyyFRreKASXWi0ZGyg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=Krr7K82K9sHRohpIhxcSVhF7wvAn58wWV4LnEKlIGmg=;
-	b=lZwssseX3Obx1nN9xrsoT94nyvLdfMlf4cKzrglpMNDtpBPhgcm0eO3N3e4IaC33SE
-	L1xthAOxQEKGuR3HVTLA5QeDGKwbXa5ZfH6ReFjFq7xE3Nv6ts0A1PXI2b6Ep2ulwp7P
-	0PTZ/xHT0lk8O1TlGXdQkc35DtVYqoPcjSNNLh7AsUgP2rclHE/hxRly4Oai4bOXuqap
-	O6WnPXey9X6OcEbNPt6q/20qEFiqZzUPOfx4GN4WH1yrfQcxhYmzabu0qT4OcmBelPKC
-	lQw0H9iIAuNlew5adCZ5sj16LUsAf1Ko3PerJg4oA1kM3m4OoBp5EUcRXo80viADr9iz
-	36hg==
-X-Gm-Message-State: ALQs6tDbrT0K/UBXvwSyyFQUIlAhlev2QakAUPQpfDSgRW1pMoXXYbD9
-	DK/A3GPZlvFqZds1vifjpXp0KgKHsumDaLNHFqBhJg==
-X-Received: by 2002:a9d:429c:: with SMTP id
-	r28-v6mr3840748ote.126.1524220886294; 
-	Fri, 20 Apr 2018 03:41:26 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Fri, 20 Apr 2018 03:41:05
-	-0700 (PDT)
-In-Reply-To: <1523997485-1905-4-git-send-email-alindsay@codeaurora.org>
-References: <1523997485-1905-1-git-send-email-alindsay@codeaurora.org>
-	<1523997485-1905-4-git-send-email-alindsay@codeaurora.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Apr 2018 11:41:05 +0100
-Message-ID: <CAFEAcA-zeQ8T7_ngYm_q+MBJKk6ueMtg5ekLTBJS94tzqTyGkw@mail.gmail.com>
-To: Aaron Lindsay <alindsay@codeaurora.org>
-Content-Type: text/plain; charset="UTF-8"
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=dAGvimUHj8i54umH7c4ck5t1ysicwOLXz6VvcrwBBVo=;
+	b=UqY4hw2nC7jNAo9lBFCs3tEO7IFevoUlNsLyo1/txq1qT1glSd5Qkp5k036XLlAW3J
+	ZZnI2Uv91nr6fKh47h0YbW1KqHXkrv+vEg5UHEJN2kT12KL1wR7MzoAWDegPZDN1dRw6
+	yVrSJ+ncVDiD0c0IeU1whu4fyCdBIJirTbvr1EUXsn3kK40jwIvGIKZ29hGEKJHElzrm
+	uYPSkW5SMA984kSXZ/XhabGjBjyjMw1R38k7z4v9DIGp/fgf01wWcWslJCS2Z1tlUId6
+	7MbgeISbV9egJ6kPvNKCRRKtK0W3ypGR8nES2dIy+yYfV8TrGFytHCviGjjhZs6och3D
+	edVg==
+X-Gm-Message-State: APt69E2M6UWLO1Y6TRB7ky7WytYARVBAiRI1OMleI51xI0z4TtV/Unz6
+	EVa/R9iq+IO9KO60SIu1axayt1zm9kw=
+X-Received: by 2002:a63:8b44:: with SMTP id
+	j65-v6mr23985916pge.203.1529602604780; 
+	Thu, 21 Jun 2018 10:36:44 -0700 (PDT)
+Received: from cloudburst.twiddle.net (mta-98-147-121-51.hawaii.rr.com.
+	[98.147.121.51]) by smtp.gmail.com with ESMTPSA id
+	e192-v6sm9642897pfg.187.2018.06.21.10.36.43
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 21 Jun 2018 10:36:43 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 21 Jun 2018 07:36:35 -1000
+Message-Id: <20180621173635.21537-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180621173635.21537-1-richard.henderson@linaro.org>
+References: <20180621173635.21537-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::232
-Subject: Re: [Qemu-arm] [PATCH v4 03/21] target/arm: Reorganize PMCCNTR
- accesses
+X-Received-From: 2607:f8b0:400e:c00::235
+Subject: [Qemu-arm] [PATCH 2/2] linux-user: Use pthread_rwlock_t for
+ mmap_rd/wrlock
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,32 +106,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: cota@braap.org, laurent@vivier.eu, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AKSHTgSbXez0
+X-TUID: Rk+IwyoVznon
 
-On 17 April 2018 at 21:37, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> pmccntr_read and pmccntr_write contained duplicate code that was already
-> being handled by pmccntr_sync. Consolidate the duplicated code into two
-> functions: pmccntr_op_start and pmccntr_op_finish. Add a companion to
-> c15_ccnt in CPUARMState so that we can simultaneously save both the
-> architectural register value and the last underlying cycle count - this
-> ensure time isn't lost and will also allow us to access the 'old'
-> architectural register value in order to detect overflows in later
-> patches.
+Change the implementation of these functions to use an actual
+reader/writer lock, allowing multiple simultaneous readers.
 
-Can we handle the overflow case by setting up a timer that will
-expire when the counter would overflow? We'll want that anyway
-to be able to signal an interrupt on overflows. That would avoid
-the need to have an extra field in the CPU state structure, I think.
-Since PMCCNTR_EL0 is 64 bits it's not going to overflow very often
-so the slight overhead of a timer firing is not going to be a
-problem...
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ linux-user/mmap.c | 52 ++++++++++++++++++++++++++++-------------------
+ 1 file changed, 31 insertions(+), 21 deletions(-)
 
-thanks
--- PMM
+diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+index 71b6bed5e2..2dc133515a 100644
+--- a/linux-user/mmap.c
++++ b/linux-user/mmap.c
+@@ -24,52 +24,62 @@
+ 
+ //#define DEBUG_MMAP
+ 
+-static pthread_mutex_t mmap_mutex = PTHREAD_MUTEX_INITIALIZER;
+-static __thread int mmap_lock_count;
+-
+-static void mmap_lock_internal(void)
+-{
+-    if (mmap_lock_count++ == 0) {
+-        pthread_mutex_lock(&mmap_mutex);
+-    }
+-}
++static pthread_rwlock_t mmap_rwlock = PTHREAD_RWLOCK_INITIALIZER;
++/* Bit 0 indicates reading; bit 1 indicates writing; bits 2+ are count-1.  */
++static __thread int mmap_lock_held;
+ 
+ void mmap_rdlock(void)
+ {
+-    mmap_lock_internal();
++    if (likely(mmap_lock_held == 0)) {
++        pthread_rwlock_rdlock(&mmap_rwlock);
++        mmap_lock_held = 1;
++    } else {
++        /* can read-lock when write-lock held */
++        mmap_lock_held += 4;
++    }
+ }
+ 
+ void mmap_wrlock(void)
+ {
+-    mmap_lock_internal();
++    if (likely(mmap_lock_held == 0)) {
++        pthread_rwlock_rdlock(&mmap_rwlock);
++        mmap_lock_held = 2;
++    } else {
++        /* cannot upgrade a read-lock to a write-lock */
++        assert((mmap_lock_held & 1) == 0);
++        mmap_lock_held += 4;
++    }
+ }
+ 
+ void mmap_unlock(void)
+ {
+-    if (--mmap_lock_count == 0) {
+-        pthread_mutex_unlock(&mmap_mutex);
++    assert(mmap_lock_held > 0);
++    mmap_lock_held -= 4;
++    if (mmap_lock_held < 0) {
++        mmap_lock_held = 0;
++        pthread_rwlock_unlock(&mmap_rwlock);
+     }
+ }
+ 
+ bool have_mmap_lock(void)
+ {
+-    return mmap_lock_count > 0 ? true : false;
++    return mmap_lock_held != 0;
+ }
+ 
+ /* Grab lock to make sure things are in a consistent state after fork().  */
+ void mmap_fork_start(void)
+ {
+-    if (mmap_lock_count)
+-        abort();
+-    pthread_mutex_lock(&mmap_mutex);
++    assert(mmap_lock_held == 0);
++    pthread_rwlock_wrlock(&mmap_rwlock);
+ }
+ 
+ void mmap_fork_end(int child)
+ {
+-    if (child)
+-        pthread_mutex_init(&mmap_mutex, NULL);
+-    else
+-        pthread_mutex_unlock(&mmap_mutex);
++    if (child) {
++        pthread_rwlock_init(&mmap_rwlock, NULL);
++    } else {
++        pthread_rwlock_unlock(&mmap_rwlock);
++    }
+ }
+ 
+ /* NOTE: all the constants are the HOST ones, but addresses are target. */
+-- 
+2.17.1
+

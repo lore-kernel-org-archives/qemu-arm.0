@@ -1,218 +1,347 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp834102wrq;
-        Fri, 22 Jun 2018 06:27:58 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKK5J24rsovfWaHCnado2OCPWJJePoP9mKL1+3p8/VlcVygWTmhDn5D6/mnVfpJ8ZtWZhu84
-X-Received: by 2002:ac8:179a:: with SMTP id o26-v6mr1330020qtj.411.1529674078496;
-        Fri, 22 Jun 2018 06:27:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529674078; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1858415wrq;
+        Thu, 21 Jun 2018 04:16:56 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKK57dPIdxbZuNhZVPg5IrDNOtpMzATu6YLf6NEl5txKvQ8dLS6nqZfMFQ58vrsgQvhuJhzz
+X-Received: by 2002:ac8:6750:: with SMTP id n16-v6mr22374278qtp.423.1529579816054;
+        Thu, 21 Jun 2018 04:16:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529579816; cv=none;
         d=google.com; s=arc-20160816;
-        b=UOIq3ub6nmoJC9z8/NRdeTPWhtUoL49C2JkKwk1349dvFhr0e9RR6bXoD0vk/7wURL
-         FnByCbDlE4ouMNnYGmjTdhg6fDKwFZGMYmOXgOWWbmH8mPdTBGVUS1sV3VpVf5c8ReQC
-         cZcslESe1niAUEnEezyZ8sK5Zkcddr4LfZjSp/4Z5192riBRLIFNA2COUmg+9oujrGLZ
-         qh9eomFq4hPJUJuS7rT0EJz8GOtQrlUd+OBipE7VCTXyOzH4uaJ5f74QtPG3FRozNO81
-         wkQEHUSXiLd4btS+1O0lW4Kdl1TG5ZoMoZiZOvGAf771dJIEHF8EimjpVQVAc5aXksHv
-         fYPg==
+        b=O0wph/qij8jkcJ4syRbm2v68dOkW+bn4AgNyeo3/7/vJ8TDrSdHOLMEYKCmU1HhZ0M
+         hLCC38HyOqV69I71TVKaEF2wEXONEwk/994mqhUKGwJv/Ny3mZOy/ayeRg5QiRdfTsHm
+         k9v10OXZvQPVVWlW+f2kk3ZB66mujwSTcgWYFRqn9fwQlvtHKcZJbWhnyRNJYvrXDEZn
+         IOIOptaF8Xr6gfiuhPrGa/O7E9DAkiTZbrU68f5uucElRGP2mVVPpkVVFAXJvv9g3Y3W
+         qmSn+Tj2PhIYelLcAhI6EoZTkxKi0m2H13Yuh0NfYa9CMTArfWb1J1Mt5yjt/MS/0oGu
+         woVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=LiWGv8sRLbafeoa7dYxwbMt0FdD3H97SZK4Ubjwhkps=;
-        b=ZZrJksbrQDhWYTY3iWVTOSvFpIexnhM1Z4NO39kpCPxjgFmXY390HzbgGj4gb0hkjL
-         B3A1djHL/S2di272wpTPpP0UdfNN88KJOJUBO6brIjRdMvWie7SZ6FEgzE02vAub+MoW
-         0iwvhtmcr2XYjzTEgjlSPtr9k9jNCa3KYz8GO0CMGkhLYTTxzU53H/BLtuAyUwx/UvcU
-         vEBczQMBT7rFWD1JKx/kPaByU9bw3UuiWiKUmaRkNq22o/vLUQg7djanu6z5tAmYhOzY
-         FEwipzm+XAQMfIPIRaz7AXp5IcCal8otcTQVtDOlEgkkdDMrZJaCWmP8SqeuXI/wgOT8
-         pgWQ==
+        bh=7siUg4jeMX0wDXAylXifRAF5vwMvtFyN+vUN6kUDZO4=;
+        b=ECGHCAZysaUC9yFx6WuhFb+bSQXYqUV7UIxuhFHzejyPjEqnQWot0FB0f0aHUUC+4z
+         +51nW8O2LsKwUTHrKNxUtq9PkzKUR28d5TxaHYvKOwutuSoQx3dsh08cNr+Yk7fJHNTl
+         FS8FKy3bZNOjfpExtdSwMIFt2IeJxQEfxgfwwdqiwFzTav5wCdkLIRCZfniX5wpRfLJI
+         ZVzZHzAZvHQVfs/rE56wzcPW6fvwCpkO9HrCUwV1Dd4EcUrUK95Bqg3C5NUO/6s2M7lA
+         pRIdD5YETtQpCmtS4XJ4Eveslj/iJ98XnsqnlWSjoSUOsUhJ+2todjro8rKArMbZbVX1
+         M6QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m188-v6si4897911qkd.89.2018.06.22.06.27.58
+        by mx.google.com with ESMTPS id k33-v6si3387144qta.311.2018.06.21.04.16.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 06:27:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 21 Jun 2018 04:16:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33877 helo=lists.gnu.org)
+Received: from localhost ([::1]:54517 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWM6X-00031Y-Qo
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 09:27:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55546)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fVxaB-0003NC-Dx
+	for alex.bennee@linaro.org; Thu, 21 Jun 2018 07:16:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35207)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWM1i-0007ce-L0
-	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 09:23:04 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fVxZo-0003M7-9S
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 07:16:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWM1h-0004tn-IP
-	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 09:22:58 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34580 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fVxZm-0003B6-LK
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 07:16:32 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60714 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fWM1e-0004oO-Rh; Fri, 22 Jun 2018 09:22:54 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fVxZm-0003Ak-Fz; Thu, 21 Jun 2018 07:16:30 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7A3E381A4EBE;
-	Fri, 22 Jun 2018 13:22:54 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1BA9B400E9A3;
+	Thu, 21 Jun 2018 11:16:30 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-117-106.ams2.redhat.com
 	[10.36.117.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4DD542026D6B;
-	Fri, 22 Jun 2018 13:22:53 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EA7271C5AE;
+	Thu, 21 Jun 2018 11:16:28 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org, crosthwaite.peter@gmail.com,
-	agraf@suse.de
-Date: Fri, 22 Jun 2018 15:22:45 +0200
-Message-Id: <1529673765-16627-4-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1529673765-16627-1-git-send-email-eric.auger@redhat.com>
-References: <1529673765-16627-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, jia.he@hxt-semitech.com,
+	hejianet@gmail.com
+Date: Thu, 21 Jun 2018 13:16:14 +0200
+Message-Id: <1529579774-27795-5-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1529579774-27795-1-git-send-email-eric.auger@redhat.com>
+References: <1529579774-27795-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 13:22:54 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 13:22:54 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.7]);
+	Thu, 21 Jun 2018 11:16:30 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Thu, 21 Jun 2018 11:16:30 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [PATCH v3 3/3] hw/arm/virt: Silence dtc /memory warning
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v3 4/4] hw/arm/smmuv3: Add notifications on
+ invalidation
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jykdPaOayuxd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9vl+cw9TmFwv
 
-When running dtc on the guest /proc/device-tree we get the
-following warning: Warning (unit_address_vs_reg): Node /memory
-has a reg or ranges property, but no unit name".
+On TLB invalidation commands, let's call registered
+IOMMU notifiers. Those can only be UNMAP notifiers.
+SMMUv3 does not support notification on MAP (VFIO).
 
-Let's fix that by adding the unit address to the node name. We also
-don't create the /memory node anymore in create_fdt(). We directly
-create it in load_dtb. /chosen still needs to be created in create_fdt
-as the uart needs it. In case the user provided his own dtb, we nop
-all memory nodes found in root and create new one(s).
+This patch allows vhost use case where IOTLB API is notified
+on each guest IOTLB invalidation.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 ---
 v2 -> v3:
-- only nop root nodes
-- remove old comment
+- added Peter's R-b
 ---
- hw/arm/boot.c | 41 +++++++++++++++++++++++------------------
- hw/arm/virt.c |  7 +------
- 2 files changed, 24 insertions(+), 24 deletions(-)
+ hw/arm/smmu-common.c         | 34 +++++++++++++++
+ hw/arm/smmuv3.c              | 99 +++++++++++++++++++++++++++++++++++++++++++-
+ hw/arm/trace-events          |  5 +++
+ include/hw/arm/smmu-common.h |  6 +++
+ 4 files changed, 142 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index 1e48166..e09201c 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -490,11 +490,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-                  hwaddr addr_limit, AddressSpace *as)
- {
-     void *fdt = NULL;
--    int size, rc;
-+    int size, rc, n = 0;
-     uint32_t acells, scells;
-     char *nodename;
-     unsigned int i;
-     hwaddr mem_base, mem_len;
-+    char **node_path;
-+    Error *err = NULL;
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index f66e444..3098915 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -385,6 +385,40 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+     return (k1->asid == k2->asid) && (k1->iova == k2->iova);
+ }
  
-     if (binfo->dtb_filename) {
-         char *filename;
-@@ -546,12 +548,21 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         goto fail;
-     }
- 
-+    /* nop all root nodes matching /memory or /memory@unit-address */
-+    node_path = qemu_fdt_node_unit_path(fdt, "memory", &err);
-+    if (err) {
-+        error_report_err(err);
-+        goto fail;
-+    }
-+    while (node_path[n]) {
-+        if (g_str_has_prefix(node_path[n], "/memory")) {
-+            qemu_fdt_nop_node(fdt, node_path[n]);
-+        }
-+        n++;
-+    }
-+    g_strfreev(node_path);
++/* Unmap the whole notifier's range */
++static void smmu_unmap_notifier_range(IOMMUNotifier *n)
++{
++    IOMMUTLBEntry entry;
 +
-     if (nb_numa_nodes > 0) {
--        /*
--         * Turn the /memory node created before into a NOP node, then create
--         * /memory@addr nodes for all numa nodes respectively.
--         */
--        qemu_fdt_nop_node(fdt, "/memory");
-         mem_base = binfo->loader_start;
-         for (i = 0; i < nb_numa_nodes; i++) {
-             mem_len = numa_info[i].node_mem;
-@@ -572,24 +583,18 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-             g_free(nodename);
-         }
-     } else {
--        Error *err = NULL;
-+        nodename = g_strdup_printf("/memory@%" PRIx64, binfo->loader_start);
-+        qemu_fdt_add_subnode(fdt, nodename);
-+        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++    entry.target_as = &address_space_memory;
++    entry.iova = n->start;
++    entry.perm = IOMMU_NONE;
++    entry.addr_mask = n->end - n->start;
++
++    memory_region_notify_one(n, &entry);
++}
++
++/* Unmap all notifiers attached to @mr */
++inline void smmu_inv_notifiers_mr(IOMMUMemoryRegion *mr)
++{
++    IOMMUNotifier *n;
++
++    trace_smmu_inv_notifiers_mr(mr->parent_obj.name);
++    IOMMU_NOTIFIER_FOREACH(n, mr) {
++        smmu_unmap_notifier_range(n);
++    }
++}
++
++/* Unmap all notifiers of all mr's */
++void smmu_inv_notifiers_all(SMMUState *s)
++{
++    SMMUNotifierNode *node;
++
++    QLIST_FOREACH(node, &s->notifiers_list, next) {
++        smmu_inv_notifiers_mr(&node->sdev->iommu);
++    }
++}
++
+ static void smmu_base_realize(DeviceState *dev, Error **errp)
+ {
+     SMMUState *s = ARM_SMMU(dev);
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 853975a..c58e596 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -780,6 +780,68 @@ epilogue:
+     return entry;
+ }
  
--        rc = fdt_path_offset(fdt, "/memory");
--        if (rc < 0) {
--            qemu_fdt_add_subnode(fdt, "/memory");
--        }
--
--        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
--            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
--        }
--
--        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
-+        rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-                                           acells, binfo->loader_start,
-                                           scells, binfo->ram_size);
-         if (rc < 0) {
--            fprintf(stderr, "couldn't set /memory/reg\n");
-+            fprintf(stderr, "couldn't set %s reg\n", nodename);
-             goto fail;
++/**
++ * smmuv3_notify_iova - call the notifier @n for a given
++ * @asid and @iova tuple.
++ *
++ * @mr: IOMMU mr region handle
++ * @n: notifier to be called
++ * @asid: address space ID or negative value if we don't care
++ * @iova: iova
++ */
++static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
++                               IOMMUNotifier *n,
++                               int asid,
++                               dma_addr_t iova)
++{
++    SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
++    SMMUEventInfo event = {};
++    SMMUTransTableInfo *tt;
++    SMMUTransCfg *cfg;
++    IOMMUTLBEntry entry;
++
++    cfg = smmuv3_get_config(sdev, &event);
++    if (!cfg) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s error decoding the configuration for iommu mr=%s\n",
++                      __func__, mr->parent_obj.name);
++        return;
++    }
++
++    if (asid >= 0 && cfg->asid != asid) {
++        return;
++    }
++
++    tt = select_tt(cfg, iova);
++    if (!tt) {
++        return;
++    }
++
++    entry.target_as = &address_space_memory;
++    entry.iova = iova;
++    entry.addr_mask = (1 << tt->granule_sz) - 1;
++    entry.perm = IOMMU_NONE;
++
++    memory_region_notify_one(n, &entry);
++}
++
++/* invalidate an asid/iova tuple in all mr's */
++static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova)
++{
++    SMMUNotifierNode *node;
++
++    QLIST_FOREACH(node, &s->notifiers_list, next) {
++        IOMMUMemoryRegion *mr = &node->sdev->iommu;
++        IOMMUNotifier *n;
++
++        trace_smmuv3_inv_notifiers_iova(mr->parent_obj.name, asid, iova);
++
++        IOMMU_NOTIFIER_FOREACH(n, mr) {
++            smmuv3_notify_iova(mr, n, asid, iova);
++        }
++    }
++}
++
+ static int smmuv3_cmdq_consume(SMMUv3State *s)
+ {
+     SMMUState *bs = ARM_SMMU(s);
+@@ -899,12 +961,14 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             uint16_t asid = CMD_ASID(&cmd);
+ 
+             trace_smmuv3_cmdq_tlbi_nh_asid(asid);
++            smmu_inv_notifiers_all(&s->smmu_state);
+             smmu_iotlb_inv_asid(bs, asid);
+             break;
          }
-+        g_free(nodename);
+         case SMMU_CMD_TLBI_NH_ALL:
+         case SMMU_CMD_TLBI_NSNH_ALL:
+             trace_smmuv3_cmdq_tlbi_nh();
++            smmu_inv_notifiers_all(&s->smmu_state);
+             smmu_iotlb_inv_all(bs);
+             break;
+         case SMMU_CMD_TLBI_NH_VAA:
+@@ -913,6 +977,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             uint16_t vmid = CMD_VMID(&cmd);
+ 
+             trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
++            smmuv3_inv_notifiers_iova(bs, -1, addr);
+             smmu_iotlb_inv_all(bs);
+             break;
+         }
+@@ -924,6 +989,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             bool leaf = CMD_LEAF(&cmd);
+ 
+             trace_smmuv3_cmdq_tlbi_nh_va(vmid, asid, addr, leaf);
++            smmuv3_inv_notifiers_iova(bs, asid, addr);
+             smmu_iotlb_inv_iova(bs, asid, addr);
+             break;
+         }
+@@ -1402,9 +1468,38 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+                                        IOMMUNotifierFlag old,
+                                        IOMMUNotifierFlag new)
+ {
++    SMMUDevice *sdev = container_of(iommu, SMMUDevice, iommu);
++    SMMUv3State *s3 = sdev->smmu;
++    SMMUState *s = &(s3->smmu_state);
++    SMMUNotifierNode *node = NULL;
++    SMMUNotifierNode *next_node = NULL;
++
++    if (new == IOMMU_NOTIFIER_MAP) {
++        int bus_num = pci_bus_num(sdev->bus);
++        PCIDevice *pcidev = pci_find_device(sdev->bus, bus_num, sdev->devfn);
++
++        warn_report("SMMUv3 does not support notification on MAP: "
++                     "device %s will not function properly", pcidev->name);
++    }
++
+     if (old == IOMMU_NOTIFIER_NONE) {
+-        warn_report("SMMUV3 does not support vhost/vfio integration yet: "
+-                    "devices of those types will not function properly");
++        trace_smmuv3_notify_flag_add(iommu->parent_obj.name);
++        node = g_malloc0(sizeof(*node));
++        node->sdev = sdev;
++        QLIST_INSERT_HEAD(&s->notifiers_list, node, next);
++        return;
++    }
++
++    /* update notifier node with new flags */
++    QLIST_FOREACH_SAFE(node, &s->notifiers_list, next, next_node) {
++        if (node->sdev == sdev) {
++            if (new == IOMMU_NOTIFIER_NONE) {
++                trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
++                QLIST_REMOVE(node, next);
++                g_free(node);
++            }
++            return;
++        }
      }
+ }
  
-     rc = fdt_path_offset(fdt, "/chosen");
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7c9a4b8..7773b34 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -201,13 +201,8 @@ static void create_fdt(VirtMachineState *vms)
-     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index be69c5d..27b11d6 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -17,6 +17,7 @@ smmu_iotlb_cache_miss(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss,
+ smmu_iotlb_inv_all(void) "IOTLB invalidate all"
+ smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
+ smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
++smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
  
--    /*
--     * /chosen and /memory nodes must exist for load_dtb
--     * to fill in necessary properties later
--     */
-+    /* /chosen must exist for load_dtb to fill in necessary properties later */
-     qemu_fdt_add_subnode(fdt, "/chosen");
--    qemu_fdt_add_subnode(fdt, "/memory");
--    qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
+ #hw/arm/smmuv3.c
+ smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
+@@ -55,3 +56,7 @@ smmuv3_cmdq_tlbi_nh_vaa(int vmid, uint64_t addr) "vmid =%d addr=0x%"PRIx64
+ smmuv3_cmdq_tlbi_nh(void) ""
+ smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
+ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid %d"
++smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
++smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
++smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova) "iommu mr=%s asid=%d iova=0x%"PRIx64
++
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index d173806..50e2912 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -160,4 +160,10 @@ void smmu_iotlb_inv_all(SMMUState *s);
+ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
+ void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
  
-     /* Clock node, for the benefit of the UART. The kernel device tree
-      * binding documentation claims the PL011 node clock properties are
++/* Unmap the range of all the notifiers registered to any IOMMU mr */
++void smmu_inv_notifiers_all(SMMUState *s);
++
++/* Unmap the range of all the notifiers registered to @mr */
++void smmu_inv_notifiers_mr(IOMMUMemoryRegion *mr);
++
+ #endif  /* HW_ARM_SMMU_COMMON */
 -- 
 2.5.5
 

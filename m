@@ -1,89 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4752031wrq;
-        Tue, 26 Jun 2018 01:40:18 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpe+oJTgkM6ftHgP+KYM1mv+tlkk3m5ekb5aFOrgwpkf2D0b1teVKZtqSqSaKU6YtD2/e2b5
-X-Received: by 2002:a37:6142:: with SMTP id v63-v6mr438940qkb.418.1530002418226;
-        Tue, 26 Jun 2018 01:40:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530002418; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp711610wrq;
+        Fri, 22 Jun 2018 04:23:57 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKDEs+SRAE0BJHOuI6liRLZWfGU46kGC9Eb35G581XNi84TgNdlYcuJqHscmDH3VTN01ce6
+X-Received: by 2002:a37:4d90:: with SMTP id a138-v6mr864903qkb.139.1529666637638;
+        Fri, 22 Jun 2018 04:23:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529666637; cv=none;
         d=google.com; s=arc-20160816;
-        b=AlYzSRTkFZvSEEf1SLvyD6KZcAfHY1LZzxEiLW8mG1MXVjJMg6UV2gUsPyeOMapQ9b
-         yZQc3EU34HKPoGh4TG8PtESB4s24OpKyKzzPs1g4+63l94MAnPBthj7zT+IBjK3cShdN
-         MulzurHujBALrgdFef4dQ54RauTbRVSWbrrowtZZbOjSRaRM+e1LNE9LsGNSjNZ9PxzH
-         chnB+iNZcOIOsLjeNr+4CyO/MAl6MlhRHaoKaOf2t5yNKYon+WLdQBJVU8i+SiwqVZTv
-         ooO+rbd42vbqM1sPWtI+RFiZbItOvEqbNRiAXq0K9X5DQiLAUrHNdHuat0xtqEttYSg2
-         aALg==
+        b=bmPH4/hP3Hf7mxKEKd8Mk7/XeMCWiac+GhmZgmT3A8fe2973AAZMWB1Etc9e5k94v8
+         p2v7r4vRDf7k4SJCIhHtzrDT3fv9rS0Az04+xHwUoapUgfPvXPV6/SvRVKkRSwpROVCv
+         unBZW3DbT4z/0dkVH5526VhWlpHJa1iiOMm/7Hz5p1z/6v0Ama7/HRDzIrzxgsYEwyWf
+         Un6J+RclMo6JvlR/qnM+MYP/u7QLWBI9oNR9Eq9vPccnwZMpQdaOuI/HhHxjv8ghfbkZ
+         FJvE0tU/+Djka0bYPjlGgcK/5LiADbHYrEPwP+zRf983ofz9GF0DXWB9piKCoQiUw+H3
+         iH+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date:arc-authentication-results;
-        bh=ND4dCXYWG2H2Csg5lWWScVd06qAuWe4v7rP9ZOgN+d4=;
-        b=CZl60L5fJePtraMZjZdxB1m6eh1Xj/InqlJx8vu9JB1dD+4f4USd6YUfFTOO4PMgXw
-         E9rXh5DM63+EUoa0vp5fJuc7hM/Dj3n5dReWWx6oAzjgQ/S/QrGpgg4m8+bNq6vcbnue
-         zfQnJ6AQeIk1gy8aWYFh7QZuQDcO7jK4c4JgZORjm1Vvwz9hEE5zavCvYRWbQ+1F2mmP
-         Q1Qcp9mocdPBx8Kan5FAS1Nd3fCpOJdDdgXo8/jR/MlWeLE1B3yb/xwu/Qdo9+k2iQrR
-         ciwtt2+YDVmfZL5cqvTwSbIt5v/gPjXoGxdWvlMNglp1iazerj4LTDGBoQ1Sjc7frWl+
-         JHTA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=LJ99ocZfK3R/E6rr5plPn55rfJL1h/pHUcAuCc3cQc8=;
+        b=A101nFc9qog2KKm+6UcfSBDenU77ZYWwPBn4Qg6VMaiEpbuEKW1z5zWFidXwp+4vCJ
+         5sOkLsresIeq1EmeUirwtc/y3EgbkXj3Q8xUyKQ6JPROCYZwYmsNi1p10IbYayKsyGbH
+         wcv0k7siAPzErGkTYuUJ4TsOgPtYehtIpSjB6w74DCOZZ7Ul4aS30nJlGFpiacAuU+Ab
+         qJZV3+KRot07sVVEaqSu/CQhsHzb1aLsPhHglePIWi539HuHEunAgozn8sqbBWshrWVL
+         tVjeac9lnUP3MLN2WYoYgIZvPp65EQMKz2fVFM0M2Eh/nhmtr67BYT5/1WVaMQPCWjiq
+         vtiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aKOPndq3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p34-v6si434785qvp.83.2018.06.26.01.40.18
+        by mx.google.com with ESMTPS id 2-v6si7159862qto.125.2018.06.22.04.23.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 01:40:18 -0700 (PDT)
+        Fri, 22 Jun 2018 04:23:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aKOPndq3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51122 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60994 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXjWL-0003ux-O5
-	for alex.bennee@linaro.org; Tue, 26 Jun 2018 04:40:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57930)
+	id 1fWKAX-0007Vb-3n
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 07:23:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53720)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fXjWE-0003sQ-Jx
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 04:40:11 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fWJqA-0006YK-IQ
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 07:02:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fXjWB-0008VO-CL
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 04:40:10 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41634 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fXjWB-0008VC-70; Tue, 26 Jun 2018 04:40:07 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8893B7A7E8;
-	Tue, 26 Jun 2018 08:40:06 +0000 (UTC)
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 71E782166B5D;
-	Tue, 26 Jun 2018 08:40:03 +0000 (UTC)
-Date: Tue, 26 Jun 2018 10:40:01 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Message-ID: <20180626104001.617d4ea9.cohuck@redhat.com>
-In-Reply-To: <1529056145-6404-1-git-send-email-thuth@redhat.com>
-References: <1529056145-6404-1-git-send-email-thuth@redhat.com>
-Organization: Red Hat GmbH
+	(envelope-from <peter.maydell@linaro.org>) id 1fWJq9-0006HW-BQ
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 07:02:54 -0400
+Received: from mail-ot0-x244.google.com ([2607:f8b0:4003:c0f::244]:33154)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fWJq9-0006HI-66
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 07:02:53 -0400
+Received: by mail-ot0-x244.google.com with SMTP id h6-v6so7069893otj.0
+	for <qemu-arm@nongnu.org>; Fri, 22 Jun 2018 04:02:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=LJ99ocZfK3R/E6rr5plPn55rfJL1h/pHUcAuCc3cQc8=;
+	b=aKOPndq3G6gX/zHRbuZjNi3SvsV1Ynk9EGXebxw+7wuoq8GbSQqAKDJ5ucWtPp9rb3
+	oOfVaLp3wlHYqntY+TnIdhnzUyLvFqSLgJiztW33IFYjf3ebUWVaP9svOTQFBNUWcat1
+	S4ZN75CJtM6oZe21kkIj8PtgoBi2dPpit+wjY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=LJ99ocZfK3R/E6rr5plPn55rfJL1h/pHUcAuCc3cQc8=;
+	b=Nk5OyrktXEXpwWKbn66qeW+If4RQDkHT1Z08bhGmqbbBbtLQo+EIpGbHXKdKvXfbPC
+	5zidSnWIL2X4rsyB95Q1PEL4H3QPEGFEzcHwI62yp6idZK11pU82/dVsnza+iostkRwP
+	LjlEoNHwo4ox6k/g4CdzCEZ17RaqxnJjGU2wG5JB+OLM1iVTO0kUoaG0C0LDJhMQ0tBY
+	xi4WM7R+vKZsv1hF/1JzUu33Ic7V5oKtzbpjaHUUIjJNfyg+I1v1BuPVydSC2J4ocRfY
+	I9g7KArf7KPuJv94TCoVUAfjJkeFeT9fxIBj9vZwAjheFQvNfXPVuBSqR1T7VeyhlqUE
+	7CFQ==
+X-Gm-Message-State: APt69E1wFAKxL7fNV+41M4KjNiwDg1hH60jI56dFZJGJEBzCWcn8QAhh
+	B1JGNGmoPELFexoXYyv5bsnS2QBnb9l1pG+Nwjv3ag==
+X-Received: by 2002:a9d:705d:: with SMTP id
+	x29-v6mr650634otj.308.1529665372196; 
+	Fri, 22 Jun 2018 04:02:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 26 Jun 2018 08:40:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 26 Jun 2018 08:40:06 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v3] loader: Check access size when calling
- rom_ptr() to avoid crashes
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 22 Jun 2018 04:02:31
+	-0700 (PDT)
+In-Reply-To: <1529326004-32239-4-git-send-email-eric.auger@redhat.com>
+References: <1529326004-32239-1-git-send-email-eric.auger@redhat.com>
+	<1529326004-32239-4-git-send-email-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Jun 2018 12:02:31 +0100
+Message-ID: <CAFEAcA9X2ASVtcG0Nw5_Bx-rn2+M5hW7g3+QhZvhASYn9aV+SA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::244
+Subject: Re: [Qemu-arm] [PATCH v2 3/3] hw/arm/virt: Silence dtc /memory
+ warning
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,51 +106,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
+Cc: Alexander Graf <agraf@suse.de>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P2duToExQkf/
+X-TUID: vTMrsD1tro5Z
 
-On Fri, 15 Jun 2018 11:49:05 +0200
-Thomas Huth <thuth@redhat.com> wrote:
-
-> The rom_ptr() function allows direct access to the ROM blobs that we
-> load during startup. However, there are currently no checks for the
-> size of the accesses, so it's currently possible to crash QEMU for
-> example with:
-> 
-> $ echo "Insane in the mainframe" > /tmp/test.txt
-> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
-> Segmentation fault (core dumped)
-> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
-> Segmentation fault (core dumped)
-> $ echo -n HdrS > /tmp/hdr.txt
-> $ sparc64-softmmu/qemu-system-sparc64 -kernel /tmp/hdr.txt -initrd /tmp/hdr.txt
-> Segmentation fault (core dumped)
-> 
-> We need a possibility to check the size of the ROM area that we want
-> to access, thus let's add a size parameter to the rom_ptr() function
-> to avoid these problems.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Grmpf, this conflicts with "s390/ipl: fix ipl with -no-reboot" in
-s390-next... do you want to rebase it?
-
+On 18 June 2018 at 13:46, Eric Auger <eric.auger@redhat.com> wrote:
+> When running dtc on the guest /proc/device-tree we get the
+> following warning: Warning (unit_address_vs_reg): Node /memory
+> has a reg or ranges property, but no unit name".
+>
+> Let's fix that by adding the unit address to the node name. We also
+> don't create the /memory node anymore in create_fdt(). We directly
+> create it in load_dtb. /chosen still needs to be created in create_fdt
+> as the uart needs it. In case the user provided his own dtb, we nop
+> all memory nodes and create new one(s).
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  v3: Fix the check in find_rom()
-> 
->  hw/core/loader.c     | 10 +++++-----
->  hw/mips/mips_malta.c |  6 ++++--
->  hw/s390x/ipl.c       | 13 ++++++++++---
->  hw/sparc/sun4m.c     |  4 ++--
->  hw/sparc64/sun4u.c   |  4 ++--
->  include/hw/loader.h  |  2 +-
->  target/arm/cpu.c     |  2 +-
->  7 files changed, 25 insertions(+), 16 deletions(-)
+>  hw/arm/boot.c | 34 ++++++++++++++++++++--------------
+>  hw/arm/virt.c |  7 +------
+>  2 files changed, 21 insertions(+), 20 deletions(-)
+>
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index 1e48166..de80d05 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -490,11 +490,13 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>                   hwaddr addr_limit, AddressSpace *as)
+>  {
+>      void *fdt = NULL;
+> -    int size, rc;
+> +    int size, rc, n = 0;
+>      uint32_t acells, scells;
+>      char *nodename;
+>      unsigned int i;
+>      hwaddr mem_base, mem_len;
+> +    char **node_path;
+> +    Error *err = NULL;
+>
+>      if (binfo->dtb_filename) {
+>          char *filename;
+> @@ -546,12 +548,22 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>          goto fail;
+>      }
+>
+> +    /* nop all nodes matching /memory or /memory@unit-address */
+> +    node_path = qemu_fdt_node_unit_path(fdt, "memory", &err);
+> +    if (err) {
+> +        error_report_err(err);
+> +        goto fail;
+> +    }
+> +    while (node_path[n]) {
+> +        qemu_fdt_nop_node(fdt, node_path[n++]);
+> +    }
+> +    g_strfreev(node_path);
+
+This removes all nodes named "memory" or "memory@*", rather than
+just the ones in the root, right? Is that definitely what we want to
+do? The old code only deleted /memory, and the comment implies
+that we only look in the root.
+
+(I'm wondering if there are DTs that use memory nodes for random
+odd things other than system memory...)
+
+> +
+>      if (nb_numa_nodes > 0) {
+>          /*
+>           * Turn the /memory node created before into a NOP node, then create
+>           * /memory@addr nodes for all numa nodes respectively.
+>           */
+> -        qemu_fdt_nop_node(fdt, "/memory");
+
+This code change means the comment needs updating too.
+
+>          mem_base = binfo->loader_start;
+>          for (i = 0; i < nb_numa_nodes; i++) {
+>              mem_len = numa_info[i].node_mem;
+> @@ -572,24 +584,18 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+>              g_free(nodename);
+>          }
+>      } else {
+> -        Error *err = NULL;
+> +        nodename = g_strdup_printf("/memory@%" PRIx64, binfo->loader_start);
+> +        qemu_fdt_add_subnode(fdt, nodename);
+> +        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
+>
+> -        rc = fdt_path_offset(fdt, "/memory");
+> -        if (rc < 0) {
+> -            qemu_fdt_add_subnode(fdt, "/memory");
+> -        }
+> -
+> -        if (!qemu_fdt_getprop(fdt, "/memory", "device_type", NULL, &err)) {
+> -            qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
+> -        }
+> -
+> -        rc = qemu_fdt_setprop_sized_cells(fdt, "/memory", "reg",
+> +        rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+>                                            acells, binfo->loader_start,
+>                                            scells, binfo->ram_size);
+>          if (rc < 0) {
+> -            fprintf(stderr, "couldn't set /memory/reg\n");
+> +            fprintf(stderr, "couldn't set %s reg\n", nodename);
+>              goto fail;
+>          }
+> +        g_free(nodename);
+>      }
+>
+>      rc = fdt_path_offset(fdt, "/chosen");
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index cd0f350..71c27f1 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -200,13 +200,8 @@ static void create_fdt(VirtMachineState *vms)
+>      qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+>      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+>
+> -    /*
+> -     * /chosen and /memory nodes must exist for load_dtb
+> -     * to fill in necessary properties later
+> -     */
+> +    /* /chosen must exist for load_dtb to fill in necessary properties later */
+>      qemu_fdt_add_subnode(fdt, "/chosen");
+> -    qemu_fdt_add_subnode(fdt, "/memory");
+> -    qemu_fdt_setprop_string(fdt, "/memory", "device_type", "memory");
+>
+>      /* Clock node, for the benefit of the UART. The kernel device tree
+>       * binding documentation claims the PL011 node clock properties are
+> --
+> 2.5.5
+
+thanks
+-- PMM

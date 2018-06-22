@@ -1,178 +1,141 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp656701wrq;
-        Fri, 22 Jun 2018 03:23:35 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeKaW4ZMsrcXmgPsMywv6X3c5vqKlVM7hCRu09/SlRCVQ8CGYSDrx6UFiJi+DZk6O6vncVa
-X-Received: by 2002:a37:13e6:: with SMTP id 99-v6mr740101qkt.252.1529663015272;
-        Fri, 22 Jun 2018 03:23:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529663015; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp682269wrq;
+        Fri, 22 Jun 2018 03:53:53 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJTBd7V6RNLXkT4MM+47xzeBadWlnJhtfpTGulKRkFYVr4spXF2miw2Av+J+VfwJ9X/O45Z
+X-Received: by 2002:ac8:2e25:: with SMTP id r34-v6mr824216qta.341.1529664833347;
+        Fri, 22 Jun 2018 03:53:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529664833; cv=none;
         d=google.com; s=arc-20160816;
-        b=XveXRjBLV93jan+Tae2LzoSPPskIB45p7ElnmR1zd1aW4QAv32Iw1UgDyWvXgVWGxa
-         NNravad0LtASKCV7lCnQefhyUyvILFDVImxkLB1dz2Y5Zza/7iLlwkGm9ldly67lcdcC
-         sC6WuLl2hjwiC0YpFGiGD3p4oDCkS1elO8GwFJvD4cRAiXgglQPaZTquBMTNX+V5qDxx
-         FkS3LKLhGvhioroJCnh77hQSFODPovLnHfEFm6qHRw05ruQokSfOkTnmNhrz3ZkB+uBz
-         /dIz1M9UGP9ZShuYf4HrYCXcHP/rZxyxqblhkFtt/0PY8Z9KbT4HqyRSvSpkW9XdamYA
-         JO3A==
+        b=j/6FR2DTULo3GxDCYUX6qhM0/Ig7owmGrjOdhe6PjjVce3kkxERTlximgGu+mQ0bDo
+         n6VZYYVUKEoj9gj4TBugdGveIn9ds20bEiK7NZ5gt9nhuWW6MpWy1sprgNAzDFC2IfQq
+         2rxmeqVNVDM4gqX8R2/PSsEtFDcV9Zvfjr8SY9oQs+7OABIrlzn4qSC/sZPnYDeoJkNp
+         jwOuOSXSkqHVjBLN4iGcofxW83EnY4C6MI2pfwgBMpir8Qnp6XtL3lkU7RaSmmH1x5lz
+         08sZLUN8RuGfVSVYm6Bb+zCQQhsFek0hM491mq8+Dukireot3x7h/rYPok+8fioZx4v3
+         ulmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=542jOdhmn3/4bBPVYZ7JsY5enZ+MatkrlxwjSKzLuPw=;
-        b=MV2dScM5iEhR6lOTatUbYYWfgrAIPwcQJM4YsNLjK+EQWPyEKmRBLRqynDekHLT9hk
-         Q3K+Uk0SFNAAq/CVpAEPH4ojtgJ3OjTqxHY8MZGJ+nRTiDpv/myEH7QOQRxsVGd4W1a6
-         kHPqgh8PlVbV3wibrAluiKgpcfYSL1XYMfbMrpqgvprFLCOWeVC5uw6ywpcgTqiayPUA
-         QYgX9VSC7sFWIFCnodA0seMysMdCgeXrZI54h/nWL57VA7lnLYcThN0Qzm/dVxqsB+aF
-         mbpantL3/IWdk5c/FO/o8Jj18R7ENeie2waMKF1HO297kAvSG/NApANT1e+0b9e6Zj3a
-         jd5Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=+kmkR6nThCnIWy9TO/Aq1TeDlmpHgXE/qS7ytzlitl0=;
+        b=Ml0OA1lch6Ga3ywT11GoVZKGVibiSi5H7sk++Y+QaUGj77vcPTVyn1PX6GEPh9oAOL
+         OlljMpP+4t9E4WOdazF4FcHxvRN2VULHX3ysMV/9hjiqHMXSURnOfasIuAZ/s3QlCgPl
+         3pAuXL6wGUP36W/8uUcC68wE3xpjLVfJX+NFRdYq/ppnt4aKOIQ1o9bLt6tkf4LhIm29
+         f8qtD31PfrSXxaQoxS+6EZEFh7rb2wJF4or5UHJSMxsI/aX+k+T2+1k5Jw6f/PDjA1sc
+         7Dj7jndZ3wcuCJovVSuym61WieDxZIL8zGBbPdaZ+VzvlGDF2dZR/7dZYUbFjA6sBPCj
+         lkyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=MvlJNhJs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o22-v6si4290002qka.72.2018.06.22.03.23.35
+        by mx.google.com with ESMTPS id f5-v6si6554298qvi.257.2018.06.22.03.53.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 03:23:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Jun 2018 03:53:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60604 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=MvlJNhJs;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60773 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWJE6-0003KV-RQ
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 06:23:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41454)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fWJhQ-0006JR-P4
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 06:53:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47067)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWJA3-0000Jk-Vj
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 06:19:26 -0400
+	(envelope-from <hongbo.zhang@linaro.org>) id 1fWJRR-00023n-Nx
+	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 06:37:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWJA3-0005bT-1U
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 06:19:23 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57204 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fWJA2-0005ab-R9; Fri, 22 Jun 2018 06:19:22 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 45FF28151D6F;
-	Fri, 22 Jun 2018 10:19:22 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-117-106.ams2.redhat.com
-	[10.36.117.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F11C011166E1;
-	Fri, 22 Jun 2018 10:19:20 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, kwangwoo.lee@sk.com,
-	imammedo@redhat.com
-Date: Fri, 22 Jun 2018 12:19:08 +0200
-Message-Id: <1529662749-32069-5-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1529662749-32069-1-git-send-email-eric.auger@redhat.com>
-References: <1529662749-32069-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 10:19:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 10:19:22 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC 4/5] hw/arm/boot: Expose the PC-DIMM nodes in the DT
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <hongbo.zhang@linaro.org>) id 1fWJRN-0004Pe-Pk
+	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 06:37:21 -0400
+Received: from mail-yb0-x242.google.com ([2607:f8b0:4002:c09::242]:35415)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
+	id 1fWJRN-0004PR-L4
+	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 06:37:17 -0400
+Received: by mail-yb0-x242.google.com with SMTP id a16-v6so2372051ybm.2
+	for <qemu-devel@nongnu.org>; Fri, 22 Jun 2018 03:37:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id;
+	bh=+kmkR6nThCnIWy9TO/Aq1TeDlmpHgXE/qS7ytzlitl0=;
+	b=MvlJNhJsVecrCy7+NiktvouLUzr8du9+YTcmra74S0pEwPk9ZYj9PEHNTv003G+JNK
+	f62WaYL+hKtMEFenEV/gAGIZb0pqx/jWOtiLNEBvdmcuGsNRhxwvD+ES/B+35r5rZ837
+	ijjv9T43xQqStagxxzaNxqcizrwLB/x/MFNsY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=+kmkR6nThCnIWy9TO/Aq1TeDlmpHgXE/qS7ytzlitl0=;
+	b=T2cXQae/pmTS5Qhuy2iDqEXPe9cHnJPJmODkAyM++jc5kP2gLosBsbVR9mGDlqa4J+
+	cMrjrOZpIVLv7Z8FoDU39o6oQeKOsJvEMkYUhBbtTvLfyoDSfKh50BzCLudb3/TUttkE
+	vN8ISBc5YdreCzIeXLvAleQ27CZnAJTGDty8M52qreO97HaRlCU6IDPtqNJfNGg6O6xb
+	NJnLVb/aq8/2V1Icl33sg20c4SU7DQJSJqFa8geDnQs0DYnabD1MJn5uGFLS6rTf0JEX
+	mjxBLgmdq2G2kfxOZTXF00HfBakq57n6GFt8jG9FigULpHbLe7+ZofEvBdKK8w5AtXHx
+	t8CQ==
+X-Gm-Message-State: APt69E04VTM6kUAgJ89t7KZ2ffGwS9K7sjkMdE/fAsJgnNHiRDdNyMGg
+	JyTIvdXpkqmjaYSR0n+QXB7cIQ==
+X-Received: by 2002:a25:fa02:: with SMTP id b2-v6mr452946ybe.315.1529663836554;
+	Fri, 22 Jun 2018 03:37:16 -0700 (PDT)
+Received: from localhost.localdomain ([104.237.86.172])
+	by smtp.gmail.com with ESMTPSA id
+	w3-v6sm2594614ywj.66.2018.06.22.03.37.14
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 22 Jun 2018 03:37:16 -0700 (PDT)
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+To: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Date: Fri, 22 Jun 2018 18:37:07 +0800
+Message-Id: <1529663827-28854-1-git-send-email-hongbo.zhang@linaro.org>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4002:c09::242
+Subject: [Qemu-devel] [PATCH] hw/arm/virt: fix psci conduit in acpi when el3
+ enabled
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wp1NBU5xBXQi
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lAVa0Sf5KbNw
 
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+When QEMU_PSCI_CONDUIT_DISABLED is set, it doesn't mean all the PSCI
+conduits are totally disabled, it only mean the QEMU built-in PSCI
+support is disabled, in such a case, e.g. EL3 is enabled and external
+firmware (it is usually Arm Trusted Firmware) is loaded, SMC should be
+used for the guest to trigger PSCI functions.
 
-This patch add memory nodes corresponding to PC-DIMM
-regions.
-
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
 ---
- hw/arm/boot.c | 40 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
+ hw/arm/virt-acpi-build.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index cc425ce..81668bd 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -19,6 +19,7 @@
- #include "sysemu/numa.h"
- #include "hw/boards.h"
- #include "hw/loader.h"
-+#include "hw/mem/memory-device.h"
- #include "elf.h"
- #include "sysemu/device_tree.h"
- #include "qemu/config-file.h"
-@@ -516,6 +517,37 @@ static void fdt_add_psci_node(void *fdt)
-     qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
- }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 74f5744..e5b4947 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -715,7 +715,11 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
  
-+static int fdt_add_hotpluggable_memory_nodes(void *fdt,
-+                                             uint64_t base, uint64_t len,
-+                                             uint32_t acells, uint32_t scells) {
-+    MemoryDeviceInfoList *info_list = qmp_memory_device_list();
-+    MemoryDeviceInfoList *info;
-+    uint64_t end, cur, size;
-+    MemoryDeviceInfo *mi;
-+    PCDIMMDeviceInfo *di;
-+    bool is_nvdimm;
-+    int ret;
-+
-+    end = base + len;
-+    for (cur = base, info = info_list; cur < end;
-+         cur += size, info = info->next) {
-+        if (!info) {
-+            break;
-+        }
-+        mi = info->value;
-+        is_nvdimm = (mi->type == MEMORY_DEVICE_INFO_KIND_NVDIMM);
-+        di = !is_nvdimm ? mi->u.dimm.data : mi->u.nvdimm.data;
-+
-+        ret = fdt_add_memory_node(fdt, acells, di->addr,
-+                                  scells, di->size, di->node);
-+        if (ret < 0) {
-+            return ret;
-+        }
-+        size = di->size;
-+    }
-+    return 0;
-+}
-+
- int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-                  hwaddr addr_limit, AddressSpace *as)
- {
-@@ -600,6 +632,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         }
-     }
- 
-+    rc = fdt_add_hotpluggable_memory_nodes(fdt, binfo->device_memory_start,
-+                                           binfo->device_memory_size,
-+                                           acells, scells);
-+    if (rc < 0) {
-+            fprintf(stderr, "couldn't add hotpluggable memory nodes\n");
-+            goto fail;
-+    }
-+
-     rc = fdt_path_offset(fdt, "/chosen");
-     if (rc < 0) {
-         qemu_fdt_add_subnode(fdt, "/chosen");
+     switch (vms->psci_conduit) {
+     case QEMU_PSCI_CONDUIT_DISABLED:
+-        fadt.arm_boot_arch = 0;
++        /* This case means QEMU's internal EL3 implementation is disabled,
++         * but when firmware is loaded, the guest can still use SMC as PSCI
++         * conduit to call external firmware PSCI services
++         */ 
++        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT;
+         break;
+     case QEMU_PSCI_CONDUIT_HVC:
+         fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT |
 -- 
-2.5.5
+2.7.4
 

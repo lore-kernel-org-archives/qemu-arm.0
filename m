@@ -1,93 +1,116 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp764400wrq;
-        Fri, 22 Jun 2018 05:18:53 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeB6WiGBumK75kp8XQsjC9K1H98vDKEXKN1EZB5DD9sMAN56LVmqats5wcI+L9uPR414W5z
-X-Received: by 2002:a37:77c7:: with SMTP id s190-v6mr1055991qkc.73.1529669933035;
-        Fri, 22 Jun 2018 05:18:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529669933; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp828420wrq;
+        Fri, 22 Jun 2018 06:22:09 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfzA8m9wf+he+I2ssQ77HlhWPG8h+5gPCSTijsup8ZUjcuAjkCoKp53rdu76Lgp8MQIkX9v
+X-Received: by 2002:ac8:175c:: with SMTP id u28-v6mr1312834qtk.53.1529673729678;
+        Fri, 22 Jun 2018 06:22:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529673729; cv=none;
         d=google.com; s=arc-20160816;
-        b=HlesSTf1sc/LdVxfp5b5UFF69JJIeMfgAU4oflrAS3WpQDlTvkJRNyV02phKySuqat
-         buAKPoU+4IKhdNqmuh9xUqDNg9tquzDl+udgVQ+rpmFBD7klQxCGo47uXDgn1TgnpgEM
-         ZCIImeAx2mMzrRui0EQxyYM4Qq3OI/pMPiINQrQDvmnbbN6aKgrBki1y5TxXZWpsFOCM
-         PQ+sMnW5CvjY1BQSv6FKHMX1A6+ZuI2SgFDHovLQwJqjaGKDW1Och5H9Lzg1wAIiDgMc
-         AhkUiwcZDqN6q/pAWO4sLxRKbcsESxiMxZQOfRXGfUbaLzvs2BpNTnOBnwWmtjMY4d8/
-         QxGA==
+        b=wwzUfel3kVSlTOO8DHW5Repvnfj+MUKE5ifojcAOUcxZ1aKXAP+Z6tAycjOFCXKGqJ
+         PHj896c0gDl9GHmKMqhU+gF3D7iVmmSEDux5aHNZgOhbN5W5V7Cy4X1UkY53v5Hizk1h
+         8MxFkAEnPxYMMJ91NNKXmrLWoTZUN3wS0LT5LQlzbfu1sngf4PKov0GixS/grYYcLb3w
+         +eApSGDdCOT4DGPi9OmQWC7eXrlj3oDkha3xWtQpZ8odaVDb5rUz39rWHpiYTQG3lbpt
+         9j+ou0MRHR+BM09ZGo8LhgNoUZYE8lpfvm4VCy3xa19dJP3Fu9g483bPxJWjR2AFRY83
+         uu6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=jSArRptjs9fGbJ0/aL0WNA9W8dDSveBfL+Svx7mE/1w=;
-        b=YW9hAwQ6aFSQ22+XDdDisN49WmIoZ4GFlv2z3CzxzzpIzHft6BCOGlaHoSBo+RLF8h
-         BLxq3iGNIlxujyQ1WA4fjf/ZyH89kWU6KsVu0kEGCAj1vzNq6e3gQKhGD+2i2UTWDHYV
-         f++m1bgvjYa34mz7ayQanTVoK8sQyC0vW1rsivOrLeRx8FNzh70ZjX62rdYZzUsaNki+
-         z2bJbvH9L9LA8SpxQ4WaCLSz+7bh+GaOYMdYIZoCWF2eICCelC+QZ+Or4yyLSqwHE8Mm
-         l2aI8PfxEViNPfTYl4tx1eJyRpETMsnbQmTA0nPgmApfcFh5WMihZAQMYjZFQFzhVfcD
-         m6EQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=hEfzVvTI+agOcqqMVtxffk+yrD9FIseIzbE02a1V3r8=;
+        b=ZVUPcvmaJkJNe5vKTJnNY1OAvAiU/+bXDHDlBeb2XU0SC3rFfrBcb0vLy7PxtL3SNX
+         BTaKYupzvfF+2hd01/eo81lZdFhJcdSNCMULrB+dzPMm6BCyLbla6QOB4MPOZUBppnDL
+         8kdhMTSi0ZD6IzEi3aAS9kw5Pz6pDhK6f+H5u/y/EENThyC8qQ4+jSH1O55Rt4Qr3Cbe
+         yhpqbkGXI1vo3yjXWfzRUsja7A0XBTLqgqwgQC6eeZI/B5T6yUNVkMtO2wzA5qGLba46
+         U+Il6sqzuSA4VI7eZtJaVXok2VlfgoDXoGODFGAL/hRAckHw47XhEJjLuvkUCcaRrMsn
+         GywA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cKatUYwg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e7-v6si3348483qkf.217.2018.06.22.05.18.52
+        by mx.google.com with ESMTPS id d19-v6si3091748qtm.9.2018.06.22.06.22.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 05:18:53 -0700 (PDT)
+        Fri, 22 Jun 2018 06:22:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33395 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cKatUYwg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33818 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWL1g-0007QP-Ej
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 08:18:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41552)
+	id 1fWM0u-0006kv-Vf
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 09:22:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54739)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWL1V-0007QF-Nn
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 08:18:42 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWLyy-0005KC-Gt
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 09:20:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWL1S-00079m-IM
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 08:18:41 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48754 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fWL1S-00078t-Cb; Fri, 22 Jun 2018 08:18:38 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D467F40753AB;
-	Fri, 22 Jun 2018 12:18:37 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-117-106.ams2.redhat.com
-	[10.36.117.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 676571C707;
-	Fri, 22 Jun 2018 12:18:32 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <152966590354.870.11455841719190291898@d39dc562802a>
-	<7de18b27-f711-3084-a073-0f9b490b8fbf@redhat.com>
-	<CAFEAcA9xkxCBWp_RwOcs4p6eB-fVsjUEyewGCE6CdEAsAA8U3Q@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <552ade80-4287-6383-393d-dfb34fd3752a@redhat.com>
-Date: Fri, 22 Jun 2018 14:18:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWLyu-0008W9-0I
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 09:20:07 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:41140)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWLyt-0008Uy-RR; Fri, 22 Jun 2018 09:20:03 -0400
+Received: by mail-qt0-x241.google.com with SMTP id y20-v6so5860767qto.8;
+	Fri, 22 Jun 2018 06:20:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=hEfzVvTI+agOcqqMVtxffk+yrD9FIseIzbE02a1V3r8=;
+	b=cKatUYwgLR8L01PsNwSxw0IgiQ9sR+d8mvQmRUEpSWVUQGNFsC5+EN0KcAhXTZ1Zd+
+	fpBtopS4V89R0ZE2VFAPAqMIVBwF8irPvWKforjPTOH38+iZgZ/jhNUU4Ez6+tCHfRHG
+	Yb/WqbwqixcQWGi811k+yB7nYZfbNOy/F5Qppn6471XkNIHc1j4dmYoEbbxr5eD902it
+	oh30W+h5idf+rQu8z6WOH3/Wp3vsbsG1D26vWNdNcvoux6gebSm53JKDTgQh9idydNcY
+	gqU8UnyVuCsmE/xBLlRHRYxVqiVxMMKJXnuMR0j1qf/Zh4sVTrleTY6As/W5kbt4fv1M
+	P33w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=hEfzVvTI+agOcqqMVtxffk+yrD9FIseIzbE02a1V3r8=;
+	b=PpFmLZI3k92NkrKARoavsvrhcWw3NUSpXuhdbGvye/iaBCmX4G4+u1hp7zdAx5bRey
+	P0hh6AcmhotA7o2DvFg0QLtFEUOuAOrR13Sfi+kknQt6LbO4yZgtcqDvNI4OeYHNus4P
+	V2afFsB0c2m27Pg4bsr+UxnFFApwwaz5wfeZ5ccL5VBWS4FUee3NTVYSu+yCsCxjI2Cl
+	R/S8y6RXYjntB25CXo4JDtA+8M3Z5kRbyZrYAPzCFNpfBqZUSVDK188T7aL6vRBx71D2
+	p1+nHcwCMWxMEplSodMSkKey0s2b6DPQQLWwIAcVpKDM+DUhlqp8y/L0pE2FrRieZrOz
+	oW+A==
+X-Gm-Message-State: APt69E3H/doo+Ai3xlbwBoSKeIGxbvI7KSfW3Kdrh0VJjIqnl55mACRz
+	Q15h5pojSuxr7loNM5rLL3Q=
+X-Received: by 2002:ac8:1e87:: with SMTP id
+	c7-v6mr1252366qtm.322.1529673603253; 
+	Fri, 22 Jun 2018 06:20:03 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	12-v6sm6104579qtm.69.2018.06.22.06.20.00
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Jun 2018 06:20:02 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20180621180224.8312-1-f4bug@amsat.org>
+	<20180621180224.8312-2-f4bug@amsat.org>
+	<114c5545-19e6-690a-78a7-4586aa57860d@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <932f49c8-aa5b-3ee6-037f-8950dc367881@amsat.org>
+Date: Fri, 22 Jun 2018 10:19:57 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9xkxCBWp_RwOcs4p6eB-fVsjUEyewGCE6CdEAsAA8U3Q@mail.gmail.com>
+In-Reply-To: <114c5545-19e6-690a-78a7-4586aa57860d@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Fri, 22 Jun 2018 12:18:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Fri, 22 Jun 2018 12:18:37 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 0/4] ARM SMMUv3: IOTLB
- Emulation and VHOST Support
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 01/11] hw/input/pckbd: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,35 +122,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <famz@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
-	jia.he@hxt-semitech.com, qemu-arm <qemu-arm@nongnu.org>,
-	Jia He <hejianet@gmail.com>, Eric Auger <eric.auger.pro@gmail.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9juDYmm8zMk+
+X-TUID: 5KitHnbNHjsZ
 
-Hi Peter,
-
-On 06/22/2018 02:06 PM, Peter Maydell wrote:
-> On 22 June 2018 at 12:33, Auger Eric <eric.auger@redhat.com> wrote:
-> 
->>> /tmp/qemu-test/src/nbd/server.c: In function 'nbd_trip':
->>> /tmp/qemu-test/src/nbd/server.c:1980:19: error: 'end' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->>>      *length = end - offset;
->>>                ~~~~^~~~~~~~
->>> /tmp/qemu-test/src/nbd/server.c:1940:30: note: 'end' was declared here
->>>      uint64_t begin = offset, end;
+On 06/22/2018 05:04 AM, Thomas Huth wrote:
+> On 21.06.2018 20:02, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/input/pckbd.c | 4 +++-
+>>  1 file changed, 3 insertions(+), 1 deletion(-)
 >>
->> Looks this does not relate to my series or do I miss something?
+>> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+>> index f33e3fc63d..1102d2a31b 100644
+>> --- a/hw/input/pckbd.c
+>> +++ b/hw/input/pckbd.c
+>> @@ -22,6 +22,7 @@
+>>   * THE SOFTWARE.
+>>   */
+>>  #include "qemu/osdep.h"
+>> +#include "qemu/log.h"
+>>  #include "hw/hw.h"
+>>  #include "hw/isa/isa.h"
+>>  #include "hw/i386/pc.h"
+>> @@ -308,7 +309,8 @@ static void kbd_write_command(void *opaque, hwaddr addr,
+>>          /* ignore that */
+>>          break;
+>>      default:
+>> -        fprintf(stderr, "qemu: unsupported keyboard cmd=0x%02x\n", (int)val);
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "qemu: unsupported keyboard cmd=0x%02lx\n", val);
 > 
-> Yeah; a change in the nbd pullreq slipped through that confuses
-> the elderly gcc in this patchew config.
+> Please remove the "qemu:" prefix while you're at it.
 
-ouch. sweat.
-
-Thank you for the confirmation.
-
-Eric
-> 
-> -- PMM
-> 
+Sure.

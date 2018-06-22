@@ -1,71 +1,71 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp574455wrq;
-        Fri, 22 Jun 2018 01:43:16 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJ1JfZMpZo7UcudmMxjS+31mr8Kw6LrK3wZ1w8Cz1ZlfDZgAZTMpLAFshIbJ2iDV9qnPWpt
-X-Received: by 2002:ac8:e46:: with SMTP id j6-v6mr507485qti.419.1529656996427;
-        Fri, 22 Jun 2018 01:43:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529656996; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp575058wrq;
+        Fri, 22 Jun 2018 01:44:03 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKSUTXmZmsHyAqzQjWbp+69QzWlQzvkVLuGRPwsQeuG0wx244N8f8n293pMUrDNgCqrTofD
+X-Received: by 2002:aed:252c:: with SMTP id v41-v6mr496817qtc.403.1529657043542;
+        Fri, 22 Jun 2018 01:44:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529657043; cv=none;
         d=google.com; s=arc-20160816;
-        b=LJA5AdGugAI6Aa7qmd4jY0FfOqmjUvY2vhtHoKvc6Y4aRMsqbDbikYX4his9mororY
-         /SMT+AyA46MeIgla5xoyZqfYNJUBNgDBQGiV2F9QEk5VN+Sijg9dcwkldMC5qPaKd5oh
-         t/d63toqiLvedSvXO8lCFTI8D4GYAfc3bIpcrqNkFUsP+D+JLu7vVpgBq73eI+TmVRI0
-         Lzn2f/RaJxFuETq6hRVrVWJ3Y83fapqtvP8tz+dcm9qSrF9Qqs61l5ypLHb042SadGKK
-         W3yeawz+K4Lt+MVG7/q0g7AIcUs+tZwH/elIrVd83Z0zYS1QKSXBp8uR98AiHOVnOkuR
-         YeUw==
+        b=upvAX19niAF3Bb0eK2hQgznWQCz/ds2LXUe8X1GpgzisXI5U+fsKucZUwlqoHVtkQ6
+         U6lPcdUeigWSlgNqtAIcyhQplH26Ni4gPQhGPynv0cp9++0h0fi/KhLGGuiBhplbSJVH
+         ZsqL6rDa+0u5MXJuj8/Cb3OvEuJFxohJywHeeanc4YIQh4H/KCVlO1cVVyYkxYICYAbB
+         moTP7OrppI9SNyAItFixU+vBigkoF4py0svmIfpMKg1cGqeXs5tcNcVQ4WzwLv00c9WB
+         8G1HwsagDK4sa608QC56hNg06+GqCgY/MtiNxin/99DwPEAttbf5jUe18jiVQca3UcuP
+         r5YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :arc-authentication-results;
-        bh=+gXxNMBDxArzyzzB0rw9lSC8ECX3VOK0iGAF02Fvjvo=;
-        b=XpX49y0fBMb9xfhFsa0ZaUiuWZgOj4xPVCz1XYAtb+pVOhaDkyIUd35IkJyNIaKtsv
-         CW1DWsLHJoTRxz6SVucEakK59IkIZtC6LjmSCxhUJvhRwz4PY+XGFwZKKv/SZEcXWyCr
-         /74MBp7iEr6w8JzpIpKYvbCImbLaFLAw0vRnVPrJCzKtAeGeGqRjudt21VHkM4GTvYUX
-         QRdl6hTh7Ur+ktDVTxz78kluNu9NlgdnIVvRtfj4fn2pmt9mkPQNCX/FepjeEgTv1iaC
-         zwjzcI9wze+YC/If/yGy+7LFc2KdC8FY57rZqtKQPAAdIsYu6D2mNC1iWt00+M+XKiU0
-         m6dw==
+        bh=i1avfBZT5NKpastD3Fbjm4kUVGnGo0w3ItPDTiYbsHg=;
+        b=sxOGtgfw8lSEj6Afhg+XZi0NZpM9VXhOZ/gsCYWsjYvApg70a5Pm9cSphwXH745zQY
+         VFijdaRipf91ptvAi3v70fS3GRACdBrLwJTQYGrbuBkUoGYtUEJccX4rLhrca/mavJV8
+         hnUtIxwSW4Rl6Jo+zhr+yxukg3YDybKDJsYJbI4zO2GOeXBW7G3fydPEUB+khetEMjrA
+         //dMXC73N0ddp7baSQGsmmycjVQ9+XbxdDlwvuZ/Z1X9f84xAMg88gvhRegrAA/jqKAf
+         axRlWfyDMzR0l+yXtOlJdd8Uwek6s2tRHOl5cCKDk3DIoLG+tYQTdYQH9jhcNkME3+Ny
+         64yQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d23-v6si1681622qvd.227.2018.06.22.01.43.16
+        by mx.google.com with ESMTPS id h128-v6si5528012qkc.331.2018.06.22.01.44.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 01:43:16 -0700 (PDT)
+        Fri, 22 Jun 2018 01:44:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60110 helo=lists.gnu.org)
+Received: from localhost ([::1]:60114 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWHf2-0001DH-05
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 04:43:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51380)
+	id 1fWHfn-0001gx-2K
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 04:44:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51531)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHet-0001D4-Sr
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:43:09 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWHfb-0001eX-4b
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:43:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHeq-0008RT-J9
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:43:07 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37498 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWHfa-0000Jx-E1
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:43:51 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48618 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWHeq-0008RE-DT; Fri, 22 Jun 2018 04:43:04 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fWHfa-0000Jr-8j; Fri, 22 Jun 2018 04:43:50 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DF5838D76C;
-	Fri, 22 Jun 2018 08:43:03 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BF2F5F68B2;
+	Fri, 22 Jun 2018 08:43:49 +0000 (UTC)
 Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D6E281C5A2;
-	Fri, 22 Jun 2018 08:43:02 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14CA62156888;
+	Fri, 22 Jun 2018 08:43:47 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-11-f4bug@amsat.org>
+	<20180621180224.8312-12-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -110,28 +110,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <8b75e080-6c68-0bdc-1f2c-8ca6c0f80089@redhat.com>
-Date: Fri, 22 Jun 2018 10:43:01 +0200
+Message-ID: <346ca2ea-3423-b263-0a86-bd10fa62bb4d@redhat.com>
+Date: Fri, 22 Jun 2018 10:43:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-11-f4bug@amsat.org>
+In-Reply-To: <20180621180224.8312-12-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 08:43:03 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 08:43:03 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.1]);
+	Fri, 22 Jun 2018 08:43:49 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Fri, 22 Jun 2018 08:43:49 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 10/11] hw/net/stellaris_enet:
- Use qemu_log_mask(GUEST_ERROR) instead of hw_error
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 11/11] hw/net/smc91c111: Use
+ qemu_log_mask(GUEST_ERROR) instead of hw_error
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -147,59 +147,55 @@ Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vE5uHS2M07RE
+X-TUID: izH8zPohFH/a
 
 On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > hw_error() finally calls abort(), but there is no need to abort here.
-
-Additionally, hw_error() is also only meant for CPU errors (since it
-dumps the CPU state). We should really rename that function to
-"cpu_hw_error" one day to avoid that people use it in the wrong spots...
-
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/net/stellaris_enet.c | 9 +++++++--
+>  hw/net/smc91c111.c | 9 +++++++--
 >  1 file changed, 7 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
-> index 04bd10ada3..188adcbd15 100644
-> --- a/hw/net/stellaris_enet.c
-> +++ b/hw/net/stellaris_enet.c
-> @@ -9,6 +9,7 @@
->  #include "qemu/osdep.h"
+> diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+> index c8cc5379b7..705a034cb9 100644
+> --- a/hw/net/smc91c111.c
+> +++ b/hw/net/smc91c111.c
+> @@ -11,6 +11,7 @@
 >  #include "hw/sysbus.h"
 >  #include "net/net.h"
+>  #include "hw/devices.h"
 > +#include "qemu/log.h"
+>  /* For crc32 */
 >  #include <zlib.h>
 > =20
->  //#define DEBUG_STELLARIS_ENET 1
-> @@ -343,7 +344,9 @@ static uint64_t stellaris_enet_read(void *opaque, h=
-waddr offset,
->      case 0x3c: /* Undocuented: Timestamp? */
->          return 0;
->      default:
-> -        hw_error("stellaris_enet_read: Bad offset %x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_enet_rd%d: 0x%" HWADDR_PRIx "\n",
-> +                      size, offset);
->          return 0;
->      }
->  }
-> @@ -442,7 +445,9 @@ static void stellaris_enet_write(void *opaque, hwad=
-dr offset,
->          /* Ignored.  */
+> @@ -478,7 +479,9 @@ static void smc91c111_writeb(void *opaque, hwaddr o=
+ffset,
+>          }
 >          break;
->      default:
-> -        hw_error("stellaris_enet_write: Bad offset %x\n", (int)offset)=
-;
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_enet_wr%d: 0x%" HWADDR_PRIx " =3D 0x%=
-lx\n",
-> +                      size, offset, value);
 >      }
+> -    hw_error("smc91c111_write: Bad reg %d:%x\n", s->bank, (int)offset)=
+;
+> +    qemu_log_mask(LOG_GUEST_ERROR,
+> +                  "smc91c111_write(bank:%d) 0x%" HWADDR_PRIx " =3D 0x%=
+x\n",
+> +                  s->bank, offset, value);
+>  }
+> =20
+>  static uint32_t smc91c111_readb(void *opaque, hwaddr offset)
+> @@ -621,7 +624,9 @@ static uint32_t smc91c111_readb(void *opaque, hwadd=
+r offset)
+>          }
+>          break;
+>      }
+> -    hw_error("smc91c111_read: Bad reg %d:%x\n", s->bank, (int)offset);
+> +    qemu_log_mask(LOG_GUEST_ERROR,
+> +                  "smc91c111_read(bank:%d) 0x%" HWADDR_PRIx "\n",
+> +                  s->bank, offset);
+>      return 0;
 >  }
 
-Could you please keep the "bad offset" or a similar error message, so
-that the user knows that there is really something wrong here?
+Please keep "bad register" or a similar text in here.
 
  Thomas
+

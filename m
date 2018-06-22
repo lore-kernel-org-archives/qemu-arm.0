@@ -1,105 +1,107 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1278972wrq;
-        Fri, 22 Jun 2018 14:13:02 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL4efEs2ac8PgascC9VDdtZOYwkXbg+Vu1oCIVy6rR3fepLo+4ZhdIbZdB9mQ+qx5m9waVN
-X-Received: by 2002:aed:22c4:: with SMTP id q4-v6mr2999777qtc.145.1529701982409;
-        Fri, 22 Jun 2018 14:13:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529701982; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1279591wrq;
+        Fri, 22 Jun 2018 14:13:57 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJMh2loEYzAgq9UDUboxkovvkCHWeDy9UJ4Y/4qtBrxB39Qt2xW4pNl6nQO8aYHkbWTT+vK
+X-Received: by 2002:aed:3025:: with SMTP id 34-v6mr2923713qte.182.1529702037481;
+        Fri, 22 Jun 2018 14:13:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529702037; cv=none;
         d=google.com; s=arc-20160816;
-        b=O4CVSBCVID/ZkIqU4QejYini9yXkdFfqr5ViUS4ktV94YJZq8rXxCVofeWfFkLphxw
-         Ar1a4iHTqNrrs2voyrvPWujYit4vACoFSBDbu6ps8TQjb8WQpa9hgVPaDXDFBBCnB4I+
-         gcTNQDWSO1uKaCJk19YUJX9oYmNrI6sEjquUi8FRXOUc//62+WyHIuO9pKVMfHXEiSui
-         f8aaECYVz8SSZ2QpKTVzgcPkIOudOP+Eya+8Ewq3w3h0szxc1xs3OhUAcutGtNPrhi1D
-         3KQMyodXXx5vbJxSHAG5NWmxTVoPoHTR5YkHIGuFIcpYptbDef4oemo7LwnMpjHdbk/9
-         jLeA==
+        b=KIlzOqy2qdHWhHx2V2rG+8Be15ip08g5SL5xMtILJnNQaUEB4NAg+fP/IP+TOX0YuV
+         +/h2Id3+WR0/BvIF5XC+ecLkX7APIfm6qufEk8VuF1Ma03XX2fB7mEkTCE93Vs6EFafY
+         tSbVjXguyXtOGC+w28ewgJnVl5fDV9KGlXrG7h4uiQFNG6UydPQlOzoe3BYW0Z8YeKFD
+         nah19A83K4bQMdIxOEct3vpZ3DeTAiNF4z9CFKp9jFuaoA5T0ZtjTvvXT8AwKd3BFdzx
+         MfeCtqIVnqjPYQg26LIdYb7tpPeLvZ02d7LKBajRf+CiqWXqSp7LyzMG29Gh0Nw60cug
+         uvUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:dkim-signature:arc-authentication-results;
-        bh=/2QAdcbV2nEBZpHuTpQxrrRIVSaJaBF2khwYcyO1qqI=;
-        b=DceAvToHRrjkKWKI4AhwBrf6GwXuRgpNx0wtdv6r0WU+bdQM8qEe9USLEZd7N3Y8ZZ
-         md9stnixGhD2SouyKNU6A0+mxnuuXkm0g86CESP7jzvinimaxIdMTJTcAyphnX0G6j/b
-         ydf1URlqZGsuCHOQCEugCZaE0KHUS6hLllAOboA7/gJKlBXHwghGXyRFkpWf63mposIu
-         3/GbWUsutq+w5qvZFz45pVpA8dQKJ82y2M1p923R0C2LRAi9ogQ9RTZ9E+TAHsLLWFjN
-         PGXcwJxXaTiu+H/QVMLeYPKw9/O3MZSAzgOsUnEMOXk+EJLma9X4Nvpgysluvz9AG7pG
-         Cufw==
+        bh=pAonXuwlGeLITCqBRlwerrIszJkDvczbw2dcWQVEqro=;
+        b=r2EUdspHJ+/F81rVvGi0osrMQ7l61OX1w6Ll3snGmqQ7Ept7slXDMyxo+hyCZ5yLIz
+         pHgaEjmqCY1WU7Vo86GLw94BOnpBL+kKSiskziIpT2unrFNAnq7CiDvWGRudLJfNvAnE
+         mbGSxYs53r1RJO54nbp5+KgbyqE09aAMQ2lVgs8FICM8Voh85Sj8YMETrOutuHokBWt0
+         DS/XWHwVVaePiGVkP6+U0t36BBtqkQf40DdpGJtkRV/3n2HgN/TLwkXE1+8EBtoXo/i7
+         0vnqRmIefwe8M+/auUjysZJowP76HwmV47gh+L3M47v2yWPmiU8x5aEkkh0oRda6BPCL
+         lJPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=sNoRIgfN;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=udEoqT6+;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=D1BLvLP0;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=UTVOrq2J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l1-v6si1898342qvm.219.2018.06.22.14.13.02
+        by mx.google.com with ESMTPS id l7-v6si3564823qvi.12.2018.06.22.14.13.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 14:13:02 -0700 (PDT)
+        Fri, 22 Jun 2018 14:13:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=sNoRIgfN;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=udEoqT6+;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=D1BLvLP0;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=UTVOrq2J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36228 helo=lists.gnu.org)
+Received: from localhost ([::1]:36232 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWTMb-0004aK-Tp
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 17:13:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33006)
+	id 1fWTNV-00051Y-1N
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 17:13:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33194)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1fWTMQ-0004Yq-Va
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 17:12:51 -0400
+	(envelope-from <cota@braap.org>) id 1fWTNL-00050e-7l
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 17:13:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1fWTMM-0001G7-1N
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 17:12:50 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:35555)
+	(envelope-from <cota@braap.org>) id 1fWTNG-0001iD-8S
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 17:13:47 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:41491)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1fWTML-0001Ft-Ng; Fri, 22 Jun 2018 17:12:45 -0400
+	id 1fWTNG-0001i1-3Q; Fri, 22 Jun 2018 17:13:42 -0400
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 4434421AFB;
-	Fri, 22 Jun 2018 17:12:45 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-	by compute4.internal (MEProxy); Fri, 22 Jun 2018 17:12:45 -0400
+	by mailout.nyi.internal (Postfix) with ESMTP id D005520F29;
+	Fri, 22 Jun 2018 17:13:41 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+	by compute4.internal (MEProxy); Fri, 22 Jun 2018 17:13:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
 	:content-type:date:from:in-reply-to:message-id:mime-version
 	:references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-	mesmtp; bh=/2QAdcbV2nEBZpHuTpQxrrRIVSaJaBF2khwYcyO1qqI=; b=sNoRI
-	gfNgvXv2IXvw9lnEEJDnoSXwIyFvoCFhyGy+ZEGGkT8LsyoTADS/naehnK4CpF7R
-	ytgAO0l9ZtBP40vt9dc+ETZBJHjfsxMa6bniIPti1iihYzBtoWFCb00BnVwNOjPt
-	0hsgjGh7DM60UyRkTP3q+jfUDTnnocIcrxbeyI=
+	mesmtp; bh=pAonXuwlGeLITCqBRlwerrIszJkDvczbw2dcWQVEqro=; b=D1BLv
+	LP0f05emRgXCZR8xJWJ84f9ls3qwA2egUtqiEJ6hsNrqETuV0W/Wd7+kkscqdHAQ
+	vxZzcxdrpsvudo7X6CWjH5HHC1i+SrWnd2W+arzLia554jG06pMqGakRKrcxsA0Z
+	fb2vSB0A1uEz9QwNvg1ILlXtmR/DzTEnDZD7Ok=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; bh=/2QAdcbV2nEBZpHuTpQxrrRIVSaJa
-	BF2khwYcyO1qqI=; b=udEoqT6+lQrOiiVTEKTDPh8Vrlw8ETTdV8wxmcAVAX86K
-	IGPJrA0S7Txell5qu/THDSLD/R3BIzcyLkTF9HthvIN9FfWgPm2X3q/gR8i+Q2NR
-	x02Z980togwB3YSOZBtzmixo/G17TE+sTxcTakB1xVKa8WQJno5BERhZwUrB+zX4
-	t7XJgoExv6zPB/5zR1MM3MK+1yfSL+zKqQszqPV/bhYQu5evoAYHItDX8gOyIR1n
-	DX/yiQkn5PgalkU56kOnTpFeUn55yo9Kkdtsh6Dl+S1zD1SMxFvE1WRdP41/XlJN
-	z5VdW441dleSSvRqOvgQTYMcuNAHM5NKS76QNwJ8A==
-X-ME-Proxy: <xmx:TGYtW6RNPR_4GAHy5DXxcFobKKzcvzFhmWsvDLQjmWzZuE5FtHrEcw>
-	<xmx:TGYtW1lDLrAhCN5WUc7xtTZF3kotpcbg1NW3v5zuPQigRf1rMYdWVA>
-	<xmx:TGYtW861Vdoy4a3TtZbsbXu9XRBF-ZxSoRGuPltHokseZhJFAx6uwA>
-	<xmx:TGYtW1CDWmNFLMRFbKKHdEc6FFiXrwpF7rntuI43kQanbmOuQVQ1Uw>
-	<xmx:TGYtW9yf29CCqQXgplDnH4dTfqUEM8gXe3VcIwsLZ51pMXofksvEag>
-	<xmx:TWYtWzXlKPfMQdog-qfCj_Z2ecASNr32mAmVn8sxpFVQWgKohW-udQ>
-X-ME-Sender: <xms:TGYtWxo5m6KzUA3Fhj_IdmXYFETYUVCOEBwHzYwOX-BsW7OYbEgiFQ>
+	:x-me-sender:x-sasl-enc; s=fm3; bh=pAonXuwlGeLITCqBRlwerrIszJkDv
+	czbw2dcWQVEqro=; b=UTVOrq2JYlAWQIarvQzyiZQG29ZQOYXQw7Pi1npZl57At
+	rFcLuvp+cZ8GjCbEyrWC9X3MXxEiadCAqD9+nK+/4rAv2QIMj4YE8ip0zl5n+L/l
+	wOtQbVvq7rK/rkkQ7G/4DSx/kzMEMon0HiZJdS5QA966CLmydxh8b715ujgIqDXU
+	X4s2SaDHIk5wK3T3DOWPRk15rn5J/9toAA3PoP5BIfGWeoJ32IjTpbRlsJmUnw69
+	9VGCPcnnsKl1l16rFCBb/DvZIBCsdyAHQA+5Qe8fj980Q4uQ+qImEfTvx67rXVS3
+	EGeyCub10u5RrgddHaKNqQ7sfpZQFFEDRpiil42vg==
+X-ME-Proxy: <xmx:hWYtW4CmdwSWHIRQ4UGXwzkNveZvkRyW8p5EGDX86WxyLUmi3lJriQ>
+	<xmx:hWYtW1cDuXPqt9_xACRbYXNqvsOh9LiuV-Ud4orVRxeYzbF9CHC0pQ>
+	<xmx:hWYtW6kMAxN2-f0VEL5Q39FcV1cCSSvnPPAeiIMJwPAYG6miV1b0bQ>
+	<xmx:hWYtW0E-Rg7UMgKzcGEX6lQAhZQooRvGOCXrrpaN5LonJuZOo3EHeA>
+	<xmx:hWYtW67DBt1mvsABuw1uFzgtfZA9oiZ-ojU_OkVhE80YmB-EY_BBJQ>
+	<xmx:hWYtW7tPAtIKAR0QTmYaZMRKmAEFzGYcs-l-0CvXU2Pw_E0cP1297g>
+X-ME-Sender: <xms:hWYtWz3APt-_AKr9KVduFjP4NJPO4OezwGu3ZZYk1A3MpvpFBDhqSQ>
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 9F60710252;
-	Fri, 22 Jun 2018 17:12:44 -0400 (EDT)
-Date: Fri, 22 Jun 2018 17:12:44 -0400
+	by mail.messagingengine.com (Postfix) with ESMTPA id 84C1EE446F;
+	Fri, 22 Jun 2018 17:13:41 -0400 (EDT)
+Date: Fri, 22 Jun 2018 17:13:41 -0400
 From: "Emilio G. Cota" <cota@braap.org>
 To: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <20180622211244.GA11346@flamenco>
+Message-ID: <20180622211341.GB11346@flamenco>
 References: <20180621173635.21537-1-richard.henderson@linaro.org>
+	<20180621173635.21537-3-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20180621173635.21537-1-richard.henderson@linaro.org>
+In-Reply-To: <20180621173635.21537-3-richard.henderson@linaro.org>
 User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.111.4.26
-Subject: Re: [Qemu-arm] [PATCH 0/2] linux-user: Change mmap_lock to rwlock
+Subject: Re: [Qemu-arm] [PATCH 2/2] linux-user: Use pthread_rwlock_t for
+ mmap_rd/wrlock
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -114,33 +116,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, laurent@vivier.eu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1tjqLDBuioYP
+X-TUID: 5NpLSqm8sgpw
 
-On Thu, Jun 21, 2018 at 07:36:33 -1000, Richard Henderson wrote:
-> The objective here is to avoid serializing the first-fault
-> and no-fault aarch64 sve loads.
-> 
-> When I first thought of this, we still had tb_lock protecting
-> code generation and merely needed mmap_lock to prevent mapping
-> changes while doing so.  Now (or very soon), tb_lock is gone
-> and user-only code generation dual-purposes the mmap_lock for
-> the code generation lock.
-> 
-> There are two other legacy users of mmap_lock within linux-user,
-> for ppc and mips.  I believe these are dead code from before these
-> ports were converted to use tcg atomics.
-> 
-> Thoughts?
+On Thu, Jun 21, 2018 at 07:36:35 -1000, Richard Henderson wrote:
+>  void mmap_wrlock(void)
+>  {
+> -    mmap_lock_internal();
+> +    if (likely(mmap_lock_held == 0)) {
+> +        pthread_rwlock_rdlock(&mmap_rwlock);
 
-I'm curious to see how much perf could be gained. It seems that the hold
-times in SVE code for readers might not be very large, which
-then wouldn't let us amortize the atomic inc of the read lock
-(IOW, we might not see much of a difference compared to a regular
-mutex).
-
-Are you using any benchmark that shows any perf difference?
-
-Thanks,
+s/rwlock_rdlock/rwlock_wrlock/
 
 		E.
-

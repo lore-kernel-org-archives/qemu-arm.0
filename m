@@ -1,100 +1,273 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1602838wrq;
-        Wed, 13 Jun 2018 22:50:28 -0700 (PDT)
-X-Received: by 2002:a65:4cc3:: with SMTP id n3-v6mr1056020pgt.98.1528955427966;
-        Wed, 13 Jun 2018 22:50:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528955427; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gx+kajH/DSmqntMJTZY+szodW+45WwgEmzLWxcrJAnjuOLsigpgDGt4edSZYRQERMG
-         j88R36ydWZ82FK3h/azW0p+UJM7kB8PdAPLZyjI+svvPEjSKA7HGXhofZZJ/+YEret6A
-         h/lB2OrCo+lRtQ8Yu12xD6NIohfYnXot7tv68JCKygajHPq6bolBGWBkiH+EETlhrdac
-         t5lTlz+URIbx+6HYiibAgx9kn7nOKNNS738+V9w745aQDZdl3bWZl3i+EGE9Q/Omyy+l
-         lL2jaZ0EG4WqjJFEA5vP1ojr2g4o8r20cQCLXCJWvAtnkXY5d33xWotTYt/ae+nF5kJi
-         TVkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=tCDqnLhMVrw/j4L3Ej1GfGt30QMeyV9iuvaUY7OtROY=;
-        b=TFEGdgp2fsG8W6dIdav89eQXqbuwQhDqN55Apn2m6LKSjUojicNDceUsDV9I7cAqNY
-         xLpNuyZMiw/sg4pRb1Il2d4GJpj+PGfzzNk/Dev0KKKmo0gXymMp9iYW2ihlYcNSG9sj
-         NhmmGrsH9L/j8cDS+G+XGwtNC81fTGqpfNQ0/ssZQkCKVY0eNAAuBu/S8lk3xOPN/WDH
-         NpkhKjNSJ+i5lyUIEgSwnaD4iikZ/Q4mVagAtQJtj7/gAa1EU40Z4q76iWzNgUhBw0+k
-         vOhApm/Ez4Cz0DVgsIspMVURG3UGGoWPs68c452kyd+zSCPiueD4NhvOBCPbwmcxLd0L
-         v4NQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ktp50mO0;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t61-v6sor1513713plb.125.2018.06.13.22.50.27
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 13 Jun 2018 22:50:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ktp50mO0;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=tCDqnLhMVrw/j4L3Ej1GfGt30QMeyV9iuvaUY7OtROY=;
-        b=Ktp50mO0pT7XxfXrzHep6RPxXp6suLIpuIUD0+4MNoCyZUmSw09sIhmYH+XUJskt8S
-         +huXGSgce3qlLww06o0CDwRocT6VKs6wPlFGrhQquVjeE/C+M2l4jQk391BcaiPX1Q0F
-         4Yt1Yw2n3JewpEZ2PkZgOMjok8XF8FTX5VK7M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=tCDqnLhMVrw/j4L3Ej1GfGt30QMeyV9iuvaUY7OtROY=;
-        b=boB53Yv67v8ZR/QNx1C0TaNbCeaP4pkjziEyYCbu6CV8c1hKy77tmSg0r0uEzRfepg
-         2PZpWvV2qv9z/BcUAt9UhSiReiZOpc4/Z9Sil/7upwWC5Y1cNwNQBZeDTLAEqKunDV/I
-         MrAc+TrDc7QFaZ5sZIVdP6G3r1Qa8s/c5u3BIsOF7gT1RsXDcrN1ytOt2RYnlsy+5Tsu
-         11yjFpn/XJN2vkiPuYQPx7ar2bNyqb6AR0d82ikyCXXZKvnnKc5xVk+awz0FR1S92QJT
-         dl175rneZDhKLqUnSRSSbpdUcowWcwYDgLY4sbxIZ9Onz8KECDD8UvodwABI0xjQ+I1V
-         sJxw==
-X-Gm-Message-State: APt69E3cvmo/944R5qjlFiRQVHvTUbNxlVn49WWCXZSTUK9jkzfkkf9s
-	KLlrBaob1kSQpY9726dPcpe2ZGoAd4ssfw==
-X-Google-Smtp-Source: ADUXVKI2JYT/b5kwn8u97vQAWO1jW6JC7ycMbPwSs2AWGWwG5Awj17ViFdgu8Ynoev71XfTHz6rFqg==
-X-Received: by 2002:a17:902:26:: with SMTP id 35-v6mr1389768pla.276.1528955427535;
-        Wed, 13 Jun 2018 22:50:27 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (rrcs-173-198-77-219.west.biz.rr.com. [173.198.77.219])
-        by smtp.gmail.com with ESMTPSA id a27-v6sm7001081pfc.18.2018.06.13.22.50.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 13 Jun 2018 22:50:26 -0700 (PDT)
-Subject: Re: [RISU PATCH v3 06/22] Makefile: include risu_reginfo_$(ARCH) in
- HDRS
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20180613125601.14371-1-alex.bennee@linaro.org>
- <20180613125601.14371-7-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <d293c78c-c068-ba50-f4ee-c0a9d4b1d0be@linaro.org>
-Date: Wed, 13 Jun 2018 19:50:23 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id r75-v6sm4144125wmg.31.2018.06.22.07.12.09
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 22 Jun 2018 07:12:11 -0700 (PDT)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id 0688B3E0BC6;
+	Fri, 22 Jun 2018 15:12:06 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	richard.henderson@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RISU PATCH v4 14/22] risu: add process_arch_opt
+Date: Fri, 22 Jun 2018 15:11:57 +0100
+Message-Id: <20180622141205.16306-15-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180622141205.16306-1-alex.bennee@linaro.org>
+References: <20180622141205.16306-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20180613125601.14371-7-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: w1CR3IlYXETL
+X-TUID: dkGvuhjCp0Jj
 
-On 06/13/2018 02:55 AM, Alex Bennée wrote:
-> Otherwise changes to reginfo don't cause the whole thing to be
-> re-built causing much confusion when bisecting.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Allows the backend to do more that just set a flag when it comes to
+processing options.
 
-r~
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+[AJB: tweaked order, added stdlib includes]
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ risu.c                 | 33 +++++++++++----------------------
+ risu.h                 |  7 +++++--
+ risu_reginfo_aarch64.c | 10 ++++++++--
+ risu_reginfo_arm.c     | 14 ++++++++++----
+ risu_reginfo_m68k.c    | 10 ++++++++--
+ risu_reginfo_ppc64.c   | 10 ++++++++--
+ 6 files changed, 50 insertions(+), 34 deletions(-)
+
+diff --git a/risu.c b/risu.c
+index 18de351..01525d2 100644
+--- a/risu.c
++++ b/risu.c
+@@ -18,7 +18,6 @@
+ #include <errno.h>
+ #include <signal.h>
+ #include <ucontext.h>
+-#include <getopt.h>
+ #include <setjmp.h>
+ #include <assert.h>
+ #include <sys/stat.h>
+@@ -27,7 +26,6 @@
+ #include <string.h>
+ 
+ #include "config.h"
+-
+ #include "risu.h"
+ 
+ void *memblock;
+@@ -287,7 +285,7 @@ void usage(void)
+     }
+ }
+ 
+-struct option * setup_options(char **short_opts)
++static struct option * setup_options(char **short_opts)
+ {
+     static struct option default_longopts[] = {
+         {"help", no_argument, 0, '?'},
+@@ -303,20 +301,19 @@ struct option * setup_options(char **short_opts)
+ 
+     if (arch_long_opts) {
+         const size_t osize = sizeof(struct option);
+-        const int default_count = ARRAY_SIZE(default_longopts);
+-        struct option *dptr;
+-        int extra_count = 0;
++        const int default_count = ARRAY_SIZE(default_longopts) - 1;
++        int arch_count;
+ 
+         /* count additional opts */
+-        dptr = arch_long_opts;
+-        do {} while (dptr[extra_count++].name);
++        for (arch_count = 0; arch_long_opts[arch_count].name; arch_count++) {
++            continue;
++        }
+ 
+-        lopts = calloc(default_count + extra_count, osize);
++        lopts = calloc(default_count + arch_count + 1, osize);
+ 
+         /* Copy default opts + extra opts */
+         memcpy(lopts, default_longopts, default_count * osize);
+-        dptr = &lopts[default_count - 1];
+-        memcpy(dptr, arch_long_opts, extra_count * osize);
++        memcpy(lopts + default_count, arch_long_opts, arch_count * osize);
+     }
+ 
+     return lopts;
+@@ -343,34 +340,26 @@ int main(int argc, char **argv)
+ 
+         switch (c) {
+         case 0:
+-        {
+             /* flag set by getopt_long, do nothing */
+             break;
+-        }
+         case 't':
+-        {
+             trace_fn = optarg;
+             trace = 1;
+             break;
+-        }
+         case 'h':
+-        {
+             hostname = optarg;
+             break;
+-        }
+         case 'p':
+-        {
+             /* FIXME err handling */
+             port = strtol(optarg, 0, 10);
+             break;
+-        }
+         case '?':
+-        {
+             usage();
+             exit(1);
+-        }
+         default:
+-            abort();
++            assert(c >= FIRST_ARCH_OPT);
++            process_arch_opt(c, optarg);
++            break;
+         }
+     }
+ 
+diff --git a/risu.h b/risu.h
+index 89811f4..48c50d9 100644
+--- a/risu.h
++++ b/risu.h
+@@ -16,10 +16,13 @@
+ #include <stdint.h>
+ #include <ucontext.h>
+ #include <stdio.h>
++#include <getopt.h>
+ 
+ /* Extra option processing for architectures */
+-extern void *arch_long_opts;
+-extern char *arch_extra_help;
++extern const struct option * const arch_long_opts;
++extern const char * const arch_extra_help;
++void process_arch_opt(int opt, const char *arg);
++#define FIRST_ARCH_OPT   0x100
+ 
+ /* GCC computed include to pull in the correct risu_reginfo_*.h for
+  * the architecture.
+diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
+index ab12270..c270e0b 100644
+--- a/risu_reginfo_aarch64.c
++++ b/risu_reginfo_aarch64.c
+@@ -14,12 +14,18 @@
+ #include <ucontext.h>
+ #include <string.h>
+ #include <signal.h> /* for FPSIMD_MAGIC */
++#include <stdlib.h>
+ 
+ #include "risu.h"
+ #include "risu_reginfo_aarch64.h"
+ 
+-void *arch_long_opts;
+-char *arch_extra_help;
++const struct option * const arch_long_opts;
++const char * const arch_extra_help;
++
++void process_arch_opt(int opt, const char *arg)
++{
++    abort();
++}
+ 
+ /* reginfo_init: initialize with a ucontext */
+ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
+diff --git a/risu_reginfo_arm.c b/risu_reginfo_arm.c
+index 5acad02..12ad0ef 100644
+--- a/risu_reginfo_arm.c
++++ b/risu_reginfo_arm.c
+@@ -13,7 +13,7 @@
+ #include <stdio.h>
+ #include <ucontext.h>
+ #include <string.h>
+-#include <getopt.h>
++#include <stdlib.h>
+ 
+ #include "risu.h"
+ #include "risu_reginfo_arm.h"
+@@ -22,13 +22,19 @@ extern int insnsize(ucontext_t *uc);
+ 
+ /* Should we test for FP exception status bits? */
+ static int test_fp_exc;
+-static struct option extra_opts[] = {
++static const struct option extra_opts[] = {
+     {"test-fp-exc", no_argument, &test_fp_exc, 1},
+     {0, 0, 0, 0}
+ };
+ 
+-void *arch_long_opts = &extra_opts[0];
+-char *arch_extra_help = "  --test-fp-exc     Check FP exception bits when comparing\n";
++const struct option * const arch_long_opts = &extra_opts[0];
++const char * const arch_extra_help =
++    "  --test-fp-exc     Check FP exception bits when comparing\n";
++
++void process_arch_opt(int opt, const char *arg)
++{
++    abort();
++}
+ 
+ static void reginfo_init_vfp(struct reginfo *ri, ucontext_t *uc)
+ {
+diff --git a/risu_reginfo_m68k.c b/risu_reginfo_m68k.c
+index d429502..7a1c5a9 100644
+--- a/risu_reginfo_m68k.c
++++ b/risu_reginfo_m68k.c
+@@ -10,12 +10,18 @@
+ #include <ucontext.h>
+ #include <string.h>
+ #include <math.h>
++#include <stdlib.h>
+ 
+ #include "risu.h"
+ #include "risu_reginfo_m68k.h"
+ 
+-void *arch_long_opts;
+-char *arch_extra_help;
++const struct option * const arch_long_opts;
++const char * const arch_extra_help;
++
++void process_arch_opt(int opt, const char *arg)
++{
++    abort();
++}
+ 
+ /* reginfo_init: initialize with a ucontext */
+ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
+diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
+index 395111c..4b70460 100644
+--- a/risu_reginfo_ppc64.c
++++ b/risu_reginfo_ppc64.c
+@@ -15,6 +15,7 @@
+ #include <ucontext.h>
+ #include <string.h>
+ #include <math.h>
++#include <stdlib.h>
+ 
+ #include "risu.h"
+ #include "risu_reginfo_ppc64.h"
+@@ -22,8 +23,13 @@
+ #define XER 37
+ #define CCR 38
+ 
+-void *arch_long_opts;
+-char *arch_extra_help;
++const struct option * const arch_long_opts;
++const char * const arch_extra_help;
++
++void process_arch_opt(int opt, const char *arg)
++{
++    abort();
++}
+ 
+ /* reginfo_init: initialize with a ucontext */
+ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
+-- 
+2.17.1

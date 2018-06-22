@@ -1,173 +1,184 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2315435wrq;
-        Thu, 21 Jun 2018 11:14:03 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJQeeCKLtza2HbgUko5/UJwfEGkdz4XyPOJ0RVYfGUIa23gPcJRjcQkCWyZ1wpINs6DVzu1
-X-Received: by 2002:a0c:99df:: with SMTP id y31-v6mr23503542qve.156.1529604843413;
-        Thu, 21 Jun 2018 11:14:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529604843; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp544203wrq;
+        Fri, 22 Jun 2018 01:04:36 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKJ2zHVr4BaAElW6tTec+/ECo90IDoMjYUknyGSxGcjmYffK107DalVY1N4EoPDucTo5864i
+X-Received: by 2002:ac8:2acb:: with SMTP id c11-v6mr450983qta.147.1529654676299;
+        Fri, 22 Jun 2018 01:04:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529654676; cv=none;
         d=google.com; s=arc-20160816;
-        b=L/zadZzLhYw4slJc1PXGbfs37W3Jii3eKw+ZMr1u+SWf53tpvQz3VxG5ehsoRvSMpi
-         I9FCsX/Z21qDAR/BWv3AOl6fcz4Y5rUO9cdjjqfA2V1MG7Kbz9q5UZih34k9LBLaAbkc
-         QUeyfwwuS/flbQY/FTq7V9QcJUXvo04a177iwuXEEBVcjmGpbeltPOzDHj71neFH7eCz
-         H6vo3DQ85njPvEg4cUIQwPXg+YwGEsR6LHNV30FeKm8mEeMlSNbYWM0ybUfjA2ekSNe6
-         zq4EVKf9zGus2M/XnQQI48J/+sDPRiOyxqUFaZ0/ihBWUBS36XO2CXfAygJPpN3WYnoi
-         +1jQ==
+        b=vzKEbjAE71fLhc1hrlVwQHn2sALYC4sGjDzmUQqb9fUPDf2tb1XU4P04jUPvecFjfx
+         69lNdnrFR3JUDNKq5YwfSACl1WeGu8/sZ7gBLLanGb4/u0c3mm+rhYoSU8ju/F7V5isu
+         G1AugyitAc+oIY0qzFxKx8stAEkINmuxoA7FCimkDYlgwykZ4XcRTK6WmenrF3wljabo
+         DXQKqebVJaGdZl9j+jnxQWxkSjRom6/PoxyeHrWSx6tyRZhmfe0xvlBEalGZAthH0p/h
+         2v2Ox2GRd9PjLowcIAOazFFRSD/1tCIyOteAkPxcnICTWLbO09YqiR3xAvOSKl1savCN
+         iWdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=xvl6zLRces/SMktD691P47IbrnWKJFqGCaFx1dBAR4c=;
-        b=MaFpU20xX82Alf84H7f0nXo4NjagZPHmRS5ziRX0KeA1gETStxEuIj58qR0O8v5xWl
-         K5O7OHKlF5ywiciqwDLC3W70Rmr7Z7HwJm+9BnDO30KXSBGXcFGc3YULvAgxtkuHz8PU
-         eCNIdmsQIwfmEC+lZQY17NhbSztmtxzcDvyfclQ+L6cHJlFPDLoZZUAIDRcZE6ewEVNG
-         fm6EXs7MJTnK7NClXlaknrjXLOBCGlmECmesKMhHeVlNQK6er00irYvOjqBCMLRTcg3/
-         8lRUFUGKj13AOl8Imn9DUBe2yJoYzx19BB9szSC/YV6sOfykqsIP/OJ8ob6k1tFzzBmz
-         Ej2g==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :arc-authentication-results;
+        bh=Xp7zw1aDQtqxcIgYjaMC1WLpxsrNw1/OWgSjQtogwYY=;
+        b=QqH5A6qMm2ecvdxaRw/Wxs7WlCOrF80B9u+n1yJjOQEmIO7yuGIFAqryH2XqoV9ctV
+         qzN28ln4qUzuffa4xNlobVhivaPtoAUB82+MkU5pDQ+519F4LrmK72EyG/og8flO/GVj
+         vVRPM5SK+p6xKK5PWwOEHZT0XJakX0izRKCeJk0OysSWBDQ46KkGjLWsrDjuTRtzRgXh
+         rNUQZtfULjPpaUqLDg4k9I3bPCtzIEaog6G+y4g2tvnIpSYKd0L7aEg7SDr3jHRlkIw2
+         uySe6GtIF3lSWyG6oRUVcWwruE+NZIS2DEiizE98lQ/SsVt55n3FuIZTFpZUf8y24g1k
+         8EQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pe9x0hTh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o187-v6si1275837qkf.285.2018.06.21.11.14.03
+        by mx.google.com with ESMTPS id i20-v6si2924833qvk.94.2018.06.22.01.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Jun 2018 11:14:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Jun 2018 01:04:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=pe9x0hTh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57080 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59942 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fW45q-0000vf-T4
-	for alex.bennee@linaro.org; Thu, 21 Jun 2018 14:14:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59921)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fWH3b-0003Gr-Q6
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 04:04:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44419)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1fW3wy-00029k-MJ
-	for qemu-devel@nongnu.org; Thu, 21 Jun 2018 14:04:53 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWH3K-00039a-2P
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:04:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1fW3wx-0007NK-OV
-	for qemu-devel@nongnu.org; Thu, 21 Jun 2018 14:04:52 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:34777)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1fW3wv-0007LX-1E; Thu, 21 Jun 2018 14:04:49 -0400
-Received: by mail-lf0-x244.google.com with SMTP id e13-v6so5654871lfc.1;
-	Thu, 21 Jun 2018 11:04:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=xvl6zLRces/SMktD691P47IbrnWKJFqGCaFx1dBAR4c=;
-	b=pe9x0hThWOolEfrhzCHe3qpfHViTpk9ovR09lG4ZfkpkAjUmQsrMIm8P/4lyF1S1Ls
-	ufgDbijYoqG37B/o9HmzD50lDgYW6mxPzFWtAXRv5bMGh5fsDFlY4z6HTXyHXG4Cy5ea
-	i2nG6KIVR7H8awQsZ3y4mEXDCk4Xer2aKtG/510JvHbSx34ZitPoJSw4IvOar0ECBEhJ
-	B8sTb1XKOoK/rOPHliHId4p1/dbofmHz+7/WLzKf/TNAKDMhZJOkXSNjdkkQY/uFyG6L
-	BeVOHW+x5OXNzsiaIVDK/20CR4Rmzg9fcoJ02UKEwt/CqwPo9vXu9M0WiTK3rm9gOFvv
-	0qSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=xvl6zLRces/SMktD691P47IbrnWKJFqGCaFx1dBAR4c=;
-	b=Ptva5tTkcwD1eROjswelbYUXALGgjbXEOHuBR+fiGDDtYN5Ig1xnkUhkMOWI52ANUt
-	gWNMYd2fayzFonvd1FH5yMzD+zkH5hA6s/Iq7aW+kjM+BZ9kC/Q/A7MBDvn2o8XZLBfd
-	DEVhgHYQTQ3SuhIkiVPvx9pqO8IFzqLXPoYUpX0MB5f8KU5X4YjihJBWA5pyKbafR1Gz
-	wKZbBsXO20eMLvtf55YquOrpPbFWUJ5PRShwoUYTY2l3hUZSqr8QzZnTGTYBW8EX4EDX
-	2inlP53SnEO7o5ZFbWlGznbEFhjjoC86mqiM9/qtTER2pN4TyRcvyquxvk9bWY4RuY0G
-	xT5w==
-X-Gm-Message-State: APt69E0XlF3HJSpszJx4+D6Z+lDDEgM/EvG7hr0hdkILIvD12gXkdho9
-	JrSBgxFPdoCdPspR0qi9eAn1kJjm4vbuSZnbXwU=
-X-Received: by 2002:a19:f24e:: with SMTP id
-	d14-v6mr17311457lfk.18.1529604286250; 
-	Thu, 21 Jun 2018 11:04:46 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a2e:4242:0:0:0:0:0 with HTTP; Thu, 21 Jun 2018 11:04:15
-	-0700 (PDT)
-In-Reply-To: <20180621180224.8312-6-f4bug@amsat.org>
+	(envelope-from <thuth@redhat.com>) id 1fWH3G-0003C8-4z
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:04:18 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44990 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fWH3G-0003BI-00; Fri, 22 Jun 2018 04:04:14 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 62A074023132;
+	Fri, 22 Jun 2018 08:04:13 +0000 (UTC)
+Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E4B3F2156888;
+	Fri, 22 Jun 2018 08:04:11 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-6-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 21 Jun 2018 11:04:15 -0700
-Message-ID: <CAKmqyKMgfiaLhQgKmSqewNzC6k1B5MfhNXThBScNoUcmyuuuBg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+	<20180621180224.8312-2-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <114c5545-19e6-690a-78a7-4586aa57860d@redhat.com>
+Date: Fri, 22 Jun 2018 10:04:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <20180621180224.8312-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 22 Jun 2018 08:04:13 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 22 Jun 2018 08:04:13 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: Re: [Qemu-devel] [PATCH 05/11] hw/ssi/omap_spi: Use
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 01/11] hw/input/pckbd: Use
  qemu_log_mask(GUEST_ERROR) instead of fprintf
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NMkE3ZaMC0SJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bWwcOS+HKSzf
 
-On Thu, Jun 21, 2018 at 11:02 AM, Philippe Mathieu-Daud=C3=A9
-<f4bug@amsat.org> wrote:
+On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
 > ---
->  hw/ssi/omap_spi.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
-> index 34163e5646..f278a55160 100644
-> --- a/hw/ssi/omap_spi.c
-> +++ b/hw/ssi/omap_spi.c
-> @@ -20,6 +20,7 @@
->   * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+>  hw/input/pckbd.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+> index f33e3fc63d..1102d2a31b 100644
+> --- a/hw/input/pckbd.c
+> +++ b/hw/input/pckbd.c
+> @@ -22,6 +22,7 @@
+>   * THE SOFTWARE.
 >   */
 >  #include "qemu/osdep.h"
 > +#include "qemu/log.h"
 >  #include "hw/hw.h"
->  #include "hw/arm/omap.h"
->
-> @@ -294,11 +295,15 @@ static void omap_mcspi_write(void *opaque, hwaddr a=
-ddr,
->      case 0x2c: /* MCSPI_CHCONF */
->          if ((value ^ s->ch[ch].config) & (3 << 14))    /* DMAR | DMAW */
->              omap_mcspi_dmarequest_update(s->ch + ch);
-> -        if (((value >> 12) & 3) =3D=3D 3)                  /* TRM */
-> -            fprintf(stderr, "%s: invalid TRM value (3)\n", __func__);
-> -        if (((value >> 7) & 0x1f) < 3)                 /* WL */
-> -            fprintf(stderr, "%s: invalid WL value (%" PRIx64 ")\n",
-> -                            __func__, (value >> 7) & 0x1f);
-> +        if (((value >> 12) & 3) =3D=3D 3) { /* TRM */
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid TRM value (3)\n"=
-,
-> +                          __func__);
-> +        }
-> +        if (((value >> 7) & 0x1f) < 3) { /* WL */
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: invalid WL value (%" PRIx64 ")\n",
-> +                          __func__, (value >> 7) & 0x1f);
-> +        }
->          s->ch[ch].config =3D value & 0x7fffff;
+>  #include "hw/isa/isa.h"
+>  #include "hw/i386/pc.h"
+> @@ -308,7 +309,8 @@ static void kbd_write_command(void *opaque, hwaddr =
+addr,
+>          /* ignore that */
 >          break;
->
-> --
-> 2.18.0.rc2
->
->
+>      default:
+> -        fprintf(stderr, "qemu: unsupported keyboard cmd=3D0x%02x\n", (=
+int)val);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "qemu: unsupported keyboard cmd=3D0x%02lx\n", va=
+l);
+
+Please remove the "qemu:" prefix while you're at it.
+
+ Thomas

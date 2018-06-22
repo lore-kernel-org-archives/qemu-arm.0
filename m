@@ -1,189 +1,248 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp847772wrq;
-        Fri, 22 Jun 2018 06:41:22 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKI/2S/M0rHLIVz2unLWM21xaHKqHE488F0g8XGKK93mKMtW42xykkDcW9GUULUPCTwpUyVw
-X-Received: by 2002:a37:d493:: with SMTP id s19-v6mr1326548qks.338.1529674882042;
-        Fri, 22 Jun 2018 06:41:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529674882; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp848879wrq;
+        Fri, 22 Jun 2018 06:42:32 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdk+JdkCn7uravUEeEKjui5WMTDWnKs/66ysDaYZ5puHL6OEQ6ZHgb+WVFM66tjGC6M9rEM
+X-Received: by 2002:ac8:31b7:: with SMTP id h52-v6mr1411057qte.100.1529674952846;
+        Fri, 22 Jun 2018 06:42:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529674952; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wf/hBq1tk2YyT9cX3ZsyjPULXCrO9CrjnDA1HR2hngMIINE6IuKYDfxurYmlJs4f0L
-         eHD+ibrAe2seAlbTIyxrvjsTAtpXnnbYDaQH2GnZqcdBOr5o7O4aECFScQ4/WtXZ6Tp7
-         Xo+p+4pE8OswI8IzolaLn22scbK5R9sFyi60B4mxCBB1f+ONc2zOflC+8MoKonmnMe4T
-         TYbPtzSmiK6sp75FFAdDfPmwGE1ZlsMhFA2o1Qg5/HNofTA8HxhawGhYXlvTI194glCO
-         6RLvpCZZ67otifcccptf/8AtwudXwd7YG84M11I9YnUYL9weiGkStLAs1KaR9Z4nOJ8T
-         LvuA==
+        b=iCA+fLJejGoqrNPXinVKf88uDF0XW1hrJnmaTyptppp289d3n6C1Q/XUJT++OLRLbX
+         3zmO5//P9CtawS/fFfzGjg8XkEl5MsIpv+yG6sCiIowqqv3H6tFjTvOaEWxXxzFt+N0O
+         dl46Az/LLAwa0vRWigxahezLoMRdZNAPWMj51mK8OkPTAYY0iqaX8hRv3dQfn/v4B9S6
+         oifTWnA1Poc52K4/QCbBuq9YrBJTkv84ZG5w8v9EWgaBKoxnhGTN+impBexJ6xmBYI7n
+         QtGU7EDSTfrgdnCO8j3vkqWAKguzp314EP/O5ss5fU5bEmoCxng1mDCyTdtqJfBN6ghA
+         JPzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=3xjI2DMflkb2RUooYkvhQM3tcgsObqCyuXCtGxDgCLE=;
-        b=DoD7czbaRUsmMDf5CH53KEwRu3CF0nCNOFhGe9kWKsy19kj2SPlEow6MfI9iw7QQIc
-         9fRbGtM4SP8NlF6HXC+s1xN8SFfdP8fzUXNQe0Y2fv6cxSmCojbC2uexs7nHhEB09/1I
-         QbiabOlZpGK7i8f7nhteWJr2IFhMVbzZAEM2qXvXwuE//s/Q6LTZ70eKBzLk9ryRVLdq
-         Wap96sIdpnDwo4P3uCjn87+S1olvIkOFZg8RjllUiLWq7YTgVSn+I6oqM9DTaAnqZxV7
-         lsAUPttHmMIbXRZD01LDJHi+O1qmD/jzNIVh2HF/l+XQGDU9XDZfbPC0oa6OLT0fTd+V
-         V9iw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=xT+wdDJ0+mzvn9PuSVGwp5pg/05Y7iGYk8C8bIHQifI=;
+        b=wBzRmhys1z1kv0Ra7VvwN/NOv3VYZvHAkNP9tjBCO5tvCrgfScY+Vs2P4llTcQG1zy
+         9zpLJxgkyR6JvOktj3W21HAlPmVeT8iB/Wj+zagMYwfSTXvx5UXReOPKduuX+tFgg+gg
+         k3+KOsjEBaHQbwG7fRNW6hrNvXBjIO2n4f92uv9Wb81bGrhQkgqSSsOdSJbq6aNgZmaM
+         JZuDJX5pHtNAfnr737naA9IEYPtZXtm8pw/sq/s4iB4bwQQJmdfYx4L02UryTXdcr5QG
+         hCeTrYcCb0TubFJqVyexvSHLUjb2rXpk9+KP35aysRjCKpoPkdS7pxKut9j13HAMNu02
+         pN8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rMFskD43;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PIgSxHmw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i187-v6si758957qke.393.2018.06.22.06.41.21
+        by mx.google.com with ESMTPS id u17-v6si998122qtk.156.2018.06.22.06.42.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 06:41:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Jun 2018 06:42:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rMFskD43;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34008 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PIgSxHmw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34022 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWMJV-00068a-8l
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 09:41:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57380)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fWMKe-0006vF-4b
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 09:42:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59573)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM8j-0005TH-DL
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 09:30:14 -0400
+	id 1fWMJ7-0005xp-9v
+	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 09:40:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM8e-0007ap-Op
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 09:30:13 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:44008)
+	id 1fWMJ6-00035X-9I
+	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 09:40:57 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:45799)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM8e-0007ac-Ip; Fri, 22 Jun 2018 09:30:08 -0400
-Received: by mail-qt0-x242.google.com with SMTP id y89-v6so5871094qtd.10;
-	Fri, 22 Jun 2018 06:30:08 -0700 (PDT)
+	id 1fWMJ6-00034N-2C; Fri, 22 Jun 2018 09:40:56 -0400
+Received: by mail-qt0-x244.google.com with SMTP id i18-v6so5893456qtp.12;
+	Fri, 22 Jun 2018 06:40:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:from:to:cc:references:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=3xjI2DMflkb2RUooYkvhQM3tcgsObqCyuXCtGxDgCLE=;
-	b=rMFskD43vXntSHq1kxxlh1lbFkq1fcuPo+PCiuHMIQA4o9jnTAEm542zZYmYftsswV
-	plcCL0HMZxKGCJPYeueWzH7hoDUHap8/W+fKLlmTtqu1Vw3kh1vUhWnKYL4a8OYdkw3n
-	BHXO4+3f+gsRXaCKfHEnn2NO5+HMb76T97U/hzHhjwlK2Q3+OVCOLE4W4ouy8QEV/SZm
-	R9KfNXHbz15335nRXOkyvLXsQ35iu7ENE8Gbqzg6LSB6oHCiYaQ469HkZPG3COqbHQbN
-	Yp5/aiwRmPElxl3hOefE25S81NnONSJe6vn3gVewENzFmNqdJL9+kjSBr0p5JoeeP2Ky
-	NcEg==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=xT+wdDJ0+mzvn9PuSVGwp5pg/05Y7iGYk8C8bIHQifI=;
+	b=PIgSxHmwgOFSGahWVQ/bvRsJuH0WdxdaYm4rgmqLomiUdYIOLOlHHQzGbOj+9pLDGj
+	4Rlprt284cBABQjW62RDLE6uNM54Og24N3NPk4O+fCIfDpIwXtkwaKJ1fJ+wnh8+7x0p
+	ljfg2oTwK2H/nj/NPskx1AfuB3SIT6WXa/KmWOny8L/pDtCcNlPEIWBSBwXIoohdm3lw
+	gW7P99w2hnEon/ilQB1TuqHSKoj0p6a9fQRhvLjBlGeo2MnSrQ4RkVExjLta1+qMfqIL
+	Z3xnb8Su4Igkp4VmWUhVHVYL65j/3TqVmW/P+8Xy4ZrwP4Mb1IxXo+jv/qX77JRjevvT
+	SgmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:from:to:cc:references:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=3xjI2DMflkb2RUooYkvhQM3tcgsObqCyuXCtGxDgCLE=;
-	b=n0Vt1khtHPf6K+zlM+s9n0mQY1wG+YEUpO62pQYTV4tG/F9i6gSUjGfSgQANl0qC4P
-	d6mz0Uov5V7Bvq8KmDbL8cjrNZ6ba5cAhOlvhIz0kZnYl3HuNmYzvgA8PXYI8tKDjFkQ
-	N49uYnqm4I8JQFlVD3Ew8UjGCLyvgKFICLlAlGbu6HGUAxMkr1EdzDF1p/0nMGH//8ls
-	yhKc2JRBkHFA8+W/stJCNmxfYdWyt9pJCBym9sSp7rg+XxoUxTwngJBcRJO8+v+jaTPL
-	GOHl8Sj+oVBuxgLVI0BviVS410bbK7TiAQS5qtUidtzicWlyd1YiFoWmbrBVJB4KMdU7
-	dOew==
-X-Gm-Message-State: APt69E3B2lAIW3IFt8zDSzN5JlEXAajY2DIgT7wg3WnOrvEI6SFHXGgd
-	JnrXBb2zJgvy3PMPVUSoz4MpvDOf
-X-Received: by 2002:ac8:6656:: with SMTP id
-	j22-v6mr1342584qtp.158.1529674207767; 
-	Fri, 22 Jun 2018 06:30:07 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	b3-v6sm4471770qtj.85.2018.06.22.06.30.05
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=xT+wdDJ0+mzvn9PuSVGwp5pg/05Y7iGYk8C8bIHQifI=;
+	b=aowrigDe6YfOIiWmfXTV+AE9To6TYYBCQ2n96aNiHX2ON+KBIwcdg7wqvpvUvtrcsS
+	r6ZpuKdC0rGC6vrNoBTK5ZZQ8FlZb7SNmeZiqEirogKtHS529x+iYXOyVmWk24A07HIq
+	6bdl++knL6HwFtO7qG1yhX1OWeES+Bp5YA9FLuCPpkNOC6Des6KAC5Vynlhy60amYy9D
+	SusFwwB7mbbVB5zoaRtN7yJcmii8CDmTrpzzanvEtl7rhbnb+0rUjs4Q6d56ya0jpJkb
+	l6GYN8Qxt9Ta5b9A/s941EatCiXSsQvLSI9cFGYnambsYjpJtqWB7YEFmzH2QMhC/vDg
+	T8CA==
+X-Gm-Message-State: APt69E0OrcHBieQxtzz2gT0wLtZo2Zjru2v91Kr+spnTLof+exZ5qe5n
+	h/BWFF4TrqBMRTzE6whDGP4=
+X-Received: by 2002:a0c:b084:: with SMTP id
+	o4-v6mr1417193qvc.133.1529674855323; 
+	Fri, 22 Jun 2018 06:40:55 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	s39-v6sm6006629qts.42.2018.06.22.06.40.52
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 06:30:06 -0700 (PDT)
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180606144706.29732-1-f4bug@amsat.org>
-	<1160f838-5625-b9bf-6c34-3071ed185074@redhat.com>
-	<0c5018d5-7e87-bba1-7522-c8020277bde0@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <c7077a71-6f01-b3f2-cc0b-4d845b967ef3@amsat.org>
-Date: Fri, 22 Jun 2018 10:30:03 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	Fri, 22 Jun 2018 06:40:54 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
+Date: Fri, 22 Jun 2018 10:40:26 -0300
+Message-Id: <20180622134036.23182-5-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0.rc2
+In-Reply-To: <20180622134036.23182-1-f4bug@amsat.org>
+References: <20180622134036.23182-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <0c5018d5-7e87-bba1-7522-c8020277bde0@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [PATCH] MAINTAINERS: Adopt the Gumstix
- computers-on-module machines
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-devel] [PATCH v2 04/14] hw/dma/omap_dma: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1Wa7qgTxfXt7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5C+ezsuR2RPC
 
-Hi Peter,
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/dma/omap_dma.c | 64 +++++++++++++++++++++++++++++------------------
+ 1 file changed, 40 insertions(+), 24 deletions(-)
 
-On 06/06/2018 12:02 PM, Philippe Mathieu-Daudé wrote:
-> On 06/06/2018 11:53 AM, Thomas Huth wrote:
->> On 06.06.2018 16:47, Philippe Mathieu-Daudé wrote:
->>> These COMs are hard to find, and the companie dropped the support
-> 
-> "company" :/
-> 
->>> few years ago.
->>>
->>> Per the "Gumstix Product Changes, Known Issues, and EOL" pdf:
->>>
->>> - Phasing out: PXA270-based Verdex product line
->>>   September 2012
->>>
->>> - Phasing out: PXA255-based Basix & Connex
->>>   September 2009
->>>
->>> However there are still booting SD card image availables, very
->>> convenient to stress test the QEMU SD card implementation.
->>> Therefore I volunteer to keep an eye on this file, while it
->>> is useful for testing.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  MAINTAINERS | 3 ++-
->>>  1 file changed, 2 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/MAINTAINERS b/MAINTAINERS
->>> index 41cd3736a9..1825deb762 100644
->>> --- a/MAINTAINERS
->>> +++ b/MAINTAINERS
->>> @@ -491,9 +491,10 @@ F: include/hw/arm/digic.h
->>>  F: hw/*/digic*
->>>  
->>>  Gumstix
->>> +M: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>  L: qemu-devel@nongnu.org
->>>  L: qemu-arm@nongnu.org
->>> -S: Orphan
->>> +S: Odd Fixes
->>>  F: hw/arm/gumstix.c
->>
->> Great! So we can also remove the Gumstix entries from
->> https://wiki.qemu.org/Features/LegacyRemoval ?
-> 
-> I'll remove these now, eventually adding a new Gumstix COMs
-> wiki entry when Avocados tests are merged, although reading
-> the tests should be enough.
+diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+index ab3a1b0451..cbb920f31d 100644
+--- a/hw/dma/omap_dma.c
++++ b/hw/dma/omap_dma.c
+@@ -879,15 +879,18 @@ static int omap_dma_ch_reg_write(struct omap_dma_s *s,
+         ch->burst[0] = (value & 0x0180) >> 7;
+         ch->pack[0] = (value & 0x0040) >> 6;
+         ch->port[0] = (enum omap_dma_port) ((value & 0x003c) >> 2);
+-        if (ch->port[0] >= __omap_dma_port_last)
+-            printf("%s: invalid DMA port %i\n", __func__,
+-                            ch->port[0]);
+-        if (ch->port[1] >= __omap_dma_port_last)
+-            printf("%s: invalid DMA port %i\n", __func__,
+-                            ch->port[1]);
++        if (ch->port[0] >= __omap_dma_port_last) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
++                          __func__, ch->port[0]);
++        }
++        if (ch->port[1] >= __omap_dma_port_last) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
++                          __func__, ch->port[1]);
++        }
+         ch->data_type = 1 << (value & 3);
+         if ((value & 3) == 3) {
+-            printf("%s: bad data_type for DMA channel\n", __func__);
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad data_type for DMA channel\n", __func__);
+             ch->data_type >>= 1;
+         }
+         break;
+@@ -1899,14 +1902,18 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         if (value & 2)						/* SOFTRESET */
+             omap_dma_reset(s->dma);
+         s->ocp = value & 0x3321;
+-        if (((s->ocp >> 12) & 3) == 3)				/* MIDLEMODE */
+-            fprintf(stderr, "%s: invalid DMA power mode\n", __func__);
++        if (((s->ocp >> 12) & 3) == 3) { /* MIDLEMODE */
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA power mode\n",
++                          __func__);
++        }
+         return;
+ 
+     case 0x78:	/* DMA4_GCR */
+         s->gcr = value & 0x00ff00ff;
+-	if ((value & 0xff) == 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
+-            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__);
++        if ((value & 0xff) == 0x00) { /* MAX_CHANNEL_FIFO_DEPTH */
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GCR\n",
++                          __func__);
++        }
+         return;
+ 
+     case 0x80 ... 0xfff:
+@@ -1935,9 +1942,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+     case 0x00:	/* DMA4_CCR */
+         ch->buf_disable = (value >> 25) & 1;
+         ch->src_sync = (value >> 24) & 1;	/* XXX For CamDMA must be 1 */
+-        if (ch->buf_disable && !ch->src_sync)
+-            fprintf(stderr, "%s: Buffering disable is not allowed in "
+-                            "destination synchronised mode\n", __func__);
++        if (ch->buf_disable && !ch->src_sync) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Buffering disable is not allowed in "
++                          "destination synchronised mode\n", __func__);
++        }
+         ch->prefetch = (value >> 23) & 1;
+         ch->bs = (value >> 18) & 1;
+         ch->transparent_copy = (value >> 17) & 1;
+@@ -1947,9 +1956,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         ch->suspend = (value & 0x0100) >> 8;
+         ch->priority = (value & 0x0040) >> 6;
+         ch->fs = (value & 0x0020) >> 5;
+-        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1])
+-            fprintf(stderr, "%s: For a packet transfer at least one port "
+-                            "must be constant-addressed\n", __func__);
++        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1]) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: For a packet transfer at least one port "
++                          "must be constant-addressed\n", __func__);
++        }
+         ch->sync = (value & 0x001f) | ((value >> 14) & 0x0060);
+         /* XXX must be 0x01 for CamDMA */
+ 
+@@ -1978,9 +1989,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         ch->endian_lock[0] =(value >> 20) & 1;
+         ch->endian[1] =(value >> 19) & 1;
+         ch->endian_lock[1] =(value >> 18) & 1;
+-        if (ch->endian[0] != ch->endian[1])
+-            fprintf(stderr, "%s: DMA endianness conversion enable attempt\n",
+-                            __func__);
++        if (ch->endian[0] != ch->endian[1]) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: DMA endianness conversion enable attempt\n",
++                          __func__);
++        }
+         ch->write_mode = (value >> 16) & 3;
+         ch->burst[1] = (value & 0xc000) >> 14;
+         ch->pack[1] = (value & 0x2000) >> 13;
+@@ -1988,12 +2001,15 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         ch->burst[0] = (value & 0x0180) >> 7;
+         ch->pack[0] = (value & 0x0040) >> 6;
+         ch->translate[0] = (value & 0x003c) >> 2;
+-        if (ch->translate[0] | ch->translate[1])
+-            fprintf(stderr, "%s: bad MReqAddressTranslate sideband signal\n",
+-                            __func__);
++        if (ch->translate[0] | ch->translate[1]) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad MReqAddressTranslate sideband signal\n",
++                          __func__);
++        }
+         ch->data_type = 1 << (value & 3);
+         if ((value & 3) == 3) {
+-            printf("%s: bad data_type for DMA channel\n", __func__);
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad data_type for DMA channel\n", __func__);
+             ch->data_type >>= 1;
+         }
+         break;
+-- 
+2.18.0.rc2
 
-Do you agree with this patch? This is mostly to avoid removing these 2
-boards in 2 releases from now. The datasheets are public so I can keep
-an eye on them.
-I already removed them from the "Future deprecated candidates" entry in
-the Wiki.
-
-Regards,
-
-Phil.

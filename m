@@ -1,112 +1,113 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp252718wrq;
-        Thu, 21 Jun 2018 17:58:35 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKhLggh6hykaerR/XkjqdXYF4N3TWtl4B6OKjiJo+ItkQ1Wa/8W4ewJwoJsiwqyKyLNnSgB
-X-Received: by 2002:a0c:c683:: with SMTP id d3-v6mr24744028qvj.152.1529629115620;
-        Thu, 21 Jun 2018 17:58:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529629115; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp252979wrq;
+        Thu, 21 Jun 2018 17:59:05 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKIegAJzi9lk1NL3WreUSFupSG2eYd+GjG03qwd8wD/DijaVeRaNOYHmIxnvGYVQiHOnQfIm
+X-Received: by 2002:a37:424a:: with SMTP id p71-v6mr24328619qka.209.1529629144920;
+        Thu, 21 Jun 2018 17:59:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529629144; cv=none;
         d=google.com; s=arc-20160816;
-        b=TMWO4XIkvogklNMVZ4kBgJ5Iaj3FZCB7XAx5w+vqN8QGZ76WiTnfAQIZQRfKcgVJ4d
-         zpR9HuRH5L1cuJrBmrEt4Sypim2iIAbYnb/ITRzBWdm6BbIk7U4tn1F9g9/Q3nAj4qJV
-         yFEekN1Vys6AL8NxnUMiBPepTtNG8OdXtByA8Pyc4vxxv4tleg0q7SR0KI/IwtZQ6Pfo
-         35kGFdTinAqceM61/aVnUw+atDr/gZp67ts1zSEbCGEuqIG/5Gy3wlOPs39kpNS/xJbZ
-         JCtSt9ERJGtaUdkvFZ9RCYiCAG4GJMyasbsZ8rm3BfAewPNGjNBkIhDx9r4hqmOyTgIS
-         fV3A==
+        b=W2RwTxBS70LD1y26JruuZLzQpxw2fKXig7wGAao2Q7QWWCb7SxxHsh2cuP3sBYEy76
+         yrUZ/6JqTzgN9fr6FU+IGaRXWl0KPxkE9BDdA3O4KTnu6ODzvfqv3G6b3P8qTKE8z4Hp
+         B0rasFoy0EEaku1sSLTsmHUk+SCCWDouvCdUPT8nerfoBPS9EHZU3xFo+GT9rB0Jzueb
+         SAZ2phquWtl3CgdNOPnfSVFZWC+gRKfGJtO5U0Ss3CWdznE9bQ1aXQKCUQ6bMO7Hiews
+         1Q/+LsY+1UK9YBT582faz7owulgILZPuE8NTWv7A+oxzUgu1jH/ykXmFKhRmsHgHiMJS
+         BtIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:references
          :in-reply-to:mime-version:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=SHKcbb1n/kJ4+s2wUCBKPe/fkWPbreSXtPdUkAfG2W8=;
-        b=OaM69KK8E4UGyFpYnxPX4wfXgApmYwPrTMBeCLBlYYi7bNjZqH/BHXuZFpum5VhsWh
-         WHYnyOXheyIfbVCbSSfMUBxvuIsNjqJts5g2CO9aH7hUHBxKfgfIaZ+9dNDcSXxoX1ei
-         8uw+flQznsNSBBepIp34OlIQqnzCjeobkiSIj17TztLtNMisQY2qbCWBxmEweFKZ9I5I
-         fzLmCrIv0fwbFUbTTdDXRt8i9DUrtV1bSlcxSbpucwHPoIlFNRjnsOpL8c+i0NL6xTWi
-         34UjBticNqsmyz7D8IYWYESFfcot0NXABcd1vKASZypEOS6HgQOkOg+JiBL+C4SQ3n+V
-         Nyyw==
+        bh=YXVdYQmN7d4zPLOqWlFdRsbcRfgloVcuVkxTi2JQwiI=;
+        b=F2FH8UtrHVaa53dt6LXY8jUFPsPfa1lispmigfotJCezGF0TWS+lvxxDHXuWwpZRy/
+         LWzzJtOvqlkC9b0qYbWNBJovtcB+d3zBmJKVamwNTma6bn6itEKyYmxslDwiqp1YFmZN
+         uNEyXAQ1QNQhoNmpVh5ziM6KFcgwjVBjQciz1FKQRnTJUNv9oeIn8RED/g21VTduBvoT
+         kCyeRgZA3ySek1H6JIGgkKEmpaYpaGCr+2enI2X1FmI1YO20IRm9Ko71h6f4pdbWhew6
+         6shVxOdyrPWyZidjSfXByP0ziAPHvzDRe0VIfEB2yeGhR/qs2tXuZkmcpgSzDCduzsXu
+         U3hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k7HcZeRf;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=U6XqTGVU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VlywEBHu;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=FsqJocf1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j81-v6si383981qke.224.2018.06.21.17.58.35
+        by mx.google.com with ESMTPS id e63-v6si1216136qtb.5.2018.06.21.17.59.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 21 Jun 2018 17:58:35 -0700 (PDT)
+        Thu, 21 Jun 2018 17:59:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k7HcZeRf;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=U6XqTGVU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VlywEBHu;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=FsqJocf1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58218 helo=lists.gnu.org)
+Received: from localhost ([::1]:58220 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWAPL-0001Sy-7K
-	for alex.bennee@linaro.org; Thu, 21 Jun 2018 20:58:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36707)
+	id 1fWAPo-0001k0-Hp
+	for alex.bennee@linaro.org; Thu, 21 Jun 2018 20:59:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37083)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fWAPA-0001QS-PS
-	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 20:58:27 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1fWAPb-0001iE-41
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 20:58:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fWAP9-0005jH-CU
-	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 20:58:24 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:38613)
+	(envelope-from <joel.stan@gmail.com>) id 1fWAPa-0006AJ-GF
+	for qemu-arm@nongnu.org; Thu, 21 Jun 2018 20:58:51 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:39890)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fWAP6-0005fP-Ut; Thu, 21 Jun 2018 20:58:21 -0400
-Received: by mail-qt0-x241.google.com with SMTP id e11-v6so4049954qtp.5;
-	Thu, 21 Jun 2018 17:58:20 -0700 (PDT)
+	id 1fWAPY-00069e-KW; Thu, 21 Jun 2018 20:58:48 -0400
+Received: by mail-qt0-x244.google.com with SMTP id p23-v6so4630457qtn.6;
+	Thu, 21 Jun 2018 17:58:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:sender:in-reply-to:references:from:date:message-id
 	:subject:to:cc:content-transfer-encoding;
-	bh=SHKcbb1n/kJ4+s2wUCBKPe/fkWPbreSXtPdUkAfG2W8=;
-	b=k7HcZeRfq//UF7WHui8eGqldfDFOZq0KO08mEnZpuN9MOjSHv1rHXXTkrDBsLpgaLA
-	jyemW6fIcR5iMUN4UAdGHiviHQBrJ+aaELdjytQgZcGRuV24j4FlxPxzPpm9Ebh4zbXZ
-	MKdauoY7aAVoRvkIhII7pGZik1gkygm91J+uf0M7X1ak/LZMCriNOP49LwLXDXtVpZEn
-	uLOT771AdZVaUDMN8OD1GXKJUTWD7UnX7EbT/NlRhak0Po8tP4cT6/pvww/nK5XiHhjR
-	Yq4355fuU0kc4azQaMogAA0hSomgkKhCYjv/04OVU7hC/c3pVnpCIO/5VezRvUl1xmDc
-	FHpQ==
+	bh=YXVdYQmN7d4zPLOqWlFdRsbcRfgloVcuVkxTi2JQwiI=;
+	b=VlywEBHumYIWKsvzstShMh9gRrLC7CUUZaL2VvobJoheq4LdXEYRWLrJH9q0uUYFFq
+	jYSnLpIjoHVjKp+PKEXQj9kJdBUCURTjP1C2vYCWtmkZCYwN+OabA0VbGAyjjPLQaH4z
+	M1GvGYMm5HF+2bO2Mbi2cLlxzEbf9xJGX7PB0EBlZgAiNxwCZM33Z30Ksks83u3DG4x/
+	TwFrDiFRT0ttCg06YsWcMKb75Ac0o2fF2taBiAYyqBtkzLiJHTId+/dnt/gB/xLwMSmW
+	1Dj+R8HQmBZ0h1zLjsVoVt4omhHkTQfmGfmQsM7cDJR9W8aLRNolUa9qjeCssThcJ7kD
+	FadA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
 	h=mime-version:sender:in-reply-to:references:from:date:message-id
 	:subject:to:cc:content-transfer-encoding;
-	bh=SHKcbb1n/kJ4+s2wUCBKPe/fkWPbreSXtPdUkAfG2W8=;
-	b=U6XqTGVUuG+zUsrR3vj2R6JBKCJwzcBIxd1/jRUXcDK+DJBCYu6gFORMQV4vLYB7Ec
-	BAgIJiEV/+Qf5AK3EyEpPCmN1+wWyX+ISMclDYZ2+16RWd4S6GowMR1jA/hsVAOGPdO0
-	ukifJnnRgSeqULOBNDNDn04/D9c9kJZ1lFrfU=
+	bh=YXVdYQmN7d4zPLOqWlFdRsbcRfgloVcuVkxTi2JQwiI=;
+	b=FsqJocf14XtGpNLDlbWo12ktdzUNL8bb45WYRmW39b6f79UQhoBIVN7sLEhOdYZWV5
+	hgs7IO3iguyAsU1fdD2KyvcZ5rtRS/lrslOmGgQhUt9LQWznF/lelWUv6T6gsDs5ZDR2
+	VemylUG8AR23pihLhjnb4AImhLWrC9wszIh4w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
 	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=SHKcbb1n/kJ4+s2wUCBKPe/fkWPbreSXtPdUkAfG2W8=;
-	b=pgdmmillGl90FAoZ6/J3TqhyWzLV9DFjq3WOVIVl7ijfFZ8I5nImjmreQrXelNDX1F
-	Nz3As3PnfeUPupxMYbXrKfVCpgtBnGYEj9Ud3XPAF+UcYsD5PStoBtRlAnhjY0Y9u2yB
-	mJMneJo0mE6aeJdxEcRjo40r+xfgI/0LPEOZVePu1xpIvlGxYvfdMNj1cmlxGDqvXBiu
-	cRSGg+hZ7OG+wJc4ZnIkrAL02MfaeL7GY51bBs8SROp7VYSigy42IwApF6iRiXrkGq9P
-	ZlwhmHac8ElAIjMcbXKAcDCUe2kSFkMrLaRlrfg1qxnsgQvBbdkWC66tvsv8zLAas+Ed
-	whEA==
-X-Gm-Message-State: APt69E2rdD0PPyiWeHxuFBYxGT6n9GnHUqMsjdTF3VsCFudrX93uMKd8
-	8AGiXn++UK/7aSKweiyeS5d4kE+mFLIvjhI6kDM=
-X-Received: by 2002:ac8:260f:: with SMTP id
-	u15-v6mr26232228qtu.368.1529629099911; 
-	Thu, 21 Jun 2018 17:58:19 -0700 (PDT)
+	bh=YXVdYQmN7d4zPLOqWlFdRsbcRfgloVcuVkxTi2JQwiI=;
+	b=pZVsdmq815Rx3q5qUgvdqSVdEYp45yGYtvcV26/2kFGCJaVU9KQahQGtbChoR4gryM
+	bMbluFTMrawntuvPD0WBHDjwflmkVDzuZDeC60jGe4cb8KBnuzOkLWdIvVnRLPlZwvSk
+	fqIrEJosS0nj26pS2kiVnzb6Bopkt89qsDz/ZafFyZdnd2SC+Ms+SI6C5oB7QgXXecql
+	k6r4k19uuo281InPtiUhV7Vr1OqBzEoHP280r4wfB0ULRD+oiXc28baPY/gkozbTbtyl
+	3oMhB5hmA4ngwEFvYwrCWckkvGENydoMNQAEUOyQaUWQ7nm1FiLhMHy6y9p2tP9P91X2
+	lutA==
+X-Gm-Message-State: APt69E2Df7RSXlNASDntCG7I2cvxNWkySXNtcqhxCO2GD6lwiYOB6elU
+	wmgbcRbqTJuB0LPdwaA5fsbPkF0UsxeL1Ogl9Y8=
+X-Received: by 2002:a0c:a2e5:: with SMTP id
+	g92-v6mr24864692qva.60.1529629127905; 
+	Thu, 21 Jun 2018 17:58:47 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:ac8:184d:0:0:0:0:0 with HTTP; Thu, 21 Jun 2018 17:57:59
+Received: by 2002:ac8:184d:0:0:0:0:0 with HTTP; Thu, 21 Jun 2018 17:58:27
 	-0700 (PDT)
-In-Reply-To: <20180621223946.20738-2-clg@kaod.org>
+In-Reply-To: <20180621223946.20738-3-clg@kaod.org>
 References: <20180621223946.20738-1-clg@kaod.org>
-	<20180621223946.20738-2-clg@kaod.org>
+	<20180621223946.20738-3-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 22 Jun 2018 10:27:59 +0930
-X-Google-Sender-Auth: Ik6o842keZkyeDJhY-i6cKoCLBE
-Message-ID: <CACPK8XevZ-n9+M+zYmnnZPqb35SxCZjb8TB6fp17jZ+DZ1mPiw@mail.gmail.com>
+Date: Fri, 22 Jun 2018 10:28:27 +0930
+X-Google-Sender-Auth: VqDVLU4kXbI3ilyCe4HdakRLCpM
+Message-ID: <CACPK8Xd1+qziDk9TG0hjvTdSLfYs7nmTEm54_YDPK8O1x7nuuw@mail.gmail.com>
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [PATCH 1/3] aspeed/scu: introduce clock frequencies
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: Re: [Qemu-arm] [PATCH 2/3] aspeed: initialize the SCU controller
+ first
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -122,60 +123,16 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9CnBYT+sH9PG
+X-TUID: BbpMlj2C8Y80
 
 On 22 June 2018 at 08:09, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> All Aspeed SoC clocks are driven by an input source clock which can
-> have different frequencies : 24MHz or 25MHz, and also, on the Aspeed
-> AST2400 SoC, 48MHz. The H-PLL (CPU) clock is defined from a
-> calculation using parameters in the H-PLL Parameter register or from a
-> predefined set of frequencies if the setting is strapped by hardware
-> (Aspeed AST2400 SoC). The other clocks of the SoC are then defined
-> from the H-PLL using dividers.
->
-> We introduce first the APB clock because it drives the timer.
-
-Looks good! One small issue below.
+> The System Control Unit should be initialized first as it drives all
+> the configuration of the SoC and other device models.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+
 > ---
->  include/hw/misc/aspeed_scu.h |  70 ++++++++++++++++++++++++++--
->  hw/misc/aspeed_scu.c         | 106 +++++++++++++++++++++++++++++++++++++=
-++++++
->  2 files changed, 172 insertions(+), 4 deletions(-)
->
-
-> +static uint32_t aspeed_scu_calc_hpll_ast2400(AspeedSCUState *s)
-> +{
-> +    uint32_t hpll_reg =3D s->regs[HPLL_PARAM];
-> +    uint8_t freq_select;
-> +    bool clk_25m_in;
-> +
-> +    if (hpll_reg & SCU_AST2400_H_PLL_OFF) {
-> +        return 0;
-> +    }
-> +
-> +    if (hpll_reg & SCU_AST2400_H_PLL_PROGRAMMED) {
-> +        uint32_t multiplier =3D 1;
-> +
-> +        if (!(hpll_reg & SCU_AST2400_H_PLL_BYPASS_EN)) {
-> +            uint32_t n  =3D (hpll_reg >> 5) & 0x3f;
-> +            uint32_t od =3D (hpll_reg >> 4) & 0x1;
-> +            uint32_t d  =3D hpll_reg & 0xf;
-> +
-> +            multiplier =3D (2 - od) * ((n + 2) / (d + 1));
-> +        }
-> +
-> +        return s->clkin * multiplier;
-> +    }
-> +
-> +    /* HW strapping */
-> +    clk_25m_in =3D (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN);
-
-I think you want to do !! to this result, or shift it down. Otherwise
-you are getting 1 << 23 or zero, when I think you want 1 or 0.
-
-> +    freq_select =3D SCU_AST2400_HW_STRAP_GET_H_PLL_CLK(s->hw_strap1);
-> +
-> +    return hpll_ast2400_freqs[clk_25m_in][freq_select] * 1000000;
-> +}
+>  hw/arm/aspeed_soc.c | 40 ++++++++++++++++++++--------------------
+>  1 file changed, 20 insertions(+), 20 deletions(-)

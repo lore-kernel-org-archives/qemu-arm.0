@@ -1,86 +1,80 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp530590wrq;
-        Fri, 22 Jun 2018 00:46:45 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLWiHXC30XbRC0Ekcv1G494lysInusMqUFkgYdzJSMZvcVtTBZF+2QoZSBD/rcFkiTXEOe7
-X-Received: by 2002:ac8:6045:: with SMTP id k5-v6mr429932qtm.204.1529653605763;
-        Fri, 22 Jun 2018 00:46:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529653605; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp538170wrq;
+        Fri, 22 Jun 2018 00:57:35 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfbrlmqUACp4Pzb1XNu0+txgmQ8ZBxRusNQsW1QGLgddCjgCDsDkOaH/SCK4N8rNgy5l4m6
+X-Received: by 2002:a0c:8047:: with SMTP id 65-v6mr441692qva.226.1529654255881;
+        Fri, 22 Jun 2018 00:57:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529654255; cv=none;
         d=google.com; s=arc-20160816;
-        b=jay7l9UhjdJ2HN8iXfAToHrqaN7bQwYfvb6/tmsz/dfRNnxgqyjlGexY1bdEpMbWll
-         nX7X6Ic8NbooUaNiKCWKpzkVL8PC8l/gqC3FPVz9pfaSFq6Swta9MPSaS/WgtuKC/5MF
-         tUAZpcAOP/3BLEJDd1b60CLyphF7LSyQqofWv+H+EOeJ366fOU8rhMcJWWAgYg77I9q2
-         98bJdFt+oFXsaNBY9RBZZDyFTVIAQzRaz7vu4LFt0QCy2BstiPiAysIcXj4rZXF+aT6g
-         k8U5d81R2tOKHzET0/Y3YPjxTxkH9j9f6/MN0ekC0+xwmgZuIpZ0Tqp49aSruVGZEYJy
-         SpvQ==
+        b=x+p5Yvw3SKh4ZcWXXhY6v/KTWFt15gA3WSvwdzdGGJAzwoIpxxkwsg9u9Jca5xVM2L
+         49nPgrrHYLWq/+UlCJBghBpVeZgcUQR6nmXEU2HGXLL4YMkLEb4OxFLxm+86KIGSZzA8
+         /qKJDN9SnKidPB2yYDre0yCjS/ki8Ap1tnJMMOxFrBRO64JAMDvKr1P34LUqY/1iSbFX
+         i/i8s25puN9CzQKiN8Zgfws0w2PpUM9HC5BUxF8r/0x9H6cVcp9/6tWAMIT2F9qTJx1/
+         4xXa4Ap/kQU4ZPmobPaltBfkMDrLPoJkYqJI5fd94jtp37aIdPeT6SvYR+HzZdrFa+zn
+         +P2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=FHGVYsLsZ6hu2FSqldrsYELK2qRoxCc33La2cuO5GDA=;
-        b=mRwxCCovOPjufeVuw4ne4A92GXTk7k2uppGj4VeWeof13us6B311gl3rueB30vKQYn
-         hB1fzVVzRvueP279zT3kMgFbIr2HFj3u9lRpiIqYhO3fbChNrIPtpcG9P7H66Sy5a+8i
-         Ukr6ti7RHPwg97FrPYM4dYs96gCCweGFRAtLEc5XsONVQn8TxcxOuKctcwEipK2koMHC
-         j8lkLlyD7kzv2HKzlE+YH0AG+2GZglaoYCKaYTNw7oBUSC+vwr6qToQOCceRPV48pHH3
-         +LRHdl3z6tKqJ+27YhTAdZPrQJqW3ydJnm7LhaWt+KmkSZH4SnNDRW3PbkejAAzzq7Xc
-         lLTw==
+        bh=dt5z5dTgWDP7wT3uzJ6DLK88PF318wt2Dj4QSHtQZw8=;
+        b=aiJ8hnv8/evVYBVwGzngKfeDUZ/U8SuZ4vTI+08N+3tbrXz80mXNcFMyC4enMlUXCv
+         K8a8WAa+GkGHW4ji7BXIqMBAUxH5/sq9STAtN4WLoztlE57nXiduYt3rgAZYNggKMcSp
+         Pm05uS7f/jlF04avBukBxrfOtwLr0wkscLeB/xvKK3vsqBiweZ/rC4cGxVTsXz2bZrYJ
+         mrEzVLJFr7596nc0YVgafGQLcNZ+BI4vPs9jZK+tgFSFVJjOUwM+fRI6hXwY3EbwJjir
+         4kLTcNbBxWQVxi+S+m2JrsFz0WImET6evcgjftPg9oUZT9TutEZFIKF1cVjcmw+QBvc2
+         emkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n46-v6si1815654qvc.250.2018.06.22.00.46.45
+        by mx.google.com with ESMTPS id z4-v6si6164148qtg.61.2018.06.22.00.57.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 00:46:45 -0700 (PDT)
+        Fri, 22 Jun 2018 00:57:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59855 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59895 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWGmL-0001uy-47
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 03:46:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41279)
+	id 1fWGwp-0006Xk-A6
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 03:57:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43042)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWGks-0000yx-8M
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 03:45:16 -0400
+	(envelope-from <clg@kaod.org>) id 1fWGwc-0006Vp-J4
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 03:57:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fWGkq-0000Al-7r
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 03:45:14 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35534 helo=mx1.redhat.com)
+	(envelope-from <clg@kaod.org>) id 1fWGwZ-0008NK-GP
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 03:57:22 -0400
+Received: from 12.mo5.mail-out.ovh.net ([46.105.39.65]:41574)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fWGkq-0000AB-2Z; Fri, 22 Jun 2018 03:45:12 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 64166A27F4;
-	Fri, 22 Jun 2018 07:45:11 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-117-106.ams2.redhat.com
-	[10.36.117.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 36B9D2026D6B;
-	Fri, 22 Jun 2018 07:45:10 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org, jia.he@hxt-semitech.com,
-	hejianet@gmail.com
-Date: Fri, 22 Jun 2018 09:45:00 +0200
-Message-Id: <1529653501-15358-4-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1529653501-15358-1-git-send-email-eric.auger@redhat.com>
-References: <1529653501-15358-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 07:45:11 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 07:45:11 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fWGwZ-0008Mg-6b
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 03:57:19 -0400
+Received: from player168.ha.ovh.net (unknown [10.109.122.7])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 47A581C4624
+	for <qemu-arm@nongnu.org>; Fri, 22 Jun 2018 09:57:17 +0200 (CEST)
+Received: from zorba.kaod.org (LFbn-TOU-1-49-10.w86-201.abo.wanadoo.fr
+	[86.201.141.10]) (Authenticated sender: clg@kaod.org)
+	by player168.ha.ovh.net (Postfix) with ESMTPSA id DC34E4200A9;
+	Fri, 22 Jun 2018 09:57:10 +0200 (CEST)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: qemu-devel@nongnu.org
+Date: Fri, 22 Jun 2018 09:56:58 +0200
+Message-Id: <20180622075700.5923-2-clg@kaod.org>
+X-Mailer: git-send-email 2.13.6
+In-Reply-To: <20180622075700.5923-1-clg@kaod.org>
+References: <20180622075700.5923-1-clg@kaod.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 12384054551142697792
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtiedrtdehgdduvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v4 3/4] hw/arm/smmuv3: IOTLB emulation
+X-Received-From: 46.105.39.65
+Subject: [Qemu-arm] [PATCH v2 1/3] aspeed/scu: introduce clock frequencies
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,353 +86,301 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aIy/VBUWMHZQ
+X-TUID: svGHnW5lMrak
 
-We emulate a TLB cache of size SMMU_IOTLB_MAX_SIZE=256.
-It is implemented as a hash table whose key is a combination
-of the 16b asid and 48b IOVA (Jenkins hash).
+All Aspeed SoC clocks are driven by an input source clock which can
+have different frequencies : 24MHz or 25MHz, and also, on the Aspeed
+AST2400 SoC, 48MHz. The H-PLL (CPU) clock is defined from a
+calculation using parameters in the H-PLL Parameter register or from a
+predefined set of frequencies if the setting is strapped by hardware
+(Aspeed AST2400 SoC). The other clocks of the SoC are then defined
+from the H-PLL using dividers.
 
-Entries are invalidated on TLB invalidation commands, either
-globally, or per asid, or per asid/iova.
+We introduce first the APB clock because it should be used to drive
+the Aspeed timer model.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
-v2 -> v3:
-- use uint32_t instead of float when printing the iotlb hit rate
-- use const local variables in smmu_iotlb_key_equal
+ include/hw/misc/aspeed_scu.h |  70 ++++++++++++++++++++++++++--
+ hw/misc/aspeed_scu.c         | 106 +++++++++++++++++++++++++++++++++++++=
+++++++
+ 2 files changed, 172 insertions(+), 4 deletions(-)
 
-v1 -> v2:
-- add comment about Jenkins Hash
-- remove init of iotlb_hits, misses
-
-v1:
-- Add new trace point when smmu is bypassed
-- s/iotlb_miss/iotlb_misses, s/iotlb_hit/iotlb_hits
-- use SMMUIOTLBKey as a key
-
-Credit to Tomasz Nowicki who did the first implementation of
-this IOTLB implementation, inspired of intel_iommu implementation.
----
- hw/arm/smmu-common.c         | 60 +++++++++++++++++++++++++++
- hw/arm/smmuv3.c              | 98 ++++++++++++++++++++++++++++++++++++++++++--
- hw/arm/trace-events          |  9 ++++
- include/hw/arm/smmu-common.h | 13 ++++++
- 4 files changed, 176 insertions(+), 4 deletions(-)
-
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index db242c7..f66e444 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -24,11 +24,43 @@
- #include "qom/cpu.h"
- #include "hw/qdev-properties.h"
- #include "qapi/error.h"
-+#include "qemu/jhash.h"
- 
- #include "qemu/error-report.h"
- #include "hw/arm/smmu-common.h"
- #include "smmu-internal.h"
- 
-+/* IOTLB Management */
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index d70cc0aeca61..f662c38188f4 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -30,6 +30,10 @@ typedef struct AspeedSCUState {
+     uint32_t hw_strap1;
+     uint32_t hw_strap2;
+     uint32_t hw_prot_key;
 +
-+inline void smmu_iotlb_inv_all(SMMUState *s)
-+{
-+    trace_smmu_iotlb_inv_all();
-+    g_hash_table_remove_all(s->iotlb);
-+}
++    uint32_t clkin;
++    uint32_t hpll;
++    uint32_t apb_freq;
+ } AspeedSCUState;
+=20
+ #define AST2400_A0_SILICON_REV   0x02000303U
+@@ -58,7 +62,64 @@ extern bool is_supported_silicon_rev(uint32_t silicon_=
+rev);
+  *       1. 2012/12/29 Ryan Chen Create
+  */
+=20
+-/* Hardware Strapping Register definition (for Aspeed AST2400 SOC)
++/* SCU08   Clock Selection Register
++ *
++ *  31     Enable Video Engine clock dynamic slow down
++ *  30:28  Video Engine clock slow down setting
++ *  27     2D Engine GCLK clock source selection
++ *  26     2D Engine GCLK clock throttling enable
++ *  25:23  APB PCLK divider selection
++ *  22:20  LPC Host LHCLK divider selection
++ *  19     LPC Host LHCLK clock generation/output enable control
++ *  18:16  MAC AHB bus clock divider selection
++ *  15     SD/SDIO clock running enable
++ *  14:12  SD/SDIO divider selection
++ *  11     Reserved
++ *  10:8   Video port output clock delay control bit
++ *  7      ARM CPU/AHB clock slow down enable
++ *  6:4    ARM CPU/AHB clock slow down setting
++ *  3:2    ECLK clock source selection
++ *  1      CPU/AHB clock slow down idle timer
++ *  0      CPU/AHB clock dynamic slow down enable (defined in bit[6:4])
++ */
++#define SCU_CLK_GET_PCLK_DIV(x)                    (((x) >> 23) & 0x7)
 +
-+static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
-+                                         gpointer user_data)
-+{
-+    uint16_t asid = *(uint16_t *)user_data;
-+    SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
++/* SCU24   H-PLL Parameter Register (for Aspeed AST2400 SOC)
++ *
++ *  18     H-PLL parameter selection
++ *           0: Select H-PLL by strapping resistors
++ *           1: Select H-PLL by the programmed registers (SCU24[17:0])
++ *  17     Enable H-PLL bypass mode
++ *  16     Turn off H-PLL
++ *  10:5   H-PLL Numerator
++ *  4      H-PLL Output Divider
++ *  3:0    H-PLL Denumerator
++ *
++ *  (Output frequency) =3D 24MHz * (2-OD) * [(Numerator+2) / (Denumerato=
+r+1)]
++ */
 +
-+    return iotlb_key->asid == asid;
-+}
++#define SCU_AST2400_H_PLL_PROGRAMMED               (0x1 << 18)
++#define SCU_AST2400_H_PLL_BYPASS_EN                (0x1 << 17)
++#define SCU_AST2400_H_PLL_OFF                      (0x1 << 16)
 +
-+inline void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova)
-+{
-+    SMMUIOTLBKey key = {.asid = asid, .iova = iova};
++/* SCU24   H-PLL Parameter Register (for Aspeed AST2500 SOC)
++ *
++ *  21     Enable H-PLL reset
++ *  20     Enable H-PLL bypass mode
++ *  19     Turn off H-PLL
++ *  18:13  H-PLL Post Divider
++ *  12:5   H-PLL Numerator (M)
++ *  4:0    H-PLL Denumerator (N)
++ *
++ *  (Output frequency) =3D CLKIN(24MHz) * [(M+1) / (N+1)] / (P+1)
++ *
++ * The default frequency is 792Mhz when CLKIN =3D 24MHz
++ */
 +
-+    trace_smmu_iotlb_inv_iova(asid, iova);
-+    g_hash_table_remove(s->iotlb, &key);
-+}
++#define SCU_H_PLL_BYPASS_EN                        (0x1 << 20)
++#define SCU_H_PLL_OFF                              (0x1 << 19)
 +
-+inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
-+{
-+    trace_smmu_iotlb_inv_asid(asid);
-+    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
-+}
-+
- /* VMSAv8-64 Translation */
- 
- /**
-@@ -328,6 +360,31 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid)
-     return NULL;
++/* SCU70  Hardware Strapping Register definition (for Aspeed AST2400 SOC=
+)
+  *
+  * 31:29  Software defined strapping registers
+  * 28:27  DRAM size setting (for VGA driver use)
+@@ -107,12 +168,13 @@ extern bool is_supported_silicon_rev(uint32_t silic=
+on_rev);
+ #define SCU_AST2400_HW_STRAP_GET_CLK_SOURCE(x)     (((((x) >> 23) & 0x1)=
+ << 1) \
+                                                     | (((x) >> 18) & 0x1=
+))
+ #define SCU_AST2400_HW_STRAP_CLK_SOURCE_MASK       ((0x1 << 23) | (0x1 <=
+< 18))
+-#define     AST2400_CLK_25M_IN                         (0x1 << 23)
++#define SCU_HW_STRAP_CLK_25M_IN                    (0x1 << 23)
+ #define     AST2400_CLK_24M_IN                         0
+ #define     AST2400_CLK_48M_IN                         1
+ #define     AST2400_CLK_25M_IN_24M_USB_CKI             2
+ #define     AST2400_CLK_25M_IN_48M_USB_CKI             3
+=20
++#define SCU_HW_STRAP_CLK_48M_IN                    (0x1 << 18)
+ #define SCU_HW_STRAP_2ND_BOOT_WDT                  (0x1 << 17)
+ #define SCU_HW_STRAP_SUPER_IO_CONFIG               (0x1 << 16)
+ #define SCU_HW_STRAP_VGA_CLASS_CODE                (0x1 << 15)
+@@ -160,8 +222,8 @@ extern bool is_supported_silicon_rev(uint32_t silicon=
+_rev);
+ #define     AST2400_DIS_BOOT                           3
+=20
+ /*
+- * Hardware strapping register definition (for Aspeed AST2500 SoC and
+- * higher)
++ * SCU70  Hardware strapping register definition (for Aspeed AST2500
++ *        SoC and higher)
+  *
+  * 31     Enable SPI Flash Strap Auto Fetch Mode
+  * 30     Enable GPIO Strap Mode
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 59315010db9a..59333b50abdd 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -168,6 +168,27 @@ static uint32_t aspeed_scu_get_random(void)
+     return num;
  }
- 
-+static guint smmu_iotlb_key_hash(gconstpointer v)
+=20
++static void aspeed_scu_set_apb_freq(AspeedSCUState *s)
 +{
-+    SMMUIOTLBKey *key = (SMMUIOTLBKey *)v;
-+    uint32_t a, b, c;
++    uint32_t apb_divider;
 +
-+    /* Jenkins hash */
-+    a = b = c = JHASH_INITVAL + sizeof(*key);
-+    a += key->asid;
-+    b += extract64(key->iova, 0, 32);
-+    c += extract64(key->iova, 32, 32);
++    switch (s->silicon_rev) {
++    case AST2400_A0_SILICON_REV:
++    case AST2400_A1_SILICON_REV:
++        apb_divider =3D 2;
++        break;
++    case AST2500_A0_SILICON_REV:
++    case AST2500_A1_SILICON_REV:
++        apb_divider =3D 4;
++        break;
++    default:
++        g_assert_not_reached();
++    }
 +
-+    __jhash_mix(a, b, c);
-+    __jhash_final(a, b, c);
-+
-+    return c;
++    s->apb_freq =3D s->hpll / (SCU_CLK_GET_PCLK_DIV(s->regs[CLK_SEL]) + =
+1)
++        / apb_divider;
 +}
 +
-+static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
-+{
-+    const SMMUIOTLBKey *k1 = v1;
-+    const SMMUIOTLBKey *k2 = v2;
-+
-+    return (k1->asid == k2->asid) && (k1->iova == k2->iova);
-+}
-+
- static void smmu_base_realize(DeviceState *dev, Error **errp)
+ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned si=
+ze)
  {
-     SMMUState *s = ARM_SMMU(dev);
-@@ -340,6 +397,8 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+     AspeedSCUState *s =3D ASPEED_SCU(opaque);
+@@ -222,6 +243,10 @@ static void aspeed_scu_write(void *opaque, hwaddr of=
+fset, uint64_t data,
+     case PROT_KEY:
+         s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
          return;
-     }
-     s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
-+    s->iotlb = g_hash_table_new_full(smmu_iotlb_key_hash, smmu_iotlb_key_equal,
-+                                     g_free, g_free);
-     s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
- 
-     if (s->primary_bus) {
-@@ -354,6 +413,7 @@ static void smmu_base_reset(DeviceState *dev)
-     SMMUState *s = ARM_SMMU(dev);
- 
-     g_hash_table_remove_all(s->configs);
-+    g_hash_table_remove_all(s->iotlb);
- }
- 
- static Property smmu_dev_properties[] = {
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index df704c2..b6dc7ed 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -605,6 +605,10 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-     SMMUEventInfo event = {.type = SMMU_EVT_NONE, .sid = sid};
-     SMMUPTWEventInfo ptw_info = {};
-     SMMUTranslationStatus status;
-+    SMMUState *bs = ARM_SMMU(s);
-+    uint64_t page_mask, aligned_addr;
-+    IOMMUTLBEntry *cached_entry = NULL;
-+    SMMUTransTableInfo *tt;
-     SMMUTransCfg *cfg = NULL;
-     IOMMUTLBEntry entry = {
-         .target_as = &address_space_memory,
-@@ -613,6 +617,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         .addr_mask = ~(hwaddr)0,
-         .perm = IOMMU_NONE,
-     };
-+    SMMUIOTLBKey key, *new_key;
- 
-     qemu_mutex_lock(&s->mutex);
- 
-@@ -637,7 +642,57 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         goto epilogue;
-     }
- 
--    if (smmu_ptw(cfg, addr, flag, &entry, &ptw_info)) {
-+    tt = select_tt(cfg, addr);
-+    if (!tt) {
-+        if (event.record_trans_faults) {
-+            event.type = SMMU_EVT_F_TRANSLATION;
-+            event.u.f_translation.addr = addr;
-+            event.u.f_translation.rnw = flag & 0x1;
++    case CLK_SEL:
++        s->regs[reg] =3D data;
++        aspeed_scu_set_apb_freq(s);
++        break;
+=20
+     case FREQ_CNTR_EVAL:
+     case VGA_SCRATCH1 ... VGA_SCRATCH8:
+@@ -247,19 +272,93 @@ static const MemoryRegionOps aspeed_scu_ops =3D {
+     .valid.unaligned =3D false,
+ };
+=20
++static uint32_t aspeed_scu_get_clkin(AspeedSCUState *s)
++{
++    if (s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN) {
++        return 25000000;
++    } else if (s->hw_strap1 & SCU_HW_STRAP_CLK_48M_IN) {
++        return 48000000;
++    } else {
++        return 24000000;
++    }
++}
++
++/*
++ * Strapped frequencies for the AST2400 in MHz. They depend on the
++ * clkin frequency.
++ */
++static const uint32_t hpll_ast2400_freqs[][4] =3D {
++    { 384, 360, 336, 408 }, /* 24MHz or 48MHz */
++    { 400, 375, 350, 425 }, /* 25MHz */
++};
++
++static uint32_t aspeed_scu_calc_hpll_ast2400(AspeedSCUState *s)
++{
++    uint32_t hpll_reg =3D s->regs[HPLL_PARAM];
++    uint8_t freq_select;
++    bool clk_25m_in;
++
++    if (hpll_reg & SCU_AST2400_H_PLL_OFF) {
++        return 0;
++    }
++
++    if (hpll_reg & SCU_AST2400_H_PLL_PROGRAMMED) {
++        uint32_t multiplier =3D 1;
++
++        if (!(hpll_reg & SCU_AST2400_H_PLL_BYPASS_EN)) {
++            uint32_t n  =3D (hpll_reg >> 5) & 0x3f;
++            uint32_t od =3D (hpll_reg >> 4) & 0x1;
++            uint32_t d  =3D hpll_reg & 0xf;
++
++            multiplier =3D (2 - od) * ((n + 2) / (d + 1));
 +        }
-+        status = SMMU_TRANS_ERROR;
-+        goto epilogue;
++
++        return s->clkin * multiplier;
 +    }
 +
-+    page_mask = (1ULL << (tt->granule_sz)) - 1;
-+    aligned_addr = addr & ~page_mask;
++    /* HW strapping */
++    clk_25m_in =3D !!(s->hw_strap1 & SCU_HW_STRAP_CLK_25M_IN);
++    freq_select =3D SCU_AST2400_HW_STRAP_GET_H_PLL_CLK(s->hw_strap1);
 +
-+    key.asid = cfg->asid;
-+    key.iova = aligned_addr;
++    return hpll_ast2400_freqs[clk_25m_in][freq_select] * 1000000;
++}
 +
-+    cached_entry = g_hash_table_lookup(bs->iotlb, &key);
-+    if (cached_entry) {
-+        cfg->iotlb_hits++;
-+        trace_smmu_iotlb_cache_hit(cfg->asid, aligned_addr,
-+                                   cfg->iotlb_hits, cfg->iotlb_misses,
-+                                   100 * cfg->iotlb_hits /
-+                                   (cfg->iotlb_hits + cfg->iotlb_misses));
-+        if ((flag & IOMMU_WO) && !(cached_entry->perm & IOMMU_WO)) {
-+            status = SMMU_TRANS_ERROR;
-+            if (event.record_trans_faults) {
-+                event.type = SMMU_EVT_F_PERMISSION;
-+                event.u.f_permission.addr = addr;
-+                event.u.f_permission.rnw = flag & 0x1;
-+            }
-+        } else {
-+            status = SMMU_TRANS_SUCCESS;
-+        }
-+        goto epilogue;
++static uint32_t aspeed_scu_calc_hpll_ast2500(AspeedSCUState *s)
++{
++    uint32_t hpll_reg   =3D s->regs[HPLL_PARAM];
++    uint32_t multiplier =3D 1;
++
++    if (hpll_reg & SCU_H_PLL_OFF) {
++        return 0;
 +    }
 +
-+    cfg->iotlb_misses++;
-+    trace_smmu_iotlb_cache_miss(cfg->asid, addr & ~page_mask,
-+                                cfg->iotlb_hits, cfg->iotlb_misses,
-+                                100 * cfg->iotlb_hits /
-+                                (cfg->iotlb_hits + cfg->iotlb_misses));
++    if (!(hpll_reg & SCU_H_PLL_BYPASS_EN)) {
++        uint32_t p =3D (hpll_reg >> 13) & 0x3f;
++        uint32_t m =3D (hpll_reg >> 5) & 0xff;
++        uint32_t n =3D hpll_reg & 0x1f;
 +
-+    if (g_hash_table_size(bs->iotlb) >= SMMU_IOTLB_MAX_SIZE) {
-+        smmu_iotlb_inv_all(bs);
++        multiplier =3D ((m + 1) / (n + 1)) / (p + 1);
 +    }
 +
-+    cached_entry = g_new0(IOMMUTLBEntry, 1);
++    return s->clkin * multiplier;
++}
 +
-+    if (smmu_ptw(cfg, aligned_addr, flag, cached_entry, &ptw_info)) {
-+        g_free(cached_entry);
-         switch (ptw_info.type) {
-         case SMMU_PTW_ERR_WALK_EABT:
-             event.type = SMMU_EVT_F_WALK_EABT;
-@@ -679,6 +734,10 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         }
-         status = SMMU_TRANS_ERROR;
-     } else {
-+        new_key = g_new0(SMMUIOTLBKey, 1);
-+        new_key->asid = cfg->asid;
-+        new_key->iova = aligned_addr;
-+        g_hash_table_insert(bs->iotlb, new_key, cached_entry);
-         status = SMMU_TRANS_SUCCESS;
-     }
- 
-@@ -687,6 +746,9 @@ epilogue:
-     switch (status) {
-     case SMMU_TRANS_SUCCESS:
-         entry.perm = flag;
-+        entry.translated_addr = cached_entry->translated_addr +
-+                                    (addr & page_mask);
-+        entry.addr_mask = cached_entry->addr_mask;
-         trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
-                                        entry.translated_addr, entry.perm);
+ static void aspeed_scu_reset(DeviceState *dev)
+ {
+     AspeedSCUState *s =3D ASPEED_SCU(dev);
+     const uint32_t *reset;
++    uint32_t (*calc_hpll)(AspeedSCUState *s);
+=20
+     switch (s->silicon_rev) {
+     case AST2400_A0_SILICON_REV:
+     case AST2400_A1_SILICON_REV:
+         reset =3D ast2400_a0_resets;
++        calc_hpll =3D aspeed_scu_calc_hpll_ast2400;
          break;
-@@ -832,10 +894,39 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             smmuv3_flush_config(sdev);
-             break;
-         }
--        case SMMU_CMD_TLBI_NH_ALL:
-         case SMMU_CMD_TLBI_NH_ASID:
--        case SMMU_CMD_TLBI_NH_VA:
-+        {
-+            uint16_t asid = CMD_ASID(&cmd);
+     case AST2500_A0_SILICON_REV:
+     case AST2500_A1_SILICON_REV:
+         reset =3D ast2500_a1_resets;
++        calc_hpll =3D aspeed_scu_calc_hpll_ast2500;
+         break;
+     default:
+         g_assert_not_reached();
+@@ -270,6 +369,13 @@ static void aspeed_scu_reset(DeviceState *dev)
+     s->regs[HW_STRAP1] =3D s->hw_strap1;
+     s->regs[HW_STRAP2] =3D s->hw_strap2;
+     s->regs[PROT_KEY] =3D s->hw_prot_key;
 +
-+            trace_smmuv3_cmdq_tlbi_nh_asid(asid);
-+            smmu_iotlb_inv_asid(bs, asid);
-+            break;
-+        }
-+        case SMMU_CMD_TLBI_NH_ALL:
-+        case SMMU_CMD_TLBI_NSNH_ALL:
-+            trace_smmuv3_cmdq_tlbi_nh();
-+            smmu_iotlb_inv_all(bs);
-+            break;
-         case SMMU_CMD_TLBI_NH_VAA:
-+        {
-+            dma_addr_t addr = CMD_ADDR(&cmd);
-+            uint16_t vmid = CMD_VMID(&cmd);
-+
-+            trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
-+            smmu_iotlb_inv_all(bs);
-+            break;
-+        }
-+        case SMMU_CMD_TLBI_NH_VA:
-+        {
-+            uint16_t asid = CMD_ASID(&cmd);
-+            uint16_t vmid = CMD_VMID(&cmd);
-+            dma_addr_t addr = CMD_ADDR(&cmd);
-+            bool leaf = CMD_LEAF(&cmd);
-+
-+            trace_smmuv3_cmdq_tlbi_nh_va(vmid, asid, addr, leaf);
-+            smmu_iotlb_inv_iova(bs, asid, addr);
-+            break;
-+        }
-         case SMMU_CMD_TLBI_EL3_ALL:
-         case SMMU_CMD_TLBI_EL3_VA:
-         case SMMU_CMD_TLBI_EL2_ALL:
-@@ -844,7 +935,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         case SMMU_CMD_TLBI_EL2_VAA:
-         case SMMU_CMD_TLBI_S12_VMALL:
-         case SMMU_CMD_TLBI_S2_IPA:
--        case SMMU_CMD_TLBI_NSNH_ALL:
-         case SMMU_CMD_ATC_INV:
-         case SMMU_CMD_PRI_RESP:
-         case SMMU_CMD_RESUME:
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 8ee4c21..be69c5d 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -12,6 +12,11 @@ smmu_ptw_invalid_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr,
- smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=%d level=%d iova=0x%"PRIx64" base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" page address = 0x%"PRIx64
- smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
- smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
-+smmu_iotlb_cache_hit(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-+smmu_iotlb_cache_miss(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-+smmu_iotlb_inv_all(void) "IOTLB invalidate all"
-+smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
-+smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
- 
- #hw/arm/smmuv3.c
- smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-@@ -45,4 +50,8 @@ smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=0x%d - end=0x%d"
- smmuv3_cmdq_cfgi_cd(uint32_t sid) "streamid = %d"
- smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache HIT for sid %d (hits=%d, misses=%d, hit rate=%d)"
- smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache MISS for sid %d (hits=%d, misses=%d, hit rate=%d)"
-+smmuv3_cmdq_tlbi_nh_va(int vmid, int asid, uint64_t addr, bool leaf) "vmid =%d asid =%d addr=0x%"PRIx64" leaf=%d"
-+smmuv3_cmdq_tlbi_nh_vaa(int vmid, uint64_t addr) "vmid =%d addr=0x%"PRIx64
-+smmuv3_cmdq_tlbi_nh(void) ""
-+smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
- smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid %d"
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 7ce95ca..d173806 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -67,6 +67,8 @@ typedef struct SMMUTransCfg {
-     uint8_t tbi;               /* Top Byte Ignore */
-     uint16_t asid;
-     SMMUTransTableInfo tt[2];
-+    uint32_t iotlb_hits;       /* counts IOTLB hits for this asid */
-+    uint32_t iotlb_misses;     /* counts IOTLB misses for this asid */
- } SMMUTransCfg;
- 
- typedef struct SMMUDevice {
-@@ -89,6 +91,11 @@ typedef struct SMMUPciBus {
-     SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
- } SMMUPciBus;
- 
-+typedef struct SMMUIOTLBKey {
-+    uint64_t iova;
-+    uint16_t asid;
-+} SMMUIOTLBKey;
-+
- typedef struct SMMUState {
-     /* <private> */
-     SysBusDevice  dev;
-@@ -147,4 +154,10 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova);
- /* Return the iommu mr associated to @sid, or NULL if none */
- IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
- 
-+#define SMMU_IOTLB_MAX_SIZE 256
-+
-+void smmu_iotlb_inv_all(SMMUState *s);
-+void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
-+void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
-+
- #endif  /* HW_ARM_SMMU_COMMON */
--- 
-2.5.5
++    /*
++     * All registers are set. Now compute the frequencies of the main cl=
+ocks
++     */
++    s->clkin =3D aspeed_scu_get_clkin(s);
++    s->hpll =3D calc_hpll(s);
++    aspeed_scu_set_apb_freq(s);
+ }
+=20
+ static uint32_t aspeed_silicon_revs[] =3D {
+--=20
+2.13.6
 

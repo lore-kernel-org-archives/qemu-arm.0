@@ -1,71 +1,71 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1207713wrq;
-        Fri, 22 Jun 2018 12:41:23 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeg/KDR2g6SdN/nhHy5JaR3XsTtmcZdKfY1mZVjQIRvP/b3XXfSOwhw36ATQBLYiiYTNjzs
-X-Received: by 2002:aed:32e7:: with SMTP id z94-v6mr2719425qtd.70.1529696483635;
-        Fri, 22 Jun 2018 12:41:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529696483; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1210226wrq;
+        Fri, 22 Jun 2018 12:44:44 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcCD/Krq0yavBq6nwAUeYteyS8uCS4GkUbh36l59lmymiF57VGPaiuUCnp9TzG4Y/94kCvE
+X-Received: by 2002:a0c:c70d:: with SMTP id w13-v6mr2752827qvi.205.1529696684523;
+        Fri, 22 Jun 2018 12:44:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529696684; cv=none;
         d=google.com; s=arc-20160816;
-        b=y2f79tKFqT9ZB1UltgxDbWqmQulVTp+WiDnNGwHLLJ/5IpfAuwJc6QZ8+AQ7kON7+P
-         rgKdcOPy4IptreETrDjas6MoMfnw08+tuRU7Smxr6az/BwEmfkv0nAMCjDT5aoREzvjh
-         az2D8Tr8jUpuPx+zKEMyodAelQKknSIx028HWekxQLVwOCwEAb1Bo7DMIKmvvLivijzc
-         K/YU7mL5wE+s3LBqV6SJazmxgqknO+sL/yqlQJS+K9aElJLzPX7UAl/waW2NJuCGng8j
-         z88rIrodElDvzk2Ss3tU0LVe73KLAGpuwzylFDmGzqN6DuWknoGPHZ3xA3q0AGdMMw2Y
-         c+/w==
+        b=Nf+/Djg5lLfJ2qWn4Km9FsoFNswF4fwl1A0ko1kIVsRDbR+GvIRA0R8CoMYQHYJ9+c
+         aZ6IeAYzd38i5vR9GZbUM2f9QIw0cd+Ur3Kd2vbENr8r7h8vXG6uWUJ8XXCCfSg7H6lv
+         RnUiR6YyLrgwEAGcRvRr5T9Wl0CWoSxk4mNKowYmQMsWFI9Sy2f+MmcuN0Po3UpYBmQk
+         SOZCOq8F5rB9aPDxSejb4Bu4iBKNvm7g4tGlAA7Bd5FNLXQvxGIQt6fEX4uKdvlnj0hz
+         K8VWu5rru+SbpHX1dOTUn3OIMGKBifa4vc2dw9UWTXTey+5VCn5ACJuuZyCxvEZHIUuV
+         oBSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :arc-authentication-results;
-        bh=ZNSeOSdSf3H58k+EmT6clGh/5jC6R/8nJ7GigDN+w1U=;
-        b=Ophtkhs04i8AoWYJMcfWpuNKbchR7VZs9+hBAf30HKJ+8nCzK6kE9bA9yZq+qR9fYk
-         Y+afonuLyvh0E5Xci0xTonWstsR/qiePmQFhgeTb6Ay+sfvOjLT9ZvNYkY++5AgYd5m7
-         RiILpsxlDAQnniCiN3ouheXg8JJ24C/IREY6ScDyFF3nkar24PdF/P+Not4HybijQfY/
-         a+A/ww16USDX75O4PE90Y+D86b/95Lq9bg4JmRdn/14nYs2XQ9EPXcg0gXKPL/2cBDIp
-         z+CEekbZl+USArXGNSE7IyMbgA8K9pgeKE76vHvN+hvdcNP+dqQMrfgN9A2I7GU0WIIy
-         84Lg==
+        bh=cODm8sYYFRaC+rinwR+pfbZ2TjcXOLxYa61ZZwbbPyk=;
+        b=T4QPFYoByBj6LV3Q7zGApZbHyCMDNep/VpHf/v5nloK4905qu4O8Dbz5nRCNABw3Qw
+         RZQZydatWseFDOqr8ghBp5iVxvUKLBWLxrggUTlyGwwxG3mcF6/0ToF4u54J81DnCPDe
+         Zp9D0SN0kxv01aZgeA68xOvdlZCQVXruz488/UV58camA5x8yY/68rj97CIVOpupZFNR
+         lwQ9yJAORLKbFgTQt0YS2B60GsJFwIML6Ihbfxh0jbs0eDuXcqWCk/4G1yDEpw49Jp17
+         3QTrheKpPO4bhluRJRdN1j8yHXhsuz2IPv+U8N+El1hCwy3nrtl2RpeoPb38xvG4qXzR
+         /fmg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v87-v6si7727036qkl.392.2018.06.22.12.41.23
+        by mx.google.com with ESMTPS id i12-v6si4098797qtp.371.2018.06.22.12.44.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 12:41:23 -0700 (PDT)
+        Fri, 22 Jun 2018 12:44:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35861 helo=lists.gnu.org)
+Received: from localhost ([::1]:35878 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWRvv-00086y-5e
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 15:41:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46167)
+	id 1fWRzA-0001xb-2S
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 15:44:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46724)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRvk-00085W-Hl
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:41:13 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWRz1-0001wb-QO
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:44:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRvf-0000oZ-JY
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:41:12 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37728 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWRyw-0001mz-LT
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:44:35 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54204 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWRvf-0000oD-EZ; Fri, 22 Jun 2018 15:41:07 -0400
+	id 1fWRyw-0001mr-GN; Fri, 22 Jun 2018 15:44:30 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D478B7D65F;
-	Fri, 22 Jun 2018 19:41:06 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 03CBE401CC41;
+	Fri, 22 Jun 2018 19:44:29 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7BC511C5A3;
-	Fri, 22 Jun 2018 19:41:05 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ADFC21C5A3;
+	Fri, 22 Jun 2018 19:44:27 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-9-f4bug@amsat.org>
+	<20180622134036.23182-10-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -110,27 +110,27 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <1a2889a3-681f-487e-828b-89cb6f59d9d9@redhat.com>
-Date: Fri, 22 Jun 2018 21:41:04 +0200
+Message-ID: <b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
+Date: Fri, 22 Jun 2018 21:44:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-9-f4bug@amsat.org>
+In-Reply-To: <20180622134036.23182-10-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 19:41:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 19:41:06 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 19:44:29 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 19:44:29 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 08/14] hw/arm/omap1: Use
+Subject: Re: [Qemu-arm] [PATCH v2 09/14] hw/arm/omap: Use
  qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -146,15 +146,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gCTDf8CHR23P
+X-TUID: smI1mnTVJzK0
 
 On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
-> TCMI_VERBOSE is no more used, drop the OMAP_8/16/32B_REG macros.
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/hw/arm/omap.h | 18 ------------------
->  hw/arm/omap1.c        | 18 ++++++++++++------
->  2 files changed, 12 insertions(+), 24 deletions(-)
+>  include/hw/arm/omap.h | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+> index 39abba753d..3867687b8c 100644
+> --- a/include/hw/arm/omap.h
+> +++ b/include/hw/arm/omap.h
+> @@ -21,6 +21,7 @@
+>  # define hw_omap_h		"omap.h"
+>  #include "hw/irq.h"
+>  #include "target/arm/cpu-qom.h"
+> +#include "qemu/log.h"
+> =20
+>  # define OMAP_EMIFS_BASE	0x00000000
+>  # define OMAP2_Q0_BASE		0x00000000
+> @@ -962,8 +963,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int req=
+);
+>          fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
+>                          __func__, paddr)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+What about that fprintf above?
+
+>  # define OMAP_RO_REG(paddr)		\
+> -        fprintf(stderr, "%s: Read-only register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Read-only register " OMAP_=
+FMT_plx \
+> +                      "\n", __func__, paddr)
+> =20
+>  /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
+>     (Board-specifc tags are not here)  */
+>=20
+
+ Thomas

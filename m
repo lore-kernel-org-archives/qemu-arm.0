@@ -1,167 +1,242 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp860786wrq;
-        Fri, 22 Jun 2018 06:55:15 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpd1rgFVqtCC9en9SWNadOFr5thh4h92pg4MNF61L+LK0+d1YG3ykIk+qkUpmT/6A6PECWBe
-X-Received: by 2002:aed:3f2e:: with SMTP id p43-v6mr1439927qtf.267.1529675715127;
-        Fri, 22 Jun 2018 06:55:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529675715; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp864364wrq;
+        Fri, 22 Jun 2018 06:59:08 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpf8zMz3BN2tg6FzIPyj26mmBV1xyZP3zHOdDEAsnt63rNt0JYRdsf1+5AD5+FSzM7wN/ewy
+X-Received: by 2002:a0c:f905:: with SMTP id v5-v6mr1437832qvn.207.1529675948423;
+        Fri, 22 Jun 2018 06:59:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529675948; cv=none;
         d=google.com; s=arc-20160816;
-        b=kQ1vZCQaZLqYusJ4fMlk1CZfs0z3ykFTsW8Dq3XyanSTlfLCk4TAn4S949loPRzlWV
-         q19Zjxp8zIBrCpZD1z0VAORcNvvhkhSXqLogA66IEnbloOoTprRBufdbMf9ZCShfbnQn
-         bn1ORbdl70EFUpp5V5hsm8UR022yNsxaCs7WIVWdv97THaIv3I8ToQwJVZSJtVMU1ZGa
-         Jofm6tdvjOQMAL1o/pZ+9gn+JbchxMLzaqLV2N56kcsmiYj2382wevZFSH63gg9t/h5Q
-         fHWq06yaZScmRwntEUrqs/uWKSVSR+ljxxP72YZfq6bNdBVxOkA5uSbUo7+c0O9ajtOI
-         Xgnw==
+        b=da8K3IE3vDFivoq+hmUndRH6FxORPDx+7TDM8FLoyhXyUXw/LlUPn9ubmGUYb1S8qr
+         Uf4pSy2uV7z5HHnmRKAqlFS0f8yRPUoTQgbDKQ+IPDeNB+1Ll4WvH9mM/KM+tT0GS6UF
+         eyrkLdehrUp70n0chr0zMtlPJHnQhYOIKU9yC66byfLqN3vPof5XiJu1UnOtQk2YKB/3
+         uUUpR+IBUQKNS8TmxH0/DaTDL4/2oSHjAuWFFHBK1fk1ZOI6flvH0UoIvcS3L2dy+vX+
+         xf4CHUWv7VyG4jSL6uGPqmDMdkCCY573kOL4Y/Vgkox0Lw/B//ci7tPPTgoQt9PlyV64
+         saTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=rb4Tel6ruUx+KkPm4chyV+0/3KWS8VEG2yorSZc4qog=;
-        b=vmu3yWqdve0cHDXrosGpBthB42b0VGWdRUNsVV1WWg9q2Y31Cl2c2xGsQr/9l+w7PL
-         hNsc6ASO/1rwM3o5eV2rZSn7b0/RQJ4IjRmkUvFskvA0Te0/0Iba9UXPiz2eDsUZkL3o
-         SqQZVXeCwuEgFYnB9GXOb0+1hwH0S1GTCiivs4Ate+eDOzgrVR1VBTLuT4mIsvFx6LY1
-         tEEH1VfKE7EfNEARwHAWJ5k/JFpJ0eaG/ZvLSwrOrTG+7yZ9HjEmNPe6Ce65Ph3HEzpa
-         qXEw3mfXwwN5OMo9gCxdLCFF+ZlpzaNbRyinWXZYVSCIhFPISfJ9oGuah7LSvNkDcWMF
-         yfwQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=IAp0MYpLqsB0xMs5MZAAj+IaZlWiyzJOjUkS3mqeJkg=;
+        b=hG/NudEVqEmmtIunFme8XR8+5JoPVaVudYinQUIqyB4CRG8m/bL1zrpMN+UiJT9S56
+         JtC6HMMU6uCpPf2F1pNfqILx4GwLNb4ZBNXq3aXuklct5jhGxUud8sgJIvbxiG/eI1IT
+         Qlf8ooD8AZkjFtY2euoy5fFTaqwZnD526vlTfXmM0r/5A+9oyaEda7DiRFPLcAFpqfxb
+         /DVj3VmsmFPbmdsLAv4m+VvHbwGY85FIrZ0/ohl+U/plno1pgN4Q4907smV8ydup9k0u
+         zVqfKYXSpj0mCL/yQxbN+aeGF02pqG7hixrQtP8Vp/k91iSaqmkjP7F+mZvb3RrhUzJM
+         ctHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rmRncngD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=klyLefzs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u3-v6si2087087qte.53.2018.06.22.06.55.14
+        by mx.google.com with ESMTPS id t25-v6si4038834qkl.362.2018.06.22.06.59.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 06:55:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 22 Jun 2018 06:59:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rmRncngD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34119 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=klyLefzs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34158 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWMWw-000060-E0
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 09:55:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59933)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fWMah-000432-OH
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 09:59:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33495)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWMJS-0006Ji-9k
-	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 09:41:19 -0400
+	id 1fWMQN-0003ot-LM
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 09:48:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWMJR-0003eZ-FS
-	for qemu-devel@nongnu.org; Fri, 22 Jun 2018 09:41:18 -0400
-Received: from mail-qt0-x22a.google.com ([2607:f8b0:400d:c0d::22a]:33069)
+	id 1fWMQJ-00077M-H4
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 09:48:27 -0400
+Received: from mail-qk0-x234.google.com ([2607:f8b0:400d:c09::234]:40654)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWMJR-0003dr-AX; Fri, 22 Jun 2018 09:41:17 -0400
-Received: by mail-qt0-x22a.google.com with SMTP id l10-v6so5937861qtj.0;
-	Fri, 22 Jun 2018 06:41:17 -0700 (PDT)
+	id 1fWMQJ-00076F-Bq; Fri, 22 Jun 2018 09:48:23 -0400
+Received: by mail-qk0-x234.google.com with SMTP id b129-v6so3673053qke.7;
+	Fri, 22 Jun 2018 06:48:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=rb4Tel6ruUx+KkPm4chyV+0/3KWS8VEG2yorSZc4qog=;
-	b=rmRncngDDmZtkzWkBrWIUbMYuiBoZpXDw4csJka4Y0EBJA/VBZKB1RqVZ7aUF57mBn
-	VbpYJL7GsP6nveyXCFgGFEwpVQeVH6BXlKjk0ekmFupSnqe4KUKx1OntFL/1luul3GyK
-	+uUzgjNxt4I4R8AeprjWpJULjat4NLrVSEUBucaQIrRDA/irm+1otgny9JacFN/lsChU
-	lAuo7mdraZznPkc3WMcncNNUHZswBZWUH+S91nzd1VzF34jhQb1CRZJP0iMx0ehp30E2
-	2ymleoZXQDYZn3+TpfRd2PFVu4tKesfS9Qw/8GnJtxlqM2wDJGO1TWhhc/I2WRallVTJ
-	gQOA==
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=IAp0MYpLqsB0xMs5MZAAj+IaZlWiyzJOjUkS3mqeJkg=;
+	b=klyLefzsEl2HczT2VaEcWJng5F1Q5CgU+4V77mD0GXeaE7MNG8c7GCE5t8vBu6T5+z
+	u5ymleO3HSpJrwEO5n6T40uvRx+P+/ecVIU/6ezvKy/MpPoZsm5znOyQ61CG7UHf4Rty
+	tUrf9eo9pXWjC7vRfJd3WjrGKbyNX64PmEHloMly1gB4hMclNjSKAP0UuCgwJKFQUGej
+	gTaGIXBWNxHOFD0VNlx44K/DGq/VTbe6z/2W/yjqspbXjxAcSXSs+CQlQ7Y5WEZGJ1cd
+	OoGpTuZMv/CjQ4xnun7Ae70y3Pg9GB2mD2NfUxzuKpE2kitdOcNXeL2anAkKLASreCzw
+	FEKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=rb4Tel6ruUx+KkPm4chyV+0/3KWS8VEG2yorSZc4qog=;
-	b=CQUeCWWpuztiFdcEA1ukajPzMGSymp2ewbDn/no+SNWw+C9H4+e1L6yGBguKHmzK3A
-	m3fpWldt1tRsVE/QPr5ECDkcT73G4rXQr33EYxpGQo83Rj+ZC0oJu9mGG3R0Fn+K52qm
-	bs3o1pfX2RVJZrRi0EsLbj9GlYkO2TeBU8UBtVc5a/BxCCau/NcUIaIfr4LKDmnlHEhv
-	tddUkLsT1bcrLEie+eNPnzWV9EuLIHlT9qa0ArxhsRePeItjayPOVHPAmCdSvs499rx0
-	/T2hXGCLiXZrTBd/Phc3QkmFOuy6TfFPguLwsyYPBxuPIQiPz4ONPP1j3jn1FOwXkJxD
-	3RWg==
-X-Gm-Message-State: APt69E0ctBI+jFWWag6y0bP4sL+AXa8cHqSs9WjBPAwjLBx2962PEQsa
-	rh5YSJ8W79YQFiSL2FT5nLI=
-X-Received: by 2002:ac8:2302:: with SMTP id
-	a2-v6mr1421215qta.180.1529674876626; 
-	Fri, 22 Jun 2018 06:41:16 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	s39-v6sm6006629qts.42.2018.06.22.06.41.14
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=IAp0MYpLqsB0xMs5MZAAj+IaZlWiyzJOjUkS3mqeJkg=;
+	b=aMMqAHM32wNdQuAaopejzLlgTSgzYSD1O9XKOzStk4ZR65B2RO2VtsW5CC7NurU6K8
+	r3TpePxwny7Mlz8E0JQunoI9gicLPBBNpYsEEdi2lRlWZZPZCKzmw+bIJAu4hb+aoei0
+	a8qZ85NmvcGbMpl4YdLMe9JEPF2FPSIlMmabjAe9ByXeDE/L9yVesE0xvcofKoCIMc1X
+	t1p31J9/jczSkulmnm6wzvQZAgIndH3bg8fpLWix7yQ4zWQjpmgbCwbEW60IGZnivomR
+	7HFxnuFToj1orPTKHmaqCbMwiQf/bYkGxdG0GOSNINeJCA/N4XyKJ6i1FlpQx1qUCtIi
+	e6Xw==
+X-Gm-Message-State: APt69E3Sy2nQ+rVODO4F+VEEMpoMTuqc4GMzOJsHsGCYAnPkapHvUx3w
+	FdB+JDO65zqJdrjg6+SsOJGwE1iC
+X-Received: by 2002:a37:9486:: with SMTP id
+	w128-v6mr1360748qkd.119.1529675302601; 
+	Fri, 22 Jun 2018 06:48:22 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	12-v6sm6157954qtm.69.2018.06.22.06.48.20
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 06:41:16 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>
-Date: Fri, 22 Jun 2018 10:40:34 -0300
-Message-Id: <20180622134036.23182-13-f4bug@amsat.org>
-X-Mailer: git-send-email 2.18.0.rc2
-In-Reply-To: <20180622134036.23182-1-f4bug@amsat.org>
+	Fri, 22 Jun 2018 06:48:22 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>
 References: <20180622134036.23182-1-f4bug@amsat.org>
+	<20180622134036.23182-9-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <31db6cdd-48f6-746e-3c5d-38925b43f81b@amsat.org>
+Date: Fri, 22 Jun 2018 10:48:17 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20180622134036.23182-9-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22a
-Subject: [Qemu-devel] [PATCH v2 12/14] hw/net/smc91c111: Use
- qemu_log_mask(GUEST_ERROR) instead of hw_error
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c09::234
+Subject: Re: [Qemu-arm] [PATCH v2 08/14] hw/arm/omap1: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vVknPl0zKBta
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: D0Be6BYaBhtp
 
-hw_error() finally calls abort(), but there is no need to abort here.
+On 06/22/2018 10:40 AM, Philippe Mathieu-Daudé wrote:
+> TCMI_VERBOSE is no more used, drop the OMAP_8/16/32B_REG macros.
+> 
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/net/smc91c111.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+Oh and eventually:
 
-diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-index c8cc5379b7..9094c0b47c 100644
---- a/hw/net/smc91c111.c
-+++ b/hw/net/smc91c111.c
-@@ -11,6 +11,7 @@
- #include "hw/sysbus.h"
- #include "net/net.h"
- #include "hw/devices.h"
-+#include "qemu/log.h"
- /* For crc32 */
- #include <zlib.h>
- 
-@@ -478,7 +479,9 @@ static void smc91c111_writeb(void *opaque, hwaddr offset,
-         }
-         break;
-     }
--    hw_error("smc91c111_write: Bad reg %d:%x\n", s->bank, (int)offset);
-+    qemu_log_mask(LOG_GUEST_ERROR, "smc91c111_write(bank:%d) Illegal register"
-+                                   " 0x%" HWADDR_PRIx " = 0x%x\n",
-+                  s->bank, offset, value);
- }
- 
- static uint32_t smc91c111_readb(void *opaque, hwaddr offset)
-@@ -621,7 +624,9 @@ static uint32_t smc91c111_readb(void *opaque, hwaddr offset)
-         }
-         break;
-     }
--    hw_error("smc91c111_read: Bad reg %d:%x\n", s->bank, (int)offset);
-+    qemu_log_mask(LOG_GUEST_ERROR, "smc91c111_read(bank:%d) Illegal register"
-+                                   " 0x%" HWADDR_PRIx "\n",
-+                  s->bank, offset);
-     return 0;
- }
- 
--- 
-2.18.0.rc2
+Suggested-by: Thomas Huth <thuth@redhat.com>
 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/hw/arm/omap.h | 18 ------------------
+>  hw/arm/omap1.c        | 18 ++++++++++++------
+>  2 files changed, 12 insertions(+), 24 deletions(-)
+> 
+> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+> index b398607b06..39abba753d 100644
+> --- a/include/hw/arm/omap.h
+> +++ b/include/hw/arm/omap.h
+> @@ -993,24 +993,6 @@ enum {
+>  #define OMAP_GPIOSW_INVERTED	0x0001
+>  #define OMAP_GPIOSW_OUTPUT	0x0002
+>  
+> -# define TCMI_VERBOSE			1
+> -
+> -# ifdef TCMI_VERBOSE
+> -#  define OMAP_8B_REG(paddr)		\
+> -        fprintf(stderr, "%s: 8-bit register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> -#  define OMAP_16B_REG(paddr)		\
+> -        fprintf(stderr, "%s: 16-bit register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> -#  define OMAP_32B_REG(paddr)		\
+> -        fprintf(stderr, "%s: 32-bit register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> -# else
+> -#  define OMAP_8B_REG(paddr)
+> -#  define OMAP_16B_REG(paddr)
+> -#  define OMAP_32B_REG(paddr)
+> -# endif
+> -
+>  # define OMAP_MPUI_REG_MASK		0x000007ff
+>  
+>  #endif /* hw_omap_h */
+> diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+> index 9af04728e3..539d29ef9c 100644
+> --- a/hw/arm/omap1.c
+> +++ b/hw/arm/omap1.c
+> @@ -34,12 +34,18 @@
+>  #include "qemu/cutils.h"
+>  #include "qemu/bcd.h"
+>  
+> +static inline void omap_log_badwidth(const char *funcname, hwaddr addr, int sz)
+> +{
+> +    qemu_log_mask(LOG_GUEST_ERROR, "%s: %d-bit register %#08" HWADDR_PRIx "\n",
+> +                  funcname, sz << 2, addr);
+> +}
+> +
+>  /* Should signal the TCMI/GPMC */
+>  uint32_t omap_badwidth_read8(void *opaque, hwaddr addr)
+>  {
+>      uint8_t ret;
+>  
+> -    OMAP_8B_REG(addr);
+> +    omap_log_badwidth(__func__, addr, 1);
+>      cpu_physical_memory_read(addr, &ret, 1);
+>      return ret;
+>  }
+> @@ -49,7 +55,7 @@ void omap_badwidth_write8(void *opaque, hwaddr addr,
+>  {
+>      uint8_t val8 = value;
+>  
+> -    OMAP_8B_REG(addr);
+> +    omap_log_badwidth(__func__, addr, 1);
+>      cpu_physical_memory_write(addr, &val8, 1);
+>  }
+>  
+> @@ -57,7 +63,7 @@ uint32_t omap_badwidth_read16(void *opaque, hwaddr addr)
+>  {
+>      uint16_t ret;
+>  
+> -    OMAP_16B_REG(addr);
+> +    omap_log_badwidth(__func__, addr, 2);
+>      cpu_physical_memory_read(addr, &ret, 2);
+>      return ret;
+>  }
+> @@ -67,7 +73,7 @@ void omap_badwidth_write16(void *opaque, hwaddr addr,
+>  {
+>      uint16_t val16 = value;
+>  
+> -    OMAP_16B_REG(addr);
+> +    omap_log_badwidth(__func__, addr, 2);
+>      cpu_physical_memory_write(addr, &val16, 2);
+>  }
+>  
+> @@ -75,7 +81,7 @@ uint32_t omap_badwidth_read32(void *opaque, hwaddr addr)
+>  {
+>      uint32_t ret;
+>  
+> -    OMAP_32B_REG(addr);
+> +    omap_log_badwidth(__func__, addr, 4);
+>      cpu_physical_memory_read(addr, &ret, 4);
+>      return ret;
+>  }
+> @@ -83,7 +89,7 @@ uint32_t omap_badwidth_read32(void *opaque, hwaddr addr)
+>  void omap_badwidth_write32(void *opaque, hwaddr addr,
+>                  uint32_t value)
+>  {
+> -    OMAP_32B_REG(addr);
+> +    omap_log_badwidth(__func__, addr, 4);
+>      cpu_physical_memory_write(addr, &value, 4);
+>  }
+>  
+> 

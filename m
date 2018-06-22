@@ -1,71 +1,71 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1216633wrq;
-        Fri, 22 Jun 2018 12:52:58 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJab430AQKb4qK/iT2vWRLYY8eGaMgFyOBcjdAYUvIvisgG7tPy9tMJxaEUu9Y1BiGLGxP7
-X-Received: by 2002:ac8:296:: with SMTP id p22-v6mr2702007qtg.188.1529697178437;
-        Fri, 22 Jun 2018 12:52:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529697178; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1217424wrq;
+        Fri, 22 Jun 2018 12:54:02 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdGsko2C3VKOwSk0f6hNgj89qv/aQXMWBSxnQRvpj+UojPaa/KyUIHj6Y6m3CMi6z+ytey8
+X-Received: by 2002:ac8:1656:: with SMTP id x22-v6mr2780791qtk.116.1529697242773;
+        Fri, 22 Jun 2018 12:54:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529697242; cv=none;
         d=google.com; s=arc-20160816;
-        b=qY3CqJ2m+snzG5J5CrBJrKfGR3H/Y1PHCZbsfNbmwWLoP8ONHdMfmidLQQNbzOWMFz
-         YRnjmmKew1drxrGOiZCbfpEv36AZnEOjIwPdAkVZJ8WhdEAepjeOuFdAokqCAZqsrqYL
-         tWjEw1Kj78rp7KlBr76gtu+6/Ju5ASc62PiSP15CZB6weOeifzaxe5Mr/ExhkmydJQeR
-         HSOrjmFgiawB6Pyt6HuzJriLvPJt6Yn2wI7ZjdnnBAVsQP7XoXYKhVz1SLskXF4D3QSc
-         5wzJCrVYmydg5ukApCA2F03SkulJgPNK5VCC6u3LtLjSPEXIAQuM6fuaHsCoKXr7hcJx
-         5zsg==
+        b=j/fZC/FpqMNoe6l+Oiw8txQp8g9IezH2PKBjjIVE19d6U7WAMHO60x2UpfKixp6zil
+         IfhPlYsvVzxr4hpqUCY3iPdth68rfMX1ZaqDmx6M14DHZ9fZHXrOmOKwDRaY4qxsvUKl
+         XCyFKtjtM/wc34U3gsQPLMIyAwCfieE9sFNeiRFd0zjNIKKvnCaZ2Vlo8nJOYOLYyEqc
+         YICC7SPePg0nxFzl4+jikqWHEXpkDAn+ysXUG/FYMi4zRjsJq3c/m495FB08FieG022Z
+         qrplOFQyPTQ8nyNzISty0LiTXMxWBrhoGx11vYM1u1c9dfyNLVvs25TTPKFyd0z20jpi
+         ZbWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :arc-authentication-results;
-        bh=kPfbmQZfxL40NwSJ6rcM7IEN50aXUTC2BRatF/VvQYI=;
-        b=Zo8TttT/mquyYmIVpLRpsYRaUzwOt9OMnWkKSMCQB1SJJHQL8hI8G9DzSYw6Krse/I
-         ZnM3x5Kuf9iWLUP9gyGLPAHmTy0mgbfiIj8+IT6+K/nrmyR+gsD+GibpzMK8UtkJxOcP
-         HryZIUxbWvluS13zJ6uzLfwX4IjTAhDvL3Wf/FjAm5pBiKqWRnDHt2Jg7i6OODh83Z6T
-         URAunlZuOdMAVLDIEMYG0FTLfXOquAdbZhKLQD7/zJqyoRbdeSWtK8fq2rrAxnEvO70P
-         KFa1S0BtLVDGIlpdJ1rmbWgE+ftlIo3v6N7u9n6brRoppbsxo71MHSSaUQawUtRI2ATS
-         rP9g==
+        bh=GQQQi9e2Ea+gxdVVyoHld8YxtV/LkMk2x7n5JExWcVc=;
+        b=0LPIVok6Pn2yZzT712reRo6gGH98UiLk20Xmi02YZY/FXCsjKbrcyy3PJb8hvl4RZO
+         00iVxlx7LtoyK4VEkOQyO/0SfGjJxwfEarumh1AD4zhpVwE1+kjxXr83KI4vO5I2UA4a
+         8YkNgYl112h1fzq3y1wWlSwMs0b4vNxQ1JBPu4Em6y7YYPBoAcUSFTI4qFmOyNUfv0f2
+         +eKrzFk27l7G82kbuBoodO0WEO4x9cSqEAhZpsxFmguYeyu2Md66Q/LGte8lHHHcthOe
+         +Cz/O5NxIb706eg7JW1xjWixySn5QVpUPXkFl/f0O7DIuhMe80gyy+v4VvoVhR3QpSbp
+         us0w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o22-v6si5240063qka.72.2018.06.22.12.52.58
+        by mx.google.com with ESMTPS id d19-v6si7687957qka.202.2018.06.22.12.54.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 12:52:58 -0700 (PDT)
+        Fri, 22 Jun 2018 12:54:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35908 helo=lists.gnu.org)
+Received: from localhost ([::1]:35913 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWS77-0004g8-VE
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 15:52:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47991)
+	id 1fWS8A-0005Lb-8q
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 15:54:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWS6x-0004ey-8h
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:52:47 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWS7x-0005Kb-RQ
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:53:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWS6t-0004jT-AY
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:52:47 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49644 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWS7t-0004zW-Sf
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 15:53:49 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40884 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWS6t-0004jP-5a; Fri, 22 Jun 2018 15:52:43 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fWS7t-0004zO-O8; Fri, 22 Jun 2018 15:53:45 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 90DF781A4EBE;
-	Fri, 22 Jun 2018 19:52:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 269694022905;
+	Fri, 22 Jun 2018 19:53:45 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FB422156889;
-	Fri, 22 Jun 2018 19:52:40 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AE90D1C5A3;
+	Fri, 22 Jun 2018 19:53:43 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-13-f4bug@amsat.org>
+	<20180622134036.23182-14-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -110,28 +110,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <9a4dd42c-7a8d-8304-c619-ff258e3feb46@redhat.com>
-Date: Fri, 22 Jun 2018 21:52:39 +0200
+Message-ID: <a3f1d1f7-3435-3056-1c19-76c706098f3f@redhat.com>
+Date: Fri, 22 Jun 2018 21:53:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-13-f4bug@amsat.org>
+In-Reply-To: <20180622134036.23182-14-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 19:52:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 19:52:42 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 22 Jun 2018 19:53:45 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 22 Jun 2018 19:53:45 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 12/14] hw/net/smc91c111: Use
- qemu_log_mask(GUEST_ERROR) instead of hw_error
+Subject: Re: [Qemu-arm] [PATCH v2 13/14] hw/net/smc91c111: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -147,14 +147,41 @@ Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nLLD+RK3hKRg
+X-TUID: W49YDQcyNx3B
 
 On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
-> hw_error() finally calls abort(), but there is no need to abort here.
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/net/smc91c111.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
+>  hw/net/smc91c111.c | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+> index 9094c0b47c..d2fd2040e8 100644
+> --- a/hw/net/smc91c111.c
+> +++ b/hw/net/smc91c111.c
+> @@ -362,10 +362,14 @@ static void smc91c111_writeb(void *opaque, hwaddr=
+ offset,
+>              SET_HIGH(gpr, value);
+>              return;
+>          case 12: /* Control */
+> -            if (value & 1)
+> -                fprintf(stderr, "smc91c111:EEPROM store not implemente=
+d\n");
+> -            if (value & 2)
+> -                fprintf(stderr, "smc91c111:EEPROM reload not implement=
+ed\n");
+> +            if (value & 1) {
+> +                qemu_log_mask(LOG_UNIMP,
+> +                              "smc91c111: EEPROM store not implemented=
+\n");
+> +            }
+> +            if (value & 2) {
+> +                qemu_log_mask(LOG_UNIMP,
+> +                              "smc91c111: EEPROM reload not implemente=
+d\n");
+> +            }
+>              value &=3D ~3;
+>              SET_LOW(ctr, value);
+>              return;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

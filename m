@@ -1,83 +1,83 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1248985wrq;
-        Fri, 22 Jun 2018 13:32:54 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKzu0KSZorOnfizhb/RxqvTseymAWiEQVvmi1TUQROAEeGiNsNmguIZtfuWsRxPKctzHjt6
-X-Received: by 2002:a37:3b04:: with SMTP id i4-v6mr2673565qka.389.1529699574830;
-        Fri, 22 Jun 2018 13:32:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529699574; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1249046wrq;
+        Fri, 22 Jun 2018 13:33:00 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfYt3jBDKZWTPRIeHoNpXKmZ/BsEMGKTiHnbz1Mg3iqysZiKBquQZlzcJy11fEw3Z6JWthN
+X-Received: by 2002:a0c:af82:: with SMTP id s2-v6mr2894943qvc.14.1529699580106;
+        Fri, 22 Jun 2018 13:33:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529699580; cv=none;
         d=google.com; s=arc-20160816;
-        b=WtVfFWLwz2AgHRBOdheqC8Xvdpc0O3woiKN2UkQi/A0Z3qxST08dZ47JdHg3wcoM74
-         TCa+hdtKYkXueky50ClihuLZiyMjgexwhZmDJYcQHmtq0cPPOtTMl6XcunkXaAiumtQd
-         QbLvFlFExM/enKBBiS8y+sjqovB4AY1hh++dobSP0DnwlJsqYs5G9ffLtbwhWGM6YGuP
-         Oma3i5Z0x/yEJgBZmfVibelcJkyuoaK5ugfsCTy/ZexX9pAkfdybmgWoapU8huF3VaBF
-         Ttr5Ds+dD1BQwwOmaFLC3dW6BHBNTjCb1kuJaD5wETj6KVWjqq406scPcjh20ijvPjwP
-         OwFQ==
+        b=UkkLeEphzcofD68WXole79XQoVLVYYeZeuUPBtCP6nHaM4Eg9i2Cgt0yPNBOLvcY9f
+         cEqHzjcW1l3fYfUZihuqPdd8/TeQ4KWRXIYnw/GEfFW1+RO0kjM7nQZ7EfeyuLR0Y0Pt
+         AZTmgyO94Zqs8tHPNDmIfJYwRbuT6+iRNnAzhxhJdWO5OvU6JRB4rT1Jp8e1n1iocNRl
+         XpDpelQuB/0SPy21FTUkKWbl9nKBnYl7kcNV51TBvahg6IqN/o0yG2rjhkPDb+AIbOcF
+         GNOe8eRAInIm9iFib6+WO3rYs53rIQyHInubWeYWpAiqCXICg/Y1UHMP+QDkt8sPZw/o
+         Ei0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dmarc-filter:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=69I8GVJ86NrpO4eUsLKXfhfwWX2TbTfPLnTTEa4if7A=;
-        b=Gj85X0QoeMf8XWmPYVPRU798U6oXuZ1ayxt2M5X3SS6xwMcR8kZ6JeZ7IDweAQvXFr
-         MSl1elJj9r7NGaoDEX3xP1O4kUkN5NMhWqO6cEI25eI5efNCrGFu/12Hmyuyy04mhno+
-         jd4tGnix3P0wwM7mYKzEd2GXx3L/uPDdBr19Q3f803JNWcPiqjWMNddcfebXCgUkrfDX
-         +zpXljZD5jP0WSbJ4M/leT/APYN/jwA9zFBb0j6kh/h6fwdzPwCbfRlCfCyion89OIZ8
-         qGsQAGarfNrnu4gRwUT9RjDdQoDhXLeNNP47+0fo5PHhaKMr9Mb9u+eekZyNK1zHzR8p
-         xl9Q==
+        bh=DFvRJhWFZYOhijskqlUWxqso4frvq3JWxRwuEfts6SA=;
+        b=i0H4yDVKgav0Srng1kcuypiIqyx3LHAYfHvPPOa8B5X1QIrO4mqMak20ULugIjij5Q
+         96Usn+9rzYgkbJXT+2nEROtuuNYBBPh9F9uUrBlVKCTlcJ4xh2DM3Bdl00uHk18rcWtX
+         vr7uIbkhjJ50uay9PIESskfh00vYCctL3Lc6Ln5zEcXmaPbLtnsfuFi30lNC+B6sN3Q4
+         gQ8Lun25gIAq6Uv8fd/MYSZmWCDxsTzqbvxLDm2c5u4kk57GIJvnbgwE3Zb+/Zt0J/4V
+         fJy4NIeZ7nst8pIG1fo9dhzcRlnd7Q50dTS/P0ReHYebBuKBIT8oubfAeaY3zuznVg/9
+         cJ4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=PdD7p+Er;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=PdD7p+Er;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=BT5DXuQT;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=AZcy8odI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p36-v6si2888142qtd.389.2018.06.22.13.32.54
+        by mx.google.com with ESMTPS id z18-v6si360137qti.257.2018.06.22.13.32.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 13:32:54 -0700 (PDT)
+        Fri, 22 Jun 2018 13:33:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=PdD7p+Er;
-       dkim=fail header.i=@codeaurora.org header.s=default header.b=PdD7p+Er;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=BT5DXuQT;
+       dkim=fail header.i=@codeaurora.org header.s=default header.b=AZcy8odI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36062 helo=lists.gnu.org)
+Received: from localhost ([::1]:36065 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWSjm-00025i-8U
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 16:32:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54206)
+	id 1fWSjr-0002A5-Gh
+	for alex.bennee@linaro.org; Fri, 22 Jun 2018 16:32:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1fWSjY-00024X-O1
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 16:32:41 -0400
+	(envelope-from <alindsay@codeaurora.org>) id 1fWSjb-00026Z-4A
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 16:32:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alindsay@codeaurora.org>) id 1fWSjX-0005PV-Pw
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 16:32:40 -0400
-Received: from smtp.codeaurora.org ([198.145.29.96]:45264)
+	(envelope-from <alindsay@codeaurora.org>) id 1fWSja-0005Qb-Al
+	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 16:32:43 -0400
+Received: from smtp.codeaurora.org ([198.145.29.96]:45422)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <alindsay@codeaurora.org>)
-	id 1fWSjX-0005PI-HR; Fri, 22 Jun 2018 16:32:39 -0400
+	id 1fWSja-0005Q3-1d; Fri, 22 Jun 2018 16:32:42 -0400
 Received: by smtp.codeaurora.org (Postfix, from userid 1000)
-	id 9DE1960B11; Fri, 22 Jun 2018 20:32:38 +0000 (UTC)
+	id 16C3A60B14; Fri, 22 Jun 2018 20:32:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1529699558;
-	bh=Kymi//lCrzBqEqszoUIytQdU3BjWSUg5+Pfc4iX+qCQ=;
+	s=default; t=1529699561;
+	bh=KJ2hwWBPFbAMSD5tXendsVzPlgncIxTq0scY54lmlJU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PdD7p+Er+a70X/0fiRJ6I7gCeJof/XPnsQBmtrNj47NVtBA8phqhDZoF4oi3SJxgO
-	06AzeDPJFaBlgPL2p3i69wyKLv+dnzTo6ziNMnONAMcZ8aClD869sugUg4Y77hTT2I
-	syn2Ejjx/HKX823IB/hkB+e52xQoy5yqHq06zkuQ=
+	b=BT5DXuQTqjQ1qBijXx9CIDIrsKERZ/WLZNV7Yx69uvGoMRot8LzWmW0jrnbc3zumF
+	HCGjN5F9NYALT2RelrhufUIpgIkC2B0V/T8oKlRRuOIHZWA4bQ4kXku8byJZe6+WzM
+	KHIxyf61W4Y9GzN50vTgUd0k4mWx0cgOJBfQ4Ce4=
 Received: from mossypile.qualcomm.com (global_nat1_iad_fw.qualcomm.com
 	[129.46.232.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: alindsay@smtp.codeaurora.org)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id ED818606FA;
-	Fri, 22 Jun 2018 20:32:36 +0000 (UTC)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 7296A6081B;
+	Fri, 22 Jun 2018 20:32:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=codeaurora.org;
-	s=default; t=1529699558;
-	bh=Kymi//lCrzBqEqszoUIytQdU3BjWSUg5+Pfc4iX+qCQ=;
+	s=default; t=1529699560;
+	bh=KJ2hwWBPFbAMSD5tXendsVzPlgncIxTq0scY54lmlJU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PdD7p+Er+a70X/0fiRJ6I7gCeJof/XPnsQBmtrNj47NVtBA8phqhDZoF4oi3SJxgO
-	06AzeDPJFaBlgPL2p3i69wyKLv+dnzTo6ziNMnONAMcZ8aClD869sugUg4Y77hTT2I
-	syn2Ejjx/HKX823IB/hkB+e52xQoy5yqHq06zkuQ=
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org ED818606FA
+	b=AZcy8odI1D550YZAVgjsc1NwqWpylzEo3a/QaB6L+8DFzjrkJH3IkY3fcQETLCdeq
+	LAejTkAidX0o00bRRGzGRrq5blUqu5bcE8qroXDxgYsHnf7HldyYlTw4bvSa7Kfz21
+	EQ8tjuA93EOSCKN/77PKuoX+heicXIu7rGSfgHv4=
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 7296A6081B
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
 	dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: pdx-caf-mail.web.codeaurora.org;
@@ -86,16 +86,16 @@ From: Aaron Lindsay <alindsay@codeaurora.org>
 To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-Date: Fri, 22 Jun 2018 16:32:17 -0400
-Message-Id: <1529699547-17044-4-git-send-email-alindsay@codeaurora.org>
+Date: Fri, 22 Jun 2018 16:32:19 -0400
+Message-Id: <1529699547-17044-6-git-send-email-alindsay@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1529699547-17044-1-git-send-email-alindsay@codeaurora.org>
 References: <1529699547-17044-1-git-send-email-alindsay@codeaurora.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 198.145.29.96
-Subject: [Qemu-arm] [PATCH v5 03/13] target/arm: Allow AArch32 access for
- PMCCFILTR
+Subject: [Qemu-arm] [PATCH v5 05/13] target/arm: Remove redundant DIV
+ detection for KVM
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,68 +112,62 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>, Aaron Lindsay <aclindsa@gmail.com>,
 	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aedh0BAIEKDb
+X-TUID: j+V4tqX5DVm+
+
+KVM implies V7VE, which implies ARM_DIV and THUMB_DIV. The conditional
+detection here is therefore unnecessary. Because V7VE is already
+unconditionally specified for all KVM hosts, ARM_DIV and THUMB_DIV are
+already indirectly specified and do not need to be included here at all.
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 ---
- target/arm/helper.c | 27 ++++++++++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+ target/arm/kvm32.c | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7c66977..7d63bb2 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -949,6 +949,10 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
- #define PMXEVTYPER_MT         0x02000000
- #define PMXEVTYPER_EVTCOUNT   0x000003ff
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index fb9ea37..4e91c11 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -36,7 +36,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      * and then query that CPU for the relevant ID registers.
+      */
+     int i, ret, fdarray[3];
+-    uint32_t midr, id_pfr0, id_isar0, mvfr1;
++    uint32_t midr, id_pfr0, mvfr1;
+     uint64_t features = 0;
+     /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
+      * we know these will only support creating one kind of guest CPU,
+@@ -60,11 +60,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         },
+         {
+             .id = KVM_REG_ARM | KVM_REG_SIZE_U32
+-            | ENCODE_CP_REG(15, 0, 0, 0, 2, 0, 0),
+-            .addr = (uintptr_t)&id_isar0,
+-        },
+-        {
+-            .id = KVM_REG_ARM | KVM_REG_SIZE_U32
+             | KVM_REG_ARM_VFP | KVM_REG_ARM_VFP_MVFR1,
+             .addr = (uintptr_t)&mvfr1,
+         },
+@@ -106,18 +101,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     set_feature(&features, ARM_FEATURE_VFP3);
+     set_feature(&features, ARM_FEATURE_GENERIC_TIMER);
  
-+#define PMCCFILTR             0xf8000000
-+#define PMCCFILTR_M           PMXEVTYPER_M
-+#define PMCCFILTR_EL0         (PMCCFILTR | PMCCFILTR_M)
-+
- static inline uint32_t pmu_num_counters(CPUARMState *env)
- {
-   return (env->cp15.c9_pmcr & PMCRN_MASK) >> PMCRN_SHIFT;
-@@ -1252,10 +1256,26 @@ static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
- {
-     pmccntr_op_start(env);
--    env->cp15.pmccfiltr_el0 = value & 0xfc000000;
-+    env->cp15.pmccfiltr_el0 = value & PMCCFILTR_EL0;
-     pmccntr_op_finish(env);
- }
- 
-+static void pmccfiltr_write_a32(CPUARMState *env, const ARMCPRegInfo *ri,
-+                            uint64_t value)
-+{
-+    pmccntr_op_start(env);
-+    /* M is not accessible from AArch32 */
-+    env->cp15.pmccfiltr_el0 = (env->cp15.pmccfiltr_el0 & PMCCFILTR_M) |
-+        (value & PMCCFILTR);
-+    pmccntr_op_finish(env);
-+}
-+
-+static uint64_t pmccfiltr_read_a32(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /* M is not visible in AArch32 */
-+    return env->cp15.pmccfiltr_el0 & PMCCFILTR;
-+}
-+
- static void pmcntenset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
- {
-@@ -1474,6 +1494,11 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .type = ARM_CP_IO,
-       .readfn = pmccntr_read, .writefn = pmccntr_write, },
- #endif
-+    { .name = "PMCCFILTR", .cp = 15, .opc1 = 0, .crn = 14, .crm = 15, .opc2 = 7,
-+      .writefn = pmccfiltr_write_a32, .readfn = pmccfiltr_read_a32,
-+      .access = PL0_RW, .accessfn = pmreg_access,
-+      .type = ARM_CP_ALIAS | ARM_CP_IO,
-+      .resetvalue = 0, },
-     { .name = "PMCCFILTR_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 15, .opc2 = 7,
-       .writefn = pmccfiltr_write,
+-    switch (extract32(id_isar0, 24, 4)) {
+-    case 1:
+-        set_feature(&features, ARM_FEATURE_THUMB_DIV);
+-        break;
+-    case 2:
+-        set_feature(&features, ARM_FEATURE_ARM_DIV);
+-        set_feature(&features, ARM_FEATURE_THUMB_DIV);
+-        break;
+-    default:
+-        break;
+-    }
+-
+     if (extract32(id_pfr0, 12, 4) == 1) {
+         set_feature(&features, ARM_FEATURE_THUMB2EE);
+     }
 -- 
 Qualcomm Datacenter Technologies as an affiliate of Qualcomm Technologies, Inc.
 Qualcomm Technologies, Inc. is a member of the

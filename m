@@ -1,238 +1,88 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id n16-v6sm2022714wrq.43.2018.06.22.07.22.01
+        by smtp.gmail.com with ESMTPSA id j131-v6sm3906967wmg.24.2018.06.22.07.22.01
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Fri, 22 Jun 2018 07:22:04 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 4103E3E0C98;
-	Fri, 22 Jun 2018 15:12:06 +0100 (BST)
+	by zen.linaro.local (Postfix) with ESMTP id E32A23E0B71;
+	Fri, 22 Jun 2018 15:12:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH v4 19/22] risu_reginfo_aarch64: add support for copying SVE register state
-Date: Fri, 22 Jun 2018 15:12:02 +0100
-Message-Id: <20180622141205.16306-20-alex.bennee@linaro.org>
+Subject: [RISU PATCH v4 12/22] contrib/generate_all.sh: allow passing of arguments to risugen
+Date: Fri, 22 Jun 2018 15:11:55 +0100
+Message-Id: <20180622141205.16306-13-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180622141205.16306-1-alex.bennee@linaro.org>
 References: <20180622141205.16306-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: EzmCcVnyEKiO
+X-TUID: cZWF6Cn2P3pM
 
-Add the ability to save SVE registers from the signal context. This is
-controlled with an optional flag --test-sve. The whole thing is
-conditionally compiled when SVE support is in the sigcontext headers.
+This allows us to use any new risugen options when generating all our
+test patterns.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2
-  - support EXTRA_MAGIC contexts
-v3
-  - handle conditional bits
-  - include <signal.h> in reginfo.h
-  - move from helper function to main init function
-  - (void *) cast for memcpy
-  - additional ifdef SVE_MAGIC stuff
----
- risu_reginfo_aarch64.c | 107 ++++++++++++++++++++++++++++++++++++-----
- risu_reginfo_aarch64.h |  16 ++++++
- 2 files changed, 110 insertions(+), 13 deletions(-)
+ contrib/generate_all.sh | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
-index 3ccaf0e..79db5dd 100644
---- a/risu_reginfo_aarch64.c
-+++ b/risu_reginfo_aarch64.c
-@@ -16,13 +16,26 @@
- #include <signal.h> /* for FPSIMD_MAGIC */
- #include <stdlib.h>
- #include <stddef.h>
--#include <assert.h>
-+#include <stdbool.h>
+diff --git a/contrib/generate_all.sh b/contrib/generate_all.sh
+index 1e6b847..651cb23 100755
+--- a/contrib/generate_all.sh
++++ b/contrib/generate_all.sh
+@@ -12,11 +12,11 @@
+ #     Alex Bennée <alex.bennee@linaro.org> - initial implementation
+ #
+ # Usage:
+-#   ./contrib/generate_all.sh <arch.risu> <target directory>
++#   ./contrib/generate_all.sh <arch.risu> <target directory> -- risugen args
  
- #include "risu.h"
- #include "risu_reginfo_aarch64.h"
+ set -e
  
-+#ifndef SVE_MAGIC
- const struct option * const arch_long_opts;
- const char * const arch_extra_help;
-+#else
-+
-+/* Should we test SVE register state */
-+static int test_sve;
-+static const struct option extra_opts[] = {
-+    {"test-sve", no_argument, &test_sve, 1},
-+    {0, 0, 0, 0}
-+};
-+
-+const struct option * const arch_long_opts = &extra_opts[0];
-+const char * const arch_extra_help = "  --test-sve        Compare SVE registers\n";
-+#endif
+-USAGE="Usage: `basename $0` [-h] [-n x] <risufile> <target dir>"
++USAGE="Usage: `basename $0` [-h] [-n x] <risufile> <target dir> -- [risugen args]"
+ SPLIT=4
+ RISUGEN=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd -P)/risugen
  
- void process_arch_opt(int opt, const char *arg)
- {
-@@ -31,8 +44,12 @@ void process_arch_opt(int opt, const char *arg)
+@@ -41,18 +41,24 @@ done
+ # Remove the switches we parsed above.
+ shift `expr $OPTIND - 1`
  
- const int reginfo_size(void)
- {
--    const int size = offsetof(struct reginfo, simd.end);
--    assert(sizeof(struct reginfo)==size);
-+    int size = offsetof(struct reginfo, simd.end);
-+#ifdef SVE_MAGIC
-+    if (test_sve) {
-+        size = offsetof(struct reginfo, sve.end);
-+    }
-+#endif
-     return size;
- }
+-while [ $# -ne 0 ]; do
++# Parse up to and including any --
++RISUGEN_ARGS=""
++while [ $# -ne 0 ] && [ -z "$RISUGEN_ARGS" ]; do
  
-@@ -40,8 +57,12 @@ const int reginfo_size(void)
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
- {
-     int i;
--    struct _aarch64_ctx *ctx;
--    struct fpsimd_context *fp;
-+    struct _aarch64_ctx *ctx, *extra = NULL;
-+    struct fpsimd_context *fp = NULL;
-+#ifdef SVE_MAGIC
-+    struct sve_context *sve = NULL;
-+#endif
-+
-     /* necessary to be able to compare with memcmp later */
-     memset(ri, 0, sizeof(*ri));
+     if [ -f $1 ]; then
+         RISU_FILE=$1;
+     elif [ -d $1 ]; then
+         TARGET_DIR=$1;
++    elif [ "$1" = "--" ]; then
++        RISUGEN_ARGS=$1
+     elif [ ! -e $1 ]; then
+         TARGET_DIR=$1
+     fi
  
-@@ -57,21 +78,81 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
-     ri->faulting_insn = *((uint32_t *) uc->uc_mcontext.pc);
+     shift
+ done
++# anything left is for RISUGEN
++RISUGEN_ARGS=$@
  
-     ctx = (struct _aarch64_ctx *) &uc->uc_mcontext.__reserved[0];
--
--    while (ctx->magic != FPSIMD_MAGIC && ctx->size != 0) {
--        ctx += (ctx->size + sizeof(*ctx) - 1) / sizeof(*ctx);
-+    while (ctx) {
-+        switch (ctx->magic) {
-+        case FPSIMD_MAGIC:
-+            fp = (void *)ctx;
-+            break;
-+#ifdef SVE_MAGIC
-+        case SVE_MAGIC:
-+            sve = (void *)ctx;
-+            break;
-+        case EXTRA_MAGIC:
-+            extra = (void *)((struct extra_context *)(ctx))->datap;
-+            break;
-+#endif
-+        case 0:
-+            /* End of list.  */
-+            ctx = extra;
-+            extra = NULL;
-+            continue;
-+        default:
-+            /* Unknown record -- skip it.  */
-+            break;
-+        }
-+        ctx = (void *)ctx + ctx->size;
-     }
- 
--    if (ctx->magic != FPSIMD_MAGIC || ctx->size != sizeof(*fp)) {
--        fprintf(stderr,
--                "risu_reginfo_aarch64: failed to get FP/SIMD state\n");
-+    if (!fp || fp->head.size != sizeof(*fp)) {
-+        fprintf(stderr, "risu_reginfo_aarch64: failed to get FP/SIMD state\n");
-         return;
-     }
--
--    fp = (struct fpsimd_context *) ctx;
-     ri->fpsr = fp->fpsr;
-     ri->fpcr = fp->fpcr;
- 
-+#ifdef SVE_MAGIC
-+    if (test_sve) {
-+        int vq = sve_vq_from_vl(sve->vl); /* number of quads for whole vl */
-+
-+        if (sve == NULL) {
-+            fprintf(stderr, "risu_reginfo_aarch64: failed to get SVE state\n");
-+            return;
-+        }
-+
-+        ri->sve.vl = sve->vl;
-+
-+        if (sve->head.size < SVE_SIG_CONTEXT_SIZE(vq)) {
-+            if (sve->head.size == sizeof(*sve)) {
-+                /* SVE state is empty -- not an error.  */
-+            } else {
-+                fprintf(stderr, "risu_reginfo_aarch64: "
-+                        "failed to get complete SVE state\n");
-+            }
-+            return;
-+        }
-+
-+        /* Copy ZREG's one at a time */
-+        for (i = 0; i < SVE_NUM_ZREGS; i++) {
-+            memcpy(&ri->sve.zregs[i],
-+                   (void *)sve + SVE_SIG_ZREG_OFFSET(vq, i),
-+                   SVE_SIG_ZREG_SIZE(vq));
-+        }
-+
-+        /* Copy PREG's one at a time */
-+        for (i = 0; i < SVE_NUM_PREGS; i++) {
-+            memcpy(&ri->sve.pregs[i],
-+                   (void *)sve + SVE_SIG_PREG_OFFSET(vq, i),
-+                   SVE_SIG_PREG_SIZE(vq));
-+        }
-+
-+        /* Finally the FFR */
-+        memcpy(&ri->sve.ffr,(void *)sve + SVE_SIG_FFR_OFFSET(vq),
-+               SVE_SIG_FFR_SIZE(vq));
-+
-+        return;
-+    }
-+#endif
-+
-     for (i = 0; i < 32; i++) {
-         ri->simd.vregs[i] = fp->vregs[i];
-     }
-diff --git a/risu_reginfo_aarch64.h b/risu_reginfo_aarch64.h
-index ef97622..b3701b3 100644
---- a/risu_reginfo_aarch64.h
-+++ b/risu_reginfo_aarch64.h
-@@ -13,11 +13,24 @@
- #ifndef RISU_REGINFO_AARCH64_H
- #define RISU_REGINFO_AARCH64_H
- 
-+#include <signal.h> /* for SVE_MAGIC */
-+
- struct simd_reginfo {
-     __uint128_t vregs[32];
-     char end[0];
- };
- 
-+#ifdef SVE_MAGIC
-+struct sve_reginfo {
-+    /* SVE */
-+    uint16_t    vl; /* current VL */
-+    __uint128_t zregs[SVE_NUM_ZREGS][SVE_VQ_MAX];
-+    uint16_t    pregs[SVE_NUM_PREGS][SVE_VQ_MAX];
-+    uint16_t    ffr[SVE_VQ_MAX];
-+    char end[0];
-+};
-+#endif
-+
- struct reginfo {
-     uint64_t fault_address;
-     uint64_t regs[31];
-@@ -32,6 +45,9 @@ struct reginfo {
- 
-     union {
-         struct simd_reginfo simd;
-+#ifdef SVE_MAGIC
-+        struct sve_reginfo sve;
-+#endif
-     };
- };
- 
+ if test -z "${RISUGEN}" || test ! -x "${RISUGEN}";  then
+     echo "Couldn't find risugen (${RISUGEN})"
+@@ -90,7 +96,7 @@ while test $# -gt 0 ; do
+         fi
+     done
+     I_FILE="${I_FILE}_INC.risu.bin"
+-    CMD="${RISUGEN} ${INSN_PATTERNS} ${RISU_FILE} ${I_FILE}"
++    CMD="${RISUGEN} ${RISUGEN_ARGS} ${INSN_PATTERNS} ${RISU_FILE} ${I_FILE}"
+     echo "Running: $CMD"
+     $CMD
+ done
 -- 
 2.17.1

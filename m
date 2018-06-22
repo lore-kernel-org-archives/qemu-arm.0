@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r75-v6sm4144125wmg.31.2018.06.22.07.12.09
+        by smtp.gmail.com with ESMTPSA id a203-v6sm1900890wme.46.2018.06.22.07.12.10
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Jun 2018 07:12:11 -0700 (PDT)
+        Fri, 22 Jun 2018 07:12:12 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 0688B3E0BC6;
+	by zen.linaro.local (Postfix) with ESMTP id 1DEE03E0C4D;
 	Fri, 22 Jun 2018 15:12:06 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
@@ -12,262 +12,97 @@ Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RISU PATCH v4 14/22] risu: add process_arch_opt
-Date: Fri, 22 Jun 2018 15:11:57 +0100
-Message-Id: <20180622141205.16306-15-alex.bennee@linaro.org>
+Subject: [RISU PATCH v4 16/22] risu_reginfo_aarch64: unionify VFP regs
+Date: Fri, 22 Jun 2018 15:11:59 +0100
+Message-Id: <20180622141205.16306-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180622141205.16306-1-alex.bennee@linaro.org>
 References: <20180622141205.16306-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dkGvuhjCp0Jj
+X-TUID: nAyQuROFBAMT
 
-From: Richard Henderson <richard.henderson@linaro.org>
+This is preparation for the SVE work as we won't want to be carrying
+around both VFP and SVE registers at the same time as they overlap.
 
-Allows the backend to do more that just set a flag when it comes to
-processing options.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-[AJB: tweaked order, added stdlib includes]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- risu.c                 | 33 +++++++++++----------------------
- risu.h                 |  7 +++++--
- risu_reginfo_aarch64.c | 10 ++++++++--
- risu_reginfo_arm.c     | 14 ++++++++++----
- risu_reginfo_m68k.c    | 10 ++++++++--
- risu_reginfo_ppc64.c   | 10 ++++++++--
- 6 files changed, 50 insertions(+), 34 deletions(-)
+ risu_reginfo_aarch64.c | 16 ++++++++--------
+ risu_reginfo_aarch64.h |  9 ++++++++-
+ 2 files changed, 16 insertions(+), 9 deletions(-)
 
-diff --git a/risu.c b/risu.c
-index 18de351..01525d2 100644
---- a/risu.c
-+++ b/risu.c
-@@ -18,7 +18,6 @@
- #include <errno.h>
- #include <signal.h>
- #include <ucontext.h>
--#include <getopt.h>
- #include <setjmp.h>
- #include <assert.h>
- #include <sys/stat.h>
-@@ -27,7 +26,6 @@
- #include <string.h>
+diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
+index 34dd9af..62a5599 100644
+--- a/risu_reginfo_aarch64.c
++++ b/risu_reginfo_aarch64.c
+@@ -64,7 +64,7 @@ void reginfo_init(struct reginfo *ri, ucontext_t *uc)
+     ri->fpcr = fp->fpcr;
  
- #include "config.h"
--
- #include "risu.h"
- 
- void *memblock;
-@@ -287,7 +285,7 @@ void usage(void)
+     for (i = 0; i < 32; i++) {
+-        ri->vregs[i] = fp->vregs[i];
++        ri->simd.vregs[i] = fp->vregs[i];
      }
  }
  
--struct option * setup_options(char **short_opts)
-+static struct option * setup_options(char **short_opts)
- {
-     static struct option default_longopts[] = {
-         {"help", no_argument, 0, '?'},
-@@ -303,20 +301,19 @@ struct option * setup_options(char **short_opts)
+@@ -92,8 +92,8 @@ int reginfo_dump(struct reginfo *ri, FILE * f)
  
-     if (arch_long_opts) {
-         const size_t osize = sizeof(struct option);
--        const int default_count = ARRAY_SIZE(default_longopts);
--        struct option *dptr;
--        int extra_count = 0;
-+        const int default_count = ARRAY_SIZE(default_longopts) - 1;
-+        int arch_count;
- 
-         /* count additional opts */
--        dptr = arch_long_opts;
--        do {} while (dptr[extra_count++].name);
-+        for (arch_count = 0; arch_long_opts[arch_count].name; arch_count++) {
-+            continue;
-+        }
- 
--        lopts = calloc(default_count + extra_count, osize);
-+        lopts = calloc(default_count + arch_count + 1, osize);
- 
-         /* Copy default opts + extra opts */
-         memcpy(lopts, default_longopts, default_count * osize);
--        dptr = &lopts[default_count - 1];
--        memcpy(dptr, arch_long_opts, extra_count * osize);
-+        memcpy(lopts + default_count, arch_long_opts, arch_count * osize);
+     for (i = 0; i < 32; i++) {
+         fprintf(f, "  V%2d   : %016" PRIx64 "%016" PRIx64 "\n", i,
+-                (uint64_t) (ri->vregs[i] >> 64),
+-                (uint64_t) (ri->vregs[i] & 0xffffffffffffffff));
++                (uint64_t) (ri->simd.vregs[i] >> 64),
++                (uint64_t) (ri->simd.vregs[i] & 0xffffffffffffffff));
      }
  
-     return lopts;
-@@ -343,34 +340,26 @@ int main(int argc, char **argv)
+     return !ferror(f);
+@@ -138,14 +138,14 @@ int reginfo_dump_mismatch(struct reginfo *m, struct reginfo *a, FILE * f)
+     }
  
-         switch (c) {
-         case 0:
--        {
-             /* flag set by getopt_long, do nothing */
-             break;
--        }
-         case 't':
--        {
-             trace_fn = optarg;
-             trace = 1;
-             break;
--        }
-         case 'h':
--        {
-             hostname = optarg;
-             break;
--        }
-         case 'p':
--        {
-             /* FIXME err handling */
-             port = strtol(optarg, 0, 10);
-             break;
--        }
-         case '?':
--        {
-             usage();
-             exit(1);
--        }
-         default:
--            abort();
-+            assert(c >= FIRST_ARCH_OPT);
-+            process_arch_opt(c, optarg);
-+            break;
+     for (i = 0; i < 32; i++) {
+-        if (m->vregs[i] != a->vregs[i]) {
++        if (m->simd.vregs[i] != a->simd.vregs[i]) {
+             fprintf(f, "  V%2d   : "
+                     "%016" PRIx64 "%016" PRIx64 " vs "
+                     "%016" PRIx64 "%016" PRIx64 "\n", i,
+-                    (uint64_t) (m->vregs[i] >> 64),
+-                    (uint64_t) (m->vregs[i] & 0xffffffffffffffff),
+-                    (uint64_t) (a->vregs[i] >> 64),
+-                    (uint64_t) (a->vregs[i] & 0xffffffffffffffff));
++                    (uint64_t) (m->simd.vregs[i] >> 64),
++                    (uint64_t) (m->simd.vregs[i] & 0xffffffffffffffff),
++                    (uint64_t) (a->simd.vregs[i] >> 64),
++                    (uint64_t) (a->simd.vregs[i] & 0xffffffffffffffff));
          }
      }
  
-diff --git a/risu.h b/risu.h
-index 89811f4..48c50d9 100644
---- a/risu.h
-+++ b/risu.h
-@@ -16,10 +16,13 @@
- #include <stdint.h>
- #include <ucontext.h>
- #include <stdio.h>
-+#include <getopt.h>
+diff --git a/risu_reginfo_aarch64.h b/risu_reginfo_aarch64.h
+index a05fb4e..a1c708b 100644
+--- a/risu_reginfo_aarch64.h
++++ b/risu_reginfo_aarch64.h
+@@ -13,6 +13,10 @@
+ #ifndef RISU_REGINFO_AARCH64_H
+ #define RISU_REGINFO_AARCH64_H
  
- /* Extra option processing for architectures */
--extern void *arch_long_opts;
--extern char *arch_extra_help;
-+extern const struct option * const arch_long_opts;
-+extern const char * const arch_extra_help;
-+void process_arch_opt(int opt, const char *arg);
-+#define FIRST_ARCH_OPT   0x100
- 
- /* GCC computed include to pull in the correct risu_reginfo_*.h for
-  * the architecture.
-diff --git a/risu_reginfo_aarch64.c b/risu_reginfo_aarch64.c
-index ab12270..c270e0b 100644
---- a/risu_reginfo_aarch64.c
-+++ b/risu_reginfo_aarch64.c
-@@ -14,12 +14,18 @@
- #include <ucontext.h>
- #include <string.h>
- #include <signal.h> /* for FPSIMD_MAGIC */
-+#include <stdlib.h>
- 
- #include "risu.h"
- #include "risu_reginfo_aarch64.h"
- 
--void *arch_long_opts;
--char *arch_extra_help;
-+const struct option * const arch_long_opts;
-+const char * const arch_extra_help;
++struct simd_reginfo {
++    __uint128_t vregs[32];
++};
 +
-+void process_arch_opt(int opt, const char *arg)
-+{
-+    abort();
-+}
- 
- /* reginfo_init: initialize with a ucontext */
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
-diff --git a/risu_reginfo_arm.c b/risu_reginfo_arm.c
-index 5acad02..12ad0ef 100644
---- a/risu_reginfo_arm.c
-+++ b/risu_reginfo_arm.c
-@@ -13,7 +13,7 @@
- #include <stdio.h>
- #include <ucontext.h>
- #include <string.h>
--#include <getopt.h>
-+#include <stdlib.h>
- 
- #include "risu.h"
- #include "risu_reginfo_arm.h"
-@@ -22,13 +22,19 @@ extern int insnsize(ucontext_t *uc);
- 
- /* Should we test for FP exception status bits? */
- static int test_fp_exc;
--static struct option extra_opts[] = {
-+static const struct option extra_opts[] = {
-     {"test-fp-exc", no_argument, &test_fp_exc, 1},
-     {0, 0, 0, 0}
+ struct reginfo {
+     uint64_t fault_address;
+     uint64_t regs[31];
+@@ -24,7 +28,10 @@ struct reginfo {
+     /* FP/SIMD */
+     uint32_t fpsr;
+     uint32_t fpcr;
+-    __uint128_t vregs[32];
++
++    union {
++        struct simd_reginfo simd;
++    };
  };
  
--void *arch_long_opts = &extra_opts[0];
--char *arch_extra_help = "  --test-fp-exc     Check FP exception bits when comparing\n";
-+const struct option * const arch_long_opts = &extra_opts[0];
-+const char * const arch_extra_help =
-+    "  --test-fp-exc     Check FP exception bits when comparing\n";
-+
-+void process_arch_opt(int opt, const char *arg)
-+{
-+    abort();
-+}
- 
- static void reginfo_init_vfp(struct reginfo *ri, ucontext_t *uc)
- {
-diff --git a/risu_reginfo_m68k.c b/risu_reginfo_m68k.c
-index d429502..7a1c5a9 100644
---- a/risu_reginfo_m68k.c
-+++ b/risu_reginfo_m68k.c
-@@ -10,12 +10,18 @@
- #include <ucontext.h>
- #include <string.h>
- #include <math.h>
-+#include <stdlib.h>
- 
- #include "risu.h"
- #include "risu_reginfo_m68k.h"
- 
--void *arch_long_opts;
--char *arch_extra_help;
-+const struct option * const arch_long_opts;
-+const char * const arch_extra_help;
-+
-+void process_arch_opt(int opt, const char *arg)
-+{
-+    abort();
-+}
- 
- /* reginfo_init: initialize with a ucontext */
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
-diff --git a/risu_reginfo_ppc64.c b/risu_reginfo_ppc64.c
-index 395111c..4b70460 100644
---- a/risu_reginfo_ppc64.c
-+++ b/risu_reginfo_ppc64.c
-@@ -15,6 +15,7 @@
- #include <ucontext.h>
- #include <string.h>
- #include <math.h>
-+#include <stdlib.h>
- 
- #include "risu.h"
- #include "risu_reginfo_ppc64.h"
-@@ -22,8 +23,13 @@
- #define XER 37
- #define CCR 38
- 
--void *arch_long_opts;
--char *arch_extra_help;
-+const struct option * const arch_long_opts;
-+const char * const arch_extra_help;
-+
-+void process_arch_opt(int opt, const char *arg)
-+{
-+    abort();
-+}
- 
- /* reginfo_init: initialize with a ucontext */
- void reginfo_init(struct reginfo *ri, ucontext_t *uc)
+ #endif /* RISU_REGINFO_AARCH64_H */
 -- 
 2.17.1

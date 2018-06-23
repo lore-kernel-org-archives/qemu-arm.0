@@ -1,137 +1,110 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp575058wrq;
-        Fri, 22 Jun 2018 01:44:03 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKSUTXmZmsHyAqzQjWbp+69QzWlQzvkVLuGRPwsQeuG0wx244N8f8n293pMUrDNgCqrTofD
-X-Received: by 2002:aed:252c:: with SMTP id v41-v6mr496817qtc.403.1529657043542;
-        Fri, 22 Jun 2018 01:44:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529657043; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2001658wrq;
+        Sat, 23 Jun 2018 08:26:10 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeIyN3oiGnXZfJqnc0aBCJ33iKzYr/+dk7Q/qFqiwHFsqVY3bL8rR33fMDg/QUEmz0XrRIP
+X-Received: by 2002:a37:3b8e:: with SMTP id i136-v6mr5000474qka.172.1529767570535;
+        Sat, 23 Jun 2018 08:26:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529767570; cv=none;
         d=google.com; s=arc-20160816;
-        b=upvAX19niAF3Bb0eK2hQgznWQCz/ds2LXUe8X1GpgzisXI5U+fsKucZUwlqoHVtkQ6
-         U6lPcdUeigWSlgNqtAIcyhQplH26Ni4gPQhGPynv0cp9++0h0fi/KhLGGuiBhplbSJVH
-         ZsqL6rDa+0u5MXJuj8/Cb3OvEuJFxohJywHeeanc4YIQh4H/KCVlO1cVVyYkxYICYAbB
-         moTP7OrppI9SNyAItFixU+vBigkoF4py0svmIfpMKg1cGqeXs5tcNcVQ4WzwLv00c9WB
-         8G1HwsagDK4sa608QC56hNg06+GqCgY/MtiNxin/99DwPEAttbf5jUe18jiVQca3UcuP
-         r5YA==
+        b=YZ9Oztzz6GVCWBB8Qs7jpSM93XCez7FSlm4782iyQucoHncXIRx493e6ztrwRT93AF
+         yhuJ2mow33BAVYpU8/U4KD3kzUZvxN6sCbHXQDrHeZ3dY+x22HYF06jJyU1Ed/rqby1r
+         KhkyDR+xciNfG+1JqygY7w3Fo7ErnMcFlimqyesCf2bQjBjpErVX3234Sw5xZ5HsUle5
+         2YkaJEnWgqY6cjFl9zg/tJtY/sf1w3yWxpy7dIY/JZ+5kLsMQtZs20zdP0jSVqwlkeZq
+         FytY0MCx2Ovrh9Pm10UPVq8CEZQmtOjwCmYsiedJDMUsYTwEBRQpOV42Fh58ZBTFE6RC
+         5OIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :arc-authentication-results;
-        bh=i1avfBZT5NKpastD3Fbjm4kUVGnGo0w3ItPDTiYbsHg=;
-        b=sxOGtgfw8lSEj6Afhg+XZi0NZpM9VXhOZ/gsCYWsjYvApg70a5Pm9cSphwXH745zQY
-         VFijdaRipf91ptvAi3v70fS3GRACdBrLwJTQYGrbuBkUoGYtUEJccX4rLhrca/mavJV8
-         hnUtIxwSW4Rl6Jo+zhr+yxukg3YDybKDJsYJbI4zO2GOeXBW7G3fydPEUB+khetEMjrA
-         //dMXC73N0ddp7baSQGsmmycjVQ9+XbxdDlwvuZ/Z1X9f84xAMg88gvhRegrAA/jqKAf
-         axRlWfyDMzR0l+yXtOlJdd8Uwek6s2tRHOl5cCKDk3DIoLG+tYQTdYQH9jhcNkME3+Ny
-         64yQ==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=tu9eIlrIq6V7V8kwvI4BbRgza076FaoaOPCtJUnzcGk=;
+        b=gLp5TjIlp3wdNFo0d1IwhVkJaG3aE8edZclrRLLJkz+UWi2V+mFObGJwZyqpw9O527
+         1obw+R77BKmDQhOm9h+8oAiXpJOEbemaQXoY/j2qjY+gh/a03H+4lE9BPD6xCPWvBHZT
+         h+ZlwNLIJy3lzzQnMejNXJpm8NThJjgCNbg76vSo3JhJgkNAfLLpR5fVgtyiVgNZdonr
+         MzQOEWFPuVoExFaTZbAc6nu3t3AxvVKK9aHmRIxVqu6HvRdeQm1uvHkgs+RThJdMlpm1
+         3h53eye6gFXYwqyUwSFVJ4HBfKP7739hvSzQ18mqPv3E/tOEHgvzPnE12dDpCG1YBIoG
+         CYKw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=g+xoEEvn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h128-v6si5528012qkc.331.2018.06.22.01.44.03
+        by mx.google.com with ESMTPS id a1-v6si2554380qvc.52.2018.06.23.08.26.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 22 Jun 2018 01:44:03 -0700 (PDT)
+        Sat, 23 Jun 2018 08:26:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=g+xoEEvn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60114 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38858 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWHfn-0001gx-2K
-	for alex.bennee@linaro.org; Fri, 22 Jun 2018 04:44:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51531)
+	id 1fWkQU-0008Bv-2Y
+	for alex.bennee@linaro.org; Sat, 23 Jun 2018 11:26:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHfb-0001eX-4b
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:43:54 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fWkQK-0008AY-4L
+	for qemu-arm@nongnu.org; Sat, 23 Jun 2018 11:26:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHfa-0000Jx-E1
-	for qemu-arm@nongnu.org; Fri, 22 Jun 2018 04:43:51 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48618 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWHfa-0000Jr-8j; Fri, 22 Jun 2018 04:43:50 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BF2F5F68B2;
-	Fri, 22 Jun 2018 08:43:49 +0000 (UTC)
-Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14CA62156888;
-	Fri, 22 Jun 2018 08:43:47 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-12-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1fWkQH-0002KY-3k
+	for qemu-arm@nongnu.org; Sat, 23 Jun 2018 11:26:00 -0400
+Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:37252)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fWkQG-0002KA-Ux
+	for qemu-arm@nongnu.org; Sat, 23 Jun 2018 11:25:57 -0400
+Received: by mail-pf0-x244.google.com with SMTP id y5-v6so4539104pfn.4
+	for <qemu-arm@nongnu.org>; Sat, 23 Jun 2018 08:25:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=tu9eIlrIq6V7V8kwvI4BbRgza076FaoaOPCtJUnzcGk=;
+	b=g+xoEEvnK4M+wzelRtP4cZ5oOiDBjmLCT4mn8S8Hd8Ee8xuurIHP84rlCYOKJb4ID7
+	PUiKlHJwOFLdt1QqNLsUoOePPRVdavi4Q5Ko/rrwJOkdvceTYrV/EPwXA84SsKH1ZXbo
+	3gjn+VRyUT4MDIx0eKKJMIKxeXg5WHsVln0nA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=tu9eIlrIq6V7V8kwvI4BbRgza076FaoaOPCtJUnzcGk=;
+	b=NnLTy/fZNIK5y50gHiq5A0/o4D69otEjLMR+ytkUqD0GIwqiBlESOQVNyhu/7mzDcC
+	d8Ak5PmamC2ZLufkSg40kr7I2v+lzbbzyxh4aw38YQs1x47xiZ+6/rRUFDKYVMXkKmLM
+	oTLsJS8cXdQgMhL/1WaZUZtBd2w+tLprrIL5gpmzzTp6aalg63UEtl8Yf0amuv3sMiYI
+	Ceu+9d8BRNpsa0I/IDBvSBS6/Bf6v20P4qCBrUCy2XjzXRCkdQHuaoBZ0+QdEJFP4tKl
+	UHsf0/7PMlhAliLIvJ+CG8+omwxIlsNT8oVzQGrqrgFcJKJWeN8Pk/w6uHsvhKGPjjcU
+	SkOw==
+X-Gm-Message-State: APt69E0JuST9j4U4/SUe6eBvQ0d5Uzl9gKeooN69cBBAYihEZFHiVWKm
+	ST9FjgO25fGUiJ8mgDTnfNBzQ+tYXwQ=
+X-Received: by 2002:a62:c0cb:: with SMTP id
+	g72-v6mr6233654pfk.226.1529767555439; 
+	Sat, 23 Jun 2018 08:25:55 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	k69-v6sm18334116pgc.39.2018.06.23.08.25.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 23 Jun 2018 08:25:54 -0700 (PDT)
+To: "Emilio G. Cota" <cota@braap.org>
+References: <20180621173635.21537-1-richard.henderson@linaro.org>
+	<20180622211244.GA11346@flamenco>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <346ca2ea-3423-b263-0a86-bd10fa62bb4d@redhat.com>
-Date: Fri, 22 Jun 2018 10:43:47 +0200
+Message-ID: <1319a0f0-0009-ebfc-dab4-eec196ba8ba5@linaro.org>
+Date: Sat, 23 Jun 2018 08:25:52 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-12-f4bug@amsat.org>
+In-Reply-To: <20180622211244.GA11346@flamenco>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Fri, 22 Jun 2018 08:43:49 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Fri, 22 Jun 2018 08:43:49 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 11/11] hw/net/smc91c111: Use
- qemu_log_mask(GUEST_ERROR) instead of hw_error
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::244
+Subject: Re: [Qemu-arm] [PATCH 0/2] linux-user: Change mmap_lock to rwlock
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,59 +116,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, laurent@vivier.eu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: izH8zPohFH/a
+X-TUID: PWwFi2SZhtRn
 
-On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
-> hw_error() finally calls abort(), but there is no need to abort here.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/net/smc91c111.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-> index c8cc5379b7..705a034cb9 100644
-> --- a/hw/net/smc91c111.c
-> +++ b/hw/net/smc91c111.c
-> @@ -11,6 +11,7 @@
->  #include "hw/sysbus.h"
->  #include "net/net.h"
->  #include "hw/devices.h"
-> +#include "qemu/log.h"
->  /* For crc32 */
->  #include <zlib.h>
-> =20
-> @@ -478,7 +479,9 @@ static void smc91c111_writeb(void *opaque, hwaddr o=
-ffset,
->          }
->          break;
->      }
-> -    hw_error("smc91c111_write: Bad reg %d:%x\n", s->bank, (int)offset)=
-;
-> +    qemu_log_mask(LOG_GUEST_ERROR,
-> +                  "smc91c111_write(bank:%d) 0x%" HWADDR_PRIx " =3D 0x%=
-x\n",
-> +                  s->bank, offset, value);
->  }
-> =20
->  static uint32_t smc91c111_readb(void *opaque, hwaddr offset)
-> @@ -621,7 +624,9 @@ static uint32_t smc91c111_readb(void *opaque, hwadd=
-r offset)
->          }
->          break;
->      }
-> -    hw_error("smc91c111_read: Bad reg %d:%x\n", s->bank, (int)offset);
-> +    qemu_log_mask(LOG_GUEST_ERROR,
-> +                  "smc91c111_read(bank:%d) 0x%" HWADDR_PRIx "\n",
-> +                  s->bank, offset);
->      return 0;
->  }
+On 06/22/2018 02:12 PM, Emilio G. Cota wrote:
+> I'm curious to see how much perf could be gained. It seems that the hold
+> times in SVE code for readers might not be very large, which
+> then wouldn't let us amortize the atomic inc of the read lock
+> (IOW, we might not see much of a difference compared to a regular
+> mutex).
 
-Please keep "bad register" or a similar text in here.
+In theory, the uncontended case for rwlocks is the same as a mutex.
 
- Thomas
+> Are you using any benchmark that shows any perf difference?
 
+Not so far.  Glibc has some microbenchmarks for strings, which I will try next
+week, but they are not multi-threaded.  Maybe just run 4 threads of those
+benchmark?
+
+
+r~

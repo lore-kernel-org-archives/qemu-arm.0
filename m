@@ -1,96 +1,96 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2446046wrq;
-        Sat, 23 Jun 2018 21:08:17 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpecLCrNSJ62W6MqYa77bkbmDAZ0brK8g9gpkEKvIOylhslhFObZVIwLIi4PIc1whEg+CUmo
-X-Received: by 2002:a37:184b:: with SMTP id j72-v6mr3763900qkh.94.1529813297498;
-        Sat, 23 Jun 2018 21:08:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529813297; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2446704wrq;
+        Sat, 23 Jun 2018 21:09:35 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdY/T9qnlvJ40ZWwfOOwbU+KdocmbfVFw4uxelRwm3BWaL4bQvL5Pinfns/qUP06MrTQPeL
+X-Received: by 2002:ac8:78c:: with SMTP id l12-v6mr6632854qth.101.1529813375435;
+        Sat, 23 Jun 2018 21:09:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529813375; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yk1da4hMLYUvCx2ZeKZNlU+PDao+AR9vw9RARddMlzdw8j4jz3YprYJ8WSMz7s8NEV
-         CLEglkJe9n5toppCXgRNsuHXKveqggdaij3YhtSsylvSKyz0aThuvnjxUefS7aLK3ZmA
-         cUXAWTwwBb8X97ST82UzGDaRIcvTqjahdJxUDezcEVYn/Gj1B0RpqDaPagJ8erF2emB+
-         P9YD4VjEaBrlhoXkaflwq9udfrapIcB/8UoIGNTLk7zGS6obI6tuApjBgZL6sAfHUqj+
-         R/RYa2qcQXEOJg8D9sY6TZbMvM9zN1DfIfFTp3/5xIimtbJX4pu26IMB5WUO+NF5wpXP
-         mzFw==
+        b=yE1GD2yzS3ODf2BEJagseoNKN7wgUoA7OWX8EG6239Ni3BYNZeXrKl8kDHhgL3k/CY
+         bcjIELld5nsO+eYq5THgNvqcbvdC8uZ5fA3u55uW/Lh3mdwhCDLd1i6pV4xYgK8If91G
+         VPs3OUmLBsNBJgk/wr2+a5ouBiAG4H+DaE99vsIfRvzO6ss+xeaRVu4RHmdoIJFvepgP
+         vuo071olNcfQ3XIcZy1tWfbwveHATzRInutTcnnxoZG878p5T+Z709dzku1kiKFnsmR0
+         oL3mbIdFf5gNapIA8t+s7XgHUGazSPjHltAAzjplTFho0qbMAFPgzsGuBfcvzm0OEJoi
+         R5dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=36on+xdgbXFxeBwwHxce84Ksqf4fOm9jRWSX1+NwhG8=;
-        b=pBpEOJxhZmXex0Ru6RFq5uxYzUNUwqsVt7zQ90qQXKrSurDzW2CGNxCGFRv/7dSsmC
-         HUWy9athWW6/Adihqc4UCI7nT+Ztpw1hqe7gYUBbLbC87708unvvI9bJDDqJwHw2y6fr
-         X5S9Tjt6HPfakN+XbwW1Z4Nyzh5PXKdjBCYNt2VmJLCFj67dgGs6W2FxxlP4xU1Uox5Q
-         UlF/cFqsPbchn87wPmFtZ6ScSIYoZ/DSjoaFdAL/eZvCRy+KivW8SUUBl46TZ78fReQy
-         7v0fGZqcFrfgurSFnhS3moFNx9BsHg9wUv4doJXWIbxsLvIQf+d1o0MrQf6+VGm2Ivli
-         FtlQ==
+        bh=/GETBzD3viq9pszXR5PyIXw44iP0PfoCOiwkqQ3CKrA=;
+        b=Bbj1UV5QW+oxERimOtL544lhjXAklCiq1qmP/qLAoXMLVofLUtC+g4W7FCfZ5DTB+0
+         0X/H1T0ZAjS4X1BFPXHdZavhcA0XsdhqmD1lMvFAVFXgYnDMF14FEjndpoIKSnA6EAch
+         BRKAgFc1XVZWSmHYj+w4aCy+dadIexTQf17ZHG6QECdvihjedyotzUEx77Vtr5vRshRU
+         IrHb3ARfEj03fl0O1SCSmfTiSoXu/xjJ1rpL97ATKtLXSn3/TSKq/suFtiUtpcdzIYPx
+         9RwadhUatJdTKHo+bJdCs6HpNwFlMpQK5Z++pTaOxou+c2whgv1BnA8+nOyKgvtZmxd2
+         r7vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n57dpeie;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DpsKz51h;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x185-v6si10569166qkd.207.2018.06.23.21.08.17
+        by mx.google.com with ESMTPS id q2-v6si2374426qtj.313.2018.06.23.21.09.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 23 Jun 2018 21:08:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 23 Jun 2018 21:09:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n57dpeie;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40484 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DpsKz51h;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40494 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fWwK0-0004l5-Tw
-	for alex.bennee@linaro.org; Sun, 24 Jun 2018 00:08:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42280)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fWwLG-00065F-U4
+	for alex.bennee@linaro.org; Sun, 24 Jun 2018 00:09:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42604)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIT-0003sp-DG
-	for qemu-devel@nongnu.org; Sun, 24 Jun 2018 00:06:44 -0400
+	id 1fWwIp-0004Ek-PC
+	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 00:07:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIO-0003o7-KM
-	for qemu-devel@nongnu.org; Sun, 24 Jun 2018 00:06:41 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35494)
+	id 1fWwIo-0004K3-WD
+	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 00:07:03 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:42966)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIO-0003np-FK; Sun, 24 Jun 2018 00:06:36 -0400
-Received: by mail-qk0-x243.google.com with SMTP id u21-v6so244113qku.2;
-	Sat, 23 Jun 2018 21:06:36 -0700 (PDT)
+	id 1fWwIh-0004E7-Hz; Sun, 24 Jun 2018 00:06:55 -0400
+Received: by mail-qt0-x244.google.com with SMTP id y31-v6so9341255qty.9;
+	Sat, 23 Jun 2018 21:06:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=36on+xdgbXFxeBwwHxce84Ksqf4fOm9jRWSX1+NwhG8=;
-	b=n57dpeieDdUQa1TjXoAPnFWyyrNm0SjjZ1g64Rd4aflPYkcjh65xqRrdQyU+M1Yb0d
-	cgzG6ZdkEYxqrrYDmqlnpdhgMDB143v5rcQbJnEsEKvjsNX4yoQxXEHZuxgRM8HADmdO
-	8S768EE3dcw+KpMRpSl4Y0TedVYPyFMEXlY52Fzd9ryceozPmZqbX/AaEm8IjqfLtFVo
-	/WzSwfX2BmsQg/RbcyiQrjoKawCJd76J5W4K3r3a90wFW83VuVxmIlnm9txCf0mtHpU8
-	fThXwqU4wQ/8icEWQE12MORSPP/6VWfgKvi2jzWQ9YPw0fBRsx9AoEu3a1l7FPn7rX9l
-	gCOw==
+	bh=/GETBzD3viq9pszXR5PyIXw44iP0PfoCOiwkqQ3CKrA=;
+	b=DpsKz51hoHH/hkFPla1/dZuFJzJoUfQDsCfMMeIcXIRIrfb9he+0m7oa6VJArjuW3R
+	5CCtoBfNj/PsGVrV8kipBm54l0Ve3BWTjEPyVtvrinzlqKUl9VH7Ey/hNip9JfjCvQ2Q
+	o/MWF+A23XSLUYfL4OZiPGGaBgdeneyvchfo1+H0/AK6kIATy/9FF3w6EBuizk8/EWLZ
+	UbfY9kt1jCoSCXdHztSpbLyjwp784HV3/Fiv9dYfiPaaO53nI3sEwCzV+VItJo/Z+i3K
+	A4yoWtL3ZGoJJWREVHrP9cBDZMVc/8QF/J4VYmxrr+zR9ydH6Cahk2VjqUYoJxWeigEL
+	F+Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=36on+xdgbXFxeBwwHxce84Ksqf4fOm9jRWSX1+NwhG8=;
-	b=ZkXpgadq8/U6GGgMohMw65W/yl+W3dgZrUJKPJBXOEfWjDBw6JdfZXk/eOgxrlkMKu
-	c3TPzZ5IMtwtwXvCA1GXu3t0Nofj0fThQnSBRdBbvQbC9nRKMJ5LDnNA8f5jl0bsMXNG
-	AS1LQyriCpZnN1mKq8RLwGedueb0G9zqFWXCfYwcAHzqHC6DSwlnqEyKgwpZ8Bat7Q5+
-	/BKOyeqGwnIfa3Wm3WeUZT91IpwJke/6ZvNGYiEgybKzNVuBqQOjyYy7NCOxr2u9VmwR
-	IFOf4HmgGZXH8YqlhoUBkUFh9u0QP2dD4pL5sTeyZ9g1Mm+TprAd7aVsJ6ryg6y8skP5
-	Rr6A==
-X-Gm-Message-State: APt69E1CLRyV9hRjcG+gAwMOiOSDuYlVMJCyBk6271Mp5hP/5cCIzsu5
-	jcNPJPPalXpaXrSohsRDRCY=
-X-Received: by 2002:a37:1328:: with SMTP id
-	d40-v6mr6369523qkh.198.1529813195931; 
-	Sat, 23 Jun 2018 21:06:35 -0700 (PDT)
+	bh=/GETBzD3viq9pszXR5PyIXw44iP0PfoCOiwkqQ3CKrA=;
+	b=VPZjXftfG02pGqC/7Ap9G6Hf8CAgYVHf2HOquoum6mysPQXARYuCevE6lxorRYbgP+
+	+mI3bCkpK1HM0k57MSKqz0eETMDwwG7rxtq7gudFhzr1CVHZwhiW2OMOAXVCMPRviOyz
+	zUsyutX812BUw9TL0lijVVMTJDrYLCizeSAyhWHDRIrxkcdT1q/Y8pvVTeCLvQbNHdqI
+	+jVH9Zoc+1Vwi5MZ0wxnZ0dGERvSiGYBLH/mxnlfJOXRD2SpAsrqcG7jQvhOWbVCrr9f
+	oU1K1pk0gMkLhQdXNavWXNqCvkFmD5je+v5BN2J15Ugn+vRZ6EWAPR2ODgGgDd6AFlqq
+	oyUg==
+X-Gm-Message-State: APt69E2c9Wmr5mupUlf1AyKk8G1Xe15wsF7pJWh+GDhPTfivasewOC5p
+	5Xu3kxuHkwfQOFqXHvPKRAc=
+X-Received: by 2002:ac8:2f2a:: with SMTP id
+	j39-v6mr6709140qta.74.1529813215096; 
+	Sat, 23 Jun 2018 21:06:55 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	d14-v6sm7145313qtn.90.2018.06.23.21.06.33
+	d14-v6sm7145313qtn.90.2018.06.23.21.06.52
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 23 Jun 2018 21:06:35 -0700 (PDT)
+	Sat, 23 Jun 2018 21:06:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Date: Sun, 24 Jun 2018 01:05:57 -0300
-Message-Id: <20180624040609.17572-5-f4bug@amsat.org>
+Date: Sun, 24 Jun 2018 01:06:04 -0300
+Message-Id: <20180624040609.17572-12-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180624040609.17572-1-f4bug@amsat.org>
 References: <20180624040609.17572-1-f4bug@amsat.org>
@@ -99,151 +99,46 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-devel] [PATCH v3 04/16] hw/dma/omap_dma: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-arm] [PATCH v3 11/16] hw/net/stellaris_enet: Fix a typo
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MgZ9d0pdoLhJ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VBwbVUk2EWcy
 
+Suggested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/dma/omap_dma.c | 64 +++++++++++++++++++++++++++++------------------
- 1 file changed, 40 insertions(+), 24 deletions(-)
+ hw/net/stellaris_enet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index ab3a1b0451..cbb920f31d 100644
---- a/hw/dma/omap_dma.c
-+++ b/hw/dma/omap_dma.c
-@@ -879,15 +879,18 @@ static int omap_dma_ch_reg_write(struct omap_dma_s *s,
-         ch->burst[0] = (value & 0x0180) >> 7;
-         ch->pack[0] = (value & 0x0040) >> 6;
-         ch->port[0] = (enum omap_dma_port) ((value & 0x003c) >> 2);
--        if (ch->port[0] >= __omap_dma_port_last)
--            printf("%s: invalid DMA port %i\n", __func__,
--                            ch->port[0]);
--        if (ch->port[1] >= __omap_dma_port_last)
--            printf("%s: invalid DMA port %i\n", __func__,
--                            ch->port[1]);
-+        if (ch->port[0] >= __omap_dma_port_last) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
-+                          __func__, ch->port[0]);
-+        }
-+        if (ch->port[1] >= __omap_dma_port_last) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
-+                          __func__, ch->port[1]);
-+        }
-         ch->data_type = 1 << (value & 3);
-         if ((value & 3) == 3) {
--            printf("%s: bad data_type for DMA channel\n", __func__);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad data_type for DMA channel\n", __func__);
-             ch->data_type >>= 1;
-         }
-         break;
-@@ -1899,14 +1902,18 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         if (value & 2)						/* SOFTRESET */
-             omap_dma_reset(s->dma);
-         s->ocp = value & 0x3321;
--        if (((s->ocp >> 12) & 3) == 3)				/* MIDLEMODE */
--            fprintf(stderr, "%s: invalid DMA power mode\n", __func__);
-+        if (((s->ocp >> 12) & 3) == 3) { /* MIDLEMODE */
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA power mode\n",
-+                          __func__);
-+        }
-         return;
- 
-     case 0x78:	/* DMA4_GCR */
-         s->gcr = value & 0x00ff00ff;
--	if ((value & 0xff) == 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
--            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__);
-+        if ((value & 0xff) == 0x00) { /* MAX_CHANNEL_FIFO_DEPTH */
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GCR\n",
-+                          __func__);
-+        }
-         return;
- 
-     case 0x80 ... 0xfff:
-@@ -1935,9 +1942,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-     case 0x00:	/* DMA4_CCR */
-         ch->buf_disable = (value >> 25) & 1;
-         ch->src_sync = (value >> 24) & 1;	/* XXX For CamDMA must be 1 */
--        if (ch->buf_disable && !ch->src_sync)
--            fprintf(stderr, "%s: Buffering disable is not allowed in "
--                            "destination synchronised mode\n", __func__);
-+        if (ch->buf_disable && !ch->src_sync) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: Buffering disable is not allowed in "
-+                          "destination synchronised mode\n", __func__);
-+        }
-         ch->prefetch = (value >> 23) & 1;
-         ch->bs = (value >> 18) & 1;
-         ch->transparent_copy = (value >> 17) & 1;
-@@ -1947,9 +1956,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->suspend = (value & 0x0100) >> 8;
-         ch->priority = (value & 0x0040) >> 6;
-         ch->fs = (value & 0x0020) >> 5;
--        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1])
--            fprintf(stderr, "%s: For a packet transfer at least one port "
--                            "must be constant-addressed\n", __func__);
-+        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1]) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: For a packet transfer at least one port "
-+                          "must be constant-addressed\n", __func__);
-+        }
-         ch->sync = (value & 0x001f) | ((value >> 14) & 0x0060);
-         /* XXX must be 0x01 for CamDMA */
- 
-@@ -1978,9 +1989,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->endian_lock[0] =(value >> 20) & 1;
-         ch->endian[1] =(value >> 19) & 1;
-         ch->endian_lock[1] =(value >> 18) & 1;
--        if (ch->endian[0] != ch->endian[1])
--            fprintf(stderr, "%s: DMA endianness conversion enable attempt\n",
--                            __func__);
-+        if (ch->endian[0] != ch->endian[1]) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: DMA endianness conversion enable attempt\n",
-+                          __func__);
-+        }
-         ch->write_mode = (value >> 16) & 3;
-         ch->burst[1] = (value & 0xc000) >> 14;
-         ch->pack[1] = (value & 0x2000) >> 13;
-@@ -1988,12 +2001,15 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->burst[0] = (value & 0x0180) >> 7;
-         ch->pack[0] = (value & 0x0040) >> 6;
-         ch->translate[0] = (value & 0x003c) >> 2;
--        if (ch->translate[0] | ch->translate[1])
--            fprintf(stderr, "%s: bad MReqAddressTranslate sideband signal\n",
--                            __func__);
-+        if (ch->translate[0] | ch->translate[1]) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad MReqAddressTranslate sideband signal\n",
-+                          __func__);
-+        }
-         ch->data_type = 1 << (value & 3);
-         if ((value & 3) == 3) {
--            printf("%s: bad data_type for DMA channel\n", __func__);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad data_type for DMA channel\n", __func__);
-             ch->data_type >>= 1;
-         }
-         break;
+diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+index 04bd10ada3..1e7329517c 100644
+--- a/hw/net/stellaris_enet.c
++++ b/hw/net/stellaris_enet.c
+@@ -340,7 +340,7 @@ static uint64_t stellaris_enet_read(void *opaque, hwaddr offset,
+         return s->np;
+     case 0x38: /* TR */
+         return 0;
+-    case 0x3c: /* Undocuented: Timestamp? */
++    case 0x3c: /* Undocumented: Timestamp? */
+         return 0;
+     default:
+         hw_error("stellaris_enet_read: Bad offset %x\n", (int)offset);
 -- 
 2.18.0
 

@@ -1,256 +1,249 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2093701wrq;
-        Thu, 14 Jun 2018 07:17:48 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKKTXFebQpwOQMKMwRyeU2OCaysfA+nsgdyLLS+nCWSsH5W0KvNZq7mUcwnVGaotfYZ8IRZF
-X-Received: by 2002:ac8:358a:: with SMTP id k10-v6mr2461234qtb.248.1528985868219;
-        Thu, 14 Jun 2018 07:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528985868; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2446046wrq;
+        Sat, 23 Jun 2018 21:08:17 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpecLCrNSJ62W6MqYa77bkbmDAZ0brK8g9gpkEKvIOylhslhFObZVIwLIi4PIc1whEg+CUmo
+X-Received: by 2002:a37:184b:: with SMTP id j72-v6mr3763900qkh.94.1529813297498;
+        Sat, 23 Jun 2018 21:08:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529813297; cv=none;
         d=google.com; s=arc-20160816;
-        b=btwC6iVrEiGWrUBde/J+IdYI+EeAIXBDa7duxo9DIMmtUNykW2I9TIULWtkh0PDuOs
-         JDyK9wLJ8/IKtfemoIeSs5HVh7iI5rOm/p1UFaSAB5lahL4MaqsBXIdX2BNDGm3lMLJA
-         duIqFEcnxcGVW+6I8KwF9tmZW9ttGppQGUQnykyQtsBtQIvrcakxGAXUrPmS/B8IA5Nc
-         Xz3fGVTjQSYmqAegk1v9FrHQh+wqjwgMcqqCKPKETGWl8SvIUDO9Icjuq5fe0afJ0yfW
-         h4HeWdRk5697wNX1XqSqpFOo4AuZwevQvH35/Jp/2WF5vvttRbuEBzVu16SidbBXNZz6
-         I69g==
+        b=Yk1da4hMLYUvCx2ZeKZNlU+PDao+AR9vw9RARddMlzdw8j4jz3YprYJ8WSMz7s8NEV
+         CLEglkJe9n5toppCXgRNsuHXKveqggdaij3YhtSsylvSKyz0aThuvnjxUefS7aLK3ZmA
+         cUXAWTwwBb8X97ST82UzGDaRIcvTqjahdJxUDezcEVYn/Gj1B0RpqDaPagJ8erF2emB+
+         P9YD4VjEaBrlhoXkaflwq9udfrapIcB/8UoIGNTLk7zGS6obI6tuApjBgZL6sAfHUqj+
+         R/RYa2qcQXEOJg8D9sY6TZbMvM9zN1DfIfFTp3/5xIimtbJX4pu26IMB5WUO+NF5wpXP
+         mzFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=OY0hnW6viOCjGWOSuzYbtlRkI++rPq17eI/QqEPkaNk=;
-        b=zFasMsfTtRUzcy0mOSTFo7HZA3uqQMONUtuLOn/2VWdsqbrqtWJTSzH0xHOyKhkcKa
-         N9Kv2TIMzMDUe40hHzRfH31oN4GUSo7+enRNtmdgdwwWJbBGXCDr8s/eaFVvw5H3Y26Y
-         I6hnT9oQKlqoSdzK4lUKHQOdGZoTImRcCgOhKxYidk2lPUTJGu8SCF86fTFgaA+r7UWf
-         UjYdFbSxyz1uZLeaQJApYuQK1Q9F+fWAINYFKrLBDwkFVfJCwydOlBxff/PiJwf2qazn
-         WDWblO5yJHehCKVaWy2pGUl9TJbwdUm9MRisA7ix888rUWsmPcctF8K5/dBqaE4f2DoC
-         4uHw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=36on+xdgbXFxeBwwHxce84Ksqf4fOm9jRWSX1+NwhG8=;
+        b=pBpEOJxhZmXex0Ru6RFq5uxYzUNUwqsVt7zQ90qQXKrSurDzW2CGNxCGFRv/7dSsmC
+         HUWy9athWW6/Adihqc4UCI7nT+Ztpw1hqe7gYUBbLbC87708unvvI9bJDDqJwHw2y6fr
+         X5S9Tjt6HPfakN+XbwW1Z4Nyzh5PXKdjBCYNt2VmJLCFj67dgGs6W2FxxlP4xU1Uox5Q
+         UlF/cFqsPbchn87wPmFtZ6ScSIYoZ/DSjoaFdAL/eZvCRy+KivW8SUUBl46TZ78fReQy
+         7v0fGZqcFrfgurSFnhS3moFNx9BsHg9wUv4doJXWIbxsLvIQf+d1o0MrQf6+VGm2Ivli
+         FtlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n57dpeie;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x186-v6si5136531qkd.254.2018.06.14.07.17.48
+        by mx.google.com with ESMTPS id x185-v6si10569166qkd.207.2018.06.23.21.08.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 14 Jun 2018 07:17:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 23 Jun 2018 21:08:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40944 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n57dpeie;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40484 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fTT4N-0002yK-Mb
-	for alex.bennee@linaro.org; Thu, 14 Jun 2018 10:17:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60110)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fWwK0-0004l5-Tw
+	for alex.bennee@linaro.org; Sun, 24 Jun 2018 00:08:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fTT3x-0002ph-PB
-	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 10:17:22 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWwIT-0003sp-DG
+	for qemu-devel@nongnu.org; Sun, 24 Jun 2018 00:06:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fTT3r-0008PW-FL
-	for qemu-arm@nongnu.org; Thu, 14 Jun 2018 10:17:21 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51970 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fTT3r-0008Oy-9N; Thu, 14 Jun 2018 10:17:15 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AEB958887F;
-	Thu, 14 Jun 2018 14:17:14 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8BF29111AF1C;
-	Thu, 14 Jun 2018 14:17:08 +0000 (UTC)
-Date: Thu, 14 Jun 2018 16:17:06 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20180614141706.ncdklb2lfqxp3hpz@kamzik.brq.redhat.com>
-References: <1528879723-24675-1-git-send-email-eric.auger@redhat.com>
-	<1528879723-24675-10-git-send-email-eric.auger@redhat.com>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWwIO-0003o7-KM
+	for qemu-devel@nongnu.org; Sun, 24 Jun 2018 00:06:41 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:35494)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWwIO-0003np-FK; Sun, 24 Jun 2018 00:06:36 -0400
+Received: by mail-qk0-x243.google.com with SMTP id u21-v6so244113qku.2;
+	Sat, 23 Jun 2018 21:06:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=36on+xdgbXFxeBwwHxce84Ksqf4fOm9jRWSX1+NwhG8=;
+	b=n57dpeieDdUQa1TjXoAPnFWyyrNm0SjjZ1g64Rd4aflPYkcjh65xqRrdQyU+M1Yb0d
+	cgzG6ZdkEYxqrrYDmqlnpdhgMDB143v5rcQbJnEsEKvjsNX4yoQxXEHZuxgRM8HADmdO
+	8S768EE3dcw+KpMRpSl4Y0TedVYPyFMEXlY52Fzd9ryceozPmZqbX/AaEm8IjqfLtFVo
+	/WzSwfX2BmsQg/RbcyiQrjoKawCJd76J5W4K3r3a90wFW83VuVxmIlnm9txCf0mtHpU8
+	fThXwqU4wQ/8icEWQE12MORSPP/6VWfgKvi2jzWQ9YPw0fBRsx9AoEu3a1l7FPn7rX9l
+	gCOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=36on+xdgbXFxeBwwHxce84Ksqf4fOm9jRWSX1+NwhG8=;
+	b=ZkXpgadq8/U6GGgMohMw65W/yl+W3dgZrUJKPJBXOEfWjDBw6JdfZXk/eOgxrlkMKu
+	c3TPzZ5IMtwtwXvCA1GXu3t0Nofj0fThQnSBRdBbvQbC9nRKMJ5LDnNA8f5jl0bsMXNG
+	AS1LQyriCpZnN1mKq8RLwGedueb0G9zqFWXCfYwcAHzqHC6DSwlnqEyKgwpZ8Bat7Q5+
+	/BKOyeqGwnIfa3Wm3WeUZT91IpwJke/6ZvNGYiEgybKzNVuBqQOjyYy7NCOxr2u9VmwR
+	IFOf4HmgGZXH8YqlhoUBkUFh9u0QP2dD4pL5sTeyZ9g1Mm+TprAd7aVsJ6ryg6y8skP5
+	Rr6A==
+X-Gm-Message-State: APt69E1CLRyV9hRjcG+gAwMOiOSDuYlVMJCyBk6271Mp5hP/5cCIzsu5
+	jcNPJPPalXpaXrSohsRDRCY=
+X-Received: by 2002:a37:1328:: with SMTP id
+	d40-v6mr6369523qkh.198.1529813195931; 
+	Sat, 23 Jun 2018 21:06:35 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	d14-v6sm7145313qtn.90.2018.06.23.21.06.33
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 23 Jun 2018 21:06:35 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
+Date: Sun, 24 Jun 2018 01:05:57 -0300
+Message-Id: <20180624040609.17572-5-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180624040609.17572-1-f4bug@amsat.org>
+References: <20180624040609.17572-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1528879723-24675-10-git-send-email-eric.auger@redhat.com>
-User-Agent: NeoMutt/20180512
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 14 Jun 2018 14:17:14 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 14 Jun 2018 14:17:14 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 9/9] hw/arm/virt: Add virt-3.0
- machine type
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-devel] [PATCH v3 04/16] hw/dma/omap_dma: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ard.biesheuvel@linaro.org, marc.zyngier@arm.com,
-	qemu-devel@nongnu.org, christoffer.dall@arm.com,
-	qemu-arm@nongnu.org, zhaoshenglong@huawei.com, lersek@redhat.com,
-	eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L5NkLI7l8RQ4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MgZ9d0pdoLhJ
 
-On Wed, Jun 13, 2018 at 10:48:43AM +0200, Eric Auger wrote:
-> This machine type supports two new features:
-> - highmem 256MB ECAM (default). This feature is disabled for
->   earlier machine types and if highmem is off.
-> - max_cpus set to 512 vcpus (255 before)
-> 
-> The high 256MB ECAM region is chosen instead of the legacy
-> 16MB one if the machine type allows it, if highmem is set
-> (LPAE supported by the guest) and (!firmware_loaded || aarch64).
-> Indeed aarch32 mode FW may not support this high ECAM region.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> PATCH: merge of ECAM and VCPU extension
-> - Laszlo reviewed the ECAM changes but I dropped his R-b
->   due to the squash
-> 
-> RFC -> v1
-> - check firmware_loaded and aarch64 value
-> - do all the computation in machvirt_init
-> ---
->  hw/arm/virt.c         | 36 ++++++++++++++++++++++++++++++------
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 31 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 22b9bd1..5ed25b4 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1317,6 +1317,7 @@ static void machvirt_init(MachineState *machine)
->      int n, virt_max_cpus;
->      MemoryRegion *ram = g_new(MemoryRegion, 1);
->      bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-> +    bool aarch64 = true;
->  
->      /* We can probe only here because during property set
->       * KVM is not available yet
-> @@ -1432,6 +1433,8 @@ static void machvirt_init(MachineState *machine)
->          numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
->                            &error_fatal);
->  
-> +        aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-> +
->          if (!vms->secure) {
->              object_property_set_bool(cpuobj, false, "has_el3", NULL);
->          }
-> @@ -1490,6 +1493,8 @@ static void machvirt_init(MachineState *machine)
->          create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
->      }
->  
-> +    vms->highmem_ecam &= vms->highmem && (!firmware_loaded || aarch64);
-> +
->      create_rtc(vms, pic);
->  
->      create_pcie(vms, pic);
-> @@ -1700,11 +1705,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
->  
->      mc->init = machvirt_init;
-> -    /* Start max_cpus at the maximum QEMU supports. We'll further restrict
-> -     * it later in machvirt_init, where we have more information about the
-> -     * configuration of the particular instance.
-> +    /* Start with max_cpus set to 512. This value is chosen since achievable
-> +     * in accelerated mode with GICv3 and recent host supporting up to 512 vcpus
-> +     * and multiple redistributor region registration.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/dma/omap_dma.c | 64 +++++++++++++++++++++++++++++------------------
+ 1 file changed, 40 insertions(+), 24 deletions(-)
 
-The word 'recent' probably shouldn't be used in comments. Time flies...
-Actually, I'd just write
+diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+index ab3a1b0451..cbb920f31d 100644
+--- a/hw/dma/omap_dma.c
++++ b/hw/dma/omap_dma.c
+@@ -879,15 +879,18 @@ static int omap_dma_ch_reg_write(struct omap_dma_s *s,
+         ch->burst[0] = (value & 0x0180) >> 7;
+         ch->pack[0] = (value & 0x0040) >> 6;
+         ch->port[0] = (enum omap_dma_port) ((value & 0x003c) >> 2);
+-        if (ch->port[0] >= __omap_dma_port_last)
+-            printf("%s: invalid DMA port %i\n", __func__,
+-                            ch->port[0]);
+-        if (ch->port[1] >= __omap_dma_port_last)
+-            printf("%s: invalid DMA port %i\n", __func__,
+-                            ch->port[1]);
++        if (ch->port[0] >= __omap_dma_port_last) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
++                          __func__, ch->port[0]);
++        }
++        if (ch->port[1] >= __omap_dma_port_last) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
++                          __func__, ch->port[1]);
++        }
+         ch->data_type = 1 << (value & 3);
+         if ((value & 3) == 3) {
+-            printf("%s: bad data_type for DMA channel\n", __func__);
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad data_type for DMA channel\n", __func__);
+             ch->data_type >>= 1;
+         }
+         break;
+@@ -1899,14 +1902,18 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         if (value & 2)						/* SOFTRESET */
+             omap_dma_reset(s->dma);
+         s->ocp = value & 0x3321;
+-        if (((s->ocp >> 12) & 3) == 3)				/* MIDLEMODE */
+-            fprintf(stderr, "%s: invalid DMA power mode\n", __func__);
++        if (((s->ocp >> 12) & 3) == 3) { /* MIDLEMODE */
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA power mode\n",
++                          __func__);
++        }
+         return;
+ 
+     case 0x78:	/* DMA4_GCR */
+         s->gcr = value & 0x00ff00ff;
+-	if ((value & 0xff) == 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
+-            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__);
++        if ((value & 0xff) == 0x00) { /* MAX_CHANNEL_FIFO_DEPTH */
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GCR\n",
++                          __func__);
++        }
+         return;
+ 
+     case 0x80 ... 0xfff:
+@@ -1935,9 +1942,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+     case 0x00:	/* DMA4_CCR */
+         ch->buf_disable = (value >> 25) & 1;
+         ch->src_sync = (value >> 24) & 1;	/* XXX For CamDMA must be 1 */
+-        if (ch->buf_disable && !ch->src_sync)
+-            fprintf(stderr, "%s: Buffering disable is not allowed in "
+-                            "destination synchronised mode\n", __func__);
++        if (ch->buf_disable && !ch->src_sync) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Buffering disable is not allowed in "
++                          "destination synchronised mode\n", __func__);
++        }
+         ch->prefetch = (value >> 23) & 1;
+         ch->bs = (value >> 18) & 1;
+         ch->transparent_copy = (value >> 17) & 1;
+@@ -1947,9 +1956,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         ch->suspend = (value & 0x0100) >> 8;
+         ch->priority = (value & 0x0040) >> 6;
+         ch->fs = (value & 0x0020) >> 5;
+-        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1])
+-            fprintf(stderr, "%s: For a packet transfer at least one port "
+-                            "must be constant-addressed\n", __func__);
++        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1]) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: For a packet transfer at least one port "
++                          "must be constant-addressed\n", __func__);
++        }
+         ch->sync = (value & 0x001f) | ((value >> 14) & 0x0060);
+         /* XXX must be 0x01 for CamDMA */
+ 
+@@ -1978,9 +1989,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         ch->endian_lock[0] =(value >> 20) & 1;
+         ch->endian[1] =(value >> 19) & 1;
+         ch->endian_lock[1] =(value >> 18) & 1;
+-        if (ch->endian[0] != ch->endian[1])
+-            fprintf(stderr, "%s: DMA endianness conversion enable attempt\n",
+-                            __func__);
++        if (ch->endian[0] != ch->endian[1]) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: DMA endianness conversion enable attempt\n",
++                          __func__);
++        }
+         ch->write_mode = (value >> 16) & 3;
+         ch->burst[1] = (value & 0xc000) >> 14;
+         ch->pack[1] = (value & 0x2000) >> 13;
+@@ -1988,12 +2001,15 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
+         ch->burst[0] = (value & 0x0180) >> 7;
+         ch->pack[0] = (value & 0x0040) >> 6;
+         ch->translate[0] = (value & 0x003c) >> 2;
+-        if (ch->translate[0] | ch->translate[1])
+-            fprintf(stderr, "%s: bad MReqAddressTranslate sideband signal\n",
+-                            __func__);
++        if (ch->translate[0] | ch->translate[1]) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad MReqAddressTranslate sideband signal\n",
++                          __func__);
++        }
+         ch->data_type = 1 << (value & 3);
+         if ((value & 3) == 3) {
+-            printf("%s: bad data_type for DMA channel\n", __func__);
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad data_type for DMA channel\n", __func__);
+             ch->data_type >>= 1;
+         }
+         break;
+-- 
+2.18.0
 
- Start with max_cpus set to 512, which is the maximum supported by KVM.
- The value may be reduced later when we have more information about the
- configuration of the particular instance.
-
-
-> +     * This value will be refined later on once we collect more information
-> +     * about the configuration of the particular instance.
->       */
-> -    mc->max_cpus = 255;
-> +    mc->max_cpus = 512;
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
->      mc->block_default_type = IF_VIRTIO;
-> @@ -1743,7 +1750,7 @@ type_init(machvirt_machine_init);
->  #define VIRT_COMPAT_2_12 \
->      HW_COMPAT_2_12
->  
-> -static void virt_2_12_instance_init(Object *obj)
-> +static void virt_3_0_instance_init(Object *obj)
->  {
->      VirtMachineState *vms = VIRT_MACHINE(obj);
->      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> @@ -1786,6 +1793,8 @@ static void virt_2_12_instance_init(Object *obj)
->                                      "Set GIC version. "
->                                      "Valid values are 2, 3 and host", NULL);
->  
-> +    vms->highmem_ecam = !vmc->no_highmem_ecam;
-> +
->      if (vmc->no_its) {
->          vms->its = false;
->      } else {
-> @@ -1811,11 +1820,26 @@ static void virt_2_12_instance_init(Object *obj)
->      vms->irqmap = a15irqmap;
->  }
->  
-> +static void virt_machine_3_0_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(3, 0)
-> +
-> +static void virt_2_12_instance_init(Object *obj)
-> +{
-> +    virt_3_0_instance_init(obj);
-> +}
-> +
->  static void virt_machine_2_12_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
-> +    virt_machine_3_0_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_12);
-> +    vmc->no_highmem_ecam = true;
-> +    mc->max_cpus = 255;
->  }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(2, 12)
-> +DEFINE_VIRT_MACHINE(2, 12)
->  
->  #define VIRT_COMPAT_2_11 \
->      HW_COMPAT_2_11
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 2c18a59..8c74d4c 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -98,6 +98,7 @@ typedef struct {
->      bool no_pmu;
->      bool claim_edge_triggered_timers;
->      bool smbios_old_sys_ver;
-> +    bool no_highmem_ecam;
->  } VirtMachineClass;
->  
->  typedef struct {
-> -- 
-> 2.5.5
-> 
->
-
-Otherwise
-
-Reviewed-by: Andrew Jones <drjones@redhat.com>

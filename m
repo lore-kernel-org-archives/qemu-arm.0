@@ -1,77 +1,107 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4955313wrq;
-        Tue, 19 Jun 2018 03:23:37 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIt06IbMXUFomSZ2wmTT9e/Vzvev09D+qore4LKVIk40trHueJHDEdDj1bDSGCj1s/HZn8B
-X-Received: by 2002:a37:7101:: with SMTP id m1-v6mr13245787qkc.19.1529403817632;
-        Tue, 19 Jun 2018 03:23:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529403817; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp2447563wrq;
+        Sat, 23 Jun 2018 21:11:14 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfZSrPePZBJAR2PCAOrqtndNcqUlaA4xi+jRGApKEzaQ5t6x8jYYYAr9HKTl0TRE1QNixwH
+X-Received: by 2002:aed:380a:: with SMTP id j10-v6mr5314509qte.223.1529813474013;
+        Sat, 23 Jun 2018 21:11:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529813474; cv=none;
         d=google.com; s=arc-20160816;
-        b=VGMDwhABYAN2ivVLAx152c7GPBRbMt/iw2nGBBu3/o+YyZH26fGugQiBZyYFVucLTz
-         3ukRafBcunuKbhEiyQqNGvCZzZRApZbzR6PQKw1GJ6KZv7sHGEc337/z6YYO825F9Q3G
-         P7N0S1V0W9FzgbOagSMa9RyRc2uh/h1SomWj7SpE5msj25lYXpJX30fCCmYEqx/2xUPk
-         OkKssJGLlXZppuzoGPuoprnAksUq3Jh17wpHYht1qA5aOuFgD74AT1OETgJUwdiH9NnW
-         k+nOH2jGxAESOaYvbBSkpX+l465qDL1gnVeBElD5XAPK2haxfwtWQElWzw7wsocQGM4O
-         fxhg==
+        b=lrcP2mQ6DBkPaCUz3fxAU8a1GzZVJjPJqL0SimnCHwFndDC7BkWpBedSJvchTtj1iY
+         tWm2Taa8ygwbbUGPElpxMWGN5b+prcnxtc2z/SJOVFX4M1BQv9JG4Cv+e/Vjvu7KUavf
+         JInO7rRkdBTQmogsG4Pfz7pG1N1PR0kIyts94Zu9WsFoJTbUJ3VjDzp7fafEPjKpWi3I
+         vAGNezwVobzB7na0YbYFauLHqcHEEIB0lzzza9gh5jqxAXz5ehGGlqVKi3oPMkhTftRH
+         K97YehxaJm/RWU8hP0jIp70WKUCBmkaGWRzIfG4orCA1sDyV0jvP1Ia4H1qQIsCG6Ayj
+         bCtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject:date:to
-         :from:resent-from:content-transfer-encoding:mime-version:message-id
-         :in-reply-to:resent-message-id:resent-date
-         :arc-authentication-results;
-        bh=4h377E1KVMWxGFlIu8PKJhVm4PGkMis1dHCs7QBCJp4=;
-        b=zjQh3JrOVptSQJ8o7LAZngbPB6znO8bQUNTRpiXhfAqg5mme6Mzq2DxIEhTeA6d2BR
-         3ZzRXvTjM6OIGhoj+BPR676VbPsxFEhWSG5MNr5WHV5RlSFOXqVGZMviui/t8f0f5qcT
-         f542N+Jq4pqUvKS5e4OI28yyl1OMHSIA4jL6tpCozXZmMITrEKjFq+3ImlnsyBF6I/Qw
-         ATIAbGAss6m06TY+4yoxRW9phekZxbUr1U4432LhQv3x+JPfb4MyhCZtHs0xoHfpO3w2
-         cxna/msCwfZst1+5N8Q0n4IqCnxfO0HVs7iG77GikevkV/Su2ecZhYzjUZoj1ivsxjJ+
-         2wLg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=zGB87WBZUxSYqYPuFSOnGGcEOOn/B+mDAgxK88CRyao=;
+        b=MkUuSGp8XENYRAFI+aVtH/rxMgA827BkgMVkZ+yluVwVXp4fVAEzFHLhNmVfhLkvoq
+         qCzROOdSQ4lscJyyRBw5pc1a6B5bZF7lxBQOkgHFjbmaHAdINne8cstiSA1BRS4isShR
+         Q9VstHL8kTjhpPhn2iEYdmGVceIiZoRukJXI9kW9OhmUv7QuQ9QXWM3x0AjK8yTSKI0U
+         sOPPpe++MIWXaNGU/zi1YYo9sKffPdQRmNZa6hi/w0PBwrRZ3Kzxq7F5dMXwvD6TInKQ
+         RJZS1uGzidh8ZHE5G5h8JQjGSEPxBKiPYVEeHXY+acg4v4cMfVK7s+pXmt6jeG0M332h
+         P3Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tV5T+H4D;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e1-v6si2408628qtc.6.2018.06.19.03.23.37
+        by mx.google.com with ESMTPS id d19-v6si656808qvk.212.2018.06.23.21.11.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 19 Jun 2018 03:23:37 -0700 (PDT)
+        Sat, 23 Jun 2018 21:11:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tV5T+H4D;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40457 helo=lists.gnu.org)
+Received: from localhost ([::1]:40517 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fVDnV-0006dR-4K
-	for alex.bennee@linaro.org; Tue, 19 Jun 2018 06:23:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46814)
+	id 1fWwMr-0007Uz-Eb
+	for alex.bennee@linaro.org; Sun, 24 Jun 2018 00:11:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42479)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1fVDnJ-0006b2-U7
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 06:23:26 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWwIg-000465-Fq
+	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 00:06:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1fVDnG-0006xY-60
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 06:23:25 -0400
-Resent-Date: Tue, 19 Jun 2018 06:23:25 -0400
-Resent-Message-Id: <E1fVDnG-0006xY-60@eggs.gnu.org>
-Received: from sender-of-o51.zoho.com ([135.84.80.216]:21082)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1fVDnF-0006wW-T1
-	for qemu-arm@nongnu.org; Tue, 19 Jun 2018 06:23:22 -0400
-Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1529401067426266.6846863897173;
-	Tue, 19 Jun 2018 02:37:47 -0700 (PDT)
-In-Reply-To: <20180619075821.9884-1-zhengxiang9@huawei.com>
-Message-ID: <152940106681.783.5655246929665863685@d39dc562802a>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWwIf-0004CY-JM
+	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 00:06:54 -0400
+Received: from mail-qk0-x22b.google.com ([2607:f8b0:400d:c09::22b]:33965)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWwIW-0003tt-Ow; Sun, 24 Jun 2018 00:06:44 -0400
+Received: by mail-qk0-x22b.google.com with SMTP id b66-v6so348569qkj.1;
+	Sat, 23 Jun 2018 21:06:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=zGB87WBZUxSYqYPuFSOnGGcEOOn/B+mDAgxK88CRyao=;
+	b=tV5T+H4Dj8ANICMMuoasIMIFnuyPUBVIcbpjZLIpYM13neWGIp7M2mZO4zaRsSGFK/
+	FHDHvVfvUz5faegE9Endy5Fc/rdo0fIcpmwPdwkkhTLKlCWpHIsW3TLdzwLDTe8wfbum
+	WJUwfZcxYtkg5T76VRwxjiMELYi4MMkhzgWwqhZzIndwk7Be7AT5Rg4peefl8UVURFfO
+	sGhsqfzc0HU34O+eyY15M48dLeYjGF7R3ofCHxpfYdZ2KMEpcCpBqk2CYm5U74VVuVEO
+	qh6bMonvxSMi7w2kLZHq98DIqMhV9ujgCSX+yB3QSGupalVW1WMJT4nA5LMaoP+PdmCB
+	ZbFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=zGB87WBZUxSYqYPuFSOnGGcEOOn/B+mDAgxK88CRyao=;
+	b=QGbbvNFyOr8mVLig30QvEQKUL41KE7sWBXWkhNXL3TK2FJNFM2EBeWt8DYYdu4YAkR
+	IvemWGLIhcCQCArshFechU0+4/67PxAWCBfw58lnhuZ/TStF4rgKX19aLA5vTqAK2B/b
+	hlA4x7KtIm7CPKEDJ4PCKjplLTAJd+URCzRLn8T8qF2TIVoI6U7E+qSzN8RsfKzqoea/
+	TBctpM0V96TpVhxzUbKiMimugSedCJ/4LvTnt8m7iPocsfc2biEk6SiCnIDgMBuDfMVg
+	/BjYJkK1BK6WheDTskSUtjJ2FxJc3DzP9xqzC6/fC+jMk45QCvEx1nZ31Rswyl5mC8zk
+	lQMA==
+X-Gm-Message-State: APt69E2zFagdMlJqddrB/4dX19wP3MVOxo4QkZt305wNgv4/H+T7ewY9
+	8McA4feFagBetymCSGFxkOk=
+X-Received: by 2002:a37:9286:: with SMTP id
+	u128-v6mr6189282qkd.29.1529813204279; 
+	Sat, 23 Jun 2018 21:06:44 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	d14-v6sm7145313qtn.90.2018.06.23.21.06.42
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 23 Jun 2018 21:06:43 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>
+Date: Sun, 24 Jun 2018 01:06:00 -0300
+Message-Id: <20180624040609.17572-8-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180624040609.17572-1-f4bug@amsat.org>
+References: <20180624040609.17572-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: zhengxiang9@huawei.com
-Date: Tue, 19 Jun 2018 02:37:47 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 135.84.80.216
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: fix a segmentation
- fault due to illegal memory access
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::22b
+Subject: [Qemu-arm] [PATCH v3 07/16] hw/i2c/omap_i2c: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,16 +113,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, xiang.zheng@linaro.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, zhaoshenglong@huawei.com, famz@redhat.com
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BAqpy3D4Pfk8
+X-TUID: nypyCxjFvFcE
 
-SGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVpbGQgdGVzdCBvbiBzMzkweCBob3N0LiBQbGVhc2Ug
-ZmluZCB0aGUgZGV0YWlscyBiZWxvdy4KCk4vQS4gSW50ZXJuYWwgZXJyb3Igd2hpbGUgcmVhZGlu
-ZyBsb2cgZmlsZQoKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hl
-dyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0
-Y2hldy1kZXZlbEByZWRoYXQuY29t
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+---
+Thomas: I used 4 <spaces> for 1 <tab> to keep checkpatch happy.
+
+ hw/i2c/omap_i2c.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+index 26e3e5ebf6..cabd348b45 100644
+--- a/hw/i2c/omap_i2c.c
++++ b/hw/i2c/omap_i2c.c
+@@ -17,6 +17,7 @@
+  * with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "hw/hw.h"
+ #include "hw/i2c/i2c.h"
+ #include "hw/arm/omap.h"
+@@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+             }
+             break;
+         }
+-        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
+-            fprintf(stderr, "%s: I^2C slave mode not supported\n",
+-                            __func__);
++        if ((value & (1 << 15)) && !(value & (1 << 10))) {    /* MST */
++            qemu_log_mask(LOG_UNIMP, "%s: I^2C slave mode not supported\n",
++                          __func__);
+             break;
+         }
+-        if ((value & (1 << 15)) && value & (1 << 8)) {		/* XA */
+-            fprintf(stderr, "%s: 10-bit addressing mode not supported\n",
+-                            __func__);
++        if ((value & (1 << 15)) && value & (1 << 8)) {        /* XA */
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: 10-bit addressing mode not supported\n",
++                          __func__);
+             break;
+         }
+         if ((value & (1 << 15)) && value & (1 << 0)) {		/* STT */
+@@ -392,8 +394,10 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+                 s->stat |= 0x3f;
+                 omap_i2c_interrupts_update(s);
+             }
+-        if (value & (1 << 15))					/* ST_EN */
+-            fprintf(stderr, "%s: System Test not supported\n", __func__);
++        if (value & (1 << 15)) {                    /* ST_EN */
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: System Test not supported\n", __func__);
++        }
+         break;
+ 
+     default:
+-- 
+2.18.0
 

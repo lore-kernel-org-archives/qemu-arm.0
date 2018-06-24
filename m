@@ -1,448 +1,101 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id a184-v6sm8526795wmf.30.2018.06.28.06.18.56
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jun 2018 06:18:56 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id C0D2F3E07DD;
-	Thu, 28 Jun 2018 14:18:55 +0100 (BST)
-References: <20180627043328.11531-1-richard.henderson@linaro.org> <20180627043328.11531-14-richard.henderson@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH v6 13/35] target/arm: Implement SVE gather loads
-In-reply-to: <20180627043328.11531-14-richard.henderson@linaro.org>
-Date: Thu, 28 Jun 2018 14:18:55 +0100
-Message-ID: <87woujuk00.fsf@linaro.org>
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3188160wrq;
+        Sun, 24 Jun 2018 16:04:28 -0700 (PDT)
+X-Received: by 2002:a65:554b:: with SMTP id t11-v6mr8777754pgr.130.1529881468055;
+        Sun, 24 Jun 2018 16:04:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529881468; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Pq7sEXbjabrgUPui0GleVKSmEkSWvbM/B3UfTFNuVYFCr924SMmXpcIjOPFK5bfKLO
+         tuYdustI9Vy3LlVjO8xxD5yx7JczOKoBLm5hzH8yWDYrgRbPq521uQw1j58ET0jvinpq
+         0yHWtNpmNq0DuUc8osm3m5Wv/sUOl3o/2mvQm7814MxdhwFv+7RUh0uvTjbj985fFiJb
+         REKnanUYzqZuaPqXHgjecM6UHcLtblXF/xVXhD89r0VeD0FnQ+BLwYUFtkUV+2AYXi3W
+         bxZB9sn/Uan0QG/2zl+C+KrH+Vg+pDl3McumYx4h1sD+zfSgNwiL1ZfyWcuegjsQeFwh
+         MVDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature:arc-authentication-results;
+        bh=Bvu9j/MlQo1Mv9gDrLkjGowzF9TAWUE/bpnFVqlw5XM=;
+        b=e4QAkWpQhK4cwXHatAk7HmE/HdBacmOlYNlrO5/LN7AiQTG8H2PnrgZNRyRLiKfwX8
+         R93t/XJkhrUS4VV+jy9B2Ph6PMoAGDMtWfHpudQuuegLzvElTj83QLDA2tyv6oymPgYm
+         UFbyEv9G9s3cWwFN4xA1aDD/oTwaWwfAixNXBtQ5xO3C2Hd+V13zkmf7TB+xSv4zBj3R
+         5vZlMhtzF3UgF8Gu60GTMyJEDGOe/a1gKO1Ze/7jDjJR9g0YkCnE1xuXORBs/ke0dV0j
+         /fkq3mHYXwRiEAVhEw9YO/3LZHBOEfjKfKYnx4HMLPrnPRZtsVAMojFP98IeEmyIDGeK
+         SSGw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SgXgKOiC;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 97-v6sor3998143plm.6.2018.06.24.16.04.27
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Sun, 24 Jun 2018 16:04:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SgXgKOiC;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=Bvu9j/MlQo1Mv9gDrLkjGowzF9TAWUE/bpnFVqlw5XM=;
+        b=SgXgKOiChZX3b5LBsgvXnWOTLqAY+SJNGAQw18s4w2+3O8ZW+wRGck+ULSEJUsGcM9
+         ZQNvFEE+CYaNKDnZEIFm0LgKvYk8n5ZDRAj1yex8WM/RJS4kExBYTwsHqhKE83W69Wrw
+         8JTX7ZkfB0CqFFM1kJJ2VUGlakjq+ydNgxmlM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=Bvu9j/MlQo1Mv9gDrLkjGowzF9TAWUE/bpnFVqlw5XM=;
+        b=d7LU3aKcY5heGM2b2vFTiWVobuKzl7mLx62kgIT64wDodeRx8x6jTHLpyV8hKfzSq1
+         eRsOXP9rWMsnMFQR72Wr2pSDrFt0q/txqMJK87CnzfqQVz5YXrod27lrOAagUdfST7+U
+         HpU1L7qglxQaAqf0Pn0pHAhBHhyXKEl4nJvhVAgcdJf75Lq9bpWol5QWi1pVk4WMsIG/
+         yi8h9epEWKewpQXQgxPau8c5ur8y7EkCPBWFk3hOnXrGWKNG/+SASGCzqkddrBgRj9tj
+         fR8jUBuPgRrFsj0ZR1m194LL48PPl2diDxubrfzSNXK+xHFgeNqjjC1+iMu0kJHhYo9r
+         VnbQ==
+X-Gm-Message-State: APt69E01gUj834XZCmTqFXcpQfSROh5amNcCs3/L6OoXk+X3OjKNhIzb
+	K5nxuFVmMBl5hbn7g8HXbNIsQ6fl
+X-Google-Smtp-Source: ADUXVKJU0s+8Q0/yQYgKIjSuU+PFmZVP0duMiF745jan9yYTDaSysEH4Hgb3/64G9W0bxW3QM36ZxA==
+X-Received: by 2002:a17:902:ab8e:: with SMTP id f14-v6mr10203102plr.5.1529881467625;
+        Sun, 24 Jun 2018 16:04:27 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net. [97.126.112.211])
+        by smtp.gmail.com with ESMTPSA id m12-v6sm16308587pgp.88.2018.06.24.16.04.26
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 24 Jun 2018 16:04:26 -0700 (PDT)
+Subject: Re: [RISU PATCH v4 22/22] risu_reginfo_aarch64: handle variable VQ
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20180622141205.16306-1-alex.bennee@linaro.org>
+ <20180622141205.16306-23-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <bc3f6e61-fe81-4666-28ff-c7889b289ffc@linaro.org>
+Date: Sun, 24 Jun 2018 16:04:25 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.8.0
 MIME-Version: 1.0
+In-Reply-To: <20180622141205.16306-23-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: ZA46o/anWvcF
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: YmnBr4tA4bxk
 
-
-Richard Henderson <richard.henderson@linaro.org> writes:
-
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
->
+On 06/22/2018 07:12 AM, Alex Bennée wrote:
+> This involves parsing the command line parameter and calling the
+> kernel to set the VQ limit. We also add dumping of the register state
+> in the main register dump.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
-> v6:
->   * Finish esz =3D=3D msz && u=3D=3D1 decode in sve.decode.
->   * Remove duplicate decode in trans_ST1_zprz.
->   * Add xs=3D2 comment.
->   * Reformat tables to leave room for ff helpers.
-> ---
->  target/arm/helper-sve.h    |  67 +++++++++++++++++++++++++
->  target/arm/sve_helper.c    |  77 ++++++++++++++++++++++++++++
->  target/arm/translate-sve.c | 100 +++++++++++++++++++++++++++++++++++++
->  target/arm/sve.decode      |  57 +++++++++++++++++++++
->  4 files changed, 301 insertions(+)
->
-> diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-> index 8880128f9c..aeb62afc34 100644
-> --- a/target/arm/helper-sve.h
-> +++ b/target/arm/helper-sve.h
-> @@ -959,6 +959,73 @@ DEF_HELPER_FLAGS_4(sve_st1hd_r, TCG_CALL_NO_WG, void=
-, env, ptr, tl, i32)
->
->  DEF_HELPER_FLAGS_4(sve_st1sd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
->
-> +DEF_HELPER_FLAGS_6(sve_ldbsu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhsu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldssu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldbss_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhss_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +
-> +DEF_HELPER_FLAGS_6(sve_ldbsu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhsu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldssu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldbss_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhss_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +
-> +DEF_HELPER_FLAGS_6(sve_ldbdu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhdu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldsdu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldddu_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldbds_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhds_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldsds_zsu, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +
-> +DEF_HELPER_FLAGS_6(sve_ldbdu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhdu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldsdu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldddu_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldbds_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhds_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldsds_zss, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +
-> +DEF_HELPER_FLAGS_6(sve_ldbdu_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhdu_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldsdu_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldddu_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldbds_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldhds_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +DEF_HELPER_FLAGS_6(sve_ldsds_zd, TCG_CALL_NO_WG,
-> +                   void, env, ptr, ptr, ptr, tl, i32)
-> +
->  DEF_HELPER_FLAGS_6(sve_stbs_zsu, TCG_CALL_NO_WG,
->                     void, env, ptr, ptr, ptr, tl, i32)
->  DEF_HELPER_FLAGS_6(sve_sths_zsu, TCG_CALL_NO_WG,
-> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-> index 7622bb2af0..24f75a32d3 100644
-> --- a/target/arm/sve_helper.c
-> +++ b/target/arm/sve_helper.c
-> @@ -3714,6 +3714,83 @@ void HELPER(sve_st4dd_r)(CPUARMState *env, void *v=
-g,
->      }
->  }
->
-> +/* Loads with a vector index.  */
-> +
-> +#define DO_LD1_ZPZ_S(NAME, TYPEI, TYPEM, FN)                            \
-> +void HELPER(NAME)(CPUARMState *env, void *vd, void *vg, void *vm,       \
-> +                  target_ulong base, uint32_t desc)                     \
-> +{                                                                       \
-> +    intptr_t i, oprsz =3D simd_oprsz(desc);                             =
-  \
-> +    unsigned scale =3D simd_data(desc);                                 =
-  \
-> +    uintptr_t ra =3D GETPC();                                           =
-  \
-> +    for (i =3D 0; i < oprsz; i++) {                                     =
-  \
-> +        uint16_t pg =3D *(uint16_t *)(vg + H1_2(i >> 3));               =
-  \
-> +        do {                                                            \
-> +            TYPEM m =3D 0;                                              =
-  \
-> +            if (pg & 1) {                                               \
-> +                target_ulong off =3D *(TYPEI *)(vm + H1_4(i));          =
-  \
-> +                m =3D FN(env, base + (off << scale), ra);               =
-  \
-> +            }                                                           \
-> +            *(uint32_t *)(vd + H1_4(i)) =3D m;                          =
-  \
-> +            i +=3D 4, pg >>=3D 4;                                       =
-    \
-> +        } while (i & 15);                                               \
-> +    }                                                                   \
-> +}
-> +
-> +#define DO_LD1_ZPZ_D(NAME, TYPEI, TYPEM, FN)                            \
-> +void HELPER(NAME)(CPUARMState *env, void *vd, void *vg, void *vm,       \
-> +                  target_ulong base, uint32_t desc)                     \
-> +{                                                                       \
-> +    intptr_t i, oprsz =3D simd_oprsz(desc) / 8;                         =
-  \
-> +    unsigned scale =3D simd_data(desc);                                 =
-  \
-> +    uintptr_t ra =3D GETPC();                                           =
-  \
-> +    uint64_t *d =3D vd, *m =3D vm; uint8_t *pg =3D vg;                  =
-      \
-> +    for (i =3D 0; i < oprsz; i++) {                                     =
-  \
-> +        TYPEM mm =3D 0;                                                 =
-  \
-> +        if (pg[H1(i)] & 1) {                                            \
-> +            target_ulong off =3D (TYPEI)m[i];                           =
-  \
-> +            mm =3D FN(env, base + (off << scale), ra);                  =
-  \
-> +        }                                                               \
-> +        d[i] =3D mm;                                                    =
-  \
-> +    }                                                                   \
-> +}
-> +
-> +DO_LD1_ZPZ_S(sve_ldbsu_zsu, uint32_t, uint8_t,  cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldhsu_zsu, uint32_t, uint16_t, cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldssu_zsu, uint32_t, uint32_t, cpu_ldl_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldbss_zsu, uint32_t, int8_t,   cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldhss_zsu, uint32_t, int16_t,  cpu_lduw_data_ra)
-> +
-> +DO_LD1_ZPZ_S(sve_ldbsu_zss, int32_t, uint8_t,  cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldhsu_zss, int32_t, uint16_t, cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldssu_zss, int32_t, uint32_t, cpu_ldl_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldbss_zss, int32_t, int8_t,   cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_S(sve_ldhss_zss, int32_t, int16_t,  cpu_lduw_data_ra)
-> +
-> +DO_LD1_ZPZ_D(sve_ldbdu_zsu, uint32_t, uint8_t,  cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldhdu_zsu, uint32_t, uint16_t, cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldsdu_zsu, uint32_t, uint32_t, cpu_ldl_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldddu_zsu, uint32_t, uint64_t, cpu_ldq_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldbds_zsu, uint32_t, int8_t,   cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldhds_zsu, uint32_t, int16_t,  cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldsds_zsu, uint32_t, int32_t,  cpu_ldl_data_ra)
-> +
-> +DO_LD1_ZPZ_D(sve_ldbdu_zss, int32_t, uint8_t,  cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldhdu_zss, int32_t, uint16_t, cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldsdu_zss, int32_t, uint32_t, cpu_ldl_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldddu_zss, int32_t, uint64_t, cpu_ldq_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldbds_zss, int32_t, int8_t,   cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldhds_zss, int32_t, int16_t,  cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldsds_zss, int32_t, int32_t,  cpu_ldl_data_ra)
-> +
-> +DO_LD1_ZPZ_D(sve_ldbdu_zd, uint64_t, uint8_t,  cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldhdu_zd, uint64_t, uint16_t, cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldsdu_zd, uint64_t, uint32_t, cpu_ldl_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldddu_zd, uint64_t, uint64_t, cpu_ldq_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldbds_zd, uint64_t, int8_t,   cpu_ldub_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldhds_zd, uint64_t, int16_t,  cpu_lduw_data_ra)
-> +DO_LD1_ZPZ_D(sve_ldsds_zd, uint64_t, int32_t,  cpu_ldl_data_ra)
-> +
->  /* Stores with a vector index.  */
->
->  #define DO_ST1_ZPZ_S(NAME, TYPEI, FN)                                   \
-> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-> index 27854e0042..33ffb217d0 100644
-> --- a/target/arm/translate-sve.c
-> +++ b/target/arm/translate-sve.c
-> @@ -4255,6 +4255,106 @@ static void do_mem_zpz(DisasContext *s, int zt, i=
-nt pg, int zm, int scale,
->      tcg_temp_free_i32(desc);
->  }
->
-> +/* Indexed by [ff][xs][u][msz].  */
-> +static gen_helper_gvec_mem_scatter * const gather_load_fn32[2][2][2][3] =
-=3D {
-> +    { { { gen_helper_sve_ldbss_zsu,
-> +          gen_helper_sve_ldhss_zsu,
-> +          NULL, },
-> +        { gen_helper_sve_ldbsu_zsu,
-> +          gen_helper_sve_ldhsu_zsu,
-> +          gen_helper_sve_ldssu_zsu, } },
-> +      { { gen_helper_sve_ldbss_zss,
-> +          gen_helper_sve_ldhss_zss,
-> +          NULL, },
-> +        { gen_helper_sve_ldbsu_zss,
-> +          gen_helper_sve_ldhsu_zss,
-> +          gen_helper_sve_ldssu_zss, } } },
-> +    /* TODO fill in first-fault handlers */
-> +};
-> +
-> +/* Note that we overload xs=3D2 to indicate 64-bit offset.  */
-> +static gen_helper_gvec_mem_scatter * const gather_load_fn64[2][3][2][4] =
-=3D {
-> +    { { { gen_helper_sve_ldbds_zsu,
-> +          gen_helper_sve_ldhds_zsu,
-> +          gen_helper_sve_ldsds_zsu,
-> +          NULL, },
-> +        { gen_helper_sve_ldbdu_zsu,
-> +          gen_helper_sve_ldhdu_zsu,
-> +          gen_helper_sve_ldsdu_zsu,
-> +          gen_helper_sve_ldddu_zsu, } },
-> +      { { gen_helper_sve_ldbds_zss,
-> +          gen_helper_sve_ldhds_zss,
-> +          gen_helper_sve_ldsds_zss,
-> +          NULL, },
-> +        { gen_helper_sve_ldbdu_zss,
-> +          gen_helper_sve_ldhdu_zss,
-> +          gen_helper_sve_ldsdu_zss,
-> +          gen_helper_sve_ldddu_zss, } },
-> +      { { gen_helper_sve_ldbds_zd,
-> +          gen_helper_sve_ldhds_zd,
-> +          gen_helper_sve_ldsds_zd,
-> +          NULL, },
-> +        { gen_helper_sve_ldbdu_zd,
-> +          gen_helper_sve_ldhdu_zd,
-> +          gen_helper_sve_ldsdu_zd,
-> +          gen_helper_sve_ldddu_zd, } } },
-> +    /* TODO fill in first-fault handlers */
-> +};
-> +
-> +static bool trans_LD1_zprz(DisasContext *s, arg_LD1_zprz *a, uint32_t in=
-sn)
-> +{
-> +    gen_helper_gvec_mem_scatter *fn =3D NULL;
-> +
-> +    if (!sve_access_check(s)) {
-> +        return true;
-> +    }
-> +
-> +    switch (a->esz) {
-> +    case MO_32:
-> +        fn =3D gather_load_fn32[a->ff][a->xs][a->u][a->msz];
-> +        break;
-> +    case MO_64:
-> +        fn =3D gather_load_fn64[a->ff][a->xs][a->u][a->msz];
-> +        break;
-> +    }
-> +    assert(fn !=3D NULL);
-> +
-> +    do_mem_zpz(s, a->rd, a->pg, a->rm, a->scale * a->msz,
-> +               cpu_reg_sp(s, a->rn), fn);
-> +    return true;
-> +}
-> +
-> +static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a, uint32_t in=
-sn)
-> +{
-> +    gen_helper_gvec_mem_scatter *fn =3D NULL;
-> +    TCGv_i64 imm;
-> +
-> +    if (a->esz < a->msz || (a->esz =3D=3D a->msz && !a->u)) {
-> +        return false;
-> +    }
-> +    if (!sve_access_check(s)) {
-> +        return true;
-> +    }
-> +
-> +    switch (a->esz) {
-> +    case MO_32:
-> +        fn =3D gather_load_fn32[a->ff][0][a->u][a->msz];
-> +        break;
-> +    case MO_64:
-> +        fn =3D gather_load_fn64[a->ff][2][a->u][a->msz];
-> +        break;
-> +    }
-> +    assert(fn !=3D NULL);
-> +
-> +    /* Treat LD1_zpiz (zn[x] + imm) the same way as LD1_zprz (rn + zm[x])
-> +     * by loading the immediate into the scalar parameter.
-> +     */
-> +    imm =3D tcg_const_i64(a->imm << a->msz);
-> +    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, fn);
-> +    tcg_temp_free_i64(imm);
-> +    return true;
-> +}
-> +
->  static bool trans_ST1_zprz(DisasContext *s, arg_ST1_zprz *a, uint32_t in=
-sn)
->  {
->      /* Indexed by [xs][msz].  */
-> diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-> index 80b955ff84..45016c6042 100644
-> --- a/target/arm/sve.decode
-> +++ b/target/arm/sve.decode
-> @@ -80,6 +80,8 @@
->  &rpri_load      rd pg rn imm dtype nreg
->  &rprr_store     rd pg rn rm msz esz nreg
->  &rpri_store     rd pg rn imm msz esz nreg
-> +&rprr_gather_load       rd pg rn rm esz msz u ff xs scale
-> +&rpri_gather_load       rd pg rn imm esz msz u ff
->  &rprr_scatter_store     rd pg rn rm esz msz xs scale
->
->  ########################################################################=
-###
-> @@ -194,6 +196,22 @@
->  @rpri_load_msz  ....... .... . imm:s4 ... pg:3 rn:5 rd:5 \
->                  &rpri_load dtype=3D%msz_dtype
->
-> +# Gather Loads.
-> +@rprr_g_load_u        ....... .. .    . rm:5 . u:1 ff:1 pg:3 rn:5 rd:5 \
-> +                      &rprr_gather_load xs=3D2
-> +@rprr_g_load_xs_u     ....... .. xs:1 . rm:5 . u:1 ff:1 pg:3 rn:5 rd:5 \
-> +                      &rprr_gather_load
-> +@rprr_g_load_xs_u_sc  ....... .. xs:1 scale:1 rm:5 . u:1 ff:1 pg:3 rn:5 =
-rd:5 \
-> +                      &rprr_gather_load
-> +@rprr_g_load_xs_sc    ....... .. xs:1 scale:1 rm:5 . . ff:1 pg:3 rn:5 rd=
-:5 \
-> +                      &rprr_gather_load
-> +@rprr_g_load_u_sc     ....... .. .    scale:1 rm:5 . u:1 ff:1 pg:3 rn:5 =
-rd:5 \
-> +                      &rprr_gather_load xs=3D2
-> +@rprr_g_load_sc       ....... .. .    scale:1 rm:5 . . ff:1 pg:3 rn:5 rd=
-:5 \
-> +                      &rprr_gather_load xs=3D2
-> +@rpri_g_load          ....... msz:2 .. imm:5 . u:1 ff:1 pg:3 rn:5 rd:5 \
-> +                      &rpri_gather_load
-> +
->  # Stores; user must fill in ESZ, MSZ, NREG as needed.
->  @rprr_store         ....... ..    ..     rm:5 ... pg:3 rn:5 rd:5    &rpr=
-r_store
->  @rpri_store_msz     ....... msz:2 .. . imm:s4 ... pg:3 rn:5 rd:5    &rpr=
-i_store
-> @@ -759,6 +777,19 @@ LDR_zri         10000101 10 ...... 010 ... ..... ...=
-..          @rd_rn_i9
->  LD1R_zpri       1000010 .. 1 imm:6 1.. pg:3 rn:5 rd:5 \
->                  &rpri_load dtype=3D%dtype_23_13 nreg=3D0
->
-> +# SVE 32-bit gather load (scalar plus 32-bit unscaled offsets)
-> +# SVE 32-bit gather load (scalar plus 32-bit scaled offsets)
-> +LD1_zprz        1000010 00 .0 ..... 0.. ... ..... ..... \
-> +                @rprr_g_load_xs_u esz=3D2 msz=3D0 scale=3D0
-> +LD1_zprz        1000010 01 .. ..... 0.. ... ..... ..... \
-> +                @rprr_g_load_xs_u_sc esz=3D2 msz=3D1
-> +LD1_zprz        1000010 10 .. ..... 01. ... ..... ..... \
-> +                @rprr_g_load_xs_sc esz=3D2 msz=3D2 u=3D1
-> +
-> +# SVE 32-bit gather load (vector plus immediate)
-> +LD1_zpiz        1000010 .. 01 ..... 1.. ... ..... ..... \
-> +                @rpri_g_load esz=3D2
-> +
->  ### SVE Memory Contiguous Load Group
->
->  # SVE contiguous load (scalar plus scalar)
-> @@ -808,6 +839,32 @@ PRF_rr          1000010 -- 00 rm:5 110 --- ----- 0 -=
----
->
->  ### SVE Memory 64-bit Gather Group
->
-> +# SVE 64-bit gather load (scalar plus 32-bit unpacked unscaled offsets)
-> +# SVE 64-bit gather load (scalar plus 32-bit unpacked scaled offsets)
-> +LD1_zprz        1100010 00 .0 ..... 0.. ... ..... ..... \
-> +                @rprr_g_load_xs_u esz=3D3 msz=3D0 scale=3D0
-> +LD1_zprz        1100010 01 .. ..... 0.. ... ..... ..... \
-> +                @rprr_g_load_xs_u_sc esz=3D3 msz=3D1
-> +LD1_zprz        1100010 10 .. ..... 0.. ... ..... ..... \
-> +                @rprr_g_load_xs_u_sc esz=3D3 msz=3D2
-> +LD1_zprz        1100010 11 .. ..... 01. ... ..... ..... \
-> +                @rprr_g_load_xs_sc esz=3D3 msz=3D3 u=3D1
-> +
-> +# SVE 64-bit gather load (scalar plus 64-bit unscaled offsets)
-> +# SVE 64-bit gather load (scalar plus 64-bit scaled offsets)
-> +LD1_zprz        1100010 00 10 ..... 1.. ... ..... ..... \
-> +                @rprr_g_load_u esz=3D3 msz=3D0 scale=3D0
-> +LD1_zprz        1100010 01 1. ..... 1.. ... ..... ..... \
-> +                @rprr_g_load_u_sc esz=3D3 msz=3D1
-> +LD1_zprz        1100010 10 1. ..... 1.. ... ..... ..... \
-> +                @rprr_g_load_u_sc esz=3D3 msz=3D2
-> +LD1_zprz        1100010 11 1. ..... 11. ... ..... ..... \
-> +                @rprr_g_load_sc esz=3D3 msz=3D3 u=3D1
-> +
-> +# SVE 64-bit gather load (vector plus immediate)
-> +LD1_zpiz        1100010 .. 01 ..... 1.. ... ..... ..... \
-> +                @rpri_g_load esz=3D3
-> +
->  # SVE 64-bit gather prefetch (scalar plus 64-bit scaled offsets)
->  PRF             1100010 00 11 ----- 1-- --- ----- 0 ----
+>  risu_reginfo_aarch64.c | 38 +++++++++++++++++++++++++++++++++++---
+>  1 file changed, 35 insertions(+), 3 deletions(-)
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
---
-Alex Benn=C3=A9e
+r~

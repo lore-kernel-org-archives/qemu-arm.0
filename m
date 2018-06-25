@@ -1,234 +1,601 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1012490wrq;
-        Wed, 20 Jun 2018 10:15:21 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJ0s8tHu/BcEYHyr6Ua6NAXN/S9Wv0IUO01mJe5m4v4eygEa/nJbp3W7KeJolsj033Orenr
-X-Received: by 2002:a0c:93ec:: with SMTP id g41-v6mr19516079qvg.243.1529514921280;
-        Wed, 20 Jun 2018 10:15:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529514921; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3872261wrq;
+        Mon, 25 Jun 2018 07:24:12 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcBdiOXMAYDuuwLdM6QItn0og8sHwoXYnXCpEkAL85gWY1w/Un5Dvegl4DPnaD96DqPldx6
+X-Received: by 2002:ac8:2506:: with SMTP id 6-v6mr11466064qtm.9.1529936652632;
+        Mon, 25 Jun 2018 07:24:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529936652; cv=none;
         d=google.com; s=arc-20160816;
-        b=VohzP0JpnvqYfn+BSfs6F4v0nlXrUk7YFjB5oYBGSVPlgPuxVCOJB6GfxG2xwayRJX
-         7dKohU7XlUvu7/vhovyU8CdcgfCg5CtFCU0wEWHAJOM+I/WTv5uUKW+hSE0xrCOA/45f
-         FUgI4ynjYs5ykiSfpDKgKAUtNR2Cw1Ow1Q7748zjDVDLJpk6pvwFpNOlxZJUVtKrD/T2
-         8LPv86+LfXOBOUKv6Mr7C0zggSWTo0Z+70XAi4tdWSBYWOi8X0zo7mxg6xI2vZ+UuQ8r
-         mPETBGzfKT5v2zGNzywhm4QfGz3gbyNOP2uIk+GUynG2ksX0dN6BgLHCWFbRBsvvxaIR
-         mD8w==
+        b=IZphrg8nNi7P+EKAm4emb2V9WzJvp1ftLhIQQsWJW646S/UnEeQIV80NJF3Fn327Wz
+         lhyN4bvdFktLt17wngAAQKXzYvR1Ylv4sxgCj3G7TRj4GL0jh+jr9gDhT509z4CTamQR
+         TVzR/cFRG6rGbzjagce/Kk8J8t8aWA6qfAo5Vsx2H5x4DWG7Y+J9oTSgj3Q/99M8S59J
+         TqeDolc8v8znqUuafaQxKE8G1XUl2txB2/gF5DNCJhXx4GgUVhTTTd4L1LHeu0kAPUAd
+         8wRBaQ37alWaSZOMdSO0H1DuU0zYC9Ng8GWd1tNDfpHaqzum6hVhbdu3m0MtPL2hOZhV
+         EIPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=radw+dy7TjMWWAmZLwsplyrHir0hYXY3Ine4lVYs73k=;
-        b=YCreNyJVJHdvR8Hlu3hmVWUChCqjC5VXLGlPHSOYTXKUgs25tGQfROMSXH5vcMjR2b
-         VOdw41RXcbx75uyLLw64OXV98LGt1JdqMaTCpWdc9Bqeb+M7FEdCooqr+wj08AebeGGf
-         dIczhI/ONyjXplXfjdUX3gJswUWU6QD1QBBUb5Jf+MeOH2sKZqgVap0BFI2k9huEM0B6
-         lNm1UDD/G/67FAy5Wrny7QthKQ9boVaZVCbrmA4tG/lwgmHKPdEZwxDlsuO6isDn5JoI
-         BDkGc7xtk3g+nI+dFYE1rGQqUSa1Jnc8iDhZV5Dp7B87qntzXLbfCdmK0loeryhsv5VN
-         M5VQ==
+        bh=Q/IaWa2B6piaXbIDnZDGdxNiVnAJrmm4OM7e9bLhTFg=;
+        b=P9B4EwAkVYtR1194FTkKdY9hQAMgVCLhsnK+b0RVN0+0bseaVIGjPyr1fDY3l4d8f2
+         4OlYGtdAJremezpNePpkbRK+9tkZmFTzSOvywSPfJoXOqItUq447xsBX5oRSRgAKEMpR
+         tYV5FMT6gTUEGeKzxJ+6chA3rxqXDzOvdBRo2K7N868BpRPEg70wRDgHR/YSGehHyes8
+         QaK9SeUgMO0Ft6DTvSLCXDwGD25jZdkvt91U/+ApwF8deSFeWeVMDJh4tX56OsIboa2z
+         dc4bJsSWRmsQEtSLvPfesIiQ1akNS5eLiqmN1NZmkoPGvKKNYRY19lI/wIz1szxyemSl
+         sDOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=WV0Zn9dY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k1-v6si2640054qtk.400.2018.06.20.10.15.21
+        by mx.google.com with ESMTPS id a125-v6si13526072qkb.287.2018.06.25.07.24.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 20 Jun 2018 10:15:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 25 Jun 2018 07:24:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50954 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=WV0Zn9dY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47444 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fVghU-0005Ol-RH
-	for alex.bennee@linaro.org; Wed, 20 Jun 2018 13:15:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38746)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fXSPb-0007ep-Nj
+	for alex.bennee@linaro.org; Mon, 25 Jun 2018 10:24:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54695)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1fVghO-0005O3-2j
-	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 13:15:15 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fXSPC-0007dG-GK
+	for qemu-devel@nongnu.org; Mon, 25 Jun 2018 10:23:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1fVghK-0003pb-RU
-	for qemu-arm@nongnu.org; Wed, 20 Jun 2018 13:15:14 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59674 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1fVghK-0003p4-LY; Wed, 20 Jun 2018 13:15:10 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E20E34021CC1;
-	Wed, 20 Jun 2018 17:15:09 +0000 (UTC)
-Received: from work-vm (ovpn-117-189.ams2.redhat.com [10.36.117.189])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 664282026D6B;
-	Wed, 20 Jun 2018 17:15:07 +0000 (UTC)
-Date: Wed, 20 Jun 2018 18:15:05 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20180620171504.GR2549@work-vm>
-References: <1529500053-21704-1-git-send-email-eric.auger@redhat.com>
-	<1529500053-21704-6-git-send-email-eric.auger@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fXSPA-0000rh-6Z
+	for qemu-devel@nongnu.org; Mon, 25 Jun 2018 10:23:46 -0400
+Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:44155)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fXSP9-0000rV-Ur
+	for qemu-devel@nongnu.org; Mon, 25 Jun 2018 10:23:44 -0400
+Received: by mail-ot0-x243.google.com with SMTP id w13-v6so15217506ote.11
+	for <qemu-devel@nongnu.org>; Mon, 25 Jun 2018 07:23:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Q/IaWa2B6piaXbIDnZDGdxNiVnAJrmm4OM7e9bLhTFg=;
+	b=WV0Zn9dY9G+qRpKt1PojDOPhpANPJm2Y0QQu9ivxQzrgEnus8zJenm2gdxtfaVwbQ1
+	x1nV8VMMk6YMQFywXHNC0Q8xzCK5SXCU0RkScra7au6XvUrrLKCIwWxoHynsP4QrVxnp
+	Ym/QR/IUZV3S93fbw2ZKucpVhktSkfPPUf2QM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Q/IaWa2B6piaXbIDnZDGdxNiVnAJrmm4OM7e9bLhTFg=;
+	b=pXuNHeGBiW2IJCGzTKOtukEvAX72L5NQIJoN7JE7/PzVcdwtCIZKEtd2rOqXyFnjF5
+	233on8F/fh/8f0OiqNLFpBJXZhYJLElfGb3n+sDumpAkjB/IfBoECdlrpZ1X2Mid472Z
+	xi+nidvyYBd9r95DBbIrNDsYEaoG9NPY5l1DaEAHPS3SoNX9dynFok+a0UfdndHpCtZx
+	ez6BXseh4iQM2xW6pcLinAPVsNaYhC/BL92L87aEhBi9Lt5z555t050jHTxygzB7Tqws
+	3pdjAmnhVNZIYJ9+3Qn4qgUKqJHmHR/IpPEo84kVlqZw+s9DmFlhZrIkJ6eHLltlOYke
+	0w/A==
+X-Gm-Message-State: APt69E2yiAFGVfEeLfq2xF36O6A3GbL9Moy0BPy/YfwVW7ASDuQlH4Y7
+	qY8JFY1x1YMp04mn3ayhv+4pnfSa3iq/nFSeqagtMg==
+X-Received: by 2002:a9d:3d76:: with SMTP id
+	a109-v6mr8004277otc.294.1529936623085; 
+	Mon, 25 Jun 2018 07:23:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1529500053-21704-6-git-send-email-eric.auger@redhat.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 20 Jun 2018 17:15:09 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 20 Jun 2018 17:15:09 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'dgilbert@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC 5/6] hw/arm/virt: support kvm_type property
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 25 Jun 2018 07:23:22
+	-0700 (PDT)
+In-Reply-To: <20180619093124.24011-5-luc.michel@greensocs.com>
+References: <20180619093124.24011-1-luc.michel@greensocs.com>
+	<20180619093124.24011-5-luc.michel@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 25 Jun 2018 15:23:22 +0100
+Message-ID: <CAFEAcA8rgrtmtYuGw8hdxkfDb_u_d=qEA5mHefnsva=RkZ7w_g@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::243
+Subject: Re: [Qemu-devel] [PATCH v2 4/7] intc/arm_gic: Add the
+ virtualization extensions to the GIC state
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, suzuki.poulose@arm.com,
-	agraf@suse.de, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	eric.auger.pro@gmail.com, david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7nFnQzHeIvR3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E8wbHdKLjA7T
 
-* Eric Auger (eric.auger@redhat.com) wrote:
-> The kvm-type property currently is used to pass
-> a user parameter to KVM_CREATE_VM. This matches
-> the way KVM/ARM expects to pass the max_vm_phys_shift
-> parameter.
-> 
-> This patch adds the support or the kvm-type property in
-> machvirt and also implements the machine class kvm_type()
-> callback so that it either returns the kvm-type value
-> provided by the user or returns the max_vm_phys_shift
-> exposed by KVM.
-> 
-> for instance, the usespace can use the following option to
-> instantiate a 42b IPA guest: -machine kvm-type=42
-
-Without saying if this is better or worse, it is different from x86,
-where we have the number of physical address bits as a -cpu parameter
-rather than a machine parameter, e.g.
-
-   qemu-system-x86_64 -M pc,accel=kvm -cpu SandyBridge,phys-bits=36
-or
-   qemu-system-x86_64 -M pc,accel=kvm -cpu SandyBridge,host-phys-bits=true
-
-our machine types can override the default value though.
-
-One other complication (that I don't know if it applies to ARM) is that
-TCG only supports phys-bits=40, so we refuse a TCG run with an
-explicitly set phys-bits!=40.
-
-Dave
-
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+On 19 June 2018 at 10:31,  <luc.michel@greensocs.com> wrote:
+> From: Luc MICHEL <luc.michel@greensocs.com>
+>
+> Add the necessary parts of the virtualization extensions state to the
+> GIC state. We choose to increase the size of the CPU interfaces state to
+> add space for the vCPU interfaces (the GIC_NCPU_VCPU macro). This way,
+> we'll be able to reuse most of the CPU interface code for the vCPUs.
+>
+> The only exception is the APR value, which is stored in h_apr in the
+> virtual interface state for vCPUs. This is due to some complications
+> with the GIC VMState, for which we don't want to break backward
+> compatibility. APRs being stored in 2D arrays, increasing the second
+> dimension would lead to some ugly VMState description. To avoid
+> that, we keep it in h_apr for vCPUs.
+>
+> The vCPUs are numbered from GIC_NCPU to (GIC_NCPU * 2) - 1. The
+> `gic_is_vcpu` function help to determine if a given CPU id correspond to
+> a physical CPU or a virtual one.
+>
+> For the in-kernel KVM VGIC, since the exposed VGIC does not implement
+> the virtualization extensions, we report an error if the corresponding
+> property is set to true.
+>
+> Signed-off-by: Luc MICHEL <luc.michel@greensocs.com>
 > ---
->  hw/arm/virt.c         | 44 ++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 45 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index dd92ab9..1700556 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1585,6 +1585,21 @@ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+>  hw/intc/arm_gic.c                |   2 +-
+>  hw/intc/arm_gic_common.c         | 152 ++++++++++++++++++++++++++-----
+>  hw/intc/arm_gic_kvm.c            |   8 +-
+>  hw/intc/gic_internal.h           |   5 +
+>  include/hw/intc/arm_gic_common.h |  51 +++++++++--
+>  5 files changed, 185 insertions(+), 33 deletions(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index 679b19fb94..e96f195997 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -1427,7 +1427,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
 >      }
+>
+>      /* This creates distributor and main CPU interface (s->cpuiomem[0]) */
+> -    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops);
+> +    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, NULL);
+>
+>      /* Extra core-specific regions for the CPU interfaces. This is
+>       * necessary for "franken-GIC" implementations, for example on
+> diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+> index 295ee9cc5e..6dcfca0ba3 100644
+> --- a/hw/intc/arm_gic_common.c
+> +++ b/hw/intc/arm_gic_common.c
+> @@ -46,6 +46,13 @@ static int gic_post_load(void *opaque, int version_id)
+>      return 0;
 >  }
->  
-> +static char *virt_get_kvm_type(Object *obj, Error **errp)
+>
+> +static bool gic_virt_state_needed(void *opaque)
 > +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +    GICState *s = (GICState *)opaque;
 > +
-> +    return g_strdup(vms->kvm_type);
+> +    return s->virt_extn;
 > +}
 > +
-> +static void virt_set_kvm_type(Object *obj, const char *value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>  static const VMStateDescription vmstate_gic_irq_state = {
+>      .name = "arm_gic_irq_state",
+>      .version_id = 1,
+> @@ -62,6 +69,30 @@ static const VMStateDescription vmstate_gic_irq_state = {
+>      }
+>  };
+>
+> +static const VMStateDescription vmstate_gic_virt_state = {
+> +    .name = "arm_gic_virt_state",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = gic_virt_state_needed,
+> +    .fields = (VMStateField[]) {
+> +        /* Virtual interface */
+> +        VMSTATE_UINT32_ARRAY(h_hcr, GICState, GIC_NCPU),
+> +        VMSTATE_UINT32_ARRAY(h_misr, GICState, GIC_NCPU),
+> +        VMSTATE_UINT32_2DARRAY(h_lr, GICState, GIC_NR_LR, GIC_NCPU),
+> +        VMSTATE_UINT32_ARRAY(h_apr, GICState, GIC_NCPU),
 > +
-> +    g_free(vms->kvm_type);
-> +    vms->kvm_type = g_strdup(value);
-> +}
+> +        /* Virtual CPU interfaces */
+> +        VMSTATE_UINT32_SUB_ARRAY(cpu_ctlr, GICState, GIC_NCPU, GIC_NCPU),
+> +        VMSTATE_UINT16_SUB_ARRAY(priority_mask, GICState, GIC_NCPU, GIC_NCPU),
+> +        VMSTATE_UINT16_SUB_ARRAY(running_priority, GICState, GIC_NCPU, GIC_NCPU),
+> +        VMSTATE_UINT16_SUB_ARRAY(current_pending, GICState, GIC_NCPU, GIC_NCPU),
+> +        VMSTATE_UINT8_SUB_ARRAY(bpr, GICState, GIC_NCPU, GIC_NCPU),
+> +        VMSTATE_UINT8_SUB_ARRAY(abpr, GICState, GIC_NCPU, GIC_NCPU),
 > +
->  static CpuInstanceProperties
->  virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+
+Since you have some state struct fields that are cached information
+from other registers, you need a post_load function here that
+updates the cached fields. Otherwise they will be stale following
+an incoming migration or vmstate load. You can probably also
+call that function from within the reset code once the non-cache
+struct fields have all been reset.
+
+> +
+>  static const VMStateDescription vmstate_gic = {
+>      .name = "arm_gic",
+>      .version_id = 12,
+> @@ -70,26 +101,31 @@ static const VMStateDescription vmstate_gic = {
+>      .post_load = gic_post_load,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32(ctlr, GICState),
+> -        VMSTATE_UINT32_ARRAY(cpu_ctlr, GICState, GIC_NCPU),
+> +        VMSTATE_UINT32_SUB_ARRAY(cpu_ctlr, GICState, 0, GIC_NCPU),
+>          VMSTATE_STRUCT_ARRAY(irq_state, GICState, GIC_MAXIRQ, 1,
+>                               vmstate_gic_irq_state, gic_irq_state),
+>          VMSTATE_UINT8_ARRAY(irq_target, GICState, GIC_MAXIRQ),
+>          VMSTATE_UINT8_2DARRAY(priority1, GICState, GIC_INTERNAL, GIC_NCPU),
+>          VMSTATE_UINT8_ARRAY(priority2, GICState, GIC_MAXIRQ - GIC_INTERNAL),
+>          VMSTATE_UINT8_2DARRAY(sgi_pending, GICState, GIC_NR_SGIS, GIC_NCPU),
+> -        VMSTATE_UINT16_ARRAY(priority_mask, GICState, GIC_NCPU),
+> -        VMSTATE_UINT16_ARRAY(running_priority, GICState, GIC_NCPU),
+> -        VMSTATE_UINT16_ARRAY(current_pending, GICState, GIC_NCPU),
+> -        VMSTATE_UINT8_ARRAY(bpr, GICState, GIC_NCPU),
+> -        VMSTATE_UINT8_ARRAY(abpr, GICState, GIC_NCPU),
+> +        VMSTATE_UINT16_SUB_ARRAY(priority_mask, GICState, 0, GIC_NCPU),
+> +        VMSTATE_UINT16_SUB_ARRAY(running_priority, GICState, 0, GIC_NCPU),
+> +        VMSTATE_UINT16_SUB_ARRAY(current_pending, GICState, 0, GIC_NCPU),
+> +        VMSTATE_UINT8_SUB_ARRAY(bpr, GICState, 0, GIC_NCPU),
+> +        VMSTATE_UINT8_SUB_ARRAY(abpr, GICState, 0, GIC_NCPU),
+>          VMSTATE_UINT32_2DARRAY(apr, GICState, GIC_NR_APRS, GIC_NCPU),
+>          VMSTATE_UINT32_2DARRAY(nsapr, GICState, GIC_NR_APRS, GIC_NCPU),
+>          VMSTATE_END_OF_LIST()
+> +    },
+> +    .subsections = (const VMStateDescription * []) {
+> +        &vmstate_gic_virt_state,
+> +        NULL
+>      }
+>  };
+>
+>  void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+> -                            const MemoryRegionOps *ops)
+> +                            const MemoryRegionOps *ops,
+> +                            const MemoryRegionOps *virt_ops)
 >  {
-> @@ -1646,6 +1661,31 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
->      return NULL;
->  }
->  
-> +static int virt_kvm_type(MachineState *ms, const char *type_str)
-> +{
-> +    int max_vm_phys_shift, ret = 0;
-> +    uint64_t type;
-> +
-> +    if (!type_str) {
-> +        max_vm_phys_shift = kvm_get_max_vm_phys_shift(ms);
-> +        if (max_vm_phys_shift < 0) {
-> +            goto out;
-> +        }
-> +    } else {
-> +        type = g_ascii_strtoll(type_str, NULL, 0);
-> +        type &= 0xFF;
-> +        max_vm_phys_shift = (int)type;
-> +        if (max_vm_phys_shift < 40 || max_vm_phys_shift > 52) {
-> +            warn_report("valid kvm-type type values are within [40, 52]:"
-> +                        " option is ignored and VM is created with 40b IPA");
-> +            goto out;
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(s);
+>      int i = s->num_irq - GIC_INTERNAL;
+> @@ -116,6 +152,11 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+>      for (i = 0; i < s->num_cpu; i++) {
+>          sysbus_init_irq(sbd, &s->parent_vfiq[i]);
+>      }
+> +    if (s->virt_extn) {
+> +        for (i = 0; i < s->num_cpu; i++) {
+> +            sysbus_init_irq(sbd, &s->maintenance_irq[i]);
 > +        }
 > +    }
-> +    ret = max_vm_phys_shift;
-> +out:
-> +    return ret;
+>
+>      /* Distributor */
+>      memory_region_init_io(&s->iomem, OBJECT(s), ops, s, "gic_dist", 0x1000);
+> @@ -127,6 +168,17 @@ void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+>      memory_region_init_io(&s->cpuiomem[0], OBJECT(s), ops ? &ops[1] : NULL,
+>                            s, "gic_cpu", s->revision == 2 ? 0x2000 : 0x100);
+>      sysbus_init_mmio(sbd, &s->cpuiomem[0]);
+> +
+> +    if (s->virt_extn) {
+> +        memory_region_init_io(&s->vifaceiomem, OBJECT(s), virt_ops,
+> +                              s, "gic_viface", 0x200);
+
+We should make this 0x1000:
+ * it's not permitted to put anything else into the same 4K page anyway
+ * the GIC400 h/w implementation makes it 0x1000
+ * it saves QEMU from having to use a subpage when accessing it
+
+> +        sysbus_init_mmio(sbd, &s->vifaceiomem);
+> +
+> +        memory_region_init_io(&s->vcpuiomem[0], OBJECT(s),
+> +                              virt_ops ? &virt_ops[1] : NULL,
+> +                              s, "gic_vcpu", 0x2000);
+> +        sysbus_init_mmio(sbd, &s->vcpuiomem[0]);
+> +    }
+>  }
+>
+>  static void arm_gic_common_realize(DeviceState *dev, Error **errp)
+> @@ -163,6 +215,40 @@ static void arm_gic_common_realize(DeviceState *dev, Error **errp)
+>                     "the security extensions");
+>          return;
+>      }
+> +
+> +    if (s->virt_extn && (s->revision != 2)) {
+> +        error_setg(errp, "GIC virtualization extensions are only "
+> +                   "supported by revision 2");
+> +        return;
+> +    }
 > +}
 > +
->  static void virt_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -1668,6 +1708,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
->      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
->      mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-> +    mc->kvm_type = virt_kvm_type;
->      assert(!mc->get_hotplug_handler);
->      mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
->      hc->plug = virt_machine_device_plug_cb;
-> @@ -1756,6 +1797,9 @@ static void virt_3_0_instance_init(Object *obj)
->                                      "Valid values are none and smmuv3",
->                                      NULL);
->  
-> +    object_property_add_str(obj, "kvm-type",
-> +                            virt_get_kvm_type, virt_set_kvm_type, NULL);
+> +static inline void arm_gic_common_reset_irq_state(GICState *s, int first_cpu,
+> +                                                  int resetprio)
+> +{
+> +    int i, j;
 > +
->      vms->memmap = a15memmap;
->      vms->irqmap = a15irqmap;
+> +    for (i = first_cpu; i < first_cpu + s->num_cpu; i++) {
+> +        if (s->revision == REV_11MPCORE) {
+> +            s->priority_mask[i] = 0xf0;
+> +        } else {
+> +            s->priority_mask[i] = resetprio;
+> +        }
+> +        s->current_pending[i] = 1023;
+> +        s->running_priority[i] = 0x100;
+> +        s->cpu_ctlr[i] = 0;
+> +        s->bpr[i] = gic_is_vcpu(i) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
+> +        s->abpr[i] = gic_is_vcpu(i) ? GIC_VIRT_MIN_ABPR : GIC_MIN_ABPR;
+> +
+> +        if (!gic_is_vcpu(i)) {
+> +            for (j = 0; j < GIC_INTERNAL; j++) {
+> +                s->priority1[j][i] = resetprio;
+> +            }
+> +            for (j = 0; j < GIC_NR_SGIS; j++) {
+> +                s->sgi_pending[j][i] = 0;
+> +            }
+> +        }
+> +    }
 >  }
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 4ac7ef6..2674ce7 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -118,6 +118,7 @@ typedef struct {
->      uint32_t msi_phandle;
->      uint32_t iommu_phandle;
->      int psci_conduit;
-> +    char *kvm_type;
->  } VirtMachineState;
->  
->  #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
-> -- 
-> 2.5.5
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>
+>  static void arm_gic_common_reset(DeviceState *dev)
+> @@ -185,24 +271,14 @@ static void arm_gic_common_reset(DeviceState *dev)
+>      }
+>
+>      memset(s->irq_state, 0, GIC_MAXIRQ * sizeof(gic_irq_state));
+> -    for (i = 0 ; i < s->num_cpu; i++) {
+> -        if (s->revision == REV_11MPCORE) {
+> -            s->priority_mask[i] = 0xf0;
+> -        } else {
+> -            s->priority_mask[i] = resetprio;
+> -        }
+> -        s->current_pending[i] = 1023;
+> -        s->running_priority[i] = 0x100;
+> -        s->cpu_ctlr[i] = 0;
+> -        s->bpr[i] = GIC_MIN_BPR;
+> -        s->abpr[i] = GIC_MIN_ABPR;
+> -        for (j = 0; j < GIC_INTERNAL; j++) {
+> -            s->priority1[j][i] = resetprio;
+> -        }
+> -        for (j = 0; j < GIC_NR_SGIS; j++) {
+> -            s->sgi_pending[j][i] = 0;
+> -        }
+> +    arm_gic_common_reset_irq_state(s, 0, resetprio);
+> +
+> +    if (s->virt_extn) {
+> +        /* vCPU states are stored at indexes GIC_NCPU .. GIC_NCPU+num_cpu.
+> +         * The exposed vCPU interface does not have security extensions. */
+
+Style nit: the */ should not be at the end of a line for a
+multiline comment. See CODING_STYLE for our preferences.
+(I haven't bothered to note this elsewhere, but please fix
+other instances of this in your patches.)
+
+> +        arm_gic_common_reset_irq_state(s, GIC_NCPU, 0);
+>      }
+> +
+>      for (i = 0; i < GIC_NR_SGIS; i++) {
+>          GIC_DIST_SET_ENABLED(i, ALL_CPU_MASK);
+>          GIC_DIST_SET_EDGE_TRIGGER(i);
+> @@ -226,6 +302,32 @@ static void arm_gic_common_reset(DeviceState *dev)
+>          }
+>      }
+>
+> +    if (s->virt_extn) {
+> +        for (i = 0; i < GIC_MAXIRQ; i++) {
+> +            for (j = 0; j < s->num_cpu; j++) {
+> +                s->virq_lr_entry[i][j] = GIC_NR_LR;
+> +            }
+> +        }
+> +
+> +        for (i = 0; i < GIC_NR_LR; i++) {
+> +            for (j = 0; j < s->num_cpu; j++) {
+> +                s->h_lr[i][j] = 0;
+> +            }
+> +        }
+> +
+> +        for (i = 0; i < s->num_cpu; i++) {
+> +            s->h_hcr[i] = 0;
+> +            s->h_eisr[i] = 0;
+> +#if GIC_NR_LR == 64
+> +            s->h_elrsr[i] = UINT64_MAX;
+> +#else
+> +            /* Bits corresponding to non-implemented LRs in ELRSR are RAZ */
+> +            s->h_elrsr[i] = (1ull << GIC_NR_LR) - 1;
+> +#endif
+
+Two notes:
+
+(1) Rather than this #if, you can just use
+    s->h_elrsr[i] = MAKE_64BIT_MASK(0, GIC_NR_LR);
+
+which (a) is clearer about the intent and (b) works fine for 64.
+
+(2) We should distinguish the architectural maximum number of LRs
+(64) from the number our implementation chooses to implement.
+64 is pretty excessive, and in practice I don't know of a h/w
+implementation that implements anything other than 4.
+
+We should use a "#define GIC_LR_MAX 64" for the architectural
+maximum, and use that for data structure array sizes. We
+should also have a struct field num_list_regs for the number
+of list registers we actually implement. (We can set this to 4
+unconditionally to start with; if we ever need to emulate a
+variant with some other number we can promote it to being a QOM
+property later.)
+
+> +            s->pending_lrs[i] = 0;
+> +        }
+> +    }
+> +
+>      s->ctlr = 0;
+>  }
+>
+> @@ -255,6 +357,8 @@ static Property arm_gic_common_properties[] = {
+>      DEFINE_PROP_UINT32("revision", GICState, revision, 1),
+>      /* True if the GIC should implement the security extensions */
+>      DEFINE_PROP_BOOL("has-security-extensions", GICState, security_extn, 0),
+> +    /* True if the GIC should implement the virtualization extensions */
+> +    DEFINE_PROP_BOOL("has-virtualization-extensions", GICState, virt_extn, 0),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>
+> diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
+> index 799136732a..6e562411cc 100644
+> --- a/hw/intc/arm_gic_kvm.c
+> +++ b/hw/intc/arm_gic_kvm.c
+> @@ -511,6 +511,12 @@ static void kvm_arm_gic_realize(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>
+> +    if (s->virt_extn) {
+> +        error_setg(errp, "the in-kernel VGIC does not implement the "
+> +                   "virtualization extensions");
+> +        return;
+> +    }
+> +
+>      if (!kvm_arm_gic_can_save_restore(s)) {
+>          error_setg(&s->migration_blocker, "This operating system kernel does "
+>                                            "not support vGICv2 migration");
+> @@ -522,7 +528,7 @@ static void kvm_arm_gic_realize(DeviceState *dev, Error **errp)
+>          }
+>      }
+>
+> -    gic_init_irqs_and_mmio(s, kvm_arm_gicv2_set_irq, NULL);
+> +    gic_init_irqs_and_mmio(s, kvm_arm_gicv2_set_irq, NULL, NULL);
+>
+>      for (i = 0; i < s->num_irq - GIC_INTERNAL; i++) {
+>          qemu_irq irq = qdev_get_gpio_in(dev, i);
+> diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
+> index a2075a94db..c85427c8e3 100644
+> --- a/hw/intc/gic_internal.h
+> +++ b/hw/intc/gic_internal.h
+> @@ -94,4 +94,9 @@ static inline bool gic_test_pending(GICState *s, int irq, int cm)
+>      }
+>  }
+>
+> +static inline bool gic_is_vcpu(int cpu)
+> +{
+> +    return cpu >= GIC_NCPU;
+> +}
+> +
+>  #endif /* QEMU_ARM_GIC_INTERNAL_H */
+> diff --git a/include/hw/intc/arm_gic_common.h b/include/hw/intc/arm_gic_common.h
+> index af3ca18e2f..fcbc1d7813 100644
+> --- a/include/hw/intc/arm_gic_common.h
+> +++ b/include/hw/intc/arm_gic_common.h
+> @@ -30,6 +30,8 @@
+>  #define GIC_NR_SGIS 16
+>  /* Maximum number of possible CPU interfaces, determined by GIC architecture */
+>  #define GIC_NCPU 8
+> +/* Maximum number of possible CPU interfaces with their respective vCPU */
+> +#define GIC_NCPU_VCPU (GIC_NCPU * 2)
+>
+>  #define MAX_NR_GROUP_PRIO 128
+>  #define GIC_NR_APRS (MAX_NR_GROUP_PRIO / 32)
+> @@ -37,6 +39,17 @@
+>  #define GIC_MIN_BPR 0
+>  #define GIC_MIN_ABPR (GIC_MIN_BPR + 1)
+>
+> +/* Number of list registers in the virtual interface */
+> +#define GIC_NR_LR 64
+> +
+> +/* Only 32 priority levels and 32 preemption levels in the vCPU interfaces */
+> +#define GIC_VIRT_MAX_GROUP_PRIO_BITS 5
+> +#define GIC_VIRT_MAX_NR_GROUP_PRIO (1 << GIC_VIRT_MAX_GROUP_PRIO_BITS)
+> +#define GIC_VIRT_NR_APRS (GIC_VIRT_MAX_NR_GROUP_PRIO / 32)
+> +
+> +#define GIC_VIRT_MIN_BPR 2
+> +#define GIC_VIRT_MIN_ABPR (GIC_VIRT_MIN_BPR + 1)
+> +
+>  typedef struct gic_irq_state {
+>      /* The enable bits are only banked for per-cpu interrupts.  */
+>      uint8_t enabled;
+> @@ -57,6 +70,8 @@ typedef struct GICState {
+>      qemu_irq parent_fiq[GIC_NCPU];
+>      qemu_irq parent_virq[GIC_NCPU];
+>      qemu_irq parent_vfiq[GIC_NCPU];
+> +    qemu_irq maintenance_irq[GIC_NCPU];
+> +
+>      /* GICD_CTLR; for a GIC with the security extensions the NS banked version
+>       * of this register is just an alias of bit 1 of the S banked version.
+>       */
+> @@ -64,7 +79,7 @@ typedef struct GICState {
+>      /* GICC_CTLR; again, the NS banked version is just aliases of bits of
+>       * the S banked register, so our state only needs to store the S version.
+>       */
+> -    uint32_t cpu_ctlr[GIC_NCPU];
+> +    uint32_t cpu_ctlr[GIC_NCPU_VCPU];
+>
+>      gic_irq_state irq_state[GIC_MAXIRQ];
+>      uint8_t irq_target[GIC_MAXIRQ];
+> @@ -78,9 +93,9 @@ typedef struct GICState {
+>       */
+>      uint8_t sgi_pending[GIC_NR_SGIS][GIC_NCPU];
+>
+> -    uint16_t priority_mask[GIC_NCPU];
+> -    uint16_t running_priority[GIC_NCPU];
+> -    uint16_t current_pending[GIC_NCPU];
+> +    uint16_t priority_mask[GIC_NCPU_VCPU];
+> +    uint16_t running_priority[GIC_NCPU_VCPU];
+> +    uint16_t current_pending[GIC_NCPU_VCPU];
+>
+>      /* If we present the GICv2 without security extensions to a guest,
+>       * the guest can configure the GICC_CTLR to configure group 1 binary point
+> @@ -88,8 +103,8 @@ typedef struct GICState {
+>       * For a GIC with Security Extensions we use use bpr for the
+>       * secure copy and abpr as storage for the non-secure copy of the register.
+>       */
+> -    uint8_t  bpr[GIC_NCPU];
+> -    uint8_t  abpr[GIC_NCPU];
+> +    uint8_t  bpr[GIC_NCPU_VCPU];
+> +    uint8_t  abpr[GIC_NCPU_VCPU];
+>
+>      /* The APR is implementation defined, so we choose a layout identical to
+>       * the KVM ABI layout for QEMU's implementation of the gic:
+> @@ -100,6 +115,23 @@ typedef struct GICState {
+>      uint32_t apr[GIC_NR_APRS][GIC_NCPU];
+>      uint32_t nsapr[GIC_NR_APRS][GIC_NCPU];
+>
+> +    /* Virtual interface control registers */
+> +    uint32_t h_hcr[GIC_NCPU];
+> +    uint32_t h_misr[GIC_NCPU];
+> +    uint32_t h_lr[GIC_NR_LR][GIC_NCPU];
+> +    uint32_t h_apr[GIC_NCPU];
+> +
+> +    /* Cached virt data. Can be deduced from the LRs */
+> +    uint64_t h_eisr[GIC_NCPU];
+> +    uint64_t h_elrsr[GIC_NCPU];
+> +    /* For a vIRQ, gives its LR entry number,
+> +     * or GIC_NR_LR if it has no entry. */
+> +    size_t virq_lr_entry[GIC_MAXIRQ][GIC_NCPU];
+> +
+> +    /* LR entries in the pending state. Used to compute NP maintenance
+> +     * interrupt */
+> +    uint64_t pending_lrs[GIC_NCPU];
+> +
+>      uint32_t num_cpu;
+>
+>      MemoryRegion iomem; /* Distributor */
+> @@ -108,9 +140,13 @@ typedef struct GICState {
+>       */
+>      struct GICState *backref[GIC_NCPU];
+>      MemoryRegion cpuiomem[GIC_NCPU + 1]; /* CPU interfaces */
+> +    MemoryRegion vifaceiomem; /* Virtual interface */
+> +    MemoryRegion vcpuiomem[GIC_NCPU + 1]; /* vCPU interface */
+> +
+>      uint32_t num_irq;
+>      uint32_t revision;
+>      bool security_extn;
+> +    bool virt_extn;
+>      bool irq_reset_nonsecure; /* configure IRQs as group 1 (NS) on reset? */
+>      int dev_fd; /* kvm device fd if backed by kvm vgic support */
+>      Error *migration_blocker;
+> @@ -134,6 +170,7 @@ typedef struct ARMGICCommonClass {
+>  } ARMGICCommonClass;
+>
+>  void gic_init_irqs_and_mmio(GICState *s, qemu_irq_handler handler,
+> -                            const MemoryRegionOps *ops);
+> +                            const MemoryRegionOps *ops,
+> +                            const MemoryRegionOps *virt_ops);
+>
+>  #endif
+> --
+> 2.17.1
+>
+
+thanks
+-- PMM

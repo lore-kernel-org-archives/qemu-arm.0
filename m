@@ -1,93 +1,120 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1349266wrq;
-        Thu, 5 Jul 2018 01:33:40 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcPgw4XuVsZOL3+fZaPftteRfcU8K474x8cGGYdLnoc95ssX6R6teGmC/sZ1NpWU13qYbxo
-X-Received: by 2002:ac8:299c:: with SMTP id 28-v6mr4333879qts.37.1530779620050;
-        Thu, 05 Jul 2018 01:33:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530779620; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3918247wrq;
+        Mon, 25 Jun 2018 08:08:16 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdxDsANq1WiwcwOeXevJnbJGqUrke7TeQ3k7/Fyjt2FJR8LM/WZzD4aeYgtvWdSFY+u43lb
+X-Received: by 2002:a37:b91:: with SMTP id 139-v6mr1035733qkl.429.1529939296014;
+        Mon, 25 Jun 2018 08:08:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529939296; cv=none;
         d=google.com; s=arc-20160816;
-        b=dUrcr45Xs4EQfsXQ05Ssf48zjoyrAoGPiRJJ8wGkuv4HHD4wVoeQzDdTkRDK/cqEKp
-         mSUTS05hv+c+Xvse7YX9zl7qcofrZ7ttVAt4HGcJMVtnL2eDmT6/wrm4DJP7Rm6E24pd
-         ogZsat5WIbipzhO2R3cH5fkIGeJJ8iLZZ9/HOOU2gzdf0veNb/DlWFStXGQb6u538zQF
-         BiStmmBvAqnXVTnn/ndKaCUlAQpTKclexQl4zCRHVn52D489q2Wh51tXnsPFA3mEm3iy
-         JpXhWK0l6Y9fzUFG+am1Yfx+iT7vgNULQ6u+6xrVaUI6K1VAfBuxvqkTOIy3EGYH/Cnh
-         3GaA==
+        b=p37URFiLDC3aE1ogT9o9itc39DprU/l+j2VjykRCHg+OHV22NRSKoTmMdibT5e9EOm
+         wHiHknjIRZqyHAnLLKKynGAJmiG94Wz9yFPXobRKvxcThGkqHvH6GE7FLbjgu//WyB09
+         S/G7J8x0VGwCX6H+hLP+JnHv8PRLjBg4oUZGlb5Aa9FSCqpoxUlIBNvO5EhZfPK2ND47
+         N9Dy+icXvX4J9p8lNe6pEan6bdIti+eALcLEyBLzFnxM4b6EbJvT9OlcM07QEbSDZTBv
+         IbcqY2k6NluZhHSRmzTBerWABWSOBSe9upiHLuZ6oAIrwu+PLvtxWyaTsBWaB17FMdZc
+         mWZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:to:from:arc-authentication-results;
-        bh=K7Bdc4zIWjMWWN7iPiE9YYCSs8qzCZGrbZJ2V2HR/2g=;
-        b=S3nDKuNMK45DT8hFJs2Nx5CrD3n+Tr9g1BCfK70N5HKdv3uTqJZKOW8nNTpYg3Bijv
-         2GVQwvcVKLebDT8ljiFax7jlRJqpwOm9B+532hu3RCfkIFHAvL5764sfVblU3WcstfUV
-         sQl4ZhyB+qvLAB9U+mCxnYfBMN5FKiDCDQaJg/Sh0ERSIF+I3p7BRwevDKDhjj5DeKUp
-         FO2zsQl3nrsmpJVyhV0mEVCEAEgdhEOHFK1OaQfAlUkHojkbqQ945xRUlaPfa3hc+B6P
-         cBC9zSWFr/9qGAqP6/vb0XBhQ12Oqj9rbBN/3ntPXA+vctT7e6/EO1KFSip5qvH5bHEJ
-         k4HA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=3r9SYJEZuQwMuIzSVtIQjBWzfbm9NhCrBSgcS/p+Q6g=;
+        b=qpbDpIF/qaKpKeDJfoRYzf04hJWqdJo1T8UWl03EFhgApVrpDe8MLyvoAFGpG3/cbq
+         JoCKyivZjDYPf37CzavFSc8tlxahmbAP6QNaFkgn0rKGn2yQ64EOxlWsrS8ZF48nwwyl
+         xGReDbr1h0SWWXAfhuu/tjb9ahH8x+EkAe4ka/4aHHhklnWaNl/GeZ4jp3x+Bklv8UIX
+         NuTMrBiI/k+VxD4wDZF/8SQpfgAeuvcIaTZvycC0FJcQ2RC83auTA8kajB24HW6zNq8U
+         BfLpjk/nHmr++I4FF1czr8T+4i3fOtkws7g/srZ5d8IxXCxgWTVX/rf8MF/NTJPZ1Amd
+         iPyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bxkyuPIz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g24-v6si1640054qtp.109.2018.07.05.01.33.39
+        by mx.google.com with ESMTPS id o12-v6si3388842qtp.288.2018.06.25.08.08.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 05 Jul 2018 01:33:40 -0700 (PDT)
+        Mon, 25 Jun 2018 08:08:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51001 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bxkyuPIz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47668 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fazhr-0005q1-Iq
-	for alex.bennee@linaro.org; Thu, 05 Jul 2018 04:33:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35243)
+	id 1fXT6F-0000nr-4i
+	for alex.bennee@linaro.org; Mon, 25 Jun 2018 11:08:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fazhg-0005ph-I4
-	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 04:33:29 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fXT62-0000mK-La
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 11:08:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fazhd-0005h1-Dx
-	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 04:33:28 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54600 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fazhd-0005dP-9d; Thu, 05 Jul 2018 04:33:25 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0537381A4EAA;
-	Thu,  5 Jul 2018 08:33:24 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-19.ams2.redhat.com
-	[10.36.116.19])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F56F2156880;
-	Thu,  5 Jul 2018 08:33:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6478A11385D6; Thu,  5 Jul 2018 10:33:21 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-References: <20180704153919.12432-1-f4bug@amsat.org>
-Date: Thu, 05 Jul 2018 10:33:21 +0200
-In-Reply-To: <20180704153919.12432-1-f4bug@amsat.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 4 Jul 2018 12:39:11
-	-0300")
-Message-ID: <87a7r6axpq.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fXT5y-000133-M5
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 11:08:02 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35088)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fXT5y-00012q-Gv; Mon, 25 Jun 2018 11:07:58 -0400
+Received: by mail-qt0-x243.google.com with SMTP id z6-v6so12230168qti.2;
+	Mon, 25 Jun 2018 08:07:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=3r9SYJEZuQwMuIzSVtIQjBWzfbm9NhCrBSgcS/p+Q6g=;
+	b=bxkyuPIzpyRNHKyO2Nipi4eFi1RTz2y/4BHYEtr2rR6D3ZmR9IYrDcuTQPrrC2Mza9
+	w6lISHPIkQJz8iRBTNDSOYGv61Cs5SL9VR93j52pVctyw9d9+fKcL/efjIsR4JYEuFu2
+	b4Xd66qZpIjsj4QCXR4REAAxFX+0VXxlOoMAdc6U2YZl+AZYj52JdVYOmT9JDMFrui2L
+	tdDTpN7Y1r//+0K3NwRbX7TzdpdCxUK0mWWCznWCQYl7GdQcJmzRvei8FOSZI27cEQzp
+	IaATQeVQScnfxqf97sIYq/scEEUKqFesAccntqAbpJ0RTd5iXv5zyLTZY3rnEBBxSdlA
+	1M5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=3r9SYJEZuQwMuIzSVtIQjBWzfbm9NhCrBSgcS/p+Q6g=;
+	b=Em+TuZGOpUh0fj3vuLoVdZ3dDMZ2sKDnISKuawKkzcf2CfqIn0kc6OyBL63/JsLhlO
+	NP0AySVAG62QVk1wYOD7DN554KsJh87ig1+wyrvQuw6ita9//29KkC7/fA8YhafCnlUC
+	cJviIVSuKfYphE5G08DI/Yw/QifzKINkMzkYt5WFKzBrqxELoCpe0sXgV7Z9SVq3rzC0
+	3YLqxLzwhHlV0wIs67BNPhbpUhpU6abGiNdHPcT3OFYNq9hm1YoX/Lt+zKvTtrAxc3KH
+	junbL0Bxq/QZ11Bex4pSDFMckMyREeKeZaRdQr02TA3KG/ml9I2aHv9Q1xO05dpb1aFT
+	SWcw==
+X-Gm-Message-State: APt69E2nxxyrG9m80Au32gFC88J1X52vZHkgpSBgq4Ejlndwjxy1DzCX
+	T2+O7Wv9fy5g8thBbAoTsC3hh8avdVs=
+X-Received: by 2002:ac8:3885:: with SMTP id
+	f5-v6mr4661450qtc.337.1529939277680; 
+	Mon, 25 Jun 2018 08:07:57 -0700 (PDT)
+Received: from [192.168.1.124] ([190.177.167.108])
+	by smtp.gmail.com with ESMTPSA id
+	m16-v6sm9089181qtn.92.2018.06.25.08.07.54
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 25 Jun 2018 08:07:57 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>
+References: <20180622134036.23182-1-f4bug@amsat.org>
+	<20180622134036.23182-8-f4bug@amsat.org>
+	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
+	<8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
+	<0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
+	<57e04a05-442c-bd4a-2daa-1b690540c061@amsat.org>
+	<2eab61ba-1220-095d-721b-53357104fb45@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <9ad2df7b-afa2-8470-6353-facdde6b0587@amsat.org>
+Date: Mon, 25 Jun 2018 12:07:52 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
+In-Reply-To: <2eab61ba-1220-095d-721b-53357104fb45@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Thu, 05 Jul 2018 08:33:24 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Thu, 05 Jul 2018 08:33:24 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/8] Coccinelle cleanups
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-arm] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,27 +126,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	qemu-block@nongnu.org, qemu-trivial@nongnu.org, "Michael S .
-	Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	xen-devel@lists.xenproject.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Kevin Wolf <kwolf@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yjJ7C4RrW5Lm
+X-TUID: rGjJMPTOMWDd
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+On 06/25/2018 11:30 AM, Thomas Huth wrote:
+> On 25.06.2018 14:52, Philippe Mathieu-Daudé wrote:
+>> On 06/25/2018 03:08 AM, Thomas Huth wrote:
+>>> On 22.06.2018 22:10, Philippe Mathieu-Daudé wrote:
+>>>> On 06/22/2018 04:38 PM, Thomas Huth wrote:
+>>>>> On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
+>>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>>> ---
+>>>>>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
+>>>>>>  1 file changed, 12 insertions(+), 8 deletions(-)
+>>>>>>
+>>>>>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+>>>>>> index 26e3e5ebf6..690876e43e 100644
+>>>>>> --- a/hw/i2c/omap_i2c.c
+>>>>>> +++ b/hw/i2c/omap_i2c.c
+>>>>>> @@ -17,6 +17,7 @@
+>>>>>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
+>>>>>>   */
+>>>>>>  #include "qemu/osdep.h"
+>>>>>> +#include "qemu/log.h"
+>>>>>>  #include "hw/hw.h"
+>>>>>>  #include "hw/i2c/i2c.h"
+>>>>>>  #include "hw/arm/omap.h"
+>>>>>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+>>>>>>              }
+>>>>>>              break;
+>>>>>>          }
+>>>>>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
+>>>>>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
+>>>>>> -                            __func__);
+>>>>>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+>>>>>
+>>>>> Please keep the white spaces before the comment if you don't change
+>>>>> anything else.
+>>>>
+>>>> This is a <tab> and checkpatch complains...
+>>>>
+>>>> I can use 4 spaces for this tab. I tried to align with other tab-aligned
+>>>> comments I didn't modify, but the result is messier. Thus a simple space.
+>>>
+>>> Oh, sorry, I didn't notice that you've replaced a TAB here. I guess it's
+>>> ok then. But why does checkpatch complain if it is just in the context
+>>> of your modification? That's weird.
+>>
+>> The first 2 contexts (MST and XA) are fine, however checkpatch complains
+>> with the last one (ST_EN):
+>>
+>> ERROR: code indent should never use tabs
+>> #38: FILE: hw/i2c/omap_i2c.c:397:
+>> +        if (value & (1 << 15)) {^I^I^I^I^I/* ST_EN */$
+>>
+>> Since I replaced this one, I also did with the 2 previous.
+>>
+>> Now I realize I can _not_ add the brackets so I don't have to update the
+>> <tabs>:
+>>
+>>          if (value & (1 << 15))^I^I^I^I^I/* ST_EN */
+>> -            fprintf(stderr, "%s: System Test not supported\n", __func__);
+>> +            qemu_log_mask(LOG_UNIMP,
+>> +                          "%s: System Test not supported\n", __func__);
+>>          break;
+>>
+>> I think if it better to unify the code style when possible, but it is up
+>> to you, if you prefer I can resend with tabs and no brackets.
+> 
+> I think it's OK to fix up the coding style here, too. Maybe just mention
+> it in the patch description ("While we're at it, change TABs to spaces
+> and add missing curly braces to the surounding if-statements" or so).
 
-> Nothing exciting here, patches created mechanically
-> (common after soft freeze).
+OK. If that's fine with you I won't respin the whole series for this
+comment, but if I have to respin for another reason I'll improve the
+comment. I kindly learned the lesson for the next time although.
 
-Cc: qemu-trivial
+Thanks for the series review,
+
+Phil.

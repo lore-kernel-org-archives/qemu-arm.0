@@ -1,112 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp71082wrq;
-        Tue, 12 Jun 2018 18:28:00 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKL9BeNBLmd/IZynvutA0mVN1cFJoEd35pH6kCTFVGDhKKh1AlBT26PNLBdUhYcR6P0QCGvQ
-X-Received: by 2002:a37:7d1:: with SMTP id 200-v6mr2750783qkh.393.1528853280029;
-        Tue, 12 Jun 2018 18:28:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1528853280; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3877712wrq;
+        Mon, 25 Jun 2018 07:29:39 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdtyIF48AtAT7/n3hmQdIf7o9lk0MH9xs3WMzZiJRMTexugx4u5tDui65gDfjKB9Gs5PXbS
+X-Received: by 2002:a0c:bc03:: with SMTP id j3-v6mr2198746qvg.201.1529936979084;
+        Mon, 25 Jun 2018 07:29:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529936979; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mip5XMf07/rA6yTGTaV4bGr8otpWdEH1XvraaZzbC1DbX4iYkS7lvlehZEo+Zecc75
-         WOVqMJKiZdu73gHH68HBei493KTF8kXzVIChJtD4InRcJHE12yT3QcIn2eyfUcNLXyHP
-         rWPWsntJVdl/8ca7AA1g/4n5UMSvvALBBGPNQtyQUzqFaBMmGNv4Ur78y16i3g8BHUlM
-         A6oF2X0AXc+BKi6JFT8/kV8r8YOtJ8Q5vq1of0uCd/ahTG+896f3t0hZI122k7ukJnbf
-         Px5ZqijRb0WQ/uDGk1kbTlwlxZJx7yOQ6rWr7RVvsrFSmaxIt5opOqVzBMBPG4Bnq7eZ
-         yD0g==
+        b=qfCtYgK97BI1JOBz4o7T7obXP/1l/UXSvgzUxYMJ5gtX7CBj65OwbMtnMs5z/sp8KO
+         JSUBM7a0J8gbeL8Ewd93EETEw4QlFSw3KZioKETfiSlVFxVrr52vQMbf1JKlmwHIco6/
+         Nxd1R51mKfEAjXimWMClWgH16nBeu5d2BFt9nXJO1sIhsVmdLfpeUtA4hpc3cBvf0sz9
+         bN1WBlNxNB6roEjj2T1zQe7C0zFQogxQ6EdaxvOYh9CJOPGS7G1nxV1CAeABfPciJgBf
+         pyVPW17uQWnJWr5UptW/Hx1Se/BeIwzt1T3QieG0oYLN6R0LJThtHBdPNqI/sRKR5PQE
+         z9wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=/F449yIoklMIo931Svk6ahhW45yN8W3tClzmGqk3nC8=;
-        b=R1K7546JYEUT6+M4YARWppemW8UCHAgJrfuyszGEk0kQXjy2FQLkCHfUFo1bhDtevF
-         Gc8GLtzUXpRXAo3/4pCvvH9Xnz7rXSYDx6w1oqjuILxMGliHGfBoqQPQIYjw4UI3WH8j
-         IkHIWhGRnvegqUsy4NtnLDg7+cY2yNPEu112cYpcuXX0uU2+q1bJf80jfagb0XJBA7oL
-         JpU0IM81XJCJK7TYaA9J6mxVi3nEvHKjuRb0Iv3SkYD6bNCWU8pbP84m+dfFQoeYl115
-         lwrWDCWFfcoBj/xVaEQUZK4mMkCFMRten4fp/IcKdJiq6i+x8pt/28rkfYNSGZfQRLTL
-         fvTw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=yUVrlLWzIKFaki7Wu7JvE5LWLETA1G+Q3Aa4/Gap1zs=;
+        b=PMgPt+40xlZkoYsP3VaYMsiyqSmUQLH85tteWFEseZhtH12uclh91apvHVpevQfOEr
+         LUah/P7xufs04FgkDdRVVM3DEuBdsKFW/ZtEpPlhvGy048m5JkucQF68tIFWGW0e5a9t
+         gjL0GHQxG8ApClp7iwnoV6b8EiWcyYQ0onEcqsrlQ8w+Zgo2n9oWz8mU1pBt5FqYiW1m
+         QD1Zz0NA5wUTCZdRPdWXkl5udcEryHYhIx94mkVIQ6yL7ZmiHcwYm89NDOZV2R5Cowyv
+         4YSnyxKeHNdjOy0TlGMQIJ8E/O+1NiLpozdQxH+YJsaRlDUuxsdNm23a6nnQImOuGDhd
+         09Sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=doQ7ZHdp;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QOiQzBYK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v30-v6si455013qtg.316.2018.06.12.18.27.59
+        by mx.google.com with ESMTPS id o90-v6si597189qva.172.2018.06.25.07.29.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 12 Jun 2018 18:28:00 -0700 (PDT)
+        Mon, 25 Jun 2018 07:29:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=doQ7ZHdp;
+       dkim=fail header.i=@linaro.org header.s=google header.b=QOiQzBYK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59205 helo=lists.gnu.org)
+Received: from localhost ([::1]:47475 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fSuZr-00060F-IS
-	for alex.bennee@linaro.org; Tue, 12 Jun 2018 21:27:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40775)
+	id 1fXSUs-0002ws-C2
+	for alex.bennee@linaro.org; Mon, 25 Jun 2018 10:29:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fSuZg-0005zm-Et
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 21:27:49 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fXSUh-0002vb-5t
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 10:29:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fSuZb-0005Lr-Kj
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 21:27:48 -0400
-Received: from mail-pg0-x241.google.com ([2607:f8b0:400e:c05::241]:35378)
+	(envelope-from <peter.maydell@linaro.org>) id 1fXSUg-0002jn-D4
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 10:29:27 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:40191)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fSuZb-0005LW-FQ
-	for qemu-arm@nongnu.org; Tue, 12 Jun 2018 21:27:43 -0400
-Received: by mail-pg0-x241.google.com with SMTP id 15-v6so431162pge.2
-	for <qemu-arm@nongnu.org>; Tue, 12 Jun 2018 18:27:43 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fXSUf-0002jF-UZ
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 10:29:26 -0400
+Received: by mail-oi0-x242.google.com with SMTP id f79-v6so12672492oib.7
+	for <qemu-arm@nongnu.org>; Mon, 25 Jun 2018 07:29:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=/F449yIoklMIo931Svk6ahhW45yN8W3tClzmGqk3nC8=;
-	b=doQ7ZHdppoGHW/RxkecYIw+blPKJklJhgKl3pSpNLDc4OG5sLZq71On4jbeGKFg3kD
-	T1xWFBo0ASPcnLRtmNKbCCcPnUd/k+1/QtlH/h+RVkSLaMDdMTqEsJcr5j68klwdfgwN
-	o7ntzum8DK4gtlMMX2S1gwMrNbneA9dAFIJb8=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=yUVrlLWzIKFaki7Wu7JvE5LWLETA1G+Q3Aa4/Gap1zs=;
+	b=QOiQzBYKIGWB74Vtm2DZzTr9uibiyXcWSowtszLKKoCXw55PcXH+uAkGFYGrgHeYny
+	pw6GR1mTrTSLUaBReodQtrWZ5PwFynAPvI0slzAB10B2/ZmDbAsY91AYPE4a/vJwX0i7
+	OXcdn6N0rU3H3zlgaLrxN68CGl+ab1uRWDsH0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=/F449yIoklMIo931Svk6ahhW45yN8W3tClzmGqk3nC8=;
-	b=dFG215eI/QYrFJWFe2Lesz8fSJwPsIdtliGU/pAvKezKAMtHLpjOY/OG3Qcd0D+ez4
-	WTdI9y2EDuMFEhr+6r2cPAfSRqX4gv61WY0pjpkINylCN/r4jMDAYbynMIDzx0po0mqu
-	kgQ9yxPzSo6d7dsm4WuqiA8XQHIGH5hpuIWvQWmiiOYXwpEPEvA2K1VPITOJYSurKbPY
-	rGc2PN3vpAiNESEeFQXg+LxLN/1XWzGpBxB19yf9JUYgR4T5D0lzcXPg23eQESoZ2MFV
-	CIkn7KfXx5KtlJdlULc1QMHilFGks+kQ2FdBn8w6nXW1ORMV8zHxUJa/7RpsLYHfpyS5
-	a5qA==
-X-Gm-Message-State: APt69E1BduCPHfkjjoqa0H93WBLdOvoD7QLRrt/9keuNsxyoQsCwR0c5
-	a/x21fupcOmYaxN2lPS+tvMws0MDx0E=
-X-Received: by 2002:a62:fe19:: with SMTP id
-	z25-v6mr2688552pfh.167.1528853262112; 
-	Tue, 12 Jun 2018 18:27:42 -0700 (PDT)
-Received: from cloudburst.twiddle.net (rrcs-173-198-77-219.west.biz.rr.com.
-	[173.198.77.219]) by smtp.gmail.com with ESMTPSA id
-	r2-v6sm1860795pfa.49.2018.06.12.18.27.40
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 12 Jun 2018 18:27:41 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180530180120.13355-1-richard.henderson@linaro.org>
-	<20180530180120.13355-16-richard.henderson@linaro.org>
-	<CAFEAcA-weWiOLsrucjWMUjAh3tgS02RgBChpZOiOgd3HZK+imw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <fef082f7-e297-61d8-8850-6d33e93b976f@linaro.org>
-Date: Tue, 12 Jun 2018 15:27:37 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=yUVrlLWzIKFaki7Wu7JvE5LWLETA1G+Q3Aa4/Gap1zs=;
+	b=Dko9a0+QbEnnrnK12wanRCf/mmD/6bNypqIw8oVRsCZGlV9RiRrlJb+wVdwDH173uB
+	6bSfSqJr43oBL6xe4tWd+6c23ajBG/fVYQpZPYjm19FqNR/oiUy3iSIoWzrSbMuN73NG
+	3QGMINC19xshmUjzhzo03MS1hhgdcrdO+1VmMJZuQgLPk4V6rMWubC7CY1gN4r0FFKX7
+	kEVVsWiys6NRIDu+M1xzCpoyF71KQ9O/NtR60miSOrWkcwN8GxarwnkIxAYb2XMQkq0X
+	x3kBIKPSqCJaFHfFGG//1KAIr7DLb/0/DdyS0LdJ4DgWlNGMuq57IIZYpp512ogAPa1+
+	eaXw==
+X-Gm-Message-State: APt69E2JjtKpcqUTnXKlYS28KWqbzsrr5DR45bPdrWqQshbSMillG6Xf
+	q2TNkikvUrGwZPDH6Xeni/u6CopSEafchUADRxIIEw==
+X-Received: by 2002:aca:f10b:: with SMTP id
+	p11-v6mr7454884oih.80.1529936965148; 
+	Mon, 25 Jun 2018 07:29:25 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-weWiOLsrucjWMUjAh3tgS02RgBChpZOiOgd3HZK+imw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Mon, 25 Jun 2018 07:29:04
+	-0700 (PDT)
+In-Reply-To: <20180619093124.24011-8-luc.michel@greensocs.com>
+References: <20180619093124.24011-1-luc.michel@greensocs.com>
+	<20180619093124.24011-8-luc.michel@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 25 Jun 2018 15:29:04 +0100
+Message-ID: <CAFEAcA-3_6axe2Bvx5zehGvVYs_egiUZyh_e56P7Lkh927OzaQ@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c05::241
-Subject: Re: [Qemu-arm] [PATCH v3b 15/18] target/arm: Implement SVE Integer
- Compare - Scalars Group
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH v2 7/7] xlnx-zynqmp: Improve GIC wiring and
+ MMIO mapping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,69 +106,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pBW17n4uDO5n
+X-TUID: qwnVlsaXDwIk
 
-On 06/05/2018 08:02 AM, Peter Maydell wrote:
->> +    if (count & 63) {
->> +        d->p[i] = ~(-1ull << (count & 63)) & esz_mask;
-> 
-> Is this d->p[i] = MAKE_64BIT_MASK(0, count & 63) & esz_mask; ?
+On 19 June 2018 at 10:31,  <luc.michel@greensocs.com> wrote:
+> From: Luc MICHEL <luc.michel@greensocs.com>
+>
+> This commit improve the way the GIC is realized and connected in the
+> ZynqMP SoC. The security extensions are enabled only if requested in the
+> machine state. The same goes for the virtualization extensions.
+>
+> All the GIC to APU CPU(s) IRQ lines are now connected, including FIQ,
+> vIRQ and vFIQ. The missing CPU to GIC timers IRQ connections are also
+> added (HYP and SEC timers).
+>
+> The GIC maintenance IRQs are back-wired to the correct GIC PPIs.
+>
+> Finally, the MMIO mappings are reworked to take into account the ZynqMP
+> specificities. the GIC (v)CPU interface is aliased 16 times:
+>   * for the firsts 0x1000 bytes from 0xf9010000 to 0xf901f000
+>   * for the seconds 0x1000 bytes from 0xf9020000 to 0xf902f000
+> Mappings of the virtual interface and virtual CPU interface are mapped
+> only when virtualization extensions are requested. The
+> XlnxZynqMPGICRegion struct has been enhanced to be able to catch all
+> this information.
+>
+> Signed-off-by: Luc MICHEL <luc.michel@greensocs.com>
+> ---
+>  hw/arm/xlnx-zynqmp.c         | 92 ++++++++++++++++++++++++++++++++----
+>  include/hw/arm/xlnx-zynqmp.h |  4 +-
+>  2 files changed, 86 insertions(+), 10 deletions(-)
 
-Fixed.
+Nothing obviously wrong-looking in here; a review from one of
+the Xilinx folk would be good.
 
-
->> +    tcg_gen_setcond_i64(cond, cmp, rn, rm);
->> +    tcg_gen_extrl_i64_i32(cpu_NF, cmp);
->> +    tcg_temp_free_i64(cmp);
->> +
->> +    /* VF = !NF & !CF.  */
->> +    tcg_gen_xori_i32(cpu_VF, cpu_NF, 1);
->> +    tcg_gen_andc_i32(cpu_VF, cpu_VF, cpu_CF);
->> +
->> +    /* Both NF and VF actually look at bit 31.  */
->> +    tcg_gen_neg_i32(cpu_NF, cpu_NF);
->> +    tcg_gen_neg_i32(cpu_VF, cpu_VF);
-> 
-> Microoptimization, but I think you can save an instruction here
-> using
->        /* VF = !NF & !CF == !(NF || CF); we know NF and CF are
->         * both 0 or 1, so the result of the logical NOT has
->         * VF bit 31 set or clear as required.
->         */
->        tcg_gen_or_i32(cpu_VF, cpu_NF, cpu_CF);
->        tcg_gen_not_i32(cpu_VF, cpu_VF);
-
-No, ~({0,1} | {0,1}) -> {-1,-2}.
-
-
->> +    /* For the helper, compress the different conditions into a computation
->> +     * of how many iterations for which the condition is true.
->> +     *
->> +     * This is slightly complicated by 0 <= UINT64_MAX, which is nominally
->> +     * 2**64 iterations, overflowing to 0.  Of course, predicate registers
->> +     * aren't that large, so any value >= predicate size is sufficient.
->> +     */
-> 
-> The comment says that 0 <= UINT64_MAX is a special case,
-> but I don't understand how the code accounts for it ?
-> 
->> +    tcg_gen_sub_i64(t0, op1, op0);
->> +
->> +    /* t0 = MIN(op1 - op0, vsz).  */
->> +    if (a->eq) {
->> +        /* Equality means one more iteration.  */
->> +        tcg_gen_movi_i64(t1, vsz - 1);
->> +        tcg_gen_movcond_i64(TCG_COND_LTU, t0, t0, t1, t0, t1);
-
-By bounding the input, here, to the vector size.  This reduces the (2**64-1)+1
-case, which we can't represent, to a vsz+1 case, which we can.  This produces
-the same result for this instruction.
-
-This does point out that I should be using the new tcg_gen_umin_i64 helper
-instead of open-coding with movcond.
-
-
-r~
+thanks
+-- PMM

@@ -1,100 +1,117 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3363106wrq;
-        Sun, 24 Jun 2018 21:06:17 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfGLKADw8n3tc5gZp6HethGIZ0/aJ42jlR4VVd6SwIuCEMqcmgWaRSUc8/bTTFTqxjSA5vX
-X-Received: by 2002:ac8:1b9a:: with SMTP id z26-v6mr9443336qtj.344.1529899577638;
-        Sun, 24 Jun 2018 21:06:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529899577; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3391932wrq;
+        Sun, 24 Jun 2018 21:55:56 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeuMBBl0AWXb/Q7go+XK5n8me80gh02fKR8txFFJPPvZbqSVd9/V3CAZ4YzjNjLKlpwLemt
+X-Received: by 2002:a37:d1d0:: with SMTP id o77-v6mr9013971qkl.185.1529902556694;
+        Sun, 24 Jun 2018 21:55:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529902556; cv=none;
         d=google.com; s=arc-20160816;
-        b=i5bpFb85Tb1p2yWwlXCpaVNUeHCXAT4QYuEjn3O+TuXgn68DIhr+uY18j+u3XWSBgV
-         u0cpjp+Z//a/vFMHDDamlrJoggc98wlxbKgr38KJi68cvgILuGQfUqLa0QGgOHtfdzj2
-         5vD15Mc85g/C6IwUvaZwOYpzhy2ChMAlJcaVy8lxeIYACalVdYf3Xj+bYn/szPNsS2C8
-         XX5bwRRALIJJKEb/h7Ekx5pMeiwKhazCe50M5wNe3EkGxRXsweVxNNORv2EqCXLp+5xm
-         eaYh/5Lm7rr6N8+qGfMUmY5FrpWz1+WuYxgQzkEaJHLvSq7iA4ucJamfoqrfbImEoQdP
-         VSzA==
+        b=bcvzoy2Cxuu0myz66TaEcIqPyp9p0gQXWjpl4XPMRCGAooo/XR2ZTptXUMX8eqj4uo
+         SbY2lv+AJ68nau6KfqaAw0W8R0pWNhfyEJxAjkpdr6T+R8viiSvqQKT/3srYeBxqliRP
+         dUWGcdrI7jNmoMrqRPpDzflWLKGcDTeOk1duEgslMmpLjzuzdFVKQN71HaUJLwVDGQl2
+         tfOAy5y1WTG+ybh1zfReZllcvlXGBz4uq3JzoaCBPm+QUZeVKR5j2q62kJd4Fe5F4ENA
+         Jc8KeIOigSlKswOfMbXvL0DJ/ACo/y0FXeIwTAba++dwFOXMGqbVjKB4lMfJPWDDipP1
+         4zCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :arc-authentication-results;
-        bh=9sQP+ta6o1ZSMdyNB84w5ZX/8rX2N9WD5DZCr+KqOQM=;
-        b=vJee9grF9b6e6mabYYxkInO04Ue70+BJdT+/oAeMKQWm8OFinczKNiFpgndEBHkJc7
-         jXugf5qoLSAgnSMFMLJqtCqksA92uJ7kCNiQfYzCRjE5FiaUMnMEg9n9CWGC4h2qu+ti
-         X06CQG6e+Cs3IkWxodtHO8dIHiVbf3lyg2/a6hJuKiuDAl1svmeBTvVC/UKKNhap+0JU
-         BGg/cfWlzlMO3t81uEhai3eRoQw+MPwg1iPvfOW+ngx5P98/Iw/LWy10tRWsKJ8eXB/2
-         CZYIyV/DQdmKAO9ltI79lMRIa7lUmOQwrGVQVIYDVkI3Nz9d0guayQ6bWV35Pf4X+6LL
-         db5w==
+        bh=AFXXp/o064fNNh2rIoXuZW/nDdrHP9bvA+a3gtYSS5E=;
+        b=pAUhtoMb1nkPZ8c8HtsNsXvEVbEmxUdRj9WbubQ9rGac7PTlNFpEoLk2S3/V6Uv0F2
+         kEUaGXEKtEXQVM9lSr/FdE3hglE8n6XlTqCbnhf/eFZvxb6Dxjq/l0WOD2bG9LUTpQLl
+         UMMAK7nzS3xwQpeE5V/dmRhB6Dst3cf1DWwz3aLMaEyS/rronre+I3UqhnA/NJ9Y8t2v
+         W6Jue/P0e2JqsdZBqY9fvTMnVB6SCV5I2Boj5b+Dthnzp2lcGkyDaECyGUlKFbPsWTEL
+         kRqmj35ZjA3o6SoDg+gnKuJPp+JDJ80lm+JED0nCGTW1C0fgd5jopq/srEuX6FgxUSbN
+         nfcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dphRC5pA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a20-v6si2161009qtn.216.2018.06.24.21.06.17
+        by mx.google.com with ESMTPS id f101-v6si7320385qki.323.2018.06.24.21.55.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 24 Jun 2018 21:06:17 -0700 (PDT)
+        Sun, 24 Jun 2018 21:55:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dphRC5pA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44131 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44213 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXIlc-0005dd-W0
-	for alex.bennee@linaro.org; Mon, 25 Jun 2018 00:06:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39354)
+	id 1fXJXg-0003R4-6z
+	for alex.bennee@linaro.org; Mon, 25 Jun 2018 00:55:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43999)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1fXIlX-0005dC-9H
-	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 00:06:12 -0400
+	(envelope-from <jan.kiszka@web.de>) id 1fXJXa-0003Qw-Dz
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 00:55:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hongbo.zhang@linaro.org>) id 1fXIlW-0007a6-Ea
-	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 00:06:11 -0400
-Received: from mail-io0-x243.google.com ([2607:f8b0:4001:c06::243]:35196)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
-	id 1fXIlW-0007Zu-8F
-	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 00:06:10 -0400
-Received: by mail-io0-x243.google.com with SMTP id q4-v6so11196892iob.2
-	for <qemu-arm@nongnu.org>; Sun, 24 Jun 2018 21:06:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=9sQP+ta6o1ZSMdyNB84w5ZX/8rX2N9WD5DZCr+KqOQM=;
-	b=dphRC5pAGKSZEKFvnQSuZDuf65zH1GC+gwBz1DZ+ibcsHEGy4BtiU5JdKoe87Su9+o
-	wjKaNX8hJCQjiXrbPZASL/6LHGp4rtfEFZ+n0QLVM1QFFQt1GevVAXSiFfqxPzeeqr8T
-	lORDWLTFfwztRu0WTglQnTU74O/8LmBzgjrNs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=9sQP+ta6o1ZSMdyNB84w5ZX/8rX2N9WD5DZCr+KqOQM=;
-	b=mx7uypgajl/LwwpUz19vbroGgcS4qVDSJVENE/tu5caDk22eCJgCipgIQGvDyH6xMv
-	qP35CB9KzWOv/ITFvyiU17QT+cKeKIMo/QtA824iWpVREktLQ7pmQYk69cXQ72C/rCv9
-	PvKcxi67XaG6hubn5pzSmm3W3Qu2J1IPZNRCDg/bAffYD3ISINcNz1BDBPlqxMotkooi
-	VxWeeWt94zLGAvoSRcUa80Fd31eu7ITNf/pkgK9N+FYDqCO6jDW5dWnAiZZ7RDqKKnvO
-	ObyT/K4D0g2WCo1e0v0WwrirtdvMl4pG8SCa8vrumzIrcwyzh3QHoGyMhIRvwk7hBcM7
-	j38w==
-X-Gm-Message-State: APt69E3YVfXtXP0dM8psRRxBI+YsWDZt6C3yuaLyyC7kE2wEeHBMN4Aj
-	NJ8nr2jBWz171YdJLWVBgfYCJlw3MW3TtAz3oK6hcg==
-X-Received: by 2002:a6b:ba82:: with SMTP id
-	k124-v6mr8323365iof.94.1529899569377; 
-	Sun, 24 Jun 2018 21:06:09 -0700 (PDT)
+	(envelope-from <jan.kiszka@web.de>) id 1fXJXX-0000ia-AC
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 00:55:50 -0400
+Received: from mout.web.de ([212.227.15.4]:39739)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jan.kiszka@web.de>)
+	id 1fXJXW-0000hq-Vb; Mon, 25 Jun 2018 00:55:47 -0400
+Received: from [192.168.1.10] ([95.157.57.47]) by smtp.web.de (mrweb004
+	[213.165.67.108]) with ESMTPSA (Nemesis) id 0M4Um4-1gN49E2Lq0-00yirO;
+	Mon, 25 Jun 2018 06:55:36 +0200
+To: luc.michel@greensocs.com, qemu-devel@nongnu.org
+References: <20180619093124.24011-1-luc.michel@greensocs.com>
+From: Jan Kiszka <jan.kiszka@web.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=jan.kiszka@web.de; prefer-encrypt=mutual; keydata=
+	xsDhBEq0i8QRBAD2wOxlC9m/8t/vqjm1U9yQCT6OJ2Wbv/qys9DYM0CvcOTDMWQwmV1/VsZj
+	KR5YgB5NPt+To7X6x5cjz15AGnx5Fb8Wnrq8EF9ZfHMwb7YMx1LdPYPDnXr37wE3XupFmkHB
+	Mes4htyX7Dz8LvKDLnli4IsAmWG+kV1JI6LWKXLpSwCg8JRq4SWoB4VCQxbH3GjntgvwNc8D
+	/2q5Dj0urJ7s7sdXhrH0hcFkpSFRmU5Yd6MCwcbFHm2paL5gqVjNNUUwDBKAL9eZaQVIHKwC
+	44BvNGO2gcQ26R3AuCHUQ+pZHg34tok1JCNZ6IEZccb+33Qq0qbcDMJJiDYp7ppp6ozifvc4
+	YaqJECX48IydxfE9+41oV7T5vNAzA/QL/UMJyTnu5jiOXcyn5iFQw535lXkwKsqeXzCowLho
+	HICZ2jITJPdTT/+9pGWwMQqST/SS35Tx4EnS3z2BWsNMCLuXCPkxF1elaMJqMfMJxFD8rAgS
+	9GK6zP6fJlsA1wq/UvKSL8v4QPOnTNCVOsyqJVasGV0ZPcDfcj+ClNO4zR5KYW4gS2lzemth
+	IDxqYW4ua2lzemthQHdlYi5kZT7CYwQTEQIAIwIbIwYLCQgHAwIEFQIIAwQWAgMBAh4BAheA
+	BQJOpoNtAhkBAAoJEIrUrG965ecUOPUAoK+Rh12KgCjplHAS0AoiGKwGOuq7AKDEVnBtRAoy
+	VRvp3lOlOx+P2Ay56M7BTQRKtIvEEAgA2/PlX6oyi7dToH0CJCHq0eKmZaa7CmGaVnxyeepK
+	vIfiM8n8Td76AbG64fjREMwgSpb4F/UytF3z/03tj4e49W/zKjbBRB2/wmFRlZBC9crg22Q+
+	bgvMOsxnC6uHXaWN8fL+jVei/5OoHOoFqaMsX8EvploitlI/BPj+VgW26jksf3YZyk1hncls
+	Z/IYhXzgRmVJo4RiTW/YLQAkwndwc+fKPa/IYLEDW1Jc4kNLoK0P90b45zju0hpl0C00pVOR
+	TOtzFK9G5Ha7qOAWJfAVJORHKAkkvwftf3hkpPdLyvZUWRHXvUexmA61fLvDBAFhRxYGD8t5
+	gz88SF5Tzq+0ywADBQf/YSkaYrEslPWiCA2wU6EW0yaqBQAobFsOMvsufJ6o2ntq5Ncq37VI
+	3KCT67eHPE9x+zPcENoZWsRrC9S9PCf1LOsi7ybZsR13AJqDFlRzJZ4klh9QwgwFZxUBzOdI
+	vttwzG1QkzHx06RKZluFYpPF3DRduSMukdIJ2wmWCU+ohB+mYefe65JGjYQfHVs8mgYVFOPx
+	bRea9VJACCMuspoZWpj43UdR1lLLyIUFYz+jqcPW7Hd/GTIw4N67pYl0dwPDmFd4ohJ5g4Zp
+	q61toNysBGEuEm5GCcn0VmGtQpSYnR5cVm5b2yPz4bIuFOSuZUo/l7vitdY0iy0/wvKbBC+N
+	K8JJBBgRAgAJBQJKtIvEAhsMAAoJEIrUrG965ecULvAAoKGvxs5T3IhyQT8I8sMsyAvCE4wH
+	AJ46S16yab+OxNkvOeoOEX0EnHVHaA==
+Message-ID: <d3c05355-4eda-f501-8f04-d808f416393a@web.de>
+Date: Mon, 25 Jun 2018 06:55:34 +0200
+User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de; rv:1.8.1.12)
+	Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12 Mnenhy/0.7.5.666
 MIME-Version: 1.0
-Received: by 2002:ac0:a65a:0:0:0:0:0 with HTTP; Sun, 24 Jun 2018 21:06:08
-	-0700 (PDT)
-In-Reply-To: <CAFEAcA8Bx7b_0zUxbdxFgtANFycVkUiSiemAwHpr0wpyxuLKmw@mail.gmail.com>
-References: <1529663827-28854-1-git-send-email-hongbo.zhang@linaro.org>
-	<CAFEAcA8Bx7b_0zUxbdxFgtANFycVkUiSiemAwHpr0wpyxuLKmw@mail.gmail.com>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Mon, 25 Jun 2018 12:06:08 +0800
-Message-ID: <CAHmQWvCczwh0Yto=9s2j7d00ULokZ0=VrxykAyXBvvHzQaUEMA@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4001:c06::243
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/virt: fix psci conduit in acpi when
- el3 enabled
+In-Reply-To: <20180619093124.24011-1-luc.michel@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:wSqMd+sw5gylBzEJbpkZW08cK9of8G9csYzS68h2Cge0ndNFMe+
+	ftMUqrReG8qwCcCuA6+noQau8lDz1n6cGsOqkbXW/roOa2CWuYSzbqYpIMqw20d2M9QhtXD
+	IOLzF1BrpkkfvvR0ngamoJf9dDU+ZBjLFw3oEC0MnHZIKkWhwo9WUxnyN96jrCt+NJoqSKr
+	KEqghV13Gje1R/3g0D6fg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:bG3HBL2o40Q=:8imQnU48PYFROypuawUaIG
+	YJszvH6Mdz/b5FQv92YclMSW5Z3CIlmySXzC1N8OV6InbGnAip+n9xKvFRBa32hgFHMTVydyw
+	0Ig8ZF8gwrcXy9O8l7IiKd6VhEqgtG7jmKKeqkPBijVeaba0XfuDQhoVIMIoyn4YqdIDwBPqY
+	iTLRjIoV01S3nIoos0OU41K1b6d7lxiL6k+AgE9/gQ53zADJiUHx1jEmcz4XHZa+vsbA2IWyx
+	0GOWzqJ9xoRE++CDD8zyTDfk7NnVWSgFHN2Vg1s+dag6l6slXdYMOJsMI+TszP6Arj4Rm2Ehh
+	QJw3fzWGyRJqDsj1grkCiLJ/oIZaZPYBpZMzA69eAJBW1YLLsLZCrzUiTYF6W4DLc/TAJTZpA
+	csZV5kwMMujggn5DYqw25dLESrcUkw9ndjd7IKYlTPCm4WJr2cmqWXmamP+yrY3m2+ggsSxVy
+	ZpV4LpKrWNSjhXvBGsEASbLpM5SX6kegJVw0ByCPZG1s+RW240S6Dswy/zo8iP3yu5VG4L5+K
+	4PYfG26gJGhFc116M8gIw3Yrw2iDl2TZYXlE8nUMQ0i21nRKAD0Ou2hIwJdzZYvu+htNfuy4Z
+	b/uEYRYqxNmif6j7bobNa80Qj7v+yx1XFNGeNJpBksMJdC9c7zJVpaMw9b6674abR1b4Dbfch
+	PWn9B5waGTub5vEMgtxj2jsntw6Jfabv8osOThEQe67vRqsLgYpaIyESII8C6pzthr2uOQcOE
+	C/yOZi75ZEg0E1C4bQ2NNHjKuT7ZenGQAC9j7uhxpTh/4IU4R8Vv0uQSkG8aOhUsUC1LoR0dT
+	X9XEMtc
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.15.4
+Subject: Re: [Qemu-arm] [PATCH v2 0/7] arm_gic: add virtualization
+ extensions support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,59 +123,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: saipava@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
+	edgari@xilinx.com, qemu-arm@nongnu.org, mark.burton@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1urFKruQ9awe
+X-TUID: TW6Kwt2AsClw
 
-Hi Peter,
-Yes, your considerations reasonable.
-But in practice of hardware platforms, programmer checks that Arm TF
-is using SMC for PSCI call conduit, then fix it manually in the ACPI
-table, reason may be that Arm TF is lack of ACPI support, if device
-tree used, there should be no such thing because Arm TF can support
-it.
-On QEMU, I just mimic the situation, if a complete reasonable
-solution, further efforts are needed to figure it out.
+On 2018-06-19 11:31, luc.michel@greensocs.com wrote:
+> From: Luc MICHEL <luc.michel@greensocs.com>
+> 
+> This patch series add support for the virtualization extensions in the
+> ARM GICv2 interrupt controller.
+> 
+> The first two commits do some refactoring to prepare for the
+> implementation. Commits 3 and 4 are the actual implementation. The last
+> commit updates the ZynqMP implementation to support virtualization.
 
-On 22 June 2018 at 18:45, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 22 June 2018 at 11:37, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->> When QEMU_PSCI_CONDUIT_DISABLED is set, it doesn't mean all the PSCI
->> conduits are totally disabled, it only mean the QEMU built-in PSCI
->> support is disabled, in such a case, e.g. EL3 is enabled and external
->> firmware (it is usually Arm Trusted Firmware) is loaded, SMC should be
->> used for the guest to trigger PSCI functions.
->>
->> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
->> ---
->>  hw/arm/virt-acpi-build.c | 6 +++++-
->>  1 file changed, 5 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index 74f5744..e5b4947 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -715,7 +715,11 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
->>
->>      switch (vms->psci_conduit) {
->>      case QEMU_PSCI_CONDUIT_DISABLED:
->> -        fadt.arm_boot_arch = 0;
->> +        /* This case means QEMU's internal EL3 implementation is disabled,
->> +         * but when firmware is loaded, the guest can still use SMC as PSCI
->> +         * conduit to call external firmware PSCI services
->> +         */
->> +        fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT;
->>          break;
->>      case QEMU_PSCI_CONDUIT_HVC:
->>          fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT |
->
-> I think this means we end up reporting different things for ACPI
-> and DT in this case, doesn't it?
->
-> I think that if QEMU isn't providing the PSCI implementation it
-> shouldn't advertise it in the ACPI tables. It would seem more
-> logical that the firmware itself does that (QEMU can't know if
-> it really does provide PSCI, after all...)
->
-> thanks
-> -- PMM
+Is it enabled for the virt machine as well? Seems we are missing some
+mapping of GICV and GICH there.
+
+And what is the recommended way to get the ZynqMP model running? I've a
+kernel that works on a ZCU102, but just passing it via -kernel to the
+QEMU model seems insufficient.
+
+Jan

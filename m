@@ -1,74 +1,71 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3459556wrq;
-        Sun, 24 Jun 2018 23:35:35 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJcRjiEiQCb6HWKP6iIrL7eg672d9+gTGKx3c8LtX/MjhUHV7GHswU7/iNakhIWcZVIMUVQ
-X-Received: by 2002:ac8:2e83:: with SMTP id h3-v6mr9642423qta.365.1529908535782;
-        Sun, 24 Jun 2018 23:35:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529908535; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3541501wrq;
+        Mon, 25 Jun 2018 01:32:10 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKKDbF5xdIvRZw0KP9yuAWDxd/wXGus90BEIfXEPXz/cn9FielLzsT0bQPIJoF1YTrUvTzMC
+X-Received: by 2002:a37:8044:: with SMTP id b65-v6mr9736388qkd.55.1529915530886;
+        Mon, 25 Jun 2018 01:32:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529915530; cv=none;
         d=google.com; s=arc-20160816;
-        b=gFpyFLcclfLXSHZ8Ul2MGyzMQbhhE0jNI9L15dBKBKxbPpq5StPs58iz3/M+UBJPL1
-         HzlfavmzIcNEIxKRpLdZHyX33tLLM5s5O/PFM4U/szSjA3u98sW0/c1M4Kg/mypBiKYq
-         MxeOAHkVRjzJTlYUteLlyxPI5aZhB1aG4Tq+rESzmpfTbnMg1pNn+4HLgYWaqono63wL
-         /zCqZYz70wDCo9xw9eb+cNMoJJMt+/5vSZjp5fh4btaBhf5Ze+h3J3tt0Qic/ylzg09Z
-         TYv1RDEN6AQV41IgFcR+2xOs4whksFzEqGUZQpthxbY3ayWmkGfVytnj8mHpGuQOjloL
-         b5gg==
+        b=JTVnVe2ZLDZ6XR0f2n6CMxZ/w4xdlL2aSYHrZ+NHl37EKD5n7uUXtOFp3hCeZxB5Am
+         /iKNBSA7OV/64Il9nkTBUqCud2u6LGdctkSFtXHgs6HA37Dkk9SSuOH8yCroJmWpxIGV
+         W0wLmrVIlzZ/vypMXe85n1nLcej27dbDLQZsvyRTyziFn/BPiQcgwXc0dtNZwrdq0Ug9
+         c8kSIKrrIEudcpJo4w/AxCpx5qzf1U5j9z4UQ8uBkiu2ANB8OiUa7YYe1A9HQi/4crQy
+         ecgsJ/wmBkhSarOSLK3XNgb2rCrn0ZVHgDjqcp/vM5DPZS29qzBXFNaweK67fF65xoXM
+         fyyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :user-agent:date:message-id:autocrypt:openpgp:references:to:from
          :arc-authentication-results;
-        bh=QJxzmBYBMDLz6HPKuwOh3G5QapT1ltLeTLYWMaBUUak=;
-        b=xB7+66smfCLBLFc9Er2FylW+kTBNkwaPVYJ+6lmnlw3VHAn6haJDsd6LOEN4HjD+wX
-         aYlXYrNa4jYhyTRwxB9AZZoN4dGCyBLUCKSepJq5KXHu0273/8ZuHT6cILu20Kl3Kdqd
-         EB9JkXxvrToOUik0/EJAjaktvfM4LV0zf+oYEqKW00dVMnb/+Nx7+SD6hxKuJcuGhViI
-         M0hFzotAphsZLuveOSPvT+z44lgK0sbyVhtDneth8r0aNqOVAMrCJjrBCza+xKHBkHas
-         P+qOuW6i7C3TT5NU3Ge+s3hcFsr0h4bNFKERki2xBXciWjCz5iCLsacdvBRlsFhaM8PM
-         4yZA==
+        bh=3m6l8IqxaXKJeLYezvYDiMQ59GeBAuePfsF78+od4Po=;
+        b=VjgTfDHBem4+24hOogeXqk2NXrEKwYaehHTul5Zn8SQXwDwgAYK0YtY7ztAheDhrSw
+         QMZYA6EJie9JPFXONB9KgQC3Qspjy0XVCDxH5EcUUrGlg4u6973LAVti1WL6Y9OeAPat
+         n8mOqDFEaT9ftZRdhBGKiW9aBYgGhUSADH1aMM604+BgN73YpeJBe//DDk7QG0UF/zLD
+         GG9/aiR6ilMcx81l5ECDki3A8Uf0rFOtKX6r6TfTZSnSnixes1RZ+SEeIzWI5B3eQ5gG
+         9yHfd4S6pgRT7CU/DK2+NvHgzpqPvl6VwSGn9/sKOUG2miInvTe/FMBHa5Je778/vKUR
+         4wHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q1-v6si2105209qki.179.2018.06.24.23.35.35
+        by mx.google.com with ESMTPS id b48-v6si524220qtc.146.2018.06.25.01.32.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 24 Jun 2018 23:35:35 -0700 (PDT)
+        Mon, 25 Jun 2018 01:32:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44488 helo=lists.gnu.org)
+Received: from localhost ([::1]:44859 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXL67-0005k6-7v
-	for alex.bennee@linaro.org; Mon, 25 Jun 2018 02:35:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59799)
+	id 1fXMuw-0005OZ-DR
+	for alex.bennee@linaro.org; Mon, 25 Jun 2018 04:32:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48247)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fXL5z-0005jx-LE
-	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 02:35:28 -0400
+	(envelope-from <thuth@redhat.com>) id 1fXMuo-0005OP-Gx
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 04:32:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fXL5v-0003hi-FX
-	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 02:35:27 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56754 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fXMuj-00065y-Jk
+	for qemu-arm@nongnu.org; Mon, 25 Jun 2018 04:32:02 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47192 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fXL5v-0003h8-Al; Mon, 25 Jun 2018 02:35:23 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fXMuj-00065m-EL; Mon, 25 Jun 2018 04:31:57 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4EE7440704AF;
-	Mon, 25 Jun 2018 06:35:22 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B3EBE401C96A;
+	Mon, 25 Jun 2018 08:31:56 +0000 (UTC)
 Received: from [10.36.116.31] (ovpn-116-31.ams2.redhat.com [10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 31A557C41;
-	Mon, 25 Jun 2018 06:35:20 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20180606144706.29732-1-f4bug@amsat.org>
-	<1160f838-5625-b9bf-6c34-3071ed185074@redhat.com>
-	<0c5018d5-7e87-bba1-7522-c8020277bde0@amsat.org>
-	<c7077a71-6f01-b3f2-cc0b-4d845b967ef3@amsat.org>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E09102156888;
+	Mon, 25 Jun 2018 08:31:53 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
+	Cornelia Huck <cohuck@redhat.com>
+References: <1529056145-6404-1-git-send-email-thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -112,28 +109,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <3289c3d6-91e4-1d29-2d10-da4e0fe7ef6e@redhat.com>
-Date: Mon, 25 Jun 2018 08:35:19 +0200
+Message-ID: <93f1dae5-e071-41f2-a1b7-1fbfdbe7917a@redhat.com>
+Date: Mon, 25 Jun 2018 10:31:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <c7077a71-6f01-b3f2-cc0b-4d845b967ef3@amsat.org>
+In-Reply-To: <1529056145-6404-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 25 Jun 2018 06:35:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 25 Jun 2018 06:35:22 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.5]);
+	Mon, 25 Jun 2018 08:31:56 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Mon, 25 Jun 2018 08:31:56 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] MAINTAINERS: Adopt the Gumstix
- computers-on-module machines
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3] loader: Check access size
+ when calling rom_ptr() to avoid crashes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -145,78 +142,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l8egjvMeLoFs
+X-TUID: O7kAvYqUD3ts
 
-On 22.06.2018 15:30, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi Peter,
->=20
-> On 06/06/2018 12:02 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 06/06/2018 11:53 AM, Thomas Huth wrote:
->>> On 06.06.2018 16:47, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> These COMs are hard to find, and the companie dropped the support
->>
->> "company" :/
->>
->>>> few years ago.
->>>>
->>>> Per the "Gumstix Product Changes, Known Issues, and EOL" pdf:
->>>>
->>>> - Phasing out: PXA270-based Verdex product line
->>>>   September 2012
->>>>
->>>> - Phasing out: PXA255-based Basix & Connex
->>>>   September 2009
->>>>
->>>> However there are still booting SD card image availables, very
->>>> convenient to stress test the QEMU SD card implementation.
->>>> Therefore I volunteer to keep an eye on this file, while it
->>>> is useful for testing.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>>> ---
->>>>  MAINTAINERS | 3 ++-
->>>>  1 file changed, 2 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>> index 41cd3736a9..1825deb762 100644
->>>> --- a/MAINTAINERS
->>>> +++ b/MAINTAINERS
->>>> @@ -491,9 +491,10 @@ F: include/hw/arm/digic.h
->>>>  F: hw/*/digic*
->>>> =20
->>>>  Gumstix
->>>> +M: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>>>  L: qemu-devel@nongnu.org
->>>>  L: qemu-arm@nongnu.org
->>>> -S: Orphan
->>>> +S: Odd Fixes
->>>>  F: hw/arm/gumstix.c
->>>
->>> Great! So we can also remove the Gumstix entries from
->>> https://wiki.qemu.org/Features/LegacyRemoval ?
->>
->> I'll remove these now, eventually adding a new Gumstix COMs
->> wiki entry when Avocados tests are merged, although reading
->> the tests should be enough.
->=20
-> Do you agree with this patch?
+On 15.06.2018 11:49, Thomas Huth wrote:
+> The rom_ptr() function allows direct access to the ROM blobs that we
+> load during startup. However, there are currently no checks for the
+> size of the accesses, so it's currently possible to crash QEMU for
+> example with:
+> 
+> $ echo "Insane in the mainframe" > /tmp/test.txt
+> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
+> Segmentation fault (core dumped)
+> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
+> Segmentation fault (core dumped)
+> $ echo -n HdrS > /tmp/hdr.txt
+> $ sparc64-softmmu/qemu-system-sparc64 -kernel /tmp/hdr.txt -initrd /tmp/hdr.txt
+> Segmentation fault (core dumped)
+> 
+> We need a possibility to check the size of the ROM area that we want
+> to access, thus let's add a size parameter to the rom_ptr() function
+> to avoid these problems.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-FWIW:
+Ping!
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Could anybody please pick this patch up? Qemu-trivial seems to be pretty
+dormant these days (?), so maybe Paolo via misc? Or either the s390x or
+Sparc tree, since it fixes a crash on these machines?
 
-> This is mostly to avoid removing these 2 boards in 2 releases from now.
-
-As long as they are not listed in the "deprecation" chapter of
-qemu-doc.texi, they are *not* officially marked as deprecated and thus
-won't get removed in two releases.
-
-> I already removed them from the "Future deprecated candidates" entry in
-> the Wiki.
-
-Ok, thanks!
-
- Thomas
+ Thanks,
+  Thomas

@@ -1,110 +1,110 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3252036wrq;
-        Sun, 24 Jun 2018 17:55:08 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIUOSvcnHKz602goFCiMWUGOfRNGUz7DAFjzyXf6LQVwIqtqnPsuTI+1itjGU9BTRUIjf7n
-X-Received: by 2002:a37:5a43:: with SMTP id o64-v6mr9159362qkb.211.1529888108259;
-        Sun, 24 Jun 2018 17:55:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529888108; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3254237wrq;
+        Sun, 24 Jun 2018 17:59:39 -0700 (PDT)
+X-Google-Smtp-Source: ADUXVKLzBVRe72XUnFJ6DFMyFPVP3FNsHVl88z8Tmm5s6Mr3muH+U1IRLNEgdUbK98WUDzX66jNH
+X-Received: by 2002:a37:4792:: with SMTP id u140-v6mr9009442qka.100.1529888379596;
+        Sun, 24 Jun 2018 17:59:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1529888379; cv=none;
         d=google.com; s=arc-20160816;
-        b=tfTdbSccF4IOdumPX3GLze+nlW5erJNjMZYyWc2z2oyAL4MTErfvFGGGzkBaHu5bl6
-         dIntnHc9szGYLUqaYw8tGcfT9dOXLvFSLcBHvCyQNV7r1RnHX/VAhdxhtK0jovyWcPqY
-         RaMYCEw0L03mnKkN6xP2KXuyyMyZ2umQfI1+7IF7SNLP9XIBIxiD5Si/JUdgszNAVm1r
-         QwANsM6Fj0gd1/DXSOXWSgu1QmhJUoC/bnJ99gi6v2vGpihSYANjrYGwBHEcv4Ho6rqO
-         lG7wWxHBqZMRveKRb/1BUGx9ugdSE3W8hu+EivW4uctlmQiMzmdby2s81kX9K/hY+J6w
-         KZpA==
+        b=a4P+vOvKnCwLZbDgdkr3kS4QM7QqRSae3r6aNJ6dUa0nhf0cTgX9Ik/iBhSzmYaNtX
+         dBj8w1wIe9pzUszV7H0/CQfhtkkEixq6O+ojclqhWhSjgZ96rsc3FE5ZM/yasyFUDToD
+         MPZEb+3Z/FJBMb5Us++Buuqe4aUbW3oAx5xqNTj22ZxSgXXAXhNrgzKXd0KpU2UaH2If
+         iKelQdr9Z6//CUms+8fqPba7u/4hG0aSRl9kNgPLlD0rIDa62MBfb7oh+F7sqDfgDdK9
+         aPrmxz54n+geO+WubvIK7AUElWAC6n5sG+BnXF+yxtd6Mnj4D2k7C0t2CS5gZ3t8nPZr
+         iRcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:date
-         :in-reply-to:content-transfer-encoding:mime-version:to:from
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to:date
+         :references:content-transfer-encoding:mime-version:to:from
          :message-id:dkim-signature:dkim-signature:arc-authentication-results;
-        bh=Ei13pnUPPeafVextN0bvWPEZmzKK9+8UwxFBw2C810E=;
-        b=o5BL4o6egspvAa6A7yn6Cy4n85Wt7tFB9KupIvFZGlYHr+0rYTzjrUzxHo3kn/8tr3
-         QK9YLrMC1Y+0+SIxQ6BYVAngpphk1eAm3G6hlhh1kUrh3ugPG2DIqJdytWSyJ2u+JR4G
-         RKhoZwnHonO1ou416loHa6LoEHr9aNPjzFDT8NM9gOsDelkfSamuNlhH+btioYB23Bnq
-         DP+R6ydY1RwpLqcDjHsZCnqZIZPusq9KHo5eW16WiPgu65JEJXder0wpByKFymVRQ3sa
-         frCKyREs8J7CxVpPYWZKkX41U5dMMwq69B5whO+Bi6sdrHLhF3gw9dLzxBCUSjiKW3/8
-         18Ng==
+        bh=k4EC3+Eyk5vn/q+UvJRM/w9lT+ps6xqenGmdy451cRM=;
+        b=sSm1GjY8Rl0oelf6IIMDKYsQqFNhzU1gh20xgnRhjNFipYbtMhfye6sVBZMcUBJ7tr
+         y28BwC7eS7iwlDJsa+rladeV5pjUy0FRaogliBsHqC4emproOCoz09RpQgQLxjJ82Ukx
+         rQ+doPbSF8NAPVGGLEJFnnVZFKNvjeQTZErNgvzbSeJWgoDzsKv+0BC9SjCazwtSIcEI
+         LSl0Ee1KsaBo9IyMnczhWKYNkKDsM4kQFxWQhgqibZlgCGX19cNaNy2kki/8D7Ec6Cdk
+         YvgbhWUloKMLZmq3AsYPx8uCjgsr/HsUBJXRqG09yGBPKDt8d/9vMREKL0FaYvFu8NIQ
+         3LZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=cDxnUdt+;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="fUX9/UDk";
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=iSk8Zujn;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=tBtRpqHR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a3-v6si2225622qvm.34.2018.06.24.17.55.08
+        by mx.google.com with ESMTPS id c4-v6si42960qkb.120.2018.06.24.17.59.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 24 Jun 2018 17:55:08 -0700 (PDT)
+        Sun, 24 Jun 2018 17:59:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=cDxnUdt+;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="fUX9/UDk";
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=iSk8Zujn;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=tBtRpqHR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43653 helo=lists.gnu.org)
+Received: from localhost ([::1]:43674 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXFmd-0004jR-OM
-	for alex.bennee@linaro.org; Sun, 24 Jun 2018 20:55:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44747)
+	id 1fXFr1-0006Hc-3c
+	for alex.bennee@linaro.org; Sun, 24 Jun 2018 20:59:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1fXFmR-0004iQ-0K
-	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 20:54:56 -0400
+	(envelope-from <andrew@aj.id.au>) id 1fXFqp-0006GW-Ir
+	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 20:59:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew@aj.id.au>) id 1fXFmL-0002Z8-4n
-	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 20:54:55 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:57441)
+	(envelope-from <andrew@aj.id.au>) id 1fXFql-00044D-MP
+	for qemu-arm@nongnu.org; Sun, 24 Jun 2018 20:59:27 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:45491)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <andrew@aj.id.au>)
-	id 1fXFmL-0002Z2-0Z; Sun, 24 Jun 2018 20:54:49 -0400
+	id 1fXFql-00043z-HX; Sun, 24 Jun 2018 20:59:23 -0400
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 7B30821B9E;
-	Sun, 24 Jun 2018 20:54:48 -0400 (EDT)
+	by mailout.nyi.internal (Postfix) with ESMTP id 018FF21763;
+	Sun, 24 Jun 2018 20:59:22 -0400 (EDT)
 Received: from web4 ([10.202.2.214])
-	by compute4.internal (MEProxy); Sun, 24 Jun 2018 20:54:48 -0400
+	by compute4.internal (MEProxy); Sun, 24 Jun 2018 20:59:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=cc
 	:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; bh=Ei13pnUPPeafVextN0bvWPEZmzKK9
-	+8UwxFBw2C810E=; b=cDxnUdt+P6xW5OKAKCZF1069oVWBct0ZX2xaYiK/K/Ds+
-	5jWP69N3/9NMvMsI4CoBdcWeBn7qV5zAMEnjyKuFP8BnYmckmEH1G+KHUcWMel7K
-	I0sG+BSq2ZuSVyCDjjBpICjw83bmQEm9lm9FRiILO5MzJPTGoiLbOlZ2XDAr0aKE
-	YbZasTBVEHsJGj1Wuuy3qhkH0PYrXk5DEfqLDlPjam+hwT6O+8KDWRQLkHx72h7/
-	EOpTesoOf5cmJD8YR2sq3EbNwHnoudKfltxJe+5momJF5IcwwBdtvIRs0hTlL06p
-	AXGT1y4P1u/2JKk4LPvJIwTZ+3GTrCI0ocB6y3vwQ==
+	:x-me-sender:x-sasl-enc; s=fm3; bh=k4EC3+Eyk5vn/q+UvJRM/w9lT+ps6
+	xqenGmdy451cRM=; b=iSk8ZujnfNJnHtzs5jcUqdsw2I2fSkgjplHSAz+K0e2TG
+	u3e4CajiiQnpfPko8IXhLEBudw5+SYiNxLRvPMWHAdUHTmbcl8ZnZwB0XWqAVR+f
+	IEBt5rr6ccaEZOJo+NbRAv43Mk56qQGWJsPIWKPwHT7lXZVNiKHfTJT4Q7C0MDBT
+	e4daa//bogij2AlEC5u/+ntlOZHShi72CDemb6P7L1I/4JVqQgeE2AN3+gVDQb+G
+	dLFJBo1mQn8IoRRO/6mzq88WPMo+c6AOXkXIr9Sw/6DE9k2XFf1wCz19eX1S/z1b
+	nC33Q0xRSDLJLtFmmL3b1e8O64AmYlrS0w/A/XFow==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:content-transfer-encoding:content-type
 	:date:from:in-reply-to:message-id:mime-version:references
-	:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=Ei13pn
-	UPPeafVextN0bvWPEZmzKK9+8UwxFBw2C810E=; b=fUX9/UDkhzzIzQRnx1kBvV
-	ohbQSldfRCbEwIYF7pJn7/vvuZ4m3yqyF/cMfGw66oS/NtesGOLu9OVzy5xgFKzm
-	AfKg0wbaGJpTe95AvPbY7tKmqrL4ypz7CIo05Mg+JWSHXLIf+WZ63W+SPj2N8Joq
-	lxRQdsw+SFVOZ3hnzdJhsNFqMeRTLhVH/7S7ygiGaM5NhsDI8FCEEgYgeJscdXqq
-	sy7tfyp3UL+gexWT+Q8dfwpjQ6aClk5YRb+2ExEtz4JLr5Zr/426E7ytItdY9LDP
-	KRNrivl9vWmaSZG0uXu/QE9/KFsAd7wOYl+Qy3+5czxNCuTvfpWbExNujMLKtIZg
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=k4EC3+
+	Eyk5vn/q+UvJRM/w9lT+ps6xqenGmdy451cRM=; b=tBtRpqHRGC6iDkfBg4vLXc
+	K1TnDyN91pckC/P60FijY6TNoB/D4xX/Ez0XsP16NFXBxLQxYbQYg0IYkxzxAsdk
+	iAHXoy6ttOSBeDxw0n0VMoWrjrmH0a+ONqzGSVdIRps/mD7oIJeZhFaWxKk/MW7c
+	Cxy8Q9/FKrGTvzmZuAbU92wpD/1DDUG8IR8XHlLV83bAZtBdCl7HnaSIzomBM+7C
+	4+fTRLqEz+7LctYiAz9fIYDo7SDppy/xpGQ3KTlT9zv0XRxggrhuTZ+JwBaLFRjx
+	lNAunjKCkUri4pa65eBsKinE8ay7nXrQWXaW+w1J54mnr7s6eV8lEauwVpzBsYvw
 	==
-X-ME-Proxy: <xmx:WD0wW5gHtOdxv4IapDosW3GHOVJ8B-Fr3Qkydct3IETcKl9Jy3MqBA>
-	<xmx:WD0wWwR43jNcB2DNHYPJutPJ1Bp3bKgLnqrZ_mBWJ1QtOo9Uf_Dm_w>
-	<xmx:WD0wW5LQey_KqM5rMZNuKst4XnNxoZhNSJ_aRte82ZGvrb-GIlPMYQ>
-	<xmx:WD0wW3MAZITtrcgQ3dq2HXFqM4oQTaK_eRtuHgscpeB19ysUlFxwLg>
-	<xmx:WD0wW7zKas59v18-7riq5t4bYvrfYkA8PVStEthz6awqMiHIsfszLw>
-	<xmx:WD0wW2tXQHdbFtlgnM6UOFmSr68bq-LVFAPC7rwHD06IP_mR-rSPsQ>
-X-ME-Sender: <xms:WD0wW7AQipB6bRtFW5MrTB2Yd-Lf91lsK2DymVSCbpty97Z8Oqwqag>
+X-ME-Proxy: <xmx:aj4wW4jXMFnpL2MZ-6W6puUf3FhrBd_d0PQFmP1AOKT_xuxlqnnHyQ>
+	<xmx:aj4wW6fOwA5RQu_9oSB8sz0o0vZRDNS-w74DJuLQT_oxTtawxwdkbw>
+	<xmx:aj4wWxCuHf6culDenN2GCDy04AsUgybjQIYPYPo8Sc8FciPI6DlMCg>
+	<xmx:aj4wW2ZhbdgjCtQFsNrSLzhR37_YjH05_2DSq78oFgYkF34HFGiLJA>
+	<xmx:aj4wWy0-r9jeQjHNKVUPvLL3iGmoS6KqEnbPVNogDwsiSlSY0GHLDw>
+	<xmx:aj4wWzt2agh0gkvUNIPVokQMNW_Ib9Kw93N8V7qchE-6QQhZwq3_Eg>
+X-ME-Sender: <xms:aj4wWwZKuHpZM5ek0vwRgtirT2Lu3Yajos6e9prV2wKJTr2TatNWTg>
 Received: by mailuser.nyi.internal (Postfix, from userid 99)
-	id 402DCBA43D; Sun, 24 Jun 2018 20:54:48 -0400 (EDT)
-Message-Id: <1529888088.2193467.1418937200.513B366B@webmail.messagingengine.com>
+	id A6A9FBA43D; Sun, 24 Jun 2018 20:59:22 -0400 (EDT)
+Message-Id: <1529888362.2194836.1418938448.349CB4FA@webmail.messagingengine.com>
 From: Andrew Jeffery <andrew@aj.id.au>
 To: =?utf-8?Q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
 X-Mailer: MessagingEngine.com Webmail Interface - ajax-0d8ea36c
-In-Reply-To: <20180622075700.5923-3-clg@kaod.org>
-Date: Mon, 25 Jun 2018 10:24:48 +0930
 References: <20180622075700.5923-1-clg@kaod.org>
-	<20180622075700.5923-3-clg@kaod.org>
+	<20180622075700.5923-4-clg@kaod.org>
+Date: Mon, 25 Jun 2018 10:29:22 +0930
+In-Reply-To: <20180622075700.5923-4-clg@kaod.org>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.111.4.26
-Subject: Re: [Qemu-arm] [PATCH v2 2/3] aspeed: initialize the SCU controller
- first
+Subject: Re: [Qemu-arm] [PATCH v2 3/3] aspeed/timer: use the APB frequency
+ from the SCU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,101 +120,131 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZX4DlVq9wJBd
+X-TUID: +zsPU1/zA0ey
 
-On Fri, 22 Jun 2018, at 17:26, C=C3=A9dric Le Goater wrote:
-> The System Control Unit should be initialized first as it drives all
-> the configuration of the SoC and other device models.
+On Fri, 22 Jun 2018, at 17:27, C=C3=A9dric Le Goater wrote:
+> The timer controller can be driven by either an external 1MHz clock or
+> by the APB clock. Today, the model makes the assumption that the APB
+> frequency is always set to 24MHz but this is incorrect.
+>=20
+> The AST2400 SoC on the palmetto machines uses a 48MHz input clock
+> source and the APB can be set to 48MHz. The consequence is a general
+> system slowdown. The QEMU machines using the AST2500 SoC do not seem
+> impacted today because the APB frequency is still set to 24MHz.
+>=20
+> We fix the timer frequency for all SoCs by linking the Timer model to
+> the SCU model. The APB frequency driving the timers is now the one
+> configured for the SoC.
 >=20
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-Acked-by: Andrew Jeffery <andrew@aj.id.au>
+Reviewed-by: Andrew Jeffery <andrew@aj.id.au>
 
 > ---
->  hw/arm/aspeed_soc.c | 40 ++++++++++++++++++++--------------------
->  1 file changed, 20 insertions(+), 20 deletions(-)
+>  include/hw/timer/aspeed_timer.h |  4 ++++
+>  hw/arm/aspeed_soc.c             |  2 ++
+>  hw/timer/aspeed_timer.c         | 19 +++++++++++++++----
+>  3 files changed, 21 insertions(+), 4 deletions(-)
 >=20
+> diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_ti=
+mer.h
+> index bd6c1a7f9609..040a08873432 100644
+> --- a/include/hw/timer/aspeed_timer.h
+> +++ b/include/hw/timer/aspeed_timer.h
+> @@ -24,6 +24,8 @@
+>=20=20
+>  #include "qemu/timer.h"
+>=20=20
+> +typedef struct AspeedSCUState AspeedSCUState;
+> +
+>  #define ASPEED_TIMER(obj) \
+>      OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
+>  #define TYPE_ASPEED_TIMER "aspeed.timer"
+> @@ -55,6 +57,8 @@ typedef struct AspeedTimerCtrlState {
+>      uint32_t ctrl;
+>      uint32_t ctrl2;
+>      AspeedTimer timers[ASPEED_TIMER_NR_TIMERS];
+> +
+> +    AspeedSCUState *scu;
+>  } AspeedTimerCtrlState;
+>=20=20
+>  #endif /* ASPEED_TIMER_H */
 > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 1955a892f4a4..7cc05ee27ea4 100644
+> index 7cc05ee27ea4..e68911af0f90 100644
 > --- a/hw/arm/aspeed_soc.c
 > +++ b/hw/arm/aspeed_soc.c
-> @@ -109,18 +109,6 @@ static void aspeed_soc_init(Object *obj)
->      object_initialize(&s->cpu, sizeof(s->cpu), sc->info->cpu_type);
->      object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
+> @@ -127,6 +127,8 @@ static void aspeed_soc_init(Object *obj)
 >=20=20
-> -    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
-> -    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
-> -
-> -    object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_T=
+>      object_initialize(&s->timerctrl, sizeof(s->timerctrl), TYPE_ASPEED_T=
 IMER);
-> -    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), N=
+>      object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl), N=
 ULL);
-> -    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
-> -
-> -    object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
-> -    object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
-> -    qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
-> -
->      object_initialize(&s->scu, sizeof(s->scu), TYPE_ASPEED_SCU);
->      object_property_add_child(obj, "scu", OBJECT(&s->scu), NULL);
->      qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
-> @@ -133,6 +121,18 @@ static void aspeed_soc_init(Object *obj)
->      object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
->                                "hw-prot-key", &error_abort);
+> +    object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+> +                                   OBJECT(&s->scu), &error_abort);
+>      qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
 >=20=20
-> +    object_initialize(&s->vic, sizeof(s->vic), TYPE_ASPEED_VIC);
-> +    object_property_add_child(obj, "vic", OBJECT(&s->vic), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->vic), sysbus_get_default());
+>      object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
+> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+> index 1e31e22b6f1f..5e3f51b66b43 100644
+> --- a/hw/timer/aspeed_timer.c
+> +++ b/hw/timer/aspeed_timer.c
+> @@ -10,8 +10,10 @@
+>   */
+>=20=20
+>  #include "qemu/osdep.h"
+> +#include "qapi/error.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/timer/aspeed_timer.h"
+> +#include "hw/misc/aspeed_scu.h"
+>  #include "qemu-common.h"
+>  #include "qemu/bitops.h"
+>  #include "qemu/timer.h"
+> @@ -26,7 +28,6 @@
+>  #define TIMER_CLOCK_USE_EXT true
+>  #define TIMER_CLOCK_EXT_HZ 1000000
+>  #define TIMER_CLOCK_USE_APB false
+> -#define TIMER_CLOCK_APB_HZ 24000000
+>=20=20
+>  #define TIMER_REG_STATUS 0
+>  #define TIMER_REG_RELOAD 1
+> @@ -80,11 +81,11 @@ static inline bool timer_external_clock(AspeedTimer *=
+t)
+>      return timer_ctrl_status(t, op_external_clock);
+>  }
+>=20=20
+> -static uint32_t clock_rates[] =3D { TIMER_CLOCK_APB_HZ, TIMER_CLOCK_EXT_=
+HZ };
+> -
+>  static inline uint32_t calculate_rate(struct AspeedTimer *t)
+>  {
+> -    return clock_rates[timer_external_clock(t)];
+> +    AspeedTimerCtrlState *s =3D timer_to_ctrl(t);
 > +
-> +    object_initialize(&s->timerctrl, sizeof(s->timerctrl),=20
-> TYPE_ASPEED_TIMER);
-> +    object_property_add_child(obj, "timerctrl", OBJECT(&s->timerctrl),=20
-> NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->timerctrl), sysbus_get_default());
-> +
-> +    object_initialize(&s->i2c, sizeof(s->i2c), TYPE_ASPEED_I2C);
-> +    object_property_add_child(obj, "i2c", OBJECT(&s->i2c), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->i2c), sysbus_get_default());
-> +
->      object_initialize(&s->fmc, sizeof(s->fmc), sc->info->fmc_typename);
->      object_property_add_child(obj, "fmc", OBJECT(&s->fmc), NULL);
->      qdev_set_parent_bus(DEVICE(&s->fmc), sysbus_get_default());
-> @@ -195,6 +195,14 @@ static void aspeed_soc_realize(DeviceState *dev,=20
+> +    return timer_external_clock(t) ? TIMER_CLOCK_EXT_HZ : s->scu->apb_fr=
+eq;
+>  }
+>=20=20
+>  static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint64_t=20
+> now_ns)
+> @@ -449,6 +450,16 @@ static void aspeed_timer_realize(DeviceState *dev,=20
 > Error **errp)
->      memory_region_add_subregion(get_system_memory(),=20
-> ASPEED_SOC_SRAM_BASE,
->                                  &s->sram);
->=20=20
-> +    /* SCU */
-> +    object_property_set_bool(OBJECT(&s->scu), true, "realized", &err);
-> +    if (err) {
+>      int i;
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>      AspeedTimerCtrlState *s =3D ASPEED_TIMER(dev);
+> +    Object *obj;
+> +    Error *err =3D NULL;
+> +
+> +    obj =3D object_property_get_link(OBJECT(dev), "scu", &err);
+> +    if (!obj) {
 > +        error_propagate(errp, err);
+> +        error_prepend(errp, "required link 'scu' not found: ");
 > +        return;
 > +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, ASPEED_SOC_SCU_BASE);
-> +
->      /* VIC */
->      object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
->      if (err) {
-> @@ -219,14 +227,6 @@ static void aspeed_soc_realize(DeviceState *dev,=20
-> Error **errp)
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
->      }
+> +    s->scu =3D ASPEED_SCU(obj);
 >=20=20
-> -    /* SCU */
-> -    object_property_set_bool(OBJECT(&s->scu), true, "realized", &err);
-> -    if (err) {
-> -        error_propagate(errp, err);
-> -        return;
-> -    }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, ASPEED_SOC_SCU_BASE);
-> -
->      /* UART - attach an 8250 to the IO space as our UART5 */
->      if (serial_hd(0)) {
->          qemu_irq uart5 =3D qdev_get_gpio_in(DEVICE(&s->vic), uart_irqs[4=
-]);
+>      for (i =3D 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
+>          aspeed_init_one_timer(s, i);
 > --=20
 > 2.13.6
 >=20

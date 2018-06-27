@@ -1,107 +1,103 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5804186wrq;
-        Tue, 26 Jun 2018 22:25:44 -0700 (PDT)
-X-Received: by 2002:a65:5185:: with SMTP id h5-v6mr3966105pgq.0.1530077143876;
-        Tue, 26 Jun 2018 22:25:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530077143; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5805229wrq;
+        Tue, 26 Jun 2018 22:27:14 -0700 (PDT)
+X-Received: by 2002:a62:fcb:: with SMTP id 72-v6mr4359828pfp.231.1530077234097;
+        Tue, 26 Jun 2018 22:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530077234; cv=none;
         d=google.com; s=arc-20160816;
-        b=e07AlAyER43ltJw3l16LgGUXDDq75O49KCXNyU88wuiRKL17pX7x0FXj3nZEHEOlLe
-         wiCSros1L7u983T/+3n4Y15ZrJFxAMqYq0G7cW8RT7nYZc7ZFcuh4VgTESydH1u8l7Q0
-         Zq0woBaFVvJSvoHge/rI4u2lzWIYqTsvwzlKUtn/RspXGUj+y2aI/eIoU8BYyQjj/JM3
-         th4yxXmmCpox++n8+0NZ9qyst/QxB23aXAMkIV7yewqSIPwBjNPEYsKpPnWqJ4Kj3uj2
-         q8Y554xO8dbRm6ysINolseQZ3XVlSet4Y44PIO0LqFJLMVBQF6BU7BLkXn2cChAmOQfC
-         j86w==
+        b=NHaRwFhxChnuPdxTSvYibE8JT5P2sKGAFvqDwCVe65xXQWiXkniT98K0v5HEJExB93
+         1HgS3ph/aj6ZtiZ4boDpzF6s9uwT7Sw+yrDAbJ1gGZM3zZSmbgnsaVI91V2yCg5q3Yz9
+         5aSrnw8Ub+FfULeCEzjw9mPyWmtMXLZHlu2F+qq8nxw+xn2O3a0zDJkd5PX35BRnIxTY
+         rNjDnRS66Zf6avAkBmxxcjVhBZ6XmktmLJihiSdaOl+l8xwNt5aOAf4k9aGFHujtOUMY
+         BnAk0wQdxHlspI2sLCtEEsrtlC1RvVEpX8tXUheJTFiNGQMbT8p3k/cjGqIPsHV6I4DZ
+         HDEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature:arc-authentication-results;
-        bh=mkP/kVT05HAWJwwvuZEw/r6HWwyfEkL3qlsVYAg9rWQ=;
-        b=dTD86KOVMomdb7rhak3PYIAIo+fBFGe3lgNj6T5qdwhztluw2Y0vTHN77BpcnlBwME
-         M29CkqVeWfgqVxolRlZ920RzbJP/yPEJvY100bcSLK5SVPdlu9ZpoTKGFJiUBZiWWmvT
-         yU5uDWo7hYqNU9PSB5zQU1srZyE0FvpMch2swLAjgRIsGdLSHavtj8wyyLxbYocNXGLT
-         bxyaj6bYikzCTVQOPMalJ8EWlrGQ7F1O8qxWL5DWgQpM4L35OGKKMwZRRg0/FgS4vGMQ
-         XEOPliOM6mwwuNawe9qmsHhtTm+GgBk2h0U8wXUflgzl9ULolOCBEYWDih/rPWCcCO74
-         XCvw==
+        bh=7nWS+GVB74gp1JAI8V9LwyLXio4GNjY8qiSfu1UJ3nI=;
+        b=pOqROmkUSacfUkDFSXojbCgBXxWB3lLfYz1wo+fQu0iV9O8s3FLvGMnkKgTErotz01
+         u46/B07uW5e46wkZkxmQ7b7euNGlcBk7Ftw1otr4fCu9b5YPcziMxPAZkxex1HgKaCQm
+         lrTTSgn5klP+uDQaFpYBBCgSr1MeD7UgDgcdcZo45zycQrDzGohjIR07CNu+nrLtUwhN
+         qVPXL0W7mUgt4Tw3gJ2U0y/7nMtzywoO19SLQhMmWvJL5bqXtI5JZXaLyxsyc/RlY30p
+         3h/i+kPfNzNp8v3e/JaNfGaohwaLTQmfLnIsRPQdUco/9qU/Uy3mNIjrMFD1wb4gxHSw
+         qtpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QZi6zSlh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cpYFmUdg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u1-v6sor982526pls.117.2018.06.26.22.25.43
+        by mx.google.com with SMTPS id d5-v6sor1069600plr.18.2018.06.26.22.27.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 26 Jun 2018 22:25:43 -0700 (PDT)
+        Tue, 26 Jun 2018 22:27:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QZi6zSlh;
+       dkim=pass header.i=@linaro.org header.s=google header.b=cpYFmUdg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=mkP/kVT05HAWJwwvuZEw/r6HWwyfEkL3qlsVYAg9rWQ=;
-        b=QZi6zSlhjtazOMPCUQ+d0SxCB703M5RYRMZ8Hjrpuv7mJM/tbn4KeacoZOGa6mKQbA
-         2tu99lnqXxbdblmiVn5xR9zKezQzTudJQSf/SfydB8OpAnP4LUs3a1IwbE4NifbAVFax
-         7CbFrVsY/eERYyvlo7RIwBg6pEoIA0MQheqjI=
+        bh=7nWS+GVB74gp1JAI8V9LwyLXio4GNjY8qiSfu1UJ3nI=;
+        b=cpYFmUdg9yRlg+m8vHIIsncRZzoHPVsa/58LV9iYSzHc1EBugoIZPJL1Wozau09ViV
+         xJBuZMFA3pQPPndoLfpr2quyl/2JYxVDFUuaz4w8QszuBBPTxb4On7BwCeN51w9qLwNS
+         osGkC0EP8PLNKXrFd2AZhwUCMiBlf2psCZJIw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=mkP/kVT05HAWJwwvuZEw/r6HWwyfEkL3qlsVYAg9rWQ=;
-        b=olIczxj/nE+Qvky6vG4O5Pc3WUQrbKmd4F2SWsQ5A9JIGtgQSEFLR+l/4jjtx+W1Z7
-         pK6zoVzMpZ+hDSB7aDhXh+1Ogm07jnjsghtHwwsLnkTBygXKGxl9+gJXxtuadaTTE4gH
-         gz4luWHokfZHwGq3XAt8np+wT/LenJmkaN66hCMAzCHgvEqscLY/hCyZhwUUtoKwDZNt
-         OFk3GINPAM/ecXbds5FRYnv3m8/SqYNYLuNMYsF6lWXIFnNiIuTSFAQqioWAgmX/+wFo
-         oEK6TQSapgs2T2jYC00SxQF4q1sYeoR327JKrN7/8L/SIDASJtNNmN1mwIkc1D+ccsMk
-         lm7w==
-X-Gm-Message-State: APt69E2fdMqIbCpanQ9oqOzBZsBRW0mBCaQqqnk5WLVUYwuMAajBaI/E
-	GGddVOWULY+L1A6TuegU0E7vHDpK
-X-Google-Smtp-Source: ADUXVKKX1B1OdOqDwhYCB/Zm+7JF6rh6YR8Cm71KU2sUYyXASwuvlQD9R/027bPFaQBWRwnndsfF/A==
-X-Received: by 2002:a17:902:b589:: with SMTP id a9-v6mr4655083pls.140.1530077143261;
-        Tue, 26 Jun 2018 22:25:43 -0700 (PDT)
+        bh=7nWS+GVB74gp1JAI8V9LwyLXio4GNjY8qiSfu1UJ3nI=;
+        b=s7CwZ+V3TcceR89HTzymyZrcCA0B8m9P3v5AM/6vOr+tgXq9rWxZrRRFmgLR6QnokI
+         e2NYJ9LfXPYolZ+M1D/horHdUrQVCaJV4hdf4sC2wrljyYXi9aYLEG3M22WFvf7FHc+7
+         mxvWm+n+xX4sGJmPYVBA0Kea05Z3cNTVBo5Bo8gr4NQ09yKZno76RbP/CGSXzWOntnpg
+         DPHqlLpRQSnyvSu4Em2GSeM0zicjj5rhvjyfgO9IdgGe1XASNIfXyF86rO/D3Bm+N/Gq
+         pKwwsuCok3f+jEZl0qnJM267tGvB1pReDA/omc6ngq7xLM7e4UdRm1yDXtdTXVmbJYtS
+         LTIQ==
+X-Gm-Message-State: APt69E0169qoi0h+HnPBicn5wf0xXhwJ2fb2YzwtzEg+0dHSkV+yUCri
+	Ky9XDtvfNRwsIC5JhWn3oStNwL+9dabIWg==
+X-Google-Smtp-Source: ADUXVKKCJtQFJloTnE1OhRd7eRKYRWN6faI636+nfKE84TtPUMuYs0Emf39ZKOhFo4AOCbJHWby0UA==
+X-Received: by 2002:a17:902:8210:: with SMTP id x16-v6mr4570943pln.307.1530077233712;
+        Tue, 26 Jun 2018 22:27:13 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net. [97.126.112.211])
-        by smtp.gmail.com with ESMTPSA id f9-v6sm4086131pgt.79.2018.06.26.22.25.41
+        by smtp.gmail.com with ESMTPSA id t4-v6sm5519553pfe.91.2018.06.26.22.27.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Jun 2018 22:25:42 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v3 2/5] target/arm: relax permission checks
- for HWCAP_CPUID registers
+        Tue, 26 Jun 2018 22:27:12 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v3 4/5] linux-user/elfload: enable
+ HWCAP_CPUID for AArch64
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
 References: <20180625160009.17437-1-alex.bennee@linaro.org>
- <20180625160009.17437-3-alex.bennee@linaro.org>
+ <20180625160009.17437-5-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <945dc7c9-98aa-0238-1db2-8b5c9bf2aa1c@linaro.org>
-Date: Tue, 26 Jun 2018 22:25:40 -0700
+Message-ID: <a9360a8e-cdcc-14a1-2fd7-623faf779abc@linaro.org>
+Date: Tue, 26 Jun 2018 22:27:11 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180625160009.17437-3-alex.bennee@linaro.org>
+In-Reply-To: <20180625160009.17437-5-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: wPhaZA5vI9My
+X-TUID: Hu/omZE85yRG
 
 On 06/25/2018 09:00 AM, Alex Bennée wrote:
-> +#ifdef CONFIG_USER_ONLY
-> +            /* Some AArch64 CPU ID/feature are exported to userspace
-> +             * by the kernel (see HWCAP_CPUID) */
-> +            if (r->opc0 == 3 && r->crn == 0 &&
-> +                (r->crm == 0 ||
-> +                 (r->crm >= 4 && r->crm <= 7))) {
-> +                mask = PL0_R;
-> +                break;
-> +            }
-> +#endif
+> Userspace programs should (in theory) query the ELF HWCAP before
+> probing these registers. Now we have implemented them all make it
+> public.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  linux-user/elfload.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Why not just set mask to PL0U_R | PL1_RW?
-This mask doesn't affect the actual permissions, just the check.
-
-Then of course merge with the next patch.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

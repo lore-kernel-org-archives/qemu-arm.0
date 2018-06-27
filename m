@@ -1,417 +1,99 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id r2-v6sm5190602wrq.55.2018.06.27.08.56.20
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Jun 2018 08:56:20 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 2C0653E01DB;
-	Wed, 27 Jun 2018 16:56:20 +0100 (BST)
-References: <20180627043328.11531-1-richard.henderson@linaro.org> <20180627043328.11531-3-richard.henderson@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH v6 02/35] target/arm: Implement SVE Contiguous Load, first-fault and no-fault
-In-reply-to: <20180627043328.11531-3-richard.henderson@linaro.org>
-Date: Wed, 27 Jun 2018 16:56:20 +0100
-Message-ID: <876024w7dn.fsf@linaro.org>
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp6450949wrq;
+        Wed, 27 Jun 2018 09:57:22 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfWj1sC2HYzh36MVyS50UIwDm33jraebX143NSVKQqDyOEPq7fWPdNEsjRgnAWzbKq/1vem
+X-Received: by 2002:a50:be49:: with SMTP id b9-v6mr6171858edi.46.1530118642185;
+        Wed, 27 Jun 2018 09:57:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530118642; cv=none;
+        d=google.com; s=arc-20160816;
+        b=m1zxvvg0cdCzqWbR0dnV/JW6wVwAu/L3Y+cb7iVbaScIvExPfGbfN/2DPYQgBybzQk
+         E9IzCzR1vT8fpj9i1PQFkhDwY1bZjnAUKW15ldSgmg7qSeqHyklbdaUX1PJZVlcodhVZ
+         JVEfamtQxuL3BDMz5IQkSpQVl7BFLyt0cULgzoqJ5Wr3VbigqNm1gZ0mM2W1Eeh352xm
+         GkxZX07/1mk55choa+O6NrxKQD8B44/beZRHI7rHlgWLS7HQS8+xk+YJFhldUEG7QXdo
+         pLPCobK7tMJO5RtYxNhfd5IYWbnN3skEsJYYfiJLTRhlG6hu6P+JfBgSDwlJ+9/6KtTX
+         Rcgg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=HFPduqSYXd4nrkQx0PxiZTVs0z/V0pDxghwZAlBffwM=;
+        b=VhuhdY/8NuotJ1RTkCDBBmUhAdf9j4HoUOglOnDdSts+xrDl02ZHAF0YKwfwYO7S7j
+         rqFXTZ8UjJfzW2WkjQsBbLc440PVTqAdX+o7Ucv3iOHY4gnKU4UdQzCJYu9UMb2odkgo
+         /DyqoDPVb0V4ZvdyGpT2J/5iK90Sc3VnnlzNDDd4iWBl6oHDiTz+E2EKJYU1JMaaJcUd
+         GMAGUJd2uDzb2NTTXgEbnyDvbXjn7lpKUm5PnqRJ7DEaNPt55rQUOmH5Nz7oquUxScHq
+         JFbDNFzI91MX1h2TESYnSnLdI1XBDcRde49zqVJlafr6O+L2xARvwzs5080KOuYsZ2gZ
+         F9wg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=1PwMtzEd;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=iXycHAjv;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Return-Path: <cota@braap.org>
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com. [66.111.4.25])
+        by mx.google.com with ESMTPS id g29-v6si2477168edb.317.2018.06.27.09.57.21
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 27 Jun 2018 09:57:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) client-ip=66.111.4.25;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=1PwMtzEd;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=iXycHAjv;
+       spf=pass (google.com: domain of cota@braap.org designates 66.111.4.25 as permitted sender) smtp.mailfrom=cota@braap.org
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 1B9C8213D0;
+	Wed, 27 Jun 2018 12:57:21 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Wed, 27 Jun 2018 12:57:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-sender
+	:x-me-sender:x-sasl-enc; s=mesmtp; bh=HFPduqSYXd4nrkQx0PxiZTVs0z
+	/V0pDxghwZAlBffwM=; b=1PwMtzEdBvS0+1TsL27OF+wtFhmkGOdnTX/zwY72EL
+	6+Vz20DES6WyK3zvfKIPjyAcoikDctrauEJ41TGOPHDGheMiNNBat4FHaMIxJQuG
+	wdcYhIZ+FtIab34B5OWpS8WwsaQ9+wUBT0dzv75P1T2j5htsWZcoNNNJ74OK1Gio
+	s=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:date:from:in-reply-to:message-id:mime-version:references
+	:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=HFPduq
+	SYXd4nrkQx0PxiZTVs0z/V0pDxghwZAlBffwM=; b=iXycHAjvKYsjRQ6Wu/cCdJ
+	Zxi+5AD1UoZgrKAFMJJUZ0DfUUDEFLMRNUX0M9gcT8TV4qLpFQAFHqI5dh3K+W50
+	J5Ro9SLDVLH5pnAX6USmmrNsjLmeWN+aF9weG6APSa7Zt5FsWnXMQjfJNn3ae/+I
+	JADBi8rEeWGQESYCCOhNgx40FsiMKqEXHACYAsp/FNIzHaQTuWYW+vj80oTKX6/y
+	7LvFs1JCLbg998ZXqrNg8+9nypZDqlNQzT7GOzdLKLMKaOgtSqzxNrncZaozOkEs
+	/3IXqQlFXI+vQqhZBsB14pMOUpgAPJRYAR+bBdIbXwAh8SxmJK7/b6b9SKcVYKbA
+	==
+X-ME-Proxy: <xmx:8MEzW5GYU4aQ5pZ0wQxqkmPN5eHsvY5BloGqbkDDb3RR-jt9vXHMqQ>
+    <xmx:8MEzW7yBMANQaFnupbfTuuIImBL5fwMvzUq25Hw_MjjSd2KJEto6Ow>
+    <xmx:8MEzW7Hg1q8N-1ZDlGEX7rFkywZZbDH_P088rgUQEBThnrei53GLig>
+    <xmx:8MEzWwtKzfdzqCvlkmvFf4D72pJen0E3y_uBFhO2Vy-BXsPeYdwKSg>
+    <xmx:8MEzW_XA1umTpBMhCROG0VmONAh5rXypNczpsIUJaRM_xfE-qKSyYQ>
+    <xmx:8cEzW58W74YKKOakiYTkB8KXSlaN0KNUrlqMcsM4n8BdTE329JUtzQ>
+X-ME-Sender: <xms:8MEzW7v5-0F5LfS4nY6PlU0qCgWIhs35fSfWfqlIJu1jshb8Oshv4g>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 7EA631025D;
+	Wed, 27 Jun 2018 12:57:20 -0400 (EDT)
+Date: Wed, 27 Jun 2018 12:57:20 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v3 1/5] target/arm: support reading of
+ CNT[VCT|FRQ]_EL0 from user-space
+Message-ID: <20180627165720.GB17117@flamenco>
+References: <20180625160009.17437-1-alex.bennee@linaro.org>
+ <20180625160009.17437-2-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: bQ3nZSx60fci
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20180625160009.17437-2-alex.bennee@linaro.org>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-TUID: yAhNclNwBXyG
 
+On Mon, Jun 25, 2018 at 17:00:05 +0100, Alex Bennée wrote:
+> Since kernel commit a86bd139f2 (arm64: arch_timer: Enable CNTVCT_EL0
+> trap..)
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+I'd also mention here that this feature became available in v4.12.
 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Thanks,
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-(with cortex-strings test cases)
-
->
-> ---
-> v6:
->   * Remove cold attribute from record_fault, add unlikely marker
->     to the if that protects its call, which seems to be enough to
->     prevent the function being inlined.
->   * Fix the set of bits masked by record_fault.
-> ---
->  target/arm/helper-sve.h    |  40 ++++++++++
->  target/arm/sve_helper.c    | 157 +++++++++++++++++++++++++++++++++++++
->  target/arm/translate-sve.c |  69 ++++++++++++++++
->  target/arm/sve.decode      |   6 ++
->  4 files changed, 272 insertions(+)
->
-> diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-> index fcc9ba5f50..7338abbbcf 100644
-> --- a/target/arm/helper-sve.h
-> +++ b/target/arm/helper-sve.h
-> @@ -754,3 +754,43 @@ DEF_HELPER_FLAGS_4(sve_ld1hds_r, TCG_CALL_NO_WG, voi=
-d, env, ptr, tl, i32)
->
->  DEF_HELPER_FLAGS_4(sve_ld1sdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
->  DEF_HELPER_FLAGS_4(sve_ld1sds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldff1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +DEF_HELPER_FLAGS_4(sve_ldff1bhu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1bsu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1bdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1bhs_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1bss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1bds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldff1hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +DEF_HELPER_FLAGS_4(sve_ldff1hsu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1hdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1hss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1hds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldff1ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +DEF_HELPER_FLAGS_4(sve_ldff1sdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldff1sds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldff1dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bhu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bsu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bhs_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1bds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldnf1hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1hsu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1hdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1hss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1hds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldnf1ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1sdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +DEF_HELPER_FLAGS_4(sve_ldnf1sds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i=
-32)
-> +
-> +DEF_HELPER_FLAGS_4(sve_ldnf1dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i3=
-2)
-> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-> index 4e6ad282f9..0d22a57a22 100644
-> --- a/target/arm/sve_helper.c
-> +++ b/target/arm/sve_helper.c
-> @@ -2963,3 +2963,160 @@ DO_LD4(sve_ld4dd_r, cpu_ldq_data_ra, uint64_t, ui=
-nt64_t, )
->  #undef DO_LD2
->  #undef DO_LD3
->  #undef DO_LD4
-> +
-> +/*
-> + * Load contiguous data, first-fault and no-fault.
-> + */
-> +
-> +#ifdef CONFIG_USER_ONLY
-> +
-> +/* Fault on byte I.  All bits in FFR from I are cleared.  The vector
-> + * result from I is CONSTRAINED UNPREDICTABLE; we choose the MERGE
-> + * option, which leaves subsequent data unchanged.
-> + */
-> +static void record_fault(CPUARMState *env, uintptr_t i, uintptr_t oprsz)
-> +{
-> +    uint64_t *ffr =3D env->vfp.pregs[FFR_PRED_NUM].p;
-> +
-> +    if (i & 63) {
-> +        ffr[i / 64] &=3D MAKE_64BIT_MASK(0, i & 63);
-> +        i =3D ROUND_UP(i, 64);
-> +    }
-> +    for (; i < oprsz; i +=3D 64) {
-> +        ffr[i / 64] =3D 0;
-> +    }
-> +}
-> +
-> +/* Hold the mmap lock during the operation so that there is no race
-> + * between page_check_range and the load operation.  We expect the
-> + * usual case to have no faults at all, so we check the whole range
-> + * first and if successful defer to the normal load operation.
-> + *
-> + * TODO: Change mmap_lock to a rwlock so that multiple readers
-> + * can run simultaneously.  This will probably help other uses
-> + * within QEMU as well.
-> + */
-> +#define DO_LDFF1(PART, FN, TYPEE, TYPEM, H)                             \
-> +static void do_sve_ldff1##PART(CPUARMState *env, void *vd, void *vg,    \
-> +                               target_ulong addr, intptr_t oprsz,       \
-> +                               bool first, uintptr_t ra)                \
-> +{                                                                       \
-> +    intptr_t i =3D 0;                                                   =
-  \
-> +    do {                                                                \
-> +        uint16_t pg =3D *(uint16_t *)(vg + H1_2(i >> 3));               =
-  \
-> +        do {                                                            \
-> +            TYPEM m =3D 0;                                              =
-  \
-> +            if (pg & 1) {                                               \
-> +                if (!first &&                                           \
-> +                    unlikely(page_check_range(addr, sizeof(TYPEM),      \
-> +                                              PAGE_READ))) {            \
-> +                    record_fault(env, i, oprsz);                        \
-> +                    return;                                             \
-> +                }                                                       \
-> +                m =3D FN(env, addr, ra);                                =
-  \
-> +                first =3D false;                                        =
-  \
-> +            }                                                           \
-> +            *(TYPEE *)(vd + H(i)) =3D m;                                =
-  \
-> +            i +=3D sizeof(TYPEE), pg >>=3D sizeof(TYPEE);               =
-    \
-> +            addr +=3D sizeof(TYPEM);                                    =
-  \
-> +        } while (i & 15);                                               \
-> +    } while (i < oprsz);                                                \
-> +}                                                                       \
-> +void HELPER(sve_ldff1##PART)(CPUARMState *env, void *vg,                \
-> +                             target_ulong addr, uint32_t desc)          \
-> +{                                                                       \
-> +    intptr_t oprsz =3D simd_oprsz(desc);                                =
-  \
-> +    unsigned rd =3D simd_data(desc);                                    =
-  \
-> +    void *vd =3D &env->vfp.zregs[rd];                                   =
-  \
-> +    mmap_lock();                                                        \
-> +    if (likely(page_check_range(addr, oprsz, PAGE_READ) =3D=3D 0)) {    =
-    \
-> +        do_sve_ld1##PART(env, vd, vg, addr, oprsz, GETPC());            \
-> +    } else {                                                            \
-> +        do_sve_ldff1##PART(env, vd, vg, addr, oprsz, true, GETPC());    \
-> +    }                                                                   \
-> +    mmap_unlock();                                                      \
-> +}
-> +
-> +/* No-fault loads are like first-fault loads without the
-> + * first faulting special case.
-> + */
-> +#define DO_LDNF1(PART)                                                  \
-> +void HELPER(sve_ldnf1##PART)(CPUARMState *env, void *vg,                \
-> +                             target_ulong addr, uint32_t desc)          \
-> +{                                                                       \
-> +    intptr_t oprsz =3D simd_oprsz(desc);                                =
-  \
-> +    unsigned rd =3D simd_data(desc);                                    =
-  \
-> +    void *vd =3D &env->vfp.zregs[rd];                                   =
-  \
-> +    mmap_lock();                                                        \
-> +    if (likely(page_check_range(addr, oprsz, PAGE_READ) =3D=3D 0)) {    =
-    \
-> +        do_sve_ld1##PART(env, vd, vg, addr, oprsz, GETPC());            \
-> +    } else {                                                            \
-> +        do_sve_ldff1##PART(env, vd, vg, addr, oprsz, false, GETPC());   \
-> +    }                                                                   \
-> +    mmap_unlock();                                                      \
-> +}
-> +
-> +#else
-> +
-> +/* TODO: System mode is not yet supported.
-> + * This would probably use tlb_vaddr_to_host.
-> + */
-> +#define DO_LDFF1(PART, FN, TYPEE, TYPEM, H)                     \
-> +void HELPER(sve_ldff1##PART)(CPUARMState *env, void *vg,        \
-> +                  target_ulong addr, uint32_t desc)             \
-> +{                                                               \
-> +    g_assert_not_reached();                                     \
-> +}
-> +
-> +#define DO_LDNF1(PART)                                          \
-> +void HELPER(sve_ldnf1##PART)(CPUARMState *env, void *vg,        \
-> +                  target_ulong addr, uint32_t desc)             \
-> +{                                                               \
-> +    g_assert_not_reached();                                     \
-> +}
-> +
-> +#endif
-> +
-> +DO_LDFF1(bb_r,  cpu_ldub_data_ra, uint8_t, uint8_t, H1)
-> +DO_LDFF1(bhu_r, cpu_ldub_data_ra, uint16_t, uint8_t, H1_2)
-> +DO_LDFF1(bhs_r, cpu_ldsb_data_ra, uint16_t, int8_t, H1_2)
-> +DO_LDFF1(bsu_r, cpu_ldub_data_ra, uint32_t, uint8_t, H1_4)
-> +DO_LDFF1(bss_r, cpu_ldsb_data_ra, uint32_t, int8_t, H1_4)
-> +DO_LDFF1(bdu_r, cpu_ldub_data_ra, uint64_t, uint8_t, )
-> +DO_LDFF1(bds_r, cpu_ldsb_data_ra, uint64_t, int8_t, )
-> +
-> +DO_LDFF1(hh_r,  cpu_lduw_data_ra, uint16_t, uint16_t, H1_2)
-> +DO_LDFF1(hsu_r, cpu_lduw_data_ra, uint32_t, uint16_t, H1_4)
-> +DO_LDFF1(hss_r, cpu_ldsw_data_ra, uint32_t, int8_t, H1_4)
-> +DO_LDFF1(hdu_r, cpu_lduw_data_ra, uint64_t, uint16_t, )
-> +DO_LDFF1(hds_r, cpu_ldsw_data_ra, uint64_t, int16_t, )
-> +
-> +DO_LDFF1(ss_r,  cpu_ldl_data_ra, uint32_t, uint32_t, H1_4)
-> +DO_LDFF1(sdu_r, cpu_ldl_data_ra, uint64_t, uint32_t, )
-> +DO_LDFF1(sds_r, cpu_ldl_data_ra, uint64_t, int32_t, )
-> +
-> +DO_LDFF1(dd_r,  cpu_ldq_data_ra, uint64_t, uint64_t, )
-> +
-> +#undef DO_LDFF1
-> +
-> +DO_LDNF1(bb_r)
-> +DO_LDNF1(bhu_r)
-> +DO_LDNF1(bhs_r)
-> +DO_LDNF1(bsu_r)
-> +DO_LDNF1(bss_r)
-> +DO_LDNF1(bdu_r)
-> +DO_LDNF1(bds_r)
-> +
-> +DO_LDNF1(hh_r)
-> +DO_LDNF1(hsu_r)
-> +DO_LDNF1(hss_r)
-> +DO_LDNF1(hdu_r)
-> +DO_LDNF1(hds_r)
-> +
-> +DO_LDNF1(ss_r)
-> +DO_LDNF1(sdu_r)
-> +DO_LDNF1(sds_r)
-> +
-> +DO_LDNF1(dd_r)
-> +
-> +#undef DO_LDNF1
-> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-> index 3543daff48..09f77b5405 100644
-> --- a/target/arm/translate-sve.c
-> +++ b/target/arm/translate-sve.c
-> @@ -3647,3 +3647,72 @@ static bool trans_LD_zpri(DisasContext *s, arg_rpr=
-i_load *a, uint32_t insn)
->      }
->      return true;
->  }
-> +
-> +static bool trans_LDFF1_zprr(DisasContext *s, arg_rprr_load *a, uint32_t=
- insn)
-> +{
-> +    static gen_helper_gvec_mem * const fns[16] =3D {
-> +        gen_helper_sve_ldff1bb_r,
-> +        gen_helper_sve_ldff1bhu_r,
-> +        gen_helper_sve_ldff1bsu_r,
-> +        gen_helper_sve_ldff1bdu_r,
-> +
-> +        gen_helper_sve_ldff1sds_r,
-> +        gen_helper_sve_ldff1hh_r,
-> +        gen_helper_sve_ldff1hsu_r,
-> +        gen_helper_sve_ldff1hdu_r,
-> +
-> +        gen_helper_sve_ldff1hds_r,
-> +        gen_helper_sve_ldff1hss_r,
-> +        gen_helper_sve_ldff1ss_r,
-> +        gen_helper_sve_ldff1sdu_r,
-> +
-> +        gen_helper_sve_ldff1bds_r,
-> +        gen_helper_sve_ldff1bss_r,
-> +        gen_helper_sve_ldff1bhs_r,
-> +        gen_helper_sve_ldff1dd_r,
-> +    };
-> +
-> +    if (sve_access_check(s)) {
-> +        TCGv_i64 addr =3D new_tmp_a64(s);
-> +        tcg_gen_shli_i64(addr, cpu_reg(s, a->rm), dtype_msz(a->dtype));
-> +        tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, a->rn));
-> +        do_mem_zpa(s, a->rd, a->pg, addr, fns[a->dtype]);
-> +    }
-> +    return true;
-> +}
-> +
-> +static bool trans_LDNF1_zpri(DisasContext *s, arg_rpri_load *a, uint32_t=
- insn)
-> +{
-> +    static gen_helper_gvec_mem * const fns[16] =3D {
-> +        gen_helper_sve_ldnf1bb_r,
-> +        gen_helper_sve_ldnf1bhu_r,
-> +        gen_helper_sve_ldnf1bsu_r,
-> +        gen_helper_sve_ldnf1bdu_r,
-> +
-> +        gen_helper_sve_ldnf1sds_r,
-> +        gen_helper_sve_ldnf1hh_r,
-> +        gen_helper_sve_ldnf1hsu_r,
-> +        gen_helper_sve_ldnf1hdu_r,
-> +
-> +        gen_helper_sve_ldnf1hds_r,
-> +        gen_helper_sve_ldnf1hss_r,
-> +        gen_helper_sve_ldnf1ss_r,
-> +        gen_helper_sve_ldnf1sdu_r,
-> +
-> +        gen_helper_sve_ldnf1bds_r,
-> +        gen_helper_sve_ldnf1bss_r,
-> +        gen_helper_sve_ldnf1bhs_r,
-> +        gen_helper_sve_ldnf1dd_r,
-> +    };
-> +
-> +    if (sve_access_check(s)) {
-> +        int vsz =3D vec_full_reg_size(s);
-> +        int elements =3D vsz >> dtype_esz[a->dtype];
-> +        int off =3D (a->imm * elements) << dtype_msz(a->dtype);
-> +        TCGv_i64 addr =3D new_tmp_a64(s);
-> +
-> +        tcg_gen_addi_i64(addr, cpu_reg_sp(s, a->rn), off);
-> +        do_mem_zpa(s, a->rd, a->pg, addr, fns[a->dtype]);
-> +    }
-> +    return true;
-> +}
-> diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-> index cfb12da639..afbed57de1 100644
-> --- a/target/arm/sve.decode
-> +++ b/target/arm/sve.decode
-> @@ -685,9 +685,15 @@ LDR_zri         10000101 10 ...... 010 ... ..... ...=
-..          @rd_rn_i9
->  # SVE contiguous load (scalar plus scalar)
->  LD_zprr         1010010 .... ..... 010 ... ..... .....    @rprr_load_dt =
-nreg=3D0
->
-> +# SVE contiguous first-fault load (scalar plus scalar)
-> +LDFF1_zprr      1010010 .... ..... 011 ... ..... .....    @rprr_load_dt =
-nreg=3D0
-> +
->  # SVE contiguous load (scalar plus immediate)
->  LD_zpri         1010010 .... 0.... 101 ... ..... .....    @rpri_load_dt =
-nreg=3D0
->
-> +# SVE contiguous non-fault load (scalar plus immediate)
-> +LDNF1_zpri      1010010 .... 1.... 101 ... ..... .....    @rpri_load_dt =
-nreg=3D0
-> +
->  # SVE contiguous non-temporal load (scalar plus scalar)
->  # LDNT1B, LDNT1H, LDNT1W, LDNT1D
->  # SVE load multiple structures (scalar plus scalar)
-
-
---
-Alex Benn=C3=A9e
+		Emilio

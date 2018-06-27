@@ -1,107 +1,111 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5410316wrq;
-        Tue, 26 Jun 2018 13:00:39 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfCWbcwVwfvnngkhLDzKILLS+WGfmdrwFVqOaduaBcotitmwrPqwZhaNl547siYx6Aa982T
-X-Received: by 2002:a0c:85e3:: with SMTP id o90-v6mr2837507qva.161.1530043239530;
-        Tue, 26 Jun 2018 13:00:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530043239; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5825574wrq;
+        Tue, 26 Jun 2018 22:57:26 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd5LmKVMvmXBAQz0SG2y9+wDAcPEq7GYEA2kZ+2+mNWqBE2M3iu12wD0mjqT3vVmiXo8vpI
+X-Received: by 2002:a37:9b83:: with SMTP id d125-v6mr3818947qke.127.1530079046414;
+        Tue, 26 Jun 2018 22:57:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530079046; cv=none;
         d=google.com; s=arc-20160816;
-        b=AgFnH+1kMYM1lra04wb0AJxXlTzYSXP7zN2Y76K/EZqQKxpdCYZhqlkgzn0GR/7o5f
-         5u20Nf9YvSl+HnVBPAA5JOVFJD/F2dMTkJQo/8bf6GmpkTigtPDhkN0MfPKo1kZU7iIh
-         /Gnkt4i0/P/dBiQ70jYuX+rEKWzvpx+LGOEDWiExsfT2piHwRvRCG0unIQfVJHxG8EfT
-         wCKxzcyFcng4NG83VqlqEZEKZDuuJwF44pWp08vxiN77IqqHd5iaSk5+DMODJmWSIClb
-         eODeZeEVigNJYnw09YI7olyvt9SfqixhixANwYY5WIPVHNOybXtSM+oiamj/ajyLgj0h
-         K3iA==
+        b=K1j6AfrQyjFsB/VL2KcUGSFphgv/bdJQITuooHWr7KTiLP33fW0WE06JV+g3rYLabw
+         BTqEbEA1P48RDnkYfxjvIp7i8qMJ/OZT9SENrf2fPizwrDkbL9oDxrQySJa3UAhDLunq
+         fzD0Aimr0Mrq6ZUH2kvptx4JOy6u8AbXN1Vtqdd+TVqM1L6YOj2jaNM1BFYXe98LaFge
+         SwwQFELkbohW+rcVA9bT7jEz8T8Q6z5AJXCPNrOokLM9HgZbyurO0Km0Q09e2D02lc1B
+         zCnFzxtg2cEP4Cs+1Ax4kKL8A8VRwrH4kSudhGJRyVOyoWa0SgYo8bwCsjW0QvJ6YzFV
+         dR/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=CF/yMqVeO6o1W71MGqftKXUQgRr+AGJfPnCS2WWWdRw=;
-        b=0PhfZOdMo8M2rKub0TeE+WYdQczcSLvZPGelfOHCkR0zTJa/WpMrMQzMEJ1/d5QkL6
-         qOsAUrhYAM6HgCwqLw0RlUcHRnbVFPN0lSXmCiVzazpkyhYyIvEOpDrRQ64eoIfyfZyG
-         1pFu/PVrBlnyEyrRcOYjaHVgB+pnlFUDWDI8tZ8ivQdFxryLLLuP7mAk0jCoU4vzf4kF
-         KzbGJNfx7lijefhdUJdGSdPcd4QRWcsGygqnL6U6DLxBP7uBqQuoXdXmavenQ+oMgNRh
-         UDGbKZxe37cF7z8ObRqpDBFR2gbXFQWHH+kkZkhCClD+F1smwIFGB6dbeY7M6zTNOQ+P
-         E+mA==
+        bh=G4NKT3ovpH+epmvX0eaiuNUeK4j07hekX/wxaKqzNDw=;
+        b=x57fx7G+dKdkzZ0vl7mddqDIo3UWJZ/wjnWAN2ysh7h8MVQIMJoQu/PNb+/Zb746af
+         CwzjIq5NPZJhQl+M2wbIf+GfkCN9MOebEDdAY+MdHd9j7p9aVuPuC4748WKY1u/pmyjI
+         jlNXSyDA9cykC44bGTHqfGJs/AfQDqN+oa1q4798PPuZcRvGe/Ng3kK0tt7pDSTzuc+v
+         eI7MZhuAc/6q/TVqfpSyJu6fL+3TU9OxAGDDUmng28Xp4aDCvJ/pSMQeZYRaa1z/HdDu
+         kScNLbj5NQyOmgC+bs5ZUaG9Y7F1P6U4LxhbfLXkMCv2RaKXB4MOxPcI9T2QqZdDmiUo
+         DeSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@roeck-us.net header.s=default header.b=W91wbA8W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=MOv3FMWS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u77-v6si2345650qku.260.2018.06.26.13.00.39
+        by mx.google.com with ESMTPS id o35-v6si2360918qvf.160.2018.06.26.22.57.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 13:00:39 -0700 (PDT)
+        Tue, 26 Jun 2018 22:57:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@roeck-us.net header.s=default header.b=W91wbA8W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55092 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=MOv3FMWS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56851 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXu8k-00035G-RX
-	for alex.bennee@linaro.org; Tue, 26 Jun 2018 16:00:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50575)
+	id 1fY3SH-0002hB-Uk
+	for alex.bennee@linaro.org; Wed, 27 Jun 2018 01:57:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1fXu8W-00033r-Jz
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 16:00:26 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fY3S7-0002fT-3z
+	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 01:57:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <linux@roeck-us.net>) id 1fXu8T-0004s1-I2
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 16:00:24 -0400
-Received: from bh-25.webhostbox.net ([208.91.199.152]:45329)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <linux@roeck-us.net>)
-	id 1fXu8T-0004jW-6o; Tue, 26 Jun 2018 16:00:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=roeck-us.net; s=default;
-	h=In-Reply-To:Content-Type:MIME-Version:References
-	:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
-	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=CF/yMqVeO6o1W71MGqftKXUQgRr+AGJfPnCS2WWWdRw=;
-	b=W91wbA8WwrQbSsopNbuWxEoXb0
-	880OCgmF9jF85JRalnIz8H0BPySnk9ePtgXlk1A72+NOX/gR8gBozi1GbyF67ofdr44Oh20XL9MPd
-	RYgEMYcH40z7iY5ZChlW2IMFv6CZwqswubvxTenXIKp734+nuVqsjNKfpoJ6K43EiHgJlAbIpU91N
-	p1dMvrclTEBNvqNkcrnlyEdJ5SF0otd/Nf4j0eE4FbzDbHMGPNtcGQUsnPgsIE3d/lrNREvyVRGyC
-	qdWtTwApsp7o7THpGL7QCRC7cQFPJ4jvR9uc6u5NLT1cBl66yFUw0YObuR6n/uS71bPYtdE8X+r2W
-	PDJnD1aw==;
-Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
-	([108.223.40.66]:58340 helo=localhost)
-	by bh-25.webhostbox.net with esmtpa (Exim 4.89)
-	(envelope-from <linux@roeck-us.net>)
-	id 1fXu8G-0088E5-U6; Tue, 26 Jun 2018 20:00:09 +0000
-Date: Tue, 26 Jun 2018 13:00:08 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180626200008.GA680@roeck-us.net>
-References: <1529374119-27015-1-git-send-email-linux@roeck-us.net>
-	<CAFEAcA_8TAWdkgTzPPE7eggP4UAHjVPmcXiEa_-RCxDBphJ4HA@mail.gmail.com>
-	<20180626175900.GA4307@roeck-us.net>
-	<CAFEAcA8PPF1mDWMGSm0r6NtYijwQQG7QnNEJ3iwaaEZU8GTu7g@mail.gmail.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1fY3S4-0000Eq-3J
+	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 01:57:15 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:37313)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fY3S3-0000Dz-JS
+	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 01:57:12 -0400
+Received: by mail-pf0-x242.google.com with SMTP id y5-v6so482979pfn.4
+	for <qemu-arm@nongnu.org>; Tue, 26 Jun 2018 22:57:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=G4NKT3ovpH+epmvX0eaiuNUeK4j07hekX/wxaKqzNDw=;
+	b=MOv3FMWScpXwvsys03NSrIbC2iMNi7YjT56qOTZpnHRoLwu7SEm7qht8lka5tQMdFs
+	3a85CS4Nq1mHq6zxLgqmvl96YkBZ4DjrC9YnEOOITY0c0aDDM/lPntAy9cw6jfo3g/yO
+	RQOBuEfYXG0BFgXinh5a4sDEuh2spLxSB9vh4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=G4NKT3ovpH+epmvX0eaiuNUeK4j07hekX/wxaKqzNDw=;
+	b=RwBnDNQvEJ2VX22kL6LHWnbtwXPzs/M2NXkPUzPlSNyWvtq523t9Su1Yxzk+K9sipS
+	Dbb43xaQoYcVjB9NI1IynOGuLRdhc0DBBT64zSUTkJqe4Pt7UxWF3ZhXAEBu+3sk+9mO
+	dF6opWI/g69kNwrQYZcwF558wZZ4F0qAH7Rlucm60CS/2d4o4cbkbI4QNQ36l+J7AzYq
+	xqHXEcff6pHYGMB9Wdti3RHP7VNl6mp8oE0iQ+3NEfUgdai9JdZLQFen7W31qDsjJmH3
+	Q7LzHGElepRWtS5IF1MtRpJg9TijDhF+kMzLkRYh3exfQLfEglSi2bqvOEL/ZoSr67fH
+	5fnQ==
+X-Gm-Message-State: APt69E3tQQ7xqrdwfAzFpCyV8AFVUZXdvMYXMl+/w3zAt0/fUDxflkMB
+	Ck6MvCGObSW9r3f9l99TQAYqJA==
+X-Received: by 2002:a65:4841:: with SMTP id i1-v6mr3859536pgs.75.1530079030557;
+	Tue, 26 Jun 2018 22:57:10 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	b62-v6sm5279439pfj.123.2018.06.26.22.57.08
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 26 Jun 2018 22:57:09 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
+References: <20180625124238.25339-1-f4bug@amsat.org>
+	<20180625124238.25339-6-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <5f396d83-59c4-01e0-3f90-ba68e8217c1e@linaro.org>
+Date: Tue, 26 Jun 2018 22:57:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8PPF1mDWMGSm0r6NtYijwQQG7QnNEJ3iwaaEZU8GTu7g@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Authenticated_sender: guenter@roeck-us.net
-X-OutGoing-Spam-Status: No, score=-1.0
-X-AntiAbuse: This header was added to track abuse,
-	please include it with any abuse report
-X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
-X-AntiAbuse: Original Domain - nongnu.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - roeck-us.net
-X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
-	guenter@roeck-us.net
-X-Authenticated-Sender: bh-25.webhostbox.net: guenter@roeck-us.net
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 208.91.199.152
-Subject: Re: [Qemu-arm] [PATCH] hw/char/cmsdk-apb-timer: Correctly identify
- and set one-shot mode
+In-Reply-To: <20180625124238.25339-6-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 05/46] hw: Use IEC binary
+ prefix definitions from "qemu/units.h"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,142 +117,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	Paul Burton <paul.burton@mips.com>, "open list:ARM" <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Yongbok Kim <yongbok.kim@mips.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fqQzAtB+9Osa
+X-TUID: SA9Kj2DbICMM
 
-On Tue, Jun 26, 2018 at 07:10:45PM +0100, Peter Maydell wrote:
-> On 26 June 2018 at 18:59, Guenter Roeck <linux@roeck-us.net> wrote:
-> > On Tue, Jun 26, 2018 at 06:17:44PM +0100, Peter Maydell wrote:
-> >> Thanks for this patch. I was wondering whether it would be better
-> >> just to remove the fprintf message instead. I'll either apply
-> >> this or send a patch to do that before 3.0, anyway.
-> >>
-> >
-> > If I recall correctly, I tried that, and it did not help.
-> > The messages don't happen too often, and the message itself
-> > does not cause a problem. Issue is that the interrupts happen
-> > at the wrong time or not at all (after a while, ie after the
-> > configured one-shot time expires), and the kernel really doesn't
-> > like that.
-> >
-> > I think the underlying problem was that the periodic timer counts
-> > the period down (based on the time set for the one-shot timer),
-> > stops with the "Timer with delta zero, disabling" message once
-> > the period reaches 0, and does not fire anymore afterwards.
-> > As a result, the kernel fails to boot maybe 90% of the time.
-> > I should probably have mentioned that in more detail in the
-> > commit log.
+On 06/25/2018 05:41 AM, Philippe Mathieu-Daudé wrote:
+> Code change produced with:
 > 
-> Hmm, that's odd, because I don't really see what the difference
-> between the two is. If you set the thing as a one-shot then we
-> won't reenable the timer later either with this patch.
+>   $ git ls-files | egrep '\.[ch]$' | \
+>     xargs sed -i -e 's/\(\W[KMGTPE]\)_BYTE/\1iB/g'
 > 
-> Can you provide an image/QEMU command line that repros this,
-> and I'll see if I can find time to investigate it? (We have
-> a softfreeze deadline next Tuesday, so I probably won't be
-> able to get to it until after that, but since this is a bugfix
-> it doesn't have to be done before freeze.)
-> 
+> Suggested-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au> (ppc parts)
+> ---
+>  include/qemu/cutils.h  |  8 +-------
+>  hw/arm/msf2-soc.c      |  4 ++--
+>  hw/arm/msf2-som.c      |  6 +++---
+>  hw/core/loader-fit.c   |  3 ++-
+>  hw/core/machine.c      |  2 +-
+>  hw/display/sm501.c     | 14 +++++++-------
+>  hw/hppa/machine.c      |  2 +-
+>  hw/mips/boston.c       | 28 ++++++++++++++--------------
+>  hw/ppc/pnv.c           |  4 ++--
+>  hw/ppc/ppc440_uc.c     | 26 +++++++++++++-------------
+>  hw/ppc/prep.c          |  2 +-
+>  hw/ppc/sam460ex.c      |  2 +-
+>  hw/ppc/spapr.c         | 10 +++++-----
+>  hw/ppc/spapr_rtas.c    |  2 +-
+>  hw/sd/sd.c             |  4 ++--
+>  hw/sd/sdhci.c          |  2 +-
+>  tests/test-cutils.c    | 18 +++++++++---------
+>  tests/test-keyval.c    |  6 +++---
+>  tests/test-qemu-opts.c |  7 +++----
+>  19 files changed, 72 insertions(+), 78 deletions(-)
 
-Here is a log, with debug messages added to ptimer code.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Without my patch:
 
-ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
-ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
-[    0.497942] clocksource: Switched to clocksource mps2-clksrc^M
-ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
+r~
 
-# up to here timer is in periodic mode and fires on a regular basis
-
-# prepare to switch to one-shot mode
-ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=0
-
-# set timer for one-shot mode, start
-ptimer_set_count(0x555556edac70, 92004
-ptimer_reload(555556edac70): frac=0 period=40 delta=92004 limit=0 adjust=0
-
-# one-shot mode fires
-ptimer_tick(0x555556edac70): enabled=1 delta=92004 limit=0
-
-# timer is in periodic mode, limit is 0 (from one-shot mode)
-# reload propagates limit -> delta, making it 0
-ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=-1
-
-# and the timer is disabled as result.
-0x555556edac70: Timer with delta zero, disabling
-
-ptimer_set_count(0x555556edac70, 199340
-ptimer_reload(555556edac70): frac=0 period=40 delta=199340 limit=0 adjust=0
-[    0.514458] NET: Registered protocol family 2^M
-ptimer_tick(0x555556edac70): enabled=1 delta=199340 limit=0
-ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=-1
-0x555556edac70: Timer with delta zero, disabling
-ptimer_set_count(0x555556edac70, 240488
-ptimer_reload(555556edac70): frac=0 period=40 delta=240488 limit=0 adjust=0
-[    0.526096] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096
-bytes)^M
-[    0.526533] TCP established hash table entries: 1024 (order: 0, 4096 bytes)^M
-[    0.526943] TCP bind hash table entries: 1024 (order: 0, 4096 bytes)^M
-ptimer_tick(0x555556edac70): enabled=1 delta=240488 limit=0
-ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=-1
-0x555556edac70: Timer with delta zero, disabling
-
-And so on. The system may finish booting or lock up. Which one it is seems
-to be random.
-
-Same log with my patch applied:
-
-ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
-
-# switch to one-shot mode
-ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=0
-
-@ set counter, start
-ptimer_set_count(0x555556edac70, 24
-ptimer_reload(555556edac70): frac=0 period=40 delta=24 limit=0 adjust=0
-
-# tick
-ptimer_tick(0x555556edac70): enabled=2 delta=24 limit=0
-
-# update counter, restart
-ptimer_set_count(0x555556edac70, 209498
-ptimer_reload(555556edac70): frac=0 period=40 delta=209498 limit=0 adjust=0
-[    0.509883] NET: Registered protocol family 2^M
-
-# tick
-ptimer_tick(0x555556edac70): enabled=2 delta=209498 limit=0
-
-# update counter, restart
-ptimer_set_count(0x555556edac70, 217500
-ptimer_reload(555556edac70): frac=0 period=40 delta=217500 limit=0 adjust=0
-
-# tick
-ptimer_tick(0x555556edac70): enabled=2 delta=217500 limit=0
-
-# update counter, restart
-ptimer_set_count(0x555556edac70, 236941
-ptimer_reload(555556edac70): frac=0 period=40 delta=236941 limit=0 adjust=0
-[    0.529228] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes)^M
-[    0.529661] TCP established hash table entries: 1024 (order: 0, 4096 bytes)^M
-[    0.530059] TCP bind hash table entries: 1024 (order: 0, 4096 bytes)^M
-[    0.530535] TCP: Hash tables configured (established 1024 bind 1024)^M
-
-# tick
-ptimer_tick(0x555556edac70): enabled=2 delta=236941 limit=0
-
-# update counter, restart
-ptimer_set_count(0x555556edac70, 245934
-ptimer_reload(555556edac70): frac=0 period=40 delta=245934 limit=0 adjust=0
-
-and so on.
-
-Hope this helps,
-
-Guenter

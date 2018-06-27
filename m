@@ -1,107 +1,100 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2881825wrq;
-        Fri, 6 Jul 2018 09:22:29 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdUV7J9pd1vu635s7TySioa3Uc35QbsW4tF7rDe6qFigfksMVe/do4yOFZTiVVF6eAofrMk
-X-Received: by 2002:a0c:de13:: with SMTP id t19-v6mr9521516qvk.101.1530894149227;
-        Fri, 06 Jul 2018 09:22:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530894149; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5786506wrq;
+        Tue, 26 Jun 2018 22:00:35 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfW3m1RgsCN3ANAVCfHu+L2mdvZ2mU3gPq2NQRqM3GlpFJHs6DPOxeYPzMXo13Dp6m8rwdd
+X-Received: by 2002:aed:38a9:: with SMTP id k38-v6mr3988779qte.30.1530075635296;
+        Tue, 26 Jun 2018 22:00:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530075635; cv=none;
         d=google.com; s=arc-20160816;
-        b=jhluKbAW6iunktJE4PpvqlR6ao2AoH8mPHPc+Oow+QAspWPuamZWKovNMtyRf/FkO/
-         vOnZNuay0kSvq47Oh19T1W2Q7Mf8wi/9WuIESGYnCdmY6ssxaQ1oKMpYSOn55msbT1L+
-         QfNwqd/kytQWOelrq4OfyTlpzUbgpz/vpB4p535BDZWx8+ixLe8LAdWjJ5PnY7wRcJUW
-         FaJ5xP9nij1/XsZ0Q9Dw6If0tfOrcVGI5pUxz1ATWYrlx4UYol9MkpzNEHpwrVgp1CGE
-         xpSGV4AXTRv0sxE+hjhzByYpQLC7uYIuRbYmhja1qH31NJ1EzvCXwJVTlntIl2Prp+fk
-         t4eg==
+        b=nMSAZSgQkOuOUxuAb7772aVGzYfyt59bYT6iJyc1KDW+7NHNUig1wAYU7BotVZ9G+3
+         MQbTnu55fkPzEiQ68VPWe5xwbTUqg1Er+KMTw6ouGkKCImbD7GQuEQjTUnDkyOIReYzn
+         4ddlxJBEKPMJk9Eem2nmJqeW1YeHRFsanzlMM/LlyFJlyHwExsupwVNPG8ZsoQgg7x9y
+         DhXoPys1VbO6cbUuhdmbcpbSMTEvAgbcWA9lDBEP6NkC2s2bIyoibyn5SR9XZcv1P17u
+         tN8Ug+zAIwbmOIGLNiqgYuRRZ+MKetO2Q6suuSFJSWUJqvvz4mxliltA6hs4qUSlH/xG
+         f5mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=T55/G6QSkk3MOH+7GvT7f+1CG5bIIE7Dhrrl7KzXDl4=;
-        b=SimR4gySMXVwrbsCFLwl/DVfxnBZKToMgKXIfDpfFCKuUTQet3KrdJIUj/8St/kQSK
-         M1lPkIqnl6kwq78wogbX63P2lrsZ/G7hfa/XZFdU1KjMupNf/8ByEAP/kh0CccHihWcC
-         F9/oS0ccGJvCBj0y14gJbZHGzZVn4BN1K4SnldBSWyWeMAmsrzsdA6y+lwVr2iCQ4KR2
-         2haqLaT7zJSKa5LTim0+cJ0AJevCuSBkO5BV0SAvMMx02lryZCqrot4S8Nw2c4Hij9mt
-         +vXnIujrLB+mp0VpLKMjmsNZ6VWT3BTbaCXb/xJKcblNFFYo3o723326G/gARr8XBgON
-         HPKA==
+        bh=m8EeR13dv640yuyK0rXXtqtq5xr8hnRzuIVWIpMzTzs=;
+        b=AH1sRw66dX3FSqtlg8EZTFK/tmhnip3gu8alfoKqB29kxBEdesd7jm3BhXQ5d5Hy0L
+         1W0rPn+m9XTUyKUIr8W0Z1kq3mb2mWRc2HlFkvuhkzLVh8TwjYjgKIvVpNhbdHgpH61s
+         CW9k8WTZz5vfRRIvgdS1w9kYA4w4pEFClnZEpA6w9Py228/aD1EBRqxKs61h4CVdGEk/
+         YUMNESTsr2QeudsfT1qTcEkcmpyFJfiPXXRxbs+HesU9j5lZgdCfF2vRB9yNdxPwc+T5
+         e3BQqvcf+AbIItO/qx2yNLmYdbmKtTx6Qz1z7yV++An0x60cK97FZIs2jZai0FdObkzT
+         1Zlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LKxLtzp2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="bo4xU/2m";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y1-v6si612851qvc.17.2018.07.06.09.22.29
+        by mx.google.com with ESMTPS id q67-v6si3109310qkf.96.2018.06.26.22.00.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 06 Jul 2018 09:22:29 -0700 (PDT)
+        Tue, 26 Jun 2018 22:00:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LKxLtzp2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58763 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="bo4xU/2m";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56652 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fbTV6-0006mB-Jj
-	for alex.bennee@linaro.org; Fri, 06 Jul 2018 12:22:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39502)
+	id 1fY2ZG-0000cg-NN
+	for alex.bennee@linaro.org; Wed, 27 Jun 2018 01:00:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60873)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbTUl-0006lz-4y
-	for qemu-devel@nongnu.org; Fri, 06 Jul 2018 12:22:08 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fY29g-0004XW-C1
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbTUj-00073m-VX
-	for qemu-devel@nongnu.org; Fri, 06 Jul 2018 12:22:07 -0400
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:42198)
+	(envelope-from <richard.henderson@linaro.org>) id 1fY29e-0000sr-Ik
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:08 -0400
+Received: from mail-pl0-x22d.google.com ([2607:f8b0:400e:c01::22d]:43435)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbTUj-00073S-Qx; Fri, 06 Jul 2018 12:22:05 -0400
-Received: by mail-qk0-x242.google.com with SMTP id u62-v6so6591739qkf.9;
-	Fri, 06 Jul 2018 09:22:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=T55/G6QSkk3MOH+7GvT7f+1CG5bIIE7Dhrrl7KzXDl4=;
-	b=LKxLtzp2aZBxMIS+L1rw0ADSGhi+TZ07YphOOV+snpYXbgyUJEP+gxh6Uyb1Z09wKW
-	xL/R4TDdMoy7EtaLCZKzlYvL0xmxZIKNvFbfUB2Gsh866MgZ4LGLsbpUC9EHu56vGZ0e
-	0fSDXtQVlMGljReTL12lsvcQ5CoruH1r7EugeKbL+aUfFACwAUbtFHpV5KZaFcboWljn
-	/4Mgt5kC3bRYqXOB1WGKXL+iyVDghJsjaD7f5cuRFQYOqhQ3mSoGhohPosjlZtaCaXuM
-	v83HdTuQF+IEckTj4zH4Q2gINk4+FJom4G52Ak5hv/dycYtJhsaSoYfkAX3ZHxXbYhrz
-	9pYQ==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fY29e-0000rX-9o
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:06 -0400
+Received: by mail-pl0-x22d.google.com with SMTP id c41-v6so408586plj.10
+	for <qemu-devel@nongnu.org>; Tue, 26 Jun 2018 21:34:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=m8EeR13dv640yuyK0rXXtqtq5xr8hnRzuIVWIpMzTzs=;
+	b=bo4xU/2m3rutKw1oxt+RpVEDQ0EJbQ/ngm2n+vUodzWYhgPZT5nVW9hEgCGgstsZZD
+	OY5dq8IlRvc8ijj8Y+98k6LYqr99d1UVLOJvsQj7MKJYr7229VRTt280o2PyW1iwidB5
+	zguhdnB2saDa103+GW1QsdszQ1yyTpkZoy8Cw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=T55/G6QSkk3MOH+7GvT7f+1CG5bIIE7Dhrrl7KzXDl4=;
-	b=gD5BPLBMM0BQsPTaNVmhC5nBa4C0tsnxg4qdMcoZWFajD1UJU4FrrzfpPTwoGzALr3
-	gXkVShmhSL+voDc0Cxpw/tIxruMibRHkNNKlTLmU7T1nn/+jQo36TejH8ncmCF0b6bWw
-	upazPcifAyC1nCAan0MXs2Z/iuG/iqmQ2yICYax95oktkuU+Ao2pCtyMiZ5Rn9DiM4ZH
-	ksXmukVAAFvlTK0a5fpa7ow4213vvyKcttcN+bimtUSS055rhRTjl8ASkBdirn7kJBaV
-	XnzSWpd+5voddJMuDGjFijh1t8d0BkhvBRlsU/fJ5Ov+8r/4uGZ9Gxqw8PS2rHUW0qrP
-	Y6Wg==
-X-Gm-Message-State: APt69E1giiwNITnZyCkNKmP2wSBTj8c7ovw0MhLmfnL7RlXuRQedHoWj
-	G08borrXibm4HPgCegzWaMA=
-X-Received: by 2002:a37:82c7:: with SMTP id
-	e190-v6mr9186220qkd.313.1530894125299; 
-	Fri, 06 Jul 2018 09:22:05 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	p63-v6sm5875372qkb.46.2018.07.06.09.22.03
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Jul 2018 09:22:04 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>
-Date: Fri,  6 Jul 2018 13:21:55 -0300
-Message-Id: <20180706162155.8432-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20180706162155.8432-1-f4bug@amsat.org>
-References: <20180706162155.8432-1-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=m8EeR13dv640yuyK0rXXtqtq5xr8hnRzuIVWIpMzTzs=;
+	b=dK/gCWLZa9cQWGZWGki8tYXp9XphEIrPHObVcLb+sAo3YPPuEaITAgXo8vxh0UQ9/4
+	7wRQe9wu1Adc30d2v4ne1g26aUux+QxOA6/uiEtS/jfUtru2Rq+Aqbyx4Odo+3rbHUWx
+	eKYTX8Pva6dwkPH1TwnO+tr2tYQtTIQ4cSKygDXytR6ECuNAVqaxCDVcUOaDfBKaNVBV
+	lmVi2kvG1huHyYGY2zomCZxuutNBMeQko0OkXP+zWphNpupj0MS9gtgb2vB24YdcQTRM
+	D4FJAH6/STVZTNxJ631VbObTgwsVH4NJMJDRZSi8wK2ZtRqJf2LhjosdDMoLkn1sjqoM
+	f4fg==
+X-Gm-Message-State: APt69E09PDO2B7xkXzE2YJ3/gHOdMBikrZ/pMs3a7ZKoX82dSNGnvUFF
+	+k6shts3F3ngUL2Y4hiVqvKdwSSg8l8=
+X-Received: by 2002:a17:902:1566:: with SMTP id
+	b35-v6mr4486419plh.107.1530074044958; 
+	Tue, 26 Jun 2018 21:34:04 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	p20-v6sm4577638pff.90.2018.06.26.21.34.03
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 26 Jun 2018 21:34:04 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue, 26 Jun 2018 21:33:17 -0700
+Message-Id: <20180627043328.11531-25-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180627043328.11531-1-richard.henderson@linaro.org>
+References: <20180627043328.11531-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: [Qemu-devel] [PATCH for-3.0 1/1] hw/sd/omap_mmc: Split
- 'pseudo-reset' from 'power-on-reset'
+X-Received-From: 2607:f8b0:400e:c01::22d
+Subject: [Qemu-devel] [PATCH v6 24/35] target/arm: Implement SVE
+ floating-point convert to integer
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,99 +106,313 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RZVfx/Pqrb+V
+X-TUID: dXecqm9Y+em5
 
-DeviceClass::reset models a "cold power-on" reset which can
-also be use to powercycle a device; but there is no "hot reset"
-(a.k.a. soft-reset) method available.
-
-The OMAP MMC Power-Up Control bit is not designed to powercycle
-a card, but to disable it without powering it off (pseudo-reset):
-
-  Multimedia Card (MMC/SD/SDIO) Interface [SPRU765A]
-
-  MMC_CON[11] Power-Up Control (POW)
-  This bit must be set to 1 before any valid transaction to either
-  MMC/SD or SPI memory cards.
-  When 1, the card is considered powered-up and the controller core
-  is enabled.
-  When 0, the card is considered powered-down (system dependent),
-  and the controller core logic is in pseudo-reset state. This is,
-  the MMC_STAT flags and the FIFO pointers are reset, any access to
-  MMC_DATA[DATA] has no effect, a write into the MMC.CMD register
-  is ignored, and a setting of MMC_SPI[STR] to 1 is ignored.
-
-By spliting the 'pseudo-reset' code out of the 'power-on' reset
-function, this patch fixes a latent bug in omap_mmc_write(MMC_CON)i
-recently exposed by ecd219f7abb.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
----
- hw/sd/omap_mmc.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+ target/arm/helper-sve.h    | 30 +++++++++++++
+ target/arm/helper.h        | 12 +++---
+ target/arm/helper.c        |  2 +-
+ target/arm/sve_helper.c    | 88 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 70 ++++++++++++++++++++++++++++++
+ target/arm/sve.decode      | 16 +++++++
+ 6 files changed, 211 insertions(+), 7 deletions(-)
 
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index 671264b650..d0c98ca021 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -1,6 +1,8 @@
- /*
-  * OMAP on-chip MMC/SD host emulation.
-  *
-+ * Datasheet: TI Multimedia Card (MMC/SD/SDIO) Interface (SPRU765A)
-+ *
-  * Copyright (C) 2006-2007 Andrzej Zaborowski  <balrog@zabor.org>
-  *
-  * This program is free software; you can redistribute it and/or
-@@ -278,6 +280,12 @@ static void omap_mmc_update(void *opaque)
-     omap_mmc_interrupts_update(s);
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 4c379dbb05..37fa9eb9bb 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -955,6 +955,36 @@ DEF_HELPER_FLAGS_5(sve_fcvt_hd, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_5(sve_fcvt_sd, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_5(sve_fcvtzs_hh, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzs_hs, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzs_ss, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzs_ds, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzs_hd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzs_sd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzs_dd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(sve_fcvtzu_hh, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzu_hs, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzu_ss, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzu_ds, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzu_hd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzu_sd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve_fcvtzu_dd, TCG_CALL_NO_RWG,
++                   void, ptr, ptr, ptr, ptr, i32)
++
+ DEF_HELPER_FLAGS_5(sve_scvt_hh, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve_scvt_sh, TCG_CALL_NO_RWG,
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index ad9cb6c7d5..8607077dda 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -134,12 +134,12 @@ DEF_HELPER_2(vfp_touid, i32, f64, ptr)
+ DEF_HELPER_2(vfp_touizh, i32, f16, ptr)
+ DEF_HELPER_2(vfp_touizs, i32, f32, ptr)
+ DEF_HELPER_2(vfp_touizd, i32, f64, ptr)
+-DEF_HELPER_2(vfp_tosih, i32, f16, ptr)
+-DEF_HELPER_2(vfp_tosis, i32, f32, ptr)
+-DEF_HELPER_2(vfp_tosid, i32, f64, ptr)
+-DEF_HELPER_2(vfp_tosizh, i32, f16, ptr)
+-DEF_HELPER_2(vfp_tosizs, i32, f32, ptr)
+-DEF_HELPER_2(vfp_tosizd, i32, f64, ptr)
++DEF_HELPER_2(vfp_tosih, s32, f16, ptr)
++DEF_HELPER_2(vfp_tosis, s32, f32, ptr)
++DEF_HELPER_2(vfp_tosid, s32, f64, ptr)
++DEF_HELPER_2(vfp_tosizh, s32, f16, ptr)
++DEF_HELPER_2(vfp_tosizs, s32, f32, ptr)
++DEF_HELPER_2(vfp_tosizd, s32, f64, ptr)
+ 
+ DEF_HELPER_3(vfp_toshs_round_to_zero, i32, f32, i32, ptr)
+ DEF_HELPER_3(vfp_tosls_round_to_zero, i32, f32, i32, ptr)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 1248d84e6f..a36f5b1899 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11360,7 +11360,7 @@ ftype HELPER(name)(uint32_t x, void *fpstp)                         \
  }
  
-+static void omap_mmc_pseudo_reset(struct omap_mmc_s *host)
+ #define CONV_FTOI(name, ftype, fsz, sign, round)                \
+-uint32_t HELPER(name)(ftype x, void *fpstp)                     \
++sign##int32_t HELPER(name)(ftype x, void *fpstp)                \
+ {                                                               \
+     float_status *fpst = fpstp;                                 \
+     if (float##fsz##_is_any_nan(x)) {                           \
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 4b36c1eecf..b6421ec19c 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -3195,6 +3195,78 @@ static inline float16 sve_f64_to_f16(float64 f, float_status *fpst)
+     return ret;
+ }
+ 
++static inline int16_t vfp_float16_to_int16_rtz(float16 f, float_status *s)
 +{
-+    host->status = 0;
-+    host->fifo_len = 0;
++    if (float16_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float16_to_int16_round_to_zero(f, s);
 +}
 +
- void omap_mmc_reset(struct omap_mmc_s *host)
- {
-     host->last_cmd = 0;
-@@ -286,11 +294,9 @@ void omap_mmc_reset(struct omap_mmc_s *host)
-     host->dw = 0;
-     host->mode = 0;
-     host->enable = 0;
--    host->status = 0;
-     host->mask = 0;
-     host->cto = 0;
-     host->dto = 0;
--    host->fifo_len = 0;
-     host->blen = 0;
-     host->blen_counter = 0;
-     host->nblk = 0;
-@@ -305,6 +311,8 @@ void omap_mmc_reset(struct omap_mmc_s *host)
-     qemu_set_irq(host->coverswitch, host->cdet_state);
-     host->clkdiv = 0;
- 
-+    omap_mmc_pseudo_reset(host);
++static inline int64_t vfp_float16_to_int64_rtz(float16 f, float_status *s)
++{
++    if (float16_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float16_to_int64_round_to_zero(f, s);
++}
 +
-     /* Since we're still using the legacy SD API the card is not plugged
-      * into any bus, and we must reset it manually. When omap_mmc is
-      * QOMified this must move into the QOM reset function.
-@@ -459,7 +467,7 @@ static void omap_mmc_write(void *opaque, hwaddr offset,
-         if (s->dw != 0 && s->lines < 4)
-             printf("4-bit SD bus enabled\n");
-         if (!s->enable)
--            omap_mmc_reset(s);
-+            omap_mmc_pseudo_reset(s);
-         break;
++static inline int64_t vfp_float32_to_int64_rtz(float32 f, float_status *s)
++{
++    if (float32_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float32_to_int64_round_to_zero(f, s);
++}
++
++static inline int64_t vfp_float64_to_int64_rtz(float64 f, float_status *s)
++{
++    if (float64_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float64_to_int64_round_to_zero(f, s);
++}
++
++static inline uint16_t vfp_float16_to_uint16_rtz(float16 f, float_status *s)
++{
++    if (float16_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float16_to_uint16_round_to_zero(f, s);
++}
++
++static inline uint64_t vfp_float16_to_uint64_rtz(float16 f, float_status *s)
++{
++    if (float16_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float16_to_uint64_round_to_zero(f, s);
++}
++
++static inline uint64_t vfp_float32_to_uint64_rtz(float32 f, float_status *s)
++{
++    if (float32_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float32_to_uint64_round_to_zero(f, s);
++}
++
++static inline uint64_t vfp_float64_to_uint64_rtz(float64 f, float_status *s)
++{
++    if (float64_is_any_nan(f)) {
++        float_raise(float_flag_invalid, s);
++        return 0;
++    }
++    return float64_to_uint64_round_to_zero(f, s);
++}
++
+ DO_ZPZ_FP(sve_fcvt_sh, uint32_t, H1_4, sve_f32_to_f16)
+ DO_ZPZ_FP(sve_fcvt_hs, uint32_t, H1_4, sve_f16_to_f32)
+ DO_ZPZ_FP(sve_fcvt_dh, uint64_t,     , sve_f64_to_f16)
+@@ -3202,6 +3274,22 @@ DO_ZPZ_FP(sve_fcvt_hd, uint64_t,     , sve_f16_to_f64)
+ DO_ZPZ_FP(sve_fcvt_ds, uint64_t,     , float64_to_float32)
+ DO_ZPZ_FP(sve_fcvt_sd, uint64_t,     , float32_to_float64)
  
-     case 0x10:	/* MMC_STAT */
++DO_ZPZ_FP(sve_fcvtzs_hh, uint16_t, H1_2, vfp_float16_to_int16_rtz)
++DO_ZPZ_FP(sve_fcvtzs_hs, uint32_t, H1_4, helper_vfp_tosizh)
++DO_ZPZ_FP(sve_fcvtzs_ss, uint32_t, H1_4, helper_vfp_tosizs)
++DO_ZPZ_FP(sve_fcvtzs_hd, uint64_t,     , vfp_float16_to_int64_rtz)
++DO_ZPZ_FP(sve_fcvtzs_sd, uint64_t,     , vfp_float32_to_int64_rtz)
++DO_ZPZ_FP(sve_fcvtzs_ds, uint64_t,     , helper_vfp_tosizd)
++DO_ZPZ_FP(sve_fcvtzs_dd, uint64_t,     , vfp_float64_to_int64_rtz)
++
++DO_ZPZ_FP(sve_fcvtzu_hh, uint16_t, H1_2, vfp_float16_to_uint16_rtz)
++DO_ZPZ_FP(sve_fcvtzu_hs, uint32_t, H1_4, helper_vfp_touizh)
++DO_ZPZ_FP(sve_fcvtzu_ss, uint32_t, H1_4, helper_vfp_touizs)
++DO_ZPZ_FP(sve_fcvtzu_hd, uint64_t,     , vfp_float16_to_uint64_rtz)
++DO_ZPZ_FP(sve_fcvtzu_sd, uint64_t,     , vfp_float32_to_uint64_rtz)
++DO_ZPZ_FP(sve_fcvtzu_ds, uint64_t,     , helper_vfp_touizd)
++DO_ZPZ_FP(sve_fcvtzu_dd, uint64_t,     , vfp_float64_to_uint64_rtz)
++
+ DO_ZPZ_FP(sve_scvt_hh, uint16_t, H1_2, int16_to_float16)
+ DO_ZPZ_FP(sve_scvt_sh, uint32_t, H1_4, int32_to_float16)
+ DO_ZPZ_FP(sve_scvt_ss, uint32_t, H1_4, int32_to_float32)
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 37ad1c9459..be589a1cf2 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -3970,6 +3970,76 @@ static bool trans_FCVT_sd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvt_sd);
+ }
+ 
++static bool trans_FCVTZS_hh(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvtzs_hh);
++}
++
++static bool trans_FCVTZU_hh(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvtzu_hh);
++}
++
++static bool trans_FCVTZS_hs(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvtzs_hs);
++}
++
++static bool trans_FCVTZU_hs(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvtzu_hs);
++}
++
++static bool trans_FCVTZS_hd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvtzs_hd);
++}
++
++static bool trans_FCVTZU_hd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvtzu_hd);
++}
++
++static bool trans_FCVTZS_ss(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzs_ss);
++}
++
++static bool trans_FCVTZU_ss(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzu_ss);
++}
++
++static bool trans_FCVTZS_sd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzs_sd);
++}
++
++static bool trans_FCVTZU_sd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzu_sd);
++}
++
++static bool trans_FCVTZS_ds(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzs_ds);
++}
++
++static bool trans_FCVTZU_ds(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzu_ds);
++}
++
++static bool trans_FCVTZS_dd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzs_dd);
++}
++
++static bool trans_FCVTZU_dd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
++{
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvtzu_dd);
++}
++
+ static bool trans_SCVTF_hh(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
+ {
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_scvt_hh);
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 18c174e92d..ddfb5316c9 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -829,6 +829,22 @@ FCVT_hd         01100101 11 0010 01 101 ... ..... .....         @rd_pg_rn_e0
+ FCVT_ds         01100101 11 0010 10 101 ... ..... .....         @rd_pg_rn_e0
+ FCVT_sd         01100101 11 0010 11 101 ... ..... .....         @rd_pg_rn_e0
+ 
++# SVE floating-point convert to integer
++FCVTZS_hh       01100101 01 011 01 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_hh       01100101 01 011 01 1 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZS_hs       01100101 01 011 10 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_hs       01100101 01 011 10 1 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZS_hd       01100101 01 011 11 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_hd       01100101 01 011 11 1 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZS_ss       01100101 10 011 10 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_ss       01100101 10 011 10 1 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZS_ds       01100101 11 011 00 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_ds       01100101 11 011 00 1 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZS_sd       01100101 11 011 10 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_sd       01100101 11 011 10 1 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZS_dd       01100101 11 011 11 0 101 ... ..... .....        @rd_pg_rn_e0
++FCVTZU_dd       01100101 11 011 11 1 101 ... ..... .....        @rd_pg_rn_e0
++
+ # SVE integer convert to floating-point
+ SCVTF_hh        01100101 01 010 01 0 101 ... ..... .....        @rd_pg_rn_e0
+ SCVTF_sh        01100101 01 010 10 0 101 ... ..... .....        @rd_pg_rn_e0
 -- 
-2.18.0
+2.17.1
 

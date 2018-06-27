@@ -1,149 +1,212 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1310403wrq;
-        Thu, 12 Jul 2018 05:31:00 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpf+3Lx/hdBy11pQDOPIX1L7nBYgKfeRT0nQ+OGQ56bklinrOrZHbpgMxR3SMlm7J3iR9pbE
-X-Received: by 2002:a37:338d:: with SMTP id z135-v6mr1525315qkz.358.1531398660385;
-        Thu, 12 Jul 2018 05:31:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531398660; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5898421wrq;
+        Wed, 27 Jun 2018 00:34:58 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdK+w6MDFYDHHKHM+y3TZxTNVhrBdJQVKm1k9drEv0TjRYhmaKQm8SK7sEYBmWwaDs/Y+tK
+X-Received: by 2002:a0c:b39b:: with SMTP id t27-v6mr4422102qve.144.1530084898126;
+        Wed, 27 Jun 2018 00:34:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530084898; cv=none;
         d=google.com; s=arc-20160816;
-        b=OuN8H2STUbJnkVA4y/3cMQRHWVXqKY/BSgiaynyFvQfMzAnhILI6qAJKyWx+yoPXZf
-         YASVGSBzjJLZUCewe8UxNOM3NKlG5o0uwfhshZgzvOg6tu6lfA2a0L7lfUZpZdNbd9cC
-         ks0ZVF3cF48HbNYuaspsfL49sh+wmctghtX0eG73X4BhJfLth5diF3li09S7cPRuL6i6
-         QvnMs3Ibu43jbKUjFcoZ7bdIMsg73nmoBSq5GY0xkv08uLce9mhv28rXLmTjX5neNBDn
-         A5xfwSlbAv0i9N+g1zEfqOfMA351UfVdvVBiB6m1X7voxPyUsWsZgoiaHMag+COAKqg+
-         slRw==
+        b=pgiYktkduYbhV7qUgQadIkVHEPuBadFXuUb8siRd7iSBKoQQ7PFtlODt5jSSFgOO80
+         BEp6ivqPZ9miwrKEBG5V5If9IbsL414x/sVReyOgCHKXJhPguLTtX1uv/e9RnpWL/1BM
+         If116oW2oDIPvuCuud4anSWTRrQ8YpBPQEcvxRedykWovXoVbeQbl/xCi313PPdncjv2
+         MexfiPa/2Via2iRnB7XNSftU2DRldBVFlGNsXfUoaWLHRUyO9ioWI2eq5TRJKK7zZZIO
+         n6Rqj5S3fUf88DiYBm7ymg9OCD1SqtuNUNGloKLFZBF6GrcylSdga1P63cVn6TDtcTZc
+         2ZIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=OeS9LHoXc7R39KgeYhoRh1G9KmtQfrrgpxgH3kbaY2Y=;
-        b=fOlrA0UwnpuK0jFCnug5nES0MEZlamNNO8YOcDG8FhrizPqWumhoLVV+zkfGu9QHmM
-         GXC/tkfAj+cYJDjMx1LHz1el9rrnHpNqjm+aJp0+aNv0WK5UL4q7TrtUFtTvCcBSTouJ
-         6PRnq52BKDvt2zVPrIx4ejzqD+SUYwyynNcuNdjedRacX7RkkhYX2BUyaoLOxXi+LUcH
-         fIvB9MpimGno+6HojpJARuTVtur9w7mTeQEAPyfpZhRUjdZ5qPI8AnRE6raHzWwzLJgb
-         fqOuNypv8fJ+VsJI30yt8lOg6pHhoMMNZyFtHCFSL3V8wf/CRxdSsnYQVSsIBuuMlOZ0
-         zQRg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=RAaDEBkq98/HJgqsb5xPOO49Tp3wygdLdikDwDeC3u4=;
+        b=tAcyWRCl83kfNB0nlBbzCeoNc6UE2WYi+OTIpdxCzXcbw2z9ADQUfmAztpYI8o6Nsw
+         UWfUfOFSitFM5d0fMk+R1smi+wFCsfjJV/WqghUZFmKYBMEPxluZKWii+KMca0+fcIzt
+         I0lRHqJMHD5LCPZFtVXXSz8FL5ymZQ37+rFY+bAvC04M1V+Q/tYfio/6By5iFCrfe4yp
+         zTQ9qF++ozIIoCdpWaHutgNpi38/0t3454vTHDZr3G/8hrUaUnzERM85EuNhksYF7fWo
+         0j4QnDINbSXokvxTpv9hXauX4BN3k0msZxIys2QxoL1PPMMCljNjPDcmrOcZVmskMk8G
+         g0uQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NORiL5vI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l9-v6si6705197qtj.324.2018.07.12.05.31.00
+        by mx.google.com with ESMTPS id x186-v6si3319419qkd.254.2018.06.27.00.34.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 05:31:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 27 Jun 2018 00:34:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NORiL5vI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59233 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57144 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdakN-0000vb-SP
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 08:30:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38073)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fY4yf-0007kN-H0
+	for alex.bennee@linaro.org; Wed, 27 Jun 2018 03:34:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdak7-0000tS-Sz
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:30:44 -0400
+	(envelope-from <contrib@steffen-goertz.de>) id 1fY4y2-0007hx-Du
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 03:34:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdak6-00045Q-MW
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:30:43 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:43435)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdak6-00044x-HA
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:30:42 -0400
-Received: by mail-oi0-x242.google.com with SMTP id b15-v6so55368796oib.10
-	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 05:30:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OeS9LHoXc7R39KgeYhoRh1G9KmtQfrrgpxgH3kbaY2Y=;
-	b=NORiL5vIvwZfdllKKzvxCCbQ9P9z27T/+2hoV2eNo6VrqhiVmDpLcKrvaxo8Aw4gVW
-	N/ONOxS6eC2HsDNVl9BNzXAhtmZSjHV31g8JMbJJwb4oqqjbDmi5jXGaAfqh4jAt3CDs
-	+eM+jTPuydoTLoMTWcZx6TElhHHV8RZEvB9W4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=OeS9LHoXc7R39KgeYhoRh1G9KmtQfrrgpxgH3kbaY2Y=;
-	b=OoqJsviaLEhPjgAKIWJZPzQ4LQsu7tsnR78E8n5U7uA2fk3yzGfOINlccNfLRvOQPQ
-	SqTnK8fjQssoZwWLFdlZX0dFAGrweI712e0SqGQHBnPQonGdHUSqvCezPPjqthPY08a/
-	SjpogKE/Zs2Me+bh7F7Hhe7+pjr92bc02mtoWFacNIi8MP51mJG5tth2m5GfyF8E4wkm
-	PWOdQP4A6vQ3xRribmODY8QQi5ELx8nhI+1lC60AyUE0m4WYfRBAhkrZpKC4o9echBEq
-	0UM6o45EBsg28t5vrvICLg9pk+LkDwvCTuB58boK5aYyvOhrh9oAIeO95TlB1mVqqj98
-	D0Ig==
-X-Gm-Message-State: AOUpUlE0K77ZQCJdN1VJ4qjlmO4t7nzwD0uTMHqq2BBQWqdG6KOdWCmT
-	lbobPhtTS+AO0foPWMaqBHAqAjD32JY8xOf7HQOxmQ==
-X-Received: by 2002:aca:f5d1:: with SMTP id
-	t200-v6mr2205930oih.12.1531398641947; 
-	Thu, 12 Jul 2018 05:30:41 -0700 (PDT)
+	(envelope-from <contrib@steffen-goertz.de>) id 1fY4xz-0005o6-78
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 03:34:18 -0400
+Received: from steffen-goertz.de ([88.198.119.201]:51448)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <contrib@steffen-goertz.de>)
+	id 1fY4xw-0005iO-30; Wed, 27 Jun 2018 03:34:12 -0400
+Received: from localhost.localdomain (tmo-096-88.customers.d1-online.com
+	[80.187.96.88])
+	by steffen-goertz.de (Postfix) with ESMTPSA id D3DD549364;
+	Wed, 27 Jun 2018 09:32:43 +0200 (CEST)
+From: =?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>
+To: qemu-devel@nongnu.org
+Date: Wed, 27 Jun 2018 09:33:45 +0200
+Message-Id: <20180627073351.856-3-contrib@steffen-goertz.de>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180627073351.856-1-contrib@steffen-goertz.de>
+References: <20180627073351.856-1-contrib@steffen-goertz.de>
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 05:30:21
-	-0700 (PDT)
-In-Reply-To: <20180629132954.24269-9-luc.michel@greensocs.com>
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
-	<20180629132954.24269-9-luc.michel@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jul 2018 13:30:21 +0100
-Message-ID: <CAFEAcA-_=94PcEsaGmQBjN2HXgCB5QyvS53MdnAcfcWSKeApSA@mail.gmail.com>
-To: Luc Michel <luc.michel@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [PATCH v3 08/20] intc/arm_gic: Refactor secure/ns
- access check in the CPU interface
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 88.198.119.201
+Subject: [Qemu-devel] [RFC 2/8] arm: NRF51 Add unimplemented device for MMIO
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EF2g4xjNGcg1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Jim Mussared <jim@groklearning.com>, Stefan Hajnoczi <stefanha@gmail.com>,
+	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vxKewlKUZWd9
 
-On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
-> An access to the CPU interface is non-secure if the current GIC instance
-> implements the security extensions, and the memory access is actually
-> non-secure. Until then, it was checked with tests such as
->   if (s->security_extn && !attrs.secure) { ... }
-> in various places of the CPU interface code.
->
-> With the implementation of the virtualization extensions, those tests
-> must be updated to take into account whether we are in a vCPU interface
-> or not. This is because the exposed vCPU interface does not implement
-> security extensions.
->
-> This commits replaces all those tests with a call to the
-> gic_cpu_ns_access() function to check if the current access to the CPU
-> interface is non-secure. This function takes into account whether the
-> current CPU is a vCPU or not.
+Signed-off-by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
+---
+ hw/arm/nrf51_soc.c         | 18 +++++++++++++-----
+ include/hw/arm/nrf51_soc.h |  4 +++-
+ 2 files changed, 16 insertions(+), 6 deletions(-)
 
-Thanks -- this approach looks much cleaner.
+diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+index 1f7c159edf..175a009e65 100644
+--- a/hw/arm/nrf51_soc.c
++++ b/hw/arm/nrf51_soc.c
+@@ -48,7 +48,6 @@ struct {
+         {.ram_size =3D 32, .flash_size =3D 256 },
+ };
+=20
+-
+ static uint64_t clock_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+     qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n", __func__, =
+addr, size);
+@@ -125,6 +124,12 @@ static void nrf51_soc_init(Object *obj)
+     qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type",
+                          ARM_CPU_TYPE_NAME("cortex-m3"));
+=20
++    object_initialize(&s->mmio, sizeof(s->mmio), TYPE_UNIMPLEMENTED_DEVI=
+CE);
++    object_property_add_child(obj, "iomem", OBJECT(&s->mmio), &error_abo=
+rt);
++    qdev_set_parent_bus(DEVICE(&s->mmio), sysbus_get_default());
++    qdev_prop_set_string(DEVICE(&s->mmio), "name", "nrf51.iomem");
++    qdev_prop_set_uint64(DEVICE(&s->mmio), "size", IOMEM_SIZE);
++
+     object_initialize(&s->uart, sizeof(s->uart), TYPE_NRF51_UART);
+     object_property_add_child(obj, "uart", OBJECT(&s->uart), &error_abor=
+t);
+     qdev_set_parent_bus(DEVICE(&s->uart), sysbus_get_default());
+@@ -135,6 +140,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+ {
+     NRF51State *s =3D NRF51_SOC(dev_soc);
+     Error *err =3D NULL;
++    MemoryRegion *mr =3D NULL;
+=20
+     if (!(s->part_variant > NRF51_VARIANT_INVALID
+             && s->part_variant < NRF51_VARIANT_MAX)) {
+@@ -142,6 +148,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+         return;
+     }
+=20
++    /** SRAM **/
+     memory_region_init_ram(&s->sram, NULL, "nrf51_soc.sram",
+             NRF51VariantAttributes[s->part_variant].ram_size * PAGE_SIZE=
+, &err);
+     if (err) {
+@@ -150,6 +157,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+     }
+     memory_region_add_subregion(&s->container, SRAM_BASE, &s->sram);
+=20
++    /** FLASH **/
+     memory_region_init_ram(&s->flash, NULL, "nrf51_soc.flash",
+             NRF51VariantAttributes[s->part_variant].flash_size * PAGE_SI=
+ZE,
+             &err);
+@@ -159,6 +167,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+     }
+     memory_region_add_subregion(&s->container, FLASH_BASE, &s->flash);
+=20
++    /** MCU **/
+     qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq", 60);
+     object_property_set_link(OBJECT(&s->armv7m), OBJECT(&s->container),
+                                          "memory", &err);
+@@ -175,10 +184,9 @@ static void nrf51_soc_realize(DeviceState *dev_soc, =
+Error **errp)
+     }
+=20
+     /* IO space */
+-    create_unimplemented_device("nrf51_soc.io", IOMEM_BASE, IOMEM_SIZE);
+-
+-    /* FICR */
+-    create_unimplemented_device("nrf51_soc.ficr", FICR_BASE, FICR_SIZE);
++    object_property_set_bool(OBJECT(&s->mmio), true, "realized", &error_=
+fatal);
++    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mmio), 0);
++    memory_region_add_subregion_overlap(&s->container, IOMEM_BASE, mr, -=
+1500);
+=20
+     qdev_prop_set_chr(DEVICE(&s->uart), "chardev", serial_hd(0));
+     qdev_init_nofail(DEVICE(&s->uart));
+diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
+index c9af9659e9..86bc304b57 100644
+--- a/include/hw/arm/nrf51_soc.h
++++ b/include/hw/arm/nrf51_soc.h
+@@ -13,8 +13,10 @@
+ #include "qemu/osdep.h"
+ #include "hw/sysbus.h"
+ #include "hw/arm/armv7m.h"
++#include "hw/misc/unimp.h"
+ #include "hw/char/nrf51_uart.h"
+=20
++
+ #define TYPE_NRF51_SOC "nrf51-soc"
+ #define NRF51_SOC(obj) \
+     OBJECT_CHECK(NRF51State, (obj), TYPE_NRF51_SOC)
+@@ -27,12 +29,12 @@ typedef struct NRF51State {
+     /* TODO: Change to armv6m when cortex-m0 core is available */
+     ARMv7MState armv7m;
+=20
++    UnimplementedDeviceState mmio;
+     Nrf51UART uart;
+=20
+     MemoryRegion container;
+     MemoryRegion sram;
+     MemoryRegion flash;
+-    MemoryRegion iomem;
+     MemoryRegion clock;
+     MemoryRegion nvmc;
+     MemoryRegion rng;
+--=20
+2.17.1
 
-> Note that this function is used only in the (v)CPU interface code path.
-> The distributor code path is leaved unchanged, as the distributor is not
-
-"left"
-
-> exposed to vCPUs at all.
->
-> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> ---
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM

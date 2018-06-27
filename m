@@ -1,100 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5780698wrq;
-        Tue, 26 Jun 2018 21:51:38 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdhw1nTcmZeQ/yyglCJYjkDXzFWkOPwRyciceoYwQ3CYbhkvvwE9DEAMtatWgFp3WxcU96n
-X-Received: by 2002:ac8:317b:: with SMTP id h56-v6mr4180286qtb.191.1530075098614;
-        Tue, 26 Jun 2018 21:51:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530075098; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5781399wrq;
+        Tue, 26 Jun 2018 21:52:47 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeAk2S6woppr9ZFIrV+fIrrexdoNfYDIiry9w157OiGC0ZWKEUqpfhORqsds+Vcq71z1EaR
+X-Received: by 2002:a0c:88ad:: with SMTP id 42-v6mr4059667qvn.61.1530075167429;
+        Tue, 26 Jun 2018 21:52:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530075167; cv=none;
         d=google.com; s=arc-20160816;
-        b=p9vN///iNlcXRydVGaTyP9WZoUTptzS1OPSsjBzQ8Zk/LGeJ2qhX7P3Y2EpqrAfgeg
-         BG9fetNaKxpasogw2jht/Vvn/ALn2A+nwCKJaSa0nTPxpWTqay2/Q7dEAtvknBZkyzqt
-         XF0OVfg9epmxLUmfTqLiBvwnfszwvhZcmPoJPG/fIa/ViUNkQ+sIsb5oBoATyKf59bbe
-         YYv6eF39XqnH8+1K4wYkwqWlx6AwJuliB6MtQ8C5uE3Id5NwUzWALAzyCT6ZKK/tjmez
-         /n44tLdoApnUXsQjjXmmgXgmxdm2RJiUd7PpkdDtMD1iRWkkvGcoiXlQGlFRROfPDTah
-         nKYg==
+        b=A7HuA3BHsRxVU5G1EyOT9vuNMaWaB6Hw7f7JdeEzCDtu0YF11fuFp8+AENgWynqtx6
+         uWcBLHAVrNVz2iQlK/SlNVosUB5cnx+Bv0jQFO6U8e9qLs3YBxvnYrcWoxpw2JMy+TOc
+         91jkA5XSXXddQdyHRkRC0FC4pHKQtR28BslNY2iy3cyW82phn+PIlY3kb80I4KK5TSOD
+         qp2qC7ry7tzQ1yuWJNQI6i/5G5veh793F5EKgqQZwZ2cqkiD1Zx7LR4p9DE/K+bgAykX
+         kngh5CWh5XlTUCmeIUueBl43moCKA+WCUNJlULC++Vpf4ayBqcHQT82buADRfS+KnRxa
+         Mt8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=ARHrlhgg1qoi/kKQH76w+UP/4e6kfGk5NvSiCi8sUrE=;
-        b=Q2rh194B26Dp31KfsaW3YAswkvqXwwUEggT5/c/xlgxNcD5F5/+pAjA4CGwY/B3RPU
-         mjdzinzHcuC+RREvk4xc2rL2EwvkIMLvVpBtUTC4oNUooBkRERX0nY0qIFMKXx5NhTY3
-         ZI06TXBNUkxxpeeX4lXjD1StUzuB8rvZNa4Gq+j3W2Pe2RugUsslueq2ZArQjxv2Wm8O
-         8aypTa0zCmRB2vQURB3b2NMGYzytLutRe23Ujb8MKbRmJwGrWZxusT4l4ZJXP1VnynwQ
-         JFQsjCSDZZIV+Fvd+0ebE+szPffL1C0/zeI5CdM48kKCmToEUAZDeXNRFrKbXEIi3wic
-         YCbA==
+        bh=A9fH4Y/CsOq2xS27tz8HpWWa5Nt50JQqxNt4bJzisd0=;
+        b=zZrxZ08BpBmGQwe7+21So1k1CCCSHcvMEGn8j1azPX4KNgbai9JAbZDGICPFWkYi7g
+         He0mnTkCLpWRCaoWW89yC3kNL4hYEJZYjJoJfrsarVCd0IpHkvhROf1Fn4AZgkMtGIoG
+         m14GCqXAg11dfjj/3t0kVGab5f7J5BCBjpJlqDzPq2r5SYMbmaETh1yPWsTnA9oSAoVT
+         TkL3JlEzOb3JSxto7ntUzrHECtiTOZbypwf03k3oBPsm8hc1jf9BykpViNiXF7rGXeA1
+         5IYQxRAg7GWl2rCfU5mSf4qEtG3RAGtRCu8I4faTmqlcQ1n7I9a9NO7CfqWmB4maIiXl
+         ubuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Jtn+ygzI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dT7Ss+eC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q71-v6si3018769qka.348.2018.06.26.21.51.38
+        by mx.google.com with ESMTPS id 2-v6si3022727qki.21.2018.06.26.21.52.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 21:51:38 -0700 (PDT)
+        Tue, 26 Jun 2018 21:52:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Jtn+ygzI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dT7Ss+eC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56594 helo=lists.gnu.org)
+Received: from localhost ([::1]:56598 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fY2Qb-0001lt-UP
-	for alex.bennee@linaro.org; Wed, 27 Jun 2018 00:51:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60830)
+	id 1fY2Ri-0002Xn-SF
+	for alex.bennee@linaro.org; Wed, 27 Jun 2018 00:52:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60718)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY29e-0004X0-Co
-	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:10 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fY29a-0004S5-98
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY29d-0000qg-1P
-	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:06 -0400
-Received: from mail-pf0-x230.google.com ([2607:f8b0:400e:c00::230]:40028)
+	(envelope-from <richard.henderson@linaro.org>) id 1fY29Y-0000kO-UU
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:02 -0400
+Received: from mail-pg0-x232.google.com ([2607:f8b0:400e:c05::232]:37196)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fY29c-0000ph-Pm
-	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:04 -0400
-Received: by mail-pf0-x230.google.com with SMTP id z24-v6so385776pfe.7
-	for <qemu-devel@nongnu.org>; Tue, 26 Jun 2018 21:34:04 -0700 (PDT)
+	id 1fY29Y-0000jn-KX
+	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:34:00 -0400
+Received: by mail-pg0-x232.google.com with SMTP id o11-v6so364985pgv.4
+	for <qemu-devel@nongnu.org>; Tue, 26 Jun 2018 21:34:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=ARHrlhgg1qoi/kKQH76w+UP/4e6kfGk5NvSiCi8sUrE=;
-	b=Jtn+ygzIuXNiS/zIzmIn2rYUzjEF8F8Ym7d0YrquinSL7nWmuRADgOJGW+twiLp2x2
-	9H87RD0jAVOoR9ewWeCKJY1T24y3wb3IQC9YJNE+yUQRBn/QBgm7xtdJPfCZV6MXm3M5
-	fXStuFY8vOJOtt8HLtpaYE95eSwJd3tDESyFE=
+	bh=A9fH4Y/CsOq2xS27tz8HpWWa5Nt50JQqxNt4bJzisd0=;
+	b=dT7Ss+eCFWTfxQ0PXtUUeme7cGsCttKYzHg2qYGTDQIvwhDWMn6v6sqUzrZ8sqUHE1
+	pOHlhDSl9RZVboz3EOBVNkNGaGvukBLrjH0ncS2YziYa3EzadFeLKSvURpmSXbjPASbn
+	s2DipVRf5pLXBxOcvLa3MEbpdrk4ZXHjDFRqA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=ARHrlhgg1qoi/kKQH76w+UP/4e6kfGk5NvSiCi8sUrE=;
-	b=gUq2ZE2+sp0l60ADRhRnLUbcazch7d4y41jN0ujF8VJSO7nQGGIW8T1/7lC0F7TICl
-	7DbDXi5G3Zo6a3w/4u5CsEBE81r8JO/yRD04dDC85BW3ajakqpX1JdLJoosGP57FZUYA
-	dGyh8AvJlUm7jFd5rnFtS0pd14vI+De/jbkJw4rw2hm9T6tIPtkvrWTVLMgwcMeQZcFD
-	uP/1ViuPqbSULJD6JEqc7lWorVCfR4Tszr/xw6/jK8fEJLtRAKcJzyVBm+yu/HfnMWFk
-	nhRZLiZJWU1x1uX/vVoHfZl+l5k6f/72AuNlVfX/zcFsk2zgL1oC3KHYOoOHoYsefTxt
-	RPWg==
-X-Gm-Message-State: APt69E3fNSPZ3xxOBMsDXCFxgGczbLy0gfS+u5vVyb+skGyIyK0DJ0Io
-	bzt5S7BouCBGfH+jyDDpIXz2TyBJBdA=
-X-Received: by 2002:a62:4ad3:: with SMTP id
-	c80-v6mr4267754pfj.23.1530074043517; 
-	Tue, 26 Jun 2018 21:34:03 -0700 (PDT)
+	bh=A9fH4Y/CsOq2xS27tz8HpWWa5Nt50JQqxNt4bJzisd0=;
+	b=ZgL30GHn51lO9fdMLB8O4gPIiVAU3lV7vyXzGwUVEI+5ctpUvv/ehDUTmDM7dUh91U
+	LYEAgFR4DOJmGEzYK6YaQ9Obd40EU7lKEfCVDood1uxBtFzFZp7kwH07dB6mWCqcQvkC
+	UHkysZ19hKElrmh549BLaTWazwh7/Ja64gJnZ9ZjwlabHbuVALSfXulurbe5wJHwSB/n
+	MZGcXO5LOPc/DFCoPo09au08Ou4Lv6CdtrslStCDlESFky6+oHnjP1sJmISFxJxK4uK+
+	61EalB5UEUQCXWeIlj6MNVHgqsi3HOxDxemW5UfLQInE253mTvPUfMqiedfy8dOD5yAy
+	WibQ==
+X-Gm-Message-State: APt69E0T4Gv3iKV2iAiChVENMG2kAH6mThDzzHswxyi5bcjbr2bI7STT
+	g3Iuy0ES9WXrMsh9Hr67otuGlUhJ+gk=
+X-Received: by 2002:a65:61d1:: with SMTP id
+	j17-v6mr3820198pgv.447.1530074039342; 
+	Tue, 26 Jun 2018 21:33:59 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
 	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	p20-v6sm4577638pff.90.2018.06.26.21.34.02
+	p20-v6sm4577638pff.90.2018.06.26.21.33.58
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 26 Jun 2018 21:34:02 -0700 (PDT)
+	Tue, 26 Jun 2018 21:33:58 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Tue, 26 Jun 2018 21:33:16 -0700
-Message-Id: <20180627043328.11531-24-richard.henderson@linaro.org>
+Date: Tue, 26 Jun 2018 21:33:13 -0700
+Message-Id: <20180627043328.11531-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180627043328.11531-1-richard.henderson@linaro.org>
 References: <20180627043328.11531-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::230
-Subject: [Qemu-devel] [PATCH v6 23/35] target/arm: Implement SVE
- floating-point convert precision
+X-Received-From: 2607:f8b0:400e:c05::232
+Subject: [Qemu-devel] [PATCH v6 20/35] target/arm: Implement SVE Floating
+ Point Unary Operations - Unpredicated Group
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,170 +109,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2nv25V3PGqNf
+X-TUID: T7C01akWdsD4
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
 ---
-v6: Squish fz16 a-la vfp_fcvt_f16_to_f32
----
- target/arm/helper-sve.h    | 13 +++++++++
- target/arm/sve_helper.c    | 55 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c | 30 +++++++++++++++++++++
- target/arm/sve.decode      |  8 ++++++
- 4 files changed, 106 insertions(+)
+ target/arm/helper.h        |  8 +++++++
+ target/arm/translate-sve.c | 47 ++++++++++++++++++++++++++++++++++++++
+ target/arm/vec_helper.c    | 20 ++++++++++++++++
+ target/arm/sve.decode      |  5 ++++
+ 4 files changed, 80 insertions(+)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index aca137fc37..4c379dbb05 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -942,6 +942,19 @@ DEF_HELPER_FLAGS_6(sve_fmins_s, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_6(sve_fmins_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, i64, ptr, i32)
- 
-+DEF_HELPER_FLAGS_5(sve_fcvt_sh, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve_fcvt_dh, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve_fcvt_hs, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve_fcvt_ds, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve_fcvt_hd, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve_fcvt_sd, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_5(sve_scvt_hh, TCG_CALL_NO_RWG,
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 56439ac1e4..ad9cb6c7d5 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -601,6 +601,14 @@ DEF_HELPER_FLAGS_5(gvec_fcmlas_idx, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_5(gvec_fcmlad, TCG_CALL_NO_RWG,
                     void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve_scvt_sh, TCG_CALL_NO_RWG,
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 79358c804b..4b36c1eecf 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -3147,6 +3147,61 @@ void HELPER(NAME)(void *vd, void *vn, void *vg, void *status, uint32_t desc) \
-     } while (i != 0);                                                 \
- }
  
-+/* SVE fp16 conversions always use IEEE mode.  Like AdvSIMD, they ignore
-+ * FZ16.  When converting from fp16, this affects flushing input denormals;
-+ * when converting to fp16, this affects flushing output denormals.
-+ */
-+static inline float32 sve_f16_to_f32(float16 f, float_status *fpst)
-+{
-+    flag save = get_flush_inputs_to_zero(fpst);
-+    float32 ret;
++DEF_HELPER_FLAGS_4(gvec_frecpe_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_frecpe_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_frecpe_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+    set_flush_inputs_to_zero(false, fpst);
-+    ret = float16_to_float32(f, true, fpst);
-+    set_flush_inputs_to_zero(save, fpst);
-+    return ret;
-+}
++DEF_HELPER_FLAGS_4(gvec_frsqrte_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_frsqrte_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(gvec_frsqrte_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+static inline float64 sve_f16_to_f64(float16 f, float_status *fpst)
-+{
-+    flag save = get_flush_inputs_to_zero(fpst);
-+    float64 ret;
-+
-+    set_flush_inputs_to_zero(false, fpst);
-+    ret = float16_to_float64(f, true, fpst);
-+    set_flush_inputs_to_zero(save, fpst);
-+    return ret;
-+}
-+
-+static inline float16 sve_f32_to_f16(float32 f, float_status *fpst)
-+{
-+    flag save = get_flush_to_zero(fpst);
-+    float16 ret;
-+
-+    set_flush_to_zero(false, fpst);
-+    ret = float32_to_float16(f, true, fpst);
-+    set_flush_to_zero(save, fpst);
-+    return ret;
-+}
-+
-+static inline float16 sve_f64_to_f16(float64 f, float_status *fpst)
-+{
-+    flag save = get_flush_to_zero(fpst);
-+    float16 ret;
-+
-+    set_flush_to_zero(false, fpst);
-+    ret = float64_to_float16(f, true, fpst);
-+    set_flush_to_zero(save, fpst);
-+    return ret;
-+}
-+
-+DO_ZPZ_FP(sve_fcvt_sh, uint32_t, H1_4, sve_f32_to_f16)
-+DO_ZPZ_FP(sve_fcvt_hs, uint32_t, H1_4, sve_f16_to_f32)
-+DO_ZPZ_FP(sve_fcvt_dh, uint64_t,     , sve_f64_to_f16)
-+DO_ZPZ_FP(sve_fcvt_hd, uint64_t,     , sve_f16_to_f64)
-+DO_ZPZ_FP(sve_fcvt_ds, uint64_t,     , float64_to_float32)
-+DO_ZPZ_FP(sve_fcvt_sd, uint64_t,     , float32_to_float64)
-+
- DO_ZPZ_FP(sve_scvt_hh, uint16_t, H1_2, int16_to_float16)
- DO_ZPZ_FP(sve_scvt_sh, uint32_t, H1_4, int32_to_float16)
- DO_ZPZ_FP(sve_scvt_ss, uint32_t, H1_4, int32_to_float32)
+ DEF_HELPER_FLAGS_5(gvec_fadd_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(gvec_fadd_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(gvec_fadd_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index a86ebc0a91..37ad1c9459 100644
+index 3b009193a9..1dcc2d38c9 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -3940,6 +3940,36 @@ static bool do_zpz_ptr(DisasContext *s, int rd, int rn, int pg,
-     return true;
+@@ -3507,6 +3507,53 @@ DO_VPZ(FMAXNMV, fmaxnmv)
+ DO_VPZ(FMINV, fminv)
+ DO_VPZ(FMAXV, fmaxv)
+ 
++/*
++ *** SVE Floating Point Unary Operations - Unpredicated Group
++ */
++
++static void do_zz_fp(DisasContext *s, arg_rr_esz *a, gen_helper_gvec_2_ptr *fn)
++{
++    unsigned vsz = vec_full_reg_size(s);
++    TCGv_ptr status = get_fpstatus_ptr(a->esz == MO_16);
++
++    tcg_gen_gvec_2_ptr(vec_full_reg_offset(s, a->rd),
++                       vec_full_reg_offset(s, a->rn),
++                       status, vsz, vsz, 0, fn);
++    tcg_temp_free_ptr(status);
++}
++
++static bool trans_FRECPE(DisasContext *s, arg_rr_esz *a, uint32_t insn)
++{
++    static gen_helper_gvec_2_ptr * const fns[3] = {
++        gen_helper_gvec_frecpe_h,
++        gen_helper_gvec_frecpe_s,
++        gen_helper_gvec_frecpe_d,
++    };
++    if (a->esz == 0) {
++        return false;
++    }
++    if (sve_access_check(s)) {
++        do_zz_fp(s, a, fns[a->esz - 1]);
++    }
++    return true;
++}
++
++static bool trans_FRSQRTE(DisasContext *s, arg_rr_esz *a, uint32_t insn)
++{
++    static gen_helper_gvec_2_ptr * const fns[3] = {
++        gen_helper_gvec_frsqrte_h,
++        gen_helper_gvec_frsqrte_s,
++        gen_helper_gvec_frsqrte_d,
++    };
++    if (a->esz == 0) {
++        return false;
++    }
++    if (sve_access_check(s)) {
++        do_zz_fp(s, a, fns[a->esz - 1]);
++    }
++    return true;
++}
++
+ /*
+  *** SVE Floating Point Accumulating Reduction Group
+  */
+diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+index 97af75a61b..073e5c58e7 100644
+--- a/target/arm/vec_helper.c
++++ b/target/arm/vec_helper.c
+@@ -427,6 +427,26 @@ void HELPER(gvec_fcmlad)(void *vd, void *vn, void *vm,
+     clear_tail(d, opr_sz, simd_maxsz(desc));
  }
  
-+static bool trans_FCVT_sh(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvt_sh);
++#define DO_2OP(NAME, FUNC, TYPE) \
++void HELPER(NAME)(void *vd, void *vn, void *stat, uint32_t desc)  \
++{                                                                 \
++    intptr_t i, oprsz = simd_oprsz(desc);                         \
++    TYPE *d = vd, *n = vn;                                        \
++    for (i = 0; i < oprsz / sizeof(TYPE); i++) {                  \
++        d[i] = FUNC(n[i], stat);                                  \
++    }                                                             \
 +}
 +
-+static bool trans_FCVT_hs(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvt_hs);
-+}
++DO_2OP(gvec_frecpe_h, helper_recpe_f16, float16)
++DO_2OP(gvec_frecpe_s, helper_recpe_f32, float32)
++DO_2OP(gvec_frecpe_d, helper_recpe_f64, float64)
 +
-+static bool trans_FCVT_dh(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_fcvt_dh);
-+}
++DO_2OP(gvec_frsqrte_h, helper_rsqrte_f16, float16)
++DO_2OP(gvec_frsqrte_s, helper_rsqrte_f32, float32)
++DO_2OP(gvec_frsqrte_d, helper_rsqrte_f64, float64)
 +
-+static bool trans_FCVT_hd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvt_hd);
-+}
++#undef DO_2OP
 +
-+static bool trans_FCVT_ds(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvt_ds);
-+}
-+
-+static bool trans_FCVT_sd(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
-+{
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve_fcvt_sd);
-+}
-+
- static bool trans_SCVTF_hh(DisasContext *s, arg_rpr_esz *a, uint32_t insn)
- {
-     return do_zpz_ptr(s, a->rd, a->rn, a->pg, true, gen_helper_sve_scvt_hh);
+ /* Floating-point trigonometric starting value.
+  * See the ARM ARM pseudocode function FPTrigSMul.
+  */
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index fdcc252eaa..18c174e92d 100644
+index 66b0fd0cc4..ca93bdb2b3 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -821,6 +821,14 @@ FNMLS_zpzzz     01100101 .. 1 ..... 111 ... ..... .....         @rdn_pg_rm_ra
+@@ -743,6 +743,11 @@ FMINNMV         01100101 .. 000 101 001 ... ..... .....         @rd_pg_rn
+ FMAXV           01100101 .. 000 110 001 ... ..... .....         @rd_pg_rn
+ FMINV           01100101 .. 000 111 001 ... ..... .....         @rd_pg_rn
  
- ### SVE FP Unary Operations Predicated Group
- 
-+# SVE floating-point convert precision
-+FCVT_sh         01100101 10 0010 00 101 ... ..... .....         @rd_pg_rn_e0
-+FCVT_hs         01100101 10 0010 01 101 ... ..... .....         @rd_pg_rn_e0
-+FCVT_dh         01100101 11 0010 00 101 ... ..... .....         @rd_pg_rn_e0
-+FCVT_hd         01100101 11 0010 01 101 ... ..... .....         @rd_pg_rn_e0
-+FCVT_ds         01100101 11 0010 10 101 ... ..... .....         @rd_pg_rn_e0
-+FCVT_sd         01100101 11 0010 11 101 ... ..... .....         @rd_pg_rn_e0
++## SVE Floating Point Unary Operations - Unpredicated Group
 +
- # SVE integer convert to floating-point
- SCVTF_hh        01100101 01 010 01 0 101 ... ..... .....        @rd_pg_rn_e0
- SCVTF_sh        01100101 01 010 10 0 101 ... ..... .....        @rd_pg_rn_e0
++FRECPE          01100101 .. 001 110 001100 ..... .....          @rd_rn
++FRSQRTE         01100101 .. 001 111 001100 ..... .....          @rd_rn
++
+ ### SVE FP Accumulating Reduction Group
+ 
+ # SVE floating-point serial reduction (predicated)
 -- 
 2.17.1
 

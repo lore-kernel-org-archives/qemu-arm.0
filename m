@@ -1,103 +1,541 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5813460wrq;
-        Tue, 26 Jun 2018 22:38:26 -0700 (PDT)
-X-Received: by 2002:a62:678f:: with SMTP id t15-v6mr1161642pfj.85.1530077906688;
-        Tue, 26 Jun 2018 22:38:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530077906; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5769876wrq;
+        Tue, 26 Jun 2018 21:34:06 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcek3bPY0mhQNCMfctYE3Ra1tdMyTFpQTEyBLQNeSF4vPFGvcy+/Dqg4GcnYOHX0JuK8jyT
+X-Received: by 2002:a37:61cd:: with SMTP id v196-v6mr3973670qkb.101.1530074046040;
+        Tue, 26 Jun 2018 21:34:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530074046; cv=none;
         d=google.com; s=arc-20160816;
-        b=zvUAXULJLwbIlLrjx71/OS/FB7rGfRYLNrggow2ukhU+XojZ29v+trfc8w7VK4TW+F
-         52JNny+VB9SdfOHSQvxHa1j9K8SEN82L0puEGFfQs7wJqj0m4pXhlMkfdjlBEmHVVlO0
-         rjcsYTNkqY2z219QldzcCDVH52eY3pGZHGnRE3NMv2OfqpfvX9IRX4vSUfSwlgpHNvMy
-         9GcmVO92ahwoRfnideWWi2PQUErubZgrUsUpAZ7gjnfWPB3Fgk9vvOhkYm2HVsorAHmy
-         vbshMnTvnm6AxVo7Ex90kfYuPVSCCPFLYuruQLpw9vQkMOW8fIlYf+DYDzC+7MKNk7Lk
-         XVLQ==
+        b=S62qtqdvrFwCIDDcTvYxu/MU5n27PgFaRd/VStzdbRt0gDXhF5YAZ5bhZzyFDx9OLx
+         j6/1ED6ra2fUi5dUegBwrm9o3RwlhqbFpeww5fC+hkmku5xB4y0Tvi+nR9puqXKZcfNK
+         iGkjRhy0dzSiVpj1wlKkNPFrRGH7/w3GXj+U1f9GR5UtCbMr3V6snqAUs0OLmpiReivO
+         yuEA/zJe8MjjpmrAjan2JOnbJpLw25rb5IjdWCqmbGw9xWCPS/PzkhmLAP9xcKVwqHL3
+         TwNtM/u+BSuSCVaQxNnvlBW6ZOLc8nHTuWaG67LoiYwVbtjU1wTKb3VxN7RjoQQPKLvA
+         qmJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=NK3HtvsbGLlxPvQghuOf8RiA+HdQbTe7CRZFHc9VSC8=;
-        b=A2e091NqS7ErvXnipRje4jfg9SidTTSKBiMOabHjjiChXzilEzchZ5vRJENryFm0Y2
-         6pEOgBMUstkFz1Q7wp3E2zqCa23t1rr56TM4/FD6uHtUvLPkh0IqiI0bXaSWCoQfWWSN
-         i+ZUoXnBkuBwB11PNgQeZQM8DAOQbGT8tckhPSySNQAbcELAuw6auJK8DLjtUtr+3jcg
-         qzcc90mePAwbSUBJmH/79CAIXt7z0hIknFNaVCggSXwSWbP7iJVIOYJRZs+4sW9X/I8b
-         78ZF0M037jWer1xCmZe1RLr5UozlK4jXgJjghg539dmSyX1tUL1fDem3TsFLMlS4RbYM
-         zdaQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=XTPkV6RQtrRYMAiDv7oAO3OIlUw/Z9HU7TpzGlzU21M=;
+        b=w+aL4OZnC3by0j6UtwFwOngetbhW+7f4GGJrkIOq+P8khz+2EsudEhnvoJtjYGxSBw
+         SQImk+Fm6QQBXQd3iR/m4oJIkvYNtzh5M3/Yvg+LDOr6BVE0TnmQGitM1TLfyxkh5f0D
+         tFSb5SvVXzrqttzC60mLkVO4dXQzW0v8UdGcH+vHtNA+CgTBh4md50nQctIa8rBXfKj7
+         cvGOpJkZDcQN8uwFzghwOqQF9pijwBLQpebzC9IZTwobe3enS22qUYmCVnwJjJbtbbc8
+         gP6VRBiIt7Q/ZmkBVH6sh9er+eohzj9JsHPsZHIatIwr5U5oO6IQnqRVuZrzrynts4dB
+         czpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PvbUFeJS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id bh5-v6sor995524plb.87.2018.06.26.22.38.26
+       dkim=fail header.i=@linaro.org header.s=google header.b=Jnf7PCpC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t65-v6si3110412qka.222.2018.06.26.21.34.05
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 26 Jun 2018 22:38:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 26 Jun 2018 21:34:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PvbUFeJS;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=NK3HtvsbGLlxPvQghuOf8RiA+HdQbTe7CRZFHc9VSC8=;
-        b=PvbUFeJSeJCcJHNo6oqSNofbsVJpoAtOMAMPU6ExRDfvyhczopwa7KZY07Iuv8K1f+
-         LrLTKsjGpeWYRPZqVtdVjl80RaupwJEnjrl7fE3kSWdqOYdaFOh/YYTAr+3zZdf93MnV
-         3py4d1OZX10V/kiFX/ksqYiqzeojhdZIIzWJM=
+       dkim=fail header.i=@linaro.org header.s=google header.b=Jnf7PCpC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56472 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fY29d-0004C9-Cg
+	for alex.bennee@linaro.org; Wed, 27 Jun 2018 00:34:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60068)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1fY29C-00043M-WA
+	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 00:33:43 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <richard.henderson@linaro.org>) id 1fY297-0008QV-W7
+	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 00:33:38 -0400
+Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:43846)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fY297-0008P1-N5
+	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 00:33:33 -0400
+Received: by mail-pf0-x243.google.com with SMTP id y8-v6so381968pfm.10
+	for <qemu-arm@nongnu.org>; Tue, 26 Jun 2018 21:33:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=XTPkV6RQtrRYMAiDv7oAO3OIlUw/Z9HU7TpzGlzU21M=;
+	b=Jnf7PCpCEmXLcgHgylMk0Z/TWHcdAgsOx/X7JSqP9dN/6/9Jm5HwaDW5pWEOtPHW+7
+	iGd3/q9PKOSQxOM5O4lUzmeFUCTMatNxScD+e50QTrVPYEtHI8+YI64CCxG9qMR4+9UY
+	pEINctPX8TH5m4LysJc5S/41UM5jU9bcqnjbo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=NK3HtvsbGLlxPvQghuOf8RiA+HdQbTe7CRZFHc9VSC8=;
-        b=Q/nblQHVpNYlH1UZNDtyG912efgSN5S5eNiqJPXJQ+T2viTyC0eK5PHaIMV+Jb4Y4E
-         ND2bgebb+umnG0TijbFQxnL18dzxi1qzZkgxIUz0+15E/aVJcocyvOrUryGSMPdXXtBd
-         gcpUrsiZ6ujPmoCpSjn1my1hg3fMIDV5j9sGma6MAXIeN/eR3Poc8Wn51TLwBN00KPge
-         BcrGPc4xAPRLY9Wy/0WwgjLE2qlAPuEHz7FXAhx9O0BqKyR+oyMPP1ppUNjypj8rEUKW
-         sdF++TONFW3bz8Pi78j8QaXEuWhajeuWHCu+3+3pudKlAFV3xG1FDLiX3j91JIaVHUVa
-         zVrg==
-X-Gm-Message-State: APt69E3XDzfr7CtTSXk6B4vmHsszhuXkOZE0UMUBysesOEDDSRazXnRF
-	ULmNj2NtuFx0wszvxQ21UoOOaCc8
-X-Google-Smtp-Source: ADUXVKKrCHWc4RgZNx5QVEPwwcCSM6+wxEyLqRKIgN8CFaptYlGQEg+sT2712GWyglP+9MPeBgW2Jg==
-X-Received: by 2002:a17:902:a989:: with SMTP id bh9-v6mr4722145plb.245.1530077906305;
-        Tue, 26 Jun 2018 22:38:26 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net. [97.126.112.211])
-        by smtp.gmail.com with ESMTPSA id g10-v6sm4660723pfi.148.2018.06.26.22.38.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Jun 2018 22:38:25 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v3 5/5] tests/tcg/aarch64: userspace system
- register test
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20180625160009.17437-1-alex.bennee@linaro.org>
- <20180625160009.17437-6-alex.bennee@linaro.org>
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=XTPkV6RQtrRYMAiDv7oAO3OIlUw/Z9HU7TpzGlzU21M=;
+	b=G+ie10n121NcQt7OPds213pzTacnr18cLGlBQl9TWagLBAQlj9xImwE7/MjSaw4yGx
+	ijC+lXdE7uaUWnm5LX3PeXkZY0gsBfxXOxakN63wQY3rRMuXvaqQzt4SGGJvJvvmDvUU
+	XDlmefNfE2quSiyL5HSq8bi62DtXE2/md3QyjJ9mTQjy6nji7r0Is/qmXQQVbuX4HI8x
+	gwyQR9wPpJkDsIs/inLZ2YR/FOJnneMTgyneJSzcTrpb4aX1rD8XN7WKt/TojBQ0DJM6
+	CH9+p0936AW9We0iluZ+EW6ZHuMUap2BdMepOExmadomtZe7MF/LMcGglkg5tqKzslP9
+	urJg==
+X-Gm-Message-State: APt69E2jnQBGCpE5eABVrriMH0LOLypGwWg+Q3x5kBLZ9hC+2mOU+pp6
+	+8EHcBDUIKEDmpkjImi0xkcN0w==
+X-Received: by 2002:a65:444d:: with SMTP id
+	e13-v6mr3705522pgq.122.1530074012569; 
+	Tue, 26 Jun 2018 21:33:32 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	p20-v6sm4577638pff.90.2018.06.26.21.33.31
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 26 Jun 2018 21:33:31 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <3dfbf7c2-5db5-eb3f-78e7-6700aadc40e1@linaro.org>
-Date: Tue, 26 Jun 2018 22:38:23 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+To: qemu-devel@nongnu.org
+Date: Tue, 26 Jun 2018 21:32:54 -0700
+Message-Id: <20180627043328.11531-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180627043328.11531-1-richard.henderson@linaro.org>
+References: <20180627043328.11531-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20180625160009.17437-6-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2nln4g0OyPFA
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::243
+Subject: [Qemu-arm] [PATCH v6 01/35] target/arm: Implement SVE Memory
+ Contiguous Load Group
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 54xMoj5wHks4
 
-On 06/25/2018 09:00 AM, Alex Bennée wrote:
-> This tests a bunch of registers that the kernel allows userspace to
-> read including the CPUID registers.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  tests/tcg/aarch64/Makefile.target |  2 +-
->  tests/tcg/aarch64/sysregs.c       | 99 +++++++++++++++++++++++++++++++
->  2 files changed, 100 insertions(+), 1 deletion(-)
->  create mode 100644 tests/tcg/aarch64/sysregs.c
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/helper-sve.h    |  35 +++++++++
+ target/arm/sve_helper.c    | 153 +++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 121 +++++++++++++++++++++++++++++
+ target/arm/sve.decode      |  34 +++++++++
+ 4 files changed, 343 insertions(+)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 2e76084992..fcc9ba5f50 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -719,3 +719,38 @@ DEF_HELPER_FLAGS_5(gvec_rsqrts_s, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(gvec_rsqrts_d, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld2bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld3bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld4bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld2hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld3hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld4hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld2ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld3ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld4ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld2dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld3dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld4dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1bhu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1bsu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1bdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1bhs_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1bss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1bds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1hsu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1hdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1hss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1hds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++
++DEF_HELPER_FLAGS_4(sve_ld1sdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
++DEF_HELPER_FLAGS_4(sve_ld1sds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index 128bbf9b04..4e6ad282f9 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -2810,3 +2810,156 @@ uint32_t HELPER(sve_while)(void *vd, uint32_t count, uint32_t pred_desc)
+ 
+     return predtest_ones(d, oprsz, esz_mask);
+ }
++
++/*
++ * Load contiguous data, protected by a governing predicate.
++ */
++#define DO_LD1(NAME, FN, TYPEE, TYPEM, H)                  \
++static void do_##NAME(CPUARMState *env, void *vd, void *vg, \
++                      target_ulong addr, intptr_t oprsz,   \
++                      uintptr_t ra)                        \
++{                                                          \
++    intptr_t i = 0;                                        \
++    do {                                                   \
++        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
++        do {                                               \
++            TYPEM m = 0;                                   \
++            if (pg & 1) {                                  \
++                m = FN(env, addr, ra);                     \
++            }                                              \
++            *(TYPEE *)(vd + H(i)) = m;                     \
++            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
++            addr += sizeof(TYPEM);                         \
++        } while (i & 15);                                  \
++    } while (i < oprsz);                                   \
++}                                                          \
++void HELPER(NAME)(CPUARMState *env, void *vg,              \
++                  target_ulong addr, uint32_t desc)        \
++{                                                          \
++    do_##NAME(env, &env->vfp.zregs[simd_data(desc)], vg,   \
++              addr, simd_oprsz(desc), GETPC());            \
++}
++
++#define DO_LD2(NAME, FN, TYPEE, TYPEM, H)                  \
++void HELPER(NAME)(CPUARMState *env, void *vg,              \
++                  target_ulong addr, uint32_t desc)        \
++{                                                          \
++    intptr_t i, oprsz = simd_oprsz(desc);                  \
++    intptr_t ra = GETPC();                                 \
++    unsigned rd = simd_data(desc);                         \
++    void *d1 = &env->vfp.zregs[rd];                        \
++    void *d2 = &env->vfp.zregs[(rd + 1) & 31];             \
++    for (i = 0; i < oprsz; ) {                             \
++        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
++        do {                                               \
++            TYPEM m1 = 0, m2 = 0;                          \
++            if (pg & 1) {                                  \
++                m1 = FN(env, addr, ra);                    \
++                m2 = FN(env, addr + sizeof(TYPEM), ra);    \
++            }                                              \
++            *(TYPEE *)(d1 + H(i)) = m1;                    \
++            *(TYPEE *)(d2 + H(i)) = m2;                    \
++            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
++            addr += 2 * sizeof(TYPEM);                     \
++        } while (i & 15);                                  \
++    }                                                      \
++}
++
++#define DO_LD3(NAME, FN, TYPEE, TYPEM, H)                  \
++void HELPER(NAME)(CPUARMState *env, void *vg,              \
++                  target_ulong addr, uint32_t desc)        \
++{                                                          \
++    intptr_t i, oprsz = simd_oprsz(desc);                  \
++    intptr_t ra = GETPC();                                 \
++    unsigned rd = simd_data(desc);                         \
++    void *d1 = &env->vfp.zregs[rd];                        \
++    void *d2 = &env->vfp.zregs[(rd + 1) & 31];             \
++    void *d3 = &env->vfp.zregs[(rd + 2) & 31];             \
++    for (i = 0; i < oprsz; ) {                             \
++        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
++        do {                                               \
++            TYPEM m1 = 0, m2 = 0, m3 = 0;                  \
++            if (pg & 1) {                                  \
++                m1 = FN(env, addr, ra);                    \
++                m2 = FN(env, addr + sizeof(TYPEM), ra);    \
++                m3 = FN(env, addr + 2 * sizeof(TYPEM), ra); \
++            }                                              \
++            *(TYPEE *)(d1 + H(i)) = m1;                    \
++            *(TYPEE *)(d2 + H(i)) = m2;                    \
++            *(TYPEE *)(d3 + H(i)) = m3;                    \
++            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
++            addr += 3 * sizeof(TYPEM);                     \
++        } while (i & 15);                                  \
++    }                                                      \
++}
++
++#define DO_LD4(NAME, FN, TYPEE, TYPEM, H)                  \
++void HELPER(NAME)(CPUARMState *env, void *vg,              \
++                  target_ulong addr, uint32_t desc)        \
++{                                                          \
++    intptr_t i, oprsz = simd_oprsz(desc);                  \
++    intptr_t ra = GETPC();                                 \
++    unsigned rd = simd_data(desc);                         \
++    void *d1 = &env->vfp.zregs[rd];                        \
++    void *d2 = &env->vfp.zregs[(rd + 1) & 31];             \
++    void *d3 = &env->vfp.zregs[(rd + 2) & 31];             \
++    void *d4 = &env->vfp.zregs[(rd + 3) & 31];             \
++    for (i = 0; i < oprsz; ) {                             \
++        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
++        do {                                               \
++            TYPEM m1 = 0, m2 = 0, m3 = 0, m4 = 0;          \
++            if (pg & 1) {                                  \
++                m1 = FN(env, addr, ra);                    \
++                m2 = FN(env, addr + sizeof(TYPEM), ra);    \
++                m3 = FN(env, addr + 2 * sizeof(TYPEM), ra); \
++                m4 = FN(env, addr + 3 * sizeof(TYPEM), ra); \
++            }                                              \
++            *(TYPEE *)(d1 + H(i)) = m1;                    \
++            *(TYPEE *)(d2 + H(i)) = m2;                    \
++            *(TYPEE *)(d3 + H(i)) = m3;                    \
++            *(TYPEE *)(d4 + H(i)) = m4;                    \
++            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
++            addr += 4 * sizeof(TYPEM);                     \
++        } while (i & 15);                                  \
++    }                                                      \
++}
++
++DO_LD1(sve_ld1bhu_r, cpu_ldub_data_ra, uint16_t, uint8_t, H1_2)
++DO_LD1(sve_ld1bhs_r, cpu_ldsb_data_ra, uint16_t, int8_t, H1_2)
++DO_LD1(sve_ld1bsu_r, cpu_ldub_data_ra, uint32_t, uint8_t, H1_4)
++DO_LD1(sve_ld1bss_r, cpu_ldsb_data_ra, uint32_t, int8_t, H1_4)
++DO_LD1(sve_ld1bdu_r, cpu_ldub_data_ra, uint64_t, uint8_t, )
++DO_LD1(sve_ld1bds_r, cpu_ldsb_data_ra, uint64_t, int8_t, )
++
++DO_LD1(sve_ld1hsu_r, cpu_lduw_data_ra, uint32_t, uint16_t, H1_4)
++DO_LD1(sve_ld1hss_r, cpu_ldsw_data_ra, uint32_t, int8_t, H1_4)
++DO_LD1(sve_ld1hdu_r, cpu_lduw_data_ra, uint64_t, uint16_t, )
++DO_LD1(sve_ld1hds_r, cpu_ldsw_data_ra, uint64_t, int16_t, )
++
++DO_LD1(sve_ld1sdu_r, cpu_ldl_data_ra, uint64_t, uint32_t, )
++DO_LD1(sve_ld1sds_r, cpu_ldl_data_ra, uint64_t, int32_t, )
++
++DO_LD1(sve_ld1bb_r, cpu_ldub_data_ra, uint8_t, uint8_t, H1)
++DO_LD2(sve_ld2bb_r, cpu_ldub_data_ra, uint8_t, uint8_t, H1)
++DO_LD3(sve_ld3bb_r, cpu_ldub_data_ra, uint8_t, uint8_t, H1)
++DO_LD4(sve_ld4bb_r, cpu_ldub_data_ra, uint8_t, uint8_t, H1)
++
++DO_LD1(sve_ld1hh_r, cpu_lduw_data_ra, uint16_t, uint16_t, H1_2)
++DO_LD2(sve_ld2hh_r, cpu_lduw_data_ra, uint16_t, uint16_t, H1_2)
++DO_LD3(sve_ld3hh_r, cpu_lduw_data_ra, uint16_t, uint16_t, H1_2)
++DO_LD4(sve_ld4hh_r, cpu_lduw_data_ra, uint16_t, uint16_t, H1_2)
++
++DO_LD1(sve_ld1ss_r, cpu_ldl_data_ra, uint32_t, uint32_t, H1_4)
++DO_LD2(sve_ld2ss_r, cpu_ldl_data_ra, uint32_t, uint32_t, H1_4)
++DO_LD3(sve_ld3ss_r, cpu_ldl_data_ra, uint32_t, uint32_t, H1_4)
++DO_LD4(sve_ld4ss_r, cpu_ldl_data_ra, uint32_t, uint32_t, H1_4)
++
++DO_LD1(sve_ld1dd_r, cpu_ldq_data_ra, uint64_t, uint64_t, )
++DO_LD2(sve_ld2dd_r, cpu_ldq_data_ra, uint64_t, uint64_t, )
++DO_LD3(sve_ld3dd_r, cpu_ldq_data_ra, uint64_t, uint64_t, )
++DO_LD4(sve_ld4dd_r, cpu_ldq_data_ra, uint64_t, uint64_t, )
++
++#undef DO_LD1
++#undef DO_LD2
++#undef DO_LD3
++#undef DO_LD4
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 226c97579c..3543daff48 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -42,6 +42,8 @@ typedef void gen_helper_gvec_flags_3(TCGv_i32, TCGv_ptr, TCGv_ptr,
+ typedef void gen_helper_gvec_flags_4(TCGv_i32, TCGv_ptr, TCGv_ptr,
+                                      TCGv_ptr, TCGv_ptr, TCGv_i32);
+ 
++typedef void gen_helper_gvec_mem(TCGv_env, TCGv_ptr, TCGv_i64, TCGv_i32);
++
+ /*
+  * Helpers for extracting complex instruction fields.
+  */
+@@ -82,6 +84,15 @@ static inline int expand_imm_sh8u(int x)
+     return (uint8_t)x << (x & 0x100 ? 8 : 0);
+ }
+ 
++/* Convert a 2-bit memory size (msz) to a 4-bit data type (dtype)
++ * with unsigned data.  C.f. SVE Memory Contiguous Load Group.
++ */
++static inline int msz_dtype(int msz)
++{
++    static const uint8_t dtype[4] = { 0, 5, 10, 15 };
++    return dtype[msz];
++}
++
+ /*
+  * Include the generated decoder.
+  */
+@@ -3526,3 +3537,113 @@ static bool trans_LDR_pri(DisasContext *s, arg_rri *a, uint32_t insn)
+     }
+     return true;
+ }
++
++/*
++ *** SVE Memory - Contiguous Load Group
++ */
++
++/* The memory mode of the dtype.  */
++static const TCGMemOp dtype_mop[16] = {
++    MO_UB, MO_UB, MO_UB, MO_UB,
++    MO_SL, MO_UW, MO_UW, MO_UW,
++    MO_SW, MO_SW, MO_UL, MO_UL,
++    MO_SB, MO_SB, MO_SB, MO_Q
++};
++
++#define dtype_msz(x)  (dtype_mop[x] & MO_SIZE)
++
++/* The vector element size of dtype.  */
++static const uint8_t dtype_esz[16] = {
++    0, 1, 2, 3,
++    3, 1, 2, 3,
++    3, 2, 2, 3,
++    3, 2, 1, 3
++};
++
++static void do_mem_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
++                       gen_helper_gvec_mem *fn)
++{
++    unsigned vsz = vec_full_reg_size(s);
++    TCGv_ptr t_pg;
++    TCGv_i32 desc;
++
++    /* For e.g. LD4, there are not enough arguments to pass all 4
++     * registers as pointers, so encode the regno into the data field.
++     * For consistency, do this even for LD1.
++     */
++    desc = tcg_const_i32(simd_desc(vsz, vsz, zt));
++    t_pg = tcg_temp_new_ptr();
++
++    tcg_gen_addi_ptr(t_pg, cpu_env, pred_full_reg_offset(s, pg));
++    fn(cpu_env, t_pg, addr, desc);
++
++    tcg_temp_free_ptr(t_pg);
++    tcg_temp_free_i32(desc);
++}
++
++static void do_ld_zpa(DisasContext *s, int zt, int pg,
++                      TCGv_i64 addr, int dtype, int nreg)
++{
++    static gen_helper_gvec_mem * const fns[16][4] = {
++        { gen_helper_sve_ld1bb_r, gen_helper_sve_ld2bb_r,
++          gen_helper_sve_ld3bb_r, gen_helper_sve_ld4bb_r },
++        { gen_helper_sve_ld1bhu_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1bsu_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1bdu_r, NULL, NULL, NULL },
++
++        { gen_helper_sve_ld1sds_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1hh_r, gen_helper_sve_ld2hh_r,
++          gen_helper_sve_ld3hh_r, gen_helper_sve_ld4hh_r },
++        { gen_helper_sve_ld1hsu_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1hdu_r, NULL, NULL, NULL },
++
++        { gen_helper_sve_ld1hds_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1hss_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1ss_r, gen_helper_sve_ld2ss_r,
++          gen_helper_sve_ld3ss_r, gen_helper_sve_ld4ss_r },
++        { gen_helper_sve_ld1sdu_r, NULL, NULL, NULL },
++
++        { gen_helper_sve_ld1bds_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1bss_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1bhs_r, NULL, NULL, NULL },
++        { gen_helper_sve_ld1dd_r, gen_helper_sve_ld2dd_r,
++          gen_helper_sve_ld3dd_r, gen_helper_sve_ld4dd_r },
++    };
++    gen_helper_gvec_mem *fn = fns[dtype][nreg];
++
++    /* While there are holes in the table, they are not
++     * accessible via the instruction encoding.
++     */
++    assert(fn != NULL);
++    do_mem_zpa(s, zt, pg, addr, fn);
++}
++
++static bool trans_LD_zprr(DisasContext *s, arg_rprr_load *a, uint32_t insn)
++{
++    if (a->rm == 31) {
++        return false;
++    }
++    if (sve_access_check(s)) {
++        TCGv_i64 addr = new_tmp_a64(s);
++        tcg_gen_muli_i64(addr, cpu_reg(s, a->rm),
++                         (a->nreg + 1) << dtype_msz(a->dtype));
++        tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, a->rn));
++        do_ld_zpa(s, a->rd, a->pg, addr, a->dtype, a->nreg);
++    }
++    return true;
++}
++
++static bool trans_LD_zpri(DisasContext *s, arg_rpri_load *a, uint32_t insn)
++{
++    if (sve_access_check(s)) {
++        int vsz = vec_full_reg_size(s);
++        int elements = vsz >> dtype_esz[a->dtype];
++        TCGv_i64 addr = new_tmp_a64(s);
++
++        tcg_gen_addi_i64(addr, cpu_reg_sp(s, a->rn),
++                         (a->imm * elements * (a->nreg + 1))
++                         << dtype_msz(a->dtype));
++        do_ld_zpa(s, a->rd, a->pg, addr, a->dtype, a->nreg);
++    }
++    return true;
++}
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 6f436f9096..cfb12da639 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -45,6 +45,9 @@
+ # Unsigned 8-bit immediate, optionally shifted left by 8.
+ %sh8_i8u        5:9 !function=expand_imm_sh8u
+ 
++# Unsigned load of msz into esz=2, represented as a dtype.
++%msz_dtype      23:2 !function=msz_dtype
++
+ # Either a copy of rd (at bit 0), or a different source
+ # as propagated via the MOVPRFX instruction.
+ %reg_movprfx    0:5
+@@ -71,6 +74,8 @@
+ &incdec2_cnt    rd rn pat esz imm d u
+ &incdec_pred    rd pg esz d u
+ &incdec2_pred   rd rn pg esz d u
++&rprr_load      rd pg rn rm dtype nreg
++&rpri_load      rd pg rn imm dtype nreg
+ 
+ ###########################################################################
+ # Named instruction formats.  These are generally used to
+@@ -170,6 +175,15 @@
+ @incdec2_pred   ........ esz:2 .... .. ..... .. pg:4 rd:5 \
+                 &incdec2_pred rn=%reg_movprfx
+ 
++# Loads; user must fill in NREG.
++@rprr_load_dt   ....... dtype:4 rm:5 ... pg:3 rn:5 rd:5         &rprr_load
++@rpri_load_dt   ....... dtype:4 . imm:s4 ... pg:3 rn:5 rd:5     &rpri_load
++
++@rprr_load_msz  ....... .... rm:5 ... pg:3 rn:5 rd:5 \
++                &rprr_load dtype=%msz_dtype
++@rpri_load_msz  ....... .... . imm:s4 ... pg:3 rn:5 rd:5 \
++                &rpri_load dtype=%msz_dtype
++
+ ###########################################################################
+ # Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
+ 
+@@ -665,3 +679,23 @@ LDR_pri         10000101 10 ...... 000 ... ..... 0 ....         @pd_rn_i9
+ 
+ # SVE load vector register
+ LDR_zri         10000101 10 ...... 010 ... ..... .....          @rd_rn_i9
++
++### SVE Memory Contiguous Load Group
++
++# SVE contiguous load (scalar plus scalar)
++LD_zprr         1010010 .... ..... 010 ... ..... .....    @rprr_load_dt nreg=0
++
++# SVE contiguous load (scalar plus immediate)
++LD_zpri         1010010 .... 0.... 101 ... ..... .....    @rpri_load_dt nreg=0
++
++# SVE contiguous non-temporal load (scalar plus scalar)
++# LDNT1B, LDNT1H, LDNT1W, LDNT1D
++# SVE load multiple structures (scalar plus scalar)
++# LD2B, LD2H, LD2W, LD2D; etc.
++LD_zprr         1010010 .. nreg:2 ..... 110 ... ..... .....     @rprr_load_msz
++
++# SVE contiguous non-temporal load (scalar plus immediate)
++# LDNT1B, LDNT1H, LDNT1W, LDNT1D
++# SVE load multiple structures (scalar plus immediate)
++# LD2B, LD2H, LD2W, LD2D; etc.
++LD_zpri         1010010 .. nreg:2 0.... 111 ... ..... .....     @rpri_load_msz
+-- 
+2.17.1
 
-
-r~

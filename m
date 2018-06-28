@@ -1,229 +1,539 @@
-Received: by 2002:a1c:4d4:0:0:0:0:0 with SMTP id 203-v6csp474260wme;
-        Fri, 18 May 2018 08:26:41 -0700 (PDT)
-X-Received: by 2002:a37:b384:: with SMTP id c126-v6mr8750172qkf.160.1526657201159;
-        Fri, 18 May 2018 08:26:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1526657201; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7245536wrq;
+        Thu, 28 Jun 2018 03:23:52 -0700 (PDT)
+X-Received: by 2002:a5e:8c15:: with SMTP id n21-v6mr8010218ioj.217.1530181432237;
+        Thu, 28 Jun 2018 03:23:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530181432; cv=none;
         d=google.com; s=arc-20160816;
-        b=JCoNqBg3EQt+6m9KzvRvFN6/eeVdd9nKzT5GsN0GXenZLngIayyYVTBnuF0dh8WMNm
-         wVaJk+YJNKjQ1cMD8yLWo4QeWFzJJH3gJxXG57KLdk7BzKI2ASBMhTaRqoltbp6zRyEt
-         vzQDoTJMpg4+iyaqWiHUveNDK85zjfHumOJzV2EFoFPjV4llgN/G5s36+WBvn3XaLZiy
-         O84ei7ieGKk71rv8NtRFcxsgYXGUCiYMtxnaRkCNiKGh15zsqrshg8uBjNou7dJJEf+2
-         ONmXra7A1OXPSfLjqjfaJSVTS7KAGUHwdPz2TIJmCKPHAgJdZF4qaEg4mARW5lJwNrQ3
-         HnpA==
+        b=vatyvwpUR3Yg05pIGL2Ivk5M/gtwv5F6ak5DrZeqOonmfNPOKrRlIk3+mLHkoAzSvS
+         4QbxlXTr8oTA9Vy8WGOO1l7696nkP3mCjODK6Ve+S7m4LXzg4TFCiOLFh9W8ll/HKHp9
+         ltJ+c0KHy/a6sVL6BSBTtGypPYc0WzYiwaOYOWiyZrqTIiRIaHUITu7c31e7G7xh/TzT
+         VfAmVrgDzzaJOg/Arpnt/K44FKxFyEkKYJ+qEfo7+zqDMVpOaEuvklfAH1A6w0igDIZu
+         4ys+HDzKBJgi5JRGRCfMIjua5evqFGhZR9c6BBXGrf4nSCS69/4QdlPbLEEJyF5Kqzfl
+         OyHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :sender:dkim-signature:arc-authentication-results;
-        bh=A1wtX+jV/MRDhRm1Wb57MXrVbrY1ZfYrqwSXV1elxcI=;
-        b=f7GSAVrItb2AyCYXege9fpBtqgaulSBzIyfYEtbLZL7pwjCpqoY4c8Ku6ccRCkkXiC
-         tKC9sLvHCzUu0DEYfZu/N0Km8a+Fh+7Ip5saD2Dh15hIfqKzjSbIS+0K55OblPxPuPQA
-         7NyIdszUjoZSTWpjBEb1/D07EmByDPqPIcwoADlhzOuasbu18z0xMjj66f2ih6So+YcT
-         jPkYb/lwZThLBk/F8q1LFENMsL3thCPtjJmC1kt9ZvmXNt7iOk3bwHF5p5EBmbOpqfbH
-         Pbk/kkQmnlYKuDd19UwvTecZ3U7UCiYZHUecVhjdEfTP4F0CgER6puO1TyleNHOQfpt4
-         HH+Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=nKADHq2W0Uj4ePIZvRoXLNJWqEX39WvPiG9RmyOkc4s=;
+        b=rE9pczrzoGq5nBhGct7Dh8RAkCAzNlu0GPCPcBFnoLDoVoQuq6flYsiK+DklATPABV
+         7uM9pf+rrASQDf0fgtcNwmNEu8LBtJqRmcyiPiJD1ZS7m89ihT+RSLqLHsYmRGzQSbL+
+         SO696Gm3ijUPaMohv8R2bSkeaUYNl14mx1R5uKZBb+sTjkNLBCaJD2VdRsab9XpiKz5K
+         WTvGiV4IhAPamXXg2vVKB5v+NX9DoLpGCO/0wKqjmWad2IXl09jkdsa06hGAT+Lu5wV8
+         jQ4EjvKP1lZRwWgS7rsSspxzkGH613QGX/YnK9U1CYTBFTLgyXkzkPrsomopQ7YRZIqM
+         1yBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=adoueyn3;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=cy7+t+tB;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b100-v6sor6261702qkb.69.2018.05.18.08.26.41
+        by mx.google.com with SMTPS id s22-v6sor395583ioi.114.2018.06.28.03.23.51
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 18 May 2018 08:26:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 28 Jun 2018 03:23:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=adoueyn3;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=cy7+t+tB;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:openpgp:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=A1wtX+jV/MRDhRm1Wb57MXrVbrY1ZfYrqwSXV1elxcI=;
-        b=adoueyn3geTJSmTDmYX3J2xo09yk9yoya7FZSFCW8UWeSR0cSk5YyzSxN7XDALU6Th
-         2iRae6yPaC28fTRV4y12C0+H+yREQW/owl57HWhCYBU+5ObTOgHO94OozjppM1czPLxA
-         pV1Oyg29ZtR9p4VGN/klGA5ryBMSh+N0V25LvCEFxAcnWk2tqsH1kG3FjolctwEFUd74
-         YdCZdgxdfS5pjW5d03wozS5D1yjXAB7Mv+cmcE7cF/LgUvhx2hmtNSDrHLQZUYZlpFfL
-         icbueV+znqXt3oGvuABeasjpn7XPmIYZ46TQ+/QPK+1Rhf2V41gYUSnLvU6vFIEtNWpY
-         TD/g==
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=nKADHq2W0Uj4ePIZvRoXLNJWqEX39WvPiG9RmyOkc4s=;
+        b=cy7+t+tB6CbAJAJiYQi10pp7UC4J+izBi7Na0pode9+mK1irrPKpnHJ2Cjuq+ge+fD
+         O210hMHiG0Y/6peNp+X+LRQ/LfUEt7uIL3I1jhD1btor6wvVjvsq1lvpHFaCd5WH37I0
+         zTd8oqRiAwOceu9BhoFk6vKkpZOIgg+OuqOzE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=A1wtX+jV/MRDhRm1Wb57MXrVbrY1ZfYrqwSXV1elxcI=;
-        b=TPKwncEgeMqMGTDB+zTNEDwCYv1OElDv+T3ntymqO1JrPw+yYcPbFfrCXGcTQy2wtO
-         QPrHD9qP/Q1UKxVMwkXgM7xWNhF6+NVALf8ymG2+jz7RNlgs0C0evBuitwmVQXReMr8j
-         ta0OGX11F/NKvvedB/2+VeSsgZYftfCTWxPrHMgtoQFMHktKByGQbjnfwGM9tctK1AAc
-         JZID1VceHHdKsk7xcyoUTR5d9CElQXbROw9mLxenY6/fvE2nghLmbS0CE2L4oXkwrC0M
-         jccA3WRwAXsbrEyYsCZnSWsOd3yGzpf9O2hQDUBgkRZwsOIOxLeTKV440IYD+nAJoNjC
-         tNQA==
-X-Gm-Message-State: ALKqPwejv++yrwBgZZxq/p4El2nPm9kBLNC13gLwqcoG0ETMzusYtaJA
-	QQZE2CdfWyHNPzY6HlSbff4=
-X-Google-Smtp-Source: AB8JxZpiSqqsn/0mTleH/V6x3Ws0fCb2zXKD+o+5VhjIngmaVd9yJgY2mpHgC4YBVDWZrIz3/KqpHA==
-X-Received: by 2002:a37:c40d:: with SMTP id d13-v6mr9111568qki.340.1526657200762;
-        Fri, 18 May 2018 08:26:40 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.11] ([138.117.48.222])
-        by smtp.gmail.com with ESMTPSA id e56-v6sm5735357qtc.61.2018.05.18.08.26.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 18 May 2018 08:26:40 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v4 26/49] tests/tcg: move ARM specific tests into subdir
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, cota@braap.org,
- famz@redhat.com, berrange@redhat.com, richard.henderson@linaro.org,
- balrogg@gmail.com, aurelien@aurel32.net, agraf@suse.de,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, "open list:ARM" <qemu-arm@nongnu.org>
-References: <20180517174718.10107-1-alex.bennee@linaro.org>
- <20180517174718.10107-27-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <578dacec-2d74-6e6d-fbd2-091e46e21803@amsat.org>
-Date: Fri, 18 May 2018 12:26:30 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=nKADHq2W0Uj4ePIZvRoXLNJWqEX39WvPiG9RmyOkc4s=;
+        b=C97KAgX/TZdO7Y5SWeLV0r6gFexFTmJFud7LmaQoCGJBRCn6VLxv2cJDUYqKq3fdLr
+         /Fm3f5O15lN2GtgUhT6nCJizyi43Vhtusin9cSiOkUPKENQxy2A7tyyVB1cliB2metZT
+         RpWOmojaIrT5/h0+uIvUj2zJ5sAkyr1Y/Aj0sgmREzlli8rtZCj3v5w5ODrfB0pG8C2/
+         xMEUXHRgxxgGWj3fsw+IzbDdXSnktZfGFnLHwU2Ck1ReMq9jgyx6AZd68xlX5p4yYXY1
+         7B3brnYwXAcPBhXo46Ugd2kIwwggIscEjbDaSvg+Wxzf9DuSa7OTNGadr9ryzi9gI2nl
+         SRLg==
+X-Gm-Message-State: APt69E2NA5TuID+2AvUhI0fD6lrm+VlHZPNwQZuCsvavTaIRmEt2MSie
+	fnghw64ilqrcidTEykO4UgdYEHvp/rieXCBiSNNJu7Bstyk=
+X-Google-Smtp-Source: AAOMgpc6/mE3LTojZlRxloAh0U2CUCsSvI1vFVHPM4gejMH9btFdw9JZi3VwzmHwZMz0vl+rGfeK2vfuYpEJARZWI08=
+X-Received: by 2002:a6b:28c6:: with SMTP id o189-v6mr7888892ioo.149.1530181431497;
+ Thu, 28 Jun 2018 03:23:51 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180517174718.10107-27-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 9uW6IrAlK7Bv
+Received: by 2002:ac0:a65a:0:0:0:0:0 with HTTP; Thu, 28 Jun 2018 03:23:50
+ -0700 (PDT)
+In-Reply-To: <8736x7w98z.fsf@linaro.org>
+References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
+ <20180627123116.GB2424@work-vm> <CAHmQWvB2tPRXHOm08CQ+2R34gepULw8+pvKPa693coFbs-YvZg@mail.gmail.com>
+ <8736x7w98z.fsf@linaro.org>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Thu, 28 Jun 2018 18:23:50 +0800
+Message-ID: <CAHmQWvCwJFtwPD7Z+MHcmj_-Z-2k3OViBOi0gM_8NcqSA+jgYQ@mail.gmail.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: fG5uTVxwUkoc
 
-On 05/17/2018 02:46 PM, Alex Bennée wrote:
-> These only need to be built for ARM guests.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> ---
-> v2
->   - do VPATH manipulation in tests/tcg/arm/Makefile.target
->   - merge with fix hello-arm test
-> v4
->   - update MAINTAINERS
-> ---
->  MAINTAINERS                           |  1 +
->  tests/tcg/README                      |  9 ---------
->  tests/tcg/arm/Makefile.target         | 13 +++++++++++++
->  tests/tcg/arm/README                  | 11 +++++++++++
->  tests/tcg/{ => arm}/hello-arm.c       |  0
->  tests/tcg/{ => arm}/test-arm-iwmmxt.s |  0
->  6 files changed, 25 insertions(+), 9 deletions(-)
->  create mode 100644 tests/tcg/arm/Makefile.target
->  create mode 100644 tests/tcg/arm/README
->  rename tests/tcg/{ => arm}/hello-arm.c (100%)
->  rename tests/tcg/{ => arm}/test-arm-iwmmxt.s (100%)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 17b9fc0fbe..4e331c4db4 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -135,6 +135,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: target/arm/
-> +F: tests/tcg/arm/
->  F: hw/arm/
->  F: hw/cpu/a*mpcore.c
->  F: include/hw/cpu/a*mpcore.h
-> diff --git a/tests/tcg/README b/tests/tcg/README
-> index 469504c4cb..625f2326e6 100644
-> --- a/tests/tcg/README
-> +++ b/tests/tcg/README
-> @@ -5,15 +5,6 @@ or they are architecture specific.
->  
->  
->  
-> -ARM
-> -===
-> -
-> -hello-arm
-> ----------
-> -
-> -test-arm-iwmmxt
-> ----------------
-> -
->  MIPS
->  ====
->  
-> diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-> new file mode 100644
-> index 0000000000..bc6962ecc6
-> --- /dev/null
-> +++ b/tests/tcg/arm/Makefile.target
-> @@ -0,0 +1,13 @@
-> +# -*- Mode: makefile -*-
-> +#
-> +# ARM - included from tests/tcg/Makefile.target
-> +#
-> +
-> +ARM_SRC=$(SRC_PATH)/tests/tcg/arm
-> +
-> +# Set search path for all sources
-> +VPATH 		+= $(ARM_SRC)
-> +
-> +
-> +hello-arm: CFLAGS+=-marm -ffreestanding
+On 28 June 2018 at 17:28, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+>
+> Hongbo Zhang <hongbo.zhang@linaro.org> writes:
+>
+>> On 27 June 2018 at 20:31, Dr. David Alan Gilbert <dgilbert@redhat.com> w=
+rote:
+>>> * Hongbo Zhang (hongbo.zhang@linaro.org) wrote:
+> <snip>
+>> (Maybe we can change the kernel defconfig to e1000e, then we chose
+>> e1000e here too)
+>>
+>>> then to my mind it makes sense to use virtio-net-pci rather than
+>>> an e1000e.
+>>>
+>> Well, this is to emulate a 'true' hardware for firmware etc
+>> development, primary purpose it to emulate hardware functions, not for
+>> performance, so virtio is disabled, some firmware, boot loaders etc
+>> may not work with virtio either, if people want virtio, they can use
+>> the legacy 'virt' machine.
+>
+> I don't think pci based virtio is any different from "real" hardware in
+> that sense. The bus supports device enumeration and detection via a
+> standard mechanism, the actual endpoint is merely a driver detail.
+>
+Difference is from the perspective of hardware structure, in real Arm
+hardware, AHCI and EHCI are system memory mapped, not PCIE devices.
 
-So we are only testing the ARMv7, but linux-user provides ARMv5 and
-ARMv6 cpus.
-
-There are still boards shipped with those cpus, so I think QEMU will
-still be useful nowadays with those older archs.
-Can we consider add tests for them?
-If so, I volunteer to prepare Docker cross images :)
-
-arm-linux-user/tests$ ../qemu-arm -cpu arm926 -d in_asm,op sha1
-----------------
-IN:
-0x000102ec:  f04f 0b00  mov.w    fp, #0
-
-OP:
- ld_i32 tmp5,env,$0xffffffffffffffec
- movi_i32 tmp6,$0x0
- brcond_i32 tmp5,tmp6,lt,$L0
-
- ---- 000102ec 00000000 00000000
- movi_i32 pc,$0x102ec
- movi_i32 tmp5,$0x1
- movi_i32 tmp6,$0x2000000
- movi_i32 tmp7,$0x1
- call exception_with_syndrome,$0x0,$0,env,tmp5,tmp6,tmp7
- set_label $L0
- exit_tb $0x563aed6cc043
-
-qemu: uncaught target signal 4 (Illegal instruction) - core dumped
-Illegal instruction
-
-> +hello-arm: LDFLAGS+=-nostdlib
-> diff --git a/tests/tcg/arm/README b/tests/tcg/arm/README
-> new file mode 100644
-> index 0000000000..e6307116e2
-> --- /dev/null
-> +++ b/tests/tcg/arm/README
-> @@ -0,0 +1,11 @@
-> +These are ARM specific guest programs
-> +
-> +hello-arm
-> +---------
-> +
-> +A very simple inline assembly, write syscall based hello world
-> +
-> +test-arm-iwmmxt
-> +---------------
-> +
-> +A simple test case for older iwmmxt extended ARMs
-> diff --git a/tests/tcg/hello-arm.c b/tests/tcg/arm/hello-arm.c
-> similarity index 100%
-> rename from tests/tcg/hello-arm.c
-> rename to tests/tcg/arm/hello-arm.c
-> diff --git a/tests/tcg/test-arm-iwmmxt.s b/tests/tcg/arm/test-arm-iwmmxt.s
-> similarity index 100%
-> rename from tests/tcg/test-arm-iwmmxt.s
-> rename to tests/tcg/arm/test-arm-iwmmxt.s
-> 
+> However I think we should be aiming for an absolute minimum that you
+> then configure on top off. I must admit I end up --nodefaults in my
+> command line more than I would like.
+>
+>>
+>>> Dave
+>>>
+>>>> This is the prototype, more features can be added in futrue.
+>>>>
+>>>> Purpose of this is to have a standard QEMU platform for Arm firmware
+>>>> developement etc. where the legacy machines cannot meets requirements.
+>>>>
+>>>> Arm Trusted Firmware and UEFI porting to this are done seperately.
+>>>>
+>>>> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+>>>> ---
+>>>>  hw/arm/virt-acpi-build.c |  59 +++++++++++++-
+>>>>  hw/arm/virt.c            | 196 ++++++++++++++++++++++++++++++++++++++=
+++++++++-
+>>>>  include/hw/arm/virt.h    |   3 +
+>>>>  3 files changed, 254 insertions(+), 4 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>>>> index 6ea47e2..60af414 100644
+>>>> --- a/hw/arm/virt-acpi-build.c
+>>>> +++ b/hw/arm/virt-acpi-build.c
+>>>> @@ -84,6 +84,52 @@ static void acpi_dsdt_add_uart(Aml *scope, const Me=
+mMapEntry *uart_memmap,
+>>>>      aml_append(scope, dev);
+>>>>  }
+>>>>
+>>>> +static void acpi_dsdt_add_ahci(Aml *scope, const MemMapEntry *ahci_me=
+mmap,
+>>>> +                                           uint32_t ahci_irq)
+>>>> +{
+>>>> +    Aml *dev =3D aml_device("AHC0");
+>>>> +    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO001E")));
+>>>> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>>>> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+>>>> +
+>>>> +    Aml *crs =3D aml_resource_template();
+>>>> +    aml_append(crs, aml_memory32_fixed(ahci_memmap->base,
+>>>> +                                       ahci_memmap->size, AML_READ_WR=
+ITE));
+>>>> +    aml_append(crs,
+>>>> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH=
+,
+>>>> +                             AML_EXCLUSIVE, &ahci_irq, 1));
+>>>> +    aml_append(dev, aml_name_decl("_CRS", crs));
+>>>> +
+>>>> +    Aml *pkg =3D aml_package(3);
+>>>> +    aml_append(pkg, aml_int(0x1));
+>>>> +    aml_append(pkg, aml_int(0x6));
+>>>> +    aml_append(pkg, aml_int(0x1));
+>>>> +
+>>>> +    /* append the SATA class id */
+>>>> +    aml_append(dev, aml_name_decl("_CLS", pkg));
+>>>> +
+>>>> +    aml_append(scope, dev);
+>>>> +}
+>>>> +
+>>>> +static void acpi_dsdt_add_ehci(Aml *scope, const MemMapEntry *ehci_me=
+mmap,
+>>>> +                                           uint32_t ehci_irq)
+>>>> +{
+>>>> +    Aml *dev =3D aml_device("EHC0");
+>>>> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0D20")));
+>>>> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>>>> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+>>>> +
+>>>> +    Aml *crs =3D aml_resource_template();
+>>>> +    aml_append(crs, aml_memory32_fixed(ehci_memmap->base,
+>>>> +                                       ehci_memmap->size, AML_READ_WR=
+ITE));
+>>>> +    aml_append(crs,
+>>>> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH=
+,
+>>>> +                             AML_EXCLUSIVE, &ehci_irq, 1));
+>>>> +    aml_append(dev, aml_name_decl("_CRS", crs));
+>>>> +
+>>>> +    aml_append(scope, dev);
+>>>> +}
+>>>> +
+>>>>  static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cf=
+g_memmap)
+>>>>  {
+>>>>      Aml *dev =3D aml_device("FWCF");
+>>>> @@ -768,14 +814,23 @@ build_dsdt(GArray *table_data, BIOSLinker *linke=
+r, VirtMachineState *vms)
+>>>>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+>>>>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+>>>>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+>>>> -    acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>>>> -                    (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TR=
+ANSPORTS);
+>>>> +    if (!vms->sbsa) {
+>>>> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>>>> +                   (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRA=
+NSPORTS);
+>>>> +    }
+>>>>      acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BAS=
+E),
+>>>>                        vms->highmem, vms->highmem_ecam);
+>>>>      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+>>>>                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+>>>>      acpi_dsdt_add_power_button(scope);
+>>>>
+>>>> +    if (vms->sbsa) {
+>>>> +        acpi_dsdt_add_ahci(scope, &memmap[VIRT_AHCI],
+>>>> +                           (irqmap[VIRT_AHCI] + ARM_SPI_BASE));
+>>>> +        acpi_dsdt_add_ehci(scope, &memmap[VIRT_EHCI],
+>>>> +                           (irqmap[VIRT_EHCI] + ARM_SPI_BASE));
+>>>> +    }
+>>>> +
+>>>>      aml_append(dsdt, scope);
+>>>>
+>>>>      /* copy AML table into ACPI tables blob and patch header there */
+>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>>> index 742f68a..491f23b 100644
+>>>> --- a/hw/arm/virt.c
+>>>> +++ b/hw/arm/virt.c
+>>>> @@ -59,6 +59,10 @@
+>>>>  #include "qapi/visitor.h"
+>>>>  #include "standard-headers/linux/input.h"
+>>>>  #include "hw/arm/smmuv3.h"
+>>>> +#include "hw/ide/internal.h"
+>>>> +#include "hw/ide/ahci_internal.h"
+>>>> +#include "hw/usb.h"
+>>>> +#include "qemu/cutils.h"
+>>>>
+>>>>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>>>>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, =
+\
+>>>> @@ -94,6 +98,8 @@
+>>>>
+>>>>  #define PLATFORM_BUS_NUM_IRQS 64
+>>>>
+>>>> +#define SATA_NUM_PORTS 6
+>>>> +
+>>>>  /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
+>>>>   * RAM can go up to the 256GB mark, leaving 256GB of the physical
+>>>>   * address space unallocated and free for future use between 256G and=
+ 512G.
+>>>> @@ -168,6 +174,47 @@ static const int a15irqmap[] =3D {
+>>>>      [VIRT_PLATFORM_BUS] =3D 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS=
+ -1 */
+>>>>  };
+>>>>
+>>>> +static const MemMapEntry sbsa_memmap[] =3D {
+>>>> +    /* Space up to 0x8000000 is reserved for a boot ROM */
+>>>> +    [VIRT_FLASH] =3D              {          0, 0x08000000 },
+>>>> +    [VIRT_CPUPERIPHS] =3D         { 0x08000000, 0x00020000 },
+>>>> +    /* GIC distributor and CPU interfaces sit inside the CPU peripher=
+al space */
+>>>> +    [VIRT_GIC_DIST] =3D           { 0x08000000, 0x00010000 },
+>>>> +    [VIRT_GIC_CPU] =3D            { 0x08010000, 0x00010000 },
+>>>> +    [VIRT_GIC_V2M] =3D            { 0x08020000, 0x00001000 },
+>>>> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP *=
+/
+>>>> +    [VIRT_GIC_ITS] =3D            { 0x08080000, 0x00020000 },
+>>>> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
+>>>> +    [VIRT_GIC_REDIST] =3D         { 0x080A0000, 0x00F60000 },
+>>>> +    [VIRT_UART] =3D               { 0x09000000, 0x00001000 },
+>>>> +    [VIRT_RTC] =3D                { 0x09010000, 0x00001000 },
+>>>> +    [VIRT_FW_CFG] =3D             { 0x09020000, 0x00000018 },
+>>>> +    [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
+>>>> +    [VIRT_SECURE_UART] =3D        { 0x09040000, 0x00001000 },
+>>>> +    [VIRT_AHCI] =3D               { 0x09050000, 0x00010000 },
+>>>> +    [VIRT_EHCI] =3D               { 0x09060000, 0x00010000 },
+>>>> +    [VIRT_PLATFORM_BUS] =3D       { 0x0c000000, 0x02000000 },
+>>>> +    [VIRT_SECURE_MEM] =3D         { 0x0e000000, 0x01000000 },
+>>>> +    [VIRT_PCIE_MMIO] =3D          { 0x10000000, 0x7fff0000 },
+>>>> +    [VIRT_PCIE_PIO] =3D           { 0x8fff0000, 0x00010000 },
+>>>> +    [VIRT_PCIE_ECAM] =3D          { 0x90000000, 0x10000000 },
+>>>> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
+>>>> +    [VIRT_PCIE_MMIO_HIGH] =3D     { 0x100000000ULL, 0x7F00000000ULL }=
+,
+>>>> +    [VIRT_MEM] =3D                { 0x8000000000ULL, RAMLIMIT_BYTES }=
+,
+>>>> +};
+>>>> +
+>>>> +static const int sbsa_irqmap[] =3D {
+>>>> +    [VIRT_UART] =3D 1,
+>>>> +    [VIRT_RTC] =3D 2,
+>>>> +    [VIRT_PCIE] =3D 3, /* ... to 6 */
+>>>> +    [VIRT_GPIO] =3D 7,
+>>>> +    [VIRT_SECURE_UART] =3D 8,
+>>>> +    [VIRT_AHCI] =3D 9,
+>>>> +    [VIRT_EHCI] =3D 10,
+>>>> +    [VIRT_GIC_V2M] =3D 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>>>> +    [VIRT_PLATFORM_BUS] =3D 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS=
+ -1 */
+>>>> +};
+>>>> +
+>>>>  static const char *valid_cpus[] =3D {
+>>>>      ARM_CPU_TYPE_NAME("cortex-a15"),
+>>>>      ARM_CPU_TYPE_NAME("cortex-a53"),
+>>>> @@ -696,6 +743,72 @@ static void create_rtc(const VirtMachineState *vm=
+s, qemu_irq *pic)
+>>>>      g_free(nodename);
+>>>>  }
+>>>>
+>>>> +static void create_ahci(const VirtMachineState *vms, qemu_irq *pic)
+>>>> +{
+>>>> +    char *nodename;
+>>>> +    hwaddr base =3D vms->memmap[VIRT_AHCI].base;
+>>>> +    hwaddr size =3D vms->memmap[VIRT_AHCI].size;
+>>>> +    int irq =3D vms->irqmap[VIRT_AHCI];
+>>>> +    const char compat[] =3D "qemu,mach-virt-ahci\0generic-ahci";
+>>>> +    DeviceState *dev;
+>>>> +    DriveInfo *hd[SATA_NUM_PORTS];
+>>>> +    SysbusAHCIState *sysahci;
+>>>> +    AHCIState *ahci;
+>>>> +    int i;
+>>>> +
+>>>> +    dev =3D qdev_create(NULL, "sysbus-ahci");
+>>>> +    qdev_prop_set_uint32(dev, "num-ports", SATA_NUM_PORTS);
+>>>> +    qdev_init_nofail(dev);
+>>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+>>>> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
+>>>> +
+>>>> +    sysahci =3D SYSBUS_AHCI(dev);
+>>>> +    ahci =3D &sysahci->ahci;
+>>>> +    ide_drive_get(hd, ARRAY_SIZE(hd));
+>>>> +    for (i =3D 0; i < ahci->ports; i++) {
+>>>> +        if (hd[i] =3D=3D NULL) {
+>>>> +            continue;
+>>>> +        }
+>>>> +        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
+>>>> +    }
+>>>> +
+>>>> +    nodename =3D g_strdup_printf("/sata@%" PRIx64, base);
+>>>> +    qemu_fdt_add_subnode(vms->fdt, nodename);
+>>>> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof=
+(compat));
+>>>> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+>>>> +                                 2, base, 2, size);
+>>>> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
+>>>> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
+>>>> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>>>> +    g_free(nodename);
+>>>> +}
+>>>> +
+>>>> +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
+>>>> +{
+>>>> +    char *nodename;
+>>>> +    hwaddr base =3D vms->memmap[VIRT_EHCI].base;
+>>>> +    hwaddr size =3D vms->memmap[VIRT_EHCI].size;
+>>>> +    int irq =3D vms->irqmap[VIRT_EHCI];
+>>>> +    const char compat[] =3D "qemu,mach-virt-ehci\0generic-ehci";
+>>>> +    USBBus *usb_bus;
+>>>> +
+>>>> +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
+>>>> +
+>>>> +    usb_bus =3D usb_bus_find(-1);
+>>>> +    usb_create_simple(usb_bus, "usb-kbd");
+>>>> +    usb_create_simple(usb_bus, "usb-mouse");
+>>>> +
+>>>> +    nodename =3D g_strdup_printf("/ehci@%" PRIx64, base);
+>>>> +    qemu_fdt_add_subnode(vms->fdt, nodename);
+>>>> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof=
+(compat));
+>>>> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+>>>> +                                 2, base, 2, size);
+>>>> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
+>>>> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
+>>>> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>>>> +    g_free(nodename);
+>>>> +}
+>>>> +
+>>>>  static DeviceState *gpio_key_dev;
+>>>>  static void virt_powerdown_req(Notifier *n, void *opaque)
+>>>>  {
+>>>> @@ -1107,13 +1220,21 @@ static void create_pcie(VirtMachineState *vms,=
+ qemu_irq *pic)
+>>>>              NICInfo *nd =3D &nd_table[i];
+>>>>
+>>>>              if (!nd->model) {
+>>>> -                nd->model =3D g_strdup("virtio");
+>>>> +                if (vms->sbsa) {
+>>>> +                    nd->model =3D g_strdup("e1000");
+>>>> +                } else {
+>>>> +                    nd->model =3D g_strdup("virtio");
+>>>> +                }
+>>>>              }
+>>>>
+>>>>              pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
+>>>>          }
+>>>>      }
+>>>>
+>>>> +    if (vms->sbsa) {
+>>>> +        pci_create_simple(pci->bus, -1, "VGA");
+>>>> +    }
+>>>> +
+>>>>      nodename =3D g_strdup_printf("/pcie@%" PRIx64, base);
+>>>>      qemu_fdt_add_subnode(vms->fdt, nodename);
+>>>>      qemu_fdt_setprop_string(vms->fdt, nodename,
+>>>> @@ -1502,11 +1623,18 @@ static void machvirt_init(MachineState *machin=
+e)
+>>>>
+>>>>      create_gpio(vms, pic);
+>>>>
+>>>> +    if (vms->sbsa) {
+>>>> +        create_ahci(vms, pic);
+>>>> +        create_ehci(vms, pic);
+>>>> +    }
+>>>> +
+>>>>      /* Create mmio transports, so the user can create virtio backends
+>>>>       * (which will be automatically plugged in to the transports). If
+>>>>       * no backend is created the transport will just sit harmlessly i=
+dle.
+>>>>       */
+>>>> -    create_virtio_devices(vms, pic);
+>>>> +    if (!vms->sbsa) {
+>>>> +        create_virtio_devices(vms, pic);
+>>>> +    }
+>>>>
+>>>>      vms->fw_cfg =3D create_fw_cfg(vms, &address_space_memory);
+>>>>      rom_set_fw(vms->fw_cfg);
+>>>> @@ -1818,6 +1946,7 @@ static void virt_3_0_instance_init(Object *obj)
+>>>>
+>>>>      vms->memmap =3D a15memmap;
+>>>>      vms->irqmap =3D a15irqmap;
+>>>> +    vms->sbsa =3D false;
+>>>>  }
+>>>>
+>>>>  static void virt_machine_3_0_options(MachineClass *mc)
+>>>> @@ -1950,3 +2079,66 @@ static void virt_machine_2_6_options(MachineCla=
+ss *mc)
+>>>>      vmc->no_pmu =3D true;
+>>>>  }
+>>>>  DEFINE_VIRT_MACHINE(2, 6)
+>>>> +
+>>>> +static void sbsa_instance_init(Object *obj)
+>>>> +{
+>>>> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
+>>>> +
+>>>> +    vms->secure =3D true;
+>>>> +    object_property_add_bool(obj, "secure", virt_get_secure,
+>>>> +                             virt_set_secure, NULL);
+>>>> +    object_property_set_description(obj, "secure",
+>>>> +                                    "Set on/off to enable/disable the=
+ ARM "
+>>>> +                                    "Security Extensions (TrustZone)"=
+,
+>>>> +                                    NULL);
+>>>> +
+>>>> +    vms->virt =3D true;
+>>>> +    object_property_add_bool(obj, "virtualization", virt_get_virt,
+>>>> +                             virt_set_virt, NULL);
+>>>> +    object_property_set_description(obj, "virtualization",
+>>>> +                                    "Set on/off to enable/disable emu=
+lating a "
+>>>> +                                    "guest CPU which implements the A=
+RM "
+>>>> +                                    "Virtualization Extensions",
+>>>> +                                    NULL);
+>>>> +
+>>>> +    vms->highmem =3D true;
+>>>> +
+>>>> +    /* This can be changed to GICv3 when firmware is ready*/
+>>>> +    vms->gic_version =3D 2;
+>>>> +    object_property_add_str(obj, "gic-version", virt_get_gic_version,
+>>>> +                        virt_set_gic_version, NULL);
+>>>> +    object_property_set_description(obj, "gic-version",
+>>>> +                                    "Set GIC version. "
+>>>> +                                    "Valid values are 2, 3, host, max=
+", NULL);
+>>>> +    vms->its =3D true;
+>>>> +
+>>>> +    vms->memmap =3D sbsa_memmap;
+>>>> +    vms->irqmap =3D sbsa_irqmap;
+>>>> +    vms->sbsa =3D true;
+>>>> +}
+>>>> +
+>>>> +static void sbsa_class_init(ObjectClass *oc, void *data)
+>>>> +{
+>>>> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+>>>> +
+>>>> +    mc->max_cpus =3D 246;
+>>>> +    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a57");
+>>>> +    mc->block_default_type =3D IF_IDE;
+>>>> +    mc->default_ram_size =3D 1 * G_BYTE;
+>>>> +    mc->default_cpus =3D 4;
+>>>> +    mc->desc =3D "QEMU 'SBSA' ARM Virtual Machine";
+>>>> +}
+>>>> +
+>>>> +static const TypeInfo sbsa_info =3D {
+>>>> +    .name          =3D MACHINE_TYPE_NAME("sbsa"),
+>>>> +    .parent        =3D TYPE_VIRT_MACHINE,
+>>>> +    .instance_init =3D sbsa_instance_init,
+>>>> +    .class_init    =3D sbsa_class_init,
+>>>> +};
+>>>> +
+>>>> +static void sbsa_machine_init(void)
+>>>> +{
+>>>> +    type_register_static(&sbsa_info);
+>>>> +}
+>>>> +
+>>>> +type_init(sbsa_machine_init);
+>>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>>>> index 9a870cc..619473e 100644
+>>>> --- a/include/hw/arm/virt.h
+>>>> +++ b/include/hw/arm/virt.h
+>>>> @@ -78,6 +78,8 @@ enum {
+>>>>      VIRT_GPIO,
+>>>>      VIRT_SECURE_UART,
+>>>>      VIRT_SECURE_MEM,
+>>>> +    VIRT_AHCI,
+>>>> +    VIRT_EHCI,
+>>>>  };
+>>>>
+>>>>  typedef enum VirtIOMMUType {
+>>>> @@ -124,6 +126,7 @@ typedef struct {
+>>>>      uint32_t msi_phandle;
+>>>>      uint32_t iommu_phandle;
+>>>>      int psci_conduit;
+>>>> +    bool sbsa;
+>>>>  } VirtMachineState;
+>>>>
+>>>>  #define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_EC=
+AM)
+>>>> --
+>>>> 2.7.4
+>>>>
+>>>>
+>>> --
+>>> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>
+>
+> --
+> Alex Benn=C3=A9e

@@ -1,308 +1,564 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp1994883wre;
-        Thu, 24 May 2018 08:29:31 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKLTCPwnKbaKd1TSXxo42DTc//CUqCQZFLqeTHWcNYl3k7mMgv9DBUXHM1yZzgJuYTxOXisP
-X-Received: by 2002:a37:83c4:: with SMTP id f187-v6mr6750247qkd.97.1527175771201;
-        Thu, 24 May 2018 08:29:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527175771; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7258364wrq;
+        Thu, 28 Jun 2018 03:39:09 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdIy53YufiPKHHqN5mYtM2CT1EVdG5jvUdoGNHB6BNG1PqaqfhCsRvR2qbyMrpBYZ23CYNK
+X-Received: by 2002:aed:30cd:: with SMTP id 71-v6mr8842358qtf.274.1530182349500;
+        Thu, 28 Jun 2018 03:39:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530182349; cv=none;
         d=google.com; s=arc-20160816;
-        b=mfHRwQnQjQH24Gp63YINklEWTkW7yP1Bk3jWoKKZDvYffpknuHyBuTdpbkhx0GF+OA
-         Cw+HYWfZVTSVe7ruJY0VVV6V5YOvZGpVMICP6Jcnpm+VlwDk1usXlAQGt2KA3CmVnaQl
-         2V9QbZSsv6nZk6H3QgWbLbVBd34eHzwbDTqteKidg/sdFjRUNjxNudaKOibJVnzi4/fx
-         Uh14NYxjNBWCRCsepCFQjixH53bWMxSvhZZFnWP+WyPQsd3eYKyA1fun84NYtIRnR9DS
-         YQT7EnsRIPMPwp81WWRLd1bO6bcGA1+gNnR/O7M+L0LN8xrjbiVxDO0jZc6xEUDF6+yy
-         cpFA==
+        b=IjvcD97fPPbdujVXCxwEm1pFCGlSXpFAN75x5A/0TutN91Gzw52AwTYJFSiJ1kOXfc
+         zPwRM6uLQ91DYXGG4iPriie7s0BrSoG4pgL4UtmEerWhqjdrSkoAok3lgHRzd5ZYQWOA
+         7EdwkU0Wp95bnMbW0YplezkkWfdUVgPeZq6jt5ofBgC1g0prWXplTHXxOjtUPnr34xW4
+         rODrOkWiqkRhenByauns4VzsW4j0V6NtcwmLIRf10dt3kpMeK732e3V16vZal2sJJTMz
+         zGutE0FvgrjfF5UY9HkeMDsTpn2JY2mkqaAP8Ys5obY+kkCzMwRmohAMsszUWvarEjDJ
+         L//Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:cc:references:to:subject:arc-authentication-results;
-        bh=YNEdE92roAKoLspWOoTB0oPzGXkeW5d/05/8su4NYug=;
-        b=auFg25CaT4tbJPf+FfcKYbaoiDfProMYcMHKB8rNSSIkF3Ws4If65Zz56Lhhjd5Wqh
-         LrcqCRuKfvUr+/gyAzPXurlQeZB9U0kvjw3vV5M+wpTMMw6Kumrl3il+u272lbubf9dj
-         M6WgJgNidmkyIVQwYABCn0H0zoL5Zzv/DNiAdTY/4QHxHNy6x8Gzx38flqps9Lx+wqQi
-         msFuHcdNBER8WaFVtgMMdWcZnxycN8qAP0tTJkHZiF/7aiFBkbEwXj8cLnIdXPJYTA+H
-         ML3z2oHjVMzBHIynutTtudBJh+myJgyl68R4Mo9of/feCEa0V5p85q+LjHdim/41F8zQ
-         ZbaA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=foOVifZRixCd68UPzOva0DJoMZu+WqyQ9AnS06V/jnE=;
+        b=Qo4qGsbJNDT4ZjqQbaaXz3bYt17GeIwmPwRDaFTR+W7YGix7+CRbiiNB1PMvi6Dmzj
+         CQO7ArOhElOwjJhkFj+Iy4UToE7siW4TfF5VZb00MOs70XPuDqGUsmcID8C/xiCjsrr3
+         VPzcDhfBLzbo5rZUgH+ZMnSNr9RHn0pdQBGFHci2Dwg7LTWh4ffiUzCgy4t8yBuAY6km
+         RYky+0EX+Wf5G/620v3b8mUi6RyNXQHDGoc8NBlvL0E/BDvn5Pw1xRHVzSM9X6/x4iR/
+         yPlEdF2ynAAHfXj5fk9Tl2ipH+hGvvmbNT+zO6jIBBFPHLIJgoMOCY5WDse07eKNdI28
+         DbtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id f48-v6si5678132qta.78.2018.05.24.08.29.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 24 May 2018 08:29:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WPppn7OS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id e21-v6si2754148qtp.63.2018.06.28.03.39.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 28 Jun 2018 03:39:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A5309818BAF8;
-	Thu, 24 May 2018 15:29:30 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-69.ams2.redhat.com [10.36.116.69])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6E5EB946B0;
-	Thu, 24 May 2018 15:29:29 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH 15/27] iommu: Add IOMMU index argument to
- notifier APIs
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20180521140402.23318-1-peter.maydell@linaro.org>
- <20180521140402.23318-16-peter.maydell@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0774094d-d3e1-5983-ccb8-3d3412bf44fc@redhat.com>
-Date: Thu, 24 May 2018 17:29:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
- Thunderbird/45.4.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=WPppn7OS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35649 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fYUKT-0001Uw-07
+	for alex.bennee@linaro.org; Thu, 28 Jun 2018 06:39:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42500)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <hongbo.zhang@linaro.org>) id 1fYUJw-0001T0-Kv
+	for qemu-devel@nongnu.org; Thu, 28 Jun 2018 06:38:39 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <hongbo.zhang@linaro.org>) id 1fYUJu-0001CB-30
+	for qemu-devel@nongnu.org; Thu, 28 Jun 2018 06:38:36 -0400
+Received: from mail-it0-x243.google.com ([2607:f8b0:4001:c0b::243]:35100)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
+	id 1fYUJt-0001BF-SX
+	for qemu-devel@nongnu.org; Thu, 28 Jun 2018 06:38:34 -0400
+Received: by mail-it0-x243.google.com with SMTP id l16-v6so11068405ita.0
+	for <qemu-devel@nongnu.org>; Thu, 28 Jun 2018 03:38:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=foOVifZRixCd68UPzOva0DJoMZu+WqyQ9AnS06V/jnE=;
+	b=WPppn7OSujdG/aiHVCxkbLk6clA8YpSnHdrsfy4LiKTRl3L4rGd0lX1wJT07JZ/Vhy
+	Op7KZcZYRW9EFCoaA+xdJcqxQrh3f5snF78E3e6zfNh/RzlxlTYiVBxCBp/WpBgsMtPU
+	PtvD+xlUoz4D8vHpcukmNVWPpE8SQAoyjO9/k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=foOVifZRixCd68UPzOva0DJoMZu+WqyQ9AnS06V/jnE=;
+	b=BmS7czQtfJQDpBq9L4XpdUi/aI4h621dHAy4/I72DtjuyLsL65iSS2PG/nYxo5DYq8
+	C2Bs9fFv3JyqvYR2PoflIU4SMhtiA70Z8+zj6bCbSAW7N3whurSKvFoKqQX/hWod73N9
+	lJdv8uVA04+xA2UqzUxIFCL8rmWk1PyoVs8kKQh8DaTOWxKzJuVA9i24ERa+dyHdWAbl
+	ACZFXYsZbV31nQPWoBV2fUbJhje057w3jsIZD5oWvjYSNXHSJ/9XyEb2wqTaD/MRasY+
+	45nSfC6Rntm0iGrVD92dDME1z7gX37DlO6M753LFly9bCvWE5wWy/s7jDCRSTMeHrW47
+	ck2Q==
+X-Gm-Message-State: APt69E09IlGgo3JFevoA95+l/VCZ+cmzeQSTj/OBujuRK/PU2nHNcX3S
+	2g0cBUIjctjOo7mM60ctNLPJTLX3FSGNpfVLHJYx/w==
+X-Received: by 2002:a24:28c9:: with SMTP id
+	h192-v6mr7908518ith.124.1530182312991; 
+	Thu, 28 Jun 2018 03:38:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180521140402.23318-16-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 24 May 2018 15:29:30 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 24 May 2018 15:29:30 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-TUID: 433N3wcGoaeN
+Received: by 2002:ac0:a65a:0:0:0:0:0 with HTTP; Thu, 28 Jun 2018 03:38:32
+	-0700 (PDT)
+In-Reply-To: <208784f8-ad5a-ee6c-0322-e4206c4fa11b@redhat.com>
+References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
+	<208784f8-ad5a-ee6c-0322-e4206c4fa11b@redhat.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Thu, 28 Jun 2018 18:38:32 +0800
+Message-ID: <CAHmQWvA3LmsDhFB05uRXacxJ8RRL9TSuG3XP57=J5nkAXhN9nw@mail.gmail.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c0b::243
+Subject: Re: [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /+3A+vNt4sEl
 
-Hi Peter,
+On 28 June 2018 at 17:31, Laszlo Ersek <lersek@redhat.com> wrote:
+> On 06/27/18 12:13, Hongbo Zhang wrote:
+>> This patch introduces a new Arm machine type 'SBSA' with features:
+>>  - Based on legacy 'virt' machine type.
+>
+> My understanding is that this new machine type serves a different use
+> case than the "virt" machine type; i.e. it is not primarily meant to run
+> on KVM and execute virtualization workloads. Instead, it is meant to
+> provide an environment as faithful as possible to physical hardware, for
+> supporting firmware and OS development for physical ARM64 machines.
+>
+> In other words, this machine type is not a "goal" for running production
+> workloads (on KVM); instead it is a development and testbed "means",
+> where the end-goal is writing OS and firmware code for physical machines
+> that conform to the SBSA spec. Thus, the machine type is similar to e.g.
+> the "vexpress" machine types, except the emulated hardware platform is
+> "SBSA".
+>
+> Can you please confirm that?
+>
+Yes, yes, yes.
+You describe much better than me, thanks.
 
-On 05/21/2018 04:03 PM, Peter Maydell wrote:
-> Add support for multiple IOMMU indexes to the IOMMU notifier APIs.
-> When initializing a notifier with iommu_notifier_init(), the caller
-> must pass the IOMMU index that it is interested in. When a change
-> happens, the IOMMU implementation must pass
-> memory_region_notify_iommu() the IOMMU index that has changed and
-> that notifiers must be called for.
-> 
-> IOMMUs which support only a single index don't need to change.
-> Callers which only really support working with IOMMUs with a single
-> index can use the result of passing MEMTXATTRS_UNSPECIFIED to
-> memory_region_iommu_attrs_to_index().
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/exec/memory.h    | 11 ++++++++++-
->  hw/i386/intel_iommu.c    |  4 ++--
->  hw/ppc/spapr_iommu.c     |  2 +-
->  hw/s390x/s390-pci-inst.c |  4 ++--
->  hw/vfio/common.c         |  6 +++++-
->  hw/virtio/vhost.c        |  7 ++++++-
->  memory.c                 |  8 +++++++-
->  7 files changed, 33 insertions(+), 9 deletions(-)
-> 
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index f6226fb263..4e6b125add 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -71,6 +71,7 @@ struct IOMMUTLBEntry {
->      hwaddr           iova;
->      hwaddr           translated_addr;
->      hwaddr           addr_mask;  /* 0xfff = 4k translation */
-> +    int              iommu_idx;
-I don't get why ne need iommu_idx field here. On translate the caller
-has it. On notify the notifier has it?
->      IOMMUAccessFlags perm;
->  };
->  
-> @@ -98,18 +99,21 @@ struct IOMMUNotifier {
->      /* Notify for address space range start <= addr <= end */
->      hwaddr start;
->      hwaddr end;
-> +    int iommu_idx;
->      QLIST_ENTRY(IOMMUNotifier) node;
->  };
->  typedef struct IOMMUNotifier IOMMUNotifier;
->  
->  static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
->                                         IOMMUNotifierFlag flags,
-> -                                       hwaddr start, hwaddr end)
-> +                                       hwaddr start, hwaddr end,
-> +                                       int iommu_idx)
->  {
->      n->notify = fn;
->      n->notifier_flags = flags;
->      n->start = start;
->      n->end = end;
-> +    n->iommu_idx = iommu_idx;
->  }
->  
->  /*
-> @@ -323,7 +327,10 @@ typedef struct IOMMUMemoryRegionClass {
->       * Optional method: if this method is not provided, then
->       * memory_region_iommu_num_indexes() will return 1, indicating that
->       * only a single IOMMU index is supported.
-> +     *
-> +     * @iommu: the IOMMUMemoryRegion
->       */
-> +    int (*num_indexes)(IOMMUMemoryRegion *iommu);
->  } IOMMUMemoryRegionClass;
->  
->  typedef struct CoalescedMemoryRange CoalescedMemoryRange;
-> @@ -1028,11 +1035,13 @@ uint64_t memory_region_iommu_get_min_page_size(IOMMUMemoryRegion *iommu_mr);
->   * should be notified with an UNMAP followed by a MAP.
->   *
->   * @iommu_mr: the memory region that was changed
-> + * @iommu_idx: the IOMMU index for the translation table which has changed
->   * @entry: the new entry in the IOMMU translation table.  The entry
->   *         replaces all old entries for the same virtual I/O address range.
->   *         Deleted entries have .@perm == 0.
->   */
->  void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-> +                                int iommu_idx,
->                                  IOMMUTLBEntry entry);
->  
->  /**
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index fb31de9416..b8c9354b0b 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -1376,7 +1376,7 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
->  static int vtd_page_invalidate_notify_hook(IOMMUTLBEntry *entry,
->                                             void *private)
->  {
-> -    memory_region_notify_iommu((IOMMUMemoryRegion *)private, *entry);
-> +    memory_region_notify_iommu((IOMMUMemoryRegion *)private, 0, *entry);
->      return 0;
->  }
->  
-> @@ -1826,7 +1826,7 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
->      entry.iova = addr;
->      entry.perm = IOMMU_NONE;
->      entry.translated_addr = 0;
-> -    memory_region_notify_iommu(&vtd_dev_as->iommu, entry);
-> +    memory_region_notify_iommu(&vtd_dev_as->iommu, 0, entry);
->  
->  done:
->      return true;
-> diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
-> index aaa6010d5c..301708e45e 100644
-> --- a/hw/ppc/spapr_iommu.c
-> +++ b/hw/ppc/spapr_iommu.c
-> @@ -428,7 +428,7 @@ static target_ulong put_tce_emu(sPAPRTCETable *tcet, target_ulong ioba,
->      entry.translated_addr = tce & page_mask;
->      entry.addr_mask = ~page_mask;
->      entry.perm = spapr_tce_iommu_access_flags(tce);
-> -    memory_region_notify_iommu(&tcet->iommu, entry);
-> +    memory_region_notify_iommu(&tcet->iommu, 0, entry);
->  
->      return H_SUCCESS;
->  }
-> diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
-> index d1a5f79678..7b61367ee3 100644
-> --- a/hw/s390x/s390-pci-inst.c
-> +++ b/hw/s390x/s390-pci-inst.c
-> @@ -589,7 +589,7 @@ static void s390_pci_update_iotlb(S390PCIIOMMU *iommu, S390IOTLBEntry *entry)
->              }
->  
->              notify.perm = IOMMU_NONE;
-> -            memory_region_notify_iommu(&iommu->iommu_mr, notify);
-> +            memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
->              notify.perm = entry->perm;
->          }
->  
-> @@ -601,7 +601,7 @@ static void s390_pci_update_iotlb(S390PCIIOMMU *iommu, S390IOTLBEntry *entry)
->          g_hash_table_replace(iommu->iotlb, &cache->iova, cache);
->      }
->  
-> -    memory_region_notify_iommu(&iommu->iommu_mr, notify);
-> +    memory_region_notify_iommu(&iommu->iommu_mr, 0, notify);
->  }
->  
->  int rpcit_service_call(S390CPU *cpu, uint8_t r1, uint8_t r2, uintptr_t ra)
-> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> index 8e57265edf..fb396cf00a 100644
-> --- a/hw/vfio/common.c
-> +++ b/hw/vfio/common.c
-> @@ -507,6 +507,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
->      if (memory_region_is_iommu(section->mr)) {
->          VFIOGuestIOMMU *giommu;
->          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
-> +        int iommu_idx;
->  
->          trace_vfio_listener_region_add_iommu(iova, end);
->          /*
-> @@ -523,10 +524,13 @@ static void vfio_listener_region_add(MemoryListener *listener,
->          llend = int128_add(int128_make64(section->offset_within_region),
->                             section->size);
->          llend = int128_sub(llend, int128_one());
-> +        iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
-> +                                                       MEMTXATTRS_UNSPECIFIED);
-In that case VFIO ideally wants to be notified for any guest update
-(whatever the page set) to reprogram the physical IOMMU corresponding
-entries and doesn't want to register a notifier per iommu_idx. Also it
-does not know which ones are supported. Is there a corresponding
-iommu_idx value? MEMTXATTRS_ANY?
+> If that's the case, then please remove the word "legacy" from the commit
+> message (multiple instances). This machine type does not obsolete or
+> replace "virt", for "virt"'s stated use case; this machine type is for
+> an independent use case.
+>
+Good suggestion.
+I didn't want make 'virt' obsolete at all, English isn't my mother
+language, this should be my misunderstanding of term 'legacy' some
+how, I just meant SBSA based on 'virt' :)
 
-Thanks
+> One consequence of this would be that performance isn't as important.
+>
+> Another consequence is that paravirt devices are less desirable.
+>
+> I have another question:
+>
+>>  - Newly designed memory map.
+>>  - EL2 and EL3 are enabled by default.
+>>  - AHCI controller attached to system bus, and then CDROM and hard disc
+>>    can be added to it.
+>>  - EHCI controller attached to system bus, with USB mouse and key board
+>>    installed by default.
+>>  - E1000 ethernet card on PCIE bus.
+>>  - VGA display adaptor on PCIE bus.
+>>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
+>>  - No virtio functions enabled, since this is to emulate real hardware.
+>>
+>> This is the prototype, more features can be added in futrue.
+>>
+>> Purpose of this is to have a standard QEMU platform for Arm firmware
+>> developement etc. where the legacy machines cannot meets requirements.
+>>
+>> Arm Trusted Firmware and UEFI porting to this are done seperately.
+>>
+>> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+>> ---
+>>  hw/arm/virt-acpi-build.c |  59 +++++++++++++-
+>>  hw/arm/virt.c            | 196 ++++++++++++++++++++++++++++++++++++++++++++++-
+>>  include/hw/arm/virt.h    |   3 +
+>>  3 files changed, 254 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 6ea47e2..60af414 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -84,6 +84,52 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+>>      aml_append(scope, dev);
+>>  }
+>>
+>> +static void acpi_dsdt_add_ahci(Aml *scope, const MemMapEntry *ahci_memmap,
+>> +                                           uint32_t ahci_irq)
+>> +{
+>> +    Aml *dev = aml_device("AHC0");
+>> +    aml_append(dev, aml_name_decl("_HID", aml_string("LNRO001E")));
+>> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+>> +
+>> +    Aml *crs = aml_resource_template();
+>> +    aml_append(crs, aml_memory32_fixed(ahci_memmap->base,
+>> +                                       ahci_memmap->size, AML_READ_WRITE));
+>> +    aml_append(crs,
+>> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+>> +                             AML_EXCLUSIVE, &ahci_irq, 1));
+>> +    aml_append(dev, aml_name_decl("_CRS", crs));
+>> +
+>> +    Aml *pkg = aml_package(3);
+>> +    aml_append(pkg, aml_int(0x1));
+>> +    aml_append(pkg, aml_int(0x6));
+>> +    aml_append(pkg, aml_int(0x1));
+>> +
+>> +    /* append the SATA class id */
+>> +    aml_append(dev, aml_name_decl("_CLS", pkg));
+>> +
+>> +    aml_append(scope, dev);
+>> +}
+>> +
+>> +static void acpi_dsdt_add_ehci(Aml *scope, const MemMapEntry *ehci_memmap,
+>> +                                           uint32_t ehci_irq)
+>> +{
+>> +    Aml *dev = aml_device("EHC0");
+>> +    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0D20")));
+>> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+>> +    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+>> +
+>> +    Aml *crs = aml_resource_template();
+>> +    aml_append(crs, aml_memory32_fixed(ehci_memmap->base,
+>> +                                       ehci_memmap->size, AML_READ_WRITE));
+>> +    aml_append(crs,
+>> +               aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+>> +                             AML_EXCLUSIVE, &ehci_irq, 1));
+>> +    aml_append(dev, aml_name_decl("_CRS", crs));
+>> +
+>> +    aml_append(scope, dev);
+>> +}
+>> +
+>>  static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+>>  {
+>>      Aml *dev = aml_device("FWCF");
+>> @@ -768,14 +814,23 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+>>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+>>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+>> -    acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>> -                    (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+>> +    if (!vms->sbsa) {
+>> +        acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>> +                   (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+>> +    }
+>>      acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
+>>                        vms->highmem, vms->highmem_ecam);
+>>      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+>>                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+>>      acpi_dsdt_add_power_button(scope);
+>>
+>> +    if (vms->sbsa) {
+>> +        acpi_dsdt_add_ahci(scope, &memmap[VIRT_AHCI],
+>> +                           (irqmap[VIRT_AHCI] + ARM_SPI_BASE));
+>> +        acpi_dsdt_add_ehci(scope, &memmap[VIRT_EHCI],
+>> +                           (irqmap[VIRT_EHCI] + ARM_SPI_BASE));
+>> +    }
+>> +
+>>      aml_append(dsdt, scope);
+>>
+>>      /* copy AML table into ACPI tables blob and patch header there */
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 742f68a..491f23b 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -59,6 +59,10 @@
+>>  #include "qapi/visitor.h"
+>>  #include "standard-headers/linux/input.h"
+>>  #include "hw/arm/smmuv3.h"
+>> +#include "hw/ide/internal.h"
+>> +#include "hw/ide/ahci_internal.h"
+>> +#include "hw/usb.h"
+>> +#include "qemu/cutils.h"
+>>
+>>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+>> @@ -94,6 +98,8 @@
+>>
+>>  #define PLATFORM_BUS_NUM_IRQS 64
+>>
+>> +#define SATA_NUM_PORTS 6
+>> +
+>>  /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
+>>   * RAM can go up to the 256GB mark, leaving 256GB of the physical
+>>   * address space unallocated and free for future use between 256G and 512G.
+>> @@ -168,6 +174,47 @@ static const int a15irqmap[] = {
+>>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+>>  };
+>>
+>> +static const MemMapEntry sbsa_memmap[] = {
+>> +    /* Space up to 0x8000000 is reserved for a boot ROM */
+>> +    [VIRT_FLASH] =              {          0, 0x08000000 },
+>> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
+>> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
+>> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
+>> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
+>> +    [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
+>> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
+>> +    [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
+>> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
+>> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
+>> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
+>> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+>> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>
+> It's hard for any device to be *more* paravirtual than fw_cfg is --
+> given that (to my understanding) paravirtualization is an explicit
+> non-goal for this machine type, what do you need fw_cfg for? Is it an
+> oversight in the memory map, or is it an exception -- a limited paravirt
+> info channel -- because you need *some* way for passing information from
+> QEMU to a small subset of guest code?
+>
+Well, when design discussed, fw_cfg wasn't mentioned at all, so I
+didn't pay much attention to it.
+Will double check, I think this should be removed.
 
-Eric
->          iommu_notifier_init(&giommu->n, vfio_iommu_map_notify,
->                              IOMMU_NOTIFIER_ALL,
->                              section->offset_within_region,
-> -                            int128_get64(llend));
-> +                            int128_get64(llend),
-> +                            iommu_idx);
->          QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
->  
->          memory_region_register_iommu_notifier(section->mr, &giommu->n);
-> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-> index 48f4fd7cc9..6218df7683 100644
-> --- a/hw/virtio/vhost.c
-> +++ b/hw/virtio/vhost.c
-> @@ -657,6 +657,8 @@ static void vhost_iommu_region_add(MemoryListener *listener,
->                                           iommu_listener);
->      struct vhost_iommu *iommu;
->      Int128 end;
-> +    int iommu_idx;
-> +    IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
->  
->      if (!memory_region_is_iommu(section->mr)) {
->          return;
-> @@ -666,10 +668,13 @@ static void vhost_iommu_region_add(MemoryListener *listener,
->      end = int128_add(int128_make64(section->offset_within_region),
->                       section->size);
->      end = int128_sub(end, int128_one());
-> +    iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
-> +                                                   MEMTXATTRS_UNSPECIFIED);
->      iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
->                          IOMMU_NOTIFIER_UNMAP,
->                          section->offset_within_region,
-> -                        int128_get64(end));
-> +                        int128_get64(end),
-> +                        iommu_idx);
->      iommu->mr = section->mr;
->      iommu->iommu_offset = section->offset_within_address_space -
->                            section->offset_within_region;
-> diff --git a/memory.c b/memory.c
-> index 07d5fa7862..accb28d694 100644
-> --- a/memory.c
-> +++ b/memory.c
-> @@ -1802,6 +1802,9 @@ void memory_region_register_iommu_notifier(MemoryRegion *mr,
->      iommu_mr = IOMMU_MEMORY_REGION(mr);
->      assert(n->notifier_flags != IOMMU_NOTIFIER_NONE);
->      assert(n->start <= n->end);
-> +    assert(n->iommu_idx >= 0 &&
-> +           n->iommu_idx < memory_region_iommu_num_indexes(iommu_mr));
-> +
->      QLIST_INSERT_HEAD(&iommu_mr->iommu_notify, n, node);
->      memory_region_update_iommu_notify_flags(iommu_mr);
->  }
-> @@ -1894,6 +1897,7 @@ void memory_region_notify_one(IOMMUNotifier *notifier,
->  }
->  
->  void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
-> +                                int iommu_idx,
->                                  IOMMUTLBEntry entry)
->  {
->      IOMMUNotifier *iommu_notifier;
-> @@ -1901,7 +1905,9 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
->      assert(memory_region_is_iommu(MEMORY_REGION(iommu_mr)));
->  
->      IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
-> -        memory_region_notify_one(iommu_notifier, &entry);
-> +        if (iommu_notifier->iommu_idx == iommu_idx) {
-> +            memory_region_notify_one(iommu_notifier, &entry);
-> +        }
->      }
->  }
->  
-> 
+Thanks for review.
+
+> Thanks
+> Laszlo
+>
+>> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+>> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
+>> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
+>> +    [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+>> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+>> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
+>> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
+>> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
+>> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
+>> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
+>> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
+>> +};
+>> +
+>> +static const int sbsa_irqmap[] = {
+>> +    [VIRT_UART] = 1,
+>> +    [VIRT_RTC] = 2,
+>> +    [VIRT_PCIE] = 3, /* ... to 6 */
+>> +    [VIRT_GPIO] = 7,
+>> +    [VIRT_SECURE_UART] = 8,
+>> +    [VIRT_AHCI] = 9,
+>> +    [VIRT_EHCI] = 10,
+>> +    [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>> +    [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+>> +};
+>> +
+>>  static const char *valid_cpus[] = {
+>>      ARM_CPU_TYPE_NAME("cortex-a15"),
+>>      ARM_CPU_TYPE_NAME("cortex-a53"),
+>> @@ -696,6 +743,72 @@ static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
+>>      g_free(nodename);
+>>  }
+>>
+>> +static void create_ahci(const VirtMachineState *vms, qemu_irq *pic)
+>> +{
+>> +    char *nodename;
+>> +    hwaddr base = vms->memmap[VIRT_AHCI].base;
+>> +    hwaddr size = vms->memmap[VIRT_AHCI].size;
+>> +    int irq = vms->irqmap[VIRT_AHCI];
+>> +    const char compat[] = "qemu,mach-virt-ahci\0generic-ahci";
+>> +    DeviceState *dev;
+>> +    DriveInfo *hd[SATA_NUM_PORTS];
+>> +    SysbusAHCIState *sysahci;
+>> +    AHCIState *ahci;
+>> +    int i;
+>> +
+>> +    dev = qdev_create(NULL, "sysbus-ahci");
+>> +    qdev_prop_set_uint32(dev, "num-ports", SATA_NUM_PORTS);
+>> +    qdev_init_nofail(dev);
+>> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+>> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
+>> +
+>> +    sysahci = SYSBUS_AHCI(dev);
+>> +    ahci = &sysahci->ahci;
+>> +    ide_drive_get(hd, ARRAY_SIZE(hd));
+>> +    for (i = 0; i < ahci->ports; i++) {
+>> +        if (hd[i] == NULL) {
+>> +            continue;
+>> +        }
+>> +        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
+>> +    }
+>> +
+>> +    nodename = g_strdup_printf("/sata@%" PRIx64, base);
+>> +    qemu_fdt_add_subnode(vms->fdt, nodename);
+>> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
+>> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+>> +                                 2, base, 2, size);
+>> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
+>> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
+>> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>> +    g_free(nodename);
+>> +}
+>> +
+>> +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
+>> +{
+>> +    char *nodename;
+>> +    hwaddr base = vms->memmap[VIRT_EHCI].base;
+>> +    hwaddr size = vms->memmap[VIRT_EHCI].size;
+>> +    int irq = vms->irqmap[VIRT_EHCI];
+>> +    const char compat[] = "qemu,mach-virt-ehci\0generic-ehci";
+>> +    USBBus *usb_bus;
+>> +
+>> +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
+>> +
+>> +    usb_bus = usb_bus_find(-1);
+>> +    usb_create_simple(usb_bus, "usb-kbd");
+>> +    usb_create_simple(usb_bus, "usb-mouse");
+>> +
+>> +    nodename = g_strdup_printf("/ehci@%" PRIx64, base);
+>> +    qemu_fdt_add_subnode(vms->fdt, nodename);
+>> +    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
+>> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+>> +                                 2, base, 2, size);
+>> +    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
+>> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
+>> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>> +    g_free(nodename);
+>> +}
+>> +
+>>  static DeviceState *gpio_key_dev;
+>>  static void virt_powerdown_req(Notifier *n, void *opaque)
+>>  {
+>> @@ -1107,13 +1220,21 @@ static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
+>>              NICInfo *nd = &nd_table[i];
+>>
+>>              if (!nd->model) {
+>> -                nd->model = g_strdup("virtio");
+>> +                if (vms->sbsa) {
+>> +                    nd->model = g_strdup("e1000");
+>> +                } else {
+>> +                    nd->model = g_strdup("virtio");
+>> +                }
+>>              }
+>>
+>>              pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
+>>          }
+>>      }
+>>
+>> +    if (vms->sbsa) {
+>> +        pci_create_simple(pci->bus, -1, "VGA");
+>> +    }
+>> +
+>>      nodename = g_strdup_printf("/pcie@%" PRIx64, base);
+>>      qemu_fdt_add_subnode(vms->fdt, nodename);
+>>      qemu_fdt_setprop_string(vms->fdt, nodename,
+>> @@ -1502,11 +1623,18 @@ static void machvirt_init(MachineState *machine)
+>>
+>>      create_gpio(vms, pic);
+>>
+>> +    if (vms->sbsa) {
+>> +        create_ahci(vms, pic);
+>> +        create_ehci(vms, pic);
+>> +    }
+>> +
+>>      /* Create mmio transports, so the user can create virtio backends
+>>       * (which will be automatically plugged in to the transports). If
+>>       * no backend is created the transport will just sit harmlessly idle.
+>>       */
+>> -    create_virtio_devices(vms, pic);
+>> +    if (!vms->sbsa) {
+>> +        create_virtio_devices(vms, pic);
+>> +    }
+>>
+>>      vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
+>>      rom_set_fw(vms->fw_cfg);
+>> @@ -1818,6 +1946,7 @@ static void virt_3_0_instance_init(Object *obj)
+>>
+>>      vms->memmap = a15memmap;
+>>      vms->irqmap = a15irqmap;
+>> +    vms->sbsa = false;
+>>  }
+>>
+>>  static void virt_machine_3_0_options(MachineClass *mc)
+>> @@ -1950,3 +2079,66 @@ static void virt_machine_2_6_options(MachineClass *mc)
+>>      vmc->no_pmu = true;
+>>  }
+>>  DEFINE_VIRT_MACHINE(2, 6)
+>> +
+>> +static void sbsa_instance_init(Object *obj)
+>> +{
+>> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+>> +
+>> +    vms->secure = true;
+>> +    object_property_add_bool(obj, "secure", virt_get_secure,
+>> +                             virt_set_secure, NULL);
+>> +    object_property_set_description(obj, "secure",
+>> +                                    "Set on/off to enable/disable the ARM "
+>> +                                    "Security Extensions (TrustZone)",
+>> +                                    NULL);
+>> +
+>> +    vms->virt = true;
+>> +    object_property_add_bool(obj, "virtualization", virt_get_virt,
+>> +                             virt_set_virt, NULL);
+>> +    object_property_set_description(obj, "virtualization",
+>> +                                    "Set on/off to enable/disable emulating a "
+>> +                                    "guest CPU which implements the ARM "
+>> +                                    "Virtualization Extensions",
+>> +                                    NULL);
+>> +
+>> +    vms->highmem = true;
+>> +
+>> +    /* This can be changed to GICv3 when firmware is ready*/
+>> +    vms->gic_version = 2;
+>> +    object_property_add_str(obj, "gic-version", virt_get_gic_version,
+>> +                        virt_set_gic_version, NULL);
+>> +    object_property_set_description(obj, "gic-version",
+>> +                                    "Set GIC version. "
+>> +                                    "Valid values are 2, 3, host, max", NULL);
+>> +    vms->its = true;
+>> +
+>> +    vms->memmap = sbsa_memmap;
+>> +    vms->irqmap = sbsa_irqmap;
+>> +    vms->sbsa = true;
+>> +}
+>> +
+>> +static void sbsa_class_init(ObjectClass *oc, void *data)
+>> +{
+>> +    MachineClass *mc = MACHINE_CLASS(oc);
+>> +
+>> +    mc->max_cpus = 246;
+>> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
+>> +    mc->block_default_type = IF_IDE;
+>> +    mc->default_ram_size = 1 * G_BYTE;
+>> +    mc->default_cpus = 4;
+>> +    mc->desc = "QEMU 'SBSA' ARM Virtual Machine";
+>> +}
+>> +
+>> +static const TypeInfo sbsa_info = {
+>> +    .name          = MACHINE_TYPE_NAME("sbsa"),
+>> +    .parent        = TYPE_VIRT_MACHINE,
+>> +    .instance_init = sbsa_instance_init,
+>> +    .class_init    = sbsa_class_init,
+>> +};
+>> +
+>> +static void sbsa_machine_init(void)
+>> +{
+>> +    type_register_static(&sbsa_info);
+>> +}
+>> +
+>> +type_init(sbsa_machine_init);
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index 9a870cc..619473e 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -78,6 +78,8 @@ enum {
+>>      VIRT_GPIO,
+>>      VIRT_SECURE_UART,
+>>      VIRT_SECURE_MEM,
+>> +    VIRT_AHCI,
+>> +    VIRT_EHCI,
+>>  };
+>>
+>>  typedef enum VirtIOMMUType {
+>> @@ -124,6 +126,7 @@ typedef struct {
+>>      uint32_t msi_phandle;
+>>      uint32_t iommu_phandle;
+>>      int psci_conduit;
+>> +    bool sbsa;
+>>  } VirtMachineState;
+>>
+>>  #define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM)
+>>
+>

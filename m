@@ -1,101 +1,185 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3188160wrq;
-        Sun, 24 Jun 2018 16:04:28 -0700 (PDT)
-X-Received: by 2002:a65:554b:: with SMTP id t11-v6mr8777754pgr.130.1529881468055;
-        Sun, 24 Jun 2018 16:04:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529881468; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Pq7sEXbjabrgUPui0GleVKSmEkSWvbM/B3UfTFNuVYFCr924SMmXpcIjOPFK5bfKLO
-         tuYdustI9Vy3LlVjO8xxD5yx7JczOKoBLm5hzH8yWDYrgRbPq521uQw1j58ET0jvinpq
-         0yHWtNpmNq0DuUc8osm3m5Wv/sUOl3o/2mvQm7814MxdhwFv+7RUh0uvTjbj985fFiJb
-         REKnanUYzqZuaPqXHgjecM6UHcLtblXF/xVXhD89r0VeD0FnQ+BLwYUFtkUV+2AYXi3W
-         bxZB9sn/Uan0QG/2zl+C+KrH+Vg+pDl3McumYx4h1sD+zfSgNwiL1ZfyWcuegjsQeFwh
-         MVDA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=Bvu9j/MlQo1Mv9gDrLkjGowzF9TAWUE/bpnFVqlw5XM=;
-        b=e4QAkWpQhK4cwXHatAk7HmE/HdBacmOlYNlrO5/LN7AiQTG8H2PnrgZNRyRLiKfwX8
-         R93t/XJkhrUS4VV+jy9B2Ph6PMoAGDMtWfHpudQuuegLzvElTj83QLDA2tyv6oymPgYm
-         UFbyEv9G9s3cWwFN4xA1aDD/oTwaWwfAixNXBtQ5xO3C2Hd+V13zkmf7TB+xSv4zBj3R
-         5vZlMhtzF3UgF8Gu60GTMyJEDGOe/a1gKO1Ze/7jDjJR9g0YkCnE1xuXORBs/ke0dV0j
-         /fkq3mHYXwRiEAVhEw9YO/3LZHBOEfjKfKYnx4HMLPrnPRZtsVAMojFP98IeEmyIDGeK
-         SSGw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SgXgKOiC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 97-v6sor3998143plm.6.2018.06.24.16.04.27
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 24 Jun 2018 16:04:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SgXgKOiC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Bvu9j/MlQo1Mv9gDrLkjGowzF9TAWUE/bpnFVqlw5XM=;
-        b=SgXgKOiChZX3b5LBsgvXnWOTLqAY+SJNGAQw18s4w2+3O8ZW+wRGck+ULSEJUsGcM9
-         ZQNvFEE+CYaNKDnZEIFm0LgKvYk8n5ZDRAj1yex8WM/RJS4kExBYTwsHqhKE83W69Wrw
-         8JTX7ZkfB0CqFFM1kJJ2VUGlakjq+ydNgxmlM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Bvu9j/MlQo1Mv9gDrLkjGowzF9TAWUE/bpnFVqlw5XM=;
-        b=d7LU3aKcY5heGM2b2vFTiWVobuKzl7mLx62kgIT64wDodeRx8x6jTHLpyV8hKfzSq1
-         eRsOXP9rWMsnMFQR72Wr2pSDrFt0q/txqMJK87CnzfqQVz5YXrod27lrOAagUdfST7+U
-         HpU1L7qglxQaAqf0Pn0pHAhBHhyXKEl4nJvhVAgcdJf75Lq9bpWol5QWi1pVk4WMsIG/
-         yi8h9epEWKewpQXQgxPau8c5ur8y7EkCPBWFk3hOnXrGWKNG/+SASGCzqkddrBgRj9tj
-         fR8jUBuPgRrFsj0ZR1m194LL48PPl2diDxubrfzSNXK+xHFgeNqjjC1+iMu0kJHhYo9r
-         VnbQ==
-X-Gm-Message-State: APt69E01gUj834XZCmTqFXcpQfSROh5amNcCs3/L6OoXk+X3OjKNhIzb
-	K5nxuFVmMBl5hbn7g8HXbNIsQ6fl
-X-Google-Smtp-Source: ADUXVKJU0s+8Q0/yQYgKIjSuU+PFmZVP0duMiF745jan9yYTDaSysEH4Hgb3/64G9W0bxW3QM36ZxA==
-X-Received: by 2002:a17:902:ab8e:: with SMTP id f14-v6mr10203102plr.5.1529881467625;
-        Sun, 24 Jun 2018 16:04:27 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net. [97.126.112.211])
-        by smtp.gmail.com with ESMTPSA id m12-v6sm16308587pgp.88.2018.06.24.16.04.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Jun 2018 16:04:26 -0700 (PDT)
-Subject: Re: [RISU PATCH v4 22/22] risu_reginfo_aarch64: handle variable VQ
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20180622141205.16306-1-alex.bennee@linaro.org>
- <20180622141205.16306-23-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <bc3f6e61-fe81-4666-28ff-c7889b289ffc@linaro.org>
-Date: Sun, 24 Jun 2018 16:04:25 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id y193-v6sm8795452wmy.13.2018.06.28.06.25.39
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Jun 2018 06:25:39 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id CDFC13E07DD;
+	Thu, 28 Jun 2018 14:25:38 +0100 (BST)
+References: <20180627043328.11531-1-richard.henderson@linaro.org> <20180627043328.11531-31-richard.henderson@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v6 30/35] target/arm: Pass index to AdvSIMD FCMLA (indexed)
+In-reply-to: <20180627043328.11531-31-richard.henderson@linaro.org>
+Date: Thu, 28 Jun 2018 14:25:38 +0100
+Message-ID: <87vaa3ujot.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20180622141205.16306-23-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: YmnBr4tA4bxk
+Content-Transfer-Encoding: quoted-printable
+X-TUID: JXBQmLWAEwRM
 
-On 06/22/2018 07:12 AM, Alex Bennée wrote:
-> This involves parsing the command line parameter and calling the
-> kernel to set the VQ limit. We also add dumping of the register state
-> in the main register dump.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> For aa64 advsimd, we had been passing the pre-indexed vector.
+> However, sve applies the index to each 128-bit segment, so we
+> need to pass in the index separately.
+>
+> For aa32 advsimd, the fp32 operation always has index 0, but
+> we failed to interpret the fp16 index correctly.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+>
 > ---
->  risu_reginfo_aarch64.c | 38 +++++++++++++++++++++++++++++++++++---
->  1 file changed, 35 insertions(+), 3 deletions(-)
+> v6:
+>   * Fix double-indexing in translate-a64.c
+>   * Fix non-indexing of fp16 in translate.c.
+> ---
+>  target/arm/translate-a64.c | 21 ++++++++++++---------
+>  target/arm/translate.c     | 32 +++++++++++++++++++++++---------
+>  target/arm/vec_helper.c    | 10 ++++++----
+>  3 files changed, 41 insertions(+), 22 deletions(-)
+>
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 8d8a4cecb0..eb3a4ab2f0 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -12669,15 +12669,18 @@ static void disas_simd_indexed(DisasContext *s,=
+ uint32_t insn)
+>      case 0x13: /* FCMLA #90 */
+>      case 0x15: /* FCMLA #180 */
+>      case 0x17: /* FCMLA #270 */
+> -        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
+> -                           vec_full_reg_offset(s, rn),
+> -                           vec_reg_offset(s, rm, index, size), fpst,
+> -                           is_q ? 16 : 8, vec_full_reg_size(s),
+> -                           extract32(insn, 13, 2), /* rot */
+> -                           size =3D=3D MO_64
+> -                           ? gen_helper_gvec_fcmlas_idx
+> -                           : gen_helper_gvec_fcmlah_idx);
+> -        tcg_temp_free_ptr(fpst);
+> +        {
+> +            int rot =3D extract32(insn, 13, 2);
+> +            int data =3D (index << 2) | rot;
+> +            tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
+> +                               vec_full_reg_offset(s, rn),
+> +                               vec_full_reg_offset(s, rm), fpst,
+> +                               is_q ? 16 : 8, vec_full_reg_size(s), data,
+> +                               size =3D=3D MO_64
+> +                               ? gen_helper_gvec_fcmlas_idx
+> +                               : gen_helper_gvec_fcmlah_idx);
+> +            tcg_temp_free_ptr(fpst);
+> +        }
+>          return;
+>      }
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 2a3e4f5d4c..a7a980b1f2 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -7826,26 +7826,42 @@ static int disas_neon_insn_3same_ext(DisasContext=
+ *s, uint32_t insn)
+>
+>  static int disas_neon_insn_2reg_scalar_ext(DisasContext *s, uint32_t ins=
+n)
+>  {
+> -    int rd, rn, rm, rot, size, opr_sz;
+> +    gen_helper_gvec_3_ptr *fn_gvec_ptr;
+> +    int rd, rn, rm, opr_sz, data;
+>      TCGv_ptr fpst;
+>      bool q;
+>
+>      q =3D extract32(insn, 6, 1);
+>      VFP_DREG_D(rd, insn);
+>      VFP_DREG_N(rn, insn);
+> -    VFP_DREG_M(rm, insn);
+>      if ((rd | rn) & q) {
+>          return 1;
+>      }
+>
+>      if ((insn & 0xff000f10) =3D=3D 0xfe000800) {
+>          /* VCMLA (indexed) -- 1111 1110 S.RR .... .... 1000 ...0 .... */
+> -        rot =3D extract32(insn, 20, 2);
+> -        size =3D extract32(insn, 23, 1);
+> -        if (!arm_dc_feature(s, ARM_FEATURE_V8_FCMA)
+> -            || (!size && !arm_dc_feature(s, ARM_FEATURE_V8_FP16))) {
+> +        int rot =3D extract32(insn, 20, 2);
+> +        int size =3D extract32(insn, 23, 1);
+> +        int index;
+> +
+> +        if (!arm_dc_feature(s, ARM_FEATURE_V8_FCMA)) {
+>              return 1;
+>          }
+> +        if (size =3D=3D 0) {
+> +            if (!arm_dc_feature(s, ARM_FEATURE_V8_FP16)) {
+> +                return 1;
+> +            }
+> +            /* For fp16, rm is just Vm, and index is M.  */
+> +            rm =3D extract32(insn, 0, 4);
+> +            index =3D extract32(insn, 5, 1);
+> +        } else {
+> +            /* For fp32, rm is the usual M:Vm, and index is 0.  */
+> +            VFP_DREG_M(rm, insn);
+> +            index =3D 0;
+> +        }
+> +        data =3D (index << 2) | rot;
+> +        fn_gvec_ptr =3D (size ? gen_helper_gvec_fcmlas_idx
+> +                       : gen_helper_gvec_fcmlah_idx);
+>      } else {
+>          return 1;
+>      }
+> @@ -7864,9 +7880,7 @@ static int disas_neon_insn_2reg_scalar_ext(DisasCon=
+text *s, uint32_t insn)
+>      tcg_gen_gvec_3_ptr(vfp_reg_offset(1, rd),
+>                         vfp_reg_offset(1, rn),
+>                         vfp_reg_offset(1, rm), fpst,
+> -                       opr_sz, opr_sz, rot,
+> -                       size ? gen_helper_gvec_fcmlas_idx
+> -                       : gen_helper_gvec_fcmlah_idx);
+> +                       opr_sz, opr_sz, data, fn_gvec_ptr);
+>      tcg_temp_free_ptr(fpst);
+>      return 0;
+>  }
+> diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
+> index 073e5c58e7..8f2dc4b989 100644
+> --- a/target/arm/vec_helper.c
+> +++ b/target/arm/vec_helper.c
+> @@ -317,10 +317,11 @@ void HELPER(gvec_fcmlah_idx)(void *vd, void *vn, vo=
+id *vm,
+>      float_status *fpst =3D vfpst;
+>      intptr_t flip =3D extract32(desc, SIMD_DATA_SHIFT, 1);
+>      uint32_t neg_imag =3D extract32(desc, SIMD_DATA_SHIFT + 1, 1);
+> +    intptr_t index =3D extract32(desc, SIMD_DATA_SHIFT + 2, 2);
+>      uint32_t neg_real =3D flip ^ neg_imag;
+>      uintptr_t i;
+> -    float16 e1 =3D m[H2(flip)];
+> -    float16 e3 =3D m[H2(1 - flip)];
+> +    float16 e1 =3D m[H2(2 * index + flip)];
+> +    float16 e3 =3D m[H2(2 * index + 1 - flip)];
+>
+>      /* Shift boolean to the sign bit so we can xor to negate.  */
+>      neg_real <<=3D 15;
+> @@ -377,10 +378,11 @@ void HELPER(gvec_fcmlas_idx)(void *vd, void *vn, vo=
+id *vm,
+>      float_status *fpst =3D vfpst;
+>      intptr_t flip =3D extract32(desc, SIMD_DATA_SHIFT, 1);
+>      uint32_t neg_imag =3D extract32(desc, SIMD_DATA_SHIFT + 1, 1);
+> +    intptr_t index =3D extract32(desc, SIMD_DATA_SHIFT + 2, 2);
+>      uint32_t neg_real =3D flip ^ neg_imag;
+>      uintptr_t i;
+> -    float32 e1 =3D m[H4(flip)];
+> -    float32 e3 =3D m[H4(1 - flip)];
+> +    float32 e1 =3D m[H4(2 * index + flip)];
+> +    float32 e3 =3D m[H4(2 * index + 1 - flip)];
+>
+>      /* Shift boolean to the sign bit so we can xor to negate.  */
+>      neg_real <<=3D 31;
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
-r~
+--
+Alex Benn=C3=A9e

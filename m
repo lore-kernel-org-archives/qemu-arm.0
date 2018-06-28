@@ -1,100 +1,297 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3179424wrq;
-        Sun, 24 Jun 2018 15:49:41 -0700 (PDT)
-X-Received: by 2002:a17:902:4c88:: with SMTP id b8-v6mr9676968ple.285.1529880581686;
-        Sun, 24 Jun 2018 15:49:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1529880581; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UKyYqLtQQu5kzpRyOKY4q6tsbQnF2/Y7Ih1mMjvjdUplMj2dbHYAIFKVZBNIGcEaCx
-         wW/4E6uueVd1pTlNAFvh2CRIzse4CQwxjLnOR6UwdtLHlZMrGHQAgFSdltj3IKihnVDL
-         HuXLfPt/DHR5RsLDd3TqVtwZ1ufbIaZkARAyWdVibyjtpqSpL3ZWtkyWrPlRZXmG22WZ
-         B90aFf3BQNsK44vT+LMQsASHBWoT8IoHLfSYMTXaR18c6FF4utroklqwMDr7AcnPSVjD
-         lyC3WeHip8aslPRElO//OWq8wtUoyP4HO0v9GnDMr7JnBrczXt5kibaTP+OeTHjrxxtx
-         xq+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=vKaiYHS05nMSzw0zkXEeGDGhZaQtUeHwkxFBRGWuUig=;
-        b=yJuAAbJtCddOrLIWnduBG28rd4drMewA4FlyFMa5D0LrlxUnlKMwbwmXLEByfCBHPH
-         LnmOG9aaHgwKpJLzgJ0P1XrzohzzIQN7/zwaLiWdijNLMlKLk3VoAsFrbZXFwD3ObpMa
-         0Hv7qE5Ca4+eYyVAX3kxvq5bY/uppYfhzff22TMR+0ETFMEm15KgfPNQp9nhfU1hk8sz
-         h3h7igHbql+3Qk0YnvISFzchRygL9MkbUsuC5zrlPSZxY6++giaOiJByUYTaI8pdNQcJ
-         ZeOzXohGzXp5eQzf6pG9QyAOqgK2F5fSdI1UsRklJfB1jjULnLQaAVBmC4suelpEEOot
-         j3aQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MofyWsJe;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f4-v6sor2542369pgc.425.2018.06.24.15.49.41
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 24 Jun 2018 15:49:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MofyWsJe;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=vKaiYHS05nMSzw0zkXEeGDGhZaQtUeHwkxFBRGWuUig=;
-        b=MofyWsJeCCfqpnMuRe6kDfjpx3CQOFtfxr8jEJxVgu+835l5mK+7CXnsQmQz9wHmTC
-         uDAtkMRsmnNnu557ITgcMcTqLsunmNwBm+Rw4Eq30WZM61TbSMjmA3bVxFSMee7ZSnQg
-         GGfmsWHC0ptTz1iRHxFNGrbNHd6xDQuGK1vZc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=vKaiYHS05nMSzw0zkXEeGDGhZaQtUeHwkxFBRGWuUig=;
-        b=OI4234+iKzYyq3hxNvmtk41AgCDA7eV4I4yHgXnPylMi/s418EBLNr9HxcJDItbDap
-         BDfRjKwPigpqgzLcOwsot54fZlaESL7bWvpVffxJNo/3Tk1D/grR8OkCXElRfIUpOtib
-         BG6KD0xVhWQ2/TvTx81499uCTx8YIiJTIlMkNLEritVOLjWN9nqsvhg1txgh2cJ7DHAI
-         l+ItoCidYKoXjsu9+E2cBNZKwtj4cnDAxu5Zie1fZhtH95yUcx8qmnIfXj8GkhVhg52W
-         uciqAV5VuxGrtuiKfJ0mXc3rGK3RMWNjQVR+76zwyCMEvXpwXyvKccaMtbhDqmSCwnX4
-         mDww==
-X-Gm-Message-State: APt69E3x+UG+yBGfgI7S/ZPUKdUiLxtHlTjR75gvyExM+hr+8RmyJl1n
-	2GTpL5Lf4cQ9A6qhDU3H/an3uAgD4P4Ojw==
-X-Google-Smtp-Source: ADUXVKLUx7fQpz7qjBb4iy2/LqJZQOBo06y5TLK2ZaYhJavSAMpYoGExI8O13fCKcJNWWCjcwcqSPg==
-X-Received: by 2002:a63:a44a:: with SMTP id c10-v6mr8455010pgp.198.1529880581292;
-        Sun, 24 Jun 2018 15:49:41 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net. [97.126.112.211])
-        by smtp.gmail.com with ESMTPSA id q86-v6sm8195022pfa.157.2018.06.24.15.49.40
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 24 Jun 2018 15:49:40 -0700 (PDT)
-Subject: Re: [RISU PATCH v4 10/22] risugen: add reg_plus_imm_pl and
- reg_plus_imm_vl address helpers
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20180622141205.16306-1-alex.bennee@linaro.org>
- <20180622141205.16306-11-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <c0f433b6-b3ac-7554-2497-0ceb305b9eed@linaro.org>
-Date: Sun, 24 Jun 2018 15:49:38 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.8.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaro.local ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id v65-v6sm8599164wme.26.2018.06.28.03.53.40
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Jun 2018 03:53:40 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 2B8C13E07DD;
+	Thu, 28 Jun 2018 11:53:40 +0100 (BST)
+References: <20180627043328.11531-1-richard.henderson@linaro.org> <20180627043328.11531-8-richard.henderson@linaro.org>
+User-agent: mu4e 1.1.0; emacs 26.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v6 07/35] target/arm: Implement SVE FP Multiply-Add Group
+In-reply-to: <20180627043328.11531-8-richard.henderson@linaro.org>
+Date: Thu, 28 Jun 2018 11:53:40 +0100
+Message-ID: <87zhzfuqq3.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20180622141205.16306-11-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 0XR9WwC+diry
+Content-Transfer-Encoding: quoted-printable
+X-TUID: QLl0+EWOe8Mf
 
-On 06/22/2018 07:11 AM, Alex Bennée wrote:
-> From: Richard Henderson <richard.henderson@linaro.org>
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>
 > ---
->  risugen_arm.pm | 126 +++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 126 insertions(+)
+> v6: Add some decode commentary.
+> ---
+>  target/arm/helper-sve.h    |  16 ++++
+>  target/arm/sve_helper.c    | 158 +++++++++++++++++++++++++++++++++++++
+>  target/arm/translate-sve.c |  49 ++++++++++++
+>  target/arm/sve.decode      |  18 +++++
+>  4 files changed, 241 insertions(+)
+>
+> diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+> index 4097b55f0e..eb0645dd43 100644
+> --- a/target/arm/helper-sve.h
+> +++ b/target/arm/helper-sve.h
+> @@ -827,6 +827,22 @@ DEF_HELPER_FLAGS_5(sve_ucvt_ds, TCG_CALL_NO_RWG,
+>  DEF_HELPER_FLAGS_5(sve_ucvt_dd, TCG_CALL_NO_RWG,
+>                     void, ptr, ptr, ptr, ptr, i32)
+>
+> +DEF_HELPER_FLAGS_3(sve_fmla_zpzzz_h, TCG_CALL_NO_RWG, void, env, ptr, i3=
+2)
+> +DEF_HELPER_FLAGS_3(sve_fmla_zpzzz_s, TCG_CALL_NO_RWG, void, env, ptr, i3=
+2)
+> +DEF_HELPER_FLAGS_3(sve_fmla_zpzzz_d, TCG_CALL_NO_RWG, void, env, ptr, i3=
+2)
+> +
+> +DEF_HELPER_FLAGS_3(sve_fmls_zpzzz_h, TCG_CALL_NO_RWG, void, env, ptr, i3=
+2)
+> +DEF_HELPER_FLAGS_3(sve_fmls_zpzzz_s, TCG_CALL_NO_RWG, void, env, ptr, i3=
+2)
+> +DEF_HELPER_FLAGS_3(sve_fmls_zpzzz_d, TCG_CALL_NO_RWG, void, env, ptr, i3=
+2)
+> +
+> +DEF_HELPER_FLAGS_3(sve_fnmla_zpzzz_h, TCG_CALL_NO_RWG, void, env, ptr, i=
+32)
+> +DEF_HELPER_FLAGS_3(sve_fnmla_zpzzz_s, TCG_CALL_NO_RWG, void, env, ptr, i=
+32)
+> +DEF_HELPER_FLAGS_3(sve_fnmla_zpzzz_d, TCG_CALL_NO_RWG, void, env, ptr, i=
+32)
+> +
+> +DEF_HELPER_FLAGS_3(sve_fnmls_zpzzz_h, TCG_CALL_NO_RWG, void, env, ptr, i=
+32)
+> +DEF_HELPER_FLAGS_3(sve_fnmls_zpzzz_s, TCG_CALL_NO_RWG, void, env, ptr, i=
+32)
+> +DEF_HELPER_FLAGS_3(sve_fnmls_zpzzz_d, TCG_CALL_NO_RWG, void, env, ptr, i=
+32)
+> +
+>  DEF_HELPER_FLAGS_4(sve_ld1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+>  DEF_HELPER_FLAGS_4(sve_ld2bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+>  DEF_HELPER_FLAGS_4(sve_ld3bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index 3401662397..2f416e5e28 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -2938,6 +2938,164 @@ DO_ZPZ_FP(sve_ucvt_dd, uint64_t,     , uint64_to_=
+float64)
+>
+>  #undef DO_ZPZ_FP
+>
+> +/* 4-operand predicated multiply-add.  This requires 7 operands to pass
+> + * "properly", so we need to encode some of the registers into DESC.
+> + */
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+How about:
 
+  With potential optimisations using movpfx we could end up with a 4
+  operand multiply-add (result =3D A * B + C) which together with prefix,
+  floating point status, vector description adds up to 7 operands for the
+  "proper" encoding. Instead we encode the source registers numbers in the
+  spare space of DESC and index into env in the helper making for a more
+  efficient call frame.
 
-r~
+> +QEMU_BUILD_BUG_ON(SIMD_DATA_SHIFT + 20 > 32);
+> +
+> +static void do_fmla_zpzzz_h(CPUARMState *env, void *vg, uint32_t desc,
+> +                            uint16_t neg1, uint16_t neg3)
+> +{
+> +    intptr_t i =3D simd_oprsz(desc);
+> +    unsigned rd =3D extract32(desc, SIMD_DATA_SHIFT, 5);
+> +    unsigned rn =3D extract32(desc, SIMD_DATA_SHIFT + 5, 5);
+> +    unsigned rm =3D extract32(desc, SIMD_DATA_SHIFT + 10, 5);
+> +    unsigned ra =3D extract32(desc, SIMD_DATA_SHIFT + 15, 5);
+> +    void *vd =3D &env->vfp.zregs[rd];
+> +    void *vn =3D &env->vfp.zregs[rn];
+> +    void *vm =3D &env->vfp.zregs[rm];
+> +    void *va =3D &env->vfp.zregs[ra];
+> +    uint64_t *g =3D vg;
+> +
+> +    do {
+> +        uint64_t pg =3D g[(i - 1) >> 6];
+> +        do {
+> +            i -=3D 2;
+> +            if (likely((pg >> (i & 63)) & 1)) {
+> +                float16 e1, e2, e3, r;
+> +
+> +                e1 =3D *(uint16_t *)(vn + H1_2(i)) ^ neg1;
+> +                e2 =3D *(uint16_t *)(vm + H1_2(i));
+> +                e3 =3D *(uint16_t *)(va + H1_2(i)) ^ neg3;
+> +                r =3D float16_muladd(e1, e2, e3, 0, &env->vfp.fp_status);
+> +                *(uint16_t *)(vd + H1_2(i)) =3D r;
+> +            }
+> +        } while (i & 63);
+> +    } while (i !=3D 0);
+> +}
+> +
+> +void HELPER(sve_fmla_zpzzz_h)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_h(env, vg, desc, 0, 0);
+> +}
+> +
+> +void HELPER(sve_fmls_zpzzz_h)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_h(env, vg, desc, 0x8000, 0);
+> +}
+> +
+> +void HELPER(sve_fnmla_zpzzz_h)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_h(env, vg, desc, 0x8000, 0x8000);
+> +}
+> +
+> +void HELPER(sve_fnmls_zpzzz_h)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_h(env, vg, desc, 0, 0x8000);
+> +}
+> +
+> +static void do_fmla_zpzzz_s(CPUARMState *env, void *vg, uint32_t desc,
+> +                            uint32_t neg1, uint32_t neg3)
+> +{
+> +    intptr_t i =3D simd_oprsz(desc);
+> +    unsigned rd =3D extract32(desc, SIMD_DATA_SHIFT, 5);
+> +    unsigned rn =3D extract32(desc, SIMD_DATA_SHIFT + 5, 5);
+> +    unsigned rm =3D extract32(desc, SIMD_DATA_SHIFT + 10, 5);
+> +    unsigned ra =3D extract32(desc, SIMD_DATA_SHIFT + 15, 5);
+> +    void *vd =3D &env->vfp.zregs[rd];
+> +    void *vn =3D &env->vfp.zregs[rn];
+> +    void *vm =3D &env->vfp.zregs[rm];
+> +    void *va =3D &env->vfp.zregs[ra];
+> +    uint64_t *g =3D vg;
+> +
+> +    do {
+> +        uint64_t pg =3D g[(i - 1) >> 6];
+> +        do {
+> +            i -=3D 4;
+> +            if (likely((pg >> (i & 63)) & 1)) {
+> +                float32 e1, e2, e3, r;
+> +
+> +                e1 =3D *(uint32_t *)(vn + H1_4(i)) ^ neg1;
+> +                e2 =3D *(uint32_t *)(vm + H1_4(i));
+> +                e3 =3D *(uint32_t *)(va + H1_4(i)) ^ neg3;
+> +                r =3D float32_muladd(e1, e2, e3, 0, &env->vfp.fp_status);
+> +                *(uint32_t *)(vd + H1_4(i)) =3D r;
+> +            }
+> +        } while (i & 63);
+> +    } while (i !=3D 0);
+> +}
+> +
+> +void HELPER(sve_fmla_zpzzz_s)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_s(env, vg, desc, 0, 0);
+> +}
+> +
+> +void HELPER(sve_fmls_zpzzz_s)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_s(env, vg, desc, 0x80000000, 0);
+> +}
+> +
+> +void HELPER(sve_fnmla_zpzzz_s)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_s(env, vg, desc, 0x80000000, 0x80000000);
+> +}
+> +
+> +void HELPER(sve_fnmls_zpzzz_s)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_s(env, vg, desc, 0, 0x80000000);
+> +}
+> +
+> +static void do_fmla_zpzzz_d(CPUARMState *env, void *vg, uint32_t desc,
+> +                            uint64_t neg1, uint64_t neg3)
+> +{
+> +    intptr_t i =3D simd_oprsz(desc);
+> +    unsigned rd =3D extract32(desc, SIMD_DATA_SHIFT, 5);
+> +    unsigned rn =3D extract32(desc, SIMD_DATA_SHIFT + 5, 5);
+> +    unsigned rm =3D extract32(desc, SIMD_DATA_SHIFT + 10, 5);
+> +    unsigned ra =3D extract32(desc, SIMD_DATA_SHIFT + 15, 5);
+> +    void *vd =3D &env->vfp.zregs[rd];
+> +    void *vn =3D &env->vfp.zregs[rn];
+> +    void *vm =3D &env->vfp.zregs[rm];
+> +    void *va =3D &env->vfp.zregs[ra];
+> +    uint64_t *g =3D vg;
+> +
+> +    do {
+> +        uint64_t pg =3D g[(i - 1) >> 6];
+> +        do {
+> +            i -=3D 8;
+> +            if (likely((pg >> (i & 63)) & 1)) {
+> +                float64 e1, e2, e3, r;
+> +
+> +                e1 =3D *(uint64_t *)(vn + i) ^ neg1;
+> +                e2 =3D *(uint64_t *)(vm + i);
+> +                e3 =3D *(uint64_t *)(va + i) ^ neg3;
+> +                r =3D float64_muladd(e1, e2, e3, 0, &env->vfp.fp_status);
+> +                *(uint64_t *)(vd + i) =3D r;
+> +            }
+> +        } while (i & 63);
+> +    } while (i !=3D 0);
+> +}
+> +
+> +void HELPER(sve_fmla_zpzzz_d)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_d(env, vg, desc, 0, 0);
+> +}
+> +
+> +void HELPER(sve_fmls_zpzzz_d)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_d(env, vg, desc, INT64_MIN, 0);
+> +}
+> +
+> +void HELPER(sve_fnmla_zpzzz_d)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_d(env, vg, desc, INT64_MIN, INT64_MIN);
+> +}
+> +
+> +void HELPER(sve_fnmls_zpzzz_d)(CPUARMState *env, void *vg, uint32_t desc)
+> +{
+> +    do_fmla_zpzzz_d(env, vg, desc, 0, INT64_MIN);
+> +}
+> +
+>  /*
+>   * Load contiguous data, protected by a governing predicate.
+>   */
+> diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+> index 4df5360da9..acad6374ef 100644
+> --- a/target/arm/translate-sve.c
+> +++ b/target/arm/translate-sve.c
+> @@ -3472,6 +3472,55 @@ DO_FP3(FMULX, fmulx)
+>
+>  #undef DO_FP3
+>
+> +typedef void gen_helper_sve_fmla(TCGv_env, TCGv_ptr, TCGv_i32);
+> +
+> +static bool do_fmla(DisasContext *s, arg_rprrr_esz *a, gen_helper_sve_fm=
+la *fn)
+> +{
+> +    if (fn =3D=3D NULL) {
+> +        return false;
+> +    }
+> +    if (!sve_access_check(s)) {
+> +        return true;
+> +    }
+> +
+> +    unsigned vsz =3D vec_full_reg_size(s);
+> +    unsigned desc;
+> +    TCGv_i32 t_desc;
+> +    TCGv_ptr pg =3D tcg_temp_new_ptr();
+> +
+> +    /* We would need 7 operands to pass these arguments "properly".
+> +     * So we encode all the register numbers into the descriptor.
+> +     */
+> +    desc =3D deposit32(a->rd, 5, 5, a->rn);
+> +    desc =3D deposit32(desc, 10, 5, a->rm);
+> +    desc =3D deposit32(desc, 15, 5, a->ra);
+> +    desc =3D simd_desc(vsz, vsz, desc);
+
+If this ends up being repeated in future it might be worth having a
+helper, maybe get_packed_desc()?
+
+Anyway:
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--
+Alex Benn=C3=A9e

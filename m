@@ -1,95 +1,93 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id m65-v6sm342838wmd.1.2018.06.25.13.51.28
+        by smtp.gmail.com with ESMTPSA id i6-v6sm8687343wrr.2.2018.06.28.07.55.49
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Jun 2018 13:51:28 -0700 (PDT)
+        Thu, 28 Jun 2018 07:55:49 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id C614C3E084C;
-	Mon, 25 Jun 2018 21:51:27 +0100 (BST)
-References: <20180625160009.17437-1-alex.bennee@linaro.org> <20180625160009.17437-6-alex.bennee@linaro.org>
+	by zen.linaro.local (Postfix) with ESMTPS id 5D5213E07DD;
+	Thu, 28 Jun 2018 15:55:49 +0100 (BST)
+References: <20180627043328.11531-1-richard.henderson@linaro.org> <87y3ezuozw.fsf@linaro.org> <CAFEAcA_EXZAHQEyj63Pko8XJqiEnsAHjLXAP6G1R29tqSf+W0A@mail.gmail.com>
 User-agent: mu4e 1.1.0; emacs 26.1.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 5/5] tests/tcg/aarch64: userspace system register test
-In-reply-to: <20180625160009.17437-6-alex.bennee@linaro.org>
-Date: Mon, 25 Jun 2018 21:51:27 +0100
-Message-ID: <87tvpqwpww.fsf@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [Qemu-arm] [PATCH v6 00/35] target/arm SVE patches
+In-reply-to: <CAFEAcA_EXZAHQEyj63Pko8XJqiEnsAHjLXAP6G1R29tqSf+W0A@mail.gmail.com>
+Date: Thu, 28 Jun 2018 15:55:49 +0100
+Message-ID: <87o9fvufii.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Z9wqZN6meowJ
+X-TUID: lk2V/Sk/JEFD
 
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> This tests a bunch of registers that the kernel allows userspace to
-> read including the CPUID registers.
+> On 28 June 2018 at 12:30, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+>>
+>> Richard Henderson <richard.henderson@linaro.org> writes:
+>>
+>>> This is the remainder of the SVE enablement patches,
+>>> with an extra bonus patch to enable ARMv8.2-DotProd.
+>>>
+>>> V6 updates based on review.
+>>
+>> One failure from the VQ3 test set:
+>>
+>> ../qemu.git/aarch64-linux-user/qemu-aarch64 \
+>>   ./risu --test-sve=3D3 \
+>>   sve-all-short-v8.3+sve@vq3/insn_sdiv_z_p_zz___INC.risu.bin \
+>>   --trace=3Dsve-all-short-v8.3+sve@vq3/insn_sdiv_z_p_zz___INC.risu.bin.t=
+race
+>>
+>> Gives:
+>>
+>>   loading test image
+>>   sve-all-short-v8.3+sve@vq3/insn_sdiv_z_p_zz___INC.risu.bin...
+>>   starting apprentice image at 0x4000801000
+>>   starting image
+>>   fish: =E2=80=9C../qemu.git/aarch64-linux-user/=E2=80=A6=E2=80=9D termi=
+nated by signal SIGFPE
+>>   (Floating point exception)
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  tests/tcg/aarch64/Makefile.target |  2 +-
->  tests/tcg/aarch64/sysregs.c       | 99 +++++++++++++++++++++++++++++++
->  2 files changed, 100 insertions(+), 1 deletion(-)
->  create mode 100644 tests/tcg/aarch64/sysregs.c
->
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefi=
-le.target
-> index 08c45b8470..cc1a7eb486 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -7,7 +7,7 @@ VPATH 		+=3D $(AARCH64_SRC)
->
->  # we don't build any of the ARM tests
->  AARCH64_TESTS=3D$(filter-out $(ARM_TESTS), $(TESTS))
-> -AARCH64_TESTS+=3Dfcvt
-> +AARCH64_TESTS+=3Dfcvt sysregs
->  TESTS:=3D$(AARCH64_TESTS)
->
->  fcvt: LDFLAGS+=3D-lm
-> diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-> new file mode 100644
-> index 0000000000..177d1fe33b
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/sysregs.c
-> @@ -0,0 +1,99 @@
-> +/*
-> + * Check emulated system register access for linux-user mode.
-> + *
-> + * See: https://www.kernel.org/doc/Documentation/arm64/cpu-feature-regis=
-ters.txt
-> + */
-> +
-> +#include <asm/hwcap.h>
-> +#include <stdio.h>
-> +#include <sys/auxv.h>
-> +#include <signal.h>
-> +#include <string.h>
-> +#include <stdbool.h>
-> +
-<snip>
-> +
-> +    /* when (getauxval(AT_HWCAP) & HWCAP_CPUID), since 4.11*/
-> +    if (!(getauxval(AT_HWCAP) & HWCAP_CPUID)) {
-> +        printf("CPUID registers unavailable\n");
-> +        return 1;
-> +    } else {
-> +        printf("Checking CPUID registers\n");
-> +    }
+> Do you have the insn that it's barfing on? In particular,
+> I'm guessing from the test name that this is for something
+> covered by one of the SDIV_zpzz lines in sve.decode, which
+> is already in master rather than in this test series.
+> If that's true, then it shouldn't block applying this set...
 
-Annoyingly this fails on qemu:debian-arm64-cross as it uses an older set
-of headers than my desktop cross environment:
+#0  0x000055555569297f in helper_sve_sdiv_zpzz_s (vd=3D0x555557a522e0, vn=
+=3D0x555557a522e0, vm=3D0x555557a51fe0, vg=3D0x555557a52be0, desc=3D<optimi=
+sed out>) at /home/alex/lsrc/qemu/qemu.git/target/arm/sve_helper.c:480
+#1  0x0000555555b1283f in static_code_gen_buffer ()
+#2  0x00005555555ea0d8 in cpu_tb_exec (itb=3D<optimised out>, cpu=3D0x55555=
+7a50320) at /home/alex/lsrc/qemu/qemu.git/accel/tcg/cpu-exec.c:171
+#3  cpu_loop_exec_tb (tb_exit=3D<synthetic pointer>, last_tb=3D<synthetic p=
+ointer>, tb=3D<optimised out>, cpu=3D0x555557a50320) at /home/alex/lsrc/qem=
+u/qemu.git/accel/tcg/cpu-exec.c:612
+#4  cpu_exec (cpu=3Dcpu@entry=3D0x555557a48070) at /home/alex/lsrc/qemu/qem=
+u.git/accel/tcg/cpu-exec.c:722
+#5  0x000055555560ad40 in cpu_loop (env=3D0x555557a50320) at /home/alex/lsr=
+c/qemu/qemu.git/linux-user/aarch64/cpu_loop.c:82
+#6  0x00005555555afb0c in main (argc=3D<optimised out>, argv=3D0x7fffffffde=
+a8, envp=3D<optimised out>) at /home/alex/lsrc/qemu/qemu.git/linux-user/mai=
+n.c:813
+#0  0x000055555569297f in helper_sve_sdiv_zpzz_s (vd=3D0x555557a522e0, vn=
+=3D0x555557a522e0, vm=3D0x555557a51fe0, vg=3D0x555557a52be0, desc=3D<optimi=
+sed out>) at /home/alex/lsrc/qemu/qemu.git/target/arm/sve_helper.c:480
+480	DO_ZPZZ(sve_sdiv_zpzz_s, int32_t, H1_4, DO_DIV)
+=3D> 0x55555569297f <helper_sve_sdiv_zpzz_s+63>:	idiv   %r10d
+   0x555555692982 <helper_sve_sdiv_zpzz_s+66>:	mov    %eax,%r11d
+   0x555555692985 <helper_sve_sdiv_zpzz_s+69>:	mov    %r11d,(%rdi,%r8,1)
+   0x555555692989 <helper_sve_sdiv_zpzz_s+73>:	add    $0x4,%r8
+   0x55555569298d <helper_sve_sdiv_zpzz_s+77>:	shr    $0x4,%r9w
+A syntax error in expression, near `./ $r10d'.
 
-  aarch64-linux-gnu-gcc (Ubuntu/Linaro 7.3.0-16ubuntu3) 7.3.0
+r10d $6 =3D 0xffffffff
+rax $7 =3D 0x80000000
+rdx $8 =3D 0xffffffff
 
-with the libc:
-
-  Source: cross-toolchain-base (25ubuntu6)
-  Version: 2.27-3ubuntu1cross1
-  Provides: libc6-arm64-dcv1
-
-So I'm thinking an #ifndef HWCAP_CPUID and define it would be acceptable
-for a test case.
+Yeah so from something already merged in.
 
 --
 Alex Benn=C3=A9e

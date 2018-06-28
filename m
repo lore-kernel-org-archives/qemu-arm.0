@@ -1,100 +1,90 @@
-Received: by 10.28.91.67 with SMTP id p64csp969676wmb;
-        Tue, 13 Mar 2018 10:28:58 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELttjmVM5MxdmCtiS861mcxEW6NqSfyeHC0qkfvIGxFz3N4uDDuJtE+1nO3LD5JDsP2gnTTB
-X-Received: by 10.55.120.5 with SMTP id t5mr2085520qkc.14.1520962138665;
-        Tue, 13 Mar 2018 10:28:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1520962138; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp7180808wrq;
+        Thu, 28 Jun 2018 02:04:38 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcvXzZAzU/LkWpu2pjpmdrEk5/FmEog1MMFxbUdJ04lqUJf+8EpfVtOIhIVg7J/E/WajbkE
+X-Received: by 2002:a0c:e987:: with SMTP id z7-v6mr8320471qvn.202.1530176678301;
+        Thu, 28 Jun 2018 02:04:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530176678; cv=none;
         d=google.com; s=arc-20160816;
-        b=EJBYoAr9SRx0xBG8nhHkWkeqyEsuGcrA9DLcppM5Bgq4hKKe/heSQZwdVb3iHC7MVz
-         QUTrmfB5y87nApQpsA7Pj6Y7yAiAelB5wdfKvMNhQnKQ4euLQIiuJAlO3SBYclGE0Thi
-         SNPrn5YsLpBhT84lPKyfa4DMNxRm8/QIYTp+SkI8xtwyKsCvSmbRFufamkYTquRbt0FW
-         8gJOXNUTJCCImn1VXzJuKS8+l5shS05/sz74TEREqP7jMk8apyxZQR+lm8baagmucxdT
-         4dG7k4qwwzs7Cim0wJf/hPgQAFBc5pz1r5Xpj6jc5fbbqPiMhfzBs2nwgLKlHUkFWlir
-         sz4A==
+        b=Sq1iMcj3p6HIBPPALvePBV78TZaFdT19C2BxxeaV5wJoOp6I7L/MwzYEBaERSZvOb8
+         fYOszaDJ7VeRGqFZdNhivLQaxzzRy2MUuZWplpN0dyZGfeTwJenEJ7uOyBdsEbGaDWzQ
+         kMR6ERYMAaS6AZWqZmF6Ws0sBPToeDhhVRSVi/7H9wrpc/mG6juwYZPWrXnwr+ONiGdM
+         DmACk7+VORamSxQacT7GtGoj5dcbBQHBfodDwDe6KZXe8U8nf3UK4x/20BgA2P3n7phO
+         qF6BoXFrh7XZpyAXVJIO24BIt5UXmyT9oFB1xhf1+3Zye4JMpahHnYFhmSVxva+YiC8c
+         VMtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=9+FV24HNaVd1/02/ir1eW6Q1yORDGs/8JEtQsqNv2p4=;
-        b=UIRK0HCwo1EfLV0djdDTok8uE749XGxdEDgS2QPF31mLgASpjUlHX7E28WsAipGZf0
-         e4TPW5LUUBAS+/mK4xpGnXnB/iCX9oRcAMbVHHAQShxyG2e3FZnKAJZLkS7u6qNUOqom
-         /TQn2rSuYYmdXRxJjPncKJKBigttwnzTOFACcr1S63MClVpOsE8a5qRU1GXclGs5oS5X
-         CSxMLtR5Z65EXx4QHoHCjIZjQpmtiy6c6h/gKOSLNja2zZb5JuzYjh90LDiphSMB8Y3y
-         KQKyamQwhtQD2SQZmy06Li6yton3hWpoPf8GdFxZqMd6ZIp12WgnrjxLJoqKO9GpLHCK
-         1c9w==
+        bh=bYcFr+1tqQfIbVyu/55khTLRcIu9tp0UJJT54vple9M=;
+        b=o2ugm02QJ5C6+6PTDayHK1A8gfD1sgiOk+wv96Oiwit6NNnw040ndI2P1Xjw8MFdFW
+         XcHztoa9ddQYA75uzLXexrDbcLQxEMQ5wDlR+3gXrzh5ggTpK5Vnp4XpEh+kAkkfIFRn
+         DscpQifc7uYRCMMmowSY6A41DnjN4DEZP1SoDBUI+hNdqa7dw9Dtpu8UZe4Gw2mWZ1ok
+         QkLyMvZ6vDJANu5CnMAo+QEekGgwaPgkaFMmFhaFivwvz1/44RCzgBK8P0CE7jLTTdT4
+         tFapjmoGkeRtbR2+4PaQr8pXxWFHQ08kIPF22WbHkw/S7oOHF7lXIgzbQ0+U4z3EqoCH
+         Ha7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JcPw1AVW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k41si661120qta.252.2018.03.13.10.28.58
+        by mx.google.com with ESMTPS id q97-v6si2372042qkq.350.2018.06.28.02.04.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Mar 2018 10:28:58 -0700 (PDT)
+        Thu, 28 Jun 2018 02:04:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JcPw1AVW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41469 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35151 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1evnjO-0003UB-42
-	for alex.bennee@linaro.org; Tue, 13 Mar 2018 13:28:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46136)
+	id 1fYSqz-0001zt-T3
+	for alex.bennee@linaro.org; Thu, 28 Jun 2018 05:04:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evnQu-0003o7-1C
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 13:09:53 -0400
+	(envelope-from <drjones@redhat.com>) id 1fYSqn-0001zU-NC
+	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:04:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1evnQt-00064R-3N
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 13:09:51 -0400
-Received: from mail-ot0-x234.google.com ([2607:f8b0:4003:c0f::234]:43468)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1evnQs-00063D-Va
-	for qemu-arm@nongnu.org; Tue, 13 Mar 2018 13:09:51 -0400
-Received: by mail-ot0-x234.google.com with SMTP id m22-v6so344841otf.10
-	for <qemu-arm@nongnu.org>; Tue, 13 Mar 2018 10:09:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=9+FV24HNaVd1/02/ir1eW6Q1yORDGs/8JEtQsqNv2p4=;
-	b=JcPw1AVWY/lzXfWxU7h7JmylEZ+SVcFeYnxI6GI42l7XgYQLgBx++EFlK0IpEdgm4k
-	c8coBB5Ahyy6BU9pFml7vgbdmTJRigvDKu1r8A62/MTUOlQVkOD79sR+5n1MNeIDmSvL
-	oAPJkHPRZActlhRfHHUCWAaIaRx+IYoTsqRrg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=9+FV24HNaVd1/02/ir1eW6Q1yORDGs/8JEtQsqNv2p4=;
-	b=Dj7s7aQO/ZVVMPcFi6GqCTWKqDIr6vFKpPVOt0pHVsJSJNgyXl/VFPVG6dpIj+UlxP
-	ANqCzxnsbmn1L+gdnQvbt068Er+UXsta207MzMZQPKhaK7Q1GAg5nyp+fYJ8SCIPDvKP
-	yKqtrOJ2K4oF/UHnFLcBPayYeTqCUSjalMJQK1nbugBJCiv5SGL2EYmhMurdwwsA01k5
-	CnucvHWzA7hsl1k77b6SNHlxeh4OwJUh1nrcQGRHy7gzoRy3K7by9sU5z6XWHNGKC6q4
-	7m6U++IIGERsdDZoHYdZkAl0+dbheLRPhGlORS/ZpKoaIVfjAAO3Xv33GGnmm/F1rN4l
-	t+Ng==
-X-Gm-Message-State: AElRT7GwAtem8bXGgMWTGLniQrACdT3V+VnhQWtvHlJxZZ2WL9f7V87K
-	tdLZr1pndPHnzohasfwpjSYmemxyl23Gnq+i619A4g==
-X-Received: by 10.157.72.231 with SMTP id a36mr1013234otj.308.1520960990371;
-	Tue, 13 Mar 2018 10:09:50 -0700 (PDT)
+	(envelope-from <drjones@redhat.com>) id 1fYSqi-0004EF-Cf
+	for qemu-arm@nongnu.org; Thu, 28 Jun 2018 05:04:25 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35012 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1fYSqi-0004DU-4a; Thu, 28 Jun 2018 05:04:20 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E354B738E0;
+	Thu, 28 Jun 2018 09:04:18 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E4147213ED6A;
+	Thu, 28 Jun 2018 09:04:17 +0000 (UTC)
+Date: Thu, 28 Jun 2018 11:04:15 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Hongbo Zhang <hongbo.zhang@linaro.org>
+Message-ID: <20180628090415.lysdgq66x5kkgq3x@kamzik.brq.redhat.com>
+References: <1530094388-607-1-git-send-email-hongbo.zhang@linaro.org>
+	<20180627165616.34d36aaf@redhat.com>
+	<CAHmQWvDAHmDvamC8tUF8JbLjbssAax+5Hza6S+w_go=YbM4wDA@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:2164:0:0:0:0:0 with HTTP; Tue, 13 Mar 2018 10:09:30
-	-0700 (PDT)
-In-Reply-To: <MWHPR21MB018983B74A652443B70680F19ED20@MWHPR21MB0189.namprd21.prod.outlook.com>
-References: <20180313153458.26822-1-peter.maydell@linaro.org>
-	<20180313153458.26822-9-peter.maydell@linaro.org>
-	<MWHPR21MB018983B74A652443B70680F19ED20@MWHPR21MB0189.namprd21.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Mar 2018 17:09:30 +0000
-Message-ID: <CAFEAcA8O7EEhoS83eRLH5bVmog_Qu1tAgUzR6NsE+GD2a7FsDw@mail.gmail.com>
-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::234
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 8/9] hw/arm/bcm2836: Hardcode
- correct CPU type
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHmQWvDAHmDvamC8tUF8JbLjbssAax+5Hza6S+w_go=YbM4wDA@mail.gmail.com>
+User-Agent: NeoMutt/20180622
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Thu, 28 Jun 2018 09:04:18 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Thu, 28 Jun 2018 09:04:18 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm: Add SBSA machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,69 +96,167 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Pekka Enberg <penberg@iki.fi>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9V6S0lbz6bwJ
+X-TUID: Q/TlY7SmoAAr
 
-On 13 March 2018 at 16:55, Andrew Baumann <Andrew.Baumann@microsoft.com> wrote:
->> From: Qemu-devel <qemu-devel-
->> bounces+andrew.baumann=microsoft.com@nongnu.org> On Behalf Of Peter
->> Maydell
->> Sent: Tuesday, 13 March 2018 08:35
->>
->> Now we have separate types for BCM2386 and BCM2387, we might as well
->> just hard-code the CPU type they use rather than having it passed
->> through as an object property. This then lets us put the initialization
->> of the CPU object in init rather than realize.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Thu, Jun 28, 2018 at 04:11:56PM +0800, Hongbo Zhang wrote:
+> On 27 June 2018 at 22:56, Igor Mammedov <imammedo@redhat.com> wrote:
+> > On Wed, 27 Jun 2018 18:13:08 +0800
+> > Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> >
+> >> This patch introduces a new Arm machine type 'SBSA' with features:
+> >>  - Based on legacy 'virt' machine type.
+> >>  - Newly designed memory map.
+> >>  - EL2 and EL3 are enabled by default.
+> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
+> >>    can be added to it.
+> >>  - EHCI controller attached to system bus, with USB mouse and key board
+> >>    installed by default.
+> >>  - E1000 ethernet card on PCIE bus.
+> >>  - VGA display adaptor on PCIE bus.
+> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
+> >>  - No virtio functions enabled, since this is to emulate real hardware.
+> > I'd drop all default (convenience) devices unless they are specified in SBSA,
+> > and make management explicitly provide needed devices on CLI.
+> >
+> Thanks for review.
+> 
+> I mentioned these default values because they are different from the
+> 'virt' machine from which this sbsa machine derives. (sbsa has uart
+> too, it is same with 'virt' PL011).
+> Qemu implementation should has such default values, if the sbsa
+> machine does not offer them, they fallback to the parent machine's.
 
->>  static const BCM283XInfo bcm283x_socs[] = {
->>      {
->>          .name = TYPE_BCM2836,
->> +        .cpu_type = ARM_CPU_TYPE_NAME("cortex-a15"),
+QEMU's default devices is one of the problems with QEMU. Any serious
+use of QEMU must be done with '-nodefaults' and then explicit devices.
+To avoid requiring long command lines QEMU supports '-readconfig'. We
+already have two mach-virt configs that can be used as a basis for a
+new SBSA config. See docs/config/mach-virt-graphical.cfg and
+docs/config/mach-virt-serial.cfg.
+
+> The parent 'virt' machine's default cpu type is cortext-a15, that is
+> not proper for a armv8 server, and its default memory is 128M, that is
+> not enough to load uefi, even 512M cannot either, so I set the sbsa
+> defualt minimal memory to 1G.
+
+config files support setting a memory size, but unfortunately not the
+CPU type. I'm not sure why it doesn't. Maybe readconfig can be taught
+to do so?
+
+> 
+> The core numbers, is a new default. Server is smp in common sense,
+> single core isn't like a server, so some even want to set to max
+> capability as default, but this isn't good either I think, because
+> gicv3 memory space in Qemu can even support more than 200 cores, that
+> is too much.
+
+Core numbers can be managed with config
+[smp-opts]
+  cpus = "4"
+
+> (gicv2 currently support 8 cores, but there are issues to boot smp for
+> both gicv2 and gicv3 now, it should be another thread)
+> 
+> >>
+> >> This is the prototype, more features can be added in futrue.
+> >>
+> >> Purpose of this is to have a standard QEMU platform for Arm firmware
+> >> developement etc. where the legacy machines cannot meets requirements.
+> >>
+> >> Arm Trusted Firmware and UEFI porting to this are done seperately.
+> >>
+> >> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+> >> ---
+> > [...]
+> >
+> >> @@ -94,6 +98,8 @@
+> >>
+> >>  #define PLATFORM_BUS_NUM_IRQS 64
+> >>
+> >> +#define SATA_NUM_PORTS 6
+> >> +
+> >>  /* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this means
+> >>   * RAM can go up to the 256GB mark, leaving 256GB of the physical
+> >>   * address space unallocated and free for future use between 256G and 512G.
+> >> @@ -168,6 +174,47 @@ static const int a15irqmap[] = {
+> >>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> >>  };
+> >>
+> >> +static const MemMapEntry sbsa_memmap[] = {
+> >> +    /* Space up to 0x8000000 is reserved for a boot ROM */
+> >> +    [VIRT_FLASH] =              {          0, 0x08000000 },
+> >> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
+> >> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
+> >> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
+> >> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
+> >> +    [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
+> >> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
+> >> +    [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
+> >> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
+> >> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
+> >> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
+> >> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+> >> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+> >> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+> >> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+> >> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
+> >> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
+> >> +    [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> >> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+> >> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
+> >> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
+> >> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
+> >> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
+> >> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
+> >> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
+> > does spec require support for 32-bit guest or is it only 64bit,
+> > if the later I'd put it somewhere high where we can increase region
+> > to terrabytes.
+> >
+> Spec only requires it to be compliant with armv8.
+> Designed purpose of this is to run 64bit guests, because in practice
+> an arm server is usually 64bit.
+
+I agree with Igor that if we're going to add a new machine type that is
+only for 64bit, then we shouldn't base our memory map on mach-virt's,
+but rather create a new one taking advantage of a much larger address
+space. Firmware would need to start taking the base of RAM from the
+DTB, and the address of the DTB from x0, but it probably should anyway.
+
+> 
+> > another idea that was floating around (considering we don't care about legacy)
+> > is to use flexible base address and tell firmware[*] via register where it's.
+> > Then it would be able to support 32 guest with small amount of RAM
+> > and 64 bit guests with huge amount of RAM using a single memory range.
+> > (to keep memory management simple). It's also future friendly, as in case
+> > if we need to move it we could do easily by changing base address for new machine
+> > type only and firmware would automatically pick it up from register
+> > (without all compat nightmare we have with 2 regions in pc/q35 machines).
+> >
+> > [*] When I've talked with Laszlo about it he said it was not easy to do in uefi
+> > but still possible.
+> Sounds not easy.
+> I think the first step is to get this merged, and then we can add more
+> features if necessary.
+> I've already seen some points in trusted firmware and uefi need to be fixed.
+
+It sounds to me like the current mach-virt machine type, with an SBSA
+readconfig file would be sufficient for now, and that we should only
+merge a new machine type when firmware supports a dynamic RAM base,
+allowing the new machine type to have quite a different memory map.
+
+> 
+> >
+> > same applies to GIG regions/mmio/ecam where we are twisting our hands when trying to
+> > increase number of things.
+> >
+> > [...]
+> >
 >
-> At some point I remember seeing a patch to change this to cortex-a7. Is there a reason we didn't make that change?
->
-> (Background: the real Pi2 has an A7. When I first implemented the machine model there was no A7 emulation in QEMU, so I used the A15 which was the closest equivalent.)
 
-Yeah, we should do that. I'd forgotten about that, I think
-things just got lost in the shuffle of having several
-patchsets that tried to change the same things at once.
-
-I guess the simplest thing is to add a patch at the end of
-the series that fixes the cpu type for bcm2836.
-
-
->> --- a/hw/arm/raspi.c
->> +++ b/hw/arm/raspi.c
->> @@ -150,8 +150,6 @@ static void raspi_init(MachineState *machine, int
->> version)
->>      /* Setup the SOC */
->>      object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
->>                                     &error_abort);
->> -    object_property_set_str(OBJECT(&s->soc), machine->cpu_type, "cpu-type",
->> -                            &error_abort);
->>      object_property_set_int(OBJECT(&s->soc), smp_cpus, "enabled-cpus",
->>                              &error_abort);
->>      int board_rev = version == 3 ? 0xa02082 : 0xa21041;
->
-> What about the default_cpu_type field of MachineClass set in
-> raspi[23]_machine_init? That seems irrelevant now...
-
-Mmm. It doesn't hurt anything, though.
-
-> Also, if anyone cares (I don't), we also just lost the ability
-> to override the CPU type of a raspi model.
-
-Yeah, that's deliberate -- I think that letting the user randomly
-plug nonexistent combinations together just confuses people when
-they don't work. I guess I should call it out in the commit message
-though.
-
-thanks
--- PMM
+Thanks,
+drew 

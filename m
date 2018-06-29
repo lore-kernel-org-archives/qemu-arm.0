@@ -1,112 +1,112 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp730603wrq;
-        Fri, 29 Jun 2018 06:31:46 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfFGnhQRCl4jDfwiGZOc2WvI26FU4zqzHn5+kv4p5/x7oit2+3iPWpS0hq8587JR31pxRJ7
-X-Received: by 2002:a37:2a62:: with SMTP id q95-v6mr12793102qkh.228.1530279105984;
-        Fri, 29 Jun 2018 06:31:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530279105; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp730662wrq;
+        Fri, 29 Jun 2018 06:31:48 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfH64iN3n+dpuBgmtSz3c6MyumKxQIRSMI63u1D4kjXk81zVpdlWgnnLWDrVywb20MQrCR6
+X-Received: by 2002:a0c:cdd1:: with SMTP id a17-v6mr6387237qvn.166.1530279108564;
+        Fri, 29 Jun 2018 06:31:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530279108; cv=none;
         d=google.com; s=arc-20160816;
-        b=QWVByC1jFc3cHB2Qyr1RZz+t9aZkGDrYzLr++cUjzBO9Oztv3AOtLBjgXYs8tNnKLm
-         9tA1VO/rm+QaW3itS2vQ7ut5c37ihUHwuFnwKaJvx1K+7qzTfHi4ovzA5il58q7XrkBO
-         7Y6I9y36TV0AzvzNRnDgMYWK8hVhj6LvjzZiZ+ygut88+Bq9rpW3+JSJ8bQGkaDBOEky
-         hgjFA2pxiO084f6f9sPzRnF8iq44AlY1sNX6HYrqhBt7mC2xo5F2C+0gKy8WpQy7LdOH
-         /KotYVagLiMcCix/Rfqq16hELiPs5IGepWmRPfI+LHsONtgiz5Bz4n3cDPd53GTecxEs
-         qo1A==
+        b=w7t7VlYZdrk5DySAtIoX2JNnR2s+yvgwAxUTfiOnQhv1aYC1iiyaJINCya87ZwSf23
+         F75PGtg0rGbNJhAa2XrT+iNNu00UsdpOVzRwfbGk8cWLAfKFYb0s07CcSJHuAbdPPkJK
+         nYQGaeIB7VSVADfRdpf5JXAVzgPYc7cd34n0b4SbIGMCXxypUHXImi9i1QehDI1FoXSw
+         Np/mF7ryZgHM4F6ZtoN/sEfUCZ8OttGAehlY2SWRHurlNx9oxx7gDrs3nf3ntxDWf4G5
+         olLysi0KTgUC1PCwGylCx6culMYZHD/0U7NUcTNkSGNXUGJjw5pB+RgWNfKpthTIwiiz
+         IsHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature:arc-authentication-results;
-        bh=28foLpcCnM6+oks8IpyLGo35oUMteC4cawew80r5s4Y=;
-        b=OGD2NyJsBwbCb9E11Gxj0Kmb200RCvepZPUSiFK+ICchFHqvTioMRZRu1dW5ZNMBvh
-         ajbBNvMFILxAYwfheUp5pPM4qNMjtJOEPr6tGLUb2ggVxvx8uHvS6caQPRuVX/LnigSU
-         Asz3Na+n2Z/H2sU7JJ42lj/prda7RPbGYqb3CUqx/dtSbx8MjILyTpblc5CfAgXK6zxT
-         PWNTMtT7lfHINOgrrmR4/PgyHpmu76Lfd7tpO5MIBzmfs2ZjpuqnkKA1aTcC/lLG+EhD
-         9geGsN9xoZzJtVmBWhczoUu75tqjJFn6UOKAkIuvVHxCT1cvK47Mly6ERJnjUMRM6g5u
-         bZCQ==
+        bh=cWsQAIgMhiMjpYZe0I0Kz4oeWS6p29S0avMDwZVdf48=;
+        b=039CqCpe1n2cWVfvrgX9qHLfCbFfb6aS06pFJdojxj6K4zAXSF4jO2zfGtBAdXrzAA
+         qmCTEXjJ73q8sKSRXoKqW/pQPVJejb8lYpbfZMcrl2Jm/QbQFdG1Ud5LMURWE3MBGIUk
+         jhDFzGZgl5SPtBM1knRvE0Q0XptQ/pdTcszXmLEMJIVoECdHtOcohAACzjuQvX+kYmsI
+         vaNUMLVpR1YKLLyxo86SipYTTfHn6ZFAcRz9yYUCot3xmF9+9MtsGwRbbGU8ZFs8rLqL
+         D/A6ULsaUZLrC5bnpG+WECsJ8YdoxbR0lEDivmpjtiNMVodOVl9l98t/sX6hEFrpL5Vp
+         goyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=RjTMQhog;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4EDH6Ht3;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4EDH6Ht3;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="hw+sZ/Pk";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=iJRuw5dN;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=iJRuw5dN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j37-v6si9102668qtc.35.2018.06.29.06.31.45
+        by mx.google.com with ESMTPS id h47-v6si8600211qvi.184.2018.06.29.06.31.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jun 2018 06:31:45 -0700 (PDT)
+        Fri, 29 Jun 2018 06:31:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=RjTMQhog;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4EDH6Ht3;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4EDH6Ht3;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="hw+sZ/Pk";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=iJRuw5dN;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=iJRuw5dN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42145 helo=lists.gnu.org)
+Received: from localhost ([::1]:42147 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYtV3-0008BX-6T
-	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:31:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37936)
+	id 1fYtV6-0008E6-22
+	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:31:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtUA-0007aO-A0
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:53 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fYtUB-0007av-0B
+	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtU3-0006rj-8q
+	(envelope-from <luc.michel@greensocs.com>) id 1fYtU4-0006w5-Ki
 	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:50 -0400
-Received: from greensocs.com ([193.104.36.180]:58614)
+Received: from greensocs.com ([193.104.36.180]:58653)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fYtU2-0006mO-RI; Fri, 29 Jun 2018 09:30:43 -0400
+	id 1fYtU4-0006u9-7t; Fri, 29 Jun 2018 09:30:44 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 82210443496;
-	Fri, 29 Jun 2018 15:30:42 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 92644443495;
+	Fri, 29 Jun 2018 15:30:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279042;
-	bh=Tcn8vA+NQ6UjfzqAXfFdIrJgo/nDdngNZUAvIGiaw7s=;
+	s=mail; t=1530279043;
+	bh=pZYy7vYLlg51p8GPJgcPlN1LsdJ1D5PyMqlvVOLED84=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=RjTMQhog3E7EN8vBhke1r2HSa3kU57ldblI3vhdwCUj7XpFIwrNHTQ76WYhORA+ty
-	x0X0kq3j+2HMInVHIceE7P8xCLWSWcU/nj3izBAFkYpRMiTk3XcVMYn81sN7ud2MPH
-	OkXEIKtbuWrXZvqxMjbG3M9xEd0JKyS0LnCFpSgg=
+	b=hw+sZ/Pk+LzRRB4Fo8TyzTpXX4XC9SzZpG05YmJ9xE2YgWWgHsAha1gFEJQubI0UN
+	w0i8g1ReAvBnYbTKwCErxoRzauDoaaHjBvY9cVy21OZ5YxW/VhOryTbWe7AUvhEx5o
+	X+vpSSly68C+k3tdqrccDRRyg0JytAQVzQmCbQO4=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=4EDH6Ht3;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=4EDH6Ht3
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=iJRuw5dN;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=iJRuw5dN
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7RNe5SvmtaYu; Fri, 29 Jun 2018 15:30:41 +0200 (CEST)
+	with ESMTP id uj8U1cokJOmv; Fri, 29 Jun 2018 15:30:42 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 905504434B8; Fri, 29 Jun 2018 15:30:41 +0200 (CEST)
+	id 80CCC4434BB; Fri, 29 Jun 2018 15:30:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279041;
-	bh=Tcn8vA+NQ6UjfzqAXfFdIrJgo/nDdngNZUAvIGiaw7s=;
+	s=mail; t=1530279042;
+	bh=pZYy7vYLlg51p8GPJgcPlN1LsdJ1D5PyMqlvVOLED84=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=4EDH6Ht3BsXdO8vC2TiVt+BN6XLtFjec0gsJt6fJvZV4m2DJYNkqYRwy784cEU8Ci
-	SDikZYr6my5GAdEdeTTz+VcoonmTkzsINiVnleF8DvwUv1bcaeCIKf8EnnAewVWQUA
-	X0CEfrPW7VhmManBLtmiYGpD7K6XfagZqsW7MbQs=
+	b=iJRuw5dNNGUR+lGvSW1xU0gTCOp6dvks0bvvusQaRRQQW8tCugEiS1rqf/9u7UMTm
+	kehQRYY6JBEEJi9sYC0rVNKPHtSVqJ9u3DXOiEPY3EfFIyi8HX/zNJUcJ9jb1XWTGZ
+	pkNF3xk0KGBw3gQV+4aVJJ+6CsZUb33+LLPputEM=
 Received: from michell-laptop.hive.antfield.fr
 	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 1A26E4434BD;
+	by greensocs.com (Postfix) with ESMTPSA id 011C3443496;
 	Fri, 29 Jun 2018 15:30:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279041;
-	bh=Tcn8vA+NQ6UjfzqAXfFdIrJgo/nDdngNZUAvIGiaw7s=;
+	s=mail; t=1530279042;
+	bh=pZYy7vYLlg51p8GPJgcPlN1LsdJ1D5PyMqlvVOLED84=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=4EDH6Ht3BsXdO8vC2TiVt+BN6XLtFjec0gsJt6fJvZV4m2DJYNkqYRwy784cEU8Ci
-	SDikZYr6my5GAdEdeTTz+VcoonmTkzsINiVnleF8DvwUv1bcaeCIKf8EnnAewVWQUA
-	X0CEfrPW7VhmManBLtmiYGpD7K6XfagZqsW7MbQs=
+	b=iJRuw5dNNGUR+lGvSW1xU0gTCOp6dvks0bvvusQaRRQQW8tCugEiS1rqf/9u7UMTm
+	kehQRYY6JBEEJi9sYC0rVNKPHtSVqJ9u3DXOiEPY3EfFIyi8HX/zNJUcJ9jb1XWTGZ
+	pkNF3xk0KGBw3gQV+4aVJJ+6CsZUb33+LLPputEM=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 29 Jun 2018 15:29:51 +0200
-Message-Id: <20180629132954.24269-18-luc.michel@greensocs.com>
+Date: Fri, 29 Jun 2018 15:29:53 +0200
+Message-Id: <20180629132954.24269-20-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180629132954.24269-1-luc.michel@greensocs.com>
 References: <20180629132954.24269-1-luc.michel@greensocs.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v3 17/20] intc/arm_gic: Implement maintenance
- interrupt generation
+Subject: [Qemu-arm] [PATCH v3 19/20] xlnx-zynqmp: Improve GIC wiring and
+ MMIO mapping
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,123 +123,208 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
 	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pWsXXJ3MfVl+
+X-TUID: Fhn+OYUjFMGr
 
-Implement the maintenance interrupt generation that is part of the GICv2
-virtualization extensions.
+This commit improve the way the GIC is realized and connected in the
+ZynqMP SoC. The security extensions are enabled only if requested in the
+machine state. The same goes for the virtualization extensions.
+
+All the GIC to APU CPU(s) IRQ lines are now connected, including FIQ,
+vIRQ and vFIQ. The missing CPU to GIC timers IRQ connections are also
+added (HYP and SEC timers).
+
+The GIC maintenance IRQs are back-wired to the correct GIC PPIs.
+
+Finally, the MMIO mappings are reworked to take into account the ZynqMP
+specificities. the GIC (v)CPU interface is aliased 16 times:
+  * for the firsts 0x1000 bytes from 0xf9010000 to 0xf901f000
+  * for the seconds 0x1000 bytes from 0xf9020000 to 0xf902f000
+Mappings of the virtual interface and virtual CPU interface are mapped
+only when virtualization extensions are requested. The
+XlnxZynqMPGICRegion struct has been enhanced to be able to catch all
+this information.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 ---
- hw/intc/arm_gic.c | 89 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 89 insertions(+)
+ hw/arm/xlnx-zynqmp.c         | 92 ++++++++++++++++++++++++++++++++----
+ include/hw/arm/xlnx-zynqmp.h |  4 +-
+ 2 files changed, 86 insertions(+), 10 deletions(-)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index a3ff4b89d1..10300e9b4c 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -206,6 +206,94 @@ static inline void gic_update_internal(GICState *s, bool virt)
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index 29df35fb75..42c29b8d06 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -29,12 +29,17 @@
+ 
+ #define ARM_PHYS_TIMER_PPI  30
+ #define ARM_VIRT_TIMER_PPI  27
++#define ARM_HYP_TIMER_PPI   26
++#define ARM_SEC_TIMER_PPI   29
++#define GIC_MAINTENANCE_PPI 25
+ 
+ #define GEM_REVISION        0x40070106
+ 
+ #define GIC_BASE_ADDR       0xf9000000
+ #define GIC_DIST_ADDR       0xf9010000
+ #define GIC_CPU_ADDR        0xf9020000
++#define GIC_VIFACE_ADDR     0xf9040000
++#define GIC_VCPU_ADDR       0xf9060000
+ 
+ #define SATA_INTR           133
+ #define SATA_ADDR           0xFD0C0000
+@@ -111,11 +116,54 @@ static const int adma_ch_intr[XLNX_ZYNQMP_NUM_ADMA_CH] = {
+ typedef struct XlnxZynqMPGICRegion {
+     int region_index;
+     uint32_t address;
++    uint32_t offset;
++    bool virt;
+ } XlnxZynqMPGICRegion;
+ 
+ static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_regions[] = {
+-    { .region_index = 0, .address = GIC_DIST_ADDR, },
+-    { .region_index = 1, .address = GIC_CPU_ADDR,  },
++    /* Distributor */
++    {
++        .region_index = 0,
++        .address = GIC_DIST_ADDR,
++        .offset = 0,
++        .virt = false
++    },
++
++    /* CPU interface */
++    {
++        .region_index = 1,
++        .address = GIC_CPU_ADDR,
++        .offset = 0,
++        .virt = false
++    },
++    {
++        .region_index = 1,
++        .address = GIC_CPU_ADDR + 0x10000,
++        .offset = 0x1000,
++        .virt = false
++    },
++
++    /* Virtual interface */
++    {
++        .region_index = 2,
++        .address = GIC_VIFACE_ADDR,
++        .offset = 0,
++        .virt = true
++    },
++
++    /* Virtual CPU interface */
++    {
++        .region_index = 3,
++        .address = GIC_VCPU_ADDR,
++        .offset = 0,
++        .virt = true
++    },
++    {
++        .region_index = 3,
++        .address = GIC_VCPU_ADDR + 0x10000,
++        .offset = 0x1000,
++        .virt = true
++    },
+ };
+ 
+ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
+@@ -286,6 +334,9 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
+     qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
++    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->secure);
++    qdev_prop_set_bit(DEVICE(&s->gic),
++                      "has-virtualization-extensions", s->virt);
+ 
+     /* Realize APUs before realizing the GIC. KVM requires this.  */
+     for (i = 0; i < num_apus; i++) {
+@@ -330,19 +381,23 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < XLNX_ZYNQMP_GIC_REGIONS; i++) {
+         SysBusDevice *gic = SYS_BUS_DEVICE(&s->gic);
+         const XlnxZynqMPGICRegion *r = &xlnx_zynqmp_gic_regions[i];
+-        MemoryRegion *mr = sysbus_mmio_get_region(gic, r->region_index);
++        MemoryRegion *mr;
+         uint32_t addr = r->address;
+         int j;
+ 
+-        sysbus_mmio_map(gic, r->region_index, addr);
++        if (r->virt && !s->virt) {
++            continue;
++        }
+ 
++        mr = sysbus_mmio_get_region(gic, r->region_index);
+         for (j = 0; j < XLNX_ZYNQMP_GIC_ALIASES; j++) {
+             MemoryRegion *alias = &s->gic_mr[i][j];
+ 
+-            addr += XLNX_ZYNQMP_GIC_REGION_SIZE;
+             memory_region_init_alias(alias, OBJECT(s), "zynqmp-gic-alias", mr,
+-                                     0, XLNX_ZYNQMP_GIC_REGION_SIZE);
++                                     r->offset, XLNX_ZYNQMP_GIC_REGION_SIZE);
+             memory_region_add_subregion(system_memory, addr, alias);
++
++            addr += XLNX_ZYNQMP_GIC_REGION_SIZE;
+         }
      }
- }
  
-+static inline void gic_extract_lr_info(GICState *s, int cpu,
-+                                int *num_eoi, int *num_valid, int *num_pending)
-+{
-+    int lr_idx;
+@@ -352,12 +407,33 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
+                            qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
+                                             ARM_CPU_IRQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus,
++                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
++                                            ARM_CPU_FIQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 2,
++                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
++                                            ARM_CPU_VIRQ));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 3,
++                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
++                                            ARM_CPU_VFIQ));
+         irq = qdev_get_gpio_in(DEVICE(&s->gic),
+                                arm_gic_ppi_index(i, ARM_PHYS_TIMER_PPI));
+-        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), 0, irq);
++        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_PHYS, irq);
+         irq = qdev_get_gpio_in(DEVICE(&s->gic),
+                                arm_gic_ppi_index(i, ARM_VIRT_TIMER_PPI));
+-        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), 1, irq);
++        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_VIRT, irq);
++        irq = qdev_get_gpio_in(DEVICE(&s->gic),
++                               arm_gic_ppi_index(i, ARM_HYP_TIMER_PPI));
++        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_HYP, irq);
++        irq = qdev_get_gpio_in(DEVICE(&s->gic),
++                               arm_gic_ppi_index(i, ARM_SEC_TIMER_PPI));
++        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_SEC, irq);
 +
-+    *num_eoi = 0;
-+    *num_valid = 0;
-+    *num_pending = 0;
-+
-+    for (lr_idx = 0; lr_idx < s->num_lrs; lr_idx++) {
-+        uint32_t *entry = &s->h_lr[lr_idx][cpu];
-+
-+        if (gic_lr_entry_is_eoi(*entry)) {
-+            (*num_eoi)++;
++        if (s->virt) {
++            irq = qdev_get_gpio_in(DEVICE(&s->gic),
++                                   arm_gic_ppi_index(i, GIC_MAINTENANCE_PPI));
++            sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 4, irq);
 +        }
-+
-+        if (GICH_LR_STATE(*entry) != GICH_LR_STATE_INVALID) {
-+            (*num_valid)++;
-+        }
-+
-+        if (GICH_LR_STATE(*entry) == GICH_LR_STATE_PENDING) {
-+            (*num_pending)++;
-+        }
-+    }
-+}
-+
-+static void gic_compute_misr(GICState *s, int cpu)
-+{
-+    int val;
-+    int vcpu = cpu + GIC_NCPU;
-+
-+    int num_eoi, num_valid, num_pending;
-+
-+    gic_extract_lr_info(s, cpu, &num_eoi, &num_valid, &num_pending);
-+
-+    /* EOI */
-+    val = (num_eoi != 0);
-+    s->h_misr[cpu] = FIELD_DP32(0, GICH_MISR, EOI, val);
-+
-+    /* U: true if only 0 or 1 LR entry is valid */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_UIE_MASK &&
-+        (num_valid < 2);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, U, val);
-+
-+    /* LRENP: EOICount is not 0 */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_LRENPIE_MASK &&
-+        ((s->h_hcr[cpu] & R_GICH_HCR_EOICount_MASK) != 0);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, LRENP, val);
-+
-+    /* NP: no pending interrupts */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_NPIE_MASK &&
-+        (num_pending == 0);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, NP, val);
-+
-+    /* VGrp0E: group0 virq signaling enabled */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_VGRP0EIE_MASK &&
-+        (s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP0);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, VGrp0E, val);
-+
-+    /* VGrp0D: group0 virq signaling disabled */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_VGRP0DIE_MASK &&
-+        !(s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP0);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, VGrp0D, val);
-+
-+    /* VGrp1E: group1 virq signaling enabled */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_VGRP1EIE_MASK &&
-+        (s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP1);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, VGrp1E, val);
-+
-+    /* VGrp1D: group1 virq signaling disabled */
-+    val = s->h_hcr[cpu] & R_GICH_HCR_VGRP1DIE_MASK &&
-+        !(s->cpu_ctlr[vcpu] & GICC_CTLR_EN_GRP1);
-+    s->h_misr[cpu] = FIELD_DP32(s->h_misr[cpu], GICH_MISR, VGrp1D, val);
-+}
-+
-+static void gic_update_maintenance(GICState *s)
-+{
-+    int cpu = 0;
-+    int maint_level;
-+
-+    for (cpu = 0; cpu < s->num_cpu; cpu++) {
-+        gic_compute_misr(s, cpu);
-+        maint_level = (s->h_hcr[cpu] & R_GICH_HCR_EN_MASK) && s->h_misr[cpu];
-+
-+        qemu_set_irq(s->maintenance_irq[cpu], maint_level);
-+    }
-+}
-+
- static void gic_update(GICState *s)
- {
-     gic_update_internal(s, false);
-@@ -214,6 +302,7 @@ static void gic_update(GICState *s)
- static void gic_update_virt(GICState *s)
- {
-     gic_update_internal(s, true);
-+    gic_update_maintenance(s);
- }
+     }
  
- static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
+     if (s->has_rpu) {
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index 82b6ec2486..98f925ab84 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -53,7 +53,7 @@
+ #define XLNX_ZYNQMP_OCM_RAM_0_ADDRESS 0xFFFC0000
+ #define XLNX_ZYNQMP_OCM_RAM_SIZE 0x10000
+ 
+-#define XLNX_ZYNQMP_GIC_REGIONS 2
++#define XLNX_ZYNQMP_GIC_REGIONS 6
+ 
+ /* ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
+  * and under-decodes the 64k region. This mirrors the 4k regions to every 4k
+@@ -62,7 +62,7 @@
+  */
+ 
+ #define XLNX_ZYNQMP_GIC_REGION_SIZE 0x1000
+-#define XLNX_ZYNQMP_GIC_ALIASES     (0x10000 / XLNX_ZYNQMP_GIC_REGION_SIZE - 1)
++#define XLNX_ZYNQMP_GIC_ALIASES     (0x10000 / XLNX_ZYNQMP_GIC_REGION_SIZE)
+ 
+ #define XLNX_ZYNQMP_MAX_LOW_RAM_SIZE    0x80000000ull
+ 
 -- 
 2.17.1
 

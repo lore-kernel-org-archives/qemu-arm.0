@@ -1,521 +1,183 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5770118wrq;
-        Tue, 26 Jun 2018 21:34:30 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpduQ/tw8tjppylQknwJyUiLEo9gUFewDtAloKV2S0hbQi3QUoGRr4s/nOSEWMPxTOKEAIL9
-X-Received: by 2002:a37:91c3:: with SMTP id t186-v6mr3974878qkd.37.1530074069984;
-        Tue, 26 Jun 2018 21:34:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530074069; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp917470wrq;
+        Fri, 29 Jun 2018 09:23:53 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdkYfvoTu8r2KP07LMM8mipw9nFC6cT0E+AWrjku5CmRB8OJxEsmmCGiDr5s2KZKSsCPzcf
+X-Received: by 2002:a37:4848:: with SMTP id v69-v6mr13124124qka.128.1530289433030;
+        Fri, 29 Jun 2018 09:23:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530289433; cv=none;
         d=google.com; s=arc-20160816;
-        b=UiDXGPz7VKsuFgyAtySDq+MhYZDLB/zDqEIX8Obc4Xxy7RKJfX8QhKjinPx1WT6DMq
-         1gIc9SoANsJwmPXSmXT/nWaa+/ZbybNiQ6VYGciPuPXozasGrEvYhXFPWfYTndumQZXp
-         GRxKjoR+c8ZwJqlokuvuRKtIWiL1YBUE2vBrDm2HHvmcGnL6DfZcDFwjUD/kk4bqq4h3
-         UKQUGErpOSwnaC70k9VIuuzG+zbObwZDH35AgESHUHc/oqo4a+O96A4Zd4U4ocG3EMia
-         INl+WUHdYGfN5TPYI1cSbCCQEiQ6Ayr86gYM8o9kWeocwhmp8/qu3Pm2ybN0nZkNrwJH
-         2a/w==
+        b=yRlx9UgD8Da6TojTv0UN69/KEnxPTeJJBS0HLUaPuCJIxzIAaFjV2XIDj0rXkPK583
+         ma07636lvXb4y5Ge+jXMsMvUDV6m8gyVn3oXKBHzm/PJzvE9jl4vm+XgRae9hCnCZNF+
+         a0VUsS4TZbagH8l46EflgN24tIjc0Hn3WYDQUecfYp8U14hXTYYBc02F7wtHcYwEt7mT
+         CCoIMBI5NlzHsfcyCLfTq0nuKxyZl9SFGYhw0DFqxGDKPp/SVjpaAES2Mdd8B9dXH+T2
+         PLcRhReLvIoEN606Pz4Y+L9nL7TZHotR8HfXs9JCfj11YPiCpigLFnc2TvTW+oPn1xEU
+         oG8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=1PmEgwZlFp9xc2QDjoVForQzcOsUldcvf0BP0dIYBDg=;
-        b=uQnk7vxxxCcTuLENWpATJbpx43yIHyJKu7oeRHwKzL995gN7cDHm8AYzYwy3pFNX5L
-         rU+nUo2+IR2i1XPJ6OALwZ/x5+8jvf5FuPUpBV2Ad1Mm4ukxqG2GtPuffUI06GlPe8CA
-         /8lFiRxmdeDM/VX0der3yw3BwgiCbDth2z3+lOnPHX2aT+Iqc8xS7Cd0LcAXvYu7xmzm
-         gNRDcYjgHNoFs+YRzBspYdFyHj1pI8J18yqREtrxCGw+QZ3o3+uWwwOuF7OP/efhbtMm
-         jE+IepZ7mcXiTqCZ2M2td3ZA1g486k+2EWhkG0kLu0951yUxSofVCAKe5hpbhVhmMkax
-         aSWA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :arc-authentication-results;
+        bh=58YuWzvsDYx/r6ZhOUHQr01pVSRxM53Zy4ik4eZuRME=;
+        b=OubowyBeAcg+ylqmjhoFSby+ilG3Q7BBd41BXQpG83GLHe/XVoxdUyGyg8bJ6Girjy
+         G6MQAWLDRPQedJ1bfwUFYOx6brqHMger0IzxhRPjhd7Ai1UMrzKYjv+dH6o1lR3Sc5Su
+         9QGCejgkjWLoY2Pcio+MTg95FGq1JUag0ujVtX9jQwV2Y7u9vVChev/Dvgus4LUJD/IJ
+         pmN3ZW8vgVZLQOzwwiV56Hx7U8QzFBWRXEB0Go1Hf2fCRLonRmix6t1A15yp+H/AnwUs
+         hyKdp6haFyZnLSF3JHqqBqKXEYvRKT6eQXjHIylwaRyY3vPAvL7RqAx1G6h6OjrR+oam
+         VGEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Xih5B190;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t6-v6si1556979qtc.298.2018.06.26.21.34.29
+        by mx.google.com with ESMTPS id z1-v6si3890749qtf.44.2018.06.29.09.23.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 21:34:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 29 Jun 2018 09:23:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Xih5B190;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56471 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43408 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fY2A1-000494-CM
-	for alex.bennee@linaro.org; Wed, 27 Jun 2018 00:34:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60099)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fYwBc-0001HB-Hp
+	for alex.bennee@linaro.org; Fri, 29 Jun 2018 12:23:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59141)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY29D-00043T-Km
-	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:33:44 -0400
+	(envelope-from <laurent@vivier.eu>) id 1fYwBN-0001FF-EY
+	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 12:23:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY29B-0008VV-4N
-	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:33:39 -0400
-Received: from mail-pf0-x234.google.com ([2607:f8b0:400e:c00::234]:41882)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fY29A-0008U9-SO
-	for qemu-devel@nongnu.org; Wed, 27 Jun 2018 00:33:37 -0400
-Received: by mail-pf0-x234.google.com with SMTP id a11-v6so384373pff.8
-	for <qemu-devel@nongnu.org>; Tue, 26 Jun 2018 21:33:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=1PmEgwZlFp9xc2QDjoVForQzcOsUldcvf0BP0dIYBDg=;
-	b=Xih5B1904RpiA+W3+qBMs2TofChGjvBKbCgin1ecabqgtt/V6Vm3Urv3QzxC6R4EuR
-	1y+B5RIF28j7iuM5i6d8cXZau/FRCu/oX8zxvui++6Ze+NL0flr/lyZwoV0BjVExYnhL
-	D8bpdUhe6pSYhknNSQwE1vdtlA3zgTdtx+wTw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=1PmEgwZlFp9xc2QDjoVForQzcOsUldcvf0BP0dIYBDg=;
-	b=irjVnxXwOK0YFOaErdnXJprUR0TxjyFEkQg7IEF0yT8I/g/pOHjKJyOXb1U+R9DZnn
-	DsGVJapcgD5bgrKDm2qzvAA67w2gQZ2vEG+ha16Nj+bogWHZ3pbz2OuGlMMJ+peR8E4h
-	L+wfJNonl93VSaCBPS4vpGiu76adCx3GdK74R6fE36dhPInNxMn8yd2pASY+hsGkvxV+
-	IbEaiPinhrfIm7eVEtS9SjTeNDCDR48j2p/LiqJXf/r7NSwikhjmOh+P8jSLHgjLm8d6
-	FwtGRgD5fHr+ctzCSy0QU2jN1YwJ8PtJEp21TQkMKb95R4HgW5g3x53/Y1963RiCw4CS
-	SJpA==
-X-Gm-Message-State: APt69E06eSwSKY1rFpkQy0tIOjsS8brx8+naTeOss6pGoFwP+uqK1nvw
-	v7FqkxUWlKeHPQU6XJ9llCnFaI0vs4Y=
-X-Received: by 2002:a63:6501:: with SMTP id
-	z1-v6mr3746667pgb.452.1530074015511; 
-	Tue, 26 Jun 2018 21:33:35 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
-	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	p20-v6sm4577638pff.90.2018.06.26.21.33.34
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 26 Jun 2018 21:33:34 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 26 Jun 2018 21:32:56 -0700
-Message-Id: <20180627043328.11531-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180627043328.11531-1-richard.henderson@linaro.org>
-References: <20180627043328.11531-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::234
-Subject: [Qemu-devel] [PATCH v6 03/35] target/arm: Implement SVE Memory
- Contiguous Store Group
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <laurent@vivier.eu>) id 1fYwBK-00059s-90
+	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 12:23:37 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:38939)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1fYwBJ-00058T-V1; Fri, 29 Jun 2018 12:23:34 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue105 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	0Loq9D-1g5m271kKJ-00gmi6; Fri, 29 Jun 2018 18:23:28 +0200
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180629161731.16239-1-peter.maydell@linaro.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <6f17a133-37dd-e165-3a2a-2486ae49bfae@vivier.eu>
+Date: Fri, 29 Jun 2018 18:23:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <20180629161731.16239-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:iRDHXsGqNbL5jcL+IWI1w+kHOYYC9JAmFNCkZiTtYDY1T4RVTm3
+	fVaeLrymBWhRzFiY+ndlObDsrimOmlB5Cz4RFSeuZAShhJpOE27n0E8TDnNtXsnTi+py9DB
+	92gibv3NxbMHj7OkDKyfGY9KJRaLWU7oFbEb1oRMXw1vlnvztRujpU8wP1Dx9+N8Gl/FtGQ
+	avtzjdQYy8SnstEOdSMMQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:O3SvKxGJYnQ=:dDH39wvl12q5WGRnem2zN4
+	de0qIC00aVO6TovBWd7GXVILaanagj9Z+NaPGEWgzCw5YxutG/36lsIGD/6vUUT56NK1TmB75
+	+GDcLWndSeWtpV+/1VV42e63sbLhsHyMkF18nPu+tJE0C/NVpZfDdETExBg9T9HBS+rYEXciJ
+	tVyjhwYWM6moAN4/kr4/m1MrLXtSN94lUs79UuJ7KRpoqqFdpS2kI+G2I5mHs9WdJH2rRIDmY
+	jlFrMJZE/A1ibO61N/WU6CsA0atJKTH2FfkLV4KvOBBurl5p7qNoMSjezawxxfgeU1EAyBDwS
+	Shta7hHkOfY1BO8oDJ1fh542g+NKde796LxZSu63vhRRKOtNj5bC7hUqDSZYG3tYZbl/DWoU3
+	6s6mhbu/7JdCdMLu+2XMZ7hTZGR3cji5nWRexTUh3ePROft+X9yOSzHYqVV/huhXmtc/cLXHW
+	/E28EvloH/mK0x8U+Oi+1v32ZawPffCaLtmB2GH4RFw0AnOSGpmsx4CY49zsDlWg7ZMOsuaqS
+	hFyshp3nLzKEuGdPO88LFH3e+/xQAPenV4NLQVNgUwyrPRu9TrnuwGDlsEuNmmlZM5SPLLjO0
+	6aV0XE3a6k/87oB/vx1+f5dYAmyn1H9B6Yw+JHvqcFhwMRDyrhIHS41QCXCB/f3+G8TjFE45v
+	dMpVWTQEMaHWc0o03KXBSeHsz71yNrbmc1keukENx8kG8DLhhzHp1TvZdcJFhAxiBOIl4NWyk
+	xBDl4mu4FJ4iFcfc
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 212.227.17.13
+Subject: Re: [Qemu-arm] [PATCH for-3.0] accel/tcg: Don't treat invalid TLB
+ entries as needing recheck
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tedZ57/rEdLg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yrJfxjdkxynS
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper-sve.h    |  29 +++++
- target/arm/sve_helper.c    | 211 +++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c |  65 ++++++++++++
- target/arm/sve.decode      |  38 +++++++
- 4 files changed, 343 insertions(+)
+Le 29/06/2018 à 18:17, Peter Maydell a écrit :
+> In get_page_addr_code() when we check whether the TLB entry
+> is marked as TLB_RECHECK, we should not go down that code
+> path if the TLB entry is not valid at all (ie the TLB_INVALID
+> bit is set).
+> 
+> Reported-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This fixes the abort that Laurent was seeing with his m68k test case.
+> 
+>  accel/tcg/cputlb.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+> index eebe97dabb7..a55296583b9 100644
+> --- a/accel/tcg/cputlb.c
+> +++ b/accel/tcg/cputlb.c
+> @@ -967,7 +967,8 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+>          }
+>      }
+>  
+> -    if (unlikely(env->tlb_table[mmu_idx][index].addr_code & TLB_RECHECK)) {
+> +    if (unlikely((env->tlb_table[mmu_idx][index].addr_code &
+> +                  (TLB_RECHECK | TLB_INVALID_MASK)) == TLB_RECHECK)) {
+>          /*
+>           * This is a TLB_RECHECK access, where the MMU protection
+>           * covers a smaller range than a target page, and we must
+> 
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 7338abbbcf..b768128951 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -794,3 +794,32 @@ DEF_HELPER_FLAGS_4(sve_ldnf1sdu_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
- DEF_HELPER_FLAGS_4(sve_ldnf1sds_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
- 
- DEF_HELPER_FLAGS_4(sve_ldnf1dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4bb_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4hh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4ss_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4dd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1bh_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1bs_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1bd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1hs_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1hd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1sd_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 0d22a57a22..bd874e6fa2 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -3120,3 +3120,214 @@ DO_LDNF1(sds_r)
- DO_LDNF1(dd_r)
- 
- #undef DO_LDNF1
-+
-+/*
-+ * Store contiguous data, protected by a governing predicate.
-+ */
-+#define DO_ST1(NAME, FN, TYPEE, TYPEM, H)                  \
-+void HELPER(NAME)(CPUARMState *env, void *vg,              \
-+                  target_ulong addr, uint32_t desc)        \
-+{                                                          \
-+    intptr_t i, oprsz = simd_oprsz(desc);                  \
-+    intptr_t ra = GETPC();                                 \
-+    unsigned rd = simd_data(desc);                         \
-+    void *vd = &env->vfp.zregs[rd];                        \
-+    for (i = 0; i < oprsz; ) {                             \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
-+        do {                                               \
-+            if (pg & 1) {                                  \
-+                TYPEM m = *(TYPEE *)(vd + H(i));           \
-+                FN(env, addr, m, ra);                      \
-+            }                                              \
-+            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
-+            addr += sizeof(TYPEM);                         \
-+        } while (i & 15);                                  \
-+    }                                                      \
-+}
-+
-+#define DO_ST1_D(NAME, FN, TYPEM)                          \
-+void HELPER(NAME)(CPUARMState *env, void *vg,              \
-+                  target_ulong addr, uint32_t desc)        \
-+{                                                          \
-+    intptr_t i, oprsz = simd_oprsz(desc) / 8;              \
-+    intptr_t ra = GETPC();                                 \
-+    unsigned rd = simd_data(desc);                         \
-+    uint64_t *d = &env->vfp.zregs[rd].d[0];                \
-+    uint8_t *pg = vg;                                      \
-+    for (i = 0; i < oprsz; i += 1) {                       \
-+        if (pg[H1(i)] & 1) {                               \
-+            FN(env, addr, d[i], ra);                       \
-+        }                                                  \
-+        addr += sizeof(TYPEM);                             \
-+    }                                                      \
-+}
-+
-+#define DO_ST2(NAME, FN, TYPEE, TYPEM, H)                  \
-+void HELPER(NAME)(CPUARMState *env, void *vg,              \
-+                  target_ulong addr, uint32_t desc)        \
-+{                                                          \
-+    intptr_t i, oprsz = simd_oprsz(desc);                  \
-+    intptr_t ra = GETPC();                                 \
-+    unsigned rd = simd_data(desc);                         \
-+    void *d1 = &env->vfp.zregs[rd];                        \
-+    void *d2 = &env->vfp.zregs[(rd + 1) & 31];             \
-+    for (i = 0; i < oprsz; ) {                             \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
-+        do {                                               \
-+            if (pg & 1) {                                  \
-+                TYPEM m1 = *(TYPEE *)(d1 + H(i));          \
-+                TYPEM m2 = *(TYPEE *)(d2 + H(i));          \
-+                FN(env, addr, m1, ra);                     \
-+                FN(env, addr + sizeof(TYPEM), m2, ra);     \
-+            }                                              \
-+            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
-+            addr += 2 * sizeof(TYPEM);                     \
-+        } while (i & 15);                                  \
-+    }                                                      \
-+}
-+
-+#define DO_ST3(NAME, FN, TYPEE, TYPEM, H)                  \
-+void HELPER(NAME)(CPUARMState *env, void *vg,              \
-+                  target_ulong addr, uint32_t desc)        \
-+{                                                          \
-+    intptr_t i, oprsz = simd_oprsz(desc);                  \
-+    intptr_t ra = GETPC();                                 \
-+    unsigned rd = simd_data(desc);                         \
-+    void *d1 = &env->vfp.zregs[rd];                        \
-+    void *d2 = &env->vfp.zregs[(rd + 1) & 31];             \
-+    void *d3 = &env->vfp.zregs[(rd + 2) & 31];             \
-+    for (i = 0; i < oprsz; ) {                             \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
-+        do {                                               \
-+            if (pg & 1) {                                  \
-+                TYPEM m1 = *(TYPEE *)(d1 + H(i));          \
-+                TYPEM m2 = *(TYPEE *)(d2 + H(i));          \
-+                TYPEM m3 = *(TYPEE *)(d3 + H(i));          \
-+                FN(env, addr, m1, ra);                     \
-+                FN(env, addr + sizeof(TYPEM), m2, ra);     \
-+                FN(env, addr + 2 * sizeof(TYPEM), m3, ra); \
-+            }                                              \
-+            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
-+            addr += 3 * sizeof(TYPEM);                     \
-+        } while (i & 15);                                  \
-+    }                                                      \
-+}
-+
-+#define DO_ST4(NAME, FN, TYPEE, TYPEM, H)                  \
-+void HELPER(NAME)(CPUARMState *env, void *vg,              \
-+                  target_ulong addr, uint32_t desc)        \
-+{                                                          \
-+    intptr_t i, oprsz = simd_oprsz(desc);                  \
-+    intptr_t ra = GETPC();                                 \
-+    unsigned rd = simd_data(desc);                         \
-+    void *d1 = &env->vfp.zregs[rd];                        \
-+    void *d2 = &env->vfp.zregs[(rd + 1) & 31];             \
-+    void *d3 = &env->vfp.zregs[(rd + 2) & 31];             \
-+    void *d4 = &env->vfp.zregs[(rd + 3) & 31];             \
-+    for (i = 0; i < oprsz; ) {                             \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));    \
-+        do {                                               \
-+            if (pg & 1) {                                  \
-+                TYPEM m1 = *(TYPEE *)(d1 + H(i));          \
-+                TYPEM m2 = *(TYPEE *)(d2 + H(i));          \
-+                TYPEM m3 = *(TYPEE *)(d3 + H(i));          \
-+                TYPEM m4 = *(TYPEE *)(d4 + H(i));          \
-+                FN(env, addr, m1, ra);                     \
-+                FN(env, addr + sizeof(TYPEM), m2, ra);     \
-+                FN(env, addr + 2 * sizeof(TYPEM), m3, ra); \
-+                FN(env, addr + 3 * sizeof(TYPEM), m4, ra); \
-+            }                                              \
-+            i += sizeof(TYPEE), pg >>= sizeof(TYPEE);      \
-+            addr += 4 * sizeof(TYPEM);                     \
-+        } while (i & 15);                                  \
-+    }                                                      \
-+}
-+
-+DO_ST1(sve_st1bh_r, cpu_stb_data_ra, uint16_t, uint8_t, H1_2)
-+DO_ST1(sve_st1bs_r, cpu_stb_data_ra, uint32_t, uint8_t, H1_4)
-+DO_ST1_D(sve_st1bd_r, cpu_stb_data_ra, uint8_t)
-+
-+DO_ST1(sve_st1hs_r, cpu_stw_data_ra, uint32_t, uint16_t, H1_4)
-+DO_ST1_D(sve_st1hd_r, cpu_stw_data_ra, uint16_t)
-+
-+DO_ST1_D(sve_st1sd_r, cpu_stl_data_ra, uint32_t)
-+
-+DO_ST1(sve_st1bb_r, cpu_stb_data_ra, uint8_t, uint8_t, H1)
-+DO_ST2(sve_st2bb_r, cpu_stb_data_ra, uint8_t, uint8_t, H1)
-+DO_ST3(sve_st3bb_r, cpu_stb_data_ra, uint8_t, uint8_t, H1)
-+DO_ST4(sve_st4bb_r, cpu_stb_data_ra, uint8_t, uint8_t, H1)
-+
-+DO_ST1(sve_st1hh_r, cpu_stw_data_ra, uint16_t, uint16_t, H1_2)
-+DO_ST2(sve_st2hh_r, cpu_stw_data_ra, uint16_t, uint16_t, H1_2)
-+DO_ST3(sve_st3hh_r, cpu_stw_data_ra, uint16_t, uint16_t, H1_2)
-+DO_ST4(sve_st4hh_r, cpu_stw_data_ra, uint16_t, uint16_t, H1_2)
-+
-+DO_ST1(sve_st1ss_r, cpu_stl_data_ra, uint32_t, uint32_t, H1_4)
-+DO_ST2(sve_st2ss_r, cpu_stl_data_ra, uint32_t, uint32_t, H1_4)
-+DO_ST3(sve_st3ss_r, cpu_stl_data_ra, uint32_t, uint32_t, H1_4)
-+DO_ST4(sve_st4ss_r, cpu_stl_data_ra, uint32_t, uint32_t, H1_4)
-+
-+DO_ST1_D(sve_st1dd_r, cpu_stq_data_ra, uint64_t)
-+
-+void HELPER(sve_st2dd_r)(CPUARMState *env, void *vg,
-+                         target_ulong addr, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc) / 8;
-+    intptr_t ra = GETPC();
-+    unsigned rd = simd_data(desc);
-+    uint64_t *d1 = &env->vfp.zregs[rd].d[0];
-+    uint64_t *d2 = &env->vfp.zregs[(rd + 1) & 31].d[0];
-+    uint8_t *pg = vg;
-+
-+    for (i = 0; i < oprsz; i += 1) {
-+        if (pg[H1(i)] & 1) {
-+            cpu_stq_data_ra(env, addr, d1[i], ra);
-+            cpu_stq_data_ra(env, addr + 8, d2[i], ra);
-+        }
-+        addr += 2 * 8;
-+    }
-+}
-+
-+void HELPER(sve_st3dd_r)(CPUARMState *env, void *vg,
-+                         target_ulong addr, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc) / 8;
-+    intptr_t ra = GETPC();
-+    unsigned rd = simd_data(desc);
-+    uint64_t *d1 = &env->vfp.zregs[rd].d[0];
-+    uint64_t *d2 = &env->vfp.zregs[(rd + 1) & 31].d[0];
-+    uint64_t *d3 = &env->vfp.zregs[(rd + 2) & 31].d[0];
-+    uint8_t *pg = vg;
-+
-+    for (i = 0; i < oprsz; i += 1) {
-+        if (pg[H1(i)] & 1) {
-+            cpu_stq_data_ra(env, addr, d1[i], ra);
-+            cpu_stq_data_ra(env, addr + 8, d2[i], ra);
-+            cpu_stq_data_ra(env, addr + 16, d3[i], ra);
-+        }
-+        addr += 3 * 8;
-+    }
-+}
-+
-+void HELPER(sve_st4dd_r)(CPUARMState *env, void *vg,
-+                         target_ulong addr, uint32_t desc)
-+{
-+    intptr_t i, oprsz = simd_oprsz(desc) / 8;
-+    intptr_t ra = GETPC();
-+    unsigned rd = simd_data(desc);
-+    uint64_t *d1 = &env->vfp.zregs[rd].d[0];
-+    uint64_t *d2 = &env->vfp.zregs[(rd + 1) & 31].d[0];
-+    uint64_t *d3 = &env->vfp.zregs[(rd + 2) & 31].d[0];
-+    uint64_t *d4 = &env->vfp.zregs[(rd + 3) & 31].d[0];
-+    uint8_t *pg = vg;
-+
-+    for (i = 0; i < oprsz; i += 1) {
-+        if (pg[H1(i)] & 1) {
-+            cpu_stq_data_ra(env, addr, d1[i], ra);
-+            cpu_stq_data_ra(env, addr + 8, d2[i], ra);
-+            cpu_stq_data_ra(env, addr + 16, d3[i], ra);
-+            cpu_stq_data_ra(env, addr + 24, d4[i], ra);
-+        }
-+        addr += 4 * 8;
-+    }
-+}
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 09f77b5405..b25fe96b77 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -3716,3 +3716,68 @@ static bool trans_LDNF1_zpri(DisasContext *s, arg_rpri_load *a, uint32_t insn)
-     }
-     return true;
- }
-+
-+static void do_st_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
-+                      int msz, int esz, int nreg)
-+{
-+    static gen_helper_gvec_mem * const fn_single[4][4] = {
-+        { gen_helper_sve_st1bb_r, gen_helper_sve_st1bh_r,
-+          gen_helper_sve_st1bs_r, gen_helper_sve_st1bd_r },
-+        { NULL,                   gen_helper_sve_st1hh_r,
-+          gen_helper_sve_st1hs_r, gen_helper_sve_st1hd_r },
-+        { NULL, NULL,
-+          gen_helper_sve_st1ss_r, gen_helper_sve_st1sd_r },
-+        { NULL, NULL, NULL, gen_helper_sve_st1dd_r },
-+    };
-+    static gen_helper_gvec_mem * const fn_multiple[3][4] = {
-+        { gen_helper_sve_st2bb_r, gen_helper_sve_st2hh_r,
-+          gen_helper_sve_st2ss_r, gen_helper_sve_st2dd_r },
-+        { gen_helper_sve_st3bb_r, gen_helper_sve_st3hh_r,
-+          gen_helper_sve_st3ss_r, gen_helper_sve_st3dd_r },
-+        { gen_helper_sve_st4bb_r, gen_helper_sve_st4hh_r,
-+          gen_helper_sve_st4ss_r, gen_helper_sve_st4dd_r },
-+    };
-+    gen_helper_gvec_mem *fn;
-+
-+    if (nreg == 0) {
-+        /* ST1 */
-+        fn = fn_single[msz][esz];
-+    } else {
-+        /* ST2, ST3, ST4 -- msz == esz, enforced by encoding */
-+        assert(msz == esz);
-+        fn = fn_multiple[nreg - 1][msz];
-+    }
-+    assert(fn != NULL);
-+    do_mem_zpa(s, zt, pg, addr, fn);
-+}
-+
-+static bool trans_ST_zprr(DisasContext *s, arg_rprr_store *a, uint32_t insn)
-+{
-+    if (a->rm == 31 || a->msz > a->esz) {
-+        return false;
-+    }
-+    if (sve_access_check(s)) {
-+        TCGv_i64 addr = new_tmp_a64(s);
-+        tcg_gen_muli_i64(addr, cpu_reg(s, a->rm), (a->nreg + 1) << a->msz);
-+        tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, a->rn));
-+        do_st_zpa(s, a->rd, a->pg, addr, a->msz, a->esz, a->nreg);
-+    }
-+    return true;
-+}
-+
-+static bool trans_ST_zpri(DisasContext *s, arg_rpri_store *a, uint32_t insn)
-+{
-+    if (a->msz > a->esz) {
-+        return false;
-+    }
-+    if (sve_access_check(s)) {
-+        int vsz = vec_full_reg_size(s);
-+        int elements = vsz >> a->esz;
-+        TCGv_i64 addr = new_tmp_a64(s);
-+
-+        tcg_gen_addi_i64(addr, cpu_reg_sp(s, a->rn),
-+                         (a->imm * elements * (a->nreg + 1)) << a->msz);
-+        do_st_zpa(s, a->rd, a->pg, addr, a->msz, a->esz, a->nreg);
-+    }
-+    return true;
-+}
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index afbed57de1..6e159faaec 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -27,6 +27,7 @@
- %imm7_22_16     22:2 16:5
- %imm8_16_10     16:5 10:3
- %imm9_16_10     16:s6 10:3
-+%size_23        23:2
- 
- # A combination of tsz:imm3 -- extract esize.
- %tszimm_esz     22:2 5:5 !function=tszimm_esz
-@@ -76,6 +77,8 @@
- &incdec2_pred   rd rn pg esz d u
- &rprr_load      rd pg rn rm dtype nreg
- &rpri_load      rd pg rn imm dtype nreg
-+&rprr_store     rd pg rn rm msz esz nreg
-+&rpri_store     rd pg rn imm msz esz nreg
- 
- ###########################################################################
- # Named instruction formats.  These are generally used to
-@@ -184,6 +187,12 @@
- @rpri_load_msz  ....... .... . imm:s4 ... pg:3 rn:5 rd:5 \
-                 &rpri_load dtype=%msz_dtype
- 
-+# Stores; user must fill in ESZ, MSZ, NREG as needed.
-+@rprr_store         ....... ..    ..     rm:5 ... pg:3 rn:5 rd:5    &rprr_store
-+@rpri_store_msz     ....... msz:2 .. . imm:s4 ... pg:3 rn:5 rd:5    &rpri_store
-+@rprr_store_esz_n0  ....... ..    esz:2  rm:5 ... pg:3 rn:5 rd:5 \
-+                    &rprr_store nreg=0
-+
- ###########################################################################
- # Instruction patterns.  Grouped according to the SVE encodingindex.xhtml.
- 
-@@ -705,3 +714,32 @@ LD_zprr         1010010 .. nreg:2 ..... 110 ... ..... .....     @rprr_load_msz
- # SVE load multiple structures (scalar plus immediate)
- # LD2B, LD2H, LD2W, LD2D; etc.
- LD_zpri         1010010 .. nreg:2 0.... 111 ... ..... .....     @rpri_load_msz
-+
-+### SVE Memory Store Group
-+
-+# SVE contiguous store (scalar plus immediate)
-+# ST1B, ST1H, ST1W, ST1D; require msz <= esz
-+ST_zpri         1110010 .. esz:2  0.... 111 ... ..... ..... \
-+                @rpri_store_msz nreg=0
-+
-+# SVE contiguous store (scalar plus scalar)
-+# ST1B, ST1H, ST1W, ST1D; require msz <= esz
-+# Enumerate msz lest we conflict with STR_zri.
-+ST_zprr         1110010 00 ..     ..... 010 ... ..... ..... \
-+                @rprr_store_esz_n0 msz=0
-+ST_zprr         1110010 01 ..     ..... 010 ... ..... ..... \
-+                @rprr_store_esz_n0 msz=1
-+ST_zprr         1110010 10 ..     ..... 010 ... ..... ..... \
-+                @rprr_store_esz_n0 msz=2
-+ST_zprr         1110010 11 11     ..... 010 ... ..... ..... \
-+                @rprr_store msz=3 esz=3 nreg=0
-+
-+# SVE contiguous non-temporal store (scalar plus immediate)  (nreg == 0)
-+# SVE store multiple structures (scalar plus immediate)      (nreg != 0)
-+ST_zpri         1110010 .. nreg:2 1.... 111 ... ..... ..... \
-+                @rpri_store_msz esz=%size_23
-+
-+# SVE contiguous non-temporal store (scalar plus scalar)     (nreg == 0)
-+# SVE store multiple structures (scalar plus scalar)         (nreg != 0)
-+ST_zprr         1110010 msz:2 nreg:2 ..... 011 ... ..... ..... \
-+                @rprr_store esz=%size_23
--- 
-2.17.1
+Thank you!
+
+Tested-by: Laurent Vivier <laurent@vivier.eu>
 

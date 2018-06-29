@@ -1,190 +1,153 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u198sm1914958wmu.44.2018.02.23.07.52.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 23 Feb 2018 07:52:33 -0800 (PST)
-Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 6D0463E0980;
-	Fri, 23 Feb 2018 15:36:37 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	richard.henderson@linaro.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 12/31] arm/translate-a64: add FP16 FR[ECP/SQRT]S to simd_three_reg_same_fp16
-Date: Fri, 23 Feb 2018 15:36:17 +0000
-Message-Id: <20180223153636.29809-13-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.15.1
-In-Reply-To: <20180223153636.29809-1-alex.bennee@linaro.org>
-References: <20180223153636.29809-1-alex.bennee@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 4GVm18x4I9Sn
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp729794wrq;
+        Fri, 29 Jun 2018 06:31:05 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfB1/yJfYLJGkJS28uf16iff+BpAr8qc8ouvKmySDZM60jMCe8VYv0+X1sWTyxOOZK+AoXz
+X-Received: by 2002:a0c:94f1:: with SMTP id k46-v6mr13114634qvk.113.1530279064895;
+        Fri, 29 Jun 2018 06:31:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530279064; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Y2YkZDrjsIWIUnBGR3JfKcAcQcEq5ylTtIxecmNbVzwYxWBirMfZxLW2g76JC+OPJ6
+         nD/sY1vTZvwOGZucB1u3gXYuFeRyEZXNCykVARxcM7fU2HIlwUV+/vrMuLxOUbRbbBrq
+         6jPCXX/xU9dfomvaJluKCIPBHkVWHr0Gmy3pQsNSyv1xwzF0PRqxiFt4OfF4ZL7EYbHv
+         grMiEXRJ9oVNBr68X1D8ZxSrCU5VkdLC9pNNcM1mSK2n4PZ2RMYDk1VKOFfrHK6YguGI
+         GUfvMU/Pj2ToZefE3eFqucz93zgL5LqbkioIeq2EoLTXycdeHaPNFCCxQIvs5DzYbpBW
+         7csQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=Kn7BQtlK6jylqweUwb7jgUIlPTPO+6KMm49AYSx9FWg=;
+        b=mgAodyfeyYQWDXLQExF61nmOVlGRVU59kdTYB2SYaQHflZ18F9cVwrVm7s5S3UpRwm
+         o6cUAVJHJuvEssYh3Ra7hCNusbOVc55tblSNSJCcOifZdVIDmftqLuiFNeqzldG0CQTb
+         cvG2PKesiPczsYMLgOv46noUyoJehoxGG90AwdMTf/OvnZtg1F8l1Me6+DwV4ZlLUJzJ
+         QLhPeuyW0z8f/mT6qZgEhvia30MXzKFLQAErZutSoNkPyqhIxepsQZ4Fucp6wSUrICXG
+         5GawFqWi/wJwFaAyqMBLZiQLHcUmFZBld5erBgqYKCWkUF+PFf89cQsI/7jg1HJXrw35
+         VAwg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=uCe6PokQ;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id y4-v6si1782804qva.178.2018.06.29.06.31.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 29 Jun 2018 06:31:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=uCe6PokQ;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=7SF37hjK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42134 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fYtUO-0007ac-6j
+	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:31:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37850)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>) id 1fYtU6-0007Zt-Tf
+	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:49 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>) id 1fYtU1-0006l6-Si
+	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:46 -0400
+Received: from greensocs.com ([193.104.36.180]:58557)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1fYtU1-0006ZV-Ho; Fri, 29 Jun 2018 09:30:41 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 6FD614434B0;
+	Fri, 29 Jun 2018 15:30:34 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1530279034;
+	bh=hy2xioeOgpWDvjVWNTqy9JfacgGmvViw5GG6aQwA0B0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=uCe6PokQcZ8qX+glvR6h0qVezPl90zgGcl+hWtR3rkCjWM64qRTh2Ja6fnAAriHDM
+	/od8K53tLl6gmTF1XOg44yO5mk8oaIqXqJWyV1hS5xMez43PFgiQCvaS/CsZlHZ0ES
+	en0/jFgcTPlZxzXC2yKTPrRi7UGCJ1dEevn92heg=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7SF37hjK;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7SF37hjK
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9-y2MaalaNpm; Fri, 29 Jun 2018 15:30:33 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id EA23C4434AF; Fri, 29 Jun 2018 15:30:32 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1530279032;
+	bh=hy2xioeOgpWDvjVWNTqy9JfacgGmvViw5GG6aQwA0B0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=7SF37hjKAF7IXVvDtHUL+CAct+moPM+LSWquIAE/GM2sAfwAYvZdnGiKFOylb2mKH
+	zjJ9elEdPMpTKIlqQ21MKumD+Joa46ted4X6tsVWn6WpZiWfU6UVIq8DMmIfdjsDue
+	eUObLbdtngNUfR8MM2B/r5jaec33VtG66iuissX4=
+Received: from michell-laptop.hive.antfield.fr
+	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id CADF44434A7;
+	Fri, 29 Jun 2018 15:30:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1530279032;
+	bh=hy2xioeOgpWDvjVWNTqy9JfacgGmvViw5GG6aQwA0B0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=7SF37hjKAF7IXVvDtHUL+CAct+moPM+LSWquIAE/GM2sAfwAYvZdnGiKFOylb2mKH
+	zjJ9elEdPMpTKIlqQ21MKumD+Joa46ted4X6tsVWn6WpZiWfU6UVIq8DMmIfdjsDue
+	eUObLbdtngNUfR8MM2B/r5jaec33VtG66iuissX4=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 29 Jun 2018 15:29:38 +0200
+Message-Id: <20180629132954.24269-5-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180629132954.24269-1-luc.michel@greensocs.com>
+References: <20180629132954.24269-1-luc.michel@greensocs.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH v3 04/20] vmstate.h: Provide
+ VMSTATE_UINT16_SUB_ARRAY
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1Cyw67W6vaLK
 
-As some of the constants here will also be needed
-elsewhere (specifically for the upcoming SVE support) we move them out
-to softfloat.h.
+Provide a VMSTATE_UINT16_SUB_ARRAY macro to save a uint16_t sub-array in
+a VMState.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-v3
-  - move constants used for estimate to softfloat.h
----
- include/fpu/softfloat.h    | 16 ++++++++++++----
- target/arm/helper-a64.c    | 34 ++++++++++++++++++++++++++++++++++
- target/arm/helper-a64.h    |  2 ++
- target/arm/translate-a64.c |  6 ++++++
- 4 files changed, 54 insertions(+), 4 deletions(-)
+ include/migration/vmstate.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 9b7b5e34e2..27876e711c 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -306,8 +306,11 @@ static inline float16 float16_set_sign(float16 a, int sign)
- }
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 42b946ce90..2b501d0466 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -923,6 +923,9 @@ extern const VMStateInfo vmstate_info_qtailq;
+ #define VMSTATE_UINT16_ARRAY(_f, _s, _n)                               \
+     VMSTATE_UINT16_ARRAY_V(_f, _s, _n, 0)
  
- #define float16_zero make_float16(0)
--#define float16_one make_float16(0x3c00)
- #define float16_half make_float16(0x3800)
-+#define float16_one make_float16(0x3c00)
-+#define float16_one_point_five make_float16(0x3e00)
-+#define float16_two make_float16(0x4000)
-+#define float16_three make_float16(0x4200)
- #define float16_infinity make_float16(0x7c00)
- 
- /*----------------------------------------------------------------------------
-@@ -415,11 +418,13 @@ static inline float32 float32_set_sign(float32 a, int sign)
- }
- 
- #define float32_zero make_float32(0)
--#define float32_one make_float32(0x3f800000)
- #define float32_half make_float32(0x3f000000)
-+#define float32_one make_float32(0x3f800000)
-+#define float32_one_point_five make_float32(0x3fc00000)
-+#define float32_two make_float32(0x40000000)
-+#define float32_three make_float32(0x40400000)
- #define float32_infinity make_float32(0x7f800000)
- 
--
- /*----------------------------------------------------------------------------
- | The pattern for a default generated single-precision NaN.
- *----------------------------------------------------------------------------*/
-@@ -526,9 +531,12 @@ static inline float64 float64_set_sign(float64 a, int sign)
- }
- 
- #define float64_zero make_float64(0)
-+#define float64_half make_float64(0x3fe0000000000000LL)
- #define float64_one make_float64(0x3ff0000000000000LL)
-+#define float64_one_point_five make_float64(0x3FF8000000000000ULL)
-+#define float64_two make_float64(0x4000000000000000ULL)
-+#define float64_three make_float64(0x4008000000000000ULL)
- #define float64_ln2 make_float64(0x3fe62e42fefa39efLL)
--#define float64_half make_float64(0x3fe0000000000000LL)
- #define float64_infinity make_float64(0x7ff0000000000000LL)
- 
- /*----------------------------------------------------------------------------
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 1ef13abd76..8fdbe034f3 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -192,6 +192,10 @@ uint64_t HELPER(neon_cgt_f64)(float64 a, float64 b, void *fpstp)
-  * versions, these do a fully fused multiply-add or
-  * multiply-add-and-halve.
-  */
-+#define float16_two make_float16(0x4000)
-+#define float16_three make_float16(0x4200)
-+#define float16_one_point_five make_float16(0x3e00)
++#define VMSTATE_UINT16_SUB_ARRAY(_f, _s, _start, _num)                \
++    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint16, uint16_t)
 +
- #define float32_two make_float32(0x40000000)
- #define float32_three make_float32(0x40400000)
- #define float32_one_point_five make_float32(0x3fc00000)
-@@ -200,6 +204,21 @@ uint64_t HELPER(neon_cgt_f64)(float64 a, float64 b, void *fpstp)
- #define float64_three make_float64(0x4008000000000000ULL)
- #define float64_one_point_five make_float64(0x3FF8000000000000ULL)
+ #define VMSTATE_UINT16_2DARRAY(_f, _s, _n1, _n2)                      \
+     VMSTATE_UINT16_2DARRAY_V(_f, _s, _n1, _n2, 0)
  
-+float16 HELPER(recpsf_f16)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+
-+    a = float16_squash_input_denormal(a, fpst);
-+    b = float16_squash_input_denormal(b, fpst);
-+
-+    a = float16_chs(a);
-+    if ((float16_is_infinity(a) && float16_is_zero(b)) ||
-+        (float16_is_infinity(b) && float16_is_zero(a))) {
-+        return float16_two;
-+    }
-+    return float16_muladd(a, b, float16_two, 0, fpst);
-+}
-+
- float32 HELPER(recpsf_f32)(float32 a, float32 b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-@@ -230,6 +249,21 @@ float64 HELPER(recpsf_f64)(float64 a, float64 b, void *fpstp)
-     return float64_muladd(a, b, float64_two, 0, fpst);
- }
- 
-+float16 HELPER(rsqrtsf_f16)(float16 a, float16 b, void *fpstp)
-+{
-+    float_status *fpst = fpstp;
-+
-+    a = float16_squash_input_denormal(a, fpst);
-+    b = float16_squash_input_denormal(b, fpst);
-+
-+    a = float16_chs(a);
-+    if ((float16_is_infinity(a) && float16_is_zero(b)) ||
-+        (float16_is_infinity(b) && float16_is_zero(a))) {
-+        return float16_one_point_five;
-+    }
-+    return float16_muladd(a, b, float16_three, float_muladd_halve_result, fpst);
-+}
-+
- float32 HELPER(rsqrtsf_f32)(float32 a, float32 b, void *fpstp)
- {
-     float_status *fpst = fpstp;
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 9c1a95594c..79012eee9d 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -29,8 +29,10 @@ DEF_HELPER_FLAGS_3(vfp_mulxd, TCG_CALL_NO_RWG, f64, f64, f64, ptr)
- DEF_HELPER_FLAGS_3(neon_ceq_f64, TCG_CALL_NO_RWG, i64, i64, i64, ptr)
- DEF_HELPER_FLAGS_3(neon_cge_f64, TCG_CALL_NO_RWG, i64, i64, i64, ptr)
- DEF_HELPER_FLAGS_3(neon_cgt_f64, TCG_CALL_NO_RWG, i64, i64, i64, ptr)
-+DEF_HELPER_FLAGS_3(recpsf_f16, TCG_CALL_NO_RWG, f16, f16, f16, ptr)
- DEF_HELPER_FLAGS_3(recpsf_f32, TCG_CALL_NO_RWG, f32, f32, f32, ptr)
- DEF_HELPER_FLAGS_3(recpsf_f64, TCG_CALL_NO_RWG, f64, f64, f64, ptr)
-+DEF_HELPER_FLAGS_3(rsqrtsf_f16, TCG_CALL_NO_RWG, f16, f16, f16, ptr)
- DEF_HELPER_FLAGS_3(rsqrtsf_f32, TCG_CALL_NO_RWG, f32, f32, f32, ptr)
- DEF_HELPER_FLAGS_3(rsqrtsf_f64, TCG_CALL_NO_RWG, f64, f64, f64, ptr)
- DEF_HELPER_FLAGS_1(neon_addlp_s8, TCG_CALL_NO_RWG_SE, i64, i64)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 0e2d298687..217e73ef58 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -10303,6 +10303,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-         case 0x6: /* FMAX */
-             gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
-+        case 0x7: /* FRECPS */
-+            gen_helper_recpsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-         case 0x8: /* FMINNM */
-             gen_helper_advsimd_minnumh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
-@@ -10319,6 +10322,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-         case 0xe: /* FMIN */
-             gen_helper_advsimd_minh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
-+        case 0xf: /* FRSQRTS */
-+            gen_helper_rsqrtsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-+            break;
-         case 0x13: /* FMUL */
-             gen_helper_advsimd_mulh(tcg_res, tcg_op1, tcg_op2, fpst);
-             break;
 -- 
-2.15.1
+2.17.1
+

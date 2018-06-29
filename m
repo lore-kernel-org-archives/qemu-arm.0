@@ -1,112 +1,112 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp730283wrq;
-        Fri, 29 Jun 2018 06:31:29 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpck5keKk7J7y9yGS+xYbz1QOzdUQriFv1Yw8/QFUevtkeWn+oVIB0L21W+CUaEpqetRN3tP
-X-Received: by 2002:a0c:9259:: with SMTP id 25-v6mr12991442qvz.239.1530279089019;
-        Fri, 29 Jun 2018 06:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530279089; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp730310wrq;
+        Fri, 29 Jun 2018 06:31:31 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcgbHgQ28c8d195ZwtQmERp8FDi11TthILIxQKIAEwaW/UOpoPDJvlPgJgriTd1dd8OdBDD
+X-Received: by 2002:a37:188c:: with SMTP id 12-v6mr12989010qky.72.1530279090945;
+        Fri, 29 Jun 2018 06:31:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530279090; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wd4SwDqao+rf+DsqzkQJ3gnGtQKhr2JmSrrXW64ZNVOBXmJFACjDrjAjXzTq3HPUx3
-         WbGK3nmPtyCJfGQAs8COgKu07J8W8342EpHFMJNXXzdhz07aOl0VQKIJS/YtLcCypbdf
-         n6oU5yt9njfxebTrzMJcOrmYn8hZMNC7CUxniaQ6RBFBBHfeckmgh4wiKv/r0VvKkpF2
-         RuRxIMQWchjpzRXnpMdJLJEsrWjEWg7KHcEKucOjrzaLAZNFyuD7YSKFSGUpr77WJarj
-         TSRpuDR6MyxmGeVDBgKLULWsPsWR2mYb5VcV1E8rQGnRAsXrQMqQZcmLSRq0d9sxhqar
-         rMiQ==
+        b=VEwDnLbsBXG21Jis4VBmo7RXk0dgXGKTLVSLhfhV/VPcLidw2QcuASjuI57dkAao+1
+         lwlNOpWhrHuBTQffLOKdW4NHX93J6Zu1t/VYsEEe/u9LygJjMepYfT/MwMG7n/MhYfYl
+         8rmmucTXaf9gahlFmVfSyjlZh4RLOW0QKWIcTxVKCW0DGaslso74Kt67eVW5aSB8CtWd
+         dp/H4xgeGFXAR0t0XLk7SZ4wuEDBZ4yg3vpAM7zRmntJ+sIDFBYxh20VViq5UGTIt4eL
+         TuRSDwP4xrKdeNPQgGFak4NSXVqGttJwbM+udApMLVfyLZ1BnsaP69bVEguQyTXxLT+A
+         DHoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature:arc-authentication-results;
-        bh=Jw4YCCQmvWGvS/emY+xN+siuS+n3CLh3w7yK4LLYH58=;
-        b=0DCeJtzL1gsrXoldOmE3VydZo0mzwWlQYVWrm32g0IyfgN1fCn2a7/irtAvNhLHuJn
-         nuREBM6YpxiUIi7TzbvBgqomwyMHJcvTCyGpO2z/PXkRocZ8F+LZix4imFZYPt942C7Z
-         kPGpcZ40Qf3hlInk3fgkWCvzzO7TrkI+jB5KL81lMIQ6djz5oJM+ATN3HYAUVqkW7Iwv
-         BI0wLYGwtd098hBqfe5c9XNFV9wMbZXhjaIvWdShBeGmLZM4GwmUAdkmvlunNuzd0pIJ
-         KGrGfRZMpd/0K3KHi0Xrqm258ftHdahCKHXk8k8CzHdGcAYsiA6VtVkMh1bdxZaxG1vn
-         UN1Q==
+        bh=Z1eEuATbonmtcA7KNUCptSukR3N650rxKO0E3G9fGfw=;
+        b=JmCdp45vsplzv2LEp8KqO2Za2fj21cHGXyJz+HSC2+900VXlrWqsZlLbCQUVEKnHnF
+         V/M/z9PSPpJowMCLZ9UScQQ5TyZDvjP3afgdhqXJhPXI0vFCAg9AH+7caq432j/qv1Ea
+         3/PMBOuQN1lRx8mYRU+iUz7hXYsfMA1XD0yNizsBqDxeUjCwGDMRFOa/jOBEdIamu0nE
+         bHdERN5JVffdtFMhwm07BKpztx4jS3kq0NQi8apzS94cnaaFbJeRSpdhgtjQ8OUV5D5Q
+         eJ27VD3DTL59lhpoYG8ldw1MX3wdhtpcFDOylij5gVy9OLCw0fmBNsTmRiB97W09xfJH
+         zJ4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=lf5D6Aoi;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=IvFNyGOR;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=XXoreDuC;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="ncxUPI8/";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=dQDCi1cK;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=vO1QPaZR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c33-v6si1306129qve.47.2018.06.29.06.31.28
+        by mx.google.com with ESMTPS id c2-v6si9346189qvb.53.2018.06.29.06.31.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jun 2018 06:31:29 -0700 (PDT)
+        Fri, 29 Jun 2018 06:31:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=lf5D6Aoi;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=IvFNyGOR;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=XXoreDuC;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="ncxUPI8/";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=dQDCi1cK;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=vO1QPaZR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42141 helo=lists.gnu.org)
+Received: from localhost ([::1]:42142 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYtUm-0007y6-D9
-	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:31:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37853)
+	id 1fYtUo-0007zY-9i
+	for alex.bennee@linaro.org; Fri, 29 Jun 2018 09:31:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37890)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtU6-0007Zw-U7
+	(envelope-from <luc.michel@greensocs.com>) id 1fYtU8-0007a8-Ql
 	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fYtU3-0006q6-1M
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:46 -0400
-Received: from greensocs.com ([193.104.36.180]:58614)
+	(envelope-from <luc.michel@greensocs.com>) id 1fYtU3-0006qY-3M
+	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 09:30:48 -0400
+Received: from greensocs.com ([193.104.36.180]:58615)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fYtU2-0006mO-A3; Fri, 29 Jun 2018 09:30:42 -0400
+	id 1fYtU2-0006mW-BL; Fri, 29 Jun 2018 09:30:42 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 59AFA4434B3;
-	Fri, 29 Jun 2018 15:30:36 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 2FA854434B4;
+	Fri, 29 Jun 2018 15:30:38 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279036;
-	bh=HwYjVSWnlKOVRNfYFf6N6iHysaScDzknQYqvQobDsn4=;
+	s=mail; t=1530279038;
+	bh=MIz3Xya7Bfs70SeBav01e9oe2TZ/yq+G0OAvywSvOto=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=lf5D6AoiPIfE1FmHFqPvPVgM3xIfzwS3HzAIhC09yl1ya1CF0m2VqMUzFpRbK09oh
-	U06o4NH6zpf55LTBxTQ4ipuSD6oDJqFXYVtvts47+AL7zgebXDRVOrpNCI+sbPqcxV
-	Ftts4ROJPk+3XRDPlIgouu3tG6uZqOKcvinCjc9o=
+	b=ncxUPI8/UwmEDDiC9vU9sxQXHXE8/0xk3DJO6X69HM4S4Jwy8cymo4IRabCUYZ57a
+	GYkK54nBrZMxDCf1Z0bkQKJfnwbwovSUwL89E6MtBT+ZV1q3ZcZQ/zCFLPY5+YckVY
+	6VqZeca2tXHkd06Cc67aOpvRt0MNWT70GvLxHIdw=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=IvFNyGOR;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=XXoreDuC
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=dQDCi1cK;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=vO1QPaZR
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IA7iBMmH6qLL; Fri, 29 Jun 2018 15:30:35 +0200 (CEST)
+	with ESMTP id 2SfvjpbkcP5g; Fri, 29 Jun 2018 15:30:37 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 255C04434AF; Fri, 29 Jun 2018 15:30:34 +0200 (CEST)
+	id 3C16E4434B6; Fri, 29 Jun 2018 15:30:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279035;
-	bh=HwYjVSWnlKOVRNfYFf6N6iHysaScDzknQYqvQobDsn4=;
+	s=mail; t=1530279037;
+	bh=MIz3Xya7Bfs70SeBav01e9oe2TZ/yq+G0OAvywSvOto=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=IvFNyGOR0XrXasd40CSBDnVSnkEvrvDROZdbe0IJdiSNtvekSa9iG7PnGmkPnNmGp
-	NiUr37d4fjoBuR+Lry7D/AXw+gw66rIlg2OM+AIFnd7Pg9XG2bmrmkbuLp1aZtsIrr
-	4bwC3NvZa83DxDIdRREGp64lVYTfaS9WOT52osAs=
+	b=dQDCi1cKCo4pZ10+VbS9/xberr0FCBO4HtmgNAyGJNI8P7EKU8zJoDVY8c8a6lIeG
+	Am7UK6SvbBfipbNkpwfupz8/IjEaye//WOMsnDx4OqKKaQy3S0yY0UBfV4/gLIzYbM
+	wyCIINALKij6Jshse197hhF9t56HanjzAHS0rlWE=
 Received: from michell-laptop.hive.antfield.fr
 	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 381244434AC;
-	Fri, 29 Jun 2018 15:30:34 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 768594434AB;
+	Fri, 29 Jun 2018 15:30:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1530279034;
-	bh=HwYjVSWnlKOVRNfYFf6N6iHysaScDzknQYqvQobDsn4=;
+	s=mail; t=1530279036;
+	bh=MIz3Xya7Bfs70SeBav01e9oe2TZ/yq+G0OAvywSvOto=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=XXoreDuChSOLCR65B85JIQA1/0iuf37INmj2e6KIPL5e3K63iA3oMfpseZxT/Rapm
-	cCjHW10zXsKQFKaM2wS/Rztkit0V8v+UJLQrnzJ6wlgCgnSu47czt7P8uKVuLJ51x7
-	BFX6JWP3/aIPZPXV/7sQH0vEkrL+0hl5Pp2uCk8U=
+	b=vO1QPaZRpwoihA7xC09UPu5FvEhEBk9LzD4kwxH7TthFaFG7Osn4okoPiZ9Ik7nTw
+	qi/btPUYz/nWwDgclzyT5J5szVu0IiJszrL3wXLg189ZWJ/H2vbhjy2pei0eKaO74D
+	4gwbUc63bR8pbc5sBPFqewLWFbFMqSx/RWbptaxo=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 29 Jun 2018 15:29:41 +0200
-Message-Id: <20180629132954.24269-8-luc.michel@greensocs.com>
+Date: Fri, 29 Jun 2018 15:29:44 +0200
+Message-Id: <20180629132954.24269-11-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180629132954.24269-1-luc.michel@greensocs.com>
 References: <20180629132954.24269-1-luc.michel@greensocs.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v3 07/20] intc/arm_gic: Add virtualization
- extensions helper macros and functions
+Subject: [Qemu-arm] [PATCH v3 10/20] intc/arm_gic: Implement virtualization
+ extensions in gic_(activate_irq|drop_prio)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,129 +123,102 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
 	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KNPqdXPVj7sL
+X-TUID: L7q6R6F7QLWU
 
-Add some helper macros and functions related to the virtualization
-extensions to gic_internal.h.
+Implement virtualization extensions in gic_activate_irq() and
+gic_drop_prio() and in gic_get_prio_from_apr_bits() called by
+gic_drop_prio().
 
-The GICH_LR_* macros help extracting specific fields of a list register
-value. The only tricky one is the priority field as only the MSB are
-stored. The value must be shifted accordingly to obtain the correct
-priority value.
-
-gic_is_vcpu() and gic_get_vcpu_real_id() help with (v)CPU id manipulation
-to abstract the fact that vCPU id are in the range
-[ GIC_NCPU; (GIC_NCPU + num_cpu) [.
-
-gic_lr_* and gic_virq_is_valid() help with the list registers.
-gic_get_lr_entry() tries to find the LR entry for a given (vCPU, irq)
-pair. gic_get_lr_entry_nofail() is meant to be used in contexts where we
-know for sure that the entry exists, so we can avoid the NULL check on
-the returned pointer.
+When the current CPU is a vCPU:
+  - Use GIC_VIRT_MIN_BPR and GIC_VIRT_NR_APRS instead of their non-virt
+  counterparts,
+  - the vCPU APR is stored in the virtual interface, in h_apr.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 ---
- hw/intc/arm_gic.c      |  5 ++++
- hw/intc/gic_internal.h | 65 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 70 insertions(+)
+ hw/intc/arm_gic.c | 45 ++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 36 insertions(+), 9 deletions(-)
 
 diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index b2dd379bd2..f25d1b1270 100644
+index d55a88bb33..d61c2dd557 100644
 --- a/hw/intc/arm_gic.c
 +++ b/hw/intc/arm_gic.c
-@@ -61,6 +61,11 @@ static inline int gic_get_current_cpu(GICState *s)
-     return 0;
+@@ -276,16 +276,23 @@ static void gic_activate_irq(GICState *s, int cpu, int irq)
+      * and update the running priority.
+      */
+     int prio = gic_get_group_priority(s, cpu, irq);
+-    int preemption_level = prio >> (GIC_MIN_BPR + 1);
++    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
++    int preemption_level = prio >> (min_bpr + 1);
+     int regno = preemption_level / 32;
+     int bitno = preemption_level % 32;
++    uint32_t *papr = NULL;
+ 
+-    if (gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
+-        s->nsapr[regno][cpu] |= (1 << bitno);
++    if (gic_is_vcpu(cpu)) {
++        assert(regno == 0);
++        papr = &s->h_apr[gic_get_vcpu_real_id(cpu)];
++    } else if (gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
++        papr = &s->nsapr[regno][cpu];
+     } else {
+-        s->apr[regno][cpu] |= (1 << bitno);
++        papr = &s->apr[regno][cpu];
+     }
+ 
++    *papr |= (1 << bitno);
++
+     s->running_priority[cpu] = prio;
+     gic_set_active(s, irq, cpu);
  }
- 
-+static inline int gic_get_current_vcpu(GICState *s)
-+{
-+    return gic_get_current_cpu(s) + GIC_NCPU;
-+}
+@@ -296,12 +303,22 @@ static int gic_get_prio_from_apr_bits(GICState *s, int cpu)
+      * on the set bits in the Active Priority Registers.
+      */
+     int i;
+-    for (i = 0; i < GIC_NR_APRS; i++) {
+-        uint32_t apr = s->apr[i][cpu] | s->nsapr[i][cpu];
++    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
++    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
 +
- /* Return true if this GIC config has interrupt groups, which is
-  * true if we're a GICv2, or a GICv1 with the security extensions.
-  */
-diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
-index 1aa888a576..4242a16bd4 100644
---- a/hw/intc/gic_internal.h
-+++ b/hw/intc/gic_internal.h
-@@ -129,6 +129,20 @@ REG32(GICH_LR63, 0x1fc)
-      R_GICH_LR0_Priority_MASK | R_GICH_LR0_State_MASK | \
-      R_GICH_LR0_Grp1_MASK | R_GICH_LR0_HW_MASK)
- 
-+#define GICH_LR_STATE_INVALID         0
-+#define GICH_LR_STATE_PENDING         1
-+#define GICH_LR_STATE_ACTIVE          2
-+#define GICH_LR_STATE_ACTIVE_PENDING  3
++    for (i = 0; i < nr_aprs; i++) {
++        uint32_t apr;
 +
-+#define GICH_LR_VIRT_ID(entry) (FIELD_EX32(entry, GICH_LR0, VirtualID))
-+#define GICH_LR_PHYS_ID(entry) (FIELD_EX32(entry, GICH_LR0, PhysicalID))
-+#define GICH_LR_CPUID(entry) (FIELD_EX32(entry, GICH_LR0, CPUID))
-+#define GICH_LR_EOI(entry) (FIELD_EX32(entry, GICH_LR0, EOI))
-+#define GICH_LR_PRIORITY(entry) (FIELD_EX32(entry, GICH_LR0, Priority) << 3)
-+#define GICH_LR_STATE(entry) (FIELD_EX32(entry, GICH_LR0, State))
-+#define GICH_LR_GROUP(entry) (FIELD_EX32(entry, GICH_LR0, Grp1))
-+#define GICH_LR_HW(entry) (FIELD_EX32(entry, GICH_LR0, HW))
-+
- /* Valid bits for GICC_CTLR for GICv1, v1 with security extensions,
-  * GICv2 and GICv2 with security extensions:
-  */
-@@ -164,4 +178,55 @@ static inline bool gic_is_vcpu(int cpu)
-     return cpu >= GIC_NCPU;
- }
- 
-+static inline int gic_get_vcpu_real_id(int cpu)
-+{
-+    return (cpu >= GIC_NCPU) ? (cpu - GIC_NCPU) : cpu;
-+}
-+
-+static inline bool gic_lr_entry_is_free(uint32_t entry)
-+{
-+    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
-+        && (GICH_LR_HW(entry) || !GICH_LR_EOI(entry));
-+}
-+
-+static inline bool gic_lr_entry_is_eoi(uint32_t entry)
-+{
-+    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
-+        && !GICH_LR_HW(entry) && GICH_LR_EOI(entry);
-+}
-+
-+/* Return a pointer on the LR entry for a given (irq,vcpu) pair.
-+ * Having multiple LRs with the same VirtualID leads to UNPREDICTABLE
-+ * behaviour in the GIC. We choose to return the first one that matches.
-+ */
-+static inline uint32_t *gic_get_lr_entry(GICState *s, int irq, int vcpu)
-+{
-+    int cpu = gic_get_vcpu_real_id(vcpu);
-+    int lr_idx;
-+
-+    for (lr_idx = 0; lr_idx < s->num_lrs; lr_idx++) {
-+        uint32_t *entry = &s->h_lr[lr_idx][cpu];
-+
-+        if ((GICH_LR_VIRT_ID(*entry) == irq) &&
-+            (!gic_lr_entry_is_free(*entry))) {
-+            return entry;
++        if (gic_is_vcpu(cpu)) {
++            apr = s->h_apr[gic_get_vcpu_real_id(cpu)];
++        } else {
++            apr = s->apr[i][cpu] | s->nsapr[i][cpu];
 +        }
-+    }
 +
-+    return NULL;
-+}
+         if (!apr) {
+             continue;
+         }
+-        return (i * 32 + ctz32(apr)) << (GIC_MIN_BPR + 1);
++        return (i * 32 + ctz32(apr)) << (min_bpr + 1);
+     }
+     return 0x100;
+ }
+@@ -325,9 +342,19 @@ static void gic_drop_prio(GICState *s, int cpu, int group)
+      * might not do so, and interrupts that should not preempt might do so.
+      */
+     int i;
++    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
 +
-+static inline bool gic_virq_is_valid(GICState *s, int irq, int vcpu)
-+{
-+    return gic_get_lr_entry(s, irq, vcpu) != NULL;
-+}
++    for (i = 0; i < nr_aprs; i++) {
++        uint32_t *papr = NULL;
 +
-+static inline uint32_t *gic_get_lr_entry_nofail(GICState *s, int irq, int vcpu)
-+{
-+    uint32_t *entry = gic_get_lr_entry(s, irq, vcpu);
-+    assert(entry);
-+
-+    return entry;
-+}
-+
- #endif /* QEMU_ARM_GIC_INTERNAL_H */
++        if (gic_is_vcpu(cpu)) {
++            papr = &s->h_apr[gic_get_vcpu_real_id(cpu)];
++        } else if (group) {
++            papr = &s->nsapr[i][cpu];
++        } else {
++            papr = &s->apr[i][cpu];
++        }
+ 
+-    for (i = 0; i < GIC_NR_APRS; i++) {
+-        uint32_t *papr = group ? &s->nsapr[i][cpu] : &s->apr[i][cpu];
+         if (!*papr) {
+             continue;
+         }
 -- 
 2.17.1
 

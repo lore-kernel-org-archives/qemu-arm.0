@@ -1,75 +1,83 @@
-Received: by 10.28.91.67 with SMTP id p64csp3505100wmb;
-        Tue, 20 Mar 2018 00:28:00 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELuKJMc0l8fQsqRsV2qu1CV6mUHuDATNhb7sURL0NA/Zq2Gr6G0illtt90FjZdgVmGH6Yu74
-X-Received: by 10.55.23.101 with SMTP id i98mr22380788qkh.91.1521530880708;
-        Tue, 20 Mar 2018 00:28:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521530880; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp1611211wrq;
+        Sat, 30 Jun 2018 02:20:46 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd8AMCytbwfnBhyWrxrzgpdIi6basUL+L7eLfXcw0gx3TDBbkm76EbzFP9B5NtVh4mn7Kfn
+X-Received: by 2002:a37:c65c:: with SMTP id b89-v6mr15351765qkj.421.1530350446524;
+        Sat, 30 Jun 2018 02:20:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530350446; cv=none;
         d=google.com; s=arc-20160816;
-        b=f/zyJZINBukUm3+1OxIzmcOS79bX2kbXhYfwBQ+hikufOOJ4zHeYhgomodp7FpwYr2
-         rj24Ubwa5bKleHL6zM+IItYyzRBFL9evk+DMaS0pyOtGcI4gj55v+k3Bkx/FOrg6Wz67
-         AB/sQDWi7v0neWMJYB9c6YHOWmqpsTzOGR6NQY+C3W/xOcAeaALbJMjqJZiLJ8m3/6UG
-         5mTEMsBlK3XU3e7MNxJGEU00/5Oc7MLI4wDy2Ii/ks7kOrfzntVpvj3XW0FTVh3EtbpG
-         VuH+KZyEbosx+i76ZhNIZrVFbUTanDCjnJw+1rjMQ2Xc7HdfqjF6FkcZT+IYLb+oRaF0
-         79OQ==
+        b=WDEuOnhYAKQHVJVLPx4Cd7pYjNXLHj8l+Suk7q3VTy2YP87bcs3OY3KMCAiVO/BrNB
+         c2Oy37P745iKhOzp2Yu9T2mtQRKF35B0sGmDqRRBL3vK8C9TzETO5nBpccNTqLu1AaFb
+         KngaRpbzqLFY4fSQU/9cwM+SJrfP4qxGlhKauR0X6VRTiFGL+FjuwJ7YWiAdBNWhwUGE
+         Izo0VFIvRsqMSPvgFWhpYWnWsR5hFdySKvGU2XRR2vBm2NIvOne2OODOuuqEP7DIhdQJ
+         DTzfF9/9t2dSYRxA7kms2/4QkJx4NQ9bQVj/Bx0IQk4UFPK7dQQ8MTTOTHPngy8Z4UdO
+         5Vrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:references
-         :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=NYVCd4NQtbCWZEXx3Jud+x1DgxI4uzGjqNfISLbfAWM=;
-        b=woVYqzkiZCPHOwI6XX0pg6PBBLqV5g/rFTCLGHQFnEZyao/8Yy434qVAImYmQPxB1A
-         JirEemN0zGyVX9u6TIWP+h/hnVxv9cnnm6koggrCxVm2MxrMgOE+mjaNJbOHU74vGJBS
-         AJfVxK0ArgdUIbI183dhEbqrGXAXF2vUqhoZRMailQ3mTEvGIA4piy18pBpDgfxRBFZQ
-         ScMBOEmYsBZfBGVTv6X9xd1cLaXxg9urJFRLdEuYtcT3SRpAGz9aSZrBTk4YQoGVpNmj
-         7ncrVdg4Z+/nGnQIZFxeFQhquz1Cvk0RhmxE8yQnQ1vqkZaf5TrBlzFiFRdxg8/ZRLmt
-         2FKg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=/lR/KwmyYOi8ZBqULJrnDXmVueolS+ODAmP40Gig7x0=;
+        b=et9Lq6SXwysXpdxMQhhIDVYx1w2Kmt/sMCHhNmIXHE64N2a9ll9QV5+MaWnaqCZ2vn
+         EKcHHErGmZdFiXJrWg/JSL9KTZa0J+YFlNkWP7WNf/CiM4i6xJUX1lLk+A72IBKUKz3a
+         zYDe4lr7kIwBOPQIo5vtNynwUq7Y3P2eDP+oEcGfluWPXKe44OmsvILadVsLQc44Y0YM
+         VfrskgiwpSV9CzfPlGWKa9147aD+Awd9pGA4PI3KyQveEF8KtxtoiyyPk4ayIYq53CD9
+         WKlJR50rV4QkcsmsOnlR+WMu3REgmsBbo02m9pWRImHb5VVl25ViM7RByDKXKjBIDTVS
+         Nlwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w35si1347322qtb.316.2018.03.20.00.28.00
+        by mx.google.com with ESMTPS id 31-v6si3682228qtw.104.2018.06.30.02.20.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Mar 2018 00:28:00 -0700 (PDT)
+        Sat, 30 Jun 2018 02:20:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:46617 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46205 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eyBge-0001By-6l
-	for alex.bennee@linaro.org; Tue, 20 Mar 2018 03:28:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47855)
+	id 1fZC3i-0008Cx-0g
+	for alex.bennee@linaro.org; Sat, 30 Jun 2018 05:20:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33567)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eyBgU-0001BR-Ho
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 03:27:52 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fZC3U-0008Bh-Ue
+	for qemu-arm@nongnu.org; Sat, 30 Jun 2018 05:20:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <zhaoshenglong@huawei.com>) id 1eyBgQ-0008Sl-Kg
-	for qemu-arm@nongnu.org; Tue, 20 Mar 2018 03:27:50 -0400
-Received: from [45.249.212.35] (port=43374 helo=huawei.com)
+	(envelope-from <stefanha@redhat.com>) id 1fZC3T-0001lU-Md
+	for qemu-arm@nongnu.org; Sat, 30 Jun 2018 05:20:32 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37642 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <zhaoshenglong@huawei.com>)
-	id 1eyBgQ-0008Pa-9H; Tue, 20 Mar 2018 03:27:46 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id 52051C37BED46;
-	Tue, 20 Mar 2018 15:27:41 +0800 (CST)
-Received: from HGHY1Z002260041.china.huawei.com (10.177.16.142) by
-	DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server
-	id 14.3.361.1; Tue, 20 Mar 2018 15:27:36 +0800
-From: Shannon Zhao <zhaoshenglong@huawei.com>
-To: <qemu-arm@nongnu.org>
-Date: Tue, 20 Mar 2018 15:26:49 +0800
-Message-ID: <1521530809-11780-3-git-send-email-zhaoshenglong@huawei.com>
-X-Mailer: git-send-email 1.9.0.msysgit.0
-In-Reply-To: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
-References: <1521530809-11780-1-git-send-email-zhaoshenglong@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.177.16.142]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.35
-Subject: [Qemu-arm] [PATCH v2 2/2] arm_gicv3_kvm: kvm_dist_get/put: skip the
- registers banked by GICR
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1fZC3T-0001k3-2j; Sat, 30 Jun 2018 05:20:31 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A70D67264E;
+	Sat, 30 Jun 2018 09:20:30 +0000 (UTC)
+Received: from localhost (unknown [10.33.36.16])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8D1D47C3F;
+	Sat, 30 Jun 2018 09:20:28 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: <qemu-devel@nongnu.org>
+Date: Sat, 30 Jun 2018 10:13:42 +0100
+Message-Id: <20180630091343.14391-3-stefanha@redhat.com>
+In-Reply-To: <20180630091343.14391-1-stefanha@redhat.com>
+References: <20180630091343.14391-1-stefanha@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Sat, 30 Jun 2018 09:20:30 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Sat, 30 Jun 2018 09:20:30 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v2 2/3] hw/arm: add ARMv6M object
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,107 +89,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, eric.auger@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
+	mail@steffen-goertz.de, ilg@livius.net,
+	Alistair Francis <alistair@alistair23.me>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
+	joel@jms.id.au, Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6i0D4lxc5Lrr
+X-TUID: 6plq4pPDbolF
 
-While we skip the GIC_INTERNAL irqs, we don't change the register offset
-accordingly. This will overlap the GICR registers value and leave the
-last GIC_INTERNAL irq's registers out of update.
+The ARMv6M object will be used by machine types that need ARMv6-M CPUs.
 
-Fix this by skipping the registers banked by GICR.
+There is no logic beyond what the ARMMProfile base class already
+provides because ARMv6-M is a pretty small microcontroller without many
+bells and whistles.
 
-Signed-off-by: Shannon Zhao <zhaoshenglong@huawei.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/intc/arm_gicv3_kvm.c | 38 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ hw/arm/Makefile.objs            |  1 +
+ include/hw/arm/armv6m.h         | 24 ++++++++++++++++++++++++
+ hw/arm/armv6m.c                 | 23 +++++++++++++++++++++++
+ default-configs/arm-softmmu.mak |  1 +
+ 4 files changed, 49 insertions(+)
+ create mode 100644 include/hw/arm/armv6m.h
+ create mode 100644 hw/arm/armv6m.c
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 3536795..d423cba 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -136,6 +136,12 @@ static void kvm_dist_get_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
-     int irq;
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index 2c43d34c64..e693d86cd3 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -17,6 +17,7 @@ obj-$(CONFIG_VERSATILE) += vexpress.o versatilepb.o
+ obj-$(CONFIG_ZYNQ) += xilinx_zynq.o
  
-     field = (uint32_t *)bmp;
-+    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
-+     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
-+     * functionality is replaced by GICR_IPRIORITYR<n>. So it doesn't need to
-+     * sync them.
-+     */
-+    offset += (8 * sizeof(uint32_t));
-     for_each_dist_irq_reg(irq, s->num_irq, 8) {
-         kvm_gicd_access(s, offset, &reg, false);
-         *field = reg;
-@@ -150,6 +156,12 @@ static void kvm_dist_put_priority(GICv3State *s, uint32_t offset, uint8_t *bmp)
-     int irq;
+ obj-$(CONFIG_ARM_M_PROFILE) += arm-m-profile.o
++obj-$(CONFIG_ARM_V6M) += armv6m.o
+ obj-$(CONFIG_ARM_V7M) += armv7m.o
+ obj-$(CONFIG_EXYNOS4) += exynos4210.o
+ obj-$(CONFIG_PXA2XX) += pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
+diff --git a/include/hw/arm/armv6m.h b/include/hw/arm/armv6m.h
+new file mode 100644
+index 0000000000..5f80120266
+--- /dev/null
++++ b/include/hw/arm/armv6m.h
+@@ -0,0 +1,24 @@
++/*
++ * ARMv6M CPU object
++ *
++ * Copyright (C) 2018 Red Hat, Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.
++ */
++
++#ifndef HW_ARM_ARMV6M_H
++#define HW_ARM_ARMV6M_H
++
++#include "hw/arm/arm-m-profile.h"
++
++#define TYPE_ARMV6M "armv6m"
++#define ARMV6M(obj) OBJECT_CHECK(ARMv6MState, (obj), TYPE_ARMV6M)
++
++/* ARMv6M container object.
++ */
++typedef struct ARMv6MState {
++    /*< private >*/
++    ARMMProfileState parent_obj;
++} ARMv6MState;
++
++#endif
+diff --git a/hw/arm/armv6m.c b/hw/arm/armv6m.c
+new file mode 100644
+index 0000000000..89c4727a87
+--- /dev/null
++++ b/hw/arm/armv6m.c
+@@ -0,0 +1,23 @@
++/*
++ * ARMv6M CPU object
++ *
++ * Copyright (C) 2018 Red Hat, Inc.
++ *
++ * This code is licensed under the GPL version 2 or later.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/arm/armv6m.h"
++
++static const TypeInfo armv6m_info = {
++    .name = TYPE_ARMV6M,
++    .parent = TYPE_ARM_M_PROFILE,
++    .instance_size = sizeof(ARMv6MState),
++};
++
++static void armv6m_register_types(void)
++{
++    type_register_static(&armv6m_info);
++}
++
++type_init(armv6m_register_types)
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index e704cb6e34..a381817126 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -49,6 +49,7 @@ CONFIG_A9MPCORE=y
+ CONFIG_A15MPCORE=y
  
-     field = (uint32_t *)bmp;
-+    /* For the KVM GICv3, affinity routing is always enabled, and the first 8
-+     * GICD_IPRIORITYR<n> registers are always RAZ/WI. The corresponding
-+     * functionality is replaced by GICR_IPRIORITYR<n>. So it doesn't need to
-+     * sync them.
-+     */
-+    offset += (8 * sizeof(uint32_t));
-     for_each_dist_irq_reg(irq, s->num_irq, 8) {
-         reg = *field;
-         kvm_gicd_access(s, offset, &reg, true);
-@@ -164,6 +176,12 @@ static void kvm_dist_get_edge_trigger(GICv3State *s, uint32_t offset,
-     uint32_t reg;
-     int irq;
+ CONFIG_ARM_M_PROFILE=y
++CONFIG_ARM_V6M=y
+ CONFIG_ARM_V7M=y
+ CONFIG_NETDUINO2=y
  
-+    /* For the KVM GICv3, affinity routing is always enabled, and the first 2
-+     * GICD_ICFGR<n> registers are always RAZ/WI. The corresponding
-+     * functionality is replaced by GICR_ICFGR<n>. So it doesn't need to sync
-+     * them.
-+     */
-+    offset += (2 * sizeof(uint32_t));
-     for_each_dist_irq_reg(irq, s->num_irq, 2) {
-         kvm_gicd_access(s, offset, &reg, false);
-         reg = half_unshuffle32(reg >> 1);
-@@ -181,6 +199,12 @@ static void kvm_dist_put_edge_trigger(GICv3State *s, uint32_t offset,
-     uint32_t reg;
-     int irq;
- 
-+    /* For the KVM GICv3, affinity routing is always enabled, and the first 2
-+     * GICD_ICFGR<n> registers are always RAZ/WI. The corresponding
-+     * functionality is replaced by GICR_ICFGR<n>. So it doesn't need to sync
-+     * them.
-+     */
-+    offset += (2 * sizeof(uint32_t));
-     for_each_dist_irq_reg(irq, s->num_irq, 2) {
-         reg = *gic_bmp_ptr32(bmp, irq);
-         if (irq % 32 != 0) {
-@@ -222,6 +246,12 @@ static void kvm_dist_getbmp(GICv3State *s, uint32_t offset, uint32_t *bmp)
-     uint32_t reg;
-     int irq;
- 
-+    /* For the KVM GICv3, affinity routing is always enabled, and the
-+     * GICD_IGROUPR0/GICD_ISENABLER0/GICD_ISPENDR0/GICD_ISACTIVER0 registers
-+     * are always RAZ/WI. The corresponding functionality is replaced by the
-+     * GICR registers. So it doesn't need to sync them.
-+     */
-+    offset += (1 * sizeof(uint32_t));
-     for_each_dist_irq_reg(irq, s->num_irq, 1) {
-         kvm_gicd_access(s, offset, &reg, false);
-         *gic_bmp_ptr32(bmp, irq) = reg;
-@@ -235,6 +265,14 @@ static void kvm_dist_putbmp(GICv3State *s, uint32_t offset,
-     uint32_t reg;
-     int irq;
- 
-+    /* For the KVM GICv3, affinity routing is always enabled, and the
-+     * GICD_IGROUPR0/GICD_ISENABLER0/GICD_ISPENDR0/GICD_ISACTIVER0 registers
-+     * are always RAZ/WI. The corresponding functionality is replaced by the
-+     * GICR registers. So it doesn't need to sync them.
-+     */
-+    offset += (1 * sizeof(uint32_t));
-+    if (clroffset != 0)
-+        clroffset += (1 * sizeof(uint32_t));
-     for_each_dist_irq_reg(irq, s->num_irq, 1) {
-         /* If this bitmap is a set/clear register pair, first write to the
-          * clear-reg to clear all bits before using the set-reg to write
 -- 
-2.0.4
-
+2.17.1
 

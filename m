@@ -1,88 +1,80 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp86816wrq;
-        Mon, 2 Jul 2018 09:59:54 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcx8Qw4U6AC2dDthTHfWeKzWaEZ5y8DENMcERrej60poUdrkPKWrq9IK9MqRTWKL2WDJrwl
-X-Received: by 2002:ac8:302e:: with SMTP id f43-v6mr7465839qte.217.1530550794702;
-        Mon, 02 Jul 2018 09:59:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530550794; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp96220wrq;
+        Mon, 2 Jul 2018 10:07:27 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcbTMZzlJmBDcmhl5t1K4IboPp2Dm/+pe3fH3OJV8e4gzhbkH4e4UL7z3c+pWEwgtoXLKMu
+X-Received: by 2002:a37:9d58:: with SMTP id g85-v6mr22264277qke.230.1530551247166;
+        Mon, 02 Jul 2018 10:07:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530551247; cv=none;
         d=google.com; s=arc-20160816;
-        b=GKYjkz96b/DTWAT5LqzoXR4umPBe0djNfr9dKnC0Q7DvAy9nARKRBXShZDIlhQfVvk
-         RqADH8Pu+YwUHoBR5SmD4NIwBI/0sy+/hKSn1tnxhbV5/ZcQ3dDkzPPLSw3agwuZEhMO
-         yPffs3F6T1ZvHtCD0mRIgHpbu+c2bcVSyfRuJut3QHF2Ua6lDxhnkR60YVpfjm1BZEMY
-         YDYHDHbVtFH3jRRSD1OTc7U+G0rBBziFr7RufbDy/1/FUFWndrWSlfmPMGdElBgaId2P
-         EbnaQcJbeYGT/y3HJraMBc85INXANtwmIz36vgjq6nF17BhVmS1oS9wmnZmZcKQ8Suis
-         bDyg==
+        b=NZWxYmDA/lVN6xuih7SyyGNqtR1LOjV6elnmLTh0zCsUHUM7AZ/tWzlg3TcZH8rXoY
+         h9h+SjpafRWAROydP/VC46OwDtvZ1hpYAoHDM0AYLf0L1qBzUlR91Z/xGbC42WIkci9c
+         6sbtWH4lCHB9QfaTSBSEhrnpngP58JraKV3cpH0M5loxpbcUgQG1rf3EpAmTxYUT8xES
+         r4dqBkLEvIpYusFDTmNOpYBMiQP1Hz/md/xpKNhsvpQ+EPld6S+S08EhnMPu3oAaMwwa
+         yWA1ssHN4SQkjrJYlYD5PSk3cnnN7FHZN8m6Su6iWybxKmN8tJ5btaIOpV2LUNMk53pw
+         v9dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=6XbHOa9eEljSCxEnUf+iVbDV/EqLImDxmjyeQrI5/e8=;
-        b=wqWWhLcG1CrZIl90cBjURCqqqsZ6AoUeNl1jKNTdOyd1+WL4rsCohVDhNSPP1PaTBe
-         m9jS+ZxvTt/75yXQzYNQjhykAyeLM2KkL4z1rw6SfIJEQAY5w9Ya5AngyhewkBTfx0qT
-         eJD2SHPKRDgY61LN+uia1ad87X8cOQD7R+zsLkeud4/3cYMAw+iyGXKUMZQ+JeClQAfP
-         wG+WHchMVtNBxfhvXuLAkOCE1GgfkSTGrvPyBd9FTZXoO2RZ2hNZ7ihvcgewbr+mzItG
-         9ATNiO7GyVS8GDaytiHrVmiehNDbK8n5UxYehpz3Vcws7BrFVAwgE9shKHsdmquUjNn2
-         oY/w==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=9aQKjqLJlclU/CtXJPCJXObNWHMWuUX+jgx/8N8Ew2M=;
+        b=isQeCjuP4XbpfQrca8CFp5FkTl+jjHaMSKFE5XJQ6nWLTYdJb9wIAZ+MVZApbnZnsF
+         4YW6PHjdLN8ppYq3X9eKbk05Iqi0Ta4W+Z5Z9zl8WSfH40y4DwkUBcta+GM4Pg9C2GUp
+         so1D3JUqxhZGLpzJVhTnSBXvIOgRbMPm5U2lkJxSoDoKe+KfIOpVttsqLJb5ec9Ci9vb
+         fTrhl7NQqB8V/sh7C2Te2w4NZ88Ek3NHvRQ84AdBkB7KGJ3q4SArIbF9+qA/yBxCrmOB
+         +fn2OdNzsQLOt/95N05dTnlpIj+HWVTnv1AwkOY8+ZhzFLr2KpJ9sCYXjaInkGDGuCg9
+         cz2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iF1m8+nM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@roeck-us.net header.s=default header.b=KIRkyUrL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w15-v6si4838349qtj.276.2018.07.02.09.59.54
+        by mx.google.com with ESMTPS id p15-v6si1344327qvi.256.2018.07.02.10.07.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 02 Jul 2018 09:59:54 -0700 (PDT)
+        Mon, 02 Jul 2018 10:07:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iF1m8+nM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34311 helo=lists.gnu.org)
+       dkim=fail header.i=@roeck-us.net header.s=default header.b=KIRkyUrL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34370 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fa2B8-0008PU-0k
-	for alex.bennee@linaro.org; Mon, 02 Jul 2018 12:59:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51806)
+	id 1fa2IQ-0005YJ-JY
+	for alex.bennee@linaro.org; Mon, 02 Jul 2018 13:07:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fa1yg-0006ef-7l
-	for qemu-arm@nongnu.org; Mon, 02 Jul 2018 12:47:03 -0400
+	(envelope-from <linux@roeck-us.net>) id 1fa2GX-0004Jf-Ad
+	for qemu-arm@nongnu.org; Mon, 02 Jul 2018 13:05:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fa1yf-0002sN-BG
-	for qemu-arm@nongnu.org; Mon, 02 Jul 2018 12:47:02 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:46688)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fa1yf-0002s1-4m
-	for qemu-arm@nongnu.org; Mon, 02 Jul 2018 12:47:01 -0400
-Received: by mail-oi0-x244.google.com with SMTP id y207-v6so17566499oie.13
-	for <qemu-arm@nongnu.org>; Mon, 02 Jul 2018 09:47:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6XbHOa9eEljSCxEnUf+iVbDV/EqLImDxmjyeQrI5/e8=;
-	b=iF1m8+nMTKaHp6zKk9ivQRCJOJKnocJKOa1CuzZE4QnpLeUeuzyiKvN5PTLyC4hhis
-	qKtI5dOPRGQdaUJezv2MOLW3+gR6gnwfqmPQG0b27m9FFI2PoLsFi8nha1CGL74p6dYy
-	zJZ3d0tzhBho9lpnld7S/sMhYCJMIbqBcilMQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=6XbHOa9eEljSCxEnUf+iVbDV/EqLImDxmjyeQrI5/e8=;
-	b=inwummlciiTXEXTwkKbxaG0EU784q8OGlvB9vzaNXfLwJ66uhmoXgePwwrVqmvheCk
-	fysA1JciUhUkK4+aEUb2mybPCMG0SjGVmIZ5qhvavE8g6GuxAYnLFLmQT4T0yHGwqqn8
-	fpbV0XHBSwvq2Ni0bhpWkHZcb+MDeDEDXWDX+Rgyi5+CIFhTV701B5QiyrF1uxEJGE2B
-	gDarq9bblteT5TtOcho49rjs0nZVubxQEZroH68TutBNRTP7wHmWsipv1kMsxnis+M0A
-	x0et9TNjmRxEcJJWKmXKW3FZnx8VNPLpy5L1CjAWHTdAzT+7MVy1AD75+24ZMTxoawKY
-	4+rQ==
-X-Gm-Message-State: APt69E07FSrLZR3sKGFSIWQOH3PZP1JLkCVjjQLb+sTqmsQZH82ebWDf
-	lgnnkwbUr+XEYkKSPQC0bqR+UlBnDkkYsDyzLC932IW5
-X-Received: by 2002:aca:4a49:: with SMTP id
-	x70-v6mr8859572oia.11.1530550020402; 
-	Mon, 02 Jul 2018 09:47:00 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:902:0:0:0:0:0 with HTTP;
-	Mon, 2 Jul 2018 09:46:39 -0700 (PDT)
-In-Reply-To: <20180702162733.GB32333@roeck-us.net>
+	(envelope-from <linux@roeck-us.net>) id 1fa2GS-0000gW-Vy
+	for qemu-arm@nongnu.org; Mon, 02 Jul 2018 13:05:29 -0400
+Received: from bh-25.webhostbox.net ([208.91.199.152]:46316)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <linux@roeck-us.net>)
+	id 1fa2GS-0000fL-Oe; Mon, 02 Jul 2018 13:05:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=roeck-us.net; s=default;
+	h=In-Reply-To:Content-Type:MIME-Version:References
+	:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=9aQKjqLJlclU/CtXJPCJXObNWHMWuUX+jgx/8N8Ew2M=;
+	b=KIRkyUrLMlwFRhjFeFbTdaQB5G
+	Lwph07b7rXcLl0ZvZ1nYOahDf+/yAs8eqEexsWlYh+1GjQWNCLIMqj77Ua0aeaHBxjEWaNM2ko14L
+	VzdkR/TM0KBDiDUalbdy1WlwkudDkbL5zznZVcyL1Bge3RguvMZgO1PQB272EK983+DN+H+8jzJkl
+	hytmJoRI/jdtzEWZroxAd7A9F4Uze8aDA9H70/jJVb9yIXtPILkkvz46Y3B313p3KDrijiTDsFpK9
+	wUB2ze4aJ11WFXcC90t8Ckz85Pj1ZBSIuTxCvl54WgOJGfdUHaT1Nvs6H6soslqJAWcPHiIhX6+eX
+	dTWTBQtQ==;
+Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net
+	([108.223.40.66]:57464 helo=localhost)
+	by bh-25.webhostbox.net with esmtpa (Exim 4.89)
+	(envelope-from <linux@roeck-us.net>)
+	id 1fa2GR-00AMso-9X; Mon, 02 Jul 2018 17:05:23 +0000
+Date: Mon, 2 Jul 2018 10:05:22 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180702170522.GA9885@roeck-us.net>
 References: <1529374119-27015-1-git-send-email-linux@roeck-us.net>
 	<CAFEAcA_8TAWdkgTzPPE7eggP4UAHjVPmcXiEa_-RCxDBphJ4HA@mail.gmail.com>
 	<20180626175900.GA4307@roeck-us.net>
@@ -90,14 +82,28 @@ References: <1529374119-27015-1-git-send-email-linux@roeck-us.net>
 	<20180626200008.GA680@roeck-us.net>
 	<CAFEAcA_non89OR_-W3Fhr6gG0v0kkgg-ffJx-9K_h=U-Hz_wbg@mail.gmail.com>
 	<20180702162733.GB32333@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Jul 2018 17:46:39 +0100
-Message-ID: <CAFEAcA8+ZxcRLBgonZaqpAfumKFvhk7yDhX=Fe0KjoeTxWsczg@mail.gmail.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
+	<CAFEAcA8+ZxcRLBgonZaqpAfumKFvhk7yDhX=Fe0KjoeTxWsczg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8+ZxcRLBgonZaqpAfumKFvhk7yDhX=Fe0KjoeTxWsczg@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
+X-Authenticated_sender: guenter@roeck-us.net
+X-OutGoing-Spam-Status: No, score=-1.0
+X-AntiAbuse: This header was added to track abuse,
+	please include it with any abuse report
+X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
+X-AntiAbuse: Original Domain - nongnu.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - roeck-us.net
+X-Get-Message-Sender-Via: bh-25.webhostbox.net: authenticated_id:
+	guenter@roeck-us.net
+X-Authenticated-Sender: bh-25.webhostbox.net: guenter@roeck-us.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 208.91.199.152
 Subject: Re: [Qemu-arm] [PATCH] hw/char/cmsdk-apb-timer: Correctly identify
  and set one-shot mode
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,27 +120,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /6dL370CZdg5
+X-TUID: 43fgP6RUiWTV
 
-On 2 July 2018 at 17:27, Guenter Roeck <linux@roeck-us.net> wrote:
-> Again, in my observation the boot sometimes stalls without my
-> patch. Maybe there is a better fix, but the code as-is doesn't
-> work for me. All I can say is that the current code does not set
-> one-shot mode when it should, and that seems wrong.
->
-> You could of course take out the zero delta warning. Personally
-> I would caution against that - whenever I have seen that warning,
-> it suggested that something is wrong with the emulation, and it
-> helped me track down the problem. Your call, of course. Also,
-> I don't think taking out the warning would fix my stall problem.
+On Mon, Jul 02, 2018 at 05:46:39PM +0100, Peter Maydell wrote:
+> On 2 July 2018 at 17:27, Guenter Roeck <linux@roeck-us.net> wrote:
+> > Again, in my observation the boot sometimes stalls without my
+> > patch. Maybe there is a better fix, but the code as-is doesn't
+> > work for me. All I can say is that the current code does not set
+> > one-shot mode when it should, and that seems wrong.
+> >
+> > You could of course take out the zero delta warning. Personally
+> > I would caution against that - whenever I have seen that warning,
+> > it suggested that something is wrong with the emulation, and it
+> > helped me track down the problem. Your call, of course. Also,
+> > I don't think taking out the warning would fix my stall problem.
+> 
+> Can you provide me with something I can reproduce with, then,
+> please? My kernel + buildroot don't repro the problem: it always
+> seems to boot fine. I had a look at your testbuild git repo
+> but couldn't manage to figure out how to build a binary
+> from it. I'm ok with building a QEMU from your branch for
+> testing this, but I'd rather not try to figure out how to
+> reproduce your kernel and root filesystem setup.
+> 
 
-Can you provide me with something I can reproduce with, then,
-please? My kernel + buildroot don't repro the problem: it always
-seems to boot fine. I had a look at your testbuild git repo
-but couldn't manage to figure out how to build a binary
-from it. I'm ok with building a QEMU from your branch for
-testing this, but I'd rather not try to figure out how to
-reproduce your kernel and root filesystem setup.
+I don't think I'll have more time available to spend on this
+anytime soon. If it works for you, just drop the patch. I can
+keep it local in my branch. My version of qemu is different anyway,
+after all.
 
-thanks
--- PMM
+Thanks,
+Guenter

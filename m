@@ -1,493 +1,93 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp771751wrq;
-        Fri, 29 Jun 2018 07:09:30 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdWHo3HIU5wVW9Ani0MtoYI7wpEKg5rB7Hl06Eh8jleZikVGHVKVfqoJJPYsyyOHwsRLO5k
-X-Received: by 2002:a0c:d648:: with SMTP id e8-v6mr13407863qvj.238.1530281370424;
-        Fri, 29 Jun 2018 07:09:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530281370; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3614430wrq;
+        Mon, 2 Jul 2018 05:53:12 -0700 (PDT)
+X-Received: by 2002:aca:dd02:: with SMTP id u2-v6mr14492170oig.355.1530535992781;
+        Mon, 02 Jul 2018 05:53:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530535992; cv=none;
         d=google.com; s=arc-20160816;
-        b=Em9HPrX56C/lriwCxg2CCcSb7vnyqocrD7dmqh8ntVFt8aT3AqK8Q1D8BbRRKrgy9o
-         AHYcZYityj0NZOMj7iU0lmgghVYhQFtc7ZgmUz9bH4Ph9bUKUE6AfvDet82KzYNuDkx4
-         J5+YDW8pbl1vCSlFUJn3RkYhrhVLnNVSrEQfdc1QDhldb/WDeHsq+KtixXOYoIMZzziY
-         q6hyomNYfMLMKjYtW7V37IArPJMmaw/8Z8DMKL1PqlzED/cs/TJcucu5bKW2HEKO9dVi
-         beEhbjw24qL7ii08+aSyYCxR3juGs1gKLHR1oU4LL7rBBNJ0IdH8RH7Y3DfrZFsk4xF+
-         cThA==
+        b=tIgbNO6wHTZ3gnsQMmRjr+f7izxiZyZV1aZ6mE9l1glOEJFjMKrr2xXsQSVQ4QeUSL
+         HADGmUpTPixwIER/qEevSDDUIbH/lwDTSvtOXRTPC7RXz6BQJyrO8+5GIqIGH9aXvIY+
+         d6OVb9neXdMqL58eDAn1l3BUmRdgrg2J2xw7JotTXAX17ml13PSBENKdceqawNqk0sAI
+         ogQHVStF6VdiCJo9hc/F4LzdBkfhcL+WWQ6TIf9ABctC5+cu4aiYQND2VLtNClj0z6ca
+         TUfIPlUWuzXIbLe+5DJfulFzQlM2U+KZUy7Is4odrYzn69GpFycQCc4+K6j7EuQs+Svj
+         iyEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=XKhpi0Ng9QnNMSep/dAKYEy4sflmYAfboHZQEiDnmIw=;
-        b=Reed8nHB2B6jjeoH7cJiLlqMATJhuSItDE7C/27A4euXmM92g/nWEb3zZqUjgPTgBL
-         0uxBN/liN4+azYz4usjcNZwADWsy2xEKSJfkQ+7944GXinSqDYMhTA9k0Z5i2Z1RArkm
-         9aa0pm0hnuz8R+HVv73PtWwLSUVpxfLx8sxLfa5oxX1CDyRJQkOKoooL6RvI7OQ0UPIf
-         q+Sz+dtlfeex/EUE65NcGhXmdvYndqwep21Tuz+mYRxbJYZvcdS7023ot+GTI9dtpirr
-         9s1Rvc39Kei6Crzl03t79BU0hLC0QTsUlpzumM4AZYm8AdnW3VbAxcqBMyhw9Z91SYV8
-         hV3A==
+        bh=ZnRYW3jneDGt6RwYNJqBWHlJQFik44Io/uKNKyTOKsM=;
+        b=Xp15j/s07S0XlRHG4X1CYHHmSIE+xYpZPQKpD5DWK8FIF8VwX9H7PIG9CfTGso6+i+
+         i19AQseikvwPO2Tw+3xCHk7ek38Fh5Q6qIEihsBRksy6ag8B6rUjpLpgUi6wP0jxM/3c
+         Sg+GJ9UcJqaO5OEIumhkAOkBLf82HRtbwPQBTbGxeQTNHODQXEUrIhJaoVgI51Hv5Nt5
+         cXMLJ7gZ/yuASuGBJ5zc2/saGpS3wQZwlFAsLQnBnyrCQ+zD9R7fuubwMEmgKikhKCFA
+         KF0ctzRATn81FdgrslQCN0HmZIBV8kqy/kkX8lEnluujpCKi++gjcw68auxpEVjGEuh9
+         aMvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g12-v6si3663864qkm.314.2018.06.29.07.09.30
+       dkim=pass header.i=@linaro.org header.s=google header.b=h678RlJG;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id f202-v6sor265000oic.115.2018.07.02.05.53.12
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 29 Jun 2018 07:09:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Mon, 02 Jul 2018 05:53:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42429 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fYu5Z-0002nS-T7
-	for alex.bennee@linaro.org; Fri, 29 Jun 2018 10:09:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48686)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fYu52-0002VT-KX
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 10:09:01 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fYu4x-0000nn-Gh
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 10:08:56 -0400
-Received: from mail-wr0-f193.google.com ([209.85.128.193]:38985)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1fYu4x-0000l8-5E
-	for qemu-arm@nongnu.org; Fri, 29 Jun 2018 10:08:51 -0400
-Received: by mail-wr0-f193.google.com with SMTP id b8-v6so8980708wro.6
-	for <qemu-arm@nongnu.org>; Fri, 29 Jun 2018 07:08:51 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=h678RlJG;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=ZnRYW3jneDGt6RwYNJqBWHlJQFik44Io/uKNKyTOKsM=;
+        b=h678RlJGrgZEonXBQM+me0ba6n+JQxlRFc6u8EtM3HwEGbIUIX59ua2cYAKCNtzSNn
+         jCNSteBIKgaZbv1xHb9vfTIw2TiWcVHfTd0a48n2vRD6nWGUOBlI9URFoNaSz/nbsY/y
+         3LM0qXqtKVhWuPAtxezMgwHFz7g8aQ6yhrqJc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=XKhpi0Ng9QnNMSep/dAKYEy4sflmYAfboHZQEiDnmIw=;
-	b=YDMqPIbYTTTBYXLIzzDiag+5oCEox2FfSHQ5R9vac98mGmJIL8tpPr159Zo62aUBac
-	Gxv6C3u3B4b4a79zajMO2IQ0hkgzvE7a7ZP31mHapHkrhyEHYXc3riAEhObdXF+MetdU
-	4Bzc6yNWFdtlWVHxmmrur96P6/4CQc8+vrqVuNA1tTCrG32V1xVk4zjjrSOFqMjI1k0V
-	yMvzNZbVPwFreqcvjgJaMeab+wAgQXWpVvt8rSKyHBBw5zPFts27EBP45aT3OKSdoKvz
-	HdrzbAEf2fBliRrqluAqsvDB/EMRcHFE/BzcvoLgnuRjofGv9SWKkgcgnKva51do26qo
-	ft3A==
-X-Gm-Message-State: APt69E2/ktf3JpLLOgJ0AQGoKwiQ5gto+Km0OZ25UWbhB+KcPgQfZZKb
-	XLdXfnge4y/nG7rLmo8SUibOqQ==
-X-Received: by 2002:adf:96b2:: with SMTP id
-	u47-v6mr12641841wrb.204.1530281329828; 
-	Fri, 29 Jun 2018 07:08:49 -0700 (PDT)
-Received: from [192.168.10.165] ([82.84.124.111])
-	by smtp.gmail.com with ESMTPSA id
-	v10-v6sm3210168wrm.80.2018.06.29.07.08.45
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 29 Jun 2018 07:08:48 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
-References: <20180625124238.25339-1-f4bug@amsat.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <e98fd1f6-e16a-4fb8-5697-c2758943e641@redhat.com>
-Date: Fri, 29 Jun 2018 16:08:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=ZnRYW3jneDGt6RwYNJqBWHlJQFik44Io/uKNKyTOKsM=;
+        b=XjUSGXqUPoL3VOQEH7dlt9LaRpRcBYpZKmDPN3o2+KqDUuvGt5+NJamCA9ALhd5Yvq
+         w47Wdm5eByAywj5DfOYb1fQ8Rv5anwh/G2vq+3QKJ0ZsDBzTQM6Wx0jYGEGpFiQNc2SV
+         iO1jaj6hBku/I7Zbob6PD3b7aQevYmA6r8+FFkg33pnpORMH5EYkzVuY5sgh2z2YVX92
+         t8RtzmC7Oza0vHu0QZv0d+BeYFtBsqeK9XGsvoKbJngQ57z7cfKCNVObYARZCbkTaoY8
+         Y2G/Dn8IbKbSP42ErbneRwH5uCFVJ62k/4xaloZ4I2FXB+24exvsDfO9Owlu8LXVqrPU
+         HkPw==
+X-Gm-Message-State: APt69E0wk8+Hq6Yz+MEa9b4W7W7wtx/x7ifaOC0Z22aSQfP+/hfxmYDA
+	V00dg6vJpkeD8GmHSR2Xn70S/M3Nz3Mo9OGDJoue/GkVg+A=
+X-Google-Smtp-Source: AAOMgpf0dOBv/3VS27Dl7TcMvQQYMgHtrVP3y/15XeJPx5VLpZDIxEaw1Yh1fC1ggpigRp0Fl0Nw3l7qv/w24qLpjm8=
+X-Received: by 2002:aca:f409:: with SMTP id s9-v6mr16631680oih.102.1530535992350;
+ Mon, 02 Jul 2018 05:53:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180625124238.25339-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.193
-Subject: Re: [Qemu-arm] [Qemu-block] [PATCH v5 00/46] Use the IEC binary
- prefix definitions
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	Palmer Dabbelt <palmer@sifive.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
-	Keith Busch <keith.busch@intel.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Clark <mjc@sifive.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, Marek Vasut <marex@denx.de>,
-	Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	qemu-trivial@nongnu.org, Jiri Slaby <jslaby@suse.cz>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>, Fam Zheng <famz@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
-	Yuval Shaia <yuval.shaia@oracle.com>, Igor Mammedov <imammedo@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Chris Wulff <crwulff@gmail.com>, qemu-s390x@nongnu.org,
-	Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
-	qemu-ppc@nongnu.org, Paul Burton <paul.burton@mips.com>,
-	Cornelia Huck <cohuck@redhat.com>, Peter Chubb <peter.chubb@nicta.com.au>,
-	Aurelien Jarno <aurelien@aurel32.net>, Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wbAbJdo2ucVj
+Received: by 2002:a9d:902:0:0:0:0:0 with HTTP; Mon, 2 Jul 2018 05:52:51 -0700 (PDT)
+In-Reply-To: <20180622141205.16306-1-alex.bennee@linaro.org>
+References: <20180622141205.16306-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 2 Jul 2018 13:52:51 +0100
+Message-ID: <CAFEAcA9YE0N4ELyN4Er05RLREGCV4BUyWimJSUQEXLODiXCPYg@mail.gmail.com>
+Subject: Re: [RISU PATCH v4 00/22] ARM SVE support for RISU
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: c6KFNJTQlcSD
 
-Queued with this squashed in:
+On 22 June 2018 at 15:11, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrote:
+> Hi Peter,
+>
+> Not much different from v3 apart from the last SVE register dump patch
+> is now fatter with stuff that was from the handle variable VQ series.
+> The binary format has stayed the same and we have a current test set
+> for SVE at:
+>
+>   http://people.linaro.org/~alex.bennee/testcases/arm64.risu/sve-all-shor=
+t-v83+sve.tar.xz
+>
+> Unless you have any comments I reckon these are ready to be merged.
 
-diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-index e75d433e56..0a6c657228 100644
---- a/hw/usb/ccid-card-passthru.c
-+++ b/hw/usb/ccid-card-passthru.c
-@@ -276,9 +276,9 @@ static void ccid_card_vscard_read(void *opaque, const uint8_t *buf, int size)
-     VSCMsgHeader *hdr;
- 
-     if (card->vscard_in_pos + size > VSCARD_IN_SIZE) {
--        error_report(
--            "no room for data: pos %u +  size %d > %ld. dropping connection.",
--            card->vscard_in_pos, size, VSCARD_IN_SIZE);
-+        error_report("no room for data: pos %u +  size %d > %" PRId64 "."
-+                     " dropping connection.",
-+                     card->vscard_in_pos, size, VSCARD_IN_SIZE);
-         ccid_card_vscard_drop_connection(card);
-         return;
-     }
-diff --git a/tests/test-qemu-opts.c b/tests/test-qemu-opts.c
-index 7074a176d7..fd4d848f66 100644
---- a/tests/test-qemu-opts.c
-+++ b/tests/test-qemu-opts.c
-@@ -709,7 +709,7 @@ static void test_opts_parse_size(void)
-                            false, &error_abort);
-     g_assert_cmpuint(opts_count(opts), ==, 2);
-     g_assert_cmphex(qemu_opt_get_size(opts, "size1", 0), ==, GiB / 10);
--    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), ==, 16777215 * TiB);
-+    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), ==, 16777215U * TiB);
- 
-     /* Beyond limit with suffix */
-     opts = qemu_opts_parse(&opts_list_02, "size1=16777216T",
-diff --git a/vl.c b/vl.c
-index 2018052394..93795c1b9f 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2810,7 +2810,7 @@ static void set_memory_options(uint64_t *ram_slots, ram_addr_t *maxram_size,
-             uint64_t overflow_check = sz;
- 
-             sz *= MiB;
--            if ((sz >> 20) != overflow_check) {
-+            if (sz / MiB != overflow_check) {
-                 error_report("too large 'size' option value");
-                 exit(EXIT_FAILURE);
-             }
+Applied to risu master, thanks.
 
-Because Patchew is down, I couldn't gather all the Reviewed-by and Acked-by.
-Thanks to all the reviewers anyway!
-
-Paolo
-
-On 25/06/2018 14:41, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> This series:
-> 
-> - split the byte-based definitions from "qemu/cutils.h" to "qemu/units.h"
->   (this now triggers WARNING: 1 added file, does MAINTAINERS need updating?)
-> - clean hw/ includes;
-> - replace different constants used for byte size with their corresponding
->   IEC binary prefix definitions.
-> 
-> Since v4:
-> - fixed checkpatch (do not match the IEC binary prefix as camelcase typedefs)
-> - use signed format for size (Richard)
-> - fix 32-bit (Thomas)
-> - update '[<>][<>]= ?[1-5]0', adding 5 new patches (Eric)
-> 
-> Since v3:
-> - use IEC binary prefix definitions (Stefan Weil)
-> - rebased
-> - added R-b tags
-> 
-> Since v2:
-> - use "qemu/units.h" instead of "qemu/cunits.h" (Daniel P. Berrangé)
-> - avoid rebuilding the world including "qemu/units.h" in "hw/hw.h" (Thomas Huth)
-> - more constant replaced
-> 
-> Since v1:
-> - corrected Xen mult -> div (Alan Robinson)
-> - tagged 'include "qemu/cunits.h" in "hw/hw.h" as RFC
-> - fixed mips_r4k 'params_size' (Thomas Huth)
-> - added command used to generate patch in each commit (Alistair Francis)
-> - use G_BYTE for the raspi3 machine
-> - added Reviewed-by tags
-> 
-> Regards,
-> 
-> Phil.
-> 
-> [----] : patches are identical
-> [####] : number of functional differences between upstream/downstream patch
-> [down] : patch is downstream-only
-> The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
-> 
-> 001/46:[0012] [FC] 'include: Add IEC binary prefixes in "qemu/units.h"'
-> 002/46:[0005] [FC] 'vdi: Use definitions from "qemu/units.h"'
-> 003/46:[----] [--] 'x86/cpu: Use definitions from "qemu/units.h"'
-> 004/46:[0002] [FC] 'checkpatch: Recognize IEC binary prefix definitions'
-> 005/46:[----] [-C] 'hw: Use IEC binary prefix definitions from "qemu/units.h"'
-> 006/46:[----] [--] 'hw: Directly use "qemu/units.h" instead of "qemu/cutils.h"'
-> 007/46:[----] [--] 'hw/ivshmem: Use the IEC binary prefix definitions'
-> 008/46:[----] [--] 'hw/ipack: Use the IEC binary prefix definitions'
-> 009/46:[----] [--] 'hw/scsi: Use the IEC binary prefix definitions'
-> 010/46:[----] [--] 'hw/smbios: Use the IEC binary prefix definitions'
-> 011/46:[0002] [FC] 'hw/xen: Use the IEC binary prefix definitions'
-> 012/46:[----] [--] 'hw/tpm: Use the IEC binary prefix definitions'
-> 013/46:[----] [--] 'hw/block: Use the IEC binary prefix definitions'
-> 014/46:[0008] [FC] 'hw/display: Use the IEC binary prefix definitions'
-> 015/46:[----] [--] 'hw/misc: Use the IEC binary prefix definitions'
-> 016/46:[----] [--] 'hw/riscv: Use the IEC binary prefix definitions'
-> 017/46:[----] [--] 'hw/m68k: Use the IEC binary prefix definitions'
-> 018/46:[0006] [FC] 'hw/sparc: Use the IEC binary prefix definitions'
-> 019/46:[0003] [FC] 'hw/s390x: Use the IEC binary prefix definitions'
-> 020/46:[0004] [FC] 'hw/hppa: Use the IEC binary prefix definitions'
-> 021/46:[0009] [FC] 'hw/xtensa: Use the IEC binary prefix definitions'
-> 022/46:[----] [--] 'hw/alpha: Use the IEC binary prefix definitions'
-> 023/46:[----] [--] 'hw/tricore: Use the IEC binary prefix definitions'
-> 024/46:[----] [--] 'hw/microblaze: Use the IEC binary prefix definitions'
-> 025/46:[----] [--] 'hw/nios2: Use the IEC binary prefix definitions'
-> 026/46:[----] [--] 'hw/cris: Use the IEC binary prefix definitions'
-> 027/46:[----] [--] 'hw/lm32: Use the IEC binary prefix definitions'
-> 028/46:[----] [--] 'hw/sh4: Use the IEC binary prefix definitions'
-> 029/46:[----] [--] 'hw/mips/r4k: Constify params_size'
-> 030/46:[0012] [FC] 'hw/mips: Use the IEC binary prefix definitions'
-> 031/46:[----] [--] 'hw/arm: Use the IEC binary prefix definitions'
-> 032/46:[0022] [FC] 'hw/ppc: Use the IEC binary prefix definitions'
-> 033/46:[0006] [FC] 'hw/i386: Use the IEC binary prefix definitions'
-> 034/46:[----] [--] 'hw/net: Use the IEC binary prefix definitions'
-> 035/46:[0002] [FC] 'hw/usb: Use the IEC binary prefix definitions'
-> 036/46:[0002] [FC] 'hw/sd: Use the IEC binary prefix definitions'
-> 037/46:[----] [--] 'hw/vfio: Use the IEC binary prefix definitions'
-> 038/46:[----] [--] 'hw/virtio: Use the IEC binary prefix definitions'
-> 039/46:[----] [--] 'hw/rdma: Use the IEC binary prefix definitions'
-> 040/46:[----] [--] 'cutils: Do not include "qemu/units.h" directly'
-> 041/46:[0148] [FC] 'hw/ppc: Use the IEC binary prefix definitions'
-> 042/46:[down] 'monitor: Use the IEC binary prefix definitions'
-> 043/46:[down] 'vl: Use the IEC binary prefix definitions'
-> 044/46:[down] 'tests/crypto: Use the IEC binary prefix definitions'
-> 045/46:[down] 'linux-user: Use the IEC binary prefix definitions'
-> 046/46:[down] 'bsd-user: Use the IEC binary prefix definitions'
-> 
-> Philippe Mathieu-Daudé (46):
->   include: Add IEC binary prefixes in "qemu/units.h"
->   vdi: Use definitions from "qemu/units.h"
->   x86/cpu: Use definitions from "qemu/units.h"
->   checkpatch: Recognize IEC binary prefix definitions
->   hw: Use IEC binary prefix definitions from "qemu/units.h"
->   hw: Directly use "qemu/units.h" instead of "qemu/cutils.h"
->   hw/ivshmem: Use the IEC binary prefix definitions
->   hw/ipack: Use the IEC binary prefix definitions
->   hw/scsi: Use the IEC binary prefix definitions
->   hw/smbios: Use the IEC binary prefix definitions
->   hw/xen: Use the IEC binary prefix definitions
->   hw/tpm: Use the IEC binary prefix definitions
->   hw/block: Use the IEC binary prefix definitions
->   hw/display: Use the IEC binary prefix definitions
->   hw/misc: Use the IEC binary prefix definitions
->   hw/riscv: Use the IEC binary prefix definitions
->   hw/m68k: Use the IEC binary prefix definitions
->   hw/sparc: Use the IEC binary prefix definitions
->   hw/s390x: Use the IEC binary prefix definitions
->   hw/hppa: Use the IEC binary prefix definitions
->   hw/xtensa: Use the IEC binary prefix definitions
->   hw/alpha: Use the IEC binary prefix definitions
->   hw/tricore: Use the IEC binary prefix definitions
->   hw/microblaze: Use the IEC binary prefix definitions
->   hw/nios2: Use the IEC binary prefix definitions
->   hw/cris: Use the IEC binary prefix definitions
->   hw/lm32: Use the IEC binary prefix definitions
->   hw/sh4: Use the IEC binary prefix definitions
->   hw/mips/r4k: Constify params_size
->   hw/mips: Use the IEC binary prefix definitions
->   hw/arm: Use the IEC binary prefix definitions
->   hw/ppc: Use the IEC binary prefix definitions
->   hw/i386: Use the IEC binary prefix definitions
->   hw/net: Use the IEC binary prefix definitions
->   hw/usb: Use the IEC binary prefix definitions
->   hw/sd: Use the IEC binary prefix definitions
->   hw/vfio: Use the IEC binary prefix definitions
->   hw/virtio: Use the IEC binary prefix definitions
->   hw/rdma: Use the IEC binary prefix definitions
->   cutils: Do not include "qemu/units.h" directly
->   hw/ppc: Use the IEC binary prefix definitions
->   monitor: Use the IEC binary prefix definitions
->   vl: Use the IEC binary prefix definitions
->   tests/crypto: Use the IEC binary prefix definitions
->   linux-user: Use the IEC binary prefix definitions
->   bsd-user: Use the IEC binary prefix definitions
-> 
->  hw/net/ne2000.h                          |  5 ++--
->  hw/ppc/mac.h                             |  3 ++-
->  hw/rdma/vmw/pvrdma.h                     |  3 ++-
->  include/hw/acpi/tpm.h                    |  3 ++-
->  include/hw/arm/fsl-imx7.h                |  5 ++--
->  include/hw/arm/stm32f205_soc.h           |  5 ++--
->  include/hw/display/xlnx_dp.h             |  5 ++--
->  include/hw/i386/ich9.h                   |  3 ++-
->  include/hw/intc/mips_gic.h               |  3 ++-
->  include/hw/mips/bios.h                   |  3 ++-
->  include/hw/net/allwinner_emac.h          |  5 ++--
->  include/hw/ppc/spapr.h                   |  5 ++--
->  include/hw/virtio/virtio-net.h           |  3 ++-
->  include/qemu/cutils.h                    |  7 ------
->  include/qemu/units.h                     | 20 ++++++++++++++++
->  block/vdi.c                              |  7 +++---
->  bsd-user/main.c                          |  5 ++--
->  hw/alpha/typhoon.c                       | 17 +++++++-------
->  hw/arm/bcm2835_peripherals.c             |  3 ++-
->  hw/arm/boot.c                            |  7 +++---
->  hw/arm/collie.c                          |  5 ++--
->  hw/arm/digic_boards.c                    |  7 +++---
->  hw/arm/exynos4_boards.c                  |  3 ++-
->  hw/arm/gumstix.c                         |  3 ++-
->  hw/arm/integratorcp.c                    |  3 ++-
->  hw/arm/mainstone.c                       |  3 ++-
->  hw/arm/msf2-soc.c                        |  6 ++---
->  hw/arm/msf2-som.c                        |  8 +++----
->  hw/arm/musicpal.c                        |  9 +++----
->  hw/arm/omap_sx1.c                        | 11 +++++----
->  hw/arm/raspi.c                           |  5 ++--
->  hw/arm/smmu-common.c                     |  3 ++-
->  hw/arm/stellaris.c                       |  5 ++--
->  hw/arm/versatilepb.c                     |  5 ++--
->  hw/arm/vexpress.c                        |  7 +++---
->  hw/arm/virt.c                            |  5 ++--
->  hw/arm/xilinx_zynq.c                     |  7 +++---
->  hw/block/m25p80.c                        |  5 ++--
->  hw/block/nvme.c                          |  3 ++-
->  hw/block/tc58128.c                       |  3 ++-
->  hw/block/xen_disk.c                      |  3 ++-
->  hw/core/loader-fit.c                     |  3 ++-
->  hw/core/machine.c                        |  4 ++--
->  hw/cris/axis_dev88.c                     |  3 ++-
->  hw/display/bochs-display.c               |  9 +++----
->  hw/display/cirrus_vga.c                  | 10 ++++----
->  hw/display/g364fb.c                      |  4 ++--
->  hw/display/qxl.c                         | 30 +++++++++++-------------
->  hw/display/sm501.c                       | 16 ++++++-------
->  hw/display/vga-isa-mm.c                  |  5 ++--
->  hw/display/vga.c                         |  5 ++--
->  hw/display/virtio-gpu.c                  |  4 ++--
->  hw/display/vmware_vga.c                  |  3 ++-
->  hw/display/xenfb.c                       |  3 ++-
->  hw/hppa/dino.c                           |  5 ++--
->  hw/hppa/machine.c                        | 12 +++++-----
->  hw/i386/acpi-build.c                     |  5 ++--
->  hw/i386/pc.c                             | 19 ++++++++-------
->  hw/i386/pc_piix.c                        |  4 ++--
->  hw/i386/pc_q35.c                         |  3 ++-
->  hw/i386/pc_sysfw.c                       |  9 +++----
->  hw/i386/xen/xen-mapcache.c               |  3 ++-
->  hw/intc/apic_common.c                    |  3 ++-
->  hw/ipack/tpci200.c                       |  5 ++--
->  hw/lm32/lm32_boards.c                    | 13 +++++-----
->  hw/lm32/milkymist.c                      | 10 ++++----
->  hw/m68k/mcf5208.c                        |  3 ++-
->  hw/microblaze/petalogix_ml605_mmu.c      |  7 +++---
->  hw/microblaze/petalogix_s3adsp1800_mmu.c |  7 +++---
->  hw/mips/boston.c                         | 30 ++++++++++++------------
->  hw/mips/mips_fulong2e.c                  |  7 +++---
->  hw/mips/mips_malta.c                     | 25 +++++++++++---------
->  hw/mips/mips_r4k.c                       | 15 ++++++------
->  hw/misc/aspeed_sdmc.c                    |  9 +++----
->  hw/misc/auxbus.c                         |  3 ++-
->  hw/misc/edu.c                            |  3 ++-
->  hw/misc/imx7_gpr.c                       |  3 ++-
->  hw/misc/ivshmem.c                        |  3 ++-
->  hw/misc/mips_itu.c                       |  3 ++-
->  hw/misc/omap_gpmc.c                      |  5 ++--
->  hw/net/e1000e.c                          |  7 +++---
->  hw/net/e1000x_common.c                   |  3 ++-
->  hw/net/eepro100.c                        |  3 +--
->  hw/nios2/boot.c                          |  6 ++---
->  hw/nvram/spapr_nvram.c                   | 11 +++++----
->  hw/pci-host/designware.c                 |  3 ++-
->  hw/pci-host/gpex.c                       |  3 ++-
->  hw/pci-host/piix.c                       |  5 ++--
->  hw/pci-host/prep.c                       |  3 ++-
->  hw/pci-host/q35.c                        | 17 +++++++-------
->  hw/pci-host/xilinx-pcie.c                |  5 ++--
->  hw/ppc/e500.c                            | 13 +++++-----
->  hw/ppc/e500plat.c                        |  3 ++-
->  hw/ppc/mac_newworld.c                    |  1 -
->  hw/ppc/mac_oldworld.c                    |  9 ++++---
->  hw/ppc/pnv.c                             |  6 ++---
->  hw/ppc/ppc405_boards.c                   |  9 +++----
->  hw/ppc/ppc405_uc.c                       |  7 +++---
->  hw/ppc/ppc440_bamboo.c                   |  5 ++--
->  hw/ppc/ppc440_uc.c                       | 28 +++++++++++-----------
->  hw/ppc/ppc4xx_devs.c                     | 22 +++++++++--------
->  hw/ppc/ppce500_spin.c                    |  3 ++-
->  hw/ppc/prep.c                            |  6 ++---
->  hw/ppc/rs6000_mc.c                       | 13 +++++-----
->  hw/ppc/sam460ex.c                        | 18 +++++++-------
->  hw/ppc/spapr.c                           | 12 +++++-----
->  hw/ppc/spapr_rtas.c                      |  2 +-
->  hw/ppc/virtex_ml507.c                    |  7 +++---
->  hw/riscv/virt.c                          |  3 ++-
->  hw/s390x/s390-skeys.c                    |  3 ++-
->  hw/s390x/s390-stattrib.c                 |  3 ++-
->  hw/s390x/sclp.c                          |  3 ++-
->  hw/scsi/scsi-disk.c                      |  9 +++----
->  hw/sd/sd.c                               |  8 +++----
->  hw/sd/sdhci.c                            |  8 +++----
->  hw/sh4/r2d.c                             |  3 ++-
->  hw/smbios/smbios.c                       | 15 +++++-------
->  hw/sparc/leon3.c                         | 10 ++++----
->  hw/sparc/sun4m.c                         | 10 ++++----
->  hw/sparc64/niagara.c                     |  3 ++-
->  hw/sparc64/sun4u.c                       |  4 ++--
->  hw/ssi/aspeed_smc.c                      | 29 ++++++++++++-----------
->  hw/tricore/tricore_testboard.c           | 13 +++++-----
->  hw/usb/ccid-card-passthru.c              |  5 ++--
->  hw/usb/combined-packet.c                 |  3 ++-
->  hw/usb/dev-smartcard-reader.c            |  3 ++-
->  hw/usb/redirect.c                        |  3 ++-
->  hw/vfio/pci-quirks.c                     |  9 +++----
->  hw/vfio/pci.c                            |  3 ++-
->  hw/xenpv/xen_domainbuild.c               | 13 +++++-----
->  hw/xtensa/xtfpga.c                       |  9 +++----
->  linux-user/main.c                        |  5 ++--
->  monitor.c                                |  3 ++-
->  target/i386/cpu.c                        |  4 +---
->  target/ppc/mmu_helper.c                  |  8 +++----
->  target/xtensa/helper.c                   |  5 ++--
->  tests/benchmark-crypto-cipher.c          |  6 ++---
->  tests/benchmark-crypto-hash.c            |  5 ++--
->  tests/benchmark-crypto-hmac.c            |  6 ++---
->  tests/test-cutils.c                      | 18 +++++++-------
->  tests/test-keyval.c                      |  6 ++---
->  tests/test-qemu-opts.c                   |  7 +++---
->  vl.c                                     |  3 ++-
->  scripts/checkpatch.pl                    |  1 +
->  144 files changed, 565 insertions(+), 453 deletions(-)
->  create mode 100644 include/qemu/units.h
-> 
-
+-- PMM

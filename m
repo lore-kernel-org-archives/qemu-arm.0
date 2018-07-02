@@ -1,100 +1,108 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1437937wrq;
-        Thu, 12 Jul 2018 07:30:00 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcKAuHXE5uqgPcm+a3sWU//f72PaPD0tS/gUuYpS2z/L1qnLDqqaIfyHODnLTbCEIe8p2eV
-X-Received: by 2002:a37:9e17:: with SMTP id h23-v6mr1839700qke.269.1531405800540;
-        Thu, 12 Jul 2018 07:30:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531405800; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3590243wrq;
+        Mon, 2 Jul 2018 05:25:34 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdKTutYF8vbxGHrrD0TzBRQin+UWqjrgB6+G3NzGk7M9NbCCmGGxhsX5hobsyUcaA5Va0Xy
+X-Received: by 2002:a37:2fc6:: with SMTP id v189-v6mr21773791qkh.433.1530534334632;
+        Mon, 02 Jul 2018 05:25:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530534334; cv=none;
         d=google.com; s=arc-20160816;
-        b=uJ66TYloV9D9bfVbTnv2ZR5UpHhwPdzoPdLXLRAVGyvx8zksBfboMsIMsOcmS56Un3
-         fmwxQ7UyTp5kUTiCGKWHlZiYQi2TzsCgZYNiJxw4ZIt6ZCrvPL61S+THt0DNCRa3QqrT
-         Q3dQnyyl+Tjd9Py7ktWvl0pT1U7eUwfQkXx5uzRRbd+qtF8BnHsRd+l5f9IDdqX+ePFN
-         9yTirlxbLFES8UbEyQNklQ7jl7F7B+xFWXzVzynxjOhYnPaflstewZOVph45lEpBcAe+
-         cDRR9/H13FBd36DehpWC7dnN/52UR/dmExDLXj+elNb0sRmuNdK52Tc9Y0WyspYq1zpJ
-         yk5g==
+        b=UWLF2rCbN7Utp7RIbsGFwnorUUF24WsK0HeJcG+AKCg360ZpsT0YlptuiAeO23DiIq
+         SBeA2qVV9/0yLyuwkntB4cPtoEEAPTaYfePDTeK9C5SLme+8d6cytKIi3cemCUhWNtfX
+         2MUakSfkh+foVgDD7SATbAO+tfcbRrsUS9F/wpE/Xxud8Ql9yugjGHw3Bfc2DJfDT5PQ
+         MNYSWf8a7NnnXXF1oMIncfaiL8os7LOd8aBDlNrOsMWrjNnQKlLsHBNi+UVjwHy4g65b
+         SCYJZ/Fq4ju7fOxkrO1uFCCjzVSxMg2ANX4RNxdeAW4P9iIqlqWUDdozM1pAmPvZvF4S
+         9ZSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=v7RKkvba8Sz+i+pg4q961ojmX4JE02xEES9cr4D9mXc=;
-        b=XTfhXDpNJRM55hWsXw+R5/t5bfhZPaHUfIanpghbWlEA1LiHYhxZD4+5DP0QG+6FGJ
-         0jilwIJXLu6X15DzSfF9OWtV1oe62vKPdOkERfFi44AdnwOXFyrgT7fH/CICRzt8//MA
-         NiqwRC43bvZ3AejJ2pz/CETCqJ3sahHQLrH7HgRHqDgsO1pn1KqiQ24YrkwJAiiR4cHV
-         LeB/CkIQEMpui15WLGZ90QzT4Ouz/J8ylbhdM07nOZ1BBuQ7NZtaYNm0BaCkRqg4SPKJ
-         c0duSOeV4VsPL01PxG6+LlgECnKHAZecoJmdPR5LxIYpeAu+iv61qwrhZ8S+sr7hsGKt
-         qFsg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=c4Y5YTkJT5RnC/4rtI5ft9um4yv9eeuH+5zBSf78iW0=;
+        b=024mQe1lYm6Wmy14YPn30IbZhNQxdirLIkm5M4IiVlPfquDmcIPI2x1QIN3JwHcG4V
+         5j9D7w1tz+Qs9DA2pZaU6Z//77ensijWAnZ+QnfJY5XP0mR0Ed7kK5tEUT6nIZNwNg7B
+         B3sBLGi2Qx7o9u1wvA6AGQ7uByhF7c+yiEVNHxdxZCI/M2sm7BfGkFQ3SRiq+AIxUfLO
+         gBuwvlP1v92yC0WuEP7uSO6lleuB8Vjgs6pDw2Cwq2CypioUHPnUZPUYOrghspwrSEnx
+         dNrVGhi8C9XSnqaYzBQqXg4uWR1hb3IDpMKalCSUp2ClemkoEWK6qPMWn12yhjZZ21to
+         UP2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=A30fengd;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pd2qxw5f;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z3-v6si2832413qto.323.2018.07.12.07.30.00
+        by mx.google.com with ESMTPS id e2-v6si998557qvb.179.2018.07.02.05.25.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 07:30:00 -0700 (PDT)
+        Mon, 02 Jul 2018 05:25:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=A30fengd;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pd2qxw5f;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60504 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60730 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdcbY-0001Yo-0j
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 10:30:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49430)
+	id 1fZxte-0003lj-1l
+	for alex.bennee@linaro.org; Mon, 02 Jul 2018 08:25:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57290)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdcb9-0001VQ-MG
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 10:29:36 -0400
+	(envelope-from <stefanha@gmail.com>) id 1fZxtO-0003la-RX
+	for qemu-devel@nongnu.org; Mon, 02 Jul 2018 08:25:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdcb8-0000Bo-CE
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 10:29:35 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:39980)
+	(envelope-from <stefanha@gmail.com>) id 1fZxtJ-0002yQ-TG
+	for qemu-devel@nongnu.org; Mon, 02 Jul 2018 08:25:18 -0400
+Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:54473)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdcb8-0000BO-7P
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 10:29:34 -0400
-Received: by mail-oi0-x244.google.com with SMTP id w126-v6so56127914oie.7
-	for <qemu-devel@nongnu.org>; Thu, 12 Jul 2018 07:29:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=v7RKkvba8Sz+i+pg4q961ojmX4JE02xEES9cr4D9mXc=;
-	b=A30fengdnz74r/a40CL5jgaMvEoVI58cxcVauhUQw2AYVcyCwefHx3Y/B29qS/yYym
-	+qzohWl1dVRdfkPvYrK3hd1zjd3rMRuEBoiNTXgHDLrjNXKTWwXhKp11fFfAmgG+SAbo
-	TDjHRkcumpnr10F/1fLKaUG8UXuiApIYCgRAI=
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1fZxtJ-0002xe-LM; Mon, 02 Jul 2018 08:25:13 -0400
+Received: by mail-wm0-x243.google.com with SMTP id i139-v6so8814937wmf.4;
+	Mon, 02 Jul 2018 05:25:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=c4Y5YTkJT5RnC/4rtI5ft9um4yv9eeuH+5zBSf78iW0=;
+	b=pd2qxw5fHf8qPX41xLzSC/64pTS9oGWcDDkmCYeWt2muuh+nJ1QNRSkkyGpdf1ahDL
+	jPIrbfhWmobzcDVRVI29SzqVan2Uw8aFFZLCUaFuFFZuvTzTXt5LCEmEh7S2xuDucOBc
+	rWb8uGiarYdr65P5G47nulCap1AHoHSHFTy5sMBU8c9bDkgR+8H+BJEH9bImw8HptqXh
+	vzCNpKAtJ7b2CUra3JAYtWIFKlqBWh/0ybK+lCtIjpbetMYCe/sMZ50XmHPHQVnTcOdL
+	k7am9td4WJjaojxMT5prkEJEqe21QGnHpits4nMRFnPot3Z155AidhUIcl5f0TPPMFA5
+	WLIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=v7RKkvba8Sz+i+pg4q961ojmX4JE02xEES9cr4D9mXc=;
-	b=rLup+mZ1zEAFjLHBIKTudFNQMEituUfx0vU8S2qOHDjEKlZqcXd1uvlVqRNtzF6FSe
-	OqejzaaPBV0Ri/qMHlQBYrxGf6PpdgfuNfYDk2BaTabX8/9pKQiHQh4cKK9cEA9vRThn
-	BTu5rY4+Q7v3lZB3LfOcMJAICMUZil3v3if5YpRRTYR5Jmv3mMEvgk8xTOCehKhg5imw
-	Icv9gSXyn9Ne2+2j0IFqLht5ltytvMBmftfPnmynY59SnBiSZgsbtQL1CB6Q56KXnLOO
-	LM+1R7LVGYoevM8gT3KT6rFZPFyq6BjalyUfnG9Y57KyPUgXE8stPLUFjoUHmQe/nbZI
-	YYng==
-X-Gm-Message-State: AOUpUlGbIIrC63I8prMSLqiPrd4IdXCcuMuPqRtuar36sBeercC5QUmX
-	5IfRjI5qhcYEF0aBvyT6eDgxywjNCa8rKNxwB2N21Q==
-X-Received: by 2002:aca:f5d1:: with SMTP id
-	t200-v6mr2700253oih.12.1531405773596; 
-	Thu, 12 Jul 2018 07:29:33 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=c4Y5YTkJT5RnC/4rtI5ft9um4yv9eeuH+5zBSf78iW0=;
+	b=Ga2izk5jw/1O8M8vv7tGVvOHHrDq3z4Fvw/T2TigKr2V69aETcMtGMYFGCtj+gieae
+	3V9KbcAmtlxlDyUIfYR3IagHW5klVKx8JZVcTPcYEc8YgD7cr/QdOYHVk/Qf+tCy3w4n
+	tnFbQK0LjHemg/5bqhG3XH3UTk4ER/AGN/U9oY4+pxn9AqIjzH8E+Jn4UXl+pBrPxZhU
+	9fi6966htmzkoC47anio52HNaRn4UVeShTgTAEpxWprrd0jWtSfuFgxo6FXkye4qaKW8
+	ZGDe+ryxvGOd9YqJIHy4KrF78bmXNPfyNy440XVteI8Ki19dxbkg8DbnC3KcJzF0Ft7c
+	ndhQ==
+X-Gm-Message-State: APt69E3+fcFWH5njUtxmaBScRmJV9Gw0STanQGRU9oKUzbip2PIznHqS
+	w5aOxVe+iJA672Oxrraox7k=
+X-Received: by 2002:a1c:3e41:: with SMTP id
+	l62-v6mr7929113wma.55.1530534312631; 
+	Mon, 02 Jul 2018 05:25:12 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	q14-v6sm14443294wmd.20.2018.07.02.05.25.11
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 02 Jul 2018 05:25:11 -0700 (PDT)
+Date: Mon, 2 Jul 2018 13:25:10 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Message-ID: <20180702122510.GB2155@stefanha-x1.localdomain>
+References: <20180627143815.1829-1-joel@jms.id.au>
+	<20180627143815.1829-2-joel@jms.id.au>
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 07:29:13
-	-0700 (PDT)
-In-Reply-To: <20180629132954.24269-20-luc.michel@greensocs.com>
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
-	<20180629132954.24269-20-luc.michel@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jul 2018 15:29:13 +0100
-Message-ID: <CAFEAcA-F8Lj1SxFJZ1-GwdYaFSGP214eGTrFFoBHh0aasbBraA@mail.gmail.com>
-To: Luc Michel <luc.michel@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="neYutvxvOLaeuPCA"
+Content-Disposition: inline
+In-Reply-To: <20180627143815.1829-2-joel@jms.id.au>
+User-Agent: Mutt/1.10.0 (2018-05-17)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v3 19/20] xlnx-zynqmp: Improve
- GIC wiring and MMIO mapping
+X-Received-From: 2a00:1450:400c:c09::243
+Subject: Re: [Qemu-devel] [PATCH v2 1/3] arm: Add Nordic Semiconductor nRF51
+ SoC
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,45 +114,68 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a1ZBgRgairni
+X-TUID: FRckSSe/+B8e
 
-On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
-> This commit improve the way the GIC is realized and connected in the
-> ZynqMP SoC. The security extensions are enabled only if requested in the
-> machine state. The same goes for the virtualization extensions.
->
-> All the GIC to APU CPU(s) IRQ lines are now connected, including FIQ,
-> vIRQ and vFIQ. The missing CPU to GIC timers IRQ connections are also
-> added (HYP and SEC timers).
->
-> The GIC maintenance IRQs are back-wired to the correct GIC PPIs.
->
-> Finally, the MMIO mappings are reworked to take into account the ZynqMP
-> specificities. the GIC (v)CPU interface is aliased 16 times:
 
-"specifics". "The"
+--neYutvxvOLaeuPCA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->   * for the firsts 0x1000 bytes from 0xf9010000 to 0xf901f000
->   * for the seconds 0x1000 bytes from 0xf9020000 to 0xf902f000
+On Thu, Jun 28, 2018 at 12:08:13AM +0930, Joel Stanley wrote:
+> +/* TODO: Flash size should be defined by the board. Microbit uses 256KB */
+> +#define FLASH_BASE      0x00000000
+> +#define FLASH_SIZE      (256 * 1024)
+> +
+> +/* TODO: Flash size should be defined by the board. Microbit uses 16KB */
+> +#define SRAM_BASE       0x20000000
+> +#define SRAM_SIZE       (16 * 1024)
 
-"second"
+Making FLASH_SIZE and SRAM_SIZE properties of the NRF51State object.
+Then microbit.c can set them.
 
-> Mappings of the virtual interface and virtual CPU interface are mapped
-> only when virtualization extensions are requested. The
-> XlnxZynqMPGICRegion struct has been enhanced to be able to catch all
-> this information.
->
-> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> ---
+> +static void nrf51_soc_init(Object *obj)
+> +{
+> +    NRF51State *s = NRF51_SOC(obj);
+> +
+> +    memory_region_init(&s->container, obj, "nrf51-container", UINT64_MAX);
+> +
+> +    /* TODO: implement a cortex m0 and update this */
 
-Nothing obviously wrong here, but I'll leave the details for
-one of the Xilinx folk to review.
+Please see "[PATCH v2 0/3] arm: add skeleton Cortex M0 CPU model".  It
+should work with TYPE_ARMV7M -> TYPE_ARMV6M and "cortex-m3" ->
+"cortex-m0".
 
-thanks
--- PMM
+Julia is currently completing the Cortex M0 emulation but at this point
+guest software may already run successfully.  If not, then the patches
+she sends over the next week or two ought to do the trick.
+
+> +typedef struct NRF51State {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    char *kernel_filename;
+
+Is this used by anything?
+
+--neYutvxvOLaeuPCA
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJbOhmmAAoJEJykq7OBq3PIYsoIAMk7THEXPxeSMgk+Bry8E1/c
+V919F6xt1URYGA0crVnZvOpI1qqLCxbCLY42mwnYzp1WWDeOclYuDhI1WpQso42e
+IoSAOTb+GmeRW+nPYzoqPw6ERzFtWkVlIymSUnq2zIvdTyA+rSv5FurES4wHL5LZ
+jIoDb6v5OBarT9eFumwfR4LDn/QfRfkOaPOU6b4Ah7uHnkKVhuEuPwKsC0tldyqy
+manmB5l5Qh457RCVwl7r/RU19JIC2hF+n074IYGPI38Ugtry/HsL54cxzv3XWAfo
+jLwTVPJDO/pp9sEfXoZWPXjHDS8og3hzvkMK3KY2C8Yc7hGONapj5QlzzhXI9GY=
+=4Jmd
+-----END PGP SIGNATURE-----
+
+--neYutvxvOLaeuPCA--

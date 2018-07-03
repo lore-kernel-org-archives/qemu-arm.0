@@ -1,87 +1,87 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp695907wrq;
-        Tue, 3 Jul 2018 00:26:29 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeQZ8t+oN3X8AahnBJhsDvv7lq6EyDBjtVMpDl4aoEUVO/UYKluqXzPtA3m5jWCKnoe4QZg
-X-Received: by 2002:ac8:82e:: with SMTP id u43-v6mr9030106qth.88.1530602789316;
-        Tue, 03 Jul 2018 00:26:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530602789; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp697176wrq;
+        Tue, 3 Jul 2018 00:28:20 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfzvS8cxEbVFaSCScmV8fr8PhY7CahE52FFBwLEXh1BPjXHeFcsE0OBrkVnt4qmBmtYPK7m
+X-Received: by 2002:aed:3f7c:: with SMTP id q57-v6mr26116991qtf.256.1530602900341;
+        Tue, 03 Jul 2018 00:28:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530602900; cv=none;
         d=google.com; s=arc-20160816;
-        b=vrWn9AVUupcWRwca5ik4jMiEVvGrBI1b0mRqhyiAyy0kTHlIMvFHZOrBckz3MEup3V
-         XTnWDnw/4dA6Fx2K6SSD91pbaBU8GQEp8OMbqdyjg6eopoPSL8sacMqanf/Wd7yoBAFY
-         BTTN9qEQ5so8UPhjajUlnKMso+iNOMKiw3y7ZTs5VXpu40UoD87VDGKeoT/QxhSLzEnd
-         bumZIPmD2iSDFyf816hbbqPtryE0hD/3OE+aP3ndEdH8IiQAOvcvPt7lctZactSWXs/6
-         DbabzV7LZfvH7navY0F9JdEgnNu6cBJWwn3Pzsoa2VVfExwMgsHzJgT6kB/mFeDpNvNb
-         +h1Q==
+        b=rvPXUFu6gV4+x9hAONCs1uGxJBvmEe9OrHn/Zjd2c9Ccg+4LZim+mnTFTsysXS3m3t
+         MU0tvYGqv5PeSbuQL829bMA8wAgu7A2aasZgLlFdeUx3G4KO5naaYU2XpDvHsJMKc38A
+         mezfA1R3L8aZbepilFAF6xT7yCQ97EPpFWHsjw95abeqAoVJ6sxlXYB/+8xfkAKQvohx
+         qBZNUvCdajnC+nZUQlnCxriY+YE/wnwyVOjeC8QNNsUENuqwMpDfikj/wIQ6spccEgN4
+         jeQsKtFrTGocm1l7GafoA2ECFxcScvo67Z1UjJ6TOw1crgwzhtsokHeQkQ3mhnq1ITm8
+         ClMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=U+VYLGYRBg5FB4iCHfFjsS6dEMreFjwwtbtwCMhizlk=;
-        b=HEOFQM1EZUMb8jHaF4gRw70B5MRcDs+h0aOlTVSpvwmzhqaDEQc7mpiGjafZ0lDjDq
-         aiXaRUKb8w1/0aXC6hmaFlGe/dJWXmgzTaRPbUi5Jb/jZg/tUFU6WRGd7yQ/Gu5Mx43B
-         bZSziLffCMQjvPbC1ox+3pNk5zVOK6MWMCqxwt84JoEMHdAdjS4QpYpy41q2Vyhz3Nyp
-         ZyVGm4vxi+xT6WnjrENNoUHuwBWGXQLpC0njeYWZN4GVmUhUXg0sb4hqDLGr1F6h/AE/
-         tSbWU3hxAShOXIgs7tUM5EYX1MkYZnTzEeBa7O0GOanLDohEJRVm33eFjbnv08KO0Cpt
-         ZDJg==
+        bh=5ihKmth+ZfmbKazNAhC9SE9+YyKxaJuZjIO5l/yxZeI=;
+        b=clUZxP7UAlXfEEGaZkOMMpOdVrvA284NomZo2SMS6qRzodZZGGs3Xfsn+a1/1zTwsN
+         ji++67WrjJ40PzmTQ2z+7LN8GjQv1ZR0Yvjbyup++iDIi+tOnxDi4+neL+Zw28hKmNoc
+         8CbiYyDKRGPxQDpFFSOq9MKDN02GRY1AG5WfbxVFcBeYN5vo0NmxEcUBbPANAKh13T/w
+         2hX2Y3Smp0NOlUt75b09iSjEZxWMpZMNWEtFaUP2xF5OsSZTPXk4MgLx7OcvzxdRh+AI
+         ELzGg0BdhimQWNCxmKEOEt6jLFybmjcV/pkAcFwBLbEVmlCBHg+h4hvsRMwVRoMc29Ww
+         /jVw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u16-v6si469887qvf.157.2018.07.03.00.26.29
+        by mx.google.com with ESMTPS id v36-v6si473360qvc.168.2018.07.03.00.28.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Jul 2018 00:26:29 -0700 (PDT)
+        Tue, 03 Jul 2018 00:28:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38479 helo=lists.gnu.org)
+Received: from localhost ([::1]:38492 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1faFhk-0004W6-SY
-	for alex.bennee@linaro.org; Tue, 03 Jul 2018 03:26:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59672)
+	id 1faFjX-0004rg-Rl
+	for alex.bennee@linaro.org; Tue, 03 Jul 2018 03:28:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59417)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1faFgZ-0003uM-Fg
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:26:21 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1faFg3-0003oO-W7
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:28:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1faFcW-0005nx-FW
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:25:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46880 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1faFbr-00050c-Gx
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:24:43 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46742 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1faFcV-0005ls-MB; Tue, 03 Jul 2018 03:21:03 -0400
+	id 1faFbq-0004zT-Th; Tue, 03 Jul 2018 03:20:23 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0BD4E7262D;
-	Tue,  3 Jul 2018 07:21:03 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AED39857AB;
+	Tue,  3 Jul 2018 07:20:21 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-71.ams2.redhat.com
 	[10.36.116.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1BB131C5B5;
-	Tue,  3 Jul 2018 07:21:00 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BADA21C5A3;
+	Tue,  3 Jul 2018 07:20:19 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue,  3 Jul 2018 09:19:58 +0200
-Message-Id: <1530602398-16127-16-git-send-email-eric.auger@redhat.com>
+Date: Tue,  3 Jul 2018 09:19:44 +0200
+Message-Id: <1530602398-16127-2-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1530602398-16127-1-git-send-email-eric.auger@redhat.com>
 References: <1530602398-16127-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.2]);
-	Tue, 03 Jul 2018 07:21:03 +0000 (UTC)
+	Tue, 03 Jul 2018 07:20:21 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 03 Jul 2018 07:21:03 +0000 (UTC) for IP:'10.11.54.5'
+	Tue, 03 Jul 2018 07:20:21 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC v3 15/15] hw/arm/virt: Add nvdimm and
- nvdimm-persistence options
+Subject: [Qemu-arm] [RFC v3 01/15] linux-headers: header update for KVM/ARM
+ KVM_ARM_GET_MAX_VM_PHYS_SHIFT
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,101 +97,169 @@ Cc: drjones@redhat.com, david@gibson.dropbear.id.au, dgilbert@redhat.com,
 	agraf@suse.de
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DDt62Bllio21
+X-TUID: PxitZWBAhocH
 
-Machine option nvdimm allows to turn NVDIMM support on.
+This is a header update against
+
+git://linux-arm.org/linux-skp.git ipa52/v3
+
+to get the KVM_ARM_GET_MAX_VM_PHYS_SHIFT ioctl. This allows to retrieve
+the IPA address range KVM supports.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- hw/arm/virt.c | 60 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 57 insertions(+), 3 deletions(-)
+ include/standard-headers/linux/virtio_config.h | 16 ++++++++++++----
+ linux-headers/asm-mips/unistd.h                | 18 ++++++++++++------
+ linux-headers/asm-powerpc/kvm.h                |  1 +
+ linux-headers/linux/kvm.h                      | 16 ++++++++++++++++
+ 4 files changed, 41 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 51f42cd..13e6dec 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1762,6 +1762,47 @@ static void virt_set_kvm_type(Object *obj, const char *value, Error **errp)
-     vms->kvm_type = g_strdup(value);
- }
+diff --git a/include/standard-headers/linux/virtio_config.h b/include/standard-headers/linux/virtio_config.h
+index b777069..0b19436 100644
+--- a/include/standard-headers/linux/virtio_config.h
++++ b/include/standard-headers/linux/virtio_config.h
+@@ -45,11 +45,14 @@
+ /* We've given up on this device. */
+ #define VIRTIO_CONFIG_S_FAILED		0x80
  
-+static bool virt_get_nvdimm(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->acpi_nvdimm_state.is_enabled;
-+}
-+
-+static void virt_set_nvdimm(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->acpi_nvdimm_state.is_enabled = value;
-+}
-+
-+static char *virt_get_nvdimm_persistence(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return g_strdup(vms->acpi_nvdimm_state.persistence_string);
-+}
-+
-+static void virt_set_nvdimm_persistence(Object *obj, const char *value,
-+                                        Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+    AcpiNVDIMMState *nvdimm_state = &vms->acpi_nvdimm_state;
-+
-+    if (strcmp(value, "cpu") == 0)
-+        nvdimm_state->persistence = 3;
-+    else if (strcmp(value, "mem-ctrl") == 0)
-+        nvdimm_state->persistence = 2;
-+    else {
-+        error_report("-machine nvdimm-persistence=%s: unsupported option",
-+                     value);
-+        exit(EXIT_FAILURE);
-+    }
-+
-+    g_free(nvdimm_state->persistence_string);
-+    nvdimm_state->persistence_string = g_strdup(value);
-+}
-+
- static CpuInstanceProperties
- virt_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
- {
-@@ -1804,10 +1845,10 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-                                  Error **errp)
- {
-     const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+-/* Some virtio feature bits (currently bits 28 through 32) are reserved for the
+- * transport being used (eg. virtio_ring), the rest are per-device feature
+- * bits. */
++/*
++ * Virtio feature bits VIRTIO_TRANSPORT_F_START through
++ * VIRTIO_TRANSPORT_F_END are reserved for the transport
++ * being used (e.g. virtio_ring, virtio_pci etc.), the
++ * rest are per-device feature bits.
++ */
+ #define VIRTIO_TRANSPORT_F_START	28
+-#define VIRTIO_TRANSPORT_F_END		34
++#define VIRTIO_TRANSPORT_F_END		38
  
--    if (is_nvdimm) {
--        error_setg(errp, "nvdimm is not yet supported");
--        return;
-+    if (is_nvdimm && !vms->acpi_nvdimm_state.is_enabled) {
-+        error_setg(errp, "nvdimm is not enabled: missing 'nvdimm' in '-M'");
-     }
- }
- 
-@@ -2044,6 +2085,19 @@ static void virt_3_0_instance_init(Object *obj)
-     object_property_add_str(obj, "kvm-type",
-                             virt_get_kvm_type, virt_set_kvm_type, NULL);
- 
-+    object_property_add_bool(obj, "nvdimm",
-+                             virt_get_nvdimm, virt_set_nvdimm, NULL);
-+    object_property_set_description(obj, "nvdimm",
-+                                         "Set on/off to enable/disable NVDIMM "
-+                                         "instantiation", NULL);
+ #ifndef VIRTIO_CONFIG_NO_LEGACY
+ /* Do we get callbacks when the ring is completely used, even if we've
+@@ -71,4 +74,9 @@
+  * this is for compatibility with legacy systems.
+  */
+ #define VIRTIO_F_IOMMU_PLATFORM		33
 +
-+    object_property_add_str(obj, "nvdimm-persistence",
-+                            virt_get_nvdimm_persistence,
-+                            virt_set_nvdimm_persistence, NULL);
-+    object_property_set_description(obj, "nvdimm-persistence",
-+                                    "Set NVDIMM persistence"
-+                                    "Valid values are cpu and mem-ctrl", NULL);
++/*
++ * Does the device support Single Root I/O Virtualization?
++ */
++#define VIRTIO_F_SR_IOV			37
+ #endif /* _LINUX_VIRTIO_CONFIG_H */
+diff --git a/linux-headers/asm-mips/unistd.h b/linux-headers/asm-mips/unistd.h
+index 9bfef7f..d4a85ef 100644
+--- a/linux-headers/asm-mips/unistd.h
++++ b/linux-headers/asm-mips/unistd.h
+@@ -388,17 +388,19 @@
+ #define __NR_pkey_alloc			(__NR_Linux + 364)
+ #define __NR_pkey_free			(__NR_Linux + 365)
+ #define __NR_statx			(__NR_Linux + 366)
++#define __NR_rseq			(__NR_Linux + 367)
++#define __NR_io_pgetevents		(__NR_Linux + 368)
+ 
+ 
+ /*
+  * Offset of the last Linux o32 flavoured syscall
+  */
+-#define __NR_Linux_syscalls		366
++#define __NR_Linux_syscalls		368
+ 
+ #endif /* _MIPS_SIM == _MIPS_SIM_ABI32 */
+ 
+ #define __NR_O32_Linux			4000
+-#define __NR_O32_Linux_syscalls		366
++#define __NR_O32_Linux_syscalls		368
+ 
+ #if _MIPS_SIM == _MIPS_SIM_ABI64
+ 
+@@ -733,16 +735,18 @@
+ #define __NR_pkey_alloc			(__NR_Linux + 324)
+ #define __NR_pkey_free			(__NR_Linux + 325)
+ #define __NR_statx			(__NR_Linux + 326)
++#define __NR_rseq			(__NR_Linux + 327)
++#define __NR_io_pgetevents		(__NR_Linux + 328)
+ 
+ /*
+  * Offset of the last Linux 64-bit flavoured syscall
+  */
+-#define __NR_Linux_syscalls		326
++#define __NR_Linux_syscalls		328
+ 
+ #endif /* _MIPS_SIM == _MIPS_SIM_ABI64 */
+ 
+ #define __NR_64_Linux			5000
+-#define __NR_64_Linux_syscalls		326
++#define __NR_64_Linux_syscalls		328
+ 
+ #if _MIPS_SIM == _MIPS_SIM_NABI32
+ 
+@@ -1081,15 +1085,17 @@
+ #define __NR_pkey_alloc			(__NR_Linux + 328)
+ #define __NR_pkey_free			(__NR_Linux + 329)
+ #define __NR_statx			(__NR_Linux + 330)
++#define __NR_rseq			(__NR_Linux + 331)
++#define __NR_io_pgetevents		(__NR_Linux + 332)
+ 
+ /*
+  * Offset of the last N32 flavoured syscall
+  */
+-#define __NR_Linux_syscalls		330
++#define __NR_Linux_syscalls		332
+ 
+ #endif /* _MIPS_SIM == _MIPS_SIM_NABI32 */
+ 
+ #define __NR_N32_Linux			6000
+-#define __NR_N32_Linux_syscalls		330
++#define __NR_N32_Linux_syscalls		332
+ 
+ #endif /* _ASM_UNISTD_H */
+diff --git a/linux-headers/asm-powerpc/kvm.h b/linux-headers/asm-powerpc/kvm.h
+index 833ed9a..1b32b56 100644
+--- a/linux-headers/asm-powerpc/kvm.h
++++ b/linux-headers/asm-powerpc/kvm.h
+@@ -633,6 +633,7 @@ struct kvm_ppc_cpu_char {
+ #define KVM_REG_PPC_PSSCR	(KVM_REG_PPC | KVM_REG_SIZE_U64 | 0xbd)
+ 
+ #define KVM_REG_PPC_DEC_EXPIRY	(KVM_REG_PPC | KVM_REG_SIZE_U64 | 0xbe)
++#define KVM_REG_PPC_ONLINE	(KVM_REG_PPC | KVM_REG_SIZE_U32 | 0xbf)
+ 
+ /* Transactional Memory checkpointed state:
+  * This is all GPRs, all VSX regs and a subset of SPRs
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index 98f389a..0a90115 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -751,6 +751,16 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_S390_SIE_PAGE_OFFSET 1
+ 
+ /*
++ * On arm/arm64, machine type can be used to request the physical
++ * address size for the VM. Bits [7-0] have been reserved for the
++ * PA size shift (i.e, log2(PA_Size)). For backward compatibility,
++ * value 0 implies the default IPA size, which is 40bits.
++ */
++#define KVM_VM_TYPE_ARM_PHYS_SHIFT_MASK	0xff
++#define KVM_VM_TYPE_ARM_PHYS_SHIFT(x)		\
++	((x) & KVM_VM_TYPE_ARM_PHYS_SHIFT_MASK)
 +
-     vms->memmap = a15memmap;
-     vms->irqmap = a15irqmap;
- }
++/*
+  * ioctls for /dev/kvm fds:
+  */
+ #define KVM_GET_API_VERSION       _IO(KVMIO,   0x00)
+@@ -775,6 +785,12 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_GET_MSR_FEATURE_INDEX_LIST    _IOWR(KVMIO, 0x0a, struct kvm_msr_list)
+ 
+ /*
++ * Get the maximum physical address size supported by the host.
++ * Returns log2(Max-Physical-Address-Size)
++ */
++#define KVM_ARM_GET_MAX_VM_PHYS_SHIFT	_IO(KVMIO, 0x0b)
++
++/*
+  * Extension capability list.
+  */
+ #define KVM_CAP_IRQCHIP	  0
 -- 
 2.5.5
 

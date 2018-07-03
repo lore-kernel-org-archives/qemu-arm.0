@@ -1,87 +1,87 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp693721wrq;
-        Tue, 3 Jul 2018 00:23:05 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdeG3QnwpxryVih7KLkh5em30Y0OGfh7CWT3ipECYunqN0VP7PckGIJqB6rF7ImRiitKHDV
-X-Received: by 2002:a37:6902:: with SMTP id e2-v6mr14308733qkc.0.1530602585331;
-        Tue, 03 Jul 2018 00:23:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530602585; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp693958wrq;
+        Tue, 3 Jul 2018 00:23:22 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeYNuzR9OHrne4lSwMlycPkQWjMCZzBrGhHqLbZBfsIE/+8B8eiwlFyyc/DrIyqsWjLIPaK
+X-Received: by 2002:a37:1286:: with SMTP id 6-v6mr24261225qks.158.1530602602183;
+        Tue, 03 Jul 2018 00:23:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530602602; cv=none;
         d=google.com; s=arc-20160816;
-        b=VZlkUqAkZHNhkBm6V8EfE8vYXSIFBB9Sg8oH2dIZq/U+hq+s4Kg0nKi0fPWnpnhvCQ
-         sTKUHUd6IpIeAGTow5zr4kA3DZKZw/0GOL86YQsOQ5sU/DMdiPTD36y+A2s9PeestcZY
-         Lx4qx0gy1FpcCCsss18GcnP5V7DIP3CzaSWInt3kqNvkwZq2MaTAf5jpR9idbHXztKGC
-         B7x9CUomhBMJPkTZ3yM3oJPQQoG5PaCGZeJhwIMDl4n9GM2vFF6UK48yGd4fSHLFSzgC
-         uXZU4sMFtmQF6ui2nabmxXWmyAZNwmjgzNOYDZ0nR+oz8ZlI07L7HMz9MBB6s/5tGGwP
-         NHtQ==
+        b=K5PkjyewQFzWKna9ZbNJyVPt6njPMX7QcOOHONcVTuGa3t/y2PYV2b/rIoEH8ZgkMw
+         JmYH11WDuEjxi3Y9J8F+tz7aJTleHA8xkO5NbbYJfAAebI/+Aa4RXyaW4GZXSAcxc3b4
+         clqu6v/4QEdbCBH75Mlgvn0bfxjf1+EiJmBum3qHU1FnJB9WDrZvojyBAqzrjFvcAoWA
+         59V84ija6NsKayl/y6giNN7xN1rsSxJAZjD411M9KdH1ChynDUQ2U1IyzwwcJZIXlORY
+         sLf/ofNfrUiHWtVQawKb17SpMs9x6RbSyzsSYUxMPJgSUA6bSz3XWMygCQEbtHRSWXjg
+         GaLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=l1g3Y+1XwgMXEROVumnZpRwUkXymqyujlkJUgvD1erw=;
-        b=mxfqsInUzb4XPrvtb4l2TgN+0jFG0lTqTisJGqhl+NB8CUHaC6hSLyiVpKaBsiG1Jh
-         3R2eRqnQisIyWxUpm5iWziApI9UAdu8gjVlYc7UhZp4IifTpvdJTHgrDY7BHy9c18iv7
-         8h8SSV7M3rS8Hngi6LYwDTtdwQ398SkLfcqwi/hSrY+mXciV7J5HYFCLekz4/cKHbnHK
-         C7Rbr8gKuhadUJNc6NnXe8ICiRxd9/i6WVJCdY9clqj0xeFBNd3+arR5JmgO8P+XA3S2
-         luT75d4q0UISjUN/R+dVLWwa2t9c/vTeLwT+swuYCq4iwi8fHzqIBoT2FinOD3MMPbwv
-         NdRg==
+        bh=/ACeE0TCJwQQhnFs+HdrGoeb1jBC8JLOUxR3YPGFj5U=;
+        b=SpSE4vo1ov/A/TRl1pLukRzYQDkNs0f00X5a/zTPbMDop+f8HDrSbAX8cTniS4FxRv
+         T0XgyNWCRSx015IXMVETcrMBTf0KvOJttdcWCH/5iNu7v0aqSLVJ58OjZ1bcz4oMZPyO
+         e2GeDOWAajPQDzz4Kv3TL7ecgI/xJGfu+tpGvGsMNJd7/u6paA3PM6iVF/gO/quOaK8v
+         Z5uO41EjeSwWG9h+kblCZEOmW21Uv8kkWVVCwDOTy8Ek+kJZj5B4F8BhFsVMV4SFj6Jx
+         LUdfsiymz3jWhGvojQi2q9OMnA3cQzBjuaN7KopH6zcgdnCeJ/EgiuyGUaDAjflbguh8
+         Tu0A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v185-v6si436104qkd.338.2018.07.03.00.23.05
+        by mx.google.com with ESMTPS id i28-v6si500176qte.36.2018.07.03.00.23.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Jul 2018 00:23:05 -0700 (PDT)
+        Tue, 03 Jul 2018 00:23:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38372 helo=lists.gnu.org)
+Received: from localhost ([::1]:38382 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1faFeS-0003Lq-TU
-	for alex.bennee@linaro.org; Tue, 03 Jul 2018 03:23:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57729)
+	id 1faFej-0003SS-OI
+	for alex.bennee@linaro.org; Tue, 03 Jul 2018 03:23:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57892)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1faFdG-0003B1-GC
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:22:56 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1faFdY-0003E6-LE
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:23:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1faFcC-0005Nw-B7
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:21:50 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35324 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1faFcU-0005kO-EZ
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 03:22:08 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49518 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1faFcB-0005NZ-Rj; Tue, 03 Jul 2018 03:20:44 -0400
+	id 1faFcT-0005j5-Uw; Tue, 03 Jul 2018 03:21:02 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D373A8182D38;
-	Tue,  3 Jul 2018 07:20:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id DB5A8406F8B2;
+	Tue,  3 Jul 2018 07:21:00 +0000 (UTC)
 Received: from localhost.localdomain.com (ovpn-116-71.ams2.redhat.com
 	[10.36.116.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E108C1C5B5;
-	Tue,  3 Jul 2018 07:20:40 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E577A1C5B8;
+	Tue,  3 Jul 2018 07:20:58 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com, david@redhat.com
-Date: Tue,  3 Jul 2018 09:19:51 +0200
-Message-Id: <1530602398-16127-9-git-send-email-eric.auger@redhat.com>
+Date: Tue,  3 Jul 2018 09:19:57 +0200
+Message-Id: <1530602398-16127-15-git-send-email-eric.auger@redhat.com>
 In-Reply-To: <1530602398-16127-1-git-send-email-eric.auger@redhat.com>
 References: <1530602398-16127-1-git-send-email-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Tue, 03 Jul 2018 07:20:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Tue, 03 Jul 2018 07:20:42 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.7]);
+	Tue, 03 Jul 2018 07:21:00 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Tue, 03 Jul 2018 07:21:00 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC v3 08/15] hw/arm/boot: introduce
- fdt_add_memory_node helper
+Subject: [Qemu-arm] [RFC v3 14/15] hw/arm/boot: Expose the pmem nodes in the
+ DT
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,41 +97,33 @@ Cc: drjones@redhat.com, david@gibson.dropbear.id.au, dgilbert@redhat.com,
 	agraf@suse.de
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: klmFHEFpEZTw
+X-TUID: JDxLuQSyp3QH
 
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-
-We introduce an helper to create a memory node.
+In case of NV-DIMM slots, let's add /pmem DT nodes.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-
 ---
-
-v1 -> v2:
-- nop of existing /memory nodes was already handled
----
- hw/arm/boot.c | 54 ++++++++++++++++++++++++++++++++++--------------------
- 1 file changed, 34 insertions(+), 20 deletions(-)
+ hw/arm/boot.c | 33 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 32 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index e09201c..5243a25 100644
+index 2c7d558..3381c66 100644
 --- a/hw/arm/boot.c
 +++ b/hw/arm/boot.c
-@@ -413,6 +413,36 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
-     }
+@@ -444,6 +444,36 @@ out:
+     return ret;
  }
  
-+static int fdt_add_memory_node(void *fdt, uint32_t acells, hwaddr mem_base,
-+                               uint32_t scells, hwaddr mem_len,
-+                               int numa_node_id)
++static int fdt_add_pmem_node(void *fdt, uint32_t acells, hwaddr mem_base,
++                             uint32_t scells, hwaddr mem_len,
++                             int numa_node_id)
 +{
 +    char *nodename = NULL;
 +    int ret;
 +
-+    nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
++    nodename = g_strdup_printf("/pmem@%" PRIx64, mem_base);
 +    qemu_fdt_add_subnode(fdt, nodename);
-+    qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
++    qemu_fdt_setprop_string(fdt, nodename, "compatible", "pmem-region");
 +    ret = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg", acells, mem_base,
 +                                       scells, mem_len);
 +    if (ret < 0) {
@@ -155,54 +147,16 @@ index e09201c..5243a25 100644
  static void fdt_add_psci_node(void *fdt)
  {
      uint32_t cpu_suspend_fn;
-@@ -492,7 +522,6 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-     void *fdt = NULL;
-     int size, rc, n = 0;
-     uint32_t acells, scells;
--    char *nodename;
-     unsigned int i;
-     hwaddr mem_base, mem_len;
-     char **node_path;
-@@ -566,35 +595,20 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         mem_base = binfo->loader_start;
-         for (i = 0; i < nb_numa_nodes; i++) {
-             mem_len = numa_info[i].node_mem;
--            nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
--            qemu_fdt_add_subnode(fdt, nodename);
--            qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
--            rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
--                                              acells, mem_base,
--                                              scells, mem_len);
-+            rc = fdt_add_memory_node(fdt, acells, mem_base,
-+                                     scells, mem_len, i);
-             if (rc < 0) {
--                fprintf(stderr, "couldn't set %s/reg for node %d\n", nodename,
--                        i);
-                 goto fail;
-             }
+@@ -532,7 +562,8 @@ static int fdt_add_hotpluggable_memory_nodes(void *fdt,
+         di = !is_nvdimm ? mi->u.dimm.data : mi->u.nvdimm.data;
  
--            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id", i);
-             mem_base += mem_len;
--            g_free(nodename);
-         }
-     } else {
--        nodename = g_strdup_printf("/memory@%" PRIx64, binfo->loader_start);
--        qemu_fdt_add_subnode(fdt, nodename);
--        qemu_fdt_setprop_string(fdt, nodename, "device_type", "memory");
--
--        rc = qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
--                                          acells, binfo->loader_start,
--                                          scells, binfo->ram_size);
-+        rc = fdt_add_memory_node(fdt, acells, binfo->loader_start,
-+                                 scells, binfo->ram_size, -1);
-         if (rc < 0) {
--            fprintf(stderr, "couldn't set %s reg\n", nodename);
-             goto fail;
-         }
--        g_free(nodename);
-     }
- 
-     rc = fdt_path_offset(fdt, "/chosen");
+         if (is_nvdimm) {
+-            ret = -ENOENT; /* NV-DIMM not yet supported */
++            ret = fdt_add_pmem_node(fdt, acells, di->addr,
++                                    scells, di->size, di->node);
+         } else {
+             ret = fdt_add_memory_node(fdt, acells, di->addr,
+                                       scells, di->size, di->node);
 -- 
 2.5.5
 

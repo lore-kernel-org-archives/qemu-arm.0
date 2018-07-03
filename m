@@ -1,138 +1,271 @@
-Received: by 2002:a4f:9ad8:0:0:0:0:0 with SMTP id b85-v6csp1422870ivh;
-        Tue, 3 Jul 2018 10:13:50 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeb8iOUfALAqZXQOoFZ71ph1hkqBn5i9wTeI7OSPW4dM/lO7ug++QdPGPAREeDUX3FVaWDj
-X-Received: by 2002:ac8:17b3:: with SMTP id o48-v6mr26862510qtj.397.1530638029973;
-        Tue, 03 Jul 2018 10:13:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530638029; cv=none;
+Received: by 2002:a4f:9ad8:0:0:0:0:0 with SMTP id b85-v6csp1433952ivh;
+        Tue, 3 Jul 2018 10:25:13 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd7ino6zyA76Fwgwk5AV/uH1ayfYYPm3fs9TxLO6h2/XeTQjT4XsT8svAgSyOuXAvwwrljV
+X-Received: by 2002:a0c:9b93:: with SMTP id o19-v6mr27459321qve.89.1530638713796;
+        Tue, 03 Jul 2018 10:25:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530638713; cv=none;
         d=google.com; s=arc-20160816;
-        b=V2qc4lvpmV02miEmVMg9Lk2s3xpPeG9sdN/bdb2lbEzdPbHfyrtKOK8MAOnbB9xRNg
-         7k7KzrV5a2QEkSYlEATBwRAgFswtYekKwx+MXFZ9waoQkMn/ZImcksePVUOded9teeMk
-         voxoJz7icaw9/o9n+MuzL6ouEcLP7UbcyO9aesECOCEELY2oPMLtoa7qTQuFn6PA/AqX
-         wvEs5HSXA63Izb7lvejo7Z6ggsNYi0tgNza6jfzCtp3PVrQfEiqvt7vHlTh/40m6pjxt
-         yr1cR/TsIIlCklZg4tIRp0ZOZjEIrF1Wiy26iKAv8CL27cEx3sKEfjJzCJmH6FiIF0UK
-         skFQ==
+        b=fjCnXlhzMjCH2fT3DyGJVV+/dFuAzQWYlE6fd+f8YdJIFqzfkBCOhO+aUQTgn0qQJv
+         Cy1L4BO8Ho4QTHqL4UaUXLzUOif0yMUYRlSHjsuXmJg/8sJ2yKqJNZJXu0ujX8DejUF+
+         IhZLDxfdocbBS866Q4YNlS8EQrMhwITWf+Mi2IP/CtVuZw2wkD1cybK6AsPjb2f5YGOp
+         k4sYncXUy0fJfMwYUq1hjFrtnGdC7dpVP5IB/m1Smj7LXVgzQJyGwRzqdx2Wy2NmKEdH
+         iDmvmrsamZ3ROewi2TSEMqzD6cBJ0siS23CC+ZXVaqjOpyhu+AXQGXwqCKsllEvp1enc
+         hLWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=gRwsYYQqBYMyXJ2DvW9LNnMeI6UI9Gw/1P2zJohcDoE=;
-        b=SEvaZfmw8uzHo44Jv9cgRrt0ygfrG2Jf2BWJ8sjBLf2UbdtkBS0fdvu4RUAYHlq0qh
-         sOl2+zYtGRg+RXk9MWP9irDIBT+N6THcCEJKwswG+H/xzfo9t6o+J+0x3JNn+mqChfoj
-         HmZZmg/ypVgqdtEbQ6WiPSq9zsznApwRQd088Yk9rgsJovaM2FMhLHJbeuuGXWBmLDlV
-         eFL5LPtWcZzlf5ltwKUbSaJ+SbxprrThDgQCN9YOUshSGGP3bEyYckZYzZrnY9fDdIt2
-         jUJYvW84/N8E8JGPNtGBjyuNTnsGuHZxWdR/FPp4v8R6wUCUemaqAMNzch6n5dJaB7bE
-         /3xQ==
+        bh=N+ikNAGjDmD5Ead/5T+2G3mNr/p6QYxS/H56NVIt2tQ=;
+        b=DED2LkRDuto3IJScE3Dp98QsXKQ0ydYAwQWyo99n7igCyU3mlUJBXSLw+mzDfeR03Q
+         xkOtQ35U/UgrN+c6SPHK98dHRH03LeO87/9LqMpy0+lcs0Qb69uI05mHC9Bvu9DsH8TB
+         6u9qxW5tlYbgeQjj1UxuTIZqvy4COrpH/VBDPiBXRuljRTACJ0lKdq+ris1jo2NG5Tkv
+         gSYSQy10OKOSMO4nADNJMiDO3EaxazEP6EdLkeC6kxO5haiGehup/iqH6Xxc7N7sxVMU
+         Dnmw1TMY//B4HlnPfdyNBc1WxMErVfpxx9eJdNaOPQzjmCLCE61PoXL6VxahX29BOpS6
+         2a6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d75-v6si1416644qkb.390.2018.07.03.10.13.49
+        by mx.google.com with ESMTPS id j4-v6si840875qtc.35.2018.07.03.10.24.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Jul 2018 10:13:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 03 Jul 2018 10:25:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41861 helo=lists.gnu.org)
+Received: from localhost ([::1]:41902 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1faOs9-0005XJ-IT
-	for alex.bennee@linaro.org; Tue, 03 Jul 2018 13:13:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59308)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1faP2o-0008Ay-M4
+	for alex.bennee@linaro.org; Tue, 03 Jul 2018 13:24:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33494)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1faOpO-0003UP-I7
-	for qemu-devel@nongnu.org; Tue, 03 Jul 2018 13:10:59 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1faP2h-0008AW-9d
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 13:24:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1faOpN-0005Ff-KR
-	for qemu-devel@nongnu.org; Tue, 03 Jul 2018 13:10:58 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43234)
+	(envelope-from <pm215@archaic.org.uk>) id 1faP2f-0005WS-U1
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 13:24:43 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43246)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1faOpL-00058l-8U; Tue, 03 Jul 2018 13:10:55 -0400
+	id 1faP2f-0005Vo-JL; Tue, 03 Jul 2018 13:24:41 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1faOpE-00034V-O8; Tue, 03 Jul 2018 18:10:48 +0100
+	id 1faOpC-00033H-Io; Tue, 03 Jul 2018 18:10:46 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  3 Jul 2018 18:10:44 +0100
-Message-Id: <20180703171044.9503-5-peter.maydell@linaro.org>
+Date: Tue,  3 Jul 2018 18:10:41 +0100
+Message-Id: <20180703171044.9503-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180703171044.9503-1-peter.maydell@linaro.org>
 References: <20180703171044.9503-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH for-3.0 4/4] hw/timer/cmsdk-apb-timer: run or
- stop timer on writes to RELOAD and VALUE
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH for-3.0 1/4] ptimer: Add
+ TRIGGER_ONLY_ON_DECREMENT policy option
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Guenter Roeck <linux@roeck-us.net>, patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pD7x0OpgQB/v
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0kHep9/nulTf
 
-If the CMSDK APB timer is set up with a zero RELOAD value
-then it will count down to zero, fire once and then stay
-at zero. From the point of view of the ptimer system, the
-timer is disabled; but the enable bit in the CTRL register
-is still set and if the guest subsequently writes to the
-RELOAD or VALUE registers this should cause the timer to
-start counting down again.
-
-Add code to the write paths for RELOAD and VALUE so that
-we correctly restart the timer in this situation.
-
-Conversely, if the new RELOAD and VALUE are both zero,
-we should stop the ptimer.
+The CMSDK timer behaviour is that an interrupt is triggered when the
+counter counts down from 1 to 0; however one is not triggered if the
+counter is manually set to 0 by a guest write to the counter register.
+Currently ptimer can't handle this; add a policy option to allow
+a ptimer user to request this behaviour.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/timer/cmsdk-apb-timer.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ include/hw/ptimer.h |  9 +++++++++
+ hw/core/ptimer.c    | 22 +++++++++++++++++++++-
+ tests/ptimer-test.c | 25 +++++++++++++++++++------
+ 3 files changed, 49 insertions(+), 7 deletions(-)
 
-diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-index 3ebdc7be408..801d1dba741 100644
---- a/hw/timer/cmsdk-apb-timer.c
-+++ b/hw/timer/cmsdk-apb-timer.c
-@@ -126,10 +126,26 @@ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
-         break;
-     case A_RELOAD:
-         /* Writing to reload also sets the current timer value */
-+        if (!value) {
-+            ptimer_stop(s->timer);
+diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
+index fc4ef5cc1d2..0731d9aef19 100644
+--- a/include/hw/ptimer.h
++++ b/include/hw/ptimer.h
+@@ -69,6 +69,15 @@
+  * not the one less.  */
+ #define PTIMER_POLICY_NO_COUNTER_ROUND_DOWN (1 << 4)
+ 
++/*
++ * Starting to run with a zero counter, or setting the counter to "0" via
++ * ptimer_set_count() or ptimer_set_limit() will not trigger the timer
++ * (though it will cause a reload). Only a counter decrement to "0"
++ * will cause a trigger. Not compatible with NO_IMMEDIATE_TRIGGER;
++ * ptimer_init() will assert() that you don't set both.
++ */
++#define PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT (1 << 5)
++
+ /* ptimer.c */
+ typedef struct ptimer_state ptimer_state;
+ typedef void (*ptimer_cb)(void *opaque);
+diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+index 7221c68a984..170fd34d8b5 100644
+--- a/hw/core/ptimer.c
++++ b/hw/core/ptimer.c
+@@ -45,8 +45,20 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
+     uint32_t period_frac = s->period_frac;
+     uint64_t period = s->period;
+     uint64_t delta = s->delta;
++    bool suppress_trigger = false;
+ 
+-    if (delta == 0 && !(s->policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)) {
++    /*
++     * Note that if delta_adjust is 0 then we must be here because of
++     * a count register write or timer start, not because of timer expiry.
++     * In that case the policy might require us to suppress the timer trigger
++     * that we would otherwise generate for a zero delta.
++     */
++    if (delta_adjust == 0 &&
++        (s->policy_mask & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT)) {
++        suppress_trigger = true;
++    }
++    if (delta == 0 && !(s->policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)
++        && !suppress_trigger) {
+         ptimer_trigger(s);
+     }
+ 
+@@ -353,6 +365,14 @@ ptimer_state *ptimer_init(QEMUBH *bh, uint8_t policy_mask)
+     s->bh = bh;
+     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, ptimer_tick, s);
+     s->policy_mask = policy_mask;
++
++    /*
++     * These two policies are incompatible -- trigger-on-decrement implies
++     * a timer trigger when the count becomes 0, but no-immediate-trigger
++     * implies a trigger when the count stops being 0.
++     */
++    assert(!((policy_mask & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT) &&
++             (policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)));
+     return s;
+ }
+ 
+diff --git a/tests/ptimer-test.c b/tests/ptimer-test.c
+index 41488896f76..b30aad07372 100644
+--- a/tests/ptimer-test.c
++++ b/tests/ptimer-test.c
+@@ -208,6 +208,7 @@ static void check_periodic(gconstpointer arg)
+     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
+     bool no_immediate_reload = (*policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
+     bool no_round_down = (*policy & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
++    bool trig_only_on_dec = (*policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT);
+ 
+     triggered = false;
+ 
+@@ -311,7 +312,7 @@ static void check_periodic(gconstpointer arg)
+     g_assert_cmpuint(ptimer_get_count(ptimer), ==,
+                      no_immediate_reload ? 0 : 10);
+ 
+-    if (no_immediate_trigger) {
++    if (no_immediate_trigger || trig_only_on_dec) {
+         g_assert_false(triggered);
+     } else {
+         g_assert_true(triggered);
+@@ -506,6 +507,7 @@ static void check_run_with_delta_0(gconstpointer arg)
+     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
+     bool no_immediate_reload = (*policy & PTIMER_POLICY_NO_IMMEDIATE_RELOAD);
+     bool no_round_down = (*policy & PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
++    bool trig_only_on_dec = (*policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT);
+ 
+     triggered = false;
+ 
+@@ -515,7 +517,7 @@ static void check_run_with_delta_0(gconstpointer arg)
+     g_assert_cmpuint(ptimer_get_count(ptimer), ==,
+                      no_immediate_reload ? 0 : 99);
+ 
+-    if (no_immediate_trigger) {
++    if (no_immediate_trigger || trig_only_on_dec) {
+         g_assert_false(triggered);
+     } else {
+         g_assert_true(triggered);
+@@ -563,7 +565,7 @@ static void check_run_with_delta_0(gconstpointer arg)
+     g_assert_cmpuint(ptimer_get_count(ptimer), ==,
+                      no_immediate_reload ? 0 : 99);
+ 
+-    if (no_immediate_trigger) {
++    if (no_immediate_trigger || trig_only_on_dec) {
+         g_assert_false(triggered);
+     } else {
+         g_assert_true(triggered);
+@@ -609,6 +611,7 @@ static void check_periodic_with_load_0(gconstpointer arg)
+     ptimer_state *ptimer = ptimer_init(bh, *policy);
+     bool continuous_trigger = (*policy & PTIMER_POLICY_CONTINUOUS_TRIGGER);
+     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
++    bool trig_only_on_dec = (*policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT);
+ 
+     triggered = false;
+ 
+@@ -617,7 +620,7 @@ static void check_periodic_with_load_0(gconstpointer arg)
+ 
+     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
+ 
+-    if (no_immediate_trigger) {
++    if (no_immediate_trigger || trig_only_on_dec) {
+         g_assert_false(triggered);
+     } else {
+         g_assert_true(triggered);
+@@ -667,6 +670,7 @@ static void check_oneshot_with_load_0(gconstpointer arg)
+     QEMUBH *bh = qemu_bh_new(ptimer_trigger, NULL);
+     ptimer_state *ptimer = ptimer_init(bh, *policy);
+     bool no_immediate_trigger = (*policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER);
++    bool trig_only_on_dec = (*policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT);
+ 
+     triggered = false;
+ 
+@@ -675,7 +679,7 @@ static void check_oneshot_with_load_0(gconstpointer arg)
+ 
+     g_assert_cmpuint(ptimer_get_count(ptimer), ==, 0);
+ 
+-    if (no_immediate_trigger) {
++    if (no_immediate_trigger || trig_only_on_dec) {
+         g_assert_false(triggered);
+     } else {
+         g_assert_true(triggered);
+@@ -725,6 +729,10 @@ static void add_ptimer_tests(uint8_t policy)
+         g_strlcat(policy_name, "no_counter_rounddown,", 256);
+     }
+ 
++    if (policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT) {
++        g_strlcat(policy_name, "trigger_only_on_decrement,", 256);
++    }
++
+     g_test_add_data_func_full(
+         tmp = g_strdup_printf("/ptimer/set_count policy=%s", policy_name),
+         g_memdup(&policy, 1), check_set_count, g_free);
+@@ -790,10 +798,15 @@ static void add_ptimer_tests(uint8_t policy)
+ 
+ static void add_all_ptimer_policies_comb_tests(void)
+ {
+-    int last_policy = PTIMER_POLICY_NO_COUNTER_ROUND_DOWN;
++    int last_policy = PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT;
+     int policy = PTIMER_POLICY_DEFAULT;
+ 
+     for (; policy < (last_policy << 1); policy++) {
++        if ((policy & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT) &&
++            (policy & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)) {
++            /* Incompatible policy flag settings -- don't try to test them */
++            continue;
 +        }
-         ptimer_set_limit(s->timer, value, 1);
-+        if (value && (s->ctrl & R_CTRL_EN_MASK)) {
-+            /*
-+             * Make sure timer is running (it might have stopped if this
-+             * was an expired one-shot timer)
-+             */
-+            ptimer_run(s->timer, 0);
-+        }
-         break;
-     case A_VALUE:
-+        if (!value && !ptimer_get_limit(s->timer)) {
-+            ptimer_stop(s->timer);
-+        }
-         ptimer_set_count(s->timer, value);
-+        if (value && (s->ctrl & R_CTRL_EN_MASK)) {
-+            ptimer_run(s->timer, ptimer_get_limit(s->timer) == 0);
-+        }
-         break;
-     case A_INTSTATUS:
-         /* Just one bit, which is W1C. */
+         add_ptimer_tests(policy);
+     }
+ }
 -- 
 2.17.1
 

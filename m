@@ -1,85 +1,88 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp911309wrq;
-        Tue, 3 Jul 2018 04:56:20 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdbn6yPny4VNbhggB6ziI82DZbv4QwTfRPvKBbX8azjG5ih39vXXXyKvLXXZweVcAcfoeKG
-X-Received: by 2002:a37:5142:: with SMTP id f63-v6mr25145772qkb.369.1530618980754;
-        Tue, 03 Jul 2018 04:56:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530618980; cv=none;
+Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp946357wrq;
+        Tue, 3 Jul 2018 05:31:21 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeU+j3xuMJd5PCIYOtFhEauEe+UZ2MyNfXOm1jQfFk/E9zVYo5XHy6XOLJpSkTEfNcBZxCX
+X-Received: by 2002:ac8:1bb8:: with SMTP id z53-v6mr1345085qtj.278.1530621081695;
+        Tue, 03 Jul 2018 05:31:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530621081; cv=none;
         d=google.com; s=arc-20160816;
-        b=nWznFnTWgirawM/hsFwjKuIKJr8TzKVVXe/N2Yzp4w3S6uJp/0FXhJRrrzbOPJTBsb
-         CCcDlfDfga2tM43tABBaZBNmrYqBJBawplE2Z4fCBE0DaHd3pkLGfVha5y8YkxrF4K0M
-         GqsX29icLzQlWxl84DIlVvsv3lTrvjSzCCZjahOb0PJNt6DtD/gs0hgafQiHaoZe0GIX
-         8vUqvVAPu2j0DhtbDrJK/1P2dL3r0RLBKm7F7E0B7ADVHwv9mir/4w7nyfQAgadlOJf4
-         04R/dGUilEktG0MqR/+cMSUReXDIDnlPkCjaMmtMvEhuKsAYNSBHXjqQd2Yo2KLhpNpF
-         OpyA==
+        b=r5XUXyjNvwWQZJQzrrimFElLFTJaFFiDXmSDugDxS5S5Hi0WpPEW9ESse60XFFyjky
+         xvrsGBBT1WLwr7Fpo1D6WSEPMhSffCikXYRnCXkba5ZZj3GgOmfj5q8FcvS/qV57grF7
+         R1Wque1djJTKjtdV3OZopLE/sjpcWAsksxSjBMXwvDRzWpfXOec2LJi2o2faACGDbKjN
+         eziEu4b26tFEy+F/pIjkvKOwJXWiHnMhJ+Go3KSOe4WyYVmhCmLkeh/AObjtSNYZnsV+
+         UJBLXtFvagh5x7NCIUdJH+TudForRA3kqju0Al0McLu1DjjmyvKdBWWYlSIqBJian7W5
+         l/zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=kYhgDIPcVS58tb0gzJcLbYGXrU0dO6PBF70tW7U7mgY=;
-        b=DXFUyRBEoYdQSWr3wz7FT1KMDoKoXzLEeBBPasPaq8LxWiGmDXun9O9GnZYk17GjtP
-         +/MAdrsIYKjPbtQHeNqQ8/eM+s/2WXy0tLUPbejkUjg9Ei3JgYadnslB14htQ7FOHo83
-         huRyghWfOnilsKHnpad2OB95srHclkBApIOsoMcusWL7/pVDmW6tztKDyyM50vxC1Cab
-         A8/dTibO9yR8bhr3khpUvgCvU0Fn6vYjD7tDu9uWAz8oA3+7462Madv2CFDEbmu8G+Bc
-         E230oLLJN2Cq3GfCDUZgqoWIwGROGgP2HKmk9sDsXKT/uCITbyv2F7YybgrdbXEWwn6t
-         hpjw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:arc-authentication-results;
+        bh=boPAAI29PPhVgR+0rH0YiHXedzyYfLBB/TIHqUFUafY=;
+        b=SNGbpYjIQo5OtQTsz2sfJdQLhZIsVbLQMlbQ08EXOI4rTNR41BxCWwy5iB3cJWoyoG
+         uEIRzjJobmEhNoe9mYEnrUUpBWq1PNmdAOZfSh6p8ONSoGeo3gzmw5xRBiQU/LglmGVk
+         2XDsKu8gQxAO9FjCm8raaHlA7EEgi+JqjG7kcKpCPVRQP35VtqtREIMr97NLg+QubV3a
+         BK9l30/5cdwj8dY/S3KMl/JK4U+pOVgw4FPr6rdSXEFeGucm3+QfbtnQrBRI7DYylOYj
+         jmuPTcD28QrA6THbs9PEvQvUnS0uYiM1N0IGbQI79ZYYOOYMCtQ/mtD5DuO7suqNWHFj
+         LTdA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l23-v6si904457qta.151.2018.07.03.04.56.20
+        by mx.google.com with ESMTPS id r25-v6si968684qtk.15.2018.07.03.05.31.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Jul 2018 04:56:20 -0700 (PDT)
+        Tue, 03 Jul 2018 05:31:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39903 helo=lists.gnu.org)
+Received: from localhost ([::1]:40262 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1faJuu-0000vn-BJ
-	for alex.bennee@linaro.org; Tue, 03 Jul 2018 07:56:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38078)
+	id 1faKSn-0003ie-4r
+	for alex.bennee@linaro.org; Tue, 03 Jul 2018 08:31:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45865)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1faJtt-0000HB-Ew
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 07:55:18 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1faKSg-0003iK-Py
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 08:31:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1faJtp-0008II-Il
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 07:55:17 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44634 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1faKSb-0006Rm-JU
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 08:31:14 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58968 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1faJtp-0008He-DQ; Tue, 03 Jul 2018 07:55:13 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1faKSb-0006R8-F0; Tue, 03 Jul 2018 08:31:09 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 34B6D4068050;
-	Tue,  3 Jul 2018 11:55:12 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BBD82026D76;
-	Tue,  3 Jul 2018 11:55:09 +0000 (UTC)
-Date: Tue, 3 Jul 2018 13:55:07 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20180703115507.nqmyo7c5q5lrevgt@kamzik.brq.redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 1E92E87927;
+	Tue,  3 Jul 2018 12:31:08 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-71.ams2.redhat.com
+	[10.36.116.71])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 999441C5AC;
+	Tue,  3 Jul 2018 12:31:03 +0000 (UTC)
+To: Andrew Jones <drjones@redhat.com>
 References: <1529500053-21704-1-git-send-email-eric.auger@redhat.com>
 	<1529500053-21704-6-git-send-email-eric.auger@redhat.com>
+	<20180703115507.nqmyo7c5q5lrevgt@kamzik.brq.redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <31c24e33-8fe8-a3c0-0430-d2f503f10932@redhat.com>
+Date: Tue, 3 Jul 2018 14:31:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
+	Thunderbird/45.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1529500053-21704-6-git-send-email-eric.auger@redhat.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+In-Reply-To: <20180703115507.nqmyo7c5q5lrevgt@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 03 Jul 2018 11:55:12 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 03 Jul 2018 11:55:12 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.1]);
+	Tue, 03 Jul 2018 12:31:08 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Tue, 03 Jul 2018 12:31:08 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -101,31 +104,71 @@ Cc: peter.maydell@linaro.org, suzuki.poulose@arm.com, qemu-devel@nongnu.org,
 	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UZmGkwbLlyle
+X-TUID: z0thhZN/bdxf
 
-On Wed, Jun 20, 2018 at 03:07:32PM +0200, Eric Auger wrote:
-> The kvm-type property currently is used to pass
-> a user parameter to KVM_CREATE_VM. This matches
-> the way KVM/ARM expects to pass the max_vm_phys_shift
-> parameter.
+Hi Drew,
+
+On 07/03/2018 01:55 PM, Andrew Jones wrote:
+> On Wed, Jun 20, 2018 at 03:07:32PM +0200, Eric Auger wrote:
+>> The kvm-type property currently is used to pass
+>> a user parameter to KVM_CREATE_VM. This matches
+>> the way KVM/ARM expects to pass the max_vm_phys_shift
+>> parameter.
+>>
+>> This patch adds the support or the kvm-type property in
+>> machvirt and also implements the machine class kvm_type()
+>> callback so that it either returns the kvm-type value
+>> provided by the user or returns the max_vm_phys_shift
+>> exposed by KVM.
+>>
+>> for instance, the usespace can use the following option to
+>> instantiate a 42b IPA guest: -machine kvm-type=42
 > 
-> This patch adds the support or the kvm-type property in
-> machvirt and also implements the machine class kvm_type()
-> callback so that it either returns the kvm-type value
-> provided by the user or returns the max_vm_phys_shift
-> exposed by KVM.
+> 'kvm-type' is a very generic name. It looks like you're creating a KVM
+> VM of type 42 (which I assume is the ultimate KVM VM that answers the
+> meaning to Life, the Universe, and Everything), but it's not obvious
+> how it relates to physical address bits. Why not call this property
+> something like 'min_vm_phys_shift'? Notice the 'min' in the name,
+> because this is where the user is stating what the minimum number of
+> physical address bits required for the VM is. IIUC, if KVM supports
+> more, then it shouldn't be a problem.
+
+Well I agree with you that using kvm-type=42 is not very nice.
+
+On the other hand the current kernel API to pass the VM GPA address size
+is though the KVM_CREATE_VM kvm_type argument.
+
+in accel/kvm/kvm-all.c there is all the infrastructure to fetch the
+generic machine kvm-type machine option and decode it into type, which
+is passed to KVM_CREATE_VM.
+
+"
+    kvm_type = qemu_opt_get(qemu_get_machine_opts(), "kvm-type");
+    if (mc->kvm_type) {
+        type = mc->kvm_type(ms, kvm_type);
+    } else if (kvm_type) {
+        ret = -EINVAL;
+        fprintf(stderr, "Invalid argument kvm-type=%s\n", kvm_type);
+        goto err;
+    }
+
+    do {
+        ret = kvm_ioctl(s, KVM_CREATE_VM, type);
+    } while (ret == -EINTR);
+"
+
+This infrastructure already is used in hw/ppc/spapr.c
+
+Whould it be better if we would pass something like kvm-type=48bGPA?
+Otherwise I can decode another virt machine option (min_vm_phys_shift)
+in kvm_type callback.
+
+Thanks
+
+Eric
+
+
 > 
-> for instance, the usespace can use the following option to
-> instantiate a 42b IPA guest: -machine kvm-type=42
-
-'kvm-type' is a very generic name. It looks like you're creating a KVM
-VM of type 42 (which I assume is the ultimate KVM VM that answers the
-meaning to Life, the Universe, and Everything), but it's not obvious
-how it relates to physical address bits. Why not call this property
-something like 'min_vm_phys_shift'? Notice the 'min' in the name,
-because this is where the user is stating what the minimum number of
-physical address bits required for the VM is. IIUC, if KVM supports
-more, then it shouldn't be a problem.
-
-Thanks,
-drew
+> Thanks,
+> drew
+> 

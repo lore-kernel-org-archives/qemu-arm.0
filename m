@@ -1,72 +1,72 @@
-Received: by 2002:a4f:9ad8:0:0:0:0:0 with SMTP id b85-v6csp1420034ivh;
-        Tue, 3 Jul 2018 10:11:11 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfUfeiTAN/NIe1zO9zZnwyYOBlMHm+fK/jACoxoarha4LYG0/YTTeKAs++au09HPY+41zY9
-X-Received: by 2002:ac8:3304:: with SMTP id t4-v6mr25901589qta.43.1530637871269;
-        Tue, 03 Jul 2018 10:11:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530637871; cv=none;
+Received: by 2002:a4f:9ad8:0:0:0:0:0 with SMTP id b85-v6csp1422514ivh;
+        Tue, 3 Jul 2018 10:13:29 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpddkyjtuAF51e7okR8RXNHxCBDJZKSSey0HiVCMtn9pq2ymaJo2iuEePq0lJgIlH4Gy6FAt
+X-Received: by 2002:a37:34cb:: with SMTP id b194-v6mr26753896qka.258.1530638009865;
+        Tue, 03 Jul 2018 10:13:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530638009; cv=none;
         d=google.com; s=arc-20160816;
-        b=S/0Cr4n6QVBkDWX5Yd9AhhWpiCO2bfuLPEASDzUC5hta5Lx7VhOqmZIwqr+gaxbx3M
-         +3p4MbsnneIBpKHIjESu6LMTxhJXmrgeF5qd9te5wnGiDPDJ4eCLFrh+xdkuy4uQtYc7
-         n6NpdIJyds3JAnqysT64KiOu9FcxQpWMsTESTLYO0uGrPAZQ9WE09U6mGBM7Wxc+yrB+
-         PLwg3TrscXzR5ihPF7+xjxAjue7IMKgtQXRvuY4Eq9R/sd4umAXF5arcvsldVAiEvgyD
-         wh32W50vN46NyG7r4+XVkUGC3U6qwH7/U6dCDMUGHwdw+dfDSvHlP5l6adhLtVeGI0Y/
-         BlRQ==
+        b=wGLlu0d/ah0RYvqBmAehIQ+xjJW451fsmqke4tTrGIpN8O2Ny40rlGKvUHIKAexnHB
+         jGPd9Cg5K56AYoqoX9/WwM1SLicnigMbOceYJNzPEsXZdHhkZH0Kp/PUXHWLilIEAtyG
+         g7tEZJUWAuh6RMn5oeU/ouEZ9R+sNPaeCN84F0vXtbOrLSFI+NbYN8sbUL4qrGkSWfCa
+         zvMRwTS8GtSw5r6DOH8qo7WIxXIMC0+cZisDZWKGG0fFgmaFwzyB/QY9I26CP4oY74E2
+         clgQLNESDIEYj6xkFaMp05/zCsp5Xatd5R/vw2Yx3TiYxEYW3wAXez00aNBu8snquFMU
+         zjwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=KfyfK3IN5eDHwN8e5wMk/I4z29HE/hBx5VAEwsmVAfE=;
-        b=ElXuH3G0zr299s3AjpuTgwPy5X8Ubxu1iTqLWfSt1y8cHApwEzfUcyXVkJg+YbWfiF
-         MOzwpTa4kshyxcJpVG1w8e6ocx8+0W02iuQ0lQ6tETbG9r+QrNpBGwyhkjchs7WlC0hC
-         4U7QoBhRl4DCK0127Oi/+atFtxiV1y2UHdem0fp3oZhqaZk4JgO0pBJn6dFFJqqSZKpq
-         J63+mS1ctT+QuVs90I0/Qa+x5a7trMaIlR7URjcfYN13Cigp8NxonWKQaJ8YrL3NnEs1
-         xzNfPy7XcSuO5jTcokM4lZQXZnGbpVkpVurcjiFqnUj0XFE1lF44pAp7OplAMEKHst3P
-         SOzg==
+        bh=a8hndHYZuem+T5Dg3rybntLlTe81HzYRZW2CGIalBu0=;
+        b=IM/8+QwZLWgjMTwo67qERzcu64ysRx3vJpmiHiZ9Q0poa2VWyUOOc59HMgdJeQj8hy
+         eCLNiiwPMSaCnKr+z2HArwocZHdlYul4+n3xR9KpbnprrXJqigOD/ejtknQ0FtAAmkJH
+         q8jtUoAHIXGfAApYMrYF4Guse1O0L+stOjNPMyrgWXlidGTGdMUyP4T5sVIS4xpLZop+
+         g9Pam08Alks/kDEFfmRE/ahAI+iap8nua3d8YDrJSflXIdfT4xDM0c9tvDP5XMKg+T18
+         odpqDXOZ6AMz0Tnwp4uxYabPPdnw9Jf6ahN+EHcP6r1D420u0rC8TY5BM2z6SNWhJwD9
+         SPDg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j11-v6si1590153qtf.169.2018.07.03.10.11.11
+        by mx.google.com with ESMTPS id o6-v6si1462728qte.149.2018.07.03.10.13.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 03 Jul 2018 10:11:11 -0700 (PDT)
+        Tue, 03 Jul 2018 10:13:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41844 helo=lists.gnu.org)
+Received: from localhost ([::1]:41860 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1faOpa-0003Uc-J4
-	for alex.bennee@linaro.org; Tue, 03 Jul 2018 13:11:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59275)
+	id 1faOrp-0005RL-E2
+	for alex.bennee@linaro.org; Tue, 03 Jul 2018 13:13:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59306)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1faOpN-0003TT-FR
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 13:10:58 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1faOpO-0003UO-Hn
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 13:10:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1faOpM-0005El-Du
-	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 13:10:57 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1faOpN-0005FQ-DO
+	for qemu-arm@nongnu.org; Tue, 03 Jul 2018 13:10:58 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43234)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1faOpM-00058l-7S; Tue, 03 Jul 2018 13:10:56 -0400
+	id 1faOpN-00058l-68; Tue, 03 Jul 2018 13:10:57 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1faOpE-00034F-0z; Tue, 03 Jul 2018 18:10:48 +0100
+	id 1faOpD-00033Z-80; Tue, 03 Jul 2018 18:10:47 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  3 Jul 2018 18:10:43 +0100
-Message-Id: <20180703171044.9503-4-peter.maydell@linaro.org>
+Date: Tue,  3 Jul 2018 18:10:42 +0100
+Message-Id: <20180703171044.9503-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180703171044.9503-1-peter.maydell@linaro.org>
 References: <20180703171044.9503-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-3.0 3/4] hw/timer/cmsdk-apb-timer: Correctly
- identify and set one-shot mode
+Subject: [Qemu-arm] [PATCH for-3.0 2/4] hw/timer/cmsdk-apb-timer: Correct
+ ptimer policy settings
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,39 +81,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Guenter Roeck <linux@roeck-us.net>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nTMHwmXYu7WC
+X-TUID: DGUErjOAiGhw
 
-From: Guenter Roeck <linux@roeck-us.net>
+The CMSDK timer interrupt triggers when the counter goes from 1 to 0,
+so we want to trigger immediately, rather than waiting for a
+clock cycle. Drop the incorrect NO_IMMEDIATE_TRIGGER setting.
+We also do not want to get an interrupt if the guest sets the
+counter directly to zero, so use the new TRIGGER_ONLY_ON_DECREMENT
+policy.
 
-The CMSDK APB timer is currently always configured as periodic timer.
-This results in the following messages when trying to boot Linux.
-
-Timer with delta zero, disabling
-
-If the timer limit set with the RELOAD command is 0, the timer
-needs to be enabled as one-shot timer.
-
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-Message-id: 1529374119-27015-1-git-send-email-linux@roeck-us.net
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
  hw/timer/cmsdk-apb-timer.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-index 1f99081db1a..3ebdc7be408 100644
+index 9878746609a..1f99081db1a 100644
 --- a/hw/timer/cmsdk-apb-timer.c
 +++ b/hw/timer/cmsdk-apb-timer.c
-@@ -119,7 +119,7 @@ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
-         }
-         s->ctrl = value & 0xf;
-         if (s->ctrl & R_CTRL_EN_MASK) {
--            ptimer_run(s->timer, 0);
-+            ptimer_run(s->timer, ptimer_get_limit(s->timer) == 0);
-         } else {
-             ptimer_stop(s->timer);
-         }
+@@ -201,7 +201,7 @@ static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
+     bh = qemu_bh_new(cmsdk_apb_timer_tick, s);
+     s->timer = ptimer_init(bh,
+                            PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
+-                           PTIMER_POLICY_NO_IMMEDIATE_TRIGGER |
++                           PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
+                            PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
+                            PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
+ 
 -- 
 2.17.1
 

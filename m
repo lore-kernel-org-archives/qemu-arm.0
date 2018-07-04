@@ -1,74 +1,74 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp444877wrq;
-        Wed, 4 Jul 2018 04:47:47 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdDdKokyRqEqcMvo6DO4ZKxX8VHwjYEf62YiNeUvf8ecwkSgtdDYwV01VdJ9Oc+noN9Dsp+
-X-Received: by 2002:ac8:3473:: with SMTP id v48-v6mr1229655qtb.400.1530704867903;
-        Wed, 04 Jul 2018 04:47:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530704867; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp450582wrq;
+        Wed, 4 Jul 2018 04:55:18 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdGGEAQfPz9hNI+iCBmps2XT9ZROeGVB4dgLZIxAo1U9JIb5XrmMwugU9jkZEBjozB1iZNK
+X-Received: by 2002:ac8:2969:: with SMTP id z38-v6mr1294194qtz.386.1530705318224;
+        Wed, 04 Jul 2018 04:55:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530705318; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mdt9Izt+qWwLSJ9AbiI6+fcRLKeqPuNUzNBI2obVElOqBK34EwwMmQKL32M28FqGXa
-         LiDEmDZhSvY0AYfXY9uL60pMS52Ds8hsx+Pial/5jAGXIOdygkVvZPh/l4BRKaeiaVx+
-         3lPq4swxz9i6mJnFplKxd5g4hrAdqChP9Xut9VOhctOVOSgj68Xkto1pXt4wR9SSRpzQ
-         J6rO1hYy6ZK/VTCQk96pLaQPFgwSXHYkUom5LFYJWQrkGm2MdMoJzUb+1e53aE9CNhw9
-         uxkxnC6GEx5Odsc9ZOQng74/ZCaZNMnKG/hceQm7Cb9I1AlEqLQSiD+Ib913fACL/Tg2
-         QPpA==
+        b=bDtJeaJbXwRdKuWmNNAoPxbowthYpy28bomaQpjEnzk76HK3p8ap1yvSzzJo/5T880
+         e0pcQmkmLvVjvmGq69X0CdcNkqgshypfU+HRONL7BUArTDANqUTR2LUSVQOUXdGlbVCx
+         kvT30CbQuJzQ3uUwax6omZXqVRhe7kf1eJr8YNwEAHB3Xj+hac7wqC1IniQpYlfgGkSl
+         S1g0CRQwa4/wUyicyikYwA5h+/Xk2hPyBwA/Ql5wZt7OFt0O+AbcCNfxAK9ie9T3Fh2G
+         iYVVfenKR/R28QFcbyQjzxhg4f8dB6L8ro+xQ+tzztP3RT6M09Va25eXR6QnIuXOaAAz
+         mGlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to:arc-authentication-results;
-        bh=YKIIUf0yC71Oa3pToR2O5aHXYKM0Bxlz7Njj1km5QyU=;
-        b=f8HIgH0tQ5KOJeVFjHBO4h3wo58dtn8RUnTaFksyy8CIMu5kQklfEOrgQg2eGwwmqF
-         xY4DDsn3hKRFnABK12SUrGekYVFI3jnaazaujnVIZfiuMBw1Q7HoExdztO8dPr6jyFeD
-         Gv8SwRyXqbuPF4eJTvrOCut/Nf1wuL2OUQ+Jlgnjv6DjRHyNX4gaMVlqnaWACV4IxPKk
-         jZrMK+RLTerFmI54ezCK8Nop01AAb4GGwJXfuoJwDpnfbQW/bqh2tsBh1M284HNJBQrO
-         3IJLS5urkenzsFI0qWHXq0U+omxCG/Cp8sYB9XvHpaTij/Uz88uDgowAh1tb+g/PIN5g
-         zvDA==
+        bh=D7fKWShmJn6XjG4MuNJySvirj0HDJEbzoppWK/ZHZTY=;
+        b=j3hjmTkkvWyFutlrKPciva/GZuOo19CJllreFVpHgHGuuipaiQW1NH274XosFA08i5
+         xIgM4/x2K17p1NYjD42rnjhoXb/NouJVUziwJRpaPQY4z1aUKWVIDx6SdjXANdfSOvs5
+         hJKLVGvardrh34DBfPMsS5p2x7HFxM1cS5ev68j//3ovHJ7+Vc5nk8nvNH/ejCAw8ZbW
+         K2NrsVsy5WPZ6aRRtyB8vyHtABZXGGZUP03CKhcatSeLIiRP8Mv/HofhgnHms17lw/RX
+         yGPqVwWA7zycxxPQpctPsp+qNs6+x6TkMSgvnIcJaxDd9XmOPqPkpKpfwbmEBzyvNpsY
+         y79A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 52-v6si3538522qtu.189.2018.07.04.04.47.47
+        by mx.google.com with ESMTPS id d38-v6si1809819qte.221.2018.07.04.04.55.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Jul 2018 04:47:47 -0700 (PDT)
+        Wed, 04 Jul 2018 04:55:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46351 helo=lists.gnu.org)
+Received: from localhost ([::1]:46378 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fagGB-0006Yr-FZ
-	for alex.bennee@linaro.org; Wed, 04 Jul 2018 07:47:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33447)
+	id 1fagNR-0000hk-Ld
+	for alex.bennee@linaro.org; Wed, 04 Jul 2018 07:55:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <david@redhat.com>) id 1fagG3-0006Yh-L2
-	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 07:47:40 -0400
+	(envelope-from <david@redhat.com>) id 1fagLz-000899-Vf
+	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 07:53:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <david@redhat.com>) id 1fagFz-0001y1-Nf
-	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 07:47:39 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38906 helo=mx1.redhat.com)
+	(envelope-from <david@redhat.com>) id 1fagLw-0005kz-2Q
+	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 07:53:48 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51680 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <david@redhat.com>)
-	id 1fagFz-0001ws-HO; Wed, 04 Jul 2018 07:47:35 -0400
+	id 1fagLv-0005kd-Rw; Wed, 04 Jul 2018 07:53:43 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 93CFB4070496;
-	Wed,  4 Jul 2018 11:47:34 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3D31BB798;
+	Wed,  4 Jul 2018 11:53:43 +0000 (UTC)
 Received: from [10.36.117.192] (ovpn-117-192.ams2.redhat.com [10.36.117.192])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 56EAF20180EB;
-	Wed,  4 Jul 2018 11:47:32 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4B5512026D76;
+	Wed,  4 Jul 2018 11:53:41 +0000 (UTC)
 To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
 	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, imammedo@redhat.com
 References: <1530602398-16127-1-git-send-email-eric.auger@redhat.com>
-	<1530602398-16127-8-git-send-email-eric.auger@redhat.com>
-	<cc538632-e853-adbc-ec34-a2f524415406@redhat.com>
-	<4dfad441-b94f-916f-025e-fc69b6375465@redhat.com>
+	<1530602398-16127-6-git-send-email-eric.auger@redhat.com>
+	<8495014b-5811-4f4f-5af3-d065cd6561b7@redhat.com>
+	<2513e4a9-8980-6274-b933-a5e107b32da5@redhat.com>
 From: David Hildenbrand <david@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
@@ -115,28 +115,28 @@ Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
 	+8Umfre0Xt4713VxMygW0PnQt5aSQdMD58jHFxTk092mU+yIHj5LeYgvwSgZN4airXk5yRXl
 	SE+xAvmumFBY
 Organization: Red Hat GmbH
-Message-ID: <30bba021-8537-8ef3-13ac-197cff7445cb@redhat.com>
-Date: Wed, 4 Jul 2018 13:47:31 +0200
+Message-ID: <401ccabc-584a-8754-bcb6-b4fdea6fe836@redhat.com>
+Date: Wed, 4 Jul 2018 13:53:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <4dfad441-b94f-916f-025e-fc69b6375465@redhat.com>
+In-Reply-To: <2513e4a9-8980-6274-b933-a5e107b32da5@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 04 Jul 2018 11:47:34 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 04 Jul 2018 11:47:34 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.1]);
+	Wed, 04 Jul 2018 11:53:43 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Wed, 04 Jul 2018 11:53:43 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'david@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC v3 07/15] hw/arm/virt: Add memory hotplug
- framework
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v3 05/15] hw/arm/virt: handle
+ max_vm_phys_shift conflicts on migration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,93 +148,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, david@gibson.dropbear.id.au, dgilbert@redhat.com,
-	agraf@suse.de
+Cc: agraf@suse.de, drjones@redhat.com, dgilbert@redhat.com,
+	david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aCLSA5mHAYer
+X-TUID: UwZ9p0tQAdDh
 
-On 03.07.2018 21:34, Auger Eric wrote:
+On 03.07.2018 21:32, Auger Eric wrote:
 > Hi David,
-> 
-> On 07/03/2018 08:44 PM, David Hildenbrand wrote:
+> On 07/03/2018 08:41 PM, David Hildenbrand wrote:
 >> On 03.07.2018 09:19, Eric Auger wrote:
->>> From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+>>> When migrating a VM, we must make sure the destination host
+>>> supports as many IPA bits as the source. Otherwise the migration
+>>> must fail.
 >>>
->>> This patch adds the the memory hot-plug/hot-unplug infrastructure
->>> in machvirt.
+>>> We add a VMState infrastructure to machvirt. On pre_save(),
+>>> the current source max_vm_phys_shift is saved.
 >>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
->>> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
->>>
->>> ---
->>>
->>> v1 -> v2:
->>> - s/virt_dimm_plug|unplug/virt_memory_plug|unplug
->>> - s/pc_dimm_memory_plug/pc_dimm_plug
->>> - reworded title and commit message
->>> - added pre_plug cb
->>> - don't handle get_memory_region failure anymore
->>> ---
->>>  default-configs/arm-softmmu.mak |  2 ++
->>>  hw/arm/virt.c                   | 68 ++++++++++++++++++++++++++++++++++++++++-
->>>  2 files changed, 69 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->>> index 834d45c..28fe8f3 100644
->>> --- a/default-configs/arm-softmmu.mak
->>> +++ b/default-configs/arm-softmmu.mak
->>> @@ -152,3 +152,5 @@ CONFIG_PCI_DESIGNWARE=y
->>>  CONFIG_STRONGARM=y
->>>  CONFIG_HIGHBANK=y
->>>  CONFIG_MUSICPAL=y
->>> +CONFIG_MEM_HOTPLUG=y
->>> +
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 6fefb78..7190962 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -60,6 +60,8 @@
->>>  #include "standard-headers/linux/input.h"
->>>  #include "hw/arm/smmuv3.h"
->>>  #include "hw/acpi/acpi.h"
->>> +#include "hw/mem/pc-dimm.h"
->>> +#include "hw/mem/nvdimm.h"
->>>  
->>>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->>>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
->>> @@ -1785,6 +1787,53 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->>>      return ms->possible_cpus;
->>>  }
->>>  
->>> +static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
->>> +                                 Error **errp)
->>> +{
->>> +    const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
->>> +
->>> +    if (is_nvdimm) {
->>> +        error_setg(errp, "nvdimm is not yet supported");
->>> +        return;
->>> +    }
+>>> On destination, we cannot use this information when creating the
+>>> VM. The VM is created using the max value reported by the
+>>> destination host - or the kvm_type inherited value -. However on
+>>> post_load() we can check that this value is compatible with the
+>>> source saved value.
 >>
->> You mention that actual hotplug is not supported, only coldplug.
->> Wouldn't this be the right place to check for that? (only skimmed over
->> your patches, how do you handle that?)
-> At the moment I don't check it. I did not look yet at ways to
-> discriminate both cases.
+>> Just wondering, how exactly is the guest able to detect the 42b (e.g. =
+vs
+>> 42b) configuration?
+>=20
+> the source IPA size is saved in the VMState. When restoring it on
+> post_load we check against the current IPA size (corresponding to the
+> max the destination KVM does support). The destination IPA size is
+> chosen before creating the destination VM. If the destination IPA size
+> is less than the source IPA size, we fail the migration.
+>=20
+> Hope this helps
 
-Looking at dev->hotplugged should be enough I guess.
+No, I asked if the *guest* is able to distinguish e.g. 43 from 44 or if
+the device memory setup is sufficient.
 
-> 
+Once you create the machine, you setup device memory (using the maxmem
+parameter).
+
+From that, you directly know how big the largest guest physical address
+will be (e.g. 2TB + (maxram_size - ram_size)). You can check that
+against max_vm_phys_shift and error out.
+
+During migration, source and destination have to have the same qemu
+cmdline, especially same maxmem parameter. So you would catch an invalid
+setup on the destination, without manually migrating and checking
+max_vm_phys_shift.
+
+However (that's why I am asking) if the guest can spot the difference
+between e.g. 43 and 44, then you should migrate and check. If it is
+implicitly handled by device memory position and size, you should not
+migrate it.
+
+>=20
 > Thanks
-> 
+>=20
 > Eric
->>
+>=20
 >>
 
 
--- 
+--=20
 
 Thanks,
 

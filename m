@@ -1,84 +1,83 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp502148wrq;
-        Wed, 4 Jul 2018 05:49:52 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdGzk8IZgsTCtbbWKytRsrZUNvHOdMeH88WHyrRxHXus3Ws6nBcu777vxQ45ElWl7XN8hnD
-X-Received: by 2002:ac8:2b23:: with SMTP id 32-v6mr1573615qtu.119.1530708592384;
-        Wed, 04 Jul 2018 05:49:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530708592; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp502212wrq;
+        Wed, 4 Jul 2018 05:49:57 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd9CkUwb3L771EQh8dq6kw1twU0jARKjCg2AgbFIKgd7qL9+lMV40ZSnw89KMhmW53CbYcG
+X-Received: by 2002:a37:2454:: with SMTP id w81-v6mr1461988qkg.218.1530708597042;
+        Wed, 04 Jul 2018 05:49:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530708597; cv=none;
         d=google.com; s=arc-20160816;
-        b=E+rB7818j+q26lGfRZkNeYjqrLi0awGpDvqXFjrOBmP5pAkr7N/Y/m9MYVmWlLhM7k
-         0VLONp7F5XWR6gjxGYxX0npweE7SzC0DcZfv0A1fOnw4/9B4WHiV8hfLtcfwFBCeqv0I
-         kMoYd7yzSYqvOj8KP+Y++GRJ4s7xuuIpeKcPELh3B+NbUdFXWRpaxNPTQoac0+myNzp0
-         2v/uz4KfXQG6m+jJv5p17rzi8nlV8ZN7BAUqTHu0lEGoVIc5ijt61VMUKwIo7r9kEFdH
-         W/VhlQX9YH//N8bqIGTKKd76jDBXot18vTvQzBmF2JcSSFIXb5khqWzN3jqp6z/QT9fw
-         GGtQ==
+        b=i5g00PReWpWkmwHmhBxlD+U0+Dt0kFW2kSc2y97YR9dRHAwG1pq+axooEBXjqtfAlv
+         wmIv5F2pUujANcj4PggcLCq+7ZiOsFt7A6RYexapsCAyFEc7+aGfdE8qbPDj0CBDkvMt
+         OQRBxNd3wCTRd8BjjM4jCdE8ppHLvH6kGxBue9j7WGBHwwazXfgYO0ss4z2ufrOB0cqb
+         2ZenVMJy9O7SL9/oJy6/urd9b9DkdN+Ow338H3Ufmvur9faT/NROut522x41immzKR/Y
+         mNiMuLxHlBM5re1rOx/CjkUlFLnzwnEjSJg6n94belSKUUn64iJEqFTktmLEhaekmAeq
+         x2pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=/8wgRWW0ItlQyNUurZS9dMdIdN//3QC1UJeztx0R4Dc=;
-        b=stALWfTC/4BgcwS62nwcStOLFfhWXppSydOB8B/EXqM8JFBMGSUUEzajtHXB3jRrtn
-         CyB0KQm/WxPgoKZfXuewF5i/oMq704QBIboBZnKT9XfaS4E9CerL73OA6Q6em6Eanri3
-         HZPzvUt2LOSSsse1un1q8/rctXs2lu8HkIVuCPMsmnInFN0jmlpsiK+Zq3PwHaN6B3rM
-         +qa1YpSuFEWUhtyM/RmDcYFIuPGnEM4buo99YziUhitoC2/ediVeXw9GB2VPGoSPw+ST
-         mvewo4i6Fg6qwzwS1WeZoKZTS6hy5zi9Wf0UyQeczl2SuY64QY97Yzws7D1f7fMM+BXk
-         0RKg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=xIhGQGu0+KCbKtQ6BadWs3PYQCadTJWi3QKcVE9wg0Q=;
+        b=Yj3HRtym63soRFrZ8ygQav0d/vm7wPp3tXUT+5FSgIkmu749WOYmDXkkRvHlvImHee
+         L0u/+UjwogrpDH8S1Cwah4Su9YjEKeq4Q+dl4IGp0fx2IJi1krdok9eOqpTHRbZb6mYl
+         doJ1us207OEurIxGiaENweiYvCdEN5kyeJ7CIoIxRzKNpnx5ZYWd343gaiuvlurRsjcH
+         eFBx0YQJwNcWUivX/KIV+w3Yh8/nnu1FlV5qYXMPzVCcixtnWkyjAZMRwAv5dd+Qkgp2
+         KqPnZcH+cYVM/HTdNZH4mxUBQ78QuDIaxtr3b7OBUAbWWbSh7uGF4EPcpKAgnxuOb8/v
+         F3vw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m32-v6si2332637qvg.182.2018.07.04.05.49.52
+        by mx.google.com with ESMTPS id q50-v6si3129280qtj.253.2018.07.04.05.49.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 04 Jul 2018 05:49:52 -0700 (PDT)
+        Wed, 04 Jul 2018 05:49:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46901 helo=lists.gnu.org)
+Received: from localhost ([::1]:46905 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fahEF-0007UL-QQ
-	for alex.bennee@linaro.org; Wed, 04 Jul 2018 08:49:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46219)
+	id 1fahEK-0007aK-Fb
+	for alex.bennee@linaro.org; Wed, 04 Jul 2018 08:49:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46184)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fahDx-0007RP-C1
-	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 08:49:34 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fahDw-0000Tb-1J
+	(envelope-from <drjones@redhat.com>) id 1fahDu-0007R2-HU
 	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 08:49:33 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40638 helo=mx1.redhat.com)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <drjones@redhat.com>) id 1fahDr-0000Ro-GI
+	for qemu-arm@nongnu.org; Wed, 04 Jul 2018 08:49:30 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40768 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fahDv-0000TS-S3; Wed, 04 Jul 2018 08:49:31 -0400
+	id 1fahDr-0000RW-BR; Wed, 04 Jul 2018 08:49:27 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 57A864075740;
-	Wed,  4 Jul 2018 12:49:31 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0013A402242D;
+	Wed,  4 Jul 2018 12:49:25 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2F2232156889;
-	Wed,  4 Jul 2018 12:49:30 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C7EC02156889;
+	Wed,  4 Jul 2018 12:49:24 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Wed,  4 Jul 2018 14:49:20 +0200
-Message-Id: <20180704124923.32483-4-drjones@redhat.com>
-In-Reply-To: <20180704124923.32483-1-drjones@redhat.com>
-References: <20180704124923.32483-1-drjones@redhat.com>
+Date: Wed,  4 Jul 2018 14:49:17 +0200
+Message-Id: <20180704124923.32483-1-drjones@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 04 Jul 2018 12:49:31 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 04 Jul 2018 12:49:31 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.6]);
+	Wed, 04 Jul 2018 12:49:26 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Wed, 04 Jul 2018 12:49:26 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [RFC PATCH 3/6] hw/arm/virt: DT: add cpu-map
+Subject: [Qemu-arm] [RFC PATCH 0/6] hw/arm/virt: Introduce cpu topology
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,98 +92,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, eric.auger@redhat.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ijmyEnQ8EBZV
+X-TUID: ByZBb+tsg20F
 
-Support devicetree CPU topology descriptions.
+This series provides support for booting mach-virt machines with
+non-flat cpu topology, i.e. enabling the extended options of the
+'-smp' command line parameter (sockets,cores,threads). Both DT and
+ACPI description generators are added. We only apply the new feature
+to 3.1 and later machine types, as the change is guest visible, even
+when no command line change is made. This is because the basic
+'-smp <N>' parameter makes the assumption that <N> refers to the
+number of sockets, but when no topology description is provided,
+Linux will use the MPIDR to guess. Neither the MPIDR exposed to
+the guest when running with KVM nor TCG currently provides socket
+information, leaving Linux to assume all processing elements are
+cores in the same socket. For example, before this series '-smp 4'
+would show up in the guest as
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- hw/arm/virt.c         | 35 +++++++++++++++++++++++++++++++++++
- include/hw/arm/virt.h |  1 +
- 2 files changed, 36 insertions(+)
+ CPU(s):                4
+ On-line CPU(s) list:   0-3
+ Thread(s) per core:    1
+ Core(s) per socket:    4
+ Socket(s):             1
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 880441275031..6c5fecdd61df 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -40,6 +40,7 @@
- #include "hw/devices.h"
- #include "net/net.h"
- #include "sysemu/device_tree.h"
-+#include "sysemu/cpus.h"
- #include "sysemu/numa.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
-@@ -302,6 +303,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-     int cpu;
-     int addr_cells = 1;
-     const MachineState *ms = MACHINE(vms);
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
- 
-     /*
-      * From Documentation/devicetree/bindings/arm/cpus.txt
-@@ -358,8 +360,38 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-                 ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-         }
- 
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-+                              qemu_fdt_alloc_phandle(vms->fdt));
-         g_free(nodename);
-     }
-+
-+    if (!vmc->ignore_cpu_topology) {
-+        /* From Documentation/devicetree/bindings/arm/topology.txt
-+         */
-+        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
-+
-+        for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-+            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
-+            char *map_path;
-+
-+            if (smp_threads > 1) {
-+                map_path = g_strdup_printf(
-+                               "/cpus/cpu-map/%s%d/%s%d/%s%d",
-+                               "cluster", cpu / (smp_cores * smp_threads),
-+                               "core", (cpu / smp_threads) % smp_cores,
-+                               "thread", cpu % smp_threads);
-+            } else {
-+                map_path = g_strdup_printf(
-+                               "/cpus/cpu-map/%s%d/%s%d",
-+                               "cluster", cpu / smp_cores,
-+                               "core", cpu % smp_cores);
-+            }
-+            qemu_fdt_add_path(vms->fdt, map_path);
-+            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
-+            g_free(map_path);
-+            g_free(cpu_path);
-+        }
-+    }
- }
- 
- static void fdt_add_its_gic_node(VirtMachineState *vms)
-@@ -1839,7 +1871,10 @@ static void virt_3_0_instance_init(Object *obj)
- 
- static void virt_machine_3_0_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_3_1_options(mc);
-+    vmc->ignore_cpu_topology = true;
- }
- DEFINE_VIRT_MACHINE(3, 0)
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 9a870ccb6a57..deb8bee72cda 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -94,6 +94,7 @@ typedef struct MemMapEntry {
- typedef struct {
-     MachineClass parent;
-     bool disallow_affinity_adjustment;
-+    bool ignore_cpu_topology;
-     bool no_its;
-     bool no_pmu;
-     bool claim_edge_triggered_timers;
+and after it shows up as
+
+ CPU(s):                4
+ On-line CPU(s) list:   0-3
+ Thread(s) per core:    1
+ Core(s) per socket:    1
+ Socket(s):             4
+
+It's not expected that this should be a problem, but it's worth
+considering. The only way to avoid the silent change is for QEMU to
+provide boards a way to override the default '-smp' parsing function.
+Otherwise, if a user wants to avoid a guest visible change, but still
+use a 3.1 or later mach-virt machine type, then they must ensure the
+command line specifies a single socket, e.g. '-smp sockets=1,cores=4'
+
+Thanks,
+drew
+
+
+Andrew Jones (6):
+  hw/arm/virt: Add virt-3.1 machine type
+  device_tree: add qemu_fdt_add_path
+  hw/arm/virt: DT: add cpu-map
+  hw/arm/virt-acpi-build: distinguish possible and present cpus
+  virt-acpi-build: add PPTT table
+  hw/arm/virt: cpu topology: don't allow threads
+
+ device_tree.c                | 24 +++++++++++++
+ hw/acpi/aml-build.c          | 50 ++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c     | 25 ++++++++++---
+ hw/arm/virt.c                | 69 +++++++++++++++++++++++++++++++++---
+ include/hw/acpi/aml-build.h  |  2 ++
+ include/hw/arm/virt.h        |  1 +
+ include/sysemu/device_tree.h |  1 +
+ 7 files changed, 162 insertions(+), 10 deletions(-)
+
 -- 
 2.17.1
 

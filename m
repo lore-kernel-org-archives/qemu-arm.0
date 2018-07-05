@@ -1,120 +1,99 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp4843373wrq;
-        Tue, 26 Jun 2018 03:30:13 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfQc9gpDls8VlckYZ/b4AqEZ/IBingM9sWwjHhCdtDifFzFCvuaTgJg3shrizrEo/JFXr9Z
-X-Received: by 2002:ac8:7107:: with SMTP id z7-v6mr759112qto.41.1530009013004;
-        Tue, 26 Jun 2018 03:30:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530009012; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1574939wrq;
+        Thu, 5 Jul 2018 05:58:51 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeRIVzJz+ZTPMkr8ID4wGAjAkwSigUuB3ydymJ1yplslBnv48rc9cAgIyVDDCm9yPXV+oMz
+X-Received: by 2002:ac8:2191:: with SMTP id 17-v6mr5185577qty.279.1530795531861;
+        Thu, 05 Jul 2018 05:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530795531; cv=none;
         d=google.com; s=arc-20160816;
-        b=hJ1cO2soE3OHqHWGryyy+X1BY7vQx11XANEgtT6fysC7e/QC5AvPdxiSc41FOE6Gcq
-         XysQ0QKNCOaFtpU/gUaGaDi0Ce4f3ssl1DwLTvz3S1DcBzezu62DufpfznVxSfFiEGpN
-         +6IDe45f5il6vn+pu2yWVUEYyauEIMcUq7kKHPqCTQR81JQI3HUljwcAH/suTAJ/CYyx
-         knNbV27ayeEgGN3hjvJI6Q9gFLsm2siLxyEp6+EPzfggn43jU2xNwulGrDCcwGpWgBiO
-         2MFV7DYbfpwQcIdmg7qCh9kZRRcp1fA2yGUYjtn9Uo93hFi78VOv9fKXf7B7S4zGe0cl
-         2pzw==
+        b=BYDHkdmzBkDZPA2zOc8v4LXdCtGJUctfIkvxkbT5E9SoEgYEZ+vRGsfprD3/2lR26Z
+         s/K5GjC7MnY4Ul7O5JZQTftZXqyPbnFkHt+XCtutyBoXx9oKTSvGhs5gIOas01i/bZXK
+         gprXmHn8cy2aMZ96eDRuhH0mj/FTeso8LX6EwheFOdQrV0+SFroo617fdwAlRl4o2pLL
+         HIc7oC1L7xQrCl5Ua0xlK/Lzj23hwwTvEOAm0TjpkLEhTd7Xa0DQK6gidn0sewbFHATf
+         fR+90X2kC7ywpeNrUPzy/EEyQXFhOB6Wrkw532MWguBxDhmuXBL8NiaMMGKumlWerp0l
+         E47w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:references:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=eKZlTRoFxiTuMPBMa0BfIfqvoWsoEliuxv7fOnBgqg8=;
-        b=tLBOxz19I/pBctlp2chUwyVGhrxW218Z2Kj8JIr2C0Bg+PnB2TdztYejqqfJi2BXDS
-         xqW+rEwcI8Rub9GwiRYcsj54e/cozRr9nu3UyJYiJ/n+rNMHoiBlFXHFe8ScAICpHXwW
-         4wTASWNr7dRdPGHrFh8GfmIM/GzQhP2BhXjE3woNIpf9QOkxSUhVq9RPnLco5S0Js/R7
-         I0MF8n+jSO+sfS0tjvUUDOZUwD58vUDfwQBqBcF0F3JXrSbCRz+uOKqzVVLL/ttIgidr
-         b2/yTksUW1E4TbKG3SDZhBjwSF/dkJFzS0CcWOo6taTzmSlRXGD2Ma2WlVrjAog30fzi
-         Rl/A==
+        bh=3ZEuY5KpZFS0xOWzdWlZfmtthxKmIylxMiLSwSFAaSI=;
+        b=fhRmWjFAvtw6LSMQAusTSIvzEtvj9vI8pZffv6i+XcZjm8jIBjmlDB75A41frszyHJ
+         7grKRIsjOGVlT5JleC9HKmFuZ9XOP99UmOtMwJFBnHjKG9fVqGFPwRuvmAJ5IunRgOda
+         /jZ2NDOYPgk7Cq0N+03ZuUIL0Mcm4UZknycZektNE35NrO5n6L2eYELsCxSmk5IopUL9
+         HxSPsnRDq/e5uy8R9PTJK96En7nXz6kUFIrnz6PEH8ZzxVCKPdrV8STMnCnM4Keo75lR
+         riOptNA2g5SMUV9pZcGVPdXWoYLePtNoOLnXFXYrfKtB7Raz+BAnUY2YyTZ5QGJsq7QA
+         eIJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=REKRfADP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d192-v6si1174642qkb.390.2018.06.26.03.30.12
+        by mx.google.com with ESMTPS id l17-v6si6084950qtf.21.2018.07.05.05.58.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 03:30:12 -0700 (PDT)
+        Thu, 05 Jul 2018 05:58:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51673 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=REKRfADP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52587 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXlEi-00087l-HY
-	for alex.bennee@linaro.org; Tue, 26 Jun 2018 06:30:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51349)
+	id 1fb3qV-0002lV-EM
+	for alex.bennee@linaro.org; Thu, 05 Jul 2018 08:58:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39725)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1fXlEa-00087A-95
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 06:30:05 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fb3op-0001eR-N7
+	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 08:57:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jan.kiszka@web.de>) id 1fXlEV-0007ue-7w
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 06:30:04 -0400
-Received: from mout.web.de ([212.227.17.12]:58659)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jan.kiszka@web.de>)
-	id 1fXlEU-0007u2-Ua; Tue, 26 Jun 2018 06:29:59 -0400
-Received: from [139.25.68.37] ([95.157.57.47]) by smtp.web.de (mrweb102
-	[213.165.67.124]) with ESMTPSA (Nemesis) id 0Lcxxc-1fyKXY0ZGq-00i9U3;
-	Tue, 26 Jun 2018 12:29:52 +0200
-From: Jan Kiszka <jan.kiszka@web.de>
-To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
-References: <20180619093124.24011-1-luc.michel@greensocs.com>
-	<d3c05355-4eda-f501-8f04-d808f416393a@web.de>
-	<3c8fa899-e420-15a0-a2af-8d92ca390a85@greensocs.com>
-	<d86380b6-cee8-301c-45a1-b696acf2eeea@web.de>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jan.kiszka@web.de; prefer-encrypt=mutual; keydata=
-	xsDhBEq0i8QRBAD2wOxlC9m/8t/vqjm1U9yQCT6OJ2Wbv/qys9DYM0CvcOTDMWQwmV1/VsZj
-	KR5YgB5NPt+To7X6x5cjz15AGnx5Fb8Wnrq8EF9ZfHMwb7YMx1LdPYPDnXr37wE3XupFmkHB
-	Mes4htyX7Dz8LvKDLnli4IsAmWG+kV1JI6LWKXLpSwCg8JRq4SWoB4VCQxbH3GjntgvwNc8D
-	/2q5Dj0urJ7s7sdXhrH0hcFkpSFRmU5Yd6MCwcbFHm2paL5gqVjNNUUwDBKAL9eZaQVIHKwC
-	44BvNGO2gcQ26R3AuCHUQ+pZHg34tok1JCNZ6IEZccb+33Qq0qbcDMJJiDYp7ppp6ozifvc4
-	YaqJECX48IydxfE9+41oV7T5vNAzA/QL/UMJyTnu5jiOXcyn5iFQw535lXkwKsqeXzCowLho
-	HICZ2jITJPdTT/+9pGWwMQqST/SS35Tx4EnS3z2BWsNMCLuXCPkxF1elaMJqMfMJxFD8rAgS
-	9GK6zP6fJlsA1wq/UvKSL8v4QPOnTNCVOsyqJVasGV0ZPcDfcj+ClNO4zR5KYW4gS2lzemth
-	IDxqYW4ua2lzemthQHdlYi5kZT7CYwQTEQIAIwIbIwYLCQgHAwIEFQIIAwQWAgMBAh4BAheA
-	BQJOpoNtAhkBAAoJEIrUrG965ecUOPUAoK+Rh12KgCjplHAS0AoiGKwGOuq7AKDEVnBtRAoy
-	VRvp3lOlOx+P2Ay56M7BTQRKtIvEEAgA2/PlX6oyi7dToH0CJCHq0eKmZaa7CmGaVnxyeepK
-	vIfiM8n8Td76AbG64fjREMwgSpb4F/UytF3z/03tj4e49W/zKjbBRB2/wmFRlZBC9crg22Q+
-	bgvMOsxnC6uHXaWN8fL+jVei/5OoHOoFqaMsX8EvploitlI/BPj+VgW26jksf3YZyk1hncls
-	Z/IYhXzgRmVJo4RiTW/YLQAkwndwc+fKPa/IYLEDW1Jc4kNLoK0P90b45zju0hpl0C00pVOR
-	TOtzFK9G5Ha7qOAWJfAVJORHKAkkvwftf3hkpPdLyvZUWRHXvUexmA61fLvDBAFhRxYGD8t5
-	gz88SF5Tzq+0ywADBQf/YSkaYrEslPWiCA2wU6EW0yaqBQAobFsOMvsufJ6o2ntq5Ncq37VI
-	3KCT67eHPE9x+zPcENoZWsRrC9S9PCf1LOsi7ybZsR13AJqDFlRzJZ4klh9QwgwFZxUBzOdI
-	vttwzG1QkzHx06RKZluFYpPF3DRduSMukdIJ2wmWCU+ohB+mYefe65JGjYQfHVs8mgYVFOPx
-	bRea9VJACCMuspoZWpj43UdR1lLLyIUFYz+jqcPW7Hd/GTIw4N67pYl0dwPDmFd4ohJ5g4Zp
-	q61toNysBGEuEm5GCcn0VmGtQpSYnR5cVm5b2yPz4bIuFOSuZUo/l7vitdY0iy0/wvKbBC+N
-	K8JJBBgRAgAJBQJKtIvEAhsMAAoJEIrUrG965ecULvAAoKGvxs5T3IhyQT8I8sMsyAvCE4wH
-	AJ46S16yab+OxNkvOeoOEX0EnHVHaA==
-Message-ID: <3ee0f02e-d4a3-d4f1-837b-8201fe3fc787@web.de>
-Date: Tue, 26 Jun 2018 12:29:46 +0200
-User-Agent: Mozilla/5.0 (X11; U; Linux i686 (x86_64); de; rv:1.8.1.12)
-	Gecko/20080226 SUSE/2.0.0.12-1.1 Thunderbird/2.0.0.12 Mnenhy/0.7.5.666
+	(envelope-from <peter.maydell@linaro.org>) id 1fb3oo-00043F-Ia
+	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 08:57:07 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34078)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fb3oo-00042I-Ce
+	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 08:57:06 -0400
+Received: by mail-oi0-x241.google.com with SMTP id 13-v6so16659363ois.1
+	for <qemu-arm@nongnu.org>; Thu, 05 Jul 2018 05:57:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=3ZEuY5KpZFS0xOWzdWlZfmtthxKmIylxMiLSwSFAaSI=;
+	b=REKRfADPFW38zkgPUVl+fdcLR0BoWrH5PNHDszXkrIImo0/LWusn6SpqH5EWD7216J
+	4ywHwluh4f4hw/6MJzGSrj/o1EZJHhGRHyOl9f3qa7+eibj5fiEyeCHqQmnO4naur0Ps
+	x6Y3oA82uD16IS55nLuHmVMpCLAR6evM/3huQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=3ZEuY5KpZFS0xOWzdWlZfmtthxKmIylxMiLSwSFAaSI=;
+	b=uA1qv08Paqx0btSqtM93m5yrnOOA8+QiK6yLg6HEZ4Yx3iRxkF+xW2fu4UhrKqhvxS
+	1zi5HO1XG+fn8l4R+iYBsN7xq0NHpmmZjIiKfCPvcbfSe7gOs003iHa9InEBBLPNQKhN
+	2E05J4povtN57IYVLGVAg0fFJLYJjB3BeEtegSolj7f5RII4goSt7Ypy4utijlt9MPbz
+	koCbHnThF9ZbJoJ9htfzvXZECmJNJ945qmWfQvDEZs5yVYwsGb2EvgAy+U+MUlqH0khr
+	sPS/VR0Yv45ZAQ0RdMffXXFK2jBSAdrNv3/Sma0kxXbsUnki8d7pH29sidcKnHWSomeI
+	XuXA==
+X-Gm-Message-State: APt69E3QM3yU5kA6UZWR0/3qgN6InhV6u9aD41qlyY34Qxld/Sq5yCv1
+	OhmGZwfFCPdv9l53kKQRAmsQjSBfCUJt5CLO+41+1A==
+X-Received: by 2002:aca:f409:: with SMTP id
+	s9-v6mr7003756oih.102.1530795425412; 
+	Thu, 05 Jul 2018 05:57:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d86380b6-cee8-301c-45a1-b696acf2eeea@web.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:UT2vpCoXm8OTPcn0iHRqKIbDlg5y4g+9UzWkqgqNq7TDbJ1lR+3
-	vDs2T7F4heH8eHBCysB2xFyrdGpz4jpKAl/rWA+nFAjDlOC1kN5W8/Qm286E1mMSFiD+qJ+
-	ksSuBwjnHUtgljTek4TjFbKAI35d5HNhfF5nSvV5ELEVf6BLuCIwDEYvbUj5NhXwWc2q8/z
-	3CsSO1pBruelgNri2Qrvw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:ru2lNUaxOiY=:bOHzzPgfcwt8C5XUayXMxF
-	4L5f/KxTI8W+3QSwkfY5gxNp+SRQI+wZt3bKjNdaQbz84NDbD6aY7TuV3V+vv2YjNj/X/DyHJ
-	7HDINYF4N1N8HBmZm6nEKMlVz6ga9MJC2Q3mr02G99FZy3b5ZsBjgMH6ZRX1Q5VcAfUr2r5mp
-	zsvTm1QeQp1zFhlt3Lic41sgGrL6OyyyLf1zc8J8rtRAB02v8bXOGIkbcyEpSE3cPkFX9Jmkg
-	Q4q2uWDVUfYJNLbbSC4d27ap+lG9i2szqcBXvZeTyFNSAB7/j4sMmgXQ7Hq1SiiTGbFzrLugQ
-	FnR+N2cHbUEZgnJTgHJVOQM7KID8MY7Kmv26hDfrTnRxGlsBAOXNE4WuJPCnS4ORFzlEtUNqX
-	2f5w0R+1jwEritPBdTYFs6GFGk5uIfGdX0S6Z9AtF4sM7hmjwjOD5NCK3Ij0IMPPsjEgGqNTj
-	KW8DF2l2sQq4PHWHycP5WMbLzAWT/8ChcYkaGVUW83I7ySHw2e2otMYxzGGlNxph4+H4k0XCk
-	7V16mlvGkjll99bxz9Sr7ipAAvVwG948xSAGnRXGrDzPJdJLSQsSdC5IEv+JdYBdbscFpXhvS
-	cSIT/fSOfPXdMzPwuv+ZvLT/5RInvPV06dh36+n6dJCvaoJLpAKDs2S2ukMTr8EDj4ByV2ZWm
-	pjCk0DJsEM3rxESCdWwNnduZi/Ao3MbAWzpebYJq8IpLiuxV1RyTbrLhm8ZSFLNkzYYQv4Vkd
-	4YuI+8jvjAD8hRfrbZdkW4whdchBePPDoflEYEqxFZzBz0lBJSfihofxgkcDvSlmkjPQ5U904
-	brEd6Zj
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.17.12
-Subject: Re: [Qemu-arm] [PATCH v2 0/7] arm_gic: add virtualization
- extensions support
+Received: by 2002:a9d:554d:0:0:0:0:0 with HTTP;
+	Thu, 5 Jul 2018 05:56:44 -0700 (PDT)
+In-Reply-To: <1530775623-32399-1-git-send-email-eric.auger@redhat.com>
+References: <1530775623-32399-1-git-send-email-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Jul 2018 13:56:44 +0100
+Message-ID: <CAFEAcA8YkDgJgr5Mgv4PgpmhQDpr+61hfaxmpnQWGXocEawxdg@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH for 3.0] hw/arm/smmu-common: Fix devfn
+ computation in smmu_iommu_mr
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -126,79 +105,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: saipava@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
-	edgari@xilinx.com, qemu-arm@nongnu.org, mark.burton@greensocs.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nsXlr+EJczRO
+X-TUID: xLamvDZ4dN2u
 
-On 2018-06-26 12:22, Jan Kiszka wrote:
-> On 2018-06-26 11:24, Luc Michel wrote:
->>
->>
->> On 06/25/2018 06:55 AM, Jan Kiszka wrote:
->>> On 2018-06-19 11:31, luc.michel@greensocs.com wrote:
->>>> From: Luc MICHEL <luc.michel@greensocs.com>
->>>>
->>>> This patch series add support for the virtualization extensions in the
->>>> ARM GICv2 interrupt controller.
->>>>
->>>> The first two commits do some refactoring to prepare for the
->>>> implementation. Commits 3 and 4 are the actual implementation. The last
->>>> commit updates the ZynqMP implementation to support virtualization.
->>>
->>> Is it enabled for the virt machine as well? Seems we are missing some
->>> mapping of GICV and GICH there.
->>>
->>> And what is the recommended way to get the ZynqMP model running? I've a
->>> kernel that works on a ZCU102, but just passing it via -kernel to the
->>> QEMU model seems insufficient.
->> Hum, I think it should be enough. This is the way I run my tests with Xen:
->> qemu-system-aarch64 -M xlnx-zcu102,secure=on,virtualization=on \
->>                     -m 1024 \
->>                     -kernel xen-kernel -nographic -smp 1
->>
-> 
-> Just debugged this further a bit, and it seems my kernel is not getting
-> any device tree from qemu:
-> 
-> (gdb) bt
-> #0  cpu_relax () at ../arch/arm64/include/asm/processor.h:203
-> #1  setup_machine_fdt (dt_phys=256) at ../arch/arm64/kernel/setup.c:194
-> #2  setup_arch (cmdline_p=<optimized out>) at ../arch/arm64/kernel/setup.c:258
-> #3  0xffffff8008e30bc4 in start_kernel () at ../init/main.c:552
-> #4  0x0000000000000000 in ?? ()
-> Backtrace stopped: previous frame identical to this frame (corrupt stack?)
-> (gdb) lx-dmesg 
-> [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
-> [    0.000000] Linux version 4.17.0-00033-g67c2a9a37d59 (jan@md1f2u6c) (gcc version 7.2.1 20171011 (Linaro GCC 7.2-2017.11)) #17 SMP Tue Jun 26 12:16:56 CEST 2018
-> (gdb) l setup_machine_fdt
-> 178                     pr_warn("Large number of MPIDR hash buckets detected\n");
-> 179     }
-> 180
-> 181     static void __init setup_machine_fdt(phys_addr_t dt_phys)
-> 182     {
-> 183             void *dt_virt = fixmap_remap_fdt(dt_phys);
-> 184             const char *name;
-> 185
-> 186             if (!dt_virt || !early_init_dt_scan(dt_virt)) {
-> 187                     pr_crit("\n"
-> 188                             "Error: invalid device tree blob at physical address %pa (virtual address 0x%p)\n"
-> 189                             "The dtb must be 8-byte aligned and must not exceed 2 MB in size\n"
-> 190                             "\nPlease check your bootloader.",
-> 191                             &dt_phys, dt_virt);
-> 192
-> 193                     while (true)
-> 194                             cpu_relax();
-> [...]
-> (gdb) p dt_virt
-> $1 = (void *) 0x0
-> 
-> Jan
-> 
+On 5 July 2018 at 08:27, Eric Auger <eric.auger@redhat.com> wrote:
+> smmu_iommu_mr() aims at returning the IOMMUMemoryRegion corresponding
+> to a given sid. The function extracts both the PCIe bus number and
+> the devfn to return this data. Current computation of devfn is wrong
+> as it only returns the PCIe function instead of slot | function.
+>
+> Fixes 32cfd7f39e08 ("hw/arm/smmuv3: Cache/invalidate config data")
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/arm/smmu-common.c         | 2 +-
+>  include/hw/arm/smmu-common.h | 1 +
+>  2 files changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 3098915..55c75d6 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -351,7 +351,7 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid)
+>      bus_n = PCI_BUS_NUM(sid);
+>      smmu_bus = smmu_find_smmu_pcibus(s, bus_n);
+>      if (smmu_bus) {
+> -        devfn = sid & 0x7;
+> +        devfn = SMMU_PCI_DEVFN(sid);
+>          smmu = smmu_bus->pbdev[devfn];
+>          if (smmu) {
+>              return &smmu->iommu;
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 50e2912..b07cadd 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -24,6 +24,7 @@
+>
+>  #define SMMU_PCI_BUS_MAX      256
+>  #define SMMU_PCI_DEVFN_MAX    256
+> +#define SMMU_PCI_DEVFN(sid)   (sid & 0xFF)
+>
+>  #define SMMU_MAX_VA_BITS      48
 
-OK, feeding in -dtb arch/arm64/boot/dts/xilinx/zynqmp-zcu102-revB.dtb
-and setting the console to ttyPS0 gives now some output. Looks like this
-can take me closer towards a testable setup.
+Applied to target-arm.next, thanks.
 
-Jan
+As I was reviewing this, I checked where we allocate the pbdev array
+to confirm that it's big enough (which it is), and I noticed an oddity:
+in include/hw/arm/smmu-common.h we define the SMMUPciBus struct like this:
+
+typedef struct SMMUPciBus {
+    PCIBus       *bus;
+    SMMUDevice   *pbdev[0]; /* Parent array is sparse, so dynamically alloc */
+} SMMUPciBus;
+
+but in fact we don't ever have local variables of this type and the
+only place we dynamically allocate them is in smmu_find_add_as(),
+which does
+        sbus = g_malloc0(sizeof(SMMUPciBus) +
+                         sizeof(SMMUDevice *) * SMMU_PCI_DEVFN_MAX);
+
+Is there a reason I missed why we don't just define the struct
+to have
+  SMMUDevice *pbdev[SMMU_PCI_DEVFN_MAX];
+?
+
+thanks
+-- PMM

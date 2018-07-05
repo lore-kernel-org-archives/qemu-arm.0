@@ -1,101 +1,106 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1757128wrq;
-        Thu, 5 Jul 2018 08:49:56 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfGOGtmyXcqxJfylTTdWF5LLPs25xDiu+1rCO+U/U+uC1L6BTx17pER7TLJ5akGtacdeLWz
-X-Received: by 2002:ac8:19db:: with SMTP id s27-v6mr6134460qtk.215.1530805796629;
-        Thu, 05 Jul 2018 08:49:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530805796; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1776724wrq;
+        Thu, 5 Jul 2018 09:08:44 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc7RET16oPC2Cek1XXZ2VzCk+7PYb/j2r4d1JIPKEmwcGhndnQMmCr9Ui8QdJAQwIF+5f4n
+X-Received: by 2002:ac8:2463:: with SMTP id d32-v6mr5973905qtd.41.1530806924192;
+        Thu, 05 Jul 2018 09:08:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1530806924; cv=none;
         d=google.com; s=arc-20160816;
-        b=pqfsEOUvk7YoOrgtooqlssQ1rmfGZCEng5vUnqXRRNwhxmOcJgiXvB/G0GKGaeP7dE
-         PHZLe62Q04Gop5WFBXe18VgF9PgJgy0Tmbi7R0yXNT44kZgff7/GtSAGsTO971EZyjm/
-         4FK2DJs3xWbOF97VY56TrS55LO5RirXD4OA+rqdZ+cYbCxzAC4LsOHF9fvSZeS+zbcIz
-         HoocBwcx9ggd1QjoyhNJWeN7QEwe1VHuh7IeUSiNjA7hudiKzA5XJrOcJ0co98EUnERq
-         0y54/9AyJIRNmoIep/ZRxs4VWLykOlw6CqifFsBOgfvuOjYKX/wCM446swMyThruspCa
-         Fgog==
+        b=UjG1y6hylnrKrcnlh/QW7F6URWCRpfd0K+UgM8asTVibJsbBC9NGdlyJjTAW9hZWgY
+         OjPgB3IOzH/gX8FaacEezsp8zA08pyWGDQP5F08Et3U7qDAGhuw9rwugn1MTUoBSsTVg
+         VbtCjXdO1af0PIvUYjLaq85XgwoP/+TWJCdD2VlO5ug/XdLyY+qZpcfVHovpjzy7xff8
+         HkBfb4QgN6tHFzfyLB79EmHx6X/1/BiVyHIejra9NDOR0s2PyDH901EEdvd4La/IACEW
+         1edyjZ4lr5akN6jc1DIUYfcWyiiSBuNXfBcQKDL8a9lQbdTttr6hwR0WOfgT3IbAQfWI
+         IFbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=AB8bnWYrCS0AqfeLiL8pynBms0I1yBAppCPu37717mw=;
-        b=jBSwfqsut2fZ8iY2gaIiM3+Y/8NnRkwb94v6//mKDgUJchfQdsYDAKn2Wd6/lSuc8B
-         L3g8MmrLQfqxTQdWaAX9cTomhtkwu38HP5xPApO3+0v1Ie8Sph2iL73h6M4bQs4Fg5Sl
-         NdzoDvF97V8kx1RBp2FCVkrn6+aBcGs5HqOj3sUwzYKXoI8BCZ6162lrqS4Qw8lf+Sch
-         9Q0tJtwk9J6/yal8zFU6cMHyvjsZBorQsWrcpOAEBTTiklDAM6evLMPeQTzBRoKfrO7X
-         2mngSt6YZTFMhmLW3eIhd9B8JGPiwjp/NXKdyo773Y0WO9nfrQEmAt3ueDPsU5JHPH3d
-         EHjQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=nliH/EX0aglHIk/Fm4qYSToW9q6u0Iktv2X5oO8SSFQ=;
+        b=nD34QolRTEQgXogAIZ056zpO7QdeIoAvCwfKW7TW0xrBaUmZ//ACsKCeAh5CfwXQwL
+         +gqyT6JjAtUZL7gTpbfBqSumtAkd/AjyxT+4PfdYoOSbR7DQ449EQj8K/lvUlGotHyxg
+         w3fATUwT+qFZ4bXa2DMV7tEAAt6L9QFb+onoYfPheRxIYUkH43qX9omrfJnx4De1zbd2
+         eSEi3j/She43fUxhU6fl0C1QFh8kqzZMTBAv5arQLUrCHAnRqqmhYW0HWF01Pk+T6YB5
+         grI7E0Bj3yPG71z/lJ//Oy9ADAMWrcT33TEyjWcXvn31d6x/VZuz+Zawmz3xn4hDGPMA
+         8aTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=V1RQLeF2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D9L8FTvZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b2-v6si3178862qti.85.2018.07.05.08.49.56
+        by mx.google.com with ESMTPS id q19-v6si2524519qvc.241.2018.07.05.09.08.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 05 Jul 2018 08:49:56 -0700 (PDT)
+        Thu, 05 Jul 2018 09:08:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=V1RQLeF2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53375 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=D9L8FTvZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53505 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fb6W4-0001B5-6h
-	for alex.bennee@linaro.org; Thu, 05 Jul 2018 11:49:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51241)
+	id 1fb6oF-00042T-Jg
+	for alex.bennee@linaro.org; Thu, 05 Jul 2018 12:08:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fb6Vs-0001AW-PP
-	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 11:49:45 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6ef-0004dK-CG
+	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 11:58:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fb6Vr-0006td-UT
-	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 11:49:44 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:39158)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6ee-0005D6-Nw
+	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 11:58:49 -0400
+Received: from mail-qt0-x229.google.com ([2607:f8b0:400d:c0d::229]:41713)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fb6Vr-0006tP-Od
-	for qemu-arm@nongnu.org; Thu, 05 Jul 2018 11:49:43 -0400
-Received: by mail-oi0-x243.google.com with SMTP id d189-v6so17770459oib.6
-	for <qemu-arm@nongnu.org>; Thu, 05 Jul 2018 08:49:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=AB8bnWYrCS0AqfeLiL8pynBms0I1yBAppCPu37717mw=;
-	b=V1RQLeF2Qa4z6m9R7uJBqvSkwyIkD5iFYD+23FYO5rtlyk6WC0KoKccvHf9Im9IAk7
-	aBOYwIJRx6aaox7IdWkyp0Xiknx/ugEF63yZQG52zv5SHfWyJd9S7YhE2pHMYmM2JoNr
-	tJNJRqANpu688Ospl0UIGdyc938AygCE8eEHM=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6eY-0005AS-US; Thu, 05 Jul 2018 11:58:43 -0400
+Received: by mail-qt0-x229.google.com with SMTP id y20-v6so7514318qto.8;
+	Thu, 05 Jul 2018 08:58:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=nliH/EX0aglHIk/Fm4qYSToW9q6u0Iktv2X5oO8SSFQ=;
+	b=D9L8FTvZ2/QbSUCGO28QkTtKKOaHqh5CzBCj5kOL5canY+mWLqaDX/1RBwMKmSUPSa
+	Y/5vRLaqmrnxsZX1oJN8dMn6AgXU/Oox1R+6JibzR65V0ka68ls/UOi7lw4pbGOGsRoQ
+	wMtRvkehsQyW9tHh11oaE17GKnt6lZxbxOO3J5yCwHg92ZllLjpVdqUohIkpG2IrpnOk
+	hFHj3c15HSpoZCE+1oywlqsGoT+i7bqopiyNeFK3HFjEHDqXKQ1jSy6R4B8rJld+M4OH
+	DPIJwc26fwfFpJC2pObk/CbMce4Md+unFbCO+KllJTPYRIiKOaRPqmkKT5k9OZyRD+x7
+	K7bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=AB8bnWYrCS0AqfeLiL8pynBms0I1yBAppCPu37717mw=;
-	b=c75J7LnBYMB00jBKeoj6ff49mEAOOm/0AxqVhP3d1hQoxsjTzqzUg1ltldDexPLHNK
-	SRZPbHY2Ec79KMc+QgYulPDqUylV2nu059rkDOQLad0t8JTUa59dLr6/ukNJzVGXmdGJ
-	qH060IqhZTflQIAZzxkPN9y5tyNntQppp8c4K9L0xQrJJoOT73lmFjC6nbWmu32cumQ0
-	PpJHRUKYYzB0PWPNpd5sL77LGY6MUgunlMCSrHkFVl/D7vRjisUFChYzd9jPgnmm+sCX
-	NHNi4a+P17C5RChJbA9Jw0qsZCxw3T9cYu5HSBPMpVPopPIeD0zYh/IGeHlgsEuTDGBt
-	m85Q==
-X-Gm-Message-State: APt69E3csmS60bLypRG7oexeYTE6tNNoZYHOQ/REMOAUHqxkNOJ51LJG
-	iEEDtbM03yMadFLZfBkAlcO5FXoLCvgyH1TEXY7/kQ==
-X-Received: by 2002:aca:f409:: with SMTP id
-	s9-v6mr7776138oih.102.1530805783087; 
-	Thu, 05 Jul 2018 08:49:43 -0700 (PDT)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=nliH/EX0aglHIk/Fm4qYSToW9q6u0Iktv2X5oO8SSFQ=;
+	b=MJhhfeX/OOPF8CLkkg7Hy3+q6Z0tGxFLA2qdR4PL2e8VKjSKA86Et1/KPEzNY3FKiU
+	zg7Nk20lHUhv4tg2tCPQLn66X/ajekNq286nZdxOWdadzQnCVPB/UosYZzvt+GTqSihn
+	o6pizavARCwD/pQKyfEk8IdU7H1e+M3fPZ0NjlCFJTPJKyv5wx7p/5yAue9S7VLFqyyU
+	FJgWhgONj8vII3/KsZpjsIT/0FvFvO0ZxquK9UrpVbNavFMP6l00/mpY7JJlz9iQ6sgy
+	VThdjHhTzz1OwTX+ZNnPmxmpXYHFGRvWXUiCrSv4WXNDU0pxMITHSq46KK72NaWH3sdx
+	UEGQ==
+X-Gm-Message-State: APt69E2x1QAC83WLPHBRbOGerdcARdBvQXkVIz1W+KwVjOp2pq3YDBot
+	yfMxFrD6B/LQW2V/jHto/6+uZ9/R
+X-Received: by 2002:ac8:3274:: with SMTP id
+	y49-v6mr5837266qta.194.1530806322099; 
+	Thu, 05 Jul 2018 08:58:42 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	k66-v6sm4049403qkc.86.2018.07.05.08.58.39
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 05 Jul 2018 08:58:41 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org
+Date: Thu,  5 Jul 2018 12:58:11 -0300
+Message-Id: <20180705155811.20366-8-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180705155811.20366-1-f4bug@amsat.org>
+References: <20180705155811.20366-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Received: by 2002:a9d:554d:0:0:0:0:0 with HTTP;
-	Thu, 5 Jul 2018 08:49:22 -0700 (PDT)
-In-Reply-To: <CAFEAcA-boywojdasSCZ5EnnGMtETMH7JZw30fOR7fepMQaqctQ@mail.gmail.com>
-References: <20180630091343.14391-1-stefanha@redhat.com>
-	<20180630091343.14391-2-stefanha@redhat.com>
-	<CAFEAcA-boywojdasSCZ5EnnGMtETMH7JZw30fOR7fepMQaqctQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Jul 2018 16:49:22 +0100
-Message-ID: <CAFEAcA8AzjD3f44U+He1Y10p8iNR8EaWODdv3XRUQtQiDdCotg@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [PATCH v2 1/3] hw/arm: extract ARM M Profile base
- class from ARMv7-M
+X-Received-From: 2607:f8b0:400d:c0d::229
+Subject: [Qemu-arm] [PATCH v2 7/7] hw/intc/gicv3: Remove useless parenthesis
+ around DIV_ROUND_UP macro
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,39 +112,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jim Mussared <jim@groklearning.com>,
-	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
-	Liviu Ionescu <ilg@livius.net>, Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Julia Suvorova <jusual@mail.ru>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"open list:ARM cores" <qemu-arm@nongnu.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lrcYtYc1XV8Z
+X-TUID: F5E4VQccHcxP
 
-On 5 July 2018 at 16:45, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 30 June 2018 at 10:13, Stefan Hajnoczi <stefanha@redhat.com> wrote:
->> The ARMv7-M code is largely similar to what other M Profile CPUs need.
->> Extract the common M Profile aspects into the ARMMProfileState base
->> class.  ARMv6-M will inherit from this class in the following patch.
->>
->> It might be possible to make ARMv6-M the base class of ARMv7-M, but it
->> seems cleaner to have an M Profile base class instead of saying an
->> "ARMv7-M is an ARMv6-M".
->>
->> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
->
-> This makes sense, I guess (though it currently leaves us in the
-> odd position that we have separate a object for v6m, but the v7m
-> object handles both v7m and v8m...)
+Patch created mechanically by rerunning:
 
-...though I guess the counter-argument is that the only thing that
-the v7m object is doing that v6m doesn't want is creating
-the bitbanding device, and in fact bitbanding is optional in v7m
-(you can configure a Cortex-M3 without it). So maybe we should
-instead just have a QOM property to let you turn off the
-bitbanding ?
+  $  spatch --sp-file scripts/coccinelle/round.cocci \
+            --macro-file scripts/cocci-macro-file.h \
+            --dir . --in-place
 
-thanks
--- PMM
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ include/hw/intc/arm_gicv3_common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index b798486ecf..31ec9a1ae4 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -62,7 +62,7 @@
+  * avoids bugs where we forget to subtract GIC_INTERNAL from an
+  * interrupt number.
+  */
+-#define GICV3_BMP_SIZE (DIV_ROUND_UP(GICV3_MAXIRQ, 32))
++#define GICV3_BMP_SIZE DIV_ROUND_UP(GICV3_MAXIRQ, 32)
+ 
+ #define GIC_DECLARE_BITMAP(name) \
+     uint32_t name[GICV3_BMP_SIZE]
+-- 
+2.18.0
+

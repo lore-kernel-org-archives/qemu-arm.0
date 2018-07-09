@@ -1,129 +1,111 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2431405wrq;
-        Mon, 9 Jul 2018 06:20:11 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpewAELDXa1oQ1/A+h08Mq33lM454W3LpGRu9Uj5bB/Pd+8UcMKLMU4W8PCPw1/oH7DoDnUM
-X-Received: by 2002:a37:28c4:: with SMTP id o65-v6mr17613107qko.251.1531142411207;
-        Mon, 09 Jul 2018 06:20:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531142411; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2504408wrq;
+        Mon, 9 Jul 2018 07:31:27 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd7Wzi28y9X2pIY9bEXHdhVFsX+/EAb6Hp63rlvwA6wANn3nmRUurzwEIg9aaA9aaNvICbO
+X-Received: by 2002:a37:d9c4:: with SMTP id q65-v6mr17561033qkl.401.1531146687656;
+        Mon, 09 Jul 2018 07:31:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531146687; cv=none;
         d=google.com; s=arc-20160816;
-        b=swmcHym+g9t/S8ShNvmXXmfR4LLh+VB0ur3Eaz3laH9FktWstSZSkfFqvGujmDk3Xq
-         kJITg3hrAEuKVM/KjOk3Bz7VL9WaO/LUPNF0im4syRxdjGaqEH/jhr2CFb7hmx4OqBMM
-         JTtTa4uFvvwaTsZN9916fgnN3xGxnf7KWveIbuZO4Jk1MIhKhhD0Uz3wXNMLTzPbhLrm
-         r5ArtgjumS85lkilBYznFvJRwdC1ChIgiyNqfKkvj6M8+qyp5oki2+iordjpgQIHi2h8
-         J1DITSYFVs/vdub5aHZAb0s/PCh8O4TlsEmzlyzMGiAnDfHpZtBvS4DI5GigwSpcSUo5
-         Icvg==
+        b=g9ek3572s7u05+7krGvqbKUn7mWkqOYU+kiLQo3BI39HW5vifQD2bOjdzzouikCgwL
+         xUUGsv4xIBog4794EXmXyZgWykBiVgPxtfr2WSl1bhaEJmVzq37q5Rj+gibKjjIRz6E4
+         d89RnTHG2hCO09p3e0FxLfR1ta5U36m27I4rq8q0Hxz4UyX8Qiq8R1icZh3tsMIDX0I3
+         7z4twACh4f8pE1kKGTyFh3asyb+LlYmFl42DQlvigeYuR+rNAOayi33tTv6VVg4O5sGc
+         3E/qdvbE6giHdur9gDMndKuXQuAIJNtp7FusyR/HKH6FK1lJBwQRB+ylQi4pVb02bA92
+         d3Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :arc-authentication-results;
-        bh=Es2hItFbm8jwdlar51wQEYL8C/lM4nHt0n4NSu6Sras=;
-        b=RaboxH+SFwdl5QKUzZBeM6zdhijY4KLSylWz/HOrJSAQgrjBu33OBMvqYOoYAw+oum
-         vyNTtKEwHXMaElfPHWwWvGZAjQfDx/5S2ljdJL7m3hMRu67eq+5853Jt08KjrCh/RfRn
-         jwqmLJLmXWF93zoMowjdZODsk1qsue5DfPtkPnAXHSBZMHb+YLEQKYvUW7Bpn4RuWN1U
-         VKLLLN994Lvkq4SK5epVVRQuqO20Qc/oyTYuM6vZ0wDfiIeGEpugGgTGKXaur+DPzRfm
-         Tr1A/6plxiBjRe3fG6K2B6+tWtzx1VlbEDQZHxsWvnPua+ZZPQalQ/xfRlWxGvzqjh4t
-         aFbQ==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=SuJ8oPxdhIvXEc7JgWDQz9oC0vaKJQ5DwXHa0Bvv+vI=;
+        b=zY0GpVATnxtqK/+F6NrARInNDsbO+XU2bE1CQjQ2aCNDEXF/8QLZXbaQE7J6NLvAe2
+         mq83J7enWznh0Rm++BaAdHlQmCAFdFMQTYecZOodP/ZUlrloSL5A0aRMFc0MTRZVefVp
+         NkCO+rVDZTtmb6mKPWrZ+K2cL8/GrnshsknIW1MXTzansoEpxX3aDRAfCl4T/iTu+MGy
+         DbI0g5Q8g3wSZawKIx1X+gCSRLKng1XkqUzwIH+bh6SotUUFLGLW+VxClxx06Z3Y4igb
+         Dn9TtH1qL99DbVo4IUkVOCVzUbtnHcAuHUM5QjIqaVSvaJY2d8sG4zUyUbF99yd6W5Pd
+         SgZg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KuCjn1pW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c40-v6si6124273qtb.208.2018.07.09.06.20.11
+        by mx.google.com with ESMTPS id q123-v6si948003qkd.355.2018.07.09.07.31.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jul 2018 06:20:11 -0700 (PDT)
+        Mon, 09 Jul 2018 07:31:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KuCjn1pW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41896 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42400 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fcW5K-0003gj-NS
-	for alex.bennee@linaro.org; Mon, 09 Jul 2018 09:20:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38102)
+	id 1fcXCJ-0004GL-3U
+	for alex.bennee@linaro.org; Mon, 09 Jul 2018 10:31:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fcW3X-0002ZN-So
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 09:18:20 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fcXBr-0004Ey-1o
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 10:30:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fcW3U-0003Uh-Mi
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 09:18:19 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43222 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1fcW3U-0003UV-FI; Mon, 09 Jul 2018 09:18:16 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 050467CBBA;
-	Mon,  9 Jul 2018 13:18:16 +0000 (UTC)
-Received: from [10.36.118.52] (unknown [10.36.118.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C6D2B111E3FE;
-	Mon,  9 Jul 2018 13:18:14 +0000 (UTC)
+	(envelope-from <richard.henderson@linaro.org>) id 1fcXBn-0007Ja-3d
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 10:30:59 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:46362)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fcXBm-0007JK-TK
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 10:30:55 -0400
+Received: by mail-pg1-x544.google.com with SMTP id p23-v6so1148892pgv.13
+	for <qemu-arm@nongnu.org>; Mon, 09 Jul 2018 07:30:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=SuJ8oPxdhIvXEc7JgWDQz9oC0vaKJQ5DwXHa0Bvv+vI=;
+	b=KuCjn1pW+GMxw0OCKLHCkku9OOzlK6u3lwc9Ei5SZoFXSmIw3gj6Z8Wj/WCOw8FGYr
+	T2ernnJVX0PNjXKy/jri8nJnxoKBm9FC+YFhd3X3TDxL+n43Z3+tOl6cXlW30j9yYS9B
+	lWDf5+t6LiBTloxwR5I5VL2SdmdKzRQ1kCvkg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=SuJ8oPxdhIvXEc7JgWDQz9oC0vaKJQ5DwXHa0Bvv+vI=;
+	b=hvMv/w9CKUn1Pg8yaetrBYGca8aG5ANHn7frdvwbP/ZD5SUOvi664ON9yQnG1SM8si
+	05foLMG6iwpIF7iy0r0Am8k9Jxt8+ffL1edoW2auQd3I6QU3LFYf1ejXpcQQwu2q0S+f
+	fM8WvCwofRrgSXbGzjD+cHnsWoi3boWQWP4xFvowmXgioBU9dHZKEGXCtXerCuemlwjq
+	E+R8wjMKJQrfewVivh7MaasMepNKfls/LF5HvcHxX1OpFd9DTxANGDRVRaIgcQdQ+QhC
+	KF8g1/PGNLrhQNbl12BnluXdAn95AHVNXG/LZiuLO7qfEPxIiV7vBrVzvmxEBCC2moys
+	IWbg==
+X-Gm-Message-State: APt69E3tN0KjJGL47whCDG4TnEDWuUbklNj3/w1OqW+fsd1sobXglXH1
+	oE0dDVgzsEpdxJY4sAqnIEt37g==
+X-Received: by 2002:a62:b29c:: with SMTP id
+	z28-v6mr21818909pfl.8.1531146653793; 
+	Mon, 09 Jul 2018 07:30:53 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	f10-v6sm28241426pgr.30.2018.07.09.07.30.52
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 09 Jul 2018 07:30:52 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-References: <20180702130605.13611-1-peter.maydell@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
+References: <20180709124535.1116-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <3efdfd1a-2f68-f844-a0c1-10f2430309bb@redhat.com>
-Date: Mon, 9 Jul 2018 15:18:12 +0200
+Message-ID: <7fafbf1c-9af1-cfb9-24c7-ee9a00ef9d4e@linaro.org>
+Date: Mon, 9 Jul 2018 07:30:50 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180702130605.13611-1-peter.maydell@linaro.org>
+In-Reply-To: <20180709124535.1116-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Mon, 09 Jul 2018 13:18:16 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Mon, 09 Jul 2018 13:18:16 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH for-3.0] boards.h: Remove doc comment
- reference to nonexistent function
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::544
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.0] target/arm: Use correct
+ mmu_idx for exception-return unstacking
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -135,49 +117,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <huth@tuxfamily.org>, patches@linaro.org
+Cc: Adithya Baglody <adithya.nagaraj.baglody@intel.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZxnWFOZfQRuo
+X-TUID: 7EW1cAC4rALi
 
-On 02/07/2018 15:06, Peter Maydell wrote:
-> commit b08199c6fbea1 accidentally added a reference to a doc
-> comment to a nonexistent memory_region_allocate_aux_memory().
-> This was a leftover from a previous version of the patchset
-> which defined memory_region_allocate_aux_memory() for
-> "allocate RAM MemoryRegion and register it for migration"
-> and left "memory_region_init_ram()" with its original semantics
-> of "allocate RAM MR but do not register for migration". In
-> the end we decided on the approach of "memory_region_init_ram()
-> registers the MR for migration, and memory_region_init_ram_nomigrate()
-> is a new function which does not", but this comment change
-> got left in by mistake. Revert that part of the commit.
+On 07/09/2018 05:45 AM, Peter Maydell wrote:
+> For M-profile exception returns, the mmu index to use for exception
+> return unstacking is supposed to be that of wherever we are returning to:
+>  * if returning to handler mode, privileged
+>  * if returning to thread mode, privileged or unprivileged depending on
+>    CONTROL.nPRIV for the destination security state
 > 
-> Reported-by: Thomas Huth <huth@tuxfamily.org>
+> We were passing the wrong thing as the 'priv' argument to
+> arm_v7m_mmu_idx_for_secstate_and_priv(). The effect was that guests
+> which programmed the MPU to behave differently for privileged and
+> unprivileged code could get spurious MemManage Unstack exceptions.
+> 
+> Reported-by: Adithya Baglody <adithya.nagaraj.baglody@intel.com>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> Doesn't strictly need to go into 3.0, but it's a trivial
-> doc comment fix...
-> 
->  include/hw/boards.h | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 79069ddcbec..d139a431a67 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -35,8 +35,7 @@
->   *
->   * Smaller pieces of memory (display RAM, static RAMs, etc) don't need
->   * to be backed via the -mem-path memory backend and can simply
-> - * be created via memory_region_allocate_aux_memory() or
-> - * memory_region_init_ram().
-> + * be created via memory_region_init_ram().
->   */
->  void memory_region_allocate_system_memory(MemoryRegion *mr, Object *owner,
->                                            const char *name,
-> 
+>  target/arm/helper.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Sure, it's just a doc fix.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Paolo
+
+r~

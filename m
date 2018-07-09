@@ -1,229 +1,223 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp3751871wrq;
-        Mon, 2 Jul 2018 08:08:42 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeE+6zAH3lgPpghJ3WamjBwbuvdrTLc8tzyVhU7lL4+qEdfx4SQtxHzBWB12JgacqPJIyKw
-X-Received: by 2002:a37:bbc5:: with SMTP id l188-v6mr22103948qkf.243.1530544122470;
-        Mon, 02 Jul 2018 08:08:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530544122; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2856295wrq;
+        Mon, 9 Jul 2018 14:11:51 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdds0KhxU6SjnBOjNSivpumoO4k2GTilWaysOSDX4tfzMu2EiD7EYU2oxyNQk48DAkJydVK
+X-Received: by 2002:a37:8f41:: with SMTP id r62-v6mr2681487qkd.412.1531170711730;
+        Mon, 09 Jul 2018 14:11:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531170711; cv=none;
         d=google.com; s=arc-20160816;
-        b=PN2L98anFcF5zxY5149ZZASUeqy6gVr1rPb+sZwaQSK/+fSBvmi/Gj34xanv8woXql
-         sFprfH5P8Zq4zani5yIyY3++XxQNWgXksSYo92NAa/in+SqmekJGf2B2zYjNyTtTKYFa
-         MKZdL4E3MAJ31UAh4fs7dM/E7zApLC4Z9dRz0wqJU/cNNsm5pHd+no2R6c1v5mhiTB9E
-         bJGi661Ve20gzKxw/VJ3lfEb4Dd9bvclJ4BlQdt1QY1Ud00YdZSRKugXFp2yIeaStoRO
-         wXRPBWwLs0Epl4bk9LeOTBLtLPgGuraL3rmPGYUg0XiUakIswtNhRP51VuYSJ4MLABuR
-         3mhg==
+        b=pOmG/S/v+sS0uzRRDy9VxYqMdO+0ANiEFEG48EvShNyCXUgWDyrMMTfsb14LsvlQ9B
+         Yk0/tG0P7AdyCZL8c/9BFnzVCvxkdzsOkn15gjlKH16Z4AKpopgOH6rdv52YJOZdNq+B
+         6kVK+EJnX9Fv1yIOmmUguxHY9rD60mK6kt7S13iBFjzR5frPgisopZMP7xNjbncbtQcI
+         8DmYKGLhVsx59EmWrHNZi5SnXqdLdEMfJDAXmaYSxLSw1qDpcPwZJE04ItQnvdgzVd3t
+         KG7+0bA04+tTu+Lc24FmZ5KRKCfFrP2qJxQ4p0R3+2PbLJl9UmE8FU9LTsSQP/kjLMYR
+         1sGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=isiw/leTYYLrovAe8heQUE/88QBkmyPs5lL6ZDZqvfI=;
-        b=LLi927cM4FTaiQgrTXm8WjQAiZ/6gRFGVVbEEbb0B9H5WuLODpFR1PZnYRdG4iIltk
-         zwweZnpTyINbNH/KOdpztmxDurFd28m60jkRwU8S+lcIxkkkEUDmSKHGm/ApOzUhFy+t
-         xfQD+qbz3ca8L9BywTzKtPKEInxrHwhxHzbGLiWO9kO3m437GIblhoXE0NJD7Z45JAyf
-         yLOiojfeHteeH1/iSGr8PF3DASmAoNBrDuKv9OnvLzKZWzSuQVht2s0EApz0JF68VvVK
-         B3xuItV2jAKTabBJo98qk5KcAgql6EyuoOy0SZ4VKVe+gkN9KPqkqXmSQcX8NdZ1jIlr
-         GNjw==
+        bh=TvFvYvDtQWyeJsjR/n2IEvP19AItxjfK2j6bMefsVMU=;
+        b=rsmwlgLF7ZYItRzMJwTEPRHvPUKURK8nuvCUd4xwJb4Z3s0YKnEDiXQIiDaEhcJWFQ
+         6aqL5TTJix0qGGSZbZTBPxf/KYQzajxpgVzS0ckIa9B0/n353xvo54a220K+t92juU6R
+         zLgQ5fX2DjIZOiZiQ5G0o31PfxsFaxJ8nXZk3J9vpz5qL0fb7t8dzsoHL1YujGGGhi0u
+         Uy+LtFQJZCrEGRYailJ0q0yS8LDEBBauuO4+0Zm31Shqa4xtB556SalBcmaxbcio6/Hc
+         IE65jgLawOilsXC3UuiXbdTfKWg3o4KJF8sPZn3SByh7roVA69oFV/mNr2iDseEPRw0U
+         gsxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kqMoI5Pp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v25-v6si1172868qtv.372.2018.07.02.08.08.42
+        by mx.google.com with ESMTPS id q29-v6si4752548qta.379.2018.07.09.14.11.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 02 Jul 2018 08:08:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 09 Jul 2018 14:11:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kqMoI5Pp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33408 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44434 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fa0RV-0001T7-IZ
-	for alex.bennee@linaro.org; Mon, 02 Jul 2018 11:08:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46829)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fcdRn-0004kA-4E
+	for alex.bennee@linaro.org; Mon, 09 Jul 2018 17:11:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fa0PC-0000IU-3A
-	for qemu-devel@nongnu.org; Mon, 02 Jul 2018 11:06:21 -0400
+	(envelope-from <thuth@redhat.com>) id 1fcdJR-0005ki-35
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:03:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fa0PA-0005io-Br
-	for qemu-devel@nongnu.org; Mon, 02 Jul 2018 11:06:18 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:35776)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fa0PA-0005iL-3K
-	for qemu-devel@nongnu.org; Mon, 02 Jul 2018 11:06:16 -0400
-Received: by mail-oi0-x244.google.com with SMTP id i12-v6so12567496oik.2
-	for <qemu-devel@nongnu.org>; Mon, 02 Jul 2018 08:06:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=isiw/leTYYLrovAe8heQUE/88QBkmyPs5lL6ZDZqvfI=;
-	b=kqMoI5Pp5AP/4Vy3RnkB9T0w/qnYB3+ufql7eeZVPMRDLBZ73fYyXu3VI7AHdCIF27
-	R8MU4iIWzaZWUoe2GBjxHJZjdXS5RBKxYH7gjyOEpgM2IYo3m3QRtiAWz1ZIY0KhXzEg
-	+WenqzXjqUcN8FGsxTcO7V0C5C9cv1KuBsqkE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=isiw/leTYYLrovAe8heQUE/88QBkmyPs5lL6ZDZqvfI=;
-	b=oKvfoN2Pjc1WaZ2E5I1+NuvNra2aQLHYOYxLCmT0KiAhe59Kbo9HfJv+u21nMmmff6
-	EkDUyEDngWLS/rHf2pEZPayh1K3u6cKayAitqvdp9WxQlfHlizuUSeXsVZbRZtmbwHqY
-	Fu4zPLpsHraJFkMpmRKbA2vDMC5Ix+yo5U2hewub6A5mFHMy/3fJdJyKYZbsf9k4gUmV
-	e1KAqLyJxRZejj5w+/VCm5+T3nYeuZOrPaqKM5NbGMcopVJX7sYHBP66PIlBqfJdzFb2
-	YrI/UMI+L0HhiH8cuzYUGeW3DoUVYWnIyKz2P5M+yPXSnF+6sMzCOHa4aqhZv2AXtJy2
-	8kZA==
-X-Gm-Message-State: APt69E2LclluhgJNGk7GJXB6O0p3B7HCjrPel39mwPF/YI8oBsqemYpx
-	jSaNq+RDzknbo2pwOVkX6tfmaNyHd+Yi8j7Fm6U3JwlG
-X-Received: by 2002:aca:ce0f:: with SMTP id
-	e15-v6mr9003740oig.13.1530543975104; 
-	Mon, 02 Jul 2018 08:06:15 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:902:0:0:0:0:0 with HTTP;
-	Mon, 2 Jul 2018 08:05:54 -0700 (PDT)
-In-Reply-To: <20180626200008.GA680@roeck-us.net>
-References: <1529374119-27015-1-git-send-email-linux@roeck-us.net>
-	<CAFEAcA_8TAWdkgTzPPE7eggP4UAHjVPmcXiEa_-RCxDBphJ4HA@mail.gmail.com>
-	<20180626175900.GA4307@roeck-us.net>
-	<CAFEAcA8PPF1mDWMGSm0r6NtYijwQQG7QnNEJ3iwaaEZU8GTu7g@mail.gmail.com>
-	<20180626200008.GA680@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Jul 2018 16:05:54 +0100
-Message-ID: <CAFEAcA_non89OR_-W3Fhr6gG0v0kkgg-ffJx-9K_h=U-Hz_wbg@mail.gmail.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-devel] [PATCH] hw/char/cmsdk-apb-timer: Correctly
- identify and set one-shot mode
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <thuth@redhat.com>) id 1fcdJL-0003iO-Ue
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:03:13 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50582 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fcdJL-0003iI-OZ; Mon, 09 Jul 2018 17:03:07 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DE9D5401EF11;
+	Mon,  9 Jul 2018 21:03:06 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-40.ams2.redhat.com [10.36.116.40])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 023E92156891;
+	Mon,  9 Jul 2018 21:03:03 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Mon,  9 Jul 2018 23:03:00 +0200
+Message-Id: <1531170180-21199-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Mon, 09 Jul 2018 21:03:06 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Mon, 09 Jul 2018 21:03:06 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH] hw/arm/bcm283x: Fix crash with device_add
+ bcm2837 on unsupported machines
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDUgmfyFHRt1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mWwrsNh8XamQ
 
-On 26 June 2018 at 21:00, Guenter Roeck <linux@roeck-us.net> wrote:
-> Here is a log, with debug messages added to ptimer code.
+When trying to "device_add bcm2837" on a machine that is not suitable for
+this device, you can quickly crash QEMU afterwards, e.g. with "info qtree":
 
-Thanks for the logging. (I am currently also messing about
-with buildroot to try to reproduce -- I have a kernel that
-boots, but since it has no initial filesystem it hits the
-"stop because I can't find init" before anything interesting
-happens.)
+echo "{'execute':'qmp_capabilities'} {'execute':'device_add', " \
+ "'arguments':{'driver':'bcm2837'}} {'execute': 'human-monitor-command', " \
+ "'arguments': {'command-line': 'info qtree'}}" | \
+ aarch64-softmmu/qemu-system-aarch64 -M integratorcp,accel=qtest -S -qmp stdio
 
-> Without my patch:
->
-> ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-> ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
-> ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-> ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
-> [    0.497942] clocksource: Switched to clocksource mps2-clksrc^M
-> ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-> ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
->
-> # up to here timer is in periodic mode and fires on a regular basis
->
-> # prepare to switch to one-shot mode
-> ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=0
->
-> # set timer for one-shot mode, start
-> ptimer_set_count(0x555556edac70, 92004
-> ptimer_reload(555556edac70): frac=0 period=40 delta=92004 limit=0 adjust=0
->
-> # one-shot mode fires
-> ptimer_tick(0x555556edac70): enabled=1 delta=92004 limit=0
->
-> # timer is in periodic mode, limit is 0 (from one-shot mode)
-> # reload propagates limit -> delta, making it 0
-> ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=-1
->
-> # and the timer is disabled as result.
-> 0x555556edac70: Timer with delta zero, disabling
->
-> ptimer_set_count(0x555556edac70, 199340
-> ptimer_reload(555556edac70): frac=0 period=40 delta=199340 limit=0 adjust=0
-> [    0.514458] NET: Registered protocol family 2^M
-> ptimer_tick(0x555556edac70): enabled=1 delta=199340 limit=0
-> ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=-1
-> 0x555556edac70: Timer with delta zero, disabling
-> ptimer_set_count(0x555556edac70, 240488
-> ptimer_reload(555556edac70): frac=0 period=40 delta=240488 limit=0 adjust=0
-> [    0.526096] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096
-> bytes)^M
-> [    0.526533] TCP established hash table entries: 1024 (order: 0, 4096 bytes)^M
-> [    0.526943] TCP bind hash table entries: 1024 (order: 0, 4096 bytes)^M
-> ptimer_tick(0x555556edac70): enabled=1 delta=240488 limit=0
-> ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=-1
-> 0x555556edac70: Timer with delta zero, disabling
+{"QMP": {"version": {"qemu": {"micro": 50, "minor": 12, "major": 2},
+ "package": "build-all"}, "capabilities": []}}
+{"return": {}}
+{"error": {"class": "GenericError", "desc": "Device 'bcm2837' can not be
+ hotplugged on this machine"}}
+Segmentation fault (core dumped)
 
-OK, but I can't see anything actually going wrong here. Once
-the guest sets the RELOAD register to 0, it gets one-shot timers, and
-needs to write to VALUE each time to restart the timer. We seem to get
-calls to set_count which set different counts, and a a tick for each
-set_count, so that looks like it's working to me. (But see below...)
+The problem is that qdev_set_parent_bus() from instance_init adds a link
+to the child devices which is not valid anymore after the device init
+failed. Thus the qdev_set_parent_bus() must rather be done in the realize
+function instead.
 
-> And so on. The system may finish booting or lock up. Which one it is seems
-> to be random.
->
-> Same log with my patch applied:
->
-> ptimer_tick(0x555556edac70): enabled=1 delta=250000 limit=250000
-> ptimer_reload(555556edac70): frac=0 period=40 delta=250000 limit=250000 adjust=1
->
-> # switch to one-shot mode
-> ptimer_reload(555556edac70): frac=0 period=40 delta=0 limit=0 adjust=0
->
-> @ set counter, start
-> ptimer_set_count(0x555556edac70, 24
-> ptimer_reload(555556edac70): frac=0 period=40 delta=24 limit=0 adjust=0
->
-> # tick
-> ptimer_tick(0x555556edac70): enabled=2 delta=24 limit=0
->
-> # update counter, restart
-> ptimer_set_count(0x555556edac70, 209498
-> ptimer_reload(555556edac70): frac=0 period=40 delta=209498 limit=0 adjust=0
-> [    0.509883] NET: Registered protocol family 2^M
->
-> # tick
-> ptimer_tick(0x555556edac70): enabled=2 delta=209498 limit=0
->
-> # update counter, restart
-> ptimer_set_count(0x555556edac70, 217500
-> ptimer_reload(555556edac70): frac=0 period=40 delta=217500 limit=0 adjust=0
->
-> # tick
-> ptimer_tick(0x555556edac70): enabled=2 delta=217500 limit=0
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/arm/bcm2835_peripherals.c | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
-This doesn't seem to be behaving any differently (apart from
-having silenced the fprintf about the zero delta).
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 6be7660..4724a29 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -43,22 +43,18 @@ static void bcm2835_peripherals_init(Object *obj)
+     /* Interrupt Controller */
+     object_initialize(&s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
+     object_property_add_child(obj, "ic", OBJECT(&s->ic), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->ic), sysbus_get_default());
+ 
+     /* UART0 */
+     s->uart0 = SYS_BUS_DEVICE(object_new("pl011"));
+     object_property_add_child(obj, "uart0", OBJECT(s->uart0), NULL);
+-    qdev_set_parent_bus(DEVICE(s->uart0), sysbus_get_default());
+ 
+     /* AUX / UART1 */
+     object_initialize(&s->aux, sizeof(s->aux), TYPE_BCM2835_AUX);
+     object_property_add_child(obj, "aux", OBJECT(&s->aux), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->aux), sysbus_get_default());
+ 
+     /* Mailboxes */
+     object_initialize(&s->mboxes, sizeof(s->mboxes), TYPE_BCM2835_MBOX);
+     object_property_add_child(obj, "mbox", OBJECT(&s->mboxes), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->mboxes), sysbus_get_default());
+ 
+     object_property_add_const_link(OBJECT(&s->mboxes), "mbox-mr",
+                                    OBJECT(&s->mbox_mr), &error_abort);
+@@ -68,7 +64,6 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_child(obj, "fb", OBJECT(&s->fb), NULL);
+     object_property_add_alias(obj, "vcram-size", OBJECT(&s->fb), "vcram-size",
+                               &error_abort);
+-    qdev_set_parent_bus(DEVICE(&s->fb), sysbus_get_default());
+ 
+     object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr), &error_abort);
+@@ -78,7 +73,6 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_child(obj, "property", OBJECT(&s->property), NULL);
+     object_property_add_alias(obj, "board-rev", OBJECT(&s->property),
+                               "board-rev", &error_abort);
+-    qdev_set_parent_bus(DEVICE(&s->property), sysbus_get_default());
+ 
+     object_property_add_const_link(OBJECT(&s->property), "fb",
+                                    OBJECT(&s->fb), &error_abort);
+@@ -88,22 +82,18 @@ static void bcm2835_peripherals_init(Object *obj)
+     /* Random Number Generator */
+     object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
+     object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->rng), sysbus_get_default());
+ 
+     /* Extended Mass Media Controller */
+     object_initialize(&s->sdhci, sizeof(s->sdhci), TYPE_SYSBUS_SDHCI);
+     object_property_add_child(obj, "sdhci", OBJECT(&s->sdhci), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus_get_default());
+ 
+     /* SDHOST */
+     object_initialize(&s->sdhost, sizeof(s->sdhost), TYPE_BCM2835_SDHOST);
+     object_property_add_child(obj, "sdhost", OBJECT(&s->sdhost), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->sdhost), sysbus_get_default());
+ 
+     /* DMA Channels */
+     object_initialize(&s->dma, sizeof(s->dma), TYPE_BCM2835_DMA);
+     object_property_add_child(obj, "dma", OBJECT(&s->dma), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->dma), sysbus_get_default());
+ 
+     object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr), &error_abort);
+@@ -111,7 +101,6 @@ static void bcm2835_peripherals_init(Object *obj)
+     /* GPIO */
+     object_initialize(&s->gpio, sizeof(s->gpio), TYPE_BCM2835_GPIO);
+     object_property_add_child(obj, "gpio", OBJECT(&s->gpio), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->gpio), sysbus_get_default());
+ 
+     object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhci",
+                                    OBJECT(&s->sdhci.sdbus), &error_abort);
+@@ -126,8 +115,22 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     MemoryRegion *ram;
+     Error *err = NULL;
+     uint64_t ram_size, vcram_size;
++    BusState *sysbus;
+     int n;
+ 
++    sysbus = sysbus_get_default();
++    qdev_set_parent_bus(DEVICE(&s->ic), sysbus);
++    qdev_set_parent_bus(DEVICE(s->uart0), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->aux), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->mboxes), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->fb), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->property), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->rng), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->sdhci), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->sdhost), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->dma), sysbus);
++    qdev_set_parent_bus(DEVICE(&s->gpio), sysbus);
++
+     obj = object_property_get_link(OBJECT(dev), "ram", &err);
+     if (obj == NULL) {
+         error_setg(errp, "%s: required ram link not found: %s",
+-- 
+1.8.3.1
 
-My reading of the code in ptimer_tick() is that the behaviour
-for "this was setup as a one-shot" is in effect the same as
-for "this was setup as periodic but the reload value is 0"
-is the same: it sets enabled to 0 and delta to 0.
-
-One thing I do notice reading the code is that we don't
-actually do anything to re-enable the timer on a write to
-the VALUE register. We call ptimer_set_count(), but that will
-not reenable the timer if it was disabled -- the cmsdk timer
-code needs to call ptimer_run() if necessary, I think. But
-that bug should manifest whether we're setting the timer up
-as a one-shot or as a periodic with a 0 limit, because
-ptimer_tick() will disable the timer when it fires whichever
-way we do that.
-
-thanks
--- PMM

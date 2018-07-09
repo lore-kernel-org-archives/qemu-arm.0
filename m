@@ -1,200 +1,231 @@
-Received: by 10.28.71.27 with SMTP id u27csp2342489wma;
-        Thu, 8 Feb 2018 09:37:53 -0800 (PST)
-X-Google-Smtp-Source: AH8x224v5qCWBkC60p9HUunpvdM2ly2y8nA27MDiZ76rhGaBGbwxqbCYKC0YY5q98eD30bCeGZlj
-X-Received: by 10.13.255.66 with SMTP id p63mr1160086ywf.482.1518111473658;
-        Thu, 08 Feb 2018 09:37:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518111473; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2946957wrq;
+        Mon, 9 Jul 2018 16:28:00 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeME1YrfJRCT49y/weT0kl5m9bTQquz1T4ae4Rg/CtShNqrN/labM7Jehmr80ztCNFITgoK
+X-Received: by 2002:a0c:886d:: with SMTP id 42-v6mr19788270qvm.242.1531178879999;
+        Mon, 09 Jul 2018 16:27:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531178879; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pcj8MinWRfaqcTNr+HpJRmodelPXfiHuOKBbH5Iq6zcfJik6iV5jSbT9cndS+/HF3H
-         lQjEkXZkOqdkeeRaHldyYC9EpZULwz050b0C8CeU5A+eE57yiyyzg0dot44CnpYPtRqg
-         kPsCnw1UyGXPxU74/48R09sOHWUs/GI0y/Yswe6RHDU9bOl9JinoHY0gP9LPnBIOO8FP
-         +zhA0erht+o895klliIFYNGcMwdjQABkniaa08RwwlFN3Uy4rvLMjSS1vmC+UaUgkATA
-         SXvLPlNqzMia8V469iEJW2+PN7fszFdwZyFJ+nkx7t5h4vkimLlJXuJlMUFLTAfvz2kZ
-         9f7Q==
+        b=t6s8HZIV8NFOuiG5Vq4VOs7QcLSZA06LDj3RXvaPpRndHGhUMMVFz7zlskmitYqKHF
+         cWAwX0onQpbfKq0chNNtQ6Wr6OmuPcf7DozkO4vnBdMvvCkBt1o4e2sG/fJD/IuS8KsC
+         hHtaXnHgGHFrmmT7gjWIHmK0QX52kkYeDWSZgHVnK/Y79OOTRvCuoReSCDnVPCcdzDV0
+         QXI4f56X36LOvcNYxRKDB0IG3LX+SL73qcn++HODG3mqtYrrn5kCm2oYtE+PkTn+kNxE
+         nIkoc9IfZrl8OMaCcECy8zu47a5cleVShlNkfdKvqkC97mw86Tpfbqh2GPMdcGT2ETb1
+         J0tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=gQPw4nj/djjsXDUAN6bIZlkV/KD0cJagKx8Sq1y0JgQ=;
-        b=jwX8n3vcxzPpjlPMosaeaoqHBCCwppSFTeyC/PU0aR+kxeHVnoVm+/r5ybf1DWqERX
-         Ps/kgmouAmguIsM6K4xNMS3jP4h2zk2TzRA/B2Fl6KpbSxOAKUtAqaKzmVaB6KaB3dEr
-         GDrBaQEec30Qq+MpD6A2cq9YPrctLENB2gJ/3T0QrnTa2SqgD8VvQE3zb/dMLL7t/AtC
-         Ecszh8yPx+nNwZYFD2yVk9YCq7OCOrpCFc53A+2GN/C8W55rKt7wTgkJvZyIlMdqj/nl
-         2LFoZPpKbEgctmYK7qNzMt8Nd6LjzGGlECdl7EDxKNKPL5rufa5oY9tc5WGm5WW21Oxr
-         pJVg==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :arc-authentication-results;
+        bh=6gyiFMDA3Voeh/EOT/apgRZ228C7wC3guAMekVLHwc4=;
+        b=hJ+8OXOZ/U4+8nWPwIj7HLiOzW/fLeAJ/WQJALRZ3jz1UuDyZanOfluBzsd02OP6/K
+         FjjlWe7++k9aNS06OTLibL8o8PRgHpS88bfpubHdz931OD3rZodF1oNcgL5Uw4CU+50a
+         Nz7Pi2qB0h/e1qdHB2duCiQNigL4TaEVMeLhkIL2hHpwVOpFJFa+T50ukJUG0g9697jU
+         WJrNnNf1eWVER4mPVdIadJ5D8668ZqkkIGZ/I3jN796Bls97k41EN62CcK3DTAcPSc10
+         XmTrxGR9U8CBrSrSNADUCqBCY5Thuu6NhZqyICGpXI8/V4oGi0Jx1JIm26uARiJZ5MVY
+         FIFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qn5Sxrr7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h10si77688ywk.695.2018.02.08.09.37.53
+        by mx.google.com with ESMTPS id v5-v6si2335476qkg.8.2018.07.09.16.27.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Feb 2018 09:37:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 09 Jul 2018 16:27:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qn5Sxrr7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:56588 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44865 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejq8u-0007zQ-SI
-	for alex.bennee@linaro.org; Thu, 08 Feb 2018 12:37:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50422)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fcfZX-0002PJ-AB
+	for alex.bennee@linaro.org; Mon, 09 Jul 2018 19:27:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ejptq-00034Q-Dw
-	for qemu-devel@nongnu.org; Thu, 08 Feb 2018 12:22:19 -0500
+	(envelope-from <mst@redhat.com>) id 1fcfYG-0001du-UO
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 19:26:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ejptp-0006he-Dn
-	for qemu-devel@nongnu.org; Thu, 08 Feb 2018 12:22:18 -0500
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:47079)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ejptp-0006hF-9q; Thu, 08 Feb 2018 12:22:17 -0500
-Received: by mail-qk0-x244.google.com with SMTP id d125so6555508qkg.13;
-	Thu, 08 Feb 2018 09:22:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=gQPw4nj/djjsXDUAN6bIZlkV/KD0cJagKx8Sq1y0JgQ=;
-	b=Qn5Sxrr7AZ2xTVmU//ojOo4FkOnAJAWoCu2Js/zqLqP6JEY+V/D2H/STAUoNCf+LBU
-	0lkQ/LtyqDGPHoJw2b2L9d6Bk5/M0DFRk7t1jH1StzaItHZYD/yG5LnB/V9LA9GSQuAm
-	1TElDhG+GHgyRCxFDqkNR3YtjE9wLtMvOWv+klp3Qa7QNljQxc9gMCDO8I+2vhKVBWEQ
-	T9sTlV9nbRI0GN41vgXn4Afa5uO4UBsiU2GDGL66VvHRypD21uyTWs/5UrN4yGZDt+Y6
-	J60P5WPGzROYGgwRv9SUeYfYk7TwM0mVBfBAyfZbuFeQ8l6ssmGMw5i59J3I232uti4Q
-	7fSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=gQPw4nj/djjsXDUAN6bIZlkV/KD0cJagKx8Sq1y0JgQ=;
-	b=Mo6HiLThdLl5PQ+H31O2K64+aGWz2/q7CoayZu8GmNZFxluC+jhYzeWCY2XMSNZF5g
-	P1kyqMwp1TyrESpJXN9r5WpBZ/HxC/ILPTGK/OnHuzv/LeIN/TKd5YGIpI39t+01E4S2
-	6/My1dHpFoXYFU12vRnKu6nBll2dd23bQQ0wNG44snY968VJmKVedhpjKN/xtJN5t2jh
-	BkT/F4vR+ec0HSYt4F4AHmwkZV1PDaOBwf1+XEvRFLbbmpJ4YQuRTHTtAwFNwVbGk6yr
-	GPpZZ9WwRtP0Gk/vuNT8gPSrS9sunjkG+2eP6nONYYhdOe6JfYvnp4cr2HpW0j2ttmXX
-	5JhQ==
-X-Gm-Message-State: APf1xPCmhD7pa/yXhen84so2Yb8YHRBBzC8sC3iXvJb9EPdYKL6onKM5
-	In8H1PNSPfazJQxIiI6Pytc=
-X-Received: by 10.55.214.217 with SMTP id p86mr2124210qkl.252.1518110536808;
-	Thu, 08 Feb 2018 09:22:16 -0800 (PST)
-Received: from x1.local ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id l66sm253466qkf.87.2018.02.08.09.22.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 08 Feb 2018 09:22:16 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Andrew Jeffery <andrew@aj.id.au>
-Date: Thu,  8 Feb 2018 14:22:02 -0300
-Message-Id: <20180208172202.9984-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.16.1
-In-Reply-To: <20180208172202.9984-1-f4bug@amsat.org>
-References: <20180208172202.9984-1-f4bug@amsat.org>
+	(envelope-from <mst@redhat.com>) id 1fcfYD-0005gN-Rw
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 19:26:40 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35702 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1fcfYD-0005fu-L3; Mon, 09 Jul 2018 19:26:37 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3649779D36;
+	Mon,  9 Jul 2018 23:26:37 +0000 (UTC)
+Received: from redhat.com (ovpn-120-239.rdu2.redhat.com [10.10.120.239])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 1CE3F111D3CF;
+	Mon,  9 Jul 2018 23:26:36 +0000 (UTC)
+Date: Tue, 10 Jul 2018 02:26:35 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20180710022532-mutt-send-email-mst@kernel.org>
+References: <20180705235305.124423-1-mst@redhat.com>
+	<20180709175232.5e768dfb@redhat.com>
+	<20180709200456-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-devel] [PATCH 2/2] hw/arm/aspeed: simplify using the
- 'unimplemented device' for aspeed_soc.io
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20180709200456-mutt-send-email-mst@kernel.org>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 09 Jul 2018 23:26:37 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 09 Jul 2018 23:26:37 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH] acpi: generalize aml_package / aml_varpackage
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RMN3+pACJMAt
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8Kt9gPiliQdx
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/arm/aspeed_soc.h |  1 -
- hw/arm/aspeed_soc.c         | 32 +++-----------------------------
- 2 files changed, 3 insertions(+), 30 deletions(-)
+On Mon, Jul 09, 2018 at 08:19:17PM +0300, Michael S. Tsirkin wrote:
+> On Mon, Jul 09, 2018 at 05:52:32PM +0200, Igor Mammedov wrote:
+> > On Fri, 6 Jul 2018 02:53:09 +0300
+> > "Michael S. Tsirkin" <mst@redhat.com> wrote:
+> > 
+> > > VarPackage can accept an expression evaluating to int, not just an int.
+> > > Change the API to make it more generic.
+> > > Further, rather than have users call the correct API depending on
+> > > value passed, use either PackageOp or VarPackageOp automatically.
+> > > 
+> > > Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> > > ---
+> > >  include/hw/acpi/aml-build.h |  4 ++--
+> > >  hw/acpi/aml-build.c         | 18 ++++++++++++++----
+> > >  hw/acpi/cpu_hotplug.c       | 11 ++---------
+> > >  hw/arm/virt-acpi-build.c    |  2 +-
+> > >  4 files changed, 19 insertions(+), 16 deletions(-)
+> > > 
+> > > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> > > index 10c7946028..7cf2cf64bf 100644
+> > > --- a/include/hw/acpi/aml-build.h
+> > > +++ b/include/hw/acpi/aml-build.h
+> > > @@ -360,7 +360,7 @@ Aml *aml_method(const char *name, int arg_count, AmlSerializeFlag sflag);
+> > >  Aml *aml_if(Aml *predicate);
+> > >  Aml *aml_else(void);
+> > >  Aml *aml_while(Aml *predicate);
+> > > -Aml *aml_package(uint8_t num_elements);
+> > > +Aml *aml_package(uint64_t num_elements);
+> > >  Aml *aml_buffer(int buffer_size, uint8_t *byte_list);
+> > >  Aml *aml_resource_template(void);
+> > >  Aml *aml_field(const char *name, AmlAccessType type, AmlLockRule lock,
+> > > @@ -373,7 +373,7 @@ Aml *aml_create_field(Aml *srcbuf, Aml *bit_index, Aml *num_bits,
+> > >                        const char *name);
+> > >  Aml *aml_create_dword_field(Aml *srcbuf, Aml *index, const char *name);
+> > >  Aml *aml_create_qword_field(Aml *srcbuf, Aml *index, const char *name);
+> > > -Aml *aml_varpackage(uint32_t num_elements);
+> > > +Aml *aml_varpackage(Aml *num_elements);
+> > maybe drop it from header and make static so only aml_package() would be
+> > left as public API like in spec?
+> 
+> There are places in the spec that say VarPackage.
+> E.g. _CST: Return Value: A variable-length Package.
+> 
+> We probably want to keep aml_varpackage around for these
+> cases.
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index f26914a2b9..11ec0179db 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -31,7 +31,6 @@ typedef struct AspeedSoCState {
- 
-     /*< public >*/
-     ARMCPU cpu;
--    MemoryRegion iomem;
-     MemoryRegion sram;
-     AspeedVICState vic;
-     AspeedTimerCtrlState timerctrl;
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index a786750e14..3d21128d47 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -15,6 +15,7 @@
- #include "qemu-common.h"
- #include "cpu.h"
- #include "exec/address-spaces.h"
-+#include "hw/misc/unimp.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/char/serial.h"
- #include "qemu/log.h"
-@@ -99,31 +100,6 @@ static const AspeedSoCInfo aspeed_socs[] = {
-     },
- };
- 
--/*
-- * IO handlers: simply catch any reads/writes to IO addresses that aren't
-- * handled by a device mapping.
-- */
--
--static uint64_t aspeed_soc_io_read(void *p, hwaddr offset, unsigned size)
--{
--    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
--                  __func__, offset, size);
--    return 0;
--}
--
--static void aspeed_soc_io_write(void *opaque, hwaddr offset, uint64_t value,
--                unsigned size)
--{
--    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " [%u]\n",
--                  __func__, offset, value, size);
--}
--
--static const MemoryRegionOps aspeed_soc_io_ops = {
--    .read = aspeed_soc_io_read,
--    .write = aspeed_soc_io_write,
--    .endianness = DEVICE_LITTLE_ENDIAN,
--};
--
- static void aspeed_soc_init(Object *obj)
- {
-     AspeedSoCState *s = ASPEED_SOC(obj);
-@@ -199,10 +175,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     Error *err = NULL, *local_err = NULL;
- 
-     /* IO space */
--    memory_region_init_io(&s->iomem, NULL, &aspeed_soc_io_ops, NULL,
--            "aspeed_soc.io", ASPEED_SOC_IOMEM_SIZE);
--    memory_region_add_subregion_overlap(get_system_memory(),
--                                        ASPEED_SOC_IOMEM_BASE, &s->iomem, -1);
-+    create_unimplemented_device("aspeed_soc.io",
-+                                ASPEED_SOC_IOMEM_BASE, ASPEED_SOC_IOMEM_SIZE);
- 
-     /* CPU */
-     object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
--- 
-2.16.1
+And thinking more about this, if you want a package with
+# of elements that isn't a constant, you want aml_varpackage.
+If it's a constant you have the handy aml_package shortcut.
 
+> > 
+> > >  Aml *aml_touuid(const char *uuid);
+> > >  Aml *aml_unicode(const char *str);
+> > >  Aml *aml_refof(Aml *arg);
+> > > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > > index def62b3112..1996768b40 100644
+> > > --- a/hw/acpi/aml-build.c
+> > > +++ b/hw/acpi/aml-build.c
+> > > @@ -1016,9 +1016,19 @@ Aml *aml_buffer(int buffer_size, uint8_t *byte_list)
+> > >  }
+> > >  
+> > >  /* ACPI 1.0b: 16.2.5.4 Type 2 Opcodes Encoding: DefPackage */
+> > > -Aml *aml_package(uint8_t num_elements)
+> > > +/* Note: The ability to create variable-sized packages was first
+> > > + * introduced in ACPI 2.0. ACPI 1.0 only allowed fixed-size packages
+> > > + * with up to 255 elements. Windows guests up to win2k8 fail when
+> > > + * VarPackageOp is used.
+> > > + */
+> > > +Aml *aml_package(uint64_t num_elements)
+> > >  {
+> > > -    Aml *var = aml_bundle(0x12 /* PackageOp */, AML_PACKAGE);
+> > > +    Aml *var;
+> > > +
+> > > +    if (num_elements > 0xFF)
+> > > +        return aml_varpackage(aml_int(num_elements));
+> > > +
+> > > +    var = aml_bundle(0x12 /* PackageOp */, AML_PACKAGE);
+> > >      build_append_byte(var->buf, num_elements);
+> > >      return var;
+> > >  }
+> > > @@ -1136,10 +1146,10 @@ Aml *aml_local(int num)
+> > >  }
+> > >  
+> > >  /* ACPI 2.0a: 17.2.2 Data Objects Encoding: DefVarPackage */
+> > > -Aml *aml_varpackage(uint32_t num_elements)
+> > > +Aml *aml_varpackage(Aml *num_elements)
+> > >  {
+> > >      Aml *var = aml_bundle(0x13 /* VarPackageOp */, AML_PACKAGE);
+> > > -    build_append_int(var->buf, num_elements);
+> > > +    aml_append(var, num_elements);
+> > >      return var;
+> > >  }
+> > >  
+> > > diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
+> > > index 5243918125..f8246fca6f 100644
+> > > --- a/hw/acpi/cpu_hotplug.c
+> > > +++ b/hw/acpi/cpu_hotplug.c
+> > > @@ -309,15 +309,8 @@ void build_legacy_cpu_hotplug_aml(Aml *ctx, MachineState *machine,
+> > >      }
+> > >      aml_append(sb_scope, method);
+> > >  
+> > > -    /* build "Name(CPON, Package() { One, One, ..., Zero, Zero, ... })"
+> > > -     *
+> > > -     * Note: The ability to create variable-sized packages was first
+> > > -     * introduced in ACPI 2.0. ACPI 1.0 only allowed fixed-size packages
+> > > -     * ith up to 255 elements. Windows guests up to win2k8 fail when
+> > > -     * VarPackageOp is used.
+> > > -     */
+> > > -    pkg = pcms->apic_id_limit <= 255 ? aml_package(pcms->apic_id_limit) :
+> > > -                                       aml_varpackage(pcms->apic_id_limit);
+> > > +    /* build "Name(CPON, Package() { One, One, ..., Zero, Zero, ... })" */
+> > > +    pkg = aml_package(pcms->apic_id_limit);
+> > >  
+> > >      for (i = 0, apic_idx = 0; i < apic_ids->len; i++) {
+> > >          int apic_id = apic_ids->cpus[i].arch_id;
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index 6ea47e2588..2adb1de378 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -174,7 +174,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+> > >      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+> > >  
+> > >      /* Declare the PCI Routing Table. */
+> > > -    Aml *rt_pkg = aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
+> > > +    Aml *rt_pkg = aml_package(nr_pcie_buses * PCI_NUM_PINS);
+> > >      for (bus_no = 0; bus_no < nr_pcie_buses; bus_no++) {
+> > >          for (i = 0; i < PCI_NUM_PINS; i++) {
+> > >              int gsi = (i + bus_no) % PCI_NUM_PINS;

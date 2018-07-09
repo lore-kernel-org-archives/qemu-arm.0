@@ -1,134 +1,97 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2873560wrq;
-        Mon, 9 Jul 2018 14:36:46 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcDkZkG8f/q5HO81n1lSgIgfff1tgnwnfs3FwYdH2BIbCY0llek4o8M83gBxspm5QuqTCVT
-X-Received: by 2002:a0c:b030:: with SMTP id k45-v6mr8081500qvc.237.1531172206473;
-        Mon, 09 Jul 2018 14:36:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531172206; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2877696wrq;
+        Mon, 9 Jul 2018 14:42:30 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdCABpPcosKTp4seZ80p9wxseQth1baA2KguMiiUpTKQUakc9/1QxMMe2l3Zr8wbtT16SSS
+X-Received: by 2002:ac8:73ca:: with SMTP id v10-v6mr21209695qtp.329.1531172550630;
+        Mon, 09 Jul 2018 14:42:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531172550; cv=none;
         d=google.com; s=arc-20160816;
-        b=polH/E6A/TODbo35X1P7fy6vMJ9XiI3lfUdyKJHwwMJNHKQHhpXr91DAFroE58G/S/
-         wmQEFWyrFrj+b754+ejYYrheWlNEaukxvIQ4HF+spACeMnJeXylmxaTaHBw7wuXQHkjh
-         rmhyftZfstvYCimvM1mn772Vod0VijqfGfsv+PIIgMkQzdS74IGHf2p+YoIizuoz9cQ2
-         mtM9SJXOH1ZJosxdU+sVaWGRNO+J/Pgf+YS4BPhrCRd4f5vU88lwuG8qpF4Ymf6K4hUw
-         8TegKsDGf3zx7IUBI99CNvOchDpB07Fehzh1gabxnZeIDn4uN8fPiCISQzxD2V6R0aUN
-         Vbhw==
+        b=D9zVyRSR/FXAROToRwzBR0sAZYfZeaXgyT+NB0IgcrriI6kD5iMey2bOWq0JO+0fZz
+         j5fMP+1Z+gDH0ZuuK9kEC47EzGzUV8amONJmZ8x6ppChcYAGlUpNN4FPL8XK+7VuAbHr
+         d4p8mwL4xIG30HNZ4lAlQSOiRW5ECtNE1o7fD5IDZpHnPoP80CwMxtSCtf28zDIxxbTG
+         w7mKUZ5UENEFnRmMX9PWxikH9zOgXrHGa9w7HNQJfd36HvYTetrOO4FtM7wZ+UsTMrG9
+         wf9lL0klJQG+miOpJ2M8BNl1f8JUM420zC1ke51lJ5LGzpzcaetJjqNcfE+RbayILHlP
+         8zlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=cOsHG0+NEnoRpyJfGU8sDRiGllJqD46HIoyD855EIq8=;
-        b=o5VsYsfhR9OobazIHRm6tLOJPHG/C2dryDBu5/0UV5mPhQj8SkknPNQAK4VESSyzqk
-         KhxmK4HxLoYdwbNNGmOBdRxdGAo2h5y65CI14oTQtN0bOCiXeudesfWsEM6VReWNoQj2
-         vO2XjSeetFS/0w/5sOpaiQbhGEPPMh96NUk/PnCr/Hjax/LFy2xDlAigtsm8Z3kv0oNE
-         4Cep7wGmYXEfL9eL/A0Ka3hd3MXKNJeKh5p+6fy9uUKhMfJ8kN1eLSj4bePmEwVDLCl+
-         i9s1OQpC1uXa5BoTvj2TQBhnXVWlYOIPs+8TIz1ad3XosPZ/C8vCk5dYY2Pg7IqDBgmW
-         KhTA==
+        bh=bAqEPeblGNlSASUrBhpS+zyjAJ/Nv4wxcgVu1YEzhpM=;
+        b=xPAIFm4L5y3XnV151juvNo2+t4+Yr7JofdzX9dWO/WFvUoHSC/sbVJg/j3wRfh/MJY
+         17eTK5kya2+iC4dT3gYW3xn07T0+EvCVmTSD+Ac8tGNxbKzMx4wCmxKBExHlkOMx1Wi5
+         2wbq2MPg9HWExPVizqv3ZvAM3qDpc9ylH6VVcJLlVrlfBtVB6ZSWTB9QGNyUoUfZQSti
+         6Xy7Uxi8WxEogo0eVdNH5Oc2H1jbPzCxEEGLeceTC+xB9JChw1E7/4+8xy6GJYwYlFOc
+         XZqDztL7CXrUsoMFXoyq6SsPLi16UTR4vIFb99a4l8BDAjQzlIs0+1lScRKYb2+M82V+
+         0kRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KqTotuaH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p17-v6si81594qvf.115.2018.07.09.14.36.46
+        by mx.google.com with ESMTPS id d39-v6si4111431qkh.36.2018.07.09.14.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jul 2018 14:36:46 -0700 (PDT)
+        Mon, 09 Jul 2018 14:42:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KqTotuaH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44585 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44602 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fcdpu-0001QB-0j
-	for alex.bennee@linaro.org; Mon, 09 Jul 2018 17:36:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40858)
+	id 1fcdvS-0002cw-2u
+	for alex.bennee@linaro.org; Mon, 09 Jul 2018 17:42:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fcdpl-0001Q5-B8
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:36:38 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fcdvL-0002cl-En
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:42:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fcdpi-0004l1-8U
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:36:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36252 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fcdpi-0004kt-1n; Mon, 09 Jul 2018 17:36:34 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 74F7687A80;
-	Mon,  9 Jul 2018 21:36:33 +0000 (UTC)
-Received: from [10.36.116.40] (ovpn-116-40.ams2.redhat.com [10.36.116.40])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FE762156891;
-	Mon,  9 Jul 2018 21:36:30 +0000 (UTC)
-To: Eduardo Habkost <ehabkost@redhat.com>
-References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
-	<20180709213131.GD7451@localhost.localdomain>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
-	yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
-	4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
-	tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
-	0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
-	O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
-	0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
-	gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
-	3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
-	zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzRxUaG9tYXMgSHV0
-	aCA8dGguaHV0aEBnbXguZGU+wsF7BBMBAgAlAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIX
-	gAUCUfuWKwIZAQAKCRAu2dd0/nAttbe/EACb9hafyOb2FmhUqeAiBORSsUifFacQ7laVjcgR
-	I4um8CSHvxijYftpkM2EdAtmXIKgbNDpQoXcWLXB9lu9mLgTO4DVT00TRR65ikn3FCWcyT74
-	ENTOzRKyKLsDCjhXKPblTPIQbYAUCOWElcyAPm0ERd62fA/rKNxgIiNo/l4UODOMoOJm2/Ox
-	ZoTckW68Eqv7k9L7m7j+Hn3hoDTjAmcCBJt+j7pOhzWvCbqoNOIH8C8qvPaNlrba+R/K6jkO
-	6jZkTbYQpGIofEQJ/TNn38IsNGpI1ALTHWFtoMxp3j2Imz0REO6dRE2fHRN8sVlHgkoeGhmY
-	NbDsDE1jFQOEObFnu0euk//7BXU7tGOHckVAZ8T1smiRPHfQU7UEH2a/grndxJ+PNeM5w7n2
-	l+FN3cf2KgPotCK2s9MjSdZA7C5e3rFYO8lqiqTJKvc62vqp3e7B0Kjyy5/QtzSOejBij2QL
-	xkKSFNtxIz4MtuxN8e3IDQNxsKry3nF7R4MDvouXlMo6wP9KuyNWb+vFJt9GtbgfDMIFVamp
-	ZfhEWzWRJH4VgksENA4K/BzjEHCcbTUb1TFsiB1VRnBPJ0SqlvifnfKk6HcpkDk6Pg8Q5FOJ
-	gbNHrdgXsm+m/9GF2zUUr+rOlhVbK23TUqKqPfwnD7uxjpakVcJnsVCFqJpZi1F/ga9IN87B
-	TQRR+3lMARAAtp831HniPHb9AuKq3wj83ujZK8lH5RLrfVsB4X1wi47bwo56BqhXpR/zxPTR
-	eOFT0gnbw9UkphVc7uk/alnXMDEmgvnuxv89PwIQX6k3qLABeV7ykJQG/WT5HQ6+2DdGtVw3
-	2vjYAPiWQeETsgWRRQMDR0/hwp8s8tL/UodwYCScH6Vxx9pdy353L1fK4Bb9G73a+9FPjp9l
-	x+WwKTsltVqSBuSjyZQ3c3EE8qbTidXZxB38JwARH8yN3TX+t65cbBqLl/zRUUUTapHQpUEd
-	yoAsHIml32e4q+3xdLtTdlLi7FgPBItSazcqZPjEcYW73UAuLcmQmfJlQ5PkDiuqcitn+KzH
-	/1pqsTU7QFZjbmSMJyXY0TDErOFuMOjf20b6arcpEqse1V3IKrb+nqqA2azboRm3pEANLAJw
-	iVTwK3qwGRgK5ut6N/Znv20VEHkFUsRAZoOusrIRfR5HFDxlXguAdEz8M/hxXFYYXqOoaCYy
-	6pJxTjy0Y/tIfmS/g9Bnp8qg9wsrsnk0+XRnDVPak++G3Uq9tJPwpJbyO0vcqEI3vAXkAB7X
-	VXLzvFwi66RrsPUoDkuzj+aCNumtOePDOCpXQGPpKl+l1aYRMN/+lNSk3+1sVuc2C07WnYyE
-	gV/cbEVklPmKrNwu6DeUyD0qI/bVzKMWZAiB1r56hsGeyYcAEQEAAcLBXwQYAQIACQUCUft5
-	TAIbDAAKCRAu2dd0/nAttYTwEACLAS/THRqXRKb17PQmKwZHerUvZm2klo+lwQ3wNQBHUJAT
-	p2R9ULexyXrJPqjUpy7+voz+FcKiuQBTKyieiIxO46oMxsbXGZ70o3gxjxdYdgimUD6U8PPd
-	JH8tfAL4BR5FZNjspcnscN2jgbF4OrpDeOLyBaj6HPmElNPtECHWCaf1xbIFsZxSDGMA6cUh
-	0uX3Q8VI7JN1AR2cfiIRY7NrIlWYucJxyKjO3ivWm69nCtsHiJ0wcF8KlVo7F2eLaufo0K8A
-	ynL8SHMF3VEyxsXOP2f1UR9T2Ur30MXcTBpjUxml1TX3RWY5uH89Js/jlIugBwuAmacJ7JYh
-	lTg6sF/GNc4nPb4kk2yktNWTade+TzsllYlJPaorD2Qe8qX0iFUhFC6y9+O6mP4ZvWoYapp9
-	ezYNuebMgEr93ob1+4sFg3812wNP01WqsGtWCJHnPv/JoonFdMzD/bIkXGEJMk6ks2kxQQZq
-	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
-	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
-	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <047ecdef-0faa-aac2-53fa-8a390fd33956@redhat.com>
-Date: Mon, 9 Jul 2018 23:36:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fcdvK-0006it-IE
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:42:23 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34136)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fcdvK-0006iR-4N
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 17:42:22 -0400
+Received: by mail-oi0-x244.google.com with SMTP id 13-v6so38747424ois.1
+	for <qemu-arm@nongnu.org>; Mon, 09 Jul 2018 14:42:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=bAqEPeblGNlSASUrBhpS+zyjAJ/Nv4wxcgVu1YEzhpM=;
+	b=KqTotuaHwl2zyXoQBkpDzdNG4Wk7TxiAhEChbjb1g7wvX4I4H7yh0OCDCLJnbz+Sps
+	+FiRNaaRq4lHIzyPvBUJX6EKgJjoGOyyz+9QVIAbJTEHI4md2UUwl2agg9HhK+z8dSJC
+	oFKoeZmRsyOcNu7osWjIRsFZX6q2zVJ0RMAAs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=bAqEPeblGNlSASUrBhpS+zyjAJ/Nv4wxcgVu1YEzhpM=;
+	b=Y4XOEBAFGa4GtwtAkEha/PwgcrSubxPXul1ynyuy3FYF5qyDrB+v8Qqi6iusOyGmDt
+	91M/a7hu6SKHfCB9qQAlosuD6EvKX1hYgDAhuOb9eTbbeuGuf7kVRHyYG5yKJz1nYGka
+	s2nN39N5qK0hg6IPRmZFHBy/uqKPFalUaaI630XOhxxZZfUZjWvcU0SbVskNF8BzWGR0
+	06EemeZyGPBUVJd4TDY9i3MwYH0J4Fm4Yo1TXW88x7tJIJLga0clkqIs0+Cgj2d4tHvz
+	3oju7NaOk2ScSQlI128L7cgHq0GpoOYlBDrQ2Na7V7oHH1FRq/ok4c5iXfjjrZM0cnrz
+	utFQ==
+X-Gm-Message-State: APt69E1eru8Sae1rL7U7n8au0h+whvAAX6owIm9+M8QEjUAxTByLh4NM
+	/HokwYqB92ik40xyg2hRpL2vBmdhardvngM7jfUfwQ==
+X-Received: by 2002:aca:7247:: with SMTP id
+	p68-v6mr26117144oic.252.1531172541269; 
+	Mon, 09 Jul 2018 14:42:21 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180709213131.GD7451@localhost.localdomain>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Mon, 09 Jul 2018 21:36:33 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Mon, 09 Jul 2018 21:36:33 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP;
+	Mon, 9 Jul 2018 14:42:00 -0700 (PDT)
+In-Reply-To: <1531170180-21199-1-git-send-email-thuth@redhat.com>
+References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Jul 2018 22:42:00 +0100
+Message-ID: <CAFEAcA-T_d2kEU+Pb72=pJQhpvqvN1owgi4RLNtNY=L4t_1Z2g@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::244
 Subject: Re: [Qemu-arm] [PATCH] hw/arm/bcm283x: Fix crash with device_add
  bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
@@ -142,27 +105,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AMm6FkL66fNG
+X-TUID: vCDJHth3wT54
 
-On 09.07.2018 23:31, Eduardo Habkost wrote:
-> On Mon, Jul 09, 2018 at 11:03:00PM +0200, Thomas Huth wrote:
->> When trying to "device_add bcm2837" on a machine that is not suitable for
->> this device, you can quickly crash QEMU afterwards, e.g. with "info qtree":
->>
->> echo "{'execute':'qmp_capabilities'} {'execute':'device_add', " \
->>  "'arguments':{'driver':'bcm2837'}} {'execute': 'human-monitor-command', " \
->>  "'arguments': {'command-line': 'info qtree'}}" | \
->>  aarch64-softmmu/qemu-system-aarch64 -M integratorcp,accel=qtest -S -qmp stdio
-> 
-> Interesting, how did you find this bug?
+On 9 July 2018 at 22:03, Thomas Huth <thuth@redhat.com> wrote:
+> When trying to "device_add bcm2837" on a machine that is not suitable for
+> this device, you can quickly crash QEMU afterwards, e.g. with "info qtree":
+>
+> echo "{'execute':'qmp_capabilities'} {'execute':'device_add', " \
+>  "'arguments':{'driver':'bcm2837'}} {'execute': 'human-monitor-command', " \
+>  "'arguments': {'command-line': 'info qtree'}}" | \
+>  aarch64-softmmu/qemu-system-aarch64 -M integratorcp,accel=qtest -S -qmp stdio
+>
+> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 12, "major": 2},
+>  "package": "build-all"}, "capabilities": []}}
+> {"return": {}}
+> {"error": {"class": "GenericError", "desc": "Device 'bcm2837' can not be
+>  hotplugged on this machine"}}
+> Segmentation fault (core dumped)
+>
+> The problem is that qdev_set_parent_bus() from instance_init adds a link
+> to the child devices which is not valid anymore after the device init
+> failed. Thus the qdev_set_parent_bus() must rather be done in the realize
+> function instead.
 
-I was running some tests with an enhanced version of this patch applied:
+Yuck. The real problem here is that we're still requiring the
+code that creates these QOM devices to manually set the parent
+in the first place. It's not surprising that we don't get it right
+(either parenting in the wrong place or not at all). I'd much
+rather see us fix that properly than keep papering over places
+where we get it wrong.
 
-http://lists.gnu.org/archive/html/qemu-devel/2018-03/msg05033.html
+Also, "device_add bcm2837" is just nonsensical: there's no
+way to create an SoC device like this with device_add.
+We should not allow it (for this and all the other
+devices that device_add will never work with)...
 
- Thomas
+thanks
+-- PMM

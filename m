@@ -1,120 +1,160 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2397030wrq;
-        Mon, 9 Jul 2018 05:46:03 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfMOwMGBPZGRhUUxt3I453vVKRIRk72R8w8ZqmbIPZNVjwefBFFOxj8uL0mqiEFkVpTyXwk
-X-Received: by 2002:a0c:9dc3:: with SMTP id p3-v6mr17667327qvf.211.1531140362954;
-        Mon, 09 Jul 2018 05:46:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531140362; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2419424wrq;
+        Mon, 9 Jul 2018 06:08:26 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcDxsop4aVkXpbVaV5WRqH4fttzCk5NBVwps2cwWKaPtiiCkBfGL1xSbjhzY+wbFkrXOAtQ
+X-Received: by 2002:ac8:855:: with SMTP id x21-v6mr18934231qth.42.1531141706233;
+        Mon, 09 Jul 2018 06:08:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531141706; cv=none;
         d=google.com; s=arc-20160816;
-        b=Udp7hWcvC9KUYcFQ4SDd0cPxABF7SfsLXBwoGLGd1PdDj/yLKkWjkTTv1cS/cZAAdz
-         z11byoP4HZK1p34o5W3SQOcqaD53X1NFik1f38s7LhrL6n6VaZ6QNsOGsUOpoZffZAMg
-         eNlPkHGKceTEtO/At2IaTmWYTnV9Kw3LhiKowDtKT48HWKsztMRi2IV6NB1v6rHvLZ4q
-         mfarrigczrCfh0/SrIpdBdruuxjqaYHAJLrSa1xEKC+b2sGm8wzvoX4b/+MbCdHMpbvn
-         QruoOlUGtJQvy4g29kEHVLb4tQ2nNQXmD4ZZeyL7zPFBf+D0p14rZDAWM8xD5CTzuG1q
-         cjyg==
+        b=nDIr+jE7myuUXSc7eDBGe1KrAZZCfbse6uYQ3w6seQSbG29SYirXfID3SHHLcod7uH
+         SbL3DjTs0QlR86K14NnG9S59OJY0ncALSAi4+o9p9YpiN7TWR1sRtD28lOKLyct3c7T7
+         RGbvmYI/kNGNbhBaot8Ac3Y9PJTsKL7Z7RUKGVrH0HAFsurV7C8DqpZiFX7BbrbFkELV
+         iqU+nlFgEZW9hrAfkv3zwBA0+eu6BmCDvfj/WLGiD07+86dG2uEZrFKnse4J7KjcZT04
+         NquDfWlLyK9ioMMb08wFqWQgKfpFqHamwfdyR3vfnLvLzmoRQ/iFF/YusoRdOZvdjMdJ
+         yojQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=BT7dr+5aXLhhsqMj6V90KBhpdf8Rp/VxHctTcd+7w40=;
-        b=avZbwrqhLhlSAFIWkk9RLg10YOlab1fX/8q7qSWAsMFo1zrZduddRF+IpbJEXsNBjK
-         MrX8hhtXsXw6JDHDk8dJqDCYw2Jo4kuN4KBDJv4XFypF/uZ6U2GPCzEkg4CzpapNaA+8
-         ZIqtZdSji99bpmyDBtpxmWejxQrVPdh0DQyC4fZE1r7rx+J+vn0+Oa9gAzXpbgh85VXz
-         WxfeVHm35+NfAr4o5HXIa2yzgbdqcw5G71fXeHnVrRhAG1hIjBzn+PH7YJGiTwmFNfpj
-         XmsYag2tWiG9pRDLIgrENztaZtuV6KALky5ngFRzHGFQO2AbDuAqVlSic2ANJfjhOev7
-         VE4g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=mtmDtXYtIR5Jz16UYaloW9i64UL3Kw7XTZDXB5CMuow=;
+        b=yd8eczb1la0c2q111b1TmvtqwoLpNTf1rm5/ZV+ayYH+yYCERzuY00mZY6Y3hOeLIk
+         oqTe1e/bGZyG9G2JDS9+wL1GUU00nMVNyRdrQvmtmmkgJjiv60z0M4bIRnoBYHXcrwoN
+         WSRAoiYK/mFPWMnmeytT7hP4tAENa/571iBB6MQqHxqCVFNbFGRRjyxdWzhR84vPct3G
+         LA5vYNlUkNUg/GBvEatGTzuiCY08cdOR6AE5enwGEymMeVsoFUJRHSkzXNfZnIJKNJ7B
+         qc6PYNKjR4YkOvYvHqbdYylmzrOkuWF7mmrYEAb8cjBwlv9zCG/AHn4DfmHp2Kc5EcG5
+         vUpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=OHMrC374;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 47-v6si1805765qve.250.2018.07.09.05.46.02
+        by mx.google.com with ESMTPS id f15-v6si4149491qve.92.2018.07.09.06.08.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 09 Jul 2018 05:46:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 09 Jul 2018 06:08:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=OHMrC374;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41509 helo=lists.gnu.org)
+Received: from localhost ([::1]:41822 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fcVYI-0001q6-Gm
-	for alex.bennee@linaro.org; Mon, 09 Jul 2018 08:46:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57010)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fcVtx-0006fQ-PI
+	for alex.bennee@linaro.org; Mon, 09 Jul 2018 09:08:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35357)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fcVYA-0001q0-5a
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 08:45:55 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fcVte-0006fA-KP
+	for qemu-devel@nongnu.org; Mon, 09 Jul 2018 09:08:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fcVY9-0006X4-76
-	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 08:45:54 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43332)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fcVY9-0006RV-05; Mon, 09 Jul 2018 08:45:53 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fcVXs-0000cm-Lw; Mon, 09 Jul 2018 13:45:36 +0100
+	(envelope-from <peter.maydell@linaro.org>) id 1fcVtd-0007iX-P5
+	for qemu-devel@nongnu.org; Mon, 09 Jul 2018 09:08:06 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:32975)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fcVtd-0007iI-JB
+	for qemu-devel@nongnu.org; Mon, 09 Jul 2018 09:08:05 -0400
+Received: by mail-oi0-x241.google.com with SMTP id c6-v6so35767424oiy.0
+	for <qemu-devel@nongnu.org>; Mon, 09 Jul 2018 06:08:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=mtmDtXYtIR5Jz16UYaloW9i64UL3Kw7XTZDXB5CMuow=;
+	b=OHMrC374AGe76ZR5HFChLlDqFnKhhr973sxCwDEzXHgtq6tRRQZMQwkWw2UJEOjpG7
+	F3wYlos/37FXyScBeMZsznO2LoCn9dVIRIyX3DDkRzW25WsznnzIVGtG+nNAUBq+yFc1
+	q/dXdLn7nnoOptC2uDhejMOlMUD3CaYYf98Rs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=mtmDtXYtIR5Jz16UYaloW9i64UL3Kw7XTZDXB5CMuow=;
+	b=Hk2qheEa7few7ld9tJejV8uU9yEVNNc2/EaYv3d3hZ7Wo5ow4bUDlQXDULQ6V/ivmR
+	JdXzVD/vRtenv9kid9DT/SDTTku9dRScEr2nWT2r2eqS2yNmRgrr3GI3AbYdb/9vEnCk
+	B7VZ3wPlM6CJgQxllnVt7NmRCDPwImPsSZPx763J+2FDLMqNxDO9QxPVpJ7DAzf+8WmV
+	LXO3UxZXeUDYKJr4IYJvhnf/kvvT/DXwFsUp4BljqNuR679jvj+gcIWz3XZHnFElCA1t
+	OKHk6Nnuvn6sT1xtyONmRYB7bS+iMLUpvhp9yEQEonNrjCfWJMFd8kI/i3iKUOa3xMJR
+	W1Ug==
+X-Gm-Message-State: APt69E3JcJICU9zp1ubMNFZr3iDwsKFXCZ2PYply/H6cHcpKbWB4W9si
+	dqz82dDTi4r+tOSWaff6RXkbpzZCnlSAOw1aLUmBWA==
+X-Received: by 2002:aca:f409:: with SMTP id
+	s9-v6mr24326078oih.102.1531141685036; 
+	Mon, 09 Jul 2018 06:08:05 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP;
+	Mon, 9 Jul 2018 06:07:44 -0700 (PDT)
+In-Reply-To: <20180706162155.8432-2-f4bug@amsat.org>
+References: <20180706162155.8432-1-f4bug@amsat.org>
+	<20180706162155.8432-2-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  9 Jul 2018 13:45:35 +0100
-Message-Id: <20180709124535.1116-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
+Date: Mon, 9 Jul 2018 14:07:44 +0100
+Message-ID: <CAFEAcA8zeJYCD_1fee==nCYo8tWk61wzQoiR_KEA8CZ_GzyBaw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-3.0] target/arm: Use correct mmu_idx for
- exception-return unstacking
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-devel] [PATCH for-3.0 1/1] hw/sd/omap_mmc: Split
+ 'pseudo-reset' from 'power-on-reset'
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Adithya Baglody <adithya.nagaraj.baglody@intel.com>, patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fRJiXbmdIGzm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Fm/9FpayPazl
 
-For M-profile exception returns, the mmu index to use for exception
-return unstacking is supposed to be that of wherever we are returning to:
- * if returning to handler mode, privileged
- * if returning to thread mode, privileged or unprivileged depending on
-   CONTROL.nPRIV for the destination security state
+On 6 July 2018 at 17:21, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
+e:
+> DeviceClass::reset models a "cold power-on" reset which can
+> also be use to powercycle a device; but there is no "hot reset"
+> (a.k.a. soft-reset) method available.
+>
+> The OMAP MMC Power-Up Control bit is not designed to powercycle
+> a card, but to disable it without powering it off (pseudo-reset):
+>
+>   Multimedia Card (MMC/SD/SDIO) Interface [SPRU765A]
+>
+>   MMC_CON[11] Power-Up Control (POW)
+>   This bit must be set to 1 before any valid transaction to either
+>   MMC/SD or SPI memory cards.
+>   When 1, the card is considered powered-up and the controller core
+>   is enabled.
+>   When 0, the card is considered powered-down (system dependent),
+>   and the controller core logic is in pseudo-reset state. This is,
+>   the MMC_STAT flags and the FIFO pointers are reset, any access to
+>   MMC_DATA[DATA] has no effect, a write into the MMC.CMD register
+>   is ignored, and a setting of MMC_SPI[STR] to 1 is ignored.
 
-We were passing the wrong thing as the 'priv' argument to
-arm_v7m_mmu_idx_for_secstate_and_priv(). The effect was that guests
-which programmed the MPU to behave differently for privileged and
-unprivileged code could get spurious MemManage Unstack exceptions.
+This text says that the card "is considered powered-down (system
+dependent)", so it's not entirely invalid to reset the card here.
+Still, if the guests get confused by it I guess that the n8x0
+systems didn't do that, and certainly resetting the other parts
+of the controller state is wrong.
 
-Reported-by: Adithya Baglody <adithya.nagaraj.baglody@intel.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Strictly I guess we should also check the enable flag for the other
+things this text calls out:
+ * accesses to MMC_DATA[DATA]
+ * writes to MMC.CMD (we already do this)
+ * setting MMC_SPI[STR] to 1 (we don't emulate MMC_SPI)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a2ac96084e7..0604a0efbe2 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7171,9 +7171,11 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-         uint32_t frameptr = *frame_sp_p;
-         bool pop_ok = true;
-         ARMMMUIdx mmu_idx;
-+        bool return_to_priv = return_to_handler ||
-+            !(env->v7m.control[return_to_secure] & R_V7M_CONTROL_NPRIV_MASK);
- 
-         mmu_idx = arm_v7m_mmu_idx_for_secstate_and_priv(env, return_to_secure,
--                                                        !return_to_handler);
-+                                                        return_to_priv);
- 
-         if (!QEMU_IS_ALIGNED(frameptr, 8) &&
-             arm_feature(env, ARM_FEATURE_V8)) {
--- 
-2.17.1
+but we should probably consider that a separate bug. (And the
+n8x0 boards are pretty much unmaintained currently, so I don't
+care very much whether we fix it or not. I don't have any working
+test images -- I have one of uncertain vintage which seems to
+be flaky when it gets to the mmc card init, but I think it
+makes a bit more progress with this patch now.)
 
+Applied to target-arm.next, thanks.
+
+thanks
+-- PMM

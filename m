@@ -1,174 +1,217 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp6821057wru;
-        Tue, 24 Jul 2018 06:30:09 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdzDqWg64TxEHIjt3cvuWNjVKXw7/+n6KAUnNtBwRaTQeGfy7NHUrKFga3hXOKpUnN3C0/L
-X-Received: by 2002:a37:1845:: with SMTP id j66-v6mr14905272qkh.408.1532439009878;
-        Tue, 24 Jul 2018 06:30:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532439009; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp2966339wrq;
+        Mon, 9 Jul 2018 17:01:53 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpceI4sHSKlK5KdhZO5a4Nvf9OPNJkvl7xX/86Ccj9q2uU+A0bbAEPO9syJPO6Nboohz/ew/
+X-Received: by 2002:ac8:359b:: with SMTP id k27-v6mr20578419qtb.15.1531180913869;
+        Mon, 09 Jul 2018 17:01:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531180913; cv=none;
         d=google.com; s=arc-20160816;
-        b=INuxhauUPAjbOtnhfzqCZHFTkWftMlU+7rfY5ENY8Yv2rYU2xGUN0zrONVcJMwet48
-         JciHMZ6DXfNmsrCJ2+cH6JK9Zw+DYRzRxTf8CLe1l25nyAQr56BiktkZ6uPHf7rlRoec
-         eI1A5zJbhiwtFR1jQFKrAxoDW1qIo0tUFYRVMIKT3st97jQQ1DcJKnLFGOpWtY7EkFqm
-         yzZERvk31vGrTcmiEZlldguYNPnvucVM7boKlQ7qE6d/AFHIcHkL4IpLUWv8UvN/5sEf
-         pcpzVb3DrGRFtteZCPfWTDvk438+bIGiJNc3WlM51KX7rMIK+8uUKgeXN7euuhcFcVNr
-         831A==
+        b=Gj4ayn3EUTdYRGazlN/5Q66j0uFlS/jFY3ww3w+jYWcvcuoDY0LZ8Wr2ievLdw2icH
+         xUZwZPV/obPGOgqkqwRwsICWVotOVXBmV4/pzaOgmkuYwaJBbm+jRvMC5YHx8szgdcLF
+         t+/A05CD2WmqAJukXnlrvyI/TKp0Libtsm6DwhC3rv15yx9TxcADEpSBT97EMVxwHsol
+         JUGYJVXqP6OVKomFspuaHXkmgARVwmXUDV6mG1/MMfL7cefP9fxE5iVIZGQsKxLm3qzd
+         3mQBYCcJ3OppPfrgciGZ+F1J04XOhjcs+xuCttEJnKgAWrmYS+42V4vwrBK1O6w+e2m1
+         DNUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=j4baYZjHtNjLHHhB1hiuuzg4WB7HQ+Uc9GCNC1NRTBY=;
-        b=oQHW1gc91HcRqszO5Xnv3csNwnsD1edHvMWSf/j/sfKpPoCrKNe1mCsv6eLGP5+8cR
-         K9mtCPiG+bVbsETydr9A4cZI2dS3TZR/z+DqWL0RGEDQkxXFxTDHD6zTllwA673ltOYL
-         73gbbNu0f6uuUX4jlv0bEGzA+EmNNyWQIg2sTAkWUdkV2p89XNcPO0PBEpE7Gmn7WvGM
-         EQNSFtLNgherIk+fyWSpl4zh/gP46bSRTUDlbO0mRaxn+V8soC3x896diveDzprZtr0K
-         6mNQSKy0XDbwEUMgcSuZ1WCpLOf5XoDoGfFOTiI4BD93tyFikmzD5LVsGNA0NWBZXKTt
-         i9MQ==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :arc-authentication-results;
+        bh=a884Dcc87lkKZIP1zy6Shdc6B5A5bShPBgP+GZm1nPw=;
+        b=BJO5BSSz1IhF3S7W+PFq6Ql9t91UtMe6v3ENGIqM9WVdALbg/PrwVW4tFXNq2zCI/T
+         2+fCawFKHnHtSmYJUwUz901A1f7ib2d910r+2yvC06Y2GC42f4XiLa0RZoGDFKcX5MEl
+         YB+jGjrHFV5WYYfHi5WOXuPcL0Sftocp1bHEob+TS7tmLUUQgMFGqnKnkwHDChkb6nln
+         O34DRGypm8RAd9nhDAvXVlnaBGTwYieTlSkcpO4woI+p5xSHpH8sABlwC8sKxoYGAIdD
+         vRfSRYFZr1cjMGuCbIMx2KpTXtKxD7w1DRaVCcSLdJ5RcCQgFjgDUfaCrVp9J+/FEGCt
+         vo4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Ew/6tOc9";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p31-v6si3875456qtg.145.2018.07.24.06.30.09
+        by mx.google.com with ESMTPS id x18-v6si1071655qtb.195.2018.07.09.17.01.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Jul 2018 06:30:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 09 Jul 2018 17:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Ew/6tOc9";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40537 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44959 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fhxOC-00044A-FA
-	for alex.bennee@linaro.org; Tue, 24 Jul 2018 09:30:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58625)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fcg6L-0001B7-9V
+	for alex.bennee@linaro.org; Mon, 09 Jul 2018 20:01:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36028)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fhxNl-00042r-Tb
-	for qemu-devel@nongnu.org; Tue, 24 Jul 2018 09:29:43 -0400
+	(envelope-from <mst@redhat.com>) id 1fcg62-00018D-Mj
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 20:01:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fhxNl-0005JN-2m
-	for qemu-devel@nongnu.org; Tue, 24 Jul 2018 09:29:41 -0400
-Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:44568)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1fhxNk-0005Ie-SB; Tue, 24 Jul 2018 09:29:41 -0400
-Received: by mail-pl0-x242.google.com with SMTP id m16-v6so1777064pls.11;
-	Tue, 24 Jul 2018 06:29:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=j4baYZjHtNjLHHhB1hiuuzg4WB7HQ+Uc9GCNC1NRTBY=;
-	b=Ew/6tOc9rxzurzxGGRdMMV8o4m0oLeRgFa/iamPOGMBBrRtsCEga17Uf7bxPXA+X9h
-	WlS2MMe6yUXIFDn7dSCSr77XuUXkg/cSF0W/VnHkZU86+w/YgEPOml0x09fqxdhGc5e8
-	QSagvJTsZqCuHDRI/SMRNQwfFgqecMsCniHSdTEMNXT6T/9QusksIAOYh2SUUcXiP6VF
-	6U81Uc3mGRKLKQy5txWruUFRmEM3DXre+HiIGwKKcYxob+L527Peg/lmMhq3IgBWv1Xw
-	CorcH8cSpSwfrzTcFSbfMnShxATPBzZoGznCQ6qNwFExX6AjtKQ+sJc1q05kXnhk75s6
-	aoCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=j4baYZjHtNjLHHhB1hiuuzg4WB7HQ+Uc9GCNC1NRTBY=;
-	b=GpgFSk0LTELCfeZZC5zBhz+W9mzTXabOB4zLg26Zg0Ev2kcTcMzWFfmkUT1SfQIhco
-	C5+VR6vT1i2Fh6DesS4P1pSCxKbytKsqICb/cZnHqrNnc38VqZTjLK4IPpnEyMZN+lGR
-	GIgrJsFAsV1iEpRCa7S4UyPugKlvCcC96DiWEVxqEnNayYdypXhCrnaYyyWYzhqCVShL
-	lOAqwysJLlASC+hNaaLSJoCgfgqcQ/ILFMwz1dyQAFGE1aZaiUZpWtxMZT5QtW2sSnBw
-	6MhXMDJ8Z+ifqOZTmL939yqV1dbHw3J/Ko+x/K7kAN25G9FMLcGDJaU7JYyGuclKZ6tQ
-	Fskg==
-X-Gm-Message-State: AOUpUlESVKiw2CGAvKNBIoGo2g/cTKtIbijXBWvdMDvE4WvDFb+kawGt
-	h8CdIHLQ+jKBiIwZe8iZKck=
-X-Received: by 2002:a17:902:342:: with SMTP id
-	60-v6mr132418pld.15.1532438979893; 
-	Tue, 24 Jul 2018 06:29:39 -0700 (PDT)
-Received: from cloudburst.twiddle.net ([2601:1c0:6100:a92d::e452])
-	by smtp.googlemail.com with ESMTPSA id
-	t12-v6sm16672243pgg.72.2018.07.24.06.29.38
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 24 Jul 2018 06:29:38 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180713150945.12348-1-peter.maydell@linaro.org>
-	<5c3ec438-2265-94b4-4f35-71a79d838518@twiddle.net>
-	<CAFEAcA8fFxKEbwC=rfp28cTMUT2eQVzGS8qc5tLowK3XYwEvrg@mail.gmail.com>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
-	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
-	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
-	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
-	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
-	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
-	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
-	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
-	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
-	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
-	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
-	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
-	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
-	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
-	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
-	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
-	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
-	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
-	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
-	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
-	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
-	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
-	VcROBqvtH3ecaIL9iw==
-Message-ID: <4b9f5913-ded1-c71f-9e57-70ad4f9f554b@twiddle.net>
-Date: Tue, 24 Jul 2018 06:29:36 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <mst@redhat.com>) id 1fcg60-0001o1-T2
+	for qemu-arm@nongnu.org; Mon, 09 Jul 2018 20:01:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51378 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1fcg60-0001nu-NH; Mon, 09 Jul 2018 20:01:32 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 30594808255B;
+	Tue, 10 Jul 2018 00:01:32 +0000 (UTC)
+Received: from redhat.com (ovpn-120-239.rdu2.redhat.com [10.10.120.239])
+	by smtp.corp.redhat.com (Postfix) with SMTP id B11A92026D65;
+	Tue, 10 Jul 2018 00:01:31 +0000 (UTC)
+Date: Tue, 10 Jul 2018 03:01:31 +0300
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20180710000024.542612-3-mst@redhat.com>
+References: <20180710000024.542612-1-mst@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8fFxKEbwC=rfp28cTMUT2eQVzGS8qc5tLowK3XYwEvrg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::242
-Subject: Re: [Qemu-devel] [PATCH] accel/tcg: Check whether TLB entry is RAM
- consistently with how we set it up
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20180710000024.542612-1-mst@redhat.com>
+X-Mutt-Fcc: =sent
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Tue, 10 Jul 2018 00:01:32 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Tue, 10 Jul 2018 00:01:32 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH hack dontapply v2 2/7] acpi: generalize
+ aml_package / aml_varpackage
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 72sCpel0F9Y4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, ehabkost@redhat.com,
+	pbonzini@redhat.com, qemu-arm@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>, imammedo@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dl6Lo/t7p4LA
 
-On 07/24/2018 05:26 AM, Peter Maydell wrote:
-> On 15 July 2018 at 01:37, Richard Henderson <rth@twiddle.net> wrote:
->> On 07/13/2018 10:09 AM, Peter Maydell wrote:
->>> @@ -939,29 +935,21 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
->>>          }
->>>          assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
->>>      }
->>> +    assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
->>
->> Don't duplicate the assert; just move it.  Otherwise,
->>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> I propose to put this patch into my target-arm.for-3.1 branch
-> (with the duplicated assert deleted), unless you have another
-> preference.
+VarPackage can accept an expression evaluating to int, not just an int.
+Change the API to make it more generic.
+Further, rather than have users call the correct API depending on
+value passed, use either PackageOp or VarPackageOp automatically.
 
-That's fine by me.
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ include/hw/acpi/aml-build.h |  4 ++--
+ hw/acpi/aml-build.c         | 19 +++++++++++++++----
+ hw/acpi/cpu_hotplug.c       | 11 ++---------
+ hw/arm/virt-acpi-build.c    |  2 +-
+ 4 files changed, 20 insertions(+), 16 deletions(-)
 
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 10c7946028..7cf2cf64bf 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -360,7 +360,7 @@ Aml *aml_method(const char *name, int arg_count, AmlSerializeFlag sflag);
+ Aml *aml_if(Aml *predicate);
+ Aml *aml_else(void);
+ Aml *aml_while(Aml *predicate);
+-Aml *aml_package(uint8_t num_elements);
++Aml *aml_package(uint64_t num_elements);
+ Aml *aml_buffer(int buffer_size, uint8_t *byte_list);
+ Aml *aml_resource_template(void);
+ Aml *aml_field(const char *name, AmlAccessType type, AmlLockRule lock,
+@@ -373,7 +373,7 @@ Aml *aml_create_field(Aml *srcbuf, Aml *bit_index, Aml *num_bits,
+                       const char *name);
+ Aml *aml_create_dword_field(Aml *srcbuf, Aml *index, const char *name);
+ Aml *aml_create_qword_field(Aml *srcbuf, Aml *index, const char *name);
+-Aml *aml_varpackage(uint32_t num_elements);
++Aml *aml_varpackage(Aml *num_elements);
+ Aml *aml_touuid(const char *uuid);
+ Aml *aml_unicode(const char *str);
+ Aml *aml_refof(Aml *arg);
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index def62b3112..7165f19585 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1016,9 +1016,20 @@ Aml *aml_buffer(int buffer_size, uint8_t *byte_list)
+ }
+ 
+ /* ACPI 1.0b: 16.2.5.4 Type 2 Opcodes Encoding: DefPackage */
+-Aml *aml_package(uint8_t num_elements)
++/* Note: The ability to create variable-sized packages was first
++ * introduced in ACPI 2.0. ACPI 1.0 only allowed fixed-size packages
++ * with up to 255 elements. Windows guests up to win2k8 fail when
++ * VarPackageOp is used.
++ */
++Aml *aml_package(uint64_t num_elements)
+ {
+-    Aml *var = aml_bundle(0x12 /* PackageOp */, AML_PACKAGE);
++    Aml *var;
++
++    if (num_elements > 0xFF) {
++        return aml_varpackage(aml_int(num_elements));
++    }
++
++    var = aml_bundle(0x12 /* PackageOp */, AML_PACKAGE);
+     build_append_byte(var->buf, num_elements);
+     return var;
+ }
+@@ -1136,10 +1147,10 @@ Aml *aml_local(int num)
+ }
+ 
+ /* ACPI 2.0a: 17.2.2 Data Objects Encoding: DefVarPackage */
+-Aml *aml_varpackage(uint32_t num_elements)
++Aml *aml_varpackage(Aml *num_elements)
+ {
+     Aml *var = aml_bundle(0x13 /* VarPackageOp */, AML_PACKAGE);
+-    build_append_int(var->buf, num_elements);
++    aml_append(var, num_elements);
+     return var;
+ }
+ 
+diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
+index 5243918125..f8246fca6f 100644
+--- a/hw/acpi/cpu_hotplug.c
++++ b/hw/acpi/cpu_hotplug.c
+@@ -309,15 +309,8 @@ void build_legacy_cpu_hotplug_aml(Aml *ctx, MachineState *machine,
+     }
+     aml_append(sb_scope, method);
+ 
+-    /* build "Name(CPON, Package() { One, One, ..., Zero, Zero, ... })"
+-     *
+-     * Note: The ability to create variable-sized packages was first
+-     * introduced in ACPI 2.0. ACPI 1.0 only allowed fixed-size packages
+-     * ith up to 255 elements. Windows guests up to win2k8 fail when
+-     * VarPackageOp is used.
+-     */
+-    pkg = pcms->apic_id_limit <= 255 ? aml_package(pcms->apic_id_limit) :
+-                                       aml_varpackage(pcms->apic_id_limit);
++    /* build "Name(CPON, Package() { One, One, ..., Zero, Zero, ... })" */
++    pkg = aml_package(pcms->apic_id_limit);
+ 
+     for (i = 0, apic_idx = 0; i < apic_ids->len; i++) {
+         int apic_id = apic_ids->cpus[i].arch_id;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6ea47e2588..2adb1de378 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -174,7 +174,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+ 
+     /* Declare the PCI Routing Table. */
+-    Aml *rt_pkg = aml_varpackage(nr_pcie_buses * PCI_NUM_PINS);
++    Aml *rt_pkg = aml_package(nr_pcie_buses * PCI_NUM_PINS);
+     for (bus_no = 0; bus_no < nr_pcie_buses; bus_no++) {
+         for (i = 0; i < PCI_NUM_PINS; i++) {
+             int gsi = (i + bus_no) % PCI_NUM_PINS;
+-- 
+MST
 
-r~

@@ -1,86 +1,137 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5429707wrq;
-        Tue, 26 Jun 2018 13:22:18 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpe+G+LdyGzeN/HHsAdvQNjia++M82i7Ad1n3/NfVN+554yEjd+qwsONO979DkvtXPQKSRyq
-X-Received: by 2002:ac8:16ee:: with SMTP id y43-v6mr2987381qtk.148.1530044538059;
-        Tue, 26 Jun 2018 13:22:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530044538; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp3877403wrq;
+        Tue, 10 Jul 2018 11:31:08 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdFHiPs3yG3kZLAW4q3P8U1SQrzQtAw6lP/uKTe44PULypEEWxgN9PchjBoJY4RXxR/oPH5
+X-Received: by 2002:a37:7c41:: with SMTP id x62-v6mr4543021qkc.52.1531247468256;
+        Tue, 10 Jul 2018 11:31:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531247468; cv=none;
         d=google.com; s=arc-20160816;
-        b=br01hqRlxCamUCrTgvX10HvLeAspqfsRPH5k+iqz3byGh643DTY4VszMsHkgIygcjj
-         noO/nrPIMrDc2zo7lhL3bskXiPVE6qcCUAyntddOc5Exu3uOU3lbHHgEDzNXH9rOfaQZ
-         +9tuOP83mDdehdJ5e4ddsut1um606vWTMB+b7cJFS0iuG0ExIsr2PAXUYpR358xImx6G
-         pAETDyFEbX1Rk/0ihJLSDIeWQn3ZPBKdzerbY6j5s9Mi6zWJnexivAehvrZcgKbo5fl3
-         aU62E+RtCRmDJ1KZQvTHZmESd8Pg+7Brhb1brJVqly9X7tGZwm4ZOhf4WNwkrB8x5HIh
-         vLYg==
+        b=EhINnBYmM5wbmWl/tnyOF89fgHoAKEwoYkPL5TVnNp72hXjsTjzOXrpYtTJWF4g4l/
+         LEneboLPI9grxU/cYSiPDJ5BwN8GuEhdriakpRb6qWMycKP6d7JE73nU2w51ex2EDI40
+         eTr2MyAesOm0wwC/p8LeKrcUu4klLdo30jScbVVOaFz/vFpQPU7DO4XUN1z16LoPCio1
+         DYwhBq8rDPNHV8n5Sl65qcAT4UChKVAt7L0scbvyqtyoZOWPGq+3I8pfndYShHsWQu8T
+         pYCFZYIrZU1J9gvd+vtascEiai7yWkTvcgLcpBn+lFcDjAgn3gF6pXrLELx0Qp1HjhwE
+         Xdiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=kgHeyLyEDExRqp1+utygRNnQTX2O88tRrKm4jlkx1UM=;
-        b=or9QwPdjUmlHdiTbhYsNfzXdusAsrFWR9qnA3Uw3kYivgMdthCz7MGO67hPLFGysqj
-         BHTElKzNOGdP7p3o9JyQlu2k87RcCIWoe+j1lsvmooZSXkD6SEPcTag3uPNtOtvIC2V5
-         RVTX+fH122VNdPlkK46du4way7KQjZPkqs8zgYfTwxBHZFZ87ijQPXhIuzCXsA3/G+Z1
-         EwjVGh3AoCqix4PnjM24FB87easSO7/v/X2mJERZAPPXNqJ5thU0yA1pfVKlMER4NQxL
-         v2VfMu4eRMH+uuEnJE3Bs3L5aU3xGogJdgkgOp1iq0LGtIWuwWagUXY8XWUH4KBjLKwN
-         2P+w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=pY3y9Lww4L72tEeVeNZV89oq6N7Q16w/OCSvzCW4tuU=;
+        b=IWz+hxRkx3MzwuPjpZaAa49C6hUCSqzinVaAOJQ3ehaAopXzPyl+npTw6CEFNFgdEi
+         G+ycL7A5G7vdjJ1FAZGc87ys0RUExPjCxUiyvG7gsW9rMmPS818dKoLGptOilG3USHuH
+         qVzQRv3SJp6dnBly4A8bJD3hxOSuiq9LpZNy2KuThGr/XwwyGRzGOClo+ivZxxcPtIe8
+         CS2tCStXfUz6MzD2QAE14bBvoeFWsX/uXgJa17LxuIS2va+jhNZZfD3QXX9eOdBnrfqd
+         QupaPCIJU4zozE9062lNV6FSvAvQJNFJNwpEth5Em5eXDZEWI7qTIS1oWUR5exTq+kmd
+         vDmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i2SxmxbY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f32-v6si387089qva.48.2018.06.26.13.22.17
+        by mx.google.com with ESMTPS id j11-v6si429635qtf.169.2018.07.10.11.31.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 13:22:18 -0700 (PDT)
+        Tue, 10 Jul 2018 11:31:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55179 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i2SxmxbY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49304 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fXuTh-00089o-9f
-	for alex.bennee@linaro.org; Tue, 26 Jun 2018 16:22:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56213)
+	id 1fcxPn-0004dx-NP
+	for alex.bennee@linaro.org; Tue, 10 Jul 2018 14:31:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fXuT9-0007w3-C7
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 16:21:44 -0400
+	(envelope-from <rth7680@gmail.com>) id 1fcxPX-0004cV-U5
+	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 14:30:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fXuT7-0006zv-Vh
-	for qemu-arm@nongnu.org; Tue, 26 Jun 2018 16:21:43 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38958 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fXuT7-0006zd-Pw; Tue, 26 Jun 2018 16:21:41 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5E9EF7020E;
-	Tue, 26 Jun 2018 20:21:41 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-117-106.ams2.redhat.com
-	[10.36.117.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 28FF01117643;
-	Tue, 26 Jun 2018 20:21:40 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org, crosthwaite.peter@gmail.com,
-	agraf@suse.de
-Date: Tue, 26 Jun 2018 22:21:31 +0200
-Message-Id: <1530044492-24921-3-git-send-email-eric.auger@redhat.com>
-In-Reply-To: <1530044492-24921-1-git-send-email-eric.auger@redhat.com>
-References: <1530044492-24921-1-git-send-email-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 26 Jun 2018 20:21:41 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 26 Jun 2018 20:21:41 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v4 2/3] hw/arm/virt: Silence dtc /intc warnings
+	(envelope-from <rth7680@gmail.com>) id 1fcxPX-0003ou-2j
+	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 14:30:51 -0400
+Received: from mail-pf0-x22a.google.com ([2607:f8b0:400e:c00::22a]:42274)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1fcxPS-0003lF-JZ; Tue, 10 Jul 2018 14:30:46 -0400
+Received: by mail-pf0-x22a.google.com with SMTP id l9-v6so5031870pff.9;
+	Tue, 10 Jul 2018 11:30:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=pY3y9Lww4L72tEeVeNZV89oq6N7Q16w/OCSvzCW4tuU=;
+	b=i2SxmxbYKJxPeHVHwPPmu3ucpcTrRXanE8fbmf9Ocll94uZphABZeh8mnxtOwg3f/i
+	NIpAqOjPzr5ouZuGaqpBXFtswvO7SSI487Q712lLb3c18CP7HUqSwbdzFd3moU5vjvYB
+	LH0FezeC7SXJPDDPS6PBKH2O7VNIUr+fl7u8oBSK9lbMdzGccPLJ+c1LOyRKvD9Hm5Bt
+	g2p7Q5NRE32131f2wVFmlKNGUDp7BKzhF5VJNXLJ88UYW38EeyhhmJZAfYF6puArCb6a
+	HDagQBlwJtUe8j6+0czyFxfEkf5H3/BDtskIR9kJMwiM88yl9At8BntX3r6FDYAZzlqD
+	PusA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=pY3y9Lww4L72tEeVeNZV89oq6N7Q16w/OCSvzCW4tuU=;
+	b=iRZk6R6yMhfskKMgAQKDtxhOttD12571Iv9cO9YTERvh76IkrzTcen5xc9mO6YHXwi
+	N1Pc3LaLFiIRsFV+bxr3U1mQudTvX89nyKuTI55gqe8WiGjZBgYPkOvHV384gVy+vzQg
+	tDPfCCdKZ45fARCy/HHkATipzi2XCEWvMOsJUiIz99A0aSOvTACdEtf/fjFfgiP4agC0
+	U39DKRMzHSbb+XqqP9eUDzJsbiMXYR16IKyyPL+nCHjFizb5XztEzFvSD3j5rtHlp0Ug
+	C4+Hab5pUjflxEdjIpgXGIhHffW6k4Rd3M9oQUW6JMbTQX0/Xwcfn6zn3+u/JswowvNE
+	3Zdw==
+X-Gm-Message-State: APt69E2VD5tHZnDbfoHc1rf0zrjQtOEHsb9dS0aDN6I9tin4+GHiu+DV
+	bipOgr4E1QsTMLel4jijEEk=
+X-Received: by 2002:a63:2a0b:: with SMTP id
+	q11-v6mr16947413pgq.36.1531247445536; 
+	Tue, 10 Jul 2018 11:30:45 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.googlemail.com with ESMTPSA id
+	b67-v6sm56597348pfd.74.2018.07.10.11.30.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 10 Jul 2018 11:30:45 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180710160013.26559-1-peter.maydell@linaro.org>
+	<20180710160013.26559-5-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
+	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
+	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
+	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+	VcROBqvtH3ecaIL9iw==
+Message-ID: <fb6279a8-26b4-66c8-57da-4882e0121e76@twiddle.net>
+Date: Tue, 10 Jul 2018 11:30:43 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <20180710160013.26559-5-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::22a
+Subject: Re: [Qemu-arm] [PATCH 4/6] accel/tcg: tb_gen_code(): Create
+ single-insn TB for execution from non-RAM
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,150 +143,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org, KONRAD Frederic <frederic.konrad@adacore.com>,
+	"Emilio G . Cota" <cota@braap.org>,
+	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TFXRCVmW+x/t
+X-TUID: MDezLP2BiJkM
 
-When running dtc on the guest /proc/device-tree we get the
-following warnings: "Warning (unit_address_vs_reg): Node <name>
-has a reg or ranges property, but no unit name", with name:
-/intc, /intc/its, /intc/v2m.
+On 07/10/2018 09:00 AM, Peter Maydell wrote:
+> If get_page_addr_code() returns -1, this indicates that there is no RAM
+> page we can read a full TB from. Instead we must create a TB which
+> contains a single instruction and which we do not cache, so it is
+> executed only once.
+> 
+> Since this means we can now have TBs which are not in any page list,
+> we also need to make tb_phys_invalidate() handle them (by not trying
+> to remove them from a nonexistent page list).
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  accel/tcg/translate-all.c | 19 ++++++++++++++++++-
+>  1 file changed, 18 insertions(+), 1 deletion(-)
 
-Nodes should have a name in the form <name>[@<unit-address>] where
-unit-address is the primary address used to access the device, listed
-in the node's reg property. This fix seems to make dtc happy.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/virt.c | 63 ++++++++++++++++++++++++++++++++++++-----------------------
- 1 file changed, 39 insertions(+), 24 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 742f68a..6cce282 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -369,58 +369,72 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
- 
- static void fdt_add_its_gic_node(VirtMachineState *vms)
- {
-+    char *nodename;
-+
-     vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
--    qemu_fdt_add_subnode(vms->fdt, "/intc/its");
--    qemu_fdt_setprop_string(vms->fdt, "/intc/its", "compatible",
-+    nodename = g_strdup_printf("/intc/its@%" PRIx64,
-+                               vms->memmap[VIRT_GIC_ITS].base);
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                             "arm,gic-v3-its");
--    qemu_fdt_setprop(vms->fdt, "/intc/its", "msi-controller", NULL, 0);
--    qemu_fdt_setprop_sized_cells(vms->fdt, "/intc/its", "reg",
-+    qemu_fdt_setprop(vms->fdt, nodename, "msi-controller", NULL, 0);
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                  2, vms->memmap[VIRT_GIC_ITS].base,
-                                  2, vms->memmap[VIRT_GIC_ITS].size);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc/its", "phandle", vms->msi_phandle);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->msi_phandle);
-+    g_free(nodename);
- }
- 
- static void fdt_add_v2m_gic_node(VirtMachineState *vms)
- {
-+    char *nodename;
-+
-+    nodename = g_strdup_printf("/intc/v2m@%" PRIx64,
-+                               vms->memmap[VIRT_GIC_V2M].base);
-     vms->msi_phandle = qemu_fdt_alloc_phandle(vms->fdt);
--    qemu_fdt_add_subnode(vms->fdt, "/intc/v2m");
--    qemu_fdt_setprop_string(vms->fdt, "/intc/v2m", "compatible",
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                             "arm,gic-v2m-frame");
--    qemu_fdt_setprop(vms->fdt, "/intc/v2m", "msi-controller", NULL, 0);
--    qemu_fdt_setprop_sized_cells(vms->fdt, "/intc/v2m", "reg",
-+    qemu_fdt_setprop(vms->fdt, nodename, "msi-controller", NULL, 0);
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                  2, vms->memmap[VIRT_GIC_V2M].base,
-                                  2, vms->memmap[VIRT_GIC_V2M].size);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc/v2m", "phandle", vms->msi_phandle);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->msi_phandle);
-+    g_free(nodename);
- }
- 
- static void fdt_add_gic_node(VirtMachineState *vms)
- {
-+    char *nodename;
-+
-     vms->gic_phandle = qemu_fdt_alloc_phandle(vms->fdt);
-     qemu_fdt_setprop_cell(vms->fdt, "/", "interrupt-parent", vms->gic_phandle);
- 
--    qemu_fdt_add_subnode(vms->fdt, "/intc");
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "#interrupt-cells", 3);
--    qemu_fdt_setprop(vms->fdt, "/intc", "interrupt-controller", NULL, 0);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "#address-cells", 0x2);
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "#size-cells", 0x2);
--    qemu_fdt_setprop(vms->fdt, "/intc", "ranges", NULL, 0);
-+    nodename = g_strdup_printf("/intc@%" PRIx64,
-+                               vms->memmap[VIRT_GIC_DIST].base);
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 3);
-+    qemu_fdt_setprop(vms->fdt, nodename, "interrupt-controller", NULL, 0);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 0x2);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 0x2);
-+    qemu_fdt_setprop(vms->fdt, nodename, "ranges", NULL, 0);
-     if (vms->gic_version == 3) {
-         int nb_redist_regions = virt_gicv3_redist_region_count(vms);
- 
--        qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                                 "arm,gic-v3");
- 
--        qemu_fdt_setprop_cell(vms->fdt, "/intc",
-+        qemu_fdt_setprop_cell(vms->fdt, nodename,
-                               "#redistributor-regions", nb_redist_regions);
- 
-         if (nb_redist_regions == 1) {
--            qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
-+            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                          2, vms->memmap[VIRT_GIC_DIST].base,
-                                          2, vms->memmap[VIRT_GIC_DIST].size,
-                                          2, vms->memmap[VIRT_GIC_REDIST].base,
-                                          2, vms->memmap[VIRT_GIC_REDIST].size);
-         } else {
--            qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
-+            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                          2, vms->memmap[VIRT_GIC_DIST].base,
-                                          2, vms->memmap[VIRT_GIC_DIST].size,
-                                          2, vms->memmap[VIRT_GIC_REDIST].base,
-@@ -430,22 +444,23 @@ static void fdt_add_gic_node(VirtMachineState *vms)
-         }
- 
-         if (vms->virt) {
--            qemu_fdt_setprop_cells(vms->fdt, "/intc", "interrupts",
-+            qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
-                                    GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
-                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         }
-     } else {
-         /* 'cortex-a15-gic' means 'GIC v2' */
--        qemu_fdt_setprop_string(vms->fdt, "/intc", "compatible",
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                                 "arm,cortex-a15-gic");
--        qemu_fdt_setprop_sized_cells(vms->fdt, "/intc", "reg",
-+        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-                                       2, vms->memmap[VIRT_GIC_DIST].base,
-                                       2, vms->memmap[VIRT_GIC_DIST].size,
-                                       2, vms->memmap[VIRT_GIC_CPU].base,
-                                       2, vms->memmap[VIRT_GIC_CPU].size);
-     }
- 
--    qemu_fdt_setprop_cell(vms->fdt, "/intc", "phandle", vms->gic_phandle);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->gic_phandle);
-+    g_free(nodename);
- }
- 
- static void fdt_add_pmu_nodes(const VirtMachineState *vms)
--- 
-2.5.5
+r~
 

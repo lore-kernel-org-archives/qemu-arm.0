@@ -1,72 +1,94 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp720018wre;
-        Fri, 1 Jun 2018 07:56:40 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKIO1i1fea2XJZgllWBAn57nf9wgA3vvDrY6YsVAIRFfdyHEWu9V6CsCKJDzgzQikoBaGWQB
-X-Received: by 2002:a37:5e46:: with SMTP id s67-v6mr10112136qkb.202.1527864999988;
-        Fri, 01 Jun 2018 07:56:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527864999; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp3777946wrq;
+        Tue, 10 Jul 2018 09:46:45 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc2c5U+P5O7SuMH4hxP331se6Wljs4aRegqYXS5nBcyZPWW4tZfATL5D60ibfFrCtD+sfsj
+X-Received: by 2002:a37:ddd5:: with SMTP id u82-v6mr22260366qku.420.1531241205772;
+        Tue, 10 Jul 2018 09:46:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531241205; cv=none;
         d=google.com; s=arc-20160816;
-        b=wTYIR46/HDoOsTizSIN8gff8iUIrsyxK7Z3rKouF2zQFO3i60UrN8ojuvgim0Cs+mC
-         aQVPRyfH6MrSzpqg2eBxk9Kgu06+QAkLVv0rnupjH1x46jffZMclTEqVly2WT0zAtOUN
-         EosvuEaOSf8wBgrGD819csncJ2ugd446d+TU8Dberw14kMoIibZizC9VsPX/yq5cm9KL
-         UWYjYf2rf4F7NpXbc8oSMLKDq16Kc6vx1Iibv2g5BAMBm6PG7DM4v9/WPLg5F57pcx2S
-         UX2X930j+6XRw1v1h8Jw8350Lx++DZkmQx6OEBVMyrUvkIsQlwQPJqA1X22cBu926bR9
-         b4xA==
+        b=s7c2p9uVLVuE453JUnYBtuPn40gLYEuC0KG0fqseyqHEtdU2zVD/nSapXieEokbATi
+         p1STHlxM5jb/Piifwz/gim90u7vnpD3Ryvprhhs5NOazIVsby8zWzaipqd1/vVWgkgAz
+         g03Km2i/BGTk8WEPf8HLWz7j5RKdFRpwpbVwwgQuvEbg5RHOwVkOf2q7AxePIRJEEa/J
+         b6yceWo4yh6TzO+l+Kc1lYIFlGv9/ICUjeECFhHOkiJfLqCxzmblH5fGc/RbDyvzPRtB
+         iN2HdIs8YxVXR2zeuxZ5pIj4YKKzPBf/Z/lRQZPTHjiVpCa3/ZSTlxewhXRoDUHxr/ZA
+         3qGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=tef9yASfaw1tuJGp0C2tQd2LaM1VGDcFzft1usNsHtQ=;
-        b=jkIMg3Hb2rwiFe1JV8qcR3jTJajPEryLZmcVw/vOOdx+JSLZ3+Lh9SRrKORUq/Uj/j
-         kjTD1w/dZ42lUKVFZZdoVa3aCY4s0UoHtYp13oKkYWtR3euGNXq4qxHjyFNXSEuzzccI
-         NncFL04gzTsfJn+kBv3t5/CshJUCSDQ1+J4kcEl7nFJWZMMkDojWFg9gFfHl3ux0ed5G
-         yAK2pslqoOssPAbzrFsZzddQLM0pCteFRFyCTVnTlY6WMMiLjTTofru4l0wKo21xP3Sy
-         DxdKEO7ooHc0y6y2oiZxHvMYCc8reJOofG7r3SHSQL4GaT1dC9rEWQ6bVpUmCMKGsONt
-         1TQA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=vUR5Pl9SEoXSnBkg/BLR6eKyGEW9zWBbQPUu8Nf2n3k=;
+        b=K8KZ7D2JPj+ufk53nwM963iyg8iaovgkxYFZVYqscN6sa+5hft+r19kJsVh6Dv9ylG
+         hkh+RDbM98jIUhbf4evRoh1QJjR+AVP/dJGI7ov5BFW68t70U72xu9IlpIBd1LcNTQQE
+         gAmVrnfq3zy3Xm/GldP+CMHfofgBN2756g9qu7WAfP/2DzSJ51zCLMkUGPnvl3B45DAy
+         TVj4JzTsXiEWexMTzSCGS6f7Vvin6xpBusCwrqgcE9uvR5BUY+nZCCqMvzh335s0zIh4
+         EXvAjuwEnvV62usLfg5dWocgz7sIPl1HcP42FQTKwdO/Dha9GA04mJXSIMXRw1FPuL27
+         AhXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l100-v6si17379057qkh.157.2018.06.01.07.56.39
+        by mx.google.com with ESMTPS id q3-v6si9449892qtl.309.2018.07.10.09.46.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 01 Jun 2018 07:56:39 -0700 (PDT)
+        Tue, 10 Jul 2018 09:46:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56119 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48916 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fOlTr-0006CH-Hm
-	for alex.bennee@linaro.org; Fri, 01 Jun 2018 10:56:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48667)
+	id 1fcvmn-0004Vc-AW
+	for alex.bennee@linaro.org; Tue, 10 Jul 2018 12:46:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34196)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fOlTc-00068F-E1
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 10:56:25 -0400
+	(envelope-from <th.huth@gmail.com>) id 1fcvmc-0004VW-7k
+	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 12:46:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fOlTY-0006Q4-V5
-	for qemu-arm@nongnu.org; Fri, 01 Jun 2018 10:56:24 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:42426)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fOlTY-0006Nu-NP; Fri, 01 Jun 2018 10:56:20 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fOlH8-00047j-Sw; Fri, 01 Jun 2018 15:43:30 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Fri,  1 Jun 2018 15:43:28 +0100
-Message-Id: <20180601144328.23817-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180601144328.23817-1-peter.maydell@linaro.org>
-References: <20180601144328.23817-1-peter.maydell@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 2/2] hw/arm/armv7m: Remove unused armv7m_init()
- function
+	(envelope-from <th.huth@gmail.com>) id 1fcvmY-0007h8-V9
+	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 12:46:34 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:42379)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <th.huth@gmail.com>)
+	id 1fcvmY-0007gu-OZ; Tue, 10 Jul 2018 12:46:30 -0400
+Received: by mail-wr1-f68.google.com with SMTP id p1-v6so15323577wrs.9;
+	Tue, 10 Jul 2018 09:46:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=vUR5Pl9SEoXSnBkg/BLR6eKyGEW9zWBbQPUu8Nf2n3k=;
+	b=SZuf/YRWpslpM+qu8KP9lfWaQNgNmPtP5hdQN7eJbQqoEbIkjeGNYjHUsbY+GdK7Ui
+	RncV3lz5HWHEsR4tlGr8hqzJkEMUINRQEqRlqeoZ6E1mBVXxNQv685apjM31un8y6OFn
+	EeSZnXmFVwfHKVzid7pa/uxVj2KlhDjuXQun7tf+gWndxGiVHGFo3ZsPbTjrvUrg4Nkc
+	5F1fthTvJJqiWfUuXdGj/fmh/w74lwlg59SdcSGHafsllKY0K0BMlPmvkFdDGrDKwRq1
+	9JPROjwhYIgpBEncIuIM2wUzUI3HYbovtg3XJpgujrjncmGWMQwpfnrwtOJGMpWSWALm
+	YgiA==
+X-Gm-Message-State: APt69E0v9izNbQfg4+pL+rlu33QvhtWq2fXNj4XzIF4pSPE4SZ2pRIgU
+	T8d6QuHe03vaOjH6UGhpMcI=
+X-Received: by 2002:adf:9148:: with SMTP id
+	j66-v6mr19269564wrj.118.1531241189580; 
+	Tue, 10 Jul 2018 09:46:29 -0700 (PDT)
+Received: from thl530.multi.box (p5791DA2E.dip0.t-ipconnect.de.
+	[87.145.218.46]) by smtp.gmail.com with ESMTPSA id
+	t13-v6sm4335677wrr.74.2018.07.10.09.46.28
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 10 Jul 2018 09:46:28 -0700 (PDT)
+Date: Tue, 10 Jul 2018 18:46:25 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180710184625.409f3de4@thl530.multi.box>
+In-Reply-To: <CAFEAcA8gpNbc=a1r_OBNV+KOu0CDbM1X7kH1__1G6rrADry8Mw@mail.gmail.com>
+References: <20180702130605.13611-1-peter.maydell@linaro.org>
+	<CAFEAcA8gpNbc=a1r_OBNV+KOu0CDbM1X7kH1__1G6rrADry8Mw@mail.gmail.com>
+X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [PATCH for-3.0] boards.h: Remove doc comment
+ reference to nonexistent function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,94 +100,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jim Mussared <jim@groklearning.com>,
-	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <mail@steffen-goertz.de>,
-	patches@linaro.org, Joel Stanley <joel@jms.id.au>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Julia Suvorova <jusual@mail.ru>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J+iCE6k0aTea
+X-TUID: hQsmfaY8mqfF
 
-Remove the now-unused armv7m_init() function. This was a legacy from
-before we properly QOMified ARMv7M, and it has some flaws:
+Am Mon, 9 Jul 2018 14:15:28 +0100
+schrieb Peter Maydell <peter.maydell@linaro.org>:
 
- * it combines work that needs to be done by an SoC object (creating
-   and initializing the TYPE_ARMV7M object) with work that needs to
-   be done by the board model (setting the system up to load the ELF
-   file specified with -kernel)
- * TYPE_ARMV7M creation failure is fatal, but an SoC object wants to
-   arrange to propagate the failure outward
- * it uses allocate-and-create via qdev_create() whereas the current
-   preferred style for SoC objects is to do creation in-place
+> Ping for review? I can put this in via target-arm.next...
+> 
+> thanks
+> -- PMM
+> 
+> On 2 July 2018 at 14:06, Peter Maydell <peter.maydell@linaro.org>
+> wrote:
+> > commit b08199c6fbea1 accidentally added a reference to a doc
+> > comment to a nonexistent memory_region_allocate_aux_memory().
+> > This was a leftover from a previous version of the patchset
+> > which defined memory_region_allocate_aux_memory() for
+> > "allocate RAM MemoryRegion and register it for migration"
+> > and left "memory_region_init_ram()" with its original semantics
+> > of "allocate RAM MR but do not register for migration". In
+> > the end we decided on the approach of "memory_region_init_ram()
+> > registers the MR for migration, and
+> > memory_region_init_ram_nomigrate() is a new function which does
+> > not", but this comment change got left in by mistake. Revert that
+> > part of the commit.
+> >
+> > Reported-by: Thomas Huth <huth@tuxfamily.org>
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > Doesn't strictly need to go into 3.0, but it's a trivial
+> > doc comment fix...
+> >
+> >  include/hw/boards.h | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> >
+> > diff --git a/include/hw/boards.h b/include/hw/boards.h
+> > index 79069ddcbec..d139a431a67 100644
+> > --- a/include/hw/boards.h
+> > +++ b/include/hw/boards.h
+> > @@ -35,8 +35,7 @@
+> >   *
+> >   * Smaller pieces of memory (display RAM, static RAMs, etc) don't
+> > need
+> >   * to be backed via the -mem-path memory backend and can simply
+> > - * be created via memory_region_allocate_aux_memory() or
+> > - * memory_region_init_ram().
+> > + * be created via memory_region_init_ram().
+> >   */
+> >  void memory_region_allocate_system_memory(MemoryRegion *mr, Object
+> > *owner, const char *name,
+> > --
+> > 2.17.1
 
-Board and SoC models can instead do the two jobs this function
-was doing themselves, in the right places and with whatever their
-preferred style/error handling is.
+FWIW:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/arm/arm.h |  8 ++------
- hw/arm/armv7m.c      | 21 ---------------------
- 2 files changed, 2 insertions(+), 27 deletions(-)
-
-diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-index 70fa2287e2..ffed39252d 100644
---- a/include/hw/arm/arm.h
-+++ b/include/hw/arm/arm.h
-@@ -23,9 +23,6 @@ typedef enum {
-     ARM_ENDIANNESS_BE32,
- } arm_endianness;
- 
--/* armv7m.c */
--DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
--                         const char *kernel_filename, const char *cpu_type);
- /**
-  * armv7m_load_kernel:
-  * @cpu: CPU
-@@ -33,9 +30,8 @@ DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
-  * @mem_size: mem_size: maximum image size to load
-  *
-  * Load the guest image for an ARMv7M system. This must be called by
-- * any ARMv7M board, either directly or via armv7m_init(). (This is
-- * necessary to ensure that the CPU resets correctly on system reset,
-- * as well as for kernel loading.)
-+ * any ARMv7M board. (This is necessary to ensure that the CPU resets
-+ * correctly on system reset, as well as for kernel loading.)
-  */
- void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size);
- 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index f123cc7d3d..a4ab7d2069 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -261,27 +261,6 @@ static void armv7m_reset(void *opaque)
-     cpu_reset(CPU(cpu));
- }
- 
--/* Init CPU and memory for a v7-M based board.
--   mem_size is in bytes.
--   Returns the ARMv7M device.  */
--
--DeviceState *armv7m_init(MemoryRegion *system_memory, int mem_size, int num_irq,
--                         const char *kernel_filename, const char *cpu_type)
--{
--    DeviceState *armv7m;
--
--    armv7m = qdev_create(NULL, TYPE_ARMV7M);
--    qdev_prop_set_uint32(armv7m, "num-irq", num_irq);
--    qdev_prop_set_string(armv7m, "cpu-type", cpu_type);
--    object_property_set_link(OBJECT(armv7m), OBJECT(get_system_memory()),
--                                     "memory", &error_abort);
--    /* This will exit with an error if the user passed us a bad cpu_type */
--    qdev_init_nofail(armv7m);
--
--    armv7m_load_kernel(ARM_CPU(first_cpu), kernel_filename, mem_size);
--    return armv7m;
--}
--
- void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
- {
-     int image_size;
--- 
-2.17.1
-
+Reviewed-by: Thomas Huth <huth@tuxfamily.org>

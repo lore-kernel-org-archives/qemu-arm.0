@@ -1,100 +1,70 @@
-Received: by 10.223.159.74 with SMTP id f10csp3316317wrg;
-        Mon, 18 Dec 2017 17:17:00 -0800 (PST)
-X-Google-Smtp-Source: ACJfBoskbdSxKKXx2IZ0ckH9dlKqFRsrgnxgF7PMF78myOnQa0MiUMPy/gJLKL+fM4Ivc4ZVnYrO
-X-Received: by 10.129.87.2 with SMTP id l2mr1341725ywb.228.1513646220163;
-        Mon, 18 Dec 2017 17:17:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1513646220; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp3745514wrq;
+        Tue, 10 Jul 2018 09:13:56 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpe2O5ob1SoaMDHVSW9C9Lp+VaboPFFZxeM88Ncvz6QeqtyJBqXIAfszDmin0PKPqlTH8qYl
+X-Received: by 2002:ac8:703:: with SMTP id g3-v6mr23624110qth.381.1531239235979;
+        Tue, 10 Jul 2018 09:13:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531239235; cv=none;
         d=google.com; s=arc-20160816;
-        b=BSP4h+QjV9zhZBkyHdG5VrJI0+1BotLrZJv5etIPs3+xXAT8EzqH42WHBZ1evcOpss
-         Vial5hpZUvlDcUJ3ToTWxFKCLrATmumqA3wK/JMxvMV67Zqq5II+2pEwCRS3KkGzTXkf
-         PNU9rpvBYEFVA2Pp1q2JoM4gcsPy2RGrTxKe3tEvYGL+Td0lCKZcQ9q3i0Avp+qb3Zkd
-         95hLXQdvTAjL1jTQR0cfbyDefAcZjei7Rtxk5jGsvxvSsUr641sWssglAYXI56X6mbrW
-         dyOxMv/KjMIzY5W/lTy6W0wMV3LPA0xS+L4UpP2DmDh8PKwMmmNWvrRCLWS7Q8hDO0vo
-         +7rQ==
+        b=dQJTdlQeWepMZIP0we/Sul6dX6o43REXmb9CA0ZNA+wiR7XaM3Q5ktoEQAPgk0R5pz
+         e9GnDoOiLvE6/lceQbAaEqWH6j2aRGblCWX62apCCsOI6AuYA3aQtd2qmBSkWM3BMtH8
+         Rg5q1k3x7URPVju4UCIllN4D4o5ubmXn6vQFD91GH/9pZ4L5gN2t/de0QG53O/7gr8Eu
+         kviKLx7bqESkmQ8LIcPyuKbfcXeEKKd4L0sweYQoKZua+D4YEeWKS0Ob9A2Sj7SwrahA
+         EXQhnPrnbhJYJEW8xHHMaIFlpCXRabnPUj0ob9Irz2Q5uq1zI7Qvh4GDpUDwG9KxSAfQ
+         KtuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=zFA2zc6GEaO6WxKnN8gTNBFRnfQ5Shim7glvw+c0+8o=;
-        b=mUpa2/wagH2AZ0LU3oww7+kSE+fxU+xl2zJMmkSeEjdnnyCyMBn6wWQMDuNxitSUtL
-         ecFOQd0eMLa+SLMjGQKDszr/fu+SsSm0/D3r2OGeYKKirNDdbJJUpED10pVtB6Dx1Rwg
-         kKAYx8Zb6eWjYu1XGE+VtCHbHtrl25raxDFmx3qq9Brck4jp7cSofM+eUw5kHOeF3Qz2
-         YEDhjCEN4L1pRMntpienCG0TEZK8qqvh7NIy1KCtM1kA0iqNFEmIXtWHK9jheW8xZjBD
-         NZAp+ln1oR9bzrbHCrog8Br8M4ojfQJGa7UlZ+h4B/b7YWOCtSah/fpRtrzEE0IYsUOY
-         drPA==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=v7TSRM6ZzBvQnXnx1um6JQ8mmU5UJZQhL/IiDLHlFGo=;
+        b=ZK+jhP3HNyb6Rm4u3/3hui4l3Gw1OPCV2PsfT0xQBJfWrBs3DaI8/OdgsaQlmxyM7E
+         ooXj4llSRSP6h4A2iHJAvkZujKybNn35egzCXvJiPRri0uo7js4PbrDxGnk4LvcFQgXa
+         yJrk5445vzFIGImOsISj1SpBp7ARnlgpCtE7y2t9GFaUz0pjoY0vdti8XqzgIhPkUE+B
+         BHFv3/AdeDxMB8lLevoMtrRMi7a4Vp5+AlaQFzNXkK5mjZ4+sfTPsJBttXpY9ovl+0kD
+         ZVf3qFGpaIfj/nGz+qrXrWuYJW5nRvkMUyna89J7Ji4OtLVmdB0NucNUJRfrYOFeZzJI
+         K5LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oUaWCgyB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a7si2474263ybm.696.2017.12.18.17.17.00
+        by mx.google.com with ESMTPS id q30-v6si18122316qtb.403.2018.07.10.09.13.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 18 Dec 2017 17:17:00 -0800 (PST)
+        Tue, 10 Jul 2018 09:13:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oUaWCgyB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:33096 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48717 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eR6Wh-0007xB-KS
-	for alex.bennee@linaro.org; Mon, 18 Dec 2017 20:16:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50336)
+	id 1fcvH0-000684-Uf
+	for alex.bennee@linaro.org; Tue, 10 Jul 2018 12:13:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49145)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eR6WY-0007vT-Iv
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 20:16:51 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1fcv47-0003Ze-EH
+	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 12:00:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1eR6WX-0000Qn-Il
-	for qemu-arm@nongnu.org; Mon, 18 Dec 2017 20:16:50 -0500
-Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:40189)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1eR6WV-0000PL-7r; Mon, 18 Dec 2017 20:16:47 -0500
-Received: by mail-wm0-x244.google.com with SMTP id f206so923428wmf.5;
-	Mon, 18 Dec 2017 17:16:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=zFA2zc6GEaO6WxKnN8gTNBFRnfQ5Shim7glvw+c0+8o=;
-	b=oUaWCgyBKkJUzYoFZrG0mpxV7I49einTAw7FuvbMcAR+lN4X7IabSMfcd3HNR+BtxR
-	2XiM8pS5WwbDuYCkqizVrCYh4u8kp3XaMSIU/eNFn30azPog4glj0Wr+A15Q9BfIVJ4o
-	lyaZyuv4UGug2vbtdbvkA3lwy8dST4+gII92o+sPbYRajSDMJ62ReEcoEhh0r+2V+gQ6
-	E7kxs1cQeSnu8ibBBN3AsTrtCeXpzuakTNQZlhOiaNInsi9lMVCKEMMUNiiIH2XnsRXJ
-	70zCC5hLcX8K36MSKVgS1T5A2xZgB4giEmVB8lsEcTsoJWa+Tdv7mCGmXSfwZTx7/Ei9
-	x/Xw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=zFA2zc6GEaO6WxKnN8gTNBFRnfQ5Shim7glvw+c0+8o=;
-	b=ZsUMZCwf1KXPi8QzEPSeSV9o66YFISJ45bzZfPO2a5TZ2JUBOdQo8N4xQWT6KPqLk+
-	VyFjtBNcg6WaZBFGf6uvN9GCOrapHFiZzW0MgMyoiog9LDlagYIMA4ggIx2/jQL5MUd7
-	21JFZsI1kBPAXzuzVcAREQfo/9ADs5n4hlbsGszuXewSeX1enhuuAd9M1MgDkLdbhHl9
-	sLRuetlYslKqjLZvl23vEnZcPUXjRJKSUXCo0bOXAwJNnHVlR0uDbHuvOsNOkraSBU4q
-	CMQkgO8xuBnESgfdfzZ5Macqj96FCG7cZvecw1fBe1mb1uG0gfYe0F8rX+m0h9NH+X5y
-	IiSA==
-X-Gm-Message-State: AKGB3mLpV1bfqADrbefChisMwz7yxOthk6FP/YxUImGX6ln0e5k1WqeF
-	1MsWxDbP8k79JTp96AX8C1wqrQr+gO/XKZjIYLw=
-X-Received: by 10.28.227.136 with SMTP id a130mr1339639wmh.104.1513646206270; 
-	Mon, 18 Dec 2017 17:16:46 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.28.164.69 with HTTP; Mon, 18 Dec 2017 17:16:15 -0800 (PST)
-In-Reply-To: <20171215031547.31006-3-f4bug@amsat.org>
-References: <20171215031547.31006-1-f4bug@amsat.org>
-	<20171215031547.31006-3-f4bug@amsat.org>
-From: Alistair Francis <alistair.francis@xilinx.com>
-Date: Mon, 18 Dec 2017 17:16:15 -0800
-X-Google-Sender-Auth: E6juNabpO4J0nchEP2yeafIvvf0
-Message-ID: <CAKmqyKPF-t9F9dhu-uagHq68DSODgqHqEE6=fGbbqLWR9MRV5Q@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <pm215@archaic.org.uk>) id 1fcv41-0002Jf-4d
+	for qemu-arm@nongnu.org; Tue, 10 Jul 2018 12:00:35 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43370)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fcv40-0002Aw-NY; Tue, 10 Jul 2018 12:00:29 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fcv3n-0001oT-3d; Tue, 10 Jul 2018 17:00:15 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 10 Jul 2018 17:00:07 +0100
+Message-Id: <20180710160013.26559-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 02/20] sdhci: use deposit64()
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 0/6] accel/tcg: Support execution from MMIO and
+ small MMU regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,60 +76,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Prasad J Pandit <pjp@fedoraproject.org>,
-	Andrey Smirnov <andrew.smirnov@gmail.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Sai Pavan Boddu <saipava@xilinx.com>,
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Andrey Yurovsky <yurovsky@gmail.com>
+Cc: patches@linaro.org, KONRAD Frederic <frederic.konrad@adacore.com>,
+	"Emilio G . Cota" <cota@braap.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N3JHZQo0LYkh
+X-TUID: WOd7mQ5ybl+X
 
-On Thu, Dec 14, 2017 at 7:15 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> This makes the code slightly safer, also easier to review.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+This series adds support to TCG for executing from MMIO regions
+and small MMU regions. The basic principle is that if get_page_addr_code()
+finds that the region is not backed by a full page of RAM then it
+returns -1, and tb_gen_code() then generates a non-cached TB
+containing a single instruction. Execution from these regions
+thus performs the instruction fetch every time, ensuring that we
+get the read-from-MMIO and check-small-MMU-region permissions
+checks right.
 
-I just looked at the surrounding code and realised what mask actually
-is set to. Now I understand what you mean.
+This means that the code path for "generate bus fault for failing
+to load an instruction" no longer goes through get_page_addr_code(),
+but instead via each target's translate code and its calls to
+the cpu_ld*_code() or similar functions. Patch 1 makes sure we
+can distinguish insn fetches from data loads when generating the
+bus fault exceptions. (Aside: I have assumed that all cpu_ld*_code()
+loads should trigger iside faults rather than dside. Hopefully this
+is true...)
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
+Patches 2 and 3 make trivial fixes to various callers of
+get_page_addr_code(); patch 4 does the work of generating our
+single-insn TBs. Patch 5 can then remove all the code that
+(mis)handles MMIO regions from get_page_addr_code(). Finally
+patch 6 drops the target/arm workarounds for not having support
+for executing from small MPU regions.
 
-Alistair
+Note for the Xilinx folks: this patchset makes the mmio-exec
+testcase for running from the SPI flash pass. Cedric: you might
+like to test the aspeed image you had that relies on execution
+from an MMIO region too.
+
+The diffstat is pretty satisfying for a patchset that adds
+a feature, but it actually undersells it: this code renders the
+hw/misc/mmio_interface.c and the mmio_ptr related code in memory.c
+and the xilinx-spips device all obsolete, so there are another
+couple of hundred lines of code to be deleted there. I opted not
+to include that in this patchset, for ease of review.
+
+NB: I tested this with icount, but there are potentially
+some weird things that could happen with interactions between
+icount's io-recompile and execution from an MMIO device
+that returns different instructions each time it's read.
+
+thanks
+-- PMM
 
 
-> ---
->  hw/sd/sdhci.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index b7d2a20985..3c78033d49 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -1132,12 +1132,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t=
- val, unsigned size)
->          MASKED_WRITE(s->admaerr, mask, value);
->          break;
->      case SDHC_ADMASYSADDR:
-> -        s->admasysaddr =3D (s->admasysaddr & (0xFFFFFFFF00000000ULL |
-> -                (uint64_t)mask)) | (uint64_t)value;
-> +        s->admasysaddr =3D deposit64(s->admasysaddr, 0, 32, value);
->          break;
->      case SDHC_ADMASYSADDR + 4:
-> -        s->admasysaddr =3D (s->admasysaddr & (0x00000000FFFFFFFFULL |
-> -                ((uint64_t)mask << 32))) | ((uint64_t)value << 32);
-> +        s->admasysaddr =3D deposit64(s->admasysaddr, 32, 32, value);
->          break;
->      case SDHC_FEAER:
->          s->acmd12errsts |=3D value;
-> --
-> 2.15.1
->
->
+Peter Maydell (6):
+  accel/tcg: Pass read access type through to io_readx()
+  accel/tcg: Handle get_page_addr_code() returning -1 in hashtable
+    lookups
+  accel/tcg: Handle get_page_addr_code() returning -1 in
+    tb_check_watchpoint()
+  accel/tcg: tb_gen_code(): Create single-insn TB for execution from
+    non-RAM
+  accel/tcg: Return -1 for execution from MMIO regions in
+    get_page_addr_code()
+  target/arm: Allow execution from small regions
+
+ accel/tcg/softmmu_template.h |  11 ++--
+ include/qom/cpu.h            |   6 +++
+ accel/tcg/cpu-exec.c         |   3 ++
+ accel/tcg/cputlb.c           | 100 +++++------------------------------
+ accel/tcg/translate-all.c    |  23 +++++++-
+ memory.c                     |   3 +-
+ target/arm/helper.c          |  23 --------
+ 7 files changed, 52 insertions(+), 117 deletions(-)
+
+-- 
+2.17.1
+

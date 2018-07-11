@@ -1,99 +1,98 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp603084wrq;
-        Wed, 11 Jul 2018 13:16:05 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeC/aUdQlsWXt/I5Bj6DoIOAdmbvaSI4ZX2+it8ZUst7MTPyUDkpqq0cJj6mlAkvAqL3IJV
-X-Received: by 2002:ac8:2384:: with SMTP id q4-v6mr110975qtq.136.1531340164931;
-        Wed, 11 Jul 2018 13:16:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531340164; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp603939wrq;
+        Wed, 11 Jul 2018 13:17:09 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfsiesmZk4fmxoG1aPDUfwUCoDZXfhH8TasTolQ3jJRz7POAcf3Bj1nJXk/+bRGoua6dFTl
+X-Received: by 2002:a0c:d21d:: with SMTP id m29-v6mr152661qvh.86.1531340228967;
+        Wed, 11 Jul 2018 13:17:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531340228; cv=none;
         d=google.com; s=arc-20160816;
-        b=CQJb0SedJthNz9dc1ykNH3eMUtZlL77j2GfOxH30Ui45S/ep/UZlDbcmyNzOZuAGnJ
-         hDsSP1dc1GcQucnmUrEjWgox1OAGPyKk5sXfMEJVR3q0icuUKtG1i4X5zIV3OTneBVfb
-         c9btl5wz5LL47F867hukBU40tt24BsGUTO30OxTJzrD4oOIpk4p4H7rPoS6v2tV+DkKp
-         eQMo6KWZfASq1ZByK/CC2ZcHlYESD/ck1dcjSSc7WEBKkSgW2/I6NfIiuYj068TWfniL
-         W70VgkEyvmeB9GKYa6Tk7Z6wFm3qQZOhrwYsGLE//JCaWuTX/Yjqiyv3Hnc0hhgGAFmt
-         epag==
+        b=oCJzx4HrldB8Qzx6meUgLn2GrzkHNq8Ga20BC7hz9fASQAgrvzMTa/lyxMgbso3xKU
+         iZDFHqE0EHzmaRNQD8ACfurOa+ZgD6LvRnjEHQWk0c92ebK8puGRCHZOo555IJ+XRAso
+         vlrSi/PbPeyPbWIcABfvtl0p7CI7hO7ZIYiUTFoJX2XpjiSvtJBk/qsWXfcr6lJ848zz
+         5ecO+uHk3Kg7IymbumCbQMTpSIwN1PLtUQh0VdBnQDbOaseuZh1eljghwfjsaXiR8FFr
+         EYmnV5PYoBLO0mffjxbVQMdQfdvbm5zn1BOJtfYv18sZVNQABaz2hP0yGoDBKac6t+mC
+         oskw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=3yhRtA1/hZTyR12gBvSfzrjoz+QTLhflMvTiJx4VTpE=;
-        b=qkZTIf7mQ9nGRJbK/KEY/cMgklgAZIcMfgy3VbM/huv6Ro+xaGnuFq6upQ1p/p0fMi
-         yNLkyzqVKmkJWrFKVg2sQ9jOoEXz+WY4HQ5X0YrHILjVsj11Y+UBjgTdCZVD7GUReNyK
-         rbEFtgbO3DS7ZN5ezX523cAHQnkTEL23qY/rp9LdKERvwEFlLIYa56jDHcbEGoZJTfTg
-         NLzCOgfelff7lhti4Y925d8YhCqixG0YP9+w/pIoNw7hzsfjmy8HNSNyUDitu05kghZJ
-         R/qsgb3+47j7C7PkOlPiGxDgRD39BkO8b2be3u1yZSb1ve6829hmfboMDMkOAb3UxC1i
-         qy+A==
+        bh=879o69OQJuTvPFDlhOg/49rGUakZJmUWsoMm2KOerxo=;
+        b=GcMC8D2u7VfUwbyiN0U4OBxl7k0P0Z1l45IoHjHLim6+fCIODQEmT2wN/NUJkDheb9
+         g5Q6+Zdll428udcr4wk0c8xP5xUMQnVIgyLYyR5OT44NPzrM/8bMjnElvdiJYEZL6aWy
+         xKKBnxn8ApahIC0AUUqIt+C48LpGzm8AVRTU9a/d6pimq2wN35Rpm7NVtaHebkcsF4U2
+         kgkWuNl4DHkzBIGBHIA7BB7BW/jtt0BdgYuzTsLW5roXcLITZQpXFgg4fiPP2iRPoMf6
+         pupjMRJTBOybsCZBKkQXYBlEGM54f3nJS12UWUFf1NAdVlZnu6UICi174y+LHTa48LbF
+         mf+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aEKC0Ciq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="iJK2c/9y";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m4-v6si1740870qta.149.2018.07.11.13.16.04
+        by mx.google.com with ESMTPS id f39-v6si4018919qtk.237.2018.07.11.13.17.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 11 Jul 2018 13:16:04 -0700 (PDT)
+        Wed, 11 Jul 2018 13:17:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aEKC0Ciq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="iJK2c/9y";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55318 helo=lists.gnu.org)
+Received: from localhost ([::1]:55322 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdLWu-0003aP-C0
-	for alex.bennee@linaro.org; Wed, 11 Jul 2018 16:16:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58347)
+	id 1fdLXw-00043H-Fm
+	for alex.bennee@linaro.org; Wed, 11 Jul 2018 16:17:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58603)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1fdLWh-0003Yt-Dc
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 16:15:52 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1fdLXc-00041W-Cd
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 16:16:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <paolo.bonzini@gmail.com>) id 1fdLWe-0002Ye-8k
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 16:15:51 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44107)
+	(envelope-from <paolo.bonzini@gmail.com>) id 1fdLXZ-0002uh-9S
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 16:16:48 -0400
+Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:54632)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
-	id 1fdLWd-0002XF-VY; Wed, 11 Jul 2018 16:15:48 -0400
-Received: by mail-wr1-x444.google.com with SMTP id r16-v6so19398651wrt.11;
-	Wed, 11 Jul 2018 13:15:47 -0700 (PDT)
+	id 1fdLXZ-0002uS-2n; Wed, 11 Jul 2018 16:16:45 -0400
+Received: by mail-wm0-x242.google.com with SMTP id i139-v6so3514128wmf.4;
+	Wed, 11 Jul 2018 13:16:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=3yhRtA1/hZTyR12gBvSfzrjoz+QTLhflMvTiJx4VTpE=;
-	b=aEKC0CiqSRSEuKSWjMZYfYrBFp3mb9jpU81ZFsRwO7p3PR0r/pA8Id3xZGAIr3im7P
-	xyns5zzI6kZjS9y/Km4Tn+9leW77i/KhxYWNxQRpID6i1mWuSz2czbuAIVzN3fFbUdox
-	GKl/KDn97lV0ORIW0JaFCN9zOWSKLHe/6CWelu/w8TH9icQOiYrk+6htShruuXLCQTj6
-	DLKIxcYFGxrSzskpOXmSgbBwCtH5WBwEWn1bNq5rjb2LaWykanG54QM9Z8x80xQRVGLU
-	u4WONjCiM8sUe/1+7tnZSxUapwRu2luVXaH8vLsu9XOFyDHfjqQCkRlwkEsWUH0T/lGu
-	Y0mg==
+	bh=879o69OQJuTvPFDlhOg/49rGUakZJmUWsoMm2KOerxo=;
+	b=iJK2c/9yXesjQQ1B+qFe7qBTO4IAzgR17I4v5LqEi9Z8VVin0NrjPOKMxzJfkryYl8
+	ePrKe/KSU3io/w/Nxo5/8o9rVy1Dzq9pjBeCjmLyXh+n8erilEVgQKXrwLNiexamq64j
+	cTfPQvsWhj/GKVBJ/VdPqotLJJ87v4YrsD29wSk1ZfXljHI1+mTa85zzpVUrebH6b6YB
+	qXhYYuJtCWaDsYaJb3aI7u7bhf/uha8ypuWLCsV0TDtWrG6d946hfR0DlMgOnXGwuQqQ
+	t/zaU22KFOTq8nxW5SG0jpcXUlWnwUSQY2Flo3941y1MxCDnJS5y7jbRlX64Yp66+zoR
+	aShA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=3yhRtA1/hZTyR12gBvSfzrjoz+QTLhflMvTiJx4VTpE=;
-	b=fPCwv1Kr/3CWZauF0piKMTvMhRjIEvaTYcAUVgo8xyKpusbwnBSoIH6Ps5X553F3w5
-	KM42rUxMEJp0cnh5hnZzj3yX66qHRIGOw+ojd9oUT+HcZISV/lOE4eqskRA1SK0z3DW0
-	xK2qP+7NNLOW+8Ca0WYL1X/jAB8oh6uymTvWg5hUkXP2v4XQD87+lWQ0O3xK248Mo7Mc
-	fyMiAB8FBAmVlTy9H0pef/L/RFSAI+O+0XdEjNZkkqvAMtl3kONq/K5du7wV1FJY2rH0
-	doU6rwTkfro1kOjD9+7Puv0AdvVZnALLMTlcec4k7WvnxIDh9xOUP9uBOxtDlNRVVjT8
-	EYxA==
-X-Gm-Message-State: AOUpUlH+zZAjawwu8EZolMlRP9lO7OkJp0lSN/R+iP24mrAaKoCssWSS
-	x/I+/wJtzsJBwseeKicRpHA=
-X-Received: by 2002:adf:8541:: with SMTP id 59-v6mr43945wrh.223.1531340146767; 
-	Wed, 11 Jul 2018 13:15:46 -0700 (PDT)
+	bh=879o69OQJuTvPFDlhOg/49rGUakZJmUWsoMm2KOerxo=;
+	b=Km6MAuiSTV/Sghsqs/z21e1Ck1649rpsNvaf9MkPZzRd0DIGNPQku9UzKZIVzhBXgt
+	eZSi4HZcUfBWF/ukc+54MQxnymLmyOkmEtS9pvHTtDXgSwBXJFUhYqr0DJDGTGbOXlgn
+	KlG/w6Al6RtR3VR/eyk+41DqPFi8I30mZgnzZk78lliWjWh2gqROMLJ/G8BjugQigQnR
+	IVu2Td8dQ4iM+U/yctWQfpAKP8l3Feb+HoAQWf13u/pTRwwj5KFQpW4e2y9z0dr+b0zy
+	em0JM1VCb4+MqjXarjvE5QSy98I3hAa7zeKz+UNvm+/1lHNlN7qgXtIyo+f4/gB6lx1y
+	SgtQ==
+X-Gm-Message-State: AOUpUlFkkVjDGCWIYxKy8hGhD9Iqq+fl+xpaX5TTxh3eJdQHPv3xVOQv
+	VR5ph4L9QDfQ/BJgQ7uhdfY=
+X-Received: by 2002:a1c:6354:: with SMTP id x81-v6mr13704wmb.23.1531340204055; 
+	Wed, 11 Jul 2018 13:16:44 -0700 (PDT)
 Received: from [192.168.10.150] (dynamic-adsl-78-12-151-35.clienti.tiscali.it.
 	[78.12.151.35]) by smtp.googlemail.com with ESMTPSA id
-	i6-v6sm15793671wrr.10.2018.07.11.13.15.45
+	f18-v6sm20941593wrt.64.2018.07.11.13.16.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 11 Jul 2018 13:15:45 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
+	Wed, 11 Jul 2018 13:16:43 -0700 (PDT)
+To: Eduardo Habkost <ehabkost@redhat.com>
 References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
 	<ca91bffe-2bcf-78a2-02cd-8ae7cc48074c@redhat.com>
-	<163e1c54-c953-e5fe-3142-eab18e0362b8@redhat.com>
+	<20180711183031.GM914@localhost.localdomain>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; keydata=
@@ -131,18 +130,18 @@ Autocrypt: addr=pbonzini@redhat.com; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <016ebe6a-91e3-24f3-9e2a-26613bd9f61e@redhat.com>
-Date: Wed, 11 Jul 2018 22:15:43 +0200
+Message-ID: <ce0b8bf9-b0e6-fe02-c685-5a6c3140a3ae@redhat.com>
+Date: Wed, 11 Jul 2018 22:16:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <163e1c54-c953-e5fe-3142-eab18e0362b8@redhat.com>
+In-Reply-To: <20180711183031.GM914@localhost.localdomain>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::444
+X-Received-From: 2a00:1450:400c:c09::242
 Subject: Re: [Qemu-arm] [PATCH] hw/arm/bcm283x: Fix crash with device_add
  bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,37 +155,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aLrETQwR58mb
+X-TUID: 8WAlwIeBhZ/k
 
-On 11/07/2018 20:43, Thomas Huth wrote:
->>
->> - realize fails
-> In this case, the failure is before realize is attempted,
-> qdev_device_add() already stop with "Device '%s' can not be hotplugged
-> on this machine".
+On 11/07/2018 20:30, Eduardo Habkost wrote:
+>> The theoretical behavior should be:
+> It's not clear below where you expect
+>   qdev_set_parent_bus(..., sysbus_get_default())
+> to be called (if it should be called at all).
+> 
+> I don't know where it should be called, but I'm absolutely sure
+> instance_init is not the right place.
 
-Still, object_unparent is called by qdev_device_add in the error path,
-and it should work the same way (in a nutshell, recursive unparent when
-child properties are deleted, and finalization of the contained objects
-as the last reference is dropped).
+I think instance_init is fine to call qdev_set_parent_bus on contained
+devices.  Why do you say it's not?
 
->> - object_unparent is called on the device that failed to realize (see
->> qdev_device_add).  object_unparent calls device_unparent
-> Hmm, are you sure? I can see that object_unparent calls device_unparent
-> indirectly for the *child* nodes of the device, but not for the device
-> itself...
-
-object_unparent -> object_property_del_child ->
-object_finalize_child_property -> device_unparent
-
-I think you're on the right track, after object_property_add_child you
-need to drop the reference to the object.  For example qmp_device_add
-does it after qdev_device_add returns a device successfully (just an
-example---I understand it is not the case with bcm283x).  In that case
-the call to object_property_add_child is in qdev_set_id.
+Thanks,
 
 Paolo

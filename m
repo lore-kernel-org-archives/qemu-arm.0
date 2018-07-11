@@ -1,93 +1,110 @@
-Received: by 2002:adf:b64b:0:0:0:0:0 with SMTP id i11-v6csp4318028wre;
-        Tue, 29 May 2018 21:42:21 -0700 (PDT)
-X-Google-Smtp-Source: ADUXVKJCZ8NA415dG6c3ViaBbCf5bFtKwagPUg8dtZxJwfTktRt/zGFlEJk0rBjnxP/EXMotqDRU
-X-Received: by 2002:a37:c40d:: with SMTP id d13-v6mr1031846qki.340.1527655341257;
-        Tue, 29 May 2018 21:42:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1527655341; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp172969wrq;
+        Wed, 11 Jul 2018 05:51:35 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfGlP4y6/0yF8/gfHEaxURGsLJbpPzmARyybgJPObkmOjgWnXZrnuUlqt/Y54Qw6Jq4AKMM
+X-Received: by 2002:a37:1fdf:: with SMTP id n92-v6mr26688345qkh.333.1531313495234;
+        Wed, 11 Jul 2018 05:51:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531313495; cv=none;
         d=google.com; s=arc-20160816;
-        b=ObXlrUj2/ZHvnm6yKK2SxCCf/J3x7zquF1qcCgDLe6pb+jjiAzrcxV+OsqJXcb5D/P
-         Lxh8fufBKTn1a3a+9d70LFaY/lULCyHRsMgGJVb9drc7sChr1ZJ/iTl6OJ+009ssfwhe
-         eMzEFtR0GBrakUJCmmCfcrLe6YnHEOH7mEBXsuX8oifHeEUTqysxxZf+z4RehQAT0z+F
-         Dd4Ih5VgK7k13hAV/+QZJhBAEfKzXvelrkXanJIOVWPtbkpDkn1RGBlGBZyK8jJpOeiX
-         oOBpk1Od28V8g9Mp7xw7+mXzqOvgEY9p1k7tna8mtVAbQaF7bh7x1SzN7Iao+DYElYov
-         b0Ww==
+        b=0k1MKnd6rv1rux03A+R8aAjbsGULO6ZzPT9YJxCEfMU0WiU1G13tvLPV5rUEc1B9A2
+         h2DNLwPZwx1SJxN1DXccSWsm/WjXQHYXVioib/brXvZxcut7jj6U2yovAfvSGm7Intgu
+         TSYW/pq+OZnvjms54P+Pj32vNo5nLToQQa8fdN5F8dQ8DBQfF3heXvGULFhR/3tSeE9f
+         lStedxdLnEFmDCNpa/WZW9nLTex+hcdaE3/j7pBG2fCvy+J7/fPC/OU+3WptVIPkEC+M
+         Upb4ym04//ztaCv5ifzOIqeRSRqeS/7FLmfS7h4wHGSD8S2v7ahm5JjQyOUcdC578Fjv
+         8d2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:content-disposition
-         :mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=v3jGKvftPZfZbmcMtXwMaxT14KyaQF3SiHjYSYBUAz8=;
-        b=OA0wqCKLUxS/YnOdjbllugA3OSH8S9muq0K7SIC7xd5Bv/hz5+EPrXb1DYi5inkEyg
-         gzz0/BbenAmYlhsG+0SzUTTe7knEx6cl/g7RUQwb1BHQpBShgIHbLdI7AcSrXct14pAf
-         mVM9UmrhoCYsvbfPS842fM9GaW4HE3wP8kzF39E5DcCvUEBckNt3nnRz19LSpC63ymwo
-         84xos4aoQDmig81yT8j5AbUdnuk5SYIanLa84oiodYInBH/R/iqLBGvDByBf17HJSly0
-         GkgWNdTxnj6fLze9qgiUK9mENEOgqr8+4VKCicfcHMOOwR2kQrNIJGTmSb2YQ4IV4gCk
-         r68g==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=ilT5RQYhZiRKVlTqTAKlbXVYP+VgKrhL4FR/2/8DV7I=;
+        b=jprcXFG+faWMBsHIBsWqB5HM25lASr8+AUKPCtqga7WX1HHbwbbHTrrQAXccCYP8Zi
+         WHuDzorf4fjVxogiJ6vvdgClW0yO5vGJsq/Jiae4buByFlmXeMyppstAsP9qFjcg8wYY
+         1wWoL2LV/M/W/5M1/oVu+79IIqP07jvj9v7V5SR3cwVfR+U3pT60BJkFJzisjHgjSMDj
+         AwrQQQi99K9oci0030KkiUVtS4CJ+pHxAsXuCQgANlx3IO59Zzgxlw6HEMlFg0Qp8ppZ
+         ennDhH/4FeppF4nBskpyk1W/zzj0SwYzEze+HqdjqLOXu1ZtDg4VD0B0PmYYJZn+RVvi
+         TUYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cqjMxj+q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v3-v6si9569960qkl.237.2018.05.29.21.42.21
+        by mx.google.com with ESMTPS id z5-v6si7563174qkl.2.2018.07.11.05.51.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 29 May 2018 21:42:21 -0700 (PDT)
+        Wed, 11 Jul 2018 05:51:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36169 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cqjMxj+q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53596 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fNswG-0002ZC-Qu
-	for alex.bennee@linaro.org; Wed, 30 May 2018 00:42:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45685)
+	id 1fdEak-0004WX-OF
+	for alex.bennee@linaro.org; Wed, 11 Jul 2018 08:51:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44378)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fNsw6-0002Z1-PY
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 00:42:11 -0400
+	(envelope-from <stefanha@gmail.com>) id 1fdEaV-0004VA-2B
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 08:51:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fNsw3-0007K6-O0
-	for qemu-arm@nongnu.org; Wed, 30 May 2018 00:42:10 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49314 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1fNsw3-0007Jk-I4; Wed, 30 May 2018 00:42:07 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 525D676F91;
-	Wed, 30 May 2018 04:42:04 +0000 (UTC)
-Received: from redhat.com (ovpn-120-96.rdu2.redhat.com [10.10.120.96])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C76532166BB2;
-	Wed, 30 May 2018 04:42:01 +0000 (UTC)
-Date: Wed, 30 May 2018 07:42:01 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20180530074026-mutt-send-email-mst@kernel.org>
-References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-10-f4bug@amsat.org>
-	<20180529134053.1ea9f46d.cohuck@redhat.com>
-	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
+	(envelope-from <stefanha@gmail.com>) id 1fdEaU-0007dG-4i
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 08:51:19 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43824)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1fdEaR-0007ca-No; Wed, 11 Jul 2018 08:51:15 -0400
+Received: by mail-wr1-x442.google.com with SMTP id b15-v6so18082726wrv.10;
+	Wed, 11 Jul 2018 05:51:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=ilT5RQYhZiRKVlTqTAKlbXVYP+VgKrhL4FR/2/8DV7I=;
+	b=cqjMxj+qRwqXevaFBLlvjP9g1P8RHrQ2j7GKQrh8dSe7AzrCAlZm8OPV3xMmrP7r1W
+	PAghYmDfNJqreFjlmuUKvWT5c2cze1pclHbeuVX8tKcjXSLqvoytn8uIcmhCmemXm0AL
+	tTWziepBZcQN5GSWJ5SRRI6DZXoTlX5ajKQO+t7iKVdqM/CmKmDm5kJpitJmhAYilZIS
+	LDdj5aW0QxMbt9J7PPoX4To14K6yn9GNVm5E1tUc3SGAsbjjQI4Mp0PzIldEkzMVTtOi
+	JOP41iPezXw93GoV0qu/JwF25z2HvAyli+V0iNwL/Qk8FzovDaRgxfIgESevP5+bJlbw
+	ohEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=ilT5RQYhZiRKVlTqTAKlbXVYP+VgKrhL4FR/2/8DV7I=;
+	b=BAeuSYsUzyScIqw0y0dzq8D6Oae2lywzSuhmEwcnHMNC764s/qabvF9ZrtpAzPZe0o
+	aJxOmTs9NrDs7by9EETj9AE/DO5dXW/xr/BoYjv7UI1OFbtoebbv6fg2RIRXw/Xnhjlw
+	Df945Vz7H+naWWhXmS2X9gzV0vaHVo/ylwVBQOus9f3/WeoNQLNB3lzQmPYN8vPsR37c
+	wsqu84WlT5NQ7uhdFifoE1mFwltGMS2tZ1gBFGVud5JKQdETwNJmksprXFsAV6I2EGy5
+	QzsMFKkY9/lMpEnc39JxzwQEpK6S8R8UVoApY93+nVMX7V3iBWcgQcmoPlEJIJ75nNjp
+	Mjdw==
+X-Gm-Message-State: APt69E1Nvi7SnQyKcZmglqV7VuNue8PtEDWzl+hQtxCXVcxBGWdGp5xB
+	rU1iY2/qFsPMsfQCTCBseaw=
+X-Received: by 2002:a5d:428a:: with SMTP id
+	k10-v6mr21226614wrq.225.1531313474271; 
+	Wed, 11 Jul 2018 05:51:14 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	q8-v6sm3632752wmb.3.2018.07.11.05.51.13
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 11 Jul 2018 05:51:13 -0700 (PDT)
+Date: Wed, 11 Jul 2018 13:51:12 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180711125112.GF31228@stefanha-x1.localdomain>
+References: <20180630091343.14391-1-stefanha@redhat.com>
+	<20180630091343.14391-2-stefanha@redhat.com>
+	<CAFEAcA-boywojdasSCZ5EnnGMtETMH7JZw30fOR7fepMQaqctQ@mail.gmail.com>
+	<CAFEAcA8AzjD3f44U+He1Y10p8iNR8EaWODdv3XRUQtQiDdCotg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="fwqqG+mf3f7vyBCB"
 Content-Disposition: inline
-In-Reply-To: <11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Wed, 30 May 2018 04:42:04 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Wed, 30 May 2018 04:42:04 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v4 09/21] target: Do not include
- "exec/exec-all.h" if it is not necessary
+In-Reply-To: <CAFEAcA8AzjD3f44U+He1Y10p8iNR8EaWODdv3XRUQtQiDdCotg@mail.gmail.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::442
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/3] hw/arm: extract ARM M
+ Profile base class from ARMv7-M
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,55 +116,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>,
-	David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
-	Anthony Green <green@moxielogic.com>,
-	Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>, Laurent Vivier <laurent@vivier.eu>,
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Jim Mussared <jim@groklearning.com>,
+	Steffen =?iso-8859-1?Q?G=F6rtz?= <mail@steffen-goertz.de>,
+	Liviu Ionescu <ilg@livius.net>, Alistair Francis <alistair@alistair23.me>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vApD8VbjYf17
+X-TUID: atIkmtGu9gy2
 
-On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=E9 wrote:
-> Hi Cornelia,
->=20
-> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
-> > On Mon, 28 May 2018 20:27:07 -0300
-> > Philippe Mathieu-Daud=E9 <f4bug@amsat.org> wrote:
-> >=20
-> >> Code change produced with:
-> >>     $ git grep '#include "exec/exec-all.h"' | \
-> >>       cut -d: -f-1 | \
-> >>       xargs egrep -L "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GET=
-PC|singlestep|TranslationBlock)" | \
-> >=20
-> > Hm, does this expression catch all files that need to include
-> > exec-all.h? The resulting patch seems fine, though.
->=20
-> No, not all :/
-> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until no
-> more errors appear. In 2 more steps I added "cpu_address_space_init|"
-> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for m=
-y
-> goal than trying to build a regex to explode function/struct names from
-> headers. This is a clever way to do it for long term command reuse take=
-n
-> from commit messages...
 
-Brutebuilding isn't a good way to find unused includes, some other header
-might pull in an include you are trying to remove for its own purposes.
-If you want to try brutebuilding you must also verify that's
-not the case - e.g. look at the dependency file generated.
+--fwqqG+mf3f7vyBCB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> >>       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
+On Thu, Jul 05, 2018 at 04:49:22PM +0100, Peter Maydell wrote:
+> On 5 July 2018 at 16:45, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > On 30 June 2018 at 10:13, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> >> The ARMv7-M code is largely similar to what other M Profile CPUs need.
+> >> Extract the common M Profile aspects into the ARMMProfileState base
+> >> class.  ARMv6-M will inherit from this class in the following patch.
 > >>
-> >> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> >> It might be possible to make ARMv6-M the base class of ARMv7-M, but it
+> >> seems cleaner to have an M Profile base class instead of saying an
+> >> "ARMv7-M is an ARMv6-M".
+> >>
+> >> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> >
+> > This makes sense, I guess (though it currently leaves us in the
+> > odd position that we have separate a object for v6m, but the v7m
+> > object handles both v7m and v8m...)
+>=20
+> ...though I guess the counter-argument is that the only thing that
+> the v7m object is doing that v6m doesn't want is creating
+> the bitbanding device, and in fact bitbanding is optional in v7m
+> (you can configure a Cortex-M3 without it). So maybe we should
+> instead just have a QOM property to let you turn off the
+> bitbanding ?
+
+Okay, we can do that.  So how about a single ARMMProfileState class for
+v6, v7, and v8?
+
+Stefan
+
+--fwqqG+mf3f7vyBCB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJbRf1AAAoJEJykq7OBq3PI45MIALDNi9sqZmezhnoluWeZUJZd
+4IArjNNhqOpcKHO6gz86WZfBVdkqtIX6EdniBM6uHwNcbhUntFALq5+J1N0QcgF2
+CpTDiiecMMsKO+9yqtnfJSvRv78hMCUkwy71TkWIgljR/ai6k6zxyM1WfkxBiA5H
+LZoOIUPxpU3x6GeQVaw3QRlZ2+72Z99OcTb8UUrJMR7ZWBUPdxA3AtnirebtD9dc
+nukh+e9B1RMgu0juyN3r93LH039zjRJcNecmylac7IeRgzs2wC/h/+sVQGwBHHA2
+SLmVLbgy7WB/vcVe/+71eyptqawEGny2AFIeExfT9LrKuJLi8Q7eq9r8jxIVVbU=
+=w5i6
+-----END PGP SIGNATURE-----
+
+--fwqqG+mf3f7vyBCB--

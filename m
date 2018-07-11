@@ -1,112 +1,138 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp4299236wrq;
-        Tue, 10 Jul 2018 21:22:17 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdBJEihGl8VsyM9waB9Osb4Ud+bx7z8vgUXvPwtS6IcAfaCh6uVEQjBrlTZ7GQO3XooxC5V
-X-Received: by 2002:a37:9702:: with SMTP id z2-v6mr2474230qkd.183.1531282937688;
-        Tue, 10 Jul 2018 21:22:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531282937; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp4423114wrq;
+        Wed, 11 Jul 2018 00:22:15 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeUVInGbQuJQYNqUF8nA1D1BFraCs7a9mHuI4FvIB9LMJ7oyJaYhCEo4deM0itrGFD4IZlO
+X-Received: by 2002:a37:8941:: with SMTP id l62-v6mr24481890qkd.204.1531293735288;
+        Wed, 11 Jul 2018 00:22:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531293735; cv=none;
         d=google.com; s=arc-20160816;
-        b=tDOYzKMfEzKXgtwgXWl5KV4Ocl6dYAYUrFOJWuRFCUhhDSPAaRPpQ371eXg5MVd3wh
-         ehZcBiMurweqk1iRhMTvUfPUUaA24l6NXKyr4GJzYMNmCCziVJZTtEZ/tI1jMEVMBdgi
-         5RgK6BORaT+XKY9c0sBIoFmyMMfjioBoS+1E30xNRrpRVNhHQDaMfLo4Pr8036KSopBt
-         y2oePmvR3Oxx9fIbeqj2p98YNdmX0eDHeFlbBHJwaoKI2xHdFVHeqQJcIp3kvxKSd+6V
-         CbSoIcyEqixGOx6ZpZ8kFLhY5BbWGACRxdxUBOpxMLPdBkIr6mSqHeKGH/2WbBdlAf5i
-         BN/g==
+        b=ZVilNztBL9pLP9PjgDi640D4dgvl1u2L/ZMCayPHdrKWxm5bzUVArk0NsxI0LwgsCm
+         nG+p/FQ5ULrJh6XoELpR4plmCuDU+ZFdHRY3Ytd7IbxByh89LnVaQO2NVx551nX6UuD3
+         bFPFBPe9sTBG3IA2jfiJIIwttz7pKMHixphpW8qPa5foIj408XmRXUxSYTgMA0yiz/k9
+         0D173HwBuovHyTYar8TaWW8UP+8n0K6Y87PMva9UW3hLbRbj84BurxVKUBSqMNFFZqgK
+         OvYNWUhsWt+PQr5ejJnYLf550RYki7erW7F7tOzoSBxn+QtQndOq+5aZ/76aeYXkmjWZ
+         qGOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=jKrB59FdwuqLHIMcKmyRzXnQ5Tgqyh1Y+I5nXdHpuWM=;
-        b=wVRrt/ZRKoRTAiCruCPuavUgPPAjVg3hMuSK/aNvtwH4645MGXXCsjIfAmjt/kvoqs
-         iScrPHYAupkr5UsdiH0gqDlOIVcaHvYZG50b0CDmOCCglVvXgbLrlXgatWAERcUPvjrS
-         L7t8GS412cF9Q14xJoFrcY69q+mY8mQih/DRUIchY1arkzAJE42S2NBQu5ACoxET63aw
-         Iq182TcMiL/nT+5t0xDaFi2+UsjjnGXz6OorPN37YQqCYgKc2ZRmRVTznai4gi8eEazx
-         cuMEhsVdZq9b9CVCrqI3UojaqGa48APgPiFC6s7HrldODjk3lgCjxyOPoiMQXqJKNxcM
-         NsTQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :arc-authentication-results;
+        bh=wfmHTUfZPpBqn/Opq0Prmx+udkOD/rWIpEGueKWYH1I=;
+        b=Ju76L5auTfYy4prmsB3PHlwYkmyqEGpevm8BxHwllbjafo8O+0G98rr4o/eJ9v/DAT
+         q/fwXf9JnfGdMCqXtEvJkhsPyeRsWVjwLWEd/H0Wg4ycuAFnsJW5egZ/uRuqijd4ArI9
+         37vAFD7fTghqWGjaL75qlZeJe1rQaOwLUWAlfvKFAVXUo4Kzlz/OGtT0qXc3NufFF1wS
+         3VHOL2/5+GwJmEPJOkezblmFHGpALf8Qjf9G/sk0RJ2Xk1OC/o5cIOI4aj+zOe4lSUnj
+         PdRJ5//gO6rZmeDZHVO0W003oD+APm6F6d72mMbVr/DtcC0LfhbigP4uvkKyEmh+xqox
+         FMHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WoBOxib/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p84-v6si2089667qkp.268.2018.07.10.21.22.17
+        by mx.google.com with ESMTPS id g2-v6si1174926qtj.99.2018.07.11.00.22.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 10 Jul 2018 21:22:17 -0700 (PDT)
+        Wed, 11 Jul 2018 00:22:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WoBOxib/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51579 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52099 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fd6dt-00035u-66
-	for alex.bennee@linaro.org; Wed, 11 Jul 2018 00:22:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46962)
+	id 1fd9S2-0005HQ-K9
+	for alex.bennee@linaro.org; Wed, 11 Jul 2018 03:22:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42940)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fd6dc-000343-Bi
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 00:22:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1fd9Rl-0005DL-5C
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 03:21:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fd6db-0005dn-1b
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 00:22:00 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:43615)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fd6dV-0005ZL-SZ; Wed, 11 Jul 2018 00:21:54 -0400
-Received: by mail-qt0-x242.google.com with SMTP id f18-v6so20311326qtp.10;
-	Tue, 10 Jul 2018 21:21:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to;
-	bh=jKrB59FdwuqLHIMcKmyRzXnQ5Tgqyh1Y+I5nXdHpuWM=;
-	b=WoBOxib/npffOb2gIQ1JdQ5Ls4gBPE+Hzk1qJK1aj5F2Pw2HqX6p7rMi+MQR7bc9pr
-	NWNqup1Ku9tL5q+zDKhhxZYF/1uoZUvKYaFD8iERsx1Gs9DZw//mhMhk6SMchu854xDg
-	mkn+GAZgeC6VhnYpBQozeqZHJS19YO+bl3v8p5Kk/2rHhwKKIEHk/jzNP6z8HtWVBvVS
-	khQ4uSG1XIUk0yim1AZQTNjLH8bwea2gdHKNo1TRmRn0Doh7hz4tVfK7UizOi0BstjUT
-	1fTJPvIvqp/fXWrbceiDRH8aRIDfoX29velyWoN/AI0Aw3HUNHCddfdxJaTcL6tcB4XO
-	6/zQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=jKrB59FdwuqLHIMcKmyRzXnQ5Tgqyh1Y+I5nXdHpuWM=;
-	b=YXsJ3ZK4z44gp5ef/hzeWfTaC1gNfLNqMnPqCjHq0n0EF2Ui2ANIO5XWuWBkUN/wba
-	DV/Z1cenuDGc2atfxY125Iv214jYWFHVfyInMyuF6WU6yobWz8sauvE+Rhrh1zUNqyEC
-	cS0OjM9VlVXv4clhjsjs+iU6ng6yXn0yAHQBcfag567sKp3rJfzI0a0QRVeWL5rNlkG8
-	g6BwjqLCInwB277T5ztvaHqTg8hgimA4a0Ne/c2xaRlAH4WfbnbbPplVAXxCYQXwv4P7
-	r7dDXtK/6vHdce/S5TAMpeAVtzIGIZ3JH7CDLm62ooHJGgVCR5KMZMVc2f7MVb1gDsEJ
-	Y6ng==
-X-Gm-Message-State: APt69E3VTKVj179MkHvmrHR48TnqzcCvcj9TZT+qScbsDzod/JewoHXg
-	Inq9UYOiDrrfcU8bwkiShZY=
-X-Received: by 2002:ac8:1987:: with SMTP id
-	u7-v6mr25829744qtj.296.1531282913256; 
-	Tue, 10 Jul 2018 21:21:53 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	u21-v6sm5698687qka.88.2018.07.10.21.21.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 10 Jul 2018 21:21:52 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <66872d46-25b1-aa14-407d-359bae14815b@amsat.org>
-Date: Wed, 11 Jul 2018 01:21:42 -0300
+	(envelope-from <thuth@redhat.com>) id 1fd9Rg-0004Xs-86
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 03:21:57 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57510 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fd9Rg-0004Xg-2h; Wed, 11 Jul 2018 03:21:52 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2D7254070489;
+	Wed, 11 Jul 2018 07:21:51 +0000 (UTC)
+Received: from [10.36.116.133] (ovpn-116-133.ams2.redhat.com [10.36.116.133])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9A2FE2166BA2;
+	Wed, 11 Jul 2018 07:21:49 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
+	<CAFEAcA-T_d2kEU+Pb72=pJQhpvqvN1owgi4RLNtNY=L4t_1Z2g@mail.gmail.com>
+	<5d0c7195-ffbf-1618-6106-ef6c82df3bd7@redhat.com>
+	<CAFEAcA9GspXJg2ioLrCknBgYHJ9f6qvM=n=y0dLeU12yv_5ETA@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <931c0545-e3d8-fc84-9b69-59fab040265c@redhat.com>
+Date: Wed, 11 Jul 2018 09:21:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.0
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180710160013.26559-1-peter.maydell@linaro.org>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="7iXd5OUCR8EljSz8HAUISLZPLVDjWCakp"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-arm] [PATCH 0/6] accel/tcg: Support execution from MMIO
- and small MMU regions
+In-Reply-To: <CAFEAcA9GspXJg2ioLrCknBgYHJ9f6qvM=n=y0dLeU12yv_5ETA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Wed, 11 Jul 2018 07:21:51 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Wed, 11 Jul 2018 07:21:51 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/bcm283x: Fix crash with device_add
+ bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,171 +144,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	"Emilio G . Cota" <cota@braap.org>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y1R49azyrATM
+X-TUID: 6EMx7o4Zh7yz
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---7iXd5OUCR8EljSz8HAUISLZPLVDjWCakp
-Content-Type: multipart/mixed; boundary="ZdiIbwFSxT2IzfIuMRxGsXZrybRMejtGH";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: patches@linaro.org, KONRAD Frederic <frederic.konrad@adacore.com>,
- "Emilio G . Cota" <cota@braap.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- Aleksandar Markovic <aleksandar.markovic@rt-rk.com>
-Message-ID: <66872d46-25b1-aa14-407d-359bae14815b@amsat.org>
-Subject: Re: [Qemu-arm] [PATCH 0/6] accel/tcg: Support execution from MMIO and
- small MMU regions
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-In-Reply-To: <20180710160013.26559-1-peter.maydell@linaro.org>
+On 10.07.2018 08:50, Peter Maydell wrote:
+> On 9 July 2018 at 23:03, Thomas Huth <thuth@redhat.com> wrote:
+>> On 09.07.2018 23:42, Peter Maydell wrote:
+>>> On 9 July 2018 at 22:03, Thomas Huth <thuth@redhat.com> wrote:
+>>>> When trying to "device_add bcm2837" on a machine that is not suitable for
+>>>> this device, you can quickly crash QEMU afterwards, e.g. with "info qtree":
+>>>>
+>>>> echo "{'execute':'qmp_capabilities'} {'execute':'device_add', " \
+>>>>  "'arguments':{'driver':'bcm2837'}} {'execute': 'human-monitor-command', " \
+>>>>  "'arguments': {'command-line': 'info qtree'}}" | \
+>>>>  aarch64-softmmu/qemu-system-aarch64 -M integratorcp,accel=qtest -S -qmp stdio
+>>>>
+>>>> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 12, "major": 2},
+>>>>  "package": "build-all"}, "capabilities": []}}
+>>>> {"return": {}}
+>>>> {"error": {"class": "GenericError", "desc": "Device 'bcm2837' can not be
+>>>>  hotplugged on this machine"}}
+>>>> Segmentation fault (core dumped)
+>>>>
+>>>> The problem is that qdev_set_parent_bus() from instance_init adds a link
+>>>> to the child devices which is not valid anymore after the device init
+>>>> failed. Thus the qdev_set_parent_bus() must rather be done in the realize
+>>>> function instead.
+>>>
+>>> Yuck. The real problem here is that we're still requiring the
+>>> code that creates these QOM devices to manually set the parent
+>>> in the first place. It's not surprising that we don't get it right
+>>> (either parenting in the wrong place or not at all). I'd much
+>>> rather see us fix that properly than keep papering over places
+>>> where we get it wrong.
+>>
+>> Sorry, I'm still not an expert in all this QOM stuff yet ... so what do
+>> you exactly recommend to do instead?
+> 
+> I'm not clear either, but I don't think that what we're
+> currently doing can be right.
 
---ZdiIbwFSxT2IzfIuMRxGsXZrybRMejtGH
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Hm, ok, so how to continue here now? Shall we at least mark the
+bcm2836/7 devices with user_creatable=false, so that users can not crash
+their QEMU so easily with device_add? The problem with introspection via
+device-list-properties would still continue to exist, but I think that's
+less likely used in practice... otherwise we could still move the
+qdev_set_parent_bus() calls to the realize() function instead, and just
+add a big fat FIXME comment in front of the code block, so that we
+remember to clean that up one day...
 
-Hi Peter,
-
-On 07/10/2018 01:00 PM, Peter Maydell wrote:
-> This series adds support to TCG for executing from MMIO regions
-> and small MMU regions. The basic principle is that if get_page_addr_cod=
-e()
-> finds that the region is not backed by a full page of RAM then it
-> returns -1, and tb_gen_code() then generates a non-cached TB
-> containing a single instruction. Execution from these regions
-> thus performs the instruction fetch every time, ensuring that we
-> get the read-from-MMIO and check-small-MMU-region permissions
-> checks right.
->=20
-> This means that the code path for "generate bus fault for failing
-> to load an instruction" no longer goes through get_page_addr_code(),
-> but instead via each target's translate code and its calls to
-> the cpu_ld*_code() or similar functions. Patch 1 makes sure we
-> can distinguish insn fetches from data loads when generating the
-> bus fault exceptions. (Aside: I have assumed that all cpu_ld*_code()
-> loads should trigger iside faults rather than dside. Hopefully this
-> is true...)
->=20
-> Patches 2 and 3 make trivial fixes to various callers of
-> get_page_addr_code(); patch 4 does the work of generating our
-> single-insn TBs. Patch 5 can then remove all the code that
-> (mis)handles MMIO regions from get_page_addr_code(). Finally
-> patch 6 drops the target/arm workarounds for not having support
-> for executing from small MPU regions.
->=20
-> Note for the Xilinx folks: this patchset makes the mmio-exec
-> testcase for running from the SPI flash pass. Cedric: you might
-> like to test the aspeed image you had that relies on execution
-> from an MMIO region too.
-
-I applied and quickly tested your series on a MIPS SoC I'm working on
-which has a tiny SRAM:
-
-(qemu) info mtree
-address-space: memory
-  0000000000000000-ffffffffffffffff (prio 0, i/o): system
-    0000000000000000-00000000000007ff (prio 0, ram): sram
-    0000000010000000-00000000107fffff (prio 0, i/o): pflash
-    0000000014000000-0000000014ffffff (prio 0, ram): dram
-    000000001fc00000-000000001fc0ffff (prio 0, rom): srom
-
-The firmware copies the ISR in this SRAM area, sadly it didn't work as
-expected:
-
-qemu-system-mips: Bad ram pointer 0x4a4
-Aborted (core dumped)
-(gdb) bt
-#0  0x00007f5f34d84e7b in __GI_raise (sig=3Dsig@entry=3D6) at
-=2E./sysdeps/unix/sysv/linux/raise.c:51
-#1  0x00007f5f34d86231 in __GI_abort () at abort.c:79
-#2  0x000055f4527a2074 in qemu_ram_addr_from_host_nofail (ptr=3D0x4a4) at=
-
-accel/tcg/cputlb.c:751
-#3  0x000055f4527a2887 in get_page_addr_code (env=3D0x55f454d06728,
-addr=3D2415932580) at accel/tcg/cputlb.c:966
-#4  0x000055f4527bd206 in tb_htable_lookup (cpu=3D0x55f454cfe478,
-pc=3D2415932580, cs_base=3D0, flags=3D268435472, cf_mask=3D0) at
-accel/tcg/cpu-exec.c:334
-#5  0x000055f4527b7b31 in tb_lookup__cpu_state (cpu=3D0x55f454cfe478,
-pc=3D0x7f5f17cf7f98, cs_base=3D0x7f5f17cf7f9c, flags=3D0x7f5f17cf7f94,
-cf_mask=3D0) at include/exec/tb-lookup.h:39
-#6  0x000055f4527b7e29 in helper_lookup_tb_ptr (env=3D0x55f454d06728) at
-accel/tcg/tcg-runtime.c:154
-#7  0x00007f5f2494da2d in code_gen_buffer ()
-#8  0x000055f4527bcd33 in cpu_tb_exec (cpu=3D0x55f454cfe478,
-itb=3D0x7f5f2494d880 <code_gen_buffer+129107>) at accel/tcg/cpu-exec.c:17=
-1
-#9  0x000055f4527bda6a in cpu_loop_exec_tb (cpu=3D0x55f454cfe478,
-tb=3D0x7f5f2494d880 <code_gen_buffer+129107>, last_tb=3D0x7f5f17cf8538,
-tb_exit=3D0x7f5f17cf8534) at accel/tcg/cpu-exec.c:615
-#10 0x000055f4527bdd57 in cpu_exec (cpu=3D0x55f454cfe478) at
-accel/tcg/cpu-exec.c:725
-#11 0x000055f452770575 in tcg_cpu_exec (cpu=3D0x55f454cfe478) at cpus.c:1=
-363
-#12 0x000055f4527707cb in qemu_tcg_rr_cpu_thread_fn (arg=3D0x55f454cfe478=
-)
-at cpus.c:1463
-#13 0x000055f452c58a4b in qemu_thread_start (args=3D0x55f454d2afc0) at
-util/qemu-thread-posix.c:504
-#14 0x00007f5f351115aa in start_thread (arg=3D0x7f5f17cfb700) at
-pthread_create.c:463
-#15 0x00007f5f34e46cbf in clone () at
-=2E./sysdeps/unix/sysv/linux/x86_64/clone.S:95
-
-This firmware works using the "avoid subpages" trick, allocating 4K for
-the SRAM (TARGET_PAGE_SIZE).
-
-I didn't look further, maybe I need to figure out how to add a
-"target/mips: Allow execution from small regions" too.
-
-Regards,
-
-Phil.
-
-> The diffstat is pretty satisfying for a patchset that adds
-> a feature, but it actually undersells it: this code renders the
-> hw/misc/mmio_interface.c and the mmio_ptr related code in memory.c
-> and the xilinx-spips device all obsolete, so there are another
-> couple of hundred lines of code to be deleted there. I opted not
-> to include that in this patchset, for ease of review.
->=20
-> NB: I tested this with icount, but there are potentially
-> some weird things that could happen with interactions between
-> icount's io-recompile and execution from an MMIO device
-> that returns different instructions each time it's read.
-
-
---ZdiIbwFSxT2IzfIuMRxGsXZrybRMejtGH--
-
---7iXd5OUCR8EljSz8HAUISLZPLVDjWCakp
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAltFhdYACgkQ4+MsLN6t
-wN5ONhAAk5ZiI69ZoC6eB5OEoRR2A02+w00ZpQ8ZlwvDv8GcMoPq8Kr9WQP6tGit
-smt3jwVf1F4tzAgqK8z4Nrmvi+zyxV3Drwls0vVgStfPaCzeQLwMNhxEZJoyOQsB
-pIEU2i82ULjIQvZGfRqYBwBTzTsluDAdeoUH4z9k9cNBKgbDCXJ90O8xZZ7X5EMH
-iKmjyUG3e8bg8ua+gj7IGpmRGgv6VitLEgsFGgmw6nh7ShDnjoeBeZj97g0Dwq3l
-u7c3timszy8QHNeFaJroPxfYwXWNoZeewYGmYbsYJly+fhxqN9D+1JEebm5Yaju5
-uYpeSr59O6ql4/Fzgw1IO7QqkD4Ohkz9nYoz2DTnyjcNAhkjCAXM0cQ06uT9LQ0n
-DV6pPri25BQKoDJQjqLJaVoHbw8b/oNtVOnR6YwfigsBNIVdNOwg9iX6k46+44Uh
-RmPj3/It2F36E9OOrPoslkSquHw3qmE6L/qFSN5EhoNP9p2DjJUUxtRVUB9x1BDX
-Lv4YMHLgbmF/X5fNwiFss/yB2snj7VHaMx4Lqb6TV7zteQmeO+XktqPNAp9F0FtO
-gWGUdVxhnZLoFjOgSgbOKheObDDqOMz0jnsEWbG3KjR+mJpLmsDYPYke/0R5g0av
-iQ+K0iUoq0kmkPilQR9q66353GgWxN/zKb9mi5XQMzVrNjvce/s=
-=F60/
------END PGP SIGNATURE-----
-
---7iXd5OUCR8EljSz8HAUISLZPLVDjWCakp--
+ Thomas

@@ -1,71 +1,74 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp525759wrq;
-        Wed, 11 Jul 2018 11:44:06 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpc03NYE3hV4rBiWvG5pCvKRQ7XTU6wKFwuxzQsqIxSsKRKCZpWREwlv35SE/kA0ForiQlIa
-X-Received: by 2002:aed:3a29:: with SMTP id n38-v6mr28845077qte.108.1531334646719;
-        Wed, 11 Jul 2018 11:44:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531334646; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp544860wrq;
+        Wed, 11 Jul 2018 12:04:54 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd553897ViRMx1lwWrh7U7HTrTMq2bfEJpDdJbxt0UM88jiuIHgIAgoUTwuWCeCB7CxKmVI
+X-Received: by 2002:a37:3b03:: with SMTP id i3-v6mr7915785qka.141.1531335894849;
+        Wed, 11 Jul 2018 12:04:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531335894; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVDYEDOTfYA+SepbUmtko6vFsHTcoBlu6LXFh9R1cTW4W1oW2sqFTP7KscYPB5U8eZ
-         1jhQB+TYl0YZGazPI1hlwmAKFZadrWA4lB78gdzYLsgnQgCdQY4bofxVwdTQ5updWy1u
-         D//i+NZT4nWXFbK6z08VCQ1QE1hS3k9Ek6lWjtidZwTXdzS7A5wVvnpZHcDHye6cfx60
-         L6xTrdqwSK5y14WpWnkkK7dq88vPwEJQZfjcI8+nusgK+SiATge5Ev5q5SI6ybzgtdv7
-         ZD/gHqBODb7qSsf6yztcdvii9h++/sXN9xnGgXO6uLwez2rsG5OAYjx/7Dy6K8kJ5RTj
-         8s3w==
+        b=b1kZrjLtDWfBU/v5g805mjbmEUzQZyCG23niLvTeFPeUR4OYuH4mjNR1vrItj5FRbv
+         p6e2l5k4gqYosQfygyDOcUzCjFpSNai6JKceAcs2LRJ8Zg2v8g9m9lRHI+eotfp6yBRB
+         +qrIdgp8+VNUDaYdmMe5kQ46w6GylTRcw4kLi6nhP/RZ8/jCXrxWg/9gajqcTENJX1Zv
+         8KXW33gRRpc46dkbwy6VFMaLSTLnhiUV0AXdUJKzTzuPJxDSgrhRQPS5jHsDkCWw5fQs
+         4CqPVSede7rOJy7evZPdLyIzZNe/uUVXjp/r/IJSDHv90H6uughfhlcqmXW+nfYzj3Zu
+         /0vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :arc-authentication-results;
-        bh=MAhs6/uei2iwmpAHXiZ2cW1clvxpf7Gt07+ztcsLX5s=;
-        b=COz4mHiHiuqzuUwhHIU2IkO2pYXA635b/toD38zIqEvdiyfrZgaB8oLo8c00AsHGJW
-         K4wbHtpC9ug99q52lFCEyN+MVGgvxZdxL/a8iLvcI1fB+Qq0nO+V64FKeVMVTTxPMq+d
-         wyX1eQ9V72iPryrm9LeXhC5sTMAolmLirnir0X/Li7HQCBzIzCny3JKKOlW5tCoUeH7l
-         uK9Un+pfRzPrqM5PEZsqZBWeYK43UzEKeiXRkbdNvl2mbfD8hxJj9KFE7iy7cW4VXuPu
-         Phzf5o44xXYGI822Z6LrSgyrbPF4Asxb02BMTUqT2IjYom2FREbsap0we3kxFQhuDl01
-         1GAQ==
+        bh=EFNcTfhbX3n2ssM62yZegIq6zYZ+Sz7zoX+VAkpzQWM=;
+        b=Xd4bm22W8nNr7xvOpbmWBoszeAxz5HhtkvoSZ30oUja6BT9nlJY74QAt9NWuN7tvoD
+         MvCgVXASEEm4Iiug2uM+NEAGH0q/Uge4RQqiTphda+Y9ztxi4ISKP4Iz8X2t9Lh4Yuzg
+         2HSs15642uVTa/uboVNVc8XZg5LD7vL7OjNF4lLHv98QnHpGcoViOH2LZosQUCGh7k5C
+         Vp+nypVqqlB1NzwfRloYzSWDs+iWPCtHg9BOWBXBcYOpJWPe7X7OVfTusr4f0lv/Q7lx
+         iV+HZstbeMY4Q+0XIKoKtEAaGizbRrTclkFFIb7JmelPBZ3hWQFjVGuaNjKDoSpVpMJu
+         v2sw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f6-v6si2220851qkd.374.2018.07.11.11.44.06
+        by mx.google.com with ESMTPS id 35-v6si354512qvn.76.2018.07.11.12.04.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 11 Jul 2018 11:44:06 -0700 (PDT)
+        Wed, 11 Jul 2018 12:04:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55058 helo=lists.gnu.org)
+Received: from localhost ([::1]:55107 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdK5u-0002Sr-4O
-	for alex.bennee@linaro.org; Wed, 11 Jul 2018 14:44:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41161)
+	id 1fdKQ2-0007cj-9O
+	for alex.bennee@linaro.org; Wed, 11 Jul 2018 15:04:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44573)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fdK5h-0002RU-0x
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 14:43:53 -0400
+	(envelope-from <thuth@redhat.com>) id 1fdKPs-0007Zx-0l
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 15:04:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fdK5c-0000Ei-5i
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 14:43:53 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38552 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fdKPo-0000Xj-2p
+	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 15:04:44 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50612 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fdK5c-0000Dj-0V; Wed, 11 Jul 2018 14:43:48 -0400
+	id 1fdKPn-0000XT-US; Wed, 11 Jul 2018 15:04:40 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 474CC72621;
-	Wed, 11 Jul 2018 18:43:47 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id EE2284074475;
+	Wed, 11 Jul 2018 19:04:38 +0000 (UTC)
 Received: from [10.36.116.133] (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BBBF42156889;
-	Wed, 11 Jul 2018 18:43:45 +0000 (UTC)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 49A432166BA2;
+	Wed, 11 Jul 2018 19:04:37 +0000 (UTC)
+To: Paolo Bonzini <pbonzini@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
-	<ca91bffe-2bcf-78a2-02cd-8ae7cc48074c@redhat.com>
+	<CAFEAcA-T_d2kEU+Pb72=pJQhpvqvN1owgi4RLNtNY=L4t_1Z2g@mail.gmail.com>
+	<5d0c7195-ffbf-1618-6106-ef6c82df3bd7@redhat.com>
+	<CAFEAcA9GspXJg2ioLrCknBgYHJ9f6qvM=n=y0dLeU12yv_5ETA@mail.gmail.com>
+	<955f26d7-5a0b-28e0-bd0f-f663593afefe@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -110,20 +113,20 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <163e1c54-c953-e5fe-3142-eab18e0362b8@redhat.com>
-Date: Wed, 11 Jul 2018 20:43:44 +0200
+Message-ID: <1be41104-d896-b03b-e0f3-47ea9c3b333f@redhat.com>
+Date: Wed, 11 Jul 2018 21:04:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <ca91bffe-2bcf-78a2-02cd-8ae7cc48074c@redhat.com>
+In-Reply-To: <955f26d7-5a0b-28e0-bd0f-f663593afefe@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Wed, 11 Jul 2018 18:43:47 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Wed, 11 Jul 2018 18:43:47 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.7]);
+	Wed, 11 Jul 2018 19:04:38 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Wed, 11 Jul 2018 19:04:38 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
@@ -143,37 +146,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YyQGHFEK5jSE
+X-TUID: hroBV7PgQt/h
 
-On 11.07.2018 19:20, Paolo Bonzini wrote:
-> On 09/07/2018 23:03, Thomas Huth wrote:
->>
->> The problem is that qdev_set_parent_bus() from instance_init adds a li=
-nk
->> to the child devices which is not valid anymore after the device init
->> failed. Thus the qdev_set_parent_bus() must rather be done in the real=
-ize
->> function instead.
+On 11.07.2018 19:21, Paolo Bonzini wrote:
+> On 10/07/2018 08:50, Peter Maydell wrote:
+>>>> Yuck. The real problem here is that we're still requiring the
+>>>> code that creates these QOM devices to manually set the parent
+>>>> in the first place. It's not surprising that we don't get it right
+>>>> (either parenting in the wrong place or not at all). I'd much
+>>>> rather see us fix that properly than keep papering over places
+>>>> where we get it wrong.
+>>> Sorry, I'm still not an expert in all this QOM stuff yet ... so what =
+do
+>>> you exactly recommend to do instead?
+>> I'm not clear either, but I don't think that what we're
+>> currently doing can be right.
 >=20
-> The theoretical behavior should be:
->=20
-> - realize fails
+> Well, in theory it should work...  I sent the expected flow in another =
+email.
 
-In this case, the failure is before realize is attempted,
-qdev_device_add() already stop with "Device '%s' can not be hotplugged
-on this machine".
+Something that just came to my mind:
 
-> - object_unparent is called on the device that failed to realize (see
-> qdev_device_add).  object_unparent calls device_unparent
-
-Hmm, are you sure? I can see that object_unparent calls device_unparent
-indirectly for the *child* nodes of the device, but not for the device
-itself...
+bcm2836_init() creates the TYPE_BCM2835_PERIPHERALS object with
+object_initialize(). This creates one reference to the object already.
+Then the object is linked to its parent with
+object_property_add_child(), which creates another reference to the
+object. But where are the two references correctly destroyed again? One
+is certainly destroyed by device_unparent later, but the initial one?
+Could it be that we are simply lacking one object_unref() after the
+object_property_add_child() here?
 
  Thomas
-
-

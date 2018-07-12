@@ -1,142 +1,134 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1092333wrq;
-        Thu, 12 Jul 2018 01:06:25 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeG+fRm1uHo+tKfzi+aaXbZ3DQEIc1g/zROzuk+CV/tgqIgo/u6JwAtRpQKS3cMthcU3hs8
-X-Received: by 2002:ac8:855:: with SMTP id x21-v6mr944589qth.42.1531382785050;
-        Thu, 12 Jul 2018 01:06:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531382785; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1284566wrq;
+        Thu, 12 Jul 2018 05:04:37 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc4EepOgiUhpLnZc1i1ZHhT/5aSHAz0U8wUiWmbcKuaAtFu3zNXITYwGC36BtejFPWVhRzu
+X-Received: by 2002:ac8:91d:: with SMTP id t29-v6mr1528161qth.188.1531397076978;
+        Thu, 12 Jul 2018 05:04:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531397076; cv=none;
         d=google.com; s=arc-20160816;
-        b=jGDGRul2r8hyDwjno/x4uVzcVVY8sKuCAs0RRtYF4q6sLKecJYUaOuA/UzidLP2HWr
-         CJFwPUwl9XQK7Pza3sQk1fj3xKTrt0fgdAofyehadf6hdzS7QBusmj1O3t9310l18O8z
-         vVmG1dQRXFuguw8tGHGr+Ob/N1S9JYD7jJUDxh+jEPqTNot7mLgERVGqCEZgo+r0Hnx8
-         2NvdR1mEZTxaxRsz0T6t3R9qA+pB/Ey2lGQxTwF85PTtj0aURBJhIMMI9AIPambmQLhm
-         dItXyoF7u0y1Ge8xbOqYbAPJmuh2u55HjhDdcRaOxg9/bA0l0zJek0CcaUJGnak2TYYs
-         6vgA==
+        b=A7CF45jeQ41UDQQsCsxjEnjIyFSXKBVw++SqunZZ2HFYbcnoTrHEjO9kdnNeWiAwdi
+         CUvEFO751dQ6LU4K/R8lXQgxUosj0zeHP71Wmt6snPEb7QafKJB9PIiARJVWOCbQYzEO
+         rsfkyQlz5DDsMBzzdLOcQtDSO2nSlSXfB+BPQaerj21Q+Miw5G0v3fK8ELyHqj3TOGij
+         Tyk0ApigEZwsY7nMeDsNczqRJcf0TXGvMV9ObwcVGKbmlUfWre85XSpqfkOH+NxQGjcS
+         GpdNnVotC7ztdQbC9PrJagAfp9y/dOEfDOy+PD4HJMZdScuFWJTbDlhG78Q3B6ZJusxx
+         su+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from
          :arc-authentication-results;
-        bh=6Rlq5pPa0zGZfy2OzDSCTF2h9xfoVoPr9k/n97DocmY=;
-        b=v0cuvdxzA+qV6dfa3P3hvblevdh4/AmveaxcFRs1Cbt5UBD2+sYHWSoxrd7FGDm5Fk
-         POatmXcyBYsVn4SsazyrS3fifqNnLfDXVYhdd2jUIGNwllq0ngcCoBOTPoh0znkT9Rxa
-         xlw/IqdWYq0QqS3NjRMvgcRP5fe+a4ruxmwX+O9rpR+fjact0IaVBrd6aFiQNVTc87P+
-         gAEE9MC91qFKBZOJZ/wp52jEC2etcTl/Upkb74GQGnpW45R1ggHkOQj/QGb8egJmhCjx
-         CLqk1AnhTM9qzFH3U3HeqGSP/NM8EALYF06BziyIZT0eNAO1YHJ2d7hqveOnrajOiSqa
-         wTgA==
+        bh=DyJtI/IlAf2wTByEsIeF4q0R2iwu7mh7sNK5ea4MRmU=;
+        b=nmVZCmumKBSpim8cc9J5v28n9DrL3jlVI19oXCBjGzhtmol3am2OlclJVyUR5uJzXe
+         WtZgZOH+AsL8RNcNaT2tWzbXpvNhHNJMZJEvvpykgRc7ErN9BoTeWvO0bGsi8kJC4FLz
+         oD3hy+EePPj/aZkm9LZrNlcG4A+8hFiqrWh+jKbqTADohmwB3jaipgdxd2LWaY0HzkAI
+         JCS0ehwcF+dvfFusjys1j/CQNF3VtqlLC+rOTRpVZclJOMAIURXSY3u4SLHteUgTFBph
+         uoINO6KT7BXi9F0tgAwsqdNWc/zziEL5XrfeuTyuAkTWkiFSEWxXtZ/lhgj4jBoW+qwn
+         3viQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r90-v6si2742829qkr.276.2018.07.12.01.06.24
+        by mx.google.com with ESMTPS id g42-v6si566786qtk.298.2018.07.12.05.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 01:06:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 12 Jul 2018 05:04:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57931 helo=lists.gnu.org)
+Received: from localhost ([::1]:59143 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdWcK-0004Yv-Gt
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 04:06:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55880)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fdaKq-00025b-Gu
+	for alex.bennee@linaro.org; Thu, 12 Jul 2018 08:04:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60826)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fdWbq-0004Wx-VS
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 04:05:55 -0400
+	(envelope-from <armbru@redhat.com>) id 1fdaKb-00024W-7H
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:04:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fdWbm-0002iY-1a
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 04:05:54 -0400
-Received: from mail-wm0-f65.google.com ([74.125.82.65]:34676)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1fdWbl-0002i6-Rq
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 04:05:49 -0400
-Received: by mail-wm0-f65.google.com with SMTP id s13-v6so1410948wmc.1
-	for <qemu-devel@nongnu.org>; Thu, 12 Jul 2018 01:05:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=6Rlq5pPa0zGZfy2OzDSCTF2h9xfoVoPr9k/n97DocmY=;
-	b=JKDLHpCUkdR4Go7Lcx4DRlmLfOa1ETF5d3cBYil59MZvowHPytbxnkTIueUnpjuYO8
-	6WMBrhVaysCnfo1KIhngw00IuUWWouMYm7ErhoVIdJ8tSP39MaShfJ97v0JvqUmP4Chq
-	PZqZAZsVrQAE5trh9gOL+HLAfnNF//HNqhYx8e0jX+wg5UQSwLL1Ml2o2ZDi5U4zkYIy
-	rTWeooJE4dJy6NShVB3xkZN+xepnBtwzBxuixU5Viu8K5y9rgMVlokr2Kc5Ppr19KwNC
-	RkK0KiwgAq7pq4ar67Tp64Sqi39X2H6rq7poA7QU0NgisHWsfTy5D9tbzyGIwIR7VJoU
-	rbqQ==
-X-Gm-Message-State: AOUpUlFwBarfKe7ukgwDHT6SayYGlwBv9FV/csbUNoaO2girDyDpB2YC
-	X3gQ0eyhYEmFgHmEkZrPcv9tYA==
-X-Received: by 2002:a1c:d6cf:: with SMTP id
-	n198-v6mr701711wmg.61.1531382748675; 
-	Thu, 12 Jul 2018 01:05:48 -0700 (PDT)
-Received: from [192.168.10.150] (dynamic-adsl-78-12-151-35.clienti.tiscali.it.
-	[78.12.151.35]) by smtp.gmail.com with ESMTPSA id
-	d15-v6sm1684629wmb.0.2018.07.12.01.05.47
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 12 Jul 2018 01:05:48 -0700 (PDT)
-To: Eduardo Habkost <ehabkost@redhat.com>
+	(envelope-from <armbru@redhat.com>) id 1fdaKV-00009W-M0
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:04:21 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43918 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fdaKV-00008y-HL; Thu, 12 Jul 2018 08:04:15 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8F5BEDFE5;
+	Thu, 12 Jul 2018 12:04:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-125.ams2.redhat.com
+	[10.36.116.125])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4AEE22026D6B;
+	Thu, 12 Jul 2018 12:04:14 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id E8F8C11385D6; Thu, 12 Jul 2018 14:04:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
 References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
-	<ca91bffe-2bcf-78a2-02cd-8ae7cc48074c@redhat.com>
-	<20180711183031.GM914@localhost.localdomain>
-	<ce0b8bf9-b0e6-fe02-c685-5a6c3140a3ae@redhat.com>
-	<20180711202351.GA31657@localhost.localdomain>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <00130bb8-4dfc-3a76-3f51-9f4c6da891c0@redhat.com>
-Date: Thu, 12 Jul 2018 10:05:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	<CAFEAcA-T_d2kEU+Pb72=pJQhpvqvN1owgi4RLNtNY=L4t_1Z2g@mail.gmail.com>
+	<5d0c7195-ffbf-1618-6106-ef6c82df3bd7@redhat.com>
+Date: Thu, 12 Jul 2018 14:04:12 +0200
+In-Reply-To: <5d0c7195-ffbf-1618-6106-ef6c82df3bd7@redhat.com> (Thomas Huth's
+	message of "Tue, 10 Jul 2018 00:03:39 +0200")
+Message-ID: <87601koe2r.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20180711202351.GA31657@localhost.localdomain>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Thu, 12 Jul 2018 12:04:14 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Thu, 12 Jul 2018 12:04:14 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 74.125.82.65
-Subject: Re: [Qemu-devel] [PATCH] hw/arm/bcm283x: Fix crash with device_add
- bcm2837 on unsupported machines
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/bcm283x: Fix crash with
+ device_add bcm2837 on unsupported machines
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8gv6v+GosAF3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ORcD/2mIDHX5
 
-On 11/07/2018 22:23, Eduardo Habkost wrote:
-> On Wed, Jul 11, 2018 at 10:16:42PM +0200, Paolo Bonzini wrote:
->> On 11/07/2018 20:30, Eduardo Habkost wrote:
->>>> The theoretical behavior should be:
->>> It's not clear below where you expect
->>>   qdev_set_parent_bus(..., sysbus_get_default())
->>> to be called (if it should be called at all).
->>>
->>> I don't know where it should be called, but I'm absolutely sure
->>> instance_init is not the right place.
->>
->> I think instance_init is fine to call qdev_set_parent_bus on contained
->> devices.  Why do you say it's not?
-> 
-> Because object_unref(object_new(...)) is not supposed to affect
-> QEMU global state at all.
+Thomas Huth <thuth@redhat.com> writes:
 
-It should not affect it.  Any changes to the global state done by
-instance_init are immediately undone when object_unref destroys the
-child properties of the object.
+> On 09.07.2018 23:42, Peter Maydell wrote:
+>> On 9 July 2018 at 22:03, Thomas Huth <thuth@redhat.com> wrote:
+[...]
+> Hmm, maybe we need a qtest that first executes "info qtree", then runs
+> 'device-list-properties' for all devices and finally checks "info qtree"
+> again ... since 'device-list-properties' should not change the qtree,
+> the output of the "info qtree" should be the same.
 
-Thanks,
+Lovely idea.
 
-Paolo
+>                                                    Currently this is not
+> the case :-/
+
+Less than lovely, but I can't claim to be surprised.  As Peter remarked
+elsewhere in this thread, QOM is underdocumented, and is too easy to
+misuse.
+
+On documentation: we sorely lack documentation tying everything
+together.  GDK-Doc function comments alone can't cut it for something as
+complex as QOM.
+
+Even with adequate documentation, bad examples in the source will
+continue to multiply.  We'll have to get rid of them.

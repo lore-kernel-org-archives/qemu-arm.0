@@ -1,100 +1,100 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1323073wrq;
-        Thu, 12 Jul 2018 05:45:12 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdGHMFxsYFa8JAWU9JlUfrnEbHVPh1lUhqUtK8g5zWL2UQ1zAuPG40ziPdfDegg1AvDzIam
-X-Received: by 2002:a37:d61b:: with SMTP id t27-v6mr1507973qki.244.1531399511964;
-        Thu, 12 Jul 2018 05:45:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531399511; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1361015wrq;
+        Thu, 12 Jul 2018 06:20:36 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcYegQF8Wj2ztHCdyB1ydAhpCuQyMCG19z40AZAVQlVUsblUYAxmcvRNmQnPlINVZtGR0Ea
+X-Received: by 2002:a37:5a43:: with SMTP id o64-v6mr1719893qkb.211.1531401636442;
+        Thu, 12 Jul 2018 06:20:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531401636; cv=none;
         d=google.com; s=arc-20160816;
-        b=DjYgZ2Ko7WimhbX6F0tUmk06kUpwWw7GEdWydWII/HLWykfyEsI+SiTBCgtoi0oIRu
-         Bl8GDxXrCUkMZYAQ5tdQHRqQ6uEDwS7gXEV0RO6pJyzx+KT1doYl72mlvex8R5rgo15w
-         grAUQFsB+k3A3VgojPfV0MbZCRedDxjN1azdpHX4/ghTo1KvsIjHpa6jjl4XxVU2AQ+5
-         SxjJpNHKXxoEv/xjmS+rJ8/2jH7gMNaww1ElqbwWyfNCUJCuCmWcIGlawUvMBw/NW39U
-         +MOu5LXzLoraogOj5srrM4sEh7z87EpYJI0+fKdRR7ICJ/ur+Ob6mHQSqN5Uc4vyWOXq
-         Qw9g==
+        b=g/ZlT7xHVdf+XAlkkTHxsaxDPe2uGyuCJ6KFSEuLe1/1/W2q+PwRwUIR45K8qSJPGA
+         KMoww8NhHvGDGqpsAgMCEzcpdoon6vyYLDPn//y5trYOInrxmmazTnqg5hBDyPO7PgGR
+         lH3kSAbZVSS6pAj1QcadOAPE/9Zs+sRtr3kOYHnzzgHql+K7JERhLrDccVRH5x25HJmL
+         Ij7W13KGq+X870VZ6X1SL+b99LKTeRJ3WyZ5Hz3bEkkiRPIxOId/sOpiBGO3i0cvN2uf
+         mMR9LH311j5UCAtbJu+hu0g1KMXFTa+wPHvB8F9rnZeddeuljns2MistylwAmi/Yfw4C
+         c1DA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=RkUVfSu9oHKOK3sAzMmxiBkeqtTBzwOCS+sJlmeKjKw=;
-        b=CC6Fs/njAwZe6M5RnuXRVNM/8I3lLl5LXyEvGObyT7/bzZ4HQbTMhDTgjSqXpuHUE2
-         l+WejuCe3W9wUePu+ENN6LyxS3eYkoG40rS8PaFw4DnQakmrieK3YxsUma1woReyG5b4
-         hqgl1eFd7UjevWSQ9YOnWrz22aXEEtFZiNvHSzlU1Gy2UaarHgdGqpa8lgyFNaorVdxT
-         g1jpBhrmq9O2vO5GsqKuts+KErix3eMTCPKC9BNKwxqq0YaMhw5RxZguPYaO0YphZFRz
-         JcB1BS5aCAyLXxkje4F3a9m2mneRD7jiH5fsS1XPpQgoA5GW6/8KOJWmb/uybwkIMDbq
-         KRRA==
+        bh=aHB0pBKHa3OkozZY+FrHHQl53hYirbd1aTpblIsugMI=;
+        b=gJ9BPy27jxJ8fx93D+zwP/dBOJuqCt1io+Dg0ZnHWcTr+YdTEvhiCJVOEPJtN3JWeX
+         z918UgXqB2ICbRv4dhWzt8Tm0HphtQ4puQR4kveLT9KOW/yn5V5TsAxU/7HynXdU+WRp
+         xgs1DhQxcgNz5UtxGoV90OSngyaX2fR/7aMubdtTDSJT8AaRrfhBK3kvz0UzBWoLzQMB
+         tJaXoqu9Ae4aImBLYyKGLIqeb8ewOnYJAODdd/+j/QS4knMFkBkZCcNgUcZlc+d3G5+0
+         p+E2YiQs46ekjCYDIJ/T6sATOHEHRup/7T79hM+0MyNakye9x/dL0R/bTqU7zepuxws9
+         hiBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="T/IUNSfj";
+       dkim=fail header.i=@linaro.org header.s=google header.b=HMeEBC7t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p13-v6si1717284qvi.256.2018.07.12.05.45.11
+        by mx.google.com with ESMTPS id v2-v6si1546634qtg.400.2018.07.12.06.20.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 05:45:11 -0700 (PDT)
+        Thu, 12 Jul 2018 06:20:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="T/IUNSfj";
+       dkim=fail header.i=@linaro.org header.s=google header.b=HMeEBC7t;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59282 helo=lists.gnu.org)
+Received: from localhost ([::1]:59843 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fday7-0004ye-If
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 08:45:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40747)
+	id 1fdbWN-0006He-Vq
+	for alex.bennee@linaro.org; Thu, 12 Jul 2018 09:20:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54659)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fday0-0004yE-FU
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:45:05 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fdbW8-0006EI-VB
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:20:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdaxz-0004n1-Hb
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:45:04 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:40737)
+	(envelope-from <peter.maydell@linaro.org>) id 1fdbW8-0001T4-4L
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:20:20 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34593)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdaxz-0004mK-3o
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:45:03 -0400
-Received: by mail-oi0-x243.google.com with SMTP id w126-v6so55483633oie.7
-	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 05:45:02 -0700 (PDT)
+	id 1fdbW7-0001Se-Up
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:20:20 -0400
+Received: by mail-oi0-x241.google.com with SMTP id 13-v6so55715135ois.1
+	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 06:20:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=RkUVfSu9oHKOK3sAzMmxiBkeqtTBzwOCS+sJlmeKjKw=;
-	b=T/IUNSfjITSDU1DDgDXdZ4wZQJ3EGgjk8SN/86DbT2Id3YQ0asRIo5czvruhwp8UMN
-	tE/UhMmrO0N7n+M/TwWwESkxij32AWBjzN16723lqpSJSvpsYs/ZhLZIrivitRrlb98E
-	BnChcw9+EVabOCVzhq5lSc3IDU4DkOboJWst8=
+	:cc; bh=aHB0pBKHa3OkozZY+FrHHQl53hYirbd1aTpblIsugMI=;
+	b=HMeEBC7th3ocZZLrCigh18VKdMSgKqho6715IIfFe0lmFdBpiTjqS9LA+JZH+JxxWu
+	9TXSA5VVaDl1MBep/LbfhafXqjH+pJTRnl7OH7CD+3+yH5C5Pci/6JRZ9d/SG7erJwAU
+	v2OmGpR8SHnw3LeCru3Z82DlRhxnfrYF6ATnI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=RkUVfSu9oHKOK3sAzMmxiBkeqtTBzwOCS+sJlmeKjKw=;
-	b=hHCSnnG3OTkugi2uwlR+s3SRdpHOtIoGcRFFTmkRsb8gw4aES7xjB88BmvEQ67Vkyv
-	3s/b6vte9xXzSiM6ciepiJc1m6mLOytJE1p30kPStVo5cPOmNo+sjoWB08ap2VWKxE2e
-	CQEyZK7nwFSgge57UA/kcDseieUlEGWjBuhcXn0latLLqPHlaLo0apV8pB5pMgpWqQAc
-	KpMhV8FUhsHOnFBuVdn/VrUH38OjUuKnujhvwObbSAAeJ5VwjH5nUwY9FRpku5yOUJSA
-	/xWKt0x7NoPjJLzbBemkI1reJGDZ2wsfUIv0z13jYYcNY2+tzR5skMn7+iwGFmhlUD08
-	3gNQ==
-X-Gm-Message-State: AOUpUlHRbSEVh4pbpxMCOHdLQWY+x6wFS7MssTtR+8MlpVyIBB+YZ2EY
-	HX3qTaEmpXNlEOOmlSPYAR8XelbwfJtuZJXtWaj8/Q==
-X-Received: by 2002:aca:f5d1:: with SMTP id
-	t200-v6mr2260053oih.12.1531399502279; 
-	Thu, 12 Jul 2018 05:45:02 -0700 (PDT)
+	bh=aHB0pBKHa3OkozZY+FrHHQl53hYirbd1aTpblIsugMI=;
+	b=DLdGQgaJkN8yGJGECcn/ajl5f+nGV0ZJMjaDPD9OQEi6tgbKa/M7rvrF4C5KnrOOZV
+	CgN4NNiaVwXC0evkK1VsdHj5y3khqCByGE0I8mnA50UlU3mWCWtgarYujoKjKLiJt5Ml
+	2KSafIbg89s/D/cxSnsajdmk9RDH/oQB9roSS627ncrVLb67JmTGhi3MwvWLQ38QwHPz
+	BQVjlWNgbOdqwG3ybVr0PPSsnirfRf7hUUQooM+r7vErZ8yvbJd2PEYMu01y+aHMhP6f
+	/uEEUmryPhfFr1jx7MirEcuPOXvadSR7ehvZIVimj9pSbfM1+sZ3rZRKdOHTaV7at2fH
+	tl1A==
+X-Gm-Message-State: AOUpUlHr5+2yfhpH4BD75Aq2112s6epQzMp3VVc6eeH/G3yIpZxs1PJI
+	DnoioVIO1XJLaG8+4yI91dnSck5HShM6x0oPvQHWcA==
+X-Received: by 2002:aca:4a49:: with SMTP id
+	x70-v6mr2083751oia.11.1531401619170; 
+	Thu, 12 Jul 2018 06:20:19 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 05:44:41
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 06:19:58
 	-0700 (PDT)
-In-Reply-To: <20180629132954.24269-10-luc.michel@greensocs.com>
+In-Reply-To: <20180629132954.24269-12-luc.michel@greensocs.com>
 References: <20180629132954.24269-1-luc.michel@greensocs.com>
-	<20180629132954.24269-10-luc.michel@greensocs.com>
+	<20180629132954.24269-12-luc.michel@greensocs.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jul 2018 13:44:41 +0100
-Message-ID: <CAFEAcA9u0q9YXEGd+NqSHVBtDO921jCyU_Qs8FQVqeHFwQNbAA@mail.gmail.com>
+Date: Thu, 12 Jul 2018 14:19:58 +0100
+Message-ID: <CAFEAcA_c34WEGeG5OnRZhxhMFLf0AX68RtS__kjo+OJqEWUbMg@mail.gmail.com>
 To: Luc Michel <luc.michel@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [PATCH v3 09/20] intc/arm_gic: Add virtualization
- enabled IRQ helper functions
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH v3 11/20] intc/arm_gic: Implement
+ virtualization extensions in gic_acknowledge_irq
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,61 +112,31 @@ Cc: Mark Burton <mark.burton@greensocs.com>,
 	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: II03e50prWaU
+X-TUID: 3Yj1RMJN8plU
 
 On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
-> Add some helper functions to gic_internal.h to get or change the state
-> of an IRQ. When the current CPU is not a vCPU, the call is forwarded to
-> the GIC distributor. Otherwise, it acts on the list register matching
-> the IRQ in the current CPU virtual interface.
+> Implement virtualization extensions in the gic_acknowledge_irq()
+> function. This function changes the state of the highest priority IRQ
+> from pending to active.
 >
-> gic_clear_active can have a side effect on the distributor, even in the
-> vCPU case, when the correponding LR has the HW field set.
+> When the current CPU is a vCPU, modifying the state of an IRQ modifies
+> the corresponding LR entry. However if we clear the pending flag before
+> setting the active one, we lose track of the LR entry as it becomes
+> invalid. The next call to gic_get_lr_entry() will fail.
 >
-> Use those functions in the CPU interface code path to prepare for the
-> vCPU interface implementation.
+> To overcome this issue, we call gic_activate_irq() before
+> gic_clear_pending(). This does not change the general behaviour of
+> gic_acknowledge_irq.
+>
+> We also move the SGI case in gic_clear_pending_sgi() to enhance
+> code readability as the virtualization extensions support adds a if-else
+> level.
 >
 > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> ---
 
-My review remarks on patch 7 will affect this patch a bit but
-generally this looks good.
 
-> +static inline void gic_clear_active(GICState *s, int irq, int cpu)
-> +{
-> +    if (gic_is_vcpu(cpu)) {
-> +        uint32_t *entry = gic_get_lr_entry_nofail(s, irq, cpu);
-> +        GICH_LR_CLEAR_ACTIVE(*entry);
-> +
-> +        if (GICH_LR_HW(*entry)) {
-> +            /* Hardware interrupt. We must forward the deactivation request to
-> +             * the distributor.
-> +             */
-> +            int phys_irq = GICH_LR_PHYS_ID(*entry);
-> +            int rcpu = gic_get_vcpu_real_id(cpu);
-
-You should check here that phys_irq is not one of the reserved
-values >= GIC_MAXIRQ (ie 1020-1023). Otherwise the GIC_DIST_CLEAR_ACTIVE()
-below will index off the end of the irq_state[] array.
-
-(The current code for the physical GIC doesn't make this check, which
-is a bit lax of it, but we should treat that as a separate bug rather
-than trying to fix it here. I'll send a patch that fixes that for 3.0.)
-
-> +
-> +            /* This is equivalent to a NS write to DIR on the physical CPU
-> +             * interface. Hence group0 interrupt deactivation is ignored if
-> +             * the GIC is secure.
-> +             */
-> +            if (!s->security_extn || GIC_DIST_TEST_GROUP(phys_irq, 1 << rcpu)) {
-> +                GIC_DIST_CLEAR_ACTIVE(phys_irq, 1 << rcpu);
-> +            }
-> +        }
-> +    } else {
-> +        GIC_DIST_CLEAR_ACTIVE(irq, 1 << cpu);
-> +    }
-> +}
-
->  #endif /* QEMU_ARM_GIC_INTERNAL_H */
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

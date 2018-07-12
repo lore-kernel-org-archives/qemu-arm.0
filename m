@@ -1,100 +1,100 @@
-Received: by 2002:a5d:4301:0:0:0:0:0 with SMTP id h1-v6csp5787613wrq;
-        Tue, 26 Jun 2018 22:01:50 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcrYdlRI3lNUn9DbOJNWkOMy92SzhPFIXldmSCSFcMbWgoPrT7arGCFmukmQIwltH1fnTJ0
-X-Received: by 2002:a37:cbd3:: with SMTP id u80-v6mr3846309qkl.290.1530075709971;
-        Tue, 26 Jun 2018 22:01:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530075709; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1309624wrq;
+        Thu, 12 Jul 2018 05:30:17 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfVyUgNzBnvDa71p3r+jaFfjJpJwR3mg5puE3VN9YVu3glZdk0YHoOFjc9wKBHNmSGL5FDS
+X-Received: by 2002:a0c:8950:: with SMTP id 16-v6mr1976986qvq.247.1531398617134;
+        Thu, 12 Jul 2018 05:30:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531398617; cv=none;
         d=google.com; s=arc-20160816;
-        b=zB0s6K7VpNX1blsw6b+ohmc6fdspRGvAKTWANLhsublKIIPA0fduv2WKpvhC6YAsYk
-         SK/2TF6EUe3ghdVKFK4uoSMoLJ5EwqmNYgPeHZRw8OEdbeuEX+6cXHC459fZd11hxxHX
-         +VyWhACLvWp48tUP2z8mUaOmUrorrixGpS+STePUc5WW3fOFvUq7hbd/sk6vsakcNQsz
-         8fD3JZt05kq2kSAW31PEZk9PILjDEOnjHiGfwobO8akBKI45XySYgYLK+XAmj8WMCi6j
-         UllPd9qOFq0cseGVwdHvC+h8kofs/NrL1Ku1E/XWsX4/7jgnuFsHExdufRgMZcjEBCto
-         pXAg==
+        b=cGwYYE2yb7BPCSGnYwhy8010S5mR0tnUQv2bdlOVTnj/4eAs1RHURo5vAz7y0+wnqK
+         zfDW+SRoOHaYLtnfqZxwhzQ10hxKw8C1PzpNx7xNl+GRWnpPok06y3j+HHEezi9KBpyg
+         wQ5dg+zxqoexhLFTfAuzDW7biPwSJdHG/qPPz1qeZUBB71oZEZ+nEG8AmVVZhmHVxoCd
+         R2Z/wbrgJG3tX0Odcao+ebFMhuT1dx7C5SY2juoHUKR4jJHm+AE5Lge0MaQWS00lajM0
+         29sAJFWZe+3yEM6XyIPfVSXtWkt/T2CwJ7UpE23Tc5PX4vqQQvRXq+eQo2jlx6abnrMY
+         O0yQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=51qnQVLdHtI56j1vCLTEgJ6dbb/yME4EFqLsFYPoNTk=;
-        b=ZT2xXwKm4QaXfjSe8+aEoERaDUjudCoanRlUOmuPyUH2zhdNcCKwpJNy6RWMrJ+Jos
-         fl8R39W8Ll2brWDUZVcwOBg38lGXbSgL6S2A3jgnlef5w9qkUBdjVVp+yjBrEC4pWgHC
-         qTU5Sh/wwsmMGjwvVM2u5j+dIgyKF60HocG7Kq4GS1TyKArS0jQY3So8vFJv17Zo8Bkv
-         vSEg8eZ2d2XsJ7sdfGQOLFO54CwsKWg/okxsACTJXXfaFgh27ULcYAUIHnbh+95vx/xE
-         VhLXN+ta/scgzOHSFWVVwfLBGgGkdPvYZC7x9L8CARZKynyF7LBLxZbTFqnXwpXDS0JC
-         ouxA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=wRr+AiS5bOENpChrAs4Se81hSRDQ4/plR8O19Ot0dZQ=;
+        b=fhSk3EQyFIzri+qN1EES+bBOkdjmJe1/3OwObFpY8at2jFlJ/1uDOM1pFT1GdQOui0
+         1qvk7rMLTLPypEB8wZQhOJbixv9JtU2JZZsY1OBGg/hsUSMK9iQbvGjOnB9LnYCgqXWC
+         xY+n9lqBnQga3Sxt3m9csyqBBhh2czReJzV0inziQ858opam+Wc5h++Q9BwHkYNUpXAU
+         WFQ1fsJS02OY4BVsGeQ75DUGx75d1uRNG58oQrFvsB4jHngLuueQLlYHPWk+bN70CSLz
+         rV3gJKxC//GB2an9EbJJcDGP3BQHHL4n/ksJy9K1mEnfpv9fXFWB3T8n8x1oLTt631th
+         yXTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=C03UqQks;
+       dkim=fail header.i=@linaro.org header.s=google header.b=f3D26pg5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l30-v6si3285175qtl.135.2018.06.26.22.01.49
+        by mx.google.com with ESMTPS id e125-v6si4764510qkd.394.2018.07.12.05.30.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 26 Jun 2018 22:01:49 -0700 (PDT)
+        Thu, 12 Jul 2018 05:30:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=C03UqQks;
+       dkim=fail header.i=@linaro.org header.s=google header.b=f3D26pg5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56678 helo=lists.gnu.org)
+Received: from localhost ([::1]:59228 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fY2aT-0002HV-G9
-	for alex.bennee@linaro.org; Wed, 27 Jun 2018 01:01:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32796)
+	id 1fdajg-0000UU-Lm
+	for alex.bennee@linaro.org; Thu, 12 Jul 2018 08:30:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37627)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY29m-0004dR-QA
-	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 00:34:16 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fdahg-0007kO-QU
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:28:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY29j-0000yM-MY
-	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 00:34:14 -0400
-Received: from mail-pf0-x235.google.com ([2607:f8b0:400e:c00::235]:46877)
+	(envelope-from <peter.maydell@linaro.org>) id 1fdahe-00017J-UM
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:28:12 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:38865)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fY29j-0000y4-EX
-	for qemu-arm@nongnu.org; Wed, 27 Jun 2018 00:34:11 -0400
-Received: by mail-pf0-x235.google.com with SMTP id q1-v6so379734pff.13
-	for <qemu-arm@nongnu.org>; Tue, 26 Jun 2018 21:34:11 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fdahe-000150-Fi
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 08:28:10 -0400
+Received: by mail-oi0-x242.google.com with SMTP id v8-v6so55420315oie.5
+	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 05:28:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=51qnQVLdHtI56j1vCLTEgJ6dbb/yME4EFqLsFYPoNTk=;
-	b=C03UqQks117ENZNnF30MpCLAG87vlsifSRCsTZkn10WzIkxHXnLTjG369cYOG/WExa
-	6KXRhdlA7UBzWbAOd/23yoNEFfE554mSJeU1MBD58lT5Snx3k7ECwO+lAmQ84TTTD3x6
-	6pPvekeNFApjCU8rM6kWo/OZijP2ecSlYRduM=
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=wRr+AiS5bOENpChrAs4Se81hSRDQ4/plR8O19Ot0dZQ=;
+	b=f3D26pg55p1bR+yheQGMAWg831SPrwcavmWmW1V1DBEGJBtFAIiHT0cPNOXYXUz8hZ
+	vxvgUxwVF28S5sUjd54CpAEA6huvr6l682QY2hdSnsroIgqw78gs+hxmmgjsEKtYtagM
+	OfTzwFld0C/lSmAmtyu5TtphCMp8pGsgHGRok=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=51qnQVLdHtI56j1vCLTEgJ6dbb/yME4EFqLsFYPoNTk=;
-	b=Eup0OFYgp+qiVTDKjhRMi/Qz3MeEAiv9b6qurSGzMRZLIfTVPCW2Gm322jL2UXx9nF
-	XBygi+KeFKXRx5lbzLKtSr+VHMb73AhHKYXA/Rv1MeGxiMUWsMojrrAPaTRPogr1tam4
-	SlJmKjocWsWJFpJFCeAjN9uWx0crWZnT9GJqZJQtxtyZ+g37RcYgF1BkEyRe+cpftZGG
-	zLsvAIMs+oEaMUUpzcxvXv54SWkmu45hFC+ing/BN0ntKT88k9DNr1+JRvukNQNWhKLZ
-	ZUelnGY39FYYS3ZcI3GDyizn/ckX58mfeZQwNKz6xn2+3FhoB7AyiGbVwMlZwYC1P6ua
-	hmYg==
-X-Gm-Message-State: APt69E3ZLLCtMWbyfrHjGHxKL+VQh7nyAl46q3jK8KYJLB3N6bM8e/R9
-	dK+bPc436wcNRp+BF3L26utwDA==
-X-Received: by 2002:a63:3190:: with SMTP id
-	x138-v6mr3762791pgx.60.1530074050533; 
-	Tue, 26 Jun 2018 21:34:10 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
-	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	p20-v6sm4577638pff.90.2018.06.26.21.34.09
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 26 Jun 2018 21:34:09 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 26 Jun 2018 21:33:21 -0700
-Message-Id: <20180627043328.11531-29-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180627043328.11531-1-richard.henderson@linaro.org>
-References: <20180627043328.11531-1-richard.henderson@linaro.org>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=wRr+AiS5bOENpChrAs4Se81hSRDQ4/plR8O19Ot0dZQ=;
+	b=JUq+vfraK0yySp3U+yRh3Gqq5TDr978a2GXv5qmyvcJLm1mWewJ+g40+3YwMfQMXBV
+	uTAd8GutLt89syHNuSuVGGDbeIofsKzzTE4zZvuSl78Jj9e6UhbtnEdfwfj7zAz0XOZ5
+	aGC0XfV4T3pbpxHO5E20uk4Il8TOpPlc6qtjklgXKnsSIaEs0QJYNnV+d7hNl2m44RA+
+	6xG2319nXFG+6hKlfFO0A1h7F03+priBQFqMuv7NALcMV+RW79tItKv+w0L5g9E9MnBA
+	tc3YsZibXbvJaNt+fmlWvMw8R5OWCGGir1v3VY8t6IG2rUpdjmx8cEHC+8e5jw9bn/me
+	NXHA==
+X-Gm-Message-State: AOUpUlGjoYpbwJ/US+4Wd1WaND3XIt25/Hcp7tpDC4baN5lOCiDg9ucK
+	4lz8eMuachRcRL/B0dm1s+e96mQX6M6251v5Rt+mIg==
+X-Received: by 2002:aca:7247:: with SMTP id
+	p68-v6mr2202663oic.252.1531398489655; 
+	Thu, 12 Jul 2018 05:28:09 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 05:27:49
+	-0700 (PDT)
+In-Reply-To: <20180629132954.24269-8-luc.michel@greensocs.com>
+References: <20180629132954.24269-1-luc.michel@greensocs.com>
+	<20180629132954.24269-8-luc.michel@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jul 2018 13:27:49 +0100
+Message-ID: <CAFEAcA_h9bZu1OF2ntDMK-UfWcue9udSxTD0apQ-R_hgqJRBjA@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::235
-Subject: [Qemu-arm] [PATCH v6 28/35] target/arm: Implement SVE
- floating-point complex add
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH v3 07/20] intc/arm_gic: Add virtualization
+ extensions helper macros and functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,199 +106,197 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7898nab+BNkO
+X-TUID: hrlDN1qj7/Z4
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper-sve.h    |   7 +++
- target/arm/sve_helper.c    | 100 +++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c |  24 +++++++++
- target/arm/sve.decode      |   4 ++
- 4 files changed, 135 insertions(+)
+On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
+> Add some helper macros and functions related to the virtualization
+> extensions to gic_internal.h.
+>
+> The GICH_LR_* macros help extracting specific fields of a list register
+> value. The only tricky one is the priority field as only the MSB are
+> stored. The value must be shifted accordingly to obtain the correct
+> priority value.
+>
+> gic_is_vcpu() and gic_get_vcpu_real_id() help with (v)CPU id manipulation
+> to abstract the fact that vCPU id are in the range
+> [ GIC_NCPU; (GIC_NCPU + num_cpu) [.
+>
+> gic_lr_* and gic_virq_is_valid() help with the list registers.
+> gic_get_lr_entry() tries to find the LR entry for a given (vCPU, irq)
+> pair. gic_get_lr_entry_nofail() is meant to be used in contexts where we
+> know for sure that the entry exists, so we can avoid the NULL check on
+> the returned pointer.
+>
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> ---
+>  hw/intc/arm_gic.c      |  5 ++++
+>  hw/intc/gic_internal.h | 65 ++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 70 insertions(+)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index b2dd379bd2..f25d1b1270 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -61,6 +61,11 @@ static inline int gic_get_current_cpu(GICState *s)
+>      return 0;
+>  }
+>
+> +static inline int gic_get_current_vcpu(GICState *s)
+> +{
+> +    return gic_get_current_cpu(s) + GIC_NCPU;
+> +}
+> +
+>  /* Return true if this GIC config has interrupt groups, which is
+>   * true if we're a GICv2, or a GICv1 with the security extensions.
+>   */
+> diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
+> index 1aa888a576..4242a16bd4 100644
+> --- a/hw/intc/gic_internal.h
+> +++ b/hw/intc/gic_internal.h
+> @@ -129,6 +129,20 @@ REG32(GICH_LR63, 0x1fc)
+>       R_GICH_LR0_Priority_MASK | R_GICH_LR0_State_MASK | \
+>       R_GICH_LR0_Grp1_MASK | R_GICH_LR0_HW_MASK)
+>
+> +#define GICH_LR_STATE_INVALID         0
+> +#define GICH_LR_STATE_PENDING         1
+> +#define GICH_LR_STATE_ACTIVE          2
+> +#define GICH_LR_STATE_ACTIVE_PENDING  3
+> +
+> +#define GICH_LR_VIRT_ID(entry) (FIELD_EX32(entry, GICH_LR0, VirtualID))
+> +#define GICH_LR_PHYS_ID(entry) (FIELD_EX32(entry, GICH_LR0, PhysicalID))
+> +#define GICH_LR_CPUID(entry) (FIELD_EX32(entry, GICH_LR0, CPUID))
+> +#define GICH_LR_EOI(entry) (FIELD_EX32(entry, GICH_LR0, EOI))
+> +#define GICH_LR_PRIORITY(entry) (FIELD_EX32(entry, GICH_LR0, Priority) << 3)
+> +#define GICH_LR_STATE(entry) (FIELD_EX32(entry, GICH_LR0, State))
+> +#define GICH_LR_GROUP(entry) (FIELD_EX32(entry, GICH_LR0, Grp1))
+> +#define GICH_LR_HW(entry) (FIELD_EX32(entry, GICH_LR0, HW))
+> +
+>  /* Valid bits for GICC_CTLR for GICv1, v1 with security extensions,
+>   * GICv2 and GICv2 with security extensions:
+>   */
+> @@ -164,4 +178,55 @@ static inline bool gic_is_vcpu(int cpu)
+>      return cpu >= GIC_NCPU;
+>  }
+>
+> +static inline int gic_get_vcpu_real_id(int cpu)
+> +{
+> +    return (cpu >= GIC_NCPU) ? (cpu - GIC_NCPU) : cpu;
+> +}
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 891346a5ac..0bd9fe2f28 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -1092,6 +1092,13 @@ DEF_HELPER_FLAGS_6(sve_facgt_s, TCG_CALL_NO_RWG,
- DEF_HELPER_FLAGS_6(sve_facgt_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_6(sve_fcadd_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_fcadd_s, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_6(sve_fcadd_d, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_3(sve_fmla_zpzzz_h, TCG_CALL_NO_RWG, void, env, ptr, i32)
- DEF_HELPER_FLAGS_3(sve_fmla_zpzzz_s, TCG_CALL_NO_RWG, void, env, ptr, i32)
- DEF_HELPER_FLAGS_3(sve_fmla_zpzzz_d, TCG_CALL_NO_RWG, void, env, ptr, i32)
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 83bd8c4269..bdb7565779 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -3657,6 +3657,106 @@ void HELPER(sve_ftmad_d)(void *vd, void *vn, void *vm, void *vs, uint32_t desc)
-     }
- }
- 
-+/*
-+ * FP Complex Add
-+ */
-+
-+void HELPER(sve_fcadd_h)(void *vd, void *vn, void *vm, void *vg,
-+                         void *vs, uint32_t desc)
-+{
-+    intptr_t j, i = simd_oprsz(desc);
-+    uint64_t *g = vg;
-+    float16 neg_imag = float16_set_sign(0, simd_data(desc));
-+    float16 neg_real = float16_chs(neg_imag);
-+
-+    do {
-+        uint64_t pg = g[(i - 1) >> 6];
-+        do {
-+            float16 e0, e1, e2, e3;
-+
-+            /* I holds the real index; J holds the imag index.  */
-+            j = i - sizeof(float16);
-+            i -= 2 * sizeof(float16);
-+
-+            e0 = *(float16 *)(vn + H1_2(i));
-+            e1 = *(float16 *)(vm + H1_2(j)) ^ neg_real;
-+            e2 = *(float16 *)(vn + H1_2(j));
-+            e3 = *(float16 *)(vm + H1_2(i)) ^ neg_imag;
-+
-+            if (likely((pg >> (i & 63)) & 1)) {
-+                *(float16 *)(vd + H1_2(i)) = float16_add(e0, e1, vs);
-+            }
-+            if (likely((pg >> (j & 63)) & 1)) {
-+                *(float16 *)(vd + H1_2(j)) = float16_add(e2, e3, vs);
-+            }
-+        } while (i & 63);
-+    } while (i != 0);
-+}
-+
-+void HELPER(sve_fcadd_s)(void *vd, void *vn, void *vm, void *vg,
-+                         void *vs, uint32_t desc)
-+{
-+    intptr_t j, i = simd_oprsz(desc);
-+    uint64_t *g = vg;
-+    float32 neg_imag = float32_set_sign(0, simd_data(desc));
-+    float32 neg_real = float32_chs(neg_imag);
-+
-+    do {
-+        uint64_t pg = g[(i - 1) >> 6];
-+        do {
-+            float32 e0, e1, e2, e3;
-+
-+            /* I holds the real index; J holds the imag index.  */
-+            j = i - sizeof(float32);
-+            i -= 2 * sizeof(float32);
-+
-+            e0 = *(float32 *)(vn + H1_2(i));
-+            e1 = *(float32 *)(vm + H1_2(j)) ^ neg_real;
-+            e2 = *(float32 *)(vn + H1_2(j));
-+            e3 = *(float32 *)(vm + H1_2(i)) ^ neg_imag;
-+
-+            if (likely((pg >> (i & 63)) & 1)) {
-+                *(float32 *)(vd + H1_2(i)) = float32_add(e0, e1, vs);
-+            }
-+            if (likely((pg >> (j & 63)) & 1)) {
-+                *(float32 *)(vd + H1_2(j)) = float32_add(e2, e3, vs);
-+            }
-+        } while (i & 63);
-+    } while (i != 0);
-+}
-+
-+void HELPER(sve_fcadd_d)(void *vd, void *vn, void *vm, void *vg,
-+                         void *vs, uint32_t desc)
-+{
-+    intptr_t j, i = simd_oprsz(desc);
-+    uint64_t *g = vg;
-+    float64 neg_imag = float64_set_sign(0, simd_data(desc));
-+    float64 neg_real = float64_chs(neg_imag);
-+
-+    do {
-+        uint64_t pg = g[(i - 1) >> 6];
-+        do {
-+            float64 e0, e1, e2, e3;
-+
-+            /* I holds the real index; J holds the imag index.  */
-+            j = i - sizeof(float64);
-+            i -= 2 * sizeof(float64);
-+
-+            e0 = *(float64 *)(vn + H1_2(i));
-+            e1 = *(float64 *)(vm + H1_2(j)) ^ neg_real;
-+            e2 = *(float64 *)(vn + H1_2(j));
-+            e3 = *(float64 *)(vm + H1_2(i)) ^ neg_imag;
-+
-+            if (likely((pg >> (i & 63)) & 1)) {
-+                *(float64 *)(vd + H1_2(i)) = float64_add(e0, e1, vs);
-+            }
-+            if (likely((pg >> (j & 63)) & 1)) {
-+                *(float64 *)(vd + H1_2(j)) = float64_add(e2, e3, vs);
-+            }
-+        } while (i & 63);
-+    } while (i != 0);
-+}
-+
- /*
-  * Load contiguous data, protected by a governing predicate.
-  */
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 4883de3fab..b1764f099b 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -3895,6 +3895,30 @@ DO_FPCMP(FACGT, facgt)
- 
- #undef DO_FPCMP
- 
-+static bool trans_FCADD(DisasContext *s, arg_FCADD *a, uint32_t insn)
-+{
-+    static gen_helper_gvec_4_ptr * const fns[3] = {
-+        gen_helper_sve_fcadd_h,
-+        gen_helper_sve_fcadd_s,
-+        gen_helper_sve_fcadd_d
-+    };
-+
-+    if (a->esz == 0) {
-+        return false;
-+    }
-+    if (sve_access_check(s)) {
-+        unsigned vsz = vec_full_reg_size(s);
-+        TCGv_ptr status = get_fpstatus_ptr(a->esz == MO_16);
-+        tcg_gen_gvec_4_ptr(vec_full_reg_offset(s, a->rd),
-+                           vec_full_reg_offset(s, a->rn),
-+                           vec_full_reg_offset(s, a->rm),
-+                           pred_full_reg_offset(s, a->pg),
-+                           status, vsz, vsz, a->rot, fns[a->esz - 1]);
-+        tcg_temp_free_ptr(status);
-+    }
-+    return true;
-+}
-+
- typedef void gen_helper_sve_fmla(TCGv_env, TCGv_ptr, TCGv_i32);
- 
- static bool do_fmla(DisasContext *s, arg_rprrr_esz *a, gen_helper_sve_fmla *fn)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index c725ee2584..e5f8f43254 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -725,6 +725,10 @@ UMIN_zzi        00100101 .. 101 011 110 ........ .....          @rdn_i8u
- # SVE integer multiply immediate (unpredicated)
- MUL_zzi         00100101 .. 110 000 110 ........ .....          @rdn_i8s
- 
-+# SVE floating-point complex add (predicated)
-+FCADD           01100100 esz:2 00000 rot:1 100 pg:3 rm:5 rd:5 \
-+                rn=%reg_movprfx
-+
- ### SVE FP Multiply-Add Indexed Group
- 
- # SVE floating-point multiply-add (indexed)
--- 
-2.17.1
+Unless these utility routines are needed in more than one .c
+file, I would suggest just putting them in the .c file where
+they're used (ie arm_gic.c).
 
+> +
+> +static inline bool gic_lr_entry_is_free(uint32_t entry)
+> +{
+> +    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
+> +        && (GICH_LR_HW(entry) || !GICH_LR_EOI(entry));
+> +}
+> +
+> +static inline bool gic_lr_entry_is_eoi(uint32_t entry)
+> +{
+> +    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
+> +        && !GICH_LR_HW(entry) && GICH_LR_EOI(entry);
+> +}
+
+These could usefully have brief comments, something like
+/* Return true if this LR is empty, ie the corresponding bit
+ * in ELRSR is set.
+ */
+
+and similarly for the other one with a comment referencing EISR.
+That makes it easier for the reader to understand where the
+expressions being tested come from in the spec.
+
+> +
+> +/* Return a pointer on the LR entry for a given (irq,vcpu) pair.
+> + * Having multiple LRs with the same VirtualID leads to UNPREDICTABLE
+> + * behaviour in the GIC. We choose to return the first one that matches.
+> + */
+> +static inline uint32_t *gic_get_lr_entry(GICState *s, int irq, int vcpu)
+> +{
+> +    int cpu = gic_get_vcpu_real_id(vcpu);
+> +    int lr_idx;
+> +
+> +    for (lr_idx = 0; lr_idx < s->num_lrs; lr_idx++) {
+> +        uint32_t *entry = &s->h_lr[lr_idx][cpu];
+> +
+> +        if ((GICH_LR_VIRT_ID(*entry) == irq) &&
+> +            (!gic_lr_entry_is_free(*entry))) {
+> +            return entry;
+> +        }
+> +    }
+> +
+> +    return NULL;
+> +}
+
+I found this function and its callers quite tricky to review for
+correctness. I looked ahead at the remaining patches and this is
+what I found:
+
+ * A lot of the places where we call this, we're doing it because
+we've already identified the LR entry we are working on, but
+instead of passing an LR index around (which is what the GICv3 code
+does), we pass an interrupt number, and then need to re-find the
+same LR entry later in order to answer questions like "which
+group is this virtual interrupt?"
+ * At the start of the major flow-of-execution paths we get
+a possibly-untrusted IRQ number from the guest and need to
+validate that it's OK
+
+These things don't necessarily want to be testing the same condition.
+
+The flows-of-execution in question are:
+
+(1) gic_complete_irq, ie write to EOI register
+(2) gic_deactivate_irq, ie write to DIR register
+(3) gic_get_current_pending_irq, ie read from HPPI register
+(4) gic_acknowledge_irq, ie read from IAR register
+
+1 and 2 should both be covered by the same validity test.
+You call gic_virq_is_valid() in gic_complete_irq(), but we
+must also call this in gic_deactivate_irq() -- DIR has the
+same "if interrupt not in list register, increment EOIcount"
+behaviour as the EOI register. Also, if we don't guard this
+then the guest can make us assert in gic_test_group() by writing
+a bogus value to DIR.
+
+3 and 4 both operate on the interrupt number obtained from
+current_pending[], which is filled in as a value from
+gic_get_best_virq().
+
+So we have three different cases where we're scanning the
+list registers:
+ (1) in gic_get_best_virq():  we pick an LR entry which has
+      STATE == PENDING (as your code does)
+ (2) in gic_virq_is_valid(): the GICv2 spec is not very clear here,
+ but the GICv3 equivalent code is in
+ hw/intc/arm_gicv3_cpuif.c:icv_find_active() and it just looks
+ for an LR with the right VINTID and the Active bit set
+ (matching the GICv3 pseudocode function FindActiveVirtualInterrupt).
+ Unless we know the GICv2 behaves differently here, I would go
+ with doing the same thing the GICv3 spec does.
+ (3) when we are trying to find again the LR which we initially
+ found via (1) or (2). Here I think we need to search for
+ STATE != INVALID and can assert that we find something.
+ (It's important that this check is at least the superset of
+ the checks from (1) and (2), so we don't pass the check in 1/2
+ and then assert here.)
+
+So I would suggest:
+ * gic_virq_is_valid() should look for just "right VINTID
+   and state is Active or Active&Pending (ie Active bit set)"
+ * gic_get_lr_entry() should look for "right VINTID and
+   state not Invalid", and do the assert(), ie don't have
+   a separate _nofail() function
+ * have a big comment explaining what's going on
+
+thanks
+-- PMM

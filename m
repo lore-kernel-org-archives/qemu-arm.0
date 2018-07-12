@@ -1,187 +1,231 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp318368wrq;
-        Wed, 11 Jul 2018 08:09:50 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdRNYjiSySdfDYa6TJ+W+Ywzg6UvsP86IVjpfsdRNOUWzE02U/H8NMiTYfJ7ny6CZZwmh1d
-X-Received: by 2002:a37:2121:: with SMTP id h33-v6mr26087331qkh.319.1531321790224;
-        Wed, 11 Jul 2018 08:09:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531321790; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1331560wrq;
+        Thu, 12 Jul 2018 05:55:13 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc2jogtMXxpd9/iWiJ+JoIHzTvCADT0yPXGo512FAp6SpDnGj+LozhuyFKEYTRqMzP9h7Ad
+X-Received: by 2002:a0c:a244:: with SMTP id f62-v6mr2188904qva.70.1531400113567;
+        Thu, 12 Jul 2018 05:55:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531400113; cv=none;
         d=google.com; s=arc-20160816;
-        b=AfsbKW8ofTMpYutINNVIMHsFEYTVXbCEsVIinq2cvmmBbrq9jvgwNm5GbWxyZru+Rm
-         xtoPJ6X35CKUCOUtElGqXP1NNopQzXwhsWRkSPN2VcXIu/BLslWr81m2o0uXwwUEZSpW
-         f83S7CQbTdV77tQSMLgwp22rbRkUDEF0+zlPt2Gj/eQbCUuSZO/Qt2aQ94Ok5v94jPVE
-         Lvh06L79uveNCa1RDlTbCvtfiuULxCA+6IYQI6LVxliCqqTolKk0usb34MVAvaIJ3W4F
-         fUoCkkuwysOYnjv+WaEsPpuuEspz0SW4Q+1z5LnKl5myS5Bp/IHQKwA2MnzTmL+A5CfV
-         7DTA==
+        b=Afx4XNPnnEMY5n9A50/ue6zcPAzcx3j0NAcFLWkXgBfLhfPHqCRJYDdDweNEKp0QKv
+         Mb03bL4qSkgInqjtfY5Ny4c47uWRDt93Vp+QIGykz9G37dgXV/Wfqgul1d0LfdDxd3Q3
+         muJ9yiHUTmSrA4FrvFIb3FXGX52ruQvLOZ1KOwTfbLMgYlbHmAhxjsr8WtYbwe1g/0Xa
+         gIJbUls3A2HzqV8+WhjbvynWikLRJT/i6nVpm8EOlvAHDD1RJ84gmiAlNN2U2Mj/apAN
+         2LtRQFaCUNc2Tb48mSyaOBgbESK0zc5UcXb2S+CUpltzTLqaSWiV+ErMXU3LqEytURJ8
+         XHJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=lVvTgCaMDFqxDWbCsUYUU7aGtmy+UrVomIkASFlUNIc=;
-        b=yxP/sFv1pI7Tg6qVWmnV7gzmAyt1Z7SZKoGDxaQy4KCXuPkzvEeyp7sDjTAO10gFaC
-         ivc8QMI0Hr90h1ykxjtQ7LgJWnqcicfDDEFrj+b6KCxEPmaPkvu4d/XNJXkXiHuQ9nV2
-         B71I4t8Dp/iUaaKAw1uF7TijNffOgMkF/2H3X4DRKSsd0UO4+UlHtNjb0a4XxYRj8fwf
-         FP1bbDTVVNXGok4wEpccbzgyUCntd2AjhuvN24ZBkQfSbODJ8OgHIGH0DUuv3Ld6LOhG
-         xWD3v9Vh3/5vdhgQAOJRcJHLWeGQkirup85Jom9Hb3/U7B7qOiCH6g5vBeyfB81HAnSG
-         GO4A==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=xn4S55vUqvjpthgFm4pkan1ncFeFeuG1L11duDV0OIQ=;
+        b=blmB3qDu0ZaNCBmhLiXmRjMgxqQ8HSQ7p8DoD3PzlojyDJAwbEf02HNKfd9KG2h/jv
+         RfATh31WtX7lLYeBqW7xsv+DzCGghR3neyXFp5/Jj1HAFcsc9VSxZbU2N4o9RLECEqoj
+         R7CzUTmuyHmknMM32EtotZQeaOAVy9ZUlbnHJ4u1sEM4faxF+m/pyayCt6e15rx07jsf
+         JoHerLpmdkC6KMFw7IK5ycqVKWJJzAa4RfA9vm/EFXg89byLZCwkRPXMLAfVoi+ML0CH
+         uKWoJihr7T3VaQ5FkPC2NhHfOy7fwhs6fWMLH20HeUNYCOKslyPFaQytD691ls77gVUf
+         vmcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GsSVrlqf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=bu0Hvhfb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a23-v6si2680476qtp.143.2018.07.11.08.09.50
+        by mx.google.com with ESMTPS id z5-v6si10011758qkl.2.2018.07.12.05.55.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 11 Jul 2018 08:09:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 12 Jul 2018 05:55:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GsSVrlqf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54286 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=bu0Hvhfb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59602 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdGkX-0002tF-Nf
-	for alex.bennee@linaro.org; Wed, 11 Jul 2018 11:09:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52420)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fdb7p-0007U5-3n
+	for alex.bennee@linaro.org; Thu, 12 Jul 2018 08:55:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fdGkO-0002qH-95
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 11:09:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fdb7X-0007Tb-UK
+	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 08:54:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fdGkN-00009z-5m
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 11:09:40 -0400
-Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:39135)
+	(envelope-from <peter.maydell@linaro.org>) id 1fdb7X-0002IF-2D
+	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 08:54:56 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34893)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fdGkH-00008X-Vj; Wed, 11 Jul 2018 11:09:34 -0400
-Received: by mail-qt0-x232.google.com with SMTP id q12-v6so21368019qtp.6;
-	Wed, 11 Jul 2018 08:09:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=lVvTgCaMDFqxDWbCsUYUU7aGtmy+UrVomIkASFlUNIc=;
-	b=GsSVrlqfViB0k3a4ZxOuHHrlAL2dcYiOeVK+tbNP5Rg+uZ6/z+35zKDB4Nk0Wlk4nD
-	srY34wmA8XM99hmLBTZZGW2V/rFF5o2x6BTanUN+FpuywL+UHHkQa96V2jkQyf2M7e59
-	iVMDtrK/9ARsBQsukvPDqiLz/UH4CSqHbIiEWXhQDbrp3Wg1VlYBYM5queG4DLW+CthW
-	hhJGlaAwMXcTTQXRbwNPiYKADi3lPRutoDL1N2zT+xY+ghbXp+0c3TfG9UGE/OlV/gYV
-	5p6P5tLc+frdGV9ViGwOGOby5nWik37OXNevmlGci4M6GRNLLZQAqhFeNjeAnAw+doN5
-	eboA==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fdb7W-0002I3-S8
+	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 08:54:54 -0400
+Received: by mail-oi0-x241.google.com with SMTP id i12-v6so55563970oik.2
+	for <qemu-devel@nongnu.org>; Thu, 12 Jul 2018 05:54:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=xn4S55vUqvjpthgFm4pkan1ncFeFeuG1L11duDV0OIQ=;
+	b=bu0HvhfbTjJi/0gG+q+P/hR/sEEciIaD5mPA7oZRiBp17GsoweGx0tpg7rqjX8FPHY
+	Z7OKElpN45Y5LWyI2kxa2f8zVBGjO0Mcinyjk4MRSk6yDXX3nJ3svFLulFB7aRRrrkZF
+	fWb/RU056NEepbMkB2VZVp9KMSc0FqnwoQJ1g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=lVvTgCaMDFqxDWbCsUYUU7aGtmy+UrVomIkASFlUNIc=;
-	b=umy/x1+aLbhCCYYZZ8xzzfWHwNrzTqjrPjfjl1tJlsxkqlo4GmPjP8sAJPSoLTpfcl
-	gq010RGFh+RUF4wx+UJfXIHLgHhZ313GcSBsqR//YIldD5aRPOmTopW6z15cpgGSRlfk
-	e1jNKFcwk/rLdnSPia/tAPsl1bKFSq/ZHutB1ELx2sBWyZu/IvgAcOSTViRgvPP0VWU1
-	b16wp/hrd2hjz7/pguuoyBsMDnk0L56aYpVPH2ijwcV52KAW5OECOmHvgmQhUHRPOuPP
-	uVcrh6+nMCmx7vqzmQfFOtqEgr7ccGP0ogVh3yyDn+wgDDigo9dq01BtTasjr2UAAL3X
-	cTjA==
-X-Gm-Message-State: APt69E129677993hbPkiKmYb2NCZWfhEoFvDy+tgekjx2XX1mCkYFge2
-	iRo60xxEnHEiHzWU7+El3n4=
-X-Received: by 2002:ac8:230b:: with SMTP id
-	a11-v6mr28633518qta.123.1531321773370; 
-	Wed, 11 Jul 2018 08:09:33 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	p14-v6sm6723727qtn.81.2018.07.11.08.09.29
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 11 Jul 2018 08:09:32 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-	<20180710160013.26559-7-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <a35204d3-1496-3b16-57c8-82bff18b8677@amsat.org>
-Date: Wed, 11 Jul 2018 12:09:25 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=xn4S55vUqvjpthgFm4pkan1ncFeFeuG1L11duDV0OIQ=;
+	b=tZxs7niI6Jpw9tPCCnc/6wazqJV0SRXRG8OmgSZ4UUscNsBgmPXJMKx4gjIF4pRp9S
+	l0lfB6iV0nxZzkkMugklIlHhbld3lFF0yEfuWNqHzVCT2G0tTpnYtxfgZFf32Ps3n3pU
+	BTXAxiUN6U5SIlIGJUG7C92Hkc6ncVmxQa6wgt3WlSW4iH9CZ+Jpbez6Bk9Idj6BeA1J
+	2B7IBBoLCBUhuxAR8oTReQPHAIrDio9UHksbYkgG+FTjvxpqQFavTV456+5hCRjf3k+p
+	cb6r+7hvehDnjN2yvwF76gw/2XwQwjynavHPZKPe0zo/lSas/PaIWjUVtfIh8FSayaiV
+	TNHg==
+X-Gm-Message-State: AOUpUlFFMPbv9p4u5ydM2s4ot68NzQH6KsR+SroBfZ+48Luk+G4PZKFo
+	akYBplr3UP6EdTQbTqtxfGcNXRCb5SlROCfLYHDEWw==
+X-Received: by 2002:aca:5f0a:: with SMTP id
+	t10-v6mr2031218oib.337.1531400094073; 
+	Thu, 12 Jul 2018 05:54:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180710160013.26559-7-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 05:54:33
+	-0700 (PDT)
+In-Reply-To: <20180629132954.24269-11-luc.michel@greensocs.com>
+References: <20180629132954.24269-1-luc.michel@greensocs.com>
+	<20180629132954.24269-11-luc.michel@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jul 2018 13:54:33 +0100
+Message-ID: <CAFEAcA_YxdvZGuBTKoMk+Wd4KP0LXfk1i+FvX-=3i=+aautRiA@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::232
-Subject: Re: [Qemu-arm] [PATCH 6/6] target/arm: Allow execution from small
- regions
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-devel] [PATCH v3 10/20] intc/arm_gic: Implement
+ virtualization extensions in gic_(activate_irq|drop_prio)
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org, KONRAD Frederic <frederic.konrad@adacore.com>,
-	"Emilio G . Cota" <cota@braap.org>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PL/wLRD/UvNm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u4+aEmC7rho8
 
-On 07/10/2018 01:00 PM, Peter Maydell wrote:
-> Now that we have full support for small regions, including execution,
-> we can remove the workarounds where we marked all small regions as
-> non-executable for the M-profile MPU and SAU.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
+> Implement virtualization extensions in gic_activate_irq() and
+> gic_drop_prio() and in gic_get_prio_from_apr_bits() called by
+> gic_drop_prio().
+>
+> When the current CPU is a vCPU:
+>   - Use GIC_VIRT_MIN_BPR and GIC_VIRT_NR_APRS instead of their non-virt
+>   counterparts,
+>   - the vCPU APR is stored in the virtual interface, in h_apr.
+>
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 > ---
->  target/arm/helper.c | 23 -----------------------
->  1 file changed, 23 deletions(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index a2ac96084e7..ed96e6c02fb 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -9784,17 +9784,6 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
->  
->      fi->type = ARMFault_Permission;
->      fi->level = 1;
-> -    /*
-> -     * Core QEMU code can't handle execution from small pages yet, so
-> -     * don't try it. This way we'll get an MPU exception, rather than
-> -     * eventually causing QEMU to exit in get_page_addr_code().
-> -     */
-> -    if (*page_size < TARGET_PAGE_SIZE && (*prot & PAGE_EXEC)) {
-> -        qemu_log_mask(LOG_UNIMP,
-> -                      "MPU: No support for execution from regions "
-> -                      "smaller than 1K\n");
-> -        *prot &= ~PAGE_EXEC;
-> -    }
->      return !(*prot & (1 << access_type));
+>  hw/intc/arm_gic.c | 45 ++++++++++++++++++++++++++++++++++++---------
+>  1 file changed, 36 insertions(+), 9 deletions(-)
+>
+> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+> index d55a88bb33..d61c2dd557 100644
+> --- a/hw/intc/arm_gic.c
+> +++ b/hw/intc/arm_gic.c
+> @@ -276,16 +276,23 @@ static void gic_activate_irq(GICState *s, int cpu, int irq)
+>       * and update the running priority.
+>       */
+>      int prio = gic_get_group_priority(s, cpu, irq);
+> -    int preemption_level = prio >> (GIC_MIN_BPR + 1);
+> +    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
+> +    int preemption_level = prio >> (min_bpr + 1);
+>      int regno = preemption_level / 32;
+>      int bitno = preemption_level % 32;
+> +    uint32_t *papr = NULL;
+>
+> -    if (gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
+> -        s->nsapr[regno][cpu] |= (1 << bitno);
+> +    if (gic_is_vcpu(cpu)) {
+> +        assert(regno == 0);
+> +        papr = &s->h_apr[gic_get_vcpu_real_id(cpu)];
+> +    } else if (gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
+> +        papr = &s->nsapr[regno][cpu];
+>      } else {
+> -        s->apr[regno][cpu] |= (1 << bitno);
+> +        papr = &s->apr[regno][cpu];
+>      }
+>
+> +    *papr |= (1 << bitno);
+> +
+>      s->running_priority[cpu] = prio;
+>      gic_set_active(s, irq, cpu);
 >  }
->  
-> @@ -10014,18 +10003,6 @@ static bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
->  
->      fi->type = ARMFault_Permission;
->      fi->level = 1;
-> -    /*
-> -     * Core QEMU code can't handle execution from small pages yet, so
-> -     * don't try it. This means any attempted execution will generate
-> -     * an MPU exception, rather than eventually causing QEMU to exit in
-> -     * get_page_addr_code().
-> -     */
-> -    if (*is_subpage && (*prot & PAGE_EXEC)) {
-> -        qemu_log_mask(LOG_UNIMP,
-> -                      "MPU: No support for execution from regions "
-> -                      "smaller than 1K\n");
-> -        *prot &= ~PAGE_EXEC;
-> -    }
->      return !(*prot & (1 << access_type));
+> @@ -296,12 +303,22 @@ static int gic_get_prio_from_apr_bits(GICState *s, int cpu)
+>       * on the set bits in the Active Priority Registers.
+>       */
+>      int i;
+> -    for (i = 0; i < GIC_NR_APRS; i++) {
+> -        uint32_t apr = s->apr[i][cpu] | s->nsapr[i][cpu];
+> +    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
+> +    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
+> +
+> +    for (i = 0; i < nr_aprs; i++) {
+> +        uint32_t apr;
+> +
+> +        if (gic_is_vcpu(cpu)) {
+> +            apr = s->h_apr[gic_get_vcpu_real_id(cpu)];
+> +        } else {
+> +            apr = s->apr[i][cpu] | s->nsapr[i][cpu];
+> +        }
+> +
+>          if (!apr) {
+>              continue;
+>          }
+> -        return (i * 32 + ctz32(apr)) << (GIC_MIN_BPR + 1);
+> +        return (i * 32 + ctz32(apr)) << (min_bpr + 1);
+
+Since GIC_VIRT_NR_APRS is always 1, I think that rather than
+merging the vcpu code into the loop here it would be clearer
+to just special case it at the top of the function:
+
+   if (gic_is_vcpu(cpu)) {
+       uint32_t apr = s->h_apr[gic_get_vcpu_real_id(cpu)];
+       if (apr) {
+           return ctz32(apr) << (GIC_VIRT_MIN_BPR + 1);
+       } else {
+           return 0x100;
+       }
+   }
+
+
+>      }
+>      return 0x100;
 >  }
->  
-> 
+> @@ -325,9 +342,19 @@ static void gic_drop_prio(GICState *s, int cpu, int group)
+>       * might not do so, and interrupts that should not preempt might do so.
+>       */
+>      int i;
+> +    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
+> +
+> +    for (i = 0; i < nr_aprs; i++) {
+> +        uint32_t *papr = NULL;
+> +
+> +        if (gic_is_vcpu(cpu)) {
+> +            papr = &s->h_apr[gic_get_vcpu_real_id(cpu)];
+> +        } else if (group) {
+> +            papr = &s->nsapr[i][cpu];
+> +        } else {
+> +            papr = &s->apr[i][cpu];
+> +        }
+>
+> -    for (i = 0; i < GIC_NR_APRS; i++) {
+> -        uint32_t *papr = group ? &s->nsapr[i][cpu] : &s->apr[i][cpu];
+>          if (!*papr) {
+>              continue;
+>          }
+
+Similarly here.
+
+thanks
+-- PMM

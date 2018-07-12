@@ -1,100 +1,100 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1366655wrq;
-        Thu, 12 Jul 2018 06:25:49 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdKC4nHlHOL97TlGE70gfEkVBhI+equXjfjTxu+cNiWME6sjrU9fuQrJikd94YwRmaG/Kqi
-X-Received: by 2002:ac8:3111:: with SMTP id g17-v6mr1730148qtb.312.1531401949643;
-        Thu, 12 Jul 2018 06:25:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531401949; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1378993wrq;
+        Thu, 12 Jul 2018 06:37:53 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcPgclt0qwLtSAmJ89X/yNcj9keWrTIGfI7fi5kQNTyLQ0sPJgbhngcUeD4Ji4DWheDNtK9
+X-Received: by 2002:a37:c3cf:: with SMTP id r76-v6mr1779185qkl.150.1531402673347;
+        Thu, 12 Jul 2018 06:37:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531402673; cv=none;
         d=google.com; s=arc-20160816;
-        b=xUKpeYdm7gdb3G2ZQ5gAqpcZPiV2JHfkyHysPqS6eBilg/btNtOBKcgLOHMm3W6m5/
-         paKz/PEV+xHbDgmgrWLIhCfnEVGOFs7XI9BMXm9ZRdyCH97gRGzvpEwGRCaF1DtWRaNr
-         gmmd4MKVUzOUnKxkEt12br5KU1d0QHgvGBhjAisKk6dZOPO9zNd/VBovqoSy7Y+61rX/
-         l49QoBvZkczv573E+S79ACLMyb5uHCeSCpEFGTXjdTLFL27Oepgy1GkaCrdWqurgGD9a
-         GetAcX5BhpWWfXA6qJc6xS/CW9TpniTNSY/92hKgKCkFs96F4PPAAK/GlRqJ0ImiNmCX
-         LaiQ==
+        b=l377FxWVeGgg7nu6jijRaYnfy3cVc9D7VZHyagtk5gr/7S/KxEMjdCmEQd84fFaodv
+         zuYcOFCx1w0dSt+Xyv1r6Mkx51e7QB9rDfpDcIooEOGtEeYMDGFemZg3nbFyXJ8el/st
+         WDzIv/0fb870gle5yxKrrOb0Zd8l4o5M6ogoWW/4vQ4gkqBx7HFXAHPgdWSKWUDV1W29
+         FgEdc24IcMBHJjFeYY/Ptwa7ROBa+h3+pfAxcYh9fhcia+0B4fGV99d+ujRKrkFalVkT
+         D0cuKNaTJypQouS+d4u+/oN74dAN+8hnbmpBC8EBJYnaM2xIH1GdIu9r3zlKvczwJQUV
+         rxqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=14cPvbyxfhwcdpD+CB+99Yxiyr9ZFEnRtsHSxt6T3sg=;
-        b=Ohxn/vaTMyMjxLcT6UMMPbiouX6dATOfVYIe0i3K4uedzyO4gJh8+gVV/llqdyfwBU
-         el9xaPMILMUWUuVbDrUulyVYTYRx1yzy148aqxVZjSQNt3OCAseN8kAENa4Cj+hC7M6x
-         2x4exXq80X04laqNPNu4qBGlrtONCQ0KNKrlWzv/paUEAFvcL7YVp7o1BcncMMVaWXQq
-         6EG7WmmY7nf/wXQwL/nqWYembiAB4rMqsrupdUdaijQ9yKxMciqPy6JlYVnkLM/DM9f+
-         eaO0X4fPdKXlU88HQJ0iFhsGKBMxHopOG8jy3Nr4xQkhmypQaMzWgjEXTTj635StjHOJ
-         GG9w==
+        bh=lubzPBMhWYqPENIm71oCYeBGYcOn/jD4wgscFCKwCGU=;
+        b=aF4EWCptAmNnfL0OoCbvu2KvH7n0ggpBvZjZfzjnZfUzt5YfW/ow2Y6lDXkJbCUZh6
+         e8znMnhw2rCUh7fx07xRaxaEbA8ghGHoYUg87DGQ+MBEHai/Ee5YWaTkpUodgjckJ7KV
+         0DDPAI9QkKSoCtoyFrcvu7Xrd7adxcbao6XFH1g6dwhQz6krdiuXPg5NqBk1Vd2o4y6L
+         OYLlMVWaf7T0w5GztUv/IeAJXynUEmrA/0s/04tm3wR3lTWNm0oFWPqjmcvDPkF0YHkQ
+         a26cSubZQwbs1vR7nZqXw8ONsLbFTWnLW2x9hHRpM1GPeo82MT24g/+EDQFzZGfSxxgL
+         wdRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KKyFPZLh;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RzQf+v8K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d17-v6si5187796qtl.194.2018.07.12.06.25.49
+        by mx.google.com with ESMTPS id q132-v6si98977qka.315.2018.07.12.06.37.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 06:25:49 -0700 (PDT)
+        Thu, 12 Jul 2018 06:37:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KKyFPZLh;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RzQf+v8K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59881 helo=lists.gnu.org)
+Received: from localhost ([::1]:60063 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdbbR-0001ZM-4L
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 09:25:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56321)
+	id 1fdbn6-0007h8-PX
+	for alex.bennee@linaro.org; Thu, 12 Jul 2018 09:37:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdbb1-0001LS-7R
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:25:24 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fdbmu-0007fP-Cq
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:37:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdbb0-0000Uc-74
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:25:23 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:42246)
+	(envelope-from <peter.maydell@linaro.org>) id 1fdbmt-0006CU-FM
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:37:40 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:42411)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdbaz-0000TH-UT
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:25:22 -0400
-Received: by mail-oi0-x241.google.com with SMTP id n84-v6so55722744oib.9
-	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 06:25:21 -0700 (PDT)
+	id 1fdbmt-0006Bd-8q
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 09:37:39 -0400
+Received: by mail-oi0-x244.google.com with SMTP id n84-v6so55797076oib.9
+	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 06:37:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=14cPvbyxfhwcdpD+CB+99Yxiyr9ZFEnRtsHSxt6T3sg=;
-	b=KKyFPZLhJ+IbUk1cXKClcGNiME1P1l2LriqdnB6wx8vlZo2+CE6mV/Ydp1SaAMEUWQ
-	rrJOGYeKBsrJaLFy/gRiwOOOtazmPNaqewqPwAAxiC+ZY0PoxrCsuPtvKb9TpjLrt+V/
-	kISbDRXDLKBPFrstnu1ZDVjINg9tGsZDErfUs=
+	:cc; bh=lubzPBMhWYqPENIm71oCYeBGYcOn/jD4wgscFCKwCGU=;
+	b=RzQf+v8KHxbf1ZnwxAy9mSeaiAZa19lqQQcH5UMYCRWecc1h61cAeg2H3OvXQSt4Fg
+	PWCXd9UtIceJ+Do7Nlg1BWM3sBvGLxn1CfjSrYMQSvE+Kyn2oh3q7xpPyw/0cyubqXpq
+	i351PyUYv3K9buCQGp5Zghm79oDmWrID9MWxo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=14cPvbyxfhwcdpD+CB+99Yxiyr9ZFEnRtsHSxt6T3sg=;
-	b=adGbkRR1wm0DrzEtZpnA6IGJkgT0h9iu7g/bOJN2pTbg90nahxRcOnWWuH6j6k4mxH
-	+AdPseHdSfix4K5V0D5q0NeoLo9wckDhDQ1vhr4jQ1JalcWJ/YmatNFUQa+6kdLluFXr
-	WDxyWPOj9FqeSbw7KV+q10yzjmxH6XZfOPzHUjM5/A1GdXLyknidVZHIWsmqaknaSo+V
-	vT69Z9b4ROc+M6pnlTuyF2fWeZX8v3W1dPus2uU9+6kjaHfFmiosfhGTOrmDahM7q4gY
-	EjeJqSYeKzb3AZqo9DnYI6MwkucUHBI4YEKJwlFJEmreYnBeU2VLW9sl2jWRur8UK8bh
-	7sRg==
-X-Gm-Message-State: AOUpUlE7IhMHdRxh9lV/12geIwYA8nFPffwVTb9BRn/69uT5IIZEGu7b
-	6Adf6CSUMh2wh11c6BkLCwwPkh/Q8gVxNGvIgc2Pew==
-X-Received: by 2002:aca:a982:: with SMTP id
-	s124-v6mr2452571oie.80.1531401921092; 
-	Thu, 12 Jul 2018 06:25:21 -0700 (PDT)
+	bh=lubzPBMhWYqPENIm71oCYeBGYcOn/jD4wgscFCKwCGU=;
+	b=ua24PclUITXkjP3xaUsle+x0Bww4Wlum0OvhNIHeEjk03icEIlsdGhw5ZzJARMtyR1
+	vK0KWNQdueXJEOvubA3/4Mef+Sv04eZ834iFyUbzI7PN7JeH6GYRRKmoEnHCJBcPE8IJ
+	JFg4xjhpNcB9mvGlTEujceJlbX1IQM/YDJXOp8/4UWZn5QYNgako1juEql1+sPjUBayn
+	nq182aP2IhUiy5G00rLnDW1hsT9rQyCUFzPmtbfZBepE1Rx7M6AlLL/O62ulOX/hSgw+
+	5VJW/3XCM0y8TpI7nDRiYpEjlpkhs/KAQ2MPiUJOZASKtSlAzcTCP9J5tUfC6E8MC0Gn
+	GhGA==
+X-Gm-Message-State: AOUpUlEcsqKqYwZZS9QZNuAZma2Ie/69GLpCT94rK0rlpQQt1vJ6G0m5
+	XZnzh///DopKz7HzFNGYn26nC4LGqJKS4JYTuJrcQg==
+X-Received: by 2002:aca:f409:: with SMTP id
+	s9-v6mr2557706oih.102.1531402658533; 
+	Thu, 12 Jul 2018 06:37:38 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 06:25:00
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 06:37:17
 	-0700 (PDT)
-In-Reply-To: <20180629132954.24269-14-luc.michel@greensocs.com>
+In-Reply-To: <20180629132954.24269-15-luc.michel@greensocs.com>
 References: <20180629132954.24269-1-luc.michel@greensocs.com>
-	<20180629132954.24269-14-luc.michel@greensocs.com>
+	<20180629132954.24269-15-luc.michel@greensocs.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jul 2018 14:25:00 +0100
-Message-ID: <CAFEAcA-h83Mf+fcquiFOrJiTAyROTt0LxbL_-dZ-mukk9iXQjA@mail.gmail.com>
+Date: Thu, 12 Jul 2018 14:37:17 +0100
+Message-ID: <CAFEAcA_R9zp7EBtFetH5Q1Dnzj-kjPzDKRsBAo9aVnMZ3PW0VA@mail.gmail.com>
 To: Luc Michel <luc.michel@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH v3 13/20] intc/arm_gic: Implement
- virtualization extensions in gic_cpu_(read|write)
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH v3 14/20] intc/arm_gic: Wire the vCPU
+ interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,85 +112,61 @@ Cc: Mark Burton <mark.burton@greensocs.com>,
 	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yiNnxwURkQAw
+X-TUID: zdVrUODX4QEg
 
 On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
-> Implement virtualization extensions in the gic_cpu_read() and
-> gic_cpu_write() functions. Those are the last bits missing to fully
-> support virtualization extensions in the CPU interface path.
+> Add the read/write functions to handle accesses to the vCPU interface.
+> Those accesses are forwarded to the real CPU interface, with the CPU id
+> being converted to the corresponding vCPU id (vCPU id = CPU id +
+> GIC_NCPU).
 >
-> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> ---
->  hw/intc/arm_gic.c | 20 +++++++++++++++-----
->  1 file changed, 15 insertions(+), 5 deletions(-)
+> As for the CPU interface, we create a base region for the vCPU interface
+> that fetches the current vCPU id using the current_cpu global variable, and
+> one mirror region per vCPU which maps to that specific vCPU id. This is
+> required by the GIC architecture specification.
+
+
+>  static void arm_gic_realize(DeviceState *dev, Error **errp)
+>  {
+>      /* Device instance realize function for the GIC sysbus device */
+> @@ -1531,7 +1590,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+>      }
 >
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index 434dc9c7b2..2b1fa280eb 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -1336,9 +1336,12 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
->      case 0xd0: case 0xd4: case 0xd8: case 0xdc:
->      {
->          int regno = (offset - 0xd0) / 4;
-> +        int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
+>      /* This creates distributor and main CPU interface (s->cpuiomem[0]) */
+
+Can we also update this comment to indicate what virt-related
+memory regions are being created?
+
+> -    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, NULL);
+> +    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, gic_virt_ops);
 >
-> -        if (regno >= GIC_NR_APRS || s->revision != 2) {
-> +        if (regno >= nr_aprs || s->revision != 2) {
->              *data = 0;
-> +        } else if (gic_is_vcpu(cpu)) {
-> +            *data = s->h_apr[gic_get_vcpu_real_id(cpu)];
->          } else if (gic_cpu_ns_access(s, cpu, attrs)) {
->              /* NS view of GICC_APR<n> is the top half of GIC_NSAPR<n> */
->              *data = gic_apr_ns_view(s, regno, cpu);
-> @@ -1352,7 +1355,7 @@ static MemTxResult gic_cpu_read(GICState *s, int cpu, int offset,
->          int regno = (offset - 0xe0) / 4;
->
->          if (regno >= GIC_NR_APRS || s->revision != 2 || !gic_has_groups(s) ||
-> -            gic_cpu_ns_access(s, cpu, attrs)) {
-> +            gic_cpu_ns_access(s, cpu, attrs) || gic_is_vcpu(cpu)) {
->              *data = 0;
->          } else {
->              *data = s->nsapr[regno][cpu];
-> @@ -1387,7 +1390,8 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
->                  s->abpr[cpu] = MAX(value & 0x7, GIC_MIN_ABPR);
->              }
->          } else {
-> -            s->bpr[cpu] = MAX(value & 0x7, GIC_MIN_BPR);
-> +            int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
-> +            s->bpr[cpu] = MAX(value & 0x7, min_bpr);
->          }
->          break;
->      case 0x10: /* End Of Interrupt */
-> @@ -1404,11 +1408,14 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
->      case 0xd0: case 0xd4: case 0xd8: case 0xdc:
->      {
->          int regno = (offset - 0xd0) / 4;
-> +        int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
->
-> -        if (regno >= GIC_NR_APRS || s->revision != 2) {
-> +        if (regno >= nr_aprs || s->revision != 2) {
->              return MEMTX_OK;
->          }
-> -        if (gic_cpu_ns_access(s, cpu, attrs)) {
-> +        if (gic_is_vcpu(cpu)) {
-> +            s->h_apr[gic_get_vcpu_real_id(cpu)] = value;
-> +        } else if (gic_cpu_ns_access(s, cpu, attrs)) {
->              /* NS view of GICC_APR<n> is the top half of GIC_NSAPR<n> */
->              gic_apr_write_ns_view(s, regno, cpu, value);
->          } else {
-> @@ -1423,6 +1430,9 @@ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
->          if (regno >= GIC_NR_APRS || s->revision != 2) {
->              return MEMTX_OK;
->          }
-> +        if (gic_is_vcpu(cpu)) {
-> +            return MEMTX_OK;
+>      /* Extra core-specific regions for the CPU interfaces. This is
+>       * necessary for "franken-GIC" implementations, for example on
+> @@ -1547,6 +1606,16 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+>                                &s->backref[i], "gic_cpu", 0x100);
+>          sysbus_init_mmio(sbd, &s->cpuiomem[i+1]);
+>      }
+> +
+> +    if (s->virt_extn) {
+
+...and a comment about what these regions are for.
+
+What requires these per-core regions anyway? There's no way to
+specify them in the device tree bindings for Linux, which AFAIK
+only cares about using the "vcpu i/f for this core" registers.
+I don't think the GIC-400 has these. (It does have per-cpu
+aliases of the GICH_* registers, but this patchset doesn't seem
+to implement those.)
+
+> +        for (i = 0; i < s->num_cpu; i++) {
+> +            memory_region_init_io(&s->vcpuiomem[i + 1], OBJECT(s),
+> +                                  &gic_vcpu_ops, &s->backref[i],
+> +                                  "gic_vcpu", 0x2000);
+> +            sysbus_init_mmio(sbd, &s->vcpuiomem[i + 1]);
 > +        }
->          if (!gic_has_groups(s) || (gic_cpu_ns_access(s, cpu, attrs))) {
->              return MEMTX_OK;
->          }
-> --
-> 2.17.1
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> +    }
+> +
+>  }
 
 thanks
 -- PMM

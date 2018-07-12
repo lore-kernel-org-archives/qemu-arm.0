@@ -1,71 +1,88 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1552734wrq;
-        Thu, 12 Jul 2018 09:17:06 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcVwrvufwNuFAPilerUqjDY9uUFQ+9WWKqZO96l4zoPUXEg4ForLYA1eoxCB1YKV+srHMcM
-X-Received: by 2002:a0c:f611:: with SMTP id r17-v6mr3135367qvm.103.1531412226734;
-        Thu, 12 Jul 2018 09:17:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531412226; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1558638wrq;
+        Thu, 12 Jul 2018 09:22:53 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcgZUG+T/baOZlmf0fotX3DgHyPoQIGysWgeqcYAQWw+pA5Kh3aLRnf/boOFT/ku2tqDajX
+X-Received: by 2002:ac8:f5b:: with SMTP id l27-v6mr2479256qtk.158.1531412573268;
+        Thu, 12 Jul 2018 09:22:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531412573; cv=none;
         d=google.com; s=arc-20160816;
-        b=apyyBbvN0VufUdDIIoVnnBOlMzWfdUEDOltFFRqK9bea7xCe/Q5XTJdNfSf7rwm9Q3
-         Q2Iea72LrXafr/5sdchOMy7BayYTMR7GK5UxxEjrnI86Im39BdGJguwBKOXFoWpyOvm+
-         BwgUj9e25CU+FBS8TUopmeMYHpoqJ38CSAUO4jymjkAn0CteM34uUpwirM4C4AmPAKfF
-         98uxx2TIqC+4p/HQzjzkRDx/S72qcGLPj9VuY6+D4+rvEF1+9iz2WXqW3Ze2H2EJrU4n
-         AJYzwfm6Gblj73/hXo6743PPBwsrtTWoQoMzUi9FiomH/IlDZbpE8qLRuuNIbM7M6ssh
-         1srQ==
+        b=z3/BfEiRmTaQrMR6Yk5bGtdksfp/mATYqwNemfiXFfcZO0yu3th9IYDmdHnXru6o6H
+         8iYTJt7Npv+gf25LjXt9ySkMaZtV9ryR0y55qQ/JGVY1yvi3DqP2EJqBDxbKPhc+fvrj
+         DHeWFNFC4xp4wF946DYWMn/7Qz+DAWHlNuGBYzIRv1XUSDcCeRtz+pojvDe6IdmuKHTg
+         JlExpFL638NOZABSOe2PcxMPrEqkMozcPl8zCaK4VsLoqbNlY/zJURbCX3OMXz+RCBLm
+         Z1klt70iZBuSdX1rCKwqo5JsL9FkXf1drH/0q8y4r3InPMfxcU5P+B6byQisJGohIhOh
+         NCNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=LHccKoNWfds0FlagWn3Ac/5nuRv0L9ewqUEkTAQobHE=;
-        b=qthoyAKLsKYjt37n7GeSvL21+I5D9z8wYLY5NrSc3MmB7NNhfqBHxUz3V30eax7KIJ
-         vHp5oRalIqMIs2tPDVReycIZ6Qc+UzLMKVNLBjx6v/XoPDAWx5S3PELmuavwNONBGSn+
-         uebFww5XeacXhUNiznFTdu5m+IeJ1nOWqwYFPz5dvueo4MgSkcl0wsrrnX86SF+aPiez
-         0A8OmnoqJ+U3P987xlaZNB7NZTKAJ12NkF/MrQBxQRtZaao/Wbe8bo1wei4scb/J7OvM
-         zxyLa4kPOE+mEqoatLaaRltf2CUY8pUWcrUsAcpD06sqs3vZvM9SKvN9ptUeY7vY3sGY
-         ugXQ==
+        bh=hi4UK8imtTgt8tO1cssvDHGjZnUeXDKoUoph0bC6hCk=;
+        b=uXzaBaS0qTa3KQzxDScNEqmCA213Tqvjbx2/fRH4bIXXEUUtup2CViMwRbKx57a2Uz
+         XSH/XUFfBPpn7wfh2CroM/ibWEYp7eNwFFRafVRoXX0SlEoV2gogeYrRxoFObPfybs24
+         VRocSl40XTWyQYx7WZb4plUY3ndsrUr4h9eYkeJ0gwreLLrc0GgNDy9UkpagXdHPmEGJ
+         ELGX4K98qeoKw92k6m93DrfDcc7guvJ0ga1iRyNtZ+oApfb0uCkuVUU6b+GWt5sBNcJ1
+         X5BcLI4YRn3MJL+v/W/SMTZe81TYFzwk2DtIht51nrXVuFqYok+Pn1ojTGKi+S6X8/gs
+         o83g==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Lv3589Yb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f132-v6si10540715qke.202.2018.07.12.09.17.06
+        by mx.google.com with ESMTPS id a10-v6si3291957qvk.39.2018.07.12.09.22.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 09:17:06 -0700 (PDT)
+        Thu, 12 Jul 2018 09:22:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Lv3589Yb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32899 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:32929 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdeHC-0004et-97
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 12:17:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52018)
+	id 1fdeMm-0007wc-Rg
+	for alex.bennee@linaro.org; Thu, 12 Jul 2018 12:22:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fdeGz-0004dp-1g
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 12:16:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fdeMa-0007v5-Gs
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 12:22:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fdeGv-0002Af-3c
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 12:16:53 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54038 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fdeGu-00026n-Uy; Thu, 12 Jul 2018 12:16:49 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6894B72632;
-	Thu, 12 Jul 2018 16:16:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-125.ams2.redhat.com
-	[10.36.116.125])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 299FC111AF0E;
-	Thu, 12 Jul 2018 16:16:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id DE63311385D6; Thu, 12 Jul 2018 18:16:40 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fdeMZ-000234-KS
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 12:22:40 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:43226)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fdeMZ-00022h-GN
+	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 12:22:39 -0400
+Received: by mail-oi0-x243.google.com with SMTP id b15-v6so56820022oib.10
+	for <qemu-arm@nongnu.org>; Thu, 12 Jul 2018 09:22:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=hi4UK8imtTgt8tO1cssvDHGjZnUeXDKoUoph0bC6hCk=;
+	b=Lv3589YbyLfmbXT+NrhwWVvCVqiJgQhYx+EEOyJ7Decgjjxte74zRaG/J7Dnm/AxVI
+	+bG4jP531wmtotD7NmituqxYLan8Sc2GatO/7VvMLfN7mCDtd/pkdAzxWFGgkrp9jvqu
+	GRt9FAWHssX/t5jPeAhfyEras5AeLrBSIDjAc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=hi4UK8imtTgt8tO1cssvDHGjZnUeXDKoUoph0bC6hCk=;
+	b=ONyPrPQv+ih1dkwXVoNGq9/2klPOWN1tMipVQcSglPrzjDz/IM+w7Ml85Z+TC1MF3y
+	S8n6+NA6heSoEJNglHOBNZxh5DwkNUEJrl0DGGS+n9bxsfWZjFIFmvq2wrwyHLvUGyS4
+	tXI/5630lyRGL8PWhL9lvAi6VQzJhTiiEucq/jsiCj0CucZdSJsi4PljZNCipQR1JHYX
+	krBsysl7tW9OTcOE2KJ2zg/adp25fStNhOuLBwPye1zEo1BOBC9d3rvMqqpVjsAr0slT
+	J0LDc2aXFJ060IdSlleUq8Eea8Q3Qwfc03OQYSupKVHDps1GeaNOlSly76bBXmILyLTQ
+	wC5A==
+X-Gm-Message-State: AOUpUlGuHunvmbB+zXUO0HvCFLrJ3fTFpao6RA0Aa1qHoFRIoKOkWnVz
+	7CLLBrLYfc/wshlDP2zMM8CtvQpQCg/v7EaVX8LfNQ==
+X-Received: by 2002:aca:ce0f:: with SMTP id
+	e15-v6mr3225381oig.13.1531412558808; 
+	Thu, 12 Jul 2018 09:22:38 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 09:22:18
+	-0700 (PDT)
+In-Reply-To: <87muuwo2dz.fsf@dusky.pond.sub.org>
 References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
 	<CAFEAcA-T_d2kEU+Pb72=pJQhpvqvN1owgi4RLNtNY=L4t_1Z2g@mail.gmail.com>
 	<5d0c7195-ffbf-1618-6106-ef6c82df3bd7@redhat.com>
@@ -75,24 +92,15 @@ References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
 	<CAFEAcA-3aBQPwiwDfZSjspiwv4L-U0LXBKaOQ2m+=OzhqRq3OQ@mail.gmail.com>
 	<87y3egmzem.fsf@dusky.pond.sub.org>
 	<6cc1c007-4bdf-2b8c-b0b0-d32979a56ecd@redhat.com>
-Date: Thu, 12 Jul 2018 18:16:40 +0200
-In-Reply-To: <6cc1c007-4bdf-2b8c-b0b0-d32979a56ecd@redhat.com> (Thomas Huth's
-	message of "Thu, 12 Jul 2018 17:25:20 +0200")
-Message-ID: <87muuwo2dz.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 12 Jul 2018 16:16:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 12 Jul 2018 16:16:42 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+	<87muuwo2dz.fsf@dusky.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jul 2018 17:22:18 +0100
+Message-ID: <CAFEAcA9g0Vu-cF50maC2cVrSffZA5F6AsoM5pz2XT09YKG4WHg@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/bcm283x: Fix crash with
  device_add bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,41 +114,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mRTVodJbVIUd
+X-TUID: KffhRSP/g+bx
 
-Thomas Huth <thuth@redhat.com> writes:
-
-> On 12.07.2018 14:06, Markus Armbruster wrote:
->> Peter Maydell <peter.maydell@linaro.org> writes:
->> 
->>> On 11 July 2018 at 17:12, Eduardo Habkost <ehabkost@redhat.com> wrote:
->>>> On Wed, Jul 11, 2018 at 09:21:48AM +0200, Thomas Huth wrote:
->>>>> Hm, ok, so how to continue here now? Shall we at least mark the
->>>>> bcm2836/7 devices with user_creatable=false, so that users can not crash
->>>>> their QEMU so easily with device_add? The problem with introspection via
->>>>> device-list-properties would still continue to exist, but I think that's
->>>>> less likely used in practice... otherwise we could still move the
->>>>> qdev_set_parent_bus() calls to the realize() function instead, and just
->>>>> add a big fat FIXME comment in front of the code block, so that we
->>>>> remember to clean that up one day...
->>>>
->>>> Crashing device-list-properties should be a blocker bug, IMO.
->> 
->> Seconded.
+On 12 July 2018 at 17:16, Markus Armbruster <armbru@redhat.com> wrote:
+> Thomas Huth <thuth@redhat.com> writes:
 >
-> Well, maybe I should then not suggest to add a hmp("info qtree") below
-> the hmp("info qom-tree") in test_one_device() of
-> tests/device-introspect-test.c ... otherwise we'll be quite busy in the
-> next weeks...
+>> On 12.07.2018 14:06, Markus Armbruster wrote:
+>>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>>
+>>>> On 11 July 2018 at 17:12, Eduardo Habkost <ehabkost@redhat.com> wrote:
+>>>>> On Wed, Jul 11, 2018 at 09:21:48AM +0200, Thomas Huth wrote:
+>>>>>> Hm, ok, so how to continue here now? Shall we at least mark the
+>>>>>> bcm2836/7 devices with user_creatable=false, so that users can not crash
+>>>>>> their QEMU so easily with device_add? The problem with introspection via
+>>>>>> device-list-properties would still continue to exist, but I think that's
+>>>>>> less likely used in practice... otherwise we could still move the
+>>>>>> qdev_set_parent_bus() calls to the realize() function instead, and just
+>>>>>> add a big fat FIXME comment in front of the code block, so that we
+>>>>>> remember to clean that up one day...
+>>>>>
+>>>>> Crashing device-list-properties should be a blocker bug, IMO.
+>>>
+>>> Seconded.
+>>
+>> Well, maybe I should then not suggest to add a hmp("info qtree") below
+>> the hmp("info qom-tree") in test_one_device() of
+>> tests/device-introspect-test.c ... otherwise we'll be quite busy in the
+>> next weeks...
+>
+> If we can't fix these bugs in time, we can bring back
+> cannot_destroy_with_object_finalize_yet, as Eduardo mentioned upthread.
+> Would be sad, but sad beats crash.
 
-If we can't fix these bugs in time, we can bring back
-cannot_destroy_with_object_finalize_yet, as Eduardo mentioned upthread.
-Would be sad, but sad beats crash.
+...but are they actually interesting crashes? Nobody is ever
+going to actually start emulation of an integratorcp machine and
+then try to add a bcm2837 device via the QMP interface, except
+if they're deliberately doing exhaustive testing. They're bugs,
+sure, but they're not bugs I can ever see any real user possibly
+tripping over, so we don't necessarily need to go to any
+particular lengths to fix them for 3.0 if that's painful.
+
+thanks
+-- PMM

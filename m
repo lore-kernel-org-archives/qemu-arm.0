@@ -1,85 +1,112 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp433608wrq;
-        Fri, 13 Jul 2018 01:39:19 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpclV7g8uapHiM9E2WABR8oeOmH3anVVecYpdXDwPXUEUmLZlt0s8DJU9xAp6gjfi8Zbaacb
-X-Received: by 2002:a0c:d24d:: with SMTP id o13-v6mr5827383qvh.210.1531471159283;
-        Fri, 13 Jul 2018 01:39:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531471159; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp543860wrq;
+        Fri, 13 Jul 2018 03:56:37 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeaTq9TVSwbeh9wt4JspbZHHRHoC04BINubc1pCV5lj1sciRe5LaABBUyz6HmYM1uc74vbd
+X-Received: by 2002:ac8:13c7:: with SMTP id i7-v6mr2614726qtj.134.1531479397601;
+        Fri, 13 Jul 2018 03:56:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531479397; cv=none;
         d=google.com; s=arc-20160816;
-        b=MaJaceT6DLSVVn9V9wad3j8dBGV+6k22JHD3cbN1IzFv5S6ahkSr6sNhgdrScUxUmz
-         fK2+O8nki5lX2EIn+Ltqucea/S8tbRtsSlVAGdI0vFBKEWuta5Qk6ZSgt7BnIzGZREBv
-         UVPAG/iXEyyQygxrp9SPyDmGik03gCNsiZndY6/l7zQWZYo9/VEnjFA2L0renU8g3Bal
-         2WszZHG1/FDw0rAJdqFQfFmaba6nzm5miSC4iN9zAoYEUrsAdeIClKc0zpkmVFipLxVh
-         FeK3q8SURTGeJbgA+bIj5Ze2leFysItFYaWnpbrR3rL3WHSpz6v7UpDXvFRSB7LPwIKc
-         Pq6A==
+        b=foEKhO35wFgsl3E0KPO+m4aXwBpcfN65O8O4s2lyz91BfDyiKPzeyZPDH83VBCbAdu
+         goJICTbga32/UfVYH8wYZ++kes52zX8FZ9n+J4X2tVIDHtXph7vWhH3Sdy3/ac+N0gLL
+         QF4VIgi0rSHUjnd2JeduZmIXgHOJ0cP6jLevYxC0RoR/YF0H+rnSP7Sv0Qpp3Car3qu6
+         xuxOa9MK+sfUbyaPLlfkQDwjIgrp5p6FLw6zdV5GyV5j6j4E+0FNHtljLxJX0Ano83eC
+         CqDUbOud6hE9CpHEMJxE3VgbN9saGYhiB2hxVZBgKda5rFg/FW6u91MqbuOe1DGX9m7L
+         ZkEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=TrrS7sJsA7x3hTLpL+wghUNF5G2qO2rKnjcI3zMxtf8=;
-        b=gUxRgTNTFFnVEn/mQytB/Lad16M9Vz2Nz39ApdgqK4psjUD2WrzRW2o2SGKmrsAelh
-         eeR7DNIPjnlqKnBjTb5Kw7IwcCCkwgs5z1JcmUUOt95jpUhdhmptneFwyf52Stoq5M9E
-         6507m9TCIuny9w5K972D7DOOEDXgMxxSrc/6OpI7RLcwa2MOY9+9novlMbGpj5qTZ9xN
-         1xaiIXmGnqmGuQ2t/27uzYfuSXgoilF7RQ7Vv0phrOu6mhvfgpjzW7FV/1QrhRFbAqRI
-         S9NBNPyTt6Rvt5iKd6fuU2FrzEfMpO+GGCP9BhN7VLt+0DWheSdLLQobunPDGRYqQ9YK
-         2+4g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=hNkspN8y6Az5qmOb83P6sKtdMRdvU7PJ73Mw4JKjp8k=;
+        b=x0eubvyd14zFt35u0Yvt0v6gG4MGSIab3kcSDlzMD5ENnkelgT5WMlz7BVwPIg4wi0
+         ZLMYgcKRmmCOOEKj9A7v+pHapX61cyQw+jPfVQzXSokWp+pfZ/w9tMhmTNjOkREALh8A
+         Qel4/peHqNFIK1dn5is8cJI62EHBa7UX01luYH6d5XGK4iFcZV+yME5pI8Q2sHs/3gXu
+         3XMxpShPNhe/WgPyQqb+jw1osTTKAUb1ejFvscucth2OMeZDrW8Zi1qWc3sZsf8ksGWg
+         v9NVyeYW24bEzwM7dpdZlGUr/o7VXgoJiK7QYLSi1HWsLBVf3MmiAcfVm2MYcy7LsySn
+         fDLg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AMVwFhO+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n19-v6si8309805qtp.63.2018.07.13.01.39.19
+        by mx.google.com with ESMTPS id i8-v6si3031380qtc.160.2018.07.13.03.56.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Jul 2018 01:39:19 -0700 (PDT)
+        Fri, 13 Jul 2018 03:56:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AMVwFhO+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35941 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36446 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdtbi-0002vy-N7
-	for alex.bennee@linaro.org; Fri, 13 Jul 2018 04:39:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40633)
+	id 1fdvkb-00014X-3X
+	for alex.bennee@linaro.org; Fri, 13 Jul 2018 06:56:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40661)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fdtRG-0002jW-Dc
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 04:28:31 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fdvkQ-00014L-5m
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 06:56:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fdtRA-0004v8-Kb
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 04:28:30 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42258 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fdtRA-0004uF-FM; Fri, 13 Jul 2018 04:28:24 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0AD4C8182D31;
-	Fri, 13 Jul 2018 08:28:24 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-70.ams2.redhat.com [10.36.116.70])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 578A12026D6B;
-	Fri, 13 Jul 2018 08:28:21 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	(envelope-from <richard.henderson@linaro.org>) id 1fdvkN-0000fM-5v
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 06:56:26 -0400
+Received: from mail-io0-x241.google.com ([2607:f8b0:4001:c06::241]:34435)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fdvkN-0000f2-0M
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 06:56:23 -0400
+Received: by mail-io0-x241.google.com with SMTP id l7-v6so30971936ioj.1
+	for <qemu-arm@nongnu.org>; Fri, 13 Jul 2018 03:56:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=hNkspN8y6Az5qmOb83P6sKtdMRdvU7PJ73Mw4JKjp8k=;
+	b=AMVwFhO+TgYGAHejr9y5mpCLnT+3jGrwaFt1yn+hy7iumiC9RO23EwsGHCSgTUWNjD
+	crtqY2xtC/PoHdO933V1XStoaMKItreIH8LJBNf6PXwx0sRJX/0nLuja3VDbFes9VVa+
+	vkQ6wT/JBvXv6CihzI7+SOC//H83ytYMfYW9M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=hNkspN8y6Az5qmOb83P6sKtdMRdvU7PJ73Mw4JKjp8k=;
+	b=B/HnRZcFJgbfWGjGKbswmKjzo2U4XM27mzav9QeljB+ewjw6kkLPkWYUbCrg3TD0Md
+	sENCv0GmEmw8M80J1Qd/a53gvTU7SNvrlEh6nddnvoa0gXgXD1/yuLuBCkg4JI655JKs
+	LEnQrM25/SDhLgPTNPEVsyRmNr+cJEd9rXBJelWjRVAA0GwrSfl4eZJZwrJzwebUG1Us
+	IDChsH0vDI5v/Je373ExJm/O9lxxSNgNncJeMpGKZcVTbO4pDCBS5N+tvtaA9xrlaqZH
+	3WU6whgj7yM5ZAtqXVZ3IjvofT8c9mTD1HQYkKyO+dCo58mVTPhTJ4qEKT/hyFzKGr2f
+	IrbA==
+X-Gm-Message-State: APt69E04QH+1lryiOxqSfV6EWyqUtmJm+nfk6VTUsSk9cLebVKQASp5I
+	OGXdgd6mwU+Cr9R6tYqd7Xx0mQ==
+X-Received: by 2002:a6b:c693:: with SMTP id
+	w141-v6mr30473757iof.79.1531479381901; 
+	Fri, 13 Jul 2018 03:56:21 -0700 (PDT)
+Received: from cloudburst.twiddle.net (mac5036d0.tmodns.net. [208.54.80.172])
+	by smtp.gmail.com with ESMTPSA id
+	l62-v6sm2291537ioa.14.2018.07.13.03.56.19
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 13 Jul 2018 03:56:21 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 13 Jul 2018 10:27:40 +0200
-Message-Id: <1531470464-21522-13-git-send-email-thuth@redhat.com>
-In-Reply-To: <1531470464-21522-1-git-send-email-thuth@redhat.com>
 References: <1531470464-21522-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Jul 2018 08:28:24 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Jul 2018 08:28:24 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v2 12/16] hw/arm/fsl-imx25: Fix introspection
- problem with the "fsl, imx25" device
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <453b2e89-9fa5-6bbf-9fdb-32f144949dd1@linaro.org>
+Date: Fri, 13 Jul 2018 05:56:16 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <1531470464-21522-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c06::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 00/16] Fix crashes with
+ introspection of ARM devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,89 +123,45 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>,
 	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O6wwKlP6Vsgt
+X-TUID: MdHEmrdWnxX2
 
-Running QEMU with valgrind indicates a problem here:
+On 07/13/2018 03:27 AM, Thomas Huth wrote:
+> v2:
+>  - Updated the first patch according to the review feedback from v1
+>  - Added more patches with additional fixes
+> 
+> Thomas Huth (16):
+>   qom/object: Add a new function object_initialize_child()
+>   hw/core/sysbus: Add a function for creating and attaching an object
+>   hw/arm/bcm2836: Fix crash with device_add bcm2837 on unsupported
+>     machines
+>   hw/arm/armv7: Fix crash when introspecting the "iotkit" device
+>   hw/cpu/a15mpcore: Fix introspection problem with the a15mpcore_priv
+>     device
+>   hw/display/xlnx_dp: Move problematic code from instance_init to
+>     realize
+>   hw/arm/xlnx-zynqmp: Fix crash when introspecting the "xlnx,zynqmp"
+>     device
+>   hw/arm/msf2-soc: Fix introspection problem with the "msf2-soc" device
+>   hw/cpu/a9mpcore: Fix introspection problems with the "a9mpcore_priv"
+>     device
+>   hw/arm/fsl-imx6: Fix introspection problems with the "fsl,imx6" device
+>   hw/arm/fsl-imx7: Fix introspection problems with the "fsl,imx7" device
+>   hw/arm/fsl-imx25: Fix introspection problem with the "fsl,imx25"
+>     device
+>   hw/arm/fsl-imx31: Fix introspection problem with the "fsl,imx31"
+>     device
+>   hw/cpu/arm11mpcore: Fix introspection problem with 'arm11mpcore_priv'
+>   hw/*/realview: Fix introspection problem with 'realview_mpcore' &
+>     'realview_gic'
+>   hw/arm/allwinner-a10: Fix introspection problem with 'allwinner-a10'
 
-echo "{'execute':'qmp_capabilities'} {'execute':'device-list-properties'," \
- "'arguments':{'typename':'fsl,imx25'}}" \
- "{'execute': 'human-monitor-command', " \
- "'arguments': {'command-line': 'info qtree'}}" | \
- valgrind -q aarch64-softmmu/qemu-system-aarch64 -M none,accel=qtest -qmp stdio
-[...]
-==26724== Invalid read of size 8
-==26724==    at 0x6190DA: qdev_print (qdev-monitor.c:686)
-==26724==    by 0x6190DA: qbus_print (qdev-monitor.c:719)
-[...]
+That is a great cleanup.
 
-Use the new sysbus_init_child_obj() to make sure that the objects are
-cleaned up correctly when the parent gets destroyed.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/fsl-imx25.c | 30 ++++++++++++++----------------
- 1 file changed, 14 insertions(+), 16 deletions(-)
 
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index 37056f9..bd07040 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -39,38 +39,36 @@ static void fsl_imx25_init(Object *obj)
- 
-     object_initialize(&s->cpu, sizeof(s->cpu), "arm926-" TYPE_ARM_CPU);
- 
--    object_initialize(&s->avic, sizeof(s->avic), TYPE_IMX_AVIC);
--    qdev_set_parent_bus(DEVICE(&s->avic), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "avic", &s->avic, sizeof(s->avic),
-+                          TYPE_IMX_AVIC);
- 
--    object_initialize(&s->ccm, sizeof(s->ccm), TYPE_IMX25_CCM);
--    qdev_set_parent_bus(DEVICE(&s->ccm), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "ccm", &s->ccm, sizeof(s->ccm), TYPE_IMX25_CCM);
- 
-     for (i = 0; i < FSL_IMX25_NUM_UARTS; i++) {
--        object_initialize(&s->uart[i], sizeof(s->uart[i]), TYPE_IMX_SERIAL);
--        qdev_set_parent_bus(DEVICE(&s->uart[i]), sysbus_get_default());
-+        sysbus_init_child_obj(obj, "uart[*]", &s->uart[i], sizeof(s->uart[i]),
-+                              TYPE_IMX_SERIAL);
-     }
- 
-     for (i = 0; i < FSL_IMX25_NUM_GPTS; i++) {
--        object_initialize(&s->gpt[i], sizeof(s->gpt[i]), TYPE_IMX25_GPT);
--        qdev_set_parent_bus(DEVICE(&s->gpt[i]), sysbus_get_default());
-+        sysbus_init_child_obj(obj, "gpt[*]", &s->gpt[i], sizeof(s->gpt[i]),
-+                              TYPE_IMX25_GPT);
-     }
- 
-     for (i = 0; i < FSL_IMX25_NUM_EPITS; i++) {
--        object_initialize(&s->epit[i], sizeof(s->epit[i]), TYPE_IMX_EPIT);
--        qdev_set_parent_bus(DEVICE(&s->epit[i]), sysbus_get_default());
-+        sysbus_init_child_obj(obj, "epit[*]", &s->epit[i], sizeof(s->epit[i]),
-+                              TYPE_IMX_EPIT);
-     }
- 
--    object_initialize(&s->fec, sizeof(s->fec), TYPE_IMX_FEC);
--    qdev_set_parent_bus(DEVICE(&s->fec), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "fec", &s->fec, sizeof(s->fec), TYPE_IMX_FEC);
- 
-     for (i = 0; i < FSL_IMX25_NUM_I2CS; i++) {
--        object_initialize(&s->i2c[i], sizeof(s->i2c[i]), TYPE_IMX_I2C);
--        qdev_set_parent_bus(DEVICE(&s->i2c[i]), sysbus_get_default());
-+        sysbus_init_child_obj(obj, "i2c[*]", &s->i2c[i], sizeof(s->i2c[i]),
-+                              TYPE_IMX_I2C);
-     }
- 
-     for (i = 0; i < FSL_IMX25_NUM_GPIOS; i++) {
--        object_initialize(&s->gpio[i], sizeof(s->gpio[i]), TYPE_IMX_GPIO);
--        qdev_set_parent_bus(DEVICE(&s->gpio[i]), sysbus_get_default());
-+        sysbus_init_child_obj(obj, "gpio[*]", &s->gpio[i], sizeof(s->gpio[i]),
-+                              TYPE_IMX_GPIO);
-     }
- }
- 
--- 
-1.8.3.1
-
+r~

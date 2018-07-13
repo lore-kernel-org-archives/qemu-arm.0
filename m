@@ -1,85 +1,133 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp436444wrq;
-        Fri, 13 Jul 2018 01:43:14 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfT9FmswHxhNE238UxOTLLObF31LmlTtx1DISIClgMza5vpRwkfOpI7O4SVruNI/m+Q2CHy
-X-Received: by 2002:a37:5641:: with SMTP id k62-v6mr4891728qkb.40.1531471394210;
-        Fri, 13 Jul 2018 01:43:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531471394; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp507689wrq;
+        Fri, 13 Jul 2018 03:12:54 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdgCQnOW/tU4x/hzwlaAH6/JTHt+s9BkCZCP9y2bUlt5hXbUXYZvDAmgAQamOB8XEJ7oels
+X-Received: by 2002:aed:3aa4:: with SMTP id o33-v6mr5182722qte.19.1531476774467;
+        Fri, 13 Jul 2018 03:12:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531476774; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8c1hCygkv/+FZUsI76WiBbQGUJ4S4iAEjcuagz72Vw2KC5XhnIx9ma4DvmxRhRG4X
-         vgzppZjTQI4Wzh4UDn3MeVkw1ka0HXs56J1w97kRK0pIitwmggDRY6AYmQb1zGGvVvbn
-         WVBJR60cNDtm0ett0Xsh2m5Jc1DFFchq6KlHYAcEitfZT07UVJFnJlvOtiJd/+/QyFQf
-         u0Lhi7nYeJnIT6EYpt0rTL4ya1/JlXvZhAYkk9iz48O1qphniHLZ9ZJuI6Mq+SqOZG+4
-         EBw1FnQkIHuq6ub9nUkExevS9D9nhPrsFMk55sH1l+ymm8aYZPGMZo2V9+Db/CdrD9oK
-         S5mg==
+        b=M+oIGvIc7GtPpMn+L/tsplRi2ixtOyZUnLxJzGOiU1jiX91GBVl3jd7eA5vJdZUReP
+         0AWbpyWZD3b55n7wm98RNhZh76f6PGZrveOTJEXN3H9lWAVdfilTc8wo0zf+twiw+vs9
+         l0sE/TsdHAOPHQyMyi/uN+OYfA0idCv1FIC9yOCe3KyXhGiQAzAPYS3Le2wt2kUM/wei
+         QpQUXYoIvEIdSg7LDITFkmpfFPVhxjl+3txEsRoj6E3JLL2guVuaZW+/EtbllojZzlob
+         xiBt4gUqlMRle4CZw2kPCtDysSVf9yuogubtJjTuxUlSAKJd6Vi4wlRQbPSTliUEXFmi
+         oxtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=QZLNt7MLqEf9TECzBN54JpuSME8DrfOA3jx7yFQU3rU=;
-        b=XotR109n0HV9TWSTbtBg0Pfo6XcGnV6/IJoPXcwwVMpJDhb2x3IE2gbAv/sIjcMIgR
-         bt41yJkei35nvpTzqezzj/nEGkBqCYAdZy+vNqSAT3U8ZXKypCvi5dpRWjUACtog6HLh
-         vH0ksPy0p7eTt0FymQaPxg4EpV1drSizcTsKC4EvztAcEeQw/oW5sry6uuc5tBQx1Ple
-         LtrrVBG31kVxPJ7TRq0+TTRv4gNXScd9fPQXIbL7WZ/IU3yTKDJJtusUgoRnGSB1Dvkj
-         EMcw+jkEq1tsq4gWjcYlKgSpEmdkS10OaSRyuT8/H+M0d41luz9MijhhNBpoO7jEstah
-         xaVA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :arc-authentication-results;
+        bh=ezadXkugNbS/va7RY3NHt9JfP/tF8aS26/pnvrdH+54=;
+        b=WjW/KqOt/2+Qfx2cVhDOnSd0gxO4uKR3McEMVk/4M7uJ3nAufK8ariZ4Xf9D2hTS0/
+         DvulRDVyGRJAKnGarMGynyaRBvqAx65tBV7gjai9inPoa2Mr/FJ7WfWwSp7bALlVDB1x
+         9hKB0V3E+Xr+GijVcZ4r9iobulVk6mPqwZl/F5VvSuTelVI9CBvEn5FDU0zxBb9f+gnb
+         J0LFQ3G0+HYW6F8HpOm2DTyaq5r1loQy7rAr19g+AJMncmAFy6bm4m4yWxLS5VG1mGTr
+         8eP+yRWgY8H6gr7BHuJboBPEJ390hWw5DTIEFFBpImli4xMhgm+XfPnix/0L8vztyLRt
+         hsSA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m32-v6si4188106qvg.182.2018.07.13.01.43.14
+        by mx.google.com with ESMTPS id 61-v6si56431qtf.322.2018.07.13.03.12.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Jul 2018 01:43:14 -0700 (PDT)
+        Fri, 13 Jul 2018 03:12:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35969 helo=lists.gnu.org)
+Received: from localhost ([::1]:36314 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdtfV-00065D-P8
-	for alex.bennee@linaro.org; Fri, 13 Jul 2018 04:43:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40713)
+	id 1fdv4H-0007YX-Uq
+	for alex.bennee@linaro.org; Fri, 13 Jul 2018 06:12:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60643)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fdtRN-0002rU-LN
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 04:28:38 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1fdv42-0007V9-O7
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 06:12:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fdtRM-0005Am-Ib
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 04:28:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42286 helo=mx1.redhat.com)
+	(envelope-from <pbonzini@redhat.com>) id 1fdv3x-0006UX-Pb
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 06:12:38 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57356 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fdtRM-0005AK-DP; Fri, 13 Jul 2018 04:28:36 -0400
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1fdv3x-0006UP-J4; Fri, 13 Jul 2018 06:12:33 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 067EE8182D31;
-	Fri, 13 Jul 2018 08:28:36 +0000 (UTC)
-Received: from thh440s.redhat.com (ovpn-116-70.ams2.redhat.com [10.36.116.70])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5323A2026D6B;
-	Fri, 13 Jul 2018 08:28:33 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 13 Jul 2018 10:27:44 +0200
-Message-Id: <1531470464-21522-17-git-send-email-thuth@redhat.com>
-In-Reply-To: <1531470464-21522-1-git-send-email-thuth@redhat.com>
-References: <1531470464-21522-1-git-send-email-thuth@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 1347F406F8A3;
+	Fri, 13 Jul 2018 10:12:33 +0000 (UTC)
+Received: from [10.36.117.240] (ovpn-117-240.ams2.redhat.com [10.36.117.240])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9ED142026D6B;
+	Fri, 13 Jul 2018 10:12:29 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+References: <1531409463-3843-1-git-send-email-thuth@redhat.com>
+	<1531409463-3843-2-git-send-email-thuth@redhat.com>
+	<20180712165224.GD31657@localhost.localdomain>
+	<224a0bbb-9dbb-87eb-9e9b-1c82923010b5@redhat.com>
+	<e034610d-9a1d-a8a5-ee92-b2e3f0ba2891@redhat.com>
+	<1b9c5145-881c-2385-6b91-a3c56ddcae2f@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <e9e3219f-abdd-2ef5-c7f7-50807b063b0c@redhat.com>
+Date: Fri, 13 Jul 2018 12:12:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <1b9c5145-881c-2385-6b91-a3c56ddcae2f@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Jul 2018 08:28:36 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 13 Jul 2018 08:28:36 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.7]);
+	Fri, 13 Jul 2018 10:12:33 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Fri, 13 Jul 2018 10:12:33 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v2 16/16] hw/arm/allwinner-a10: Fix introspection
- problem with 'allwinner-a10'
+Subject: Re: [Qemu-arm] [PATCH 1/5] qom/object: Add a new function
+ object_initialize_as_child()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,71 +139,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Markus Armbruster <armbru@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XItXEBFvgK8s
+X-TUID: MyZ7OgjEIVa2
 
-Valgrind complains:
+On 13/07/2018 09:57, Thomas Huth wrote:
+> Since we are in hard freeze already, I'd rather prefer to keep it
+> simple, without the variable args for now (we don't need them yet).
+> Especially since we can easily add them later when we need them,
+> changing the prototype from
+> 
+> void object_initialize_child(Object *parentobj, const char *propname,
+>                              void *childobj, size_t size,
+>                              const char *type, Error **errp);
+> 
+> to
+> 
+> void object_initialize_child(Object *parentobj, const char *propname,
+>                              void *childobj, size_t size,
+>                              const char *type, Error **errp, ...);
+> 
+> should not affect any of the existing caller sites later.
+> 
+> And yes, I think these functions should have "child" in their names, so
+> I'll continue with object_initialize_child now. Renaming
+> object_new_with_props to object_new_child also sounds like a good idea
+> to me, but that's something for the time when the hard freeze is over.
 
-echo "{'execute':'qmp_capabilities'} {'execute':'device-list-properties'," \
- "'arguments':{'typename':'allwinner-a10'}}" \
- "{'execute': 'human-monitor-command', " \
- "'arguments': {'command-line': 'info qtree'}}" | \
- valgrind -q aarch64-softmmu/qemu-system-aarch64 -M none,accel=qtest -qmp stdio
-[...]
-==32519== Invalid read of size 8
-==32519==    at 0x61869A: qdev_print (qdev-monitor.c:686)
-==32519==    by 0x61869A: qbus_print (qdev-monitor.c:719)
-==32519==    by 0x452B38: handle_hmp_command (monitor.c:3446)
-[...]
+It's true that we are in hard freeze, but now that I've noticed the
+parallel with object_new_with_props, it seems to me that making the
+functions subtly different (in naming or functionality) is just being
+sloppy.  A search-and-replace patch is acceptable for hard freeze if
+there is a good reason for it, and the rest is just copying code from
+object_new_with_props into the no-malloc version.  The variable
+arguments are handled simply by
 
-Use sysbus_init_child_obj() to fix the issue.
+    if (object_set_propv(obj, &local_err, vargs) < 0) {
+        goto error;
+    }
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/allwinner-a10.c | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+and another thing to do is
 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index c5fbc65..9da00f9 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -27,20 +27,19 @@ static void aw_a10_init(Object *obj)
- {
-     AwA10State *s = AW_A10(obj);
- 
--    object_initialize(&s->cpu, sizeof(s->cpu), "cortex-a8-" TYPE_ARM_CPU);
--    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
-+    object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
-+                            "cortex-a8-" TYPE_ARM_CPU, NULL);
- 
--    object_initialize(&s->intc, sizeof(s->intc), TYPE_AW_A10_PIC);
--    qdev_set_parent_bus(DEVICE(&s->intc), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "intc", &s->intc, sizeof(s->intc),
-+                          TYPE_AW_A10_PIC);
- 
--    object_initialize(&s->timer, sizeof(s->timer), TYPE_AW_A10_PIT);
--    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "timer", &s->timer, sizeof(s->timer),
-+                          TYPE_AW_A10_PIT);
- 
--    object_initialize(&s->emac, sizeof(s->emac), TYPE_AW_EMAC);
--    qdev_set_parent_bus(DEVICE(&s->emac), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "emac", &s->emac, sizeof(s->emac), TYPE_AW_EMAC);
- 
--    object_initialize(&s->sata, sizeof(s->sata), TYPE_ALLWINNER_AHCI);
--    qdev_set_parent_bus(DEVICE(&s->sata), sysbus_get_default());
-+    sysbus_init_child_obj(obj, "sata", &s->sata, sizeof(s->sata),
-+                          TYPE_ALLWINNER_AHCI);
- }
- 
- static void aw_a10_realize(DeviceState *dev, Error **errp)
--- 
-1.8.3.1
+    if (object_dynamic_cast(obj, TYPE_USER_CREATABLE)) {
+        user_creatable_complete(obj, &local_err);
+        if (local_err) {
+            object_unparent(obj);
+            goto error;
+        }
+    }
 
+which is included in object_new_with_propv.
+
+Thanks,
+
+Paolo

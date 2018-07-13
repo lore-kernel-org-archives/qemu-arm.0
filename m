@@ -1,134 +1,163 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1631717wrq;
-        Thu, 5 Jul 2018 06:52:53 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpd8tQG2OMzwwPmDSJ757ZcEP9HU2hUrsk87CfBZzYZ0AdVOxDZWD09kZPpbkyaMNAWWdn4e
-X-Received: by 2002:a0c:e80b:: with SMTP id y11-v6mr5231429qvn.10.1530798773052;
-        Thu, 05 Jul 2018 06:52:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1530798773; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1147675wrq;
+        Fri, 13 Jul 2018 14:48:20 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpf0nGNckjYlt18Lj1bGUOSyaNH4/j2npXIPlUJw/OzDKzSwlzE7S0XAimbYCYyXaeORwMqs
+X-Received: by 2002:a37:a24f:: with SMTP id l76-v6mr6738181qke.406.1531518500708;
+        Fri, 13 Jul 2018 14:48:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531518500; cv=none;
         d=google.com; s=arc-20160816;
-        b=OjWz5wtWcfCMR+KP8m6axPyHOPKNBnCGJWvJH9yyKmXj66hQoh85CLnQ6yUkjvrInR
-         /Tt/4nndWUzCUUY4kV2NyW+L+m7YRkwkrbGPY31pVN/nSYNToq1koODltZHBHoX7E1Rb
-         qZ1uE/IdHbot+np7UANfjC6ntb3FvIYF6wMNP728OPy1+PW58zzkTzi5F8vhw77SPuYs
-         ekMGX6uABT1rjBG+fzNyI/kP6E3+F5YtCySFnwA431XQGlvkmqLY6Bxb9V5FZ72TMrJF
-         vvchAsvAzO0ltMggrqY6Y8jiSLpRfDnz/5ir3JpkZdHTtIEXMpHHUHBa5btAbDssHetL
-         7waw==
+        b=N0AxaH7GIEi8c3r55xd72SmLEQ+MCHf3LUA26FK5S4DtqZ9dgpWlfl4qhPOij6OgnZ
+         noJMnszaCLAdqczE+iuAPT2M1Yoz5SrlYk7V2h3UnmswJE8nWu5wUCDjF0KxQL6a6A3K
+         KxAWTSZUlVXCfNK0ImLeJQRB5jGpBglwWWFYQ9Po7XRZrmY8Xj04RIsAbS4RXgBETqXD
+         wfVt0r0floeeXRR96AbSDG8c9J0Z+o6qEo5OHGwL9keyr3H2xwdTeEIhG94+qFuAKZwA
+         ACs64lbayMuer5MBwxu5xLnKHa6SwWSaDrQ5jgp6mZP6HdxXIKl/n8OtwF5sOVGaEsT8
+         gUgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=/wVFLNWhWJn1FZcSLKVRyIJmuWzN/r7mxUQ9T4Dx1r0=;
-        b=IlIH1/DrofJ70UOHsCU0YDvG6mEgX22PuZswJwU/wVhm+WxefyN12tRWREJg25sVAR
-         wvHFGLkBNwTzuhDFFJ0wZH9b+WmGG3lQMuE+gkTwIBuQ0C+LGDxtWFh5peKUqr/NPmvv
-         TKyB75caJrI974E7PUviRblNZqF1uN94/UDzJ7cS0C28sCn6BWSZ9MZNZXe7l8HMlP6f
-         cZboihRg+ottRb788PDDNdCE/Cxa7Cs63NbXf7e/lksl8qiNO1fJLFxVMqI7dcSs6Xzh
-         zJ/yksxIb5WD46HgoXyoBKp1o0KdnO7lsIQcO29hFS3xdoAZDSAGRfMChnOm/xqhOl3+
-         /tYg==
+        bh=b2W/+vmFvsL5EXBmls93mOdna1fMwDhRCTXs8I/PMvA=;
+        b=jvWcvTYucy+68KNz/EkvnA6yqym7E9jesiV8aPl2TQ/eiLs508s3lLbfuW0gf5uRCH
+         vtNVey3bN0ljyQfo6a4UsajqOUGxkoYy7Vgc6/f1i25d+ICo9rNsCz1T+URKMT98tvs5
+         B6FWrnheiEjSbMyGLMMPOp03ez4j5i7H1L1D4VK0wS+OF98C5ER9K9DGd7lZmatqeunx
+         iFP1+y69PULHzWs4QvpSMv0nTqXQsBa8RCxuM0elhN8fMTEsiAUCovjXEkLwixDb4D+M
+         P3ac8+ojvqo5JGfi0qUZa6vesTFruuFXYg8s8u631IJVpUynpTHJeYgcxl6FAyZ2ND4j
+         4PzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M5UCqDNj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k42-v6si5633784qvk.74.2018.07.05.06.52.52
+        by mx.google.com with ESMTPS id v72-v6si5368882qka.308.2018.07.13.14.48.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 05 Jul 2018 06:52:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 13 Jul 2018 14:48:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=M5UCqDNj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52926 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39274 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fb4gm-000836-EC
-	for alex.bennee@linaro.org; Thu, 05 Jul 2018 09:52:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52085)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fe5vI-0003U9-6H
+	for alex.bennee@linaro.org; Fri, 13 Jul 2018 17:48:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fb4f0-00073t-6g
-	for qemu-devel@nongnu.org; Thu, 05 Jul 2018 09:51:03 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1fe5v5-0003Sz-4k
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 17:48:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fb4ey-00084P-Kq
-	for qemu-devel@nongnu.org; Thu, 05 Jul 2018 09:51:02 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:39832)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fb4ey-00083F-FO
-	for qemu-devel@nongnu.org; Thu, 05 Jul 2018 09:51:00 -0400
-Received: by mail-oi0-x243.google.com with SMTP id d189-v6so16975862oib.6
-	for <qemu-devel@nongnu.org>; Thu, 05 Jul 2018 06:51:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=/wVFLNWhWJn1FZcSLKVRyIJmuWzN/r7mxUQ9T4Dx1r0=;
-	b=M5UCqDNjr2Cbn7M1j+28p8d8ndIsD7oyo5SOLoGa6J3Ilyfw2yyiDwoXV1cdUh598J
-	0+4ecqVtgOQujKtmrbtTjQWztUFqggJoIWKNqkWgCt/YoBgu2GpZHrYoXijvAziRY9TL
-	Xz4h40/LREfr1w2u2yfi7F4a1weSJwSxoMZ8s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=/wVFLNWhWJn1FZcSLKVRyIJmuWzN/r7mxUQ9T4Dx1r0=;
-	b=cbZcQFVxRxUr6DyuzyOhUC4AU8A9CoAkjwi2Q05MSus7nqxFrIQGiCVJdoO7EN9mb2
-	VQFtBntgZuRj85DbbPLfDK5Hp7zspaBpCtfW4MdD3a5RKXI46JpgCousYN6GvC19VSr0
-	jm37EtU2YafriUnhphA62atC8hOuvs3aPqxVK5rrz3l+assngneBydEaI0Zf4GaOXVdo
-	8HpnFVvp3y4e07FVgsnhvGGvOO5tzdZvF+2VrrK/HULh6ECcj8ESCLrF6J/XzpwvBonU
-	NJFoDIxjuyqS06eiFT6CJ7lRb+UAGI2l0gIQLwLxCtt3VlaD+/C8EhrvJAOKJNnChy/V
-	of7g==
-X-Gm-Message-State: APt69E0W5oe0MvK49zTAnm0KSDFzh0E4tinTa/vN0Uh4h4ATw6R0Xnon
-	0kXf77cTdH3RBV6lVKlZ1EuK4qpNqxlOnvdekRDK/Q==
-X-Received: by 2002:aca:ce0f:: with SMTP id
-	e15-v6mr7173216oig.13.1530798659827; 
-	Thu, 05 Jul 2018 06:50:59 -0700 (PDT)
+	(envelope-from <ehabkost@redhat.com>) id 1fe5v2-0006K8-2t
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 17:48:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49796)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1fe5v1-0006Jd-Rz; Fri, 13 Jul 2018 17:48:03 -0400
+Received: from smtp.corp.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com
+	[10.5.11.26])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0BA064E8BF;
+	Fri, 13 Jul 2018 21:48:03 +0000 (UTC)
+Received: from localhost (ovpn-116-12.gru2.redhat.com [10.97.116.12])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8B40330012C2;
+	Fri, 13 Jul 2018 21:48:02 +0000 (UTC)
+Date: Fri, 13 Jul 2018 18:48:01 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20180713214801.GX31657@localhost.localdomain>
+References: <1531470464-21522-1-git-send-email-thuth@redhat.com>
+	<1531470464-21522-6-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:554d:0:0:0:0:0 with HTTP;
-	Thu, 5 Jul 2018 06:50:39 -0700 (PDT)
-In-Reply-To: <94f26745-00a2-eb8d-f6d9-d9ad4829214e@redhat.com>
-References: <1530775623-32399-1-git-send-email-eric.auger@redhat.com>
-	<CAFEAcA8YkDgJgr5Mgv4PgpmhQDpr+61hfaxmpnQWGXocEawxdg@mail.gmail.com>
-	<94f26745-00a2-eb8d-f6d9-d9ad4829214e@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Jul 2018 14:50:39 +0100
-Message-ID: <CAFEAcA_nPNaEAOcYFQQ1Vxw1E9B4WuZitj1AQSMCQ4qvqZMcMw@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-devel] [PATCH for 3.0] hw/arm/smmu-common: Fix devfn
- computation in smmu_iommu_mr
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1531470464-21522-6-git-send-email-thuth@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 13 Jul 2018 21:48:03 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 05/16] hw/cpu/a15mpcore: Fix introspection
+ problem with the a15mpcore_priv device
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Eric Auger <eric.auger.pro@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YpgaFuMyOqVX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cGbJgNIPU7ah
 
-On 5 July 2018 at 14:30, Auger Eric <eric.auger@redhat.com> wrote:
-> Hi Peter,
->
-> On 07/05/2018 02:56 PM, Peter Maydell wrote:
->> Is there a reason I missed why we don't just define the struct
->> to have
->>   SMMUDevice *pbdev[SMMU_PCI_DEVFN_MAX];
->
-> I don't see any reason either. This code is inherited from
-> hw/i386.intel_iommu.c vtd_find_add_as() which does the same allocation
-> and I cannot find any reason out there either. This is not a
-> justification though ;-)
->
-> Can I fix it in 3.1 or do you want me to fix it for 3.0?
+On Fri, Jul 13, 2018 at 10:27:33AM +0200, Thomas Huth wrote:
+> There is a memory management problem when introspecting the a15mpcore_priv
+> device. It can be seen with valgrind when running QEMU like this:
+> 
+> echo "{'execute':'qmp_capabilities'} {'execute':'device-list-properties'," \
+>  "'arguments':{'typename':'a15mpcore_priv'}}"\
+>  "{'execute': 'human-monitor-command', " \
+>  "'arguments': {'command-line': 'info qtree'}}"  | \
+>  valgrind -q aarch64-softmmu/qemu-system-aarch64 -M none,accel=qtest -qmp stdio
+> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 12, "major": 2},
+>  "package": "build-all"}, "capabilities": []}}
+> {"return": {}}
+> {"return": [{"name": "num-cpu", "type": "uint32"}, {"name": "num-irq",
+>  "type": "uint32"}, {"name": "a15mp-priv-container[0]", "type":
+>   "child<qemu:memory-region>"}]}
+> ==24978== Invalid read of size 8
+> ==24978==    at 0x618EBA: qdev_print (qdev-monitor.c:686)
+> ==24978==    by 0x618EBA: qbus_print (qdev-monitor.c:719)
+> [...]
+> 
+> Use the new sysbus_init_child_obj() function to make sure that we get
+> the reference counting of the child objects right.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/cpu/a15mpcore.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
+> index bc05152..43c1079 100644
+> --- a/hw/cpu/a15mpcore.c
+> +++ b/hw/cpu/a15mpcore.c
+> @@ -35,15 +35,13 @@ static void a15mp_priv_initfn(Object *obj)
+>  {
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>      A15MPPrivState *s = A15MPCORE_PRIV(obj);
+> -    DeviceState *gicdev;
+>  
+>      memory_region_init(&s->container, obj, "a15mp-priv-container", 0x8000);
+>      sysbus_init_mmio(sbd, &s->container);
+>  
+> -    object_initialize(&s->gic, sizeof(s->gic), gic_class_name());
+> -    gicdev = DEVICE(&s->gic);
+> -    qdev_set_parent_bus(gicdev, sysbus_get_default());
+> -    qdev_prop_set_uint32(gicdev, "revision", 2);
+> +    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
+> +                          gic_class_name());
+> +    qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
 
-3.1 is fine.
+I assume qdev_set_parent_bus() won't trigger any code that looks
+at "revision", so the prop_set/set_parent_bus ordering change
+won't matter.
 
-thanks
--- PMM
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+
+-- 
+Eduardo

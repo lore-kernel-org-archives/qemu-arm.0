@@ -1,87 +1,87 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1123537wrq;
-        Fri, 13 Jul 2018 14:16:50 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcs7iNBhJDPvMHoeWq1s4zczaesK96RnG1jj2+V9P9L9Pu0yjwgB/csLxrMtqtWsK+Oa3U1
-X-Received: by 2002:aed:2686:: with SMTP id q6-v6mr7399215qtd.199.1531516610531;
-        Fri, 13 Jul 2018 14:16:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531516610; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1124488wrq;
+        Fri, 13 Jul 2018 14:18:03 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfLDsX9lJNFV4ROiS8Gkiv6LyE8Z4DOb1S3lnihWG07eN9aIZd8Ie4NKvGLnwLxMa/EFGTt
+X-Received: by 2002:ac8:5393:: with SMTP id x19-v6mr7182883qtp.402.1531516683867;
+        Fri, 13 Jul 2018 14:18:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531516683; cv=none;
         d=google.com; s=arc-20160816;
-        b=LTtC7gH8tNOEMzgbodbP7bIvG18XzCSXRS97O4gblNIBt+H3vCHaV1cfnGbd2SkRRR
-         nzVGTo6Z43ezdeM8MZxsa29GeZDY+rtF96xSKm3tQttW1J9sQiMwZCcVVXw9eiFZC8EN
-         94sXTUeFd5DRRk3Ew86pwxaHoctCnnzI4iXNcekq1yL92+WgOaB94RG69fi56zvG+BNs
-         SXpxEXURTACGf1TjLcHwiTAqTAVGItBL9A9xRoulC0L/tff6Lsk/pU/SM2iKXOnNBQwj
-         NIjJe601ocuQgqn+Y9rAU+HAYQ0si8Iy9BSCLgH994Eb2+kA3Qs9jDtrpGQOGg1DNKOG
-         XhGA==
+        b=oYFtYr5O0Km0iNfILYFhHN6BBs5yvPXJ6QjOXZEK6i3yWjc+K/PgAtgN/FCf2gh/ic
+         fee7OydmbiAskGT/GK/WP9p3gxkK14pR5UmSnLdbKKB5E/zeHv2RNnxjxc91IjKxWMhO
+         AsqnOFa15HbvICYe3KaxSPRIXZLg0q+Yf6UASD01AgSfFC6UXsptH7nNlTdyKP9tEPtw
+         5F7fbaztypsZpSrRQ8/Ns3ZGVGobeb8ndlsDOaF3fwC0bfR4P1L6c9AaikOrlS+7UI+0
+         usoZlUXvSVUHcVjNDvTEE0GPLOyBgrkY6cE4jlnALlnCne034xyei7rvgSCTcvw7/P/+
+         zkcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=jm1xvYuS04qE07FS9NfyTZn1/7Sj1/c0Vuh4rCe+Iuc=;
-        b=n+fu2cWCGpchE9at0ADowfuTQFbk6BeV8TquFOJAHutsEMn77oZCqPyez1G3X47IKd
-         2PkKxhh+dGW1JVlJD/LceXZS08hZ2J5ELdVUCU2MHUHsmClMpCCbVAqXIsh5DfXnr49n
-         MjxCTdCpCms8mURIaa8TqBx141LL7y8EhZz9meFmsscNU/idQX3OB1zLqEWYrjvzw+dj
-         jM4R8mEVLL4yuNSmQ7SWWsiUA5WlbVAVGxtPYVeHPKZKVhqEi2YA7OeIFzTfTDoCgcxr
-         nwYKzfqOQ043xTANsMN+qTgUsfMCr6OI9Js/vNmXB777KwjYRE5z0RYdGYjbDIHM02Ll
-         2gyQ==
+        bh=QQq5KoZH/ZZn951znuZi0T0iNfr32dSF9WD3UmsHWiI=;
+        b=XFX8JLpKHR37eD2G8bZC08X3ID734f7DU0tapgR/GtPhqakqie/oqj0PjDpmwaEaTx
+         NpTM6p5gy5zgmA1Z+N8HqpQ30hjwtKQl4ZOPA+ex35/0A1sZ+RFl3NrG5/Dk8jUOdpgV
+         ifDMBS6ysAPrJiO+2yAdL4DVGGyAST7oDmofCIgb+xCc+SfHjiVIn2xz8DYdjfrkK6uH
+         M8nHjDO/TtTSSFwEBewvy90V0y159M6WT34Wx5JuDb0t+ftjzCaQwvNf34Ac495Tg+ZL
+         abXvH0Sa/uZ3rsMZ1PhsmFU58j1gSPj64ld8J4sfKPME3476NMtqlHTVQ3/wBj5Be1fH
+         tYHg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d195-v6si12636882qke.83.2018.07.13.14.16.50
+        by mx.google.com with ESMTPS id y125-v6si1275045qke.391.2018.07.13.14.18.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Jul 2018 14:16:50 -0700 (PDT)
+        Fri, 13 Jul 2018 14:18:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39199 helo=lists.gnu.org)
+Received: from localhost ([::1]:39202 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fe5Qo-00053A-0a
-	for alex.bennee@linaro.org; Fri, 13 Jul 2018 17:16:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47304)
+	id 1fe5Rz-0005Ym-85
+	for alex.bennee@linaro.org; Fri, 13 Jul 2018 17:18:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47551)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fe5Qh-000533-UB
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 17:16:44 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1fe5Rl-0005XB-EN
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 17:17:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fe5Qe-0003mT-PT
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 17:16:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42870)
+	(envelope-from <ehabkost@redhat.com>) id 1fe5Rf-0004OP-4k
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 17:17:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55432)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1fe5Qe-0003m0-G9; Fri, 13 Jul 2018 17:16:40 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1fe5Re-0004O3-Uh; Fri, 13 Jul 2018 17:17:43 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F30D432B674;
-	Fri, 13 Jul 2018 21:16:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1D5FF307D856;
+	Fri, 13 Jul 2018 21:17:42 +0000 (UTC)
 Received: from localhost (ovpn-116-12.gru2.redhat.com [10.97.116.12])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 37EE119489;
-	Fri, 13 Jul 2018 21:16:38 +0000 (UTC)
-Date: Fri, 13 Jul 2018 18:16:36 -0300
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9AA5C5D761;
+	Fri, 13 Jul 2018 21:17:41 +0000 (UTC)
+Date: Fri, 13 Jul 2018 18:17:40 -0300
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Thomas Huth <thuth@redhat.com>
-Message-ID: <20180713211636.GS31657@localhost.localdomain>
+Message-ID: <20180713211740.GT31657@localhost.localdomain>
 References: <1531470464-21522-1-git-send-email-thuth@redhat.com>
-	<1531470464-21522-2-git-send-email-thuth@redhat.com>
+	<1531470464-21522-3-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1531470464-21522-2-git-send-email-thuth@redhat.com>
+In-Reply-To: <1531470464-21522-3-git-send-email-thuth@redhat.com>
 X-Fnord: you can see the fnord
 User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 13 Jul 2018 21:16:39 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.48]);
+	Fri, 13 Jul 2018 21:17:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 01/16] qom/object: Add a new function
- object_initialize_child()
+Subject: Re: [Qemu-arm] [PATCH v2 02/16] hw/core/sysbus: Add a function for
+ creating and attaching an object
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,62 +102,53 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +W0optLgEXT8
+X-TUID: AK6XdT8ZHJU8
 
-On Fri, Jul 13, 2018 at 10:27:29AM +0200, Thomas Huth wrote:
-> A lot of code is using the object_initialize() function followed by a call
-> to object_property_add_child() to add the newly initialized object as a child
-> of the current object. Both functions increase the reference counter of the
-> new object, but many spots that call these two functions then forget to drop
-> one of the superfluous references. So the newly created object is often not
-> cleaned up correctly when the parent is destroyed. In the worst case, this
-> can cause crashes, e.g. because device objects are not correctly removed from
-> their parent_bus.
-> 
-> Since this is a common pattern between many code spots, let's introdcue a
-> new function that takes care of calling all three required initialization
-> functions, first object_initialize(), then object_property_add_child() and
-> finally object_unref().
-> 
-> And while we're at object.h, also fix some copy-n-paste errors in the
-> comments there ("to store the area" --> "to store the error").
+On Fri, Jul 13, 2018 at 10:27:30AM +0200, Thomas Huth wrote:
+> A lot of functions are initializing an object and attach it immediately
+> afterwards to the system bus. Provide a common function for this, which
+> also uses object_initialize_child() to make sure that the reference
+> counter is correctly initialized to 1 afterwards.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  include/qom/object.h | 23 +++++++++++++++++++++--
->  qom/object.c         | 15 +++++++++++++++
->  2 files changed, 36 insertions(+), 2 deletions(-)
+>  hw/core/sysbus.c    | 8 ++++++++
+>  include/hw/sysbus.h | 3 +++
+>  2 files changed, 11 insertions(+)
 > 
-> diff --git a/include/qom/object.h b/include/qom/object.h
-> index f3d2308..3362db0 100644
-> --- a/include/qom/object.h
-> +++ b/include/qom/object.h
-> @@ -749,6 +749,25 @@ int object_set_propv(Object *obj,
->  void object_initialize(void *obj, size_t size, const char *typename);
+> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+> index ecfb0cf..e2436ce 100644
+> --- a/hw/core/sysbus.c
+> +++ b/hw/core/sysbus.c
+> @@ -376,6 +376,14 @@ BusState *sysbus_get_default(void)
+>      return main_system_bus;
+>  }
 >  
->  /**
-> + * object_initialize_child:
-> + * @parentobj: The parent object to add a property to
-> + * @propname: The name of the property
-> + * @childobj: A pointer to the memory to be used for the object.
-> + * @size: The maximum size available at @obj for the object.
-> + * @type: The name of the type of the object to instantiate.
-> + * @errp: If an error occurs, a pointer to an area to store the error
-> + *
-> + * This function will initialize an object. The memory for the object should
-> + * have already been allocated. The object will then be added as child property
-> + * to a parent with object_property_add_child() function. The returned object
-> + * has a reference count of 1 (for the "child<...>" property from the parent),
-> + * so the object will get finalized automatically when the parent gets removed.
-> + */
-> +void object_initialize_child(Object *parentobj, const char *propname,
-> +                             void *childobj, size_t size, const char *type,
-> +                             Error **errp);
+> +void sysbus_init_child_obj(Object *parent, const char *childname, void *child,
+> +                           size_t childsize, const char *childtype)
+> +{
+> +    object_initialize_child(parent, childname, child, childsize, childtype,
+> +                            &error_abort);
+> +    qdev_set_parent_bus(DEVICE(child), sysbus_get_default());
+> +}
+> +
+>  static void sysbus_register_types(void)
+>  {
+>      type_register_static(&system_bus_info);
+> diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
+> index e88bb6d..e405232 100644
+> --- a/include/hw/sysbus.h
+> +++ b/include/hw/sysbus.h
+> @@ -96,6 +96,9 @@ void sysbus_add_io(SysBusDevice *dev, hwaddr addr,
+>                     MemoryRegion *mem);
+>  MemoryRegion *sysbus_address_space(SysBusDevice *dev);
+>  
+> +void sysbus_init_child_obj(Object *parent, const char *childname, void *child,
+> +                           size_t childsize, const char *childtype);
+> +
 
-I wonder if we should deprecate object_initialize() and support
-only object_initialize_child() later.  Initializing an object
-contained inside another one without making it a child of the
-parent object is a recipe for trouble.
+Documentation about the reference ownership rules would be nice,
+but I don't think this should block the bug fixes.
 
 Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 

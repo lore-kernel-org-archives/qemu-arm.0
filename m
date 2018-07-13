@@ -1,71 +1,71 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp561132wrq;
-        Fri, 13 Jul 2018 04:13:55 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcYTdu1A8uZOrpGTIR4Tl9VagdaZaezjnfGXj4ISvFR4J3uKr17ZmRFq6OABZFtH4ZszNV6
-X-Received: by 2002:a37:b286:: with SMTP id b128-v6mr4972724qkf.158.1531480435389;
-        Fri, 13 Jul 2018 04:13:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531480435; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp562532wrq;
+        Fri, 13 Jul 2018 04:15:21 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc2YHJPzSslOWb3i8HCFv/SvGIYwgknnob9lvehRz8C348A4WUrgYbNQvKNo1qx4Swt4Dfv
+X-Received: by 2002:aed:237a:: with SMTP id i55-v6mr5338246qtc.263.1531480520974;
+        Fri, 13 Jul 2018 04:15:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531480520; cv=none;
         d=google.com; s=arc-20160816;
-        b=igG0uVaAmj4ZuYZknKVPHSuVuKLoWlTT257GyahQZ95HIW3jA3JG6BqJGZ43qSoXlY
-         OZMvCih3gsqIY0i/P+oc6Mu5Dbnv7iszUaLZKpoARDxhM5qUFvoLJZcG4xGxRD+JDno+
-         Ir5FDl5WevSXDzkEQiz2ENKrk2ruJ00mBihMqZBjK8eKYXlLQYdM7w/CVL6+XseFFF2L
-         rp5E9uuzYncmN19002ek8Q7AJUQkOWcsIUr7a/pxv7V8thJ2ZCEIccOtp3ENhGl+/Z49
-         JJX13sbHXtQf3jrG8sbE1K+8Vu+Pq8COd49lE96CnTctEXV8IdPsxGmCCwBd1VG5nbpR
-         1RGQ==
+        b=Vsr2KBbpnP8YOCF93yQ+xznVtByjd7On+N+Q4cVriMMntAAU4Le8aetg5sqK0Qaw7Q
+         8ZgN0oLraL9G8zkTh6kflxOvu/muntmUDWVHAmtIg3DyFfJkm5jZtgYOaYuUaFQYN5ox
+         Cxw9fooGj/UgKir64G/dM4DrxluQejyOvXiW16d7+o+Nr6ZsAc/CGJoJrKnAAh+C5mkC
+         p1ORTBPa5TOO8liSGLDFIQqrTu1YQaCWYwgEmmXntCSkWPGW3tHp95DuFEzBrNROun2E
+         vsq+FTItM19K+TPCzbdSIzGoaXc3L5v+h9C37f1yxUrmVbCGS3X1xp18btaUPiOoaOc1
+         f9mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :arc-authentication-results;
-        bh=S/7iHkHS5iH7t+45z+PQKq2Qy1DTSh/p47lGNCi8/lg=;
-        b=e3s6HEDgxRKXdempUZ/7qnBXvH79Ztjno0l750FzooM7K/qWGlbbueny5xmLpCMDzZ
-         /ft0y6mxkAEUgZajE+iwIl4S0lnfEopNzrq4rSYLs+VF/mgSYNTquV/Zmp0/yd+VMT1C
-         MN5faKIRBN/YNx4synrjrUsdBAU92SvnZH2NR5QUJVydvGPoglos5e0TOgZNp6lPrYta
-         rk+j2Dp7J7CWS+APYDHuxmWYoVu8vQ7WOkLoXHHZBzh2Cmxvo78A00lNXa9h39qWQ2yK
-         JUFzlDN+Xxz1XNoS3lD2vNTbHvOMmDYGCZ8JDEtWB+Ur7AEp4EjvR72ovVBOCGPsV/ob
-         DuQg==
+        bh=P6+sOpmdiOydUjQ5+7CMQz09lP6DqUADDg38Uh0LnI8=;
+        b=dp+HXXuBku9zApp+lST97kCiwSVgbleKL8oc7kMFl0VqA6FA/LHvxcaEyi38wcM9mu
+         dFpc3k+aTiUqsTsWOeeCNm8Bbj/iMuiOPi/vjggLDEXvNqDd5gPRznCgFDxiOA1FBSv+
+         YSlGx8C+xm6irUupDlw7C6Mf7yiAszgRQcwBlQPBcoUHzvMJAKJgoJzW3+klR3dpbiWH
+         18oCdxKqG5hRWpf4WCJSMd6tISMvKqRcIEhRUEN3Yu8vQzadz+R4+leYRqNEg5ejpDIA
+         SqolnX5pFu96x7N+/7YTn8fuXUawfK5RFlNMt9XBvCJNryoXI/UFvQBOTGTcGu3Fk8R+
+         SFuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 77-v6si2600443qkp.176.2018.07.13.04.13.55
+        by mx.google.com with ESMTPS id p67-v6si10477205qkd.319.2018.07.13.04.15.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Jul 2018 04:13:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 13 Jul 2018 04:15:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36512 helo=lists.gnu.org)
+Received: from localhost ([::1]:36521 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdw1K-0005Lr-Pi
-	for alex.bennee@linaro.org; Fri, 13 Jul 2018 07:13:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43695)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fdw2i-0005yJ-Au
+	for alex.bennee@linaro.org; Fri, 13 Jul 2018 07:15:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44019)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fdw1B-0005LW-JS
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 07:13:46 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1fdw27-0005tJ-5R
+	for qemu-devel@nongnu.org; Fri, 13 Jul 2018 07:14:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fdw16-0002I5-K5
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 07:13:45 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:32976 helo=mx1.redhat.com)
+	(envelope-from <pbonzini@redhat.com>) id 1fdw22-0002ge-4H
+	for qemu-devel@nongnu.org; Fri, 13 Jul 2018 07:14:43 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33022 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1fdw16-0002Hm-DG; Fri, 13 Jul 2018 07:13:40 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fdw1y-0002dZ-Lc; Fri, 13 Jul 2018 07:14:34 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6E32D400ADE9;
-	Fri, 13 Jul 2018 11:13:39 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4D96C401B3A7;
+	Fri, 13 Jul 2018 11:14:34 +0000 (UTC)
 Received: from [10.36.117.240] (ovpn-117-240.ams2.redhat.com [10.36.117.240])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 011A81C722;
-	Fri, 13 Jul 2018 11:13:36 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E2F482156700;
+	Fri, 13 Jul 2018 11:14:31 +0000 (UTC)
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <1531470464-21522-1-git-send-email-thuth@redhat.com>
-	<1531470464-21522-7-git-send-email-thuth@redhat.com>
+	<1531470464-21522-2-git-send-email-thuth@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -103,191 +103,157 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <d76b1a42-e232-f8a3-48dc-d71238403c94@redhat.com>
-Date: Fri, 13 Jul 2018 13:13:33 +0200
+Message-ID: <31f1708a-d4cc-fdee-c47b-3b64ea514978@redhat.com>
+Date: Fri, 13 Jul 2018 13:14:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1531470464-21522-7-git-send-email-thuth@redhat.com>
+In-Reply-To: <1531470464-21522-2-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.6]);
-	Fri, 13 Jul 2018 11:13:39 +0000 (UTC)
+	Fri, 13 Jul 2018 11:14:34 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 13 Jul 2018 11:13:39 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	Fri, 13 Jul 2018 11:14:34 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH v2 06/16] hw/display/xlnx_dp: Move
- problematic code from instance_init to realize
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v2 01/16] qom/object: Add a new function
+ object_initialize_child()
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Eduardo Habkost <ehabkost@redhat.com>,
 	Alistair Francis <alistair@alistair23.me>,
 	Markus Armbruster <armbru@redhat.com>,
 	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
 	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	=?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iIPOO0HerqAJ
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d2gb5WSitzDs
 
 On 13/07/2018 10:27, Thomas Huth wrote:
-> aux_create_slave() calls qdev_init_nofail() which in turn "realizes"
-> the corresponding object. Thus this most not be called from an
-> instance_init function. Move the code to the realize function instead.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/display/xlnx_dp.c | 23 +++++++++--------------
->  1 file changed, 9 insertions(+), 14 deletions(-)
+> A lot of code is using the object_initialize() function followed by a call
+> to object_property_add_child() to add the newly initialized object as a child
+> of the current object. Both functions increase the reference counter of the
+> new object, but many spots that call these two functions then forget to drop
+> one of the superfluous references. So the newly created object is often not
+> cleaned up correctly when the parent is destroyed. In the worst case, this
+> can cause crashes, e.g. because device objects are not correctly removed from
+> their parent_bus.
+> 
+> Since this is a common pattern between many code spots, let's introdcue a
+> new function that takes care of calling all three required initialization
+> functions, first object_initialize(), then object_property_add_child() and
+> finally object_unref().
+> 
+> And while we're at object.h, also fix some copy-n-paste errors in the
+> comments there ("to store the area" --> "to store the error").
 
-> +    s->aux_bus =3D aux_init_bus(dev, "aux");
+Even though I'd prefer the full cleanup, I can live with this. :)
 
-aux_init_bus can remain in the same place, and likewise the qdev_create
-that assigns to s->edid.
+Series
 
-The only thing that has to move is the qdev_init_nofail and
-aux_bus_map_device, like this:
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
------------------ 8< ------------------
-From: Paolo Bonzini <pbonzinI@redhat.com>
-Subject: [PATCH] hw/display/xlnx_dp: Move problematic code from instance_=
-init to realize
-
-aux_create_slave() calls qdev_init_nofail() which in turn "realizes"
-the corresponding object. This is unlike qdev_create(), and it is wrong
-because qdev_init_nofail() must not be called from an instance_init
-function.  Move qdev_init_nofail() and the subsequent aux_map_slave into
-the caller's realize function.
-=20
-Reported-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 51301220e8..589ef59dfd 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1234,7 +1234,7 @@ static void xlnx_dp_init(Object *obj)
-     /*
-      * Initialize DPCD and EDID..
-      */
--    s->dpcd =3D DPCD(aux_create_slave(s->aux_bus, "dpcd", 0x00000));
-+    s->dpcd =3D DPCD(aux_create_slave(s->aux_bus, "dpcd"));
-     s->edid =3D I2CDDC(qdev_create(BUS(aux_get_i2c_bus(s->aux_bus)), "i2=
-c-ddc"));
-     i2c_set_slave_address(I2C_SLAVE(s->edid), 0x50);
-=20
-@@ -1248,6 +1248,9 @@ static void xlnx_dp_realize(DeviceState *dev, Error=
- **errp)
-     DisplaySurface *surface;
-     struct audsettings as;
-=20
-+    qdev_init_nofail(DEVICE(s->dpcd));
-+    aux_map_slave(AUX_SLAVE(s->dpcd), 0x0000);
-+
-     s->console =3D graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
-     surface =3D qemu_console_surface(s->console);
-     xlnx_dpdma_set_host_data_location(s->dpdma, DP_GRAPHIC_DMA_CHANNEL,
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index b8a8721201..2fe807d42f 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -74,9 +74,11 @@ AUXBus *aux_init_bus(DeviceState *parent, const char *=
-name)
-     return bus;
- }
-=20
--static void aux_bus_map_device(AUXBus *bus, AUXSlave *dev, hwaddr addr)
-+void aux_map_slave(AUXSlave *aux_dev, hwaddr addr)
- {
--    memory_region_add_subregion(bus->aux_io, addr, dev->mmio);
-+    DeviceState *dev =3D DEVICE(aux_dev);
-+    AUXBus *bus =3D AUX_BUS(qdev_get_parent_bus(dev));
-+    memory_region_add_subregion(bus->aux_io, addr, aux_dev->mmio);
- }
-=20
- static bool aux_bus_is_bridge(AUXBus *bus, DeviceState *dev)
-@@ -260,15 +262,13 @@ static void aux_slave_dev_print(Monitor *mon, Devic=
-eState *dev, int indent)
-                    memory_region_size(s->mmio));
- }
-=20
--DeviceState *aux_create_slave(AUXBus *bus, const char *type, uint32_t ad=
-dr)
-+DeviceState *aux_create_slave(AUXBus *bus, const char *type)
- {
-     DeviceState *dev;
-=20
-     dev =3D DEVICE(object_new(type));
-     assert(dev);
-     qdev_set_parent_bus(dev, &bus->qbus);
--    qdev_init_nofail(dev);
--    aux_bus_map_device(AUX_BUS(qdev_get_parent_bus(dev)), AUX_SLAVE(dev)=
-, addr);
-     return dev;
- }
-=20
-diff --git a/include/hw/misc/auxbus.h b/include/hw/misc/auxbus.h
-index 68ade8a90f..c15b444748 100644
---- a/include/hw/misc/auxbus.h
-+++ b/include/hw/misc/auxbus.h
-@@ -123,6 +123,18 @@ I2CBus *aux_get_i2c_bus(AUXBus *bus);
-  */
- void aux_init_mmio(AUXSlave *aux_slave, MemoryRegion *mmio);
-=20
--DeviceState *aux_create_slave(AUXBus *bus, const char *name, uint32_t ad=
-dr);
-+/* aux_create_slave: Create a new device on an AUX bus
-+ *
-+ * @bus The AUX bus for the new device.
-+ * @name The type of the device to be created.
-+ */
-+DeviceState *aux_create_slave(AUXBus *bus, const char *name);
-+
-+/* aux_map_slave: Map the mmio for an AUX slave on the bus.
-+ *
-+ * @dev The AUX slave.
-+ * @addr The address for the slave's mmio.
-+ */
-+void aux_map_slave(AUXSlave *dev, hwaddr addr);
-=20
- #endif /* HW_MISC_AUXBUS_H */
-
+except for patch 6 for which I've sent a replacement.
 
 Paolo
 
-> +    /* Initialize DPCD and EDID */
->      s->dpcd =3D DPCD(aux_create_slave(s->aux_bus, "dpcd", 0x00000));
->      s->edid =3D I2CDDC(qdev_create(BUS(aux_get_i2c_bus(s->aux_bus)), "=
-i2c-ddc"));
->      i2c_set_slave_address(I2C_SLAVE(s->edid), 0x50);
-> =20
->      fifo8_create(&s->rx_fifo, 16);
->      fifo8_create(&s->tx_fifo, 16);
-> -}
-> -
-> -static void xlnx_dp_realize(DeviceState *dev, Error **errp)
-> -{
-> -    XlnxDPState *s =3D XLNX_DP(dev);
-> -    DisplaySurface *surface;
-> -    struct audsettings as;
-> =20
->      s->console =3D graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
->      surface =3D qemu_console_surface(s->console);
->=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  include/qom/object.h | 23 +++++++++++++++++++++--
+>  qom/object.c         | 15 +++++++++++++++
+>  2 files changed, 36 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index f3d2308..3362db0 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -749,6 +749,25 @@ int object_set_propv(Object *obj,
+>  void object_initialize(void *obj, size_t size, const char *typename);
+>  
+>  /**
+> + * object_initialize_child:
+> + * @parentobj: The parent object to add a property to
+> + * @propname: The name of the property
+> + * @childobj: A pointer to the memory to be used for the object.
+> + * @size: The maximum size available at @obj for the object.
+> + * @type: The name of the type of the object to instantiate.
+> + * @errp: If an error occurs, a pointer to an area to store the error
+> + *
+> + * This function will initialize an object. The memory for the object should
+> + * have already been allocated. The object will then be added as child property
+> + * to a parent with object_property_add_child() function. The returned object
+> + * has a reference count of 1 (for the "child<...>" property from the parent),
+> + * so the object will get finalized automatically when the parent gets removed.
+> + */
+> +void object_initialize_child(Object *parentobj, const char *propname,
+> +                             void *childobj, size_t size, const char *type,
+> +                             Error **errp);
+> +
+> +/**
+>   * object_dynamic_cast:
+>   * @obj: The object to cast.
+>   * @typename: The @typename to cast to.
+> @@ -1382,7 +1401,7 @@ Object *object_resolve_path_component(Object *parent, const gchar *part);
+>   * @obj: the object to add a property to
+>   * @name: the name of the property
+>   * @child: the child object
+> - * @errp: if an error occurs, a pointer to an area to store the area
+> + * @errp: if an error occurs, a pointer to an area to store the error
+>   *
+>   * Child properties form the composition tree.  All objects need to be a child
+>   * of another object.  Objects can only be a child of one object.
+> @@ -1420,7 +1439,7 @@ void object_property_allow_set_link(const Object *, const char *,
+>   * @child: a pointer to where the link object reference is stored
+>   * @check: callback to veto setting or NULL if the property is read-only
+>   * @flags: additional options for the link
+> - * @errp: if an error occurs, a pointer to an area to store the area
+> + * @errp: if an error occurs, a pointer to an area to store the error
+>   *
+>   * Links establish relationships between objects.  Links are unidirectional
+>   * although two links can be combined to form a bidirectional relationship
+> diff --git a/qom/object.c b/qom/object.c
+> index 4609e34..7be7638 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -392,6 +392,21 @@ void object_initialize(void *data, size_t size, const char *typename)
+>      object_initialize_with_type(data, size, type);
+>  }
+>  
+> +void object_initialize_child(Object *parentobj, const char *propname,
+> +                             void *childobj, size_t size, const char *type,
+> +                             Error **errp)
+> +{
+> +    object_initialize(childobj, size, type);
+> +    object_property_add_child(parentobj, propname, OBJECT(childobj), errp);
+> +    /*
+> +     * Since object_property_add_child added a reference to the child object,
+> +     * we can drop the reference added by object_initialize(), so the child
+> +     * property will own the only reference to the object.
+> +     */
+> +    object_unref(OBJECT(childobj));
+> +}
+> +
+> +
+>  static inline bool object_property_is_child(ObjectProperty *prop)
+>  {
+>      return strstart(prop->type, "child<", NULL);
+> 
 

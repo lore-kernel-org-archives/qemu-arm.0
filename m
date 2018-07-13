@@ -1,80 +1,99 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2474586wro;
-        Mon, 5 Nov 2018 03:48:12 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ekWAndrByS6jsZFckobKiLQi1K+hqjqKRQO6qpaJF8tqRno4EEoTr5GhhomEqqVSOrNYKa
-X-Received: by 2002:ae9:de46:: with SMTP id s67-v6mr1223169qkf.257.1541418492295;
-        Mon, 05 Nov 2018 03:48:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541418492; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp809047wrq;
+        Fri, 13 Jul 2018 08:22:47 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpd2ZUk73x0hZmQYdpeo4XA1sm0jAxLXCbYWT/oE4H27uooHwUbNXpZom8LcU9Aob3LLb5tl
+X-Received: by 2002:aed:24f0:: with SMTP id u45-v6mr6330340qtc.340.1531495367645;
+        Fri, 13 Jul 2018 08:22:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531495367; cv=none;
         d=google.com; s=arc-20160816;
-        b=WCG2WOVqV6wwZm/N/HJfh/KZJX24kSBwTBRsPLYmvC+7F9Dm6lWrv5QmzZ9bV5rLhr
-         A69yEqsPVYf55PzHocCaIEAQ8Y5g6zr/+FPbAkG8DmTpQbOYutxvfHrLdTIxkdsLAgIu
-         df3mTqnR9AlzoH9CpqcfpJQCXJoDgwDKg6S31QAjUqWp0S4XiWsRsHSKRpl7vp41lsTy
-         StiYPoyQXPs8mw4QOZvsuSBoy8QZo2NX3Xz7MTnSJnLgB37sGpQl46Y+t4/KYpKBAnAM
-         p8IB3Y7oYbtdGjsQJqTjLTicUN3owl7TgOjr1P+IU0rimru7HY+RHGwomYbCzNm3a0I1
-         accg==
+        b=ZsFoAzs4bSng1d66Lm0SPvolRrAq/Rp+KNVBDExr6cdCQ27y+qECHlgeDPWAfEa553
+         8OMddlTPbqoNd935bkDfkN0H7OsyEYlqZkupKWGqB9vphxoD2rxiBc1/w9AUFHa5ns6P
+         pDnZhKBVjGtBxZoqJr1+e/Og8J9V/kiU6STXTVaaG+f7BRNc1r37j0SnhKF4rRVdTYGx
+         27GkGRCwIwziMn4MLPLVrmx8MzLtciX8L7M5nzBNkp3PbCOtXreSfWPzQxjHpB3+RN7/
+         tIW0e3xZlwamAn8TIZDs4aX3KKEq+qGIqf2ZKeoeYb9srdeycIs9LRN63ceM1UZCYIG4
+         opBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=LlUa7QpDUCn3/tTBxcQ0pl6ARvqlnJeHFWxtDx5fOK0=;
-        b=zBDECgOQYgBvQFRwuqe+6q530+DspBS4wA4T6hr8q31I9tmZbl9xYHT/OGwwuaC0wB
-         OX7V7rHXohGKVdhbNwibv+PAloUpH61keseG/B1Uj+S7tvsDw/HbHr006dStSkHL5KAM
-         QGUhr8j1jd3YKHA0VxGiHloU342jm+dMekM2f8kbW4dlT+mv83gmENlYj5m5ZExbjroe
-         FDyR2LHuaFTNa87wcUmBUWtBY5LPfFnHmZ/7xB6qfvoQXRldfSsTsAuHxhcZv/KElrEA
-         0ua2szPPcyQBtNKjbnYrkKQl6bouZGUIeK6NZXpaxjCfFl9KPdoQW3NalT3KUcPOEyq7
-         XRpQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=iOq36oD1JBZwzHUFHc36Kl506pmU3FH4UYKdYyFes5Y=;
+        b=UI1wpDzY0MC4UP7OZn+ZOTy8JoYTf5ujHtImbKjQOqSxlKHlYsrXxkgLBaS5M/OBji
+         I34/e6z/7K67LGL0KYnHOt519rJkc6fv4b81FLQhCFpyeMuK5zdP2u2hFTo6dFBuManQ
+         2gcBKoCHiB9XXuiPXXnqCVNABNaLcGrPJFCR8fDlrE+C2KKI1CIR4au4BCcqeH11VDUh
+         24eUS3WGrHmOwI60or8TLQPSo89KiXYa7YT/fBQI0jc7AQ+niPaksIcYJuanriEqSfPd
+         9890gvZqkrjf3nf7jRA3UPNVoPoF/f/MX4Cj8i949Rt//3fw1IU1Mfa8+uLcqF6RxB0n
+         ASfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=Mz3FjZSY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k41si4707986qvh.67.2018.11.05.03.48.12
+        by mx.google.com with ESMTPS id d79-v6si9004719qke.177.2018.07.13.08.22.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Nov 2018 03:48:12 -0800 (PST)
+        Fri, 13 Jul 2018 08:22:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34672 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Mz3FjZSY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37833 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJdMZ-0007Gu-Px
-	for alex.bennee@linaro.org; Mon, 05 Nov 2018 06:48:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50493)
+	id 1fdzuB-0004iN-5d
+	for alex.bennee@linaro.org; Fri, 13 Jul 2018 11:22:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47140)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.rutland@arm.com>) id 1gJdMP-0007Ga-8g
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 06:48:02 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1fdzu1-0004i1-Lo
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 11:22:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.rutland@arm.com>) id 1gJdML-0006sx-VG
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 06:48:01 -0500
-Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:49106
-	helo=foss.arm.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.rutland@arm.com>)
-	id 1gJdML-0006VB-Mx; Mon, 05 Nov 2018 06:47:57 -0500
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9797180D;
-	Mon,  5 Nov 2018 03:47:55 -0800 (PST)
-Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
-	[10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 41B203F5BD;
-	Mon,  5 Nov 2018 03:47:54 -0800 (PST)
-Date: Mon, 5 Nov 2018 11:47:51 +0000
-From: Mark Rutland <mark.rutland@arm.com>
-To: Marc Zyngier <marc.zyngier@arm.com>
-Message-ID: <20181105114751.7d3xulnflnmamjbq@lakrids.cambridge.arm.com>
-References: <20181102145433.4553-1-richard.henderson@linaro.org>
-	<CAFEAcA_tcR_33Q+2ZFHdzo4_9khXggum=gRfZ8+L49KmP3hHiw@mail.gmail.com>
-	<20181102193529.GB12057@e113682-lin.lund.arm.com>
-	<effa3839-f0ab-e6ab-e034-a1a6d1d06923@linaro.org>
-	<20181103123246.16b5b101@why.wild-wind.fr.eu.org>
-	<1ee4127a-aa3e-4e19-1dde-af83147f8bc4@linaro.org>
-	<86zhupdr03.wl-marc.zyngier@arm.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fdzu0-0002F9-OW
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 11:22:37 -0400
+Received: from mail-oi0-x233.google.com ([2607:f8b0:4003:c06::233]:36609)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fdzu0-0002El-Aj
+	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 11:22:36 -0400
+Received: by mail-oi0-x233.google.com with SMTP id r16-v6so62915061oie.3
+	for <qemu-arm@nongnu.org>; Fri, 13 Jul 2018 08:22:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=iOq36oD1JBZwzHUFHc36Kl506pmU3FH4UYKdYyFes5Y=;
+	b=Mz3FjZSY5omG/C28lDfJX9D8sg4JOM7Bi9vql2ZhaLfvkdt6DuL7L9QPr634ER0pjv
+	xECN9ejlyW9u/PbXnXahOd2GbQ0tY6wKBXJVLmNnoZ9XxgPSrNBz5BfrQVDuHIcfITmV
+	75hj0yRugdRP++/J/sl4b0x1gwoHXL87i0MNA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=iOq36oD1JBZwzHUFHc36Kl506pmU3FH4UYKdYyFes5Y=;
+	b=D9i3lqCgDl65Sfcq9IIo3bsNrpQ0LtwSRgyvGzQeaxPkh/0JQlm11w7zvwgR885/WW
+	VLxOPXTGxrsaQCoqETQ8snEbF+L1i6wHrh35OhCJ62CgXDIoM4UFmioNJXARkZazfcf4
+	DnaZPkxTnx91kVK6uC0cKy00AHhTUH2iUNbkX10hHTNLPZgQpxdxBKQlkF8rpAi6Q2Dh
+	gryeN//OQ1TafYC0tT19itN0mTlPa1aSYE6mnIzWgMxGkq1QplfH/JLVeLyCB1tZmfJ3
+	7hsLuCDGVrNtJOd6HmO5vUVyEuoiU43EGSHdM78nKvX7mgWgyZVjl1mOAyNqkFlZgYSb
+	uWRA==
+X-Gm-Message-State: AOUpUlEpO2u42bcJ2PSqArzCnW5jg7dYBkmLc1GcYmSeZR3r6yIAw0Oi
+	jm7RNXtscXyK8ROEGtLx//kyPgPoWJGKxVcfpqqVAQ==
+X-Received: by 2002:aca:a982:: with SMTP id
+	s124-v6mr7749835oie.80.1531495355623; 
+	Fri, 13 Jul 2018 08:22:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <86zhupdr03.wl-marc.zyngier@arm.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.101.70
-Subject: Re: [Qemu-arm] [PATCH v2 0/5] target/arm: KVM vs ARMISARegisters
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 13 Jul 2018 08:22:15
+	-0700 (PDT)
+In-Reply-To: <CAB30WPccergMTSWWrwj-WhTCcaMvvW7vnAMO3qvy9b9B53N=zA@mail.gmail.com>
+References: <CAB30WPccergMTSWWrwj-WhTCcaMvvW7vnAMO3qvy9b9B53N=zA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 13 Jul 2018 16:22:15 +0100
+Message-ID: <CAFEAcA8v762p3JSQ=9Vu68-evYS5MMH467pAo8=XZWsw+x6s7Q@mail.gmail.com>
+To: Kevin Loughlin <kevlough@umich.edu>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::233
+Subject: Re: [Qemu-arm] [Qemu-devel] Native Memory Virtualization in
+ qemu-system-aarch64
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,79 +105,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Christoffer Dall <christoffer.dall@arm.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Dave Martin <Dave.Martin@arm.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-discuss <qemu-discuss@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zCDAnGkKykdb
+X-TUID: ZcDEvyrwsP26
 
-On Sun, Nov 04, 2018 at 11:25:00AM +0000, Marc Zyngier wrote:
-> diff --git a/arch/arm64/kvm/sys_regs.c b/arch/arm64/kvm/sys_regs.c
-> index 22fbbdbece3c..d50f912d3f4a 100644
-> --- a/arch/arm64/kvm/sys_regs.c
-> +++ b/arch/arm64/kvm/sys_regs.c
-> @@ -314,10 +314,15 @@ static bool trap_raz_wi(struct kvm_vcpu *vcpu,
->  		return read_zero(vcpu, p);
->  }
->  
-> -static bool trap_undef(struct kvm_vcpu *vcpu,
-> -		       struct sys_reg_params *p,
-> -		       const struct sys_reg_desc *r)
+On 12 July 2018 at 17:48, Kevin Loughlin <kevlough@umich.edu> wrote:
+> I know TrustZone has support for memory virtualization in AArch64, but I'm
+> looking to create a different model. Namely, I'd like to fully virtualize
+> the memory map for the "virt" board.
+>
+> As a basic example of what I want, assuming an execution environment that
+> runs in a 1GB physical address space (0x0 - 0x3FFFFFFF), I'd like to be
+> able to switch to a second execution environment with a distinct SW stack
+> that runs in the second GB of a board memory (0x40000000 - 0x7FFFFFFF). The
+> key points for my desired memory virtualization are the following...
+>
+>    1. Both of these environments should have distinct virtual address spaces
+>    2. The OS in each environment should believe it is running on physical
+>    addresses 0x0 - 0x3FFFFFFF in both cases.
+>    3. Neither environment should have access to the physical memory state
+>    of the other
+>
+> I initialize distinct AddressSpace and MemoryRegion structures for each of
+> these GB blocks. Because all I want is a simple shift of physical address
+> for one environment, I hesitate to mirror the (relatively) complex address
+> translation process for TrustZone. Does anyone know if it would be better
+> to either (a) provide custom read/write functions for the shifted
+> MemoryRegion object, or (b) modify the target/arm code, such as adding a
+> shift to get_phys_addr() in target/arm/helper.c?
 
-We should probably have a comment here, like:
+I'm a bit confused about what you're trying to do. Without TrustZone,
+by definition there is only one physical address space (ie all of
+memory/devices/etc are addressed by a single 64-bit physaddr).
+There's no way to cause the CPU to not have access to it.
+With TrustZone, you can think of the system as having two physical
+address spaces (so to access something you need to specify both
+a 64-bit physaddr and the TZ secure/nonsecure bit), and the CPU
+and the system design cooperate to enforce that code running in the
+nonsecure world can't get at things in the system it should not have
+access to.
 
-/*
- * ARMv8.1 mandates at least a trivial LORegion implementation, where
- * all the RW registers are RES0 (which we can implement as RAZ/WI). On
- * an ARMv8.0 system, these registers should UNDEF.
- */
+The whole point of TZ is to allow you to do this sort of partitioning.
+Without it there's no way for the system (RAM or whatever) to know which
+environment is running on the CPU.
 
-> +static bool trap_loregion(struct kvm_vcpu *vcpu,
-> +			  struct sys_reg_params *p,
-> +			  const struct sys_reg_desc *r)
->  {
-> +	u64 val = read_sanitised_ftr_reg(SYS_ID_AA64MMFR1_EL1);
-> +
-> +	if (val & (0xfUL << ID_AA64MMFR1_LOR_SHIFT))
-> +		return trap_raz_wi(vcpu, p, r);
-> +
->  	kvm_inject_undefined(vcpu);
->  	return false;
->  }
-> @@ -1040,11 +1045,6 @@ static u64 read_id_reg(struct sys_reg_desc const *r, bool raz)
->  			kvm_debug("SVE unsupported for guests, suppressing\n");
->  
->  		val &= ~(0xfUL << ID_AA64PFR0_SVE_SHIFT);
-> -	} else if (id == SYS_ID_AA64MMFR1_EL1) {
-> -		if (val & (0xfUL << ID_AA64MMFR1_LOR_SHIFT))
-> -			kvm_debug("LORegions unsupported for guests, suppressing\n");
-> -
-> -		val &= ~(0xfUL << ID_AA64MMFR1_LOR_SHIFT);
->  	}
->  
->  	return val;
-> @@ -1330,11 +1330,11 @@ static const struct sys_reg_desc sys_reg_descs[] = {
->  	{ SYS_DESC(SYS_MAIR_EL1), access_vm_reg, reset_unknown, MAIR_EL1 },
->  	{ SYS_DESC(SYS_AMAIR_EL1), access_vm_reg, reset_amair_el1, AMAIR_EL1 },
->  
-> -	{ SYS_DESC(SYS_LORSA_EL1), trap_undef },
-> -	{ SYS_DESC(SYS_LOREA_EL1), trap_undef },
-> -	{ SYS_DESC(SYS_LORN_EL1), trap_undef },
-> -	{ SYS_DESC(SYS_LORC_EL1), trap_undef },
-> -	{ SYS_DESC(SYS_LORID_EL1), trap_undef },
-> +	{ SYS_DESC(SYS_LORSA_EL1), trap_loregion },
-> +	{ SYS_DESC(SYS_LOREA_EL1), trap_loregion },
-> +	{ SYS_DESC(SYS_LORN_EL1), trap_loregion },
-> +	{ SYS_DESC(SYS_LORC_EL1), trap_loregion },
-> +	{ SYS_DESC(SYS_LORID_EL1), trap_loregion },
+You could in theory design and implement a non-standard extension to
+the architecture to do equivalent things to what TZ is doing I suppose,
+but that would be a lot of work and a lot of fragile modifications
+to QEMU.
 
-LORID_EL1 is always RO, so we need to UNDEF on writes. Either we add a
-separate helper, or special-case LORID_EL1 in trap_loregion().
-
-Otherwise, this looks good to me.
-
-Thanks,
-Mark.
+thanks
+-- PMM

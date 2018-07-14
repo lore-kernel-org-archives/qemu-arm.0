@@ -1,163 +1,111 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp768450wrq;
-        Fri, 13 Jul 2018 07:45:15 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfEZEYzE9VFSmYX690UgLmo0L0cfFrx3d8Zvz8gbiorXszNVbwrPE+HOgqT/stGFIQW5fLG
-X-Received: by 2002:a0c:886d:: with SMTP id 42-v6mr7478531qvm.242.1531493115794;
-        Fri, 13 Jul 2018 07:45:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531493115; cv=none;
+Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp654318wrq;
+        Sat, 14 Jul 2018 10:23:54 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcw2Gjhi6u6WFNq09RcqI4u/LwRV5/P9QYBwII1yRZe5d+vu0VLcENEztiMr9g3985Ff95I
+X-Received: by 2002:ac8:3f8a:: with SMTP id d10-v6mr9947493qtk.238.1531589034738;
+        Sat, 14 Jul 2018 10:23:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531589034; cv=none;
         d=google.com; s=arc-20160816;
-        b=V+sJ9DPXUULAsZJAOZeJPPwtuY8s49vF1Fvr3EkWiApJUXfQTqxttC+K2KmpJiQaRt
-         qr0a5tkgYAaNQXJDDTxrVYOLlUtxdjGk8xYGRyPu9ir2VyNW5YqoT737rnB2Z/UGgb+3
-         R5tC+wTK/W/IWUiBUoKHuH2fcfy1VKsl9jaRy6A6TcKRKuBVaAaGAG9wwxQ/KfKKucC6
-         +aNzzSyeliSCnnQx41aMGOKn1k3OlVMGozLgFrWKubQKtrvjgxe4LKzEsjBlpVO2UKof
-         t2setM/lF4G9y3sNvW/KUYSuSUP5ES8ghnpR9EyYRTk36T8yCWswvYtgYJv+/Ybkojd3
-         SaFA==
+        b=qiNUtlf65kguHjFhfwKx+N41pZydJ11dy5WWeZ5cLNUwlsK0QX3SUmbU/6Q4mPbbQ0
+         cq1+oknHn3dA8Crt0x60ASsQWs8zNZma6yvJP6t76wjQVYKX8vhWqBdHYUPHoJl3Y4QY
+         cjbMioZQ1LoO2eR9LJnT5hPALKVf6WUSeY70L3nrSZ8sWRMv4X7clKIL9dKq6U+fzEN1
+         e6BXOJr2YgQskbDK0VWcp3kOu7pa51VWXQ+ylkAJApL6JSsHaj4esJygl/P6KIZ55qpx
+         7qpcAsx1DD5psQl7iF3tXjnPS3X0pkhPLFmK++cUqhoLLKlDX4eklOV2di7fskG69HQR
+         MaQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
-         :references:to:dkim-signature:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=sO9asnJyPV4ZR3Pem+Te36E0YUrCt+A3kgVES+cCN3U=;
-        b=T5+BOyf9627qqnMliyCgVo4uM8w9MgEp896WJI1TgjLa7uD2WQbNTu9ruUn2criY02
-         okwvRbsKeKdkP20uIT/mR2yuU2cZnchCfwCnjtqK4IIodgId7WgrIzthgxaQo7ygRf8m
-         qw/900qgqtv3y1/9UIuNzy4VDaFJUSVB7Pg+/9mTcohIyJe4eOG6p3q8qf33cvqHFMwa
-         uS+mM/ZL/QHAtsnENC25GMI3E3bBr4wp0f+lLxuN5aHw+wEemWSkmIGD8TCuJ7zNxEgf
-         3w29t9YLv432IRZ75Tpv76TKn9MFVzlHrKwA516u385/qbkg4R1N2WroEhU5jaTHr6l6
-         lE2A==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=g6m9BGPQSEkon3TVccmSW2ES++DMFqvnSSaj/+ueM1Y=;
+        b=fJv/oOcrANi+eXy0FITNg1Iit7NM5zkHl6kVLdp5DLFLttQAacfPqFCb3phOnn1wy5
+         1/bcXkwUPL92kg6dRkB/Jd+9NsfQ6AzfkhxhC+3JDzQFwrNTV39LyTAuZvAirGnjH+xJ
+         oBRMP1SgVqE678BddKGOJidDbhZla0OZZx72LkPLflXjzfvsUsNKIX9/JBmA1iGuHB5P
+         UOy/Fhgn24dpteoeo3DWEBnnmN29qFF/8oj/lEWm+8KofN4YlJwS0uV2MpWNVK/eVbwK
+         tqer/3LVVGsTdU0uylNC2epfLKPv+Rn1izBcBBbllQe3fQngvprIR0d0D+u42oENrU75
+         krPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=kjBq9JQE;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=6tEI9Cwg;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=6tEI9Cwg;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=qTx2Ofnm;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=V47TOg7Q;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=kCpViizu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j16-v6si6054205qvc.65.2018.07.13.07.45.15
+        by mx.google.com with ESMTPS id u5-v6si8177037qvi.177.2018.07.14.10.23.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Jul 2018 07:45:15 -0700 (PDT)
+        Sat, 14 Jul 2018 10:23:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=kjBq9JQE;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=6tEI9Cwg;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=6tEI9Cwg;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=qTx2Ofnm;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=V47TOg7Q;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=kCpViizu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37692 helo=lists.gnu.org)
+Received: from localhost ([::1]:42096 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdzJr-0007hX-97
-	for alex.bennee@linaro.org; Fri, 13 Jul 2018 10:45:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37568)
+	id 1feOGw-00033g-4A
+	for alex.bennee@linaro.org; Sat, 14 Jul 2018 13:23:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38403)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fdzJf-0007f4-E7
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 10:45:04 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1feO9u-0005nD-CT
+	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 13:16:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fdzJa-0002Ml-CR
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 10:45:03 -0400
-Received: from greensocs.com ([193.104.36.180]:51364)
+	(envelope-from <luc.michel@greensocs.com>) id 1feO9n-0004Ww-Ez
+	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 13:16:35 -0400
+Received: from greensocs.com ([193.104.36.180]:57359)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fdzJZ-0002Ku-SQ; Fri, 13 Jul 2018 10:44:58 -0400
+	id 1feO9m-0004Vu-Ua; Sat, 14 Jul 2018 13:16:31 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 63210C7AE0;
-	Fri, 13 Jul 2018 16:44:48 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 67AB8C7AF9;
+	Sat, 14 Jul 2018 19:16:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1531493088;
-	bh=PKRCjC60/xgUZDBYDAE+BJZPI+gh2/aPGYCt90aKhWw=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=kjBq9JQEoeRpAdAoyQnuFUsI9ulKWBvuVTyv07opXhuH8wrUsGD0lTqcjAI4Uiquy
-	2Ybb1yHfwrT2z7bmXo2wmiLkiEIUCRaqqQCKqrAn3tPDxrAg2f13pCP1mIJ13sQAoQ
-	/AbtwbQ2IOjQ9z6CH3qKQ/3ubmD7XF/9eE0udq8M=
+	s=mail; t=1531588590;
+	bh=SKtJqMG+GH1kcHIFSEAAr3x3C2DWg3274Gh33dT4l8M=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=qTx2OfnmgHfhPOLZlHgIDJZuXgUUZyYVXWVjtUKaTEqgmCq/wylS7EN2AC+na9nQv
+	Yz2VR71A2bJXeFY6pSFPRuniDTv0k+UKq0q0aR7ECS3SzcC/0b40Ue0449wCWxE7+F
+	Waq+bCoJsvPPqw+fUknh9+CaYhNzW77/HSMfnS6Q=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=6tEI9Cwg;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=6tEI9Cwg
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=V47TOg7Q;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=kCpViizu
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VLcHzGrv6n-y; Fri, 13 Jul 2018 16:44:47 +0200 (CEST)
+	with ESMTP id xlXcmYzqB2qb; Sat, 14 Jul 2018 19:16:29 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 7D4E2C7AEC; Fri, 13 Jul 2018 16:44:47 +0200 (CEST)
+	id 022DCC7AF4; Sat, 14 Jul 2018 19:16:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1531493087;
-	bh=PKRCjC60/xgUZDBYDAE+BJZPI+gh2/aPGYCt90aKhWw=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=6tEI9CwgX3oHGcBsWz9yGWV4LXxpJxQ1edRVvu1QsBaHWZjv+7dAzuB8lmMagA+HC
-	phgK9g4PwYVQBZzMe7PToiVmgyOix+QfKQWsCIL/tPFkiXD7nkhtVVojvHxPzQTPyh
-	P+ik28DCpHiQlAZdYzSvB1afZg8HMYVwcdpzQH+I=
-Received: from [192.168.1.5] (unknown [105.98.62.195])
+	s=mail; t=1531588589;
+	bh=SKtJqMG+GH1kcHIFSEAAr3x3C2DWg3274Gh33dT4l8M=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=V47TOg7QRDXCFvasllnBxDf9M+Glw2bNfNXgc+vEYC2DYFWZjjY+/+QhazOGOeA1l
+	0F+/zpLg3q4whQ+P5wfVt7Nk15H+HTXyEB/i4Nn/l+Ky/2XsHyJUOzmOnpiQxUpmq2
+	XKS9Zfp/YaL3RSd3uLbBAfgqXEclkT+eOFmTYkyM=
+Received: from localhost.localdomain (unknown [105.98.38.216])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id CA032C7AE0;
-	Fri, 13 Jul 2018 16:44:46 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 0D612C7AE3;
+	Sat, 14 Jul 2018 19:16:27 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1531493087;
-	bh=PKRCjC60/xgUZDBYDAE+BJZPI+gh2/aPGYCt90aKhWw=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=6tEI9CwgX3oHGcBsWz9yGWV4LXxpJxQ1edRVvu1QsBaHWZjv+7dAzuB8lmMagA+HC
-	phgK9g4PwYVQBZzMe7PToiVmgyOix+QfKQWsCIL/tPFkiXD7nkhtVVojvHxPzQTPyh
-	P+ik28DCpHiQlAZdYzSvB1afZg8HMYVwcdpzQH+I=
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
-	<20180629132954.24269-15-luc.michel@greensocs.com>
-	<CAFEAcA_R9zp7EBtFetH5Q1Dnzj-kjPzDKRsBAo9aVnMZ3PW0VA@mail.gmail.com>
+	s=mail; t=1531588588;
+	bh=SKtJqMG+GH1kcHIFSEAAr3x3C2DWg3274Gh33dT4l8M=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=kCpViizu+jvrJ6rq4nshvmkb1fiCqI6/DNiW1rSQE9IJ882fO7BO44N8cmNBezjnW
+	/XXUI4bduoTbCEkusDSt7KVH6+88RRFq0e4VTPYH68pi+L5qyyButHOxnfhXGhekpR
+	RBQuhAVV1Xql177JfAZEuUFaoSjWFgNnbAQTukMM=
 From: Luc Michel <luc.michel@greensocs.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <d4406995-ad08-b6e4-bf97-f9c212569047@greensocs.com>
-Date: Fri, 13 Jul 2018 16:44:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_R9zp7EBtFetH5Q1Dnzj-kjPzDKRsBAo9aVnMZ3PW0VA@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="YHiNZgu1cQKIbjPAMqJZ94mFQG0soNmCd"
+To: qemu-devel@nongnu.org
+Date: Sat, 14 Jul 2018 19:15:56 +0200
+Message-Id: <20180714171601.5734-16-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180714171601.5734-1-luc.michel@greensocs.com>
+References: <20180714171601.5734-1-luc.michel@greensocs.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: Re: [Qemu-arm] [PATCH v3 14/20] intc/arm_gic: Wire the vCPU
- interface
+Subject: [Qemu-arm] [PATCH v4 15/20] intc/arm_gic: Implement the virtual
+ interface registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -169,131 +117,296 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d/0z5AuKR+JC
+X-TUID: tXDe3kPWnOVk
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---YHiNZgu1cQKIbjPAMqJZ94mFQG0soNmCd
-Content-Type: multipart/mixed; boundary="XVMrQpZuhBNHrlPkZROs1ITvsIpdLlO8L";
- protected-headers="v1"
-From: Luc Michel <luc.michel@greensocs.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
- Mark Burton <mark.burton@greensocs.com>, Jan Kiszka <jan.kiszka@web.de>
-Message-ID: <d4406995-ad08-b6e4-bf97-f9c212569047@greensocs.com>
-Subject: Re: [PATCH v3 14/20] intc/arm_gic: Wire the vCPU interface
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
- <20180629132954.24269-15-luc.michel@greensocs.com>
- <CAFEAcA_R9zp7EBtFetH5Q1Dnzj-kjPzDKRsBAo9aVnMZ3PW0VA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_R9zp7EBtFetH5Q1Dnzj-kjPzDKRsBAo9aVnMZ3PW0VA@mail.gmail.com>
+Implement the read and write functions for the virtual interface of the
+virtualization extensions in the GICv2.
 
---XVMrQpZuhBNHrlPkZROs1ITvsIpdLlO8L
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gic.c | 235 +++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 233 insertions(+), 2 deletions(-)
 
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index be44015c39..d8e9cf0a3a 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -147,6 +147,24 @@ static void gic_update(GICState *s)
+     }
+ }
+ 
++/* Return true if this LR is empty, i.e. the corresponding bit
++ * in ELRSR is set.
++ */
++static inline bool gic_lr_entry_is_free(uint32_t entry)
++{
++    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
++        && (GICH_LR_HW(entry) || !GICH_LR_EOI(entry));
++}
++
++/* Return true if this LR should trigger an EOI maintenance interrupt, i.e. the
++ * corrsponding bit in EISR is set.
++ */
++static inline bool gic_lr_entry_is_eoi(uint32_t entry)
++{
++    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
++        && !GICH_LR_HW(entry) && GICH_LR_EOI(entry);
++}
++
+ static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
+                                  int cm, int target)
+ {
+@@ -1531,6 +1549,200 @@ static MemTxResult gic_thisvcpu_write(void *opaque, hwaddr addr,
+     return gic_cpu_write(s, gic_get_current_vcpu(s), addr, value, attrs);
+ }
+ 
++static uint32_t gic_compute_eisr(GICState *s, int cpu, int lr_start)
++{
++    int lr_idx;
++    uint32_t ret = 0;
++
++    for (lr_idx = lr_start; lr_idx < s->num_lrs; lr_idx++) {
++        uint32_t *entry = &s->h_lr[lr_idx][cpu];
++        ret = deposit32(ret, lr_idx - lr_start, 1,
++                        gic_lr_entry_is_eoi(*entry));
++    }
++
++    return ret;
++}
++
++static uint32_t gic_compute_elrsr(GICState *s, int cpu, int lr_start)
++{
++    int lr_idx;
++    uint32_t ret = 0;
++
++    for (lr_idx = lr_start; lr_idx < s->num_lrs; lr_idx++) {
++        uint32_t *entry = &s->h_lr[lr_idx][cpu];
++        ret = deposit32(ret, lr_idx - lr_start, 1,
++                        gic_lr_entry_is_free(*entry));
++    }
++
++    return ret;
++}
++
++static void gic_vmcr_write(GICState *s, uint32_t value, MemTxAttrs attrs)
++{
++    int vcpu = gic_get_current_vcpu(s);
++    uint32_t ctlr;
++    uint32_t abpr;
++    uint32_t bpr;
++    uint32_t prio_mask;
++
++    ctlr = FIELD_EX32(value, GICH_VMCR, VMCCtlr);
++    abpr = FIELD_EX32(value, GICH_VMCR, VMABP);
++    bpr = FIELD_EX32(value, GICH_VMCR, VMBP);
++    prio_mask = FIELD_EX32(value, GICH_VMCR, VMPriMask) << 3;
++
++    gic_set_cpu_control(s, vcpu, ctlr, attrs);
++    s->abpr[vcpu] = MAX(abpr, GIC_VIRT_MIN_ABPR);
++    s->bpr[vcpu] = MAX(bpr, GIC_VIRT_MIN_BPR);
++    gic_set_priority_mask(s, vcpu, prio_mask, attrs);
++}
++
++static MemTxResult gic_hyp_read(void *opaque, int cpu, hwaddr addr,
++                                uint64_t *data, MemTxAttrs attrs)
++{
++    GICState *s = ARM_GIC(opaque);
++    int vcpu = cpu + GIC_NCPU;
++
++    switch (addr) {
++    case A_GICH_HCR: /* Hypervisor Control */
++        *data = s->h_hcr[cpu];
++        break;
++
++    case A_GICH_VTR: /* VGIC Type */
++        *data = FIELD_DP32(0, GICH_VTR, ListRegs, s->num_lrs - 1);
++        *data = FIELD_DP32(*data, GICH_VTR, PREbits,
++                           GIC_VIRT_MAX_GROUP_PRIO_BITS - 1);
++        *data = FIELD_DP32(*data, GICH_VTR, PRIbits,
++                           (7 - GIC_VIRT_MIN_BPR) - 1);
++        break;
++
++    case A_GICH_VMCR: /* Virtual Machine Control */
++        *data = FIELD_DP32(0, GICH_VMCR, VMCCtlr,
++                           extract32(s->cpu_ctlr[vcpu], 0, 10));
++        *data = FIELD_DP32(*data, GICH_VMCR, VMABP, s->abpr[vcpu]);
++        *data = FIELD_DP32(*data, GICH_VMCR, VMBP, s->bpr[vcpu]);
++        *data = FIELD_DP32(*data, GICH_VMCR, VMPriMask,
++                           extract32(s->priority_mask[vcpu], 3, 5));
++        break;
++
++    case A_GICH_MISR: /* Maintenance Interrupt Status */
++        *data = s->h_misr[cpu];
++        break;
++
++    case A_GICH_EISR0: /* End of Interrupt Status 0 and 1 */
++    case A_GICH_EISR1:
++        *data = gic_compute_eisr(s, cpu, (addr - A_GICH_EISR0) * 8);
++        break;
++
++    case A_GICH_ELRSR0: /* Empty List Status 0 and 1 */
++    case A_GICH_ELRSR1:
++        *data = gic_compute_elrsr(s, cpu, (addr - A_GICH_ELRSR0) * 8);
++        break;
++
++    case A_GICH_APR: /* Active Priorities */
++        *data = s->h_apr[cpu];
++        break;
++
++    case A_GICH_LR0 ... A_GICH_LR63: /* List Registers */
++    {
++        int lr_idx = (addr - A_GICH_LR0) / 4;
++
++        if (lr_idx > s->num_lrs) {
++            *data = 0;
++        } else {
++            *data = s->h_lr[lr_idx][cpu];
++        }
++        break;
++    }
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "gic_hyp_read: Bad offset %" HWADDR_PRIx "\n", addr);
++        return MEMTX_OK;
++    }
++
++    return MEMTX_OK;
++}
++
++static MemTxResult gic_hyp_write(void *opaque, int cpu, hwaddr addr,
++                                 uint64_t value, MemTxAttrs attrs)
++{
++    GICState *s = ARM_GIC(opaque);
++    int vcpu = cpu + GIC_NCPU;
++
++    switch (addr) {
++    case A_GICH_HCR: /* Hypervisor Control */
++        s->h_hcr[cpu] = value & GICH_HCR_MASK;
++        break;
++
++    case A_GICH_VMCR: /* Virtual Machine Control */
++        gic_vmcr_write(s, value, attrs);
++        break;
++
++    case A_GICH_APR: /* Active Priorities */
++        s->h_apr[cpu] = value;
++        s->running_priority[vcpu] = gic_get_prio_from_apr_bits(s, vcpu);
++        break;
++
++    case A_GICH_LR0 ... A_GICH_LR63: /* List Registers */
++    {
++        int lr_idx = (addr - A_GICH_LR0) / 4;
++
++        if (lr_idx > s->num_lrs) {
++            return MEMTX_OK;
++        }
++
++        s->h_lr[lr_idx][cpu] = value & GICH_LR_MASK;
++        break;
++    }
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "gic_hyp_write: Bad offset %" HWADDR_PRIx "\n", addr);
++        return MEMTX_OK;
++    }
++
++    return MEMTX_OK;
++}
++
++static MemTxResult gic_thiscpu_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
++                                    unsigned size, MemTxAttrs attrs)
++{
++    GICState *s = (GICState *)opaque;
++
++    return gic_hyp_read(s, gic_get_current_cpu(s), addr, data, attrs);
++}
++
++static MemTxResult gic_thiscpu_hyp_write(void *opaque, hwaddr addr,
++                                     uint64_t value, unsigned size,
++                                     MemTxAttrs attrs)
++{
++    GICState *s = (GICState *)opaque;
++
++    return gic_hyp_write(s, gic_get_current_cpu(s), addr, value, attrs);
++}
++
++static MemTxResult gic_do_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
++                                    unsigned size, MemTxAttrs attrs)
++{
++    GICState **backref = (GICState **)opaque;
++    GICState *s = *backref;
++    int id = (backref - s->backref);
++
++    return gic_hyp_read(s, id, addr, data, attrs);
++}
++
++static MemTxResult gic_do_hyp_write(void *opaque, hwaddr addr,
++                                     uint64_t value, unsigned size,
++                                     MemTxAttrs attrs)
++{
++    GICState **backref = (GICState **)opaque;
++    GICState *s = *backref;
++    int id = (backref - s->backref);
++
++    return gic_hyp_write(s, id + GIC_NCPU, addr, value, attrs);
++
++}
++
+ static const MemoryRegionOps gic_ops[2] = {
+     {
+         .read_with_attrs = gic_dist_read,
+@@ -1552,8 +1764,8 @@ static const MemoryRegionOps gic_cpu_ops = {
+ 
+ static const MemoryRegionOps gic_virt_ops[2] = {
+     {
+-        .read_with_attrs = NULL,
+-        .write_with_attrs = NULL,
++        .read_with_attrs = gic_thiscpu_hyp_read,
++        .write_with_attrs = gic_thiscpu_hyp_write,
+         .endianness = DEVICE_NATIVE_ENDIAN,
+     },
+     {
+@@ -1563,6 +1775,12 @@ static const MemoryRegionOps gic_virt_ops[2] = {
+     }
+ };
+ 
++static const MemoryRegionOps gic_viface_ops = {
++    .read_with_attrs = gic_do_hyp_read,
++    .write_with_attrs = gic_do_hyp_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
+ static void arm_gic_realize(DeviceState *dev, Error **errp)
+ {
+     /* Device instance realize function for the GIC sysbus device */
+@@ -1604,6 +1822,19 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+                               &s->backref[i], "gic_cpu", 0x100);
+         sysbus_init_mmio(sbd, &s->cpuiomem[i+1]);
+     }
++
++    /* Extra core-specific regions for virtual interfaces. This is required by
++     * the GICv2 specification.
++     */
++    if (s->virt_extn) {
++        for (i = 0; i < s->num_cpu; i++) {
++            memory_region_init_io(&s->vifaceiomem[i + 1], OBJECT(s),
++                                  &gic_viface_ops, &s->backref[i],
++                                  "gic_viface", 0x1000);
++            sysbus_init_mmio(sbd, &s->vifaceiomem[i + 1]);
++        }
++    }
++
+ }
+ 
+ static void arm_gic_class_init(ObjectClass *klass, void *data)
+-- 
+2.18.0
 
-
-On 07/12/2018 03:37 PM, Peter Maydell wrote:
-> On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
->> Add the read/write functions to handle accesses to the vCPU interface.=
-
->> Those accesses are forwarded to the real CPU interface, with the CPU i=
-d
->> being converted to the corresponding vCPU id (vCPU id =3D CPU id +
->> GIC_NCPU).
->>
->> As for the CPU interface, we create a base region for the vCPU interfa=
-ce
->> that fetches the current vCPU id using the current_cpu global variable=
-, and
->> one mirror region per vCPU which maps to that specific vCPU id. This i=
-s
->> required by the GIC architecture specification.
->=20
->=20
->>  static void arm_gic_realize(DeviceState *dev, Error **errp)
->>  {
->>      /* Device instance realize function for the GIC sysbus device */
->> @@ -1531,7 +1590,7 @@ static void arm_gic_realize(DeviceState *dev, Er=
-ror **errp)
->>      }
->>
->>      /* This creates distributor and main CPU interface (s->cpuiomem[0=
-]) */
->=20
-> Can we also update this comment to indicate what virt-related
-> memory regions are being created?
->=20
->> -    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, NULL);
->> +    gic_init_irqs_and_mmio(s, gic_set_irq, gic_ops, gic_virt_ops);
->>
->>      /* Extra core-specific regions for the CPU interfaces. This is
->>       * necessary for "franken-GIC" implementations, for example on
->> @@ -1547,6 +1606,16 @@ static void arm_gic_realize(DeviceState *dev, E=
-rror **errp)
->>                                &s->backref[i], "gic_cpu", 0x100);
->>          sysbus_init_mmio(sbd, &s->cpuiomem[i+1]);
->>      }
->> +
->> +    if (s->virt_extn) {
->=20
-> ...and a comment about what these regions are for.
->=20
-> What requires these per-core regions anyway? There's no way to
-> specify them in the device tree bindings for Linux, which AFAIK
-> only cares about using the "vcpu i/f for this core" registers.
-> I don't think the GIC-400 has these. (It does have per-cpu
-> aliases of the GICH_* registers, but this patchset doesn't seem
-> to implement those.)
-My mistake. I misread the specifications. Those aliases should target
-the virtual interfaces, and not the virtual CPU interfaces. I'll change
-that.
-
->=20
->> +        for (i =3D 0; i < s->num_cpu; i++) {
->> +            memory_region_init_io(&s->vcpuiomem[i + 1], OBJECT(s),
->> +                                  &gic_vcpu_ops, &s->backref[i],
->> +                                  "gic_vcpu", 0x2000);
->> +            sysbus_init_mmio(sbd, &s->vcpuiomem[i + 1]);
->> +        }
->> +    }
->> +
->>  }
->=20
-> thanks
-> -- PMM
->=20
-
-
---XVMrQpZuhBNHrlPkZROs1ITvsIpdLlO8L--
-
---YHiNZgu1cQKIbjPAMqJZ94mFQG0soNmCd
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAltIut0ACgkQd8knW3Qn
-Tr78JQ//b8PVwiTP+CX4FcKkdEkOpEh7ejWreN9outjsig19XAlMb1i74iB+7NP3
-bavtUrNjTiio5COPN7NT1wgCKagvasFr5yUWlBrg0cGhoehrjK1j2Gi6SX+smAV0
-dTH2VfPD3jp7dBy+QrduT9W3GwuS0bInHaIYSSIPoqyX6EE7ocFkVoc6bJILxQrG
-CQagHIpW6oyCJRzrLJU4X0eREQUAA4/Bup13ntRHJVyPMV1eB/RYU/SJEc7MX1Fj
-zzwxxS3t4f5GMQi4DmRmfPrrG0K+Tw9h6H02EAt+DNZ4c9FpKsOtOwa2axUyS1nY
-9y7lP14lAJsLZts7ap3QryOxlA1NEv8jBLZOWNO4o7xjCaVIrTas6zGGIj93unBr
-Mq7BdnEZFfO/dGHjd37U/Qa0TA3i/fhHT6itaT4EILwGorsNSpEON6SHOYLMOY9B
-5HyhfIGjNEofcmnpUzneXrRDLeuOj2CaPbanqhM0IFFOXZCdWa13qsV3i8EmbHSj
-k9n27G2WVErJJMnuIHnDXTM1iakMXmwbiS50tV0C8Bi4hqHrumy7fKeRTyHnSaMS
-GxlL+xFhL5+Lv4k9jOuRvwXAbUsvQUJ/nSiopKo4Y0l0TZ4F3R7PCzgjgLXHZqCy
-AG6odpV4r4aNLBO1nKy3Sso6H+SjN8YCqzA3RdtJPeVVP6DaPmY=
-=FfvZ
------END PGP SIGNATURE-----
-
---YHiNZgu1cQKIbjPAMqJZ94mFQG0soNmCd--

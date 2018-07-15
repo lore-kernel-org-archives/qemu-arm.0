@@ -1,164 +1,372 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp136968wru;
-        Sat, 14 Jul 2018 17:37:30 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpevfVnDxxirLQAaEJ15/HMY/PTqw8ce+hDgyo8hfhAuN9Wd8ThzS6W7f1BW93YWtTs7uR/Q
-X-Received: by 2002:a0c:c602:: with SMTP id v2-v6mr12958052qvi.31.1531615050038;
-        Sat, 14 Jul 2018 17:37:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531615050; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp264533wru;
+        Sat, 14 Jul 2018 22:03:04 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdlpWRN7JOlGaJiy3/WY05N0k/EX+H3HZTOXX4fi1GAoaJZTo0k9pq8ssZP9buWV3BjDK0/
+X-Received: by 2002:a37:9704:: with SMTP id z4-v6mr10707873qkd.37.1531630984870;
+        Sat, 14 Jul 2018 22:03:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531630984; cv=none;
         d=google.com; s=arc-20160816;
-        b=YduzpnfpvxbUlofCEZ26186si6D6dJbuyxONdy2eSvCAS3y94fCTMx7fzXsYdfK7t7
-         59sK3haCGIddBbar7U1q6Xg4hDI4h2HhlQqZe1eVwCug7eUmein0V77ot7uzCoQ5pmVh
-         MZ7OZd/tIWKYOBwaAESW4+qEooRPR1nTjXjAQVR2fOZ/RZ/FaLG7TRRy7BkFDbUEPWPz
-         lVpdARWiRwZRCbY6uXBkrJaFhOvttY/xtxWXABkys8A4wzomVrMr6sl7pMGoImCEFNUR
-         uHRGOj3mtgl7YrraheS3OsFFoUgFTutF8w3pst1OkPvtej5iggwxCAcP61lbD2FVa369
-         YNgw==
+        b=pP9+ndwGq3QgDrZKELKdn3hml3QM98o5Isi7JfU4v3mWOuJQaoNA/JDVws7nxwWiH7
+         pDo7vw5wkeGyy/gN5EAQDCxe5pSQaLgS9ut83Fb1e2BQpbGtlgibWGbXPFQyRta2fnyv
+         D0PlRFmC4+rR3qU87flohNGYWncSADNisEskVr11vOIvNLULbwg/h7iKRygQZsSBSrsF
+         Ori5sjQ2kIIanE5Bvw9npnu0DlIPCusuNF91ocADT4CLhVRUpQpwSLyuZg4KaV6Ct/Bk
+         Cd6kiQ1Naqk+nGmNY1SruI9JvAo0/hqKvoJQME6pLa7aFR7kALVK0N5IRiSsOourkOcl
+         VPQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=sZgKmcwktBeaPWsMA9PlqdRIkEytD6Wv2V3aB9sCt6A=;
-        b=d4fcNg/idoMbX8P/WFUHNRkYz9L13IJREtD2v5tEMs4SGWQCd3nfaoqQbAV9LzkWww
-         Wr+QCgqVR8Ntmb4Gsqy49w090s+bc6nOGm8GYIuUqLQPlNI3iTGeQ4kMVTu0M6k8tnAo
-         nQ+x0Q6MCHFkNqJuqcsAiY9PZg1l2mjXATYazLBgwHrJ9O3FQlY1bbi/hh5+b1NZJ1Xc
-         dKjZzXkjg8x8VKW+Uw73elanwXRbqxzjp5k1duniDPCqelAc5ekJFzipgl49LUcc47H5
-         PHZ7pSLiDa/YfBYPqpi/qgQnwqem8lnXtdx1GD+jdQyVUwArb73uBVx8rLStepbQkwY+
-         LkDA==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
+         :references:to:dkim-signature:arc-authentication-results;
+        bh=qk8SDnYhEzJbXzObAv2WEe4y5VkWj4jUgJ1b5km++uM=;
+        b=cuiYBtVhyCv/4Y3Ksj4OEwBO92VkKHmze/ASmos3rZrczrsA1q6MKkM/O+iuOAUOEX
+         9gK3ov4ILx8/a8TCLUDE8i/oD0LpnacDAXmCkNoAhStbIlYJDp63lOfSNzFg/gpzAinJ
+         bApjx6iBdas0SQVIi+mbrJB/ydqGe9QWGzofmh56Semw1WdGRw31RqZUHZn2kza9zWZv
+         jcbRDO9BViVvvVFyFR3Ob6+DbFRL/WOzdu+m1LEkgLnW54HbWx9b53zdcb9jv6Azz8YJ
+         eHvbap0ix3SlTvptGC8xaU7G7oDgTBIot24OjyZVnmvh3UcMY17vy3cKU4mRhrmWlJ0i
+         f7eQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u7OgiSYR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=myLsDCv6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v50-v6si2149874qtb.311.2018.07.14.17.37.29
+        by mx.google.com with ESMTPS id b187-v6si5033434qke.34.2018.07.14.22.03.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 14 Jul 2018 17:37:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sat, 14 Jul 2018 22:03:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u7OgiSYR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43815 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=myLsDCv6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44318 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1feV2X-0003cq-Ih
-	for alex.bennee@linaro.org; Sat, 14 Jul 2018 20:37:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37625)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1feZBX-0006GZ-QM
+	for alex.bennee@linaro.org; Sun, 15 Jul 2018 01:03:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60302)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1feV2L-0003cB-EK
-	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 20:37:18 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1feZAJ-0005xJ-TN
+	for qemu-devel@nongnu.org; Sun, 15 Jul 2018 01:01:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1feV2K-0002y3-Hz
-	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 20:37:17 -0400
-Received: from mail-io0-x241.google.com ([2607:f8b0:4001:c06::241]:36479)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1feZAG-0005E0-Pj
+	for qemu-devel@nongnu.org; Sun, 15 Jul 2018 01:01:47 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:47026)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1feV2F-0002m6-QU; Sat, 14 Jul 2018 20:37:11 -0400
-Received: by mail-io0-x241.google.com with SMTP id k3-v6so34539165iog.3;
-	Sat, 14 Jul 2018 17:37:11 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1feZAG-0005DH-H7; Sun, 15 Jul 2018 01:01:44 -0400
+Received: by mail-qt0-x244.google.com with SMTP id d4-v6so14931227qtn.13;
+	Sat, 14 Jul 2018 22:01:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=sZgKmcwktBeaPWsMA9PlqdRIkEytD6Wv2V3aB9sCt6A=;
-	b=u7OgiSYRn3FVcUoGeYkEV5yl+n3PTg3uxu59b6br/eB5d5kFpV4L1dxng58oYGqGFo
-	7nS+6LzjnhPDxr/eVAWzp9PvjOyesM3pwyIxAPluR/23bUUn+y1v8fmpb1S2R6oHdwpb
-	02ONosD0FDhGbikQXtBC3PPs6aVeYU61zDUEJjQZEW4FdfEuKwFdouBQaTkENzjPUA28
-	U/VlDpB5M8VIESUCLy2Bxq97WrwspN7UpAY/fzOQd3WP0R9M7puYi8+xjj5HYPoLwc0G
-	HXvucGdB6+jso1jYkjfP5soxPt5lYhHMWD9sY3CbPMtn8wmtWiyxxPtBLRfHEkZybPJ7
-	dqWQ==
+	:date:user-agent:mime-version:in-reply-to;
+	bh=q8du0JG3HYIhVpZpLb1BX772G9VqF1faZVJfpWgV51s=;
+	b=myLsDCv6mXWHy39f5zzYXTiPLh/ST7b97h53M68NEyP/qWnYaLgogz26Yuc/jGQGGX
+	LJFgHu1LSlv/VY7hL9gxzgGUcMxsEmQXAT8ILRPy+H2mMkOeXCqnQM3GVMS0BrURX4dY
+	KzfzQPnQC7ywHPD55rza9ZmEYwPp5Y9ldTHcnjy9IZ+r7GsskAC+E7ctCfDF0nM9AiWc
+	WORrFf+H50eCrtxar/bplhZ7KNUVJzhBiiFAldT9R7pRNPUOFf36XtPAaEvp02BLRNJK
+	E5kT642m+3CHhk9K0L8OkF5/u6Y1ZBgqXwq2hYr0jlvf+fofZqFU8Hz6FrYTvKFqp76g
+	kvXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=sZgKmcwktBeaPWsMA9PlqdRIkEytD6Wv2V3aB9sCt6A=;
-	b=BPmW4P2/0u294kcJ+01PR8WiHj2EGkSOdIEOcXDYmCldpc3Ksua7NiGz6BPbgtllx/
-	0okIHrJ5uazcZYFSSuGGo1BigrL74VJjyPO2NX6OfdtM7S2vU7Vi/eMBst8yPXzEWlpe
-	YznRc14ITyHdODTDrRx1LAtcBDEU3RK4RWXXX6dY0qRGPu2E1bCQ5P4C0u4x9sskApmK
-	3RSno+5+rRUsVew3eqOknB02tDzxsvTwBOoK7L7ZdK6/KO2D9TQ4m52KtJUhk8X3lCxp
-	9aiRUBQlUY7r7122YZuatK5x5kk47O5Qvr6pT8AvKiCQDoQepFvgvjl7nnhClr5dTqs0
-	U+IA==
-X-Gm-Message-State: AOUpUlG8fmIQRLyxbTKEXcO7EPG+7eQoAVViLZYaGsqeiV3hTUqMod+a
-	N7wUn9hgWayXOX3sU0lI6z0=
-X-Received: by 2002:a6b:28c2:: with SMTP id
-	o185-v6mr3298655ioo.109.1531615030725; 
-	Sat, 14 Jul 2018 17:37:10 -0700 (PDT)
-Received: from cloudburst.twiddle.net ([172.56.12.170])
-	by smtp.googlemail.com with ESMTPSA id
-	w5-v6sm5749738ioc.58.2018.07.14.17.37.08
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to;
+	bh=q8du0JG3HYIhVpZpLb1BX772G9VqF1faZVJfpWgV51s=;
+	b=XOahHcsQgkJhNv1ixorFZZjUNg4Rx2JSpQIjYYf4J3+s3TK79qWf7mmTd2j0YN9Ccx
+	WNKZ/S3/5mGIxJCtv1iCIvpliv0Ypm0am3BxpGEgxZedvLEFda93n+YBL7nZaKYb8PJH
+	w7lqOsW8UdQSXAa1FZk4rcBATT8jUwPCjDRCJly1yAvmXzhlLUTVBTlT0ie2JIwDpcDP
+	M/n0iShuj/v9s4cc5Ywnz4wHGbUtoy/Cxk43uEXBqd22lcOkdq7xLDY2OS3tVzB+BWaO
+	wO76+uixlAeUrQ7uFIpemEzZ8qslrA5eRHQdjHiOCYTtZnB59rdFLmux6jHdgx6YVjOV
+	5Z5w==
+X-Gm-Message-State: AOUpUlGkj9aG78fUj1FkYnjim5fAKlKysedU+udqj6BDqrVYZCKAX15Q
+	2raz6tyHtyXRU1dHfJOEITA=
+X-Received: by 2002:ac8:29a4:: with SMTP id
+	33-v6mr11323403qts.354.1531630903746; 
+	Sat, 14 Jul 2018 22:01:43 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	d12-v6sm10494198qtp.6.2018.07.14.22.01.41
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 14 Jul 2018 17:37:09 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+	Sat, 14 Jul 2018 22:01:43 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <rth@twiddle.net>
 References: <20180713150945.12348-1-peter.maydell@linaro.org>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
-	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
-	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
-	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
-	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
-	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
-	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
-	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
-	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
-	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
-	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
-	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
-	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
-	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
-	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
-	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
-	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
-	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
-	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
-	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
-	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
-	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
-	VcROBqvtH3ecaIL9iw==
-Message-ID: <5c3ec438-2265-94b4-4f35-71a79d838518@twiddle.net>
-Date: Sat, 14 Jul 2018 19:37:06 -0500
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
+	mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+	u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+	HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+	YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+	ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+	dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+	ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+	Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+	HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+	Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+	YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQI+BBMBAgAoBQI3aGSw
+	AhsPBQkmUJgABgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRDj4yws3q3A3nS+EACxKosO
+	3DZdwdVPXLVvSAA5y3Ohr2ByWN06RlVEkKWkOxm0lQ96LxBOZ03mDC+He/36DHaP+fujPBTz
+	XjTXygWWZUtk0flDWR1w0a4yhX/JHfL5yloMZrxifCwouf2Sv9Yd6D46pzMeGsq8aCvbZYSf
+	lDi3KXsVHc+jbmRwxtzJxz7366dsTC1tOJmjVSxc8bE55pHnPFOT1KKM9fxGWZFYx0UqAL/1
+	NkrOKP5eXdJ51EhQa5pjivJw6dQlfWMQURG4o4e2+aLe4TkS2FI0r6nTgmoDmTT74u35NzZW
+	Q3xjqcfqUX52+0drwlta22guNDbcJ4J+/I6FBF1C7CoSysBiIrldZQ6cJZ19st3jb7NHAoNk
+	DcUt5I3gt4EpaiijWEEYAhw1/NSagm9bfn9veBqzVHNQrz76NZMiy2kP2vAxKOvo1XVlcEl0
+	8MQ+IAUvYcLvU6yHRB4da7ts+ufqriNI5WBpvoLPRRa0wFDTj0nX/CfWFX9UkTwHA6/SWlhE
+	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
+	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
+	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
+Message-ID: <38ec941c-7a01-8ba9-cf81-db944ce1329f@amsat.org>
+Date: Sun, 15 Jul 2018 02:01:38 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	Thunderbird/52.9.1
 MIME-Version: 1.0
 In-Reply-To: <20180713150945.12348-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature";
+	boundary="EKHNjZKOz9iEYIb2FI2R0ELFI2u3vHs5l"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c06::241
-Subject: Re: [Qemu-arm] [PATCH] accel/tcg: Check whether TLB entry is RAM
- consistently with how we set it up
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::244
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] accel/tcg: Check whether TLB
+ entry is RAM consistently with how we set it up
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rRCibneZNxGS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org, patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DeZKnbY1zl78
 
-On 07/13/2018 10:09 AM, Peter Maydell wrote:
-> @@ -939,29 +935,21 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--EKHNjZKOz9iEYIb2FI2R0ELFI2u3vHs5l
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <rth@twiddle.net>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, patches@linaro.org
+Message-ID: <38ec941c-7a01-8ba9-cf81-db944ce1329f@amsat.org>
+Subject: Re: [Qemu-arm] [PATCH] accel/tcg: Check whether TLB entry is RAM
+ consistently with how we set it up
+References: <20180713150945.12348-1-peter.maydell@linaro.org>
+In-Reply-To: <20180713150945.12348-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Peter,
+
+On 07/13/2018 12:09 PM, Peter Maydell wrote:
+> We set up TLB entries in tlb_set_page_with_attrs(), where we have
+> some logic for determining whether the TLB entry is considered
+> to be RAM-backed, and thus has a valid addend field. When we
+> look at the TLB entry in get_page_addr_code(), we use different
+> logic for determining whether to treat the page as RAM-backed
+> and use the addend field. This is confusing, and in fact buggy,
+> because the code in tlb_set_page_with_attrs() correctly decides
+> that rom_device memory regions not in romd mode are not RAM-backed,
+> but the code in get_page_addr_code() thinks they are RAM-backed.
+> This typically results in "Bad ram pointer" assertion if the
+> guest tries to execute from such a memory region.
+>=20
+> Fix this by making get_page_addr_code() just look at the
+> TLB_MMIO bit in the code_address field of the TLB, which
+> tlb_set_page_with_attrs() sets if and only if the addend
+> field is not valid for code execution.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This patch is based on:
+>  * [PATCH for-3.0 0/2] accel/tcg: fix get_page_addr_code() victim TLB l=
+ookups
+>  * [PATCH 0/6] accel/tcg: Support execution from MMIO and small MMU reg=
+ions
+> Based-on: <20180713141636.18665-1-peter.maydell@linaro.org>
+> Based-on: <20180710160013.26559-1-peter.maydell@linaro.org>
+>=20
+> It would be possible to fix the 'bad ram pointer' in a more
+> minimalist way (by making memory_region_is_unassigned()
+> check "!memory_region_is_romd(mr)" rather than "!mr->rom_device")
+> but since for 3.0 the only thing this does is turn that assert
+> failure into the "can't execute from non-ram" error-exit it
+> doesn't seem worth fixing for 3.0. After 3.0 the small-MMU-region
+> exec support makes it more interesting. NB that if your
+> rom-device is pflash then being able to execute from it when
+> it's not in romd mode is not likely to actually help you, since
+> pflash status code returns are seldom valid instructions :-)
+>=20
+> Philippe: you might like to try this lot with your MIPS
+> code that was getting the bad ram addr error?
+
+Yes! You're my hero =3D)
+
+Diff:
+
+ Power-On
+ ...
+ PFLASH: pflash_write: flash reset asked (98 f0)
+ pflash_reset reset
+ mips_cpu_handle_mmu_fault pc 94760050 ad a8610914 rw 0 mmu_idx 3
+ mips_cpu_handle_mmu_fault address=3Da8610914 physical 0000000008610914 p=
+rot 3
+ mips_cpu_handle_mmu_fault pc 900034a4 ad 900034a4 rw 2 mmu_idx 3
+ mips_cpu_handle_mmu_fault address=3D900034a4 physical 00000000100034a4 p=
+rot 3
+-qemu-system-mips: Bad ram pointer 0x4a4
++pflash_read offset:0x34a4 cmd:0x00 width:4 wcycle:0
++pflash_data_read32 data offset:0x34a4 value:0x14400057
+ ...
++mips_cpu_handle_mmu_fault pc 90003668 ad 90003668 rw 2 mmu_idx 3
++mips_cpu_handle_mmu_fault address=3D90003668 physical 0000000010003668 p=
+rot 3
+ ...
++HW revision is 9.0.0.0
++
++Flash autodetection returned: 0xFFFFFFF6
++VendorID: 0xC2C2       DeviceID: 0xA8A8
++
++Boot Failed. Go to the lab !!
+
+Many thanks for fixing this!
+
+Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+> ---
+>  include/exec/exec-all.h |  2 --
+>  accel/tcg/cputlb.c      | 30 +++++++++---------------------
+>  exec.c                  |  6 ------
+>  3 files changed, 9 insertions(+), 29 deletions(-)
+>=20
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index da73e3bfed2..5f781255826 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -502,8 +502,6 @@ hwaddr memory_region_section_get_iotlb(CPUState *cp=
+u,
+>                                         hwaddr paddr, hwaddr xlat,
+>                                         int prot,
+>                                         target_ulong *address);
+> -bool memory_region_is_unassigned(MemoryRegion *mr);
+> -
+>  #endif
+> =20
+>  /* vl.c */
+> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+> index 754795ff253..5e5a2a2616c 100644
+> --- a/accel/tcg/cputlb.c
+> +++ b/accel/tcg/cputlb.c
+> @@ -926,10 +926,6 @@ tb_page_addr_t get_page_addr_code(CPUArchState *en=
+v, target_ulong addr)
+>  {
+>      int mmu_idx, index;
+>      void *p;
+> -    MemoryRegion *mr;
+> -    MemoryRegionSection *section;
+> -    CPUState *cpu =3D ENV_GET_CPU(env);
+> -    CPUIOTLBEntry *iotlbentry;
+> =20
+>      index =3D (addr >> TARGET_PAGE_BITS) & (CPU_TLB_SIZE - 1);
+>      mmu_idx =3D cpu_mmu_index(env, true);
+> @@ -939,29 +935,21 @@ tb_page_addr_t get_page_addr_code(CPUArchState *e=
+nv, target_ulong addr)
 >          }
->          assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
+>          assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr)=
+);
 >      }
 > +    assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
+> =20
+> -    if (unlikely(env->tlb_table[mmu_idx][index].addr_code & TLB_RECHEC=
+K)) {
+> +    if (unlikely(env->tlb_table[mmu_idx][index].addr_code &
+> +                 (TLB_RECHECK | TLB_MMIO))) {
+>          /*
+> -         * This is a TLB_RECHECK access, where the MMU protection
+> -         * covers a smaller range than a target page. Return -1 to
+> -         * indicate that we cannot simply execute from RAM here;
+> -         * we will perform the necessary repeat of the MMU check
+> -         * when the "execute a single insn" code performs the
+> -         * load of the guest insn.
+> +         * Return -1 if we can't translate and execute from an entire
+> +         * page of RAM here, which will cause us to execute by loading=
 
-Don't duplicate the assert; just move it.  Otherwise,
+> +         * and translating one insn at a time, without caching:
+> +         *  - TLB_RECHECK: means the MMU protection covers a smaller r=
+ange
+> +         *    than a target page, so we must redo the MMU check every =
+insn
+> +         *  - TLB_MMIO: region is not backed by RAM
+>           */
+>          return -1;
+>      }
+> =20
+> -    iotlbentry =3D &env->iotlb[mmu_idx][index];
+> -    section =3D iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->at=
+trs);
+> -    mr =3D section->mr;
+> -    if (memory_region_is_unassigned(mr)) {
+> -        /*
+> -         * Not guest RAM, so there is no ram_addr_t for it. Return -1,=
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> -         * and we will execute a single insn from this device.
+> -         */
+> -        return -1;
+> -    }
+>      p =3D (void *)((uintptr_t)addr + env->tlb_table[mmu_idx][index].ad=
+dend);
+>      return qemu_ram_addr_from_host_nofail(p);
+>  }
+> diff --git a/exec.c b/exec.c
+> index 4f5df07b6a2..e7be0761c28 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -402,12 +402,6 @@ static MemoryRegionSection *phys_page_find(Address=
+SpaceDispatch *d, hwaddr addr)
+>      }
+>  }
+> =20
+> -bool memory_region_is_unassigned(MemoryRegion *mr)
+> -{
+> -    return mr !=3D &io_mem_rom && mr !=3D &io_mem_notdirty && !mr->rom=
+_device
+> -        && mr !=3D &io_mem_watch;
+> -}
+> -
+>  /* Called from RCU critical section */
+>  static MemoryRegionSection *address_space_lookup_region(AddressSpaceDi=
+spatch *d,
+>                                                          hwaddr addr,
+>=20
 
 
-r~
+--EKHNjZKOz9iEYIb2FI2R0ELFI2u3vHs5l
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAltK1TMACgkQ4+MsLN6t
+wN46zxAAsugLDYzya/xo/NyvhPojipoEgoHZgN2VWPdU8h956e7F2R9t8V7ON8Qn
+4ZRGnrJHVoDwsCREnCXc7NXXcH5eQrM9oBs2tnB3FCZt/PEZOBIAoFYdEXfeO8u8
+/WoMxGfAC1fIjRbxvca3E0AywKPEnCk/r/WAkMJS/LCtb/PhL2rsKGLeci5io5xR
+aGdIkhAmtfX+45mmt4s7Ctich6VQ63XDnpcsjDSGgwFwxNu7ZUP7Ed6yJUZGfssR
+uyfjJvZI9udAViAIIv+2Bmb65282dO1m8HaHN0cAa01NFh9A9ADZFYiXlbizQNWq
+Liy5k3NN97gbBt8IzLOHOktdkj/1WtwteqrcmtkFzxHbmFYml0qVO3sXm+HrKLXm
+o0alt70qtFP8m7KcTYh4uQpbx3YCeZGVJAG4kRXlT+U/+4SDy1OZ+9kVLwSlp1O7
+M837dpz4VMuiHjunTBI9jZ+GltSqlR8TzBcF93yGoRuuEYnjxV9fYrhNNW1vXWcz
+5RoychollvPsO+K9qKDbjOeFNijkOrRuL+wssiTzrB/1pUB7nLQssvNYbH6mbxLr
+Ar4VZEf+FKcypfQX10eV+sbYh1oftxdjy+J4vDS1nP6XcpA0+GAlt4fKZRSEQl6v
+QiI9f9FOp/NwiAgDBcu4+kN+f1F2L2SKVOHDjXoeukPt7UPYrK8=
+=goC/
+-----END PGP SIGNATURE-----
+
+--EKHNjZKOz9iEYIb2FI2R0ELFI2u3vHs5l--

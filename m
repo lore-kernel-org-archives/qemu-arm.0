@@ -1,123 +1,164 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp742507wru;
-        Wed, 25 Jul 2018 07:08:28 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcg+FsUOInLj5WWDt6CzxNiu433aJfyxkQKRv9M9wjKgH4bmBGCB6vz23iU0SG4cSsO9GyZ
-X-Received: by 2002:a0c:8950:: with SMTP id 16-v6mr18858412qvq.247.1532527708527;
-        Wed, 25 Jul 2018 07:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532527708; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp136968wru;
+        Sat, 14 Jul 2018 17:37:30 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpevfVnDxxirLQAaEJ15/HMY/PTqw8ce+hDgyo8hfhAuN9Wd8ThzS6W7f1BW93YWtTs7uR/Q
+X-Received: by 2002:a0c:c602:: with SMTP id v2-v6mr12958052qvi.31.1531615050038;
+        Sat, 14 Jul 2018 17:37:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531615050; cv=none;
         d=google.com; s=arc-20160816;
-        b=pQF3m0mDAJKTGsmxLmVPXbaX8z/dhbTR+KNJp7p9B+IoO7gTJGtCnZfr4eyFfEIu4t
-         lsC/Vk6FjGkF3uZozAmMY9Z3giEIoqr5v63Syfngx0WOfnL0782b7ZBH3eh2xWRjwEdO
-         XgKeHKPlOvPVRQPEoYXN6lSBBFY3bl50IGuCHwl9f2tt/0Y1IBQLnkGSBp0oKDQsc1Wv
-         yP6grtM/l8IGu18fOyBdAyw6G4RvyQjzvYaJdoN+zqrFDFOz2oHcg4Uwn5e2hqhvv+04
-         q6jSaesjMd2t5IJ+jVxxYEyEkA9zAJw3thf4+7XXWLPuY4dI7nSJPb8uGHY8g9P1VIUv
-         HHaQ==
+        b=YduzpnfpvxbUlofCEZ26186si6D6dJbuyxONdy2eSvCAS3y94fCTMx7fzXsYdfK7t7
+         59sK3haCGIddBbar7U1q6Xg4hDI4h2HhlQqZe1eVwCug7eUmein0V77ot7uzCoQ5pmVh
+         MZ7OZd/tIWKYOBwaAESW4+qEooRPR1nTjXjAQVR2fOZ/RZ/FaLG7TRRy7BkFDbUEPWPz
+         lVpdARWiRwZRCbY6uXBkrJaFhOvttY/xtxWXABkys8A4wzomVrMr6sl7pMGoImCEFNUR
+         uHRGOj3mtgl7YrraheS3OsFFoUgFTutF8w3pst1OkPvtej5iggwxCAcP61lbD2FVa369
+         YNgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:arc-authentication-results;
-        bh=SgkBP5QaUu8e9U9ZdtzK8qtobjoUaadw0Y60i7mubUE=;
-        b=j/eHbIJ1xMp0urupIkhSbV2qgn6D0Swygaxwbg1ZskizviAkLHzExZVnOZNavDg6Ye
-         MPO3H//GEkl2pK28VJLJ7ikIr33EJqHFbRvWYo6ODOFdmz8Ea/xQooxOBGsasR3mFDnG
-         cHqc8VK+gwbYnZmy1osI+WigCIskK3ELZppXiFIlM0haY+e6uKiz2OVDqnpnZeoH/0Fw
-         chwIsK+eZmlP+gfBdppXvPmdgX3zHCOo321shiBfkc9Ca/ZMLmmVfZKl+79p1ehSC6Hc
-         /J9+YpICFgCIgoEFzC4qI3iWfczaGaL9WtVJat18lhygfrQx24qdXx6bonLvZGZOYpmh
-         Jtqw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=sZgKmcwktBeaPWsMA9PlqdRIkEytD6Wv2V3aB9sCt6A=;
+        b=d4fcNg/idoMbX8P/WFUHNRkYz9L13IJREtD2v5tEMs4SGWQCd3nfaoqQbAV9LzkWww
+         Wr+QCgqVR8Ntmb4Gsqy49w090s+bc6nOGm8GYIuUqLQPlNI3iTGeQ4kMVTu0M6k8tnAo
+         nQ+x0Q6MCHFkNqJuqcsAiY9PZg1l2mjXATYazLBgwHrJ9O3FQlY1bbi/hh5+b1NZJ1Xc
+         dKjZzXkjg8x8VKW+Uw73elanwXRbqxzjp5k1duniDPCqelAc5ekJFzipgl49LUcc47H5
+         PHZ7pSLiDa/YfBYPqpi/qgQnwqem8lnXtdx1GD+jdQyVUwArb73uBVx8rLStepbQkwY+
+         LkDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id n11-v6si6747005qvo.33.2018.07.25.07.08.28
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Jul 2018 07:08:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u7OgiSYR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v50-v6si2149874qtb.311.2018.07.14.17.37.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 14 Jul 2018 17:37:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C5C51402345E;
-	Wed, 25 Jul 2018 14:08:27 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 67A812026D68;
-	Wed, 25 Jul 2018 14:08:26 +0000 (UTC)
-Date: Wed, 25 Jul 2018 16:08:24 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	Hongbo Zhang <hongbo.zhang@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180725140824.vnkejw5emkxwktaz@kamzik.brq.redhat.com>
-References: <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com>
- <CAHmQWvDu+P26Y5CJfcQ=1_9C=hej_B8w7dLMbmuOmCV-+pYOJQ@mail.gmail.com>
- <20180725114404.6g335n3rfjt23hjc@kamzik.brq.redhat.com>
- <CAFEAcA8wi2QV9cVg_Hp=8MYw_zfxvVciR2CbRZiGJNiQNPdHqg@mail.gmail.com>
- <20180725124700.GF12855@redhat.com>
- <20180725125944.5nd5ydm4x4e3vvjw@kamzik.brq.redhat.com>
- <CAKv+Gu-pbJj59wH7wgZ6Uq+Uko9wYEBqSF=WaC3LL68CFkbxEw@mail.gmail.com>
- <20180725133810.gsgfu4x6emygu5o5@kamzik.brq.redhat.com>
- <CAKv+Gu_91nXP4TSvrLf0e8kfX5X3ZNPcmx5UzT1jf5A_rVj8pQ@mail.gmail.com>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u7OgiSYR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43815 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1feV2X-0003cq-Ih
+	for alex.bennee@linaro.org; Sat, 14 Jul 2018 20:37:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37625)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <rth7680@gmail.com>) id 1feV2L-0003cB-EK
+	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 20:37:18 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <rth7680@gmail.com>) id 1feV2K-0002y3-Hz
+	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 20:37:17 -0400
+Received: from mail-io0-x241.google.com ([2607:f8b0:4001:c06::241]:36479)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1feV2F-0002m6-QU; Sat, 14 Jul 2018 20:37:11 -0400
+Received: by mail-io0-x241.google.com with SMTP id k3-v6so34539165iog.3;
+	Sat, 14 Jul 2018 17:37:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=sZgKmcwktBeaPWsMA9PlqdRIkEytD6Wv2V3aB9sCt6A=;
+	b=u7OgiSYRn3FVcUoGeYkEV5yl+n3PTg3uxu59b6br/eB5d5kFpV4L1dxng58oYGqGFo
+	7nS+6LzjnhPDxr/eVAWzp9PvjOyesM3pwyIxAPluR/23bUUn+y1v8fmpb1S2R6oHdwpb
+	02ONosD0FDhGbikQXtBC3PPs6aVeYU61zDUEJjQZEW4FdfEuKwFdouBQaTkENzjPUA28
+	U/VlDpB5M8VIESUCLy2Bxq97WrwspN7UpAY/fzOQd3WP0R9M7puYi8+xjj5HYPoLwc0G
+	HXvucGdB6+jso1jYkjfP5soxPt5lYhHMWD9sY3CbPMtn8wmtWiyxxPtBLRfHEkZybPJ7
+	dqWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=sZgKmcwktBeaPWsMA9PlqdRIkEytD6Wv2V3aB9sCt6A=;
+	b=BPmW4P2/0u294kcJ+01PR8WiHj2EGkSOdIEOcXDYmCldpc3Ksua7NiGz6BPbgtllx/
+	0okIHrJ5uazcZYFSSuGGo1BigrL74VJjyPO2NX6OfdtM7S2vU7Vi/eMBst8yPXzEWlpe
+	YznRc14ITyHdODTDrRx1LAtcBDEU3RK4RWXXX6dY0qRGPu2E1bCQ5P4C0u4x9sskApmK
+	3RSno+5+rRUsVew3eqOknB02tDzxsvTwBOoK7L7ZdK6/KO2D9TQ4m52KtJUhk8X3lCxp
+	9aiRUBQlUY7r7122YZuatK5x5kk47O5Qvr6pT8AvKiCQDoQepFvgvjl7nnhClr5dTqs0
+	U+IA==
+X-Gm-Message-State: AOUpUlG8fmIQRLyxbTKEXcO7EPG+7eQoAVViLZYaGsqeiV3hTUqMod+a
+	N7wUn9hgWayXOX3sU0lI6z0=
+X-Received: by 2002:a6b:28c2:: with SMTP id
+	o185-v6mr3298655ioo.109.1531615030725; 
+	Sat, 14 Jul 2018 17:37:10 -0700 (PDT)
+Received: from cloudburst.twiddle.net ([172.56.12.170])
+	by smtp.googlemail.com with ESMTPSA id
+	w5-v6sm5749738ioc.58.2018.07.14.17.37.08
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 14 Jul 2018 17:37:09 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180713150945.12348-1-peter.maydell@linaro.org>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
+	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
+	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
+	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+	VcROBqvtH3ecaIL9iw==
+Message-ID: <5c3ec438-2265-94b4-4f35-71a79d838518@twiddle.net>
+Date: Sat, 14 Jul 2018 19:37:06 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAKv+Gu_91nXP4TSvrLf0e8kfX5X3ZNPcmx5UzT1jf5A_rVj8pQ@mail.gmail.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Wed, 25 Jul 2018 14:08:27 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Wed, 25 Jul 2018 14:08:27 +0000 (UTC) for IP:'10.11.54.4' DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: tD6MZio1frVr
+In-Reply-To: <20180713150945.12348-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4001:c06::241
+Subject: Re: [Qemu-arm] [PATCH] accel/tcg: Check whether TLB entry is RAM
+ consistently with how we set it up
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rRCibneZNxGS
 
-On Wed, Jul 25, 2018 at 03:46:01PM +0200, Ard Biesheuvel wrote:
-> On 25 July 2018 at 15:38, Andrew Jones <drjones@redhat.com> wrote:
-> > On Wed, Jul 25, 2018 at 03:03:40PM +0200, Ard Biesheuvel wrote:
-> >> On 25 July 2018 at 14:59, Andrew Jones <drjones@redhat.com> wrote:
-> >> > On Wed, Jul 25, 2018 at 01:47:00PM +0100, Daniel P. Berrangé wrote:
-> >> >> Would iut make any sense to call the machine  "refplatform"  or "refboard"
-> >> >> to indicate it is a generic reference platform, not specifically following
-> >> >> any particular real impl, albeit influence by the sbsa spec.
-> >> >>
-> >> >
-> >> > That would indeed stop me from whining about a machine model with an
-> >> > 'sbsa' name not strictly implementing a minimal SBSA machine :-)
-> >> >
-> >>
-> >> I still don't get why only a minimal machine is worth considering,
-> >> given that a real-world minimal SBSA machine is not capable of doing
-> >> anything useful.
-> >
-> > One definition of an SBSA machine can be quite different than another.
-> > If we only hard code the required [useless] base, but also provide a
-> > readconfig for the rest, then we get a useful machine without loss of
-> > flexibility.
-> >
-> > That flexibility comes at the cost of platform-bus code (since we need
-> > to add devices to the system bus) and a less concise command line. The
-> > platform-bus code may indeed be too expensive for this purpose, but
-> > we may need to see patches to be sure. I understand the desire to have
-> > a shorter command line, but this is QEMU :)
-> >
-> 
-> My concern is not the QEMU side. It is the code that we will need to
-> add to UEFI and ARM-TF to deal with the dynamic nature of the
-> underlying platform. That code has no counterpart in real world
-> hardware, but will surely turn up in production firmware nonetheless
-> if we end up having to add that to our SBSA reference codebase.
+On 07/13/2018 10:09 AM, Peter Maydell wrote:
+> @@ -939,29 +935,21 @@ tb_page_addr_t get_page_addr_code(CPUArchState *env, target_ulong addr)
+>          }
+>          assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
+>      }
+> +    assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
 
-It sounds like there's already some sort of informal SBSA reference
-instance specification that UEFI and ARM-TF intend to support. If
-that instance specification were slightly more formal, i.e. documented
-somewhere and given a more descriptive name (not just 'sbsa'), then
-I think it would be a lot more palatable to hard code those specifications
-directly into a QEMU machine model of the same name.
+Don't duplicate the assert; just move it.  Otherwise,
 
-Thanks,
-drew
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

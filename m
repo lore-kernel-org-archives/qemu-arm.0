@@ -1,107 +1,97 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp666851wrq;
-        Sat, 14 Jul 2018 10:43:15 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpf/Cc4ZsRWsT12KAZS2AshhfRR02o+dRcm833MbGzp83QwNcDmpPxEigKjQ5EYeMdNyKR8R
-X-Received: by 2002:a37:7e04:: with SMTP id z4-v6mr8940156qkc.66.1531590195068;
-        Sat, 14 Jul 2018 10:43:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531590195; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp889099wru;
+        Sun, 15 Jul 2018 15:06:31 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeVijGzeKx5fpWWRg+MefhwEhaPtICsngS44lJ6THIrOrLU/AFr4iLLI4EGCONN04dZ19LZ
+X-Received: by 2002:a0c:8485:: with SMTP id m5-v6mr15803844qva.222.1531692391006;
+        Sun, 15 Jul 2018 15:06:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531692391; cv=none;
         d=google.com; s=arc-20160816;
-        b=PTeSOBmopd+kzNlcBUg86cOOJz/lqPdJgsQ+9Gz5yRaLaXwF6OAe3fNsd8E/gRqZHV
-         IoF2t6SiflEAeaQwV2j6458SerZGikvjvRjEZdic5LtJE5sN1RszE8Zs9lhkLcTiS8DE
-         C/aCzn4ixg2BBweN2OBEFnLnfdk88IZBFKudpb1CZGLFYWP2OlfHvor1WhKWBrpRVIOl
-         sZkH3hcHAcCCFt20LIInTdalOlZzs+tHCj6SwBddu/KyUttwnk2BKtzfjb5kfGpb6UgK
-         fzrxEJQTZRC3lobGUDcMGeyI+j9LDk8RWcr0iDllrpd0Q0Cb1o04NOhoV9gfMgMmv/jQ
-         3qTw==
+        b=Z5ntdI/FrwwzMVf2Poe8yyGNBTconLQ/1X8zG9GEG70g3rY0iIqW+F73+v7KTwz0XH
+         XuPMdPC5i9IpgRqQMJB7uX/5nn5Hui/GYX+49/PmgcNLz+HgE1HnHivWTS1dejDgcp2k
+         vnW4VdnY5keXxrZHN8iSxxKptOwdVZeas4emhgJ0IhDmGJYabYJdleWdFC2kRwAFlmHJ
+         TbJVgNaw4b/gENdR29UUwmbds0FTm3YgYQvFAtdqV+E5aJFuB0Rjj96MItA8nBYnGBCZ
+         G6U+BqGB4CE1nwkZIw51kQorOlm4lLhrH+mZUdNU7bTvbBzJxH7xnw023hANaRW9wvJV
+         2pOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :dkim-signature:arc-authentication-results;
-        bh=wjzQ2cxXxeKXjINxnoydvMlAVo7hO4Hf3RXB8cvKkJg=;
-        b=rYyjGmnbb+0y56buzRJ7DC+N/6Sz97hKWawEkKetIAc7ZNJUjpc6uJgnXOSq+SoEYn
-         2sVNVLpC5kEufpaLlQouEw9SEclggO3pFbo1z/t9ZyJ1gnbdvFaAuvlprPvywP02OKwv
-         CJ+H7ctbQupN4Q2E8GR6z6VTcVqu0ugjAOB0439yoSrCcxLNrZs8k0J58lD1zFfMn7hb
-         pUfSsSIPgPt/VHJNYxNYGzdXTgDmebIBm+0jAq9fbt4uAnEhtnNr/weXVQYhZJ7BYtPD
-         GWnuM59B4R2i8Q+DiEqcJxrs894Lzr6kDj4ohhIWlGWR/Nfl3/gjZGzgwkRP5Pz8Evbr
-         izfw==
+        bh=yGJAXI+NZH95QNrq5SWZSQ27SWnuCF3CNRRyQEg9sA4=;
+        b=LTGb8PCFgjd7+k/eh/6a1NFKofrYFpNbT3X5jrM7xQIZrJxcK5JW4P6yiJTzruJc80
+         gPtQcXBOGyPKum4sbaF9B6fDVrXKnjgX0iMsEwAarzCplxq4JYzavbUokaK3wVTfiWMx
+         DQBQqVVkHZB0y5cJWqhtyXXaUEOVeVnalihAi/nCQdOV/lJ70wQVKSBcMWTY1tBSOSVL
+         S2G6wyRFj8ZOVts4qP68EzIOBXniTP8jHvEPD7GMyfo5Nk9IICVHc0N+PYigriocmFoE
+         VQj+jQ0muItM1CcogdHsQXY+EegyBFy2TqGfdeg7e6ml/YNUhLuxplUt7/h/F+MYdET1
+         H8GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oWSFW7eA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TmUQLDwZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e3-v6si10530582qkm.142.2018.07.14.10.43.14
+        by mx.google.com with ESMTPS id j4-v6si6533807qte.29.2018.07.15.15.06.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 14 Jul 2018 10:43:15 -0700 (PDT)
+        Sun, 15 Jul 2018 15:06:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oWSFW7eA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42258 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TmUQLDwZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47782 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1feOZe-0005LQ-Jd
-	for alex.bennee@linaro.org; Sat, 14 Jul 2018 13:43:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43032)
+	id 1fep9y-0005yL-HO
+	for alex.bennee@linaro.org; Sun, 15 Jul 2018 18:06:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49590)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1feOZU-0005Jd-96
-	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 13:43:05 -0400
+	(envelope-from <groeck7@gmail.com>) id 1fep9p-0005y4-VH
+	for qemu-arm@nongnu.org; Sun, 15 Jul 2018 18:06:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1feOZS-0006oK-NI
-	for qemu-arm@nongnu.org; Sat, 14 Jul 2018 13:43:04 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:46360)
+	(envelope-from <groeck7@gmail.com>) id 1fep9l-0005IJ-UY
+	for qemu-arm@nongnu.org; Sun, 15 Jul 2018 18:06:21 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:46433)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1feOZL-0006R0-O2; Sat, 14 Jul 2018 13:42:56 -0400
-Received: by mail-lj1-x244.google.com with SMTP id 203-v6so15721734ljj.13;
-	Sat, 14 Jul 2018 10:42:55 -0700 (PDT)
+	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
+	id 1fep9l-0005H7-Kf; Sun, 15 Jul 2018 18:06:17 -0400
+Received: by mail-pf0-x242.google.com with SMTP id l123-v6so25305509pfl.13;
+	Sun, 15 Jul 2018 15:06:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=wjzQ2cxXxeKXjINxnoydvMlAVo7hO4Hf3RXB8cvKkJg=;
-	b=oWSFW7eAHiDopzJML8kE1MSjWASVbwdBIiKpFhERK0QzaZ+vo5Qc1HECsJ2WDvV59y
-	+hgA/QOEAUkhlcACtlUahSqFoCUSAV5+SxNrkYbXpX7mmihQdCQywgU9ggh3/lbwaODd
-	eCvlsU3WiRJ+IlN/vXkGsJyaFKoK3F+tHSrsRoYEOCwIvIt84IHwoAlSCIbGrFaf8Jzl
-	tXS5PYZEjn9M01dToYZtB4JYjAUs0r6pHrhXONfqC11i9tABPmdQ1KptKGG+lae6sxwg
-	9DtSt3W5x91/ClY26qQknreA39as8HHltifIBEd1N+6ExV0SgTrUJhVGtT8gp4DrW91L
-	1xwQ==
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=yGJAXI+NZH95QNrq5SWZSQ27SWnuCF3CNRRyQEg9sA4=;
+	b=TmUQLDwZN5npjfOFPz4oSrJQmmv54wUL0opj0CGDIlG61t2aYOs/JCK3GN1TQF71c2
+	BKne2JxR0h6cu9UxlYYiF7SRwvjBNeNAIc5fx9a+p+hTRWC95thtTOptiDzMB0/cnozt
+	lcqYMQ/NHsP9QHnNX03Kbq0bYQavQ/n4mYzWajVPvEdb0DfjkXD0Mk/s6g83LnXjK+ql
+	wUkhh80gHJNLDHJzwcpga2LYPZMze3r2CoAmfM0rhzq0KpujIwRcIbu2YN+2lX5SwzyQ
+	Brpth5KqYY8OdSNeXUidGcsvJp59rxzEJwHykB9RyDqAc6hRKg0l9O395fvvxgHYtac2
+	9pQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=wjzQ2cxXxeKXjINxnoydvMlAVo7hO4Hf3RXB8cvKkJg=;
-	b=uaFjqhEOzC8ZgdiZ/ptaR/mdiByxb+tUbPYxR8i573OqlDiP4zm1bx5rKiRfBkmLEx
-	SEWk7o4WTVW1oSzd0qdgZvzhqBe+z7Sah8lPfE8hx+S4gSynj/H8j8digxJsTjJndm+s
-	gg1zmWxAszNzLztCaEilwo6tghiqnEH6CHcnx7ntGJLu9N+vwLXFXPkPo9Gb0C2OBCh5
-	K6Zfq3F0m6r8a+jwdVIQBdT+CXDP5fBCFSGA0k1NqaS6K2QeaS1q6qe/j1vXu5datj7T
-	9haKrQ5UP5PDd4KvSNay/HRzyz379+N4m5vHOWEJYDR96jrJikuzEjJwtPzDPkfByCIk
-	ZyGA==
-X-Gm-Message-State: AOUpUlEHRGBq+17ly00HhmzQlUk1KbXCSrRSPcMBMS2HRrPIcEv7zDa0
-	SdwdZkbpdErOlR2c+O8T/gY=
-X-Received: by 2002:a2e:8147:: with SMTP id t7-v6mr5806979ljg.32.1531590174042;
-	Sat, 14 Jul 2018 10:42:54 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
-	by smtp.gmail.com with ESMTPSA id
-	h191-v6sm935194lfg.9.2018.07.14.10.42.51
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sat, 14 Jul 2018 10:42:52 -0700 (PDT)
-Date: Sat, 14 Jul 2018 19:42:51 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <20180714174251.4tzpqrtdioemp3vx@toto>
-References: <20180714171601.5734-1-luc.michel@greensocs.com>
-	<20180714171601.5734-20-luc.michel@greensocs.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180714171601.5734-20-luc.michel@greensocs.com>
-User-Agent: NeoMutt/20170609 (1.8.3)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+	bh=yGJAXI+NZH95QNrq5SWZSQ27SWnuCF3CNRRyQEg9sA4=;
+	b=OEq9QXE2zxPPD9DsCftNhAZU36Oq+fTxGwYJDuSyLG4wgqw2R+Q2DKkzu0CXQHFxgj
+	QCLxGfVJFu29VsF0IAR8PPW19XSjZBArdO2Spa4UwNdiyOe471YkW0eLOJCkZPt7cupP
+	tLDNw2c5izkRquj8LQZ6LS75n9lxfkMcEUNs/QExzcrBENJQlUJIe0Eml7BCQmRRCUlO
+	R6obETJU0Ne2UcY2QwqJ58FWGOFwd7MGLdFSY/0LBaYdUMEFbGnGJP6UYSi+/O1M/qL7
+	yB/lnOaUXh/7vdFJXMmQVVn/wN6ujWXLR71ma7Gtf51sCHvofoD0OTWm02YmdargWYkC
+	n1VQ==
+X-Gm-Message-State: AOUpUlFn6vwVA+bpEPPjJWAV3p8Gdhrmo0LbtsxASmZLI4mrYbZore5S
+	+10fI7mGYu+MNEL8AUTCqAw=
+X-Received: by 2002:a63:b445:: with SMTP id
+	n5-v6mr13700632pgu.104.1531692376171; 
+	Sun, 15 Jul 2018 15:06:16 -0700 (PDT)
+Received: from localhost (108-223-40-66.lightspeed.sntcca.sbcglobal.net.
+	[108.223.40.66]) by smtp.gmail.com with ESMTPSA id
+	k27-v6sm10625376pfg.34.2018.07.15.15.06.14
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 15 Jul 2018 15:06:15 -0700 (PDT)
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 15 Jul 2018 15:06:09 -0700
+Message-Id: <1531692369-1511-1-git-send-email-linux@roeck-us.net>
+X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH v4 19/20] xlnx-zynqmp: Improve GIC wiring and
- MMIO mapping
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: [Qemu-arm] [RFC PATCH] hw: arm: Add basic support for cprman (clock
+ subsystem)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,222 +103,285 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
-	qemu-devel@nongnu.org, saipava@xilinx.com, edgari@xilinx.com,
-	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	Guenter Roeck <linux@roeck-us.net>, Pekka Enberg <penberg@iki.fi>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E/9tkg4Uy70o
+X-TUID: 540kCUZgDV5J
 
-On Sat, Jul 14, 2018 at 07:16:00PM +0200, Luc Michel wrote:
-> This commit improve the way the GIC is realized and connected in the
-> ZynqMP SoC. The security extensions are enabled only if requested in the
-> machine state. The same goes for the virtualization extensions.
-> 
-> All the GIC to APU CPU(s) IRQ lines are now connected, including FIQ,
-> vIRQ and vFIQ. The missing CPU to GIC timers IRQ connections are also
-> added (HYP and SEC timers).
-> 
-> The GIC maintenance IRQs are back-wired to the correct GIC PPIs.
-> 
-> Finally, the MMIO mappings are reworked to take into account the ZynqMP
-> specifics. The GIC (v)CPU interface is aliased 16 times:
->   * for the first 0x1000 bytes from 0xf9010000 to 0xf901f000
->   * for the second 0x1000 bytes from 0xf9020000 to 0xf902f000
-> Mappings of the virtual interface and virtual CPU interface are mapped
-> only when virtualization extensions are requested. The
-> XlnxZynqMPGICRegion struct has been enhanced to be able to catch all
-> this information.
-> 
-> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Add basic support for BCM283x CPRMAN. Provide support for reading and
+writing CPRMAN registers and initialize registers with sensible default
+values. During runtime retain any written values.
 
-Looks good to me!
+Basic CPRMAN support is necessary and sufficient to boot Linux on raspi2
+and raspi3 systems.
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+I don't seriously expect this patch to get accepted, but I thought
+it might be valuable enough for others to use it when playing with
+raspi2 and raspi3 emulations.
 
+ hw/arm/bcm2835_peripherals.c         |  15 +++++
+ hw/misc/Makefile.objs                |   1 +
+ hw/misc/bcm2835_cprman.c             | 126 +++++++++++++++++++++++++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |   2 +
+ include/hw/arm/raspi_platform.h      |   1 +
+ include/hw/misc/bcm2835_cprman.h     |  28 ++++++++
+ 6 files changed, 173 insertions(+)
+ create mode 100644 hw/misc/bcm2835_cprman.c
+ create mode 100644 include/hw/misc/bcm2835_cprman.h
 
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 6be7660..1a8993f 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -85,6 +85,11 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->property), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr), &error_abort);
+ 
++    /* Clock subsystem */
++    object_initialize(&s->cprman, sizeof(s->cprman), TYPE_BCM2835_CPRMAN);
++    object_property_add_child(obj, "cprman", OBJECT(&s->cprman), NULL);
++    qdev_set_parent_bus(DEVICE(&s->cprman), sysbus_get_default());
++
+     /* Random Number Generator */
+     object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
+     object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
+@@ -244,6 +249,13 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
+                       qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PROPERTY));
+ 
++    /* Clock subsystem */
++    object_property_set_bool(OBJECT(&s->cprman), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
+     /* Random Number Generator */
+     object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
+     if (err) {
+@@ -251,6 +263,9 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    memory_region_add_subregion(&s->peri_mr, CPRMAN_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->cprman), 0));
++
+     memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
+ 
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 9350900..ae5fc8a 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -52,6 +52,7 @@ obj-$(CONFIG_OMAP) += omap_tap.o
+ obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+ obj-$(CONFIG_RASPI) += bcm2835_property.o
+ obj-$(CONFIG_RASPI) += bcm2835_rng.o
++obj-$(CONFIG_RASPI) += bcm2835_cprman.o
+ obj-$(CONFIG_SLAVIO) += slavio_misc.o
+ obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+ obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+new file mode 100644
+index 0000000..4051f2b
+--- /dev/null
++++ b/hw/misc/bcm2835_cprman.c
+@@ -0,0 +1,126 @@
++/*
++ * BCM2835 Clock subsystem (poor man's version)
++ *
++ * Copyright (C) 2018 Guenter Roeck <linux@roeck-us.net>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "crypto/random.h"
++#include "hw/misc/bcm2835_cprman.h"
++
++static uint64_t bcm2835_cprman_read(void *opaque, hwaddr offset,
++                                 unsigned size)
++{
++    BCM2835CprmanState *s = (BCM2835CprmanState *)opaque;
++    uint32_t res = 0;
++
++    assert(size == 4);
++
++    if (offset / 4 < CPRMAN_NUM_REGS) {
++        res = s->regs[offset / 4];
++    }
++
++    return res;
++}
++
++#define CM_PASSWORD             0x5a000000
++#define CM_PASSWORD_MASK        0xff000000
++
++static void bcm2835_cprman_write(void *opaque, hwaddr offset,
++                              uint64_t value, unsigned size)
++{
++    BCM2835CprmanState *s = (BCM2835CprmanState *)opaque;
++
++    assert(size == 4);
++
++    if ((value & 0xff000000) == CM_PASSWORD &&
++        offset / 4 < CPRMAN_NUM_REGS)
++            s->regs[offset / 4] = value & ~CM_PASSWORD_MASK;
++}
++
++static const MemoryRegionOps bcm2835_cprman_ops = {
++    .read = bcm2835_cprman_read,
++    .write = bcm2835_cprman_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static const VMStateDescription vmstate_bcm2835_cprman = {
++    .name = TYPE_BCM2835_CPRMAN,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, BCM2835CprmanState, CPRMAN_NUM_REGS),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void bcm2835_cprman_init(Object *obj)
++{
++    BCM2835CprmanState *s = BCM2835_CPRMAN(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2835_cprman_ops, s,
++                          TYPE_BCM2835_CPRMAN, 0x2000);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++}
++
++#define CM_GNRICCTL        (0x000 / 4)
++#define CM_VECCTL        (0x0f8 / 4)
++#define CM_DFTCTL        (0x168 / 4)
++#define CM_EMMCCTL        (0x1c0 / 4)
++#define A2W_PLLA_CTRL        (0x1100 / 4)
++#define A2W_PLLB_CTRL        (0x11e0 / 4)
++
++static void bcm2835_cprman_reset(DeviceState *dev)
++{
++    BCM2835CprmanState *s = BCM2835_CPRMAN(dev);
++    int i;
++
++    /*
++     * Available information suggests that CPRMAN registers have default
++     * values which are not overwritten by ROMMON (u-boot). The hardware
++     * default values are unknown at this time.
++     * The default values selected here are necessary and sufficient
++     * to boot Linux directly (on raspi2 and raspi3). The selected
++     * values enable all clocks and set clock rates to match their
++     * parent rates.
++     */
++    for (i = CM_GNRICCTL; i <= CM_VECCTL; i += 2) {
++        s->regs[i] = 0x11;
++        s->regs[i + 1] = 0x1000;
++    }
++    for (i = CM_DFTCTL; i <= CM_EMMCCTL; i += 2) {
++        s->regs[i] = 0x11;
++        s->regs[i + 1] = 0x1000;
++    }
++    for (i = A2W_PLLA_CTRL; i <= A2W_PLLB_CTRL; i += 8) {
++        s->regs[i] = 0x10001;
++    }
++}
++
++static void bcm2835_cprman_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->reset = bcm2835_cprman_reset;
++    dc->vmsd = &vmstate_bcm2835_cprman;
++}
++
++static TypeInfo bcm2835_cprman_info = {
++    .name          = TYPE_BCM2835_CPRMAN,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835CprmanState),
++    .class_init    = bcm2835_cprman_class_init,
++    .instance_init = bcm2835_cprman_init,
++};
++
++static void bcm2835_cprman_register_types(void)
++{
++    type_register_static(&bcm2835_cprman_info);
++}
++
++type_init(bcm2835_cprman_register_types)
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index f5b193f..f9f53e3 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -19,6 +19,7 @@
+ #include "hw/intc/bcm2835_ic.h"
+ #include "hw/misc/bcm2835_property.h"
+ #include "hw/misc/bcm2835_rng.h"
++#include "hw/misc/bcm2835_cprman.h"
+ #include "hw/misc/bcm2835_mbox.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/sd/bcm2835_sdhost.h"
+@@ -44,6 +45,7 @@ typedef struct BCM2835PeripheralState {
+     BCM2835ICState ic;
+     BCM2835PropertyState property;
+     BCM2835RngState rng;
++    BCM2835CprmanState cprman;
+     BCM2835MboxState mboxes;
+     SDHCIState sdhci;
+     BCM2835SDHostState sdhost;
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 6467e88..412d010 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -36,6 +36,7 @@
+                                                       * Doorbells & Mailboxes */
+ #define PM_OFFSET               0x100000 /* Power Management, Reset controller
+                                           * and Watchdog registers */
++#define CPRMAN_OFFSET           0x101000
+ #define PCM_CLOCK_OFFSET        0x101098
+ #define RNG_OFFSET              0x104000
+ #define GPIO_OFFSET             0x200000
+diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
+new file mode 100644
+index 0000000..db250b3
+--- /dev/null
++++ b/include/hw/misc/bcm2835_cprman.h
+@@ -0,0 +1,28 @@
++/*
++ * BCM2835 Poor-man's version of CPRMAN
++ *
++ * Copyright (C) 2018 Guenter Roeck <linux@roeck-us.net>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#ifndef BCM2835_CPRMAN_H
++#define BCM2835_CPRMAN_H
++
++#include "hw/sysbus.h"
++
++#define TYPE_BCM2835_CPRMAN "bcm2835-cprman"
++#define BCM2835_CPRMAN(obj) \
++        OBJECT_CHECK(BCM2835CprmanState, (obj), TYPE_BCM2835_CPRMAN)
++
++#define CPRMAN_NUM_REGS         (0x1200 / 4)
++
++typedef struct {
++    SysBusDevice busdev;
++    MemoryRegion iomem;
++
++    uint32_t regs[CPRMAN_NUM_REGS];
++} BCM2835CprmanState;
++
++#endif
+-- 
+2.7.4
 
-> ---
->  hw/arm/xlnx-zynqmp.c         | 92 ++++++++++++++++++++++++++++++++----
->  include/hw/arm/xlnx-zynqmp.h |  4 +-
->  2 files changed, 86 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 29df35fb75..42c29b8d06 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -29,12 +29,17 @@
->  
->  #define ARM_PHYS_TIMER_PPI  30
->  #define ARM_VIRT_TIMER_PPI  27
-> +#define ARM_HYP_TIMER_PPI   26
-> +#define ARM_SEC_TIMER_PPI   29
-> +#define GIC_MAINTENANCE_PPI 25
->  
->  #define GEM_REVISION        0x40070106
->  
->  #define GIC_BASE_ADDR       0xf9000000
->  #define GIC_DIST_ADDR       0xf9010000
->  #define GIC_CPU_ADDR        0xf9020000
-> +#define GIC_VIFACE_ADDR     0xf9040000
-> +#define GIC_VCPU_ADDR       0xf9060000
->  
->  #define SATA_INTR           133
->  #define SATA_ADDR           0xFD0C0000
-> @@ -111,11 +116,54 @@ static const int adma_ch_intr[XLNX_ZYNQMP_NUM_ADMA_CH] = {
->  typedef struct XlnxZynqMPGICRegion {
->      int region_index;
->      uint32_t address;
-> +    uint32_t offset;
-> +    bool virt;
->  } XlnxZynqMPGICRegion;
->  
->  static const XlnxZynqMPGICRegion xlnx_zynqmp_gic_regions[] = {
-> -    { .region_index = 0, .address = GIC_DIST_ADDR, },
-> -    { .region_index = 1, .address = GIC_CPU_ADDR,  },
-> +    /* Distributor */
-> +    {
-> +        .region_index = 0,
-> +        .address = GIC_DIST_ADDR,
-> +        .offset = 0,
-> +        .virt = false
-> +    },
-> +
-> +    /* CPU interface */
-> +    {
-> +        .region_index = 1,
-> +        .address = GIC_CPU_ADDR,
-> +        .offset = 0,
-> +        .virt = false
-> +    },
-> +    {
-> +        .region_index = 1,
-> +        .address = GIC_CPU_ADDR + 0x10000,
-> +        .offset = 0x1000,
-> +        .virt = false
-> +    },
-> +
-> +    /* Virtual interface */
-> +    {
-> +        .region_index = 2,
-> +        .address = GIC_VIFACE_ADDR,
-> +        .offset = 0,
-> +        .virt = true
-> +    },
-> +
-> +    /* Virtual CPU interface */
-> +    {
-> +        .region_index = 3,
-> +        .address = GIC_VCPU_ADDR,
-> +        .offset = 0,
-> +        .virt = true
-> +    },
-> +    {
-> +        .region_index = 3,
-> +        .address = GIC_VCPU_ADDR + 0x10000,
-> +        .offset = 0x1000,
-> +        .virt = true
-> +    },
->  };
->  
->  static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
-> @@ -286,6 +334,9 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      qdev_prop_set_uint32(DEVICE(&s->gic), "num-irq", GIC_NUM_SPI_INTR + 32);
->      qdev_prop_set_uint32(DEVICE(&s->gic), "revision", 2);
->      qdev_prop_set_uint32(DEVICE(&s->gic), "num-cpu", num_apus);
-> +    qdev_prop_set_bit(DEVICE(&s->gic), "has-security-extensions", s->secure);
-> +    qdev_prop_set_bit(DEVICE(&s->gic),
-> +                      "has-virtualization-extensions", s->virt);
->  
->      /* Realize APUs before realizing the GIC. KVM requires this.  */
->      for (i = 0; i < num_apus; i++) {
-> @@ -330,19 +381,23 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      for (i = 0; i < XLNX_ZYNQMP_GIC_REGIONS; i++) {
->          SysBusDevice *gic = SYS_BUS_DEVICE(&s->gic);
->          const XlnxZynqMPGICRegion *r = &xlnx_zynqmp_gic_regions[i];
-> -        MemoryRegion *mr = sysbus_mmio_get_region(gic, r->region_index);
-> +        MemoryRegion *mr;
->          uint32_t addr = r->address;
->          int j;
->  
-> -        sysbus_mmio_map(gic, r->region_index, addr);
-> +        if (r->virt && !s->virt) {
-> +            continue;
-> +        }
->  
-> +        mr = sysbus_mmio_get_region(gic, r->region_index);
->          for (j = 0; j < XLNX_ZYNQMP_GIC_ALIASES; j++) {
->              MemoryRegion *alias = &s->gic_mr[i][j];
->  
-> -            addr += XLNX_ZYNQMP_GIC_REGION_SIZE;
->              memory_region_init_alias(alias, OBJECT(s), "zynqmp-gic-alias", mr,
-> -                                     0, XLNX_ZYNQMP_GIC_REGION_SIZE);
-> +                                     r->offset, XLNX_ZYNQMP_GIC_REGION_SIZE);
->              memory_region_add_subregion(system_memory, addr, alias);
-> +
-> +            addr += XLNX_ZYNQMP_GIC_REGION_SIZE;
->          }
->      }
->  
-> @@ -352,12 +407,33 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i,
->                             qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
->                                              ARM_CPU_IRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus,
-> +                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-> +                                            ARM_CPU_FIQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 2,
-> +                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-> +                                            ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 3,
-> +                           qdev_get_gpio_in(DEVICE(&s->apu_cpu[i]),
-> +                                            ARM_CPU_VFIQ));
->          irq = qdev_get_gpio_in(DEVICE(&s->gic),
->                                 arm_gic_ppi_index(i, ARM_PHYS_TIMER_PPI));
-> -        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), 0, irq);
-> +        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_PHYS, irq);
->          irq = qdev_get_gpio_in(DEVICE(&s->gic),
->                                 arm_gic_ppi_index(i, ARM_VIRT_TIMER_PPI));
-> -        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), 1, irq);
-> +        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_VIRT, irq);
-> +        irq = qdev_get_gpio_in(DEVICE(&s->gic),
-> +                               arm_gic_ppi_index(i, ARM_HYP_TIMER_PPI));
-> +        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_HYP, irq);
-> +        irq = qdev_get_gpio_in(DEVICE(&s->gic),
-> +                               arm_gic_ppi_index(i, ARM_SEC_TIMER_PPI));
-> +        qdev_connect_gpio_out(DEVICE(&s->apu_cpu[i]), GTIMER_SEC, irq);
-> +
-> +        if (s->virt) {
-> +            irq = qdev_get_gpio_in(DEVICE(&s->gic),
-> +                                   arm_gic_ppi_index(i, GIC_MAINTENANCE_PPI));
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(&s->gic), i + num_apus * 4, irq);
-> +        }
->      }
->  
->      if (s->has_rpu) {
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 82b6ec2486..98f925ab84 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -53,7 +53,7 @@
->  #define XLNX_ZYNQMP_OCM_RAM_0_ADDRESS 0xFFFC0000
->  #define XLNX_ZYNQMP_OCM_RAM_SIZE 0x10000
->  
-> -#define XLNX_ZYNQMP_GIC_REGIONS 2
-> +#define XLNX_ZYNQMP_GIC_REGIONS 6
->  
->  /* ZynqMP maps the ARM GIC regions (GICC, GICD ...) at consecutive 64k offsets
->   * and under-decodes the 64k region. This mirrors the 4k regions to every 4k
-> @@ -62,7 +62,7 @@
->   */
->  
->  #define XLNX_ZYNQMP_GIC_REGION_SIZE 0x1000
-> -#define XLNX_ZYNQMP_GIC_ALIASES     (0x10000 / XLNX_ZYNQMP_GIC_REGION_SIZE - 1)
-> +#define XLNX_ZYNQMP_GIC_ALIASES     (0x10000 / XLNX_ZYNQMP_GIC_REGION_SIZE)
->  
->  #define XLNX_ZYNQMP_MAX_LOW_RAM_SIZE    0x80000000ull
->  
-> -- 
-> 2.18.0
-> 
-> 

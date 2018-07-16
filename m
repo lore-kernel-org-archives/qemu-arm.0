@@ -1,84 +1,86 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1473973wru;
-        Mon, 16 Jul 2018 05:59:54 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdo0Vki6t7SW7U89jp4XpAxUtNMaOX4eNZdqa7vJ5UzJpUyZcO8iYdsaSO2In2yVG7u3Urd
-X-Received: by 2002:ac8:84a:: with SMTP id x10-v6mr14777278qth.90.1531745994413;
-        Mon, 16 Jul 2018 05:59:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531745994; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1474037wru;
+        Mon, 16 Jul 2018 05:59:58 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpehb8OWF+pj/9Amjj/Vs4IDceYflVYM6Ce6Y5pW0+nDilhE6L2FSth/J5mxX1J6xDWfKybL
+X-Received: by 2002:a37:b001:: with SMTP id z1-v6mr13851200qke.156.1531745998753;
+        Mon, 16 Jul 2018 05:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531745998; cv=none;
         d=google.com; s=arc-20160816;
-        b=HosRWBY7AC10abdHsXLvNLLEqjazy84mp0g1b0lvh5yweaijvblyMNdPRU56WCtxXt
-         MCsspyJv3jaFm3fuGWb48uTjB2imTEGxS/agtoLHWetTZBHncntV0yI63BwN/PCmNWpC
-         gwKngEekFN6c7mFk8qNCS+0gViYcFHExZ64sqasg+KAcOhHgRo3VgXLBLqVY2A1H1sK5
-         mNW+7pqIE/Zs6L37uXNjCmIzOaoPamWNr8VURphoZdN9zkP3igC0h3RP0Azo/3u2JRwg
-         Ga/HQgdVDHwDnm8AE3qD1ybvuzArVEYrhqCLkSY8O2mIMfvS5CPQ5uFqqLX1bRWa5+o8
-         an2w==
+        b=tWHO96OHYfKtTow1YCnMt3PqLztj9Olvv8nh/B2KAJbD89grDXdW+8ab+Woh1b/aru
+         LZwsBIeCIR9I8p5qNltvp+fKLi64JiT00sBeQr0VEeI+yE277wKo7veXnGXkJ06FYWcM
+         xGM3IAF3oiqtwALy4NGQ2Yre6YRMPLzp//13sssfEv19u8Dr343PS/HAvr4WgFWR/i9p
+         +U+VQ8HPtqlePzfPnzRCdjl8QmZPI5hbJhQHpp1RGf8acRq9AEQV4ma/mdBQ1d14RMjq
+         NXTEfNPizBZnfqag1iuEPKeUxfj+ONGXfr3hh78cEA7LVzzv3VCQ7UpmPyn46OnbW4Wt
+         5ogA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=LekPXUlQ5vIKEfI23cjz38WmvAJ2Bul2BlHQwZjlk/Q=;
-        b=bhp0OgoGs2Bf52uRxKaYrKu8WVwfkKhT7+n8kf/ohDfmQuYyVkPpRoBuUhJDwmc8eq
-         mvvws+Rf1DAzNla0Jzy7mMa8lu5p5BmQpQiNoCvCbMJtWZywHgaV1AQxX08BmHR+a2KS
-         vpP7wuKf8hOh3SqmT3rOnSn+Pe6mjvxPxSRpWH31z0olEtzoicHhmC2XyAwSNAXE+S9l
-         wc4b2E/oS+S9jh9ihVy83oF1rODJRkxy7uU7f/sE5kmMXGXuezqebDnowP1aFLLflPdh
-         6vsu6RC9KguhkHQW+lLL72iOJaeZ0yduupF/i3sH1UxO+e611TR0vm1QOAa7uD0CgREj
-         bXdg==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=UoyCOnBDhD/dFJA9HF4lZRm4/hF82FNU+t5EfSZKhmc=;
+        b=pNu8+yOyhu/tGyqTJz4cJG37s0+E1A8jsB1RVagniOynRXA3Kijd0Zw4MgfxiVoxQU
+         XVpUtkL9B60jcJh40cpULv56Qgr6fj6PsHPNT/SSUsUHGXvc8KGl5eTCHzdm9/BuK1Tm
+         OkJCJ6PXB2GFElJzqSl5NiJuEobQ4gEDGFEdcLDl+39MpT8zci3RxdCH3Q2o0+MGLW2J
+         3JMW5equczxFhdIV5ypwcfcNa7eTfOjg+XFElhgswpFnHuwG5/yBkNfe24chf6hpnwXf
+         vDrTwbJVjYXDCOAf/j3YtlLTlNUkES/nMlILayEs3SNHylHF4lX8XzEY4hasNolNCtfs
+         DsUA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o77-v6si4307237qko.296.2018.07.16.05.59.54
+        by mx.google.com with ESMTPS id y24-v6si4465891qve.2.2018.07.16.05.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 05:59:54 -0700 (PDT)
+        Mon, 16 Jul 2018 05:59:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51238 helo=lists.gnu.org)
+Received: from localhost ([::1]:51239 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ff36X-00014t-QQ
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 08:59:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43265)
+	id 1ff36c-000169-6B
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 08:59:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43293)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ff36M-00013q-UZ
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 08:59:44 -0400
+	(envelope-from <thuth@redhat.com>) id 1ff36O-000143-9R
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 08:59:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ff36I-0001vN-1p
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 08:59:42 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58798 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1ff36N-00021e-9p
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 08:59:44 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35414 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ff36H-0001uO-Rn; Mon, 16 Jul 2018 08:59:37 -0400
+	id 1ff36N-000215-4E; Mon, 16 Jul 2018 08:59:43 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 11EBF4000B74;
-	Mon, 16 Jul 2018 12:59:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8BFF37C6A9;
+	Mon, 16 Jul 2018 12:59:42 +0000 (UTC)
 Received: from thh440s.str.redhat.com (dhcp-200-180.str.redhat.com
 	[10.33.200.180])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3DD0F1C589;
-	Mon, 16 Jul 2018 12:59:35 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EB6101C589;
+	Mon, 16 Jul 2018 12:59:40 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Date: Mon, 16 Jul 2018 14:59:17 +0200
-Message-Id: <1531745974-17187-1-git-send-email-thuth@redhat.com>
+Date: Mon, 16 Jul 2018 14:59:20 +0200
+Message-Id: <1531745974-17187-4-git-send-email-thuth@redhat.com>
+In-Reply-To: <1531745974-17187-1-git-send-email-thuth@redhat.com>
+References: <1531745974-17187-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 16 Jul 2018 12:59:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 16 Jul 2018 12:59:37 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 16 Jul 2018 12:59:42 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 16 Jul 2018 12:59:42 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v3 00/17] Fix crashes with introspection of ARM
- devices
+Subject: [Qemu-arm] [PATCH v3 03/17] hw/arm/bcm2836: Fix crash with
+ device_add bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,86 +100,77 @@ Cc: Eduardo Habkost <ehabkost@redhat.com>,
 	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: opgGwgQCBMnh
+X-TUID: VgCnGvqo7HiA
 
-As discovered recently, you can crash QEMU with a lot of devices
-that do not get the reference counting of child objects right.
-You just have to run 'device-list-properties' and call 'info qtree'
-afterwards.
-This patch series fixes these problems in the ARM code. When all
-patches have been applied, I now do not get any more hangs or crashes
-when I add a hmp("info qtree") to the device-introspect-test.
+When trying to "device_add bcm2837" on a machine that is not suitable for
+this device, you can quickly crash QEMU afterwards, e.g. with "info qtree":
 
-Please have a look at patch #1, #15 and #16, they still need reviews.
+echo "{'execute':'qmp_capabilities'} {'execute':'device_add', " \
+ "'arguments':{'driver':'bcm2837'}} {'execute': 'human-monitor-command', " \
+ "'arguments': {'command-line': 'info qtree'}}" | \
+ aarch64-softmmu/qemu-system-aarch64 -M integratorcp,accel=qtest -S -qmp stdio
 
-v3:
- - Reworked object_initialize_child according to Paolos suggestions
-   (patch 1)
- - Added prototype description in the 2nd patch (as suggested by Eduardo)
- - Replaced the xlnx_dp "realize" patch with the one from Paolo
- - Added a patch for the "stm32f205_soc" device (surprisingly this was
-   already the last one that caused trouble - I originally expected more)
+{"QMP": {"version": {"qemu": {"micro": 50, "minor": 12, "major": 2},
+ "package": "build-all"}, "capabilities": []}}
+{"return": {}}
+{"error": {"class": "GenericError", "desc": "Device 'bcm2837' can not be
+ hotplugged on this machine"}}
+Segmentation fault (core dumped)
 
-v2:
- - Updated the first patch according to the review feedback from v1
- - Added more patches with additional fixes
+The qdev_set_parent_bus() from instance_init adds a link to the child devices
+which is not valid anymore after the bcm2837 instance has been destroyed.
+Unfortunately, the child devices do not get destroyed / unlinked correctly
+because both object_initialize() and object_property_add_child() increase
+the reference count of the child objects by one, but only one reference
+is dropped when the parent gets removed. So let's use the new functions
+object_initialize_child() and sysbus_init_child_obj() instead to create
+the objects, which will take care of creating the child objects with the
+correct reference count of one.
 
-Paolo Bonzini (1):
-  hw/display/xlnx_dp: Move problematic code from instance_init to
-    realize
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/arm/bcm2836.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-Thomas Huth (16):
-  qom/object: Add a new function object_initialize_child()
-  hw/core/sysbus: Add a function for creating and attaching an object
-  hw/arm/bcm2836: Fix crash with device_add bcm2837 on unsupported
-    machines
-  hw/arm/armv7: Fix crash when introspecting the "iotkit" device
-  hw/cpu/a15mpcore: Fix introspection problem with the a15mpcore_priv
-    device
-  hw/arm/msf2-soc: Fix introspection problem with the "msf2-soc" device
-  hw/cpu/a9mpcore: Fix introspection problems with the "a9mpcore_priv"
-    device
-  hw/arm/fsl-imx6: Fix introspection problems with the "fsl,imx6" device
-  hw/arm/fsl-imx7: Fix introspection problems with the "fsl,imx7" device
-  hw/arm/fsl-imx25: Fix introspection problem with the "fsl,imx25"
-    device
-  hw/arm/fsl-imx31: Fix introspection problem with the "fsl,imx31"
-    device
-  hw/cpu/arm11mpcore: Fix introspection problem with 'arm11mpcore_priv'
-  hw/*/realview: Fix introspection problem with 'realview_mpcore' &
-    'realview_gic'
-  hw/arm/allwinner-a10: Fix introspection problem with 'allwinner-a10'
-  hw/arm/stm32f205_soc: Fix introspection problem with 'stm32f205-soc'
-    device
-  hw/arm/xlnx-zynqmp: Fix crash when introspecting the "xlnx,zynqmp"
-    device
-
- hw/arm/allwinner-a10.c   | 19 +++++-----
- hw/arm/armv7m.c          |  7 ++--
- hw/arm/bcm2836.c         | 18 +++------
- hw/arm/fsl-imx25.c       | 30 +++++++--------
- hw/arm/fsl-imx31.c       | 26 ++++++-------
- hw/arm/fsl-imx6.c        | 56 ++++++++++------------------
- hw/arm/fsl-imx7.c        | 97 ++++++++++++++++--------------------------------
- hw/arm/iotkit.c          | 74 ++++++++++++++++--------------------
- hw/arm/msf2-soc.c        | 15 ++++----
- hw/arm/stm32f205_soc.c   | 28 ++++++--------
- hw/arm/xlnx-zynqmp.c     | 61 ++++++++++++++----------------
- hw/core/sysbus.c         |  8 ++++
- hw/cpu/a15mpcore.c       |  8 ++--
- hw/cpu/a9mpcore.c        | 18 ++++-----
- hw/cpu/arm11mpcore.c     | 14 +++----
- hw/cpu/realview_mpcore.c |  8 ++--
- hw/display/xlnx_dp.c     |  8 +++-
- hw/intc/armv7m_nvic.c    |  5 +--
- hw/intc/realview_gic.c   |  7 +---
- hw/misc/auxbus.c         | 18 ++++++---
- include/hw/misc/auxbus.h | 14 ++++++-
- include/hw/sysbus.h      | 17 +++++++++
- include/qom/object.h     | 45 +++++++++++++++++++++-
- qom/object.c             | 54 +++++++++++++++++++++++++++
- 24 files changed, 355 insertions(+), 300 deletions(-)
-
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 6805a7d..2595d93 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -51,25 +51,19 @@ static void bcm2836_init(Object *obj)
+     int n;
+ 
+     for (n = 0; n < BCM283X_NCPUS; n++) {
+-        object_initialize(&s->cpus[n], sizeof(s->cpus[n]),
+-                          info->cpu_type);
+-        object_property_add_child(obj, "cpu[*]", OBJECT(&s->cpus[n]),
+-                                  &error_abort);
++        object_initialize_child(obj, "cpu[*]", &s->cpus[n], sizeof(s->cpus[n]),
++                                info->cpu_type, &error_abort, NULL);
+     }
+ 
+-    object_initialize(&s->control, sizeof(s->control), TYPE_BCM2836_CONTROL);
+-    object_property_add_child(obj, "control", OBJECT(&s->control), NULL);
+-    qdev_set_parent_bus(DEVICE(&s->control), sysbus_get_default());
++    sysbus_init_child_obj(obj, "control", &s->control, sizeof(s->control),
++                          TYPE_BCM2836_CONTROL);
+ 
+-    object_initialize(&s->peripherals, sizeof(s->peripherals),
+-                      TYPE_BCM2835_PERIPHERALS);
+-    object_property_add_child(obj, "peripherals", OBJECT(&s->peripherals),
+-                              &error_abort);
++    sysbus_init_child_obj(obj, "peripherals", &s->peripherals,
++                          sizeof(s->peripherals), TYPE_BCM2835_PERIPHERALS);
+     object_property_add_alias(obj, "board-rev", OBJECT(&s->peripherals),
+                               "board-rev", &error_abort);
+     object_property_add_alias(obj, "vcram-size", OBJECT(&s->peripherals),
+                               "vcram-size", &error_abort);
+-    qdev_set_parent_bus(DEVICE(&s->peripherals), sysbus_get_default());
+ }
+ 
+ static void bcm2836_realize(DeviceState *dev, Error **errp)
 -- 
 1.8.3.1
 

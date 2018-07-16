@@ -1,70 +1,99 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1512320wru;
-        Mon, 16 Jul 2018 06:33:23 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpc3zGsJKM7AfwzNIzWxuEiJHtRGL8CHoDJqUPqO2c2cfHr6YCDY843PRsLcihuXnwcvyFRe
-X-Received: by 2002:a37:a58c:: with SMTP id o134-v6mr13750962qke.305.1531748003225;
-        Mon, 16 Jul 2018 06:33:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531748003; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1518739wru;
+        Mon, 16 Jul 2018 06:39:56 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc1ecvyPlAgR6xgShcQPUEzy5Am5ReL7195QfVNZW7vAKKY5BDkrgi9cS61krZllXIL1Lya
+X-Received: by 2002:a0c:8b11:: with SMTP id q17-v6mr13327516qva.193.1531748396110;
+        Mon, 16 Jul 2018 06:39:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531748396; cv=none;
         d=google.com; s=arc-20160816;
-        b=kRUliiiAjFL1u9XPDXPDhvnbZYU6UmYKUFi1+Adx7oMXf9HivfZCQrVeJRHvm94KP5
-         OhyWZjG2if4xKxzMgVWREt1CHa9F6ac53N97BI7Y3c2ecfbiUAn6rptX+kpTBB1/XliT
-         61wBFiMfiqqwwaTnsMveNKBZ7twiF5QPpm3EEALqQxWKSyLX1eLsKUdh2rzT+pVRH9XZ
-         Nqs4So5KixjteIGoln51sJ+s2phXtjRrQbOCt11oEDojirqF9XV4jn3rl9m2ypzaFTxi
-         s6VoUxUbYboUdjQZyWDaxbecpaas+htDucsViL/okZpao7xnl2dOlstpgf8Bru/+SA73
-         jBuA==
+        b=Ccx+m/H74V18WgqBR9RptHxgvJr8aJCBrhAFKTrbhGiZ9/qOOHAiJ7vTxVLyZu73cD
+         oQRoPabjfoR2iivAim+O2y3B/eydshHGFjFYdpNPwQ8VxMNWhWv2i1/tMw3D4B86sovc
+         ZF7ojReGjZmjjvbR38QHJys2LHIlOzKpaPpH1iKaRiN0xmiHFKE4xQMneR1T1eZhTIeZ
+         qsP3Xg6FCQM2/HPsx/njn7YAcXSoqWVGlCwNeHvY6uFKHVOZ3dco8EXr+IaM7Q5Wh00m
+         /xhCXEQ7hbYhd50DuhjwJHQnerzCXzni6Xfk166nsw/YOJ4uuxhu9ZsA1xkl9NZo2aXW
+         nngQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=K2vdgO+dcmzil51RCwaP4ZMYOG5p403h6QM9wnWKsa4=;
-        b=f4MIIHxxLFxjNY7vvPbOqAJXAdherYeSfy/i/8LOAoAxQb1uDA85UTjLxbgNl91wyg
-         Ag105NnFXc9Z/IrETwmtayFTXJzUbYmt4gSPFYVCvw+su1hQEcAD3E1XWGxxdFE+ssGa
-         9MOC3yM0wTY2gtpg1c/AtwbiRPWs8lz3/4xzI13dYdyxttgE8/JbGGhSpTvFRYsr/+cX
-         1VeL13M20kGTY8LCHjg2CI6LZwryF5lgg5unIFpnmcucemdIRaiDAg7jpu1iqkYarVvQ
-         K6E8mn+NZUgnq6yVngFkJYGcYin4JqBAlgVhivpgofOKaK6DgLDqyg/RK+5R0xtCQ7Ov
-         4kzw==
+        bh=vYsyFd3z7Vz9FXk0yamy16bz+jvksM13DymlyW+CLKI=;
+        b=SiacGrxs3KI2Ng8NZevBirTqUaxaiz2zcDih7iVxdYz7xupJm8PSDDVjXUgvWmNjh9
+         GZQZ+982TUfAk4h9+vPIz+WakcdAXtvGms2B2t997o50f8tdVxHVd5EaY2BAm0JGve7y
+         qJW283PYUGBD5mxoF2kvPbfG5q64OWRPQa6sAP1BJwSe6R7S6RP+oooclV+RREgtaLIh
+         aRAdDW6ugrJD86DHWl96y2MQO3rqXMynG+Z91sbiEX2dSVrWeX0UPklGTcva8VOcYp8r
+         ZeuPKWcGnze2AY+EdR30pC6cHJmJuKBPNaf1ugvnTIwE9IlB8QXwnomUXZv38Nl9i5ij
+         3tGg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=an6Gyh0G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h7-v6si4038362qkm.150.2018.07.16.06.33.22
+        by mx.google.com with ESMTPS id d13-v6si1037833qve.226.2018.07.16.06.39.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 06:33:23 -0700 (PDT)
+        Mon, 16 Jul 2018 06:39:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=an6Gyh0G;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51786 helo=lists.gnu.org)
+Received: from localhost ([::1]:51824 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ff3cw-0006LU-MB
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 09:33:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54758)
+	id 1ff3jH-0000Of-L3
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 09:39:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56822)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ff3cq-0006LP-4x
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:33:17 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1ff3j6-0000OF-6C
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:39:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ff3cp-00020t-1P
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:33:16 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43580)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1ff3co-0001zM-Pa; Mon, 16 Jul 2018 09:33:14 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ff3cd-0000qX-Ql; Mon, 16 Jul 2018 14:33:03 +0100
+	(envelope-from <peter.maydell@linaro.org>) id 1ff3j5-0005Uj-Cb
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:39:44 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:46789)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1ff3j5-0005Tk-4Q
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:39:43 -0400
+Received: by mail-oi0-x243.google.com with SMTP id y207-v6so74809009oie.13
+	for <qemu-arm@nongnu.org>; Mon, 16 Jul 2018 06:39:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=vYsyFd3z7Vz9FXk0yamy16bz+jvksM13DymlyW+CLKI=;
+	b=an6Gyh0G/0tmwm9lAzRDk4IP0Vcxc621zGNsF9PjLMnqR8XUu4WfSFciYLYOkP32tq
+	zzxAWldszSI1C/yLDc2ZgB+QK5vwTHtRPdaIVv7q4NAZGiQ+OqrT48XvVAe73tgbxKeG
+	uNLxe8cj5LOvI8fBh+VnhRs6ifb1nZbhin228=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=vYsyFd3z7Vz9FXk0yamy16bz+jvksM13DymlyW+CLKI=;
+	b=KLs5bf57yn3TnhJXVXvPZ7FhgmS0AJnxDTX0qYJ60gbEqn6eIRnNsdHfnGW2lsdWO8
+	fz4+G8OEfustbI/ZtBUFld/rpxtv78XQ4gBuI4ZljbqIEFWeSSyZaSGhp6Xh+BnlzSNK
+	6MiUT6D0rr/lc8MgjAW2Ef46CBZsM5M5lY/CZTFWu6YcahGOFBLLtiQtBg/M29wqyiqy
+	TP9TIdVy9subZhY2yGGU7GWa2V6mHn1MW5NVnE6AyQDwQAdzln6pI2lWgw5qlmL4xll8
+	R70OJRTuiV56eQYhcI2gw9edjlhQNX2ueSHzeErACV3iw/2MM/StmZUg50Z0oh1soOU0
+	0Xdg==
+X-Gm-Message-State: AOUpUlHtifI4lNSVd0gk41YDPqtugZxp7gJty2l/pmamvJ0mzOUiFVWc
+	vttk7F207HQtkXrLkV6rT8baO37HykY68h9LBL6VqQ==
+X-Received: by 2002:aca:4c14:: with SMTP id
+	z20-v6mr16686478oia.164.1531748382368; 
+	Mon, 16 Jul 2018 06:39:42 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 16 Jul 2018 06:39:22
+	-0700 (PDT)
+In-Reply-To: <1531415537-26037-1-git-send-email-thuth@redhat.com>
+References: <1531415537-26037-1-git-send-email-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon, 16 Jul 2018 14:33:02 +0100
-Message-Id: <20180716133302.25989-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
+Date: Mon, 16 Jul 2018 14:39:22 +0100
+Message-ID: <CAFEAcA9_TrSTrcHBGS1mAd0-w2VSQ0AP3z=EPM_U3dTF3k_R1w@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-3.0] target/arm: Correctly handle overlapping
- small MPU regions
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/bcm2836: Mark the bcm2836 / bcm2837
+ devices with user_creatable = false
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,114 +105,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Adithya Baglody <adithya.nagaraj.baglody@intel.com>, patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y8YWSsb2ceDA
+X-TUID: qPQPo7NRqT6v
 
-To correctly handle small (less than TARGET_PAGE_SIZE) MPU regions,
-we must correctly handle the case where the address being looked
-up hits in an MPU region that is not small but the address is
-in the same page as a small region. For instance if MPU region
-1 covers an entire page from 0x2000 to 0x2400 and MPU region
-2 is small and covers only 0x2200 to 0x2280, then for an access
-to 0x2000 we must not return a result covering the full page
-even though we hit the page-sized region 1. Otherwise we will
-then cache that result in the TLB and accesses that should
-hit region 2 will incorrectly find the region 1 information.
+On 12 July 2018 at 18:12, Thomas Huth <thuth@redhat.com> wrote:
+> These devices are currently causing some problems when a user is trying
+> to hot-plug or introspect them during runtime. Since these devices can
+> not be instantiated by the user at all (they need to be wired up in code
+> instead), we should mark them with user_creatable = false anyway, then we
+> avoid at least the crashes with the hot-plugging. The introspection problem
+> will be handled by a separate patch.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
 
-Check for the case where we miss an MPU region but it is still
-within the same page, and in that case narrow the size we will
-pass to tlb_set_page_with_attrs() for whatever the final
-outcome is of the MPU lookup.
+I thought we'd changed things so all sysbus devices defaulted
+to not-user-createable? Am I confusing that with something else?
+(The set of user-creatable sysbus devices must be very small...)
 
-Reported-by: Adithya Baglody <adithya.nagaraj.baglody@intel.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This should go into 3.0 as it fixes a corner case in the newly added
-small-MPU-region handling.
-
- target/arm/helper.c | 46 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 46 insertions(+)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0604a0efbe2..22d812240af 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -17,6 +17,7 @@
- #include "exec/semihost.h"
- #include "sysemu/kvm.h"
- #include "fpu/softfloat.h"
-+#include "qemu/range.h"
- 
- #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
- 
-@@ -9669,6 +9670,20 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
-             }
- 
-             if (address < base || address > base + rmask) {
-+                /*
-+                 * Address not in this region. We must check whether the
-+                 * region covers addresses in the same page as our address.
-+                 * In that case we must not report a size that covers the
-+                 * whole page for a subsequent hit against a different MPU
-+                 * region or the background region, because it would result in
-+                 * incorrect TLB hits for subsequent accesses to addresses that
-+                 * are in this MPU region.
-+                 */
-+                if (ranges_overlap(base, rmask,
-+                                   address & TARGET_PAGE_MASK,
-+                                   TARGET_PAGE_SIZE)) {
-+                    *page_size = 1;
-+                }
-                 continue;
-             }
- 
-@@ -9888,6 +9903,22 @@ static void v8m_security_lookup(CPUARMState *env, uint32_t address,
-                         sattrs->srvalid = true;
-                         sattrs->sregion = r;
-                     }
-+                } else {
-+                    /*
-+                     * Address not in this region. We must check whether the
-+                     * region covers addresses in the same page as our address.
-+                     * In that case we must not report a size that covers the
-+                     * whole page for a subsequent hit against a different MPU
-+                     * region or the background region, because it would result
-+                     * in incorrect TLB hits for subsequent accesses to
-+                     * addresses that are in this MPU region.
-+                     */
-+                    if (limit >= base &&
-+                        ranges_overlap(base, limit - base + 1,
-+                                       addr_page_base,
-+                                       TARGET_PAGE_SIZE)) {
-+                        sattrs->subpage = true;
-+                    }
-                 }
-             }
-         }
-@@ -9963,6 +9994,21 @@ static bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-             }
- 
-             if (address < base || address > limit) {
-+                /*
-+                 * Address not in this region. We must check whether the
-+                 * region covers addresses in the same page as our address.
-+                 * In that case we must not report a size that covers the
-+                 * whole page for a subsequent hit against a different MPU
-+                 * region or the background region, because it would result in
-+                 * incorrect TLB hits for subsequent accesses to addresses that
-+                 * are in this MPU region.
-+                 */
-+                if (limit >= base &&
-+                    ranges_overlap(base, limit - base + 1,
-+                                   addr_page_base,
-+                                   TARGET_PAGE_SIZE)) {
-+                    *is_subpage = true;
-+                }
-                 continue;
-             }
- 
--- 
-2.17.1
-
+thanks
+-- PMM

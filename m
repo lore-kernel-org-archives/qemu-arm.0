@@ -1,146 +1,165 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1490021wru;
-        Mon, 16 Jul 2018 06:12:25 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpccAwU1dLvZS1vQCt51eF9I8RmDqArvE9z6gkibbxTnZgIAmalo5d+gGMzgJTJt1YEgV7xc
-X-Received: by 2002:ac8:2888:: with SMTP id i8-v6mr15045923qti.275.1531746745834;
-        Mon, 16 Jul 2018 06:12:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531746745; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1495408wru;
+        Mon, 16 Jul 2018 06:17:17 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdHIeLKHIktzZzpRQ0UKBTPiVAMKLy6rMRrQdaNufofP0tSrw8yv/QK9DIIm6DSckH2vYbM
+X-Received: by 2002:a37:5285:: with SMTP id g127-v6mr13267248qkb.377.1531747037220;
+        Mon, 16 Jul 2018 06:17:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531747037; cv=none;
         d=google.com; s=arc-20160816;
-        b=NCwO5atxtghy9ubVJI0CmYky+VLgObIV5AlcAfOzz6QgfdpGFCEeopGrOJc4DhNHFg
-         P+WyWHA1uQ0u+l97QstIANCyQsTh+8TfEIAjY1uITPE4oW0/hThQJoznwwgpI0xTzp5x
-         U84/b55TEZOMyl2bcZ/ivIpeZqeQqM+gJh/7iAkEL58ytHXIjzLpWSEf0AAZj6blbyIT
-         Uvnpt3MTLlJXxK0QkIHStQ6L4NE1JlZKumGmvLN5FbCcBdkk2opsbUw1O4Dj977DNMky
-         jXFipVYSIDYecshQPzQijWS4OBD5p4bMnIX3JBDsrQV4LUj2/98Hw+ebxswq2/TnmU69
-         Beeg==
+        b=lVEOtR8IEgQbMj5PXxaIXDsshuVa6L7t1MD3aeezIh/FCK/aZgfxAXnK6aOtEDml1K
+         4fhNrsIM7EnpIv6JeTdTUjU6swcm+8s8547ZOfOLvauy2t3abXl0kKSiL/y0fR5TvWoo
+         soYnuDXWoGHqL9xslRm02UTm7E+D6Kz3/U3pYASZbeiiCaaOpkGINzN0204iJ//7d5s0
+         1Y7vNTL/try4elyekHybwziS+FAP3o74fHP0fMU2fhr7SeA5qaawfdl//uH4a6nbPvKs
+         B+mWNK8majq3m4XLTwFs2kOEuDu91KP4IUcSVezKdW/1zPe22/lFeA0SCvZdysUaZT26
+         6N9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=zcp8F16QMW4sawzK/09KBot4vn6EjECBH2AAGw0QzUI=;
-        b=ot5yLtQ5Ay+J0jTRHM8ugma2fKZv8WPc9Kc5JEiFh+a9gEmrfBwMmp/E7OxREeSXaI
-         uBFhYT3jGV5PhKu5Ck5Dbl1rV9TaYnYtLJvsq0697NBmxmHbpx74yl2XMLQKEj3oh58Q
-         cUEyVPbKqCDznp8uhgiiTU02tIXcvAgrwL71n8nylPWXSsXTy63BkMaVHs2ogWM1EcHj
-         kw9I2dlImhCv3C5PvN+PnU7ujtxuV3T/80DQz4c1Em/a3Br2QRr3YWd8eZQ7mQCYOJvM
-         g8r4hoY3nJuDrjSEsX6ZRBR9N1q+kBoVyp41QW20XXW8D/Tg+FQZ45vgPhztODv06O0O
-         0r1A==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=TSiwmpP+dSEjCF1mPkznF6Sxgb9P3MgLKPFD1dr5WTg=;
+        b=MBqH1JGe9YSNSJtChuNbYyir8ws3QIoAZCOa9LMEd+gqNDDN0dHPzpMWkTlN1ZU9lc
+         MXq8oproUZzpoIG0c6UkuBXVwG9vt2x9Cbn/3lmIulmGwCjoINgLOylJ8hHcjt0XWCeS
+         c1YbOuXRQnRCzCKaxrdGTj4xIuvQQmYLjy9i4K/e1sZQJe/gl3khSUzrwb7X1Tnk4m2/
+         1gUW9K2N8aJ//2JHxVy4UKGAukwAs2LJP5H48aX30fNYQujxoBOfyESYE/aj4z2MhjxQ
+         JNc3cjQmbziFOAPfiPpq97kcIi43VielBp2WAa8Mq39E5xr8VjXtwEIQPTb21SCbYUr9
+         +2ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NM11xRPI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u6-v6si2044825qkd.354.2018.07.16.06.12.25
+        by mx.google.com with ESMTPS id e33-v6si589296qte.258.2018.07.16.06.17.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 06:12:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 16 Jul 2018 06:17:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NM11xRPI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51342 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51389 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ff3If-0002Wx-5j
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 09:12:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44749)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ff3NM-0006XP-Iv
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 09:17:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43655)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ff396-0003EC-TF
-	for qemu-devel@nongnu.org; Mon, 16 Jul 2018 09:02:33 -0400
+	(envelope-from <thuth@redhat.com>) id 1ff36m-0001SI-5e
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:00:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ff391-0003QS-4V
-	for qemu-devel@nongnu.org; Mon, 16 Jul 2018 09:02:32 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:34631)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ff390-0003Q3-U0
-	for qemu-devel@nongnu.org; Mon, 16 Jul 2018 09:02:27 -0400
-Received: by mail-oi0-x242.google.com with SMTP id 13-v6so74589141ois.1
-	for <qemu-devel@nongnu.org>; Mon, 16 Jul 2018 06:02:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=zcp8F16QMW4sawzK/09KBot4vn6EjECBH2AAGw0QzUI=;
-	b=NM11xRPIJLVah7BSyEDomyl56L6Jdt8mmn9TFmhwMfQLIlpLJ+pzSFLF34gRdyABay
-	jHd6kLxVpeJLcFTFm2qdDBv819GF3NwDOq7V9uV7/EUDBCfo7Q3XaVQI9LYbfLt/4j48
-	GThdMCKGZqdTVniMmWPb4rb2epSsCN3qTuAds=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=zcp8F16QMW4sawzK/09KBot4vn6EjECBH2AAGw0QzUI=;
-	b=V/2EjnLW6Rz18vjZBRComYh8YI06384WOLRW50LOKULkbYPK6KlQki3fWbRaL7I4XM
-	hxpUMZGldXZE7eFDWYX87yGeT6WkKiKrzGDTVP9zGVwPD129DagTI38psBw6A/mTw6cY
-	TPMqVo3IdgT9W30nQj7fu2fZRRZ6GlXwzvT1m1OKQHAVL9Dx+uMDU7lrWfodkxHutXzl
-	PHO+FlojsO7GHC+sDRIcr8X3m/hFms6wGZ0LEaDMTV7dBcze0RWujWQEdluIlug0RDs0
-	+zuNt/m02dme9lA7Gr18WLNzQHLdejj+GK/u7oeNDZoTizB9f3oJCVXIUxEY3q6zt8+l
-	RjtQ==
-X-Gm-Message-State: AOUpUlEKgrgXvEkGJEwDJCHRv2stWk7yxg5GJd5cF06y8Az82iG0pJVh
-	twHFJB+1owi4080gfvK4sZ9iLiP5nRjade0xqvk1CQ==
-X-Received: by 2002:aca:4c14:: with SMTP id
-	z20-v6mr16547621oia.164.1531746146191; 
-	Mon, 16 Jul 2018 06:02:26 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 16 Jul 2018 06:02:05
-	-0700 (PDT)
-In-Reply-To: <e9073530-a6ef-0e93-dcef-f3c3e91df01f@adacore.com>
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-	<e9073530-a6ef-0e93-dcef-f3c3e91df01f@adacore.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Jul 2018 14:02:05 +0100
-Message-ID: <CAFEAcA-b7nzcjAyofRh5S6RxjZ08==PdN83e2sgKW9d=1Za2xA@mail.gmail.com>
-To: KONRAD Frederic <frederic.konrad@adacore.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-devel] [PATCH 0/6] accel/tcg: Support execution from MMIO
- and small MMU regions
-X-BeenThere: qemu-devel@nongnu.org
+	(envelope-from <thuth@redhat.com>) id 1ff36l-0002H3-2a
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:00:08 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48628 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1ff36k-0002Gb-Nx; Mon, 16 Jul 2018 09:00:07 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2C4DC8163C5F;
+	Mon, 16 Jul 2018 13:00:06 +0000 (UTC)
+Received: from thh440s.str.redhat.com (dhcp-200-180.str.redhat.com
+	[10.33.200.180])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8CDF61C589;
+	Mon, 16 Jul 2018 13:00:04 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 16 Jul 2018 14:59:31 +0200
+Message-Id: <1531745974-17187-15-git-send-email-thuth@redhat.com>
+In-Reply-To: <1531745974-17187-1-git-send-email-thuth@redhat.com>
+References: <1531745974-17187-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 16 Jul 2018 13:00:06 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 16 Jul 2018 13:00:06 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [PATCH v3 14/17] hw/arm/allwinner-a10: Fix introspection
+ problem with 'allwinner-a10'
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	"Emilio G . Cota" <cota@braap.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IZawDsKGksay
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Markus Armbruster <armbru@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vTY/CrnKU5B0
 
-On 16 July 2018 at 13:30, KONRAD Frederic <frederic.konrad@adacore.com> wrote:
-> Hi Peter,
->
-> Nice! Thanks for that.
->
-> A little question though.. What will happen in the case where the
-> CPU start executing code at random place because of eg: a badly
-> configured kernel?
->
-> Seeing the patch 5 I guess it will really execute stuff.. So
-> maybe this is less user-friendly?
+Valgrind complains:
 
-Yes, it's true that we will now happily execute from anything
-(device, unassigned memory, etc), and do what the real hardware
-would do in that situation (random unhelpful things, infinite
-loop of taking exceptions). That's a bit unavoidable though I
-think, and there are already lots of cases where QEMU will just
-sit there with a black screen because the user has loaded in
-a bad guest image that goes off into the weeds without printing
-anything to a UART.
+echo "{'execute':'qmp_capabilities'} {'execute':'device-list-properties'," \
+ "'arguments':{'typename':'allwinner-a10'}}" \
+ "{'execute': 'human-monitor-command', " \
+ "'arguments': {'command-line': 'info qtree'}}" | \
+ valgrind -q aarch64-softmmu/qemu-system-aarch64 -M none,accel=qtest -qmp stdio
+[...]
+==32519== Invalid read of size 8
+==32519==    at 0x61869A: qdev_print (qdev-monitor.c:686)
+==32519==    by 0x61869A: qbus_print (qdev-monitor.c:719)
+==32519==    by 0x452B38: handle_hmp_command (monitor.c:3446)
+[...]
 
-It's possible we could devise a user-friendliness option that
-tried to pick up symptoms of guests being stuck (eg tracking
-whether we're continuously taking exceptions) but that gets
-into heuristics a bit.
+Use object_initialize_child() and sysbus_init_child_obj() to fix the issue.
 
-thanks
--- PMM
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/arm/allwinner-a10.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index c5fbc65..9fe875c 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -27,20 +27,19 @@ static void aw_a10_init(Object *obj)
+ {
+     AwA10State *s = AW_A10(obj);
+ 
+-    object_initialize(&s->cpu, sizeof(s->cpu), "cortex-a8-" TYPE_ARM_CPU);
+-    object_property_add_child(obj, "cpu", OBJECT(&s->cpu), NULL);
++    object_initialize_child(obj, "cpu", &s->cpu, sizeof(s->cpu),
++                            "cortex-a8-" TYPE_ARM_CPU, &error_abort, NULL);
+ 
+-    object_initialize(&s->intc, sizeof(s->intc), TYPE_AW_A10_PIC);
+-    qdev_set_parent_bus(DEVICE(&s->intc), sysbus_get_default());
++    sysbus_init_child_obj(obj, "intc", &s->intc, sizeof(s->intc),
++                          TYPE_AW_A10_PIC);
+ 
+-    object_initialize(&s->timer, sizeof(s->timer), TYPE_AW_A10_PIT);
+-    qdev_set_parent_bus(DEVICE(&s->timer), sysbus_get_default());
++    sysbus_init_child_obj(obj, "timer", &s->timer, sizeof(s->timer),
++                          TYPE_AW_A10_PIT);
+ 
+-    object_initialize(&s->emac, sizeof(s->emac), TYPE_AW_EMAC);
+-    qdev_set_parent_bus(DEVICE(&s->emac), sysbus_get_default());
++    sysbus_init_child_obj(obj, "emac", &s->emac, sizeof(s->emac), TYPE_AW_EMAC);
+ 
+-    object_initialize(&s->sata, sizeof(s->sata), TYPE_ALLWINNER_AHCI);
+-    qdev_set_parent_bus(DEVICE(&s->sata), sysbus_get_default());
++    sysbus_init_child_obj(obj, "sata", &s->sata, sizeof(s->sata),
++                          TYPE_ALLWINNER_AHCI);
+ }
+ 
+ static void aw_a10_realize(DeviceState *dev, Error **errp)
+-- 
+1.8.3.1
+

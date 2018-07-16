@@ -1,86 +1,103 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2130119wrd;
-        Sun, 2 Sep 2018 23:58:26 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdYpcM1bIkXdkPTUW5DpyssktG6xDRtHYAp0h8B2B2u2p/kdXvExrKQnjs7e3j9lSd/kSrWj
-X-Received: by 2002:ac8:218d:: with SMTP id 13-v6mr24333848qty.122.1535957906534;
-        Sun, 02 Sep 2018 23:58:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535957906; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1172207wru;
+        Sun, 15 Jul 2018 23:41:24 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcxvde+RUsF5lXGuTnaDLEPnT4QGjFeQSbK1ajVLcJynRunnu2RQ0eZP7sxzux/Ql1iejK1
+X-Received: by 2002:a37:4bc8:: with SMTP id y191-v6mr12331696qka.98.1531723284428;
+        Sun, 15 Jul 2018 23:41:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531723284; cv=none;
         d=google.com; s=arc-20160816;
-        b=aBhs3clIdL0jhEj8y4WvNUbfuq39gMRg89u9G/Ue95CHYAdizZL6ITLG6NCqBlPA7t
-         l66n2pYlJTSLFkdomJRMRWWTamn8BOedqGOyDycGTA8k2RJgZl64u9zvkE8aJ0CxY0yX
-         /rBQ4ysEVJnYiun/M9Z2OZ8+NsDa9NYSZq6H92cNKr1uhxzXJ2xWajYNVwC/f6UunV5n
-         xH8EQjnvND4Om23ERhGydICJmh19BfcBLQaDeBnhPzFxFQ2Yi/Iq5tt/lGzvkeO0pMF4
-         mXRFi26BsfD4uBc3pNBZgyDpwoVgLuFr/6WFrWwBYHFxBao2RDwcwAcD/Qkk7oR8zSuW
-         Vm5Q==
+        b=aMzTURJ/V1oX4MUnfnp3bfeGn+Rxgk1Y9IEPazux4EGtEjvfN1rXZmAa0Ps4um+LKy
+         EXPpAXkk9YmnxV8IYoN0LU+/LBuqx2UeL0z5haqOAcYDBjVNTuvUJd0wk7R3hnx//Ain
+         S79SOi3jNeABXoGYfStIFrxcCdRKb/7N1kHAWmPE+Fi6VaWYPku/tYXVeivUkmjvXyK+
+         wprq+RvgKGm8r92FJ3Ly30RrJts0KoKddHTCQ/LVqshF4XJs/Rr2veVu36QaSBUa8F4R
+         3PkcWPWFl/8jDbwRBkdnYTbd4/Dpt7376wLk0NdKSEzEgyz5XmvDS325OCgvd0Z+A0dH
+         qxOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=gbJCbTbCTcF5ijp3pKwI4axWpqqEPi4JDLi8ZJebI0M=;
-        b=Xjw/gJ9D65v5QtcKSmmBeQ39+iq33ol/dgw4C3qYfXA58YcreAFVbcFBIch9ogQIx3
-         utJcU6TskEPhRCqeDU1/gse+XmvkMjeoxDemai1g6e/8qb5bi1lG9Pm4gKOyUrksBQBo
-         dQBCCjobbgdEpLsb97NeG2bTF2IXqrA4tCvinixZYMbs9XZhl0BWQwehG2Yd/lq5q4va
-         tqyPmKwE8az21LO33kUBZC85TeXmiAN0i26Xt6XLT+RvhxTZfnFFiKu7AhO/CzgaE1OI
-         ECeA+17nae3kAipN66VsPdTtzdFNPkm/6KrLnkZze1rUP8TbBpNcLKptldsi4a8h7EZZ
-         vbfQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from
+         :arc-authentication-results;
+        bh=X7Y2AyJ/AsILjKKSqf9D7vMz1UCj87daGrhJVpftkU0=;
+        b=O5cdKLJ2KZN0HtAUJRUqFxXUzNigLd5xojLyYsF9pbG2nozotYMpnT76tLTiH4vQf8
+         M+QUL8UtRjpl9dVE1OtXJlYF6mCpRuqQHOiUNWncKMaVppvzx5taty3EHt1hnv9lfQ7V
+         4jOLtSNqtcSIG0qyLjMBq3+uH/MMHFR0nRd3z2p4fTp6y2dLgVJkbM2V3TNiCOuiZZbX
+         X3mzWlngGbO6U2ekjc01u2sj6xyLkiMu54awafUSdJvgDjlCwPQv6rvDQKOMAry2rqmo
+         T3hKkmd3D92McI+LupIWhgR5gwZJy18v9WU44e9+E9EOpv4bel24FFFZYDn1sWdrmBst
+         Zybw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h35-v6si1431906qvi.283.2018.09.02.23.58.26
+        by mx.google.com with ESMTPS id f26-v6si1088205qte.45.2018.07.15.23.41.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 02 Sep 2018 23:58:26 -0700 (PDT)
+        Sun, 15 Jul 2018 23:41:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43798 helo=lists.gnu.org)
+Received: from localhost ([::1]:49109 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fwioc-0002rC-2u
-	for alex.bennee@linaro.org; Mon, 03 Sep 2018 02:58:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58418)
+	id 1fexCF-0006HG-W0
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 02:41:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39256)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fwio7-0001lP-Hy
-	for qemu-arm@nongnu.org; Mon, 03 Sep 2018 02:57:56 -0400
+	(envelope-from <armbru@redhat.com>) id 1fexC7-0006Gs-V4
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 02:41:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fwio4-0008Cn-DP
-	for qemu-arm@nongnu.org; Mon, 03 Sep 2018 02:57:55 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36372 helo=mx1.redhat.com)
+	(envelope-from <armbru@redhat.com>) id 1fexC4-0005ZO-Im
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 02:41:16 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49662 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fwio4-0008Bl-6S; Mon, 03 Sep 2018 02:57:52 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fexC4-0005Yb-8g; Mon, 16 Jul 2018 02:41:12 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8355C40216EA;
-	Mon,  3 Sep 2018 06:57:51 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-66.ams2.redhat.com
-	[10.36.116.66])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D8DE12027069;
-	Mon,  3 Sep 2018 06:57:46 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 2207B9B1D; Mon,  3 Sep 2018 08:57:46 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  3 Sep 2018 08:57:44 +0200
-Message-Id: <20180903065745.23055-5-kraxel@redhat.com>
-In-Reply-To: <20180903065745.23055-1-kraxel@redhat.com>
-References: <20180903065745.23055-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+	by mx1.redhat.com (Postfix) with ESMTPS id C70F9402333A;
+	Mon, 16 Jul 2018 06:41:11 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-125.ams2.redhat.com
+	[10.36.116.125])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 783357C21;
+	Mon, 16 Jul 2018 06:41:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5759B11385D6; Mon, 16 Jul 2018 08:41:10 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+References: <1531170180-21199-1-git-send-email-thuth@redhat.com>
+	<CAFEAcA-T_d2kEU+Pb72=pJQhpvqvN1owgi4RLNtNY=L4t_1Z2g@mail.gmail.com>
+	<5d0c7195-ffbf-1618-6106-ef6c82df3bd7@redhat.com>
+	<CAFEAcA9GspXJg2ioLrCknBgYHJ9f6qvM=n=y0dLeU12yv_5ETA@mail.gmail.com>
+	<931c0545-e3d8-fc84-9b69-59fab040265c@redhat.com>
+	<20180711161216.GV7451@localhost.localdomain>
+	<CAFEAcA-3aBQPwiwDfZSjspiwv4L-U0LXBKaOQ2m+=OzhqRq3OQ@mail.gmail.com>
+	<87y3egmzem.fsf@dusky.pond.sub.org>
+	<6cc1c007-4bdf-2b8c-b0b0-d32979a56ecd@redhat.com>
+	<87muuwo2dz.fsf@dusky.pond.sub.org>
+	<CAFEAcA9g0Vu-cF50maC2cVrSffZA5F6AsoM5pz2XT09YKG4WHg@mail.gmail.com>
+	<585e3fa1-7d56-ccb8-0357-77597ca78fa8@redhat.com>
+Date: Mon, 16 Jul 2018 08:41:10 +0200
+In-Reply-To: <585e3fa1-7d56-ccb8-0357-77597ca78fa8@redhat.com> (Thomas Huth's
+	message of "Thu, 12 Jul 2018 18:32:17 +0200")
+Message-ID: <87in5fisxl.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Mon, 03 Sep 2018 06:57:51 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 03 Sep 2018 06:57:51 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.6]);
+	Mon, 16 Jul 2018 06:41:11 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Mon, 16 Jul 2018 06:41:11 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PULL 4/5] virtio-gpu: pass down VirtIOGPU pointer to a
- bunch of functions
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/bcm283x: Fix crash with
+ device_add bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,184 +109,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4M/H0GA3VtNG
+X-TUID: E+E+oKTk1ACz
 
-No functional change, just preparation for a followup patch
-which needs a VirtIOGPU pointer.
+Thomas Huth <thuth@redhat.com> writes:
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-Id: <20180829122101.29852-2-kraxel@redhat.com>
----
- include/hw/virtio/virtio-gpu.h |  6 ++++--
- hw/display/virtio-gpu-3d.c     |  8 ++++----
- hw/display/virtio-gpu.c        | 25 +++++++++++++++----------
- 3 files changed, 23 insertions(+), 16 deletions(-)
+> On 12.07.2018 18:22, Peter Maydell wrote:
+>> On 12 July 2018 at 17:16, Markus Armbruster <armbru@redhat.com> wrote:
+>>> Thomas Huth <thuth@redhat.com> writes:
+>>>
+>>>> On 12.07.2018 14:06, Markus Armbruster wrote:
+>>>>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>>>>
+>>>>>> On 11 July 2018 at 17:12, Eduardo Habkost <ehabkost@redhat.com> wrote:
+>>>>>>> On Wed, Jul 11, 2018 at 09:21:48AM +0200, Thomas Huth wrote:
+>>>>>>>> Hm, ok, so how to continue here now? Shall we at least mark the
+>>>>>>>> bcm2836/7 devices with user_creatable=false, so that users can not crash
+>>>>>>>> their QEMU so easily with device_add? The problem with introspection via
+>>>>>>>> device-list-properties would still continue to exist, but I think that's
+>>>>>>>> less likely used in practice... otherwise we could still move the
+>>>>>>>> qdev_set_parent_bus() calls to the realize() function instead, and just
+>>>>>>>> add a big fat FIXME comment in front of the code block, so that we
+>>>>>>>> remember to clean that up one day...
+>>>>>>>
+>>>>>>> Crashing device-list-properties should be a blocker bug, IMO.
+>>>>>
+>>>>> Seconded.
+>>>>
+>>>> Well, maybe I should then not suggest to add a hmp("info qtree") below
+>>>> the hmp("info qom-tree") in test_one_device() of
+>>>> tests/device-introspect-test.c ... otherwise we'll be quite busy in the
+>>>> next weeks...
+>>>
+>>> If we can't fix these bugs in time, we can bring back
+>>> cannot_destroy_with_object_finalize_yet, as Eduardo mentioned upthread.
+>>> Would be sad, but sad beats crash.
+>> 
+>> ...but are they actually interesting crashes? Nobody is ever
+>> going to actually start emulation of an integratorcp machine and
+>> then try to add a bcm2837 device via the QMP interface, except
+>> if they're deliberately doing exhaustive testing.
+>
+> It's not "device_add" that is a real problem here (otherwise we could
+> simply use user_creatable=false which we likely should do for this
+> device anyway), but rather the "device-list-properties" QMP command,
+> which also works for devices that are marked as user_creatable=false.
+>
+> I think it's valid that an upper layer tool scans all devices for their
+> properties. But since nobody complained about crashes in the past here
+> already, it seems like no upper layer tool is currently doing this. So I
+> agree with you that this should not be a blocker for the 3.0 release.
 
-diff --git a/include/hw/virtio/virtio-gpu.h b/include/hw/virtio/virtio-gpu.h
-index 2374f022e8..c8c599f1b9 100644
---- a/include/hw/virtio/virtio-gpu.h
-+++ b/include/hw/virtio/virtio-gpu.h
-@@ -159,10 +159,12 @@ void virtio_gpu_ctrl_response_nodata(VirtIOGPU *g,
-                                      enum virtio_gpu_ctrl_type type);
- void virtio_gpu_get_display_info(VirtIOGPU *g,
-                                  struct virtio_gpu_ctrl_command *cmd);
--int virtio_gpu_create_mapping_iov(struct virtio_gpu_resource_attach_backing *ab,
-+int virtio_gpu_create_mapping_iov(VirtIOGPU *g,
-+                                  struct virtio_gpu_resource_attach_backing *ab,
-                                   struct virtio_gpu_ctrl_command *cmd,
-                                   uint64_t **addr, struct iovec **iov);
--void virtio_gpu_cleanup_mapping_iov(struct iovec *iov, uint32_t count);
-+void virtio_gpu_cleanup_mapping_iov(VirtIOGPU *g,
-+                                    struct iovec *iov, uint32_t count);
- void virtio_gpu_process_cmdq(VirtIOGPU *g);
- 
- /* virtio-gpu-3d.c */
-diff --git a/hw/display/virtio-gpu-3d.c b/hw/display/virtio-gpu-3d.c
-index 3558f38fe8..55d76405a9 100644
---- a/hw/display/virtio-gpu-3d.c
-+++ b/hw/display/virtio-gpu-3d.c
-@@ -86,7 +86,7 @@ static void virgl_cmd_resource_unref(VirtIOGPU *g,
-                                        &res_iovs,
-                                        &num_iovs);
-     if (res_iovs != NULL && num_iovs != 0) {
--        virtio_gpu_cleanup_mapping_iov(res_iovs, num_iovs);
-+        virtio_gpu_cleanup_mapping_iov(g, res_iovs, num_iovs);
-     }
-     virgl_renderer_resource_unref(unref.resource_id);
- }
-@@ -291,7 +291,7 @@ static void virgl_resource_attach_backing(VirtIOGPU *g,
-     VIRTIO_GPU_FILL_CMD(att_rb);
-     trace_virtio_gpu_cmd_res_back_attach(att_rb.resource_id);
- 
--    ret = virtio_gpu_create_mapping_iov(&att_rb, cmd, NULL, &res_iovs);
-+    ret = virtio_gpu_create_mapping_iov(g, &att_rb, cmd, NULL, &res_iovs);
-     if (ret != 0) {
-         cmd->error = VIRTIO_GPU_RESP_ERR_UNSPEC;
-         return;
-@@ -301,7 +301,7 @@ static void virgl_resource_attach_backing(VirtIOGPU *g,
-                                              res_iovs, att_rb.nr_entries);
- 
-     if (ret != 0)
--        virtio_gpu_cleanup_mapping_iov(res_iovs, att_rb.nr_entries);
-+        virtio_gpu_cleanup_mapping_iov(g, res_iovs, att_rb.nr_entries);
- }
- 
- static void virgl_resource_detach_backing(VirtIOGPU *g,
-@@ -320,7 +320,7 @@ static void virgl_resource_detach_backing(VirtIOGPU *g,
-     if (res_iovs == NULL || num_iovs == 0) {
-         return;
-     }
--    virtio_gpu_cleanup_mapping_iov(res_iovs, num_iovs);
-+    virtio_gpu_cleanup_mapping_iov(g, res_iovs, num_iovs);
- }
- 
- 
-diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-index 410cf0c98a..cf31b5f710 100644
---- a/hw/display/virtio-gpu.c
-+++ b/hw/display/virtio-gpu.c
-@@ -29,7 +29,8 @@
- static struct virtio_gpu_simple_resource*
- virtio_gpu_find_resource(VirtIOGPU *g, uint32_t resource_id);
- 
--static void virtio_gpu_cleanup_mapping(struct virtio_gpu_simple_resource *res);
-+static void virtio_gpu_cleanup_mapping(VirtIOGPU *g,
-+                                       struct virtio_gpu_simple_resource *res);
- 
- static void
- virtio_gpu_ctrl_hdr_bswap(struct virtio_gpu_ctrl_hdr *hdr)
-@@ -442,7 +443,7 @@ static void virtio_gpu_resource_destroy(VirtIOGPU *g,
-     }
- 
-     pixman_image_unref(res->image);
--    virtio_gpu_cleanup_mapping(res);
-+    virtio_gpu_cleanup_mapping(g, res);
-     QTAILQ_REMOVE(&g->reslist, res, next);
-     g->hostmem -= res->hostmem;
-     g_free(res);
-@@ -688,7 +689,8 @@ static void virtio_gpu_set_scanout(VirtIOGPU *g,
-     scanout->height = ss.r.height;
- }
- 
--int virtio_gpu_create_mapping_iov(struct virtio_gpu_resource_attach_backing *ab,
-+int virtio_gpu_create_mapping_iov(VirtIOGPU *g,
-+                                  struct virtio_gpu_resource_attach_backing *ab,
-                                   struct virtio_gpu_ctrl_command *cmd,
-                                   uint64_t **addr, struct iovec **iov)
- {
-@@ -732,7 +734,7 @@ int virtio_gpu_create_mapping_iov(struct virtio_gpu_resource_attach_backing *ab,
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to map MMIO memory for"
-                           " resource %d element %d\n",
-                           __func__, ab->resource_id, i);
--            virtio_gpu_cleanup_mapping_iov(*iov, i);
-+            virtio_gpu_cleanup_mapping_iov(g, *iov, i);
-             g_free(ents);
-             *iov = NULL;
-             if (addr) {
-@@ -746,7 +748,8 @@ int virtio_gpu_create_mapping_iov(struct virtio_gpu_resource_attach_backing *ab,
-     return 0;
- }
- 
--void virtio_gpu_cleanup_mapping_iov(struct iovec *iov, uint32_t count)
-+void virtio_gpu_cleanup_mapping_iov(VirtIOGPU *g,
-+                                    struct iovec *iov, uint32_t count)
- {
-     int i;
- 
-@@ -757,9 +760,10 @@ void virtio_gpu_cleanup_mapping_iov(struct iovec *iov, uint32_t count)
-     g_free(iov);
- }
- 
--static void virtio_gpu_cleanup_mapping(struct virtio_gpu_simple_resource *res)
-+static void virtio_gpu_cleanup_mapping(VirtIOGPU *g,
-+                                       struct virtio_gpu_simple_resource *res)
- {
--    virtio_gpu_cleanup_mapping_iov(res->iov, res->iov_cnt);
-+    virtio_gpu_cleanup_mapping_iov(g, res->iov, res->iov_cnt);
-     res->iov = NULL;
-     res->iov_cnt = 0;
-     g_free(res->addrs);
-@@ -791,7 +795,7 @@ virtio_gpu_resource_attach_backing(VirtIOGPU *g,
-         return;
-     }
- 
--    ret = virtio_gpu_create_mapping_iov(&ab, cmd, &res->addrs, &res->iov);
-+    ret = virtio_gpu_create_mapping_iov(g, &ab, cmd, &res->addrs, &res->iov);
-     if (ret != 0) {
-         cmd->error = VIRTIO_GPU_RESP_ERR_UNSPEC;
-         return;
-@@ -818,7 +822,7 @@ virtio_gpu_resource_detach_backing(VirtIOGPU *g,
-         cmd->error = VIRTIO_GPU_RESP_ERR_INVALID_RESOURCE_ID;
-         return;
-     }
--    virtio_gpu_cleanup_mapping(res);
-+    virtio_gpu_cleanup_mapping(g, res);
- }
- 
- static void virtio_gpu_simple_process_cmd(VirtIOGPU *g,
-@@ -1144,6 +1148,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
-             hwaddr len = res->iov[i].iov_len;
-             res->iov[i].iov_base =
-                 cpu_physical_memory_map(res->addrs[i], &len, 1);
-+
-             if (!res->iov[i].iov_base || len != res->iov[i].iov_len) {
-                 /* Clean up the half-a-mapping we just created... */
-                 if (res->iov[i].iov_base) {
-@@ -1152,7 +1157,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
-                 }
-                 /* ...and the mappings for previous loop iterations */
-                 res->iov_cnt = i;
--                virtio_gpu_cleanup_mapping(res);
-+                virtio_gpu_cleanup_mapping(g, res);
-                 pixman_image_unref(res->image);
-                 g_free(res);
-                 return -EINVAL;
--- 
-2.9.3
-
+Fixing the crashes by bringing back
+cannot_destroy_with_object_finalize_yet would be a bit of a cop out, but
+it would also be so easy that there's really no excuse for leaving them
+unfixed.

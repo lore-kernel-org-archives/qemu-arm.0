@@ -1,102 +1,102 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1968363wru;
-        Mon, 16 Jul 2018 15:03:58 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfxZn+xdZtZ0x94C1dcJcQcAfyKkxQcxB9iQwDOFIFqfW70vkTGUBgv2bPwuX+2jd9IWjmd
-X-Received: by 2002:aed:2496:: with SMTP id t22-v6mr16696402qtc.44.1531778638391;
-        Mon, 16 Jul 2018 15:03:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531778638; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1970829wru;
+        Mon, 16 Jul 2018 15:06:51 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfuykPVxyY6gTBruVfsDamljVtEI3WqEviHtOFz6ZojuxLq1VaCOzf0qoyYvfOyDovFILph
+X-Received: by 2002:a0c:d44a:: with SMTP id r10-v6mr19990748qvh.248.1531778810958;
+        Mon, 16 Jul 2018 15:06:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531778810; cv=none;
         d=google.com; s=arc-20160816;
-        b=d352s76VP2+QR8KCXka3FkLe46qb7DWZhAcQmHIx6uQ8Taf9qeVZoSX0TCAxu++vVJ
-         eO5/k2cJzZiayfRu0ORfptY5LJ1XdJYQcmWZH3L9uDLsSrtFOjRVLP/C7mAsjRYkojFq
-         ZfT/US91qa1ZDMrxEQ0E42gRxJBJdU+CIKwgt89cX3ia/MCX3qXrozbM5T88YxqGd/w3
-         +5KXR+RajMGQ/OkAiMQ6Rm5M8BliA2gUMWgUq8+EFqQMGhp9ahP9quMGJUM64DaElkHl
-         ngoB6n0nXSdYfbsHM34cjPbleVLVKwr18NpEkng23JplwESkpoxNX2OSHg9onaeOxFNs
-         gDHQ==
+        b=Px65JAMTxv0V0ohGuqkOjg4NRM4pf2PFf+lw4aUMDpMVb9mLP44DzTQ/m19eto5/z/
+         zbtYv0K/QFhawYkbhXTClumzXJWha0/naDfDzLL4pLAmHv97ZgqqouUrp2n2HtoR8TOk
+         ITB1HgFOnb/ZmWNzhGg51OTHEWh9wyQQ43cQDcLyl000FLrh0NWrPMExJJLTk0DhozMN
+         PGuLScRdImKgLQC2C0+ItvP5DcgnMtnmF2rIhv9Lyky1it6wimVxwx5YxqoRp/FoOs6h
+         n2ulQ/jZynbQnJEzMX1UDpdpV2iOdRH5DCOnpMF2XFhLlw4KS+m2bXO7dlzuaVL3xT46
+         2tdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=4KX5kmvjfGs4uH67CAMomlX1Bj2H8ojwOQOFrdWuGa4=;
-        b=jiBphniSqmiff8+1KTf4hCp0ywW0+LL37UQTsduF1PCYjDmQ5/q7p4glye2ivZwH+W
-         mP0s/TjTh2cyQASFAuoydLIJC6xafu4KjpaduMcBXDC/8yxxpoY5v3+dbUwhvXx+kZ08
-         iDNk+MIMQPMjGLXZ8EenMrfBHTV83W76qrJ8/+QfaDPfB63q63tJO4CnCsdu2v7YhCI/
-         9RH10kwsKbY+kFJdek3zmHf4Td4RLAXWIVhP0AsV25OXmfbwAWsMQImg3bGXPLAoq19n
-         Lgw6yEz9w4/IeDMJZv2q6CqL61B4RNChQfRywmbyeP7Ht5P+A/BRjjeCfu4OcSwCgrtt
-         mNDA==
+        bh=PkyW0707ppeT5SPYposifgCygimlr+E9Qom4J3avBls=;
+        b=dAegTxGWbY+CGqhxUe3A2GuqhFLeAW0edLiVUz6NIpXAvsAVvnjUF2T3ZSuXG8a6hk
+         jzFLPPR4Otl2Jl0iWUI8IulOxKLbgEqm2CSxt/9EoqXNDGFoEynCJPvRi6IiPDdtyjI7
+         upXX1YB5ZwHVgYDdzyCgsk7YYWgBhxfNH0WLbWcrRWZ9eJXOX7XaFD5HeWaa8QT1tDFv
+         0rM3TIgWO4VPxOW8i/ZyWG9/n0/qLtxx/vcK0Y6Z/xKIBTHP32SADB9srOl26yAdU2ai
+         YJVxVnPP+ZWkUvFiYpm8VdHJTudNbDcxnmGkbgEDYvbDv92whAj5MLzXUjyeeG0Bv8le
+         4cGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IJtMxNMg;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ryB4CZTG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m22-v6si1684869qtc.111.2018.07.16.15.03.58
+        by mx.google.com with ESMTPS id o5-v6si4862903qte.9.2018.07.16.15.06.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 15:03:58 -0700 (PDT)
+        Mon, 16 Jul 2018 15:06:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IJtMxNMg;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ryB4CZTG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54181 helo=lists.gnu.org)
+Received: from localhost ([::1]:54196 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ffBb3-0004cf-W1
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 18:03:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60320)
+	id 1ffBdq-0005Zs-FF
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 18:06:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ffBat-0004ac-AJ
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:03:48 -0400
+	(envelope-from <alistair23@gmail.com>) id 1ffBdc-0005Xk-Qz
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:06:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ffBas-0002xo-7Y
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:03:47 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:43679)
+	(envelope-from <alistair23@gmail.com>) id 1ffBdb-000533-Gu
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:06:36 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36401)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ffBap-0002vv-Oa; Mon, 16 Jul 2018 18:03:43 -0400
-Received: by mail-lf0-x241.google.com with SMTP id m12-v6so33327805lfc.10;
-	Mon, 16 Jul 2018 15:03:43 -0700 (PDT)
+	id 1ffBdY-0004zq-6Q; Mon, 16 Jul 2018 18:06:32 -0400
+Received: by mail-lf0-x243.google.com with SMTP id b22-v6so20940693lfa.3;
+	Mon, 16 Jul 2018 15:06:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=4KX5kmvjfGs4uH67CAMomlX1Bj2H8ojwOQOFrdWuGa4=;
-	b=IJtMxNMgvJWObJHQBf1luuL2aI9RHuKLMXjOFh0kmIlh+l4Ijtk+ESQo59q3gfKzzU
-	2A3UJ3m5GiL/aoVJ3O3426Wo2+zwZgXUNmGYlUsQntrcFkAb2Ub6mxbrdkan3/IPfn5c
-	pdk7MpcwWWdEPXzXVzzHQ1BpMoEe3I3svm2KVm9sLsNOPe+VSXAijBE/IW99exPsvn/N
-	KTN9XWKTiuObM1Nz3sTfSwGGE7MPbJAD36u80++Q/eJvhY2eEtJa6raEhl1HReb1bY5A
-	HBSN+stTRRJ9U3VLV4s6okLV/OpLk058Gr6D5/DaDmaFKf7hZ+6FcRcwc1GZuafhnBHL
-	/fRQ==
+	:cc; bh=PkyW0707ppeT5SPYposifgCygimlr+E9Qom4J3avBls=;
+	b=ryB4CZTGT+UWQ2HgL97nGVw9HhXXnKoSG7HxQjxzfWYESugfuvg95nLabf529K5pD8
+	tydpnadQ5zxJoas2M/m6jvf6VMVn06nNwiH+SYMKRiC1nNGona+NDeqizkTcuifLxP7e
+	QU75EzL8275opT5YqA3OWikEzldHH+PsTxvflRarelyjZQdK51LF/7XcL3OUag+CHoum
+	UnCHUvGe9ukLkwCXb/jaMneXR7FNTgjDOH8pzlFS9rxmCzIBPPhG6AOXUTcbzCiYs3c3
+	DCtFh49L4tuJFkEdkQCQANQiKfXXXU5Nvk+tlLN+PegB8FNtBpaTgKXAzFlExwj51GtM
+	Jcsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=4KX5kmvjfGs4uH67CAMomlX1Bj2H8ojwOQOFrdWuGa4=;
-	b=ZRbMvH/FvR9tnsYbotS275gzeJTV/47ZqaACxrOZYWf0YJRkMRkQxbJYuqbkGlaXuf
-	R1tB3jsXyZoGk6MlUBK/p5kdu3dtsW8fkLrMjy0R6fM2zHq9FL+DQkgB7i4QKjftyvIy
-	E/he4o3UAVB12JBidjmm4tX4uAMNHOjAlWtxEGLWLdJRGBVRbGCs+pq1jTEwwxEYCtDX
-	YNU0Jp3p12EQn56HWR5U+/SIEENUnP4bcoLGBCbvYXEck+wZrVkNBwJ1wrXD7Wv6cTk/
-	xOLw9oAIRqpeZyRs6EQg+33MdJA7xVXzEEPyGNi3GCWINIStUR2OcnLH1ifVBg1FwDgO
-	mg2g==
-X-Gm-Message-State: AOUpUlFqLs7HJVJIcElJbENRJs2eaM+9tLLoVcRA2pJdXVxl/dkzp2H8
-	qqNn7lH9GPZKk1JyNunLQzYuf+58VSGydyzuzNE=
-X-Received: by 2002:a19:5c8c:: with SMTP id
-	u12-v6mr13069511lfi.98.1531778622391; 
-	Mon, 16 Jul 2018 15:03:42 -0700 (PDT)
+	bh=PkyW0707ppeT5SPYposifgCygimlr+E9Qom4J3avBls=;
+	b=BGlaKzb2STdQ+g71jSS08IEd2c+wzH5MyOCFXtzg+rnmj7N8ACAESGk4dEzlykJQ5s
+	Ii4KApEzyYwpQikjqWYmJ4sEmIL3vZpTZjGQgFE6sETaaK1bLy6yOnX15bliCMUezC87
+	Wbdk3t0a1/EUf9gqYb601ih/3Xy4NcrPwlfSUfapnq7WPpxqb50ROQHzZq5BLiiMVWGj
+	ZhvcprUw6Q9WELX03EQfWtBrJ2S6iKd0pRkJ2D3W8NGLRoVhVLsALw8+q3cwx8osapX3
+	UOkjVdXZzo3xMX+Rj+vyafQYXf5lXvBYinNlJ30IT6kS0NlX+p7dBAixcIH766cpbFwv
+	80zg==
+X-Gm-Message-State: AOUpUlFzXRftfbRYZ7UBfXOxX0a/j+q9hcXnjzKarqVlaY6SFiZcoDWl
+	ybB1gCA2SnRphvCmpXXd4vmPvuZ0zT4iqPAOc8A=
+X-Received: by 2002:a19:de4e:: with SMTP id
+	v75-v6mr11868274lfg.14.1531778790844; 
+	Mon, 16 Jul 2018 15:06:30 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a2e:8749:0:0:0:0:0 with HTTP; Mon, 16 Jul 2018 15:03:11
+Received: by 2002:a2e:8749:0:0:0:0:0 with HTTP; Mon, 16 Jul 2018 15:06:00
 	-0700 (PDT)
-In-Reply-To: <1531745974-17187-8-git-send-email-thuth@redhat.com>
+In-Reply-To: <1531745974-17187-17-git-send-email-thuth@redhat.com>
 References: <1531745974-17187-1-git-send-email-thuth@redhat.com>
-	<1531745974-17187-8-git-send-email-thuth@redhat.com>
+	<1531745974-17187-17-git-send-email-thuth@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 16 Jul 2018 15:03:11 -0700
-Message-ID: <CAKmqyKMcjQdBAnfmKoOEXzNF66T1wHMWbjWwU+-Fw+Js5hF-Vg@mail.gmail.com>
+Date: Mon, 16 Jul 2018 15:06:00 -0700
+Message-ID: <CAKmqyKOe_0-BJS9XvFbwXa2KiDkpNwYX+Bkf4_fW8=JaFWS3Yg@mail.gmail.com>
 To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 07/17] hw/cpu/a9mpcore: Fix
- introspection problems with the "a9mpcore_priv" device
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 16/17] hw/display/xlnx_dp:
+ Move problematic code from instance_init to realize
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,29 +119,28 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mdi/zhV2ihaf
+X-TUID: x/YW8JWzJr1o
 
 On Mon, Jul 16, 2018 at 5:59 AM, Thomas Huth <thuth@redhat.com> wrote:
-> Running QEMU with valgrind indicates a problem here:
+> From: Paolo Bonzini <pbonzini@redhat.com>
 >
-> echo "{'execute':'qmp_capabilities'} {'execute':'device-list-properties'," \
->  "'arguments':{'typename':'a9mpcore_priv'}}" \
->  "{'execute': 'human-monitor-command', " \
->  "'arguments': {'command-line': 'info qtree'}}" | \
->  valgrind -q aarch64-softmmu/qemu-system-aarch64 -M none,accel=qtest -qmp stdio
-> [...]
-> ==30996== Invalid read of size 8
-> ==30996==    at 0x6185DA: qdev_print (qdev-monitor.c:686)
-> ==30996==    by 0x6185DA: qbus_print (qdev-monitor.c:719)
-> ==30996==    by 0x452B38: handle_hmp_command (monitor.c:3446)
-> [...]
+> aux_create_slave() calls qdev_init_nofail() which in turn "realizes"
+> the corresponding object. This is unlike qdev_create(), and it is wrong
+> because qdev_init_nofail() must not be called from an instance_init
+> function.  Move qdev_init_nofail() and the subsequent aux_map_slave into
+> the caller's realize function.
 >
-> Use the new sysbus_init_child_obj() function to make sure that the objects
-> are cleaned up correctly when the parent gets destroyed.
+> There are two more bugs that needs to be fixed here, too, where the
+> objects are created but not added as children.  Therefore when
+> you call object_unparent on them, nothing happens.
 >
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+> In particular dpcd and edid give you an infinite loop in bus_unparent,
+> because device_unparent is not called and does not remove them from
+> the list of devices on the bus.
+>
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> [thuth: Added Paolo's fixup for the dpcd and edid unparenting]
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -149,42 +148,122 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/cpu/a9mpcore.c | 18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
+>  hw/display/xlnx_dp.c     |  8 +++++++-
+>  hw/misc/auxbus.c         | 18 ++++++++++++------
+>  include/hw/misc/auxbus.h | 14 +++++++++++++-
+>  3 files changed, 32 insertions(+), 8 deletions(-)
 >
-> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
-> index f17f292..a5b8678 100644
-> --- a/hw/cpu/a9mpcore.c
-> +++ b/hw/cpu/a9mpcore.c
-> @@ -27,20 +27,18 @@ static void a9mp_priv_initfn(Object *obj)
->      memory_region_init(&s->container, obj, "a9mp-priv-container", 0x2000);
->      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->container);
+> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+> index 5130122..6439bd0 100644
+> --- a/hw/display/xlnx_dp.c
+> +++ b/hw/display/xlnx_dp.c
+> @@ -1234,9 +1234,12 @@ static void xlnx_dp_init(Object *obj)
+>      /*
+>       * Initialize DPCD and EDID..
+>       */
+> -    s->dpcd = DPCD(aux_create_slave(s->aux_bus, "dpcd", 0x00000));
+> +    s->dpcd = DPCD(aux_create_slave(s->aux_bus, "dpcd"));
+> +    object_property_add_child(OBJECT(s), "dpcd", OBJECT(s->dpcd), NULL);
+> +
+>      s->edid = I2CDDC(qdev_create(BUS(aux_get_i2c_bus(s->aux_bus)), "i2c-ddc"));
+>      i2c_set_slave_address(I2C_SLAVE(s->edid), 0x50);
+> +    object_property_add_child(OBJECT(s), "edid", OBJECT(s->edid), NULL);
 >
-> -    object_initialize(&s->scu, sizeof(s->scu), TYPE_A9_SCU);
-> -    qdev_set_parent_bus(DEVICE(&s->scu), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "scu", &s->scu, sizeof(s->scu), TYPE_A9_SCU);
+>      fifo8_create(&s->rx_fifo, 16);
+>      fifo8_create(&s->tx_fifo, 16);
+> @@ -1248,6 +1251,9 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+>      DisplaySurface *surface;
+>      struct audsettings as;
 >
-> -    object_initialize(&s->gic, sizeof(s->gic), TYPE_ARM_GIC);
-> -    qdev_set_parent_bus(DEVICE(&s->gic), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic), TYPE_ARM_GIC);
+> +    qdev_init_nofail(DEVICE(s->dpcd));
+> +    aux_map_slave(AUX_SLAVE(s->dpcd), 0x0000);
+> +
+>      s->console = graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
+>      surface = qemu_console_surface(s->console);
+>      xlnx_dpdma_set_host_data_location(s->dpdma, DP_GRAPHIC_DMA_CHANNEL,
+> diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
+> index b8a8721..0e56d9a 100644
+> --- a/hw/misc/auxbus.c
+> +++ b/hw/misc/auxbus.c
+> @@ -32,6 +32,7 @@
+>  #include "hw/misc/auxbus.h"
+>  #include "hw/i2c/i2c.h"
+>  #include "monitor/monitor.h"
+> +#include "qapi/error.h"
 >
-> -    object_initialize(&s->gtimer, sizeof(s->gtimer), TYPE_A9_GTIMER);
-> -    qdev_set_parent_bus(DEVICE(&s->gtimer), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "gtimer", &s->gtimer, sizeof(s->gtimer),
-> +                          TYPE_A9_GTIMER);
+>  #ifndef DEBUG_AUX
+>  #define DEBUG_AUX 0
+> @@ -63,9 +64,14 @@ static void aux_bus_class_init(ObjectClass *klass, void *data)
+>  AUXBus *aux_init_bus(DeviceState *parent, const char *name)
+>  {
+>      AUXBus *bus;
+> +    Object *auxtoi2c;
 >
-> -    object_initialize(&s->mptimer, sizeof(s->mptimer), TYPE_ARM_MPTIMER);
-> -    qdev_set_parent_bus(DEVICE(&s->mptimer), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "mptimer", &s->mptimer, sizeof(s->mptimer),
-> +                          TYPE_ARM_MPTIMER);
+>      bus = AUX_BUS(qbus_create(TYPE_AUX_BUS, parent, name));
+> -    bus->bridge = AUXTOI2C(qdev_create(BUS(bus), TYPE_AUXTOI2C));
+> +    auxtoi2c = object_new_with_props(TYPE_AUXTOI2C, OBJECT(bus), "i2c",
+> +                                     &error_abort, NULL);
+> +    qdev_set_parent_bus(DEVICE(auxtoi2c), BUS(bus));
+> +
+> +    bus->bridge = AUXTOI2C(auxtoi2c);
 >
-> -    object_initialize(&s->wdt, sizeof(s->wdt), TYPE_ARM_MPTIMER);
-> -    qdev_set_parent_bus(DEVICE(&s->wdt), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "wdt", &s->wdt, sizeof(s->wdt),
-> +                          TYPE_ARM_MPTIMER);
+>      /* Memory related. */
+>      bus->aux_io = g_malloc(sizeof(*bus->aux_io));
+> @@ -74,9 +80,11 @@ AUXBus *aux_init_bus(DeviceState *parent, const char *name)
+>      return bus;
 >  }
 >
->  static void a9mp_priv_realize(DeviceState *dev, Error **errp)
+> -static void aux_bus_map_device(AUXBus *bus, AUXSlave *dev, hwaddr addr)
+> +void aux_map_slave(AUXSlave *aux_dev, hwaddr addr)
+>  {
+> -    memory_region_add_subregion(bus->aux_io, addr, dev->mmio);
+> +    DeviceState *dev = DEVICE(aux_dev);
+> +    AUXBus *bus = AUX_BUS(qdev_get_parent_bus(dev));
+> +    memory_region_add_subregion(bus->aux_io, addr, aux_dev->mmio);
+>  }
+>
+>  static bool aux_bus_is_bridge(AUXBus *bus, DeviceState *dev)
+> @@ -260,15 +268,13 @@ static void aux_slave_dev_print(Monitor *mon, DeviceState *dev, int indent)
+>                     memory_region_size(s->mmio));
+>  }
+>
+> -DeviceState *aux_create_slave(AUXBus *bus, const char *type, uint32_t addr)
+> +DeviceState *aux_create_slave(AUXBus *bus, const char *type)
+>  {
+>      DeviceState *dev;
+>
+>      dev = DEVICE(object_new(type));
+>      assert(dev);
+>      qdev_set_parent_bus(dev, &bus->qbus);
+> -    qdev_init_nofail(dev);
+> -    aux_bus_map_device(AUX_BUS(qdev_get_parent_bus(dev)), AUX_SLAVE(dev), addr);
+>      return dev;
+>  }
+>
+> diff --git a/include/hw/misc/auxbus.h b/include/hw/misc/auxbus.h
+> index 68ade8a..c15b444 100644
+> --- a/include/hw/misc/auxbus.h
+> +++ b/include/hw/misc/auxbus.h
+> @@ -123,6 +123,18 @@ I2CBus *aux_get_i2c_bus(AUXBus *bus);
+>   */
+>  void aux_init_mmio(AUXSlave *aux_slave, MemoryRegion *mmio);
+>
+> -DeviceState *aux_create_slave(AUXBus *bus, const char *name, uint32_t addr);
+> +/* aux_create_slave: Create a new device on an AUX bus
+> + *
+> + * @bus The AUX bus for the new device.
+> + * @name The type of the device to be created.
+> + */
+> +DeviceState *aux_create_slave(AUXBus *bus, const char *name);
+> +
+> +/* aux_map_slave: Map the mmio for an AUX slave on the bus.
+> + *
+> + * @dev The AUX slave.
+> + * @addr The address for the slave's mmio.
+> + */
+> +void aux_map_slave(AUXSlave *dev, hwaddr addr);
+>
+>  #endif /* HW_MISC_AUXBUS_H */
 > --
 > 1.8.3.1
 >

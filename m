@@ -1,106 +1,89 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1676386wru;
-        Mon, 16 Jul 2018 09:16:17 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfsb5+v5bnTu10K0Oq0H3iABagaUtWKF9SWCN3nyHwiF3Cvs+eqayRW83CMNBdJYqinOi1g
-X-Received: by 2002:aed:2d63:: with SMTP id h90-v6mr316106qtd.190.1531757777251;
-        Mon, 16 Jul 2018 09:16:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531757777; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1861912wru;
+        Mon, 16 Jul 2018 12:49:00 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeFnBUwnoI4Ck8tDzbF1A3Tfd4Qt+wtB8BzO9z5kxyR9+O0OMRhZJ8ggDo8YDmO7GTikuG+
+X-Received: by 2002:a37:7ac5:: with SMTP id v188-v6mr15433090qkc.262.1531770540435;
+        Mon, 16 Jul 2018 12:49:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531770540; cv=none;
         d=google.com; s=arc-20160816;
-        b=dpunnpfw7dSQ6jv3o24xxbal67x89haTzFpN1RzZMghO/uBKxVmMCqSpx7krHIoDt3
-         rlDlWq+k3hRYDNxDO3fXeQJCBhhJxpv1B/fewjC8pKKPDPoXJ+yMPdK11FsGxwcCefeu
-         SPg19oA7795GJK1T2R+ixJ4ZSYHxJRRqzQpmTeVbQvHVSemoWi5Ci0BP1oE/NKLC53fo
-         i4e/qkvAWIRnntqDeRVftNWUY/cxoT3DC7QU3PosDH6eA37yV27Xs7jRc2C/LBboufKU
-         Hz4XwPtl9mK9WKFtXFt/PhFCSns5HDWgf399M/qYkJCBN1cW74BdG40yOEbQMVsgAob0
-         h13A==
+        b=e6yexklHDkDrcYKzBNxaLiovDNHV1T8psnN/mcvGZ/CxiOkkUykTpVFtKNJR1xjhYt
+         sUZn3E/p6KEE26mFw6eC/k3DZTUBG0DIlDWQUuEY+UthQTBDbzhAt6+1Q0sS2ZeTfDKJ
+         t9sHP+w8p3xSMgdjtsdWUgKrSlm4394j8AJ/MtN7QQw5AIJ0cwMNt5glzgzxjCSOX7OK
+         uT1Yf/GqvQg9s5zBaiiml42D7God06FNkFYqhj7aCsHTHO2WXGsWI39rZUwvivzTOh4I
+         YIpdr4mZY/KylDIsO2uxVJwvEOCfOBHDIdoJ/gl8spxzAkj4ORrVmBAAL7pYqUC07Fpi
+         bZdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=u6R3ASjewWrh9KCQillaXwmyiCNoPnDvpuB8giS24sM=;
-        b=JtxGbU2hpYH8s5iY/Pj6l585Iinff1yt4nGrpchirlXvWk4g7x0KBf20awR/6i/coP
-         lj4DW189aJOx5ha170QqQU7VyD5z4egbGTbA6LnV4lWUADV+m8nz4nX2sTer1xIUjOy7
-         hAvzyH+vNV7P/Zu5cZPJtrftYg5hqWDEztbU1JlmY1QZUgpJ1lwG1FRYUIhMMhkoOtvx
-         ihJ1uzeylA/vHHugeMnsWxUI1VbyRoDuC9RpzUPadYPOe+2HZ+XR3Es95K0kOcSZGxjB
-         bCWu9pM9NPxeH3hd2aQafCju0gEpyHPxgb2AZjVvwo4M10feTQA/fMQk50oLhuUcKycG
-         Gybw==
+         :arc-authentication-results;
+        bh=LWJmJ2kkeD8kZvL68D45bOHCEPTj/xAknYHJQs3LbG8=;
+        b=F6L3+wtKb1WFXdI0JR/PXxorAIipiWgcLCrZFy9FeqN8PyaKr7wV+x0kSJJ6uY2yGq
+         C7Hk6Y5275I5KrArOrxFDfBPU9kIa1tDhDCmqvFrlwUdxi9ioKkBNFDkpoWLyACNEx7v
+         2vdgYWi0/qSO3kUpbpQ648ASq+J6Qlht7hxwOHuTzFKymRxgqaAWLY/l11mzPQxscvP+
+         kFsUN0kcy9is6WleJjNFBSNpHOIo1lZBasBhDB+65we/aFrO1n14vO8nbCVsbgZ7azhS
+         th09C85Jg0ot3Scu+X3v0ptJ2rCC8O/XwqFY+ibOlj71qjZKGMgedeXaZamuIyzQx2KD
+         80bw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XD+5CspP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d9-v6si5992687qtp.114.2018.07.16.09.16.17
+        by mx.google.com with ESMTPS id c5-v6si22484901qke.78.2018.07.16.12.49.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 09:16:17 -0700 (PDT)
+        Mon, 16 Jul 2018 12:49:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XD+5CspP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52742 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53425 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ff6Aa-0001HU-PA
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 12:16:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45012)
+	id 1ff9UR-0002LG-Qz
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 15:48:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34055)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1ff69M-0000jF-1m
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 12:15:01 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1ff9UJ-0002L8-Np
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 15:48:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1ff69I-0002o7-Su
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 12:15:00 -0400
-Received: from mail-pf0-x244.google.com ([2607:f8b0:400e:c00::244]:46418)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
-	id 1ff69I-0002nf-K8; Mon, 16 Jul 2018 12:14:56 -0400
-Received: by mail-pf0-x244.google.com with SMTP id l123-v6so26502952pfl.13;
-	Mon, 16 Jul 2018 09:14:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=u6R3ASjewWrh9KCQillaXwmyiCNoPnDvpuB8giS24sM=;
-	b=XD+5CspP1cGIPTx/ynk8ho4cIvI3Ui+u5Szol51YSE+FCe4EWc8tKpqJdm1jx4rtuY
-	PWt9tANdi3A3fv8vxJMkHKj7ZKhCxNa1IKut9kSdQ21nJhiWuXr8Mq3qcYwmJA9Fdadi
-	/pRNATFcRDOPMi/tdEyie5C0uPderCTB57UiG1ybRepOHfI+SY6Pxu3Zara73pTvfkrQ
-	X2vo/CM+9mjIHI7rzPktrBo73hCffP4yiWdfvJ7u4bN54Auh1SubKiLtEK13N5dSTI6y
-	ax455heWv2oYJPWdBNutEuDVq65R6akyHrUgD9YO2FCD2eHrGoeGNrWuUPWlYQLsKo0J
-	bx0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
-	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=u6R3ASjewWrh9KCQillaXwmyiCNoPnDvpuB8giS24sM=;
-	b=tkVZABfmaFbFn6KG6LrxpJswVXQ2CYdtSz5T1ZluyA/eS2RTjmDmBUB6yEwZHfaQO2
-	W05KcZK+68h0OOCUYs3ABvqXaO2bq+QnWRvzxdGm6Ibzt5Fbei0UlkMDzpgqO7dd6Y1M
-	8j4Bkyq0tUsiiu841rmOW3KiS415t42vaW1Cl3IAwjzvkLTqm/TMnVDunFNvSGs6VKHA
-	F8hD8HV9M9fRXwA5GlX4A/6P/gVCxdmxqWF94lznB7zFPeJLrsBun7uycRjt0BRxKSB2
-	QvrKMLwS9D/PiIT51qQWF2VjtIo+AAU+EX3bWLut+neyhe8GLPYBtV5NlqVxhhGBMWH3
-	EbXw==
-X-Gm-Message-State: AOUpUlECmlLhcqC4ZdDPnNbAaloBUPnhGRf2BaLlCLjDj4i0yTXfg55r
-	V6kC/IIryA0opHixZwZd2is=
-X-Received: by 2002:a62:678f:: with SMTP id
-	t15-v6mr18274419pfj.85.1531757695598; 
-	Mon, 16 Jul 2018 09:14:55 -0700 (PDT)
-Received: from localhost (108-223-40-66.lightspeed.sntcca.sbcglobal.net.
-	[108.223.40.66]) by smtp.gmail.com with ESMTPSA id
-	64-v6sm25732582pfe.151.2018.07.16.09.14.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Jul 2018 09:14:54 -0700 (PDT)
-Date: Mon, 16 Jul 2018 09:14:53 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180716161452.GA22620@roeck-us.net>
-References: <1531692369-1511-1-git-send-email-linux@roeck-us.net>
-	<CAFEAcA_k7Pq8MCJ+hEMO-9q=A=GkmjMgE-S1o4oU9MG-KLdPOw@mail.gmail.com>
+	(envelope-from <ehabkost@redhat.com>) id 1ff9UE-0006cD-N8
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 15:48:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59192)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1ff9UE-0006c3-HE; Mon, 16 Jul 2018 15:48:46 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3AD0830A3AFE;
+	Mon, 16 Jul 2018 19:48:45 +0000 (UTC)
+Received: from localhost (ovpn-116-6.gru2.redhat.com [10.97.116.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7E3885D9C7;
+	Mon, 16 Jul 2018 19:48:44 +0000 (UTC)
+Date: Mon, 16 Jul 2018 16:48:43 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Message-ID: <20180716194843.GM31657@localhost.localdomain>
+References: <1531470464-21522-1-git-send-email-thuth@redhat.com>
+	<1531470464-21522-4-git-send-email-thuth@redhat.com>
+	<20180713212613.GU31657@localhost.localdomain>
+	<b4d13b88-e758-2fde-d290-0fdd00b524b2@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA_k7Pq8MCJ+hEMO-9q=A=GkmjMgE-S1o4oU9MG-KLdPOw@mail.gmail.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c00::244
-Subject: Re: [Qemu-arm] [RFC PATCH] hw: arm: Add basic support for cprman
- (clock subsystem)
+In-Reply-To: <b4d13b88-e758-2fde-d290-0fdd00b524b2@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Mon, 16 Jul 2018 19:48:45 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 03/16] hw/arm/bcm2836: Fix crash with
+ device_add bcm2837 on unsupported machines
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,82 +95,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Pekka Enberg <penberg@iki.fi>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U74cZqRbZ4kS
+X-TUID: bek6ICBLhN9v
 
-On Mon, Jul 16, 2018 at 03:33:15PM +0100, Peter Maydell wrote:
-> On 15 July 2018 at 23:06, Guenter Roeck <linux@roeck-us.net> wrote:
-> > Add basic support for BCM283x CPRMAN. Provide support for reading and
-> > writing CPRMAN registers and initialize registers with sensible default
-> > values. During runtime retain any written values.
-> >
-> > Basic CPRMAN support is necessary and sufficient to boot Linux on raspi2
-> > and raspi3 systems.
-> >
-> > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> > ---
-> > I don't seriously expect this patch to get accepted, but I thought
-> > it might be valuable enough for others to use it when playing with
-> > raspi2 and raspi3 emulations.
+On Mon, Jul 16, 2018 at 09:09:13AM +0200, Thomas Huth wrote:
+> On 13.07.2018 23:26, Eduardo Habkost wrote:
+> > On Fri, Jul 13, 2018 at 10:27:31AM +0200, Thomas Huth wrote:
+> >> When trying to "device_add bcm2837" on a machine that is not suitable for
+> >> this device, you can quickly crash QEMU afterwards, e.g. with "info qtree":
+> >>
+> >> echo "{'execute':'qmp_capabilities'} {'execute':'device_add', " \
+> >>  "'arguments':{'driver':'bcm2837'}} {'execute': 'human-monitor-command', " \
+> >>  "'arguments': {'command-line': 'info qtree'}}" | \
+> >>  aarch64-softmmu/qemu-system-aarch64 -M integratorcp,accel=qtest -S -qmp stdio
+> >>
+> >> {"QMP": {"version": {"qemu": {"micro": 50, "minor": 12, "major": 2},
+> >>  "package": "build-all"}, "capabilities": []}}
+> >> {"return": {}}
+> >> {"error": {"class": "GenericError", "desc": "Device 'bcm2837' can not be
+> >>  hotplugged on this machine"}}
+> >> Segmentation fault (core dumped)
+> >>
+> >> The qdev_set_parent_bus() from instance_init adds a link to the child devices
+> >> which is not valid anymore after the bcm2837 instance has been destroyed.
+> >> Unfortunately, the child devices do not get destroyed / unlinked correctly
+> >> because both object_initialize() and object_property_add_child() increase
+> >> the reference count of the child objects by one, but only one reference
+> >> is dropped when the parent gets removed. So let's use the new functions
+> >> object_initialize_child() and sysbus_init_child_obj() instead to create
+> >> the objects, which will take care of creating the child objects with the
+> >> correct reference count of one.
+> >>
+> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > 
+> > Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+> > 
+> > The usage of &error_abort in code that can be triggered from
+> > device-list-properties still makes me nervous, but that's a
+> > separate issue.
 > 
-> Looking around I guess that a stub version of this device is
-> worth having. It's not like we'd be wiring up the clock control
-> information to anything anyway, given that QEMU doesn't much
-> care about clocks...
-> 
-> > +#define CM_GNRICCTL        (0x000 / 4)
-> > +#define CM_VECCTL        (0x0f8 / 4)
-> > +#define CM_DFTCTL        (0x168 / 4)
-> > +#define CM_EMMCCTL        (0x1c0 / 4)
-> > +#define A2W_PLLA_CTRL        (0x1100 / 4)
-> > +#define A2W_PLLB_CTRL        (0x11e0 / 4)
-> 
-> The information at https://elinux.org/BCM2835_registers#CM
-> and https://elinux.org/BCM2835_registers#A2W
-> suggests that the A2W is a separate thing from the CPRMAN...
->
+> I first had similar thoughts, but I think it's a clear coding issue if
+> the abort triggers here (and not something that the user should normally
+> be able to trigger somehow), so error_abort should be ok in this case.
 
-Both are used together to define individual clocks in the Linux clock
-driver (each clock has a CM register and a matching A2W register), so
-they must be associated to each other. It might or might not make sense
-to treat them as separate devices in qemu. Hard to say without datasheet.
+Agreed.  We don't really have an option, as instance_init can't
+report errors.
 
-> > +static void bcm2835_cprman_reset(DeviceState *dev)
-> > +{
-> > +    BCM2835CprmanState *s = BCM2835_CPRMAN(dev);
-> > +    int i;
-> > +
-> > +    /*
-> > +     * Available information suggests that CPRMAN registers have default
-> > +     * values which are not overwritten by ROMMON (u-boot). The hardware
-> > +     * default values are unknown at this time.
-> > +     * The default values selected here are necessary and sufficient
-> > +     * to boot Linux directly (on raspi2 and raspi3). The selected
-> > +     * values enable all clocks and set clock rates to match their
-> > +     * parent rates.
-> > +     */
-> > +    for (i = CM_GNRICCTL; i <= CM_VECCTL; i += 2) {
-> > +        s->regs[i] = 0x11;
-> > +        s->regs[i + 1] = 0x1000;
-> > +    }
-> > +    for (i = CM_DFTCTL; i <= CM_EMMCCTL; i += 2) {
-> > +        s->regs[i] = 0x11;
-> > +        s->regs[i + 1] = 0x1000;
-> > +    }
-> 
-> If you believe the register lists from the links above this
-> loop will set CM_PLLB, which is an exception from the
-> pairs of CM_FOOCTL/CM_FOODIV) registers in this range.
-> There are also a few CTL/DIV register pairs in the gap
-> between CM_VECCTL and CM_EMMCCTL.
-> 
-Good point. I'll fix that up.
-
-Overall it would be great to get a register dump from someone
-with real hardware. I don't really like my guesswork too much.
-
-Thanks,
-Guenter
+-- 
+Eduardo

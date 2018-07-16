@@ -1,102 +1,108 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1973061wru;
-        Mon, 16 Jul 2018 15:09:36 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpc+BYNLN+nExm+lQGBdW9GaFyfdLFDJHb9daFf2+nk+UfBIxnNKJ00ur1Bshr9teEYmeXOH
-X-Received: by 2002:a37:1456:: with SMTP id e83-v6mr16202675qkh.69.1531778976050;
-        Mon, 16 Jul 2018 15:09:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531778976; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1983375wru;
+        Mon, 16 Jul 2018 15:23:11 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpepbXodMMMsUF5RDYO+2c2YWGUqIaFRi0h2Kt5itgvwELzutM8HVtjTbnjRU7qJLBRZMPwK
+X-Received: by 2002:aed:3e82:: with SMTP id n2-v6mr17010065qtf.359.1531779791372;
+        Mon, 16 Jul 2018 15:23:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531779791; cv=none;
         d=google.com; s=arc-20160816;
-        b=RswOPOv2bG9UmPMceOvMTK71E8Ds3qOjI3LvvUdOSmP1iQBKnmae40DxL6DpnNw9aK
-         r2LrHYxwM6hq9d7SHN7wzDe22war2xAxPSh9RJrg1TDGs46cLx9jtUNpqigLNQSuDFLI
-         UWHFp2FWhPS5YdrMY4GSIsEZ4LwZ21lpZHeOCKPaJjFDQd8IMe/tnxaAsj7tO/H2KY64
-         qrnGp1JjUx/zI1pwAE4Lut/F3bST06faIaFrnCy9KKPhjSyyY/nlsFoTKoyM5/O6P8Or
-         kkPvo4o0hn7nTTWAtXR47xBbn79WX+HnQSWx/fZF5dJnUjaVVdu1tKNfWWCagwN4bFT8
-         YPdQ==
+        b=q3PnuXmGuQNu6HuuVHWL7RfGDmnEnR4+4mkO/iSRJTf4fy3CuYx+4mX25jzoo8/Wzl
+         qZVX6ca0rHgrthHwvTuqDm+Oj6shYKdvoBWdi/9fVoVLuJW+JPU2iCB9gDJb7m6TNRdk
+         EIJTGbMGqbdZFE07T0Yd5DDTEV6z+IEzDnWli7f3RONl9NK6cPydgPclhfViEGnPzbSn
+         fwRbQ3apuyZAriu+CARDJEvK0iu9B5a4gof7epUxZtvI3ESXtyum1PwnlNXkpHPD1FeG
+         OvtnW3tXjTrOR9DRhgNHmFA1XcIO5K7t3Kns9o48OGFV9gYn4bIXrQN9lRxaZyPOFPAq
+         FxHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=7DjpfPWglpB8DbzUsbpzTH5FNAtotLDJk9cj+uM+j+A=;
-        b=S+ND9ug3diHx04FslmrwDtCplJatekGtgczYtrDhSIK+HNlL6M/ksUOXzerG/6tkyt
-         WYtSASKhgt3FF8pphp08JnTitgFGEaQ9ZlvYiPK4pi++auwQjv31Z+4hKNWRKnumWdwA
-         n+OhwgxK64FuEZZM+C7oqQ9kXF4+xKQ0L9cEAm5Xkt5CMO56DpMupScMHSOpc9Y5uMZ1
-         467yUzbWUDgBmFTrtXmXKm6PA1vwwkDfl3XVjKi1e5cWvXsleyfVccIXX+q34dnhxLfD
-         0+dP1oOW65JVxFZSFMg11RjSlhVc2yr8CgCFbisZeAHprLH0t1bnBf2r0ucG85OPEwpj
-         ZhUg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=ynG2soTi/6XjKrqQmgaTaeb1oNjru8zCaiP4pkJyF9I=;
+        b=q+d1rvaD2jp3HkzzaF+TK9nK/IoqXqegIB/qsq8dK9PRtF/K4y5BQwc6UTD0dyNxnu
+         IClFE47IrbHxiofVkh04jN5V1vtxK0xdUG++cbowqHbgH1oEEGstH/LCvha8lX/QCkCc
+         uia0pNYQmjgU0rs6tuw6/+Zt3eqHnJ/VjIcLWoXW22SiUxnmH02KaLOqpS4KJhjLwJnC
+         m/in/sNqdX/Ynb0212x37POwT9Q7hsr3TvTDg4NoHTLW5RMvDH9T+IJeTw+XOw3nwC+5
+         f1nDS6LgKcBu3CX9QMAOPA0k3C6fE5nhdYokEU0aUeKXmGd3YAXsiDek0an7d5iQHBZQ
+         qGZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZMavob4v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="KvTEOJ/P";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 75-v6si5497372qkg.314.2018.07.16.15.09.35
+        by mx.google.com with ESMTPS id o37-v6si6223739qvh.216.2018.07.16.15.23.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 15:09:36 -0700 (PDT)
+        Mon, 16 Jul 2018 15:23:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZMavob4v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54212 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="KvTEOJ/P";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54311 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ffBgV-0006t2-GJ
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 18:09:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33167)
+	id 1ffBte-0002qX-Tk
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 18:23:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36512)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ffBgL-0006rm-0f
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:09:26 -0400
+	(envelope-from <groeck7@gmail.com>) id 1ffBtR-0002qQ-Fz
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:22:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1ffBgJ-0006lv-Lb
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:09:24 -0400
-Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:32891)
+	(envelope-from <groeck7@gmail.com>) id 1ffBtO-0005le-C1
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 18:22:57 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:40829)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1ffBgG-0006h4-KE; Mon, 16 Jul 2018 18:09:20 -0400
-Received: by mail-lf0-x241.google.com with SMTP id u14-v6so33364207lfu.0;
-	Mon, 16 Jul 2018 15:09:20 -0700 (PDT)
+	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
+	id 1ffBtO-0005lG-4s; Mon, 16 Jul 2018 18:22:54 -0400
+Received: by mail-pg1-x544.google.com with SMTP id x5-v6so8062663pgp.7;
+	Mon, 16 Jul 2018 15:22:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=7DjpfPWglpB8DbzUsbpzTH5FNAtotLDJk9cj+uM+j+A=;
-	b=ZMavob4vv9pzTNp84zIXShP/NIV3JccHMfpWNH/e3gzJdQpADWd/tP7kVZj89kcjW4
-	pl/JmgSUyR25Af8cuKvYKnZkooxE4Bxfs+Jbgzd8LgrHHNtYeB8GKvI3yTB+Z2Ufgkn2
-	J6p6YDb3gKPHEAj0cm/LIleNSR+2JUklelSg4gktjj65roQ6dfbq9jHugfNzts96M1kL
-	YW18H+443571HtFtZxcBvoE5v16+k+v7fjw+WDTYll8mk+964AAfIao9WYsI/mnX0TtP
-	qWESvbAga0hNSdx6UOD10fw8CMPvOOKToznutznqsPUA1oGiAeyvqdjr8dxm+qDKCwf4
-	DJTQ==
+	h=sender:date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=ynG2soTi/6XjKrqQmgaTaeb1oNjru8zCaiP4pkJyF9I=;
+	b=KvTEOJ/Pu06NDPZzIu6btA9Sahg2duUTiWTx3zOcJQLNbIfGg7FNc4yPVRRQem4cCC
+	IGjulcKSZabEtJoEfNzXiznebmnTWpATT0X5jgpCRorpV08wPQJc15baGi96ciGe0EKq
+	KksOm3ojYi7NOG/U/GwNxGefKsfGwOip+lccV0smf9kb0avAo4Dv+cAnbZhdvaNLB4Tb
+	NuQ7g1lYB216sjagCOm3kS+RNne/H73W1Ohil3jau3wnT43abr3kP3S6ydUNjZjS6lcl
+	DNKcrkIlypZPvubL3CseiAPruyRFrFyYfy3Bx7ONfKnLoXOM0ya4qXS7ZwmOwiGsUJ6s
+	zDhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=7DjpfPWglpB8DbzUsbpzTH5FNAtotLDJk9cj+uM+j+A=;
-	b=WjSlgJFyxaC4Xe3dTfm/OkvQhYd8uc4l3WmJJMUB7OL8ULa7woSnuJf9XQv4ImAcoi
-	WzGosuuKU66PIQ1iMXc++Ncf3YqOhnoaUovSSViOmg5ufJgB4H/Sw2dKOrsgfklxxlm5
-	M54iMLl1ZVcoYrVmK2CazEjwkWEvJCcKf2M6GL1cR6MiW+G0iXMuQjQPU5hy+zDrfXfE
-	a6dkboT7liLVtWh7sa52bD7X4J8VzII/y2OIkcKttmwXk4Cw4BOyuQ2Qwi5UzHg04fux
-	JupVRGu6qVDyZWM13W2LDYwTK9niWdSlRl/vDk100oAk8Dkc/LrIjmUXeK1ZFL1Dahy2
-	trHA==
-X-Gm-Message-State: AOUpUlGg9ewWiGKWWdoaZuHiHVwlwWROw4GTMYY1WLInk0SUuE6/V91B
-	Lw0vZF+oToTG5s8oXdS1oEpEJ5PSk7DljrHOs/9AhA==
-X-Received: by 2002:a19:4d0a:: with SMTP id
-	a10-v6mr11881777lfb.5.1531778959503; 
-	Mon, 16 Jul 2018 15:09:19 -0700 (PDT)
+	h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+	:references:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=ynG2soTi/6XjKrqQmgaTaeb1oNjru8zCaiP4pkJyF9I=;
+	b=ou86Yd9JIKTAIKxjieQq8fwxyy8PdCUWsMrWadmoK7PmsOhBrlkqx8V2vM1p04LK56
+	3aPfXhmurXuHTKi2fqrEU0yRiUjWxs60vMslBrraskTXGH9SvuSms8+H/QelXCNsiMUB
+	y6iPsobanMrbqIY8kOhrvfiRzQY5aCxNkuz+OEoeqzyaU+EPMpaYJ/nmgSbxAN+vb4lT
+	D6bp7oO00fck5xWc1xFjUhnHbcsPk7saFTSNNh7zqfNaNrWboj3R1Ge2t7HyWJ0vWyN2
+	AGtCIWxP6I5Ap7eeLlcUGbI8squMbx4YTYGUVRpn9meeJWStEhiGkuz8GBUWsxMDepEH
+	PsLQ==
+X-Gm-Message-State: AOUpUlGyD2AoEtrUKMhbLqK9jn8NZqg94b0nbRl5pETL8JwXoMEVpeOW
+	MnHBGgDJNVNeroOc5kZGfarBxQ==
+X-Received: by 2002:a62:b40c:: with SMTP id
+	h12-v6mr19970654pfn.18.1531779773092; 
+	Mon, 16 Jul 2018 15:22:53 -0700 (PDT)
+Received: from localhost (108-223-40-66.lightspeed.sntcca.sbcglobal.net.
+	[108.223.40.66]) by smtp.gmail.com with ESMTPSA id
+	o3-v6sm29380492pgv.53.2018.07.16.15.22.51
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 16 Jul 2018 15:22:52 -0700 (PDT)
+Date: Mon, 16 Jul 2018 15:22:50 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180716222250.GA20320@roeck-us.net>
+References: <1531692369-1511-1-git-send-email-linux@roeck-us.net>
+	<CAFEAcA9W88G8rd4iMq7qsNd2C2fRiYJ32dVooZLyzY10__5piw@mail.gmail.com>
+	<e893ae38-9294-4b54-e950-6632b6b73532@roeck-us.net>
+	<CAFEAcA_Vd46APz_czOP+OfB1nkGvGjuf=EPbB57TkkXKWkNxwQ@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a2e:8749:0:0:0:0:0 with HTTP; Mon, 16 Jul 2018 15:08:48
-	-0700 (PDT)
-In-Reply-To: <1531745974-17187-18-git-send-email-thuth@redhat.com>
-References: <1531745974-17187-1-git-send-email-thuth@redhat.com>
-	<1531745974-17187-18-git-send-email-thuth@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 16 Jul 2018 15:08:48 -0700
-Message-ID: <CAKmqyKNK9y8h+AABTt-+qjy=npi_nFbSh36pM3oNL6AaJofKkg@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_Vd46APz_czOP+OfB1nkGvGjuf=EPbB57TkkXKWkNxwQ@mail.gmail.com>
+User-Agent: Mutt/1.5.24 (2015-08-30)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 17/17] hw/arm/xlnx-zynqmp:
- Fix crash when introspecting the "xlnx, zynqmp" device
+X-Received-From: 2607:f8b0:4864:20::544
+Subject: Re: [Qemu-arm] [RFC PATCH] hw: arm: Add basic support for cprman
+ (clock subsystem)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,143 +114,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Markus Armbruster <armbru@redhat.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Pekka Enberg <penberg@iki.fi>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hzh1CDg3xFOm
+X-TUID: H+9M+wzs17JB
 
-On Mon, Jul 16, 2018 at 5:59 AM, Thomas Huth <thuth@redhat.com> wrote:
-> QEMU currently crashes when e.g. doing something like this:
->
-> echo "{'execute':'qmp_capabilities'} {'execute':'device-list-properties'," \
->  "'arguments':{'typename':'xlnx,zynqmp'}}" \
->  "{'execute': 'human-monitor-command', " \
->  "'arguments': {'command-line': 'info qtree'}}" \
->  |  aarch64-softmmu/qemu-system-aarch64 -M none,accel=qtest -qmp stdio
->
-> Use the new object_initialize_child() and sysbus_init_child_obj()
-> functions to get the refernce counting of the child objects right, so
-> that they are properly cleaned up when the parent gets destroyed.
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Mon, Jul 16, 2018 at 03:07:13PM +0100, Peter Maydell wrote:
+> On 16 July 2018 at 14:51, Guenter Roeck <linux@roeck-us.net> wrote:
+> > In this context, I can't get mmc to work with ToT Linux on raspi3.
+> >
+> > / # mount /dev/mmcblk0 /mnt
+> > [   47.099074] sdhost-bcm2835 3f202000.mmc: timeout waiting for hardware
+> > interrupt.
+> > [   57.339803] sdhost-bcm2835 3f202000.mmc: timeout waiting for hardware
+> > interrupt.
+> > [   57.390449] mmc0: Problem switching card into high-speed mode!
+> > [   67.581559] sdhost-bcm2835 3f202000.mmc: timeout waiting for hardware
+> > interrupt.
+> > [   67.587832] print_req_error: I/O error, dev mmcblk0, sector 2
+> > [   67.588908] Buffer I/O error on dev mmcblk0, logical block 1, lost sync
+> > page write
+> > [   67.610307] EXT4-fs (mmcblk0): I/O error while writing superblock
+> > [   67.620842] EXT4-fs (mmcblk0): mount failed
+> > [   77.819114] sdhost-bcm2835 3f202000.mmc: timeout waiting for hardware
+> > interrupt.
+> > [   88.058917] sdhost-bcm2835 3f202000.mmc: timeout waiting for hardware
+> > interrupt.
+> > [   98.298937] sdhost-bcm2835 3f202000.mmc: timeout waiting for hardware
+> > interrupt.
+> > [   98.303554] print_req_error: I/O error, dev mmcblk0, sector 2
+> > [   98.306044] Buffer I/O error on dev mmcblk0, logical block 1, lost sync
+> > page write
+> >
+> > Any idea what the problem might be ?
+> 
+> Same thing again -- no hardware documentation for that sd controller.
+> We took our best guess about what the behaviour is supposed to be
+> for raising hardware interrupts in commit f3d9fe8f959643 earlier
+> this year, but that was (as the commit message notes) pure guesswork
+> based largely on what the Linux driver was doing. Somebody would have
+> to look at what exactly this version of the kernel is expecting the
+> hardware to do and try to reverse-engineer what the model needs to do
+> that it isn't currently...
+> 
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+This failed for me with all kernel versions I tried, starting with 4.14.y.
 
-Alistair
+I'll send a patch in a minute. It is just as much guesswork as before,
+but AFAICS it does work.
 
-> ---
->  hw/arm/xlnx-zynqmp.c | 61 ++++++++++++++++++++++++----------------------------
->  1 file changed, 28 insertions(+), 33 deletions(-)
->
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 29df35f..8de4868 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -166,64 +166,59 @@ static void xlnx_zynqmp_init(Object *obj)
->      int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
->
->      for (i = 0; i < num_apus; i++) {
-> -        object_initialize(&s->apu_cpu[i], sizeof(s->apu_cpu[i]),
-> -                          "cortex-a53-" TYPE_ARM_CPU);
-> -        object_property_add_child(obj, "apu-cpu[*]", OBJECT(&s->apu_cpu[i]),
-> -                                  &error_abort);
-> +        object_initialize_child(obj, "apu-cpu[*]", &s->apu_cpu[i],
-> +                                sizeof(s->apu_cpu[i]),
-> +                                "cortex-a53-" TYPE_ARM_CPU, &error_abort, NULL);
->      }
->
-> -    object_initialize(&s->gic, sizeof(s->gic), gic_class_name());
-> -    qdev_set_parent_bus(DEVICE(&s->gic), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
-> +                          gic_class_name());
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
-> -        object_initialize(&s->gem[i], sizeof(s->gem[i]), TYPE_CADENCE_GEM);
-> -        qdev_set_parent_bus(DEVICE(&s->gem[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "gem[*]", &s->gem[i], sizeof(s->gem[i]),
-> +                              TYPE_CADENCE_GEM);
->      }
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_UARTS; i++) {
-> -        object_initialize(&s->uart[i], sizeof(s->uart[i]), TYPE_CADENCE_UART);
-> -        qdev_set_parent_bus(DEVICE(&s->uart[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "uart[*]", &s->uart[i], sizeof(s->uart[i]),
-> +                              TYPE_CADENCE_UART);
->      }
->
-> -    object_initialize(&s->sata, sizeof(s->sata), TYPE_SYSBUS_AHCI);
-> -    qdev_set_parent_bus(DEVICE(&s->sata), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "sata", &s->sata, sizeof(s->sata),
-> +                          TYPE_SYSBUS_AHCI);
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-> -        object_initialize(&s->sdhci[i], sizeof(s->sdhci[i]),
-> -                          TYPE_SYSBUS_SDHCI);
-> -        qdev_set_parent_bus(DEVICE(&s->sdhci[i]),
-> -                            sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "sdhci[*]", &s->sdhci[i],
-> +                              sizeof(s->sdhci[i]), TYPE_SYSBUS_SDHCI);
->      }
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_SPIS; i++) {
-> -        object_initialize(&s->spi[i], sizeof(s->spi[i]),
-> -                          TYPE_XILINX_SPIPS);
-> -        qdev_set_parent_bus(DEVICE(&s->spi[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "spi[*]", &s->spi[i], sizeof(s->spi[i]),
-> +                              TYPE_XILINX_SPIPS);
->      }
->
-> -    object_initialize(&s->qspi, sizeof(s->qspi), TYPE_XLNX_ZYNQMP_QSPIPS);
-> -    qdev_set_parent_bus(DEVICE(&s->qspi), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "qspi", &s->qspi, sizeof(s->qspi),
-> +                          TYPE_XLNX_ZYNQMP_QSPIPS);
->
-> -    object_initialize(&s->dp, sizeof(s->dp), TYPE_XLNX_DP);
-> -    qdev_set_parent_bus(DEVICE(&s->dp), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "xxxdp", &s->dp, sizeof(s->dp), TYPE_XLNX_DP);
->
-> -    object_initialize(&s->dpdma, sizeof(s->dpdma), TYPE_XLNX_DPDMA);
-> -    qdev_set_parent_bus(DEVICE(&s->dpdma), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "dp-dma", &s->dpdma, sizeof(s->dpdma),
-> +                          TYPE_XLNX_DPDMA);
->
-> -    object_initialize(&s->ipi, sizeof(s->ipi), TYPE_XLNX_ZYNQMP_IPI);
-> -    qdev_set_parent_bus(DEVICE(&s->ipi), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "ipi", &s->ipi, sizeof(s->ipi),
-> +                          TYPE_XLNX_ZYNQMP_IPI);
->
-> -    object_initialize(&s->rtc, sizeof(s->rtc), TYPE_XLNX_ZYNQMP_RTC);
-> -    qdev_set_parent_bus(DEVICE(&s->rtc), sysbus_get_default());
-> +    sysbus_init_child_obj(obj, "rtc", &s->rtc, sizeof(s->rtc),
-> +                          TYPE_XLNX_ZYNQMP_RTC);
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GDMA_CH; i++) {
-> -        object_initialize(&s->gdma[i], sizeof(s->gdma[i]), TYPE_XLNX_ZDMA);
-> -        qdev_set_parent_bus(DEVICE(&s->gdma[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "gdma[*]", &s->gdma[i], sizeof(s->gdma[i]),
-> +                              TYPE_XLNX_ZDMA);
->      }
->
->      for (i = 0; i < XLNX_ZYNQMP_NUM_ADMA_CH; i++) {
-> -        object_initialize(&s->adma[i], sizeof(s->adma[i]), TYPE_XLNX_ZDMA);
-> -        qdev_set_parent_bus(DEVICE(&s->adma[i]), sysbus_get_default());
-> +        sysbus_init_child_obj(obj, "adma[*]", &s->adma[i], sizeof(s->adma[i]),
-> +                              TYPE_XLNX_ZDMA);
->      }
->  }
->
-> --
-> 1.8.3.1
->
->
+Guenter

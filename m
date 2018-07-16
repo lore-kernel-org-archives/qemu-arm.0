@@ -1,86 +1,70 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1498231wru;
-        Mon, 16 Jul 2018 06:19:59 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdD2EP9CMqnOEUWcbfplVFtxWfn0sj+y3PlsNl5lChwsENKYsfLVYks7ZWjBv7DoVKmqwOx
-X-Received: by 2002:ac8:2c72:: with SMTP id e47-v6mr15327837qta.60.1531747199321;
-        Mon, 16 Jul 2018 06:19:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531747199; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1512320wru;
+        Mon, 16 Jul 2018 06:33:23 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc3zGsJKM7AfwzNIzWxuEiJHtRGL8CHoDJqUPqO2c2cfHr6YCDY843PRsLcihuXnwcvyFRe
+X-Received: by 2002:a37:a58c:: with SMTP id o134-v6mr13750962qke.305.1531748003225;
+        Mon, 16 Jul 2018 06:33:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531748003; cv=none;
         d=google.com; s=arc-20160816;
-        b=My/bzmEccWc+21uUa7HsawUVo1qDmyUCNwP/5EpYgt2cdYssJ1eAWEMD8Fg+KmCtxu
-         DlfNuyE68LBkRG5OTNC+dvI6T46uOOO5WDJ0yJI1gRebkhEruc+lGiKw6DSaLaa1nhyA
-         jyMiI0+shzlUEokLHbwqGy+L2x26rUMCaMiV+8ZhPK9G4fXhtMSHv+ckwnaggG7SDSLy
-         BG7nPR7k11PQeM0tZvhNOjx61q/eLgWQpvPL41iDyk8Lz3tQsfRXV0+DLJvvhEQJ5kjj
-         2oanqRW1tK7tHR30yRKYnk8jbrZYXiC3vEzMwHGrN/mEDScFHn821cAE4UD7KZnrI6hV
-         W+jw==
+        b=kRUliiiAjFL1u9XPDXPDhvnbZYU6UmYKUFi1+Adx7oMXf9HivfZCQrVeJRHvm94KP5
+         OhyWZjG2if4xKxzMgVWREt1CHa9F6ac53N97BI7Y3c2ecfbiUAn6rptX+kpTBB1/XliT
+         61wBFiMfiqqwwaTnsMveNKBZ7twiF5QPpm3EEALqQxWKSyLX1eLsKUdh2rzT+pVRH9XZ
+         Nqs4So5KixjteIGoln51sJ+s2phXtjRrQbOCt11oEDojirqF9XV4jn3rl9m2ypzaFTxi
+         s6VoUxUbYboUdjQZyWDaxbecpaas+htDucsViL/okZpao7xnl2dOlstpgf8Bru/+SA73
+         jBuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=zJa1Ug0lEElr02m97MpV01e+4EMUNTKBUqdev2BArNs=;
-        b=CQkfwbQaDWT48FWdEPHQUyMtnkqlFVMVoVyOk6YxdzzyEzGhMZxjYEZBUY51QxGlW0
-         pflKW1begazPvohROCwiuGFOFX+CUat0EqlZ7qJbazj7w6mIgMIfTgHhrnq+BmF7PAbh
-         uXKu312sEQVAHwzjoXhK20qBAhZw9DwuFjxcsXXSrsrZOIQlvyh3hfJTh7BBxLUn3CC6
-         FJOlk5vWSODdwhJwwB86RyIiPosxugV8zKxVrZ8UqToBHDbHEiGUDxW4vXfEGcYV1wtq
-         i6qnJRvpt9mxoQXAueuOk+Z0ZEHWjaDm3oK30wt6NrHZ+oMoUEDRHaj80tSxO4GJ7Okz
-         29vA==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=K2vdgO+dcmzil51RCwaP4ZMYOG5p403h6QM9wnWKsa4=;
+        b=f4MIIHxxLFxjNY7vvPbOqAJXAdherYeSfy/i/8LOAoAxQb1uDA85UTjLxbgNl91wyg
+         Ag105NnFXc9Z/IrETwmtayFTXJzUbYmt4gSPFYVCvw+su1hQEcAD3E1XWGxxdFE+ssGa
+         9MOC3yM0wTY2gtpg1c/AtwbiRPWs8lz3/4xzI13dYdyxttgE8/JbGGhSpTvFRYsr/+cX
+         1VeL13M20kGTY8LCHjg2CI6LZwryF5lgg5unIFpnmcucemdIRaiDAg7jpu1iqkYarVvQ
+         K6E8mn+NZUgnq6yVngFkJYGcYin4JqBAlgVhivpgofOKaK6DgLDqyg/RK+5R0xtCQ7Ov
+         4kzw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x186-v6si1200392qkd.254.2018.07.16.06.19.59
+        by mx.google.com with ESMTPS id h7-v6si4038362qkm.150.2018.07.16.06.33.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 16 Jul 2018 06:19:59 -0700 (PDT)
+        Mon, 16 Jul 2018 06:33:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51456 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51786 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ff3Py-0000Dc-OQ
-	for alex.bennee@linaro.org; Mon, 16 Jul 2018 09:19:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43739)
+	id 1ff3cw-0006LU-MB
+	for alex.bennee@linaro.org; Mon, 16 Jul 2018 09:33:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54758)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ff36u-0001cS-BW
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:00:22 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1ff3cq-0006LP-4x
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:33:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ff36o-0002Lk-GP
-	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:00:16 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35456 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ff36o-0002L3-BM; Mon, 16 Jul 2018 09:00:10 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CE61D7DAC6;
-	Mon, 16 Jul 2018 13:00:09 +0000 (UTC)
-Received: from thh440s.str.redhat.com (dhcp-200-180.str.redhat.com
-	[10.33.200.180])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3B1111C589;
-	Mon, 16 Jul 2018 13:00:08 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Date: Mon, 16 Jul 2018 14:59:33 +0200
-Message-Id: <1531745974-17187-17-git-send-email-thuth@redhat.com>
-In-Reply-To: <1531745974-17187-1-git-send-email-thuth@redhat.com>
-References: <1531745974-17187-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Mon, 16 Jul 2018 13:00:09 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Mon, 16 Jul 2018 13:00:09 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v3 16/17] hw/display/xlnx_dp: Move problematic
- code from instance_init to realize
+	(envelope-from <pm215@archaic.org.uk>) id 1ff3cp-00020t-1P
+	for qemu-arm@nongnu.org; Mon, 16 Jul 2018 09:33:16 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43580)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1ff3co-0001zM-Pa; Mon, 16 Jul 2018 09:33:14 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1ff3cd-0000qX-Ql; Mon, 16 Jul 2018 14:33:03 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 16 Jul 2018 14:33:02 +0100
+Message-Id: <20180716133302.25989-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH for-3.0] target/arm: Correctly handle overlapping
+ small MPU regions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,153 +76,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Markus Armbruster <armbru@redhat.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Cc: Adithya Baglody <adithya.nagaraj.baglody@intel.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CFq8bOFH1duy
+X-TUID: y8YWSsb2ceDA
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+To correctly handle small (less than TARGET_PAGE_SIZE) MPU regions,
+we must correctly handle the case where the address being looked
+up hits in an MPU region that is not small but the address is
+in the same page as a small region. For instance if MPU region
+1 covers an entire page from 0x2000 to 0x2400 and MPU region
+2 is small and covers only 0x2200 to 0x2280, then for an access
+to 0x2000 we must not return a result covering the full page
+even though we hit the page-sized region 1. Otherwise we will
+then cache that result in the TLB and accesses that should
+hit region 2 will incorrectly find the region 1 information.
 
-aux_create_slave() calls qdev_init_nofail() which in turn "realizes"
-the corresponding object. This is unlike qdev_create(), and it is wrong
-because qdev_init_nofail() must not be called from an instance_init
-function.  Move qdev_init_nofail() and the subsequent aux_map_slave into
-the caller's realize function.
+Check for the case where we miss an MPU region but it is still
+within the same page, and in that case narrow the size we will
+pass to tlb_set_page_with_attrs() for whatever the final
+outcome is of the MPU lookup.
 
-There are two more bugs that needs to be fixed here, too, where the
-objects are created but not added as children.  Therefore when
-you call object_unparent on them, nothing happens.
-
-In particular dpcd and edid give you an infinite loop in bus_unparent,
-because device_unparent is not called and does not remove them from
-the list of devices on the bus.
-
-Reported-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-[thuth: Added Paolo's fixup for the dpcd and edid unparenting]
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reported-by: Adithya Baglody <adithya.nagaraj.baglody@intel.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/xlnx_dp.c     |  8 +++++++-
- hw/misc/auxbus.c         | 18 ++++++++++++------
- include/hw/misc/auxbus.h | 14 +++++++++++++-
- 3 files changed, 32 insertions(+), 8 deletions(-)
+This should go into 3.0 as it fixes a corner case in the newly added
+small-MPU-region handling.
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 5130122..6439bd0 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1234,9 +1234,12 @@ static void xlnx_dp_init(Object *obj)
-     /*
-      * Initialize DPCD and EDID..
-      */
--    s->dpcd = DPCD(aux_create_slave(s->aux_bus, "dpcd", 0x00000));
-+    s->dpcd = DPCD(aux_create_slave(s->aux_bus, "dpcd"));
-+    object_property_add_child(OBJECT(s), "dpcd", OBJECT(s->dpcd), NULL);
-+
-     s->edid = I2CDDC(qdev_create(BUS(aux_get_i2c_bus(s->aux_bus)), "i2c-ddc"));
-     i2c_set_slave_address(I2C_SLAVE(s->edid), 0x50);
-+    object_property_add_child(OBJECT(s), "edid", OBJECT(s->edid), NULL);
+ target/arm/helper.c | 46 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0604a0efbe2..22d812240af 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -17,6 +17,7 @@
+ #include "exec/semihost.h"
+ #include "sysemu/kvm.h"
+ #include "fpu/softfloat.h"
++#include "qemu/range.h"
  
-     fifo8_create(&s->rx_fifo, 16);
-     fifo8_create(&s->tx_fifo, 16);
-@@ -1248,6 +1251,9 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
-     DisplaySurface *surface;
-     struct audsettings as;
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
  
-+    qdev_init_nofail(DEVICE(s->dpcd));
-+    aux_map_slave(AUX_SLAVE(s->dpcd), 0x0000);
-+
-     s->console = graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
-     surface = qemu_console_surface(s->console);
-     xlnx_dpdma_set_host_data_location(s->dpdma, DP_GRAPHIC_DMA_CHANNEL,
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index b8a8721..0e56d9a 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -32,6 +32,7 @@
- #include "hw/misc/auxbus.h"
- #include "hw/i2c/i2c.h"
- #include "monitor/monitor.h"
-+#include "qapi/error.h"
+@@ -9669,6 +9670,20 @@ static bool get_phys_addr_pmsav7(CPUARMState *env, uint32_t address,
+             }
  
- #ifndef DEBUG_AUX
- #define DEBUG_AUX 0
-@@ -63,9 +64,14 @@ static void aux_bus_class_init(ObjectClass *klass, void *data)
- AUXBus *aux_init_bus(DeviceState *parent, const char *name)
- {
-     AUXBus *bus;
-+    Object *auxtoi2c;
+             if (address < base || address > base + rmask) {
++                /*
++                 * Address not in this region. We must check whether the
++                 * region covers addresses in the same page as our address.
++                 * In that case we must not report a size that covers the
++                 * whole page for a subsequent hit against a different MPU
++                 * region or the background region, because it would result in
++                 * incorrect TLB hits for subsequent accesses to addresses that
++                 * are in this MPU region.
++                 */
++                if (ranges_overlap(base, rmask,
++                                   address & TARGET_PAGE_MASK,
++                                   TARGET_PAGE_SIZE)) {
++                    *page_size = 1;
++                }
+                 continue;
+             }
  
-     bus = AUX_BUS(qbus_create(TYPE_AUX_BUS, parent, name));
--    bus->bridge = AUXTOI2C(qdev_create(BUS(bus), TYPE_AUXTOI2C));
-+    auxtoi2c = object_new_with_props(TYPE_AUXTOI2C, OBJECT(bus), "i2c",
-+                                     &error_abort, NULL);
-+    qdev_set_parent_bus(DEVICE(auxtoi2c), BUS(bus));
-+
-+    bus->bridge = AUXTOI2C(auxtoi2c);
+@@ -9888,6 +9903,22 @@ static void v8m_security_lookup(CPUARMState *env, uint32_t address,
+                         sattrs->srvalid = true;
+                         sattrs->sregion = r;
+                     }
++                } else {
++                    /*
++                     * Address not in this region. We must check whether the
++                     * region covers addresses in the same page as our address.
++                     * In that case we must not report a size that covers the
++                     * whole page for a subsequent hit against a different MPU
++                     * region or the background region, because it would result
++                     * in incorrect TLB hits for subsequent accesses to
++                     * addresses that are in this MPU region.
++                     */
++                    if (limit >= base &&
++                        ranges_overlap(base, limit - base + 1,
++                                       addr_page_base,
++                                       TARGET_PAGE_SIZE)) {
++                        sattrs->subpage = true;
++                    }
+                 }
+             }
+         }
+@@ -9963,6 +9994,21 @@ static bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+             }
  
-     /* Memory related. */
-     bus->aux_io = g_malloc(sizeof(*bus->aux_io));
-@@ -74,9 +80,11 @@ AUXBus *aux_init_bus(DeviceState *parent, const char *name)
-     return bus;
- }
+             if (address < base || address > limit) {
++                /*
++                 * Address not in this region. We must check whether the
++                 * region covers addresses in the same page as our address.
++                 * In that case we must not report a size that covers the
++                 * whole page for a subsequent hit against a different MPU
++                 * region or the background region, because it would result in
++                 * incorrect TLB hits for subsequent accesses to addresses that
++                 * are in this MPU region.
++                 */
++                if (limit >= base &&
++                    ranges_overlap(base, limit - base + 1,
++                                   addr_page_base,
++                                   TARGET_PAGE_SIZE)) {
++                    *is_subpage = true;
++                }
+                 continue;
+             }
  
--static void aux_bus_map_device(AUXBus *bus, AUXSlave *dev, hwaddr addr)
-+void aux_map_slave(AUXSlave *aux_dev, hwaddr addr)
- {
--    memory_region_add_subregion(bus->aux_io, addr, dev->mmio);
-+    DeviceState *dev = DEVICE(aux_dev);
-+    AUXBus *bus = AUX_BUS(qdev_get_parent_bus(dev));
-+    memory_region_add_subregion(bus->aux_io, addr, aux_dev->mmio);
- }
- 
- static bool aux_bus_is_bridge(AUXBus *bus, DeviceState *dev)
-@@ -260,15 +268,13 @@ static void aux_slave_dev_print(Monitor *mon, DeviceState *dev, int indent)
-                    memory_region_size(s->mmio));
- }
- 
--DeviceState *aux_create_slave(AUXBus *bus, const char *type, uint32_t addr)
-+DeviceState *aux_create_slave(AUXBus *bus, const char *type)
- {
-     DeviceState *dev;
- 
-     dev = DEVICE(object_new(type));
-     assert(dev);
-     qdev_set_parent_bus(dev, &bus->qbus);
--    qdev_init_nofail(dev);
--    aux_bus_map_device(AUX_BUS(qdev_get_parent_bus(dev)), AUX_SLAVE(dev), addr);
-     return dev;
- }
- 
-diff --git a/include/hw/misc/auxbus.h b/include/hw/misc/auxbus.h
-index 68ade8a..c15b444 100644
---- a/include/hw/misc/auxbus.h
-+++ b/include/hw/misc/auxbus.h
-@@ -123,6 +123,18 @@ I2CBus *aux_get_i2c_bus(AUXBus *bus);
-  */
- void aux_init_mmio(AUXSlave *aux_slave, MemoryRegion *mmio);
- 
--DeviceState *aux_create_slave(AUXBus *bus, const char *name, uint32_t addr);
-+/* aux_create_slave: Create a new device on an AUX bus
-+ *
-+ * @bus The AUX bus for the new device.
-+ * @name The type of the device to be created.
-+ */
-+DeviceState *aux_create_slave(AUXBus *bus, const char *name);
-+
-+/* aux_map_slave: Map the mmio for an AUX slave on the bus.
-+ *
-+ * @dev The AUX slave.
-+ * @addr The address for the slave's mmio.
-+ */
-+void aux_map_slave(AUXSlave *dev, hwaddr addr);
- 
- #endif /* HW_MISC_AUXBUS_H */
 -- 
-1.8.3.1
+2.17.1
 

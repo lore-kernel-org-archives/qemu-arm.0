@@ -1,71 +1,74 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1488576wrq;
-        Thu, 12 Jul 2018 08:15:44 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfTR935eVfvd+mx5rto8TaoigF4cT/RXD/tYr50xbLry9NZT99s8ESpE0OY4gUB4N+X83Bn
-X-Received: by 2002:aed:3cae:: with SMTP id d43-v6mr2233179qtf.379.1531408544510;
-        Thu, 12 Jul 2018 08:15:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531408544; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp429338wru;
+        Wed, 18 Jul 2018 06:02:39 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfyD30CSzr/4RNzpXtW+kucQs5ySplQ/C3cG1WTNKvRUBUYbGYnl6S6jA7WVgMH1hJ6cI5M
+X-Received: by 2002:a37:9187:: with SMTP id t129-v6mr5103262qkd.112.1531918959610;
+        Wed, 18 Jul 2018 06:02:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1531918959; cv=none;
         d=google.com; s=arc-20160816;
-        b=aipra3fIwpz0EfxOZI2/Q6AkDkCHjKtHCKjtDwwXjsPwr2zZ+b7j08OzkFK4xt6jW0
-         NO8DNT6bGmwEQK5nOi2Kn8spf7lhCEyGZnonVgy8MPK8/ASNltkju9H8qz306E1e41Zz
-         gSibYDWnJLNmh4wd3VVcqFvVgSvgTHP9FuoVjlpmz6i8ii7BevqvC9pOhIO6Zov/YDA8
-         wF3v9bVgP6dwCjdp1ZI4gYQVDRwSjLsmHu4ZVDHL0zVNJLirbu6kkPKEgiYE1+bgB6Rf
-         w0GzaXXpcDvyjF8jLiEx+qow+fpN0sXiaWU3lTbhHQU4U6AEEbN3juEX13BDMGpAdQaX
-         L14w==
+        b=bOSGDhqaXVjoXIrH7T1cwhqURTtGM1MZv0m6ZixsU0M72Zzc2uSvhHNLJINQBhcGP4
+         /7raiIH7NuQl15WjKB6Z31D2ePIiWGg6CbFkK278tmvOhHo+DdSjsrUlKvmkW9mZC6c8
+         AazS8ZFWXDr9L7ykDBIA7v75AP/4wQWzC3o90xdqNtYHWUAqUi8aB92Rmf16PsW4ekXV
+         Upew+euciP/p27pZflfHtC5maUGYvpqKRDWhlCaruAOYz5cn54849zq491e88+vQ3Nkq
+         HqI8MmJ99Fyh6puL324RQGOf77cHIAkvc8k+eOfHdWc7bEcmt1IOOBVGO6kWYDBqpIMv
+         7pdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=o5z2fDdb4ooojPNzUhhAVW3fVWbJ0DhZpHjbkXQhQvE=;
-        b=EJaiUBZknQH+vd3xiYVr0heyM2SmNKYiFYSN58+wtK4r4YS92URe/PGm2Sm0goG2DS
-         aM2U88ucisjXvFYsLTWPE4LN0jyZnKZuOdzvRNSY2J63Dkee0SK0GeiOA0lpC3WhBUBF
-         dbJHI1t7UdP+PQGo5hNG8nHw5sKELVkIvCA0E4JO9yb8xLJXLDOgeda8MHTBglML5hP0
-         1HH/RDIsU4vo0pdoP/cZJLCdpLTIec4iY/SBfspdzKbXpiNaNwd4RdO+R1QM1djZzCr0
-         F7BtL0/SWXbr7WdrRjXX3kJL4gW4Z+AkcuPNCVR4a2wdvNXXx3QKMUvP9x7wxY4EAQNi
-         9FPQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=CR25JMApt7CxmBMxlXkaUQ/EugCFSSQY1HLaDQmQvEo=;
+        b=m3aAurcw7+f3PeEt5jdoDalZISLmiX47fgN2cZ5ZLXD4ffQ8h4qYx8lqGbZHm41oh/
+         7ruW1VT+6K5nzIFl63L+kjDa9fhwzeOU8wA4OtPmVW4rZsvkZiXoQTr/IOkj69+4kl/J
+         8qc6Nf4mqj/U0eox5jeRxVVOMy1QD6zRHa4+Q/y/0Y7Bz7iSsmqJtK9r6VJBb1F+AMhm
+         kZTjtTAiXjbxr2Y3C7ibEOVIX8XKCOte1gkWUuqhdhSTIzOnATER+MV18tWF/sEvuyKa
+         RD26+vxx26t1KJ0Ft4rVonPpPzC9vRrlsJDG7cpaPSpkGxN1NldvF/mlur911AnaTeAz
+         aGvw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w44-v6si1644981qtg.179.2018.07.12.08.15.44
+        by mx.google.com with ESMTPS id t81-v6si3368356qkt.248.2018.07.18.06.02.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 08:15:44 -0700 (PDT)
+        Wed, 18 Jul 2018 06:02:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60683 helo=lists.gnu.org)
+Received: from localhost ([::1]:36533 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fddJo-0008Vu-0s
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 11:15:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60679)
+	id 1ffm6J-0002HX-5O
+	for alex.bennee@linaro.org; Wed, 18 Jul 2018 09:02:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fddJa-0008Vc-4E
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 11:15:33 -0400
+	(envelope-from <imammedo@redhat.com>) id 1ffm4f-0001Me-Eq
+	for qemu-arm@nongnu.org; Wed, 18 Jul 2018 09:01:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fddJW-0001Mu-Pp
-	for qemu-arm@nongnu.org; Thu, 12 Jul 2018 11:15:30 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51848 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1ffm4d-0001G9-2m
+	for qemu-arm@nongnu.org; Wed, 18 Jul 2018 09:00:57 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59906 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fddJW-0001ME-BX; Thu, 12 Jul 2018 11:15:26 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1ffm4c-0001Ee-Pa; Wed, 18 Jul 2018 09:00:54 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B7CB701EA;
-	Thu, 12 Jul 2018 15:15:25 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EC95A1102E23;
-	Thu, 12 Jul 2018 15:15:16 +0000 (UTC)
-Date: Thu, 12 Jul 2018 17:15:14 +0200
-From: Andrew Jones <drjones@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id E8D04808255B;
+	Wed, 18 Jul 2018 13:00:52 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3C575178BA;
+	Wed, 18 Jul 2018 13:00:45 +0000 (UTC)
+Date: Wed, 18 Jul 2018 15:00:44 +0200
+From: Igor Mammedov <imammedo@redhat.com>
 To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20180712151514.iyhpfziivqt7qv74@kamzik.brq.redhat.com>
-References: <405e3f2b-3044-d7fc-8df4-b07a8487470f@redhat.com>
+Message-ID: <20180718150044.4c542d21@redhat.com>
+In-Reply-To: <6047361a-be99-fc7f-5270-5ab3b4ab84e2@redhat.com>
+References: <43c1349e-1ca6-4890-07c0-7bfa35ab914d@redhat.com>
+	<5311fed5-7f13-a177-b967-db6e3ed028b9@redhat.com>
+	<405e3f2b-3044-d7fc-8df4-b07a8487470f@redhat.com>
 	<f2d61062-21df-4478-bc61-c32e92329cf8@redhat.com>
 	<57030c9f-c3d1-49a8-090e-d6b316e7a818@redhat.com>
 	<fc6a29d4-1094-8d29-d415-fc30d5e30c31@redhat.com>
@@ -76,18 +79,16 @@ References: <405e3f2b-3044-d7fc-8df4-b07a8487470f@redhat.com>
 	<20180712144516.zsjvfrruduirzqug@kamzik.brq.redhat.com>
 	<6047361a-be99-fc7f-5270-5ab3b4ab84e2@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6047361a-be99-fc7f-5270-5ab3b4ab84e2@redhat.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 12 Jul 2018 15:15:25 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 12 Jul 2018 15:15:25 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 18 Jul 2018 13:00:53 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 18 Jul 2018 13:00:53 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -105,33 +106,35 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	David Hildenbrand <david@redhat.com>, "agraf@suse.de" <agraf@suse.de>,
-	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	Andrew Jones <drjones@redhat.com>, David Hildenbrand <david@redhat.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	"agraf@suse.de" <agraf@suse.de>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>,
 	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
 	"dgilbert@redhat.com" <dgilbert@redhat.com>,
 	"david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5JEjtNmnVX4t
+X-TUID: jG3wVhrSU0M/
 
-On Thu, Jul 12, 2018 at 04:53:01PM +0200, Auger Eric wrote:
+On Thu, 12 Jul 2018 16:53:01 +0200
+Auger Eric <eric.auger@redhat.com> wrote:
+
 > Hi Drew,
 > 
 > On 07/12/2018 04:45 PM, Andrew Jones wrote:
-> > On Thu, Jul 12, 2018 at 04:22:05PM +0200, Auger Eric wrote:
+> > On Thu, Jul 12, 2018 at 04:22:05PM +0200, Auger Eric wrote:  
 > >> Hi Igor,
 > >>
-> >> On 07/11/2018 03:17 PM, Igor Mammedov wrote:
+> >> On 07/11/2018 03:17 PM, Igor Mammedov wrote:  
 > >>> On Thu, 5 Jul 2018 16:27:05 +0200
 > >>> Auger Eric <eric.auger@redhat.com> wrote:
-> >>>
+> >>>  
 > >>>> Hi Shameer,
 > >>>>
-> >>>> On 07/05/2018 03:19 PM, Shameerali Kolothum Thodi wrote:
-> >>>>>   
+> >>>> On 07/05/2018 03:19 PM, Shameerali Kolothum Thodi wrote:  
+> >>>>>     
 > >>>>>> -----Original Message-----
 > >>>>>> From: Auger Eric [mailto:eric.auger@redhat.com]
 > >>>>>> Sent: 05 July 2018 13:18
@@ -146,28 +149,28 @@ On Thu, Jul 12, 2018 at 04:53:01PM +0200, Auger Eric wrote:
 > >>>>>>
 > >>>>>> Hi David,
 > >>>>>>
-> >>>>>> On 07/05/2018 02:09 PM, David Hildenbrand wrote:  
-> >>>>>>> On 05.07.2018 14:00, Auger Eric wrote:  
+> >>>>>> On 07/05/2018 02:09 PM, David Hildenbrand wrote:    
+> >>>>>>> On 05.07.2018 14:00, Auger Eric wrote:    
 > >>>>>>>> Hi David,
 > >>>>>>>>
-> >>>>>>>> On 07/05/2018 01:54 PM, David Hildenbrand wrote:  
-> >>>>>>>>> On 05.07.2018 13:42, Auger Eric wrote:  
+> >>>>>>>> On 07/05/2018 01:54 PM, David Hildenbrand wrote:    
+> >>>>>>>>> On 05.07.2018 13:42, Auger Eric wrote:    
 > >>>>>>>>>> Hi David,
 > >>>>>>>>>>
-> >>>>>>>>>> On 07/04/2018 02:05 PM, David Hildenbrand wrote:  
-> >>>>>>>>>>> On 03.07.2018 21:27, Auger Eric wrote:  
+> >>>>>>>>>> On 07/04/2018 02:05 PM, David Hildenbrand wrote:    
+> >>>>>>>>>>> On 03.07.2018 21:27, Auger Eric wrote:    
 > >>>>>>>>>>>> Hi David,
-> >>>>>>>>>>>> On 07/03/2018 08:25 PM, David Hildenbrand wrote:  
-> >>>>>>>>>>>>> On 03.07.2018 09:19, Eric Auger wrote:  
+> >>>>>>>>>>>> On 07/03/2018 08:25 PM, David Hildenbrand wrote:    
+> >>>>>>>>>>>>> On 03.07.2018 09:19, Eric Auger wrote:    
 > >>>>>>>>>>>>>> We define a new hotpluggable RAM region (aka. device memory).
 > >>>>>>>>>>>>>> Its base is 2TB GPA. This obviously requires 42b IPA support
 > >>>>>>>>>>>>>> in KVM/ARM, FW and guest kernel. At the moment the device
-> >>>>>>>>>>>>>> memory region is max 2TB.  
+> >>>>>>>>>>>>>> memory region is max 2TB.    
 > >>>>>>>>>>>>>
 > >>>>>>>>>>>>> Maybe a stupid question, but why exactly does it have to start at 2TB
-> >>>>>>>>>>>>> (and not e.g. at 1TB)?  
-> >>>>>>>>>>>> not a stupid question. See tentative answer below.  
-> >>>>>>>>>>>>>  
+> >>>>>>>>>>>>> (and not e.g. at 1TB)?    
+> >>>>>>>>>>>> not a stupid question. See tentative answer below.    
+> >>>>>>>>>>>>>    
 > >>>>>>>>>>>>>>
 > >>>>>>>>>>>>>> This is largely inspired of device memory initialization in
 > >>>>>>>>>>>>>> pc machine code.
@@ -175,8 +178,8 @@ On Thu, Jul 12, 2018 at 04:53:01PM +0200, Auger Eric wrote:
 > >>>>>>>>>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > >>>>>>>>>>>>>> Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 > >>>>>>>>>>>>>> ---
-> >>>>>>>>>>>>>>  hw/arm/virt.c         | 104  
-> >>>>>> ++++++++++++++++++++++++++++++++++++--------------  
+> >>>>>>>>>>>>>>  hw/arm/virt.c         | 104    
+> >>>>>> ++++++++++++++++++++++++++++++++++++--------------    
 > >>>>>>>>>>>>>>  include/hw/arm/arm.h  |   2 +
 > >>>>>>>>>>>>>>  include/hw/arm/virt.h |   1 +
 > >>>>>>>>>>>>>>  3 files changed, 79 insertions(+), 28 deletions(-)
@@ -192,29 +195,29 @@ On Thu, Jul 12, 2018 at 04:53:01PM +0200, Auger Eric wrote:
 > >>>>>>>>>>>>>> +#include "hw/acpi/acpi.h"
 > >>>>>>>>>>>>>>
 > >>>>>>>>>>>>>>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-> >>>>>>>>>>>>>>      static void virt_##major##_##minor##_class_init(ObjectClass *oc,  
-> >>>>>> \  
+> >>>>>>>>>>>>>>      static void virt_##major##_##minor##_class_init(ObjectClass *oc,    
+> >>>>>> \    
 > >>>>>>>>>>>>>> @@ -94,34 +95,25 @@
 > >>>>>>>>>>>>>>
 > >>>>>>>>>>>>>>  #define PLATFORM_BUS_NUM_IRQS 64
 > >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> -/* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this  
-> >>>>>> means  
+> >>>>>>>>>>>>>> -/* RAM limit in GB. Since VIRT_MEM starts at the 1GB mark, this    
+> >>>>>> means    
 > >>>>>>>>>>>>>> - * RAM can go up to the 256GB mark, leaving 256GB of the physical
-> >>>>>>>>>>>>>> - * address space unallocated and free for future use between 256G  
-> >>>>>> and 512G.  
-> >>>>>>>>>>>>>> - * If we need to provide more RAM to VMs in the future then we  
-> >>>>>> need to:  
-> >>>>>>>>>>>>>> - *  * allocate a second bank of RAM starting at 2TB and working up  
-> >>>>>>>>>>>> I acknowledge this comment was the main justification. Now if you look  
-> >>>>>> at  
+> >>>>>>>>>>>>>> - * address space unallocated and free for future use between 256G    
+> >>>>>> and 512G.    
+> >>>>>>>>>>>>>> - * If we need to provide more RAM to VMs in the future then we    
+> >>>>>> need to:    
+> >>>>>>>>>>>>>> - *  * allocate a second bank of RAM starting at 2TB and working up    
+> >>>>>>>>>>>> I acknowledge this comment was the main justification. Now if you look    
+> >>>>>> at    
 > >>>>>>>>>>>>
 > >>>>>>>>>>>> Principles of ARM Memory Maps
-> >>>>>>>>>>>>  
+> >>>>>>>>>>>>    
 > >>>>>> http://infocenter.arm.com/help/topic/com.arm.doc.den0001c/DEN0001C_princ
-> >>>>>> iples_of_arm_memory_maps.pdf  
+> >>>>>> iples_of_arm_memory_maps.pdf    
 > >>>>>>>>>>>> chapter 2.3 you will find that when adding PA bits, you always leave
-> >>>>>>>>>>>> space for reserved space and mapped IO.  
+> >>>>>>>>>>>> space for reserved space and mapped IO.    
 > >>>>>>>>>>>
 > >>>>>>>>>>> Thanks for the pointer!
 > >>>>>>>>>>>
@@ -231,13 +234,13 @@ On Thu, Jul 12, 2018 at 04:53:01PM +0200, Auger Eric wrote:
 > >>>>>>>>>>> We should strive for device memory (maxram_size - ram_size) to fit
 > >>>>>>>>>>> exactly into one of these slots (otherwise things get nasty).
 > >>>>>>>>>>>
-> >>>>>>>>>>> Depending on the ram_size, we might have simpler setups and can  
-> >>>>>> support  
+> >>>>>>>>>>> Depending on the ram_size, we might have simpler setups and can    
+> >>>>>> support    
 > >>>>>>>>>>> more configurations, no?
 > >>>>>>>>>>>
-> >>>>>>>>>>> E.g. ram_size <= 34GB, device_memory <= 512GB  
+> >>>>>>>>>>> E.g. ram_size <= 34GB, device_memory <= 512GB    
 > >>>>>>>>>>> -> move ram into a) and b)
-> >>>>>>>>>>> -> move device memory into c)  
+> >>>>>>>>>>> -> move device memory into c)    
 > >>>>>>>>>>
 > >>>>>>>>>> The issue is machvirt doesn't comply with that document.
 > >>>>>>>>>> At the moment we have
@@ -248,224 +251,32 @@ On Thu, Jul 12, 2018 at 04:53:01PM +0200, Auger Eric wrote:
 > >>>>>>>>>> existing 40b GPA space.
 > >>>>>>>>>>
 > >>>>>>>>>> We don't want to change this address map due to legacy reasons.
-> >>>>>>>>>>  
-> >>>>>>>>>
-> >>>>>>>>> Thanks, good to know!
-> >>>>>>>>>  
-> >>>>>>>>>> Another question! do you know if it would be possible to have
-> >>>>>>>>>> device_memory region split into several discontinuous segments?  
-> >>>>>>>>>
-> >>>>>>>>> It can be implemented for sure, but I would try to avoid that, as it
-> >>>>>>>>> makes certain configurations impossible (and very end user unfriendly).
-> >>>>>>>>>
-> >>>>>>>>> E.g. (numbers completely made up, but it should show what I mean)
-> >>>>>>>>>
-> >>>>>>>>> -m 20G,maxmem=120G:  
-> >>>>>>>>> -> Try to add a DIMM with 100G -> error.
-> >>>>>>>>> -> But we can add e.g. two DIMMs with 40G and 60G.  
-> >>>>>>>>>
-> >>>>>>>>> This exposes internal details to the end user. And the end user has no
-> >>>>>>>>> idea what is going on.
-> >>>>>>>>>
-> >>>>>>>>> So I think we should try our best to keep that area consecutive.  
-> >>>>>>>>
-> >>>>>>>> Actually I didn't sufficiently detail the context. I would like
-> >>>>>>>> 1) 1 segment to be exposed to the end-user through slot|maxmem stuff
-> >>>>>>>> (what this series targets) and
-> >>>>>>>> 2) another segment used to instantiate PC-DIMM for internal needs as
-> >>>>>>>> replacement of part of the 1GB -> 256GB static RAM. This was the purpose
-> >>>>>>>> of Shameer's original series  
-> >>>>>>>
-> >>>>>>> I am not sure if PC-DIMMs are exactly what you want for internal purposes.
-> >>>>>>>  
-> >>>>>>>>
-> >>>>>>>> [1] [RFC v2 0/6] hw/arm: Add support for non-contiguous iova regions
-> >>>>>>>> http://patchwork.ozlabs.org/cover/914694/
-> >>>>>>>> This approach is not yet validated though.
-> >>>>>>>>
-> >>>>>>>> The rationale is sometimes you must have "holes" in RAM as some GPAs
-> >>>>>>>> match reserved IOVAs for assigned devices.  
-> >>>>>>>
-> >>>>>>> So if I understand it correctly, all you want is some memory region that
-> >>>>>>> a) contains only initially defined memory
-> >>>>>>> b) can have some holes in it
-> >>>>>>>
-> >>>>>>> This is exactly what x86 already does (pc_memory_init): Simply construct
-> >>>>>>> your own memory region leaving holes in it.
-> >>>>>>>
-> >>>>>>>
-> >>>>>>> memory_region_init_alias(ram_below_4g, NULL, "ram-below-4g", ram,
-> >>>>>>>                          0, pcms->below_4g_mem_size);
-> >>>>>>> memory_region_add_subregion(system_memory, 0, ram_below_4g);
-> >>>>>>> ...
-> >>>>>>> if (pcms->above_4g_mem_size > 0)
-> >>>>>>>     memory_region_init_alias(ram_above_4g, NULL, "ram-above-4g", ram,
-> >>>>>>>     ...
-> >>>>>>>     memory_region_add_subregion(system_memory, 0x100000000ULL,
-> >>>>>>>     ...
-> >>>>>>>
-> >>>>>>> They "indicate" these different GPA areas using the e820 map to the guest.
-> >>>>>>>
-> >>>>>>> Would that also work for you?  
-> >>>>>>
-> >>>>>> I would tentatively say yes. Effectively I am not sure that if we were
-> >>>>>> to actually put holes in the 1G-256GB RAM segment, PC-DIMM would be the
-> >>>>>> natural choice. Also the reserved IOVA issue impacts the device_memory
-> >>>>>> region area I think. I am skeptical about the fact we can put holes in
-> >>>>>> static RAM and device_memory regions like that.
-> >>> Could we just use a single device_memory region for both initial+hotpluggable
-> >>> RAM if we make base RAM address dynamic?
-> >> This assumes FW does support dynamic RAM base. If I understand correctly
-> >> this is not the case. 
-> > 
-> > It's not currently the case, but I've adding prototyping this near the top
-> > of my TODO. So stay tuned.
-> ok
-> > 
+[...]
+
 > >> Also there is the problematic of migration. How
 > >> would you migrate between guests whose RAM is not laid out at the same
-> >> place?
+> >> place?  
 > > 
 > > I'm not sure what you mean here. Boot a guest with a new memory map,
 > > probably by explicitly asking for it with a new machine property,
 > > which means a new virt machine version. Then migrate at will to any
-> > host that supports that machine type.
+> > host that supports that machine type.  
 > My concern rather was about holes in the memory map matching reserved
 > regions.
-
-Oh, I see. I don't think the reserved-host-memory-regions-messing-up-guest
-problem can ever be solved for the migration case of the destination host
-not having strictly an equal set or subset of the source host's reserved
-regions. So there's nothing we can do but force upper management layers to
-maintain migration candidate lists in these environments. A pre-check
-could also be added, allowing migration to error-out early when an overlap
-is detected.
-
-> > 
+> >   
 > >> I understood hotplug memory relied on a specific device_memory
-> >> region. So do you mean we would have 2 contiguous regions?
+> >> region. So do you mean we would have 2 contiguous regions?  
 > > 
 > > I think Igor wants one contiguous region for RAM, where additional
-> > space can be reserved for hotplugging.
+> > space can be reserved for hotplugging.  
 > This is not compliant with 2012 ARM white paper, although I don't really
 > know if this document truly is a reference (did not get any reply).
-> 
-> Thanks
-> 
-> Eric
-> > 
-> >>> In this case RAM could start wherever there is a free space for maxmem
-> >>> (if there is free space in lowmem, put device_memory there, otherwise put
-> >>> it somewhere in high mem) and we won't care if there is IOVA or not.
-> >>>
-> >>> *I don't have a clue about iommus, so here goes a stupid question*
-> >>> I agree with Peter that whole IOVA thing looks broken, when host
-> >>> layout dictates the guest's one.
-> >>> Shouldn't be there somewhere an iommu that would remap host map into
-> >>> guest specific one? (so guest would model board we need and be migrate-able
-> >>> instead of mimicking host hw)
-> >> The issue is related to IOVAs programmed by the guest in the host
-> >> assigned devices. DMA requests issued by the assigned devices using
-> >> those IOVAs are supposed to reach the guest RAM. But due to the host
-> >> topology they won't (host PCI host bridge windows or MSI reserved
-> >> regions). Adding a vIOMMU on guest side effectively allows to use IOVAs
-> >> != GPAs but guest is exposed to that change. Adding this extra
-> >> translation stage adds a huge performance penalty. And eventually the
-> >> IOVA allocator used in the guest should theoretically be aware of host
-> >> reserved regions as well.
-> >>
-> >>>
-> >>>
-> >>>>> The first approach[1] we had to address the holes in memory was using
-> >>>>> the memory alias way mentioned above.  And based on Drew's review, the
-> >>>>> pc-dimm way of handling was introduced. I think the main argument was that
-> >>>>> it will be useful when we eventually support hotplug.  
-> >>>>
-> >>>> That's my understanding too.
-> >>> not only hotplug,
-> >>>
-> >>>   a RAM memory region that's split by aliases is difficult to handle
-> >>>   as it creates nonlinear GPA<->HVA mapping instead of
-> >>>   1:1 mapping of pc-dimm,
-> >>>   so if one needs to build HVA<->GPA map for a given MemoryRegion
-> >>>   in case of aliases one would have to get list of MemorySections
-> >>>   that belong to it and build map from that vs (addr + offset) in
-> >>>   case of simple 1:1 mapping.
-> >>>
-> >>>   complicated machine specific SRAT/e820 code due to holes
-> >>>   /grep 'the memory map is a bit tricky'/
-> >>>
-> >>>>  But since that is added
-> >>>>> anyway as part of this series, I am not sure we have any other benefit in
-> >>>>> modeling it as pc-dimm. May be I am missing something here.  
-> >>>>
-> >>>> I tentatively agree with you. I was trying to understand if the
-> >>>> device_memory region was fitting the original needs too but I think
-> >>>> standard alias approach is more adapted to hole creation.
-> >>> Aliases are easy way to start with, but as compat knobs grow
-> >>> (based on PC experience,  grep 'Calculate ram split')
-> >>> It's quite a pain to maintain manual implicit aliases layout
-> >>> without breaking it by accident.
-> >>> We probably won't be able to get rid of aliases on PC for legacy
-> >>> reasons but why introduce the same pain to virt board.
-> >>>
-> >>> Well, magical conversion from -m X to 2..y memory regions (aliases or not)
-> >>> aren't going to be easy in both cases, especially if one would take into
-> >>> account "-numa memdev|mem".
-> >>> I'd rather use a single pc-dimm approach for both /initial and hotpluggble RAM/
-> >>> and then use device_memory framework to enumerate RAM wherever needed (ACPI/DT)
-> >>> in inform way.
-> >> We have 2 problematics:
-> >> - support more RAM. This can be achieved by adding a single memory
-> >> region based on DIMMs
-> >> - manage IOVA reserved regions. I don't think we have a consensus on the
-> >> solution at the moment. What about migration between 2 guests having a
-> >> different memory topogy?
-> > 
-> > With a dynamic RAM base (pretty easy to do in QEMU, but requires FW change
-> > - now on my TODO), then one only needs to pick a contiguous region within
-> > the guest physical address limits that has the requested size and does not
-> > overlap any host reserved regions (I think). I'm still not sure what the
-> > migration concern is.
-> > 
-> > Thanks,
-> > drew
-> > 
-> >>
-> >> Thanks
-> >>
-> >> Eric
-> >>>
-> >>>
-> >>>> Thanks
-> >>>>
-> >>>> Eric
-> >>>>>
-> >>>>> Thanks,
-> >>>>> Shameer
-> >>>>>
-> >>>>> [1]. https://lists.gnu.org/archive/html/qemu-arm/2018-04/msg00243.html
-> >>>>>
-> >>>>>   
-> >>>>>> Thanks!
-> >>>>>>
-> >>>>>> Eric  
-> >>>>>>>  
-> >>>>>>>>
-> >>>>>>>> Thanks
-> >>>>>>>>
-> >>>>>>>> Eric
-> >>>>>>>>  
-> >>>>>>>>>  
-> >>>>>>>>>>
-> >>>>>>>>>> Thanks
-> >>>>>>>>>>
-> >>>>>>>>>> Eric  
-> >>>>>>>>>
-> >>>>>>>>>  
-> >>>>>>>
-> >>>>>>>  
-> >>>
-> >>>
-> >>
-> 
+it's upto QEMU to pick layout, if we have maxmem (upto 256Gb) we could
+accommodate legacy req and put single device_memory in 1Gb-256Gb GPA gap,
+if it's more we can move whole device_memory to 2Tb, 8Tb ...
+that keeps things manageable for us and fits specs (if such exist).
+WE should make selection of the next RAM base deterministic is possible
+when layout changes due to maxram size or IOVA, so that we won't need
+to use compat knobs/checks to keep machine migratable.
+
+[...]

@@ -1,207 +1,148 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2870027wru;
-        Fri, 20 Jul 2018 08:00:16 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpc2WSrqAfZmD86npp1Ode1dIMpvAOrHbLID1/shuY6SsNRB/jeUr/sozj8ZJ5Q5aEviJJ3l
-X-Received: by 2002:a0c:dc0c:: with SMTP id s12-v6mr2075861qvk.155.1532098816689;
-        Fri, 20 Jul 2018 08:00:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532098816; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2950854wru;
+        Fri, 20 Jul 2018 09:18:02 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcaPOvOKfYb5sdFnsvy5mP1HrVACcZYW5dDYcDvwMyfpNa7OxbyF2A374PFsQbnPheVfX4T
+X-Received: by 2002:ac8:3692:: with SMTP id a18-v6mr2625236qtc.406.1532103482365;
+        Fri, 20 Jul 2018 09:18:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532103482; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCbSyX6ozBzWPm0AdcSfafUkSfJ54JjY0aVrjDqdBGWZSLAXkQDkMLnG7pswGg2gas
-         oJ6DITcJrVGSj1Wik3tPaspQAINBm/MjItasDLTg0DESJ8dmJTgfdGT/dhT6XysfUEy3
-         kKIkuj54Q2ggFVNx6vypi9wGwPIwnHXb6mLYAseyklAAfcUvBdlPO2+/50YSjcUpgsq+
-         dR3CNR0gma3O+qXtJNvEIgWSo7c6Oq/fkbNGTQgvSo0UQdHZNIwdPnnAGIrm+KKm+KCj
-         Inu0RU1F5B1Gayg3+xAxSeizDyj+zs3w1UX7T8pCouNNHqGARB1wOR+cdsSeWp4wvPcf
-         qp+Q==
+        b=JnNgYvpmtxtdS0jok4nkeIHC2s0T7+edK/vo5YFoUMaKyGv2+vFRq2I4k4jaYS+VMI
+         YykDKDSldPDzAELMgaviSiyV6+zS2gQFCpqg+D6HYf+RVwv30QoeaqznYVWkLAhy6NJa
+         JIrr+8dADqe05WGxKE1bPKc1Kg1892aRvLyskCwl2NKWicmPK9fQw+F1ol0R30eV3YkZ
+         AuogjGyhGtWrxTZbzlbQhPi+8fnUMAIfYbf00VvNv+eJhCIJdClFqEU5r0T3xt7rBeDe
+         EtPkE1eV706kAtUXcZPnA+q5tOr2VelwzMnXBc4K9Suvhe8ANRvPh+M6rUJVaU9ngTZj
+         mYYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=nZRN+dFeCyh/loFDU/UTK+pRYByJg05J7SoZLYL7zf0=;
-        b=CK8qk+pJepQ4RbYSfn3ikmZ6ipskPCgUzw+GlApt99/pG8kVTKiw1imJ4E4AV7ehp9
-         DZR5WHWaJEDgb2pq+M1KwW7eE0FCE+Dmf84wDTS68bgwVS5uOCLgCJDa0mUVKOqhvuh8
-         J9tU0ML10szs+Z0d839FBpldtDhCatf55zw4Z0v483NeIbfStS4YP/tr5Aws8aO0Suv6
-         +Pwt61hkbLsf21GK4XYQfnpC2ED98uv1qZ4LLDaqmBZ5K4yJbTYkQ0ecvbdktGCfnYAT
-         XFeeY+x/aOhvDaou5tsA4B8N9Ul3WM5mzHs8H7JcEOGtlx+95INHI16qp8t9KK9mwLaH
-         oBbw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=qnAUXsPjt01WGHt4tQRI50owVr2D9tKrdDG2epfRTbI=;
+        b=N9UYqP8St6M/iL1lkbAsCo9S0Ldb0HJ4BLsSwqSEP/LFGcGTefuUJs7lIC0j0axi45
+         WCT4plWoHjsG9DNiOtv9mZi6tL1I8IIhoDnvQEV/3ch39C37xgr64mSfwIL2jbHTO0Fb
+         FCF5stEqDjGq/gFh/U9HpcKoLdF4pohQH0zbofNkB6BH5+iO/nMccbmbYDL/Ron3AauZ
+         8DnYpWaAoUH4A4Fz8Mc7T6JDWdnFCncMtMeGI0zcJvhkWrHbT3D1uz40XiAyLjPUfruO
+         t+dqT91aEYjuzHgnVBf5j6EDNPj880v3NmnuCBnJMZfVM66Ip98tGwf0wxcQoYH+vTuR
+         wWMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=U9339xZv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 41-v6si1846697qvc.142.2018.07.20.08.00.16
+        by mx.google.com with ESMTPS id g2-v6si2213162qtj.99.2018.07.20.09.18.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Jul 2018 08:00:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 20 Jul 2018 09:18:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48508 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=U9339xZv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48939 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fgWtE-0002xc-4g
-	for alex.bennee@linaro.org; Fri, 20 Jul 2018 11:00:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48699)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fgY6T-0001sP-Rf
+	for alex.bennee@linaro.org; Fri, 20 Jul 2018 12:18:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37868)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fgWq5-0000UH-Kk
-	for qemu-arm@nongnu.org; Fri, 20 Jul 2018 10:57:05 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fgY4B-00018P-Lb
+	for qemu-devel@nongnu.org; Fri, 20 Jul 2018 12:15:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fgWq4-00061g-HN
-	for qemu-arm@nongnu.org; Fri, 20 Jul 2018 10:57:01 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43636)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fgWq4-0005xz-8C; Fri, 20 Jul 2018 10:57:00 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fgWpt-0004zg-4R; Fri, 20 Jul 2018 15:56:49 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(envelope-from <richard.henderson@linaro.org>) id 1fgY4A-0007ww-Q0
+	for qemu-devel@nongnu.org; Fri, 20 Jul 2018 12:15:39 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f]:38186)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fgY4A-0007wC-Ip
+	for qemu-devel@nongnu.org; Fri, 20 Jul 2018 12:15:38 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id k3-v6so7277890pgq.5
+	for <qemu-devel@nongnu.org>; Fri, 20 Jul 2018 09:15:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=qnAUXsPjt01WGHt4tQRI50owVr2D9tKrdDG2epfRTbI=;
+	b=U9339xZv6jLQtTps/4meEfkqnAo3r7tbkUfBQx8xKdMYeq7wZvQwXGJl2y1Wah9GYS
+	jsWz047nyeUu5ASfrvmlPvpkGUZISRBYdHJ2Y2qpYcitxmH9PBp9nwuFS60qXND80NGp
+	fs0uScHNYYxZ2aqAY/q9weNhavAGfOeMhqSng=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=qnAUXsPjt01WGHt4tQRI50owVr2D9tKrdDG2epfRTbI=;
+	b=Fr1Iw+fFPzgM3K9kN6N7Xk6VsZ1k82rXpIFcuA5UwqUD/4dyfci4Rqhn3KDT2EEQzX
+	GFSeNkKnfWz9/66zxgXjvDjT2ufirk9ZzOANyhedKJj6NeqLRAoYLc5bm4sBso2A/4/a
+	Styh/vAiGbbsvh7wNK+tDKJarLj7Aq20MELNl9LbKwRczKY6rAkKgchTUH0/uukGHGwB
+	e7QOYOVUCUbrvV3/QdLW8FkmiZzTWjFurtWn9bkLIZynt0K/4T6HDR2ZapJjB1TUWSTO
+	771oHw17SjlooO6iCvAnsJ2bF2a8/s2OgAlTmMRIjeWToiNFzSejqYK0NFGGs0Pluwj+
+	bVjQ==
+X-Gm-Message-State: AOUpUlH6AqZcM87DAiz8W2NZumZeGfxXNJhJsFcuKuakWgvQyj4dhzOq
+	VJD7IF0hReRuKV1xgEMEfECYbg==
+X-Received: by 2002:a63:d244:: with SMTP id
+	t4-v6mr2682627pgi.335.1532103337696; 
+	Fri, 20 Jul 2018 09:15:37 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	r22-v6sm4615215pfl.112.2018.07.20.09.15.36
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 20 Jul 2018 09:15:36 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 20 Jul 2018 15:56:44 +0100
-Message-Id: <20180720145647.8810-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180720145647.8810-1-peter.maydell@linaro.org>
 References: <20180720145647.8810-1-peter.maydell@linaro.org>
+	<20180720145647.8810-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <0b4983d9-e6e0-c97b-3868-f923bc13def5@linaro.org>
+Date: Fri, 20 Jul 2018 09:15:34 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <20180720145647.8810-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/4] target/arm: Improve exception-taken logging
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::52f
+Subject: Re: [Qemu-devel] [PATCH 1/4] target/arm: Improve exception-taken
+ logging
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 77826RObfGQz
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q8Qvre7qd2hx
 
-Improve the exception-taken logging by logging in
-v7m_exception_taken() the exception we're going to take
-and whether it is secure/nonsecure.
+On 07/20/2018 07:56 AM, Peter Maydell wrote:
+> Improve the exception-taken logging by logging in
+> v7m_exception_taken() the exception we're going to take
+> and whether it is secure/nonsecure.
+> 
+> This requires us to move logging at many callsites from after the
+> call to before it, so that the logging appears in a sensible order.
+> 
+> (This will make tail-chaining produce more useful logs; for the
+> current callers of v7m_exception_taken() we know which exception
+> we're going to take, so custom log messages at the callsite sufficed;
+> for tail-chaining only v7m_exception_taken() knows the exception
+> number that we're going to tail-chain to.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/helper.c | 17 +++++++++++------
+>  1 file changed, 11 insertions(+), 6 deletions(-)
 
-This requires us to move logging at many callsites from after the
-call to before it, so that the logging appears in a sensible order.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-(This will make tail-chaining produce more useful logs; for the
-current callers of v7m_exception_taken() we know which exception
-we're going to take, so custom log messages at the callsite sufficed;
-for tail-chaining only v7m_exception_taken() knows the exception
-number that we're going to tail-chain to.)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6f5bb198c3b..3ec6114599b 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6840,6 +6840,8 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-     bool push_failed = false;
- 
-     armv7m_nvic_get_pending_irq_info(env->nvic, &exc, &targets_secure);
-+    qemu_log_mask(CPU_LOG_INT, "...taking pending %s exception %d\n",
-+                  targets_secure ? "secure" : "nonsecure", exc);
- 
-     if (arm_feature(env, ARM_FEATURE_V8)) {
-         if (arm_feature(env, ARM_FEATURE_M_SECURITY) &&
-@@ -6913,12 +6915,15 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-          * we might now want to take a different exception which
-          * targets a different security state, so try again from the top.
-          */
-+        qemu_log_mask(CPU_LOG_INT,
-+                      "...derived exception on callee-saves register stacking");
-         v7m_exception_taken(cpu, lr, true, true);
-         return;
-     }
- 
-     if (!arm_v7m_load_vector(cpu, exc, targets_secure, &addr)) {
-         /* Vector load failed: derived exception */
-+        qemu_log_mask(CPU_LOG_INT, "...derived exception on vector table load");
-         v7m_exception_taken(cpu, lr, true, true);
-         return;
-     }
-@@ -7129,9 +7134,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-     if (sfault) {
-         env->v7m.sfsr |= R_V7M_SFSR_INVER_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_SECURE, false);
--        v7m_exception_taken(cpu, excret, true, false);
-         qemu_log_mask(CPU_LOG_INT, "...taking SecureFault on existing "
-                       "stackframe: failed EXC_RETURN.ES validity check\n");
-+        v7m_exception_taken(cpu, excret, true, false);
-         return;
-     }
- 
-@@ -7141,9 +7146,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-          */
-         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE, env->v7m.secure);
--        v7m_exception_taken(cpu, excret, true, false);
-         qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
-                       "stackframe: failed exception return integrity check\n");
-+        v7m_exception_taken(cpu, excret, true, false);
-         return;
-     }
- 
-@@ -7198,10 +7203,10 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                 /* Take a SecureFault on the current stack */
-                 env->v7m.sfsr |= R_V7M_SFSR_INVIS_MASK;
-                 armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_SECURE, false);
--                v7m_exception_taken(cpu, excret, true, false);
-                 qemu_log_mask(CPU_LOG_INT, "...taking SecureFault on existing "
-                               "stackframe: failed exception return integrity "
-                               "signature check\n");
-+                v7m_exception_taken(cpu, excret, true, false);
-                 return;
-             }
- 
-@@ -7234,6 +7239,7 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-             /* v7m_stack_read() pended a fault, so take it (as a tail
-              * chained exception on the same stack frame)
-              */
-+            qemu_log_mask(CPU_LOG_INT, "...derived exception on unstacking\n");
-             v7m_exception_taken(cpu, excret, true, false);
-             return;
-         }
-@@ -7270,10 +7276,10 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-                 armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE,
-                                         env->v7m.secure);
-                 env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
--                v7m_exception_taken(cpu, excret, true, false);
-                 qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on existing "
-                               "stackframe: failed exception return integrity "
-                               "check\n");
-+                v7m_exception_taken(cpu, excret, true, false);
-                 return;
-             }
-         }
-@@ -7309,9 +7315,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE, false);
-         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_INVPC_MASK;
-         ignore_stackfaults = v7m_push_stack(cpu);
--        v7m_exception_taken(cpu, excret, false, ignore_stackfaults);
-         qemu_log_mask(CPU_LOG_INT, "...taking UsageFault on new stackframe: "
-                       "failed exception return integrity check\n");
-+        v7m_exception_taken(cpu, excret, false, ignore_stackfaults);
-         return;
-     }
- 
-@@ -7727,7 +7733,6 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
- 
-     ignore_stackfaults = v7m_push_stack(cpu);
-     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
--    qemu_log_mask(CPU_LOG_INT, "... as %d\n", env->v7m.exception);
- }
- 
- /* Function used to synchronize QEMU's AArch64 register set with AArch32
--- 
-2.17.1
-
+r~

@@ -1,151 +1,160 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1813313wru;
-        Thu, 19 Jul 2018 09:31:25 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeao+6dbnRpKHRT7ptqb20vxJC1hJYNSocM9fmDL3E5U7kbMLDN22jWGzLPMzRm6i310i3Z
-X-Received: by 2002:a37:b5c7:: with SMTP id e190-v6mr9710913qkf.384.1532017885878;
-        Thu, 19 Jul 2018 09:31:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532017885; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2236440wru;
+        Thu, 19 Jul 2018 18:22:51 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpff1RIRkKMsZFsbrlq0b5sD6WbHSMgtUejRI4phzymYnKyGMsIKAfA4MRTq1v2uiqIjK8El
+X-Received: by 2002:a37:4a8d:: with SMTP id x135-v6mr12865qka.360.1532049771704;
+        Thu, 19 Jul 2018 18:22:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532049771; cv=none;
         d=google.com; s=arc-20160816;
-        b=ifmCDLVTKsni3d4nvjEXAKDKQgkh3oBv+o80Hs+SaNSqk5jw/TQCFLikAGnFdZoViL
-         HdqLF6Yhaqr1fO3thLUed5LpHKd1z7ssUlOOYFBQPnpAw+GIjJdrLlPtbCOwSzsd4Vgt
-         h71oJZNBOIUzhx0e7ntcMB+CnAwYbyMPG2XPQnk3L7rhD9cEqBkcYqR4dtvcysWdWT7v
-         nbEyu4j7WUKxD/7s6ztC9IXZ2hfvPqQv8gEz0lrUX56n5l1W6u7yLUaJQ/+ZCziEwpWI
-         cYUD0qTGVYBqqt1glwjepGbKI00v/d495X0R7RrT5fmFSw6D/Atn2mgvek33ACkVvQy7
-         ndlg==
+        b=B9s681lz75paho7C0+fd3LsZXa9B0D7sQywHFKw2ZFqhgdIzNkrAtT8liFlWsU0dEW
+         P9mlWsWqnzK+n7F03FqBfiN3V4r+GBYUcrzmc7FNg88AaWD13Cm9rqJMbqvXoesFW4wr
+         L5tiDLn3tzfC95+Fa9sOji0u0ycusWqhjw8HIxsQSwhHmf4T5jWrTphw7g6hjBaJDhbG
+         3s7ttUTnL7FFqryDjRVMI1HHWLVPDNoHpHiOIi5algEZ+Ec9nhWuThkp+iwhMyN+5qdl
+         nupwMKxVnb1vP6gp9lBeKKmkAm511fXE8A0jvHufs/yF6XTZ7YDV84mPjLvdv7plwP09
+         8utw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature
          :arc-authentication-results;
-        bh=guNfC9Pc5wMIAxpQ3btLMDFl0l44hw7HB5kBa4nn8+w=;
-        b=md0sem14/oToWQKU4sogyXMASKJNJESgWQXueYqAHgs5aI2/rKW+aCmQvqUA9unor3
-         QzHz/N+/Js0gOFGQlDpobJorHvSAwEbS4i7w26f/uaHen9fENshrFEnDKNSI9NPpeNcS
-         SC1Y2ZhIJreYfOI3Azths94y+qzgbWjR7UMR2HOThIN1wYCG1ckGG3Bij7zd+Gm/y351
-         BpZ90Qldnri8PhIsuz6wzFQ5IBL5m4/TAMkmyxAIGft2f0ELAPBMxZrEmNxok+lTiDhs
-         tjAN5oO+8S9PFhG28DQ8gewwMCk0X1x/WvvFGwBaR8cf+3YZa9EPA2Eh1RN0oNaImBxh
-         fB3A==
+        bh=MUscP72X3L2g1YnFuL4+pdqwKIBnnzDc0cirk5pGak0=;
+        b=fGmuz/FMsB4P3mSH7JPWp2J8e5qs/KxczNp9TE+ruqebH8qF5qnKqYKZG4m7P6a/4Y
+         WNq9OYA+cHc3STTl6qKMsQr6aXLbGhZPhOiAAHNF3s4Zxupt1EXXfR0QnhvD2qgzMNO7
+         WBlWso1bUKyCG7F3UbntZ6JWrLEjYxmikIeurzMJEeoOvd5s0BU0CIW7Iie+pPfZ7mwC
+         VRxZOQvMwnauu3Rz714Kx1sxbOlxPX6yKOhgT7+VbZj13AgW9qm5Hru8Kum/dlzmM+uu
+         rqbHyIdmnuRbVq95TDMpSbnknTzDzCTxZGPPIRtlZ1wbzculFe95ZV+JKxdDCyhJVvTB
+         1eoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Q0o20bt/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CSOA0kXT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i27-v6si3670132qte.47.2018.07.19.09.31.25
+        by mx.google.com with ESMTPS id r24-v6si594987qtn.77.2018.07.19.18.22.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 19 Jul 2018 09:31:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 19 Jul 2018 18:22:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Q0o20bt/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44177 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CSOA0kXT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45993 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fgBpt-0004xS-6V
-	for alex.bennee@linaro.org; Thu, 19 Jul 2018 12:31:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47010)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fgK8B-00075z-6X
+	for alex.bennee@linaro.org; Thu, 19 Jul 2018 21:22:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38001)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fgBpS-0004wo-2f
-	for qemu-devel@nongnu.org; Thu, 19 Jul 2018 12:30:59 -0400
+	(envelope-from <hejianet@gmail.com>) id 1fgK82-00074d-2f
+	for qemu-arm@nongnu.org; Thu, 19 Jul 2018 21:22:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fgBpR-0008LE-60
-	for qemu-devel@nongnu.org; Thu, 19 Jul 2018 12:30:58 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:39706)
+	(envelope-from <hejianet@gmail.com>) id 1fgK81-0007tU-57
+	for qemu-arm@nongnu.org; Thu, 19 Jul 2018 21:22:42 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:45388)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fgBpP-0008Ko-Tl
-	for qemu-devel@nongnu.org; Thu, 19 Jul 2018 12:30:56 -0400
-Received: by mail-oi0-x241.google.com with SMTP id d189-v6so16080455oib.6
-	for <qemu-devel@nongnu.org>; Thu, 19 Jul 2018 09:30:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=guNfC9Pc5wMIAxpQ3btLMDFl0l44hw7HB5kBa4nn8+w=;
-	b=Q0o20bt/WGPj11GgxVQZCTpjFYOMRCJu1jb9qooI68Wiqir+Bu06PIEri7h0LUbL19
-	wBgk3eLVf5q+lToDXdCMWCuvfhs3P3MDm3+4SlUlmjFoXxG5adFUGeBaCvenZ147T/II
-	Wbg+DrNFikG4sFYQk/A+Wvz+3B1dyizG+pYZ4=
+	(Exim 4.71) (envelope-from <hejianet@gmail.com>)
+	id 1fgK7w-0007jq-PR; Thu, 19 Jul 2018 21:22:36 -0400
+Received: by mail-pg1-x543.google.com with SMTP id f1-v6so5302882pgq.12;
+	Thu, 19 Jul 2018 18:22:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding;
+	bh=MUscP72X3L2g1YnFuL4+pdqwKIBnnzDc0cirk5pGak0=;
+	b=CSOA0kXTVRA9rSn4/MLXyKzXUjyOdMNWRlAOJzeHYABMNUJUCKNrji5PmuAnz3h6Hu
+	srEoSrDGnZr67+3ZtVazwxUmoU6dUnPX4GWRw8kuLw/FVLDL+Dm9EZUMxDqqz+OaACZe
+	Wmedcsn1bXhrmQ1vxH3tKBM28NMMXDGXk3xJaMyuvdlGv51wmWWdT6JdrFcUD5sss63R
+	7ffvJwhc51lN06KJwIg8KLbWcbVhov73agDV1WYPWi41OUSrizdVrJDyhkiv6KI+8IZy
+	TvSpFYXo/XVpIzvu3W2ovkdLN99CbFWGatTJanZ0TXoY6LMKuTJTPqU+xAfETY/C00h6
+	UknA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=guNfC9Pc5wMIAxpQ3btLMDFl0l44hw7HB5kBa4nn8+w=;
-	b=Jeq5lO3ZvndyWMBnpnAIS0DSjvbxmyzT/2MQ7Nrfi4ICozTi2yCE0f9RCrrlbxRIiF
-	GI0PG9ujpjEw9zneaRrDXnzwcr10hJNfvA/Con3NbEyW67bn+T17RYOvT37N6w500kRM
-	OmLk82fDQG023f2Ep6NEa/1vpRpAUiBbPdLM85J1n87hnvOLTh7H9KBIRgOhiO7iNuhm
-	ejy2PCPtuOtP3Q/jGWO4jsrT9izNxcyMqQ7IBvMXmTlt4Gx+8cA+IIKSAJdfAIcnz1Hw
-	yP8vHF0Ka8nYl1aWMXiT+Ln5r9etbu9V3pYaUd1LuAv5O4Ky3TSjJowMDFA0QSIOzQHo
-	5WQA==
-X-Gm-Message-State: AOUpUlGGvckzFIBVr4VrbRwH59vEaWXd6f1WZZnvgU87OtGr2MuBI6uV
-	GnjDzmz45ZJT7t7dGrAXSNMRZUQhO8ogtsztRiEkmw==
-X-Received: by 2002:aca:f5d1:: with SMTP id
-	t200-v6mr11846211oih.12.1532017855179; 
-	Thu, 19 Jul 2018 09:30:55 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding;
+	bh=MUscP72X3L2g1YnFuL4+pdqwKIBnnzDc0cirk5pGak0=;
+	b=KV/mLyKxtQjkSfib5eWfGI0Gg8lLcV2jTcrul6d3E+0A5UlQAc6cdyC+hRh69fR8rv
+	cx0KGxsfFVIGIUD/ysITAd419osDF6BlIHnvHAQPR4cqsncLexCJPTJ+tobG9lq1yLkY
+	hKXY7tPjYzqZe0HPGbRE8fL0bU+R7W3DBNi3Ouw/+sdSTB6xkXdkD82hXzkspwTMvmEY
+	CJH2QiTsL5h+VR+eCLk2Sz5HnrBBmdMS3qA5rND/tSVpAbtTtW7s3TXn2QgOGOMxtfhf
+	AHaTNmJ9Vi2ZW9zcCxnOVSNuPrCrceCAAuVcY+uoUp46sHeEkM2/TSRJGtJBUUhS7G/1
+	Slgg==
+X-Gm-Message-State: AOUpUlFvVBQYidvRQ2423J/eIil5iQazFbHnzz+PaIOkgsBzOJYZwcmK
+	BDkiBtnmzOC7PEeegCkuZRE=
+X-Received: by 2002:a63:1d22:: with SMTP id d34-v6mr5791pgd.133.1532049755729; 
+	Thu, 19 Jul 2018 18:22:35 -0700 (PDT)
+Received: from [0.0.0.0] (65.49.234.56.16clouds.com. [65.49.234.56])
+	by smtp.gmail.com with ESMTPSA id
+	p62-v6sm454229pfb.58.2018.07.19.18.22.31
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 19 Jul 2018 18:22:34 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1531969910-32843-1-git-send-email-jia.he@hxt-semitech.com>
+	<CAFEAcA_2t5z1JBWM9o7ygcOwxnQRba0qA8vVjcoZpcGfP9XUtA@mail.gmail.com>
+From: Jia He <hejianet@gmail.com>
+Message-ID: <055381ef-7f32-1bb3-cae5-df6bfbe2888e@gmail.com>
+Date: Fri, 20 Jul 2018 09:22:33 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 19 Jul 2018 09:30:34
-	-0700 (PDT)
-In-Reply-To: <1f26dbe0-9999-f9ea-103f-d5dde6c52dc0@linaro.org>
-References: <20180716133302.25989-1-peter.maydell@linaro.org>
-	<57aa2f3f-aa32-bcdb-f971-32709e717833@linaro.org>
-	<CAFEAcA8FnSP35scTZmLG6_qFOBsu1wRC0mLq5isz+Y_r907i5w@mail.gmail.com>
-	<1f26dbe0-9999-f9ea-103f-d5dde6c52dc0@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Jul 2018 17:30:34 +0100
-Message-ID: <CAFEAcA-5bunCefm4qKANOqsz1k1vss+tt7y3Y6Gi28hjXorYYA@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA_2t5z1JBWM9o7ygcOwxnQRba0qA8vVjcoZpcGfP9XUtA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-devel] [PATCH for-3.0] target/arm: Correctly handle
- overlapping small MPU regions
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: Re: [Qemu-arm] [PATCH] hw/intc/arm_gicv3_its: downgrade
+ error_report to warn_report in kvm_arm_its_reset
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Adithya Baglody <adithya.nagaraj.baglody@intel.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"patches@linaro.org" <patches@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KRe1VcHTR0eM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jia He <jia.he@hxt-semitech.com>, Eric Auger <eric.auger@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EhZB1QsoI/GN
 
-On 18 July 2018 at 05:02, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> On 07/17/2018 12:40 PM, Peter Maydell wrote:
->> On 17 July 2018 at 18:29, Richard Henderson
->> <richard.henderson@linaro.org> wrote:
->>> I don't understand why this is necessary in the v8m case.
->>>
->>>                AP                 APL
->>>     <----B1----|----L1-B2-A-------|---L2--->
->>>
->>>
->>> Your comment posits two regions [B1,L1] and [B2,L2], that A is not within
->>> [B1,L1] but is within [B2,L2] (otherwise we would not report a hit at all).
->>> Further, that [B1,L1] intersects [AP,APL] but does not intersect [B2,L2]
->>> (otherwise we would report a fault for overlapping regions).
->>>
->>> Surely this combination of ranges implies that [B2,L2] must itself set
->>> IS_SUBPAGE (otherwise the first region would not overlap the page of A, or
->>> would not overlap the second region).
+Hi Peter。 Thanks for the comments
+
+On 7/19/2018 8:41 PM, Peter Maydell Wrote:
+> On 19 July 2018 at 04:11, Jia He <hejianet@gmail.com> wrote:
+>> In scripts/arch-run.bash of kvm-unit-tests, it will check the qemu
+>> output log with:
+>> if [ -z "$(echo "$errors" | grep -vi warning)" ]; then
 >>
->> (a) the overlap fault is only for addresses which are actually in the
->> overlap (ie "you asked about address X and it hits in R1 and R2"); it
->> doesn't imply that other addresses which are only in R1 fault just
->> because some part of R1 overlaps with R2.
->
-> Ah, that wasn't clear from the manual.
+>> Thus without the warning prefix, all of the test fail.
+>>
+>> Since it is not unrecoverable error in kvm_arm_its_reset for
+>> current implementation, downgrading the report from error to
+>> warn makes sense.
+> 
+> I think the counterargument would be that this should report
+> an error, because you just asked the device to do something
+> that it doesn't support (ie to do a clean reset). Since the
+> device isn't going to behave correctly, the tests should fail,
+> and the way to make them pass is to upgrade to a kernel that
+> implements the device correctly (by implementing the necessary
+> feature).
+> 
+> But we could maybe move to warn_report() here -- I'm not
+> sure what our rules are for what counts as an error and
+> what counts as a warning.
+I reviewed the other error_report in qemu. Some of them are followed
+by exit(), but the rest are not. So it seems there is no definite
+rules for error_report.
 
-R_DCHP is the text rule that defines this bit of behaviour
-(generate fault for "an access to an address that matches in more
-than one region"); MPUCheck() is the pseudocode function.
+IMO, the best resolution is to change the output grep search criteria.
+But it is difficult for kvm-unit-tests to identify whether it is an
+error without exit() or a warning. The fastest resolution is moving
+error_report to warn_report.
 
-thanks
--- PMM
+-- 
+Cheers,
+Jia

@@ -1,112 +1,75 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2955625wru;
-        Fri, 20 Jul 2018 09:23:02 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcQbqYCDqovrGz0HwkCEa3muur5xw392of0lCUJYN7dtSoND9ETS8tpvF8rNdnuYnh1TLjg
-X-Received: by 2002:a37:d61b:: with SMTP id t27-v6mr2344695qki.244.1532103782427;
-        Fri, 20 Jul 2018 09:23:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532103782; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3657542wru;
+        Sat, 21 Jul 2018 02:53:10 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfxdYHApemdI03CAKMjl8NKg7k4zWJsaw6I91xoKYN6bgyOkNylfp+SjHv/wT/r8iOkLyQx
+X-Received: by 2002:a37:38c6:: with SMTP id f189-v6mr4798794qka.5.1532166789945;
+        Sat, 21 Jul 2018 02:53:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532166789; cv=none;
         d=google.com; s=arc-20160816;
-        b=H2ce1r26fDpLG3k+VNjYCdC5NbxU6PFe/xfAb0QmYuVa7/YxXKJUf8lDyAdgLzhWwd
-         Zo4UeSNNewOrE6xBv6YKXLNJx8g7isRAh6ze4d1ZKoBBpWfdy/6PummMXw6g80rdMVxp
-         OskWygIOdU/cfVCiQRbYBRQDXb/lu0mw1wE3dVLGzGfoTkEPumLWe9wNYvVONFMFxSGJ
-         r8sJgTKzMohf7B//1DTiZJvbUfIQGOpEW8jVPhgyTUaN37sGkmZpD5/We+T5Fey+Ee/h
-         2nrPKvMr5yhe5L93HIoJb8Yjls361ICP8R74qDLc9MDzalrPZFXRdpyvsBap/iRx9U9q
-         D65Q==
+        b=OqiZPzhOL8DkVdfXEYL70r2F0V0Gxq49d6OtuzCjnj3rBeL/G8EYdIfdryZvfOK2qT
+         i38oDsXpu0BYq6Gdxi7hFKdh2MLKe2RIgf59ol7KxXymwGX/WdBdVieiIEbnhBNix/GO
+         qNK37wQFU3BI7uyt9ZTIKcz3Y6XXXAS/06wOlaUVnJE2pORU7S4vouDJV8iirvzJJIsL
+         IE/tdQOxD+BwrdZpFPlQEcjK7aMl6PEuWmgZwfkVFnvXo4ABu3LB7VcWKnh0xQ0o9I7H
+         JQxHoVT1QSVpvF4D2AUpgG1Cw1HZg81J1m7wSTGS9STpRkZtXW7v/fUFyZEDRij0n+jk
+         7omA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=/fLsyWXiwsdnsi0R45GAwYr7un0IbNIJOXF1ZJyg/DA=;
-        b=hEi0tte6IT0nLIS2MdrgV/JQmRk+BUVDpajr+3qJfsp3SFa+SYedCQSK2K6bdQadOp
-         9Y8rZh95LJC1FmWHvd71Qe5edJ0siblAsHLz25Ga3jQulqVfB3If+BMQ0q26N6x8FI3j
-         3Dio/qcim1gW3Yc5Wpq7eMSl7G9Nbskap+BDfKttIN3gjEASIBCaGiScEEq+lPYLZ1cC
-         B5fMSzi40OTLVFQC3IrLLlGkF9n4TIrH97KpcZ/uEPJ/OBqRcS3BBS9t9fqbfghW6Ayr
-         4GFk1FS0J8zI/KT0BS3nAzMxf2KKojd3cw9QGwsx6sgfFILBP1OhRCISYCsa1V8076Y8
-         /NNw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=mnWsqXfn6Jq6ZiaX/Pfkj5hX49D8b2p2crld3ZC5BnM=;
+        b=XVnyPKH8jfXcEbbnFXRnH9HzSSwYwSzUUsHWH4ZEfuh3o/Cn3dPqNFUu/xYchMhbmJ
+         oZkvIz2cA9kaCUqaSLMloR6yqsJyoKrA5sYg7QnQcPADWU0++ZDOee1Scy/qSs20nrLU
+         6N/SP6HxhwzZ7OCdvxMukf2K9TdCmkqCF8ifrqFFMZ7hw5Sks4O2+QTR4+1mqS+iBntf
+         i/3Kb3ZSeskCfQw50S8JHMSr+q//p4JoU18SusG+xbkrtIOWb4c5XNDoEk1AqX++/h+j
+         8Hc8bUHDrfAY/zdBUaaYnGMmRt4zkMtMleT0qR5HTP2T250M5gdJKxDv8dO2XonZ5VLN
+         vx6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RBaPrlZ3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i32-v6si2210512qtf.352.2018.07.20.09.23.02
+        by mx.google.com with ESMTPS id k66-v6si3968587qkb.65.2018.07.21.02.53.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 20 Jul 2018 09:23:02 -0700 (PDT)
+        Sat, 21 Jul 2018 02:53:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RBaPrlZ3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48966 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51317 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fgYBJ-0005KI-VG
-	for alex.bennee@linaro.org; Fri, 20 Jul 2018 12:23:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39989)
+	id 1fgoZZ-000675-C2
+	for alex.bennee@linaro.org; Sat, 21 Jul 2018 05:53:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33753)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fgYBB-0005J7-G1
-	for qemu-arm@nongnu.org; Fri, 20 Jul 2018 12:22:54 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1fgoZL-00066Z-RE
+	for qemu-arm@nongnu.org; Sat, 21 Jul 2018 05:52:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fgYB9-0003zv-Lo
-	for qemu-arm@nongnu.org; Fri, 20 Jul 2018 12:22:53 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:39821)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fgYB9-0003za-DQ
-	for qemu-arm@nongnu.org; Fri, 20 Jul 2018 12:22:51 -0400
-Received: by mail-pg1-x542.google.com with SMTP id g2-v6so7295081pgs.6
-	for <qemu-arm@nongnu.org>; Fri, 20 Jul 2018 09:22:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=/fLsyWXiwsdnsi0R45GAwYr7un0IbNIJOXF1ZJyg/DA=;
-	b=RBaPrlZ3GPlBXDDPVu11+zTRSKDiJIfqf/chR07+5bleiCWNEbRR04wiG2luh8tUPf
-	O3Ja1UtP88rUhxJzap66CafplJu1hsRbL9N5lkgNBCXbZfjOyGEpiA/PCCRMUE0D5oe8
-	S7EAwKkvg6MtjPWqnYtwucnjQK4xwqMH46+a0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=/fLsyWXiwsdnsi0R45GAwYr7un0IbNIJOXF1ZJyg/DA=;
-	b=tpqSzkeodifZX3OlCNE8eA+B2u85EfoiE47sB1PVYoGPQ9kUzAOATbHC/sD5X+CWNW
-	DBaass94iZj4bw+4BjKYRn/ePHZYmeMge3Qi5MdoIqLdcaZrUdg0qaZiPgYDeVx67USA
-	/OOLz9lcDpadjjjcLeGX3TPkv5yu82RGvYXxz+ftr4ZFSHov2IveeDZ3ZBxkdr6WkTp/
-	7Hlt2I+vUQTAbG/zFVqYHzwkW3Hrp2QX3yEYKELkYM9/PCULkavgDw29wEwUFUUPHxfb
-	UZFd57hGnyI7o/3jd+nIs3zSJPZTgNX7iqFNZcbWAAKv7shWM2iPnvZBoK7nl6hT3lZd
-	5S+g==
-X-Gm-Message-State: AOUpUlFm1wSQQNd7472huBbqCbd5tPb5Gpyial03ntL2aRXUwfxGHHoa
-	yc3VGkApK703pgMaxf3iuWGaCg==
-X-Received: by 2002:a65:4c02:: with SMTP id
-	u2-v6mr2779820pgq.364.1532103770427; 
-	Fri, 20 Jul 2018 09:22:50 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
-	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	z11-v6sm6847829pff.162.2018.07.20.09.22.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 20 Jul 2018 09:22:49 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180720145647.8810-1-peter.maydell@linaro.org>
-	<20180720145647.8810-5-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <72aa0d1f-92ad-1cdb-84b7-1649b03a54ff@linaro.org>
-Date: Fri, 20 Jul 2018 09:22:47 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <gengdongjiu@huawei.com>) id 1fgoZI-0007Yt-RC
+	for qemu-arm@nongnu.org; Sat, 21 Jul 2018 05:52:55 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2555 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1fgoZI-0007XC-Cm; Sat, 21 Jul 2018 05:52:52 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id 115EB5F9773A6;
+	Sat, 21 Jul 2018 17:52:30 +0800 (CST)
+Received: from localhost.localdomain (10.143.28.90) by
+	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
+	id 14.3.382.0; Sat, 21 Jul 2018 17:52:25 +0800
+From: Dongjiu Geng <gengdongjiu@huawei.com>
+To: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Date: Sat, 21 Jul 2018 13:57:43 -0400
+Message-ID: <1532195863-23945-4-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1532195863-23945-1-git-send-email-gengdongjiu@huawei.com>
+References: <1532195863-23945-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20180720145647.8810-5-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/4] target/arm: Implement
- tailchaining for M profile cores
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.90]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 45.249.212.191
+Subject: [Qemu-arm] [PATCH v5 3/3] target: arm: Add support for VCPU event
+ states
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,37 +81,187 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: linuxarm@huawei.com, gengdongjiu@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: As1WAsMg0eql
+X-TUID: X71zUh+fK03v
 
-On 07/20/2018 07:56 AM, Peter Maydell wrote:
-> Tailchaining is an optimization in handling of exception return
-> for M-profile cores: if we are about to pop the exception stack
-> for an exception return, but there is a pending exception which
-> is higher priority than the priority we are returning to, then
-> instead of unstacking and then immediately taking the exception
-> and stacking registers again, we can chain to the pending
-> exception without unstacking and stacking.
-> 
-> For v6M and v7M it is IMPDEF whether tailchaining happens for pending
-> exceptions; for v8M this is architecturally required.  Implement it
-> in QEMU for all M-profile cores, since in practice v6M and v7M
-> hardware implementations generally do have it.
-> 
-> (We were already doing tailchaining for derived exceptions which
-> happened during exception return, like the validity checks and
-> stack access failures; these have always been required to be
-> tailchained for all versions of the architecture.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/helper.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
+This patch extends the qemu-kvm state sync logic with support for
+KVM_GET/SET_VCPU_EVENTS, giving access to yet missing SError exception.
+And also it can support the exception state migration.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+change since v4:
+1. Rebase the code to latest
 
+change since v3:
+1. Add a new new subsection with a suitable 'ras_needed' function
+   controlling whether it is present
+2. Add a ARM_FEATURE_RAS feature bit for CPUARMState
 
-r~
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+ target/arm/cpu.h     |  6 ++++++
+ target/arm/kvm64.c   | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/machine.c | 22 ++++++++++++++++++++
+ 3 files changed, 87 insertions(+)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index e310ffc..f00f0b6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -645,6 +645,11 @@ typedef struct CPUARMState {
+     const struct arm_boot_info *boot_info;
+     /* Store GICv3CPUState to access from this struct */
+     void *gicv3state;
++    struct {
++        uint32_t pending;
++        uint32_t has_esr;
++        uint64_t esr;
++    } serror;
+ } CPUARMState;
+ 
+ /**
+@@ -1486,6 +1491,7 @@ enum arm_features {
+     ARM_FEATURE_V8_FP16, /* implements v8.2 half-precision float */
+     ARM_FEATURE_V8_FCMA, /* has complex number part of v8.3 extensions.  */
+     ARM_FEATURE_M_MAIN, /* M profile Main Extension */
++    ARM_FEATURE_RAS_EXT, /* has RAS Extension */
+ };
+ 
+ static inline int arm_feature(CPUARMState *env, int feature)
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index e0b8246..ebf7a00 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -527,6 +527,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         unset_feature(&env->features, ARM_FEATURE_PMU);
+     }
+ 
++    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_INJECT_SERROR_ESR)) {
++        set_feature(&env->features, ARM_FEATURE_RAS_EXT);
++    }
++
+     /* Do KVM_ARM_VCPU_INIT ioctl */
+     ret = kvm_arm_vcpu_init(cs);
+     if (ret) {
+@@ -600,6 +604,50 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+ #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
+                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+ 
++static int kvm_put_vcpu_events(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    struct kvm_vcpu_events events = {};
++
++    if (!kvm_has_vcpu_events()) {
++        return 0;
++    }
++
++    memset(&events, 0, sizeof(events));
++    events.exception.serror_pending = env->serror.pending;
++
++    if (arm_feature(env, ARM_FEATURE_RAS_EXT)) {
++        events.exception.serror_has_esr = env->serror.has_esr;
++        events.exception.serror_esr = env->serror.esr;
++    }
++
++    return kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
++}
++
++static int kvm_get_vcpu_events(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    struct kvm_vcpu_events events;
++    int ret;
++
++    if (!kvm_has_vcpu_events()) {
++        return 0;
++    }
++
++    memset(&events, 0, sizeof(events));
++    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_VCPU_EVENTS, &events);
++
++    if (ret < 0) {
++        return ret;
++    }
++
++    env->serror.pending = events.exception.serror_pending;
++    env->serror.has_esr = events.exception.serror_has_esr;
++    env->serror.esr = events.exception.serror_esr;
++
++    return 0;
++}
++
+ int kvm_arch_put_registers(CPUState *cs, int level)
+ {
+     struct kvm_one_reg reg;
+@@ -727,6 +775,12 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
++    ret = kvm_put_vcpu_events(cpu);
++    if (ret) {
++        printf("return error kvm_put_vcpu_events: %d\n", ret);
++        return ret;
++    }
++
+     if (!write_list_to_kvmstate(cpu, level)) {
+         return EINVAL;
+     }
+@@ -863,6 +917,11 @@ int kvm_arch_get_registers(CPUState *cs)
+     }
+     vfp_set_fpcr(env, fpr);
+ 
++    ret = kvm_get_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     if (!write_kvmstate_to_list(cpu)) {
+         return EINVAL;
+     }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 2e28d08..ead8b2a 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -172,6 +172,27 @@ static const VMStateDescription vmstate_sve = {
+ };
+ #endif /* AARCH64 */
+ 
++static bool ras_needed(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++
++    return arm_feature(env, ARM_FEATURE_RAS_EXT);
++}
++
++static const VMStateDescription vmstate_ras = {
++    .name = "cpu/ras",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = ras_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(env.serror.pending, ARMCPU),
++        VMSTATE_UINT32(env.serror.has_esr, ARMCPU),
++        VMSTATE_UINT64(env.serror.esr, ARMCPU),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static bool m_needed(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+@@ -723,6 +744,7 @@ const VMStateDescription vmstate_arm_cpu = {
+ #ifdef TARGET_AARCH64
+         &vmstate_sve,
+ #endif
++        &vmstate_ras,
+         NULL
+     }
+ };
+-- 
+1.8.3.1
 

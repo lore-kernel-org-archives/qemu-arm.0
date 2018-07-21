@@ -1,64 +1,64 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3657542wru;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3657554wru;
+        Sat, 21 Jul 2018 02:53:11 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdTCwvg7uy8sm+wZ9yvFcbhUBPqx8MYFcAaXQyx1LUwj5oqA29C9HUmf1V0Zq/iBj/472GW
+X-Received: by 2002:ae9:edc5:: with SMTP id c188-v6mr4630208qkg.92.1532166790925;
         Sat, 21 Jul 2018 02:53:10 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfxdYHApemdI03CAKMjl8NKg7k4zWJsaw6I91xoKYN6bgyOkNylfp+SjHv/wT/r8iOkLyQx
-X-Received: by 2002:a37:38c6:: with SMTP id f189-v6mr4798794qka.5.1532166789945;
-        Sat, 21 Jul 2018 02:53:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532166789; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1532166790; cv=none;
         d=google.com; s=arc-20160816;
-        b=OqiZPzhOL8DkVdfXEYL70r2F0V0Gxq49d6OtuzCjnj3rBeL/G8EYdIfdryZvfOK2qT
-         i38oDsXpu0BYq6Gdxi7hFKdh2MLKe2RIgf59ol7KxXymwGX/WdBdVieiIEbnhBNix/GO
-         qNK37wQFU3BI7uyt9ZTIKcz3Y6XXXAS/06wOlaUVnJE2pORU7S4vouDJV8iirvzJJIsL
-         IE/tdQOxD+BwrdZpFPlQEcjK7aMl6PEuWmgZwfkVFnvXo4ABu3LB7VcWKnh0xQ0o9I7H
-         JQxHoVT1QSVpvF4D2AUpgG1Cw1HZg81J1m7wSTGS9STpRkZtXW7v/fUFyZEDRij0n+jk
-         7omA==
+        b=Y/gS96Un82Ijn2paMDcjth5j0vlbUX/w+aYcO7jCKXyWDsEHLHL1w6VcjeqPmbwlQi
+         C4xaS36nn/M6Ey1PCjswRDMpNMZnTUBhtVGAkgP2Bfd5/T8Qq2CivPoGQpYuMuR6H2PN
+         i9Ao7SiCmfu3bK2qmJSecnZp93vRA93ururYMIfNbh3NC+fRfurln8PNPBEUaefyzUFC
+         sjm9BSUeDlSANgwP2yfRuXk5ackAlxoijy4OXmvLXRQ01GOqEOHR7vQYB7paRRCIk3nZ
+         9TXhZ6U/b7sVaUDT/aXbIuVZyaKmk0McKIbxdKXKmlH5tEQ8PPJKKYv2I8EV8LhAvTjl
+         /yOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from:arc-authentication-results;
-        bh=mnWsqXfn6Jq6ZiaX/Pfkj5hX49D8b2p2crld3ZC5BnM=;
-        b=XVnyPKH8jfXcEbbnFXRnH9HzSSwYwSzUUsHWH4ZEfuh3o/Cn3dPqNFUu/xYchMhbmJ
-         oZkvIz2cA9kaCUqaSLMloR6yqsJyoKrA5sYg7QnQcPADWU0++ZDOee1Scy/qSs20nrLU
-         6N/SP6HxhwzZ7OCdvxMukf2K9TdCmkqCF8ifrqFFMZ7hw5Sks4O2+QTR4+1mqS+iBntf
-         i/3Kb3ZSeskCfQw50S8JHMSr+q//p4JoU18SusG+xbkrtIOWb4c5XNDoEk1AqX++/h+j
-         8Hc8bUHDrfAY/zdBUaaYnGMmRt4zkMtMleT0qR5HTP2T250M5gdJKxDv8dO2XonZ5VLN
-         vx6A==
+        bh=gSsdin4xXdpMfuDjCLTy/i6EhbQi3fbkphR0mSt+3tQ=;
+        b=jgM/0Cu55WBiTAzcGscQPiHpANg5BEjJUJx3T+L4gbkwZIUeiu5hj1lhefpjNBXhdc
+         Y2Uc8a4ad+L92P2wXCgXD/09Ztp5PkhHDm3Lq53OkXmyDa8AjQgKEhlbvmEFud9eUcbQ
+         VatB7zxYB+r2s68SMIqrg6Y4Nm7e2nNVEg1BbSpRRSDqvzkdS07+8JY7zB7sMfgL7I6t
+         fS5OY3E5S2GC6AmWCzSfUiPKGDRs7MwdBduzjTxv26Sx7GkW5b3EhdMIgOjCiPrc5AQu
+         7KlJTd7x3HjZ7cWOX8hd2XXod6NPLmaOXFn95XaFo754yaRxoFBkdfo4IbQx5n5LIndB
+         HP6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k66-v6si3968587qkb.65.2018.07.21.02.53.09
+        by mx.google.com with ESMTPS id r15-v6si4193771qkk.145.2018.07.21.02.53.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 21 Jul 2018 02:53:09 -0700 (PDT)
+        Sat, 21 Jul 2018 02:53:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51317 helo=lists.gnu.org)
+Received: from localhost ([::1]:51318 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fgoZZ-000675-C2
-	for alex.bennee@linaro.org; Sat, 21 Jul 2018 05:53:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33753)
+	id 1fgoZa-00067G-Bt
+	for alex.bennee@linaro.org; Sat, 21 Jul 2018 05:53:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33751)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1fgoZL-00066Z-RE
+	(envelope-from <gengdongjiu@huawei.com>) id 1fgoZL-00066Y-Qp
 	for qemu-arm@nongnu.org; Sat, 21 Jul 2018 05:52:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1fgoZI-0007Yt-RC
+	(envelope-from <gengdongjiu@huawei.com>) id 1fgoZJ-0007Z1-Gn
 	for qemu-arm@nongnu.org; Sat, 21 Jul 2018 05:52:55 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2555 helo=huawei.com)
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2557 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1fgoZI-0007XC-Cm; Sat, 21 Jul 2018 05:52:52 -0400
+	id 1fgoZI-0007XE-Co; Sat, 21 Jul 2018 05:52:53 -0400
 Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
-	by Forcepoint Email with ESMTP id 115EB5F9773A6;
+	by Forcepoint Email with ESMTP id 0300E6A9DA6B6;
 	Sat, 21 Jul 2018 17:52:30 +0800 (CST)
 Received: from localhost.localdomain (10.143.28.90) by
 	DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server
-	id 14.3.382.0; Sat, 21 Jul 2018 17:52:25 +0800
+	id 14.3.382.0; Sat, 21 Jul 2018 17:52:24 +0800
 From: Dongjiu Geng <gengdongjiu@huawei.com>
 To: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Date: Sat, 21 Jul 2018 13:57:43 -0400
-Message-ID: <1532195863-23945-4-git-send-email-gengdongjiu@huawei.com>
+Date: Sat, 21 Jul 2018 13:57:42 -0400
+Message-ID: <1532195863-23945-3-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1532195863-23945-1-git-send-email-gengdongjiu@huawei.com>
 References: <1532195863-23945-1-git-send-email-gengdongjiu@huawei.com>
@@ -68,8 +68,7 @@ X-Originating-IP: [10.143.28.90]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 45.249.212.191
-Subject: [Qemu-arm] [PATCH v5 3/3] target: arm: Add support for VCPU event
- states
+Subject: [Qemu-arm] [PATCH v5 2/3] kvm: sync linux headers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,184 +83,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: linuxarm@huawei.com, gengdongjiu@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X71zUh+fK03v
+X-TUID: +Ujarq6WpMkH
 
-This patch extends the qemu-kvm state sync logic with support for
-KVM_GET/SET_VCPU_EVENTS, giving access to yet missing SError exception.
-And also it can support the exception state migration.
+Import KVM_CAP_ARM_INJECT_SERROR_ESR and kvm_vcpu_events
+struct definition.
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
----
-change since v4:
-1. Rebase the code to latest
-
-change since v3:
-1. Add a new new subsection with a suitable 'ras_needed' function
-   controlling whether it is present
-2. Add a ARM_FEATURE_RAS feature bit for CPUARMState
+The related kernel change has been already applied to kvmarm/next.
+(https://git.kernel.org/pub/scm/linux/kernel/git/kvmarm/kvmarm.git/log/?h=next)
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
- target/arm/cpu.h     |  6 ++++++
- target/arm/kvm64.c   | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/machine.c | 22 ++++++++++++++++++++
- 3 files changed, 87 insertions(+)
+ linux-headers/asm-arm/kvm.h   | 13 +++++++++++++
+ linux-headers/asm-arm64/kvm.h | 13 +++++++++++++
+ linux-headers/linux/kvm.h     |  1 +
+ 3 files changed, 27 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e310ffc..f00f0b6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -645,6 +645,11 @@ typedef struct CPUARMState {
-     const struct arm_boot_info *boot_info;
-     /* Store GICv3CPUState to access from this struct */
-     void *gicv3state;
-+    struct {
-+        uint32_t pending;
-+        uint32_t has_esr;
-+        uint64_t esr;
-+    } serror;
- } CPUARMState;
+diff --git a/linux-headers/asm-arm/kvm.h b/linux-headers/asm-arm/kvm.h
+index 72aa226..e1f8b74 100644
+--- a/linux-headers/asm-arm/kvm.h
++++ b/linux-headers/asm-arm/kvm.h
+@@ -27,6 +27,7 @@
+ #define __KVM_HAVE_GUEST_DEBUG
+ #define __KVM_HAVE_IRQ_LINE
+ #define __KVM_HAVE_READONLY_MEM
++#define __KVM_HAVE_VCPU_EVENTS
  
- /**
-@@ -1486,6 +1491,7 @@ enum arm_features {
-     ARM_FEATURE_V8_FP16, /* implements v8.2 half-precision float */
-     ARM_FEATURE_V8_FCMA, /* has complex number part of v8.3 extensions.  */
-     ARM_FEATURE_M_MAIN, /* M profile Main Extension */
-+    ARM_FEATURE_RAS_EXT, /* has RAS Extension */
+ #define KVM_COALESCED_MMIO_PAGE_OFFSET 1
+ 
+@@ -125,6 +126,18 @@ struct kvm_sync_regs {
+ struct kvm_arch_memory_slot {
  };
  
- static inline int arm_feature(CPUARMState *env, int feature)
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index e0b8246..ebf7a00 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -527,6 +527,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         unset_feature(&env->features, ARM_FEATURE_PMU);
-     }
- 
-+    if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_INJECT_SERROR_ESR)) {
-+        set_feature(&env->features, ARM_FEATURE_RAS_EXT);
-+    }
-+
-     /* Do KVM_ARM_VCPU_INIT ioctl */
-     ret = kvm_arm_vcpu_init(cs);
-     if (ret) {
-@@ -600,6 +604,50 @@ int kvm_arm_cpreg_level(uint64_t regidx)
- #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
-                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
- 
-+static int kvm_put_vcpu_events(ARMCPU *cpu)
-+{
-+    CPUARMState *env = &cpu->env;
-+    struct kvm_vcpu_events events = {};
-+
-+    if (!kvm_has_vcpu_events()) {
-+        return 0;
-+    }
-+
-+    memset(&events, 0, sizeof(events));
-+    events.exception.serror_pending = env->serror.pending;
-+
-+    if (arm_feature(env, ARM_FEATURE_RAS_EXT)) {
-+        events.exception.serror_has_esr = env->serror.has_esr;
-+        events.exception.serror_esr = env->serror.esr;
-+    }
-+
-+    return kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
-+}
-+
-+static int kvm_get_vcpu_events(ARMCPU *cpu)
-+{
-+    CPUARMState *env = &cpu->env;
-+    struct kvm_vcpu_events events;
-+    int ret;
-+
-+    if (!kvm_has_vcpu_events()) {
-+        return 0;
-+    }
-+
-+    memset(&events, 0, sizeof(events));
-+    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_VCPU_EVENTS, &events);
-+
-+    if (ret < 0) {
-+        return ret;
-+    }
-+
-+    env->serror.pending = events.exception.serror_pending;
-+    env->serror.has_esr = events.exception.serror_has_esr;
-+    env->serror.esr = events.exception.serror_esr;
-+
-+    return 0;
-+}
-+
- int kvm_arch_put_registers(CPUState *cs, int level)
- {
-     struct kvm_one_reg reg;
-@@ -727,6 +775,12 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-         return ret;
-     }
- 
-+    ret = kvm_put_vcpu_events(cpu);
-+    if (ret) {
-+        printf("return error kvm_put_vcpu_events: %d\n", ret);
-+        return ret;
-+    }
-+
-     if (!write_list_to_kvmstate(cpu, level)) {
-         return EINVAL;
-     }
-@@ -863,6 +917,11 @@ int kvm_arch_get_registers(CPUState *cs)
-     }
-     vfp_set_fpcr(env, fpr);
- 
-+    ret = kvm_get_vcpu_events(cpu);
-+    if (ret) {
-+        return ret;
-+    }
-+
-     if (!write_kvmstate_to_list(cpu)) {
-         return EINVAL;
-     }
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 2e28d08..ead8b2a 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -172,6 +172,27 @@ static const VMStateDescription vmstate_sve = {
- };
- #endif /* AARCH64 */
- 
-+static bool ras_needed(void *opaque)
-+{
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+
-+    return arm_feature(env, ARM_FEATURE_RAS_EXT);
-+}
-+
-+static const VMStateDescription vmstate_ras = {
-+    .name = "cpu/ras",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = ras_needed,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32(env.serror.pending, ARMCPU),
-+        VMSTATE_UINT32(env.serror.has_esr, ARMCPU),
-+        VMSTATE_UINT64(env.serror.esr, ARMCPU),
-+        VMSTATE_END_OF_LIST()
-+    }
++/* for KVM_GET/SET_VCPU_EVENTS */
++struct kvm_vcpu_events {
++	struct {
++		__u8 serror_pending;
++		__u8 serror_has_esr;
++		/* Align it to 8 bytes */
++		__u8 pad[6];
++		__u64 serror_esr;
++	} exception;
++	__u32 reserved[12];
 +};
 +
- static bool m_needed(void *opaque)
- {
-     ARMCPU *cpu = opaque;
-@@ -723,6 +744,7 @@ const VMStateDescription vmstate_arm_cpu = {
- #ifdef TARGET_AARCH64
-         &vmstate_sve,
- #endif
-+        &vmstate_ras,
-         NULL
-     }
+ /* If you need to interpret the index values, here is the key: */
+ #define KVM_REG_ARM_COPROC_MASK		0x000000000FFF0000
+ #define KVM_REG_ARM_COPROC_SHIFT	16
+diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
+index 99cb9ad..e6a98c1 100644
+--- a/linux-headers/asm-arm64/kvm.h
++++ b/linux-headers/asm-arm64/kvm.h
+@@ -39,6 +39,7 @@
+ #define __KVM_HAVE_GUEST_DEBUG
+ #define __KVM_HAVE_IRQ_LINE
+ #define __KVM_HAVE_READONLY_MEM
++#define __KVM_HAVE_VCPU_EVENTS
+ 
+ #define KVM_COALESCED_MMIO_PAGE_OFFSET 1
+ 
+@@ -154,6 +155,18 @@ struct kvm_sync_regs {
+ struct kvm_arch_memory_slot {
  };
+ 
++/* for KVM_GET/SET_VCPU_EVENTS */
++struct kvm_vcpu_events {
++	struct {
++		__u8 serror_pending;
++		__u8 serror_has_esr;
++		/* Align it to 8 bytes */
++		__u8 pad[6];
++		__u64 serror_esr;
++	} exception;
++	__u32 reserved[12];
++};
++
+ /* If you need to interpret the index values, here is the key: */
+ #define KVM_REG_ARM_COPROC_MASK		0x000000000FFF0000
+ #define KVM_REG_ARM_COPROC_SHIFT	16
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index 98f389a..446f694 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -949,6 +949,7 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_GET_MSR_FEATURES 153
+ #define KVM_CAP_HYPERV_EVENTFD 154
+ #define KVM_CAP_HYPERV_TLBFLUSH 155
++#define KVM_CAP_ARM_INJECT_SERROR_ESR 156
+ 
+ #ifdef KVM_CAP_IRQ_ROUTING
+ 
 -- 
 1.8.3.1
 

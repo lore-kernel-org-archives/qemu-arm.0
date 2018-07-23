@@ -1,88 +1,89 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5641390wru;
-        Mon, 23 Jul 2018 06:10:28 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcUvPFlI1k5+hAYkIFJn42zMIPCW7pmnxPmaA+xsR9/d9fEiNdsb3N6V61mWvVgTqmVaNge
-X-Received: by 2002:aed:3aa4:: with SMTP id o33-v6mr11987243qte.359.1532351427998;
-        Mon, 23 Jul 2018 06:10:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532351427; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5659483wru;
+        Mon, 23 Jul 2018 06:28:55 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfTjg2IDWarQeLqdw9y+NCEvxsow5t9DupRzzi1KsALGVinuFt5oyX1ye2LruHRbAJjVZ5r
+X-Received: by 2002:a37:85c5:: with SMTP id h188-v6mr11057219qkd.80.1532352535809;
+        Mon, 23 Jul 2018 06:28:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532352535; cv=none;
         d=google.com; s=arc-20160816;
-        b=f3GO2YzorOea48VqguSHTSMCloz8qd+6/Wont1FLYLlT8iIwsbsA3ja4JUzCtK86bU
-         3zuunFjxijhcyzSOEceJpMMOCXfgGYdbr4qgznOamNZkgyfGfqEbPgXd4HkJWszNZrRI
-         S6TMGez89JoXtdyIt/egmi/G+yMwv0udfChMBDGgfz52ryT1AKFOaXPWwrmEVHI2HJtZ
-         anmZknRSLyIp+2SrTyeaFD+7cOY8CKhWU5QA3v8EjYSE4ViHOihO/ye+rVApVfEbjI70
-         aaUKHDYiULdL3YBTbU7a8h0wK/9fThJYeL59HLZpwboNMLQigjo+y13ckj4/SwR1wcYK
-         OSxA==
+        b=bY0AAlTCY3MPdNUXnef/hdPhargHV20KdLa5RQhvayGA8iiPd08oNGC6UGSzI7xL7/
+         dWqA0V1OkPbP+r38FFpTGkL6CNQO/3n5RqcYB0BmtZxtm5gVR/TmGomchASvvVDfFmo6
+         qTVJxDjwc0gNk4ci6KJU2KU1jIjiFnqv9Ztt5zsbWviNCgnisWfaGshU6Gj4QEgk4S8J
+         zAN4gA7Pgf0xfCuIu1yk+lTBVy1uaC8VG0w0DIbVUyLLn1GKILghfJNvnL7zoTHsCz5r
+         Y0zXm0ncK3y/01YSAov7CpfIYw06edxgHTHNP88tY4pyorrJRqqLR11F2Acfli7CgO/A
+         t0sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date:arc-authentication-results;
-        bh=+Y1dx9xfgwA2dyGmWRj2Ie5D5AD7LFgnpZpIhv2jt+k=;
-        b=M6aSV9oK0a+fZK4FnvflvfX8JVbvkRCybdGinDqtGwuCzY3WmVEyEFOzx7Gx+mFoJT
-         bnoTn49XXCov5aJmPBY3OWFQYDPNaGX3bOBMV1nsnzNWD/6amx2+2tWdMin6pa92p72N
-         3w3A2g4AOqfY22X5bgxnh3qcysIxBaNf8lj2cg28+C3pzV2dGbSmRp76iKD1e1TkKJwt
-         beDNdylhuGzgxffz12WCo57vhwffF7ktcOw4XSlEvAXviocmgXC+PFS7O18zDFECd5vk
-         3TFcH5LFIQNcgP0CQfAAFhxcH986bDWJnM+ZurSNZtnbkoh2RjHnhtu4H4f+tNyYHctz
-         3/uA==
+        bh=oo8ZBirqtP8rl9JsJbl2W8dMliHTnWxXOJxhcKU7d34=;
+        b=Q/e5B3XsMXQ94XqJQGCKnEc1TPSYOaGnaMugVn13kNZmoJT1sbHN+3GtINegSAvAuv
+         +ckXUTqW1oQzB8T9XO0PwXUSxBfrWvc2pCLEyqu1YKpDRaxAfxEhBtmKcy4+wDA0XR4N
+         Ig/xn1HlIbd3e+ZG3q1X080Fuwrg6SFY7PzLtZ+v86UOWH6jBKG4Y/34dNYDgOqBHmRy
+         /WvdW9Oz6FVP3WvYlTiZca9zFuSB2EeiG8cybXCPiBM75/6MfN0VPNAXeejHrdeltum9
+         20flHF1LcMOSMOrBdZ7OZX75QO34k/5A+NAd+oqwV1GZOfbn0M+4B6goFRydgxa9R8N6
+         NZdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h128-v6si8626863qkc.16.2018.07.23.06.10.27
+        by mx.google.com with ESMTPS id v16-v6si3911478qvk.273.2018.07.23.06.28.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Jul 2018 06:10:27 -0700 (PDT)
+        Mon, 23 Jul 2018 06:28:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34559 helo=lists.gnu.org)
+Received: from localhost ([::1]:34649 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fhabb-0001Pp-G8
-	for alex.bennee@linaro.org; Mon, 23 Jul 2018 09:10:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47519)
+	id 1fhatT-0000yq-CC
+	for alex.bennee@linaro.org; Mon, 23 Jul 2018 09:28:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52668)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1fhabU-0001Nz-CM
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 09:10:21 -0400
+	(envelope-from <imammedo@redhat.com>) id 1fhatM-0000yk-5X
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 09:28:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1fhabO-0003lY-9F
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 09:10:20 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33986 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1fhatI-0003Iw-4r
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 09:28:48 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51884 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1fhabO-0003lR-2n; Mon, 23 Jul 2018 09:10:14 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fhatH-0003IL-V1; Mon, 23 Jul 2018 09:28:44 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 63E254059FE3;
-	Mon, 23 Jul 2018 13:10:13 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BFD8287A74;
+	Mon, 23 Jul 2018 13:28:42 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 30B2A2026D65;
-	Mon, 23 Jul 2018 13:10:12 +0000 (UTC)
-Date: Mon, 23 Jul 2018 15:10:10 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 39588111AF23;
+	Mon, 23 Jul 2018 13:28:38 +0000 (UTC)
+Date: Mon, 23 Jul 2018 15:28:36 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20180723151010.7b4bfd8c@redhat.com>
-In-Reply-To: <20180704124923.32483-4-drjones@redhat.com>
+Message-ID: <20180723152836.47d3047f@redhat.com>
+In-Reply-To: <20180704124923.32483-5-drjones@redhat.com>
 References: <20180704124923.32483-1-drjones@redhat.com>
-	<20180704124923.32483-4-drjones@redhat.com>
+	<20180704124923.32483-5-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Mon, 23 Jul 2018 13:10:13 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 23 Jul 2018 13:10:13 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.1]);
+	Mon, 23 Jul 2018 13:28:42 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Mon, 23 Jul 2018 13:28:42 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC PATCH 3/6] hw/arm/virt: DT: add cpu-map
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 4/6] hw/arm/virt-acpi-build:
+ distinguish possible and present cpus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,110 +99,89 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
 	eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 95c2ZwPeCorI
+X-TUID: UtaWQRnCkwef
 
-On Wed,  4 Jul 2018 14:49:20 +0200
+On Wed,  4 Jul 2018 14:49:21 +0200
 Andrew Jones <drjones@redhat.com> wrote:
 
-> Support devicetree CPU topology descriptions.
+> When building ACPI tables regarding CPUs we should always build
+> them for the number of possible CPUs, not the number of present
+> CPUs. We then ensure only the present CPUs are enabled.
 > 
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
 > ---
->  hw/arm/virt.c         | 35 +++++++++++++++++++++++++++++++++++
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 36 insertions(+)
+>  hw/arm/virt-acpi-build.c | 20 +++++++++++++++-----
+>  1 file changed, 15 insertions(+), 5 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 880441275031..6c5fecdd61df 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -40,6 +40,7 @@
->  #include "hw/devices.h"
->  #include "net/net.h"
->  #include "sysemu/device_tree.h"
-> +#include "sysemu/cpus.h"
->  #include "sysemu/numa.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/kvm.h"
-> @@ -302,6 +303,7 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->      int cpu;
->      int addr_cells = 1;
->      const MachineState *ms = MACHINE(vms);
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 6ea47e258832..1d1fc824da6f 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -49,14 +49,22 @@
+>  #define ARM_SPI_BASE 32
+>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
 >  
->      /*
->       * From Documentation/devicetree/bindings/arm/cpus.txt
-> @@ -358,8 +360,38 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
->                  ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
->          }
->  
-> +        qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-> +                              qemu_fdt_alloc_phandle(vms->fdt));
-it's not obvious how this hunk is related to patch
-(also it affects ignore_cpu_topology = true which probably isn't intended)
-
->          g_free(nodename);
->      }
+> -static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+> +static int possible_cpus(VirtMachineState *vms)
+> +{
+> +    return MACHINE_GET_CLASS(vms)->possible_cpu_arch_ids(MACHINE(vms))->len;
+> +}
 > +
-> +    if (!vmc->ignore_cpu_topology) {
-> +        /* From Documentation/devicetree/bindings/arm/topology.txt
-> +         */
-> +        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
-> +
-> +        for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-I'd iterate over possible_cpus array instead
-
-> +            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
-> +            char *map_path;
-> +
-> +            if (smp_threads > 1) {
-> +                map_path = g_strdup_printf(
-> +                               "/cpus/cpu-map/%s%d/%s%d/%s%d",
-> +                               "cluster", cpu / (smp_cores * smp_threads),
-> +                               "core", (cpu / smp_threads) % smp_cores,
-> +                               "thread", cpu % smp_threads);
-> +            } else {
-> +                map_path = g_strdup_printf(
-> +                               "/cpus/cpu-map/%s%d/%s%d",
-> +                               "cluster", cpu / smp_cores,
-> +                               "core", cpu % smp_cores);
-> +            }
-not sure about direct calculation of numbers here,
-do they relate in any way to ms->possible_cpus->cpus[].props.(socket|core|thread-id) ?
-
-
-> +            qemu_fdt_add_path(vms->fdt, map_path);
-> +            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
-> +            g_free(map_path);
-> +            g_free(cpu_path);
-> +        }
-> +    }
->  }
->  
->  static void fdt_add_its_gic_node(VirtMachineState *vms)
-> @@ -1839,7 +1871,10 @@ static void virt_3_0_instance_init(Object *obj)
->  
->  static void virt_machine_3_0_options(MachineClass *mc)
+> +static void acpi_dsdt_add_cpus(Aml *scope, int possible, int present)
 >  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_3_1_options(mc);
-> +    vmc->ignore_cpu_topology = true;
->  }
->  DEFINE_VIRT_MACHINE(3, 0)
+>      uint16_t i;
 >  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 9a870ccb6a57..deb8bee72cda 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -94,6 +94,7 @@ typedef struct MemMapEntry {
->  typedef struct {
->      MachineClass parent;
->      bool disallow_affinity_adjustment;
-> +    bool ignore_cpu_topology;
-missing doc comment for the knob
+> -    for (i = 0; i < smp_cpus; i++) {
+> +    for (i = 0; i < possible; i++) {
+>          Aml *dev = aml_device("C%.03X", i);
+>          aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
+>          aml_append(dev, aml_name_decl("_UID", aml_int(i)));
+> +        if (i >= present) {
 
->      bool no_its;
->      bool no_pmu;
->      bool claim_edge_triggered_timers;
+acpi_dsdt_add_cpus(Aml *scope, const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(machine)) {
+      for (i = 0; i < possible_cpus->len; i++) {
+          ...
+          if (possible_cpus->cpus[i].cpu == NULL)
+               aml_append(dev, aml_name_decl("_STA", aml_int(0)));
+      }
+}
+
+would be better to be consistent with x86 variant (well I prefer using a single source for CPU enumeration whenever possible) and drop helper above.
+
+> +            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
+> +        }
+>          aml_append(scope, dev);
+>      }
+>  }
+> @@ -650,7 +658,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
+>      gicd->version = vms->gic_version;
+>  
+> -    for (i = 0; i < vms->smp_cpus; i++) {
+> +    for (i = 0; i < possible_cpus(vms); i++) {
+ditto
+
+>          AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
+>                                                             sizeof(*gicc));
+>          ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
+> @@ -663,7 +671,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          gicc->cpu_interface_number = cpu_to_le32(i);
+>          gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
+>          gicc->uid = cpu_to_le32(i);
+> -        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
+> +        if (i < vms->smp_cpus) {
+> +            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
+> +        }
+>  
+>          if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+>              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+> @@ -763,7 +773,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>       * the RTC ACPI device at all when using UEFI.
+>       */
+>      scope = aml_scope("\\_SB");
+> -    acpi_dsdt_add_cpus(scope, vms->smp_cpus);
+> +    acpi_dsdt_add_cpus(scope, possible_cpus(vms), vms->smp_cpus);
+>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
 

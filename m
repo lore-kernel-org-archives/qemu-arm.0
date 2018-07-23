@@ -1,86 +1,70 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5803229wru;
-        Mon, 23 Jul 2018 08:52:10 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeJ0legh3b1ELXUaC5D3QcFGzkp5vE9xif0rmTkFkWTIdzn2wTihTlPImGgR4PcrzX/xz+9
-X-Received: by 2002:a0c:cdd1:: with SMTP id a17-v6mr11295038qvn.166.1532361129974;
-        Mon, 23 Jul 2018 08:52:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532361129; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5929003wru;
+        Mon, 23 Jul 2018 11:03:51 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeXsqKqGWshk4nlSPmOZazabor9iYd/yhXItzmDxyw6SVtjvBnrmkTdj4EY03My2C1K44AZ
+X-Received: by 2002:a0c:ae17:: with SMTP id y23-v6mr12178020qvc.157.1532369031332;
+        Mon, 23 Jul 2018 11:03:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532369031; cv=none;
         d=google.com; s=arc-20160816;
-        b=d1FGjiOlpMlJ2eltQ1hTBCVgGqif6/PIsKzO6F89exNM3OAy+btEhuE/fNvloajmF9
-         UbcGAUddkdeRKUasxBWkP1o6fuX0Zgf9jTSt1VVjvQOe03srb5nb1CU95/Mwiilh6C99
-         +fAWRhGw9IJ56r5+0ixZ24IWgx6b7hjulDB62nR6i6kq+kYLhNv6n5B9C8mTPwkqri8J
-         3gbLhwl41kxwF96zg8EK5iM0uAtdWbfXw21RZXoZ5+CiHZSnGLRhboG/1RAyqXwIv7zL
-         NTXsqug1RPqgjDySSvynS4sBH5AoeicRcx+dKIjichzzzRAXmqbaXZWBp/TlLL3+kYUr
-         Iw6A==
+        b=Or30JoLiZ0hjJ4qhD0XPHJGnwPgycvj/IpMNTTI23ApFjof6JuyqounMthZ0yUIlMH
+         EGXiM5McNL+zuDQ/zdN+88yPiuzElABD6feYbRUrdOELmoR8kGCqJRqPdkSbSIcqEm93
+         4q16DRRe6azjST/uVwYTtTAgjyz9OIO6SQDxikz+1EX9Oai/TbVAGY1Cg6PxByel8Kns
+         QxO2dOct/veFMNfkZBJdoFw8N5qCaKyZrrGVW8Kk9bDK3Qyh1rvizyGUwaXhLIf0YVFK
+         +2foEemqJJ28axofQjg8A+NS7EBR/mswuf1bAPUZ1fmrqRH3GWjZ73S2YxofV2/rP0kB
+         CoYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=+TT7rnPXysvanEaBxvExeIN+2Y09myz41xaZaqsCMB8=;
-        b=abBWt15CVl+AeOtyB0v+uNcNVKyE/azgGvoQXfNjKA5nZRNfwZyJvdQrB/kG3n940C
-         d5Gt18igsa2G5RhmTlccksXLnO8+pP4vaCQGLcCkCdjz4alXPhAq19Wbc7LbSjFpLGch
-         9c6Do+JjvlqDcKMHrXKx11Pglmf2QY7xD0HGGUjNYdvjEntBFWMEn1/LGFhyUkTWhJLc
-         MIo2Qr0BTGP1oOB+tKcDwhvItWFTdaDpHfJCkuvnToLXWCxaeq50kSYcVlFlgatVWd+C
-         Q5X/o4pti3XiEz7dlskVTBrhMJUp4EWLZagS0UREKJptPGa8qvv1mwDEOnyIwIo2Ie7c
-         5n9g==
+        bh=daDA8SyLlbArueQhDsH8d7wiLU8f3ikltkMNLkPcDys=;
+        b=lTq1tdiC2A5B9gqpJ9S7PApYhIQvNVWTRkTNpMTg8Q4jM9R8gKSSvHPv11ZKeO+th2
+         GO3Ck1lY1OvcD5WGbaIz2PhLC6OZgfJ/oPgJFBw1P/VC4qTacfXPeHbCGrK2YtoKDZ8l
+         kBRWtvqqUyRO5KVc/tFLSLYgXM5N3s7C4DJgxigRU9YXLYkiK0NnY+ieIqEv+gisiCiD
+         VQ75X5s7W0/L2psw1FJs6Ml3VFUUE9iUGZkd/BpmiCk9f+vCPv0/J/shiyahy4ImnhAI
+         I74ewUlmwOw/Umlk38ioRXK081w601rhD7cVjDaArvhGlruVK/tX3X4t8PVuxOml+L6i
+         uTVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t18-v6si8865034qtg.13.2018.07.23.08.52.09
+        by mx.google.com with ESMTPS id k16-v6si4025874qkh.243.2018.07.23.11.03.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Jul 2018 08:52:09 -0700 (PDT)
+        Mon, 23 Jul 2018 11:03:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35279 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35899 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fhd85-0004eL-Gm
-	for alex.bennee@linaro.org; Mon, 23 Jul 2018 11:52:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35172)
+	id 1fhfBW-0000Cd-PP
+	for alex.bennee@linaro.org; Mon, 23 Jul 2018 14:03:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39920)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fhd7u-0004dV-EU
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 11:51:59 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fhfBN-0000BU-8y
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 14:03:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fhd7q-0006eb-Nx
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 11:51:58 -0400
-Received: from 10.mo177.mail-out.ovh.net ([46.105.73.133]:60241)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fhd7q-0006dM-Gz
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 11:51:54 -0400
-Received: from player738.ha.ovh.net (unknown [10.109.143.145])
-	by mo177.mail-out.ovh.net (Postfix) with ESMTP id CEBBEB680E
-	for <qemu-arm@nongnu.org>; Mon, 23 Jul 2018 17:51:52 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-1-10605-110.w90-89.abo.wanadoo.fr
-	[90.89.196.110]) (Authenticated sender: postmaster@kaod.org)
-	by player738.ha.ovh.net (Postfix) with ESMTPSA id E5BA54EBD;
-	Mon, 23 Jul 2018 17:51:41 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-	<ce2458db-7b97-1672-48cf-b88c24d93157@kaod.org>
-	<CAFEAcA88a15YJ86bK+3=OMG-2=URAgfXEjFoAx603YpCsw5X2w@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <286bff36-1137-ea8f-077c-270406ef433d@kaod.org>
-Date: Mon, 23 Jul 2018 17:51:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA88a15YJ86bK+3=OMG-2=URAgfXEjFoAx603YpCsw5X2w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 17985125111988587469
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -77
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtiedrjedvgdelvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenfghrlhcuvffnffculddvfedm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.73.133
-Subject: Re: [Qemu-arm] [PATCH 0/6] accel/tcg: Support execution from MMIO
- and small MMU regions
+	(envelope-from <pm215@archaic.org.uk>) id 1fhfBM-0006A4-56
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 14:03:41 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43688)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fhfBL-00069F-VH; Mon, 23 Jul 2018 14:03:40 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fhfBK-0007o9-4t; Mon, 23 Jul 2018 19:03:38 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 23 Jul 2018 19:03:37 +0100
+Message-Id: <20180723180337.17378-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH for-3.0?] hw/intc/arm_gicv3: Check correct
+ HCR_EL2 bit when routing IRQ
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,59 +76,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>,
-	"Emilio G . Cota" <cota@braap.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xx72kdsmVKR5
+X-TUID: TaQnLoyF3Ygz
 
-On 07/23/2018 05:17 PM, Peter Maydell wrote:
-> On 23 July 2018 at 15:57, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->> On 07/10/2018 06:00 PM, Peter Maydell wrote:
->>> Note for the Xilinx folks: this patchset makes the mmio-exec
->>> testcase for running from the SPI flash pass. Cedric: you might
->>> like to test the aspeed image you had that relies on execution
->>> from an MMIO region too.
->>
->> I have added a memory region alias at 0x0 on the memory region where
->> the first flash device is mapped and all aspeed machines, palmetto,
->> romulus, witherspoon booted fine.
->>
->> More or less 4MB of data access is generated and the slowdown is hardl=
-y
->> noticeable, around one second on a laptop.
->>
->> I wonder if I should add a bool option to the machine to activate
->> or not the feature ?
->=20
-> I would tend to go with "not" -- if we need the feature then
-> it's better to run slowly but correctly, and if we don't need
-> the feature then it doesn't cost us any speed I think.
+In icc_dir_write() we were incorrectly checking HCR_EL2.FMO
+when determining whether IRQ should be routed to EL2; this should
+be HCR_EL2.IMO (compare the GICv3 pseudocode ICC_DIR_EL1[]).
+Use the correct mask.
 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Cut-n-paste bug we've had since forever. Linux always sets
+FMO and IMO to the same thing, so we haven't noticed this.
+Probably should go into 3.0, though...
 
-I have chosen a brutal activation (for the moment) :
+ hw/intc/arm_gicv3_cpuif.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  https://github.com/legoater/qemu/commit/10b08c5e8df385bba342f02fa044091=
-6203b6fa8
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 5c89be1af07..2a60568d82c 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1550,7 +1550,7 @@ static void icc_dir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * tested in cases where we know !IsSecure is true.
+      */
+     route_fiq_to_el2 = env->cp15.hcr_el2 & HCR_FMO;
+-    route_irq_to_el2 = env->cp15.hcr_el2 & HCR_FMO;
++    route_irq_to_el2 = env->cp15.hcr_el2 & HCR_IMO;
+ 
+     switch (arm_current_el(env)) {
+     case 3:
+-- 
+2.17.1
 
-I will send when your patchset is committed.
-
-Images used for tests are here :=20
-
-  https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,target=3Dromulu=
-s/lastSuccessfulBuild/artifact/deploy/images/romulus/flash-romulus
-
-  https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,target=3Dpalmet=
-to/lastSuccessfulBuild/artifact/deploy/images/palmetto/flash-palmetto
-
-  https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,target=3Dwither=
-spoon/lastSuccessfulBuild/artifact/deploy/images/witherspoon/obmc-phospho=
-r-image-witherspoon.ubi.mtd
-
-Thanks,
-
-C.=20

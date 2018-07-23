@@ -1,89 +1,89 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp173664wrq;
-        Wed, 11 Jul 2018 05:52:24 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfBtDuwNJdPf/i9RkqZwv+AhTlvdbyxSZY08EQBSo29JuotzFZAP+4Bv+PaetKLZXOnt9O0
-X-Received: by 2002:a37:ac02:: with SMTP id e2-v6mr24970684qkm.75.1531313544751;
-        Wed, 11 Jul 2018 05:52:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531313544; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5592923wru;
+        Mon, 23 Jul 2018 05:22:44 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeOhibNE9mfC5ctS4tAChhN3LPlMVBz6+OwV21jqcmQgH76OlivUYLfyutIYQ3Y2+BgBpZy
+X-Received: by 2002:a0c:d44a:: with SMTP id r10-v6mr10781260qvh.248.1532348564508;
+        Mon, 23 Jul 2018 05:22:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532348564; cv=none;
         d=google.com; s=arc-20160816;
-        b=SXxtm04Z5IySOLyClnGS/WUFt66IPbg9DmU5KrWjhV7xHcbrMFFPMMnj/AJNeDzE42
-         zAt5crVnjNwi+k67vAFn3FHdzyXM7UYeCZH4Uxs5CxGBFJf9kQK5J8ziYL3nAOVm7bPA
-         dzd//6IsRcZFU+LEJxRPVrLbtLsdijng5hCAypiCX53e/DJdyy4NDTlQFVeJBlAckg+2
-         CnsVUELGdwrch7GOOQKK2IF6IlspHs21+q2VAnutyVNfk3v5v5KB1lF24BN2pAv34YoY
-         PxvYXPfNf/Vyn3x17nOVQp1J4lfUtXZEi59lTrIsJrsnJRoSN+Hi39H0ZJx0uUzypgxp
-         P0aw==
+        b=ChfanXSnhCaTESWKaFSoxhP0Hq7n2ssjc1FdTuJFYSk1sSdwkddBTuUvsnNdkR9lLM
+         R0KMVDjyOgaHET72i72laOFaJ15wgo+HtyHht1Vis/CqmsGBKWGHE55DcvCvwWXXXs3b
+         KGhwZQD+nUCyFwz0NJ07oDQI0mUwKBi/WfkS09lC+h2dZkaUBluGU5tnE7VZtj1uThn7
+         n9oaqUHiNmgNAg+K7n7jbPa3mp34mw4drdjuY4f2PYGJKuIVPsRR6Jd0R40SqcSDKlBo
+         Xo0pq/1c8jpZClEQCHRX68OEfqdgz4I2d2WPC/pMzRwwtFZqfTAMIQz12L2sG05fvqKk
+         xwuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :arc-authentication-results;
-        bh=FUrxVqJNuDSSfbUHHLihY7nKOREM4DJ4scoVTrGuFx4=;
-        b=sfRP9FdF6cn7tF6er4XJWK70CD8WTYaBfTyJsBn6QgfOJ4tZrxVmQkNc+Gug/kh+Wb
-         AydiMq0UK/jFsUQc+3bQBs4Kyc8TzMkQkw2hFjX3eKBUSnQ2mXV4Zta05bzZhm5tmK+D
-         duK+xRFyAyKX1lRz/flhfnkOhlbAVqDpXUhnR0tTi+1hiDezNQGtlByn24fvrXN3qzNJ
-         455RsrRROvjDhTJXT4UupOGI0QEmqGJOf0yO+4+ggC/4KIKdNLrqkUOAc8OsAQV7Hfiq
-         vMRbxKZe6CKmIEs7BJF5sgENgoXYnxuQriicaMxLM0YIO1Pe8+P2b9UDhOhJI7CIZf/R
-         g5dQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date:arc-authentication-results;
+        bh=pz+9+wn+XEEnecvntpy8tisoTx8S0qQ6/38McqCg4xM=;
+        b=NRGggTFEUMRBcjcKbpbliAKPb699v70/BFXM2oRXL8rJHZyBapSq78tnOYaO3MYxn3
+         CPJlhBG25OWZYxYT6j4udsZNWBlfVPQV9TMmbaTnmMBbmcwtVGyrIGx4irc45XXapFRd
+         5plAShxwVmdJ36Que9kPnFxtUwTnuyWZX9YIaEJWcKXIjN0y6E6EGA5h1bWGDWgwNAwr
+         oSHFH9/ZEYjljfR72V6jpIxtjPcgN8usZbalFQWcnTgf54MAHJBA59t9hVKW6MQhhpkd
+         XcEDZZNuJ4tySoLnNsk/r/pnmzYkUOvJc8tFqKlpuewZSN3s2ODCNbX3c3mWV8YTBB2c
+         O/4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i4-v6si9827029qkf.65.2018.07.11.05.52.24
+        by mx.google.com with ESMTPS id j26-v6si3201643qvj.26.2018.07.23.05.22.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 11 Jul 2018 05:52:24 -0700 (PDT)
+        Mon, 23 Jul 2018 05:22:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53600 helo=lists.gnu.org)
+Received: from localhost ([::1]:34334 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdEbY-0004wK-5Q
-	for alex.bennee@linaro.org; Wed, 11 Jul 2018 08:52:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44550)
+	id 1fhZrQ-0001Kr-21
+	for alex.bennee@linaro.org; Mon, 23 Jul 2018 08:22:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36132)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fdEbL-0004su-Mj
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 08:52:14 -0400
+	(envelope-from <imammedo@redhat.com>) id 1fhZrD-0001Ic-Bc
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 08:22:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1fdEbH-0007rm-Lw
-	for qemu-arm@nongnu.org; Wed, 11 Jul 2018 08:52:11 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40222 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1fhZr9-0007wY-Eq
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 08:22:31 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48618 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1fdEbH-0007qH-Fp; Wed, 11 Jul 2018 08:52:07 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1fhZr9-0007wQ-8Q; Mon, 23 Jul 2018 08:22:27 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C116240200A7;
-	Wed, 11 Jul 2018 12:52:05 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6CF1A111DD0B;
-	Wed, 11 Jul 2018 12:51:57 +0000 (UTC)
-Date: Wed, 11 Jul 2018 14:51:55 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Message-ID: <20180711125155.wkvyjge76r6o3bk4@kamzik.brq.redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 74BF9401DEA8;
+	Mon, 23 Jul 2018 12:22:26 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 69CD52166BA0;
+	Mon, 23 Jul 2018 12:22:25 +0000 (UTC)
+Date: Mon, 23 Jul 2018 14:22:24 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20180723142224.11e912ec@redhat.com>
+In-Reply-To: <20180704124923.32483-2-drjones@redhat.com>
 References: <20180704124923.32483-1-drjones@redhat.com>
-	<20180704124923.32483-6-drjones@redhat.com>
+	<20180704124923.32483-2-drjones@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180704124923.32483-6-drjones@redhat.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.6]);
-	Wed, 11 Jul 2018 12:52:05 +0000 (UTC)
+	Mon, 23 Jul 2018 12:22:26 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Wed, 11 Jul 2018 12:52:05 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+	Mon, 23 Jul 2018 12:22:26 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [RFC PATCH 5/6] virt-acpi-build: add PPTT table
+Subject: Re: [Qemu-arm] [RFC PATCH 1/6] hw/arm/virt: Add virt-3.1 machine
+ type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,173 +95,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	eric.auger@redhat.com, Shannon Zhao <zhaoshenglong@huawei.com>,
-	imammedo@redhat.com
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o1PU9CQDTrHr
+X-TUID: A1GwZZQak8pj
 
-On Wed, Jul 04, 2018 at 02:49:22PM +0200, Andrew Jones wrote:
-> The ACPI PPTT table supports topology descriptions for ACPI
-> guests. Note, while a DT boot Linux guest with a non-flat CPU
-> topology will see socket and core IDs being sequential integers
-> starting from zero, e.g. with -smp 4,sockets=2,cores=2,threads=1
-> 
-> a DT boot produces
-> 
->  cpu:  0 package_id:  0 core_id:  0
->  cpu:  1 package_id:  0 core_id:  1
->  cpu:  2 package_id:  1 core_id:  0
->  cpu:  3 package_id:  1 core_id:  1
-> 
-> an ACPI boot produces
-> 
->  cpu:  0 package_id: 36 core_id:  0
->  cpu:  1 package_id: 36 core_id:  1
->  cpu:  2 package_id: 96 core_id:  2
->  cpu:  3 package_id: 96 core_id:  3
-> 
-> This is due to several reasons:
-> 
->  1) DT cpu nodes do not have an equivalent field to what the PPTT
->     ACPI Processor ID must be, i.e. something equal to the MADT CPU
->     UID or equal to the UID of an ACPI processor container. In both
->     ACPI cases those are platform dependant IDs assigned by the
->     vendor.
-> 
->  2) While QEMU is the vendor for a guest, if the topology specifies
->     SMT (> 1 thread), then, with ACPI, it is impossible to assign a
->     core-id the same value as a package-id, thus it is not possible
->     to have package-id=0 and core-id=0. This is because package and
->     core containers must be in the same ACPI namespace and therefore
->     must have unique UIDs.
-> 
->  3) ACPI processor containers are not required for PPTT tables to
->     be used and, due to the limitations of which IDs are selected
->     described above in (2), they are not helpful for QEMU, so we
->     don't build them with this patch. In the absence of them, Linux
->     assigns its own unique IDs. The maintainers have chosen not to use
->     counters from zero, but rather ACPI table offsets, which explains
->     why the numbers are so much larger than with DT.
-> 
->  4) When there is no SMT (threads=1) the core IDs for ACPI boot guests
->     match the logical CPU IDs, because these IDs must be equal to the
->     MADT CPU UID (as no processor containers are present), and QEMU
->     uses the logical CPU ID for these MADT IDs.
-> 
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> Cc: Shannon Zhao <zhaoshenglong@huawei.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+On Wed,  4 Jul 2018 14:49:18 +0200
+Andrew Jones <drjones@redhat.com> wrote:
+
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
->  hw/acpi/aml-build.c         | 50 +++++++++++++++++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c    |  5 ++++
->  include/hw/acpi/aml-build.h |  2 ++
->  3 files changed, 57 insertions(+)
+>  hw/arm/virt.c | 21 ++++++++++++++++-----
+>  1 file changed, 16 insertions(+), 5 deletions(-)
 > 
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 1e43cd736de9..37e8f5182ae9 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -24,6 +24,7 @@
->  #include "hw/acpi/aml-build.h"
->  #include "qemu/bswap.h"
->  #include "qemu/bitops.h"
-> +#include "sysemu/cpus.h"
->  #include "sysemu/numa.h"
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 281ddcdf6e26..880441275031 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1757,10 +1757,7 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
 >  
->  static GArray *build_alloc_array(void)
-> @@ -1679,6 +1680,55 @@ void build_slit(GArray *table_data, BIOSLinker *linker)
->                   table_data->len - slit_start, 1, NULL, NULL);
+> -#define VIRT_COMPAT_2_12 \
+> -    HW_COMPAT_2_12
+> -
+> -static void virt_3_0_instance_init(Object *obj)
+> +static void virt_3_1_instance_init(Object *obj)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(obj);
+>      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> @@ -1830,10 +1827,24 @@ static void virt_3_0_instance_init(Object *obj)
+>      vms->irqmap = a15irqmap;
 >  }
 >  
-> +/*
-> + * ACPI 6.2 Processor Properties Topology Table (PPTT)
-> + */
-> +static void build_cpu_hierarchy(GArray *tbl, uint32_t flags,
-> +                                uint32_t parent, uint32_t id)
+> +static void virt_machine_3_1_options(MachineClass *mc)
 > +{
-> +    build_append_byte(tbl, 0);  /* Type 0 - processor */
-> +    build_append_byte(tbl, 20); /* Length, no private resources */
-> +    build_append_int_noprefix(tbl, 0, 2);           /* Reserved */
-> +    build_append_int_noprefix(tbl, flags, 4);
-> +    build_append_int_noprefix(tbl, parent, 4);
-> +    build_append_int_noprefix(tbl, id, 4);
-> +    build_append_int_noprefix(tbl, 0, 4); /* Num private resources */
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(3, 1)
+> +
+> +static void virt_3_0_instance_init(Object *obj)
+> +{
+> +    virt_3_1_instance_init(obj);
 > +}
 > +
-> +void build_pptt(GArray *table_data, BIOSLinker *linker, int possible_cpus)
-> +{
-> +    int pptt_start = table_data->len;
-> +    int uid = 0, cpus = 0, socket;
+>  static void virt_machine_3_0_options(MachineClass *mc)
+>  {
+> +    virt_machine_3_1_options(mc);
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(3, 0)
+> +DEFINE_VIRT_MACHINE(3, 0)
 > +
-> +    acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    for (socket = 0; cpus < possible_cpus; socket++) {
-> +        uint32_t socket_offset = table_data->len - pptt_start;
-> +        int core;
-> +
-> +        build_cpu_hierarchy(table_data, 1, 0, socket);
-> +
-> +        for (core = 0; core < smp_cores; core++) {
-> +            uint32_t core_offset = table_data->len - pptt_start;
-> +            int thread;
-> +
-> +            if (smp_threads > 1) {
-> +                build_cpu_hierarchy(table_data, 0, socket_offset, core);
-> +                for (thread = 0; thread < smp_threads; thread++) {
-> +                    build_cpu_hierarchy(table_data, 2, core_offset, uid++);
-> +                }
-> +             } else {
-> +                build_cpu_hierarchy(table_data, 2, socket_offset, uid++);
+> +#define VIRT_COMPAT_2_12 \
+> +    HW_COMPAT_2_12
+>  
+>  static void virt_2_12_instance_init(Object *obj)
+>  {
 
-It just occurred to me that the uid++'s above should be something like
-uid[i++]'s, where uid[] is an argument to the function instead. Otherwise
-this general aml builder function isn't written generally enough.
-
-> +             }
-> +        }
-> +        cpus += smp_cores * smp_threads;
-> +    }
-> +
-> +    build_header(linker, table_data,
-> +                 (void *)(table_data->data + pptt_start), "PPTT",
-> +                 table_data->len - pptt_start, 1, NULL, NULL);
-> +}
-> +
->  /* build rev1/rev3/rev5.1 FADT */
->  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->                  const char *oem_id, const char *oem_table_id)
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 1d1fc824da6f..aa77e1f018d9 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -832,6 +832,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_madt(tables_blob, tables->linker, vms);
->  
-> +    if (!vmc->ignore_cpu_topology) {
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_pptt(tables_blob, tables->linker, possible_cpus(vms));
-> +    }
-> +
->      acpi_add_table(table_offsets, tables_blob);
->      build_gtdt(tables_blob, tables->linker, vms);
->  
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index 6c36903c0a5d..2b0fde6bd417 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -414,6 +414,8 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
->  
->  void build_slit(GArray *table_data, BIOSLinker *linker);
->  
-> +void build_pptt(GArray *table_data, BIOSLinker *linker, int possible_cpus);
-> +
->  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->                  const char *oem_id, const char *oem_table_id);
->  #endif
-> -- 
-> 2.17.1
-> 

@@ -1,84 +1,70 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5443719wru;
-        Mon, 23 Jul 2018 02:23:17 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcRXQnC60urQu7AwaGW6i2upXC80nEdI9uI5KomfM3Kyusye2JR9uVFOR4kCKBfzqorJmQl
-X-Received: by 2002:a37:cc44:: with SMTP id r65-v6mr10996604qki.285.1532337797686;
-        Mon, 23 Jul 2018 02:23:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532337797; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp5608762wru;
+        Mon, 23 Jul 2018 05:38:42 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpe8ZVqFEVhLcnKGx8dP8JREMLyCJWYP4F2yEdNCCVxRjblTbCcb95cXxmVTTz+L0AaMr38Q
+X-Received: by 2002:ac8:427:: with SMTP id v39-v6mr11866913qtg.120.1532349522519;
+        Mon, 23 Jul 2018 05:38:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532349522; cv=none;
         d=google.com; s=arc-20160816;
-        b=bTVA15WUaP4ZW2fczypTbpCgx8S/tbDJLIulGnKnVHAcKVBD19FhoGoDVp3NmUmZvb
-         9uqm3LKA9wbDUCmVZfa8qVkvEc5sdYZTPQZNU/PLo3jrS4PDAaQBaUBImjuRKcxQGHrx
-         myQveBUAkaxb7a5NzPeAVNvvCVGnZlIRvWVH2C4+GgEgE7eZKTADHmyqwC8nVi1DAC25
-         isjbqs91ii5JGbYWlyjr2UWQswF0Ts1q4jDmFlJmG1U4ayFiIKfG/0z5NlF3eXPLTTMF
-         Yld+qtnOJSuVII8cDNysJySPzMeheqCYdnixsPYQe5IitJEE0zNBQXhtl0mbSufLLhgj
-         rKkg==
+        b=w65s3l/pUKNT9DDT787xezOWh7hqXvfrKKsZe8RsnolKWeJulwzScoXjufLFdP1KIl
+         YhDmU38rjkU5g0VHpkGwGxrJsC8dd3Z05M9Nbzm6ClimMe5Ud3pGV6sBfzdcCJQ8B8Sh
+         yXn3P6ozZHufFdIwKoOS1g+xnEiQcO4l8AHOAMj/t/sgiyjzl9sRSVTo3e/Qrh52BTm0
+         IZdl7RSOYlNRPWd4f7lsaZ5N9kYpMBxeo+FweAHd16maJ1aizgsAaZ2UmBQqpp4Wh2Pb
+         WLdlipRaiaeI2opIOEvf1ogd9eSZC1NdOCNZNixVgeWKU/kenCpObFzxVzEJdoM3Im41
+         CX7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=tT5+dDzlSnoCmP2+nIvXGX4Eym1A36jOny/evwjq+IU=;
-        b=g+Ls3IbSl2CfwQ7WJUOCbhPuwY/SGrxVbKCIfsdQTw6GER5XmabqkCjqIdOiVFHMQA
-         Wlbj6b3asFE2lgkRUhsXMxx1Hgcj8EEIwgCFuNjdIfUkkf5tVzvlgVCKnWyyij3Fno+j
-         mFi0iPwT63FztlCz5jmP2apOah8MOlI42BFGXMWe/JpZH3sQ1XcLcTgGNiLXoNA8qQQy
-         rGM1CvETagEtJ5e3xGHf0fwXzK7vsLQJAnbuKkpJtF/QsFwT8basckdCthp7YmWtEC+x
-         zpE92E229shX0RvzbaRe5xPeiBgaCqK4BG2EUdBRWqGZABJcsljCKgMuKiJfxlUuxjJh
-         7sNA==
+        bh=SRdaonARrlnL+3Md7oPjjFEL4eQT+ZFNVVNs7eLRuTs=;
+        b=a5AJemt7//Q0lqOWFdXidqlOVot6t4zyhcA8Nq/vKAagVmse3hkj7adne0uNGt8hno
+         XbH6gBbmzaPxQZzzKnpbf/5aVgKFEOvfOooAV0nk0PplYJtb2EUr82fW0NgnRM064Unj
+         K+1oO8MkcXI6fs8aiWoxVFSyPYYGkT3NCfA/RY+OkZf04DH/pak32ORUuDgq1+Hpxk3C
+         BW+e72bxFbiVJ79tzeimIjm9/GKVvaC+Pj4/mLMJSAZt7XBBE2e3qIlItr+MlD8S283h
+         9/5tKUW1EXLb4+7/3wzyoRG0wfskmXcOoP8X6xmvLjo0q0fm1aZoVH+QqhTYBJKnHs4o
+         WWQA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f6-v6si1472533qki.370.2018.07.23.02.23.17
+        by mx.google.com with ESMTPS id f8-v6si3971702qtk.135.2018.07.23.05.38.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 23 Jul 2018 02:23:17 -0700 (PDT)
+        Mon, 23 Jul 2018 05:38:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33523 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34409 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fhX3l-0004Qq-8g
-	for alex.bennee@linaro.org; Mon, 23 Jul 2018 05:23:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55736)
+	id 1fha6r-0007eM-Uj
+	for alex.bennee@linaro.org; Mon, 23 Jul 2018 08:38:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38842)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fhX3e-0004QZ-S7
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 05:23:11 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fha3Q-0005Az-5o
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 08:35:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fhX3a-0000ql-Sr
-	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 05:23:10 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43542 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fhX3a-0000qd-OJ; Mon, 23 Jul 2018 05:23:06 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 32EAA401DEA8;
-	Mon, 23 Jul 2018 09:23:06 +0000 (UTC)
-Received: from thh440s.str.redhat.com (dhcp-200-180.str.redhat.com
-	[10.33.200.180])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8C4567C2B;
-	Mon, 23 Jul 2018 09:23:05 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>
-Date: Mon, 23 Jul 2018 11:23:04 +0200
-Message-Id: <1532337784-334-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Mon, 23 Jul 2018 09:23:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Mon, 23 Jul 2018 09:23:06 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH] hw/intc/exynos4210_gic: Turn instance_init into
- realize function
+	(envelope-from <pm215@archaic.org.uk>) id 1fha3P-0005u1-6z
+	for qemu-arm@nongnu.org; Mon, 23 Jul 2018 08:35:08 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43682)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fha3O-0005lh-V0; Mon, 23 Jul 2018 08:35:07 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fha3G-0007eT-KS; Mon, 23 Jul 2018 13:34:58 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 23 Jul 2018 13:34:57 +0100
+Message-Id: <20180723123457.2038-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] target/arm: Escalate to correct HardFault when
+ AIRCR.BFHFNMINS is set
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,66 +76,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VJMLJB65C9d+
+X-TUID: 2HMVo/sgphct
 
-The instance_init function of the "exynos4210.gic" device creates a
-new "arm_gic" device and immediately realizes it with qdev_init_nofail().
-This will leave a lot of object in the QOM tree during introspection of
-the "exynos4210.gic" device, e.g. reproducible by starting QEMU like this:
+When we escalate a v8M exception to HardFault, if AIRCR.BFHFNMINNS is
+set then we need to decide whether it should become a secure HardFault
+or a nonsecure HardFault. We should always escalate to the same
+target security state as the original exception. The current code
+tries to test this using the 'secure' bool, which is not right because
+that flag indicates whether the target security state only for
+banked exceptions; the effect was that we were incorrectly escalating
+always-secure exceptions like SecureFault to a nonsecure HardFault.
 
-qemu-system-aarch64 -M none -nodefaults -nographic -monitor stdio
+Fix this by defining, logging and using a new 'targets_secure' bool
+which tracks the condition we actually want.
 
-And then by running "info qom-tree" at the HMP monitor, followed by
-"device_add exynos4210.gic,help" and finally checking "info qom-tree"
-again.
-
-Also note that qdev_init_nofail() can exit QEMU in case of errors - and
-this must never happen during an instance_init function, otherwise QEMU
-could terminate unexpectedly during introspection of a device.
-
-Since most of the code that follows the qdev_init_nofail() depends on
-the realized "gicbusdev", the easiest solution to the problem is to
-turn the whole instance_init function into a realize function instead.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/exynos4210_gic.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/intc/armv7m_nvic.c | 8 ++++++--
+ hw/intc/trace-events  | 2 +-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
-diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index b6b00a4..69f9c18 100644
---- a/hw/intc/exynos4210_gic.c
-+++ b/hw/intc/exynos4210_gic.c
-@@ -281,9 +281,9 @@ static void exynos4210_gic_set_irq(void *opaque, int irq, int level)
-     qemu_set_irq(qdev_get_gpio_in(s->gic, irq), level);
- }
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index bf92fe0972c..e160b02eab4 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -529,13 +529,17 @@ static void do_armv7m_nvic_set_pending(void *opaque, int irq, bool secure,
+     NVICState *s = (NVICState *)opaque;
+     bool banked = exc_is_banked(irq);
+     VecInfo *vec;
++    bool targets_secure;
  
--static void exynos4210_gic_init(Object *obj)
-+static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
- {
--    DeviceState *dev = DEVICE(obj);
-+    Object *obj = OBJECT(dev);
-     Exynos4210GicState *s = EXYNOS4210_GIC(obj);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-     const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
-@@ -347,13 +347,13 @@ static void exynos4210_gic_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
+     assert(irq > ARMV7M_EXCP_RESET && irq < s->num_irq);
+     assert(!secure || banked);
  
-     dc->props = exynos4210_gic_properties;
-+    dc->realize = exynos4210_gic_realize;
- }
+     vec = (banked && secure) ? &s->sec_vectors[irq] : &s->vectors[irq];
  
- static const TypeInfo exynos4210_gic_info = {
-     .name          = TYPE_EXYNOS4210_GIC,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(Exynos4210GicState),
--    .instance_init = exynos4210_gic_init,
-     .class_init    = exynos4210_gic_class_init,
- };
+-    trace_nvic_set_pending(irq, secure, derived, vec->enabled, vec->prio);
++    targets_secure = banked ? secure : exc_targets_secure(s, irq);
++
++    trace_nvic_set_pending(irq, secure, targets_secure,
++                           derived, vec->enabled, vec->prio);
  
+     if (derived) {
+         /* Derived exceptions are always synchronous. */
+@@ -615,7 +619,7 @@ static void do_armv7m_nvic_set_pending(void *opaque, int irq, bool secure,
+              */
+             irq = ARMV7M_EXCP_HARD;
+             if (arm_feature(&s->cpu->env, ARM_FEATURE_M_SECURITY) &&
+-                (secure ||
++                (targets_secure ||
+                  !(s->cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK))) {
+                 vec = &s->sec_vectors[irq];
+             } else {
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index b6cb5e6048d..33e932fb918 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -177,7 +177,7 @@ nvic_set_prio(int irq, bool secure, uint8_t prio) "NVIC set irq %d secure-bank %
+ nvic_irq_update(int vectpending, int pendprio, int exception_prio, int level) "NVIC vectpending %d pending prio %d exception_prio %d: setting irq line to %d"
+ nvic_escalate_prio(int irq, int irqprio, int runprio) "NVIC escalating irq %d to HardFault: insufficient priority %d >= %d"
+ nvic_escalate_disabled(int irq) "NVIC escalating irq %d to HardFault: disabled"
+-nvic_set_pending(int irq, bool secure, bool derived, int en, int prio) "NVIC set pending irq %d secure-bank %d derived %d (enabled: %d priority %d)"
++nvic_set_pending(int irq, bool secure, bool targets_secure, bool derived, int en, int prio) "NVIC set pending irq %d secure-bank %d targets_secure %d derived %d (enabled: %d priority %d)"
+ nvic_clear_pending(int irq, bool secure, int en, int prio) "NVIC clear pending irq %d secure-bank %d (enabled: %d priority %d)"
+ nvic_set_pending_level(int irq) "NVIC set pending: irq %d higher prio than vectpending: setting irq line to 1"
+ nvic_acknowledge_irq(int irq, int prio) "NVIC acknowledge IRQ: %d now active (prio %d)"
 -- 
-1.8.3.1
+2.17.1
 

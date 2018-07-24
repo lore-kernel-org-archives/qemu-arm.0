@@ -1,160 +1,227 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp809047wrq;
-        Fri, 13 Jul 2018 08:22:47 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpd2ZUk73x0hZmQYdpeo4XA1sm0jAxLXCbYWT/oE4H27uooHwUbNXpZom8LcU9Aob3LLb5tl
-X-Received: by 2002:aed:24f0:: with SMTP id u45-v6mr6330340qtc.340.1531495367645;
-        Fri, 13 Jul 2018 08:22:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531495367; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp7264737wru;
+        Tue, 24 Jul 2018 14:24:53 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfgLsf87LINszxdbtpPmtL10oonQRLJCTqg6Dur/OT/OyjkaGtju6gS7V15BrGWIA6+06c/
+X-Received: by 2002:a37:284a:: with SMTP id o71-v6mr16432921qkh.176.1532467493321;
+        Tue, 24 Jul 2018 14:24:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532467493; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZsFoAzs4bSng1d66Lm0SPvolRrAq/Rp+KNVBDExr6cdCQ27y+qECHlgeDPWAfEa553
-         8OMddlTPbqoNd935bkDfkN0H7OsyEYlqZkupKWGqB9vphxoD2rxiBc1/w9AUFHa5ns6P
-         pDnZhKBVjGtBxZoqJr1+e/Og8J9V/kiU6STXTVaaG+f7BRNc1r37j0SnhKF4rRVdTYGx
-         27GkGRCwIwziMn4MLPLVrmx8MzLtciX8L7M5nzBNkp3PbCOtXreSfWPzQxjHpB3+RN7/
-         tIW0e3xZlwamAn8TIZDs4aX3KKEq+qGIqf2ZKeoeYb9srdeycIs9LRN63ceM1UZCYIG4
-         opBA==
+        b=Zm0Wn9raTzt03zYBxXWGGrPwgiyDPrRgAyeBef/qT5cRLkPfJavCAqluK3S03jkN6+
+         j+eiXhEEMXcyfm3yGbx6+/RKDLKJEkRkruLr9qLDPUTxTKHO78PrgsXTgwJXuauzUaAK
+         gp0ckLA/pCV1BoJOeys13JnfpnjLI9F6EUYEaChB6piouV164dlnVZjFxF/9yUvdY9qW
+         6wKQTmESyhfNk9hjKvsyYVN2D4kbMFS7ChZG7zTh0ez31BOE1l+EoTdpy7a/wc7GnP4o
+         PbOFhcS3gb/vhv1vLKjS261jRtigLXH0/hOEqXLYp/hrgy+SfzmI0vHV5aeRoZL39t+h
+         33TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :in-reply-to:references:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=iOq36oD1JBZwzHUFHc36Kl506pmU3FH4UYKdYyFes5Y=;
-        b=UI1wpDzY0MC4UP7OZn+ZOTy8JoYTf5ujHtImbKjQOqSxlKHlYsrXxkgLBaS5M/OBji
-         I34/e6z/7K67LGL0KYnHOt519rJkc6fv4b81FLQhCFpyeMuK5zdP2u2hFTo6dFBuManQ
-         2gcBKoCHiB9XXuiPXXnqCVNABNaLcGrPJFCR8fDlrE+C2KKI1CIR4au4BCcqeH11VDUh
-         24eUS3WGrHmOwI60or8TLQPSo89KiXYa7YT/fBQI0jc7AQ+niPaksIcYJuanriEqSfPd
-         9890gvZqkrjf3nf7jRA3UPNVoPoF/f/MX4Cj8i949Rt//3fw1IU1Mfa8+uLcqF6RxB0n
-         ASfA==
+        bh=R2bczVv2bHXmGKMBvT6cSBjjGZyR6ojWSWYwpT2RTIs=;
+        b=XN1wZapNsbsmcx+mEGTn7Be6hvuQWZYiBu/o2WagRJcp4T4UG6W5ihCakcu+iyepI9
+         PKerjlVVjy0n9JgYeuG9pgPJVnYAvV8zjj3jCzOBQqc4QW3iQRiuSP/Nwi+BNoDh17zv
+         pv7SqOJqJQTDPlxvzCoxK5e+oAROfXvwA2swMSS8ipTuPFYRcwLQ6ed6oqTfpgAaAPuX
+         RgCt3NGvBTjLHdZ1MkeQJzR/vnEvO0cAeBGIaWLsrGdfXRI6veiUFo5w4iTkVTckuoFp
+         XwCeJPSexw9JvaIrtq+Ook6BC3qd04HFfAgBPc4hEme6yRRGJ/eVU+vrzzgwsZW10Mxm
+         Fpyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mz3FjZSY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@umich.edu header.s=relay-2016-05-12 header.b=TPf4SlPz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d79-v6si9004719qke.177.2018.07.13.08.22.47
+        by mx.google.com with ESMTPS id x45-v6si8865535qtk.32.2018.07.24.14.24.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 13 Jul 2018 08:22:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 24 Jul 2018 14:24:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mz3FjZSY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37833 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@umich.edu header.s=relay-2016-05-12 header.b=TPf4SlPz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=umich.edu
+Received: from localhost ([::1]:42652 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdzuB-0004iN-5d
-	for alex.bennee@linaro.org; Fri, 13 Jul 2018 11:22:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47140)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fi4nc-0000Z9-Kf
+	for alex.bennee@linaro.org; Tue, 24 Jul 2018 17:24:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdzu1-0004i1-Lo
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 11:22:38 -0400
+	(envelope-from <kevlough@umich.edu>) id 1fi4mA-0008Ha-9w
+	for qemu-devel@nongnu.org; Tue, 24 Jul 2018 17:23:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdzu0-0002F9-OW
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 11:22:37 -0400
-Received: from mail-oi0-x233.google.com ([2607:f8b0:4003:c06::233]:36609)
+	(envelope-from <kevlough@umich.edu>) id 1fi4m7-0002W4-02
+	for qemu-devel@nongnu.org; Tue, 24 Jul 2018 17:23:22 -0400
+Received: from smtp.mail.umich.edu ([141.211.12.86]:40619
+	helo=tombraider.mr.itd.umich.edu)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdzu0-0002El-Aj
-	for qemu-arm@nongnu.org; Fri, 13 Jul 2018 11:22:36 -0400
-Received: by mail-oi0-x233.google.com with SMTP id r16-v6so62915061oie.3
-	for <qemu-arm@nongnu.org>; Fri, 13 Jul 2018 08:22:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=iOq36oD1JBZwzHUFHc36Kl506pmU3FH4UYKdYyFes5Y=;
-	b=Mz3FjZSY5omG/C28lDfJX9D8sg4JOM7Bi9vql2ZhaLfvkdt6DuL7L9QPr634ER0pjv
-	xECN9ejlyW9u/PbXnXahOd2GbQ0tY6wKBXJVLmNnoZ9XxgPSrNBz5BfrQVDuHIcfITmV
-	75hj0yRugdRP++/J/sl4b0x1gwoHXL87i0MNA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=iOq36oD1JBZwzHUFHc36Kl506pmU3FH4UYKdYyFes5Y=;
-	b=D9i3lqCgDl65Sfcq9IIo3bsNrpQ0LtwSRgyvGzQeaxPkh/0JQlm11w7zvwgR885/WW
-	VLxOPXTGxrsaQCoqETQ8snEbF+L1i6wHrh35OhCJ62CgXDIoM4UFmioNJXARkZazfcf4
-	DnaZPkxTnx91kVK6uC0cKy00AHhTUH2iUNbkX10hHTNLPZgQpxdxBKQlkF8rpAi6Q2Dh
-	gryeN//OQ1TafYC0tT19itN0mTlPa1aSYE6mnIzWgMxGkq1QplfH/JLVeLyCB1tZmfJ3
-	7hsLuCDGVrNtJOd6HmO5vUVyEuoiU43EGSHdM78nKvX7mgWgyZVjl1mOAyNqkFlZgYSb
-	uWRA==
-X-Gm-Message-State: AOUpUlEpO2u42bcJ2PSqArzCnW5jg7dYBkmLc1GcYmSeZR3r6yIAw0Oi
-	jm7RNXtscXyK8ROEGtLx//kyPgPoWJGKxVcfpqqVAQ==
-X-Received: by 2002:aca:a982:: with SMTP id
-	s124-v6mr7749835oie.80.1531495355623; 
-	Fri, 13 Jul 2018 08:22:35 -0700 (PDT)
+	(Exim 4.71) (envelope-from <kevlough@umich.edu>)
+	id 1fi4m6-0002U4-KS; Tue, 24 Jul 2018 17:23:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umich.edu;
+	s=relay-2016-05-12; t=1532467395;
+	bh=CzkMLICegYrwHXt11d05PHYZYTnjY8uCkMTZU/0eUCY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=TPf4SlPzFvICV4A+lQUC41gRXaRBWCfjosm0hh52Uleg9kyHjc7If5R25XaFwZLT6
+	5M8UszGaPsUWje8s6HXhLxHzVMBdlB+pOj7Uhf5cNa7ypxrIxV+MRpskp4ei7qqYcZ
+	7Ee83nrxJ3dL9dInFDlgEeXL++WmVkeMCFZA+pPSfcUUCPgHfqO3cxmD9sHqphBNNM
+	9qZM+awh0kPeDEZkkkNQwUH8OBdbz4wD0Tvknxxef0SI03lrGPr54ldVukrUGL28th
+	cQtusAfqVXB74BLAA7oCLJ+EREyU1J/CQ/mmTZQGOSmRj9I9sMUgl9Ge3qApYhXp14
+	QHJWcDOQ04hUQ==
+Authentication-Results: tombraider.mr.itd.umich.edu;
+	iprev=pass policy.iprev=74.125.82.51 (mail-wm0-f51.google.com);
+	auth=pass smtp.auth=kevlough
+Received: FROM mail-wm0-f51.google.com (mail-wm0-f51.google.com [74.125.82.51])
+	By tombraider.mr.itd.umich.edu ID 5B5798C2.988CA.24411;
+	Authuser kevlough; Tue, 24 Jul 2018 17:23:15 -0400
+Received: by mail-wm0-f51.google.com with SMTP id f21-v6so3928501wmc.5;
+	Tue, 24 Jul 2018 14:23:14 -0700 (PDT)
+X-Gm-Message-State: AOUpUlHuCwI6Eg0BMyeDRwDFUAKHawgNFkwMLOyR3cYSikYVOyoykTDp
+	DqTzoUbtsaby9KzegJMr5yAPMiSdL+Le3ymDnxw=
+X-Received: by 2002:a1c:91c7:: with SMTP id
+	t190-v6mr3048758wmd.2.1532467393106; 
+	Tue, 24 Jul 2018 14:23:13 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 13 Jul 2018 08:22:15
-	-0700 (PDT)
-In-Reply-To: <CAB30WPccergMTSWWrwj-WhTCcaMvvW7vnAMO3qvy9b9B53N=zA@mail.gmail.com>
 References: <CAB30WPccergMTSWWrwj-WhTCcaMvvW7vnAMO3qvy9b9B53N=zA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Jul 2018 16:22:15 +0100
-Message-ID: <CAFEAcA8v762p3JSQ=9Vu68-evYS5MMH467pAo8=XZWsw+x6s7Q@mail.gmail.com>
-To: Kevin Loughlin <kevlough@umich.edu>
+	<CAFEAcA8v762p3JSQ=9Vu68-evYS5MMH467pAo8=XZWsw+x6s7Q@mail.gmail.com>
+	<CAB30WPfKKesSfvyEx9ZpSUQShnXJnH1YCXgZgp0OoY888r0K4w@mail.gmail.com>
+	<CAFEAcA-_ZiPNz7tyQy2otZ6z9rT8wszhRxBZrmNXTr9AFaBzqg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-_ZiPNz7tyQy2otZ6z9rT8wszhRxBZrmNXTr9AFaBzqg@mail.gmail.com>
+From: Kevin Loughlin <kevlough@umich.edu>
+Date: Tue, 24 Jul 2018 17:23:01 -0400
+X-Gmail-Original-Message-ID: <CAB30WPeBwR2EK_pNssyH0od0UQb9sj-jgx4rs5pR7UQ=pGM6VA@mail.gmail.com>
+Message-ID: <CAB30WPeBwR2EK_pNssyH0od0UQb9sj-jgx4rs5pR7UQ=pGM6VA@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.6.x [fuzzy]
+X-Received-From: 141.211.12.86
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::233
-Subject: Re: [Qemu-arm] [Qemu-devel] Native Memory Virtualization in
- qemu-system-aarch64
-X-BeenThere: qemu-arm@nongnu.org
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] Native Memory Virtualization in qemu-system-aarch64
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-discuss <qemu-discuss@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZcDEvyrwsP26
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, "Mickens,
+	James" <mickens@g.harvard.edu>, qemu-discuss@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5mqsWSw7/dk1
 
-On 12 July 2018 at 17:48, Kevin Loughlin <kevlough@umich.edu> wrote:
-> I know TrustZone has support for memory virtualization in AArch64, but I'm
-> looking to create a different model. Namely, I'd like to fully virtualize
-> the memory map for the "virt" board.
+Thanks! That was super helpful.
+
+To confirm, support for IOMMU regions in the CPU's memory access path did
+NOT exist prior to recent releases, correct? My QEMU version is 2.11, and I
+believe you're up to 3.0 now. If that's the case, I may stick with the
+"changing priorities" approach, since I know you've also updated the virt
+board and refactored the system bus code since I branched. Additionally,
+you correctly pointed out that I simply want to map a huge chunk of memory
+in and out at once. However, the IOMMU solution does have the benefit of a
+more realistic approach than changing the priorities.
+
+On Wed, Jul 18, 2018 at 1:58 PM Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On 18 July 2018 at 02:34, Kevin Loughlin <kevlough@umich.edu> wrote:
+> > Under my setup, the CPU's MMU translates from VAs to IPAs, and an
+> external
+> > memory controller then intercepts all memory transactions and translates
+> > these IPAs to true PAs. This allows the memory controller to enforce
+> > physical isolation of environments, and does not expose true PAs to the
+> > CPU/system software.
 >
-> As a basic example of what I want, assuming an execution environment that
-> runs in a 1GB physical address space (0x0 - 0x3FFFFFFF), I'd like to be
-> able to switch to a second execution environment with a distinct SW stack
-> that runs in the second GB of a board memory (0x40000000 - 0x7FFFFFFF). The
-> key points for my desired memory virtualization are the following...
+> Ah, right, "external custom memory controller" makes sense.
 >
->    1. Both of these environments should have distinct virtual address spaces
->    2. The OS in each environment should believe it is running on physical
->    addresses 0x0 - 0x3FFFFFFF in both cases.
->    3. Neither environment should have access to the physical memory state
->    of the other
+> > My question is how best to emulate the memory controller given this
+> desired
+> > setup. I have three primary ideas, and I would love to get feedback on
+> their
+> > feasibility.
+> >
+> > Implement the controller as an IOMMU region. I would be responsible for
+> > writing the controller's operations to shift and forward the target
+> address
+> > to the appropriate subregion. Would it be possible to trigger the IOMMU
+> > region on every access to system_memory? For example, even during QEMU's
+> > loading process? Or would I only be able to trigger the IOMMU operations
+> on
+> > access to the subregions that represent my environments? My
+> understanding of
+> > the IOMMU regions is shaky. Nonetheless, this sounds like the most
+> promising
+> > approach, assuming I can provide the shifting and forwarding operations
+> and
+> > hide the PAs from the CPU's TLB as desired.
 >
-> I initialize distinct AddressSpace and MemoryRegion structures for each of
-> these GB blocks. Because all I want is a simple shift of physical address
-> for one environment, I hesitate to mirror the (relatively) complex address
-> translation process for TrustZone. Does anyone know if it would be better
-> to either (a) provide custom read/write functions for the shifted
-> MemoryRegion object, or (b) modify the target/arm code, such as adding a
-> shift to get_phys_addr() in target/arm/helper.c?
-
-I'm a bit confused about what you're trying to do. Without TrustZone,
-by definition there is only one physical address space (ie all of
-memory/devices/etc are addressed by a single 64-bit physaddr).
-There's no way to cause the CPU to not have access to it.
-With TrustZone, you can think of the system as having two physical
-address spaces (so to access something you need to specify both
-a 64-bit physaddr and the TZ secure/nonsecure bit), and the CPU
-and the system design cooperate to enforce that code running in the
-nonsecure world can't get at things in the system it should not have
-access to.
-
-The whole point of TZ is to allow you to do this sort of partitioning.
-Without it there's no way for the system (RAM or whatever) to know which
-environment is running on the CPU.
-
-You could in theory design and implement a non-standard extension to
-the architecture to do equivalent things to what TZ is doing I suppose,
-but that would be a lot of work and a lot of fragile modifications
-to QEMU.
-
-thanks
--- PMM
+> I would probably go with implementing it as an IOMMU region. We recently
+> added code to QEMU that allows you to put IOMMUs in the CPU's
+> memory-access path, so this works now. The example we have of
+> that at the moment is hw/misc/tz-mpc.c (which is a simple device
+> which configurably controls access to the thing "downstream" of it
+> based on a lookup table and whether the access is S or NS).
+>
+> As you've guessed, the way the IOMMU stuff works is that it gates
+> access to the things sat behind it: the device has a MemoryRegion
+> "upstream" which it exposes to the code which creates it, and a
+> MemoryRegion property "downstream". The creating code (ie the board)
+> passes in whatever the "downstream" is (likely a container MemoryRegion
+> with RAM and so on), and maps the "upstream" end into the address
+> space that the CPU sees. (You would probably have one downstream
+> for each separate subregion). You could either have the IOMMU
+> only "in front" of one part of the overall address space, or
+> in front of the whole of the address space, as you liked.
+> (Assuming you have some kind of "control register" memory mapped
+> interface for programming it, it can't be behind itself; that
+> would be "an interesting topological exercise", to quote nethack.)
+>
+> What the CPU sees is whatever is in the MemoryRegion passed to it
+> via
+>         object_property_set_link(cpuobj, ..., "memory",
+>                                  &error_abort);
+>
+> The virt board happens to currently use get_system_memory()
+> for that, but you can use a custom container MemoryRegion if you
+> like.
+>
+> > Go into the target/arm code, find every instance of accesses to address
+> > spaces, and shift the target physical address accordingly. This seems
+> ugly
+> > and unlikely to work.
+>
+> That's very fragile, and I don't recommend it.
+>
+> > Use overlapping subregions with differing priorities, as in done in
+> QEMU's
+> > TrustZone implementation. However, these priorities would have to change
+> on
+> > an environment context switch, and I don't know if that would lead to
+> chaos.
+>
+> You can model things this way too, yes (both by changing priorities, and by
+> simply enabling/disabling/mapping/unmapping memory regions). The main
+> advantage that using IOMMU regions gets you are:
+>  * you can do things at a finer granularity, say changing
+>    permissions at a page-by-page level, without creating a
+>    ton of MemoryRegion objects. Swapping MRs in and out would
+>    work if you only wanted to do it for big chunks of space at once
+>  * you can make the choice of what to do based on the memory
+>    transaction attributes (eg secure/nonsecure, user/privileged)
+>    rather than having to provide a single mapping only
+> If you really do only want to map 4G of RAM in and out at once,
+> this might be simpler.
+>
+> Note that for both the IOMMU approach and the MemoryRegion map/unmap
+> approach, changing the mapping will blow away the emulated CPU's
+> cached TLB entirely. So if you do it very often you'll see a
+> performance hit. (In the IOMMU case it might in theory be possible
+> to get some of that performance back by being cleverer in the core
+> memory subsystem code so as to only drop the bits of the TLB that
+> are affected; but if you're remapping all-of-RAM then that probably
+> covers all the interesting cached TLB entries anyhow.)
+>
+> thanks
+> -- PMM
+>

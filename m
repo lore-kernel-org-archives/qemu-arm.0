@@ -1,98 +1,98 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp862973wru;
-        Sun, 15 Jul 2018 14:15:05 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfLz1X/0fLD2UNS4YUKSGtR5SXzjvYxCwPe8zoRoKTHdvgi18nhg9L7VYbOS6Z4lf7pkM03
-X-Received: by 2002:ac8:2672:: with SMTP id v47-v6mr13083011qtv.287.1531689305020;
-        Sun, 15 Jul 2018 14:15:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531689305; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp6756144wru;
+        Tue, 24 Jul 2018 05:27:06 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpem+4NEHKg65igHV9f1fiQA4sdL70HrLsr/kfgSxwqtxLLbxCsq+UcQGbzDifTfyyRVt5t4
+X-Received: by 2002:a37:79c5:: with SMTP id u188-v6mr14456198qkc.82.1532435226908;
+        Tue, 24 Jul 2018 05:27:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532435226; cv=none;
         d=google.com; s=arc-20160816;
-        b=qSGq2oD8tP2gC9h4eJk+nco6GSnrmunYe5Z/02IdBYX0muuJW0R7CouiFmd28GDA+X
-         iorYDXcsT4CqlxxPEkut5U4rcJUpsq98F2gYjx1MFXKR5Frh6F9kJ4CXIEG0BPSkZ4Gc
-         woGfUBgsYgWCr8B0x3wJwhGWTBnj1wtL9kKSD4GbnSkJ+igSoJzizus2jc7jDGRkZ7J7
-         N6sac8toWmHH4iDKel0K08+nPSStUk8bGhWk8TIDCSMiY7ipzUuqR1nvlEXjObOrDj0H
-         3stzh8TTNn4udWyHzBL1gk/Jr9qMehZ1ur3KhtaRgmXJE1G0JrICxHOigv6JCTY6XrcQ
-         /s1Q==
+        b=mYywpCdSZjzLOx4w+HGwpfkqxtkFLbO69tmYYTJ5Ao+7PYSMjiwDM2X53bpmJ6GBfR
+         sJRBNt51b4xRT19zE5wxEdoHecLLy0ps0SQ8qLvWmDgVU3jLteIKQyW2Q2aONaa8CDX+
+         MdTZDMkqBmpuVxJ6gaXFW3i50eHzHE9ly1le1ieaDl5W+eV7uCm+VWl6EOmX2rRb/67z
+         Q8X5RUmDQ/Fw8dG4gE9b9WP8NX437APBauuhcIpq7RGmxZgzIRj8o6UQ+xGbYt99gUqd
+         371a/JZ3kVMQRw3dFg1Sy1eTun7avQ3r4t7m37DO85ISuaMRH5P6gRAzKmZxOUAyqvXx
+         o0ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=iLCJvmXY5UK5EujMCZbXsVLfb9PF48aMj8RfsDgp+cY=;
-        b=XBvNbvA+uu6StKMVvedlefh9MPzefCZnbPjHE6xMAA4Cey4USVon/IHvyOdxSDGcZq
-         B5tEuZQuUPWFTO6OTCoS66c6CMrX9LEkW6N14+VY6zUXJ5Bwng1VVTyEvZ9BUt5HLEvj
-         O3dE58sKR+wi/POp0anE4mxgEnWtCF0otQHDLvaWIVhh8bJSisTgXp9UZpWFt21fDEwe
-         8bfKthq2s6Dex4WowPqJkDlCdLamiO+LLyCizXWWu0yYQwLV8pJdBuJngWimkUk/UU93
-         y7W6al4unr4zz/asalmkTkglefKYs1sysZFrANg2tvmv1On9RCOT4PVuwWivH0SpDdw3
-         kzAA==
+        bh=cHUn1k2CGHMarApIf3DMyB+TWn+mW3wgHLgvp1wR9nU=;
+        b=wThST+05deJXKdSwu1QMkwXcqahAIhJu9Rib96UEpKLD/ge/4mCbnkm6OOcAqWBnmu
+         lm+Q0NFkG81TbJAW3Iz37wS8mzU+YWhFJl3dLaXnn7UwQhNWWmbkrlwp2nrJcyePasXh
+         e6sdUAJX59kLdyc5g5t8ROUkxflU4qn61X/a5Hfjoe+25YN995Y1X2Ifb4Z7xT/N0IZF
+         ZbVZXPpoUal+TSrcFStQWADFg5MVQaYU8cHMrGqySyflKBVh34GnkN+kYBEuw+ZeedqM
+         Sg0fFzNeP59wasIurO8S3WcYDt8SpwBhJc6KjP85MSg+JUpTeWQrmOryJlM08P+QHNnm
+         QVMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aZIti+xj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=k2hlNYxk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b186-v6si2009270qkc.364.2018.07.15.14.15.04
+        by mx.google.com with ESMTPS id y6-v6si8037284qvf.69.2018.07.24.05.27.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 15 Jul 2018 14:15:05 -0700 (PDT)
+        Tue, 24 Jul 2018 05:27:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aZIti+xj;
+       dkim=fail header.i=@linaro.org header.s=google header.b=k2hlNYxk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47553 helo=lists.gnu.org)
+Received: from localhost ([::1]:40195 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1feoMC-0006Tr-Hy
-	for alex.bennee@linaro.org; Sun, 15 Jul 2018 17:15:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38283)
+	id 1fhwPC-0001aG-Cw
+	for alex.bennee@linaro.org; Tue, 24 Jul 2018 08:27:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39402)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1feoLy-0006Tg-1x
-	for qemu-arm@nongnu.org; Sun, 15 Jul 2018 17:14:51 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fhwP2-0001a6-BV
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 08:26:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1feoLx-000235-0U
-	for qemu-arm@nongnu.org; Sun, 15 Jul 2018 17:14:50 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:38249)
+	(envelope-from <peter.maydell@linaro.org>) id 1fhwP1-00027y-Fu
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 08:26:56 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:38357)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1feoLw-00021X-RM
-	for qemu-arm@nongnu.org; Sun, 15 Jul 2018 17:14:48 -0400
-Received: by mail-oi0-x244.google.com with SMTP id v8-v6so71281450oie.5
-	for <qemu-arm@nongnu.org>; Sun, 15 Jul 2018 14:14:48 -0700 (PDT)
+	id 1fhwP1-00027f-Ah
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 08:26:55 -0400
+Received: by mail-oi0-x241.google.com with SMTP id v8-v6so7096227oie.5
+	for <qemu-arm@nongnu.org>; Tue, 24 Jul 2018 05:26:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=iLCJvmXY5UK5EujMCZbXsVLfb9PF48aMj8RfsDgp+cY=;
-	b=aZIti+xjQ1dBwT3IMCqmczeVYTWtfcQlJsXyWvfr0eVy8GeDE2l+V4mNrjDbK3jPkZ
-	JMkpEhggVXF6CheiLbCYYkkT+Z7ifp2dlwixtPeNzPGqgrWAaDMIQ18fEr4x8wXc0SXR
-	Et812En7vSZ02gDBbPriFdRQPZPjxGt4Aucw8=
+	:cc; bh=cHUn1k2CGHMarApIf3DMyB+TWn+mW3wgHLgvp1wR9nU=;
+	b=k2hlNYxkOqwUGTtts4njS8gXAGU72gfFJ3UvAnwO6pyKKo2YAE+GOsIPwmAYobA1rL
+	sA72TxRWUdx4YqTarV62r4NIKDGYA/MPm/IG2yN7lzO1mzs0WTWsbsqi5KdUBx6+nPoS
+	8u1SzJ1pa2AZMOzfaODDlbfVT+t/ZBUnZTmoQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=iLCJvmXY5UK5EujMCZbXsVLfb9PF48aMj8RfsDgp+cY=;
-	b=Y9fhOoVghUXVQQlxlYeGvT9URMQqNO1VOPCPL6UmjTHOTTfrz83LlYLe33zDcR4ZuN
-	RfTYzPgYToFCGmKZU65yrmOFPd0sF+1/2q8HhBoQtiPDMGiBwYYmtGxVNGPm+IXjsr97
-	DBh+w9PlLtSlp8XSc9nIlq/GJtMY+P9lCKkxT6vGMdmVxwZCVCtayemNkGPLWOYGlifd
-	fJlyDaHyZJ0p0g5/zR9E3umQpPvtikI4gvE2hvFWRlkpnwTXvB1Kv65SE2XLQBy60J70
-	SCk9LG8TEIE7+uib+nrX5HHzrXxhJ856wIUfJALoDizPaxjbjUD/do0f7l66z32wAFRu
-	Hv/Q==
-X-Gm-Message-State: AOUpUlH266wAZtEDHTmD/jRBaAhFEQtMO2duTRyq2DAMcaGJ7uo56Iuq
-	sH4FsGT1dkBw6HX65f0gfQWBAwwI1GwM/5/i5i3Rvg==
+	bh=cHUn1k2CGHMarApIf3DMyB+TWn+mW3wgHLgvp1wR9nU=;
+	b=l6FpQfy24atFVvBAeqlsHqptEm2twvWdeOuASXyBcKtxhb4PhGDknFXgbXmL1z/1jg
+	VOGsFx38yLehYaAxI8uzXqngfi4KcWz3NREIALUjmiR5HmgeTsZtiZLm/SoAEHn6zqBE
+	68w2/qUuvX4l2RmW8y4Jjr46ErNqmCFiKWETa63O3pdcmO8IUQrnjUlMY9OsRTah3U25
+	hn9fsnAjF/GZp3ljITwOme5zyCq7G6bPWtwyzVqvXjAQTj9KdnjEYMWZ4SuW6GjugZtw
+	XcyS8hSXNfpUCcFe4uHjAtJS5o8UnTD7EajNh5uOEOFiVwrPEmCf2xNqLqgEMltdPFLC
+	UIRQ==
+X-Gm-Message-State: AOUpUlGnluA3ROCDLJpVXwxRrs03gAK6/7eydJJYiejPw8ulgrspPoCK
+	jTuP3kQy8Dozw121cf743gR8+H7JPoXHip43+cBU7Q==
 X-Received: by 2002:aca:7247:: with SMTP id
-	p68-v6mr16317758oic.252.1531689287846; 
-	Sun, 15 Jul 2018 14:14:47 -0700 (PDT)
+	p68-v6mr3135524oic.252.1532435214664; 
+	Tue, 24 Jul 2018 05:26:54 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Sun, 15 Jul 2018 14:14:27
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Tue, 24 Jul 2018 05:26:34
 	-0700 (PDT)
 In-Reply-To: <5c3ec438-2265-94b4-4f35-71a79d838518@twiddle.net>
 References: <20180713150945.12348-1-peter.maydell@linaro.org>
 	<5c3ec438-2265-94b4-4f35-71a79d838518@twiddle.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 15 Jul 2018 22:14:27 +0100
-Message-ID: <CAFEAcA_d41+M=tu5DTDrB9=6s5qTQnPZau42s4UyfNWFU8AkZQ@mail.gmail.com>
+Date: Tue, 24 Jul 2018 13:26:34 +0100
+Message-ID: <CAFEAcA8fFxKEbwC=rfp28cTMUT2eQVzGS8qc5tLowK3XYwEvrg@mail.gmail.com>
 To: Richard Henderson <rth@twiddle.net>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
+X-Received-From: 2607:f8b0:4003:c06::241
 Subject: Re: [Qemu-arm] [PATCH] accel/tcg: Check whether TLB entry is RAM
  consistently with how we set it up
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,7 +112,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	"patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WXqzfR8mAb02
+X-TUID: UFg/4uGGlaSr
 
 On 15 July 2018 at 01:37, Richard Henderson <rth@twiddle.net> wrote:
 > On 07/13/2018 10:09 AM, Peter Maydell wrote:
@@ -122,13 +122,13 @@ On 15 July 2018 at 01:37, Richard Henderson <rth@twiddle.net> wrote:
 >>      }
 >> +    assert(tlb_hit(env->tlb_table[mmu_idx][index].addr_code, addr));
 >
-> Don't duplicate the assert; just move it.
-
-Yeah, the duplicate is unwanted: I probably ended upit
-from a botched conflict resolution at some point in a rebase
-when I was moving it around.
-
+> Don't duplicate the assert; just move it.  Otherwise,
+>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+I propose to put this patch into my target-arm.for-3.1 branch
+(with the duplicated assert deleted), unless you have another
+preference.
 
 thanks
 -- PMM

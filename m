@@ -1,146 +1,132 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp6729409wru;
-        Tue, 24 Jul 2018 05:00:44 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdng+380tvMHzyKuJ1TBbaypLX4TAheFcsMZSMHYe742rqz7NTywr79JiB29d37ve3dWHQk
-X-Received: by 2002:aed:24b0:: with SMTP id t45-v6mr15943129qtc.86.1532433644293;
-        Tue, 24 Jul 2018 05:00:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532433644; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp6753613wru;
+        Tue, 24 Jul 2018 05:24:16 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcLmNUui5b1d/MJNjoHJQaQSGfsM8QMTbEHB6mi6H4DtjLnYq96ldhmo3F0Q4RC2Vo9JV2i
+X-Received: by 2002:ac8:218d:: with SMTP id 13-v6mr16219123qty.122.1532435056476;
+        Tue, 24 Jul 2018 05:24:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532435056; cv=none;
         d=google.com; s=arc-20160816;
-        b=p1/Se/N3gTn5EE/v7NuVtyRw+mMA0ixUe1ndsFMPzmCu6OmHtOR/QvIEiOSUy3vK7W
-         RPAa8i22mtVRFc+SDO5aoC/nxDM3izymQ1Sfrs/nwdIWnybcQrnq4CtDwELrdqHdbpIo
-         dyZE3CMqMfQb+Er3Rnhz/9u5t4mE/Po+eKy2nuJO1Bq14gvKZDPo/T/ahi4jc08fI52u
-         cXQFN4P4LdcLbOzHdWleWnXtvLC/nMRhT1MjT5zpO+RXamPG3w1En4N4EaCd1xWcdvsN
-         r0UEaauhFnp5o8RoAXz1AofQFtWkag3HG9acmBI6zO+CILRvTxXlD0+sWJwARKZKkJMZ
-         fl/Q==
+        b=1GV/0/raDVlR5EBh62cYtWD/PML1kWS6w+KqPUj4i0gwU9zV7Dhp2PCRpZU04pya96
+         7vzVZcwsQiS1DniFExgEEU9BymWURnSypzBIQw9HYA14S7jkbccg7pfOREeaF1KZVht3
+         jRcm87i58Ok5AV1cGmGXe59OrHfvUAlMw9ly67AoiHbBWnViYa8P0zvwNbZGybgp5FEM
+         dzeeGddyZk2XP8qkQUghVsxqvcZu1kjz46sqe4w2JIqakAJUKM6EahAX59H5zMlLC+Di
+         xQ2vJ6zSzsl8jL3P/D9C29QNYJths0Ryjkl3V2HEIHWhvB8EPbOFHW7zl9SF16rg9saR
+         bPIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=FZMPRIiV48xqOC5EKZNnqpBysG51R8gx/TfgU6ogPVc=;
-        b=uvqV7spUQ5bYNN6YJxKxe5pmHfOPcTtEdJe2ok6GNOGkuGSs5wNik8Y3QgocrZlymk
-         iqgxUWE5SUrTW+Hh6jXMa2la3Se+BTllFVNqt4YyzLIa7YBdb6CYmylyohmM2WGjXfoq
-         cQtiumpUiYlSf/5gKn8LAQWJ09UgygG+8+eIJpdpnuctADXLqBg/q5D2kXUzCXNyFd87
-         Ew4cxiww6lI8sQHI2s6OoybeaVg3x2SZsHvkthDeH92BvIhXRL1Xi2Uq09GNOA0u/sLf
-         yldH36FMM2T1hu6S8zBqZWRYYUSE7n0ihXutjdSKYT/zuHilyH+3KLh4pqNCRNf3yxV+
-         rB4w==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=L6DDu/x6PjPhhJCprDvcGyLbbs80zhLkT/+6x60SQMQ=;
+        b=tOEdMJqy04+IAutraweMPL4bmVXJ3lydOJxp1SrXyHH0OQunYxuw1+3c/MVbN+QYk/
+         QBocLhQ8X6+okD1i2JTRxA+awJ1UJE3fuvcVbgSWgu2FUO48nwlrOmlopLAIcWGFd0cl
+         Fo3jNYKXFoNa7Nt3XMkpeCFyEomuKSfNuEX7ll1uJgT38FiOBGUHryW5xHr3bgxGtM6r
+         D0vgxN260ZJFRJm3bmOFAd7TGV36RsPr7HYFs3SUWg/EDKEFvAnZoKmaMsUPN8X2IvNM
+         4OOYYqlRwz5RuISNB4x7XL0abmwpQRssBbWCTKrJ6ZLaYt0Na23yIBsHdOIzjQ/Tpwa6
+         sc6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=JiS7cQpa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t68-v6si658524qkc.395.2018.07.24.05.00.44
+        by mx.google.com with ESMTPS id n57-v6si3026602qtf.327.2018.07.24.05.24.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 24 Jul 2018 05:00:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 24 Jul 2018 05:24:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39744 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=JiS7cQpa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40177 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fhvzf-0008Tt-PP
-	for alex.bennee@linaro.org; Tue, 24 Jul 2018 08:00:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52167)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fhwMR-0008UF-UX
+	for alex.bennee@linaro.org; Tue, 24 Jul 2018 08:24:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fhvyx-0008CF-G4
-	for qemu-devel@nongnu.org; Tue, 24 Jul 2018 08:00:00 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fhwMH-0008TP-7y
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 08:24:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fhvyw-000394-PZ
-	for qemu-devel@nongnu.org; Tue, 24 Jul 2018 07:59:59 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43714)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fhvyu-00034o-7G; Tue, 24 Jul 2018 07:59:56 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fhvyr-0008PD-5Z; Tue, 24 Jul 2018 12:59:53 +0100
+	(envelope-from <peter.maydell@linaro.org>) id 1fhwMG-0000UX-A6
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 08:24:05 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:41444)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fhwMG-0000UN-3l
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 08:24:04 -0400
+Received: by mail-oi0-x244.google.com with SMTP id k12-v6so7065750oiw.8
+	for <qemu-arm@nongnu.org>; Tue, 24 Jul 2018 05:24:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=L6DDu/x6PjPhhJCprDvcGyLbbs80zhLkT/+6x60SQMQ=;
+	b=JiS7cQpab/xj/OQlQ6mOpnKcKBx5Ey1Oy1N6kGoaCx7Kaw19QgxGQawzQ0gH/g2OYz
+	un+FxiftqnYB3wqG0sZDPD9exMlhVxfTnZs2jltmDPA4WedKe3ov8l51bB2rQwd2mfVQ
+	hs8sOLnFT303DBJfnGpGZJWyga/Fi3EgZnPSg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=L6DDu/x6PjPhhJCprDvcGyLbbs80zhLkT/+6x60SQMQ=;
+	b=R8ae5XI4Z8HMwqSl9mipCzH0G0rtXYWxHMW0RpY6phgBP6HheLLbwZF+UD+DVzAj66
+	HM5QH9JmL2PRi9El610B/3M9ky6eAlWupIZlGxQ8lcpSlo933/RIth2R3DQpUMmbXfsz
+	3P5yyvD++BUE60xqCxYSGTp+CRKPY1gVVyLyJZ3J4v3TWXW8dfwjmXyAsWWiPotWIHyh
+	aHEscAQoZnZANFOXKxMQjHrYn/BC75QwtzC+AUn/XH2RWcbzikwvfQAQBMThMEmW3Joo
+	rBnZfsprFXuj6lufbi9g8WBvb6zh0kt4zPxBcqhGr7wIrMQyXuDR8NH+8yzp45Zs7lrD
+	0fRw==
+X-Gm-Message-State: AOUpUlELsLt9BTX1qJy2Ealv5oeO3KCPhiWewZCo26GVDA9F7woiImzh
+	oxId2L9QEsjVELh+WYIYpOarI4PZzKx6IzbP7mxQ5cHZ
+X-Received: by 2002:aca:f409:: with SMTP id
+	s9-v6mr3152900oih.102.1532435043430; 
+	Tue, 24 Jul 2018 05:24:03 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Tue, 24 Jul 2018 05:23:43
+	-0700 (PDT)
+In-Reply-To: <20180710160013.26559-1-peter.maydell@linaro.org>
+References: <20180710160013.26559-1-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 24 Jul 2018 12:59:47 +0100
-Message-Id: <20180724115950.17316-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180724115950.17316-1-peter.maydell@linaro.org>
-References: <20180724115950.17316-1-peter.maydell@linaro.org>
+Date: Tue, 24 Jul 2018 13:23:43 +0100
+Message-ID: <CAFEAcA8t3+4A442TakdmcvYSh5s1iV80oJhJnsmjdzG19PTZXg@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-devel] [PATCH 2/5] target/arm: Honour HCR_EL2.TGE and
- MDCR_EL2.TDE in debug register access checks
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH 0/6] accel/tcg: Support execution from MMIO
+ and small MMU regions
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G0TwKTREbR8v
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "patches@linaro.org" <patches@linaro.org>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	"Emilio G . Cota" <cota@braap.org>,
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: quk+ErCuKsKu
 
-Some debug registers can be trapped via MDCR_EL2 bits TDRA, TDOSA,
-and TDA, which we implement in the functions access_tdra(),
-access_tdosa() and access_tda(). If MDCR_EL2.TDE or HCR_EL2.TGE
-are 1, the TDRA, TDOSA and TDA bits should behave as if they were 1.
-Implement this by having the access functions check MDCR_EL2.TDE
-and HCR_EL2.TGE.
+On 10 July 2018 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
+> This series adds support to TCG for executing from MMIO regions
+> and small MMU regions. The basic principle is that if get_page_addr_code()
+> finds that the region is not backed by a full page of RAM then it
+> returns -1, and tb_gen_code() then generates a non-cached TB
+> containing a single instruction. Execution from these regions
+> thus performs the instruction fetch every time, ensuring that we
+> get the read-from-MMIO and check-small-MMU-region permissions
+> checks right.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+Hi; this series has been reviewed, and I propose to put it into
+my target-arm.for-3.1 queue, unless anybody has a preference for
+it going into master via some other route.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 22d812240af..e2930e99388 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -444,9 +444,11 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
-                                    bool isread)
- {
-     int el = arm_current_el(env);
-+    bool mdcr_el2_tdosa = (env->cp15.mdcr_el2 & MDCR_TDOSA) ||
-+        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+        (env->cp15.hcr_el2 & HCR_TGE);
- 
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TDOSA)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tdosa && !arm_is_secure_below_el3(env)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
-@@ -462,9 +464,11 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     int el = arm_current_el(env);
-+    bool mdcr_el2_tdra = (env->cp15.mdcr_el2 & MDCR_TDRA) ||
-+        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+        (env->cp15.hcr_el2 & HCR_TGE);
- 
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TDRA)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tdra && !arm_is_secure_below_el3(env)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
-@@ -480,9 +484,11 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
-                                   bool isread)
- {
-     int el = arm_current_el(env);
-+    bool mdcr_el2_tda = (env->cp15.mdcr_el2 & MDCR_TDA) ||
-+        (env->cp15.mdcr_el2 & MDCR_TDE) ||
-+        (env->cp15.hcr_el2 & HCR_TGE);
- 
--    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TDA)
--        && !arm_is_secure_below_el3(env)) {
-+    if (el < 2 && mdcr_el2_tda && !arm_is_secure_below_el3(env)) {
-         return CP_ACCESS_TRAP_EL2;
-     }
-     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
--- 
-2.17.1
-
+thanks
+-- PMM

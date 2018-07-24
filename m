@@ -1,94 +1,70 @@
-Received: by 10.223.150.237 with SMTP id u100csp711587wrb;
-        Sat, 4 Nov 2017 01:55:55 -0700 (PDT)
-X-Google-Smtp-Source: ABhQp+SrgEa4IMkC44BFprPonYdSZrDUY9C3kalBn9h3/l2ykS/7za2LrRt54RnzryVeooj3NEA+
-X-Received: by 10.129.156.10 with SMTP id t10mr6375682ywg.9.1509785755905;
-        Sat, 04 Nov 2017 01:55:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1509785755; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp6728663wru;
+        Tue, 24 Jul 2018 05:00:09 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfEFiOv2x3LhG3Nw0WIg5ttUHrawPX8KazdCEneWMopQMsi/crtzgDYNE6gonC9BaSKHWJb
+X-Received: by 2002:a37:e103:: with SMTP id c3-v6mr14718223qkm.33.1532433609690;
+        Tue, 24 Jul 2018 05:00:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532433609; cv=none;
         d=google.com; s=arc-20160816;
-        b=z9VyRkmh0aI5TfBBGCZyOImITrlNYnEwjdPlXcqsU9NhTV43A2W8o1g26CZwGEL5EL
-         CzoZvf5NK/aXHVngqm/ov5BRGlAChcvMJ44OVL4/GJfdf+EH8m+MQwkee8jgAwV6U/jd
-         txNdbMWj2d52V/69mH5N943TjVjCYEshq6UeFgXF1F7QcJ6yrHimeAJl7c5zXfRQ2JqE
-         +Mty5PEgxFtAxBRwrXCLF9rO0XruBBG8GH3evV5rZRXXyypFw/1nvbjVXZFcJAD8QtUS
-         oHRG12/bvdcuIpQNDMEXL2n2D/WZ903RSyPg5H2VagkLwd/81NjOquhf28LLD/4ZptlV
-         4r+g==
+        b=rxemMtNYqwLcwLtZytcIQGT2Brkm7l3NTXoOUSXDJYHqpOszeaJPHDSq57JJG5SXQP
+         omgK3LifkceGWTH7ZgX+M15y3+gXM6bVkLMeUyQfX89QWVDKKt/e/QbV9cUNJCnM6Kxh
+         bl4M3Zm3N3osUkNINqjXIy6sKWHj9PtIgt+42yjRzAgIigHAy9QeD3leHT/0AoGPNwrZ
+         22YgMdQYUVaf3lPSWKY8VpUG0js+7jE0lEcq6CttZIPS5OemsfE0BZw+SIA/B2ebqEw5
+         Z1abiE1Dau90GrOeRORAZSj/7KNFDbvkmqTzw3fPLWkcvn4vsrU884ZOrmW+ZWX9ojpe
+         TdjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :arc-authentication-results;
-        bh=P5wqF/8kuFOUZaYZH5HgXH/4gWyLfr2GUjYfjo6qs5E=;
-        b=LaF1d5LMzwNT/sePXjIKyHnQ6J0vZPO+Kj+CAXBOOv7gBdoJiw/SU8za82WkZwAuZR
-         j0BoyEbMEtd2jm84UUUE+87taZI3WkpDMzjgxwJx1WodqVyC12iOsc5q4iz0sjXvKIlS
-         mjQlinBqassQeaw4FKd5zJuzAViH+Ts0HrtRUPxctKyhq9nNJItqJVoSu8GbQ/wacxkF
-         CyMeMoTP0rFWSm+A4bjluXy0HWaWfZR5hxXuYrKPlrIm1y6QBXnwu7t/XQ2aajgTDXcz
-         YPgRLuN9egc/AQI1ZbB96QSpK0H/nx/pwKizcH1tLv3WOseEsVRWZMZJPTqA0QbX7zag
-         JWXw==
+        bh=1P/zauwyRldnEdVV8YnBfV20lNb+Bz4QIRJyc+ZeeqM=;
+        b=PPami0fCqJzWaMDzCj5PgfuThRlH6al28vE0xqnXEGSmNnbs3zwbwJcMrpHwLvr764
+         KG7mKMLMigL3wiRtAarN2Ysa4qbhJRU1ZzQsDS0088F90M9lN8x+FK3BJXbl+/MMzl4i
+         IIzsUsxM34/PXAf2qSHkWpZnexrjzIiD8r16cInL5ZkOOWJJElIpRhV3500KY7eRd4Nf
+         QaQ55iEVd3MZ+coHQgueDoD47tIZ9WhXsDwlotQKdvNLQ6i6AefteBaRsPrVaB0SQuoX
+         bnH0zzeDluFQf+shE1nJrzdHlr+SnYkA1WUUIdrAv5hcjk+lM4QRfcVs8l0tgICoirF0
+         86jA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e123si502046ywa.598.2017.11.04.01.55.55
+        by mx.google.com with ESMTPS id r5-v6si1071972qkr.250.2018.07.24.05.00.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 04 Nov 2017 01:55:55 -0700 (PDT)
+        Tue, 24 Jul 2018 05:00:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:40181 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39735 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eAuF9-0004Fz-Be
-	for alex.bennee@linaro.org; Sat, 04 Nov 2017 04:55:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50966)
+	id 1fhvz7-00089f-3l
+	for alex.bennee@linaro.org; Tue, 24 Jul 2018 08:00:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52043)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eAuEy-0004Eq-LN
-	for qemu-arm@nongnu.org; Sat, 04 Nov 2017 04:55:45 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fhvyt-00085b-CL
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 07:59:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eAuEx-0000bl-Lm
-	for qemu-arm@nongnu.org; Sat, 04 Nov 2017 04:55:44 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:59486)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1eAuEr-0000WC-1z; Sat, 04 Nov 2017 04:55:37 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MIjEq-1e8iNT2pom-002I3E; Sat, 04 Nov 2017 09:55:19 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	(envelope-from <pm215@archaic.org.uk>) id 1fhvys-00035T-Ir
+	for qemu-arm@nongnu.org; Tue, 24 Jul 2018 07:59:55 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43714)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fhvys-00034o-Ag; Tue, 24 Jul 2018 07:59:54 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fhvyp-0008Oj-SR; Tue, 24 Jul 2018 12:59:51 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-References: <20171103202624.5956-1-laurent@vivier.eu>
-	<db255c93-a4c6-216d-8ea3-10f340a916f6@amsat.org>
-	<257f2a30-6607-cb14-3bbf-27b95d962cf4@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <89487dfd-f941-871f-e822-68a6fbace6fe@vivier.eu>
-Date: Sat, 4 Nov 2017 09:55:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <257f2a30-6607-cb14-3bbf-27b95d962cf4@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:0/S9sY+jhA2Gxe/0KICpmHhEwkFnSkzzzQSCI6lmpuYFXaHq4Rz
-	+B1U5ysSOF4CPT3HEeXwbURbxv8jGxqZ6IQHZ5EZwZFfzmMElS+4LRnRfy9YUCTCQbwBgZG
-	5IrlL2xdHeVDlQ87ea4HT03LHeRuUvgI1SEMOQ6zv89YN3VnbFYLAX5QCgGPIWjRFiW4CUd
-	9x2PeJNZAdZQPut7bWO5w==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:wjxUAir7qsg=:3cQuNmSFk91NR3mMvc+Krw
-	9tggUZ/tUhdrLx5aVsvGJlZZxG8iK8t85OFNT0RQjf/6LWgc65ve+NvuYhvuzQioIF8Tfv1iR
-	Ss+CBTnsA8aeQ4xy9Bj67tEZCzMAAKkI7diQ9V6pvH6fqr5N3kGCUFbEIPwVkXNeFYDZISfuo
-	xDr5gFQHs3eTbR1e8Nb6tA3blzQd83KDk8xtdB62ErrPO2MED+hSm1qxxjVk7SX16eXOc3oYE
-	ZQqym27ENKwUSXj1LRjdls6qt8tt2UQGkKBVgQTUHy5nTGDldoLbnkM5rwKwsw0Z4AwaOzUXo
-	QRDdIVNGA9BHuygCmSvVK2mhT5SbP+WjC4OYedVhj4fdnLZ6zK6XhgE/+Rru+iMGvSyWcmsgu
-	hCAjvnQ9AVxESTOpg+63MAeu2B0PvCy9+VF1jye6likS/t4O6kFPig3kkb5K8pC5QNCx+7wpn
-	rX8nQ1QY8U+xkTbWkdKboHO2jmNFGj65+bBc2n9c6bFASS4iRuVi3aqwl8GrTw0mDe8WbM1+9
-	yJvcsixfqUoD4MUJH/5y7Se4aBflZ70UYfAtFk+OvVkFfmLE5a4YjToHkfF9Kd/WfNtDclTfR
-	axL7yjd+RX2SAd0YyIxRiOjW0vtFe5zihvh1Jahdn6SodQFRiy6en3wUqu/O9v2HO9mgkChE2
-	3QNh83nqjOhDHGi44kSBHiRfmg5zC2CINbYRcToAOXJKbYsPIEokCFQnoh1Imibwxi79aWI72
-	RbkmgaM83eIj7O7FmUJ5J/YnoHkpxJIapRkKglXkdufyOxkj+cLsGwX5cGo=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-arm] [PATCH 0/4] softfloat: fix some helper definitions
+Date: Tue, 24 Jul 2018 12:59:45 +0100
+Message-Id: <20180724115950.17316-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 0/5] target/arm: Implement HCR_EL2.TGE ("trap
+ general exceptions")
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,117 +76,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Stafford Horne <shorne@gmail.com>,
-	qemu-arm@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7VKM4SOJOBVY
+X-TUID: 0SXn3bK63RF1
 
-Le 03/11/2017 à 22:51, Philippe Mathieu-Daudé a écrit :
->> On 11/03/2017 05:26 PM, Laurent Vivier wrote:
->>> This series fixes some errors found by
->>> enabling USE_SOFTFLOAT_STRUCT_TYPES.
-> [...]
->>
->> I'm getting those errors:
->>
->> $ make subdir-arm-softmmu -j2
->>
->> /source/qemu/migration/vmstate-types.c:430:5: error: conversion to
->> non-scalar type requested
->>      qemu_put_be64(f, float64_val(*v));
->>      ^~~~~~~~~~~~~
->> make: *** [migration/vmstate-types.o] Error 1
->>
->> In file included from /source/qemu/fpu/softfloat.c:87:0:
->> /source/qemu/fpu/softfloat-specialize.h: In function ‘float16_default_nan’:
->> /source/qemu/include/fpu/softfloat.h:117:26: error: expected expression
->> before ‘{’ token
->>  #define const_float16(x) { x }
->>                           ^
->> /source/qemu/fpu/softfloat-specialize.h:95:12: note: in expansion of
->> macro ‘const_float16’
->>      return const_float16(0x7E00);
->>             ^~~~~~~~~~~~~
->> make: *** [fpu/softfloat.o] Error 1
->>
-> 
-> Also:
-> 
-> $ make subdir-armeb-linux-user -j2
-> 
->   CC      linux-user/signal.o
-> In file included from /source/qemu/linux-user/signal.c:24:0:
-> /source/qemu/linux-user/signal.c: In function ‘restore_sigframe_v2_vfp’:
-> /source/qemu/linux-user/qemu.h:472:8: error: lvalue required as left
-> operand of assignment
->    ((x) = (typeof(*hptr))(                                             \
->         ^
-> /source/qemu/linux-user/qemu.h:481:31: note: in expansion of macro
-> ‘__get_user_e’
->  # define __get_user(x, hptr)  __get_user_e(x, hptr, be)
->                                ^~~~~~~~~~~~
-> /source/qemu/linux-user/signal.c:2209:9: note: in expansion of macro
-> ‘__get_user’
->          __get_user(float64_val(env->vfp.regs[i]),
-> &vfpframe->ufp.fpregs[i]);
->          ^~~~~~~~~~
-> /source/qemu/linux-user/qemu.h:477:13: error: left-hand operand of comma
-> expression has no effect [-Werror=unused-value]
->       (hptr)), (void)0)
->              ^
-> /source/qemu/linux-user/qemu.h:481:31: note: in expansion of macro
-> ‘__get_user_e’
->  # define __get_user(x, hptr)  __get_user_e(x, hptr, be)
->                                ^~~~~~~~~~~~
-> /source/qemu/linux-user/signal.c:2209:9: note: in expansion of macro
-> ‘__get_user’
->          __get_user(float64_val(env->vfp.regs[i]),
-> &vfpframe->ufp.fpregs[i]);
->          ^~~~~~~~~~
-> cc1: all warnings being treated as errors
-> /source/qemu/rules.mak:66: recipe for target 'linux-user/signal.o' failed
-> 
->   CC      linux-user/arm/nwfpe/fpa11_cpdt.o
-> ...
-> /source/qemu/linux-user/arm/nwfpe/fpa11_cpdt.c:37:4: note: in expansion
-> of macro ‘get_user_u32’
->     get_user_u32(float32_val(fpa11->fpreg[Fn].fSingle), addr);
->     ^~~~~~~~~~~~
-> /source/qemu/linux-user/qemu.h:515:13: error: lvalue required as left
-> operand of assignment
->          (x) = 0;       \
->              ^
-> /source/qemu/linux-user/qemu.h:536:32: note: in expansion of macro
-> ‘get_user’
->  #define get_user_u32(x, gaddr) get_user((x), (gaddr), uint32_t)
->                                 ^~~~~~~~
-> /source/qemu/linux-user/arm/nwfpe/fpa11_cpdt.c:37:4: note: in expansion
-> of macro ‘get_user_u32’
->     get_user_u32(float32_val(fpa11->fpreg[Fn].fSingle), addr);
->     ^~~~~~~~~~~~
-> 
+In the Arm architecture the HCR_EL2.TGE bit allows software to
+configure the CPU so that all exceptions that would target EL1
+are instead delivered to EL2. This patchset adds support for
+this to QEMU.
 
-These series doesn't fix all the problems, only the easiest to fix...
+The required behaviour is described in the ARMv8 Arm ARM documentation
+of the HCR_EL2.TGE bit (in section D10.2.45 of DDI0487C.a):
+ * all exceptions that would normally go to NS EL1 must go to NS EL2
+ * SCTLR_EL1.M is treated as zero when NS
+ * virtual interrupts are disabled
+ * exception returns to NS EL1 are treated as illegal exception returns
+   (and effectively the CPU cannot execute at NS EL1)
+ * HCR_EL2.{FMO,IMO,AMO} are treated as one
+ * MDCR_EL2.{TDRA,TDOSA,TDA,TDE} are treated as one
 
-for this one, you need:
+Parts of this we have already implemented:
+ * the logic to route asynchronous exceptions (ie interrupts) in
+   arm_phys_excp_target_el() already correctly handles the TGE==1 case
+ * exception return code in HELPER(exception_return) for AArch64 and
+   bad_mode_switch() for AArch32 already catch the exception returns
+   which are illegal if TGE==1
 
-diff --git a/migration/vmstate-types.c b/migration/vmstate-types.c
-index 48184c380d..0c273d616a 100644
---- a/migration/vmstate-types.c
-+++ b/migration/vmstate-types.c
-@@ -425,7 +425,7 @@ static int get_float64(QEMUFile *f, void *pv, size_t
-size,
- static int put_float64(QEMUFile *f, void *pv, size_t size, VMStateField
-*field,
-                        QJSON *vmdesc)
- {
--    uint64_t *v = pv;
-+    float64 *v = pv;
+This patchset provides the remaining parts, which turn out to
+be fairly straightforward. (I was worried that this was going to
+require complicated changes to all the sysreg access check code...)
 
-     qemu_put_be64(f, float64_val(*v));
-     return 0;
+(Needs a fresh git master to apply, since there's a textual
+dependency on commit 042374c92e83.)
 
-Thanks,
-Laurent
+thanks
+-- PMM
+
+Peter Maydell (5):
+  target/arm: Mask virtual interrupts if HCR_EL2.TGE is set
+  target/arm: Honour HCR_EL2.TGE and MDCR_EL2.TDE in debug register
+    access checks
+  target/arm: Honour HCR_EL2.TGE when raising synchronous exceptions
+  target/arm: Provide accessor functions for HCR_EL2.{IMO,FMO,AMO}
+  target/arm: Treat SCTLR_EL1.M as if it were zero when HCR_EL2.TGE is
+    set
+
+ target/arm/cpu.h          | 62 ++++++++++++++++++++++++++++++++++++---
+ hw/intc/arm_gicv3_cpuif.c | 19 ++++++------
+ target/arm/helper.c       | 32 ++++++++++++++------
+ target/arm/op_helper.c    | 14 +++++++++
+ 4 files changed, 105 insertions(+), 22 deletions(-)
+
+-- 
+2.17.1
+

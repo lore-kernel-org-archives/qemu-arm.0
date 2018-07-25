@@ -1,121 +1,159 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp594761wru;
-        Wed, 25 Jul 2018 04:36:50 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpek0rbCunbrhKedpmtQOW0MkVOYq2e5vdbmkN9s7kGTlVss7KkvTG5ch35pIQuEOIrILjKP
-X-Received: by 2002:ac8:1928:: with SMTP id t37-v6mr19639043qtj.327.1532518609937;
-        Wed, 25 Jul 2018 04:36:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532518609; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp643265wru;
+        Wed, 25 Jul 2018 05:29:11 -0700 (PDT)
+X-Received: by 2002:a02:9962:: with SMTP id d31-v6mr19454237jak.1.1532521750904;
+        Wed, 25 Jul 2018 05:29:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532521750; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jx/MHtVuX3CQr7ct4vw/eBPCs5fmdooZ6X8Jx8AwlIytDt+GptWQ0I/AA8eGd017hA
-         F8PvLu2jwuka7whBBTiWPk8WeQsdxbJqSXIG+PkMb3IoZdIQLYKN+b1YAR9dtazYe6kv
-         2Fk1Rh9IccQFj+Vjw7lv2+y8+nCdrLFoNVwjx85kyTzNCvsLKEm9XbhxsQnje7yQABVj
-         N9PZuaOWIDbEOio/oJrVizNtoriFfXcouuTUaulVoQ4wC8K/p/YFGDvp2oK0bL88l1FN
-         iIiwEIPoWJRZwgLHNMTewtQowvV6lpfUThAIRr3Zn2m4xwnmoiLrUZKp6JpbFu2ZzM29
-         w56w==
+        b=dGQmq6RpihFHdtB/86HWkibDXamIUBKGd5IC0eolDczUYkarHRREekJx9J630BcACo
+         CiijABvdXqiCHf8FomI8jGmcce+DVhhx8FfZtAUaK8QXwAfVbS+QevNYzeIy8JsLI3YS
+         fi7pnZL04M6CXP9jrSxtLa60ma1iQ1JAsrNA+h7eHv/NanN0AE1wHz6Kp/rVQIfo0SQc
+         KYeW0wCTNvRrEPAOnWp9eETEeuMGCMI3R/szziO9gf7JctFTDf98cxdfQ0CTJ/TUg57j
+         IoTV6WDi2ENCjeawIMf1Zr/vTIqK793wVGWk1iEXoS0kfjAQOh92O78RglK3hjRf5XD1
+         NGVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=drF5f305/AcYz3CrlpppjAO1kSAm2Xr41EcCBS9eMS8=;
-        b=dmnpQt8/KvvBqK4KxwAHbSXGan5aKjlc7M2l+N4+sYP4wXUGn8OHmrb01/PbRr7cjG
-         Asne2sl8F1grFAuhpl65yLsjiVM8EKPVXQLeANPWRE61eHenrys3QLoVBDCeMm7xcXjy
-         I1+N5ce/Pb/3ZA5y1GumbQcD978gxAqbfjbSESmmeaHb4/jJkaPyJa6WDAr1ho8fJR7V
-         Hbgs8KTBwJtrMrAFeMIPPGCMt9HxKpczgkxzYm+PW4sflqw5L1PnXUzLdhGeRfYaBscC
-         l+Gsi8n527nRhIz23TI8NefpZyHZhKjTYSBw9oXh45SLyh/1Oxp1PLtib+coFHczqzoC
-         Oobw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=Fw4UXBxDUB6gq+AyzJO9yfB5bzCPcrQTxWv2CyzfUvA=;
+        b=HUOa4dAUTbN3ulAPu4I4xVZk2odZgAobZQrUDs/bbRTkSEy3k2Ry+ABmU7+Q5FDs14
+         01eMZsohGw2FHtIEahT6iKMtmqQwAw80yNYIZUinzlCw/y6fJ/oT9cU+/znhXdqHdyGI
+         R855FpadcjOAkgbXmvaZ7GI1XLYAP73BdNd49p8lLX3XZNEx7p7luhAlm/THD2KFsY7g
+         wS+5V4bM3d7FEAIFf3inUb6ZpL0Rx8tQtjl/Nyk/cP+ao+LpWet7YVdzhzGcJqFJ6VrT
+         q1STC41BDg11l9eDi/K/ymiqePQIl3VGY/uCY6NtAgvRRBFwNZm//lUxxtYKLZuDDdgu
+         Sn+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id v89-v6si6774410qkv.257.2018.07.25.04.36.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Jul 2018 04:36:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EVuXtKlp;
+       spf=pass (google.com: domain of ard.biesheuvel@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=ard.biesheuvel@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <ard.biesheuvel@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id q14-v6sor4511624ioh.155.2018.07.25.05.29.10
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 25 Jul 2018 05:29:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ard.biesheuvel@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 62F2D87A76;
-	Wed, 25 Jul 2018 11:36:49 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id F1A76178B2;
-	Wed, 25 Jul 2018 11:36:47 +0000 (UTC)
-Date: Wed, 25 Jul 2018 13:36:45 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, radoslaw.biernacki@linaro.org,
-	ard.biesheuvel@linaro.org, peter.maydell@linaro.org,
-	qemu-devel@nongnu.org, leif.lindholm@linaro.org,
-	qemu-arm@nongnu.org, alex.bennee@linaro.org
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180725113645.fthwhvzx7otrr3ya@kamzik.brq.redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=EVuXtKlp;
+       spf=pass (google.com: domain of ard.biesheuvel@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=ard.biesheuvel@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=Fw4UXBxDUB6gq+AyzJO9yfB5bzCPcrQTxWv2CyzfUvA=;
+        b=EVuXtKlpAIWxPnM6uiTd8bqQPr1FJ5cCUGSUln7m1+RkoH7Y/lJWf4vHV7KymolpGB
+         LP7VqBsZR4xyMGjAZddR100JRKxAgfXoVh31zfKALLGyEu4Xv+hmirWE9t+85+3Rp44d
+         F5uAESO/pDHnD0Tk5irlQ3ZldWXfCXtw2hi3M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=Fw4UXBxDUB6gq+AyzJO9yfB5bzCPcrQTxWv2CyzfUvA=;
+        b=tM9WC+lQ4tnofgs1ns67AC4QTUZzryByr1dltyJtOUteI5yS5kvTblFirm0lYFnboe
+         d04h8OHa8ncx0jH5uXgyfMHQBqXSSOcqrRYteObCptnv8SKhcP8u8yLyaE6Vz1n8cR9K
+         51yd4vd8gynynZzCpe+eUtBVOtZY2j54LNPE/5DQ9iz2nKXV5qXogBaOM99v6qtfyGVa
+         SSKNsysHp9HGJb2UBULeOeqiQkUul5nifbSgTZJLla1CpR/R6WpCcgPbIhd9OhLVhfyu
+         xF2nNkuRJt1kdbFvJwrQCuwKoL6BOVpGUgZcFNXnUImoLJtyHFF66xGUvdlyF0iBwjfr
+         jBXA==
+X-Gm-Message-State: AOUpUlFc9oYiN4VbfiYHBvcFXy0GmtlF9xuTZrb/K58OGMq3G3uR0Kuq
+	nlOd9uAN1f2oJAr2XHKgn5PLUnW6/J7WElO/3otE0zej
+X-Google-Smtp-Source: AAOMgpeSHUiK5cmRrTMc4Vz54y+1JlwPNuhgpAriORbfjyfkFXgKCuowUjtSKkpP4xDaTVEx/Gr/sbXrvPB8TrRQdNw=
+X-Received: by 2002:a6b:be83:: with SMTP id o125-v6mr16483640iof.173.1532521750401;
+ Wed, 25 Jul 2018 05:29:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a6b:ac05:0:0:0:0:0 with HTTP; Wed, 25 Jul 2018 05:29:09
+ -0700 (PDT)
+In-Reply-To: <CAFEAcA8wi2QV9cVg_Hp=8MYw_zfxvVciR2CbRZiGJNiQNPdHqg@mail.gmail.com>
 References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
  <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com>
- <20180725105040.GA2366@work-vm>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180725105040.GA2366@work-vm>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Wed, 25 Jul 2018 11:36:49 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Wed, 25 Jul 2018 11:36:49 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: bwdtjDPYIeRA
+ <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com> <CAHmQWvDu+P26Y5CJfcQ=1_9C=hej_B8w7dLMbmuOmCV-+pYOJQ@mail.gmail.com>
+ <20180725114404.6g335n3rfjt23hjc@kamzik.brq.redhat.com> <CAFEAcA8wi2QV9cVg_Hp=8MYw_zfxvVciR2CbRZiGJNiQNPdHqg@mail.gmail.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Wed, 25 Jul 2018 14:29:09 +0200
+Message-ID: <CAKv+Gu9n5Y9tghjR7VJcnH96-rzDWvhY4UCkPtFP9hNUh=LK=Q@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Jones <drjones@redhat.com>, Hongbo Zhang <hongbo.zhang@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: Kidx9evDsu4H
 
-On Wed, Jul 25, 2018 at 11:50:41AM +0100, Dr. David Alan Gilbert wrote:
-> * Andrew Jones (drjones@redhat.com) wrote:
-> > On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
-> > > For the Aarch64, there is one machine 'virt', it is primarily meant to
-> > > run on KVM and execute virtualization workloads, but we need an
-> > > environment as faithful as possible to physical hardware, for supporting
-> > > firmware and OS development for pysical Aarch64 machines.
-> > > 
-> > > This patch introduces new machine type 'Enterprise' with main features:
-> > >  - Based on 'virt' machine type.
-> > >  - Re-designed memory map.
-> > >  - EL2 and EL3 are enabled by default.
-> > >  - GIC version 3 by default.
-> > >  - AHCI controller attached to system bus, and then CDROM and hard disc
-> > >    can be added to it.
-> > >  - EHCI controller attached to system bus, with USB mouse and key board
-> > >    installed by default.
-> > >  - E1000E ethernet card on PCIE bus.
-> > >  - VGA display adaptor on PCIE bus.
-> > >  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
-> > >  - No virtio functions enabled, since this is to emulate real hardware.
-> > 
-> > In the last review it was pointed out that using virtio-pci should still
-> > be "real" enough, so there's not much reason to avoid it. Well, unless
-> > there's some concern as to what drivers are available in the firmware and
-> > guest kernel. But that concern usually only applies to legacy firmwares
-> > and kernels, and therefore shouldn't apply to AArch64.
-> 
-> I think the difference from last time is Ard's comments earlier in this
-> thread:
-> 
->     The purpose of the SBSA machine is not to provide a minimal
->     configuration. It is intended to exercise all the moving parts one
->     might find in a server firmware/OS stack, including pieces that are
->     not usually found on x86 machines, such as DRAM starting above 4 GB
->     and SATA/USB controllers that are not PCIe based.
-> 
-> that suggests that the intent of this board is to provide everything
-> which a firmware writer might want to test;  that's quite different
-> from forming the basis of a virtualised machine for real use.
+On 25 July 2018 at 14:19, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 25 July 2018 at 12:44, Andrew Jones <drjones@redhat.com> wrote:
+>> On Wed, Jul 25, 2018 at 06:46:59PM +0800, Hongbo Zhang wrote:
+>>> For Armv7, there is one typical platform 'vexpress', but for Armv8, no
+>>
+>> Wasn't the vexpress model designed for a specific machine?
+>
+> Yes.
+>
+>> Namely for
+>> Arm's simulator?
+>
+> No.
+>
+>> Is the vexpress model really something typical among
+>> all the Armv7 platforms?
+>
+> No.
+>
+> "Vexpress" is a model specifically of a development board
+> produced by Arm (the versatile express). It's useful if you
+> want to run code that runs on that devboard, but (as with
+> most of the devboards we model), it's not necessarily ideal,
+> because it has all the limitations of the real hardware it's
+> modelling (in this case the big ones are limited memory, no PCI).
+> The hardware it models is also quite old now (maybe 7 or 8 years)
+> and it's not really "typical" of anything. (In the primarily
+> embedded space where most v7 CPUs are there's not really anything
+> that could be described as "typical" anyway: everything is
+> different.)
+>
+> For most people who just want to run Linux on an emulated v7 CPU,
+> I would recommend the "virt" board, for the same reasons I
+> recommend it for v8 cores.
+>
+>>> such typical one, the 'virt' is typically for running workloads, one
+>>> example is using it under OpenStack.
+>>> So a 'typical' one for Armv8 is needed for firmware and OS
+>>> development, similar like 'vexpress' for Armv7.
+>>
+>> What is a "typical" Armv8 machine? What will a typical Armv8 machine be in
+>> two years?
+>>
+>> Note, I'm not actually opposed to the current definition (because I don't
+>> really have one myself). I'm just opposed to hard coding one.
+>
+> AIUI the aim here is to provide an emulated platform that is
+> set up in the way that server-style armv8 machines are
+> recommended to be set up, so it can be used as a testbed and
+> demonstration for the firmware/OS software stack. The hope
+> is that following "best practices" results in a "typical"
+> machine :-)  But the word "typical" is probably not really
+> very helpful here...
+>
+> I would expect that in the future we'd want this machine type
+> to evolve with the recommendations for how to build server
+> platform hardware, which might indeed be different in two years,
+> since it would be the development platform for writing/testing
+> the firmware/OS stack for that two-years-time hardware.
 >
 
-I think I understand the purpose, and I also don't believe anything I've
-said is counter to it. Whether or not one drives a virtio-pci nic with a
-virtio-pci-net driver or drives an E1000e, also on the PCIe bus, makes
-little difference to the firmware, nor to the guest kernel - besides which
-driver gets used. And, nothing stops somebody from not plugging the
-virtio-pci nic (use -nodefaults) and then plugging the E1000e (-device)
-instead. Machine models don't need to hard code these assumptions. For
-this patch it'd probably be best if we just ensured there were no
-default devices at all, rather than replace one with another.
+To prevent spending a disproportionate amount of time on inventing
+ways to parameterize these 'models', which includes interfaces not
+only between UEFI and QEMU but also between ARM-TF and QEMU (and
+potentially between UEFI and ARM-TF as well), could we please consider
+fixed configurations for the non-discoverable bits? If there is a new
+and improved sbsa model in the future, we could call it sbsa-2.0, no?
 
-Thanks,
-drew
+On the firmware side, I would like to implement this using build time
+configuration options only, with the exception of memory size and
+other things that are expected to be runtime discoverable on the real
+world counterparts of our model.
+
+I should also note that Hongbo's remark about running such firmware on
+real hardware as well is slightly off the mark: we want to *model*
+real hardware rather than a guest machine abstraction, but we have no
+intention to share firmware builds between the sbsa model and physical
+hardware.

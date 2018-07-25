@@ -1,98 +1,134 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp482453wru;
-        Wed, 25 Jul 2018 02:22:11 -0700 (PDT)
-X-Received: by 2002:a02:3344:: with SMTP id k4-v6mr19264309jak.45.1532510531455;
-        Wed, 25 Jul 2018 02:22:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532510531; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp495492wru;
+        Wed, 25 Jul 2018 02:40:41 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpehgcWvH7EoKx9hGh5ZdSBtW8tdfnRD1s+8H7jLHIGEj2TZpyEwb6HkqCzgk6YlPkb738vr
+X-Received: by 2002:a0c:da90:: with SMTP id z16-v6mr18391802qvj.55.1532511641224;
+        Wed, 25 Jul 2018 02:40:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532511641; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZZfOW7FFPQG0MjX8QNUfTlUxk6IJgG5yxJnpVrd23wSFRAjCbJ63lKqIVl6SoME85
-         gpXlOLRTiS4XGOhPwzWAGBowTtTbpSYauoXz6XKl4RXR//CyVK6GIV4mcG+ipnwj8vd9
-         b3ZMwWjbMhlo94Or6YZUTOPGZS9k8qDfkd6tQnLU+QyTDsjux0IabtUv0tKoqpX/JB6Z
-         JyVkeQwmyjR8xBqNvuiVDdvsGeKV2QmORxASv3J4zS0E9fhQcvqMN0Do4zTXaaKkpcwy
-         1+yy8Chnq+YTeZfD6qQtnOnYas4oUIvKa1zdAbCXPuReEnSgbijEhaGIpT+AnozV7GzA
-         j0Wg==
+        b=SgsK1xPRpUbMdo1UK1cYxyIseFV/qHCKFxUP+e0kwefJYux5PwPJfIamYFrvy4ZwsZ
+         I2/Ycd1qv01sPX8REpbwFAqwSv54yH5b2Yd4xoJyIXqquqpQQCUZjtW5kAK0AZbPJMs2
+         dH8nUvW0RzHJTEXWcpW2VKfcm+n8BO6rNNJyjPKlXEg0NpGzXNyF82rJ7fgdTvHmaGG8
+         +kq3NGsdFObfZEDb3758KIjit1UrdEHp5q3hRuRUcMdsSUWfQARQWanlCuK79AblAkAc
+         QhrOwe1k7wY+blVzYmAnYAemHXzC2lgFfTfwDFjnzFj0kEPtyCB7ag0NlBXyQ1qon4Uf
+         ePqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=brw4o0D/M5KWZyDjm5P5XVRgMdrojYqc/X0WxwRvW54=;
-        b=DfLvi4GBX42YnZy7CXcmCyirdxGaN08fvmH4kwwRbu76q4qDn0ja/rszWNVZWc96D4
-         XWdYAXGA+0ndo9lHB9+21M9urHTpWzCeivnyfJSSuo1rLv8PZ2jkQc4f/7+hFmLJCfgy
-         /ADdmOiSPRPpOYK0szPeTPyF7eauYpcnSqWOOuu4AeOaxoPXHOjEuHS5MklqLUHaVWnv
-         U/1Z4yVnFzTzlqCivEAFs6cAbEVxojLXGK9CVGy9EUYSEGq8k8N/P0yRcG396wkoe7NY
-         W3Dft8zge17EvBFxQcKlb0255OaS+GLNLlq7LCTP4WQgAOMBOpY8TXuSUJYodiFfDFVE
-         sbKA==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:arc-authentication-results;
+        bh=KJrqExp+6LqlAj5/OY8wSi9sYasrVEX6zeBXGW7fX/w=;
+        b=pqA7xmhztl+wWYuPgiZMq71pK0zg3FuQUW4RCl+4tiQwfwXRGBHjle60BJUA7fr/Gx
+         zde7r7tPObgKYQWVc5wNRNxh3MtQEu3a11YD/vpvWrfsdEUmgxyLjlsDD8TW/PzgAKoK
+         6lLv8xqI9YBL7Tt+fznYKASLH9CMXNZRbC2ojjJFZiljyh329a39a0bFVPziGdg+jOqV
+         dXmEWehq361H0TO+NWNNkJtulsQsdDrgcr3wQLR9jdhwFOIag87xUvPSKVQORLLRXPlg
+         1bUx3F2ngTOv+rYZqo1DHQaeE9dfSf8/RzpIvekD6fm4JKNMb817Se7fioOAX/RzOoJ0
+         OVlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bDy9R0zG;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <hongbo.zhang@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g188-v6sor5668942jag.79.2018.07.25.02.22.11
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 25 Jul 2018 02:22:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id g4-v6si9673887qkc.274.2018.07.25.02.40.41
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Jul 2018 02:40:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bDy9R0zG;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=brw4o0D/M5KWZyDjm5P5XVRgMdrojYqc/X0WxwRvW54=;
-        b=bDy9R0zGeO03pV8JzZpPvrDknu30KhnHIP1PhEcgUi2i9XIzniB5yJoLw2e2HvODJk
-         S3AWdXmdC9Q6F+ez215Qd3E7LrVwvEyVjZiYpkYATo1QpgEW8lzQdoIpgL6CmisLo8FZ
-         +0Shq4FPn7WRMvoV8lZnHMY344OsCD/BtSVJo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=brw4o0D/M5KWZyDjm5P5XVRgMdrojYqc/X0WxwRvW54=;
-        b=bwDtXz2JSmxSQmlAlCJXce3t6uXOgYbo6tMi0zMkwaCNIqFgEqaS0H/e5mo9NszPb8
-         m+2kUY/I6vW1it1VNrpOgwVzI6Q2gQu1NzAkfLcnq7Bh/1ii8DjZjbmr0ieorTzAL7pe
-         EI4CucknKnRTiUp5D/2p7kxGTlOWIU6mCGIHZsa93ktrQ+/PH8YIPuXqxaQTEHvbNbQC
-         OlvD1cL3Nhe1k+LmeJpgUt/04YzlhbxduW1eskxcNgyPFNgmMjPdkLr5fCimk7zCaPb7
-         vVuygEMBd+uamn5n1wO+Y1rZOfcB/e/gTa/EM+OLyrN9II4WfHrCt9Eei0o+d00fXvbI
-         jEVA==
-X-Gm-Message-State: AOUpUlFX7hWZDc9nPOY2Ia4kq4kabGSdnuG7g7wchyS7JpngaXE+HgLx
-	dP2wp2aNgShJUqM62nedxnXOaCGWBu0As2NWpPgjSEJ51l0=
-X-Google-Smtp-Source: AAOMgpdJaFvurg4obXWzbZWM+8nOA+gbUmS//PyL4SLxkUgdjafNvCklZ3Ke0kCZsc+biaX5qQ+n12j8W7uYrOerWJw=
-X-Received: by 2002:a02:687:: with SMTP id 129-v6mr18231601jav.59.1532510531153;
- Wed, 25 Jul 2018 02:22:11 -0700 (PDT)
+       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BA2554043954;
+	Wed, 25 Jul 2018 09:40:40 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 666CD111DCE5;
+	Wed, 25 Jul 2018 09:40:39 +0000 (UTC)
+Date: Wed, 25 Jul 2018 11:40:37 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Leif Lindholm <leif.lindholm@linaro.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
+ type
+Message-ID: <20180725094037.uzz4ycen4qja4q4a@kamzik.brq.redhat.com>
+References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
+ <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
+ <20180725084824.GA12855@redhat.com>
+ <CAKv+Gu_RHsed0KAH8njKB8UPvbUDeoTZ5sP76f_br6azisZzSQ@mail.gmail.com>
+ <CAHmQWvCqKqQXnXxOUgi=kLTyE5BhV2NxqaKzvPp63HX02V=X2g@mail.gmail.com>
+ <CAKv+Gu_eFjS_UvOuEKhbsWr34o3Jqd4h2duJ-gG1ofsFbwkGbQ@mail.gmail.com>
+ <CAHmQWvC8_J4i32UZzdHqJ4w3EdEAHmWGdgqrvGwEA7uo0kvk9A@mail.gmail.com>
+ <CAKv+Gu-B4o7dwZPOix2MkECJia6M6Q+zBMw8XVdw49kFYW6J+w@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:ac0:a161:0:0:0:0:0 with HTTP; Wed, 25 Jul 2018 02:22:10
- -0700 (PDT)
-In-Reply-To: <CAFEAcA-WVfswDpDGoDCTqv-ZRege8kJ5hPjcy43DkODRKZfGZg@mail.gmail.com>
-References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org> <CAFEAcA-WVfswDpDGoDCTqv-ZRege8kJ5hPjcy43DkODRKZfGZg@mail.gmail.com>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Wed, 25 Jul 2018 17:22:10 +0800
-Message-ID: <CAHmQWvBG6QA9pn6cTUb2o5GzCbq2Xwt2WuKNZ_yZ7kH-uFMCOw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] hw/arm: check fw_cfg return value before using it
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
-	Leif Lindholm <leif.lindholm@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: x23rk7GijlDq
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAKv+Gu-B4o7dwZPOix2MkECJia6M6Q+zBMw8XVdw49kFYW6J+w@mail.gmail.com>
+User-Agent: NeoMutt/20180622
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Wed, 25 Jul 2018 09:40:40 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Wed, 25 Jul 2018 09:40:40 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+X-TUID: oV2jnpx5WPet
 
-On 25 July 2018 at 17:00, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->> The fw_cfg value returned from fw_cfg_find() may be NULL, so check it
->> before using.
->>
->> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+On Wed, Jul 25, 2018 at 11:20:03AM +0200, Ard Biesheuvel wrote:
+> On 25 July 2018 at 11:17, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> > On 25 July 2018 at 17:13, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+> >> On 25 July 2018 at 11:09, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> >>> On 25 July 2018 at 17:01, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+> >>>> On 25 July 2018 at 10:48, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> >>>>> On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
+> >>>>>> For the Aarch64, there is one machine 'virt', it is primarily meant to
+> >>>>>> run on KVM and execute virtualization workloads, but we need an
+> >>>>>> environment as faithful as possible to physical hardware, for supporting
+> >>>>>> firmware and OS development for pysical Aarch64 machines.
+> >>>>>>
+> >>>>>> This patch introduces new machine type 'Enterprise' with main features:
+> >>>>>
+> >>>>> The 'enterprise' name is really awful - this is essentially a marketing
+> >>>>> term completely devoid of any useful meaning.
+> >>>>>
+> >>>>> You had previously called this "sbsa" which IIUC was related to a real
+> >>>>> world hardware specification that it was based on. IOW, I think this old
+> >>>>> name was preferrable to calling it "enterprise".
+> >>>>>
+> >>>>
+> >>>> I couldn't agree more. However, IIUC this change was made at the
+> >>>> request of one of the reviewers, although I wasn't part of the
+> >>>> discussion at that point, so I'm not sure who it was.
+> >>>>
+> >>>> Hongbo, could you please share a link to that discussion?
+> >>>>
+> >>>> Thanks,
+> >>>> Ard.
+> >>>>
+> >>>
+> >>> V1 discussion here:
+> >>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg545775.html
+> >>>
+> >>
+> >> So who asked for the sbsa -> enterprise change?
+> >
+> > Actually nobody, but it was argued that sbsa does not require ehci and
+> > ahci etc, then we should find a name fitting for this platform better.
+> 
+> That doesn't make sense to me. The SBSA describes a minimal
+> configuration, it does not limit what peripherals may be attached to
+> the core system.
 >
-> Hi -- this patch series seems to be missing its cover letter.
-> Please could you include a cover letter for any patchset
-> with more than one patch -- some of our automated patch
-> email handling tools rely on it.
->
-Get it.
-2/2 needs a v3 at least, so will remember to include the cover letter
-in v3 then.
 
-Thanks.
+Hi Ard,
 
-> thanks
-> -- PMM
+I think that a machine model named 'sbsa' should provide all SBSA required
+hardware, and nothing else, while providing a means to easily extend the
+machine beyond that in any way the user likes. The user can easily add
+devices with the command line and/or by using -readconfig to build a
+"typical" machine. Note, it should even be possible to add, e.g. an ACHI
+controller, to the memory map using the platform bus, if that's preferred
+over PCIe.
+
+Thanks,
+drew

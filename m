@@ -1,77 +1,77 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp770924wru;
-        Wed, 25 Jul 2018 07:35:07 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpe8JZZILO93v5J/9qxmPWfQu01StLxvNpygwDuIjGa95Ljgtr3nJinv4w7eeNH5oOnJ1aCG
-X-Received: by 2002:a0c:fa4e:: with SMTP id k14-v6mr19121669qvo.35.1532529306977;
-        Wed, 25 Jul 2018 07:35:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532529306; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp771437wru;
+        Wed, 25 Jul 2018 07:35:32 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcDwu1J2lQWuZelpkoXUirh4fsJosVP9EwpfnGs56kWmeWmGroTU53T9QLeAt6IMDXE/S7c
+X-Received: by 2002:ac8:2996:: with SMTP id 22-v6mr20999358qts.259.1532529332473;
+        Wed, 25 Jul 2018 07:35:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532529332; cv=none;
         d=google.com; s=arc-20160816;
-        b=U0S9nK7cP2ielWEa6j1IqWiaOwHSawRPATC4aPDmGP4SJ44sNkU0f7K82/6kG01Eae
-         JZml1Vcv090LUnU75VsmYTobEieAMwGK09IVnmORVfnAbvPAyYRl0awbmRARh4U2unXn
-         wOmOk1o4CoXmoHbiILwjBKQvOcX/QzIaVapxMrD7xPaKkuL4QZnB9ne9YUperc89kmkt
-         8q+is9y7eNeD24PQEss34Gbc5sUJhZTo9GPu2MacPIa5MNzCaRqWYaZbyuYDzetbLj8O
-         9m+BVZDu6SJCL22vk+zZCv6xKKqmID68Vm0u+KnH0Cj5FMOJ4jnVyjRFyyardZnliM+v
-         JU3A==
+        b=E9vdxMn7SzI+RBjSRppTmxl0CHbNSmWFtITKzZfCJYkofTaZoRRLe1rYoNQB/S1vqp
+         YpRfSREDjahvW/+vuz12eR5OPEthmse2bBt5ve8YRtkCtalm5DSQ+n0ho4jHChFWrdn8
+         lrdIWit+8iY2VrwWqPgzt6gsPuIlrYttoEJckkO8jOLjk0colZau7pOR9PoZsaRZ2FHw
+         iVCZU1qn7/XAGU+UY7eKDeYJinPCIW8BG860SAb70Y6iXIcV2JuCkpSplkbXudn8ZsBg
+         5D4to5S98d2pB84A0l2vj+as1wDR0DuJD0ZG3MGLiWkIoCXt4qEOA6b6mBLZpQZK6xAW
+         +86w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=Uzw95oGEZ4YuSthQNWaXGORqrOb7p7V2T8gfO/S9ZtE=;
-        b=YaT8eQVwldM4mfBLFwRmFm+J0vL9uxo9wZRJKZ0ssTeoFGnUkoOJd1+/vwFdri0wRb
-         wMZeMQoq8RXvMv9T237QOquztTgntz8rYgJMyoFzEM2aJVhsAYM7/zdpGRaqzgVl3Q29
-         0AhA6d8PcdWEJ4RJtSzmv86yVIqhJ/q7L1gLooViBydsTnL1YSzY1QWWpKsSM7JIZZsH
-         nkwOBTFjdI9BDJaQ0mJJFc12fdvNeEd3IHoblfvjCm+p2zRalHUWhrnjX96SEe/2z3//
-         Li/awSX920p+8L91rQkK3VChmxdp8eZKGiqg+nT6Bz8mrICEL1lSzIerWZvdp5XEoZrj
-         SDkw==
+        bh=xXnaBh/BIkl4AckTiyij0xShM0I2KCe9MsJt2kcF4MM=;
+        b=iQcCNNEU7DkgaVWoYrRdgOGUYcbpZPF496eG9WSduvsYlErtcWK0FVnVU4KV/qSiO5
+         yfY7+dGHK8APS2k+NKeMHK1Rg6JtCsn05E6jjSFibHPIMek4SVtSZL6jkmnTM2yerJf4
+         Gl3Ixu11i3VSQrlCROsRDkU/MbslBEp2UJSsyJaK3apWUmKT55q75ERW1BGMfCuf4qgF
+         jpM1HffC/oxCLv52QCq041p84uqnnPCtyYJSufuZ7Hxu6kUgi92p/NhUg70pZSqaaHV6
+         VwjkDg80cdv9TthpA6qee+NbZsKSp/0ynIbxrw5b2+aVZqGf7v7KICoTsm3b8glNPH/x
+         UAhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k5-v6si3843500qkb.28.2018.07.25.07.35.06
+        by mx.google.com with ESMTPS id h2-v6si1029119qke.77.2018.07.25.07.35.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Jul 2018 07:35:06 -0700 (PDT)
+        Wed, 25 Jul 2018 07:35:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51568 helo=lists.gnu.org)
+Received: from localhost ([::1]:51571 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fiKsc-0001D3-B1
-	for alex.bennee@linaro.org; Wed, 25 Jul 2018 10:35:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48514)
+	id 1fiKt1-0001ce-OJ
+	for alex.bennee@linaro.org; Wed, 25 Jul 2018 10:35:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48554)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1fiKrx-00016O-2v
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 10:34:28 -0400
+	(envelope-from <geert@linux-m68k.org>) id 1fiKs0-00018P-18
+	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 10:34:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1fiKru-00066T-1x
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 10:34:25 -0400
-Received: from andre.telenet-ops.be ([2a02:1800:120:4::f00:15]:47410)
+	(envelope-from <geert@linux-m68k.org>) id 1fiKrx-00069E-1g
+	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 10:34:28 -0400
+Received: from xavier.telenet-ops.be ([2a02:1800:120:4::f00:14]:34204)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <geert@linux-m68k.org>)
-	id 1fiKrt-00065f-Qn
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 10:34:21 -0400
+	id 1fiKrw-00067H-Nz
+	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 10:34:24 -0400
 Received: from ramsan.of.borg ([84.194.111.163])
-	by andre.telenet-ops.be with bizsmtp
-	id F2aJ1y0053XaVaC012aJro; Wed, 25 Jul 2018 16:34:19 +0200
+	by xavier.telenet-ops.be with bizsmtp
+	id F2aJ1y00H3XaVaC012aJ9e; Wed, 25 Jul 2018 16:34:22 +0200
 Received: from rox.of.borg ([192.168.97.57])
 	by ramsan.of.borg with esmtp (Exim 4.86_2)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1fiKrq-000528-7u; Wed, 25 Jul 2018 16:34:18 +0200
+	id 1fiKrq-00052C-9R; Wed, 25 Jul 2018 16:34:18 +0200
 Received: from geert by rox.of.borg with local (Exim 4.90_1)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1fiKrq-0002Xs-6j; Wed, 25 Jul 2018 16:34:18 +0200
+	id 1fiKrq-0002Xv-7m; Wed, 25 Jul 2018 16:34:18 +0200
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Alex Williamson <alex.williamson@redhat.com>
-Date: Wed, 25 Jul 2018 16:34:12 +0200
-Message-Id: <20180725143413.9728-4-geert+renesas@glider.be>
+Date: Wed, 25 Jul 2018 16:34:13 +0200
+Message-Id: <20180725143413.9728-5-geert+renesas@glider.be>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180725143413.9728-1-geert+renesas@glider.be>
 References: <20180725143413.9728-1-geert+renesas@glider.be>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2a02:1800:120:4::f00:15
-Subject: [Qemu-devel] [PATCH v3 3/4] hw/arm/virt: Allow dynamic sysbus
- devices again
+X-Received-From: 2a02:1800:120:4::f00:14
+Subject: [Qemu-devel] [PATCH v3 4/4] hw/arm/sysbus-fdt: Add support for
+ instantiating generic devices
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,38 +92,173 @@ Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
 	Auger Eric <eric.auger@redhat.com>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AOnFpAUhWkWl
+X-TUID: FtWGpGk6qGti
 
-Allow the instantation of generic dynamic sysbus devices again, without
-the need to create a new device-specific vfio type.
+Add a fallback for instantiating generic devices without a type-specific
+or compatible-specific instantation method.  This will be used when no
+other match is found.
 
-This is more or less a partial revert of commit 6f2062b9758ebc64
-("hw/arm/virt: Allow only supported dynamic sysbus devices").
+The generic instantation method creates a device node with "reg" and
+(optional) "interrupts" properties, and copies the "compatible"
+property and other optional properties from the host.
+For now the following optional properties are copied, if found:
+  - "#gpio-cells",
+  - "gpio-controller",
+  - "#interrupt-cells",
+  - "interrupt-controller",
+  - "interrupt-names".
+
+More can be added when needed.
+
+This avoids having to write device-specific instantation methods for
+each and every "simple" device using only a set of generic properties.
+Devices that need more specialized handling can still provide their
+own instantation method.
+
+This has been tested on a Renesas Salvator-XS board with R-Car H3 ES2.0
+with SATA:
+
+    -device vfio-platform,host=ee300000.sata
+
+and GPIO (needs VFIO No-IOMMU support):
+
+    -device vfio-platform,host=e6055400.gpio
 
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 v3:
-  - Drop RFC state,
-
-v2:
-  - Restrict from TYPE_SYS_BUS_DEVICE to TYPE_VFIO_PLATFORM, as
-    suggested by Eric Auger.
+  - New.
 ---
- hw/arm/virt.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/sysbus-fdt.c | 102 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 102 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 281ddcdf6e26236d..24c1d8e28c7c4285 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1724,6 +1724,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-     mc->block_default_type = IF_VIRTIO;
-     mc->no_cdrom = 1;
-     mc->pci_allow_0_address = true;
+diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+index 0e24c803a1c2c734..8040af00ccf131d7 100644
+--- a/hw/arm/sysbus-fdt.c
++++ b/hw/arm/sysbus-fdt.c
+@@ -415,6 +415,99 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+     return 0;
+ }
+ 
++static HostProperty generic_copied_properties[] = {
++    {"compatible", false},
++    {"#gpio-cells", true},
++    {"gpio-controller", true},
++    {"#interrupt-cells", true},
++    {"interrupt-controller", true},
++    {"interrupt-names", true},
++};
++
++/**
++ * add_generic_fdt_node
++ *
++ * Generates a generic DT node by copying properties from the host
++ */
++static int add_generic_fdt_node(SysBusDevice *sbdev, void *opaque)
++{
++    PlatformBusFDTData *data = opaque;
++    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
++    const char *parent_node = data->pbus_node_name;
++    void *guest_fdt = data->fdt, *host_fdt;
++    VFIODevice *vbasedev = &vdev->vbasedev;
++    char **node_path, *node_name, *dt_name;
++    PlatformBusDevice *pbus = data->pbus;
++    int i, irq_number;
++    uint32_t *reg_attr, *irq_attr;
++    uint64_t mmio_base;
++
++    host_fdt = load_device_tree_from_sysfs();
++
++    dt_name = sysfs_to_dt_name(vbasedev->name);
++    if (!dt_name) {
++        error_report("%s incorrect sysfs device name %s", __func__,
++                     vbasedev->name);
++        exit(1);
++    }
++    node_path = qemu_fdt_node_path(host_fdt, dt_name, vdev->compat,
++                                   &error_fatal);
++    if (!node_path || !node_path[0]) {
++        error_report("%s unable to retrieve node path for %s/%s", __func__,
++                     dt_name, vdev->compat);
++        exit(1);
++    }
++
++    if (node_path[1]) {
++        error_report("%s more than one node matching %s/%s!", __func__, dt_name,
++                     vdev->compat);
++        exit(1);
++    }
++
++    mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    node_name = g_strdup_printf("%s/%s@%" PRIx64, parent_node,
++                               vbasedev->name, mmio_base);
++    qemu_fdt_add_subnode(guest_fdt, node_name);
++
++    /* Copy generic properties */
++    copy_properties_from_host(generic_copied_properties,
++                              ARRAY_SIZE(generic_copied_properties), host_fdt,
++                              guest_fdt, node_path[0], node_name);
++
++    /* Copy reg (remapped) */
++    reg_attr = g_new(uint32_t, vbasedev->num_regions * 2);
++    for (i = 0; i < vbasedev->num_regions; i++) {
++        mmio_base = platform_bus_get_mmio_addr(pbus, sbdev, i);
++        reg_attr[2 * i] = cpu_to_be32(mmio_base);
++        reg_attr[2 * i + 1] = cpu_to_be32(
++                                memory_region_size(vdev->regions[i]->mem));
++    }
++    qemu_fdt_setprop(guest_fdt, node_name, "reg", reg_attr,
++                     vbasedev->num_regions * 2 * sizeof(uint32_t));
++
++    /* Copy interrupts (remapped) */
++    if (vbasedev->num_irqs) {
++        irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
++        for (i = 0; i < vbasedev->num_irqs; i++) {
++            irq_number = platform_bus_get_irqn(pbus, sbdev , i)
++                             + data->irq_start;
++            irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
++            irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
++            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
++        }
++        qemu_fdt_setprop(guest_fdt, node_name, "interrupts",
++                         irq_attr, vbasedev->num_irqs * 3 * sizeof(uint32_t));
++        g_free(irq_attr);
++    }
++
++    g_free(reg_attr);
++    g_free(node_name);
++    g_strfreev(node_path);
++    g_free(dt_name);
++    g_free(host_fdt);
++    return 0;
++}
++
+ /* DT compatible matching */
+ static bool vfio_platform_match(SysBusDevice *sbdev,
+                                 const BindingEntry *entry)
+@@ -423,6 +516,11 @@ static bool vfio_platform_match(SysBusDevice *sbdev,
+     const char *compat;
+     unsigned int n;
+ 
++    if (!entry->compat) {
++        /* Generic DT fallback */
++        return true;
++    }
++
+     for (n = vdev->num_compat, compat = vdev->compat; n > 0;
+          n--, compat += strlen(compat) + 1) {
+         if (!strcmp(entry->compat, compat)) {
+@@ -459,6 +557,10 @@ static const BindingEntry bindings[] = {
+     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+ #endif
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
++#ifdef CONFIG_LINUX
++    /* Generic DT fallback must be last */
++    VFIO_PLATFORM_BINDING(NULL, add_generic_fdt_node),
++#endif
+     TYPE_BINDING("", NULL), /* last element */
+ };
+ 
 -- 
 2.17.1
 

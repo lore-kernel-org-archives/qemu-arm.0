@@ -1,102 +1,103 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp651035wru;
-        Wed, 25 Jul 2018 05:37:14 -0700 (PDT)
-X-Received: by 2002:aca:d04b:: with SMTP id h72-v6mr3018303oig.17.1532522234756;
-        Wed, 25 Jul 2018 05:37:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532522234; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp668786wru;
+        Wed, 25 Jul 2018 05:57:38 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcXghbHql8mP7iF+nd7KxvoBT3E04dGDn8KRl/OC+eYoUXG4baD7fkspEhDn50H2xt8qczk
+X-Received: by 2002:a37:d93:: with SMTP id 141-v6mr16240271qkn.159.1532523458751;
+        Wed, 25 Jul 2018 05:57:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532523458; cv=none;
         d=google.com; s=arc-20160816;
-        b=FpZcH83x2HPUNCOX9Evrgu5uZvh3IqBi0hRzphDQRWLOAf76iPgqrwCeW0UCROp1BB
-         S8tFw++sPZQiWGR0kU3QhJ4rWbiGlHF7BGUwA9IaZrO7uBSF9/AXi0Z9hePIRv+hPb4r
-         U112vvm+Ybas62S4aYCAh4FCsAhmyUUMoq04v71mjP57WZbm32N53NNN8JCAHtMW/ap1
-         jXyohn/voYd9WvvaGKZ0ojzZoM+C/AnA/SwRSBkFMCyDs7rJjIt7cZ0kj3mNCk7SWwcZ
-         P/bbzxbb4xyshuc8dZPB0okBMBf6NguVNJoC8rPJwD8tNpa85HJbGAxZx9rkdsbFlZO8
-         XvGw==
+        b=ChWzznKB8WwwR+lj/bqgoTTabm8ZPdg4non0Sg9KCk6D0r+N6NLnIx6MRRKpmwaU8p
+         ezIr9OuEUWEl1xLXyQk6JXkRiWfPXCur4etOW8GFRxqlmRoNGiQ55e6YXn49uxEnirG0
+         ekn4XdGt0BWTQW94tvBVvd//onYQAE7iZ73fumktPbAw3iXEZkrY2op+SGGVRVIAu2gr
+         QcTC5awhnuSitY9EPWoFB1kgqr7Zvv5x2BFY6A8sJEQm/CbwQKcnORuyISoPAa2Ze/Bw
+         7ASThot4E7Ghf5QJeD4bXaVk1tqkpit0Q5fAjmbV6GVSrb623bAZzzsYtm/4RmXsLMpT
+         FAdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=l+68Bd07geJKKvf05HoAN+4YFUqn9eY3csThe351Lmg=;
-        b=BzmHBTk+AqBIca5bRPZPdMh7LeZsLgkOcuMlJXWVHw8JVlmETilR9Fu6NSYL4rj7nl
-         VY5hH7ht+j1zYVrI6qX2wIyOPvjHGB8XGkr+cmVi1yDOWlGa5mLA66L0A3mxquBf8w+8
-         FJ+lcseNZmLkkKFJjF1cFU+bqrak8CdDqdQQrG9yjb643DLPnCsrB7E9fUt8eKZu5hdK
-         F8yQkHBmYxPWRqCsqOw1QbR2emVLEPWcBkRRwDbmmMQzobJRRJkBK95t7uW+C/53MaN+
-         0r8g501iZtfIR4DdeYFaa8sYkHlUw2RekyPlQxUWYeMiPiYHMeUij6hiE960uaQZ6Rj8
-         6MKw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:arc-authentication-results;
+        bh=QygSRk/VtRM79fGbzfSdov7ggwqbmksHYE48LPuRF4o=;
+        b=MnvKqcXJVqmElP+f1bw96wB+cXGchRRVlgNvT01vTu85PenicX2fMNx395Rr87CDNS
+         ujbkZdwZvCdb4aWd5+S06sk9pprpJj6VmbLpvr/RPHIuDD+bcN+mOKSCH7iZPj2SaxJr
+         68IGY4OIpoxiZppuzfjpIO6khSSyVIIBaEBtQ6/qIRyxR/ee7BP0Hz1Zog8Z9W4O4MR2
+         NOV1EXBT5etj19YAtYB8OrxxvTfwVTaBBjZsRgu5LBIJHVjKbOVakkTIYOsse9aJc0i2
+         cpLVl5EDeosWdB76mKzQbi3xWiobfv/6i+f8N75GJ4EoAo6Fl2xDKooTb4ZdAKSGnVAk
+         f+NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VqMO6Dq9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id e74-v6sor3538558oic.158.2018.07.25.05.37.14
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 25 Jul 2018 05:37:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
+        by mx.google.com with ESMTPS id i69-v6si6283383qkh.347.2018.07.25.05.57.38
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 25 Jul 2018 05:57:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VqMO6Dq9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=l+68Bd07geJKKvf05HoAN+4YFUqn9eY3csThe351Lmg=;
-        b=VqMO6Dq9Ts8uNIHB8EEwQtgvBG7WFipp08gbIx7t1vdgEUyxYaE22PHituL2EwLBOS
-         xlhn/y0Sl7O8YZc3OA9YWBV6Elrm9zHRWL/l9MlAGLU0SYhiuldwdkgZ5cyM1TnjWFEq
-         tSH2EPiHemidlErZxGvydOs0cmDAVxvgJ3c9w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=l+68Bd07geJKKvf05HoAN+4YFUqn9eY3csThe351Lmg=;
-        b=oTdN5NbG9VXsU7eKlfRgcoZ9/dmCXcuhX7gAySbnRsJ00IGSxXtBMMJNpw2r8F/P21
-         pI2ca3l6+A2Ft9Os0K2qCH9fUEMlydrv2WcWv9ar4nG2OcIhuBURAmtQWkJam72svDxl
-         ZyJ/FvVfUZbWphU1oauXXa2wxaMlK1xi6ix+q1nR/1hUOXDM21bDQUMPprBBjg6ZNQVv
-         +SPZV8ME1+4Xg+biwNykMWmWfGjJJoMmHz5PJnKSpdl6aY1Q98lYoFHsNBCaak5hatfV
-         ZF3qXUo3jZj4PVGmhxQEFGvunkJGmpkbY3HKJZEyr04Lt7emtOUlU5ye6//NH2S6RjYP
-         dV2g==
-X-Gm-Message-State: AOUpUlFGega0EvjDPxI7dzTKDK956u6MxdN3333Sed4xCvlqx1tiA+gx
-	sewobqcjwrJ5DfQoEyY3bOYFck0uWUgyGt6obvaWCabK
-X-Google-Smtp-Source: AAOMgpd+WeQHbipIXHMVMFI8jXfEeobUa0PtrkmwWsEemFXpSPp1hohEiYPsLz2We3Fuxt1V8XsESQkyV4Tk2d6GYWQ=
-X-Received: by 2002:aca:4a49:: with SMTP id x70-v6mr2883735oia.11.1532522234438;
- Wed, 25 Jul 2018 05:37:14 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Wed, 25 Jul 2018 05:36:54
- -0700 (PDT)
-In-Reply-To: <CAKv+Gu9n5Y9tghjR7VJcnH96-rzDWvhY4UCkPtFP9hNUh=LK=Q@mail.gmail.com>
+       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5068640216E3;
+	Wed, 25 Jul 2018 12:57:38 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E8F6A7C56;
+	Wed, 25 Jul 2018 12:57:36 +0000 (UTC)
+Date: Wed, 25 Jul 2018 14:57:34 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Hongbo Zhang <hongbo.zhang@linaro.org>,
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Leif Lindholm <leif.lindholm@linaro.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
+ type
+Message-ID: <20180725125734.pzsv5mieynulqw6k@kamzik.brq.redhat.com>
 References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
  <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com> <CAHmQWvDu+P26Y5CJfcQ=1_9C=hej_B8w7dLMbmuOmCV-+pYOJQ@mail.gmail.com>
- <20180725114404.6g335n3rfjt23hjc@kamzik.brq.redhat.com> <CAFEAcA8wi2QV9cVg_Hp=8MYw_zfxvVciR2CbRZiGJNiQNPdHqg@mail.gmail.com>
+ <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com>
+ <CAHmQWvDu+P26Y5CJfcQ=1_9C=hej_B8w7dLMbmuOmCV-+pYOJQ@mail.gmail.com>
+ <20180725114404.6g335n3rfjt23hjc@kamzik.brq.redhat.com>
+ <CAFEAcA8wi2QV9cVg_Hp=8MYw_zfxvVciR2CbRZiGJNiQNPdHqg@mail.gmail.com>
  <CAKv+Gu9n5Y9tghjR7VJcnH96-rzDWvhY4UCkPtFP9hNUh=LK=Q@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 25 Jul 2018 13:36:54 +0100
-Message-ID: <CAFEAcA8xvU6Xxzig=9rYRqT7w0cCw_D32Rw3Rk7jxp8FF8TQHg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Andrew Jones <drjones@redhat.com>, Hongbo Zhang <hongbo.zhang@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 0P9rg35kM1kE
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAKv+Gu9n5Y9tghjR7VJcnH96-rzDWvhY4UCkPtFP9hNUh=LK=Q@mail.gmail.com>
+User-Agent: NeoMutt/20180622
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Wed, 25 Jul 2018 12:57:38 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Wed, 25 Jul 2018 12:57:38 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+X-TUID: QRBlkswIbroY
 
-On 25 July 2018 at 13:29, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+On Wed, Jul 25, 2018 at 02:29:09PM +0200, Ard Biesheuvel wrote:
 > To prevent spending a disproportionate amount of time on inventing
 > ways to parameterize these 'models', which includes interfaces not
 > only between UEFI and QEMU but also between ARM-TF and QEMU (and
 > potentially between UEFI and ARM-TF as well), could we please consider
-> fixed configurations for the non-discoverable bits?
 
-Yes, I had assumed that would be the way this would work. After
-all for the hardware setup we're trying to be a "best practices/
-reference" demonstration for, the firmware would consider all
-the non-discoverable hardware to be basically fixed, right?
+I guess a UEFI <=> ARM-TF interface will also need to work on real
+hardware, and therefore need a QEMU model. If whatever that interface
+needs can also satisfy the UEFI <=> QEMU and ARM-TF <=> interfaces,
+then that's all we need - no need for fw-cfg.
 
-(Maybe we could have some sort of "board revision" register so the
-firmware could figure out if it was looking at the equivalent
-of board rev A/B/C and whether some of the fixed devices exist,
-but I think we should only do that if it's the kind of thing
-that we're expecting/recommending real h/w manufacturers do.)
+> fixed configurations for the non-discoverable bits? If there is a new
 
-thanks
--- PMM
+Well, at least one thing must to be fixed, which is
+
+ a) address/register where the address of the DTB will be stored
+ b) address of the QEMU interface device, e.g. fw-cfg. fw-cfg or
+    whatever can then be used to get the DTB.
+
+And I guess everything the SBSA says should be fixed should be fixed.
+Otherwise, what's non-discoverable?
+
+> and improved sbsa model in the future, we could call it sbsa-2.0, no?
+
+Of course the model can be versioned, allowing for any change, but
+I don't think model versions were meant to be aliases for peripheral
+selections. That's what scripts wrapped around qemu are for.
+
+Thanks,
+drew

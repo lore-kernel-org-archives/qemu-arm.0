@@ -1,147 +1,164 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp585435wru;
-        Wed, 25 Jul 2018 04:26:25 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpesSspN2Abq0onXFiCW7MDdtNHx5CMBL0iiwlMdZdScm311myOVFQ7W3qhUq6cTSLbSz5fo
-X-Received: by 2002:a37:6809:: with SMTP id d9-v6mr18382676qkc.444.1532517985419;
-        Wed, 25 Jul 2018 04:26:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532517985; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp642524wru;
+        Wed, 25 Jul 2018 05:28:17 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfItiDocfrK1OIPSZRy6B+A3V5cIxho5GkJ0h5eJIl9hCUQD7mUhtLqmc/ibZfzSnDAdBtw
+X-Received: by 2002:ac8:13c7:: with SMTP id i7-v6mr21035229qtj.134.1532521697651;
+        Wed, 25 Jul 2018 05:28:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532521697; cv=none;
         d=google.com; s=arc-20160816;
-        b=KylEbVB3RWl693J70Wqxzz1EuhoVuMd+cavqNQzFPHNgttx1c363uJzmkqBsoqKU4V
-         NgPYpNo872MWiv4PeanfEKruo/LL3q2bxFWXwW/L1bpKJkHJvicviikFYdEPemqFGtkc
-         kkHcP2fYc0W+cYcuvngbj8bqsW1iUPPdV62rKxthI0vsYGD/bPCjg8vb38OzH0GmbIzY
-         tU0g8T/46/ip3N4oOrCtzgPFSIxjYCyTd0R+xwugUHGewCLMTJPwQ/bGuz5zrhH1cytB
-         adyUnyAgIKPtj9vivbz9Y0wxoDo1cByOOdcSQBHODA6vTBPXQaic7I798QJpVZ7aIaOp
-         lLsw==
+        b=UojogZfUl9odlyXrBu5Ea1ZGFDdwuQke/6/HjEES4moq5pixgR+8WJY1oDH7o7ZzdU
+         Usbhiu7If+L86a+/ECG+HjAplphNhBbVjM/xc1y0zp/0CWy1tVAHO2IckdIjthCBrRqe
+         MnprOnOg0YDmkVPYW0DEo1HceQNtQs8AgPNhycufcOqj6bYCeEMEHhTfwLoeatRotGBd
+         PX6ndL3l8YBe7ISTvdMlnBvpEjwWbawnsvaJ84A4oX/k6Vvn7BJlM0GhzVT4EromIXEE
+         Yr6qv84YksaeRducPxHXAHjjFCRE3PDgXoqsvg8oMx+zQKC7O8fzjkG+jz53RLg3BGzr
+         hpPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=+a5UZUP0iCqTnj9T3a3SvFnHMQqkakpgKJUskSxwk+k=;
-        b=qvQ1vKARyJsoevQkf/7NDGIh9Z18JeGcXA7oQ2IbP1BZuFrt3qmKlrGgXWIEyEt3ie
-         FSGfe+pOc+XozZjo3isRjQSjt14ou8nPvMxjKhXuDEn9fQIpVkEut/OgdI/dAm22UBAG
-         J50x3DyAKv33SIKeOz3L+UMG3Pxi5y0Q4RP67bA54QPRlznLVp1d9SBvy8NHG2DM26e/
-         jjZ28kWldchoTWKzXW6eGB2bFG8BAmDpCnXFdTQvmIzYczufqHz9DzYy5XyyakIg0Rr2
-         0BniTYK5CbNEnQGU0vJXatZIWr3TPR8SGPXhrH0G6ujjGAsAXdITn56YboMhNRFFcPGr
-         DHuA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date:arc-authentication-results;
+        bh=mi03zPLRJXeZliyDHMH8NiKtkv8eWCxilnOhtNGPfmA=;
+        b=tQNQbzOFjNanxLvr6O0vyXbR6taS6IUQM+cyQHRTGnPWfEgwffE4eFKywziRSJ+6ai
+         NN1RwVY+ELLt2ebiGBsyqoI7rf3+t5lPdw+Ez65alqDR8Vk9t894QBqb682wnZLDplVs
+         OOmDbGhmtOEK5u5+Zd3jRsx7s/F92R7zpzQ9DKY4tpMtXvKM+pZI57ESBWO4e9E0MbHh
+         x2iOtEgXCm82wr3NjdygqDVugOL7mxhylGXtIkz6mku8ZFyFawqdvnyN9WHNWLelvyue
+         JuetoZl2oCNUkKuOB2BAuuFKf4Y64y7fRFXsi6fdqnQ3dB8vFl6k/fToHKXG/sAainrq
+         cCzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id m7-v6si1232168qvi.101.2018.07.25.04.26.25
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Jul 2018 04:26:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id q1-v6si7182691qki.306.2018.07.25.05.28.17;
+        Wed, 25 Jul 2018 05:28:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C84E9CFB54;
-	Wed, 25 Jul 2018 11:26:24 +0000 (UTC)
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4A1884A15E;
+	Wed, 25 Jul 2018 08:28:17 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.502
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3wxEbirkxqSy; Wed, 25 Jul 2018 08:28:16 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7A46A40A67;
+	Wed, 25 Jul 2018 08:28:16 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 40D3A40A67
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Jul 2018 08:28:15 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Bi3ZYrgUhIIT for <kvmarm@lists.cs.columbia.edu>;
+ Wed, 25 Jul 2018 08:28:14 -0400 (EDT)
+Received: from mx1.redhat.com (mx3-rdu2.redhat.com [66.187.233.73])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 2DFF04045F
+ for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Jul 2018 08:28:14 -0400 (EDT)
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id DEA70B6324;
+ Wed, 25 Jul 2018 12:28:12 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 728882156898;
-	Wed, 25 Jul 2018 11:26:23 +0000 (UTC)
-Date: Wed, 25 Jul 2018 13:26:21 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B7E571687E;
+ Wed, 25 Jul 2018 12:28:08 +0000 (UTC)
+Date: Wed, 25 Jul 2018 14:28:06 +0200
 From: Andrew Jones <drjones@redhat.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180725112621.imdzdkntpmh3n5og@kamzik.brq.redhat.com>
-References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
- <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com>
- <CAHmQWvCKkzim+-Z4Y69fWg6igZ7V6gaWhjKJZ0m0G0dhbwOFyw@mail.gmail.com>
+To: Marc Zyngier <marc.zyngier@arm.com>
+Subject: Re: [Qemu-devel] VCPU hotplug on KVM/ARM
+Message-ID: <20180725122806.g2gpvdbrbdkriprg@kamzik.brq.redhat.com>
+References: <000e01d3afad$b9a13830$2ce3a890$@codeaurora.org>
+ <20180227104708.GA11391@cbox>
+ <ac329e1b1f5265a805916ab4f8708f9d@codeaurora.org>
+ <20180227124604.GA2373@cbox>
+ <20180227132131.fipafmnb56a7fj76@kamzik.brq.redhat.com>
+ <b589d714-4f12-e450-7ca5-e55fed4d1705@oracle.com>
+ <74427c65-b860-d576-04f9-766253285210@arm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAHmQWvCKkzim+-Z4Y69fWg6igZ7V6gaWhjKJZ0m0G0dhbwOFyw@mail.gmail.com>
+In-Reply-To: <74427c65-b860-d576-04f9-766253285210@arm.com>
 User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Wed, 25 Jul 2018 11:26:24 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]); Wed, 25 Jul 2018 11:26:24 +0000 (UTC) for IP:'10.11.54.6' DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: 9tZfISFIou+l
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.11.55.2]); Wed, 25 Jul 2018 12:28:12 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+ Wed, 25 Jul 2018 12:28:12 +0000 (UTC) for IP:'10.11.54.5'
+ DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+ HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
+Cc: Christoffer Dall <cdall@cs.columbia.edu>,
+ Christoffer Dall <cdall@kernel.org>, david@redhat.com, qemu-devel@nongnu.org,
+ Christoffer Dall <christofferdall@christofferdall.dk>, qemu-arm@nongnu.org,
+ imammedo@redhat.com, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: ea+dHFZMgDI2
 
-On Wed, Jul 25, 2018 at 06:22:17PM +0800, Hongbo Zhang wrote:
-> On 25 July 2018 at 17:54, Andrew Jones <drjones@redhat.com> wrote:
-> > On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
-> >> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> >> run on KVM and execute virtualization workloads, but we need an
-> >> environment as faithful as possible to physical hardware, for supporting
-> >> firmware and OS development for pysical Aarch64 machines.
-> >>
-> >> This patch introduces new machine type 'Enterprise' with main features:
-> >>  - Based on 'virt' machine type.
-> >>  - Re-designed memory map.
-> >>  - EL2 and EL3 are enabled by default.
-> >>  - GIC version 3 by default.
-> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
-> >>    can be added to it.
-> >>  - EHCI controller attached to system bus, with USB mouse and key board
-> >>    installed by default.
-> >>  - E1000E ethernet card on PCIE bus.
-> >>  - VGA display adaptor on PCIE bus.
-> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
-> >>  - No virtio functions enabled, since this is to emulate real hardware.
-> >
-> > In the last review it was pointed out that using virtio-pci should still
-> > be "real" enough, so there's not much reason to avoid it. Well, unless
-> > there's some concern as to what drivers are available in the firmware and
-> > guest kernel. But that concern usually only applies to legacy firmwares
-> > and kernels, and therefore shouldn't apply to AArch64.
-> >
-> In real physical arm hardware, *HCI are system memory mapped, not on PCIE.
-> we need a QEMU platform like that. We need firmware developed on this
-> QEMU platform can run on real hardware without change(or only a minor
-> change)
+On Wed, Jul 25, 2018 at 11:40:54AM +0100, Marc Zyngier wrote:
+> On 24/07/18 19:35, Maran Wilson wrote:
+> > It's been a few months since this email thread died off. Has anyone 
+> > started working on a potential solution that would allow VCPU hotplug on 
+> > KVM/ARM ? Or is this a project that is still waiting for an owner who 
+> > has the time and inclination to get started?
+> 
+> This is typically a project for someone who would have this particular
+> itch to scratch, and who has a demonstrable need for this functionality.
+> 
+> Work wise, it would have to include adding physical CPU hotplug support
+> to the arm64 kernel as a precondition, before worrying about doing it in
+> KVM.
+> 
+> For KVM itself, particular area of interests would be:
+> - Making GICv3 redistributors magically appear in the IPA space
+> - Live resizing of GICv3 structures
+> - Dynamic allocation of MPIDR, and mapping with vcpu_id
 
-virtio-pci has nothing to do with *HCI. You're adding an E1000e to the
-PCIe bus instead of a virtio-pci nic. Why?
+I have CPU topology description patches on the QEMU list now[*]. A next
+step for me is to this MPIDR work. I probably won't get to it until the
+end of August though.
 
-> Concern is not only available firmwares, but more emphasis is on new
-> firmwares to be developed on this platform (target is developing
-> firmware for hardware, but using qemu if hardware is not available
-> temporarily), if virtio device used, then the newly developed firmware
-> must include virtio front-end codes, but it isn't needed while run on
-> real hardware at last.
-
-Right. The new firmwares and kernels would need to include virtio-pci nic
-and scsi drivers. Is that a problem? Anyway, this is all the more reason
-not to hard code peripherals. If a particular peripheral is a problem
-for a given firmware, then simply don't add it to the command line, add a
-different one.
+[*] http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg01168.html
 
 > 
-> >>  - No paravirtualized fw_cfg device either.
-> >>
-> >> Arm Trusted Firmware and UEFI porting to this are done accordingly.
-> >>
-> >
-> > How will UEFI get the ACPI tables from QEMU without fw-cfg? I didn't
-> > see any sort of reserved ROM region in the patch for them.
-> >
-> UEFI gets ACPI and kernel from network or mass storage, just like the
-> real hardware.
+> This should keep someone busy for a good couple of weeks (give or take a
+> few months).
 
-Hmm. I thought for real hardware that the ACPI tables were built into
-the firmware. So, assuming UEFI knows how to read ACPI tables from
-some storage, then how do the QEMU generated ACPI tables get into that
-storage?
+:-)
 
-> If we develop firmware depends on paravirtualized device like fw_cfg,
-> then we canot run such firmware on real hardware.
+> 
+> That being said, I'd rather see support in QEMU first, creating all the
+> vcpu/redistributors upfront, and signalling the hotplug event via the
+> virtual firmware. And then post some numbers to show that creating all
+> the vcpus upfront is not acceptable.
 
-Yes, fw-cfg is paravirt, so it's obvious why you'd prefer it not be there,
-but, where real hardware builds its hardware descriptions into its
-platform-specific firmware, or uses some platform-specific means of
-extracting a description from some platform-specific place, QEMU
-machine models use fw-cfg.
+I think the upfront allocation, allocating all possible cpus, but only
+activating all present cpus, was the planned approach. What were the
+concerns about that approach? Just vcpu memory overhead for too many
+overly ambitious VM configs?
 
 Thanks,
 drew
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

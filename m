@@ -1,83 +1,83 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp465414wru;
-        Wed, 25 Jul 2018 02:00:46 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfo9SXKA39ZEl73P7kn5ayPMEwoKIyt77uK3Ibbi800ENNeEW2uWBHZL3bFIqHBvZX6TgoM
-X-Received: by 2002:a37:7b45:: with SMTP id w66-v6mr16145585qkc.39.1532509246066;
-        Wed, 25 Jul 2018 02:00:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532509246; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp468483wru;
+        Wed, 25 Jul 2018 02:03:37 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpf2TBmm5Geh+yPZa13vctz6kyBIpZZln9GyqW6FW3pisS53IZyO7Ux+phFjP+PCbaLUjxma
+X-Received: by 2002:a37:9b83:: with SMTP id d125-v6mr18041656qke.127.1532509417714;
+        Wed, 25 Jul 2018 02:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532509417; cv=none;
         d=google.com; s=arc-20160816;
-        b=GYAq0ISwgF3VJO2IIIIHlP0m2bg/ekbdIXHWoFgaA7nLHJIp9tdKlNXWica2pKagNk
-         SNbZmOHv6peXam7zGyNMEHpBoBbtD5TcXBp2HXKhua8wHOjM98QRD0BA2yhX7XjHG0uj
-         p2Og1VrUjFQQUu/FATYv2+YkZFUoCWbXjiFLty3B4O3aTNwGsAy5JC5iCduK8sB9t/bc
-         3+D77yFcMs59TS4RZVVmleZGlAfh/OeNRvRVR/Zws574G4ZZ5rbWRGpt8rkWen+xrL6X
-         1sFWos4y+lDCUrXKt8S2wlI3NYK5k/JTqGZtO/A92pUZKmbniQVjVQKEHG588Ua3ChXN
-         nKxA==
+        b=OJYGLuUEnnjEexCNgS0HBRl7+IeLzKkZe2ZTkOZkrbRKuzFfN9KRa8DAKSVlrv8dax
+         mMR217tkNPcVOETuzfKNePtlJyNT9A84uXne6jOUmdZ3ArZRKD9OhGClIK1neGkPQhV3
+         u6IQD/SdPbucIyI2V4AIYpMW6i+Q4dWQcaV984TPvFbAQgllSvFO3xaajroKo3xk2/DH
+         xSfGAJE131m/XQEwiKJWt2RXiMl0tZ+oBDWqTzk4vU0aq+izUCSwgD9UPIkXDLeJsk9I
+         Uzhx8Ec0mNqU5W2kHDW83rLEu58Mog3fVaV78SOJCvs2lMV5KXtYFLEO6u8Q883umd2v
+         +4fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=+ntjTFn7glmKCglhTpNnlkbBx5hN3Zkz9YXTiRG17KA=;
-        b=U6cPSBpXMtF1DBiwNhmF7fxLYvGRUeFTctAU0PA2iJUBm2EI9Zhho4PF2yI4Ny/zut
-         aJBfiJKk1htlr6UopFUFGUmtUVjjfSGwZ3hwXmSYPROhaUwz32iPmGjbBHmwuLEmmZbk
-         Zp8qnq4ZbHEAb1vBPunP07f/NAyxtxEHkg5XSTMjnlk+jYSZSOmR2eR+1I+c7lj+ocqZ
-         vnTQ2QxvOc/Hv4xRa7V5OcvqzqU3iNBMy1Vwy0AsrggODsAgk947pj7QJFyiKvTjxYyu
-         0iCeNnY8LeCGRkz13iezOJOSM5n60yIlo95V7/Cu/luhb7cTvjyN+OVk75Hkgpf3QsAe
-         oxVw==
+        bh=iKMRK5n/9L/PE3h/WRwTuia6EoFeabKu4tc4YWOYeUM=;
+        b=ECWosDZo6LkYW+YK2ekvFL8FGAvFH2Hssr+RgyG2iMmLTWo51jPACl+WWDcrfV1Hsl
+         CAsDjpjS4PREj6/DsJ9QN5+crguNI8QQBEYuLlhXMAGZqz/UHrro8757artBuS9QKZ5F
+         J+OdQsPAu+jOzrg5G8MGQmk56omYWtWXCcTIL2s6RbxKU3TKUjyOsWF3KIjea+Fj1ZLE
+         hRMyBer2eGdP4FiowmwIGzz4fM9X8ueRhCO2WR7bs1xsTztyCiyROhEkR2RRPoBdNNg9
+         aU11Hm4hToWrxj/dbnSazcur+qwRGAJjYIyRVPf200tK7Yfi1LcrYGQWfmMmGRI32U5w
+         ztQA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u188-v6si8309648qka.330.2018.07.25.02.00.45
+        by mx.google.com with ESMTPS id q17-v6si14435766qtf.187.2018.07.25.02.03.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Jul 2018 02:00:46 -0700 (PDT)
+        Wed, 25 Jul 2018 02:03:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46577 helo=lists.gnu.org)
+Received: from localhost ([::1]:46592 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fiFf3-0000Nd-Fo
-	for alex.bennee@linaro.org; Wed, 25 Jul 2018 05:00:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51172)
+	id 1fiFhp-0002qv-4V
+	for alex.bennee@linaro.org; Wed, 25 Jul 2018 05:03:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51191)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fiFeP-0008Bz-Md
-	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:08 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fiFeR-0008DX-HF
+	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fiFeM-0002EG-Pm
-	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:05 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41920 helo=mx1.redhat.com)
+	(envelope-from <stefanha@redhat.com>) id 1fiFeO-0002Ji-JJ
+	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:07 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33512 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1fiFeM-0002Di-JV; Wed, 25 Jul 2018 05:00:02 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fiFeO-0002HI-Ch; Wed, 25 Jul 2018 05:00:04 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7E07D68801;
-	Wed, 25 Jul 2018 09:00:01 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D19BE81A4EBF;
+	Wed, 25 Jul 2018 09:00:03 +0000 (UTC)
 Received: from localhost (ovpn-117-157.ams2.redhat.com [10.36.117.157])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 83A3D7C2F;
-	Wed, 25 Jul 2018 08:59:58 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 48803215670C;
+	Wed, 25 Jul 2018 09:00:03 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: <qemu-devel@nongnu.org>
-Date: Wed, 25 Jul 2018 09:59:42 +0100
-Message-Id: <20180725085944.11856-6-stefanha@redhat.com>
+Date: Wed, 25 Jul 2018 09:59:43 +0100
+Message-Id: <20180725085944.11856-7-stefanha@redhat.com>
 In-Reply-To: <20180725085944.11856-1-stefanha@redhat.com>
 References: <20180725085944.11856-1-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Wed, 25 Jul 2018 09:00:01 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Wed, 25 Jul 2018 09:00:01 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.8]);
+	Wed, 25 Jul 2018 09:00:03 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Wed, 25 Jul 2018 09:00:03 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v3 5/7] loader: add rom transaction API
+Subject: [Qemu-arm] [PATCH v3 6/7] loader: Implement .hex file loader
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,117 +98,315 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
 	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zoSLSrD/Eze4
+X-TUID: XG7Xe2IBfT2r
 
-Image file loaders may add a series of roms.  If an error occurs partway
-through loading there is no easy way to drop previously added roms.
+From: Su Hang <suhang16@mails.ucas.ac.cn>
 
-This patch adds a transaction mechanism that works like this:
+This patch adds Intel Hexadecimal Object File format support to the
+loader.  The file format specification is available here:
+http://www.piclist.com/techref/fileext/hex/intel.htm
 
-  rom_transaction_begin();
-  ...call rom_add_*()...
-  rom_transaction_end(ok);
+This file format is often used with microcontrollers such as the
+micro:bit, Arduino, STM32, etc.  Users expect to be able to run them
+directly with qemu -kernel program.hex instead of converting to ELF or
+binary.
 
-If ok is false then roms added in this transaction are dropped.
-
+Signed-off-by: Su Hang <suhang16@mails.ucas.ac.cn>
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- include/hw/loader.h | 19 +++++++++++++++++++
- hw/core/loader.c    | 37 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+)
+ include/hw/loader.h    |  12 ++
+ hw/arm/arm-m-profile.c |   3 +
+ hw/core/loader.c       | 243 +++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 258 insertions(+)
 
 diff --git a/include/hw/loader.h b/include/hw/loader.h
-index e98b84b8f9..5235f119a3 100644
+index 5235f119a3..3c112975f4 100644
 --- a/include/hw/loader.h
 +++ b/include/hw/loader.h
-@@ -225,6 +225,25 @@ int rom_check_and_register_reset(void);
- void rom_set_fw(FWCfgState *f);
- void rom_set_order_override(int order);
- void rom_reset_order_override(void);
-+
-+/**
-+ * rom_transaction_begin:
+@@ -28,6 +28,18 @@ ssize_t load_image_size(const char *filename, void *addr, size_t size);
+ int load_image_targphys_as(const char *filename,
+                            hwaddr addr, uint64_t max_sz, AddressSpace *as);
+ 
++/**load_targphys_hex_as:
++ * @filename: Path to the .hex file
++ * @entry: Store the entry point given by the .hex file
++ * @as: The AddressSpace to load the .hex file to. The value of
++ *      address_space_memory is used if nothing is supplied here.
 + *
-+ * Call this before of a series of rom_add_*() calls.  Call
-+ * rom_transaction_end() afterwards to commit or abort.  These functions are
-+ * useful for undoing a series of rom_add_*() calls if image file loading fails
-+ * partway through.
-+ */
-+void rom_transaction_begin(void);
-+
-+/**
-+ * rom_transaction_end:
-+ * @commit: true to commit added roms, false to drop added roms
++ * Load a fixed .hex file into memory.
 + *
-+ * Call this after a series of rom_add_*() calls.  See rom_transaction_begin().
++ * Returns the size of the loaded .hex file on success, -1 otherwise.
 + */
-+void rom_transaction_end(bool commit);
++int load_targphys_hex_as(const char *filename, hwaddr *entry, AddressSpace *as);
 +
- int rom_copy(uint8_t *dest, hwaddr addr, size_t size);
- void *rom_ptr(hwaddr addr, size_t size);
- void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ /** load_image_targphys:
+  * Same as load_image_targphys_as(), but doesn't allow the caller to specify
+  * an AddressSpace.
+diff --git a/hw/arm/arm-m-profile.c b/hw/arm/arm-m-profile.c
+index 8bafd6602d..441bc1a9c2 100644
+--- a/hw/arm/arm-m-profile.c
++++ b/hw/arm/arm-m-profile.c
+@@ -302,6 +302,9 @@ void arm_m_profile_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem
+     if (kernel_filename) {
+         image_size = load_elf_as(kernel_filename, NULL, NULL, &entry, &lowaddr,
+                                  NULL, big_endian, EM_ARM, 1, 0, as);
++        if (image_size < 0) {
++            image_size = load_targphys_hex_as(kernel_filename, &entry, as);
++        }
+         if (image_size < 0) {
+             image_size = load_image_targphys_as(kernel_filename, 0,
+                                                 mem_size, as);
 diff --git a/hw/core/loader.c b/hw/core/loader.c
-index bbb6e65bb5..182abcce28 100644
+index 182abcce28..9ce5f45d5c 100644
 --- a/hw/core/loader.c
 +++ b/hw/core/loader.c
-@@ -840,6 +840,8 @@ struct Rom {
-     char *fw_dir;
-     char *fw_file;
- 
-+    bool committed;
-+
-     hwaddr addr;
-     QTAILQ_ENTRY(Rom) next;
- };
-@@ -866,6 +868,8 @@ static void rom_insert(Rom *rom)
-         rom->as = &address_space_memory;
+@@ -1323,3 +1323,246 @@ void hmp_info_roms(Monitor *mon, const QDict *qdict)
+         }
      }
- 
-+    rom->committed = false;
-+
-     /* List is ordered by load address in the same address space */
-     QTAILQ_FOREACH(item, &roms, next) {
-         if (rom_order_compare(rom, item)) {
-@@ -1165,6 +1169,39 @@ void rom_reset_order_override(void)
-     fw_cfg_reset_order_override(fw_cfg);
  }
- 
-+void rom_transaction_begin(void)
-+{
-+    Rom *rom;
 +
-+    /* Ignore ROMs added without the transaction API */
-+    QTAILQ_FOREACH(rom, &roms, next) {
-+        rom->committed = true;
++typedef enum HexRecord HexRecord;
++enum HexRecord {
++    DATA_RECORD = 0,
++    EOF_RECORD,
++    EXT_SEG_ADDR_RECORD,
++    START_SEG_ADDR_RECORD,
++    EXT_LINEAR_ADDR_RECORD,
++    START_LINEAR_ADDR_RECORD,
++};
++
++#define DATA_FIELD_MAX_LEN 0xff
++#define LEN_EXCEPT_DATA 0x5
++/* 0x5 = sizeof(byte_count) + sizeof(address) + sizeof(record_type) +
++ *       sizeof(checksum) */
++typedef struct {
++    uint8_t byte_count;
++    uint16_t address;
++    uint8_t record_type;
++    uint8_t data[DATA_FIELD_MAX_LEN];
++    uint8_t checksum;
++} HexLine;
++
++/* return 0 or -1 if error */
++static bool parse_record(HexLine *line, uint8_t *our_checksum, const uint8_t c,
++                         uint32_t *index, const bool in_process)
++{
++    /* +-------+---------------+-------+---------------------+--------+
++     * | byte  |               |record |                     |        |
++     * | count |    address    | type  |        data         |checksum|
++     * +-------+---------------+-------+---------------------+--------+
++     * ^       ^               ^       ^                     ^        ^
++     * |1 byte |    2 bytes    |1 byte |     0-255 bytes     | 1 byte |
++     */
++    uint8_t value = 0;
++    uint32_t idx = *index;
++    /* ignore space */
++    if (g_ascii_isspace(c)) {
++        return true;
 +    }
++    if (!g_ascii_isxdigit(c) || !in_process) {
++        return false;
++    }
++    value = g_ascii_xdigit_value(c);
++    value = idx & 0x1 ? value & 0xf : value << 4;
++    if (idx < 2) {
++        line->byte_count |= value;
++    } else if (2 <= idx && idx < 6) {
++        line->address <<= 4;
++        line->address += g_ascii_xdigit_value(c);
++    } else if (6 <= idx && idx < 8) {
++        line->record_type |= value;
++    } else if (8 <= idx && idx < 8 + 2 * line->byte_count) {
++        line->data[(idx - 8) >> 1] |= value;
++    } else if (8 + 2 * line->byte_count <= idx &&
++               idx < 10 + 2 * line->byte_count) {
++        line->checksum |= value;
++    } else {
++        return false;
++    }
++    *our_checksum += value;
++    ++(*index);
++    return true;
 +}
 +
-+void rom_transaction_end(bool commit)
-+{
-+    Rom *rom;
-+    Rom *tmp;
++typedef struct {
++    const char *filename;
++    HexLine line;
++    uint8_t *bin_buf;
++    hwaddr *start_addr;
++    int total_size;
++    uint32_t next_address_to_write;
++    uint32_t current_address;
++    uint32_t current_rom_index;
++    uint32_t rom_start_address;
++    AddressSpace *as;
++} HexParser;
 +
-+    QTAILQ_FOREACH_SAFE(rom, &roms, next, tmp) {
-+        if (rom->committed) {
-+            continue;
++/* return size or -1 if error */
++static int handle_record_type(HexParser *parser)
++{
++    HexLine *line = &(parser->line);
++    switch (line->record_type) {
++    case DATA_RECORD:
++        parser->current_address =
++            (parser->next_address_to_write & 0xffff0000) | line->address;
++        /* verify this is a contiguous block of memory */
++        if (parser->current_address != parser->next_address_to_write) {
++            if (parser->current_rom_index != 0) {
++                rom_add_blob_fixed_as(parser->filename, parser->bin_buf,
++                                      parser->current_rom_index,
++                                      parser->rom_start_address, parser->as);
++            }
++            parser->rom_start_address = parser->current_address;
++            parser->current_rom_index = 0;
 +        }
-+        if (commit) {
-+            rom->committed = true;
-+        } else {
-+            QTAILQ_REMOVE(&roms, rom, next);
-+            g_free(rom->data);
-+            g_free(rom->path);
-+            g_free(rom->name);
-+            g_free(rom->fw_dir);
-+            g_free(rom->fw_file);
-+            g_free(rom);
++
++        /* copy from line buffer to output bin_buf */
++        memcpy(parser->bin_buf + parser->current_rom_index, line->data,
++               line->byte_count);
++        parser->current_rom_index += line->byte_count;
++        parser->total_size += line->byte_count;
++        /* save next address to write */
++        parser->next_address_to_write =
++            parser->current_address + line->byte_count;
++        break;
++
++    case EOF_RECORD:
++        if (parser->current_rom_index != 0) {
++            rom_add_blob_fixed_as(parser->filename, parser->bin_buf,
++                                  parser->current_rom_index,
++                                  parser->rom_start_address, parser->as);
 +        }
++        return parser->total_size;
++    case EXT_SEG_ADDR_RECORD:
++    case EXT_LINEAR_ADDR_RECORD:
++        if (line->byte_count != 2 && line->address != 0) {
++            return -1;
++        }
++
++        if (parser->current_rom_index != 0) {
++            rom_add_blob_fixed_as(parser->filename, parser->bin_buf,
++                                  parser->current_rom_index,
++                                  parser->rom_start_address, parser->as);
++        }
++
++        /* save next address to write,
++         * in case of non-contiguous block of memory */
++        parser->next_address_to_write =
++            line->record_type == EXT_SEG_ADDR_RECORD
++                ? ((line->data[0] << 12) | (line->data[1] << 4))
++                : ((line->data[0] << 24) | (line->data[1] << 16));
++        parser->rom_start_address = parser->next_address_to_write;
++        parser->current_rom_index = 0;
++        break;
++
++    case START_SEG_ADDR_RECORD:
++        if (line->byte_count != 4 && line->address != 0) {
++            return -1;
++        }
++
++        /* x86 16-bit CS:IP segmented addressing */
++        *(parser->start_addr) = (((line->data[0] << 8) | line->data[1]) << 4) |
++                                (line->data[2] << 8) | line->data[3];
++        break;
++
++    case START_LINEAR_ADDR_RECORD:
++        if (line->byte_count != 4 && line->address != 0) {
++            return -1;
++        }
++
++        *(parser->start_addr) = (line->data[0] << 24) | (line->data[1] << 16) |
++                                (line->data[2] << 8)  | (line->data[3]);
++        break;
++
++    default:
++        return -1;
 +    }
++
++    return parser->total_size;
 +}
 +
- static Rom *find_rom(hwaddr addr, size_t size)
- {
-     Rom *rom;
++/* return size or -1 if error */
++static int parse_hex_blob(const char *filename, hwaddr *addr, uint8_t *hex_blob,
++                          size_t hex_blob_size, AddressSpace *as)
++{
++    bool in_process = false; /* avoid re-enter and
++                              * check whether record begin with ':' */
++    uint8_t *end = hex_blob + hex_blob_size;
++    uint8_t our_checksum = 0;
++    uint32_t record_index = 0;
++    HexParser parser = {
++        .filename = filename,
++        .bin_buf = g_malloc(hex_blob_size),
++        .start_addr = addr,
++        .as = as,
++    };
++
++    rom_transaction_begin();
++
++    for (; hex_blob < end; ++hex_blob) {
++        switch (*hex_blob) {
++        case '\r':
++        case '\n':
++            if (!in_process) {
++                break;
++            }
++
++            in_process = false;
++            if ((LEN_EXCEPT_DATA + parser.line.byte_count) * 2 !=
++                    record_index ||
++                our_checksum != 0) {
++                parser.total_size = -1;
++                goto out;
++            }
++
++            if (handle_record_type(&parser) == -1) {
++                parser.total_size = -1;
++                goto out;
++            }
++            break;
++
++        /* start of a new record. */
++        case ':':
++            memset(&parser.line, 0, sizeof(HexLine));
++            in_process = true;
++            record_index = 0;
++            break;
++
++        /* decoding lines */
++        default:
++            if (!parse_record(&parser.line, &our_checksum, *hex_blob,
++                              &record_index, in_process)) {
++                parser.total_size = -1;
++                goto out;
++            }
++            break;
++        }
++    }
++
++out:
++    g_free(parser.bin_buf);
++    rom_transaction_end(parser.total_size != -1);
++    return parser.total_size;
++}
++
++/* return size or -1 if error */
++int load_targphys_hex_as(const char *filename, hwaddr *entry, AddressSpace *as)
++{
++    gsize hex_blob_size;
++    gchar *hex_blob;
++    int total_size = 0;
++
++    if (!g_file_get_contents(filename, &hex_blob, &hex_blob_size, NULL)) {
++        return -1;
++    }
++
++    total_size = parse_hex_blob(filename, entry, (uint8_t *)hex_blob,
++                                hex_blob_size, as);
++
++    g_free(hex_blob);
++    return total_size;
++}
 -- 
 2.17.1
 

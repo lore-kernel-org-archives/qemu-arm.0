@@ -1,118 +1,91 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp456975wru;
-        Wed, 25 Jul 2018 01:48:31 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdMscmSePymIzpo29ooW/gw4tVUQTITFIaJqnir+2tnPJ3OafOq0DZvg+OGd8c5tYri54Wn
-X-Received: by 2002:ac8:16a5:: with SMTP id r34-v6mr19764338qtj.62.1532508511680;
-        Wed, 25 Jul 2018 01:48:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532508511; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp465602wru;
+        Wed, 25 Jul 2018 02:00:55 -0700 (PDT)
+X-Received: by 2002:aca:4784:: with SMTP id u126-v6mr2539668oia.229.1532509254989;
+        Wed, 25 Jul 2018 02:00:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532509254; cv=none;
         d=google.com; s=arc-20160816;
-        b=YoS2pTO/GLcOJsUKxdnKv6j2maJPVSFki3N08O44bWfWf9mMi0wnTXEV+K8I0kriqz
-         cSsheu4y4D4V+AjkciFzsgkzdPWaaCSfg72iPfIR8RRWYNFdErpkeZ89lrIb2PrVviri
-         yNNkZN0O60x7/wvoGLevp/SC+d4DNqTSqEAN57rVFhnP/6/kaKrdobP1CFF9JsQ2IMAR
-         SwB7w4m47sIW87Z9Jdo4b+tgE57RSzLbFvD7LCa6+1vJZJc7gFx678qbaXRB1Cp4ytBE
-         AzTQV2nBhBivW2i9aLn6hxH1rKuLvbaeYeERG/sY/NYd/4CYGJt+7BtflSYYV8bvW8VM
-         Zhww==
+        b=s6+AsMvZPRSMVQtgLiAXTN/fVOqQyChbPtZDpBQKlg2jDYuitxdFtYnSCfocgx5hOR
+         QwoOxTPTINo6Nj8XlxuaSk2uOAmVTTUZiZtm+8k5r6kTv45Z9OiRBL8NdlRFfGB1q2V1
+         sep0uVD0RlSSQ7jqAi/DXBgzM/KMg5f2JLCYmjmaeZKLUFgFoSrceD6nNAGO8w8M1cOT
+         sna79P2ik/ioVN0S3ZtccWEhkzuNApTZJEUjlkLVkYTAthJuotfLk2Qm9QhB9NNyqzKx
+         I61WtEwmRIoeQ8HkQV3bQZlelB1wvTVsZReDHawib24oii8rIJWzVPyqmx6Z54dYawxT
+         N6/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date
-         :arc-authentication-results;
-        bh=MJlEQjIvY4fmBctvDVzn8CynbLlTKo2oQ96e95LAtZA=;
-        b=woLxjDKpegcorqciiUEXCGchonnVH4oAZqosDjJtphx5kf7G9PeXQ5sNvZPZtkHc59
-         waGap10JFsmOvk2NHW45Kvd8WNLWmD0JTfQjMtWIP6UnIm5mY6I/vMScfLyDrexTy1U4
-         J7fpaurCUypD6nFatHz4NlGzQfqvmzxc+E7LMtnbyu+tJeFrQouUUHxy31pakRW41vx4
-         7dWAIhCwTMYjEF0LLdUww13VO+P+JDowyOlRy0HvwwkGJ9jjL/ZMuRs2YMxk8qy2Pn6T
-         sP0CNRTW4LL+wqlhTgS7+voqi1YFwbqD+0bA2gSAGYoPWLQA8fbRgeCyzw71AzOo4xop
-         GWfQ==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=BM9dehO1lwtLoEpeQOI9VJKwESMKbfflnCKGZtTZsjs=;
+        b=X2fUvjsthmerEH5ihuitIohvMelgZb48b8rVf0p/DULlLsVVZkQqByTta2ON24Kgrk
+         lw9oh0iDQ0LoWYYQPFn1irATmq440s1gpMdzO0HzxGC6h72enLDfrP9+G7n9WY3X+298
+         +TOiBjYvMkOUVznbu587GChpWYIdOnhdchGecZXw7D8EzitFo7kkTj+M5xZKt5Rw0yjM
+         BTGJQ7xFe9MJqySc1AOjQ3vl4353SzJ1/QkpV1kGp4FsdeGX6zyO3rg+y2emk3vzJsAv
+         f/hX1vfSg92A4IkrGRKBBsW4UXETYe2zhkXNlpDByoMQ9v2+dt0X7A6EvcENw41N53Le
+         2T8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of berrange@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id r20-v6si5222248qvl.133.2018.07.25.01.48.30
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Jul 2018 01:48:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JKVbif0A;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id t70-v6sor7317319oit.201.2018.07.25.02.00.54
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 25 Jul 2018 02:00:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of berrange@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9ED4D81A4EA7;
-	Wed, 25 Jul 2018 08:48:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.89])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EF92E111DCE8;
-	Wed, 25 Jul 2018 08:48:27 +0000 (UTC)
-Date: Wed, 25 Jul 2018 09:48:24 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, radoslaw.biernacki@linaro.org,
-	leif.lindholm@linaro.org, ard.biesheuvel@linaro.org
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180725084824.GA12855@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
- <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=JKVbif0A;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=BM9dehO1lwtLoEpeQOI9VJKwESMKbfflnCKGZtTZsjs=;
+        b=JKVbif0AvfBQU8tyy7d4k2Cu5J4VdUcljJIpgvzkFoxVxwJYANNlOtwk1FqdoofBK8
+         7TTUXIALA1QGBoXanwka82tzhEUcilVw+1nHocPmIdMJm7jx8ao0J/B4NH7s5yPtH9U3
+         Jxdk8rXLu38bGp8tO5xgJ/Gu42Y5n9iV4ZeEM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=BM9dehO1lwtLoEpeQOI9VJKwESMKbfflnCKGZtTZsjs=;
+        b=GacO7TlcgBibopSaOvOzc9vcAQkr7pR/tg/YUa7buXLb7Qf/cURtFzNaMALiT7RfIA
+         eyeJdK8k1MvZgb6nVLalr9XpGlv/QYP+JCtSXZknMVsj3KgaeD5dAIfl7ckQqSCvEVCE
+         otiOUP7jyXczeNldkJKbew1K4reYFUseI6OgpuQ4SlKIbKt3qNJ8wlT7qb/cjWZjRtsA
+         2WOgycFhtUNrHXF1J96RTwxbi3W3GLFg8TKD00aDTQQDj6Nk2yL0qXiVduN0xN0j8h+C
+         ZU3kvDC6IddkmzAm0UzSlcjwhJfYfymIRbEL4ppZicuQ7O+h4+nW2KcnaxWnoCFC72hS
+         YwWA==
+X-Gm-Message-State: AOUpUlHXXpYNYK4OvG4hm1+e1RTMAlZeFeeHXLZfyL8shs9X8+TNMxZ8
+	zn+unMDd+lrBVGn3x+oTVa/USOetZK70sFZVd1rDPLU2Lng=
+X-Google-Smtp-Source: AAOMgpc3T+eD9RVMh5u6DHbKkTFPJNm08oROtB11kuovjpLYI9hNGzUqQA+/yLjs3qnXxALbCLI6EW+MGJrY4k1Z+Oc=
+X-Received: by 2002:aca:5f0a:: with SMTP id t10-v6mr2287887oib.337.1532509254646;
+ Wed, 25 Jul 2018 02:00:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
-User-Agent: Mutt/1.10.0 (2018-05-17)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Wed, 25 Jul 2018 08:48:30 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Wed, 25 Jul 2018 08:48:30 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
-X-TUID: a5l33h/vrv+O
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Wed, 25 Jul 2018 02:00:34
+ -0700 (PDT)
+In-Reply-To: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
+References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 25 Jul 2018 10:00:34 +0100
+Message-ID: <CAFEAcA-WVfswDpDGoDCTqv-ZRege8kJ5hPjcy43DkODRKZfGZg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] hw/arm: check fw_cfg return value before using it
+To: Hongbo Zhang <hongbo.zhang@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	radoslaw.biernacki@linaro.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
+	Leif Lindholm <leif.lindholm@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: HIG3Vb3m+16y
 
-On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
-> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> run on KVM and execute virtualization workloads, but we need an
-> environment as faithful as possible to physical hardware, for supporting
-> firmware and OS development for pysical Aarch64 machines.
-> 
-> This patch introduces new machine type 'Enterprise' with main features:
-
-The 'enterprise' name is really awful - this is essentially a marketing
-term completely devoid of any useful meaning.
-
-You had previously called this "sbsa" which IIUC was related to a real
-world hardware specification that it was based on. IOW, I think this old
-name was preferrable to calling it "enterprise".
-
->  - Based on 'virt' machine type.
->  - Re-designed memory map.
->  - EL2 and EL3 are enabled by default.
->  - GIC version 3 by default.
->  - AHCI controller attached to system bus, and then CDROM and hard disc
->    can be added to it.
->  - EHCI controller attached to system bus, with USB mouse and key board
->    installed by default.
->  - E1000E ethernet card on PCIE bus.
->  - VGA display adaptor on PCIE bus.
->  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
->  - No virtio functions enabled, since this is to emulate real hardware.
->  - No paravirtualized fw_cfg device either.
-> 
-> Arm Trusted Firmware and UEFI porting to this are done accordingly.
-> 
+On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> The fw_cfg value returned from fw_cfg_find() may be NULL, so check it
+> before using.
+>
 > Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> ---
-> Changes since v1:
->  - rebase on v3.0.0-rc0
->  - introduce another auxillary patch as 1/2, so this is 2/2
->  - rename 'sbsa' to 'enterprise'
->  - remove paravirualized fw_cfg
->  - set gic_vertion to 3 instead of 2
->  - edit commit message to describe purpose of this platform
-> 
->  hw/arm/virt-acpi-build.c |  59 +++++++++++++-
->  hw/arm/virt.c            | 199 ++++++++++++++++++++++++++++++++++++++++++++++-
->  include/hw/arm/virt.h    |   3 +
->  3 files changed, 255 insertions(+), 6 deletions(-)
 
-Regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Hi -- this patch series seems to be missing its cover letter.
+Please could you include a cover letter for any patchset
+with more than one patch -- some of our automated patch
+email handling tools rely on it.
+
+thanks
+-- PMM

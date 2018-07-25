@@ -1,134 +1,134 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp495492wru;
-        Wed, 25 Jul 2018 02:40:41 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpehgcWvH7EoKx9hGh5ZdSBtW8tdfnRD1s+8H7jLHIGEj2TZpyEwb6HkqCzgk6YlPkb738vr
-X-Received: by 2002:a0c:da90:: with SMTP id z16-v6mr18391802qvj.55.1532511641224;
-        Wed, 25 Jul 2018 02:40:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532511641; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp497758wru;
+        Wed, 25 Jul 2018 02:43:48 -0700 (PDT)
+X-Received: by 2002:a02:ba85:: with SMTP id g5-v6mr5497969jao.6.1532511828724;
+        Wed, 25 Jul 2018 02:43:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532511828; cv=none;
         d=google.com; s=arc-20160816;
-        b=SgsK1xPRpUbMdo1UK1cYxyIseFV/qHCKFxUP+e0kwefJYux5PwPJfIamYFrvy4ZwsZ
-         I2/Ycd1qv01sPX8REpbwFAqwSv54yH5b2Yd4xoJyIXqquqpQQCUZjtW5kAK0AZbPJMs2
-         dH8nUvW0RzHJTEXWcpW2VKfcm+n8BO6rNNJyjPKlXEg0NpGzXNyF82rJ7fgdTvHmaGG8
-         +kq3NGsdFObfZEDb3758KIjit1UrdEHp5q3hRuRUcMdsSUWfQARQWanlCuK79AblAkAc
-         QhrOwe1k7wY+blVzYmAnYAemHXzC2lgFfTfwDFjnzFj0kEPtyCB7ag0NlBXyQ1qon4Uf
-         ePqQ==
+        b=b6B6Iw+/LjftvaWcfuIs+Be2vX11RUKUYYh17tEVn8Alqnra2dBzGc8m31UeL3sn9q
+         ZdRJjk/gdYwJb+5SyIzxrimKKHQY3bOmZOvGUaL8XjO7GrdZgfOyoAs7hiVrHKk0sbC2
+         4Vo6Uep0JXOapWOu/nB72fwHRgbm3OBB4hBMztw9jsMwws/ZlwE4ROoeqzo7bNxScH5k
+         rrUYn4k0CPqTMOZlMlriiPVw9VKeTbl7t5mdUmG47kBAjYku1oeyVnPsi/nnycEx5QJP
+         Bd0T9YMhWZClRGKb4eO+KYJfc69f6/ueT7qsrxD0idNcbtQKCfaEbI9llnFRbVhM2a1X
+         wOWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:arc-authentication-results;
-        bh=KJrqExp+6LqlAj5/OY8wSi9sYasrVEX6zeBXGW7fX/w=;
-        b=pqA7xmhztl+wWYuPgiZMq71pK0zg3FuQUW4RCl+4tiQwfwXRGBHjle60BJUA7fr/Gx
-         zde7r7tPObgKYQWVc5wNRNxh3MtQEu3a11YD/vpvWrfsdEUmgxyLjlsDD8TW/PzgAKoK
-         6lLv8xqI9YBL7Tt+fznYKASLH9CMXNZRbC2ojjJFZiljyh329a39a0bFVPziGdg+jOqV
-         dXmEWehq361H0TO+NWNNkJtulsQsdDrgcr3wQLR9jdhwFOIag87xUvPSKVQORLLRXPlg
-         1bUx3F2ngTOv+rYZqo1DHQaeE9dfSf8/RzpIvekD6fm4JKNMb817Se7fioOAX/RzOoJ0
-         OVlg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=ZD6A2OS255EfHX+TiFZS+UGsr8aQ6teEUbFsVAF3k1A=;
+        b=TNdjmgNnFQhD4QfBh9pliPTQe9s0eSV6CxM7iJAiEtZM0YhsQAJfRgmMboPaJD4YYy
+         WB7h9/EGB6GDSrmjOM96Tsa8i+Q5c2gSwTkdPmUE3X3jDXf7jmdauTpZbaafwi3TblMv
+         p3mx+DLKF9JdJzS3VCn5YRsIRbilTBZ1RiVHnjTp4kcK9Ln0+R67yJPb5G+ynUXyO2+X
+         a9fA2W2pgnzeowGhtsi6jruj1runkhCpjnuSf3ZQEtlO46FyT7/BDR+nMjw8RatTufUY
+         7pOivP5wmsnHua5zJYjbEZRlJQLJCFf7DuF3P0SbkDOSFqwDFRy2YZM9b2IczkFYvqI2
+         fS4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id g4-v6si9673887qkc.274.2018.07.25.02.40.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Jul 2018 02:40:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ksw+hpDH;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r127-v6sor4454413iod.78.2018.07.25.02.43.48
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 25 Jul 2018 02:43:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BA2554043954;
-	Wed, 25 Jul 2018 09:40:40 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 666CD111DCE5;
-	Wed, 25 Jul 2018 09:40:39 +0000 (UTC)
-Date: Wed, 25 Jul 2018 11:40:37 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180725094037.uzz4ycen4qja4q4a@kamzik.brq.redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ksw+hpDH;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=ZD6A2OS255EfHX+TiFZS+UGsr8aQ6teEUbFsVAF3k1A=;
+        b=Ksw+hpDH5nO8p8w6Vdv8odYiQ0M+ruP0fo2OJHROFcQFQW/NY+GhecHDBvvg4zn9vf
+         UCL2ffyJuOCkPQJodbrUjwQaPMt10MRTEWYVtu6XrAMAxu2yLU0mQtAqt03D7+I5/dsC
+         j6QJC0n5rS+y9yRRLh1O+YM7yjpt22mJtgrVY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=ZD6A2OS255EfHX+TiFZS+UGsr8aQ6teEUbFsVAF3k1A=;
+        b=bCvf9lXH5uiqSH7zgbbD15DlEXacsH8xWWHWr6spMdRJ0gTLuYaQ6i8bP1SXQb/VYm
+         8YDm35ZjbLxFrgKQVfNWol1wN6TIKWPHYeWQXvkT8L6X3u80QZ2QFjXzcnFfBno7nAR0
+         JNkjLTiyP642l1y+KFM6rBoCFB3yvi/sC/3iZlKUBO8d9G3sBao4PRzTpKFJOzrDDYgG
+         TEBKSjNIZvN/HORRb4kGMuinWFgo37OerulwYs3eJnAVgsJDS1oZVJ3qsUpYD9vpN5Wp
+         87fHK0E/EPRY1qkmEcKMOXBQmPHPJfQPFmW+CCsMScC6VOO3eQAHvm/5amSOxfM3KYiR
+         DOmw==
+X-Gm-Message-State: AOUpUlEJ5nai0GlgRNupYhivlrOnA/X+rlDpcz7stpr7v28vDvXgKDsd
+	rXMMJziGyJeBeRdPuD05tokWnXskyygjR+jYb/Rhgwsk
+X-Google-Smtp-Source: AAOMgpeZWwx9jTmiFS3mHPQWqhTydRLcHQPdTUZSFsvjZdoQcJUQgLQiFExJU+L78me6BWdyrcrlVBKRNJJxs6Cn5t0=
+X-Received: by 2002:a6b:6104:: with SMTP id v4-v6mr15160808iob.94.1532511828390;
+ Wed, 25 Jul 2018 02:43:48 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:ac0:a161:0:0:0:0:0 with HTTP; Wed, 25 Jul 2018 02:43:47
+ -0700 (PDT)
+In-Reply-To: <20180725091837.GB12855@redhat.com>
 References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
  <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <20180725084824.GA12855@redhat.com>
- <CAKv+Gu_RHsed0KAH8njKB8UPvbUDeoTZ5sP76f_br6azisZzSQ@mail.gmail.com>
- <CAHmQWvCqKqQXnXxOUgi=kLTyE5BhV2NxqaKzvPp63HX02V=X2g@mail.gmail.com>
- <CAKv+Gu_eFjS_UvOuEKhbsWr34o3Jqd4h2duJ-gG1ofsFbwkGbQ@mail.gmail.com>
- <CAHmQWvC8_J4i32UZzdHqJ4w3EdEAHmWGdgqrvGwEA7uo0kvk9A@mail.gmail.com>
- <CAKv+Gu-B4o7dwZPOix2MkECJia6M6Q+zBMw8XVdw49kFYW6J+w@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAKv+Gu-B4o7dwZPOix2MkECJia6M6Q+zBMw8XVdw49kFYW6J+w@mail.gmail.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Wed, 25 Jul 2018 09:40:40 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]); Wed, 25 Jul 2018 09:40:40 +0000 (UTC) for IP:'10.11.54.3' DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: oV2jnpx5WPet
+ <20180725084824.GA12855@redhat.com> <CAHmQWvDtNQsPDy1tCnsy9JbGzMxLAik5S0bBfpCj_0ig8=iZdA@mail.gmail.com>
+ <20180725091837.GB12855@redhat.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Wed, 25 Jul 2018 17:43:47 +0800
+Message-ID: <CAHmQWvCNBgZatR4hdn4yunKn6+ocHith7ZQ86Re2jQ9xE4iwGA@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: dtX07M776KsD
 
-On Wed, Jul 25, 2018 at 11:20:03AM +0200, Ard Biesheuvel wrote:
-> On 25 July 2018 at 11:17, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> > On 25 July 2018 at 17:13, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> >> On 25 July 2018 at 11:09, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> >>> On 25 July 2018 at 17:01, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> >>>> On 25 July 2018 at 10:48, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >>>>> On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
-> >>>>>> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> >>>>>> run on KVM and execute virtualization workloads, but we need an
-> >>>>>> environment as faithful as possible to physical hardware, for supporting
-> >>>>>> firmware and OS development for pysical Aarch64 machines.
-> >>>>>>
-> >>>>>> This patch introduces new machine type 'Enterprise' with main features:
-> >>>>>
-> >>>>> The 'enterprise' name is really awful - this is essentially a marketing
-> >>>>> term completely devoid of any useful meaning.
-> >>>>>
-> >>>>> You had previously called this "sbsa" which IIUC was related to a real
-> >>>>> world hardware specification that it was based on. IOW, I think this old
-> >>>>> name was preferrable to calling it "enterprise".
-> >>>>>
-> >>>>
-> >>>> I couldn't agree more. However, IIUC this change was made at the
-> >>>> request of one of the reviewers, although I wasn't part of the
-> >>>> discussion at that point, so I'm not sure who it was.
-> >>>>
-> >>>> Hongbo, could you please share a link to that discussion?
-> >>>>
-> >>>> Thanks,
-> >>>> Ard.
-> >>>>
-> >>>
-> >>> V1 discussion here:
-> >>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg545775.html
-> >>>
-> >>
-> >> So who asked for the sbsa -> enterprise change?
-> >
-> > Actually nobody, but it was argued that sbsa does not require ehci and
-> > ahci etc, then we should find a name fitting for this platform better.
-> 
-> That doesn't make sense to me. The SBSA describes a minimal
-> configuration, it does not limit what peripherals may be attached to
-> the core system.
+On 25 July 2018 at 17:18, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wro=
+te:
+> On Wed, Jul 25, 2018 at 05:05:06PM +0800, Hongbo Zhang wrote:
+>> On 25 July 2018 at 16:48, Daniel P. Berrang=C3=A9 <berrange@redhat.com> =
+wrote:
+>> > On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
+>> >> For the Aarch64, there is one machine 'virt', it is primarily meant t=
+o
+>> >> run on KVM and execute virtualization workloads, but we need an
+>> >> environment as faithful as possible to physical hardware, for support=
+ing
+>> >> firmware and OS development for pysical Aarch64 machines.
+>> >>
+>> >> This patch introduces new machine type 'Enterprise' with main feature=
+s:
+>> >
+>> > The 'enterprise' name is really awful - this is essentially a marketin=
+g
+>> > term completely devoid of any useful meaning.
+>> >
+>> > You had previously called this "sbsa" which IIUC was related to a real
+>> > world hardware specification that it was based on. IOW, I think this o=
+ld
+>> > name was preferrable to calling it "enterprise".
+>> >
+>> Thanks for your comments.
+>> Frankly, I myself prefer to 'sbsa' too, in fact, at the early stage of
+>> developing, we called this 'enterprise', but later I changed it to
+>> 'sbsa' until I sent out v1 patch.
+>>
+>> The work Arm TF and EDK2 porting to this platform needs this name to
+>> be defined finally.
 >
+> Why should EDK2 care what the QEMU machine type name is. The machine type
+> name is purely a QEMU internal tag and shouldn't be visible in the guest
+> ABI at all IIUC.
+>
+For example, in EDK2, ArmVirtPkg/ArmVirtQemuSBSA.dsc and
+ArmVirtPkg/ArmVirtQemuSBSA.fdf are created for porting to the new
+platform, similar situation for Arm TF, so the name is needed.
 
-Hi Ard,
-
-I think that a machine model named 'sbsa' should provide all SBSA required
-hardware, and nothing else, while providing a means to easily extend the
-machine beyond that in any way the user likes. The user can easily add
-devices with the command line and/or by using -readconfig to build a
-"typical" machine. Note, it should even be possible to add, e.g. an ACHI
-controller, to the memory map using the platform bus, if that's preferred
-over PCIe.
-
-Thanks,
-drew
+>
+> Regards,
+> Daniel
+> --
+> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+> |: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|

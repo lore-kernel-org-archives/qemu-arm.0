@@ -1,83 +1,84 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp464950wru;
-        Wed, 25 Jul 2018 02:00:22 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcQn3gxaHfx7ulshkU9hw/g2Rh3mldzpT/15XhaeXCCObPvqLfdicnKepK39ewyHoSzWM7K
-X-Received: by 2002:aed:35f8:: with SMTP id d53-v6mr19731398qte.239.1532509222288;
-        Wed, 25 Jul 2018 02:00:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532509222; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp465085wru;
+        Wed, 25 Jul 2018 02:00:29 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdAtYJZIxDhDS4DdR06dSIks53fdK18apSjNS7XSmw6fOlOZC6E46Z73KA0WKQwuzEejOh7
+X-Received: by 2002:a0c:9aef:: with SMTP id k47-v6mr18162981qvf.134.1532509229517;
+        Wed, 25 Jul 2018 02:00:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532509229; cv=none;
         d=google.com; s=arc-20160816;
-        b=oFiNoeLc1XXzjogrGXo9/2LVIzvXr/2ysKLxml1Csolfedag4SZeLIBltXaN6pFLqQ
-         MQlqLd4OO3yLCqiLTeOBy4BG2Wi2FE2YNEYnUxro5B04SW8v3W6f/h5sjpaU+LU5JEiL
-         6sKTEpKIkVctH+LqEJan1VcXMAc2ERuaE32hUHxbAP0M9HjaJakxQOg5Hp33vZ29F0VI
-         gGqpa5NcNWJhUtwPYICr1uffu4qqLydCZEW6o1hPpqIrM0THOF8s+Td0a/8cNHHr8FBV
-         7lE5h3dnU3s/cQYQgLoJwoSZ390iiTQ1H4GwaPGvYiixVT8Nm7zP69kXkbw6vdKoqote
-         PQ9g==
+        b=WUbuHeKrKMfZT+1Pg7+UxsPFC4P7CTBSfE3z2tSRM2KEpiypAjkLOkkKP/32nTbmFj
+         RazGLh2xyLNGWSaPBGlVowEgiCzoUtd0lVTcqvkhebGQb+qzVd1p/u/Mu9AVYxdW7/Hr
+         IbHIqJP54LG+OuWXe6XY1EtYiMGLCQHAvLNJy0mVE0gjXOCB5tamc7iAapYVh9K6/4r8
+         HTLNM8gppbjRy795tSlxew6xL3LDEXniRSGRQmov4wj31qezhOhQbGLPB+Uwu7CLAdbO
+         K2CirAYZ+TXdG3A1MII9BNT1VU/19I7J8DILMMf7nmeT1L+305v0+2zGlXt9ahAPmwZS
+         s/Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=HgPktDWfTQgJ/aEagv8BPaOGMElrszJmcuKfrBtS6u8=;
-        b=o3kljx+5W4kzs6Fo37wmp8+u+zCDqfaZLbPEOSMPoBw7PjgR/ul4eLNoG0+fphWm1E
-         Hbmk6Bs+BUpn+mNEpplBWWrQstKCU9Q8nq3D4rIKutLdnqrmagNPgyMgffZMyXpdKaF/
-         q0TdUPk3v7EwXFWOw0uFSf7pTRkKmEbjLzcPvHx063yq0Ue0Td9dnMslWduEwqkwkkmi
-         opNmKa0Bom/Ke0aMswg3xa4FC6g642G2GfebvK65osIlyfZoWFDNDqduT1SQDRHTFCzS
-         vCMQxcZF0/xo+w5/5gSlf92oG+sc5zDIvxUjC9r+sJ4N7K+s2HASya2jAwXgskykMP9o
-         IiGw==
+        bh=IF4S1ZL22EzBx8rNjjjqdh7M7lUjFdoAvw93BGDKRqY=;
+        b=FxtjqSqiF/WwsLHbTGO7ONKiY090pQKp1XMvOUPhCOvzp1oQr0fc/8dj9MEiht5J+s
+         DKT+7cDuIQ2R+DJ7VSUh3p+UdHvHMWSQOy0b8KFz4JNONVO2w02N3KWuZxHDoTq+zDze
+         44S4f5XRLOHPffetWxfytG8ACw3HUt02w3Nh5MCv8h/Wz+W2M9hvGdCEcQSz6kHPUjI5
+         yj1LvrSNvNA+JTa+Wuv+Ne6TK3jjpWA+dD+GsLVhvoGgsgYjDgpZqXpdQIAT6eEuffJK
+         O1lkfTRhxiO6eZEma6qcAyU8gc9mfzfjOVjAPTNeqYJ8KvF4fYastVoOTQGq6EtvunR9
+         BGCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o6-v6si4587783qvl.54.2018.07.25.02.00.22
+        by mx.google.com with ESMTPS id q31-v6si6201259qtg.386.2018.07.25.02.00.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Jul 2018 02:00:22 -0700 (PDT)
+        Wed, 25 Jul 2018 02:00:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46569 helo=lists.gnu.org)
+Received: from localhost ([::1]:46572 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fiFee-0008E8-Me
-	for alex.bennee@linaro.org; Wed, 25 Jul 2018 05:00:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51142)
+	id 1fiFen-0008OG-0j
+	for alex.bennee@linaro.org; Wed, 25 Jul 2018 05:00:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51129)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fiFeK-000897-HP
-	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:05 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fiFeJ-00087n-2o
+	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fiFeH-00026v-Je
-	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 05:00:00 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40830 helo=mx1.redhat.com)
+	(envelope-from <stefanha@redhat.com>) id 1fiFeG-00022u-5R
+	for qemu-arm@nongnu.org; Wed, 25 Jul 2018 04:59:59 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40796 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1fiFeH-00024k-FL; Wed, 25 Jul 2018 04:59:57 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fiFeF-00022L-Us; Wed, 25 Jul 2018 04:59:56 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D500E407574B;
-	Wed, 25 Jul 2018 08:59:56 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 53D1E407573E;
+	Wed, 25 Jul 2018 08:59:55 +0000 (UTC)
 Received: from localhost (ovpn-117-157.ams2.redhat.com [10.36.117.157])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 82DC22156898;
-	Wed, 25 Jul 2018 08:59:56 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A230A111AF1B;
+	Wed, 25 Jul 2018 08:59:52 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: <qemu-devel@nongnu.org>
-Date: Wed, 25 Jul 2018 09:59:41 +0100
-Message-Id: <20180725085944.11856-5-stefanha@redhat.com>
+Date: Wed, 25 Jul 2018 09:59:40 +0100
+Message-Id: <20180725085944.11856-4-stefanha@redhat.com>
 In-Reply-To: <20180725085944.11856-1-stefanha@redhat.com>
 References: <20180725085944.11856-1-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.7]);
-	Wed, 25 Jul 2018 08:59:56 +0000 (UTC)
+	Wed, 25 Jul 2018 08:59:55 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 25 Jul 2018 08:59:56 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	Wed, 25 Jul 2018 08:59:55 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v3 4/7] target/arm: add "cortex-m0" CPU model
+Subject: [Qemu-arm] [PATCH v3 3/7] hw/arm: make bitbanded IO optional on ARM
+ M Profile
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,47 +99,158 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
 	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MMYV/LXjVkKi
+X-TUID: YeYxLrRJAWr0
 
-Define a "cortex-m0" ARMv6-M CPU model.
+Some ARM CPUs have bitbanded IO, a memory region that allows convenient
+bit access via 32-bit memory loads/stores.  This eliminates the need for
+read-modify-update instruction sequences.
 
-Most of the register reset values set by other CPU models are not
-relevant for the cut-down ARMv6-M architecture.
+This patch makes this optional feature a ARMMProfile qdev property,
+allowing boards to choose whether they want bitbanding or not.
+
+Status of boards:
+ * iotkit (Cortex M33), no bitband
+ * mps2 (Cortex M3), bitband
+ * msf2 (Cortex M3), bitband
+ * stellaris (Cortex M3), bitband
+ * stm32f205 (Cortex M3), bitband
 
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- target/arm/cpu.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ include/hw/arm/arm-m-profile.h |  2 ++
+ hw/arm/arm-m-profile.c         | 38 +++++++++++++++++++---------------
+ hw/arm/mps2.c                  |  1 +
+ hw/arm/msf2-soc.c              |  1 +
+ hw/arm/stellaris.c             |  1 +
+ hw/arm/stm32f205_soc.c         |  1 +
+ 6 files changed, 27 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 3848ef46aa..7e477c0d23 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1255,6 +1255,15 @@ static void arm11mpcore_initfn(Object *obj)
-     cpu->reset_auxcr = 1;
+diff --git a/include/hw/arm/arm-m-profile.h b/include/hw/arm/arm-m-profile.h
+index ea496d9b88..1eb7a5c328 100644
+--- a/include/hw/arm/arm-m-profile.h
++++ b/include/hw/arm/arm-m-profile.h
+@@ -50,6 +50,7 @@ typedef struct {
+  *   devices will be automatically layered on top of this view.)
+  * + Property "idau": IDAU interface (forwarded to CPU object)
+  * + Property "init-svtor": secure VTOR reset value (forwarded to CPU object)
++ * + Property "enable-bitband": expose bitbanded IO
+  */
+ typedef struct {
+     /*< private >*/
+@@ -70,6 +71,7 @@ typedef struct {
+     MemoryRegion *board_memory;
+     Object *idau;
+     uint32_t init_svtor;
++    bool enable_bitband;
+ } ARMMProfileState;
+ 
+ typedef struct {
+diff --git a/hw/arm/arm-m-profile.c b/hw/arm/arm-m-profile.c
+index b7dd2370d4..8bafd6602d 100644
+--- a/hw/arm/arm-m-profile.c
++++ b/hw/arm/arm-m-profile.c
+@@ -212,25 +212,27 @@ static void arm_m_profile_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->container, 0xe000e000,
+                                 sysbus_mmio_get_region(sbd, 0));
+ 
+-    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+-        Object *obj = OBJECT(&s->bitband[i]);
+-        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
++    if (s->enable_bitband) {
++        for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
++            Object *obj = OBJECT(&s->bitband[i]);
++            SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+ 
+-        object_property_set_int(obj, bitband_input_addr[i], "base", &err);
+-        if (err != NULL) {
+-            error_propagate(errp, err);
+-            return;
+-        }
+-        object_property_set_link(obj, OBJECT(s->board_memory),
+-                                 "source-memory", &error_abort);
+-        object_property_set_bool(obj, true, "realized", &err);
+-        if (err != NULL) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++            object_property_set_int(obj, bitband_input_addr[i], "base", &err);
++            if (err != NULL) {
++                error_propagate(errp, err);
++                return;
++            }
++            object_property_set_link(obj, OBJECT(s->board_memory),
++                                     "source-memory", &error_abort);
++            object_property_set_bool(obj, true, "realized", &err);
++            if (err != NULL) {
++                error_propagate(errp, err);
++                return;
++            }
+ 
+-        memory_region_add_subregion(&s->container, bitband_output_addr[i],
+-                                    sysbus_mmio_get_region(sbd, 0));
++            memory_region_add_subregion(&s->container, bitband_output_addr[i],
++                                        sysbus_mmio_get_region(sbd, 0));
++        }
+     }
  }
  
-+static void cortex_m0_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    set_feature(&cpu->env, ARM_FEATURE_V6);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+
-+    cpu->midr = 0x410cc200;
-+}
-+
- static void cortex_m3_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-@@ -1845,6 +1854,8 @@ static const ARMCPUInfo arm_cpus[] = {
-     { .name = "arm1136",     .initfn = arm1136_initfn },
-     { .name = "arm1176",     .initfn = arm1176_initfn },
-     { .name = "arm11mpcore", .initfn = arm11mpcore_initfn },
-+    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
-+                             .class_init = arm_v7m_class_init },
-     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
-                              .class_init = arm_v7m_class_init },
-     { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
+@@ -241,6 +243,8 @@ static Property arm_m_profile_properties[] = {
+     DEFINE_PROP_LINK("idau", ARMMProfileState, idau,
+                      TYPE_IDAU_INTERFACE, Object *),
+     DEFINE_PROP_UINT32("init-svtor", ARMMProfileState, init_svtor, 0),
++    DEFINE_PROP_BOOL("enable-bitband", ARMMProfileState,
++                     enable_bitband, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 912e1297d5..b232162dbd 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -186,6 +186,7 @@ static void mps2_common_init(MachineState *machine)
+         g_assert_not_reached();
+     }
+     qdev_prop_set_string(armv7m, "cpu-type", machine->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     object_property_set_link(OBJECT(&mms->armv7m), OBJECT(system_memory),
+                              "memory", &error_abort);
+     object_property_set_bool(OBJECT(&mms->armv7m), true, "realized",
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index 09cdc61f44..fb5d16338f 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -117,6 +117,7 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 81);
+     qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 42785f5bd1..cb22684ffe 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1304,6 +1304,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     nvic = qdev_create(NULL, TYPE_ARM_M_PROFILE);
+     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
+     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
++    qdev_prop_set_bit(nvic, "enable-bitband", true);
+     object_property_set_link(OBJECT(nvic), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     /* This will exit with an error if the user passed us a bad cpu_type */
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index 7de1474ade..f78b89d205 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -109,6 +109,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
+     qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
 -- 
 2.17.1
 

@@ -1,98 +1,101 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1360575wru;
-        Wed, 25 Jul 2018 19:38:48 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpf4tZElJ2TA2dQZjCricYjH2Z+W9tLMHgadV2gYNCGsmL4lcNyA+8pvYlj+Z163RN1aCUeE
-X-Received: by 2002:a0c:ac85:: with SMTP id m5-v6mr63415qvc.197.1532572728767;
-        Wed, 25 Jul 2018 19:38:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532572728; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1360765wru;
+        Wed, 25 Jul 2018 19:39:01 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdluZa1QZUFxDzcxkKvTp0YLeUcF7IIGHWyqwcXWW0985pEno+TWZvLMKpu/afqVkRAp1m6
+X-Received: by 2002:a37:a650:: with SMTP id p77-v6mr101914qke.256.1532572741804;
+        Wed, 25 Jul 2018 19:39:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532572741; cv=none;
         d=google.com; s=arc-20160816;
-        b=aCFXuMBdBYiaKV4xSmA/097RXyVr1ZP7IIu9KWf0fDgN6uWJn6FMrU/yeezp6W+uxG
-         L9WIjuNQpingLMnE48jkrClNC/M6tWSyJ0Vpbl3QHKKcSFvMTN4RS3zPg//clgn7l/F+
-         Ua/P36nyuaAVghNiByPou5fW/g7Kmc0/Hr8jRKfOsghCHaN4XLxEAxfMEbZVdNMQrYXL
-         v7FeJGl+kAspOe6oN+utCF4VYWuFlvvWNek4GfJPrpqUUGwk3s3gQaGmZ9VijbiT9Yl7
-         NppCTCK3knqdrcY8L6QofyBkxdjV3HgSRv+BnJl9//XM2L6k7Z+XubRIq92Fj4w3rXST
-         moHA==
+        b=OSrrYfVeDtjMDt357I16lP1xLG7Ym2V6i//tU4AjoSKOkLbrWZboeNgJ9B6lpe7QAB
+         xmSASH6XBLNEgj3Nhxe5xHEBZXt1uppKPYoOQPESSyRwEdz+VKxA0rxnowZXYI+Z4OJy
+         Y3mQt/p8chEKqh4U55gpqad/Yek1fxQY7zIkfdgusFufcq49GWqkHY/Lvrm6HskUEXx7
+         wlTvgcb+L9teVqFhpUJX0q3p4sOGnSvPeQBY+pT/BEDy535xo1xsC5Xk6crCQtPyyvXc
+         5L86lviOwGvitSrFGFY8GKC1zoXB13XouPBpZvN8EITN94YTH5OiRyxzz0B+EDSz8ZhL
+         FR6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:arc-authentication-results;
-        bh=o6ljXcO+n1+GdHjp8EqZN0je73vqWdq5zqqjwcgT5e4=;
-        b=nrCtrQ8ElSyKwfctt5xZy3PAOSzZKXL38TCduqCYwOp9zWq9f3kJ0MQUz05/b+hr36
-         UDAeMbqzVyfTvkwK24PgDv6cGJk9GMDS9SDGGaP4nvoPJ5enZaTblRP3Cg5ysmOZkjiA
-         TZnMXGwwK67YMWnWqzRER/nX/iuN3Vgufmuykr/+eZypu5nNma8xFBpmm9vwHLlED0Jd
-         Mem0vH23l0ht1FF+Eu2smN+g2skQ4/2JLW4uUaphUVuyOD5JfGkxQpEjDK+c4AvRWfDw
-         B7iUQ0gGY0UHps1tOATGN1Qm7gtsVQr0kA9BFB/RyLTyb1KC8kmtfyXFUUVx5PDgZyLM
-         FMuw==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=KwnVk0FZbRL5sACB19TJDzQlDaPoBQkUgoOUVam8cLY=;
+        b=NVNZ11yH2DpJ/Oj7H0iEy+w4olsN+f6a0BqJSCLfoIp5F8xsgbKuqOdKIwwIBFsnZ8
+         4PyqLqE9pNru8C1N73X7vb3SzM/fPI6TVwCxBk9Vxh6f5AaCDQDtIRplSkP30/vKoIsZ
+         +x54eda+2h1jT0DJU0eaI2v7lRNlZSnmMV6n8aOTxPZ8X9mK0yQ67uU9tdrRk4Z5AozS
+         UnE1ac2AjqdMhR529c3Szj7JvD3QztqXwD1S3YZZab8iApC9HZvlbSnQsB3hrZapDeWU
+         v4pl7rl0oAI4wY9MnpvE8eButdhICTAGYw1C9zesDSVr8BeZF1Tac3kny60QoHKL5Ob7
+         qbWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KZUKV2+k;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mub7niAU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u20-v6si141129qtc.86.2018.07.25.19.38.48
+        by mx.google.com with ESMTPS id d62-v6si135177qkg.74.2018.07.25.19.39.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Jul 2018 19:38:48 -0700 (PDT)
+        Wed, 25 Jul 2018 19:39:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KZUKV2+k;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mub7niAU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57703 helo=lists.gnu.org)
+Received: from localhost ([::1]:57704 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fiWAy-0006VE-6Q
-	for alex.bennee@linaro.org; Wed, 25 Jul 2018 22:38:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53336)
+	id 1fiWBB-0006kR-BO
+	for alex.bennee@linaro.org; Wed, 25 Jul 2018 22:39:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53351)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fiW9L-0005bn-2R
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 22:37:10 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1fiW9T-0005dP-K3
+	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 22:37:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fiW9I-0002xE-3Z
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 22:37:07 -0400
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:38036)
+	(envelope-from <joel.stan@gmail.com>) id 1fiW9Q-00035v-LI
+	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 22:37:15 -0400
+Received: from mail-pl0-x22c.google.com ([2607:f8b0:400e:c01::22c]:46341)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fiW9H-0002wk-SR; Wed, 25 Jul 2018 22:37:04 -0400
-Received: by mail-pl0-x243.google.com with SMTP id b1-v6so106397pls.5;
-	Wed, 25 Jul 2018 19:37:03 -0700 (PDT)
+	id 1fiW9Q-00034n-Ef; Wed, 25 Jul 2018 22:37:12 -0400
+Received: by mail-pl0-x22c.google.com with SMTP id t17-v6so99584ply.13;
+	Wed, 25 Jul 2018 19:37:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id;
-	bh=o6ljXcO+n1+GdHjp8EqZN0je73vqWdq5zqqjwcgT5e4=;
-	b=KZUKV2+keGffdHaB8fhs7tcu2o3mr4cTd/twFPROHlO9dLk7oonDMUWqZE4MqkgUk/
-	HzmY6z4Fh+J3sx87Z3nZLqTE+x5i54qyHJAWeGpatGp8AGhHeBa8KMAH+mnqcFJNR45P
-	xcRvdQrW7wIzqx4Cn0v9CAi7y56iUhOnVDgv/qiT9+WIWBBHbrmRo0CkwUIwReMkGPCK
-	TuLQDK/bQi56NohHX+7YmuY2yYR1sfuQ3jbArD16ZiuhRPnMdg/8txiBL9NzVc3efLKN
-	e9l9JFQ0XcI3/ZNZX2O3Z/SOHepHYfeaaPNyIeY6aYgQhxT1TI7BUaNSJtUd1G87a11z
-	oiCw==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=KwnVk0FZbRL5sACB19TJDzQlDaPoBQkUgoOUVam8cLY=;
+	b=Mub7niAUSvR0k4nmQtWOkJUjf21QcLdwdguPVMKki8HlBi/mIznNil/i6LdVsAnQBh
+	kMLYbvDKEbAbFfUYd2y6OYDE+WYbO1MzeSRSrBURSpMkyfz0f/46feGlPMu7o856/mPi
+	/BIU4hqZDq4R9DRxa8JCtgyjwt2PyGMydGHV70KPTuTL3Ah0dWJtfPyQIUxq7EBZnCZ8
+	QhPLHiPvxMYPnVjR0U87rvzmIWoUguGEOgrOwZbyMOZ3h+EXrti4IZqLS/qdNkvjpnOM
+	A1QarnVXDQNXIgO+VJGMnxJ7mzl/cXrZsW1ei/S8+UW0mi5lWsyHQQGRCC7IRvCy+H/e
+	MqOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
-	bh=o6ljXcO+n1+GdHjp8EqZN0je73vqWdq5zqqjwcgT5e4=;
-	b=dIRAeuWk6Vr5OUhknQWv+luNuysxyzSf2QDsSCva39eEP96mZO9cJrXUZLrG0N50ww
-	xWjwi4KTa4BXnkALDHmzXIZO2CVlHiAvz6xAUobeaO+ZY6sbi14EIvsehYQ6JVUMxptB
-	AxoXlFT1OjWP8NHGgOT+Amm4OqMKxTNaTYJnmKVPSp3rJnYs2zqLl61+fQuFyjs+ejGS
-	KkaJuGrVbEsNIgMa5vCPH1kZ7BrsVf44yXJo3rDswqGd3H3KlW7ckFfOytpvIDlkziJ+
-	sFJUKsThku5MV5Zsuc7dF0gO4P1I13kByGk3NpaI+NriIhmqjcCPqkXSttiO8R6GLa3T
-	wh4Q==
-X-Gm-Message-State: AOUpUlG9ktDZ5aaZeF+2N2RrdMyXo9bi4H7QZjey57iJGQYPMoNmr3fw
-	a2ihL25jtCLq8lgCefcuQVQ=
-X-Received: by 2002:a17:902:bb0d:: with SMTP id
-	l13-v6mr114826pls.5.1532572622802; 
-	Wed, 25 Jul 2018 19:37:02 -0700 (PDT)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references;
+	bh=KwnVk0FZbRL5sACB19TJDzQlDaPoBQkUgoOUVam8cLY=;
+	b=Sdsk1kH5GUHAcX+571/hpsWXeHZkbnSCY/WIXtVPuKCY6YUjgLsNFBIje3SoziEZ15
+	7ngsjo75Hqtlpo6SkNo7Iz6ndSby39+mVXOifsHJ6giL8qVzWdLEZrBAaYDeTtKmFLQl
+	y3bHhq7/GFzvyFQQSYpP8FmUZ6//UQzL3PXdYnEw4bBSw8g0ulhHzJ2y3gOA+ogvHLs0
+	7QzDO8D4UBv4Nz1GkiLap68FiOxszGAdtJpgnfrP67aUO2piYY+M9IppydDGUdlA21tx
+	7QdwPwDBTGwLhACt42JM9a2AtJ2TTGFWZOOqKD02z5tIYiWLHxWix1ZE5XlHYZQpzuga
+	3Yiw==
+X-Gm-Message-State: AOUpUlETuG94nbF2FCmP8TOCoCYRmhQ4LpZHSu2RH6WrKz44RfeZyGk4
+	NqOhrv+jyCxnCczCc4OBVj4=
+X-Received: by 2002:a17:902:8a4:: with SMTP id
+	33-v6mr77755pll.343.1532572631388; 
+	Wed, 25 Jul 2018 19:37:11 -0700 (PDT)
 Received: from aurora.jms.id.au ([45.124.203.18])
 	by smtp.gmail.com with ESMTPSA id
-	f19-v6sm102416pfd.147.2018.07.25.19.36.58
+	u69-v6sm97273pgd.43.2018.07.25.19.37.06
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 25 Jul 2018 19:37:02 -0700 (PDT)
+	Wed, 25 Jul 2018 19:37:10 -0700 (PDT)
 Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Thu, 26 Jul 2018 12:06:54 +0930
+	Thu, 26 Jul 2018 12:07:03 +0930
 From: Joel Stanley <joel@jms.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Jul 2018 12:06:42 +0930
-Message-Id: <20180726023645.13927-1-joel@jms.id.au>
+Date: Thu, 26 Jul 2018 12:06:43 +0930
+Message-Id: <20180726023645.13927-2-joel@jms.id.au>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180726023645.13927-1-joel@jms.id.au>
+References: <20180726023645.13927-1-joel@jms.id.au>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: [Qemu-devel] [PATCH v3 0/3] arm: Add nRF51 SoC and micro:bit machine
+X-Received-From: 2607:f8b0:400e:c01::22c
+Subject: [Qemu-devel] [PATCH v3 1/3] MAINTAINERS: Add NRF51 entry
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,43 +113,40 @@ Cc: Stefan Hajnoczi <stefanha@gmail.com>,
 	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IkKabWqo1SrX
+X-TUID: AKgKaYDrzp96
 
-v3: Rebase on Stefan's cortex-m0 series
-Based-on: 20180725085944.11856-8-stefanha@redhat.com
+This contains the NRF51, and the machine that uses it, the BBC
+micro:bit.
 
-This short series implements a minimal definition of the Nordic
-Semiconductor nRF51, a Cortex-M0 ARM SoC, and the BBC micro:bit, a
-machine that will use this SoC.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+v3:
+  fix spelling of mailing list
+  add stefan's reviewed-by
+---
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-This work will serve as the base for our Google Summer of Code and
-Outreachy interns who will work on implementing a number of features on
-top of this base.
-
-I've tested this with a microbit micropython firmware, and checked that
-it starts running by looking at it with gdb.
-
-I chose to keep the nrf51 and the microbit seperate, to not confuse the
-peripherals that are on the microbit but are not part of the nrf51, and
-vice versa.
-
-
-Joel Stanley (3):
-  MAINTAINERS: Add NRF51 entry
-  arm: Add Nordic Semiconductor nRF51 SoC
-  arm: Add BBC micro:bit machine
-
- MAINTAINERS                     |   8 +++
- default-configs/arm-softmmu.mak |   1 +
- hw/arm/Makefile.objs            |   1 +
- hw/arm/microbit.c               |  54 +++++++++++++++
- hw/arm/nrf51_soc.c              | 119 ++++++++++++++++++++++++++++++++
- include/hw/arm/nrf51_soc.h      |  42 +++++++++++
- 6 files changed, 225 insertions(+)
- create mode 100644 hw/arm/microbit.c
- create mode 100644 hw/arm/nrf51_soc.c
- create mode 100644 include/hw/arm/nrf51_soc.h
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c48d9271cf15..5a0d2e327d4a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -656,6 +656,14 @@ F: include/hw/*/*aspeed*
+ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ 
++NRF51
++M: Joel Stanley <joel@jms.id.au>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/arm/nrf51_soc.c
++F: hw/arm/microbit.c
++F: include/hw/arm/nrf51_soc.h
++
+ CRIS Machines
+ -------------
+ Axis Dev88
 -- 
 2.17.1
 

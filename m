@@ -1,108 +1,94 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp269710wru;
-        Thu, 26 Jul 2018 04:42:02 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfjRd9rH/dleA8nvnNFCFPDdUiC2qMpYDhDWL/LFTF4W9DKtStrZW6CnWylqdVPIz5gPnHf
-X-Received: by 2002:aed:23f8:: with SMTP id k53-v6mr1343209qtc.230.1532605322411;
-        Thu, 26 Jul 2018 04:42:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532605322; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp295970wru;
+        Thu, 26 Jul 2018 05:10:55 -0700 (PDT)
+X-Received: by 2002:aca:4c7:: with SMTP id 190-v6mr1739199oie.107.1532607055401;
+        Thu, 26 Jul 2018 05:10:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532607055; cv=none;
         d=google.com; s=arc-20160816;
-        b=QVl1H18xDKu9rkx0JRhtferz6RTGQD6i6GDjuux2xeI3GT9TxTMhZgGMLvQSNdwEMX
-         0TumJN4yTvJ0rsXY5UZL8dKrU6fD3fxNxkO3/GcZdO8wLWoF/AVC8vYLbrkyvqCbuxYt
-         SD8EWUhu0mp3yEHUWjJDoh9ecI+sSvSMazbhlwbNH49nwlTGCox7bzfVMY7g8kO/9joh
-         cGdFU/UrBsL8gFiv6QPUIkrzzYvy/tZt6WKJWay+GALuik0iq3sPhPbNU+QYVAzK4tND
-         ZcbLbakHkx+DNkSj1w0ip3pN/FOHez0U1Ula2Li8m6bysVTYXUbaJTc95IinzpuxAb0I
-         7cQg==
+        b=QqJK4D4VWgmWFjbzJh1heGqaMyksUdb8RjMDNQVZYoSz6eINTHe7Ge1zhBQobfPN4k
+         +ksHpYX/q9VUGLRqblszoQfRM7/mupc9JGd6Vy6NKdYPrNGvDhIRBGe2WZCiGd3vme5a
+         X8j40PSPLUVAgQtmxwms/maOMvoZa/JD7FTSek9+xWxV6i/h914ExLdLjwK6i5F6uvaT
+         t9mVQcKWZ+vPRyBGG6tsmGgC6htTXVNAYbvnA/P/CKZ6usVEOOZRY2ickLuVQ/vR0G1+
+         h1SwiSGYYAiV9Yg8FSbT7ASoBaZgCGmjpc6dmOanqjq9srGhz1eOd4Lt/ZxmWJpYuFoG
+         Sctg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=ht0U66d2504+P5pZVU35zqSRoyCxixVIuJB+6Eaw8is=;
-        b=gvC0jq8FWZkdDc7DNRU2S/ZLIz2/emY66xJteiHP+BXinOwUasWAD2hrjApYX8MZHN
-         LWFF7WEy44zVXKFfhdqXZk2h67gZPUjf4tDxO3REBos5yojQb4lld4QZpoklWxFIJJF1
-         yD1yRRn0cpZsqqQzcdyE4mIqTBNbCSjp/SL4DidR+Z/GNVtrPimRgxq03pS04jF+sQm1
-         lJitnErLGWQAjRUhlID2z98qvcHv77gU4g47u86HpJjt9uJjICJ34R+96vtO+GtU+8Jy
-         6ww/rUslfjTqNtxBWPS41ercqWGiTcsh8qnufqNgny8ctalq1Y1uAVYWtJS0Kodp1vlD
-         Hd9g==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=tVqe3aXzw/KHVjTkgH9k4QPyvxfkAoG/PBTrmyYs5iE=;
+        b=QvORqFsOyq5CRfaLVZKY6SqrTgeXkuqw0pZ5b3m/qzD79b9+7vH8HG9UYGmm1u5f/9
+         d6kDq5XLgzH93NoJ3Om0pyMNuDSwjMoJt29wCu6MP/vLWrH/8Dzaty4j4vz6YPZg8kl2
+         1HAcSu6FqB3eNn8FH06K807WqUYLBP5j02WBYIOFRX8C+XnulJ1cvYk43uKSyLHwYE4O
+         VRNTnuNbb7yypXoXreyr1gLjXYGITB7s46/2nGoyhPYduWtRfy4HYvINQetaG4VPf04N
+         EhphWNV6la7971rppCbGwB96z2uDVRJzxTHsoG/ECmS9/sJqwMvCZQP8T49jkok1vxs+
+         qEBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id b187-v6si1032493qke.34.2018.07.26.04.42.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Jul 2018 04:42:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DxufH6bd;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id x185-v6sor626852oig.224.2018.07.26.05.10.55
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 26 Jul 2018 05:10:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D33E681663C5;
-	Thu, 26 Jul 2018 11:42:01 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D9221C5AF;
-	Thu, 26 Jul 2018 11:42:00 +0000 (UTC)
-Date: Thu, 26 Jul 2018 13:41:58 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180726114158.am7kgc3jekxg55i5@kamzik.brq.redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=DxufH6bd;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=tVqe3aXzw/KHVjTkgH9k4QPyvxfkAoG/PBTrmyYs5iE=;
+        b=DxufH6bdHQYfu6WoN6nfdcJLvqQIl0LH7xsItxmcutCSNQRM4KtmwVyJhfOCDsAXhl
+         pDDS2QdbEkP9j6JhTI3jZ0DhCNERKVxY8HEey/5hWwx4YwUBWf6Tqwxe+/fcCLojKW/f
+         nklxbiVX59deCxaUE9fAS/ScYAMi8w5TzQ0dI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=tVqe3aXzw/KHVjTkgH9k4QPyvxfkAoG/PBTrmyYs5iE=;
+        b=G7oWJ2HmOO4BPrsim+CGJBQC9fgUNxJav/3PZIY5dt1e0WRCre4140o7s7ANnW0Yky
+         PlZ37rEMF2SLLwc9T2+apdITc15c3g3A8Azk221JJuM86hV3oxM0UhpLy9RssxBuh/hH
+         f/8sZUAC6x6HfUqb1hwIzV8QAfEIMJC/RT403r5MEGyeLIQ4HSt6RFr+k9AVcDMP/fQZ
+         Epld+xZVtPJnuB+rtzYts9kr8b3VXauv5EAIeicw4kD08Aq4vpjiQhAgI2Atsa7TkMA4
+         Rf8fxe+FXV4kQlXtn8Stutx86YAoZYJRoYpfjZ5xr8Nk6tfhj7VFeoTcX2IGQ9NtOU7T
+         ISyw==
+X-Gm-Message-State: AOUpUlG/cAVU7H/H5my5URsIUJnmlKNcTlCnLK10/IF6IEgSkz0XRNy+
+	KVbaeEF6bR0ic1R0SwKk9dNAoHd4yjlewKJAa22KjlON
+X-Google-Smtp-Source: AAOMgpc0ooyL4lZXvUd4DvOfhXptEqgFe/yOwa0SMi/aDZlswl4IN7GUOuj8IJCTle/wPDSxRC5BYWM1wRd4tmnsY0Q=
+X-Received: by 2002:aca:7247:: with SMTP id p68-v6mr1785673oic.252.1532607055107;
+ Thu, 26 Jul 2018 05:10:55 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 26 Jul 2018 05:10:34
+ -0700 (PDT)
+In-Reply-To: <20180726114158.am7kgc3jekxg55i5@kamzik.brq.redhat.com>
 References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
  <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com>
- <CAHmQWvCKkzim+-Z4Y69fWg6igZ7V6gaWhjKJZ0m0G0dhbwOFyw@mail.gmail.com>
- <20180725112621.imdzdkntpmh3n5og@kamzik.brq.redhat.com>
- <CAHmQWvCfHFSU7RGKG5t6=m7ZSWZjf3TeqOo3cX2KT-GSiN3mPw@mail.gmail.com>
- <20180726102855.x6ffdoqjpejpyae7@kamzik.brq.redhat.com>
- <CAKv+Gu-ffZRNmACH6YieNsg=AHxJxYoXHsBGf6C=nOvFfTu7Sg@mail.gmail.com>
- <20180726111109.w24jk6ehklimige7@kamzik.brq.redhat.com>
- <CAKv+Gu80KfwZft4t1HtOXPuijuPLV80K9iW+BsTgs7WcnosMXA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAKv+Gu80KfwZft4t1HtOXPuijuPLV80K9iW+BsTgs7WcnosMXA@mail.gmail.com>
-User-Agent: NeoMutt/20180622
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 26 Jul 2018 11:42:01 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]); Thu, 26 Jul 2018 11:42:01 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: WY91yaWRCANg
+ <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com> <CAHmQWvCKkzim+-Z4Y69fWg6igZ7V6gaWhjKJZ0m0G0dhbwOFyw@mail.gmail.com>
+ <20180725112621.imdzdkntpmh3n5og@kamzik.brq.redhat.com> <CAHmQWvCfHFSU7RGKG5t6=m7ZSWZjf3TeqOo3cX2KT-GSiN3mPw@mail.gmail.com>
+ <20180726102855.x6ffdoqjpejpyae7@kamzik.brq.redhat.com> <CAKv+Gu-ffZRNmACH6YieNsg=AHxJxYoXHsBGf6C=nOvFfTu7Sg@mail.gmail.com>
+ <20180726111109.w24jk6ehklimige7@kamzik.brq.redhat.com> <CAKv+Gu80KfwZft4t1HtOXPuijuPLV80K9iW+BsTgs7WcnosMXA@mail.gmail.com>
+ <20180726114158.am7kgc3jekxg55i5@kamzik.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Jul 2018 13:10:34 +0100
+Message-ID: <CAFEAcA8YH4p__zT1o0s3vNZOsyWZn3XPLgkNeT+jSJpmjvFTUw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: Andrew Jones <drjones@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Hongbo Zhang <hongbo.zhang@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: ZidMzRkguxEK
 
-On Thu, Jul 26, 2018 at 01:15:15PM +0200, Ard Biesheuvel wrote:
-> That may be true. But we'll still end up with a UEFI build that has
-> OVMF virtio bus drivers and device drivers included, blurring the line
-> between emulation and virtualization.
+On 26 July 2018 at 12:41, Andrew Jones <drjones@redhat.com> wrote:
+> The patch guards the generation. It'll only modify DT and ACPI for the
+> new machine type. But, while modifying the DT makes sense, as that
+> generated DT will get consumed
 
-The UEFI build can drop the virtio-mmio support, and all the virtio-mmio
-device drivers. Those haven't been necessary since the virt machine got
-a PCIe host bridge. You'd still need the virtio-pci device drivers, which
-may or may not "taint" the reference code, depending on its requirements.
+...will it? Why would we want the firmware to read the
+QEMU-generated DT? Real hardware doesn't work that way.
 
-> > I don't disagree, but there's no point in making QEMU ACPI generation
-> > code changes that will never be consumed. This patch adds tables for
-> > the hard coded ?HCI controllers to ACPI. We don't need those changes for
-> > the virt machine and, without fw-cfg, you can't use them on the reference
-> > machine.
-> >
-> 
-> Ah, indeed. I missed that bit.
-> 
-> We should not include any changes that modify the DT node or ACPI
-> table generation for mach-virt.
->
-
-The patch guards the generation. It'll only modify DT and ACPI for the
-new machine type. But, while modifying the DT makes sense, as that
-generated DT will get consumed, the ACPI tables have no way of being
-consumed without fw-cfg. If the new machine type doesn't want fw-cfg,
-then there's no need to touch any ACPI generation code at all in this
-patch.
-
-Thanks,
-drew
+thanks
+-- PMM

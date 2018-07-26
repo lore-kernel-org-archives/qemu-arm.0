@@ -1,152 +1,151 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1360765wru;
-        Wed, 25 Jul 2018 19:39:01 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdluZa1QZUFxDzcxkKvTp0YLeUcF7IIGHWyqwcXWW0985pEno+TWZvLMKpu/afqVkRAp1m6
-X-Received: by 2002:a37:a650:: with SMTP id p77-v6mr101914qke.256.1532572741804;
-        Wed, 25 Jul 2018 19:39:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532572741; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp76756wru;
+        Thu, 26 Jul 2018 00:35:33 -0700 (PDT)
+X-Received: by 2002:a24:59c3:: with SMTP id p186-v6mr1020307itb.92.1532590533524;
+        Thu, 26 Jul 2018 00:35:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532590533; cv=none;
         d=google.com; s=arc-20160816;
-        b=OSrrYfVeDtjMDt357I16lP1xLG7Ym2V6i//tU4AjoSKOkLbrWZboeNgJ9B6lpe7QAB
-         xmSASH6XBLNEgj3Nhxe5xHEBZXt1uppKPYoOQPESSyRwEdz+VKxA0rxnowZXYI+Z4OJy
-         Y3mQt/p8chEKqh4U55gpqad/Yek1fxQY7zIkfdgusFufcq49GWqkHY/Lvrm6HskUEXx7
-         wlTvgcb+L9teVqFhpUJX0q3p4sOGnSvPeQBY+pT/BEDy535xo1xsC5Xk6crCQtPyyvXc
-         5L86lviOwGvitSrFGFY8GKC1zoXB13XouPBpZvN8EITN94YTH5OiRyxzz0B+EDSz8ZhL
-         FR6A==
+        b=UCjt0XOaXDxtGOCx9mrFq3leCX7TbW2a6inGZtntMG7B5zX1oLgSy1gR7iSDs1ZbB9
+         49E8nt+KkAAMXqQAmCynfdCeBFfHnSB8Dlr3yovHzwGArJTlvMwzvVqocbzHkbhmBzp1
+         GmQvGZVZRsLbNrLg+zMLrdvUCrWDjgXO4HkV+uX/PdF7DClP0eEreVNp5RsOiC15Wfn2
+         GSH0CBBJoisbld91VV+fp7r+UK4/Z+2qUWMtbkHaeVhLCIcx5ZJYRLYEHSLz1gul8G0j
+         /1Bmz/xr44MIi5N39IjDjIY0LhhZZnHpycGHc6Nn47CuQGMcKA26kRfs5o2vHjyiLudS
+         yT6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=KwnVk0FZbRL5sACB19TJDzQlDaPoBQkUgoOUVam8cLY=;
-        b=NVNZ11yH2DpJ/Oj7H0iEy+w4olsN+f6a0BqJSCLfoIp5F8xsgbKuqOdKIwwIBFsnZ8
-         4PyqLqE9pNru8C1N73X7vb3SzM/fPI6TVwCxBk9Vxh6f5AaCDQDtIRplSkP30/vKoIsZ
-         +x54eda+2h1jT0DJU0eaI2v7lRNlZSnmMV6n8aOTxPZ8X9mK0yQ67uU9tdrRk4Z5AozS
-         UnE1ac2AjqdMhR529c3Szj7JvD3QztqXwD1S3YZZab8iApC9HZvlbSnQsB3hrZapDeWU
-         v4pl7rl0oAI4wY9MnpvE8eButdhICTAGYw1C9zesDSVr8BeZF1Tac3kny60QoHKL5Ob7
-         qbWg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=q6Z5Z34linlz1EdWY19IUmypbNGZgIir7CvCxtuM1k8=;
+        b=wcIVJhT9WMVeQowdL/xw/nOeAMP0F6jSt1jrvdMuMnfwN6XVudbfIgJo0kwNaztBG9
+         wy7Y2F1BfYq7KBSBTWbQVoYqm1kc66WbvdNSOcOLdXndIjLEVeYahtHMaWAttet+paXu
+         jT07QPB0ZLO5NKOcq6PclQ+B5HTVvm62d26s27qyE12Qa1pZcc05/FLmcRrw4s+bEFg9
+         wzBzgr5zs1lZ3uhR5SMbsBn7HhZVXH31RlSBBNmj5D1jTZkKeMzkXd6SJCvjZHLDJNoQ
+         VhKow8yYe26fWw9htuNm7CwVk+PvuAdK1lWllLWBMDtX8n6qYSe7917nFDZdq+mDF6LQ
+         JlDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mub7niAU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d62-v6si135177qkg.74.2018.07.25.19.39.01
+       dkim=pass header.i=@linaro.org header.s=google header.b=j31xfo1m;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f2-v6sor189388ioa.274.2018.07.26.00.35.33
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 25 Jul 2018 19:39:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Thu, 26 Jul 2018 00:35:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mub7niAU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57704 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fiWBB-0006kR-BO
-	for alex.bennee@linaro.org; Wed, 25 Jul 2018 22:39:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53351)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fiW9T-0005dP-K3
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 22:37:18 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fiW9Q-00035v-LI
-	for qemu-devel@nongnu.org; Wed, 25 Jul 2018 22:37:15 -0400
-Received: from mail-pl0-x22c.google.com ([2607:f8b0:400e:c01::22c]:46341)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fiW9Q-00034n-Ef; Wed, 25 Jul 2018 22:37:12 -0400
-Received: by mail-pl0-x22c.google.com with SMTP id t17-v6so99584ply.13;
-	Wed, 25 Jul 2018 19:37:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=KwnVk0FZbRL5sACB19TJDzQlDaPoBQkUgoOUVam8cLY=;
-	b=Mub7niAUSvR0k4nmQtWOkJUjf21QcLdwdguPVMKki8HlBi/mIznNil/i6LdVsAnQBh
-	kMLYbvDKEbAbFfUYd2y6OYDE+WYbO1MzeSRSrBURSpMkyfz0f/46feGlPMu7o856/mPi
-	/BIU4hqZDq4R9DRxa8JCtgyjwt2PyGMydGHV70KPTuTL3Ah0dWJtfPyQIUxq7EBZnCZ8
-	QhPLHiPvxMYPnVjR0U87rvzmIWoUguGEOgrOwZbyMOZ3h+EXrti4IZqLS/qdNkvjpnOM
-	A1QarnVXDQNXIgO+VJGMnxJ7mzl/cXrZsW1ei/S8+UW0mi5lWsyHQQGRCC7IRvCy+H/e
-	MqOg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=j31xfo1m;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=q6Z5Z34linlz1EdWY19IUmypbNGZgIir7CvCxtuM1k8=;
+        b=j31xfo1m0PEJdln0iVKPSABTPUW902k47rSWuPlw2vWAPUp64d9UqfEDRVDJc48SpB
+         XHTnm14aTZ7WE3kzP/t07WJLOdw57Civ1pl883ksWHuh+h42Mnn9pDKlZbzafgym5G27
+         TK1p35xdaTC0NOmoHI0KFXGSEERXkWdgkZ2r4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=KwnVk0FZbRL5sACB19TJDzQlDaPoBQkUgoOUVam8cLY=;
-	b=Sdsk1kH5GUHAcX+571/hpsWXeHZkbnSCY/WIXtVPuKCY6YUjgLsNFBIje3SoziEZ15
-	7ngsjo75Hqtlpo6SkNo7Iz6ndSby39+mVXOifsHJ6giL8qVzWdLEZrBAaYDeTtKmFLQl
-	y3bHhq7/GFzvyFQQSYpP8FmUZ6//UQzL3PXdYnEw4bBSw8g0ulhHzJ2y3gOA+ogvHLs0
-	7QzDO8D4UBv4Nz1GkiLap68FiOxszGAdtJpgnfrP67aUO2piYY+M9IppydDGUdlA21tx
-	7QdwPwDBTGwLhACt42JM9a2AtJ2TTGFWZOOqKD02z5tIYiWLHxWix1ZE5XlHYZQpzuga
-	3Yiw==
-X-Gm-Message-State: AOUpUlETuG94nbF2FCmP8TOCoCYRmhQ4LpZHSu2RH6WrKz44RfeZyGk4
-	NqOhrv+jyCxnCczCc4OBVj4=
-X-Received: by 2002:a17:902:8a4:: with SMTP id
-	33-v6mr77755pll.343.1532572631388; 
-	Wed, 25 Jul 2018 19:37:11 -0700 (PDT)
-Received: from aurora.jms.id.au ([45.124.203.18])
-	by smtp.gmail.com with ESMTPSA id
-	u69-v6sm97273pgd.43.2018.07.25.19.37.06
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 25 Jul 2018 19:37:10 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Thu, 26 Jul 2018 12:07:03 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Jul 2018 12:06:43 +0930
-Message-Id: <20180726023645.13927-2-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180726023645.13927-1-joel@jms.id.au>
-References: <20180726023645.13927-1-joel@jms.id.au>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::22c
-Subject: [Qemu-devel] [PATCH v3 1/3] MAINTAINERS: Add NRF51 entry
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>,
-	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AKgKaYDrzp96
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=q6Z5Z34linlz1EdWY19IUmypbNGZgIir7CvCxtuM1k8=;
+        b=tkMwn1ESEZvT9nz23+0wTILTYsvDxwYpZ0gXQXZfJgX7rpMOk5oAAPQt7mxSc3gjC5
+         4zD9Y5nxgN1xdJCksfhHHLlDd9C//dHjYqf6P4BW6MlKa0d+VTXBaJAmJ/L/VisNG/tW
+         fF5xKtchKGM59ou3WsFjmuG0DAfRtN++AIBCm7kmYoiww7Q+Qc7yMz1APXOv8yrbhQYq
+         f0LbLbD+89ADMnPYyFzMdBj6tiGnnoTu6huUaVB+ErF2yiWzRfdVKZk5huY5yxJpdQUB
+         3pgZyl88qTWlFy+vjCOJKAje7O/4HNYF0UcuHMOQwjKddaLAcIZNqKuNq2tymQrMtUs8
+         /+0A==
+X-Gm-Message-State: AOUpUlGj+mJzqRLAbSSHWUjQadVixpE2HqoQvd1+s2G0HBPpXv9dRxtI
+	M0YysujdnqFvSTQSpCQ7yE1UwNoNkXV+oQp2c8uRKlBf
+X-Google-Smtp-Source: AAOMgpfcJ9ACeTqdUPqmkN79Vivm13xfSMqItHrg/sfwZMc03gwwi6eg5OIVS2wSYbIOy4DzeMHI9AOQn+tnWkBeBFY=
+X-Received: by 2002:a6b:6104:: with SMTP id v4-v6mr609101iob.94.1532590533116;
+ Thu, 26 Jul 2018 00:35:33 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:ac0:a161:0:0:0:0:0 with HTTP; Thu, 26 Jul 2018 00:35:32
+ -0700 (PDT)
+In-Reply-To: <20180725105330.GB2366@work-vm>
+References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
+ <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
+ <20180725095426.f7kv4ftngeje6pkx@kamzik.brq.redhat.com> <CAHmQWvCKkzim+-Z4Y69fWg6igZ7V6gaWhjKJZ0m0G0dhbwOFyw@mail.gmail.com>
+ <20180725105330.GB2366@work-vm>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Thu, 26 Jul 2018 15:35:32 +0800
+Message-ID: <CAHmQWvCHBxdMy+Qocc1XfURx86RTZd72rnB5-R=5QA00R6fEqw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Andrew Jones <drjones@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: x46MIod2IHAZ
 
-This contains the NRF51, and the machine that uses it, the BBC
-micro:bit.
+On 25 July 2018 at 18:53, Dr. David Alan Gilbert <dgilbert@redhat.com> wrote:
+> * Hongbo Zhang (hongbo.zhang@linaro.org) wrote:
+>> On 25 July 2018 at 17:54, Andrew Jones <drjones@redhat.com> wrote:
+>> > On Wed, Jul 25, 2018 at 01:30:52PM +0800, Hongbo Zhang wrote:
+>> >> For the Aarch64, there is one machine 'virt', it is primarily meant to
+>> >> run on KVM and execute virtualization workloads, but we need an
+>> >> environment as faithful as possible to physical hardware, for supporting
+>> >> firmware and OS development for pysical Aarch64 machines.
+>> >>
+>> >> This patch introduces new machine type 'Enterprise' with main features:
+>> >>  - Based on 'virt' machine type.
+>> >>  - Re-designed memory map.
+>> >>  - EL2 and EL3 are enabled by default.
+>> >>  - GIC version 3 by default.
+>> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
+>> >>    can be added to it.
+>> >>  - EHCI controller attached to system bus, with USB mouse and key board
+>> >>    installed by default.
+>> >>  - E1000E ethernet card on PCIE bus.
+>> >>  - VGA display adaptor on PCIE bus.
+>> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
+>> >>  - No virtio functions enabled, since this is to emulate real hardware.
+>> >
+>> > In the last review it was pointed out that using virtio-pci should still
+>> > be "real" enough, so there's not much reason to avoid it. Well, unless
+>> > there's some concern as to what drivers are available in the firmware and
+>> > guest kernel. But that concern usually only applies to legacy firmwares
+>> > and kernels, and therefore shouldn't apply to AArch64.
+>> >
+>> In real physical arm hardware, *HCI are system memory mapped, not on PCIE.
+>> we need a QEMU platform like that. We need firmware developed on this
+>> QEMU platform can run on real hardware without change(or only a minor
+>> change)
+>
+> How would you deal with most modern hardware now using XHCI rather than
+> EHCI ?
+>
+Well, EHCI still works well on server, some new X86 servers have both
+XHCI and EHCI, Qualcomm Centriq Arm server even has only EHCI, so
+currently only the EHCI is added.
+I had no strong reason for XHCI or EHCI, if newer is better or some
+users have special requirement for XHCI, it can be added too.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
-v3:
-  fix spelling of mailing list
-  add stefan's reviewed-by
----
- MAINTAINERS | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c48d9271cf15..5a0d2e327d4a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -656,6 +656,14 @@ F: include/hw/*/*aspeed*
- F: hw/net/ftgmac100.c
- F: include/hw/net/ftgmac100.h
- 
-+NRF51
-+M: Joel Stanley <joel@jms.id.au>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/arm/nrf51_soc.c
-+F: hw/arm/microbit.c
-+F: include/hw/arm/nrf51_soc.h
-+
- CRIS Machines
- -------------
- Axis Dev88
--- 
-2.17.1
-
+> Dave
+>
+>> Concern is not only available firmwares, but more emphasis is on new
+>> firmwares to be developed on this platform (target is developing
+>> firmware for hardware, but using qemu if hardware is not available
+>> temporarily), if virtio device used, then the newly developed firmware
+>> must include virtio front-end codes, but it isn't needed while run on
+>> real hardware at last.
+>>
+>> >>  - No paravirtualized fw_cfg device either.
+>> >>
+>> >> Arm Trusted Firmware and UEFI porting to this are done accordingly.
+>> >>
+>> >
+>> > How will UEFI get the ACPI tables from QEMU without fw-cfg? I didn't
+>> > see any sort of reserved ROM region in the patch for them.
+>> >
+>> UEFI gets ACPI and kernel from network or mass storage, just like the
+>> real hardware.
+>> If we develop firmware depends on paravirtualized device like fw_cfg,
+>> then we canot run such firmware on real hardware.
+>>
+>> > Thanks,
+>> > drew
+>>
+> --
+> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

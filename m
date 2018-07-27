@@ -1,98 +1,98 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp623708wru;
-        Fri, 27 Jul 2018 05:06:22 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeI+vKvHJ1n3AJFGNa5gZHch1MZuUfOeIZmVHJYv8qzEBNIkSunssnGhQyf7eUbmGWRpUSG
-X-Received: by 2002:a37:6902:: with SMTP id e2-v6mr5658184qkc.0.1532693182099;
-        Fri, 27 Jul 2018 05:06:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532693182; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp658672wru;
+        Fri, 27 Jul 2018 05:42:14 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeS5weDOZRTX2qcsh69FfAfW9te4wIb4Y7TeWuXmq9IHQbSVjTLLzuvsMulpaPWjkzkwHFT
+X-Received: by 2002:aed:21f3:: with SMTP id m48-v6mr6096531qtc.121.1532695334318;
+        Fri, 27 Jul 2018 05:42:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532695334; cv=none;
         d=google.com; s=arc-20160816;
-        b=vuWu3CVGIkhbryubNm9Z+xtD9w3Pfmg3xia/NoQVoUMiN0mvPyvzcC+maD/Fle4fde
-         JT5V4rJud3E3X6+7ciJ3CP14tROV2NU/YSM5gmd6DScM9nnas4L68qBXoBFgjB/OSF5+
-         M7ZzFn8nCedMkdihR2BCFis38su6uPNGjmF/BIp5Xy6f5CzqRcBGmgeatugRT0MDRmLQ
-         udqffVBaF7oUACYyGfwkxiRVBJlCaq/J8ah9Fc/gcEhna5XSPcKZiT9FBcJPO8Df0w9C
-         MbHJPvqAQytvdRcaqRJ6hXq1eim0IAxGJXRkot+D3E99TpcTwZaN70o01XbxVIudg6mQ
-         bFkA==
+        b=ebma/TGltwyTFAMcyEyw7pkpop8FAoO7sVhu1ESs+vWAopQ1emsOyGaTH+fH7YDEqv
+         BD27oIATirt31Hw42zidmI7/Fl9prFlkSeoZr8WJXrmFu5Xntju7n1FglmoyIk+YvD4L
+         o+0Eq+ULlazX+Nc5Ok2kRXOM/HX03hV8jGVhbKXdDJ9Yr2BfxTIwEu/Or1R9b+1SgzjZ
+         gGfuSPKOtXRzUL1Hj/8e9gzE+2r3x+Dk2TXkNq04ii4ARhh9zPZenmv4odo4Mgg5ub3b
+         iYLBkyXj3ku23gPeI23j56gxYlTcGuTjJ4HJlAbVeTzzKjxfMUTal9DgEwkTX3Nj4rRT
+         MTRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=G97ue7QOQjl9ZqdCZ4zplU6ev26XpMk3SqLDyaOIpas=;
-        b=xBqdyN8VAyceJNhQYM7aCKhAsc0520pvMrY6m7VenlrTj9unHzwt/W0UnbPIByPQBQ
-         5L8yHcRfWuucjKnnnfyAVEb05GqgzJl9wu75VS+gfroXWyzuFE6LLKhyIau6QV8Y+p9y
-         +KJFtZHXpNp/QcsUvtoKC1fb+ccQnH7USHRBsbLXM0+kXQNtaJe7mcBavDPDre67szHd
-         qNYRRILYzVEDwEQTWHoEflPwwC9dOKKuhq0pDzzDPEWyOkxJ6J/IGZAEx4zZHk+DAtSA
-         wjn8N5UYHtNJb7M1MrIkYJFrV1wggffkAzm9akfP5zl3kvJGbIJjGrp1p96SmgyjjfVS
-         VYTg==
+        bh=arRifTHpZoZ8k+EMcjSDaK3cTuvZx2l69kzcyn3yHA8=;
+        b=vjalDkZfaCbG4SLekd/NGeEzHaiFXWjMYCwRuXPrqthzmVNLF9L0wyMrmVM9SqEP0q
+         31zs1LNz0PrrMDJNZJLscnXaB+X31hXX11tsXUZYWhpnScb9cuHZ+hedRLk/ZOWHuM95
+         bRwK1naALJKdp9nRjoQIA4+5j6ZDn2W1luHb3D07nnJy5RpubMbL/BXT1PVryrIQpGmt
+         +2afVIxFYYje2df1q+MEqBiJHCsfkwlrWew83luOP0D0AeLJK2bCdwupOxYYDhj8DNfS
+         seDd3uoqXSvLf1lpofzlBtzTG0IgVUEAUsBAAV8EqOLPjZzvj7PiuWhLBMRGIuVuP0LW
+         WHkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AHPIL3G7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mdxFbQWj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 101-v6si353693qkr.55.2018.07.27.05.06.21
+        by mx.google.com with ESMTPS id r25-v6si3932027qkh.82.2018.07.27.05.42.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 Jul 2018 05:06:22 -0700 (PDT)
+        Fri, 27 Jul 2018 05:42:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AHPIL3G7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mdxFbQWj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40896 helo=lists.gnu.org)
+Received: from localhost ([::1]:41039 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fj1Vl-0007hB-Ki
-	for alex.bennee@linaro.org; Fri, 27 Jul 2018 08:06:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56983)
+	id 1fj24T-0003kJ-PH
+	for alex.bennee@linaro.org; Fri, 27 Jul 2018 08:42:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36766)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fj1VX-0007c2-DZ
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 08:06:12 -0400
+	id 1fj23t-0003Pe-LZ
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 08:41:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fj1VR-0000ck-Qn
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 08:06:07 -0400
-Received: from mail-vk0-x241.google.com ([2607:f8b0:400c:c05::241]:44613)
+	id 1fj23q-0006ur-J2
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 08:41:37 -0400
+Received: from mail-vk0-x242.google.com ([2607:f8b0:400c:c05::242]:39835)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fj1VN-0000YU-GA; Fri, 27 Jul 2018 08:05:57 -0400
-Received: by mail-vk0-x241.google.com with SMTP id 125-v6so2316667vke.11;
-	Fri, 27 Jul 2018 05:05:57 -0700 (PDT)
+	id 1fj23q-0006uS-D5; Fri, 27 Jul 2018 08:41:34 -0400
+Received: by mail-vk0-x242.google.com with SMTP id e139-v6so2364563vkf.6;
+	Fri, 27 Jul 2018 05:41:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=G97ue7QOQjl9ZqdCZ4zplU6ev26XpMk3SqLDyaOIpas=;
-	b=AHPIL3G76J4zjjNfGodYnM7i1mjVrrDah4B/deCvjQCEKIUmbm/4ZXJVKx2fC6QKUr
-	mJbbUu52tsDTD/mMVwl3hVrMgovkAONkbl7rQ3dw5Mi9XPEXdk9t5D68avI56PtMsIjU
-	rJMI1hUrntou/MtXziOj/qijbBXOoLWCeF7eNS1C1jBR6Q7OAjdaLCN2+xhWfJQap4yl
-	QWt/4BlWrZyl6foNB6SSTAeSjEEgAn7XcC4oly56P8mmUO/feNx3a6M+xdgd1E2AOBfU
-	8LCgoj1Xtx8pTNY901HJ4UOxaYVmf85YPS2yWuZZQGdXUJtQlqYsvEBqvOvNxQEOap3N
-	rosQ==
+	bh=arRifTHpZoZ8k+EMcjSDaK3cTuvZx2l69kzcyn3yHA8=;
+	b=mdxFbQWjP9NxI6inCArnK+mEs24qz5XPGti/EYkK1HjShufxFTtvOKykJScvqXXHkn
+	C0AOTIlqBHv9J9/4hnDoKQkF5y3DdCOhifP85pw/aJsXs5ycJC/XndjPFEel4BRqrRxo
+	aiL5Gk778+0kA5d1tADTOFbtX6rsVk/4bsPSHHSOsLqDLGbdz5aPDOvM6myp/hlBG4tk
+	uZ6I5UHEv3m78wdVY8yNwHy3IsJobQV25WdQkqwLsi5ibPwMu2oOCCYcQ75P24F9Wccq
+	or85s7xDpTR6NfKkUHB5WJm53ak9eJT0vgUhyzkh9N1Zffpt8Uw9Z8AFmWXD4QTEXuFT
+	TYgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=G97ue7QOQjl9ZqdCZ4zplU6ev26XpMk3SqLDyaOIpas=;
-	b=fEGblPEQCg1nT+VZ6DN23Qy1DbRET17GAlpH8uwNFJUPb4MP371mn2dBnALAr+/TTs
-	wYXP0oRGzWyVczr0ouknplxRcsLArHmnGPK3RinyuAbXPt1zJGxtwT7I2pV6gyCwD177
-	OYde3/xMw7bkoYpU7S5mlYzUWp27SlnOWLGVXxnX1ZwhCL81xgfMb70j/UFLOYf0iHtM
-	xDI7CdwwVZ730i3f5qhMPIfhn2VDKtd3WvWbHqambtip2p+q1lnYUN4qWZrR6B7WTKaY
-	w66x0G9dTGXpZwPgxpLY2x6FiwkLnZPR4ti6T8jRecAi5XBpGaqhvPBFs1zqAHkG2uqX
-	7PaQ==
-X-Gm-Message-State: AOUpUlHUxY+bT6gOMHFEzVog4fkM3HLJU7mLfI+mxGjQVVcv/Dxe6WiZ
-	DJjdxEIt8AA9YjfCIfqivwc=
-X-Received: by 2002:a1f:9945:: with SMTP id
-	b66-v6mr3695628vke.100.1532693156769; 
-	Fri, 27 Jul 2018 05:05:56 -0700 (PDT)
+	bh=arRifTHpZoZ8k+EMcjSDaK3cTuvZx2l69kzcyn3yHA8=;
+	b=Ed9AtmyEZHq0QowltJxGYg2/u2YRLTfZQhw8Y4G6GZ3mWe/5Pk9gk11cXuw7fzX47G
+	DaXYdA5G1dePcmiS2NmcipCf0Yrx/OKGNh/sZIG2Bbd+ViteZw0mlCxs6LEvjPfW4sVR
+	j2n6tJq8CUGU8Qpmz/hS5AgkQMxLaY6TN+iq3NmgOetF6M9Vfi7i9gVkP3teJ3eB8mx+
+	EjMQETsdeLpgfW+KOp6CY7B9HxaW1nU0vOMkTDHHttwVUnsbaJDGRPdy5tEU07CP8HN/
+	sIKLIfSixm+yZdQj20KQO0yaBhCQHlv3zeJvB6TTUwraVyCvG+OPOiqmuhJ80o+XBLuu
+	z1dw==
+X-Gm-Message-State: AOUpUlEEWfZR1b7+XnN7ANyOQnFSbgsvPHpfWngajYH+cKMoGWni3+dP
+	gpMQYK6kr+UQ0zIna9YY4XY=
+X-Received: by 2002:a1f:3cc5:: with SMTP id
+	j188-v6mr4026462vka.156.1532695293744; 
+	Fri, 27 Jul 2018 05:41:33 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	w16-v6sm726862uam.50.2018.07.27.05.05.54
+	x24-v6sm758486ual.42.2018.07.27.05.41.30
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 27 Jul 2018 05:05:56 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180727113854.20283-1-peter.maydell@linaro.org>
-	<20180727113854.20283-3-peter.maydell@linaro.org>
+	Fri, 27 Jul 2018 05:41:33 -0700 (PDT)
+To: Luc Michel <luc.michel@greensocs.com>
+References: <20180727095421.386-1-luc.michel@greensocs.com>
+	<20180727095421.386-5-luc.michel@greensocs.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -119,20 +119,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <9c2441dd-717d-0272-e386-a936bf3da17f@amsat.org>
-Date: Fri, 27 Jul 2018 09:05:52 -0300
+Message-ID: <5f9537c1-9b8b-69a6-cbc6-4ca26125ef91@amsat.org>
+Date: Fri, 27 Jul 2018 09:41:29 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180727113854.20283-3-peter.maydell@linaro.org>
+In-Reply-To: <20180727095421.386-5-luc.michel@greensocs.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c05::241
-Subject: Re: [Qemu-arm] [PATCH for-3.0 2/2] hw/arm/iotkit: Fix IRQ number
- for timer1
+X-Received-From: 2607:f8b0:400c:c05::242
+Subject: Re: [Qemu-arm] [PATCH v5 04/20] vmstate.h: Provide
+ VMSTATE_UINT16_SUB_ARRAY
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,36 +144,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
+	qemu-devel@nongnu.org, saipava@xilinx.com, edgari@xilinx.com,
+	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t0QnzT27jEno
+X-TUID: NbhzSHo24ouM
 
-On 07/27/2018 08:38 AM, Peter Maydell wrote:
-> A cut-and-paste error meant we were incorrectly wiring up the timer1
-> IRQ to IRQ3. IRQ3 is the interrupt for timer0 -- move timer0 to
-> IRQ4 where it belongs.
+On 07/27/2018 06:54 AM, Luc Michel wrote:
+> Provide a VMSTATE_UINT16_SUB_ARRAY macro to save a uint16_t sub-array in
+> a VMState.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-(ARM-ECM-0601256 Table 66 Interrupt Map)
 
 > ---
->  hw/arm/iotkit.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/migration/vmstate.h | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-> index c76d3ed7435..8cadc8b1608 100644
-> --- a/hw/arm/iotkit.c
-> +++ b/hw/arm/iotkit.c
-> @@ -382,7 +382,7 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer1), 0,
-> -                       qdev_get_gpio_in(DEVICE(&s->armv7m), 3));
-> +                       qdev_get_gpio_in(DEVICE(&s->armv7m), 4));
->      mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer1), 0);
->      object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[1]", &err);
->      if (err) {
+> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+> index 42b946ce90..2b501d0466 100644
+> --- a/include/migration/vmstate.h
+> +++ b/include/migration/vmstate.h
+> @@ -921,10 +921,13 @@ extern const VMStateInfo vmstate_info_qtailq;
+>      VMSTATE_2DARRAY(_f, _s, _n1, _n2, _v, vmstate_info_uint16, uint16_t)
+>  
+>  #define VMSTATE_UINT16_ARRAY(_f, _s, _n)                               \
+>      VMSTATE_UINT16_ARRAY_V(_f, _s, _n, 0)
+>  
+> +#define VMSTATE_UINT16_SUB_ARRAY(_f, _s, _start, _num)                \
+> +    VMSTATE_SUB_ARRAY(_f, _s, _start, _num, 0, vmstate_info_uint16, uint16_t)
+> +
+>  #define VMSTATE_UINT16_2DARRAY(_f, _s, _n1, _n2)                      \
+>      VMSTATE_UINT16_2DARRAY_V(_f, _s, _n1, _n2, 0)
+>  
+>  #define VMSTATE_UINT8_2DARRAY_V(_f, _s, _n1, _n2, _v)                 \
+>      VMSTATE_2DARRAY(_f, _s, _n1, _n2, _v, vmstate_info_uint8, uint8_t)
 > 

@@ -1,112 +1,115 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp507706wru;
-        Fri, 27 Jul 2018 02:56:19 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdujBc7JoJZJNNaMcADA6VWUWas5otJgGQimXnsukrnIp9z7ZjpxqxS1kL7+GI5zAV+5++7
-X-Received: by 2002:a37:4f4b:: with SMTP id d72-v6mr5188569qkb.17.1532685379246;
-        Fri, 27 Jul 2018 02:56:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532685379; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp507794wru;
+        Fri, 27 Jul 2018 02:56:25 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpekKIUvW53ehD5H2x1xrFQfYuOtMH8vzPqDgTQd2dkU28apXVzyJFbOOPxflofjHlC8jQsO
+X-Received: by 2002:aed:3ea5:: with SMTP id n34-v6mr5396174qtf.275.1532685385391;
+        Fri, 27 Jul 2018 02:56:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532685385; cv=none;
         d=google.com; s=arc-20160816;
-        b=GiMgXCd3yZPYhX13ThjpgPWUtFC77tSUtdKKhBkzV+vrHJfA/8w9jMf9cVLdlytENV
-         QetfMWVF9Nk+JLbCFvMWExRwpUfJS51m35jEbn7gUqbi3KRLhYBM06aWmWhdpDT1AB85
-         UrjkVk3FRXc4s8+iqq8ZfhZO2qvEv5ZOWujORjgIIqFNMop+o04g06oDQ1Niy5kZFt3/
-         gY1VGF/gZGvEJ8A92DP70YPrP/0v+btiYADKIJjvKqfLCWD3vSmT83W/j8S9T7mvyUWz
-         qNLzgIr3rjOhmaFdl5aHUioHzIjXMk7W+MZfobxMTAH35T61Pvlp7x879gH7VRL9zRNN
-         Tgnw==
+        b=gX/3LXWW/DIXZVllWYyB9iltN23ZeMutXBPOXcFRJDITfvQ+YsU21b1URXpF6EH4FJ
+         NHNQId0Xwv8tJ9ZjVarxhFjLTX5tAt+7OvsjY9+Q8SId/ju0zoUBjJ7pnRTVpAI/qywb
+         /cKsXjMkDtgzlwzRX2qNdvasGuco9/6IrVznIo4lrLxNnYeAbhUUZoalhePsbWPYATnP
+         kd2YkOqa6Mz9msfvCz7qqOUS4sKJKo57jojh/+9HWqh81PXM7IOh5wwPDLxovMhF/Uzm
+         NyLM7ncBUAqT1rxk3z46Zgp/5aAzLaXWZEbd2ZAcKsiiPluTQadnWQjl2w2Fxes1AZ9a
+         7w+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature:arc-authentication-results;
-        bh=8nD3b0RP7rZBu5oZf1z73Bfn4XIj9qiI2aZMeX/vLSk=;
-        b=C8+h4md8YMciUowzz0T2yEU5IPptxiccxAGwWp2vxep+4Vp065IEi876bbYhwRs07v
-         p18j0Uvvkckw8ws+NzhuzsagG4Bl/rfHLUZfKRd6jtJGTPHxjmKpOzrVJVShgp+6qtHz
-         9xBMd6qpNouXnPUX7HM5TvAW0JIGHbdSD5bBcqlztrHkbkezTQa68VwdeD2gdFj/kcdL
-         Iaf1Jd/oQe54qXB1lU1JT3/Q7BHjaN/WRULl2nbm5dJk8aKRjIrwf9OvT+KSUGm4Vwkb
-         DeGWCG5xuUwCSf+hATFHITdGOihE5Q13FRho9LmiT4CwJAnA9GxhBdCy5G83nqRgZDSI
-         Yb7w==
+        bh=E5drH9WEG9dANnkN55KnlzgOI055s0p019fyRcl0rl0=;
+        b=gWKlsZLW6rPvq7n7n78/ke+FOcnwiwC/NJ8xR8E7r93ruBRQcTQMIDFcvKwPykONxc
+         hTsUenpwdNoXhOAAwfmwsgX7xYhgUQyY80LdgTlxq0YvPPTEdnPo1ItQdTxXosidLWmS
+         R46Padcy+EDQ2uQaACT5YDbrzDmh1ugwyQ8/w4K/Ed3NuPNdi0cWURIsTdMQ+ii+JzCP
+         2//PQ1qvb9N8dS5KaZJg7jBtKxaHi3JVqaET0dzq+6hHGdc7SDeMtvsM0onTMMCgtkWW
+         jdEKSY0Rtwywkz6YP4YcIG1I3eqt6mn3s4LPouXPLBJEsukMLB0IVubWlC4nO4+62Xya
+         fcXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="5Nt/BstQ";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=o4AOi6QW;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=JOojs2vF;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ymo13dPx;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="KaIac/ys";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="KaIac/ys";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q39-v6si3573638qtk.363.2018.07.27.02.56.19
+        by mx.google.com with ESMTPS id q19-v6si3699582qkh.271.2018.07.27.02.56.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 Jul 2018 02:56:19 -0700 (PDT)
+        Fri, 27 Jul 2018 02:56:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="5Nt/BstQ";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=o4AOi6QW;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=JOojs2vF;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ymo13dPx;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="KaIac/ys";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="KaIac/ys";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40039 helo=lists.gnu.org)
+Received: from localhost ([::1]:40042 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fizTu-000535-Mm
-	for alex.bennee@linaro.org; Fri, 27 Jul 2018 05:56:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58180)
+	id 1fizU0-00058N-PX
+	for alex.bennee@linaro.org; Fri, 27 Jul 2018 05:56:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fizSf-0003d8-Jq
+	(envelope-from <luc.michel@greensocs.com>) id 1fizSf-0003dc-NL
 	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 05:55:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fizSZ-0006Cj-W2
+	(envelope-from <luc.michel@greensocs.com>) id 1fizSZ-0006Ce-VE
 	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 05:55:01 -0400
-Received: from greensocs.com ([193.104.36.180]:47535)
+Received: from greensocs.com ([193.104.36.180]:47534)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fizSZ-0006B0-Kk; Fri, 27 Jul 2018 05:54:55 -0400
+	id 1fizSZ-0006Au-KV; Fri, 27 Jul 2018 05:54:55 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id A1732443572;
-	Fri, 27 Jul 2018 11:54:53 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 9E8EB443555;
+	Fri, 27 Jul 2018 11:54:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532685293;
-	bh=uZEKjMi5WZD5BNpHU2rDoZN/EycDavakkg6gt1G4ncg=;
+	s=mail; t=1532685292;
+	bh=NPr6OjFh0pz4ZmPkNP0eT08Q4MxZN27JaWCOFwGMd5I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=5Nt/BstQM//qrzpDMhPn3Hv+GUyEKIaMQvD/SSpIzQ+ZmOJ8KOipeFZlLo0RPCbNK
-	p4df/vzGKZrMP8KoS3rbjWpkQ7PSafYcePMbu971C1tiR3l+vQIjQMaMJwFwJyaBME
-	a/zU0zRzjPSGX0a/Y5k71bEl+vgbjJ9D8kzGn4Q4=
+	b=ymo13dPxbe6wyqDpNb4AyZDoqUnygM+iXoZGMClPzySaTaXy5jhSiRLi7uPoTFxzZ
+	H5WwbUMCg20CIXoNFXy9gMOxvEt8Oej66GGGyhz4+FVZ8GzMN+NrwAFgcHkMO6HARf
+	0OguhdM3LQyMX8l3A9R3gvZE4vruQS3zq8abpH/k=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=o4AOi6QW;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=JOojs2vF
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=KaIac/ys;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=KaIac/ys
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BHXmSf6Yr7mv; Fri, 27 Jul 2018 11:54:52 +0200 (CEST)
+	with ESMTP id EQyWFexLhLR5; Fri, 27 Jul 2018 11:54:51 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 115A94434A7; Fri, 27 Jul 2018 11:54:51 +0200 (CEST)
+	id 49481443557; Fri, 27 Jul 2018 11:54:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532685291;
-	bh=uZEKjMi5WZD5BNpHU2rDoZN/EycDavakkg6gt1G4ncg=;
+	s=mail; t=1532685290;
+	bh=NPr6OjFh0pz4ZmPkNP0eT08Q4MxZN27JaWCOFwGMd5I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=o4AOi6QWxrzISVlhfkMe23tIvM5TN837lDKFsFfM0+Nt0tB7q2vo0zRRloTq0gJdb
-	T9ICQKoA/+zGt+ZJYvo8hUgJsjCw2EgoUORH6P8q+HycI0OVoyq1W5SvHhUfHWygxv
-	DRMYjH6mbxkgp03eE2Vh2IJDq7qHXwihd/OzEibw=
+	b=KaIac/yswLLMtTQeWS52vO/LJfJppoFCcuUFVbc+cIzw1TaiSVZf9c8c/rW1lvaXJ
+	Xq69E5Es/NwU9d3wuO6F+adVlNwoXQ9WcGcs/n2e6fiIRgwjSqypEncpdGldqvKKv4
+	comdmpA/HjaGh6whu/MT/CPNDCuHEfUYD04Vi+/g=
 Received: from michell-laptop.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 9FF92400DC8;
-	Fri, 27 Jul 2018 11:54:50 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id E2FD8400DC8;
+	Fri, 27 Jul 2018 11:54:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1532685290;
-	bh=uZEKjMi5WZD5BNpHU2rDoZN/EycDavakkg6gt1G4ncg=;
+	bh=NPr6OjFh0pz4ZmPkNP0eT08Q4MxZN27JaWCOFwGMd5I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=JOojs2vFMlGcXXJn0Hs6RTAnRHZfaQ5IbMXY+dBRRWxnN1VKcvRWPzvQkxRk3JUU2
-	8l5ZsR1RlskSkmM98dNP6KQw7BKRuAtVnhYo1iL5i/87LRpIE9tNIPPmGJ3mjXBt/1
-	D/Q4eW/izRwfSxifw2MMzchptU0kpLpFXXeMNJV0=
+	b=KaIac/yswLLMtTQeWS52vO/LJfJppoFCcuUFVbc+cIzw1TaiSVZf9c8c/rW1lvaXJ
+	Xq69E5Es/NwU9d3wuO6F+adVlNwoXQ9WcGcs/n2e6fiIRgwjSqypEncpdGldqvKKv4
+	comdmpA/HjaGh6whu/MT/CPNDCuHEfUYD04Vi+/g=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 27 Jul 2018 11:54:21 +0200
-Message-Id: <20180727095421.386-21-luc.michel@greensocs.com>
+Date: Fri, 27 Jul 2018 11:54:19 +0200
+Message-Id: <20180727095421.386-19-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180727095421.386-1-luc.michel@greensocs.com>
 References: <20180727095421.386-1-luc.michel@greensocs.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v5 20/20] arm/virt: Add support for GICv2
- virtualization extensions
+Subject: [Qemu-arm] [PATCH v5 18/20] intc/arm_gic: Improve traces
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,198 +126,231 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
 	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vp16W8UB7kjA
+X-TUID: AwuuALVAz+Fz
 
-Add support for GICv2 virtualization extensions by mapping the necessary
-I/O regions and connecting the maintenance IRQ lines.
+Add some traces to the ARM GIC to catch register accesses (distributor,
+(v)cpu interface and virtual interface), and to take into account
+virtualization extensions (print `vcpu` instead of `cpu` when needed).
 
-Declare those additions in the device tree and in the ACPI tables.
+Also add some virtualization extensions specific traces: LR updating
+and maintenance IRQ generation.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/virt-acpi-build.c |  6 +++--
- hw/arm/virt.c            | 52 +++++++++++++++++++++++++++++++++-------
- include/hw/arm/virt.h    |  4 +++-
- 3 files changed, 50 insertions(+), 12 deletions(-)
+ hw/intc/arm_gic.c    | 31 +++++++++++++++++++++++++------
+ hw/intc/trace-events | 12 ++++++++++--
+ 2 files changed, 35 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6ea47e2588..ce31abd62c 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -657,21 +657,23 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-         gicc->type = ACPI_APIC_GENERIC_CPU_INTERFACE;
-         gicc->length = sizeof(*gicc);
-         if (vms->gic_version == 2) {
-             gicc->base_address = cpu_to_le64(memmap[VIRT_GIC_CPU].base);
-+            gicc->gich_base_address = cpu_to_le64(memmap[VIRT_GIC_HYP].base);
-+            gicc->gicv_base_address = cpu_to_le64(memmap[VIRT_GIC_VCPU].base);
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 6ff7da3e5d..c1b35fc1ee 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -182,12 +182,14 @@ static inline void gic_update_internal(GICState *s,=
+ bool virt)
+         } else {
+             gic_get_best_irq(s, cpu, &best_irq, &best_prio, &group);
          }
-         gicc->cpu_interface_number = cpu_to_le32(i);
-         gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
-         gicc->uid = cpu_to_le32(i);
-         gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
- 
-         if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+=20
+         if (best_irq !=3D 1023) {
+-            trace_gic_update_bestirq(cpu, best_irq, best_prio,
+-                s->priority_mask[cpu_iface], s->running_priority[cpu_ifa=
+ce]);
++            trace_gic_update_bestirq(virt ? "vcpu" : "cpu", cpu,
++                                     best_irq, best_prio,
++                                     s->priority_mask[cpu_iface],
++                                     s->running_priority[cpu_iface]);
          }
--        if (vms->virt && vms->gic_version == 3) {
--            gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GICV3_MAINT_IRQ));
-+        if (vms->virt) {
-+            gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GIC_MAINT_IRQ));
-         }
+=20
+         irq_level =3D fiq_level =3D 0;
+=20
+         if (best_prio < s->priority_mask[cpu_iface]) {
+@@ -330,10 +332,11 @@ static void gic_update_maintenance(GICState *s)
+=20
+     for (cpu =3D 0; cpu < s->num_cpu; cpu++) {
+         gic_compute_misr(s, cpu);
+         maint_level =3D (s->h_hcr[cpu] & R_GICH_HCR_EN_MASK) && s->h_mis=
+r[cpu];
+=20
++        trace_gic_update_maintenance_irq(cpu, maint_level);
+         qemu_set_irq(s->maintenance_irq[cpu], maint_level);
      }
- 
-     if (vms->gic_version == 3) {
-         AcpiMadtGenericTranslator *gic_its;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 281ddcdf6e..0807be985c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -129,10 +129,12 @@ static const MemMapEntry a15memmap[] = {
-     [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
-     /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
-     [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
-     [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
-     [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
-+    [VIRT_GIC_HYP] =            { 0x08030000, 0x00010000 },
-+    [VIRT_GIC_VCPU] =           { 0x08040000, 0x00010000 },
-     /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
-     [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
-     /* This redistributor space allows up to 2*64kB*123 CPUs */
-     [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
-     [VIRT_UART] =               { 0x09000000, 0x00001000 },
-@@ -438,22 +440,37 @@ static void fdt_add_gic_node(VirtMachineState *vms)
-                                          2, vms->memmap[VIRT_GIC_REDIST2].size);
-         }
- 
-         if (vms->virt) {
-             qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
--                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
-+                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GIC_MAINT_IRQ,
-                                    GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-         }
-     } else {
-         /* 'cortex-a15-gic' means 'GIC v2' */
-         qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-                                 "arm,cortex-a15-gic");
--        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
--                                      2, vms->memmap[VIRT_GIC_DIST].base,
--                                      2, vms->memmap[VIRT_GIC_DIST].size,
--                                      2, vms->memmap[VIRT_GIC_CPU].base,
--                                      2, vms->memmap[VIRT_GIC_CPU].size);
-+        if (!vms->virt) {
-+            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-+                                         2, vms->memmap[VIRT_GIC_DIST].base,
-+                                         2, vms->memmap[VIRT_GIC_DIST].size,
-+                                         2, vms->memmap[VIRT_GIC_CPU].base,
-+                                         2, vms->memmap[VIRT_GIC_CPU].size);
-+        } else {
-+            qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-+                                         2, vms->memmap[VIRT_GIC_DIST].base,
-+                                         2, vms->memmap[VIRT_GIC_DIST].size,
-+                                         2, vms->memmap[VIRT_GIC_CPU].base,
-+                                         2, vms->memmap[VIRT_GIC_CPU].size,
-+                                         2, vms->memmap[VIRT_GIC_HYP].base,
-+                                         2, vms->memmap[VIRT_GIC_HYP].size,
-+                                         2, vms->memmap[VIRT_GIC_VCPU].base,
-+                                         2, vms->memmap[VIRT_GIC_VCPU].size);
-+            qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
-+                                   GIC_FDT_IRQ_TYPE_PPI, ARCH_GIC_MAINT_IRQ,
-+                                   GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+        }
-     }
- 
-     qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->gic_phandle);
-     g_free(nodename);
  }
-@@ -571,10 +588,15 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-                         vms->memmap[VIRT_GIC_REDIST2].size / GICV3_REDIST_SIZE;
- 
-             qdev_prop_set_uint32(gicdev, "redist-region-count[1]",
-                 MIN(smp_cpus - redist0_count, redist1_capacity));
-         }
-+    } else {
-+        if (!kvm_irqchip_in_kernel()) {
-+            qdev_prop_set_bit(gicdev, "has-virtualization-extensions",
-+                              vms->virt);
-+        }
+=20
+ static void gic_update_virt(GICState *s)
+@@ -595,11 +598,12 @@ uint32_t gic_acknowledge_irq(GICState *s, int cpu, =
+MemTxAttrs attrs)
+     /* gic_get_current_pending_irq() will return 1022 or 1023 appropriat=
+ely
+      * for the case where this GIC supports grouping and the pending int=
+errupt
+      * is in the wrong group.
+      */
+     irq =3D gic_get_current_pending_irq(s, cpu, attrs);
+-    trace_gic_acknowledge_irq(gic_get_vcpu_real_id(cpu), irq);
++    trace_gic_acknowledge_irq(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
++                              gic_get_vcpu_real_id(cpu), irq);
+=20
+     if (irq >=3D GIC_MAXIRQ) {
+         DPRINTF("ACK, no pending interrupt or it is hidden: %d\n", irq);
+         return irq;
      }
-     qdev_init_nofail(gicdev);
-     gicbusdev = SYS_BUS_DEVICE(gicdev);
-     sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
-     if (type == 3) {
-@@ -582,10 +604,14 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-         if (nb_redist_regions == 2) {
-             sysbus_mmio_map(gicbusdev, 2, vms->memmap[VIRT_GIC_REDIST2].base);
-         }
-     } else {
-         sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_CPU].base);
-+        if (vms->virt) {
-+            sysbus_mmio_map(gicbusdev, 2, vms->memmap[VIRT_GIC_HYP].base);
-+            sysbus_mmio_map(gicbusdev, 3, vms->memmap[VIRT_GIC_VCPU].base);
-+        }
+@@ -1128,24 +1132,27 @@ static MemTxResult gic_dist_read(void *opaque, hw=
+addr offset, uint64_t *data,
+                                  unsigned size, MemTxAttrs attrs)
+ {
+     switch (size) {
+     case 1:
+         *data =3D gic_dist_readb(opaque, offset, attrs);
+-        return MEMTX_OK;
++        break;
+     case 2:
+         *data =3D gic_dist_readb(opaque, offset, attrs);
+         *data |=3D gic_dist_readb(opaque, offset + 1, attrs) << 8;
+-        return MEMTX_OK;
++        break;
+     case 4:
+         *data =3D gic_dist_readb(opaque, offset, attrs);
+         *data |=3D gic_dist_readb(opaque, offset + 1, attrs) << 8;
+         *data |=3D gic_dist_readb(opaque, offset + 2, attrs) << 16;
+         *data |=3D gic_dist_readb(opaque, offset + 3, attrs) << 24;
+-        return MEMTX_OK;
++        break;
+     default:
+         return MEMTX_ERROR;
      }
- 
-     /* Wire the outputs from each CPU's generic timer and the GICv3
-      * maintenance interrupt signal to the appropriate GIC PPI inputs,
-      * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-@@ -608,13 +634,21 @@ static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-             qdev_connect_gpio_out(cpudev, irq,
-                                   qdev_get_gpio_in(gicdev,
-                                                    ppibase + timer_irq[irq]));
-         }
- 
--        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
--                                    qdev_get_gpio_in(gicdev, ppibase
--                                                     + ARCH_GICV3_MAINT_IRQ));
-+        if (type == 3) {
-+            qemu_irq irq = qdev_get_gpio_in(gicdev,
-+                                            ppibase + ARCH_GIC_MAINT_IRQ);
-+            qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
-+                                        0, irq);
-+        } else if (vms->virt) {
-+            qemu_irq irq = qdev_get_gpio_in(gicdev,
-+                                            ppibase + ARCH_GIC_MAINT_IRQ);
-+            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
-+        }
 +
-         qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-                                     qdev_get_gpio_in(gicdev, ppibase
-                                                      + VIRTUAL_PMU_IRQ));
- 
-         sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 9a870ccb6a..4cc57a7ef6 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -40,11 +40,11 @@
- 
- #define NUM_GICV2M_SPIS       64
- #define NUM_VIRTIO_TRANSPORTS 32
- #define NUM_SMMU_IRQS          4
- 
--#define ARCH_GICV3_MAINT_IRQ  9
-+#define ARCH_GIC_MAINT_IRQ  9
- 
- #define ARCH_TIMER_VIRT_IRQ   11
- #define ARCH_TIMER_S_EL1_IRQ  13
- #define ARCH_TIMER_NS_EL1_IRQ 14
- #define ARCH_TIMER_NS_EL2_IRQ 10
-@@ -58,10 +58,12 @@ enum {
-     VIRT_MEM,
-     VIRT_CPUPERIPHS,
-     VIRT_GIC_DIST,
-     VIRT_GIC_CPU,
-     VIRT_GIC_V2M,
-+    VIRT_GIC_HYP,
-+    VIRT_GIC_VCPU,
-     VIRT_GIC_ITS,
-     VIRT_GIC_REDIST,
-     VIRT_GIC_REDIST2,
-     VIRT_SMMU,
-     VIRT_UART,
--- 
++    trace_gic_dist_read(offset, size, *data);
++    return MEMTX_OK;
+ }
+=20
+ static void gic_dist_writeb(void *opaque, hwaddr offset,
+                             uint32_t value, MemTxAttrs attrs)
+ {
+@@ -1480,10 +1487,12 @@ static void gic_dist_writel(void *opaque, hwaddr =
+offset,
+ }
+=20
+ static MemTxResult gic_dist_write(void *opaque, hwaddr offset, uint64_t =
+data,
+                                   unsigned size, MemTxAttrs attrs)
+ {
++    trace_gic_dist_write(offset, size, data);
++
+     switch (size) {
+     case 1:
+         gic_dist_writeb(opaque, offset, data, attrs);
+         return MEMTX_OK;
+     case 2:
+@@ -1636,16 +1645,22 @@ static MemTxResult gic_cpu_read(GICState *s, int =
+cpu, int offset,
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "gic_cpu_read: Bad offset %x\n", (int)offset);
+         *data =3D 0;
+         break;
+     }
++
++    trace_gic_cpu_read(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
++                       gic_get_vcpu_real_id(cpu), offset, *data);
+     return MEMTX_OK;
+ }
+=20
+ static MemTxResult gic_cpu_write(GICState *s, int cpu, int offset,
+                                  uint32_t value, MemTxAttrs attrs)
+ {
++    trace_gic_cpu_write(gic_is_vcpu(cpu) ? "vcpu" : "cpu",
++                        gic_get_vcpu_real_id(cpu), offset, value);
++
+     switch (offset) {
+     case 0x00: /* Control */
+         gic_set_cpu_control(s, cpu, value, attrs);
+         break;
+     case 0x04: /* Priority mask */
+@@ -1892,19 +1907,22 @@ static MemTxResult gic_hyp_read(void *opaque, int=
+ cpu, hwaddr addr,
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "gic_hyp_read: Bad offset %" HWADDR_PRIx "\n", add=
+r);
+         return MEMTX_OK;
+     }
+=20
++    trace_gic_hyp_read(addr, *data);
+     return MEMTX_OK;
+ }
+=20
+ static MemTxResult gic_hyp_write(void *opaque, int cpu, hwaddr addr,
+                                  uint64_t value, MemTxAttrs attrs)
+ {
+     GICState *s =3D ARM_GIC(opaque);
+     int vcpu =3D cpu + GIC_NCPU;
+=20
++    trace_gic_hyp_write(addr, value);
++
+     switch (addr) {
+     case A_GICH_HCR: /* Hypervisor Control */
+         s->h_hcr[cpu] =3D value & GICH_HCR_MASK;
+         break;
+=20
+@@ -1924,10 +1942,11 @@ static MemTxResult gic_hyp_write(void *opaque, in=
+t cpu, hwaddr addr,
+         if (lr_idx > s->num_lrs) {
+             return MEMTX_OK;
+         }
+=20
+         s->h_lr[lr_idx][cpu] =3D value & GICH_LR_MASK;
++        trace_gic_lr_entry(cpu, lr_idx, s->h_lr[lr_idx][cpu]);
+         break;
+     }
+=20
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 5fb18e65c9..81c7c399f7 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -90,13 +90,21 @@ aspeed_vic_write(uint64_t offset, unsigned size, uint=
+32_t data) "To 0x%" PRIx64
+=20
+ # hw/intc/arm_gic.c
+ gic_enable_irq(int irq) "irq %d enabled"
+ gic_disable_irq(int irq) "irq %d disabled"
+ gic_set_irq(int irq, int level, int cpumask, int target) "irq %d level %=
+d cpumask 0x%x target 0x%x"
+-gic_update_bestirq(int cpu, int irq, int prio, int priority_mask, int ru=
+nning_priority) "cpu %d irq %d priority %d cpu priority mask %d cpu runni=
+ng priority %d"
++gic_update_bestirq(const char *s, int cpu, int irq, int prio, int priori=
+ty_mask, int running_priority) "%s %d irq %d priority %d cpu priority mas=
+k %d cpu running priority %d"
+ gic_update_set_irq(int cpu, const char *name, int level) "cpu[%d]: %s =3D=
+ %d"
+-gic_acknowledge_irq(int cpu, int irq) "cpu %d acknowledged irq %d"
++gic_acknowledge_irq(const char *s, int cpu, int irq) "%s %d acknowledged=
+ irq %d"
++gic_cpu_write(const char *s, int cpu, int addr, uint32_t val) "%s %d ifa=
+ce write at 0x%08x 0x%08" PRIx32
++gic_cpu_read(const char *s, int cpu, int addr, uint32_t val) "%s %d ifac=
+e read at 0x%08x: 0x%08" PRIx32
++gic_hyp_read(int addr, uint32_t val) "hyp read at 0x%08x: 0x%08" PRIx32
++gic_hyp_write(int addr, uint32_t val) "hyp write at 0x%08x: 0x%08" PRIx3=
+2
++gic_dist_read(int addr, unsigned int size, uint32_t val) "dist read at 0=
+x%08x size %u: 0x%08" PRIx32
++gic_dist_write(int addr, unsigned int size, uint32_t val) "dist write at=
+ 0x%08x size %u: 0x%08" PRIx32
++gic_lr_entry(int cpu, int entry, uint32_t val) "cpu %d: new lr entry %d:=
+ 0x%08" PRIx32
++gic_update_maintenance_irq(int cpu, int val) "cpu %d: maintenance =3D %d=
+"
+=20
+ # hw/intc/arm_gicv3_cpuif.c
+ gicv3_icc_pmr_read(uint32_t cpu, uint64_t val) "GICv3 ICC_PMR read cpu 0=
+x%x value 0x%" PRIx64
+ gicv3_icc_pmr_write(uint32_t cpu, uint64_t val) "GICv3 ICC_PMR write cpu=
+ 0x%x value 0x%" PRIx64
+ gicv3_icc_bpr_read(int grp, uint32_t cpu, uint64_t val) "GICv3 ICC_BPR%d=
+ read cpu 0x%x value 0x%" PRIx64
+--=20
 2.18.0
 

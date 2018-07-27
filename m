@@ -1,98 +1,98 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp289036wru;
-        Thu, 26 Jul 2018 21:53:22 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdxba/D9I1Vfsxu+AACnKiYx+mHENFlq7oVI56a25cm+G+FEZgD5s4ObEtFXpKoo30N/ZoC
-X-Received: by 2002:a0c:85a3:: with SMTP id o32-v6mr4341025qva.62.1532667202637;
-        Thu, 26 Jul 2018 21:53:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532667202; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp289426wru;
+        Thu, 26 Jul 2018 21:54:05 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfKbZWnOA06gvbHPtOVi6oYDlhR57v8lORTUD80+vcIFr8Yj77tyIS9bnux76d2Cx1xf9h7
+X-Received: by 2002:ac8:17ee:: with SMTP id r43-v6mr4797692qtk.106.1532667245170;
+        Thu, 26 Jul 2018 21:54:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532667245; cv=none;
         d=google.com; s=arc-20160816;
-        b=sueR7P//qlLzkTUTjIW7Qjd7bWUxiJKu2WJSytPNwc0faWWjwn48yyGRMORIMrHBQ8
-         5TKlJ63JczogXd3wibkuJyil3BhKrhvYkRKavAsxKzwOWF0kJPKtfmx0dmpBPJsjMgbu
-         SuUFL8hp6x/8zJ+hpP5R2M2y5HlAEHhjRnaTZoSqz2XMBzzEkG22os9GHauFEOv61zgr
-         KeLVvXBCRFSmzmOrcT9bmDN2UISremaPGx4orlXsQfS3X0yQqzksInrgXSl4nErwFLR6
-         3hQ4CCMZqRi9tJlWwxma149jLtWJQ2tbRKuV6G306kIkkSbhFlCfIXX7hJjSyks8TbeG
-         BvSg==
+        b=cRM7O6dquqM1bNIb8lo9+w5X2WhD14vVH5DP25mdPSDO0CI9om1OarMmo70EKYUoyF
+         wbhEh0IBkhQtPKaXqiUVWgaKejlDPNURFK5ZV1EO9n/wW4NGPtHNqKyNYfwn1boGlsaT
+         MYK0lCffiWbQfdjlTqkajmZXIn8DGWuKqFHok9PZ/SBO6Ygj2gH2K/QmnHK/hbeOA9as
+         0d6hRGVs1pQINEC1nibCflWXSiPJtHceNmFYZrVxDU8mNeyjDPYgCDSJR66B2bQpQjyE
+         Fib8gxfNCUz+Qemw98+OG1dct30nhrDwoXLa0H7xUuXO5oBeiCPw/T1/KvZCaegzMnjF
+         p5fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=eKmv+TfA7z9jxnr81jGTH3o25snvPWuAR1SAHLJujQw=;
-        b=w7W2qGB6mx8UdHQahAzGWIEzq8zBcAQkXQzs5DkwcfOh708mHZQwcP7ARPX0XoFCAH
-         k4VthEoxRGntySUwZ4vqLJ4NglLbp1nWyYzRAjm7B98YqY9NA7DndzG3sBHxWBOY430J
-         GH+9dylTwsoGaGZ35TJ1ObIZ2pFp/BvVxzSmy7DvaFyw1amxvuGPvUPbfIzZl4A9PMSW
-         1Sc8R4x3eVC42gvT+NdLcgVF2u4X3Iau9Z3EQOGvBsZF9OxNU0pAzRx8T8diACO09vlq
-         pfTaIrVfcxHo9kOZCgie/8+0BKXNr0+xTwVVEy3JUV1PS1nfy4M68vadglhk7Tdr+iTe
-         DaSA==
+        bh=aulVOOK7CMRbfDB04ISKJYxTRfxcXn+pSc2WmMY+BlQ=;
+        b=Ug8iUcgC7BaO9bl1ZXQLOfDKVXTNxNdjAYeZSTLvc3MTm9bKLimtdL5H78bt1KAgsC
+         trPPKdXthx6wGc0rtu4mrbQ9+w0cdCuHpa5RBkZnAshXCgP06G4zk9HSOkRZ6MqVmn3Z
+         z+YQ1hgV8Tk1U1Qa9G8I5OY9z40G9qDAqC46ehLVl1rYVUIrtiWrNDWnoUHIfNg37+cs
+         /6Ws3aKbNpMcyzlJFCYw0sZZQlqFgfF0IMhA+8s5YO3J3nKKrNu2m0KcmHmu186YN1L1
+         OBLFKl04beA7u5GKlwLIGw4rqc2Uc6v5YxnqPltnGr7CUDoEYi0bJSzRsJc+WWu6A71P
+         K53g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ltCuy6HC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KupCpMxq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w38-v6si3178417qtk.68.2018.07.26.21.53.22
+        by mx.google.com with ESMTPS id f35-v6si682007qvf.94.2018.07.26.21.54.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 26 Jul 2018 21:53:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 26 Jul 2018 21:54:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ltCuy6HC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39086 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KupCpMxq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39091 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fiukk-0001q8-3W
-	for alex.bennee@linaro.org; Fri, 27 Jul 2018 00:53:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37443)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fiulQ-00029V-Ks
+	for alex.bennee@linaro.org; Fri, 27 Jul 2018 00:54:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37503)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fiukW-0001nL-1R
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 00:53:09 -0400
+	id 1fiuks-000265-VY
+	for qemu-devel@nongnu.org; Fri, 27 Jul 2018 00:53:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fiukS-0001wI-Uo
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 00:53:08 -0400
-Received: from mail-ua0-x243.google.com ([2607:f8b0:400c:c08::243]:39551)
+	id 1fiukp-00025Q-OM
+	for qemu-devel@nongnu.org; Fri, 27 Jul 2018 00:53:31 -0400
+Received: from mail-ua0-x242.google.com ([2607:f8b0:400c:c08::242]:40451)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fiukS-0001w9-Np; Fri, 27 Jul 2018 00:53:04 -0400
-Received: by mail-ua0-x243.google.com with SMTP id g18-v6so2565426uam.6;
-	Thu, 26 Jul 2018 21:53:04 -0700 (PDT)
+	id 1fiuki-00024b-KJ; Fri, 27 Jul 2018 00:53:20 -0400
+Received: by mail-ua0-x242.google.com with SMTP id p22-v6so2565898uao.7;
+	Thu, 26 Jul 2018 21:53:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=eKmv+TfA7z9jxnr81jGTH3o25snvPWuAR1SAHLJujQw=;
-	b=ltCuy6HCeQrpCoixtXle2swQa3u5wMx+BjekuQpfz9xrnp1KzpnSQGqxCsZhsdeMAs
-	SRi3MNHLx+i2+/gcWIrmRIrHAceki5liCLDCV4QZZYjhYqGBFvivZaNbaASnqboz6DIB
-	8WEhAOT2mShaVwzbS4YBE87w/XLM/Yd3tPAg6fx6V7x9sGPtSDAWSd0l4C5CrhtqPzXl
-	3OZjxvo2UEi3WT1z0O3uNZ4VKQZ325Ierlf/VYDKaebgf/u/kAJ+BAj9v1phWahBf3Av
-	wuDfbCxOSOEXmQqUDVCB+GHuwnJfe2qj9sy3zGTeKjDCre8Zt4RjS+1/rUb2vFW9ZeIp
-	4qxQ==
+	bh=aulVOOK7CMRbfDB04ISKJYxTRfxcXn+pSc2WmMY+BlQ=;
+	b=KupCpMxqTs7w9Eb3HMFfNQFSi6xV7sW2MTnr4tYdf4ZEQ8vuRM5ju1qVcBHjF7TpiD
+	EYD/LpYwAch3l6eqA0o28ecBCyAoCjr6aZzWlAlm0YUwkqsSMWvfCtzbluAV8Ee/q5l+
+	r8kfZAKgCqurC5nRPF166X6S2n+qEBKnHIBiKXha5pfT0k0tU0MNUK5+XNSES7MEhAQm
+	paACmQ7RLmyQa2WtbxQFScUWXi8RcGYlMHAO4Vqe/kF2QptibEtOef2KPQK7c8hi4n67
+	ggU/tlGvdij11krYKbI7N+F7WWO98QNzUtN15wSOXXVondsSf/GO8Q+dD9UFoEvnL4SX
+	v9CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=eKmv+TfA7z9jxnr81jGTH3o25snvPWuAR1SAHLJujQw=;
-	b=Xef2+2rNKovnCFrdbza0Kq9h5v7uK7sFTCkRipA3KzCfLfE0ZRoYKxoOWJg3Fw4601
-	RsAva3clFrhl7elEVIGvzzTdaiOtsKz7ZqqT3NZgUXr/1qv9ZG3ZJ3Oa1dSdSu/IYM1g
-	1Drm/HEk3VfbGHjgK8LPP3j7oryAhyFb/kqfT5TT33WHcfeZhomi79iCG1EEBUt+wtTY
-	9AaSTkvE8rfW0wdKs6lPrZxHzMbdU0E7W4f9sKm9veQBY2J4g3skdYkQgWjcbozmsa7a
-	a905lit0fajZOfAbGB5iEwDGgUK3256XIyDGqB5zYariiMmQXCFGkQlNqu2fSjhrSc2g
-	nshg==
-X-Gm-Message-State: AOUpUlGGB0gep+D+WyTeBbwywpbo2SU/uPH5RstvW9jXVddTZpI4HxL6
-	kP/QTMgqI7RMYKmM3sx4HnY=
-X-Received: by 2002:ab0:3141:: with SMTP id
-	e1-v6mr3165521uam.121.1532667183989; 
-	Thu, 26 Jul 2018 21:53:03 -0700 (PDT)
+	bh=aulVOOK7CMRbfDB04ISKJYxTRfxcXn+pSc2WmMY+BlQ=;
+	b=AiyXGZZbETCx3Y3axWYaBrLSxNmk2j2/eSpEVuI7ChdWLrcF3MZuLYeZZIoObX0jGf
+	Eari9B19oQaRBSZavNncl0cDBezWZu8YVwOH4VfhBp+M2njrmpTe9TAz+0nyKl4p33ai
+	tQF6IRjR/WOd4kpRzfIJj2ai7flgczF3DA0CqNle0KqEMhCZspvdKOTBSzqEI5kl9QbX
+	8jJgxOi1z1DAyLthDXLtH12kjyeZ5MBxtYe9qOnEXQrHKyHdrHVhaaHmgyherdS7tasY
+	8z8yYKidkjBjhNvC9iZQpEU5BUEGB3g5eQ9FSZT43ApmIO5oe9ygx8vygooxOKfrt2/O
+	fNHw==
+X-Gm-Message-State: AOUpUlGFDpSNKJOkDhEeVu6di0+G8++mN/Qqnv5z3VS93XiwBTGYB2fd
+	750uyFd41r7dHzU0ms404qI=
+X-Received: by 2002:ab0:4364:: with SMTP id
+	k91-v6mr3450323uak.46.1532667199747; 
+	Thu, 26 Jul 2018 21:53:19 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	e185-v6sm921784vkd.15.2018.07.26.21.52.59
+	u22-v6sm920448vkb.0.2018.07.26.21.53.14
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 26 Jul 2018 21:53:03 -0700 (PDT)
+	Thu, 26 Jul 2018 21:53:19 -0700 (PDT)
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 References: <20180725085944.11856-1-stefanha@redhat.com>
-	<20180725085944.11856-2-stefanha@redhat.com>
+	<20180725085944.11856-3-stefanha@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -119,30 +119,31 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <2b05f695-385f-3631-4735-b5f015540abd@amsat.org>
-Date: Fri, 27 Jul 2018 01:52:56 -0300
+Message-ID: <63251874-7110-9870-76d0-cf729afe3416@amsat.org>
+Date: Fri, 27 Jul 2018 01:53:13 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180725085944.11856-2-stefanha@redhat.com>
+In-Reply-To: <20180725085944.11856-3-stefanha@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c08::243
-Subject: Re: [Qemu-arm] [PATCH v3 1/7] hw/arm: rename armv7m_load_kernel()
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c08::242
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v3 2/7] hw/arm: rename
+ TYPE_ARMV7M to TYPE_ARM_M_PROFILE
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
 	mail@steffen-goertz.de, ilg@livius.net,
 	Alistair Francis <alistair@alistair23.me>,
@@ -151,313 +152,884 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
 	Su Hang <suhang16@mails.ucas.ac.cn>,
 	Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
 	Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fsPMVRKoVY72
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BEqeO3RhV0O2
 
 On 07/25/2018 05:59 AM, Stefan Hajnoczi wrote:
-> ARMv6-M and ARMv8-M need the same kernel loading functionality as
-> ARMv7-M.  Rename armv7m_load_kernel() to arm_m_profile_load_kernel() so
-> it's clear that this function isn't specific to ARMv7-M.
+> The TYPE_ARMV7M class is really a container for an ARM M Profile CPU,
+> NVIC, and related pieces.  It can also be used for ARMv6-M and ARMv8-M.
+> Rename the class since it is not exclusive to ARMv7-M.
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/arm/Makefile.objs            |  1 +
->  include/hw/arm/arm.h            | 11 +++--
->  hw/arm/arm-m-profile.c          | 81 +++++++++++++++++++++++++++++++++
->  hw/arm/armv7m.c                 | 60 ------------------------
->  hw/arm/mps2-tz.c                |  3 +-
->  hw/arm/mps2.c                   |  4 +-
->  hw/arm/msf2-som.c               |  4 +-
->  hw/arm/netduino2.c              |  4 +-
->  hw/arm/stellaris.c              |  3 +-
->  default-configs/arm-softmmu.mak |  1 +
->  10 files changed, 99 insertions(+), 73 deletions(-)
->  create mode 100644 hw/arm/arm-m-profile.c
+>  hw/arm/Makefile.objs                         |   1 -
+>  include/hw/arm/{armv7m.h => arm-m-profile.h} |  37 ++-
+>  include/hw/arm/iotkit.h                      |   4 +-
+>  include/hw/arm/msf2-soc.h                    |   4 +-
+>  include/hw/arm/stm32f205_soc.h               |   4 +-
+>  hw/arm/arm-m-profile.c                       | 271 +++++++++++++++++
+>  hw/arm/armv7m.c                              | 290 -------------------
+>  hw/arm/iotkit.c                              |   2 +-
+>  hw/arm/mps2-tz.c                             |   1 -
+>  hw/arm/mps2.c                                |   6 +-
+>  hw/arm/msf2-soc.c                            |   2 +-
+>  hw/arm/stellaris.c                           |   4 +-
+>  hw/arm/stm32f205_soc.c                       |   2 +-
+>  13 files changed, 313 insertions(+), 315 deletions(-)
+>  rename include/hw/arm/{armv7m.h => arm-m-profile.h} (65%)
+>  delete mode 100644 hw/arm/armv7m.c
 > 
 > diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index d51fcecaf2..2c43d34c64 100644
+> index 2c43d34c64..b1e4f8f006 100644
 > --- a/hw/arm/Makefile.objs
 > +++ b/hw/arm/Makefile.objs
-> @@ -16,6 +16,7 @@ obj-$(CONFIG_STRONGARM) += collie.o
->  obj-$(CONFIG_VERSATILE) += vexpress.o versatilepb.o
+> @@ -17,7 +17,6 @@ obj-$(CONFIG_VERSATILE) += vexpress.o versatilepb.o
 >  obj-$(CONFIG_ZYNQ) += xilinx_zynq.o
 >  
-> +obj-$(CONFIG_ARM_M_PROFILE) += arm-m-profile.o
->  obj-$(CONFIG_ARM_V7M) += armv7m.o
+>  obj-$(CONFIG_ARM_M_PROFILE) += arm-m-profile.o
+> -obj-$(CONFIG_ARM_V7M) += armv7m.o
 >  obj-$(CONFIG_EXYNOS4) += exynos4210.o
 >  obj-$(CONFIG_PXA2XX) += pxa2xx.o pxa2xx_gpio.o pxa2xx_pic.o
-> diff --git a/include/hw/arm/arm.h b/include/hw/arm/arm.h
-> index ffed39252d..2b919e57ee 100644
-> --- a/include/hw/arm/arm.h
-> +++ b/include/hw/arm/arm.h
-> @@ -24,16 +24,17 @@ typedef enum {
->  } arm_endianness;
->  
->  /**
-> - * armv7m_load_kernel:
-> + * arm_m_profile_load_kernel:
->   * @cpu: CPU
->   * @kernel_filename: file to load
-> - * @mem_size: mem_size: maximum image size to load
-> + * @mem_size: maximum image size to load
+>  obj-$(CONFIG_DIGIC) += digic.o
+> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/arm-m-profile.h
+> similarity index 65%
+> rename from include/hw/arm/armv7m.h
+> rename to include/hw/arm/arm-m-profile.h
+> index 78308d1484..ea496d9b88 100644
+> --- a/include/hw/arm/armv7m.h
+> +++ b/include/hw/arm/arm-m-profile.h
+> @@ -1,14 +1,16 @@
+>  /*
+> - * ARMv7M CPU object
+> + * ARM M Profile CPU class
 >   *
-> - * Load the guest image for an ARMv7M system. This must be called by
-> - * any ARMv7M board. (This is necessary to ensure that the CPU resets
-> + * Load the guest image for an ARM M Profile system. This must be called by
-> + * any ARM M Profile board. (This is necessary to ensure that the CPU resets
->   * correctly on system reset, as well as for kernel loading.)
->   */
-> -void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size);
-> +void arm_m_profile_load_kernel(ARMCPU *cpu, const char *kernel_filename,
-> +                               int mem_size);
->  
->  /* arm_boot.c */
->  struct arm_boot_info {
-> diff --git a/hw/arm/arm-m-profile.c b/hw/arm/arm-m-profile.c
-> new file mode 100644
-> index 0000000000..262706ed62
-> --- /dev/null
-> +++ b/hw/arm/arm-m-profile.c
-> @@ -0,0 +1,81 @@
-> +/*
-> + * ARM M Profile System emulation.
-> + *
+>   * Copyright (c) 2017 Linaro Ltd
+>   * Written by Peter Maydell <peter.maydell@linaro.org>
+>   *
 > + * Copyright (C) 2018 Red Hat, Inc.
 > + *
-> + * Copyright (c) 2006-2007 CodeSourcery.
-> + * Written by Paul Brook
-> + *
-> + * This code is licensed under the GPL.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu-common.h"
-> +#include "cpu.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/arm/arm.h"
-> +#include "hw/loader.h"
-> +#include "elf.h"
-> +#include "sysemu/qtest.h"
-> +#include "qemu/error-report.h"
-> +#include "exec/address-spaces.h"
-> +
-> +static void arm_m_profile_reset(void *opaque)
-> +{
-> +    ARMCPU *cpu = opaque;
-> +
-> +    cpu_reset(CPU(cpu));
-> +}
-> +
-> +void arm_m_profile_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
-> +{
-> +    int image_size;
-> +    uint64_t entry;
-> +    uint64_t lowaddr;
-> +    int big_endian;
-> +    AddressSpace *as;
-> +    int asidx;
-> +    CPUState *cs = CPU(cpu);
-> +
-> +#ifdef TARGET_WORDS_BIGENDIAN
-> +    big_endian = 1;
-> +#else
-> +    big_endian = 0;
-> +#endif
-> +
-> +    if (!kernel_filename && !qtest_enabled()) {
-> +        error_report("Guest image must be specified (using -kernel)");
-> +        exit(1);
-> +    }
-> +
-> +    if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-> +        asidx = ARMASIdx_S;
-> +    } else {
-> +        asidx = ARMASIdx_NS;
-> +    }
-> +    as = cpu_get_address_space(cs, asidx);
-> +
-> +    if (kernel_filename) {
-> +        image_size = load_elf_as(kernel_filename, NULL, NULL, &entry, &lowaddr,
-> +                                 NULL, big_endian, EM_ARM, 1, 0, as);
-> +        if (image_size < 0) {
-> +            image_size = load_image_targphys_as(kernel_filename, 0,
-> +                                                mem_size, as);
-> +            lowaddr = 0;
-> +        }
-> +        if (image_size < 0) {
-> +            error_report("Could not load kernel '%s'", kernel_filename);
-> +            exit(1);
-> +        }
-> +    }
-> +
-> +    /* CPU objects (unlike devices) are not automatically reset on system
-> +     * reset, so we must always register a handler to do so. Unlike
-> +     * A-profile CPUs, we don't need to do anything special in the
-> +     * handler to arrange that it starts correctly.
-> +     * This is arguably the wrong place to do this, but it matches the
-> +     * way A-profile does it. Note that this means that every M profile
-> +     * board must call this function!
-> +     */
-> +    qemu_register_reset(arm_m_profile_reset, cpu);
-> +}
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index 6b07666057..7405a1ec69 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -258,66 +258,6 @@ static const TypeInfo armv7m_info = {
->      .class_init = armv7m_class_init,
->  };
+>   * This code is licensed under the GPL version 2 or later.
+>   */
 >  
-> -static void armv7m_reset(void *opaque)
-> -{
-> -    ARMCPU *cpu = opaque;
+> -#ifndef HW_ARM_ARMV7M_H
+> -#define HW_ARM_ARMV7M_H
+> +#ifndef HW_ARM_ARM_M_PROFILE_H
+> +#define HW_ARM_ARM_M_PROFILE_H
+>  
+>  #include "hw/sysbus.h"
+>  #include "hw/intc/armv7m_nvic.h"
+> @@ -28,12 +30,17 @@ typedef struct {
+>      MemoryRegion *source_memory;
+>  } BitBandState;
+>  
+> -#define TYPE_ARMV7M "armv7m"
+> -#define ARMV7M(obj) OBJECT_CHECK(ARMv7MState, (obj), TYPE_ARMV7M)
 > -
-> -    cpu_reset(CPU(cpu));
+>  #define ARMV7M_NUM_BITBANDS 2
+>  
+> -/* ARMv7M container object.
+> +#define TYPE_ARM_M_PROFILE "arm-m-profile"
+> +#define ARM_M_PROFILE(obj) OBJECT_CHECK(ARMMProfileState, (obj), \
+> +                                        TYPE_ARM_M_PROFILE)
+> +#define ARM_M_PROFILE_CLASS(klass) \
+> +     OBJECT_CLASS_CHECK(ARMMProfileClass, (klass), TYPE_ARM_M_PROFILE)
+> +#define ARM_M_PROFILE_GET_CLASS(obj) \
+> +     OBJECT_GET_CLASS(ARMMProfileClass, (obj), TYPE_ARM_M_PROFILE)
+> +
+> +/* ARM M Profile container object.
+>   * + Unnamed GPIO input lines: external IRQ lines for the NVIC
+>   * + Named GPIO output SYSRESETREQ: signalled for guest AIRCR.SYSRESETREQ
+>   * + Property "cpu-type": CPU type to instantiate
+> @@ -44,7 +51,7 @@ typedef struct {
+>   * + Property "idau": IDAU interface (forwarded to CPU object)
+>   * + Property "init-svtor": secure VTOR reset value (forwarded to CPU object)
+>   */
+> -typedef struct ARMv7MState {
+> +typedef struct {
+>      /*< private >*/
+>      SysBusDevice parent_obj;
+>      /*< public >*/
+> @@ -63,6 +70,18 @@ typedef struct ARMv7MState {
+>      MemoryRegion *board_memory;
+>      Object *idau;
+>      uint32_t init_svtor;
+> -} ARMv7MState;
+> +} ARMMProfileState;
+> +
+> +typedef struct {
+> +    /*< private >*/
+> +    SysBusDeviceClass parent_class;
+> +
+> +    /*< public >*/
+> +    /**
+> +     * Initialize the CPU object, for example by setting properties, before it
+> +     * gets realized.  May be NULL.
+> +     */
+> +    void (*cpu_init)(ARMMProfileState *s, Error **errp);
+> +} ARMMProfileClass;
+>  
+>  #endif
+> diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+> index 2cddde55dd..8b672c2b6c 100644
+> --- a/include/hw/arm/iotkit.h
+> +++ b/include/hw/arm/iotkit.h
+> @@ -51,7 +51,7 @@
+>  #define IOTKIT_H
+>  
+>  #include "hw/sysbus.h"
+> -#include "hw/arm/armv7m.h"
+> +#include "hw/arm/arm-m-profile.h"
+>  #include "hw/misc/iotkit-secctl.h"
+>  #include "hw/misc/tz-ppc.h"
+>  #include "hw/misc/tz-mpc.h"
+> @@ -74,7 +74,7 @@ typedef struct IoTKit {
+>      SysBusDevice parent_obj;
+>  
+>      /*< public >*/
+> -    ARMv7MState armv7m;
+> +    ARMMProfileState armv7m;
+>      IoTKitSecCtl secctl;
+>      TZPPC apb_ppc0;
+>      TZPPC apb_ppc1;
+> diff --git a/include/hw/arm/msf2-soc.h b/include/hw/arm/msf2-soc.h
+> index 3cfe5c76ee..36d47db274 100644
+> --- a/include/hw/arm/msf2-soc.h
+> +++ b/include/hw/arm/msf2-soc.h
+> @@ -25,7 +25,7 @@
+>  #ifndef HW_ARM_MSF2_SOC_H
+>  #define HW_ARM_MSF2_SOC_H
+>  
+> -#include "hw/arm/armv7m.h"
+> +#include "hw/arm/arm-m-profile.h"
+>  #include "hw/timer/mss-timer.h"
+>  #include "hw/misc/msf2-sysreg.h"
+>  #include "hw/ssi/mss-spi.h"
+> @@ -48,7 +48,7 @@ typedef struct MSF2State {
+>      SysBusDevice parent_obj;
+>      /*< public >*/
+>  
+> -    ARMv7MState armv7m;
+> +    ARMMProfileState armv7m;
+>  
+>      char *cpu_type;
+>      char *part_name;
+> diff --git a/include/hw/arm/stm32f205_soc.h b/include/hw/arm/stm32f205_soc.h
+> index 922a733f88..03b2e0a79d 100644
+> --- a/include/hw/arm/stm32f205_soc.h
+> +++ b/include/hw/arm/stm32f205_soc.h
+> @@ -31,7 +31,7 @@
+>  #include "hw/adc/stm32f2xx_adc.h"
+>  #include "hw/or-irq.h"
+>  #include "hw/ssi/stm32f2xx_spi.h"
+> -#include "hw/arm/armv7m.h"
+> +#include "hw/arm/arm-m-profile.h"
+>  
+>  #define TYPE_STM32F205_SOC "stm32f205-soc"
+>  #define STM32F205_SOC(obj) \
+> @@ -54,7 +54,7 @@ typedef struct STM32F205State {
+>  
+>      char *cpu_type;
+>  
+> -    ARMv7MState armv7m;
+> +    ARMMProfileState armv7m;
+>  
+>      STM32F2XXSyscfgState syscfg;
+>      STM32F2XXUsartState usart[STM_NUM_USARTS];
+> diff --git a/hw/arm/arm-m-profile.c b/hw/arm/arm-m-profile.c
+> index 262706ed62..b7dd2370d4 100644
+> --- a/hw/arm/arm-m-profile.c
+> +++ b/hw/arm/arm-m-profile.c
+> @@ -10,6 +10,8 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "hw/arm/arm-m-profile.h"
+> +#include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+>  #include "hw/sysbus.h"
+> @@ -20,6 +22,244 @@
+>  #include "qemu/error-report.h"
+>  #include "exec/address-spaces.h"
+>  
+> +/* Bitbanded IO.  Each word corresponds to a single bit.  */
+> +
+> +/* Get the byte address of the real memory for a bitband access.  */
+> +static inline hwaddr bitband_addr(BitBandState *s, hwaddr offset)
+> +{
+> +    return s->base | (offset & 0x1ffffff) >> 5;
+> +}
+> +
+> +static MemTxResult bitband_read(void *opaque, hwaddr offset,
+> +                                uint64_t *data, unsigned size, MemTxAttrs attrs)
+> +{
+> +    BitBandState *s = opaque;
+> +    uint8_t buf[4];
+> +    MemTxResult res;
+> +    int bitpos, bit;
+> +    hwaddr addr;
+> +
+> +    assert(size <= 4);
+> +
+> +    /* Find address in underlying memory and round down to multiple of size */
+> +    addr = bitband_addr(s, offset) & (-size);
+> +    res = address_space_read(&s->source_as, addr, attrs, buf, size);
+> +    if (res) {
+> +        return res;
+> +    }
+> +    /* Bit position in the N bytes read... */
+> +    bitpos = (offset >> 2) & ((size * 8) - 1);
+> +    /* ...converted to byte in buffer and bit in byte */
+> +    bit = (buf[bitpos >> 3] >> (bitpos & 7)) & 1;
+> +    *data = bit;
+> +    return MEMTX_OK;
+> +}
+> +
+> +static MemTxResult bitband_write(void *opaque, hwaddr offset, uint64_t value,
+> +                                 unsigned size, MemTxAttrs attrs)
+> +{
+> +    BitBandState *s = opaque;
+> +    uint8_t buf[4];
+> +    MemTxResult res;
+> +    int bitpos, bit;
+> +    hwaddr addr;
+> +
+> +    assert(size <= 4);
+> +
+> +    /* Find address in underlying memory and round down to multiple of size */
+> +    addr = bitband_addr(s, offset) & (-size);
+> +    res = address_space_read(&s->source_as, addr, attrs, buf, size);
+> +    if (res) {
+> +        return res;
+> +    }
+> +    /* Bit position in the N bytes read... */
+> +    bitpos = (offset >> 2) & ((size * 8) - 1);
+> +    /* ...converted to byte in buffer and bit in byte */
+> +    bit = 1 << (bitpos & 7);
+> +    if (value & 1) {
+> +        buf[bitpos >> 3] |= bit;
+> +    } else {
+> +        buf[bitpos >> 3] &= ~bit;
+> +    }
+> +    return address_space_write(&s->source_as, addr, attrs, buf, size);
+> +}
+> +
+> +static const MemoryRegionOps bitband_ops = {
+> +    .read_with_attrs = bitband_read,
+> +    .write_with_attrs = bitband_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .impl.min_access_size = 1,
+> +    .impl.max_access_size = 4,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void bitband_init(Object *obj)
+> +{
+> +    BitBandState *s = BITBAND(obj);
+> +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &bitband_ops, s,
+> +                          "bitband", 0x02000000);
+> +    sysbus_init_mmio(dev, &s->iomem);
+> +}
+> +
+> +static void bitband_realize(DeviceState *dev, Error **errp)
+> +{
+> +    BitBandState *s = BITBAND(dev);
+> +
+> +    if (!s->source_memory) {
+> +        error_setg(errp, "source-memory property not set");
+> +        return;
+> +    }
+> +
+> +    address_space_init(&s->source_as, s->source_memory, "bitband-source");
+> +}
+> +
+> +/* Board init.  */
+> +
+> +static const hwaddr bitband_input_addr[ARMV7M_NUM_BITBANDS] = {
+> +    0x20000000, 0x40000000
+> +};
+> +
+> +static const hwaddr bitband_output_addr[ARMV7M_NUM_BITBANDS] = {
+> +    0x22000000, 0x42000000
+> +};
+> +
+> +static void arm_m_profile_instance_init(Object *obj)
+> +{
+> +    ARMMProfileState *s = ARM_M_PROFILE(obj);
+> +    int i;
+> +
+> +    /* Can't init the cpu here, we don't yet know which model to use */
+> +
+> +    memory_region_init(&s->container, obj, "arm-m-profile-container", UINT64_MAX);
+> +
+> +    sysbus_init_child_obj(obj, "nvnic", &s->nvic, sizeof(s->nvic), TYPE_NVIC);
+> +    object_property_add_alias(obj, "num-irq",
+> +                              OBJECT(&s->nvic), "num-irq", &error_abort);
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+> +        sysbus_init_child_obj(obj, "bitband[*]", &s->bitband[i],
+> +                              sizeof(s->bitband[i]), TYPE_BITBAND);
+> +    }
+> +}
+> +
+> +static void arm_m_profile_realize(DeviceState *dev, Error **errp)
+> +{
+> +    ARMMProfileState *s = ARM_M_PROFILE(dev);
+> +    SysBusDevice *sbd;
+> +    Error *err = NULL;
+> +    int i;
+> +
+> +    if (!s->board_memory) {
+> +        error_setg(errp, "memory property was not set");
+> +        return;
+> +    }
+> +
+> +    memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
+> +
+> +    s->cpu = ARM_CPU(object_new(s->cpu_type));
+> +
+> +    object_property_set_link(OBJECT(s->cpu), OBJECT(&s->container), "memory",
+> +                             &error_abort);
+> +    if (object_property_find(OBJECT(s->cpu), "idau", NULL)) {
+> +        object_property_set_link(OBJECT(s->cpu), s->idau, "idau", &err);
+> +        if (err != NULL) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +    }
+> +    if (object_property_find(OBJECT(s->cpu), "init-svtor", NULL)) {
+> +        object_property_set_uint(OBJECT(s->cpu), s->init_svtor,
+> +                                 "init-svtor", &err);
+> +        if (err != NULL) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +    }
+> +
+> +    /* Tell the CPU where the NVIC is; it will fail realize if it doesn't
+> +     * have one.
+> +     */
+> +    s->cpu->env.nvic = &s->nvic;
+> +
+> +    object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    /* Note that we must realize the NVIC after the CPU */
+> +    object_property_set_bool(OBJECT(&s->nvic), true, "realized", &err);
+> +    if (err != NULL) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    /* Alias the NVIC's input and output GPIOs as our own so the board
+> +     * code can wire them up. (We do this in realize because the
+> +     * NVIC doesn't create the input GPIO array until realize.)
+> +     */
+> +    qdev_pass_gpios(DEVICE(&s->nvic), dev, NULL);
+> +    qdev_pass_gpios(DEVICE(&s->nvic), dev, "SYSRESETREQ");
+> +
+> +    /* Wire the NVIC up to the CPU */
+> +    sbd = SYS_BUS_DEVICE(&s->nvic);
+> +    sysbus_connect_irq(sbd, 0,
+> +                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
+> +
+> +    memory_region_add_subregion(&s->container, 0xe000e000,
+> +                                sysbus_mmio_get_region(sbd, 0));
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+> +        Object *obj = OBJECT(&s->bitband[i]);
+> +        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+> +
+> +        object_property_set_int(obj, bitband_input_addr[i], "base", &err);
+> +        if (err != NULL) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +        object_property_set_link(obj, OBJECT(s->board_memory),
+> +                                 "source-memory", &error_abort);
+> +        object_property_set_bool(obj, true, "realized", &err);
+> +        if (err != NULL) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +
+> +        memory_region_add_subregion(&s->container, bitband_output_addr[i],
+> +                                    sysbus_mmio_get_region(sbd, 0));
+> +    }
+> +}
+> +
+> +static Property arm_m_profile_properties[] = {
+> +    DEFINE_PROP_STRING("cpu-type", ARMMProfileState, cpu_type),
+> +    DEFINE_PROP_LINK("memory", ARMMProfileState, board_memory,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+> +    DEFINE_PROP_LINK("idau", ARMMProfileState, idau,
+> +                     TYPE_IDAU_INTERFACE, Object *),
+> +    DEFINE_PROP_UINT32("init-svtor", ARMMProfileState, init_svtor, 0),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void arm_m_profile_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = arm_m_profile_realize;
+> +    dc->props = arm_m_profile_properties;
+> +}
+> +
+> +static const TypeInfo arm_m_profile_info = {
+> +    .name = TYPE_ARM_M_PROFILE,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(ARMMProfileState),
+> +    .instance_init = arm_m_profile_instance_init,
+> +    .class_init = arm_m_profile_class_init,
+> +};
+> +
+>  static void arm_m_profile_reset(void *opaque)
+>  {
+>      ARMCPU *cpu = opaque;
+> @@ -79,3 +319,34 @@ void arm_m_profile_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem
+>       */
+>      qemu_register_reset(arm_m_profile_reset, cpu);
+>  }
+> +
+> +static Property bitband_properties[] = {
+> +    DEFINE_PROP_UINT32("base", BitBandState, base, 0),
+> +    DEFINE_PROP_LINK("source-memory", BitBandState, source_memory,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void bitband_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = bitband_realize;
+> +    dc->props = bitband_properties;
+> +}
+> +
+> +static const TypeInfo bitband_info = {
+> +    .name          = TYPE_BITBAND,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(BitBandState),
+> +    .instance_init = bitband_init,
+> +    .class_init    = bitband_class_init,
+> +};
+> +
+> +static void arm_m_profile_register_types(void)
+> +{
+> +    type_register_static(&bitband_info);
+> +    type_register_static(&arm_m_profile_info);
+> +}
+> +
+> +type_init(arm_m_profile_register_types)
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> deleted file mode 100644
+> index 7405a1ec69..0000000000
+> --- a/hw/arm/armv7m.c
+> +++ /dev/null
+> @@ -1,290 +0,0 @@
+> -/*
+> - * ARMV7M System emulation.
+> - *
+> - * Copyright (c) 2006-2007 CodeSourcery.
+> - * Written by Paul Brook
+> - *
+> - * This code is licensed under the GPL.
+> - */
+> -
+> -#include "qemu/osdep.h"
+> -#include "hw/arm/armv7m.h"
+> -#include "qapi/error.h"
+> -#include "qemu-common.h"
+> -#include "cpu.h"
+> -#include "hw/sysbus.h"
+> -#include "hw/arm/arm.h"
+> -#include "hw/loader.h"
+> -#include "elf.h"
+> -#include "sysemu/qtest.h"
+> -#include "qemu/error-report.h"
+> -#include "exec/address-spaces.h"
+> -#include "target/arm/idau.h"
+> -
+> -/* Bitbanded IO.  Each word corresponds to a single bit.  */
+> -
+> -/* Get the byte address of the real memory for a bitband access.  */
+> -static inline hwaddr bitband_addr(BitBandState *s, hwaddr offset)
+> -{
+> -    return s->base | (offset & 0x1ffffff) >> 5;
 > -}
 > -
-> -void armv7m_load_kernel(ARMCPU *cpu, const char *kernel_filename, int mem_size)
+> -static MemTxResult bitband_read(void *opaque, hwaddr offset,
+> -                                uint64_t *data, unsigned size, MemTxAttrs attrs)
 > -{
-> -    int image_size;
-> -    uint64_t entry;
-> -    uint64_t lowaddr;
-> -    int big_endian;
-> -    AddressSpace *as;
-> -    int asidx;
-> -    CPUState *cs = CPU(cpu);
+> -    BitBandState *s = opaque;
+> -    uint8_t buf[4];
+> -    MemTxResult res;
+> -    int bitpos, bit;
+> -    hwaddr addr;
 > -
-> -#ifdef TARGET_WORDS_BIGENDIAN
-> -    big_endian = 1;
-> -#else
-> -    big_endian = 0;
-> -#endif
+> -    assert(size <= 4);
 > -
-> -    if (!kernel_filename && !qtest_enabled()) {
-> -        error_report("Guest image must be specified (using -kernel)");
-> -        exit(1);
+> -    /* Find address in underlying memory and round down to multiple of size */
+> -    addr = bitband_addr(s, offset) & (-size);
+> -    res = address_space_read(&s->source_as, addr, attrs, buf, size);
+> -    if (res) {
+> -        return res;
 > -    }
+> -    /* Bit position in the N bytes read... */
+> -    bitpos = (offset >> 2) & ((size * 8) - 1);
+> -    /* ...converted to byte in buffer and bit in byte */
+> -    bit = (buf[bitpos >> 3] >> (bitpos & 7)) & 1;
+> -    *data = bit;
+> -    return MEMTX_OK;
+> -}
 > -
-> -    if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-> -        asidx = ARMASIdx_S;
+> -static MemTxResult bitband_write(void *opaque, hwaddr offset, uint64_t value,
+> -                                 unsigned size, MemTxAttrs attrs)
+> -{
+> -    BitBandState *s = opaque;
+> -    uint8_t buf[4];
+> -    MemTxResult res;
+> -    int bitpos, bit;
+> -    hwaddr addr;
+> -
+> -    assert(size <= 4);
+> -
+> -    /* Find address in underlying memory and round down to multiple of size */
+> -    addr = bitband_addr(s, offset) & (-size);
+> -    res = address_space_read(&s->source_as, addr, attrs, buf, size);
+> -    if (res) {
+> -        return res;
+> -    }
+> -    /* Bit position in the N bytes read... */
+> -    bitpos = (offset >> 2) & ((size * 8) - 1);
+> -    /* ...converted to byte in buffer and bit in byte */
+> -    bit = 1 << (bitpos & 7);
+> -    if (value & 1) {
+> -        buf[bitpos >> 3] |= bit;
 > -    } else {
-> -        asidx = ARMASIdx_NS;
+> -        buf[bitpos >> 3] &= ~bit;
 > -    }
-> -    as = cpu_get_address_space(cs, asidx);
-> -
-> -    if (kernel_filename) {
-> -        image_size = load_elf_as(kernel_filename, NULL, NULL, &entry, &lowaddr,
-> -                                 NULL, big_endian, EM_ARM, 1, 0, as);
-> -        if (image_size < 0) {
-> -            image_size = load_image_targphys_as(kernel_filename, 0,
-> -                                                mem_size, as);
-> -            lowaddr = 0;
-> -        }
-> -        if (image_size < 0) {
-> -            error_report("Could not load kernel '%s'", kernel_filename);
-> -            exit(1);
-> -        }
-> -    }
-> -
-> -    /* CPU objects (unlike devices) are not automatically reset on system
-> -     * reset, so we must always register a handler to do so. Unlike
-> -     * A-profile CPUs, we don't need to do anything special in the
-> -     * handler to arrange that it starts correctly.
-> -     * This is arguably the wrong place to do this, but it matches the
-> -     * way A-profile does it. Note that this means that every M profile
-> -     * board must call this function!
-> -     */
-> -    qemu_register_reset(armv7m_reset, cpu);
+> -    return address_space_write(&s->source_as, addr, attrs, buf, size);
 > -}
 > -
->  static Property bitband_properties[] = {
->      DEFINE_PROP_UINT32("base", BitBandState, base, 0),
->      DEFINE_PROP_LINK("source-memory", BitBandState, source_memory,
+> -static const MemoryRegionOps bitband_ops = {
+> -    .read_with_attrs = bitband_read,
+> -    .write_with_attrs = bitband_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> -    .impl.min_access_size = 1,
+> -    .impl.max_access_size = 4,
+> -    .valid.min_access_size = 1,
+> -    .valid.max_access_size = 4,
+> -};
+> -
+> -static void bitband_init(Object *obj)
+> -{
+> -    BitBandState *s = BITBAND(obj);
+> -    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+> -
+> -    memory_region_init_io(&s->iomem, obj, &bitband_ops, s,
+> -                          "bitband", 0x02000000);
+> -    sysbus_init_mmio(dev, &s->iomem);
+> -}
+> -
+> -static void bitband_realize(DeviceState *dev, Error **errp)
+> -{
+> -    BitBandState *s = BITBAND(dev);
+> -
+> -    if (!s->source_memory) {
+> -        error_setg(errp, "source-memory property not set");
+> -        return;
+> -    }
+> -
+> -    address_space_init(&s->source_as, s->source_memory, "bitband-source");
+> -}
+> -
+> -/* Board init.  */
+> -
+> -static const hwaddr bitband_input_addr[ARMV7M_NUM_BITBANDS] = {
+> -    0x20000000, 0x40000000
+> -};
+> -
+> -static const hwaddr bitband_output_addr[ARMV7M_NUM_BITBANDS] = {
+> -    0x22000000, 0x42000000
+> -};
+> -
+> -static void armv7m_instance_init(Object *obj)
+> -{
+> -    ARMv7MState *s = ARMV7M(obj);
+> -    int i;
+> -
+> -    /* Can't init the cpu here, we don't yet know which model to use */
+> -
+> -    memory_region_init(&s->container, obj, "armv7m-container", UINT64_MAX);
+> -
+> -    sysbus_init_child_obj(obj, "nvnic", &s->nvic, sizeof(s->nvic), TYPE_NVIC);
+> -    object_property_add_alias(obj, "num-irq",
+> -                              OBJECT(&s->nvic), "num-irq", &error_abort);
+> -
+> -    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+> -        sysbus_init_child_obj(obj, "bitband[*]", &s->bitband[i],
+> -                              sizeof(s->bitband[i]), TYPE_BITBAND);
+> -    }
+> -}
+> -
+> -static void armv7m_realize(DeviceState *dev, Error **errp)
+> -{
+> -    ARMv7MState *s = ARMV7M(dev);
+> -    SysBusDevice *sbd;
+> -    Error *err = NULL;
+> -    int i;
+> -
+> -    if (!s->board_memory) {
+> -        error_setg(errp, "memory property was not set");
+> -        return;
+> -    }
+> -
+> -    memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
+> -
+> -    s->cpu = ARM_CPU(object_new(s->cpu_type));
+> -
+> -    object_property_set_link(OBJECT(s->cpu), OBJECT(&s->container), "memory",
+> -                             &error_abort);
+> -    if (object_property_find(OBJECT(s->cpu), "idau", NULL)) {
+> -        object_property_set_link(OBJECT(s->cpu), s->idau, "idau", &err);
+> -        if (err != NULL) {
+> -            error_propagate(errp, err);
+> -            return;
+> -        }
+> -    }
+> -    if (object_property_find(OBJECT(s->cpu), "init-svtor", NULL)) {
+> -        object_property_set_uint(OBJECT(s->cpu), s->init_svtor,
+> -                                 "init-svtor", &err);
+> -        if (err != NULL) {
+> -            error_propagate(errp, err);
+> -            return;
+> -        }
+> -    }
+> -
+> -    /* Tell the CPU where the NVIC is; it will fail realize if it doesn't
+> -     * have one.
+> -     */
+> -    s->cpu->env.nvic = &s->nvic;
+> -
+> -    object_property_set_bool(OBJECT(s->cpu), true, "realized", &err);
+> -    if (err != NULL) {
+> -        error_propagate(errp, err);
+> -        return;
+> -    }
+> -
+> -    /* Note that we must realize the NVIC after the CPU */
+> -    object_property_set_bool(OBJECT(&s->nvic), true, "realized", &err);
+> -    if (err != NULL) {
+> -        error_propagate(errp, err);
+> -        return;
+> -    }
+> -
+> -    /* Alias the NVIC's input and output GPIOs as our own so the board
+> -     * code can wire them up. (We do this in realize because the
+> -     * NVIC doesn't create the input GPIO array until realize.)
+> -     */
+> -    qdev_pass_gpios(DEVICE(&s->nvic), dev, NULL);
+> -    qdev_pass_gpios(DEVICE(&s->nvic), dev, "SYSRESETREQ");
+> -
+> -    /* Wire the NVIC up to the CPU */
+> -    sbd = SYS_BUS_DEVICE(&s->nvic);
+> -    sysbus_connect_irq(sbd, 0,
+> -                       qdev_get_gpio_in(DEVICE(s->cpu), ARM_CPU_IRQ));
+> -
+> -    memory_region_add_subregion(&s->container, 0xe000e000,
+> -                                sysbus_mmio_get_region(sbd, 0));
+> -
+> -    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+> -        Object *obj = OBJECT(&s->bitband[i]);
+> -        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+> -
+> -        object_property_set_int(obj, bitband_input_addr[i], "base", &err);
+> -        if (err != NULL) {
+> -            error_propagate(errp, err);
+> -            return;
+> -        }
+> -        object_property_set_link(obj, OBJECT(s->board_memory),
+> -                                 "source-memory", &error_abort);
+> -        object_property_set_bool(obj, true, "realized", &err);
+> -        if (err != NULL) {
+> -            error_propagate(errp, err);
+> -            return;
+> -        }
+> -
+> -        memory_region_add_subregion(&s->container, bitband_output_addr[i],
+> -                                    sysbus_mmio_get_region(sbd, 0));
+> -    }
+> -}
+> -
+> -static Property armv7m_properties[] = {
+> -    DEFINE_PROP_STRING("cpu-type", ARMv7MState, cpu_type),
+> -    DEFINE_PROP_LINK("memory", ARMv7MState, board_memory, TYPE_MEMORY_REGION,
+> -                     MemoryRegion *),
+> -    DEFINE_PROP_LINK("idau", ARMv7MState, idau, TYPE_IDAU_INTERFACE, Object *),
+> -    DEFINE_PROP_UINT32("init-svtor", ARMv7MState, init_svtor, 0),
+> -    DEFINE_PROP_END_OF_LIST(),
+> -};
+> -
+> -static void armv7m_class_init(ObjectClass *klass, void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -
+> -    dc->realize = armv7m_realize;
+> -    dc->props = armv7m_properties;
+> -}
+> -
+> -static const TypeInfo armv7m_info = {
+> -    .name = TYPE_ARMV7M,
+> -    .parent = TYPE_SYS_BUS_DEVICE,
+> -    .instance_size = sizeof(ARMv7MState),
+> -    .instance_init = armv7m_instance_init,
+> -    .class_init = armv7m_class_init,
+> -};
+> -
+> -static Property bitband_properties[] = {
+> -    DEFINE_PROP_UINT32("base", BitBandState, base, 0),
+> -    DEFINE_PROP_LINK("source-memory", BitBandState, source_memory,
+> -                     TYPE_MEMORY_REGION, MemoryRegion *),
+> -    DEFINE_PROP_END_OF_LIST(),
+> -};
+> -
+> -static void bitband_class_init(ObjectClass *klass, void *data)
+> -{
+> -    DeviceClass *dc = DEVICE_CLASS(klass);
+> -
+> -    dc->realize = bitband_realize;
+> -    dc->props = bitband_properties;
+> -}
+> -
+> -static const TypeInfo bitband_info = {
+> -    .name          = TYPE_BITBAND,
+> -    .parent        = TYPE_SYS_BUS_DEVICE,
+> -    .instance_size = sizeof(BitBandState),
+> -    .instance_init = bitband_init,
+> -    .class_init    = bitband_class_init,
+> -};
+> -
+> -static void armv7m_register_types(void)
+> -{
+> -    type_register_static(&bitband_info);
+> -    type_register_static(&armv7m_info);
+> -}
+> -
+> -type_init(armv7m_register_types)
+> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+> index c76d3ed743..bdf854c8b2 100644
+> --- a/hw/arm/iotkit.c
+> +++ b/hw/arm/iotkit.c
+> @@ -111,7 +111,7 @@ static void iotkit_init(Object *obj)
+>      memory_region_init(&s->container, obj, "iotkit-container", UINT64_MAX);
+>  
+>      sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
+> -                          TYPE_ARMV7M);
+> +                          TYPE_ARM_M_PROFILE);
+>      qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type",
+>                           ARM_CPU_TYPE_NAME("cortex-m33"));
+>  
 > diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 22180c56fb..af10ee0cc9 100644
+> index af10ee0cc9..114632c94b 100644
 > --- a/hw/arm/mps2-tz.c
 > +++ b/hw/arm/mps2-tz.c
-> @@ -487,7 +487,8 @@ static void mps2tz_common_init(MachineState *machine)
->  
->      create_unimplemented_device("FPGA NS PC", 0x48007000, 0x1000);
->  
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0x400000);
-> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                              0x400000);
->  }
->  
->  static void mps2tz_class_init(ObjectClass *oc, void *data)
+> @@ -34,7 +34,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/arm/arm.h"
+> -#include "hw/arm/armv7m.h"
+>  #include "hw/or-irq.h"
+>  #include "hw/boards.h"
+>  #include "exec/address-spaces.h"
 > diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index c3946da317..bcc7070104 100644
+> index bcc7070104..912e1297d5 100644
 > --- a/hw/arm/mps2.c
 > +++ b/hw/arm/mps2.c
-> @@ -315,8 +315,8 @@ static void mps2_common_init(MachineState *machine)
+> @@ -26,7 +26,7 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/arm/arm.h"
+> -#include "hw/arm/armv7m.h"
+> +#include "hw/arm/arm-m-profile.h"
+>  #include "hw/or-irq.h"
+>  #include "hw/boards.h"
+>  #include "exec/address-spaces.h"
+> @@ -52,7 +52,7 @@ typedef struct {
+>  typedef struct {
+>      MachineState parent;
 >  
->      system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> -    ARMv7MState armv7m;
+> +    ARMMProfileState armv7m;
+>      MemoryRegion psram;
+>      MemoryRegion ssram1;
+>      MemoryRegion ssram1_m;
+> @@ -172,7 +172,7 @@ static void mps2_common_init(MachineState *machine)
+>          g_assert_not_reached();
+>      }
 >  
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       0x400000);
-> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                              0x400000);
->  }
+> -    object_initialize(&mms->armv7m, sizeof(mms->armv7m), TYPE_ARMV7M);
+> +    object_initialize(&mms->armv7m, sizeof(mms->armv7m), TYPE_ARM_M_PROFILE);
+>      armv7m = DEVICE(&mms->armv7m);
+>      qdev_set_parent_bus(armv7m, sysbus_get_default());
+>      switch (mmc->fpga_type) {
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index dbefade644..09cdc61f44 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -69,7 +69,7 @@ static void m2sxxx_soc_initfn(Object *obj)
+>      int i;
 >  
->  static void mps2_class_init(ObjectClass *oc, void *data)
-> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-> index 2432b5e935..cb21ced472 100644
-> --- a/hw/arm/msf2-som.c
-> +++ b/hw/arm/msf2-som.c
-> @@ -91,8 +91,8 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
->      cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
+>      sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
+> -                          TYPE_ARMV7M);
+> +                          TYPE_ARM_M_PROFILE);
 >  
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       soc->envm_size);
-> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                              soc->envm_size);
->  }
->  
->  static void emcraft_sf2_machine_init(MachineClass *mc)
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index f936017d4a..e18d377f94 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -37,8 +37,8 @@ static void netduino2_init(MachineState *machine)
->      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
->      object_property_set_bool(OBJECT(dev), true, "realized", &error_fatal);
->  
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> -                       FLASH_SIZE);
-> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +                              FLASH_SIZE);
->  }
->  
->  static void netduino2_machine_init(MachineClass *mc)
+>      sysbus_init_child_obj(obj, "sysreg", &s->sysreg, sizeof(s->sysreg),
+>                            TYPE_MSF2_SYSREG);
 > diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index dc521b4a5a..68e52367c0 100644
+> index 68e52367c0..42785f5bd1 100644
 > --- a/hw/arm/stellaris.c
 > +++ b/hw/arm/stellaris.c
-> @@ -1440,7 +1440,8 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
->      create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
->      create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
+> @@ -20,7 +20,7 @@
+>  #include "qemu/log.h"
+>  #include "exec/address-spaces.h"
+>  #include "sysemu/sysemu.h"
+> -#include "hw/arm/armv7m.h"
+> +#include "hw/arm/arm-m-profile.h"
+>  #include "hw/char/pl011.h"
+>  #include "hw/misc/unimp.h"
+>  #include "cpu.h"
+> @@ -1301,7 +1301,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+>                             &error_fatal);
+>      memory_region_add_subregion(system_memory, 0x20000000, sram);
 >  
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, flash_size);
-> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename,
-> +                              flash_size);
->  }
+> -    nvic = qdev_create(NULL, TYPE_ARMV7M);
+> +    nvic = qdev_create(NULL, TYPE_ARM_M_PROFILE);
+>      qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
+>      qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
+>      object_property_set_link(OBJECT(nvic), OBJECT(get_system_memory()),
+> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+> index c486d06a8b..7de1474ade 100644
+> --- a/hw/arm/stm32f205_soc.c
+> +++ b/hw/arm/stm32f205_soc.c
+> @@ -50,7 +50,7 @@ static void stm32f205_soc_initfn(Object *obj)
+>      int i;
 >  
->  /* FIXME: Figure out how to generate these from stellaris_boards.  */
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 834d45cfaf..e704cb6e34 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -48,6 +48,7 @@ CONFIG_ARM11MPCORE=y
->  CONFIG_A9MPCORE=y
->  CONFIG_A15MPCORE=y
+>      sysbus_init_child_obj(obj, "armv7m", &s->armv7m, sizeof(s->armv7m),
+> -                          TYPE_ARMV7M);
+> +                          TYPE_ARM_M_PROFILE);
 >  
-> +CONFIG_ARM_M_PROFILE=y
->  CONFIG_ARM_V7M=y
->  CONFIG_NETDUINO2=y
->  
+>      sysbus_init_child_obj(obj, "syscfg", &s->syscfg, sizeof(s->syscfg),
+>                            TYPE_STM32F2XX_SYSCFG);
 > 

@@ -1,112 +1,112 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp507426wru;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp507434wru;
         Fri, 27 Jul 2018 02:55:51 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpebt3ASBx+oefkiodnGRKr2OUBYaWiTHksumZAODo9B7Pvzfkup94ULT3V1TRiLOHv4dpoB
-X-Received: by 2002:a37:1649:: with SMTP id g70-v6mr5018224qkh.137.1532685351242;
+X-Google-Smtp-Source: AAOMgpcvhKjQ66WcUGRl0UiaelHM0c6oBAlNi5yhc8x5fkzh/m9Xcg62fn8a/dHTRO1PtZoWNyKK
+X-Received: by 2002:a0c:9915:: with SMTP id h21-v6mr5022576qvd.122.1532685351828;
         Fri, 27 Jul 2018 02:55:51 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1532685351; cv=none;
         d=google.com; s=arc-20160816;
-        b=pzrFgmjSWPHENToY0igKTbycduOgYX0URvSNLTTfyXA8B/PuvNy41QS1jBfAGUn6t6
-         9wnO/fDkCqaaqd8Vhm7tcSbCdD8IzWufyNv8fjpC5fSrasTQP1CqwMX116HWn3fEhNpf
-         yCsU4zU8JfozSS1/lzNaDSI0UHm+/ig+Pt93+YPiAhUIS3L+yRi2OesU1WedphlA1pKv
-         zIoYREpeRNHZeyhGx/dxYn0xSZmMok5tOeEeZsx1QRboMsCPDWGycspX62QNGd3XJ8HO
-         M7ACFEAA3UFLw/z3wH1Cua77pTbNe02FvZNwxuBY0FYD9qCu4Eql9EfDsF34FsaEeoRw
-         vUGQ==
+        b=JS3MBrX/hzAa+oUwxkDV80YomQcwFpZAF7C6pKz49l1X2JU3WrKorbYjeaW9GaKjNV
+         X/SBbHrr6TqcEqJKV5fRT+NA0hlJvytzJweHW5ZnhxWNn+PBShpgM/JnpBlStOJ+QxZ1
+         y9S7I6kHdtFAvAgyyecEvT4n4QqoHXRLFyIRZeWSr5+Z5O5epBFk1TNCpGjWP1aX3Snq
+         9qrQ/JUGN6i/LHFaZv4iIXWw5EIxuv7MqcqUgLFHe9Fk+8D1HkoIBgfI2s2qw8S9SK7D
+         wYs11yhs0mMLA8+PZC0s+XJ47wKdyRCIMGgr1rtp9pQ+TZccuNBLEeGUXfVnMELvwlUo
+         r0aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature:arc-authentication-results;
-        bh=5rmhkdPNuELQl3KgmBVV5wWwjo1Pt3YjsTrFOqQaE10=;
-        b=l8MkvrL/Mm5N5QN7muPbhcjUBfUziAqH52hMj3mLIgze3f5uW+sVtY2P8kTaKbwLY+
-         c7ooL94Y6U7t9Tql1A+DjQIb7GEH2rY2U/oe8yWUSDRUXp2iid3kmkaydkr6VkJGjn+8
-         ZlOXDihpoXaROO0r50YakVFqczkk3wMdX0v5liedYSl6UwjwIfiMF9xtI0kStEbv7UA+
-         citM4N5d2d6QdsN3VE42MAfkWBIWl8gB5+qNlojymzvgrZseSAQXGFSa3OmomJjswuob
-         kXogk8lwgP2uz5xyRMAdEFKSPwpTjTQFoKy5Yj+MnPgHzRu8Jmhsl/EUr2ZK25qMBpv+
-         oP9A==
+        bh=nNrxfoed9V5fFXe97ynqqw2326dBSkO2U/NiqTTPr9I=;
+        b=cctqVT87ZCqiiiM/McsBxZgSoGEZNwFhbQre9ftZ5hE1TlV6CjUiktVQnkvzanLcUQ
+         vjGddaAIwMKW23sadwdHqFgXcxL+Wvzkf/8I+GFtD30ueXIK1C4J2ewzkUhjJ83orw1g
+         tqhrJubyEMaEb5Fbg773RYmTLn8SyTwiHFq8XNr+SQKyCR/oTruIWItQHmVUzhyLlgMJ
+         X3jj6FDucd6D2Fm0rKnjCFCM2csN510t+I7xYk8CX8xCWKE4f6An885KgUBHc7JgG80L
+         aO4F8BfbQzuTJudS8AdOy4gbCYGXC6+JwA99CUURla342v63EV+HYP89Nn5fCCBz+YYm
+         4jmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=7AjKhycw;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=qVEoA2GY;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=1m14VJX+;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=bHTXOqRH;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=IAqU9W61;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=IAqU9W61;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h48-v6si627312qta.340.2018.07.27.02.55.51
+        by mx.google.com with ESMTPS id 57-v6si3782631qtz.128.2018.07.27.02.55.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
         Fri, 27 Jul 2018 02:55:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=7AjKhycw;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=qVEoA2GY;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=1m14VJX+;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=bHTXOqRH;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=IAqU9W61;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=IAqU9W61;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40031 helo=lists.gnu.org)
+Received: from localhost ([::1]:40032 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fizTS-0004f6-LM
-	for alex.bennee@linaro.org; Fri, 27 Jul 2018 05:55:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58211)
+	id 1fizTT-0004gq-AR
+	for alex.bennee@linaro.org; Fri, 27 Jul 2018 05:55:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58099)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fizSg-0003ep-8q
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 05:55:06 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fizSZ-0006C6-Nc
+	(envelope-from <luc.michel@greensocs.com>) id 1fizSc-0003WC-Fx
 	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 05:55:02 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>) id 1fizSZ-0006AB-6O
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 05:54:58 -0400
 Received: from greensocs.com ([193.104.36.180]:47516)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fizSZ-00068b-BK; Fri, 27 Jul 2018 05:54:55 -0400
+	id 1fizSY-00068b-Ra; Fri, 27 Jul 2018 05:54:55 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 81649400DC8;
-	Fri, 27 Jul 2018 11:54:51 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id CE8BB443570;
+	Fri, 27 Jul 2018 11:54:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532685291;
-	bh=D8nOeM0hkgP3m8t/j+HxFvspboGSK9VoL5Iu0bUzWvE=;
+	s=mail; t=1532685286;
+	bh=21cmLP2brOwuMgaEtN0LAagVBK9JRr+/txf5bmVYiXk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=7AjKhycwAUjMZ0yNuH3kIcXvZRNNP74WFUMHvtETWe2GS5JbzQI0MmLHpV98OZwnF
-	Hcc76O5WMpiBRE5dPXk9UbFsEYoIfU4137AgLxMEE7tkI4kStUA80Qzb8HYzYaN9J7
-	2BOVCyENdDFTTz68rOJ3J6QmJ5k5kGdG80MrBJmI=
+	b=bHTXOqRHwEyZ43XuBBWPkIjiK5JLVYhpOIQvRet/rg3O7f6PfUqBeCZod2ZiZbwh/
+	ro5nazAyrZjjF9fxlVe1bfTcl8iP3Nd0ABmEsdA7cF2tSz5JmiT9Mjdx6vIfinIUSw
+	k7ucGdJOp/BlvnipGh5kG0fsAoiDWwyLlv/1se2M=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=qVEoA2GY;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=1m14VJX+
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=IAqU9W61;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=IAqU9W61
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rkv04sM-VRLO; Fri, 27 Jul 2018 11:54:50 +0200 (CEST)
+	with ESMTP id c6crNpTrM_Kz; Fri, 27 Jul 2018 11:54:46 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 2CC8F443572; Fri, 27 Jul 2018 11:54:49 +0200 (CEST)
+	id 828FB443555; Fri, 27 Jul 2018 11:54:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532685289;
-	bh=D8nOeM0hkgP3m8t/j+HxFvspboGSK9VoL5Iu0bUzWvE=;
+	s=mail; t=1532685285;
+	bh=21cmLP2brOwuMgaEtN0LAagVBK9JRr+/txf5bmVYiXk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=qVEoA2GYjlbIuVeU26aSpUuQq//eSJmvSx9lgnXC6kSxErpB3ItUqC2RWIG0WQd3X
-	yhBmGDxFqkE5Uudj9N731y4b+eYEdaLv17nMGiGS/XCisu5+NzkztDl7LyM+lNOzcn
-	9LKyMNWSatTBbgaBJBPMKNh4KIEfnv0h564F5Dog=
+	b=IAqU9W61LyUTf7iNWgVAAsAVjWo3bA/56Z06gNAQz5z6iFdhzNSA6tQaeZ6PCaPrU
+	ktGxbT7OCSM7AYwgZV3xxrVduBDeAgphx6+VpsB1WeCcaFiBVm9hAXhVDEktYEwk8F
+	4Gqb20kRb6/AQBMFRcM1f/NJdF1TI7KYQc0MWWjM=
 Received: from michell-laptop.bar.greensocs.com (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id AB854443485;
-	Fri, 27 Jul 2018 11:54:48 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 1A29D4434B9;
+	Fri, 27 Jul 2018 11:54:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532685288;
-	bh=D8nOeM0hkgP3m8t/j+HxFvspboGSK9VoL5Iu0bUzWvE=;
+	s=mail; t=1532685285;
+	bh=21cmLP2brOwuMgaEtN0LAagVBK9JRr+/txf5bmVYiXk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=1m14VJX+LEtX3SiEWcK1eWe75C19HvrbWw8ucreOBcZ22Z6MayUMOCx7PG4zd2Ruh
-	BzHQqhukUfYvOXDcX++mAyHtKG+5VDP2/P7bQzf9SHtQIny8pySdsIVtfCqXHVXmvD
-	wFQBXgrZ2b2s1d9s2tnF6y74JUynizIUaKAWyJRk=
+	b=IAqU9W61LyUTf7iNWgVAAsAVjWo3bA/56Z06gNAQz5z6iFdhzNSA6tQaeZ6PCaPrU
+	ktGxbT7OCSM7AYwgZV3xxrVduBDeAgphx6+VpsB1WeCcaFiBVm9hAXhVDEktYEwk8F
+	4Gqb20kRb6/AQBMFRcM1f/NJdF1TI7KYQc0MWWjM=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 27 Jul 2018 11:54:16 +0200
-Message-Id: <20180727095421.386-16-luc.michel@greensocs.com>
+Date: Fri, 27 Jul 2018 11:54:07 +0200
+Message-Id: <20180727095421.386-7-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180727095421.386-1-luc.michel@greensocs.com>
 References: <20180727095421.386-1-luc.michel@greensocs.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v5 15/20] intc/arm_gic: Implement the virtual
- interface registers
+Subject: [Qemu-arm] [PATCH v5 06/20] intc/arm_gic: Add virtual interface
+ register definitions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,312 +123,107 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, mark.burton@greensocs.com,
 	Jan Kiszka <jan.kiszka@web.de>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GwmlhZudlC/U
+X-TUID: ysiSsMtBHP91
 
-Implement the read and write functions for the virtual interface of the
-virtualization extensions in the GICv2.
-
-One mirror region per CPU is also created, which maps to that specific
-CPU id. This is required by the GIC architecture specification.
+Add the register definitions for the virtual interface of the GICv2.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gic.c | 235 +++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 233 insertions(+), 2 deletions(-)
+ hw/intc/gic_internal.h | 65 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 7ee2e6bcbb..6063196487 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -145,10 +145,28 @@ static void gic_update(GICState *s)
-         qemu_set_irq(s->parent_irq[cpu], irq_level);
-         qemu_set_irq(s->parent_fiq[cpu], fiq_level);
-     }
- }
+diff --git a/hw/intc/gic_internal.h b/hw/intc/gic_internal.h
+index c85427c8e3..1aa888a576 100644
+--- a/hw/intc/gic_internal.h
++++ b/hw/intc/gic_internal.h
+@@ -19,10 +19,11 @@
+  */
  
-+/* Return true if this LR is empty, i.e. the corresponding bit
-+ * in ELRSR is set.
-+ */
-+static inline bool gic_lr_entry_is_free(uint32_t entry)
-+{
-+    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
-+        && (GICH_LR_HW(entry) || !GICH_LR_EOI(entry));
-+}
-+
-+/* Return true if this LR should trigger an EOI maintenance interrupt, i.e. the
-+ * corrsponding bit in EISR is set.
-+ */
-+static inline bool gic_lr_entry_is_eoi(uint32_t entry)
-+{
-+    return (GICH_LR_STATE(entry) == GICH_LR_STATE_INVALID)
-+        && !GICH_LR_HW(entry) && GICH_LR_EOI(entry);
-+}
-+
- static void gic_set_irq_11mpcore(GICState *s, int irq, int level,
-                                  int cm, int target)
- {
-     if (level) {
-         GIC_DIST_SET_LEVEL(irq, cm);
-@@ -1570,10 +1588,204 @@ static MemTxResult gic_thisvcpu_write(void *opaque, hwaddr addr,
-     GICState *s = (GICState *)opaque;
+ #ifndef QEMU_ARM_GIC_INTERNAL_H
+ #define QEMU_ARM_GIC_INTERNAL_H
  
-     return gic_cpu_write(s, gic_get_current_vcpu(s), addr, value, attrs);
- }
++#include "hw/registerfields.h"
+ #include "hw/intc/arm_gic.h"
  
-+static uint32_t gic_compute_eisr(GICState *s, int cpu, int lr_start)
-+{
-+    int lr_idx;
-+    uint32_t ret = 0;
-+
-+    for (lr_idx = lr_start; lr_idx < s->num_lrs; lr_idx++) {
-+        uint32_t *entry = &s->h_lr[lr_idx][cpu];
-+        ret = deposit32(ret, lr_idx - lr_start, 1,
-+                        gic_lr_entry_is_eoi(*entry));
-+    }
-+
-+    return ret;
-+}
-+
-+static uint32_t gic_compute_elrsr(GICState *s, int cpu, int lr_start)
-+{
-+    int lr_idx;
-+    uint32_t ret = 0;
-+
-+    for (lr_idx = lr_start; lr_idx < s->num_lrs; lr_idx++) {
-+        uint32_t *entry = &s->h_lr[lr_idx][cpu];
-+        ret = deposit32(ret, lr_idx - lr_start, 1,
-+                        gic_lr_entry_is_free(*entry));
-+    }
-+
-+    return ret;
-+}
-+
-+static void gic_vmcr_write(GICState *s, uint32_t value, MemTxAttrs attrs)
-+{
-+    int vcpu = gic_get_current_vcpu(s);
-+    uint32_t ctlr;
-+    uint32_t abpr;
-+    uint32_t bpr;
-+    uint32_t prio_mask;
-+
-+    ctlr = FIELD_EX32(value, GICH_VMCR, VMCCtlr);
-+    abpr = FIELD_EX32(value, GICH_VMCR, VMABP);
-+    bpr = FIELD_EX32(value, GICH_VMCR, VMBP);
-+    prio_mask = FIELD_EX32(value, GICH_VMCR, VMPriMask) << 3;
-+
-+    gic_set_cpu_control(s, vcpu, ctlr, attrs);
-+    s->abpr[vcpu] = MAX(abpr, GIC_VIRT_MIN_ABPR);
-+    s->bpr[vcpu] = MAX(bpr, GIC_VIRT_MIN_BPR);
-+    gic_set_priority_mask(s, vcpu, prio_mask, attrs);
-+}
-+
-+static MemTxResult gic_hyp_read(void *opaque, int cpu, hwaddr addr,
-+                                uint64_t *data, MemTxAttrs attrs)
-+{
-+    GICState *s = ARM_GIC(opaque);
-+    int vcpu = cpu + GIC_NCPU;
-+
-+    switch (addr) {
-+    case A_GICH_HCR: /* Hypervisor Control */
-+        *data = s->h_hcr[cpu];
-+        break;
-+
-+    case A_GICH_VTR: /* VGIC Type */
-+        *data = FIELD_DP32(0, GICH_VTR, ListRegs, s->num_lrs - 1);
-+        *data = FIELD_DP32(*data, GICH_VTR, PREbits,
-+                           GIC_VIRT_MAX_GROUP_PRIO_BITS - 1);
-+        *data = FIELD_DP32(*data, GICH_VTR, PRIbits,
-+                           (7 - GIC_VIRT_MIN_BPR) - 1);
-+        break;
-+
-+    case A_GICH_VMCR: /* Virtual Machine Control */
-+        *data = FIELD_DP32(0, GICH_VMCR, VMCCtlr,
-+                           extract32(s->cpu_ctlr[vcpu], 0, 10));
-+        *data = FIELD_DP32(*data, GICH_VMCR, VMABP, s->abpr[vcpu]);
-+        *data = FIELD_DP32(*data, GICH_VMCR, VMBP, s->bpr[vcpu]);
-+        *data = FIELD_DP32(*data, GICH_VMCR, VMPriMask,
-+                           extract32(s->priority_mask[vcpu], 3, 5));
-+        break;
-+
-+    case A_GICH_MISR: /* Maintenance Interrupt Status */
-+        *data = s->h_misr[cpu];
-+        break;
-+
-+    case A_GICH_EISR0: /* End of Interrupt Status 0 and 1 */
-+    case A_GICH_EISR1:
-+        *data = gic_compute_eisr(s, cpu, (addr - A_GICH_EISR0) * 8);
-+        break;
-+
-+    case A_GICH_ELRSR0: /* Empty List Status 0 and 1 */
-+    case A_GICH_ELRSR1:
-+        *data = gic_compute_elrsr(s, cpu, (addr - A_GICH_ELRSR0) * 8);
-+        break;
-+
-+    case A_GICH_APR: /* Active Priorities */
-+        *data = s->h_apr[cpu];
-+        break;
-+
-+    case A_GICH_LR0 ... A_GICH_LR63: /* List Registers */
-+    {
-+        int lr_idx = (addr - A_GICH_LR0) / 4;
-+
-+        if (lr_idx > s->num_lrs) {
-+            *data = 0;
-+        } else {
-+            *data = s->h_lr[lr_idx][cpu];
-+        }
-+        break;
-+    }
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "gic_hyp_read: Bad offset %" HWADDR_PRIx "\n", addr);
-+        return MEMTX_OK;
-+    }
-+
-+    return MEMTX_OK;
-+}
-+
-+static MemTxResult gic_hyp_write(void *opaque, int cpu, hwaddr addr,
-+                                 uint64_t value, MemTxAttrs attrs)
-+{
-+    GICState *s = ARM_GIC(opaque);
-+    int vcpu = cpu + GIC_NCPU;
-+
-+    switch (addr) {
-+    case A_GICH_HCR: /* Hypervisor Control */
-+        s->h_hcr[cpu] = value & GICH_HCR_MASK;
-+        break;
-+
-+    case A_GICH_VMCR: /* Virtual Machine Control */
-+        gic_vmcr_write(s, value, attrs);
-+        break;
-+
-+    case A_GICH_APR: /* Active Priorities */
-+        s->h_apr[cpu] = value;
-+        s->running_priority[vcpu] = gic_get_prio_from_apr_bits(s, vcpu);
-+        break;
-+
-+    case A_GICH_LR0 ... A_GICH_LR63: /* List Registers */
-+    {
-+        int lr_idx = (addr - A_GICH_LR0) / 4;
-+
-+        if (lr_idx > s->num_lrs) {
-+            return MEMTX_OK;
-+        }
-+
-+        s->h_lr[lr_idx][cpu] = value & GICH_LR_MASK;
-+        break;
-+    }
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "gic_hyp_write: Bad offset %" HWADDR_PRIx "\n", addr);
-+        return MEMTX_OK;
-+    }
-+
-+    return MEMTX_OK;
-+}
-+
-+static MemTxResult gic_thiscpu_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
-+                                    unsigned size, MemTxAttrs attrs)
-+{
-+    GICState *s = (GICState *)opaque;
-+
-+    return gic_hyp_read(s, gic_get_current_cpu(s), addr, data, attrs);
-+}
-+
-+static MemTxResult gic_thiscpu_hyp_write(void *opaque, hwaddr addr,
-+                                     uint64_t value, unsigned size,
-+                                     MemTxAttrs attrs)
-+{
-+    GICState *s = (GICState *)opaque;
-+
-+    return gic_hyp_write(s, gic_get_current_cpu(s), addr, value, attrs);
-+}
-+
-+static MemTxResult gic_do_hyp_read(void *opaque, hwaddr addr, uint64_t *data,
-+                                    unsigned size, MemTxAttrs attrs)
-+{
-+    GICState **backref = (GICState **)opaque;
-+    GICState *s = *backref;
-+    int id = (backref - s->backref);
-+
-+    return gic_hyp_read(s, id, addr, data, attrs);
-+}
-+
-+static MemTxResult gic_do_hyp_write(void *opaque, hwaddr addr,
-+                                     uint64_t value, unsigned size,
-+                                     MemTxAttrs attrs)
-+{
-+    GICState **backref = (GICState **)opaque;
-+    GICState *s = *backref;
-+    int id = (backref - s->backref);
-+
-+    return gic_hyp_write(s, id + GIC_NCPU, addr, value, attrs);
-+
-+}
-+
- static const MemoryRegionOps gic_ops[2] = {
-     {
-         .read_with_attrs = gic_dist_read,
-         .write_with_attrs = gic_dist_write,
-         .endianness = DEVICE_NATIVE_ENDIAN,
-@@ -1591,21 +1803,27 @@ static const MemoryRegionOps gic_cpu_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
+ #define ALL_CPU_MASK ((unsigned)(((1 << GIC_NCPU) - 1)))
  
- static const MemoryRegionOps gic_virt_ops[2] = {
-     {
--        .read_with_attrs = NULL,
--        .write_with_attrs = NULL,
-+        .read_with_attrs = gic_thiscpu_hyp_read,
-+        .write_with_attrs = gic_thiscpu_hyp_write,
-         .endianness = DEVICE_NATIVE_ENDIAN,
-     },
-     {
-         .read_with_attrs = gic_thisvcpu_read,
-         .write_with_attrs = gic_thisvcpu_write,
-         .endianness = DEVICE_NATIVE_ENDIAN,
-     }
- };
+ #define GIC_BASE_IRQ 0
+@@ -62,10 +63,74 @@
+ #define GICC_CTLR_FIQ_EN     (1U << 3)
+ #define GICC_CTLR_CBPR       (1U << 4) /* GICv1: SBPR */
+ #define GICC_CTLR_EOIMODE    (1U << 9)
+ #define GICC_CTLR_EOIMODE_NS (1U << 10)
  
-+static const MemoryRegionOps gic_viface_ops = {
-+    .read_with_attrs = gic_do_hyp_read,
-+    .write_with_attrs = gic_do_hyp_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+};
++REG32(GICH_HCR, 0x0)
++    FIELD(GICH_HCR, EN, 0, 1)
++    FIELD(GICH_HCR, UIE, 1, 1)
++    FIELD(GICH_HCR, LRENPIE, 2, 1)
++    FIELD(GICH_HCR, NPIE, 3, 1)
++    FIELD(GICH_HCR, VGRP0EIE, 4, 1)
++    FIELD(GICH_HCR, VGRP0DIE, 5, 1)
++    FIELD(GICH_HCR, VGRP1EIE, 6, 1)
++    FIELD(GICH_HCR, VGRP1DIE, 7, 1)
++    FIELD(GICH_HCR, EOICount, 27, 5)
 +
- static void arm_gic_realize(DeviceState *dev, Error **errp)
- {
-     /* Device instance realize function for the GIC sysbus device */
-     int i;
-     GICState *s = ARM_GIC(dev);
-@@ -1643,10 +1861,23 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
-         s->backref[i] = s;
-         memory_region_init_io(&s->cpuiomem[i+1], OBJECT(s), &gic_cpu_ops,
-                               &s->backref[i], "gic_cpu", 0x100);
-         sysbus_init_mmio(sbd, &s->cpuiomem[i+1]);
-     }
++#define GICH_HCR_MASK \
++    (R_GICH_HCR_EN_MASK | R_GICH_HCR_UIE_MASK | \
++     R_GICH_HCR_LRENPIE_MASK | R_GICH_HCR_NPIE_MASK | \
++     R_GICH_HCR_VGRP0EIE_MASK | R_GICH_HCR_VGRP0DIE_MASK | \
++     R_GICH_HCR_VGRP1EIE_MASK | R_GICH_HCR_VGRP1DIE_MASK | \
++     R_GICH_HCR_EOICount_MASK)
 +
-+    /* Extra core-specific regions for virtual interfaces. This is required by
-+     * the GICv2 specification.
-+     */
-+    if (s->virt_extn) {
-+        for (i = 0; i < s->num_cpu; i++) {
-+            memory_region_init_io(&s->vifaceiomem[i + 1], OBJECT(s),
-+                                  &gic_viface_ops, &s->backref[i],
-+                                  "gic_viface", 0x1000);
-+            sysbus_init_mmio(sbd, &s->vifaceiomem[i + 1]);
-+        }
-+    }
++REG32(GICH_VTR, 0x4)
++    FIELD(GICH_VTR, ListRegs, 0, 6)
++    FIELD(GICH_VTR, PREbits, 26, 3)
++    FIELD(GICH_VTR, PRIbits, 29, 3)
 +
- }
- 
- static void arm_gic_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
++REG32(GICH_VMCR, 0x8)
++    FIELD(GICH_VMCR, VMCCtlr, 0, 10)
++    FIELD(GICH_VMCR, VMABP, 18, 3)
++    FIELD(GICH_VMCR, VMBP, 21, 3)
++    FIELD(GICH_VMCR, VMPriMask, 27, 5)
++
++REG32(GICH_MISR, 0x10)
++    FIELD(GICH_MISR, EOI, 0, 1)
++    FIELD(GICH_MISR, U, 1, 1)
++    FIELD(GICH_MISR, LRENP, 2, 1)
++    FIELD(GICH_MISR, NP, 3, 1)
++    FIELD(GICH_MISR, VGrp0E, 4, 1)
++    FIELD(GICH_MISR, VGrp0D, 5, 1)
++    FIELD(GICH_MISR, VGrp1E, 6, 1)
++    FIELD(GICH_MISR, VGrp1D, 7, 1)
++
++REG32(GICH_EISR0, 0x20)
++REG32(GICH_EISR1, 0x24)
++REG32(GICH_ELRSR0, 0x30)
++REG32(GICH_ELRSR1, 0x34)
++REG32(GICH_APR, 0xf0)
++
++REG32(GICH_LR0, 0x100)
++    FIELD(GICH_LR0, VirtualID, 0, 10)
++    FIELD(GICH_LR0, PhysicalID, 10, 10)
++    FIELD(GICH_LR0, CPUID, 10, 3)
++    FIELD(GICH_LR0, EOI, 19, 1)
++    FIELD(GICH_LR0, Priority, 23, 5)
++    FIELD(GICH_LR0, State, 28, 2)
++    FIELD(GICH_LR0, Grp1, 30, 1)
++    FIELD(GICH_LR0, HW, 31, 1)
++
++/* Last LR register */
++REG32(GICH_LR63, 0x1fc)
++
++#define GICH_LR_MASK \
++    (R_GICH_LR0_VirtualID_MASK | R_GICH_LR0_PhysicalID_MASK | \
++     R_GICH_LR0_CPUID_MASK | R_GICH_LR0_EOI_MASK | \
++     R_GICH_LR0_Priority_MASK | R_GICH_LR0_State_MASK | \
++     R_GICH_LR0_Grp1_MASK | R_GICH_LR0_HW_MASK)
++
+ /* Valid bits for GICC_CTLR for GICv1, v1 with security extensions,
+  * GICv2 and GICv2 with security extensions:
+  */
+ #define GICC_CTLR_V1_MASK    0x1
+ #define GICC_CTLR_V1_S_MASK  0x1f
 -- 
 2.18.0
 

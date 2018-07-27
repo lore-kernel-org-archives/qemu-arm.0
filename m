@@ -1,94 +1,140 @@
-Received: by 10.223.150.237 with SMTP id u100csp1783109wrb;
-        Sun, 5 Nov 2017 06:40:36 -0800 (PST)
-X-Google-Smtp-Source: ABhQp+TZOsp0CkB5VG6x9aVpKSDfnIrNkUyDyMOQ30MJc32YegSvU6PBcYD6/pDua8ccZ9oVamZG
-X-Received: by 10.129.158.208 with SMTP id v199mr8079852ywg.49.1509892836509;
-        Sun, 05 Nov 2017 06:40:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1509892836; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp942493wru;
+        Fri, 27 Jul 2018 10:13:45 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdB7u7S/SMuP3YI23zaepG7k+chyCrykcqnSvrbklK4dhmxfsJkxsTo6z2PzwrOKwMOg81d
+X-Received: by 2002:a37:b506:: with SMTP id e6-v6mr6838252qkf.255.1532711625290;
+        Fri, 27 Jul 2018 10:13:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532711625; cv=none;
         d=google.com; s=arc-20160816;
-        b=oDiDSu7WQkROAOALypMkVu2A7tY64xDTF7QC6XvPgmMg9SoD1UyhSx2Fy+at+6ooel
-         w7IKJaxOsil6M0XNbsOQwObKmvJyLvCDRWFzrs1IsFBiujJkayhGNdwVjnbbABQ1Oi2y
-         +Gaf0SVbcvOcE3bi53CXVo7EnYit4Csl9q5FgykkTUroK8P6D/PxCvcvdPpcKy6abkoF
-         gLT1P+92npm31Gen8g2HT6yZoVHsyYF7P/tpaN/aYGMWG0aryIKMhDELx1R8O8QCCUiD
-         5SjF3S8QOCzP+1fgeyAOtSLiZGXD573bmxf+pHjKNI+s7OFTzWMzz8MQlOl8Zhblinn3
-         Mnbw==
+        b=PLeEI9qEJ6cNnG/+Ew49faQCoiOrul1/BG4CX4wFtveUMZaWEr12zjfpODt/b4UJpp
+         bfY9w+pu5gCZP5kooECBST0ZBRtIV0rnqESgLAIa/IcGzmOgZsC+mwaFAktLqH2dhqU2
+         K7PAdZaNNyWIP2DiWBdEO90S7Fjj5kaCFkJOpfsBwTH9IZfQfFIUhbnjm02NEEk4NGda
+         WlZ+4u3eUKG7SSlP+8bdC4FoszPzfkY6oTVgpRPindQDHOOa6LtLAvnO05Q8iTvsj1GA
+         vS5TUwbptw+cvzBkQpYMAasbmu/EiqiOqLUbzi+X925EGDPEvYQaU7P9wuhEgsMGoMmW
+         Ol+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to
-         :arc-authentication-results;
-        bh=b/p4yU4aKPpn2iDhslBpDDUJa+Z45iYGlLTVAsfUnM0=;
-        b=v4LbZCAEmOP7qCKzBcprjfEEA+xpC6JBJQaD2I9OXATBmAfF+FW2yE7socEeF8QbX0
-         zN0FjsFZ3FHVgszrHrgWS91x8d/eOe0OcWLl8pEaT+O1bs+D4hUgQ8SGfw2oZ0J7OqsW
-         ds9UlEsgzft4ydM453KJYFYfoSSWhHrPx1pj7h0XCFXI/oj+Gd9SLLf6g5SL6+DWOZPf
-         0jzl89nzBt+FEnlwyLejSOHTpIU2bs6m/xNqhRFOxHs89fJ6eHAn2bTqGE1/3TowaLQO
-         kNMagvtWvRYi1JRo4A89UBWuivRuDAuu7TZk7UnTsnok+GVy18OtWy4v3/kqSrkiU4yk
-         2HZg==
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=spKdhYG77kN2DboYXnFHMFCe6fzrmJ5rgzhOQlHMORk=;
+        b=vH3ryIgdyA45opHL1c4NF9BexlLJj5Aq3+l6Aceu8SF8ZAcWXedPkaUDArtenEmtOV
+         SfY37zJhJ+HnMPMxDrcbVe4lDkpbpGzblkQp24WnPagSvWAVp5f6NUTW4o1g8j+Yah4O
+         ROFyRqStVfcXXCyJNZZO2Zwmzmg6/KNaePSO02HgV1Tcufo50ZtMr92FtSa6tB5cazhP
+         ImF2OxCyTPjtc1KJk+iJw+/W8vQVMGPzHNh5FAJ1hnvTuMWlx+jltxZFw+/tMrk4A2U/
+         hUNDu2cm2VWJc2qUgEwKtf1fkcN8RGQB/9un7jCnBNPoJmtc9RHSvsLl4GKIWAVmbL/V
+         napA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Ng/49Hau";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d15si2223770ybl.7.2017.11.05.06.40.36
+        by mx.google.com with ESMTPS id o24-v6si547450qtp.120.2018.07.27.10.13.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 05 Nov 2017 06:40:36 -0800 (PST)
+        Fri, 27 Jul 2018 10:13:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:44508 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Ng/49Hau";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eBM6G-0006cg-0J
-	for alex.bennee@linaro.org; Sun, 05 Nov 2017 09:40:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43131)
+	id 1fj6JE-0005ED-QY
+	for alex.bennee@linaro.org; Fri, 27 Jul 2018 13:13:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38640)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eBM60-0006ZG-5k
-	for qemu-arm@nongnu.org; Sun, 05 Nov 2017 09:40:25 -0500
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fj6J5-0005D1-LK
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 13:13:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1eBM5y-0005f5-61
-	for qemu-arm@nongnu.org; Sun, 05 Nov 2017 09:40:20 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:65416)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1eBM5n-0005XO-V1; Sun, 05 Nov 2017 09:40:08 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue006 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MJ1gb-1e8tFU1V2P-002Z4Z; Sun, 05 Nov 2017 15:39:49 +0100
-To: Stafford Horne <shorne@gmail.com>
-References: <20171103202624.5956-1-laurent@vivier.eu>
-	<20171103202624.5956-3-laurent@vivier.eu>
-	<20171104212011.GK29237@lianli.shorne-pla.net>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <1356a4f9-86a2-7b18-a67b-93dc6dadec4f@vivier.eu>
-Date: Sun, 5 Nov 2017 15:39:48 +0100
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fj6J2-00071h-6G
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 13:13:35 -0400
+Received: from mail-vk0-x242.google.com ([2607:f8b0:400c:c05::242]:43832)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fj6J2-00071V-02; Fri, 27 Jul 2018 13:13:32 -0400
+Received: by mail-vk0-x242.google.com with SMTP id s17-v6so2782365vke.10;
+	Fri, 27 Jul 2018 10:13:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=spKdhYG77kN2DboYXnFHMFCe6fzrmJ5rgzhOQlHMORk=;
+	b=Ng/49Hau3m6593MpQjxb+8sR1NTk5SfIdcUP0KwTVK6ysu8B/E1SMhrvk7oCbunsHk
+	ey2NMuZVPrDvzCMMxRizYHVvSvA8l1T/3dCpjeqepZYt3n2eEOKE0KK0XFRyl/erGugt
+	30lZ2npXtbFAGztgS3yiVZBFvsO8RAxQEHZ+XNnM6OBAunMla0w7/VQ/qAtIpvMxTlWv
+	uv2ml8MsWifpkbfXTg5xLymBgEajEGT7oVog4DlfS8P12aHsiFAjbn8goMs1YowOrdW4
+	D9qeDHzU8wN4JQ9rXYYYgl9/7QlF/5gZ8p5YP1aU9327XOgdBQlWIthj6NcguEKR0oI7
+	6yAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=spKdhYG77kN2DboYXnFHMFCe6fzrmJ5rgzhOQlHMORk=;
+	b=G814+SJ0ucS5OhAULt06iAwQIOz30rdXht4ki78N3UVoaQkZCHrcpD0NrDUzgQX9Tn
+	w+HVgcjUgo8VPdY78dkt4CXIvYcPWUGMyngorb54Pv7JI0XELbHcY8RooefcirkPmW/A
+	jlgC5GLGiwKq3CjwmMsJncpc6SsEn+OH96uOM+W+4FCs+m8wMHLqyx6YdPxc9TQlR6Gu
+	5+eiPk61KfT/6Grv5ed/IYPjUc3tQyRDVHtXWSr3FapdOKwTtFGCFe3fpU6dTXN2MKo/
+	pnOmnG1247SzH8zxyXsEppPSutzRIg/NCkXT5OW7dPhPq0/qk/UNj/2kORtMDzxM3pKN
+	GtVw==
+X-Gm-Message-State: AOUpUlHO84BK1XBksrY9S3kHjXfutZ776aN+ASQT8Ig6uqPKLUW4edFT
+	ElKvAjM4oicnb6hsAUEbcbo=
+X-Received: by 2002:a1f:ee85:: with SMTP id
+	m127-v6mr4711253vkh.46.1532711611395; 
+	Fri, 27 Jul 2018 10:13:31 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	q202-v6sm1053989vke.53.2018.07.27.10.13.27
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 27 Jul 2018 10:13:30 -0700 (PDT)
+To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org,
+	pbonzini@redhat.com, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@redhat.com>
+References: <cover.1532701430.git.damien.hedde@greensocs.com>
+	<81e37f79d335d17d8802f127d59f89e263c50136.1532701430.git.damien.hedde@greensocs.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
+	mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+	u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+	HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+	YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+	ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+	dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+	ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+	Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+	HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+	Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+	YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQI+BBMBAgAoBQI3aGSw
+	AhsPBQkmUJgABgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIXgAAKCRDj4yws3q3A3nS+EACxKosO
+	3DZdwdVPXLVvSAA5y3Ohr2ByWN06RlVEkKWkOxm0lQ96LxBOZ03mDC+He/36DHaP+fujPBTz
+	XjTXygWWZUtk0flDWR1w0a4yhX/JHfL5yloMZrxifCwouf2Sv9Yd6D46pzMeGsq8aCvbZYSf
+	lDi3KXsVHc+jbmRwxtzJxz7366dsTC1tOJmjVSxc8bE55pHnPFOT1KKM9fxGWZFYx0UqAL/1
+	NkrOKP5eXdJ51EhQa5pjivJw6dQlfWMQURG4o4e2+aLe4TkS2FI0r6nTgmoDmTT74u35NzZW
+	Q3xjqcfqUX52+0drwlta22guNDbcJ4J+/I6FBF1C7CoSysBiIrldZQ6cJZ19st3jb7NHAoNk
+	DcUt5I3gt4EpaiijWEEYAhw1/NSagm9bfn9veBqzVHNQrz76NZMiy2kP2vAxKOvo1XVlcEl0
+	8MQ+IAUvYcLvU6yHRB4da7ts+ufqriNI5WBpvoLPRRa0wFDTj0nX/CfWFX9UkTwHA6/SWlhE
+	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
+	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
+	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
+Message-ID: <113b1329-fbc8-31f3-1d6a-274c56472d50@amsat.org>
+Date: Fri, 27 Jul 2018 14:13:25 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20171104212011.GK29237@lianli.shorne-pla.net>
+In-Reply-To: <81e37f79d335d17d8802f127d59f89e263c50136.1532701430.git.damien.hedde@greensocs.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K0:PnMzU6F/Rn3hEd9YiUSIwvcQ9tQhmegFXoF4fDlzGaZwohSZCbK
-	rjPUYHUItnKe90x3bt0S4Kf3lnI9w5+ZeMkhmXQf23yf4xZSRCSuqtMapOhOU7rk13GMlNE
-	fdWJm0g+jyBnth+qIhCNOAZtuAiKrkrGBInNYl8iqtclJG+LEi3uBdCRDPn4BYI2jyjJI/R
-	RwFQNlgM/MKDgJBfSftWA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:KQYz2XUgBTQ=:ouXLCmcHqUABgm/h6JZTLg
-	wNdrWpCtfsT+XrPXGWusw4xUaCygpMe1l7Ke9e4ZbvEtyrdgbrjB4OL5s/mgJsXcA2Iac6p0c
-	roFXnLnV3JexqYpKsYa0te6ThO0Q6CTh/Fc5pPaJWsdQhgX7AQtDzK56epK1iaj2zdAXsBB/9
-	LWSApDE9tttmCnWDAi6FM0IcS3UAXiLky+bUN/nMDg7B+RFsgZisgW5uMqeuuzLP26jmoNBB5
-	V37gtjumJI+g/+ojsoDD4+UIr0OC2M1gg2rrTeW8b2Dqn4fasBtJ/6uywipLiC6Fxn6ACjXos
-	YeUqU1+Z46haQDlV/LzrmpL4VqiSWBBoR6jnFGuwx87izt8aPGpgASrf1XMEVeICFcYKcdr4c
-	XSZtP/DvbRTPiygAFm4pl1nquoPeZH/gb4F8jcMbEvDmsYoMTAk1a/ne3Rm3XwX28IzmdrohM
-	qdujOyTpdj3OzqpelBnmyrOc6/NlXWmUO2GkGZKdPOyoB+EYkiQkwnAJZeLiz5O/woOuW+nxl
-	LL4W0CQpkildFK2kzy/1Ta8Vc3E4Lp4ttRYOHNOnz3k+GjFcScRiXzR6TwK9bcOLHkcCyecwd
-	GQFQx+PMxjRaPtjtt3LyQ8enKXP1ZxxmOjvNyRqV55rzrrvQELvWEZuDGCCCp5s+Gm2EuXQuz
-	aOciVY2sR/0RYLayuagUp1LB927ub6vtm4QYF9PPuq4uVaoCt2HnoGyM56/AC8uCVx1+HPN5d
-	ZCIylwDOl6MddQCXHJhdWsvTyb4VNcy4CayN9iMKQvdVEKx4PTsO0L/XUNc=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-arm] [PATCH 2/4] openrisc: fix float32 and float64 helper
- definitions
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400c:c05::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 4/6] cadence_uart: add
+ clock/power gating support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,33 +146,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
+	mark.burton@greensocs.com, saipava@xilinx.com,
+	qemu-arm@nongnu.org, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iUqqSP9dogM2
+X-TUID: c5tAmyknwrNE
 
-Le 04/11/2017 à 22:20, Stafford Horne a écrit :
-> Hello,
+On 07/27/2018 11:37 AM, Damien Hedde wrote:
+> Only discard input characters when unpowered/unclocked.
+> As it is a sysbus device, mmio are already disabled when unpowered
+> or unclocked.
+
+This is common to all Chardev frontends (also Ethernet/CAN devices, see
+NetClientInfo).
+
+Maybe qemu_chr_fe_accept_input() can take a boolean, so when we disable
+a device (power/clock), the char-fe code can discard characters for all
+frontends?
+
 > 
-> On Fri, Nov 03, 2017 at 09:26:22PM +0100, Laurent Vivier wrote:
->> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> ---
+>  hw/char/cadence_uart.c | 25 ++++++++++++++++++++++++-
+>  1 file changed, 24 insertions(+), 1 deletion(-)
 > 
-> There is no commit body here, do we need one?  I can see in your cover letter
-> its mentioned this was revealed after enabling "USE_SOFTFLOAT_STRUCT_TYPES".
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index fbdbd463bb..dd51d9a087 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -335,8 +335,14 @@ static void uart_write_tx_fifo(CadenceUARTState *s, const uint8_t *buf,
+>  static void uart_receive(void *opaque, const uint8_t *buf, int size)
+>  {
+>      CadenceUARTState *s = opaque;
+> +    DeviceState *dev = DEVICE(s);
+>      uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+>  
+> +    /* ignore characters if unpowered or unclocked */
+> +    if (!dev->powered || !dev->clocked) {
+> +        return;
+> +    }
+> +
+>      if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+>          uart_write_rx_fifo(opaque, buf, size);
+>      }
+> @@ -348,8 +354,14 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
+>  static void uart_event(void *opaque, int event)
+>  {
+>      CadenceUARTState *s = opaque;
+> +    DeviceState *dev = DEVICE(s);
+>      uint8_t buf = '\0';
+>  
+> +    /* ignore event if we're unpowered or unclocked */
+> +    if (!dev->powered || !dev->clocked) {
+> +        return;
+> +    }
+> +
+>      if (event == CHR_EVENT_BREAK) {
+>          uart_write_rx_fifo(opaque, &buf, 1);
+>      }
+> @@ -516,10 +528,19 @@ static int cadence_uart_post_load(void *opaque, int version_id)
+>      return 0;
+>  }
+>  
+> +static int cadence_uart_pre_load(void *opaque)
+> +{
+> +    DeviceState *s = opaque;
+> +    s->clocked = true;
+> +    s->powered = true;
+> +    return 0;
+> +}
+> +
+>  static const VMStateDescription vmstate_cadence_uart = {
+>      .name = "cadence_uart",
+> -    .version_id = 2,
+> +    .version_id = 3,
+>      .minimum_version_id = 2,
+> +    .pre_load = cadence_uart_pre_load,
+>      .post_load = cadence_uart_post_load,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32_ARRAY(r, CadenceUARTState, CADENCE_UART_R_MAX),
+> @@ -531,6 +552,8 @@ static const VMStateDescription vmstate_cadence_uart = {
+>          VMSTATE_UINT32(tx_count, CadenceUARTState),
+>          VMSTATE_UINT32(rx_wpos, CadenceUARTState),
+>          VMSTATE_TIMER_PTR(fifo_trigger_handle, CadenceUARTState),
+> +        VMSTATE_BOOL_V(powered, DeviceState, 3),
+> +        VMSTATE_BOOL_V(clocked, DeviceState, 3),
+>          VMSTATE_END_OF_LIST()
+>      }
+>  };
 > 
-> However, I'm just being curious why is this an issue?  In softfloat I assume we
-> pack our own floats so having the type that goes into a uint32 register wouldnt
-> make much difference right?
-
-It's not an issue. It's for consistency. We can store a float32 in an
-uint32_t, but it's better to store float32 in float32 type.
-
-And as said in include/fpu/softfloat.h:
-
-"Use structures for soft-float types.  This prevents accidentally mixing
- them with native int/float types."
-
-Thanks,
-Laurent

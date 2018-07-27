@@ -1,98 +1,87 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp799219wru;
-        Fri, 27 Jul 2018 08:00:00 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpdToaGSp7d8ppU0LNAse7zTdtnQzMnckNRk907cC9Of/FLpHLmY3NHqbSQUZZTSXSY6KjGK
-X-Received: by 2002:a37:a310:: with SMTP id m16-v6mr6391685qke.254.1532703600281;
-        Fri, 27 Jul 2018 08:00:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532703600; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp817263wru;
+        Fri, 27 Jul 2018 08:14:03 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdB8L3oF8BiKwB6idbNcIM/5p/Z67AWvA9HDZjX7eEsZMHRL3niRHHBNCnCYwGQ38WTeJZx
+X-Received: by 2002:a0c:aac9:: with SMTP id g9-v6mr5943794qvb.78.1532704443396;
+        Fri, 27 Jul 2018 08:14:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532704443; cv=none;
         d=google.com; s=arc-20160816;
-        b=At5R4Q9oZJf+fYdOLlvCrGP9TvPb6pnHsILJHziU0Yh8G2mvq9rYQ66nqQe+MG56TO
-         K9FyffXrPvWJQ/A4I46Cz5xpJHH+6oTNWi+xiRTlB4MDpPCkz6HeXivGn7eicCj6acEI
-         TWcFwpnuGI8vTHhM+sdVW9AhBwEKck4aFRexDU6EIX7q9KG8A4iP8VnPh4CEi/tQCiKj
-         jOtp6b/mKydjCRdxvf7mfxXpwsM9x7wSroMREKByXpJ+UZWxl+xrLi26x/minkMy/TGb
-         ekNtoIyJ6x/li+zSOSUkB4K8JiP7uKab/uXD17mRY2wbe8dz1ZJ0Brtd2kz8NUbTNvMH
-         AUYw==
+        b=mIJUBLp9cik+5AHgE1njHzUienufyMElngem2rubVlaLenxCsweR8gOnQsj3ywg2sT
+         4Ielwv3LO193AqNu46RNmW1WnTqgVW7nhKeThb4mq97A+z6B9kcOI6behe1eNBMT23nf
+         9WYMHQe6Bs5CUYTAjzTlE/PSmEXbaqklomM+LvpTOnPbSemfWmacytQNbyRwa8pGNEHw
+         wJpwT0lsJwvqJgl4NdX5aDnBOGTYWgVU4LqeAluMZBaeNPqjf7Fgg2Yc22cUz/bxFNRz
+         2SuFKDZDVsydZ5c6vs7RQWGDPKmSj3/O46Xw1FC60xugHXwcrB5FkLj0Sv91dn4T2s5f
+         8WbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
          :arc-authentication-results;
-        bh=DRmcw/QFqyPNYEtGW/3271hV9HlgjuQQWPGMdlUYrLk=;
-        b=jNTz/A9bdgrnwKGmFRgv8zEkjwD4IV3B2eSlaIO/U4crtwKWeF/BUiQiQMorEhNlD+
-         oe8xdwMiHQuWqQL5XbWTZRqtIlUzBwd+8X7zyjER7XtqZRYpXm0UwSffzF8k5ucspzjq
-         WTjtu7m4DqGpwvY1/vvq+BmiBwi041gA3XQ6oceVzCAbxWeWSq7T/WQubmbsZs69kaFj
-         I/al8QysHdIIzc/G+bx3oRjNFYpm2PfkWkbcDqL8wJU6mA7C9WmOUAVU0MWC3OoxJKv6
-         uCyv+8yAbB0v5tQStkDc2a6Aiu+2TLGOr0fU2q2H/L1G9ek2LCLTHPIqYBaVDu0qaa4t
-         4L7A==
+        bh=Wxz/inhA29jR1MQskz+IRvr5A1wEGfbATy4raWBDB7w=;
+        b=GVa8dVtwucwsBdOj+BsVG+22HUdKsMviQ++08xAbc2vpBO+gGhZEHPA3wRNn1xWx0Z
+         uy+mi2Tc9Tn2KSWI3X8PhrzKx4EVHDiMImmhbXbv87pVS9kV4mFeUneX/zHbpEmetsr/
+         QHlUv/ToocA6HTHwCEOAWeoDhnUMBhZS0Ta4fzoMlY+xOAsg82q3ENdCgdKXQgJEte52
+         bs2Wkp3Yj4pdpHAi9zHIL/WiNbp+44cVjz//OUGfNB8gp8eVzRULw2LBBZlm+ZITe3bv
+         2AR2gjnev63GR2en5hv1syE2q0mbGSk84sMQffd7lxO0oRVrJFBw6eRE+mK9Jt3PaLNT
+         /7mA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IRv+J7fz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j41-v6si1589404qtk.138.2018.07.27.08.00.00
+        by mx.google.com with ESMTPS id a1-v6si4080489qvh.212.2018.07.27.08.14.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 Jul 2018 08:00:00 -0700 (PDT)
+        Fri, 27 Jul 2018 08:14:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IRv+J7fz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41694 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41753 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fj4Dn-0007CL-Qu
-	for alex.bennee@linaro.org; Fri, 27 Jul 2018 10:59:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38747)
+	id 1fj4RO-0005xk-Tt
+	for alex.bennee@linaro.org; Fri, 27 Jul 2018 11:14:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fj4Dg-0007Bz-Us
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 10:59:53 -0400
+	(envelope-from <frederic.konrad@adacore.com>) id 1fj4QT-0005S6-OM
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 11:13:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fj4Dg-0004zO-8C
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 10:59:53 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:46787)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fj4Df-0004yU-W8
-	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 10:59:52 -0400
-Received: by mail-oi0-x242.google.com with SMTP id y207-v6so9552526oie.13
-	for <qemu-arm@nongnu.org>; Fri, 27 Jul 2018 07:59:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=DRmcw/QFqyPNYEtGW/3271hV9HlgjuQQWPGMdlUYrLk=;
-	b=IRv+J7fzhkl5uFlQfPzJ1sOKtoy7+AqjRgojo250aZfLzop+oMi55ZHau376mACwga
-	maM9z0vbrDrzwUPmAPeDC3NL9iXKQPBIheDELwhx0NqE8D6ROza15JwfSH+y/pMOVYHZ
-	fFXnTEtj6+pQKkd7sxuGXuViFhs10vRFLwY8E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=DRmcw/QFqyPNYEtGW/3271hV9HlgjuQQWPGMdlUYrLk=;
-	b=k2c/Mbk6wWM1ZBeVk5E2FG41JWFrNQXKQoRpHC2McwnX7n0wl135HFXEitH4f5/OGm
-	lblIaYXzZmPCu+put3AwdHvIfKtjfeBwA/FCXKpmv7DOXJf7OzhL/On1p/B6ggnphkSS
-	qdflF04S9CZuBbvWn19Ad7yAlVzF89wdhw5MBfEV8Pl8z2H7ZUXbxfx65BWs7sjAaLdc
-	/pLSqyvNyHmFEI6HdZhF26UtANpUKPyXkU5bu7irbLA6EgPcSik7niEsDihrxV33O6P7
-	jHa787XclVW8aiTXBpyeEgo40SHLJjlKouGt9hpZRoCfLhlh5gDbq8xoG1KteA3u7rXq
-	2muw==
-X-Gm-Message-State: AOUpUlG8AeWUiIqBQPvF110GvDBUWqKuNrW6LCRjAbXNuCkI7GNpPnQo
-	njLjsbGQS6uOgRosvjGhgf6NQNBENUD81Vr8m4fhZA==
-X-Received: by 2002:aca:5f0a:: with SMTP id
-	t10-v6mr6495152oib.337.1532703590865; 
-	Fri, 27 Jul 2018 07:59:50 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 27 Jul 2018 07:59:30
-	-0700 (PDT)
-In-Reply-To: <cover.1532701430.git.damien.hedde@greensocs.com>
+	(envelope-from <frederic.konrad@adacore.com>) id 1fj4QO-0007EA-Py
+	for qemu-arm@nongnu.org; Fri, 27 Jul 2018 11:13:05 -0400
+Received: from mel.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:42158
+	helo=smtp.eu.adacore.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
+	id 1fj4QO-0007Aw-Hc; Fri, 27 Jul 2018 11:13:00 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 7A116813A0;
+	Fri, 27 Jul 2018 17:12:58 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Z5nVqdF0SUJp; Fri, 27 Jul 2018 17:12:58 +0200 (CEST)
+Received: from localhost.localdomain (unknown [46.218.167.194])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id B19468139B;
+	Fri, 27 Jul 2018 17:12:57 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Damien Hedde <damien.hedde@greensocs.com>
 References: <cover.1532701430.git.damien.hedde@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Jul 2018 15:59:30 +0100
-Message-ID: <CAFEAcA-X=eziUHurc0SEcGEeM25t4YgkTczsVeF8myWHjfp3MQ@mail.gmail.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [RFC PATCH 0/6] Clock and power gating support
+	<CAFEAcA-X=eziUHurc0SEcGEeM25t4YgkTczsVeF8myWHjfp3MQ@mail.gmail.com>
+From: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-ID: <2d22fcb2-b825-6195-a935-bf2adb3e0a60@adacore.com>
+Date: Fri, 27 Jul 2018 17:12:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-X=eziUHurc0SEcGEeM25t4YgkTczsVeF8myWHjfp3MQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: fr
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2a02:2ab8:224:1::a0a:d2
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC PATCH 0/6] Clock and power gating
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,22 +101,41 @@ Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OMRnYq3u9Ipl
+X-TUID: p/s47Rl2VLcH
 
-On 27 July 2018 at 15:37, Damien Hedde <damien.hedde@greensocs.com> wrote:
-> This set of patches add support for power and clock gating in device objects.
-> It adds two booleans to the state, one for power state and one of clock state.
->
-> The state is controlled trough 2 functions, one for power and one for clock.
-> Two new methods *power_update* and *clock_update* is added to the device class
-> which are called on state change and can be overriden.
 
-So, you folks at Greensocs had a series a couple of years ago to try
-to add clocktree support (which included handling things like guests
-configuring clock rates, some clocks being "downstream" of others, and
-so on). It didn't make it into mainline, though it did get a fair amount
-of design/code review. How does this approach fit into / compare with
-that ?
 
-thanks
--- PMM
+Le 07/27/2018 =C3=A0 04:59 PM, Peter Maydell a =C3=A9crit=C2=A0:
+> On 27 July 2018 at 15:37, Damien Hedde <damien.hedde@greensocs.com> wro=
+te:
+>> This set of patches add support for power and clock gating in device o=
+bjects.
+>> It adds two booleans to the state, one for power state and one of cloc=
+k state.
+>>
+>> The state is controlled trough 2 functions, one for power and one for =
+clock.
+>> Two new methods *power_update* and *clock_update* is added to the devi=
+ce class
+>> which are called on state change and can be overriden.
+>=20
+> So, you folks at Greensocs had a series a couple of years ago to try
+> to add clocktree support (which included handling things like guests
+> configuring clock rates, some clocks being "downstream" of others, and
+> so on). It didn't make it into mainline, though it did get a fair amoun=
+t
+> of design/code review. How does this approach fit into / compare with
+> that ?
+>=20
+> thanks
+> -- PMM
+>=20
+
+Hi all,
+
+I didn't have time to push a new version of the clock series and
+I lost the track a little bit (was 13 months ago). Sorry for
+that :(.. Would be still nice to have I think.
+
+Cheers,
+Fred

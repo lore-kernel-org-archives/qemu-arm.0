@@ -1,139 +1,190 @@
-Received: by 10.223.150.237 with SMTP id u100csp3411759wrb;
-        Tue, 14 Nov 2017 01:56:56 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYt4M8GNSRzwH8r9wxkmOfLC1xT0j0Pg7fYlXySRsptkouxtpVDcPnOYPBLUWku+6cn29Ca
-X-Received: by 10.129.45.137 with SMTP id t131mr7443417ywt.11.1510653416428;
-        Tue, 14 Nov 2017 01:56:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510653416; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3769788wru;
+        Mon, 30 Jul 2018 06:19:18 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpfLNGChHY31A9KTfhQuNB4dh0jxSSuqcJ6bZ2Tgd7JSNw4C5LRS+ObgQ0+yrAM/xjc211+E
+X-Received: by 2002:ac8:5207:: with SMTP id r7-v6mr16591329qtn.11.1532956758006;
+        Mon, 30 Jul 2018 06:19:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532956758; cv=none;
         d=google.com; s=arc-20160816;
-        b=AWr05j7F86bFCrvk2fls2kEe+2WI7ykQSBTRjZLT4p5aWgY61tM807HJUt+0J6gV7G
-         3hjrN17aOq7ZwLOs5y3Ea1jy3xqww8PLIN3UnVaXTIL7HhFENps3Oh6XgDINZSG0JvSq
-         beRYoaPgC5TGUj0cNAFE7Cpqlwl+552uwZhy49+QPCmgJl0Otk+LgfUYAE+OTI6cARuM
-         /0gMAOzFZW+pt8TJoOmkc6e5/oWhz5u0s9wApzLCcfOTjSDC0CEpbhPxMCTCBa5UUFqv
-         glnze5qiiY69169lV2tixNIapR+W5q2zOA2KiLR3bkyitaGigMnl7/tHIb3Yk/mENrDY
-         Q9Sg==
+        b=IqLgFyIgbogqXv2U7qM7GQPNzRm6tvpiOBoEkuvzButJVhvIp0oRZgiwAUw9qLLhUB
+         5pTc2XssF2DV3qali+WDD7RlKRBRprDII/3Y1qaEECAS5fSsA0Dm1d8jUdmzfLtyZlOI
+         CSDjruYoCAKYU07EFBKEDW8dJsIJy4CTha3BQ6nTg4kDsJSo4mLcLLtqukgm2QU4RLDp
+         ZX6677TIumccUpjdDZIkOlZFowLkyLz2ybz/LJrPvhKxUmd1hYKMbQE19vfnYzD00hsy
+         m5gbmKD6DsdZfleRGaGc3pz1Ayas1jqHS+ELeZoJ5EYYce4xoHjkP2QN3flKsCzd5BOJ
+         VoEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:message-id:date:to:from:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=iCm3JTRTsRYd1UHX15peAB+gFPfNQwdAwTf4wxPmdnY=;
-        b=N9pEGNHVeE1+IO45lyFVxbWZWaqwVMo02i7KbbBpxDj8aEARWYZELPUGGKvR8ePIH5
-         m463x244Ei1j1tyTfhFjkbao0Wr2uVuBhyxuk/I6JhcpqpJ2cBNats1e3kOWqV9FUCLc
-         WS7/3HP+wSJ/WzzB3pLVixZMQUKPIV7wB6XAFmDnaym55zm1H9JnG0knDPC9zmt78FZQ
-         XG1VSHZsTrU7b1zpln81N5hfNRAVpnwWc1JCsU2WDjmgtrH8bNausuSzyOcy07/0kd+b
-         OFbQqdcQUvKlfmOcVBDA9TU3dlxyP8HE5XZTfu8u0WvcvjHbs9OIKZRxp85U5gbuLKJi
-         TwdQ==
+        bh=4v3dHIjUOb0/uC56DqPrS8Y+vpu8ozaYS3uyoH+v6BY=;
+        b=tUGPhnooMyRTCKeP3RH6OGcUaVarPMWItI9j5PS+fTF2IQK2OvDIe2snz+3mbyy+gi
+         600+I/NHNqQLG6zjcgX/erq+7L4AN6OclP4yw2uzD4PEYc/oSaa+/+TwBAVO4yLUcsoN
+         P0VBRxSH/0aROUvltKq5dlH7yOBOkHIJ4xX8WkUivS4+8uA3zYHYCjwjfjzVac1IRDUF
+         Z99d4NnsQRUr1Gq5AoX8JdCXmdnW2GveQ5EJfCmU7g8Ws93BxG2pKalJl59s5pHFsJSW
+         X5styAU3KmRBCWQ0iQvHGzoZMjXCJ5MD3mUjiWcViEAJjU8l8udqkM2Tcft1UqubNP0K
+         3/CQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=3RQy9y89;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=k365JCXn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 2si3811196ybp.711.2017.11.14.01.56.56
+        by mx.google.com with ESMTPS id y15-v6si2862188qvj.254.2018.07.30.06.19.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 14 Nov 2017 01:56:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 30 Jul 2018 06:19:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58550 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=3RQy9y89;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=k365JCXn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52572 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eEXxf-00033D-SM
-	for alex.bennee@linaro.org; Tue, 14 Nov 2017 04:56:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37294)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fk84z-0002vt-HF
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 09:19:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42397)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1eEXxT-0002lg-EG
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 04:56:47 -0500
+	(envelope-from <mark.burton@greensocs.com>) id 1fk83O-00026J-G3
+	for qemu-devel@nongnu.org; Mon, 30 Jul 2018 09:17:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1eEXxP-0006Fi-E0
-	for qemu-arm@nongnu.org; Tue, 14 Nov 2017 04:56:43 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46342)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1eEXxP-0006Ed-8E; Tue, 14 Nov 2017 04:56:39 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <mark.burton@greensocs.com>) id 1fk83N-000872-Eg
+	for qemu-devel@nongnu.org; Mon, 30 Jul 2018 09:17:38 -0400
+Received: from greensocs.com ([193.104.36.180]:54402)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mark.burton@greensocs.com>)
+	id 1fk83F-00083o-Vz; Mon, 30 Jul 2018 09:17:30 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 6B365DFFE9;
+	Mon, 30 Jul 2018 15:17:21 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1532956641;
+	bh=vVJjTiEiZWVEgPkbY141wIr/spDvYUUwLL75OU5j2k4=;
+	h=From:To:CC:Date:In-Reply-To:References:Subject;
+	b=3RQy9y89og0NKdJxse7RprMyJlHYl70WV9xLObWX7Wg4ZS+EsBWd1/MMJ48//TyqQ
+	w35bamTtLeKVc2cr9ENMxyWi1qNSY0YM25E4aKmbcJ0SQYz9j9uGgpjzhix0MMt4L6
+	+LjUhUeHhwrrTNY6Ptc9rRocCQERxcWZMiHHMl1I=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hb2ye4jEfuQo; Mon, 30 Jul 2018 15:17:20 +0200 (CEST)
+Received: from [192.168.1.39] (109.red-176-86-38.dynamicip.rima-tde.net
+	[176.86.38.109])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1ADF776543;
-	Tue, 14 Nov 2017 09:56:38 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-18.ams2.redhat.com
-	[10.36.116.18])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EC0FB2C311;
-	Tue, 14 Nov 2017 09:56:31 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 01F18A1F4; Tue, 14 Nov 2017 10:56:31 +0100 (CET)
-Date: Tue, 14 Nov 2017 10:56:30 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Alistair Francis <alistair.francis@xilinx.com>
-Message-ID: <20171114095630.2v4lzfxlmpom33mi@sirius.home.kraxel.org>
-References: <cover.1510612380.git.alistair.francis@xilinx.com>
-	<67465b2020def3680dfd15d6473d3316c3fc8be0.1510612380.git.alistair.francis@xilinx.com>
+	(Authenticated sender: mark.burton@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id F33FBDFFDF;
+	Mon, 30 Jul 2018 15:17:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1532956640;
+	bh=vVJjTiEiZWVEgPkbY141wIr/spDvYUUwLL75OU5j2k4=;
+	h=From:To:CC:Date:In-Reply-To:References:Subject;
+	b=k365JCXn+S+G+wuvTSzj3wK+IzPbQz5s2gtcW++uqPqe/ZJNM0T0CtfmabMd0D1eW
+	UWBAWtnFZ6N0nJxU0jDEsSvc9TYDTbjlEcHI9Ivy+kQ7unKmFla5HGH7rb2O4lnCVS
+	lTXq8ZBQ5KHFt2D3qy2mo/I56+funbSSQ5XeDxfk=
+From: Mark Burton <mark.burton@greensocs.com>
+To: KONRAD Frederic <frederic.konrad@adacore.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Damien Hedde <damien.hedde@greensocs.com>
+Date: Mon, 30 Jul 2018 15:17:16 +0200
+Message-ID: <164eb4a8d68.27d4.d127438ad377917fe05d617879a0d354@greensocs.com>
+In-Reply-To: <2d22fcb2-b825-6195-a935-bf2adb3e0a60@adacore.com>
+References: <cover.1532701430.git.damien.hedde@greensocs.com>
+	<CAFEAcA-X=eziUHurc0SEcGEeM25t4YgkTczsVeF8myWHjfp3MQ@mail.gmail.com>
+	<2d22fcb2-b825-6195-a935-bf2adb3e0a60@adacore.com>
+User-Agent: AquaMail/1.16.0-1193 (build: 101600006)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <67465b2020def3680dfd15d6473d3316c3fc8be0.1510612380.git.alistair.francis@xilinx.com>
-User-Agent: NeoMutt/20171027
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 14 Nov 2017 09:56:38 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v5 02/29] Replace all occurances of
- __FUNCTION__ with __func__
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; format=flowed; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 193.104.36.180
+Subject: Re: [Qemu-devel] [RFC PATCH 0/6] Clock and power gating support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefano Stabellini <sstabellini@kernel.org>, Fam Zheng <famz@redhat.com>,
-	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	John Snow <jsnow@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
-	armbru@redhat.com, Yongbok Kim <yongbok.kim@imgtec.com>,
-	qemu-arm@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, xen-devel@lists.xenproject.org,
-	Anthony Perard <anthony.perard@citrix.com>, alistair23@gmail.com,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9TihUVdMrBB2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uJT8l0P8daoj
 
-On Mon, Nov 13, 2017 at 02:34:42PM -0800, Alistair Francis wrote:
-> Replace all occurs of __FUNCTION__ except for the check in checkpatch
-> with the non GCC specific __func__.
-> 
-> One line in hcd-musb.c was manually tweaked to pass checkpatch.
-> 
-> Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
-> Cc: Gerd Hoffmann <kraxel@redhat.com>
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: Anthony Perard <anthony.perard@citrix.com>
-> Cc: John Snow <jsnow@redhat.com>
-> Cc: Aurelien Jarno <aurelien@aurel32.net>
-> Cc: Yongbok Kim <yongbok.kim@imgtec.com>
-> Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> Cc: Stefan Hajnoczi <stefanha@redhat.com>
-> Cc: Fam Zheng <famz@redhat.com>
-> Cc: Juan Quintela <quintela@redhat.com>
-> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-block@nongnu.org
-> Cc: xen-devel@lists.xenproject.org
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
-> Reviewed-by: Juan Quintela <quintela@redhat.com>
+Hi Pete, sorry for the tardy reply, Im not in the office.
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+
+Your right  we shoujd have co-ordinated better the 2 patches, sorry for t=
+hat.
+
+Regarding this new patchset, we think there is a degree of complementary =
+to the
+clocktree one.
+Here we simply add a couple of generic power states to a device. We
+introduce
+an interface to control power and clock gating on any devices, with sensi=
+ble
+generic behaviour (reset on power on, disabling memory regions when
+asleep or
+off). The device can specialize this to adopt specific behaviours.
+
+It allows easy implementation of commonly found "system controller", "pin
+controllers", "power management unit", or similar blocks in SoCs.
+Specialization of devices can be implemented as-needed when a machine
+requires
+it.
+
+
+Cheers
+Mark
+
+On 27 July 2018 17:22:30 KONRAD Frederic <frederic.konrad@adacore.com> wr=
+ote:
+
+> Le 07/27/2018 =C3=A0 04:59 PM, Peter Maydell a =C3=A9crit :
+>> On 27 July 2018 at 15:37, Damien Hedde <damien.hedde@greensocs.com> wr=
+ote:
+>>> This set of patches add support for power and clock gating in device =
+objects.
+>>> It adds two booleans to the state, one for power state and one of clo=
+ck state.
+>>>
+>>> The state is controlled trough 2 functions, one for power and one for=
+ clock.
+>>> Two new methods *power_update* and *clock_update* is added to the dev=
+ice class
+>>> which are called on state change and can be overriden.
+>>
+>> So, you folks at Greensocs had a series a couple of years ago to try
+>> to add clocktree support (which included handling things like guests
+>> configuring clock rates, some clocks being "downstream" of others, and
+>> so on). It didn't make it into mainline, though it did get a fair amou=
+nt
+>> of design/code review. How does this approach fit into / compare with
+>> that ?
+>>
+>> thanks
+>> -- PMM
+>
+> Hi all,
+>
+> I didn't have time to push a new version of the clock series and
+> I lost the track a little bit (was 13 months ago). Sorry for
+> that :(.. Would be still nice to have I think.
+>
+> Cheers,
+> Fred
+
+
+

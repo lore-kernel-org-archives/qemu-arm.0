@@ -1,151 +1,148 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3820713wru;
-        Mon, 30 Jul 2018 07:08:15 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpddIZvlQ2MDOvx53TACNNvXNFwSinLL1z2suWmM+xNmjuOVSndngb3FgD9r8fxURc6TToyw
-X-Received: by 2002:aed:3d2d:: with SMTP id g42-v6mr16712724qtf.195.1532959695108;
-        Mon, 30 Jul 2018 07:08:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532959695; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3971794wru;
+        Mon, 30 Jul 2018 09:35:01 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdKij1LrKLxCLczJr7B260pa+Y8Hfle164E3SQlyoWiOgBJZS+NA6uUpVbHVxxq1QMC0qaM
+X-Received: by 2002:a37:7c41:: with SMTP id x62-v6mr15971263qkc.52.1532968501658;
+        Mon, 30 Jul 2018 09:35:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532968501; cv=none;
         d=google.com; s=arc-20160816;
-        b=PcMV1mG7MvylA+Vgu4kPI5+0IpwpWMa5YWN9l0MlhFfD+PybrX6fNgsNgWGMHjyIhB
-         AiTYTB4FznAy+9/k0dq5DZRZpuyzbbqWS4J1BZO9MTNecESKRjU/7IHqS9xpZCNRAS2a
-         CI8xJBmPZMK9pC57xazrlApWoSJlDFkrwDMpl2WGu0zv+ey8DXjjRf6vS8Zl/JH3C+0J
-         iixMi01vBYeB9s+VNJ8w6QPaxQ3K3r5va6oqaO2UhhYnCAzlBh+kRmXymR8j0beeVSR/
-         RCmPIjPfqZ2wZ04UhMSJ2jxQWQjnrXcacP3Pg+GpmUXYd8zjFe1m4XqkrgnZitgk8ro4
-         PRpA==
+        b=IpyChGKWQDRPTzWtdHhJ784oPpVR/T9i9rvta+fGGeCQmUBDrEhdxNpXlHG3Swu6yp
+         oHyWENORFrRQ9bbnWV3nJE1+C68+9qfnvhm4Qk5aItCB8xGC8AcBpLIEqjA07yqx4s1n
+         uTGSZqeYeta9cu6fkbwk61dLILpB+zVsIFV9rcAajK9bpqT9weE1RQ4YETBmJyeP7FXa
+         Nppjsa0A0oW3Bc/O+37T1moqtCQtEeN56VF/PCiooYoSW9TIFowd1j8n1SFmMSO5sHLb
+         zpVJj9wwYzh/DdQrLVnBvAKiYMzG0zpcg9yCWVJQqVmBkkAChqboA2DU/5iok4MD0mHq
+         LaBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=0KQFkCRiSziJJggXJPfiEIqnGQeEC51C9VAe0ARSv7k=;
-        b=DTzivCgEeooCkdVLPWbNueM8e6AFrapznevuwf3OfTaJ4jAtwk7Rejt1COVBCx0+3A
-         kLzEPG9dpCLfS23cd0Bapg0A1UBYe9pqg4s/SS5rrE5WcW0JzxpzJP0LOR3yYc9JeDOF
-         w4FI5yMHwvQ1cImiwzD9NbCfi9tT/fqEpjT6qvPsg8hVX9vw9mxjblREoesIudRBf9+/
-         RefS5P6FpRHRVmcvY5GLeUaf7kLIq59AErForj1aYMF9F1aOU1BUE0mP3h4eLaTsX0nQ
-         N+GXUeSs5dYTvsz2wXp/Z0+h8A7LaT27QzMHIB61XKRPX6MYNuEpqlUIRp7CKA0hzru0
-         mhUA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=R124qvSJXFJCRjTD5LSBGFkNuEAGPWirwITEpfsU+S8=;
+        b=QM5Q80Tkzgqg0/oXuPVkRmEE25tpsF2NpSYzfl1A2oRvpduep+PZ0XU+gG5xZysvkY
+         A7MZ3Sc6dpYWRwYfEIWwLPnkMcAEcsjJCt3P4IodiHckUc7xFxv23/77hax+pvt5EpVS
+         bFXWKC5yM1c6+Yhw2pt+0xsk49rKjLC//TY9rV72ewpdWH+kNd/goIyknPOBgW+RRXjQ
+         i8TAEnvkrd8XJOW+Yabo5zzh98+G51vkevcrX9R/UB7mIyfpjsw451rbHJNZiI8R3+au
+         f9YhlrA3vEQmxL+q0kDtrm8gh+Z6nexXZbMlYk1jG5FA03hZIcLwJtwAoN6IjMtwBwcF
+         OY1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aAHtJM5L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s77-v6si2985986qka.49.2018.07.30.07.08.14
+        by mx.google.com with ESMTPS id z2-v6si925660qvi.288.2018.07.30.09.35.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 07:08:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 30 Jul 2018 09:35:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=aAHtJM5L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52824 helo=lists.gnu.org)
+Received: from localhost ([::1]:53675 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fk8qM-0002FX-J6
-	for alex.bennee@linaro.org; Mon, 30 Jul 2018 10:08:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55893)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fkB8O-0000of-V1
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 12:35:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fk8q9-0002Eh-AQ
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:08:02 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fkAyp-0001KZ-2x
+	for qemu-devel@nongnu.org; Mon, 30 Jul 2018 12:25:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fk8q8-0002dV-FM
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:08:01 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:44781)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fk8q8-0002d6-8T
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:08:00 -0400
-Received: by mail-oi0-x241.google.com with SMTP id s198-v6so21440462oih.11
-	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 07:08:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=0KQFkCRiSziJJggXJPfiEIqnGQeEC51C9VAe0ARSv7k=;
-	b=aAHtJM5LfaIRiq+UK3xtaDJllm/6Zzs8JUUQUFvRRkxc+Mpniox08F3g3ee7bc1mS5
-	tGjprA/OAgG7GcMOzwvkTWQCEEyZCIRRjvkVGgPHGYvcUeo3LgmiHUKtfAsth7ebv+h2
-	wto1itmureI3CpjM4EscQ4N/QDvduFD8pa+ss=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=0KQFkCRiSziJJggXJPfiEIqnGQeEC51C9VAe0ARSv7k=;
-	b=I1qTcQ6Stn6x5og/XzupngyswfSTNwRp/JSbjzsY/GY0W2XJb+Kb3NpJ8CxewyZC1f
-	ixRD+XKv7WEobsHIXoJwFFdTDh4sUUEYyulzOmpaSz6rEaUUMPNxpXUZCTjysT6hMmSc
-	B9FgcQL8vyAG3U23pxFetkNrrXEHdDDnI13xV7oTYMvnf9bPdSz6LHWQaoguXlgoKhMJ
-	2D5MtVLuAkWlK7tmhhrxSOzfNtJyF0l4rAE/UXHqWUEF9dCtBN3Hdz57luoKo0XvYzmo
-	k4yeETcM7vvrVB7k80R+H1NvnyqGq/dG2VyufWxu+VNioJsuFd8TTHvPqpqDnyWmBHbe
-	h3Eg==
-X-Gm-Message-State: AOUpUlH+KuRwKRVtkAPURpLCGNaDPFPfxm1Ia4dvSL7ym0QEJA9I3aqz
-	29z65/6hdRT3zqJBCr7tR6wWlfMJpnR0WvETp3qzaA==
-X-Received: by 2002:aca:4a49:: with SMTP id
-	x70-v6mr16257862oia.11.1532959679569; 
-	Mon, 30 Jul 2018 07:07:59 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 07:07:39
-	-0700 (PDT)
-In-Reply-To: <20180727132311.2777-1-f4bug@amsat.org>
-References: <20180727132311.2777-1-f4bug@amsat.org>
+	(envelope-from <pm215@archaic.org.uk>) id 1fkAyo-0001Ck-32
+	for qemu-devel@nongnu.org; Mon, 30 Jul 2018 12:25:07 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:43834)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fkAyl-0001Ab-07; Mon, 30 Jul 2018 12:25:03 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fkAyk-0004Lf-0m; Mon, 30 Jul 2018 17:25:02 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Jul 2018 15:07:39 +0100
-Message-ID: <CAFEAcA8eyggMm5QH_VyJYHO2orQUgS1vRdRV9s4qrit+QvpiJg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 30 Jul 2018 17:24:57 +0100
+Message-Id: <20180730162458.23186-5-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180730162458.23186-1-peter.maydell@linaro.org>
+References: <20180730162458.23186-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [PATCH] target/arm: Remove duplicate 'host' entry in
- '-cpu ?' output
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-devel] [PATCH 4/5] hw/arm/iotkit: Wire up the dualtimer
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2akd1zDo/wj1
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: patches@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zaNqsolSJDXI
 
-On 27 July 2018 at 14:23, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
-te:
-> Since 86f0a186d6f the TYPE_ARM_HOST_CPU is only compiled when CONFIG_KVM
-> is enabled.
->
-> Remove the now redundant special-case introduced in a96c0514ab7, to avoid=
-:
->
->   $ qemu-system-aarch64 -machine virt -cpu \? | fgrep host
->   host
->   host (only available in KVM mode)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  target/arm/helper.c | 6 ------
->  1 file changed, 6 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 22d812240a..66afb08ee0 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5591,12 +5591,6 @@ void arm_cpu_list(FILE *f, fprintf_function cpu_fp=
-rintf)
->      (*cpu_fprintf)(f, "Available CPUs:\n");
->      g_slist_foreach(list, arm_cpu_list_entry, &s);
->      g_slist_free(list);
-> -#ifdef CONFIG_KVM
-> -    /* The 'host' CPU type is dynamically registered only if KVM is
-> -     * enabled, so we have to special-case it here:
-> -     */
-> -    (*cpu_fprintf)(f, "  host (only available in KVM mode)\n");
-> -#endif
->  }
+Now we have a model of the CMSDK dual timer, we can wire it
+up in the IoTKit.
 
-Applied to target-arm.next for 3.0, thanks.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/iotkit.h | 3 ++-
+ hw/arm/iotkit.c         | 8 +++++---
+ 2 files changed, 7 insertions(+), 4 deletions(-)
 
--- PMM
+diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+index 2cddde55dd1..3e6d806e352 100644
+--- a/include/hw/arm/iotkit.h
++++ b/include/hw/arm/iotkit.h
+@@ -56,6 +56,7 @@
+ #include "hw/misc/tz-ppc.h"
+ #include "hw/misc/tz-mpc.h"
+ #include "hw/timer/cmsdk-apb-timer.h"
++#include "hw/timer/cmsdk-apb-dualtimer.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/or-irq.h"
+ #include "hw/core/split-irq.h"
+@@ -87,7 +88,7 @@ typedef struct IoTKit {
+     SplitIRQ mpc_irq_splitter[IOTS_NUM_EXP_MPC + IOTS_NUM_MPC];
+     qemu_or_irq mpc_irq_orgate;
+ 
+-    UnimplementedDeviceState dualtimer;
++    CMSDKAPBDualTimer dualtimer;
+     UnimplementedDeviceState s32ktimer;
+ 
+     MemoryRegion container;
+diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+index 8cadc8b1608..130d013909e 100644
+--- a/hw/arm/iotkit.c
++++ b/hw/arm/iotkit.c
+@@ -139,7 +139,7 @@ static void iotkit_init(Object *obj)
+     sysbus_init_child_obj(obj, "timer1", &s->timer1, sizeof(s->timer1),
+                           TYPE_CMSDK_APB_TIMER);
+     sysbus_init_child_obj(obj, "dualtimer", &s->dualtimer, sizeof(s->dualtimer),
+-                          TYPE_UNIMPLEMENTED_DEVICE);
++                          TYPE_CMSDK_APB_DUALTIMER);
+     object_initialize_child(obj, "ppc-irq-orgate", &s->ppc_irq_orgate,
+                             sizeof(s->ppc_irq_orgate), TYPE_OR_IRQ,
+                             &error_abort, NULL);
+@@ -390,13 +390,15 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
+-    qdev_prop_set_string(DEVICE(&s->dualtimer), "name", "Dual timer");
+-    qdev_prop_set_uint64(DEVICE(&s->dualtimer), "size", 0x1000);
++
++    qdev_prop_set_uint32(DEVICE(&s->dualtimer), "pclk-frq", s->mainclk_frq);
+     object_property_set_bool(OBJECT(&s->dualtimer), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dualtimer), 0,
++                       qdev_get_gpio_in(DEVICE(&s->armv7m), 5));
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
+     object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[2]", &err);
+     if (err) {
+-- 
+2.17.1
+

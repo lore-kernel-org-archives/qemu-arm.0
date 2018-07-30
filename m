@@ -1,136 +1,142 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1267192wru;
-        Fri, 27 Jul 2018 16:59:43 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeZmTpuYATIiRwFvdwkHo/vTo0Wvl2DFC6S9WcnY8UPfkHFDQuDHKabPig9zR1lgI9//xG1
-X-Received: by 2002:aed:3143:: with SMTP id 61-v6mr8268013qtg.19.1532735983720;
-        Fri, 27 Jul 2018 16:59:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532735983; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4035203wru;
+        Mon, 30 Jul 2018 10:38:38 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcyYWO8PEkaP1Px8X8MhQOwG1axxz4R4lLso+0MZrjxV/Rgeg298el2DLN24s3w0FKLgLby
+X-Received: by 2002:a0c:d60f:: with SMTP id c15-v6mr16059263qvj.70.1532972318529;
+        Mon, 30 Jul 2018 10:38:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532972318; cv=none;
         d=google.com; s=arc-20160816;
-        b=oAJYlDyNB5Jlldh3R6NfPR/SiYdmiKafRhahBgK4UDvtvsz3Ugq2rxKtb0whJpWgO/
-         mL+CxUAOHnvOAHeTf1rCKTikecdta5XrpAUG8wTz1bZ+DIzlRj4EzI27t5qG8phXEQm/
-         DxPRfEtpV/MupKux9EuwpYry1vqCt3BzSWylW60Popzibh/DwnalB63p7ejHkghzs0fL
-         9fPgYxC5RE9946B/3M7JMgGiQ9+FaFfUNrixwq+GWTzAk8eTIjp4CLN9w/6/pt3vdYb2
-         5lix0Ma1gPt7OUYOj7mLIlphvycE8Y1XTGbADfG8U8uNCf+DU9UUjYnGZhOSEwueu0Cl
-         DoKQ==
+        b=H4b712JmAQSrn47xi6uWLu3ljm4+V2/CRH57NaAn+Xj/WI9a1IwnJ42Ai7R9+ANMXx
+         Tl6So5wC+IyNYecSzZAQZGlgQyT0/Ykc5BWfywzh1GdtDM8ksb9oTMkNQGqsiZullv3u
+         h4MMFRzYKsals11B/lh1ikTzs7lEJoucjJYhQpgXbYUncYZ9eMd98FNlY2s0gHiGotai
+         nyPxTwGkycvnr1qBbcC2PJOiU6FuXZi13bQafOnTLxak2ZBWjDHOWy7f/XsKr4++ev4G
+         EuScxlO9wuX4W1RJqv31RVDNEHO9QcrbQOB0h4qHofaIwR0xPs2im7mWtRlhxPxlxKI4
+         XVkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:mime-version
-         :content-transfer-encoding:references:in-reply-to:to:from:date
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=s86bvqpbNx83fpLWJnxUbhBaYtdAcbwh89gjpAfoszI=;
-        b=u06F/I4W6zLQAv4CfJpCpZsAXUKHJ56pblPdTjIHTubuEtaZpKzkd/OKvKCqAD7LD2
-         VJlgNkX/sgUO7ytTs+kNOkWr9Kct9VYf3AkKu5IB3aFARNBfxiyDTjzaOiOtMn0A/jTm
-         J+ckPK74BigGmc8uvrJ/EN1YNLqLAjNxYjYL245+sUbwLEQ1pfzH9KuBs7ZRWfr6i2t2
-         kAhQho+j0ayvR0H4h4U8v8lEgGcOqPynS0PKhxgkJFXlwAHp1Yv+ggq8m0/FaCD8lVH7
-         zXzZ5B1a/9wGHnxGrUEtotimJGVlO9/ZccYEbh8m0SMMZ85eNl0N9aGVtQgSOmG9JqCJ
-         hASQ==
+        bh=d3jObgrOaynkKEEa9djdEzqBz0M7OowsqKYFCTlZgDA=;
+        b=hqXl3oTfwjJVy0FIY4anil10SD3+mgstVaFZqCRMDQZrUSoa3XGPPeo/+5WILf29WA
+         ePaM8BK8a4Z1p1lt+8zpFtuv2hIEijRWnCXraGEFbXei8HIhRDopfGmH8eu9wkh+ssLR
+         /0Yjj14j/qRdDtnYRdjC4jDUy4xGxZj9nnyf69bJH0tDSQ6w3lMxajlVB13AfhKUj/5s
+         SjxbOHf106NozQpEpSnY+qDguPIqQYt78YIe5K7zbbkwKWtzl2RYPA1dGVbsisrHYz7+
+         XWTMhQP6Udfz3hLu2s3j6D7MwEyuhRA8pFQc4VyriumZxPLZVoevVKcZSE561EUNm3JV
+         Zbkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=cyoRWVLZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m54-v6si3532567qvh.220.2018.07.27.16.59.43
+        by mx.google.com with ESMTPS id r124-v6si1996059qkc.191.2018.07.30.10.38.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 27 Jul 2018 16:59:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 30 Jul 2018 10:38:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43367 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=cyoRWVLZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54335 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fjCe7-0003in-AQ
-	for alex.bennee@linaro.org; Fri, 27 Jul 2018 19:59:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53674)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fkC7x-0005UN-SA
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 13:38:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33694)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <suhang16@mails.ucas.ac.cn>) id 1fjCd7-0003Rl-Ft
-	for qemu-devel@nongnu.org; Fri, 27 Jul 2018 19:58:42 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fkC2z-0001hy-8O
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:33:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <suhang16@mails.ucas.ac.cn>) id 1fjCd6-0007uH-LP
-	for qemu-devel@nongnu.org; Fri, 27 Jul 2018 19:58:41 -0400
-Received: from smtp65.cstnet.cn ([159.226.251.65]:52412 helo=cstnet.cn)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <suhang16@mails.ucas.ac.cn>)
-	id 1fjCd1-0007jX-7X; Fri, 27 Jul 2018 19:58:35 -0400
-Received: by ajax-webmail-APP-19 (Coremail) ; Sat, 28 Jul 2018 07:58:17
-	+0800 (GMT+08:00)
-X-Originating-IP: [45.77.249.120]
-Date: Sat, 28 Jul 2018 07:58:17 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: "Su Hang" <suhang16@mails.ucas.ac.cn>
-To: =?UTF-8?Q?philippe_mathieu-daud=C3=A9?= <f4bug@amsat.org>, 
-	qemu-devel@nongnu.org
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.5 build 20161025(89512.9021)
-	Copyright (c) 2002-2018 www.mailtech.cn cstnet
-In-Reply-To: <0c2c23f3-5ec9-5446-17ca-683d267d0f4c@amsat.org>
-References: <20180725085944.11856-1-stefanha@redhat.com>
-	<20180725085944.11856-8-stefanha@redhat.com>
-	<0c2c23f3-5ec9-5446-17ca-683d267d0f4c@amsat.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <peter.maydell@linaro.org>) id 1fkC2y-0007lF-E9
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:33:29 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:36237)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fkC2y-0007l3-94
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:33:28 -0400
+Received: by mail-oi0-x242.google.com with SMTP id n21-v6so22776826oig.3
+	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 10:33:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=d3jObgrOaynkKEEa9djdEzqBz0M7OowsqKYFCTlZgDA=;
+	b=cyoRWVLZuAoDasJeZhs4LksreoAQrES3PSqfV9Xk51TjVg3wEaQ3yxPctLz/dwQ4j+
+	veTYPI+zd9f2Z5V0grBWwSUA2l2XSkImj5b+gXrR20D0sONDdqEMMl66dsrn3nB9apyn
+	SD+8UVcJwq7FDJW658CAW/I0VgLmVUeG9FBsw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=d3jObgrOaynkKEEa9djdEzqBz0M7OowsqKYFCTlZgDA=;
+	b=q5Pdk5EWZASpJc6XVSlpIMcyGb7CFFKXt1kHqmf+OCKif3LHGoaOwQkUGunm+Ha68Q
+	7fp9vuCgJSX7Ogz0Wbmrt0iQDobuFiBNMkMY+FW6JxsGSXzIKfa3oiZ4BQsWv1XKxGFd
+	+cOfX6aYaRQx5XaVAT2x1L6vpbwMTbGbJJO5GeUb7DFlUHNPN4G4AG4g0Se3PoNbQqH4
+	f75u36ELX02dbHkkussanSqmbXFRuNMjX6DjehwALW3mLwmvsPrsitkVik0MLC2S5THp
+	Y0c7nXC9s9XnXmi8iSDKszo2LxeMbt1+wA0Msdi5YpCVNZX2ijaVijeBOrfcBhtg28JT
+	EG7g==
+X-Gm-Message-State: AOUpUlEESsohhNipNjnC0WcMxfe2h0t9McyHzmO6nUZt5yasdmTM/AYo
+	XRKDVuuOHnEb/J8sAjh461c+NtIHTLbdxso6Id3/tg==
+X-Received: by 2002:aca:4a49:: with SMTP id
+	x70-v6mr16981046oia.11.1532972007620; 
+	Mon, 30 Jul 2018 10:33:27 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <6c1020b8.17461.164de2dc109.Coremail.suhang16@mails.ucas.ac.cn>
-X-Coremail-Locale: en_US
-X-CM-TRANSID: 2QCowAAnCSqasVtbM9dEAA--.56264W
-X-CM-SenderInfo: pvxkt0rjrwqzpdlo2hpxfd2hldfou0/1tbiBwYTEllo9PMbVQAAs4
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
-	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
-	daVFxhVjvjDU=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 159.226.251.65
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v3 7/7] Add QTest testcase for
- the Intel Hexadecimal
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 10:33:07
+	-0700 (PDT)
+In-Reply-To: <20180725085944.11856-4-stefanha@redhat.com>
+References: <20180725085944.11856-1-stefanha@redhat.com>
+	<20180725085944.11856-4-stefanha@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 30 Jul 2018 18:33:07 +0100
+Message-ID: <CAFEAcA9N370ujtaJ-jHy==sOqwq42sOYw3PWt6oATYMha=QW=Q@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH v3 3/7] hw/arm: make bitbanded IO optional on
+ ARM M Profile
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jim@groklearning.com, mail@steffen-goertz.de,
-	ilg@livius.net, alistair@alistair23.me, sundeep.lkml@gmail.com,
-	qemu.ml@steffen-goertz.de, qemu-arm@nongnu.org, joel@jms.id.au,
-	stefanha@redhat.com, jusual@mail.ru
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oBhbro30Axqu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jim Mussared <jim@groklearning.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
+	Su Hang <suhang16@mails.ucas.ac.cn>, Liviu Ionescu <ilg@livius.net>,
+	Alistair Francis <alistair@alistair23.me>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Steffen Gortz <qemu.ml@steffen-goertz.de>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Julia Suvorova <jusual@mail.ru>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iz5tZxbIRZZi
 
-PiA+ICsjZGVmaW5lIEJJTl9TSVpFIDE0Ngo+ID4gKwo+ID4gK3N0YXRpYyB1bnNpZ25lZCBjaGFy
-IHByZV9zdG9yZVtCSU5fU0laRV0gPSB7Cj4gPiArICAgIDQsICAgMjA4LCAxNTksIDIyOSwgMjIs
-ICAwLCAgIDAsICAgMjM1LCAyNTQsIDI1NSwgMjU1LCAyMzQsIDE1MiwgMTYsICAxLAo+ID4gKyAg
-ICAwLCAgIDQsICAgMTc2LCA0NSwgIDIyOSwgMCwgICAxNzYsIDE0MSwgMjI2LCAxMiwgIDIwOCwg
-NzcsICAyMjYsIDgsICAgMCwKPiA+ICsgICAgMTEsICAyMjksIDYsICAgMCwgICAwLCAgIDIzNCwg
-OCwgICA0OCwgIDI3LCAgMjI5LCAwLCAgIDMyLCAgMjExLCAyMjksIDQ0LAo+ID4gKyAgICA0OCwg
-IDE1OSwgMjI5LCAwLCAgIDMyLCAgMTMxLCAyMjksIDgsICAgNDgsICAyNywgIDIyOSwgMSwgICA0
-OCwgIDEzMSwgMjI2LAo+ID4gKyAgICA4LCAgIDQ4LCAgMTEsICAyMjksIDgsICAgNDgsICAyNywg
-IDIyOSwgMCwgICA0OCwgIDIxMSwgMjI5LCAwLCAgIDAsICAgODMsCj4gPiArICAgIDIyNywgMjQ0
-LCAyNTUsIDI1NSwgMjYsICAwLCAgIDAsICAgMTYwLCAyMjUsIDAsICAgMjA4LCAxMzksIDIyNiwg
-NCwgICAxNzYsCj4gPiArICAgIDE1NywgMjI4LCAzMCwgIDI1NSwgNDcsICAyMjUsIDAsICAgMTYs
-ICAzMSwgIDE2LCAgMCwgICA3MiwgIDQ1LCAgMjMzLCA0LAo+ID4gKyAgICAxNzYsIDE0MSwgMjI2
-LCA4LCAgIDAsICAgMTU5LCAyMjksIDIzMCwgMjU1LCAyNTUsIDIzNSwgMCwgICAwLCAgIDE2MCwg
-MjI1LAo+ID4gKyAgICAwLCAgIDEzNiwgMTg5LCAyMzIsIDEzMiwgMCwgICAxLCAgIDAsICAgMCwg
-ICAxNiwgIDMxLCAgMTYsICA3MiwgIDEwMSwgMTA4LAo+ID4gKyAgICAxMDgsIDExMSwgMzIsICAx
-MTksIDExMSwgMTE0LCAxMDgsIDEwMCwgMzMsICAxMCwgIDB9Owo+IAo+IENhbiB0aGlzIGJlOgo+
-IAo+ICAgMHgwNCwgMHhkMCwgMHg5ZiwgMHhlNSwgICAweDE2LCAweDAwLCAweDAwLCAweGViLCAg
-IDB4ZmUsIDB4ZmYsIDB4ZmYsCj4gMHhlYSwKPiAgIDB4OTgsIDB4MTAsIDB4MDEsIDB4MDAsICAg
-MHgwNCwgMHhiMCwgMHgyZCwgMHhlNSwgICAweDAwLCAweGIwLCAweDhkLAo+IDB4ZTIsCj4gICAw
-eDBjLCAweGQwLCAweDRkLCAweGUyLCAgIDB4MDgsIDB4MDAsIDB4MGIsIDB4ZTUsICAgMHgwNiwg
-MHgwMCwgMHgwMCwKPiAweGVhLAo+ICAgMHgwOCwgMHgzMCwgMHgxYiwgMHhlNSwgICAweDAwLCAw
-eDIwLCAweGQzLCAweGU1LCAgIDB4MmMsIDB4MzAsIDB4OWYsCj4gMHhlNSwKPiAgIDB4MDAsIDB4
-MjAsIDB4ODMsIDB4ZTUsICAgMHgwOCwgMHgzMCwgMHgxYiwgMHhlNSwgICAweDAxLCAweDMwLCAw
-eDgzLAo+IDB4ZTIsCj4gICAweDA4LCAweDMwLCAweDBiLCAweGU1LCAgIDB4MDgsIDB4MzAsIDB4
-MWIsIDB4ZTUsICAgMHgwMCwgMHgzMCwgMHhkMywKPiAweGU1LAo+ICAgMHgwMCwgMHgwMCwgMHg1
-MywgMHhlMywgICAweGY0LCAweGZmLCAweGZmLCAweDFhLCAgIDB4MDAsIDB4MDAsIDB4YTAsCj4g
-MHhlMSwKPiAgIDB4MDAsIDB4ZDAsIDB4OGIsIDB4ZTIsICAgMHgwNCwgMHhiMCwgMHg5ZCwgMHhl
-NCwgICAweDFlLCAweGZmLCAweDJmLAo+IDB4ZTEsCj4gICAweDAwLCAweDEwLCAweDFmLCAweDEw
-LCAgIDB4MDAsIDB4NDgsIDB4MmQsIDB4ZTksICAgMHgwNCwgMHhiMCwgMHg4ZCwKPiAweGUyLAo+
-ICAgMHgwOCwgMHgwMCwgMHg5ZiwgMHhlNSwgICAweGU2LCAweGZmLCAweGZmLCAweGViLCAgIDB4
-MDAsIDB4MDAsIDB4YTAsCj4gMHhlMSwKPiAgIDB4MDAsIDB4ODgsIDB4YmQsIDB4ZTgsICAgMHg4
-NCwgMHgwMCwgMHgwMSwgMHgwMCwgICAweDAwLCAweDEwLCAweDFmLAo+IDB4MTAsCj4gICAnSCcs
-ICAnZScsICAnbCcsICAnbCcsICAgICdvJywgICcgJywgICd3JywgICdvJywgICAgJ3InLCAgJ2wn
-LCAgJ2QnLCAgJyEnLAo+ICAgJ1xuJywgJ1wwJwo+IH07Cj4gCj4gPwoKWWVzLCBnb29kIHN1Z2dl
-c3Rpb24uIFlvdXIgdmVyc2lvbiBpcyBjbGVhcmVyIGFuZCBtb3JlIHJlYWRhYmxlIGZvciBodW1h
-bnMuCgpCZXN0LApTdSBIYW5n
+On 25 July 2018 at 09:59, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> Some ARM CPUs have bitbanded IO, a memory region that allows convenient
+> bit access via 32-bit memory loads/stores.  This eliminates the need for
+> read-modify-update instruction sequences.
+>
+> This patch makes this optional feature a ARMMProfile qdev property,
+> allowing boards to choose whether they want bitbanding or not.
+>
+> Status of boards:
+>  * iotkit (Cortex M33), no bitband
+>  * mps2 (Cortex M3), bitband
+>  * msf2 (Cortex M3), bitband
+>  * stellaris (Cortex M3), bitband
+>  * stm32f205 (Cortex M3), bitband
+>
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

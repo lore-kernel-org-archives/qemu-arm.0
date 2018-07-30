@@ -1,190 +1,162 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3769788wru;
-        Mon, 30 Jul 2018 06:19:18 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfLNGChHY31A9KTfhQuNB4dh0jxSSuqcJ6bZ2Tgd7JSNw4C5LRS+ObgQ0+yrAM/xjc211+E
-X-Received: by 2002:ac8:5207:: with SMTP id r7-v6mr16591329qtn.11.1532956758006;
-        Mon, 30 Jul 2018 06:19:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532956758; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3815241wru;
+        Mon, 30 Jul 2018 07:03:43 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcjflYWNgTivRrNbxAnpYoByoIv2dNlXXMVhSm5d+hVNe9ScSCBgpVfEjPnmvhJAmYmy4Xi
+X-Received: by 2002:a0c:f411:: with SMTP id h17-v6mr15279888qvl.25.1532959423783;
+        Mon, 30 Jul 2018 07:03:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532959423; cv=none;
         d=google.com; s=arc-20160816;
-        b=IqLgFyIgbogqXv2U7qM7GQPNzRm6tvpiOBoEkuvzButJVhvIp0oRZgiwAUw9qLLhUB
-         5pTc2XssF2DV3qali+WDD7RlKRBRprDII/3Y1qaEECAS5fSsA0Dm1d8jUdmzfLtyZlOI
-         CSDjruYoCAKYU07EFBKEDW8dJsIJy4CTha3BQ6nTg4kDsJSo4mLcLLtqukgm2QU4RLDp
-         ZX6677TIumccUpjdDZIkOlZFowLkyLz2ybz/LJrPvhKxUmd1hYKMbQE19vfnYzD00hsy
-         m5gbmKD6DsdZfleRGaGc3pz1Ayas1jqHS+ELeZoJ5EYYce4xoHjkP2QN3flKsCzd5BOJ
-         VoEw==
+        b=KOVy5Ci3Mi73YY9n1mTM1gqLS7zwSGIlvkc2sv8NizF5KXtM0nV8QjOpbyl/zUrADx
+         ZymIQOt2mJbtnXFrb+GMkWNtG2xXTXxJ92EkV9+l5Ou/SuFWbvWVtdyvvycyGLr7QLnJ
+         ogmT6gax5JiXoCQEuDKr44aNLwYMBuuCIUJA43AH0o9CZMask51XOxnIZ8YlZI5BMUnk
+         NWoibNJwrZnJFKTtOKVqyt7IF4p7ScGJOXY9uRyACOwau/Esz/4h2HlfjiOAHdI6NhIn
+         RiPNOfF9LziKqYrZ/HaeLTCqyuDGll80TZgAl3hc8nAJUTx6RbFPsKhMtWzYB36jsa+j
+         r4dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:message-id:date:to:from:dkim-signature:dkim-signature
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=4v3dHIjUOb0/uC56DqPrS8Y+vpu8ozaYS3uyoH+v6BY=;
-        b=tUGPhnooMyRTCKeP3RH6OGcUaVarPMWItI9j5PS+fTF2IQK2OvDIe2snz+3mbyy+gi
-         600+I/NHNqQLG6zjcgX/erq+7L4AN6OclP4yw2uzD4PEYc/oSaa+/+TwBAVO4yLUcsoN
-         P0VBRxSH/0aROUvltKq5dlH7yOBOkHIJ4xX8WkUivS4+8uA3zYHYCjwjfjzVac1IRDUF
-         Z99d4NnsQRUr1Gq5AoX8JdCXmdnW2GveQ5EJfCmU7g8Ws93BxG2pKalJl59s5pHFsJSW
-         X5styAU3KmRBCWQ0iQvHGzoZMjXCJ5MD3mUjiWcViEAJjU8l8udqkM2Tcft1UqubNP0K
-         3/CQ==
+        bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
+        b=XcmFty7DWgrbN8YnyOOK0F2DY6cHlOlbP7RTCulhQlFvfrzSoIPwqKesGJiKGZy65K
+         2VWkVapK68XwWuTZyB6IWX+os7dw7YGRvsTWd8vTgDILNtGdHEhYbcHVtE0G2h1ZA9nC
+         2zHS/StSlfdXfFjclSOAHghOaiQVQO1kfDZyKKN4u+alZZvB8xZDCRZYQBu0z4eAXDpn
+         qyGrDm/5MPlzrtW4MNo7GTjNqFf5MmQgQOTIyaCu2ryD407+2GMFIBCA3QCHv4PEIC30
+         gWScifQ88s6+z4dsee8xxiZ71UgDdgnOQouQFTbY4Nj/CgqlAwCi98RpJo8ckzrkW0Mm
+         NHsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=3RQy9y89;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=k365JCXn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dbFM4aws;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=U3Ke3+K6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y15-v6si2862188qvj.254.2018.07.30.06.19.17
+        by mx.google.com with ESMTPS id d17-v6si2602063qvo.36.2018.07.30.07.03.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 06:19:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 30 Jul 2018 07:03:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=3RQy9y89;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=k365JCXn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52572 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dbFM4aws;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=U3Ke3+K6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52810 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fk84z-0002vt-HF
-	for alex.bennee@linaro.org; Mon, 30 Jul 2018 09:19:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42397)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fk8lz-0000zv-21
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 10:03:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54918)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.burton@greensocs.com>) id 1fk83O-00026J-G3
-	for qemu-devel@nongnu.org; Mon, 30 Jul 2018 09:17:40 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1fk8lj-0000yM-Kf
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:03:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.burton@greensocs.com>) id 1fk83N-000872-Eg
-	for qemu-devel@nongnu.org; Mon, 30 Jul 2018 09:17:38 -0400
-Received: from greensocs.com ([193.104.36.180]:54402)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.burton@greensocs.com>)
-	id 1fk83F-00083o-Vz; Mon, 30 Jul 2018 09:17:30 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 6B365DFFE9;
-	Mon, 30 Jul 2018 15:17:21 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532956641;
-	bh=vVJjTiEiZWVEgPkbY141wIr/spDvYUUwLL75OU5j2k4=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject;
-	b=3RQy9y89og0NKdJxse7RprMyJlHYl70WV9xLObWX7Wg4ZS+EsBWd1/MMJ48//TyqQ
-	w35bamTtLeKVc2cr9ENMxyWi1qNSY0YM25E4aKmbcJ0SQYz9j9uGgpjzhix0MMt4L6
-	+LjUhUeHhwrrTNY6Ptc9rRocCQERxcWZMiHHMl1I=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hb2ye4jEfuQo; Mon, 30 Jul 2018 15:17:20 +0200 (CEST)
-Received: from [192.168.1.39] (109.red-176-86-38.dynamicip.rima-tde.net
-	[176.86.38.109])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: mark.burton@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id F33FBDFFDF;
-	Mon, 30 Jul 2018 15:17:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1532956640;
-	bh=vVJjTiEiZWVEgPkbY141wIr/spDvYUUwLL75OU5j2k4=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject;
-	b=k365JCXn+S+G+wuvTSzj3wK+IzPbQz5s2gtcW++uqPqe/ZJNM0T0CtfmabMd0D1eW
-	UWBAWtnFZ6N0nJxU0jDEsSvc9TYDTbjlEcHI9Ivy+kQ7unKmFla5HGH7rb2O4lnCVS
-	lTXq8ZBQ5KHFt2D3qy2mo/I56+funbSSQ5XeDxfk=
-From: Mark Burton <mark.burton@greensocs.com>
-To: KONRAD Frederic <frederic.konrad@adacore.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Damien Hedde <damien.hedde@greensocs.com>
-Date: Mon, 30 Jul 2018 15:17:16 +0200
-Message-ID: <164eb4a8d68.27d4.d127438ad377917fe05d617879a0d354@greensocs.com>
-In-Reply-To: <2d22fcb2-b825-6195-a935-bf2adb3e0a60@adacore.com>
-References: <cover.1532701430.git.damien.hedde@greensocs.com>
-	<CAFEAcA-X=eziUHurc0SEcGEeM25t4YgkTczsVeF8myWHjfp3MQ@mail.gmail.com>
-	<2d22fcb2-b825-6195-a935-bf2adb3e0a60@adacore.com>
-User-Agent: AquaMail/1.16.0-1193 (build: 101600006)
+	(envelope-from <joel.stan@gmail.com>) id 1fk8li-00088A-Qb
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:03:27 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:39249)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1fk8lY-000836-Ki; Mon, 30 Jul 2018 10:03:16 -0400
+Received: by mail-qt0-x241.google.com with SMTP id q12-v6so12129667qtp.6;
+	Mon, 30 Jul 2018 07:03:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
+	b=dbFM4awsKMMaiKlNpXImqBKyjLe5KK7Qel0QoR8SQwIYHI/D6xYsyTIqP819FYq2zG
+	SSEtbHrR/VFkDHdHm016CV56AQewwovYTc29WsHKYLT9B0ixhJrAdztHM8Qd2k3pz0vt
+	iyIHCZczmr6gONn9s/A3nJ84SVhkBYI5dBhh+TXsvOP7zP/Lf3tTjAMIRDIkhrLELrYQ
+	gqsx+ePo1usrtwfbeWscxGsFLhJDMhVs3f6BpLsvD1n37Tly+lB85f9yU/ckYhsNapNH
+	7+b0WoJ9bTPAYAhj4xiMP0qch/eLn7TrnDkGoZD0zJl37jU30PnuEiZbUtS3VaOCkFl5
+	9VNA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
+	b=U3Ke3+K6zuXo280o+iBCW3nhrzNcXfazh17QVMSQxKR0r7g0EeKsj4WtOS7eTcLAQ+
+	sEfvjZOZfwcKTQXv5YuJ96E29w5JAKGp/Smfs2pTEiu1TMAJKJs8CvC1v2TzrP/DPIWu
+	EGjx07eE2l1qtjZMFHhuljZMBsdmt5tVCVmy8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
+	b=CuWq65d8fdIpoCjL5kYhNfydHLjTbx2Qluu5iiKJ1YoH3sepNByo8foKqKeyLB8A4B
+	QQ0nXE3gL8Ay/8tLWa9npfojl9Z7CwAG1e3eWFgKLQ/UNFcKIUaAjph1Dls1TxZXbxBI
+	8/xr+5EVA8eZaMGvD8vbUS32x7ARKMX/YnSMwPTz3rbuV2nESeJodW1xky7RyqeoxpGY
+	JQqdjIHhI0vL06Ff7dSKZ8QfSo/fOOk2YUHysBTPbT3DExY1taNtpOCkePzv4UAS/jK2
+	9SoTTLYW/BaAso897SV5fY/QjDEsDBlEYBuii8jYDV7g86vNtC7QSoSo0weQ4y9FFt2V
+	i1Uw==
+X-Gm-Message-State: AOUpUlHpm0zCSBxuoacemCZ/wu2y+23zpFikgtABe9z3/E1lR3dO+8hd
+	fh7NqRjXv/gGeIcs4+lgGKl9ADw8XwprHNzVmew=
+X-Received: by 2002:ac8:679a:: with SMTP id
+	b26-v6mr17272835qtp.347.1532959395780; 
+	Mon, 30 Jul 2018 07:03:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; format=flowed; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 193.104.36.180
-Subject: Re: [Qemu-devel] [RFC PATCH 0/6] Clock and power gating support
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 2002:ac8:169d:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 07:02:55
+	-0700 (PDT)
+In-Reply-To: <94bc2d11-7916-bc4e-02d8-da62e3ed303b@mail.ru>
+References: <20180726023645.13927-1-joel@jms.id.au>
+	<20180726023645.13927-3-joel@jms.id.au>
+	<94bc2d11-7916-bc4e-02d8-da62e3ed303b@mail.ru>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 30 Jul 2018 23:32:55 +0930
+X-Google-Sender-Auth: LAGc5LX_Q9e7QBW-TO4ZLGhonWA
+Message-ID: <CACPK8XfYvU8+0s+FBGe7NuAst38ska0vpS8HVPWkM8OHyLFpdQ@mail.gmail.com>
+To: Julia Suvorova <jusual@mail.ru>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: Re: [Qemu-arm] [PATCH v3 2/3] arm: Add Nordic Semiconductor nRF51
+ SoC
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uJT8l0P8daoj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Hajnoczi <stefanha@gmail.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Jim Mussared <jim.mussared@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mQWlghyiZIu6
 
-Hi Pete, sorry for the tardy reply, Im not in the office.
+On 26 July 2018 at 20:31, Julia Suvorova <jusual@mail.ru> wrote:
 
+>> +++ b/hw/arm/nrf51_soc.c
 
-Your right  we shoujd have co-ordinated better the 2 patches, sorry for t=
-hat.
-
-Regarding this new patchset, we think there is a degree of complementary =
-to the
-clocktree one.
-Here we simply add a couple of generic power states to a device. We
-introduce
-an interface to control power and clock gating on any devices, with sensi=
-ble
-generic behaviour (reset on power on, disabling memory regions when
-asleep or
-off). The device can specialize this to adopt specific behaviours.
-
-It allows easy implementation of commonly found "system controller", "pin
-controllers", "power management unit", or similar blocks in SoCs.
-Specialization of devices can be implemented as-needed when a machine
-requires
-it.
-
-
-Cheers
-Mark
-
-On 27 July 2018 17:22:30 KONRAD Frederic <frederic.konrad@adacore.com> wr=
-ote:
-
-> Le 07/27/2018 =C3=A0 04:59 PM, Peter Maydell a =C3=A9crit :
->> On 27 July 2018 at 15:37, Damien Hedde <damien.hedde@greensocs.com> wr=
-ote:
->>> This set of patches add support for power and clock gating in device =
-objects.
->>> It adds two booleans to the state, one for power state and one of clo=
-ck state.
->>>
->>> The state is controlled trough 2 functions, one for power and one for=
- clock.
->>> Two new methods *power_update* and *clock_update* is added to the dev=
-ice class
->>> which are called on state change and can be overriden.
->>
->> So, you folks at Greensocs had a series a couple of years ago to try
->> to add clocktree support (which included handling things like guests
->> configuring clock rates, some clocks being "downstream" of others, and
->> so on). It didn't make it into mainline, though it did get a fair amou=
-nt
->> of design/code review. How does this approach fit into / compare with
->> that ?
->>
->> thanks
->> -- PMM
+>> +static void nrf51_soc_init(Object *obj)
+>> +{
+>> +    NRF51State *s = NRF51_SOC(obj);
+>> +
+>> +    memory_region_init(&s->container, obj, "nrf51-container",
+>> UINT64_MAX);
+>> +
+>> +    object_initialize(&s->cpu, sizeof(s->cpu), TYPE_ARM_M_PROFILE);
+>> +    object_property_add_child(OBJECT(s), "armv6m", OBJECT(&s->cpu),
+>> &error_abort);
+>> +    qdev_set_parent_bus(DEVICE(&s->cpu), sysbus_get_default());
+>> +    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type",
+>> ARM_CPU_TYPE_NAME("cortex-m0"));
+>> +    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 96);
 >
-> Hi all,
 >
-> I didn't have time to push a new version of the clock series and
-> I lost the track a little bit (was 13 months ago). Sorry for
-> that :(.. Would be still nice to have I think.
->
-> Cheers,
-> Fred
+> Where did this number come from? ARMv6-M NVIC supports only 32 interrupts.
 
+I think this was left over from when I was first creating a m0 based
+system (efm32hg) over a year ago. Good catch.
 
+I couldn't see a table of valid interrupts in the nrf51 datasheet. Are
+you able to find this information?
 
+If not, I will re-spin with the number of irqs set to 32.
+
+Cheers,
+
+Joel

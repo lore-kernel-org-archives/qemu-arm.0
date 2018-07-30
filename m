@@ -1,99 +1,99 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4042037wru;
-        Mon, 30 Jul 2018 10:46:15 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeieq1qdw0qhsqsFPl1++PCJP0KpFi70yRCcI5/9ikyjF3VBEWUS+d6SMZoecsvzSYYnOhG
-X-Received: by 2002:a37:18c4:: with SMTP id 65-v6mr16467444qky.415.1532972775600;
-        Mon, 30 Jul 2018 10:46:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532972775; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4053665wru;
+        Mon, 30 Jul 2018 10:59:11 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcZUnXYZmef6sXS/xi2ouzO4km9Ed3Pm1op6aRcPS2xe/P67bMvANEAXMHITmAqXtdS0DNV
+X-Received: by 2002:a37:9cd2:: with SMTP id f201-v6mr16575369qke.154.1532973551756;
+        Mon, 30 Jul 2018 10:59:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532973551; cv=none;
         d=google.com; s=arc-20160816;
-        b=jCaDwPNPVfS9KomieAC9S8Io7OryNwukRRSNRbpKxR5ZaMDHrumikISoVw/dWLWlIF
-         HEwATkHCST8bXHz9uwtfpgRGWBjxEncN2LS/b6VQB/m0Kvlvz/oL2R+88rw1ous3nLub
-         jJ3p/0MTiUT2uhtfW02gCRlW1F6VcU8/DKdLk94LgbXi1zw/M25UXiucttFd+1Ha/V2u
-         ZdKoDKTUzeYIPF2CEHvQ5J4wuin6aTccaHIbGpLqTKDcila97oFhvfovbrDWZOgkaxAO
-         H8LATFkGbE5zxu9U/KuHODR2LkXXv5ICLqFgZB8mzpBZlCz9aAJDCvtjnllqMByFbO8e
-         SfVA==
+        b=0yVm1BRPM0mKMPDbHz++pbpd2nUTWFaaZdZrMa8K58aeYHTIw5Ll6jPqXXjEyRZPYd
+         Ewb/F9+7esJLG6uanvZwmnwDp00kzHVJcYGPknx0yu97sYIpODNu1PsOHjxsLLXtZO3T
+         GzwvIsGKyPwNyn+/S2GOozXf2ejZCSWgBJFriW6Z4bKXMit/xlSff8Qb6GKD0HQwtCah
+         CkJyPIZsYjkw7V5KFn5bUSaB7vKkBfM+Xi0ZWKMeP9HnTwX2ZNnsXWNzOq4qjG3R5FsR
+         /zaR6qNLviJUYJAs2BKdS5E8U8ZWmS7Aw9u19sUGuPZEL7GGAV8MDtWRepZLizrZkfTR
+         4q/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=cuGvdaU0egAKBzu0UGDo00gKWSjpt70DrHChAmEGkHY=;
-        b=quqg/zWfDyUPLLKrJTCa00Xyvswt//mYkX3ixe5ML/Bx5QH0vyGDLmMvN3WqAc4bn3
-         TkUiPgvXwiTXqmlw4sCRLdLNPi88DNx74x9rJLjLTlYf3yZEHDcG4sqrP6SGOXO4PnoZ
-         kWJMwK2tDlxCLwouzQlfiK6gjoW3nxmQ6pWI1o2sHz/SdFIwwYt1hilO1M1YAiDKm5to
-         WylJjXm0sNSGukhYuLFl5cun2L2Ri6LYC4SGfsA338ODNphAC4iFyo6q11UzRbTcjMXU
-         ZQKEN+A2y2iv8Rj1omXS6ERHDHC/HeJIYyv0x7Z0KlzepAmqYrd1F7CsTgnP+kFcBGEL
-         AHpw==
+        bh=Okkf/Qq0kg4n2ajAlkMYmdH6mn8McLAbzMNoWRPb2Gs=;
+        b=dz3gMsg3iZw/4Co0X+k3/zHmTia8WXfW5dDWngBRK+QK5yx9vbzgi43h8qmJA+V9tQ
+         xBbfBHz9TT8MpOLGQYGt09TBjAtE+2KzJrRt//rxratkV+4/76j3+UQxAdBPm7aRaOVN
+         OReePMSTMzPnI7c6NE/bH+hfAhSDwxqsYq4G9hWDgvnqoPPzt5TccR6UkHNblDW/EsK0
+         DXz4u+JuRWF7uH8Eyg1/oS6vACT2UWg31bmMN/GTCNORt1C4zWHfXwpoHm4F+/RyjfiH
+         yoBp52CXufck248NukW/E4XJ1NE22Rm0U2iwEQQIEog4UIsr2Lu3ZCA/Ih2vLgBqQNWx
+         RWfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZqCbIM0S;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ez5QnpK6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y196-v6si9261388qky.244.2018.07.30.10.46.15
+        by mx.google.com with ESMTPS id q51-v6si12143505qtj.66.2018.07.30.10.59.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 10:46:15 -0700 (PDT)
+        Mon, 30 Jul 2018 10:59:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZqCbIM0S;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ez5QnpK6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54702 helo=lists.gnu.org)
+Received: from localhost ([::1]:55122 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fkCFL-0002d6-4b
-	for alex.bennee@linaro.org; Mon, 30 Jul 2018 13:46:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58159)
+	id 1fkCRr-0001TU-AL
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 13:59:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49109)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fkC0C-00084U-5U
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:30:37 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fkCQK-0000Qy-7Q
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:57:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fkC0B-0005or-Fo
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:30:36 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35475)
+	(envelope-from <peter.maydell@linaro.org>) id 1fkCQJ-0004VJ-DX
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:57:36 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:33141)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fkC0B-0005oU-Af
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:30:35 -0400
-Received: by mail-oi0-x242.google.com with SMTP id i12-v6so22780114oik.2
-	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 10:30:35 -0700 (PDT)
+	id 1fkCQJ-0004Uo-0K
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:57:35 -0400
+Received: by mail-oi0-x243.google.com with SMTP id l10-v6so22906118oii.0
+	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 10:57:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=cuGvdaU0egAKBzu0UGDo00gKWSjpt70DrHChAmEGkHY=;
-	b=ZqCbIM0Squ7cglsQWvQW7RvHvpWP1Vvl08yHsaqliZeoFkSsUy6rztIvwL14B6G//W
-	gtKf+k2X1J//RO+czxR5KfsVsbyDNDotKlHQUHvSYCyL/oSQZe8WBpO6+aErbgHyPZla
-	4dNE+Z7EUqWbORZad115Ovnld4eigU8e+vPUU=
+	:cc; bh=Okkf/Qq0kg4n2ajAlkMYmdH6mn8McLAbzMNoWRPb2Gs=;
+	b=ez5QnpK62So7lrObYVtVFBlVybcpd+ItbhDPaJZy9C8cdt9C9rGreqQ+pmUn+KG0Kh
+	cqM/aAibQDMyujspkrc1Oc0drtKNWJ018yhY2wM+Lxn2LjLd7ZRI15BUAkZIktSJ/ulX
+	3PkxonXrZtJRO/Hfnu14LTzBuTZPU9Pu/2RB0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=cuGvdaU0egAKBzu0UGDo00gKWSjpt70DrHChAmEGkHY=;
-	b=ikbIlT9exbA9p3Wji6oVZiJSIsP+gYM1aUjFZh1eW6i3o1quL2NP6voZVVA8bbHerJ
-	DSG+A9rLA2fXh+ul1ZqR6PlEETPMtPmclbFlPnAl9fRPIZ20sTgpltcUtrh7gZFARA92
-	riSA55dUN11hBcBXHOavvPZ+J/Swbbt1WvardfQWsg0eYDQTpFWHMfHMTia3EnoZxViA
-	/ELSh4ZjK3btzV9+SX4mmkY6c0SboZAFDtnC88Gv60GXY82LazFxeJG9JjZiEKtr8A0n
-	lu0XXgxgucgbG+cgXXKvnnRSkhX1U9k+hepREhFmAoP+KQ0rpX4LarFnKoF7z1mF046q
-	dJBQ==
-X-Gm-Message-State: AOUpUlFqyG5glcPqkh2oLOYD40utQhnRKJIJTAA6HKpCdDCny0f17pq9
-	V+PH2nTcdj0tbSYkArG2W2zp6wvk5Qar8zwDCQCP+A==
-X-Received: by 2002:aca:5f0a:: with SMTP id
-	t10-v6mr17684888oib.337.1532971834688; 
-	Mon, 30 Jul 2018 10:30:34 -0700 (PDT)
+	bh=Okkf/Qq0kg4n2ajAlkMYmdH6mn8McLAbzMNoWRPb2Gs=;
+	b=jHcZeSvvLKON1NsKSXHQe10hcwyf5uqTnNeSkRPBF66LiR2R7HJT8Eb+23Nh36lXC2
+	YEddthPw2QusWJGgS7afyUsrz6UUCA/cWgbRR9tvxbxNpiOIVv4xRy5U0Nkb2iZY5x9R
+	IRydoHSyYrNEGxPcAyRxw6asUyK+9H7bbVb3tQB8BvXcqdlzmPq+IQmqiABe7HWGgoM8
+	uTZ8iF1T4GTaSKr8HLvVPpBcwRs4vt75/WFpo3swwcLWWe3pG3xiEMyuqtHE07o1Bcap
+	HWOhW8yMUaKXTLhhErKkoMgc0NPGcdUdvMps6N8MSAAUUGW9O9sN0qyiriKV52LsDPhT
+	+KtQ==
+X-Gm-Message-State: AOUpUlG+nk0kyXbZuynhhf+DpGZOsLPk4sqMWqKqdTvP11JW9gJgNmeo
+	3/5WbLcBH3b13vhzJ0528yjV2019y5J969dY31LonA==
+X-Received: by 2002:aca:a982:: with SMTP id
+	s124-v6mr19885110oie.80.1532973454289; 
+	Mon, 30 Jul 2018 10:57:34 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 10:30:14
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 10:57:13
 	-0700 (PDT)
-In-Reply-To: <20180725085944.11856-2-stefanha@redhat.com>
+In-Reply-To: <20180725085944.11856-6-stefanha@redhat.com>
 References: <20180725085944.11856-1-stefanha@redhat.com>
-	<20180725085944.11856-2-stefanha@redhat.com>
+	<20180725085944.11856-6-stefanha@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Jul 2018 18:30:14 +0100
-Message-ID: <CAFEAcA9M=yy=Cu5pgcVkeBsS_pRmW9dKEV==t2Jd67d2k6gp7g@mail.gmail.com>
+Date: Mon, 30 Jul 2018 18:57:13 +0100
+Message-ID: <CAFEAcA8N26yjrLeaDzkoJfx50Rd5h_y9hHVA8W19L9q1EOhfMA@mail.gmail.com>
 To: Stefan Hajnoczi <stefanha@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-arm] [PATCH v3 1/7] hw/arm: rename armv7m_load_kernel()
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH v3 5/7] loader: add rom transaction API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,31 +116,48 @@ Cc: Jim Mussared <jim@groklearning.com>,
 	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: edJZKKsjkRx1
+X-TUID: AFBwJdKD7V+r
 
 On 25 July 2018 at 09:59, Stefan Hajnoczi <stefanha@redhat.com> wrote:
-> ARMv6-M and ARMv8-M need the same kernel loading functionality as
-> ARMv7-M.  Rename armv7m_load_kernel() to arm_m_profile_load_kernel() so
-> it's clear that this function isn't specific to ARMv7-M.
+> Image file loaders may add a series of roms.  If an error occurs partway
+> through loading there is no easy way to drop previously added roms.
+>
+> This patch adds a transaction mechanism that works like this:
+>
+>   rom_transaction_begin();
+>   ...call rom_add_*()...
+>   rom_transaction_end(ok);
+>
+> If ok is false then roms added in this transaction are dropped.
 >
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 > ---
->  hw/arm/Makefile.objs            |  1 +
->  include/hw/arm/arm.h            | 11 +++--
->  hw/arm/arm-m-profile.c          | 81 +++++++++++++++++++++++++++++++++
->  hw/arm/armv7m.c                 | 60 ------------------------
->  hw/arm/mps2-tz.c                |  3 +-
->  hw/arm/mps2.c                   |  4 +-
->  hw/arm/msf2-som.c               |  4 +-
->  hw/arm/netduino2.c              |  4 +-
->  hw/arm/stellaris.c              |  3 +-
->  default-configs/arm-softmmu.mak |  1 +
->  10 files changed, 99 insertions(+), 73 deletions(-)
->  create mode 100644 hw/arm/arm-m-profile.c
+> +void rom_transaction_end(bool commit)
+> +{
+> +    Rom *rom;
+> +    Rom *tmp;
+> +
+> +    QTAILQ_FOREACH_SAFE(rom, &roms, next, tmp) {
+> +        if (rom->committed) {
+> +            continue;
+> +        }
+> +        if (commit) {
+> +            rom->committed = true;
+> +        } else {
+> +            QTAILQ_REMOVE(&roms, rom, next);
+> +            g_free(rom->data);
+> +            g_free(rom->path);
+> +            g_free(rom->name);
+> +            g_free(rom->fw_dir);
+> +            g_free(rom->fw_file);
+> +            g_free(rom);
 
-Another rename that shows up in the patch as "delete the old
-one and have a copy somewhere else". Maybe this can be fixed
-with suitable git rename-detection options?
+Is it worth having a rom_free() function so we can
+share the "free all the pointers" code between this
+and the error-exit codepath at the end of rom_add_file() ?
+
+Either way
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

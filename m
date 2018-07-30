@@ -1,99 +1,99 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4053665wru;
-        Mon, 30 Jul 2018 10:59:11 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcZUnXYZmef6sXS/xi2ouzO4km9Ed3Pm1op6aRcPS2xe/P67bMvANEAXMHITmAqXtdS0DNV
-X-Received: by 2002:a37:9cd2:: with SMTP id f201-v6mr16575369qke.154.1532973551756;
-        Mon, 30 Jul 2018 10:59:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532973551; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4057873wru;
+        Mon, 30 Jul 2018 11:02:31 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdTa1I8fJkUz9XarS+TuFm2UM4ziLapfUDzsDS+pKCFWAY95CCgY57Y7DN314Kc51u6ERty
+X-Received: by 2002:a37:2a65:: with SMTP id q98-v6mr16531394qkh.174.1532973751588;
+        Mon, 30 Jul 2018 11:02:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532973751; cv=none;
         d=google.com; s=arc-20160816;
-        b=0yVm1BRPM0mKMPDbHz++pbpd2nUTWFaaZdZrMa8K58aeYHTIw5Ll6jPqXXjEyRZPYd
-         Ewb/F9+7esJLG6uanvZwmnwDp00kzHVJcYGPknx0yu97sYIpODNu1PsOHjxsLLXtZO3T
-         GzwvIsGKyPwNyn+/S2GOozXf2ejZCSWgBJFriW6Z4bKXMit/xlSff8Qb6GKD0HQwtCah
-         CkJyPIZsYjkw7V5KFn5bUSaB7vKkBfM+Xi0ZWKMeP9HnTwX2ZNnsXWNzOq4qjG3R5FsR
-         /zaR6qNLviJUYJAs2BKdS5E8U8ZWmS7Aw9u19sUGuPZEL7GGAV8MDtWRepZLizrZkfTR
-         4q/A==
+        b=OgcNSiOIW/AZRSajGAm4N8a+XAJTS3aOL8GIQbXr7ZryjydkKxcbTNSSdeiTpmun8j
+         huhADcqehMUuuRQeAsovxD/tjBGU159d+q+Z92sZg7oROTU7svPyqwpdfnUy+p9wJBp7
+         lNlZWUiZSJi3YT8Ilwm+G3EAL0IWWCxxklWvnhspp6FiE1qZzP1zzmlKGnfmPW+XcCAg
+         YIJxynnBC5WPKz67tQazveq1TIaNrKEQwcQi8X/kMYHL+zgssaPSIbwtWGbp9OYdU6JI
+         wA3ksPlWpF3xcBU0QyPvHQqmFgsXTALO/XAaThj2uuzDDOkCSHpNkbtYRmTNcddtznEB
+         KBdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=Okkf/Qq0kg4n2ajAlkMYmdH6mn8McLAbzMNoWRPb2Gs=;
-        b=dz3gMsg3iZw/4Co0X+k3/zHmTia8WXfW5dDWngBRK+QK5yx9vbzgi43h8qmJA+V9tQ
-         xBbfBHz9TT8MpOLGQYGt09TBjAtE+2KzJrRt//rxratkV+4/76j3+UQxAdBPm7aRaOVN
-         OReePMSTMzPnI7c6NE/bH+hfAhSDwxqsYq4G9hWDgvnqoPPzt5TccR6UkHNblDW/EsK0
-         DXz4u+JuRWF7uH8Eyg1/oS6vACT2UWg31bmMN/GTCNORt1C4zWHfXwpoHm4F+/RyjfiH
-         yoBp52CXufck248NukW/E4XJ1NE22Rm0U2iwEQQIEog4UIsr2Lu3ZCA/Ih2vLgBqQNWx
-         RWfw==
+        bh=4Tl22w7Y4aiTck+Psuvfk1mKu4gldlJX4m4nXVLmolA=;
+        b=FV601tdxJfrqFBEjztT0l3fUOrcKgw5Rft+8DSH+YZ9vyEqLnDvhEGmYw579g0DqaD
+         91rcaIsZggC1/5Pyn8EiyvD8Kfc7lpuMWvbxJI5IZLq3EoZyNQQVMXQwATtml9BPzB0H
+         jDq6X+xYstdcz99XJNDGMRxTQnZvWXMwNLz1OZI/lO2tJXjBJ6vZmd8BbB+iOYTYKDBX
+         DkzaNZr5KTqI8Otp/magzHo/Xef3IP9KYUwC8kBrdrIwWEBiVJLjgFvNnB3PivI4fd5B
+         69Hy6JQnVnFMy2bjuARA6EbNZJvCL+nabgUVMRWtDAUIEsz6vZ0ctzZoF4O1HNRlOPXU
+         gOcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ez5QnpK6;
+       dkim=fail header.i=@linaro.org header.s=google header.b="cO0bTg/3";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q51-v6si12143505qtj.66.2018.07.30.10.59.11
+        by mx.google.com with ESMTPS id y46-v6si724643qtc.394.2018.07.30.11.02.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 10:59:11 -0700 (PDT)
+        Mon, 30 Jul 2018 11:02:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ez5QnpK6;
+       dkim=fail header.i=@linaro.org header.s=google header.b="cO0bTg/3";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55122 helo=lists.gnu.org)
+Received: from localhost ([::1]:55143 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fkCRr-0001TU-AL
-	for alex.bennee@linaro.org; Mon, 30 Jul 2018 13:59:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49109)
+	id 1fkCV5-0002rc-2I
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 14:02:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50751)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fkCQK-0000Qy-7Q
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:57:40 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fkCUp-0002rO-OV
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 14:02:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fkCQJ-0004VJ-DX
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:57:36 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:33141)
+	(envelope-from <peter.maydell@linaro.org>) id 1fkCUo-0006S7-Se
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 14:02:15 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:43122)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fkCQJ-0004Uo-0K
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:57:35 -0400
-Received: by mail-oi0-x243.google.com with SMTP id l10-v6so22906118oii.0
-	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 10:57:34 -0700 (PDT)
+	id 1fkCUo-0006Rp-O1
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 14:02:14 -0400
+Received: by mail-oi0-x241.google.com with SMTP id b15-v6so22909968oib.10
+	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 11:02:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=Okkf/Qq0kg4n2ajAlkMYmdH6mn8McLAbzMNoWRPb2Gs=;
-	b=ez5QnpK62So7lrObYVtVFBlVybcpd+ItbhDPaJZy9C8cdt9C9rGreqQ+pmUn+KG0Kh
-	cqM/aAibQDMyujspkrc1Oc0drtKNWJ018yhY2wM+Lxn2LjLd7ZRI15BUAkZIktSJ/ulX
-	3PkxonXrZtJRO/Hfnu14LTzBuTZPU9Pu/2RB0=
+	:cc; bh=4Tl22w7Y4aiTck+Psuvfk1mKu4gldlJX4m4nXVLmolA=;
+	b=cO0bTg/3snPX3DIgsZt0616+txefywhqGpHEOb8eT74bjQ+sOPjPYtNwO8nCMFUHdo
+	lgj2+NFok0nkaD1fK2rw7Fd8Izr/gN/SoM+xE1yFYEYcwfrNVqi+3MHkxL2+6N8Ojy3B
+	Fn0d8aMe00GJ0yX+9KxaW6kIR9N6WCZ+xnqWI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=Okkf/Qq0kg4n2ajAlkMYmdH6mn8McLAbzMNoWRPb2Gs=;
-	b=jHcZeSvvLKON1NsKSXHQe10hcwyf5uqTnNeSkRPBF66LiR2R7HJT8Eb+23Nh36lXC2
-	YEddthPw2QusWJGgS7afyUsrz6UUCA/cWgbRR9tvxbxNpiOIVv4xRy5U0Nkb2iZY5x9R
-	IRydoHSyYrNEGxPcAyRxw6asUyK+9H7bbVb3tQB8BvXcqdlzmPq+IQmqiABe7HWGgoM8
-	uTZ8iF1T4GTaSKr8HLvVPpBcwRs4vt75/WFpo3swwcLWWe3pG3xiEMyuqtHE07o1Bcap
-	HWOhW8yMUaKXTLhhErKkoMgc0NPGcdUdvMps6N8MSAAUUGW9O9sN0qyiriKV52LsDPhT
-	+KtQ==
-X-Gm-Message-State: AOUpUlG+nk0kyXbZuynhhf+DpGZOsLPk4sqMWqKqdTvP11JW9gJgNmeo
-	3/5WbLcBH3b13vhzJ0528yjV2019y5J969dY31LonA==
-X-Received: by 2002:aca:a982:: with SMTP id
-	s124-v6mr19885110oie.80.1532973454289; 
-	Mon, 30 Jul 2018 10:57:34 -0700 (PDT)
+	bh=4Tl22w7Y4aiTck+Psuvfk1mKu4gldlJX4m4nXVLmolA=;
+	b=FykmPdJ8zLXBHWxmsdN/So2C6qpX3wXe2jIvkeX9d/J63kMSiyH3H3L7+1vPC1yNJO
+	HHDGivjZ3QDK7c7QnTfFb8GERFQB+IFl/J8Sa1xh8Oyma6vTbsR9Jgmec0uJ2v+YjW9D
+	A+2eDqrjiDyecp5gFCN63hOHelcU2Ja77I8BncHdf3B7OQ5cbolC5Lw5InQrSUSto9a9
+	ukP5Kp8Y1l+aOkeddIjRWsea3X4iE1LxP1WwgBBjPYi4VuHXHAPTt62anYoWgJxOzFSO
+	UJCjw87g6JuUDmT6jxX+obZmKTDKYL5o1af/0sC+AYdoWbeNqarmXCFsFGPoMZ3vi0gb
+	zKtg==
+X-Gm-Message-State: AOUpUlFLI7PbkmWGLQba0E/wu9zSPQ+UpFPTUVi/RZYDIuqUH6zc+atA
+	rzGhZ35TpBDsF7/9T/oL75FHvMIjC44ZXob/v6J21g==
+X-Received: by 2002:aca:4a49:: with SMTP id
+	x70-v6mr17075455oia.11.1532973733673; 
+	Mon, 30 Jul 2018 11:02:13 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 10:57:13
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 11:01:53
 	-0700 (PDT)
-In-Reply-To: <20180725085944.11856-6-stefanha@redhat.com>
+In-Reply-To: <20180725085944.11856-7-stefanha@redhat.com>
 References: <20180725085944.11856-1-stefanha@redhat.com>
-	<20180725085944.11856-6-stefanha@redhat.com>
+	<20180725085944.11856-7-stefanha@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Jul 2018 18:57:13 +0100
-Message-ID: <CAFEAcA8N26yjrLeaDzkoJfx50Rd5h_y9hHVA8W19L9q1EOhfMA@mail.gmail.com>
+Date: Mon, 30 Jul 2018 19:01:53 +0100
+Message-ID: <CAFEAcA8m2f-DRiDNF0ry4nMH9bzZ1gODV4MTgtLwR5jTNdgeJA@mail.gmail.com>
 To: Stefan Hajnoczi <stefanha@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [PATCH v3 5/7] loader: add rom transaction API
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH v3 6/7] loader: Implement .hex file loader
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,48 +116,27 @@ Cc: Jim Mussared <jim@groklearning.com>,
 	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AFBwJdKD7V+r
+X-TUID: ZNa2VGWrEKqw
 
 On 25 July 2018 at 09:59, Stefan Hajnoczi <stefanha@redhat.com> wrote:
-> Image file loaders may add a series of roms.  If an error occurs partway
-> through loading there is no easy way to drop previously added roms.
+> From: Su Hang <suhang16@mails.ucas.ac.cn>
 >
-> This patch adds a transaction mechanism that works like this:
+> This patch adds Intel Hexadecimal Object File format support to the
+> loader.  The file format specification is available here:
+> http://www.piclist.com/techref/fileext/hex/intel.htm
 >
->   rom_transaction_begin();
->   ...call rom_add_*()...
->   rom_transaction_end(ok);
->
-> If ok is false then roms added in this transaction are dropped.
->
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
-> +void rom_transaction_end(bool commit)
-> +{
-> +    Rom *rom;
-> +    Rom *tmp;
-> +
-> +    QTAILQ_FOREACH_SAFE(rom, &roms, next, tmp) {
-> +        if (rom->committed) {
-> +            continue;
-> +        }
-> +        if (commit) {
-> +            rom->committed = true;
-> +        } else {
-> +            QTAILQ_REMOVE(&roms, rom, next);
-> +            g_free(rom->data);
-> +            g_free(rom->path);
-> +            g_free(rom->name);
-> +            g_free(rom->fw_dir);
-> +            g_free(rom->fw_file);
-> +            g_free(rom);
+> This file format is often used with microcontrollers such as the
+> micro:bit, Arduino, STM32, etc.  Users expect to be able to run them
+> directly with qemu -kernel program.hex instead of converting to ELF or
+> binary.
 
-Is it worth having a rom_free() function so we can
-share the "free all the pointers" code between this
-and the error-exit codepath at the end of rom_add_file() ?
+I'm still not convinced we want to add another random
+special case only-works-on-one-architecture-and-some-boards
+feature to the -kernel command line option.
 
-Either way
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Adding it to the "generic loader" device might be more plausible?
+Or just get the user to create ELF files or plain binary files,
+both of which we already handle.
 
 thanks
 -- PMM

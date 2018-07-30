@@ -1,123 +1,120 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4063783wru;
-        Mon, 30 Jul 2018 11:07:47 -0700 (PDT)
-X-Received: by 2002:aca:b585:: with SMTP id e127-v6mr20078558oif.119.1532974067393;
-        Mon, 30 Jul 2018 11:07:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532974067; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3835961wru;
+        Mon, 30 Jul 2018 07:22:21 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdBdH45KEmOePCd4yzJgKYAbVTFbQasqLrepaX15B19Q0vx+/AVmVSfgRBMGkk3aVYocgip
+X-Received: by 2002:aed:3b6a:: with SMTP id q39-v6mr16836200qte.246.1532960541498;
+        Mon, 30 Jul 2018 07:22:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532960541; cv=none;
         d=google.com; s=arc-20160816;
-        b=AIMMsy8NGbk3hrvL3yZcjYdJuHQHr4OetRhZip1xx/+wnmJGJeSYALMff7NgDgV35s
-         OCWoGocNo0nMup21KzGjs2MYndF0RXKsQOHqWd3dog7C/Mweoxt+iluW4+pXeiOePLIu
-         GvSd8yitn+XejVP2PZvdPWYYvhCAHcxF+fVCnGA+D52M/lxckafgcr/ONhUUlJjH9OjA
-         tEWhL9fQn9ZNJTYrY3LoDORbQXwygG/cSCbodKwwcv+ZoOo82nx/XR7Gz53q18OWTJL8
-         4iSbgtojEQ0xwANCv9/GuzHYYOSTmFUvGb7VAR839gm2H9qQ2423wQCCi1T2z/00/A44
-         xphg==
+        b=GWcK+UvUX05FLBnPa4gRSBpEIut7ZqJhH+knCfpUYglBfthSY1h+iClxBpA3wYzBoT
+         98bJRMn84C59om+htC3tCoqK8m1u6NnTJWiqahIWavzkMfoJRNsw6EgxWNCDG6mZ1tKq
+         KBnBJbmkaKSht5xnT8W/eRUWRmrwTnaePTbmjxiGNeCo6etdmA2AtiIqXeqFa6tp1KRO
+         1LFeFVWgnkOIxtEvwnnBSk+q2XPnWhJ+RY3lKKEGfgBcfp7YaWzr4U4+X+Uq3tHxrhLe
+         AHWisZw3C5jW698qybdCEPU+Zr7uQ9aOXnnsWrxDwTL5NYKJUaV9vN3bZUD8wydlZgtK
+         QBhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :mime-version:dkim-signature:arc-authentication-results;
-        bh=rmP0fh0n5XDx1CHAQCCvfvUWE8X02bL9g2IBu36EF2o=;
-        b=mU0Z/Rcm+gL7qj810oqrv7/JXQMqukR5/SiPkt8RnJj7NZFUQ5ji71872MKMoDiZD1
-         WWPO7fPpcF0VOzA4uUbH3uITPuZftEMl0Sz0CNUtsIqALZBRyKoHC0/1BtBhcIECU69S
-         jwRUVi/6GLBZZLz3wQ0cIFaY/kM5pZxDHfOQPfyInRbcwv8tGRvCYcMmoxojtqlIrcnN
-         B2fL8IFwFn8IrX2ZjBSKCqWHI46haPKBlAliJOnVGmqjg2D2fCN1L9pBSVHS9j2Nv4aI
-         rd87UKPlbWnguPWePowCsADpznB9lbbFfyyIA5XxzQPIsT6/c6smg0BlHssD6zvXO/5V
-         dQoA==
+        bh=uDpfFRKiW4wOwfUNytJqZX0OgvKJArzUj6VhS+BT98k=;
+        b=IgCMm128HP9C8H0oNt8SN2xQyoPO3Aq++5MHjXRZQ/5ip8svEEnkhdegLzU38C9mer
+         unFPjkuagNscO2kPTHTjGgnVxRR5lwOw0S8gCMA0dmAIZoxLr9WENzxMPP44M4UPI0cS
+         empYaw9QJnOZb4tHR0Q8vazFffrsvzxZ7hWrCbqNNlgeKa5P6lug8UqlSaXu8ER3UT2i
+         ARmF8XuegVNxPlgaxmpLwOAXt0uwPaUiGq5Igqn+rq53UxtEoUimQTFyPcfeozgmQQz3
+         QmiUrG+I1O6PXI2oRea8sB9NK1qGFs7SuWzzzb2TLQchuJXZHyf8Px/tWGy9bRpKGKq9
+         DN7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="XSf1/Ngs";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c10-v6sor6125390oia.265.2018.07.30.11.07.47
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YGp5btbd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id n13-v6si267610qta.189.2018.07.30.07.22.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 30 Jul 2018 11:07:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Mon, 30 Jul 2018 07:22:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="XSf1/Ngs";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=rmP0fh0n5XDx1CHAQCCvfvUWE8X02bL9g2IBu36EF2o=;
-        b=XSf1/NgsdZHKcd+eDDKTySDn9nSDcJNramzegO6OuDPRQyaAOr4gRNatCX6jCkwV2z
-         R6702Bw/SJqyGPokPPs+bsFaL8y7cBQent4SMVDfaIB9k9qFCv/b9Lm6dc7BB5wb0kOF
-         cekixmUxpdSoLyhbFJZ/Q9PK3nTRfWJv9Kits=
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YGp5btbd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52900 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fk940-0004bG-W1
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 10:22:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58905)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1fk92a-0003gv-4z
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:20:57 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <laurent.desnogues@gmail.com>) id 1fk92Z-0004Nn-CQ
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:20:52 -0400
+Received: from mail-qt0-x230.google.com ([2607:f8b0:400d:c0d::230]:34267)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
+	id 1fk92X-0004M7-DF; Mon, 30 Jul 2018 10:20:49 -0400
+Received: by mail-qt0-x230.google.com with SMTP id m13-v6so12224034qth.1;
+	Mon, 30 Jul 2018 07:20:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:from:date:message-id:subject:to:cc;
+	bh=uDpfFRKiW4wOwfUNytJqZX0OgvKJArzUj6VhS+BT98k=;
+	b=YGp5btbdEpDlpA45MXyGoa8Jrz1AJcG+3oNTBpBUgC3RbEH5B1XJsFpBiwlDEZ5zYV
+	4sdR6AgHdI0rDlwvkXmsQ6pmXdH34qx0yO1v6QwnkQDcKaOMIragmkr3nsW2wnDQqF1b
+	akC+o8m8XXRKJnan/55Q/1xvzHUWwQIIiFtoK0OSPDH//5Et7QFx8Bj2vwcohbUEqnFY
+	9Dt2+gr5YmKKqoGf7Mm5aY6LsFP0rBwGLZ2yPkdNFYT6oKa3H1BZ/XsnP/WRwtQKvtRy
+	M5DfrJMtOY3BAshZrDP4tdwgkqMwvn2wDuAmeDjergUxcOGrgAyXs0xo7e6YdXjOprAe
+	qWuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=rmP0fh0n5XDx1CHAQCCvfvUWE8X02bL9g2IBu36EF2o=;
-        b=l+7/jcLoZtMO3ovwFrlLX6PpZSsGxV/txGFNvN9oVKDEN23d3gAfIsk+glgWjjiMhP
-         t5DsyQ+Hy4igz4uozpId7/UY44IqAR4WyunnPp/mKdz9pq7UF6wr18RgK0qpnkgmsk78
-         AX2CmWx0dFCOL0zq/VO34p51dSErq1q5xOm/p8xM+Hk+356SMmhJySBemKeW6UYkUZ7x
-         69RbDyaMxBVs7aNdqJhQ3PwkiRzFAhX2c2Nuuo/VGjPeyzAnSNw8vk/O2JithKtR2FL7
-         swZeCZqYjhXCanQcBQC7aSjBPXhLEYphDpVHSIVzMIgnDeOQ3HRK1Rl3RHnylpjUbLbW
-         k3AA==
-X-Gm-Message-State: AOUpUlFcNZUUS3QS+U6hunwDdNEsbGDFGHPSfOpMBQh3nHxLNA5Q0seR
-	h+ebFHSh77wtzZp/lnAVHkNt1OLwLYBl9M49IoPTrMGA
-X-Google-Smtp-Source: AAOMgpcDU0D0axQEjlceDnOEqxjTrBn3iH+zE5erjBqqT+K5B3QXrE0Qc2WbFLLUtU1EF/JOveNyklKMlP3TNEZHUNw=
-X-Received: by 2002:aca:f5d1:: with SMTP id t200-v6mr19476918oih.12.1532974067024;
- Mon, 30 Jul 2018 11:07:47 -0700 (PDT)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+	bh=uDpfFRKiW4wOwfUNytJqZX0OgvKJArzUj6VhS+BT98k=;
+	b=T07FTPAAzQXBHmUSkJn2EZ0+/2T4mecEnmRLT8N67rlV7UHQQKhWt4wTt9aV8EVBR6
+	fKatpCGVVb4UQXeHNGqn/oyRq4CVKbqC7pN3TO2H//YcvYu9bHFSOHy0OLXgH6SQCMLi
+	vjw4xr6XvSDzuBJJFGd4vQPexSRUui4QBIgIOe5d3AzTfRgS5NT2QKYaciFq1j8S7q0f
+	ajdwKirqfJd+Zt0dOtcYF43PBjnyCpQ7xtXqY0aHQ6lz0R5mWYYBMXU0jcsnZLj+uKud
+	c6gnWRi4/v2FUeBbwDWpf76nbojby0+52m/u5bVjWTcRkTmOZp8n0fZMliw1D+FDJD/I
+	9RNw==
+X-Gm-Message-State: AOUpUlFKUbEjppayLieBcvbbkQQGdn4wvmIYPLUd3mz9yn+gOAL8bazL
+	cSsXWYWZ5W210Q+gwskYGkoloXjsGAlZe+8kZSs=
+X-Received: by 2002:aed:25a2:: with SMTP id
+	x31-v6mr16601073qtc.228.1532960448647; 
+	Mon, 30 Jul 2018 07:20:48 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 11:07:26
- -0700 (PDT)
-In-Reply-To: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
-References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Jul 2018 19:07:26 +0100
-Message-ID: <CAFEAcA-v+tOzub5V1_3stzNYX9M7hHX0c__jhSWM-q14QdtoTA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] hw/arm: check fw_cfg return value before using it
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
-	Leif Lindholm <leif.lindholm@linaro.org>
+Received: by 2002:ac8:12c6:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 07:20:48
+	-0700 (PDT)
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Mon, 30 Jul 2018 16:20:48 +0200
+Message-ID: <CABoDooMqFQz_ssUKxMgxRCArF0dLCAa+=cjY5bqR399ZoHcxvw@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: Ty6xT6khnVWH
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::230
+Subject: [Qemu-arm] ARM: SVE issue in cmpeq/cmpne
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AyrjGsDWxj2y
 
-On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> The fw_cfg value returned from fw_cfg_find() may be NULL, so check it
-> before using.
->
-> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> ---
->  hw/arm/boot.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index e09201c..43b217f 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -930,6 +930,7 @@ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info)
->      hwaddr entry;
->      static const ARMInsnFixup *primary_loader;
->      AddressSpace *as = arm_boot_address_space(cpu, info);
-> +    FWCfgState *fw_cfg;
->
->      /* CPU objects (unlike devices) are not automatically reset on system
->       * reset, so we must always register a handler to do so. If we're
-> @@ -960,11 +961,10 @@ void arm_load_kernel(ARMCPU *cpu, struct arm_boot_info *info)
->              info->dtb_start = info->loader_start;
->          }
->
-> -        if (info->kernel_filename) {
-> -            FWCfgState *fw_cfg;
-> +        fw_cfg = fw_cfg_find();
-> +        if (info->kernel_filename && fw_cfg) {
->              bool try_decompressing_kernel;
+Hello Richard,
 
-This can only happen if:
- * the user provided a firmware blob
- * the user provided a -kernel option
- * the board does not have a fw_cfg so we can't pass the kernel to
-   the firmware blob
-right?
+According to SVE definition, the operands of cmpeq/cmpne SVE
+instructions are signed, so I guess the definitions of
+sve_cmpeq_ppzw_[bhs] and sve_cmpne_ppzw_[bhs] should use signed types.
+The other cmpcc instructions look good.
 
-I think in this situation we should exit with a helpful error
-message to the user (telling them that this board model does
-not support using the -kernel option when a guest firmware image
-is being booted), rather than silently ignoring the option.
+Thanks,
 
-thanks
--- PMM
+Laurent

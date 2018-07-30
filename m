@@ -1,112 +1,101 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3815241wru;
-        Mon, 30 Jul 2018 07:03:43 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcjflYWNgTivRrNbxAnpYoByoIv2dNlXXMVhSm5d+hVNe9ScSCBgpVfEjPnmvhJAmYmy4Xi
-X-Received: by 2002:a0c:f411:: with SMTP id h17-v6mr15279888qvl.25.1532959423783;
-        Mon, 30 Jul 2018 07:03:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532959423; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3820713wru;
+        Mon, 30 Jul 2018 07:08:15 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpddIZvlQ2MDOvx53TACNNvXNFwSinLL1z2suWmM+xNmjuOVSndngb3FgD9r8fxURc6TToyw
+X-Received: by 2002:aed:3d2d:: with SMTP id g42-v6mr16712724qtf.195.1532959695108;
+        Mon, 30 Jul 2018 07:08:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532959695; cv=none;
         d=google.com; s=arc-20160816;
-        b=KOVy5Ci3Mi73YY9n1mTM1gqLS7zwSGIlvkc2sv8NizF5KXtM0nV8QjOpbyl/zUrADx
-         ZymIQOt2mJbtnXFrb+GMkWNtG2xXTXxJ92EkV9+l5Ou/SuFWbvWVtdyvvycyGLr7QLnJ
-         ogmT6gax5JiXoCQEuDKr44aNLwYMBuuCIUJA43AH0o9CZMask51XOxnIZ8YlZI5BMUnk
-         NWoibNJwrZnJFKTtOKVqyt7IF4p7ScGJOXY9uRyACOwau/Esz/4h2HlfjiOAHdI6NhIn
-         RiPNOfF9LziKqYrZ/HaeLTCqyuDGll80TZgAl3hc8nAJUTx6RbFPsKhMtWzYB36jsa+j
-         r4dA==
+        b=PcMV1mG7MvylA+Vgu4kPI5+0IpwpWMa5YWN9l0MlhFfD+PybrX6fNgsNgWGMHjyIhB
+         AiTYTB4FznAy+9/k0dq5DZRZpuyzbbqWS4J1BZO9MTNecESKRjU/7IHqS9xpZCNRAS2a
+         CI8xJBmPZMK9pC57xazrlApWoSJlDFkrwDMpl2WGu0zv+ey8DXjjRf6vS8Zl/JH3C+0J
+         iixMi01vBYeB9s+VNJ8w6QPaxQ3K3r5va6oqaO2UhhYnCAzlBh+kRmXymR8j0beeVSR/
+         RCmPIjPfqZ2wZ04UhMSJ2jxQWQjnrXcacP3Pg+GpmUXYd8zjFe1m4XqkrgnZitgk8ro4
+         PRpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature:dkim-signature
-         :arc-authentication-results;
-        bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
-        b=XcmFty7DWgrbN8YnyOOK0F2DY6cHlOlbP7RTCulhQlFvfrzSoIPwqKesGJiKGZy65K
-         2VWkVapK68XwWuTZyB6IWX+os7dw7YGRvsTWd8vTgDILNtGdHEhYbcHVtE0G2h1ZA9nC
-         2zHS/StSlfdXfFjclSOAHghOaiQVQO1kfDZyKKN4u+alZZvB8xZDCRZYQBu0z4eAXDpn
-         qyGrDm/5MPlzrtW4MNo7GTjNqFf5MmQgQOTIyaCu2ryD407+2GMFIBCA3QCHv4PEIC30
-         gWScifQ88s6+z4dsee8xxiZ71UgDdgnOQouQFTbY4Nj/CgqlAwCi98RpJo8ckzrkW0Mm
-         NHsg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=0KQFkCRiSziJJggXJPfiEIqnGQeEC51C9VAe0ARSv7k=;
+        b=DTzivCgEeooCkdVLPWbNueM8e6AFrapznevuwf3OfTaJ4jAtwk7Rejt1COVBCx0+3A
+         kLzEPG9dpCLfS23cd0Bapg0A1UBYe9pqg4s/SS5rrE5WcW0JzxpzJP0LOR3yYc9JeDOF
+         w4FI5yMHwvQ1cImiwzD9NbCfi9tT/fqEpjT6qvPsg8hVX9vw9mxjblREoesIudRBf9+/
+         RefS5P6FpRHRVmcvY5GLeUaf7kLIq59AErForj1aYMF9F1aOU1BUE0mP3h4eLaTsX0nQ
+         N+GXUeSs5dYTvsz2wXp/Z0+h8A7LaT27QzMHIB61XKRPX6MYNuEpqlUIRp7CKA0hzru0
+         mhUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dbFM4aws;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=U3Ke3+K6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=aAHtJM5L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d17-v6si2602063qvo.36.2018.07.30.07.03.43
+        by mx.google.com with ESMTPS id s77-v6si2985986qka.49.2018.07.30.07.08.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 07:03:43 -0700 (PDT)
+        Mon, 30 Jul 2018 07:08:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dbFM4aws;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=U3Ke3+K6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52810 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=aAHtJM5L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52824 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fk8lz-0000zv-21
-	for alex.bennee@linaro.org; Mon, 30 Jul 2018 10:03:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54918)
+	id 1fk8qM-0002FX-J6
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 10:08:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55893)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fk8lj-0000yM-Kf
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:03:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fk8q9-0002Eh-AQ
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:08:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fk8li-00088A-Qb
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:03:27 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:39249)
+	(envelope-from <peter.maydell@linaro.org>) id 1fk8q8-0002dV-FM
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:08:01 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:44781)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fk8lY-000836-Ki; Mon, 30 Jul 2018 10:03:16 -0400
-Received: by mail-qt0-x241.google.com with SMTP id q12-v6so12129667qtp.6;
-	Mon, 30 Jul 2018 07:03:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
-	b=dbFM4awsKMMaiKlNpXImqBKyjLe5KK7Qel0QoR8SQwIYHI/D6xYsyTIqP819FYq2zG
-	SSEtbHrR/VFkDHdHm016CV56AQewwovYTc29WsHKYLT9B0ixhJrAdztHM8Qd2k3pz0vt
-	iyIHCZczmr6gONn9s/A3nJ84SVhkBYI5dBhh+TXsvOP7zP/Lf3tTjAMIRDIkhrLELrYQ
-	gqsx+ePo1usrtwfbeWscxGsFLhJDMhVs3f6BpLsvD1n37Tly+lB85f9yU/ckYhsNapNH
-	7+b0WoJ9bTPAYAhj4xiMP0qch/eLn7TrnDkGoZD0zJl37jU30PnuEiZbUtS3VaOCkFl5
-	9VNA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc;
-	bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
-	b=U3Ke3+K6zuXo280o+iBCW3nhrzNcXfazh17QVMSQxKR0r7g0EeKsj4WtOS7eTcLAQ+
-	sEfvjZOZfwcKTQXv5YuJ96E29w5JAKGp/Smfs2pTEiu1TMAJKJs8CvC1v2TzrP/DPIWu
-	EGjx07eE2l1qtjZMFHhuljZMBsdmt5tVCVmy8=
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fk8q8-0002d6-8T
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 10:08:00 -0400
+Received: by mail-oi0-x241.google.com with SMTP id s198-v6so21440462oih.11
+	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 07:08:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=0KQFkCRiSziJJggXJPfiEIqnGQeEC51C9VAe0ARSv7k=;
+	b=aAHtJM5LfaIRiq+UK3xtaDJllm/6Zzs8JUUQUFvRRkxc+Mpniox08F3g3ee7bc1mS5
+	tGjprA/OAgG7GcMOzwvkTWQCEEyZCIRRjvkVGgPHGYvcUeo3LgmiHUKtfAsth7ebv+h2
+	wto1itmureI3CpjM4EscQ4N/QDvduFD8pa+ss=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc;
-	bh=Ane8f9Z9yFKKeClPlC/QBR0jNIgyQSmqBIv2i+pFAm0=;
-	b=CuWq65d8fdIpoCjL5kYhNfydHLjTbx2Qluu5iiKJ1YoH3sepNByo8foKqKeyLB8A4B
-	QQ0nXE3gL8Ay/8tLWa9npfojl9Z7CwAG1e3eWFgKLQ/UNFcKIUaAjph1Dls1TxZXbxBI
-	8/xr+5EVA8eZaMGvD8vbUS32x7ARKMX/YnSMwPTz3rbuV2nESeJodW1xky7RyqeoxpGY
-	JQqdjIHhI0vL06Ff7dSKZ8QfSo/fOOk2YUHysBTPbT3DExY1taNtpOCkePzv4UAS/jK2
-	9SoTTLYW/BaAso897SV5fY/QjDEsDBlEYBuii8jYDV7g86vNtC7QSoSo0weQ4y9FFt2V
-	i1Uw==
-X-Gm-Message-State: AOUpUlHpm0zCSBxuoacemCZ/wu2y+23zpFikgtABe9z3/E1lR3dO+8hd
-	fh7NqRjXv/gGeIcs4+lgGKl9ADw8XwprHNzVmew=
-X-Received: by 2002:ac8:679a:: with SMTP id
-	b26-v6mr17272835qtp.347.1532959395780; 
-	Mon, 30 Jul 2018 07:03:15 -0700 (PDT)
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=0KQFkCRiSziJJggXJPfiEIqnGQeEC51C9VAe0ARSv7k=;
+	b=I1qTcQ6Stn6x5og/XzupngyswfSTNwRp/JSbjzsY/GY0W2XJb+Kb3NpJ8CxewyZC1f
+	ixRD+XKv7WEobsHIXoJwFFdTDh4sUUEYyulzOmpaSz6rEaUUMPNxpXUZCTjysT6hMmSc
+	B9FgcQL8vyAG3U23pxFetkNrrXEHdDDnI13xV7oTYMvnf9bPdSz6LHWQaoguXlgoKhMJ
+	2D5MtVLuAkWlK7tmhhrxSOzfNtJyF0l4rAE/UXHqWUEF9dCtBN3Hdz57luoKo0XvYzmo
+	k4yeETcM7vvrVB7k80R+H1NvnyqGq/dG2VyufWxu+VNioJsuFd8TTHvPqpqDnyWmBHbe
+	h3Eg==
+X-Gm-Message-State: AOUpUlH+KuRwKRVtkAPURpLCGNaDPFPfxm1Ia4dvSL7ym0QEJA9I3aqz
+	29z65/6hdRT3zqJBCr7tR6wWlfMJpnR0WvETp3qzaA==
+X-Received: by 2002:aca:4a49:: with SMTP id
+	x70-v6mr16257862oia.11.1532959679569; 
+	Mon, 30 Jul 2018 07:07:59 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:ac8:169d:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 07:02:55
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 07:07:39
 	-0700 (PDT)
-In-Reply-To: <94bc2d11-7916-bc4e-02d8-da62e3ed303b@mail.ru>
-References: <20180726023645.13927-1-joel@jms.id.au>
-	<20180726023645.13927-3-joel@jms.id.au>
-	<94bc2d11-7916-bc4e-02d8-da62e3ed303b@mail.ru>
-From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 30 Jul 2018 23:32:55 +0930
-X-Google-Sender-Auth: LAGc5LX_Q9e7QBW-TO4ZLGhonWA
-Message-ID: <CACPK8XfYvU8+0s+FBGe7NuAst38ska0vpS8HVPWkM8OHyLFpdQ@mail.gmail.com>
-To: Julia Suvorova <jusual@mail.ru>
+In-Reply-To: <20180727132311.2777-1-f4bug@amsat.org>
+References: <20180727132311.2777-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 30 Jul 2018 15:07:39 +0100
+Message-ID: <CAFEAcA8eyggMm5QH_VyJYHO2orQUgS1vRdRV9s4qrit+QvpiJg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-arm] [PATCH v3 2/3] arm: Add Nordic Semiconductor nRF51
- SoC
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [PATCH] target/arm: Remove duplicate 'host' entry in
+ '-cpu ?' output
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,45 +107,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@gmail.com>,
-	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Jim Mussared <jim.mussared@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mQWlghyiZIu6
+X-TUID: 2akd1zDo/wj1
 
-On 26 July 2018 at 20:31, Julia Suvorova <jusual@mail.ru> wrote:
-
->> +++ b/hw/arm/nrf51_soc.c
-
->> +static void nrf51_soc_init(Object *obj)
->> +{
->> +    NRF51State *s = NRF51_SOC(obj);
->> +
->> +    memory_region_init(&s->container, obj, "nrf51-container",
->> UINT64_MAX);
->> +
->> +    object_initialize(&s->cpu, sizeof(s->cpu), TYPE_ARM_M_PROFILE);
->> +    object_property_add_child(OBJECT(s), "armv6m", OBJECT(&s->cpu),
->> &error_abort);
->> +    qdev_set_parent_bus(DEVICE(&s->cpu), sysbus_get_default());
->> +    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type",
->> ARM_CPU_TYPE_NAME("cortex-m0"));
->> +    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 96);
+On 27 July 2018 at 14:23, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wro=
+te:
+> Since 86f0a186d6f the TYPE_ARM_HOST_CPU is only compiled when CONFIG_KVM
+> is enabled.
 >
+> Remove the now redundant special-case introduced in a96c0514ab7, to avoid=
+:
 >
-> Where did this number come from? ARMv6-M NVIC supports only 32 interrupts.
+>   $ qemu-system-aarch64 -machine virt -cpu \? | fgrep host
+>   host
+>   host (only available in KVM mode)
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  target/arm/helper.c | 6 ------
+>  1 file changed, 6 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 22d812240a..66afb08ee0 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5591,12 +5591,6 @@ void arm_cpu_list(FILE *f, fprintf_function cpu_fp=
+rintf)
+>      (*cpu_fprintf)(f, "Available CPUs:\n");
+>      g_slist_foreach(list, arm_cpu_list_entry, &s);
+>      g_slist_free(list);
+> -#ifdef CONFIG_KVM
+> -    /* The 'host' CPU type is dynamically registered only if KVM is
+> -     * enabled, so we have to special-case it here:
+> -     */
+> -    (*cpu_fprintf)(f, "  host (only available in KVM mode)\n");
+> -#endif
+>  }
 
-I think this was left over from when I was first creating a m0 based
-system (efm32hg) over a year ago. Good catch.
+Applied to target-arm.next for 3.0, thanks.
 
-I couldn't see a table of valid interrupts in the nrf51 datasheet. Are
-you able to find this information?
-
-If not, I will re-spin with the number of irqs set to 32.
-
-Cheers,
-
-Joel
+-- PMM

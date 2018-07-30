@@ -1,99 +1,99 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4033530wru;
-        Mon, 30 Jul 2018 10:36:40 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpfb6Olm8EYbqv0jflS81CiV5dkc/DiPmxIvspw6RsgxQFDgdPlViJGHQcIHwEfnrWgjnJ3l
-X-Received: by 2002:a37:b684:: with SMTP id g126-v6mr17233424qkf.208.1532972200671;
-        Mon, 30 Jul 2018 10:36:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1532972200; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4042037wru;
+        Mon, 30 Jul 2018 10:46:15 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeieq1qdw0qhsqsFPl1++PCJP0KpFi70yRCcI5/9ikyjF3VBEWUS+d6SMZoecsvzSYYnOhG
+X-Received: by 2002:a37:18c4:: with SMTP id 65-v6mr16467444qky.415.1532972775600;
+        Mon, 30 Jul 2018 10:46:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532972775; cv=none;
         d=google.com; s=arc-20160816;
-        b=fBa0LMdskKdodqddF59rA7eQ5A6ZDW9JTAl3PjiuBqNtkgL61HrkBhxaaLBru2b5Yd
-         oFVz4qJten9Coen4wVRYype0NPa32gbKH7RYci+1l0o9wk5JXICmgy+OxJd5YgNAWtAb
-         M4iVi1QrLltd1P/EhbVbQq3IF/RDoMJUzqnZMYODqxpy/oXg3l46jL69Dtc5oWtYwJtq
-         d0Plq+i++/HIXMuYDbvLrE6IT/5lCYkDAxFkr51I3wDw2w9Z/Dpw9UD4JkFo+Gi7/H/9
-         j0KcaZnJC0S+nReEyl5PZVhUTNSKtpPj1bu2Ujtz5FDKiVgE+Ty6fyxICsnKkg+YAEF1
-         lWww==
+        b=jCaDwPNPVfS9KomieAC9S8Io7OryNwukRRSNRbpKxR5ZaMDHrumikISoVw/dWLWlIF
+         HEwATkHCST8bXHz9uwtfpgRGWBjxEncN2LS/b6VQB/m0Kvlvz/oL2R+88rw1ous3nLub
+         jJ3p/0MTiUT2uhtfW02gCRlW1F6VcU8/DKdLk94LgbXi1zw/M25UXiucttFd+1Ha/V2u
+         ZdKoDKTUzeYIPF2CEHvQ5J4wuin6aTccaHIbGpLqTKDcila97oFhvfovbrDWZOgkaxAO
+         H8LATFkGbE5zxu9U/KuHODR2LkXXv5ICLqFgZB8mzpBZlCz9aAJDCvtjnllqMByFbO8e
+         SfVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=DO4st3bsstTJqLZ66cPj+yo5GWnwal2VV835QhDLWcA=;
-        b=BP7lOcR7ZBai+UQ3O3aGr4NeQB8MDz0M7hKgkeCQuRYRKqDuGzhr9RyYAbvRd6Zls9
-         Zn0UtPA+RQ7ov0bHfwvskf9jJZ/Io3r35IhsZ4dGsQ0mfD9Tib13jUKJ3jo+MLxzBJqi
-         WhOwIxhw5wHWCUPzW3LMjvcNuyrcwKQmIMVYrTMiL/ZK54Np3V/vGCfpVNQxbC9NfEnm
-         gBT8L+IHv6fj7IEzX8qW1HWC80X48M+lLhd9PJh5eGjrmmN5tQl46AbmeIXZ71SqC0T2
-         NkDJmjQzUSdYV9nFTbQYDVjXcNa/258g9rI66LQDibySXtmGIS2FAlH61cAjb9b0GJO4
-         ucnQ==
+        bh=cuGvdaU0egAKBzu0UGDo00gKWSjpt70DrHChAmEGkHY=;
+        b=quqg/zWfDyUPLLKrJTCa00Xyvswt//mYkX3ixe5ML/Bx5QH0vyGDLmMvN3WqAc4bn3
+         TkUiPgvXwiTXqmlw4sCRLdLNPi88DNx74x9rJLjLTlYf3yZEHDcG4sqrP6SGOXO4PnoZ
+         kWJMwK2tDlxCLwouzQlfiK6gjoW3nxmQ6pWI1o2sHz/SdFIwwYt1hilO1M1YAiDKm5to
+         WylJjXm0sNSGukhYuLFl5cun2L2Ri6LYC4SGfsA338ODNphAC4iFyo6q11UzRbTcjMXU
+         ZQKEN+A2y2iv8Rj1omXS6ERHDHC/HeJIYyv0x7Z0KlzepAmqYrd1F7CsTgnP+kFcBGEL
+         AHpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NOzCdDOg;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZqCbIM0S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g36-v6si3073665qte.134.2018.07.30.10.36.40
+        by mx.google.com with ESMTPS id y196-v6si9261388qky.244.2018.07.30.10.46.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 30 Jul 2018 10:36:40 -0700 (PDT)
+        Mon, 30 Jul 2018 10:46:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NOzCdDOg;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZqCbIM0S;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54177 helo=lists.gnu.org)
+Received: from localhost ([::1]:54702 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fkC64-0003xL-4e
-	for alex.bennee@linaro.org; Mon, 30 Jul 2018 13:36:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50880)
+	id 1fkCFL-0002d6-4b
+	for alex.bennee@linaro.org; Mon, 30 Jul 2018 13:46:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58159)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fkBl0-0002jm-NR
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:14:55 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fkC0C-00084U-5U
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:30:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fkBkz-000690-PU
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:14:54 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:42348)
+	(envelope-from <peter.maydell@linaro.org>) id 1fkC0B-0005or-Fo
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:30:36 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:35475)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fkBkz-00068O-J7
-	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:14:53 -0400
-Received: by mail-oi0-x244.google.com with SMTP id n84-v6so22629004oib.9
-	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 10:14:53 -0700 (PDT)
+	id 1fkC0B-0005oU-Af
+	for qemu-arm@nongnu.org; Mon, 30 Jul 2018 13:30:35 -0400
+Received: by mail-oi0-x242.google.com with SMTP id i12-v6so22780114oik.2
+	for <qemu-arm@nongnu.org>; Mon, 30 Jul 2018 10:30:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=DO4st3bsstTJqLZ66cPj+yo5GWnwal2VV835QhDLWcA=;
-	b=NOzCdDOgpWnBrHNuMe7Cq2ovPAh32/TiR326UatgACxCN76qH6ymCi5nN0XBI5ZLeS
-	o4/Uim8qGBv5H0sTr9wGixAff/vemxy9qjuR24A0r0r3RZaBdqD/qAWIMWLYUyWYB6hu
-	gwq5N10sK4sD/EbXh3vlBOI/d6ygkxPm/nQy0=
+	:cc; bh=cuGvdaU0egAKBzu0UGDo00gKWSjpt70DrHChAmEGkHY=;
+	b=ZqCbIM0Squ7cglsQWvQW7RvHvpWP1Vvl08yHsaqliZeoFkSsUy6rztIvwL14B6G//W
+	gtKf+k2X1J//RO+czxR5KfsVsbyDNDotKlHQUHvSYCyL/oSQZe8WBpO6+aErbgHyPZla
+	4dNE+Z7EUqWbORZad115Ovnld4eigU8e+vPUU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=DO4st3bsstTJqLZ66cPj+yo5GWnwal2VV835QhDLWcA=;
-	b=o1534H54PUCsTkw7wntkMlNhwijAUcHvKOpPJokF3uwcGjtIbzSZ+ZuDSW1x/bfo2a
-	CkaBiGvcqg1+6BhzgnDPb94smXIa2zKXcM4Pt+/A6MIsk8T515ZJ0oWyU7k5/FSX2MsM
-	Fgi6X/H7Hf/U0tqdNhQXH6m6hY8M2r+heh6mjwVyNh77n8F+scf+QIaf6kmG8YLlYGyC
-	8vYsQQDjE7mJFxKTnhCpcOQaASs3e7D8M5xFvYoTlgQrX850X4oofiBmSHyJqH+Y4xD2
-	fYkvBsIvfFixmjAKMcIY23IftuqddsZD6xSJWrxlZ8lzM6IS7uJn4qsc0Yv/Sdr8T6cW
-	m/2A==
-X-Gm-Message-State: AOUpUlHRmScZms13jwsw+9rFoqYAt9UDY6sWLZEr/jBAlg3YjqZs4rHF
-	MN7OhSBA381BxLi/fSjLjLWA7mMXA6PV4gJCiCcKNg==
-X-Received: by 2002:aca:a982:: with SMTP id
-	s124-v6mr19719298oie.80.1532970892900; 
-	Mon, 30 Jul 2018 10:14:52 -0700 (PDT)
+	bh=cuGvdaU0egAKBzu0UGDo00gKWSjpt70DrHChAmEGkHY=;
+	b=ikbIlT9exbA9p3Wji6oVZiJSIsP+gYM1aUjFZh1eW6i3o1quL2NP6voZVVA8bbHerJ
+	DSG+A9rLA2fXh+ul1ZqR6PlEETPMtPmclbFlPnAl9fRPIZ20sTgpltcUtrh7gZFARA92
+	riSA55dUN11hBcBXHOavvPZ+J/Swbbt1WvardfQWsg0eYDQTpFWHMfHMTia3EnoZxViA
+	/ELSh4ZjK3btzV9+SX4mmkY6c0SboZAFDtnC88Gv60GXY82LazFxeJG9JjZiEKtr8A0n
+	lu0XXgxgucgbG+cgXXKvnnRSkhX1U9k+hepREhFmAoP+KQ0rpX4LarFnKoF7z1mF046q
+	dJBQ==
+X-Gm-Message-State: AOUpUlFqyG5glcPqkh2oLOYD40utQhnRKJIJTAA6HKpCdDCny0f17pq9
+	V+PH2nTcdj0tbSYkArG2W2zp6wvk5Qar8zwDCQCP+A==
+X-Received: by 2002:aca:5f0a:: with SMTP id
+	t10-v6mr17684888oib.337.1532971834688; 
+	Mon, 30 Jul 2018 10:30:34 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 10:14:32
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 30 Jul 2018 10:30:14
 	-0700 (PDT)
-In-Reply-To: <20180727095421.386-1-luc.michel@greensocs.com>
-References: <20180727095421.386-1-luc.michel@greensocs.com>
+In-Reply-To: <20180725085944.11856-2-stefanha@redhat.com>
+References: <20180725085944.11856-1-stefanha@redhat.com>
+	<20180725085944.11856-2-stefanha@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Jul 2018 18:14:32 +0100
-Message-ID: <CAFEAcA8-79oCm5YfxPJ0r2UDaGXp7ox7e2cZ_cmpy9xuZvoDag@mail.gmail.com>
-To: Luc Michel <luc.michel@greensocs.com>
+Date: Mon, 30 Jul 2018 18:30:14 +0100
+Message-ID: <CAFEAcA9M=yy=Cu5pgcVkeBsS_pRmW9dKEV==t2Jd67d2k6gp7g@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-arm] [PATCH v5 00/20] arm_gic: add virtualization
- extensions support
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH v3 1/7] hw/arm: rename armv7m_load_kernel()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,29 +105,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Burton <mark.burton@greensocs.com>,
+Cc: Jim Mussared <jim@groklearning.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
+	Su Hang <suhang16@mails.ucas.ac.cn>, Liviu Ionescu <ilg@livius.net>,
+	Alistair Francis <alistair@alistair23.me>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Steffen Gortz <qemu.ml@steffen-goertz.de>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9k5Zmtq1GTDi
+X-TUID: edJZKKsjkRx1
 
-On 27 July 2018 at 10:54, Luc Michel <luc.michel@greensocs.com> wrote:
-> v5:
->   - Patch 7: dropped unreachable 'return NULL' [Peter]
->   - Patch 12: reworked the way invalid vIRQ are handled. The
->     specification being uncleared, I used real hardware to check our
->     previous hypothesises. See commit message for the adopted behaviour.
->     The main difference is that when EOIMode is true (EOI split is
->     enabled), a write to V_EOIR never increments H_HCR.EOICount. [Peter]
->   - Patch 14-15: fixed commit message regarding mirrored regions. [Peter
+On 25 July 2018 at 09:59, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> ARMv6-M and ARMv8-M need the same kernel loading functionality as
+> ARMv7-M.  Rename armv7m_load_kernel() to arm_m_profile_load_kernel() so
+> it's clear that this function isn't specific to ARMv7-M.
+>
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+>  hw/arm/Makefile.objs            |  1 +
+>  include/hw/arm/arm.h            | 11 +++--
+>  hw/arm/arm-m-profile.c          | 81 +++++++++++++++++++++++++++++++++
+>  hw/arm/armv7m.c                 | 60 ------------------------
+>  hw/arm/mps2-tz.c                |  3 +-
+>  hw/arm/mps2.c                   |  4 +-
+>  hw/arm/msf2-som.c               |  4 +-
+>  hw/arm/netduino2.c              |  4 +-
+>  hw/arm/stellaris.c              |  3 +-
+>  default-configs/arm-softmmu.mak |  1 +
+>  10 files changed, 99 insertions(+), 73 deletions(-)
+>  create mode 100644 hw/arm/arm-m-profile.c
 
-Thanks (and especially for taking the time to check the hardware
-behaviour where the spec was unclear).
-
-I've applied this series to my target-arm.for-3.1 branch ready
-for when we reopen master after the 3.0 release.
+Another rename that shows up in the patch as "delete the old
+one and have a copy somewhere else". Maybe this can be fixed
+with suitable git rename-detection options?
 
 thanks
 -- PMM

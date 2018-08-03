@@ -1,83 +1,84 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp157110wru;
-        Fri, 3 Aug 2018 07:48:06 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcqGI+BC4i6w9VkAOgZUFaSQiO38JlyK1PIcU9pMFCy4VEZjx5aq7lLq+yAhoObPnnavk0l
-X-Received: by 2002:a37:6301:: with SMTP id x1-v6mr3887104qkb.403.1533307686310;
-        Fri, 03 Aug 2018 07:48:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533307686; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp157252wru;
+        Fri, 3 Aug 2018 07:48:12 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcwC5CkPLOGh5mBmRWO8Amq27BQlrMQ+UClhBqXFlyxWg32o/QuFWB3ycJ+9XofJLD4Hvku
+X-Received: by 2002:ac8:354e:: with SMTP id z14-v6mr4300543qtb.261.1533307692228;
+        Fri, 03 Aug 2018 07:48:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533307692; cv=none;
         d=google.com; s=arc-20160816;
-        b=f7udQMOW2+K7w/cJLHw4xYtOJdMtclbAijVq4Ww4Uw414Tmjocylw5DIF8FJLiggl9
-         Lj3i27zLANcq+gf0leFuEfCpLPXlpmimrqC6ZqMkQdI5NfxuUPY8LCNuo0P2ugk8vwxF
-         WhPx+hCsYtq0dg05pu+cPbGJ6SH6yqS+hcfb/4DDb/tHu9ZCORdcRmTiI+59EOGwNRf9
-         A5M8jM4qu1+lMaKWW8RmqzmHl8cVAW0YLOZ6owNMMRYoZqCx9nOjxvQUrX8ynMqljMTs
-         QGsTAWyPvO9cJ+ZZaiLWJmDIxseSNlWFLIJ0JNw7kEcmsDfYFU3TCIRrnHU/aduq+rKW
-         iDQQ==
+        b=EKdlm5CT18MzWCG7O8rFUBvMYlbNTle8mAhnLirLaS1idura7brq3CdE147NpAzhsI
+         fLaYRt6jpxl+GAEjvjI6kgUO4KJMRMCysqOauwJICx3KXMRi7LhjOLqcBPkmF4EsBcJm
+         xnHTFlnavwgIdJgzeFcaaoycWHsX1vo4Tz9ngpXiFgTtgKfXDaVTBM7YY8n9/KrvDvGs
+         wcUjxTstmQKcRkU4MTNeAKK5J2ffxY9pWQB6hn5SEciM4FxVNf30NWd1SU12PysYrD+r
+         Bu7ZOINz0Ia7g66+PNbx/btLIlabJilyFlA5lgNfTQJEOZm5Ih7IW+CGrBtdzXxBoCNy
+         GoJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=TLK+LFjBLdHf8MKEjd8qAqTu5JyGfvw8CILoBZnb+Xo=;
-        b=j0H7b9emLMv+KvtBg8iUYriJ200QN5uxTFZEXiDTmSGVxsSXdh4+V2XGKOMtAg7i2J
-         bjcEoxz3BLuUaGLh/2pw+QubqlPgt5BPuZHkiFuxm3Z4f9k4g78W4oPGqDSwEqH7Ikiy
-         q+loWajSb85QPjEIcOgrfPOdrr1Y68wiqst7EYEDHP1HI43l6oU1CBC2SkW8DBmg4fYR
-         dfwc4N5X22NDhylJZiVU91s8+pSes8cbpkmJmQ9WVIo9Md6iFtmoZGnZaU/fKLBB5/gG
-         z7GgPyZUs07HAZACgC/2Fx94e4lCUXA7rcMWmI3Qhw81K6TD9EJk1eEdk0A/USs5Wvaw
-         vVQQ==
+        bh=VERtaVtC/p/tjFZ24yhc3GcZ4tG88eEuf1st1N3TBCM=;
+        b=xane6rZjZ6agQaOdlQRJZr/zhzafU8t6hJqBtz1TyVAjMzUzM9CoPYeOh5qX016yv/
+         tDDfxp6fP18Vec+1O+MTXaXQtnx7SzHzkDHR/gUhrfDAA+tSOgGDVxsaibQkxvAy21hH
+         95D1pprBvXJUVwW44fV8fLCM6bXfY16nmcBjI1bt12Fnu4ykz9cArsS0oasl2TKl+arH
+         dDLuNaTgZafwFurHuIC9ArsOIYLtOmLFmmfymLxBLAgLnPSRr8Zexp6u/flr6uJMIouT
+         njQE8WRbjIZouqlW9qfw2RQ2pDD9/dPtZEoQiVHkj00CVotc3G4gWgt08SjaXycRdrWC
+         Mpgw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n11-v6si2121736qvo.33.2018.08.03.07.48.06
+        by mx.google.com with ESMTPS id 6-v6si1185983qvd.58.2018.08.03.07.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 03 Aug 2018 07:48:06 -0700 (PDT)
+        Fri, 03 Aug 2018 07:48:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51724 helo=lists.gnu.org)
+Received: from localhost ([::1]:51725 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1flbN7-0002wp-Qz
-	for alex.bennee@linaro.org; Fri, 03 Aug 2018 10:48:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49807)
+	id 1flbNB-0002xA-2D
+	for alex.bennee@linaro.org; Fri, 03 Aug 2018 10:48:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49781)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1flbMd-0002hr-Q7
+	(envelope-from <stefanha@redhat.com>) id 1flbMc-0002hk-Ly
 	for qemu-arm@nongnu.org; Fri, 03 Aug 2018 10:47:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1flbMc-0007e1-TL
-	for qemu-arm@nongnu.org; Fri, 03 Aug 2018 10:47:35 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:32966 helo=mx1.redhat.com)
+	(envelope-from <stefanha@redhat.com>) id 1flbMZ-0007bt-SJ
+	for qemu-arm@nongnu.org; Fri, 03 Aug 2018 10:47:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:32946 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1flbMc-0007da-N7; Fri, 03 Aug 2018 10:47:34 -0400
+	id 1flbMZ-0007bg-MH; Fri, 03 Aug 2018 10:47:31 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 28BA6818A6B9;
-	Fri,  3 Aug 2018 14:47:34 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0690D818A6A9;
+	Fri,  3 Aug 2018 14:47:31 +0000 (UTC)
 Received: from localhost (ovpn-117-231.ams2.redhat.com [10.36.117.231])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9FC0A215670D;
-	Fri,  3 Aug 2018 14:47:33 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A67BA215670D;
+	Fri,  3 Aug 2018 14:47:30 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: <qemu-devel@nongnu.org>
-Date: Fri,  3 Aug 2018 15:47:18 +0100
-Message-Id: <20180803144721.17036-4-stefanha@redhat.com>
+Date: Fri,  3 Aug 2018 15:47:16 +0100
+Message-Id: <20180803144721.17036-2-stefanha@redhat.com>
 In-Reply-To: <20180803144721.17036-1-stefanha@redhat.com>
 References: <20180803144721.17036-1-stefanha@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.8]);
-	Fri, 03 Aug 2018 14:47:34 +0000 (UTC)
+	Fri, 03 Aug 2018 14:47:31 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 03 Aug 2018 14:47:34 +0000 (UTC) for IP:'10.11.54.6'
+	Fri, 03 Aug 2018 14:47:31 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v4 3/6] loader: extract rom_free() function
+Subject: [Qemu-arm] [PATCH v4 1/6] hw/arm: make bitbanded IO optional on
+ ARMv7-M
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,66 +99,161 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
 	Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nYmx2pe3y2OO
+X-TUID: M8ceXP5EQi9p
 
-The next patch will need to free a rom.  There is already code to do
-this in rom_add_file().
+Some ARM CPUs have bitbanded IO, a memory region that allows convenient
+bit access via 32-bit memory loads/stores.  This eliminates the need for
+read-modify-update instruction sequences.
 
-Note that rom_add_file() uses:
+This patch makes this optional feature an ARMv7MState qdev property,
+allowing boards to choose whether they want bitbanding or not.
 
-  rom = g_malloc0(sizeof(*rom));
-  ...
-  if (rom->fw_dir) {
-      g_free(rom->fw_dir);
-      g_free(rom->fw_file);
-  }
+Status of boards:
+ * iotkit (Cortex M33), no bitband
+ * mps2 (Cortex M3), bitband
+ * msf2 (Cortex M3), bitband
+ * stellaris (Cortex M3), bitband
+ * stm32f205 (Cortex M3), bitband
 
-The conditional is unnecessary since g_free(NULL) is a no-op.
+As a side-effect of this patch, Peter Maydell noted that the Ethernet
+controller on mps2 board is now accessible.  Previously they were hidden
+by the bitband region (which does not exist on the real board).
 
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/core/loader.c | 21 ++++++++++++---------
- 1 file changed, 12 insertions(+), 9 deletions(-)
+ include/hw/arm/armv7m.h |  2 ++
+ hw/arm/armv7m.c         | 37 ++++++++++++++++++++-----------------
+ hw/arm/mps2.c           |  1 +
+ hw/arm/msf2-soc.c       |  1 +
+ hw/arm/stellaris.c      |  1 +
+ hw/arm/stm32f205_soc.c  |  1 +
+ 6 files changed, 26 insertions(+), 17 deletions(-)
 
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index bbb6e65bb5..0c72e7c05a 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -847,6 +847,17 @@ struct Rom {
- static FWCfgState *fw_cfg;
- static QTAILQ_HEAD(, Rom) roms = QTAILQ_HEAD_INITIALIZER(roms);
+diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
+index 78308d1484..2ba24953b6 100644
+--- a/include/hw/arm/armv7m.h
++++ b/include/hw/arm/armv7m.h
+@@ -43,6 +43,7 @@ typedef struct {
+  *   devices will be automatically layered on top of this view.)
+  * + Property "idau": IDAU interface (forwarded to CPU object)
+  * + Property "init-svtor": secure VTOR reset value (forwarded to CPU object)
++ * + Property "enable-bitband": expose bitbanded IO
+  */
+ typedef struct ARMv7MState {
+     /*< private >*/
+@@ -63,6 +64,7 @@ typedef struct ARMv7MState {
+     MemoryRegion *board_memory;
+     Object *idau;
+     uint32_t init_svtor;
++    bool enable_bitband;
+ } ARMv7MState;
  
-+/* rom->data must be heap-allocated (do not use with rom_add_elf_program()) */
-+static void rom_free(Rom *rom)
-+{
-+    g_free(rom->data);
-+    g_free(rom->path);
-+    g_free(rom->name);
-+    g_free(rom->fw_dir);
-+    g_free(rom->fw_file);
-+    g_free(rom);
-+}
-+
- static inline bool rom_order_compare(Rom *rom, Rom *item)
- {
-     return ((uintptr_t)(void *)rom->as > (uintptr_t)(void *)item->as) ||
-@@ -995,15 +1006,7 @@ err:
-     if (fd != -1)
-         close(fd);
+ #endif
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 6b07666057..878613994d 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -211,25 +211,27 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->container, 0xe000e000,
+                                 sysbus_mmio_get_region(sbd, 0));
  
--    g_free(rom->data);
--    g_free(rom->path);
--    g_free(rom->name);
--    if (fw_dir) {
--        g_free(rom->fw_dir);
--        g_free(rom->fw_file);
--    }
--    g_free(rom);
--
-+    rom_free(rom);
-     return -1;
+-    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+-        Object *obj = OBJECT(&s->bitband[i]);
+-        SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
++    if (s->enable_bitband) {
++        for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
++            Object *obj = OBJECT(&s->bitband[i]);
++            SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+ 
+-        object_property_set_int(obj, bitband_input_addr[i], "base", &err);
+-        if (err != NULL) {
+-            error_propagate(errp, err);
+-            return;
+-        }
+-        object_property_set_link(obj, OBJECT(s->board_memory),
+-                                 "source-memory", &error_abort);
+-        object_property_set_bool(obj, true, "realized", &err);
+-        if (err != NULL) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++            object_property_set_int(obj, bitband_input_addr[i], "base", &err);
++            if (err != NULL) {
++                error_propagate(errp, err);
++                return;
++            }
++            object_property_set_link(obj, OBJECT(s->board_memory),
++                                     "source-memory", &error_abort);
++            object_property_set_bool(obj, true, "realized", &err);
++            if (err != NULL) {
++                error_propagate(errp, err);
++                return;
++            }
+ 
+-        memory_region_add_subregion(&s->container, bitband_output_addr[i],
+-                                    sysbus_mmio_get_region(sbd, 0));
++            memory_region_add_subregion(&s->container, bitband_output_addr[i],
++                                        sysbus_mmio_get_region(sbd, 0));
++        }
+     }
  }
  
+@@ -239,6 +241,7 @@ static Property armv7m_properties[] = {
+                      MemoryRegion *),
+     DEFINE_PROP_LINK("idau", ARMv7MState, idau, TYPE_IDAU_INTERFACE, Object *),
+     DEFINE_PROP_UINT32("init-svtor", ARMv7MState, init_svtor, 0),
++    DEFINE_PROP_BOOL("enable-bitband", ARMv7MState, enable_bitband, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index c3946da317..0a0ae867d9 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -186,6 +186,7 @@ static void mps2_common_init(MachineState *machine)
+         g_assert_not_reached();
+     }
+     qdev_prop_set_string(armv7m, "cpu-type", machine->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     object_property_set_link(OBJECT(&mms->armv7m), OBJECT(system_memory),
+                              "memory", &error_abort);
+     object_property_set_bool(OBJECT(&mms->armv7m), true, "realized",
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index dbefade644..2702e90b45 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -117,6 +117,7 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 81);
+     qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index dc521b4a5a..6c69ce79b2 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -1304,6 +1304,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     nvic = qdev_create(NULL, TYPE_ARMV7M);
+     qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
+     qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
++    qdev_prop_set_bit(nvic, "enable-bitband", true);
+     object_property_set_link(OBJECT(nvic), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     /* This will exit with an error if the user passed us a bad cpu_type */
+diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+index c486d06a8b..980e5af13c 100644
+--- a/hw/arm/stm32f205_soc.c
++++ b/hw/arm/stm32f205_soc.c
+@@ -109,6 +109,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+     armv7m = DEVICE(&s->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 96);
+     qdev_prop_set_string(armv7m, "cpu-type", s->cpu_type);
++    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+     object_property_set_link(OBJECT(&s->armv7m), OBJECT(get_system_memory()),
+                                      "memory", &error_abort);
+     object_property_set_bool(OBJECT(&s->armv7m), true, "realized", &err);
 -- 
 2.17.1
 

@@ -1,102 +1,200 @@
-Received: by 10.25.159.19 with SMTP id i19csp511925lfe;
-        Fri, 15 Jan 2016 06:53:34 -0800 (PST)
-X-Received: by 10.140.220.207 with SMTP id q198mr14583394qhb.24.1452869614647;
-        Fri, 15 Jan 2016 06:53:34 -0800 (PST)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3445117wru;
+        Mon, 6 Aug 2018 13:18:20 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdsLIj0JzbXiUcWYPHSa9w9fM6b4POHw0UIESBPNTydfdrZl3xL54vik/sXlfVY77gCymvs
+X-Received: by 2002:aed:3cc3:: with SMTP id e3-v6mr16364025qtf.356.1533586700440;
+        Mon, 06 Aug 2018 13:18:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533586700; cv=none;
+        d=google.com; s=arc-20160816;
+        b=H9UbXAnsXFRKFkNlQHd0mwtIm4m8p+YS2siJpX9s48C5QK4YVqkDzvdY87mlGU8cSd
+         E24eLM3QNYdCp9afvhuCTgI/k9WExsUMeXONoCwOVqO0vmFt19wFqQKuU8+xDCm5LqmW
+         XhaqQPlv21VTo2wmrXLoA0deK/phUmnb1RdJN2WvfRtJjS3nIb629KFlJ2gJTDjc8UBI
+         U3DCrqmhTDCvN/EeX+pPcAwR/bzwh4RviwlcGNSq/SSibwd7H/v51pTlLIRwdDSRTUtl
+         Dn7Lym4pMdh2gyqUXntV9DsBhw8wGa77iDgcXg2zqotI4EiA0ZD49bDJQiu+UQMj2VAJ
+         fIFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=WN59MNwTHHemDoeJcyP0S87AWtRbtS8SC3I60vrr6gQ=;
+        b=vqEz1P69OpnXdJpybBFWWv8DOn1hZQFGWSxtu4Y7j/EkLKUYukzIJWNfQ87wexRGUJ
+         AuoEZbaT+DRXQUEyvCUkJsY29NCKXotMm5kYmigiuQqu8sV9LxiW4R1Wrno8pVmdOLy0
+         1D5ETBu9o5JtzogsCgyPOKxHHD2iLoxhTjPuKxpR/OU/uA0HsXd50aFNVeUsH1o0zdDA
+         7uFj1/JIWLz50Rze5YfRx5qbAJZpnuXnoEWKfOIKk4kVge/Un/zB7pdqupMdnbwTSscl
+         TwB+Cu4mETjmu55Od6Ysq0T8FBwuHuNbD78zjtNRWV86EBMci/v8O/mzK0c2wCKqCoKp
+         xrug==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v84si13632593qkv.88.2016.01.15.06.53.34
+        by mx.google.com with ESMTPS id q12-v6si1247795qtn.388.2018.08.06.13.18.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 06:53:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 06 Aug 2018 13:18:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:47325 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36100 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aK5ks-00077f-01
-	for alex.bennee@linaro.org; Fri, 15 Jan 2016 09:53:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39891)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fmlxL-0007yg-Nc
+	for alex.bennee@linaro.org; Mon, 06 Aug 2018 16:18:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK5kp-00077P-RS
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:53:32 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1fmluQ-0006Es-0f
+	for qemu-devel@nongnu.org; Mon, 06 Aug 2018 16:15:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK5kp-00008c-5u
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:53:31 -0500
-Received: from mail-vk0-x22a.google.com ([2607:f8b0:400c:c05::22a]:35654)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK5kp-00008U-0n
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:53:31 -0500
-Received: by mail-vk0-x22a.google.com with SMTP id k1so299482233vkb.2
-	for <qemu-arm@nongnu.org>; Fri, 15 Jan 2016 06:53:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=Nz8+LtdLkzfvcv0Hq/oIGYp8QJ2MmPZbGorscqUCXvA=;
-	b=Zd82k131oLxkQd4nJiH0D6sGL2Ny90bxvdWwbKHT5Bz9bvjR7rQ/WiDp+G2kzhCyuf
-	SDgh/P/NZAwr2StRjmYPhp/KomRcMtT33+FsrTdk3sJquAjyxolTb06zF1PHa1KwHxVL
-	0hX5Uo3NijXBDW7DL+y/mzdLWn37BFbkJvo/U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=Nz8+LtdLkzfvcv0Hq/oIGYp8QJ2MmPZbGorscqUCXvA=;
-	b=ExcPogbkK9zk6pibEvx7MM3i3mfwECCgHrUcxPgs7kgmTNcIW3Xykby4N/eHbJbtU9
-	IvVie+cZcI2oU8Pb5MpRHwfG3O/HdjBP129wQoPiI77Zhdpl+iE2rX1lmoW9Q3oOGvza
-	pFaTPW1M2+93kiTejUV4FbDvmcR9TlEpsPs68QWbuIKpbElFUbRbmmOK/2e8MPe9zt82
-	P6Gbbf76ZtTdS+fa2PLyZ6ZrbvympSkv/05fVb8t9KTuhdIc4GzWD1T2CMQJwSVfzQ7d
-	ADUMnCE9Dt1hkN9odDdBB66Smj+zEdnsI45uk3hbGl401G4DPNiK8d8i7un3pKPjcJcb
-	mKkQ==
-X-Gm-Message-State: ALoCoQk1OeWMKRoG7tY93MVzhkuStz43A17HPmkjcfCog1zgfGr9HEJXW9EGl27SdFOeqIgBNRTvi83ZHVn/liZtkAVqfBHVMQ2H6WUNosKeVJdnJop5jVQ=
-X-Received: by 10.31.180.145 with SMTP id d139mr6837783vkf.83.1452869610550;
-	Fri, 15 Jan 2016 06:53:30 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 15 Jan 2016 06:53:11 -0800 (PST)
-In-Reply-To: <1452867091-4023-1-git-send-email-shannon.zhao@linaro.org>
-References: <1452867091-4023-1-git-send-email-shannon.zhao@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jan 2016 14:53:11 +0000
-Message-ID: <CAFEAcA8GsEC6ARHThLX5pZY2oGQiDKVaYOGVD7OkABAYaHdxeA@mail.gmail.com>
-To: Shannon Zhao <shannon.zhao@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <eric.auger@redhat.com>) id 1fmluP-0006hO-35
+	for qemu-devel@nongnu.org; Mon, 06 Aug 2018 16:15:17 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46918 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fmluL-0006fH-Bo; Mon, 06 Aug 2018 16:15:13 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D39328780F;
+	Mon,  6 Aug 2018 20:15:12 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-58.ams2.redhat.com
+	[10.36.116.58])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5C976215670D;
+	Mon,  6 Aug 2018 20:15:10 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com
+Date: Mon,  6 Aug 2018 22:14:34 +0200
+Message-Id: <1533586484-5737-7-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
+References: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Mon, 06 Aug 2018 20:15:12 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Mon, 06 Aug 2018 20:15:12 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22a
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	"edk2-devel@lists.01.org" <edk2-devel@ml01.01.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>, Laszlo Ersek <lersek@redhat.com>
-Subject: Re: [Qemu-arm] [PATCH v3] ARM: Virt: Don't generate RTC ACPI device
-	when using UEFI
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-devel] [RFC v7 06/16] virtio-iommu: Implement attach/detach
+ command
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Owxt5QzdZnsF
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: wei@redhat.com, kevin.tian@intel.com, tn@semihalf.com, will.deacon@arm.com,
+	drjones@redhat.com, peterx@redhat.com, linuc.decode@gmail.com,
+	bharat.bhushan@nxp.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HNdXec4FtEOg
 
-On 15 January 2016 at 14:11, Shannon Zhao <shannon.zhao@linaro.org> wrote:
-> When booting the VM with UEFI, UEFI takes ownership of the RTC hardware.
-> While UEFI can use libfdt to disable the RTC device node in the DTB that
-> it passes to the OS, it cannot modify AML. Therefore, we won't generate
-> the RTC ACPI device at all when using UEFI.
->
-> Signed-off-by: Shannon Zhao <shannon.zhao@linaro.org>
-> Acked-by: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-> ---
-> V3: add comments to explain why it doesn't generate RTC ACPI device
+This patch implements the endpoint attach/detach to/from
+a domain.
 
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/virtio/virtio-iommu.c | 43 +++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 35 insertions(+), 8 deletions(-)
 
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 8bbb116..4cb6e15 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -83,8 +83,8 @@ static void virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
+     ep->domain = NULL;
+ }
+ 
+-viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id);
+-viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id)
++static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
++                                                  uint32_t ep_id)
+ {
+     viommu_endpoint *ep;
+ 
+@@ -113,8 +113,8 @@ static void virtio_iommu_put_endpoint(gpointer data)
+     g_free(ep);
+ }
+ 
+-viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id);
+-viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)
++static viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s,
++                                              uint32_t domain_id)
+ {
+     viommu_domain *domain;
+ 
+@@ -193,6 +193,8 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+     uint32_t domain_id = le32_to_cpu(req->domain);
+     uint32_t ep_id = le32_to_cpu(req->endpoint);
+     uint32_t reserved = le32_to_cpu(req->reserved);
++    viommu_domain *domain;
++    viommu_endpoint *ep;
+ 
+     trace_virtio_iommu_attach(domain_id, ep_id);
+ 
+@@ -200,7 +202,22 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
+         return VIRTIO_IOMMU_S_INVAL;
+     }
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ep = virtio_iommu_get_endpoint(s, ep_id);
++    if (ep->domain) {
++        /*
++         * the device is already attached to a domain,
++         * detach it first
++         */
++        virtio_iommu_detach_endpoint_from_domain(ep);
++    }
++
++    domain = virtio_iommu_get_domain(s, domain_id);
++    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
++
++    ep->domain = domain;
++    g_tree_ref(domain->mappings);
++
++    return VIRTIO_IOMMU_S_OK;
+ }
+ 
+ static int virtio_iommu_detach(VirtIOIOMMU *s,
+@@ -208,14 +225,24 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+ {
+     uint32_t ep_id = le32_to_cpu(req->endpoint);
+     uint32_t reserved = le32_to_cpu(req->reserved);
+-
+-    trace_virtio_iommu_detach(ep_id);
++    viommu_endpoint *ep;
+ 
+     if (reserved) {
+         return VIRTIO_IOMMU_S_INVAL;
+     }
+ 
+-    return VIRTIO_IOMMU_S_UNSUPP;
++    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
++    if (!ep) {
++        return VIRTIO_IOMMU_S_NOENT;
++    }
++
++    if (!ep->domain) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++
++    virtio_iommu_detach_endpoint_from_domain(ep);
++    trace_virtio_iommu_detach(ep_id);
++    return VIRTIO_IOMMU_S_OK;
+ }
+ 
+ static int virtio_iommu_map(VirtIOIOMMU *s,
+-- 
+2.5.5
 
-Applied to target-arm.next, thanks.
-
--- PMM

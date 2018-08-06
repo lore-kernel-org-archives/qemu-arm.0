@@ -1,90 +1,90 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3192236wru;
-        Mon, 6 Aug 2018 08:32:47 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpeuxUlVfbcgP1dHONVpECgkLavTtDGkjQVcMpigRFbBPBIMH+wa3b2dBGYRNl2bKX4RE8wc
-X-Received: by 2002:ac8:42b:: with SMTP id v43-v6mr14111924qtg.319.1533569567495;
-        Mon, 06 Aug 2018 08:32:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533569567; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3199515wru;
+        Mon, 6 Aug 2018 08:39:43 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdrI6DWCp983aC1MFXcLrQvexsEZh+Lq3koIQBWDcCxzH3+p2dFSKyXu05MkPz7B/g56Nvi
+X-Received: by 2002:a0c:8a1b:: with SMTP id 27-v6mr13382046qvt.159.1533569983821;
+        Mon, 06 Aug 2018 08:39:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533569983; cv=none;
         d=google.com; s=arc-20160816;
-        b=mQHx7EVx7ZewDx/d4WKiD7/bR0FMYisj44NMt9JPJ4FQIp7e4tEOrIXFloelQdscJ8
-         enscRY+hWMV5xe8LN0CJLwlyyFtpwDHIdf+tAcs46dnnKToIC0FuArPVtxSjd0/EbX0P
-         KG14OZiiFIftdoo5YRItBw91gthubadPi8vRWGDGDkhP/fQhdhVzr4xg9SR7dhgF2moA
-         Z68G7xOGSxzOI2Mi7rWIgsMxUqnLlTLvIQ2gIaTXqr7mnLkxhaAie1ibpNATxk43Vdos
-         vIAlXtpNEVHdKP1dDjbJAJuW3hbYg/vzCjgho80motZq7POZkGDUEXkgNt4l8q+DfV2E
-         kbJA==
+        b=XpdRsK/SOMfHrs6l1WGtfWxGriC5vlpFqHXSsMV24XiJmNfI2wRSYjUw8BA0cmFZN6
+         SnPFj7gLmvo2gJd/EhQEpFB/PFHL3pHKGlFtGFCBiMgxnU/bRAy4Bby3Qa0zfceoHr3r
+         Ek4T7rx5Rriy9vNLfyFlOwLKcufX90IrC204QYDkD9xJ/20dlF7mbZaQDjT2lVsnY927
+         +3+89VCITkt1SypTIzUu/+EE12f75wA6zBbLBkhz0MApA1bd6MZn8Z7tTmZgxLypvsY3
+         alXsm0yhFOqpu/XpDJIe8jEpe1j5x8ejlgcS7s4mqUyBmnFcvgH68aqJ3KK3/L7Vdd7Z
+         J8ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :arc-authentication-results;
-        bh=g4MI0C0jiUWfDpMTDJMpU4x3j7sgU5q49OEzQ+O4GAc=;
-        b=fGn7SA2xwPzQTL6vcip5X2+ioiQJwnYURNNGR1zWVoDRNQJ8TUY+ID5fsEtqGzZRHg
-         tc2gAbYuR0kf+I8FYpdJe14icS6Ytxfisz6rAQJxO8mhnzUIbs5E9GbolInjadmWOeLE
-         xipSFNnU/+sUZ5qBNcYwoCATOXEVsAxmhPPFaDr0XI9fJKa682mCXmTH6+N1JLSdTOJI
-         W7MonPmCyintuPKJXW0VioofTA41hfcx75uZU9p/AJT/i5xB4T4NAwcps8HThaaZ+awR
-         qeveJZ2a50lqGfMAkcJD3aAOP5tIg6Ncm3Hv06k4M+bm8zXEHYePABUG4p9ztgVESP89
-         L5gQ==
+        bh=s5r2ogpEwLPqoTc8A/0ON/IcbIRLiIo5Qhgwb0hJ6J0=;
+        b=vlMg2XXHerqwmV01OnIIhB0F3r+iwGBKjHq572+UK++O/NSHlYBmoRePWpUOpyp9dK
+         ia3Gz7tHVW5IlcpMrQRfnTYt/bZ+7s7TJ5zFS3/viiu3pTRAWtTxjv4NPf1e9TLtm2KL
+         buJOSqZwVVW9f7F0z/WqPFApOzDUueG1MM6gpy08+o44hRdkMWZd5fWe25xpw35u1NO+
+         lXPF1jLIPsNzUGJajh4vFZU+CSPigLjnJYtEKyYPSBFeNdhFYMp9Gd2jroGUWkse1GlP
+         xj7sAhk2PA7Mpbk8hela1+wqxjv3J4zoUDQGakw4ULnxDkBuiSFdfDS268VXXw9ECzOR
+         0e8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r1-v6si2003822qkd.113.2018.08.06.08.32.47
+        by mx.google.com with ESMTPS id u15-v6si418102qta.385.2018.08.06.08.39.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 06 Aug 2018 08:32:47 -0700 (PDT)
+        Mon, 06 Aug 2018 08:39:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34682 helo=lists.gnu.org)
+Received: from localhost ([::1]:34739 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmhV0-0002ol-Vt
-	for alex.bennee@linaro.org; Mon, 06 Aug 2018 11:32:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52802)
+	id 1fmhbj-0006uF-BJ
+	for alex.bennee@linaro.org; Mon, 06 Aug 2018 11:39:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55752)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1fmhUl-0002nR-3d
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 11:32:32 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1fmhba-0006u9-NV
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 11:39:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1fmhUg-0000Sg-9e
-	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 11:32:31 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45346 helo=mx1.redhat.com)
+	(envelope-from <dgilbert@redhat.com>) id 1fmhbV-0003sE-Ss
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 11:39:34 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60314 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1fmhUg-0000Qw-2y; Mon, 06 Aug 2018 11:32:26 -0400
+	id 1fmhbV-0003rh-MC; Mon, 06 Aug 2018 11:39:29 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2B55940216E3;
-	Mon,  6 Aug 2018 15:32:25 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id ECD38406E1D6;
+	Mon,  6 Aug 2018 15:39:28 +0000 (UTC)
 Received: from work-vm (ovpn-117-156.ams2.redhat.com [10.36.117.156])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 968682026D76;
-	Mon,  6 Aug 2018 15:32:23 +0000 (UTC)
-Date: Mon, 6 Aug 2018 16:32:21 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B544C2026D76;
+	Mon,  6 Aug 2018 15:39:27 +0000 (UTC)
+Date: Mon, 6 Aug 2018 16:39:25 +0100
 From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180806153220.GE2473@work-vm>
+Message-ID: <20180806153925.GF2473@work-vm>
 References: <20180806123445.1459-1-peter.maydell@linaro.org>
-	<20180806123445.1459-5-peter.maydell@linaro.org>
+	<20180806123445.1459-6-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20180806123445.1459-5-peter.maydell@linaro.org>
+In-Reply-To: <20180806123445.1459-6-peter.maydell@linaro.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Mon, 06 Aug 2018 15:32:25 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 06 Aug 2018 15:32:25 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.7]);
+	Mon, 06 Aug 2018 15:39:29 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Mon, 06 Aug 2018 15:39:29 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'dgilbert@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [PATCH for-3.0 v2 4/5] hw/intc/arm_gicv3_common:
- Move post_load hooks to top-level VMSD
+Subject: Re: [Qemu-arm] [PATCH for-3.0 v2 5/5] hw/intc/arm_gicv3_common:
+ Move gicd shift bug handling to gicv3_post_load
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,82 +101,133 @@ Cc: Juan Quintela <quintela@redhat.com>, patches@linaro.org,
 	qemu-arm@nongnu.org, Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2f4GTVfWEAPu
+X-TUID: y1r7dmok0IFY
 
 * Peter Maydell (peter.maydell@linaro.org) wrote:
-> Contrary to the the impression given in docs/devel/migration.rst,
-> the migration code does not run the pre_load hook for a
-> subsection unless the subsection appears on the wire, and so
-> this is not a place where you can set the default value for
-> state for the "subsection not present" case. Instead this needs
-> to be done in a pre_load hook for whatever is the parent VMSD
-> of the subsection.
-> 
-> We got this wrong in two of the subsection definitions in
-> the GICv3 migration structs; fix this.
+> The code currently in gicv3_gicd_no_migration_shift_bug_post_load()
+> that handles migration from older QEMU versions with a particular
+> bug is misplaced. We need to run this after migration in all cases,
+> not just the cases where the "arm_gicv3/gicd_no_migration_shift_bug"
+> subsection is present, so it must go in a post_load hook for the
+> top level VMSD, not for the subsection. Move it.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
 > ---
->  hw/intc/arm_gicv3_common.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  hw/intc/arm_gicv3_common.c | 77 ++++++++++++++++++--------------------
+>  1 file changed, 37 insertions(+), 40 deletions(-)
 > 
 > diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index e1a8999cf5b..8175889f1e7 100644
+> index 8175889f1e7..52480c3b4cf 100644
 > --- a/hw/intc/arm_gicv3_common.c
 > +++ b/hw/intc/arm_gicv3_common.c
-> @@ -73,7 +73,7 @@ static const VMStateDescription vmstate_gicv3_cpu_virt = {
->      }
->  };
+> @@ -29,6 +29,41 @@
+>  #include "hw/arm/linux-boot-if.h"
+>  #include "sysemu/kvm.h"
 >  
-> -static int icc_sre_el1_reg_pre_load(void *opaque)
-> +static int vmstate_gicv3_cpu_pre_load(void *opaque)
+> +
+> +static void gicv3_gicd_no_migration_shift_bug_post_load(GICv3State *cs)
+> +{
+> +    if (cs->gicd_no_migration_shift_bug) {
+> +        return;
+> +    }
+> +
+> +    /* Older versions of QEMU had a bug in the handling of state save/restore
+> +     * to the KVM GICv3: they got the offset in the bitmap arrays wrong,
+> +     * so that instead of the data for external interrupts 32 and up
+> +     * starting at bit position 32 in the bitmap, it started at bit
+> +     * position 64. If we're receiving data from a QEMU with that bug,
+> +     * we must move the data down into the right place.
+> +     */
+> +    memmove(cs->group, (uint8_t *)cs->group + GIC_INTERNAL / 8,
+> +            sizeof(cs->group) - GIC_INTERNAL / 8);
+> +    memmove(cs->grpmod, (uint8_t *)cs->grpmod + GIC_INTERNAL / 8,
+> +            sizeof(cs->grpmod) - GIC_INTERNAL / 8);
+> +    memmove(cs->enabled, (uint8_t *)cs->enabled + GIC_INTERNAL / 8,
+> +            sizeof(cs->enabled) - GIC_INTERNAL / 8);
+> +    memmove(cs->pending, (uint8_t *)cs->pending + GIC_INTERNAL / 8,
+> +            sizeof(cs->pending) - GIC_INTERNAL / 8);
+> +    memmove(cs->active, (uint8_t *)cs->active + GIC_INTERNAL / 8,
+> +            sizeof(cs->active) - GIC_INTERNAL / 8);
+> +    memmove(cs->edge_trigger, (uint8_t *)cs->edge_trigger + GIC_INTERNAL / 8,
+> +            sizeof(cs->edge_trigger) - GIC_INTERNAL / 8);
+> +
+> +    /*
+> +     * While this new version QEMU doesn't have this kind of bug as we fix it,
+> +     * so it needs to set the flag to true to indicate that and it's necessary
+> +     * for next migration to work from this new version QEMU.
+> +     */
+> +    cs->gicd_no_migration_shift_bug = true;
+> +}
+> +
+>  static int gicv3_pre_save(void *opaque)
 >  {
->      GICv3CPUState *cs = opaque;
+>      GICv3State *s = (GICv3State *)opaque;
+> @@ -46,6 +81,8 @@ static int gicv3_post_load(void *opaque, int version_id)
+>      GICv3State *s = (GICv3State *)opaque;
+>      ARMGICv3CommonClass *c = ARM_GICV3_COMMON_GET_CLASS(s);
 >  
-> @@ -97,7 +97,6 @@ const VMStateDescription vmstate_gicv3_cpu_sre_el1 = {
->      .name = "arm_gicv3_cpu/sre_el1",
->      .version_id = 1,
->      .minimum_version_id = 1,
-> -    .pre_load = icc_sre_el1_reg_pre_load,
->      .needed = icc_sre_el1_reg_needed,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT64(icc_sre_el1, GICv3CPUState),
-> @@ -109,6 +108,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->      .name = "arm_gicv3_cpu",
->      .version_id = 1,
->      .minimum_version_id = 1,
-> +    .pre_load = vmstate_gicv3_cpu_pre_load,
->      .fields = (VMStateField[]) {
->          VMSTATE_UINT32(level, GICv3CPUState),
->          VMSTATE_UINT32(gicr_ctlr, GICv3CPUState),
-> @@ -139,7 +139,7 @@ static const VMStateDescription vmstate_gicv3_cpu = {
+> +    gicv3_gicd_no_migration_shift_bug_post_load(s);
+> +
+>      if (c->post_load) {
+>          c->post_load(s);
 >      }
->  };
+> @@ -161,45 +198,6 @@ static int gicv3_pre_load(void *opaque)
+>      return 0;
+>  }
 >  
-> -static int gicv3_gicd_no_migration_shift_bug_pre_load(void *opaque)
-> +static int gicv3_pre_load(void *opaque)
+> -static int gicv3_gicd_no_migration_shift_bug_post_load(void *opaque,
+> -                                                       int version_id)
+> -{
+> -    GICv3State *cs = opaque;
+> -
+> -    if (cs->gicd_no_migration_shift_bug) {
+> -        return 0;
+> -    }
+> -
+> -    /* Older versions of QEMU had a bug in the handling of state save/restore
+> -     * to the KVM GICv3: they got the offset in the bitmap arrays wrong,
+> -     * so that instead of the data for external interrupts 32 and up
+> -     * starting at bit position 32 in the bitmap, it started at bit
+> -     * position 64. If we're receiving data from a QEMU with that bug,
+> -     * we must move the data down into the right place.
+> -     */
+> -    memmove(cs->group, (uint8_t *)cs->group + GIC_INTERNAL / 8,
+> -            sizeof(cs->group) - GIC_INTERNAL / 8);
+> -    memmove(cs->grpmod, (uint8_t *)cs->grpmod + GIC_INTERNAL / 8,
+> -            sizeof(cs->grpmod) - GIC_INTERNAL / 8);
+> -    memmove(cs->enabled, (uint8_t *)cs->enabled + GIC_INTERNAL / 8,
+> -            sizeof(cs->enabled) - GIC_INTERNAL / 8);
+> -    memmove(cs->pending, (uint8_t *)cs->pending + GIC_INTERNAL / 8,
+> -            sizeof(cs->pending) - GIC_INTERNAL / 8);
+> -    memmove(cs->active, (uint8_t *)cs->active + GIC_INTERNAL / 8,
+> -            sizeof(cs->active) - GIC_INTERNAL / 8);
+> -    memmove(cs->edge_trigger, (uint8_t *)cs->edge_trigger + GIC_INTERNAL / 8,
+> -            sizeof(cs->edge_trigger) - GIC_INTERNAL / 8);
+> -
+> -    /*
+> -     * While this new version QEMU doesn't have this kind of bug as we fix it,
+> -     * so it needs to set the flag to true to indicate that and it's necessary
+> -     * for next migration to work from this new version QEMU.
+> -     */
+> -    cs->gicd_no_migration_shift_bug = true;
+> -
+> -    return 0;
+> -}
+> -
+>  static bool needed_always(void *opaque)
 >  {
->      GICv3State *cs = opaque;
->  
-> @@ -210,7 +210,6 @@ const VMStateDescription vmstate_gicv3_gicd_no_migration_shift_bug = {
+>      return true;
+> @@ -210,7 +208,6 @@ const VMStateDescription vmstate_gicv3_gicd_no_migration_shift_bug = {
 >      .version_id = 1,
 >      .minimum_version_id = 1,
 >      .needed = needed_always,
-> -    .pre_load = gicv3_gicd_no_migration_shift_bug_pre_load,
->      .post_load = gicv3_gicd_no_migration_shift_bug_post_load,
+> -    .post_load = gicv3_gicd_no_migration_shift_bug_post_load,
 >      .fields = (VMStateField[]) {
 >          VMSTATE_BOOL(gicd_no_migration_shift_bug, GICv3State),
-> @@ -222,6 +221,7 @@ static const VMStateDescription vmstate_gicv3 = {
->      .name = "arm_gicv3",
->      .version_id = 1,
->      .minimum_version_id = 1,
-> +    .pre_load = gicv3_pre_load,
->      .pre_save = gicv3_pre_save,
->      .post_load = gicv3_post_load,
->      .priority = MIG_PRI_GICV3,
+>          VMSTATE_END_OF_LIST()
 > -- 
 > 2.17.1
 > 

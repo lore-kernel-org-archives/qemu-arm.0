@@ -1,104 +1,165 @@
-Received: by 10.182.158.201 with SMTP id ww9csp3085205obb;
-        Wed, 16 Dec 2015 03:17:24 -0800 (PST)
-X-Received: by 10.140.106.37 with SMTP id d34mr61294282qgf.77.1450264644654;
-        Wed, 16 Dec 2015 03:17:24 -0800 (PST)
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2873252wru;
+        Mon, 6 Aug 2018 03:01:21 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpercxEYYFFCqRkG8KWXHnvwcdaokr+vF9AlzBQ6P5fBGEkXwOtA9jRQORJloJpAZ7Merqqi
+X-Received: by 2002:ac8:1b0e:: with SMTP id y14-v6mr13685539qtj.349.1533549681854;
+        Mon, 06 Aug 2018 03:01:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533549681; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jWGJDwOWHq+754lMzZcbXZtYCWRUudVxizan5qUAz3uZubHGdaJgLlU3lT7yOY6oCg
+         rfsRHI35wwASV4pJ6zd3XPHIat5WhqYFSJXbdPSBDuyxcWcp3tuF+GlCTdkshrGual+U
+         ewj3pmHCogEBSYsvfpT/PfEuRYXwYL/UtEvBlifWWLJny9WeB4LeJw+7QE5oqkE4hqYx
+         lSy3u7HDWXSEPlmYx20R73RwtEw1dFpH1MxnjWxPbknpjHzs/ICMchHiwTBwhgTCmK06
+         I7ONPyJc3QP9GwFVwxCLKclK9VbXdvTVPByfWz8BctFoD8khPylmcpS31/oIOAo8M1cn
+         E0Ew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=W3Dn+9aFnzoZqrE7sAw39qM29bdQeVeaR3YsmLnliss=;
+        b=O99wcMBDLbnUFLmhwRmoxh3KPIR2UxqTTtBEWn04obr4cWRnkkc4z+g8TSh0ibYdpL
+         3ewugr26ObILEcTY4l08b2g0YU5NDCV9RgG1gd1VuXJpKiAsG/xnI+cAgjNmm/dN4KA5
+         0m/9hfOUGAlHpyEXYOrai1YCcPn1ykgboQiXahNWLTmR0bPbHiV68+UtfczhLiVUJCQA
+         INsf4E2w33B4dy5LfVoiXn/aHByBIu75W0tsASDW8EQySNlvQ3qsdQR+5rypUfbrJ0Pp
+         w1J986VA7o736wP7whT6WPENzk36QZjr4AJec+J3mi2590/LdmHXudTiqfh73VfWHLo/
+         spNg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BgTCqpzR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a197si6161630qkb.6.2015.12.16.03.17.24
+        by mx.google.com with ESMTPS id z30-v6si1353242qve.249.2018.08.06.03.01.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 16 Dec 2015 03:17:24 -0800 (PST)
+        Mon, 06 Aug 2018 03:01:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:46624 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=BgTCqpzR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33225 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1a9A5E-0001tL-AN
-	for alex.bennee@linaro.org; Wed, 16 Dec 2015 06:17:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46620)
+	id 1fmcKG-0001vT-Ch
+	for alex.bennee@linaro.org; Mon, 06 Aug 2018 06:01:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38490)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9A5C-0001t3-IP
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 06:17:23 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1fmcK4-0001um-58
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 06:01:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9A5B-0008Tk-Si
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 06:17:22 -0500
-Received: from mail-vk0-x22d.google.com ([2607:f8b0:400c:c05::22d]:32809)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1a9A5B-0008TX-Ov
-	for qemu-arm@nongnu.org; Wed, 16 Dec 2015 06:17:21 -0500
-Received: by mail-vk0-x22d.google.com with SMTP id a188so24259551vkc.0
-	for <qemu-arm@nongnu.org>; Wed, 16 Dec 2015 03:17:21 -0800 (PST)
+	(envelope-from <peter.maydell@linaro.org>) id 1fmcJy-00034s-Gg
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 06:01:08 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:46344)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fmcJy-00034c-Al
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 06:01:02 -0400
+Received: by mail-oi0-x243.google.com with SMTP id y207-v6so21045568oie.13
+	for <qemu-arm@nongnu.org>; Mon, 06 Aug 2018 03:01:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=y27+NPj9iyaaMgT5AshyaIdNeR2JfpVzIaTcbhFw+NQ=;
-	b=gPDtqfv23LOipG/YymGvJTvyCxG8vLgvZ8icCp/Wl9cK5wKlRisjvV0JiMFJnWxarP
-	sKSyDE7qZaFDiiEP+8jWfFlSwM5KCU/kd1cJdqyavkozeA9T9wuG/2RGOuRcoFRdaVLB
-	Cw5KmblSJ0WsfcWQNLcC2kwpJVK5WLf+snZi4=
+	:cc; bh=W3Dn+9aFnzoZqrE7sAw39qM29bdQeVeaR3YsmLnliss=;
+	b=BgTCqpzRVs+9G9um/iRU6W5X1T1OJf9SYAx/I3edP0YxJwhWL89LomipQo3RexIM0r
+	WgeKypqDAL+/VuPIApWiGrQJos0fMPt/PewzWtUZn7pEDY1nm+gd77ku57/poTeJha7L
+	GvtJ2DbD/aVnSXvpWMkSv5oZKcUBoUtogTAho=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
+	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=y27+NPj9iyaaMgT5AshyaIdNeR2JfpVzIaTcbhFw+NQ=;
-	b=Y9Rmc43gywIXUlReEgoEg8uv00UYZn0jbpkFexIeleTGUOABWHM1HikFEOguyVL7Mq
-	j5h2d1Z5p0ji3zc6Az0sJD/LT4eFqyXyoYrOhGsULORDDe8HoDomlUU3xyqLXyGNR/qd
-	F0E8muhBy4l1Gb+5GZO9oM+XqiDltIpZgQ5s92neEdmXJqIzEZMGgHkIT7fOQkk2EZSJ
-	2bDhhr1eMLqQt4y6wMWF6XJeUInbmT1TkzZxYlyxz91KG+H6za0eL1aXlpxVqcDvYkJj
-	3zvDLsdsTLFMb1Z2jmgo0jQ8mexxhM4G0jkfuNlbltT1cMSVSP+oglizo90Xow7f8Yir
-	5UQQ==
-X-Gm-Message-State: ALoCoQld/AZ30XNtoy9+bIBpWHgIVnCeAfLl+FkjNk5iRPfAjJDA9AZWm5vjIxIRqX19RnrwZAzZLPeUfkFkkMhydjrnyrcpe8G6+1qUb+n3qhc9yXrrjFk=
-X-Received: by 10.31.194.21 with SMTP id s21mr31243360vkf.92.1450264641286;
-	Wed, 16 Dec 2015 03:17:21 -0800 (PST)
+	:message-id:subject:to:cc;
+	bh=W3Dn+9aFnzoZqrE7sAw39qM29bdQeVeaR3YsmLnliss=;
+	b=CDJGN77f1WmRlnVtUlqgiOnN8hjuxuXxr2XE2FbJ60iaGpqTZiSXjl6yjV5d0Pm9CE
+	4Ak7Qkq8NPudfOCN73GpW6osDJUWN5ycgrUyFXIkLN5kfSP+1D5GEibvVth/LIc/XwhL
+	xmtFLpb7THi4ycqz/uWFwsKMdu4JZhm3uGYP5eRdwRTHgb3xRxHg1f4+0Jl0Qud/SHPD
+	ri3aBGyOgsd5wcSpxLhHu9Gh7c9ebi1Uc2q1oC9DAN6ktoTmLlEf8wijdKOw4fR6JBfx
+	Bx5a05BrJCxtYsklU44/56Mlh7bKbXeHvFSTPvr4h62jNFBNH5EAfBAVeZvwSr63nbR2
+	nb1g==
+X-Gm-Message-State: AOUpUlFMWZ4ifdRrbCM+nX9wM+Jx2fjRE0sl9Tan1Cf2etsRBeb4HGjy
+	glsdgwpN+KZQ+vGNPBNhJfs2RM/5msG9pkqc0zHqjxY2OelCtg==
+X-Received: by 2002:aca:7247:: with SMTP id
+	p68-v6mr14658643oic.252.1533549661252; 
+	Mon, 06 Aug 2018 03:01:01 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Wed, 16 Dec 2015 03:17:01 -0800 (PST)
-In-Reply-To: <87bn9q4z57.fsf@blackfin.pond.sub.org>
-References: <1449764955-10741-1-git-send-email-armbru@redhat.com>
-	<1449764955-10741-2-git-send-email-armbru@redhat.com>
-	<20151214165537.GB3774@thinpad.lan.raisama.net>
-	<87h9jkltn3.fsf@blackfin.pond.sub.org>
-	<CAFEAcA-2JmYmb4mvXb=LPwN=-RzT4nBV91gDAMyJ1wK1q1YcMQ@mail.gmail.com>
-	<87bn9q4z57.fsf@blackfin.pond.sub.org>
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP;
+	Mon, 6 Aug 2018 03:00:40 -0700 (PDT)
+In-Reply-To: <20180803163646.31068-2-peter.maydell@linaro.org>
+References: <20180803163646.31068-1-peter.maydell@linaro.org>
+	<20180803163646.31068-2-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 16 Dec 2015 11:17:01 +0000
-Message-ID: <CAFEAcA_YnHnFKoKphK-DgsYd2TKkAC9ySQihCdzx5azbcTM+hw@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::22d
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/2] Use error_fatal to
- simplify obvious fatal errors
+Date: Mon, 6 Aug 2018 11:00:40 +0100
+Message-ID: <CAFEAcA_qmdth9SjAcoRrAmDLP36-oHyT6BmaQv0U88mnDh2+7w@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-arm] [PATCH 1/3] hw/intc/arm_gicv3_common: Give
+ no-migration-shift-bug subsection a needed function
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Shannon Zhao <zhaoshenglong@huawei.com>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	"patches@linaro.org" <patches@linaro.org>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+	Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RyrWyxieOqId
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ic3B30zfM5Qx
 
-On 16 December 2015 at 07:43, Markus Armbruster <armbru@redhat.com> wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->> Do you mean by this that you're planning to send a v3, or would you
->> like me to apply v2 to target-arm.next?
->
-> I only changed PATCH 1's commit message since v2 (current version
-> appended).  I plan to include the series in a pull request in my role as
-> error reporting maintainer, but I don't mind "losing" patches to other
-> maintainers on the way.
-
-OK, I'm happy to let you take it via your tree.
+Forgot to cc Shannon on this one. Given that the missing .needed
+function meant we weren't ever transmitting the subsection with
+the no-shift-bug flag, this ought to mean that for current
+master migration of KVM goes wrong (since the destination thinks
+the source has the bug when it does not). I'm just going to try
+to set up to test this...
 
 thanks
 -- PMM
+
+On 3 August 2018 at 17:36, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Currently the migration code incorrectly treats a subsection with
+> no .needed function pointer as if it was the subsection list
+> terminator -- it is ignored and so is everything after it.
+> Work around this by giving vmstate_gicv3_gicd_no_migration_shift_bug
+> a 'needed' function that always returns true.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This should go into 3.0 to avoid awkward migration compat problems:
+> the no-migration-shift-bug subsection is new in 3.0.
+> ---
+>  hw/intc/arm_gicv3_common.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index ff326b374ad..e58bc8b8105 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -203,10 +203,16 @@ static int gicv3_gicd_no_migration_shift_bug_post_load(void *opaque,
+>      return 0;
+>  }
+>
+> +static bool needed_always(void *opaque)
+> +{
+> +    return true;
+> +}
+> +
+>  const VMStateDescription vmstate_gicv3_gicd_no_migration_shift_bug = {
+>      .name = "arm_gicv3/gicd_no_migration_shift_bug",
+>      .version_id = 1,
+>      .minimum_version_id = 1,
+> +    .needed = needed_always,
+>      .pre_load = gicv3_gicd_no_migration_shift_bug_pre_load,
+>      .post_load = gicv3_gicd_no_migration_shift_bug_post_load,
+>      .fields = (VMStateField[]) {
+> --
+> 2.17.1

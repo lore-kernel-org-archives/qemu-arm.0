@@ -1,125 +1,274 @@
-Received: by 10.25.159.19 with SMTP id i19csp506709lfe;
-        Fri, 15 Jan 2016 06:43:53 -0800 (PST)
-X-Received: by 10.140.32.53 with SMTP id g50mr13704107qgg.47.1452869032945;
-        Fri, 15 Jan 2016 06:43:52 -0800 (PST)
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3442730wru;
+        Mon, 6 Aug 2018 13:15:20 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpep21N2e/rg7HH/AvWUP17qplp+7vOxsPeVDgUDzPdXdGfzREqDGChQma9lEaNsvTMUBu82
+X-Received: by 2002:ac8:2eaf:: with SMTP id h44-v6mr15553316qta.398.1533586520405;
+        Mon, 06 Aug 2018 13:15:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533586520; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MS63zgqhSTnFHprUHhyPHRJJEvBB+I5boqr647O3uYAnYWTR+1xt2d7EF0NjivBPvM
+         4mfFqkn1N9ERa+cZqjChYEdLyw1MpLtn3NNpqs+V2HP2OUYKXUT833s1jNx3HMr2tJ1H
+         pXhrgOIwXo9eCuR24BEvZjCtMAO+bUAq67eFQY0XctbThDXdJcnwQTaW0Nhp2MF4Caw4
+         tYT2sSxAbw9Nq3YFXrlM4f+PHStOuX/9HYWcKhBAdFIy7DqNpbnjWYhg+1XWCaAOy8So
+         Qp1653BYjAYfq1f2mN1aBqL2r8PFj1x2Z7cxnbn1peRxH7D/Gr1o4KkW5ngvIIrwh/AY
+         XZQA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=5CdfuNF5xJvUNTjYpQsLmy7fjBVAODZdt+tqDtn+85M=;
+        b=iISFsyBo+fJ9k8stpa+Xt6gsw/ite9bo+VbgvHjoMLDE8MoauEXn8ddg2hxumnvbMS
+         frDNGtiyGA6wDMHiS/ro17MgqNgO8qRsddHloeENOMevX+5uUnJVWnzzSHpaASnv60l9
+         6YvwtzcgjFpK30bhAySb0uAKxSlTLBXOUMSn2ZOBlSQGHpIwUgvUAY+Yw1TRQzqFU5o4
+         tObQwof8ltpyUMF/R/ObOfp+ADAEgYlEmA8dJaCMs8Xk+ihR60C4zavFSGEU342EvPS2
+         5bAogHCuolpIzYLFtjlGK3cJbFwpZ9nvAbHi6mi5z2wiSSN9ak0Ti7446G9eIw++KBgv
+         EQ5w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p8si13603032qgp.99.2016.01.15.06.43.52
+        by mx.google.com with ESMTPS id a48-v6si1360326qtc.162.2018.08.06.13.15.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 15 Jan 2016 06:43:52 -0800 (PST)
+        Mon, 06 Aug 2018 13:15:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dkim=fail header.i=@linaro.org
-Received: from localhost ([::1]:47256 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36087 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1aK5bU-0006PL-E3
-	for alex.bennee@linaro.org; Fri, 15 Jan 2016 09:43:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37278)
+	id 1fmluR-0005wg-Nc
+	for alex.bennee@linaro.org; Mon, 06 Aug 2018 16:15:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58128)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK5bR-0006NC-G4
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:43:50 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1fmluC-0005tj-JZ
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 16:15:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK5bQ-0005oe-E6
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:43:49 -0500
-Received: from mail-vk0-x236.google.com ([2607:f8b0:400c:c05::236]:36726)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1aK5bP-0005oN-7B
-	for qemu-arm@nongnu.org; Fri, 15 Jan 2016 09:43:48 -0500
-Received: by mail-vk0-x236.google.com with SMTP id n1so144888021vkb.3
-	for <qemu-arm@nongnu.org>; Fri, 15 Jan 2016 06:43:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-type;
-	bh=dBoNasZcwrNLotlMsPL3qWOP6RHMiF8bpmfDHVxxAmI=;
-	b=Uq+F3Tf+QmSDjDCerATrmDBQhjUqY1k/bqFHHdoBQXs/lbfUZsAfuwDvq5sp1K4D8u
-	kR/+f9bZbodDyQCBiyKt53c3yIQQw4sq8cdiCUwDo7gt8+KJ/5RGDfsWTI+fkZWIipC4
-	uwDcVAnueDrOcrVx07jjPSOTFQUV+fQeBFYgQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20130820;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-type;
-	bh=dBoNasZcwrNLotlMsPL3qWOP6RHMiF8bpmfDHVxxAmI=;
-	b=DSIVCRlXrZLeWub5foMMRQSP50Mf6zAZbhTk55Zw18dmqZu4XMn29Kg/EGvqn6S4n6
-	eYpEDxLH8oEvdaz2zDlbyNH5Zq9qJwU3PWHDAzyeSro7BwuAS8yvHNpGj1szLCFMOKFc
-	XAxVUodDbePFlErrJeJo5ql66xwhVp5lXHMeAfDH0EY21IMz+G6gRH2yjUrFsV5BJOMg
-	0Tna+NOibPlCF6YsgNtW/G9lXIUPGa6aVrVkC/xqqS9WBLtR+5tWNf7vK5ZcqM/EEKRu
-	FZxyhevneJuPyQTxXX4a0mSK+9jRyePx0lzM0US5s7hkrFtxzOxWShS9RC+fekpDvyrm
-	fybA==
-X-Gm-Message-State: ALoCoQlOhHoSuQiIcyqGlNXcUcQsozmH7N9nCmv1dDzF/gQ1Q78zu0dYQODtEnzg8C/glHp0x5HHh3pNM5NtiCounl/EhforW65048dnwzGyzjcoPta2qrM=
-X-Received: by 10.31.52.147 with SMTP id b141mr7639347vka.82.1452869026680;
-	Fri, 15 Jan 2016 06:43:46 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.31.153.15 with HTTP; Fri, 15 Jan 2016 06:43:27 -0800 (PST)
-In-Reply-To: <1452542185-10914-1-git-send-email-drjones@redhat.com>
-References: <1452542185-10914-1-git-send-email-drjones@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jan 2016 14:43:27 +0000
-Message-ID: <CAFEAcA9LTXTs889O4eUqCk_mCR6EbSyf1+6tf24EBDw3fNCu0Q@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset=UTF-8
+	(envelope-from <eric.auger@redhat.com>) id 1fmlu8-0006Xn-Bx
+	for qemu-arm@nongnu.org; Mon, 06 Aug 2018 16:15:04 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56762 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1fmlu8-0006XH-6P; Mon, 06 Aug 2018 16:15:00 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BFC9E7C6CA;
+	Mon,  6 Aug 2018 20:14:59 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-116-58.ams2.redhat.com
+	[10.36.116.58])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 45636215670D;
+	Mon,  6 Aug 2018 20:14:57 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, alex.williamson@redhat.com,
+	mst@redhat.com, jean-philippe.brucker@arm.com
+Date: Mon,  6 Aug 2018 22:14:31 +0200
+Message-Id: <1533586484-5737-4-git-send-email-eric.auger@redhat.com>
+In-Reply-To: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
+References: <1533586484-5737-1-git-send-email-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 06 Aug 2018 20:14:59 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 06 Aug 2018 20:14:59 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 2607:f8b0:400c:c05::236
-Cc: Markus Armbruster <armbru@redhat.com>, Alexander Graf <agraf@suse.de>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
-	Eric Blake <eblake@redhat.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-	Richard Henderson <rth@twiddle.net>
-Subject: Re: [Qemu-arm] [PATCH v4 0/8] target-arm: enable
-	qmp-dump-guest-memory
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-arm] [RFC v7 03/16] virtio-iommu: Decode the command payload
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.14
+X-Mailman-Version: 2.1.21
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kevin.tian@intel.com, tn@semihalf.com, will.deacon@arm.com,
+	drjones@redhat.com, peterx@redhat.com, linuc.decode@gmail.com,
+	bharat.bhushan@nxp.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CytbLQ9jG6UU
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kFTbonpXwvD3
 
-On 11 January 2016 at 19:56, Andrew Jones <drjones@redhat.com> wrote:
-> This series brings qmp-dump-guest-memory to arm and aarch64
-> targets. I've detailed my testing and the results in the
-> following table.
->
-> v4:
->  - drop aarch64_compat_sp in favor of fixing crash[*] [Peter]
->  - added more Peter r-b's (fix 1 nit and 1 typo)
->
-> [*] new crash fix: commit 4641ea1f6 https://github.com/crash-utility/crash
->
-> v3:
->  - more changes thanks to Peter's review comments
->    - fix 32-to-64 shoehorning to work better with EL2/EL3
->    - stole comment from Peter for best-effort at endianness selection
->    - only make ARM VFP notes when the guest has VFP registers
->    - some more patch squashing and code commenting
->    - another r-b added
->  - collapsed a level of indirection, because if we're writing elf64 notes
->    then we'll always call the aarch64 function [drew]
->  - fixed the note type for ARM VFP notes (+ a tiny bit of refactoring) [drew]
->  - set prstatus.pr_fpvalid [drew]
->  - tested on tcg [drew]
->
-> v2: changes thanks to Peter's review questions
->  - Threw in the FP registers. Can view them with gdb on elf
->    formatted dumps.
->  - Added comments stating where the register structs come from.
->  - Fixed determination of 32 vs. 64-bit and LE vs. BE formats.
->    Added a new config to the test matrix below to test this fix.
->  - Added a couple R-b's
->
+This patch adds the command payload decoding and
+introduces the functions that will do the actual
+command handling. Those functions are not yet implemented.
 
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
+---
+v5 -> v6:
+- change map/unmap semantics (remove size)
 
-Applied to target-arm.next, thanks.
+v4 -> v5:
+- adopt new v0.5 terminology
 
--- PMM
+v3 -> v4:
+- no flags field anymore in struct virtio_iommu_req_unmap
+- test reserved on attach/detach, change trace proto
+- rebase on v2.10.0.
+---
+ hw/virtio/trace-events   |   6 ++-
+ hw/virtio/virtio-iommu.c | 104 +++++++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 105 insertions(+), 5 deletions(-)
+
+diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+index 01dc20f..f6675cf 100644
+--- a/hw/virtio/trace-events
++++ b/hw/virtio/trace-events
+@@ -52,4 +52,8 @@ virtio_balloon_to_target(uint64_t target, uint32_t num_pages) "balloon target: 0
+ virtio_iommu_set_features(uint64_t features) "features accepted by the driver =0x%"PRIx64
+ virtio_iommu_device_reset(void) "reset!"
+ virtio_iommu_device_status(uint8_t status) "driver status = %d"
+-virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint8_t ioasid_bits, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" ioasid_bits=%d probe_size=0x%x"
++virtio_iommu_get_config(uint64_t page_size_mask, uint64_t start, uint64_t end, uint8_t domain_bits, uint32_t probe_size) "page_size_mask=0x%"PRIx64" start=0x%"PRIx64" end=0x%"PRIx64" domain_bits=%d probe_size=0x%x"
++virtio_iommu_attach(uint32_t domain_id, uint32_t ep_id) "domain=%d endpoint=%d"
++virtio_iommu_detach(uint32_t ep_id) "endpoint=%d"
++virtio_iommu_map(uint32_t domain_id, uint64_t virt_start, uint64_t virt_end, uint64_t phys_start, uint32_t flags) "domain=%d virt_start=0x%"PRIx64" virt_end=0x%"PRIx64 " phys_start=0x%"PRIx64" flags=%d"
++virtio_iommu_unmap(uint32_t domain_id, uint64_t virt_start, uint64_t virt_end) "domain=%d virt_start=0x%"PRIx64" virt_end=0x%"PRIx64
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 34c7584..492cf22 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -34,29 +34,125 @@
+ /* Max size */
+ #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+ 
++static int virtio_iommu_attach(VirtIOIOMMU *s,
++                               struct virtio_iommu_req_attach *req)
++{
++    uint32_t domain_id = le32_to_cpu(req->domain);
++    uint32_t ep_id = le32_to_cpu(req->endpoint);
++    uint32_t reserved = le32_to_cpu(req->reserved);
++
++    trace_virtio_iommu_attach(domain_id, ep_id);
++
++    if (reserved) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++
++    return VIRTIO_IOMMU_S_UNSUPP;
++}
++
++static int virtio_iommu_detach(VirtIOIOMMU *s,
++                               struct virtio_iommu_req_detach *req)
++{
++    uint32_t ep_id = le32_to_cpu(req->endpoint);
++    uint32_t reserved = le32_to_cpu(req->reserved);
++
++    trace_virtio_iommu_detach(ep_id);
++
++    if (reserved) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++
++    return VIRTIO_IOMMU_S_UNSUPP;
++}
++
++static int virtio_iommu_map(VirtIOIOMMU *s,
++                            struct virtio_iommu_req_map *req)
++{
++    uint32_t domain_id = le32_to_cpu(req->domain);
++    uint64_t phys_start = le64_to_cpu(req->phys_start);
++    uint64_t virt_start = le64_to_cpu(req->virt_start);
++    uint64_t virt_end = le64_to_cpu(req->virt_end);
++    uint32_t flags = le32_to_cpu(req->flags);
++
++    trace_virtio_iommu_map(domain_id, virt_start, virt_end, phys_start, flags);
++
++    return VIRTIO_IOMMU_S_UNSUPP;
++}
++
++static int virtio_iommu_unmap(VirtIOIOMMU *s,
++                              struct virtio_iommu_req_unmap *req)
++{
++    uint32_t domain_id = le32_to_cpu(req->domain);
++    uint64_t virt_start = le64_to_cpu(req->virt_start);
++    uint64_t virt_end = le64_to_cpu(req->virt_end);
++
++    trace_virtio_iommu_unmap(domain_id, virt_start, virt_end);
++
++    return VIRTIO_IOMMU_S_UNSUPP;
++}
++
++#define get_payload_size(req) (\
++sizeof((req)) - sizeof(struct virtio_iommu_req_tail))
++
+ static int virtio_iommu_handle_attach(VirtIOIOMMU *s,
+                                       struct iovec *iov,
+                                       unsigned int iov_cnt)
+ {
+-    return -ENOENT;
++    struct virtio_iommu_req_attach req;
++    size_t sz, payload_sz;
++
++    payload_sz = get_payload_size(req);
++
++    sz = iov_to_buf(iov, iov_cnt, 0, &req, payload_sz);
++    if (sz != payload_sz) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++    return virtio_iommu_attach(s, &req);
+ }
+ static int virtio_iommu_handle_detach(VirtIOIOMMU *s,
+                                       struct iovec *iov,
+                                       unsigned int iov_cnt)
+ {
+-    return -ENOENT;
++    struct virtio_iommu_req_detach req;
++    size_t sz, payload_sz;
++
++    payload_sz = get_payload_size(req);
++
++    sz = iov_to_buf(iov, iov_cnt, 0, &req, payload_sz);
++    if (sz != payload_sz) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++    return virtio_iommu_detach(s, &req);
+ }
+ static int virtio_iommu_handle_map(VirtIOIOMMU *s,
+                                    struct iovec *iov,
+                                    unsigned int iov_cnt)
+ {
+-    return -ENOENT;
++    struct virtio_iommu_req_map req;
++    size_t sz, payload_sz;
++
++    payload_sz = get_payload_size(req);
++
++    sz = iov_to_buf(iov, iov_cnt, 0, &req, payload_sz);
++    if (sz != payload_sz) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++    return virtio_iommu_map(s, &req);
+ }
+ static int virtio_iommu_handle_unmap(VirtIOIOMMU *s,
+                                      struct iovec *iov,
+                                      unsigned int iov_cnt)
+ {
+-    return -ENOENT;
++    struct virtio_iommu_req_unmap req;
++    size_t sz, payload_sz;
++
++    payload_sz = get_payload_size(req);
++
++    sz = iov_to_buf(iov, iov_cnt, 0, &req, payload_sz);
++    if (sz != payload_sz) {
++        return VIRTIO_IOMMU_S_INVAL;
++    }
++    return virtio_iommu_unmap(s, &req);
+ }
+ 
+ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+-- 
+2.5.5
+

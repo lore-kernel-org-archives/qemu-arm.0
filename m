@@ -1,82 +1,84 @@
-Received: by 10.223.159.82 with SMTP id f18csp3452491wrg;
-        Sat, 25 Nov 2017 09:09:55 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMYbKy05ri7CXyR/XtcDwsG6OE43iyjhkHr/uWz2BoKycZED27vyiJIzyNvuyje90YhzfcmN
-X-Received: by 10.129.96.86 with SMTP id u83mr12170858ywb.19.1511629795802;
-        Sat, 25 Nov 2017 09:09:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1511629795; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4035212wru;
+        Tue, 7 Aug 2018 03:29:41 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpc5nibhU19hGq7McUaUWOskjr9b0uMif4Zt2tX8i2+WffSPKTqafIUPiEYe4p7X2PNkxyPp
+X-Received: by 2002:a0c:b9a9:: with SMTP id v41-v6mr16085847qvf.63.1533637781708;
+        Tue, 07 Aug 2018 03:29:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533637781; cv=none;
         d=google.com; s=arc-20160816;
-        b=Patq2blAbGlYqkEZeInKDs8FwXpDZoXbLIAdFdnYuPsdCI4BRJZZmJOCqpWsV4iZwp
-         EUfaF0M+U5hvg0jofbP+BzPxWLaHsSqKawBTWdPzZVuZIHgivHkUz0r0nrYcDd0gn8ni
-         RDTw9D1w62qF2eX+tNzJ/K0wImERMgDfxr8RlBvChrk62sFsCzdbFW4NelwdfTOxYxzR
-         NzgoiJ8WyIq/dyKE8cHNOPGubq0oyR75zjinqOOew/UGZviBF5BIkXekXLi/QZ9rO/5+
-         YIQs+mi7LpuO+dEKQ64vxtItRUaG2m48+pVjVXdjc1hFyGExKXRyF6hzri3GxtU5CJy8
-         Y7Mw==
+        b=06UsSiMxIERQYECHARjrYz/5LFgUf3jMz84ODTw9C+QkTKghIYHqpUZL2CpyYqXJmV
+         5mi+ULvCOzxswznY/IvtYWbsF8YNFXx6dWsjeZQwPCJzVSG8K/iWt/3A9ZUnzFYVSBPr
+         qI4RdFDH6jytzSDWis9TTVkItFMZ8TdpvwCfyjNzzFkNtspSjELnXbLutObhTeZ5h+Hb
+         xIbKDtJV8igGBX/QvYbXFr1vQG/umx0VayX2+0OuD0kB+aZeBRjcdunsiwlZ2KY3PWl8
+         5hS+JlAXjMv1Fq5qy+Q27FeNCkOn9p18aFyjus9tmo4fPAE5RFvK0tgOIlFA+iFpwPtL
+         I6nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date:arc-authentication-results;
-        bh=ZxXnVIFmrTZDiyidmCv76WXZUULktUj4ulZuKr+AozM=;
-        b=qdJQPzEUmfLBfcLHlqFm6ZF+30gaFVWBFiarvgyUdUpRoQp9OXP5S/7TYIVS/txx+m
-         oa44DtRO5WBW6azOlF40KmH0BXUI51CyaAly7k97WG89sIy5h2rkBgV9P8i2ZPuimSgq
-         XePdFofwt0A7sMp9DTZBGVQ+j59Sfjd1HUuBIm5WrA1lJLa9IQ313VD4CtAqTuZmIj6C
-         pfPrcsgVsaY3MoI3MTdxOrb/pvXoW0F5b6pBXWoWFz7E/S1RrrN9E+QKLCXwvMczXLay
-         XoBWbaGfw45JhWscOZUu1aDP59oYMYBn6lksA25EYhrwHiDUy1qyZObm86WZaUXaUusQ
-         UVBA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=eUw925LKPCgd5qaUzKox8EQEYOwenVEA7WxDNyyf97Q=;
+        b=iliX+TStPjzwyfCwB5VXKcqZPM/fNJ0nsOPaMJdbtJEXIQojGJ/cIiZz9C2sfqdfqz
+         5SZcj1cd2/Ro6ErQKXLcDr1CDKo5iqlyvKmOI1mt6HhgCltNQLOcGM+6SC5MoI5AXGYC
+         JvbnTzfnxg9ZwMLG+jIgAUetV6A2g/83jBgJViWl19NZuGzaHCZUIAu/yN7JSBmVdlVe
+         5cflX14uKUHYXy7HdLY0RQV1YODgnYLOAHZJRDQHu25fr1ilVc2zHhDA/lWaxv5mr3+j
+         OEk8pGffWL6VKJ7szHGGem8Lg0poWhDSg+kjU+gg3cVb+rAuHqXvJD+8ROdnqpTSyp97
+         kVkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f18si4904290ybn.222.2017.11.25.09.09.55
+        by mx.google.com with ESMTPS id v21-v6si934629qtc.391.2018.08.07.03.29.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 25 Nov 2017 09:09:55 -0800 (PST)
+        Tue, 07 Aug 2018 03:29:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:53832 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38250 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eIdxj-0001km-4K
-	for alex.bennee@linaro.org; Sat, 25 Nov 2017 12:09:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38951)
+	id 1fmzFF-0000Zj-4n
+	for alex.bennee@linaro.org; Tue, 07 Aug 2018 06:29:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35066)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1eIdxN-0001k7-Gl
-	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 12:09:35 -0500
+	(envelope-from <clg@kaod.org>) id 1fmzF2-0000XF-TM
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 06:29:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1eIdxJ-0003BY-J1
-	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 12:09:33 -0500
-Received: from 1.mo2.mail-out.ovh.net ([46.105.63.121]:44457)
+	(envelope-from <clg@kaod.org>) id 1fmzEy-0005KP-NA
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 06:29:28 -0400
+Received: from 11.mo7.mail-out.ovh.net ([87.98.173.157]:55721)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1eIdxJ-00035A-9o
-	for qemu-arm@nongnu.org; Sat, 25 Nov 2017 12:09:29 -0500
-Received: from player718.ha.ovh.net (b6.ovh.net [213.186.33.56])
-	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 86FBECE6DE
-	for <qemu-arm@nongnu.org>; Sat, 25 Nov 2017 18:09:19 +0100 (CET)
-Received: from bahia.lan (gar31-1-82-66-74-139.fbx.proxad.net [82.66.74.139])
-	(Authenticated sender: groug@kaod.org)
-	by player718.ha.ovh.net (Postfix) with ESMTPSA id E03134E0083;
-	Sat, 25 Nov 2017 18:09:00 +0100 (CET)
-Date: Sat, 25 Nov 2017 18:08:52 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20171125180852.3d4b2a1a@bahia.lan>
-In-Reply-To: <20171125151610.20547-2-ehabkost@redhat.com>
-References: <20171125151610.20547-1-ehabkost@redhat.com>
-	<20171125151610.20547-2-ehabkost@redhat.com>
-X-Mailer: Claws Mail 3.15.1-dirty (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fmzEy-0005Jq-GE
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 06:29:24 -0400
+Received: from player799.ha.ovh.net (unknown [10.109.146.1])
+	by mo7.mail-out.ovh.net (Postfix) with ESMTP id CB9FFC3326
+	for <qemu-arm@nongnu.org>; Tue,  7 Aug 2018 12:29:22 +0200 (CEST)
+Received: from zorba.kaod.org (ARennes-657-1-237-83.w2-11.abo.wanadoo.fr
+	[2.11.96.83]) (Authenticated sender: postmaster@kaod.org)
+	by player799.ha.ovh.net (Postfix) with ESMTPSA id 80B1C5200AE;
+	Tue,  7 Aug 2018 12:29:15 +0200 (CEST)
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20180807075757.7242-1-joel@jms.id.au>
+	<20180807075757.7242-6-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <c47d59ac-c6bf-8404-020e-8dcc4c98758b@kaod.org>
+Date: Tue, 7 Aug 2018 12:29:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 11799149552788740438
+In-Reply-To: <20180807075757.7242-6-joel@jms.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 8395272659168561984
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedttddrleeggdelkecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrtddtgddtjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 46.105.63.121
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/6] machine: Replace
- has_dynamic_sysbus with list of allowed devices
+X-Received-From: 87.98.173.157
+Subject: Re: [Qemu-arm] [PATCH 5/7] aspeed_sdmc: Handle ECC training
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,235 +90,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: jgross@suse.com, Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, sstabellini@kernel.org,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Alexander Graf <agraf@suse.de>,
-	Marcel Apfelbaum <marcel@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Anthony Perard <anthony.perard@citrix.com>,
-	xen-devel@lists.xenproject.org, Laszlo Ersek <lersek@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mjglHBDikzkL
+X-TUID: JWZeyucAbEmM
 
-On Sat, 25 Nov 2017 13:16:05 -0200
-Eduardo Habkost <ehabkost@redhat.com> wrote:
+On 08/07/2018 09:57 AM, Joel Stanley wrote:
+> This is required to ensure u-boot SDRAM training completes.
+>=20
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
 
-> The existing has_dynamic_sysbus flag makes the machine accept
-> every user-creatable sysbus device type on the command-line.
-> Replace it with a list of allowed device types, so machines can
-> easily accept some sysbus devices while rejecting others.
-> 
-> To keep exactly the same behavior as before, the existing
-> has_dynamic_sysbus=true assignments are replaced with a
-> TYPE_SYS_BUS_DEVICE entry on the allowed list.  Other patches
-> will replace the TYPE_SYS_BUS_DEVICE entries with more specific
-> lists of devices.
-> 
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Marcel Apfelbaum <marcel@redhat.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Alexander Graf <agraf@suse.de>
-> Cc: David Gibson <david@gibson.dropbear.id.au>
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: Anthony Perard <anthony.perard@citrix.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-ppc@nongnu.org
-> Cc: xen-devel@lists.xenproject.org
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
 > ---
-
-Reviewed-by: Greg Kurz <groug@kaod.org>
-
-> Changes v1 -> v2:
-> * Replace "dynamic sysbus whitelist" with "allowed sysbus devices"
-> * Simply add TYPE_SYS_BUS_DEVICE to the list on existing
->   has_dynamic_sysbus=true machines, and make machine-types more
->   strict in separate patches
-> ---
->  include/hw/boards.h  |  5 ++++-
->  hw/arm/virt.c        |  3 ++-
->  hw/core/machine.c    | 43 +++++++++++++++++++++++++++++--------------
->  hw/i386/pc_q35.c     |  3 ++-
->  hw/ppc/e500plat.c    |  4 +++-
->  hw/ppc/spapr.c       |  3 ++-
->  hw/xen/xen_backend.c |  7 ++++++-
->  7 files changed, 48 insertions(+), 20 deletions(-)
-> 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 156b16f7a6..041bc08971 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -76,6 +76,9 @@ void machine_set_cpu_numa_node(MachineState *machine,
->                                 const CpuInstanceProperties *props,
->                                 Error **errp);
->  
-> +void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type);
+>  hw/misc/aspeed_sdmc.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>=20
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index 522e01ef8c0d..89de3138aff0 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -27,6 +27,10 @@
+>  #define R_STATUS1         (0x60 / 4)
+>  #define   PHY_BUSY_STATE      BIT(0)
+> =20
+> +#define R_ECC_TEST_CTRL   (0x70 / 4)
+> +#define   ECC_TEST_FINISHED   BIT(12)
+> +#define   ECC_TEST_FAIL       BIT(13)
 > +
-> +
->  /**
->   * CPUArchId:
->   * @arch_id - architecture-dependent CPU ID of present or possible CPU
-> @@ -179,7 +182,6 @@ struct MachineClass {
->          no_floppy:1,
->          no_cdrom:1,
->          no_sdcard:1,
-> -        has_dynamic_sysbus:1,
->          pci_allow_0_address:1,
->          legacy_fw_cfg_order:1;
->      int is_default;
-> @@ -197,6 +199,7 @@ struct MachineClass {
->      bool ignore_memory_transaction_failures;
->      int numa_mem_align_shift;
->      const char **valid_cpu_types;
-> +    strList *allowed_dynamic_sysbus_devices;
->      bool auto_enable_numa_with_memhp;
->      void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
->                                   int nb_nodes, ram_addr_t size);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 9e18b410d7..fa6dc15fcd 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1591,7 +1591,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->       * configuration of the particular instance.
->       */
->      mc->max_cpus = 255;
-> -    mc->has_dynamic_sysbus = true;
-> +    /*TODO: allow only sysbus devices that really work with this machine */
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
->      mc->block_default_type = IF_VIRTIO;
->      mc->no_cdrom = 1;
->      mc->pci_allow_0_address = true;
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 36c2fb069c..ab2ec292f3 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -335,29 +335,44 @@ static bool machine_get_enforce_config_section(Object *obj, Error **errp)
->      return ms->enforce_config_section;
->  }
->  
-> -static void error_on_sysbus_device(SysBusDevice *sbdev, void *opaque)
-> +void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
->  {
-> -    error_report("Option '-device %s' cannot be handled by this machine",
-> -                 object_class_get_name(object_get_class(OBJECT(sbdev))));
-> -    exit(1);
-> +    strList *item = g_new0(strList, 1);
-> +
-> +    item->value = g_strdup(type);
-> +    item->next = mc->allowed_dynamic_sysbus_devices;
-> +    mc->allowed_dynamic_sysbus_devices = item;
->  }
->  
-> -static void machine_init_notify(Notifier *notifier, void *data)
-> +static void validate_sysbus_device(SysBusDevice *sbdev, void *opaque)
->  {
-> -    Object *machine = qdev_get_machine();
-> -    ObjectClass *oc = object_get_class(machine);
-> -    MachineClass *mc = MACHINE_CLASS(oc);
-> +    MachineState *machine = opaque;
-> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> +    bool allowed = false;
-> +    strList *wl;
->  
-> -    if (mc->has_dynamic_sysbus) {
-> -        /* Our machine can handle dynamic sysbus devices, we're all good */
-> -        return;
-> +    for (wl = mc->allowed_dynamic_sysbus_devices;
-> +         !allowed && wl;
-> +         wl = wl->next) {
-> +        allowed |= !!object_dynamic_cast(OBJECT(sbdev), wl->value);
->      }
->  
-> +    if (!allowed) {
-> +        error_report("Option '-device %s' cannot be handled by this machine",
-> +                     object_class_get_name(object_get_class(OBJECT(sbdev))));
-> +        exit(1);
-> +    }
-> +}
-> +
-> +static void machine_init_notify(Notifier *notifier, void *data)
-> +{
-> +    MachineState *machine = MACHINE(qdev_get_machine());
-> +
->      /*
-> -     * Loop through all dynamically created devices and check whether there
-> -     * are sysbus devices among them. If there are, error out.
-> +     * Loop through all dynamically created sysbus devices and check if they are
-> +     * all allowed.  If a device is not allowed, error out.
->       */
-> -    foreach_dynamic_sysbus_device(error_on_sysbus_device, NULL);
-> +    foreach_dynamic_sysbus_device(validate_sysbus_device, machine);
->  }
->  
->  HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machine)
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index d6060043ac..d0b0e5b422 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -299,7 +299,8 @@ static void pc_q35_machine_options(MachineClass *m)
->      m->default_machine_opts = "firmware=bios-256k.bin";
->      m->default_display = "std";
->      m->no_floppy = 1;
-> -    m->has_dynamic_sysbus = true;
-> +    /*TODO: allow only sysbus devices that really work with this machine */
-> +    machine_class_allow_dynamic_sysbus_dev(m, TYPE_SYS_BUS_DEVICE);
->      m->max_cpus = 288;
->  }
->  
-> diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-> index e59e80fb9e..438118c29b 100644
-> --- a/hw/ppc/e500plat.c
-> +++ b/hw/ppc/e500plat.c
-> @@ -15,6 +15,7 @@
->  #include "hw/boards.h"
->  #include "sysemu/device_tree.h"
->  #include "sysemu/kvm.h"
-> +#include "hw/sysbus.h"
->  #include "hw/pci/pci.h"
->  #include "hw/ppc/openpic.h"
->  #include "kvm_ppc.h"
-> @@ -63,7 +64,8 @@ static void e500plat_machine_init(MachineClass *mc)
->      mc->desc = "generic paravirt e500 platform";
->      mc->init = e500plat_init;
->      mc->max_cpus = 32;
-> -    mc->has_dynamic_sysbus = true;
-> +    /*TODO: allow only sysbus devices that really work with this machine */
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
->      mc->default_cpu_type = POWERPC_CPU_TYPE_NAME("e500v2_v30");
->  }
->  
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index d682f013d4..82040cc5d1 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -3603,7 +3603,8 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
->      mc->default_boot_order = "";
->      mc->default_ram_size = 512 * M_BYTE;
->      mc->kvm_type = spapr_kvm_type;
-> -    mc->has_dynamic_sysbus = true;
-> +    /*TODO: allow only sysbus devices that really work with this machine */
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
->      mc->pci_allow_0_address = true;
->      mc->get_hotplug_handler = spapr_get_hotplug_handler;
->      hc->pre_plug = spapr_machine_device_pre_plug;
-> diff --git a/hw/xen/xen_backend.c b/hw/xen/xen_backend.c
-> index 0f849a26d2..82380ea9ee 100644
-> --- a/hw/xen/xen_backend.c
-> +++ b/hw/xen/xen_backend.c
-> @@ -564,7 +564,12 @@ static void xen_set_dynamic_sysbus(void)
->      ObjectClass *oc = object_get_class(machine);
->      MachineClass *mc = MACHINE_CLASS(oc);
->  
-> -    mc->has_dynamic_sysbus = true;
-> +    /*
-> +     * Emulate old mc->has_dynamic_sysbus=true assignment
-> +     *
-> +     *TODO: add only Xen devices to the list
-> +     */
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_SYS_BUS_DEVICE);
->  }
->  
->  int xen_be_register(const char *type, struct XenDevOps *ops)
+>  /*
+>   * Configuration register Ox4 (for Aspeed AST2400 SOC)
+>   *
+> @@ -148,6 +152,11 @@ static void aspeed_sdmc_write(void *opaque, hwaddr=
+ addr, uint64_t data,
+>              /* Will never return 'busy' */
+>              data &=3D ~PHY_BUSY_STATE;
+>              break;
+> +        case R_ECC_TEST_CTRL:
+> +            /* Always done, always happy */
+> +            data |=3D ECC_TEST_FINISHED;
+> +            data &=3D ~ECC_TEST_FAIL;
+> +            break;
+>          default:
+>              break;
+>          }
+>=20
 

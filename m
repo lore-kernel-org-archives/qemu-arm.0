@@ -1,265 +1,151 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4260788wru;
-        Tue, 7 Aug 2018 07:19:39 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpenkU4JG8fRmb1vyyuveRMl48jE1FwWWoONUwEVqjHPyJh+lYJ9UHnXjM2q4R4NhzbgIlkg
-X-Received: by 2002:a37:a18d:: with SMTP id k135-v6mr16867490qke.203.1533651579655;
-        Tue, 07 Aug 2018 07:19:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533651579; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4263078wru;
+        Tue, 7 Aug 2018 07:21:51 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpcn7qd5Fr5fiKcufpaezKHhhe9i1qpoE4va18IKdCjZSvVyWrnsSdpRnNOLU8w55X22U8fk
+X-Received: by 2002:ac8:1b49:: with SMTP id p9-v6mr5004097qtk.132.1533651711691;
+        Tue, 07 Aug 2018 07:21:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533651711; cv=none;
         d=google.com; s=arc-20160816;
-        b=syHmAYJsEJfSmV4y1hxs9pQ4a8i6cD2JeZtltiFBLK4ElPJICumovcGuCmk8+WO2bk
-         yJGC2VIT3wDaVfKYUT8/t2WzhjnXBb7neTWxJYk8idehc51klSSNCAsS8qk6Lot3gWKz
-         s1tg1/JHlj3HWkOR34i5lNOvcAeDrTi7zFQ1obL9L0fzKvi+vVu5Rk6zOpabmHJe+0EL
-         zIHotf2cyv7DifVyCynr+DKwT0LHW4/FZQb22H1mV0rJSpYEkWP3kxI2ThdwwwgP4k88
-         Si5bsho37Gs5Bgsjl/+yy1rCzMmWoa7+2JWiuxXIg5TNrZIscC+JmMGlBnNFB13qrd2g
-         Z2qQ==
+        b=sKWZg+ytL+i7eBxC8ChL2qXowFUCGETxFFhci50w1OW4Amk4kWnsE/yJAEOVfBSLBm
+         TmlT36WZGfNHfByTDsHAmHFPTMbOGlmQN8gH4oU2afEyYJsOPSBkL9/Ne9t0xUbngtgZ
+         okFMHeLAH6Q6vB55ENq3rImLQ4UE1wM0sTMo3RL2DeGhym+KXuQKs6FafWew5vLe8Zxs
+         haeU/bxIUogWZAbRnr7EAb73BRgcSuCz2LuaxE7nYQqkTjC/uVpiKpUhBLVMXFcowR0f
+         qx7V4rV6fzxYt+MOc5k9XsKPF1MtSUdi8NF9i04yBGFN3WjknitYnWY7gTwEw8kCW9YG
+         AlEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:arc-authentication-results;
-        bh=oGBbUcpVhVk60bmt6aj6Tn4uqITgqUUPiOFoKsEMhUA=;
-        b=EvI4AX0PWZVtqFORdUB7xQ47ul9c8VsijsZ/gUtiJ6Kbl/43n+Zgo/aHrkr7AYG4F6
-         vaZslmvEzxrXzabTKKqMpbY7AkVqA9ZYwTW8TRQvaYOHMY0T6XIqeZReq6f71oebfI3B
-         1VDgEYAGukj0XSWtlAL1Iefq79y67U+7ZOEJj2f67PEJz8kdavC47dVXeDFsdJbnMCik
-         Ts2ZVcVzoAARia8tld26Ulj7doWk3L92fRU2huHCF6EIkuZQa4stDoAodW6x/TGCOLS+
-         aoAEnTzmNkf3KV1y46THvpwdNCsVKriDzK7roiPlg71ot7Sxt/MMp5JU+R02q11KteOa
-         5oJg==
+        bh=OHJ1/d06emeydQEoWAkCBbUWFTOljmxOrwbS+hudB/4=;
+        b=gLPYfftJHa5Db/UxnqHRYw49mL2lV7hE41yDLwjMA+QBKE72hQYSMc5pjFB33At/fC
+         nW+ScQ4klMYzDO0mw7WcbVlzTcJCwGLqoq1tzHnrASrPjjx4uuFgg7ewooNGEVJsfAF+
+         4yqZjnHcOEe7gQ+1gMlY+CgkX9wp9nweEUkqeILAKDvvX+QvSpRk57vW3bLQ58EqWUME
+         E3xs3mTMxdDBFQzI0qZr3xe1+kV9fkq72OqcoWnM/Hes/yfEPTwM5kNqFXz0Uupu3OSb
+         w1C9ruZW8k4p5ZYJ8D0YduIIgSMqIJpjzjutgEC45eT4ZZddanm31gJjcZNMHbmYJUWF
+         GFUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r5-v6si1303934qkr.250.2018.08.07.07.19.39
+        by mx.google.com with ESMTPS id t17-v6si1423513qtc.255.2018.08.07.07.21.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Aug 2018 07:19:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 07 Aug 2018 07:21:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39253 helo=lists.gnu.org)
+Received: from localhost ([::1]:39274 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fn2pn-00011B-3z
-	for alex.bennee@linaro.org; Tue, 07 Aug 2018 10:19:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42938)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fn2rv-0003Xo-48
+	for alex.bennee@linaro.org; Tue, 07 Aug 2018 10:21:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42975)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fn2pA-0000wp-RA
-	for qemu-devel@nongnu.org; Tue, 07 Aug 2018 10:19:06 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1fn2pG-0000zX-N5
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 10:19:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fn2p9-0002Fy-Df
-	for qemu-devel@nongnu.org; Tue, 07 Aug 2018 10:19:00 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56056 helo=mx1.redhat.com)
+	(envelope-from <eric.auger@redhat.com>) id 1fn2pE-0002JH-3R
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 10:19:06 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42164 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fn2p6-0002CW-Kx; Tue, 07 Aug 2018 10:18:56 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fn2pD-0002J7-TZ; Tue, 07 Aug 2018 10:19:04 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2EDEE87A76;
-	Tue,  7 Aug 2018 14:18:56 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5C24C40201C4;
+	Tue,  7 Aug 2018 14:19:03 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-116-58.ams2.redhat.com
 	[10.36.116.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7FD0B2026D66;
-	Tue,  7 Aug 2018 14:18:54 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D31C1C671;
+	Tue,  7 Aug 2018 14:19:00 +0000 (UTC)
 To: Geert Uytterhoeven <geert+renesas@glider.be>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Alex Williamson <alex.williamson@redhat.com>
 References: <20180725143413.9728-1-geert+renesas@glider.be>
-	<20180725143413.9728-3-geert+renesas@glider.be>
+	<20180725143413.9728-4-geert+renesas@glider.be>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <768b7a25-273d-69cb-5b98-8339313560c3@redhat.com>
-Date: Tue, 7 Aug 2018 16:18:53 +0200
+Message-ID: <2d36dfa2-744b-1570-d2c2-51352ce98e23@redhat.com>
+Date: Tue, 7 Aug 2018 16:18:59 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
 	Thunderbird/45.4.0
 MIME-Version: 1.0
-In-Reply-To: <20180725143413.9728-3-geert+renesas@glider.be>
+In-Reply-To: <20180725143413.9728-4-geert+renesas@glider.be>
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Tue, 07 Aug 2018 14:18:56 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Tue, 07 Aug 2018 14:18:56 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 07 Aug 2018 14:19:03 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 07 Aug 2018 14:19:03 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-devel] [PATCH v3 2/4] hw/arm/sysbus-fdt: Allow device
- matching with DT compatible value
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v3 3/4] hw/arm/virt: Allow dynamic sysbus
+ devices again
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
 	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
 	Magnus Damm <damm+renesas@opensource.se>, qemu-devel@nongnu.org,
 	linux-renesas-soc@vger.kernel.org,
 	Wolfram Sang <wsa+renesas@sang-engineering.com>, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Dl4ETN88JcB
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DO55VJAaey57
 
 Hi Geert,
 
 On 07/25/2018 04:34 PM, Geert Uytterhoeven wrote:
-> From: Auger Eric <eric.auger@redhat.com>
-> 
-> Up to now we have relied on the device type to identify a device tree
-> node creation function.  Since we would like the vfio-platform device to
-> be instantiatable with different compatible strings we introduce the
-> capability to specialize the node creation depending on actual
-> compatible value.
-> 
-> NodeCreationPair is renamed into BindingEntry. The struct is enhanced
-> with compat and match_fn() fields.  We introduce a new matching function
-> adapted to the vfio-platform generic device.
-> 
-> From now on, the AMD XGBE can be instantiated with either manner, i.e.:
-> 
->     -device vfio-amd-xgbe,host=e0900000.xgmac
-> 
-> or using the new option line:
-> 
->     -device vfio-platform,host=e0900000.xgmac
-strictly speaking I think you need patch 3 to do that?
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> [geert: Match using compatible values in sysfs instead of user-supplied
-> 	manufacturer/model options, reword]
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
-> Not tested with amd-xgbe due to lack of hardware.
-I tested it. Feel free to add:
-Tested-by: Eric Auger <eric.auger@redhat.com>
-
-Otherwise looks fine to me
+> Allow the instantation of generic dynamic sysbus devices again, without
+> the need to create a new device-specific vfio type.
+The patch title and commit message need to be updated as we allow the
+dynamic instantiation of VFIO PLATFORM devices.
 
 Thanks
 
 Eric
 > 
+> This is more or less a partial revert of commit 6f2062b9758ebc64
+> ("hw/arm/virt: Allow only supported dynamic sysbus devices").
+> 
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> ---
 > v3:
->   - Match using the compatible values from sysfs instead of using
->     user-supplied manufacturer and model options,
->   - Reword patch description,
 >   - Drop RFC state,
 > 
 > v2:
->   - No changes,
-> 
-> v1:
->   - No changes,
-> 
-> v0:
->   - Original version from Eric.
+>   - Restrict from TYPE_SYS_BUS_DEVICE to TYPE_VFIO_PLATFORM, as
+>     suggested by Eric Auger.
 > ---
->  hw/arm/sysbus-fdt.c | 61 ++++++++++++++++++++++++++++++++++-----------
->  1 file changed, 47 insertions(+), 14 deletions(-)
+>  hw/arm/virt.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-> index 43d6a7bb48ddc351..0e24c803a1c2c734 100644
-> --- a/hw/arm/sysbus-fdt.c
-> +++ b/hw/arm/sysbus-fdt.c
-> @@ -50,11 +50,13 @@ typedef struct PlatformBusFDTData {
->      PlatformBusDevice *pbus;
->  } PlatformBusFDTData;
->  
-> -/* struct that associates a device type name and a node creation function */
-> -typedef struct NodeCreationPair {
-> +/* struct that allows to match a device and create its FDT node */
-> +typedef struct BindingEntry {
->      const char *typename;
-> -    int (*add_fdt_node_fn)(SysBusDevice *sbdev, void *opaque);
-> -} NodeCreationPair;
-> +    const char *compat;
-> +    int  (*add_fn)(SysBusDevice *sbdev, void *opaque);
-> +    bool (*match_fn)(SysBusDevice *sbdev, const struct BindingEntry *combo);
-> +} BindingEntry;
->  
->  /* helpers */
->  
-> @@ -413,6 +415,27 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
->      return 0;
->  }
->  
-> +/* DT compatible matching */
-> +static bool vfio_platform_match(SysBusDevice *sbdev,
-> +                                const BindingEntry *entry)
-> +{
-> +    VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(sbdev);
-> +    const char *compat;
-> +    unsigned int n;
-> +
-> +    for (n = vdev->num_compat, compat = vdev->compat; n > 0;
-> +         n--, compat += strlen(compat) + 1) {
-> +        if (!strcmp(entry->compat, compat)) {
-> +            return true;
-> +        }
-> +    }
-> +
-> +    return false;
-> +}
-> +
-> +#define VFIO_PLATFORM_BINDING(compat, add_fn) \
-> +    {TYPE_VFIO_PLATFORM, (compat), (add_fn), vfio_platform_match}
-> +
->  #endif /* CONFIG_LINUX */
->  
->  static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
-> @@ -420,14 +443,23 @@ static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
->      return 0;
->  }
->  
-> -/* list of supported dynamic sysbus devices */
-> -static const NodeCreationPair add_fdt_node_functions[] = {
-> +/* Device type based matching */
-> +static bool type_match(SysBusDevice *sbdev, const BindingEntry *entry)
-> +{
-> +    return !strcmp(object_get_typename(OBJECT(sbdev)), entry->typename);
-> +}
-> +
-> +#define TYPE_BINDING(type, add_fn) {(type), NULL, (add_fn), type_match}
-> +
-> +/* list of supported dynamic sysbus bindings */
-> +static const BindingEntry bindings[] = {
->  #ifdef CONFIG_LINUX
-> -    {TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node},
-> -    {TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node},
-> +    TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
-> +    TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
-> +    VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
->  #endif
-> -    {TYPE_RAMFB_DEVICE, no_fdt_node},
-> -    {"", NULL}, /* last element */
-> +    TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-> +    TYPE_BINDING("", NULL), /* last element */
->  };
->  
->  /* Generic Code */
-> @@ -446,10 +478,11 @@ static void add_fdt_node(SysBusDevice *sbdev, void *opaque)
->  {
->      int i, ret;
->  
-> -    for (i = 0; i < ARRAY_SIZE(add_fdt_node_functions); i++) {
-> -        if (!strcmp(object_get_typename(OBJECT(sbdev)),
-> -                    add_fdt_node_functions[i].typename)) {
-> -            ret = add_fdt_node_functions[i].add_fdt_node_fn(sbdev, opaque);
-> +    for (i = 0; i < ARRAY_SIZE(bindings); i++) {
-> +        const BindingEntry *iter = &bindings[i];
-> +
-> +        if (iter->match_fn(sbdev, iter)) {
-> +            ret = iter->add_fn(sbdev, opaque);
->              assert(!ret);
->              return;
->          }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 281ddcdf6e26236d..24c1d8e28c7c4285 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1724,6 +1724,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+>      mc->block_default_type = IF_VIRTIO;
+>      mc->no_cdrom = 1;
+>      mc->pci_allow_0_address = true;
 > 

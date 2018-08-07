@@ -1,102 +1,85 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3923077wru;
-        Tue, 7 Aug 2018 01:06:29 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpcOBzN9HR0wr4I3ZcHbBHHppGZxtprev2aEIC4PWqkkjh2hMn3E62fOQ8HP1TPGbHjL2yij
-X-Received: by 2002:a37:5f03:: with SMTP id t3-v6mr16896705qkb.193.1533629189381;
-        Tue, 07 Aug 2018 01:06:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533629189; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4005219wru;
+        Tue, 7 Aug 2018 02:52:59 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpeahV+EL1TUE8/LnHXDp1ynbWIU1M2mCApDqVqhWl0j8MLvCpir/jRHfDCJhMpflWl6fu0D
+X-Received: by 2002:aed:21f3:: with SMTP id m48-v6mr18610727qtc.121.1533635579226;
+        Tue, 07 Aug 2018 02:52:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533635579; cv=none;
         d=google.com; s=arc-20160816;
-        b=q2U3tDtLVCZP6mMyunpihyszZv0kbQV49+DmSMZbO61n5bqRXqDnw52cIn9wQUok3n
-         npRycEPBNXYUCG25afM9ggEvdBPxEJw2bDN3/95dXaBBu0QRY0AtsSW5sQXnx+XDmUf2
-         8zaUEpHW8cUu7Ic9uf0grlj62aBiUCYHl8vnd0a6CrhlwQBVkvBKPhO6x6g5Vrqfwrkw
-         o1me1BLlf0LNFDBJqt1MWEV4ojnu+LGiJ1vtjjgnpjdSlAyOYe8YT98Uxi23L95GuXKS
-         JxHqi/fepr+KqgVol42j49YhboG4Ac2I9lHfrfKks9WqANfEWYpfcolb/txS1R1Zkkh9
-         1f+A==
+        b=SwG4fftx65o5vJWL+D7JI+ZfaHqb+fubwNvoSRd38d59lLWB+GHi9tJ1krzrG9hCcx
+         Bk87mgAZkftqRWWM8JuEDEDHcSnHziXlspXWF3XZI1jL8Y8PWH2PIIJOoHZ0GlSc2ZOn
+         YJPUxdowgesFtLoPxKwOa+CEpTGQkseMNHmyiXzyxTicYpfwvEKBBBXqVr2/1OaW4/fO
+         eZ49SpKriTyOK2EoZ2Y5qwj+mp38pLfQZfaTMojvpUBLn4wG+b+LjAEO+JluVpME/rf9
+         f4EMJoXQaHtr6H3kSeVo99ogP8/8hQUVRc9OIFXi0Lb4mKd/jwczzsPOK89cIVwUkQMP
+         UR+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=3RtZ/h1iBSZFLfoCfLXbdQ+HU5csM0CuyQNEFOBPc6o=;
-        b=qE8iJpO1EKiN9HM4abVBzPBi1HKeniWhkEZ2H3batqyX/vW//L3fZ51FW5kJvZbmJv
-         UbI5yrbm7EtyayENxQZzbmeb1t4p7x4V4yANSDWkLCt+Nr1DfyZKp7chaNPyuTx50a9f
-         i8ibRenWNzsimT0eN13Z8i5Z+sTGHA7E1D1p5v1xb5ApaHOX3iymla2KIASrl7UCHukF
-         pYEEbZGQA+YVtkrPDV0BX4Ov5PYDDl8YXsD/mn4AiXP1lDxpEIaxwkK9lF1frOgDZ2iR
-         BAlW6RIWqGdl59gD5KUThjpK7Jv4eno1KfJ33AOyK/E4o9CYAX1/TfxfsOFK0u+WA42R
-         7Ueg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to
+         :arc-authentication-results;
+        bh=6lACdjE7L0Qlc1yqyVWmO3fIgr4rhb0ZfhJ2tTGDGWA=;
+        b=DZYdefZi5XiEQs6EuJUbxLAur38bdmNal/T10ptAqxj/d15yDQW8GpylIcjmF4CB48
+         OvturHVmjWHOpjWDdoyEtpdXejk+XX9TWQxYeY5PArfEPrYzuhs3aPAFx56AdGXiAW2d
+         BHQlyZsdPbWtlTghD+DG0wz7HPG5jso3+sWuYzNd4eikmGDjRBNsK52REWtvyfSlr6Rv
+         yxhWCSux2rF7u2UvvKtMpy/k3lMAn+Ay+yVnbjrRKgpccEYaYOsESIaUYZCeuqV6VpK7
+         41ls3TPrl5Kd1E8EeM15rLFeWUuXduIXykd2jgwLvf8kCKD6m2XF1CKrQO806YbGbfCf
+         NtBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=thV71t9b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d17-v6si602262qvo.36.2018.08.07.01.06.29
+        by mx.google.com with ESMTPS id f5-v6si870581qkc.120.2018.08.07.02.52.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Aug 2018 01:06:29 -0700 (PDT)
+        Tue, 07 Aug 2018 02:52:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=thV71t9b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37852 helo=lists.gnu.org)
+Received: from localhost ([::1]:38140 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fmx0e-0000ko-UO
-	for alex.bennee@linaro.org; Tue, 07 Aug 2018 04:06:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60863)
+	id 1fmyfi-0003Vc-PO
+	for alex.bennee@linaro.org; Tue, 07 Aug 2018 05:52:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55375)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fmwtR-00035L-Ta
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 03:59:03 -0400
+	(envelope-from <clg@kaod.org>) id 1fmyfX-0003UQ-Na
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 05:52:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fmwtN-0005gi-1t
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 03:59:02 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:38680)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fmwtM-0005gZ-Rg; Tue, 07 Aug 2018 03:58:56 -0400
-Received: by mail-pf1-x441.google.com with SMTP id x17-v6so8177215pfh.5;
-	Tue, 07 Aug 2018 00:58:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=3RtZ/h1iBSZFLfoCfLXbdQ+HU5csM0CuyQNEFOBPc6o=;
-	b=thV71t9bcbv9TbqM3oF2alcsBU5GRiVmj+M4pFZEt5DUCuI2rn5/cV49rBOnsOlSZU
-	1X8PQnhGwgVB9/93LouJBcx9DztKiWIs0dZtqDBedHrT63bQ4ifL2508hD/pat8oO5Dl
-	HF1Kzco+kRhZDdtzTJO5do2hXz0n61ZU6Q3sQqXaBWnp4nT/jotEX830KW9/YM+klbL0
-	1HM+AICJ+ChuSIqnL13ODFlc7mkl4cG2MQ6GcK8VRosy9vy/cJELXMXTUnLJxhBP3+pa
-	jSiC1w2BBrrEZwA30qoqYXY7ht20hnZhVeu90zOzuW9Bsqb+RT2Vu1y/KAK4PPtKBjOw
-	m3Hw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=3RtZ/h1iBSZFLfoCfLXbdQ+HU5csM0CuyQNEFOBPc6o=;
-	b=gPqlwCZfTS6fFDgL0A+ONBfX3ctbsTs/gV37dJytrjJl2JwhnDnWq0udLRFWZTg+Ob
-	O+Fc9Ub73H9NtTAHbg0996eJf1ir1ltzvQstHNlbA+C+KMXNy3MtDqn0qBeaGksF3cQY
-	y5yYCKGyP4uCLfZ+qGgDNRPkXTBtKRu2Dzr9p+0E8nE8TAyjWySeba2zlP2fwDk7yxx2
-	KYrbDn4esDCdakE0Ct4ow0LyU6Wx/hQMp4/5tUk0AQgVjVe0MGEiUVDZQypZi0csJNCh
-	TxXHZwffXoQZDlaSMUtUUhOcHrPICFKFg14Ny1n3tOAGYapdxu/nenqsJ31v0L4KAkOl
-	Wgzg==
-X-Gm-Message-State: AOUpUlEwWDuBZ8GJQVMggZaT90k59ZUXb+2gNCedl0YvLxY2ushwFOsA
-	xUDgp/hrL5LUUhqjNwBVEJE=
-X-Received: by 2002:a62:93d4:: with SMTP id
-	r81-v6mr20486890pfk.55.1533628735770; 
-	Tue, 07 Aug 2018 00:58:55 -0700 (PDT)
-Received: from aurora.jms.id.au ([45.124.203.18])
-	by smtp.gmail.com with ESMTPSA id
-	p64-v6sm1421808pfa.47.2018.08.07.00.58.51
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 07 Aug 2018 00:58:55 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Tue, 07 Aug 2018 17:28:49 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Date: Tue,  7 Aug 2018 17:27:57 +0930
-Message-Id: <20180807075757.7242-8-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180807075757.7242-1-joel@jms.id.au>
+	(envelope-from <clg@kaod.org>) id 1fmyfU-00074G-El
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 05:52:47 -0400
+Received: from 5.mo5.mail-out.ovh.net ([87.98.173.103]:46663)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fmyfU-00070k-8L
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 05:52:44 -0400
+Received: from player739.ha.ovh.net (unknown [10.109.143.216])
+	by mo5.mail-out.ovh.net (Postfix) with ESMTP id EE60A1D56FD
+	for <qemu-arm@nongnu.org>; Tue,  7 Aug 2018 11:52:34 +0200 (CEST)
+Received: from zorba.kaod.org (ARennes-657-1-237-83.w2-11.abo.wanadoo.fr
+	[2.11.96.83]) (Authenticated sender: postmaster@kaod.org)
+	by player739.ha.ovh.net (Postfix) with ESMTPSA id 2EC1B4A00AD;
+	Tue,  7 Aug 2018 11:52:23 +0200 (CEST)
+To: Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>
 References: <20180807075757.7242-1-joel@jms.id.au>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: [Qemu-arm] [PATCH 7/7] aspeed: Link SCU to the watchdog
+	<20180807075757.7242-2-joel@jms.id.au>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <881a1c50-52af-d6b7-fdc8-5b9cc69ca5a2@kaod.org>
+Date: Tue, 7 Aug 2018 11:52:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <20180807075757.7242-2-joel@jms.id.au>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 7773494432540298048
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrtddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 87.98.173.103
+Subject: Re: [Qemu-arm] [PATCH 1/7] aspeed_sdmc: Extend number of valid
+ registers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,94 +95,37 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7FXLFTfpmkoG
+X-TUID: MbmPoLdhlYtu
 
-The ast2500 uses the watchdog to reset the SDRAM controller. This
-operation is usually performed by u-boot's memory training procedure,
-and it is enabled by setting a bit in the SCU and then causing the
-watchdog to expire. Therefore, we need the watchdog to be able to
-acess the SCU's register space.
+On 08/07/2018 09:57 AM, Joel Stanley wrote:
+> The SDMC on the ast2500 has 170 registers.
 
-This does not cause a system reset, but only resets the SDRAM
-controller.
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/arm/aspeed_soc.c              |  2 ++
- hw/watchdog/wdt_aspeed.c         | 20 ++++++++++++++++++++
- include/hw/watchdog/wdt_aspeed.h |  1 +
- 3 files changed, 23 insertions(+)
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index a27233d4876b..2cbacb4430bb 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -164,6 +164,8 @@ static void aspeed_soc_init(Object *obj)
-         qdev_set_parent_bus(DEVICE(&s->wdt[i]), sysbus_get_default());
-         qdev_prop_set_uint32(DEVICE(&s->wdt[i]), "silicon-rev",
-                                     sc->info->silicon_rev);
-+        object_property_add_const_link(OBJECT(&s->wdt[i]), "scu",
-+                                       OBJECT(&s->scu), &error_abort);
-     }
- 
-     object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC100);
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 95f6ad186d72..f5cb30c0b584 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -43,6 +43,9 @@
- 
- #define WDT_RESTART_MAGIC               0x4755
- 
-+#define SCU_RESET_CONTROL1              (0x04 / 4)
-+#define    SCU_RESET_SDRAM              BIT(0)
-+
- static bool aspeed_wdt_is_enabled(const AspeedWDTState *s)
- {
-     return s->regs[WDT_CTRL] & WDT_CTRL_ENABLE;
-@@ -221,6 +224,13 @@ static void aspeed_wdt_timer_expired(void *dev)
- {
-     AspeedWDTState *s = ASPEED_WDT(dev);
- 
-+    /* Do not reset on SDRAM controller reset */
-+    if (s->scu->regs[SCU_RESET_CONTROL1] & SCU_RESET_SDRAM) {
-+        timer_del(s->timer);
-+        s->regs[WDT_CTRL] = 0;
-+        return;
-+    }
-+
-     qemu_log_mask(CPU_LOG_RESET, "Watchdog timer expired.\n");
-     watchdog_perform_action();
-     timer_del(s->timer);
-@@ -232,6 +242,16 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedWDTState *s = ASPEED_WDT(dev);
-+    Error *err = NULL;
-+    Object *obj;
-+
-+    obj = object_property_get_link(OBJECT(dev), "scu", &err);
-+    if (!obj) {
-+        error_propagate(errp, err);
-+        error_prepend(errp, "required link 'scu' not found: ");
-+        return;
-+    }
-+    s->scu = ASPEED_SCU(obj);
- 
-     if (!is_supported_silicon_rev(s->silicon_rev)) {
-         error_setg(errp, "Unknown silicon revision: 0x%" PRIx32,
-diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
-index 7de3e5c224fb..cc734bd7ae7b 100644
---- a/include/hw/watchdog/wdt_aspeed.h
-+++ b/include/hw/watchdog/wdt_aspeed.h
-@@ -26,6 +26,7 @@ typedef struct AspeedWDTState {
-     MemoryRegion iomem;
-     uint32_t regs[ASPEED_WDT_REGS_MAX];
- 
-+    AspeedSCUState *scu;
-     uint32_t pclk_freq;
-     uint32_t silicon_rev;
-     uint32_t ext_pulse_width_mask;
--- 
-2.17.1
+Thanks,
+
+C.
+
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  include/hw/misc/aspeed_sdmc.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdm=
+c.h
+> index 551c8afdf4be..682f0f5d56dc 100644
+> --- a/include/hw/misc/aspeed_sdmc.h
+> +++ b/include/hw/misc/aspeed_sdmc.h
+> @@ -14,7 +14,7 @@
+>  #define TYPE_ASPEED_SDMC "aspeed.sdmc"
+>  #define ASPEED_SDMC(obj) OBJECT_CHECK(AspeedSDMCState, (obj), TYPE_ASP=
+EED_SDMC)
+> =20
+> -#define ASPEED_SDMC_NR_REGS (0x8 >> 2)
+> +#define ASPEED_SDMC_NR_REGS (0x174 >> 2)
+> =20
+>  typedef struct AspeedSDMCState {
+>      /*< private >*/
+>=20
 

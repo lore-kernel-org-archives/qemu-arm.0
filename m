@@ -1,94 +1,87 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4310400wru;
-        Tue, 7 Aug 2018 08:07:32 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpf6nAw0aZe/vNMi0GNf9tf2U+4TYruVNrt1M0mDRRP93rbGLGSk7dgsPXkCRBZrW+gugsjU
-X-Received: by 2002:a37:5f87:: with SMTP id t129-v6mr18618336qkb.23.1533654452847;
-        Tue, 07 Aug 2018 08:07:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533654452; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4338505wru;
+        Tue, 7 Aug 2018 08:32:59 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpe7xYpWGHcn1ciVONqA/LMgPwmb19ZpPLQ+cpFABcqDTKor5qRYkAA+otFo8n3dVCmO1vRf
+X-Received: by 2002:a0c:8b11:: with SMTP id q17-v6mr17330244qva.193.1533655979424;
+        Tue, 07 Aug 2018 08:32:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533655979; cv=none;
         d=google.com; s=arc-20160816;
-        b=iRYEzg4hqyAt6DRfAiWwjoqDpJuetXWzDgVnHcnDhiZ7Te8Xa9GQKoZK5YZITKYUOb
-         CGSdzI3tsNR3zr+fQa/wzz2BhN+YB/m9FZTAiYdNd6Qj2bty9a7fTg/fIp1YEzlZ6dXS
-         OPtg/pQaBx/wjOEMWI81cX/0pUtA3wbCkQhb1h+iuPO8Dt2aDAtxlXHB+upQVxS8W8SD
-         28SW0W1aBuuN/92veQ6+wra2CUOJizeY9WlrkpuEtgUBwjhsaXV7G4AmsnmH54fAq77W
-         OY/7SO919klZ/9CLur4U7/L9GXpOXYCCEUKCOz7e7h+cojjryCg4bSiFHz2Pv9NO/dYy
-         NASg==
+        b=o5m6Ev32CReu4ACKKcFRPwiYyV6OZDR+XEXWRYKtG01Y7/nEZWt2lT9wy75wOTytJy
+         BMdh7OAf642hgyzklc6CDkyCHEUgApRZlvYztuCp17e1fTXKe5TraSxIO4eKrFdDaC6I
+         vqfQZs6UxbyEw5b1tNFOXScV32KUp9RTfRO4gUZiT75VZms/+v7FHSPTMX5zSlntwupj
+         qeAnsgL4JFAx3RUNBo8iTP1LoneBbKaIFPTqc15nvnJx9RdEc/hyxakERO54kQLgJ093
+         BfKvEEAJCGbMf+QArTlldFZjinT4Im760ivHs6qL/9KxdDkXKz/vITVdoYv/Xjvw1TS/
+         rPSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:arc-authentication-results;
-        bh=w0hAXnPCjaOwKkuStv6Xgcdynx38gM/La+1xn7lufRw=;
-        b=u9Qpxm8ScL0fBgRPNUbimknBZUTUC57RTK6xK4NstMiHsnNybDte6ZEPJ/pIzyAFzN
-         27+/aO+KVdLviGyFtVwSwX3/eKHOpF22v7RMmV2TnbwqYaS8rNE1paLhqA5ckxMjN1lL
-         1s0qjbP4MIslSCF0RLJuMcj/QUPDFl+UCAEHA3ow5D0pMCCyJDzm6onPOzWtSTIxy0ZV
-         dMSR9h4Q0oFqXdALC6uR4oYQiH45mOFwdIAuwIeI1ujujch6PLIp1TViVaiMjZlZjbRJ
-         sKcPc96aykIYw7hLiYlNHt4vnJGzTM2vkK90BHtz+ZG3a1QRkyh9hnfMK638XVqJVlaC
-         Icow==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:arc-authentication-results;
+        bh=QZvLSdL+7a7PRVS3kwrtMuK1eZq24j68WBpKEkhQNcA=;
+        b=zoGKt/JrWgsflMvzcAkUFgyIWeivQswKJbrMvGkSUUIn+B8/hdNkHyVsyqontWD1mr
+         fjp6hXrvhYUod0AReVNyRKdDceK6XuC0/WUvsaBxxa57PjEiCJ6y8ZVw3RBbOIzKTMdU
+         pMWqXIEkUTU7KvhH/g8Bb4Znfc3SbBdu5fmy2aACPoguMyKTNhbISEUQ4AXiN/+vsDV+
+         OQSdYTKdsZQLupDhhwcKhNYUH/MRMezIQSzmZiZVcCvMSus4fOKhOYP7BHw80Ls6AsUx
+         ECmZr7vmh1nUV6tler3MTOPcTnZq6LYRMj+Mu7nix29XUyCUehBgmJePvKBfehHkx5yL
+         OT2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n51-v6si1317718qvn.276.2018.08.07.08.07.32
+        by mx.google.com with ESMTPS id j41-v6si1638093qtk.138.2018.08.07.08.32.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 07 Aug 2018 08:07:32 -0700 (PDT)
+        Tue, 07 Aug 2018 08:32:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39500 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39651 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fn3a8-0007Zi-AJ
-	for alex.bennee@linaro.org; Tue, 07 Aug 2018 11:07:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57256)
+	id 1fn3yk-000062-TS
+	for alex.bennee@linaro.org; Tue, 07 Aug 2018 11:32:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fn3Yg-0006fs-R9
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 11:06:06 -0400
+	(envelope-from <geert.uytterhoeven@gmail.com>) id 1fn3yW-0008VX-BD
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 11:32:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fn3Yc-0002bY-PK
-	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 11:06:02 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36762 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fn3Yc-0002bK-Fv; Tue, 07 Aug 2018 11:05:58 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AADC97DAC3;
-	Tue,  7 Aug 2018 15:05:57 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-58.ams2.redhat.com
-	[10.36.116.58])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9484E2166BA0;
-	Tue,  7 Aug 2018 15:05:55 +0000 (UTC)
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-References: <20180725143413.9728-1-geert+renesas@glider.be>
-	<20180725143413.9728-2-geert+renesas@glider.be>
-	<276c2cab-659f-ad1a-d3a3-0e0df9a439c9@redhat.com>
-	<CAMuHMdUuWT+-7wGg2SYTvtQV0Cy64N5GYTB0b-3gXPS3KLoO2w@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <303a110d-7cb6-9003-e225-7f9d87d78811@redhat.com>
-Date: Tue, 7 Aug 2018 17:05:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.4.0
+	(envelope-from <geert.uytterhoeven@gmail.com>) id 1fn3yS-0002v3-Uk
+	for qemu-arm@nongnu.org; Tue, 07 Aug 2018 11:32:44 -0400
+Received: from mail-ua0-f194.google.com ([209.85.217.194]:33514)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <geert.uytterhoeven@gmail.com>)
+	id 1fn3yS-0002ut-Pk; Tue, 07 Aug 2018 11:32:40 -0400
+Received: by mail-ua0-f194.google.com with SMTP id i4-v6so16585794uak.0;
+	Tue, 07 Aug 2018 08:32:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=QZvLSdL+7a7PRVS3kwrtMuK1eZq24j68WBpKEkhQNcA=;
+	b=JsAmrzPEv/jUfXMh0el1G/CxHDEEkRKwv92tfEEtmvdd/ShGQ6ZlyWHEy/fReCy211
+	HdQP8iYGjpDnzM61/VXTdcY3yQBi9Tgh85uD0hsL/VvXCvlUhzRfF/pwBVml8dSx+S9D
+	LsFXnI5Q9RE0Q6k34LUH1Na8nYTipRS2ER8QD/paAv8FKC6aOeaJH79nI6nejkqMunED
+	peMDxqWxDrZ1lfLXBptMHhgaigXpW28MxpkRVCLWtvuUShUPzffuScon2eOkYY8biqSj
+	LSAFYthlomM+e9xT4ObV5uK+iOdJhSerp/6vqKnPofbD3kKK9ZYgFYU20jomIF+4W+on
+	MYsQ==
+X-Gm-Message-State: AOUpUlFy+GK3DUHbJZogXZ/P4IORqS7SlAg1bIKaBJn1O0T4nAtzYHfq
+	Ob0wvhEjXJh7gsh0QC+glPLwB3jSpzZzIgrs6W8=
+X-Received: by 2002:ab0:5b57:: with SMTP id
+	v23-v6mr13858749uae.72.1533655959914; 
+	Tue, 07 Aug 2018 08:32:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAMuHMdUuWT+-7wGg2SYTvtQV0Cy64N5GYTB0b-3gXPS3KLoO2w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 07 Aug 2018 15:05:57 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 07 Aug 2018 15:05:57 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+References: <20180725143413.9728-1-geert+renesas@glider.be>
+	<20180725143413.9728-5-geert+renesas@glider.be>
+	<e52bfdab-5c23-a617-8bef-0c17ab831ec1@redhat.com>
+In-Reply-To: <e52bfdab-5c23-a617-8bef-0c17ab831ec1@redhat.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 7 Aug 2018 17:32:27 +0200
+Message-ID: <CAMuHMdUuHcoZxFVFivBwD3LveeE8yQ+AnaWFr76kATG+rCzd=w@mail.gmail.com>
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 1/4] vfio/platform: Make the
- vfio-platform device non-abstract
+X-Received-From: 209.85.217.194
+Subject: Re: [Qemu-arm] [PATCH v3 4/4] hw/arm/sysbus-fdt: Add support for
+ instantiating generic devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,91 +105,115 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IrwrnRqmyoTw
+X-TUID: +MCnDpKOXc+1
 
-Hi Geert,
+Hi Eric,
 
-On 08/07/2018 05:00 PM, Geert Uytterhoeven wrote:
-> Hi Eric,
-> 
-> On Tue, Aug 7, 2018 at 4:18 PM Auger Eric <eric.auger@redhat.com> wrote:
->> On 07/25/2018 04:34 PM, Geert Uytterhoeven wrote:
->>> From: Auger Eric <eric.auger@redhat.com>
->>>
->>> Up to now the vfio-platform device has been abstract and could not be
->>> instantiated.  The integration of a new vfio platform device required
->>> creating a dummy derived device which only set the compatible string.
->>>
->>> Following the few vfio-platform device integrations we have seen the
->>> actual requested adaptation happens on device tree node creation
->>> (sysbus-fdt).
->>>
->>> Hence remove the abstract setting, and read the list of compatible
->>> values from sysfs if not set by a derived device.
->>>
->>> Update the amd-xgbe and calxeda-xgmac drivers to fill in the number of
->>> compatible values, as there can now be more than one.
->>>
->>> Note that sysbus-fdt does not support the instantiation of the
->>> vfio-platform device yet.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> [geert: Rebase, set user_creatable=true, use compatible values in sysfs
->>>       instead of user-supplied manufacturer/model options, reword]
->>> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
->>> ---
->>> v3:
->>>   - Read all compatible values from sysfs instead of using user-supplied
->>>     manufacturer and model options,
->>>   - Reword patch description,
->>>   - Drop RFC state,
->>>
->>> v2:
->>>   - No changes,
->>>
->>> v1:
->>>   - Rebase, Set user_creatable=true,
->>>
->>> v0:
->>>   - Original version from Eric.
-> 
->>> --- a/hw/vfio/platform.c
->>> +++ b/hw/vfio/platform.c
->>> @@ -655,6 +655,25 @@ static void vfio_platform_realize(DeviceState *dev, Error **errp)
->>>          goto out;
->>>      }
->>>
->>> +    if (!vdev->compat) {
->>> +        gchar *contents;
->>> +        gsize length;
->>> +        char *tmp;
->>> +
->>> +        tmp = g_strdup_printf("%s/of_node/compatible", vbasedev->sysfsdev);
->>> +        if (!g_file_get_contents(tmp, &contents, &length, NULL)) {
->>> +            error_report("failed to load \"%s\"", tmp);
->>> +            exit(1);
->> You should set errp instead so that the error gets properly propagated.
-> 
-> Thanks, will do.
-> 
->>> --- a/include/hw/vfio/vfio-platform.h
->>> +++ b/include/hw/vfio/vfio-platform.h
->>> @@ -54,7 +54,8 @@ typedef struct VFIOPlatformDevice {
->>>      QLIST_HEAD(, VFIOINTp) intp_list; /* list of IRQs */
->>>      /* queue of pending IRQs */
->>>      QSIMPLEQ_HEAD(pending_intp_queue, VFIOINTp) pending_intp_queue;
->>> -    char *compat; /* compatibility string */
->>> +    char *compat; /* DT compatible values, separated by NUL */
->> by NULL characters?
-> 
-> "NUL" is the character ('\0'), "NULL" is the pointer.
-Ah OK ;-)
+On Tue, Aug 7, 2018 at 4:19 PM Auger Eric <eric.auger@redhat.com> wrote:
+> On 07/25/2018 04:34 PM, Geert Uytterhoeven wrote:
+> > Add a fallback for instantiating generic devices without a type-specific
+> > or compatible-specific instantation method.  This will be used when no
+> > other match is found.
+> >
+> > The generic instantation method creates a device node with "reg" and
+> > (optional) "interrupts" properties, and copies the "compatible"
+> > property and other optional properties from the host.
+> > For now the following optional properties are copied, if found:
+> >   - "#gpio-cells",
+> >   - "gpio-controller",
+> >   - "#interrupt-cells",
+> >   - "interrupt-controller",
+> >   - "interrupt-names".
+> >
+> > More can be added when needed.
+> >
+> > This avoids having to write device-specific instantation methods for
+> instantiation
 
-Thanks
+Thanks, will fix.
 
-Eric
-> 
-> Gr{oetje,eeting}s,
-> 
->                         Geert
-> 
+> > each and every "simple" device using only a set of generic properties.
+> > Devices that need more specialized handling can still provide their
+> > own instantation method.
+
+Arghl, one more.
+
+> > --- a/hw/arm/sysbus-fdt.c
+> > +++ b/hw/arm/sysbus-fdt.c
+> > @@ -415,6 +415,99 @@ static int add_amd_xgbe_fdt_node(SysBusDevice *sbdev, void *opaque)
+> >      return 0;
+> >  }
+> >
+> > +static HostProperty generic_copied_properties[] = {
+> > +    {"compatible", false},
+> > +    {"#gpio-cells", true},
+> > +    {"gpio-controller", true},
+> > +    {"#interrupt-cells", true},
+> > +    {"interrupt-controller", true},
+> > +    {"interrupt-names", true},
+>
+> I think we would need to enumerate the other source properties which
+> were not copied to the guest fdt and either warn the userspace those
+> were omitted or fail. We may end up generating an incomplete guest dt
+> node that may not work properly.
+
+The list above is quite generic, so it is expected that some of the optional
+properties (marked "true") cannot be copied. Hence warning about them
+will be noisy, and confuse users.  Failing is definitely the wrong thing
+to do.
+
+If the host lacks a property that is mandatory for a specific device, the
+device won't have worked on the host before neither, right?
+
+The major issue remains that an incomplete guest DT node may be generated
+if the list above lacks certain needed properties, or if subnodes are
+needed.
+I expect the guest OS driver would complain about the missing parts, though.
+In that case, either the list should be extended, or a device-specific
+instantiation method should be written.
+
+> > +/**
+> > + * add_generic_fdt_node
+> > + *
+> > + * Generates a generic DT node by copying properties from the host
+> > + */
+> > +static int add_generic_fdt_node(SysBusDevice *sbdev, void *opaque)
+> > +{
+
+> > +    /* Copy interrupts (remapped) */
+> > +    if (vbasedev->num_irqs) {
+> > +        irq_attr = g_new(uint32_t, vbasedev->num_irqs * 3);
+> > +        for (i = 0; i < vbasedev->num_irqs; i++) {
+> > +            irq_number = platform_bus_get_irqn(pbus, sbdev , i)
+> > +                             + data->irq_start;
+> > +            irq_attr[3 * i] = cpu_to_be32(GIC_FDT_IRQ_TYPE_SPI);
+> > +            irq_attr[3 * i + 1] = cpu_to_be32(irq_number);
+> > +            irq_attr[3 * i + 2] = cpu_to_be32(GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>
+> I think this part is not generic enough. How can you assume the IRQs are
+> level or edge? Can't you copy the source interrupt properties and just
+> overwrite the IRQ number?
+
+I have to check that. I wouldn't be surprised if the virtualized GIC supports
+only a subset of all possible flags and/or remaps interrupt types too.
+
+I see the AMD XGBE driver looks at VFIO_IRQ_INFO_AUTOMASKED to choose
+between GIC_FDT_IRQ_FLAGS_LEVEL_HI and GIC_FDT_IRQ_FLAGS_EDGE_LO_HI.
+The VFIO_IRQ_INFO_* don't seem to provide more details.
+There are also no users of GIC_FDT_IRQ_FLAGS_LEVEL_LO and
+GIC_FDT_IRQ_FLAGS_EDGE_HI_LO in the Qemu sources...
+
+So probably following the AMD XGBE example is the way forward?
+
+Thanks!
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds

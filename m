@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id u14-v6sm4703438wrs.57.2018.08.08.05.39.34
+        by smtp.gmail.com with ESMTPSA id 8-v6sm9350975wmw.34.2018.08.08.05.39.34
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 08 Aug 2018 05:39:35 -0700 (PDT)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 7B49B3E061C;
+	by zen.linaro.local (Postfix) with ESMTP id 90D503E0625;
 	Wed,  8 Aug 2018 13:39:34 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -12,149 +12,85 @@ Cc: qemu-arm@nongnu.org,
 	richard.henderson@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [RFC PATCH  2/4] target/arm: move decoder helpers into header
-Date: Wed,  8 Aug 2018 13:39:32 +0100
-Message-Id: <20180808123934.17450-3-alex.bennee@linaro.org>
+Subject: [RFC PATCH  3/4] target/arm: add a fallback disassemble function
+Date: Wed,  8 Aug 2018 13:39:33 +0100
+Message-Id: <20180808123934.17450-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180808123934.17450-1-alex.bennee@linaro.org>
 References: <20180808123934.17450-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: z3yJaszKh2c/
+X-TUID: xXqn0cE2uLzP
 
-We want to re-use these helpers.
+Now we can generate a disassembler we need a function to hook into it.
+As we only deal with SVE instructions at the moment we don't need to
+differentiate the various decoders.
+
+I special case 0x5af0 as it is used by RISU for checkpoints.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/decoder.h       | 50 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-sve.c | 50 +-------------------------------------
- 2 files changed, 51 insertions(+), 49 deletions(-)
- create mode 100644 target/arm/decoder.h
+ target/arm/Makefile.objs |  8 ++++++++
+ target/arm/disassemble.c | 22 ++++++++++++++++++++++
+ target/arm/internals.h   |  2 ++
+ 3 files changed, 32 insertions(+)
+ create mode 100644 target/arm/disassemble.c
 
-diff --git a/target/arm/decoder.h b/target/arm/decoder.h
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 11c7baf8a3..4339353df8 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -20,3 +20,11 @@ target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODETREE)
+ 
+ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+ obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
++
++target/arm/disas-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODETREE)
++	$(call quiet-command,\
++	  $(PYTHON) $(DECODETREE) --disassemble -o $@ $<,\
++	  "GEN", $(TARGET_DIR)$@)
++
++target/arm/disassemble.o: target/arm/disas-sve.inc.c
++obj-$(TARGET_AARCH64) += disassemble.o
+diff --git a/target/arm/disassemble.c b/target/arm/disassemble.c
 new file mode 100644
-index 0000000000..09a043fb2b
+index 0000000000..801f9680cb
 --- /dev/null
-+++ b/target/arm/decoder.h
-@@ -0,0 +1,50 @@
++++ b/target/arm/disassemble.c
+@@ -0,0 +1,22 @@
 +/*
-+ * Helpers for extracting complex instruction fields.
-+ *
-+ * These are referenced in the .decode file and emitted by decodetree.py
++ * Fallback dissasembly
 + */
-+
-+/* See e.g. ASR (immediate, predicated).
-+ * Returns -1 for unallocated encoding; diagnose later.
-+ */
-+static inline int tszimm_esz(int x)
-+{
-+    x >>= 3;  /* discard imm3 */
-+    return 31 - clz32(x);
-+}
-+
-+static inline int tszimm_shr(int x)
-+{
-+    return (16 << tszimm_esz(x)) - x;
-+}
-+
-+/* See e.g. LSL (immediate, predicated).  */
-+static inline int tszimm_shl(int x)
-+{
-+    return x - (8 << tszimm_esz(x));
-+}
-+
-+static inline int plus1(int x)
-+{
-+    return x + 1;
-+}
-+
-+/* The SH bit is in bit 8.  Extract the low 8 and shift.  */
-+static inline int expand_imm_sh8s(int x)
-+{
-+    return (int8_t)x << (x & 0x100 ? 8 : 0);
-+}
-+
-+static inline int expand_imm_sh8u(int x)
-+{
-+    return (uint8_t)x << (x & 0x100 ? 8 : 0);
-+}
-+
-+/* Convert a 2-bit memory size (msz) to a 4-bit data type (dtype)
-+ * with unsigned data.  C.f. SVE Memory Contiguous Load Group.
-+ */
-+static inline int msz_dtype(int msz)
-+{
-+    static const uint8_t dtype[4] = { 0, 5, 10, 15 };
-+    return dtype[msz];
-+}
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 374051cd20..e3ec5c8ec2 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -33,7 +33,7 @@
- #include "trace-tcg.h"
- #include "translate-a64.h"
- #include "fpu/softfloat.h"
--
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
 +#include "decoder.h"
++
++#include "disas-sve.inc.c"
++
++size_t do_aarch64_fallback_disassembly(const uint8_t *insnp, char *ptr, size_t n)
++{
++    uint32_t insn = ldl_p(insnp);
++
++    if (insn == 0x5af0) {
++        snprintf(ptr, n, "illegal insn (risu checkpoint?)");
++    } else if (!decode(ptr, n, insn)) {
++        snprintf(ptr, n, "failed decode");
++    }
++
++    return 4;
++}
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index dc9357766c..80796632a2 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -796,4 +796,6 @@ static inline uint32_t arm_debug_exception_fsr(CPUARMState *env)
+     }
+ }
  
- typedef void GVecGen2sFn(unsigned, uint32_t, uint32_t,
-                          TCGv_i64, uint32_t, uint32_t);
-@@ -47,54 +47,6 @@ typedef void gen_helper_gvec_mem(TCGv_env, TCGv_ptr, TCGv_i64, TCGv_i32);
- typedef void gen_helper_gvec_mem_scatter(TCGv_env, TCGv_ptr, TCGv_ptr,
-                                          TCGv_ptr, TCGv_i64, TCGv_i32);
- 
--/*
-- * Helpers for extracting complex instruction fields.
-- */
--
--/* See e.g. ASR (immediate, predicated).
-- * Returns -1 for unallocated encoding; diagnose later.
-- */
--static int tszimm_esz(int x)
--{
--    x >>= 3;  /* discard imm3 */
--    return 31 - clz32(x);
--}
--
--static int tszimm_shr(int x)
--{
--    return (16 << tszimm_esz(x)) - x;
--}
--
--/* See e.g. LSL (immediate, predicated).  */
--static int tszimm_shl(int x)
--{
--    return x - (8 << tszimm_esz(x));
--}
--
--static inline int plus1(int x)
--{
--    return x + 1;
--}
--
--/* The SH bit is in bit 8.  Extract the low 8 and shift.  */
--static inline int expand_imm_sh8s(int x)
--{
--    return (int8_t)x << (x & 0x100 ? 8 : 0);
--}
--
--static inline int expand_imm_sh8u(int x)
--{
--    return (uint8_t)x << (x & 0x100 ? 8 : 0);
--}
--
--/* Convert a 2-bit memory size (msz) to a 4-bit data type (dtype)
-- * with unsigned data.  C.f. SVE Memory Contiguous Load Group.
-- */
--static inline int msz_dtype(int msz)
--{
--    static const uint8_t dtype[4] = { 0, 5, 10, 15 };
--    return dtype[msz];
--}
- 
- /*
-  * Include the generated decoder.
++size_t do_aarch64_fallback_disassembly(const uint8_t *insn, char *ptr, size_t n);
++
+ #endif
 -- 
 2.17.1

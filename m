@@ -1,102 +1,71 @@
-Received: by 10.28.71.27 with SMTP id u27csp2112021wma;
-        Thu, 22 Feb 2018 07:54:52 -0800 (PST)
-X-Google-Smtp-Source: AH8x227NoAM2K9yu59Iy4Voi/5IgRhXZ6OqFPNtxBKb2LlqBThPNESOpovdOsJzAs6cgUsbiICR/
-X-Received: by 2002:a25:808a:: with SMTP id n10-v6mr4998747ybk.230.1519314892422;
-        Thu, 22 Feb 2018 07:54:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1519314892; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1871754wru;
+        Thu, 9 Aug 2018 06:01:58 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPzjtui1xRUs0lVJNFIwWZu4863eQ5sdxUV0OfSopkk3JpGTe1XxhrRieuqhni5/gdpEyJhL
+X-Received: by 2002:a0c:b131:: with SMTP id q46-v6mr1745749qvc.168.1533819718807;
+        Thu, 09 Aug 2018 06:01:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533819718; cv=none;
         d=google.com; s=arc-20160816;
-        b=XGUfrWpnOF1qI/jHaUo/Uf4kmmfjzXOLlW8cpJIsIjziyNYOqxpg1yh4mOHJi2Utx5
-         aYWmK7TOj7mWAZa6rizMpwZAnN5gltm8nQ7Zbd1vWRNLVvzWB/DEWaC2Bo6X7MA8hwms
-         suZmBH7Z3l3PAgdmxBQHIc9qj0+NYilrp9vhcq9BAOMjhEyy8Kubd4dGEC+VfipLJQJS
-         lHcefOmWPRm3zxAU7gI9zXFKNIHBxTdjpiG/cBi1KKfkWZFWBbgBbs8yNTa0KeaVS5SR
-         8X6qkUhT8rSYK7gtFc6tmxV0lH9xyMBoT4iiihdjyyEf57DWDVUMxcK6StW7gS81hOjV
-         MUlA==
+        b=kBIq/vZwXP2lD90LDviZNHW5LXOU+PjGpBtr2UL3HXIvo7sf9xP5DM46oaLYjrnwY9
+         /gakCewVLj7W3dHbc0Em1AKLxf2Iu9Vox1W/F0vNXgRLijgOE8IDXQt2Q5kjxOtnPO2f
+         Asrv3kZtIs6Hc52Wqb1tL3kEdFanz8TbmHw++xk8IpT1ZFJ5Equ8qqSYoNAwSIYnrfft
+         5mtcFXByMk2GNp4ppBL2Byp6VHJcNoDCPQo0uNoHNupX5rv064RqWfIAIXTtDoCH2rfh
+         YfdkRfuf2ruePtrAFmEvD+mxqixpQipP4Hudf7A0R7mFlcvBeUSsFqv6zd0BDpOnTgYL
+         XRYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=gfQD2oEivYEZhs7ebW0NrQNmmRkA5yCjPbt4JEz82ns=;
-        b=j9rOA/janI9lCb6m/Vdrej090WDdPb5EpQrvuIDUnqJi8aK+F2+fQ9+4hRThb4svEW
-         qmyHiK+rf3vWzRgkCGEZcS87h7NHGgBCScpxD1HeCUu2CIte1ftc5UDvB/K7z8kLNGcD
-         qmL9KGfJRsrdVMLrqyhYg6NLstXs66up0NHceXD7Iv5NoCndyxuypPTVN9Z2VKajVSyI
-         eEY5YmRA/WP4eOny9PeC1Nag4ZOHCQ22Tpn4kLpPiosOmQHQ59/jmhzWxiSm8hCodP6m
-         2gfSWqKVgi/l+BqKVnWH2neNoqN9+sH55h0CWwYVR/QijAPtCG0AI3xvZiVOuc89b2Ca
-         ARgA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=Pq44vsSwXW/FFbzQY6qdIFSkxtnEjBjFQAxc5Q3OSC4=;
+        b=c5WusS/QL74qbxEP8Wc1PFS9FM+ILHsUfQMoZFrFqKqQifIr/ZrBcveg7ljVX5vN6C
+         wY0p4skNwu5GGSMyGyuEIfweJ2JjyEN4jOAQNTDdPDdx7LrU0TC8YlQ5/BSuZ+AGm3Q5
+         W5LIMcA3IHsmSalgXjo6hLI5zHuR5JBCitZx4z0Ln5LPv7QVN6wRXaqEGAtQV+DXSonm
+         3/nCoKm2tzse43eMBe/ekEWDEsXwqfPmagR0rFa+4m5YEzggwa+vFqlZa3Nf7RjexMc0
+         BFGnwgu+SpKRdcD1RsmO1jbkS1tz77Tj6y9ARRiNK0USgtv8GmVVgBQigLLCTRIx1azU
+         +GQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JMjCRmN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f185si57219ywf.247.2018.02.22.07.54.52
+        by mx.google.com with ESMTPS id v89-v6si1975319qkv.257.2018.08.09.06.01.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Feb 2018 07:54:52 -0800 (PST)
+        Thu, 09 Aug 2018 06:01:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JMjCRmN5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39160 helo=lists.gnu.org)
+Received: from localhost ([::1]:50691 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eotCt-0007NU-QD
-	for alex.bennee@linaro.org; Thu, 22 Feb 2018 10:54:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44588)
+	id 1fnkZi-0005wW-6z
+	for alex.bennee@linaro.org; Thu, 09 Aug 2018 09:01:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47015)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eot3I-0007Ud-Vk
-	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 10:44:57 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1fnkZI-0005uW-Lr
+	for qemu-arm@nongnu.org; Thu, 09 Aug 2018 09:01:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eot3I-0006ZQ-0a
-	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 10:44:57 -0500
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:34453)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eot3H-0006Z1-Qt
-	for qemu-arm@nongnu.org; Thu, 22 Feb 2018 10:44:55 -0500
-Received: by mail-oi0-x243.google.com with SMTP id c83so4011303oib.1
-	for <qemu-arm@nongnu.org>; Thu, 22 Feb 2018 07:44:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=gfQD2oEivYEZhs7ebW0NrQNmmRkA5yCjPbt4JEz82ns=;
-	b=JMjCRmN51xk5y6ZFNga4IhET0KKD7eG+4cE8sgvtczB+HuinUz5RO9GZ7QU6exps2I
-	sokJ+auJBqno+3Jzx2coxj8OZS/WQujARgImyTTMiz1FHHzoZyj13ZNYLpstFkR4dGX1
-	spSoOgbAmedpSCE5Id7jGZ90I2Htb3kG1d4ms=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=gfQD2oEivYEZhs7ebW0NrQNmmRkA5yCjPbt4JEz82ns=;
-	b=IhnrgNozWAkFkFCCwsu9RKUp1uGOyOQbGftcyAhvNKHL72UCkKg5doOdqUPpnDbbNq
-	2pCioMvW+T/gXE07MJdW1nz38sI80XgrUk9LAhfP4Dma7pq2vo9YPRk4+76ckTZuBL96
-	Eg3r0lllfadBHGywvoLylnTJBwpXdugFvR3MFENR1UYb/wrkKDOzT5ULhukqnAVfnYU1
-	uPco3kjqmQbqWOyl+Sx5h6oAEMQqUvA+IcDLD+d1LJFzrm+A8pxUF7s3XONNpfLj5eWj
-	6UpVcJDKzhOTJOidkyeZsQzIEvJIme+2JVhkMsTf2ZtG3jyqm3HxRUnqRj2v/UIuIFOl
-	vk/g==
-X-Gm-Message-State: APf1xPDXxKfN37lKwh0IpNWk8MXeUlrZdbvr5mkHLXfuFcww5T0pbC6Y
-	Ry0KO6abFlPzCAytA43FyTl2vUIYj7oNKLXmSgK/RKQi
-X-Received: by 10.202.68.213 with SMTP id r204mr5108400oia.80.1519314295141;
-	Thu, 22 Feb 2018 07:44:55 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.157.33.100 with HTTP; Thu, 22 Feb 2018 07:44:34 -0800 (PST)
-In-Reply-To: <CACRpkdYMTojtHnafK+kMnm1G7j+9Nj=p65WLZGbrN8MJv+4psQ@mail.gmail.com>
-References: <CACRpkda9B=frmS0QF429p-q+KoCKG=5NON-kQ0Rt-nba2powRA@mail.gmail.com>
-	<1519053606-9817-1-git-send-email-minyard@acm.org>
-	<1519053606-9817-3-git-send-email-minyard@acm.org>
-	<CAFEAcA-jTZMDNTF2rPn20DjSxu=z7n9M+2xo-pNfAYoha_LuzQ@mail.gmail.com>
-	<03f96a6b-3a52-0d72-e634-8b8f167f2992@acm.org>
-	<CACRpkdYMTojtHnafK+kMnm1G7j+9Nj=p65WLZGbrN8MJv+4psQ@mail.gmail.com>
+	(envelope-from <pm215@archaic.org.uk>) id 1fnkZE-0003HB-Qx
+	for qemu-arm@nongnu.org; Thu, 09 Aug 2018 09:01:32 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44214)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fnkZE-0003Gd-I9; Thu, 09 Aug 2018 09:01:28 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fnkZD-0003Ip-Cd; Thu, 09 Aug 2018 14:01:27 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Feb 2018 15:44:34 +0000
-Message-ID: <CAFEAcA82fEnt6oGz7O+zPZ2+zoZmhm0J6rAioX6SmJwoSykuGw@mail.gmail.com>
-To: Linus Walleij <linus.walleij@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu,  9 Aug 2018 14:01:08 +0100
+Message-Id: <20180809130115.28951-10-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180809130115.28951-1-peter.maydell@linaro.org>
+References: <20180809130115.28951-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 2/2] i2c: Move the bus class to
- i2c.h
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 09/16] hw/arm/iotkit: Wire up the lines for MSCs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,26 +77,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	Corey Minyard <minyard@acm.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NkZad6uya7en
+X-TUID: c3mK0h0R0zTc
 
-On 22 February 2018 at 15:39, Linus Walleij <linus.walleij@linaro.org> wrote:
-> On Tue, Feb 20, 2018 at 2:06 PM, Corey Minyard <minyard@acm.org> wrote:
->> Linus, Philippe, do you want me to submit this, or do you want
->> to take it?  You can pull it from:
->>
->> https://github.com/cminyard/qemu.git tags/i2c-bus-move
->
-> I don't have any commit rights, if you can push this to the
-> QEMU master I will happily rebase my stuff and resubmit :)
+The IoTKit doesn't have any MSCs itself but it does need
+some wiring to connect the external signals from MSCs
+in the outer board model up to the registers and the
+NVIC IRQ line.
 
-I suggest you take Corey's 2 patches, add them to the front
-of your patchset and add your signed-off-by line to them.
-That way you don't have to wait for them to go into git master.
+We also need to expose a MemoryRegion corresponding to
+the AHB bus, so that MSCs in the outer board model can
+use that as their downstream port. (In the FPGA this is
+the "AHB Slave Expansion" ports shown in the block
+diagram in the AN505 documentation.)
 
-thanks
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/arm/iotkit.h |  8 ++++++++
+ hw/arm/iotkit.c         | 15 +++++++++++++++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+index 1ffa31d521b..5bb66b10468 100644
+--- a/include/hw/arm/iotkit.h
++++ b/include/hw/arm/iotkit.h
+@@ -28,6 +28,9 @@
+  *  + QOM property "EXP_NUMIRQ" sets the number of expansion interrupts
+  *  + Named GPIO inputs "EXP_IRQ" 0..n are the expansion interrupts, which
+  *    are wired to the NVIC lines 32 .. n+32
++ *  + sysbus MMIO region 0 is the "AHB Slave Expansion" which allows
++ *    bus master devices in the board model to make transactions into
++ *    all the devices and memory areas in the IoTKit
+  * Controlling up to 4 AHB expansion PPBs which a system using the IoTKit
+  * might provide:
+  *  + named GPIO outputs apb_ppcexp{0,1,2,3}_nonsec[0..15]
+@@ -45,6 +48,11 @@
+  * Controlling each of the 16 expansion MPCs which a system using the IoTKit
+  * might provide:
+  *  + named GPIO inputs mpcexp_status[0..15]
++ * Controlling each of the 16 expansion MSCs which a system using the IoTKit
++ * might provide:
++ *  + named GPIO inputs mscexp_status[0..15]
++ *  + named GPIO outputs mscexp_clear[0..15]
++ *  + named GPIO outputs mscexp_ns[0..15]
+  */
+ 
+ #ifndef IOTKIT_H
+diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+index 5d59ed5489f..8ae2a052517 100644
+--- a/hw/arm/iotkit.c
++++ b/hw/arm/iotkit.c
+@@ -660,6 +660,21 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+ 
+     iotkit_forward_sec_resp_cfg(s);
+ 
++    /* Forward the MSC related signals */
++    qdev_pass_gpios(dev_secctl, dev, "mscexp_status");
++    qdev_pass_gpios(dev_secctl, dev, "mscexp_clear");
++    qdev_pass_gpios(dev_secctl, dev, "mscexp_ns");
++    qdev_connect_gpio_out_named(dev_secctl, "msc_irq", 0,
++                                qdev_get_gpio_in(DEVICE(&s->armv7m), 11));
++
++    /*
++     * Expose our container region to the board model; this corresponds
++     * to the AHB Slave Expansion ports which allow bus master devices
++     * (eg DMA controllers) in the board model to make transactions into
++     * devices in the IoTKit.
++     */
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->container);
++
+     system_clock_scale = NANOSECONDS_PER_SECOND / s->mainclk_frq;
+ }
+ 
+-- 
+2.17.1
+

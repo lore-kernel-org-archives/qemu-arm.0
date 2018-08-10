@@ -1,141 +1,84 @@
-Received: by 10.28.173.206 with SMTP id w197csp871435wme;
-        Thu, 11 Jan 2018 10:46:14 -0800 (PST)
-X-Google-Smtp-Source: ACJfBotQlRgU7ybuE08OtRcTJld5LmNjVJCDMpM47BUJlhPtx/925i33NEcgniIZre/7D3tirEj7
-X-Received: by 10.129.80.9 with SMTP id e9mr11595643ywb.304.1515696374760;
-        Thu, 11 Jan 2018 10:46:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1515696374; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2595549wru;
+        Thu, 9 Aug 2018 20:32:04 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPwi8A7W6X3HTZI+JIi5c8+gBFozeWTBDIKtO/1unwFYS1DXVetlRgqQm/1p9w/x1eZ141yk
+X-Received: by 2002:a37:3609:: with SMTP id d9-v6mr4133658qka.419.1533871923972;
+        Thu, 09 Aug 2018 20:32:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533871923; cv=none;
         d=google.com; s=arc-20160816;
-        b=qjOnstzQjDIpfONuRp/CHEBLOLqJbP/dHj+A8XiI5VGm8A1mzgMUVJx9ohspboE7kf
-         Tf5DdylfEIvIOMUmhwtoPO42DLVPZnmYivbU3ITmXLYQb00p6Ia3tZiX7E72CMeqMaF7
-         tRRseUF0WJKvj3Q/2z9ef/K1aXKkSHNzxBbz/2jN0y8iSCO9ARCoqChtAGtt8DLdjOkB
-         Bs0dd7fs72eWMoBtmCkl2gYsfRc/OE0abXNCbbMNWrX2zrCNRv/AUhJgv3zR/eyYC6Jy
-         kDmpY61VYOdGqV3xsx9xch5fT4TJB4JnuSstpHJ7WHBAb/8PxfNDWbPirb/BjdYZYe0I
-         b5TA==
+        b=s7wEJ4fhgyCybU1Zf80Cq+d903QcbP2q7D3pEB3s9cwEWtH5pi8Fl4PXYUbtb/q9Dc
+         NVyUbAdtxkkj8eE96ixcWZn0kyiHpLSf1rZHrEjYv/7T9HQ0EjwiSRx5YmVxO4OmR/zQ
+         f9Io50Rg7w0S13QgsqPljTkFXvz/qcCMyGDLXGPZHWn7H19VhNCaIFaDCis9XI15ncuy
+         0PBQw6AUo1PKf81Fn9h/Vb+Re2cNa15iEYTtXUKxqsKmMDwZnzI8/S6A404zMGxGEdYH
+         v/Tfr5rY4gUE4YRqLNDTLtRBfLgoJiqFYmnUGkC1cZ28EsTon9Z+j+UB2Fpn+/vcJURI
+         Idjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=R3sOfJh4T5ELFL3RDffTUMpRAsip4a95hRNK2IhP+ew=;
-        b=F73RmZTyHDAxi6nO86Y2172AEeO/WyfQxftFCW8LswE6O5GWdNB5CSWfYn6Gp7fMnx
-         fgs2GDI39OFj28Vm40z1KQNkRk5Lw1dTwK4nsWnomG27HrWBtZcnHRt1T6CDlZzTUJUQ
-         hor29hlzoZ9cdvwNfgc0lVh7K8pzrvWRLlqyiEWmr3lKg5bBHtj86HNSCOYEJ8Wf7jhk
-         fvVEVr7ygLztiHCS7bP/PF8Yxh3G7sFBT7+9iMFw7OPX9mkVWAq5UiH7RhtsWcWnwqLN
-         n1ja/ORAlh25zJOF0Dl9H2GJgWLOESWwjEhzVD6znUdcUDf8KD6vJCcHRnQptvIND58x
-         31Uw==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:arc-authentication-results;
+        bh=W6iQ4xl3cJLdy8Ehiv1SNtxteKxbla1thzYmVTyN9dw=;
+        b=KvwlcuIDox7d/fUhGOQoh4ChVX1DOqHJtvNGNt4bFhUcWSV3kK9XXZNvI1rMlXve4O
+         26/bv2IYKJDA4nuplNoI85hwUVBm5hHASDFPQ41kRX+eabciD6crz8x/qXNyoUCKrmon
+         dXOvqnMZuREpL8VKdH8SmGxVRcGlRUfL8c6khvGYr1+6TC04f8+UkB+xNfHvhuVsOfTn
+         ydh2aV8+8irAOOErIU8SO1xIy75KAxa/4fDf/Vw/PZYppyshV9j2SagK+UDRS/lWtPWO
+         frYdowWGYcu+rYYtcBskkwCvHqzpjyhq3cHelX2h91tXC3oNEbsehSO7/i0m+gStSJa5
+         JOPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iRXmpLPR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b124si4178906ybh.621.2018.01.11.10.46.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Jan 2018 10:46:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <ehabkost@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id f132-v6si8154782qkb.43.2018.08.09.20.32.03
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 09 Aug 2018 20:32:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iRXmpLPR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33849 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eZhri-0005jT-7Y
-	for alex.bennee@linaro.org; Thu, 11 Jan 2018 13:46:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56441)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eZhrV-0005hu-6A
-	for qemu-arm@nongnu.org; Thu, 11 Jan 2018 13:46:03 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1eZhrU-0007MM-C1
-	for qemu-arm@nongnu.org; Thu, 11 Jan 2018 13:46:01 -0500
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:33720)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1eZhrU-0007Ls-63
-	for qemu-arm@nongnu.org; Thu, 11 Jan 2018 13:46:00 -0500
-Received: by mail-ot0-x243.google.com with SMTP id x15so2968042ote.0
-	for <qemu-arm@nongnu.org>; Thu, 11 Jan 2018 10:46:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=R3sOfJh4T5ELFL3RDffTUMpRAsip4a95hRNK2IhP+ew=;
-	b=iRXmpLPRVZ7QEWerQmDPvLEBVFzIhpKUKNErJ0dg04zMYVYQipYXgGbFqSW54dAb8E
-	hagA6sUEMgwLEZWR8/YDbVvtI6pCqYf3IQqto3MnPkXv4BoBxqX0INKJpztS49OGN/q2
-	+2NxbEOXyEe1GJI3wNh8thmVBMeGlVVRrxhWU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=R3sOfJh4T5ELFL3RDffTUMpRAsip4a95hRNK2IhP+ew=;
-	b=HZWts/n1uzHRND/umHuN78w+oUZmCAie5Ci5Xnt3LzLfVC/EJ5CNoGdwdFmnrNTUkd
-	XiLSkzCjID1mJMP2pziGxMcHpw/hWjuMLIcaQtkyBhfz2rCJT/Vhgi/9k3QHNrzOD0x4
-	sA/Ykwbwuoo8sOlEilduHKeIflE/hHWHeXzblnZf/4iNnXiDNgCcapJMkCzA2jqGgGrQ
-	Ma6bdXPBqTHaskoIYVzus/nUOSVceeuI0K5VyoKcqwkwEMdMIAnl7PzUwvEys9+4SBCS
-	0Vofs4p0XPMs5BVj1+55KBBqnKW15et28Ql1YXQhaEGwf0fV1kWqJ4TzavIodHuilXQk
-	vjug==
-X-Gm-Message-State: AKwxytcNZJ8+nvflelqFE6F5rseluHXPDpEIta/3+j6WBz3/NIs/SoiM
-	kvKZ5sN12Z8CAQVc4CJtgVP6EStrC3GbweV6JIOD9Z+D
-X-Received: by 10.157.29.73 with SMTP id m67mr13895837otm.91.1515696359538;
-	Thu, 11 Jan 2018 10:45:59 -0800 (PST)
+       spf=pass (google.com: domain of ehabkost@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=ehabkost@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7C3E830832E7;
+	Fri, 10 Aug 2018 03:32:02 +0000 (UTC)
+Received: from localhost (ovpn-116-45.gru2.redhat.com [10.97.116.45])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0FEBF61356;
+	Fri, 10 Aug 2018 03:32:01 +0000 (UTC)
+Date: Fri, 10 Aug 2018 00:32:00 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	richard.henderson@linaro.org, Cleber Rosa <crosa@redhat.com>
+Subject: Re: [Qemu-devel] [RFC PATCH 1/4] scripts/decodetree.py: add a
+ disassembly generator (HACK!)
+Message-ID: <20180810033200.GA8773@localhost.localdomain>
+References: <20180808123934.17450-1-alex.bennee@linaro.org>
+ <20180808123934.17450-2-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Received: by 10.157.15.71 with HTTP; Thu, 11 Jan 2018 10:45:39 -0800 (PST)
-In-Reply-To: <20171218173022.18418-2-richard.henderson@linaro.org>
-References: <20171218173022.18418-1-richard.henderson@linaro.org>
-	<20171218173022.18418-2-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Jan 2018 18:45:39 +0000
-Message-ID: <CAFEAcA96HwP9NAT_MXFwJ5LYe_D5kgoBkNyUf=JBMLSRhcAkOg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-arm] [PATCH 1/9] target/arm: Mark disas_set_insn_syndrome
- inline
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0EgbOtFe8M5f
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20180808123934.17450-2-alex.bennee@linaro.org>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.44]); Fri, 10 Aug 2018 03:32:02 +0000 (UTC)
+X-TUID: ohdZbMVlEia9
 
-On 18 December 2017 at 17:30, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> If it isn't used when translate.h is included,
-> we'll get a compiler Werror.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index cd7313ace7..3f4df91e5e 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -108,7 +108,7 @@ static inline int default_exception_el(DisasContext *s)
->              ? 3 : MAX(1, s->current_el);
->  }
->
-> -static void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
-> +static inline void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
->  {
->      /* We don't need to save all of the syndrome so we mask and shift
->       * out unneeded bits to help the sleb128 encoder do a better job.
-> --
-> 2.14.3
+On Wed, Aug 08, 2018 at 01:39:31PM +0100, Alex Bennée wrote:
+> Given our issues with failing disassembly we could try and re-use the
+> decode tree data to output what instruction is being decoded. This
+> will be used if registered as a fall-back for when the "proper"
+> disassembler fails to decode an instruction.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I don't have an opinion on the approach you are taking, but the
+Python code you are adding is consistent with the existing style
+of the script.
 
-thanks
--- PMM
+That said, I find the existing code full of output() calls very
+hard to read.  If anybody wants to volunteer to improve the
+readability of the output generation, it would be welcome.
+
+Acked-by: Eduardo Habkost <ehabkost@redhat.com>
+
+-- 
+Eduardo

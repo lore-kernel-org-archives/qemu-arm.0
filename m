@@ -1,117 +1,104 @@
-Received: by 10.28.173.206 with SMTP id w197csp3544859wme;
-        Mon, 15 Jan 2018 21:27:33 -0800 (PST)
-X-Google-Smtp-Source: ACJfBospyGZIb04N+J9cJ1nifcEA8xNNyfSw8fK6u+WEzz05WbImwcdPTmvUmdVAPOgdT8Aa2uoA
-X-Received: by 10.129.98.197 with SMTP id w188mr23452456ywb.74.1516080453093;
-        Mon, 15 Jan 2018 21:27:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516080453; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3035099wru;
+        Fri, 10 Aug 2018 05:52:14 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPz+2P/Dh+MIhXIATuHIJYmjsB2IVNpnJJMHa2GuDy3lSifjqB/ewmv33arAxF5pnNx7SEdo
+X-Received: by 2002:ac8:1c5c:: with SMTP id j28-v6mr6163202qtk.365.1533905534897;
+        Fri, 10 Aug 2018 05:52:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533905534; cv=none;
         d=google.com; s=arc-20160816;
-        b=CXLFp+me36fCKlKL/HHNQS8FO/LkfY6xM/kRwtbWLfjl88PMKywmhdjJRWpXxcu4Iu
-         KzAwJsQ9PKJVCzuFec6Za1oKBbtWZzBJrKkDHYJnQzIxMB4fvH3MLHkROf3Hlne0txOm
-         clBJrsUb4BzTcFaUds7kUKLQnHfqwfiabs3+EY4rKoS6klpdSLpsU5rFiwOfThQglUyk
-         hcGamHt+EEodp2bvEABasNVRNYwvIi925lUiIKSKnhXUW5a5Bniyy8vD+rOk7W4o2V1m
-         jrq4G3e/rbHsclDaw8fF6MeRNfYpcUF3TluJ/jol85lvmlO5ybanbUDlA6kVW7oZWpZy
-         gvKA==
+        b=RVyVFWz/dtHIcP8GZESt+gJtuy5xghkEL7LIdEMtVWT3qCyYaQmPzLJ34KwzAgDFKW
+         ejh1V9K+9IDTKsS9bP78B42iG2TAocBr/PbMKgpDgxP99z23tdqT3FPwSrxlzHjhjM7x
+         GyIPEVtJZbmTlrm6tcpyhxpeq69AhB+12iZ3w8WUCb2s5ZhSOSEyM7fCobhoEN2nJCHK
+         W4OZ+ixnLktXf4nXgFIkU7gxSHcHfxr47ciDBhVU1NWs0ho1o4Sg2OxRjieanK1LnUt3
+         JAG/mukQo0gkk+2XwLrxQfI7Vn+45S5TrQQvpVZGi/nMV9TPuN6uYHMU4XLcE22Cn7lG
+         OWIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=9PioSfHGzqMwvCo3i/rETyKoJTOaehGoq+MwHPxUPbo=;
-        b=xvJ2iiPPJR51XXmYnc56K+rfaEfSf0ESvHpvfPyXbGCA8sl0UHGkVTGSUrL2KzRMXY
-         di42jrnVtv5OoQBpiopETHovBO1DQCsUeGeBgzPBZER+Ykl+ZfDhZ+AxqFUgqBmehU37
-         atEA2Se9tRDR1wbzHzPJlomk+mXk7sFWE+XvP94ufdH5TbixVh4WPnNB59ATy/eh8PA6
-         E2sgfYRtzD5Ak0/bUnQt1+XexJX1kQaq0qibRgXgNnchkZJ5+5Ya7jItQOcnVF/Vy5QT
-         n9gBf59Q4+FcD/KaVGJrtMzNgFbGlkCmCnd4fKUC3relVElaXF0xYgezUQ52hTzCvYkK
-         zh4g==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature:arc-authentication-results;
+        bh=vFyTBrqxTKM9kM3qmXnRL3ScMGX/BAa4KWo6axNAQEw=;
+        b=SvrMcNGp6wYAzo0022fcM1F+bXZBs8P6W3d9fEA4Oj/9pDGDFI6rfCPKKf2x2tV69y
+         8wzhgYExuRa2CS9Eb9H/hNmRX9yA41ldq4sMYg2Q8aHJbLLEYRU5jrvfbZxpbXAG9ZE8
+         xOdRTFUdXT3Jeukc8bnSCsTMAVNV6n49TBbfY7D+HLL0c2+hMZhusatsMzgIdyco7IpE
+         fsa/NM+cXWiWgzNG97Jl7GCRilTwal8k22S8gC6ZN9WoOQckkI4ZTlgu5PMBBDovWlSs
+         Crk6B44iyIbQaUX7CYBfCeYpy+Y5oj+dkAh/NKvO/W3LXWOnF4Uh0qmSwe/OK5RxhEEH
+         H87w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Dlo9/OYK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=G9YUW3uN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o12si322075ywm.655.2018.01.15.21.27.32
+        by mx.google.com with ESMTPS id k2-v6si737777qvb.251.2018.08.10.05.52.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 15 Jan 2018 21:27:33 -0800 (PST)
+        Fri, 10 Aug 2018 05:52:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Dlo9/OYK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:37355 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@gmail.com header.s=20161025 header.b=G9YUW3uN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56084 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ebJmW-0000Fu-JP
-	for alex.bennee@linaro.org; Tue, 16 Jan 2018 00:27:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53103)
+	id 1fo6tq-0006Ag-DJ
+	for alex.bennee@linaro.org; Fri, 10 Aug 2018 08:52:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJQR-0006Bw-Mn
-	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 00:04:45 -0500
+	(envelope-from <darcysail@gmail.com>) id 1fo4c1-00039u-4L
+	for qemu-devel@nongnu.org; Fri, 10 Aug 2018 06:25:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJQO-00038J-Fk
-	for qemu-devel@nongnu.org; Tue, 16 Jan 2018 00:04:43 -0500
-Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:36876)
+	(envelope-from <darcysail@gmail.com>) id 1fo4bx-0000hx-Nk
+	for qemu-devel@nongnu.org; Fri, 10 Aug 2018 06:25:41 -0400
+Received: from mail-it0-x241.google.com ([2607:f8b0:4001:c0b::241]:39382)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1ebJQO-00037R-AE; Tue, 16 Jan 2018 00:04:40 -0500
-Received: by mail-qk0-x22d.google.com with SMTP id y80so12898387qkb.4;
-	Mon, 15 Jan 2018 21:04:40 -0800 (PST)
+	(Exim 4.71) (envelope-from <darcysail@gmail.com>)
+	id 1fo4bw-0000h3-To; Fri, 10 Aug 2018 06:25:37 -0400
+Received: by mail-it0-x241.google.com with SMTP id g141-v6so1971817ita.4;
+	Fri, 10 Aug 2018 03:25:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=9PioSfHGzqMwvCo3i/rETyKoJTOaehGoq+MwHPxUPbo=;
-	b=Dlo9/OYKntFEKVpCLtjkLats2w3AzhCLDlSYl9c0/9cJQBKVD+wczuAjznc8QQd1bd
-	VCxB0T5+nBGyEJlAHvbzibIfkkogrSlosIW5Oxbo/6J/A3gmjikrhl4GNq5mFcCSdElS
-	Q4aPIrQV1hx9MapH6F1hY/a7CuLkKlbH6N8iiCb2zFlueSsMT16vz+pc8jJXF4cMGPSq
-	mgR7rYla22uKbpNT1WgkLUg7+Zz6kJ4gRVd9C9BdhQ8BABT+ELad5MfUjqIy4yzQO3Rl
-	Pbu55pLbCskB/hu35qyywxmwxHmnVpdiH5gS24BncQ3qoxkNNqN7NjtQ6SYhaNbLqlzb
-	M+wQ==
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=3du3wOGy0Bpq+z0na9NSC48ImeUre3ff9k22QTjV6aA=;
+	b=G9YUW3uN+LhRSHNCKzv4Fa/41Iai2kvulmyV6jBdSJQvoX4Z1Evp/PJa4CK0YvTSQA
+	LP1ld70cAXihcSEhem9Ol6ORVoQfmbkRWz3jrAvpwH1J47GRhlwpB1UcFzsmLbKH2WCE
+	ldkcojS3bmCEAt9qok8wU/u+CiSS+T2pxLrdkyR9IIir04ST9ypGpVxm8/vniIVRf3fR
+	xVI1rSM+qJnLl1swfdRYvzJyNIfN1+D5mBXqwg164M5oq70PagXoiJAJB2b6J8J+jBxu
+	hwap0ny51BJ6VTpkFoj6pSVJO4UnYEVi4rjGtsxhRH4LTxfOAActYNPemb+z0XHHmWrb
+	1/xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=9PioSfHGzqMwvCo3i/rETyKoJTOaehGoq+MwHPxUPbo=;
-	b=nHBsyL6MY81ylNal1DteTTZVoYypWGsiBuN42b+GuF3i/QdHtatEfNDbN3UmY9+Ofj
-	4nTD9jkiPNyRMcHGB85pxb7arBL09RTnrZwE94fXVHZECimSdpd/Iz/3UPvnkGYpdFlK
-	eao49g6rjS+kjeB1w59sUFyit7M6fNTg/L9mqa0ultAnDNmKeIxm1ZTJ6gOwk37sHtGR
-	38QCKT11odBBsDz88ZzzwQA65z+X1o4zpN9PdhoQ/d/crLuajpaaCbyFRq3X/xOH6vZO
-	a80x6WkwlqtVcGatZP29CZM6O4Nu4lXn7XGOJxPG8n8Y77BF24ntFZPSK/5DivmDfmZ9
-	3itg==
-X-Gm-Message-State: AKwxytfzIzSHCKKLkNdw7sTUfzyfboqCUwpK88Z64N8Miikq30iHyy0k
-	9gYRS5bWTHqUpUbYjG6PBGY=
-X-Received: by 10.55.26.67 with SMTP id a64mr51440441qka.198.1516079079698;
-	Mon, 15 Jan 2018 21:04:39 -0800 (PST)
-Received: from [192.168.1.11] ([138.117.48.219])
-	by smtp.gmail.com with ESMTPSA id r9sm827238qtf.82.2018.01.15.21.04.36
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 15 Jan 2018 21:04:39 -0800 (PST)
-To: Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20171214151934.3647-1-andrew.smirnov@gmail.com>
-	<CAKmqyKOV7kYBTDmjLaFTtKAF7KyZQ56F2LiwE5D+Hzzh9nvmxA@mail.gmail.com>
-	<CAHQ1cqFhHRVNOT4Fo+AbF9CXYn77Npy2g6hzWJ+Lh90aRxT=0A@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <8bc803bf-c062-6ee0-d7c2-74262ffe12dc@amsat.org>
-Date: Tue, 16 Jan 2018 02:04:35 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.5.2
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=3du3wOGy0Bpq+z0na9NSC48ImeUre3ff9k22QTjV6aA=;
+	b=JgloeuhER+pbErKp0/DYeI0LhQAfIbjxnKaOQDA+vxne9+9a+XSE06tT3eyrSYA6X5
+	IcKHpfsAy2QhLLvtI+qMH5nMzm/L6p3LMCpE9yOxyn/jU/BIKTu9Jc0iS+acMu5TafLO
+	qSMG9AGR/R7lGKIdiK42swqh/RwAD5iiJKMEgQOupQmlmIpi7yMUdELPJIny1bdVW6Fs
+	AoARrGukyCyMBkO3YmJsQenx19oJIVXZpdkxzMzG+nuW+6xaeidhsMMiHN2DGBmmRrAJ
+	GXNyzMZKcZ6htaU3D2Z3QaqEsO/WuKS+SFFGgdZBKqPsSihA+VarPuX1Rax6Piij5eUo
+	cmBQ==
+X-Gm-Message-State: AOUpUlHEgkx9K7gjzd2kHUHIotArhySa3ysQLuWXhSuFQ8dwOtxXGH2m
+	p4SbdYe6+Z71S83FV/36nG/ZUNPZ5j/CdkC2liA=
+X-Received: by 2002:a24:6b0e:: with SMTP id
+	v14-v6mr1649463itc.90.1533896735684; 
+	Fri, 10 Aug 2018 03:25:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAHQ1cqFhHRVNOT4Fo+AbF9CXYn77Npy2g6hzWJ+Lh90aRxT=0A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+References: <20180803144721.17036-1-stefanha@redhat.com>
+	<20180803144721.17036-6-stefanha@redhat.com>
+	<1a84a9fc-93f8-3573-c27e-bb60d9c48a7a@amsat.org>
+In-Reply-To: <1a84a9fc-93f8-3573-c27e-bb60d9c48a7a@amsat.org>
+From: sail darcy <darcysail@gmail.com>
+Date: Fri, 10 Aug 2018 18:25:24 +0800
+Message-ID: <CACX88mDOU1GYsapwm5BHf6HmUP8=TnOVrG8XUU+C=f-cYwa2Sg@mail.gmail.com>
+To: f4bug@amsat.org
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22d
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] hw/misc: Add code to emulate
- Xilinx Slave Serial port
+X-Received-From: 2607:f8b0:4001:c0b::241
+X-Mailman-Approved-At: Fri, 10 Aug 2018 08:47:06 -0400
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.21
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v4 5/6] loader: Implement .hex
+ file loader
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,261 +110,407 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Andrey Yurovsky <yurovsky@gmail.com>
+Cc: peter.maydell@linaro.org, jim@groklearning.com, mail@steffen-goertz.de,
+	ilg@livius.net, alistair@alistair23.me, qemu-devel@nongnu.org,
+	sundeep.lkml@gmail.com, qemu.ml@steffen-goertz.de,
+	suhang16@mails.ucas.ac.cn, joel@jms.id.au, stefanha@redhat.com,
+	jusual@mail.ru, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UmFN1f3+g2yi
+X-TUID: 4CIqVnFLohN9
 
-On 01/15/2018 10:51 PM, Andrey Smirnov wrote:
-> On Tue, Dec 19, 2017 at 4:48 PM, Alistair Francis
-> <alistair.francis@xilinx.com> wrote:
->> On Thu, Dec 14, 2017 at 7:19 AM, Andrey Smirnov
->> <andrew.smirnov@gmail.com> wrote:
->>> Add code to emulate Xilinx Slave Serial FPGA configuration port.
->>>
->>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
->>> Cc: Alistair Francis <alistair.francis@xilinx.com>
->>> Cc: qemu-devel@nongnu.org
->>> Cc: qemu-arm@nongnu.org
->>> Cc: yurovsky@gmail.com
->>> Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
->>
->> Hey,
->>
->> Thanks for the patch!
->>
->> I have some comments inline, if anything is unclear just email me back
->> and I can provide more information or help.
->>
->>> ---
->>>
->>> Integrating this into a build system via "obj-y" might not be the best
->>> way. Does this code need a dedicated CONFIG_ symbol?
->>
->> You probably don't need a specific one, there are already some Xilinx
->> ones in there you can use.
->>
->> Maybe CONFIG_XILINX or CONFIG_XILINX_AXI
->>
-> 
-> OK, will do if I ever re-spin this patch
-> 
->>>
->>> Thanks,
->>> Andrey Smirnov
->>>
->>>
->>>  hw/misc/Makefile.objs                 |   1 +
->>>  hw/misc/xilinx_slave_serial.c         | 105 ++++++++++++++++++++++++++++++++++
->>>  include/hw/misc/xilinx_slave_serial.h |  21 +++++++
->>>  3 files changed, 127 insertions(+)
->>>  create mode 100644 hw/misc/xilinx_slave_serial.c
->>>  create mode 100644 include/hw/misc/xilinx_slave_serial.h
->>
->> You will need to connect this to a machine as well.
->>
->>>
->>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
->>> index a68a201083..4599288e55 100644
->>> --- a/hw/misc/Makefile.objs
->>> +++ b/hw/misc/Makefile.objs
->>> @@ -38,6 +38,7 @@ obj-$(CONFIG_IMX) += imx7_ccm.o
->>>  obj-$(CONFIG_IMX) += imx2_wdt.o
->>>  obj-$(CONFIG_IMX) += imx7_snvs.o
->>>  obj-$(CONFIG_IMX) += imx7_gpr.o
->>> +obj-y += xilinx_slave_serial.o
->>>  obj-$(CONFIG_MILKYMIST) += milkymist-hpdmc.o
->>>  obj-$(CONFIG_MILKYMIST) += milkymist-pfpu.o
->>>  obj-$(CONFIG_MAINSTONE) += mst_fpga.o
->>> diff --git a/hw/misc/xilinx_slave_serial.c b/hw/misc/xilinx_slave_serial.c
->>> new file mode 100644
->>> index 0000000000..607674fb60
->>> --- /dev/null
->>> +++ b/hw/misc/xilinx_slave_serial.c
->>> @@ -0,0 +1,105 @@
->>> +/*
->>> + * Copyright (c) 2017, Impinj, Inc.
->>> + *
->>> + * Code to emulate programming "port" of Xilinx FPGA in Slave Serial
->>> + * configuration connected via SPI, for more deatils see (p. 27):
->>> + *
->>> + * See https://www.xilinx.com/support/documentation/user_guides/ug380.pdf
->>
->> Ah, so this is for a Spartan-6 device. We don't have any QEMU support
->> for Spartan-6. What are you trying to use this for?
+Thanks for your suggestion, I will review your comments carefully and take
+modification in the next patch.
 
-Well, this question is valid for all the ARM FDT devices...
+Best,
+SU Hang
 
-Alistair: GSoC idea: have a easier way to integrate FDT devices into
-QEMU and automagically qtest them.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =E4=BA=8E2018=E5=B9=B48=E6=9C=
+=8810=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=883:19=E5=86=99=E9=81=93=
+=EF=BC=9A
 
-If devices have qtests for code coverage, I think we should accept them
-upstream, even if they are not yet plugged into a board.
-
-The other way, there are motivated contributors who start sending
-patches but then never finish due to changes in life and reduced spare
-time, or lack of motivation due to the high quality asked by some
-maintainer or daily paid reviewers, which is a shame IMHO.
-
-Speaking from experience I already found in the ML archives some pieces
-of unfinished code of devices I am thinking about implement, and few of
-them pretty finished, but never merged. The contributors comments are
-"Hey, I wrote this device and it works for me" garage-sale attitude "if
-you find something useful, take it, else let it in the trash".
-
-> The use-case for this patch is to fool FPGA configuration tools
-> running on the guest into beliving that they successfully configure
-> Spartan-6 device. I tested this code against
-> "drivers/fpga/xilinx-spi.c" from Linux kernel.
-> 
->>> + *
->>> + * Author: Andrey Smirnov <andrew.smirnov@gmail.com>
->>> + *
->>> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
->>> + * See the COPYING file in the top-level directory.
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +#include "hw/misc/xilinx_slave_serial.h"
->>> +#include "qemu/log.h"
->>> +
->>> +enum {
->>> +    XILINX_SLAVE_SERIAL_STATE_RESET,
->>> +    XILINX_SLAVE_SERIAL_STATE_RECONFIGURATION,
->>> +    XILINX_SLAVE_SERIAL_STATE_DONE,
->>> +};
->>> +
->>> +static void xilinx_slave_serial_update_outputs(XilinxSlaveSerialState *xlnxss)
->>
->> For function names try to use xlnx instead of xilinx, it just saves line length.
-> 
-> Will fix if I re-spin this patch.
-> 
->>
->>> +{
->>> +    qemu_set_irq(xlnxss->done,
->>> +                 xlnxss->state == XILINX_SLAVE_SERIAL_STATE_DONE);
->>> +}
->>> +
->>> +static void xilinx_slave_serial_reset(DeviceState *dev)
->>> +{
->>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(dev);
->>
->> This is generally just called 's'.
-> 
-> OK, will fix if I re-spin this patch
-> 
->>
->>> +
->>> +    xlnxss->state = XILINX_SLAVE_SERIAL_STATE_RESET;
->>> +
->>> +    xilinx_slave_serial_update_outputs(xlnxss);
->>> +}
->>> +
->>> +static void xilinx_slave_serial_prog_b(void *opaque, int n, int level)
->>> +{
->>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(opaque);
->>> +    assert(n == 0);
->>> +
->>> +    if (level) {
->>> +        xlnxss->state = XILINX_SLAVE_SERIAL_STATE_RECONFIGURATION;
->>> +    }
->>> +
->>> +    xilinx_slave_serial_update_outputs(xlnxss);
->>> +}
->>> +
->>> +static void xilinx_slave_serial_realize(SSISlave *ss, Error **errp)
->>> +{
->>> +    DeviceState *dev = DEVICE(ss);
->>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(ss);
->>> +
->>> +    qdev_init_gpio_in_named(dev,
->>> +                            xilinx_slave_serial_prog_b,
->>> +                            XILINX_SLAVE_SERIAL_GPIO_PROG_B,
->>> +                            1);
->>> +    qdev_init_gpio_out_named(dev, &xlnxss->done,
->>> +                             XILINX_SLAVE_SERIAL_GPIO_DONE, 1);
->>> +}
->>> +
->>> +static uint32_t xilinx_slave_serial_transfer(SSISlave *ss, uint32_t tx)
->>> +{
->>> +    XilinxSlaveSerialState *xlnxss = XILINX_SLAVE_SERIAL(ss);
->>> +
->>> +    if (xlnxss->state == XILINX_SLAVE_SERIAL_STATE_RECONFIGURATION) {
->>> +        xlnxss->state = XILINX_SLAVE_SERIAL_STATE_DONE;
->>> +    }
->>> +
->>> +    xilinx_slave_serial_update_outputs(xlnxss);
->>> +    return 0;
->>> +}
->>> +
->>> +static void xilinx_slave_serial_class_init(ObjectClass *klass, void *data)
->>> +{
->>> +    DeviceClass   *dc = DEVICE_CLASS(klass);
->>> +    SSISlaveClass *k  = SSI_SLAVE_CLASS(klass);
->>> +
->>> +    dc->reset      = xilinx_slave_serial_reset;
->>> +    dc->desc       = "Xilinx Slave Serial";
->>> +    k->realize     = xilinx_slave_serial_realize;
->>> +    k->transfer    = xilinx_slave_serial_transfer;
->>> +    /*
->>> +     * Slave Serial configuration is not technically SPI and there's
->>> +     * no CS signal
->>> +     */
->>> +    k->set_cs      = NULL;
->>> +    k->cs_polarity = SSI_CS_NONE;
->>> +}
->>> +
->>> +static const TypeInfo xilinx_slave_serial_info = {
->>> +    .name          = TYPE_XILINX_SLAVE_SERIAL,
->>> +    .parent        = TYPE_SSI_SLAVE,
->>> +    .instance_size = sizeof(XilinxSlaveSerialState),
->>> +    .class_init    = xilinx_slave_serial_class_init,
->>> +};
->>> +
->>> +static void xilinx_slave_serial_register_type(void)
->>> +{
->>> +    type_register_static(&xilinx_slave_serial_info);
->>> +}
->>> +type_init(xilinx_slave_serial_register_type)
->>> diff --git a/include/hw/misc/xilinx_slave_serial.h b/include/hw/misc/xilinx_slave_serial.h
->>> new file mode 100644
->>> index 0000000000..f7b2e22be3
->>> --- /dev/null
->>> +++ b/include/hw/misc/xilinx_slave_serial.h
->>> @@ -0,0 +1,21 @@
->>> +#ifndef XILINX_SLAVE_SERIAL_H
->>> +#define XILINX_SLAVE_SERIAL_H
->>> +
->>> +#include "hw/ssi/ssi.h"
->>> +
->>> +typedef struct XilinxSlaveSerialState {
->>> +    /*< private >*/
->>> +    SSISlave parent_obj;
->>> +
->>> +    qemu_irq done;
->>> +    int state;
->>> +} XilinxSlaveSerialState;
->>> +
->>> +#define TYPE_XILINX_SLAVE_SERIAL "xilinx:slave-serial"
->>
->> Full stop instead of colon.
-> 
-> Good to know, will fix if I re-spin this patch
-> 
->>
->> Overall the model looks fine, I'm just not sure what you are using it
->> for as it isn't connected to anything.
-> 
-> I think this patch is similar to another one I submitted
-> https://lists.gnu.org/archive/html/qemu-devel/2017-12/msg02513.html in
-> a sense that there's no board in upstream codebase that needs this
-> feature and I am not yet upstreaming the code for the board that I use
-> it for. Given the situation, I think I'll put this patch on hold until
-> I have some other code to justify its inclusion.
-> 
-> Thanks,
-> Andrey Smrinov
-> 
+> Hi Su,
+>
+> On 08/03/2018 11:47 AM, Stefan Hajnoczi wrote:
+> > From: Su Hang <suhang16@mails.ucas.ac.cn>
+> >
+> > This patch adds Intel Hexadecimal Object File format support to the
+> > generic loader device.  The file format specification is available here=
+:
+> > http://www.piclist.com/techref/fileext/hex/intel.htm
+> >
+> > This file format is often used with microcontrollers such as the
+> > micro:bit, Arduino, STM32, etc.  Users expect to be able to run .hex
+> > files directly with without first converting them to ELF.  Most
+> > micro:bit code is developed in web-based IDEs without direct user acces=
+s
+> > to binutils so it is important for QEMU to handle this file format
+> > natively.
+> >
+> > Signed-off-by: Su Hang <suhang16@mails.ucas.ac.cn>
+> > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> > ---
+> >  include/hw/loader.h      |  12 ++
+> >  hw/core/generic-loader.c |   4 +
+> >  hw/core/loader.c         | 243 +++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 259 insertions(+)
+> >
+> > diff --git a/include/hw/loader.h b/include/hw/loader.h
+> > index 5235f119a3..3c112975f4 100644
+> > --- a/include/hw/loader.h
+> > +++ b/include/hw/loader.h
+> > @@ -28,6 +28,18 @@ ssize_t load_image_size(const char *filename, void
+> *addr, size_t size);
+> >  int load_image_targphys_as(const char *filename,
+> >                             hwaddr addr, uint64_t max_sz, AddressSpace
+> *as);
+> >
+> > +/**load_targphys_hex_as:
+> > + * @filename: Path to the .hex file
+> > + * @entry: Store the entry point given by the .hex file
+> > + * @as: The AddressSpace to load the .hex file to. The value of
+> > + *      address_space_memory is used if nothing is supplied here.
+> > + *
+> > + * Load a fixed .hex file into memory.
+> > + *
+> > + * Returns the size of the loaded .hex file on success, -1 otherwise.
+> > + */
+> > +int load_targphys_hex_as(const char *filename, hwaddr *entry,
+> AddressSpace *as);
+> > +
+> >  /** load_image_targphys:
+> >   * Same as load_image_targphys_as(), but doesn't allow the caller to
+> specify
+> >   * an AddressSpace.
+> > diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+> > index cb0e68486d..fde32cbda1 100644
+> > --- a/hw/core/generic-loader.c
+> > +++ b/hw/core/generic-loader.c
+> > @@ -147,6 +147,10 @@ static void generic_loader_realize(DeviceState
+> *dev, Error **errp)
+> >                  size =3D load_uimage_as(s->file, &entry, NULL, NULL,
+> NULL, NULL,
+> >                                        as);
+> >              }
+> > +
+> > +            if (size < 0) {
+> > +                size =3D load_targphys_hex_as(s->file, &entry, as);
+> > +            }
+> >          }
+> >
+> >          if (size < 0 || s->force_raw) {
+> > diff --git a/hw/core/loader.c b/hw/core/loader.c
+> > index 612420b870..072bf8b434 100644
+> > --- a/hw/core/loader.c
+> > +++ b/hw/core/loader.c
+> > @@ -1321,3 +1321,246 @@ void hmp_info_roms(Monitor *mon, const QDict
+> *qdict)
+> >          }
+> >      }
+> >  }
+> > +
+> > +typedef enum HexRecord HexRecord;
+> > +enum HexRecord {
+> > +    DATA_RECORD =3D 0,
+> > +    EOF_RECORD,
+> > +    EXT_SEG_ADDR_RECORD,
+> > +    START_SEG_ADDR_RECORD,
+> > +    EXT_LINEAR_ADDR_RECORD,
+> > +    START_LINEAR_ADDR_RECORD,
+> > +};
+> > +
+> > +#define DATA_FIELD_MAX_LEN 0xff
+> > +#define LEN_EXCEPT_DATA 0x5
+> > +/* 0x5 =3D sizeof(byte_count) + sizeof(address) + sizeof(record_type) =
++
+> > + *       sizeof(checksum) */
+> > +typedef struct {
+> > +    uint8_t byte_count;
+> > +    uint16_t address;
+> > +    uint8_t record_type;
+> > +    uint8_t data[DATA_FIELD_MAX_LEN];
+> > +    uint8_t checksum;
+> > +} HexLine;
+> > +
+> > +/* return 0 or -1 if error */
+> > +static bool parse_record(HexLine *line, uint8_t *our_checksum, const
+> uint8_t c,
+> > +                         uint32_t *index, const bool in_process)
+> > +{
+> > +    /* +-------+---------------+-------+---------------------+--------=
++
+> > +     * | byte  |               |record |                     |        =
+|
+> > +     * | count |    address    | type  |        data         |checksum=
+|
+> > +     * +-------+---------------+-------+---------------------+--------=
++
+> > +     * ^       ^               ^       ^                     ^        =
+^
+> > +     * |1 byte |    2 bytes    |1 byte |     0-255 bytes     | 1 byte =
+|
+> > +     */
+> > +    uint8_t value =3D 0;
+> > +    uint32_t idx =3D *index;
+> > +    /* ignore space */
+> > +    if (g_ascii_isspace(c)) {
+> > +        return true;
+> > +    }
+> > +    if (!g_ascii_isxdigit(c) || !in_process) {
+> > +        return false;
+> > +    }
+> > +    value =3D g_ascii_xdigit_value(c);
+> > +    value =3D idx & 0x1 ? value & 0xf : value << 4;
+>
+> This construction is slightly easier to read as:
+>
+>        value =3D (idx & 0x1) ? (value & 0xf) : (value << 4);
+>
+> > +    if (idx < 2) {
+> > +        line->byte_count |=3D value;
+> > +    } else if (2 <=3D idx && idx < 6) {
+> > +        line->address <<=3D 4;
+> > +        line->address +=3D g_ascii_xdigit_value(c);
+> > +    } else if (6 <=3D idx && idx < 8) {
+> > +        line->record_type |=3D value;
+> > +    } else if (8 <=3D idx && idx < 8 + 2 * line->byte_count) {
+> > +        line->data[(idx - 8) >> 1] |=3D value;
+> > +    } else if (8 + 2 * line->byte_count <=3D idx &&
+> > +               idx < 10 + 2 * line->byte_count) {
+> > +        line->checksum |=3D value;
+> > +    } else {
+> > +        return false;
+> > +    }
+> > +    *our_checksum +=3D value;
+> > +    ++(*index);
+> > +    return true;
+> > +}
+> > +
+> > +typedef struct {
+> > +    const char *filename;
+> > +    HexLine line;
+> > +    uint8_t *bin_buf;
+> > +    hwaddr *start_addr;
+> > +    int total_size;
+> > +    uint32_t next_address_to_write;
+> > +    uint32_t current_address;
+> > +    uint32_t current_rom_index;
+> > +    uint32_t rom_start_address;
+> > +    AddressSpace *as;
+> > +} HexParser;
+> > +
+> > +/* return size or -1 if error */
+> > +static int handle_record_type(HexParser *parser)
+> > +{
+> > +    HexLine *line =3D &(parser->line);
+> > +    switch (line->record_type) {
+> > +    case DATA_RECORD:
+> > +        parser->current_address =3D
+> > +            (parser->next_address_to_write & 0xffff0000) |
+> line->address;
+>
+> Can you add a #define for this 0xffff0000? Maybe NEXT_ADDR_MASK 0xffff
+> and use ~NEXT_ADDR_MASK.
+>
+> > +        /* verify this is a contiguous block of memory */
+> > +        if (parser->current_address !=3D parser->next_address_to_write=
+) {
+> > +            if (parser->current_rom_index !=3D 0) {
+> > +                rom_add_blob_fixed_as(parser->filename, parser->bin_bu=
+f,
+> > +                                      parser->current_rom_index,
+> > +                                      parser->rom_start_address,
+> parser->as);
+> > +            }
+> > +            parser->rom_start_address =3D parser->current_address;
+> > +            parser->current_rom_index =3D 0;
+> > +        }
+> > +
+> > +        /* copy from line buffer to output bin_buf */
+> > +        memcpy(parser->bin_buf + parser->current_rom_index, line->data=
+,
+> > +               line->byte_count);
+> > +        parser->current_rom_index +=3D line->byte_count;
+> > +        parser->total_size +=3D line->byte_count;
+> > +        /* save next address to write */
+> > +        parser->next_address_to_write =3D
+> > +            parser->current_address + line->byte_count;
+> > +        break;
+> > +
+> > +    case EOF_RECORD:
+> > +        if (parser->current_rom_index !=3D 0) {
+> > +            rom_add_blob_fixed_as(parser->filename, parser->bin_buf,
+> > +                                  parser->current_rom_index,
+> > +                                  parser->rom_start_address,
+> parser->as);
+> > +        }
+> > +        return parser->total_size;
+> > +    case EXT_SEG_ADDR_RECORD:
+> > +    case EXT_LINEAR_ADDR_RECORD:
+> > +        if (line->byte_count !=3D 2 && line->address !=3D 0) {
+> > +            return -1;
+> > +        }
+> > +
+> > +        if (parser->current_rom_index !=3D 0) {
+> > +            rom_add_blob_fixed_as(parser->filename, parser->bin_buf,
+> > +                                  parser->current_rom_index,
+> > +                                  parser->rom_start_address,
+> parser->as);
+> > +        }
+> > +
+> > +        /* save next address to write,
+> > +         * in case of non-contiguous block of memory */
+> > +        parser->next_address_to_write =3D
+> > +            line->record_type =3D=3D EXT_SEG_ADDR_RECORD
+> > +                ? ((line->data[0] << 12) | (line->data[1] << 4))
+> > +                : ((line->data[0] << 24) | (line->data[1] << 16));
+>
+> Hard to read IMHO, what about this?
+>
+>            parser->next_address_to_write =3D (line->data[0] << 12)
+>                                          | (line->data[1] << 4);
+>            if (line->record_type !=3D EXT_SEG_ADDR_RECORD) {
+>                parser->next_address_to_write <<=3D 12;
+>            }
+>
+> > +        parser->rom_start_address =3D parser->next_address_to_write;
+> > +        parser->current_rom_index =3D 0;
+> > +        break;
+> > +
+> > +    case START_SEG_ADDR_RECORD:
+> > +        if (line->byte_count !=3D 4 && line->address !=3D 0) {
+> > +            return -1;
+> > +        }
+> > +
+> > +        /* x86 16-bit CS:IP segmented addressing */
+> > +        *(parser->start_addr) =3D (((line->data[0] << 8) | line->data[=
+1])
+> << 4) |
+> > +                                (line->data[2] << 8) | line->data[3];
+>
+> Can you add a qtest for this case?
+> For the HEX loader I understand the specs as this is the same parsing as
+> the START_LINEAR_ADDR_RECORD case; so I disagree with data[0] and
+> data[1] shifts.
+> This is different for the consumer (i386 expects 2 16-bit registers but
+> HexParser->start_addr is a hwaddr, used as a single (at least) 32-bit
+> register.
+>
+> > +        break;
+> > +
+> > +    case START_LINEAR_ADDR_RECORD:
+> > +        if (line->byte_count !=3D 4 && line->address !=3D 0) {
+> > +            return -1;
+> > +        }
+> > +
+> > +        *(parser->start_addr) =3D (line->data[0] << 24) | (line->data[=
+1]
+> << 16) |
+> > +                                (line->data[2] << 8)  | (line->data[3]=
+);
+>
+> You can use this helper:
+>
+>            *(parser->start_addr) =3D ldl_be_p(line->data);
+>
+> > +        break;
+> > +
+> > +    default:
+> > +        return -1;
+> > +    }
+> > +
+> > +    return parser->total_size;
+> > +}
+> > +
+> > +/* return size or -1 if error */
+> > +static int parse_hex_blob(const char *filename, hwaddr *addr, uint8_t
+> *hex_blob,
+> > +                          size_t hex_blob_size, AddressSpace *as)
+> > +{
+> > +    bool in_process =3D false; /* avoid re-enter and
+> > +                              * check whether record begin with ':' */
+> > +    uint8_t *end =3D hex_blob + hex_blob_size;
+> > +    uint8_t our_checksum =3D 0;
+> > +    uint32_t record_index =3D 0;
+> > +    HexParser parser =3D {
+> > +        .filename =3D filename,
+> > +        .bin_buf =3D g_malloc(hex_blob_size),
+> > +        .start_addr =3D addr,
+> > +        .as =3D as,
+> > +    };
+> > +
+> > +    rom_transaction_begin();
+> > +
+> > +    for (; hex_blob < end; ++hex_blob) {
+> > +        switch (*hex_blob) {
+> > +        case '\r':
+> > +        case '\n':
+> > +            if (!in_process) {
+> > +                break;
+> > +            }
+> > +
+> > +            in_process =3D false;
+> > +            if ((LEN_EXCEPT_DATA + parser.line.byte_count) * 2 !=3D
+> > +                    record_index ||
+> > +                our_checksum !=3D 0) {
+> > +                parser.total_size =3D -1;
+> > +                goto out;
+> > +            }
+> > +
+> > +            if (handle_record_type(&parser) =3D=3D -1) {
+> > +                parser.total_size =3D -1;
+> > +                goto out;
+> > +            }
+> > +            break;
+> > +
+> > +        /* start of a new record. */
+> > +        case ':':
+> > +            memset(&parser.line, 0, sizeof(HexLine));
+> > +            in_process =3D true;
+> > +            record_index =3D 0;
+> > +            break;
+> > +
+> > +        /* decoding lines */
+> > +        default:
+> > +            if (!parse_record(&parser.line, &our_checksum, *hex_blob,
+> > +                              &record_index, in_process)) {
+> > +                parser.total_size =3D -1;
+> > +                goto out;
+> > +            }
+> > +            break;
+> > +        }
+> > +    }
+> > +
+> > +out:
+> > +    g_free(parser.bin_buf);
+> > +    rom_transaction_end(parser.total_size !=3D -1);
+> > +    return parser.total_size;
+> > +}
+> > +
+> > +/* return size or -1 if error */
+> > +int load_targphys_hex_as(const char *filename, hwaddr *entry,
+> AddressSpace *as)
+> > +{
+> > +    gsize hex_blob_size;
+> > +    gchar *hex_blob;
+> > +    int total_size =3D 0;
+> > +
+> > +    if (!g_file_get_contents(filename, &hex_blob, &hex_blob_size,
+> NULL)) {
+> > +        return -1;
+> > +    }
+> > +
+> > +    total_size =3D parse_hex_blob(filename, entry, (uint8_t *)hex_blob=
+,
+> > +                                hex_blob_size, as);
+> > +
+> > +    g_free(hex_blob);
+> > +    return total_size;
+> > +}
+> >
+>
+> Regards,
+>
+> Phil.
+>
+>

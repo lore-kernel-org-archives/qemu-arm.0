@@ -1,98 +1,97 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2599457wru;
-        Thu, 9 Aug 2018 20:38:41 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzukxPgIt8gSic++3kh2Jk7TTAgE2Fzw6LoLqselUbrTZsdJL+90Otu/DjB9vIMQ9uN8dBS
-X-Received: by 2002:a0c:81ae:: with SMTP id 43-v6mr4354528qvd.129.1533872321345;
-        Thu, 09 Aug 2018 20:38:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533872321; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2600059wru;
+        Thu, 9 Aug 2018 20:39:46 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPw0uKUihMmmY/AvC/9Zad4fg4pTKtsZeZeVmtRUEQIWWiw9GiaHpvgM+gt2Fu/XCNh/s6qh
+X-Received: by 2002:ac8:1779:: with SMTP id u54-v6mr4822079qtk.285.1533872386069;
+        Thu, 09 Aug 2018 20:39:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1533872386; cv=none;
         d=google.com; s=arc-20160816;
-        b=v59kcM6sFLj8sCB3IEaN3KhGEQbe7ZLrsVnVZEmcOCIPwIm3BsFPc8/9nUzsn8ceu0
-         L04uVj1kWsck6cIesOM4neeY/4svxyXGTYBEhSsD9e8V6BZC8OVPya5Ks8aQMmBFr/hM
-         IlhVOpUJyJfQOch4MKd3uL5T2eRxunlnng/2KziniG240zaDzkTms0dILvXYss8P5AtG
-         gLKO7jg9bOWziuhHr3r44Q83LsZm2CUSg2x7rh2qaMp+TYM6zRrvXl/YGpe1HXZOw6y1
-         QSvJsJjcf198W1ehufS1Z5nrH6WiLdwSGZlLNToiLvoDtpMnV1eB7tnuZiBHjf57ClWs
-         VNtQ==
+        b=eVhPxbIzqKuEfOCle5yFd8oBLKw9OwoYFlUeY6HskewqrpvzAMNHEsH3t5DY2oHdHb
+         H+FBepK42lHN0QMqzZPOnyWGMTvMhYvqBAxPwBGBHvHvJIamDlBcOIxJsPDAjYQzaTWd
+         ERp/zYQApJoOP4RTknSemGuozMoEOKPSZLySyO67Fyu/a0SQrAYkAGl9fR/Gnhn1bE1P
+         lnjUTBOG3MOo8iEvlMGnguyk3XqLPzlDvGoINcpqV6BcD3UNbQmojNVzIdi7aXW+zVMt
+         cUb8tBUtyavcpfUw10vDlVWq5gP66kbmzSCmusqlURvi68c5j4AbegJjWuM0+TC17Su0
+         GkVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=fBzRW8myEIkOEX+LgsoL7l59GqZ9AqrJFocn4tIzPEo=;
-        b=wIDTu22MSSy5AwSrdoUrzueis8oZD3YNqbYzdDP+ncRF+Uz23bXi7ufr0+Whw7sS5V
-         Hd4Eksi1hXWWJGZh9rcjJq0CVzpqY7vTPEJ28vansosqLFo2/pGR/ua06giYf5OGoF2i
-         8IuPaSRnKT1QnY8qZJAiYnH7UdC6CGTCcHEjJRQ/zbkf6Q7AmBJlTKTKy58CCcBu8/W0
-         DVUW7dCyTtk5LPEsDlkbnR+DH93p1DOVms91Vk8QPfhk0I4zofRDCaNX4O3PT3f9G0D1
-         FrO0g+Lq2bXJcFn/mu682V5Wg9OJtwurTjbqlSE6VsRfjem/zc4/+TKnoBBxd/Jskeco
-         XlMA==
+        bh=MmDS61xRMz4xXB8mOtdO+OdhkYz8M58ZTmOO4UR63Kg=;
+        b=fxPL9LrzmI3p7mVCfN98aWPNbXvyUxp0pFldhuG4LILhT4ThZgPEarbXgcXXp+ywS7
+         rm3wGJyhBbX7p+pC45TuhXI41O5kvs+LM6dKKAHujHg+ZI8NCwNeKRfQbYzCxJGdC97G
+         xvJFf88IdCftAtrGNr/I8Qpy1LrseR2KsbARhbgGiU93Vyhkojl0crarAqo8yt39utoF
+         ITcWbulPMj9J8UGRU6Phv29tLyDo2YOt1aQj1kxayFg1/hU+Is5uA3CyEPVsKioAmwhc
+         Clz83to6u9+mLuU3H4GdCchExDSXPVj4EnGZ6bZpJa2ubD1BOLpHts6RQELpiZvD2XMm
+         KAvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ijhout5c;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n3uw2fM9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n11-v6si7148064qvo.33.2018.08.09.20.38.41
+        by mx.google.com with ESMTPS id q77-v6si8280462qki.306.2018.08.09.20.39.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 09 Aug 2018 20:38:41 -0700 (PDT)
+        Thu, 09 Aug 2018 20:39:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ijhout5c;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n3uw2fM9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54102 helo=lists.gnu.org)
+Received: from localhost ([::1]:54107 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fnyG8-0006ka-L6
-	for alex.bennee@linaro.org; Thu, 09 Aug 2018 23:38:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51274)
+	id 1fnyHB-0007Xa-BF
+	for alex.bennee@linaro.org; Thu, 09 Aug 2018 23:39:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51522)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fnyFy-0006hz-24
-	for qemu-arm@nongnu.org; Thu, 09 Aug 2018 23:38:30 -0400
+	id 1fnyGz-0007VV-Qy
+	for qemu-arm@nongnu.org; Thu, 09 Aug 2018 23:39:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fnyFu-00041w-UB
-	for qemu-arm@nongnu.org; Thu, 09 Aug 2018 23:38:30 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:39709)
+	id 1fnyGy-00052D-Fp
+	for qemu-arm@nongnu.org; Thu, 09 Aug 2018 23:39:33 -0400
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:39719)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fnyFu-00041h-PA; Thu, 09 Aug 2018 23:38:26 -0400
-Received: by mail-ua1-x944.google.com with SMTP id g18-v6so497793uam.6;
-	Thu, 09 Aug 2018 20:38:26 -0700 (PDT)
+	id 1fnyGy-00051V-AC; Thu, 09 Aug 2018 23:39:32 -0400
+Received: by mail-ua1-x943.google.com with SMTP id g18-v6so499755uam.6;
+	Thu, 09 Aug 2018 20:39:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=fBzRW8myEIkOEX+LgsoL7l59GqZ9AqrJFocn4tIzPEo=;
-	b=Ijhout5ceRjgfJUGRftjUshGyQ23Gt+uSrqhmDvK/+iFFhTVn3lsVisI9CCG8ajASS
-	1/znj3VrVZ8b+2Inh8HNMMiqUfKxUh66eB8ebZPFNOjwvkgRSgM4V680T6RefzvY/2C1
-	7VT+6n/7by/l3O8A+ujfM1ZXpEtbb4QPmFZ7Wz3BdgaHS2IBiIarjn6fVttL3hEjX0rX
-	VDM1CEUudsHp1YIsUZI2XJWshYiAU2Zbwf8nBHp/xmUGG3k5TOjO+NJdmME+cf6CayJ1
-	eQCAl4G2fJ/39/NbNo+4TNfs5JT3D6ZgfdK5NDy11MlBG9sTwT6U47Fw/8QtlscxeS8s
-	EvKg==
+	bh=MmDS61xRMz4xXB8mOtdO+OdhkYz8M58ZTmOO4UR63Kg=;
+	b=n3uw2fM9mkCfzr0aZwIlqD8fiEb/khXNd4W/VUZiW47qy1LucAVLp7pNCtwuR0BG7R
+	UqRXgWPLVxDtdj5V0Zd954QIGRYrJmI3gEm/03iFOIDWZuT1EGdVpYJcnq1b6Th7qAr7
+	XDkybbWWVP0RakncWFkRQUsvMCdFnP2ZqUJ5qvt013srhGLJfwjQwjaRYVREHzAGDTQW
+	j5AUwnUIesxLRcsn3JKUfSCkWofq4fYD5IpY3KtE63U+/LJtEE//1PcUlhp1Lbo/l3eY
+	wPcP3BJ/ugs7Xo3mULu4AL0KR/ElWlDN1CQ99YCFw5FH+9HrPb4e0BBEoF6mHyDpObgZ
+	P0DA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=fBzRW8myEIkOEX+LgsoL7l59GqZ9AqrJFocn4tIzPEo=;
-	b=m+zjFWXhKzwJJVTFewmQghe740EOcy/IFzB0l5B3ov7Mj84iFot1SKNvJERbMdUPbK
-	H3xNK7REOdo96ZIVA5KeiRfw7Td8Vokus4ZvgLMDt5Th9fBLTQ0ufv/f4Kwk93CBq9cW
-	r1QTuU5mDuA+Reii0qJ7WtMkpgYhlRkmsULqowWmPXGWHdJ6bkD13iuKbTUSPd52F8OM
-	3vQWOx5iZUqoiyciUZK4O9y7+MFx27noQgrbjj5XL1ArL1K9A4YU8sJtB0haeLGuAs/K
-	dF5jREEncucDvN+07qQ7u71w+VME5WAwU5AF2ajrdpBmxmaMppgTsQYAtl6W0MBhNaCC
-	hveg==
-X-Gm-Message-State: AOUpUlH2TQqtuCjonK6iz8VcQTkoRXxc775RW9m5sR69a/h1N0OBmOlv
-	J4ejVF6q8MiKwyKRONktHSb3VFln
-X-Received: by 2002:ab0:18a0:: with SMTP id
-	t32-v6mr3255840uag.110.1533872306116; 
-	Thu, 09 Aug 2018 20:38:26 -0700 (PDT)
+	bh=MmDS61xRMz4xXB8mOtdO+OdhkYz8M58ZTmOO4UR63Kg=;
+	b=VH2yN88e6qM6LU5GzjNaHKCdUPgXBRJkLozT8uVwWcG8yxhLkEV2x2411fPRemMen/
+	e7K9E2elyjoS37l2YPTxfQe0tCDh1e9kpSjFiG7rPfqfyoGiJNAf++PGsNSqMWKIRRt6
+	jeYjMcwdasIBuAGtoVKNQjVIfzunwvOSSylfdvqx2OZF9H4CNPfc1i4uDM+4wD5UUqcE
+	lZPwi21CP96eWb3w7ILMRxxxnBuv/l8vO1txYSTQTFJtyHMPtwfzgRc/nx1vJ/BDg6ir
+	GDU6oB30VWNhNJcmUsPuC7XJDTSOq41ucWcmcIUFOB+cXqdXo66YtJPptkPyOGi2Q+V/
+	ODPg==
+X-Gm-Message-State: AOUpUlGtDLNjh4Q1ZjU7R2b07HQYd8k1TLGaLo4qJzonmaDOgXZPhNTU
+	xzpE8bKjikN/tKWmYSkAEXY=
+X-Received: by 2002:ab0:330:: with SMTP id 45-v6mr3248877uat.125.1533872371579;
+	Thu, 09 Aug 2018 20:39:31 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	v23-v6sm1318172uam.24.2018.08.09.20.38.20
+	y6-v6sm1280729ual.12.2018.08.09.20.39.27
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 09 Aug 2018 20:38:25 -0700 (PDT)
+	Thu, 09 Aug 2018 20:39:31 -0700 (PDT)
 To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
 References: <20180803144721.17036-1-stefanha@redhat.com>
-	<20180803144721.17036-3-stefanha@redhat.com>
+	<20180803144721.17036-4-stefanha@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -119,19 +118,19 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <e00e2807-e0ef-0c76-a09b-aec66177f9eb@amsat.org>
-Date: Fri, 10 Aug 2018 00:38:16 -0300
+Message-ID: <d62dda7f-0427-3d01-85f7-eaf6aaa25005@amsat.org>
+Date: Fri, 10 Aug 2018 00:39:25 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180803144721.17036-3-stefanha@redhat.com>
+In-Reply-To: <20180803144721.17036-4-stefanha@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::944
-Subject: Re: [Qemu-arm] [PATCH v4 2/6] target/arm: add "cortex-m0" CPU model
+X-Received-From: 2607:f8b0:4864:20::943
+Subject: Re: [Qemu-arm] [PATCH v4 3/6] loader: extract rom_free() function
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -152,50 +151,68 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
 	Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, jusual@mail.ru
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o76KOMkiSW1g
+X-TUID: G2Kc0zQkF3Bj
 
 On 08/03/2018 11:47 AM, Stefan Hajnoczi wrote:
-> Define a "cortex-m0" ARMv6-M CPU model.
+> The next patch will need to free a rom.  There is already code to do
+> this in rom_add_file().
 > 
-> Most of the register reset values set by other CPU models are not
-> relevant for the cut-down ARMv6-M architecture.
+> Note that rom_add_file() uses:
+> 
+>   rom = g_malloc0(sizeof(*rom));
+>   ...
+>   if (rom->fw_dir) {
+>       g_free(rom->fw_dir);
+>       g_free(rom->fw_file);
+>   }
+> 
+> The conditional is unnecessary since g_free(NULL) is a no-op.
 > 
 > Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  target/arm/cpu.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>  hw/core/loader.c | 21 ++++++++++++---------
+>  1 file changed, 12 insertions(+), 9 deletions(-)
 > 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 3848ef46aa..7e477c0d23 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1255,6 +1255,15 @@ static void arm11mpcore_initfn(Object *obj)
->      cpu->reset_auxcr = 1;
->  }
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index bbb6e65bb5..0c72e7c05a 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -847,6 +847,17 @@ struct Rom {
+>  static FWCfgState *fw_cfg;
+>  static QTAILQ_HEAD(, Rom) roms = QTAILQ_HEAD_INITIALIZER(roms);
 >  
-> +static void cortex_m0_initfn(Object *obj)
+> +/* rom->data must be heap-allocated (do not use with rom_add_elf_program()) */
+> +static void rom_free(Rom *rom)
 > +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    set_feature(&cpu->env, ARM_FEATURE_V6);
-> +    set_feature(&cpu->env, ARM_FEATURE_M);
-> +
-> +    cpu->midr = 0x410cc200;
+> +    g_free(rom->data);
+> +    g_free(rom->path);
+> +    g_free(rom->name);
+> +    g_free(rom->fw_dir);
+> +    g_free(rom->fw_file);
+> +    g_free(rom);
 > +}
 > +
->  static void cortex_m3_initfn(Object *obj)
+>  static inline bool rom_order_compare(Rom *rom, Rom *item)
 >  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> @@ -1845,6 +1854,8 @@ static const ARMCPUInfo arm_cpus[] = {
->      { .name = "arm1136",     .initfn = arm1136_initfn },
->      { .name = "arm1176",     .initfn = arm1176_initfn },
->      { .name = "arm11mpcore", .initfn = arm11mpcore_initfn },
-> +    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
-> +                             .class_init = arm_v7m_class_init },
->      { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
->                               .class_init = arm_v7m_class_init },
->      { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
+>      return ((uintptr_t)(void *)rom->as > (uintptr_t)(void *)item->as) ||
+> @@ -995,15 +1006,7 @@ err:
+>      if (fd != -1)
+>          close(fd);
+>  
+> -    g_free(rom->data);
+> -    g_free(rom->path);
+> -    g_free(rom->name);
+> -    if (fw_dir) {
+> -        g_free(rom->fw_dir);
+> -        g_free(rom->fw_file);
+> -    }
+> -    g_free(rom);
+> -
+> +    rom_free(rom);
+>      return -1;
+>  }
+>  
 > 

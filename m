@@ -1,86 +1,101 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp3233791wru;
-        Mon, 13 Aug 2018 11:58:02 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPz73KqxNWWFDeJ1Pg1YCFiq97+5ypoNP6RNZYZlnf0HXYJA8IPoxww/aZIJ8rjkTQop5DS5
-X-Received: by 2002:a37:50c3:: with SMTP id e186-v6mr16540085qkb.91.1534186682022;
-        Mon, 13 Aug 2018 11:58:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534186682; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp2725863wru;
+        Mon, 13 Aug 2018 02:59:04 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPyrhbTLqdAMlnA6aJ1M+sVMHNoX3cv0dSf37prTer1b8lYpclYSp9u+p1sYfwoMOagD8+tz
+X-Received: by 2002:a37:be82:: with SMTP id o124-v6mr15062845qkf.266.1534154344305;
+        Mon, 13 Aug 2018 02:59:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534154344; cv=none;
         d=google.com; s=arc-20160816;
-        b=OEWNEtCIjCWtIzVAT/YzUuOeaziurBMpBWTVVJb6nHAva3T5MO7adZZlyyb6otMtCk
-         oTLm7IjkuhE3SxuIHaFqU1dhGHPAdYgrlXk/9++vsA7OjFq3O1tHJ+4n++UyuAFGb8PP
-         NaBs8Ls4PzWvPsSmM0NJGDv6sVnSP1DNreEJa4/ThLAgKf4qNO1jpy8GmRWwblQw9B8b
-         hrJ4M8B9/7PDFiJWbavhF8NdO6+78H1DGdO18UPcscm90cu+xKtP/2lp2dH+JMx6pEQt
-         ED8mqiE0jL7SBa/lqNweKThe6XFqhclPqPwCBjkX623QFoyXjUVK6/F9OmhNqWJjm4s0
-         VYMg==
+        b=ASjnxZmVgIz18uXXAcdl/toblh6GYfYp27ktQHP353Cpsd4tR5bOZWEL08TtnXEk2n
+         VSgV6B59xte830D+4hfGcjE81PHpzw6H4IvJIjafKPGJGlVnVRX3WUCFdp5qVUp6jdCW
+         ohByyoiHvuiNxziYnPJ0+3ct/2moqgl5X50mMPNkhulF9I7BXX4zf/uFTLOFkwl5BYpB
+         FpmqWKgeJM3AUB8OgNPSVGmqjK+wYEjoD7wiNhH2lTo3OSOEjmaL1NOOyWnGuS+j8X1t
+         HzO6fRqf/KTcBSTU5ECAoxsseuYA80FlY3YCa0bCx2MkU4KQIrrhAjXahfIgi4W6K0kZ
+         207Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=3ItqVll7P5isijczlViQ2SzoO3y5yu0dwYzKR/ILukM=;
-        b=Cc6BOxSu4WlAiDKmJzhEEKGORv29bfQAW5COo9rdGE9Rm7oIUvnq5qMcy0LMFcL2iI
-         gusGA7tUAeBwRioxnhASWq5gU4V39g7DMYGjB4j1ZHxTNzroEgUkaZRxjI8RJCN7F4P4
-         2hnlTkq1c1vkrwiyYmmlzg2666RwjT7niX2uX8iMIkVNoSMaOzcZYVvxqyDtcP7+wvAP
-         figUJSwie4zOydC/Y7GqVy70XLZxmWp1eqbTuRGBtBLaJbzTP0h577bVXVIpE1j+iEgR
-         fsMzATBoeZILO/JVb+4pPlnnL0A/HdX3OZ94fZeL7CXKzlQCBVBX5bpgEbiF3/V86VSJ
-         OmHg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=yZ13/nG4lctEe8h42/57l8g3dXoZvnROzBLTusPt47U=;
+        b=S8QjmmtPlYsHSMyvdM0NiEy2gB2XYQxqnIKJS5KB/nX7FORL32K/H82YQFCPoetPKv
+         /1cR7MdcimC4jcj4y5VWA2x7SboCWtvX25iGnFBS4w+WfQQQCd62xRhMMJcODvp3l/E1
+         +EG+OOPBhk5Mhyhw87azIjXHlO4mPUj2/agDYQjx6S22iu5eG7yK1SlU2SSI4yDVkABk
+         NzsE9yWhI4qee5MleN8VO3kbBPxCiqVu7+Hni2fcn/U6t87cYQNnp27/CjpqXCDZHvpX
+         CyYnQwOUdu+kOTm7+AGg3Q5tIdY05YNhV0pYgzzd4U1g2XvGKIKaDrk5PYS2S0C32frq
+         IVPg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WM+kyMQO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k90-v6si3765090qkl.224.2018.08.13.11.58.01
+        by mx.google.com with ESMTPS id r25-v6si2191872qtk.15.2018.08.13.02.59.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 13 Aug 2018 11:58:02 -0700 (PDT)
+        Mon, 13 Aug 2018 02:59:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WM+kyMQO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41012 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38360 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fpI2T-0004E0-F6
-	for alex.bennee@linaro.org; Mon, 13 Aug 2018 14:58:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45149)
+	id 1fp9ct-0006PN-Rj
+	for alex.bennee@linaro.org; Mon, 13 Aug 2018 05:59:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39071)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fpHsl-0001s5-Od
-	for qemu-arm@nongnu.org; Mon, 13 Aug 2018 14:48:00 -0400
+	(envelope-from <stefanha@gmail.com>) id 1fp9ch-0006O7-U7
+	for qemu-arm@nongnu.org; Mon, 13 Aug 2018 05:58:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fpHsi-0003yH-FS
-	for qemu-arm@nongnu.org; Mon, 13 Aug 2018 14:47:59 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37252 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1fpHsi-0003y7-Ao; Mon, 13 Aug 2018 14:47:56 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BB7C6818A6A9;
-	Mon, 13 Aug 2018 18:47:55 +0000 (UTC)
-Received: from localhost (ovpn-116-31.ams2.redhat.com [10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6545620389E0;
-	Mon, 13 Aug 2018 18:47:55 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: <qemu-devel@nongnu.org>
-Date: Mon, 13 Aug 2018 19:46:20 +0100
-Message-Id: <20180813184624.12071-3-stefanha@redhat.com>
-In-Reply-To: <20180813184624.12071-1-stefanha@redhat.com>
-References: <20180813184624.12071-1-stefanha@redhat.com>
+	(envelope-from <stefanha@gmail.com>) id 1fp9ch-0002QB-9K
+	for qemu-arm@nongnu.org; Mon, 13 Aug 2018 05:58:52 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40129)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1fp9cf-0002PN-BG; Mon, 13 Aug 2018 05:58:49 -0400
+Received: by mail-wr1-x444.google.com with SMTP id h15-v6so13713607wrs.7;
+	Mon, 13 Aug 2018 02:58:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=yZ13/nG4lctEe8h42/57l8g3dXoZvnROzBLTusPt47U=;
+	b=WM+kyMQOAMW5C8RnGzcWmq7wUxpqf6inUKatcTk4VE0iqbGYvQEJLIXh00h4f7opOq
+	g9nRUFY7h3qnu+MfbxMO+blDWw0dRUsrhk6+qJr2l+L4oVR+rJMwNkVybD4xQDFj3FOl
+	ZCcbZoB16pS2v3VhQwFBeGAAc1l00VvqoM4cUC3vgOo7UqM/UVXiI2M/Mqo8glwM0PJH
+	XuCNk+um0GkJcxLg98mV2VWdQ2C9ty9OoE1oa/NPm1F8Fzlohf4K21slrcsuW9Ujfe0h
+	RfduKMLCi7S6TShi2e7wNOtzjNb82/yRzdJkHG/LRHlRyJaPpIcelFPojuUX1yESxpaA
+	ndqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=yZ13/nG4lctEe8h42/57l8g3dXoZvnROzBLTusPt47U=;
+	b=Qz+8FXRUNSSRe1Q6wvYxhbBaOD7gs5AfcohsrwNO0uojg94pMnv1Y5MRpEnlPUuFg2
+	JTPG05hzxDv2OCbfw/LMvP3SDH3HlJyweeFAltNRS8gM40kJuQNAlj61mxaLVCRa9DdY
+	Bw3Pk9eA+zala2nBcWG7zZUOn29FQF6Va8ybwJuR8m2iPIBaNvBjyo41/P/oW1v7BZsU
+	nf7qnab0rJZxKRArhlPm5HQI0L+ZtViy5SZCfAK34N+sxiTfUwu0UBT+uCTVfiOuP8d7
+	LlwNZ5evUjElAMrE9yqvMvYMJHqQSAQ48bfSpfRzKHFnPgVvIfwnTdlegFVrcPbVCYv7
+	opmg==
+X-Gm-Message-State: AOUpUlEVhOYxrUWyQtpniggqXEz8K6u7GH0LU0/7/xycKmgwYmEiDrqr
+	hVOOE+adiTGoe4eqIKxdalpqqUh/UoCulr7YmGU=
+X-Received: by 2002:a5d:504d:: with SMTP id
+	h13-v6mr10584985wrt.18.1534154328197; 
+	Mon, 13 Aug 2018 02:58:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 13 Aug 2018 18:47:55 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 13 Aug 2018 18:47:55 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PATCH v5 2/6] target/arm: add "cortex-m0" CPU model
+References: <20180803144721.17036-1-stefanha@redhat.com>
+	<20180803144721.17036-5-stefanha@redhat.com>
+	<CAKmqyKOthBCQrWc_v9zhdYoBATHYfjyjkUQqx1W5mktm2b+6hw@mail.gmail.com>
+In-Reply-To: <CAKmqyKOthBCQrWc_v9zhdYoBATHYfjyjkUQqx1W5mktm2b+6hw@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Mon, 13 Aug 2018 10:58:36 +0100
+Message-ID: <CAJSP0QU2UhO+X-XX0Rj_Cj9=NmBp4aaBNRb4GExxDq546AabXw@mail.gmail.com>
+To: Alistair Francis <alistair23@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::444
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 4/6] loader: add rom
+ transaction API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,57 +107,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, jim@groklearning.com,
-	mail@steffen-goertz.de, Su Hang <suhang16@mails.ucas.ac.cn>,
-	ilg@livius.net, Alistair Francis <alistair@alistair23.me>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Jim Mussared <jim@groklearning.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
+	Liviu Ionescu <ilg@livius.net>, Alistair Francis <alistair@alistair23.me>,
+	qemu-devel <qemu-devel@nongnu.org>,
 	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Steffen Gortz <qemu.ml@steffen-goertz.de>, qemu-arm@nongnu.org,
-	joel@jms.id.au, Stefan Hajnoczi <stefanha@redhat.com>, jusual@mail.ru
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <qemu.ml@steffen-goertz.de>,
+	=?UTF-8?B?6IuP6Iiq?= <suhang16@mails.ucas.ac.cn>,
+	Joel Stanley <joel@jms.id.au>, Stefan Hajnoczi <stefanha@redhat.com>,
+	Julia Suvorova <jusual@mail.ru>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5PJRO8RcRQmj
+X-TUID: YfcEJ9ru6044
 
-Define a "cortex-m0" ARMv6-M CPU model.
+On Wed, Aug 8, 2018 at 10:32 PM Alistair Francis <alistair23@gmail.com> wrote:
+> On Fri, Aug 3, 2018 at 7:47 AM, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> > @@ -1168,6 +1172,34 @@ void rom_reset_order_override(void)
+> >      fw_cfg_reset_order_override(fw_cfg);
+> >  }
+> >
+> > +void rom_transaction_begin(void)
+> > +{
+> > +    Rom *rom;
+> > +
+> > +    /* Ignore ROMs added without the transaction API */
+> > +    QTAILQ_FOREACH(rom, &roms, next) {
+> > +        rom->committed = true;
+>
+> My only thought is that maybe this should produce a warning or error
+> if a ROM isn't committed.
 
-Most of the register reset values set by other CPU models are not
-relevant for the cut-down ARMv6-M architecture.
+Not all loaders use the transaction API.  Therefore it is likely that
+some pre-existing ROMs will have ->committed = false.
 
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
----
- target/arm/cpu.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+For example, imagine a firmware ROM is loaded by the machine type and
+then -kernel is used to load a file.  The -kernel loader shouldn't
+worry about the firmware ROM, which was added without the transaction
+API.
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 3848ef46aa..7e477c0d23 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1255,6 +1255,15 @@ static void arm11mpcore_initfn(Object *obj)
-     cpu->reset_auxcr =3D 1;
- }
-=20
-+static void cortex_m0_initfn(Object *obj)
-+{
-+    ARMCPU *cpu =3D ARM_CPU(obj);
-+    set_feature(&cpu->env, ARM_FEATURE_V6);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+
-+    cpu->midr =3D 0x410cc200;
-+}
-+
- static void cortex_m3_initfn(Object *obj)
- {
-     ARMCPU *cpu =3D ARM_CPU(obj);
-@@ -1845,6 +1854,8 @@ static const ARMCPUInfo arm_cpus[] =3D {
-     { .name =3D "arm1136",     .initfn =3D arm1136_initfn },
-     { .name =3D "arm1176",     .initfn =3D arm1176_initfn },
-     { .name =3D "arm11mpcore", .initfn =3D arm11mpcore_initfn },
-+    { .name =3D "cortex-m0",   .initfn =3D cortex_m0_initfn,
-+                             .class_init =3D arm_v7m_class_init },
-     { .name =3D "cortex-m3",   .initfn =3D cortex_m3_initfn,
-                              .class_init =3D arm_v7m_class_init },
-     { .name =3D "cortex-m4",   .initfn =3D cortex_m4_initfn,
---=20
-2.17.1
+If we want to be strict I'd have to audit all ROM API users and wrap
+them in add rom_transaction_begin/end() even if they cannot fail.
+This is why I decided to simply ignore pre-existing ROMs.
 
+Stefan

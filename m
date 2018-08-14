@@ -1,105 +1,72 @@
-Received: by 10.28.71.27 with SMTP id u27csp2532881wma;
-        Thu, 8 Feb 2018 12:52:45 -0800 (PST)
-X-Google-Smtp-Source: AH8x227ZLXEt/8AtR1XGgz10YklnyD6jQLIPVRZ9r1cKF8CXp5UhBs2bbA72xIok/tVptq2iCscr
-X-Received: by 10.37.198.197 with SMTP id k188mr280608ybf.62.1518123165012;
-        Thu, 08 Feb 2018 12:52:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1518123165; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4160509wru;
+        Tue, 14 Aug 2018 07:45:16 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPxVAy+9gxH9+xwC1Esk3AjaNqV9WhZui700xKl3zGVD/T2ZE1b9U6kSFGn/QJKtsia3rmHo
+X-Received: by 2002:ac8:2537:: with SMTP id 52-v6mr22300591qtm.270.1534257916317;
+        Tue, 14 Aug 2018 07:45:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534257916; cv=none;
         d=google.com; s=arc-20160816;
-        b=Soj713450RI3V1XFD8CQHmA1+pvZlavXXgpdELNW5kOTAVdvD7Ey8ltwggOFChaXhi
-         i12Oz090RhvgziOAxomYpLJhz/+vAY5BwCq+hWC6E27HXZxSDxrT3YouBtYcyLXaguyT
-         mDiWZgT943fOJB+7PIK/cAlx6rzNzuSPHGezy4pZkziv6fmg4qhkWZdwfLrCGqnngEZI
-         Vx25xbOvg3X+POjt1awSgXNpvxRxATTt7XSxMZFtTNpTFc4XRqMYM1/5nCU6FIz1GrW4
-         rSG0/eINPf9vB59y/ZFSk1uUvWPp6/N8bavAgvWLfIG0h+c8M8+nqipqSGZg66xhUroV
-         ONDA==
+        b=I3+N29eTSoFP3xBR4TpTEvMfgm7u/t/vL5OG4Egzby+VYh8BY9mWYssc1WZ8NOhBuP
+         bn7T9WAlZZH24AP0ozmuyaw9GBiArphF+pakAb0TjzHucZ5S1vCtoISBMqgj6idj7LWU
+         46jAB/o+589latjLOIVaJhgDIWxmjDzzLvSGzWwMEELjeItLYprCiwH1N4/4qsqGQrHm
+         etA7KO4G+NY4Vg6fYY60UXCISuKlT4QzGiQbodS7d8LGWalRRrnfM0KUPpvKEkBvsou8
+         UkqU91d5W+hAnLdbZ+Xq1xfGMiOr6eE/vFIPoAmAayJViA1lhdGTAkyCNgc6paFXcAXM
+         tIBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=JiQGPdQ1JsOwOGzTiu0RGmNrztjYZOzJ3zIpcWe7lEE=;
-        b=PLJ7AbnEr6I15AtU09P9Q0qXZ+FHeYgbAssuXBuHQYZeRiy2Ti+e9w1WwtxJgqJiQ1
-         SJib+ul0gdk2VLQPQaIvzGuHsl2QYKwOsqoajMNBDcmEYNOdXYqDxyWHyWV1bovx66hC
-         5wv8o9YDGwKPQg8WUJx3hN9mq6m97p2JRqEENWshrU9vO8mXIVIJ8rCh2xzRhTn1VUJz
-         Wlp8MoOgTbwt7UMrvUyDIoCcSaF9E1i6JIGHDnz6ZfXTTJaaIn2wvxGySLH8qwbOkZgn
-         6+iH3nWz49fvRlJHj2o5EwVG2aQ0ygxaUQlT/usAJGZZuaB8gv28WMP4GAMgPm+om4rA
-         MpMQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=oA+ETRqUKv8A1rnzyZJJcNOAFd2qC35gMiQxFiIQ40U=;
+        b=TX6zDeBu5JCPI5Gc7Ej1nMxV+TbegjjUDyJOGHt7/LeUtpFRhY+1Jd1Tn9C6qvKnPh
+         ZD0zwt7K/czlopgBccbbTmT1qXydQ17wGpIpaQ8d/1rmc5ZOV6ygynszZtF5RLgONVh3
+         FOvhMi5s6dzmvLYmfy3cxoLZMwR0NIK25maWkkQAeDTzixZWIaolLRyhvyxJFVAlD4HA
+         UIZF/lc0mCTq+ojsmotAk8UH493bBk//ocGMgGgBvzgYdTGRFcB7xhS9BPC+puaOQjC3
+         NLYx9CNZ9PTHG3uhT7CMpqtQBqxUVxpOoVtcP+1LhAk3Y/wguKfNYPdKkKCBaYM7bpMe
+         yCpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XA64Rc2L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h5si137090ybm.210.2018.02.08.12.52.44
+        by mx.google.com with ESMTPS id x8-v6si493808qto.242.2018.08.14.07.45.16
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Feb 2018 12:52:45 -0800 (PST)
+        Tue, 14 Aug 2018 07:45:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XA64Rc2L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org;
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48317 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44638 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ejtBU-0008Ex-6p
-	for alex.bennee@linaro.org; Thu, 08 Feb 2018 15:52:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54965)
+	id 1fpaZP-0006EZ-MM
+	for alex.bennee@linaro.org; Tue, 14 Aug 2018 10:45:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejt2A-0007tl-Ig
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 15:43:07 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1fpaYv-0005uy-N3
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 10:44:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andrew.smirnov@gmail.com>) id 1ejt29-0000oi-Gb
-	for qemu-arm@nongnu.org; Thu, 08 Feb 2018 15:43:06 -0500
-Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:46199)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <andrew.smirnov@gmail.com>)
-	id 1ejt29-0000oU-B0; Thu, 08 Feb 2018 15:43:05 -0500
-Received: by mail-qk0-x242.google.com with SMTP id d144so536818qkg.13;
-	Thu, 08 Feb 2018 12:43:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=JiQGPdQ1JsOwOGzTiu0RGmNrztjYZOzJ3zIpcWe7lEE=;
-	b=XA64Rc2LoyWeMXLA3v0TwvyP8q67MKZYJJ9oO3wsc1Ctwqo9+bSYyFxAOjwXaCdGkR
-	doToZC8uMoKowLKt0z+lbIQl2heP9yEE+Xsatf+DQnbI3QLy5CSDOBeDRJTR5swBEYv8
-	8qJdFXjwhgaUbPvE6KdI4KTNaazenDO+NxdAW2xpfPJSm6hYb/2Qaw4NZjxePC+2pUmv
-	QlOe5f6cPZbLnhHwLhh6mj99m6zwU9n0q2RTjpCdPbzjqA+yyIa20Wvr7h1m9II/9rlk
-	lfSiMBuZDoZNUiK20xrYX/bLZ8X5/CS/rFPewQ/xxvOH9DXnvlYZvs/0c0DK8hn0SrOQ
-	Gqig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=JiQGPdQ1JsOwOGzTiu0RGmNrztjYZOzJ3zIpcWe7lEE=;
-	b=WEJzL8RdhFQuQjZegRIEcwKoztbS2fF6MrR0egDDDC2YR1TTw53doe0IgQ/ay9souU
-	qujh88kns6eryek/XNNn5REE7iOBN0ufXZk5ILNuH0UaAkMe7LY4flOmAzTG/zKWHKTx
-	ILcmDwCR9/whuZXAutxpZ4YZDqKi/An9HUbqB3v0yQubLoMMcTdVWhx0kZAHSTH9YnHJ
-	SyZtsS7qu6Bo0hAYCga6aUclkJZ4CEiHU5EBovLJfsUNf+LOSr+8kIBcXZVkG6drBR2F
-	xLLJbhr4LOWXPTiYKuxFa+xFIWoXE6GaCJOg15EYgYrxR4b31ozroxV64B/FJE6ZE0kU
-	YIYg==
-X-Gm-Message-State: APf1xPAYv1xcgcfbMwlRLFkxLSS8LGr6VAL+FH0VISQLjWu1IVU6CAjU
-	esSLS901GwA4xJGUub5PiOGYLYV8AMOiVgiC9Rg=
-X-Received: by 10.55.191.65 with SMTP id p62mr446439qkf.191.1518122584477;
-	Thu, 08 Feb 2018 12:43:04 -0800 (PST)
-MIME-Version: 1.0
-Received: by 10.140.101.7 with HTTP; Thu, 8 Feb 2018 12:43:03 -0800 (PST)
-In-Reply-To: <20180208223323-mutt-send-email-mst@kernel.org>
-References: <20180207042438.15422-1-andrew.smirnov@gmail.com>
-	<20180207042438.15422-11-andrew.smirnov@gmail.com>
-	<20180208194226-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqGZHie0sYudPGr-15LOEjMRT05=0+tsViKfCJBnN96Nag@mail.gmail.com>
-	<20180208221121-mutt-send-email-mst@kernel.org>
-	<CAHQ1cqHGfTYyKuMEDGPWnHBbWYV2sMrqfHU6oJV3NQSv0Xi0Qg@mail.gmail.com>
-	<20180208223323-mutt-send-email-mst@kernel.org>
-From: Andrey Smirnov <andrew.smirnov@gmail.com>
-Date: Thu, 8 Feb 2018 12:43:03 -0800
-Message-ID: <CAHQ1cqHxUZTFiXpzdKWk1MA9QuqHC0Ljs0-uBkWZbYsNn6ix8Q@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+	(envelope-from <pm215@archaic.org.uk>) id 1fpaYt-00049z-K8
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 10:44:45 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44374)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fpaYt-00046w-7q; Tue, 14 Aug 2018 10:44:43 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fpaYp-0006yl-HY; Tue, 14 Aug 2018 15:44:39 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 14 Aug 2018 15:44:29 +0100
+Message-Id: <20180814144436.679-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180814144436.679-1-peter.maydell@linaro.org>
+References: <20180814144436.679-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::242
-Subject: Re: [Qemu-arm] [PATCH v5 10/14] pci: Add support for Designware IP
- block
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 1/8] hw/misc/bcm2835_fb: Move config fields to
+ their own struct
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,74 +78,378 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@zoho.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>, Andrey Yurovsky <yurovsky@gmail.com>
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wplblDR2O9Tk
+X-TUID: Lf4FztvnwcWO
 
-On Thu, Feb 8, 2018 at 12:33 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> On Thu, Feb 08, 2018 at 12:22:53PM -0800, Andrey Smirnov wrote:
->> On Thu, Feb 8, 2018 at 12:11 PM, Michael S. Tsirkin <mst@redhat.com> wrote:
->> > On Thu, Feb 08, 2018 at 12:03:04PM -0800, Andrey Smirnov wrote:
->> >> >> +#define PCIE_PORT_LINK_CONTROL          0x710
->> >> >> +
->> >> >> +#define PCIE_PHY_DEBUG_R1               0x72C
->> >> >> +#define PCIE_PHY_DEBUG_R1_XMLH_LINK_UP  BIT(4)
->> >> >> +
->> >> >> +#define PCIE_LINK_WIDTH_SPEED_CONTROL   0x80C
->> >> >> +#define PORT_LOGIC_SPEED_CHANGE         (0x1 << 17)
->> >> >> +
->> >> >> +#define PCIE_MSI_ADDR_LO                0x820
->> >> >> +#define PCIE_MSI_ADDR_HI                0x824
->> >> >> +#define PCIE_MSI_INTR0_ENABLE           0x828
->> >> >> +#define PCIE_MSI_INTR0_MASK             0x82C
->> >> >> +#define PCIE_MSI_INTR0_STATUS           0x830
->> >> >> +
->> >> >> +#define PCIE_ATU_VIEWPORT               0x900
->> >> >> +#define PCIE_ATU_REGION_INBOUND         (0x1 << 31)
->> >> >> +#define PCIE_ATU_REGION_OUTBOUND        (0x0 << 31)
->> >> >> +#define PCIE_ATU_REGION_INDEX2          (0x2 << 0)
->> >> >> +#define PCIE_ATU_REGION_INDEX1          (0x1 << 0)
->> >> >> +#define PCIE_ATU_REGION_INDEX0          (0x0 << 0)
->> >> >> +#define PCIE_ATU_CR1                    0x904
->> >> >> +#define PCIE_ATU_TYPE_MEM               (0x0 << 0)
->> >> >> +#define PCIE_ATU_TYPE_IO                (0x2 << 0)
->> >> >> +#define PCIE_ATU_TYPE_CFG0              (0x4 << 0)
->> >> >> +#define PCIE_ATU_TYPE_CFG1              (0x5 << 0)
->> >> >> +#define PCIE_ATU_CR2                    0x908
->> >> >> +#define PCIE_ATU_ENABLE                 (0x1 << 31)
->> >> >> +#define PCIE_ATU_BAR_MODE_ENABLE        (0x1 << 30)
->> >> >> +#define PCIE_ATU_LOWER_BASE             0x90C
->> >> >> +#define PCIE_ATU_UPPER_BASE             0x910
->> >> >> +#define PCIE_ATU_LIMIT                  0x914
->> >> >> +#define PCIE_ATU_LOWER_TARGET           0x918
->> >> >> +#define PCIE_ATU_BUS(x)                 (((x) >> 24) & 0xff)
->> >> >> +#define PCIE_ATU_DEVFN(x)               (((x) >> 16) & 0xff)
->> >> >> +#define PCIE_ATU_UPPER_TARGET           0x91C
->> >
->> > Can you avoid a PCIE prefix for this btw?
->> >
->>
->> That's how those constants were named in Linux kernel, but yeah, I'll
->> add a prefix to them.
->>
->> Thanks,
->> Andrey Smirnov
->
-> In that case you should not copy it into your file.
-> Stuff from linux kernel should be imported into standard-headers.
->
+The handling of framebuffer properties in the bcm2835_property code
+is a bit clumsy, because for each of the many fb related properties
+we try to track the value we're about to set and whether we're going
+to be setting a value, and then we hand all the new values off
+to the framebuffer via a function which takes them all as separate
+arguments. It would be simpler if the property code could easily
+copy all the framebuffer's current settings, update them with
+the new specified values and then ask the framebuffer to switch
+to the new set.
 
-Just to be sure we are on the same page, this is the file I am talking about:
+As the first part of this refactoring, pull all the fb config
+settings fields in BCM2835FBState out into their own struct.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/dwc/pcie-designware.h?h=v4.15
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/hw/display/bcm2835_fb.h |  26 ++++++--
+ hw/display/bcm2835_fb.c         | 114 +++++++++++++++++---------------
+ hw/misc/bcm2835_property.c      |  28 ++++----
+ 3 files changed, 94 insertions(+), 74 deletions(-)
 
-you want me to put it in standard-headers/linux and get those
-constants from there?
+diff --git a/include/hw/display/bcm2835_fb.h b/include/hw/display/bcm2835_fb.h
+index ae0a3807f2c..8485825ba5f 100644
+--- a/include/hw/display/bcm2835_fb.h
++++ b/include/hw/display/bcm2835_fb.h
+@@ -17,6 +17,20 @@
+ #define TYPE_BCM2835_FB "bcm2835-fb"
+ #define BCM2835_FB(obj) OBJECT_CHECK(BCM2835FBState, (obj), TYPE_BCM2835_FB)
+ 
++/*
++ * Configuration information about the fb which the guest can program
++ * via the mailbox property interface.
++ */
++typedef struct {
++    uint32_t xres, yres;
++    uint32_t xres_virtual, yres_virtual;
++    uint32_t xoffset, yoffset;
++    uint32_t bpp;
++    uint32_t base;
++    uint32_t pixo;
++    uint32_t alpha;
++} BCM2835FBConfig;
++
+ typedef struct {
+     /*< private >*/
+     SysBusDevice busdev;
+@@ -31,12 +45,12 @@ typedef struct {
+     qemu_irq mbox_irq;
+ 
+     bool lock, invalidate, pending;
+-    uint32_t xres, yres;
+-    uint32_t xres_virtual, yres_virtual;
+-    uint32_t xoffset, yoffset;
+-    uint32_t bpp;
+-    uint32_t base, pitch, size;
+-    uint32_t pixo, alpha;
++
++    BCM2835FBConfig config;
++
++    /* These are just cached values calculated from the config settings */
++    uint32_t size;
++    uint32_t pitch;
+ } BCM2835FBState;
+ 
+ void bcm2835_fb_reconfigure(BCM2835FBState *s, uint32_t *xres, uint32_t *yres,
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+index 3355f4c131b..0ffad49ab8f 100644
+--- a/hw/display/bcm2835_fb.c
++++ b/hw/display/bcm2835_fb.c
+@@ -52,7 +52,7 @@ static void draw_line_src16(void *opaque, uint8_t *dst, const uint8_t *src,
+     int bpp = surface_bits_per_pixel(surface);
+ 
+     while (width--) {
+-        switch (s->bpp) {
++        switch (s->config.bpp) {
+         case 8:
+             /* lookup palette starting at video ram base
+              * TODO: cache translation, rather than doing this each time!
+@@ -91,7 +91,7 @@ static void draw_line_src16(void *opaque, uint8_t *dst, const uint8_t *src,
+             break;
+         }
+ 
+-        if (s->pixo == 0) {
++        if (s->config.pixo == 0) {
+             /* swap to BGR pixel format */
+             uint8_t tmp = r;
+             r = b;
+@@ -135,12 +135,12 @@ static void fb_update_display(void *opaque)
+     int src_width = 0;
+     int dest_width = 0;
+ 
+-    if (s->lock || !s->xres) {
++    if (s->lock || !s->config.xres) {
+         return;
+     }
+ 
+-    src_width = s->xres * (s->bpp >> 3);
+-    dest_width = s->xres;
++    src_width = s->config.xres * (s->config.bpp >> 3);
++    dest_width = s->config.xres;
+ 
+     switch (surface_bits_per_pixel(surface)) {
+     case 0:
+@@ -165,16 +165,18 @@ static void fb_update_display(void *opaque)
+     }
+ 
+     if (s->invalidate) {
+-        framebuffer_update_memory_section(&s->fbsection, s->dma_mr, s->base,
+-                                          s->yres, src_width);
++        framebuffer_update_memory_section(&s->fbsection, s->dma_mr,
++                                          s->config.base,
++                                          s->config.yres, src_width);
+     }
+ 
+-    framebuffer_update_display(surface, &s->fbsection, s->xres, s->yres,
++    framebuffer_update_display(surface, &s->fbsection,
++                               s->config.xres, s->config.yres,
+                                src_width, dest_width, 0, s->invalidate,
+                                draw_line_src16, s, &first, &last);
+ 
+     if (first >= 0) {
+-        dpy_gfx_update(s->con, 0, first, s->xres, last - first + 1);
++        dpy_gfx_update(s->con, 0, first, s->config.xres, last - first + 1);
+     }
+ 
+     s->invalidate = false;
+@@ -186,28 +188,28 @@ static void bcm2835_fb_mbox_push(BCM2835FBState *s, uint32_t value)
+ 
+     s->lock = true;
+ 
+-    s->xres = ldl_le_phys(&s->dma_as, value);
+-    s->yres = ldl_le_phys(&s->dma_as, value + 4);
+-    s->xres_virtual = ldl_le_phys(&s->dma_as, value + 8);
+-    s->yres_virtual = ldl_le_phys(&s->dma_as, value + 12);
+-    s->bpp = ldl_le_phys(&s->dma_as, value + 20);
+-    s->xoffset = ldl_le_phys(&s->dma_as, value + 24);
+-    s->yoffset = ldl_le_phys(&s->dma_as, value + 28);
++    s->config.xres = ldl_le_phys(&s->dma_as, value);
++    s->config.yres = ldl_le_phys(&s->dma_as, value + 4);
++    s->config.xres_virtual = ldl_le_phys(&s->dma_as, value + 8);
++    s->config.yres_virtual = ldl_le_phys(&s->dma_as, value + 12);
++    s->config.bpp = ldl_le_phys(&s->dma_as, value + 20);
++    s->config.xoffset = ldl_le_phys(&s->dma_as, value + 24);
++    s->config.yoffset = ldl_le_phys(&s->dma_as, value + 28);
+ 
+-    s->base = s->vcram_base | (value & 0xc0000000);
+-    s->base += BCM2835_FB_OFFSET;
++    s->config.base = s->vcram_base | (value & 0xc0000000);
++    s->config.base += BCM2835_FB_OFFSET;
+ 
+     /* TODO - Manage properly virtual resolution */
+ 
+-    s->pitch = s->xres * (s->bpp >> 3);
+-    s->size = s->yres * s->pitch;
++    s->pitch = s->config.xres * (s->config.bpp >> 3);
++    s->size = s->config.yres * s->pitch;
+ 
+     stl_le_phys(&s->dma_as, value + 16, s->pitch);
+-    stl_le_phys(&s->dma_as, value + 32, s->base);
++    stl_le_phys(&s->dma_as, value + 32, s->config.base);
+     stl_le_phys(&s->dma_as, value + 36, s->size);
+ 
+     s->invalidate = true;
+-    qemu_console_resize(s->con, s->xres, s->yres);
++    qemu_console_resize(s->con, s->config.xres, s->config.yres);
+     s->lock = false;
+ }
+ 
+@@ -219,34 +221,34 @@ void bcm2835_fb_reconfigure(BCM2835FBState *s, uint32_t *xres, uint32_t *yres,
+ 
+     /* TODO: input validation! */
+     if (xres) {
+-        s->xres = *xres;
++        s->config.xres = *xres;
+     }
+     if (yres) {
+-        s->yres = *yres;
++        s->config.yres = *yres;
+     }
+     if (xoffset) {
+-        s->xoffset = *xoffset;
++        s->config.xoffset = *xoffset;
+     }
+     if (yoffset) {
+-        s->yoffset = *yoffset;
++        s->config.yoffset = *yoffset;
+     }
+     if (bpp) {
+-        s->bpp = *bpp;
++        s->config.bpp = *bpp;
+     }
+     if (pixo) {
+-        s->pixo = *pixo;
++        s->config.pixo = *pixo;
+     }
+     if (alpha) {
+-        s->alpha = *alpha;
++        s->config.alpha = *alpha;
+     }
+ 
+     /* TODO - Manage properly virtual resolution */
+ 
+-    s->pitch = s->xres * (s->bpp >> 3);
+-    s->size = s->yres * s->pitch;
++    s->pitch = s->config.xres * (s->config.bpp >> 3);
++    s->size = s->config.yres * s->pitch;
+ 
+     s->invalidate = true;
+-    qemu_console_resize(s->con, s->xres, s->yres);
++    qemu_console_resize(s->con, s->config.xres, s->config.yres);
+     s->lock = false;
+ }
+ 
+@@ -312,18 +314,18 @@ static const VMStateDescription vmstate_bcm2835_fb = {
+         VMSTATE_BOOL(lock, BCM2835FBState),
+         VMSTATE_BOOL(invalidate, BCM2835FBState),
+         VMSTATE_BOOL(pending, BCM2835FBState),
+-        VMSTATE_UINT32(xres, BCM2835FBState),
+-        VMSTATE_UINT32(yres, BCM2835FBState),
+-        VMSTATE_UINT32(xres_virtual, BCM2835FBState),
+-        VMSTATE_UINT32(yres_virtual, BCM2835FBState),
+-        VMSTATE_UINT32(xoffset, BCM2835FBState),
+-        VMSTATE_UINT32(yoffset, BCM2835FBState),
+-        VMSTATE_UINT32(bpp, BCM2835FBState),
+-        VMSTATE_UINT32(base, BCM2835FBState),
++        VMSTATE_UINT32(config.xres, BCM2835FBState),
++        VMSTATE_UINT32(config.yres, BCM2835FBState),
++        VMSTATE_UINT32(config.xres_virtual, BCM2835FBState),
++        VMSTATE_UINT32(config.yres_virtual, BCM2835FBState),
++        VMSTATE_UINT32(config.xoffset, BCM2835FBState),
++        VMSTATE_UINT32(config.yoffset, BCM2835FBState),
++        VMSTATE_UINT32(config.bpp, BCM2835FBState),
++        VMSTATE_UINT32(config.base, BCM2835FBState),
+         VMSTATE_UINT32(pitch, BCM2835FBState),
+         VMSTATE_UINT32(size, BCM2835FBState),
+-        VMSTATE_UINT32(pixo, BCM2835FBState),
+-        VMSTATE_UINT32(alpha, BCM2835FBState),
++        VMSTATE_UINT32(config.pixo, BCM2835FBState),
++        VMSTATE_UINT32(config.alpha, BCM2835FBState),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+@@ -349,13 +351,13 @@ static void bcm2835_fb_reset(DeviceState *dev)
+ 
+     s->pending = false;
+ 
+-    s->xres_virtual = s->xres;
+-    s->yres_virtual = s->yres;
+-    s->xoffset = 0;
+-    s->yoffset = 0;
+-    s->base = s->vcram_base + BCM2835_FB_OFFSET;
+-    s->pitch = s->xres * (s->bpp >> 3);
+-    s->size = s->yres * s->pitch;
++    s->config.xres_virtual = s->config.xres;
++    s->config.yres_virtual = s->config.yres;
++    s->config.xoffset = 0;
++    s->config.yoffset = 0;
++    s->config.base = s->vcram_base + BCM2835_FB_OFFSET;
++    s->pitch = s->config.xres * (s->config.bpp >> 3);
++    s->size = s->config.yres * s->pitch;
+ 
+     s->invalidate = true;
+     s->lock = false;
+@@ -385,18 +387,20 @@ static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
+     bcm2835_fb_reset(dev);
+ 
+     s->con = graphic_console_init(dev, 0, &vgafb_ops, s);
+-    qemu_console_resize(s->con, s->xres, s->yres);
++    qemu_console_resize(s->con, s->config.xres, s->config.yres);
+ }
+ 
+ static Property bcm2835_fb_props[] = {
+     DEFINE_PROP_UINT32("vcram-base", BCM2835FBState, vcram_base, 0),/*required*/
+     DEFINE_PROP_UINT32("vcram-size", BCM2835FBState, vcram_size,
+                        DEFAULT_VCRAM_SIZE),
+-    DEFINE_PROP_UINT32("xres", BCM2835FBState, xres, 640),
+-    DEFINE_PROP_UINT32("yres", BCM2835FBState, yres, 480),
+-    DEFINE_PROP_UINT32("bpp", BCM2835FBState, bpp, 16),
+-    DEFINE_PROP_UINT32("pixo", BCM2835FBState, pixo, 1), /* 1=RGB, 0=BGR */
+-    DEFINE_PROP_UINT32("alpha", BCM2835FBState, alpha, 2), /* alpha ignored */
++    DEFINE_PROP_UINT32("xres", BCM2835FBState, config.xres, 640),
++    DEFINE_PROP_UINT32("yres", BCM2835FBState, config.yres, 480),
++    DEFINE_PROP_UINT32("bpp", BCM2835FBState, config.bpp, 16),
++    DEFINE_PROP_UINT32("pixo",
++                       BCM2835FBState, config.pixo, 1), /* 1=RGB, 0=BGR */
++    DEFINE_PROP_UINT32("alpha",
++                       BCM2835FBState, config.alpha, 2), /* alpha ignored */
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 70eaafd325f..c79f358702d 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -141,10 +141,10 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+         /* Frame buffer */
+ 
+         case 0x00040001: /* Allocate buffer */
+-            stl_le_phys(&s->dma_as, value + 12, s->fbdev->base);
+-            tmp_xres = newxres != NULL ? *newxres : s->fbdev->xres;
+-            tmp_yres = newyres != NULL ? *newyres : s->fbdev->yres;
+-            tmp_bpp = newbpp != NULL ? *newbpp : s->fbdev->bpp;
++            stl_le_phys(&s->dma_as, value + 12, s->fbdev->config.base);
++            tmp_xres = newxres != NULL ? *newxres : s->fbdev->config.xres;
++            tmp_yres = newyres != NULL ? *newyres : s->fbdev->config.yres;
++            tmp_bpp = newbpp != NULL ? *newbpp : s->fbdev->config.bpp;
+             stl_le_phys(&s->dma_as, value + 16,
+                         tmp_xres * tmp_yres * tmp_bpp / 8);
+             resplen = 8;
+@@ -157,8 +157,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             break;
+         case 0x00040003: /* Get display width/height */
+         case 0x00040004:
+-            tmp_xres = newxres != NULL ? *newxres : s->fbdev->xres;
+-            tmp_yres = newyres != NULL ? *newyres : s->fbdev->yres;
++            tmp_xres = newxres != NULL ? *newxres : s->fbdev->config.xres;
++            tmp_yres = newyres != NULL ? *newyres : s->fbdev->config.yres;
+             stl_le_phys(&s->dma_as, value + 12, tmp_xres);
+             stl_le_phys(&s->dma_as, value + 16, tmp_yres);
+             resplen = 8;
+@@ -176,7 +176,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 8;
+             break;
+         case 0x00040005: /* Get depth */
+-            tmp_bpp = newbpp != NULL ? *newbpp : s->fbdev->bpp;
++            tmp_bpp = newbpp != NULL ? *newbpp : s->fbdev->config.bpp;
+             stl_le_phys(&s->dma_as, value + 12, tmp_bpp);
+             resplen = 4;
+             break;
+@@ -189,7 +189,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 4;
+             break;
+         case 0x00040006: /* Get pixel order */
+-            tmp_pixo = newpixo != NULL ? *newpixo : s->fbdev->pixo;
++            tmp_pixo = newpixo != NULL ? *newpixo : s->fbdev->config.pixo;
+             stl_le_phys(&s->dma_as, value + 12, tmp_pixo);
+             resplen = 4;
+             break;
+@@ -202,7 +202,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 4;
+             break;
+         case 0x00040007: /* Get alpha */
+-            tmp_alpha = newalpha != NULL ? *newalpha : s->fbdev->alpha;
++            tmp_alpha = newalpha != NULL ? *newalpha : s->fbdev->config.alpha;
+             stl_le_phys(&s->dma_as, value + 12, tmp_alpha);
+             resplen = 4;
+             break;
+@@ -215,14 +215,16 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 4;
+             break;
+         case 0x00040008: /* Get pitch */
+-            tmp_xres = newxres != NULL ? *newxres : s->fbdev->xres;
+-            tmp_bpp = newbpp != NULL ? *newbpp : s->fbdev->bpp;
++            tmp_xres = newxres != NULL ? *newxres : s->fbdev->config.xres;
++            tmp_bpp = newbpp != NULL ? *newbpp : s->fbdev->config.bpp;
+             stl_le_phys(&s->dma_as, value + 12, tmp_xres * tmp_bpp / 8);
+             resplen = 4;
+             break;
+         case 0x00040009: /* Get virtual offset */
+-            tmp_xoffset = newxoffset != NULL ? *newxoffset : s->fbdev->xoffset;
+-            tmp_yoffset = newyoffset != NULL ? *newyoffset : s->fbdev->yoffset;
++            tmp_xoffset = newxoffset != NULL ?
++                *newxoffset : s->fbdev->config.xoffset;
++            tmp_yoffset = newyoffset != NULL ?
++                *newyoffset : s->fbdev->config.yoffset;
+             stl_le_phys(&s->dma_as, value + 12, tmp_xoffset);
+             stl_le_phys(&s->dma_as, value + 16, tmp_yoffset);
+             resplen = 8;
+-- 
+2.18.0
 
-Thanks,
-Andrey Smirnov

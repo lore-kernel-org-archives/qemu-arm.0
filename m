@@ -1,219 +1,136 @@
-Received: by 10.28.71.155 with SMTP id m27csp1470267wmi;
-        Wed, 11 Apr 2018 21:26:09 -0700 (PDT)
-X-Received: by 10.46.144.136 with SMTP id l8mr4430202ljg.143.1523507169770;
-        Wed, 11 Apr 2018 21:26:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1523507169; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4029877wru;
+        Tue, 14 Aug 2018 05:43:23 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPx585zYLC4p9sxStQRG14SuDJy+zaFh5P36KhsVrGaAyXltI81w1MJswBgvzAcYxXcZE8Tf
+X-Received: by 2002:a0c:becb:: with SMTP id f11-v6mr19032842qvj.217.1534250603488;
+        Tue, 14 Aug 2018 05:43:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534250603; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bw5eiKI9NTdxyDM+mGS5hJVk4jLSPIQ6OJ4OPtgPLbxRR7j0JbNltQPD4UZ8q6oOav
-         e25J7pVdCuZB7W0UXTK3sjFyfwu0Fuu5rx+6XyD0TiSxMsj7Lxe46rhX8fURmI5QKQnC
-         A1pXB+jigRpDtG6xHNnEYfLztGP3EQMXbSzGnxb2qmIehzKk+xTHmd1NhZ/NUzoQgKlY
-         PeCApwmUwe9o7zfawDYfhai3ZwZEGiJQ8patplhWE44cPv5Jik7blWwT1u+1gFTEcuvx
-         JdNa4ATrUNAo38wWQa9ZyVoyiF1luKhaS62KneUhr4qUJExXDE9rKxSGvsUNVzbqlAtB
-         cUDQ==
+        b=Z4oqAsq1SL3LxPzWYGlf533vhCIrBgaCZ4DUblS9d86v/0F1CbIA4TkT5L2GXA4XME
+         EZYcyzROp5Wpz9h5QJ9w8I7fgqYA4xsDcdeBJi5BoTD6hUxc3pakuqadI1MBpKM8gOnM
+         9R60Pu8PsdzFlApdVCKUUcqwxe1idBzgvFEtiCnWvMvHkn6TsxuvEN3mt7b754qmO3gT
+         W6U0UVQHOeOYWZyGzaOd5dYzWi0CTS7gUSYw+dXrjd6xkFWJQbQD5lVN5Tw8VRP//+sV
+         NNVk1vEgm6e0X60Vc0iORfBQOTYeUWu1NSgVG+PneKokSqAOKPqCPfowVmh2GgDUR/h5
+         0Xzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature:arc-authentication-results;
-        bh=SlC3G3kSjGORH9JI1t3S5eqqCjYgvafHrhMSS2Xenaw=;
-        b=tBOl7ZlpEQ6xxg7HuE3dgHqhCuQe1zbRLTszYTmBA4UPBLFohh+JrfD+4TtO1vSTCz
-         JZuL38JtgG0qKyBhfOjON8jkVIzMp/q9lz5ADiGxnw3oZch/HmOoGTKa7xUfVBU/DKqu
-         J8ynsyY7z8n48QkUYl3BS8n0QDpzfkOX3wtTlKOjnM17ZckWvTqEwTACJFUtSqg0v6C/
-         XMDJwOaROMO82FMd7sr0sIBZeRmbORNKFlNLlZQw5d+7QUluj0bR5nTK2ibzffCubWKX
-         4Iwdj7HK7sIvvqnW+4mz3jwA8Oh8uwRs70zlBd6LqkPhZrGe2YTNNoMCqjh/0XWXzi3h
-         lhLw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=WYnB7nGUhemAB2OMSfbBH2+7mmZxfmf6XLJKhWZVYF4=;
+        b=Owv9aMw81kijdQE47vRt4EN3sclfkmWDcY/0vMkrZN7/nS5j9hsfrItO2KM6aGAYfh
+         4kb4SflRLDXDXaBYzyTdBbJBXGhsHjvfIOSVumaEZK3j4iys27r403O20M+2x8rsZwKH
+         BnWGjGUdVdGSemGF4x7XHGufj9PB56+1x0Xohmq4kJq1d8tdN/+w0vHhpj8/+QbJ9f07
+         92w7xnxj+UyZjvM7frdn2abXmeCtRUyDAECiIo5ouYtriLpbYqMH7GqPcbgma/pCxirY
+         1gwUv8Qbgad6mpo9PXeBC6XdX520ptxst72bLf4ZSsMEWcYYKLWkqPZjOs7SS+QC0D54
+         lpvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tYwmdRbd;
-       spf=pass (google.com: domain of ajaygargnsit@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajaygargnsit@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <ajaygargnsit@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 88-v6sor759355lfu.53.2018.04.11.21.26.09
-        (Google Transport Security);
-        Wed, 11 Apr 2018 21:26:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ajaygargnsit@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id m16-v6si5140882qvk.218.2018.08.14.05.43.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 14 Aug 2018 05:43:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tYwmdRbd;
-       spf=pass (google.com: domain of ajaygargnsit@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=ajaygargnsit@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=SlC3G3kSjGORH9JI1t3S5eqqCjYgvafHrhMSS2Xenaw=;
-        b=tYwmdRbdHXQMNYRNBIef2+amj6Ngwguq0AqZLtmUitjScOrOxOQsSU9o1tZYxWH5J2
-         j930YUgeqHS4jN+x0OCkO+k0cTxeOu8W0+tHkBwZkgPBRcFZeSiv0OP3DCuAKhZUJnud
-         olW8CrRD8eDLCSPi2NACVDk8QmZN3E7NOs0uDJaJjEpmd2jbZcl9KJNARnC52/9rrUCC
-         TSbrbNSiRYedwh5UHHqWxz50hwJ7O92mzIO+ESsVR7+sadnxG02xaqRpjFgMRCwQyr0c
-         uifGSKET+rIMrDFCvFU49E+9PVPvul7/cxIjFiXvcWf2z4dtSE9TP5rX2VGzVPzBY46O
-         RNTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=SlC3G3kSjGORH9JI1t3S5eqqCjYgvafHrhMSS2Xenaw=;
-        b=WikxEcScm0R3jg2PWn/AtZD9mTYH01LCXi6J29nJ2mk+8iD4Cs11lf8/nGlnQapE/E
-         AyPyDls4w2mBzcSy17Dk552rmGryw+Xn1DAC6A5vbkx2vuuvJHONJH+KY0gmqYtyOP6o
-         BURTlbMFKpUq5MGWprpbSg523K2pr0tHo0fmPdnDNi0uIS+4lbDUaf1lyrdPG3+W15m5
-         TCOFMDjiVWg8n+MFZ9rx9coY8stJ9o4XpWeeRXgg33Cb+7/1BQd6PNHiy6jPE9sUYuw4
-         kJ06QcfM8Il4WQr0b1oq1zN4KquNFzkBc2zg3rkDJFHQvnhhANK9/ig6KR52SwXjABfj
-         mLuA==
-X-Gm-Message-State: ALQs6tCA0df5Rb/FD5SrBA+wXY829glgCsC4FBqd/xwQ1RKLYJUJ7IN/
-	0dPmz9/Ue4mfM8gXY/L0CwRkkTV2AJWRA7Nb65WWBQ==
-X-Google-Smtp-Source: AIpwx4+pt/YJghA5tRfyMu88d7HAbh+a4nk4dB+We61naNISPb0vWEFt0zjPbU0Hty0eq++i25RTlHkNJGHpazNJRXk=
-X-Received: by 2002:a19:6a16:: with SMTP id u22-v6mr4124646lfu.123.1523507169034;
- Wed, 11 Apr 2018 21:26:09 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a19:c64a:0:0:0:0:0 with HTTP; Wed, 11 Apr 2018 21:26:08
- -0700 (PDT)
-In-Reply-To: <CAHP4M8UESYxeJOd5Y+Hj1K26QUb2D1UJJoBTh9SYCsvuwBP95w@mail.gmail.com>
-References: <CAHP4M8VnuS5KijfVw9eDz41KPwaT4rJ+4VEU==EbBgdwgFKJhA@mail.gmail.com>
- <87efjov999.fsf@linaro.org> <CAHP4M8W-WuBmJUdb6LGR1t3tPayrnaS+b1ZZ1zew71aM==-imA@mail.gmail.com>
- <87d0z8v78e.fsf@linaro.org> <CAHP4M8VSzm4L6oS06J-e93FwjuHM=weJf2MegCaDNH8MPbsqgA@mail.gmail.com>
- <CAFEAcA91iNyUnahri9EdL7Th1Q9v44765z0OJexxMrNUD_DXEQ@mail.gmail.com>
- <CAHP4M8ViS=O4R+sMmR=CmkbgQtwd8RHGxLwNb5m_aMS_M++f6A@mail.gmail.com>
- <CAFEAcA8xG_GrVL5zgZqN26OQGj0UHWFNZ9xWEmHJyaiUFZLH8Q@mail.gmail.com>
- <CAHP4M8WEuR5JJTV_KggwJok0Pzbu8=4BifLuFOjhv3T9hfjUUg@mail.gmail.com> <CAHP4M8UESYxeJOd5Y+Hj1K26QUb2D1UJJoBTh9SYCsvuwBP95w@mail.gmail.com>
-From: Ajay Garg <ajaygargnsit@gmail.com>
-Date: Thu, 12 Apr 2018 09:56:08 +0530
-Message-ID: <CAHP4M8V_NBFS9T_+TQzAPgw56n9THk-phqUiLuRw6DJRn+UQAw@mail.gmail.com>
-Subject: Re: [Qemu-arm] [Qemu-devel] Crash when running hello-world unikernel
- for ARM
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	rumpkernel-users@freelists.org, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 7tDo+gPY74u4
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44154 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fpYfT-0005W2-1U
+	for alex.bennee@linaro.org; Tue, 14 Aug 2018 08:43:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43726)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfF-0005Ub-NE
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:10 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfE-0002Eg-Pw
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:09 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44302)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfE-0001z2-I0; Tue, 14 Aug 2018 08:43:08 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfC-0006q5-M7; Tue, 14 Aug 2018 13:43:06 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 14 Aug 2018 13:42:50 +0100
+Message-Id: <20180814124254.5229-7-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180814124254.5229-1-peter.maydell@linaro.org>
+References: <20180814124254.5229-1-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 06/10] target/arm: Implement AArch32 Hyp FARs
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgari@xilinx.com, Luc Michel <luc.michel@greensocs.com>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fwi8VTbPMXR6
 
-Actually just realised that qemu does support integratorcp as one of
-the supported-boards.
+The AArch32 virtualization extensions support these fault address
+registers:
+ * HDFAR: aliased with AArch64 FAR_EL2[31:0] and AArch32 DFAR(S)
+ * HIFAR: aliased with AArch64 FAR_EL2[63:32] and AArch32 IFAR(S)
 
-Unfortunately, when I use
-          qemu-system-arm -machine integratorcp -nographic -kernel helloer.bin
-the shell just hangs :(
+Implement the accessors for these. This fixes in passing a bug
+where we weren't implementing the "RES0 from EL3 if EL2 not
+implemented" behaviour for AArch64 FAR_EL2.
 
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-Following are the details when run through gdb :
-
-##########################################################################
-GNU gdb (Debian 7.7.1+dfsg-5) 7.7.1
-Copyright (C) 2014 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "arm-linux-gnueabihf".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from qemu-system-arm...(no debugging symbols found)...done.
-(gdb) r
-Starting program: /usr/bin/qemu-system-arm -machine integratorcp
--nographic -kernel helloer.bin
-[Thread debugging using libthread_db enabled]
-Using host libthread_db library "/lib/arm-linux-gnueabihf/libthread_db.so.1".
-[New Thread 0xb388f290 (LWP 596)]
-
-Program received signal SIGUSR1, User defined signal 1.
-[Switching to Thread 0xb388f290 (LWP 596)]
-memset () at ../ports/sysdeps/arm/memset.S:50
-50    ../ports/sysdeps/arm/memset.S: No such file or directory.
-(gdb) bt
-#0  memset () at ../ports/sysdeps/arm/memset.S:50
-#1  0xb65e1c6c in ?? () from /lib/arm-linux-gnueabihf/libglib-2.0.so.0
-Backtrace stopped: previous frame identical to this frame (corrupt stack?)
-(gdb)
-##########################################################################
-
-On Wed, Apr 11, 2018 at 12:49 PM, Ajay Garg <ajaygargnsit@gmail.com> wrote:
-> Hi All.
->
-> Just wondering if there is something specific that needs to changed at
-> https://github.com/rumpkernel/rumprun/tree/master/platform/hw/arch/arm/integrator
-> in order to get a hello-world app run on "virt" machine?
->
-> If so, I would request the rumprun-guys to kindly throw in some light,
-> on what needs to be done in order to have something run on a "virt"
-> machine in qemu-context.
->
->
-> Thanks and Regards,
-> Ajay
->
-> On Tue, Apr 10, 2018 at 3:49 PM, Ajay Garg <ajaygargnsit@gmail.com> wrote:
->> Thanks Peter .. my sincere gratitude.
->> You pin-pointed the real issue ..
->>
->>
->>
->> On Tue, Apr 10, 2018 at 2:50 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On 10 April 2018 at 09:16, Ajay Garg <ajaygargnsit@gmail.com> wrote:
->>>> On Tue, Apr 10, 2018 at 1:08 PM, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>>> What hardware (what CPU, board, etc) is this "rumprun" software
->>>>> expecting to run on?
->>>>
->>>> Yep, just to ensure that there are no cross-compiling issues, I am
->>>> building rumprun on the pseudo-real hardware itself.
->>>> In our case, the pseudo-real hardware are :
->>>>
->>>> a)
->>>> An ARM32 "virt" hardware/machine in a qemu environment
->>>> (https://translatedcode.wordpress.com/2016/11/03/installing-debian-on-qemus-32-bit-arm-virt-board/)
->>>>
->>>> Once I start  this machine, all environment is arm32, and I compile
->>>> rumprun within this environemnt without any cross-compiling.
->>>>
->>>> b)
->>>> A beaglebone-green-wireless.
->>>> This is a arm32 machine bottoms-up, so no question of cross-compiling
->>>> whatsoever here :)
->>>>
->>>> In both cases, I then use qemu-system-arm (on the "virt" machine, and
->>>> beaglebone-green-wireless itself).
->>>
->>> That's telling me what setups you're trying to compile in,
->>> which doesn't correspond necessarily to what the guest
->>> OS is built to run on.
->>>
->>>> One query : It is apparent that there is nested qemu-virtualization in
->>>> step a), could that be an issue?
->>>
->>> Why are you running this in a nested setup? I don't understand
->>> the purpose of doing that. It would be simpler and faster to
->>> just run the guest on a QEMU running in your native host system.
->>>
->>> Assuming this is the source for the guest you're trying to run:
->>>
->>> https://github.com/rumpkernel/rumprun/tree/master/platform/hw/arch
->>>
->>> that suggests that the only Arm board it supports is "integrator"
->>> (which is an absolutely ancient devboard with very little memory,
->>> no PCI and no virtio support). You need to confirm what Arm hardware
->>> this 'rumpkernel' is actually intended to run on, and then give QEMU
->>> the right command line arguments to emulate that hardware. I can't
->>> really help any further, I'm afraid -- you need somebody who knows
->>> about this guest OS.
->>>
->>> thanks
->>> -- PMM
->>
->>
->>
->> --
->> Regards,
->> Ajay
->
->
->
-> --
-> Regards,
-> Ajay
-
-
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 9701e413859..d6e98e9d606 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3847,6 +3847,13 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+     { .name = "HSTR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 3,
+       .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "FAR_EL2", .state = ARM_CP_STATE_BOTH,
++      .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 0,
++      .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "HIFAR", .state = ARM_CP_STATE_AA32,
++      .type = ARM_CP_CONST,
++      .cp = 15, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 2,
++      .access = PL2_RW, .resetvalue = 0 },
+     REGINFO_SENTINEL
+ };
+ 
+@@ -3922,9 +3929,14 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     { .name = "ESR_EL2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 2, .opc2 = 0,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.esr_el[2]) },
+-    { .name = "FAR_EL2", .state = ARM_CP_STATE_AA64,
++    { .name = "FAR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 0,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.far_el[2]) },
++    { .name = "HIFAR", .state = ARM_CP_STATE_AA32,
++      .type = ARM_CP_ALIAS,
++      .cp = 15, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 2,
++      .access = PL2_RW,
++      .fieldoffset = offsetofhigh32(CPUARMState, cp15.far_el[2]) },
+     { .name = "SPSR_EL2", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 0,
 -- 
-Regards,
-Ajay
+2.18.0
+

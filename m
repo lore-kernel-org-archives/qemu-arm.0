@@ -1,87 +1,72 @@
-Received: by 10.28.71.27 with SMTP id u27csp4158702wma;
-        Tue, 23 Jan 2018 07:10:25 -0800 (PST)
-X-Google-Smtp-Source: AH8x225InTk+F/i0+/wmc3yatf9qtNCWIWKIUwIIu0CSzr3fu/yyDLYE6rxWlhGmRJ/Y3EiT2F1l
-X-Received: by 10.37.171.43 with SMTP id u40mr2778489ybi.393.1516720224954;
-        Tue, 23 Jan 2018 07:10:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1516720224; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4029895wru;
+        Tue, 14 Aug 2018 05:43:24 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPxqpBJ0dBsOWJ79bXku53DF39Hj/yquGv7KKJJQD3ED5f0VaP0LYaWtdaUNCvkEM70l93Le
+X-Received: by 2002:a37:2118:: with SMTP id h24-v6mr19431951qkh.263.1534250604581;
+        Tue, 14 Aug 2018 05:43:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534250604; cv=none;
         d=google.com; s=arc-20160816;
-        b=XOaLufjjnW3dCAvQYTqj2j9GOQZxMvS4q+rpYjnjhh/wTSzbrALbCmM/DUoi15bMrH
-         g3Ep/RlIuBQA/Q7FblE2aWBwPdXBwJTCQJ7ra2GHCD9uBw1ovyB0l25dNIe5o+7OSKIS
-         KnExrbdG96jr9jTPz9mOJrxD3a/gbbIBaHS83FumDwx5gHbfl7VTvsVyfovYcR7x/AxH
-         5Aae803+omQHOMZwMXceAtCagt967yzwDuclR1tgO8wShRSMhU8wAWAHlLgjBa8V4Ikq
-         n/A7toMukgCzgbdkj/pNtZL8Agx7HbR4Q4RBVOQNavTLpA1BR0dF4YV1EAyyEnFQxDBp
-         l5FQ==
+        b=WhvG5We6dZQN4JlXxGaxnTFDUFXgBuQ7VyRoOZFNneJjm5iWEUeRvh9jPv6n/qggby
+         uxN+tAa29R+yf2zK36breLUh3/ayTO3j4XrO7cnWA5keWlXmiU0jlnvO3/bxQinnYfON
+         EzcZPzGZuaN7dLeDXWpOMVJ6BXvjuynlThhnzMXIyXen9SOBFGRqscdRy5ISXP5ev4CI
+         /a7UGBN6iQn38bFDm53KImOV4QdEiFGh8Il7En+eeyaB1Qg+tRMy/FlVMLJlGrzpktk5
+         hj7KRXO8/xJOXZ2KbUxKRgnTC1GtG/3WL28jEnbidXlptEF0B4iyVriq5h6M1KaOehWV
+         jf3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :references:message-id:in-reply-to:to:from:date
-         :arc-authentication-results;
-        bh=2MZlNY6nNpW83Ppvz2fML0I8OHNAnrq81XUBw7MESyg=;
-        b=R54vIZ0zzSmIVZe+K5MkdRUCOO/oiHk/HgNZH+FtCymcnVMT1Qxxwdhi1C+wNKs/Th
-         GabZ9EdvTTGwXpGkxr2dMnJ6F+VKMlp+3pMG6vqsNFWsUAa1fns8l71XuBKMWZl+CwMb
-         Myq74LW/HSF9Mm1MixccBwsQ/uiJZ1UY8QZv0h3caVbXA5gbYRv+8ZNKowR6Y6waYpbi
-         y3yNchPLAM8emKDdEMhQ7tOkH34Z3fpHhhEoaee/POtRGTjkz4AzVsNB8zuPKFTCibtt
-         1my/P84kpn7/sAUUin//+a4mKx+WgFiHeyP+571i6jmgEtpyL33VlslRCKDlgMkXLDLb
-         m/pA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=8ZI0FDZ3MVZpPGsbmhp+g+t31/LOIEMncGMYyabNAYM=;
+        b=aXXX378+1gq7I0MjQm1CapB4436KZ3IAQdxgGznNNOO+MF33/A2dVXodOkBVNuVFTs
+         af2G4uVD3GWAbrg/mhLwdrBX3tCtlM2Mt3/fy/W1FsNuCgLA+LD8xWGZjLYbCrKKS0hI
+         91an4pokSTqvErND41zbjoQPxpro9fq2rrG4Np0KC1g8h7w+r7HHxrGjX1/4Ln75qVpL
+         hvWQ/dZ2WzbfHyzRhz2YVjw8YjRQN/StYoNQ9UuEXi1rfJV2bkpLCJK/taN74OSpDURU
+         uzsVUcpfIB68aUCkOBFFkrnCsrOviFGVgw4tOBapwpRB5bTt445qmIsxZMLZ5OFFiA5a
+         fQDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i9si2414097ybc.34.2018.01.23.07.10.24
+        by mx.google.com with ESMTPS id 30-v6si135484qvp.53.2018.08.14.05.43.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Jan 2018 07:10:24 -0800 (PST)
+        Tue, 14 Aug 2018 05:43:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:34672 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44155 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ee0DQ-00073a-EV
-	for alex.bennee@linaro.org; Tue, 23 Jan 2018 10:10:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53402)
+	id 1fpYfU-0005Xw-1o
+	for alex.bennee@linaro.org; Tue, 14 Aug 2018 08:43:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43750)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ee0DD-0006zz-4o
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:10:17 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfG-0005Ui-Of
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <balaton@eik.bme.hu>) id 1ee0D7-0005cM-H4
-	for qemu-arm@nongnu.org; Tue, 23 Jan 2018 10:10:11 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2]:40540)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
-	id 1ee0D7-0005Qx-6z; Tue, 23 Jan 2018 10:10:05 -0500
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
-	by localhost (Postfix) with SMTP id E2F027456AF;
-	Tue, 23 Jan 2018 16:09:55 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
-	id C4ED37456A5; Tue, 23 Jan 2018 16:09:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by zero.eik.bme.hu (Postfix) with ESMTP id C41347456A2;
-	Tue, 23 Jan 2018 16:09:55 +0100 (CET)
-Date: Tue, 23 Jan 2018 16:09:55 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: bzt bzt <bztemail@gmail.com>
-In-Reply-To: <CADYoBw36gPOyiK36WaS0v_2R=iuWYL-sQAtffrZZJU2DpMv5Bw@mail.gmail.com>
-Message-ID: <alpine.BSF.2.21.1801231605460.67737@zero.eik.bme.hu>
-References: <CADYoBw2dogvU6-3vChG4js0BNdyTPG8eDvMSRoU50eTX_9DdEQ@mail.gmail.com>
-	<CADYoBw1ksGDo26-PC4eMnyqxZQoZkXNLDeGoWfcRHs-SfTCJkw@mail.gmail.com>
-	<MWHPR21MB01591543E188B048145985709E470@MWHPR21MB0159.namprd21.prod.outlook.com>
-	<CADYoBw0RjiW2as9jGtPg92E8XK3KR+gM9C5vjC7HHsBauFn4ug@mail.gmail.com>
-	<CADYoBw19GifmUR=Rztkzzc-v3-zWR6frjiNb_wjzsevreAqPDQ@mail.gmail.com>
-	<CAFEAcA9_+wZJa7Ht6EHCCZYm+hrfdbjd9gUmVJPGgZ0yvbZOPA@mail.gmail.com>
-	<MWHPR21MB0480DE1F826056BC8377EE289E250@MWHPR21MB0480.namprd21.prod.outlook.com>
-	<CADYoBw31C0Z2vp0S0ZFBOC6A3146wxtZWvzJabACkGh44ZwC0w@mail.gmail.com>
-	<MWHPR21MB0480A1F01D2CEF51E7CE21B09E3A0@MWHPR21MB0480.namprd21.prod.outlook.com>
-	<CADYoBw1Ro5gxROvhCVXGv0=-Y8zXmGbKR3D6xOqhkb0zp__LkA@mail.gmail.com>
-	<CADYoBw27wU3CsYPeP7ONFWt4aj+6tvzwU5roDSOKz8qq1n8GSg@mail.gmail.com>
-	<CAFEAcA--i8RVKaBw5yXn4xRXBy5S+Yk=WDNKbuqzfDxn6jjtOA@mail.gmail.com>
-	<CADYoBw36gPOyiK36WaS0v_2R=iuWYL-sQAtffrZZJU2DpMv5Bw@mail.gmail.com>
-User-Agent: Alpine 2.21 (BSF 202 2017-01-01)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] BCM2837 and machine raspi3
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfF-0002Gj-Rk
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:10 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44334)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfF-0002F2-KJ; Tue, 14 Aug 2018 08:43:09 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfE-0006r7-Hd; Tue, 14 Aug 2018 13:43:08 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 14 Aug 2018 13:42:52 +0100
+Message-Id: <20180814124254.5229-9-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180814124254.5229-1-peter.maydell@linaro.org>
+References: <20180814124254.5229-1-peter.maydell@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 08/10] target/arm: Permit accesses to ELR_Hyp
+ from Hyp mode via MSR/MRS (banked)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,30 +78,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: edgari@xilinx.com, Luc Michel <luc.michel@greensocs.com>,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ChvVoQnAx2CE
+X-TUID: E+EeoKUYGHZ0
 
-On Tue, 23 Jan 2018, bzt bzt wrote:
-> It is not annoying at all, it's simply silly. Are you really thought I
-> would do *your* job?
-> "Only two things are infinite, the universe and the human stupidity, and
-> I'm not sure about the former!". Actually I'm very entertained :-D :-D :-D
->
-> But seriously, I've showed you a way how to add raspi3, the rest is up to
-> you. I won't do anything more about it, I'm not a paid qemu maintainer
-> whatsoever!
-> Again, my patch is working for me, it does not broke any existing raspi2
-> machines, and I'm very happy about using it for more than half a year now!
-> These are the facts, everything else is just talking.
+The MSR (banked) and MRS (banked) instructions allow accesses to ELR_Hyp
+from either Monitor or Hyp mode. Our translate time check
+was overly strict and only permitted access from Monitor mode.
 
-OK, sorry for trying to help. I'm not a paid QEMU developer and don't use 
-ARM emulation so I don't really care about it. Please exclude me from this 
-thread in all furhter correspondence.
+The runtime check wo do in msr_mrs_banked_exc_checks() had the
+correct code in it, but never got there because of the earlier
+"currmode == tgtmode" check. Special case ELR_Hyp.
 
-Thank you,
-BALATON Zoltan
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/op_helper.c | 22 +++++++++++-----------
+ target/arm/translate.c | 10 +++++++---
+ 2 files changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index d550978b5b9..952b8d122b7 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -611,6 +611,14 @@ static void msr_mrs_banked_exc_checks(CPUARMState *env, uint32_t tgtmode,
+      */
+     int curmode = env->uncached_cpsr & CPSR_M;
+ 
++    if (regno == 17) {
++        /* ELR_Hyp: a special case because access from tgtmode is OK */
++        if (curmode != ARM_CPU_MODE_HYP && curmode != ARM_CPU_MODE_MON) {
++            goto undef;
++        }
++        return;
++    }
++
+     if (curmode == tgtmode) {
+         goto undef;
+     }
+@@ -638,17 +646,9 @@ static void msr_mrs_banked_exc_checks(CPUARMState *env, uint32_t tgtmode,
+     }
+ 
+     if (tgtmode == ARM_CPU_MODE_HYP) {
+-        switch (regno) {
+-        case 17: /* ELR_Hyp */
+-            if (curmode != ARM_CPU_MODE_HYP && curmode != ARM_CPU_MODE_MON) {
+-                goto undef;
+-            }
+-            break;
+-        default:
+-            if (curmode != ARM_CPU_MODE_MON) {
+-                goto undef;
+-            }
+-            break;
++        /* SPSR_Hyp, r13_hyp: accessible from Monitor mode only */
++        if (curmode != ARM_CPU_MODE_MON) {
++            goto undef;
+         }
+     }
+ 
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index f845da7c638..3f5751d4826 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4506,10 +4506,14 @@ static bool msr_banked_access_decode(DisasContext *s, int r, int sysm, int rn,
+         }
+         break;
+     case ARM_CPU_MODE_HYP:
+-        /* Note that we can forbid accesses from EL2 here because they
+-         * must be from Hyp mode itself
++        /*
++         * SPSR_hyp and r13_hyp can only be accessed from Monitor mode
++         * (and so we can forbid accesses from EL2 or below). elr_hyp
++         * can be accessed also from Hyp mode, so forbid accesses from
++         * EL0 or EL1.
+          */
+-        if (!arm_dc_feature(s, ARM_FEATURE_EL2) || s->current_el < 3) {
++        if (!arm_dc_feature(s, ARM_FEATURE_EL2) || s->current_el < 2 ||
++            (s->current_el < 3 && *regno != 17)) {
+             goto undef;
+         }
+         break;
+-- 
+2.18.0
+

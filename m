@@ -1,231 +1,268 @@
-Received: by 2002:a5d:4308:0:0:0:0:0 with SMTP id h8-v6csp1331560wrq;
-        Thu, 12 Jul 2018 05:55:13 -0700 (PDT)
-X-Google-Smtp-Source: AAOMgpc2jogtMXxpd9/iWiJ+JoIHzTvCADT0yPXGo512FAp6SpDnGj+LozhuyFKEYTRqMzP9h7Ad
-X-Received: by 2002:a0c:a244:: with SMTP id f62-v6mr2188904qva.70.1531400113567;
-        Thu, 12 Jul 2018 05:55:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1531400113; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4030826wru;
+        Tue, 14 Aug 2018 05:44:25 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPx4OsaSCDYC0S3aQt4pxoZQzqj953mn0A647qC6nxbknHSgOq8VXORbTsyl0eZk7sr7ux/O
+X-Received: by 2002:a37:2bc5:: with SMTP id r66-v6mr19617300qkr.3.1534250664967;
+        Tue, 14 Aug 2018 05:44:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534250664; cv=none;
         d=google.com; s=arc-20160816;
-        b=Afx4XNPnnEMY5n9A50/ue6zcPAzcx3j0NAcFLWkXgBfLhfPHqCRJYDdDweNEKp0QKv
-         Mb03bL4qSkgInqjtfY5Ny4c47uWRDt93Vp+QIGykz9G37dgXV/Wfqgul1d0LfdDxd3Q3
-         muJ9yiHUTmSrA4FrvFIb3FXGX52ruQvLOZ1KOwTfbLMgYlbHmAhxjsr8WtYbwe1g/0Xa
-         gIJbUls3A2HzqV8+WhjbvynWikLRJT/i6nVpm8EOlvAHDD1RJ84gmiAlNN2U2Mj/apAN
-         2LtRQFaCUNc2Tb48mSyaOBgbESK0zc5UcXb2S+CUpltzTLqaSWiV+ErMXU3LqEytURJ8
-         XHJA==
+        b=brjLu2GNwPhZU0bEAAeCRg6Gk3H+y+A/D2b4qCUzxOrICiF0ZecpOw3JkcID5ytLuY
+         G1MgciesiDwPZ6emx47wElntggEJGPlscX0ed1S3doSoostbSh7X9NIVaT/vuiFkcFhA
+         eF0edwKZjhtW3/5tmJ2PdU9BqrBi9NQ3bK5VbCWaf1MAgp7sqMC89d6sfnehWeW7JGyr
+         nrk5UblT4ESJGhuDWlyz/9/9HbYOk4zIY9PzGOxsDJGW76y/d2d1QtumlWS2phy789Yz
+         UKdUdrLzd1Uaeek1kydHn3+oGP9mAcyx8V/CqgLDVkoapW+H6BabVmE29M6LGqlateXF
+         QhJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=xn4S55vUqvjpthgFm4pkan1ncFeFeuG1L11duDV0OIQ=;
-        b=blmB3qDu0ZaNCBmhLiXmRjMgxqQ8HSQ7p8DoD3PzlojyDJAwbEf02HNKfd9KG2h/jv
-         RfATh31WtX7lLYeBqW7xsv+DzCGghR3neyXFp5/Jj1HAFcsc9VSxZbU2N4o9RLECEqoj
-         R7CzUTmuyHmknMM32EtotZQeaOAVy9ZUlbnHJ4u1sEM4faxF+m/pyayCt6e15rx07jsf
-         JoHerLpmdkC6KMFw7IK5ycqVKWJJzAa4RfA9vm/EFXg89byLZCwkRPXMLAfVoi+ML0CH
-         uKWoJihr7T3VaQ5FkPC2NhHfOy7fwhs6fWMLH20HeUNYCOKslyPFaQytD691ls77gVUf
-         vmcw==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=drnOtHQZwQhi4LvNEJkDpU7amBQIJl7fh/EoVz9smPU=;
+        b=P3ABadSsxBnWUM5qDzS1vEkTJezQRN65rhZSO6me/rgCcFWDpKzL0yfNv0I4Z9BXnx
+         6XYWYAeF9tu4Kd3MpkJ2qbwNaCOsd2wxtvtWM3BqDPL1jOmLyUj4nGDa0OGHjrsIPSEA
+         85cbIMm2xd5zoC8Q3RJLnFu5N17fMIErdzKbRNcGHMxnr903uDAvMyoRmQfHkfi9FpCp
+         hBBbscHYsW+SBIqwjzevYcklltsRljLxDyE/Ccw2bbyT++CsH9T3wq8Y3PTXVoZY5rHg
+         JxhTj8tewJK9gIq20M9Pag9Sk66ee0GU/DBpX8RSfaYy7i6ZP+NM5JF4lCFUNF8vPH0F
+         tDiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bu0Hvhfb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z5-v6si10011758qkl.2.2018.07.12.05.55.13
+        by mx.google.com with ESMTPS id u15-v6si6703412qta.385.2018.08.14.05.44.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 12 Jul 2018 05:55:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 14 Aug 2018 05:44:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bu0Hvhfb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59602 helo=lists.gnu.org)
+Received: from localhost ([::1]:44163 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fdb7p-0007U5-3n
-	for alex.bennee@linaro.org; Thu, 12 Jul 2018 08:55:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46591)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fpYgS-0006QS-EO
+	for alex.bennee@linaro.org; Tue, 14 Aug 2018 08:44:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43858)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdb7X-0007Tb-UK
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 08:54:56 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfJ-0005XV-Gz
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdb7X-0002IF-2D
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 08:54:56 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34893)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdb7W-0002I3-S8
-	for qemu-devel@nongnu.org; Thu, 12 Jul 2018 08:54:54 -0400
-Received: by mail-oi0-x241.google.com with SMTP id i12-v6so55563970oik.2
-	for <qemu-devel@nongnu.org>; Thu, 12 Jul 2018 05:54:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=xn4S55vUqvjpthgFm4pkan1ncFeFeuG1L11duDV0OIQ=;
-	b=bu0HvhfbTjJi/0gG+q+P/hR/sEEciIaD5mPA7oZRiBp17GsoweGx0tpg7rqjX8FPHY
-	Z7OKElpN45Y5LWyI2kxa2f8zVBGjO0Mcinyjk4MRSk6yDXX3nJ3svFLulFB7aRRrrkZF
-	fWb/RU056NEepbMkB2VZVp9KMSc0FqnwoQJ1g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=xn4S55vUqvjpthgFm4pkan1ncFeFeuG1L11duDV0OIQ=;
-	b=tZxs7niI6Jpw9tPCCnc/6wazqJV0SRXRG8OmgSZ4UUscNsBgmPXJMKx4gjIF4pRp9S
-	l0lfB6iV0nxZzkkMugklIlHhbld3lFF0yEfuWNqHzVCT2G0tTpnYtxfgZFf32Ps3n3pU
-	BTXAxiUN6U5SIlIGJUG7C92Hkc6ncVmxQa6wgt3WlSW4iH9CZ+Jpbez6Bk9Idj6BeA1J
-	2B7IBBoLCBUhuxAR8oTReQPHAIrDio9UHksbYkgG+FTjvxpqQFavTV456+5hCRjf3k+p
-	cb6r+7hvehDnjN2yvwF76gw/2XwQwjynavHPZKPe0zo/lSas/PaIWjUVtfIh8FSayaiV
-	TNHg==
-X-Gm-Message-State: AOUpUlFFMPbv9p4u5ydM2s4ot68NzQH6KsR+SroBfZ+48Luk+G4PZKFo
-	akYBplr3UP6EdTQbTqtxfGcNXRCb5SlROCfLYHDEWw==
-X-Received: by 2002:aca:5f0a:: with SMTP id
-	t10-v6mr2031218oib.337.1531400094073; 
-	Thu, 12 Jul 2018 05:54:54 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 05:54:33
-	-0700 (PDT)
-In-Reply-To: <20180629132954.24269-11-luc.michel@greensocs.com>
-References: <20180629132954.24269-1-luc.michel@greensocs.com>
-	<20180629132954.24269-11-luc.michel@greensocs.com>
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfH-0002KA-PA
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:13 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44346)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfH-0002IZ-GC; Tue, 14 Aug 2018 08:43:11 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfG-0006sF-Dd; Tue, 14 Aug 2018 13:43:10 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Jul 2018 13:54:33 +0100
-Message-ID: <CAFEAcA_YxdvZGuBTKoMk+Wd4KP0LXfk1i+FvX-=3i=+aautRiA@mail.gmail.com>
-To: Luc Michel <luc.michel@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 14 Aug 2018 13:42:54 +0100
+Message-Id: <20180814124254.5229-11-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180814124254.5229-1-peter.maydell@linaro.org>
+References: <20180814124254.5229-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-devel] [PATCH v3 10/20] intc/arm_gic: Implement
- virtualization extensions in gic_(activate_irq|drop_prio)
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 10/10] target/arm: Implement support for taking
+ exceptions to Hyp mode
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u4+aEmC7rho8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgari@xilinx.com, Luc Michel <luc.michel@greensocs.com>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LaomsCozq1Uh
 
-On 29 June 2018 at 14:29, Luc Michel <luc.michel@greensocs.com> wrote:
-> Implement virtualization extensions in gic_activate_irq() and
-> gic_drop_prio() and in gic_get_prio_from_apr_bits() called by
-> gic_drop_prio().
->
-> When the current CPU is a vCPU:
->   - Use GIC_VIRT_MIN_BPR and GIC_VIRT_NR_APRS instead of their non-virt
->   counterparts,
->   - the vCPU APR is stored in the virtual interface, in h_apr.
->
-> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> ---
->  hw/intc/arm_gic.c | 45 ++++++++++++++++++++++++++++++++++++---------
->  1 file changed, 36 insertions(+), 9 deletions(-)
->
-> diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-> index d55a88bb33..d61c2dd557 100644
-> --- a/hw/intc/arm_gic.c
-> +++ b/hw/intc/arm_gic.c
-> @@ -276,16 +276,23 @@ static void gic_activate_irq(GICState *s, int cpu, int irq)
->       * and update the running priority.
->       */
->      int prio = gic_get_group_priority(s, cpu, irq);
-> -    int preemption_level = prio >> (GIC_MIN_BPR + 1);
-> +    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
-> +    int preemption_level = prio >> (min_bpr + 1);
->      int regno = preemption_level / 32;
->      int bitno = preemption_level % 32;
-> +    uint32_t *papr = NULL;
->
-> -    if (gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
-> -        s->nsapr[regno][cpu] |= (1 << bitno);
-> +    if (gic_is_vcpu(cpu)) {
-> +        assert(regno == 0);
-> +        papr = &s->h_apr[gic_get_vcpu_real_id(cpu)];
-> +    } else if (gic_has_groups(s) && gic_test_group(s, irq, cpu)) {
-> +        papr = &s->nsapr[regno][cpu];
->      } else {
-> -        s->apr[regno][cpu] |= (1 << bitno);
-> +        papr = &s->apr[regno][cpu];
->      }
->
-> +    *papr |= (1 << bitno);
-> +
->      s->running_priority[cpu] = prio;
->      gic_set_active(s, irq, cpu);
->  }
-> @@ -296,12 +303,22 @@ static int gic_get_prio_from_apr_bits(GICState *s, int cpu)
->       * on the set bits in the Active Priority Registers.
->       */
->      int i;
-> -    for (i = 0; i < GIC_NR_APRS; i++) {
-> -        uint32_t apr = s->apr[i][cpu] | s->nsapr[i][cpu];
-> +    int min_bpr = gic_is_vcpu(cpu) ? GIC_VIRT_MIN_BPR : GIC_MIN_BPR;
-> +    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
-> +
-> +    for (i = 0; i < nr_aprs; i++) {
-> +        uint32_t apr;
-> +
-> +        if (gic_is_vcpu(cpu)) {
-> +            apr = s->h_apr[gic_get_vcpu_real_id(cpu)];
-> +        } else {
-> +            apr = s->apr[i][cpu] | s->nsapr[i][cpu];
-> +        }
-> +
->          if (!apr) {
->              continue;
->          }
-> -        return (i * 32 + ctz32(apr)) << (GIC_MIN_BPR + 1);
-> +        return (i * 32 + ctz32(apr)) << (min_bpr + 1);
+Implement the necessary support code for taking exceptions
+to Hyp mode in AArch32.
 
-Since GIC_VIRT_NR_APRS is always 1, I think that rather than
-merging the vcpu code into the loop here it would be clearer
-to just special case it at the top of the function:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 146 +++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 123 insertions(+), 23 deletions(-)
 
-   if (gic_is_vcpu(cpu)) {
-       uint32_t apr = s->h_apr[gic_get_vcpu_real_id(cpu)];
-       if (apr) {
-           return ctz32(apr) << (GIC_VIRT_MIN_BPR + 1);
-       } else {
-           return 0x100;
-       }
-   }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 80855302089..167203ac664 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8013,6 +8013,123 @@ void aarch64_sync_64_to_32(CPUARMState *env)
+     env->regs[15] = env->pc;
+ }
+ 
++static void take_aarch32_exception(CPUARMState *env, int new_mode,
++                                   uint32_t mask, uint32_t offset,
++                                   uint32_t newpc)
++{
++    /* Change the CPU state so as to actually take the exception. */
++    switch_mode(env, new_mode);
++    /*
++     * For exceptions taken to AArch32 we must clear the SS bit in both
++     * PSTATE and in the old-state value we save to SPSR_<mode>, so zero it now.
++     */
++    env->uncached_cpsr &= ~PSTATE_SS;
++    env->spsr = cpsr_read(env);
++    /* Clear IT bits.  */
++    env->condexec_bits = 0;
++    /* Switch to the new mode, and to the correct instruction set.  */
++    env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
++    /* Set new mode endianness */
++    env->uncached_cpsr &= ~CPSR_E;
++    if (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_EE) {
++        env->uncached_cpsr |= CPSR_E;
++    }
++    env->daif |= mask;
++
++    if (new_mode == ARM_CPU_MODE_HYP) {
++        env->thumb = (env->cp15.sctlr_el[2] & SCTLR_TE) != 0;
++        env->elr_el[2] = env->regs[15];
++    } else {
++        /*
++         * this is a lie, as there was no c1_sys on V4T/V5, but who cares
++         * and we should just guard the thumb mode on V4
++         */
++        if (arm_feature(env, ARM_FEATURE_V4T)) {
++            env->thumb =
++                (A32_BANKED_CURRENT_REG_GET(env, sctlr) & SCTLR_TE) != 0;
++        }
++        env->regs[14] = env->regs[15] + offset;
++    }
++    env->regs[15] = newpc;
++}
++
++static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
++{
++    /*
++     * Handle exception entry to Hyp mode; this is sufficiently
++     * different to entry to other AArch32 modes that we handle it
++     * separately here.
++     *
++     * The vector table entry used is always the 0x14 Hyp mode entry point,
++     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
++     * The offset applied to the preferred return address is always zero
++     * (see DDI0487C.a section G1.12.3).
++     * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ values.
++     */
++    uint32_t addr, mask;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    switch (cs->exception_index) {
++    case EXCP_UDEF:
++        addr = 0x04;
++        break;
++    case EXCP_SWI:
++        addr = 0x14;
++        break;
++    case EXCP_BKPT:
++        /* Fall through to prefetch abort.  */
++    case EXCP_PREFETCH_ABORT:
++        env->cp15.ifar_s = env->exception.vaddress;
++        qemu_log_mask(CPU_LOG_INT, "...with HIFAR 0x%x\n",
++                      (uint32_t)env->exception.vaddress);
++        addr = 0x0c;
++        break;
++    case EXCP_DATA_ABORT:
++        env->cp15.dfar_s = env->exception.vaddress;
++        qemu_log_mask(CPU_LOG_INT, "...with HDFAR 0x%x\n",
++                      (uint32_t)env->exception.vaddress);
++        addr = 0x10;
++        break;
++    case EXCP_IRQ:
++        addr = 0x18;
++        break;
++    case EXCP_FIQ:
++        addr = 0x1c;
++        break;
++    case EXCP_HVC:
++        addr = 0x08;
++        break;
++    case EXCP_HYP_TRAP:
++        addr = 0x14;
++    default:
++        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
++    }
++
++    if (cs->exception_index != EXCP_IRQ && cs->exception_index != EXCP_FIQ) {
++        env->cp15.esr_el[2] = env->exception.syndrome;
++    }
++
++    if (arm_current_el(env) != 2 && addr < 0x14) {
++        addr = 0x14;
++    }
++
++    mask = 0;
++    if (!(env->cp15.scr_el3 & SCR_EA)) {
++        mask |= CPSR_A;
++    }
++    if (!(env->cp15.scr_el3 & SCR_IRQ)) {
++        mask |= CPSR_I;
++    }
++    if (!(env->cp15.scr_el3 & SCR_IRQ)) {
++        mask |= CPSR_F;
++    }
++
++    addr += env->cp15.hvbar;
++
++    take_aarch32_exception(env, ARM_CPU_MODE_HYP, mask, 0, addr);
++}
++
+ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -8048,6 +8165,11 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+         env->cp15.mdscr_el1 = deposit64(env->cp15.mdscr_el1, 2, 4, moe);
+     }
+ 
++    if (env->exception.target_el == 2) {
++        arm_cpu_do_interrupt_aarch32_hyp(cs);
++        return;
++    }
++
+     /* TODO: Vectored interrupt controller.  */
+     switch (cs->exception_index) {
+     case EXCP_UDEF:
+@@ -8155,29 +8277,7 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+         env->cp15.scr_el3 &= ~SCR_NS;
+     }
+ 
+-    switch_mode (env, new_mode);
+-    /* For exceptions taken to AArch32 we must clear the SS bit in both
+-     * PSTATE and in the old-state value we save to SPSR_<mode>, so zero it now.
+-     */
+-    env->uncached_cpsr &= ~PSTATE_SS;
+-    env->spsr = cpsr_read(env);
+-    /* Clear IT bits.  */
+-    env->condexec_bits = 0;
+-    /* Switch to the new mode, and to the correct instruction set.  */
+-    env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
+-    /* Set new mode endianness */
+-    env->uncached_cpsr &= ~CPSR_E;
+-    if (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_EE) {
+-        env->uncached_cpsr |= CPSR_E;
+-    }
+-    env->daif |= mask;
+-    /* this is a lie, as the was no c1_sys on V4T/V5, but who cares
+-     * and we should just guard the thumb mode on V4 */
+-    if (arm_feature(env, ARM_FEATURE_V4T)) {
+-        env->thumb = (A32_BANKED_CURRENT_REG_GET(env, sctlr) & SCTLR_TE) != 0;
+-    }
+-    env->regs[14] = env->regs[15] + offset;
+-    env->regs[15] = addr;
++    take_aarch32_exception(env, new_mode, mask, offset, addr);
+ }
+ 
+ /* Handle exception entry to a target EL which is using AArch64 */
+-- 
+2.18.0
 
-
->      }
->      return 0x100;
->  }
-> @@ -325,9 +342,19 @@ static void gic_drop_prio(GICState *s, int cpu, int group)
->       * might not do so, and interrupts that should not preempt might do so.
->       */
->      int i;
-> +    int nr_aprs = gic_is_vcpu(cpu) ? GIC_VIRT_NR_APRS : GIC_NR_APRS;
-> +
-> +    for (i = 0; i < nr_aprs; i++) {
-> +        uint32_t *papr = NULL;
-> +
-> +        if (gic_is_vcpu(cpu)) {
-> +            papr = &s->h_apr[gic_get_vcpu_real_id(cpu)];
-> +        } else if (group) {
-> +            papr = &s->nsapr[i][cpu];
-> +        } else {
-> +            papr = &s->apr[i][cpu];
-> +        }
->
-> -    for (i = 0; i < GIC_NR_APRS; i++) {
-> -        uint32_t *papr = group ? &s->nsapr[i][cpu] : &s->apr[i][cpu];
->          if (!*papr) {
->              continue;
->          }
-
-Similarly here.
-
-thanks
--- PMM

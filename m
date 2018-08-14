@@ -1,74 +1,143 @@
-Received: by 10.28.4.212 with SMTP id 203csp813006wme;
-        Thu, 19 Apr 2018 08:56:30 -0700 (PDT)
-X-Google-Smtp-Source: AIpwx49K3nlTX1cwTeTsOr7NUGpmrrMxSnBJ/hnuGQQEJAQmbtqGfdQcre46RgaxFiDfHG8QQOGA
-X-Received: by 10.28.17.142 with SMTP id 136mr4738812wmr.38.1524153390525;
-        Thu, 19 Apr 2018 08:56:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1524153390; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4029865wru;
+        Tue, 14 Aug 2018 05:43:22 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPz/h0F2z1MlVQG5R1OcSzZUUqTpsz4Zdjo6r7fPhrwP0hoLflc63B6Ef0tMnB6q6of8Lqqs
+X-Received: by 2002:a37:d49b:: with SMTP id s27-v6mr19629848qks.220.1534250602663;
+        Tue, 14 Aug 2018 05:43:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534250602; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rxwk9Dr5gV+BlPR7cmeAW2ctRbkokkvCXnqhgaXB72Rbyezj81/egjQ+Gl5Q7RslgQ
-         T0pwvwi3I0/4yg+DV3KR+bvQap+M3tL8y2UpNtmPGIhlVeTivmByV1pBQngIUjCQdvDV
-         a/iqTM5vY4ivlJTJiOgE+923m/v6Q1TVfBlWDr9PFo0rrJ4/BlAlvKXchKM/EpBu0IF7
-         KgVWEygTtn7snEQwXxYQd2Y5Gwh0tQq3+aJY2Bs49shpC2nNqZy87E9Zm6CHCTAFsmP3
-         MMAhqxzSB6YEGiSnT1pGoA9FN038LFffyZg455GgEyJHfUBdMd+EEmaV1bBG9X1sb2eO
-         dgjw==
+        b=GT7nxjeqc2kH2tqhlKgvj9MUHZ85B9wq21wwpUdWiwjDh399Dkzdpz4AmiiwxIRYuy
+         WNB2Rz4mjMnBiI1PTWSkdh/cnX6H6PxcAfVoyeAT0LK1v2KTJqv//4qJz/XIYIheUHdZ
+         rwVTGaytliujHfWCcEGtFVHuvAAdeEw1szII4D0LNDQoLoZFdmUSoDdfTl7JaUZ2byGO
+         ZT855lfc9jWw9GaIAm+G4ZnbY53e07uJnlIHcNZzn5K0uY42yR3OP/+KE5o562WCxYfp
+         FoJwubswOgALx3PrwHGyR8KQIOGoA0+ViRKK2zQHZTeWT3zXU6HatxxEJiy4pkPHQCpj
+         4UXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:arc-authentication-results;
-        bh=nDnRBQTCL/EKZeVTRtt2YSIH9IqlAC0RB4lBnXQJwFk=;
-        b=MZZ1Gfbl89t9bsG8qbI4SwEJ5sD8kr2Ic1ZODWlBp6rcGEEYVK7S1LDALfXAontC58
-         6cfvbAw1ULoILc/vjqTrxzt72nYPuNOjfcV2qtm/lklow+z9h5Eayih9XJYy4eVQJXsC
-         XtHDfDdkupBlW6z6lfqBSQ+QoKDOPt3ueoicmKZTq4ANlExUP4CmE5VxtLWcgi+4PGYp
-         rbdc9v9AkGMZK1TLjeV9NCHwwlVFb5L6ynZYRFnD+6ceInk5LUl4uCf4gBUYaHJVH6Rd
-         cAtlOqlFKEAQPXqj0QTAEHvG+wHSxDJmMdf1NiGCF/jYBnRlfDOGgdCswrVNndsYv3o3
-         Htag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=Z9CtM/zj2xh46OiafkreluYoWpJLz4isYU0Xs7MBgOM=;
+        b=wjRuDaQ0LsDyLZA++Qq+FpbBiiOPbXS3mmcX40CtVLs650W8auXod/mesvxqfCExYM
+         40AX5hgyBG6Wo+IXkUpKfCVpskIQ4ZieyROWR4nW4D0Gla5kVm/ZTv+Q9gXXt/T2DvgF
+         knfd+fWroKOGFvvnoawLE1yJ0YGKLWFUjABGK+rQB9Pnoto9tFPZx8D3nc9/rrFovuUW
+         aW+/SLeCi7lonYg3zgI3THbw5AEzQKgfk3NjTE0By4PxbMQdh8h1HaatpBF3S3DAKUeW
+         UE6aNsCcmvyk4xdsHdEeUoBp4a5iJnERE2K+e9KYUI1uvrA5Dj1apVJAOgVNnkgJlppS
+         CpmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
-Return-Path: <abdallah.bouassida@lauterbach.com>
-Received: from smtp1.lauterbach.com (smtp1.lauterbach.com. [62.154.241.196])
-        by mx.google.com with ESMTPS id x42-v6si3095274wrb.411.2018.04.19.08.56.30
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o126-v6si1918201qke.291.2018.08.14.05.43.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Apr 2018 08:56:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) client-ip=62.154.241.196;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 14 Aug 2018 05:43:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of abdallah.bouassida@lauterbach.com designates 62.154.241.196 as permitted sender) smtp.mailfrom=abdallah.bouassida@lauterbach.com
-Received: (qmail 22652 invoked by uid 484); 19 Apr 2018 15:56:29 -0000
-X-Qmail-Scanner-Diagnostics: from 41.224.44.126 by smtp1.lauterbach.com (envelope-from <abdallah.bouassida@lauterbach.com>, uid 484) with qmail-scanner-2.11 
- (mhr: 1.0. clamdscan: 0.99/21437. spamassassin: 3.4.0.  
- Clear:RC:1(41.224.44.126):. 
- Processed in 0.177506 secs); 19 Apr 2018 15:56:29 -0000
-Received: from unknown (HELO abo-VirtualBox.8.8.4.4) (Authenticated_SSL:abouassida@[41.224.44.126])
-          (envelope-sender <abdallah.bouassida@lauterbach.com>)
-          by smtp1.lauterbach.com (qmail-ldap-1.03) with ECDHE-RSA-AES256-SHA encrypted SMTP
-          for <qemu-devel@nongnu.org>; 19 Apr 2018 15:56:29 -0000
-From: Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-To: qemu-devel@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Cc: qemu-arm@nongnu.org,
-	khaled.jmal@lauterbach.com,
-	Abdallah Bouassida <abdallah.bouassida@lauterbach.com>
-Subject: [PATCH v6 0/3] target/arm: Add a dynamic XML-description of the cp-registers to GDB
-Date: Thu, 19 Apr 2018 16:56:23 +0100
-Message-Id: <1524153386-3550-1-git-send-email-abdallah.bouassida@lauterbach.com>
-X-Mailer: git-send-email 2.7.4
-X-TUID: ZWKC+xxsWq0a
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44152 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fpYfS-0005Uw-40
+	for alex.bennee@linaro.org; Tue, 14 Aug 2018 08:43:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43712)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfE-0005US-L7
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:09 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfD-0002DC-Rm
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:08 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44302)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfD-0001z2-J8; Tue, 14 Aug 2018 08:43:07 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fpYf5-0006nM-6B; Tue, 14 Aug 2018 13:42:59 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 14 Aug 2018 13:42:44 +0100
+Message-Id: <20180814124254.5229-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 00/10] target/arm: Some pieces of support for
+ 32-bit Hyp mode
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgari@xilinx.com, Luc Michel <luc.michel@greensocs.com>,
+	patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XDFfFY9151jP
 
-The previous version:
-http://patchwork.ozlabs.org/project/qemu-devel/list/?series=33714
+Now we have virtualization support in the GICv2 emulation,
+I thought I'd have a look at how much we were still missing
+for being able to enable EL2 support for AArch32.
+This set of patches fixes some minor missing pieces:
+ * various small bugs in cp15 registers or places where
+   we were missing the 32-bit version of a 64-bit register
+ * a bugfix for MSR/MRS (banked), which were not allowing
+   Hyp mode to access ELR_Hyp
+ * implementation of the ERET instruction for A32/T32
+ * support for taking exceptions to Hyp mode (the largest
+   of these missing bits)
 
-Abdallah Bouassida (3):
-  target/arm: Add "ARM_CP_NO_GDB" as a new bit field for ARMCPRegInfo
-    type
-  target/arm: Add "_S" suffix to the secure version of a sysreg
-  target/arm: Add the XML dynamic generation
+This isn't complete, but I thought I'd push these patches
+out for review. My test setup is that I have another
+couple of patches, one which fixes up hw/arm/boot.c to
+boot AArch32 kernels in Hyp mode if it exists, and one
+which sets ARM_FEATURE_EL2 on our A15 model. With those I
+can get an outer kernel to boot with KVM support and try
+to run an inner guest kernel. The inner kernel boots OK
+but gets random segfaults in its userspace -- I haven't
+tracked down why this is yet...
 
- gdbstub.c            | 10 +++++++
- include/qom/cpu.h    |  5 +++-
- target/arm/cpu.c     |  1 +
- target/arm/cpu.h     | 29 +++++++++++++++++++-
- target/arm/gdbstub.c | 76 ++++++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/helper.c  | 57 ++++++++++++++++++++++++++++++---------
- 6 files changed, 164 insertions(+), 14 deletions(-)
+Some bits that are definitely missing:
+ * ATS1HR, ATS1HW address translation ops
+ * I need to check that the trap semantics for AArch32
+   regs line up with their AArch64 counterparts
+
+I also noticed that we fail to implement really quite a lot
+of the HCR_EL2 trap semantics for either AArch64 or AArch32,
+to the extent that I'm surprised that nested guests work
+under AArch64 :-)
+
+This patchset is based on top of my target-arm.for-3.1
+branch.
+
+thanks
+-- PMM
+
+Peter Maydell (10):
+  target/arm: Correct typo in HAMAIR1 regdef name
+  target/arm: Add missing .cp = 15 to HMAIR1 and HAMAIR1 regdefs
+  target/arm: Implement RAZ/WI HACTLR2
+  target/arm: Implement AArch32 HVBAR
+  target/arm: Implement AArch32 HCR and HCR2
+  target/arm: Implement AArch32 Hyp FARs
+  target/arm: Implement ESR_EL2/HSR for AArch32 and no-EL2
+  target/arm: Permit accesses to ELR_Hyp from Hyp mode via MSR/MRS
+    (banked)
+  target/arm: Implement AArch32 ERET instruction
+  target/arm: Implement support for taking exceptions to Hyp mode
+
+ target/arm/helper.c    | 226 ++++++++++++++++++++++++++++++++++-------
+ target/arm/op_helper.c |  22 ++--
+ target/arm/translate.c |  41 +++++++-
+ 3 files changed, 236 insertions(+), 53 deletions(-)
 
 -- 
-2.7.4
+2.18.0
+

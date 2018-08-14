@@ -1,111 +1,71 @@
-Received: by 10.25.0.6 with SMTP id 6csp472232lfa;
-        Fri, 12 May 2017 16:51:10 -0700 (PDT)
-X-Received: by 10.237.60.77 with SMTP id u13mr6104295qte.18.1494633070671;
-        Fri, 12 May 2017 16:51:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1494633070; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp4030348wru;
+        Tue, 14 Aug 2018 05:43:54 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPyNesF0WmIUx/hqA+0fXT8C0/+j6T+F04TfqFhI1ldn7RRjqgCkkdEfcKaybctvn4F0Bmn9
+X-Received: by 2002:a37:b001:: with SMTP id z1-v6mr19662838qke.156.1534250634094;
+        Tue, 14 Aug 2018 05:43:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534250634; cv=none;
         d=google.com; s=arc-20160816;
-        b=GBaQ/GaseBX9qibkPvs2GRW6Mb7a/E4vAln0EeR3KfeOXs4xPP/PVplUwfdsCljzI8
-         m07Bw9FOG5zn4Rf/DjWzOvzgurZqCLyMZih9RiD0vcix1/5F7dbha/2t660WsRbcAwog
-         DkMb6TZHqhT9pgrgr2wW7MzH2UO+uf720IdTFZEmknocy8Tkj+cHdVKlICf9pgrGx/iP
-         beU7MEstkEjWVdV9brzvlYDuqObGDqK6S14AerZoztQ0m99kARCNkkz4Vm3BCMNBY3rA
-         WD0g/ZhkPDMmfxNMhsld9ql9xkdauV/FL901ydsRPguQMvP3NDb2BXref12famSwE+1A
-         5TIw==
+        b=SgqwfiOBQWFgsKe8WkgKMr2cFB9JJtLBot02PYQ19oUllyUGTwlLzmhRU7nRRGjhIs
+         v4gK35GXq2OyQPVdUnGJl53jSA4zQsQsKN4H+gc76TUGg7P6eYJS3Bm9duEQz5qixG6L
+         xw6PfbdfxWDiZVooA+YnrV4YA8zObGnF9iJCviA62q067UMXz37vtA7bnthl+xgdazPK
+         swbTN4nXLLmzHJpTyEXGfsqv7jsrnN8Dt5AZVKW7GguDqLH1JiINaXAh7oZwedZm6/EM
+         zxoOFxMPlqAKZZvUXSIAxubXEiY4RB0xDGA77CTdWS7e6R1KuIM8MbqVAwAexsFY/mJ4
+         aqGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:dkim-signature
-         :arc-authentication-results;
-        bh=r3+ZYTg9dgodJHEWz2cXFGS6Vo47X08BKn3Onvl2r2E=;
-        b=LzMnmnMpTZu2a9wXw7lleyythlzwREEO8anyG5US3BG79WyV1NMPksxF1JCHnJ9S9N
-         VEx3pJKpZ2bCLy4DI4X17i4RVFVoYKp4wwIBz1Or8Yd6aptZCsJdCixYLfTz9LK2kHC+
-         ALfdeV/n5GnHZE8n64//0BV/9BNn5OoHLtFftio6QEJWfLau/ALagKObntpmy5IJed8R
-         A1CRcCbTahHlx4UagDIRsdHGMLRtlP/MpjDFSQMliUtTttO/P1N5dPUjNmqTdJSW7U22
-         r1nOpgzQ3m1kg56v/MQ8YjdaaX6z7GOSy+LParzyxy+2iUa9f5bPgnlYEg8952UMHiM6
-         285g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=8MwzJ9f/vxLE1fxiIaPq2ABIdXNCoD1QTj1Ix0bVFW4=;
+        b=wuvuK4j0eAguSzKTjypLUIo7e/jXme3aopNfRF67QoBwsgRaWNzBIoNK1WlzJgPr+u
+         +PZbkvnK+Eq1/FMBQewNOwlrCQSekoURQ/V63zgHUYSffWJwaIToA4slTAKJS15u3L09
+         UQzmB7iwQHdP992eJmCmSTatiGYEQkBJyOAMH+FApBb2O6WJNP9C00+f0rppW92Pvvi9
+         iA0206GNVLp0WvX/S7NpK+sVIgGM502TPSZbOQ9DOIn+3WBTwCwWwgUEQhwYospyVXIT
+         Te8K+wxOConEtvUQFp8KNgka7ChlADUVbMp6cXH8SANdmgkbu55G6Cer4JBDAceJB4K2
+         Xypw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s19si4645303qts.284.2017.05.12.16.51.10
+        by mx.google.com with ESMTPS id g2-v6si2616257qtj.99.2018.08.14.05.43.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 12 May 2017 16:51:10 -0700 (PDT)
+        Tue, 14 Aug 2018 05:43:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:55739 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44160 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1d9KKy-0001x2-1q
-	for alex.bennee@linaro.org; Fri, 12 May 2017 19:51:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50105)
+	id 1fpYfx-00062W-Gw
+	for alex.bennee@linaro.org; Tue, 14 Aug 2018 08:43:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43784)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d9KKr-0001v5-EX
-	for qemu-arm@nongnu.org; Fri, 12 May 2017 19:51:02 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfH-0005VM-Th
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d9KKn-0004ib-GJ
-	for qemu-arm@nongnu.org; Fri, 12 May 2017 19:51:01 -0400
-Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:34046)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1d9KKn-0004hv-5w; Fri, 12 May 2017 19:50:57 -0400
-Received: by mail-qt0-x232.google.com with SMTP id l7so17810948qte.1;
-	Fri, 12 May 2017 16:50:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding;
-	bh=r3+ZYTg9dgodJHEWz2cXFGS6Vo47X08BKn3Onvl2r2E=;
-	b=NdL59/nAhkhfj6XxOE2jmXlkz/eSa/Fa9z7pNOK/cQIRt2vXqR1ArjvBH9r4gFLYi/
-	uiqSqnPkWF2MHqRR0+wST35bdmOD1G6wjBJUqik4RKH6v1eiJyc/ti3vwxj6JtiQ6Jgs
-	QwNOI4ZxboU49LZAjuU0v0QRxx4jmXcz8cyF4Z33dpNYDnNZIOtigseqsD2E2+v06yjz
-	OAeCfkSP+Fts2EhLJ5rWuRPHTWUqmkuArYVL5izTHEG1unj+Xm1iRzJIs0EmLww1iGQS
-	QbLkOICJbtL/PR2EDnJ6uIyeo7sFwp0sNjdkh1xZuu1/fvz70SbpSHpfD2Ggna4CV/aD
-	58iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-transfer-encoding;
-	bh=r3+ZYTg9dgodJHEWz2cXFGS6Vo47X08BKn3Onvl2r2E=;
-	b=ICwfxVziv+5hoFxU/Ss8L0jiog9GkLJT5UOBXp8HYNkQKOcZZQ6yFQasSind6GqSWp
-	rwdaae56r5HLUABe1z32i1pW3fzPZ/BKTJapTR3eWV1LasYBwlyswJtafT5hXsqnzNvv
-	OVU2SUWA43SgsEeQ3M8wXcV1qrOFHsrte8yy0uC85hby9BzduDNgoXMk4NzAiGfe+OS/
-	ePq6u1f1SE6pwE61rGjYuRfOsntehhw4LSa/+ly4BEkgHYLtuSGXbajetHy0cfBHTIy1
-	8fF/vjlFw7MB6yd0hRViCMv+NfwQFUyoVr17gjih+kdd0H7bKsAaxKDWH0MvOp8JgXWF
-	vt9g==
-X-Gm-Message-State: AODbwcAsnMg1SH4QvFlVbrOk/sZSMRu+a2pPHoBY4JSV3CcbgkVvOC12
-	KyCpfQSTzqikNg==
-X-Received: by 10.200.38.132 with SMTP id 4mr5953411qto.99.1494633056587;
-	Fri, 12 May 2017 16:50:56 -0700 (PDT)
-Received: from [192.168.1.10] ([138.117.48.226])
-	by smtp.gmail.com with ESMTPSA id
-	k86sm3518924qkh.12.2017.05.12.16.50.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 12 May 2017 16:50:56 -0700 (PDT)
-To: Richard Henderson <rth@twiddle.net>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
-References: <20170512033543.6789-1-f4bug@amsat.org>
-	<20170512033543.6789-3-f4bug@amsat.org>
-	<f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e897850a-a1af-e11e-158b-de428dc6726b@amsat.org>
-Date: Fri, 12 May 2017 20:50:53 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101
-	Thunderbird/45.8.0
-MIME-Version: 1.0
-In-Reply-To: <f447c23f-f63c-f3bb-a1b9-f63e5aff4063@twiddle.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+	(envelope-from <pm215@archaic.org.uk>) id 1fpYfG-0002IB-Ow
+	for qemu-arm@nongnu.org; Tue, 14 Aug 2018 08:43:11 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44302)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfG-0001z2-GB; Tue, 14 Aug 2018 08:43:10 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fpYfB-0006pY-Na; Tue, 14 Aug 2018 13:43:05 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 14 Aug 2018 13:42:49 +0100
+Message-Id: <20180814124254.5229-6-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180814124254.5229-1-peter.maydell@linaro.org>
+References: <20180814124254.5229-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::232
-Subject: Re: [Qemu-arm] [PATCH v3 2/5] target/arm: optimize rev16() using
- extract op
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH 05/10] target/arm: Implement AArch32 HCR and HCR2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,22 +77,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: edgari@xilinx.com, Luc Michel <luc.michel@greensocs.com>,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DRMpdrkneSJp
+X-TUID: BRueTp1crRBc
 
-On 05/12/2017 01:50 PM, Richard Henderson wrote:
-> On 05/11/2017 08:35 PM, Philippe Mathieu-Daudé wrote:
->> -    tcg_gen_shri_i64(tcg_tmp, tcg_rn, 16);
->> -    tcg_gen_andi_i64(tcg_tmp, tcg_tmp, 0xffff);
->> +    tcg_gen_extract_i64(tcg_tmp, tcg_rn, 16, 0xffff);
->
-> So your new script didn't work then?  This should be "..., 16, 16);".
+The AArch32 HCR and HCR2 registers alias HCR_EL2
+bits [31:0] and [63:32]; implement them.
 
-Yeah this is wrong :(
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 39 +++++++++++++++++++++++++++++++++++----
+ 1 file changed, 35 insertions(+), 4 deletions(-)
 
-I hope I got it in the last patchset (v4).
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b6412fe9d1f..9701e413859 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3754,11 +3754,15 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 0, .opc2 = 0,
+       .access = PL2_RW,
+       .readfn = arm_cp_read_zero, .writefn = arm_cp_write_ignore },
+-    { .name = "HCR_EL2", .state = ARM_CP_STATE_AA64,
++    { .name = "HCR_EL2", .state = ARM_CP_STATE_BOTH,
+       .type = ARM_CP_NO_RAW,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW,
+-      .readfn = arm_cp_read_zero, .writefn = arm_cp_write_ignore },
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    { .name = "HCR2", .state = ARM_CP_STATE_AA32,
++      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 4,
++      .access = PL2_RW,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "CPTR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 2,
+       .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+@@ -3872,10 +3876,26 @@ static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+      * HCR_PTW forbids certain page-table setups
+      * HCR_DC Disables stage1 and enables stage2 translation
+      */
+-    if ((raw_read(env, ri) ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
++    if ((env->cp15.hcr_el2 ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
+         tlb_flush(CPU(cpu));
+     }
+-    raw_write(env, ri, value);
++    env->cp15.hcr_el2 = value;
++}
++
++static void hcr_writehigh(CPUARMState *env, const ARMCPRegInfo *ri,
++                          uint64_t value)
++{
++    /* Handle HCR2 write, i.e. write to high half of HCR_EL2 */
++    value = deposit64(env->cp15.hcr_el2, 32, 32, value);
++    hcr_write(env, NULL, value);
++}
++
++static void hcr_writelow(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    /* Handle HCR write, i.e. write to low half of HCR_EL2 */
++    value = deposit64(env->cp15.hcr_el2, 0, 32, value);
++    hcr_write(env, NULL, value);
+ }
+ 
+ static const ARMCPRegInfo el2_cp_reginfo[] = {
+@@ -3883,6 +3903,17 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.hcr_el2),
+       .writefn = hcr_write },
++    { .name = "HCR", .state = ARM_CP_STATE_AA32,
++      .type = ARM_CP_ALIAS,
++      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
++      .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.hcr_el2),
++      .writefn = hcr_writelow },
++    { .name = "HCR2", .state = ARM_CP_STATE_AA32,
++      .type = ARM_CP_ALIAS,
++      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 4,
++      .access = PL2_RW,
++      .fieldoffset = offsetofhigh32(CPUARMState, cp15.hcr_el2),
++      .writefn = hcr_writehigh },
+     { .name = "ELR_EL2", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 1,
+-- 
+2.18.0
 
-Thank for the review,
-
-Phil.

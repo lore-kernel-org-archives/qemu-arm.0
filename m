@@ -1,105 +1,105 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1563729wru;
-        Thu, 16 Aug 2018 00:59:02 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwXe+Ww3CkydO2ktbDZZAs6CuBh1TnZa9KzHV6rxGHnu2TTZmKejB1RT7CYZ0AHdEYpvbho
-X-Received: by 2002:ac8:2c9c:: with SMTP id 28-v6mr28886984qtw.420.1534406341968;
-        Thu, 16 Aug 2018 00:59:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534406341; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1574119wru;
+        Thu, 16 Aug 2018 01:11:11 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPxTUUudFzRLM7vW+AxwctMF3+MSc7mIX0B5ZcCV54FSFqBNfEzUq8+IR20U/nYb0Khm/Q8c
+X-Received: by 2002:a0c:aa06:: with SMTP id d6-v6mr25438519qvb.26.1534407071386;
+        Thu, 16 Aug 2018 01:11:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534407071; cv=none;
         d=google.com; s=arc-20160816;
-        b=GCxXSpAbArX50tvzqRBKMneacAP/2c3TcxDMP5wKvEwYvB/jksN18CYc/QH2+nyky+
-         Rg4MVE55dR5Z917RYT0JThCh3PWy2ySfXUxBkZUkPJxd8wiVUQVSNeGi88b6lRLkVYwQ
-         0omQ+qCwXaPD9vvYIFE0Ks7V+2sv+KNRZnpvVKr9z77LdK55wlTxkrekzY3HXvr/Q80G
-         Z9v9M7UKbHEGmpllb9jgNZtpxT+QLYWFaI9JjqNCUhIgWhnh+4EJqbO1cG/btv9Ny7iW
-         IAvOzcSr0VqbHNSvyMacVr9p+X/VRlgbEhMhV+nQehURIyWjI9PeDY7ZCeZr6IYb2E8t
-         cKBA==
+        b=kmnxWcY3kd7eusLnC6Pz4DloP4qt3W3NZdkPF/iO++e5Q9Fhx3IyoTsXe90vaR3mNk
+         zu8vU6+Rf1KnKfIdwHj3tVOXjv6c0Matb3bWxxBnDizeahfpMmJU0QDQShLsRIPI7vxU
+         I5CkbBDgqIxSbkdl5R0e2xlUWT+169CMsWtXVsFDr1+VGTeaXFVvLH9oy32r+FPKEZSG
+         i8h83RfGDv/FMaEDelFeFG6Yv25KOFOHbj/0loxEmnk7msVkx9UvEpozPMkYvwlrmlx4
+         2Mrf6Y5NW+XPuE3+iqk2xdHTyb/M7f8Hip43hoJS5WkptrTaaXWbEr7WCdWQdlmspitJ
+         otWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:in-reply-to
          :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
          :references:to:dkim-signature:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=J+9TAsuKS8azaZmNtrQjZ8ounCBWkJqv7cWGTnJVbNo=;
-        b=sxol72Lopxc1IzUdsV6WSbgm7Oa7M17UeSsruQKCJSrASVE+Z1VJXc+w1rm6ULPj1Z
-         QMRzJ/EDVKwXRKnNzn12F4X+cHkzAa7yw3jUZ4q3cJcOguzoLdP7h7IFw2VIG5GAKqtf
-         FtlLHLlRNUL3XxPCEyHJkV7UpAXj0BJ9K9iOztBXLpRr2mKyv23TCxqpSpysgE3nZ8hD
-         AJ2Pt26OeFpgzz5kpLr/02Ff7OBcqB+ZxI58C6KmPXDqMMiNDarMwQSB3CHYOb5G65Pl
-         D5t93GWgrRvblrlYNBShHjfUGNx9avcDPl/pf3mdtCMezSSEr78MIvvCjhTTxxAAxLh7
-         0e1Q==
+        bh=YO8lazwqIUS08aVZNLRY9v9hQr43dQj9DsE3z7yNIcY=;
+        b=FNAs51q3d2anWJnghqRv6Sap4naWNp1+d520Yhp1SBMr7wnp5NsMUOE5FOiHRjGToc
+         ugdsyNlZzh5i3dsstrN1MgKqzIAewvVezgy3+CAZBzH3RJV4oyxz1oR+BkW5TnRIPs76
+         IVvQZqpu31kRwmKTclt02mUmna0/e1a6yky/3lWxrQRNBIfaIk67ByiLGMFkD7KDUI4F
+         1ouimTMIiwin4M4U2sMog9Dd4OhP41S4zfihpKgIKorN4KMizWQuceXxVp+T1YF/tRN3
+         CuF6dO8EEbkCeg91PQmfgxvKVz2LBck9IGqJSzT0nabY7BOEt86fdCpontdJA8R75667
+         Ptqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=3c9v2jZE;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=JOThe46s;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=JOThe46s;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zD0UORs8;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zrdIiwBU;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zrdIiwBU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h47-v6si984644qtb.396.2018.08.16.00.59.01
+        by mx.google.com with ESMTPS id 27-v6si3818406qty.74.2018.08.16.01.11.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 00:59:01 -0700 (PDT)
+        Thu, 16 Aug 2018 01:11:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=3c9v2jZE;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=JOThe46s;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=JOThe46s;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zD0UORs8;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zrdIiwBU;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zrdIiwBU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54061 helo=lists.gnu.org)
+Received: from localhost ([::1]:54102 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqDBN-0004yx-H6
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 03:59:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41990)
+	id 1fqDN8-0003SB-Qp
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 04:11:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44869)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fqDBC-0004yb-Te
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 03:58:51 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fqDMx-0003Rh-Hg
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 04:11:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fqDB7-0004lh-M6
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 03:58:50 -0400
-Received: from greensocs.com ([193.104.36.180]:49513)
+	(envelope-from <luc.michel@greensocs.com>) id 1fqDMs-0002Q7-Kt
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 04:10:59 -0400
+Received: from greensocs.com ([193.104.36.180]:54291)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fqDB7-0004iG-05; Thu, 16 Aug 2018 03:58:45 -0400
+	id 1fqDMs-0002Pw-9P; Thu, 16 Aug 2018 04:10:54 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 8C6EC2386F1;
-	Thu, 16 Aug 2018 09:58:37 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id AE8CA2386F1;
+	Thu, 16 Aug 2018 10:10:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534406317;
-	bh=8Cui3JpV0A2ANLh1B9vRMhT61YeqRJ2g0C3E0WojJ8Y=;
+	s=mail; t=1534407045;
+	bh=PiyBneuyrB6hZh85M7pYSBp0A8b5/3kx+5uPevLObOo=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=3c9v2jZE16wyx3iSJcA48nfQTo9eZO8q2oXlqxPJhEtNWadNavEU0XPt2mppeQxum
-	nisWcoP9IRbqmlW2G7NcnqqUsO6+r/aoTaoqDbld8FAGHbiiV8XVwA4pc5Eqei0HNl
-	yy4LjtpA2jh4mhT7VrwMh5XZrrfNyILdvBvsLZt8=
+	b=zD0UORs812hK5HHEUdFTwsL4IHQ50IOtXlJJ4rFZzKUVhsPND3LzR9QUGQE81enmW
+	HyP88/yLRUlYFNKX0lt/USPL7F0Yb85iSTKyL2sNcI4U+vX7WwBRUKS7BHyZauTYml
+	RPosRNfT36dYZljViVMHmDtwhiGsqV9jimuDjl/g=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=JOThe46s;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=JOThe46s
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=zrdIiwBU;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=zrdIiwBU
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iGWYxNaMls03; Thu, 16 Aug 2018 09:58:36 +0200 (CEST)
+	with ESMTP id iIzvpaFDf518; Thu, 16 Aug 2018 10:10:44 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 706B523870D; Thu, 16 Aug 2018 09:58:36 +0200 (CEST)
+	id B259023870D; Thu, 16 Aug 2018 10:10:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534406316;
-	bh=8Cui3JpV0A2ANLh1B9vRMhT61YeqRJ2g0C3E0WojJ8Y=;
+	s=mail; t=1534407044;
+	bh=PiyBneuyrB6hZh85M7pYSBp0A8b5/3kx+5uPevLObOo=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=JOThe46s+9rFQIq+LvEIlXl5c6qKdnL6q1X9nOYGw37jsI62EFussfnl71aRQ12n9
-	QGVhkphooUM3hJ49jr8JUOHcce93xKdqTOupn60WKPalspb4XayX4q2IKUnxPbubTL
-	GOnxfehhjhE/+JwLsR4wUU9/2Zr4+w+9qCDh/4VA=
+	b=zrdIiwBUojOsFqziJmaRQb2Iof3pUkveUl7wrfVVZDeb0ryIL22Qy07J7BWT6sGO5
+	D/PmR5iexvrD7acB2PXuELnw+vHI5UPRx7IqQ5c5a2cFJzRJQk79cU1Eixaz1MGTxs
+	BP1id5SGx0juhuLTbDxeC25x3BxbXMiubV+E6As4=
 Received: from [172.16.40.3] (antfield.tima.u-ga.fr [147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id F22562386F1;
-	Thu, 16 Aug 2018 09:58:35 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 6AFF32386F1;
+	Thu, 16 Aug 2018 10:10:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534406316;
-	bh=8Cui3JpV0A2ANLh1B9vRMhT61YeqRJ2g0C3E0WojJ8Y=;
+	s=mail; t=1534407044;
+	bh=PiyBneuyrB6hZh85M7pYSBp0A8b5/3kx+5uPevLObOo=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=JOThe46s+9rFQIq+LvEIlXl5c6qKdnL6q1X9nOYGw37jsI62EFussfnl71aRQ12n9
-	QGVhkphooUM3hJ49jr8JUOHcce93xKdqTOupn60WKPalspb4XayX4q2IKUnxPbubTL
-	GOnxfehhjhE/+JwLsR4wUU9/2Zr4+w+9qCDh/4VA=
+	b=zrdIiwBUojOsFqziJmaRQb2Iof3pUkveUl7wrfVVZDeb0ryIL22Qy07J7BWT6sGO5
+	D/PmR5iexvrD7acB2PXuELnw+vHI5UPRx7IqQ5c5a2cFJzRJQk79cU1Eixaz1MGTxs
+	BP1id5SGx0juhuLTbDxeC25x3BxbXMiubV+E6As4=
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180814124254.5229-1-peter.maydell@linaro.org>
-	<20180814124254.5229-9-peter.maydell@linaro.org>
+	<20180814124254.5229-10-peter.maydell@linaro.org>
 From: Luc Michel <luc.michel@greensocs.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
@@ -145,19 +145,19 @@ Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
 	RQRqLclXLl1hUF7XxUYFDJG64ljAbaCpVL43OkziHejUeM1oC7fZg3U9rnEwnc/JEnCpsHS7
 	bNHz5jlV9+JIV2sxFa1xVKZ0PdTRrZ4EuxO6CyXaOsjPGp4uqd+CWobc7wD77bFwdO+HQVt4
 	yXDhZGT0TxMQKXHtw1paExHsZq1xw1GvaFsutGLyX2S71jQ=
-Message-ID: <191d7d48-ed11-ae83-f776-ddf0b935646b@greensocs.com>
-Date: Thu, 16 Aug 2018 09:58:29 +0200
+Message-ID: <f41e91ae-324e-17dc-f7c3-34c499dbe027@greensocs.com>
+Date: Thu, 16 Aug 2018 10:10:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180814124254.5229-9-peter.maydell@linaro.org>
+In-Reply-To: <20180814124254.5229-10-peter.maydell@linaro.org>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="irU1cVSBqZwgVQraAa9XFkoEjIuTjhgmg"
+	boundary="oANo8G3AxHELt1pdVopR5dxkChviLCjS8"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: Re: [Qemu-arm] [PATCH 08/10] target/arm: Permit accesses to ELR_Hyp
- from Hyp mode via MSR/MRS (banked)
+Subject: Re: [Qemu-arm] [PATCH 09/10] target/arm: Implement AArch32 ERET
+ instruction
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -172,146 +172,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: edgari@xilinx.com, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n9g0e5C8ONI0
+X-TUID: PoblZYyFClsT
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---irU1cVSBqZwgVQraAa9XFkoEjIuTjhgmg
-Content-Type: multipart/mixed; boundary="DlobBPktsvmvj5zXsXP81iuNuMehFrAcW";
+--oANo8G3AxHELt1pdVopR5dxkChviLCjS8
+Content-Type: multipart/mixed; boundary="8bBTLDRDhuvw6DUUpTF7zv0QgBn5cEvwW";
  protected-headers="v1"
 From: Luc Michel <luc.michel@greensocs.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: patches@linaro.org, edgari@xilinx.com
-Message-ID: <191d7d48-ed11-ae83-f776-ddf0b935646b@greensocs.com>
-Subject: Re: [PATCH 08/10] target/arm: Permit accesses to ELR_Hyp from Hyp
- mode via MSR/MRS (banked)
+Message-ID: <f41e91ae-324e-17dc-f7c3-34c499dbe027@greensocs.com>
+Subject: Re: [PATCH 09/10] target/arm: Implement AArch32 ERET instruction
 References: <20180814124254.5229-1-peter.maydell@linaro.org>
- <20180814124254.5229-9-peter.maydell@linaro.org>
-In-Reply-To: <20180814124254.5229-9-peter.maydell@linaro.org>
+ <20180814124254.5229-10-peter.maydell@linaro.org>
+In-Reply-To: <20180814124254.5229-10-peter.maydell@linaro.org>
 
---DlobBPktsvmvj5zXsXP81iuNuMehFrAcW
+--8bBTLDRDhuvw6DUUpTF7zv0QgBn5cEvwW
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr-classic
 Content-Transfer-Encoding: quoted-printable
 
 On 8/14/18 2:42 PM, Peter Maydell wrote:
-> The MSR (banked) and MRS (banked) instructions allow accesses to ELR_Hy=
-p
-> from either Monitor or Hyp mode. Our translate time check
-> was overly strict and only permitted access from Monitor mode.
->=20
-> The runtime check wo do in msr_mrs_banked_exc_checks() had the
-"we"
-> correct code in it, but never got there because of the earlier
-> "currmode =3D=3D tgtmode" check. Special case ELR_Hyp.
+> ARMv7VE introduced the ERET instruction, which is necessary to
+> return from an exception taken to Hyp mode. Implement this.
+> In A32 encoding it is a completely new encoding; in T32 it
+> is an adjustment of the behaviour of the existing
+> "SUBS PC, LR, #<imm8>" instruction.
 >=20
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-By: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  target/arm/op_helper.c | 22 +++++++++++-----------
->  target/arm/translate.c | 10 +++++++---
->  2 files changed, 18 insertions(+), 14 deletions(-)
+>  target/arm/translate.c | 31 +++++++++++++++++++++++++++++--
+>  1 file changed, 29 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-> index d550978b5b9..952b8d122b7 100644
-> --- a/target/arm/op_helper.c
-> +++ b/target/arm/op_helper.c
-> @@ -611,6 +611,14 @@ static void msr_mrs_banked_exc_checks(CPUARMState =
-*env, uint32_t tgtmode,
->       */
->      int curmode =3D env->uncached_cpsr & CPSR_M;
-> =20
-> +    if (regno =3D=3D 17) {
-> +        /* ELR_Hyp: a special case because access from tgtmode is OK *=
-/
-> +        if (curmode !=3D ARM_CPU_MODE_HYP && curmode !=3D ARM_CPU_MODE=
-_MON) {
-> +            goto undef;
-> +        }
-> +        return;
-> +    }
-> +
->      if (curmode =3D=3D tgtmode) {
->          goto undef;
->      }
-> @@ -638,17 +646,9 @@ static void msr_mrs_banked_exc_checks(CPUARMState =
-*env, uint32_t tgtmode,
->      }
-> =20
->      if (tgtmode =3D=3D ARM_CPU_MODE_HYP) {
-> -        switch (regno) {
-> -        case 17: /* ELR_Hyp */
-> -            if (curmode !=3D ARM_CPU_MODE_HYP && curmode !=3D ARM_CPU_=
-MODE_MON) {
-> -                goto undef;
-> -            }
-> -            break;
-> -        default:
-> -            if (curmode !=3D ARM_CPU_MODE_MON) {
-> -                goto undef;
-> -            }
-> -            break;
-> +        /* SPSR_Hyp, r13_hyp: accessible from Monitor mode only */
-> +        if (curmode !=3D ARM_CPU_MODE_MON) {
-> +            goto undef;
->          }
->      }
-> =20
 > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index f845da7c638..3f5751d4826 100644
+> index 3f5751d4826..5ecc24f12fb 100644
 > --- a/target/arm/translate.c
 > +++ b/target/arm/translate.c
-> @@ -4506,10 +4506,14 @@ static bool msr_banked_access_decode(DisasConte=
-xt *s, int r, int sysm, int rn,
->          }
->          break;
->      case ARM_CPU_MODE_HYP:
-> -        /* Note that we can forbid accesses from EL2 here because they=
-
-> -         * must be from Hyp mode itself
-> +        /*
-> +         * SPSR_hyp and r13_hyp can only be accessed from Monitor mode=
-
-> +         * (and so we can forbid accesses from EL2 or below). elr_hyp
-> +         * can be accessed also from Hyp mode, so forbid accesses from=
-
-> +         * EL0 or EL1.
->           */
-> -        if (!arm_dc_feature(s, ARM_FEATURE_EL2) || s->current_el < 3) =
-{
-> +        if (!arm_dc_feature(s, ARM_FEATURE_EL2) || s->current_el < 2 |=
-|
-> +            (s->current_el < 3 && *regno !=3D 17)) {
->              goto undef;
->          }
->          break;
+> @@ -8887,6 +8887,25 @@ static void disas_arm_insn(DisasContext *s, unsi=
+gned int insn)
+>              tcg_temp_free_i32(tmp2);
+>              store_reg(s, rd, tmp);
+>              break;
+> +        case 0x6: /* ERET */
+> +            if (op1 !=3D 3) {
+> +                goto illegal_op;
+> +            }
+> +            if (!arm_dc_feature(s, ARM_FEATURE_V7VE)) {
+> +                goto illegal_op;
+> +            }
+> +            if ((insn & 0x000fff0f) !=3D 0x0000000e) {
+> +                /* UNPREDICTABLE; we choose to UNDEF */
+> +                goto illegal_op;
+> +            }
+> +
+> +            if (s->current_el =3D=3D 2) {
+> +                tmp =3D load_cpu_field(elr_el[2]);
+> +            } else {
+> +                tmp =3D load_reg(s, 14);
+> +            }
+> +            gen_exception_return(s, tmp);
+> +            break;
+>          case 7:
+>          {
+>              int imm16 =3D extract32(insn, 0, 4) | (extract32(insn, 8, =
+12) << 4);
+> @@ -11144,8 +11163,16 @@ static void disas_thumb2_insn(DisasContext *s,=
+ uint32_t insn)
+>                          if (rn !=3D 14 || rd !=3D 15) {
+>                              goto illegal_op;
+>                          }
+> -                        tmp =3D load_reg(s, rn);
+> -                        tcg_gen_subi_i32(tmp, tmp, insn & 0xff);
+> +                        if (s->current_el =3D=3D 2) {
+> +                            /* ERET from Hyp uses ELR_Hyp, not LR */
+> +                            if (insn & 0xff) {
+> +                                goto illegal_op;
+> +                            }
+> +                            tmp =3D load_cpu_field(elr_el[2]);
+> +                        } else {
+> +                            tmp =3D load_reg(s, rn);
+> +                            tcg_gen_subi_i32(tmp, tmp, insn & 0xff);
+> +                        }
+>                          gen_exception_return(s, tmp);
+>                          break;
+>                      case 6: /* MRS */
 >=20
 
 
---DlobBPktsvmvj5zXsXP81iuNuMehFrAcW--
+--8bBTLDRDhuvw6DUUpTF7zv0QgBn5cEvwW--
 
---irU1cVSBqZwgVQraAa9XFkoEjIuTjhgmg
+--oANo8G3AxHELt1pdVopR5dxkChviLCjS8
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt1LqUACgkQd8knW3Qn
-Tr7rmQ//bFe09MUm2UXJWB5J7qRDvZoTtq7KKroHbAoeEBEIIJeVgltgd5ZZg1SW
-1MGX5Edk++MDsMYQlx4MdTnPkwnP/Dec597i8KcaP4iXoiGTvaKhibvrIaghknkO
-SnTF90a1uSPbcJixOyKQ8nMyn3t1YV5b25xouC/y2cbdM3tShY5o4RZKXgQIe3IL
-ThxHwo07v7hfEagEMu3LkwVDm/KifHwwuzOd+ttpe9Xnu9K4BlPPOWnTZCkuazBU
-eKiwIWCa6RgSSITqMC6xiGdQg1P49Ao+QXItGBM7PemSm+o9QACkI4MtQZqmLtvB
-IA8T5ZU+5/CytQfGfPB9d11X1R9tv3KzQtvnxPMhw84pCUv+/jy4qyaYyFSTSIbo
-4LU1K3KMlsjTEWTUv6euMo18a+yydO/3O+Fgqs/uzIAaOYmk4pIe1FoYFKaOQYOy
-V85Z0qcxEWkYIWKoaBeIIxyS9eEabJ2Vk/VeVaO6hSzZ7PtQ49HcTffhGhS96l0B
-YzEUkFrMHr94YLxnWuqHn78HTwD7hU6eLUShge+1r1L8jk9YQ4jLOeA2di4jihXw
-wUVt6j1pUeLuA4rQdgPKy1cZPwv6WRHrxdCAAVcXM1sPoZuLkRbiqN/tmqfaizSc
-ZdpRPaIs1Q5iDiaHhdOv9nNlwyXS4/R5m7P+3ZmfNoTn3Bi5mlU=
-=ryVX
+iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt1MYMACgkQd8knW3Qn
+Tr7SpQ/8CHqZ+TQe90ZlRA1TH73UdRfQ87LJIOlLRo1eXHqr+e2IKwruiTSx1/pL
+UP/itM4Ljb3BDWMznBfXA2sxGKfkCykaG7y5BS7NJ/wvswi5P7SvPTvPx6o9YYlv
+iKS+ojLfx2sQU+qow7OEBgJ5kjMKMUId8m4gVhwos+8OKhlcGugJTOlY97HUMUtg
++Yh2a9bdnR+f+qHVOceD9oxVN9bGDIYXE+Jewt7v1xG1q4M3Fa7c7c8pprPRAu7q
+6mhuu1dhw7w2UpTuEDhiJsoO4rcV+H/cndLnwez4Gm8yQL+RC0gQlr6/dNj9M6NJ
+N1bsTMdc4NP4LYebYXD5exdS+m9WBSLZTI+vA3eDxZI60AMAOT+tWVpDNBE767mN
+WA3iTk2daYsgWH2ItI9sjL7uA1L/wmF7S58tY6o7VwLM2tW2eOt4efhxKd6kxAYd
+fJX/mthvnKP8NjVSW1C7D/32DV7gbE6SwTugj5wnf82IPirYvwlgjqhVv7SCYPQI
+XSdb8Q6qnkC7vfc/P1tqNOvmbiJgPfwLJ7pPstHyqBaCoR29mW5TOmJPOF/JdGoh
+RQ3ReWQVusG/7gbnPen54AETQMy11RVOB/vUm1ZamqZ6OqE+cn8kSnEbVf9XP3e3
+3wxW6m0ASii8pJodhnr2dkm7fCoelWH/EZxqQCvMxjE2mKN6Q+c=
+=Hzw6
 -----END PGP SIGNATURE-----
 
---irU1cVSBqZwgVQraAa9XFkoEjIuTjhgmg--
+--oANo8G3AxHELt1pdVopR5dxkChviLCjS8--

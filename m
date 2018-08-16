@@ -1,105 +1,105 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1609616wru;
-        Thu, 16 Aug 2018 01:59:56 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPxMZKWNsA661p81280lAUKsKEwxVRwBC2XoVdj+KI96kTJPahru3qLVPUFO20MDoqk7NfvH
-X-Received: by 2002:a37:7185:: with SMTP id m127-v6mr26492997qkc.10.1534409996387;
-        Thu, 16 Aug 2018 01:59:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534409996; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1612691wru;
+        Thu, 16 Aug 2018 02:02:49 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPzytRMIgGDCiFZYk0sflmbIsIWPHvX5eNVpT3KuYYfDS79hwy22MeoCoZkKyeBAOytUp/Nh
+X-Received: by 2002:ac8:2dc6:: with SMTP id q6-v6mr29576753qta.178.1534410169797;
+        Thu, 16 Aug 2018 02:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534410169; cv=none;
         d=google.com; s=arc-20160816;
-        b=MhIsHbVH/zB0EpfAY6zUI1TkGdErz3RpC4r1NB75B5lzc0C0+hC7VsESYkdefpXkk1
-         L5n/P5dzpCtX+ZSbGhkzNugOL+ZODcY4bLqZPVFUvlL3f4d2ykDYILWMDKshBZtbs3cu
-         sxTJg6ztJk5lPf23X2p7x3TsEmuIpaVyBYOtGzVqAJYITRdiB4HFCLTyEmrvyDD7HvWt
-         wYId9yWVJOnP/4ttrdxHbRcJ1XICFrBJhGlpFJjpdCR4uJPhieIdn8a9dgwDKGsGFdW/
-         9uhDSOHJEjIJyYKDADncfE8atOJT0+2mgdGzC4m/M0bjjmh0E2470kz6UI2pes5i1tpy
-         rW8g==
+        b=kqJS+F8vjn7xK7GFq3QgwMKDvXwJYQOx+cPiZGuynLsG/5GsPUo/uvL00qS7oELsC/
+         d9qAzRvpaA23pCrl6TwxEfT2/JsjOWG8WtDwo6tKne0KoGU3TBDQIh+rU4xvaKA5JCEA
+         zUdK3wGVa/4QCjm7kjGbXNWb31rkomeKf3s15tk2ZX0QpOvbT5u/M8al1dhNkWpFbaEo
+         fO/k29ddG8McFni/IQnGVisWXqFLxOJvkANdEHpFnHSZpPj6ydMgxf2VRKkXUK9BB4X2
+         7fbCPu0weXFybHqm7mNCl7tvbDkiYKW5THGCo39frchZCSE57tNvISX2YTO4lM1Tp1Qz
+         gkiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:in-reply-to
          :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
          :references:to:dkim-signature:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=ZsBsJ9DbL9IaoX0OXf2v6Xg03onOfJm+dzvCBkQmCGs=;
-        b=Usep2t7dXihEC1allqmUrhul81XaWb1R7l2YYDlIimGF549CBljxaa+RHKWljHjMK3
-         u7KYF1dWYJIPwGTY5l1wUSpSJPz80zJVxwU7XME5+Ea2bo0pF3GfeJYt5V7RzBkmmGrO
-         GRAq7RQD27FaJhkzvhg/K2SN6hxh45RCB9BT3jpiUOh5zUIG+3f7S4IXZwlGv5/VMVup
-         V+baX2+f8WRPZc+Qc9a8ugAUD9AUIeevtSzhOhNm1vGzvKUE6FtbZy4copevMQgxVVUZ
-         +08FwNtwalSkUBScXTDnRXIJOIXxDgTqCdA636uCV+B/5aNyFMP9s9nIu7Qncxw+vdyi
-         SLIw==
+        bh=DS8Dsc1iY8PMGjIKnlUeVK0QtLFp3wS9QvI7s3vcY7Y=;
+        b=QO7aQSwqWlnAKN2Fm4AY1vGyuLBLdDsmF6A0IVJPC+naFYyk/073YphLm7cpC5zDbS
+         ba1mygPnhycW+D26/rZhL2sirPi5lnYSGfWgxeaJqgnFH/awhFT9saSxg4efbN4cYPTZ
+         6owYukBJkxNSaNmErJvsHdOW6ZwLC0gSWeoHddLidrbfxFFdaHtFWEzAbbKby/obGw97
+         BJ3cYxd4UrDnRNIssZccQRPgdGtr1l9I76biRQHLSW3i+lEZbdbR9V1FLNRe1Xyh6Lta
+         ZPXnLlusx028SsUVcgBJYLyWRK/TrWOkk5W1m9WQGo54bBHVgcnaV8AwXbw50vJ2/zQv
+         fNZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=KJ48yLuT;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=szdFu1Gp;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=szdFu1Gp;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Z7Pytd7b;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=oAOtNBdI;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=oAOtNBdI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v85-v6si20552431qkb.147.2018.08.16.01.59.56
+        by mx.google.com with ESMTPS id j13-v6si2027635qvk.152.2018.08.16.02.02.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 01:59:56 -0700 (PDT)
+        Thu, 16 Aug 2018 02:02:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=KJ48yLuT;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=szdFu1Gp;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=szdFu1Gp;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Z7Pytd7b;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=oAOtNBdI;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=oAOtNBdI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54352 helo=lists.gnu.org)
+Received: from localhost ([::1]:54380 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqE8J-0002l8-QE
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 04:59:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54584)
+	id 1fqEB7-0005CT-7E
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 05:02:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56452)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fqE4D-0007yI-8Z
-	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 04:55:42 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fqEAP-00056L-43
+	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 05:02:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fqE4C-0007jQ-BK
-	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 04:55:41 -0400
-Received: from greensocs.com ([193.104.36.180]:43301)
+	(envelope-from <luc.michel@greensocs.com>) id 1fqEAM-0002QD-PQ
+	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 05:02:04 -0400
+Received: from greensocs.com ([193.104.36.180]:45936)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fqE3t-0007UG-Mg; Thu, 16 Aug 2018 04:55:22 -0400
+	id 1fqEAJ-0002Nl-CO; Thu, 16 Aug 2018 05:02:00 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 19E4B2386F1;
-	Thu, 16 Aug 2018 10:55:12 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id BC3F42386F1;
+	Thu, 16 Aug 2018 11:01:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534409712;
-	bh=efNa6psQUrBq80nAk+Rm1Rtkbc/TiRFxaqbj/EdR0oY=;
+	s=mail; t=1534410109;
+	bh=jgGZz0HinZnMkzPlDg2p4LYnm3+Y66fMxlD+6RnQ3k0=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=KJ48yLuTtzIpfhgndE8wumy1qExURnXb5xfxsYHZr+fSvLIqOL3o3qtrOrnZqUWqK
-	pT/4mpQYwZTnRwZo9O0BvnoZ3OmaxLc+EJEcLVcuC3x6vQThFGYedRzHDa7Pz4UR5M
-	7ZVdPZmHrD9VmemGZog5X0zs8iG4NKp7NpNM3tfk=
+	b=Z7Pytd7bazByvM2RkGfM+OCLs2DyOmZV4gRW1swKcE86Okkt8FgLB8BQYLnF3pNWr
+	Igc/bgxNQTNwuPGlpGHWWesR00pQt8lmRgHY5GwCdZt/eFMwzkQCxKbwdijVoNXHhd
+	u+KFGEZsK+EbWB3vzd9G0K2u7BRfwDXxuQLr5IE4=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=szdFu1Gp;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=szdFu1Gp
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=oAOtNBdI;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=oAOtNBdI
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4n4SVWQjs_Qm; Thu, 16 Aug 2018 10:55:11 +0200 (CEST)
+	with ESMTP id nYnl9oJDiTaw; Thu, 16 Aug 2018 11:01:48 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id DC978238721; Thu, 16 Aug 2018 10:55:10 +0200 (CEST)
+	id B2FE0238721; Thu, 16 Aug 2018 11:01:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534409710;
-	bh=efNa6psQUrBq80nAk+Rm1Rtkbc/TiRFxaqbj/EdR0oY=;
+	s=mail; t=1534410108;
+	bh=jgGZz0HinZnMkzPlDg2p4LYnm3+Y66fMxlD+6RnQ3k0=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=szdFu1Gpr2O1UOaTn3rz2Zgjl5tKjlyuIELQYMCm/FM+epzhwenBy5Ywe8awXTuAY
-	832Oj9/XSas6sFwKBTD0kYcu7FagOrJpjvULApQBbvHzYtFGAlvbhwPEiBeJcgxCCA
-	WX2of5cg0s+uVOwp0sxelTmAd0av5qiIO823GKpw=
+	b=oAOtNBdIVkDGfI8HhFjeZVOk/olLk72DrmxhukOcLunctgujRKmYnvYQghaC64Qeb
+	kR6cP/+xQ1q0owd4N5Rb0tK7Vk8vl2R6Oj1+Gfg4Z+MkN7CipYljSEcC0QaBUjBpc4
+	YBge1ZPucHVY4soz5S4enSBt/mzFi8OkCut1JDYU=
 Received: from [172.16.40.3] (antfield.tima.u-ga.fr [147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 69C062386F1;
-	Thu, 16 Aug 2018 10:55:10 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 4660A2386F1;
+	Thu, 16 Aug 2018 11:01:48 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534409710;
-	bh=efNa6psQUrBq80nAk+Rm1Rtkbc/TiRFxaqbj/EdR0oY=;
+	s=mail; t=1534410108;
+	bh=jgGZz0HinZnMkzPlDg2p4LYnm3+Y66fMxlD+6RnQ3k0=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=szdFu1Gpr2O1UOaTn3rz2Zgjl5tKjlyuIELQYMCm/FM+epzhwenBy5Ywe8awXTuAY
-	832Oj9/XSas6sFwKBTD0kYcu7FagOrJpjvULApQBbvHzYtFGAlvbhwPEiBeJcgxCCA
-	WX2of5cg0s+uVOwp0sxelTmAd0av5qiIO823GKpw=
+	b=oAOtNBdIVkDGfI8HhFjeZVOk/olLk72DrmxhukOcLunctgujRKmYnvYQghaC64Qeb
+	kR6cP/+xQ1q0owd4N5Rb0tK7Vk8vl2R6Oj1+Gfg4Z+MkN7CipYljSEcC0QaBUjBpc4
+	YBge1ZPucHVY4soz5S4enSBt/mzFi8OkCut1JDYU=
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180814124254.5229-1-peter.maydell@linaro.org>
-	<20180814124254.5229-6-peter.maydell@linaro.org>
+	<20180814124254.5229-7-peter.maydell@linaro.org>
 From: Luc Michel <luc.michel@greensocs.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
@@ -145,20 +145,20 @@ Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
 	RQRqLclXLl1hUF7XxUYFDJG64ljAbaCpVL43OkziHejUeM1oC7fZg3U9rnEwnc/JEnCpsHS7
 	bNHz5jlV9+JIV2sxFa1xVKZ0PdTRrZ4EuxO6CyXaOsjPGp4uqd+CWobc7wD77bFwdO+HQVt4
 	yXDhZGT0TxMQKXHtw1paExHsZq1xw1GvaFsutGLyX2S71jQ=
-Message-ID: <669fdbe5-4cac-7866-e227-300e55eb1285@greensocs.com>
-Date: Thu, 16 Aug 2018 10:55:09 +0200
+Message-ID: <9eda9e5e-c01f-cd4d-2680-a74648d0c094@greensocs.com>
+Date: Thu, 16 Aug 2018 11:01:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180814124254.5229-6-peter.maydell@linaro.org>
+In-Reply-To: <20180814124254.5229-7-peter.maydell@linaro.org>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="ofn3oOVlJJfBe9va1QXLv0blqDuwJ9CuO"
+	boundary="eXwLfzYnKyUkURC7RnZ97II4EqaAP9iuQ"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
 X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH 05/10] target/arm: Implement AArch32 HCR
- and HCR2
+Subject: Re: [Qemu-devel] [PATCH 06/10] target/arm: Implement AArch32 Hyp
+ FARs
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -173,140 +173,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: edgari@xilinx.com, patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CkLzAg+NYW9M
+X-TUID: YEwaTzJ6H+gB
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ofn3oOVlJJfBe9va1QXLv0blqDuwJ9CuO
+--eXwLfzYnKyUkURC7RnZ97II4EqaAP9iuQ
 From: Luc Michel <luc.michel@greensocs.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: patches@linaro.org, edgari@xilinx.com
-Message-ID: <669fdbe5-4cac-7866-e227-300e55eb1285@greensocs.com>
-Subject: Re: [PATCH 05/10] target/arm: Implement AArch32 HCR and HCR2
+Message-ID: <9eda9e5e-c01f-cd4d-2680-a74648d0c094@greensocs.com>
+Subject: Re: [PATCH 06/10] target/arm: Implement AArch32 Hyp FARs
 References: <20180814124254.5229-1-peter.maydell@linaro.org>
- <20180814124254.5229-6-peter.maydell@linaro.org>
-In-Reply-To: <20180814124254.5229-6-peter.maydell@linaro.org>
+ <20180814124254.5229-7-peter.maydell@linaro.org>
+In-Reply-To: <20180814124254.5229-7-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
 On 8/14/18 2:42 PM, Peter Maydell wrote:
-> The AArch32 HCR and HCR2 registers alias HCR_EL2
-> bits [31:0] and [63:32]; implement them.
+> The AArch32 virtualization extensions support these fault address
+> registers:
+>  * HDFAR: aliased with AArch64 FAR_EL2[31:0] and AArch32 DFAR(S)
+>  * HIFAR: aliased with AArch64 FAR_EL2[63:32] and AArch32 IFAR(S)
+>=20
+> Implement the accessors for these. This fixes in passing a bug
+> where we weren't implementing the "RES0 from EL3 if EL2 not
+> implemented" behaviour for AArch64 FAR_EL2.
 >=20
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-By: Luc Michel <luc.michel@greensocs.com>
+
 > ---
->  target/arm/helper.c | 39 +++++++++++++++++++++++++++++++++++----
->  1 file changed, 35 insertions(+), 4 deletions(-)
+>  target/arm/helper.c | 14 +++++++++++++-
+>  1 file changed, 13 insertions(+), 1 deletion(-)
 >=20
 > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index b6412fe9d1f..9701e413859 100644
+> index 9701e413859..d6e98e9d606 100644
 > --- a/target/arm/helper.c
 > +++ b/target/arm/helper.c
-> @@ -3754,11 +3754,15 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo=
-[] =3D {
->        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 12, .crm =3D 0, .opc2 =3D 0,
->        .access =3D PL2_RW,
->        .readfn =3D arm_cp_read_zero, .writefn =3D arm_cp_write_ignore }=
-,
-> -    { .name =3D "HCR_EL2", .state =3D ARM_CP_STATE_AA64,
-> +    { .name =3D "HCR_EL2", .state =3D ARM_CP_STATE_BOTH,
->        .type =3D ARM_CP_NO_RAW,
->        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 0,
->        .access =3D PL2_RW,
-> -      .readfn =3D arm_cp_read_zero, .writefn =3D arm_cp_write_ignore }=
-,
-> +      .type =3D ARM_CP_CONST, .resetvalue =3D 0 },
-> +    { .name =3D "HCR2", .state =3D ARM_CP_STATE_AA32,
-> +      .cp =3D 15, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 4,
-> +      .access =3D PL2_RW,
-> +      .type =3D ARM_CP_CONST, .resetvalue =3D 0 },
-As for HACTLR2, shouldn't we avoid defining HCR2 for ARMv7?
-
->      { .name =3D "CPTR_EL2", .state =3D ARM_CP_STATE_BOTH,
->        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 2,
+> @@ -3847,6 +3847,13 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[=
+] =3D {
+>      { .name =3D "HSTR_EL2", .state =3D ARM_CP_STATE_BOTH,
+>        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 3,
 >        .access =3D PL2_RW, .type =3D ARM_CP_CONST, .resetvalue =3D 0 },=
 
-> @@ -3872,10 +3876,26 @@ static void hcr_write(CPUARMState *env, const A=
-RMCPRegInfo *ri, uint64_t value)
->       * HCR_PTW forbids certain page-table setups
->       * HCR_DC Disables stage1 and enables stage2 translation
->       */
-> -    if ((raw_read(env, ri) ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
-> +    if ((env->cp15.hcr_el2 ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
->          tlb_flush(CPU(cpu));
->      }
-> -    raw_write(env, ri, value);
-> +    env->cp15.hcr_el2 =3D value;
-> +}
-> +
-> +static void hcr_writehigh(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                          uint64_t value)
-> +{
-> +    /* Handle HCR2 write, i.e. write to high half of HCR_EL2 */
-> +    value =3D deposit64(env->cp15.hcr_el2, 32, 32, value);
-> +    hcr_write(env, NULL, value);
-> +}
-> +
-> +static void hcr_writelow(CPUARMState *env, const ARMCPRegInfo *ri,
-> +                         uint64_t value)
-> +{
-> +    /* Handle HCR write, i.e. write to low half of HCR_EL2 */
-> +    value =3D deposit64(env->cp15.hcr_el2, 0, 32, value);
-> +    hcr_write(env, NULL, value);
->  }
+> +    { .name =3D "FAR_EL2", .state =3D ARM_CP_STATE_BOTH,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 6, .crm =3D 0, .opc2 =3D 0,
+> +      .access =3D PL2_RW, .type =3D ARM_CP_CONST, .resetvalue =3D 0 },=
+
+> +    { .name =3D "HIFAR", .state =3D ARM_CP_STATE_AA32,
+> +      .type =3D ARM_CP_CONST,
+> +      .cp =3D 15, .opc1 =3D 4, .crn =3D 6, .crm =3D 0, .opc2 =3D 2,
+> +      .access =3D PL2_RW, .resetvalue =3D 0 },
+>      REGINFO_SENTINEL
+>  };
 > =20
->  static const ARMCPRegInfo el2_cp_reginfo[] =3D {
-> @@ -3883,6 +3903,17 @@ static const ARMCPRegInfo el2_cp_reginfo[] =3D {=
+> @@ -3922,9 +3929,14 @@ static const ARMCPRegInfo el2_cp_reginfo[] =3D {=
 
->        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 0,
+>      { .name =3D "ESR_EL2", .state =3D ARM_CP_STATE_AA64,
+>        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 5, .crm =3D 2, .opc2 =3D 0,
 >        .access =3D PL2_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.=
-hcr_el2),
->        .writefn =3D hcr_write },
-> +    { .name =3D "HCR", .state =3D ARM_CP_STATE_AA32,
+esr_el[2]) },
+> -    { .name =3D "FAR_EL2", .state =3D ARM_CP_STATE_AA64,
+> +    { .name =3D "FAR_EL2", .state =3D ARM_CP_STATE_BOTH,
+>        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 6, .crm =3D 0, .opc2 =3D 0,
+>        .access =3D PL2_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.=
+far_el[2]) },
+> +    { .name =3D "HIFAR", .state =3D ARM_CP_STATE_AA32,
 > +      .type =3D ARM_CP_ALIAS,
-> +      .cp =3D 15, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 0,
-> +      .access =3D PL2_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.=
-hcr_el2),
-> +      .writefn =3D hcr_writelow },
-> +    { .name =3D "HCR2", .state =3D ARM_CP_STATE_AA32,
-> +      .type =3D ARM_CP_ALIAS,
-> +      .cp =3D 15, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 4,
+> +      .cp =3D 15, .opc1 =3D 4, .crn =3D 6, .crm =3D 0, .opc2 =3D 2,
 > +      .access =3D PL2_RW,
-> +      .fieldoffset =3D offsetofhigh32(CPUARMState, cp15.hcr_el2),
-> +      .writefn =3D hcr_writehigh },
-Also here. This one could actually be problematic as it allows ARMv7 to
-write the upper 32-bits of HCR, since HCR_MASK in hcr_write() is greater
-than UINT32_MAX.
-
---=20
-Luc
-
->      { .name =3D "ELR_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .fieldoffset =3D offsetofhigh32(CPUARMState, cp15.far_el[2]) },
+>      { .name =3D "SPSR_EL2", .state =3D ARM_CP_STATE_AA64,
 >        .type =3D ARM_CP_ALIAS,
->        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 4, .crm =3D 0, .opc2 =3D 1,
+>        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 4, .crm =3D 0, .opc2 =3D 0,
 >=20
 
 
---ofn3oOVlJJfBe9va1QXLv0blqDuwJ9CuO
+--eXwLfzYnKyUkURC7RnZ97II4EqaAP9iuQ
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt1O+0ACgkQd8knW3Qn
-Tr4tbxAAjfsVqeGjb1ZypWqD5NiKI+IEjAQDHLtwkIfEiFjPfknt5R244z81EJwk
-b0IGeajLeKhVS+kL+dN6YcLFdvcusd7HMQ1daDA/W2l+QLQJRSbQ/z9xzFFk5KjN
-FctY2HrMMPss9m7RFyKnBghVjPr+DHI2s+bZ9nZjUdmY2pJxGErKo7cdtG0A6naS
-PKHJ9bcTYn10JYCBdapJplVRllHi21SbRbw+pn4E75m+ezpNMaGuUGa+b+MhlgQ0
-gCWxLDR6EL/Nt/CMBm1DsOC/rWIoL5aYnHPzZiscORxoKoBhdEOQqHNI77di97wz
-tWymHYkmyGqm5fxbP1TCb7Usx2Hpz1Ufbg62l/BH8RF29XDcJ10/4TttjkiogJ0s
-mpHk2bwnyZoO9FP8L1D+vjHjxO+pCULeI6j1MuVVVlcIPk250b1OdfhHhPZ4y20r
-pjCFWpMgmCBxqaz2+E+Q6g3OyhoxztCQF+AxyBlZmF3DTXxgQSvh9MKTPSb3fABv
-njAmtnBMdEZBeIayueeX+UCGyMqCxK3Y/gcHnwySzsnYbhFf8juVtbwehhHrjS19
-HlSomoUW0OlVgN2Ou6KNO9pMCHm0in/3RZr0s0Uo8iIsVmGEgJMe+FPSL6T/C++G
-P/NUpu2+YgVHsUQ6EJU4zJAV6wPynP7SfEtI/wboF7opxnWxguM=
-=US+e
+iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt1PXsACgkQd8knW3Qn
+Tr4ZNQ/+INvL1wYD9s4zTP/NSWtD+MEjhaNM+r75wfP9NGZk/2znda8Q/6DP76H/
+FPae/XlW6F1VvfW2FCv+sER45wUeG0Cyf0sKOkGDjSWjAFa6gOiR8ryeku4Lu06J
+ErPFvxpiV1W2BFvOBq/jMpj0WieVnYMDS+4yI/GTMG2tgHSCFoeb/CBvasVSBOFn
+5SeF8E+9x8Ztnp+erP6TVxjGvvx/nzupfhORNLzy8sVSM4QCkhAM9i+sya6hH39w
+G/HpqTr53hgACF0Q/y1rB0sYSH75kL9oOZ4hBjzevDNmwr2x80O/NaELbrn1CrwO
+h6Px6MoFpPnqfd95BapQwqdz4gBWCunfo0waZfFpyt0j9laFFGcWqWOGCzLOAIlI
+PixbI8tSKHJ9gQRJhuexkCz/UAChtumYEZUHH1EbXsIN7Z94qSJhupaxAsjp2WFf
+NXRKp7Lo1ZSH98MNE5K/N5Xng1ZQlFo+zolM6p4MF1wkbaJkEc7HcmvZjCflQ8LR
+Jh1ZiwQCCwSw8v/AkHYOSrUhkdddLeI9xdfjjbc7qiy07X2ig0NhjDFTK2r4ML+Z
++X15ophDquXXKQSCu59cRd+T8cFLCzNN/Cf3trLKZ/dlSgIzQ5SMWenpaRpEJwcy
+QN+WQnzt7ZME/NA12DJWFH80wB9FUsjGwEPElr7Lfvs2SmZvieo=
+=4img
 -----END PGP SIGNATURE-----
 
---ofn3oOVlJJfBe9va1QXLv0blqDuwJ9CuO--
+--eXwLfzYnKyUkURC7RnZ97II4EqaAP9iuQ--

@@ -1,63 +1,99 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1767637wru;
-        Thu, 16 Aug 2018 05:05:58 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPw73QLusURe4haPlfD8qsDElF24qohqEuumOmaGyKQZ5s0IIDEhWtWaQrofoBOpgW6E/ueU
-X-Received: by 2002:ac8:2bb3:: with SMTP id m48-v6mr29133104qtm.207.1534421158644;
-        Thu, 16 Aug 2018 05:05:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534421158; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1784416wru;
+        Thu, 16 Aug 2018 05:21:00 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPwK1YUNyEdMRFRPaVig2MhF7mAp25cSijTZnaE+QVxIbZqTkIfLKzK17IcprjfDjR2prxbV
+X-Received: by 2002:a0c:8622:: with SMTP id p31-v6mr26503651qva.116.1534422060312;
+        Thu, 16 Aug 2018 05:21:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534422060; cv=none;
         d=google.com; s=arc-20160816;
-        b=vqhJLJuZfYZ+FDmYbtwmshtzKU4Gn8Wz7gtEic5i8zM91SNmdj4eI+Bp2hmuHGIS6H
-         GzY7culvJ5pFciVa+1HgdV3hP35AnIdC+53KLHMU7drNbQceyCcWPN9DdVQhRLwjH880
-         PnK1oHxdoNjpdDaePa3XN/GAUlN2SicDqoNiloY6NG9LcIxCI14TwfD3nYCByWOe3DGx
-         L3O4FnsoUMdZYKuAjxHe7m0AIUHoxS9d0mcj34740Xpz73a4Y4ARaj9bYfan3yO1b3ad
-         FI+m/mvT/X3lzQHcpscz+vWWRi4IDflrn/dnv7Z+WaawrVMwZfStZy6FKF686+NGXI/R
-         vTGQ==
+        b=LlZXuQ84yTZ3eIE8+O9V+RhPoH6URMa3ZeMvrORvLoAwiOtv6ejTPxwB02Cc4XXAXj
+         fxBpfrslElgKBfGoRfPl/LQDxQa7efl7UEC9rx0FvkeS1zygltf/0/C2Xov9S9HiWvbs
+         C0iS7B/AYFxqR3/JQM2f6OUJ7Oess7mzxPT07YdooosPMyyMDLzrZpJMkBl0DcqdnQYj
+         ODUDO4227oH2RJXpLlsVVDhDc8a6XIq7T7tscojpL0ENcjLIah1bo4x3b7OT/ceWe+hr
+         PJRc/+Iqc4DQCb9VMHLsKJ9q2kQhcvMl1AjtJo2XdRXGFwvDGKHK5zS4wQ1y5/nYVS2C
+         yvEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=TullNgWKK+R/xc1WaS6HuSm/K23aZ/HxEInMb7e9U48=;
-        b=spmOM/bsYrSkH4yuXNB6U/15pI0vwxsHNLUeQ/6MkQyHfZL21kjlqX0OYQ7p6KBgz6
-         g4uHSn/gkLjpV7BsixWtfLKtEqvwzKIUuh4goUqilRAWbhK9rFDRV1MXPzOdvwQl5weq
-         7CBO0OLzzQQ1ttSAO3WyyjEfKeSI6m3lQ3SPlVQRgtHj64QEnnqKY1a1jCfd9z0iBREn
-         XGgXKNtl8XZWXF3wIywG/hLC9QwYjuNrj1YuJL8KIiQVtPMbH2ULmN391BHWxRB0l6Ss
-         P8bPtYRxVk9gNfxy68h9X4J3rky4IiAv09XrCtBn4enVrHIqQ8brdBS0PkX3AaTWgjac
-         tzCg==
+        bh=4RiuQhUNWuW4zzKNw1UiQw2ecfCRmTx60DjnDzML+Vc=;
+        b=yZyb+hUpvPQ3amzd5aVW9OihsrljhLdhZY2BAhe7SB5LYP9vaVo0XCqEOYvICjKlac
+         3E8RstlFrrK+KgIoEpjHU1nz/8RUoUYEcStxwPa01mCRGlJtbZT5x5QvaCxX+abNi1o7
+         CugSl0kO71dqoKmI4TleCrAfcJGFsy7oPGJrphbxBHkt6otm8nhzEAhe+v1BH5eyDh7i
+         9xLQKzxAXXVv8kkC0HrHvG878x2NoIizXscCz0ds0PHCwHCoqcvWaLMVwTXHY5mkOrz1
+         80H+U97Nf0TCyWznlLTPA3GMtH/cHtdAWBUM849S8QRdbR2GwjJSHrduq0xIO9iIc3PC
+         DF6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=NMB2Klvz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e6-v6si4624267qte.83.2018.08.16.05.05.58
+        by mx.google.com with ESMTPS id h35-v6si152073qvi.283.2018.08.16.05.21.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 05:05:58 -0700 (PDT)
+        Thu, 16 Aug 2018 05:21:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55230 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=NMB2Klvz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55275 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqH2M-00089Z-3f
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 08:05:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37250)
+	id 1fqHGt-00011k-Ow
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 08:20:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39713)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rka@sysgo.com>) id 1fqH28-0007zr-PD
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:05:45 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fqHGd-00011Y-RW
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:20:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rka@sysgo.com>) id 1fqH25-00048K-IH
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:05:44 -0400
-Received: from mail.sysgo.com ([176.9.12.79]:54484)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rka@sysgo.com>)
-	id 1fqH25-00047Q-8R; Thu, 16 Aug 2018 08:05:41 -0400
-From: Roman Kapl <rka@sysgo.com>
-To: 
-Date: Thu, 16 Aug 2018 14:05:33 +0200
-Message-Id: <20180816120533.6587-1-rka@sysgo.com>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 176.9.12.79
-Subject: [Qemu-arm] [PATCH v2] target/arm: crash on conditional instr in it
- block
+	(envelope-from <peter.maydell@linaro.org>) id 1fqHGb-0001X8-Vl
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:20:43 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34852)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fqHGb-0001VD-K6
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:20:41 -0400
+Received: by mail-oi0-x241.google.com with SMTP id m11-v6so7627177oic.2
+	for <qemu-arm@nongnu.org>; Thu, 16 Aug 2018 05:20:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=4RiuQhUNWuW4zzKNw1UiQw2ecfCRmTx60DjnDzML+Vc=;
+	b=NMB2KlvzwtGV5vHmAVnZmaBIVy2Hvk4NnNJvAwbzeaFj2LlDGKQBlG5v2PaL3s1BVJ
+	+U+pmu0siuibR9IdHG8hZxzu04cHBtoNR7b52MiPPdg/17rYD1ELYA9Avgcy1QCri8CV
+	gkiUPx7rARVN8Ary5AKiB1yeaW/a8fthi02Rg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=4RiuQhUNWuW4zzKNw1UiQw2ecfCRmTx60DjnDzML+Vc=;
+	b=L/6kAYdvgOAYKAkpPpFdxTl4vU380/qkRMeLpZSd4MLXRV1XST+zpzEBia7LWsGIl/
+	Wwf/CZLMuZEKBH595mV9NYO9Rz7Jf6J1RdJN8taRLdiCc1xMoq4l4tRRiTI4HWypV3fO
+	FhXw+cqBheH6q0KIVEtXwpCrpb1Avz5ibwhR/j82ll2zRDe6PM+YfF7OANlw3b6iaGZ8
+	TUz7uZi173FF6BNwTjBxZoGsBglFP6eKer3j5CHXjV9To/fZVYMD5CMF+hckoOG4hqRC
+	qp/Td5FIIM0dDT8PJdyc63UI7sxV2BElXSaOnmyCarLb6V3zYWa1Ozxa5cvYfcGL5MHn
+	ENgg==
+X-Gm-Message-State: AOUpUlEjSBc0KnPzOmXvv6tOe5nzT0T5IIRpLZ7JDfY4E316SCKLu88W
+	RwLQ+DIr5maBseab9juIh/LkoLejwbdarY3t8BNQYcdxFbuAUQ==
+X-Received: by 2002:aca:b9c2:: with SMTP id
+	j185-v6mr29490098oif.212.1534422038096; 
+	Thu, 16 Aug 2018 05:20:38 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 16 Aug 2018 05:20:17
+	-0700 (PDT)
+In-Reply-To: <20180730162458.23186-1-peter.maydell@linaro.org>
+References: <20180730162458.23186-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Aug 2018 13:20:17 +0100
+Message-ID: <CAFEAcA-O=zofLVPmH9V5JnAw-JY4aZe4dYeW1MMaAdsd9hSFXg@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/5] mps2: Implement FPGAIO
+ counters and dual-timer
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,115 +105,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org, Roman Kapl <rka@sysgo.com>
+Cc: "patches@linaro.org" <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sU0ygjUYZt9Q
+X-TUID: c1G3EUqLxuYJ
 
-If an instruction is conditional (like CBZ) and it is executed conditionally
-(using the ITx instruction), a jump to undefined label is generated.
-CBZ in IT block is an unpredictable behavior, and honouring the condition code
-is allowed by the spec in this case (constrained unpredictable, ARMv8, section
-K1.1.7).
+Ping? Patch 2 has been reviewed but the rest are still waiting.
 
-Fix the 'skip on condtion' code to create a new label only if it does not
-already exist. Previously multiple labels were created, but only the last one of
-them was set.
+thanks
+-- PMM
 
-Signed-off-by: Roman Kapl <rka@sysgo.com>
----
-v1 -> v2
- Split arm_conditional_skip into arm_gen_condlabel and arm_skip_unless to
- a) cover all usages
- b) do not force callers to ^1 the condition
-
- Add note about CBZ in IT block to the commit message.
-
- target/arm/translate.c | 35 +++++++++++++++++++++--------------
- 1 file changed, 21 insertions(+), 14 deletions(-)
-
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index f845da7c63..e54e0ca2ba 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -8480,6 +8480,22 @@ static void gen_srs(DisasContext *s,
-     s->base.is_jmp = DISAS_UPDATE;
- }
- 
-+/* Generate a labe used for skipping this instruction */
-+static void arm_gen_condlabel(DisasContext *s)
-+{
-+    if (!s->condjmp) {
-+        s->condlabel = gen_new_label();
-+        s->condjmp = 1;
-+    }
-+}
-+
-+/* Skip this instruction if the ARM condition is false */
-+static void arm_skip_unless(DisasContext *s, uint32_t cond)
-+{
-+    arm_gen_condlabel(s);
-+    arm_gen_test_cc(cond, s->condlabel ^ 1);
-+}
-+
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
- {
-     unsigned int cond, val, op1, i, shift, rm, rs, rn, rd, sh;
-@@ -8709,9 +8725,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-     if (cond != 0xe) {
-         /* if not always execute, we generate a conditional jump to
-            next instruction */
--        s->condlabel = gen_new_label();
--        arm_gen_test_cc(cond ^ 1, s->condlabel);
--        s->condjmp = 1;
-+        arm_skip_unless(s, cond);
-     }
-     if ((insn & 0x0f900000) == 0x03000000) {
-         if ((insn & (1 << 21)) == 0) {
-@@ -11205,9 +11219,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                 /* Conditional branch.  */
-                 op = (insn >> 22) & 0xf;
-                 /* Generate a conditional jump to next instruction.  */
--                s->condlabel = gen_new_label();
--                arm_gen_test_cc(op ^ 1, s->condlabel);
--                s->condjmp = 1;
-+                arm_skip_unless(s, op);
- 
-                 /* offset[11:1] = insn[10:0] */
-                 offset = (insn & 0x7ff) << 1;
-@@ -12131,8 +12143,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-         case 1: case 3: case 9: case 11: /* czb */
-             rm = insn & 7;
-             tmp = load_reg(s, rm);
--            s->condlabel = gen_new_label();
--            s->condjmp = 1;
-+            arm_gen_condlabel(s);
-             if (insn & (1 << 11))
-                 tcg_gen_brcondi_i32(TCG_COND_EQ, tmp, 0, s->condlabel);
-             else
-@@ -12295,9 +12306,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-             break;
-         }
-         /* generate a conditional jump to next instruction */
--        s->condlabel = gen_new_label();
--        arm_gen_test_cc(cond ^ 1, s->condlabel);
--        s->condjmp = 1;
-+        arm_skip_unless(s, cond);
- 
-         /* jump to the offset */
-         val = (uint32_t)s->pc + 2;
-@@ -12676,9 +12685,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-         uint32_t cond = dc->condexec_cond;
- 
-         if (cond != 0x0e) {     /* Skip conditional when condition is AL. */
--            dc->condlabel = gen_new_label();
--            arm_gen_test_cc(cond ^ 1, dc->condlabel);
--            dc->condjmp = 1;
-+            arm_skip_unless(dc, cond);
-         }
-     }
- 
--- 
-2.11.0
-
+On 30 July 2018 at 17:24, Peter Maydell <peter.maydell@linaro.org> wrote:
+> This patchset adds some missing timer and counter devices
+> to the MPS2 boards:
+>
+>  * the MPS2 "fpgaio" register bank includes some registers
+>    which provide various kinds of free-running counter
+>  * the boards have an instance fo the CMSDK "dual timer module"
+>
+> Together these are sufficient for QEMU's mps2-an505
+> emulation to pass the "timer test" subsection of the
+> self-test program which can be found (behind a clickthrough
+> EULA) in the Cortex-M33_IoT_kit_2_0.zip at:
+>  https://developer.arm.com/products/system-design/development-boards/fpga-prototyping-boards/download-fpga-images
+>
+> The dual-timer patch ended up a bit big; I can try to split
+> that up if people would prefer that for review.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (5):
+>   hw/misc/mps2-fpgaio: Implement 1Hz and 100Hz counters
+>   hw/misc/mps2-fpgaio: Implement PSCNTR and COUNTER
+>   hw/timer/cmsdk-apb-dualtimer: Implement CMSDK dual timer module
+>   hw/arm/iotkit: Wire up the dualtimer
+>   hw/arm/mps2: Wire up dual-timer in mps2-an385 and mps2-an511
+>
+>  hw/timer/Makefile.objs                 |   1 +
+>  include/hw/arm/iotkit.h                |   3 +-
+>  include/hw/misc/mps2-fpgaio.h          |  10 +
+>  include/hw/timer/cmsdk-apb-dualtimer.h |  72 ++++
+>  hw/arm/iotkit.c                        |   8 +-
+>  hw/arm/mps2.c                          |  11 +
+>  hw/misc/mps2-fpgaio.c                  | 146 ++++++-
+>  hw/timer/cmsdk-apb-dualtimer.c         | 515 +++++++++++++++++++++++++
+>  MAINTAINERS                            |   2 +
+>  default-configs/arm-softmmu.mak        |   1 +
+>  hw/timer/trace-events                  |   5 +
+>  11 files changed, 767 insertions(+), 7 deletions(-)
+>  create mode 100644 include/hw/timer/cmsdk-apb-dualtimer.h
+>  create mode 100644 hw/timer/cmsdk-apb-dualtimer.c

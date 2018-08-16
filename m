@@ -1,99 +1,99 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1784416wru;
-        Thu, 16 Aug 2018 05:21:00 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwK1YUNyEdMRFRPaVig2MhF7mAp25cSijTZnaE+QVxIbZqTkIfLKzK17IcprjfDjR2prxbV
-X-Received: by 2002:a0c:8622:: with SMTP id p31-v6mr26503651qva.116.1534422060312;
-        Thu, 16 Aug 2018 05:21:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534422060; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1802303wru;
+        Thu, 16 Aug 2018 05:39:32 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPwk125dvaW9/USoSDTysGzBPmJmTMGMzh7O9XISXglygjLbzC6WScgyReCAbNpGQoW6vI0h
+X-Received: by 2002:ac8:304f:: with SMTP id g15-v6mr30037204qte.279.1534423171845;
+        Thu, 16 Aug 2018 05:39:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534423171; cv=none;
         d=google.com; s=arc-20160816;
-        b=LlZXuQ84yTZ3eIE8+O9V+RhPoH6URMa3ZeMvrORvLoAwiOtv6ejTPxwB02Cc4XXAXj
-         fxBpfrslElgKBfGoRfPl/LQDxQa7efl7UEC9rx0FvkeS1zygltf/0/C2Xov9S9HiWvbs
-         C0iS7B/AYFxqR3/JQM2f6OUJ7Oess7mzxPT07YdooosPMyyMDLzrZpJMkBl0DcqdnQYj
-         ODUDO4227oH2RJXpLlsVVDhDc8a6XIq7T7tscojpL0ENcjLIah1bo4x3b7OT/ceWe+hr
-         PJRc/+Iqc4DQCb9VMHLsKJ9q2kQhcvMl1AjtJo2XdRXGFwvDGKHK5zS4wQ1y5/nYVS2C
-         yvEw==
+        b=uFrRNuyDEEacPd1gLyD/3WdWi+2lZTHgp19sPeAjcNVxQ2y4uCmZRVoo+enX0xIIHx
+         FRNV1M4vhowvLffD2SIQNgkNnqNZQq2z94+C8FtmN4KPD5YMgr9YViRvwusVOTrBo8JC
+         oAoLUn2yMqJEaklIjAsUm8rAcBuTO2iDM1k6cAzp3pjyxi7ei2SDIay4B5BGczais1fT
+         uETzLVMkLQ3qiuP+GznirBPsQX2dXBKcs3h98rzsneORMxroGxV9sH88dNhROOPIAc3G
+         qohR/tLrOjqAlip+73gby3WYUbPmW9H8cBr8kD39rBoZ4YYvVCt319qFS2gg/KnU5X9x
+         FeCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature
          :arc-authentication-results;
-        bh=4RiuQhUNWuW4zzKNw1UiQw2ecfCRmTx60DjnDzML+Vc=;
-        b=yZyb+hUpvPQ3amzd5aVW9OihsrljhLdhZY2BAhe7SB5LYP9vaVo0XCqEOYvICjKlac
-         3E8RstlFrrK+KgIoEpjHU1nz/8RUoUYEcStxwPa01mCRGlJtbZT5x5QvaCxX+abNi1o7
-         CugSl0kO71dqoKmI4TleCrAfcJGFsy7oPGJrphbxBHkt6otm8nhzEAhe+v1BH5eyDh7i
-         9xLQKzxAXXVv8kkC0HrHvG878x2NoIizXscCz0ds0PHCwHCoqcvWaLMVwTXHY5mkOrz1
-         80H+U97Nf0TCyWznlLTPA3GMtH/cHtdAWBUM849S8QRdbR2GwjJSHrduq0xIO9iIc3PC
-         DF6A==
+        bh=7NXSQvR4MBH88RQiVlqub/ecInWrFko4tOJBiR9uBfw=;
+        b=zSd6Tf4AfBSslqGMHYgXps2otTKURiCe7fDlfDfPBvOTyLUsAuC8LjVP5ADCaG8Ead
+         kQls9J5+Yrjy9VYKoH3eGklpyNMITbT6M5ov718b4AxCXVCC7Eu/3rx1J7iV87/odV9n
+         FfS/fuSLwNz/irhILTwQQAhjCjQrTbLZzUIn0kedMwHCqAf8h4DD26XM/YoCi6CC0dsc
+         zRmCSaNCJcRt1du+PyhPRPseINBPH9kt7TXrRiY/OmmzwytVu2dIX8CEYBHai4vs3mK5
+         GR7EfUgoqNm02G74ayHnRVnCjcxkS2y+qL6mkExS1aOaqTSiFlNnAkbgPI/xLkRESktZ
+         NLUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NMB2Klvz;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bRI2SocJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h35-v6si152073qvi.283.2018.08.16.05.21.00
+        by mx.google.com with ESMTPS id l1-v6si13922210qvm.176.2018.08.16.05.39.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 05:21:00 -0700 (PDT)
+        Thu, 16 Aug 2018 05:39:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NMB2Klvz;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bRI2SocJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55275 helo=lists.gnu.org)
+Received: from localhost ([::1]:55357 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqHGt-00011k-Ow
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 08:20:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39713)
+	id 1fqHYp-0004Db-BR
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 08:39:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44477)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fqHGd-00011Y-RW
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:20:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fqHYg-0004DL-QP
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:39:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fqHGb-0001X8-Vl
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:20:43 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:34852)
+	(envelope-from <peter.maydell@linaro.org>) id 1fqHYd-0006be-Vj
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:39:20 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:34463)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fqHGb-0001VD-K6
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:20:41 -0400
-Received: by mail-oi0-x241.google.com with SMTP id m11-v6so7627177oic.2
-	for <qemu-arm@nongnu.org>; Thu, 16 Aug 2018 05:20:38 -0700 (PDT)
+	id 1fqHYc-0006Zt-8j
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 08:39:19 -0400
+Received: by mail-oi0-x244.google.com with SMTP id 13-v6so7718559ois.1
+	for <qemu-arm@nongnu.org>; Thu, 16 Aug 2018 05:39:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=4RiuQhUNWuW4zzKNw1UiQw2ecfCRmTx60DjnDzML+Vc=;
-	b=NMB2KlvzwtGV5vHmAVnZmaBIVy2Hvk4NnNJvAwbzeaFj2LlDGKQBlG5v2PaL3s1BVJ
-	+U+pmu0siuibR9IdHG8hZxzu04cHBtoNR7b52MiPPdg/17rYD1ELYA9Avgcy1QCri8CV
-	gkiUPx7rARVN8Ary5AKiB1yeaW/a8fthi02Rg=
+	:cc; bh=7NXSQvR4MBH88RQiVlqub/ecInWrFko4tOJBiR9uBfw=;
+	b=bRI2SocJiVIJPWy43bZuIq6QULufJLbT8cKLFOdkL6c4Rk+y8RSYophXQltjtFmZfZ
+	+R/9hp+kpMWbyVjTN/ngGeZrfSUP3UazgJ8EwNU+cHmIy1YRc7Gs13UL6be66GxcKxvK
+	QL8chiLuCiJEq9ONKnFyyC6k2rCJ87OAoQjdo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=4RiuQhUNWuW4zzKNw1UiQw2ecfCRmTx60DjnDzML+Vc=;
-	b=L/6kAYdvgOAYKAkpPpFdxTl4vU380/qkRMeLpZSd4MLXRV1XST+zpzEBia7LWsGIl/
-	Wwf/CZLMuZEKBH595mV9NYO9Rz7Jf6J1RdJN8taRLdiCc1xMoq4l4tRRiTI4HWypV3fO
-	FhXw+cqBheH6q0KIVEtXwpCrpb1Avz5ibwhR/j82ll2zRDe6PM+YfF7OANlw3b6iaGZ8
-	TUz7uZi173FF6BNwTjBxZoGsBglFP6eKer3j5CHXjV9To/fZVYMD5CMF+hckoOG4hqRC
-	qp/Td5FIIM0dDT8PJdyc63UI7sxV2BElXSaOnmyCarLb6V3zYWa1Ozxa5cvYfcGL5MHn
-	ENgg==
-X-Gm-Message-State: AOUpUlEjSBc0KnPzOmXvv6tOe5nzT0T5IIRpLZ7JDfY4E316SCKLu88W
-	RwLQ+DIr5maBseab9juIh/LkoLejwbdarY3t8BNQYcdxFbuAUQ==
-X-Received: by 2002:aca:b9c2:: with SMTP id
-	j185-v6mr29490098oif.212.1534422038096; 
-	Thu, 16 Aug 2018 05:20:38 -0700 (PDT)
+	bh=7NXSQvR4MBH88RQiVlqub/ecInWrFko4tOJBiR9uBfw=;
+	b=kaP9co9wlBAbKOXTjZAaAN2ijZ0PQes0KT9Fuz8JcqT8ffXP2Ni9uaxlY/TqEz8QHM
+	fktoTKIl2JZlF2vkdXeCQcJB+XwqZDfu+JOeKqJDnY4BVTyPHgyn/DtBgP+Z9zqD63kn
+	Jw6Tjzqpdya5T6IagNHmen35/yukTRJeNdV0SO87DEE9JbgTOslS7pticZr8fB1aacfr
+	jIJzCilupABEpt68t8lTKpDbM0gBHH7wpTrJFu2VRT9eutm6XgOtLcBp5Y5Zl7QLr92K
+	jPeRH39lgWFPeX7+DFzuaDw1lxhM4WqKwnAhCrBmcVwVAkYlF2oPErCXYGfCHHcrmycs
+	XEyQ==
+X-Gm-Message-State: AOUpUlEFVjp13YmOqLOwlPj+znPNhwQL37cKxJ1bNKCHfCgySonM8cLM
+	go4MPFpDpYZCRMKhx90sPlaZjHCfsXzHSTNn9q2WEw==
+X-Received: by 2002:aca:2c89:: with SMTP id
+	s131-v6mr29775146ois.171.1534423155221; 
+	Thu, 16 Aug 2018 05:39:15 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 16 Aug 2018 05:20:17
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 16 Aug 2018 05:38:54
 	-0700 (PDT)
-In-Reply-To: <20180730162458.23186-1-peter.maydell@linaro.org>
-References: <20180730162458.23186-1-peter.maydell@linaro.org>
+In-Reply-To: <20180814162739.11814-1-stefanha@redhat.com>
+References: <20180814162739.11814-1-stefanha@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Aug 2018 13:20:17 +0100
-Message-ID: <CAFEAcA-O=zofLVPmH9V5JnAw-JY4aZe4dYeW1MMaAdsd9hSFXg@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Date: Thu, 16 Aug 2018 13:38:54 +0100
+Message-ID: <CAFEAcA8p=e-C_U+wqjLjLyc9-nCC7R094_xD-xY06tzJCOz8dg@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/5] mps2: Implement FPGAIO
- counters and dual-timer
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-arm] [PATCH v6 0/6] arm: add Cortex M0 CPU model and hex
+ file loader
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,54 +105,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>
+Cc: Jim Mussared <jim@groklearning.com>,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
+	Su Hang <suhang16@mails.ucas.ac.cn>, Liviu Ionescu <ilg@livius.net>,
+	Alistair Francis <alistair@alistair23.me>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Steffen Gortz <qemu.ml@steffen-goertz.de>,
+	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c1G3EUqLxuYJ
+X-TUID: DRCsGw09G50m
 
-Ping? Patch 2 has been reviewed but the rest are still waiting.
+On 14 August 2018 at 17:27, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+> This patch series:
+>  * Makes bitbanding optional on ARMv7MState.
+>  * Adds a "cortex-m0" cpu type which can be used with ARMMProfileState.  This
+>    works thanks to Julia's Cortex M0 emulation patches, which are now all
+>    merged.
+>  * Adds Su Hang's Intel HEX file format loader so that micro:bit and other
+>    microcontroller firmware images can be run using -kernel.  The micro:bit
+>    development tools typically only emit .hex files and not ELFs.
+
+Applied to target-arm.next, thanks.
+
+I notice that the change to generic-loader doesn't include an
+update to docs/generic-loader.txt -- could somebody do a followup
+patch for that? Currently the docs say
+
+# The loader device also allows files to be loaded into memory. It can load raw
+# files and ELF executable files.  Raw files are loaded verbatim.  ELF
+executable
+# files are loaded by an ELF loader.
+
+but looking at the code we also support uImage files and HEX files.
+We should mention all of these, and be clear about which ones
+require the <addr> to be specified, and what the PC will be set
+to in the case where <cpu-num> is specified.
 
 thanks
 -- PMM
-
-On 30 July 2018 at 17:24, Peter Maydell <peter.maydell@linaro.org> wrote:
-> This patchset adds some missing timer and counter devices
-> to the MPS2 boards:
->
->  * the MPS2 "fpgaio" register bank includes some registers
->    which provide various kinds of free-running counter
->  * the boards have an instance fo the CMSDK "dual timer module"
->
-> Together these are sufficient for QEMU's mps2-an505
-> emulation to pass the "timer test" subsection of the
-> self-test program which can be found (behind a clickthrough
-> EULA) in the Cortex-M33_IoT_kit_2_0.zip at:
->  https://developer.arm.com/products/system-design/development-boards/fpga-prototyping-boards/download-fpga-images
->
-> The dual-timer patch ended up a bit big; I can try to split
-> that up if people would prefer that for review.
->
-> thanks
-> -- PMM
->
-> Peter Maydell (5):
->   hw/misc/mps2-fpgaio: Implement 1Hz and 100Hz counters
->   hw/misc/mps2-fpgaio: Implement PSCNTR and COUNTER
->   hw/timer/cmsdk-apb-dualtimer: Implement CMSDK dual timer module
->   hw/arm/iotkit: Wire up the dualtimer
->   hw/arm/mps2: Wire up dual-timer in mps2-an385 and mps2-an511
->
->  hw/timer/Makefile.objs                 |   1 +
->  include/hw/arm/iotkit.h                |   3 +-
->  include/hw/misc/mps2-fpgaio.h          |  10 +
->  include/hw/timer/cmsdk-apb-dualtimer.h |  72 ++++
->  hw/arm/iotkit.c                        |   8 +-
->  hw/arm/mps2.c                          |  11 +
->  hw/misc/mps2-fpgaio.c                  | 146 ++++++-
->  hw/timer/cmsdk-apb-dualtimer.c         | 515 +++++++++++++++++++++++++
->  MAINTAINERS                            |   2 +
->  default-configs/arm-softmmu.mak        |   1 +
->  hw/timer/trace-events                  |   5 +
->  11 files changed, 767 insertions(+), 7 deletions(-)
->  create mode 100644 include/hw/timer/cmsdk-apb-dualtimer.h
->  create mode 100644 hw/timer/cmsdk-apb-dualtimer.c

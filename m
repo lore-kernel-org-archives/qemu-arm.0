@@ -1,216 +1,333 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1915168wru;
-        Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwKp2H/BJ2LPETOI+7QRbYPc34C3iS7eJCI0ebgZU9BNsBG1s28kGZJ2c8erml2VXPEd/2Z
-X-Received: by 2002:a37:5285:: with SMTP id g127-v6mr26797595qkb.377.1534429467739;
-        Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534429467; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1915569wru;
+        Thu, 16 Aug 2018 07:24:46 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPyHdzi9HJMSa2yY+aErlSz99iXihoPoFRxe4oHYQym7R+13mwn061bwvUTjlPRxHrUhWz1R
+X-Received: by 2002:a37:2451:: with SMTP id w78-v6mr28090080qkg.218.1534429486770;
+        Thu, 16 Aug 2018 07:24:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534429486; cv=none;
         d=google.com; s=arc-20160816;
-        b=MLyXDFo1taFkLsdUe/Mlvp6WgapjxJzpRPyaaTmSDIJLnhhxmpOmvy1Dq7Ashw34n9
-         0oX4+ajoATBPNx8f4PK+4GYVH1gBciaDnnrNaUxu2VJxnf3DcJaCLgPtfFl85aNqxLQ4
-         g6Zu3inTqf5LCchHqcffZ3RV41f2rSO1p0+KWBZU/uW6T9I+z10zU2syocjO25YZV0ZK
-         BeVXozKth9Rd9pNr1sULvST3vepWt+9cbRmJoq/PT9G3u3qQ+zFFcJirxNlNgwseWcm6
-         QptFnH7tiVukchFttDxjwDJtd53nJYLMjXkVJQx+lKcprWAe3ft+5qUhzS6Vxzr0NCyy
-         rDtA==
+        b=FtpXgLEizlbnfl3Ph07anaM0mcfFcIFEpPg9+N8Qtz6u1/GcTbJbFPF0WQX5cQN3W7
+         db+R+FcYFkbb0RAbVG3CtFHs39HS1xLRe5xt0d2+XcxEUQcYsqPaPiT9Csd9byeT2njD
+         zldIVPStg66o5OLHs9uCcHrzcy0pYW2ip7ODi5EoP4o3pI3LWLm8Ii8/aBq16Y5R1gsH
+         sjuWllviUp8ZxksvRUQO9JrbMVxty7XFYhe4Pyd1Pc0JrXLtZz+JDKNJqm4O1/G0ZKVd
+         Tw0bLvvjuOj3cm5UPkcsMNK/XIBXTXZzmfF+Mc5ToHG6eNMeNCZ463HiwXXPB4yycZX1
+         WOiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=BEuLX0ahye47Gf5X2qlGa21bUMaQV4A951E5uD+yS84=;
-        b=MfS93wrGlS3O6muY7Sr3zbpG3NN+rKW8zknwWR6Xa5EGIse0pO45EYMZGAxycfXnm0
-         f2jRORLL2Q8CV6Hl3l+G5bDYzirvhI7uFpKZcW6KkHawJ9hFfNMzD/ii0lq2aLm60YDV
-         ClElRkQwVxION6feVSVEMITg9PrW1lKLv8Ji23tusy93kDFj++lBbVLj8EQdql31I2Vv
-         d/HYeGpWvUfbbOEXLpg8PuaXxcnbpIYiAPEC1jUg1TLSu2MyjawxsQP7Pux6HIxC54I9
-         VyDGzYzx6MVZe4hFw6J+BI+aXiXxQvMasyVTcHhDNT2On1hYuZDY2kHvY8FTLtS5n1LG
-         SFmA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=/zvGQMftau9+3ava7PbbbSfxu2MjNDIJwyraRUO/+9o=;
+        b=wlc9FXBsx8McpGn4CPBsg4fZMqZQjg5U9v0xMDu/t2r/8pFLxzjXlzntPA6Ib7NmW8
+         e/MVwDgkN6N4HYgAU/RX/gbRF62z/yvPMhU3GIGw6SEzEAfUVot3o7el+1+BajGuRoZ4
+         izZY++tMuHWO0tuUZurgl0QTbVVJTpKvFZ4KUuctgK34uiFQSan2LVOH8cSY+raDRrSX
+         3SkfFEI08CioQGEDck0tOWV8L5KlSu7toXDE9rNSle2r7EaV/ILKkxQNBz6ZHnSFT1fk
+         LFYqRGEY1EoX4d5N91LatE6+KEygfV5TDAZj4K3kDZ6jm+2njd6SQ8fsYellANegynD9
+         K7Qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PLnETtpg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=iWbT13Jx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h47-v6si3122554qth.404.2018.08.16.07.24.27
+        by mx.google.com with ESMTPS id p29-v6si2021654qkl.95.2018.08.16.07.24.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 16 Aug 2018 07:24:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PLnETtpg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56008 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=iWbT13Jx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56009 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqJCN-00007S-8X
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 10:24:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42676)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fqJCg-00014i-8w
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 10:24:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fqJ25-0006j5-QF
-	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 10:13:50 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fqJCO-00012K-Iz
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:24:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fqJ22-0004Xz-66
-	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 10:13:49 -0400
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:39487)
+	(envelope-from <peter.maydell@linaro.org>) id 1fqJCN-0004kt-Ae
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:24:28 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:46802)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fqJ21-0004XO-W9; Thu, 16 Aug 2018 10:13:46 -0400
-Received: by mail-pf1-x442.google.com with SMTP id j8-v6so2089779pff.6;
-	Thu, 16 Aug 2018 07:13:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=BEuLX0ahye47Gf5X2qlGa21bUMaQV4A951E5uD+yS84=;
-	b=PLnETtpgP3CvBROKNAQGtkO5druacSEEwl/lRcd3AERFhtVtRHQlLIZndnBMfAMWzG
-	QhzOljl7a0lMzq17fgA5uHRZz+9miRIZXNfSWe3TPoOwceYpP0rGKg2Jjm0TPonoe7mx
-	U6Zj2QT8sTrxC1kRJBwuzM+Qr+RtDPFQ7SXDMN7OPO4HPqS7ukxDoh0i8MOzhuV77Yqx
-	+fhxjK71naxVUwywLsUROQ1U7sYJaR6t2Sb4IJlKVocOvmgbGcHxCWjwryMMw00iCHnT
-	tA/vKd2jQwFOaJaAoMPgo1hyCwGRg/WJndJg7/QetyD+eTWonyVS82TbE6+VbKODbe7i
-	u2iw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fqJCN-0004kX-1J
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:24:27 -0400
+Received: by mail-oi0-x242.google.com with SMTP id y207-v6so8281608oie.13
+	for <qemu-arm@nongnu.org>; Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=/zvGQMftau9+3ava7PbbbSfxu2MjNDIJwyraRUO/+9o=;
+	b=iWbT13JxAyLSRmtmOepG1zNbVgbLUI5ERZyFMISjoO/U35Tpr5k8aU5GQ8PQof9XR9
+	aT1dX1x5pUFM/7jReeXVLZMLq0v8wkK05TYv5L9We90T3AzKM/I/DtX0DZx5AlgmSnwu
+	rK0wWFkYpiqPaG1+KPKbEXEig1orO89FscyoU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=BEuLX0ahye47Gf5X2qlGa21bUMaQV4A951E5uD+yS84=;
-	b=BmY+cf2BetvjA62wWNsTfZyjROKPKq93lWaICEuESbX+v+rjim22UrDNc1+C4Bkip9
-	LiI3KgeX3k4CFQCqID9LMg0I8U6ZRWnfkHIP2VORAmSsj/f4sCOb75WPKPiE9usHF6p5
-	zn4Siaq7px4Jq5k3uxg/BYHBYeIMf2w/4HiorR+3dQ0ZTYLuKQEHPrGWD70UYUrgw01i
-	9eeYGbNOymizxBybBKiqlCwHSu9gzpWs0BiSb4vuOquhDJyIuTjrai5pkX5KitKMIFhj
-	QkxhtqQjTJq8Cfd0e201zgXMt2U9ddf0x/rhwgXyMPRqj5SnsSR9DjgUUrzqD9hO/QYg
-	bxzA==
-X-Gm-Message-State: AOUpUlFcfOR2W6T0HXiJjjs+s0dRtMMM8SmKlxvn3+Z1f4obd9OthYIj
-	N4GZ/PBbhcTml9YT9oUPTEc=
-X-Received: by 2002:a63:cf10:: with SMTP id
-	j16-v6mr29232964pgg.238.1534428825117; 
-	Thu, 16 Aug 2018 07:13:45 -0700 (PDT)
-Received: from aurora.jms.id.au ([45.124.203.18])
-	by smtp.gmail.com with ESMTPSA id
-	x1-v6sm24117637pgr.59.2018.08.16.07.13.40
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 16 Aug 2018 07:13:44 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Thu, 16 Aug 2018 23:43:37 +0930
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Aug 2018 23:43:03 +0930
-Message-Id: <20180816141303.20518-4-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180816141303.20518-1-joel@jms.id.au>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=/zvGQMftau9+3ava7PbbbSfxu2MjNDIJwyraRUO/+9o=;
+	b=p3w1OVx7f2tz51eS11GxWxCVYGhf8ssfBBmHkmd4XbBnHGktEbZrGkpffXazcVGcfm
+	SkQKZ6GM19G/4pXhRT3FT67NcFDgrmag1WtzVidBZZ/CnceLu6qUJgWHe/oKmY9afR23
+	wUUCbkd9WMLTXWC3pWOv8BddSyCIT9irnHsHNz1B9tVnzz+2HC8rg4ERYQIkFYOgMwBP
+	Nx7Q/G8F1ZrTcm5Swy2XzEDP4XffQ6ndDB7lkLqB8igKNFyInuIXwva43bg455Qo6efD
+	WLCg7MxJMKhUONZPwKY3gRTp5u9+kWfXj8W5tmzQWslV5cPUptamGav751ms/vcCP49L
+	ul7Q==
+X-Gm-Message-State: AOUpUlF/HbPkfvI4G6ucxcWiOtHWZZOwYU0TSDHf9uDGLN5WfkhTr4fg
+	lhXDZrnT4YfdX/jkZxiMLr6UjhuFdR6GL+j1QsU4Qw==
+X-Received: by 2002:aca:506:: with SMTP id 6-v6mr33559473oif.23.1534429466237; 
+	Thu, 16 Aug 2018 07:24:26 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 16 Aug 2018 07:24:05
+	-0700 (PDT)
+In-Reply-To: <20180816141303.20518-3-joel@jms.id.au>
 References: <20180816141303.20518-1-joel@jms.id.au>
+	<20180816141303.20518-3-joel@jms.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Aug 2018 15:24:05 +0100
+Message-ID: <CAFEAcA9N_H2PqVUP-W=Sp-SQ4WYpbu5fqyN5hxkHdHGocX59Mg@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::442
-Subject: [Qemu-devel] [PATCH v5 3/3] arm: Add BBC micro:bit machine
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-arm] [PATCH v5 2/3] arm: Add Nordic Semiconductor nRF51
+ SoC
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Stefan Hajnoczi <stefanha@gmail.com>,
-	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EdnzpmHXm86V
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m1Q7CU+IfLwd
 
-This adds the base for a machine model of the BBC micro:bit:
+On 16 August 2018 at 15:13, Joel Stanley <joel@jms.id.au> wrote:
+> The nRF51 is a Cortex-M0 microcontroller with an on-board radio module,
+> plus other common ARM SoC peripherals.
+>
+>  http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.pdf
+>
+> This defines a basic model of the CPU and memory, with no peripherals
+> implemented at this stage.
+>
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+> v2:
+>   put memory as struct fileds in state structure
+>   pass OBJECT(s) as owner, not NULL
+>   Add missing addresses for ficr
+>   Fix flash and sram sizes for microbit
+>   Embed cpu object in state object an initalise it without use of armv7m_init
+>   Link to datasheet
+> v3:
+>   rebase nrf51 on m0 changes
+>   remove unused kernel_filename
+>   clarify flash and sram size
+>   make flash and sram size properties of the soc state
+> v4:
+>   set the number of interrupts to 32
+> v5:
+>  move back to armv7m calls, as v4 of Stefan's patch removed the
+>  m_profile changes
+> ---
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/arm/Makefile.objs            |   1 +
+>  hw/arm/nrf51_soc.c              | 119 ++++++++++++++++++++++++++++++++
+>  include/hw/arm/nrf51_soc.h      |  42 +++++++++++
+>  4 files changed, 163 insertions(+)
+>  create mode 100644 hw/arm/nrf51_soc.c
+>  create mode 100644 include/hw/arm/nrf51_soc.h
+>
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 311584fd74eb..2ff27c2e1d5a 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -101,6 +101,7 @@ CONFIG_STM32F2XX_SYSCFG=y
+>  CONFIG_STM32F2XX_ADC=y
+>  CONFIG_STM32F2XX_SPI=y
+>  CONFIG_STM32F205_SOC=y
+> +CONFIG_NRF51_SOC=y
+>
+>  CONFIG_CMSDK_APB_TIMER=y
+>  CONFIG_CMSDK_APB_UART=y
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index 2902f47b4c4c..ae4e20373b9e 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -37,3 +37,4 @@ obj-$(CONFIG_IOTKIT) += iotkit.o
+>  obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
+>  obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
+>  obj-$(CONFIG_FSL_IMX6UL) += fsl-imx6ul.o mcimx6ul-evk.o
+> +obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o
+> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+> new file mode 100644
+> index 000000000000..9f9649c7807d
+> --- /dev/null
+> +++ b/hw/arm/nrf51_soc.c
+> @@ -0,0 +1,119 @@
+> +/*
+> + * Nordic Semiconductor nRF51 SoC
+> + * http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.1.pdf
+> + *
+> + * Copyright 2018 Joel Stanley <joel@jms.id.au>
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu-common.h"
+> +#include "hw/arm/arm.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/boards.h"
+> +#include "hw/devices.h"
+> +#include "hw/misc/unimp.h"
+> +#include "exec/address-spaces.h"
+> +#include "sysemu/sysemu.h"
+> +#include "qemu/log.h"
+> +#include "cpu.h"
+> +
+> +#include "hw/arm/nrf51_soc.h"
+> +
+> +#define IOMEM_BASE      0x40000000
+> +#define IOMEM_SIZE      0x20000000
+> +
+> +#define FICR_BASE       0x10000000
+> +#define FICR_SIZE       0x000000fc
+> +
+> +#define FLASH_BASE      0x00000000
+> +#define SRAM_BASE       0x20000000
+> +
+> +/* The size and base is for the NRF51822 part. If other parts
+> + * are supported in the future, add a sub-class of NRF51SoC for
+> + * the specific variants */
 
-  https://en.wikipedia.org/wiki/Micro_Bit
+/* and */ both on a line of their own for multiline comments, please.
 
-This is a system with a nRF51 SoC containing the main processor, with
-various peripherals on board.
+> +#define NRF51822_FLASH_SIZE     (256 * 1024)
+> +#define NRF51822_SRAM_SIZE      (16 * 1024)
+> +
+> +static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+> +{
+> +    NRF51State *s = NRF51_SOC(dev_soc);
+> +    Error *err = NULL;
+> +
+> +    if (!s->board_memory) {
+> +        error_setg(errp, "memory property was not set");
+> +        return;
+> +    }
+> +
+> +    object_property_set_link(OBJECT(&s->cpu), OBJECT(&s->container), "memory",
+> +            &err);
+> +    object_property_set_bool(OBJECT(&s->cpu), true, "realized", &err);
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
-v2:
- - Instead of setting kernel filename property, load the image directly
- - Add link to hardware overview website
-v3:
- - Rebase microbit on m0 changes
- - Remove hard-coded flash size and retrieve from the soc
- - Add Stefan's reviewed-by
-v5:
- - move back to armv7m calls, as v4 of Stefan's patch removed the
- m_profile changes
----
- hw/arm/Makefile.objs |  2 +-
- hw/arm/microbit.c    | 54 ++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 55 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/microbit.c
+You need to check whether you get an error after the first call;
+you can't stack up multiple calls with a single error check like this.
+See the comment in include/qapi/error.h (this is a violation of the
+final "Do *not*" in that comment).
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index ae4e20373b9e..5f88062c666d 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -37,4 +37,4 @@ obj-$(CONFIG_IOTKIT) += iotkit.o
- obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
- obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
- obj-$(CONFIG_FSL_IMX6UL) += fsl-imx6ul.o mcimx6ul-evk.o
--obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o
-+obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o microbit.o
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-new file mode 100644
-index 000000000000..467cfbda2348
---- /dev/null
-+++ b/hw/arm/microbit.c
-@@ -0,0 +1,54 @@
-+/*
-+ * BBC micro:bit machine
-+ * http://tech.microbit.org/hardware/
-+ *
-+ * Copyright 2018 Joel Stanley <joel@jms.id.au>
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/arm/arm.h"
-+#include "exec/address-spaces.h"
-+
-+#include "hw/arm/nrf51_soc.h"
-+
-+typedef struct {
-+    MachineState parent;
-+
-+    NRF51State nrf51;
-+} MICROBITMachineState;
-+
-+#define TYPE_MICROBIT_MACHINE "microbit"
-+
-+#define MICROBIT_MACHINE(obj) \
-+    OBJECT_CHECK(MICROBITMachineState, obj, TYPE_MICROBIT_MACHINE)
-+
-+static void microbit_init(MachineState *machine)
-+{
-+    MICROBITMachineState *s = g_new(MICROBITMachineState, 1);
-+    MemoryRegion *system_memory = get_system_memory();
-+    Object *soc;
-+
-+    object_initialize(&s->nrf51, sizeof(s->nrf51), TYPE_NRF51_SOC);
-+    soc = OBJECT(&s->nrf51);
-+    object_property_add_child(OBJECT(machine), "nrf51", soc, &error_fatal);
-+    object_property_set_link(soc, OBJECT(system_memory),
-+                             "memory", &error_abort);
-+
-+    object_property_set_bool(soc, true, "realized", &error_abort);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+            NRF51_SOC(soc)->flash_size);
-+}
-+
-+static void microbit_machine_init(MachineClass *mc)
-+{
-+    mc->desc = "BBC micro:bit";
-+    mc->init = microbit_init;
-+    mc->max_cpus = 1;
-+}
-+DEFINE_MACHINE("microbit", microbit_machine_init);
--- 
-2.17.1
+> +
+> +    memory_region_add_subregion_overlap(&s->container, 0, s->board_memory, -1);
+> +
+> +    memory_region_init_ram(&s->flash, OBJECT(s), "nrf51.flash", s->flash_size,
+> +            &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    memory_region_set_readonly(&s->flash, true);
 
+memory_region_init_rom() is equivalent to memory_region_init_ram() +
+memory_region_set_readonly().
+
+
+> +    memory_region_add_subregion(&s->container, FLASH_BASE, &s->flash);
+> +
+> +    memory_region_init_ram(&s->sram, NULL, "nrf51.sram", s->sram_size, &err);
+
+Assuming this is the main (largest) ram block in the system, it
+should be created with memory_region_allocate_system_memory().
+
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    memory_region_add_subregion(&s->container, SRAM_BASE, &s->sram);
+> +
+> +    create_unimplemented_device("nrf51_soc.io", IOMEM_BASE, IOMEM_SIZE);
+> +    create_unimplemented_device("nrf51_soc.ficr", FICR_BASE, FICR_SIZE);
+> +    create_unimplemented_device("nrf51_soc.private", 0xF0000000, 0x10000000);
+
+This looks like some base/size #defines for the 'private' region would
+be useful.
+
+> +}
+> +
+> +static void nrf51_soc_init(Object *obj)
+> +{
+> +    NRF51State *s = NRF51_SOC(obj);
+> +
+> +    memory_region_init(&s->container, obj, "nrf51-container", UINT64_MAX);
+> +
+> +    object_initialize(&s->cpu, sizeof(s->cpu), TYPE_ARMV7M);
+> +    object_property_add_child(OBJECT(s), "armv6m", OBJECT(&s->cpu), &error_abort);
+> +    qdev_set_parent_bus(DEVICE(&s->cpu), sysbus_get_default());
+
+Use sysbus_init_child_obj() rather than this sequence of 3 calls.
+
+> +    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type", ARM_CPU_TYPE_NAME("cortex-m0"));
+> +    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 32);
+> +}
+> +
+> +static Property nrf51_soc_properties[] = {
+> +    DEFINE_PROP_LINK("memory", NRF51State, board_memory, TYPE_MEMORY_REGION,
+> +                     MemoryRegion *),
+> +    DEFINE_PROP_UINT32("sram-size", NRF51State, sram_size, NRF51822_SRAM_SIZE),
+> +    DEFINE_PROP_UINT32("flash-size", NRF51State, flash_size, NRF51822_FLASH_SIZE),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+
+Ah, I was wondering how flash_size was handled when I looked at patch 3.
+
+Instead of your patch 3 board model code reaching into the internals
+of the NRF51State struct to pull out the flash_size field, the board
+code should set this property on the object it creates, and then it
+knows how big the flash it's asked for is and can pass that value also
+to the armv7m_load_kernel() function.
+
+> --- /dev/null
+> +++ b/include/hw/arm/nrf51_soc.h
+> @@ -0,0 +1,42 @@
+> +/*
+> + * Nordic Semiconductor nRF51  SoC
+> + *
+> + * Copyright 2018 Joel Stanley <joel@jms.id.au>
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +
+> +#ifndef NRF51_SOC_H
+> +#define NRF51_SOC_H
+> +
+> +#include "qemu/osdep.h"
+
+Our convention with osdep.h is that:
+ * all .c files must include it as their first header
+ * .h files must never include it
+
+thanks
+-- PMM

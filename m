@@ -1,98 +1,102 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1916380wru;
-        Thu, 16 Aug 2018 07:25:32 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzfy0kNPoD1geYvvzAP0PIbYnGqjEMf3V612DMfeY0iXNNJEjHx0Yudp66te8/88jf8tQ33
-X-Received: by 2002:a37:8b06:: with SMTP id n6-v6mr28676758qkd.166.1534429532525;
-        Thu, 16 Aug 2018 07:25:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534429532; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1919510wru;
+        Thu, 16 Aug 2018 07:28:47 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPx2NRl8DjR1gSWehhrWmUgFKhZ2CknRFyAbfVimG0CSkFf2kC/TxnwgvWgsjNkxj8v5bp4X
+X-Received: by 2002:a0c:e582:: with SMTP id t2-v6mr21071591qvm.69.1534429726901;
+        Thu, 16 Aug 2018 07:28:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534429726; cv=none;
         d=google.com; s=arc-20160816;
-        b=A7Trof2MIXuDaMl3jOmvClU2/Vy4wLvGbmUoWDf56Lg668bGNB7CDVZjf15idsUrky
-         ZFLwSVxts2m0UCgsYEXxd448JJpxXrTg2SrR86kDl1AntWJbDz7fS/NPgSUrwPg+HY7+
-         mdgCtGQPU2ScUejE381OLMmvkAWLLSdubtOQ+01HzN9clHY7c6f3HVpEuQ+AnC0xUPES
-         bz4st0LbLlTMJEqzbxYO8FUrp4s3Qubu05MIT0mIUJBUYXPHA8UkybJieWIrcqY8fgL7
-         ZA9V5S7L4nHCB4ZZIBy4RnywJWadId3595vKhAJSxpRy8CehpDbpZnShbZsFgGFosgX/
-         JPNw==
+        b=ku84IbNjdbD++iKFlzLuBS0/YVgMxvQ9Zo2HHhGKtNkFyPJ0PtTaSU6OM3Mk+D4V/s
+         0tE3FgCdkNx0DauvWaY0cwdO/zTj04CN+e4Y/tmw3NbKNFwdcFGCKCjIXF8QHYQHR5vf
+         R1+hPlSuSUN1JjAUHf8LOuejBmgniUow/crUenwGBCXwTW6KGwhAzO17IEJ3xU0QEqup
+         khqsBnBsyZbVDqzX5WyVy17fa2+w9f4k6t24fArW84m4X9s5H525V/E6u8VvkyK10IIq
+         9dj25WlhOwK3So62UvFBUHl/Ct3nMdaRkvjHMEcgCFWM/r7kVxByid7lzqM7YS0jygXU
+         4IUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=GdncMo/BmGO4S4VdAGQZ6kFxigbJ2gZnuxf/xMOVgLk=;
-        b=TkvdHHWM6VXZOi6S3H/pWeOip773mV6iIR52+0YPsvhTf+SSZQc+yYnehkpDfcZjNF
-         Uo6xhGNBgf/YGmI0fxaChwJxPetqoQ+YBhto5R4tc/Drw6r9unYfb+E4SGuFXGx5EvYE
-         9hCK0dUuMEqPgaAGwxuD00+7EkVBYeFXLyA04+anHPqRnX5e2Ry6R0QCUMf/bv1ZZT0E
-         yyzFfTNX+Cjt2xa++PV4jFm7v210A4NWkBeW38Ra2H6y27riNYwRs1PqMSZJBXVL0GTk
-         PW1+9T98LstR9Es2hC9qxu5wwvEOt+i+rb+8N7umLF38nvmULXjkvDPvd/0mgd+8sNno
-         LdbQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
+        bh=NDzdn7otLIu4Rq85/WPkZ0uNVWIqdoq9gGaRPQ+Z918=;
+        b=xieuRvjprbA5y45HaC9Y/XO1hWSZVqFs21o23H19w0t8o1Zuu6wrZgkAVs7Y+lU7lT
+         RFwhAV/+NugjMt3KT+QvoqanYRfWx/B+Am/HTErAUDOfgqLgfDimGpStF+LC+DfgjL19
+         i7PentDmIlCR4akMUdxuiRQeXpOjypZHErcgqfYq9jub7h3/yeoXfQWmyoBVxOAqWLl2
+         IRrPoJlkKWF2xI0i2OLQm1Wix1f0pY2KjxJYPUII9i8xEB0OmDeAYrZiXsewvJhqDYpX
+         UPT6NyTiZFxFwxkbGSZkrgYoG60rQPlZYIg2yajTWlR4mGBCBQNTAp7cPXrsTsCyYKGo
+         9JTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dQnQaozR;
+       dkim=fail header.i=@linaro.org header.s=google header.b="Z6cwkkJ/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l190-v6si3140218qkf.218.2018.08.16.07.25.32
+        by mx.google.com with ESMTPS id c6-v6si10516947qtj.223.2018.08.16.07.28.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 07:25:32 -0700 (PDT)
+        Thu, 16 Aug 2018 07:28:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dQnQaozR;
+       dkim=fail header.i=@linaro.org header.s=google header.b="Z6cwkkJ/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56025 helo=lists.gnu.org)
+Received: from localhost ([::1]:56054 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqJDQ-0002h7-0y
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 10:25:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42048)
+	id 1fqJGY-000668-ET
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 10:28:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47062)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fqJ0g-0005X7-41
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:12:23 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fqJEl-0003kH-1B
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:26:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fqJ0f-0003CN-3J
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:12:22 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:45301)
+	(envelope-from <peter.maydell@linaro.org>) id 1fqJEk-0006D3-C7
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:26:54 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:46835)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fqJ0e-0003Ap-QQ
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:12:20 -0400
-Received: by mail-oi0-x241.google.com with SMTP id q11-v6so8213506oic.12
-	for <qemu-arm@nongnu.org>; Thu, 16 Aug 2018 07:12:20 -0700 (PDT)
+	id 1fqJEk-0006Cn-6d
+	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:26:54 -0400
+Received: by mail-oi0-x243.google.com with SMTP id y207-v6so8296940oie.13
+	for <qemu-arm@nongnu.org>; Thu, 16 Aug 2018 07:26:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=GdncMo/BmGO4S4VdAGQZ6kFxigbJ2gZnuxf/xMOVgLk=;
-	b=dQnQaozRoVmOiKjBwhNM8KkMQ08qkSvpUSPkn1jyU87AJ//BPY9O7HElZ3lw9hO/WS
-	bfmgxltDr3REBR6b+RW2C12tOZPQNtD7cYG4Aryd0NJQ6HNE8OKhyYd0/6bezF9xFOKA
-	wpN4lRfXorZr2JQ90VsEFOAE3cPxtidFV+8gQ=
+	:cc:content-transfer-encoding;
+	bh=NDzdn7otLIu4Rq85/WPkZ0uNVWIqdoq9gGaRPQ+Z918=;
+	b=Z6cwkkJ/tGMi8LPrw8Py07dsl+KnXlJQRWYhSjybMAqCiDb8T9frCvMOvUFKKz289B
+	0bJF30ihCZfE7ag4rpcGIOGykJ/i6Ifqy/vl/6LMIEEmnI8iae/utnPeWcCbHoSM8elL
+	6Jj8HrfXdoSiGch2JQc5Z2rs09ZYGar2R1bcE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=GdncMo/BmGO4S4VdAGQZ6kFxigbJ2gZnuxf/xMOVgLk=;
-	b=GgcHHehoEsMB+QA2hSb5iq0Xc6sKfVlWCMvihoQiHis4+wV5UJu2tcuqCAwORhz91N
-	gbjDAWYc7crlvZiyprrATccIYaD0i/7/i4YmJCB6eK1J4641Q7VnfgFF/eiggAiKTwhl
-	FX8733RyQ9GncnuH4QDVK+dZX0JuSVhKG9YOmBR77VKCj7rmkOj4XfKSZ39u2J4/pFUR
-	FD90se805drQA0FSvVeqhHr8g9KEjXSSei/sx4OPXv8clGK2oK/s2GF6MjRse1RmIWQJ
-	VQmYpsvA/XM+dDVrrFiL3RmP5R689oRqaIxNEnfV43gGPJpAt+dicQfN2h7lEED2AvHl
-	tBVA==
-X-Gm-Message-State: AOUpUlG1IdpZMUiVItLQkpbmND9ckGLA02Sr0LBqeSVpsli2SSCC1IVL
-	PtE9wCHscmUNvauSeuEWITtC34geHlWN+cs6cKdbQg==
-X-Received: by 2002:aca:b9c2:: with SMTP id
-	j185-v6mr29884395oif.212.1534428740096; 
-	Thu, 16 Aug 2018 07:12:20 -0700 (PDT)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=NDzdn7otLIu4Rq85/WPkZ0uNVWIqdoq9gGaRPQ+Z918=;
+	b=f6psm5jSQjRsn8iuc9HVbSxv+0aBFglyy29Y3/I05MV4RPa3Qsxc2vjQ1PcsZF2Lq/
+	7TG2rlX8Avdg6EQnjPBHKApttE2T44qIoFCSwNH/XD6XR50DQvl+Nf94q4SFwQ6MJ7PA
+	SO7++6UY8DQQQpXF4eVVHr2RUFBTAwAhSHr5qYU8pIc4GEuMQJtNbSnsY5q4lD/Dj3KV
+	gqInQByzb+W/p7iGUv7iePzXwNxIEOJ11EVPwmtwTtMQ2K2sz0+j65rucKLX5uWVe0VC
+	y/X6FgPXKgBHVcdu1Xa2NS6at3ZJjclLWO9F2iiZ5U6vMm0U/KGYnjWRfEKYaki1nE2t
+	8xKA==
+X-Gm-Message-State: AOUpUlHdjA5RNS7puJQMmJe/BUlyIFBhIX1IjFJx6E8NMYaS5G/duvwh
+	9awdtW0Vz+bK4iQg0neHJeAq6L2bR5+lCn2HUPLmFA==
+X-Received: by 2002:aca:6142:: with SMTP id
+	v63-v6mr34015428oib.137.1534429613641; 
+	Thu, 16 Aug 2018 07:26:53 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 16 Aug 2018 07:11:59
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 16 Aug 2018 07:26:33
 	-0700 (PDT)
-In-Reply-To: <20180803052137.10602-4-joel@jms.id.au>
+In-Reply-To: <07bdb32f-fcd2-c9d1-23ea-388d256e240e@steffen-goertz.de>
 References: <20180803052137.10602-1-joel@jms.id.au>
 	<20180803052137.10602-4-joel@jms.id.au>
+	<CAFEAcA9o8JE-ZE3SLBTFrrNCgtJ85L6T7opPZnd0pJaZVkRdVA@mail.gmail.com>
+	<07bdb32f-fcd2-c9d1-23ea-388d256e240e@steffen-goertz.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Aug 2018 15:11:59 +0100
-Message-ID: <CAFEAcA9o8JE-ZE3SLBTFrrNCgtJ85L6T7opPZnd0pJaZVkRdVA@mail.gmail.com>
-To: Joel Stanley <joel@jms.id.au>
+Date: Thu, 16 Aug 2018 15:26:33 +0100
+Message-ID: <CAFEAcA_OuWRBT8c2kT9vibrwi1bN0p2RUbzJXDd39h6_RO9C_g@mail.gmail.com>
+To: =?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
+X-Received-From: 2607:f8b0:4003:c06::243
 Subject: Re: [Qemu-arm] [PATCH v4 3/3] arm: Add BBC micro:bit machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -108,168 +112,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Stefan Hajnoczi <stefanha@gmail.com>,
 	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <contrib@steffen-goertz.de>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
+	Jim Mussared <jim.mussared@gmail.com>,
+	Julia Suvorova <jusual@mail.ru>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YuUr9L4mE/7D
+X-TUID: pmBrHO242pMa
 
-On 3 August 2018 at 06:21, Joel Stanley <joel@jms.id.au> wrote:
-> This adds the base for a machine model of the BBC micro:bit:
+On 16 August 2018 at 15:19, Steffen G=C3=B6rtz <mail@steffen-goertz.de> wro=
+te:
 >
->   https://en.wikipedia.org/wiki/Micro_Bit
+>>> +
+>>> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), machine->kernel_file=
+name,
+>>> +            NRF51_SOC(soc)->flash_size);
+>>> +}
+>>> +
+>>> +static void microbit_machine_init(MachineClass *mc)
+>>> +{
+>>> +    mc->desc =3D "BBC micro:bit";
+>>> +    mc->init =3D microbit_init;
+>>> +    mc->max_cpus =3D 1;
+>>> +}
+>>> +DEFINE_MACHINE("microbit", microbit_machine_init);
+>>
+>> Your subclass of TYPE_MACHINE has extra state, so it can't
+>> use DEFINE_MACHINE (which creates a subclass whose instance_size
+>> is the same as the parent TYPE_MACHINE). You need to do this
+>> longhand:
+>>
 >
-> This is a system with a nRF51 SoC containing the main processor, with
-> various peripherals on board.
+> Hi Peter,
 >
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> ---
-> v2:
->  - Instead of setting kernel filename property, load the image directly
->  - Add link to hardware overview website
-> v3:
->  - Rebase microbit on m0 changes
->  - Remove hard-coded flash size and retrieve from the soc
->  - Add Stefan's reviewed-by
-> ---
->  hw/arm/Makefile.objs |  2 +-
->  hw/arm/microbit.c    | 54 ++++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 55 insertions(+), 1 deletion(-)
->  create mode 100644 hw/arm/microbit.c
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index e31875ec69bc..2798a257921d 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -36,4 +36,4 @@ obj-$(CONFIG_MSF2) += msf2-soc.o msf2-som.o
->  obj-$(CONFIG_IOTKIT) += iotkit.o
->  obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
->  obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
-> -obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o
-> +obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o microbit.o
-> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-> new file mode 100644
-> index 000000000000..ecf64e883f4f
-> --- /dev/null
-> +++ b/hw/arm/microbit.c
-> @@ -0,0 +1,54 @@
-> +/*
-> + * BBC micro:bit machine
-> + * http://tech.microbit.org/hardware/
-> + *
-> + * Copyright 2018 Joel Stanley <joel@jms.id.au>
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/boards.h"
-> +#include "hw/arm/arm.h"
-> +#include "exec/address-spaces.h"
-> +
-> +#include "hw/arm/nrf51_soc.h"
-> +
-> +typedef struct {
-> +    MachineState parent;
-> +
-> +    NRF51State nrf51;
-> +} MICROBITMachineState;
+> this is covered in <20180811090836.4024-1-contrib@steffen-goertz.de>
 
-Can we call this "MicrobitMachineState", please? I don't
-think the board name is all-caps, and our convention
-for struct type names is CamelCase.
+So it is. This patch is wrong though, so the fix needs to be
+made by folding the relevant changes into this patch, not as
+a separate commit later.
 
-> +
-> +#define TYPE_MICROBIT_MACHINE "microbit"
-
-Should be MACHINE_TYPE_NAME("microbit")
-
-> +
-> +#define MICROBIT_MACHINE(obj) \
-> +    OBJECT_CHECK(MICROBITMachineState, obj, TYPE_MICROBIT_MACHINE)
-> +
-> +static void microbit_init(MachineState *machine)
-> +{
-> +    MICROBITMachineState *s = g_new(MICROBITMachineState, 1);
-
-This is odd. The MICROBITMachineState is the state struct
-for your subclass of MachineState, and that object has
-already been allocated (you get a pointer to it as the
-argument to the init function here). So all you need to do
-is cast it to the right type:
-      MICROBITMachineState *s = MICROBIT_MACHINE(machine);
-
-You don't need to allocate a second copy. (You do need to
-get the type registration right so that you declare that the
-type is of size sizeof(MICROBITMachineState) rather than
-just sizeof(MachineState), though -- see below.)
-
-> +    MemoryRegion *system_memory = get_system_memory();
-> +    Object *soc;
-> +
-> +    object_initialize(&s->nrf51, sizeof(s->nrf51), TYPE_NRF51_SOC);
-> +    soc = OBJECT(&s->nrf51);
-> +    object_property_add_child(OBJECT(machine), "nrf51", soc, &error_fatal);
-
-You should use the new function init_sysbus_child() here
-rather than doing separate initialize and add_child steps
-(we realised late in the 3.0 cycle that we had refcount
-leaks as a result of doing this as a 2-step process, hence
-the new function).
-
-> +    object_property_set_link(soc, OBJECT(system_memory),
-> +                             "memory", &error_abort);
-> +
-> +    object_property_set_bool(soc, true, "realized", &error_abort);
-
-Better to use error_fatal rather than error_abort in these two calls,
-I think.
-
-> +
-> +    arm_m_profile_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +            NRF51_SOC(soc)->flash_size);
-> +}
-> +
-> +static void microbit_machine_init(MachineClass *mc)
-> +{
-> +    mc->desc = "BBC micro:bit";
-> +    mc->init = microbit_init;
-> +    mc->max_cpus = 1;
-> +}
-> +DEFINE_MACHINE("microbit", microbit_machine_init);
-
-Your subclass of TYPE_MACHINE has extra state, so it can't
-use DEFINE_MACHINE (which creates a subclass whose instance_size
-is the same as the parent TYPE_MACHINE). You need to do this
-longhand:
-
-static void machine_class_init(ObjectClass *oc, void *data)
-{
-    MachineClass *mc = MACHINE_CLASS(oc);
-
-    mc->desc = "BBC micro:bit";
-    mc->init = microbit_init;
-    mc->max_cpus = 1;
-}
-
-static const TypeInfo microbit_info = {
-    .name = TYPE_MICROBIT_MACHINE,
-    .parent = TYPE_MACHINE,
-    .instance_size = sizeof(MICROBITMachineState),
-    .class_init = microbit_class_init,
-};
-
-static void microbit_machine_init(void)
-{
-    type_register_static(&microbit_info);
-}
-
-type_init(microbit_machine_init);
-
-
-(code untested but should be correct; compare against other boards.)
+PS: you don't really need a header file for the machine's
+struct, because nothing except the machine's .c file will
+ever need to include it.
 
 thanks
 -- PMM

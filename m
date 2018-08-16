@@ -1,151 +1,216 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1911982wru;
-        Thu, 16 Aug 2018 07:21:23 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPyyyBF6Ds80t5q61WfeTcJ78A/p0KdfkpTYRdcabXJuAfDiKtRZdjzNlZ2tV6rwU0C67Ehh
-X-Received: by 2002:ac8:302e:: with SMTP id f43-v6mr29846532qte.217.1534429283623;
-        Thu, 16 Aug 2018 07:21:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534429283; cv=none;
+Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1915168wru;
+        Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPwKp2H/BJ2LPETOI+7QRbYPc34C3iS7eJCI0ebgZU9BNsBG1s28kGZJ2c8erml2VXPEd/2Z
+X-Received: by 2002:a37:5285:: with SMTP id g127-v6mr26797595qkb.377.1534429467739;
+        Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534429467; cv=none;
         d=google.com; s=arc-20160816;
-        b=ukFOJI+tmKC/q5JlYYCMmM17ecYpDMDFqtNPOFuPZBKkFjOZkAOY795xN3BKwQnWyM
-         gtereKYst1rt4wkCTGICaaMrFOlYE2KajwEjj6LgZSvmI5Gi0s2/3s6LJRnwt7mF8VDh
-         jlDVWhimyMeYRp1A6wccsbfr6bv39fx+GwkLJ0S/LQoV/NH5ks1roDZKO1CZ+xxrP26j
-         UanZQAL/x/BzxQEWxh4MoqvmQTJBsqAsFSb7YngzAYRYfG0aQk9TvcHPrPCyKP+oHP+c
-         rXG2IzKT56TWZvV4AVs7+kcur/B83m0oV7U7aYki29qFra/nXetrptqDbBPUi87RBWtH
-         CfAA==
+        b=MLyXDFo1taFkLsdUe/Mlvp6WgapjxJzpRPyaaTmSDIJLnhhxmpOmvy1Dq7Ashw34n9
+         0oX4+ajoATBPNx8f4PK+4GYVH1gBciaDnnrNaUxu2VJxnf3DcJaCLgPtfFl85aNqxLQ4
+         g6Zu3inTqf5LCchHqcffZ3RV41f2rSO1p0+KWBZU/uW6T9I+z10zU2syocjO25YZV0ZK
+         BeVXozKth9Rd9pNr1sULvST3vepWt+9cbRmJoq/PT9G3u3qQ+zFFcJirxNlNgwseWcm6
+         QptFnH7tiVukchFttDxjwDJtd53nJYLMjXkVJQx+lKcprWAe3ft+5qUhzS6Vxzr0NCyy
+         rDtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=iQguSEp6V88IMwpjzGWMuPuPVHhglPd5R1h35myUV9Q=;
-        b=awz0C0/O+gEh3/rh2+ToZzBqNfTpRNsF61hFnFZkkJb3AP7aQwcoOVhGseKzlUIgVO
-         yeDZOGKIEuUBHJuB6SRTEgWfXPlK5EFZYdJdgqUMcBoKAfO9ttFO5hGEUyoeb4N1i19V
-         69bKI5Arjndn771IZeEMQ05HzLa0/HQ10kCJANBaSrvxwCNfzculLyx6zncSgDOvU8KN
-         MDo7zQ6NsNcLmTei50QRAtvrx+4bq+W/Di5ZY28sHNQ1obtm9ln3ft0Y049xAt2CgKPl
-         +oMcWzNxUmnhC3TsqSfvRlJVJXbbGi/dogqyr6AIYmXD+5vBkAtbgDzopxW04CHtrufZ
-         OzDQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:arc-authentication-results;
+        bh=BEuLX0ahye47Gf5X2qlGa21bUMaQV4A951E5uD+yS84=;
+        b=MfS93wrGlS3O6muY7Sr3zbpG3NN+rKW8zknwWR6Xa5EGIse0pO45EYMZGAxycfXnm0
+         f2jRORLL2Q8CV6Hl3l+G5bDYzirvhI7uFpKZcW6KkHawJ9hFfNMzD/ii0lq2aLm60YDV
+         ClElRkQwVxION6feVSVEMITg9PrW1lKLv8Ji23tusy93kDFj++lBbVLj8EQdql31I2Vv
+         d/HYeGpWvUfbbOEXLpg8PuaXxcnbpIYiAPEC1jUg1TLSu2MyjawxsQP7Pux6HIxC54I9
+         VyDGzYzx6MVZe4hFw6J+BI+aXiXxQvMasyVTcHhDNT2On1hYuZDY2kHvY8FTLtS5n1LG
+         SFmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sNP5qzCw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PLnETtpg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k43-v6si2622809qtf.286.2018.08.16.07.21.23
+        by mx.google.com with ESMTPS id h47-v6si3122554qth.404.2018.08.16.07.24.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 16 Aug 2018 07:21:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 16 Aug 2018 07:24:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sNP5qzCw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55983 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PLnETtpg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56008 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqJ9P-0003lP-5O
-	for alex.bennee@linaro.org; Thu, 16 Aug 2018 10:21:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40447)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fqJCN-00007S-8X
+	for alex.bennee@linaro.org; Thu, 16 Aug 2018 10:24:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42676)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fqIwr-0006u6-J7
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:08:26 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1fqJ25-0006j5-QF
+	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 10:13:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fqIwn-0007Mn-P0
-	for qemu-arm@nongnu.org; Thu, 16 Aug 2018 10:08:23 -0400
-Received: from mail-wm0-x243.google.com ([2a00:1450:400c:c09::243]:36922)
+	(envelope-from <joel.stan@gmail.com>) id 1fqJ22-0004Xz-66
+	for qemu-devel@nongnu.org; Thu, 16 Aug 2018 10:13:49 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:39487)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1fqIwg-00077d-RU; Thu, 16 Aug 2018 10:08:15 -0400
-Received: by mail-wm0-x243.google.com with SMTP id n11-v6so4461246wmc.2;
-	Thu, 16 Aug 2018 07:08:14 -0700 (PDT)
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1fqJ21-0004XO-W9; Thu, 16 Aug 2018 10:13:46 -0400
+Received: by mail-pf1-x442.google.com with SMTP id j8-v6so2089779pff.6;
+	Thu, 16 Aug 2018 07:13:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=iQguSEp6V88IMwpjzGWMuPuPVHhglPd5R1h35myUV9Q=;
-	b=sNP5qzCwpgaczQ5anoA7E196YthhNbjpyOnMi3ry7cHb1YZUKIjjLaKZP2NxpnNgng
-	f6byGtFuhVLWkuaHQSizzBHkofKozdMI32HfckTiE9r7nB+cRyOwTDnrZQ1KuCXU2KrV
-	auJrL24Gux0IZmX670HP/JxT7pY0AXiUKzwDGQWTlF8+8Kesuhou8OrK57mHAmJ6NFI4
-	xEa8Q3MzOs3dbEgALxqVj2xylXN0aEHu9ID8/MwXCyC8r1pisrWvDjmmg64IKpaVDp3A
-	irIaRpdo70uimiSOdBLq8cvmREl6h5mPg9pCBxcXJzBSNKOVxkvwrhlSY3xcJKMaFkEm
-	7UhQ==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=BEuLX0ahye47Gf5X2qlGa21bUMaQV4A951E5uD+yS84=;
+	b=PLnETtpgP3CvBROKNAQGtkO5druacSEEwl/lRcd3AERFhtVtRHQlLIZndnBMfAMWzG
+	QhzOljl7a0lMzq17fgA5uHRZz+9miRIZXNfSWe3TPoOwceYpP0rGKg2Jjm0TPonoe7mx
+	U6Zj2QT8sTrxC1kRJBwuzM+Qr+RtDPFQ7SXDMN7OPO4HPqS7ukxDoh0i8MOzhuV77Yqx
+	+fhxjK71naxVUwywLsUROQ1U7sYJaR6t2Sb4IJlKVocOvmgbGcHxCWjwryMMw00iCHnT
+	tA/vKd2jQwFOaJaAoMPgo1hyCwGRg/WJndJg7/QetyD+eTWonyVS82TbE6+VbKODbe7i
+	u2iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=iQguSEp6V88IMwpjzGWMuPuPVHhglPd5R1h35myUV9Q=;
-	b=htoGObBYzDRquVUuon4RE9G5ACs+3KokWwZnnHirypITMXDSo2CPNP+QgXzrXjoUYS
-	OxulThpuraRdbBZlSunm5iFshSe9C1UtUb1pVlHgOqpOIt/yTJeIv+fcIlG7CL2lqkI+
-	Go2pNtQ00JcvboeEbIRFVCmDAmYrc0g2gxilhZJuG3+MTK8wLhve1+QDJCW6PELC2SUk
-	8JjbXbFVdr3+I+doTVyZV+Gw1K2zjvB2YP/RlkmSavGmQRoRuuav7CQNcOYv1yi4JDYh
-	nL+mqlrNurl0hfESbSD6H1dFLr7wsnmJBiKmLhIyt44vfA+/dpHcDAIuKJdpkcUdaIxs
-	2qZQ==
-X-Gm-Message-State: AOUpUlEdjB0jqQ5Ci+LSnUaOkp0z3dSPGuMVhy6GjYJM1XUlG2sOokwV
-	8Xeqpf8BVXfnfqKv4k+aJMT+pwY0XinJVBTnpec=
-X-Received: by 2002:a1c:af53:: with SMTP id
-	y80-v6mr15472975wme.55.1534428493840; 
-	Thu, 16 Aug 2018 07:08:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <20180814162739.11814-1-stefanha@redhat.com>
-	<CAFEAcA8p=e-C_U+wqjLjLyc9-nCC7R094_xD-xY06tzJCOz8dg@mail.gmail.com>
-In-Reply-To: <CAFEAcA8p=e-C_U+wqjLjLyc9-nCC7R094_xD-xY06tzJCOz8dg@mail.gmail.com>
-From: Stefan Hajnoczi <stefanha@gmail.com>
-Date: Thu, 16 Aug 2018 15:08:02 +0100
-Message-ID: <CAJSP0QXAMHYZfrUdnjNNWJtAxu6U0Y6-Xw0GHPjTFjeEFrvW9w@mail.gmail.com>
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references;
+	bh=BEuLX0ahye47Gf5X2qlGa21bUMaQV4A951E5uD+yS84=;
+	b=BmY+cf2BetvjA62wWNsTfZyjROKPKq93lWaICEuESbX+v+rjim22UrDNc1+C4Bkip9
+	LiI3KgeX3k4CFQCqID9LMg0I8U6ZRWnfkHIP2VORAmSsj/f4sCOb75WPKPiE9usHF6p5
+	zn4Siaq7px4Jq5k3uxg/BYHBYeIMf2w/4HiorR+3dQ0ZTYLuKQEHPrGWD70UYUrgw01i
+	9eeYGbNOymizxBybBKiqlCwHSu9gzpWs0BiSb4vuOquhDJyIuTjrai5pkX5KitKMIFhj
+	QkxhtqQjTJq8Cfd0e201zgXMt2U9ddf0x/rhwgXyMPRqj5SnsSR9DjgUUrzqD9hO/QYg
+	bxzA==
+X-Gm-Message-State: AOUpUlFcfOR2W6T0HXiJjjs+s0dRtMMM8SmKlxvn3+Z1f4obd9OthYIj
+	N4GZ/PBbhcTml9YT9oUPTEc=
+X-Received: by 2002:a63:cf10:: with SMTP id
+	j16-v6mr29232964pgg.238.1534428825117; 
+	Thu, 16 Aug 2018 07:13:45 -0700 (PDT)
+Received: from aurora.jms.id.au ([45.124.203.18])
+	by smtp.gmail.com with ESMTPSA id
+	x1-v6sm24117637pgr.59.2018.08.16.07.13.40
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 16 Aug 2018 07:13:44 -0700 (PDT)
+Received: by aurora.jms.id.au (sSMTP sendmail emulation);
+	Thu, 16 Aug 2018 23:43:37 +0930
+From: Joel Stanley <joel@jms.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+Date: Thu, 16 Aug 2018 23:43:03 +0930
+Message-Id: <20180816141303.20518-4-joel@jms.id.au>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180816141303.20518-1-joel@jms.id.au>
+References: <20180816141303.20518-1-joel@jms.id.au>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 0/6] arm: add Cortex M0 CPU
- model and hex file loader
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: [Qemu-devel] [PATCH v5 3/3] arm: Add BBC micro:bit machine
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jim Mussared <jim@groklearning.com>,
-	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>,
-	Liviu Ionescu <ilg@livius.net>, Alistair Francis <alistair@alistair23.me>,
-	qemu-devel <qemu-devel@nongnu.org>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	=?UTF-8?Q?Steffen_G=C3=B6rtz?= <qemu.ml@steffen-goertz.de>,
-	=?UTF-8?B?6IuP6Iiq?= <suhang16@mails.ucas.ac.cn>,
-	Joel Stanley <joel@jms.id.au>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Julia Suvorova <jusual@mail.ru>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZRBR9iQV+2vK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Stefan Hajnoczi <stefanha@gmail.com>,
+	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EdnzpmHXm86V
 
-On Thu, Aug 16, 2018 at 1:39 PM Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 14 August 2018 at 17:27, Stefan Hajnoczi <stefanha@redhat.com> wrote:
-> > This patch series:
-> >  * Makes bitbanding optional on ARMv7MState.
-> >  * Adds a "cortex-m0" cpu type which can be used with ARMMProfileState.  This
-> >    works thanks to Julia's Cortex M0 emulation patches, which are now all
-> >    merged.
-> >  * Adds Su Hang's Intel HEX file format loader so that micro:bit and other
-> >    microcontroller firmware images can be run using -kernel.  The micro:bit
-> >    development tools typically only emit .hex files and not ELFs.
->
-> Applied to target-arm.next, thanks.
->
-> I notice that the change to generic-loader doesn't include an
-> update to docs/generic-loader.txt -- could somebody do a followup
-> patch for that? Currently the docs say
->
-> # The loader device also allows files to be loaded into memory. It can load raw
-> # files and ELF executable files.  Raw files are loaded verbatim.  ELF
-> executable
-> # files are loaded by an ELF loader.
->
-> but looking at the code we also support uImage files and HEX files.
-> We should mention all of these, and be clear about which ones
-> require the <addr> to be specified, and what the PC will be set
-> to in the case where <cpu-num> is specified.
+This adds the base for a machine model of the BBC micro:bit:
 
-Thanks, I will take a look and send a patch.
+  https://en.wikipedia.org/wiki/Micro_Bit
 
-Stefan
+This is a system with a nRF51 SoC containing the main processor, with
+various peripherals on board.
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+v2:
+ - Instead of setting kernel filename property, load the image directly
+ - Add link to hardware overview website
+v3:
+ - Rebase microbit on m0 changes
+ - Remove hard-coded flash size and retrieve from the soc
+ - Add Stefan's reviewed-by
+v5:
+ - move back to armv7m calls, as v4 of Stefan's patch removed the
+ m_profile changes
+---
+ hw/arm/Makefile.objs |  2 +-
+ hw/arm/microbit.c    | 54 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 55 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/microbit.c
+
+diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+index ae4e20373b9e..5f88062c666d 100644
+--- a/hw/arm/Makefile.objs
++++ b/hw/arm/Makefile.objs
+@@ -37,4 +37,4 @@ obj-$(CONFIG_IOTKIT) += iotkit.o
+ obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
+ obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
+ obj-$(CONFIG_FSL_IMX6UL) += fsl-imx6ul.o mcimx6ul-evk.o
+-obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o
++obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o microbit.o
+diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
+new file mode 100644
+index 000000000000..467cfbda2348
+--- /dev/null
++++ b/hw/arm/microbit.c
+@@ -0,0 +1,54 @@
++/*
++ * BBC micro:bit machine
++ * http://tech.microbit.org/hardware/
++ *
++ * Copyright 2018 Joel Stanley <joel@jms.id.au>
++ *
++ * This code is licensed under the GPL version 2 or later.  See
++ * the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/boards.h"
++#include "hw/arm/arm.h"
++#include "exec/address-spaces.h"
++
++#include "hw/arm/nrf51_soc.h"
++
++typedef struct {
++    MachineState parent;
++
++    NRF51State nrf51;
++} MICROBITMachineState;
++
++#define TYPE_MICROBIT_MACHINE "microbit"
++
++#define MICROBIT_MACHINE(obj) \
++    OBJECT_CHECK(MICROBITMachineState, obj, TYPE_MICROBIT_MACHINE)
++
++static void microbit_init(MachineState *machine)
++{
++    MICROBITMachineState *s = g_new(MICROBITMachineState, 1);
++    MemoryRegion *system_memory = get_system_memory();
++    Object *soc;
++
++    object_initialize(&s->nrf51, sizeof(s->nrf51), TYPE_NRF51_SOC);
++    soc = OBJECT(&s->nrf51);
++    object_property_add_child(OBJECT(machine), "nrf51", soc, &error_fatal);
++    object_property_set_link(soc, OBJECT(system_memory),
++                             "memory", &error_abort);
++
++    object_property_set_bool(soc, true, "realized", &error_abort);
++
++    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++            NRF51_SOC(soc)->flash_size);
++}
++
++static void microbit_machine_init(MachineClass *mc)
++{
++    mc->desc = "BBC micro:bit";
++    mc->init = microbit_init;
++    mc->max_cpus = 1;
++}
++DEFINE_MACHINE("microbit", microbit_machine_init);
+-- 
+2.17.1
+

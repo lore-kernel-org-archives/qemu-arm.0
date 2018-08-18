@@ -1,99 +1,99 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp773722wrd;
-        Fri, 17 Aug 2018 17:39:08 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwHodRtnTdUlj/t35nwvVRnnFQ1FJ5u5x/YnFmmFHqEo2ISjQT6cesjtw7dgwTLj7QsQ25F
-X-Received: by 2002:ae9:ed8f:: with SMTP id c137-v6mr32847977qkg.276.1534552748466;
-        Fri, 17 Aug 2018 17:39:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534552748; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp783710wrd;
+        Fri, 17 Aug 2018 17:56:16 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPzsFC6aW57c5KWp7wSC8+s0RhxyZB6zolEGNsuq6A6A2X+ipnoKD8mz3QlEzgTL24LITWVe
+X-Received: by 2002:a0c:d7c3:: with SMTP id g3-v6mr32460704qvj.85.1534553776112;
+        Fri, 17 Aug 2018 17:56:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534553776; cv=none;
         d=google.com; s=arc-20160816;
-        b=EDgJEhg/4gPntBK0MeVdhkH1ZC9tHzBTVv7oYLzIQ0CQ6BvXOc6995KqwF2GgQxB8E
-         yR/juzkoZdvumXGMtoRo5QXKJLAxkMfhArQBs8N4cmdnbZfrVC9PDl3gi6RFMXT1tB2B
-         RMe3URZht00UkapU4G5lLdpMi2/xa56r/KUFApYfUcrxeWnyHM5fGGQd6LISrbmlHYHa
-         iCs6+C+3luelYdDaoCrWQEgTkMmnBUc9K0OLx8IGsM6MxlS8rZupeu45BehDAX1GyANF
-         Yrf4WKCYoE6mBLNWwoIH9z6AxpAgPQFgg/Zug3Y7ptvemF2uR2oluQ4aAEK/NfkSuY0c
-         Asow==
+        b=o7vv6GDdD99KfRF3PdYBsM6EUs9iNRQWTBhwXtL9TdGcP5iL+CyQLoCnk6tNt9zgDM
+         nhzjzm4pAhoxIotmQM9XZUk5ghlO5XdiZmj1EPvKeJGxDTDN3ZdldAfObQpMWgrrA7hE
+         daK92VnPcaojtKe5SRyEV+AcGkTKp2OOc+bsy+DejYbfa5/+y1zqpPDXCYyZKdC5N/yk
+         hpQiOF+IpMwMz6Kp11tz/xoA57B1q+dFuW4kNR1aBPYUiP2yuzs2U7Uhx7JKCpj4+Sds
+         FR2jMKGQzFLiSDRXFYFe1da3P2uMuIdbvGDkUHTIx0LtvJhP+17wTxfnocokazOzkzHE
+         S35Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=rLsuh9jVVH+Mn0UoO+mOAFTeABMGhf+gbzUb1t0pfRk=;
-        b=QddTds2rU9+YwWJmY7eWT4geyi4nk+2lkY1AzdpQESIAFdp1Wtbh/pKUw9FxruaDuh
-         gRRAyrNxjoDBtRRzIiSVWR847SwK7jYmtF/bYLMuKE6f0A0ly4jklhwtQyoI9Xm3vm4V
-         ikQcIVdy0VLje6fioZ3kLPKC9Ha4XUDBZTamA0R9HDtnWJ7mKfsY1tqT9+V0JyYau+bm
-         tvgUSH3gfqxdccaUAhPiX0wxTruj1nem/im0PZWJQnFg+vnJuPjXYpsD4i70cndvLToB
-         8UHS/Ded8FkWCiXC9IhqY/VATbQUd1aUkm4L7mCBwihIjtUaD3NbKTneU3DZ9cp61VHs
-         DLFw==
+        bh=VTS3dyY5GoTggdIhPrqPlYpMmRLCgFvN9xXb6jawwYQ=;
+        b=qStEzA7OO9MsP1KxAZgIHiO1mueNM1CDRO52U8lZWrVr4dwGUrjT4ysW5y3ULvQ68C
+         WcBoqvUsB+/dZHkS6e+vfFsBgCpJoyPZJnv8Bn2Mij0ddETQppkkKujRqS6Re4k/dZhQ
+         FonYzdnF78W95YD6YS6QjkBs13Z/GvrGZIUSYTdTPC0ielhN6MS3EOL7dNcWpScyE87p
+         WGzTXPUn2NYDEk5WUD40H/nUY/aLguuxIQ9iZM/OXRb7Z8I232tHmRsbGdv8vy7xiDF/
+         Vetl4KB+RWn30Mve/QIbP56/z5gDwIb2Z0BObjvTu0Wm/248XDc3cq644sV5cSP7i3mz
+         zD9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nsqtuhZc;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UOzBQaJg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 188-v6si1792784qkg.316.2018.08.17.17.39.08
+        by mx.google.com with ESMTPS id i125-v6si1787561qkd.227.2018.08.17.17.56.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Aug 2018 17:39:08 -0700 (PDT)
+        Fri, 17 Aug 2018 17:56:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nsqtuhZc;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UOzBQaJg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36947 helo=lists.gnu.org)
+Received: from localhost ([::1]:37005 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqpGm-0006i6-0U
-	for alex.bennee@linaro.org; Fri, 17 Aug 2018 20:39:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35955)
+	id 1fqpXL-0002Fa-K3
+	for alex.bennee@linaro.org; Fri, 17 Aug 2018 20:56:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37248)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqpFP-00069e-Vl
-	for qemu-devel@nongnu.org; Fri, 17 Aug 2018 20:37:45 -0400
+	id 1fqpVA-0001Kc-U6
+	for qemu-devel@nongnu.org; Fri, 17 Aug 2018 20:54:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqpFL-0002wx-72
-	for qemu-devel@nongnu.org; Fri, 17 Aug 2018 20:37:43 -0400
-Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:41359)
+	id 1fqpKp-0000Pf-LK
+	for qemu-devel@nongnu.org; Fri, 17 Aug 2018 20:43:23 -0400
+Received: from mail-vk0-x241.google.com ([2607:f8b0:400c:c05::241]:35865)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqpFK-0002wL-M5; Fri, 17 Aug 2018 20:37:38 -0400
-Received: by mail-vk0-x243.google.com with SMTP id j14-v6so19076vke.8;
-	Fri, 17 Aug 2018 17:37:38 -0700 (PDT)
+	id 1fqpKp-0000OC-G4; Fri, 17 Aug 2018 20:43:19 -0400
+Received: by mail-vk0-x241.google.com with SMTP id y9-v6so4031732vky.3;
+	Fri, 17 Aug 2018 17:43:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=rLsuh9jVVH+Mn0UoO+mOAFTeABMGhf+gbzUb1t0pfRk=;
-	b=nsqtuhZcKdA+2QHQumL2Ru255J+7V05QtILhEF/9zU0aLUGjnmiIreQobAr4ItI/T6
-	sMoIOOc/Qi/I3CZ6AZt7IEcGDlu9GrlHE5zOa4E5twoGoNUdC6lNPkIGXlC6qXi5FV+A
-	fYUhRPyZQn8NRYbp5TEwaO/sWQk3bioqYL0jnnJIS3usKBCf6OZBFzG6AyXlUVx745sH
-	8w7wWaMIpPoXyGgw3bag9hh2xSpR6wdI+GuGsmgT9OMH6/2SZF3zOtn21wOGF1R4+qAx
-	R/l4rKwUslMxzxSOHozzvMZLDZtEGbiSs56XoBf5DHQTa1ovqqeiee2xNkyzaZylvVvW
-	Hm0A==
+	bh=VTS3dyY5GoTggdIhPrqPlYpMmRLCgFvN9xXb6jawwYQ=;
+	b=UOzBQaJg0z0vU4Q0VBjojpvdW6qe/DjZsqK8rEMvC1W+1cAIEfQlm65nzbL4h+p9RH
+	nWmtxHc85bGa4sNwB3YFSPCL9J7/rtw5/IuVVADebFpi75UDPpjCsYDLwgLReYos12j5
+	u70FVTbRdAxHljaOOlonb7wHgK1GKaCzZE9lUIe256haSjY5/nVwGHSxrcYW4YmkHOKa
+	mZ0NV8Ay5YRHu8SjxOPikcwhPzw4j2P0Fk7GpF5nG1mrvAjxQmLLpDKELLt1qvr93tqZ
+	PRFZbjbqtmdLQeoAmWiVEc02qZNqnBWSiv1o3vqfvKC8cuozlNKk6rNsvw97fi++SJkT
+	hFCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=rLsuh9jVVH+Mn0UoO+mOAFTeABMGhf+gbzUb1t0pfRk=;
-	b=ZzBT1KIQeqFAWnKWhwP2383ObHUpFFnCpHcIOEQbGxNChJNcRVavOq/S0I+POTU9J4
-	s2rHyh3KcH62z2e+LhqLt/Z1B9qMjbJlOx5o+ktVmJXQuBTomVxaCBli/BTwsZLTN6Er
-	zUJMb3UoKkS1iTU60hZ3xl3DB1ubC0WxGQ8Mmw++VWCmUEK3WRZ+UmW/EG9w2sXfTx7I
-	lkhRK5boHXZd3z5aZs4nFsq79UeFLgr0ly2vhNPEMYstkt/W1JxLKE5TtK3f0mXatRCk
-	K1GmvVg5kumQ1SD7LxQi8Dpyd3DW+RWnloKuTG4croEV2uZCMeItf/CHAhqw5D7Bk1cX
-	XToA==
-X-Gm-Message-State: AOUpUlHLCiIQZxUpb8bOq1YEuLO6Sj33TLlpzJbUDup22LbFDJaEz1Yl
-	koocEGx+E0nTTUXxRQDlYJk=
-X-Received: by 2002:a1f:8753:: with SMTP id
-	j80-v6mr3918827vkd.120.1534552658061; 
-	Fri, 17 Aug 2018 17:37:38 -0700 (PDT)
+	bh=VTS3dyY5GoTggdIhPrqPlYpMmRLCgFvN9xXb6jawwYQ=;
+	b=nfc3HWnIQ2bAlMf5uFbpNcApkKghbO4773lzopArdZjitEtis8jCJLmNgJDXFShFlU
+	BlvhUNh5EZo1RVaMSkfjPqi/VH8P2sRGLnkFTXlXamgL42FXhz1rs1UZYgHFMvK+M8zz
+	dMJ3aE8wIsNQGsqef5IEmHn+Nnmeth2orj3pAP9d94uhbr7aEenl4JXVcpxI0oMbhsLP
+	bUrpWwtHuUBo3eSly2Jn4P0tL09PsomK1KArQudMXLLfoCG+QEE7Z3rUuCWNG5cnLQlV
+	z1wu4uvbRQUWIL84KTZQlcU7l0CgvsoXgy4NFl2Mv5Tepa4kMLPkM5W7LPFd+bPwZKfm
+	lEGQ==
+X-Gm-Message-State: AOUpUlESGhdK/NcCdBhBbbxBz8EaSpWVK0KBxO3/3/Ber1+yF36T9/KU
+	ITKn3rkSCeAHcDoZC3+ZoRo=
+X-Received: by 2002:a1f:97d4:: with SMTP id
+	z203-v6mr24205618vkd.133.1534552998721; 
+	Fri, 17 Aug 2018 17:43:18 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	p12-v6sm1292520vkd.11.2018.08.17.17.37.35
+	r138-v6sm1167320vke.35.2018.08.17.17.43.15
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 17 Aug 2018 17:37:37 -0700 (PDT)
+	Fri, 17 Aug 2018 17:43:18 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180809130115.28951-1-peter.maydell@linaro.org>
-	<20180809130115.28951-9-peter.maydell@linaro.org>
+	<20180809130115.28951-12-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -120,20 +120,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <3fbb1f6d-8615-f540-d902-67ea9026777b@amsat.org>
-Date: Fri, 17 Aug 2018 21:37:32 -0300
+Message-ID: <ccb11ed2-4157-4f72-11e6-1e985a423feb@amsat.org>
+Date: Fri, 17 Aug 2018 21:43:13 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180809130115.28951-9-peter.maydell@linaro.org>
+In-Reply-To: <20180809130115.28951-12-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c05::243
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 08/16] hw/misc/iotkit-secctl:
- Wire up registers for controlling MSCs
+X-Received-From: 2607:f8b0:400c:c05::241
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 11/16] hw/dma/pl080: Support all
+ three interrupt lines
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,212 +148,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7iarxQA14TOI
+X-TUID: 4HmHMnDl4HaI
 
 On 08/09/2018 10:01 AM, Peter Maydell wrote:
-> The IoTKit does not have any Master Security Contollers itself,
-> but it does provide registers in the secure privilege control
-> block which allow control of MSCs in the external system.
-> Add support for these registers.
+> The PL080 and PL081 have three outgoing interrupt lines:
+>  * DMACINTERR signals DMA errors
+>  * DMACINTTC is the DMA count interrupt
+>  * DMACINTR is a combined interrupt, the logical OR of the other two
+> 
+> We currently only implement DMACINTR, because that's all the
+> realview and versatile boards needed, but the instances of the
+> PL081 in the MPS2 firmware images use all three interrupt lines.
+> Implement the missing DMACINTERR and DMACINTTC.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  include/hw/misc/iotkit-secctl.h | 14 +++++++
->  hw/misc/iotkit-secctl.c         | 73 +++++++++++++++++++++++++++++----
->  2 files changed, 79 insertions(+), 8 deletions(-)
-> 
-> diff --git a/include/hw/misc/iotkit-secctl.h b/include/hw/misc/iotkit-secctl.h
-> index 082c14c925e..1a193b306f1 100644
-> --- a/include/hw/misc/iotkit-secctl.h
-> +++ b/include/hw/misc/iotkit-secctl.h
-> @@ -19,6 +19,7 @@
->   *  + named GPIO output "sec_resp_cfg" indicating whether blocked accesses
->   *    should RAZ/WI or bus error
->   *  + named GPIO output "nsc_cfg" whose value tracks the NSCCFG register value
-> + *  + named GPIO output "msc_irq" for the combined IRQ line from the MSCs
->   * Controlling the 2 APB PPCs in the IoTKit:
->   *  + named GPIO outputs apb_ppc0_nonsec[0..2] and apb_ppc1_nonsec
->   *  + named GPIO outputs apb_ppc0_ap[0..2] and apb_ppc1_ap
-> @@ -44,6 +45,11 @@
->   * Controlling each of the 16 expansion MPCs which a system using the IoTKit
->   * might provide:
->   *  + named GPIO inputs mpcexp_status[0..15]
-> + * Controlling each of the 16 expansion MSCs which a system using the IoTKit
-> + * might provide:
-> + *  + named GPIO inputs mscexp_status[0..15]
-> + *  + named GPIO outputs mscexp_clear[0..15]
-> + *  + named GPIO outputs mscexp_ns[0..15]
->   */
->  
->  #ifndef IOTKIT_SECCTL_H
-> @@ -62,6 +68,7 @@
->  #define IOTS_NUM_AHB_EXP_PPC 4
->  #define IOTS_NUM_EXP_MPC 16
->  #define IOTS_NUM_MPC 1
-> +#define IOTS_NUM_EXP_MSC 16
->  
->  typedef struct IoTKitSecCtl IoTKitSecCtl;
->  
-> @@ -103,6 +110,13 @@ struct IoTKitSecCtl {
->      uint32_t brginten;
->      uint32_t mpcintstatus;
->  
-> +    uint32_t secmscintstat;
-> +    uint32_t secmscinten;
-> +    uint32_t nsmscexp;
-> +    qemu_irq mscexp_clear[IOTS_NUM_EXP_MSC];
-> +    qemu_irq mscexp_ns[IOTS_NUM_EXP_MSC];
-> +    qemu_irq msc_irq;
-> +
->      IoTKitSecCtlPPC apb[IOTS_NUM_APB_PPC];
->      IoTKitSecCtlPPC apbexp[IOTS_NUM_APB_EXP_PPC];
->      IoTKitSecCtlPPC ahbexp[IOTS_NUM_APB_EXP_PPC];
-> diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-> index de4fd8e36d2..2222b3e147d 100644
-> --- a/hw/misc/iotkit-secctl.c
-> +++ b/hw/misc/iotkit-secctl.c
-> @@ -190,12 +190,13 @@ static MemTxResult iotkit_secctl_s_read(void *opaque, hwaddr addr,
->          r = s->apbexp[offset_to_ppc_idx(offset)].sp;
->          break;
->      case A_SECMSCINTSTAT:
-> +        r = s->secmscintstat;
-> +        break;
->      case A_SECMSCINTEN:
-> +        r = s->secmscinten;
-> +        break;
->      case A_NSMSCEXP:
-> -        qemu_log_mask(LOG_UNIMP,
-> -                      "IoTKit SecCtl S block read: "
-> -                      "unimplemented offset 0x%x\n", offset);
-> -        r = 0;
-> +        r = s->nsmscexp;
->          break;
->      case A_PID4:
->      case A_PID5:
-> @@ -291,6 +292,23 @@ static void iotkit_secctl_ppc_update_irq_enable(IoTKitSecCtlPPC *ppc)
->      qemu_set_irq(ppc->irq_enable, extract32(value, ppc->irq_bit_offset, 1));
->  }
->  
-> +static void iotkit_secctl_update_mscexp_irqs(qemu_irq *msc_irqs, uint32_t value)
-> +{
-> +    int i;
-> +
-> +    for (i = 0; i < IOTS_NUM_EXP_MSC; i++) {
-> +        qemu_set_irq(msc_irqs[i], extract32(value, i + 16, 1));
-> +    }
-> +}
-> +
-> +static void iotkit_secctl_update_msc_irq(IoTKitSecCtl *s)
-> +{
-> +    /* Update the combined MSC IRQ, based on S_MSCEXP_STATUS and S_MSCEXP_EN */
-> +    bool level = s->secmscintstat & s->secmscinten;
-> +
-> +    qemu_set_irq(s->msc_irq, level);
-> +}
-> +
->  static MemTxResult iotkit_secctl_s_write(void *opaque, hwaddr addr,
->                                           uint64_t value,
->                                           unsigned size, MemTxAttrs attrs)
-> @@ -370,10 +388,15 @@ static MemTxResult iotkit_secctl_s_write(void *opaque, hwaddr addr,
->          iotkit_secctl_ppc_sp_write(ppc, value);
->          break;
->      case A_SECMSCINTCLR:
-> +        iotkit_secctl_update_mscexp_irqs(s->mscexp_clear, value);
-> +        break;
->      case A_SECMSCINTEN:
-> -        qemu_log_mask(LOG_UNIMP,
-> -                      "IoTKit SecCtl S block write: "
-> -                      "unimplemented offset 0x%x\n", offset);
-
-Maybe:
-
-           if (value & ~0xffff) {
-               GUEST_ERROR(...)
-           }
-
-> +        s->secmscinten = value;
-> +        iotkit_secctl_update_msc_irq(s);
-> +        break;
-> +    case A_NSMSCEXP:
-
-Ditto.
-
-> +        s->nsmscexp = value;
-> +        iotkit_secctl_update_mscexp_irqs(s->mscexp_ns, value);
->          break;
->      case A_SECMPCINTSTATUS:
->      case A_SECPPCINTSTAT:
-> @@ -381,7 +404,6 @@ static MemTxResult iotkit_secctl_s_write(void *opaque, hwaddr addr,
->      case A_BRGINTSTAT:
->      case A_AHBNSPPC0:
->      case A_AHBSPPPC0:
-> -    case A_NSMSCEXP:
->      case A_PID4:
->      case A_PID5:
->      case A_PID6:
-> @@ -588,6 +610,14 @@ static void iotkit_secctl_mpcexp_status(void *opaque, int n, int level)
->      s->mpcintstatus = deposit32(s->mpcintstatus, n + 16, 1, !!level);
->  }
->  
-> +static void iotkit_secctl_mscexp_status(void *opaque, int n, int level)
-> +{
-> +    IoTKitSecCtl *s = IOTKIT_SECCTL(opaque);
-> +
-> +    s->secmscintstat = deposit32(s->secmscintstat, n + 16, 1, !!level);
-> +    iotkit_secctl_update_msc_irq(s);
-> +}
-> +
->  static void iotkit_secctl_ppc_irqstatus(void *opaque, int n, int level)
->  {
->      IoTKitSecCtlPPC *ppc = opaque;
-> @@ -660,6 +690,14 @@ static void iotkit_secctl_init(Object *obj)
->      qdev_init_gpio_in_named(dev, iotkit_secctl_mpcexp_status,
->                              "mpcexp_status", IOTS_NUM_EXP_MPC);
->  
-> +    qdev_init_gpio_in_named(dev, iotkit_secctl_mscexp_status,
-> +                            "mscexp_status", IOTS_NUM_EXP_MSC);
-> +    qdev_init_gpio_out_named(dev, s->mscexp_clear, "mscexp_clear",
-> +                             IOTS_NUM_EXP_MSC);
-> +    qdev_init_gpio_out_named(dev, s->mscexp_ns, "mscexp_ns",
-> +                             IOTS_NUM_EXP_MSC);
-> +    qdev_init_gpio_out_named(dev, &s->msc_irq, "msc_irq", 1);
-> +
->      memory_region_init_io(&s->s_regs, obj, &iotkit_secctl_s_ops,
->                            s, "iotkit-secctl-s-regs", 0x1000);
->      memory_region_init_io(&s->ns_regs, obj, &iotkit_secctl_ns_ops,
-> @@ -690,6 +728,24 @@ static const VMStateDescription iotkit_secctl_mpcintstatus_vmstate = {
->      }
->  };
->  
-> +static bool needed_always(void *opaque)
-> +{
-> +    return true;
-> +}
-> +
-> +static const VMStateDescription iotkit_secctl_msc_vmstate = {
-> +    .name = "iotkit-secctl/msc",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = needed_always,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(secmscintstat, IoTKitSecCtl),
-> +        VMSTATE_UINT32(secmscinten, IoTKitSecCtl),
-> +        VMSTATE_UINT32(nsmscexp, IoTKitSecCtl),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription iotkit_secctl_vmstate = {
->      .name = "iotkit-secctl",
->      .version_id = 1,
-> @@ -710,6 +766,7 @@ static const VMStateDescription iotkit_secctl_vmstate = {
->      },
->      .subsections = (const VMStateDescription*[]) {
->          &iotkit_secctl_mpcintstatus_vmstate,
-> +        &iotkit_secctl_msc_vmstate,
->          NULL
->      },
->  };
-> 
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+>  include/hw/dma/pl080.h |  6 +++++-
+>  hw/dma/pl080.c         | 13 ++++++++-----
+>  2 files changed, 13 insertions(+), 6 deletions(-)
+> 
+> diff --git a/include/hw/dma/pl080.h b/include/hw/dma/pl080.h
+> index 7deb46c8578..7c6a4184833 100644
+> --- a/include/hw/dma/pl080.h
+> +++ b/include/hw/dma/pl080.h
+> @@ -17,7 +17,9 @@
+>   * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0218e/DDI0218.pdf
+>   *
+>   * QEMU interface:
+> - * + sysbus IRQ: DMACINTR combined interrupt line
+> + * + sysbus IRQ 0: DMACINTR combined interrupt line
+> + * + sysbus IRQ 1: DMACINTERR error interrupt request
+> + * + sysbus IRQ 2: DMACINTTC count interrupt request
+>   * + sysbus MMIO region 0: MemoryRegion for the device's registers
+>   */
+>  
+> @@ -57,6 +59,8 @@ typedef struct PL080State {
+>      /* Flag to avoid recursive DMA invocations.  */
+>      int running;
+>      qemu_irq irq;
+> +    qemu_irq interr;
+> +    qemu_irq inttc;
+>  } PL080State;
+>  
+>  #endif
+> diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
+> index 0f79c2d8a6c..301030dd118 100644
+> --- a/hw/dma/pl080.c
+> +++ b/hw/dma/pl080.c
+> @@ -75,11 +75,12 @@ static const unsigned char pl081_id[] =
+>  
+>  static void pl080_update(PL080State *s)
+>  {
+> -    if ((s->tc_int & s->tc_mask)
+> -            || (s->err_int & s->err_mask))
+> -        qemu_irq_raise(s->irq);
+> -    else
+> -        qemu_irq_lower(s->irq);
+> +    bool tclevel = (s->tc_int & s->tc_mask);
+> +    bool errlevel = (s->err_int & s->err_mask);
+> +
+> +    qemu_set_irq(s->interr, errlevel);
+> +    qemu_set_irq(s->inttc, tclevel);
+> +    qemu_set_irq(s->irq, errlevel || tclevel);
+>  }
+>  
+>  static void pl080_run(PL080State *s)
+> @@ -352,6 +353,8 @@ static void pl080_init(Object *obj)
+>      memory_region_init_io(&s->iomem, OBJECT(s), &pl080_ops, s, "pl080", 0x1000);
+>      sysbus_init_mmio(sbd, &s->iomem);
+>      sysbus_init_irq(sbd, &s->irq);
+> +    sysbus_init_irq(sbd, &s->interr);
+> +    sysbus_init_irq(sbd, &s->inttc);
+>      s->nchannels = 8;
+>  }
+>  
+> 

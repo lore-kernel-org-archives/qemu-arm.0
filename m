@@ -1,99 +1,99 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp749171wrd;
-        Fri, 17 Aug 2018 17:00:35 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzxpIZoZS2SFcN5AeVsDsCtaO5a40lqa2n0H9OpRdaiusyyvsr/ar2T5nkaWVcJsB6/sjV5
-X-Received: by 2002:aed:24e7:: with SMTP id u36-v6mr36318697qtc.58.1534550435492;
-        Fri, 17 Aug 2018 17:00:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534550435; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp766615wrd;
+        Fri, 17 Aug 2018 17:27:22 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPztQJghpMO1Cplu40jf4/p7VuMpxp1HW2oSgKeYVNAAJNKVJ5D2+kdtZ7EmcrRRLPbP0MlY
+X-Received: by 2002:aed:3e14:: with SMTP id l20-v6mr36049400qtf.62.1534552042445;
+        Fri, 17 Aug 2018 17:27:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534552042; cv=none;
         d=google.com; s=arc-20160816;
-        b=QT8kEBcM4ABPVgCiMFNiFCcLpxmvsEQ/EKL4zQDSG9iTySArVJlYF4P4Qc4CsFR/g1
-         nJpah5mSDD2YuZChrNeEPrclDAQUp390qVp5GwTgDQShppe8NhLQDTkUuJQcjMtjwUWv
-         s5ddAYSNkoy7DAsSrbvw066q+5Xa9a322imcq9TnfRSaE75fJg2cLuMEFzuWr7ITPOOL
-         radU4SFsQ/lSYjXrAvyQJYwOP6dSrlJFM1qv8X9G6Lh1yNh/ZF+RTHA7e9khnQWI8Lkf
-         7Bdwx2/pz9rMD+vp6gg8WXyh3rzp4XiapoHtIataC7QY1hgBvVTFu/QSlWZaPsleoFxg
-         q/3Q==
+        b=rWtdahwyPwlLG77bgHOPFYThyDLpvX0dWDilv8cXgz7PqMDykYLGiMQO3IQQ5+NW74
+         eQLFUEzyiQZNRWPzf6KCG96QyaD2vn6qxPuXe1qNdSVf9fkPh+xYUYfEtSPgii9m5gTK
+         YZtMYigMefbH+UBklkjNrppK+dKZddCSQiGHwQkc0JQVoSiZNCuUIP//axEGzhaEUyP4
+         PTZz/zdk13j8HzANkKYDQm3t6Ew05wk2Xr/EMvyUY8stWX6s5M0CRb25PI38YqMfvL+0
+         jCbAf8uz70vz5N6aqjuVSOa1Uo1cv6vjh9W5mn8lj0c0fHyRL39KD2vPZcMh3IUFNObL
+         6KRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=tgVRuT5puIC/a0SpPmIVungwcmB546P1GzuKaCg+0DQ=;
-        b=p7o8E88WmAYGIsmO7fBnOpQMhqJXhZBwq51BEbbJFR5clj0xDgC+C8QL6vYO/WEQyR
-         COK7fYy3eWQKMHtRVFcQwweHhBA5xMHWLWT56QBpTw5GsagykHqaczQMOCpzvz0TfGRB
-         ulBhV5cFSkG5PIBeNnnqj1ft8fAyBMagDdohG4pkyH6IAR4JpKtrcIHPbRYsjd/+TMvR
-         4aMJ+D3qC1Zmg6i6OV5TkxigSYXOIMwkBRMzxwjzBtkSL2j6I3VZ7XRhuGHRHr2uW9Bk
-         YC1Hyclt5f95VEoFNZtcc+0iC2cE1lx4OKD6OOP9AZ7DYR0+nPCGXOJ3eMPES/yNO86C
-         0QOg==
+        bh=gjY8bmvATF+9TXeS2OVmhYUX1UhkRQraib10CNc60WA=;
+        b=lS13Yr3wQKPqESaoXaosRXWrj1OfPVZIJxORx435OUWIORdeDS+bU7msZZm2Rm7nOL
+         dcGpCM/B6hCPZVGQnsPVu6Ac2Ubm+pMgHO3VvVTmHjkiz5rr5/XtYlXt6TKE95OjRmve
+         IahxfeHk62jfTH+6Os8tePWjD6m91Y4t4uHPNar2wM7sbyNst76vObN0CJKwnh/8u5H9
+         zzPPhpA1lVwdzX2ts2/OKojyW69en7fpmI9yUC6XFAKAgH0nGuW/9ciqmKuf4r72AM8d
+         K/otgjTtfLzA94mR+KIY2AFvR4DmMh3fy79pg8PD/HQnwo7vPAnvupVP9vfCMAZzkAwD
+         GVsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mlv0qnFB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CQUCNFZU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p43-v6si3207387qtc.79.2018.08.17.17.00.35
+        by mx.google.com with ESMTPS id g38-v6si901860qvg.205.2018.08.17.17.27.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 17 Aug 2018 17:00:35 -0700 (PDT)
+        Fri, 17 Aug 2018 17:27:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mlv0qnFB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CQUCNFZU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36854 helo=lists.gnu.org)
+Received: from localhost ([::1]:36893 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fqofT-0004sQ-0C
-	for alex.bennee@linaro.org; Fri, 17 Aug 2018 20:00:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60236)
+	id 1fqp5N-0002Hg-S3
+	for alex.bennee@linaro.org; Fri, 17 Aug 2018 20:27:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34626)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqofJ-0004r2-Oc
-	for qemu-arm@nongnu.org; Fri, 17 Aug 2018 20:00:26 -0400
+	id 1fqp5B-0002Es-JJ
+	for qemu-arm@nongnu.org; Fri, 17 Aug 2018 20:27:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqofI-0005wl-SR
-	for qemu-arm@nongnu.org; Fri, 17 Aug 2018 20:00:25 -0400
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941]:42925)
+	id 1fqp1c-0001qy-BG
+	for qemu-arm@nongnu.org; Fri, 17 Aug 2018 20:23:30 -0400
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:38478)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqofC-0005oq-PC; Fri, 17 Aug 2018 20:00:18 -0400
-Received: by mail-ua1-x941.google.com with SMTP id w7-v6so6709935uan.9;
-	Fri, 17 Aug 2018 17:00:18 -0700 (PDT)
+	id 1fqp1Y-0001jm-Pz; Fri, 17 Aug 2018 20:23:24 -0400
+Received: by mail-ua1-x943.google.com with SMTP id o11-v6so6747828uak.5;
+	Fri, 17 Aug 2018 17:23:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=tgVRuT5puIC/a0SpPmIVungwcmB546P1GzuKaCg+0DQ=;
-	b=mlv0qnFBhWe4z9FqtUBTi8aOpW+wScvLx8LjPlhYBl0rsaHAnVj+EirpiKfXjTBNZ5
-	/lZ7acHALPk0VpN8tmKlIdM+52edPeV0jUE/iDeht95uTKiVfI9SfKEztLUpOCehz/M/
-	xbpUIifzJey9eeHNkyFRkJ5WQjHW/R9dnmJuzk/B10I0+rM5ryBvV3AUACIdsvoySNPg
-	CfY5KvmmSzQK3XE/5Rqm/jpdSYHb09JmD2/8SvQaw3toARqQY8+Lm00ot4JLAkXBzMmV
-	jpzo/piBlRL3YVrnZztNLVysCcHieZIdHSeiNPayWL0jMhIhcSD/+8ZxNqt4xDkoKWhc
-	6FEw==
+	bh=gjY8bmvATF+9TXeS2OVmhYUX1UhkRQraib10CNc60WA=;
+	b=CQUCNFZUhshCarkul42IPQJPXqNQa3DV+YoqFR8bOgzcf7tb4SQ/VDTV0TR3+E1BEX
+	i2KSUbGTvSUCQfhDYEwZwq5f/TrKUdHqwhG0i7v21xCEeATRqlWK3LeeTQnR9qoSUDhF
+	VSBUKjt4TlDhvcFGNT9soE9XI8euvDfnCHf+9PT6e8cSAbDh5MbLO9KRJiDpWZyrNFSj
+	X6tMBIzS6qaY8Ph30Zp++ipeFJOmnKgegiNkiTFyYRhe8p+FS/7R06DZy/uiw+vciDAK
+	nKO/RsWkoQXs/XFf81oykyj7zg8wsksJaHDNA/Tf5IQaYN6kFxlicGeYPxsL34KSOzUw
+	4g6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=tgVRuT5puIC/a0SpPmIVungwcmB546P1GzuKaCg+0DQ=;
-	b=LgeZlL5FMvgFo9/Ny9DQL6SHzGlzv+veBOXXpSETfVlgoK1piT4+kA6UZsiWwuFE7L
-	hdrARZS3G71sU1luqxHEsDYfVaxL034cTucnt1ToYZCht30M7MoqBfAfrdxWkJ61ioRK
-	iBlOVzyccIIDY0JCaRM0iANgectxCIuJWDGZsZJkQKANd9EjgmGSuGcvXRsAZZw03DHU
-	sthpvYpQFvA3KD/d9QJbmfXHUc1mUgDJY+rMJ39CvDUEuqS6dXA7HN9R/moi8PQRWZN0
-	Bf2P0W5QLaMzKqSVtqDtuP/fGQSDLjCobXDN29503gevTYmdrlVrLk9STw3AADXDH19J
-	CMOQ==
-X-Gm-Message-State: AOUpUlFF4W5WnaNAYF1eH2bXk2LixhX8MDPOA+wboqi/Tl4XBnK2xdPY
-	veUz1tDmvzOy+4gE3HCHeIs=
-X-Received: by 2002:ab0:284b:: with SMTP id
-	c11-v6mr23700629uaq.201.1534550418226; 
-	Fri, 17 Aug 2018 17:00:18 -0700 (PDT)
+	bh=gjY8bmvATF+9TXeS2OVmhYUX1UhkRQraib10CNc60WA=;
+	b=hVArIb2+2aHsilgMT4aRZGIxBPVbpCzAfJ6CDzkRzxNpJci9wTAt+CXAeoWQtBy2gR
+	Xt0xnliGftGRSSEvNdbyKM4OUrFSSCT+Unf+LNuwoW6ErjWHL0zo2fZDRrGCgfjHAiPW
+	k7XQ+Hnn5UeRKRemCtdWwhLuTkUG7GnRx81ijJqrc4LsuYO7w+Ifd9R63uoS7iym5+PL
+	3uVto7fX+t+vq3qLHhv23h6HiFVrb+AI8nfMzKX2tgnwsyqSRTcovEgLD/iY29KJz4FY
+	JiLK1tipMti+sKiauG7+WcYQxnGocxVnN+OIZ7/fre0ArzQg5lieSDT6Wf262oaX9m3A
+	j/lg==
+X-Gm-Message-State: AOUpUlG/co8I88m+6eq0qGDPxNeQfYdWzYk+bNiTstQyMNpjFzLPkgxL
+	pHqH6z+fipZ4hZ5+dimUtqA=
+X-Received: by 2002:ab0:2687:: with SMTP id
+	t7-v6mr24581925uao.195.1534551803954; 
+	Fri, 17 Aug 2018 17:23:23 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	9-v6sm2025592uau.47.2018.08.17.17.00.15
+	w7-v6sm898432uaa.33.2018.08.17.17.23.20
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 17 Aug 2018 17:00:17 -0700 (PDT)
+	Fri, 17 Aug 2018 17:23:23 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180809130115.28951-1-peter.maydell@linaro.org>
-	<20180809130115.28951-7-peter.maydell@linaro.org>
+	<20180809130115.28951-6-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -120,20 +120,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <39365f2c-e947-3530-ee8f-9062bbb1264f@amsat.org>
-Date: Fri, 17 Aug 2018 21:00:12 -0300
+Message-ID: <34fd5e4b-4b39-65be-d1e9-a655f656dbc9@amsat.org>
+Date: Fri, 17 Aug 2018 21:23:18 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180809130115.28951-7-peter.maydell@linaro.org>
+In-Reply-To: <20180809130115.28951-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::941
-Subject: Re: [Qemu-arm] [PATCH 06/16] hw/misc/iotkit: Wire up the system
- control element
+X-Received-From: 2607:f8b0:4864:20::943
+Subject: Re: [Qemu-arm] [PATCH 05/16] hw/misc/iotkit-sysctl: Implement
+ IoTKit system control element
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -148,91 +148,492 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qTQFmhv5Vim/
+X-TUID: rT79oWattFN6
 
 Hi Peter,
 
 On 08/09/2018 10:01 AM, Peter Maydell wrote:
-> Wire up the system control element's register banks.
-> 
-> This is the last of the previously completely unimplemented
-> components in the IoTKit.
+> The Arm IoTKit includes a system control element which
+> provides a block of read-only ID registers and a block
+> of read-write control registers. Implement a minimal
+> version of this.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  include/hw/arm/iotkit.h |  4 +++-
->  hw/arm/iotkit.c         | 19 +++++++++++--------
->  2 files changed, 14 insertions(+), 9 deletions(-)
+>  hw/misc/Makefile.objs           |   1 +
+>  include/hw/misc/iotkit-sysctl.h |  50 +++++
+>  hw/misc/iotkit-sysctl.c         | 324 ++++++++++++++++++++++++++++++++
+>  MAINTAINERS                     |   2 +
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/misc/trace-events            |   7 +
+>  6 files changed, 385 insertions(+)
+>  create mode 100644 include/hw/misc/iotkit-sysctl.h
+>  create mode 100644 hw/misc/iotkit-sysctl.c
 > 
-> diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
-> index 0f5c5101708..1ffa31d521b 100644
-> --- a/include/hw/arm/iotkit.h
-> +++ b/include/hw/arm/iotkit.h
-> @@ -58,7 +58,7 @@
->  #include "hw/timer/cmsdk-apb-timer.h"
->  #include "hw/timer/cmsdk-apb-dualtimer.h"
->  #include "hw/watchdog/cmsdk-apb-watchdog.h"
-> -#include "hw/misc/unimp.h"
-> +#include "hw/misc/iotkit-sysctl.h"
->  #include "hw/or-irq.h"
->  #include "hw/core/split-irq.h"
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 93509008451..dbadb41d57a 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -65,6 +65,7 @@ obj-$(CONFIG_MPS2_SCC) += mps2-scc.o
+>  obj-$(CONFIG_TZ_MPC) += tz-mpc.o
+>  obj-$(CONFIG_TZ_PPC) += tz-ppc.o
+>  obj-$(CONFIG_IOTKIT_SECCTL) += iotkit-secctl.o
+> +obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
 >  
-> @@ -97,6 +97,8 @@ typedef struct IoTKit {
->      CMSDKAPBWatchdog nswatchdog;
->      CMSDKAPBWatchdog swatchdog;
->  
-> +    IoTKitSysCtl sysctl;
+>  obj-$(CONFIG_PVPANIC) += pvpanic.o
+>  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+> diff --git a/include/hw/misc/iotkit-sysctl.h b/include/hw/misc/iotkit-sysctl.h
+> new file mode 100644
+> index 00000000000..c3b14ccee4c
+> --- /dev/null
+> +++ b/include/hw/misc/iotkit-sysctl.h
+> @@ -0,0 +1,50 @@
+> +/*
+> + * ARM IoTKit system control element
+> + *
+> + * Copyright (c) 2018 Linaro Limited
+> + * Written by Peter Maydell
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
 > +
->      MemoryRegion container;
->      MemoryRegion alias1;
->      MemoryRegion alias2;
-> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-> index cb0ec456f39..5d59ed5489f 100644
-> --- a/hw/arm/iotkit.c
-> +++ b/hw/arm/iotkit.c
-> @@ -16,7 +16,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/registerfields.h"
->  #include "hw/arm/iotkit.h"
-> -#include "hw/misc/unimp.h"
->  #include "hw/arm/arm.h"
->  
->  /* Clock frequency in HZ of the 32KHz "slow clock" */
-> @@ -151,6 +150,8 @@ static void iotkit_init(Object *obj)
->                            sizeof(s->nswatchdog), TYPE_CMSDK_APB_WATCHDOG);
->      sysbus_init_child_obj(obj, "swatchdog", &s->swatchdog,
->                            sizeof(s->swatchdog), TYPE_CMSDK_APB_WATCHDOG);
-> +    sysbus_init_child_obj(obj, "iotkit-sysctl", &s->sysctl, sizeof(s->sysctl),
-> +                          TYPE_IOTKIT_SYSCTL);
->      object_initialize_child(obj, "nmi-orgate", &s->nmi_orgate,
->                              sizeof(s->nmi_orgate), TYPE_OR_IRQ,
->                              &error_abort, NULL);
-> @@ -516,13 +517,15 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
->                            qdev_get_gpio_in_named(dev_apb_ppc1,
->                                                   "cfg_sec_resp", 0));
->  
-> -    /* Using create_unimplemented_device() maps the stub into the
-> -     * system address space rather than into our container, but the
-> -     * overall effect to the guest is the same.
-> -     */
-> -    create_unimplemented_device("SYSINFO", 0x40020000, 0x1000);
-> -
-> -    create_unimplemented_device("SYSCONTROL", 0x50021000, 0x1000);
-> +    object_property_set_bool(OBJECT(&s->sysctl), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
+> +/*
+> + * This is a model of the "system control element" which is part of the
+> + * Arm IoTKit and documented in
+> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> + * Specifically, it implements the "system information block" and
+> + * "system control register" blocks.
+> + *
+> + * QEMU interface:
+> + *  + sysbus MMIO region 0: the system information register bank
+> + *  + sysbus MMIO region 1: the system control register bank
+> + */
+> +
+> +#ifndef HW_MISC_IOTKIT_SYSCTL_H
+> +#define HW_MISC_IOTKIT_SYSCTL_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_IOTKIT_SYSCTL "iotkit-sysctl"
+> +#define IOTKIT_SYSCTL(obj) OBJECT_CHECK(IoTKitSysCtl, (obj), \
+> +                                        TYPE_IOTKIT_SYSCTL)
+> +
+> +typedef struct IoTKitSysCtl {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    MemoryRegion sysinfo_iomem;
+> +    MemoryRegion sysctl_iomem;
+> +
+> +    uint32_t secure_debug;
+> +    uint32_t reset_syndrome;
+> +    uint32_t reset_mask;
+> +    uint32_t gretreg;
+> +    uint32_t initsvrtor0;
+> +    uint32_t cpuwait;
+> +    uint32_t wicctrl;
+> +} IoTKitSysCtl;
+> +
+> +#endif
+> diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
+> new file mode 100644
+> index 00000000000..9445500be76
+> --- /dev/null
+> +++ b/hw/misc/iotkit-sysctl.c
+> @@ -0,0 +1,324 @@
+> +/*
+> + * ARM IoTKit system control element
+> + *
+> + * Copyright (c) 2018 Linaro Limited
+> + * Written by Peter Maydell
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
+> +
+> +/*
+> + * This is a model of the "system control element" which is part of the
+> + * Arm IoTKit and documented in
+> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> + * Specifically, it implements the "system information block" and
+> + * "system control register" blocks.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "qapi/error.h"
+> +#include "sysemu/sysemu.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/registerfields.h"
+> +#include "hw/misc/iotkit-sysctl.h"
+> +
+> +/* sysinfo block registers */
+> +REG32(SYS_VERSION, 0x0)
+> +REG32(SYS_CONFIG, 0x4)
+
+I find it a bit confuse to have the both SYSINFO/SYSCONTROL in the same
+"iotkit-sysctl" device. They share the same state but there is no
+particular need for it, then you need connect them as 2 different
+devices in iotkit_realize but they have the same name "iotkit-sysctl".
+
+Why not declare 2 different TypeInfo? I am probably missing what state
+they need to share.
+
+> +
+> +/* sysctl block registers */
+> +REG32(SECDBGSTAT, 0x0)
+> +REG32(SECDBGSET, 0x4)
+> +REG32(SECDBGCLR, 0x8)
+> +REG32(RESET_SYNDROME, 0x100)
+> +REG32(RESET_MASK, 0x104)
+> +REG32(SWRESET, 0x108)
+> +    FIELD(SWRESET, SWRESETREQ, 9, 1)
+> +REG32(GRETREG, 0x10c)
+> +REG32(INITSVRTOR0, 0x110)
+> +REG32(CPUWAIT, 0x118)
+> +REG32(BUSWAIT, 0x11c)
+> +REG32(WICCTRL, 0x120)
+> +
+> +/* PID registers, same offset in both blocks */
+> +REG32(PID4, 0xfd0)
+> +REG32(PID5, 0xfd4)
+> +REG32(PID6, 0xfd8)
+> +REG32(PID7, 0xfdc)
+> +REG32(PID0, 0xfe0)
+> +REG32(PID1, 0xfe4)
+> +REG32(PID2, 0xfe8)
+> +REG32(PID3, 0xfec)
+> +REG32(CID0, 0xff0)
+> +REG32(CID1, 0xff4)
+> +REG32(CID2, 0xff8)
+> +REG32(CID3, 0xffc)
+> +
+> +/* PID/CID values */
+> +static const int sysinfo_id[] = {
+> +    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
+> +    0x58, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
+> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+> +};
+> +
+> +static const int sysctl_id[] = {
+> +    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
+> +    0x54, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
+> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+> +};
+> +
+> +static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
+> +                                    unsigned size)
+> +{
+> +    uint64_t r;
+> +
+> +    switch (offset) {
+> +    case A_SYS_VERSION:
+> +        r = 0x41743;
+> +        break;
+> +
+
+(superfluous newline)
+
+> +    case A_SYS_CONFIG:
+> +        r = 0x31;
+> +        break;
+> +    case A_PID4 ... A_CID3:
+> +        r = sysinfo_id[(offset - A_PID4) / 4];
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "IoTKit SysInfo read: bad offset %x\n", (int)offset);
+> +        r = 0;
+> +        break;
 > +    }
-> +    /* System information registers */
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctl), 0, 0x40020000);
+> +    trace_iotkit_sysinfo_read(offset, r, size);
+> +    return r;
+> +}
+> +
+> +static void iotkit_sysinfo_write(void *opaque, hwaddr offset,
+> +                                 uint64_t value, unsigned size)
+> +{
+> +    trace_iotkit_sysinfo_write(offset, value, size);
+> +
+> +    qemu_log_mask(LOG_GUEST_ERROR,
+> +                  "IoTKit SysInfo: write to RO offset 0x%x\n", (int)offset);
+> +}
+> +
+> +static const MemoryRegionOps iotkit_sysinfo_ops = {
+> +    .read = iotkit_sysinfo_read,
+> +    .write = iotkit_sysinfo_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    /* byte/halfword accesses are just zero-padded on reads and writes */
+> +    .impl.min_access_size = 4,
+> +    .impl.max_access_size = 4,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
+> +                                    unsigned size)
+> +{
+> +    IoTKitSysCtl *s = IOTKIT_SYSCTL(opaque);
+> +    uint64_t r;
+> +
+> +    switch (offset) {
+> +    case A_SECDBGSTAT:
+> +        r = s->secure_debug;
+> +        break;
+> +    case A_RESET_SYNDROME:
+> +        r = s->reset_syndrome;
+> +        break;
+> +    case A_RESET_MASK:
+> +        r = s->reset_mask;
+> +        break;
+> +    case A_GRETREG:
+> +        r = s->gretreg;
+> +        break;
+> +    case A_INITSVRTOR0:
+> +        r = s->initsvrtor0;
+> +        break;
+> +    case A_CPUWAIT:
+> +        r = s->cpuwait;
+> +        break;
+> +    case A_BUSWAIT:
+> +        /* In IoTKit BUSWAIT is reserved, R/O, zero */
+> +        r = 0;
+> +        break;
+> +    case A_WICCTRL:
+> +        r = s->wicctrl;
+> +        break;
+> +    case A_PID4 ... A_CID3:
+> +        r = sysctl_id[(offset - A_PID4) / 4];
+> +        break;
+> +    case A_SECDBGSET:
+> +    case A_SECDBGCLR:
+> +    case A_SWRESET:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "IoTKit SysCtl read: read of WO offset %x\n",
+> +                      (int)offset);
+> +        r = 0;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "IoTKit SysCtl read: bad offset %x\n", (int)offset);
+> +        r = 0;
+> +        break;
+> +    }
+> +    trace_iotkit_sysctl_read(offset, r, size);
+> +    return r;
+> +}
+> +
+> +static void iotkit_sysctl_write(void *opaque, hwaddr offset,
+> +                                 uint64_t value, unsigned size)
+> +{
+> +    IoTKitSysCtl *s = IOTKIT_SYSCTL(opaque);
+> +
+> +    trace_iotkit_sysctl_write(offset, value, size);
+> +
+> +    /*
+> +     * Most of the state here has to do with control of reset and
+> +     * similar kinds of power up -- for instance the guest can ask
+> +     * what the reason for the last reset was, or forbid reset for
+> +     * some causes (like the non-secure watchdog). Most of this is
+> +     * not relevant to QEMU, which doesn't really model anything other
+> +     * than a full power-on reset.
+> +     * We just model the registers as reads-as-written.
+> +     */
+> +
+> +    switch (offset) {
+> +    case A_RESET_SYNDROME:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "IoTKit SysCtl RESET_SYNDROME unimplemented\n");
 
-What about the Secure access?
+Maybe warn_report() or warn_once() is more appropriate than UNIMP?
 
-       sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctl), 0, 0x50020000);
+> +        s->reset_syndrome = value;
+> +        break;
+> +    case A_RESET_MASK:
+> +        qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl RESET_MASK unimplemented\n");
 
-> +    /* System control registers */
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctl), 1, 0x50021000);
+Ditto.
+
+> +        s->reset_mask = value;
+> +        break;
+> +    case A_GRETREG:
+> +        /*
+> +         * General retention register, which is only reset by a power-on
+> +         * reset. Technically this implementation is complete, since
+> +         * QEMU only supports power-on resets...
+> +         */
+> +        s->gretreg = value;
+> +        break;
+> +    case A_INITSVRTOR0:
+> +        qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl INITSVRTOR0 unimplemented\n");
+> +        s->initsvrtor0 = value;
+> +        break;
+> +    case A_CPUWAIT:
+> +        qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl CPUWAIT unimplemented\n");
+> +        s->cpuwait = value;
+> +        break;
+> +    case A_WICCTRL:
+> +        qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl WICCTRL unimplemented\n");
+> +        s->wicctrl = value;
+> +        break;
+> +    case A_SECDBGSET:
+> +        /* write-1-to-set */
+> +        qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl SECDBGSET unimplemented\n");
+> +        s->secure_debug |= value;
+> +        break;
+> +    case A_SECDBGCLR:
+> +        /* write-1-to-clear */
+> +        s->secure_debug &= ~value;
+> +        break;
+> +    case A_SWRESET:
+> +        /* One w/o bit to request a reset; all other bits reserved */
+> +        if (value & R_SWRESET_SWRESETREQ_MASK) {
+> +            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> +        }
+
+Shouldn't this be:
+
+           } else {
+               cpu_reset(...);
+           }
+
+> +        break;
+> +    case A_BUSWAIT:        /* In IoTKit BUSWAIT is reserved, R/O, zero */
+> +    case A_SECDBGSTAT:
+> +    case A_PID4 ... A_CID3:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "IoTKit SysCtl write: write of RO offset %x\n",
+> +                      (int)offset);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "IoTKit SysCtl write: bad offset %x\n", (int)offset);
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps iotkit_sysctl_ops = {
+> +    .read = iotkit_sysctl_read,
+> +    .write = iotkit_sysctl_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    /* byte/halfword accesses are just zero-padded on reads and writes */
+> +    .impl.min_access_size = 4,
+> +    .impl.max_access_size = 4,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void iotkit_sysctl_reset(DeviceState *dev)
+> +{
+> +    IoTKitSysCtl *s = IOTKIT_SYSCTL(dev);
+> +
+> +    trace_iotkit_sysctl_reset();
+> +    s->secure_debug = 0;
+> +    s->reset_syndrome = 1;
+> +    s->reset_mask = 0;
+> +    s->gretreg = 0;
+> +    s->initsvrtor0 = 0x10000000;
+
+This one could be a property (now now ;) ).
+
+> +    s->cpuwait = 0;
+> +    s->wicctrl = 0;
+> +}
+> +
+> +static void iotkit_sysctl_init(Object *obj)
+> +{
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +    IoTKitSysCtl *s = IOTKIT_SYSCTL(obj);
+> +
+> +    memory_region_init_io(&s->sysinfo_iomem, obj, &iotkit_sysinfo_ops,
+> +                          s, "iotkit-sysinfo", 0x1000);
+> +    memory_region_init_io(&s->sysctl_iomem, obj, &iotkit_sysctl_ops,
+> +                          s, "iotkit-sysctl", 0x1000);
+> +    sysbus_init_mmio(sbd, &s->sysinfo_iomem);
+> +    sysbus_init_mmio(sbd, &s->sysctl_iomem);
+> +}
+> +
+> +static const VMStateDescription iotkit_sysctl_vmstate = {
+> +    .name = "iotkit-sysctl",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(secure_debug, IoTKitSysCtl),
+> +        VMSTATE_UINT32(reset_syndrome, IoTKitSysCtl),
+> +        VMSTATE_UINT32(reset_mask, IoTKitSysCtl),
+> +        VMSTATE_UINT32(gretreg, IoTKitSysCtl),
+> +        VMSTATE_UINT32(initsvrtor0, IoTKitSysCtl),
+> +        VMSTATE_UINT32(cpuwait, IoTKitSysCtl),
+> +        VMSTATE_UINT32(wicctrl, IoTKitSysCtl),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void iotkit_sysctl_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->vmsd = &iotkit_sysctl_vmstate;
+> +    dc->reset = iotkit_sysctl_reset;
+> +}
+> +
+> +static const TypeInfo iotkit_sysctl_info = {
+> +    .name = TYPE_IOTKIT_SYSCTL,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(IoTKitSysCtl),
+> +    .instance_init = iotkit_sysctl_init,
+> +    .class_init = iotkit_sysctl_class_init,
+> +};
+> +
+> +static void iotkit_sysctl_register_types(void)
+> +{
+> +    type_register_static(&iotkit_sysctl_info);
+> +}
+> +
+> +type_init(iotkit_sysctl_register_types);
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 7ea39c0176b..96fe011e952 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -537,6 +537,8 @@ F: hw/misc/mps2-*.c
+>  F: include/hw/misc/mps2-*.h
+>  F: hw/arm/iotkit.c
+>  F: include/hw/arm/iotkit.h
+> +F: hw/misc/iotkit-sysctl.c
+> +F: include/hw/misc/iotkit-sysctl.h
 >  
->      /* This OR gate wires together outputs from the secure watchdogs to NMI */
->      object_property_set_int(OBJECT(&s->nmi_orgate), 2, "num-lines", &err);
+>  Musicpal
+>  M: Jan Kiszka <jan.kiszka@web.de>
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 521c3d459fa..da59b820a4f 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -114,6 +114,7 @@ CONFIG_TZ_MPC=y
+>  CONFIG_TZ_PPC=y
+>  CONFIG_IOTKIT=y
+>  CONFIG_IOTKIT_SECCTL=y
+> +CONFIG_IOTKIT_SYSCTL=y
+>  
+>  CONFIG_VERSATILE=y
+>  CONFIG_VERSATILE_PCI=y
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index c956e1419b7..83ab58c30f5 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -109,3 +109,10 @@ iotkit_secctl_s_write(uint32_t offset, uint64_t data, unsigned size) "IoTKit Sec
+>  iotkit_secctl_ns_read(uint32_t offset, uint64_t data, unsigned size) "IoTKit SecCtl NS regs read: offset 0x%x data 0x%" PRIx64 " size %u"
+>  iotkit_secctl_ns_write(uint32_t offset, uint64_t data, unsigned size) "IoTKit SecCtl NS regs write: offset 0x%x data 0x%" PRIx64 " size %u"
+>  iotkit_secctl_reset(void) "IoTKit SecCtl: reset"
+> +
+> +# hw/misc/iotkit-sysctl.c
+> +iotkit_sysinfo_read(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+> +iotkit_sysinfo_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+> +iotkit_sysctl_read(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysCtl read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+> +iotkit_sysctl_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysCtl write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+> +iotkit_sysctl_reset(void) "IoTKit SysCtl: reset"
 > 

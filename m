@@ -1,72 +1,75 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp733671wrd;
-        Mon, 20 Aug 2018 07:11:36 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPxWyG9mniVdc8O9TkeAvp1QYSGhZQUrlRwxbJ4dd3Qjob3vc/9nQJvPlBo1l9T84WjfWRco
-X-Received: by 2002:ac8:2969:: with SMTP id z38-v6mr43263347qtz.386.1534774296885;
-        Mon, 20 Aug 2018 07:11:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534774296; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp733798wrd;
+        Mon, 20 Aug 2018 07:11:44 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdYKKtREZ/skmXYCoB/TX+KEFvU08iesBE63mfH0wXVVvBn2dzAOMp4qswKCrczwrGjJkhoP
+X-Received: by 2002:a37:a6d5:: with SMTP id p204-v6mr5684341qke.126.1534774304228;
+        Mon, 20 Aug 2018 07:11:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534774304; cv=none;
         d=google.com; s=arc-20160816;
-        b=bN9w+a17lIow87YlcePY8QkZReDMAyCpGvte2NXR4ezrUsLSBJ3uAmYs4KQRueP0Kk
-         u0+p++ollukmZ3m25kHTadP3Kdlvr5FgPlWyvNCG1+ktSrrfZQcVs5GPEWwetr751xqu
-         RWCZWjax0TAEYSzzeNlav8XctJkJM9Jik73ap4KlVKNn0/Wk/IwciILk1XwYh9coprcY
-         2+0oJDXvPDwggUlpiG6oygqWMyEXaLIgqWdz3+2/WMXCn35QljCmT362wtSYxDV+W0yf
-         clFtXod+6TjVoK3G6u5SCJcGiuMPFohHFiB1KNnNt6mYgKDb8HvfmXepBooE79V9U91a
-         wEYQ==
+        b=p9RSci+BnzN7uQxTxqpzDvY8mnIJZyceWKsu/YjGsLbAaz/EmR3KCwAXlrIjVZv+p1
+         60wmGRxp6tsIqFNS8sNwcK6Ak01p+0FBDihAHHjy8Beb1koMLKCyCkY1GYVdvFWL3mEW
+         /fZ2IjdoPTaf2UN18n2hHXwPfQTJWsun/QeXYUnUd3lhoSgXtFAONFOxHURUusPFNsCP
+         Tnpa6Oi6iBxrhx3bLx9HN3dp0mp5h+JsniY/SQg0/sh8YGFOs/Q623uz7b5GvZ/X8Itd
+         fQPDnQmHEF4xdvb4IgdihcloU9HcAIJSgWMurYEHqy5iDMmoSzkWUyTiXk+AAdsir/lk
+         Tedg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=wZS/L6R6C+LCfvO36h/l3Fqy0KFohFA6/6tc30JT9NU=;
-        b=pGG77hzts8JFZTienhQ//LY49w9Ml/OdIFSyvJeu52M4mXQp9z5jrxpvQEM3fYblmK
-         6OLH3oZWt/oXcJScFW7SNFJLb5wVyX47NS8HG6q+lYQONrXJ4ClYwc4tfCMsMsAuUpa2
-         sQAi0IFp1BkXUDlHBCQ2IQmseSJaFjpr8G5RVBvgpoJ4SsL6FTB6BpvMW98RGpvHajM6
-         +k012lEkOelaRhMHCf6MqFM8oD3ur9bv6IyPw6kWEg/5V2PkFPcpXUynKZUjcgF8B1Q8
-         htoi2LRzGEq82m9/yyBCVOhsKs5YY95VwRnuJUqvkL0DZAOkH1wo1dW+wzew0N/zDCx+
-         B7Lg==
+        bh=2/k8d+2EvmRag/Wj2U1gZ7aeTvqxJx+gHKYECtd4jFc=;
+        b=aQ62LGx1uDh5tZ+hT7K5cKeP31vxWfotyXUNRxr0QfdRgZgpv1aJXkYcT8/K84b2oK
+         VFGxt8sVLZcDoFkDkw28nopndvCjS5U7V+FkES7C4BI9x3ByLuGx0uDgQ/LERlwLgCIZ
+         dJH9nDMHZ0lPEUtPiapzeaLHdlY7EdD5Emzr2kZQwFsA/4pxi5W2tlaO3I9XBH1U1wq6
+         /NIgB5vsfQwLSM/KJn0p5wJ8ePFlbKmqJzzRAFH8jVcPLt2iInrofl/j5FtB6BdGuP0H
+         M+qMql1nJGCUVPXps6scz1AREXtwszDJkLXwlFs6+0o/2TovduhFK90UqoR+TyNNeEfM
+         eJQA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l8-v6si3786589qki.256.2018.08.20.07.11.36
+        by mx.google.com with ESMTPS id v16-v6si6277589qvk.273.2018.08.20.07.11.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Aug 2018 07:11:36 -0700 (PDT)
+        Mon, 20 Aug 2018 07:11:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47284 helo=lists.gnu.org)
+Received: from localhost ([::1]:47285 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1frku8-0003OU-Aj
-	for alex.bennee@linaro.org; Mon, 20 Aug 2018 10:11:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41693)
+	id 1frkuF-0003Rx-Kh
+	for alex.bennee@linaro.org; Mon, 20 Aug 2018 10:11:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41767)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1frktx-0003Np-ES
-	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 10:11:26 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1frku0-0003Op-L2
+	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 10:11:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1frktv-00079a-AL
-	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 10:11:25 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44596)
+	(envelope-from <pm215@archaic.org.uk>) id 1frktz-0007Cf-O2
+	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 10:11:28 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44622)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1frktv-00078D-1U; Mon, 20 Aug 2018 10:11:23 -0400
+	id 1frktz-0007Bt-El; Mon, 20 Aug 2018 10:11:27 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1frktt-0003LL-5U; Mon, 20 Aug 2018 15:11:21 +0100
+	id 1frkty-0003OK-Gc; Mon, 20 Aug 2018 15:11:26 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 20 Aug 2018 15:10:56 +0100
-Message-Id: <20180820141116.9118-3-peter.maydell@linaro.org>
+Date: Mon, 20 Aug 2018 15:11:01 +0100
+Message-Id: <20180820141116.9118-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180820141116.9118-1-peter.maydell@linaro.org>
 References: <20180820141116.9118-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 02/22] hw/misc/mps2-fpgaio: Implement PSCNTR and
- COUNTER
+Subject: [Qemu-arm] [PATCH 07/22] hw/arm/iotkit: Wire up the S32KTIMER
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,189 +85,77 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6RtfLLbrD8lt
+X-TUID: YsYaLoLWCggw
 
-In the MPS2 FPGAIO, PSCNTR is a free-running downcounter with
-a reload value configured via the PRESCALE register, and
-COUNTER counts up by 1 every time PSCNTR reaches zero.
-Implement these counters.
-
-We can just increment the counters migration subsection's
-version ID because we only added it in the previous commit,
-so no released QEMU versions will be using it.
+The IoTKit has a CMSDK timer device that runs on the S32KCLK.
+Create this and wire it up.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/mps2-fpgaio.h |  6 +++
- hw/misc/mps2-fpgaio.c         | 97 +++++++++++++++++++++++++++++++++--
- 2 files changed, 99 insertions(+), 4 deletions(-)
+ include/hw/arm/iotkit.h | 2 +-
+ hw/arm/iotkit.c         | 9 +++++----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
-index ec057d38c76..69e265cd4b2 100644
---- a/include/hw/misc/mps2-fpgaio.h
-+++ b/include/hw/misc/mps2-fpgaio.h
-@@ -37,6 +37,12 @@ typedef struct {
-     uint32_t prescale;
-     uint32_t misc;
+diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+index 776d0497087..0f5c5101708 100644
+--- a/include/hw/arm/iotkit.h
++++ b/include/hw/arm/iotkit.h
+@@ -83,6 +83,7 @@ typedef struct IoTKit {
+     TZMPC mpc;
+     CMSDKAPBTIMER timer0;
+     CMSDKAPBTIMER timer1;
++    CMSDKAPBTIMER s32ktimer;
+     qemu_or_irq ppc_irq_orgate;
+     SplitIRQ sec_resp_splitter;
+     SplitIRQ ppc_irq_splitter[NUM_PPCS];
+@@ -91,7 +92,6 @@ typedef struct IoTKit {
+     qemu_or_irq nmi_orgate;
  
-+    /* QEMU_CLOCK_VIRTUAL time at which counter and pscntr were last synced */
-+    int64_t pscntr_sync_ticks;
-+    /* Values of COUNTER and PSCNTR at time pscntr_sync_ticks */
-+    uint32_t counter;
-+    uint32_t pscntr;
-+
-     uint32_t prescale_clk;
+     CMSDKAPBDualTimer dualtimer;
+-    UnimplementedDeviceState s32ktimer;
  
-     /* These hold the CLOCK_VIRTUAL ns tick when the CLK1HZ/CLK100HZ was zero */
-diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
-index bbc28f641f0..5cf10ebd66a 100644
---- a/hw/misc/mps2-fpgaio.c
-+++ b/hw/misc/mps2-fpgaio.c
-@@ -43,6 +43,77 @@ static int64_t tickoff_from_counter(int64_t now, uint32_t count, int frq)
-     return now - muldiv64(count, NANOSECONDS_PER_SECOND, frq);
- }
- 
-+static void resync_counter(MPS2FPGAIO *s)
-+{
-+    /*
-+     * Update s->counter and s->pscntr to their true current values
-+     * by calculating how many times PSCNTR has ticked since the
-+     * last time we did a resync.
-+     */
-+    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+    int64_t elapsed = now - s->pscntr_sync_ticks;
-+
-+    /*
-+     * Round elapsed down to a whole number of PSCNTR ticks, so we don't
-+     * lose time if we do multiple resyncs in a single tick.
-+     */
-+    uint64_t ticks = muldiv64(elapsed, s->prescale_clk, NANOSECONDS_PER_SECOND);
-+
-+    /*
-+     * Work out what PSCNTR and COUNTER have moved to. We assume that
-+     * PSCNTR reloads from PRESCALE one tick-period after it hits zero,
-+     * and that COUNTER increments at the same moment.
-+     */
-+    if (ticks == 0) {
-+        /* We haven't ticked since the last time we were asked */
-+        return;
-+    } else if (ticks < s->pscntr) {
-+        /* We haven't yet reached zero, just reduce the PSCNTR */
-+        s->pscntr -= ticks;
-+    } else {
-+        if (s->prescale == 0) {
-+            /*
-+             * If the reload value is zero then the PSCNTR will stick
-+             * at zero once it reaches it, and so we will increment
-+             * COUNTER every tick after that.
-+             */
-+            s->counter += ticks - s->pscntr;
-+            s->pscntr = 0;
-+        } else {
-+            /*
-+             * This is the complicated bit. This ASCII art diagram gives an
-+             * example with PRESCALE==5 PSCNTR==7:
-+             *
-+             * ticks  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14
-+             * PSCNTR 7  6  5  4  3  2  1  0  5  4  3  2  1  0  5
-+             * cinc                           1                 2
-+             * y            0  1  2  3  4  5  6  7  8  9 10 11 12
-+             * x            0  1  2  3  4  5  0  1  2  3  4  5  0
-+             *
-+             * where x = y % (s->prescale + 1)
-+             * and so PSCNTR = s->prescale - x
-+             * and COUNTER is incremented by y / (s->prescale + 1)
-+             *
-+             * The case where PSCNTR < PRESCALE works out the same,
-+             * though we must be careful to calculate y as 64-bit unsigned
-+             * for all parts of the expression.
-+             * y < 0 is not possible because that implies ticks < s->pscntr.
-+             */
-+            uint64_t y = ticks - s->pscntr + s->prescale;
-+            s->pscntr = s->prescale - (y % (s->prescale + 1));
-+            s->counter += y / (s->prescale + 1);
-+        }
-+    }
-+
-+    /*
-+     * Only advance the sync time to the timestamp of the last PSCNTR tick,
-+     * not all the way to 'now', so we don't lose time if we do multiple
-+     * resyncs in a single tick.
-+     */
-+    s->pscntr_sync_ticks += muldiv64(ticks, NANOSECONDS_PER_SECOND,
-+                                     s->prescale_clk);
-+}
-+
- static uint64_t mps2_fpgaio_read(void *opaque, hwaddr offset, unsigned size)
- {
-     MPS2FPGAIO *s = MPS2_FPGAIO(opaque);
-@@ -74,9 +145,12 @@ static uint64_t mps2_fpgaio_read(void *opaque, hwaddr offset, unsigned size)
-         r = counter_from_tickoff(now, s->clk100hz_tick_offset, 100);
-         break;
-     case A_COUNTER:
-+        resync_counter(s);
-+        r = s->counter;
-+        break;
-     case A_PSCNTR:
--        qemu_log_mask(LOG_UNIMP, "MPS2 FPGAIO: counters unimplemented\n");
--        r = 0;
-+        resync_counter(s);
-+        r = s->pscntr;
-         break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -107,6 +181,7 @@ static void mps2_fpgaio_write(void *opaque, hwaddr offset, uint64_t value,
-         s->led0 = value & 0x3;
-         break;
-     case A_PRESCALE:
-+        resync_counter(s);
-         s->prescale = value;
-         break;
-     case A_MISC:
-@@ -126,6 +201,14 @@ static void mps2_fpgaio_write(void *opaque, hwaddr offset, uint64_t value,
-         now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-         s->clk100hz_tick_offset = tickoff_from_counter(now, value, 100);
-         break;
-+    case A_COUNTER:
-+        resync_counter(s);
-+        s->counter = value;
-+        break;
-+    case A_PSCNTR:
-+        resync_counter(s);
-+        s->pscntr = value;
-+        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "MPS2 FPGAIO write: bad offset 0x%x\n", (int) offset);
-@@ -150,6 +233,9 @@ static void mps2_fpgaio_reset(DeviceState *dev)
-     s->misc = 0;
-     s->clk1hz_tick_offset = tickoff_from_counter(now, 0, 1);
-     s->clk100hz_tick_offset = tickoff_from_counter(now, 0, 100);
-+    s->counter = 0;
-+    s->pscntr = 0;
-+    s->pscntr_sync_ticks = now;
- }
- 
- static void mps2_fpgaio_init(Object *obj)
-@@ -170,12 +256,15 @@ static bool mps2_fpgaio_counters_needed(void *opaque)
- 
- static const VMStateDescription mps2_fpgaio_counters_vmstate = {
-     .name = "mps2-fpgaio/counters",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .needed = mps2_fpgaio_counters_needed,
-     .fields = (VMStateField[]) {
-         VMSTATE_INT64(clk1hz_tick_offset, MPS2FPGAIO),
-         VMSTATE_INT64(clk100hz_tick_offset, MPS2FPGAIO),
-+        VMSTATE_UINT32(counter, MPS2FPGAIO),
-+        VMSTATE_UINT32(pscntr, MPS2FPGAIO),
-+        VMSTATE_INT64(pscntr_sync_ticks, MPS2FPGAIO),
-         VMSTATE_END_OF_LIST()
+     CMSDKAPBWatchdog s32kwatchdog;
+     CMSDKAPBWatchdog nswatchdog;
+diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+index 5cedfa03570..cb0ec456f39 100644
+--- a/hw/arm/iotkit.c
++++ b/hw/arm/iotkit.c
+@@ -141,6 +141,8 @@ static void iotkit_init(Object *obj)
+                           TYPE_CMSDK_APB_TIMER);
+     sysbus_init_child_obj(obj, "timer1", &s->timer1, sizeof(s->timer1),
+                           TYPE_CMSDK_APB_TIMER);
++    sysbus_init_child_obj(obj, "s32ktimer", &s->s32ktimer, sizeof(s->s32ktimer),
++                          TYPE_CMSDK_APB_TIMER);
+     sysbus_init_child_obj(obj, "dualtimer", &s->dualtimer, sizeof(s->dualtimer),
+                           TYPE_CMSDK_APB_DUALTIMER);
+     sysbus_init_child_obj(obj, "s32kwatchdog", &s->s32kwatchdog,
+@@ -166,8 +168,6 @@ static void iotkit_init(Object *obj)
+                                 TYPE_SPLIT_IRQ, &error_abort, NULL);
+         g_free(name);
      }
- };
+-    sysbus_init_child_obj(obj, "s32ktimer", &s->s32ktimer, sizeof(s->s32ktimer),
+-                          TYPE_UNIMPLEMENTED_DEVICE);
+ }
+ 
+ static void iotkit_exp_irq(void *opaque, int n, int level)
+@@ -476,13 +476,14 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+     /* Devices behind APB PPC1:
+      *   0x4002f000: S32K timer
+      */
+-    qdev_prop_set_string(DEVICE(&s->s32ktimer), "name", "S32KTIMER");
+-    qdev_prop_set_uint64(DEVICE(&s->s32ktimer), "size", 0x1000);
++    qdev_prop_set_uint32(DEVICE(&s->s32ktimer), "pclk-frq", S32KCLK);
+     object_property_set_bool(OBJECT(&s->s32ktimer), true, "realized", &err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+     }
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->s32ktimer), 0,
++                       qdev_get_gpio_in(DEVICE(&s->armv7m), 2));
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->s32ktimer), 0);
+     object_property_set_link(OBJECT(&s->apb_ppc1), OBJECT(mr), "port[0]", &err);
+     if (err) {
 -- 
 2.18.0
 

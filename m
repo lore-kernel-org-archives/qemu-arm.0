@@ -1,72 +1,71 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp816038wrd;
-        Mon, 20 Aug 2018 08:31:00 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwleSSgavz+A3GeUDJFKREozfVH7myNHNGL3jT7G0KxDigGSrQ8zChfSiskkH0y3X6uxHRr
-X-Received: by 2002:a0c:a162:: with SMTP id d89-v6mr41873238qva.198.1534779060191;
-        Mon, 20 Aug 2018 08:31:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534779060; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp816426wrd;
+        Mon, 20 Aug 2018 08:31:20 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdYI7eGmwLpzMDoy/Ck253UrQjzsWhet6pZ4aIZHUk7wf371l3oiwHEUgrOVrnBz2cefle2H
+X-Received: by 2002:ac8:2e2b:: with SMTP id r40-v6mr12960852qta.12.1534779080011;
+        Mon, 20 Aug 2018 08:31:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534779080; cv=none;
         d=google.com; s=arc-20160816;
-        b=S8y9RB58iLls0O4jMXH4LAtBiQsNntb0cZmqUPJhpd2T9X05sLtYXItXKImBbDQbX3
-         Ct9mip/3RT/3skvPiirB4yzvEGiiMLSD9nk/fFp1ot5cAkV/7TbF+KcgwIMzexq32apA
-         1Y5gVDJ9ksAya6PgARMGB2UfNRMCJGYYOt/pl/slWPEwIGr2fxrnQcPq7vQy+ppn8o/W
-         q+I3GFXQrzednZYvAOoDxI/9Id8HxgcDFn2gtIRvTbiwqdqGJ4/3yG6Ka82oBsW6YQrl
-         RxZT6mvPie3MRPX4lOPO7rjsNpm8406zFMGrIRIqKZgxVx1Qt9SzqClsIFj2dn1krUiO
-         +x4Q==
+        b=rkYSGFN5QK8ZhopbD1moCOW6dUXwpV1QTCEuxmufXgYaHIrsC0BIYhVgu5TpOJRLw+
+         PaHote2pdmfA+dt6HnyCMi8b+0kQyZ/JxrEzDdO8QBXdmS+TnGjV9pWFLxXAbj2Hhy9w
+         Bv7kEreQkJz6yFH6PVm58lVdVhnh0r1O5wZROgpdzD/fOJYVnuGorbkG9kOswg8SxXJA
+         ZVrKOK2JCOcrl7T5+hCi+a6upKfFIBkTDWQDkR4WboyCcU4MelXH/YyIAy0THpsrf9on
+         hlfM7oHRRZ+Vx2/Ylxm1cpRlw1giG9B5Eu0TE4xE2oqPV9kg4vLY3SE4Ki9ubCyOp4CV
+         gdaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=moSA5AilztxXC/lYIPzqhsnxJkMe6E18E+AgO7r9TjY=;
-        b=zVSLOULuiNX/EoZwzES8dLFGdTSNaZjr1wnt0ghfDAD5GilVJIEu5PG9RAgVQOw+kD
-         BerLOH80hspvoYNbOXQqA12ZzvRJIe6U1IwcPZknoCLIGC8Qm+JiOYB/PuJIPtvEQdUi
-         wMk67jOk/AqCpLOLCkQiYGlHpAXnPUAlC++7aquYhf8tTj4W57cZLNjPhjxMPXUt0Vcw
-         +pL6Cv1IqGUu7xSqg/0xIZFaxqmW3PcLjv9HhJPvZUnBec0t2DIJz0liC2lB4v5JjEJP
-         luv/X/cP9K7nFK3SvhtzUW6gOD1a9vDlmfBXy8iD3VoDzPlR2Ai8sQiZtdfm338em82z
-         zqZQ==
+        bh=5aWY2QzfnouwUFPX2On+yVXEoskuSusP6on6y5QeOh8=;
+        b=R57KvXkORkbg5EetkTqDF913+YSjrbx3qzUfTehWDJ8wS28dpPcVlYhhHjDWTdoexR
+         37yzoEqSP+OxQJxX9cfmPk/HIO5ct34jjABYZS7MZACVSBo62BdFPCMeavV6rwo/8icW
+         ReAQOdLxnLIPtCYOkCGgnV8Ouv77avhozlUgRAzeA/1DewAqltQyr6TX7mfb0eOYp2VF
+         m+wn7LAMKuRCw/qvgMCVSUkup93YlyX5DJHc2sW67KzB5kYYWbzWgVqquu+WIlnzxYig
+         5fLJbr21SnWFaxfnnzwlO/aoNBfQPDOLKQd4ucwYaUa4QbV6UL5Lg3WFwBIlyFGxhDoq
+         Hj2w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u23-v6si4269113qvg.263.2018.08.20.08.31.00
+        by mx.google.com with ESMTPS id f71-v6si2131970qka.128.2018.08.20.08.31.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Aug 2018 08:31:00 -0700 (PDT)
+        Mon, 20 Aug 2018 08:31:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47749 helo=lists.gnu.org)
+Received: from localhost ([::1]:47750 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1frm8x-0005rR-I5
-	for alex.bennee@linaro.org; Mon, 20 Aug 2018 11:30:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46191)
+	id 1frm9H-00060t-E1
+	for alex.bennee@linaro.org; Mon, 20 Aug 2018 11:31:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46248)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1frm8T-0005Wj-EP
-	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:30 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1frm8W-0005at-0o
+	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1frm8S-00046z-QL
-	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:29 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1frm8V-0004Bk-6a
+	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:31 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44712)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1frm8S-00044t-IG; Mon, 20 Aug 2018 11:30:28 -0400
+	id 1frm8U-00044t-Vj; Mon, 20 Aug 2018 11:30:31 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1frm8R-0003aL-KN; Mon, 20 Aug 2018 16:30:27 +0100
+	id 1frm8N-0003Xq-PG; Mon, 20 Aug 2018 16:30:23 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 20 Aug 2018 16:30:19 +0100
-Message-Id: <20180820153020.21478-6-peter.maydell@linaro.org>
+Date: Mon, 20 Aug 2018 16:30:15 +0100
+Message-Id: <20180820153020.21478-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180820153020.21478-1-peter.maydell@linaro.org>
 References: <20180820153020.21478-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 5/6] target/arm: Clear CPSR.IL and CPSR.J on
- 32-bit exception entry
+Subject: [Qemu-arm] [PATCH v2 1/6] target/arm: Implement RAZ/WI HACTLR2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,38 +81,41 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Luc Michel <luc.michel@greensocs.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JqEgwjgQMPG8
+X-TUID: JcsdARDsrQNs
 
-On 32-bit exception entry, CPSR.J must always be set to 0
-(see v7A Arm ARM DDI0406C.c B1.8.5). CPSR.IL must also
-be cleared on 32-bit exception entry (see v8A Arm ARM
-DDI0487C.a G1.10).
-
-Clear these bits. (This fixes a bug which will never be noticed
-by non-buggy guests.)
+The v8 AArch32 HACTLR2 register maps to bits [63:32] of ACTLR_EL2.
+We implement ACTLR_EL2 as RAZ/WI, so make HACTLR2 also RAZ/WI.
+(We put the regdef next to ACTLR_EL2 as a reminder in case we
+ever make ACTLR_EL2 something other than RAZ/WI).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Not strictly required for Hyp mode, but a minor nit we
-can cross off the todo list, and it fits better here
-after the refactoring of the exception-exit function.
+changes from v1: only define in ARMv8, not v7
 ---
- target/arm/helper.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/arm/helper.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 21a2d438944..f548ba17697 100644
+index c9bce1efcb2..22547d8e739 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -8054,6 +8054,8 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
-     if (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_EE) {
-         env->uncached_cpsr |= CPSR_E;
+@@ -5459,6 +5459,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             REGINFO_SENTINEL
+         };
+         define_arm_cp_regs(cpu, auxcr_reginfo);
++        if (arm_feature(env, ARM_FEATURE_V8)) {
++            /* HACTLR2 maps to ACTLR_EL2[63:32] and is not in ARMv7 */
++            ARMCPRegInfo hactlr2_reginfo = {
++                .name = "HACTLR2", .state = ARM_CP_STATE_AA32,
++                .cp = 15, .opc1 = 4, .crn = 1, .crm = 0, .opc2 = 3,
++                .access = PL2_RW, .type = ARM_CP_CONST,
++                .resetvalue = 0
++            };
++            define_one_arm_cp_reg(cpu, &hactlr2_reginfo);
++        }
      }
-+    /* J and IL must always be cleared for exception entry */
-+    env->uncached_cpsr &= ~(CPSR_IL | CPSR_J);
-     env->daif |= mask;
  
-     if (new_mode == ARM_CPU_MODE_HYP) {
+     if (arm_feature(env, ARM_FEATURE_CBAR)) {
 -- 
 2.18.0
 

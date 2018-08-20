@@ -1,70 +1,71 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp815638wrd;
-        Mon, 20 Aug 2018 08:30:42 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPx3b4O9wuw36LMRw53m+3CtVCO+fDGfXi1qBi2GiKz6yAOYBgz7ISYfT8suEnHVEhEtBEkJ
-X-Received: by 2002:a0c:9692:: with SMTP id a18-v6mr42055990qvd.16.1534779042410;
-        Mon, 20 Aug 2018 08:30:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534779042; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp815663wrd;
+        Mon, 20 Aug 2018 08:30:43 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPzk8b9N+ycn/IqHqHmF0zsZWO9DCZZuE+jm6nE6W8iLLpg0vFMjbiGAbIHCrXQcMNIxUe2S
+X-Received: by 2002:a0c:fa4e:: with SMTP id k14-v6mr34748720qvo.35.1534779043563;
+        Mon, 20 Aug 2018 08:30:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534779043; cv=none;
         d=google.com; s=arc-20160816;
-        b=IuD/MZoD7qYH/6TpELxC4A+vUzRFgg5x2sI82yGz+XUmkMLtomcYVr0kgo1uaA71ce
-         K9+W3KolG4iDsKK3jVbMrKONJ5btZGcjaSdypHUGsjLcOsb5KQAF2tfhpQH9cJNuW6H2
-         HhYMM4T5Zs5eG/a3ohPMbvitioaSQZJjyaZwgGSw6ksQo0xHpj3mA6TALHwoDgX/+ipH
-         Xl6TrrWeDPWTeRs5NZPBMsMC5Rfmj9N+jp+CJf+I/NLNtWfsw7JVVNOHpek7lMCOEFKw
-         FZJLm5c3RHjlkmkSPPAjmk6Hb7N6IVIpWFqHoV//7AlSeZvXiyuVkuvGc08BX0UDBbU4
-         pWXA==
+        b=Oum422qSnRV++d1Gwyt00gPjtTHOdILJZu4E7MNZL2LZlWg1lWp6o3zPZ7skQ4QWW4
+         WHU6IFZDsKPQDwQsdBOj/Yugk0JpWCNLx4FTaKHjNwQKKrTKfHs6iag5rm/Q9Dks6C/e
+         KdT5qD1A/mcG/QF19345Mr39Flt1NUIjnna5ndNsTswwJeueaRLP/oWqyrBc2X1UTWRI
+         A+k/QSOMFTJtq5LVZyAQigtq9O/fz77v5PuimJG/ExDbztDwvpDsNAz0vkcu0X2YSnFJ
+         ykl4SMET1OmzGCHe8y67cwPQFuaux6AhXFATkDL0aXS7dSTDo2akxSLfLcSezO81JCJj
+         RRSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=VTUkeocQXTm7av/+2qmuEAFOwpyQ3oU3Na4IaWUMdi8=;
-        b=uP5qzeIoHQjNJ2GT10ZEhfi3hOwpeaO8v0OjkC4ok4ZBZKbLeYW0G1dzq4XeBxao2b
-         Y4h2NLjzjb4g6wGcqfv4J2gOVxWGJSp3YQ2OdhHrbWOcYfFXj2+v3OQvyrXKR5HA0Iou
-         vaSg2mKx3tXv6Ur3n2TJnwOsYsk9gSyvHjHZIja498NpCC1EN+mC1tZbpumr+U9NSRdL
-         VEOQUO8TOIp8K8dQgx/rk3oSr+DcX5+ozcjgEktaeWwlD/XB4Ut790txU/oxEbVhWgJU
-         vO+iJKmK/cDUyAvSVlb9odTRKaezGj+5ilhE3Fnqa4y1IDQvqhXgBCBgnPr12P8sQJoy
-         QUww==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:arc-authentication-results;
+        bh=dTlAW1R75oI0ehvpJ9J2s5Toht/Nma1HKacyMIer5Ns=;
+        b=NuPFuRDJDEgfBlXeeFQ3eeqimhqTRhRWmgGmE0IFWkk/Vznwl9DtQyJCi1k8WewcYi
+         4EpLJSS4nd8uPToi9a89dITD7xP80Yq/XVz/VPwc/993dWQlPyUoaESfGs9I7YGVz7T9
+         L1YmAS6vksvAqDfwn37SqCduOctwogU5hAyVWp3GNCNMkfnhYD3zpm6PBIyCr+FBk0Hs
+         XnRHg+/8dWpgsW/FdF4+aD3xdLI7Qgu4q3ibu8vMfxZdrFqHCPnPtaByoXn5SZNG+34z
+         0+SocAUMUlq8nsNNW1Sc17gROq/481FYgjaqPLmKQ4oVWF3iUHwU97adfQq39K6iBqnQ
+         USTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m77-v6si325917qkl.347.2018.08.20.08.30.42
+        by mx.google.com with ESMTPS id q34-v6si1610975qkq.244.2018.08.20.08.30.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Aug 2018 08:30:42 -0700 (PDT)
+        Mon, 20 Aug 2018 08:30:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47740 helo=lists.gnu.org)
+Received: from localhost ([::1]:47742 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1frm8f-0005Um-Qx
-	for alex.bennee@linaro.org; Mon, 20 Aug 2018 11:30:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46118)
+	id 1frm8g-0005V2-WC
+	for alex.bennee@linaro.org; Mon, 20 Aug 2018 11:30:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46148)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1frm8Q-0005Sh-36
-	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:26 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1frm8R-0005T7-Bx
+	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1frm8P-00042R-DB
-	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:26 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1frm8Q-00043S-EB
+	for qemu-arm@nongnu.org; Mon, 20 Aug 2018 11:30:27 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44694)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1frm8P-00041d-5w; Mon, 20 Aug 2018 11:30:25 -0400
+	id 1frm8Q-00041d-63; Mon, 20 Aug 2018 11:30:26 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1frm8M-0003Xd-Qp; Mon, 20 Aug 2018 16:30:22 +0100
+	id 1frm8O-0003YA-Mk; Mon, 20 Aug 2018 16:30:24 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Mon, 20 Aug 2018 16:30:14 +0100
-Message-Id: <20180820153020.21478-1-peter.maydell@linaro.org>
+Date: Mon, 20 Aug 2018 16:30:16 +0100
+Message-Id: <20180820153020.21478-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180820153020.21478-1-peter.maydell@linaro.org>
+References: <20180820153020.21478-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2 0/6] target/arm: Some pieces of support for
- 32-bit Hyp mode
+Subject: [Qemu-arm] [PATCH v2 2/6] target/arm: Implement AArch32 HCR and HCR2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,48 +81,135 @@ Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
 	Luc Michel <luc.michel@greensocs.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sDwyXSjZMTsW
+X-TUID: vQUPWJKuwb/P
 
-Now we have virtualization support in the GICv2 emulation,
-I thought I'd have a look at how much we were still missing
-for being able to enable EL2 support for AArch32.
-This set of patches fixes some minor missing pieces:
- * AArch32 HACTLR2
- * AArch32 HCR, HCR2
- * support for taking exceptions to Hyp mode
- * boot AArch32 kernels in Hyp mode where available
-and I threw in a trivial bugfix:
- * Clear CPSR.IL and CPSR.J on 32-bit exception entry
-since it would otherwise have a conflict with the refactoring
-of exception entry.
+The AArch32 HCR and HCR2 registers alias HCR_EL2
+bits [31:0] and [63:32]; implement them.
 
-Changes v1->v2:
- * some patches are now upstream
- * v8-only registers no longer created for v7 CPUs
- * split the "factor out exception-entry code" into
-   its own patch
- * new patch: clear CPSR.IL and CPSR.J
- * new patch: boot kernels in Hyp mode if possible
+Since HCR2 exists in ARMv8 but not ARMv7, we need new
+regdef arrays for "we have EL3, not EL2, we're ARMv8"
+and "we have EL2, we're ARMv8" to hold the definitions.
 
-(I still have the same "guest EL0 segv" issue as for v1
-if I actually enable the EL2 feature on Cortex-A15.)
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Changes from v1: moved HCR2 definition to new regdef
+arrays so we don't define it for ARMv7 CPUs
+---
+ target/arm/helper.c | 54 +++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 50 insertions(+), 4 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (6):
-  target/arm: Implement RAZ/WI HACTLR2
-  target/arm: Implement AArch32 HCR and HCR2
-  target/arm: Factor out code for taking an AArch32 exception
-  target/arm: Implement support for taking exceptions to Hyp mode
-  target/arm: Clear CPSR.IL and CPSR.J on 32-bit exception entry
-  hw/arm/boot: AArch32 kernels should be started in Hyp mode if
-    available
-
- hw/arm/boot.c       |  11 +++
- target/arm/helper.c | 212 ++++++++++++++++++++++++++++++++++++++------
- 2 files changed, 196 insertions(+), 27 deletions(-)
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 22547d8e739..9ff6778b3ae 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -3754,11 +3754,11 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 4, .crn = 12, .crm = 0, .opc2 = 0,
+       .access = PL2_RW,
+       .readfn = arm_cp_read_zero, .writefn = arm_cp_write_ignore },
+-    { .name = "HCR_EL2", .state = ARM_CP_STATE_AA64,
++    { .name = "HCR_EL2", .state = ARM_CP_STATE_BOTH,
+       .type = ARM_CP_NO_RAW,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW,
+-      .readfn = arm_cp_read_zero, .writefn = arm_cp_write_ignore },
++      .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "ESR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 5, .crm = 2, .opc2 = 0,
+       .access = PL2_RW,
+@@ -3857,6 +3857,15 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+     REGINFO_SENTINEL
+ };
+ 
++/* Ditto, but for registers which exist in ARMv8 but not v7 */
++static const ARMCPRegInfo el3_no_el2_v8_cp_reginfo[] = {
++    { .name = "HCR2", .state = ARM_CP_STATE_AA32,
++      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 4,
++      .access = PL2_RW,
++      .type = ARM_CP_CONST, .resetvalue = 0 },
++    REGINFO_SENTINEL
++};
++
+ static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+ {
+     ARMCPU *cpu = arm_env_get_cpu(env);
+@@ -3883,10 +3892,26 @@ static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+      * HCR_PTW forbids certain page-table setups
+      * HCR_DC Disables stage1 and enables stage2 translation
+      */
+-    if ((raw_read(env, ri) ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
++    if ((env->cp15.hcr_el2 ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
+         tlb_flush(CPU(cpu));
+     }
+-    raw_write(env, ri, value);
++    env->cp15.hcr_el2 = value;
++}
++
++static void hcr_writehigh(CPUARMState *env, const ARMCPRegInfo *ri,
++                          uint64_t value)
++{
++    /* Handle HCR2 write, i.e. write to high half of HCR_EL2 */
++    value = deposit64(env->cp15.hcr_el2, 32, 32, value);
++    hcr_write(env, NULL, value);
++}
++
++static void hcr_writelow(CPUARMState *env, const ARMCPRegInfo *ri,
++                         uint64_t value)
++{
++    /* Handle HCR write, i.e. write to low half of HCR_EL2 */
++    value = deposit64(env->cp15.hcr_el2, 0, 32, value);
++    hcr_write(env, NULL, value);
+ }
+ 
+ static const ARMCPRegInfo el2_cp_reginfo[] = {
+@@ -3894,6 +3919,11 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.hcr_el2),
+       .writefn = hcr_write },
++    { .name = "HCR", .state = ARM_CP_STATE_AA32,
++      .type = ARM_CP_ALIAS,
++      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
++      .access = PL2_RW, .fieldoffset = offsetof(CPUARMState, cp15.hcr_el2),
++      .writefn = hcr_writelow },
+     { .name = "ELR_EL2", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 4, .crn = 4, .crm = 0, .opc2 = 1,
+@@ -4128,6 +4158,16 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     REGINFO_SENTINEL
+ };
+ 
++static const ARMCPRegInfo el2_v8_cp_reginfo[] = {
++    { .name = "HCR2", .state = ARM_CP_STATE_AA32,
++      .type = ARM_CP_ALIAS,
++      .cp = 15, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 4,
++      .access = PL2_RW,
++      .fieldoffset = offsetofhigh32(CPUARMState, cp15.hcr_el2),
++      .writefn = hcr_writehigh },
++    REGINFO_SENTINEL
++};
++
+ static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    bool isread)
+ {
+@@ -5179,6 +5219,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         };
+         define_arm_cp_regs(cpu, vpidr_regs);
+         define_arm_cp_regs(cpu, el2_cp_reginfo);
++        if (arm_feature(env, ARM_FEATURE_V8)) {
++            define_arm_cp_regs(cpu, el2_v8_cp_reginfo);
++        }
+         /* RVBAR_EL2 is only implemented if EL2 is the highest EL */
+         if (!arm_feature(env, ARM_FEATURE_EL3)) {
+             ARMCPRegInfo rvbar = {
+@@ -5211,6 +5254,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             };
+             define_arm_cp_regs(cpu, vpidr_regs);
+             define_arm_cp_regs(cpu, el3_no_el2_cp_reginfo);
++            if (arm_feature(env, ARM_FEATURE_V8)) {
++                define_arm_cp_regs(cpu, el3_no_el2_v8_cp_reginfo);
++            }
+         }
+     }
+     if (arm_feature(env, ARM_FEATURE_EL3)) {
 -- 
 2.18.0
 

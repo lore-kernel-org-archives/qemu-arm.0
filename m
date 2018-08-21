@@ -1,103 +1,103 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2004761wrd;
-        Tue, 21 Aug 2018 07:51:08 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbN2+6YY9jxrIkVceXJ6TP6yZtnoZwM5M5ekRehe/rHgU+NZi/KXL4QdTplXYDVRI/sN7WM
-X-Received: by 2002:a37:cf45:: with SMTP id e66-v6mr5625095qkj.299.1534863068763;
-        Tue, 21 Aug 2018 07:51:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534863068; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2010066wrd;
+        Tue, 21 Aug 2018 07:56:46 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdZdtxzt2GzRIrh2x51v/qPxHwi1DBwWs3UkiDHFvLLKMDEYc8gsM+UVlAr8ceKsYv46TEcD
+X-Received: by 2002:a0c:b752:: with SMTP id q18-v6mr2060314qve.73.1534863406726;
+        Tue, 21 Aug 2018 07:56:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534863406; cv=none;
         d=google.com; s=arc-20160816;
-        b=qy9lCGW5cCXoI2LSw/FWIolp3MJ9QExHHtSYR6cBvimONBhUvUdqktjzFxj9UFRW4y
-         SkhWsfTzZ37FLr25fgu1MVJSX4MRpcMeDo/U2LOqXOaZQZCNOOqQpYtVJJBbNyZPyJLt
-         RxiF2swIceDg+Wx67W5kxpN0dpMag8tSwSGtUmhBNlG7k2h6+k7nq1YdMy/tg2ZTXQ79
-         DZwWgZH1hsS+LYZgXD0Slq3KKWFRkd8m6vm9sanb900C5mfyEL/jnCf+MBjAN7ZPhWHL
-         dedQFcDWxiBuNu3E8pfdYUyXZ1DwK+/zWWsJ7/q+/mkJccxQo13wkI2ZDVfQ/32YKFGN
-         GrZg==
+        b=nqqDtrFtaaWFvrag42c5a/vYK5BZCB9upqN3ZZ0uiSi7P4jI52OxFy/9HKp4WXhdS5
+         qdaZ3QI+EpSwpLBILKhxnVMJlUe/8Zj96lNvX3SXxTNLxn7wp7QVybsn21+DTvwutacU
+         nV50Y9nTJ/m4OXQfMap3JVkQk6hh8k/tNSiEttWQ+vc7KlnF9K83ebHCidZlTcPqQDCr
+         XfObJsRyV4daIb+22k02xhnOWMPdTjGyj5GDuqrpy4iDofstBaJJ+kPL6ayPoEMiqd/G
+         /qbH2oPTHdbT4WAUyl3Npa9jkKt+wSeqzUwkFp24ChyBtgyjLi3d11wbJztxH67H3059
+         OsMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:references
          :in-reply-to:mime-version:dkim-signature:arc-authentication-results;
-        bh=qgE/zDU+imDWDZU9bgmvR/zqJcXwkzlcSuzP6ZOmz+I=;
-        b=KifZOOcM5mrQ1TUc+/D8Yc1TJngDRsj6uWxwjFVcQ5ufSh254tRWotGOikgRbus/5U
-         1tZXW5TWtWaTKo0aFR/9v7yOca/u+uJ909mhXBMW9U1skU+kbVf43gvWAqbgXKxJvQqM
-         /gNOLdqy+bHe09JfXpjJMO7Ss128nBdOZLUtXSM3a/CWebtSppcJrdM54XDhjhEiw6L/
-         vDs1IHgBKCky2kXKdDZUsRet4urlVNvnMSul8D6cgq7LOT52aydnv5pdn6hoXQROZsR8
-         zPQl2+PuFHk5GVThyiG6vZifVPFga20tATRMfC0Z0t+n10JKP7VzKDzvNcTYJ/UM7Yhy
-         kuUw==
+        bh=TfmoPRGRUSYa+3iad+IYdNApeUrg6E3Dh3MhZuIfvY0=;
+        b=EAERDXJBOiXrLHeTKmGZ6Qp/4uqJolWOfG0MIN3t9VFP7jHyFTJxyuXt88C8fEzinr
+         fSHl26PffgjY8pn6z8Zc5GyjKo0QzNJHwtfibcBL0g2fk5tfrNsPr1TPHlxDSvsGpcc3
+         sChQGIbXaL3sokgP8W3ohIkCBlkmP4HZppI82l9HJzBLLyzNwnQhAjZicmvIazpJYm6i
+         4AnB4B2uLPx6+eNxl1sn8+O7mGnRLkMZH5KBOlU/xCB4NetNzHUeJtdSjkW2RXYU11M5
+         4m86bNWPYsKtrKoWkC+geezXWAvTXQ/cyUFBd0Yoz7/iWNvasPGrqVl9mcfYU91MT6ah
+         /LWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=a80bJBWe;
+       dkim=fail header.i=@linaro.org header.s=google header.b="Q/Gc+tKA";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k1-v6si9703141qvf.138.2018.08.21.07.51.08
+        by mx.google.com with ESMTPS id l67-v6si1901844qkb.61.2018.08.21.07.56.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Aug 2018 07:51:08 -0700 (PDT)
+        Tue, 21 Aug 2018 07:56:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=a80bJBWe;
+       dkim=fail header.i=@linaro.org header.s=google header.b="Q/Gc+tKA";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54084 helo=lists.gnu.org)
+Received: from localhost ([::1]:54135 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fs7zw-0004Ip-64
-	for alex.bennee@linaro.org; Tue, 21 Aug 2018 10:51:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32918)
+	id 1fs85O-0001eZ-4U
+	for alex.bennee@linaro.org; Tue, 21 Aug 2018 10:56:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60844)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fs7zK-0004HD-9S
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 10:50:31 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fs7yL-0003FU-CP
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 10:49:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fs7zI-0003TF-It
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 10:50:30 -0400
-Received: from mail-oi0-x22d.google.com ([2607:f8b0:4003:c06::22d]:33611)
+	(envelope-from <peter.maydell@linaro.org>) id 1fs7yK-0002ye-IE
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 10:49:29 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:33344)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fs7zC-0003N3-Lo
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 10:50:25 -0400
-Received: by mail-oi0-x22d.google.com with SMTP id 8-v6so32531520oip.0
-	for <qemu-devel@nongnu.org>; Tue, 21 Aug 2018 07:50:22 -0700 (PDT)
+	id 1fs7yK-0002yI-BM
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 10:49:28 -0400
+Received: by mail-oi0-x243.google.com with SMTP id 8-v6so32525697oip.0
+	for <qemu-devel@nongnu.org>; Tue, 21 Aug 2018 07:49:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=qgE/zDU+imDWDZU9bgmvR/zqJcXwkzlcSuzP6ZOmz+I=;
-	b=a80bJBWevGEh2NfgGFn0Pr6E+xVJP+4D6YRHv0+loiVf3Z8fxlkZwIERIaSJdlpoiO
-	woDg4Tn+w95AxvcahYbFwCP6QwRX+ceR/MIJ47IU5RpgscTwPPa9qp23xCwAr/lFvLiR
-	wXPa6G5qv1O9zCESTWcMcy7uT6ED+f63w+Ygw=
+	bh=TfmoPRGRUSYa+3iad+IYdNApeUrg6E3Dh3MhZuIfvY0=;
+	b=Q/Gc+tKAz68+zGQ+4j5UzRUz+At89U7QFxM3jDEdKrW3V4OsXWoJIpvO84hvVVScJV
+	g1cUWVLqxwl0iPSifYrP1Dm80jUnjivL6n5kUmkmEKgGtbRR6jdTSVgeVD9ViFgj8dD1
+	hhyy7iXSuxQV0undIC3O27ukH3uuA2Fj+G3sI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=qgE/zDU+imDWDZU9bgmvR/zqJcXwkzlcSuzP6ZOmz+I=;
-	b=KodoCljXcJGxvcvvCCZDaRtK/wpAt5RTdwk4YHldSxxEf+7r0gu1SzzZAJ2D/hl0gj
-	uoWQkb4Q2ZzT4qVsr4lsEv9MRmA5JyVieYKIraGOkD69ppeizY1qZm3EnTLK5Z1T3/rM
-	PYz1b2cXfCinFQ/7lz4hSoHFCIWOXEfrPvhCrXnuIGxQmfFJP5a8ZFS4Bl/yfXJ4+q8v
-	Fh8E9FycacEGprbBWsircHPax3yi9+yFHT1w14H1jAHuZOok/WirZ6LVu7iKApEVBnp3
-	7pvOXcbLrgmLqVAhnyFbgAOTHGb0p2kguwN37H3AxJaTNHHMNtwxuts3NVV5n5tR8cIA
-	cwhA==
-X-Gm-Message-State: AOUpUlH+zPDnP9c2TnkKjGMoxWvt/wjds6nQQwGXWF/HYVeS+vsreBnS
-	StBcmbQf/rAjR60jDI3j+wI/hspf05gWqekztEd32A==
-X-Received: by 2002:aca:4204:: with SMTP id
-	p4-v6mr17639491oia.242.1534863021644; 
-	Tue, 21 Aug 2018 07:50:21 -0700 (PDT)
+	bh=TfmoPRGRUSYa+3iad+IYdNApeUrg6E3Dh3MhZuIfvY0=;
+	b=gMg1GxwnW1zAtFM53eXzYlBH7BrTyZ2BNSu2UYXcyIGv/NCDZU/mRjAUCkWOWbryNl
+	i4OeNW+FXOplG7KZ1IlAdd28+DSXsLJv/Ao0Rj4kDQQvO15nANc3c5vIlZjp+zrCHhe0
+	B88hQbbatXu/cEf6PV26r2qxHkkg1xZxUlZZrpwS+ZQb3LWVAeYT9J7l659aAOfNPECJ
+	6HPuSEvOtW1/uPu36Q5IcaCFQwu2fEajMWKivXT79f4UZpjcwtH9owMkOyPMEH98LBgI
+	dvwWhQQSnbGxrWywC7nGdoCNfWvBVYX1NW879o9P4+NvGoT6lVl8OzzviLTBKGSxAVpi
+	VHLw==
+X-Gm-Message-State: AOUpUlHFUnbILkxO5xsKG9MH+J+KEF/IvrFw7dLMQzDOrAMJYk6W1JqJ
+	O+ZPlVoYt9yVIGTXHMS+txvPWq1eepeLW9UOLZC/Ig==
+X-Received: by 2002:aca:506:: with SMTP id 6-v6mr19312919oif.23.1534862967741; 
+	Tue, 21 Aug 2018 07:49:27 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Tue, 21 Aug 2018 07:50:01
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Tue, 21 Aug 2018 07:49:07
 	-0700 (PDT)
-In-Reply-To: <6c13fca2-6f16-adb0-1072-7601abefd18d@steffen-goertz.de>
+In-Reply-To: <df1b1627-47e4-bffd-e73c-ffa3eb037b2a@steffen-goertz.de>
 References: <20180811090836.4024-1-contrib@steffen-goertz.de>
-	<20180811090836.4024-7-contrib@steffen-goertz.de>
-	<CAFEAcA_=8r_X_rLfwJovEkusBb6hmaG5Ns8YQxQMLL4z0KpHXw@mail.gmail.com>
-	<6c13fca2-6f16-adb0-1072-7601abefd18d@steffen-goertz.de>
+	<20180811090836.4024-4-contrib@steffen-goertz.de>
+	<CAFEAcA-vtLpt-ScYpYPFqtQAnECuVqCW-DhKqVgoh6mAG=KfQw@mail.gmail.com>
+	<df1b1627-47e4-bffd-e73c-ffa3eb037b2a@steffen-goertz.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Aug 2018 15:50:01 +0100
-Message-ID: <CAFEAcA91fZpidh1XefoB3v1monJBQFhdZAKVUpMvw6Pw6+fMiQ@mail.gmail.com>
+Date: Tue, 21 Aug 2018 15:49:07 +0100
+Message-ID: <CAFEAcA-n87TbE_a2zgnWAgTk1=P5=1j-f+xS7yKJ7jMZkNtx1w@mail.gmail.com>
 To: =?UTF-8?Q?Steffen_G=C3=B6rtz?= <mail@steffen-goertz.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22d
-Subject: Re: [Qemu-devel] [PATCH 6/7] arm: Instantiate nRF51 peripherals
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-devel] [PATCH 3/7] arm: Add chip variant property to
+ nRF51 SoC
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,42 +116,43 @@ Cc: Jim Mussared <jim@groklearning.com>, Stefan Hajnoczi <stefanha@gmail.com>,
 	Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PZb2daLSjYWL
+X-TUID: doqaenLoz8iq
 
-On 21 August 2018 at 12:43, Steffen G=C3=B6rtz <mail@steffen-goertz.de> wro=
+On 21 August 2018 at 11:03, Steffen G=C3=B6rtz <mail@steffen-goertz.de> wro=
 te:
 > Hi Peter,
->>> +
->>> +static uint64_t clock_read(void *opaque, hwaddr addr, unsigned int siz=
-e)
->>> +{
->>> +    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " [%u]\n",
->>> +                  __func__, addr, size);
->>> +    return 1;
->>> +}
->>> +
->>> +static void clock_write(void *opaque, hwaddr addr, uint64_t data,
->>> +                        unsigned int size)
->>> +{
->>> +    qemu_log_mask(LOG_UNIMP, "%s: 0x%" HWADDR_PRIx " <- 0x%" PRIx64 " =
-[%u]\n",
->>> +                  __func__, addr, data, size);
->>> +}
->>> +
->>> +static const MemoryRegionOps clock_ops =3D {
->>> +    .read =3D clock_read,
->>> +    .write =3D clock_write
->>> +};
+>
+> object_property_set_bool(soc, true, "realized", &error_abort);>>
+>>> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+>>> -            NRF51_SOC(soc)->flash_size);
+>>> +    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0=
+x00);
 >>
->> You don't need to roll your own "do nothing but log" device:
->> you can use the TYPE_UNIMPLEMENTED_DEVICE to do this.
->>
-> Until we have a more proper STUB for POWER/CLOCK/MPU peripherals we actua=
-lly need this,
-> because the unimplemented device will return 0 on reads which will cause =
-guest code to stall.
+>> Hmm. Using 0x00 here doesn't seem ideal.
+>
+> i agree. The actual sizes for RAM/ROM are calculated in the SOC at the mo=
+ment.
+> I do not really know what impact max_sz has here. I could set the it to t=
+he
+> maximum code size defined in the memory map of the NRF51 series. Another =
+way would be
+> to lift the calculation of the ROM size from the SOC to the Board. What w=
+ould you propose?
 
-Oh, I see. I hadn't noticed that it was doing read-as-all-ones.
+I think we need to specify a value somehow, otherwise we
+won't be able to load raw images (which I think are the only
+ones where we enforce the limit value). You could just use
+the largest possible size, I suppose.
+
+>>> +#define PAGE_SIZE       1024
+>>
+>> Page size isn't really an obvious concept for M profile.
+>
+> Flash pages are referred to here, not MMU pages. This constant is moved a=
+nd renamed to NRF51_PAGE_SIZE in the upcoming revision. Would you suggest a=
+nother name or can with stick with this?
+
+I guess NRF51_FLASH_PAGE_SIZE would be a little clearer ?
 
 thanks
 -- PMM

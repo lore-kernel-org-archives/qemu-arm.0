@@ -1,99 +1,99 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1561628wrd;
-        Mon, 20 Aug 2018 23:46:41 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzVuY4Wlm5t+ogjDi5M+zsZMbAafCwXMyvS0pfku1wbtnCyvQPjQobcXH8yirn76BK74PjH
-X-Received: by 2002:ac8:390e:: with SMTP id s14-v6mr16800262qtb.363.1534834000965;
-        Mon, 20 Aug 2018 23:46:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534834000; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1563673wrd;
+        Mon, 20 Aug 2018 23:49:35 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPwVciWDW7PtVxtPg1z4dvTSxQ0vdtaHz8E5xsMTTgXV1FeZT48wKeFgdRblJGku4Dsyn/PL
+X-Received: by 2002:ac8:4283:: with SMTP id o3-v6mr8959320qtl.28.1534834174935;
+        Mon, 20 Aug 2018 23:49:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534834174; cv=none;
         d=google.com; s=arc-20160816;
-        b=ooX21Tyfh8fVdp6UHmy0pdLXPPmrp2zX/pqBocpeCz35jrh5snldlF+ARPueQh3jU8
-         BgdgmmocD7UmQJrFtoE1VMQhr0lIHAU1HhzMdrorw1Ww7J6Ytg1YhDKR1JREEUl3BuTK
-         v0ycyNl6RNM/yxrcPKXZHwqwmqgCF5HrB7xm6ZG1HT1nbP6xlQztryzM5+S3xpYWCVwB
-         Tv/f/Gpak873mYIHdtVEaEDe0yF9lWCYDnFT8OLPAqJU2KCalUJAZTG41nj698IKhPYl
-         UhVxD6H3f97SgixnNTNzgSgWSAwydW7YWNgcJ7i94xE5KeD7te5EOq3PNRQZ/xX+Zipw
-         QJzA==
+        b=egbtLforsUCsR2blob5IvswZkf+DV+wrd8Vgr36zKjYT7e8HIWZeYVZopzqMU2Crxz
+         BZfO8OpKtrng0R4/sr1eRjD1dBDOGy2UOhvYsmdV6vAczhh1olDu09aohPlvZ3vVFbwq
+         qfmmmJ3szvc5Rp0WQueKw7DXC4H6GQWou7tdh3Y39KY3zQWCiLged4n/5My09JvTwGKO
+         VFSI2lnZFdH4Lv5NixgDeNyodiao5UrbjXrff0aLfAkI9/N0v86Zfy3K42N+Na5+Xl3I
+         3TtUGSuPbYczlnmfO4dt0RIj5weu0megPPwyQ0ms/qK7cVjoAd2qiye0/E9ABJ/KY5Va
+         gTNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=398yp8gStmPSOAEwq2BGJsbk4ENAK9+knw6IjGc1Xvk=;
-        b=UJTCjtMJDwxxaLKz2ESAwVQoidEAbfDkPbu7pX9zNcp0doe1RHOAq3JRoJjbYDLhv9
-         bnizbRiU80I5Fl5ivzuCe4+VUuH+ii7bgWihPoxlJMFDTkE0rKZ4J/+AHKFCgIxizqzI
-         aTFRX3dYdAlUFYqzOI5jmSlKMhqCI4cRIqVlINAkns9QpjaPgaD2repmtWitBV0nmluv
-         zloOh66IR67KL9kCyD64xsz93auOVQnK48buXiSM14aSk5zQKjWWIBAu45tudonZj42Y
-         tfonVSBjksfWm7CtwbJKJakTEhBBARBjA/pcQCRat6YEIOZLxTXrGmsQX80cjKp4T0b3
-         LFzg==
+        bh=f6IrLvwR3PpNvnJw23pLEz8x77VZnKQ8bqy6L2CvTo8=;
+        b=cx6ShbgAD2zQF8/5YIDYdjdXE/y9E5/hRgsAvzvSu+rGOKXpaCSI5knut43aP3PvV2
+         xFNcXWx+RpWMdtxxRvPZDGR6x1tlSvAlsXCntA+e9AgV++8JK2wijVn/on6dA7XWPUtL
+         wOXJ0ELu72kLJ2D5OliaDXaC0DkEXqRq6e7Is/82zsBarRxjRB0zcYP4pYm7OOcE38An
+         vctJtVJCsPQXGH8r3GEClPDVPLUrdHC2XpOT31oJKXcGxxk6VWL28bDVSSgEnjpkO8QD
+         kPhfBr5bvw0xiJvuT47sCXiAXtfia8onWmcQNeQ5HMxp9IVzlHquQHPs++pimQhF3PvO
+         MkMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RyVEOdhc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GtdPKpld;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e23-v6si4362118qta.54.2018.08.20.23.46.40
+        by mx.google.com with ESMTPS id h185-v6si10930344qkf.234.2018.08.20.23.49.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Aug 2018 23:46:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 20 Aug 2018 23:49:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RyVEOdhc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51094 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GtdPKpld;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51111 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fs0R6-000611-BP
-	for alex.bennee@linaro.org; Tue, 21 Aug 2018 02:46:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56002)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fs0Tu-0000Ln-A3
+	for alex.bennee@linaro.org; Tue, 21 Aug 2018 02:49:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56759)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0QQ-0005zg-7K
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:45:59 -0400
+	id 1fs0TM-0000AZ-Uh
+	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 02:49:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0QM-0003Va-5G
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:45:58 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:37674)
+	id 1fs0TK-00055T-Kf
+	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 02:49:00 -0400
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:45933)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0QL-0003VK-TL; Tue, 21 Aug 2018 02:45:54 -0400
-Received: by mail-ua1-x944.google.com with SMTP id y10-v6so11240745uao.4;
-	Mon, 20 Aug 2018 23:45:53 -0700 (PDT)
+	id 1fs0TI-000543-Eu; Tue, 21 Aug 2018 02:48:56 -0400
+Received: by mail-ua1-x944.google.com with SMTP id k8-v6so11206940uaq.12;
+	Mon, 20 Aug 2018 23:48:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=398yp8gStmPSOAEwq2BGJsbk4ENAK9+knw6IjGc1Xvk=;
-	b=RyVEOdhcyhfMzrQvRbipmibbx2IhJX82Md9V36RIM6Byrc6wO67MkWZF+iH9MHrw3x
-	ZyRL6spcHM8SqD7miZWLiWxf1aHQ5SQpUT4fphmtJj1QjHElGb3UFHF0k9FsF8pYe5HX
-	mc7mST55g2ZorvzkjZp8izKut8vdtBMiCtP19AQzyhtOStHIRWxDA1jQ+BIo2lu3/mSx
-	TRt8QUH3fuCbGZ4+3wybaLXGRqey/oWMKdwW/0B6idDEDMgbzTutDWdIoOd2C7x3EEHI
-	FLmxV37ZqZDEh6ScFlEv7DI2qFDT3qEE8OJMgNPC7+ayU+5DMon5DyzFM7gxMEDhPaR3
-	mUaw==
+	bh=f6IrLvwR3PpNvnJw23pLEz8x77VZnKQ8bqy6L2CvTo8=;
+	b=GtdPKpldE4YLBxjBoB/noL1Eap4xkZ0QnEXnHr77ceV/cPy6vipfoyjRhKEP8xtl3I
+	Pi4IkfBCrmP2TilVR2e5edNGUinb9a+yWIl+NOsyd3I/SCMnU/F4WgpWdJVPYI75J/9S
+	41b/HMvdEqb4zi40ARNCoGDjTCHNBL+6hVZYCvQkjsfJcSZq9qxs9tf7qQ0UOK5gYAgv
+	91FwdIwNpzPk24vkWxAUwBLgRvrPAkSFqqFH+IkfAQmux4/V5wBgdOCxafg/GfDacjQy
+	OAZ7w+nUYtH7DoM2BtHbSO1kZsHyDCBtQQJGv6/EcaI+HF4ntvdbKqfnZ4cw2RfGENsN
+	Y+eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=398yp8gStmPSOAEwq2BGJsbk4ENAK9+knw6IjGc1Xvk=;
-	b=oQTNSEj/seEJwOcQ+yShQl0N8xihj81jE+tlTlmOSteFMZYgDCu2EB78Qnjkcxp5/E
-	bK37FHCVt4Av6ax7M2fgz4GD+69mP160xJGovo+2hlRAnbaGTz0s8S52o150o6L9z28B
-	a5WqKeiRhkOqE4IF1Qz5nXsCo0c4g8YBMgCzLJ95siEtZn0089g/R4L4T89aC4NG8dGJ
-	/6FONhG+GyS0+nKp0sBRHO6389HlYqzUHNf/BnV5W6NaZc5eUxOsRmYPIhEB0siW771c
-	hsC6brpor178mkEgOMYCxn8mxGOTxVflT7Ted6Fek4B+kkjyafbHvGHJdFCcc+020FdE
-	H5FQ==
-X-Gm-Message-State: AOUpUlHdmuo1SaVxj8KORpq60hwXYJ+t24mANHAfntiH0MOtxx8YO/uP
-	MQQfDV/FVIQT0Fpg7meV1o5aMirb
-X-Received: by 2002:a9f:3acc:: with SMTP id
-	q12-v6mr32171000uag.178.1534833953338; 
-	Mon, 20 Aug 2018 23:45:53 -0700 (PDT)
+	bh=f6IrLvwR3PpNvnJw23pLEz8x77VZnKQ8bqy6L2CvTo8=;
+	b=mcQSCx5tEVPvWuoG0hq88/lz8/rSWZBZArMC1ZVmBMaycw4xuOEms+AfbzlHdb9vPN
+	HB20mw4aVNuSlmjq5KFRsL5yDDI4uSeeCmzKKnY0ThSDZJp/e/Y13FmpzRCAcGHhmmSa
+	OdRCpqsKENvx2Dyh7UupuUsDsaIWHH369eg/fyC49djusYn+ghXw3RZHaC7xbiadfq5C
+	r2vc789BQ9QKrFmNCB14Kf2iDmaunVBo4+ZsApM9aZh2ZhNNXzbvf7AZ9GEiiMYk+2d3
+	Z2fNMBIl5Ivw+68BhsQH1OQGjx+8jbNO7kj2rLWr4tT08fkoNDuBtRZkeHJXood84B3G
+	xf1g==
+X-Gm-Message-State: AOUpUlHkOs13Cos1SK2ePX7eNHZNmCjYdgh5Uu1e5B4rG3ByaY27Z89i
+	ip6PSxTaDoDI14plAIYh/PQ=
+X-Received: by 2002:ab0:3352:: with SMTP id
+	h18-v6mr21911395uap.10.1534834135876; 
+	Mon, 20 Aug 2018 23:48:55 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	k12-v6sm922818vkf.4.2018.08.20.23.45.51
+	k12-v6sm926920vkf.4.2018.08.20.23.48.54
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 Aug 2018 23:45:52 -0700 (PDT)
+	Mon, 20 Aug 2018 23:48:55 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180820141116.9118-1-peter.maydell@linaro.org>
-	<20180820141116.9118-10-peter.maydell@linaro.org>
+	<20180820141116.9118-16-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -120,267 +120,167 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <21a97256-d88e-fa9d-4d1e-154ce2ee3a61@amsat.org>
-Date: Tue, 21 Aug 2018 03:45:47 -0300
+Message-ID: <b5eaab49-ca93-37b9-a0e7-31ac60cace58@amsat.org>
+Date: Tue, 21 Aug 2018 03:48:52 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180820141116.9118-10-peter.maydell@linaro.org>
+In-Reply-To: <20180820141116.9118-16-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:4864:20::944
-Subject: Re: [Qemu-devel] [PATCH 09/22] hw/misc/iotkit-sysinfo: Implement
- IoTKit system information block
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH 15/22] hw/ssi/pl022: Allow use as
+ embedded-struct device
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nSLsZFlxexbZ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dIWlv1vz/2cj
 
 On 08/20/2018 11:11 AM, Peter Maydell wrote:
-> Implement the IoTKit system control element's system information
-> block; this is just a pair of read-only version/config registers,
-> plus the usual PID/CID ID registers.
+> Create a new include file for the pl022's device struct,
+> type macros, etc, so that it can be instantiated using
+> the "embedded struct" coding style.
+> 
+> While we're adding the new file to MAINTAINERS, add
+> also the .c file, which was missing an entry.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/misc/Makefile.objs            |   1 +
->  include/hw/misc/iotkit-sysinfo.h |  37 +++++++++
->  hw/misc/iotkit-sysinfo.c         | 128 +++++++++++++++++++++++++++++++
->  MAINTAINERS                      |   2 +
->  default-configs/arm-softmmu.mak  |   1 +
->  5 files changed, 169 insertions(+)
->  create mode 100644 include/hw/misc/iotkit-sysinfo.h
->  create mode 100644 hw/misc/iotkit-sysinfo.c
+>  include/hw/ssi/pl022.h | 51 ++++++++++++++++++++++++++++++++++++++++++
+>  hw/ssi/pl022.c         | 26 +--------------------
+>  MAINTAINERS            |  2 ++
+>  3 files changed, 54 insertions(+), 25 deletions(-)
+>  create mode 100644 include/hw/ssi/pl022.h
 > 
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index ac1f3bc030c..af2b503824e 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -67,6 +67,7 @@ obj-$(CONFIG_TZ_MPC) += tz-mpc.o
->  obj-$(CONFIG_TZ_PPC) += tz-ppc.o
->  obj-$(CONFIG_IOTKIT_SECCTL) += iotkit-secctl.o
->  obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
-> +obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
->  
->  obj-$(CONFIG_PVPANIC) += pvpanic.o
->  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
-> diff --git a/include/hw/misc/iotkit-sysinfo.h b/include/hw/misc/iotkit-sysinfo.h
+> diff --git a/include/hw/ssi/pl022.h b/include/hw/ssi/pl022.h
 > new file mode 100644
-> index 00000000000..7b2e1a5e48b
+> index 00000000000..a080519366d
 > --- /dev/null
-> +++ b/include/hw/misc/iotkit-sysinfo.h
-> @@ -0,0 +1,37 @@
+> +++ b/include/hw/ssi/pl022.h
+> @@ -0,0 +1,51 @@
 > +/*
-> + * ARM IoTKit system information block
+> + * ARM PrimeCell PL022 Synchronous Serial Port
 > + *
-> + * Copyright (c) 2018 Linaro Limited
-> + * Written by Peter Maydell
+> + * Copyright (c) 2007 CodeSourcery.
+> + * Written by Paul Brook
 > + *
-> + *  This program is free software; you can redistribute it and/or modify
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 or
+> + * (at your option) any later version.
 > + */
 > +
-> +/*
-> + * This is a model of the "system information block" which is part of the
-> + * Arm IoTKit and documented in
-> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> +/* This is a model of the Arm PrimeCell PL022 synchronous serial port.
+> + * The PL022 TRM is:
+> + * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0194h/DDI0194H_ssp_pl022_trm.pdf
+> + *
 > + * QEMU interface:
-> + *  + sysbus MMIO region 0: the system information register bank
+> + * + sysbus IRQ: SSPINTR combined interrupt line
+> + * + sysbus MMIO region 0: MemoryRegion for the device's registers
 > + */
 > +
-> +#ifndef HW_MISC_IOTKIT_SYSINFO_H
-> +#define HW_MISC_IOTKIT_SYSINFO_H
+> +#ifndef HW_SSI_PL022_H
+> +#define HW_SSI_PL022_H
 > +
 > +#include "hw/sysbus.h"
 > +
-> +#define TYPE_IOTKIT_SYSINFO "iotkit-sysinfo"
-> +#define IOTKIT_SYSINFO(obj) OBJECT_CHECK(IoTKitSysInfo, (obj), \
-> +                                        TYPE_IOTKIT_SYSINFO)
+> +#define TYPE_PL022 "pl022"
+> +#define PL022(obj) OBJECT_CHECK(PL022State, (obj), TYPE_PL022)
 > +
-> +typedef struct IoTKitSysInfo {
-> +    /*< private >*/
+> +typedef struct PL022State {
 > +    SysBusDevice parent_obj;
 > +
-> +    /*< public >*/
 > +    MemoryRegion iomem;
-> +} IoTKitSysInfo;
+> +    uint32_t cr0;
+> +    uint32_t cr1;
+> +    uint32_t bitmask;
+> +    uint32_t sr;
+> +    uint32_t cpsr;
+> +    uint32_t is;
+> +    uint32_t im;
+> +    /* The FIFO head points to the next empty entry.  */
+> +    int tx_fifo_head;
+> +    int rx_fifo_head;
+> +    int tx_fifo_len;
+> +    int rx_fifo_len;
+> +    uint16_t tx_fifo[8];
+> +    uint16_t rx_fifo[8];
+> +    qemu_irq irq;
+> +    SSIBus *ssi;
+> +} PL022State;
 > +
 > +#endif
-> diff --git a/hw/misc/iotkit-sysinfo.c b/hw/misc/iotkit-sysinfo.c
-> new file mode 100644
-> index 00000000000..78955bc45f5
-> --- /dev/null
-> +++ b/hw/misc/iotkit-sysinfo.c
-> @@ -0,0 +1,128 @@
-> +/*
-> + * ARM IoTKit system information block
-> + *
-> + * Copyright (c) 2018 Linaro Limited
-> + * Written by Peter Maydell
-> + *
-> + *  This program is free software; you can redistribute it and/or modify
-> + *  it under the terms of the GNU General Public License version 2 or
-> + *  (at your option) any later version.
-> + */
-> +
-> +/*
-> + * This is a model of the "system information block" which is part of the
-> + * Arm IoTKit and documented in
-> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
-> + * It consists of 2 read-only version/config registers, plus the
-> + * usual ID registers.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "trace.h"
-> +#include "qapi/error.h"
-> +#include "sysemu/sysemu.h"
-> +#include "hw/sysbus.h"
-> +#include "hw/registerfields.h"
-> +#include "hw/misc/iotkit-sysinfo.h"
-> +
-> +REG32(SYS_VERSION, 0x0)
-> +REG32(SYS_CONFIG, 0x4)
-> +REG32(PID4, 0xfd0)
-> +REG32(PID5, 0xfd4)
-> +REG32(PID6, 0xfd8)
-> +REG32(PID7, 0xfdc)
-> +REG32(PID0, 0xfe0)
-> +REG32(PID1, 0xfe4)
-> +REG32(PID2, 0xfe8)
-> +REG32(PID3, 0xfec)
-> +REG32(CID0, 0xff0)
-> +REG32(CID1, 0xff4)
-> +REG32(CID2, 0xff8)
-> +REG32(CID3, 0xffc)
-> +
-> +/* PID/CID values */
-> +static const int sysinfo_id[] = {
-> +    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-> +    0x58, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
-> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-> +};
-> +
-> +static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
-> +                                    unsigned size)
-> +{
-> +    uint64_t r;
-> +
-> +    switch (offset) {
-> +    case A_SYS_VERSION:
-> +        r = 0x41743;
-> +        break;
-> +
-> +    case A_SYS_CONFIG:
-> +        r = 0x31;
-> +        break;
-> +    case A_PID4 ... A_CID3:
-> +        r = sysinfo_id[(offset - A_PID4) / 4];
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "IoTKit SysInfo read: bad offset %x\n", (int)offset);
-> +        r = 0;
-> +        break;
-> +    }
-> +    trace_iotkit_sysinfo_read(offset, r, size);
-> +    return r;
-> +}
-> +
-> +static void iotkit_sysinfo_write(void *opaque, hwaddr offset,
-> +                                 uint64_t value, unsigned size)
-> +{
-> +    trace_iotkit_sysinfo_write(offset, value, size);
-> +
-> +    qemu_log_mask(LOG_GUEST_ERROR,
-> +                  "IoTKit SysInfo: write to RO offset 0x%x\n", (int)offset);
-> +}
-> +
-> +static const MemoryRegionOps iotkit_sysinfo_ops = {
-> +    .read = iotkit_sysinfo_read,
-> +    .write = iotkit_sysinfo_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    /* byte/halfword accesses are just zero-padded on reads and writes */
-> +    .impl.min_access_size = 4,
-> +    .impl.max_access_size = 4,
-> +    .valid.min_access_size = 1,
-> +    .valid.max_access_size = 4,
-> +};
-> +
-> +static void iotkit_sysinfo_init(Object *obj)
-> +{
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    IoTKitSysInfo *s = IOTKIT_SYSINFO(obj);
-> +
-> +    memory_region_init_io(&s->iomem, obj, &iotkit_sysinfo_ops,
-> +                          s, "iotkit-sysinfo", 0x1000);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +}
-> +
-> +static void iotkit_sysinfo_class_init(ObjectClass *klass, void *data)
-> +{
-> +    /*
-> +     * This device has no guest-modifiable state and so it
-> +     * does not need a reset function or VMState.
-> +     */
-> +}
-> +
-> +static const TypeInfo iotkit_sysinfo_info = {
-> +    .name = TYPE_IOTKIT_SYSINFO,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(IoTKitSysInfo),
-> +    .instance_init = iotkit_sysinfo_init,
-> +    .class_init = iotkit_sysinfo_class_init,
-> +};
-> +
-> +static void iotkit_sysinfo_register_types(void)
-> +{
-> +    type_register_static(&iotkit_sysinfo_info);
-> +}
-> +
-> +type_init(iotkit_sysinfo_register_types);
+> diff --git a/hw/ssi/pl022.c b/hw/ssi/pl022.c
+> index c1368018ee3..379d3093987 100644
+> --- a/hw/ssi/pl022.c
+> +++ b/hw/ssi/pl022.c
+> @@ -9,6 +9,7 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "hw/sysbus.h"
+> +#include "hw/ssi/pl022.h"
+>  #include "hw/ssi/ssi.h"
+>  #include "qemu/log.h"
+>  
+> @@ -41,31 +42,6 @@ do { fprintf(stderr, "pl022: error: " fmt , ## __VA_ARGS__);} while (0)
+>  #define PL022_INT_RX  0x04
+>  #define PL022_INT_TX  0x08
+>  
+> -#define TYPE_PL022 "pl022"
+> -#define PL022(obj) OBJECT_CHECK(PL022State, (obj), TYPE_PL022)
+> -
+> -typedef struct PL022State {
+> -    SysBusDevice parent_obj;
+> -
+> -    MemoryRegion iomem;
+> -    uint32_t cr0;
+> -    uint32_t cr1;
+> -    uint32_t bitmask;
+> -    uint32_t sr;
+> -    uint32_t cpsr;
+> -    uint32_t is;
+> -    uint32_t im;
+> -    /* The FIFO head points to the next empty entry.  */
+> -    int tx_fifo_head;
+> -    int rx_fifo_head;
+> -    int tx_fifo_len;
+> -    int rx_fifo_len;
+> -    uint16_t tx_fifo[8];
+> -    uint16_t rx_fifo[8];
+> -    qemu_irq irq;
+> -    SSIBus *ssi;
+> -} PL022State;
+> -
+>  static const unsigned char pl022_id[8] =
+>    { 0x22, 0x10, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1 };
+>  
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index ea35aa2cca5..cb780f463cb 100644
+> index b2f8b562dc5..1e81ad8d4b1 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -541,6 +541,8 @@ F: hw/arm/iotkit.c
->  F: include/hw/arm/iotkit.h
->  F: hw/misc/iotkit-sysctl.c
->  F: include/hw/misc/iotkit-sysctl.h
-> +F: hw/misc/iotkit-sysinfo.c
-> +F: include/hw/misc/iotkit-sysinfo.h
->  
->  Musicpal
->  M: Jan Kiszka <jan.kiszka@web.de>
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 79aac7702a9..ebbdcb29f38 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -115,6 +115,7 @@ CONFIG_TZ_PPC=y
->  CONFIG_IOTKIT=y
->  CONFIG_IOTKIT_SECCTL=y
->  CONFIG_IOTKIT_SYSCTL=y
-> +CONFIG_IOTKIT_SYSINFO=y
->  
->  CONFIG_VERSATILE=y
->  CONFIG_VERSATILE_PCI=y
+> @@ -451,6 +451,8 @@ F: hw/gpio/pl061.c
+>  F: hw/input/pl050.c
+>  F: hw/intc/pl190.c
+>  F: hw/sd/pl181.c
+> +F: hw/ssi/pl022.c
+> +F: include/hw/ssi/pl022.h
+>  F: hw/timer/pl031.c
+>  F: include/hw/arm/primecell.h
+>  F: hw/timer/cmsdk-apb-timer.c
 > 

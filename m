@@ -1,99 +1,99 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1561578wrd;
-        Mon, 20 Aug 2018 23:46:37 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPyvJlwi21tCQoP8hebwWs3aTtLC1u53CBjW7P9h1HowqS9OWt9mafktGJfpBsEmqfV0aE4O
-X-Received: by 2002:aed:3baf:: with SMTP id r44-v6mr16263458qte.77.1534833997101;
-        Mon, 20 Aug 2018 23:46:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534833997; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1561628wrd;
+        Mon, 20 Aug 2018 23:46:41 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPzVuY4Wlm5t+ogjDi5M+zsZMbAafCwXMyvS0pfku1wbtnCyvQPjQobcXH8yirn76BK74PjH
+X-Received: by 2002:ac8:390e:: with SMTP id s14-v6mr16800262qtb.363.1534834000965;
+        Mon, 20 Aug 2018 23:46:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534834000; cv=none;
         d=google.com; s=arc-20160816;
-        b=nr/Oa2fjWAs8XWjBmzXNwE+yZU0mWzEyz0U+d4JjG1fFbBzGMwtijOGoEJlvI6hOs/
-         ib70Qt3A4wTuMoMJ4j2fnCOnJOd+flyfIm+d5TvctLuVueF/IGEqO3Z7uT/Otjcehvp/
-         S0P3NJrr4EsGmTtjffFYd92HEs8pz8iqjoopLWMTJBDY/UJnUASCnY2vSyTvS93heCzs
-         EOmxcE4DCSAqMaI9m8UKRvXpp07+vynN7ZPRKFrWqqBtjNxK/Df4dXUNTOc58EH3o7bq
-         WeUESLEzma3/iQsMjsy3tQZf5Zm0f8KsK9qmtR6DpvG30/nDhTk7Bn++XWKt9Ll5DRCM
-         0Aww==
+        b=ooX21Tyfh8fVdp6UHmy0pdLXPPmrp2zX/pqBocpeCz35jrh5snldlF+ARPueQh3jU8
+         BgdgmmocD7UmQJrFtoE1VMQhr0lIHAU1HhzMdrorw1Ww7J6Ytg1YhDKR1JREEUl3BuTK
+         v0ycyNl6RNM/yxrcPKXZHwqwmqgCF5HrB7xm6ZG1HT1nbP6xlQztryzM5+S3xpYWCVwB
+         Tv/f/Gpak873mYIHdtVEaEDe0yF9lWCYDnFT8OLPAqJU2KCalUJAZTG41nj698IKhPYl
+         UhVxD6H3f97SgixnNTNzgSgWSAwydW7YWNgcJ7i94xE5KeD7te5EOq3PNRQZ/xX+Zipw
+         QJzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=ypr4mKDU3/aN/yfANvBNmaYC0Hhs6UR+ZNzhlTLz90M=;
-        b=kC/PJ+yLJpKoYrnChYDANpfkVxTX88QZcq+zXGJWVrKxfAxpW7N+IlWaSs+t9A4yVa
-         yx2V65zQlsRCphrRu8VAR+adkJh6mbcAynlOJClo5y4SZfC+z12ejPbalkbljPl1fLfG
-         /17WZI1tu6lsarZeOeuSoK4ypxbQmSba67LTK3PAZFYPFnzSl7TpmJlUCAamVFGi5+xr
-         eIUHdgIJfjdilkVfnbSfCYudY8lXo8RqTPZ57C4D7OMUSXtkKhJYSWWtldHcp+3E4wqe
-         aDHSiEtuajUwuQeO9RRplay6tCNzM37b7H7aqE/8uAfsYiOjhFldWztf4/lrhAh/xZ5v
-         R/hQ==
+        bh=398yp8gStmPSOAEwq2BGJsbk4ENAK9+knw6IjGc1Xvk=;
+        b=UJTCjtMJDwxxaLKz2ESAwVQoidEAbfDkPbu7pX9zNcp0doe1RHOAq3JRoJjbYDLhv9
+         bnizbRiU80I5Fl5ivzuCe4+VUuH+ii7bgWihPoxlJMFDTkE0rKZ4J/+AHKFCgIxizqzI
+         aTFRX3dYdAlUFYqzOI5jmSlKMhqCI4cRIqVlINAkns9QpjaPgaD2repmtWitBV0nmluv
+         zloOh66IR67KL9kCyD64xsz93auOVQnK48buXiSM14aSk5zQKjWWIBAu45tudonZj42Y
+         tfonVSBjksfWm7CtwbJKJakTEhBBARBjA/pcQCRat6YEIOZLxTXrGmsQX80cjKp4T0b3
+         LFzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jEAuY/yI";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RyVEOdhc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d63-v6si10140198qva.170.2018.08.20.23.46.36
+        by mx.google.com with ESMTPS id e23-v6si4362118qta.54.2018.08.20.23.46.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Aug 2018 23:46:37 -0700 (PDT)
+        Mon, 20 Aug 2018 23:46:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="jEAuY/yI";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RyVEOdhc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51092 helo=lists.gnu.org)
+Received: from localhost ([::1]:51094 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fs0R2-0005y1-F6
-	for alex.bennee@linaro.org; Tue, 21 Aug 2018 02:46:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55057)
+	id 1fs0R6-000611-BP
+	for alex.bennee@linaro.org; Tue, 21 Aug 2018 02:46:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56002)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0M1-0001sH-MT
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:41:26 -0400
+	id 1fs0QQ-0005zg-7K
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:45:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0Lx-0000yR-N6
-	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:41:25 -0400
-Received: from mail-vk0-x244.google.com ([2607:f8b0:400c:c05::244]:44420)
+	id 1fs0QM-0003Va-5G
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:45:58 -0400
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:37674)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0Lx-0000y7-Fw; Tue, 21 Aug 2018 02:41:21 -0400
-Received: by mail-vk0-x244.google.com with SMTP id 125-v6so7716694vke.11;
-	Mon, 20 Aug 2018 23:41:21 -0700 (PDT)
+	id 1fs0QL-0003VK-TL; Tue, 21 Aug 2018 02:45:54 -0400
+Received: by mail-ua1-x944.google.com with SMTP id y10-v6so11240745uao.4;
+	Mon, 20 Aug 2018 23:45:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ypr4mKDU3/aN/yfANvBNmaYC0Hhs6UR+ZNzhlTLz90M=;
-	b=jEAuY/yIm2rer2l7dkgkuZyhJM+C+dfMSidJY1fjV01L1GXT3zUGiin3kd5hXcN7Ho
-	Lx1oM4lDcD0MpJDnvAPtNTJlTLzDj8xIIWCLdawK1BPmK+K+/N1aZ30E6BnSX9ixYidN
-	uwlxAG5aR1NkhQmbmcOrgu1EqZ5rfJz7oh32+maZvcn795MHqqehvSygIF0xps4M4dq+
-	oWEF/wpGqwU+NikBiHdtnxE+p6UTYkrn0U18KnKE51E9L2gAjy/76JdnDrS0EycKn1Q3
-	DCU5V+NB94k83uFNTrgqwvZMG9g3aARr0c1z9MSkVLqmosDTRBIspMDHQ59zAX/GQoUf
-	Vxow==
+	bh=398yp8gStmPSOAEwq2BGJsbk4ENAK9+knw6IjGc1Xvk=;
+	b=RyVEOdhcyhfMzrQvRbipmibbx2IhJX82Md9V36RIM6Byrc6wO67MkWZF+iH9MHrw3x
+	ZyRL6spcHM8SqD7miZWLiWxf1aHQ5SQpUT4fphmtJj1QjHElGb3UFHF0k9FsF8pYe5HX
+	mc7mST55g2ZorvzkjZp8izKut8vdtBMiCtP19AQzyhtOStHIRWxDA1jQ+BIo2lu3/mSx
+	TRt8QUH3fuCbGZ4+3wybaLXGRqey/oWMKdwW/0B6idDEDMgbzTutDWdIoOd2C7x3EEHI
+	FLmxV37ZqZDEh6ScFlEv7DI2qFDT3qEE8OJMgNPC7+ayU+5DMon5DyzFM7gxMEDhPaR3
+	mUaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=ypr4mKDU3/aN/yfANvBNmaYC0Hhs6UR+ZNzhlTLz90M=;
-	b=qfLjtPKBUVzqYNprxRt5+5al4HpeasISk9OySZbyqghjqj+EIXg5Abb2KbJgIHzFuI
-	0EaUptX41H/oMq69q2j2N424YoiHj4yeUjVIunPn0guJBb4FH5Abar602QcAaXElJujM
-	LLa5UiOeKPZqoWkUuaZO2h6NPJDDBObcSE3qRGcLystNvaUIUUS+eZGfx8KQSg7mVwUL
-	eEbwJThP9HE1JRhwZ7Q0577AEMPYBIzDT/Vi0w3smVp1xUsHl8yDL9+GImEd3vllV5bm
-	YUm8YOTsflyYtyu1eT7d5spX0qEN1mpkrAcec8XbDqFvn/ViS8Z1nH9Gy/zB/5m7Xgfc
-	yqDQ==
-X-Gm-Message-State: AOUpUlHAuIiEt/uWDYkM84V/7WXXpt+KKml81VddS8mypNdVyaXcuq+4
-	lKrIHiE8KnHZOW+CZ9XfHH8=
-X-Received: by 2002:a1f:170d:: with SMTP id
-	13-v6mr31229876vkx.90.1534833680862; 
-	Mon, 20 Aug 2018 23:41:20 -0700 (PDT)
+	bh=398yp8gStmPSOAEwq2BGJsbk4ENAK9+knw6IjGc1Xvk=;
+	b=oQTNSEj/seEJwOcQ+yShQl0N8xihj81jE+tlTlmOSteFMZYgDCu2EB78Qnjkcxp5/E
+	bK37FHCVt4Av6ax7M2fgz4GD+69mP160xJGovo+2hlRAnbaGTz0s8S52o150o6L9z28B
+	a5WqKeiRhkOqE4IF1Qz5nXsCo0c4g8YBMgCzLJ95siEtZn0089g/R4L4T89aC4NG8dGJ
+	/6FONhG+GyS0+nKp0sBRHO6389HlYqzUHNf/BnV5W6NaZc5eUxOsRmYPIhEB0siW771c
+	hsC6brpor178mkEgOMYCxn8mxGOTxVflT7Ted6Fek4B+kkjyafbHvGHJdFCcc+020FdE
+	H5FQ==
+X-Gm-Message-State: AOUpUlHdmuo1SaVxj8KORpq60hwXYJ+t24mANHAfntiH0MOtxx8YO/uP
+	MQQfDV/FVIQT0Fpg7meV1o5aMirb
+X-Received: by 2002:a9f:3acc:: with SMTP id
+	q12-v6mr32171000uag.178.1534833953338; 
+	Mon, 20 Aug 2018 23:45:53 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	w25-v6sm516979uac.44.2018.08.20.23.41.18
+	k12-v6sm922818vkf.4.2018.08.20.23.45.51
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 Aug 2018 23:41:20 -0700 (PDT)
+	Mon, 20 Aug 2018 23:45:52 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180820141116.9118-1-peter.maydell@linaro.org>
-	<20180820141116.9118-5-peter.maydell@linaro.org>
+	<20180820141116.9118-10-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -120,19 +120,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <e518ca81-1453-b21f-808c-8ebae5ba76a4@amsat.org>
-Date: Tue, 21 Aug 2018 03:41:15 -0300
+Message-ID: <21a97256-d88e-fa9d-4d1e-154ce2ee3a61@amsat.org>
+Date: Tue, 21 Aug 2018 03:45:47 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180820141116.9118-5-peter.maydell@linaro.org>
+In-Reply-To: <20180820141116.9118-10-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400c:c05::244
-Subject: Re: [Qemu-devel] [PATCH 04/22] hw/arm/iotkit: Wire up the dualtimer
+X-Received-From: 2607:f8b0:4864:20::944
+Subject: Re: [Qemu-devel] [PATCH 09/22] hw/misc/iotkit-sysinfo: Implement
+ IoTKit system information block
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -147,71 +148,239 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: patches@linaro.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oBbknKTT2bb1
+X-TUID: nSLsZFlxexbZ
 
-On 08/20/2018 11:10 AM, Peter Maydell wrote:
-> Now we have a model of the CMSDK dual timer, we can wire it
-> up in the IoTKit.
+On 08/20/2018 11:11 AM, Peter Maydell wrote:
+> Implement the IoTKit system control element's system information
+> block; this is just a pair of read-only version/config registers,
+> plus the usual PID/CID ID registers.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  include/hw/arm/iotkit.h | 3 ++-
->  hw/arm/iotkit.c         | 8 +++++---
->  2 files changed, 7 insertions(+), 4 deletions(-)
+>  hw/misc/Makefile.objs            |   1 +
+>  include/hw/misc/iotkit-sysinfo.h |  37 +++++++++
+>  hw/misc/iotkit-sysinfo.c         | 128 +++++++++++++++++++++++++++++++
+>  MAINTAINERS                      |   2 +
+>  default-configs/arm-softmmu.mak  |   1 +
+>  5 files changed, 169 insertions(+)
+>  create mode 100644 include/hw/misc/iotkit-sysinfo.h
+>  create mode 100644 hw/misc/iotkit-sysinfo.c
 > 
-> diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
-> index 2cddde55dd1..3e6d806e352 100644
-> --- a/include/hw/arm/iotkit.h
-> +++ b/include/hw/arm/iotkit.h
-> @@ -56,6 +56,7 @@
->  #include "hw/misc/tz-ppc.h"
->  #include "hw/misc/tz-mpc.h"
->  #include "hw/timer/cmsdk-apb-timer.h"
-> +#include "hw/timer/cmsdk-apb-dualtimer.h"
->  #include "hw/misc/unimp.h"
->  #include "hw/or-irq.h"
->  #include "hw/core/split-irq.h"
-> @@ -87,7 +88,7 @@ typedef struct IoTKit {
->      SplitIRQ mpc_irq_splitter[IOTS_NUM_EXP_MPC + IOTS_NUM_MPC];
->      qemu_or_irq mpc_irq_orgate;
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index ac1f3bc030c..af2b503824e 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -67,6 +67,7 @@ obj-$(CONFIG_TZ_MPC) += tz-mpc.o
+>  obj-$(CONFIG_TZ_PPC) += tz-ppc.o
+>  obj-$(CONFIG_IOTKIT_SECCTL) += iotkit-secctl.o
+>  obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
+> +obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
 >  
-> -    UnimplementedDeviceState dualtimer;
-> +    CMSDKAPBDualTimer dualtimer;
->      UnimplementedDeviceState s32ktimer;
->  
->      MemoryRegion container;
-> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
-> index 8cadc8b1608..130d013909e 100644
-> --- a/hw/arm/iotkit.c
-> +++ b/hw/arm/iotkit.c
-> @@ -139,7 +139,7 @@ static void iotkit_init(Object *obj)
->      sysbus_init_child_obj(obj, "timer1", &s->timer1, sizeof(s->timer1),
->                            TYPE_CMSDK_APB_TIMER);
->      sysbus_init_child_obj(obj, "dualtimer", &s->dualtimer, sizeof(s->dualtimer),
-> -                          TYPE_UNIMPLEMENTED_DEVICE);
-> +                          TYPE_CMSDK_APB_DUALTIMER);
->      object_initialize_child(obj, "ppc-irq-orgate", &s->ppc_irq_orgate,
->                              sizeof(s->ppc_irq_orgate), TYPE_OR_IRQ,
->                              &error_abort, NULL);
-> @@ -390,13 +390,15 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
->          return;
->      }
->  
-> -    qdev_prop_set_string(DEVICE(&s->dualtimer), "name", "Dual timer");
-> -    qdev_prop_set_uint64(DEVICE(&s->dualtimer), "size", 0x1000);
+>  obj-$(CONFIG_PVPANIC) += pvpanic.o
+>  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+> diff --git a/include/hw/misc/iotkit-sysinfo.h b/include/hw/misc/iotkit-sysinfo.h
+> new file mode 100644
+> index 00000000000..7b2e1a5e48b
+> --- /dev/null
+> +++ b/include/hw/misc/iotkit-sysinfo.h
+> @@ -0,0 +1,37 @@
+> +/*
+> + * ARM IoTKit system information block
+> + *
+> + * Copyright (c) 2018 Linaro Limited
+> + * Written by Peter Maydell
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
 > +
-> +    qdev_prop_set_uint32(DEVICE(&s->dualtimer), "pclk-frq", s->mainclk_frq);
->      object_property_set_bool(OBJECT(&s->dualtimer), true, "realized", &err);
->      if (err) {
->          error_propagate(errp, err);
->          return;
->      }
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dualtimer), 0,
-> +                       qdev_get_gpio_in(DEVICE(&s->armv7m), 5));
->      mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
->      object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[2]", &err);
->      if (err) {
+> +/*
+> + * This is a model of the "system information block" which is part of the
+> + * Arm IoTKit and documented in
+> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> + * QEMU interface:
+> + *  + sysbus MMIO region 0: the system information register bank
+> + */
+> +
+> +#ifndef HW_MISC_IOTKIT_SYSINFO_H
+> +#define HW_MISC_IOTKIT_SYSINFO_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_IOTKIT_SYSINFO "iotkit-sysinfo"
+> +#define IOTKIT_SYSINFO(obj) OBJECT_CHECK(IoTKitSysInfo, (obj), \
+> +                                        TYPE_IOTKIT_SYSINFO)
+> +
+> +typedef struct IoTKitSysInfo {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    MemoryRegion iomem;
+> +} IoTKitSysInfo;
+> +
+> +#endif
+> diff --git a/hw/misc/iotkit-sysinfo.c b/hw/misc/iotkit-sysinfo.c
+> new file mode 100644
+> index 00000000000..78955bc45f5
+> --- /dev/null
+> +++ b/hw/misc/iotkit-sysinfo.c
+> @@ -0,0 +1,128 @@
+> +/*
+> + * ARM IoTKit system information block
+> + *
+> + * Copyright (c) 2018 Linaro Limited
+> + * Written by Peter Maydell
+> + *
+> + *  This program is free software; you can redistribute it and/or modify
+> + *  it under the terms of the GNU General Public License version 2 or
+> + *  (at your option) any later version.
+> + */
+> +
+> +/*
+> + * This is a model of the "system information block" which is part of the
+> + * Arm IoTKit and documented in
+> + * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ecm0601256/index.html
+> + * It consists of 2 read-only version/config registers, plus the
+> + * usual ID registers.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "trace.h"
+> +#include "qapi/error.h"
+> +#include "sysemu/sysemu.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/registerfields.h"
+> +#include "hw/misc/iotkit-sysinfo.h"
+> +
+> +REG32(SYS_VERSION, 0x0)
+> +REG32(SYS_CONFIG, 0x4)
+> +REG32(PID4, 0xfd0)
+> +REG32(PID5, 0xfd4)
+> +REG32(PID6, 0xfd8)
+> +REG32(PID7, 0xfdc)
+> +REG32(PID0, 0xfe0)
+> +REG32(PID1, 0xfe4)
+> +REG32(PID2, 0xfe8)
+> +REG32(PID3, 0xfec)
+> +REG32(CID0, 0xff0)
+> +REG32(CID1, 0xff4)
+> +REG32(CID2, 0xff8)
+> +REG32(CID3, 0xffc)
+> +
+> +/* PID/CID values */
+> +static const int sysinfo_id[] = {
+> +    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
+> +    0x58, 0xb8, 0x0b, 0x00, /* PID0..PID3 */
+> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+> +};
+> +
+> +static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
+> +                                    unsigned size)
+> +{
+> +    uint64_t r;
+> +
+> +    switch (offset) {
+> +    case A_SYS_VERSION:
+> +        r = 0x41743;
+> +        break;
+> +
+> +    case A_SYS_CONFIG:
+> +        r = 0x31;
+> +        break;
+> +    case A_PID4 ... A_CID3:
+> +        r = sysinfo_id[(offset - A_PID4) / 4];
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "IoTKit SysInfo read: bad offset %x\n", (int)offset);
+> +        r = 0;
+> +        break;
+> +    }
+> +    trace_iotkit_sysinfo_read(offset, r, size);
+> +    return r;
+> +}
+> +
+> +static void iotkit_sysinfo_write(void *opaque, hwaddr offset,
+> +                                 uint64_t value, unsigned size)
+> +{
+> +    trace_iotkit_sysinfo_write(offset, value, size);
+> +
+> +    qemu_log_mask(LOG_GUEST_ERROR,
+> +                  "IoTKit SysInfo: write to RO offset 0x%x\n", (int)offset);
+> +}
+> +
+> +static const MemoryRegionOps iotkit_sysinfo_ops = {
+> +    .read = iotkit_sysinfo_read,
+> +    .write = iotkit_sysinfo_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    /* byte/halfword accesses are just zero-padded on reads and writes */
+> +    .impl.min_access_size = 4,
+> +    .impl.max_access_size = 4,
+> +    .valid.min_access_size = 1,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void iotkit_sysinfo_init(Object *obj)
+> +{
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +    IoTKitSysInfo *s = IOTKIT_SYSINFO(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &iotkit_sysinfo_ops,
+> +                          s, "iotkit-sysinfo", 0x1000);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +}
+> +
+> +static void iotkit_sysinfo_class_init(ObjectClass *klass, void *data)
+> +{
+> +    /*
+> +     * This device has no guest-modifiable state and so it
+> +     * does not need a reset function or VMState.
+> +     */
+> +}
+> +
+> +static const TypeInfo iotkit_sysinfo_info = {
+> +    .name = TYPE_IOTKIT_SYSINFO,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(IoTKitSysInfo),
+> +    .instance_init = iotkit_sysinfo_init,
+> +    .class_init = iotkit_sysinfo_class_init,
+> +};
+> +
+> +static void iotkit_sysinfo_register_types(void)
+> +{
+> +    type_register_static(&iotkit_sysinfo_info);
+> +}
+> +
+> +type_init(iotkit_sysinfo_register_types);
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index ea35aa2cca5..cb780f463cb 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -541,6 +541,8 @@ F: hw/arm/iotkit.c
+>  F: include/hw/arm/iotkit.h
+>  F: hw/misc/iotkit-sysctl.c
+>  F: include/hw/misc/iotkit-sysctl.h
+> +F: hw/misc/iotkit-sysinfo.c
+> +F: include/hw/misc/iotkit-sysinfo.h
+>  
+>  Musicpal
+>  M: Jan Kiszka <jan.kiszka@web.de>
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 79aac7702a9..ebbdcb29f38 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -115,6 +115,7 @@ CONFIG_TZ_PPC=y
+>  CONFIG_IOTKIT=y
+>  CONFIG_IOTKIT_SECCTL=y
+>  CONFIG_IOTKIT_SYSCTL=y
+> +CONFIG_IOTKIT_SYSINFO=y
+>  
+>  CONFIG_VERSATILE=y
+>  CONFIG_VERSATILE_PCI=y
 > 

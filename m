@@ -1,99 +1,99 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1563673wrd;
-        Mon, 20 Aug 2018 23:49:35 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPwVciWDW7PtVxtPg1z4dvTSxQ0vdtaHz8E5xsMTTgXV1FeZT48wKeFgdRblJGku4Dsyn/PL
-X-Received: by 2002:ac8:4283:: with SMTP id o3-v6mr8959320qtl.28.1534834174935;
-        Mon, 20 Aug 2018 23:49:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534834174; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1565418wrd;
+        Mon, 20 Aug 2018 23:51:59 -0700 (PDT)
+X-Google-Smtp-Source: ANB0Vdbbne7EmGLsUynC0DXXWO4UhlNaDCAcEP39m8z7EGBYoYF+oRdFvhsUoKL8QwGBpeDa+u8/
+X-Received: by 2002:ae9:e414:: with SMTP id q20-v6mr7595100qkc.305.1534834319280;
+        Mon, 20 Aug 2018 23:51:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534834319; cv=none;
         d=google.com; s=arc-20160816;
-        b=egbtLforsUCsR2blob5IvswZkf+DV+wrd8Vgr36zKjYT7e8HIWZeYVZopzqMU2Crxz
-         BZfO8OpKtrng0R4/sr1eRjD1dBDOGy2UOhvYsmdV6vAczhh1olDu09aohPlvZ3vVFbwq
-         qfmmmJ3szvc5Rp0WQueKw7DXC4H6GQWou7tdh3Y39KY3zQWCiLged4n/5My09JvTwGKO
-         VFSI2lnZFdH4Lv5NixgDeNyodiao5UrbjXrff0aLfAkI9/N0v86Zfy3K42N+Na5+Xl3I
-         3TtUGSuPbYczlnmfO4dt0RIj5weu0megPPwyQ0ms/qK7cVjoAd2qiye0/E9ABJ/KY5Va
-         gTNQ==
+        b=rqYxByugFjVC6B7P7igWspn9YvCQGvOP7RXGFDmxbi4h+DKjlqK19XX9R9lg80JYb2
+         kdaKXhfksPMvb/OHA3q4QlGAaix5SW6tffSYVlSWS9VpZdkeGkfcjCMbF5qDIZXvOZc1
+         7PV+a+55FEXW/SzQMV5GtIPv28LGqGIabX0zAP8+A1hZtaFiGzdcITQZZmoaeZ0v5W5F
+         MRW7+cPiTSfFwGAJzfoLIJLjKmPcx2fnAQ3ZDNQq/NKodUN2+QTz0Mxw5IWw3UbwPjlq
+         KYzH00IDMJs7O/K/oFY8tu4ot9qdvYymxzh9jyuJSoxRayiCUiWf+N8dbFS/TzpWnTlj
+         4n4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature:arc-authentication-results;
-        bh=f6IrLvwR3PpNvnJw23pLEz8x77VZnKQ8bqy6L2CvTo8=;
-        b=cx6ShbgAD2zQF8/5YIDYdjdXE/y9E5/hRgsAvzvSu+rGOKXpaCSI5knut43aP3PvV2
-         xFNcXWx+RpWMdtxxRvPZDGR6x1tlSvAlsXCntA+e9AgV++8JK2wijVn/on6dA7XWPUtL
-         wOXJ0ELu72kLJ2D5OliaDXaC0DkEXqRq6e7Is/82zsBarRxjRB0zcYP4pYm7OOcE38An
-         vctJtVJCsPQXGH8r3GEClPDVPLUrdHC2XpOT31oJKXcGxxk6VWL28bDVSSgEnjpkO8QD
-         kPhfBr5bvw0xiJvuT47sCXiAXtfia8onWmcQNeQ5HMxp9IVzlHquQHPs++pimQhF3PvO
-         MkMw==
+        bh=F6fZQHgfROb02EZqbpC9nLsgyvwYOXLoqlot0twaLyw=;
+        b=EhFHQ+sPnkLxOL0EedCujb2sBLNTH/Q1VnVhjUO+/Rue+e5g4yk5w2KzvBR8u2OjKs
+         vWcF381zYLYIqKDw8u1C9i1Ennh9ZC9OQQkCZ4YfMno6ZHkkGRnPYnPDQDKeZmoPuklI
+         A9FbnUq2Q1jLYlgFjO/kerMAVRm/RBDAuo67mOKxmxCTHMkacwT87BrPdwitPV6G4n40
+         oTazTAJx72rsS84NqCHnCajd2XkXoglCMijY+zY5klTgVmqQvFePmeXyMB2HxjSfrxu3
+         4QrqdcolFLMkre6YXm7Z3X8RShutgV2bZ1DlVwckg0Sh+S9rNAVugxdQ0pmkv1tgZXmB
+         SWTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GtdPKpld;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tmZOE4Tf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h185-v6si10930344qkf.234.2018.08.20.23.49.34
+        by mx.google.com with ESMTPS id t66-v6si4179197qki.261.2018.08.20.23.51.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 Aug 2018 23:49:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 20 Aug 2018 23:51:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GtdPKpld;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51111 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tmZOE4Tf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51133 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fs0Tu-0000Ln-A3
-	for alex.bennee@linaro.org; Tue, 21 Aug 2018 02:49:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56759)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fs0WE-0002rf-Oj
+	for alex.bennee@linaro.org; Tue, 21 Aug 2018 02:51:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56370)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0TM-0000AZ-Uh
-	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 02:49:04 -0400
+	id 1fs0SE-0007MD-K2
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:47:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0TK-00055T-Kf
-	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 02:49:00 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:45933)
+	id 1fs0S9-0004RE-Ha
+	for qemu-devel@nongnu.org; Tue, 21 Aug 2018 02:47:50 -0400
+Received: from mail-vk0-x243.google.com ([2607:f8b0:400c:c05::243]:34695)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fs0TI-000543-Eu; Tue, 21 Aug 2018 02:48:56 -0400
-Received: by mail-ua1-x944.google.com with SMTP id k8-v6so11206940uaq.12;
-	Mon, 20 Aug 2018 23:48:56 -0700 (PDT)
+	id 1fs0S9-0004Pw-25; Tue, 21 Aug 2018 02:47:45 -0400
+Received: by mail-vk0-x243.google.com with SMTP id l143-v6so7718047vke.1;
+	Mon, 20 Aug 2018 23:47:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=f6IrLvwR3PpNvnJw23pLEz8x77VZnKQ8bqy6L2CvTo8=;
-	b=GtdPKpldE4YLBxjBoB/noL1Eap4xkZ0QnEXnHr77ceV/cPy6vipfoyjRhKEP8xtl3I
-	Pi4IkfBCrmP2TilVR2e5edNGUinb9a+yWIl+NOsyd3I/SCMnU/F4WgpWdJVPYI75J/9S
-	41b/HMvdEqb4zi40ARNCoGDjTCHNBL+6hVZYCvQkjsfJcSZq9qxs9tf7qQ0UOK5gYAgv
-	91FwdIwNpzPk24vkWxAUwBLgRvrPAkSFqqFH+IkfAQmux4/V5wBgdOCxafg/GfDacjQy
-	OAZ7w+nUYtH7DoM2BtHbSO1kZsHyDCBtQQJGv6/EcaI+HF4ntvdbKqfnZ4cw2RfGENsN
-	Y+eg==
+	bh=F6fZQHgfROb02EZqbpC9nLsgyvwYOXLoqlot0twaLyw=;
+	b=tmZOE4Tf6n+ZW1iss6Ns10cD3DC0dDzff31SXWu4PALEfthk3y/xeJWojfPXUuDU7D
+	NN5G2sZnz++o/GqmcrfOWUpM5x8MO/GZh28IWTiSkLRDU1IX3grExjIqZGHaQ9JDDKs6
+	ew6lZQl3d8596gv2zywT3D9kY2/i3+n2DgARyGl5TNsoI40z/+zXPzShgi1IV9f14Z9y
+	I0R7H7mtFzmDm1Nkmdhb+iWd1weAgTlRbLii+SkX0Bg+22qByZn3FC01cCM2uKtQUAKE
+	bolq3B5Z9k0Fy7C/YfUZbIEgn5SEi6sG49StCZ0QqsIzi/5Nqqk0qCBrYL1awQxKDLRN
+	T0YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=f6IrLvwR3PpNvnJw23pLEz8x77VZnKQ8bqy6L2CvTo8=;
-	b=mcQSCx5tEVPvWuoG0hq88/lz8/rSWZBZArMC1ZVmBMaycw4xuOEms+AfbzlHdb9vPN
-	HB20mw4aVNuSlmjq5KFRsL5yDDI4uSeeCmzKKnY0ThSDZJp/e/Y13FmpzRCAcGHhmmSa
-	OdRCpqsKENvx2Dyh7UupuUsDsaIWHH369eg/fyC49djusYn+ghXw3RZHaC7xbiadfq5C
-	r2vc789BQ9QKrFmNCB14Kf2iDmaunVBo4+ZsApM9aZh2ZhNNXzbvf7AZ9GEiiMYk+2d3
-	Z2fNMBIl5Ivw+68BhsQH1OQGjx+8jbNO7kj2rLWr4tT08fkoNDuBtRZkeHJXood84B3G
-	xf1g==
-X-Gm-Message-State: AOUpUlHkOs13Cos1SK2ePX7eNHZNmCjYdgh5Uu1e5B4rG3ByaY27Z89i
-	ip6PSxTaDoDI14plAIYh/PQ=
-X-Received: by 2002:ab0:3352:: with SMTP id
-	h18-v6mr21911395uap.10.1534834135876; 
-	Mon, 20 Aug 2018 23:48:55 -0700 (PDT)
+	bh=F6fZQHgfROb02EZqbpC9nLsgyvwYOXLoqlot0twaLyw=;
+	b=gcxMve9EloVCP3D0ttfucgb0yOZWygHw39WsADx/tcRv+UPitD+fIDKsKx8HIkDRdH
+	mNkRy8P38+uDUOaCUyrZhTCuQfvPJRncvkGaGTUG+dbETuQNd3mImuZllHA7UHCFOkYm
+	JDDUpd/gqgPl33Q0uE6UkE0yxjSYR79uJaYCFy9Fm9HZnsNRJ5HVlLRB9BRoPHZjrkKr
+	hyVZCQHEoE91uV0LnB+0jseWpiERsfy7DSiLD5o/3wAME6I2lq4aP58uQKc4THUVhDKu
+	sOm4rbFJyv6ChfZV6tkZiSsjBiWdNk3zRImTsumO/rmh/xaa3OKGGK7CrjsSLYTLxuaN
+	HbfQ==
+X-Gm-Message-State: AOUpUlGvU2EjNDYQuZBneimYohHAYjthyhitFaR776+QWxaPDXeoRwuV
+	NSsIzKjNUbjeAzZmR3G8KUQ=
+X-Received: by 2002:a1f:8948:: with SMTP id
+	l69-v6mr32418435vkd.132.1534834064517; 
+	Mon, 20 Aug 2018 23:47:44 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	k12-v6sm926920vkf.4.2018.08.20.23.48.54
+	l134-v6sm2276206vke.30.2018.08.20.23.47.42
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 Aug 2018 23:48:55 -0700 (PDT)
+	Mon, 20 Aug 2018 23:47:43 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180820141116.9118-1-peter.maydell@linaro.org>
-	<20180820141116.9118-16-peter.maydell@linaro.org>
+	<20180820141116.9118-11-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -120,167 +120,125 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	hHau4xrpzFENwF5UDFtMkleo/u5Ipv7q8wYNs5JBpSXGmm4oSV9BbW0gp28D8fY4GGv1+6Dz
 	BNDeuIdPf2NX0X55uyphpB0J4d70uNszAWXr7VqGOBbGrHcNHeT62BvoRd8bUQhaEyiJwOyC
 	Ny4YIWW+I8W2wXkW+vSrZfEro2GZjQ==
-Message-ID: <b5eaab49-ca93-37b9-a0e7-31ac60cace58@amsat.org>
-Date: Tue, 21 Aug 2018 03:48:52 -0300
+Message-ID: <c2e864a0-d4de-c238-b0ba-87b50e507b0f@amsat.org>
+Date: Tue, 21 Aug 2018 03:47:39 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180820141116.9118-16-peter.maydell@linaro.org>
+In-Reply-To: <20180820141116.9118-11-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::944
-Subject: Re: [Qemu-arm] [PATCH 15/22] hw/ssi/pl022: Allow use as
- embedded-struct device
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:400c:c05::243
+Subject: Re: [Qemu-devel] [PATCH 10/22] hw/misc/iotkit: Wire up the sysctl
+ and sysinfo register blocks
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dIWlv1vz/2cj
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 91xCV27eWYC5
 
 On 08/20/2018 11:11 AM, Peter Maydell wrote:
-> Create a new include file for the pl022's device struct,
-> type macros, etc, so that it can be instantiated using
-> the "embedded struct" coding style.
+> Wire up the system control element's register banks
+> (sysctl and sysinfo).
 > 
-> While we're adding the new file to MAINTAINERS, add
-> also the .c file, which was missing an entry.
+> This is the last of the previously completely unimplemented
+> components in the IoTKit.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  include/hw/ssi/pl022.h | 51 ++++++++++++++++++++++++++++++++++++++++++
->  hw/ssi/pl022.c         | 26 +--------------------
->  MAINTAINERS            |  2 ++
->  3 files changed, 54 insertions(+), 25 deletions(-)
->  create mode 100644 include/hw/ssi/pl022.h
+>  include/hw/arm/iotkit.h |  6 +++++-
+>  hw/arm/iotkit.c         | 26 ++++++++++++++++++--------
+>  2 files changed, 23 insertions(+), 9 deletions(-)
 > 
-> diff --git a/include/hw/ssi/pl022.h b/include/hw/ssi/pl022.h
-> new file mode 100644
-> index 00000000000..a080519366d
-> --- /dev/null
-> +++ b/include/hw/ssi/pl022.h
-> @@ -0,0 +1,51 @@
-> +/*
-> + * ARM PrimeCell PL022 Synchronous Serial Port
-> + *
-> + * Copyright (c) 2007 CodeSourcery.
-> + * Written by Paul Brook
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 or
-> + * (at your option) any later version.
-> + */
-> +
-> +/* This is a model of the Arm PrimeCell PL022 synchronous serial port.
-> + * The PL022 TRM is:
-> + * http://infocenter.arm.com/help/topic/com.arm.doc.ddi0194h/DDI0194H_ssp_pl022_trm.pdf
-> + *
-> + * QEMU interface:
-> + * + sysbus IRQ: SSPINTR combined interrupt line
-> + * + sysbus MMIO region 0: MemoryRegion for the device's registers
-> + */
-> +
-> +#ifndef HW_SSI_PL022_H
-> +#define HW_SSI_PL022_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_PL022 "pl022"
-> +#define PL022(obj) OBJECT_CHECK(PL022State, (obj), TYPE_PL022)
-> +
-> +typedef struct PL022State {
-> +    SysBusDevice parent_obj;
-> +
-> +    MemoryRegion iomem;
-> +    uint32_t cr0;
-> +    uint32_t cr1;
-> +    uint32_t bitmask;
-> +    uint32_t sr;
-> +    uint32_t cpsr;
-> +    uint32_t is;
-> +    uint32_t im;
-> +    /* The FIFO head points to the next empty entry.  */
-> +    int tx_fifo_head;
-> +    int rx_fifo_head;
-> +    int tx_fifo_len;
-> +    int rx_fifo_len;
-> +    uint16_t tx_fifo[8];
-> +    uint16_t rx_fifo[8];
-> +    qemu_irq irq;
-> +    SSIBus *ssi;
-> +} PL022State;
-> +
-> +#endif
-> diff --git a/hw/ssi/pl022.c b/hw/ssi/pl022.c
-> index c1368018ee3..379d3093987 100644
-> --- a/hw/ssi/pl022.c
-> +++ b/hw/ssi/pl022.c
-> @@ -9,6 +9,7 @@
+> diff --git a/include/hw/arm/iotkit.h b/include/hw/arm/iotkit.h
+> index 0f5c5101708..426dc326a0d 100644
+> --- a/include/hw/arm/iotkit.h
+> +++ b/include/hw/arm/iotkit.h
+> @@ -58,7 +58,8 @@
+>  #include "hw/timer/cmsdk-apb-timer.h"
+>  #include "hw/timer/cmsdk-apb-dualtimer.h"
+>  #include "hw/watchdog/cmsdk-apb-watchdog.h"
+> -#include "hw/misc/unimp.h"
+> +#include "hw/misc/iotkit-sysctl.h"
+> +#include "hw/misc/iotkit-sysinfo.h"
+>  #include "hw/or-irq.h"
+>  #include "hw/core/split-irq.h"
 >  
->  #include "qemu/osdep.h"
+> @@ -97,6 +98,9 @@ typedef struct IoTKit {
+>      CMSDKAPBWatchdog nswatchdog;
+>      CMSDKAPBWatchdog swatchdog;
+>  
+> +    IoTKitSysCtl sysctl;
+> +    IoTKitSysCtl sysinfo;
+> +
+>      MemoryRegion container;
+>      MemoryRegion alias1;
+>      MemoryRegion alias2;
+> diff --git a/hw/arm/iotkit.c b/hw/arm/iotkit.c
+> index cb0ec456f39..f8276b5425c 100644
+> --- a/hw/arm/iotkit.c
+> +++ b/hw/arm/iotkit.c
+> @@ -16,7 +16,6 @@
 >  #include "hw/sysbus.h"
-> +#include "hw/ssi/pl022.h"
->  #include "hw/ssi/ssi.h"
->  #include "qemu/log.h"
+>  #include "hw/registerfields.h"
+>  #include "hw/arm/iotkit.h"
+> -#include "hw/misc/unimp.h"
+>  #include "hw/arm/arm.h"
 >  
-> @@ -41,31 +42,6 @@ do { fprintf(stderr, "pl022: error: " fmt , ## __VA_ARGS__);} while (0)
->  #define PL022_INT_RX  0x04
->  #define PL022_INT_TX  0x08
+>  /* Clock frequency in HZ of the 32KHz "slow clock" */
+> @@ -151,6 +150,10 @@ static void iotkit_init(Object *obj)
+>                            sizeof(s->nswatchdog), TYPE_CMSDK_APB_WATCHDOG);
+>      sysbus_init_child_obj(obj, "swatchdog", &s->swatchdog,
+>                            sizeof(s->swatchdog), TYPE_CMSDK_APB_WATCHDOG);
+> +    sysbus_init_child_obj(obj, "iotkit-sysctl", &s->sysctl,
+> +                          sizeof(s->sysctl), TYPE_IOTKIT_SYSCTL);
+> +    sysbus_init_child_obj(obj, "iotkit-sysinfo", &s->sysinfo,
+> +                          sizeof(s->sysinfo), TYPE_IOTKIT_SYSINFO);
+>      object_initialize_child(obj, "nmi-orgate", &s->nmi_orgate,
+>                              sizeof(s->nmi_orgate), TYPE_OR_IRQ,
+>                              &error_abort, NULL);
+> @@ -516,13 +519,20 @@ static void iotkit_realize(DeviceState *dev, Error **errp)
+>                            qdev_get_gpio_in_named(dev_apb_ppc1,
+>                                                   "cfg_sec_resp", 0));
 >  
-> -#define TYPE_PL022 "pl022"
-> -#define PL022(obj) OBJECT_CHECK(PL022State, (obj), TYPE_PL022)
+> -    /* Using create_unimplemented_device() maps the stub into the
+> -     * system address space rather than into our container, but the
+> -     * overall effect to the guest is the same.
+> -     */
+> -    create_unimplemented_device("SYSINFO", 0x40020000, 0x1000);
 > -
-> -typedef struct PL022State {
-> -    SysBusDevice parent_obj;
-> -
-> -    MemoryRegion iomem;
-> -    uint32_t cr0;
-> -    uint32_t cr1;
-> -    uint32_t bitmask;
-> -    uint32_t sr;
-> -    uint32_t cpsr;
-> -    uint32_t is;
-> -    uint32_t im;
-> -    /* The FIFO head points to the next empty entry.  */
-> -    int tx_fifo_head;
-> -    int rx_fifo_head;
-> -    int tx_fifo_len;
-> -    int rx_fifo_len;
-> -    uint16_t tx_fifo[8];
-> -    uint16_t rx_fifo[8];
-> -    qemu_irq irq;
-> -    SSIBus *ssi;
-> -} PL022State;
-> -
->  static const unsigned char pl022_id[8] =
->    { 0x22, 0x10, 0x04, 0x00, 0x0d, 0xf0, 0x05, 0xb1 };
+> -    create_unimplemented_device("SYSCONTROL", 0x50021000, 0x1000);
+> +    object_property_set_bool(OBJECT(&s->sysinfo), true, "realized", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    /* System information registers */
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysinfo), 0, 0x40020000);
+> +    /* System control registers */
+> +    object_property_set_bool(OBJECT(&s->sysctl), true, "realized", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctl), 0, 0x50021000);
 >  
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index b2f8b562dc5..1e81ad8d4b1 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -451,6 +451,8 @@ F: hw/gpio/pl061.c
->  F: hw/input/pl050.c
->  F: hw/intc/pl190.c
->  F: hw/sd/pl181.c
-> +F: hw/ssi/pl022.c
-> +F: include/hw/ssi/pl022.h
->  F: hw/timer/pl031.c
->  F: include/hw/arm/primecell.h
->  F: hw/timer/cmsdk-apb-timer.c
+>      /* This OR gate wires together outputs from the secure watchdogs to NMI */
+>      object_property_set_int(OBJECT(&s->nmi_orgate), 2, "num-lines", &err);
 > 

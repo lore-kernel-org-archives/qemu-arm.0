@@ -1,71 +1,70 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1947059wrd;
-        Tue, 21 Aug 2018 06:59:11 -0700 (PDT)
-X-Google-Smtp-Source: ANB0Vdb0nHH68/nbBrrNxCwW1c/3yIzLmAbN/fIF/SSoih193Mw2NWFS6v7T64ghetyWmNyPFn6c
-X-Received: by 2002:ac8:372b:: with SMTP id o40-v6mr18666731qtb.340.1534859950921;
-        Tue, 21 Aug 2018 06:59:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534859950; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1948793wrd;
+        Tue, 21 Aug 2018 07:00:44 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPwh0VJumTvRSebVTydrFQ7oT2zezBCK9yxkJMyMqMvs6LN+Q9FxxpIVen1bX5jvA9GbyDa7
+X-Received: by 2002:a37:5d84:: with SMTP id r126-v6mr45842348qkb.155.1534860044358;
+        Tue, 21 Aug 2018 07:00:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534860044; cv=none;
         d=google.com; s=arc-20160816;
-        b=kpB5FqK6pfzirNsEZmR15uOcCEPgH5/z+HCzcLqBQmiaZGK3FUfYQxOQQy4hUYGmH9
-         7XvXbBMAzjTuAo/4ojdeDt2K+2r6FVWtS4EVsH/ED5zu3v68SpwoSJ8TBsPXVfur1sGM
-         qMh5CdpzYkLnbEbQVWWmq3pVHAAA6XA+buW6+G61KoS77UEAkJUHyuMN2mN6Y6yzGAbe
-         JjrWZ/CsMFY5WJIFbUOzzOs8gRIJEIeBLywz2xbd2LGu/dR4W9LQKqqFzyC3C9Wpovvh
-         81ENfgRwE9ufppo7hgb6/Ir1ozgi7oplLceRz8V6K5np82b0jY+SuX3EXLt9KFQDSX4k
-         3Pvw==
+        b=KJunXmB/mI0CNiZz6U/YxgShkBZugJpgPAensRv051ESWT281TS8TOzrbhXaOEXtOp
+         syfaR7jXxwqD1AmFJ0is1tcrAo3d3y1u7UOsS/H+SpXbqn6il6lOZosgCg+r5Z9WjNXC
+         0FOkQfdvpcSiOQxCiodNXqdd4Z3YEqzF1gow61kt1qDtiLfhw/WTZMg5nJsg483MLzuU
+         Xn2tVjED14gg74vzc+l2oLkNXfLmhzFDBLu+V/vEgeYbMwbUtP9nVbRyvSBR9cHjtn/m
+         PRfWKyNXRkWPScRSVx7j1kq2s9DtzoSRnKqM1QgtogCGR9i4Y/COpNeWVBwlYXCeD/Hb
+         zd1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=6ohuFjfTm/dodZ7BP1e9FGOlsv5qZUBFw/E/rAbRysQ=;
-        b=N3eVDhiDMjUOieCfPUlKTBSGynvz9xHpvUQskV1LA8P+sz9gwC+g6Q4R9eeK2ssZdC
-         XlvgTL7WSSkiiR5vRDT3Dzsct5q29eti9TzqbmMlwBOpMC33pUReEzttGg750gTnh8y+
-         nrm6SkCegXAviWwrde9+hWg+4rJgZDkAKBsWeJhjkxqOz6LDbWsb29HbMM2dtLbBFoj0
-         w9wKiIJAhtdfgZnJPc9CtDZZceIGvO1i8dN0JG172Bj2yX6q2nYNP8Z37exZYnPii1K7
-         rgBrHmR7skor/6jjU2vyQLglTnp0xpFinT+NToe0LyERMSjNAZJUGgVKyooK2Ag7uk47
-         qYUg==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=+McuawqOn8ydeCFe1IdY2COARGnE/SwZjvgxx1OVsRE=;
+        b=A3XoIG+jOCmR54SEzWop3RAyvJwpE7NQDIIQeGRxVMHGstE4ZyZhje2mPgelITwdt2
+         +PxW5IYsN9HXUdL2sWn7lybKiU62z7MGWsTkpLfc3Wn10C8jgj+epgjxGEyrxOhH6pnc
+         9MsU6Yf93GlNUt4fulFrkR5gxUAqsrzi6tN/2p3WN8Tw4MY8HhQvFbnwfyxfQPafOFUQ
+         qIBmwh47R8GlQU2vpn1OpZ5KKaGWnvsOEiOHUFFoyBghCJOm84n4hegwVojBU9DLOc7Q
+         vfrF0iv43o0YYSILhEFFxSOc3c//v7qBgjnKYEryVvdmZLgFrDUMxjMDO/GSwrbQnYhW
+         Ldig==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s6-v6si2842837qks.3.2018.08.21.06.59.10
+        by mx.google.com with ESMTPS id c66-v6si2404207qkb.392.2018.08.21.07.00.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 21 Aug 2018 06:59:10 -0700 (PDT)
+        Tue, 21 Aug 2018 07:00:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53750 helo=lists.gnu.org)
+Received: from localhost ([::1]:53767 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fs7Be-00005o-Cb
-	for alex.bennee@linaro.org; Tue, 21 Aug 2018 09:59:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60548)
+	id 1fs7D9-0002VR-PC
+	for alex.bennee@linaro.org; Tue, 21 Aug 2018 10:00:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60299)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fs6i6-00063A-JS
-	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 09:28:39 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fs6ht-0005oq-PT
+	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 09:28:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fs6i3-0003rw-V3
-	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 09:28:38 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fs6hs-0003XT-Eg
+	for qemu-arm@nongnu.org; Tue, 21 Aug 2018 09:28:25 -0400
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44756)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fs6i3-0003S5-Nb; Tue, 21 Aug 2018 09:28:35 -0400
+	id 1fs6hs-0003S5-5T; Tue, 21 Aug 2018 09:28:24 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1fs6hj-000492-F9; Tue, 21 Aug 2018 14:28:15 +0100
+	id 1fs6hi-00048p-H7; Tue, 21 Aug 2018 14:28:14 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 21 Aug 2018 14:28:03 +0100
-Message-Id: <20180821132811.17675-2-peter.maydell@linaro.org>
+Date: Tue, 21 Aug 2018 14:28:02 +0100
+Message-Id: <20180821132811.17675-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20180821132811.17675-1-peter.maydell@linaro.org>
-References: <20180821132811.17675-1-peter.maydell@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 1/9] hw/intc/arm_gic: Document QEMU interface
+Subject: [Qemu-arm] [PATCH 0/9] arm: Wire up GICv2 virt support on A15/A7
+ boards
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,67 +79,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Luc Michel <luc.michel@greensocs.com>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iD1uqcZ40GB5
+X-TUID: O49DHHcy3Y2q
 
-The GICv2's QEMU interface (sysbus MMIO regions, IRQs,
-etc) is now quite complicated with the addition of the
-virtualization extensions. Add a comment in the header
-file which documents it.
+This patchset wires up the GICv2 virtualization support
+on all our Cortex-A15 and Cortex-A7 boards.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I needed to write this out to figure out what I was
-connecting to what in the a15mpcore object :-)
----
- include/hw/intc/arm_gic.h | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+These boards fall into various categories:
+ * virt: already done in master
+ * highbank, imx6, imx7: the CPU is configured to always
+   have EL3, so we unconditionally allow EL2 to be enabled too
+   and just need to wire up the GIC VIRQ/VFIQ lines
+ * raspi2: has a non-standard interrupt controller, not a GIC,
+   so we enable EL2 but there's no wiring to be done
+ * vexpress-a15: is configurable to have EL3 or not; we add
+   extra configuration so the user can add EL2 or not, using
+   a machine property "virtualization", paralleling the
+   existing "secure" property.
 
-diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
-index 42bb535fd45..989bc837606 100644
---- a/include/hw/intc/arm_gic.h
-+++ b/include/hw/intc/arm_gic.h
-@@ -18,6 +18,41 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
-+/*
-+ * QEMU interface:
-+ *  + QOM property "num-cpu": number of CPUs to support
-+ *  + QOM property "num-irq": number of IRQs (including both SPIs and PPIs)
-+ *  + QOM property "revision": GIC version (1 or 2), or 0 for the 11MPCore GIC
-+ *  + QOM property "has-security-extensions": set true if the GIC should
-+ *    implement the security extensions
-+ *  + QOM property "has-virtualization-extensions": set true if the GIC should
-+ *    implement the virtualization extensions
-+ *  + unnamed GPIO inputs: (where P is number of PPIs, i.e. num-irq - 32)
-+ *    [0..P-1]  SPIs
-+ *    [P..P+31] PPIs for CPU 0
-+ *    [P+32..P+63] PPIs for CPU 1
-+ *    ...
-+ *  + sysbus IRQ 0 : IRQ
-+ *  + sysbus IRQ 1 : FIQ
-+ *  + sysbus IRQ 2 : VIRQ (exists even if virt extensions not present)
-+ *  + sysbus IRQ 3 : VFIQ (exists even if virt extensions not present)
-+ *  + sysbus IRQ 4 : maintenance IRQ for CPU i/f 0 (only if virt extns present)
-+ *  + sysbus IRQ 5 : maintenance IRQ for CPU i/f 1 (only if virt extns present)
-+ *    ...
-+ *  + sysbus MMIO regions: (in order; numbers will vary depending on
-+ *    whether virtualization extensions are present and on number of cores)
-+ *    - distributor registers (GICD*)
-+ *    - CPU interface for the accessing core (GICC*)
-+ *    - virtual interface control registers (GICH*) (only if virt extns present)
-+ *    - virtual CPU interface for the accessing core (GICV*) (only if virt)
-+ *    - CPU 0 CPU interface registers
-+ *    - CPU 1 CPU interface registers
-+ *      ...
-+ *    - CPU 0 VCPU interface registers (only if virt extns present)
-+ *    - CPU 1 VCPU interface registers (only if virt extns present)
-+ *      ...
-+ */
-+
- #ifndef HW_ARM_GIC_H
- #define HW_ARM_GIC_H
- 
+In all cases, most of the handling of mapping extra register
+ranges into the address space and wiring up the maintenance
+irq is dealt with by the a15mpcore container object.
+
+Adding EL2 support has the potential to confuse older guests,
+because it will mean that we'll boot into Hyp mode by default
+if we're booting the kernel non-secure. But the Linux kernel
+booting specification has required that for a long time now.
+
+I had to fix one issue with an oversized memory region in
+the GIC; there's also a documentation-comment patch in there
+which records some stuff I had to figure out in trying to
+map the right memory regions in the right places.
+
+None of this code actually does anything (except provide a
+property that doesn't do anything on vexpress-a15) until we
+actually set the ARM_FEATURE_EL2 bit for A15 and A7.
+
+thanks
+-- PMM
+
+
+Peter Maydell (9):
+  hw/intc/arm_gic: Document QEMU interface
+  hw/intc/arm_gic: Make per-cpu GICH memory regions 0x200 bytes large
+  hw/arm/vexpress: Connect VIRQ and VFIQ
+  hw/arm/highbank: Connect VIRQ and VFIQ
+  hw/arm/fsl-imx6ul: Connect VIRQ and VFIQ
+  hw/arm/fsl-imx6ul: Connect VIRQ and VFIQ
+  hw/cpu/a15mpcore: If CPU has EL2, enable it on the GIC and wire it up
+  hw/arm/vexpress: Don't set info->secure_boot if CPU doesn't have EL3
+  hw/arm/vexpress: Add "virtualization" property controlling presence of
+    EL2
+
+ include/hw/intc/arm_gic.h | 35 +++++++++++++++++++++
+ hw/arm/fsl-imx6ul.c       |  4 +++
+ hw/arm/fsl-imx7.c         |  4 +++
+ hw/arm/highbank.c         |  6 ++++
+ hw/arm/vexpress.c         | 64 ++++++++++++++++++++++++++++++++++++---
+ hw/cpu/a15mpcore.c        | 31 +++++++++++++++++--
+ hw/intc/arm_gic.c         |  2 +-
+ 7 files changed, 137 insertions(+), 9 deletions(-)
+
 -- 
 2.18.0
 

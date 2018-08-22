@@ -1,106 +1,106 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2828210wrd;
-        Wed, 22 Aug 2018 01:28:59 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzETBHTI5v0FFf7ZzuH3z87SvVB5vJLxHJCCMHZxymjZJKZgyi9qxT8AkjJz0GQtswUGenq
-X-Received: by 2002:a37:9306:: with SMTP id v6-v6mr48922429qkd.36.1534926539116;
-        Wed, 22 Aug 2018 01:28:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534926539; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2828802wrd;
+        Wed, 22 Aug 2018 01:29:50 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPznE5j1h/+e9+cn5C9HDJNzaUCyY3SY+4mScuurMbzePB3MOV7thfx5d4HYklQfN+nUyAPn
+X-Received: by 2002:a0c:cdd1:: with SMTP id a17-v6mr48842284qvn.166.1534926590630;
+        Wed, 22 Aug 2018 01:29:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534926590; cv=none;
         d=google.com; s=arc-20160816;
-        b=0oLVteBqnDEiqk341LE9DPDYYN46DEUCbN9NvyuS3P8G6yLYs8ARND1N13a2rUccXo
-         bXpXUQFRIF/JwYetUMKGV/6d5ADfpbkDZBvtbwcGeppvGfHX6E1Y7TwuEFCLOGt3clUo
-         aCwJuR/oZkHNgSk/XTTMINa61v3StgAKb497v9xSAb3dunosIVrxf0tGx8iLM93U51En
-         92+2utSLNa/8ihTvbapMmctpTLWBpsvc7NbsxHx9Bm3/g5eVh4+3nCZ3LfShZ6v56Rly
-         vGPOg6kTCbshiENTR3GL8ZOXA8CIxnsjEsRhrdbGj1DxU7tfDHJZkqecCg6Iav6JC58N
-         QcQQ==
+        b=xOjLe4QbCVmslfci4oI1VRSju/0dkxAvP7+xUMcWuN1Grl6AwY8S7JUy2w2NwbG7PL
+         VwLBXYg+nhXtzjqLhwSbZ7YvUhe9ykWiAvpxDfycLVXxpHCydvvqaJ42OBQJialv0I1Z
+         1nmn5OddJqGIcLg2k7fwFHQLVltN5RNvLjMiSieOii4Z+DNRiEsg4FhdSZt/TKIir0LR
+         lvnNiaD8kkSW5jkbgXmvAD32fQjz2VRxh1kPH9mxBDcvQVmn9Vhe5Sx75ByXdNEQiZc4
+         DxRwRXCDFLU+vmZTL53qFMYy3QuNuIV54/z9uY3D/bywr4te+QW3NslTvLqGvByfpJ8k
+         wulA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:in-reply-to
          :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
          :references:to:dkim-signature:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=iRNt/ocFxX03ww9NTxsbkRfpMnzwcjNIkc4hnxCw1Vw=;
-        b=BVSJAm3TbUIEvlxVH8xwJUUiW+xlg0JHo8otAGIu+OqU/z5e+errDLLbvBfUTkn+XT
-         SruRPmOOXFZ/hi9UdVnJx2K70y/jfAyVRqhw1M626+PHrFL/DSj1JNQM/5NOFhZ2wdMZ
-         O+51vzb7MUhhXL89CSBJwM4r7s534u7o5ZgfqZYz3J6k9oRT/uUt7AKwVasJ2sTkEZUO
-         JAgIMsqj2RCV6tgrx5orPhIgIHrq4S5nqDGZd/rMbPQvWPqQYxoGmA3MXeddSWwPh3p3
-         i9VBMN+E+mnyMblq5i3W8EnrYSap84ZMg7rEPtgGWbvZQSppQA7H7AVyBs/jbUFPGuEr
-         tufw==
+        bh=V8tXGXsHN2Qk7zd/XOgwPbIF27Z3QWByQyB8pl2oYQc=;
+        b=a8ZRI+9SlcvzhbH7aiE3QhZGgTP2V5CYJkZ2/aLKdoVKcfcmdiEHMGgkQ9JKkuhjPZ
+         lrUw3OR5xOM5/PmvPIsYA6JkuX47pT9EBd1AAPG9x1yxAUVtH1sgpGWOiD6uqqbAn5O9
+         foQfV6FzaQbLYuiBWi/Z0BqS7QpylWYbIKLynxyRqUVPEcif6CCmHp6VogmuLrGkRiQF
+         1wgnwFRQiX+xb+opcHme2x0qRSnLKpsWFvbDHZn5VFg0Td4O1Z5GIDgVRA1o7BmBWaj/
+         qQhhzgwB86hKTQC7sQczKB4yghc6e0qaagUi6w43uTZ2HMc7YWU0x/fRTf78yhM7tzY7
+         648g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="R/YoSZxL";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="SUCAs/7C";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="SUCAs/7C";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=AqTEBTf6;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=l5GaMQdn;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=l5GaMQdn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g2-v6si1039073qvn.38.2018.08.22.01.28.58
+        by mx.google.com with ESMTPS id r76-v6si1086325qkl.279.2018.08.22.01.29.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Aug 2018 01:28:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 22 Aug 2018 01:29:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="R/YoSZxL";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="SUCAs/7C";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="SUCAs/7C";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57537 helo=lists.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=AqTEBTf6;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=l5GaMQdn;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=l5GaMQdn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57543 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fsOVd-0008An-El
-	for alex.bennee@linaro.org; Wed, 22 Aug 2018 04:28:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41690)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fsOWU-0000w4-3v
+	for alex.bennee@linaro.org; Wed, 22 Aug 2018 04:29:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41836)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fsOTM-0006vE-4t
-	for qemu-devel@nongnu.org; Wed, 22 Aug 2018 04:26:36 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fsOTm-0007Kl-Uc
+	for qemu-arm@nongnu.org; Wed, 22 Aug 2018 04:27:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fsOTK-0001wv-He
-	for qemu-devel@nongnu.org; Wed, 22 Aug 2018 04:26:35 -0400
-Received: from greensocs.com ([193.104.36.180]:40800)
+	(envelope-from <luc.michel@greensocs.com>) id 1fsOTh-00028I-2C
+	for qemu-arm@nongnu.org; Wed, 22 Aug 2018 04:27:00 -0400
+Received: from greensocs.com ([193.104.36.180]:40915)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fsOTE-0001u5-TN; Wed, 22 Aug 2018 04:26:29 -0400
+	id 1fsOTc-00023H-46; Wed, 22 Aug 2018 04:26:53 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 2AC8DDFFF5;
-	Wed, 22 Aug 2018 10:26:22 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 9A75E23874C;
+	Wed, 22 Aug 2018 10:26:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534926382;
-	bh=F3Tdehj8jC1FOGR2p5sHAOIx+di5dzO+QaoB/lTElqE=;
+	s=mail; t=1534926406;
+	bh=XLih+JLxfTOKiqf9WbknjaZHNoKZLQIoaicViX3MXY8=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=R/YoSZxLvOgOUCiiDEUMtpdrMCqlOPXCat+51qzm1T7swsoY6lO4m3q9ShHuzTnIX
-	ui992mc9J5KnmckrZKfAnA52e7OQITcZXFCatuP9XEx2/XaL79CPZCDk041kxb2Zak
-	lt0YZ0XaDEgVu72TH2J/RZQnM/nz0mS+g/BFQpbg=
+	b=AqTEBTf6DI+oCIF/TZpWh8cAkb+dbDnNS2gC5t90xeqfjwg6Ssw0Ase7O6iUz74Ta
+	QTC3BToB3i+iIMQbKr0+AW5YK7or2qBRGBLKjl5f2snH7xQM5axDurPPPCoQgwlxnI
+	9yDV8Spf/a0Q6SwCQkZzk+paBf+qURVgQGYzrE+Y=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=SUCAs/7C;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=SUCAs/7C
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=l5GaMQdn;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=l5GaMQdn
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 673XH-7qpIG8; Wed, 22 Aug 2018 10:26:21 +0200 (CEST)
+	with ESMTP id M2tt_rHSpKEB; Wed, 22 Aug 2018 10:26:45 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 422EE238729; Wed, 22 Aug 2018 10:26:21 +0200 (CEST)
+	id BDEB1238729; Wed, 22 Aug 2018 10:26:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534926381;
-	bh=F3Tdehj8jC1FOGR2p5sHAOIx+di5dzO+QaoB/lTElqE=;
+	s=mail; t=1534926405;
+	bh=XLih+JLxfTOKiqf9WbknjaZHNoKZLQIoaicViX3MXY8=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=SUCAs/7Cs6PPx/ngSnvUXZMdgRh/2TDS1Bo9S8fA3lkrCcvGMFCLZ7bnCfEmzXbde
-	HODk4ySqhnpcdiHh4LTFZeMgDtD7DTnbsX0NpBvEzzFBBJHuZm8MB9lYpmfJJsTKco
-	JEhmtw/JTYZvNT892X5gnLQpJAgZ1CYA4n3lUNFA=
+	b=l5GaMQdnMiyclqIzfOY7zDX7zulHJ9yWfqQF7Uawa8Q25sdbrjmQPlkDBxcZgWHf5
+	B/AO5YL7LmzxqPzTMcFn5uU5RDboOboLuypJLl0V4v5eg2lAeKbmfND56uQALMs4r9
+	OsgQG+74ZWArVEB+7xyNyvPx5mKGoglFgUNHZamc=
 Received: from [192.168.61.102] (LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr
 	[2.7.77.36])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 04D07DFFF5;
-	Wed, 22 Aug 2018 10:26:20 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id 7D01EDFFF5;
+	Wed, 22 Aug 2018 10:26:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534926381;
-	bh=F3Tdehj8jC1FOGR2p5sHAOIx+di5dzO+QaoB/lTElqE=;
+	s=mail; t=1534926405;
+	bh=XLih+JLxfTOKiqf9WbknjaZHNoKZLQIoaicViX3MXY8=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=SUCAs/7Cs6PPx/ngSnvUXZMdgRh/2TDS1Bo9S8fA3lkrCcvGMFCLZ7bnCfEmzXbde
-	HODk4ySqhnpcdiHh4LTFZeMgDtD7DTnbsX0NpBvEzzFBBJHuZm8MB9lYpmfJJsTKco
-	JEhmtw/JTYZvNT892X5gnLQpJAgZ1CYA4n3lUNFA=
+	b=l5GaMQdnMiyclqIzfOY7zDX7zulHJ9yWfqQF7Uawa8Q25sdbrjmQPlkDBxcZgWHf5
+	B/AO5YL7LmzxqPzTMcFn5uU5RDboOboLuypJLl0V4v5eg2lAeKbmfND56uQALMs4r9
+	OsgQG+74ZWArVEB+7xyNyvPx5mKGoglFgUNHZamc=
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180821132811.17675-1-peter.maydell@linaro.org>
-	<20180821132811.17675-4-peter.maydell@linaro.org>
+	<20180821132811.17675-6-peter.maydell@linaro.org>
 From: Luc Michel <luc.michel@greensocs.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
@@ -146,48 +146,54 @@ Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
 	RQRqLclXLl1hUF7XxUYFDJG64ljAbaCpVL43OkziHejUeM1oC7fZg3U9rnEwnc/JEnCpsHS7
 	bNHz5jlV9+JIV2sxFa1xVKZ0PdTRrZ4EuxO6CyXaOsjPGp4uqd+CWobc7wD77bFwdO+HQVt4
 	yXDhZGT0TxMQKXHtw1paExHsZq1xw1GvaFsutGLyX2S71jQ=
-Message-ID: <e31f0f76-888c-d2ed-9e2a-b00dff2f60b7@greensocs.com>
-Date: Wed, 22 Aug 2018 10:26:20 +0200
+Message-ID: <35949e51-b9d9-6914-8285-15797cb3b7da@greensocs.com>
+Date: Wed, 22 Aug 2018 10:26:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180821132811.17675-4-peter.maydell@linaro.org>
+In-Reply-To: <20180821132811.17675-6-peter.maydell@linaro.org>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="lhKe1mfNMRmvFe62sUmPpklSqHXlBieuJ"
+	boundary="lrnG1M2Y4EX9NvhvQogiD1jyIrRRW9oDk"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-X-Content-Filtered-By: Mailman/MimeDel 2.1.21
-Subject: Re: [Qemu-devel] [PATCH 3/9] hw/arm/vexpress: Connect VIRQ and VFIQ
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH 5/9] hw/arm/fsl-imx6ul: Connect VIRQ and VFIQ
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: htjQOLMTvWsV
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 10oYc/DgJGD4
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---lhKe1mfNMRmvFe62sUmPpklSqHXlBieuJ
+--lrnG1M2Y4EX9NvhvQogiD1jyIrRRW9oDk
+Content-Type: multipart/mixed; boundary="drxE49lnG3ZE27i6r5xx2y1pTu8GLV7IF";
+ protected-headers="v1"
 From: Luc Michel <luc.michel@greensocs.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: patches@linaro.org
-Message-ID: <e31f0f76-888c-d2ed-9e2a-b00dff2f60b7@greensocs.com>
-Subject: Re: [PATCH 3/9] hw/arm/vexpress: Connect VIRQ and VFIQ
+Message-ID: <35949e51-b9d9-6914-8285-15797cb3b7da@greensocs.com>
+Subject: Re: [PATCH 5/9] hw/arm/fsl-imx6ul: Connect VIRQ and VFIQ
 References: <20180821132811.17675-1-peter.maydell@linaro.org>
- <20180821132811.17675-4-peter.maydell@linaro.org>
-In-Reply-To: <20180821132811.17675-4-peter.maydell@linaro.org>
+ <20180821132811.17675-6-peter.maydell@linaro.org>
+In-Reply-To: <20180821132811.17675-6-peter.maydell@linaro.org>
+
+--drxE49lnG3ZE27i6r5xx2y1pTu8GLV7IF
 Content-Type: text/plain; charset=utf-8
+Content-Language: fr-classic
 Content-Transfer-Encoding: quoted-printable
+
+
 
 On 8/21/18 3:28 PM, Peter Maydell wrote:
 > Connect the VIRQ and VFIQ lines from the GIC to the CPU;
@@ -200,49 +206,51 @@ On 8/21/18 3:28 PM, Peter Maydell wrote:
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/vexpress.c | 4 ++++
+>  hw/arm/fsl-imx6ul.c | 4 ++++
 >  1 file changed, 4 insertions(+)
 >=20
-> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-> index 5bfe2e43487..dc47ed84c20 100644
-> --- a/hw/arm/vexpress.c
-> +++ b/hw/arm/vexpress.c
-> @@ -251,6 +251,10 @@ static void init_cpus(const char *cpu_type, const =
-char *privdev,
->          sysbus_connect_irq(busdev, n, qdev_get_gpio_in(cpudev, ARM_CPU=
-_IRQ));
->          sysbus_connect_irq(busdev, n + smp_cpus,
->                             qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-> +        sysbus_connect_irq(busdev, n + 2 * smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(busdev, n + 3 * smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> index 258f4706234..4b56bfa8d16 100644
+> --- a/hw/arm/fsl-imx6ul.c
+> +++ b/hw/arm/fsl-imx6ul.c
+> @@ -207,6 +207,10 @@ static void fsl_imx6ul_realize(DeviceState *dev, E=
+rror **errp)
+>          irq =3D qdev_get_gpio_in(d, ARM_CPU_IRQ);
+>          sysbus_connect_irq(sbd, i, irq);
+>          sysbus_connect_irq(sbd, i + smp_cpus, qdev_get_gpio_in(d, ARM_=
+CPU_FIQ));
+> +        sysbus_connect_irq(sbd, i + 2 * smp_cpus,
+> +                           qdev_get_gpio_in(d, ARM_CPU_VIRQ));
+> +        sysbus_connect_irq(sbd, i + 3 * smp_cpus,
+> +                           qdev_get_gpio_in(d, ARM_CPU_VFIQ));
 >      }
->  }
 > =20
+>      /*
 >=20
 
 
---lhKe1mfNMRmvFe62sUmPpklSqHXlBieuJ
+--drxE49lnG3ZE27i6r5xx2y1pTu8GLV7IF--
+
+--lrnG1M2Y4EX9NvhvQogiD1jyIrRRW9oDk
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt9HiwACgkQd8knW3Qn
-Tr708w//bqlKb4V4zARkgA5EYV9FR61RfwEF2N2hCjoWEDyIfZfhyRGUZWZk2NHh
-3aAVRuK6Yd2dzq2258AfOuJ0YLuLg1ZObpJF3KfYOCIctgY8IOJIpb601Q0bIJdG
-o1zE5xmzWoyYJIssuTIqTfIqPvW2nHXt6mLf0OAaU/KdIehG/vYF+Pxv/Ix46bvl
-9M5RxWOEUJ4B9w/PiOzmJm3d2Houq18THS0Lf6KjCtJgqsd9DQti7uR6ZQmaDFsJ
-rfYWZIrm0IqunuRddhef4hhtPTeQ8ccGwJuyBXfCrdiY345sznSrEy28C+lFpIxG
-ShISijkvpN4HbKv3RrBB1i+7rXEwf4PQ673LATIxZgKsnHoxstQCmnrLHtADojHM
-sf1Y2c33p1d/uYl/NXRzD2xpR47ZdVqZRMJo9jIJ3rqfWMsSW2cDmEIeIQrFiZom
-M2b7tXjzUqY6TYJhzTjZGtbzFO6xQ7XB6RL8S40IqKi5E4jk0UKpia6Kbp/uEWjj
-QaTUKSBVqwrFriPChGTJH1AuUOkKU75DAThnCdFbFINL/p0cM88S7Wq6MdjWRcn6
-AIhVGb/tbSuiJ3Zm1TK7uxwfU2T3peX/Fwxq//1xddL8Oc0kTd2AiOf5j7mswApl
-PgLmTw8pVYmB9mLdsIXyOkCPoQg2KNld7fcrYKIjUVuPrmo4JEo=
-=dLvx
+iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt9HkUACgkQd8knW3Qn
+Tr7hoBAArSaKzfEjaLKs9qPF/MT703dXmAyz2D7JIBIW09TET5pJEbAVzoK2PZ5G
+Ohrb0Qs6fZLj5btNYHx7YbL3q8gBiTBnjyxu86+6ekr/lJ4OG7dA1uWWFbadeO0X
+SXxsMdP822uXzsmuIpsHxwQsfj9Dx2KlNrtTU3pUF7L/A3genR4fwPnjZbhdCLgP
+Q0JZKQa0FKDYhJDEtJlfljmAgcooR8S4xN0PySkoh6gLFs/r8wZHyeyIgPTRdRxm
+FA5gKlEdVT418wugS9+F4fBkrjdm4ZmFnU78doFKPePUpb6AcrF2oEsRbkIwZB8t
+oXnUShlObPz3lBr+UbQkEz3P0sUVxoE7yrRCQfxSwQORQI3doMsT9Q1MfgLVoyD9
+vbGIzV4eZI2K9DyOoCkFsMtg/EAasOOqdaWSIMbdH1++tDAer2KJAh+INZ/dAOF5
+glpnp4PsQseov21PGjXGsgattMsioC751AnSxS75rhZkEyFTAWj9FLKD7XoIihjT
+6I/S+lSFTVimR2jCdeuo5NChWsDha2NQsijIrPrkIwv4oRrwhyoQ+Soe2JOwU1Mj
+JaTWi2T6upemo5eKQPrPbHBHtknj2dsj0gnI/S558ah3zjQzxPUWAvd4OpY8G+cO
+RUoxovLu9avmeOLmV1PzcYTCiDztrLO4zqeU7YB0o2LRqBZ89Q0=
+=kqCq
 -----END PGP SIGNATURE-----
 
---lhKe1mfNMRmvFe62sUmPpklSqHXlBieuJ--
+--lrnG1M2Y4EX9NvhvQogiD1jyIrRRW9oDk--

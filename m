@@ -1,106 +1,106 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2830225wrd;
-        Wed, 22 Aug 2018 01:31:26 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzbyDG2CMhxnyIl7RZ8gM0vzHDWaQpXAbS8wjR1eX6TzihQV1n2au2giSY2UBz0wa4cDn64
-X-Received: by 2002:a37:5d84:: with SMTP id r126-v6mr49535327qkb.155.1534926686397;
-        Wed, 22 Aug 2018 01:31:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534926686; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2830465wrd;
+        Wed, 22 Aug 2018 01:31:43 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPx50plJdewcknCgtw0nH0ExmnQHNvUg9YvPlASRg/pUMQhJ+RTZ2tsqrqntA3Yu6AVYlznG
+X-Received: by 2002:ac8:528c:: with SMTP id s12-v6mr13667483qtn.311.1534926703275;
+        Wed, 22 Aug 2018 01:31:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534926703; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yu7IVaZ8iEoy9wa07d51tc1Y3r3g6WCdC5eZ0+kRTP+V5bsTY6OUwlYF4xM+rRRP0A
-         c0ttaZj+z9085FnRswoi2pdWvPlwUu+85g9j3f8lmY9po31oCbGYEBLyn3/uYwxOM8tI
-         rOiCmADdUGOrghKZ1V7pfK2020F8QsaMMO6WaoU/fdQuIADnBBpccXDDntQdtJ3DIxIA
-         7LTgIOIf/ee0xCRKwsHw4VlrnlEj/OMjkdXO6Oy4U2xDJoey5RgNksjjaEm+QY4E8VF1
-         Q8P3Ni/M3tW+c/1IgnKSxD/A9MoFINvj0V+LIfuhH/LiUyPEfq5M2IgYQ1ldoil30VJl
-         dHIA==
+        b=viemmK5l4cDC9+B/bMebwPIkibPSj/uGaG1uQC+74wUL/cg8PmgRFDxCD4U2qYZoTg
+         OYdU48isfGgxzL7iYkzcMk9KkF1Z5oziidEu7HLzzyp2eSWKbMK2/J8ylgbeTQTXwbQz
+         csKvVNhPszkYxUlgQV9wShaIKj3SJWYFv0lsWtbgy0IqLNZrCBzzHN2miGKfbHrFr1+J
+         O7uQJXqjC01g78MOR0d1brxdyd2WAWnDTxV1jfekTINMeEv0KzyLbx6WXFM2fHkh8wkD
+         La3zTAMFU9I22qesAXnJ4eA3/OI9bNOzcG7At5rjcOvxyTR5X0u/UnNVc+1ID8rnzv5Y
+         FzbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:in-reply-to
          :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
          :references:to:dkim-signature:dkim-signature:dkim-signature
          :arc-authentication-results;
-        bh=JlAqtRmmTwqO9WvjSu5yesz7YRuJbeqyVBBfnNANW84=;
-        b=kTU78eqvz09gBSrYbiKrLf6h1Q9j209A5gSTljOw0ZxMR5wNZlBnc5zXgnWIlCkJcH
-         ttvYzhH5+VLBsgPRpcN1ZajHUubTyeUqYorPlxjM7Uub4+dQjyVNBJQvEwZ4ZtGag/mH
-         bJuN9AwuFZ7ROUzvqPvrrCewH0dRbgl9udJcnNHIrz0lns/POF0YS0atLUUlcRH6nofu
-         1tCdm7uHcbXwZH3gWgWlGcQwCB7Ko98q7hgEKJJ6LR3rVnZbk6ut4NdVYzPEHdWn05W9
-         rzwDCijcnUVSKbn5xuFuTcYtwFI7KLGfYookJS35lH0XBrPSo9ZOr9MnNrlt2whGf7fL
-         TDjA==
+        bh=xDWKBcE+F0HX2dSyc2dWEFOqud1lwiECQeCT6Kl1VxQ=;
+        b=bMYNM8wHEA4JlyGzpJGH93vV3+h60B1WqMxmWTfKEJXiSTxo74pSTzsoEJ6Bv/YYsp
+         rEY8ZvTXt+MqbWHFgwAGRAVqCJ+JefsYOnJBcVgRftQWyM7E9hrU1pzBJiNPARFTwlQS
+         KfnLW3k+eGf3Mp8zl44u5/0fsHV8pMTFnOv2CKF/OTOVtFBr07QiV8W4wfpdPBs8x65T
+         eoO+tWOITtCG5MtspNiZvGDNerZW7x3Q338IDSDZsSJnovarK7ltV3k1k0XbKLWS5dzF
+         gNABFs/tX4rFEYv8XHOn2L6zzTVIpUnuocS2npvS5pAISHOaFkNhhWaR20NdgrEXp8+d
+         fObw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=se3QTDRR;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Jq6KgAM5;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Jq6KgAM5;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=2B4EAVaW;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="61te6/0k";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=JDHIPGrx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t20-v6si442850qtp.307.2018.08.22.01.31.26
+        by mx.google.com with ESMTPS id t2-v6si1149613qkj.62.2018.08.22.01.31.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 22 Aug 2018 01:31:26 -0700 (PDT)
+        Wed, 22 Aug 2018 01:31:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=se3QTDRR;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Jq6KgAM5;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Jq6KgAM5;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=2B4EAVaW;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="61te6/0k";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=JDHIPGrx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57560 helo=lists.gnu.org)
+Received: from localhost ([::1]:57562 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fsOY1-0002U5-QN
-	for alex.bennee@linaro.org; Wed, 22 Aug 2018 04:31:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41708)
+	id 1fsOYI-0002jX-Ml
+	for alex.bennee@linaro.org; Wed, 22 Aug 2018 04:31:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42032)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fsOTW-00075o-Kv
-	for qemu-arm@nongnu.org; Wed, 22 Aug 2018 04:26:49 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fsOUB-0007fv-Td
+	for qemu-arm@nongnu.org; Wed, 22 Aug 2018 04:27:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1fsOTM-0001xn-Eq
-	for qemu-arm@nongnu.org; Wed, 22 Aug 2018 04:26:40 -0400
-Received: from greensocs.com ([193.104.36.180]:40840)
+	(envelope-from <luc.michel@greensocs.com>) id 1fsOU9-0002Qw-PJ
+	for qemu-arm@nongnu.org; Wed, 22 Aug 2018 04:27:27 -0400
+Received: from greensocs.com ([193.104.36.180]:41132)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1fsOTL-0001x2-1p; Wed, 22 Aug 2018 04:26:35 -0400
+	id 1fsOU3-0002KX-VB; Wed, 22 Aug 2018 04:27:25 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 84ED8DFFF5;
-	Wed, 22 Aug 2018 10:26:34 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTP id 3E71423874C;
+	Wed, 22 Aug 2018 10:27:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534926394;
-	bh=ro43H/qNKdugpoBmacBMAHPW1VmX4GJqq3DvOO3KEy8=;
+	s=mail; t=1534926436;
+	bh=Hxv292boke3KfEJMIp9c62ydD4DN2ZZyhiw3IfsjNIg=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=se3QTDRRm40NGOsid5cQcrSwNcL04Qnzu/mn8T54xLKWRZOLxNcZEosmdtPLUAnKl
-	g6mz+c8SIOLyLN4dfyyH7Fc9f5mWON77EnSBGO+UhgZAxI2ulYbO1XIHwvFYJ8J2s1
-	okKH3UDJnvQDXtiBTidqEfoCyjYBAPFeWZlm+2J8=
+	b=2B4EAVaW0JSG4IC7/S4PTmTu5RpgOqA4Ozzfirwi7/F7eXKryMc3S5zUEZywLEWfY
+	FV2zHdcyMcf7qI2AkRFa3PGvXKXEO+2EIlFMeZsG9226WMAabe3R7ZBbCX24klueg4
+	AErFMZDM7jbJFrzdEwu35hPZpfTbHjoYW/rrQezk=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Jq6KgAM5;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Jq6KgAM5
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=61te6/0k;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=JDHIPGrx
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R_fcPJVgH729; Wed, 22 Aug 2018 10:26:33 +0200 (CEST)
+	with ESMTP id UQudbD6mFgbn; Wed, 22 Aug 2018 10:27:15 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 3B090238729; Wed, 22 Aug 2018 10:26:33 +0200 (CEST)
+	id 12461238729; Wed, 22 Aug 2018 10:27:15 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534926393;
-	bh=ro43H/qNKdugpoBmacBMAHPW1VmX4GJqq3DvOO3KEy8=;
+	s=mail; t=1534926435;
+	bh=Hxv292boke3KfEJMIp9c62ydD4DN2ZZyhiw3IfsjNIg=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=Jq6KgAM5tksf4SSTcOBwQcdV+Kh5S6KNK2OXpcEPfUL1wYz3vhq6sAKKU7tGud/yF
-	4zAGN2b3uiQyA+aasDYZ3cKjvDbunjRg5exDkzOemM2rb3ftnccHA9021+2k3CNQcY
-	0wG+A/cLiChWR+Ok+JzBn77ajsTkTvdi4D8WH5Ns=
+	b=61te6/0kpCDkdtyzR9U1F3afV5LLQ0WSpXOo0jqbig3V5+93oIjuatkPa/lvl4X7b
+	Q1To6M+O45gLL7I0UBLlyuutEEy01Y5/5A/ki97P9JzbEg3OHDt++zgogyZ4SXVkwY
+	M8mxBW4yMpknFBacDTn6C+2NqQtUSYfVzVxie3y0=
 Received: from [192.168.61.102] (LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr
 	[2.7.77.36])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 00F79DFFF5;
-	Wed, 22 Aug 2018 10:26:32 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id CC67ADFFF5;
+	Wed, 22 Aug 2018 10:27:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1534926393;
-	bh=ro43H/qNKdugpoBmacBMAHPW1VmX4GJqq3DvOO3KEy8=;
+	s=mail; t=1534926434;
+	bh=Hxv292boke3KfEJMIp9c62ydD4DN2ZZyhiw3IfsjNIg=;
 	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=Jq6KgAM5tksf4SSTcOBwQcdV+Kh5S6KNK2OXpcEPfUL1wYz3vhq6sAKKU7tGud/yF
-	4zAGN2b3uiQyA+aasDYZ3cKjvDbunjRg5exDkzOemM2rb3ftnccHA9021+2k3CNQcY
-	0wG+A/cLiChWR+Ok+JzBn77ajsTkTvdi4D8WH5Ns=
+	b=JDHIPGrxr/fbUgDghiiYsQNJRr112JMBFHUJl/uzXvTBjS6WcQ4neFyM+RMZ3LNj8
+	urtzOaUYmb03CFxV1QFNcYk7H0487361yJR2S1sr7iPEZeCm9ixYVeWB4vNE7oj0yR
+	OHMqJE2TlK60kexMsquD7w/xVleTiUjalLiyxTSw=
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20180821132811.17675-1-peter.maydell@linaro.org>
-	<20180821132811.17675-5-peter.maydell@linaro.org>
+	<20180821132811.17675-10-peter.maydell@linaro.org>
 From: Luc Michel <luc.michel@greensocs.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
@@ -146,18 +146,19 @@ Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
 	RQRqLclXLl1hUF7XxUYFDJG64ljAbaCpVL43OkziHejUeM1oC7fZg3U9rnEwnc/JEnCpsHS7
 	bNHz5jlV9+JIV2sxFa1xVKZ0PdTRrZ4EuxO6CyXaOsjPGp4uqd+CWobc7wD77bFwdO+HQVt4
 	yXDhZGT0TxMQKXHtw1paExHsZq1xw1GvaFsutGLyX2S71jQ=
-Message-ID: <f724ba64-30e5-d1eb-89ee-b85425733a99@greensocs.com>
-Date: Wed, 22 Aug 2018 10:26:32 +0200
+Message-ID: <fd18e480-a9ea-bfa1-bab3-d395fb9b6079@greensocs.com>
+Date: Wed, 22 Aug 2018 10:27:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180821132811.17675-5-peter.maydell@linaro.org>
+In-Reply-To: <20180821132811.17675-10-peter.maydell@linaro.org>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="3CPjHXtSHGh7z7JZCWPSpf8opm7NpjskL"
+	boundary="swI1fgIQCeOdDQ0EkmQjC3cL8UK87s06t"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: Re: [Qemu-arm] [PATCH 4/9] hw/arm/highbank: Connect VIRQ and VFIQ
+Subject: Re: [Qemu-arm] [PATCH 9/9] hw/arm/vexpress: Add "virtualization"
+ property controlling presence of EL2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -172,101 +173,203 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QXkZ1C/d+kTJ
+X-TUID: V3HI/g5PFYI8
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3CPjHXtSHGh7z7JZCWPSpf8opm7NpjskL
-Content-Type: multipart/mixed; boundary="0v3ZjAdcKCSShnVQ0NWaOBX15IVHbfuc0";
+--swI1fgIQCeOdDQ0EkmQjC3cL8UK87s06t
+Content-Type: multipart/mixed; boundary="HP3lyC3Kg45coMPMfHMfLjpPcY3E6ST6m";
  protected-headers="v1"
 From: Luc Michel <luc.michel@greensocs.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: patches@linaro.org
-Message-ID: <f724ba64-30e5-d1eb-89ee-b85425733a99@greensocs.com>
-Subject: Re: [PATCH 4/9] hw/arm/highbank: Connect VIRQ and VFIQ
+Message-ID: <fd18e480-a9ea-bfa1-bab3-d395fb9b6079@greensocs.com>
+Subject: Re: [PATCH 9/9] hw/arm/vexpress: Add "virtualization" property
+ controlling presence of EL2
 References: <20180821132811.17675-1-peter.maydell@linaro.org>
- <20180821132811.17675-5-peter.maydell@linaro.org>
-In-Reply-To: <20180821132811.17675-5-peter.maydell@linaro.org>
+ <20180821132811.17675-10-peter.maydell@linaro.org>
+In-Reply-To: <20180821132811.17675-10-peter.maydell@linaro.org>
 
---0v3ZjAdcKCSShnVQ0NWaOBX15IVHbfuc0
+--HP3lyC3Kg45coMPMfHMfLjpPcY3E6ST6m
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr-classic
 Content-Transfer-Encoding: quoted-printable
 
+
+
 On 8/21/18 3:28 PM, Peter Maydell wrote:
-> Connect the VIRQ and VFIQ lines from the GIC to the CPU;
-> these exist always for both CPU and GIC whether the
-> virtualization extensions are enabled or not, so we
-> can just unconditionally connect them.
+> Add a "virtualization" property to the vexpress-a15 board,
+> controlling presence of EL2. As with EL3, we default to
+> enabling it, but the user can disable it if they have an
+> older guest which can't cope with it being present.
 >=20
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/highbank.c | 6 ++++++
->  1 file changed, 6 insertions(+)
+>  hw/arm/vexpress.c | 56 ++++++++++++++++++++++++++++++++++++++++++++---=
+
+>  1 file changed, 53 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index 6d42fce2c37..fb9efa02c35 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -243,6 +243,8 @@ static void calxeda_init(MachineState *machine, enu=
-m cxmachines machine_id)
->      int n;
->      qemu_irq cpu_irq[4];
->      qemu_irq cpu_fiq[4];
-> +    qemu_irq cpu_virq[4];
-> +    qemu_irq cpu_vfiq[4];
->      MemoryRegion *sysram;
->      MemoryRegion *dram;
->      MemoryRegion *sysmem;
-> @@ -282,6 +284,8 @@ static void calxeda_init(MachineState *machine, enu=
-m cxmachines machine_id)
->          object_property_set_bool(cpuobj, true, "realized", &error_fata=
-l);
->          cpu_irq[n] =3D qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ);
->          cpu_fiq[n] =3D qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_FIQ);
-> +        cpu_virq[n] =3D qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_VIRQ);
-> +        cpu_vfiq[n] =3D qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_VFIQ);
->      }
+> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+> index 3631f4de3a4..c02d18ee618 100644
+> --- a/hw/arm/vexpress.c
+> +++ b/hw/arm/vexpress.c
+> @@ -172,6 +172,7 @@ typedef struct {
+>  typedef struct {
+>      MachineState parent;
+>      bool secure;
+> +    bool virt;
+>  } VexpressMachineState;
 > =20
->      sysmem =3D get_system_memory();
-> @@ -329,6 +333,8 @@ static void calxeda_init(MachineState *machine, enu=
-m cxmachines machine_id)
->      for (n =3D 0; n < smp_cpus; n++) {
->          sysbus_connect_irq(busdev, n, cpu_irq[n]);
->          sysbus_connect_irq(busdev, n + smp_cpus, cpu_fiq[n]);
-> +        sysbus_connect_irq(busdev, n + 2 * smp_cpus, cpu_virq[n]);
-> +        sysbus_connect_irq(busdev, n + 3 * smp_cpus, cpu_vfiq[n]);
->      }
+>  #define TYPE_VEXPRESS_MACHINE   "vexpress"
+> @@ -203,7 +204,7 @@ struct VEDBoardInfo {
+>  };
 > =20
->      for (n =3D 0; n < 128; n++) {
+>  static void init_cpus(const char *cpu_type, const char *privdev,
+> -                      hwaddr periphbase, qemu_irq *pic, bool secure)
+> +                      hwaddr periphbase, qemu_irq *pic, bool secure, b=
+ool virt)
+>  {
+>      DeviceState *dev;
+>      SysBusDevice *busdev;
+> @@ -216,6 +217,11 @@ static void init_cpus(const char *cpu_type, const =
+char *privdev,
+>          if (!secure) {
+>              object_property_set_bool(cpuobj, false, "has_el3", NULL);
+>          }
+> +        if (!virt) {
+> +            if (object_property_find(cpuobj, "has_el2", NULL)) {
+> +                object_property_set_bool(cpuobj, false, "has_el2", NUL=
+L);
+> +            }
+> +        }
+> =20
+>          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
+>              object_property_set_int(cpuobj, periphbase,
+> @@ -289,7 +295,8 @@ static void a9_daughterboard_init(const VexpressMac=
+hineState *vms,
+>      memory_region_add_subregion(sysmem, 0x60000000, ram);
+> =20
+>      /* 0x1e000000 A9MPCore (SCU) private memory region */
+> -    init_cpus(cpu_type, TYPE_A9MPCORE_PRIV, 0x1e000000, pic, vms->secu=
+re);
+> +    init_cpus(cpu_type, TYPE_A9MPCORE_PRIV, 0x1e000000, pic,
+> +              vms->secure, vms->virt);
+> =20
+>      /* Daughterboard peripherals : 0x10020000 .. 0x20000000 */
+> =20
+> @@ -370,7 +377,8 @@ static void a15_daughterboard_init(const VexpressMa=
+chineState *vms,
+>      memory_region_add_subregion(sysmem, 0x80000000, ram);
+> =20
+>      /* 0x2c000000 A15MPCore private memory region (GIC) */
+> -    init_cpus(cpu_type, TYPE_A15MPCORE_PRIV, 0x2c000000, pic, vms->sec=
+ure);
+> +    init_cpus(cpu_type, TYPE_A15MPCORE_PRIV, 0x2c000000, pic, vms->sec=
+ure,
+> +              vms->virt);
+> =20
+>      /* A15 daughterboard peripherals: */
+> =20
+> @@ -724,6 +732,20 @@ static void vexpress_set_secure(Object *obj, bool =
+value, Error **errp)
+>      vms->secure =3D value;
+>  }
+> =20
+> +static bool vexpress_get_virt(Object *obj, Error **errp)
+> +{
+> +    VexpressMachineState *vms =3D VEXPRESS_MACHINE(obj);
+> +
+> +    return vms->virt;
+> +}
+> +
+> +static void vexpress_set_virt(Object *obj, bool value, Error **errp)
+> +{
+> +    VexpressMachineState *vms =3D VEXPRESS_MACHINE(obj);
+> +
+> +    vms->virt =3D value;
+> +}
+> +
+>  static void vexpress_instance_init(Object *obj)
+>  {
+>      VexpressMachineState *vms =3D VEXPRESS_MACHINE(obj);
+> @@ -738,6 +760,32 @@ static void vexpress_instance_init(Object *obj)
+>                                      NULL);
+>  }
+> =20
+> +static void vexpress_a15_instance_init(Object *obj)
+> +{
+> +    VexpressMachineState *vms =3D VEXPRESS_MACHINE(obj);
+> +
+> +    /*
+> +     * For the vexpress-a15, EL2 is by default enabled if EL3 is,
+> +     * but can also be specifically set to on or off.
+> +     */
+> +    vms->virt =3D true;
+> +    object_property_add_bool(obj, "virtualization", vexpress_get_virt,=
+
+> +                             vexpress_set_virt, NULL);
+> +    object_property_set_description(obj, "virtualization",
+> +                                    "Set on/off to enable/disable the =
+ARM "
+> +                                    "Virtualization Extensions "
+> +                                    "(defaults to same as 'secure')",
+> +                                    NULL);
+> +}
+> +
+> +static void vexpress_a9_instance_init(Object *obj)
+> +{
+> +    VexpressMachineState *vms =3D VEXPRESS_MACHINE(obj);
+> +
+> +    /* The A9 doesn't have the virt extensions */
+> +    vms->virt =3D false;
+> +}
+> +
+>  static void vexpress_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> @@ -784,12 +832,14 @@ static const TypeInfo vexpress_a9_info =3D {
+>      .name =3D TYPE_VEXPRESS_A9_MACHINE,
+>      .parent =3D TYPE_VEXPRESS_MACHINE,
+>      .class_init =3D vexpress_a9_class_init,
+> +    .instance_init =3D vexpress_a9_instance_init,
+>  };
+> =20
+>  static const TypeInfo vexpress_a15_info =3D {
+>      .name =3D TYPE_VEXPRESS_A15_MACHINE,
+>      .parent =3D TYPE_VEXPRESS_MACHINE,
+>      .class_init =3D vexpress_a15_class_init,
+> +    .instance_init =3D vexpress_a15_instance_init,
+>  };
+> =20
+>  static void vexpress_machine_init(void)
 >=20
 
 
---0v3ZjAdcKCSShnVQ0NWaOBX15IVHbfuc0--
+--HP3lyC3Kg45coMPMfHMfLjpPcY3E6ST6m--
 
---3CPjHXtSHGh7z7JZCWPSpf8opm7NpjskL
+--swI1fgIQCeOdDQ0EkmQjC3cL8UK87s06t
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt9HjgACgkQd8knW3Qn
-Tr7LDw//eidxfLDqEHUtEwIEiMQJScK4eIdgfZFHyeRlaROL4fL1UvqEvQm/TQ73
-dg39ETwhjtxmfFOKSXpM6QEmmXfOSBZlzn3iI4hmk1U17Rc9lqIzPljB9JgXiIPw
-e3qSLeA4deOWywXBqHwmVV53kpEkBEq6Q/AIR5oeBkOAhiEP8M+g/Wj6cn7b1Ytj
-RniV4Cln8mD0vGyxh2PiWCBvIF3idjCkRKu/rnRT75G/WSnMYsMsUXHor2ZN/SkA
-wm8ppyYQxN4kMgDVr3UXMOys/c9BVBYqqG5EFgLmeVfKRtRGaRvpI80ZlWy6VpLw
-IR3EEWBmCaY6x5Hje6LvPCZB9afPq67bxpj6Zak7UWWLm+99NvO9W+nzJ1ptHXBZ
-UlUoAMzjiFuF18USQMpehTln7PmPPX7WOgCao8rbiqdQp3uuzzxqpFId7OwJ4Vro
-54TFPQsAcrz7qLG5nJfz5U6ADMex9qnO8IfiRkZEgH7F4/E7flrSKblMmGRx/JSw
-nWRmaD57gJ8KnLTiHY8ecJ5KOUYuM7eYMS7v72WrzaviZrhHkCdzhnwzEWsPxXql
-3sVeKNPJaxS5dm6rGH9e0s1phE7uTFvDz7ANkX7U7OIp4OYjUGETPwW8v5rnf69D
-IKQDLm0kxwLnQhRmBeuMS/jGqaGr9h1pvIASiI1C3jnNdP1YGK4=
-=TRoT
+iQIzBAEBCAAdFiEEUvSC0Bi15mxw2PT5d8knW3QnTr4FAlt9HmIACgkQd8knW3Qn
+Tr7HvQ//Y4pw3ROnV8isIgrbS7K3IRmj99BCI3/R9u2z9xM6IxEh4N4czHcS/QIZ
+jwPzJNKaao/6QizuDT5inkMGjpUBsO7bz9WkokfUHHAJK9zustTU2ofvbW/PGWmO
++4qS7hQQkHyB43WFOuc5QLtDcsmJoEef04hBFff62yji7eXYtyhUxGx1r3/4ovdt
+k6or/as+/+r98OWWPkb4Co+NNMT4NvQP1t2yqNrQbgHQ6rakzg3225p0fLhB6/K7
+7joKYIcyOM/zSnfSJzmTP0cna7PlqTuOe6I7p11O/PxUsGO+1Yly4+gAoCGYc1GW
+qNDKdMB4NiJDLcfFELx1TtI014U6DgXh1T94NwIU0bg0U7GmUn6mpyvQBWo8I0xu
+T3BN81kkyuFdYFzZcu8qFiIH07pbivIDNkjRS54Lbe6JyOKxs19DIdZaSzU+HMPT
+b5LI1HGiyH+o+SfrfJMxRJDMc5jKJG9TYPaQw7RFDP30I2RowMBDZpqoxdg0UcRf
+NciZamfWfSnpDEwG4azlVoxIxVIpuovnVEUog5xpmH3AdMz9aCNpmqvYAYwl7ni8
+U+MW+zltFIGj7Pfz7AhrpBVaDdAFOcimREvlira+O/+h6aXxcpPUGP8zvJzQYdbD
+ZMya2djuSPhpHej0pxkGwWs5oCMQXffReT1Ruq8zO/JCIVyfeEA=
+=dHfh
 -----END PGP SIGNATURE-----
 
---3CPjHXtSHGh7z7JZCWPSpf8opm7NpjskL--
+--swI1fgIQCeOdDQ0EkmQjC3cL8UK87s06t--

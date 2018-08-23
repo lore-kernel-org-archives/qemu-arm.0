@@ -1,70 +1,112 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1235499wrd;
-        Thu, 23 Aug 2018 07:24:35 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPzpR5du8CvHvLNJPfYLRlxh80fQilSXVkiaAYf0LQ6reUDdXQjqsCJ0I1S3V0CcLH0QRF9g
-X-Received: by 2002:a37:5744:: with SMTP id l65-v6mr55591514qkb.216.1535034275453;
-        Thu, 23 Aug 2018 07:24:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535034275; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1236348wrd;
+        Thu, 23 Aug 2018 07:25:23 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPx//s3dPrj0gd8EegVDHnAwiem7irEnfNKFFgV/QVlBwgdhLRwgywwtW1IGtBavzLMweI0s
+X-Received: by 2002:a37:d6dc:: with SMTP id p89-v6mr22146172qkl.351.1535034323672;
+        Thu, 23 Aug 2018 07:25:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535034323; cv=none;
         d=google.com; s=arc-20160816;
-        b=PWFx+yw5aV/QfYiXb+0NcUyDYcXEm1XcRgXr6LBXdKzQjgs9dv3So58hFQGuDdon3f
-         1/P7kylMmA7VzJOH2n+i/3kUarSbGpznJ2tccGDwAVbFfPZdcH/p5SAf1JpRNQkRGP2G
-         h65TaForIRdaanyB0txu0a9ZaVoAKkxsOaskagHd4XXUKyxdrkeOT8yu0x/27szbprqV
-         t0EV+tcCqTtfplPsuwGdb1DAHEHZxQoBpimIfDxA42UJLSsuE1vY5y8WDryI9NzO/Vqr
-         ocCpL6n3G+rTVAPiOMOjh4yNQ2nUJeop74t9g0tOAaf+RtaZLEc53dB8va7C56UhbRSy
-         iBew==
+        b=id0eqymxld7E5UYJer+IhXxh5fie+i9cd8qqaV/D3WefOr/11sAQP0qnBgeJRsK8/Z
+         irgjHJMVRrN7P9I5ZJ0z3SKNqJyQwbN7Ti+j/yyEtrX1NL3Uc6rbZQYUkQzZ4YvwzXS6
+         w6p6RK7Lj4kD7+w0syNKj9aWSAg+42L1N0pU6pDgCiC3UNlbvhpLSIfUn7uyjIJ3tPdS
+         0UZY/s7LHmrzhT+ikRbLdKvauRyi/t8Q1hmkJyYCEifXV9a7z4DSa8E9IIMFcNgFvdzZ
+         6r996j5DwSL0/m5wWrtbtvKY51PaNNybwcCPF8yVrubdOxXqKjlg8oIKcKsWTS2xEzlq
+         27pA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=BKw9rH61nN1dVutmm+/KmUvBxL4MB5e+B/ypPenx9R0=;
-        b=RK03hmYU05wlPKtbQPZat41anjHdxn/xvvDuhAau09j14fkc4L8TR2XDpNRpfKokMa
-         6fGPMa01rN+eWeI0o4GQAvx1GyYnRH2xMY1ALVlBhO1rlaIcNnycjzh0DzTKDepoglje
-         m2eIR6+DOWuFpt/44+HWxdNosAsTlNylhIzyelPiuwkIUqqbsHgaIn3u7VYpu8X0doHs
-         0Zd7KJGcEu0xuHPwA+eqdOUg16Zl2Q8uEJVu9vb+cL8bKabEVzT5YXS8U2uGQyMRExE9
-         fDCIDsL6Dh1Uktds9cJGxPQm1z0IGMuYftP638uvdV8GWwiCYYxxPyvnFlr6fwXxBTgP
-         NbXw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=Hz2giuLIyR3Kl068McOE8y0VohoVty/RZiiWlJQ3FN0=;
+        b=kLq7hNq/tHup75EpQlz0I3JCjVPQ+8Yimll+nf/loDsWGVzWykDOn3L2+yzmTMEmSp
+         8jM9ctblX4SDJzrkrCmwmA/i7EHHhmceYKv4BNTspHcdimEt3/eS96FJMBDXCMpCIOSO
+         VeE8Cfm6hFmuo4RatvFkQx+ZJXPVi29Rt4RmgpY5VoZcnT38vApp4f6jPwmWHIqOFUML
+         sRsEQPTw5yyomXH79NMHWMAxblsGRhRCknGlO4MPJmqyo58e19TKW2o4/3j1zVtyZfJb
+         HosD0nTyAoHh+/2FtWcA6apPUcvLmVskaBol3xzX7T6ssyXmdK6aDVmAu74siYws7TUz
+         kOIw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AuUmu59z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j18-v6si970746qtj.294.2018.08.23.07.24.35
+        by mx.google.com with ESMTPS id r38-v6si69754qta.244.2018.08.23.07.25.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Aug 2018 07:24:35 -0700 (PDT)
+        Thu, 23 Aug 2018 07:25:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AuUmu59z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36801 helo=lists.gnu.org)
+Received: from localhost ([::1]:36816 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fsqXL-0001VG-0U
-	for alex.bennee@linaro.org; Thu, 23 Aug 2018 10:24:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50752)
+	id 1fsqY7-0003L7-4o
+	for alex.bennee@linaro.org; Thu, 23 Aug 2018 10:25:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32888)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fsq0j-0003D2-5u
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 09:50:53 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fsqQx-0004Kh-SB
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 10:18:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fsq0i-0003UW-F0
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 09:50:53 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44844)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fsq0i-0003TW-6r; Thu, 23 Aug 2018 09:50:52 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fsq0f-0005r3-Ps; Thu, 23 Aug 2018 14:50:49 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(envelope-from <richard.henderson@linaro.org>) id 1fsqQt-0003zI-MR
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 10:17:59 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:38992)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fsqQt-0003yr-Bb
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 10:17:55 -0400
+Received: by mail-pf1-x442.google.com with SMTP id j8-v6so2768784pff.6
+	for <qemu-arm@nongnu.org>; Thu, 23 Aug 2018 07:17:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=Hz2giuLIyR3Kl068McOE8y0VohoVty/RZiiWlJQ3FN0=;
+	b=AuUmu59zSpqJ+BMi/zdwBPvx+dQcyvvQ2OHXh/COlUt1jrzguFZ/23D6CCA4ovzGYS
+	ovSagMC/ZJNzbThA040wgSpWLMSpHGTLgNHVcI+yBfZfQD0OXny3hUp6U2t3uzfLJ4CH
+	sBrX/swpnpDG4v7sMm6OWT5wzwtHoJwYgt9jU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Hz2giuLIyR3Kl068McOE8y0VohoVty/RZiiWlJQ3FN0=;
+	b=YN+q21uxN+36VpDNzlCDrmI7WLQQAWz/E1ZRY8A7M1fR4CkpmIhpf8k+hcYjSRXLqV
+	xl/+16GPZx2DNtzx8xZfIKQ873dUV/8V7LB6ExcP/enYfi3lCeCXprZ8ZG1fSK+DMspf
+	B84oMVhBirjxyHpnbQD6a/2+WuZZO+nZiqs3BNB8JPRAlkeySXCDYStNkBKOyxBau9yi
+	FCKrg8DebmVMoTdlTY59px3POnUei5346q0IbVFrViK8piion7w5APoJS+CR8VtqvPSt
+	Vv/Np97rBw/jAEAQkacdaVti6Pb5e3Gfk0mo860CEVV1t3MZorJUESpM6jDfFyEmTBm7
+	K1cg==
+X-Gm-Message-State: AOUpUlHxwmW16pYPDEhiPS/7JJjSFAOQUae2aA2Xas06InyUE8BkXtVa
+	SAk5k751pdndpyLn18U02xEkig==
+X-Received: by 2002:a62:d74f:: with SMTP id
+	v15-v6mr31148552pfl.257.1535033874289; 
+	Thu, 23 Aug 2018 07:17:54 -0700 (PDT)
+Received: from cloudburst.twiddle.net ([50.225.49.40])
+	by smtp.gmail.com with ESMTPSA id
+	j195-v6sm7957460pgc.25.2018.08.23.07.17.52
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 23 Aug 2018 07:17:53 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 23 Aug 2018 14:50:47 +0100
-Message-Id: <20180823135047.16525-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.18.0
+References: <20180820141116.9118-1-peter.maydell@linaro.org>
+	<20180820141116.9118-7-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <56bb43b1-765d-0fe4-2ae4-26cab7e32efd@linaro.org>
+Date: Thu, 23 Aug 2018 07:17:51 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <20180820141116.9118-7-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH] target/arm: Start AArch32 CPUs with EL2 but not
- EL3 in Hyp mode
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 06/22] hw/arm/iotkit: Wire up
+ the watchdogs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,47 +118,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AA+7L/EZIF2Y
+X-TUID: zc+mTP2xgeO5
 
-The ARMv8 architecture defines that an AArch32 CPU starts
-in SVC mode, unless EL2 is the highest available EL, in
-which case it starts in Hyp mode. (In ARMv7 a CPU with EL2
-but not EL3 was not a valid configuration, but we don't
-specifically reject this if the user asks for one.)
+On 08/20/2018 07:11 AM, Peter Maydell wrote:
+> The IoTKit includes three different instances of the
+> CMSDK APB watchdog; create and wire them up.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/hw/arm/iotkit.h |  6 +++++
+>  hw/arm/iotkit.c         | 58 ++++++++++++++++++++++++++++++++++++++---
+>  2 files changed, 61 insertions(+), 3 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 258ba6dcaad..b5e61cc1775 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -199,8 +199,18 @@ static void arm_cpu_reset(CPUState *s)
-         env->cp15.c15_cpar = 1;
-     }
- #else
--    /* SVC mode with interrupts disabled.  */
--    env->uncached_cpsr = ARM_CPU_MODE_SVC;
-+
-+    /*
-+     * If the highest available EL is EL2, AArch32 will start in Hyp
-+     * mode; otherwise it starts in SVC. Note that if we start in
-+     * AArch64 then these values in the uncached_cpsr will be ignored.
-+     */
-+    if (arm_feature(env, ARM_FEATURE_EL2) &&
-+        !arm_feature(env, ARM_FEATURE_EL3)) {
-+        env->uncached_cpsr = ARM_CPU_MODE_HYP;
-+    } else {
-+        env->uncached_cpsr = ARM_CPU_MODE_SVC;
-+    }
-     env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
- 
-     if (arm_feature(env, ARM_FEATURE_M)) {
--- 
-2.18.0
+
+r~
 

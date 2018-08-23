@@ -1,112 +1,70 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1453648wrd;
-        Thu, 23 Aug 2018 11:05:41 -0700 (PDT)
-X-Google-Smtp-Source: ANB0Vda6toaOSd6MXjXPiWPF34a1urUGlDLj0NTuZ8uX2VlASCQU5qoFre3UYo88DtDshl92i/LP
-X-Received: by 2002:ac8:2488:: with SMTP id s8-v6mr5613514qts.87.1535047541622;
-        Thu, 23 Aug 2018 11:05:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535047541; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1456585wrd;
+        Thu, 23 Aug 2018 11:08:36 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPyaqmsGJlxtB5IYdOdYC9ggQnu8/4fo0LANaN17Wo6KTNpUE2/FNOHUSoOyAJ7qzNgd8rlh
+X-Received: by 2002:a0c:83c4:: with SMTP id k62-v6mr57020323qva.88.1535047716265;
+        Thu, 23 Aug 2018 11:08:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535047716; cv=none;
         d=google.com; s=arc-20160816;
-        b=gqtgXa8rARZhsQSemt/fpejVLYFIBpNrODeMQEmPVNPDniqXbeP6Cg+4irQWt6HTJL
-         PPwctqCNTD7paROUIeaZOevDLHeubdOhqBT94zBFk6QbNzEJkqkw72211vexmBU8FH5c
-         KiuxlR+eW2+wgkwyUnwkPMtwfQ81fwDz3ud7FPEd4zaC96n7QNmsWys9l4WrxeIIMSbo
-         bZtKAZk8CJxDB5oC2BY95+bu8cnS8ViHsi+jG9HuwEZD6U8o4oaBt1JP1Hk+X/Dgc0p6
-         ZP3/zXgT99IfobIYrl5CTIrsk+FH4+/CbHcu1bEpbp0PXhLsfObhy1ai5lbRDhZUXCVX
-         w1Bw==
+        b=u3ZjYWGQVfmuRwTz9SxNyCdnyJUceSkEz9V75fguquwob7gd1UkYC0oZvVY/3C3dCk
+         bCzR1pfwaKvneNNnTIl7se9l8b/ju1X3hCdtHgpgAcUlvwBDWTJkDsfPLICAHkhWXOFe
+         9KrgxrvNJSUCHKlRUZXOpD2DdYILtJRIN9F8U5v5B/rZrKarJWLmhVvluypwJZXkoWLj
+         e5zEkm4z8/RMWSgn6QpJ4uVDfMigHdPMZL7RzgjWLXq6YHJi2ylCw0ACm3EyMmIMJjAS
+         Ce1xc6vs7t6NQP/rXHaE8jU9NKFt6B31WePsysYoIlJ5TsYcSqpDn+BLftbcmmceQAp6
+         udjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=oJ0hyIh6k4sU0pd1ei3oD3bukKdu2awcXg82JQWgTw8=;
-        b=xSAfJvhjPsEvQcj/JXe0D9Ywru3zHl2Z7ALEpymhvYjyBV+/VAN6hrZZ5uCfsFNq/J
-         vb9dcpYlNnBOWGFXpL6k2Jma9shK5AKshg2NSEVtaBe6LqaSIpFd68DHfDkZXtSxxBch
-         S8AK/oqfeK4UCvL9/XYOoWo747rLtDnGee8Lh4AoTIU4PCQByQcESS/7lJ37UotPjbUW
-         6oJiBR8kiSMsyvrzJHG0YvKtbPY6RoVFrGj36psTH9D7y1IjlFYn8TfxxMpdZGSv0SNr
-         ZCWCM6K6vsN7Yd6O68IDns/6UnwuIt9jn5Qx6gJeet3AMbz2VZyumaabjB2NGc1aXIHl
-         F4Vw==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :arc-authentication-results;
+        bh=TlNBuU2OcCl6ZbKdAzJ6u7bN41nG5IG34Hgs7vCGnq0=;
+        b=nFxtAkE6G7NYMd6uXitRGHNA4lGB09zJUx56faULv7F9H25aEVeJSZSUwXhHkdbFZ2
+         38SXfd+6s7LYmb4NfBxcbkfpI3Npxx7Te3ogGOwVihzqumFU3GTAld+M9kl96LxzyRcb
+         Mtah60OVi/oJh2EQvXIo1DVgD+s+wDqP2hZH81F0u8O0juqh1rUMHHAscGtGRzxxLcLH
+         Y2ZXODjdv3Pxw4cNAPnAAWFKzpWUepUauTkbtxnIZK1U4LL5by5OQ6Zl53vsrf1wEaRS
+         ofmf3hRYhVkVMK7io/PxwMm1LkDSUpTqpDnh0GFBuRwTRvvWrvkyNigDuVVEI4J1jSqk
+         ++jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cF0LphFN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o2-v6si4768585qvq.257.2018.08.23.11.05.41
+        by mx.google.com with ESMTPS id j14-v6si5244662qtk.203.2018.08.23.11.08.36
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Aug 2018 11:05:41 -0700 (PDT)
+        Thu, 23 Aug 2018 11:08:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cF0LphFN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38251 helo=lists.gnu.org)
+Received: from localhost ([::1]:38278 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fstzJ-0000Qd-55
-	for alex.bennee@linaro.org; Thu, 23 Aug 2018 14:05:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56154)
+	id 1fsu27-0003JV-QW
+	for alex.bennee@linaro.org; Thu, 23 Aug 2018 14:08:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35010)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fstaU-0007ma-Jn
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 13:40:03 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fstma-0004B6-9Y
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 13:52:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fstaP-0001w5-BG
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 13:40:02 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:40418)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fstaO-0001un-T5
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 13:39:57 -0400
-Received: by mail-pf1-x444.google.com with SMTP id s13-v6so2994989pfi.7
-	for <qemu-arm@nongnu.org>; Thu, 23 Aug 2018 10:39:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=oJ0hyIh6k4sU0pd1ei3oD3bukKdu2awcXg82JQWgTw8=;
-	b=cF0LphFNq9SWhDRawGjZBIze+FRwL3tZXCecJ6AnuWwyxl3EdiYb/GHC06RzApnPeJ
-	w6zs+DyTrEg0oq2sLuSfiP0l9Zz6dgDBB7KQnjo0927P6pQ7FcFd6+yoBtSrjWHA0opi
-	PZoSRCQz+k5ZNoF/K0WOIfh/Z5ydhsUFChmv0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=oJ0hyIh6k4sU0pd1ei3oD3bukKdu2awcXg82JQWgTw8=;
-	b=SmmdgNp/behH2ll/k15sBNhpaOLwK/6yT2MTl1pmegDGxD9fT3chWrkbvtP0NwJxZz
-	JPd4GggJhMHooTwKjFRKGXua64W8cor6+bsXe0+EsEBabmwgmxgS9fKILFxbolIl06gE
-	5abh5dx1kCIimL1Cl5lzoLsY/K7Kd1PE1slxiGAAAjuYAeyBeuWWY/udsbJBR/1LGex/
-	iZrzSva6LniUPP+wHXFQv9RpNyarKIOYPB4Nvy0MniJ7rguUlaFlCvByM8pL/U4PhqHH
-	bC0t3IiuEEDkx/+Z9B2+Ywjx3E9poH+zaD1nzu1xwItR+2NLAh7CGHM2T3lcM5PQqBDm
-	sqDg==
-X-Gm-Message-State: AOUpUlHkIhXZ6gmXF/L9mksDTTR4Zb72LhmbMP/bAkrnZtXsTzLSJq5z
-	8H/Mn5ktjEhXMqmuaW9frr7l+g==
-X-Received: by 2002:a65:6143:: with SMTP id
-	o3-v6mr27713441pgv.52.1535045995913; 
-	Thu, 23 Aug 2018 10:39:55 -0700 (PDT)
-Received: from cloudburst.twiddle.net ([50.225.49.40])
-	by smtp.gmail.com with ESMTPSA id
-	s85-v6sm7906843pfa.116.2018.08.23.10.39.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 23 Aug 2018 10:39:54 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	(envelope-from <pm215@archaic.org.uk>) id 1fstmZ-0003gA-HS
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 13:52:32 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44848)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fstmZ-0003eT-A7; Thu, 23 Aug 2018 13:52:31 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fstmW-0005xu-6K; Thu, 23 Aug 2018 18:52:28 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-References: <20180820141116.9118-1-peter.maydell@linaro.org>
-	<20180820141116.9118-22-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <fa98dccc-7dbe-f57b-7c9f-eab2d452ff28@linaro.org>
-Date: Thu, 23 Aug 2018 10:39:49 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <20180820141116.9118-22-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Date: Thu, 23 Aug 2018 18:52:25 +0100
+Message-Id: <20180823175225.22612-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.18.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::444
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 21/22] hw/arm/mps2-tz:
- Instantiate SPI controllers
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH] hw/arm/mps2: Fix ID register errors on AN511 and
+ AN385
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,28 +76,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	patches@linaro.org
+Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tKHMcGfbQxiV
+X-TUID: E4cn9+gOjRlC
 
-On 08/20/2018 07:11 AM, Peter Maydell wrote:
-> The SPI controllers in the MPS2 AN505 board are PL022s.
-> We have a model of the PL022, so create these devices.
-> 
-> We don't currently model the LCD controller that sits behind
-> one of the PL022s; the others are intended to control devices
-> that sit on the FPGA's general purpose SPI connector or
-> "shield" expansion connectors.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/mps2-tz.c | 38 ++++++++++++++++++++++++++++++++------
->  1 file changed, 32 insertions(+), 6 deletions(-)
+Fix MPS2 SCC config register values for the mps2-an511
+and mps2-an385 boards:
+ * the SCC_AID bits [23:20] specify the FPGA build target board revision,
+   and the SCC_CFG4 register specifies the actual board revision, so
+   these should have matching values. Claim to be board revision C,
+   consistently -- we had the revision in the wrong part of SCC_AID.
+ * SCC_ID bits [15:4] should be the board number in hex, not decimal
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This fixes a bug that I noticed for the AN505 model and fixed there,
+but forgot to also fix on our other MPS image models.
 
+ hw/arm/mps2.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-r~
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 0a0ae867d9b..26934ecb31c 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -301,7 +301,7 @@ static void mps2_common_init(MachineState *machine)
+     sccdev = DEVICE(&mms->scc);
+     qdev_set_parent_bus(sccdev, sysbus_get_default());
+     qdev_prop_set_uint32(sccdev, "scc-cfg4", 0x2);
+-    qdev_prop_set_uint32(sccdev, "scc-aid", 0x02000008);
++    qdev_prop_set_uint32(sccdev, "scc-aid", 0x00200008);
+     qdev_prop_set_uint32(sccdev, "scc-id", mmc->scc_id);
+     object_property_set_bool(OBJECT(&mms->scc), true, "realized",
+                              &error_fatal);
+@@ -336,7 +336,7 @@ static void mps2_an385_class_init(ObjectClass *oc, void *data)
+     mc->desc = "ARM MPS2 with AN385 FPGA image for Cortex-M3";
+     mmc->fpga_type = FPGA_AN385;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
+-    mmc->scc_id = 0x41040000 | (385 << 4);
++    mmc->scc_id = 0x41043850;
+ }
+ 
+ static void mps2_an511_class_init(ObjectClass *oc, void *data)
+@@ -347,7 +347,7 @@ static void mps2_an511_class_init(ObjectClass *oc, void *data)
+     mc->desc = "ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3";
+     mmc->fpga_type = FPGA_AN511;
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
+-    mmc->scc_id = 0x4104000 | (511 << 4);
++    mmc->scc_id = 0x41045110;
+ }
+ 
+ static const TypeInfo mps2_info = {
+-- 
+2.18.0
 

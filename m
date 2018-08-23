@@ -1,69 +1,112 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1012375wrd;
-        Thu, 23 Aug 2018 03:38:41 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZrz0LTi9MgI7SxwHaVqHzfccDEw0GsqjWAllSHErCnpzdxTDQCCiQMYg5e//r7WrPQW6Jc
-X-Received: by 2002:a0c:937b:: with SMTP id e56-v6mr22716934qve.4.1535020721806;
-        Thu, 23 Aug 2018 03:38:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535020721; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1179212wrd;
+        Thu, 23 Aug 2018 06:32:06 -0700 (PDT)
+X-Google-Smtp-Source: AA+uWPxPajqr1WxfHA42w8W1zQvFhAYNn6Mb9Sj+Z719FXOifs4Sp0c9Rl5DX9j7AV5G3Ff0lZ1L
+X-Received: by 2002:aed:3688:: with SMTP id f8-v6mr59540261qtb.276.1535031126330;
+        Thu, 23 Aug 2018 06:32:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535031126; cv=none;
         d=google.com; s=arc-20160816;
-        b=IAoua3SMPh8hBXKgNgeNr0HlL4Cln5V8xC76FXzD7dD7BSUEL+AQEl0WfD7AVW55L6
-         2mRGDmRqjJB/Nwmv6zp4ADoOwLXO+Fo598ivI5UDrR7uxPDLgAp0Z+4upk2YlZjK7LeN
-         phZp4ZmsbYXaVM98+BbFm/l0BH8ho1ypv7wJM/BcHO6suGjBq8jejQlNl1XaArcct9s9
-         1M/L4E65WYWbC+xDu9Ulvnqtb1GH9ZdV8Xz/1Di5DnFPq3IIHXN06yUuey0yG8Q8ikNi
-         D0csITRH0NXMLKW6QZ0UMa9ibbw4eGTeggt0/0IlLIAYNXKW3twV9ZC1slDSdVvcrESq
-         /RIw==
+        b=bFZ5o/reLDgsObap/wy59COgktv5gppjN24ITKGA8JmvXeqBhYOf0moWUB4S/NXvFr
+         bcqif/RWCR8QKgwDH90fLDooKMW6Nvb/pIXUVPUI0IXAhUPCMYtx7XOBDmQ52/OYSc/y
+         0dAkD0TlCNGGx5uzyXJ+aPE+6Ox/f7oUemmKE6D0tVdzUaJHgv1RuLrmSTn6ic+PQ+zv
+         vt+s4DgjusvRO1JB/H/QQZugzqAtaw8dfW3uTOXpX2RXMeJ0c3DYd9ffXP9Pv8CHl5ok
+         PQfSMkySGfqkvlqcqPEHnP6t3fevJK2pCJsPf7T2fvRBhPRAlUDVnMdWTYja0+nQlbWB
+         bucQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=wixKQvC2lp2HlUF4xdo3i6RrbwajEPE/Vnw2+4TWv9Y=;
-        b=raV+90iuRnPMMYo7fL6SvVqXKKjFN/NsW4UZ2ZFryvN+Da4kPI8O6PQTJDkdaxMH3r
-         Y4O2V5ubnbTIG1D6Wlryz4uLGDKl1aBwgm6caQflMRYnUaCp1Oe6p0T2ZGJO2tAcotHc
-         4JyyVIv7TC3MjybCR+oBReK0fmt/Cmzo7TjvNrGaSLpg6jbGfNplE0lUP9nrMEZHPrla
-         RQS7/hUpqwph2bR4/bkpSLGlYdrYMF2rrm77qDZLTcJNQ710W83OWOJa9g/SjkJN/TLL
-         AJmY/lOksQ8gPk7yIu4LQ3P9dYpc5foH0pisPx0IWD2DlqfB3sGPs8ZF+bCREEKKUo2E
-         zaUw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature:arc-authentication-results;
+        bh=aeAdQcuGMXvKWDuvtVlhWyz2CVReWLblEaMLvuzHBJo=;
+        b=mLxYJFXDqUyKjlnlcHo5vGixb5tkj29HyoVixrjFFwzFG4t5mENnzd00wIw5r8SiHL
+         TaQvGZgRXB2izKdOKAdA0UjxfDk95eV5SWuHCbZ5AkBxHGgb9/lJOOrDN6HOS/tng/nz
+         mQNPmgMwP0hw7MBG8dCUvCHoSZq2tvzIqFYhTqOtU7qIE1eNfDVVtIotPr4Awpp+ygfj
+         itfaTypmq+Kh4DkC4FoVNfolwajgSx4kmBVpQRiTHHgrL52IERo2ImBPnyvP2kXsVr8M
+         AJ4aAEhOAvAoq5EULnWHaV/V/Z64ycKFM053npkXQ5dKLoqbfdfcc9KpEk455spot+Ut
+         14cg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HRgkBTlA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o9-v6si3902180qvn.224.2018.08.23.03.38.41
+        by mx.google.com with ESMTPS id z13-v6si386258qkf.190.2018.08.23.06.32.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 23 Aug 2018 03:38:41 -0700 (PDT)
+        Thu, 23 Aug 2018 06:32:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HRgkBTlA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35654 helo=lists.gnu.org)
+Received: from localhost ([::1]:36475 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fsn0j-0001Ih-A9
-	for alex.bennee@linaro.org; Thu, 23 Aug 2018 06:38:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50922)
+	id 1fspiX-0002dJ-Qv
+	for alex.bennee@linaro.org; Thu, 23 Aug 2018 09:32:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fsn0Z-0001HH-Bx
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 06:38:32 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fspiO-0002bj-6D
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 09:31:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1fsn0Y-0000x0-E5
-	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 06:38:31 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44828)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1fsn0Y-0000uQ-50; Thu, 23 Aug 2018 06:38:30 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1fsn0Q-0005iz-1J; Thu, 23 Aug 2018 11:38:22 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
+	(envelope-from <richard.henderson@linaro.org>) id 1fspiJ-0006Cf-VE
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 09:31:56 -0400
+Received: from mail-pl0-x242.google.com ([2607:f8b0:400e:c01::242]:38936)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fspiJ-0006Br-KM
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 09:31:51 -0400
+Received: by mail-pl0-x242.google.com with SMTP id w14-v6so2418283plp.6
+	for <qemu-arm@nongnu.org>; Thu, 23 Aug 2018 06:31:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=aeAdQcuGMXvKWDuvtVlhWyz2CVReWLblEaMLvuzHBJo=;
+	b=HRgkBTlAtBrNHLeoPmstfOggdxEqn2OT+xbANDEjVLmEBZ7Vyk4UEmMgZRQJZfAH5W
+	nUoXmkza4oklxxWzdQk+tvi3Nq3T0cSxPcWxMSv5keEXqrhyaOxg1jI3xaIIGUhOTSNf
+	jydcdroxANwBLUNvU8qp/ojKedQbZjvdSiTuc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=aeAdQcuGMXvKWDuvtVlhWyz2CVReWLblEaMLvuzHBJo=;
+	b=obSdNFY7lElpFoFnNZXBEX8QCC2MFw8mLy4PHV62pVFP0sd3OCpAvhaBBsmhZLJ3sV
+	iAHSWzW4orhq/R9VNJWK77MZ31pSAIs/bZ2bFg2o7LpEXuW/9lvcq4kC4b9oi6sHIIpr
+	cw0dmu110an/dYMl2B3TKJ477IS6cZoYxtL9SXkPPQ+Wk9XpdC1MEnhXIoO+/iPLUKXC
+	hIySyU5Wuc5XbzijqKAyXwO/G6bO04T+KTpU1304rXeuHOpoqZ6yOsHCU80LVRayQBYB
+	P4laISpAh8xFTz+i0cK4nkdoBM6OPGXu8/PREt4Kj2yM34b47ASCtmpttmilugFuNY0L
+	LiiQ==
+X-Gm-Message-State: AOUpUlGGH6wev/p/byZQ+RfTx3A8akye0fHin0bV+aHOfAHhRJO5hWgY
+	U+77k5kvpmrTBfNXqihTgnCeXQ==
+X-Received: by 2002:a17:902:d881:: with SMTP id
+	b1-v6mr29215781plz.191.1535031110723; 
+	Thu, 23 Aug 2018 06:31:50 -0700 (PDT)
+Received: from cloudburst.twiddle.net ([50.225.49.40])
+	by smtp.gmail.com with ESMTPSA id
+	t86-v6sm1875367pfe.109.2018.08.23.06.31.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 23 Aug 2018 06:31:49 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 23 Aug 2018 11:38:18 +0100
-Message-Id: <20180823103818.31189-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.18.0
+References: <20180820141116.9118-1-peter.maydell@linaro.org>
+	<20180820141116.9118-3-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <6963bd38-f7fb-dce0-f857-edc65e619de7@linaro.org>
+Date: Thu, 23 Aug 2018 06:31:45 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <20180820141116.9118-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH v2] hw/intc/arm_gic: Document QEMU interface
+X-Received-From: 2607:f8b0:400e:c01::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/22] hw/misc/mps2-fpgaio:
+ Implement PSCNTR and COUNTER
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,81 +118,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Luc Michel <luc.michel@greensocs.com>, patches@linaro.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FgIauhltWoti
+X-TUID: uQrnPl4WH0rM
 
-The GICv2's QEMU interface (sysbus MMIO regions, IRQs,
-etc) is now quite complicated with the addition of the
-virtualization extensions. Add a comment in the header
-file which documents it.
+On 08/20/2018 07:10 AM, Peter Maydell wrote:
+> In the MPS2 FPGAIO, PSCNTR is a free-running downcounter with
+> a reload value configured via the PRESCALE register, and
+> COUNTER counts up by 1 every time PSCNTR reaches zero.
+> Implement these counters.
+> 
+> We can just increment the counters migration subsection's
+> version ID because we only added it in the previous commit,
+> so no released QEMU versions will be using it.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+>  include/hw/misc/mps2-fpgaio.h |  6 +++
+>  hw/misc/mps2-fpgaio.c         | 97 +++++++++++++++++++++++++++++++++--
+>  2 files changed, 99 insertions(+), 4 deletions(-)
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I needed to write this out to figure out what I was
-connecting to what in the a15mpcore object :-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-v1->v2 changes: fixed errors in sysbus IRQ and per-cpu GICH
-memory region docs pointed out by Luc.
 
- include/hw/intc/arm_gic.h | 43 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 43 insertions(+)
-
-diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
-index 42bb535fd45..1af5051ed5d 100644
---- a/include/hw/intc/arm_gic.h
-+++ b/include/hw/intc/arm_gic.h
-@@ -18,6 +18,49 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
-+/*
-+ * QEMU interface:
-+ *  + QOM property "num-cpu": number of CPUs to support
-+ *  + QOM property "num-irq": number of IRQs (including both SPIs and PPIs)
-+ *  + QOM property "revision": GIC version (1 or 2), or 0 for the 11MPCore GIC
-+ *  + QOM property "has-security-extensions": set true if the GIC should
-+ *    implement the security extensions
-+ *  + QOM property "has-virtualization-extensions": set true if the GIC should
-+ *    implement the virtualization extensions
-+ *  + unnamed GPIO inputs: (where P is number of PPIs, i.e. num-irq - 32)
-+ *    [0..P-1]  SPIs
-+ *    [P..P+31] PPIs for CPU 0
-+ *    [P+32..P+63] PPIs for CPU 1
-+ *    ...
-+ *  + sysbus IRQs: (in order; number will vary depending on number of cores)
-+ *    - IRQ for CPU 0
-+ *    - IRQ for CPU 1
-+ *      ...
-+ *    - FIQ for CPU 0
-+ *    - FIQ for CPU 1
-+ *      ...
-+ *    - VIRQ for CPU 0 (exists even if virt extensions not present)
-+ *    - VIRQ for CPU 1 (exists even if virt extensions not present)
-+ *      ...
-+ *    - VFIQ for CPU 0 (exists even if virt extensions not present)
-+ *    - VFIQ for CPU 1 (exists even if virt extensions not present)
-+ *      ...
-+ *    - maintenance IRQ for CPU i/f 0 (only if virt extensions present)
-+ *    - maintenance IRQ for CPU i/f 1 (only if virt extensions present)
-+ *  + sysbus MMIO regions: (in order; numbers will vary depending on
-+ *    whether virtualization extensions are present and on number of cores)
-+ *    - distributor registers (GICD*)
-+ *    - CPU interface for the accessing core (GICC*)
-+ *    - virtual interface control registers (GICH*) (only if virt extns present)
-+ *    - virtual CPU interface for the accessing core (GICV*) (only if virt)
-+ *    - CPU 0 CPU interface registers
-+ *    - CPU 1 CPU interface registers
-+ *      ...
-+ *    - CPU 0 virtual interface control registers (only if virt extns present)
-+ *    - CPU 1 virtual interface control registers (only if virt extns present)
-+ *      ...
-+ */
-+
- #ifndef HW_ARM_GIC_H
- #define HW_ARM_GIC_H
- 
--- 
-2.18.0
+r~
 

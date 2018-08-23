@@ -1,141 +1,275 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp634755wrd;
-        Wed, 29 Aug 2018 06:42:23 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZ4gf3+wLVrmAumjrh97AxZJbtUUCz3PX5XluI5SagqwCRCUO+6oFw5PumSebBCQQlh/jSv
-X-Received: by 2002:a0c:d5d3:: with SMTP id h19-v6mr6562610qvi.218.1535550143362;
-        Wed, 29 Aug 2018 06:42:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535550143; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp875390wrd;
+        Thu, 23 Aug 2018 00:45:51 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdagnWanrcb6iZPfkApbWaFyaEoU3nDBFY6Irt1NUgdrFCcqCV1oZFUZ7n8Ah4szJ1tNron0
+X-Received: by 2002:a0c:9967:: with SMTP id i36-v6mr2267893qvd.120.1535010351605;
+        Thu, 23 Aug 2018 00:45:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535010351; cv=none;
         d=google.com; s=arc-20160816;
-        b=SF7lfinnx59G8s2fOKUDh/evzdhIiIETCRE0xYz5DshrFtB1tO9++ZJ7VgS7+vOKN5
-         4yQK8rLiD5NQVy207Sp1MswRTy5MgDVCdnuU05sx+sSsDnLJ23sHTc9jmvLuKSvc6kf9
-         QkRm+qLEf03OuUFhBUkvUchWF6sx78Z/neLHuufhZn/To0yqQP7uairJ8O0nF3M3TzN3
-         /jS+I68oHNmhiYx582g3NfnGhdcG76KDwu39P3dEw2Qm2ywtYExwermj6MhcUm12k8yG
-         ffhXYnA6FKohNWC7YT7SK3lKtEnmZg4qXRdt2qTURv+dGEi/wdHCMNh8FpWhAPRsQl0f
-         vIHQ==
+        b=Elrrd9NPvJO4WT0oCOqU9QwTEmqXpv3SHQELcfmJQfRi2MVj/tv0c6iBZn68Oy6/ta
+         XXDdootQ4+kYXeoSSt76HIomT/idDSnpjxzwasx7AHnWkqfMjnA7d3MdYI2LCSJpPTpg
+         N++I7Oop9V+jQ78cyDeD21gOWrWGhfPG9jE7CUh5LThJ4ITqgxKL7nck6GbCa85h2Nhx
+         8g+p2i0pozoeFN3ZhWSVJpzUXjE+KMbtjvYFldS8iMNS2NVdjEPzVuY6vACxw0yxwZqS
+         HKblawqgyx3seS8jHci7x84tSEau+hv5Y9Y4AyIQUHY/mPxh8/02bn2Fi9/bgaiUmh6I
+         9ROA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:arc-authentication-results;
-        bh=iAcAhLABN0czb+bOrWqdCfjC1PRFUNDtcISBAR2IYlU=;
-        b=Q8yB3S+r/oMaZku9oKCr1IIpJRdr5uLZ7zD8dM2+rFA7b5CBBTbWaeFwol6pfs2a9I
-         g2Gt35dYWnIxjulvu6THxlauUpzNQEg0145dJnK3LTVxdELWb9Ip4aaAw99TbWAHBCip
-         WgH5JAXuaMBz9D52kFkdBb4NIwSSFTi0renzhmq937rdsICPrqnkswmMjRrSUbDRl529
-         BKBZYN6nqVfUUCkwgvWne1WwSvUJCbs1ib+KLwo+UoA1o6qSIu1WSxwRaGyzD7pC0knL
-         gOjzjqWQZxkRIskWTR/jI1yS4mkBwkDSZWddWALDy6TsGBG1DqyYw7Yn7JyUhrPS1r/e
-         6rfg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from:arc-authentication-results;
+        bh=78M+Jm1RQpMDQTkqw5hzs7+jrvh5g8mMvp6ub7lGIck=;
+        b=EtCHi/n0MAvBVkWNMGY7AsLcPkJGUZwiYwyAg6q5xhkvnoRmVpUZXFT/SULVMb/KSb
+         TWF3jUT4nJbZvh0z5FTh6iTGrr5c3zKxtZ3aMzv2X4Hk7ERpqhGwxftCpYD2IdF9TKPg
+         O3O/f7akPtwdcWlRE6vyLGiyhI9Y7PtTU00iDk0rjZPkcuJfKM0ntGdlv6MFNUFRWuBa
+         AgXJ8Aj+Mu2vUF73QKMDyrZZSymHHqaEodWcysFKw8oTa0b9NJa1tIhN+f8+Y1pGBuFk
+         QOCnyO7XnRzlIK9adjqKyIXpq+tY/2wfV3tGi74JYg+wZabMbTmGHNGA8tvSKswxFLU8
+         taVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id f53-v6si648734qta.336.2018.08.29.06.42.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 29 Aug 2018 06:42:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id s5-v6si162827qkd.109.2018.08.23.00.45.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 23 Aug 2018 00:45:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 94B805A74E;
-	Wed, 29 Aug 2018 13:42:22 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 508BB63A6A;
-	Wed, 29 Aug 2018 13:42:21 +0000 (UTC)
-Date: Wed, 29 Aug 2018 15:42:19 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com>
-References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
- <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
- <CAFEAcA9hivJzqksiSZbco4+EysYj=_y0t3k_L7TobxNPS8T2dQ@mail.gmail.com>
- <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34824 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fskJT-0004iL-1L
+	for alex.bennee@linaro.org; Thu, 23 Aug 2018 03:45:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60082)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>) id 1fskJB-0004fK-Ra
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 03:45:35 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <gengdongjiu@huawei.com>) id 1fskEK-0006lT-1z
+	for qemu-arm@nongnu.org; Thu, 23 Aug 2018 03:40:35 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:60969 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1fskEJ-0006ie-K3; Thu, 23 Aug 2018 03:40:31 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+	by Forcepoint Email with ESMTP id 3B4C7AF6F42EB;
+	Thu, 23 Aug 2018 15:40:25 +0800 (CST)
+Received: from localhost.localdomain (10.143.28.90) by
+	DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server
+	id 14.3.399.0; Thu, 23 Aug 2018 15:40:16 +0800
+From: Dongjiu Geng <gengdongjiu@huawei.com>
+To: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Date: Thu, 23 Aug 2018 11:45:00 -0400
+Message-ID: <1535039100-11248-2-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1535039100-11248-1-git-send-email-gengdongjiu@huawei.com>
+References: <1535039100-11248-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]); Wed, 29 Aug 2018 13:42:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]); Wed, 29 Aug 2018 13:42:22 +0000 (UTC) for IP:'10.11.54.5' DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: Iti2+2GZBdwu
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.90]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 45.249.212.32
+Subject: [Qemu-arm] [PATCH v6 2/2] target: arm: Add support for VCPU event
+ states
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: linuxarm@huawei.com, gengdongjiu@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qDKPu9ITWYKC
 
-On Wed, Aug 29, 2018 at 05:17:20PM +0800, Hongbo Zhang wrote:
-> On 17 August 2018 at 21:37, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> >> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> >> run on KVM and execute virtualization workloads, but we need an
-> >> environment as faithful as possible to physical hardware, for supporting
-> >> firmware and OS development for pysical Aarch64 machines.
-> >>
-> >> This patch introduces new machine type 'Enterprise' with main features:
-> >>  - Based on 'virt' machine type.
-> >>  - Re-designed memory map.
-> >>  - EL2 and EL3 are enabled by default.
-> >>  - GIC version 3 by default.
-> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
-> >>    can be added to it.
-> >>  - EHCI controller attached to system bus, with USB mouse and key board
-> >>    installed by default.
-> >>  - E1000E ethernet card on PCIE bus.
-> >>  - VGA display adaptor on PCIE bus.
-> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
-> >>  - No virtio functions enabled, since this is to emulate real hardware.
-> >>  - No paravirtualized fw_cfg device either.
-> >>
-> >> Arm Trusted Firmware and UEFI porting to this are done accordingly.
-> >>
-> >> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> >> ---
-> >> Changes since v1:
-> >>  - rebase on v3.0.0-rc0
-> >>  - introduce another auxillary patch as 1/2, so this is 2/2
-> >>  - rename 'sbsa' to 'enterprise'
-> >>  - remove paravirualized fw_cfg
-> >>  - set gic_vertion to 3 instead of 2
-> >>  - edit commit message to describe purpose of this platform
-> >
-> > Hi; there's been a lot of discussion on this thread. I'm going
-> > to assume that you don't need any further review commentary for
-> > the moment, and will wait for a v3. If there are any specific
-> > questions you want guidance on to produce that v3, let me know.
-> >
-> Thank you for this summary/remind.
-> Sorry for the late reply due to my vacation last week.
-> 
-> Yes, I am working on the v3, with main changes:
->  - machine name "sbsa-ref" (good name?)
->  - a separate file sbsa-ref.c
->  - don't touch the acpi c file, acpi will be supplied by uefi
+This patch extends the qemu-kvm state sync logic with support for
+KVM_GET/SET_VCPU_EVENTS, giving access to yet missing SError exception.
+And also it can support the exception state migration.
 
-I agree with the above three bullets.
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+Change since v5:
+address Peter's comments:
+1. Move the "struct serror" before the "end_reset_fields" in CPUARMState
+2. Remove ARM_FEATURE_RAS_EXT and add a variable have_inject_serror_esr
+3. Use the variable have_inject_serror_esr to track whether the kernel has state we need to migrate
+4. Remove printf() in kvm_arch_put_registers()
+5. ras_needed/vmstate_ras to serror_needed/vmstate_serror
+6. Check to use "return env.serror.pending != 0" instead of "arm_feature(env, ARM_FEATURE_RAS_EXT)" in the ras_needed()
 
->  - only necessary dt node, no other peripheral dt nodes
+Change since v4:
+1. Rebase the code to latest
 
-I'm not sure what DT nodes are necessary. After discussing the
-ACPI tables, and that firmware would supply them, I thought we
-also agreed firmware would supply the DTB.
+Change since v3:
+1. Add a new new subsection with a suitable 'ras_needed' function
+   controlling whether it is present
+2. Add a ARM_FEATURE_RAS feature bit for CPUARMState
+---
+ target/arm/cpu.h     |  7 +++++++
+ target/arm/kvm64.c   | 59 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/machine.c | 22 ++++++++++++++++++++
+ 3 files changed, 88 insertions(+)
 
-Thanks,
-drew
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 62c36b4..7030680 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -530,6 +530,13 @@ typedef struct CPUARMState {
+          */
+     } exception;
+ 
++    /* Information associated with an SError */
++    struct {
++        uint32_t pending;
++        uint32_t has_esr;
++        uint64_t esr;
++    } serror;
++
+     /* Thumb-2 EE state.  */
+     uint32_t teecr;
+     uint32_t teehbr;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index e0b8246..3913143 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -29,6 +29,7 @@
+ #include "hw/arm/arm.h"
+ 
+ static bool have_guest_debug;
++static bool have_inject_serror_esr;
+ 
+ /*
+  * Although the ARM implementation of hardware assisted debugging
+@@ -546,6 +547,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     kvm_arm_init_debug(cs);
+ 
++    /* Check whether userspace can specify guest syndrome value */
++    have_inject_serror_esr = kvm_check_extension(cs->kvm_state,
++                                                 KVM_CAP_ARM_INJECT_SERROR_ESR);
++
+     return kvm_arm_init_cpreg_list(cpu);
+ }
+ 
+@@ -600,6 +605,50 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+ #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
+                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+ 
++static int kvm_put_vcpu_events(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    struct kvm_vcpu_events events = {};
++
++    if (!kvm_has_vcpu_events()) {
++        return 0;
++    }
++
++    memset(&events, 0, sizeof(events));
++    events.exception.serror_pending = env->serror.pending;
++
++    if (have_inject_serror_esr) {
++        events.exception.serror_has_esr = env->serror.has_esr;
++        events.exception.serror_esr = env->serror.esr;
++    }
++
++    return kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
++}
++
++static int kvm_get_vcpu_events(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    struct kvm_vcpu_events events;
++    int ret;
++
++    if (!kvm_has_vcpu_events()) {
++        return 0;
++    }
++
++    memset(&events, 0, sizeof(events));
++    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_VCPU_EVENTS, &events);
++
++    if (ret < 0) {
++        return ret;
++    }
++
++    env->serror.pending = events.exception.serror_pending;
++    env->serror.has_esr = events.exception.serror_has_esr;
++    env->serror.esr = events.exception.serror_esr;
++
++    return 0;
++}
++
+ int kvm_arch_put_registers(CPUState *cs, int level)
+ {
+     struct kvm_one_reg reg;
+@@ -727,6 +776,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
++    ret = kvm_put_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     if (!write_list_to_kvmstate(cpu, level)) {
+         return EINVAL;
+     }
+@@ -863,6 +917,11 @@ int kvm_arch_get_registers(CPUState *cs)
+     }
+     vfp_set_fpcr(env, fpr);
+ 
++    ret = kvm_get_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     if (!write_kvmstate_to_list(cpu)) {
+         return EINVAL;
+     }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index ff4ec22..1a58b5f 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -172,6 +172,27 @@ static const VMStateDescription vmstate_sve = {
+ };
+ #endif /* AARCH64 */
+ 
++static bool serror_needed(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++
++    return env->serror.pending != 0;
++}
++
++static const VMStateDescription vmstate_serror = {
++    .name = "cpu/ras",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = serror_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(env.serror.pending, ARMCPU),
++        VMSTATE_UINT32(env.serror.has_esr, ARMCPU),
++        VMSTATE_UINT64(env.serror.esr, ARMCPU),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static bool m_needed(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+@@ -726,6 +747,7 @@ const VMStateDescription vmstate_arm_cpu = {
+ #ifdef TARGET_AARCH64
+         &vmstate_sve,
+ #endif
++        &vmstate_serror,
+         NULL
+     }
+ };
+-- 
+1.9.1
 
-> 
-> Before my sending, I still like comments on the above effort, it is
-> feasible/reasonable or not etc, in case I go wrong too much.
-> 
-> I also know that some reviewers may like to give comments when they
-> see the patch codes, so if you don't have comments now, you can do it
-> after seeing the patch.
-> Thanks all.
-> 
-> > thanks
-> > -- PMM
-> 

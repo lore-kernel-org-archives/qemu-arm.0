@@ -1,223 +1,246 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp6442508wrd;
-        Tue, 28 Aug 2018 06:54:47 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdYfv+CcP7+iWPAbJYBUBjW6tTkntFc7NBRszossEhLo4fTfw/drY3/JAJ+k5Z8wR62fMh+x
-X-Received: by 2002:a37:5f03:: with SMTP id t3-v6mr1581591qkb.193.1535464487294;
-        Tue, 28 Aug 2018 06:54:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535464487; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp6793432wrd;
+        Tue, 28 Aug 2018 13:04:15 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdY5MptpYGRU9AwXbJ/WCeTj0QnOc/Bx4edIPLedrgBwYST9/sy5KLfICzyADGkXF5Ybqqwn
+X-Received: by 2002:a0c:ecc2:: with SMTP id o2-v6mr3272981qvq.148.1535486655521;
+        Tue, 28 Aug 2018 13:04:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535486655; cv=none;
         d=google.com; s=arc-20160816;
-        b=eSNd1SQrScImN/+hnRJ3Rpqgdns42FaMjT5HCxRIBXRJpYc4DFrFWdQg8ItsMMijsc
-         1cRn2xD4p1sSc60u+43dIPKsBJjBDERtku9QZ3oJcGLTB5FCiTLEIEQXpCRRWkQhnlLD
-         M4pajRJCY97NqeBIcuwBCL/FDZwn1d3iyzinD/NAfQW872QKGQ4kwsURH1DMpq0GdQtv
-         4fN+cdOH8VDyq24MGMyqAvZBfaHwxbwq+eQYqOU4faFeaNk/xW3wLLTeG4AlTUrL1O2g
-         TcsKnF6Cq6Qcity79ltifRp3Xe3BWUVy2znAddgNbbb7M+g1eaDeRUMdvNDCHrEPSyf/
-         cj+A==
+        b=nI3nAaFDNQ9R7LdXLumcwCv4WwdgXF31cx87q/yO39OOCNn2Dl7BFmm7IJazoQ0AwZ
+         /c4Y08w8dWNfp5SWxC5ms1nUi6tgFFyBeRobpD0GFOzVxK8XN3i9XnRfrY71MyaIiWfF
+         Vcz5adtW01kHyOSmJYUuqHwEeO5HKlAf2ZLhtlqB5UmvisZTPq/0+pKoqknLe3Y+lWxT
+         VxPWCVPtYvgUh0eT6ud8dgFHkw12of2mV1yAAvdPKSFiWkC6SNovciScV69+5H3FzSBN
+         9efcVvNpm5Sd1M99/47i/B1ILN1PLRxs3rSByqTll1iUr9htslO6zLfmxJP+lfKhIoA0
+         A5+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from:arc-authentication-results;
-        bh=FXnzTnswWt3kOu4gSieK7bgk9t1LxBuRhfmaePqAo4c=;
-        b=VCl9lMEKUjUCccvgeReRP+Lw2pu8o5AF461Yl24OF1YgjKCm5UDzAO13p44N/WNL8L
-         T7UPaX3QONwDJOvFBQFvbfGwqgT6qGEfwpGpwvqfwVBhalpv5xGxYRw6vRnLH37wqNTw
-         MqNTZPZHKr1Ro07xRWxpbff0GHsMxff2ilXQ/q9r1OBq746rASnKeZKpXX4v+myJHlXb
-         cIsw7woPfmBE6m6L7f5LisaBja2luwN6LSnX5HiV1MorHYzd9r4RFX31I+2x3guW3Udn
-         JjqsD037j+7pv/cEaaLcLV3qrhvDY83VzTXDMSpFABXVyGFgrZtT5iOxuop2xP8DdqFv
-         LSpQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=BLL7C2fhvZtg5v/6xSdwX5YQkgMxfPo0JjMOo7EMfaI=;
+        b=ejJ7hFmy2r38EjhaaXCMAzRZ0fHkkNZYyz+OKVWj0CGZKMprGqTqyH2V3GjPFC2D55
+         vKwJrzhAsEescHhKtt/2Q5aGBHL5LxhTHytJKZfOBEy9HsNDKwXAULHeC0B5hUnlh6RW
+         2FTZ1a70gD+yVernaW9CFoOpYfxRFrEx2xu7TCHL4DkpD320pP6qx836Sqr7wW8caBan
+         6xpC1wFi5sUMotUBQdt8LGUKHLz4Zeih0x2ULeZOhndy7aBrt584dGs4K0Mul6P6v6t1
+         OY2e1mTf4yzGmR1gxl0r1Vq8PmO4EWttSeNM3P2VRbG38HZhQe6UAwz+4LbVWHRGMasH
+         QOUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hxIDdxRg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r14-v6si916923qvn.159.2018.08.28.06.54.47
+        by mx.google.com with ESMTPS id y12-v6si1828382qti.27.2018.08.28.13.04.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Aug 2018 06:54:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 28 Aug 2018 13:04:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38329 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hxIDdxRg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39622 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fueSE-0004Fy-QR
-	for alex.bennee@linaro.org; Tue, 28 Aug 2018 09:54:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42436)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fukDm-0004eS-SN
+	for alex.bennee@linaro.org; Tue, 28 Aug 2018 16:04:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1fueQo-0003CX-CB
-	for qemu-devel@nongnu.org; Tue, 28 Aug 2018 09:53:19 -0400
+	(envelope-from <aclindsa@gmail.com>) id 1fukDR-0004WB-Ap
+	for qemu-arm@nongnu.org; Tue, 28 Aug 2018 16:03:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1fueQn-0000TH-41
-	for qemu-devel@nongnu.org; Tue, 28 Aug 2018 09:53:18 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2406 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1fueQa-0000Kn-9d; Tue, 28 Aug 2018 09:53:06 -0400
-Received: from DGGEMA403-HUB.china.huawei.com (unknown [172.30.72.56])
-	by Forcepoint Email with ESMTP id 7801015BC3488;
-	Tue, 28 Aug 2018 21:52:58 +0800 (CST)
-Received: from DGGEMA523-MBX.china.huawei.com ([169.254.5.239]) by
-	DGGEMA403-HUB.china.huawei.com ([10.3.20.44]) with mapi id
-	14.03.0399.000; Tue, 28 Aug 2018 21:52:56 +0800
-From: gengdongjiu <gengdongjiu@huawei.com>
-To: Shannon Zhao <shannon.zhaosl@gmail.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Thread-Topic: [Qemu-arm] [PATCH v7 2/2] target: arm: Add support for VCPU
-	event states
-Thread-Index: AQHUPgNQ3z6zy7PShUi3h4pqR0Pq7KTUgL2AgACvciA=
-Date: Tue, 28 Aug 2018 13:52:56 +0000
-Message-ID: <0184EA26B2509940AA629AE1405DD7F201E1AD64@dggema523-mbx.china.huawei.com>
-References: <1535402777-46620-1-git-send-email-gengdongjiu@huawei.com>
-	<1535402777-46620-3-git-send-email-gengdongjiu@huawei.com>
-	<c2e71ef7-5e5e-873c-0ec3-b36a257256c3@gmail.com>
-In-Reply-To: <c2e71ef7-5e5e-873c-0ec3-b36a257256c3@gmail.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.45.52.187]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <aclindsa@gmail.com>) id 1fukDP-0006Kh-TT
+	for qemu-arm@nongnu.org; Tue, 28 Aug 2018 16:03:53 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35393)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <aclindsa@gmail.com>)
+	id 1fukDP-0006Jn-Fw; Tue, 28 Aug 2018 16:03:51 -0400
+Received: by mail-qt0-x243.google.com with SMTP id j7-v6so3234855qtp.2;
+	Tue, 28 Aug 2018 13:03:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=BLL7C2fhvZtg5v/6xSdwX5YQkgMxfPo0JjMOo7EMfaI=;
+	b=hxIDdxRgzxZHxlwEpjgOALsZrNMNZdfo7drjyAvQxxjgaQzEWa7vjRKg61O2K9re8x
+	Xk4qLjn6KqxgiHG4n4ILr3WY7YHTLi3SBArJ34CX35+0wTkHz+MMa13gejfTRjm5mLHa
+	G99lTc7ln+774sJ3jbMl7BL2x2pyzYUtEusrIJW60ya+r77U3nhzKDqi8B2YGjjrRWns
+	MbGr4wD5wJ6XvzQ4CFhDDg8BdSVaIGyHxh6eJAeAtFgRnV0Y9uiczzH9TZPbb86a/vj7
+	NCc4pR3o9Ztbk7Z3lwDEl8vpO2TQdix7a/tvGddzO6MBus7uyJefwDmfCrglR1Y0cLFb
+	4P/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=BLL7C2fhvZtg5v/6xSdwX5YQkgMxfPo0JjMOo7EMfaI=;
+	b=qEK9swXhlEkwVgUBLkI9jix/SWF5W4l3J5ujwPsGBCvH3pfgmwNKU3eqYCQGQgGyD4
+	TqnrKJUKYLkqig1/4ezKBuqFzNmJ+ndMLEYDNBUYS7AC9UsrwTp90f/uiAlJHsvG2NkK
+	55J4o6d2mIZ2/CTWU8s2wPQoAX8oy8ROVLKzbCBPzOR9eD6lTfpgDtzpRL9dXayRyNvZ
+	LJEbmDh1PNsUiJRIr+vWI7TR0oAHthM+9FVRdNvyt/skOHeMG8jCob07CN7GGtph5LZc
+	qe2iBTfDVXWSsqsmTklE/QZmzjoJ4ZEL5CJH1MEjbSXL5a1nlIND3H06Yw3bM62TRkxA
+	/WmQ==
+X-Gm-Message-State: APzg51BcaEMw2QWuyIuxtqmgOLdEHErpkqwmJxLaNZddv6PttYVqFRaI
+	88Ohr4ofaBnA7PYQa2ffULY=
+X-Received: by 2002:ac8:5159:: with SMTP id
+	h25-v6mr3450119qtn.290.1535486630739; 
+	Tue, 28 Aug 2018 13:03:50 -0700 (PDT)
+Received: from okra.localdomain ([2600:3c03::f03c:91ff:febb:cdda])
+	by smtp.gmail.com with ESMTPSA id
+	x189-v6sm1201579qkd.44.2018.08.28.13.03.50
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 28 Aug 2018 13:03:50 -0700 (PDT)
+Date: Tue, 28 Aug 2018 16:03:49 -0400
+From: Aaron Lindsay <aclindsa@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20180828200348.GB3671@okra.localdomain>
+References: <1529699547-17044-1-git-send-email-alindsay@codeaurora.org>
+	<1529699547-17044-2-git-send-email-alindsay@codeaurora.org>
+	<CAFEAcA8601LbuOOARb0KoNLjJep3-ND=Kf44OqW6NXdVtnNocw@mail.gmail.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 45.249.212.187
-Subject: [Qemu-devel] =?utf-8?b?562U5aSNOiBbUWVtdS1hcm1dIFtQQVRDSCB2NyAy?=
- =?utf-8?q?/2=5D_target=3A_arm=3A_Add_support_for_VCPU_event_states?=
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8601LbuOOARb0KoNLjJep3-ND=Kf44OqW6NXdVtnNocw@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-arm] [PATCH v5 01/13] target/arm: Reorganize PMCCNTR
+ accesses
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vhdY9En8eM/N
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H1AZYpgkIELk
 
-SGkgU2hhbm5vbg0KICAg77ypaGF2ZSBjaGFuZ2VkIGl0IGFjY29yZGluZyB0byB5b3VyIGNvbW1l
-bnRzIGFuZCByZXBvc3QgdGhlIHBhdGNoZXMsIHRoYW5rcyBmb3IgdGhlIHJldmlldy4NCg0KPiAN
-Cj4gSGksDQo+IA0KPiBPbiA4LzI4LzIwMTggNDo0NiBBTSwgRG9uZ2ppdSBHZW5nIHdyb3RlOg0K
-PiA+IFRoaXMgcGF0Y2ggZXh0ZW5kcyB0aGUgcWVtdS1rdm0gc3RhdGUgc3luYyBsb2dpYyB3aXRo
-IHN1cHBvcnQgZm9yDQo+ID4gS1ZNX0dFVC9TRVRfVkNQVV9FVkVOVFMsIGdpdmluZyBhY2Nlc3Mg
-dG8geWV0IG1pc3NpbmcgU0Vycm9yIGV4Y2VwdGlvbi4NCj4gPiBBbmQgYWxzbyBpdCBjYW4gc3Vw
-cG9ydCB0aGUgZXhjZXB0aW9uIHN0YXRlIG1pZ3JhdGlvbi4NCj4gPg0KPiA+IFNpZ25lZC1vZmYt
-Ynk6IERvbmdqaXUgR2VuZyA8Z2VuZ2RvbmdqaXVAaHVhd2VpLmNvbT4NCj4gPiAtLS0NCj4gPiBj
-aGFuZ2Ugc2luY2UgdjY6DQo+ID4gMS4gQWRkIGNvdmVyIGxldHRlcg0KPiA+IDIuIENoYW5nZSBu
-YW1lICJjcHUvcmFzIiB0byAiY3B1L3NlcnJvciINCj4gPiAzLiBBZGQgc29tZSBjb21tZW50cyBh
-bmQgY2hlY2sgdGhlIGlvY3RsIHJldHVybiB2YWx1ZSBmb3INCj4gPiBrdm1fcHV0X3ZjcHVfZXZl
-bnRzKCkNCj4gPg0KPiA+IENoYW5nZSBzaW5jZSB2NToNCj4gPiBhZGRyZXNzIFBldGVyJ3MgY29t
-bWVudHM6DQo+ID4gMS4gTW92ZSB0aGUgInN0cnVjdCBzZXJyb3IiIGJlZm9yZSB0aGUgImVuZF9y
-ZXNldF9maWVsZHMiIGluDQo+ID4gQ1BVQVJNU3RhdGUgMi4gUmVtb3ZlIEFSTV9GRUFUVVJFX1JB
-U19FWFQgYW5kIGFkZCBhIHZhcmlhYmxlDQo+ID4gaGF2ZV9pbmplY3Rfc2Vycm9yX2VzciAzLiBV
-c2UgdGhlIHZhcmlhYmxlIGhhdmVfaW5qZWN0X3NlcnJvcl9lc3IgdG8NCj4gPiB0cmFjayB3aGV0
-aGVyIHRoZSBrZXJuZWwgaGFzIHN0YXRlIHdlIG5lZWQgdG8gbWlncmF0ZSA0LiBSZW1vdmUNCj4g
-PiBwcmludGYoKSBpbiBrdm1fYXJjaF9wdXRfcmVnaXN0ZXJzKCkgNS4gcmFzX25lZWRlZC92bXN0
-YXRlX3JhcyB0bw0KPiA+IHNlcnJvcl9uZWVkZWQvdm1zdGF0ZV9zZXJyb3IgNi4gQ2hlY2sgdG8g
-dXNlICJyZXR1cm4NCj4gPiBlbnYuc2Vycm9yLnBlbmRpbmcgIT0gMCIgaW5zdGVhZCBvZiAiYXJt
-X2ZlYXR1cmUoZW52LA0KPiA+IEFSTV9GRUFUVVJFX1JBU19FWFQpIiBpbiB0aGUgcmFzX25lZWRl
-ZCgpDQo+ID4NCj4gPiBDaGFuZ2Ugc2luY2UgdjQ6DQo+ID4gMS4gUmViYXNlIHRoZSBjb2RlIHRv
-IGxhdGVzdA0KPiA+DQo+ID4gQ2hhbmdlIHNpbmNlIHYzOg0KPiA+IDEuIEFkZCBhIG5ldyBuZXcg
-c3Vic2VjdGlvbiB3aXRoIGEgc3VpdGFibGUgJ3Jhc19uZWVkZWQnIGZ1bmN0aW9uDQo+ID4gICAg
-IGNvbnRyb2xsaW5nIHdoZXRoZXIgaXQgaXMgcHJlc2VudA0KPiA+IDIuIEFkZCBhIEFSTV9GRUFU
-VVJFX1JBUyBmZWF0dXJlIGJpdCBmb3IgQ1BVQVJNU3RhdGUNCj4gPiAtLS0NCj4gPiAgIHRhcmdl
-dC9hcm0vY3B1LmggICAgIHwgIDcgKysrKysrDQo+ID4gICB0YXJnZXQvYXJtL2t2bTY0LmMgICB8
-IDY4ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysN
-Cj4gPiAgIHRhcmdldC9hcm0vbWFjaGluZS5jIHwgMjIgKysrKysrKysrKysrKysrKysNCj4gPiAg
-IDMgZmlsZXMgY2hhbmdlZCwgOTcgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBh
-L3RhcmdldC9hcm0vY3B1LmggYi90YXJnZXQvYXJtL2NwdS5oIGluZGV4DQo+ID4gNjJjMzZiNC4u
-NzAzMDY4MCAxMDA2NDQNCj4gPiAtLS0gYS90YXJnZXQvYXJtL2NwdS5oDQo+ID4gKysrIGIvdGFy
-Z2V0L2FybS9jcHUuaA0KPiA+IEBAIC01MzAsNiArNTMwLDEzIEBAIHR5cGVkZWYgc3RydWN0IENQ
-VUFSTVN0YXRlIHsNCj4gPiAgICAgICAgICAgICovDQo+ID4gICAgICAgfSBleGNlcHRpb247DQo+
-ID4NCj4gPiArICAgIC8qIEluZm9ybWF0aW9uIGFzc29jaWF0ZWQgd2l0aCBhbiBTRXJyb3IgKi8N
-Cj4gPiArICAgIHN0cnVjdCB7DQo+ID4gKyAgICAgICAgdWludDMyX3QgcGVuZGluZzsNCj4gPiAr
-ICAgICAgICB1aW50MzJfdCBoYXNfZXNyOw0KPiB3aHkgdXNlIHVpbnQzMl90IGZvciBhIGJvb2wg
-cGFyYW1ldGVyIGhlcmUgd2hpbGUgaXQncyB1OCBpbiB0aGUga2VybmVsIGhlYWRlcj8NCj4gDQo+
-ID4gKyAgICAgICAgdWludDY0X3QgZXNyOw0KPiA+ICsgICAgfSBzZXJyb3I7DQo+ID4gKw0KPiA+
-ICAgICAgIC8qIFRodW1iLTIgRUUgc3RhdGUuICAqLw0KPiA+ICAgICAgIHVpbnQzMl90IHRlZWNy
-Ow0KPiA+ICAgICAgIHVpbnQzMl90IHRlZWhicjsNCj4gPiBkaWZmIC0tZ2l0IGEvdGFyZ2V0L2Fy
-bS9rdm02NC5jIGIvdGFyZ2V0L2FybS9rdm02NC5jIGluZGV4DQo+ID4gZTBiODI0Ni4uNmUwMjUy
-YyAxMDA2NDQNCj4gPiAtLS0gYS90YXJnZXQvYXJtL2t2bTY0LmMNCj4gPiArKysgYi90YXJnZXQv
-YXJtL2t2bTY0LmMNCj4gPiBAQCAtMjksNiArMjksNyBAQA0KPiA+ICAgI2luY2x1ZGUgImh3L2Fy
-bS9hcm0uaCINCj4gPg0KPiA+ICAgc3RhdGljIGJvb2wgaGF2ZV9ndWVzdF9kZWJ1ZzsNCj4gPiAr
-c3RhdGljIGJvb2wgaGF2ZV9pbmplY3Rfc2Vycm9yX2VzcjsNCj4gPg0KPiA+ICAgLyoNCj4gPiAg
-ICAqIEFsdGhvdWdoIHRoZSBBUk0gaW1wbGVtZW50YXRpb24gb2YgaGFyZHdhcmUgYXNzaXN0ZWQg
-ZGVidWdnaW5nIEBADQo+ID4gLTU0Niw2ICs1NDcsMTAgQEAgaW50IGt2bV9hcmNoX2luaXRfdmNw
-dShDUFVTdGF0ZSAqY3MpDQo+ID4NCj4gPiAgICAgICBrdm1fYXJtX2luaXRfZGVidWcoY3MpOw0K
-PiA+DQo+ID4gKyAgICAvKiBDaGVjayB3aGV0aGVyIHVzZXJzcGFjZSBjYW4gc3BlY2lmeSBndWVz
-dCBzeW5kcm9tZSB2YWx1ZSAqLw0KPiA+ICsgICAgaGF2ZV9pbmplY3Rfc2Vycm9yX2VzciA9IGt2
-bV9jaGVja19leHRlbnNpb24oY3MtPmt2bV9zdGF0ZSwNCj4gPiArDQo+ID4gKyBLVk1fQ0FQX0FS
-TV9JTkpFQ1RfU0VSUk9SX0VTUik7DQo+ID4gKw0KPiA+ICAgICAgIHJldHVybiBrdm1fYXJtX2lu
-aXRfY3ByZWdfbGlzdChjcHUpOw0KPiA+ICAgfQ0KPiA+DQo+ID4gQEAgLTYwMCw2ICs2MDUsNTkg
-QEAgaW50IGt2bV9hcm1fY3ByZWdfbGV2ZWwodWludDY0X3QgcmVnaWR4KQ0KPiA+ICAgI2RlZmlu
-ZSBBQVJDSDY0X1NJTURfQ1RSTF9SRUcoeCkgICAoS1ZNX1JFR19BUk02NCB8IEtWTV9SRUdfU0la
-RV9VMzIgfCBcDQo+ID4gICAgICAgICAgICAgICAgICAgIEtWTV9SRUdfQVJNX0NPUkUgfCBLVk1f
-UkVHX0FSTV9DT1JFX1JFRyh4KSkNCj4gPg0KPiA+ICtzdGF0aWMgaW50IGt2bV9wdXRfdmNwdV9l
-dmVudHMoQVJNQ1BVICpjcHUpIHsNCj4gPiArICAgIENQVUFSTVN0YXRlICplbnYgPSAmY3B1LT5l
-bnY7DQo+ID4gKyAgICBzdHJ1Y3Qga3ZtX3ZjcHVfZXZlbnRzIGV2ZW50cyA9IHt9Ow0KPiA+ICsg
-ICAgaW50IHJldDsNCj4gPiArDQo+ID4gKyAgICBpZiAoIWt2bV9oYXNfdmNwdV9ldmVudHMoKSkg
-ew0KPiA+ICsgICAgICAgIHJldHVybiAwOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIG1l
-bXNldCgmZXZlbnRzLCAwLCBzaXplb2YoZXZlbnRzKSk7DQo+ID4gKyAgICBldmVudHMuZXhjZXB0
-aW9uLnNlcnJvcl9wZW5kaW5nID0gZW52LT5zZXJyb3IucGVuZGluZzsNCj4gPiArDQo+ID4gKyAg
-ICAvKiBJbmplY3QgU0Vycm9yIHRvIGd1ZXN0IHdpdGggc3BlY2lmaWVkIHN5bmRyb21lIGlmIGhv
-c3Qga2VybmVsDQo+ID4gKyAgICAgKiBzdXBwb3J0cyBpdCwgb3RoZXJ3aXNlIGluamVjdCBTRXJy
-b3Igd2l0aG91dCBzeW5kcm9tZS4NCj4gPiArICAgICAqLw0KPiA+ICsgICAgaWYgKGhhdmVfaW5q
-ZWN0X3NlcnJvcl9lc3IpIHsNCj4gPiArICAgICAgICBldmVudHMuZXhjZXB0aW9uLnNlcnJvcl9o
-YXNfZXNyID0gZW52LT5zZXJyb3IuaGFzX2VzcjsNCj4gPiArICAgICAgICBldmVudHMuZXhjZXB0
-aW9uLnNlcnJvcl9lc3IgPSBlbnYtPnNlcnJvci5lc3I7DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+
-ICsgICAgcmV0ID0ga3ZtX3ZjcHVfaW9jdGwoQ1BVKGNwdSksIEtWTV9TRVRfVkNQVV9FVkVOVFMs
-ICZldmVudHMpOw0KPiA+ICsgICAgaWYgKHJldCkgew0KPiA+ICsgICAgICAgIGVycm9yX3JlcG9y
-dCgiZmFpbGVkIHRvIHB1dCB2Y3B1IGV2ZW50cyIpOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiAr
-ICAgIHJldHVybiByZXQ7DQo+ID4gK30NCj4gPiArDQo+ID4gK3N0YXRpYyBpbnQga3ZtX2dldF92
-Y3B1X2V2ZW50cyhBUk1DUFUgKmNwdSkgew0KPiA+ICsgICAgQ1BVQVJNU3RhdGUgKmVudiA9ICZj
-cHUtPmVudjsNCj4gPiArICAgIHN0cnVjdCBrdm1fdmNwdV9ldmVudHMgZXZlbnRzOw0KPiA+ICsg
-ICAgaW50IHJldDsNCj4gPiArDQo+ID4gKyAgICBpZiAoIWt2bV9oYXNfdmNwdV9ldmVudHMoKSkg
-ew0KPiA+ICsgICAgICAgIHJldHVybiAwOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIG1l
-bXNldCgmZXZlbnRzLCAwLCBzaXplb2YoZXZlbnRzKSk7DQo+ID4gKyAgICByZXQgPSBrdm1fdmNw
-dV9pb2N0bChDUFUoY3B1KSwgS1ZNX0dFVF9WQ1BVX0VWRU5UUywgJmV2ZW50cyk7DQo+ID4gKw0K
-PiA+ICsgICAgaWYgKHJldCA8IDApIHsNCj4gbGlrZSB0aGUgcHV0IGZ1bmN0aW9uLCBpdCdzIGJl
-dHRlciB0byBhZGQgYSBlcnJvcl9yZXBvcnQgaGVyZS4NCj4gDQo+IFRoYW5rcywNCj4gU2hhbm5v
-bg0KPiA+ICsgICAgICAgIHJldHVybiByZXQ7DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICsgICAg
-ZW52LT5zZXJyb3IucGVuZGluZyA9IGV2ZW50cy5leGNlcHRpb24uc2Vycm9yX3BlbmRpbmc7DQo+
-ID4gKyAgICBlbnYtPnNlcnJvci5oYXNfZXNyID0gZXZlbnRzLmV4Y2VwdGlvbi5zZXJyb3JfaGFz
-X2VzcjsNCj4gPiArICAgIGVudi0+c2Vycm9yLmVzciA9IGV2ZW50cy5leGNlcHRpb24uc2Vycm9y
-X2VzcjsNCj4gPiArDQo+ID4gKyAgICByZXR1cm4gMDsNCj4gPiArfQ0KPiA+ICsNCj4gPiAgIGlu
-dCBrdm1fYXJjaF9wdXRfcmVnaXN0ZXJzKENQVVN0YXRlICpjcywgaW50IGxldmVsKQ0KPiA+ICAg
-ew0KPiA+ICAgICAgIHN0cnVjdCBrdm1fb25lX3JlZyByZWc7DQo+ID4gQEAgLTcyNyw2ICs3ODUs
-MTEgQEAgaW50IGt2bV9hcmNoX3B1dF9yZWdpc3RlcnMoQ1BVU3RhdGUgKmNzLCBpbnQgbGV2ZWwp
-DQo+ID4gICAgICAgICAgIHJldHVybiByZXQ7DQo+ID4gICAgICAgfQ0KPiA+DQo+ID4gKyAgICBy
-ZXQgPSBrdm1fcHV0X3ZjcHVfZXZlbnRzKGNwdSk7DQo+ID4gKyAgICBpZiAocmV0KSB7DQo+ID4g
-KyAgICAgICAgcmV0dXJuIHJldDsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gICAgICAgaWYgKCF3
-cml0ZV9saXN0X3RvX2t2bXN0YXRlKGNwdSwgbGV2ZWwpKSB7DQo+ID4gICAgICAgICAgIHJldHVy
-biBFSU5WQUw7DQo+ID4gICAgICAgfQ0KPiA+IEBAIC04NjMsNiArOTI2LDExIEBAIGludCBrdm1f
-YXJjaF9nZXRfcmVnaXN0ZXJzKENQVVN0YXRlICpjcykNCj4gPiAgICAgICB9DQo+ID4gICAgICAg
-dmZwX3NldF9mcGNyKGVudiwgZnByKTsNCj4gPg0KPiA+ICsgICAgcmV0ID0ga3ZtX2dldF92Y3B1
-X2V2ZW50cyhjcHUpOw0KPiA+ICsgICAgaWYgKHJldCkgew0KPiA+ICsgICAgICAgIHJldHVybiBy
-ZXQ7DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICAgICAgIGlmICghd3JpdGVfa3Ztc3RhdGVfdG9f
-bGlzdChjcHUpKSB7DQo+ID4gICAgICAgICAgIHJldHVybiBFSU5WQUw7DQo+ID4gICAgICAgfQ0K
-PiA+IGRpZmYgLS1naXQgYS90YXJnZXQvYXJtL21hY2hpbmUuYyBiL3RhcmdldC9hcm0vbWFjaGlu
-ZS5jIGluZGV4DQo+ID4gZmY0ZWMyMi4uZDZkYWRmMSAxMDA2NDQNCj4gPiAtLS0gYS90YXJnZXQv
-YXJtL21hY2hpbmUuYw0KPiA+ICsrKyBiL3RhcmdldC9hcm0vbWFjaGluZS5jDQo+ID4gQEAgLTE3
-Miw2ICsxNzIsMjcgQEAgc3RhdGljIGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX3N2
-ZSA9IHsNCj4gPiAgIH07DQo+ID4gICAjZW5kaWYgLyogQUFSQ0g2NCAqLw0KPiA+DQo+ID4gK3N0
-YXRpYyBib29sIHNlcnJvcl9uZWVkZWQodm9pZCAqb3BhcXVlKSB7DQo+ID4gKyAgICBBUk1DUFUg
-KmNwdSA9IG9wYXF1ZTsNCj4gPiArICAgIENQVUFSTVN0YXRlICplbnYgPSAmY3B1LT5lbnY7DQo+
-ID4gKw0KPiA+ICsgICAgcmV0dXJuIGVudi0+c2Vycm9yLnBlbmRpbmcgIT0gMDsNCj4gPiArfQ0K
-PiA+ICsNCj4gPiArc3RhdGljIGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX3NlcnJv
-ciA9IHsNCj4gPiArICAgIC5uYW1lID0gImNwdS9zZXJyb3IiLA0KPiA+ICsgICAgLnZlcnNpb25f
-aWQgPSAxLA0KPiA+ICsgICAgLm1pbmltdW1fdmVyc2lvbl9pZCA9IDEsDQo+ID4gKyAgICAubmVl
-ZGVkID0gc2Vycm9yX25lZWRlZCwNCj4gPiArICAgIC5maWVsZHMgPSAoVk1TdGF0ZUZpZWxkW10p
-IHsNCj4gPiArICAgICAgICBWTVNUQVRFX1VJTlQzMihlbnYuc2Vycm9yLnBlbmRpbmcsIEFSTUNQ
-VSksDQo+ID4gKyAgICAgICAgVk1TVEFURV9VSU5UMzIoZW52LnNlcnJvci5oYXNfZXNyLCBBUk1D
-UFUpLA0KPiA+ICsgICAgICAgIFZNU1RBVEVfVUlOVDY0KGVudi5zZXJyb3IuZXNyLCBBUk1DUFUp
-LA0KPiA+ICsgICAgICAgIFZNU1RBVEVfRU5EX09GX0xJU1QoKQ0KPiA+ICsgICAgfQ0KPiA+ICt9
-Ow0KPiA+ICsNCj4gPiAgIHN0YXRpYyBib29sIG1fbmVlZGVkKHZvaWQgKm9wYXF1ZSkNCj4gPiAg
-IHsNCj4gPiAgICAgICBBUk1DUFUgKmNwdSA9IG9wYXF1ZTsNCj4gPiBAQCAtNzI2LDYgKzc0Nyw3
-IEBAIGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX2FybV9jcHUgPSB7DQo+ID4gICAj
-aWZkZWYgVEFSR0VUX0FBUkNINjQNCj4gPiAgICAgICAgICAgJnZtc3RhdGVfc3ZlLA0KPiA+ICAg
-I2VuZGlmDQo+ID4gKyAgICAgICAgJnZtc3RhdGVfc2Vycm9yLA0KPiA+ICAgICAgICAgICBOVUxM
-DQo+ID4gICAgICAgfQ0KPiA+ICAgfTsNCj4gPg0K
+On Jun 28 17:40, Peter Maydell wrote:
+> On 22 June 2018 at 21:32, Aaron Lindsay <alindsay@codeaurora.org> wrote:
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 8488273..ba2c876 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -467,10 +467,20 @@ typedef struct CPUARMState {
+> >          uint64_t oslsr_el1; /* OS Lock Status */
+> >          uint64_t mdcr_el2;
+> >          uint64_t mdcr_el3;
+> > -        /* If the counter is enabled, this stores the last time the counter
+> > -         * was reset. Otherwise it stores the counter value
+> > +        /* Stores the architectural value of the counter *the last time it was
+> > +         * updated* by pmccntr_op_start. Accesses should always be surrounded
+> > +         * by pmccntr_op_start/pmccntr_op_finish to guarantee the latest
+> > +         * architecturally-corect value is being read/set.
+> 
+> "correct"
+
+Thanks - fixed for v6.
+
+> >           */
+> >          uint64_t c15_ccnt;
+> > +        /* Stores the delta between the architectural value and the underlying
+> > +         * cycle count during normal operation. It is used to update c15_ccnt
+> > +         * to be the correct architectural value before accesses. During
+> > +         * accesses, c15_ccnt_delta contains the underlying count being used
+> > +         * for the access, after which it reverts to the delta value in
+> > +         * pmccntr_op_finish.
+> > +         */
+> > +        uint64_t c15_ccnt_delta;
+> 
+> I had a look through the patchset, and I still can't see
+> anything here which indicates how we're handling migration.
+
+I'll admit that I had not previously thought through everything
+exhaustively, but I think I've convinced myself that *almost* everything
+is already handled by calling .readfn/writefn on the registers for
+migration... more below.
+
+> If this field is only ever used as a temporary while we're
+> between op_start and op_finish, then we can just return it from
+> start and take it as an argument to finish, and we're fine
+> (migration of the PMCCNTR_EL0 register will be done by calling
+> its readfn on the source and its writefn on the destination).
+> 
+> If there's a reason for having this be a field in the state struct
+> (I think you said counter overflow)? then we need to be sure that
+> migration is going to do the right thing and that we don't for instance
+> lose overflow indications during a migration.
+
+I think we do need additional state for supporting counter overflow
+during normal operation (more than just between op_start and op_finish),
+but I don't think sending additional state over the wire is necessary
+for migration. Let me lay out my reasoning to see if you think it makes
+sense:
+
+I observe that we seem to deal mostly with the following values with
+respect to PMU counters, and I think it might be easier to discuss this
+in terms of values rather than variables:
+
+	AC = current architectural value of PMCCNTR
+	AL = architectural value of PMCCNTR when last observed/updated by
+	     the OS
+	UC = current underlying counter value
+	UL = underlying counter value when PMCCNTR last observed/updated by
+	     OS
+	D = difference between underlying counter value and architectural
+	    value
+
+At any given point in time, the following should then be true during
+normal execution (i.e. between OS accesses to the counter):
+	UL - AL == D == UC - AC
+
+The approach taken previous to my patchset was to store D in
+cp15.c15_ccnt most of the time, updating that variable to hold AC when
+read (by doing `c15_ccnt = UC - c15_ccnt`... an implementation using `AC
+= UC - D`, which is a different way to write `D = UC - AC` from above).
+This operation was reversed after a write completes, so that c15_ccnt
+again holds a value corresponding to D.
+
+Only storing D works well and minimizes memory usage if you don't care
+about detecting overflows. However, without some frame of reference for
+what the last observed architectural value was relative to its current
+value, we have no way to know if the counter has overflowed in the
+intervening time. In other words, we need to know both AC and AL to know
+if the counter has overflowed. Assuming we store D and can obtain UC we
+can calculate AC, but we need to store at least one additional piece of
+information to obtain AL (either AL itself or UL).
+
+In my patchset so far, I'm storing AL in c15_ccnt and D in
+c15_ccnt_delta during normal operation and AL/AC in c15_ccnt, UL/UC in
+c15_ccnt_delta between op_start and op_finish (note that AL == AC, UL ==
+UC, and D == 0 during this time). Also note that UL/UC are only stored
+between op_start and op_finish calls to avoid losing time, and are not
+needed to maintain architectural state across migrations.
+
+Now for migration - The read/writefn's already marshal/unmarshal both
+the counter value and overflow state to their architectural values in
+PMCCNTR and PMOVSCLR. I think this would work on its own if we made
+two big (and wrong) assumptions:
+	1. PMOVSCLR is read after PMCCNTR on save (ensures all overflows
+	   which have occurred are recorded in PMOVSCLR) and written before
+	   it on load (ensures any overflow bits in PMOVSCLR cause the
+	   interrupt line to be raised)
+	2. Time (as measured by `qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)`) does
+	   not change during the process of saving or loading CP registers
+	   (ensures PMCCNTR can't have overflowed between when it was saved
+	   and when PMOVSCLR was later saved).
+
+One possible solution for this is to add calls to op_start in both
+cpu_pre_load and cpu_pre_save, add calls to op_finish in cpu_post_load
+and cpu_post_save, and ensure that all CP registers which would call
+op_start/finish on their own have raw_read/writefn's which assume
+they're between calls to op_start and op_finish.
+
+Thoughts? (and I apologize for the wall of text)
+
+-Aaron

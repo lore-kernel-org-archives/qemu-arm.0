@@ -1,118 +1,137 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp219657wrd;
-        Fri, 17 Aug 2018 06:37:57 -0700 (PDT)
-X-Received: by 2002:aca:494b:: with SMTP id w72-v6mr2620062oia.293.1534513077329;
-        Fri, 17 Aug 2018 06:37:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1534513077; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp390739wrd;
+        Wed, 29 Aug 2018 02:17:21 -0700 (PDT)
+X-Received: by 2002:a24:610d:: with SMTP id s13-v6mr4608707itc.68.1535534241762;
+        Wed, 29 Aug 2018 02:17:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535534241; cv=none;
         d=google.com; s=arc-20160816;
-        b=YHQC2oyp3b+Ghy0cy2GEb/TO2qiam/CDLYit+OJhV74/ec4kUmg1TuJg+aJL+VaIZQ
-         rBKPwzrhz3hoNHTsrXPHkiMugOrYbYoHs/nd+f4XSt+1tHXhs8+qAsroZUWGPNQDZFas
-         yYZAUedTdMpX3y0OAtIoV/9ptThtgD1ogKeoNl0mCvXtDO/XGF+1ay8YkH+KGrkqyKeu
-         oEVt8QnFXM4w9cRm2b4yQJWFqEjGQG4kvLNLli56yvuE5tyukTwfYYnKqvGJqkz2u1F9
-         jDOpeVRuWXwGYnWHgj1tUuj5Ts/WZFT0y6VBmHCPpzEkGRejV/2MTQepVGBDEXhJWkgO
-         oFXg==
+        b=fwXRyRoqef4wXFCrQRpxLfBxEmqrD6qJ/uci9ekla1/B8uLZ96YqUn6QunzX2TYSfM
+         JwwOXaqnKVhgTG6r99PlyvYf2vyLrhl98pLLnuQsTHHZRV922cO2+UbdzB5QJ3tICAKJ
+         4ImXFgxvCHHxGXOX+BMvIyDyUB7+2R/GQZfLVvGlnU+6k4deway8GfbJlSt6a4awV8vk
+         w8XTvzV+WLnpE2xsrSskLd00sy1nCOjP+amYWZTbYfe0v4eiDaFpPNBpEIxXdGpoTfyp
+         4hIWCvN+3rnuPgblXpKkeONaEZdR8YaNacCz5a3wScxvGPFP7biHkxr2uQBJIrKOJdAV
+         2QDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature:arc-authentication-results;
-        bh=6nYJv5CklofRQIJmOJFvcuTKDaLH2cwAUKr/H45B7Io=;
-        b=b1bbRAvGD51Gl2gTdcEJCogspeybl0GW2AAuQbIM9Mg4hioV8JzhfrIri9pEwVbZDl
-         AqQMqaIYwMxni9CbuMnG2E9lTnfWOKEc4ZKmjxrbfm7c0DF4np+VFWLRpQWtsTVoJbsj
-         vcB3qLxaveYnY4QrQk1dBE/hWfXBH6Cq42s9YEPdvrtvBK7AJajS50g5Y8IwXjHVNXDD
-         1/MlIQDuKFWgSIAB3DYZZbC8Xyur5vJ3eogeaGp+SxJ2fZgcwwdgCdFvC1OynRQKPpq0
-         dBaY+12OHrnHUe+ykTycldukEaXMPiTJYFPxdVnfbXsP1TPvTvGVioQd8t32vrlhDhXy
-         ghNA==
+        bh=Th8lFl39NqoelSwqMP5EtNilHydrwCJwDW/we6ckk9s=;
+        b=Z+Ij5Fk78/ZbCakiR+eUys/0dBCaZR35fFkCohefFidpfKFAH8gUE6zvhCoJm1Qc6r
+         ZhQg0lORV4ugvy/RTvFp3hyCi584tp1r50Uo+lQtA42Pb5DAOXdPIf9gKM5jA3n2mb/F
+         vu+p4XFYuXla4Xq00mH00ENhlbvyeYfR98prfY7Ez3BQr+3i9K8bEJeSgGlCVE54uTBX
+         W18B6uHXHWpEzQHzprnOSEPZogVbj0iuxlJQD2hAfDUo3tiItcSIdV8SXbEYNy8hq+9k
+         6r6xaWrOa2lPLzM71diuTARdbmDUCwzMvCbsjaUL7yu4ZfLsFU+WDuR7e62Gd28Aptyz
+         APEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TLd1/d8k";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=epN9FfzW;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <hongbo.zhang@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id n84-v6sor1197338oif.169.2018.08.17.06.37.57
+        by mx.google.com with SMTPS id t185-v6sor1429977itd.112.2018.08.29.02.17.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 17 Aug 2018 06:37:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Wed, 29 Aug 2018 02:17:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="TLd1/d8k";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=epN9FfzW;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=6nYJv5CklofRQIJmOJFvcuTKDaLH2cwAUKr/H45B7Io=;
-        b=TLd1/d8k4uAIhhx1s8iHt5xRoTO9Pik4RVOrWvaDDX4zdsw/TAxnRhvZW4Y2PDJyHM
-         DjQct2CTTyPBFZNWuj84/YWPauPqk0Xo8iOoXsqLr9EpLwTJQwWdtx6OQYL9kCBUsZcZ
-         OQDxlmAmSc6r+RKNcKsCysZ13vytlnbCqLUVY=
+        bh=Th8lFl39NqoelSwqMP5EtNilHydrwCJwDW/we6ckk9s=;
+        b=epN9FfzWr3zbvuMIkiepjWQ256s+JOMm7x8mewDjLoD1pQN6wBvRbOK3Rqit4j0Pyb
+         ZzfBNe08FUgHqS4ROSrXIdyC4zPl7p6vKbmD30m7062vDYnocStpz+7Gyup9RyoOSZYA
+         2ZqEQxpIhBq/nbiopi5PCRW7hE594gt55XxJM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=6nYJv5CklofRQIJmOJFvcuTKDaLH2cwAUKr/H45B7Io=;
-        b=Q+xq12t91N5HbbQQOjGQK96oWLRe+eREcvkiqaaTpLaKCvFBlZ8SpIlFVcJLkHqhiK
-         BVkoJ2pMZs6XV0/onlBWAkteHU3RxDgl22/jGvCKv6sUhg/7wLJtsgNRdTWWaDbt9uo4
-         lMrLLwrE00XxAauB2d9iiGGzw7rsRV85miHwHoe4c8aMc6L3sCI+NQ6Ko4P0GU0iR0ar
-         or5I467TuTHTCQT4b8PypTuQqMENsxkTbg7UM6SC2kCQm/y6nRZnaVTd0I42iNh2+Dsq
-         jJiiXB52ToKmLcNKhCpiUfkU2m62KRdiCdxIbCRA/Hk2Fa3clHeNdUAabKQ5zOuZvtlb
-         U8yA==
-X-Gm-Message-State: AOUpUlH4BVZAjB2KMpNp9P5dvcmUSrwAbhLFQuiS8pyru217usUro9aY
-	Rs9h6tEm08O8bVZj5KEwEwsCrC88AVCfw36dGBGIIPz3
-X-Google-Smtp-Source: AA+uWPwFmd7h0cTn9kMPPT0sWe13qDkHkaJO/VwCLTRM5lkTRRWz9sp61OGi4JGHEIzckin9XIflO2oxFLcO4MsaI74=
-X-Received: by 2002:aca:506:: with SMTP id 6-v6mr2571871oif.23.1534513076963;
- Fri, 17 Aug 2018 06:37:56 -0700 (PDT)
+        bh=Th8lFl39NqoelSwqMP5EtNilHydrwCJwDW/we6ckk9s=;
+        b=gt1Rv2NFyJ3iSW0faYP+euI6rleE9cb7uxuLG2JWzEQGi5IyCI2qXgA90oBio6To6+
+         xg0oWgO7bKPpIJ+32TowjMpbcqL98MJMrrQGg/xAJT8ccqOn7zXUMmTxboh3FzzkYZKD
+         aXkAYKPLh2/HU+H3yUQmvfd1YshwEGfFdCU3yY4vqMRjx2w4Y7EwJlGZtXkLr6xpEAlU
+         O8LSbsyPkESoDu3KTsTU4O1CZ248bJ8VDxyLF35HqUrVsjRjO709+Eka6qSbMgScv8yG
+         E89gOXbH+ArFigfz/bHdrISt+xV9B6OQy3OtOdqYPR5wPGpmTbmTE0DdOP2049Lm5R55
+         zTqQ==
+X-Gm-Message-State: APzg51DrLN8h12YM3Fdh5GEXNGk1HBeIimvYQTLzQlflE4IxGbn0M/a+
+	1fN+inQ2tiMXXIfGJI7KumuSLfus96GX4MjfZBDSRosc
+X-Google-Smtp-Source: ANB0VdZC698sTBUyfbMSrXSjPjIUkQD1bOnd/XeyX2CJNz4PJgg9oInNQvdxSRwc9L/HKSa+Qb+HF1T6eYxsZ4m3G84=
+X-Received: by 2002:a24:328d:: with SMTP id j135-v6mr4569579ita.5.1535534241381;
+ Wed, 29 Aug 2018 02:17:21 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 17 Aug 2018 06:37:36
+Received: by 2002:ac0:d852:0:0:0:0:0 with HTTP; Wed, 29 Aug 2018 02:17:20
  -0700 (PDT)
-In-Reply-To: <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
-References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org> <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Aug 2018 14:37:36 +0100
-Message-ID: <CAFEAcA9hivJzqksiSZbco4+EysYj=_y0t3k_L7TobxNPS8T2dQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9hivJzqksiSZbco4+EysYj=_y0t3k_L7TobxNPS8T2dQ@mail.gmail.com>
+References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
+ <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org> <CAFEAcA9hivJzqksiSZbco4+EysYj=_y0t3k_L7TobxNPS8T2dQ@mail.gmail.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Wed, 29 Aug 2018 17:17:20 +0800
+Message-ID: <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
 Subject: Re: [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
 	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
 	Leif Lindholm <leif.lindholm@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: EYOl42s0pO0q
+X-TUID: 2u7TDXVGUSUA
 
-On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> run on KVM and execute virtualization workloads, but we need an
-> environment as faithful as possible to physical hardware, for supporting
-> firmware and OS development for pysical Aarch64 machines.
+On 17 August 2018 at 21:37, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>> For the Aarch64, there is one machine 'virt', it is primarily meant to
+>> run on KVM and execute virtualization workloads, but we need an
+>> environment as faithful as possible to physical hardware, for supporting
+>> firmware and OS development for pysical Aarch64 machines.
+>>
+>> This patch introduces new machine type 'Enterprise' with main features:
+>>  - Based on 'virt' machine type.
+>>  - Re-designed memory map.
+>>  - EL2 and EL3 are enabled by default.
+>>  - GIC version 3 by default.
+>>  - AHCI controller attached to system bus, and then CDROM and hard disc
+>>    can be added to it.
+>>  - EHCI controller attached to system bus, with USB mouse and key board
+>>    installed by default.
+>>  - E1000E ethernet card on PCIE bus.
+>>  - VGA display adaptor on PCIE bus.
+>>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
+>>  - No virtio functions enabled, since this is to emulate real hardware.
+>>  - No paravirtualized fw_cfg device either.
+>>
+>> Arm Trusted Firmware and UEFI porting to this are done accordingly.
+>>
+>> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+>> ---
+>> Changes since v1:
+>>  - rebase on v3.0.0-rc0
+>>  - introduce another auxillary patch as 1/2, so this is 2/2
+>>  - rename 'sbsa' to 'enterprise'
+>>  - remove paravirualized fw_cfg
+>>  - set gic_vertion to 3 instead of 2
+>>  - edit commit message to describe purpose of this platform
 >
-> This patch introduces new machine type 'Enterprise' with main features:
->  - Based on 'virt' machine type.
->  - Re-designed memory map.
->  - EL2 and EL3 are enabled by default.
->  - GIC version 3 by default.
->  - AHCI controller attached to system bus, and then CDROM and hard disc
->    can be added to it.
->  - EHCI controller attached to system bus, with USB mouse and key board
->    installed by default.
->  - E1000E ethernet card on PCIE bus.
->  - VGA display adaptor on PCIE bus.
->  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
->  - No virtio functions enabled, since this is to emulate real hardware.
->  - No paravirtualized fw_cfg device either.
+> Hi; there's been a lot of discussion on this thread. I'm going
+> to assume that you don't need any further review commentary for
+> the moment, and will wait for a v3. If there are any specific
+> questions you want guidance on to produce that v3, let me know.
 >
-> Arm Trusted Firmware and UEFI porting to this are done accordingly.
->
-> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> ---
-> Changes since v1:
->  - rebase on v3.0.0-rc0
->  - introduce another auxillary patch as 1/2, so this is 2/2
->  - rename 'sbsa' to 'enterprise'
->  - remove paravirualized fw_cfg
->  - set gic_vertion to 3 instead of 2
->  - edit commit message to describe purpose of this platform
+Thank you for this summary/remind.
+Sorry for the late reply due to my vacation last week.
 
-Hi; there's been a lot of discussion on this thread. I'm going
-to assume that you don't need any further review commentary for
-the moment, and will wait for a v3. If there are any specific
-questions you want guidance on to produce that v3, let me know.
+Yes, I am working on the v3, with main changes:
+ - machine name "sbsa-ref" (good name?)
+ - a separate file sbsa-ref.c
+ - don't touch the acpi c file, acpi will be supplied by uefi
+ - only necessary dt node, no other peripheral dt nodes
 
-thanks
--- PMM
+Before my sending, I still like comments on the above effort, it is
+feasible/reasonable or not etc, in case I go wrong too much.
+
+I also know that some reviewers may like to give comments when they
+see the patch codes, so if you don't have comments now, you can do it
+after seeing the patch.
+Thanks all.
+
+> thanks
+> -- PMM

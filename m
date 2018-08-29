@@ -1,183 +1,319 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp6818173wrd;
-        Tue, 28 Aug 2018 13:36:16 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdY5rixRqwMkOMu81k921WxjvFpvp8kP6BLjMWnbhqc01JUtVoPwMJNFlxCTf3yyMvU5HH9g
-X-Received: by 2002:ac8:2b0f:: with SMTP id 15-v6mr3543400qtu.119.1535488576692;
-        Tue, 28 Aug 2018 13:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535488576; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp739115wrd;
+        Wed, 29 Aug 2018 08:19:03 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdYrJWYg4pdtCCRyo9xlFNOTDG0GVQ6MyzB9htSNf2kgZZDBR3n2JGjaoy1AzE+vrTaZOFpp
+X-Received: by 2002:ac8:2fc8:: with SMTP id m8-v6mr7362560qta.202.1535555943506;
+        Wed, 29 Aug 2018 08:19:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535555943; cv=none;
         d=google.com; s=arc-20160816;
-        b=d32nEq6jsy1uyb2+X+3Z6yNxwV3XWbaM9wD2kEhdntv7e+olawJ9vgLhSi/jew2Yhg
-         UMggXTFmibnY25mP8IZe0FDWlgtX4KMNxct05sXKf8AFkjgmIfNhPPt3xfs0aalv/2d7
-         D9cYZRsq9nGtuh8sSfDWf/VaFuTV28GTO6ElAbR/ph6jcfXOyC64wCZtYHtNySN9aIlX
-         jtu6nd/zH5YWyTsIK15mQU6PtCMueLaEF4C84ageK9NxqhC/Hp2/NRkpf/CXKgGpmCNT
-         0FH3FcAAx8YVEQ9QjYfLCK3L9Phghxc6LypwS/+qkLqbcDl1Cw0zPthVa6TtVoc/VVQR
-         Hqfg==
+        b=Ae9yQ6jg5Ss7EOqbe0MeghbsB1bG8KAl2yysYi8nOIAH3d8hz0S0UR8DQ8iMywgLs/
+         Y/ce3j/wRC3iAYjsmZXQgGxMC1JdZ5/vPwWFHnOMBWBBfCBiE0Us1xWEmDmGxdPn14rs
+         9bsIws+ULiRp5qX9IYH6gzXgmQyWhLHSsv28vGsfvft7J9cqGVf8eFppCeAVG/ZIJeSh
+         VFxtQ1MJoyVR0Hqtz0cVgJ8ItnJ4ej0NeVnZvioiJklorupJkJwjeT78v6Rnbx7jmhcZ
+         cGpReL4N4WrCFu6sGMbbg+FS3uDB19cZMOJrZ1J9t3JV7t135ktiTz14m34Khquqpr8L
+         Kqlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature:arc-authentication-results;
-        bh=vZAsRMa5DvEWR5mQ+8pKUX8O85vbIkGjKMOd3t8Qixo=;
-        b=owWO6r0utMNummNoBA8Pr7znK4tN+/HikQr0eaFMGkZ48uutVwhzKrSw0RN8rVSM45
-         8DtP08p1pN/7CerLtj/sgwHHZvxgLE3HqxHIRRd6hCvsgDl5H/NFZsEvSPsH/azMZa0J
-         Vu/Wgum3vayA7zjgEt+CuZEPsQ0UmFMsDDVQHCu+SMFMkJmFYfHSD6WbnaV/CdEEJsU4
-         6YkKUs6XgvaH5woY7ABtaoXfNT6jsM+aqDzhwUsVvmnBDhExVDjNmfjHnQKZ9L3+aVA3
-         C2zfFjjlTnUTomVmbQ/3tX5gR7pCNuIhRojUpYx0+C7jj/2bJr0ilOdpwmlxlZ6LDGKo
-         +z+A==
+        bh=/L0xpr9rbiKoSHYUu0UQNIgqQraG4rGmlUMZigUvIY8=;
+        b=r2PapZ0zYFWmQNE9FlBaELhbGgfz2WW8FEUTm1e1/HhMKsEp5c/CKwvY6PENyYaDny
+         mViTQ7XlDIEzLhx5TjQpqGGh2iqWqVIA9++Nz4ovzOx3KqcPALCprD8AYyvroyLND9jr
+         7HZxBqVmkEIuyRJjXia8bLwFrkODl6+I0Fb2zJvbjPc6be7IlBy1cDQBBSU+ipYHkrV3
+         cBbBwLa+jWr4vP3JsDbQNDth8X7WMJfFdxoNKcKGpZofzYXJhzqXB54FH41uGBU4dhiT
+         okUhmyZlsFgIo4PZslA7DB3kMl0khKl+r4SVdBXtc7zG9vgCwhDtNDH1iruLiTW4XRKU
+         OQIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RTG7G2RR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d1iSS+iI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f24-v6si1768598qkm.396.2018.08.28.13.36.16
+        by mx.google.com with ESMTPS id x67-v6si2070597qka.168.2018.08.29.08.19.03
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 28 Aug 2018 13:36:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 29 Aug 2018 08:19:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RTG7G2RR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=d1iSS+iI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39917 helo=lists.gnu.org)
+Received: from localhost ([::1]:43539 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fukim-0006zS-6b
-	for alex.bennee@linaro.org; Tue, 28 Aug 2018 16:36:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50091)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fv2FL-0003vi-1z
+	for alex.bennee@linaro.org; Wed, 29 Aug 2018 11:19:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53847)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aclindsa@gmail.com>) id 1fukhk-0006Xz-52
-	for qemu-devel@nongnu.org; Tue, 28 Aug 2018 16:35:13 -0400
+	(envelope-from <aclindsa@gmail.com>) id 1fv2FA-0003p3-Mt
+	for qemu-arm@nongnu.org; Wed, 29 Aug 2018 11:18:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aclindsa@gmail.com>) id 1fukcj-0005Lf-Dp
-	for qemu-devel@nongnu.org; Tue, 28 Aug 2018 16:30:02 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:43021)
+	(envelope-from <aclindsa@gmail.com>) id 1fv2F9-0000az-AH
+	for qemu-arm@nongnu.org; Wed, 29 Aug 2018 11:18:52 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:47054)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <aclindsa@gmail.com>)
-	id 1fukci-0005Iy-8e; Tue, 28 Aug 2018 16:30:00 -0400
-Received: by mail-qt0-x244.google.com with SMTP id g53-v6so3287989qtg.10;
-	Tue, 28 Aug 2018 13:30:00 -0700 (PDT)
+	id 1fv2F9-0000am-3s; Wed, 29 Aug 2018 11:18:51 -0400
+Received: by mail-qt0-x243.google.com with SMTP id d4-v6so6123558qtn.13;
+	Wed, 29 Aug 2018 08:18:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=vZAsRMa5DvEWR5mQ+8pKUX8O85vbIkGjKMOd3t8Qixo=;
-	b=RTG7G2RRcZAwhZ23ZM6x/PIuDMJXB0lZY8/jiMEVYDMaNzjF2wG+7r5eJtt7F8wKKG
-	gzscM9XmB5FTWiMo+iGyGl7xNqwyy/xmcNp4XIIFfx3MtNAe9byzDfLP/2DuC+P317pQ
-	Rk9j6XwQ0L1THAk99BVSXVPIvIJ/TpSxTwkUO2Rv2sio+9LxfEe233uZqFTLLPwesY1I
-	VRRGj1py8lIwyvUIIP0526eAmQl/ElEXn17UGztodYGYaJ0p/V2NqOneXr/9hGUZ9/Ro
-	VXSxTKhpmtKI6PPgVNxlTfUeeNX415dw3UknYzxdehcclgrhGRGgIYyU5VcNztwfnR7a
-	kXIA==
+	bh=/L0xpr9rbiKoSHYUu0UQNIgqQraG4rGmlUMZigUvIY8=;
+	b=d1iSS+iIifJ6x/wE5RB9Z3jkQmY7YaT7fbMWDGjDIZElyFxM4i7wdxi+lqeePMoJce
+	FG4jZFT8hd9S6QlktbtoxHoY4Tr9UtGNMXMuztrXgo/j9Jab3ZiLg32iYSdP2OMdqfD8
+	aKQ0WKCILlOo2+yL5tE8XkgxnMpozrQ0XRDFMLRAFP8la8VlOmdss1HUWjxscuo0hs/f
+	GGPclR10ZgVtWV072zJZAX5qcL+wW8qiaTIy8piO0iS3BxqZJpEwPXiq/0sptKatbUVy
+	OH4LGeNKZOV0G/Htzh3d67NzsZ0mW8gXI/etjftDyYtkXvTlENVfYWkA/pDh19zpkArj
+	vGNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=vZAsRMa5DvEWR5mQ+8pKUX8O85vbIkGjKMOd3t8Qixo=;
-	b=kdIQSIevOesrNsqu5dZPMsslMv/Cg8HeEXM4H6GL8FPg/2TEZhmNZBhihmYLzSOUdP
-	+nEHBGlKTAmrBFrRNLqSuPv2m6kPQH6X14FJ1gEeSTgmhN7A1QZugh3CuR/CtMagrdu4
-	krrfkgJoesHkPVf0Tq7HaJhwJsY8ysG85CNdKHIlqyhAkTHyI+jrlZiW3wrrBR5SM4qA
-	FER0i9Jd6LjI0/thmcgo2kMw5G+fG2qrbCojolw6sfcoyxXBRXVG+0Wv1oSaU59M0DQO
-	QO3z0WBWg2Xay4KD0WqrwpkwbO2QpF7hRtJKgdRThjdTrSXay194doxDRaPpPuDrxUaE
-	ucMQ==
-X-Gm-Message-State: APzg51DSkNE/0op33M7uL+g+fa1CKfUD3wF8s+lwHL0cjZ2mvKCq7bxU
-	u1TqnhbRfdwnreL+6B2FrRc=
-X-Received: by 2002:ac8:2c72:: with SMTP id
-	e47-v6mr3584623qta.60.1535488199778; 
-	Tue, 28 Aug 2018 13:29:59 -0700 (PDT)
+	bh=/L0xpr9rbiKoSHYUu0UQNIgqQraG4rGmlUMZigUvIY8=;
+	b=DUwvzSF6hOdjyQsFET2BgGNUtGGr9TWDiQltDcdDa2nKumqn/OCvTrWLhGNAJTqRVw
+	pvkC0Ya64Zq5XH+CTCux1hZf6VusyIWFe3iSeDwGEkrD+5lnrXfzpQLPx8DVLYmTufNk
+	PSHLba5h7GA7ABbJ8J5B64cEZW7DCkJZI2dAymLnfxFiEMeSWP2Gn82fHMVw0ytAbNNa
+	3m/pBvejYOFVx9mJxVC89TkbS92OBjzhI8x8JqxcrwLUwSnipNv30Vt+9opOORLFC753
+	p4Al/PiTBMBvwUaP3fcaMoqxJZZ/U4tgmyy0IhuZnahVBYicWUzyd68+03V5qnPDg2Iy
+	j1BA==
+X-Gm-Message-State: APzg51CorVWVmCvyxk3d1tLUjoQlQm74NHKx5xRucQyxdYrnoAjxXMU0
+	PvAbRe47kzXdgrBSyWX9Uqs=
+X-Received: by 2002:ac8:6056:: with SMTP id
+	k22-v6mr7125511qtm.94.1535555930658; 
+	Wed, 29 Aug 2018 08:18:50 -0700 (PDT)
 Received: from okra.localdomain ([2600:3c03::f03c:91ff:febb:cdda])
 	by smtp.gmail.com with ESMTPSA id
-	o68-v6sm1133298qkf.9.2018.08.28.13.29.59
+	i125-v6sm2467647qke.36.2018.08.29.08.18.49
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 28 Aug 2018 13:29:59 -0700 (PDT)
-Date: Tue, 28 Aug 2018 16:29:58 -0400
+	Wed, 29 Aug 2018 08:18:50 -0700 (PDT)
+Date: Wed, 29 Aug 2018 11:18:49 -0400
 From: Aaron Lindsay <aclindsa@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180828202957.GC3671@okra.localdomain>
+Message-ID: <20180829151848.GD3671@okra.localdomain>
 References: <1529699547-17044-1-git-send-email-alindsay@codeaurora.org>
-	<1529699547-17044-7-git-send-email-alindsay@codeaurora.org>
-	<CAFEAcA-0_PQdFXo_vY-cxkeC_HwxsKhCe7VNy7+4iCX-NqtOqw@mail.gmail.com>
+	<1529699547-17044-8-git-send-email-alindsay@codeaurora.org>
+	<CAFEAcA-ZVvytysV4M4oM-czE5zhxu-VJsd_mfgkp47QAVEtYXA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA-0_PQdFXo_vY-cxkeC_HwxsKhCe7VNy7+4iCX-NqtOqw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-ZVvytysV4M4oM-czE5zhxu-VJsd_mfgkp47QAVEtYXA@mail.gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: Re: [Qemu-devel] [PATCH v5 06/13] target/arm: Implement PMOVSSET
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-arm] [PATCH v5 07/13] target/arm: Add array for supported
+ PMU events, generate PMCEID[01]
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Wei Huang <wei@redhat.com>, Michael Spradling <mspradli@codeaurora.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Michael Spradling <mspradli@codeaurora.org>,
 	Digant Desai <digantd@codeaurora.org>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	Aaron Lindsay <alindsay@amperecomputing.com>,
 	qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s6pXXOtRHgOE
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 14Bpx8xO5mp/
 
-On Jun 28 17:23, Peter Maydell wrote:
+On Jul 17 17:06, Peter Maydell wrote:
 > On 22 June 2018 at 21:32, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> > Add an array for PMOVSSET so we only define it for v7ve+ platforms
+> > This commit doesn't add any supported events, but provides the framework
+> > for adding them. We store the pm_event structs in a simple array, and
+> > provide the mapping from the event numbers to array indexes in the
+> > supported_event_map array. Because the value of PMCEID[01] depends upon
+> > which events are supported at runtime, generate it dynamically.
 > >
 > > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 > > ---
-> >  target/arm/helper.c | 28 ++++++++++++++++++++++++++++
-> >  1 file changed, 28 insertions(+)
+> >  target/arm/cpu.c    | 20 +++++++++++++-------
+> >  target/arm/cpu.h    | 10 ++++++++++
+> >  target/arm/cpu64.c  |  2 --
+> >  target/arm/helper.c | 37 +++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 60 insertions(+), 9 deletions(-)
 > >
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index 98790b1..2f5b16a 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -927,9 +927,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+> >      if (!cpu->has_pmu) {
+> >          unset_feature(env, ARM_FEATURE_PMU);
+> >          cpu->id_aa64dfr0 &= ~0xf00;
+> > -    } else if (!kvm_enabled()) {
+> > -        arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
+> > -        arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
+> > +    }
+> > +    if (arm_feature(env, ARM_FEATURE_PMU)) {
+> > +        uint64_t pmceid = get_pmceid(&cpu->env);
+> > +        cpu->pmceid0 = pmceid & 0xffffffff;
+> > +        cpu->pmceid1 = (pmceid >> 32) & 0xffffffff;
+> > +
+> > +        if (!kvm_enabled()) {
+> > +            arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
+> > +            arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
+> > +        }
+> > +    } else {
+> > +        cpu->pmceid0 = 0x00000000;
+> > +        cpu->pmceid1 = 0x00000000;
+> 
+> This is ok for now, but we really need to sort out what we're
+> doing for the interplay between feature bits and ID register
+> values more generally (notably for '-cpu max'), so depending on
+> when we do that work this might end up needing to change a bit
+> to fit in.
+
+Okay, I'll try to be on the lookout for this work.
+
+> >      }
+> >
+> >      if (!arm_feature(env, ARM_FEATURE_EL2)) {
+> > @@ -1538,8 +1548,6 @@ static void cortex_a7_initfn(Object *obj)
+> >      cpu->id_pfr0 = 0x00001131;
+> >      cpu->id_pfr1 = 0x00011011;
+> >      cpu->id_dfr0 = 0x02010555;
+> > -    cpu->pmceid0 = 0x00000000;
+> > -    cpu->pmceid1 = 0x00000000;
+> >      cpu->id_afr0 = 0x00000000;
+> >      cpu->id_mmfr0 = 0x10101105;
+> >      cpu->id_mmfr1 = 0x40000000;
+> > @@ -1581,8 +1589,6 @@ static void cortex_a15_initfn(Object *obj)
+> >      cpu->id_pfr0 = 0x00001131;
+> >      cpu->id_pfr1 = 0x00011011;
+> >      cpu->id_dfr0 = 0x02010555;
+> > -    cpu->pmceid0 = 0x0000000;
+> > -    cpu->pmceid1 = 0x00000000;
+> >      cpu->id_afr0 = 0x00000000;
+> >      cpu->id_mmfr0 = 0x10201105;
+> >      cpu->id_mmfr1 = 0x20000000;
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 852743b..430b8d5 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -964,6 +964,16 @@ void pmu_op_finish(CPUARMState *env);
+> >  void pmu_pre_el_change(ARMCPU *cpu, void *ignored);
+> >  void pmu_post_el_change(ARMCPU *cpu, void *ignored);
+> >
+> > +/*
+> > + * get_pmceid
+> > + * @env: CPUARMState
+> > + *
+> > + * Return the PMCEID[01] register values corresponding to the counters which
+> > + * are supported given the current configuration (0 is low 32, 1 is high 32
+> > + * bits)
+> > + */
+> > +uint64_t get_pmceid(CPUARMState *env);
+> > +
+> >  /* SCTLR bit meanings. Several bits have been reused in newer
+> >   * versions of the architecture; in that case we define constants
+> >   * for both old and new bit meanings. Code which tests against those
+> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> > index c50dcd4..28482a0 100644
+> > --- a/target/arm/cpu64.c
+> > +++ b/target/arm/cpu64.c
+> > @@ -141,8 +141,6 @@ static void aarch64_a57_initfn(Object *obj)
+> >      cpu->id_isar5 = 0x00011121;
+> >      cpu->id_aa64pfr0 = 0x00002222;
+> >      cpu->id_aa64dfr0 = 0x10305106;
+> > -    cpu->pmceid0 = 0x00000000;
+> > -    cpu->pmceid1 = 0x00000000;
+> >      cpu->id_aa64isar0 = 0x00011120;
+> >      cpu->id_aa64mmfr0 = 0x00001124;
+> >      cpu->dbgdidr = 0x3516d000;
 > > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index 7d63bb2..5d83446 100644
+> > index 5d83446..9f81747 100644
 > > --- a/target/arm/helper.c
 > > +++ b/target/arm/helper.c
-> > @@ -1293,9 +1293,17 @@ static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >  static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >                           uint64_t value)
-> >  {
-> > +    value &= pmu_counter_mask(env);
-> >      env->cp15.c9_pmovsr &= ~value;
+> > @@ -964,6 +964,43 @@ static inline uint64_t pmu_counter_mask(CPUARMState *env)
+> >    return (1 << 31) | ((1 << pmu_num_counters(env)) - 1);
 > >  }
-> 
-> This change doesn't look like it should be in this patch ?
-
-This has been appropriately split off into a separate patch for v6. I
-must've seen "pmovsr" and staged it here by accident.
-
 > >
-> > +static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> > +                         uint64_t value)
-> > +{
-> > +    value &= pmu_counter_mask(env);
-> > +    env->cp15.c9_pmovsr |= value;
-> > +}
+> > +typedef struct pm_event {
+> > +    uint16_t number; /* PMEVTYPER.evtCount is 10 bits wide */
+> > +    /* If the event is supported on this CPU (used to generate PMCEID[01]) */
+> > +    bool (*supported)(CPUARMState *);
+> > +    /* Retrieve the current count of the underlying event. The programmed
+> > +     * counters hold a difference from the return value from this function */
+> 
+> Don't leave the */ dangling on the RHS of a multiline comment.
+> (CODING_STYLE now recommends Linux-kernel style.)
+> 
+> > +    uint64_t (*get_count)(CPUARMState *);
+> > +} pm_event;
 > > +
-> >  static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >                               uint64_t value)
-> >  {
-> > @@ -1645,6 +1653,23 @@ static const ARMCPRegInfo v7mp_cp_reginfo[] = {
-> >      REGINFO_SENTINEL
-> >  };
-> >
-> > +static const ARMCPRegInfo pmovsset_cp_reginfo[] = {
-> > +    /* PMOVSSET is not implemented in v7 before v7ve */
-> > +    { .name = "PMOVSSET", .cp = 15, .opc1 = 0, .crn = 9, .crm = 14, .opc2 = 3,
-> > +      .access = PL0_RW, .accessfn = pmreg_access,
-> > +      .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmovsr),
-> > +      .writefn = pmovsset_write,
-> > +      .raw_writefn = raw_write },
+> > +#define SUPPORTED_EVENT_SENTINEL UINT16_MAX
+> > +static const pm_event pm_events[] = {
+> > +    { .number = SUPPORTED_EVENT_SENTINEL }
+> > +};
+> > +static uint16_t supported_event_map[0x3f];
 > 
-> This should be marked ARM_CP_ALIAS, beacuse its underlying
-> state in c9_pmovsr is just an alias into PMOVSR, and that
-> register is handling reset and migration.
+> What is this hardcoded 0x3f ?
 
-Thanks for catching this, too!
+This was the maximum common event ID (i.e. bits in PMCEID[01]) as of
+ARMv8.0. Obviously it should be a macro instead of a magic constant. I'm
+also debating whether this should be the maximum supported by the
+architecture or just the maximum supported by QEMU (particularly because
+later ARM versions raise this number significantly).
+
+> > +
+> > +/*
+> > + * Called upon initialization to build PMCEID0 (low 32 bits) and PMCEID1 (high
+> > + * 32). We also use it to build a map of ARM event numbers to indices in
+> > + * our pm_events array.
+> > + */
+> > +uint64_t get_pmceid(CPUARMState *env)
+> > +{
+> > +    uint64_t pmceid = 0;
+> > +    unsigned int i = 0;
+> > +    while (pm_events[i].number != SUPPORTED_EVENT_SENTINEL) {
+> 
+> Are we ever going to run through some other array than the
+> constant pm_events[] ? We could just use ARRAY_SIZE rather
+> than requiring a sentinel member.
+
+No, I don't think so.
+
+> 
+> > +        const pm_event *cnt = &pm_events[i];
+> > +        if (cnt->number < 0x3f && cnt->supported(env)) {
+> 
+> ...another 0x3f. Are we ever really going to see an
+> out-of-range .number field, or should we just assert()
+> that it's in range ?
+
+In some places this can be set by user code via PMEVTYPER.evtCount, but
+I think in this code an assert is the right way to handle it.
+
+> 
+> > +            pmceid |= (1 << cnt->number);
+> > +            supported_event_map[cnt->number] = i;
+> > +        } else {
+> > +            supported_event_map[cnt->number] = SUPPORTED_EVENT_SENTINEL;
+> 
+> This will leave us with supported_event_map[] entries in
+> one of three states:
+>  * SUPPORTED_EVENT_SENTINEL if they have a specific pm_events[]
+>    entry marked as not supported
+>  * an index if they are supported
+>  * zero if there is no pm_events[] entry
+> 
+> Don't the ones in the last category get confused with the
+> real index 0?
+> 
+> Maybe this should initialize the whole array first to the
+> sentinel value and then just fill in the supported ones with
+> their index values?
+
+I've re-written this code based on your feedback for v6, eliminating the
+sentinel and initializing the entirety of supported_event_map.
 
 -Aaron

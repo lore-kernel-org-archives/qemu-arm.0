@@ -1,221 +1,161 @@
-Received: by 2002:a5d:6782:0:0:0:0:0 with SMTP id v2-v6csp1354467wru;
-        Wed, 8 Aug 2018 19:06:32 -0700 (PDT)
-X-Google-Smtp-Source: AA+uWPxi0PsV6iZIrMD/G9PR10u1hs0mcG03vwZKmtCzf9tn9U1QB1OGT1w1bTR0pK1Ftr2T8V81
-X-Received: by 2002:ac8:1a90:: with SMTP id x16-v6mr187202qtj.160.1533780392311;
-        Wed, 08 Aug 2018 19:06:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1533780392; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1472306wrd;
+        Thu, 30 Aug 2018 00:07:30 -0700 (PDT)
+X-Received: by 2002:a81:344:: with SMTP id 65-v6mr5098922ywd.373.1535612850696;
+        Thu, 30 Aug 2018 00:07:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535612850; cv=none;
         d=google.com; s=arc-20160816;
-        b=dbEKhU8C8rMjlG9YlToRHzWUsSYp61iPmgO8dAK+msTQUmGo0wG2YnDziSIOuP5Xrk
-         FxwzWGGlEtelmQyS3Y/40e+oHEw4nrRngmsrm9dH0BiyqVb2fzVgPLvIrqehO+wWiUk1
-         HikXF+qj2K3HidyK7gb1t2ihqA9pD5vnuNk7QrwTTPwM3ruL5YNTqaSoTlx4JNIYIASo
-         XheOV1+p1io+cIowG2OTRu6L3xkzadEQpvKhO0n4eNXNQz2WKibMllAGWYVZT8VJhip/
-         xQbXpqwjofE/IPN1bcabeGtfGh8TzR+IbmEkHklraldh0Z9naCwck6dPRnFK6dOD+TA3
-         i/XA==
+        b=KAbBePyccuSlnH51Zc0lP6ooAkRh2Fv5oXiFFF6Uex/zk0v5NiPIcITSnOObQ8d2FW
+         X4xHyfFGpHqOz2eAnQu+HYNDpE9bRVnfjP4UnmvQeTW3vteAJL9bBeU6zQtlyq7jiWHF
+         armfzEoYyjJ6velSQWcKdXWMmTVQs4KtqZOG+txvD+5R2KJYWhlmkb5O99q4IoHGNPAv
+         FR8M6DV+iEYK9wB5xVpOhltuzySB1KF49vWcGTF/JF78TYHzpPzEbb/31M0vROEn0JEt
+         Jr9w4d5sqAff+VPyLJEmdSQ63qBvwM1Yiw1QvXVzHU300RcOfQr6DbnI/rKnJ3+Pk23Q
+         R6CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature
-         :arc-authentication-results;
-        bh=SJRA/5ErV01BPJG41MBGpUcBMKuRQgBT5ke4LdqbRgQ=;
-        b=DBjiu5fstOPxGWMnsvsX9S+jTXUC0Fzoyh7rf06ePwMJT77vImXQ/J46IhMksogoHm
-         gMJ+LRwvsabAjRfaIMa+oLMHlZN31dGwY3G4GnlpFHrqlIIs1u1h9miKxvqtQ4E0qbmL
-         MhOR7Yk+YJkYQF2c3y7kCuji6WSuQsDLZsBxXOS1jxUBF3ZQ9ghDHxtkAVJl5CVY8LeP
-         FEL3zO7xBysJCaK09gXdnrftkfJyl6b/O9PoyUAkHpNpIceDOqKmD2fvyYt+YCOMDZ5t
-         d5jVrio0YpKOMo/qx0OSQej4ul5FLKpnl8Y+ES6GfVMxsO5NecGdj8RWSSfHkPHfOpCd
-         q2+Q==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=YZLRq2zVo3ShRpPyYxkajkv7sbrh6GGeGQ99+wg2bz4=;
+        b=CgWyuxyCQylYXTAlmO1LQgPwNaZo1z74TFlJzfqy7UpSuk+s6sfuAoyOtAR/rNFLjR
+         AEI9GUmi3Aqomh1ATf4MQtIRu3PqYNox758S+Zx9mw8S/Nxg+rT4r6ClB6Ju7s2j3LmH
+         pkBf1ZYqoNwR572dOGZiJjJGA32aNSUUX6n++DMSXxq3mzHe9yJZkjl5EFC8y/a4Cuig
+         jKqLi7v5jtw362Wzy407XUkjJYvdreuwjm6P91Mox+pQ7GYqJrRoFRmrMpzPGDK8eln6
+         lu9PrqrjGuCdy1/q96aQxlm2dQmtsP1K+5sNZwk7bkRY/Me0YpZHehNof4kPT6yuMdmg
+         rjFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CAlJEkfV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g26-v6si5728701qtf.118.2018.08.08.19.06.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrTvSO+e;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id o193-v6sor1657490ybg.73.2018.08.30.00.07.30
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 08 Aug 2018 19:06:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Thu, 30 Aug 2018 00:07:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=CAlJEkfV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46200 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fnaLP-0007X4-RH
-	for alex.bennee@linaro.org; Wed, 08 Aug 2018 22:06:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46182)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sayandeep.iitkgp@gmail.com>) id 1fnaLJ-0007Wx-30
-	for qemu-arm@nongnu.org; Wed, 08 Aug 2018 22:06:26 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sayandeep.iitkgp@gmail.com>) id 1fnaLI-0006h2-2t
-	for qemu-arm@nongnu.org; Wed, 08 Aug 2018 22:06:25 -0400
-Received: from mail-oi0-x22e.google.com ([2607:f8b0:4003:c06::22e]:41564)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sayandeep.iitkgp@gmail.com>)
-	id 1fnaLH-0006gg-Qh
-	for qemu-arm@nongnu.org; Wed, 08 Aug 2018 22:06:23 -0400
-Received: by mail-oi0-x22e.google.com with SMTP id k12-v6so7211820oiw.8
-	for <qemu-arm@nongnu.org>; Wed, 08 Aug 2018 19:06:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=SJRA/5ErV01BPJG41MBGpUcBMKuRQgBT5ke4LdqbRgQ=;
-	b=CAlJEkfVJqk9TORrREwJdYumJcAKEHeGIKrz3fHeIwRss0ROOPmJtb+wSxlTlV1EhA
-	58nY6BRuZNqBJ3zrL5b2Gw/6sOO6vWJ3w0IU59/YkNew6abohOkqXe+aLD9aGBhK8rse
-	LvB/eHvCoERsrUf8YVH62VSAGNkzoB6aD61qimMLxl5c0g30nndHvxONClo3cSoN2qaX
-	S2nEC+rv2Hjfgnj+mxXZAXZiBCnrMaT9IB/4IXXzXRJaF65R+Ig5JOPb9qjGtYjiteGj
-	eimZTIi2OwOyEQp7PwAjYb50zIxzvinfaU3CE4thXGinFAsq3j7P3z5O5WzUKdiQ19Ju
-	wwtQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b=SrTvSO+e;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=YZLRq2zVo3ShRpPyYxkajkv7sbrh6GGeGQ99+wg2bz4=;
+        b=SrTvSO+eSB0xWzmiqA6QdsL13bX8zceqd536bt6eViVo6NdPmhwgpBVyUxqvXQPzIs
+         Qwqe/19zvrbHoJ44vh31+Z5Cp5pn1TobcJVwHXwiNeI0PyOJKVdLigbL2z7rfAf68k54
+         bPNripdEVvHN763jKvISx38lBSBnGJGOB1xZQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=SJRA/5ErV01BPJG41MBGpUcBMKuRQgBT5ke4LdqbRgQ=;
-	b=LkI3j0cCc8Uk67fUu6VIC9TIMHKgUgg8JKxZ9l/OdJt4/OXBnx4rFRsFXPO25oOtGZ
-	wX4DQGTQbKG0wUpJfzzVC0B1Rqnm82B/t05MgBXybhSE4B3GhlO+hltot5d6xu5+px8y
-	CnU6hUeNIF6WfB6kQ/ZA+3eL8VskeX0/7n+molfuaQz6tJRVzow48pw0pJI+mNLfTh2d
-	Ov8S4DIDvtL1cHysM+BdS77QS6AUpKft8vcYHiFrf+8yRVVdhe3UCKcsxjIZkC2baxdX
-	tPSlBVSrmjmWUH/87GgHYtAdqk1uQNbJ4ACxFJjkYcUEdR4fG4qjTTbNF4faWGdyaB2E
-	FieA==
-X-Gm-Message-State: AOUpUlGeoexFrkzJmHX+H9zdvNnY75hmqDLl4ATa14rLdTYdbcWBFwCw
-	gQxBM6lmSzqFfnpLwRTE3sdzNSeX6+3mbQEwdgU=
-X-Received: by 2002:aca:d846:: with SMTP id p67-v6mr218027oig.42.1533780383066;
-	Wed, 08 Aug 2018 19:06:23 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=YZLRq2zVo3ShRpPyYxkajkv7sbrh6GGeGQ99+wg2bz4=;
+        b=R1yW+dBrrhUy7cwajP+MOIubipu472g/AO/+xoNPQCfsTfzMyZjsbu2W4YSmLe9Bmp
+         XJvEIe0z6pl4/ZQVSnmH8Mws0CwgCsE8qIw7wlJkSgbNH+O7OZOwUq7V07RCHrUQv/6M
+         y5TPmwQURGfDF3spnLdjONoNQRZFsThqy4yyoUcMaKX/sK1O+PYtjxMTDBLT7x6fQSrj
+         e7Bm7+XylaONtLvxFVHAAZrdgEeXBzMZE7tsCEPJX//zwZddzLJ/rfsm8GdqYNDD7WIZ
+         wmsSX5Pcy0/7NQbTrinBl1pa+AJntEtSGNX1H6jC79FYtPnVBVjbi8vNmrli/o7+nX9U
+         RiXA==
+X-Gm-Message-State: APzg51CjduFTdBgiXUjICgoD3wIchUFOjE37FYW1S/4eu6htsrtwuHIX
+	H3l1ZsNWhiBtNMrNPYdZUbV3j739CKp5MYzPpAIyNDT2
+X-Google-Smtp-Source: ANB0VdbYeeAyUgXkKQygEv2t6dVsKb6YgtIC0Wyjhd5uDMcbpYJYDf1WAFX0jLQ7TMH5m1Hhg2VxKxXCqMZEOjGfso4=
+X-Received: by 2002:a25:7207:: with SMTP id n7-v6mr5209979ybc.287.1535612850169;
+ Thu, 30 Aug 2018 00:07:30 -0700 (PDT)
 MIME-Version: 1.0
-References: <CALxeBVBJxfD_UNE=9JZ0qn_VXF1fYU=m0WyFQqwJhCbqN7-k5Q@mail.gmail.com>
-	<CAFEAcA-C9AXLqFj9_8QQmnZ=2+KbSWqgpgySsbbYMTJ-u79KAg@mail.gmail.com>
-In-Reply-To: <CAFEAcA-C9AXLqFj9_8QQmnZ=2+KbSWqgpgySsbbYMTJ-u79KAg@mail.gmail.com>
-From: Sayandeep Saha <sayandeep.iitkgp@gmail.com>
-Date: Thu, 9 Aug 2018 07:36:11 +0530
-Message-ID: <CALxeBVBBma5ZhFapsQ+bCaJU69F_U-w4L7AHbymBgoh6qu=zHQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000e56dd90572f712bc"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::22e
-Subject: Re: [Qemu-arm] Regarding some issues with gdb
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gnd+UUVg0Qvw
-
---000000000000e56dd90572f712bc
+Received: by 2002:a25:8746:0:0:0:0:0 with HTTP; Thu, 30 Aug 2018 00:07:29
+ -0700 (PDT)
+In-Reply-To: <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com>
+References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
+ <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
+ <CAFEAcA9hivJzqksiSZbco4+EysYj=_y0t3k_L7TobxNPS8T2dQ@mail.gmail.com>
+ <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com> <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Thu, 30 Aug 2018 15:07:29 +0800
+Message-ID: <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: Andrew Jones <drjones@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
+X-TUID: 5ewWeHGkyNhZ
 
-I tried this thing by modifying the permission of the ELF. Precisely, I
-used the flags -Wl, -N during compilation and also used static linking.
-Also, I tried objcopy --writable-text and modified the write permission of
-the .text section of the ELF. But that did not worked. Is there any other
-thing to try with?
-
-On Thu, Aug 9, 2018, 12:23 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On 8 August 2018 at 17:50, Sayandeep Saha <sayandeep.iitkgp@gmail.com>
-> wrote:
-> > I successfully made all these changes on my X86-64 Intel machine.
-> However,
-> > for ARM I tried with QEMU. The test case was a simple C program for
-> > calculating factorials using loops. I ran the following commands:
-> >
-> > Compilation:
-> > arm-linux-gnueabi-gcc -g -static -Xlinker -N -mthumb -masm-syntax-unified
-> > factorial.c -o factorial
-> >
-> > Run:
-> > qemu-arm -g 1234 -L /usr/arm-linux-gnueabihf/ ./factorial
-> >
-> > Next, I invoked gdb-multiarch from another shell to debug the program.
-> >
-> >
-> > However, when I try to change some instruction using "set" command of
-> GDB,
-> > it says "The memory location cannot be accessed".
-> > Surprisingly, I can print the already existing contents of those memory
-> > locations using gdb's print command. Also, I could modify register values
-> > successfully.
-> >
-> > I am really confused and wander whether it is possible to change memory
-> > contents within QEMU, or not. If it is possible, what is the step by step
-> > procedure for that.
+On 29 August 2018 at 21:42, Andrew Jones <drjones@redhat.com> wrote:
+> On Wed, Aug 29, 2018 at 05:17:20PM +0800, Hongbo Zhang wrote:
+>> On 17 August 2018 at 21:37, Peter Maydell <peter.maydell@linaro.org> wrote:
+>> > On 25 July 2018 at 06:30, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>> >> For the Aarch64, there is one machine 'virt', it is primarily meant to
+>> >> run on KVM and execute virtualization workloads, but we need an
+>> >> environment as faithful as possible to physical hardware, for supporting
+>> >> firmware and OS development for pysical Aarch64 machines.
+>> >>
+>> >> This patch introduces new machine type 'Enterprise' with main features:
+>> >>  - Based on 'virt' machine type.
+>> >>  - Re-designed memory map.
+>> >>  - EL2 and EL3 are enabled by default.
+>> >>  - GIC version 3 by default.
+>> >>  - AHCI controller attached to system bus, and then CDROM and hard disc
+>> >>    can be added to it.
+>> >>  - EHCI controller attached to system bus, with USB mouse and key board
+>> >>    installed by default.
+>> >>  - E1000E ethernet card on PCIE bus.
+>> >>  - VGA display adaptor on PCIE bus.
+>> >>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
+>> >>  - No virtio functions enabled, since this is to emulate real hardware.
+>> >>  - No paravirtualized fw_cfg device either.
+>> >>
+>> >> Arm Trusted Firmware and UEFI porting to this are done accordingly.
+>> >>
+>> >> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+>> >> ---
+>> >> Changes since v1:
+>> >>  - rebase on v3.0.0-rc0
+>> >>  - introduce another auxillary patch as 1/2, so this is 2/2
+>> >>  - rename 'sbsa' to 'enterprise'
+>> >>  - remove paravirualized fw_cfg
+>> >>  - set gic_vertion to 3 instead of 2
+>> >>  - edit commit message to describe purpose of this platform
+>> >
+>> > Hi; there's been a lot of discussion on this thread. I'm going
+>> > to assume that you don't need any further review commentary for
+>> > the moment, and will wait for a v3. If there are any specific
+>> > questions you want guidance on to produce that v3, let me know.
+>> >
+>> Thank you for this summary/remind.
+>> Sorry for the late reply due to my vacation last week.
+>>
+>> Yes, I am working on the v3, with main changes:
+>>  - machine name "sbsa-ref" (good name?)
+>>  - a separate file sbsa-ref.c
+>>  - don't touch the acpi c file, acpi will be supplied by uefi
 >
-> I don't think that this should vary between guest architectures.
-> Is the memory area you are trying to modify actually writable?
-> If it is part of the ELF executable you are running, then it
-> might depend on what the memory permissions the ELF file sets up
-> are (ie if it's read-only). I haven't checked that.
+> I agree with the above three bullets.
 >
-> thanks
-> -- PMM
+>>  - only necessary dt node, no other peripheral dt nodes
 >
-
---000000000000e56dd90572f712bc
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">I tried this thing by modifying the permission of the ELF=
-. Precisely, I used the flags -Wl, -N during compilation and also used stat=
-ic linking. Also, I tried objcopy --writable-text and modified the write pe=
-rmission of the .text section of the ELF. But that did not worked. Is there=
- any other thing to try with?</div><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr">On Thu, Aug 9, 2018, 12:23 AM Peter Maydell &lt;<a href=3D"mailto:=
-peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div>=
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">On 8 August 2018 at 17:50, Sayandeep Saha &l=
-t;<a href=3D"mailto:sayandeep.iitkgp@gmail.com" target=3D"_blank" rel=3D"no=
-referrer">sayandeep.iitkgp@gmail.com</a>&gt; wrote:<br>
-&gt; I successfully made all these changes on my X86-64 Intel machine. Howe=
-ver,<br>
-&gt; for ARM I tried with QEMU. The test case was a simple C program for<br=
+> I'm not sure what DT nodes are necessary. After discussing the
+> ACPI tables, and that firmware would supply them, I thought we
+> also agreed firmware would supply the DTB.
 >
-&gt; calculating factorials using loops. I ran the following commands:<br>
-&gt;<br>
-&gt; Compilation:<br>
-&gt; arm-linux-gnueabi-gcc -g -static -Xlinker -N -mthumb -masm-syntax-unif=
-ied<br>
-&gt; factorial.c -o factorial<br>
-&gt;<br>
-&gt; Run:<br>
-&gt; qemu-arm -g 1234 -L /usr/arm-linux-gnueabihf/ ./factorial<br>
-&gt;<br>
-&gt; Next, I invoked gdb-multiarch from another shell to debug the program.=
-<br>
-&gt;<br>
-&gt;<br>
-&gt; However, when I try to change some instruction using &quot;set&quot; c=
-ommand of GDB,<br>
-&gt; it says &quot;The memory location cannot be accessed&quot;.<br>
-&gt; Surprisingly, I can print the already existing contents of those memor=
-y<br>
-&gt; locations using gdb&#39;s print command. Also, I could modify register=
- values<br>
-&gt; successfully.<br>
-&gt;<br>
-&gt; I am really confused and wander whether it is possible to change memor=
-y<br>
-&gt; contents within QEMU, or not. If it is possible, what is the step by s=
-tep<br>
-&gt; procedure for that.<br>
-<br>
-I don&#39;t think that this should vary between guest architectures.<br>
-Is the memory area you are trying to modify actually writable?<br>
-If it is part of the ELF executable you are running, then it<br>
-might depend on what the memory permissions the ELF file sets up<br>
-are (ie if it&#39;s read-only). I haven&#39;t checked that.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
+Yes, firmware supply ACPI to load OS.
+But for DT, It is said that UEFI still needs some DT nodes, at least
+for memory size. I am trying to figure out which DT nodes are
+mandatory too, it is better we don't have any DT nodes left.
 
---000000000000e56dd90572f712bc--
+@Ard, @Leif, is there any possibility to remove all the DT nodes?
+On real hardware, how does UEFI find the memory size and CPU number?
+
+> Thanks,
+> drew
+>
+>>
+>> Before my sending, I still like comments on the above effort, it is
+>> feasible/reasonable or not etc, in case I go wrong too much.
+>>
+>> I also know that some reviewers may like to give comments when they
+>> see the patch codes, so if you don't have comments now, you can do it
+>> after seeing the patch.
+>> Thanks all.
+>>
+>> > thanks
+>> > -- PMM
+>>

@@ -1,129 +1,99 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1535886wrd;
-        Thu, 30 Aug 2018 01:31:21 -0700 (PDT)
-X-Received: by 2002:a1c:3545:: with SMTP id c66-v6mr1110541wma.120.1535617881329;
-        Thu, 30 Aug 2018 01:31:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535617881; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1544580wrd;
+        Thu, 30 Aug 2018 01:39:54 -0700 (PDT)
+X-Received: by 2002:aca:3507:: with SMTP id c7-v6mr1693621oia.46.1535618394270;
+        Thu, 30 Aug 2018 01:39:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535618394; cv=none;
         d=google.com; s=arc-20160816;
-        b=aNEfqbir01pAMwBe8dG7B9p79Ip4kdjGzYA3dLmCplPXimmw4Qd31t1Sw7+0g1jARn
-         wp+L6FOWxhXHfMyR1Lih7EDP8EMv3sq3NOJGC1PTxCA0SkRqfQxvdyssgIf+z2hNilMg
-         M1rX1OYXXpCd329VhEsi41MBH7C4aeL1WY0urvhBOREi/pB+q0D+9f1FjLm1Easm8OC2
-         +2on+SZumJI2RZKIY99shMKTzm3+Fr2xL2qxLzuGrN64exHw4Ou6ZyqGpimgQ0tmUMLJ
-         Mnx4aZypc9+J6B5Os9i6hm79MD4OJb0QhGEoMdkBAfnayrNVNl7QoUFPT1ayxp5G/lF1
-         zGog==
+        b=Ux7rUzKHxZn5Y6jp0EJPT6NrpcJacmJhJJPMf1/BAj0kUUXhN9pTVepA6agd9RyVa2
+         8/JrRdL8xFybwFBZi0W+mwMabFRX5iVR6Y259Wnn6zSpXfUBwxTEcv1ha7NzjUz9vS8a
+         T5OAWRE/rQfppzpUWSggoTvZEbtTKOAjcwh/DUCQHtSeOlh7hkp2+cpgw0tYTI+v54uU
+         MT635BejjD1/ksxmNYcPod9lPFGyEtmioAm31G0N1uz3lFh7f79szpkwu7656S9RzkJ7
+         clJpOMO4d53aNmWaMdc/P2uCz4L3W4hL6AmY1ZMLYiakmK2bkboZWoqWIHWDG+hLpKqi
+         KlwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature
-         :arc-authentication-results;
-        bh=tx2qkqPUEFcdZHlQi99ifnIDfBqmaM+Q37gdJSFzF3c=;
-        b=EpzzhBbvfBkP4iyGrj78I3lLUclp0u5R2tZWYaNCB+KFc6NAIoLkQxWmLX2/rZQBBQ
-         i5NQs4ZpaMwnul1YfrU577hN7XrmuHKPwuYlTrDMEp8hLZK8v6ZjyZPQRx0o50zRyA8V
-         V8Tx8Jck0utfAFQA9xL1mzrJWyGBE7uw2iXNrTvOv12tvy/SvUqMATv1T0Ck/LWpJ75W
-         J5yBfv4U1EVHEdv8+pHJhlRQt7pnOPWFHdrPMwi3rj1qHj6BIsdrMgYu5Ws4FW0fYOLT
-         sqtuf5BfzJXtZcZviFFhD1FRe6R47u9WSqA0mmuKwP8qA9vHJM1TgyLPSfFrln7Svep2
-         qpcg==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature:arc-authentication-results;
+        bh=BV2bAWN6WZfilL/F324Z0KmZKso6mTo7oTp+TH0T270=;
+        b=dtv3I7bwezVnKnu+XW5GT4+qMGDMv8hpfVcXEvyH9x44ldWEOBKUGW0YzxrQerFq1R
+         JeLo81vGoLqX48xPrMUJ3uAzxgCZIzgyhj6RcNrXF2UimrRn/0iD3r2TgP7+SWAFT2A1
+         6Cl0tZS+eYKhw4UOMBqchFxQvuG+X9mrHM8xazysDCSh0khC+7pVFSjlVhhmrjyD1uQU
+         MXafuD8FFuit+BzcG/BVTeW2zwzh8w5pQyo4MxE+02L/k/tgXKFJlsC7F/Cl+Bm/qCdP
+         OzrqBH12O8Wi7Jf+rpNlG0BBKycfGEIFZhPRpkt1gWCi9+CfXYC1ueyJ94HwBdMVIPb4
+         j4ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kvW2pRBk;
-       spf=pass (google.com: domain of leif.lindholm@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=leif.lindholm@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hW1X/bLw";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <leif.lindholm@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h14-v6sor264163wme.32.2018.08.30.01.31.21
+        by mx.google.com with SMTPS id r11-v6sor5239908oic.133.2018.08.30.01.39.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 30 Aug 2018 01:31:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of leif.lindholm@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 30 Aug 2018 01:39:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kvW2pRBk;
-       spf=pass (google.com: domain of leif.lindholm@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=leif.lindholm@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hW1X/bLw";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=tx2qkqPUEFcdZHlQi99ifnIDfBqmaM+Q37gdJSFzF3c=;
-        b=kvW2pRBkybmxUeoOAKffo4rd87S3GcGzmanrgjGy2f82rrlNcGES1kautKOaYUa5Xj
-         geRXuxGY+c1m7c1o15XVmh3zG2PGE6V3Jmj0L9m5QKfBSgD9vVBloaX3KT3yzwWSSLtc
-         d7Ylwc97ABbliuIdqU6Y3LhXKsQb8lxrBnUj0=
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=BV2bAWN6WZfilL/F324Z0KmZKso6mTo7oTp+TH0T270=;
+        b=hW1X/bLwxZUk556Re+OImCi9XghLNlKIjgmTEHO24l7Cug7N+YMjHFdAoY52aaoEH8
+         e/rbYHZdJIotmgneS7VWhPGsDgrUJDbfbYd1efrltSH1GjYasbMjAXQCNoZnR99ZUvZC
+         iJj082/RG0aZn6k/nHleFqkSALW5Us74hDOH8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=tx2qkqPUEFcdZHlQi99ifnIDfBqmaM+Q37gdJSFzF3c=;
-        b=WoHDeHpuYuWjAmGMFm5FUlVCtBGESh/ka1Qfqm4VyioZSmcziAiW1X+/pNnEhv+6G2
-         HForudDm5XgQq6IhlIvsF4Bg17ozaqNAhH7qRhifne55MX2+nOQADCn8TpFMLg93ZTj7
-         c3Ju12gP8027T3hULt1rZSk/EcT4QpPolRwrbuT0MQRtMANZEPxbqMq7G4Tnk4r9RODA
-         fgQolzm3cQSPBHXJXm1YYCJq6psM519YjWZ4p4F1XWrObBYZfA4XPW0M7Lw1J0NqgS7a
-         kmBExO0T7/0sbyVl9nD9auAl9wzdi/Z4AmY8PU5XiSQt/oDEv4D8qfooUnUpRfEeL5pU
-         Vy1A==
-X-Gm-Message-State: APzg51AoBHU11P7z6WJNopx/UhmWnxN3F8jdmFlSD9sfEMeZX0xUwy9v
-	ApLCrEDk8JR8gYEf5ppdX6cg76t9
-X-Google-Smtp-Source: ANB0VdZfM72U5ly+PKjmU5Df6gcpIq9Eoo7ki/+QrCsvgqcdABZcoUV1qXFKOCOvHjcphxnRZA1Amg==
-X-Received: by 2002:a1c:91cd:: with SMTP id t196-v6mr340447wmd.100.1535617881056;
-        Thu, 30 Aug 2018 01:31:21 -0700 (PDT)
-Return-Path: <leif.lindholm@linaro.org>
-Received: from bivouac.eciton.net (bivouac.eciton.net. [2a00:1098:0:86:1000:23:0:2])
-        by smtp.gmail.com with ESMTPSA id q16-v6sm4765012wrn.41.2018.08.30.01.31.19
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Aug 2018 01:31:19 -0700 (PDT)
-Date: Thu, 30 Aug 2018 09:31:18 +0100
-From: Leif Lindholm <leif.lindholm@linaro.org>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: Andrew Jones <drjones@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180830083117.iekobw7l3arkt24m@bivouac.eciton.net>
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=BV2bAWN6WZfilL/F324Z0KmZKso6mTo7oTp+TH0T270=;
+        b=SG2+KklIC6X3qX9M8FtBWnnfai2TNuJFUFji9UxMW52UWgp0ehPFaPds1J8Nq92ws5
+         SpCoAJGV04JfvY8ImwGcmHDlom8J/JtHdndqI1yCFkSAt8BTO4lc5KmVxNE/kUqj3gYl
+         fJJkCjl0b0KpVF6fojoyg2BoE+7QahoTsCfBtFJlLMdmOYujd/newqUTT/nyFKVnssep
+         dVz/1evHYZ2lRJhE+MhQWnZXHCyyPqNeHcb8MUk7vhZXVM0axNZMFU0CKjbDAPyI40Yn
+         p9RFgG9U3vBTtml+X0DLmPQCnUWQ40B0UGPvVUKs20ekGd9eXZG1iVtnhcFdEPgpqeVl
+         SKSA==
+X-Gm-Message-State: APzg51B5xKcmC5lbqsoPtD8+257vc5zB7fuJGEej57DP9kcpsZMFczGu
+	hnhm+UVTU7S1btewrsZ1i0nvKJ9si3GtC9AqFzWav5NA
+X-Google-Smtp-Source: ANB0VdZWdDpZj+45pPOV0C+bRrhh0Ic4JGYVErgMMo8W5opUD6wLEDbmX4mTQqa1YyFGAsAuUkUL/t4LH/bjFsXgk7U=
+X-Received: by 2002:aca:d946:: with SMTP id q67-v6mr1466802oig.212.1535618393971;
+ Thu, 30 Aug 2018 01:39:53 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 30 Aug 2018 01:39:33
+ -0700 (PDT)
+In-Reply-To: <20180830083117.iekobw7l3arkt24m@bivouac.eciton.net>
 References: <1532496652-26364-1-git-send-email-hongbo.zhang@linaro.org>
  <1532496652-26364-2-git-send-email-hongbo.zhang@linaro.org>
  <CAFEAcA9hivJzqksiSZbco4+EysYj=_y0t3k_L7TobxNPS8T2dQ@mail.gmail.com>
  <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
- <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com>
- <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-TUID: QwgCuriIG7EN
+ <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com> <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
+ <20180830083117.iekobw7l3arkt24m@bivouac.eciton.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Aug 2018 09:39:33 +0100
+Message-ID: <CAFEAcA_s+9-4PYHyx_aAnxwt4e=VH77uBG7rC4JA++nOyjAaPw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: Leif Lindholm <leif.lindholm@linaro.org>
+Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, Andrew Jones <drjones@redhat.com>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: Nd83GT8kSg2M
 
-On Thu, Aug 30, 2018 at 03:07:29PM +0800, Hongbo Zhang wrote:
-> >> Yes, I am working on the v3, with main changes:
-> >>  - machine name "sbsa-ref" (good name?)
-> >>  - a separate file sbsa-ref.c
-> >>  - don't touch the acpi c file, acpi will be supplied by uefi
-> >
-> > I agree with the above three bullets.
-> >
-> >>  - only necessary dt node, no other peripheral dt nodes
-> >
-> > I'm not sure what DT nodes are necessary. After discussing the
-> > ACPI tables, and that firmware would supply them, I thought we
-> > also agreed firmware would supply the DTB.
+On 30 August 2018 at 09:31, Leif Lindholm <leif.lindholm@linaro.org> wrote:
+> On Thu, Aug 30, 2018 at 03:07:29PM +0800, Hongbo Zhang wrote:
+>> @Ard, @Leif, is there any possibility to remove all the DT nodes?
+>> On real hardware, how does UEFI find the memory size and CPU number?
 >
-> Yes, firmware supply ACPI to load OS.
-> But for DT, It is said that UEFI still needs some DT nodes, at least
-> for memory size. I am trying to figure out which DT nodes are
-> mandatory too, it is better we don't have any DT nodes left.
-> 
-> @Ard, @Leif, is there any possibility to remove all the DT nodes?
-> On real hardware, how does UEFI find the memory size and CPU number?
+> Usually by asking some form of SCP/PMU.
+> So until we have rock-solid multi-cpu-instance (making terms up here,
+> there may be a proper name already?) support upstream, we need to take
+> shortcuts.
 
-Usually by asking some form of SCP/PMU.
-So until we have rock-solid multi-cpu-instance (making terms up here,
-there may be a proper name already?) support upstream, we need to take
-shortcuts.
+I would expect that you'd want a "faked-on-the-QEMU end" SCP
+communications endpoint to start with anyway. We have one of
+those for vexpress, for instance.
 
-Using DT in the same way as we do for mach-virt when booting the OS
-with ACPI seems the most logical choice to me.
-
-The best alternative I can think of would be extending fw_cfg, but
-that would then be lost effort once (if) we get to the abovementioned
-situation, whereas the DT route comes for free.
-
-/
-    Leif
+thanks
+-- PMM

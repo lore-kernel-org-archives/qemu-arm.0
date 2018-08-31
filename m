@@ -1,182 +1,203 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp445944wrd;
-        Fri, 31 Aug 2018 03:44:51 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbyN0v/+XSMRCPRAmLvTObWQxK3m2gXDygRoKOyglgAuIGBlSC+9C/RE9D1ZKMOgpW4niOz
-X-Received: by 2002:a0c:e083:: with SMTP id l3-v6mr14967217qvk.1.1535712291780;
-        Fri, 31 Aug 2018 03:44:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535712291; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp446055wrd;
+        Fri, 31 Aug 2018 03:44:59 -0700 (PDT)
+X-Google-Smtp-Source: ANB0Vdazjb5Yt2gcCrCeh+h3GLZC1hKje4jGGQK9sHWh5575XuHnvlCDPl402yWQsGLcs+qUNDcg
+X-Received: by 2002:a0c:da0c:: with SMTP id x12-v6mr14815843qvj.123.1535712299565;
+        Fri, 31 Aug 2018 03:44:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535712299; cv=none;
         d=google.com; s=arc-20160816;
-        b=DS6iZPqvz4202T7FH8iPwcgNuEKkhL1KIuWAEBCNYns1TU8qiyh4bM96M9+XjP4rKu
-         NbCvxpkVZuv1UTzs4UqEeDzlAAbyau4P913T8+4FSHn0dl5Gp3R6d95Rp16sfESFSDs0
-         c/rOkv7YlRRHoVKnrNktA0y8EwdIDy7ix6R7PoS5aPjHARB6164MhmLJAau+XJKzRQiZ
-         nAWtb1u/yHL1T2qKC1b5PqX7t2RgzUiqS5cSItwPCIJp3XiCS4876Ot+KWTlIwo3ds31
-         2bBXT5nzukOuxZFuKisXQ9bOkK6ahu+Di+XerJuBXLfg8fUsa7MUvliU70goUpnc6gJb
-         biGg==
+        b=z1r0RB/4cYhr/MFv3Pc6fAYnvCI8whFd0X38FNG5ZJoPP019972669EhKonls/h214
+         dHIJcjG2ZIrmKPgN5XWEbSUV7S7D/8bPmFcmEp9Zb7Zum0H9CEH1HGN55/PSqdrSBIA5
+         ChLvCnrJplAEVnAQVAUdvEugeAEzDBGPqOdvH92rSvIVghojdUhCC5o6Tp9tphil3kLJ
+         HMrGfhi8FzbDJCOY5LrpkJ6DYjg90B2i5bd4rXuXyL/MRLdhLL5YlG14Gf+uVHxuEYxV
+         0sFBsKP/tzXpNl1YWVIHpZ8P4ASLVE8mgBOGPGm6KfOBrJgaTtkrpvO7/8H54QgezVPa
+         W6JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=eIxbo72WQB4doFx/dG/3X/kwgkwWHs4ZdlHfXowHdQc=;
-        b=h33IQI6xiPgTHKTUss+gfGIXDxTvGa+lmksfd2SyNuD8hQNTa9pU4ECx57VslIqg60
-         ROq+KS2CAL2txsb74a5fh0fzKlqV0eWxpRpJdd1f7Nh0q3rTMlPmHrU0P5XWeIuU4BKZ
-         foe26smmv6oCDhcweiUk3zavdR2g3hp/yeACsyiOmbhAffJsMs4jZac59HURiQJdIg+f
-         5Mj4fOJ9XyPVWTOUDWNtbiwzZDKyV5x9KbF6SO2caBnPtPJ8CxxBOmHguHpCEAFsXaKk
-         NiZKa3hZebjze/2OcD1F9IiLQN+Y7BaWSTlCCrToiGBNM7RYHDnwNNlkJd0SdWKFvuIS
-         0hwg==
+        bh=GxOX0UDmX+AlpEvrCito8qKFkZMPEyS3L2qM3KEBITs=;
+        b=nj4ZjHc2+i9zY5qCBIZ+PMrAatwVJAjBcVSPyf4cS9O0/f92JNaR+/Bt5ESF82pc0u
+         XD5VibjirvCUYwd5Qqxa8LDMgj+TSrBvpPPmlcgJO/UYSqsYmohSijP9f3Jr1l3DcfYr
+         Hgor9XMdaJOZ8viCICTA9fDdp0gVojCnv/8OFvU4TOfd8P3/jst4bwFWKAKrOxFfzpsO
+         VBsLhgOlZ/sPVWlrp++vDdD9CnNbxyeB/o9TnGUJO/SLLiR848D5eVrDRNbcdaRqHYUy
+         qrBd6lSZfN6f9/d4pD2lZhZqj0rbLRD3A0IR1C8NlKtYmmk1ZHnPHnOLb5nBGCOFkqs6
+         HwSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s17-v6si490832qke.302.2018.08.31.03.44.51
+        by mx.google.com with ESMTPS id a67-v6si6922283qkj.35.2018.08.31.03.44.59
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 31 Aug 2018 03:44:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 31 Aug 2018 03:44:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52986 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52984 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fvgv5-0000uK-7e
-	for alex.bennee@linaro.org; Fri, 31 Aug 2018 06:44:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46347)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fvgvD-0000pK-3f
+	for alex.bennee@linaro.org; Fri, 31 Aug 2018 06:44:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46252)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fvgqD-0003VW-GJ
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 06:39:52 -0400
+	(envelope-from <clg@kaod.org>) id 1fvgpw-0003G7-65
+	for qemu-devel@nongnu.org; Fri, 31 Aug 2018 06:39:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fvgq9-0002To-5b
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 06:39:49 -0400
-Received: from 3.mo177.mail-out.ovh.net ([46.105.36.172]:56735)
+	(envelope-from <clg@kaod.org>) id 1fvgps-0002Em-Sr
+	for qemu-devel@nongnu.org; Fri, 31 Aug 2018 06:39:32 -0400
+Received: from 7.mo2.mail-out.ovh.net ([188.165.48.182]:40876)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fvgq8-0002TG-S1
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 06:39:45 -0400
-Received: from player168.ha.ovh.net (unknown [10.109.160.251])
-	by mo177.mail-out.ovh.net (Postfix) with ESMTP id C9638C4561
-	for <qemu-arm@nongnu.org>; Fri, 31 Aug 2018 12:39:43 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fvgps-0002DZ-LD
+	for qemu-devel@nongnu.org; Fri, 31 Aug 2018 06:39:28 -0400
+Received: from player168.ha.ovh.net (unknown [10.109.159.68])
+	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 327EB156B23
+	for <qemu-devel@nongnu.org>; Fri, 31 Aug 2018 12:39:27 +0200 (CEST)
 Received: from zorba.kaod.org.com (LFbn-1-10605-110.w90-89.abo.wanadoo.fr
 	[90.89.196.110]) (Authenticated sender: clg@kaod.org)
-	by player168.ha.ovh.net (Postfix) with ESMTPSA id 6DE8A42008C;
-	Fri, 31 Aug 2018 12:39:35 +0200 (CEST)
+	by player168.ha.ovh.net (Postfix) with ESMTPSA id CD73142008C;
+	Fri, 31 Aug 2018 12:39:18 +0200 (CEST)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: qemu-devel@nongnu.org
-Date: Fri, 31 Aug 2018 12:38:16 +0200
-Message-Id: <20180831103816.13479-10-clg@kaod.org>
+Date: Fri, 31 Aug 2018 12:38:14 +0200
+Message-Id: <20180831103816.13479-8-clg@kaod.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180831103816.13479-1-clg@kaod.org>
 References: <20180831103816.13479-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1940769964799331136
+X-Ovh-Tracer-Id: 1936266368223120192
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrhedtgdefudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrhedtgdeftdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.36.172
-Subject: [Qemu-arm] [PATCH 09/11] aspeed/smc: add DMA calibration settings
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 188.165.48.182
+Subject: [Qemu-devel] [PATCH 07/11] aspeed/smc: add a 'sdram_base' and
+ 'max-ram-size' properties
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
 	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
 	Joel Stanley <joel@jms.id.au>,
 	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2FkH9YXt8cNO
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jqAbY/I9xotk
 
-When doing calibration, the SPI clock rate in the CE0 Control Register
-and the read delay cycles in the Read Timing Compensation Register are
-replaced by bit[11:4] of the DMA Control Register.
+The setting of the DRAM address of the DMA transaction depends on the
+DRAM base address and the maximun DRAM size of the SoC. Let's add a
+couple of properties to give this information to the SMC controller
+model.
+
+Also, move the SDRAM Memory controller realization before the other
+controllers which need it.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 54 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 54 insertions(+)
+ include/hw/ssi/aspeed_smc.h |  4 ++++
+ hw/arm/aspeed_soc.c         | 28 +++++++++++++++++++---------
+ hw/ssi/aspeed_smc.c         |  2 ++
+ 3 files changed, 25 insertions(+), 9 deletions(-)
 
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 1f557313fa93..d7090bb5e9b7 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -97,6 +97,10 @@ typedef struct AspeedSMCState {
+     uint8_t r_timings;
+     uint8_t conf_enable_w0;
+=20
++    /* for DMA support */
++    uint64_t sdram_base;
++    uint64_t max_ram_size;
++
+     AspeedSMCFlash *flashes;
+ } AspeedSMCState;
+=20
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 2cbacb4430bb..bbc05d172fe1 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -209,6 +209,14 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, ASPEED_SOC_SCU_BASE);
+=20
++    /* SDMC - SDRAM Memory Controller */
++    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE);
++
+     /* VIC */
+     object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
+     if (err) {
+@@ -252,7 +260,17 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+                        qdev_get_gpio_in(DEVICE(&s->vic), 12));
+=20
+     /* FMC, The number of CS is set at the board level */
+-    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err);
++    object_property_set_int(OBJECT(&s->fmc), sc->info->sdram_base, "sdra=
+m-base",
++                            &err);
++    object_property_set_int(OBJECT(&s->fmc), s->sdmc.max_ram_size,
++                            "max-ram-size", &local_err);
++    error_propagate(&err, local_err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &local_e=
+rr);
++    error_propagate(&err, local_err);
+     if (err) {
+         error_propagate(errp, err);
+         return;
+@@ -278,14 +296,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+                         s->spi[i].ctrl->flash_window_base);
+     }
+=20
+-    /* SDMC - SDRAM Memory Controller */
+-    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
+-    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE);
+-
+     /* Watch dog */
+     for (i =3D 0; i < sc->info->wdts_num; i++) {
+         object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
+err);
 diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 534faec4c111..983066f5ad1d 100644
+index 6045ca11b969..500de6d16d09 100644
 --- a/hw/ssi/aspeed_smc.c
 +++ b/hw/ssi/aspeed_smc.c
-@@ -695,6 +695,56 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr=
- addr, unsigned int size)
-     }
- }
+@@ -800,6 +800,8 @@ static const VMStateDescription vmstate_aspeed_smc =3D=
+ {
 =20
-+static uint8_t aspeed_smc_hclk_divisor(uint8_t hclk_mask)
-+{
-+    /* HCLK/1 .. HCLK/16 */
-+    const uint8_t hclk_divisors[] =3D {
-+        15, 7, 14, 6, 13, 5, 12, 4, 11, 3, 10, 2, 9, 1, 8, 0
-+    };
-+    int i;
-+
-+    for (i =3D 0; i < ARRAY_SIZE(hclk_divisors); i++) {
-+        if (hclk_mask =3D=3D hclk_divisors[i]) {
-+            return i + 1;
-+        }
-+    }
-+
-+    qemu_log_mask(LOG_GUEST_ERROR, "invalid HCLK mask %x", hclk_mask);
-+    return 0;
-+}
-+
-+/*
-+ * When doing calibration, the SPI clock rate in the CE0 Control
-+ * Register and the read delay cycles in the Read Timing
-+ * Compensation Register are replaced by bit[11:4] of the DMA
-+ * Control Register.
-+ */
-+static void aspeed_smc_dma_calibration(AspeedSMCState *s)
-+{
-+    uint8_t delay =3D
-+        (s->regs[R_DMA_CTRL] >> DMA_CTRL_DELAY_SHIFT) & DMA_CTRL_DELAY_M=
-ASK;
-+    uint8_t hclk_mask =3D
-+        (s->regs[R_DMA_CTRL] >> DMA_CTRL_FREQ_SHIFT) & DMA_CTRL_FREQ_MAS=
-K;
-+    uint8_t hclk_div =3D aspeed_smc_hclk_divisor(hclk_mask);
-+    uint32_t hclk_shift =3D (hclk_div - 1) << 2;
-+    uint8_t cs;
-+
-+    /* Only HCLK/1 - HCLK/5 have tunable delays */
-+    if (hclk_div && hclk_div < 6) {
-+        s->regs[s->r_timings] &=3D ~(0xf << hclk_shift);
-+        s->regs[s->r_timings] |=3D delay << hclk_shift;
-+    }
-+
-+    /*
-+     * TODO: choose CS depending on the DMA address. This is not used
-+     * on the field.
-+     */
-+    cs =3D 0;
-+    s->regs[s->r_ctrl0 + cs] &=3D
-+        ~(CE_CTRL_CLOCK_FREQ_MASK << CE_CTRL_CLOCK_FREQ_SHIFT);
-+    s->regs[s->r_ctrl0 + cs] |=3D CE_CTRL_CLOCK_FREQ(hclk_div);
-+}
-+
- /*
-  * Accumulate the result of the reads to provide a checksum that will
-  * be used to validate the read timing settings.
-@@ -709,6 +759,10 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *=
-s)
-         return;
-     }
-=20
-+    if (s->regs[R_DMA_CTRL] & DMA_CTRL_CALIB) {
-+        aspeed_smc_dma_calibration(s);
-+    }
-+
-     while (s->regs[R_DMA_LEN]) {
-         cpu_physical_memory_read(s->regs[R_DMA_FLASH_ADDR], &data, 4);
+ static Property aspeed_smc_properties[] =3D {
+     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
++    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
++    DEFINE_PROP_UINT64("max-ram-size", AspeedSMCState, max_ram_size, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 =20
 --=20
 2.17.1

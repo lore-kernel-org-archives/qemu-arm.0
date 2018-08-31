@@ -1,79 +1,96 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp480863wrd;
-        Fri, 31 Aug 2018 04:23:13 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdahN8dJH1dxLzri+7p8hucjtwW6SvyCcPKhWz7V5UMYLcv5LigoNslYZyN776kLPFYRqpzS
-X-Received: by 2002:ac8:269b:: with SMTP id 27-v6mr15848816qto.281.1535714593391;
-        Fri, 31 Aug 2018 04:23:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535714593; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1107033wrd;
+        Fri, 31 Aug 2018 15:48:48 -0700 (PDT)
+X-Google-Smtp-Source: ANB0Vda2XRswOB0HBXgJMJ3pf+XWb+4WLe1GgEuXYhvetJqprx0svTxCHit08V6+1O4iLgYYdQtA
+X-Received: by 2002:a37:ad03:: with SMTP id f3-v6mr9320322qkm.140.1535755728249;
+        Fri, 31 Aug 2018 15:48:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535755728; cv=none;
         d=google.com; s=arc-20160816;
-        b=mcNhbZ3gaG9lGAFoMddTvZd6W+trCwgJOneDiyOfv2xsXc0w8fuqj4JMuwZ26Dkjbf
-         VDel07gq5/34cS344mI5gq6AOSelEg5YLIV2dA2aqBhBc5gLZMmRFZJ08DZ6eofKaYRj
-         wbXHFfiKb2UfstHG+cQpucdCcIR7XKaqfoeWtmcF7yH2Pbq+yFDFTUi/3QD05io2ZP4R
-         upuuTGQiZqurko+Gm0p10OLyHwQdhCk/U4YoJCNpykHhvcdKJcMEsSWj9XMFSqkcLb/s
-         W8ve7tk5knpQcE+f5jRJvGcK66O454hARx63lkIs/bes8pB9FXPJzR+/9lRxDiq4MGYj
-         xw/Q==
+        b=IseAMK4kNT3c7WnzbecSG1IjFchUD44PeyLd9Y9+xz/Pzzl3RpeEjOEE1YuE05WQNN
+         CVPfrpFn8DmC1X3z8ustmi28kvxgT1MkGHVg5LKAj2EK1iLNf4JnygwLLdVJwxx2tKe+
+         O5y5lQCj+YOg4jnrR5NhMI4MLtgK13dJRm9/f4+WQ++IDtQTYU2B2cEaTDvywyoO+kfd
+         pKQrMQtvU7b7+FSbd1a6dLDFPM/B8ctVdsr3Ipf8RGAEs3PGTqFd6R14lIES7HkzVh1o
+         elNvaGvz1xOKdbe51HVxF5zvtAcLd4guD9T+kGSnjPWdXgaEeY9cjksfucovn/xU7P/9
+         R2fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=MAfdBwKOM5uOrYr6X4W0rn0xcD3AU0uKud2jvS36mKE=;
-        b=pXGtUldj+LONvD6VtEmD7Rgmpsh5YFpdxzko5vNxOr3KaCmionUJPTVHi29m3Rue3+
-         Kjyd+Vkjtj5dUXTSJrWkwepMYoU9WNg1CMlv97D7bCYlFRL/32QCDe6x1UBIwuwpeZId
-         h6y3sk1SGG6eDySJSuur5PbVGF3iZRGqAAV1Encm5y70/Zlo9+uz8Sqfm+NxnFZr0EEN
-         Z57Gksj5e2OV+/n+opM9yP8X5I4Y1K/VTIlV0qZo9BfqQfdDYPzXqGx6Ik1uDQAFp/xb
-         qhjib43Mm5d5Fw7NK8h4joOdQex+n9wo0b5SKJESv0ZdO/ZvA4OpiHoKJib8oxtVVjUD
-         PIXg==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature:arc-authentication-results;
+        bh=JjcBgnhTVSKYHqT96YJwXeR3ZX7LvcjalmmThqYI564=;
+        b=q5pnyk2/hNR8CEEw6pBPhQhJYO7xZMLlMo3N+ZEHOwNdKw0wGtkVfTAl6/ApxAiQ2v
+         +oKGOltCarLvk+7uMhAidyBiFNPa8Qs4N/BLCxuvesLbFj2uNg4MlxAt+WKDtAQHg5L5
+         0SDZ/+GUjh54DVMRbzcLN28BfR/0E8hnfI4aMqxipUk64ySTuuLmfSXXqGoHziDMjPGV
+         BmNlVgLosq6FEfPGGErpeDOPTK+0P/1z1SUARpMz2LAMMq8jwgjR+JtIsUaGOrUDl48X
+         2t0SMBHU8pXWoWhozU78+SipI4PbebloxZLUSHbikJAn0tjSNZuQt+ZEJ3hUK3Zn+6/e
+         U+vg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=gZnSXMUx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i3-v6si900600qkf.13.2018.08.31.04.23.13
+        by mx.google.com with ESMTPS id c24-v6si3292447qtm.92.2018.08.31.15.48.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 31 Aug 2018 04:23:13 -0700 (PDT)
+        Fri, 31 Aug 2018 15:48:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=gZnSXMUx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53081 helo=lists.gnu.org)
+Received: from localhost ([::1]:58798 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fvhWC-0005Rz-Ti
-	for alex.bennee@linaro.org; Fri, 31 Aug 2018 07:23:12 -0400
-Received: from eggs.gnu.org ([208.118.235.92]:37282)
+	id 1fvsDd-0001VX-OP
+	for alex.bennee@linaro.org; Fri, 31 Aug 2018 18:48:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58382)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fvhVt-0004kf-IB
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 07:22:57 -0400
+	(envelope-from <joel.stan@gmail.com>) id 1fvs0q-0002Ew-S1
+	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 18:35:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1fvhPP-0004c7-Pg
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 07:16:17 -0400
-Received: from 10.mo6.mail-out.ovh.net ([87.98.157.236]:41574)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1fvhPP-0004bm-Iv
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 07:16:11 -0400
-Received: from player714.ha.ovh.net (unknown [10.109.159.222])
-	by mo6.mail-out.ovh.net (Postfix) with ESMTP id 0361E17976A
-	for <qemu-arm@nongnu.org>; Fri, 31 Aug 2018 13:16:09 +0200 (CEST)
-Received: from zorba.kaod.org.com (LFbn-1-10605-110.w90-89.abo.wanadoo.fr
-	[90.89.196.110]) (Authenticated sender: clg@kaod.org)
-	by player714.ha.ovh.net (Postfix) with ESMTPSA id 796F23C00C7;
-	Fri, 31 Aug 2018 13:16:00 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 31 Aug 2018 13:15:54 +0200
-Message-Id: <20180831111555.15008-1-clg@kaod.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180831103816.13479-1-clg@kaod.org>
-References: <20180831103816.13479-1-clg@kaod.org>
+	(envelope-from <joel.stan@gmail.com>) id 1fvrie-0002Co-Kv
+	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 18:16:45 -0400
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:41753)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
+	id 1fvrid-0002Bi-II; Fri, 31 Aug 2018 18:16:43 -0400
+Received: by mail-qk1-x741.google.com with SMTP id h138-v6so2397927qke.8;
+	Fri, 31 Aug 2018 15:16:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=JjcBgnhTVSKYHqT96YJwXeR3ZX7LvcjalmmThqYI564=;
+	b=gZnSXMUxjpM/pA9QObgLdkrPSPmtdeKykX2YhXLk9ptlAEvqSdCb/k9QqYogTkinA9
+	SvXlOLX9hmKGZTRx43CTrEUbQbH/1JM5eLqMnwqNMTzLKqXf6on9d79BKpczhEhJhSVm
+	e4y0Hz9+EbPif3Q4iNpHI/Y0KlGl/3Wxtz47M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=JjcBgnhTVSKYHqT96YJwXeR3ZX7LvcjalmmThqYI564=;
+	b=hQTReg7nRKBFrhrxjaq7qJLmJ9X1hzc7d8uwsHQ+YIYp9w1VkFwSln5AzXDfl6uhJo
+	HN1uDjxMp/J/7FsAf4NMOOCCcnWm3RdCQ6+OY/JHvgHVnDMYNSJ6Otgbf4sHH/u35rWz
+	jciykvL4grvO5BB/WHdRKVi+583syFZJTSsyG/pRaplGpsTR9TDfLilnDon97yapc7oM
+	3IhwWdyrxSuGviBPD/lPEBpMTVt9GohIq07fPF4/FXdt5+2a2pnqPaNm5F5aukMlE4LY
+	f477vBIbuxOOkzFHv1zxBt0iIXrfh2RC74Qu6/ULs4GEw7Jji9BPT2V5Hnb+wJYbnojR
+	RH+w==
+X-Gm-Message-State: APzg51Ad/cEU/MJp8T66DhtKZe2+pgcdI2xhS39hC/2sHYwXev1KKobj
+	TPWnrhIUatcjY3MRZvUYUHs6fA/tcRfB3A0J1X4=
+X-Received: by 2002:a37:9bc9:: with SMTP id
+	d192-v6mr17546913qke.127.1535753802997; 
+	Fri, 31 Aug 2018 15:16:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2556074264368876352
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrhedtgdeflecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+References: <20180831103816.13479-1-clg@kaod.org>
+In-Reply-To: <20180831103816.13479-1-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Fri, 31 Aug 2018 15:16:31 -0700
+Message-ID: <CACPK8Xdgq4ToH7yOh-v=bqLb6uhqTKeEt9DXOrXx8SaA6UV57A@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 87.98.157.236
-Subject: [Qemu-arm] [PATCH 10/11] aspeed/smc: inject errors in DMA checksum
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::741
+Subject: Re: [Qemu-arm] [PATCH 00/11] aspeed: misc fixes and enhancements
+ (SMC)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,76 +103,32 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+	alistair@alistair23.me, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nTIXKMLMmg6X
+X-TUID: 5xbbvM4Omblf
 
-Emulate read errors in the DMA Checksum Register for high frequencies
-and optimistic settings of the Read Timing Compensation Register. This
-will help in tuning the SPI timing calibration algorithm.
+On Fri, 31 Aug 2018 at 03:38, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Hello,
+>
+> This series adds a couple of cleanups and two main features to the
+> Aspeed machines :
+>
+>  - a 'mmio-exec' property to boot directly from a memory region alias
+>    of the FMC flash module using MMIO execution. This is not activated
+>    by default because boot time needs to be improved on recent
+>    firmwares.
+>
+>  - support for DMA to access the flash modules. Our primary need is
+>    the checksum calculation which is used to evaluate the best clock
+>    settings for reads.
 
-The values below are those to expect from the first flash device of
-the FMC controller of a palmetto-bmc machine.
+I gave this series a number of tests and it looked good.
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- hw/ssi/aspeed_smc.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
+ Tested-by: Joel Stanley <joel@jms.id.au>
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 983066f5ad1d..da2fedfcd3cd 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -745,6 +745,30 @@ static void aspeed_smc_dma_calibration(AspeedSMCStat=
-e *s)
-     s->regs[s->r_ctrl0 + cs] |=3D CE_CTRL_CLOCK_FREQ(hclk_div);
- }
-=20
-+static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
-+{
-+    uint8_t delay =3D
-+        (s->regs[R_DMA_CTRL] >> DMA_CTRL_DELAY_SHIFT) & DMA_CTRL_DELAY_M=
-ASK;
-+    uint8_t hclk_mask =3D
-+        (s->regs[R_DMA_CTRL] >> DMA_CTRL_FREQ_SHIFT) & DMA_CTRL_FREQ_MAS=
-K;
-+
-+    /*
-+     * Typical values of a palmetto-bmc machine.
-+     */
-+    switch (aspeed_smc_hclk_divisor(hclk_mask)) {
-+    case 4 ... 16:
-+        return false;
-+    case 3: /* at least one HCLK cycle delay */
-+        return (delay & 0x7) < 1;
-+    case 2: /* at least two HCLK cycle delay */
-+        return (delay & 0x7) < 2;
-+    case 1: /* (> 100MHz) is above the max freq of the controller */
-+        return true;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- /*
-  * Accumulate the result of the reads to provide a checksum that will
-  * be used to validate the read timing settings.
-@@ -774,6 +798,11 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *=
-s)
-         s->regs[R_DMA_FLASH_ADDR] +=3D 4;
-         s->regs[R_DMA_LEN] -=3D 4;
-     }
-+
-+    if (aspeed_smc_inject_read_failure(s)) {
-+        s->regs[R_DMA_CHECKSUM] =3D 0xbadc0de;
-+    }
-+
- }
-=20
- static void aspeed_smc_dma_rw(AspeedSMCState *s)
---=20
-2.17.1
+Cheers,
 
+Joel

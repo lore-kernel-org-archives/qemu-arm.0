@@ -1,101 +1,112 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1083809wrd;
-        Fri, 31 Aug 2018 15:12:40 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdYcBIHYfRrDzzgdBthNhWxihN3+fHG8l1Q9Fc1xa3fp4LUJTVsRUDoF67wFaBZxLVs3zhy4
-X-Received: by 2002:ac8:4283:: with SMTP id o3-v6mr18384134qtl.28.1535753560312;
-        Fri, 31 Aug 2018 15:12:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535753560; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp538581wrd;
+        Sat, 1 Sep 2018 05:47:35 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbiYxffezmUoOv/lKDQtU67z7KJzz4KmecKJRHXAFILrZj54RTlOKZOxlwhPfZ7lcPjqtY5
+X-Received: by 2002:a37:6458:: with SMTP id y85-v6mr18589808qkb.59.1535806055609;
+        Sat, 01 Sep 2018 05:47:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535806055; cv=none;
         d=google.com; s=arc-20160816;
-        b=SEWfXlChBVGfj78JPpet6gOXpMMqeK/4B7YAE2JdLcEEl9APcnbRswtzfdvbpeAQ92
-         apQeyiMcs4ztqBTpaHliZbfDgSwrhXOWWEpTx0XHDhzCC8mGEBcK235CQjLe1Gq6k7YE
-         8LUPjrnfCS3e8EH6b5tyef6n54K5XFf0ZjhXmvy7jojq4WfaKGA9Xi0VmmsCKM7PwlCl
-         61KCiWFo0Ulb9oI3bufZN13FrQggTM9IluKg+Owf7YceK72fo2+r/qBLb9QsHAZVG8RH
-         phkxxNONF3pfXqvzxVPqYZzJKu+ZyeFY6CctBRRCssmmUHn1EAwXN1ndsoNVah65GXUk
-         vZvw==
+        b=Y1hRDG+DuFgzq6JOyakJvZOshnc/gfulP/0/BJhRAVRhMu9cENDGLye2HJVJM87aMs
+         B5SrlrHtK6oyTqZZ62WM6vluQn4Jdabe+DKS6nY9jtgpNBdQr1NcxhU+mmn3AzflfvbU
+         Izq/+B1TaAufbAw3sOgdI8Rhc3UyY0l6T7S+VExTPEif9fTdtZ8+ncWXK6hf+4k8DfyO
+         al4/tE3HEdZRzbTxEoU5amnJZzshEAqZUtQyY/RMUlEQP0MLn+y6LZFhKwJxpoZLwj9Q
+         Ml+do5X0JJu5ttlecGBcOZcMaFwIb4pabfyH+/rz7HLp+hvOjP3SkktNDFc4pK30ujbK
+         Dydg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:arc-authentication-results;
-        bh=HECvTG3GejFa6sz+CKKWy/jQ+RL2N8C5303UsdeGdog=;
-        b=HSs/EHC7zgXpL4jsI9qfdPMlI0Wq3iDR+LX9B5dA9jorsgUqEp+eQ7xZUB94c2ncCW
-         L9kvRRMcVN5wSEdR8t4qkIY1VDx68qLwt6WOUkDq2PGUC4Dl8sdR65D3DO5TWUh8XK2f
-         UasA/mGT3KTMN+gj+3SfYtL/ulIz6ic2caNnmUEpIp7akDfqpODP1a8WDCeIdDwT86Jr
-         WetY3xfWWE8JtqhYsg6Wtl7wQSPtzy21/BKeMNG77U26aRz0pFZYhP85w8Syhu9QXoR3
-         iHMmpgBoIYhnji7IjG3y2XhKvh6ha/dYxfmd+Ohfi02yxTg8YFpBpf0FFgC530OXEEvp
-         xosw==
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=sW+F8DBUESv95puGlyar1MMUXisP5ec7qqU94BwGqVM=;
+        b=PAi1RRpWQ06UL8Uu6OEJFBBICIhBVYOYHN6QXbFRWXBb9xwXJEjye3tUVeRyIyGm7Q
+         gF7spqTvA05vjyHcZqR4dF2SN366eqDJVO4i4Qm65nv3mvkqw3xnXFeQPfARCneSNPqZ
+         ItVpwAhQBk6ZIbfAEeVkaiqPojHLgRfnYnOFRAOhIq0f0awkgBd0MC990nq+QY7/9T1g
+         DvsJXUy39lTX8Rhbxqpn7MACDV0ufD0lGHj0N9FiRh7h6WDKLVdmtD4R0/RtpZNkLcov
+         jhrAVAfrw2C76ZMQNDVLbZGPzW5PP2PAf9tSVp2bFGmwxyQLqR7+Lo0iXmQQj6DQHbcw
+         uJbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sA68YOl8;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=hg9pbPVk;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=nYCSzsnw;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=nYCSzsnw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j31-v6si240300qtd.364.2018.08.31.15.12.40
+        by mx.google.com with ESMTPS id q82-v6si2546672qkl.312.2018.09.01.05.47.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 31 Aug 2018 15:12:40 -0700 (PDT)
+        Sat, 01 Sep 2018 05:47:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sA68YOl8;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=hg9pbPVk;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=nYCSzsnw;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=nYCSzsnw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58654 helo=lists.gnu.org)
+Received: from localhost ([::1]:36997 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fvreh-0007M9-Og
-	for alex.bennee@linaro.org; Fri, 31 Aug 2018 18:12:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52551)
+	id 1fw5JP-0004qK-1Z
+	for alex.bennee@linaro.org; Sat, 01 Sep 2018 08:47:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35380)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fvrc1-0004o4-Qx
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 18:09:56 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1fw5JB-0004gC-Fa
+	for qemu-arm@nongnu.org; Sat, 01 Sep 2018 08:47:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <joel.stan@gmail.com>) id 1fvrbv-00051i-0H
-	for qemu-arm@nongnu.org; Fri, 31 Aug 2018 18:09:53 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:44590)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <joel.stan@gmail.com>)
-	id 1fvrbm-0004mb-QK; Fri, 31 Aug 2018 18:09:39 -0400
-Received: by mail-pg1-x541.google.com with SMTP id r1-v6so6013674pgp.11;
-	Fri, 31 Aug 2018 15:09:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=HECvTG3GejFa6sz+CKKWy/jQ+RL2N8C5303UsdeGdog=;
-	b=sA68YOl8VGfUR9TaJJ97poZ/p6f4/6xoFgdPPa+z1btWMz6PoJgbY3nubQkzUmqv5Z
-	YI89b7PDtwTNk1mhXFpi/azMGIJ5A7+78KPXCSqxUuiUpzkELDxoft4+V8xUtiovhcjK
-	GyDG5VBdVetQSbsFbwZJghcXm7MZ0eqgC57qY3nMwVSsJ7dnN/cQUrCforvluGIA5XNc
-	JAFaWHQ2uyFefcsjRRog4aYV8I9WFPiG5qIpSdjpKhqyKu44qKSZCJUPdmY9lL1uH8C5
-	sA6PkKVPSTxHtVxWICy7mcM9bovhWJAFXaOo9ywnZUc/xxiNWsO3a8pL7bxU5A4XXOwx
-	lf9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references;
-	bh=HECvTG3GejFa6sz+CKKWy/jQ+RL2N8C5303UsdeGdog=;
-	b=bfedXGFS/vwDEMiUpxTWqMkXOZqL41xlmjo6uJDRSET48BqBkPEFdYce72TdYck1l8
-	1fC9h9DwvXtJ/B8v9M7LV82ff6ZM2Uo+RVoJwIB1qRxs1htFeczNSpqJFPdZqFGARvXT
-	8QfHVddMcpdlBPQQKOYtFV59Vp7cydO7KkxdnExKqa/m432sQEbvPzBKZqnk/iX9EwAS
-	El5hJsVv0XdDGwTtlBlG3Ko9VC7NjQtmj6rCXCkGESrkfUTY4cfm6BATkQejzXkfnRpU
-	OZMDPLti3+DMW+MQwkUEz4p7ENOGPuPJNr/gOUOoxEOTsHdnSoK0pLKvij9z3s20BoYr
-	b5sw==
-X-Gm-Message-State: APzg51BIi0lubTlN7PXS/bh8JuIG3uSuKFTaW0EVHkjsrAXM+xvQPEX7
-	Syd4HXFIIR0oz0c0kqUga7c=
-X-Received: by 2002:a63:2354:: with SMTP id
-	u20-v6mr1602019pgm.122.1535753374402; 
-	Fri, 31 Aug 2018 15:09:34 -0700 (PDT)
-Received: from aurora.jms.id.au ([72.28.92.217])
-	by smtp.gmail.com with ESMTPSA id
-	d12-v6sm16634207pfk.69.2018.08.31.15.09.32
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 31 Aug 2018 15:09:33 -0700 (PDT)
-Received: by aurora.jms.id.au (sSMTP sendmail emulation);
-	Fri, 31 Aug 2018 15:09:32 -0700
-From: Joel Stanley <joel@jms.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 31 Aug 2018 15:09:20 -0700
-Message-Id: <20180831220920.27113-4-joel@jms.id.au>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180831220920.27113-1-joel@jms.id.au>
-References: <20180831220920.27113-1-joel@jms.id.au>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-Subject: [Qemu-arm] [PATCH v6 3/3] arm: Add BBC micro:bit machine
+	(envelope-from <luc.michel@greensocs.com>) id 1fw5J7-0007lS-AU
+	for qemu-arm@nongnu.org; Sat, 01 Sep 2018 08:47:21 -0400
+Received: from greensocs.com ([193.104.36.180]:40642)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1fw5J6-0007kQ-UU; Sat, 01 Sep 2018 08:47:17 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 457B8DFFE9;
+	Sat,  1 Sep 2018 14:47:12 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1535806032;
+	bh=KAY+hWMxatC8pmfXSdjygTJWll949e3yUyuZVOI52lM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=hg9pbPVkWmf+zn5vpZ0zmruzJEBUBWJU3nio27MXYgQj89nnMjkwOAbgXxi//kUzK
+	t8ivYRJS7NUmtWOaFmBZThosY6sE249Y5uWvKx0+uRqAEuZ0YlLakU1WLcsvbg4QPl
+	b0SnYwYqg/IUQvvxvEfG/Wc5HGNFOB1SHJAnrt5I=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=nYCSzsnw;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=nYCSzsnw
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jATZo9TXSgjj; Sat,  1 Sep 2018 14:47:11 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 70AD9521AB0; Sat,  1 Sep 2018 14:47:11 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1535806031;
+	bh=KAY+hWMxatC8pmfXSdjygTJWll949e3yUyuZVOI52lM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=nYCSzsnw6lbKqt9134oAhYVA9rK7gec0R1FTOHcf4xGEiZ8kbn8cpVPdkKZ2UQ9ft
+	cX1KLOUozd5gRdjNJ2upaVsRAB1ojlaofg0oQKTP135hssA57rkPisFhbsvF3NkYFZ
+	8zbQNTCKhxN7Ncbb9IWV8XjFelb0lnPpvr4grBMY=
+Received: from michell-laptop.home.lmichel.fr
+	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id BEA45521AAF;
+	Sat,  1 Sep 2018 14:47:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1535806031;
+	bh=KAY+hWMxatC8pmfXSdjygTJWll949e3yUyuZVOI52lM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=nYCSzsnw6lbKqt9134oAhYVA9rK7gec0R1FTOHcf4xGEiZ8kbn8cpVPdkKZ2UQ9ft
+	cX1KLOUozd5gRdjNJ2upaVsRAB1ojlaofg0oQKTP135hssA57rkPisFhbsvF3NkYFZ
+	8zbQNTCKhxN7Ncbb9IWV8XjFelb0lnPpvr4grBMY=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org
+Date: Sat,  1 Sep 2018 14:46:36 +0200
+Message-Id: <20180901124639.19735-13-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180901124639.19735-1-luc.michel@greensocs.com>
+References: <20180901124639.19735-1-luc.michel@greensocs.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH 12/15] gdbstub: processes initialization on new
+ peer connection
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,126 +118,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>,
-	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
+Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
+	mark.burton@greensocs.com, saipava@xilinx.com, edgari@xilinx.com,
+	qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VrQiXBoNLIg+
+X-TUID: NzNO5t67XeKQ
 
-This adds the base for a machine model of the BBC micro:bit:
+When a new connection is established, we set the first process to be
+attached, and the others detached. The first CPU of the first process
+is selected as the current CPU.
 
-  https://en.wikipedia.org/wiki/Micro_Bit
-
-This is a system with a nRF51 SoC containing the main processor, with
-various peripherals on board.
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Signed-off-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 ---
-v2:
- - Instead of setting kernel filename property, load the image directly
- - Add link to hardware overview website
-v3:
- - Rebase microbit on m0 changes
- - Remove hard-coded flash size and retrieve from the soc
- - Add Stefan's reviewed-by
-v5:
- - move back to armv7m calls, as v4 of Stefan's patch removed the
- m_profile changes
-v6:
- - MICROBITMachineState -> MicrobitMachineState
- - Rework machine type init with PMM's suggestions
----
- hw/arm/Makefile.objs |  2 +-
- hw/arm/microbit.c    | 67 ++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 68 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/microbit.c
+ gdbstub.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index ae4e20373b9e..5f88062c666d 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -37,4 +37,4 @@ obj-$(CONFIG_IOTKIT) += iotkit.o
- obj-$(CONFIG_FSL_IMX7) += fsl-imx7.o mcimx7d-sabre.o
- obj-$(CONFIG_ARM_SMMUV3) += smmu-common.o smmuv3.o
- obj-$(CONFIG_FSL_IMX6UL) += fsl-imx6ul.o mcimx6ul-evk.o
--obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o
-+obj-$(CONFIG_NRF51_SOC) += nrf51_soc.o microbit.o
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-new file mode 100644
-index 000000000000..e7d74116a504
---- /dev/null
-+++ b/hw/arm/microbit.c
-@@ -0,0 +1,67 @@
-+/*
-+ * BBC micro:bit machine
-+ * http://tech.microbit.org/hardware/
-+ *
-+ * Copyright 2018 Joel Stanley <joel@jms.id.au>
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
+diff --git a/gdbstub.c b/gdbstub.c
+index 4874d65a30..36ed7081ea 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -2217,13 +2217,14 @@ static bool gdb_accept(void)
+         close(fd);
+         return false;
+     }
+ 
+     s = g_malloc0(sizeof(GDBState));
+-    s->c_cpu = first_cpu;
+-    s->g_cpu = first_cpu;
+     create_unique_process(s);
++    s->processes[0].attached = true;
++    s->c_cpu = gdb_first_cpu(s);
++    s->g_cpu = s->c_cpu;
+     s->fd = fd;
+     gdb_has_xml = false;
+ 
+     gdbserver_state = s;
+     return true;
+@@ -2305,12 +2306,23 @@ static void gdb_chr_receive(void *opaque, const uint8_t *buf, int size)
+     }
+ }
+ 
+ static void gdb_chr_event(void *opaque, int event)
+ {
++    int i;
++    GDBState *s = (GDBState *) opaque;
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/boards.h"
-+#include "hw/arm/arm.h"
-+#include "exec/address-spaces.h"
+     switch (event) {
+     case CHR_EVENT_OPENED:
++        /* Start with first process attached, others detached */
++        for (i = 0; i < s->process_num; i++) {
++            s->processes[i].attached = !i;
++        }
 +
-+#include "hw/arm/nrf51_soc.h"
++        s->c_cpu = gdb_first_cpu(s);
++        s->g_cpu = s->c_cpu;
 +
-+typedef struct {
-+    MachineState parent;
-+
-+    NRF51State nrf51;
-+} MicrobitMachineState;
-+
-+#define TYPE_MICROBIT_MACHINE MACHINE_TYPE_NAME("microbit")
-+
-+#define MICROBIT_MACHINE(obj) \
-+    OBJECT_CHECK(MicrobitMachineState, obj, TYPE_MICROBIT_MACHINE)
-+
-+static void microbit_init(MachineState *machine)
-+{
-+    MicrobitMachineState *s = MICROBIT_MACHINE(machine);
-+    MemoryRegion *system_memory = get_system_memory();
-+    Object *soc = OBJECT(&s->nrf51);
-+
-+    sysbus_init_child_obj(OBJECT(machine), "nrf51", soc, sizeof(s->nrf51),
-+                          TYPE_NRF51_SOC);
-+    object_property_set_link(soc, OBJECT(system_memory), "memory",
-+                             &error_fatal);
-+    object_property_set_bool(soc, true, "realized", &error_fatal);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-+                       NRF51_SOC(soc)->flash_size);
-+}
-+
-+static void microbit_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->desc = "BBC micro:bit";
-+    mc->init = microbit_init;
-+    mc->max_cpus = 1;
-+}
-+
-+static const TypeInfo microbit_info = {
-+    .name = TYPE_MICROBIT_MACHINE,
-+    .parent = TYPE_MACHINE,
-+    .instance_size = sizeof(MicrobitMachineState),
-+    .class_init = microbit_machine_class_init,
-+};
-+
-+static void microbit_machine_init(void)
-+{
-+    type_register_static(&microbit_info);
-+}
-+
-+type_init(microbit_machine_init);
+         vm_stop(RUN_STATE_PAUSED);
+         gdb_has_xml = false;
+         break;
+     default:
+         break;
+@@ -2470,19 +2482,17 @@ int gdbserver_start(const char *device)
+         mon_chr = s->mon_chr;
+         cleanup_processes(s);
+         memset(s, 0, sizeof(GDBState));
+         s->mon_chr = mon_chr;
+     }
+-    s->c_cpu = first_cpu;
+-    s->g_cpu = first_cpu;
+ 
+     create_processes(s);
+ 
+     if (chr) {
+         qemu_chr_fe_init(&s->chr, chr, &error_abort);
+         qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_receive,
+-                                 gdb_chr_event, NULL, NULL, NULL, true);
++                                 gdb_chr_event, NULL, s, NULL, true);
+     }
+     s->state = chr ? RS_IDLE : RS_INACTIVE;
+     s->mon_chr = mon_chr;
+     s->current_syscall_cb = NULL;
+ 
 -- 
-2.17.1
+2.18.0
 

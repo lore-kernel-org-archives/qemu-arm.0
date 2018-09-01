@@ -1,143 +1,187 @@
-Received: by 10.223.150.237 with SMTP id u100csp3356423wrb;
-        Tue, 14 Nov 2017 00:44:08 -0800 (PST)
-X-Received: by 10.80.189.205 with SMTP id z13mr16352045edh.184.1510649048214;
-        Tue, 14 Nov 2017 00:44:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510649048; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp538950wrd;
+        Sat, 1 Sep 2018 05:48:01 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdZp5gXCfyL6l28uQSv/fbSZdfKWS1qvRMxpbzVmYZgAu8oEGdjBkivW8/IXE9vSnj1734pO
+X-Received: by 2002:ae9:c109:: with SMTP id z9-v6mr18845867qki.290.1535806081476;
+        Sat, 01 Sep 2018 05:48:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535806081; cv=none;
         d=google.com; s=arc-20160816;
-        b=cC90WkIjcHXWvCit7u3lXtmIR9xe2/12xOpdBRpVIXvWKWI4k2kwprpNeVFaZ76Zs5
-         W8lzCFHWPGc3CUUrBIWyw4WAkltWFYODHSIKjBABG7MN1xnTmDr5qN5zCcGcDH7QhPil
-         t0O6Sj5HcZk20YP7YT5ffD3pwM8LgT++VJdp8gq1Vm3Nvqf0Q+mI3dLYopSKKYITAdi1
-         gv+4CfQGWD5nyTmx4uunuNDY8zjCoplzU13GpiDWSRFNy3LYbi+k79060Fy7FTrqWo4n
-         sgvNBJbp0JzX4bLK8BQfDJmJ4slfdPKFHBKVy8NDP9bhR7Fs0k0c797fTLBnZjFi7WE4
-         e/3Q==
+        b=d6NkXoiWEzQCAKB43veE1Wv95R759VKN0ranEoX5T9r/d5DGvnZBthLp+rvx64jGQM
+         FzczALqrKtQZFM6XfHKwZEuWBiRclwm5hyVCtpYWCCsvRJXK7R850eVa+MIZJQQAc7am
+         Ahunlrr3lO1yDKVRHSW07hdAoxHwYcpf3V7Jv9068hss9UciG68xnimvB9WYkmaN/Q1I
+         tMJUC7quCKDhMP6CYRHIiV5T09amySDboJfkwX2apsVhSddQ4L8iLT8fqTuCK2g7YyDT
+         hHEEjwVCK2UZZ5egT3oegPt5qrdK5BPotrZtStalfmw0WX6wqYAA5KqDUFvyUIu4ZItR
+         XByA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature:arc-authentication-results;
-        bh=KRiI5ThVwl8rGIlI0rOxmghOWsaPa1ukSeJlwzsnYfI=;
-        b=J15dVRlxhrwFT2rM76gQyiQz4NVzJbJsJBCFHU3q2Pr/ENZPiwnpa67HBzEkZVE/7+
-         j1KI4kopIbltZkuHcdmQYpqJFOf8Gi1kDmBy1IU9oOo2ZUw0g+a8OzOxLtEhFAYMdCVX
-         H4RAO4YdURlplpoy1IwOlOozg10SQw+2gtYpNWF/Rx+1DzAxOHvJcbqBJkGAefneiJL4
-         rUCEGVpaYBMheQOC8yssOwQ4BlXp/QlQk2QtLeNKhmm2gv/caR1m3CcKXBF2VlM6H5Mg
-         no49ESemOp5HwArMRkWiyxjgC/006cCH9rc6+GvcfrZJk3oWbT/wCMScwcyUNyhEm/bL
-         Ayew==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=MqftgHEzUjC8EVhRTtGPlKLKGmzb2SGJSIkSVB9XsGQ=;
+        b=OmD6XF5g3r8GBqneoLt+CB1nf/W8aVHoVXJ+E+nRH8LVnFN0csUCQeserwSvWFEer3
+         EtWgRLpFTtfADdj5NSyfDj1Lz98KafhDNoyNKnncrLhzTQTYjz84wef6aA0LqsygjtPn
+         v43BKQCIvryBtjwvh6RFMzGP4wPglJ+zbrhHLwjQYdVJY0UWWt7in/NWBEG2k4l42AUg
+         KLA0yq9jHhgiQ+JbQ/i/7H357CqhIudZWUxezzGh+2hu1jS3hXo1kv+sc5Roiab6FWjV
+         YJ35pqD/6rRgPjvu3DjEtgnTJC3gKeDET4+Vo14awxR/Tp8Y+l70+7a/l9zNwWeubiwY
+         7hCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UL7yTtI1;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b17sor10244634edj.10.2017.11.14.00.44.08
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=oOjJScln;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id a34-v6si3834403qtk.192.2018.09.01.05.48.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Nov 2017 00:44:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sat, 01 Sep 2018 05:48:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UL7yTtI1;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=KRiI5ThVwl8rGIlI0rOxmghOWsaPa1ukSeJlwzsnYfI=;
-        b=UL7yTtI1NzfZ5XMDVA6kNElNhx4DkVB1DHsibBp9RUXZSXZMCqcDTKqN1WFiwHhikO
-         u7fvwtXqOM9dwNjyJxjninn1ie2DZuWPUxtL/S0wy4LO04l86qDQV5XWIomw4HNgkm95
-         42YTpCkoJ4K4gUlP35GrP4qBnAu1g3SAUsR4g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=KRiI5ThVwl8rGIlI0rOxmghOWsaPa1ukSeJlwzsnYfI=;
-        b=hTkemi8FVdQTm1NuJ9Luc9llSzZzqFju4szCnFTSWRlyEC5IA28m6Amf2yE0BsyImw
-         HgBh2PJRf07VlnaKWrX0wJ+8nPnvG4rrYJ3uhXbJllrGtHF+iZ1xuvcNCv1QZmbL3oKf
-         fKbTF9PimV+EkfLKY+n0gmMcMFvd1FKXM5Fxo8ID3yTwTwafg298ttxTCI3A9a5E6H/4
-         xUdD6lyqaVHkp9W3St81BWprz/akuOLrxlAuqd1IJIfTSTzOpEI9Lc2uzd3zaQN5LjQT
-         zhbZcmd6Ex9opHwz7liQwivgK6htTFEj91g2hVvoMHuI/19C2SkF3LRDx3oQj5okvaq8
-         qSjw==
-X-Gm-Message-State: AJaThX72GJOfHeCB6bkHEWZOAB2ztQNH74ohF45mqd4cfger8m76/d06
-	vX8Gtc0cy0s8DxUU3eINIhhpCQ3RBqr/Aw==
-X-Google-Smtp-Source: AGs4zMavw4cQy6qtuUeEMbMhy1BzYaqLHgl16M0IGsMEe+1QNKruz8xbCyEr6SloQVeUe9q/0Bv0fA==
-X-Received: by 10.80.173.20 with SMTP id y20mr16395584edc.23.1510649047790;
-        Tue, 14 Nov 2017 00:44:07 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (176.red-213-99-135.dynamicip.rima-tde.net. [213.99.135.176])
-        by smtp.gmail.com with ESMTPSA id x38sm14830926edd.94.2017.11.14.00.44.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 14 Nov 2017 00:44:06 -0800 (PST)
-Subject: Re: [Qemu-arm] [PATCH v1 03/12] target/arm: Decode aa64 armv8.1
- scalar three same extra
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20171004184325.24157-1-richard.henderson@linaro.org>
- <20171004184325.24157-4-richard.henderson@linaro.org>
- <87wp2u9m5k.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <13dec407-103d-ead5-94f4-b35cd8b3d83a@linaro.org>
-Date: Tue, 14 Nov 2017 09:44:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.4.0
-MIME-Version: 1.0
-In-Reply-To: <87wp2u9m5k.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: Ize2DnlCNyYq
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=oOjJScln;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="V/wfnJBO";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37021 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1fw5Jp-00066V-1G
+	for alex.bennee@linaro.org; Sat, 01 Sep 2018 08:48:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35371)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>) id 1fw5JB-0004g9-FB
+	for qemu-arm@nongnu.org; Sat, 01 Sep 2018 08:47:22 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>) id 1fw5J6-0007jn-5Q
+	for qemu-arm@nongnu.org; Sat, 01 Sep 2018 08:47:21 -0400
+Received: from greensocs.com ([193.104.36.180]:40587)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1fw5J5-0007hS-Lx; Sat, 01 Sep 2018 08:47:16 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 16B4D521AB3;
+	Sat,  1 Sep 2018 14:47:05 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1535806025;
+	bh=SxJ+P3Shu8JvHfqWoN5GPgmL2ptTLaABfMjruhHEDbM=;
+	h=From:To:Cc:Subject:Date;
+	b=oOjJSclnl5ukpkL/7ndvsFw91xdvUkb5/u8CAfSD+yNMvZ0m1oPWxdZAS4JFVjotq
+	zKnMBEWqa6CtvmGSwIq4282+TdJAgXkx177Dsa0lXARA/HtYVgvXi0lbhqrzQ2rC/n
+	RRoqX575bJ8cnDkpoXixVRVigW56h22G4Jz8rYVE=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=V/wfnJBO;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=V/wfnJBO
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sVGN7o-fCghE; Sat,  1 Sep 2018 14:47:04 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 506E1521AAD; Sat,  1 Sep 2018 14:47:04 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1535806024;
+	bh=SxJ+P3Shu8JvHfqWoN5GPgmL2ptTLaABfMjruhHEDbM=;
+	h=From:To:Cc:Subject:Date;
+	b=V/wfnJBOPGsWvj9qo7s+eA/0mCV//YLTVRN0yKPKCfcNVHxtN3NiatofrarSwEsBS
+	ucRaBZC8MZ7x9KHfJH0ts2aRc11GHP/QU18Z2KQeewbco2CtVCdfg3oK0l6XDAb1YA
+	kNxoXV4gYSpgyYHxjWymd481FM+g4AXB8XiT9IlM=
+Received: from michell-laptop.home.lmichel.fr
+	(LFbn-LYO-1-488-36.w2-7.abo.wanadoo.fr [2.7.77.36])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id D2144521A9F;
+	Sat,  1 Sep 2018 14:47:03 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1535806024;
+	bh=SxJ+P3Shu8JvHfqWoN5GPgmL2ptTLaABfMjruhHEDbM=;
+	h=From:To:Cc:Subject:Date;
+	b=V/wfnJBOPGsWvj9qo7s+eA/0mCV//YLTVRN0yKPKCfcNVHxtN3NiatofrarSwEsBS
+	ucRaBZC8MZ7x9KHfJH0ts2aRc11GHP/QU18Z2KQeewbco2CtVCdfg3oK0l6XDAb1YA
+	kNxoXV4gYSpgyYHxjWymd481FM+g4AXB8XiT9IlM=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org
+Date: Sat,  1 Sep 2018 14:46:24 +0200
+Message-Id: <20180901124639.19735-1-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.18.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH 00/15] gdbstub: support for the multiprocess
+ extension
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
+	mark.burton@greensocs.com, saipava@xilinx.com, edgari@xilinx.com,
+	qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FbizoiStUFjq
 
-On 11/13/2017 05:30 PM, Alex Bennée wrote:
->>  DEF_HELPER_3(neon_qdmulh_s16, i32, env, i32, i32)
->>  DEF_HELPER_3(neon_qrdmulh_s16, i32, env, i32, i32)
->> +DEF_HELPER_4(neon_qrdmlah_s16, i32, env, i32, i32, i32)
->> +DEF_HELPER_4(neon_qrdmlsh_s16, i32, env, i32, i32, i32)
->>  DEF_HELPER_3(neon_qdmulh_s32, i32, env, i32, i32)
->>  DEF_HELPER_3(neon_qrdmulh_s32, i32, env, i32, i32)
->> +DEF_HELPER_4(neon_qrdmlah_s32, i32, env, s32, s32, s32)
->> +DEF_HELPER_4(neon_qrdmlsh_s32, i32, env, s32, s32, s32)
-> 
-> Hmm are these really NEON or should they be advsimd_qrdm....?
+This series adds support for the multiprocess extension of the GDB
+remote protocol in the QEMU GDB stub.
 
-Same thing.  It seemed nicer to keep the naming consistent.
-Probably when we rewrite for SVE we will rename them all...
+This extension is useful to split QEMU emulated CPUs in different
+processes from the point of view of the GDB client. It adds the
+possibility to debug different kind of processors (e.g. an AArch64 and
+an ARMv7 CPU) at the same time (it is not possible otherwise since GDB
+expects an SMP view at the thread granularity.
 
->> +    switch (opcode) {
->> +    case 0x0: /* SQRDMLAH (vector) */
->> +    case 0x1: /* SQRDMLSH (vector) */
->> +        if (size != 1 && size != 2) {
->> +            unallocated_encoding(s);
->> +            return;
->> +        }
->> +        feature = ARM_FEATURE_V8_1_SIMD;
->> +        break;
->> +    default:
->> +        unallocated_encoding(s);
->> +        return;
->> +    }
->> +
->> +    if (!arm_dc_feature(s, feature)) {
->> +        unallocated_encoding(s);
->> +        return;
->> +    }
-> 
-> I guess this is because we are expecting additional features to be added
-> to the encoding space...
+CPUs are grouped using specially named QOM containers. CPUs that are
+children of such a container are grouped under the same GDB process.
 
-Yes.
+The last patch groups the CPUs of different model in the zynqmp machines
+into separate processes.
 
->> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
->> index 847fb52ee0..c2d32988f9 100644
->> --- a/target/arm/Makefile.objs
->> +++ b/target/arm/Makefile.objs
->> @@ -5,7 +5,7 @@ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
->>  obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
->>  obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
->>  obj-y += translate.o op_helper.o helper.o cpu.o
->> -obj-y += neon_helper.o iwmmxt_helper.o
->> +obj-y += neon_helper.o iwmmxt_helper.o advsimd_helper.o
-> 
-> Given this is AArch64 only it makes me wonder if we should be using helper-a64.h?
+To test this patchset, you can use the following commands:
 
-It isn't aarch64 only.  The aarch32 part is patch 6.
+(Note that this requires a recent enough GDB, I think GDB 7.2 is OK.
+Also, it must be compiled to support both ARM and AArch64 architectures)
 
+Run QEMU: (-smp 6 in xlnx-zcu102 enables both cortex-a53 and cortex-r5
+CPUs)
 
-r~
+qemu-system-aarch64 -M xlnx-zcu102 -gdb tcp::1234 -S -smp 6
+
+Run the following commands in GDB:
+
+target extended :1234
+add-inferior
+inferior 2
+attach 2
+info threads
+
+I want to thanks the Xilinx's QEMU team who sponsored this work for
+their collaboration and their prototype implementation.
+
+Luc Michel (15):
+  gdbstub: introduce GDB processes
+  gdbstub: add multiprocess support to '?' packets
+  gdbstub: add multiprocess support to 'H' and 'T' packets
+  gdbstub: add multiprocess support to vCont packets
+  gdbstub: add multiprocess support to 'sC' packets
+  gdbstub: add multiprocess support to (f|s)ThreadInfo and
+    ThreadExtraInfo
+  gdbstub: add multiprocess support to Xfer:features:read:
+  gdbstub: add multiprocess support to gdb_vm_state_change()
+  gdbstub: add multiprocess support to 'D' packets
+  gdbstub: add support for extended mode packet
+  gdbstub: add support for vAttach packets
+  gdbstub: processes initialization on new peer connection
+  gdbstub: gdb_set_stop_cpu: ignore request when process is not attached
+  gdbstub: add multiprocess extension support
+  arm/xlnx-zynqmp: put APUs and RPUs in separate GDB groups
+
+ include/exec/gdbstub.h |   8 +
+ gdbstub.c              | 584 +++++++++++++++++++++++++++++++++++------
+ hw/arm/xlnx-zynqmp.c   |   7 +-
+ 3 files changed, 521 insertions(+), 78 deletions(-)
+
+-- 
+2.18.0
+

@@ -1,85 +1,85 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2130015wrd;
-        Sun, 2 Sep 2018 23:58:17 -0700 (PDT)
-X-Google-Smtp-Source: ANB0Vda1J0aaC2LO+p6HvRqmIpNtaITSjeDOImSbAdAbR1vu2JMmuPDOVm08RBVZN5A3+9aBjC+f
-X-Received: by 2002:a37:ad0a:: with SMTP id f10-v6mr24088985qkm.186.1535957897762;
-        Sun, 02 Sep 2018 23:58:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535957897; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2130112wrd;
+        Sun, 2 Sep 2018 23:58:26 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdY0jkAMr4Pv/xKK+KWo3BCCZgzEJp3r5pdi/xwGS66WA1EM1qdVtqoQLYwKFWvi4VXEETv8
+X-Received: by 2002:ad4:40cf:: with SMTP id x15-v6mr24405955qvp.213.1535957906081;
+        Sun, 02 Sep 2018 23:58:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535957906; cv=none;
         d=google.com; s=arc-20160816;
-        b=XY4I34ofPzJnaWC3PhZ2mpzk3LqTNXNzyIftMFBUxhGNSTpTDrryT5gnDhEaIOmnX0
-         EZa6FSwI+ZZWvnkdUJAA4LIQxhd0OSshawiCpqGtGnj4bU2l8Cnoh91DcYyE3rDJdIHB
-         UbHKL8mNUk++DYcUeQF7cne00KIvQltMnS/kiPggS0kI5POuy5jQQhKklFmJCix9CpVI
-         DTh4x53hIhWo2J5HIP9MAILz6dD5MKyaWxxPNz9ynU8NKHp9aT6V7pa1p2fnxG5Ikemh
-         s6lSsbnY5Qm4wddlMLG4EKs3rDz8oum6ivqyGK9moB3rT4sz/5Vg4OjNf4wCitYBCafU
-         FQMA==
+        b=0WqXlT3HUgmmBU/EYPYkcOk3fL0QQbFQDl4ONsUSaNbbx4Ya4EOY+ruV4mZFUbgVMd
+         j4drQqJj0zc1vXS/S+bvJ+VeIqAswtIkt2rta31JDbEatURq4BfKf1gIeGxgWf7r+AkG
+         Qa9gfQXkQ0xrL0FfUGXqaRAddRGGHWhZyL27cJvimhjGgVrizCynoRN9wokonlwb9jnK
+         t/05O/8YuLwjFQkvivShUvy6d4sAVvcPmNVCYB45KttFzJ/sR3DH3yW6RgxVP0SRbE1s
+         4Sml4iaWk1W1jHDNGp5B+D4vgY5YaMd8RBIvUHxyXZ9D7R86wlaL5s4XiTYaByBQEREj
+         X/wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:arc-authentication-results;
-        bh=ZFthR2QpkItZzpmgrhw7koDP8j/g/hAIyqEQnD7585A=;
-        b=N4J5uhZBOSAWpCZOF6tZCpcq7NPNr/yGygqyVM7rAP97NFPePiZ81r0R1wMlAjsJ9j
-         QjNt8I5HgY3aP2N8FMZtdlqUA2xtAeitGiq5QVDXNLi+HR3VH/lVZJUD3qQvkU6unSAe
-         /40tz+Vt2UJVeLAkIdaXBR76Om2+YX/azOo6/P9UIQj+E8qEqrqnraA/qPswekt5lkX5
-         zr5NVZXfEBeZbaQfofMa+SXFpYuIqTlf3IBFk2yXotef8s8JDkcQTf6K3UAkjHpiPe5q
-         YU0XHIUqD9Hur9KM0e7mdSQcYXj+Xk9eUc0gncmUH+dVRefHg4EwFGEVygJFvtw9CARW
-         LbCA==
+        bh=ENAUH/3r9hf2lqaOB3qxmJ3bGAwTIfOBpoH698/3NfY=;
+        b=VgE2fEF3/38wVeDbpCtLH9050OzIKHlzAJ5PahsArYLR77vESNZgsvsXrtksIAEOQR
+         RxsSwWGnk8iPYCqRKV6XVxTaaQn95r4QIMYnhaE54WgDD6ITDQ//D3JcGlAiqWXd9K7z
+         sRp4EBatwlsXD/4Itt/qxqeoSg9T+93uOMQo/BsVQrULnI0MqHgSIiDhr/AV2w2+wvYp
+         ZJ6z0eyBxpmMHyt7jqcasgS2OZ9hELtfhEum8VJil1wisBEvef1cNMdoZaFSRoSoHZWx
+         jTvst+if/XWmCj+PMrDK08rtLkiZNLr/vfjlWwDKN3qGikT0GuHI8mjalPQUrNrI56dx
+         fzqg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m125-v6si5286189qkc.20.2018.09.02.23.58.17
+        by mx.google.com with ESMTPS id z190-v6si14123397qkb.177.2018.09.02.23.58.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 02 Sep 2018 23:58:17 -0700 (PDT)
+        Sun, 02 Sep 2018 23:58:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43796 helo=lists.gnu.org)
+Received: from localhost ([::1]:43797 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fwioT-0001uV-7H
-	for alex.bennee@linaro.org; Mon, 03 Sep 2018 02:58:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58421)
+	id 1fwiob-0002qx-I7
+	for alex.bennee@linaro.org; Mon, 03 Sep 2018 02:58:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58419)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fwio7-0001lS-I2
+	(envelope-from <kraxel@redhat.com>) id 1fwio7-0001lQ-Hx
 	for qemu-arm@nongnu.org; Mon, 03 Sep 2018 02:57:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fwio4-0008Cf-Bg
+	(envelope-from <kraxel@redhat.com>) id 1fwio4-0008D9-V8
 	for qemu-arm@nongnu.org; Mon, 03 Sep 2018 02:57:55 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50636 helo=mx1.redhat.com)
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49296 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fwio4-0008Bs-31; Mon, 03 Sep 2018 02:57:52 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fwio4-0008Cr-P7; Mon, 03 Sep 2018 02:57:52 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 97863801145A;
-	Mon,  3 Sep 2018 06:57:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5AA5A40241C4;
+	Mon,  3 Sep 2018 06:57:52 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-116-66.ams2.redhat.com
 	[10.36.116.66])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D8DB12026D6B;
-	Mon,  3 Sep 2018 06:57:46 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 029B82166BA1;
+	Mon,  3 Sep 2018 06:57:52 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 17D879B1C; Mon,  3 Sep 2018 08:57:46 +0200 (CEST)
+	id 29D579B2E; Mon,  3 Sep 2018 08:57:46 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  3 Sep 2018 08:57:43 +0200
-Message-Id: <20180903065745.23055-4-kraxel@redhat.com>
+Date: Mon,  3 Sep 2018 08:57:45 +0200
+Message-Id: <20180903065745.23055-6-kraxel@redhat.com>
 In-Reply-To: <20180903065745.23055-1-kraxel@redhat.com>
 References: <20180903065745.23055-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 03 Sep 2018 06:57:51 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 03 Sep 2018 06:57:51 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.7]);
+	Mon, 03 Sep 2018 06:57:52 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Mon, 03 Sep 2018 06:57:52 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-arm] [PULL 3/5] use dpy_gfx_update_full
+Subject: [Qemu-arm] [PULL 5/5] virtio-gpu: add iommu support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,162 +97,85 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RXeMKTF5oAos
+X-TUID: rydjxNwg5HM2
+
+Switch from cpu_physical_memory_map to dma_memory_map,
+so iommu mappings for virtio-gpu objects work properly.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-id: 20180810132856.22833-1-kraxel@redhat.com
+Message-Id: <20180829122101.29852-3-kraxel@redhat.com>
 ---
- hw/display/exynos4210_fimd.c | 4 +---
- hw/display/g364fb.c          | 2 +-
- hw/display/jazz_led.c        | 3 +--
- hw/display/tc6393xb.c        | 4 ++--
- hw/display/vga.c             | 3 +--
- hw/display/virtio-gpu.c      | 2 +-
- hw/display/vmware_vga.c      | 5 +----
- hw/display/xlnx_dp.c         | 3 +--
- 8 files changed, 9 insertions(+), 17 deletions(-)
+ hw/display/virtio-gpu.c | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index f011ea5b00..083b3172da 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1272,8 +1272,6 @@ static void exynos4210_fimd_update(void *opaque)
-     uint8_t *host_fb_addr;
-     bool is_dirty = false;
-     const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
--    const int global_height = ((s->vidtcon[2] >> FIMD_VIDTCON2_VER_SHIFT) &
--            FIMD_VIDTCON2_SIZE_MASK) + 1;
- 
-     if (!s || !s->console || !s->enabled ||
-         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
-@@ -1329,7 +1327,7 @@ static void exynos4210_fimd_update(void *opaque)
-             fimd_copy_line_toqemu(global_width, s->ifb + global_width * line *
-                     RGBA_SIZE, d + global_width * line * bpp);
-         }
--        dpy_gfx_update(s->console, 0, 0, global_width, global_height);
-+        dpy_gfx_update_full(s->console);
-     }
-     s->invalidate = false;
-     s->vidintcon[1] |= FIMD_VIDINT_INTFRMPEND;
-diff --git a/hw/display/g364fb.c b/hw/display/g364fb.c
-index fbc2b2422d..8ad7e5d824 100644
---- a/hw/display/g364fb.c
-+++ b/hw/display/g364fb.c
-@@ -229,7 +229,7 @@ static void g364fb_draw_blank(G364State *s)
-         d += surface_stride(surface);
-     }
- 
--    dpy_gfx_update(s->con, 0, 0, s->width, s->height);
-+    dpy_gfx_update_full(s->con);
-     s->blanked = 1;
- }
- 
-diff --git a/hw/display/jazz_led.c b/hw/display/jazz_led.c
-index 3c97d56434..eb7933d2a3 100644
---- a/hw/display/jazz_led.c
-+++ b/hw/display/jazz_led.c
-@@ -214,8 +214,7 @@ static void jazz_led_update_display(void *opaque)
-     }
- 
-     s->state = REDRAW_NONE;
--    dpy_gfx_update(s->con, 0, 0,
--                   surface_width(surface), surface_height(surface));
-+    dpy_gfx_update_full(s->con);
- }
- 
- static void jazz_led_invalidate_display(void *opaque)
-diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
-index 8392e59493..3360be6f84 100644
---- a/hw/display/tc6393xb.c
-+++ b/hw/display/tc6393xb.c
-@@ -461,7 +461,7 @@ static void tc6393xb_draw_graphic(TC6393xbState *s, int full_update)
-             return;
-     }
- 
--    dpy_gfx_update(s->con, 0, 0, s->scr_width, s->scr_height);
-+    dpy_gfx_update_full(s->con);
- }
- 
- static void tc6393xb_draw_blank(TC6393xbState *s, int full_update)
-@@ -480,7 +480,7 @@ static void tc6393xb_draw_blank(TC6393xbState *s, int full_update)
-         d += surface_stride(surface);
-     }
- 
--    dpy_gfx_update(s->con, 0, 0, s->scr_width, s->scr_height);
-+    dpy_gfx_update_full(s->con);
- }
- 
- static void tc6393xb_update_display(void *opaque)
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 802cfd47db..3ba3f6853c 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -1745,8 +1745,7 @@ static void vga_draw_blank(VGACommonState *s, int full_update)
-         memset(d, 0, w);
-         d += surface_stride(surface);
-     }
--    dpy_gfx_update(s->con, 0, 0,
--                   s->last_scr_width, s->last_scr_height);
-+    dpy_gfx_update_full(s->con);
- }
- 
- #define GMODE_TEXT     0
 diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-index 1cc953006f..410cf0c98a 100644
+index cf31b5f710..7be3a9d404 100644
 --- a/hw/display/virtio-gpu.c
 +++ b/hw/display/virtio-gpu.c
-@@ -1182,7 +1182,7 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
+@@ -17,6 +17,7 @@
+ #include "qemu/iov.h"
+ #include "ui/console.h"
+ #include "trace.h"
++#include "sysemu/dma.h"
+ #include "hw/virtio/virtio.h"
+ #include "hw/virtio/virtio-gpu.h"
+ #include "hw/virtio/virtio-bus.h"
+@@ -726,7 +727,8 @@ int virtio_gpu_create_mapping_iov(VirtIOGPU *g,
+         uint32_t l = le32_to_cpu(ents[i].length);
+         hwaddr len = l;
+         (*iov)[i].iov_len = l;
+-        (*iov)[i].iov_base = cpu_physical_memory_map(a, &len, 1);
++        (*iov)[i].iov_base = dma_memory_map(VIRTIO_DEVICE(g)->dma_as,
++                                            a, &len, DMA_DIRECTION_TO_DEVICE);
+         if (addr) {
+             (*addr)[i] = a;
          }
+@@ -754,8 +756,10 @@ void virtio_gpu_cleanup_mapping_iov(VirtIOGPU *g,
+     int i;
  
-         dpy_gfx_replace_surface(scanout->con, scanout->ds);
--        dpy_gfx_update(scanout->con, 0, 0, scanout->width, scanout->height);
-+        dpy_gfx_update_full(scanout->con);
-         if (scanout->cursor.resource_id) {
-             update_cursor(g, &scanout->cursor);
-         }
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index 0bbb78b9a6..afbf1c5973 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -1116,7 +1116,6 @@ static inline void vmsvga_check_size(struct vmsvga_state_s *s)
- static void vmsvga_update_display(void *opaque)
- {
-     struct vmsvga_state_s *s = opaque;
--    DisplaySurface *surface;
- 
-     if (!s->enable || !s->config) {
-         /* in standard vga mode */
-@@ -1125,15 +1124,13 @@ static void vmsvga_update_display(void *opaque)
+     for (i = 0; i < count; i++) {
+-        cpu_physical_memory_unmap(iov[i].iov_base, iov[i].iov_len, 1,
+-                                  iov[i].iov_len);
++        dma_memory_unmap(VIRTIO_DEVICE(g)->dma_as,
++                         iov[i].iov_base, iov[i].iov_len,
++                         DMA_DIRECTION_TO_DEVICE,
++                         iov[i].iov_len);
      }
- 
-     vmsvga_check_size(s);
--    surface = qemu_console_surface(s->vga.con);
- 
-     vmsvga_fifo_run(s);
-     vmsvga_update_rect_flush(s);
- 
-     if (s->invalidated) {
-         s->invalidated = 0;
--        dpy_gfx_update(s->vga.con, 0, 0,
--                   surface_width(surface), surface_height(surface));
-+        dpy_gfx_update_full(s->vga.con);
-     }
+     g_free(iov);
  }
+@@ -1147,13 +1151,17 @@ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
+         for (i = 0; i < res->iov_cnt; i++) {
+             hwaddr len = res->iov[i].iov_len;
+             res->iov[i].iov_base =
+-                cpu_physical_memory_map(res->addrs[i], &len, 1);
++                dma_memory_map(VIRTIO_DEVICE(g)->dma_as,
++                               res->addrs[i], &len, DMA_DIRECTION_TO_DEVICE);
  
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 6439bd05ef..cc0f9bc9cc 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1186,8 +1186,7 @@ static void xlnx_dp_update_display(void *opaque)
-     /*
-      * XXX: We might want to update only what changed.
-      */
--    dpy_gfx_update(s->console, 0, 0, surface_width(s->g_plane.surface),
--                                     surface_height(s->g_plane.surface));
-+    dpy_gfx_update_full(s->console);
- }
+             if (!res->iov[i].iov_base || len != res->iov[i].iov_len) {
+                 /* Clean up the half-a-mapping we just created... */
+                 if (res->iov[i].iov_base) {
+-                    cpu_physical_memory_unmap(res->iov[i].iov_base,
+-                                              len, 0, 0);
++                    dma_memory_unmap(VIRTIO_DEVICE(g)->dma_as,
++                                     res->iov[i].iov_base,
++                                     res->iov[i].iov_len,
++                                     DMA_DIRECTION_TO_DEVICE,
++                                     res->iov[i].iov_len);
+                 }
+                 /* ...and the mappings for previous loop iterations */
+                 res->iov_cnt = i;
+@@ -1205,11 +1213,6 @@ static void virtio_gpu_device_realize(DeviceState *qdev, Error **errp)
+     Error *local_err = NULL;
+     int i;
  
- static const GraphicHwOps xlnx_dp_gfx_ops = {
+-    if (virtio_host_has_feature(vdev, VIRTIO_F_IOMMU_PLATFORM)) {
+-        error_setg(errp, "virtio-gpu does not support vIOMMU yet");
+-        return;
+-    }
+-
+     if (g->conf.max_outputs > VIRTIO_GPU_MAX_SCANOUTS) {
+         error_setg(errp, "invalid max_outputs > %d", VIRTIO_GPU_MAX_SCANOUTS);
+         return;
 -- 
 2.9.3
 

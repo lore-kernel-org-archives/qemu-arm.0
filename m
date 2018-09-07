@@ -1,96 +1,97 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2054356wrd;
-        Fri, 7 Sep 2018 11:27:18 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZcu4ADPjVYoEse3DWEtiZp1aaiFLZI/NEqyQrhI3EsnQ4gQaqomIYpeWT/xTekgbuu0iQJ
-X-Received: by 2002:ad4:5052:: with SMTP id m18-v6mr6860936qvq.164.1536344838827;
-        Fri, 07 Sep 2018 11:27:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536344838; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2309452wrd;
+        Fri, 7 Sep 2018 16:26:31 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdYdy2sgruZc+R9+qlIPwyHTXt20j9ZM5oF4n8QsCkIr5kGRWINC8UFK2bW2Sov2qZzQrkPi
+X-Received: by 2002:a0c:9664:: with SMTP id 33-v6mr7541058qvy.137.1536362791476;
+        Fri, 07 Sep 2018 16:26:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536362791; cv=none;
         d=google.com; s=arc-20160816;
-        b=D2OGczjt8JDLvghJ/HtAGf/ZP5aAswbk6SHyNqCrT9/wTkK3KoD0td/Hqq/0zsAitX
-         8ID+VbGYsfdAxO4ZZorKHH4UmhC59tag2X7TPqF/lxCVO3//BpYaSqCIGz28h6oQdiC2
-         TSvaJHEtp3RCDXPIFK7LPb6GeRKRaKw4NeVrUxFDPd/I5A06/8SzTbqNpHVWCwrMJP5r
-         0dUvf1hqRf3JA8F43OaqRELVQx5Vxo2T7CCxDmCF/tBVwq2NRgfPRF1Ioj43tnHZ/gu4
-         5mKUygZsePxoC6PVxwYYWPQdC4sSswPOnFHq+1ivuVJbTtzKhylsEpZ/y3ZaGXFUtiMN
-         c7gA==
+        b=Qte8uI58PhFxXBduXt6luKjdMbkiwXISTInjuE9NkvyytZ6nsNlbSbj42FO9QL2PjK
+         mHnpPTslg4NHhYPiYF1fG/kPduDAA5hG+IZu1H9pcNPSEjWxYjbihZChqyo1ky0rKNr/
+         MQC3tjk1V7OJdkXH+sL92Wq31h0oVspwsmswvlkmIaUZCqmEW1OyeI5MnTt0rPshugZz
+         pLJ7dFqoqNf7jGWtB/H9kFcw0t7fVRawceoYYkEUCjm+g4e/cJveN0AzIQENHDfaqr+7
+         KyqlvujMjZC6RWkZNaKa2fxVRFHFMd/x/l72A3cus2LGFQrFO/sIZE/+smwXL9iPt9jX
+         hyDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :mime-version:user-agent:date:message-id:autocrypt:openpgp:from
-         :references:to:dkim-signature;
-        bh=UUf1h2Niv4ZrWdgYj000bY4sYB1zVS7fVE4QVFCZ8lU=;
-        b=ALNjy5azlJ6qB9sMkQDZ6/UAnjF+vE0glmgXA5lFQhqqf8S8gEgwzdfeCjNGitnUW6
-         Kr8CN4QdRtg6KNCaHbiZ5Et/GNTsF3LfRS1Me3ktjWyYGk7P6nKsVVqrk6vhb3E+fL2N
-         q23Emg/mR2sJDS8i+GfDISRfShSQsuI46lok0d4GF0TflLoV54SZWaGm4astq66pq6yE
-         OLZuqHur98Laty9U+KyO7MM3PlUOS+dhFEDHC7cMIo1/hMIMm1BZ4xW7laNNH6zSLfbj
-         cVozfJRTsWg4ClmcNUaGpW0Wwz6TTaCr80Dis0TcB2S3c/Jdqg9X3VVqYEO2fy3tAlB2
-         RyTQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
+         :dkim-signature;
+        bh=mxqUcJsrXNJL4GF59ULJEqB/cQUagY3vrQanBRkho7k=;
+        b=tnJZi6QXQNSBwUwAEiUQVnJHIQG/kaAs9hoVCIiy81/vITzRQm10AS3WhpjiT5wgmr
+         GJi/Jg56ivZt09znkR5vBxwlazzHLI6Hzo1v5qj/Z1VYk+2tKPmD90kq6EXu3Xmj9wKU
+         pGpHV4Ay5HPL46lt6fVtqmtTUH/28inuqyex6YgIQULtV0CNeCmCXatz5jKD7S1xZ78z
+         ULqtBrhIjRMj9CzUMm9rif9G9LoCA4uK0bStlDSyK/S3Pvn78QL8swSzI+vg4Vipod7N
+         SphrXYW9ySknWKEOArcWAomc18YVHGitL7zgdNxSmGjJxyVDVT3Kwy5JxWI3XOYYZzKm
+         3Vwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uHSOYgSG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Np9hXZnE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x17-v6si6322869qka.105.2018.09.07.11.27.18
+        by mx.google.com with ESMTPS id i43-v6si1048844qtf.22.2018.09.07.16.26.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Sep 2018 11:27:18 -0700 (PDT)
+        Fri, 07 Sep 2018 16:26:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uHSOYgSG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Np9hXZnE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39859 helo=lists.gnu.org)
+Received: from localhost ([::1]:40683 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fyLTS-0004ht-C1
-	for alex.bennee@linaro.org; Fri, 07 Sep 2018 14:27:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32991)
+	id 1fyQ90-0002aV-W2
+	for alex.bennee@linaro.org; Fri, 07 Sep 2018 19:26:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54787)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyLTI-0004ga-PC
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 14:27:09 -0400
+	id 1fyQ8s-0002aD-7V
+	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:26:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyLTH-0008Lq-Vo
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 14:27:08 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:36550)
+	id 1fyQ8o-00050p-VI
+	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:26:22 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44548)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyLTB-0008Cw-Si; Fri, 07 Sep 2018 14:27:02 -0400
-Received: by mail-wm0-x241.google.com with SMTP id j192-v6so15575453wmj.1;
-	Fri, 07 Sep 2018 11:27:01 -0700 (PDT)
+	id 1fyQ8o-0004t0-LO; Fri, 07 Sep 2018 19:26:18 -0400
+Received: by mail-wr1-x442.google.com with SMTP id v16-v6so16379412wro.11;
+	Fri, 07 Sep 2018 16:26:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to;
-	bh=UUf1h2Niv4ZrWdgYj000bY4sYB1zVS7fVE4QVFCZ8lU=;
-	b=uHSOYgSG94ee5FGvGIgCd/P29vPAc8pBuzKjKWwavTgbPyGaonrs5u4kHYYAWaOfgA
-	KiXhmSkacuHuaBqdvaClaWBzkzBMXs9NYLdtI+wciUNJ0NFqEWrIDY82hwo8hnH0wtkC
-	Ize0Qh1mZvtHa+z2LZaPC5tgzgJbydufJO/T5DSHayavaPt9EUZuQK93kzTvsB3D+R/+
-	xY2R1YfSWuVF/dPOt2/jPQtVEupQpM6DrQBdy3rSX3P9mNeFYiURv0R7l4kzCKij+Htm
-	TXKwueVewl8rPW8BLdTVgwTUrlvk6C3YmUh0IYGNCGP4sYyP9SRiZruC43clgBBmoylr
-	26sA==
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=mxqUcJsrXNJL4GF59ULJEqB/cQUagY3vrQanBRkho7k=;
+	b=Np9hXZnExIHpULJ7kJzLMtVLDY9BTx3IF+2YRewuitHVkhS2dBb/ZNSikGGtAC393o
+	8YERa27I6hZvb5osPjVRf2ngkxeIYLbpq2A+Pc3tJzphg088UKobRZNBQDClRa6ydyL0
+	Ej6d1ywsqfUnmXg5G+h0WXyJrcbw8QvDOnCLbnd8R2ZCQBCTDYOUaVyCUOvuBiQzblWh
+	izdikgpP80HZzbLMiru1jF/6JsHpGNkTH7eh8SOMdZeoOWfqr6ycqEcOIcFjCO7nIHy8
+	7mvsfxkMFcttT/LjG7Smqce/FpeyN4JNp9yRuBTnuIE5HwlKQVO8aUnt4UOjsUjMPhAa
+	w+8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to;
-	bh=UUf1h2Niv4ZrWdgYj000bY4sYB1zVS7fVE4QVFCZ8lU=;
-	b=RR86nIEEkOHZFTGPsyLWwu7UXIugrnwkV2IHylQ7bw4f8PRgfXONJvOkk9EsyT71kk
-	Go2it5r/DYJLXmSfagYpP6Eb87/0bBpY2zDl2cCQeRatZixNSeNvLC8aMpQ8Jl/Wb18I
-	3taPmS6UtiJGAD7lfq4XRik/jrforhu5HiVyyxOhwDcCQf6OArKLfmwWhChSJhNrNu8c
-	oFcyiCxxqTi/E0fy8rS2d1VeqcvPQb71vCiQgdtxgJSR9sa7EzmyiQA8OL9Rze0GLitv
-	lEWPuA9LjzXw2/xj609NlLdmIHUR9/GVk/950TxT5oatcyFK3GtoxARnlPWnPD0Q7zp2
-	Am0w==
-X-Gm-Message-State: APzg51C3VSUVsQkZEhPmyC8wzy3TYcRKjIMLn7phKZqAhXEINpsJ1Ey/
-	AbOwtXwbY4Qb5mHyKyDbuBh1KWff
-X-Received: by 2002:a1c:aa0c:: with SMTP id
-	t12-v6mr5698602wme.109.1536344820308; 
-	Fri, 07 Sep 2018 11:27:00 -0700 (PDT)
-Received: from [192.168.1.26] ([160.176.58.255])
-	by smtp.gmail.com with ESMTPSA id
-	j11-v6sm10620754wrr.37.2018.09.07.11.26.57
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=mxqUcJsrXNJL4GF59ULJEqB/cQUagY3vrQanBRkho7k=;
+	b=KNKiGs4H1PT83jS3oLiCxndYkv8dWrwZ8HeAE/vH5mU0piuwpBZM9jJ+LmKh1Sy7+C
+	IUXNPaZqbkSus7LCeebxCyL1qYsGHFI7B6IZ3X4zeaPQrj6/iOL5/NR6kUSPlI+wa33S
+	OFGe5WU9lpWtEgH2uPty7L4EI7iHLikjJEDvaFtEJXGRPKttS4EopoPdc8SU1f6h8GD/
+	snfogRUyUhFzFDF3zauXzq8KtQNppVGfbzWbHTPFiBBa3rcP2TTQAySf2IzLum4/ln5l
+	cFjX2v73EpGN/AMtI6NS9LkFxSM/Dg1MYjbD0qp0kDhtDt2UGKyTrbkcdF29vF01RfIJ
+	E/WQ==
+X-Gm-Message-State: APzg51A/teKW6/mZnmFRxL/vOlv796XPyT3P01yfO/WLfKePzdz2XKaS
+	BMdQi0BK29dwYidhLx3R7K9rE1qt
+X-Received: by 2002:adf:a708:: with SMTP id c8-v6mr7855261wrd.56.1536362777297;
+	Fri, 07 Sep 2018 16:26:17 -0700 (PDT)
+Received: from [192.168.43.186] (dynggepcrak-122-5-66-105.inwitelecom.net.
+	[105.66.5.122]) by smtp.gmail.com with ESMTPSA id
+	y128-v6sm10441818wmy.26.2018.09.07.16.26.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Sep 2018 11:26:59 -0700 (PDT)
-To: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
-	Thomas Huth <thuth@redhat.com>
-References: <CGME20180831102306eucas1p1ffbf82383f23675fecb5faf8a2fa54d7@eucas1p1.samsung.com>
-	<9310418.Wg32kryeWE@amdc3058>
+	Fri, 07 Sep 2018 16:26:16 -0700 (PDT)
+To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
+References: <20180901124639.19735-1-luc.michel@greensocs.com>
+	<20180901124639.19735-6-luc.michel@greensocs.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -117,20 +118,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	EhJraVuu3jtSbEfH+uPeoWtJtqSRkz1fLqp+dbha24ldPeKw4ija/YTviOem5baUlf/iNgS+
 	a0s0eoRiJFrGZFCKLGKgZYoJe1rccQR6JKKd8JpoaIQuzptcHZD4+qn8W8FUlkNWGfpTQrsN
 	iPLZt2EFOFkbjoZ2EoEByCs9nZ8ro91+lq7QfH9RFcldKLZfPEWwHPrchQ42
-Message-ID: <4f99f130-4be5-912f-329c-06666c929cd4@amsat.org>
-Date: Fri, 7 Sep 2018 15:26:53 -0300
+Message-ID: <28394c9a-fa7f-7687-77a6-22c2682792a4@amsat.org>
+Date: Fri, 7 Sep 2018 20:25:53 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <9310418.Wg32kryeWE@amdc3058>
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature";
-	boundary="Lej4390D3rTTb9zfi0HhF3Wx0iDppecof"
+In-Reply-To: <20180901124639.19735-6-luc.michel@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/exynos4210: fix Exynos4210 UART
- support
+X-Received-From: 2a00:1450:4864:20::442
+Subject: Re: [Qemu-arm] [PATCH 05/15] gdbstub: add multiprocess support to
+ 'sC' packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -142,113 +143,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
+	mark.burton@greensocs.com, saipava@xilinx.com, edgari@xilinx.com,
+	qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KFIFomz2E5Nd
+X-TUID: Mx0ek1ahfhBK
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Lej4390D3rTTb9zfi0HhF3Wx0iDppecof
-Content-Type: multipart/mixed; boundary="UkmRMQacPzaihy5JPBOC060751rotCZLN";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Thomas Huth <thuth@redhat.com>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Message-ID: <4f99f130-4be5-912f-329c-06666c929cd4@amsat.org>
-Subject: Re: [PATCH] hw/arm/exynos4210: fix Exynos4210 UART support
-References: <CGME20180831102306eucas1p1ffbf82383f23675fecb5faf8a2fa54d7@eucas1p1.samsung.com>
- <9310418.Wg32kryeWE@amdc3058>
-In-Reply-To: <9310418.Wg32kryeWE@amdc3058>
+On 9/1/18 9:46 AM, Luc Michel wrote:
+> Change the sC packet handling to support the multiprocess extension.
+> Instead of returning the first thread, we return the first thread of the
+> current process.
+> 
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 
---UkmRMQacPzaihy5JPBOC060751rotCZLN
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 8/31/18 7:23 AM, Bartlomiej Zolnierkiewicz wrote:
-> commit 97274d0c05d4 ("hw/char/exynos4210_uart.c: Remove unneeded
-> handling of NULL chardev") broke Exynos4210 support as it removed
-> NULL 'Chardev *chr' handling from exynos4210_uart_create() and
-> currently exynos4210_init() always passes NULL as 'Chardev *chr'
-> argument to exynos4210_uart_create() calls. Fix it by adding
-> missing serial_hd() calls to exynos4210_init().
->=20
-> Signed-off-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/arm/exynos4210.c |    8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> Index: b/hw/arm/exynos4210.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- a/hw/arm/exynos4210.c	2018-08-22 12:21:06.328813907 +0200
-> +++ b/hw/arm/exynos4210.c	2018-08-22 13:00:54.344771039 +0200
-> @@ -352,19 +352,19 @@ Exynos4210State *exynos4210_init(MemoryR
-> =20
->      /*** UARTs ***/
->      exynos4210_uart_create(EXYNOS4210_UART0_BASE_ADDR,
-> -                           EXYNOS4210_UART0_FIFO_SIZE, 0, NULL,
-> +                           EXYNOS4210_UART0_FIFO_SIZE, 0, serial_hd(0)=
-,
->                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_=
-GRP, 0)]);
-> =20
->      exynos4210_uart_create(EXYNOS4210_UART1_BASE_ADDR,
-> -                           EXYNOS4210_UART1_FIFO_SIZE, 1, NULL,
-> +                           EXYNOS4210_UART1_FIFO_SIZE, 1, serial_hd(1)=
-,
->                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_=
-GRP, 1)]);
-> =20
->      exynos4210_uart_create(EXYNOS4210_UART2_BASE_ADDR,
-> -                           EXYNOS4210_UART2_FIFO_SIZE, 2, NULL,
-> +                           EXYNOS4210_UART2_FIFO_SIZE, 2, serial_hd(2)=
-,
->                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_=
-GRP, 2)]);
-> =20
->      exynos4210_uart_create(EXYNOS4210_UART3_BASE_ADDR,
-> -                           EXYNOS4210_UART3_FIFO_SIZE, 3, NULL,
-> +                           EXYNOS4210_UART3_FIFO_SIZE, 3, serial_hd(3)=
-,
->                    s->irq_table[exynos4210_get_irq(EXYNOS4210_UART_INT_=
-GRP, 3)]);
-> =20
->      /*** SD/MMC host controllers ***/
->=20
-
-
---UkmRMQacPzaihy5JPBOC060751rotCZLN--
-
---Lej4390D3rTTb9zfi0HhF3Wx0iDppecof
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE+qvnXhKRciHc/Wuy4+MsLN6twN4FAluSwu8ACgkQ4+MsLN6t
-wN6xARAAhy5RGV2BdAEH5o9rwzIqS4+ZoBgF1at6ySZacp49MfIBYwQLFNJTMGXv
-gZwSWn5r9E+5C4sqWTB7EuRUcxIC/P3MiPtSyy95nzR2l5qK1ACyXSxDceqvCUID
-WlOih9qcGYrSVBW0nY4JsnR5H4lFq7BJPgMtbK72df8jq84QQ08qYsi1CncFel4q
-rLw5VyFmiJ/ujLjMGAXnNVu3iT3yhnraMRA8q0pCwzalgd+74lcy6ZyjcQ/KSi8y
-pxf2euIW8nI6YI188Qk8tpeDOI56SUqEJctFY9DzdXPI2x+666BPBCOQhnmq/cXc
-tDmqD/rtiTTze+WsSdxA6ijQsAK570EHC9dkhYpYxdeb6XSLY3vwovrDYGk48dxH
-NVb5jlKhKDzVn6dARyqSFZ/y88wX7ke4uuVSQtWO6xdeNShfEueMzvY3lntNoBIb
-NMfT0k76Uz/hzfMFdbXTWBAEukLSFDxpWPTPXPrKiSwTKqL7Rl3smLSwSkufZbgC
-gMoQGAWkDM2P7W8MpcO3V4z5KMhA/b1VcXxTdG4g5qXFau1dc53gkLGQ82Ss21mi
-clbo2tAs5+i68doZajeIDlfUWDQ59tCK/M9tn4Kj+OIXwN0bgJ58x9DGPxmeMO5T
-JGTZQdJm0HLAjo/BJzkbYGKosK8UASFD1FKFiYOz5EB5YaBzuGM=
-=R2jv
------END PGP SIGNATURE-----
-
---Lej4390D3rTTb9zfi0HhF3Wx0iDppecof--
+>  gdbstub.c | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
+> 
+> diff --git a/gdbstub.c b/gdbstub.c
+> index 2cb9cb6d97..c15250ce65 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -1531,13 +1531,18 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+>              type = strtoul(p, (char **)&p, 16);
+>              sstep_flags = type;
+>              put_packet(s, "OK");
+>              break;
+>          } else if (strcmp(p,"C") == 0) {
+> -            /* "Current thread" remains vague in the spec, so always return
+> -             *  the first CPU (gdb returns the first thread). */
+> -            put_packet(s, "QC1");
+> +            /* "Current thread" remains vague in the spec, so always return the
+> +             * first thread of the current process (gdb returns the first
+> +             * thread).
+> +             */
+> +            cpu = get_first_cpu_in_process(s, gdb_get_cpu_process(s, s->g_cpu));
+> +            snprintf(buf, sizeof(buf), "QC%s",
+> +                     get_thread_id(s, cpu, thread_id, sizeof(thread_id)));
+> +            put_packet(s, buf);
+>              break;
+>          } else if (strcmp(p,"fThreadInfo") == 0) {
+>              s->query_cpu = first_cpu;
+>              goto report_cpuinfo;
+>          } else if (strcmp(p,"sThreadInfo") == 0) {
+> 

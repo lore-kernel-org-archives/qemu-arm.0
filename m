@@ -1,99 +1,97 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2292014wrd;
-        Fri, 7 Sep 2018 16:03:24 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdY40E8Cs060CuOsos+v1h9ZsQLlk/fPDQ7bp1adz7gd7VTLkRdwOUne2FnnyagrpyMljboE
-X-Received: by 2002:a0c:eb48:: with SMTP id c8-v6mr7452777qvq.16.1536361404371;
-        Fri, 07 Sep 2018 16:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536361404; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2295329wrd;
+        Fri, 7 Sep 2018 16:07:20 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdaVA8v14F3bJ9+GGNWm80RzN6BhFy9bC9AylpEFGzimCUZisMDVWi06Xqi/x5MK+L5Qnk7P
+X-Received: by 2002:a0c:89c5:: with SMTP id 5-v6mr7687513qvs.46.1536361640625;
+        Fri, 07 Sep 2018 16:07:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536361640; cv=none;
         d=google.com; s=arc-20160816;
-        b=jEDOC/kHf/g/Au9mklaYMQOkDtEA2bgqJEKFLw5T0MvdazXWIukgUqSbz3YnHl6d8H
-         BZFaeIXirTVE1ntqEraTtjKRzKLjF92vqJRvXwe5oRna9HIMZxynZdIYl1/Mgh/FZt/e
-         ecw2gyOPSca6jMyjdMhbPikVlz9/iR44G4POIQliv6tHgyaUE+ocuUEXWCyNZXVRHHDX
-         szLaV1qyVZMsCtWTsPaGJEgAl486+vu6pWjBLZ31niUX5KGYnSibhOWRRYXMBgHsA/xr
-         GuNvXMOlU7aR3XTSKM4cupObZPcSmt4B0Lq/xgf7GC3duFJH76Agj9CaplfRRmm/Oomz
-         SmAw==
+        b=WyVV2NqWurCd5ygrHsb2L7X1eX3Jci7hAusQOqx3+BfRsHfxAdQC99z0C1BTxA5ZzJ
+         Of3/pNgT5GPUngqbORSPFofdP9zbQHi4K1LomoinXHVPN70RYtxAUAqUIXIANTyYkPnD
+         +9k62CNtxNnrB2veSci3B03N3QEHaVZQw7mHHQaCRC7Vg/uUe3tALNn68JzZMM6SD8oa
+         /oBzgdisL5CSQ+Nenv7LTVlHp/rgx4Swq3yNv4rIDOArpG242yqHBqF6xMGk6To/EG55
+         akKl6n2fVQaThMzvtpVyS/r1T66Vf7eBqzI2r3btO0Yv/gBbCGz0dzUR8M63c5g7lPRW
+         GSDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature;
-        bh=sD1oiDRgZkcF/hl2W/Ph8IuZCxw/W1bzuFHc8ojvVt8=;
-        b=PfOmGP1W7N9TSaVJpWsQB+wdkEyBIbKgqfdcXTvH4lD2FGPUuRmfn0KwaKsMSsoGm0
-         lEUwJfOV+0qHt880UfjfjBekPJrOx/eakPQYws6yZ1cHshIq4yAPVF3aAjbB3hk8ZeUA
-         4z6+5igNbvExBOqORNb0rCyRb5fC89ImjkAcFOP6zFj2C47BnUhF7Gn+qPNWGU63GWCX
-         kT2iCjiRPQcbwQSUzODpZhYIGeJMyso0wD/mTNqds884uTyJIqd8nxvXHhrj79eyQrW+
-         Z//NtNp1miQLvjCQg9VtgV4A8MIvUuBGIyGFmJHBDrb4ksaJ8NvSBTHLHMisBh1aLH0F
-         gHwQ==
+        bh=vE8AKIonC4gBDyGoijkavCv775stGNUSKLWlzi+lKl0=;
+        b=UYedEnLFXwapEPyqu5MTsAsSOY6dJus8Rsq6o98JpKh/D+/s5vDR9nc53sZ2LEoscz
+         WV4BI6C7KhhUoE9IsrdEmIPnId5YN7KyADLke2QwqI8cuvdWKlXfdBYwbkIaem6veBVF
+         rpWy7lxjAqHlaICYfK8cGGFrgM189vTGSTrvpF7Grx2zKEO5tNO2/G7aPc3XmkxDOq3k
+         qXzbBij5qCVXHvzEXdYKuNY4N+nRPH9eoL6IpawYLTejLTKo/axhT2FYbR44Npi0+w8b
+         sMDlFVB3iXy2wV05NSGjuo8NyRCqtdTty3MgHSahLFRI/lzDgHL6XCiWHUgThJWow3Xl
+         UDqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q5M0DHSj;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iAwB9r0X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g19-v6si47359qvm.195.2018.09.07.16.03.24
+        by mx.google.com with ESMTPS id t3-v6si3259021qkf.202.2018.09.07.16.07.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Sep 2018 16:03:24 -0700 (PDT)
+        Fri, 07 Sep 2018 16:07:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q5M0DHSj;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iAwB9r0X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40603 helo=lists.gnu.org)
+Received: from localhost ([::1]:40616 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fyPmd-000827-V5
-	for alex.bennee@linaro.org; Fri, 07 Sep 2018 19:03:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49994)
+	id 1fyPqS-0000Yh-4v
+	for alex.bennee@linaro.org; Fri, 07 Sep 2018 19:07:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50870)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyPmT-000820-4C
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:03:13 -0400
+	id 1fyPqG-0000YZ-BD
+	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:07:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyPmM-0002rp-0N
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:03:12 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:38925)
+	id 1fyPqC-0002Gs-BK
+	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:07:08 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40426)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyPmL-0002pt-JT; Fri, 07 Sep 2018 19:03:05 -0400
-Received: by mail-wr1-x443.google.com with SMTP id s14-v6so7407999wrw.6;
-	Fri, 07 Sep 2018 16:03:05 -0700 (PDT)
+	id 1fyPqC-0002G0-2o; Fri, 07 Sep 2018 19:07:04 -0400
+Received: by mail-wr1-x442.google.com with SMTP id n2-v6so16390188wrw.7;
+	Fri, 07 Sep 2018 16:07:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=sD1oiDRgZkcF/hl2W/Ph8IuZCxw/W1bzuFHc8ojvVt8=;
-	b=q5M0DHSj+rwE+wmngxqFszlz56B8OvQtdB1AWOGPqRoncP2mBgsA0f+GgEtnGyiTj+
-	5wPK/RLDgaPqQhkFJTGs+bnkJ+TGNssWTOWaZF1dfIIx4eXmgMum8Ne9L+LvDrT5jVI0
-	BJfEOu5o8Aru7S/xSVPiHtTOWAb02iUSRB0FlMFWqnnXnpNKYiBgVNyOzihpsdk8BK1Y
-	2RvtBpZHdaUd84Gyr+lgA4ivAX9zutoCRsMxQxjpSTk3wQ2sEyCLwUNR6bA6ORX+lNqH
-	HMIgDlz5N/nrE7lAGCW9CRGOmpvNydEecmkgULt7RMHYKj/U5LIYDaxd6PxlRUHwSJhK
-	oMRg==
+	bh=vE8AKIonC4gBDyGoijkavCv775stGNUSKLWlzi+lKl0=;
+	b=iAwB9r0XGjUJ2gmwmZWmYrZXDmO3xJwDDyDE2T1doe5CGL8iN0x0Yck998ziQQE+xx
+	umTlR+PU9eUs6Wtz4h1DTTia0d2CZMBv3DVDa8WeN4/8sEq6adTRGx4ogRfsFkAGUQ9L
+	q7u79ixwtmUvj9xX7Fl7vErXCpVpL3SPyWw/o+l7w6baiEHljzAce5qxtb7RkzFAPUgG
+	Wq1gpqXsWQG4V/szOc0SPKrV7teDqGDmg/aMz2mk06yl2MW5J6B92aDBYcbgQUCkPRXu
+	LO79h73kGkWOUydWkFY/BtS25nQEOay52x4BGTDAiLunrpC5wIVBERGJu3kjxxfnkA+q
+	FrUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=sD1oiDRgZkcF/hl2W/Ph8IuZCxw/W1bzuFHc8ojvVt8=;
-	b=dm8bUIgZN3E55wbYLVMpLWEpIOlrbfwF8oIZA5twPNzIy1AljthhjF6bN27iM3kOWl
-	3pGj3GYaRa+0zrC2uy3kquSbCoBT0U3uVEqTjX/N32dw1QVGNLv7wkxVFEmaR9fMlKsV
-	5crYvN25Y8FabKZ0twjWSjwmRqWJAB5/A29To9lndGemq0GVjrh9xo25YRiYgzhUh79u
-	pp5KxZ2dkyizivr8RKa1tq3QlQhPo1E+u99fearSDNqvfDZz/p2HSBF/StHTbb0oqq6a
-	A3A2r4v5UTzJaERzXO3sMbXX4rkLpJE9yD2ENkFsDFEOlWmkL9XawmvH/MsumSS+txlK
-	Cz/w==
-X-Gm-Message-State: APzg51AkVPvwQvXlFxDm1ii5/LNrGDvtkPebsyS35+tDI0Oy9EDJ21Pe
-	DehJ0OO/xL+qkZkxn2iAUxc=
-X-Received: by 2002:adf:9051:: with SMTP id
-	h75-v6mr8248978wrh.65.1536361384024; 
-	Fri, 07 Sep 2018 16:03:04 -0700 (PDT)
+	bh=vE8AKIonC4gBDyGoijkavCv775stGNUSKLWlzi+lKl0=;
+	b=pUXbMljz1bI37UCZ5lhmu42O0YpTBEYYxDPfEWlCA83+EMfaqtBqlUH75AMfrCyC29
+	YHkY/pmj9kroIfR9tVilTnVn+qvfwfrBvcX8rUXwuEG5UgKipSLVZW6wzcIIasKTqr3N
+	4yAnDoNuDcrqjA1VT00RDz4jrR5WxlPBJG3Nrp2xz8HvktemZrP9tcB3ZpctNph60h1+
+	LCUXqlQbmrkL5XMXltR1ripMU1iGcLkbNb4vzKguBKTi+z7lW4pZY9Dka2KbYthT2/gV
+	90X7zCsOIekimUL2i9cBTQRw5UuNvrVdeaqCqzE22ELF/K6N4fvnJ1yAwfIfliGNUPni
+	ekHA==
+X-Gm-Message-State: APzg51D2+FdyECO9Vo16ixBa5r/bOa9M1PCbbN4A1n+LvJ3BGomLP42e
+	HEgcY3MoTElHCQ3tI48x1oc=
+X-Received: by 2002:adf:9306:: with SMTP id 6-v6mr8118920wro.211.1536361623076;
+	Fri, 07 Sep 2018 16:07:03 -0700 (PDT)
 Received: from [192.168.43.186] (dynggepcrak-122-5-66-105.inwitelecom.net.
 	[105.66.5.122]) by smtp.gmail.com with ESMTPSA id
-	z101-v6sm11546306wrb.55.2018.09.07.16.02.59
+	z184-v6sm697073wmz.0.2018.09.07.16.06.54
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Sep 2018 16:03:02 -0700 (PDT)
+	Fri, 07 Sep 2018 16:07:02 -0700 (PDT)
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 References: <20180831103816.13479-1-clg@kaod.org>
-	<20180831111555.15008-1-clg@kaod.org>
-	<20180831111555.15008-2-clg@kaod.org>
+	<20180831103816.13479-7-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -120,19 +118,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	EhJraVuu3jtSbEfH+uPeoWtJtqSRkz1fLqp+dbha24ldPeKw4ija/YTviOem5baUlf/iNgS+
 	a0s0eoRiJFrGZFCKLGKgZYoJe1rccQR6JKKd8JpoaIQuzptcHZD4+qn8W8FUlkNWGfpTQrsN
 	iPLZt2EFOFkbjoZ2EoEByCs9nZ8ro91+lq7QfH9RFcldKLZfPEWwHPrchQ42
-Message-ID: <8f6e17c3-6c4d-fa44-234b-a385fe65830b@amsat.org>
-Date: Fri, 7 Sep 2018 20:02:53 -0300
+Message-ID: <c9bc4c3d-c7cc-389c-12e7-3255383543c1@amsat.org>
+Date: Fri, 7 Sep 2018 20:06:46 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180831111555.15008-2-clg@kaod.org>
+In-Reply-To: <20180831103816.13479-7-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::443
-Subject: Re: [Qemu-arm] [PATCH 11/11] aspeed/smc: Add dummy data register
+X-Received-From: 2a00:1450:4864:20::442
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 06/11] aspeed/smc: fix default
+ read value
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,68 +143,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zSv6sY5q5rR7
+X-TUID: /H58I6F5sY0L
 
-On 8/31/18 8:15 AM, Cédric Le Goater wrote:
-> The SMC controllers have a register containing the byte that will be
-> used as dummy output. It can be modified by software.
+Hi Cédric,
+
+On 8/31/18 7:38 AM, Cédric Le Goater wrote:
+> 0xFFFFFFFF should be returned for non implemented registers.
 > 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  hw/ssi/aspeed_smc.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
+>  hw/ssi/aspeed_smc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
 > diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index da2fedfcd3cd..f31bbc895caa 100644
+> index 1270842dcf0c..6045ca11b969 100644
 > --- a/hw/ssi/aspeed_smc.c
 > +++ b/hw/ssi/aspeed_smc.c
-> @@ -102,8 +102,8 @@
->  /* Misc Control Register #1 */
->  #define R_MISC_CTRL1      (0x50 / 4)
->  
-> -/* Misc Control Register #2 */
-> -#define R_MISC_CTRL2      (0x54 / 4)
-> +/* SPI dummy cycle data */
-> +#define R_DUMMY_DATA      (0x54 / 4)
->  
->  /* DMA Control/Status Register */
->  #define R_DMA_CTRL        (0x80 / 4)
-> @@ -548,7 +548,7 @@ static void aspeed_smc_flash_setup(AspeedSMCFlash *fl, uint32_t addr)
->       */
->      if (aspeed_smc_flash_mode(fl) == CTRL_FREADMODE) {
->          for (i = 0; i < aspeed_smc_flash_dummies(fl); i++) {
-> -            ssi_transfer(fl->controller->spi, 0xFF);
-> +            ssi_transfer(fl->controller->spi, s->regs[R_DUMMY_DATA] & 0xff);
-
-The DUMMY_DATA register always contains a 8-bit value, so this AND
-shouldn't be necessary. Regardless:
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-
->          }
->      }
->  }
-> @@ -680,6 +680,7 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
->          addr == s->r_timings ||
+> @@ -665,12 +665,12 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
 >          addr == s->r_ce_ctrl ||
 >          addr == R_INTR_CTRL ||
-> +        addr == R_DUMMY_DATA ||
->          (s->ctrl->has_dma && addr == R_DMA_CTRL) ||
->          (s->ctrl->has_dma && addr == R_DMA_FLASH_ADDR) ||
->          (s->ctrl->has_dma && addr == R_DMA_DRAM_ADDR) ||
-> @@ -912,6 +913,8 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
->          }
->      } else if (addr == R_INTR_CTRL) {
->          s->regs[addr] = value;
-> +    } else if (addr == R_DUMMY_DATA) {
-> +        s->regs[addr] = value & 0xff ;
->      } else if (s->ctrl->has_dma && addr == R_DMA_CTRL) {
->          aspeed_smc_dma_ctrl(s, value);
->      } else if (s->ctrl->has_dma && addr == R_DMA_DRAM_ADDR) {
+>          (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slaves) ||
+> -        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)) {
+> +        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves)) {
+
+This change seems unrelated to this commit.
+
+>          return s->regs[addr];
+>      } else {
+>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+>                        __func__, addr);
+> -        return 0;
+> +        return -1;
+>      }
+>  }
+>  
 > 

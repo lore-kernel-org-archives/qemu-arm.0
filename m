@@ -1,97 +1,98 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2295329wrd;
-        Fri, 7 Sep 2018 16:07:20 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdaVA8v14F3bJ9+GGNWm80RzN6BhFy9bC9AylpEFGzimCUZisMDVWi06Xqi/x5MK+L5Qnk7P
-X-Received: by 2002:a0c:89c5:: with SMTP id 5-v6mr7687513qvs.46.1536361640625;
-        Fri, 07 Sep 2018 16:07:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536361640; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2300275wrd;
+        Fri, 7 Sep 2018 16:13:35 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdaGOO018rhKr3oR5G6sp78dUlEtW2INC5tj77DxB+TwalRHK3sD2Q5g5VrKSYA9tTgKB1fA
+X-Received: by 2002:ac8:2b78:: with SMTP id 53-v6mr8172992qtv.255.1536362015029;
+        Fri, 07 Sep 2018 16:13:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536362015; cv=none;
         d=google.com; s=arc-20160816;
-        b=WyVV2NqWurCd5ygrHsb2L7X1eX3Jci7hAusQOqx3+BfRsHfxAdQC99z0C1BTxA5ZzJ
-         Of3/pNgT5GPUngqbORSPFofdP9zbQHi4K1LomoinXHVPN70RYtxAUAqUIXIANTyYkPnD
-         +9k62CNtxNnrB2veSci3B03N3QEHaVZQw7mHHQaCRC7Vg/uUe3tALNn68JzZMM6SD8oa
-         /oBzgdisL5CSQ+Nenv7LTVlHp/rgx4Swq3yNv4rIDOArpG242yqHBqF6xMGk6To/EG55
-         akKl6n2fVQaThMzvtpVyS/r1T66Vf7eBqzI2r3btO0Yv/gBbCGz0dzUR8M63c5g7lPRW
-         GSDw==
+        b=eWfejaaNN3nxfFmzmZTDy1eBCJiN7892IVB14uL9cXjP/h9yrV143/HulVBPu6XO5e
+         xWEwSNv0Slx1LGbv+B3/f90F1HQwLzlI/BXGWFJFLtstP3q2HARiUuEBEzBfknjkJ9Pk
+         RX5cNjRQUjIthujBKnO+H8fCTXAzSnFBv1hSSQtSNx2LXvbjujllyw53dLDwE2DZ9ekK
+         2KRpXQfDApvIC4Nd2u6efQUBBpICvD/nlD/MF4/YkCyWYjQzetvkuy1KFgV6Ce1qKZlZ
+         4JS5xnhuuyBDV7zoFi3Nh68S/p41IWmiFGEhRku1dHZns729XJunmtW6FIY/ZlHyzSLV
+         20tQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to
          :dkim-signature;
-        bh=vE8AKIonC4gBDyGoijkavCv775stGNUSKLWlzi+lKl0=;
-        b=UYedEnLFXwapEPyqu5MTsAsSOY6dJus8Rsq6o98JpKh/D+/s5vDR9nc53sZ2LEoscz
-         WV4BI6C7KhhUoE9IsrdEmIPnId5YN7KyADLke2QwqI8cuvdWKlXfdBYwbkIaem6veBVF
-         rpWy7lxjAqHlaICYfK8cGGFrgM189vTGSTrvpF7Grx2zKEO5tNO2/G7aPc3XmkxDOq3k
-         qXzbBij5qCVXHvzEXdYKuNY4N+nRPH9eoL6IpawYLTejLTKo/axhT2FYbR44Npi0+w8b
-         sMDlFVB3iXy2wV05NSGjuo8NyRCqtdTty3MgHSahLFRI/lzDgHL6XCiWHUgThJWow3Xl
-         UDqQ==
+        bh=0BuDUVFRulVygc+2SpvqqbWIdHhB342GNfWw1O2BDJ8=;
+        b=pSv2IQ4z1AkLNsWKvdTDbkiXpwMe+lz8T6IgwrJTNlEUSojwm4U/kQDe9/8KIt9sv2
+         A1bnFRWEwioXDecXs3NjSxmN+sIeZrPQBK+eREHHqPGikVFfWCoBYgNrTtg8/f918nC3
+         y8jkToeCyPYFJFwpuKBB7qSP+fZClHRo9RIo1cMWpYK9fJtfK14tLp2JZCnpo21TJgwD
+         k9bfc+B13doMWbRL+9U+6V3eCcCkyb84dEJTCEKR8qmBI4vrbZ5rdXiPt5SkGjrpJ6Pp
+         ZJkj4Aj1tly0MhMpbk2JQyRDwdPK28YO9G2Klx/9C127Y6WHjoGeuRy1VMTI5eIibn2p
+         Ieeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iAwB9r0X;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L1XV3gyY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t3-v6si3259021qkf.202.2018.09.07.16.07.20
+        by mx.google.com with ESMTPS id 27-v6si243646qvu.77.2018.09.07.16.13.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 07 Sep 2018 16:07:20 -0700 (PDT)
+        Fri, 07 Sep 2018 16:13:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iAwB9r0X;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=L1XV3gyY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40616 helo=lists.gnu.org)
+Received: from localhost ([::1]:40634 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fyPqS-0000Yh-4v
-	for alex.bennee@linaro.org; Fri, 07 Sep 2018 19:07:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50870)
+	id 1fyPwU-0004Xu-IQ
+	for alex.bennee@linaro.org; Fri, 07 Sep 2018 19:13:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52218)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyPqG-0000YZ-BD
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:07:08 -0400
+	id 1fyPwK-0004Tw-KZ
+	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:13:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyPqC-0002Gs-BK
-	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:07:08 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40426)
+	id 1fyPwG-0005PC-DX
+	for qemu-arm@nongnu.org; Fri, 07 Sep 2018 19:13:24 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37164)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fyPqC-0002G0-2o; Fri, 07 Sep 2018 19:07:04 -0400
-Received: by mail-wr1-x442.google.com with SMTP id n2-v6so16390188wrw.7;
-	Fri, 07 Sep 2018 16:07:04 -0700 (PDT)
+	id 1fyPwG-0005J4-0K; Fri, 07 Sep 2018 19:13:20 -0400
+Received: by mail-wr1-x444.google.com with SMTP id u12-v6so16356622wrr.4;
+	Fri, 07 Sep 2018 16:13:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=vE8AKIonC4gBDyGoijkavCv775stGNUSKLWlzi+lKl0=;
-	b=iAwB9r0XGjUJ2gmwmZWmYrZXDmO3xJwDDyDE2T1doe5CGL8iN0x0Yck998ziQQE+xx
-	umTlR+PU9eUs6Wtz4h1DTTia0d2CZMBv3DVDa8WeN4/8sEq6adTRGx4ogRfsFkAGUQ9L
-	q7u79ixwtmUvj9xX7Fl7vErXCpVpL3SPyWw/o+l7w6baiEHljzAce5qxtb7RkzFAPUgG
-	Wq1gpqXsWQG4V/szOc0SPKrV7teDqGDmg/aMz2mk06yl2MW5J6B92aDBYcbgQUCkPRXu
-	LO79h73kGkWOUydWkFY/BtS25nQEOay52x4BGTDAiLunrpC5wIVBERGJu3kjxxfnkA+q
-	FrUw==
+	bh=0BuDUVFRulVygc+2SpvqqbWIdHhB342GNfWw1O2BDJ8=;
+	b=L1XV3gyYY6DLnJYMbOtxy/9uFecjI0oO3m6unrz4cFUuVTAuM4gGxwVCqycnPyV+8k
+	2MP0XnEWTsmuqZYgBcY1LQkZ7hxRm9ueH7DoKCZdI7ZE+jNX4OsHsXvJ9cbvdzXgwVYj
+	3DIzq2A9aTOXuDPf2ienqYnwYFmAPSBqT7IZh3+CEJn+mVegqLqBGFe+361y2A8FzhFk
+	uZ+L99ADk7sD+w7x4aIAjj3f5E+aRaGUU8cp+6iF2f5yXnrO+kWFvV9/FX9DEhq+02kn
+	Dy8BCdDVSZcX5zwykblini2GC5XUDERIBozHoDitBjkbjO/KFfPV9vko+AzSG6J8LiSo
+	dHZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=vE8AKIonC4gBDyGoijkavCv775stGNUSKLWlzi+lKl0=;
-	b=pUXbMljz1bI37UCZ5lhmu42O0YpTBEYYxDPfEWlCA83+EMfaqtBqlUH75AMfrCyC29
-	YHkY/pmj9kroIfR9tVilTnVn+qvfwfrBvcX8rUXwuEG5UgKipSLVZW6wzcIIasKTqr3N
-	4yAnDoNuDcrqjA1VT00RDz4jrR5WxlPBJG3Nrp2xz8HvktemZrP9tcB3ZpctNph60h1+
-	LCUXqlQbmrkL5XMXltR1ripMU1iGcLkbNb4vzKguBKTi+z7lW4pZY9Dka2KbYthT2/gV
-	90X7zCsOIekimUL2i9cBTQRw5UuNvrVdeaqCqzE22ELF/K6N4fvnJ1yAwfIfliGNUPni
-	ekHA==
-X-Gm-Message-State: APzg51D2+FdyECO9Vo16ixBa5r/bOa9M1PCbbN4A1n+LvJ3BGomLP42e
-	HEgcY3MoTElHCQ3tI48x1oc=
-X-Received: by 2002:adf:9306:: with SMTP id 6-v6mr8118920wro.211.1536361623076;
-	Fri, 07 Sep 2018 16:07:03 -0700 (PDT)
+	bh=0BuDUVFRulVygc+2SpvqqbWIdHhB342GNfWw1O2BDJ8=;
+	b=dP6Ong2ggqZt1FJ67eDgBknV3XP00zBpET9zobRZ4eFui1gKmBfapvTzlI7tPN83Ht
+	XNyNWMpUHuvJK0+LjgJyIRsqx7VwGb9b2508grqqABKZKxB4D2v8mzeiYJ8Od33H92/f
+	eXnGs3Qp5jz/INqdlon3wUFG4GI8RPS25+QYbGq0g4nHOAs8pfZGSEFpjN8lC94yjLxO
+	yj7QHgv+CXtljn7CyOiFc5y17bOqTDQzrxAL33zDDftzL/NWuzwBZBko2r0ZhhjieXVl
+	NkVf8Is++mphJfy8W7z6foBZCzYS52IQkv1yFibN1ihjUvg716S7P/d4zaWMYpMec1R7
+	9Wvg==
+X-Gm-Message-State: APzg51Dlt69PtQY9BhAl8eCm2OaMg7fL7yLSr5hi/uHdmO5vUZVc2J3v
+	bDphhv0ycXZ9KGJWcVgLTMY=
+X-Received: by 2002:adf:c64e:: with SMTP id
+	u14-v6mr7493584wrg.177.1536361998805; 
+	Fri, 07 Sep 2018 16:13:18 -0700 (PDT)
 Received: from [192.168.43.186] (dynggepcrak-122-5-66-105.inwitelecom.net.
 	[105.66.5.122]) by smtp.gmail.com with ESMTPSA id
-	z184-v6sm697073wmz.0.2018.09.07.16.06.54
+	g133-v6sm7839883wmf.44.2018.09.07.16.13.10
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Sep 2018 16:07:02 -0700 (PDT)
+	Fri, 07 Sep 2018 16:13:18 -0700 (PDT)
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 References: <20180831103816.13479-1-clg@kaod.org>
-	<20180831103816.13479-7-clg@kaod.org>
+	<20180831103816.13479-4-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
@@ -118,20 +119,20 @@ Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
 	EhJraVuu3jtSbEfH+uPeoWtJtqSRkz1fLqp+dbha24ldPeKw4ija/YTviOem5baUlf/iNgS+
 	a0s0eoRiJFrGZFCKLGKgZYoJe1rccQR6JKKd8JpoaIQuzptcHZD4+qn8W8FUlkNWGfpTQrsN
 	iPLZt2EFOFkbjoZ2EoEByCs9nZ8ro91+lq7QfH9RFcldKLZfPEWwHPrchQ42
-Message-ID: <c9bc4c3d-c7cc-389c-12e7-3255383543c1@amsat.org>
-Date: Fri, 7 Sep 2018 20:06:46 -0300
+Message-ID: <12321eb0-2e27-2f3a-4533-a90c3e27fcc0@amsat.org>
+Date: Fri, 7 Sep 2018 20:13:01 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180831103816.13479-7-clg@kaod.org>
+In-Reply-To: <20180831103816.13479-4-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 06/11] aspeed/smc: fix default
- read value
+X-Received-From: 2a00:1450:4864:20::444
+Subject: Re: [Qemu-arm] [PATCH 03/11] hw/arm/aspeed: Add an Aspeed machine
+ class
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,43 +144,360 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /H58I6F5sY0L
-
-Hi Cédric,
+X-TUID: DlIG6Gt/pC5q
 
 On 8/31/18 7:38 AM, Cédric Le Goater wrote:
-> 0xFFFFFFFF should be returned for non implemented registers.
+> The code looks better, it removes duplicated lines and it will ease
+> the introduction of common properties for the Aspeed machines.
 > 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
+
+Nice cleanup :)
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  hw/ssi/aspeed_smc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  include/hw/arm/aspeed.h |  46 +++++++++
+>  hw/arm/aspeed.c         | 212 +++++++++++++---------------------------
+>  2 files changed, 116 insertions(+), 142 deletions(-)
+>  create mode 100644 include/hw/arm/aspeed.h
 > 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 1270842dcf0c..6045ca11b969 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -665,12 +665,12 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
->          addr == s->r_ce_ctrl ||
->          addr == R_INTR_CTRL ||
->          (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slaves) ||
-> -        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)) {
-> +        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves)) {
-
-This change seems unrelated to this commit.
-
->          return s->regs[addr];
->      } else {
->          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
->                        __func__, addr);
-> -        return 0;
-> +        return -1;
->      }
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> new file mode 100644
+> index 000000000000..2b77f8d2b3c8
+> --- /dev/null
+> +++ b/include/hw/arm/aspeed.h
+> @@ -0,0 +1,46 @@
+> +/*
+> + * Aspeed Machines
+> + *
+> + * Copyright 2018 IBM Corp.
+> + *
+> + * This code is licensed under the GPL version 2 or later.  See
+> + * the COPYING file in the top-level directory.
+> + */
+> +#ifndef _ARM_ASPEED_H
+> +#define _ARM_ASPEED_H
+> +
+> +#include "hw/boards.h"
+> +
+> +typedef struct AspeedBoardState AspeedBoardState;
+> +
+> +typedef struct AspeedBoardConfig {
+> +    const char *name;
+> +    const char *desc;
+> +    const char *soc_name;
+> +    uint32_t hw_strap1;
+> +    const char *fmc_model;
+> +    const char *spi_model;
+> +    uint32_t num_cs;
+> +    void (*i2c_init)(AspeedBoardState *bmc);
+> +} AspeedBoardConfig;
+> +
+> +#define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
+> +#define ASPEED_MACHINE(obj) \
+> +    OBJECT_CHECK(AspeedMachine, (obj), TYPE_ASPEED_MACHINE)
+> +
+> +typedef struct AspeedMachine {
+> +    MachineState parent_obj;
+> +} AspeedMachine;
+> +
+> +#define ASPEED_MACHINE_CLASS(klass) \
+> +     OBJECT_CLASS_CHECK(AspeedMachineClass, (klass), TYPE_ASPEED_MACHINE)
+> +#define ASPEED_MACHINE_GET_CLASS(obj) \
+> +     OBJECT_GET_CLASS(AspeedMachineClass, (obj), TYPE_ASPEED_MACHINE)
+> +
+> +typedef struct AspeedMachineClass {
+> +    MachineClass parent_obj;
+> +    const AspeedBoardConfig *board;
+> +} AspeedMachineClass;
+> +
+> +
+> +#endif
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index f2d64e45511a..6b33ecd5aa43 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -15,6 +15,7 @@
+>  #include "cpu.h"
+>  #include "exec/address-spaces.h"
+>  #include "hw/arm/arm.h"
+> +#include "hw/arm/aspeed.h"
+>  #include "hw/arm/aspeed_soc.h"
+>  #include "hw/boards.h"
+>  #include "hw/i2c/smbus.h"
+> @@ -34,22 +35,6 @@ typedef struct AspeedBoardState {
+>      MemoryRegion max_ram;
+>  } AspeedBoardState;
+>  
+> -typedef struct AspeedBoardConfig {
+> -    const char *soc_name;
+> -    uint32_t hw_strap1;
+> -    const char *fmc_model;
+> -    const char *spi_model;
+> -    uint32_t num_cs;
+> -    void (*i2c_init)(AspeedBoardState *bmc);
+> -} AspeedBoardConfig;
+> -
+> -enum {
+> -    PALMETTO_BMC,
+> -    AST2500_EVB,
+> -    ROMULUS_BMC,
+> -    WITHERSPOON_BMC,
+> -};
+> -
+>  /* Palmetto hardware value: 0x120CE416 */
+>  #define PALMETTO_BMC_HW_STRAP1 (                                        \
+>          SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
+> @@ -88,46 +73,6 @@ enum {
+>  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+>  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+>  
+> -static void palmetto_bmc_i2c_init(AspeedBoardState *bmc);
+> -static void ast2500_evb_i2c_init(AspeedBoardState *bmc);
+> -static void romulus_bmc_i2c_init(AspeedBoardState *bmc);
+> -static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc);
+> -
+> -static const AspeedBoardConfig aspeed_boards[] = {
+> -    [PALMETTO_BMC] = {
+> -        .soc_name  = "ast2400-a1",
+> -        .hw_strap1 = PALMETTO_BMC_HW_STRAP1,
+> -        .fmc_model = "n25q256a",
+> -        .spi_model = "mx25l25635e",
+> -        .num_cs    = 1,
+> -        .i2c_init  = palmetto_bmc_i2c_init,
+> -    },
+> -    [AST2500_EVB]  = {
+> -        .soc_name  = "ast2500-a1",
+> -        .hw_strap1 = AST2500_EVB_HW_STRAP1,
+> -        .fmc_model = "w25q256",
+> -        .spi_model = "mx25l25635e",
+> -        .num_cs    = 1,
+> -        .i2c_init  = ast2500_evb_i2c_init,
+> -    },
+> -    [ROMULUS_BMC]  = {
+> -        .soc_name  = "ast2500-a1",
+> -        .hw_strap1 = ROMULUS_BMC_HW_STRAP1,
+> -        .fmc_model = "n25q256a",
+> -        .spi_model = "mx66l1g45g",
+> -        .num_cs    = 2,
+> -        .i2c_init  = romulus_bmc_i2c_init,
+> -    },
+> -    [WITHERSPOON_BMC]  = {
+> -        .soc_name  = "ast2500-a1",
+> -        .hw_strap1 = WITHERSPOON_BMC_HW_STRAP1,
+> -        .fmc_model = "mx25l25635e",
+> -        .spi_model = "mx66l1g45g",
+> -        .num_cs    = 2,
+> -        .i2c_init  = witherspoon_bmc_i2c_init,
+> -    },
+> -};
+> -
+>  /*
+>   * The max ram region is for firmwares that scan the address space
+>   * with load/store to guess how much RAM the SoC has.
+> @@ -313,30 +258,6 @@ static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
+>      object_property_set_int(OBJECT(dev), 110000, "temperature3", &error_abort);
 >  }
 >  
+> -static void palmetto_bmc_init(MachineState *machine)
+> -{
+> -    aspeed_board_init(machine, &aspeed_boards[PALMETTO_BMC]);
+> -}
+> -
+> -static void palmetto_bmc_class_init(ObjectClass *oc, void *data)
+> -{
+> -    MachineClass *mc = MACHINE_CLASS(oc);
+> -
+> -    mc->desc = "OpenPOWER Palmetto BMC (ARM926EJ-S)";
+> -    mc->init = palmetto_bmc_init;
+> -    mc->max_cpus = 1;
+> -    mc->no_sdcard = 1;
+> -    mc->no_floppy = 1;
+> -    mc->no_cdrom = 1;
+> -    mc->no_parallel = 1;
+> -}
+> -
+> -static const TypeInfo palmetto_bmc_type = {
+> -    .name = MACHINE_TYPE_NAME("palmetto-bmc"),
+> -    .parent = TYPE_MACHINE,
+> -    .class_init = palmetto_bmc_class_init,
+> -};
+> -
+>  static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+> @@ -353,30 +274,6 @@ static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+>  }
+>  
+> -static void ast2500_evb_init(MachineState *machine)
+> -{
+> -    aspeed_board_init(machine, &aspeed_boards[AST2500_EVB]);
+> -}
+> -
+> -static void ast2500_evb_class_init(ObjectClass *oc, void *data)
+> -{
+> -    MachineClass *mc = MACHINE_CLASS(oc);
+> -
+> -    mc->desc = "Aspeed AST2500 EVB (ARM1176)";
+> -    mc->init = ast2500_evb_init;
+> -    mc->max_cpus = 1;
+> -    mc->no_sdcard = 1;
+> -    mc->no_floppy = 1;
+> -    mc->no_cdrom = 1;
+> -    mc->no_parallel = 1;
+> -}
+> -
+> -static const TypeInfo ast2500_evb_type = {
+> -    .name = MACHINE_TYPE_NAME("ast2500-evb"),
+> -    .parent = TYPE_MACHINE,
+> -    .class_init = ast2500_evb_class_init,
+> -};
+> -
+>  static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+> @@ -386,30 +283,6 @@ static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+>  }
+>  
+> -static void romulus_bmc_init(MachineState *machine)
+> -{
+> -    aspeed_board_init(machine, &aspeed_boards[ROMULUS_BMC]);
+> -}
+> -
+> -static void romulus_bmc_class_init(ObjectClass *oc, void *data)
+> -{
+> -    MachineClass *mc = MACHINE_CLASS(oc);
+> -
+> -    mc->desc = "OpenPOWER Romulus BMC (ARM1176)";
+> -    mc->init = romulus_bmc_init;
+> -    mc->max_cpus = 1;
+> -    mc->no_sdcard = 1;
+> -    mc->no_floppy = 1;
+> -    mc->no_cdrom = 1;
+> -    mc->no_parallel = 1;
+> -}
+> -
+> -static const TypeInfo romulus_bmc_type = {
+> -    .name = MACHINE_TYPE_NAME("romulus-bmc"),
+> -    .parent = TYPE_MACHINE,
+> -    .class_init = romulus_bmc_class_init,
+> -};
+> -
+>  static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+> @@ -433,36 +306,91 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+>                       0x60);
+>  }
+>  
+> -static void witherspoon_bmc_init(MachineState *machine)
+> +static void aspeed_machine_init(MachineState *machine)
+>  {
+> -    aspeed_board_init(machine, &aspeed_boards[WITHERSPOON_BMC]);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+> +
+> +    aspeed_board_init(machine, amc->board);
+>  }
+>  
+> -static void witherspoon_bmc_class_init(ObjectClass *oc, void *data)
+> +static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +    const AspeedBoardConfig *board = data;
+>  
+> -    mc->desc = "OpenPOWER Witherspoon BMC (ARM1176)";
+> -    mc->init = witherspoon_bmc_init;
+> +    mc->desc = board->desc;
+> +    mc->init = aspeed_machine_init;
+>      mc->max_cpus = 1;
+>      mc->no_sdcard = 1;
+>      mc->no_floppy = 1;
+>      mc->no_cdrom = 1;
+>      mc->no_parallel = 1;
+> +    amc->board = board;
+>  }
+>  
+> -static const TypeInfo witherspoon_bmc_type = {
+> -    .name = MACHINE_TYPE_NAME("witherspoon-bmc"),
+> +static const TypeInfo aspeed_machine_type = {
+> +    .name = TYPE_ASPEED_MACHINE,
+>      .parent = TYPE_MACHINE,
+> -    .class_init = witherspoon_bmc_class_init,
+> +    .instance_size = sizeof(AspeedMachine),
+> +    .class_size = sizeof(AspeedMachineClass),
+> +    .abstract = true,
+> +};
+> +
+> +static const AspeedBoardConfig aspeed_boards[] = {
+> +    {
+> +        .name      = MACHINE_TYPE_NAME("palmetto-bmc"),
+> +        .desc      = "OpenPOWER Palmetto BMC (ARM926EJ-S)",
+> +        .soc_name  = "ast2400-a1",
+> +        .hw_strap1 = PALMETTO_BMC_HW_STRAP1,
+> +        .fmc_model = "n25q256a",
+> +        .spi_model = "mx25l25635e",
+> +        .num_cs    = 1,
+> +        .i2c_init  = palmetto_bmc_i2c_init,
+> +    }, {
+> +        .name      = MACHINE_TYPE_NAME("ast2500-evb"),
+> +        .desc      = "Aspeed AST2500 EVB (ARM1176)",
+> +        .soc_name  = "ast2500-a1",
+> +        .hw_strap1 = AST2500_EVB_HW_STRAP1,
+> +        .fmc_model = "w25q256",
+> +        .spi_model = "mx25l25635e",
+> +        .num_cs    = 1,
+> +        .i2c_init  = ast2500_evb_i2c_init,
+> +    }, {
+> +        .name      = MACHINE_TYPE_NAME("romulus-bmc"),
+> +        .desc      = "OpenPOWER Romulus BMC (ARM1176)",
+> +        .soc_name  = "ast2500-a1",
+> +        .hw_strap1 = ROMULUS_BMC_HW_STRAP1,
+> +        .fmc_model = "n25q256a",
+> +        .spi_model = "mx66l1g45g",
+> +        .num_cs    = 2,
+> +        .i2c_init  = romulus_bmc_i2c_init,
+> +    }, {
+> +        .name      = MACHINE_TYPE_NAME("witherspoon-bmc"),
+> +        .desc      = "OpenPOWER Witherspoon BMC (ARM1176)",
+> +        .soc_name  = "ast2500-a1",
+> +        .hw_strap1 = WITHERSPOON_BMC_HW_STRAP1,
+> +        .fmc_model = "mx25l25635e",
+> +        .spi_model = "mx66l1g45g",
+> +        .num_cs    = 2,
+> +        .i2c_init  = witherspoon_bmc_i2c_init,
+> +    },
+>  };
+>  
+> -static void aspeed_machine_init(void)
+> +static void aspeed_machine_types(void)
+>  {
+> -    type_register_static(&palmetto_bmc_type);
+> -    type_register_static(&ast2500_evb_type);
+> -    type_register_static(&romulus_bmc_type);
+> -    type_register_static(&witherspoon_bmc_type);
+> +    int i;
+> +
+> +    type_register_static(&aspeed_machine_type);
+> +    for (i = 0; i < ARRAY_SIZE(aspeed_boards); ++i) {
+> +        TypeInfo ti = {
+> +            .name       = aspeed_boards[i].name,
+> +            .parent     = TYPE_ASPEED_MACHINE,
+> +            .class_init = aspeed_machine_class_init,
+> +            .class_data = (void *)&aspeed_boards[i],
+> +        };
+> +        type_register(&ti);
+> +    }
+>  }
+>  
+> -type_init(aspeed_machine_init)
+> +type_init(aspeed_machine_types)
 > 

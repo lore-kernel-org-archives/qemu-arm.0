@@ -1,202 +1,217 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp4967799wrd;
-        Wed, 5 Sep 2018 08:00:37 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZrAhdmAAn22OmbqcIptXt60w98ovFYYa12E0LKZBBkiO6G2I8umXWKMqv9zsv6+QTCW/ym
-X-Received: by 2002:ac8:c0e:: with SMTP id k14-v6mr34438593qti.20.1536159637778;
-        Wed, 05 Sep 2018 08:00:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536159637; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1431722wrd;
+        Sun, 9 Sep 2018 03:29:51 -0700 (PDT)
+X-Received: by 2002:a5b:b51:: with SMTP id b17-v6mr4946980ybr.143.1536488991498;
+        Sun, 09 Sep 2018 03:29:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536488991; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZI8KILRSrXGk9qtYVwQcRPEsTwL3YgjTbmYgcQm9Zgq2vEWbWx5bAeQLyFmSNEi89P
-         wM/8Wn2uAxxXAFJK7QmyUIpIUpazodOT6IdPu28KR9pIDQ5TUcPXzyOkI9KWxfacW5pT
-         xh+XvT5zKWLFedX/pEjyR1Oc1Cj8jEdu4/tm9wIFkVAg+AokPRvqa7kRdUA0G9mu7/il
-         3kh3ddGN2iBJgSUG3qXm+J8T+V+JdFjr7vCOKe6VK4BtJ1TSHbboiQBIkyE615apoe8s
-         A4VZMwhDIEEWduUx5NxEvWniOVPst+c9+HMUDE9v88a9hXQavArpu9gthzaWTWutZDt6
-         DQqQ==
+        b=mbRl2Ut2lqvx+NySkZP82zjHPxpWj9EhWzlM86bMqECCNJnmklNekCwpXGL63uDGFQ
+         rQxXsMcc7+RgKOb+cko36rqWyOSqCkAysPba4Oezqx5ozgyZsYq2F2nQ46x2RCJz3qxF
+         x1RQ7ptxKGMrLgcFXqQDATxRbPD0IcktrJsZwV85AGjIN3c6EvcR/w9r9nUNDXjkntDN
+         /GTH0fYJ5ViQfPIvNhER7SYFVicJlvAIYAgPdkhK5IJtZEHs2bEe/uD5FP9n673YXykf
+         94wUoLy+Z0zfIGSjfF16u3lDTlh60tmOn7SvxBSvhZDtGeXQLX2Q5N+Fcw4uRKq58LYY
+         lEfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=x94p/LTDB6kdDtK+YOxWmD88dN5RTNoFesHSN+Uazvc=;
-        b=q0rWhkODl67FQLzp0OTE6chqeiY47XC6/+lAeGCfAGbo/s+NMpL8YT3ka3TsqflV0B
-         9lToDS4n6RgD1YYUMQbRurMW52WQxnrXS3cW6Bk7+BVIZe99xC1MqUPP2gwzsyjV4g8P
-         X8bhfkCDIEfAzwxiZmqWxokPMW8UqLaF2mJP4rvOcVv5STq8tO76F1cD9bd11aUoCOLs
-         7sYF1FbQqODus9xsstSz9RQ8bobGFM3/E2vulpE5eWr9BStCpXbet9ZWTzkvoqT4PukD
-         5CZw1MLDpkg02u95eyV3/5bsowNMiTNL7t2FA52pcU09z0/rlbEdTvb4dNu7ZXOEDNTT
-         ny1Q==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature;
+        bh=0SyVQV08+8F3ovTpTyrWx8+0SDts3qy4GBVVz4j0UZM=;
+        b=TLgYiq+jun2j7anJCzfcnXKO9CTwDbacWmHJG4FyAXMTU2fx95OzyUWKoMP3czntdX
+         BcBzz0wTpZWrEc3wp8YoAxeNFEZyWfsnnz1fT0PZQJeMNFBEI09cb53lEm5bg5bNyy4T
+         grxTVvma0oEJl4lHhIK4UKPEua5AkMSbIsTPo+iCCXji1fTBe5LtoKePZyn5A1daqGgN
+         lL8/FYwvACumDzoy7BqTxhWgnwEE6tKUyQos48MyphaOEkyYaG6KNzC8TtQn0LefTu+N
+         McavNgMTUNjRRrtMr7dpkGRGmLe+UvhLZ6Rm/F8xqF5NzX2GuhB1EiJ6Hu/bjDTIl04K
+         0/jA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx3-rdu2.redhat.com. [66.187.233.73])
-        by mx.google.com with ESMTPS id i8-v6si1693218qvk.184.2018.09.05.08.00.37
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 05 Sep 2018 08:00:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) client-ip=66.187.233.73;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PKeXspKO;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g10-v6sor2491174ywc.299.2018.09.09.03.29.51
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Sun, 09 Sep 2018 03:29:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 66.187.233.73 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 33F9C40201C5;
-	Wed,  5 Sep 2018 15:00:37 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D26662156889;
-	Wed,  5 Sep 2018 15:00:35 +0000 (UTC)
-Date: Wed, 5 Sep 2018 17:00:33 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Leif Lindholm <leif.lindholm@linaro.org>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine
- type
-Message-ID: <20180905150033.ntsvj4vtqzcreiwi@kamzik.brq.redhat.com>
-References: <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
- <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com>
- <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
- <20180830083117.iekobw7l3arkt24m@bivouac.eciton.net>
- <CAFEAcA_s+9-4PYHyx_aAnxwt4e=VH77uBG7rC4JA++nOyjAaPw@mail.gmail.com>
- <20180830100233.nr6fm3npy57zl4xx@bivouac.eciton.net>
- <CAKv+Gu9r+1OBOSUBW_KpDEEoKyc=iwW4zVEe04-_JUnJtSGupQ@mail.gmail.com>
- <CAHmQWvBDjMeBpe9Puv+oRii3JrVULW_+AYJL9WV1tXT7F7ALfg@mail.gmail.com>
- <20180905120248.unyh6q4msvyx4f43@kamzik.brq.redhat.com>
- <CAHmQWvAD2Zaz94AxoAScBT8jL8WZqiTMdiuzKPxrZ_3Uvk5ihg@mail.gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=PKeXspKO;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=0SyVQV08+8F3ovTpTyrWx8+0SDts3qy4GBVVz4j0UZM=;
+        b=PKeXspKOfIuZuapkY2ayAsXIHpVnQxBWiXVkg9mghJO6wZgfKn0x7x2pVVs9O5Bk9i
+         PiApZBqh6c5M8yYUBgq47zizLBHd5Q3cecv3NzNiz9fm03a8uckbNJLraY4ErCVn04Hv
+         ud1sB92xJ4mmSfaE/AyKAfWDq1p3tuk7bZba0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=0SyVQV08+8F3ovTpTyrWx8+0SDts3qy4GBVVz4j0UZM=;
+        b=nqg3sXqpkNn55PgSwdKkCKa7kJHJqy3Mpk21wDgjpGpMt4w/EMAHC0nfMpqYvcPRtR
+         Gjn44243id0GiYMT2uAiP7cNGkDw3KKSC/fudXKs1+A6ic/LMDg7Dx6TEkHYjM7X5dZn
+         zlXb/XXh5GythsF2Izve9u7uL1kJ/X6oYImjY+J0yxMNuuU2gQYHhYXbVJJ/qxamylaS
+         Md4x2ksHjYf4uBhEHK36JiUsJ+DvJB/3hZXKSSF5Hua10M/aaD9HrlAyzkMXhXsjXu42
+         LJq3w/0pAbXOsh1PylhSUDkV06B1BaEchHusVw0y16odVF8NHMvXdJjLKcoKBweTifOP
+         Q3Gg==
+X-Gm-Message-State: APzg51AUk2dl1Sizs876GYhQ8HICag28bdUdN8/G8isY+3hU7xf37lqK
+	+hKqGaJ/yDQqn46QQocwRymJYt8fsOajv2frqisIQehy
+X-Google-Smtp-Source: ANB0VdaW1zNYaH7Qn+ttnE2E2UFQG7Ccv6X3LokCxrt3z1gX92Up08H+Scq8N1OV9YnbgV4W0vEBfqD66wjStpzjIw8=
+X-Received: by 2002:a81:9dc8:: with SMTP id u191-v6mr8146605ywg.274.1536488991106;
+ Sun, 09 Sep 2018 03:29:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHmQWvAD2Zaz94AxoAScBT8jL8WZqiTMdiuzKPxrZ_3Uvk5ihg@mail.gmail.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Wed, 05 Sep 2018 15:00:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]); Wed, 05 Sep 2018 15:00:37 +0000 (UTC) for IP:'10.11.54.6' DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com' HELO:'smtp.corp.redhat.com' FROM:'drjones@redhat.com' RCPT:''
-X-TUID: ymQecRoP4GJ3
+Received: by 2002:a25:58c5:0:0:0:0:0 with HTTP; Sun, 9 Sep 2018 03:29:50 -0700 (PDT)
+In-Reply-To: <20180905150033.ntsvj4vtqzcreiwi@kamzik.brq.redhat.com>
+References: <CAHmQWvC4Kp1CAeCe8ZTGtSeG7fnT=Xen4GFKfnhTBWUCJdQV+g@mail.gmail.com>
+ <20180829134219.cmyqipnvukk6k2rp@kamzik.brq.redhat.com> <CAHmQWvA5t7zbbDDM0UvuKSL_Z8ey+x+vOGZumYjwsq0FC5AHGA@mail.gmail.com>
+ <20180830083117.iekobw7l3arkt24m@bivouac.eciton.net> <CAFEAcA_s+9-4PYHyx_aAnxwt4e=VH77uBG7rC4JA++nOyjAaPw@mail.gmail.com>
+ <20180830100233.nr6fm3npy57zl4xx@bivouac.eciton.net> <CAKv+Gu9r+1OBOSUBW_KpDEEoKyc=iwW4zVEe04-_JUnJtSGupQ@mail.gmail.com>
+ <CAHmQWvBDjMeBpe9Puv+oRii3JrVULW_+AYJL9WV1tXT7F7ALfg@mail.gmail.com>
+ <20180905120248.unyh6q4msvyx4f43@kamzik.brq.redhat.com> <CAHmQWvAD2Zaz94AxoAScBT8jL8WZqiTMdiuzKPxrZ_3Uvk5ihg@mail.gmail.com>
+ <20180905150033.ntsvj4vtqzcreiwi@kamzik.brq.redhat.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Sun, 9 Sep 2018 18:29:50 +0800
+Message-ID: <CAHmQWvBPG7LBuFOPr4wq+w_jczN8mWFv3fPywFdB8P+c98Dqnw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH v2 2/2] hw/arm: Add Arm Enterprise machine type
+To: Andrew Jones <drjones@redhat.com>
+Cc: Ard Biesheuvel <ard.biesheuvel@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: s7aYmzUf87tv
 
-On Wed, Sep 05, 2018 at 10:09:46PM +0800, Hongbo Zhang wrote:
-> On 5 September 2018 at 20:02, Andrew Jones <drjones@redhat.com> wrote:
-> > On Wed, Sep 05, 2018 at 06:08:57PM +0800, Hongbo Zhang wrote:
-> >> On 30 August 2018 at 21:29, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> >> > On 30 August 2018 at 12:02, Leif Lindholm <leif.lindholm@linaro.org> wrote:
-> >> >> On Thu, Aug 30, 2018 at 09:39:33AM +0100, Peter Maydell wrote:
-> >> >>> On 30 August 2018 at 09:31, Leif Lindholm <leif.lindholm@linaro.org> wrote:
-> >> >>> > On Thu, Aug 30, 2018 at 03:07:29PM +0800, Hongbo Zhang wrote:
-> >> >>> >> @Ard, @Leif, is there any possibility to remove all the DT nodes?
-> >> >>> >> On real hardware, how does UEFI find the memory size and CPU number?
-> >> >>> >
-> >> >>> > Usually by asking some form of SCP/PMU.
-> >> >>> > So until we have rock-solid multi-cpu-instance (making terms up here,
-> >> >>> > there may be a proper name already?) support upstream, we need to take
-> >> >>> > shortcuts.
-> >> >>>
-> >> >>> I would expect that you'd want a "faked-on-the-QEMU end" SCP
-> >> >>> communications endpoint to start with anyway. We have one of
-> >> >>> those for vexpress, for instance.
-> >> >>
-> >> >> Ah, I wasn't aware we did!
-> >> >>
-> >> >> In that case - sure, that is probably the more sensible solution.
-> >> >> Does it emulate SCMI?
-> >> >>
-> >> >
-> >> > The purpose of the SBSA/SBBR qemu machine is prototyping the
-> >> > interactions between rich firmware and the OS for things like RAS,
-> >> > secure variable storage for UEFI or capsule update.
-> >> >
-> >> > How exactly the firmware figures out how many CPUs and how much memory
-> >> > we are running with is out of scope for this, and so I don't think
-> >> > there is a need to build something from scratch here: DT will do just
-> >> > fine, given that both EDK2 and ARM-TF have working DT code for these
-> >> > things.
-> >>
-> >> Ard, we need to clarify which DT nodes should be kept in SBSA-ref QEMU.
-> >> I've researched and tested, there are 3 kinds of DT nodes in the
-> >> current 'virt' machine:
-> >>
-> >> a) CPU DT node, because it is dynamic according to input parameters,
-> >> and we don't want to get it by other way, so we agreed to keep it.
-> >
-> > I have a patch series on the list[*] (which I need to refresh) that
-> > would also add a generated cpu-map node. I think the SBSA-ref machine
-> > may be interested in testing more complex cpu topologies, but that won't
-> > be easy to do with ACPI boot guests unless the topology is hard coded.
-> > How will sbsa-ref know when it should use a hard coded cpu topology vs.
-> > a dynamic number of cpus in a flat topology?
-> >
-> If I understand you question correctly: for the cpu topology, firmware
-> always get CPU DT from QEMU (which is generated dynamically form
-> command parameter), so it is always dynamic, not hard coded in this
-> case.
-> (and then firmware may translate this DT and insert it into a whole
-> ACPI to load OS, it is up to the firmware developer)
+Well, thank you all for the discussions, we achieved some agreement,
+and there are still things for further review.
+The v3 patch has been sent out, we can move there and review/discuss
+the updated patch now.
 
-I doubt firmware developers will want to generate ACPI tables. Maybe
-multiple tables can be pre-generated and then selected by firmware
-using a parameter passed to it from QEMU through the DT though.
+Thanks.
 
-> 
-> And I even considered, do we really need dynamic CPU nodes for such
-> platform? 
-
-That was my question. If you do, then I think things get complicated
-quick.
-
-> memory size has to be dynamic, but it isn't in DT.
-
-Memory size is in the DT. Making it dynamic may also be complicated
-though unless you only want one chunk of contiguous memory. If you
-want to represent SBSA machines that have multiple NUMA nodes and/or
-gaps in the physical address space, then your ACPI tables will not
-be patched easily. I.e. you'll want static ACPI tables regarding
-different memory configurations too.
-
-> 
-> > [*] http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg01170.html
-> >
-> >> b) GIC, UART, Timer (and RTC?) nodes, these nodes are now used by
-> >> UEFI, if removed, UEFI needs a rework to not rely on them any longer.
-> >
-> > Will sbsa-ref support GICv2? If so, then timer and pmu DT nodes will
-> > need to have their irqflags fields modified depending on the number of
-> > configured CPUs.
-> >
-> No, I removed the GICv2 in next patch.
-> 
-> >> c) All the other devices nodes, such as GPIO, PCIE etc, currently the
-> >> UEFI doesn't need them, so UEFI can boot with them removed.
-> >>
-> >> How about b) and c)?
-> >> my idea is to keep a) only, remove b) and thus a UEFI modification
-> >> accordingly is to be done, c) can be removed freely.
-> >
-> > So UEFI would learn to augment static DTBs with QEMU generated
-> > DT nodes and/or other auxiliary info from QEMU passed to it
-> > through the "guest DT" (which is now looking more like a guest
-> > firmware configuration description)? Is it worth it? Why not
-> > just require the entire DTB to be provided by the user on the
-> > QEMU command line and completely ignore QEMU parameters like
-> > '-smp'?
-> >
-> UEFI loads OS by ACPI, not DT for this machine.
-> But UEFI has to handle DT too, becuase there is DT passing info from
-> ARMTF to UEFI, and this dynamic CPU DT as well.
-> I think every thing UEFI gets from DT should translated into ACPI,
-> again,it is my understaning now, it is up to firmware developers.
-> 
-> "entire DTB provided by the user on the QEMU command line", you mean
-> firmware can use it to load OS? it is not fine, some featurs such as
-> RAS, may still need ACPI, so ACPI is to be used to load OS on this
-> sbsa-ref machine.
-
-If booting the guest with ACPI is the plan, but using QEMU's ACPI
-generation is not the plan. Then either firmware will have to reinvent
-that generation (unlikely) or multiple ACPI tables representing all
-the desired configs will need to be pre-generated and made selectable
-in some way. Either by choosing from multiple UEFI builds where each
-build has one set of tables, or by having all the tables in one UEFI
-build and then adding some UEFI code to select them based on parameters
-it can get from QEMU through DT.
-
-Thanks,
-drew
+On 5 September 2018 at 23:00, Andrew Jones <drjones@redhat.com> wrote:
+> On Wed, Sep 05, 2018 at 10:09:46PM +0800, Hongbo Zhang wrote:
+>> On 5 September 2018 at 20:02, Andrew Jones <drjones@redhat.com> wrote:
+>> > On Wed, Sep 05, 2018 at 06:08:57PM +0800, Hongbo Zhang wrote:
+>> >> On 30 August 2018 at 21:29, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
+>> >> > On 30 August 2018 at 12:02, Leif Lindholm <leif.lindholm@linaro.org> wrote:
+>> >> >> On Thu, Aug 30, 2018 at 09:39:33AM +0100, Peter Maydell wrote:
+>> >> >>> On 30 August 2018 at 09:31, Leif Lindholm <leif.lindholm@linaro.org> wrote:
+>> >> >>> > On Thu, Aug 30, 2018 at 03:07:29PM +0800, Hongbo Zhang wrote:
+>> >> >>> >> @Ard, @Leif, is there any possibility to remove all the DT nodes?
+>> >> >>> >> On real hardware, how does UEFI find the memory size and CPU number?
+>> >> >>> >
+>> >> >>> > Usually by asking some form of SCP/PMU.
+>> >> >>> > So until we have rock-solid multi-cpu-instance (making terms up here,
+>> >> >>> > there may be a proper name already?) support upstream, we need to take
+>> >> >>> > shortcuts.
+>> >> >>>
+>> >> >>> I would expect that you'd want a "faked-on-the-QEMU end" SCP
+>> >> >>> communications endpoint to start with anyway. We have one of
+>> >> >>> those for vexpress, for instance.
+>> >> >>
+>> >> >> Ah, I wasn't aware we did!
+>> >> >>
+>> >> >> In that case - sure, that is probably the more sensible solution.
+>> >> >> Does it emulate SCMI?
+>> >> >>
+>> >> >
+>> >> > The purpose of the SBSA/SBBR qemu machine is prototyping the
+>> >> > interactions between rich firmware and the OS for things like RAS,
+>> >> > secure variable storage for UEFI or capsule update.
+>> >> >
+>> >> > How exactly the firmware figures out how many CPUs and how much memory
+>> >> > we are running with is out of scope for this, and so I don't think
+>> >> > there is a need to build something from scratch here: DT will do just
+>> >> > fine, given that both EDK2 and ARM-TF have working DT code for these
+>> >> > things.
+>> >>
+>> >> Ard, we need to clarify which DT nodes should be kept in SBSA-ref QEMU.
+>> >> I've researched and tested, there are 3 kinds of DT nodes in the
+>> >> current 'virt' machine:
+>> >>
+>> >> a) CPU DT node, because it is dynamic according to input parameters,
+>> >> and we don't want to get it by other way, so we agreed to keep it.
+>> >
+>> > I have a patch series on the list[*] (which I need to refresh) that
+>> > would also add a generated cpu-map node. I think the SBSA-ref machine
+>> > may be interested in testing more complex cpu topologies, but that won't
+>> > be easy to do with ACPI boot guests unless the topology is hard coded.
+>> > How will sbsa-ref know when it should use a hard coded cpu topology vs.
+>> > a dynamic number of cpus in a flat topology?
+>> >
+>> If I understand you question correctly: for the cpu topology, firmware
+>> always get CPU DT from QEMU (which is generated dynamically form
+>> command parameter), so it is always dynamic, not hard coded in this
+>> case.
+>> (and then firmware may translate this DT and insert it into a whole
+>> ACPI to load OS, it is up to the firmware developer)
+>
+> I doubt firmware developers will want to generate ACPI tables. Maybe
+> multiple tables can be pre-generated and then selected by firmware
+> using a parameter passed to it from QEMU through the DT though.
+>
+>>
+>> And I even considered, do we really need dynamic CPU nodes for such
+>> platform?
+>
+> That was my question. If you do, then I think things get complicated
+> quick.
+>
+>> memory size has to be dynamic, but it isn't in DT.
+>
+> Memory size is in the DT. Making it dynamic may also be complicated
+> though unless you only want one chunk of contiguous memory. If you
+> want to represent SBSA machines that have multiple NUMA nodes and/or
+> gaps in the physical address space, then your ACPI tables will not
+> be patched easily. I.e. you'll want static ACPI tables regarding
+> different memory configurations too.
+>
+>>
+>> > [*] http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg01170.html
+>> >
+>> >> b) GIC, UART, Timer (and RTC?) nodes, these nodes are now used by
+>> >> UEFI, if removed, UEFI needs a rework to not rely on them any longer.
+>> >
+>> > Will sbsa-ref support GICv2? If so, then timer and pmu DT nodes will
+>> > need to have their irqflags fields modified depending on the number of
+>> > configured CPUs.
+>> >
+>> No, I removed the GICv2 in next patch.
+>>
+>> >> c) All the other devices nodes, such as GPIO, PCIE etc, currently the
+>> >> UEFI doesn't need them, so UEFI can boot with them removed.
+>> >>
+>> >> How about b) and c)?
+>> >> my idea is to keep a) only, remove b) and thus a UEFI modification
+>> >> accordingly is to be done, c) can be removed freely.
+>> >
+>> > So UEFI would learn to augment static DTBs with QEMU generated
+>> > DT nodes and/or other auxiliary info from QEMU passed to it
+>> > through the "guest DT" (which is now looking more like a guest
+>> > firmware configuration description)? Is it worth it? Why not
+>> > just require the entire DTB to be provided by the user on the
+>> > QEMU command line and completely ignore QEMU parameters like
+>> > '-smp'?
+>> >
+>> UEFI loads OS by ACPI, not DT for this machine.
+>> But UEFI has to handle DT too, becuase there is DT passing info from
+>> ARMTF to UEFI, and this dynamic CPU DT as well.
+>> I think every thing UEFI gets from DT should translated into ACPI,
+>> again,it is my understaning now, it is up to firmware developers.
+>>
+>> "entire DTB provided by the user on the QEMU command line", you mean
+>> firmware can use it to load OS? it is not fine, some featurs such as
+>> RAS, may still need ACPI, so ACPI is to be used to load OS on this
+>> sbsa-ref machine.
+>
+> If booting the guest with ACPI is the plan, but using QEMU's ACPI
+> generation is not the plan. Then either firmware will have to reinvent
+> that generation (unlikely) or multiple ACPI tables representing all
+> the desired configs will need to be pre-generated and made selectable
+> in some way. Either by choosing from multiple UEFI builds where each
+> build has one set of tables, or by having all the tables in one UEFI
+> build and then adding some UEFI code to select them based on parameters
+> it can get from QEMU through DT.
+>
+> Thanks,
+> drew

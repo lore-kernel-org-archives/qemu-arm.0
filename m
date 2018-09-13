@@ -1,137 +1,133 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp632251wrd;
-        Sat, 1 Sep 2018 07:43:01 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZYKHzJoT0zM5UEt+Mj2vcYZ4AkxseEhAdvAU9y9ZVxHohSMlAmzpgTDBLKNKISEg2zi10q
-X-Received: by 2002:a37:d992:: with SMTP id q18-v6mr19199180qkl.101.1535812981303;
-        Sat, 01 Sep 2018 07:43:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535812981; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp239378wrd;
+        Wed, 12 Sep 2018 23:40:45 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbjSY4qBSFmsyB+DFlwprSirhJarKnbY0USGlKUIm8K4tMzDuiMKVBzlJC3wKEMnJYc1QN/
+X-Received: by 2002:a37:8903:: with SMTP id l3-v6mr4029669qkd.337.1536820845470;
+        Wed, 12 Sep 2018 23:40:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536820845; cv=none;
         d=google.com; s=arc-20160816;
-        b=eLHzpfzXr2/PEMGix6NUJh6zE1nfX96u+EM4DNB/6feAAPQqJjtsA50iBC6mc5lpnh
-         jptXdfsoE3aG4nlPKnMBkJ+6xDoUyvZD7i7l3u/WKT0Go9rWiNPexhNEsH4S10uf7zEC
-         Wav1IYgaW4L2QaXfBRfeqM8IWahqiTT4TwCMk0SlGmLb7tbTWSL27lQMUSceQskbT7NR
-         6B7V14xXd9pyXsMuNOrf9LpuIALqnneIDYa1WiSbbIl9JlEJWxyLludJUK7wvFLMIQKG
-         1OG8gtqu8eZhQ9BbqfZk9mrFe+3P5yDl/Ep0eWsLMjhk9gfeTlhZcXWtrhYpIwTiM1Pw
-         GLhA==
+        b=0FermRKHnQjoPUKiaWpk6jqf4n2TdnD2O1pQRSxiMgTpy1ME+eA+24O44hWeAtldxW
+         IfrXgAT8u1crdqZKJtutJe7/qJU4bZgOmuYOqowTJHGqDBPWg3C15u19Ap1D7vSET/1z
+         n3elC7di2FDmWFgUh50VCoF7CguYGDMp+ZP+trAJlslPyJkHcgWyiqb9xaumCjKTqvxQ
+         FXytQrlNvNcHqwA/yQ/+Z5n3qn3I8VnZIG6Kmlk+tV6IOgn5ZIagNr6vfUQKZGZbBl7B
+         cIgldlRbRvRUPHMGVhWSOnqkcUEZTK3FU5tamkNUPjWuwnk+iKcyEg8NtI7YIYOFDZj0
+         HKrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:arc-authentication-results;
-        bh=9THBJTmKde1h3eWLXBr7ccWsWxWeigYQoyzzXYkWk84=;
-        b=vCo+cqZaL3qs8ptima1oYvM8jgG2s9GX6u2bVtlibhA1pNL0eWFsmdxBYwnbte/WG7
-         ixJ+fa6Ek3b5IMLzhPo4KcGjkzWHJEfJc4IoFnI0qrrbpt1eIqVFLVPONmiyVwlchLhL
-         vVmJS4HFDtE4r41pcLaxm111ZiovzjB3U2Q8PzLFjA+3kcioiSG4XKE84+QSau6b5CWz
-         vTp/wgoKYJcJBfMyzlxMbXPV2i+hWemISOYrS3AGhNyvLW81xiXgDILsQEqXadTryKPv
-         5JoZaUUKLuGkd/tkgVZu3YzhlLCHyXvlobKuTFDaIwyVqVU2XUd998BGe7gdKfEt7vmB
-         TI4g==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=UkIRcF792BE6ZsWA3OGakrXWRsrH7ZdH3jovr2hOowo=;
+        b=mgk3O79Y1AiQli40zzAkcH/sCm4LFYHuEceUtbHvfjV/hHiLLX4y2wN/dNkMnFXwTi
+         ICBmEy785bwTJt8bre0xIdCZjSVu0N0cBIuVhgAj9R1hT7p7RcrLIYPwrsOFipZMSjzx
+         NCoQV4kTE59idlMBA63tXIOQmrFukKsP3X0QpECKkUubnKRoSelqIk0REm9tNCktUdEW
+         eNA37nBu0aUFrVQvAn0VFI4+Um2IPP2UnLYfibNdhObK2xru2CzX98ndC9W08dO/QWDb
+         MX/2yPDcor3Dy3bCAWA9zPdbb1soTZO86kRGlavRVW2T3he+vsDRaxjY7XD7FgCEbaCR
+         C4wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r2-v6si2778777qtr.185.2018.09.01.07.43.01
+        by mx.google.com with ESMTPS id z136-v6si2503225qkb.299.2018.09.12.23.40.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 01 Sep 2018 07:43:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 12 Sep 2018 23:40:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37450 helo=lists.gnu.org)
+Received: from localhost ([::1]:40695 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fw776-00004q-PE
-	for alex.bennee@linaro.org; Sat, 01 Sep 2018 10:43:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54953)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g0LIy-000135-VI
+	for alex.bennee@linaro.org; Thu, 13 Sep 2018 02:40:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41391)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fw6qX-0005sK-4k
-	for qemu-devel@nongnu.org; Sat, 01 Sep 2018 10:25:53 -0400
+	(envelope-from <drjones@redhat.com>) id 1g0LIj-00012j-Od
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 02:40:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1fw6oH-0005KX-BC
-	for qemu-devel@nongnu.org; Sat, 01 Sep 2018 10:23:34 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54246 helo=mx1.redhat.com)
+	(envelope-from <drjones@redhat.com>) id 1g0LIf-0004yU-QL
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 02:40:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40730)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1fw6oD-0005GD-6z; Sat, 01 Sep 2018 10:23:29 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1g0LIf-0004xu-KN; Thu, 13 Sep 2018 02:40:25 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B32FE402347E;
-	Sat,  1 Sep 2018 14:23:28 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-157.ams2.redhat.com [10.36.116.157])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D473B2166B41;
-	Sat,  1 Sep 2018 14:23:26 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Sat,  1 Sep 2018 16:22:53 +0200
-Message-Id: <20180901142312.11662-2-eric.auger@redhat.com>
-In-Reply-To: <20180901142312.11662-1-eric.auger@redhat.com>
-References: <20180901142312.11662-1-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+	by mx1.redhat.com (Postfix) with ESMTPS id 84BF53082B24;
+	Thu, 13 Sep 2018 06:40:23 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 951415D6B3;
+	Thu, 13 Sep 2018 06:40:22 +0000 (UTC)
+Date: Thu, 13 Sep 2018 08:40:20 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Shannon Zhao <shannon.zhaosl@gmail.com>
+Message-ID: <20180913064020.xcxjof5466emyplp@kamzik.brq.redhat.com>
+References: <20180911112643.19296-1-shenglong.zsl@alibaba-inc.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20180911112643.19296-1-shenglong.zsl@alibaba-inc.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Sat, 01 Sep 2018 14:23:28 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Sat, 01 Sep 2018 14:23:28 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eric.auger@redhat.com' RCPT:''
+	(mx1.redhat.com [10.5.110.45]);
+	Thu, 13 Sep 2018 06:40:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-devel] [RFC 01/20] hw/arm/smmu-common: Fix the name of the
- iommu memory regions
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt-acpi-build: Add a
+ check for memory-less NUMA nodes
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: yi.l.liu@intel.com, cdall@kernel.org, mst@redhat.com,
-	jean-philippe.brucker@arm.com, peterx@redhat.com,
-	alex.williamson@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I877x8Xlrd0S
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wIW7T2I8ig10
 
-At the point smmu_find_add_as() gets called, the bus number might
-not be computed. Let's change the name of IOMMU memory region and
-just use the devfn and an incrementing index.
+On Tue, Sep 11, 2018 at 07:26:43PM +0800, Shannon Zhao wrote:
+> From: Shannon Zhao <shannon.zhaosl@gmail.com>
+> 
+> Like commit 16b4226(hw/acpi-build: Add a check for memory-less NUMA node
+> ), it also needs to check memory length for NUMA nodes on ARM.
+> 
+> Signed-off-by: Shannon Zhao <shannon.zhaosl@gmail.com>
+> ---
+>  hw/arm/virt-acpi-build.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index ce31abd..5785fb6 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -562,10 +562,12 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  
+>      mem_base = vms->memmap[VIRT_MEM].base;
+>      for (i = 0; i < nb_numa_nodes; ++i) {
+> -        numamem = acpi_data_push(table_data, sizeof(*numamem));
+> -        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
+> -                          MEM_AFFINITY_ENABLED);
+> -        mem_base += numa_info[i].node_mem;
+> +        if (numa_info[i].node_mem > 0) {
+> +            numamem = acpi_data_push(table_data, sizeof(*numamem));
+> +            build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
+> +                              MEM_AFFINITY_ENABLED);
+> +            mem_base += numa_info[i].node_mem;
+> +        }
+>      }
+>  
+>      build_header(linker, table_data, (void *)(table_data->data + srat_start),
+> -- 
+> 2.9.3.windows.1
+>
 
-The name only is used for debug.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/smmu-common.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 55c75d65d2..3f55cfd193 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -311,6 +311,7 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
-     SMMUState *s = opaque;
-     SMMUPciBus *sbus = g_hash_table_lookup(s->smmu_pcibus_by_busptr, bus);
-     SMMUDevice *sdev;
-+    static uint index;
- 
-     if (!sbus) {
-         sbus = g_malloc0(sizeof(SMMUPciBus) +
-@@ -321,9 +322,8 @@ static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
- 
-     sdev = sbus->pbdev[devfn];
-     if (!sdev) {
--        char *name = g_strdup_printf("%s-%d-%d",
--                                     s->mrtypename,
--                                     pci_bus_num(bus), devfn);
-+        char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn, index++);
-+
-         sdev = sbus->pbdev[devfn] = g_new0(SMMUDevice, 1);
- 
-         sdev->smmu = s;
--- 
-2.17.1
-
+Reviewed-by: Andrew Jones <drjones@redhat.com>

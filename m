@@ -1,70 +1,95 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2383129wrd;
-        Fri, 24 Aug 2018 07:13:47 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZ10IKqa7jmfDqb6NI4x3bvVhLj/zYsFvUgrzVsKJyoqQVi4Y+ax9PaIesPuwT0zrWjPSUE
-X-Received: by 2002:ac8:1739:: with SMTP id w54-v6mr1943635qtj.294.1535120027445;
-        Fri, 24 Aug 2018 07:13:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535120027; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp971448wrd;
+        Thu, 13 Sep 2018 10:50:48 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbujBDhBA4ihZlKNXm4RbJyaDahJv6jMeNeu3ALaArFJF9ArNsnXhE4Sc+k++K9zXkBs5ub
+X-Received: by 2002:a0c:ca8e:: with SMTP id a14-v6mr6097841qvk.44.1536861048634;
+        Thu, 13 Sep 2018 10:50:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536861048; cv=none;
         d=google.com; s=arc-20160816;
-        b=tzdhWQdkZXcoXgHf7pDT0dx1PEWMImO76OyTbRnOBmp0Kp6axUvsTfLgjP2TdB/kbn
-         VWhuDuh7CgyVrrS9J2LnB1h5R/EqRwJZABh5/1nU7sSXIfEIYgkCg5ca1XiyaO0J7Doi
-         OXY0+PM6EkJnhcxeWDrWSUBh79z+nHkGxw0UIq7FRVwlNxiYq6h/sNfAMMGP+132sqXk
-         YU9D/7zZCae5DivbfsY/AFEm+rnyumseE+NuVKE9OcI6BZmEnQ2p04CpbQytHywOm+Na
-         cVgQ8dHPlvnA6PNQSkI2UD54kBD3GR7Wy63Fmkog94hVk0OtrKJFdQoidEtVfFnw5vhH
-         gL7w==
+        b=k2V6ix9y7Tg6as3vPz0P/zroa7VZu+6AChnJqOIVD7QVxs7YWrYCYfXjTw/zY8epEO
+         YdpKCSrM3z2iaPNaDFUdv1XfK95FAL4bstIDgYRNxDChPIijXUa7FfNzW2Jn8i0rlZcv
+         9pIGIO7S6BN8DTEno2k7uQxc/E7cEiV6tb8Ax9e7h1TdfS0XkPCHYkS4P94QOyvLqrQW
+         TA3G2nojXbjOJpil/KB3MF3NzaVHRHQyEhULwp+NqCLKM4NX6u6Wq/e51vi4xW7VxJ2P
+         CM7AJvqXwKbwHFf7waSnBvf1PDlgsnZJT5qdU1n+IaVr7LinFYFlBjTvq3q58/3E0u6l
+         KSZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :arc-authentication-results;
-        bh=9kTReArHjLFGA6m/2ESEeWZ5+H+7RYYAM0poNFDLkwk=;
-        b=RdgO/uFed/DQpVB2ZK59Y6ep0itbRt9qtulg3QkgPv4pOgzFl2+UYuraBLr66X8UnP
-         +4k5m+LLPj2WjMBUNiAZNb1GVxE/+DNUJiW/9kwBu6UNguLSG90LaeTry5RhyKJi1UPK
-         py92xZ0VwV0yUhairxg/nOlUzB6n5sKtYBQQQd/kBHJsybOCeGplaZJrU8Q95TYJpFQ2
-         y0Owj23Ru5ju8hmYpT+DUJDebegLOQ7N4QDhZNG4S8u+IzgvPYQln/3LKxMNOo0+9fMH
-         ykPkmXOppH5Pa2kMHv3UqnFdWl8Q9r5hYF6pTPnhPdu3E7VdcugNlaGiOfp3DjhTJVf0
-         O1oQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=UwUf1ydP+BLNSegymoRe1G6/LQEGtlMC9eshPhtXr68=;
+        b=p5tjga9hu2MhW+2mEMW9XpHlh64Lk9FufjUL89N2fhX7zuWx4NKHyAz3jnl77x31zt
+         Igz0VqFczqONE1M2Jrfk2sMx4Yc3siaxJZ+l2QNal8t1XfjPi0oARg+gctEL3G6ldGWS
+         9EsAk/P5wAbjtvzsS2l0/Ys7byWMdnUIFUFL/EUPRPeCzpNqKv5D36eqYudaFka5efnv
+         X/nuqwER8a0QKKhGcHtpZCDeObHmQVBZFUMLSeD3YXEAiHm97EuEbCDw6tFYfcpimrpI
+         fVBjdVSUxxRVKiS93nhoFBZ3Ck0+R3a2zVWvswQlnv61diTqWuST2DF6LvkFboa7fmjV
+         wJmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@iitgn-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=hpSBWWJa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y68-v6si5563933qkd.226.2018.08.24.07.13.47
+        by mx.google.com with ESMTPS id f5-v6si3452456qtg.392.2018.09.13.10.50.48
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 24 Aug 2018 07:13:47 -0700 (PDT)
+        Thu, 13 Sep 2018 10:50:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41988 helo=lists.gnu.org)
+       dkim=fail header.i=@iitgn-ac-in.20150623.gappssmtp.com header.s=20150623 header.b=hpSBWWJa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43717 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ftCqQ-0002Dp-UT
-	for alex.bennee@linaro.org; Fri, 24 Aug 2018 10:13:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49870)
+	id 1g0VlQ-0008Dx-4O
+	for alex.bennee@linaro.org; Thu, 13 Sep 2018 13:50:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44057)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ftCqJ-0002DW-AH
-	for qemu-arm@nongnu.org; Fri, 24 Aug 2018 10:13:40 -0400
+	(envelope-from <gohil.varun@iitgn.ac.in>) id 1g0VSD-0003MV-51
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 13:30:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1ftCqI-0000wT-CA
-	for qemu-arm@nongnu.org; Fri, 24 Aug 2018 10:13:39 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:44910)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1ftCqI-0000ue-2e; Fri, 24 Aug 2018 10:13:38 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1ftCqF-0006qm-UQ; Fri, 24 Aug 2018 15:13:35 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Fri, 24 Aug 2018 15:13:33 +0100
-Message-Id: <20180824141333.24903-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.18.0
+	(envelope-from <gohil.varun@iitgn.ac.in>) id 1g0VS4-00050q-Pt
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 13:30:51 -0400
+Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e]:38777)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <gohil.varun@iitgn.ac.in>)
+	id 1g0VS4-0004zK-4p
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 13:30:48 -0400
+Received: by mail-yb1-xb2e.google.com with SMTP id e18-v6so3608360ybq.5
+	for <qemu-arm@nongnu.org>; Thu, 13 Sep 2018 10:30:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=iitgn-ac-in.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=UwUf1ydP+BLNSegymoRe1G6/LQEGtlMC9eshPhtXr68=;
+	b=hpSBWWJaevpbSt1op6+UlRpg1yB2jdvvn+myo+reMW5DHv9ZGo/Xx1dvxJzg9uwTNd
+	eMtsL8GeBk4EiD7TVegzaK/FMq6O1SQgMtiot+kpIAZxTTw3uSFpUAQWMfSNtxNKWwNX
+	FF/iOwTbJ5zSpdIcEavtUNaqqJdZgxs4SDCtu/nqsr37QWRyOfw2JF/23b62mVPZCkwm
+	CIb789p3GmgPVsRGsh6ylHzKBBTKddYsjoci9kNN4R/K54LKzov4djyy/f/VERxUX02h
+	F0HC07IvEEXtXTbGL/shukJyzs7BQSRf25eETio4Q181UkYthbiGZsOCuJSIreVERUWT
+	1zMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=UwUf1ydP+BLNSegymoRe1G6/LQEGtlMC9eshPhtXr68=;
+	b=WBOQaR0oLZBlGrxvLvcChuZfH0V3YQ1z8QGJMEDDt4MWI/G7mYk7ko+AuqRV4fl7x9
+	tancN0TMcH/9HZBAaj4AflrVSt7eBSGYAgcXCgQtsfHBdrZCipYNdRIM9DlOO/V/ITG7
+	qSY8nAJhEUbiU13bQRvUL4kQiySU1Ua5EZsb/DR4Qce5hoEUzxOALjhT8mkY+06OzHG0
+	jXo9pEnQPAlXapY3MpoVyBdGsLcN2qqHFoaiIV1Vzu6LGponxPeDcyHLHJ2Ogx/C67HZ
+	venr7Ja+w27DKhw9D2WyO2VsGOS7wzk6gJ1ULzyV418qWK4NKc9TRWejNFT0VUtUjdnZ
+	ElWQ==
+X-Gm-Message-State: APzg51Az+VCPTXx0dwYM4rB+U8myzZtDCwHHIHWwfVog9CXrecoE82Sv
+	v1x4qEkJlEYPlsP/Cgu7mLmI5duuUDLFI7qNhCgfgmNZp40=
+X-Received: by 2002:a25:840c:: with SMTP id
+	u12-v6mr4080291ybk.326.1536859846091; 
+	Thu, 13 Sep 2018 10:30:46 -0700 (PDT)
+MIME-Version: 1.0
+From: Varun Gohil <gohil.varun@iitgn.ac.in>
+Date: Thu, 13 Sep 2018 23:00:33 +0530
+Message-ID: <CAEmUw+VwJBw7m-6ne2AxN7XYyhzMYYOs6aghUpgUiY+RWu5NtA@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000032e8e10575c41175"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH] target/arm: Don't calculate zcr_len for TB flags
- in non-SVE CPUs
+X-Received-From: 2607:f8b0:4864:20::b2e
+X-Mailman-Approved-At: Thu, 13 Sep 2018 13:50:38 -0400
+Subject: [Qemu-arm] Getting guest's register values in QEMU
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,75 +101,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 03ouUb18v2Ej
+X-TUID: brbqZeejPyyL
 
-Skip calculation of the zcr_len part of TB flags if the CPU
-doesn't have SVE. This fixes a bug where for a non-SVE CPU
-we might end up with a bogus zcr_len value of -1, which then
-trashes other TB flags when it is ORed into the flags word,
-resulting in a QEMU crash later due to a bogus mmu_idx field.
+--00000000000032e8e10575c41175
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Not entirely sure why this doesn't cause us problems more often.
-I saw it with an AArch32 setup with an A57 with EL2 but not EL3.
+Hello,
 
- target/arm/helper.c | 36 +++++++++++++++++++-----------------
- 1 file changed, 19 insertions(+), 17 deletions(-)
+Is there a way to get the register values for ARM ISA when ARM is the guest
+architecture.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 088f452716e..89767f55a1e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -12597,26 +12597,28 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-         flags |= (arm_regime_tbi1(env, mmu_idx) << ARM_TBFLAG_TBI1_SHIFT);
-         flags |= sve_el << ARM_TBFLAG_SVEEXC_EL_SHIFT;
- 
--        /* If SVE is disabled, but FP is enabled,
--           then the effective len is 0.  */
--        if (sve_el != 0 && fp_el == 0) {
--            zcr_len = 0;
--        } else {
--            int current_el = arm_current_el(env);
--            ARMCPU *cpu = arm_env_get_cpu(env);
-+        if (arm_feature(env, ARM_FEATURE_SVE)) {
-+            /* If SVE is disabled, but FP is enabled,
-+               then the effective len is 0.  */
-+            if (sve_el != 0 && fp_el == 0) {
-+                zcr_len = 0;
-+            } else {
-+                int current_el = arm_current_el(env);
-+                ARMCPU *cpu = arm_env_get_cpu(env);
- 
--            zcr_len = cpu->sve_max_vq - 1;
--            if (current_el <= 1) {
--                zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
--            }
--            if (current_el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
--                zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
--            }
--            if (current_el < 3 && arm_feature(env, ARM_FEATURE_EL3)) {
--                zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
-+                zcr_len = cpu->sve_max_vq - 1;
-+                if (current_el <= 1) {
-+                    zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
-+                }
-+                if (current_el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
-+                    zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
-+                }
-+                if (current_el < 3 && arm_feature(env, ARM_FEATURE_EL3)) {
-+                    zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
-+                }
-             }
-+            flags |= zcr_len << ARM_TBFLAG_ZCR_LEN_SHIFT;
-         }
--        flags |= zcr_len << ARM_TBFLAG_ZCR_LEN_SHIFT;
-     } else {
-         *pc = env->regs[15];
-         flags = (env->thumb << ARM_TBFLAG_THUMB_SHIFT)
--- 
-2.18.0
+Thanks,
+Varun
 
+--00000000000032e8e10575c41175
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<div><br></div><div>Is there a way to get the regist=
+er values for ARM ISA=C2=A0when ARM is the guest architecture.</div><div><b=
+r></div><div>Thanks,</div><div>Varun</div></div>
+
+--00000000000032e8e10575c41175--

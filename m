@@ -1,77 +1,74 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp829639wrd;
-        Thu, 13 Sep 2018 08:45:48 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdYXDEPsHCU+N6QxOyR01TQVZAmZB/rCWAJAMgjQyi08nlpE7Il/vNKcq0bF/7aWRP/Bu/iX
-X-Received: by 2002:ac8:1846:: with SMTP id n6-v6mr5749338qtk.85.1536853548436;
-        Thu, 13 Sep 2018 08:45:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536853548; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp829901wrd;
+        Thu, 13 Sep 2018 08:45:59 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdZictanf4bQ84LbQiv0YnOP5PoL3tyfRoaDLS9k6C2znNDhPpBtheQkQCMRt1QNnB9cZ8ru
+X-Received: by 2002:a0c:8af5:: with SMTP id 50-v6mr5748296qvw.61.1536853559014;
+        Thu, 13 Sep 2018 08:45:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536853559; cv=none;
         d=google.com; s=arc-20160816;
-        b=L2tz5l3csyxA2cFneO65im9B8yKtqdlj4uDlRn4BEPHx+/39/Az1hSyT/cmYqq3ZsR
-         P/umt9SBQE+u6iRTJQPxRHu7W3VVM90uFl7IP8b944wOAhIeKXnJ9U9UkN5Yw/1WqmQ4
-         r9MNFQc+OYQ11vt1dqNiAGm/ESTIB98zUoETkLXMzuIsrLhVJlUj+RavYrvGLKx4/1Hd
-         7jxyl33PHIpYbIr/0Wk6bCi9+3ovn2KMABwbO1ProE3g2QRxXeM/n2QBik9510zFapeA
-         E6zpKVnhqPm7IZ6Ni8uU3sn12LutICUibK0MF5F2vW01QuHCqKDshZP84zBJyqGb941B
-         Ci9A==
+        b=k3Q8wi/aWPJONzBeIqzhR17/UWtXHck8lHc+jAK23lBtw+fIoe3S4Vu+6FI1aLnO4W
+         hrtSRTvlSTqWMIYEiG2GNTpNbKSx4yGUtF4cNHo2eIt6k3lF6f0zPotF3vw/QzMrHwav
+         gAq/R+tcjgdhvFAO+QMOc81vyMzkj5L9GQ52YdoaysTIbnxxAbWxnKswGiFJZex2KFKM
+         eoC7UpBrsvm7BpQyEKlvKryaOZjHDZi8K3t9zhbQMxU5oGCPK1+NNIuxLcyc9cYRFSUx
+         kA2P0E71xYo7bMfHplTMkh8Du1py4YcV2LCZdCczkUiSvgiBYOaYsRExjuKKNwzMU5Bh
+         IuCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from;
-        bh=UZ6ushPfQOWpnAPWzFmq1royUbcOuSbkayeB+QlCnM8=;
-        b=MbGUJE1ap+cnAIRDIcMIWvV8F26GBACMJntkAX/QwFhnfhlLKQ/cyFSCkccRzYYrpY
-         reWHfLM7rgYN4+7+40zBt1U3hnz9nIinANJZJFrCUgAQGx22VJo3ZNhciuqSUzVCrCA0
-         xcOhQnsWIiyNejm7vXazx60qn6cZZYE+atP2aIgklI0vY4jkjVj16F7U71crf4zodoEH
-         FWTjghL+CzdWjhTlo7CXbkvWVDrNXAxmyLDhVpCB3l92s1niUkde9qolL+nHgJn8yV7I
-         VSk1lnrcdJZVQtw38+i+Q3odPiqUIHALyCi5blhwow6YPqDSp3w/biaGtm8Hbni7Ss1R
-         JjeQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=jlhFN49rpT2OkPUUguQeBNDIQYrdprYcXPE+nMdIGsE=;
+        b=vqiGjRbJfNM26nu2NmjF6lR4l/WPYKCQZk89DItOtosXuNVYik00rtEAtOA+qQDI04
+         Dfyzu7LxyGO2FblsXhEnOELuRbRBmCbCCTIP3CBlQbtyulxGVcuC3J3GZkpxBkD39JkF
+         DzoTpY4x93RaGRe8b53QQm7+vgqmyhCS6rzwAjY5KxDDIBGdyTJOXdVMlM37ugkuseVL
+         Hvk97VQIvSO63jV3Z6UYfmbp3QI5KktksPL6cp/RClj7DYoUc6DTEjtTre+cC3rdej4d
+         4jrw3jtI9SdyZuuFeXhy0yXZ28HvmlEvGxdW1fTqECeFXe0v9t9H35RbrhVLFTffoDAJ
+         NuUg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r70-v6si493964qki.234.2018.09.13.08.45.48
+        by mx.google.com with ESMTPS id o56-v6si520238qta.399.2018.09.13.08.45.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 13 Sep 2018 08:45:48 -0700 (PDT)
+        Thu, 13 Sep 2018 08:45:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43147 helo=lists.gnu.org)
+Received: from localhost ([::1]:43149 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g0ToS-0007F4-0W
-	for alex.bennee@linaro.org; Thu, 13 Sep 2018 11:45:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42645)
+	id 1g0Toc-0007N5-Gl
+	for alex.bennee@linaro.org; Thu, 13 Sep 2018 11:45:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42662)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1g0To3-00079D-00
-	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 11:45:23 -0400
+	(envelope-from <geert@linux-m68k.org>) id 1g0To3-00079J-F9
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 11:45:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <geert@linux-m68k.org>) id 1g0To2-0002vs-1G
-	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 11:45:22 -0400
-Received: from michel.telenet-ops.be ([2a02:1800:110:4::f00:18]:50200)
+	(envelope-from <geert@linux-m68k.org>) id 1g0To2-0002vz-27
+	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 11:45:23 -0400
+Received: from laurent.telenet-ops.be ([2a02:1800:110:4::f00:19]:41004)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <geert@linux-m68k.org>)
-	id 1g0To1-0002jl-Ce
+	id 1g0To1-0002jm-Bu
 	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 11:45:21 -0400
 Received: from ramsan.of.borg ([84.194.111.163])
-	by michel.telenet-ops.be with bizsmtp
-	id b3l51y00a3XaVaC063l5FZ; Thu, 13 Sep 2018 17:45:07 +0200
+	by laurent.telenet-ops.be with bizsmtp
+	id b3l51y00N3XaVaC013l50M; Thu, 13 Sep 2018 17:45:07 +0200
 Received: from rox.of.borg ([192.168.97.57])
 	by ramsan.of.borg with esmtp (Exim 4.86_2)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1g0Tnl-00018T-9S; Thu, 13 Sep 2018 17:45:05 +0200
+	id 1g0Tnl-00018K-7h; Thu, 13 Sep 2018 17:45:05 +0200
 Received: from geert by rox.of.borg with local (Exim 4.90_1)
 	(envelope-from <geert@linux-m68k.org>)
-	id 1g0Tnl-0006F1-8F; Thu, 13 Sep 2018 17:45:05 +0200
+	id 1g0Tnl-0006Et-5P; Thu, 13 Sep 2018 17:45:05 +0200
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Alex Williamson <alex.williamson@redhat.com>
-Date: Thu, 13 Sep 2018 17:44:58 +0200
-Message-Id: <20180913154458.23939-4-geert+renesas@glider.be>
+Date: Thu, 13 Sep 2018 17:44:55 +0200
+Message-Id: <20180913154458.23939-1-geert+renesas@glider.be>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180913154458.23939-1-geert+renesas@glider.be>
-References: <20180913154458.23939-1-geert+renesas@glider.be>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2a02:1800:110:4::f00:18
-Subject: [Qemu-arm] [PATCH v4 3/3] hw/arm/virt: Allow dynamic vfio-platform
- devices again
+X-Received-From: 2a02:1800:110:4::f00:19
+Subject: [Qemu-arm] [PATCH v4 0/3] vfio/sysbus-fdt: Prepare for Generic DT
+ Pass-Through
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,41 +89,96 @@ Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
 	Auger Eric <eric.auger@redhat.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YPOtg72FeNQd
+X-TUID: P2AGqqrGLn2J
 
-Allow the instantation of generic dynamic vfio-platform devices again,
-without the need to create a new device-specific vfio type.
+	Hi all,
 
-This is more or less a partial revert of commit 6f2062b9758ebc64
-("hw/arm/virt: Allow only supported dynamic sysbus devices").
+This patch series prepares for exporting generic devices in DT using
+vfio-platform, providing direct access from a QEMU+KVM guest to the
+exported devices.
 
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
-v4:
+  - Patches 1-2 (submitted before by Eric Auger) make the vfio-platform
+    device non-abstract, incl. matching using a compatible string.
+  - Patch 3 allows dynamic vfio-platform devices again, without needing to
+    create device-specific vfio types for each and every new device.
+
+This will avoid having to write device-specific instantation methods for
+each and every "simple" device using only a set of generic properties.
+Devices that need more specialized handling will still be able provide
+their own instantation methods.
+
+Note that this series no longer contains "[PATCH 4/4] hw/arm/sysbus-fdt:
+Add support for instantiating generic devices", following advice from Eric
+Auger, as that patch needs more safeguards.  Hence this series now contains
+only preparative work.
+
+Changes compared to v4 ("hw/arm/sysbus-fdt: Generic DT Pass-Through"),
+http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg05006.html):
+  - Propagate g_file_get_contents() errors through errp,
+  - Add Tested-by (with amd-xgbe),
+  - s/From now on/Soon/ in patch description,
   - s/sysbus/vfio-platform/ in patch description,
+  - Postpone "[PATCH 4/4] hw/arm/sysbus-fdt: Add support for instantiating
+    generic devices".
 
-v3:
+Changes compared to v2 (not submitted to the mailing list):
+  - Use the compatible values from sysfs instead of user-supplied
+    manufacturer and model options,
+  - Replace "hw/arm/sysbus-fdt: Enable rcar-gen3-gpio dynamic
+    instatiation" by generic "hw/arm/sysbus-fdt: Add support for
+    instantiating generic devices",
+  - Reword patch descriptions,
   - Drop RFC state,
+  - Drop "vfio: No-IOMMU mode support".
 
-v2:
-  - Restrict from TYPE_SYS_BUS_DEVICE to TYPE_VFIO_PLATFORM, as
-    suggested by Eric Auger.
----
- hw/arm/virt.c | 1 +
- 1 file changed, 1 insertion(+)
+Changes compared to v1 ("R-Car Gen3 GPIO Pass-Through Prototype (QEMU)",
+https://lists.gnu.org/archive/html/qemu-devel/2018-02/msg02716.html):
+  - Restrict dynamic sysbus devices to TYPE_VFIO_PLATFORM, as suggested
+    by Eric Auger.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0b57f87abcbfd54b..e33f7776c72fa9d0 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1758,6 +1758,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-     mc->block_default_type = IF_VIRTIO;
-     mc->no_cdrom = 1;
-     mc->pci_allow_0_address = true;
+Thanks!
+
+For testing, this patch series, and the postponed "hw/arm/sysbus-fdt: Add
+support for instantiating generic devices" are available in the
+topic/rcar3-virt-gpio-passthrough-v4 branch of my git repository at
+https://github.com/geertu/qemu.git.
+
+This has been tested on a Renesas Salvator-XS board with R-Car H3 ES2.0
+with SATA:
+
+    -device vfio-platform,host=ee300000.sata
+
+and GPIO (needs VFIO No-IOMMU support):
+
+    -device vfio-platform,host=e6055400.gpio
+
+Thanks for applying!
+
+Auger Eric (2):
+  vfio/platform: Make the vfio-platform device non-abstract
+  hw/arm/sysbus-fdt: Allow device matching with DT compatible value
+
+Geert Uytterhoeven (1):
+  hw/arm/virt: Allow dynamic vfio-platform devices again
+
+ hw/arm/sysbus-fdt.c             | 61 +++++++++++++++++++++++++--------
+ hw/arm/virt.c                   |  1 +
+ hw/vfio/amd-xgbe.c              |  1 +
+ hw/vfio/calxeda-xgmac.c         |  1 +
+ hw/vfio/platform.c              | 24 ++++++++++++-
+ include/hw/vfio/vfio-platform.h |  3 +-
+ 6 files changed, 75 insertions(+), 16 deletions(-)
+
 -- 
 2.17.1
 
+Gr{oetje,eeting}s,
+
+						Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+							    -- Linus Torvalds

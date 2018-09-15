@@ -1,109 +1,75 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp751587wrd;
-        Wed, 29 Aug 2018 08:31:41 -0700 (PDT)
-X-Google-Smtp-Source: ANB0Vdb5IgwW0ldGaJLKF7dErQ6HzMP1siOQUL2ireKvQaeqK3mR41X0v5RWJoyY/qCMb37e69zM
-X-Received: by 2002:aed:33a2:: with SMTP id v31-v6mr3481291qtd.33.1535556701718;
-        Wed, 29 Aug 2018 08:31:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535556701; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1682717wrd;
+        Sat, 15 Sep 2018 02:28:32 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbCHGFmjS/PWbiVc2N+SN7zoz/7UxaTETmIgCbXArK67WSb71p16g2WYPh+asDcUa+t14hQ
+X-Received: by 2002:ac8:4304:: with SMTP id z4-v6mr11049494qtm.295.1537003712055;
+        Sat, 15 Sep 2018 02:28:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537003712; cv=none;
         d=google.com; s=arc-20160816;
-        b=g8+dlBom1sw2cowvcXgaViXJMC6N/JIwf5/08g8DDF7Zpw28Jgglew54nj0uY++rQ5
-         kOjBxsbGpVD8TimKCiwG6fmjuaFhniNkhWU+lFtOkG2b2ml2gVbLpBJlrdhVWBeJD+on
-         Y/kIZof0gM8DwzB051+CnIRpuPSBMkBwBLth94UMxZlnzBViox0RPUZ5RZLFaG5judfS
-         YAzhqrDw9I+Q/FSZUvKiYiaTk0p4+wo5cIPQ0uabwXQRZJedglBo+Y8i/rkI6TksLSwH
-         uipezlb35DyOr3eiJau13VCOXQV8y5vBR4ai8lHw4o7GKqnl3DCAosh9bCpva2Wv6ll5
-         3uwA==
+        b=lhGNJsoJPHlRvrPA8+ef3Ci+F201A3hMNwMDCLrnzl9hfenxSyXbNH4Bh3bNLnSOPD
+         eljL9IB4qNNUReSV1ux0pa8SwZbp+usGx1TCFujzid86U17j85pOOSEZBQce5ZAJloLs
+         SxsVKCXOCw2sZ7ya/8VvQbmyRTBsNfJgUbE1Z7psIPQnNptjoQt1Jh3otpeH+AIGdpkP
+         AijkT35CUeAB7AzSFY73ZJOkfWb9w+xCiWY3w7OF5a6G92bIuX3+npEnjYQ0OxPiWn6X
+         OVqQ82z7iixuw+/ZIUsF0xpkHSQobeUsMJNinilelvynpxAk4pRg3M6sbICpCTEaKJ1a
+         dQnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=r+pZ21sVPp8xH0S4UImUdsreToM91+qoFQcj9oclnH8=;
-        b=sbYN1k5gHoBx+Fcd+9sCfXR88nBpILY72WBgzaWTJs59uX9qgNRYN+nYJOsYEhCWye
-         uHRllyhbHz+ue3AEICukun0qb3iZTOb4zQmfJuCHMPtMi/MzUMqS7NhOqp40BNBMHfCR
-         skG5dGg4GOYtxwaVFC/Ai75y51ID3hYetLSY2Rg95gGkirDiqBa6GDnZ3i46dqyl1q/U
-         bnIX/uPGqg+yFqh6yKEswzrTOiVAbUYwAA6Ov8tYS36XJ5CcxtPPS/fPt/aKsD+c67W7
-         FXKF18G6U60OhGQ+FH7hrSN/R5Ce8Tc/GmtHhYCAmuXhZpoFgoy6jWZr9MnrvCvM5Pp2
-         xWIQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:references
+         :in-reply-to:message-id:date:to:from;
+        bh=jKWOBIamxI1TrndHlw7Ja7PuFpLt1NV6oBfUm7RxA6k=;
+        b=K+uqyFP8K93lgMz4jrExpQssk4ud42vWinKquIr8KwZhtY4oHBJrOJ34E9parzRT1P
+         1ViRLKLDIWSSal9gHDr92Xm7qYqSU3FvbjqDvrjsBvmaOZzOA5rvHbhpLmK++gHlpye7
+         fDbv+RdmSnWxtQmZZQtLpMaGUxrs1E4ekGF5A+8MNcNjwuBgMcv7FH7ScSvbtU8Nevmd
+         ez/CVUWe96i6Iq9vP0QejZujhz2xiiwpbaYqTVYNfs3RoqfohiO/RK0Ltd4e8Or2y8je
+         QCSMLI6EXzsg0JMofBTzbvV6I5E2ZFNt8g1takI6xyqA6uM78lHQat+JSDQsvBfU8uA8
+         EKTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZU1hFA1y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i20-v6si4014857qvg.81.2018.08.29.08.31.41
+        by mx.google.com with ESMTPS id j2-v6si1901299qke.8.2018.09.15.02.28.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 29 Aug 2018 08:31:41 -0700 (PDT)
+        Sat, 15 Sep 2018 02:28:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZU1hFA1y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43599 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54844 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fv2RZ-0002ns-9v
-	for alex.bennee@linaro.org; Wed, 29 Aug 2018 11:31:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59922)
+	id 1g16sR-0007Hq-CF
+	for alex.bennee@linaro.org; Sat, 15 Sep 2018 05:28:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aclindsa@gmail.com>) id 1fv2RN-0002nR-Lo
-	for qemu-arm@nongnu.org; Wed, 29 Aug 2018 11:31:35 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1g16sF-0007HV-3G
+	for qemu-arm@nongnu.org; Sat, 15 Sep 2018 05:28:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aclindsa@gmail.com>) id 1fv2RM-0005vF-EI
-	for qemu-arm@nongnu.org; Wed, 29 Aug 2018 11:31:29 -0400
-Received: from mail-qt0-x22d.google.com ([2607:f8b0:400d:c0d::22d]:38078)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <aclindsa@gmail.com>)
-	id 1fv2RM-0005sz-7g; Wed, 29 Aug 2018 11:31:28 -0400
-Received: by mail-qt0-x22d.google.com with SMTP id x7-v6so6209015qtk.5;
-	Wed, 29 Aug 2018 08:31:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=r+pZ21sVPp8xH0S4UImUdsreToM91+qoFQcj9oclnH8=;
-	b=ZU1hFA1y8uRL4ZuIyEpOjeqcIvTwMWPuKtqLwaSSOZBQuAfVC2UaaE2RsgZH7Dm8nL
-	T1jyT7Bi8L53dQMfCHzx8E3yuCyuxFnB84Y3B7x+hPQxcSp4t3Whq0NH3XhGhl4BzIM+
-	yYYOKLYxbViG3AKvTEnkohA0uyoU8FzkSoxVJWp1uscy0ku2NzaxoAehH8od1Gih5zTi
-	aatZFNdIVkDAMnh0VDncTe2ujDeW5Utjinxrg4qALOlAdPgrKcuqVjtMEQCS1yEx1DkB
-	30QdoN1g0SDm4O7qLD90z1SabqGHr4b2RriW9IYEvvZmooYXAgUjbqRaL19x9RIeiA3q
-	mkrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=r+pZ21sVPp8xH0S4UImUdsreToM91+qoFQcj9oclnH8=;
-	b=YHT0Ije0V3+KBgF14OrNMVE9eNwdqJfOAY/oCNlip/OG43r8wXKh2uy4LlrRfsDYdJ
-	Fo9D7uluNqK+3vKLM2Zgk/McitBxcWsI4TCIHzuVqJsxXp1BegHGpGwKwAYAru19wL27
-	BfVO+B7n+lxM/uvwdB8eOGAp7a+5iBTOHNX3AoIQ5PQZNlnttx1FhG8ZJ+oIvqbwD7Ds
-	H7e/L14Vo57xSSHiqQRoJXTfO5WEkmI9OmtPpA3i9isGjyy08WN0jQLujYWI8j7/dyPz
-	vQD+a3GF443iVpgn1uHKqzZy2uoc/XY/gj+oZQaJSuUJL9r5gNEuWGfIEgUvJ7M41DQe
-	7BlA==
-X-Gm-Message-State: APzg51DzNN6D2e/KIHI3Y4mmBeyMIf8ss3JvJJw6Xo3rdskHQ6YsHMRB
-	wAl0lgfgOtX5Pbvnjpmfou0=
-X-Received: by 2002:aed:3baf:: with SMTP id
-	r44-v6mr7172696qte.77.1535556687724; 
-	Wed, 29 Aug 2018 08:31:27 -0700 (PDT)
-Received: from okra.localdomain ([2600:3c03::f03c:91ff:febb:cdda])
-	by smtp.gmail.com with ESMTPSA id
-	q26-v6sm2903646qta.18.2018.08.29.08.31.27
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 29 Aug 2018 08:31:27 -0700 (PDT)
-Date: Wed, 29 Aug 2018 11:31:26 -0400
-From: Aaron Lindsay <aclindsa@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20180829153126.GE3671@okra.localdomain>
-References: <1529699547-17044-1-git-send-email-alindsay@codeaurora.org>
-	<1529699547-17044-9-git-send-email-alindsay@codeaurora.org>
-	<CAFEAcA_O5f7Ao4cfCD8XMD5y0bb4g8P4mMz-k573FoXJwZz0qg@mail.gmail.com>
+	(envelope-from <gengdongjiu@huawei.com>) id 1g16s1-0004Hs-Jh
+	for qemu-arm@nongnu.org; Sat, 15 Sep 2018 05:28:10 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2648 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1g16s1-00047G-1X; Sat, 15 Sep 2018 05:28:05 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id B9900C9FCF476;
+	Sat, 15 Sep 2018 17:27:53 +0800 (CST)
+Received: from localhost.localdomain (10.143.28.90) by
+	DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server
+	id 14.3.399.0; Sat, 15 Sep 2018 17:27:47 +0800
+From: Dongjiu Geng <gengdongjiu@huawei.com>
+To: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Date: Sat, 15 Sep 2018 13:32:07 -0400
+Message-ID: <1537032727-29397-3-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1537032727-29397-1-git-send-email-gengdongjiu@huawei.com>
+References: <1537032727-29397-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_O5f7Ao4cfCD8XMD5y0bb4g8P4mMz-k573FoXJwZz0qg@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22d
-Subject: Re: [Qemu-arm] [PATCH v5 08/13] target/arm: Finish implementation
- of PM[X]EVCNTR and PM[X]EVTYPER
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.90]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 45.249.212.190
+Subject: [Qemu-arm] [PATCH v9 2/2] target: arm: Add support for VCPU event
+ states
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,184 +81,219 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
-	Digant Desai <digantd@codeaurora.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Aaron Lindsay <alindsay@amperecomputing.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: gengdongjiu@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r4x+ybTliRjm
+X-TUID: nNfFfhG0ZX5z
 
-On Jul 17 17:17, Peter Maydell wrote:
-> On 22 June 2018 at 21:32, Aaron Lindsay <alindsay@codeaurora.org> wrote:
-> > Add arrays to hold the registers, the definitions themselves, access
-> > functions, and logic to reset counters when PMCR.P is set. Update
-> > filtering code to support counters other than PMCCNTR.
-> >
-> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> > ---
-> >  target/arm/cpu.h    |   3 +
-> >  target/arm/helper.c | 224 +++++++++++++++++++++++++++++++++++++++++++++++-----
-> >  2 files changed, 209 insertions(+), 18 deletions(-)
-> >
-> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > index 430b8d5..c240b38 100644
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -481,6 +481,9 @@ typedef struct CPUARMState {
-> >           * pmccntr_op_finish.
-> >           */
-> >          uint64_t c15_ccnt_delta;
-> > +        uint64_t c14_pmevcntr[31];
-> > +        uint64_t c14_pmevcntr_delta[31];
-> > +        uint64_t c14_pmevtyper[31];
-> >          uint64_t pmccfiltr_el0; /* Performance Monitor Filter Register */
-> >          uint64_t vpidr_el2; /* Virtualization Processor ID Register */
-> >          uint64_t vmpidr_el2; /* Virtualization Multiprocessor ID Register */
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index 9f81747..f1fd21c 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -938,6 +938,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] = {
-> >  #define PMCRDP  0x10
-> >  #define PMCRD   0x8
-> >  #define PMCRC   0x4
-> > +#define PMCRP   0x2
-> >  #define PMCRE   0x1
-> >
-> >  #define PMXEVTYPER_P          0x80000000
-> > @@ -1120,9 +1121,11 @@ static inline bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-> >          prohibited = env->cp15.c9_pmcr & PMCRDP;
-> >      }
-> >
-> > -    /* TODO Remove assert, set filter to correct PMEVTYPER */
-> > -    assert(counter == 31);
-> > -    filter = env->cp15.pmccfiltr_el0;
-> > +    if (counter == 31) {
-> > +        filter = env->cp15.pmccfiltr_el0;
-> > +    } else {
-> > +        filter = env->cp15.c14_pmevtyper[counter];
-> > +    }
-> >
-> >      p   = filter & PMXEVTYPER_P;
-> >      u   = filter & PMXEVTYPER_U;
-> > @@ -1142,6 +1145,21 @@ static inline bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
-> >          filtered = m != p;
-> >      }
-> >
-> > +    if (counter != 31) {
-> > +        /* If not checking PMCCNTR, ensure the counter is setup to an event we
-> > +         * support */
-> 
-> Please use the right format for multiline comments (here and below).
+This patch extends the qemu-kvm state sync logic with support for
+KVM_GET/SET_VCPU_EVENTS, giving access to yet missing SError exception.
+And also it can support the exception state migration.
 
-Fixed.
+The SError exception states include SError pending state and ESR value,
+the kvm_put/get_vcpu_events() will be called when set or get system
+registers. When do migration, if source machine has SError pending,
+QEMU will do this migration regardless whether the target machine supports
+to specify guest ESR value, because if target machine does not support that,
+it can also inject the SError with zero ESR value.
 
-> 
-> >  static void pmuserenr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> >                              uint64_t value)
-> >  {
-> > @@ -1552,16 +1698,23 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-> >        .fieldoffset = offsetof(CPUARMState, cp15.pmccfiltr_el0),
-> >        .resetvalue = 0, },
-> >      { .name = "PMXEVTYPER", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 1,
-> > -      .access = PL0_RW, .type = ARM_CP_NO_RAW, .accessfn = pmreg_access,
-> > +      .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +      .accessfn = pmreg_access,
-> >        .writefn = pmxevtyper_write, .readfn = pmxevtyper_read },
-> >      { .name = "PMXEVTYPER_EL0", .state = ARM_CP_STATE_AA64,
-> >        .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 1,
-> > -      .access = PL0_RW, .type = ARM_CP_NO_RAW, .accessfn = pmreg_access,
-> > +      .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +      .accessfn = pmreg_access,
-> >        .writefn = pmxevtyper_write, .readfn = pmxevtyper_read },
-> > -    /* Unimplemented, RAZ/WI. */
-> >      { .name = "PMXEVCNTR", .cp = 15, .crn = 9, .crm = 13, .opc1 = 0, .opc2 = 2,
-> > -      .access = PL0_RW, .type = ARM_CP_CONST, .resetvalue = 0,
-> > -      .accessfn = pmreg_access_xevcntr },
-> > +      .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +      .accessfn = pmreg_access_xevcntr,
-> > +      .writefn = pmxevcntr_write, .readfn = pmxevcntr_read },
-> > +    { .name = "PMXEVCNTR_EL0", .state = ARM_CP_STATE_AA64,
-> > +      .opc0 = 3, .opc1 = 3, .crn = 9, .crm = 13, .opc2 = 2,
-> > +      .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +      .accessfn = pmreg_access_xevcntr,
-> > +      .writefn = pmxevcntr_write, .readfn = pmxevcntr_read },
-> >      { .name = "PMUSERENR", .cp = 15, .crn = 9, .crm = 14, .opc1 = 0, .opc2 = 0,
-> >        .access = PL0_R | PL1_RW, .accessfn = access_tpm,
-> >        .fieldoffset = offsetoflow32(CPUARMState, cp15.c9_pmuserenr),
-> > @@ -4250,7 +4403,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-> >  #endif
-> >      /* The only field of MDCR_EL2 that has a defined architectural reset value
-> >       * is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N; but we
-> > -     * don't impelment any PMU event counters, so using zero as a reset
-> > +     * don't implement any PMU event counters, so using zero as a reset
-> >       * value for MDCR_EL2 is okay
-> >       */
-> >      { .name = "MDCR_EL2", .state = ARM_CP_STATE_BOTH,
-> > @@ -5062,6 +5215,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-> >          define_arm_cp_regs(cpu, pmovsset_cp_reginfo);
-> >      }
-> >      if (arm_feature(env, ARM_FEATURE_V7)) {
-> > +        unsigned int i;
-> >          /* v7 performance monitor control register: same implementor
-> >           * field as main ID register, and we implement only the cycle
-> >           * count register.
-> > @@ -5086,6 +5240,40 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-> >          };
-> >          define_one_arm_cp_reg(cpu, &pmcr);
-> >          define_one_arm_cp_reg(cpu, &pmcr64);
-> > +        for (i = 0; i < 31; i++) {
-> > +            char *pmevcntr_name = g_strdup_printf("PMEVCNTR%d", i);
-> > +            char *pmevcntr_el0_name = g_strdup_printf("PMEVCNTR%d_EL0", i);
-> > +            char *pmevtyper_name = g_strdup_printf("PMEVTYPER%d", i);
-> > +            char *pmevtyper_el0_name = g_strdup_printf("PMEVTYPER%d_EL0", i);
-> > +            ARMCPRegInfo pmev_regs[] = {
-> > +                { .name = pmevcntr_name, .cp = 15, .crn = 15,
-> > +                  .crm = 8 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
-> > +                  .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn,
-> > +                  .accessfn = pmreg_access },
-> > +                { .name = pmevcntr_el0_name, .state = ARM_CP_STATE_AA64,
-> > +                  .opc0 = 3, .opc1 = 3, .crn = 15, .crm = 8 | (3 & (i >> 3)),
-> > +                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
-> > +                  .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +                  .readfn = pmevcntr_readfn, .writefn = pmevcntr_writefn },
-> > +                { .name = pmevtyper_name, .cp = 15, .crn = 15,
-> > +                  .crm = 12 | (3 & (i >> 3)), .opc1 = 0, .opc2 = i & 7,
-> > +                  .access = PL0_RW, .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn,
-> > +                  .accessfn = pmreg_access },
-> > +                { .name = pmevtyper_el0_name, .state = ARM_CP_STATE_AA64,
-> > +                  .opc0 = 3, .opc1 = 3, .crn = 15, .crm = 12 | (3 & (i >> 3)),
-> > +                  .opc2 = i & 7, .access = PL0_RW, .accessfn = pmreg_access,
-> > +                  .type = ARM_CP_NO_RAW | ARM_CP_IO,
-> > +                  .readfn = pmevtyper_readfn, .writefn = pmevtyper_writefn },
-> > +                REGINFO_SENTINEL
-> > +            };
-> > +            define_arm_cp_regs(cpu, pmev_regs);
-> > +            g_free(pmevcntr_name);
-> > +            g_free(pmevcntr_el0_name);
-> > +            g_free(pmevtyper_name);
-> > +            g_free(pmevtyper_el0_name);
-> > +        }
-> >  #endif
-> 
-> Because all these registers are marked as NO_RAW we're going to fail
-> to migrate their state, I think.
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+---
+Change since v8:
+1. Update the commit message
 
-A bad copy-paste job from the PMXEVCNTR variants, I'll warrant. Fixed
-now.
+Change since v7:
+1. Change "pending" and "has_esr" from uint32_t to uint8_t for CPUARMState
+2. Add error_report() in kvm_get_vcpu_events()
 
-> This patchset in general needs to address how the extra CPU state
-> involved with the PMU is going to be migrated.
+Change since v6:
+1. Add cover letter
+2. Change name "cpu/ras" to "cpu/serror"
+3. Add some comments and check the ioctl return value for kvm_put_vcpu_events()
 
-I've now commented elsewhere about general ideas for migration, but I'm
-wondering if there is a good way to set up unit tests for this code
-because I don't trust myself to get migration right (in particular
-because it's not my use case, so I won't be "naturally" testing it on my
-own).
+Change since v5:
+address Peter's comments:
+1. Move the "struct serror" before the "end_reset_fields" in CPUARMState
+2. Remove ARM_FEATURE_RAS_EXT and add a variable have_inject_serror_esr
+3. Use the variable have_inject_serror_esr to track whether the kernel has state we need to migrate
+4. Remove printf() in kvm_arch_put_registers()
+5. ras_needed/vmstate_ras to serror_needed/vmstate_serror
+6. Check to use "return env.serror.pending != 0" instead of "arm_feature(env, ARM_FEATURE_RAS_EXT)" in the ras_needed()
 
--Aaron
+Change since v4:
+1. Rebase the code to latest
+---
+ target/arm/cpu.h     |  7 ++++++
+ target/arm/kvm64.c   | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/machine.c | 22 +++++++++++++++++
+ 3 files changed, 98 insertions(+)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 62c36b4..034b035 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -530,6 +530,13 @@ typedef struct CPUARMState {
+          */
+     } exception;
+ 
++    /* Information associated with an SError */
++    struct {
++        uint8_t pending;
++        uint8_t has_esr;
++        uint64_t esr;
++    } serror;
++
+     /* Thumb-2 EE state.  */
+     uint32_t teecr;
+     uint32_t teehbr;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index e0b8246..e8705e2 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -29,6 +29,7 @@
+ #include "hw/arm/arm.h"
+ 
+ static bool have_guest_debug;
++static bool have_inject_serror_esr;
+ 
+ /*
+  * Although the ARM implementation of hardware assisted debugging
+@@ -546,6 +547,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     kvm_arm_init_debug(cs);
+ 
++    /* Check whether userspace can specify guest syndrome value */
++    have_inject_serror_esr = kvm_check_extension(cs->kvm_state,
++                                                 KVM_CAP_ARM_INJECT_SERROR_ESR);
++
+     return kvm_arm_init_cpreg_list(cpu);
+ }
+ 
+@@ -600,6 +605,60 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+ #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
+                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+ 
++static int kvm_put_vcpu_events(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    struct kvm_vcpu_events events = {};
++    int ret;
++
++    if (!kvm_has_vcpu_events()) {
++        return 0;
++    }
++
++    memset(&events, 0, sizeof(events));
++    events.exception.serror_pending = env->serror.pending;
++
++    /* Inject SError to guest with specified syndrome if host kernel
++     * supports it, otherwise inject SError without syndrome.
++     */
++    if (have_inject_serror_esr) {
++        events.exception.serror_has_esr = env->serror.has_esr;
++        events.exception.serror_esr = env->serror.esr;
++    }
++
++    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
++    if (ret) {
++        error_report("failed to put vcpu events");
++    }
++
++    return ret;
++}
++
++static int kvm_get_vcpu_events(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    struct kvm_vcpu_events events;
++    int ret;
++
++    if (!kvm_has_vcpu_events()) {
++        return 0;
++    }
++
++    memset(&events, 0, sizeof(events));
++    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_VCPU_EVENTS, &events);
++
++    if (ret) {
++        error_report("failed to get vcpu events");
++        return ret;
++    }
++
++    env->serror.pending = events.exception.serror_pending;
++    env->serror.has_esr = events.exception.serror_has_esr;
++    env->serror.esr = events.exception.serror_esr;
++
++    return 0;
++}
++
+ int kvm_arch_put_registers(CPUState *cs, int level)
+ {
+     struct kvm_one_reg reg;
+@@ -727,6 +786,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
++    ret = kvm_put_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     if (!write_list_to_kvmstate(cpu, level)) {
+         return EINVAL;
+     }
+@@ -863,6 +927,11 @@ int kvm_arch_get_registers(CPUState *cs)
+     }
+     vfp_set_fpcr(env, fpr);
+ 
++    ret = kvm_get_vcpu_events(cpu);
++    if (ret) {
++        return ret;
++    }
++
+     if (!write_kvmstate_to_list(cpu)) {
+         return EINVAL;
+     }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index ff4ec22..32bcde0 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -172,6 +172,27 @@ static const VMStateDescription vmstate_sve = {
+ };
+ #endif /* AARCH64 */
+ 
++static bool serror_needed(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++
++    return env->serror.pending != 0;
++}
++
++static const VMStateDescription vmstate_serror = {
++    .name = "cpu/serror",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = serror_needed,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8(env.serror.pending, ARMCPU),
++        VMSTATE_UINT8(env.serror.has_esr, ARMCPU),
++        VMSTATE_UINT64(env.serror.esr, ARMCPU),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static bool m_needed(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+@@ -726,6 +747,7 @@ const VMStateDescription vmstate_arm_cpu = {
+ #ifdef TARGET_AARCH64
+         &vmstate_sve,
+ #endif
++        &vmstate_serror,
+         NULL
+     }
+ };
+-- 
+1.8.3.1
+

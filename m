@@ -1,112 +1,111 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3654861wrd;
-        Mon, 17 Sep 2018 01:41:42 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdYlVHAgNgLeLMBBtRspgKi/iJ8M0hdi5X8XXuILNUN4pBa0qJ6+PbCksC98QG46PAvwznjC
-X-Received: by 2002:a0c:9e2a:: with SMTP id p42-v6mr16947794qve.54.1537173702477;
-        Mon, 17 Sep 2018 01:41:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537173702; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3655119wrd;
+        Mon, 17 Sep 2018 01:42:01 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdYVJYnRfmfJ2A7oyGX5tci2t43esmP1HbCyxakitq1DFiQ72ziIJRLdhJsbkg9eOYdrSSTN
+X-Received: by 2002:a0c:df90:: with SMTP id w16-v6mr16850181qvl.31.1537173721490;
+        Mon, 17 Sep 2018 01:42:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537173721; cv=none;
         d=google.com; s=arc-20160816;
-        b=t58UjeeOaarfd+1ZjsStBijPYqcE9nfzjD/WOPPezlEv+KXyob2PUow5gnVmjhIqcA
-         G2QsTDSd4dY8kcb2NNQ290M+gvU1nURPA+FQvdZzvK37ATKxULYyDGZxBHVDklFWeYUr
-         zZx1CzUHmdL2i6aL49zqxGLm1CZkJTOtXQlWMcyXpnlf5Z2gU+Vke/mROE1QQlJn+FbF
-         OCTfrYPp4TaliXtfjODui5RlbWm5usknzprncNIt5BItvmLD19fOjPhzvyJrqoP7ZqY3
-         JTu8eeUL1ztO037TS3jVLjTpHsNCvsR3DULMiBS1K62v2mkSO86scR/ZgXKKeAZLrqIi
-         vFaQ==
+        b=qS7N1+Xwq+Cvzz808RIvttXpEQRM4vxg1HM35Zxj6E3lI7Seh5+Xz9wR3RvD4Q49yX
+         MKMrL5ZpOeDNJ9Eif9DGg8B/oeAnQEzbdcVYcbdL1Hf7kOaDpa98wTYqDmluhW+Vpp1q
+         Wq2KGidjV+nCbA6tKygb7qXrMjrHz6y7S51FYX7XTToEn49Bk6N/dElyvS06ia4C4T6K
+         KqO4JViF9MJaa0Cdx2E4amwQRoUpCrSQGnMkX51vXuXm8DoEwb0SDrZcIEV+ELE5K3zo
+         6DgzzPz1/0Ndy/RdJmbCAXnoCpHoutgCg2z5LMcioOcZKllv/DlfFX/SStCoLUVMcqSM
+         3U9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=SByYJ0RBhNkM8FFDhrX4PdQ1mzVpHY82FtFKm8ADThQ=;
-        b=QCCXmjrZC83ZQ5yzky+c3Gcyqa+MtRzZ2KTUjHFWd53/j99Y/HDMaa2/k2htzezkmX
-         DpYU4DrrznWHQn4lqUWN4CNZAqferltOdV3Toj7PZ715IgV+5DJH+aSY+Pq5kD+zClwh
-         WZvWF1jM1Q3TJrTWD0jba+ycS5CIjE4eUuC8swCwA5dd+E4gcx1eQWg1AKtbfA8m64k+
-         0yuCuQodIvbsA3J4qzwTU6nLz7xf6d9GcqZGd2cFlq0F5xtdtDtKpmg3fuvGAe+aCM6Y
-         PBRUBtObj9bjRBBB0ByewRfJ0cylx3eovUu0kbzfveOXnktMbaALTN2xoQE8M8IxRN48
-         FF8w==
+        bh=eLAp4lORPdeAb18vvwHgmBI6Lz0l34xoQhwvLnqJexs=;
+        b=aPyvV0gF/yKM3ydRDT88R/QuuHZsVTRt30Ua34URoQTQco/Lw2GenzGZWY4c6tDScy
+         d8kLfF4ElCGamOZRfb7UqQeEL6PGkY1Fxbepe3F6mU82g56RIr7ceUug7CBKgZG4etDe
+         Zs70c5ZlZ7VuGgqRKU2k6Qo7rS9BZ7C4UXGU0g+OvQOgQXUb6i+4gfQiG+DVGiv6lsqw
+         xXahsJ153VMG4WjZG5RXwD6Zxp4NA9+vYICo5T2fVQYQpjYWxrXpQXtQDyIXj6/JuQPn
+         hIqF/icldX1Yx6o87dvs/yvrcxA6Lf7iqRhcDosudAawUnFxkKs72Upu/sHaSVYQ55Sf
+         3mCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="Uud/IXgI";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=mUg+1kvY;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=mUg+1kvY;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=qo7578kC;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=KkK3J3W0;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=TrTBEiyv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r33-v6si4065867qtc.108.2018.09.17.01.41.42
+        by mx.google.com with ESMTPS id g28-v6si4069325qta.395.2018.09.17.01.42.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Sep 2018 01:41:42 -0700 (PDT)
+        Mon, 17 Sep 2018 01:42:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="Uud/IXgI";
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=mUg+1kvY;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=mUg+1kvY;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=qo7578kC;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=KkK3J3W0;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=TrTBEiyv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34416 helo=lists.gnu.org)
+Received: from localhost ([::1]:34419 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g1p6D-0006Af-Uy
-	for alex.bennee@linaro.org; Mon, 17 Sep 2018 04:41:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46389)
+	id 1g1p6W-0006Q1-V9
+	for alex.bennee@linaro.org; Mon, 17 Sep 2018 04:42:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5u-00069J-SU
-	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:24 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5u-00069R-Vt
+	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5q-0005WP-LV
+	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5q-0005Wl-Px
 	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:22 -0400
-Received: from greensocs.com ([193.104.36.180]:51751)
+Received: from greensocs.com ([193.104.36.180]:51752)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <damien.hedde@greensocs.com>)
-	id 1g1p5q-0005VU-5n; Mon, 17 Sep 2018 04:41:18 -0400
+	id 1g1p5q-0005VV-BR; Mon, 17 Sep 2018 04:41:18 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 8D66C443483;
+	by greensocs.com (Postfix) with ESMTP id 50EFF521ABB;
 	Mon, 17 Sep 2018 10:41:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1537173673;
-	bh=7kikJd0QMdJjrMyU5WU3TTF88G9I8FGb90lyoljdLqM=;
+	bh=FU/ZIeWlr5yhKG/DHMFM7aS5cyJSf4R8YXtaT8ndAMo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Uud/IXgIkljL9IVkxdfeciMiISfPRT+jInFgewiwmpZrFamkyKSXwDHgHGd1Nl234
-	B7e/vgTz+8Rfk9ZS8sB/RUUfLH9vQQMUt+w/z3RDv5lZSpGdBFUrEmRtMGycHMx8Ca
-	QL5mJ0CptgvZhMrfjnE5q47wUQN9obxpP1SxMoPU=
+	b=qo7578kC7WP2HPyvmA5SxFcBoz8bpp5lbUDGQrCxkcAdLrPXZyFwXIuNI4N0qYXRv
+	rVD7CNGXL6HJrLZbLI0yp/HaAcnYOBLDb7147zSN6rJc0BEq2Zf//R9gXE5QGXvpP2
+	WThnz7O9ngMwMxCpZFzdCX7S2/qc3e1r5Y7JoI5Q=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=mUg+1kvY;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=mUg+1kvY
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=KkK3J3W0;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=TrTBEiyv
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OgNuRVhh_OMi; Mon, 17 Sep 2018 10:41:12 +0200 (CEST)
+	with ESMTP id 48JTWTnXTfxx; Mon, 17 Sep 2018 10:41:12 +0200 (CEST)
 Received: by greensocs.com (Postfix, from userid 998)
-	id AA75E400FD7; Mon, 17 Sep 2018 10:41:12 +0200 (CEST)
+	id 3B784443483; Mon, 17 Sep 2018 10:41:12 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1537173672;
-	bh=7kikJd0QMdJjrMyU5WU3TTF88G9I8FGb90lyoljdLqM=;
+	bh=FU/ZIeWlr5yhKG/DHMFM7aS5cyJSf4R8YXtaT8ndAMo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=mUg+1kvYYtcBnyAjGV4lUmuEN5ULK53WUB//fPLhkAqPG7wapZWbB4zhg30hC2QYN
-	GbYUx+ntyYiPHvw0WmSzM0SLCuhhOKFbjp9dc2M+7uMQPBIH3D4v8a36vmyFRrC1cE
-	GkIAOpxdc6XANCvaCO9s4/AZ/Okx9MpN08RlAu/I=
+	b=KkK3J3W0O+sJ4yqgdS41NpLNByel5VJyOyJUFreowGiPrJKnuimg2ZTC53wmSbcFn
+	zJGjg/Dnj/beCY32UMcEnF32UcAV8O/q8+xgUOj3pSbRCCwpKVb+5POaRp6TBE4A0O
+	gnsiyOSTIEn7KOWNsYv6kc3q7XNnaWXJZgVc+hMg=
 Received: from kouign-amann.hive.antfield.fr (antfield.tima.u-ga.fr
 	[147.171.129.253])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 2A8EB2386FB;
-	Mon, 17 Sep 2018 10:41:12 +0200 (CEST)
+	by greensocs.com (Postfix) with ESMTPSA id AA4022387FF;
+	Mon, 17 Sep 2018 10:41:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1537173672;
-	bh=7kikJd0QMdJjrMyU5WU3TTF88G9I8FGb90lyoljdLqM=;
+	s=mail; t=1537173671;
+	bh=FU/ZIeWlr5yhKG/DHMFM7aS5cyJSf4R8YXtaT8ndAMo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=mUg+1kvYYtcBnyAjGV4lUmuEN5ULK53WUB//fPLhkAqPG7wapZWbB4zhg30hC2QYN
-	GbYUx+ntyYiPHvw0WmSzM0SLCuhhOKFbjp9dc2M+7uMQPBIH3D4v8a36vmyFRrC1cE
-	GkIAOpxdc6XANCvaCO9s4/AZ/Okx9MpN08RlAu/I=
+	b=TrTBEiyv4MuXHt2OLi6FKEg07YNV9evxaLIXBsdZXkTRBt0cz3KI0PTaWoeuoeSBL
+	r5rg8+F6TkVOaD2nPPaSf3a68zyZkPcBsAFuwEh9yoeI8W57MlrVCeVT+/3GomeWab
+	ftJn+R9w04DQftCKtLTk8butdvym2oayPvz+LM3E=
 From: damien.hedde@greensocs.com
 To: qemu-devel@nongnu.org
-Date: Mon, 17 Sep 2018 10:40:16 +0200
-Message-Id: <20180917084016.12750-11-damien.hedde@greensocs.com>
+Date: Mon, 17 Sep 2018 10:40:15 +0200
+Message-Id: <20180917084016.12750-10-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180917084016.12750-1-damien.hedde@greensocs.com>
 References: <20180917084016.12750-1-damien.hedde@greensocs.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v4 10/10] hw/arm/xilinx_zynq: connect uart clocks
- to slcr
+Subject: [Qemu-arm] [PATCH v4 09/10] hw/char/cadence_uart: add clock support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,59 +123,220 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
 	pbonzini@redhat.com, luc.michel@greensocs.com, fred.konrad@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ERu1vPvWWgNZ
+X-TUID: 1IFpCHClCuIn
 
 From: Damien Hedde <damien.hedde@greensocs.com>
 
-Add the connection between the slcr's output clocks and the uarts inputs.
+Add bus interface and uart reference clock inputs.
+
+Note: it is hard to find out from the doc what is the behavior when only one
+of the clock is disabled and what does each clock domain reset.
+
+Right now, register access needs both clock being active.
+
+The bus interface control the mmios visibility. Its associated reset
+does nothing apart from disabling the mmios.
+
+The reference clock controls the baudrate generation. If it disabled,
+any input characters and events are ignored. Also register accesses are
+conditioned to the clock being enabled (but is it really the case in
+reality ?) and a guest error is triggerred if that is not the case.
+Its associated reset triggers the cadence_uart reset.
+
+If theses clocks remains unconnected, the uart behaves as before.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/arm/xilinx_zynq.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
+ include/hw/char/cadence_uart.h |  2 +
+ hw/char/cadence_uart.c         | 73 ++++++++++++++++++++++++++++++++--
+ hw/char/trace-events           |  3 ++
+ 3 files changed, 74 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index f1496d2927..efad21a5a9 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -166,7 +166,7 @@ static void zynq_init(MachineState *machine)
-     MemoryRegion *address_space_mem = get_system_memory();
-     MemoryRegion *ext_ram = g_new(MemoryRegion, 1);
-     MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
--    DeviceState *dev;
-+    DeviceState *dev, *slcr;
-     SysBusDevice *busdev;
-     qemu_irq pic[64];
-     int n;
-@@ -212,9 +212,10 @@ static void zynq_init(MachineState *machine)
-                           1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
-                               0);
+diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uart.h
+index 118e3f10de..c6bb537adf 100644
+--- a/include/hw/char/cadence_uart.h
++++ b/include/hw/char/cadence_uart.h
+@@ -21,6 +21,7 @@
+ #include "hw/sysbus.h"
+ #include "chardev/char-fe.h"
+ #include "qemu/timer.h"
++#include "hw/clock-port.h"
  
--    dev = qdev_create(NULL, "xilinx,zynq_slcr");
--    qdev_init_nofail(dev);
--    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xF8000000);
-+    /* Create slcr, keep a pointer to connect clocks */
-+    slcr = qdev_create(NULL, "xilinx,zynq_slcr");
-+    qdev_init_nofail(slcr);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
+ #define CADENCE_UART_RX_FIFO_SIZE           16
+ #define CADENCE_UART_TX_FIFO_SIZE           16
+@@ -47,6 +48,7 @@ typedef struct {
+     CharBackend chr;
+     qemu_irq irq;
+     QEMUTimer *fifo_trigger_handle;
++    ClockState refclk;
+ } CadenceUARTState;
  
-     dev = qdev_create(NULL, TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", 1);
-@@ -235,8 +236,12 @@ static void zynq_init(MachineState *machine)
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0002000, pic[53-IRQ_OFFSET]);
-     sysbus_create_simple("xlnx,ps7-usb", 0xE0003000, pic[76-IRQ_OFFSET]);
+ static inline DeviceState *cadence_uart_create(hwaddr addr,
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index fbdbd463bb..63a8c7108d 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -28,6 +28,7 @@
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "hw/char/cadence_uart.h"
++#include "trace.h"
  
--    cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
--    cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-+    dev = cadence_uart_create(0xE0000000, pic[59 - IRQ_OFFSET], serial_hd(0));
-+    qdev_clock_connect(dev, "busclk", slcr, "uart0_amba_clk", &error_abort);
-+    qdev_clock_connect(dev, "refclk", slcr, "uart0_ref_clk", &error_abort);
-+    dev = cadence_uart_create(0xE0001000, pic[82 - IRQ_OFFSET], serial_hd(1));
-+    qdev_clock_connect(dev, "busclk", slcr, "uart1_amba_clk", &error_abort);
-+    qdev_clock_connect(dev, "refclk", slcr, "uart1_ref_clk", &error_abort);
+ #ifdef CADENCE_UART_ERR_DEBUG
+ #define DB_PRINT(...) do { \
+@@ -94,7 +95,7 @@
+ #define LOCAL_LOOPBACK         (0x2 << UART_MR_CHMODE_SH)
+ #define REMOTE_LOOPBACK        (0x3 << UART_MR_CHMODE_SH)
  
-     sysbus_create_varargs("cadence_ttc", 0xF8001000,
-             pic[42-IRQ_OFFSET], pic[43-IRQ_OFFSET], pic[44-IRQ_OFFSET], NULL);
+-#define UART_INPUT_CLK         50000000
++#define UART_DEFAULT_REF_CLK (50 * 1000 * 1000)
+ 
+ #define R_CR       (0x00/4)
+ #define R_MR       (0x04/4)
+@@ -165,15 +166,30 @@ static void uart_send_breaks(CadenceUARTState *s)
+                       &break_enabled);
+ }
+ 
++static unsigned int uart_input_clk(CadenceUARTState *s)
++{
++    return clock_state_get_frequency(&s->refclk);
++}
++
+ static void uart_parameters_setup(CadenceUARTState *s)
+ {
+     QEMUSerialSetParams ssp;
+     unsigned int baud_rate, packet_size;
+ 
+     baud_rate = (s->r[R_MR] & UART_MR_CLKS) ?
+-            UART_INPUT_CLK / 8 : UART_INPUT_CLK;
++            uart_input_clk(s) / 8 : uart_input_clk(s);
++    baud_rate /= (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
++    trace_cadence_uart_baudrate(baud_rate);
++
++    ssp.speed = baud_rate;
++    if (ssp.speed == 0) {
++        /*
++         * Avoid division-by-zero below.
++         * TODO: find something better
++         */
++        ssp.speed = 1;
++    }
+ 
+-    ssp.speed = baud_rate / (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
+     packet_size = 1;
+ 
+     switch (s->r[R_MR] & UART_MR_PAR) {
+@@ -337,6 +353,11 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
+     CadenceUARTState *s = opaque;
+     uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+ 
++    /* ignore characters when unclocked or reset */
++    if (!clock_state_is_domain_running(&s->refclk)) {
++        return;
++    }
++
+     if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+         uart_write_rx_fifo(opaque, buf, size);
+     }
+@@ -350,6 +371,11 @@ static void uart_event(void *opaque, int event)
+     CadenceUARTState *s = opaque;
+     uint8_t buf = '\0';
+ 
++    /* ignore events when unclocked or reset */
++    if (!clock_state_is_domain_running(&s->refclk)) {
++        return;
++    }
++
+     if (event == CHR_EVENT_BREAK) {
+         uart_write_rx_fifo(opaque, &buf, 1);
+     }
+@@ -382,6 +408,14 @@ static void uart_write(void *opaque, hwaddr offset,
+ {
+     CadenceUARTState *s = opaque;
+ 
++    /* ignore accesses when ref clock is disabled */
++    if (!clock_state_is_domain_running(&s->refclk)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "cadence_uart: Trying to write register 0x%x"
++                " while clock is disabled/reset\n", (unsigned) offset);
++        return;
++    }
++
+     DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value);
+     offset >>= 2;
+     if (offset >= CADENCE_UART_R_MAX) {
+@@ -440,6 +474,14 @@ static uint64_t uart_read(void *opaque, hwaddr offset,
+     CadenceUARTState *s = opaque;
+     uint32_t c = 0;
+ 
++    /* ignore accesses when ref clock is disabled */
++    if (!clock_state_is_domain_running(&s->refclk)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "cadence_uart: Trying to read register 0x%x"
++                " while clock is disabled/reset\n", (unsigned) offset);
++        return 0;
++    }
++
+     offset >>= 2;
+     if (offset >= CADENCE_UART_R_MAX) {
+         c = 0;
+@@ -488,6 +530,24 @@ static void cadence_uart_realize(DeviceState *dev, Error **errp)
+                              uart_event, NULL, s, NULL, true);
+ }
+ 
++static void cadence_uart_refclk_update(void *opaque, ClockState *clk)
++{
++    CadenceUARTState *s = opaque;
++
++    bool need_reset = clock_state_get_domain_reset(clk) &&
++        !clock_state_get_domain_reset(&s->refclk);
++
++    clock_state_copy(&s->refclk, clk);
++
++    /* reset state if clock domain reset is asserted */
++    if (need_reset) {
++        cadence_uart_reset(DEVICE(s));
++    }
++
++    /* recompute uart's speed on clock change */
++    uart_parameters_setup(s);
++}
++
+ static void cadence_uart_init(Object *obj)
+ {
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+@@ -497,6 +557,11 @@ static void cadence_uart_init(Object *obj)
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->irq);
+ 
++    sysbus_init_bus_interface_clock(sbd, "busclk");
++    qdev_init_clock_in(DEVICE(obj), "refclk", cadence_uart_refclk_update, s);
++    /* initialize the frequency in case the clock remains unconnected */
++    s->refclk.frequency = UART_DEFAULT_REF_CLK;
++
+     s->char_tx_time = (NANOSECONDS_PER_SECOND / 9600) * 10;
+ }
+ 
+@@ -548,7 +613,7 @@ static void cadence_uart_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_cadence_uart;
+     dc->reset = cadence_uart_reset;
+     dc->props = cadence_uart_properties;
+-  }
++}
+ 
+ static const TypeInfo cadence_uart_info = {
+     .name          = TYPE_CADENCE_UART,
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index b64213d4dd..2ea25d1ea1 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -73,3 +73,6 @@ cmsdk_apb_uart_receive(uint8_t c) "CMSDK APB UART: got character 0x%x from backe
+ cmsdk_apb_uart_tx_pending(void) "CMSDK APB UART: character send to backend pending"
+ cmsdk_apb_uart_tx(uint8_t c) "CMSDK APB UART: character 0x%x sent to backend"
+ cmsdk_apb_uart_set_params(int speed) "CMSDK APB UART: params set to %d 8N1"
++
++# hw/char/cadence_uart.c
++cadence_uart_baudrate(unsigned baudrate) "baudrate %u"
 -- 
 2.18.0
 

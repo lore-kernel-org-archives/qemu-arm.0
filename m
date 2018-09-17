@@ -1,147 +1,161 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3949485wrd;
-        Tue, 11 Sep 2018 04:29:27 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbJldJOsAoq2uVhoC5N7qE/EMCdLvsTM/ymmyAE0ztE87tUVIxEl17EoxEsAsTWW793ftnY
-X-Received: by 2002:a37:48e:: with SMTP id 136-v6mr18778294qke.26.1536665367215;
-        Tue, 11 Sep 2018 04:29:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536665367; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp4135733wrd;
+        Mon, 17 Sep 2018 09:31:10 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdaZKCCcIM7n7BWIjFSjpwq4arxfPJGQ0Cv3K1WH5XS0/mC17KGvx2eWB4bQIMpJxBfV0Nnd
+X-Received: by 2002:a63:5e45:: with SMTP id s66-v6mr24042803pgb.151.1537201870493;
+        Mon, 17 Sep 2018 09:31:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537201870; cv=none;
         d=google.com; s=arc-20160816;
-        b=b9RgtogMXls2t1RRWPU8flqaAMZgRxPzJ/9F5gt+ORP8onYCsUShb9AvowdaIc4qCG
-         +AIoft6gf2mb98NYOMWygPG+7zpwQ2iu61vnhRFJoQqxewkZR4RfL7u/1qg7ubqExdbv
-         FKA3joNtJHcknGpCbL1NkOBZK95RknngMQcV0YZpZKYxbAuVGVR+t4l68YVhgW1AA6kG
-         b2kq2DqXoaG/OYoBE1m+KRYQcnRzGR0olJKpPlCGmdjvKH0GpAIdZRaLYcFd5P62uhId
-         gwNqllvIRuM5oeJEvSOdasAEooNpnx7y847WYk1Evh2ZhrBx3un9hAf/EEfIy0zbrxye
-         NGEQ==
+        b=mSuyvAAdAZl4FtYVTqGVFLE9IeWpJCfTb3T7RvMkmkpnFU8Y4G1aGHkWedi2CSHXJe
+         b7L2lSkxIYnPCcAZgtE4n4oh7b1iUhYCHbOEfradpL4GDv8Mn1D/0lZpI7N/0LHVsJBE
+         UNFtDrv3q9JthNLphBGMJQEHykjXnd8CqZk/bpbfnjM9Dpy7dHQ7qTItQBU9H+iJc33N
+         rrinX7AKmMKJLVjMQRJPhL3RPWfXGfRMuqRlIyR8g5brEt8EzXVybJTgdeippNa6PjHv
+         2reNGE78g1jRpAc5qKM1VXh8JiqXwmVegzHeVD5L65ygEgQhqsUHOfkVSgkua30YbOhR
+         cNaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=ti22XjzuA3P2U7p+yTUxOohe/3zSfTZFYWpxuFBcVTY=;
-        b=nbeWkhZQQtdvSzNO6lePOje/UTHRHEyemW+I9LL/5U8wPUHyGBxbw+xDm/9hTYh4TX
-         oBgd+kjs+N9QFglirvv/R/5zc/sTiv2PRoVXpTk5/1B51xCtWqsVIH07pWabcApm6w+P
-         C1w83BYgumTTzPoWStAD7S2eUj2MlQkKX9QfbrD0FzNCZqH4W8t+h94bvr1DbDXqu9U1
-         LhmQHOUj7TpyGCOop9ymGCroHjJEx/ULKGTVxFAeTtDFe1W3Oc+21lUSkx4kkQEMg6Ed
-         na5+ClLvRv6yj8dZS79NCIDJoTyNU8qQVsMRz/Nl55s2C2mN6Ejx6KjIz/4x+o+eDeA2
-         f+Rw==
+        h=list-id:precedence:sender:message-id:date:subject:cc:to:from
+         :dkim-signature:dkim-signature;
+        bh=nlsoG9m8yGUSHTs1R/APkFMFm0M3YeBhPrB3nO6/i7o=;
+        b=b5T4MC3lpKdZORllYU8ZdT4UkKlPfGrOhi+ECJMdp+M2M6tGX2+7SofO7bAvuVmSCO
+         7z0ueuSiIlGKU2F9xXXcgwW0kWirnlmsXEeSudt6NWg6oA1rfm/sRSeetBQ9tADu11d7
+         F56P8pjtvWqxDfBeq8spUJ2rmch8MbqIygGuOP/A3c1uCwHgH22AWax5NjerqX+pFmC0
+         CK3H3xL4z2CPVzcL4+TJo4SSnHD/tUzUrAyVO5HfWYO1g9/F48fUrIsDM8tHRu72UqAc
+         HQciLWDr+TQiQVkGGyR8VqFXExBEZ6drLwrtE5mePP+W9zhE19XWgX4eOgVt1MAqOhqQ
+         QJNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uQDRatB1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a67-v6si496107qkj.35.2018.09.11.04.29.27
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 11 Sep 2018 04:29:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=z6ufFDuz;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=Iq17SxsE;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 184-v6si15838464pgi.614.2018.09.17.09.31.10;
+        Mon, 17 Sep 2018 09:31:10 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uQDRatB1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57023 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fzgrG-0001Xm-NW
-	for alex.bennee@linaro.org; Tue, 11 Sep 2018 07:29:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59502)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhaosl@gmail.com>) id 1fzgoz-0006qi-4M
-	for qemu-devel@nongnu.org; Tue, 11 Sep 2018 07:27:05 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhaosl@gmail.com>) id 1fzgoy-0000YB-BJ
-	for qemu-devel@nongnu.org; Tue, 11 Sep 2018 07:27:05 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:35532)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shannon.zhaosl@gmail.com>)
-	id 1fzgom-0000OE-W6; Tue, 11 Sep 2018 07:26:53 -0400
-Received: by mail-oi0-x241.google.com with SMTP id m11-v6so46451494oic.2;
-	Tue, 11 Sep 2018 04:26:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=ti22XjzuA3P2U7p+yTUxOohe/3zSfTZFYWpxuFBcVTY=;
-	b=uQDRatB1al/ZZnLCGJ5H+m1Ayr3lf1KW1au0xL7MJkPiqnjmfEQ0VMAxwvvS+6OjzZ
-	12IpZ3wRkJVxsI5srblbhNwYdBmRUSRjQ/sjwqKWXfT0B89yaL1kBgyQqViS4pKNT9Rb
-	LoJSZJ5IoQzMAu1deMi49M3Mx8DQEkFmJIDGZ4h9h4mYYlUtNvLrcfwfUfM1qWtVVWsz
-	Edx49e1omD/wZ02XKOCaoLFs14kgq9qJwCBpKUEN51i4fIT9HEORFvZdAt8M3qGpbY3a
-	ya8s8JW/voortJ14wSJqfQ2Qp4OjzBoFRqI7xWqH80uXqX2oJwGdfeVDBVW0tiICjOsF
-	MLTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=ti22XjzuA3P2U7p+yTUxOohe/3zSfTZFYWpxuFBcVTY=;
-	b=NR8KeVzIdGPin/QrnaRYzMj7v+zI2h39p0EO1x/3nlYPdxOAoE+zwdbfiScGo3Xsgc
-	O7olYw/Yhu6P8KDmRMaalNEuJh02BkptOhpVfXmTJv7IqmwnCBTgks9vLqTO6NLC6xRJ
-	yfJGXIpsdHo5kg0F4NZjH0Sz4FQHI+CGWEgC7dt/ouTq2P6SW5DtBcTUc77Otg++whVa
-	+7vA2yLIcXexwO725liFp7pd6nKsh+gXC35ABKNHLF7pwwXZNpW2ak8O/JQXeaVbOLEn
-	bTvaYQcY1B90yro82LxT+cNjkGkTe2JxBCU08dZics13dS2MpwKvbwzJai+htP7eKQMB
-	nZEw==
-X-Gm-Message-State: APzg51AJw4PLxF7AU6U9S+Ljwa7OMjTL+Rjj2c7UY87jntyzOFTSZySf
-	MnoFsgF+gDhth0bqB4Q8DZKEu+bt
-X-Received: by 2002:aca:7513:: with SMTP id
-	q19-v6mr25237465oic.13.1536665210608; 
-	Tue, 11 Sep 2018 04:26:50 -0700 (PDT)
-Received: from MININT-0CAG7HA.hz.ali.com ([47.89.83.37])
-	by smtp.gmail.com with ESMTPSA id
-	w84-v6sm15341456oie.40.2018.09.11.04.26.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 11 Sep 2018 04:26:49 -0700 (PDT)
-From: Shannon Zhao <shannon.zhaosl@gmail.com>
-X-Google-Original-From: Shannon Zhao <shenglong.zsl@alibaba-inc.com>
-To: qemu-arm@nongnu.org
-Date: Tue, 11 Sep 2018 19:26:43 +0800
-Message-Id: <20180911112643.19296-1-shenglong.zsl@alibaba-inc.com>
-X-Mailer: git-send-email 2.18.0.windows.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: [Qemu-devel] [PATCH] hw/arm/virt-acpi-build: Add a check for
- memory-less NUMA nodes
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ioO5OEfwf9Eo
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=z6ufFDuz;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=Iq17SxsE;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728437AbeIQV7N (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Mon, 17 Sep 2018 17:59:13 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:53405 "EHLO
+        out1-smtp.messagingengine.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1728016AbeIQV7N (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 17 Sep 2018 17:59:13 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+        by mailout.nyi.internal (Postfix) with ESMTP id 0F8F221B7F;
+        Mon, 17 Sep 2018 12:31:07 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Mon, 17 Sep 2018 12:31:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+        :date:from:message-id:subject:to:x-me-sender:x-me-sender
+        :x-sasl-enc; s=mesmtp; bh=nlsoG9m8yGUSHTs1R/APkFMFm0M3YeBhPrB3nO
+        6/i7o=; b=z6ufFDuzBOoy0aqrHOrpcyBfkirCFRko9MBPbHLpsSX9ivxDSRF2yq
+        fX3IgDbnQ7BtoZI5R+k1RoUuMYQiAisMZCD9AxPgLpZbsIygF0O03gRNVeZ48HKF
+        SerSSx0HxiATtcHE799LcL5TWRY4+ACnJhf+DfXmTjE5zU4FGzrEU=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+        messagingengine.com; h=cc:date:from:message-id:subject:to
+        :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=nlsoG9m8yGUSHTs1R
+        /APkFMFm0M3YeBhPrB3nO6/i7o=; b=Iq17SxsEd59oh1sMRPfo3p8PQxxgxSO8t
+        HthgrGRVQVMdcDgPyPSb0a2H+I5K/4wFrlK95yV0h1axRjLKM7frY+gMAqWZEicy
+        oNzDl/hUmP0Cr9DRG0Nb8YBJnVD53JN0KDP/lVfIMtSv/v86lPJwmo0bNKW985R6
+        5f+knQD8ba/wpe2YnYUD2PyQGl5JT3KTRlbN5gGbECff2DOt2C+qrfynZ6vLcCU3
+        YslcZkOzEGG3pvyw2Yy1EO2z8/hOetPhs4tGBSPGoKxNxurwWgB3NHEdgXNqJm0p
+        kJ1JvZHSAbNcfSTZTmGnKjJSR+R/PIjTlL+J51ShP+C+ZNvmPtUug==
+X-ME-Proxy: <xmx:yNafW11P5RjPGRc0yjg0KM5bCtl1PSS46EcohZpoBTmbWaLYcDbpow>
+    <xmx:yNafWwAYYwpfuKt4i6QFIN9oGCD9vH7igl7jUWzzFkKhqwyijonFeQ>
+    <xmx:yNafW6fut5c-ddOWmgMEPEjvCXyo8fU_DczUHDmXr5iEjJkahFvRWA>
+    <xmx:yNafW6ywVMP3eYc0v3Pr-HNMx1zYFErG9Z4c_8r6StH8idMiJdCqpQ>
+    <xmx:yNafW9MePV1eYjd6ZzZiWf5HglII59J_saZ2WA_OH_EWOGbwiF6MAg>
+    <xmx:y9afW-jnriYd1lOXNjWieFCePMUclvTz72qjh3nJ--NBx2qUwNh1_w>
+X-ME-Sender: <xms:yNafW5-EFxEvqcYhbsnzJVkKyetq_mAmv-Do-DYiVl7ewJDyDoXK1w>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+        by mail.messagingengine.com (Postfix) with ESMTPA id 43331E414C;
+        Mon, 17 Sep 2018 12:31:04 -0400 (EDT)
+From:   "Emilio G. Cota" <cota@braap.org>
+To:     qemu-devel@nongnu.org
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        Aleksandar Markovic <amarkovic@wavecomp.com>,
+        Alexander Graf <agraf@suse.de>,
+        Anthony Green <green@moxielogic.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Chris Wulff <crwulff@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        David Hildenbrand <david@redhat.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Guan Xuetao <gxt@mprc.pku.edu.cn>,
+        James Hogan <jhogan@kernel.org>, kvm@vger.kernel.org,
+        Laurent Vivier <laurent@vivier.eu>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Marek Vasut <marex@denx.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Michael Walle <michael@walle.cc>,
+        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+        qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+        Richard Henderson <rth@twiddle.net>,
+        Stafford Horne <shorne@gmail.com>
+Subject: [PATCH 00/35] exec: drop BQL from interrupt handling
+Date:   Mon, 17 Sep 2018 12:30:28 -0400
+Message-Id: <20180917163103.6113-1-cota@braap.org>
+X-Mailer: git-send-email 2.17.1
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 6KTOb7tBVqd4
 
-From: Shannon Zhao <shannon.zhaosl@gmail.com>
+This series comes originally from a series of patches that Paolo
+sent to me a long time ago. I have kept most of his S-o-b tags,
+but I have done the forward port of the patches to the current
+QEMU code base, so please blame all possible bugs on me, not him.
 
-Like commit 16b4226(hw/acpi-build: Add a check for memory-less NUMA node
-), it also needs to check memory length for NUMA nodes on ARM.
+The goal of this series is to push the BQL out of interrupt
+handling wherever possible. Many targets do not need the BQL
+to handle interrupts, so for those targets we get rid of the
+BQL in interrupt handling. In TCG mode, this by itself does
+not yield measurable performance gains. However, it is a
+necessary first step before tackling BQL contention when
+managing CPU states (i.e. exiting the exec loop always
+involves taking the BQL, which does not scale).
 
-Signed-off-by: Shannon Zhao <shannon.zhaosl@gmail.com>
----
- hw/arm/virt-acpi-build.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+The patches:
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ce31abd..5785fb6 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -562,10 +562,12 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- 
-     mem_base = vms->memmap[VIRT_MEM].base;
-     for (i = 0; i < nb_numa_nodes; ++i) {
--        numamem = acpi_data_push(table_data, sizeof(*numamem));
--        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
--                          MEM_AFFINITY_ENABLED);
--        mem_base += numa_info[i].node_mem;
-+        if (numa_info[i].node_mem > 0) {
-+            numamem = acpi_data_push(table_data, sizeof(*numamem));
-+            build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
-+                              MEM_AFFINITY_ENABLED);
-+            mem_base += numa_info[i].node_mem;
-+        }
-     }
- 
-     build_header(linker, table_data, (void *)(table_data->data + srat_start),
--- 
-2.9.3.windows.1
+- Patch 0 accesses icount_decr.u16 consistently with atomics.
+  This is important because we use it across threads to signal
+  that an interrupt is pending.
 
+- 2-28: convert direct callers of cpu->interrupt_request
+  to use atomic accesses or CPU helper functions that use atomics.
+  I have broken these up into individual patches to ease review.
+  Note that in some cases I have added many atomic_reads, most
+  of which are probably unnecessary. However, I'd leave this up
+  to the maintainers, since I do not want to break things by
+  doing a single atomic_read(&cpu->interrupt_request) at the
+  beginning of a function and then miss subsequent updates to
+  cpu->interrupt_request.
+
+- 29-31: drop the BQL requirement when handling cpu->interrupt_request
+
+- 32-33: drop now unnecessary BQL acquisitions in i386 and ppc
+
+- 34-35: push down the BQL acquisition to cpu->do_interrupt
+  and cpu->cpu_exec_interrupt. Here I am Cc'ing everyone so that
+  we can make sure I am not missing any target that requires
+  the BQL on either do_interrupt or cpu_exec_interrupt.
+
+This series is checkpatch-clean, and can be fetched from:
+  https://github.com/cota/qemu/tree/cpu-lock
+
+Note that the series applies on top of patches that are
+already on the qemu-devel list and will hopefully soon
+be upstream. This series begins after commit
+4ece0cbd74 ("cpus: access .qemu_icount_bias with atomic64")
+in that tree.
+
+Thanks,
+
+		Emilio

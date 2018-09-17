@@ -1,83 +1,112 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp239378wrd;
-        Wed, 12 Sep 2018 23:40:45 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbjSY4qBSFmsyB+DFlwprSirhJarKnbY0USGlKUIm8K4tMzDuiMKVBzlJC3wKEMnJYc1QN/
-X-Received: by 2002:a37:8903:: with SMTP id l3-v6mr4029669qkd.337.1536820845470;
-        Wed, 12 Sep 2018 23:40:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1536820845; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3654838wrd;
+        Mon, 17 Sep 2018 01:41:40 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdY7aqkKqGLFdhcnuJGBzL4eePSrSGPgz8HMVReqARmG1VeQ/l2yKx0q9316QIO4eNjdmf3H
+X-Received: by 2002:a37:9dd8:: with SMTP id g207-v6mr15960462qke.19.1537173700517;
+        Mon, 17 Sep 2018 01:41:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537173700; cv=none;
         d=google.com; s=arc-20160816;
-        b=0FermRKHnQjoPUKiaWpk6jqf4n2TdnD2O1pQRSxiMgTpy1ME+eA+24O44hWeAtldxW
-         IfrXgAT8u1crdqZKJtutJe7/qJU4bZgOmuYOqowTJHGqDBPWg3C15u19Ap1D7vSET/1z
-         n3elC7di2FDmWFgUh50VCoF7CguYGDMp+ZP+trAJlslPyJkHcgWyiqb9xaumCjKTqvxQ
-         FXytQrlNvNcHqwA/yQ/+Z5n3qn3I8VnZIG6Kmlk+tV6IOgn5ZIagNr6vfUQKZGZbBl7B
-         cIgldlRbRvRUPHMGVhWSOnqkcUEZTK3FU5tamkNUPjWuwnk+iKcyEg8NtI7YIYOFDZj0
-         HKrw==
+        b=SD0u/OaiVIggFRc+wWOiqGhnVRIxA5O5Tj8KgxDzqZZyfJ9NO1GHmh6mjVhaypU6aw
+         kSiqRSIz7UKGLUfLyGtnf35gC3PqiX1t0vBTNNXPpBSvRYL/s9sZcwiye+piNRIttpE7
+         KEK8SUnwfJSMlOa67q2RcNwxxeJ0VQl1veDyHuBrGuCxzpOD78eRE1m99SLMYC+nqhIN
+         O2H0XONKqdsx900NVZBdldzWwzmBOgddLXpXWZafJ3ioFkjyi+gqs1V/MGMqjq5IH2Vl
+         TLCXrpU7I2bgqLIaztTIThwaHvGtQ1Aj7V0HIMPlga4PKSgeajT7UV7OxL3BAY2g9RLS
+         3IRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=UkIRcF792BE6ZsWA3OGakrXWRsrH7ZdH3jovr2hOowo=;
-        b=mgk3O79Y1AiQli40zzAkcH/sCm4LFYHuEceUtbHvfjV/hHiLLX4y2wN/dNkMnFXwTi
-         ICBmEy785bwTJt8bre0xIdCZjSVu0N0cBIuVhgAj9R1hT7p7RcrLIYPwrsOFipZMSjzx
-         NCoQV4kTE59idlMBA63tXIOQmrFukKsP3X0QpECKkUubnKRoSelqIk0REm9tNCktUdEW
-         eNA37nBu0aUFrVQvAn0VFI4+Um2IPP2UnLYfibNdhObK2xru2CzX98ndC9W08dO/QWDb
-         MX/2yPDcor3Dy3bCAWA9zPdbb1soTZO86kRGlavRVW2T3he+vsDRaxjY7XD7FgCEbaCR
-         C4wQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature;
+        bh=VE4eezL0B9M6/caKT6BcqCjK42dV+2ETwDrU/t06M+g=;
+        b=gb9WS1k4hmkNcIToANivA8nI3N3xL47X3RuKTbfYxDS2MaYJB/3AdKN99wKI3OUjHQ
+         Xhrr3cS+37qgxfBGRga3pwbzLeJYCjpchpzX9ltIxkxvT3RzRFkB+wKvj6Ri7eqAe+hg
+         aKdGQBIIeVDT9wOp33KDWktk765iwKB80wFOarwS0mVxG4B+8+cZpkhvkcnFVFpVffLh
+         AYpWLktMdG1rShDoke4z5+9XwmQV8ajhzGIajIyvqTegzUikbC+CwFxOmjHOCxLOQdN/
+         vQNZ6WcSALGSwJc4ZQoFEMKAG5bGXiKmcQO+lzrCt4z7K/EVUlJuECecG0TYQkscpBzP
+         LLUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zKMSiVbp;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=34Lt9d1U;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=34Lt9d1U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z136-v6si2503225qkb.299.2018.09.12.23.40.45
+        by mx.google.com with ESMTPS id g48-v6si8535425qtc.224.2018.09.17.01.41.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 12 Sep 2018 23:40:45 -0700 (PDT)
+        Mon, 17 Sep 2018 01:41:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40695 helo=lists.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zKMSiVbp;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=34Lt9d1U;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=34Lt9d1U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34414 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g0LIy-000135-VI
-	for alex.bennee@linaro.org; Thu, 13 Sep 2018 02:40:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41391)
+	id 1g1p6B-0006AY-W5
+	for alex.bennee@linaro.org; Mon, 17 Sep 2018 04:41:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46390)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1g0LIj-00012j-Od
-	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 02:40:30 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5u-00069K-Su
+	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1g0LIf-0004yU-QL
-	for qemu-arm@nongnu.org; Thu, 13 Sep 2018 02:40:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40730)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1g0LIf-0004xu-KN; Thu, 13 Sep 2018 02:40:25 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5p-0005V7-L3
+	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:22 -0400
+Received: from greensocs.com ([193.104.36.180]:51710)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>)
+	id 1g1p5o-0005TH-Vi; Mon, 17 Sep 2018 04:41:17 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id CF794521AB6;
+	Mon, 17 Sep 2018 10:41:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537173670;
+	bh=ad+IoHRlAKMY+vuSKfg4+m9rK/Mw7VhSQZL3cL+Z0BM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=zKMSiVbporfQbWVMpm8LehmvQjYT2kngLpDsK5uuqk5lNaZIj4bgkoskwLdl1LNiq
+	k+kHdC7FcJg6IxbGrrwGhxIIDxyGIhWIaWVuGEtxSR5lSm2T2SKcHzg3An47Wk6BaQ
+	fxkN94a9ti+TnxDMHJGgJqZk8Fx48eEs+rdNujQ0=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=34Lt9d1U;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=34Lt9d1U
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WEFZO5GAPU2j; Mon, 17 Sep 2018 10:41:10 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 5983D2386FB; Mon, 17 Sep 2018 10:41:09 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537173669;
+	bh=ad+IoHRlAKMY+vuSKfg4+m9rK/Mw7VhSQZL3cL+Z0BM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=34Lt9d1Up3ApSRaVWLeDTG10VgQgIzNZvuK511Tbgf6fY2ekHelwjzx6xEOP2fTvc
+	FkRpuAIbRL0ms8tKYwDiHG/dffy0SzVyvhmJya0kGcDoVEjFOuDaazr5VCyr8T0gcT
+	CmrcjKezVrAvnuZfv6Gt8NPxPTLKLxMcNWhuZhNk=
+Received: from kouign-amann.hive.antfield.fr (antfield.tima.u-ga.fr
+	[147.171.129.253])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 84BF53082B24;
-	Thu, 13 Sep 2018 06:40:23 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 951415D6B3;
-	Thu, 13 Sep 2018 06:40:22 +0000 (UTC)
-Date: Thu, 13 Sep 2018 08:40:20 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Shannon Zhao <shannon.zhaosl@gmail.com>
-Message-ID: <20180913064020.xcxjof5466emyplp@kamzik.brq.redhat.com>
-References: <20180911112643.19296-1-shenglong.zsl@alibaba-inc.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180911112643.19296-1-shenglong.zsl@alibaba-inc.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Thu, 13 Sep 2018 06:40:23 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/arm/virt-acpi-build: Add a
- check for memory-less NUMA nodes
+	(Authenticated sender: damien.hedde@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id D871323878C;
+	Mon, 17 Sep 2018 10:41:08 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537173669;
+	bh=ad+IoHRlAKMY+vuSKfg4+m9rK/Mw7VhSQZL3cL+Z0BM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=34Lt9d1Up3ApSRaVWLeDTG10VgQgIzNZvuK511Tbgf6fY2ekHelwjzx6xEOP2fTvc
+	FkRpuAIbRL0ms8tKYwDiHG/dffy0SzVyvhmJya0kGcDoVEjFOuDaazr5VCyr8T0gcT
+	CmrcjKezVrAvnuZfv6Gt8NPxPTLKLxMcNWhuZhNk=
+From: damien.hedde@greensocs.com
+To: qemu-devel@nongnu.org
+Date: Mon, 17 Sep 2018 10:40:10 +0200
+Message-Id: <20180917084016.12750-5-damien.hedde@greensocs.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180917084016.12750-1-damien.hedde@greensocs.com>
+References: <20180917084016.12750-1-damien.hedde@greensocs.com>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH v4 04/10] qdev-clock: introduce an init array to
+ ease the device construction
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,45 +118,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
+	mark.burton@greensocs.com, saipava@xilinx.com,
+	qemu-arm@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
+	pbonzini@redhat.com, luc.michel@greensocs.com, fred.konrad@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wIW7T2I8ig10
+X-TUID: oo0KiW80eWGB
 
-On Tue, Sep 11, 2018 at 07:26:43PM +0800, Shannon Zhao wrote:
-> From: Shannon Zhao <shannon.zhaosl@gmail.com>
-> 
-> Like commit 16b4226(hw/acpi-build: Add a check for memory-less NUMA node
-> ), it also needs to check memory length for NUMA nodes on ARM.
-> 
-> Signed-off-by: Shannon Zhao <shannon.zhaosl@gmail.com>
-> ---
->  hw/arm/virt-acpi-build.c | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index ce31abd..5785fb6 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -562,10 +562,12 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  
->      mem_base = vms->memmap[VIRT_MEM].base;
->      for (i = 0; i < nb_numa_nodes; ++i) {
-> -        numamem = acpi_data_push(table_data, sizeof(*numamem));
-> -        build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
-> -                          MEM_AFFINITY_ENABLED);
-> -        mem_base += numa_info[i].node_mem;
-> +        if (numa_info[i].node_mem > 0) {
-> +            numamem = acpi_data_push(table_data, sizeof(*numamem));
-> +            build_srat_memory(numamem, mem_base, numa_info[i].node_mem, i,
-> +                              MEM_AFFINITY_ENABLED);
-> +            mem_base += numa_info[i].node_mem;
-> +        }
->      }
->  
->      build_header(linker, table_data, (void *)(table_data->data + srat_start),
-> -- 
-> 2.9.3.windows.1
->
+From: Damien Hedde <damien.hedde@greensocs.com>
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Introduce a function and macro helpers to setup several clocks
+in a device from a static array description.
+
+An element of the array describes the clock (name and direction) as
+well as the related callback and an optional offset to store the
+created object pointer in the device state structure.
+
+The array must be terminated by a special element QDEV_CLOCK_END.
+
+This is based on the original work of Frederic Konrad.
+
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+---
+ include/hw/qdev-clock.h | 67 +++++++++++++++++++++++++++++++++++++++++
+ hw/core/qdev-clock.c    | 26 ++++++++++++++++
+ 2 files changed, 93 insertions(+)
+
+diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
+index 324eea6bcc..a5da8878af 100644
+--- a/include/hw/qdev-clock.h
++++ b/include/hw/qdev-clock.h
+@@ -59,4 +59,71 @@ void qdev_clock_connect(DeviceState *dev, const char *name,
+                         DeviceState *driver, const char *driver_name,
+                         Error **errp);
+ 
++/**
++ * ClockInitElem:
++ * @name: name of the clock (can't be NULL)
++ * @output: indicates whether the clock is input or output
++ * @callback: for inputs, optional callback to be called on clock's update
++ * with device as opaque
++ * @offset: optional offset to store the clock pointer in device'state
++ * structure (0 means unused)
++ */
++struct ClockPortInitElem {
++    const char *name;
++    bool output;
++    ClockCallback *callback;
++    size_t offset;
++};
++
++#define clock_offset_value(_type, _devstate, _field) \
++    (offsetof(_devstate, _field) + \
++     type_check(_type *, typeof_field(_devstate, _field)))
++
++#define QDEV_CLOCK(_output, _type, _devstate, _field, _callback) { \
++    .name = (stringify(_field)), \
++    .output = _output, \
++    .callback = _callback, \
++    .offset = clock_offset_value(_type, _devstate, _field), \
++}
++
++/**
++ * QDEV_CLOCK_(IN|OUT):
++ * @_devstate: structure type. @dev argument of qdev_init_clocks below must be
++ * a pointer to that same type.
++ * @_field: a field in @_devstate (must be ClockIn* or ClockOut*)
++ * @_callback: (for input only) callback (or NULL) to be called with the device
++ * state as argument
++ *
++ * The name of the clock will be derived from @_field
++ */
++#define QDEV_CLOCK_IN(_devstate, _field, _callback) \
++    QDEV_CLOCK(false, ClockIn, _devstate, _field, _callback)
++
++#define QDEV_CLOCK_OUT(_devstate, _field) \
++    QDEV_CLOCK(true, ClockOut, _devstate, _field, NULL)
++
++/**
++ * QDEV_CLOCK_IN_NOFIELD:
++ * @_name: name of the clock
++ * @_callback: callback (or NULL) to be called with the device state as argument
++ */
++#define QDEV_CLOCK_IN_NOFIELD(_name, _callback) { \
++    .name = _name, \
++    .output = false, \
++    .callback = _callback, \
++    .offset = 0, \
++}
++
++#define QDEV_CLOCK_END { .name = NULL }
++
++typedef struct ClockPortInitElem ClockPortInitArray[];
++
++/**
++ * qdev_init_clocks:
++ * @dev: the device to add clocks
++ * @clocks: a QDEV_CLOCK_END-terminated array which contains the
++ * clocks information.
++ */
++void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks);
++
+ #endif /* QDEV_CLOCK_H */
+diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
+index cb7dba3f75..78d2509e04 100644
+--- a/hw/core/qdev-clock.c
++++ b/hw/core/qdev-clock.c
+@@ -138,3 +138,29 @@ void qdev_clock_connect(DeviceState *dev, const char *name,
+ 
+     clock_connect(ncl->in , drv_ncl->out);
+ }
++
++void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)
++{
++    const struct ClockPortInitElem *elem;
++
++    assert(dev);
++    assert(clocks);
++
++    for (elem = &clocks[0]; elem->name != NULL; elem++) {
++        /* offset cannot be inside the DeviceState part */
++        assert(elem->offset == 0 || elem->offset > sizeof(DeviceState));
++        if (elem->output) {
++            ClockOut *clk;
++            clk = qdev_init_clock_out(dev, elem->name);
++            if (elem->offset) {
++                *(ClockOut **)(((void *) dev) + elem->offset) = clk;
++            }
++        } else {
++            ClockIn *clk;
++            clk = qdev_init_clock_in(dev, elem->name, elem->callback, dev);
++            if (elem->offset) {
++                *(ClockIn **)(((void *) dev) + elem->offset) = clk;
++            }
++        }
++    }
++}
+-- 
+2.18.0
+

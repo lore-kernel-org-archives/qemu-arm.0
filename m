@@ -1,29 +1,29 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp4135837wrd;
-        Mon, 17 Sep 2018 09:31:15 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbKbHTY1xiwariDZN3VIn8N9jGvfCh0G44fllb6yOBVJGFvowZ2lQEkaS8W56hIIcShLV96
-X-Received: by 2002:a17:902:724c:: with SMTP id c12-v6mr25175818pll.326.1537201875331;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp4135849wrd;
+        Mon, 17 Sep 2018 09:31:16 -0700 (PDT)
+X-Google-Smtp-Source: ANB0Vda+W0I4E+9oezpk2bVwvmzjrB2hyidOkq2JmPvpAc5fcS9KJrkWLfyfhSxztCW6hNnRMakx
+X-Received: by 2002:a62:5ec3:: with SMTP id s186-v6mr26913432pfb.146.1537201875961;
         Mon, 17 Sep 2018 09:31:15 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1537201875; cv=none;
         d=google.com; s=arc-20160816;
-        b=VZmMBfDA1DlXOu05jypS8HDTAs0NdT8ic/dRZCMk9g4PNTZFGcz2GxGKoMfpNniC3X
-         rHHi/2FZOKCfwmOQBIvIUPZCAWF+lCp6yCuUFhQxAELcV0QoCa7HOQKd4kfxhNPrUoqP
-         /sHcUyas1yZOIrqwhFFkcVwsAhA7er5ZRXfFvpMV+vylx6TFQ8mgoEqkv1+iu+EdXcbE
-         DJhsiTFb+ddNEI2JDPF73hB+M+pfTCLYUhfaCk0esTuui7qyjoHiwo/j1D2tf2H71FA6
-         KbWPyLRKxWR9Goj4G3gCpHmSTeS1RpTCfhXBmuMIqVDzWT1pFecRO4ganFPHCiYrrcDH
-         ab+w==
+        b=evVR3eDtd3Z11AABId3i0k8+EDcdKdq5LCaUI6GgraTgi9U/By290I5K5bKHJsJEr6
+         QdDQKdHOalubxThyZu+zVcSuGYiZPI+khs9/Dhossj5CkqRSj9gugklDrzfWQXNAGQEr
+         qJraJbw0aVfVpSvVbt78L7qsVv65Fba45buQ75fBIeHg2fd8sMbHHuKwz8hR1Szw+oKF
+         iAGE8sWAUDe2eukdkU/ybg2mAdjcK+GPAcWSDAwRWRwkjl/XLT6HATqrkyV2aRh1i5+o
+         yIpd4e/TU86IWqhHCxCFcsgccsPn+QN6xAJYi2Bo3V/qyzaotzKpliIRWHuOHGlfPnrE
+         OinQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:references:in-reply-to:message-id:date
          :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=Ut/+pHtOZtdCXdOQp4BVjkn7ndqIM1yGLNjjk5kK6wE=;
-        b=sIqBnlCFjJbsRzs7GxbdD56ixyAabp5jaVPGCkEzoxw7uwKWdMh/6C4dWfJKywFvLb
-         +Au1pkLZSC3K40y6FxCn4YjEX5jImYEPNWd3H7cI0WeDlJhgNbAPnAIyMLCpNHif63G8
-         NBVHLyMCexZY+gzAcwn35SuGF3y1phozdbYSGNie9GCADFkjQNFp15WzLFG5biFucTaC
-         NtAkGXYCfsBNFbBv//peOB8KzsDZTSf3tCtXNfmUDUD84ju4ZIJnGyJek82Q0UxXBHoH
-         J0qHzHu2jIqIjWjsojZy6hERkf8d3lpWSfb/6siHo5gBh5hy8x0J+Np4OIH3QvFdzFaF
-         yAWw==
+        bh=hP3BNXg9fUYlH9mrXcVwqXX3Jxaadm+2okW5WxgMl58=;
+        b=MHQEB+dz/yxxQx0zH27B3WqkLLAoTQuhDiSNJVlugMlJeiRmbrBK21VZa3izZsXCD9
+         PP1MUCZOjHS6IEudmgvBz77bxHJyNWFAAlMrQMmnvPcR/w6u/yiSCI5KXKUj0vP8EVYF
+         0vYwKwXoRor6mX2isEIbSJlVsTJTadMDOIJ0E7DgCTMIZvCvillJWthWOZK6KsvHGp4f
+         MJutGvAYqFC/QcMz9fKBxTLVgcWDjFxrWZxyOoRY7fdqis34ktKYTXxsZ/ulxLlmeu6I
+         8YYtmM2FAeKhXtBWFcmi9jAlUvVx/a2Ib/GegPc9fEuhuIJ9Cj9iaomGXCTZ5fcgYU3R
+         RbIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@braap.org header.s=mesmtp header.b=V9xJKZ+K;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=blCjPF1q;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=t0k38ogx;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=SmlTA+CQ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
@@ -31,47 +31,47 @@ Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
         Mon, 17 Sep 2018 09:31:15 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@braap.org header.s=mesmtp header.b=V9xJKZ+K;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=blCjPF1q;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=t0k38ogx;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=SmlTA+CQ;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728611AbeIQV7T (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Mon, 17 Sep 2018 17:59:19 -0400
-Received: from out1-smtp.messagingengine.com ([66.111.4.25]:45765 "EHLO
+        id S1728688AbeIQV7U (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Mon, 17 Sep 2018 17:59:20 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:54359 "EHLO
         out1-smtp.messagingengine.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S1726979AbeIQV7T (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Mon, 17 Sep 2018 17:59:19 -0400
+        by vger.kernel.org with ESMTP id S1728547AbeIQV7U (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 17 Sep 2018 17:59:20 -0400
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-        by mailout.nyi.internal (Postfix) with ESMTP id 1E43121C24;
+        by mailout.nyi.internal (Postfix) with ESMTP id 5FB7D21C08;
         Mon, 17 Sep 2018 12:31:13 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
   by compute4.internal (MEProxy); Mon, 17 Sep 2018 12:31:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
         :date:from:in-reply-to:message-id:references:subject:to
-        :x-me-sender:x-me-sender:x-sasl-enc; s=mesmtp; bh=Ut/+pHtOZtdCXd
-        OQp4BVjkn7ndqIM1yGLNjjk5kK6wE=; b=V9xJKZ+KIRZ2qhbEe8Z35JXNwS70bf
-        ihMynnnPvtNn4mMDE/WzldoLF1+si747gYnSNuWcrn3ulRVLLM5wk8H/D8og8CMc
-        JNw98COFXRVWiaDYdmcAGHkSFozrH1BSdCaMzB2s/rcDzAnxJyyhf4lEgkf5YM/f
-        tv4TpuZvqhaVI=
+        :x-me-sender:x-me-sender:x-sasl-enc; s=mesmtp; bh=hP3BNXg9fUYlH9
+        mrXcVwqXX3Jxaadm+2okW5WxgMl58=; b=t0k38ogxl8BXY3m2tREnHvB25lJWSx
+        g7zD1EqEH2hkI/NKCUwrakORm783Rps0I45j5wns6R49X48sUQJ3hZbond7xAnLf
+        qL07P//HmjW35o6l33xGtF5FyBMvVCeLHeQRqTwnKb/qr81BtmQDfXTNX0+zt1zC
+        uh9twUe6DNil0=
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
         messagingengine.com; h=cc:date:from:in-reply-to:message-id
         :references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
-        fm3; bh=Ut/+pHtOZtdCXdOQp4BVjkn7ndqIM1yGLNjjk5kK6wE=; b=blCjPF1q
-        pbW5cP9HSa1oAanCd19N/U3YRVSlGC3w8Nxoe5VaujABETrxwd9gw0zpgmJkq47M
-        D0EW5cT4TJSANefVqsZFL/7yDp4sa/iGFAD6oX1GZIKt61Hcpf8P0dhxKfhkX7S2
-        6xCZDrLM0/2IRiSfRPmkwBsU/KiZsPibWv8kICa4ZswHXFv2DQ2PItXV6ZO5ruom
-        HG5Hez/8/B5z/VF9bCFNvMN0x3Tw7uhMG/9vw0tGfM6qGJWghIZWTR8kDVdvzh2H
-        A9+f/mbsNCTNm47a19uBGwXIOTtEnZdHehpUsouWt8fi2HqjHaXPHnUWIi3W4OA2
-        GZP184DyfDk01A==
-X-ME-Proxy: <xmx:0NafW6ciR82rRyDtelorZrPbW6rL_QcsDqFCLQX8g8jSnn_yvmVvpw>
-    <xmx:0NafW_Xw23q4h_ERh81uF8BcObz5GHi9jFC8JTvHFrHPYWpz9rghyw>
-    <xmx:0NafWw7Rh6wo3kqcu94GqAV3DQjTlrxhboP_C_s7UXMPycHupJITCw>
-    <xmx:0NafW3xW1FgS2_lZI7glSdFpTTwt5vplYvP1Wlqc_z-ksVBh0FdJjQ>
-    <xmx:0NafWx5bNHaLdxM22MWQfXVSS2MW--WmGkTK46L9ONIVpo-akIJPjw>
-    <xmx:0dafW8rMmrpIv0vm7Ga2Jjss_EH6kXCHcg2wTp-JVdzko5WN-nfg1w>
-X-ME-Sender: <xms:0NafW6Wz8nm6YkRaxelCiLjst2EMupGNSsaQOstbXAyHFZIRn4mmIA>
+        fm3; bh=hP3BNXg9fUYlH9mrXcVwqXX3Jxaadm+2okW5WxgMl58=; b=SmlTA+CQ
+        rAfSw6VLqvmOKbJubMF5E4CKJC//QJYrNksBWjBGbfw9zjAxmenfbkPFcOOiHxX+
+        /O5wOFm9kQ0QPvVIatmAW1+M4brmrmYOQ5SzHLr5TMEhhTYa55atqT1ofm22nuvV
+        cTDkf/r4TG++b/N63ZDp9atkxQWtxa3FxNAAMtOcxeVWKhxrrZ6qRIvJq8+tr2Sg
+        RaOK4TkdyyFcb+LH5eiwXtYH3wVkmF1Qxk2gvnQPIofvpzK3NuhkGhkg0UzTiXaL
+        TSoy27LT51X8/8erpZr7jlajZamvoOEP0FPeNeE4KHqvA17kPazQaGtNz7Su9hDx
+        eb/ii1gbjnRQXg==
+X-ME-Proxy: <xmx:0dafW19-MtkJ73on-el3dapQ5WJ7gGbrYOiY9-hAyV9E3KRUCBruvQ>
+    <xmx:0dafW9biO1CDbU_-gTXfT_7mp3ATXycRg8JlevwzPKhRv9eUL-h9Hw>
+    <xmx:0dafW-Hm5Z5dMKtiBycK6x1xsxE1_57bgsdBEQhtWw3PlIueYxjAMQ>
+    <xmx:0dafW25TNuZZqg_1rV-P803cP1wErXA8h_SpbIZG8J9McZWoDBgrEw>
+    <xmx:0dafW_t2tsWJbOkFVxSjaA3fMsB4tgcbBMT9x0pzcuZikXpzn3Q14g>
+    <xmx:0dafW5MxeW7ZHwt9F90EuU6wRcd5aXSzPXY3pZaIQz025wB3WA44uA>
+X-ME-Sender: <xms:0dafWyPgal4wl-Owgid7NJ8Tb4UQicl1cH9jQ00JhQCeZ4-woyhqaA>
 Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-        by mail.messagingengine.com (Postfix) with ESMTPA id 84AC2E49C7;
+        by mail.messagingengine.com (Postfix) with ESMTPA id D5505E49EC;
         Mon, 17 Sep 2018 12:31:12 -0400 (EDT)
 From:   "Emilio G. Cota" <cota@braap.org>
 To:     qemu-devel@nongnu.org
@@ -100,9 +100,9 @@ Cc:     Paolo Bonzini <pbonzini@redhat.com>,
         qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
         Richard Henderson <rth@twiddle.net>,
         Stafford Horne <shorne@gmail.com>
-Subject: [PATCH 34/35] exec: push BQL down to cpu->do_interrupt
-Date:   Mon, 17 Sep 2018 12:31:02 -0400
-Message-Id: <20180917163103.6113-35-cota@braap.org>
+Subject: [PATCH 35/35] exec: push BQL down to cpu->cpu_exec_interrupt
+Date:   Mon, 17 Sep 2018 12:31:03 -0400
+Message-Id: <20180917163103.6113-36-cota@braap.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180917163103.6113-1-cota@braap.org>
 References: <20180917163103.6113-1-cota@braap.org>
@@ -110,15 +110,13 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: fh0edV0ne5kJ
+X-TUID: ssEZngsGY6yM
 
 From: Paolo Bonzini <pbonzini@redhat.com>
 
-cpu->do_interrupt can now be called with BQL held (from
-cpu->cpu_exec_interrupt) or without (from cpu_handle_exception).
-
-Only a few targets rely on global device state in cc->do_interrupt;
-add checks to those targets to acquire the BQL if not already held.
+Most interrupt requests do not need to take the BQL, and in fact
+most architectures do not need it at all. Push the BQL acquisition
+down to target code.
 
 Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
 Cc: Alexander Graf <agraf@suse.de>
@@ -150,212 +148,189 @@ Cc: Stafford Horne <shorne@gmail.com>
 Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 ---
- accel/tcg/cpu-exec.c       |  2 --
- target/arm/helper.c        | 28 ++++++++++++++++++++++++++--
- target/ppc/excp_helper.c   |  8 +++++++-
- target/s390x/excp_helper.c | 14 +++++++++++++-
- target/sh4/helper.c        | 14 +++++++++++++-
- target/xtensa/helper.c     | 16 ++++++++++++++--
- 6 files changed, 73 insertions(+), 9 deletions(-)
+ docs/devel/multi-thread-tcg.txt |  7 +++++--
+ accel/tcg/cpu-exec.c            |  9 +--------
+ target/arm/cpu.c                | 15 ++++++++++++++-
+ target/i386/seg_helper.c        |  3 +++
+ target/ppc/excp_helper.c        |  2 ++
+ target/s390x/excp_helper.c      |  3 +++
+ 6 files changed, 28 insertions(+), 11 deletions(-)
 
+diff --git a/docs/devel/multi-thread-tcg.txt b/docs/devel/multi-thread-tcg.txt
+index 782bebc28b..422de4736b 100644
+--- a/docs/devel/multi-thread-tcg.txt
++++ b/docs/devel/multi-thread-tcg.txt
+@@ -231,8 +231,11 @@ BQL. Currently ARM targets serialise all ARM_CP_IO register accesses
+ and also defer the reset/startup of vCPUs to the vCPU context by way
+ of async_run_on_cpu().
+ 
+-Updates to interrupt state are also protected by the BQL as they can
+-often be cross vCPU.
++The CPUClass callbacks cpu_exec_interrupt and do_interrupt are invoked
++without BQL protection.  Accesses to the interrupt controller from
++the vCPU thread, for example while processing CPU_INTERRUPT_HARD, must
++either call qemu_mutex_lock_iothread/qemu_mutex_unlock_iothread or use
++a separate mutex.
+ 
+ Memory Consistency
+ ==================
 diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 2383763f9b..b649e3d772 100644
+index b649e3d772..f5e08e79d1 100644
 --- a/accel/tcg/cpu-exec.c
 +++ b/accel/tcg/cpu-exec.c
-@@ -497,9 +497,7 @@ static inline bool cpu_handle_exception(CPUState *cpu, int *ret)
- #else
-         if (replay_exception()) {
-             CPUClass *cc = CPU_GET_CLASS(cpu);
--            qemu_mutex_lock_iothread();
-             cc->do_interrupt(cpu);
+@@ -524,7 +524,7 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
+ 
+     if (unlikely(atomic_read(&cpu->interrupt_request))) {
+         int interrupt_request;
+-        qemu_mutex_lock_iothread();
++
+         interrupt_request = atomic_read(&cpu->interrupt_request);
+         if (unlikely(cpu->singlestep_enabled & SSTEP_NOIRQ)) {
+             /* Mask out external interrupts for this step. */
+@@ -533,7 +533,6 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
+         if (interrupt_request & CPU_INTERRUPT_DEBUG) {
+             cpu_reset_interrupt(cpu, CPU_INTERRUPT_DEBUG);
+             cpu->exception_index = EXCP_DEBUG;
 -            qemu_mutex_unlock_iothread();
-             cpu->exception_index = -1;
-         } else if (!replay_has_interrupt()) {
-             /* give a chance to iothread in replay mode */
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 22dbc42305..548278da14 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7644,7 +7644,8 @@ gen_invep:
-     return false;
+             return true;
+         }
+         if (replay_mode == REPLAY_MODE_PLAY && !replay_has_interrupt()) {
+@@ -543,7 +542,6 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
+             cpu_reset_interrupt(cpu, CPU_INTERRUPT_HALT);
+             cpu->halted = 1;
+             cpu->exception_index = EXCP_HLT;
+-            qemu_mutex_unlock_iothread();
+             return true;
+         }
+ #if defined(TARGET_I386)
+@@ -554,14 +552,12 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
+             cpu_svm_check_intercept_param(env, SVM_EXIT_INIT, 0, 0);
+             do_cpu_init(x86_cpu);
+             cpu->exception_index = EXCP_HALTED;
+-            qemu_mutex_unlock_iothread();
+             return true;
+         }
+ #else
+         else if (interrupt_request & CPU_INTERRUPT_RESET) {
+             replay_interrupt();
+             cpu_reset(cpu);
+-            qemu_mutex_unlock_iothread();
+             return true;
+         }
+ #endif
+@@ -585,9 +581,6 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
+                the program flow was changed */
+             *last_tb = NULL;
+         }
+-
+-        /* If we exit via cpu_loop_exit/longjmp it is reset in cpu_exec */
+-        qemu_mutex_unlock_iothread();
+     }
+ 
+     /* Finally, check if we need to exit to the main loop.  */
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index e2c492efdf..246ea13d8f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -347,7 +347,8 @@ static void arm_cpu_reset(CPUState *s)
+     hw_watchpoint_update_all(cpu);
  }
  
--void arm_v7m_cpu_do_interrupt(CPUState *cs)
+-bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 +/* call with the BQL held */
-+static void arm_v7m_cpu_do_interrupt_locked(CPUState *cs)
++static bool arm_cpu_exec_interrupt_locked(CPUState *cs, int interrupt_request)
  {
-     ARMCPU *cpu = ARM_CPU(cs);
+     CPUClass *cc = CPU_GET_CLASS(cs);
+     CPUARMState *env = cs->env_ptr;
+@@ -401,6 +402,16 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     return ret;
+ }
+ 
++bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
++{
++    bool ret;
++
++    qemu_mutex_lock_iothread();
++    ret = arm_cpu_exec_interrupt_locked(cs, interrupt_request);
++    qemu_mutex_unlock_iothread();
++    return ret;
++}
++
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ {
+@@ -409,6 +420,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
      CPUARMState *env = &cpu->env;
-@@ -7828,6 +7829,17 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
-     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
- }
+     bool ret = false;
  
-+void arm_v7m_cpu_do_interrupt(CPUState *cs)
-+{
-+    if (qemu_mutex_iothread_locked()) {
-+        arm_v7m_cpu_do_interrupt_locked(cs);
-+    } else {
-+        qemu_mutex_lock_iothread();
-+        arm_v7m_cpu_do_interrupt_locked(cs);
-+        qemu_mutex_unlock_iothread();
-+    }
-+}
-+
- /* Function used to synchronize QEMU's AArch64 register set with AArch32
-  * register set.  This is necessary when switching between AArch32 and AArch64
-  * execution state.
-@@ -8482,8 +8494,9 @@ static inline bool check_for_semihosting(CPUState *cs)
-  * Do any appropriate logging, handle PSCI calls, and then hand off
-  * to the AArch64-entry or AArch32-entry function depending on the
-  * target exception level's register width.
-+ * Call with the BQL held.
-  */
--void arm_cpu_do_interrupt(CPUState *cs)
-+static void arm_cpu_do_interrupt_locked(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-@@ -8534,6 +8547,17 @@ void arm_cpu_do_interrupt(CPUState *cs)
++    qemu_mutex_lock_iothread();
+     /* ARMv7-M interrupt masking works differently than -A or -R.
+      * There is no FIQ/IRQ distinction. Instead of I and F bits
+      * masking FIQ and IRQ interrupts, an exception is taken only
+@@ -422,6 +434,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+         cc->do_interrupt(cs);
+         ret = true;
      }
++    qemu_mutex_unlock_iothread();
+     return ret;
  }
- 
-+void arm_cpu_do_interrupt(CPUState *cs)
-+{
-+    if (qemu_mutex_iothread_locked()) {
-+        arm_cpu_do_interrupt_locked(cs);
-+    } else {
-+        qemu_mutex_lock_iothread();
-+        arm_cpu_do_interrupt_locked(cs);
-+        qemu_mutex_unlock_iothread();
-+    }
-+}
-+
- /* Return the exception level which controls this address translation regime */
- static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
-diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
-index 70ac10e23b..8b2cc48cad 100644
---- a/target/ppc/excp_helper.c
-+++ b/target/ppc/excp_helper.c
-@@ -742,7 +742,13 @@ void ppc_cpu_do_interrupt(CPUState *cs)
-     PowerPCCPU *cpu = POWERPC_CPU(cs);
-     CPUPPCState *env = &cpu->env;
- 
--    powerpc_excp(cpu, env->excp_model, cs->exception_index);
-+    if (qemu_mutex_iothread_locked()) {
-+        powerpc_excp(cpu, env->excp_model, cs->exception_index);
-+    } else {
-+        qemu_mutex_lock_iothread();
-+        powerpc_excp(cpu, env->excp_model, cs->exception_index);
-+        qemu_mutex_unlock_iothread();
-+    }
- }
- 
- static void ppc_hw_interrupt(CPUPPCState *env)
-diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
-index f2b92d7cbc..931c0103c8 100644
---- a/target/s390x/excp_helper.c
-+++ b/target/s390x/excp_helper.c
-@@ -378,7 +378,8 @@ static void do_mchk_interrupt(CPUS390XState *env)
-     load_psw(env, mask, addr);
- }
- 
--void s390_cpu_do_interrupt(CPUState *cs)
-+/* call with the BQL held */
-+static void s390_cpu_do_interrupt_locked(CPUState *cs)
- {
-     QEMUS390FLICState *flic = QEMU_S390_FLIC(s390_get_flic());
-     S390CPU *cpu = S390_CPU(cs);
-@@ -457,6 +458,17 @@ try_deliver:
-     }
- }
- 
-+void s390_cpu_do_interrupt(CPUState *cs)
-+{
-+    if (qemu_mutex_iothread_locked()) {
-+        s390_cpu_do_interrupt_locked(cs);
-+    } else {
-+        qemu_mutex_lock_iothread();
-+        s390_cpu_do_interrupt_locked(cs);
-+        qemu_mutex_unlock_iothread();
-+    }
-+}
-+
- bool s390_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
-     if (interrupt_request & CPU_INTERRUPT_HARD) {
-diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-index c699b8c0a1..6c508cd006 100644
---- a/target/sh4/helper.c
-+++ b/target/sh4/helper.c
-@@ -79,7 +79,8 @@ int cpu_sh4_is_cached(CPUSH4State * env, target_ulong addr)
- #define MMU_DADDR_ERROR_READ     (-12)
- #define MMU_DADDR_ERROR_WRITE    (-13)
- 
--void superh_cpu_do_interrupt(CPUState *cs)
-+/* call with the BQL held */
-+static void superh_cpu_do_interrupt_locked(CPUState *cs)
- {
-     SuperHCPU *cpu = SUPERH_CPU(cs);
-     CPUSH4State *env = &cpu->env;
-@@ -211,6 +212,17 @@ void superh_cpu_do_interrupt(CPUState *cs)
-     }
- }
- 
-+void superh_cpu_do_interrupt(CPUState *cs)
-+{
-+    if (qemu_mutex_iothread_locked()) {
-+        superh_cpu_do_interrupt_locked(cs);
-+    } else {
-+        qemu_mutex_lock_iothread();
-+        superh_cpu_do_interrupt_locked(cs);
-+        qemu_mutex_unlock_iothread();
-+    }
-+}
-+
- static void update_itlb_use(CPUSH4State * env, int itlbnb)
- {
-     uint8_t or_mask = 0, and_mask = (uint8_t) - 1;
-diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
-index c9a6132700..ecafecdd3f 100644
---- a/target/xtensa/helper.c
-+++ b/target/xtensa/helper.c
-@@ -26,6 +26,7 @@
+ #endif
+diff --git a/target/i386/seg_helper.c b/target/i386/seg_helper.c
+index 0dd85329db..2fdfbd3c37 100644
+--- a/target/i386/seg_helper.c
++++ b/target/i386/seg_helper.c
+@@ -19,6 +19,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/main-loop.h"
- #include "qemu/units.h"
  #include "cpu.h"
- #include "exec/exec-all.h"
-@@ -251,8 +252,8 @@ static void handle_interrupt(CPUXtensaState *env)
-     }
- }
- 
--/* Called from cpu_handle_interrupt with BQL held */
--void xtensa_cpu_do_interrupt(CPUState *cs)
-+/* Call with the BQL held */
-+static void xtensa_cpu_do_interrupt_locked(CPUState *cs)
- {
-     XtensaCPU *cpu = XTENSA_CPU(cs);
-     CPUXtensaState *env = &cpu->env;
-@@ -305,6 +306,17 @@ void xtensa_cpu_do_interrupt(CPUState *cs)
-     }
-     check_interrupts(env);
- }
-+
-+void xtensa_cpu_do_interrupt(CPUState *cs)
-+{
-+    if (qemu_mutex_iothread_locked()) {
-+        xtensa_cpu_do_interrupt_locked(cs);
-+    } else {
+ #include "qemu/log.h"
+ #include "exec/helper-proto.h"
+@@ -1324,7 +1325,9 @@ bool x86_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ #if !defined(CONFIG_USER_ONLY)
+     if (interrupt_request & CPU_INTERRUPT_POLL) {
+         cpu_reset_interrupt(cs, CPU_INTERRUPT_POLL);
 +        qemu_mutex_lock_iothread();
-+        xtensa_cpu_do_interrupt_locked(cs);
+         apic_poll_irq(cpu->apic_state);
 +        qemu_mutex_unlock_iothread();
-+    }
-+}
- #else
- void xtensa_cpu_do_interrupt(CPUState *cs)
- {
+         /* Don't process multiple interrupt requests in a single call.
+            This is required to make icount-driven execution deterministic. */
+         return true;
+diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+index 8b2cc48cad..57acba2a80 100644
+--- a/target/ppc/excp_helper.c
++++ b/target/ppc/excp_helper.c
+@@ -885,10 +885,12 @@ bool ppc_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     CPUPPCState *env = &cpu->env;
+ 
+     if (interrupt_request & CPU_INTERRUPT_HARD) {
++        qemu_mutex_lock_iothread();
+         ppc_hw_interrupt(env);
+         if (env->pending_interrupts == 0) {
+             cpu_reset_interrupt(cs, CPU_INTERRUPT_HARD);
+         }
++        qemu_mutex_unlock_iothread();
+         return true;
+     }
+     return false;
+diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+index 931c0103c8..f2a93abf01 100644
+--- a/target/s390x/excp_helper.c
++++ b/target/s390x/excp_helper.c
+@@ -480,10 +480,13 @@ bool s390_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+                the parent EXECUTE insn.  */
+             return false;
+         }
++        qemu_mutex_lock_iothread();
+         if (s390_cpu_has_int(cpu)) {
+             s390_cpu_do_interrupt(cs);
++            qemu_mutex_unlock_iothread();
+             return true;
+         }
++        qemu_mutex_unlock_iothread();
+         if (env->psw.mask & PSW_MASK_WAIT) {
+             /* Woken up because of a floating interrupt but it has already
+              * been delivered. Go back to sleep. */
 -- 
 2.17.1

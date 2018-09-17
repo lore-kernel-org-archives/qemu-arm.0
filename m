@@ -1,108 +1,81 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3655873wrd;
-        Mon, 17 Sep 2018 01:42:58 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZ1qp3Lz+CKCiUWF/jJhcLITfmIJM3nv7LZg/Nh/IdSHEEiQ3ao6CHGHjnCOSOD42UhVUGq
-X-Received: by 2002:aed:3f22:: with SMTP id p31-v6mr16462980qtf.185.1537173778340;
-        Mon, 17 Sep 2018 01:42:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537173778; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3725320wrd;
+        Mon, 17 Sep 2018 03:05:29 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdalwIRI2E2HmxXWm6kcEzWBSne3pKOnzz/HiEn3nxuRgHDF1p2bqoAkywHrq2nO5zJuXxNh
+X-Received: by 2002:a37:e104:: with SMTP id c4-v6mr16687967qkm.28.1537178729791;
+        Mon, 17 Sep 2018 03:05:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537178729; cv=none;
         d=google.com; s=arc-20160816;
-        b=M5iiZCZhMPH7FYqceFia0SxVM8P4inP/3Kv2FH/qxNgORRSFzNdzSFzaqDeUjbWgZ/
-         Ts4aiMtHRnBI+fYtdo+fwvK4PwzUNo9ZBCm3MVEOYnMwWEMWh0mz7zUbXh7OWyiJrJ72
-         U4u9MGE3M4OsHDxrcUJW1/vVKjpN7CrLKVrq4xkbGvqft2BoK0ZsrWVb8k5WcI/Fv806
-         Or6iMs30iJ4LQiZwEgseGtwPj/Qo5ar8pqBB8c54oDMd8Llm9fEwU4Cl8mHr381/Qnv2
-         sg7Qv0VTVskDNP744MNIs2WD37HXqmnEhWDFPqUhy/sslyuNoDkRgjwsq0fe7auoqAST
-         1JQw==
+        b=dlCHwyk1V2ZVD+EGMecXChmSgPtWgHuU7Yl3U+TLH1f+64CIoOWB3Kj1UrldCnGc4a
+         dIPD3P+pza+hRMqiEGvxPDD8VEcoZvz+BDuSsCPqePEZQPw6XlDgxWR85mLA39kzB7HI
+         5G3a04og6wdOmov2HsQG/VOuxVqES+Yxeky50ymO7/IWioJESfMi9uRBsO1OIkjmKg6K
+         etCdj1P9KdAi1/0lAf+6f59MZ0uHY4Rr/7p7bCJLznszkY0EzCeDHB/nbI/FU0uWv1Io
+         wDilYX8KOMqF9Td7nM+SzTiQfRIntzftWRJW9GrFuX4sdJtZbkxSWI+EUaPY5fx4bF34
+         uExA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature:dkim-signature:dkim-signature;
-        bh=e0AlLtXtpt7ckXqqtBRaq2urqalEDW79N3na7ZbfxEc=;
-        b=Xe8ZhRmV9xDBxCIQtjMyippP3AvIIPqzlOxErrnwEaYr2amFU4Ms8nVZ0Q5/TY2JtW
-         nIM03AG7bqSzWA+o9oH06TSxNIn2+lFBJQwR+8jfuueCy04DLHyZoIHLlUPGsUMY/fKG
-         Tg5WKJOnxHj4SV2AXkPZPI3lQZyW7cjyLCqAJ2KVzy+lmW2fLUZJrAMx8xYybFnFnPof
-         k7rgq5VHyytZK94HA/zlynF8nmTR59TOfEW20WrYHUwlNt/xZJqdrYT50AtHUtx3ss79
-         elrUjNJ75/SjpLfI5C+Ywir4B0AoUYDvSMuWTnlHCXie6mpUNOv2YKsxyF1IyuKS5h9n
-         kdpA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=h8lgCwt8cYRLEX2Uji+CtEVqWisKkGL0MiNpv8G1HJY=;
+        b=kwPitcd8ErmyODKHsuEoLoqcE+TNS+chr6b1aeln5Hj0Ea3z1S4qK29lSoEbzxx3hb
+         flyGbaCKHrzPqUo9doLlfvh/BKshPxprr6f5c0LR3ybaa5NK4lc0QKIxUjE/nxErGmCW
+         dCNcIIXi79rYqtVFvvtLdxm2mMta+GC8+NBW5FN1QDQOVjZnMFHcyw2ap/r9xgDJCx2j
+         jBot86p2vtWxUwwmxeq9+t6Qdud0T/lGMU2TVOLIOOsOU0YyGhl4yLYt8yQzvo0RAXKC
+         jaLoF3H5Ogn56Cnvynj5X4fvqpsPNmk2m5s1tJgddhEnkLC1lK5q60e3j6unFm8dv5CA
+         uv4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=YYfRC5aB;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=niD2QUNx;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=niD2QUNx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c66-v6si1115029qkb.392.2018.09.17.01.42.58
+        by mx.google.com with ESMTPS id f5-v6si11166526qtg.392.2018.09.17.03.05.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Sep 2018 01:42:58 -0700 (PDT)
+        Mon, 17 Sep 2018 03:05:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=YYfRC5aB;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=niD2QUNx;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=niD2QUNx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34432 helo=lists.gnu.org)
+Received: from localhost ([::1]:34795 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g1p7R-0007Nb-PQ
-	for alex.bennee@linaro.org; Mon, 17 Sep 2018 04:42:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46397)
+	id 1g1qPJ-0008Kj-C7
+	for alex.bennee@linaro.org; Mon, 17 Sep 2018 06:05:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49906)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5u-00069P-TJ
-	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:25 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1g1qN1-000778-TS
+	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 06:03:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1g1p5p-0005V2-LB
-	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 04:41:22 -0400
-Received: from greensocs.com ([193.104.36.180]:51709)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>)
-	id 1g1p5o-0005TL-Vi; Mon, 17 Sep 2018 04:41:17 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 9B0B1521A8B;
-	Mon, 17 Sep 2018 10:41:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1537173668;
-	bh=G3V08Pd8CExDt3vE7KWZVAcf+teFqN+gTkEUW2F0Ul4=;
-	h=From:To:Cc:Subject:Date;
-	b=YYfRC5aBLL8uJ6803ONYonEbSr+PGFJyizsn5JfX9+zOt7jSSxkMc+/9x3x4dug5k
-	GgDJY2hOg1zCkNCkdMSbTPj3Y/meINX1EV6RoYS7I1MyA3Bq2lgOjMlSJ6FzcpI7c8
-	/M3QjE25vNxnfiPudPmUIQPyFpTWehqZYhlSpqAI=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=niD2QUNx;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=niD2QUNx
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FCatboRPb-gw; Mon, 17 Sep 2018 10:41:07 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id 876F423878C; Mon, 17 Sep 2018 10:41:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1537173667;
-	bh=G3V08Pd8CExDt3vE7KWZVAcf+teFqN+gTkEUW2F0Ul4=;
-	h=From:To:Cc:Subject:Date;
-	b=niD2QUNxA5LF7b004/83/Wyt6sR2O8V6Gxo8OvHjCzQro6Ci80gJgQgsv44isyf5Y
-	khCAEkVkmI2I3dgfEGSCImfJFWNnLQTX0ib8aipJTIFdUeEH5ymGNq7RiEIc5uq9Hu
-	wgKMfU7u86J+D0ypfq7i8kqnjbgvWl3iXpkIZ+zw=
-Received: from kouign-amann.hive.antfield.fr (antfield.tima.u-ga.fr
-	[147.171.129.253])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 1FDE02386FB;
-	Mon, 17 Sep 2018 10:41:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1537173667;
-	bh=G3V08Pd8CExDt3vE7KWZVAcf+teFqN+gTkEUW2F0Ul4=;
-	h=From:To:Cc:Subject:Date;
-	b=niD2QUNxA5LF7b004/83/Wyt6sR2O8V6Gxo8OvHjCzQro6Ci80gJgQgsv44isyf5Y
-	khCAEkVkmI2I3dgfEGSCImfJFWNnLQTX0ib8aipJTIFdUeEH5ymGNq7RiEIc5uq9Hu
-	wgKMfU7u86J+D0ypfq7i8kqnjbgvWl3iXpkIZ+zw=
-From: damien.hedde@greensocs.com
-To: qemu-devel@nongnu.org
-Date: Mon, 17 Sep 2018 10:40:06 +0200
-Message-Id: <20180917084016.12750-1-damien.hedde@greensocs.com>
-X-Mailer: git-send-email 2.18.0
+	(envelope-from <gengdongjiu@huawei.com>) id 1g1qMx-0008OA-2D
+	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 06:03:07 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2565 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1g1qMw-0008Fs-FB; Mon, 17 Sep 2018 06:03:02 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+	by Forcepoint Email with ESMTP id 01EEB3129ED0D;
+	Mon, 17 Sep 2018 18:02:53 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
+	(10.3.19.212) with Microsoft SMTP Server id 14.3.399.0; Mon, 17 Sep 2018
+	18:02:51 +0800
+To: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
+	<qemu-arm@nongnu.org>, <shannon.zhaosl@gmail.com>
+References: <1537032727-29397-1-git-send-email-gengdongjiu@huawei.com>
+	<1537032727-29397-3-git-send-email-gengdongjiu@huawei.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <d12e4e88-222d-bfff-0323-e9921976000e@huawei.com>
+Date: Mon, 17 Sep 2018 18:02:44 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+	Thunderbird/52.6.0
+MIME-Version: 1.0
+In-Reply-To: <1537032727-29397-3-git-send-email-gengdongjiu@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v4 00/10] Clock framework API.
+X-Received-From: 45.249.212.191
+Subject: Re: [Qemu-arm] [PATCH v9 2/2] target: arm: Add support for VCPU
+ event states
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -114,165 +87,223 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
-	mark.burton@greensocs.com, saipava@xilinx.com,
-	qemu-arm@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
-	pbonzini@redhat.com, luc.michel@greensocs.com, fred.konrad@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eF/nZPKJemJd
+X-TUID: VSO7QUQkpmx6
 
-From: Damien Hedde <damien.hedde@greensocs.com>
+Hi Peter/shannon,
+   when you are free, hope you can have a look at this series of patches.
+Thanks a lot for your time in advance.
 
-This series corresponds to the v4 of "clock framework api" patches
-which were discussed in 2017, here:
-https://lists.gnu.org/archive/html/qemu-devel/2017-02/msg07218.html
 
-It is a big refactoring trying to respond to comments and to integrate the
-clock gating cases I sent recently here:
-https://lists.gnu.org/archive/html/qemu-devel/2018-07/msg05363.html
-Note that, for now, the power cases are not considered in this patchset.
-
-For the user, the framework is now very similar to the device's gpio API.
-Clocks inputs and outputs can be added in devices during initialization phase.
-Then an input can be connected to an output: it means every time the output
-clock changes, a callback in the input is trigerred allowing any action to be
-taken. A difference with gpios is that several inputs can be connected to a
-single output without doing any glue.
-
-Compared to v3, the following notable changes happen:
-  - Bindings are now fixed during machine realisation,
-  - Input clock objects have been removed from the point of view of the
-user, i.e. nothing need to be added in the device state. A device can
-now declare a input clock by calling qdev_init_clock_in() (similarly of
-what is done for GPIOs),
-  - Callbacks called on clock change now return void. The input owner is
-responsible of making necessary updates accordingly (e.g. update another
-clock output, or modify its internal state) (again, mostly like GPIOs).
-  - For now, internal state have been removed. It could re-added as a
-cached value to print it in info qtree, or to avoid unnecessary updates.
-
-Behind the scene, there is 2 objects: a clock input which is a placeholder for
-a callback, and a clock output which is a list of inputs. The value transferred
-between an output and an input is a ClockState which contains 2 fields:
-  - an integer to store the frequency
-  - a boolean to indicate whether the clock domain reset is asserted or not
-The reset flag has been added because it seems both signals are closely
-related and very often controlled by the same device.
-
-Regarding the migration strategy, clocks do not hold the clock state
-internally, so there is nothing to migrate there. The consequence is that
-a device must update its output clocks in its post_load to propagate the
-migrated clock state. This allows migration from old-qemu-with-no-clock
-to new-qemu-with-clock-support: newly added clocks will be correctly
-initialized during migration.
-But it is more complex for input clocks handling: there is no order
-guarantee between a device state migration and the update of its inputs clocks
-which will occur during other device state migrations.
-I think that, for most the cases, this does not rise problems, although there
-might be some jitter/glitch during migration before hitting the right value
-(with consequences such as the baudrate of a character device changing several
-times during migration, I don't think it is a problem but may well be wrong
-here).
-
-For example, if we have 2 devices A and B with a clock between them:
-| dev A  clk|>----->| dev B |
-There is 2 migration scenarios (this can happen in our example implementation
-between the slcr and cadence_uart devices):
-  1. A before B:
-     - A is migrated:
-        + A's state is loaded
-        + A's post_load restore the clock which is propagated to B
-        + B reacts to the clock change (eg: update serial baudrate with
-        migrated clock value but old B state)
-     - B is migrated:
-        + B's state is loaded
-        + B's post_load reacts to new B's state (eg: update serial baudrate
-        to the final right value)
-  2. B before A:
-     - B is migrated:
-        + B's state is loaded
-        + B's post_load reacts to ne B's state (eg: update serial baudrate with
-        migrated B state but old clock value)
-     - A is migrated:
-        + A's state is loaded
-        + A's post_load restore the clock which is propagated to B
-        + B reacts to the clock change (eg: update serial baudrate to the final
-        right value)
-
-Regarding clock gating. The 0 frequency value means the clock is gated.
-If need be, a gate device can be built taking an input gpio and clock and
-generating an output clock.
-
-We are considering switching to a generic payload evolution of this API.
-For example by specifying the qom carried type when adding an input/output to
-a device. The current implementation is poorly dependent on what the data type
-is since only pointers are transferred between output and inputs. Changes would
-probably be minor.
-This would allow us, for example, to add a power input port to handle power
-gating. We could also have the basic clock port (frequency-only) and the one we
-have here (frequency-reset).
-
-Concerning this frequency-reset port, we can obviously go back to the simple 
-frequency-only one if you think it is not a good idea.
-
-I've tested this patchset running Xilinx's Linux on the xilinx-zynq-a9 machine.
-Clocks are correctly updated and we ends up with a configured baudrate of 115601
-on the console uart (for a theorical 115200) which is nice. "cadence_uart*" and
-"clock*" traces can be enabled to see what's going on in this platform.
-
-Any comments and suggestion are welcomed.
-
-The patches are organised as follows:
-+ Patches 1 to 4 adds the clock support in qemu.
-+ Patch 5 add some documentation in docs/devel
-+ Patch 6 adds support for a default clock in sysbus devices which control
-the mmios visibility.
-+ Patches 7 to 10 adds the uart's clocks to the xilinx_zynq platform as an
-example for this framework. It updates the zynq's slcr clock controller, the 
-cadence_uart device, and the zynq toplevel platform.
-
-Thanks to the Xilinx QEMU team who sponsored this development.
-
-Damien Hedde (10):
-  hw/core/clock-port: introduce clock port objects
-  qdev: add clock input&output support to devices.
-  qdev-monitor: print the device's clock with info qtree
-  qdev-clock: introduce an init array to ease the device construction
-  docs/clocks: add device's clock documentation
-  sysbus: add bus_interface_clock feature to sysbus devices
-  hw/misc/zynq_slcr: use standard register definition
-  hw/misc/zynq_slcr: add clock generation for uarts
-  hw/char/cadence_uart: add clock support
-  hw/arm/xilinx_zynq: connect uart clocks to slcr
-
- docs/devel/clock.txt           | 144 ++++++++
- Makefile.objs                  |   1 +
- include/hw/char/cadence_uart.h |   2 +
- include/hw/clock-port.h        | 153 ++++++++
- include/hw/qdev-clock.h        | 129 +++++++
- include/hw/qdev-core.h         |  14 +
- include/hw/qdev.h              |   1 +
- include/hw/sysbus.h            |  22 ++
- hw/arm/xilinx_zynq.c           |  17 +-
- hw/char/cadence_uart.c         |  73 +++-
- hw/core/clock-port.c           | 145 ++++++++
- hw/core/qdev-clock.c           | 166 +++++++++
- hw/core/qdev.c                 |  29 ++
- hw/core/sysbus.c               |  25 ++
- hw/misc/zynq_slcr.c            | 637 ++++++++++++++++++++-------------
- qdev-monitor.c                 |   6 +
- hw/char/trace-events           |   3 +
- hw/core/Makefile.objs          |   3 +-
- hw/core/trace-events           |   6 +
- 19 files changed, 1324 insertions(+), 252 deletions(-)
- create mode 100644 docs/devel/clock.txt
- create mode 100644 include/hw/clock-port.h
- create mode 100644 include/hw/qdev-clock.h
- create mode 100644 hw/core/clock-port.c
- create mode 100644 hw/core/qdev-clock.c
- create mode 100644 hw/core/trace-events
-
--- 
-2.18.0
+On 2018/9/16 1:32, Dongjiu Geng wrote:
+> This patch extends the qemu-kvm state sync logic with support for
+> KVM_GET/SET_VCPU_EVENTS, giving access to yet missing SError exception.
+> And also it can support the exception state migration.
+> 
+> The SError exception states include SError pending state and ESR value,
+> the kvm_put/get_vcpu_events() will be called when set or get system
+> registers. When do migration, if source machine has SError pending,
+> QEMU will do this migration regardless whether the target machine supports
+> to specify guest ESR value, because if target machine does not support that,
+> it can also inject the SError with zero ESR value.
+> 
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> ---
+> Change since v8:
+> 1. Update the commit message
+> 
+> Change since v7:
+> 1. Change "pending" and "has_esr" from uint32_t to uint8_t for CPUARMState
+> 2. Add error_report() in kvm_get_vcpu_events()
+> 
+> Change since v6:
+> 1. Add cover letter
+> 2. Change name "cpu/ras" to "cpu/serror"
+> 3. Add some comments and check the ioctl return value for kvm_put_vcpu_events()
+> 
+> Change since v5:
+> address Peter's comments:
+> 1. Move the "struct serror" before the "end_reset_fields" in CPUARMState
+> 2. Remove ARM_FEATURE_RAS_EXT and add a variable have_inject_serror_esr
+> 3. Use the variable have_inject_serror_esr to track whether the kernel has state we need to migrate
+> 4. Remove printf() in kvm_arch_put_registers()
+> 5. ras_needed/vmstate_ras to serror_needed/vmstate_serror
+> 6. Check to use "return env.serror.pending != 0" instead of "arm_feature(env, ARM_FEATURE_RAS_EXT)" in the ras_needed()
+> 
+> Change since v4:
+> 1. Rebase the code to latest
+> ---
+>  target/arm/cpu.h     |  7 ++++++
+>  target/arm/kvm64.c   | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/machine.c | 22 +++++++++++++++++
+>  3 files changed, 98 insertions(+)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 62c36b4..034b035 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -530,6 +530,13 @@ typedef struct CPUARMState {
+>           */
+>      } exception;
+>  
+> +    /* Information associated with an SError */
+> +    struct {
+> +        uint8_t pending;
+> +        uint8_t has_esr;
+> +        uint64_t esr;
+> +    } serror;
+> +
+>      /* Thumb-2 EE state.  */
+>      uint32_t teecr;
+>      uint32_t teehbr;
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index e0b8246..e8705e2 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -29,6 +29,7 @@
+>  #include "hw/arm/arm.h"
+>  
+>  static bool have_guest_debug;
+> +static bool have_inject_serror_esr;
+>  
+>  /*
+>   * Although the ARM implementation of hardware assisted debugging
+> @@ -546,6 +547,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>  
+>      kvm_arm_init_debug(cs);
+>  
+> +    /* Check whether userspace can specify guest syndrome value */
+> +    have_inject_serror_esr = kvm_check_extension(cs->kvm_state,
+> +                                                 KVM_CAP_ARM_INJECT_SERROR_ESR);
+> +
+>      return kvm_arm_init_cpreg_list(cpu);
+>  }
+>  
+> @@ -600,6 +605,60 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+>  #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
+>                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+>  
+> +static int kvm_put_vcpu_events(ARMCPU *cpu)
+> +{
+> +    CPUARMState *env = &cpu->env;
+> +    struct kvm_vcpu_events events = {};
+> +    int ret;
+> +
+> +    if (!kvm_has_vcpu_events()) {
+> +        return 0;
+> +    }
+> +
+> +    memset(&events, 0, sizeof(events));
+> +    events.exception.serror_pending = env->serror.pending;
+> +
+> +    /* Inject SError to guest with specified syndrome if host kernel
+> +     * supports it, otherwise inject SError without syndrome.
+> +     */
+> +    if (have_inject_serror_esr) {
+> +        events.exception.serror_has_esr = env->serror.has_esr;
+> +        events.exception.serror_esr = env->serror.esr;
+> +    }
+> +
+> +    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
+> +    if (ret) {
+> +        error_report("failed to put vcpu events");
+> +    }
+> +
+> +    return ret;
+> +}
+> +
+> +static int kvm_get_vcpu_events(ARMCPU *cpu)
+> +{
+> +    CPUARMState *env = &cpu->env;
+> +    struct kvm_vcpu_events events;
+> +    int ret;
+> +
+> +    if (!kvm_has_vcpu_events()) {
+> +        return 0;
+> +    }
+> +
+> +    memset(&events, 0, sizeof(events));
+> +    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_VCPU_EVENTS, &events);
+> +
+> +    if (ret) {
+> +        error_report("failed to get vcpu events");
+> +        return ret;
+> +    }
+> +
+> +    env->serror.pending = events.exception.serror_pending;
+> +    env->serror.has_esr = events.exception.serror_has_esr;
+> +    env->serror.esr = events.exception.serror_esr;
+> +
+> +    return 0;
+> +}
+> +
+>  int kvm_arch_put_registers(CPUState *cs, int level)
+>  {
+>      struct kvm_one_reg reg;
+> @@ -727,6 +786,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+>          return ret;
+>      }
+>  
+> +    ret = kvm_put_vcpu_events(cpu);
+> +    if (ret) {
+> +        return ret;
+> +    }
+> +
+>      if (!write_list_to_kvmstate(cpu, level)) {
+>          return EINVAL;
+>      }
+> @@ -863,6 +927,11 @@ int kvm_arch_get_registers(CPUState *cs)
+>      }
+>      vfp_set_fpcr(env, fpr);
+>  
+> +    ret = kvm_get_vcpu_events(cpu);
+> +    if (ret) {
+> +        return ret;
+> +    }
+> +
+>      if (!write_kvmstate_to_list(cpu)) {
+>          return EINVAL;
+>      }
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index ff4ec22..32bcde0 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -172,6 +172,27 @@ static const VMStateDescription vmstate_sve = {
+>  };
+>  #endif /* AARCH64 */
+>  
+> +static bool serror_needed(void *opaque)
+> +{
+> +    ARMCPU *cpu = opaque;
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    return env->serror.pending != 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_serror = {
+> +    .name = "cpu/serror",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .needed = serror_needed,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT8(env.serror.pending, ARMCPU),
+> +        VMSTATE_UINT8(env.serror.has_esr, ARMCPU),
+> +        VMSTATE_UINT64(env.serror.esr, ARMCPU),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  static bool m_needed(void *opaque)
+>  {
+>      ARMCPU *cpu = opaque;
+> @@ -726,6 +747,7 @@ const VMStateDescription vmstate_arm_cpu = {
+>  #ifdef TARGET_AARCH64
+>          &vmstate_sve,
+>  #endif
+> +        &vmstate_serror,
+>          NULL
+>      }
+>  };
+> 
 

@@ -1,309 +1,361 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3725320wrd;
-        Mon, 17 Sep 2018 03:05:29 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdalwIRI2E2HmxXWm6kcEzWBSne3pKOnzz/HiEn3nxuRgHDF1p2bqoAkywHrq2nO5zJuXxNh
-X-Received: by 2002:a37:e104:: with SMTP id c4-v6mr16687967qkm.28.1537178729791;
-        Mon, 17 Sep 2018 03:05:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537178729; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp4135837wrd;
+        Mon, 17 Sep 2018 09:31:15 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbKbHTY1xiwariDZN3VIn8N9jGvfCh0G44fllb6yOBVJGFvowZ2lQEkaS8W56hIIcShLV96
+X-Received: by 2002:a17:902:724c:: with SMTP id c12-v6mr25175818pll.326.1537201875331;
+        Mon, 17 Sep 2018 09:31:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537201875; cv=none;
         d=google.com; s=arc-20160816;
-        b=dlCHwyk1V2ZVD+EGMecXChmSgPtWgHuU7Yl3U+TLH1f+64CIoOWB3Kj1UrldCnGc4a
-         dIPD3P+pza+hRMqiEGvxPDD8VEcoZvz+BDuSsCPqePEZQPw6XlDgxWR85mLA39kzB7HI
-         5G3a04og6wdOmov2HsQG/VOuxVqES+Yxeky50ymO7/IWioJESfMi9uRBsO1OIkjmKg6K
-         etCdj1P9KdAi1/0lAf+6f59MZ0uHY4Rr/7p7bCJLznszkY0EzCeDHB/nbI/FU0uWv1Io
-         wDilYX8KOMqF9Td7nM+SzTiQfRIntzftWRJW9GrFuX4sdJtZbkxSWI+EUaPY5fx4bF34
-         uExA==
+        b=VZmMBfDA1DlXOu05jypS8HDTAs0NdT8ic/dRZCMk9g4PNTZFGcz2GxGKoMfpNniC3X
+         rHHi/2FZOKCfwmOQBIvIUPZCAWF+lCp6yCuUFhQxAELcV0QoCa7HOQKd4kfxhNPrUoqP
+         /sHcUyas1yZOIrqwhFFkcVwsAhA7er5ZRXfFvpMV+vylx6TFQ8mgoEqkv1+iu+EdXcbE
+         DJhsiTFb+ddNEI2JDPF73hB+M+pfTCLYUhfaCk0esTuui7qyjoHiwo/j1D2tf2H71FA6
+         KbWPyLRKxWR9Goj4G3gCpHmSTeS1RpTCfhXBmuMIqVDzWT1pFecRO4ganFPHCiYrrcDH
+         ab+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=h8lgCwt8cYRLEX2Uji+CtEVqWisKkGL0MiNpv8G1HJY=;
-        b=kwPitcd8ErmyODKHsuEoLoqcE+TNS+chr6b1aeln5Hj0Ea3z1S4qK29lSoEbzxx3hb
-         flyGbaCKHrzPqUo9doLlfvh/BKshPxprr6f5c0LR3ybaa5NK4lc0QKIxUjE/nxErGmCW
-         dCNcIIXi79rYqtVFvvtLdxm2mMta+GC8+NBW5FN1QDQOVjZnMFHcyw2ap/r9xgDJCx2j
-         jBot86p2vtWxUwwmxeq9+t6Qdud0T/lGMU2TVOLIOOsOU0YyGhl4yLYt8yQzvo0RAXKC
-         jaLoF3H5Ogn56Cnvynj5X4fvqpsPNmk2m5s1tJgddhEnkLC1lK5q60e3j6unFm8dv5CA
-         uv4A==
+        h=list-id:precedence:sender:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=Ut/+pHtOZtdCXdOQp4BVjkn7ndqIM1yGLNjjk5kK6wE=;
+        b=sIqBnlCFjJbsRzs7GxbdD56ixyAabp5jaVPGCkEzoxw7uwKWdMh/6C4dWfJKywFvLb
+         +Au1pkLZSC3K40y6FxCn4YjEX5jImYEPNWd3H7cI0WeDlJhgNbAPnAIyMLCpNHif63G8
+         NBVHLyMCexZY+gzAcwn35SuGF3y1phozdbYSGNie9GCADFkjQNFp15WzLFG5biFucTaC
+         NtAkGXYCfsBNFbBv//peOB8KzsDZTSf3tCtXNfmUDUD84ju4ZIJnGyJek82Q0UxXBHoH
+         J0qHzHu2jIqIjWjsojZy6hERkf8d3lpWSfb/6siHo5gBh5hy8x0J+Np4OIH3QvFdzFaF
+         yAWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f5-v6si11166526qtg.392.2018.09.17.03.05.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 17 Sep 2018 03:05:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=V9xJKZ+K;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=blCjPF1q;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id 184-v6si15838464pgi.614.2018.09.17.09.31.15;
+        Mon, 17 Sep 2018 09:31:15 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34795 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g1qPJ-0008Kj-C7
-	for alex.bennee@linaro.org; Mon, 17 Sep 2018 06:05:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49906)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1g1qN1-000778-TS
-	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 06:03:11 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1g1qMx-0008OA-2D
-	for qemu-arm@nongnu.org; Mon, 17 Sep 2018 06:03:07 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2565 helo=huawei.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1g1qMw-0008Fs-FB; Mon, 17 Sep 2018 06:03:02 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
-	by Forcepoint Email with ESMTP id 01EEB3129ED0D;
-	Mon, 17 Sep 2018 18:02:53 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
-	(10.3.19.212) with Microsoft SMTP Server id 14.3.399.0; Mon, 17 Sep 2018
-	18:02:51 +0800
-To: <peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
-	<qemu-arm@nongnu.org>, <shannon.zhaosl@gmail.com>
-References: <1537032727-29397-1-git-send-email-gengdongjiu@huawei.com>
-	<1537032727-29397-3-git-send-email-gengdongjiu@huawei.com>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <d12e4e88-222d-bfff-0323-e9921976000e@huawei.com>
-Date: Mon, 17 Sep 2018 18:02:44 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
-MIME-Version: 1.0
-In-Reply-To: <1537032727-29397-3-git-send-email-gengdongjiu@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 45.249.212.191
-Subject: Re: [Qemu-arm] [PATCH v9 2/2] target: arm: Add support for VCPU
- event states
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VSO7QUQkpmx6
+       dkim=pass header.i=@braap.org header.s=mesmtp header.b=V9xJKZ+K;
+       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=blCjPF1q;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728611AbeIQV7T (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Mon, 17 Sep 2018 17:59:19 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:45765 "EHLO
+        out1-smtp.messagingengine.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1726979AbeIQV7T (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 17 Sep 2018 17:59:19 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+        by mailout.nyi.internal (Postfix) with ESMTP id 1E43121C24;
+        Mon, 17 Sep 2018 12:31:13 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Mon, 17 Sep 2018 12:31:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=cc
+        :date:from:in-reply-to:message-id:references:subject:to
+        :x-me-sender:x-me-sender:x-sasl-enc; s=mesmtp; bh=Ut/+pHtOZtdCXd
+        OQp4BVjkn7ndqIM1yGLNjjk5kK6wE=; b=V9xJKZ+KIRZ2qhbEe8Z35JXNwS70bf
+        ihMynnnPvtNn4mMDE/WzldoLF1+si747gYnSNuWcrn3ulRVLLM5wk8H/D8og8CMc
+        JNw98COFXRVWiaDYdmcAGHkSFozrH1BSdCaMzB2s/rcDzAnxJyyhf4lEgkf5YM/f
+        tv4TpuZvqhaVI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+        messagingengine.com; h=cc:date:from:in-reply-to:message-id
+        :references:subject:to:x-me-sender:x-me-sender:x-sasl-enc; s=
+        fm3; bh=Ut/+pHtOZtdCXdOQp4BVjkn7ndqIM1yGLNjjk5kK6wE=; b=blCjPF1q
+        pbW5cP9HSa1oAanCd19N/U3YRVSlGC3w8Nxoe5VaujABETrxwd9gw0zpgmJkq47M
+        D0EW5cT4TJSANefVqsZFL/7yDp4sa/iGFAD6oX1GZIKt61Hcpf8P0dhxKfhkX7S2
+        6xCZDrLM0/2IRiSfRPmkwBsU/KiZsPibWv8kICa4ZswHXFv2DQ2PItXV6ZO5ruom
+        HG5Hez/8/B5z/VF9bCFNvMN0x3Tw7uhMG/9vw0tGfM6qGJWghIZWTR8kDVdvzh2H
+        A9+f/mbsNCTNm47a19uBGwXIOTtEnZdHehpUsouWt8fi2HqjHaXPHnUWIi3W4OA2
+        GZP184DyfDk01A==
+X-ME-Proxy: <xmx:0NafW6ciR82rRyDtelorZrPbW6rL_QcsDqFCLQX8g8jSnn_yvmVvpw>
+    <xmx:0NafW_Xw23q4h_ERh81uF8BcObz5GHi9jFC8JTvHFrHPYWpz9rghyw>
+    <xmx:0NafWw7Rh6wo3kqcu94GqAV3DQjTlrxhboP_C_s7UXMPycHupJITCw>
+    <xmx:0NafW3xW1FgS2_lZI7glSdFpTTwt5vplYvP1Wlqc_z-ksVBh0FdJjQ>
+    <xmx:0NafWx5bNHaLdxM22MWQfXVSS2MW--WmGkTK46L9ONIVpo-akIJPjw>
+    <xmx:0dafW8rMmrpIv0vm7Ga2Jjss_EH6kXCHcg2wTp-JVdzko5WN-nfg1w>
+X-ME-Sender: <xms:0NafW6Wz8nm6YkRaxelCiLjst2EMupGNSsaQOstbXAyHFZIRn4mmIA>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+        by mail.messagingengine.com (Postfix) with ESMTPA id 84AC2E49C7;
+        Mon, 17 Sep 2018 12:31:12 -0400 (EDT)
+From:   "Emilio G. Cota" <cota@braap.org>
+To:     qemu-devel@nongnu.org
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        Aleksandar Markovic <amarkovic@wavecomp.com>,
+        Alexander Graf <agraf@suse.de>,
+        Anthony Green <green@moxielogic.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Chris Wulff <crwulff@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        David Hildenbrand <david@redhat.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Guan Xuetao <gxt@mprc.pku.edu.cn>,
+        James Hogan <jhogan@kernel.org>, kvm@vger.kernel.org,
+        Laurent Vivier <laurent@vivier.eu>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Marek Vasut <marex@denx.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Michael Walle <michael@walle.cc>,
+        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+        qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+        Richard Henderson <rth@twiddle.net>,
+        Stafford Horne <shorne@gmail.com>
+Subject: [PATCH 34/35] exec: push BQL down to cpu->do_interrupt
+Date:   Mon, 17 Sep 2018 12:31:02 -0400
+Message-Id: <20180917163103.6113-35-cota@braap.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180917163103.6113-1-cota@braap.org>
+References: <20180917163103.6113-1-cota@braap.org>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: fh0edV0ne5kJ
 
-Hi Peter/shannon,
-   when you are free, hope you can have a look at this series of patches.
-Thanks a lot for your time in advance.
+From: Paolo Bonzini <pbonzini@redhat.com>
 
+cpu->do_interrupt can now be called with BQL held (from
+cpu->cpu_exec_interrupt) or without (from cpu_handle_exception).
 
-On 2018/9/16 1:32, Dongjiu Geng wrote:
-> This patch extends the qemu-kvm state sync logic with support for
-> KVM_GET/SET_VCPU_EVENTS, giving access to yet missing SError exception.
-> And also it can support the exception state migration.
-> 
-> The SError exception states include SError pending state and ESR value,
-> the kvm_put/get_vcpu_events() will be called when set or get system
-> registers. When do migration, if source machine has SError pending,
-> QEMU will do this migration regardless whether the target machine supports
-> to specify guest ESR value, because if target machine does not support that,
-> it can also inject the SError with zero ESR value.
-> 
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
-> Change since v8:
-> 1. Update the commit message
-> 
-> Change since v7:
-> 1. Change "pending" and "has_esr" from uint32_t to uint8_t for CPUARMState
-> 2. Add error_report() in kvm_get_vcpu_events()
-> 
-> Change since v6:
-> 1. Add cover letter
-> 2. Change name "cpu/ras" to "cpu/serror"
-> 3. Add some comments and check the ioctl return value for kvm_put_vcpu_events()
-> 
-> Change since v5:
-> address Peter's comments:
-> 1. Move the "struct serror" before the "end_reset_fields" in CPUARMState
-> 2. Remove ARM_FEATURE_RAS_EXT and add a variable have_inject_serror_esr
-> 3. Use the variable have_inject_serror_esr to track whether the kernel has state we need to migrate
-> 4. Remove printf() in kvm_arch_put_registers()
-> 5. ras_needed/vmstate_ras to serror_needed/vmstate_serror
-> 6. Check to use "return env.serror.pending != 0" instead of "arm_feature(env, ARM_FEATURE_RAS_EXT)" in the ras_needed()
-> 
-> Change since v4:
-> 1. Rebase the code to latest
-> ---
->  target/arm/cpu.h     |  7 ++++++
->  target/arm/kvm64.c   | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/machine.c | 22 +++++++++++++++++
->  3 files changed, 98 insertions(+)
-> 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 62c36b4..034b035 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -530,6 +530,13 @@ typedef struct CPUARMState {
->           */
->      } exception;
->  
-> +    /* Information associated with an SError */
-> +    struct {
-> +        uint8_t pending;
-> +        uint8_t has_esr;
-> +        uint64_t esr;
-> +    } serror;
-> +
->      /* Thumb-2 EE state.  */
->      uint32_t teecr;
->      uint32_t teehbr;
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index e0b8246..e8705e2 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -29,6 +29,7 @@
->  #include "hw/arm/arm.h"
->  
->  static bool have_guest_debug;
-> +static bool have_inject_serror_esr;
->  
->  /*
->   * Although the ARM implementation of hardware assisted debugging
-> @@ -546,6 +547,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
->  
->      kvm_arm_init_debug(cs);
->  
-> +    /* Check whether userspace can specify guest syndrome value */
-> +    have_inject_serror_esr = kvm_check_extension(cs->kvm_state,
-> +                                                 KVM_CAP_ARM_INJECT_SERROR_ESR);
-> +
->      return kvm_arm_init_cpreg_list(cpu);
->  }
->  
-> @@ -600,6 +605,60 @@ int kvm_arm_cpreg_level(uint64_t regidx)
->  #define AARCH64_SIMD_CTRL_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U32 | \
->                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
->  
-> +static int kvm_put_vcpu_events(ARMCPU *cpu)
-> +{
-> +    CPUARMState *env = &cpu->env;
-> +    struct kvm_vcpu_events events = {};
-> +    int ret;
-> +
-> +    if (!kvm_has_vcpu_events()) {
-> +        return 0;
-> +    }
-> +
-> +    memset(&events, 0, sizeof(events));
-> +    events.exception.serror_pending = env->serror.pending;
-> +
-> +    /* Inject SError to guest with specified syndrome if host kernel
-> +     * supports it, otherwise inject SError without syndrome.
-> +     */
-> +    if (have_inject_serror_esr) {
-> +        events.exception.serror_has_esr = env->serror.has_esr;
-> +        events.exception.serror_esr = env->serror.esr;
-> +    }
-> +
-> +    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
-> +    if (ret) {
-> +        error_report("failed to put vcpu events");
-> +    }
-> +
-> +    return ret;
-> +}
-> +
-> +static int kvm_get_vcpu_events(ARMCPU *cpu)
-> +{
-> +    CPUARMState *env = &cpu->env;
-> +    struct kvm_vcpu_events events;
-> +    int ret;
-> +
-> +    if (!kvm_has_vcpu_events()) {
-> +        return 0;
-> +    }
-> +
-> +    memset(&events, 0, sizeof(events));
-> +    ret = kvm_vcpu_ioctl(CPU(cpu), KVM_GET_VCPU_EVENTS, &events);
-> +
-> +    if (ret) {
-> +        error_report("failed to get vcpu events");
-> +        return ret;
-> +    }
-> +
-> +    env->serror.pending = events.exception.serror_pending;
-> +    env->serror.has_esr = events.exception.serror_has_esr;
-> +    env->serror.esr = events.exception.serror_esr;
-> +
-> +    return 0;
-> +}
-> +
->  int kvm_arch_put_registers(CPUState *cs, int level)
->  {
->      struct kvm_one_reg reg;
-> @@ -727,6 +786,11 @@ int kvm_arch_put_registers(CPUState *cs, int level)
->          return ret;
->      }
->  
-> +    ret = kvm_put_vcpu_events(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
-> +
->      if (!write_list_to_kvmstate(cpu, level)) {
->          return EINVAL;
->      }
-> @@ -863,6 +927,11 @@ int kvm_arch_get_registers(CPUState *cs)
->      }
->      vfp_set_fpcr(env, fpr);
->  
-> +    ret = kvm_get_vcpu_events(cpu);
-> +    if (ret) {
-> +        return ret;
-> +    }
-> +
->      if (!write_kvmstate_to_list(cpu)) {
->          return EINVAL;
->      }
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index ff4ec22..32bcde0 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -172,6 +172,27 @@ static const VMStateDescription vmstate_sve = {
->  };
->  #endif /* AARCH64 */
->  
-> +static bool serror_needed(void *opaque)
-> +{
-> +    ARMCPU *cpu = opaque;
-> +    CPUARMState *env = &cpu->env;
-> +
-> +    return env->serror.pending != 0;
-> +}
-> +
-> +static const VMStateDescription vmstate_serror = {
-> +    .name = "cpu/serror",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = serror_needed,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT8(env.serror.pending, ARMCPU),
-> +        VMSTATE_UINT8(env.serror.has_esr, ARMCPU),
-> +        VMSTATE_UINT64(env.serror.esr, ARMCPU),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static bool m_needed(void *opaque)
->  {
->      ARMCPU *cpu = opaque;
-> @@ -726,6 +747,7 @@ const VMStateDescription vmstate_arm_cpu = {
->  #ifdef TARGET_AARCH64
->          &vmstate_sve,
->  #endif
-> +        &vmstate_serror,
->          NULL
->      }
->  };
-> 
+Only a few targets rely on global device state in cc->do_interrupt;
+add checks to those targets to acquire the BQL if not already held.
 
+Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
+Cc: Alexander Graf <agraf@suse.de>
+Cc: Anthony Green <green@moxielogic.com>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Chris Wulff <crwulff@gmail.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: David Hildenbrand <david@redhat.com>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
+Cc: James Hogan <jhogan@kernel.org>
+Cc: kvm@vger.kernel.org
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Marcelo Tosatti <mtosatti@redhat.com>
+Cc: Marek Vasut <marex@denx.de>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Michael Walle <michael@walle.cc>
+Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-ppc@nongnu.org
+Cc: qemu-s390x@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Stafford Horne <shorne@gmail.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+---
+ accel/tcg/cpu-exec.c       |  2 --
+ target/arm/helper.c        | 28 ++++++++++++++++++++++++++--
+ target/ppc/excp_helper.c   |  8 +++++++-
+ target/s390x/excp_helper.c | 14 +++++++++++++-
+ target/sh4/helper.c        | 14 +++++++++++++-
+ target/xtensa/helper.c     | 16 ++++++++++++++--
+ 6 files changed, 73 insertions(+), 9 deletions(-)
+
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 2383763f9b..b649e3d772 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -497,9 +497,7 @@ static inline bool cpu_handle_exception(CPUState *cpu, int *ret)
+ #else
+         if (replay_exception()) {
+             CPUClass *cc = CPU_GET_CLASS(cpu);
+-            qemu_mutex_lock_iothread();
+             cc->do_interrupt(cpu);
+-            qemu_mutex_unlock_iothread();
+             cpu->exception_index = -1;
+         } else if (!replay_has_interrupt()) {
+             /* give a chance to iothread in replay mode */
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 22dbc42305..548278da14 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7644,7 +7644,8 @@ gen_invep:
+     return false;
+ }
+ 
+-void arm_v7m_cpu_do_interrupt(CPUState *cs)
++/* call with the BQL held */
++static void arm_v7m_cpu_do_interrupt_locked(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+@@ -7828,6 +7829,17 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
+ }
+ 
++void arm_v7m_cpu_do_interrupt(CPUState *cs)
++{
++    if (qemu_mutex_iothread_locked()) {
++        arm_v7m_cpu_do_interrupt_locked(cs);
++    } else {
++        qemu_mutex_lock_iothread();
++        arm_v7m_cpu_do_interrupt_locked(cs);
++        qemu_mutex_unlock_iothread();
++    }
++}
++
+ /* Function used to synchronize QEMU's AArch64 register set with AArch32
+  * register set.  This is necessary when switching between AArch32 and AArch64
+  * execution state.
+@@ -8482,8 +8494,9 @@ static inline bool check_for_semihosting(CPUState *cs)
+  * Do any appropriate logging, handle PSCI calls, and then hand off
+  * to the AArch64-entry or AArch32-entry function depending on the
+  * target exception level's register width.
++ * Call with the BQL held.
+  */
+-void arm_cpu_do_interrupt(CPUState *cs)
++static void arm_cpu_do_interrupt_locked(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+@@ -8534,6 +8547,17 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     }
+ }
+ 
++void arm_cpu_do_interrupt(CPUState *cs)
++{
++    if (qemu_mutex_iothread_locked()) {
++        arm_cpu_do_interrupt_locked(cs);
++    } else {
++        qemu_mutex_lock_iothread();
++        arm_cpu_do_interrupt_locked(cs);
++        qemu_mutex_unlock_iothread();
++    }
++}
++
+ /* Return the exception level which controls this address translation regime */
+ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+diff --git a/target/ppc/excp_helper.c b/target/ppc/excp_helper.c
+index 70ac10e23b..8b2cc48cad 100644
+--- a/target/ppc/excp_helper.c
++++ b/target/ppc/excp_helper.c
+@@ -742,7 +742,13 @@ void ppc_cpu_do_interrupt(CPUState *cs)
+     PowerPCCPU *cpu = POWERPC_CPU(cs);
+     CPUPPCState *env = &cpu->env;
+ 
+-    powerpc_excp(cpu, env->excp_model, cs->exception_index);
++    if (qemu_mutex_iothread_locked()) {
++        powerpc_excp(cpu, env->excp_model, cs->exception_index);
++    } else {
++        qemu_mutex_lock_iothread();
++        powerpc_excp(cpu, env->excp_model, cs->exception_index);
++        qemu_mutex_unlock_iothread();
++    }
+ }
+ 
+ static void ppc_hw_interrupt(CPUPPCState *env)
+diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+index f2b92d7cbc..931c0103c8 100644
+--- a/target/s390x/excp_helper.c
++++ b/target/s390x/excp_helper.c
+@@ -378,7 +378,8 @@ static void do_mchk_interrupt(CPUS390XState *env)
+     load_psw(env, mask, addr);
+ }
+ 
+-void s390_cpu_do_interrupt(CPUState *cs)
++/* call with the BQL held */
++static void s390_cpu_do_interrupt_locked(CPUState *cs)
+ {
+     QEMUS390FLICState *flic = QEMU_S390_FLIC(s390_get_flic());
+     S390CPU *cpu = S390_CPU(cs);
+@@ -457,6 +458,17 @@ try_deliver:
+     }
+ }
+ 
++void s390_cpu_do_interrupt(CPUState *cs)
++{
++    if (qemu_mutex_iothread_locked()) {
++        s390_cpu_do_interrupt_locked(cs);
++    } else {
++        qemu_mutex_lock_iothread();
++        s390_cpu_do_interrupt_locked(cs);
++        qemu_mutex_unlock_iothread();
++    }
++}
++
+ bool s390_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+ {
+     if (interrupt_request & CPU_INTERRUPT_HARD) {
+diff --git a/target/sh4/helper.c b/target/sh4/helper.c
+index c699b8c0a1..6c508cd006 100644
+--- a/target/sh4/helper.c
++++ b/target/sh4/helper.c
+@@ -79,7 +79,8 @@ int cpu_sh4_is_cached(CPUSH4State * env, target_ulong addr)
+ #define MMU_DADDR_ERROR_READ     (-12)
+ #define MMU_DADDR_ERROR_WRITE    (-13)
+ 
+-void superh_cpu_do_interrupt(CPUState *cs)
++/* call with the BQL held */
++static void superh_cpu_do_interrupt_locked(CPUState *cs)
+ {
+     SuperHCPU *cpu = SUPERH_CPU(cs);
+     CPUSH4State *env = &cpu->env;
+@@ -211,6 +212,17 @@ void superh_cpu_do_interrupt(CPUState *cs)
+     }
+ }
+ 
++void superh_cpu_do_interrupt(CPUState *cs)
++{
++    if (qemu_mutex_iothread_locked()) {
++        superh_cpu_do_interrupt_locked(cs);
++    } else {
++        qemu_mutex_lock_iothread();
++        superh_cpu_do_interrupt_locked(cs);
++        qemu_mutex_unlock_iothread();
++    }
++}
++
+ static void update_itlb_use(CPUSH4State * env, int itlbnb)
+ {
+     uint8_t or_mask = 0, and_mask = (uint8_t) - 1;
+diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
+index c9a6132700..ecafecdd3f 100644
+--- a/target/xtensa/helper.c
++++ b/target/xtensa/helper.c
+@@ -26,6 +26,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/main-loop.h"
+ #include "qemu/units.h"
+ #include "cpu.h"
+ #include "exec/exec-all.h"
+@@ -251,8 +252,8 @@ static void handle_interrupt(CPUXtensaState *env)
+     }
+ }
+ 
+-/* Called from cpu_handle_interrupt with BQL held */
+-void xtensa_cpu_do_interrupt(CPUState *cs)
++/* Call with the BQL held */
++static void xtensa_cpu_do_interrupt_locked(CPUState *cs)
+ {
+     XtensaCPU *cpu = XTENSA_CPU(cs);
+     CPUXtensaState *env = &cpu->env;
+@@ -305,6 +306,17 @@ void xtensa_cpu_do_interrupt(CPUState *cs)
+     }
+     check_interrupts(env);
+ }
++
++void xtensa_cpu_do_interrupt(CPUState *cs)
++{
++    if (qemu_mutex_iothread_locked()) {
++        xtensa_cpu_do_interrupt_locked(cs);
++    } else {
++        qemu_mutex_lock_iothread();
++        xtensa_cpu_do_interrupt_locked(cs);
++        qemu_mutex_unlock_iothread();
++    }
++}
+ #else
+ void xtensa_cpu_do_interrupt(CPUState *cs)
+ {
+-- 
+2.17.1

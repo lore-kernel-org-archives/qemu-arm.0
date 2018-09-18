@@ -1,193 +1,405 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2322972wrd;
-        Thu, 20 Sep 2018 13:06:43 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdYLwopiSTAPBn7IGSP4HEsXusFtu4u1WTI9cmXVaVKUKYnUsaK6xlfMjSmLg0BFdZLUhW2h
-X-Received: by 2002:a37:1519:: with SMTP id f25-v6mr599068qkh.268.1537474003541;
-        Thu, 20 Sep 2018 13:06:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537474003; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp5622771wrd;
+        Tue, 18 Sep 2018 12:44:40 -0700 (PDT)
+X-Received: by 2002:a9d:4507:: with SMTP id w7-v6mr16462510ote.105.1537299880540;
+        Tue, 18 Sep 2018 12:44:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537299880; cv=none;
         d=google.com; s=arc-20160816;
-        b=hYPzCsOfLfoApW4ECeyI2vmTh6Y9BagzjHA7QEgRalPnEYKKP0neShYhndwY1rd1UG
-         ivMfpM4aipYPyb4+LV/Qyj8dVwVicYxVAiQr9/P5gO6hS5kaLgVTyoG1LOb24JAMfruN
-         nRgnIS28+en5APe5wYBrcyLqLPUiHKmvWez3ezuYpD1AG+aJ+bt7mEdNBQogQ2jP8/3g
-         Sp1Yv4QSzBxZ25R8h2EethyILYSGbtC8GFGbTf2Y0KhT+hWAqMUbcPN0wEDhA68N8VMw
-         ast3dJrc2LYduzgdFMeAm+85G7rO7/XLCboR5bvIBU9YvYU1lmxqvTPpbu2Cg5BAtrNW
-         5WLw==
+        b=fMS0tbsRoUcHM0g5f9mGdRB1NbgUrizJE9EB+9J5FK4kBaszGkkeh8dsBe50B4W3un
+         D6piAsGFGr/Ch76NkVQwzj0LHKKPuP60P3nmOQY2GE9bv0+hXJ9iqFhD7iQXSOWk6eQX
+         FQYHPMj7lgROdMGrnDrg3xMiPg2TNXag3qj4slLAMpoEWNx8AVcipwOTDxHwpEpab5xv
+         gwDiz9iG3JQ0Azp7TK8V/vzBoNnTNQwRW6wO3qgAc13HSh7p7NTtJaoICdg4rdRW/I8G
+         fFeMaBI5m9F+K33ppFtlDy3y2VPX35hHWGrzsPJblV7RYLIxdxTaOUxEZXlJZz8xZGlx
+         OpUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=+EdT+hSTxGtDm2kVJ6KYMLLvduD7zqeTocRgDvZ9fLw=;
-        b=M/QP0Z1JJ/LfqNTs0sNQ0QB1QuUXJdgmtxYlrY2j4qO3c5PKQAtuHXPkT7MmRpTKUv
-         oqsnXCN5NH9bkQLjxA1nX969UPKthETpgpne6GjXJCqoETOPsfyZRxHrGAzciGf1GQl1
-         y/o4PydoJFp+75ugrJa8rPEKCW70/0U3khPJZLjuWyEcmtNF3cjLwiIGeJNRX/Kg1qUS
-         SF0n/XNxzsdSjb/3KSsh4rIPGEzVxCmd6HRbww57koKsdqIWqsqeG1ANvZu8K+ncFBLX
-         tvf3XbddrwT/Tzn4FxvuK6v1Th70cUFx/zkQPCme6IFlk142AJ4ySLvVK82M6dlNsFCY
-         Jp9w==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature;
+        bh=GR5q8ZeciU2/U4CuSIwUcpI0PTB2sT+pc/HNuhODOzM=;
+        b=hMjBQX+fiVy720Brppxbf2cb5PJShMG2evyXCT0iREa1Z/qDUlZOxGbRjFSGOOrydU
+         0vtDxiqbiDDI0lVsGOBQ6bj2Ab+q8lDX8rIFBBcJHoyVsV0236rseeI7yfQwtq+QnzGI
+         wNsEpD9t5OccA/xP67511GKtaRrPJDOFED8xwehxY9z5TtNFaMpIg5jVe/l0UBsruSi0
+         3YiPH5TU0RAa8sgMHFU7rBlUbJR+pVAHR/bfPoX4RiAHjcT5CC4tzCKkQ3FY5a/Ji4fH
+         /9FIJ3vekSne4JAW53KHVQerTc/E4KxuXKWgnPMYwcbkcxl47STCWyVzjPYVIRrHti5d
+         4xMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g11-v6si828433qtc.224.2018.09.20.13.06.43
+       dkim=pass header.i=@linaro.org header.s=google header.b=hsLydqq0;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 1-v6sor10532154oto.55.2018.09.18.12.44.40
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 20 Sep 2018 13:06:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Tue, 18 Sep 2018 12:44:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52654 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g35Dl-0005fl-0l
-	for alex.bennee@linaro.org; Thu, 20 Sep 2018 16:06:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55277)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1g35Db-0005du-LS
-	for qemu-arm@nongnu.org; Thu, 20 Sep 2018 16:06:32 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1g35Da-0005X8-L3
-	for qemu-arm@nongnu.org; Thu, 20 Sep 2018 16:06:31 -0400
-Received: from chuckie.co.uk ([82.165.15.123]:33154
-	helo=s16892447.onlinehome-server.info)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1g35DS-0005Ql-Aa; Thu, 20 Sep 2018 16:06:22 -0400
-Received: from host86-191-82-156.range86-191.btcentralplus.com
-	([86.191.82.156] helo=[192.168.1.65])
-	by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1g35DA-00065z-I9; Thu, 20 Sep 2018 21:06:05 +0100
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-References: <20180917163103.6113-1-cota@braap.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Openpgp: preference=signencrypt
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
-	xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
-	3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
-	E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
-	PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
-	PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
-	AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
-	eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
-	NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
-	mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
-	z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
-	T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
-	DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
-	y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
-	2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
-	14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
-	YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
-	Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
-	BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
-	opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
-	NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
-	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
-	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
-	imgcU9TTGC5qd9g=
-Message-ID: <0d919bf9-9379-e3e6-3f68-3c0010362d64@ilande.co.uk>
-Date: Thu, 20 Sep 2018 21:05:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=hsLydqq0;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=GR5q8ZeciU2/U4CuSIwUcpI0PTB2sT+pc/HNuhODOzM=;
+        b=hsLydqq0kCfsELqUFBznNJ92uRyW2sV0tXI8NvYRBiLaKzJFcDOJtN5qmwAv1X4UeW
+         Pj5NJ3EqlG7qF278bVdd+3qymk7pKAS/Rb8Q9lP6n0lmqX+e3KdmrFcB+25XI1/TAc9g
+         CTM3krANwcOBiTmhifHNWUZq3RRAF8ZGqGBS4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=GR5q8ZeciU2/U4CuSIwUcpI0PTB2sT+pc/HNuhODOzM=;
+        b=Pe18aLLFrWJf4YrRITCusXYJashAzv8h90cCnpg44PLCGsTx037Ak9vWLqzcL/885p
+         CK3nHB2ERPOGBuWOjpDq1/ESsSE49/qXdzEBlvvMreoen+VKHngezidM6IF4iGFG59KW
+         hfhrRbVwf+plPC0yi5s+V6f/V+R11g4w/dr/qJu9SIauT8Zgpq0IsnQC6F+wf7L6MSnr
+         rXM2G1OaRWA1S1RwCEP1KGFAJfCv8NgYoKAok8cwEPkevpjRuysXIbs94Uqqvpe36aug
+         UC8mi5y+VrVDsl69XUt5fVC3uApNXceDfJBzS2v6ZqvlpHoKnOM5tiHe0CHl3dc7fu4z
+         mclw==
+X-Gm-Message-State: APzg51DeFGWfJvxuMhGdqcL8I9vkkq+Ws2SQbyduK4KIC1Hq/B71XpZm
+	oRw+JeQFkAWEhKna9l8YRWHywDK7Qaw5zqur8LTvB8Ao
+X-Google-Smtp-Source: ANB0VdbmOWkj4RGPaECjZEGugZW8QV6bvKLqS0hpFc7C97388ynECb7s8zuU0KNiOsrQd8/rHrLTnjXghDC1krSeaJQ=
+X-Received: by 2002:a9d:cb7:: with SMTP id b52-v6mr5259411otb.98.1537299875403;
+ Tue, 18 Sep 2018 12:44:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180917163103.6113-1-cota@braap.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-GB
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 86.191.82.156
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 82.165.15.123
-Subject: Re: [Qemu-arm] [PATCH 00/35] exec: drop BQL from interrupt handling
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
-	kvm@vger.kernel.org, David Hildenbrand <david@redhat.com>,
-	James Hogan <jhogan@kernel.org>, Anthony Green <green@moxielogic.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
-	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Chris Wulff <crwulff@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RcmnDabD4qml
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Tue, 18 Sep 2018 12:44:14
+ -0700 (PDT)
+In-Reply-To: <1536488638-29326-1-git-send-email-hongbo.zhang@linaro.org>
+References: <1536488638-29326-1-git-send-email-hongbo.zhang@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 18 Sep 2018 12:44:14 -0700
+Message-ID: <CAFEAcA-vg88gJKHKa8xOVdNvTp_dk3THwhY+eFdxvPtrXq8CjQ@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/arm: Add arm SBSA reference machine
+To: Hongbo Zhang <hongbo.zhang@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: RTWJxHabPy/u
 
-On 17/09/2018 17:30, Emilio G. Cota wrote:
+On 9 September 2018 at 03:23, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> For the Aarch64, there is one machine 'virt', it is primarily meant to
+> run on KVM and execute virtualization workloads, but we need an
+> environment as faithful as possible to physical hardware, for supporting
+> firmware and OS development for pysical Aarch64 machines.
+>
+> This patch introduces new machine type 'sbsa-ref' with main features:
+>  - Based on 'virt' machine type.
+>  - Re-designed memory map.
+>  - EL2 and EL3 are enabled by default.
+>  - GIC version 3 only.
+>  - AHCI controller attached to system bus, and then CDROM and hard disc
+>    can be added to it.
+>  - EHCI controller attached to system bus, with USB mouse and key board
+>    installed by default.
+>  - E1000E ethernet card on PCIE bus.
+>  - VGA display adaptor on PCIE bus.
+>  - Default CPU type cortex-a57, 4 cores, and 1G bytes memory.
+>  - No virtio functions enabled, since this is to emulate real hardware.
+>  - No paravirtualized fw_cfg devicei either.
+>  - No ACPI table, it should be supplied by firmware.
+>
+> Arm Trusted Firmware and UEFI porting to this are done accordingly.
+>
+> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+> ---
+> Changes since v2:
+>  - rename the platform 'sbsa-ref'
+>  - move all the codes to a separate file sbsa-ref.c
+>  - remove paravirtualized fw_cfg device
+>  - do not supply ACPI tables, since firmware will do it
+>  - supply only necessary DT nodes
+>  - and other minor code clean up
+>
+>  hw/arm/Makefile.objs  |    2 +-
+>  hw/arm/sbsa-ref.c     | 1184 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h |    2 +
+>  3 files changed, 1187 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/arm/sbsa-ref.c
+>
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index d51fcec..a8895eb 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -1,4 +1,4 @@
+> -obj-y += boot.o virt.o sysbus-fdt.o
+> +obj-y += boot.o virt.o sbsa-ref.o sysbus-fdt.o
+>  obj-$(CONFIG_ACPI) += virt-acpi-build.o
+>  obj-$(CONFIG_DIGIC) += digic_boards.o
+>  obj-$(CONFIG_EXYNOS4) += exynos4_boards.o
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> new file mode 100644
+> index 0000000..b5e19f4
+> --- /dev/null
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -0,0 +1,1184 @@
+> +/*
+> + * ARM SBSA Reference Platform emulation
+> + *
+> + * Copyright (c) 2018 Linaro Limited
+> + * Written by Hongbo Zhang <hongbo.zhang@linaro.org>
+> + *
+> + * Based on hw/arm/virt.c
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms and conditions of the GNU General Public License,
+> + * version 2 or later, as published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope it will be useful, but WITHOUT
+> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+> + * more details.
+> + *
+> + * You should have received a copy of the GNU General Public License along with
+> + * this program.  If not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/sysbus.h"
+> +#include "hw/arm/arm.h"
+> +#include "hw/arm/primecell.h"
+> +#include "hw/arm/virt.h"Please remove all the code you don't need, rather than
+just copin
 
-> This series comes originally from a series of patches that Paolo
-> sent to me a long time ago. I have kept most of his S-o-b tags,
-> but I have done the forward port of the patches to the current
-> QEMU code base, so please blame all possible bugs on me, not him.
-> 
-> The goal of this series is to push the BQL out of interrupt
-> handling wherever possible. Many targets do not need the BQL
-> to handle interrupts, so for those targets we get rid of the
-> BQL in interrupt handling. In TCG mode, this by itself does
-> not yield measurable performance gains. However, it is a
-> necessary first step before tackling BQL contention when
-> managing CPU states (i.e. exiting the exec loop always
-> involves taking the BQL, which does not scale).
-> 
-> The patches:
-> 
-> - Patch 0 accesses icount_decr.u16 consistently with atomics.
->   This is important because we use it across threads to signal
->   that an interrupt is pending.
-> 
-> - 2-28: convert direct callers of cpu->interrupt_request
->   to use atomic accesses or CPU helper functions that use atomics.
->   I have broken these up into individual patches to ease review.
->   Note that in some cases I have added many atomic_reads, most
->   of which are probably unnecessary. However, I'd leave this up
->   to the maintainers, since I do not want to break things by
->   doing a single atomic_read(&cpu->interrupt_request) at the
->   beginning of a function and then miss subsequent updates to
->   cpu->interrupt_request.
-> 
-> - 29-31: drop the BQL requirement when handling cpu->interrupt_request
-> 
-> - 32-33: drop now unnecessary BQL acquisitions in i386 and ppc
-> 
-> - 34-35: push down the BQL acquisition to cpu->do_interrupt
->   and cpu->cpu_exec_interrupt. Here I am Cc'ing everyone so that
->   we can make sure I am not missing any target that requires
->   the BQL on either do_interrupt or cpu_exec_interrupt.
-> 
-> This series is checkpatch-clean, and can be fetched from:
->   https://github.com/cota/qemu/tree/cpu-lock
-> 
-> Note that the series applies on top of patches that are
-> already on the qemu-devel list and will hopefully soon
-> be upstream. This series begins after commit
-> 4ece0cbd74 ("cpus: access .qemu_icount_bias with atomic64")
-> in that tree.
 
-I ran the above cpu-lock branch through my SPARC32 and SPARC64 test suite just to be
-sure, and everything appeared to work fine. So for the SPARC32/64 patches:
+> +#include "hw/devices.h"
+> +#include "net/net.h"
+> +#include "sysemu/device_tree.h"
+> +#include "sysemu/numa.h"
+> +#include "sysemu/sysemu.h"
+> +#include "hw/compat.h"
+> +#include "hw/loader.h"
+> +#include "exec/address-spaces.h"
+> +#include "qemu/bitops.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/pci-host/gpex.h"
+> +#include "hw/arm/sysbus-fdt.h"
+> +#include "hw/platform-bus.h"
+> +#include "hw/arm/fdt.h"
+> +#include "hw/intc/arm_gic.h"
+> +#include "hw/intc/arm_gicv3_common.h"
+> +#include "kvm_arm.h"
+> +#include "hw/smbios/smbios.h"
+> +#include "qapi/visitor.h"
+> +#include "standard-headers/linux/input.h"
+> +#include "hw/arm/smmuv3.h"
+> +#include "hw/ide/internal.h"
+> +#include "hw/ide/ahci_internal.h"
+> +#include "hw/usb.h"
+> +#include "qemu/units.h"
+> +
+> +/* Number of external interrupt lines to configure the GIC with */
+> +#define NUM_IRQS 256
+> +
+> +#define PLATFORM_BUS_NUM_IRQS 64
+> +
+> +#define SATA_NUM_PORTS 6
+> +
+> +#define RAMLIMIT_GB 255
+> +#define RAMLIMIT_BYTES (RAMLIMIT_GB * 1024ULL * 1024 * 1024)
+> +
+> +static const MemMapEntry sbsa_ref_memmap[] = {
+> +    /* Space up to 0x8000000 is reserved for a boot ROM */
+> +    [VIRT_FLASH] =              {          0, 0x08000000 },
+> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
+> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
+> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
+> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
+> +    [VIRT_GIC_V2M] =            { 0x08020000, 0x00001000 },
+> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
+> +    [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
+> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
+> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
+> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
+> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
+> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
+> +    [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
+> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
+> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
+> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
+> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
+> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
+> +};
+> +
+> +static const int sbsa_ref_irqmap[] = {
+> +    [VIRT_UART] = 1,
+> +    [VIRT_RTC] = 2,
+> +    [VIRT_PCIE] = 3, /* ... to 6 */
+> +    [VIRT_GPIO] = 7,
+> +    [VIRT_SECURE_UART] = 8,
+> +    [VIRT_AHCI] = 9,
+> +    [VIRT_EHCI] = 10,
+> +    [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+> +    [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> +};
+> +
+> +static const char *valid_cpus[] = {
+> +    ARM_CPU_TYPE_NAME("cortex-a53"),
+> +    ARM_CPU_TYPE_NAME("cortex-a57"),
+> +    ARM_CPU_TYPE_NAME("max"),
 
-Tested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+I don't think you need or want to support multiple CPU types.
+
+> +};
+> +
+> +static bool cpu_type_valid(const char *cpu)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
+> +        if (strcmp(cpu, valid_cpus[i]) == 0) {
+> +            return true;
+> +        }
+> +    }
+> +    return false;
+> +}
+> +
+> +static void create_fdt(VirtMachineState *vms)
+> +{
+> +    void *fdt = create_device_tree(&vms->fdt_size);
+> +
+> +    if (!fdt) {
+> +        error_report("create_device_tree() failed");
+> +        exit(1);
+> +    }
+> +
+> +    vms->fdt = fdt;
+> +
+> +    /* Header */
+> +    qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
+> +    qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+> +    qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+> +
+> +    /* /chosen must exist for load_dtb to fill in necessary properties later */
+> +    qemu_fdt_add_subnode(fdt, "/chosen");
+> +
+> +    /* Clock node, for the benefit of the UART. The kernel device tree
+> +     * binding documentation claims the PL011 node clock properties are
+> +     * optional but in practice if you omit them the kernel refuses to
+> +     * probe for the device.
+> +     */
+> +    vms->clock_phandle = qemu_fdt_alloc_phandle(fdt);
+> +    qemu_fdt_add_subnode(fdt, "/apb-pclk");
+> +    qemu_fdt_setprop_string(fdt, "/apb-pclk", "compatible", "fixed-clock");
+> +    qemu_fdt_setprop_cell(fdt, "/apb-pclk", "#clock-cells", 0x0);
+> +    qemu_fdt_setprop_cell(fdt, "/apb-pclk", "clock-frequency", 24000000);
+> +    qemu_fdt_setprop_string(fdt, "/apb-pclk", "clock-output-names",
+> +                                "clk24mhz");
+> +    qemu_fdt_setprop_cell(fdt, "/apb-pclk", "phandle", vms->clock_phandle);
+
+Does the limited fdt for the sbsa reference machine need to have
+this apb-pclk data in it?
+
+> +
+> +    if (have_numa_distance) {
+> +        int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
+> +        uint32_t *matrix = g_malloc0(size);
+> +        int idx, i, j;
+> +
+> +        for (i = 0; i < nb_numa_nodes; i++) {
+> +            for (j = 0; j < nb_numa_nodes; j++) {
+> +                idx = (i * nb_numa_nodes + j) * 3;
+> +                matrix[idx + 0] = cpu_to_be32(i);
+> +                matrix[idx + 1] = cpu_to_be32(j);
+> +                matrix[idx + 2] = cpu_to_be32(numa_info[i].distance[j]);
+> +            }
+> +        }
+> +
+> +        qemu_fdt_add_subnode(fdt, "/distance-map");
+> +        qemu_fdt_setprop_string(fdt, "/distance-map", "compatible",
+> +                                "numa-distance-map-v1");
+> +        qemu_fdt_setprop(fdt, "/distance-map", "distance-matrix",
+> +                         matrix, size);
+> +        g_free(matrix);
+> +    }
+> +}
+> +
+> +static void fdt_add_timer_nodes(const VirtMachineState *vms)
+> +{
+> +    /* On real hardware these interrupts are level-triggered.
+> +     * On KVM they were edge-triggered before host kernel version 4.4,
+> +     * and level-triggered afterwards.
+> +     * On emulated QEMU they are level-triggered.
+> +     *
+> +     * Getting the DTB info about them wrong is awkward for some
+> +     * guest kernels:
+> +     *  pre-4.8 ignore the DT and leave the interrupt configured
+> +     *   with whatever the GIC reset value (or the bootloader) left it at
+> +     *  4.8 before rc6 honour the incorrect data by programming it back
+> +     *   into the GIC, causing problems
+> +     *  4.8rc6 and later ignore the DT and always write "level triggered"
+> +     *   into the GIC
+> +     */
+> +    ARMCPU *armcpu;
+> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+> +
+> +    if (vmc->claim_edge_triggered_timers) {
+> +        irqflags = GIC_FDT_IRQ_FLAGS_EDGE_LO_HI;
+> +    }
+> +
+> +    qemu_fdt_add_subnode(vms->fdt, "/timer");
+> +
+> +    armcpu = ARM_CPU(qemu_get_cpu(0));
+> +    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+> +        const char compat[] = "arm,armv8-timer\0arm,armv7-timer";
+> +        qemu_fdt_setprop(vms->fdt, "/timer", "compatible",
+> +                         compat, sizeof(compat));
+> +    } else {
+> +        qemu_fdt_setprop_string(vms->fdt, "/timer", "compatible",
+> +                                "arm,armv7-timer");
+> +    }
+> +    qemu_fdt_setprop(vms->fdt, "/timer", "always-on", NULL, 0);
+> +    qemu_fdt_setprop_cells(vms->fdt, "/timer", "interrupts",
+> +                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_S_EL1_IRQ, irqflags,
+> +                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL1_IRQ, irqflags,
+> +                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_VIRT_IRQ, irqflags,
+> +                       GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL2_IRQ, irqflags);
+
+More fdt nodes you don't need. You don't want to just copy the whole of virt's
+FDT code into this source file. You want the absolute minimum amount of FDT
+generation that is required by the firmware you're going to be running.
 
 
-ATB,
 
-Mark.
+> +}
+> +
+> +static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> +{
+> +    int cpu;
+> +    int addr_cells = 1;
+> +    const MachineState *ms = MACHINE(vms);
+> +
+> +    /*
+> +     * From Documentation/devicetree/bindings/arm/cpus.txt
+> +     *  On ARM v8 64-bit systems value should be set to 2,
+> +     *  that corresponds to the MPIDR_EL1 register size.
+> +     *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+> +     *  in the system, #address-cells can be set to 1, since
+> +     *  MPIDR_EL1[63:32] bits are not used for CPUs
+> +     *  identification.
+> +     *
+> +     *  Here we actually don't know whether our system is 32- or 64-bit one.
+
+This too is code you don't need (for instance for SBSA you do
+know that you have a 64-bit system).
+
+
+The purpose of suggesting that we use a separate file from the
+virt board is that we can remove all the complexities that the
+virt board has for fdt generation, and just have a simpler
+board code file which does only what the sbsa reference board
+needs.
+
+Please can you go through and remove all the unnecessary code
+here; I think you should end up with a much smaller source file
+which will then be easier to review too.
+
+thanks
+-- PMM

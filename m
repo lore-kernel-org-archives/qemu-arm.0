@@ -1,55 +1,55 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp4899754wrd;
-        Tue, 18 Sep 2018 00:48:15 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbqGQIIcyjihtBwtFazI6djd3EC8kkivKT41tQxKbFKKxI2hu5pUIlTXtYnz1VAmzWTjQBZ
-X-Received: by 2002:a63:5055:: with SMTP id q21-v6mr26680730pgl.397.1537256895823;
-        Tue, 18 Sep 2018 00:48:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537256895; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp5005942wrd;
+        Tue, 18 Sep 2018 02:51:19 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdY5QKs+wRMUH6RcAJ9yTMSzi/qGXBR8nxcJFN1IR7VNtHARrQf6OCKNoxORR3tv+An+k0Gk
+X-Received: by 2002:a17:902:768c:: with SMTP id m12-v6mr28734055pll.56.1537264279056;
+        Tue, 18 Sep 2018 02:51:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537264279; cv=none;
         d=google.com; s=arc-20160816;
-        b=0yX5yrY9qLztgVyEaB7u+QYPjOBPwv71oWpGFPMfWG4ydkkHL+4yXvyWV7OkaHM26O
-         DwMYEOa3P59eH0s3YNq4ovN1SwibP9UoO+Xfa1pCg2KqgFOhWLGfHfHJMx0JVzupeKiH
-         DezOz0IampnNE/n1b1nW8fG2sYd/0cO0ZzV8u9g5Dfq6a/7UwBD0NTra54g9xB2FbXiU
-         lqX1mD+sHWxZ0qYP0gN3a/iPlLCuo58O4hv3qvUWQp0KZWNvSDUqeab8/hKnb4rcuIJi
-         UscVUn7WsIZbxzqz1BXO7iWDoV7FY8qLkla+yf8GtPbdKjGTiRPHB/Y0TnV7aHqZjuiz
-         48Mw==
+        b=B6spltzDIhJKxW0WeiIv7bkvcbo9hKyBLDbULAo6K7QLny39kFkyCXDsKFAXbRPol1
+         rRvaDebhfntjkwLZS8Tg/2BqKTbt0cBqLi102VgT127m8Q+CW+wQQJkHfImmuwb/u2nh
+         rlOMmjr/TTq9zFYy5bYlALWX6zKKOiXDHckhimrH9U5pHz3UMitoCsyn3UVXTDwVJq2Q
+         uvu53s/H0jUJY5PYqytHdQu1A5JOEu7stMJZwcdTuDvOZNFa4MAz83iiis3zlR61qzXZ
+         wugyBYvSqs+oCrx/LLf/33t0yma40cZGpx0IsKliFnt9CYwOwBEgLF1b8GhEE/bKg4C3
+         u9kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:cc:to
          :subject;
-        bh=V52ql1JZQyHG+GMM76B+qCkmSVjxrq2+cQ6Z2oHm9F0=;
-        b=gqZhSrefl3Twea+vyyRqOiJzLMmalmv1rnJmLQGOlHsry0ZuG3rgD65jrW5IyUPPDD
-         ySg9ZMvrAJKoRYQQFJHqKtsBx73qTxDShsNE5nhpqvJht0DAM/Q2DPCE/CiDdVIb9yAe
-         yclgUBhfYmN/83MpuiFDLfZIvYXg2NO7jsCR2Rku2CRj8Jljyuf7Srolr+8Q7i/LKpi8
-         8kLqD2UWehBi5UiGrs8Qn6DIMgWMBWEVwmm3Jo78oEVJvpXgi0lZOtyCPemRtPNTZK5I
-         7LfGKPPgXz1WgRfx1DAHqfPFZNaOGpXKAdGW3izNHjOJr8PWyfQDSWHM+E/v0d0UpPIL
-         OgmQ==
+        bh=ydaurBK9Ra31PBP7eWCxSww69BbKX/X5abI2H7veQZM=;
+        b=Fxt7xgqsRFekwsBQtbPSOfyhIpSeKJuDQRyr4X3c3qw5/6OlgD4twHBxmtA8qVZaio
+         RZlPJNqqHOKQYnyk+V64hDq/TSzu8DqZhEPW8anZEqunEpmKblOCjj81pkNgCh3Zhrka
+         uo3FOoCE0uVTG5HPUAT89p52KC9E7aaS2Dweonip0m/+Idzp7MAAQwblA0yCGHt4AMG8
+         Z+7w9KSlJE4ZjRuSU6nTV0u1UCz/ITCPeB65WEBPRHEvlz6HU6OdhPXcEpYvuRkF48v6
+         blihbIRiWNXyDL+6oKezeXJ71HJxl+SrcUA4CktLga5ac/mY/W77ABP+5aEuyST4wtWC
+         ZfdA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id u11-v6si14370004pgc.460.2018.09.18.00.48.15;
-        Tue, 18 Sep 2018 00:48:15 -0700 (PDT)
+        by mx.google.com with ESMTP id l7-v6si17991876pgi.261.2018.09.18.02.51.18;
+        Tue, 18 Sep 2018 02:51:19 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728787AbeIRNTh (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Tue, 18 Sep 2018 09:19:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51720 "EHLO mx1.redhat.com"
+        id S1729379AbeIRPXG (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Tue, 18 Sep 2018 11:23:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50070 "EHLO mx1.redhat.com"
         rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1727140AbeIRNTh (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 18 Sep 2018 09:19:37 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+        id S1728645AbeIRPXG (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 18 Sep 2018 11:23:06 -0400
+Received: from smtp.corp.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com [10.5.11.26])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 6AB0A31649A6;
-        Tue, 18 Sep 2018 07:48:12 +0000 (UTC)
+        by mx1.redhat.com (Postfix) with ESMTPS id 1BED73082131;
+        Tue, 18 Sep 2018 09:51:15 +0000 (UTC)
 Received: from [10.36.116.248] (ovpn-116-248.ams2.redhat.com [10.36.116.248])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 999FE104255A;
-        Tue, 18 Sep 2018 07:48:04 +0000 (UTC)
-Subject: Re: [PATCH 35/35] exec: push BQL down to cpu->cpu_exec_interrupt
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 2CB8D30912F4;
+        Tue, 18 Sep 2018 09:51:07 +0000 (UTC)
+Subject: Re: [PATCH 00/35] exec: drop BQL from interrupt handling
 To:     "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
 Cc:     Paolo Bonzini <pbonzini@redhat.com>,
         Aleksandar Markovic <amarkovic@wavecomp.com>,
@@ -76,7 +76,6 @@ Cc:     Paolo Bonzini <pbonzini@redhat.com>,
         Richard Henderson <rth@twiddle.net>,
         Stafford Horne <shorne@gmail.com>
 References: <20180917163103.6113-1-cota@braap.org>
- <20180917163103.6113-36-cota@braap.org>
 From:   David Hildenbrand <david@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
@@ -123,47 +122,84 @@ Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  +8Umfre0Xt4713VxMygW0PnQt5aSQdMD58jHFxTk092mU+yIHj5LeYgvwSgZN4airXk5yRXl
  SE+xAvmumFBY
 Organization: Red Hat GmbH
-Message-ID: <a0232ed4-33f9-e06e-5308-1c096d518662@redhat.com>
-Date:   Tue, 18 Sep 2018 09:48:03 +0200
+Message-ID: <ddc5feb0-6a52-d511-4744-11c1ef8e8691@redhat.com>
+Date:   Tue, 18 Sep 2018 11:51:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180917163103.6113-36-cota@braap.org>
+In-Reply-To: <20180917163103.6113-1-cota@braap.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Tue, 18 Sep 2018 07:48:13 +0000 (UTC)
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.26
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.42]); Tue, 18 Sep 2018 09:51:16 +0000 (UTC)
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: uuacFtMqzC/1
+X-TUID: COFsgwUP3XdB
 
-
->      return false;
-> diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
-> index 931c0103c8..f2a93abf01 100644
-> --- a/target/s390x/excp_helper.c
-> +++ b/target/s390x/excp_helper.c
-> @@ -480,10 +480,13 @@ bool s390_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->                 the parent EXECUTE insn.  */
->              return false;
->          }
-> +        qemu_mutex_lock_iothread();
->          if (s390_cpu_has_int(cpu)) {
->              s390_cpu_do_interrupt(cs);
-
-You can directly use s390_cpu_do_interrupt_locked() here.
-
-> +            qemu_mutex_unlock_iothread();
->              return true;
->          }
-> +        qemu_mutex_unlock_iothread();
->          if (env->psw.mask & PSW_MASK_WAIT) {
->              /* Woken up because of a floating interrupt but it has already
->               * been delivered. Go back to sleep. */
+Am 17.09.18 um 18:30 schrieb Emilio G. Cota:
+> This series comes originally from a series of patches that Paolo
+> sent to me a long time ago. I have kept most of his S-o-b tags,
+> but I have done the forward port of the patches to the current
+> QEMU code base, so please blame all possible bugs on me, not him.
 > 
+> The goal of this series is to push the BQL out of interrupt
+> handling wherever possible. Many targets do not need the BQL
+> to handle interrupts, so for those targets we get rid of the
+> BQL in interrupt handling. In TCG mode, this by itself does
+> not yield measurable performance gains. However, it is a
+> necessary first step before tackling BQL contention when
+> managing CPU states (i.e. exiting the exec loop always
+> involves taking the BQL, which does not scale).
+> 
+> The patches:
+> 
+> - Patch 0 accesses icount_decr.u16 consistently with atomics.
+>   This is important because we use it across threads to signal
+>   that an interrupt is pending.
+> 
+> - 2-28: convert direct callers of cpu->interrupt_request
+>   to use atomic accesses or CPU helper functions that use atomics.
+>   I have broken these up into individual patches to ease review.
+>   Note that in some cases I have added many atomic_reads, most
+>   of which are probably unnecessary. However, I'd leave this up
+>   to the maintainers, since I do not want to break things by
+>   doing a single atomic_read(&cpu->interrupt_request) at the
+>   beginning of a function and then miss subsequent updates to
+>   cpu->interrupt_request.
+> 
+> - 29-31: drop the BQL requirement when handling cpu->interrupt_request
+> 
+> - 32-33: drop now unnecessary BQL acquisitions in i386 and ppc
+> 
+> - 34-35: push down the BQL acquisition to cpu->do_interrupt
+>   and cpu->cpu_exec_interrupt. Here I am Cc'ing everyone so that
+>   we can make sure I am not missing any target that requires
+>   the BQL on either do_interrupt or cpu_exec_interrupt.
+> 
+> This series is checkpatch-clean, and can be fetched from:
+>   https://github.com/cota/qemu/tree/cpu-lock
+> 
+> Note that the series applies on top of patches that are
+> already on the qemu-devel list and will hopefully soon
+> be upstream. This series begins after commit
+> 4ece0cbd74 ("cpus: access .qemu_icount_bias with atomic64")
+> in that tree.
+> 
+> Thanks,
+> 
+> 		Emilio
+> 
+
+I just did a (very slow) make -j32 of QEMU on my 16 core notebook inside
+a MTTCG s390x-softmmu guest with 32 VCPUs. I used the same test when
+reworking floating interrupt support to make sure there are no races.
+
+As I got no deadlock, I assume you series does not break anything for s390x.
+
+Thanks!
 
 -- 
 

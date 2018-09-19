@@ -1,138 +1,97 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp504228wrd;
-        Wed, 19 Sep 2018 03:40:22 -0700 (PDT)
-X-Google-Smtp-Source: ANB0Vdb2bh7UMkodEzIhXahckHqT/39XQkcSLlkaaA0UVaMqUhI2+iIPKtsK5JAFn4K3RkmfwMG6
-X-Received: by 2002:ad4:4251:: with SMTP id l17-v6mr23448060qvq.70.1537353622812;
-        Wed, 19 Sep 2018 03:40:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537353622; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1141922wrd;
+        Wed, 19 Sep 2018 14:30:54 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbqOseVl4gyhvgZaTrYQadMlt6AM3ICw4WrgYaAy+Ne7qAbKDSvCUo1R+Xr6LbkQTYFMcsU
+X-Received: by 2002:a37:7286:: with SMTP id n128-v6mr25266651qkc.124.1537392653949;
+        Wed, 19 Sep 2018 14:30:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537392653; cv=none;
         d=google.com; s=arc-20160816;
-        b=pHsLF0KVWWlFtPX3o8ymHtHyH30Ok3HP4HbwKIje6v45tkfAULew0QpjBMEurFX8MS
-         9nVUeBcRbnC+IRwY0rHcuZTgOnBvQSqwz/mOE5kvgNt4Hte1TFp6FOnh8apxfj9kS5S/
-         zKYqEqR3+uCUgABWEy+QYB4sUJrVMus5WwKY4pbmN8dwDW2heRUt2RQ0x+iq60zog8Ik
-         V6tFGBVVtqTTuKUe7OIclHtWclNhVKqA3FMcLpB3Rzd1qqcG/im2DHO3HkWCG1kAFrFc
-         1OLU3yxaclt1gqRyqkszzx2HWjUhe7qRx4mskNcMqeUYcaql28auWp8zofQzefDM6vWa
-         v1GQ==
+        b=YC85jljjAXv5HHZjSERhnX0rPe7acKnUcM0kp0DzffpDsvZD4dS8rSpSq9RmMepA0a
+         I4rKcNnBkrc8FvsZoHgUBjWmX0OfPoHVzxVGJOpfv7VnV6pdhp5nWDLfK8Hl/56Z4Mxv
+         6fWKJLhhsCyI/o9nPRwlz3ALdj8DCodYrVKrWgp+Tw6n/FNNeYiP5gUoaJbWoU1Pnwcj
+         V0JjonTpe3boQkwpG+HAROLJmwWdOAP8NoqSYl1S+QD2fsy7G/naOAGqj3GjegKCSUcU
+         aGmKrJR5PwEw3rVlyB2GBvMg1GDD5AouYZUG5/w5MHSxslZTswjYerC+iQDHCQ9+N0oa
+         7XxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature;
-        bh=A9uMWAYxH3dgUy63REj5XMjKqHueIU5FC2NAmnDSzUE=;
-        b=JHbOQTdKVDhlTVqWe+LmlaCSUWDkoiAadL96zwkjbk4GVrHh88SsOIOdlnthB6D7dx
-         tJWPUJKBaL//faeKSmUoC2POkUVTlnruFQj+2NZRFgkAD0J8RP1PhqopmRDyZxDE89vj
-         7XUgPuedcW/Gnoi1tvcHwGJTnvVoih/QWojD3QqJIVXfHY1/ZrOrxpJd7uNRCZbonO3N
-         FMAz8uNE0A+i9xRSbkg/WTJ8rudR8UkvLtocUwTLkwZkq6jULKGZIGp0fHKPXMHljZXM
-         9jRgZyu7apQzfMqE8k4ZB8cRfKKfWXq4ZUMeZxJFyhZ6fcCkAF8Aia3iTc9UuOnDUSWE
-         I2NQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=uloqL7/iPHpACqsbU8LFYaEFgy5esk4GxA6OwUEPdIQ=;
+        b=q5au0hT82g3TxG/P1El4T7RbQDCn/b9EKKDRMMcHsp2mVD+3w04be++fthJB2Jf7+q
+         OjFRD2N80QmHvuKQ/mpSdUJfJOKNQcf9R0gq3ckv8B3suv6PyYDOILatuhMc5nPkoDRb
+         L9ULYcsSJ9Muovr8UI0RwlyEexRWPMNySBZzzpUC5BUKMBxFNKnW7y51hmXmD8dIIMZe
+         umwXpaXBANHMcUT2wvIMGyqvZugKW7Z5qPThALtVFpl69UTDeI/jKHNUMkrziezvsnvV
+         72VCQdG5gWmpeSrPN5crbHBXxxUPAhSE52JRQnHwmaBPc4lZdmVWD7VpDasYHyEahlxn
+         BtQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ojIzKQS9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="aPDNjn/Z";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z74-v6si3429360qkg.148.2018.09.19.03.40.22
+        by mx.google.com with ESMTPS id z18-v6si468090qka.151.2018.09.19.14.30.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 19 Sep 2018 03:40:22 -0700 (PDT)
+        Wed, 19 Sep 2018 14:30:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ojIzKQS9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44681 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="aPDNjn/Z";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47433 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g2ZuA-00029Z-BF
-	for alex.bennee@linaro.org; Wed, 19 Sep 2018 06:40:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54598)
+	id 1g2k3h-0005Qe-GZ
+	for alex.bennee@linaro.org; Wed, 19 Sep 2018 17:30:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48149)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1g2Zu1-00028u-5K
-	for qemu-arm@nongnu.org; Wed, 19 Sep 2018 06:40:13 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1g2k3Z-0005Pi-HR
+	for qemu-arm@nongnu.org; Wed, 19 Sep 2018 17:30:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1g2Zty-0006Rv-E1
-	for qemu-arm@nongnu.org; Wed, 19 Sep 2018 06:40:13 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36034)
+	(envelope-from <peter.maydell@linaro.org>) id 1g2k3W-0006no-S1
+	for qemu-arm@nongnu.org; Wed, 19 Sep 2018 17:30:45 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332]:38511)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1g2Zty-0006PC-6S; Wed, 19 Sep 2018 06:40:10 -0400
-Received: by mail-wm1-x342.google.com with SMTP id j192-v6so6361733wmj.1;
-	Wed, 19 Sep 2018 03:40:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=A9uMWAYxH3dgUy63REj5XMjKqHueIU5FC2NAmnDSzUE=;
-	b=ojIzKQS9LbVNiViFsJi84LtyGX9n7fyhBIK4AtU68SVYRK2NrMZ2gZ1SR7OIDb7uhh
-	M+TzdzQchxxUDmPcfT5VcRJN9bEvl52x+3WHb6JGxAvTRj1z+wqN6NNLO37ZCiDWWYCd
-	NMq1weLgFIxKJRSLiRrClifuoLp+eghSbkqSCZxq3/8nAPUihA8uICfGmPxN4P+ZxVem
-	naVaTmQsRQUc+CMxGmil9aDpQ4y/U7EDobCeNDAHHxpRYtxPe0TfJLt8F8ou8WB94w5v
-	bznWY+GhbJqBEQVIN1m8aFkIqyiOyA9JmlL98IsSA6tIH5eVf6Sd/Xb66gzfv+kWHiIa
-	K3ZQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1g2k3W-0006nB-Kj
+	for qemu-arm@nongnu.org; Wed, 19 Sep 2018 17:30:42 -0400
+Received: by mail-ot1-x332.google.com with SMTP id n5-v6so7301681otl.5
+	for <qemu-arm@nongnu.org>; Wed, 19 Sep 2018 14:30:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=uloqL7/iPHpACqsbU8LFYaEFgy5esk4GxA6OwUEPdIQ=;
+	b=aPDNjn/ZFBIHIntxFLSnlF0eTVRvw//zNYhNa1lfvVCPJlY1u1Vsr6aQWr01uv793d
+	TiPH662bfoX6/0WqzQwxtSA/SrHWXu0+zXEEE25uoBnYlHDZKmTc1FdRkowccnpUNfj/
+	h6PTMzZQS3L/LELNdT4h/AgM+Mt8jV5UCmqqM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=A9uMWAYxH3dgUy63REj5XMjKqHueIU5FC2NAmnDSzUE=;
-	b=bPCOCh19vGv6+8YMYMjzKucFPQfWmN7cflcG8Ptf01lf/LH8E7LOTcMMhvtLYIBgYZ
-	Og1I2eFDEUcayJq04VsCcYSprHxg0N4hbFKTboD7k9X0fOn5o3awa/K4P4ATTr1Onn75
-	chqGORNT5j3ZSB+E24T9Z4GlGrhPoRw6MkjHvw+u3IaFQ9LWa5/NqUSQkn4Opna/TydT
-	pMK58PVSeaVFMYmr05yoiU/9NScmASK5Th0ibNGBlDENSOAeZGUq4GBVz6vsiBr3e1gq
-	7mVFmjEjwtbolhnOhZ1pr9p8Jh1KE0GnRazu/K5iex62Pip2KFFC8Jf6RSHQKIkeTGS8
-	Vbsg==
-X-Gm-Message-State: APzg51CG1TYjgYajI8HmkWy6nTvUnpxSBA/K82xyEF7EXa5qkcrIsV7B
-	k/smAsFyg/q2wuGFDeYreYo=
-X-Received: by 2002:a1c:8b13:: with SMTP id
-	n19-v6mr20074942wmd.118.1537353609103; 
-	Wed, 19 Sep 2018 03:40:09 -0700 (PDT)
-Received: from [192.168.2.36] (106.red-88-7-90.staticip.rima-tde.net.
-	[88.7.90.106]) by smtp.gmail.com with ESMTPSA id
-	i125-v6sm6140716wmd.23.2018.09.19.03.40.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 19 Sep 2018 03:40:08 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-References: <20180831103816.13479-1-clg@kaod.org>
-	<20180831103816.13479-2-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
-	mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
-	u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
-	HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
-	YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
-	ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
-	dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
-	ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
-	Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
-	HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
-	Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
-	YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBAgA/AhsPBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJbkphvBQkm
-	loU1AAoJEOPjLCzercDeTLIP/3pzTBotxvkddIREaw2j/6RoxN1lj5hnCx/XHGF7QxAlO4uV
-	7eB6hcZxAqlt4AyNX5jcsSxNMfVNGnZ+u4ni6VdRRLUOw/QPXKGV8siK2E1zOG1GwZSCJ5zb
-	ol7gpXNnOG/+ZXDfvkfSNnpim0ahNIPX8WAaZ/qN7I1qsPGupK2JrlCot561TfIOT7KNZFAZ
-	m66Hf8MeNr8HQtn+oDk6j7g6WuIYZiqvF1MladikIZXndDMCsopXsjOikMXtoVuC/df7BlwS
-	UaM+DT47onbIfXOtsWQGd2dJhu07Kxphqlz1Uh3YA7IHsFzZkX+S9waPBEzC8YB39dkZKA2E
-	XbObk/ZTtCBLb39KTN2L7bv3Agm6wYO/hw3DQJQV3/07vW1EJd4fglQB5IY2A3eQ/ZSuRVm1
-	E1GyFszjLXKUQIKx1938zoLrUDDdWQH7bhhSvG7JWk1BKmJrIXDTDx1tvTOW2pYZuO1PNx+p
-	EhJraVuu3jtSbEfH+uPeoWtJtqSRkz1fLqp+dbha24ldPeKw4ija/YTviOem5baUlf/iNgS+
-	a0s0eoRiJFrGZFCKLGKgZYoJe1rccQR6JKKd8JpoaIQuzptcHZD4+qn8W8FUlkNWGfpTQrsN
-	iPLZt2EFOFkbjoZ2EoEByCs9nZ8ro91+lq7QfH9RFcldKLZfPEWwHPrchQ42
-Message-ID: <199c0acb-2ee3-bd26-51f7-9b78b4712ebc@amsat.org>
-Date: Wed, 19 Sep 2018 12:40:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=uloqL7/iPHpACqsbU8LFYaEFgy5esk4GxA6OwUEPdIQ=;
+	b=BL0LAfgYb+8F5019FRQPxfMj3e5osw28auz9HRUVjEA/jZ5GJOTqL/RwHGlv9z1AeU
+	Gyv14VRZ5xJLrXesaSNyqz3dBFSEvHg7cVZQJrikWBXY0t/MXyx8lV4yd4ecm78WfPYR
+	5rVZn42peztifnGDOnJV9MtvVJ+3Yj2DTka5rndIp/hxURYTrdVBO3HU+Fyj/s1r4GoE
+	2vBQi7eQt1vvDFPFzzemmPMP2nQv05HVdg46f/toPKRw8E52+Ld71t8J2HGiKSF2oteK
+	SHyfHuNYOkIH+HZgZmbvSISMSNn3KMZGLSJDL7u9adb0wi2VT9HOPqjFGY+hWn9/vrZK
+	OHJw==
+X-Gm-Message-State: APzg51AgItZcyadmKlR9PVzSK8fzNyS8XisxjJyEvMl73C4RDDwT1HK0
+	vR1NuaaS6U21MJumaDgrk5BM4lN4tXYW1Y8UqaTK3Q==
+X-Received: by 2002:a9d:82f:: with SMTP id
+	44-v6mr20944813oty.377.1537392641643; 
+	Wed, 19 Sep 2018 14:30:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180831103816.13479-2-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Wed, 19 Sep 2018 14:30:21
+	-0700 (PDT)
+In-Reply-To: <20180917084016.12750-1-damien.hedde@greensocs.com>
+References: <20180917084016.12750-1-damien.hedde@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 19 Sep 2018 14:30:21 -0700
+Message-ID: <CAFEAcA-C-cDEDuioZerKpAWaXvMkMBERkU-a2hoKVeSd4Lwaug@mail.gmail.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: Re: [Qemu-arm] [PATCH 01/11] aspeed/timer: fix compile breakage
- with clang 3.4.2
+X-Received-From: 2607:f8b0:4864:20::332
+Subject: Re: [Qemu-arm] [PATCH v4 00/10] Clock framework API.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,58 +103,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
 	Alistair Francis <alistair@alistair23.me>,
-	Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
+	Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
+	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C3W59AW/pp3W
+X-TUID: zGAtmxH4+bYI
 
-On 8/31/18 12:38 PM, Cédric Le Goater wrote:
-> In file included from /home/thuth/devel/qemu/hw/timer/aspeed_timer.c:16:
-> /home/thuth/devel/qemu/include/hw/misc/aspeed_scu.h:37:3: error:
-> redefinition of typedef 'AspeedSCUState' is a C11 feature
->       [-Werror,-Wtypedef-redefinition]
-> } AspeedSCUState;
->   ^
-> /home/thuth/devel/qemu/include/hw/timer/aspeed_timer.h:27:31: note:
-> previous definition is here
-> typedef struct AspeedSCUState AspeedSCUState;
-> 
-> Reported-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+On 17 September 2018 at 01:40,  <damien.hedde@greensocs.com> wrote:
+> Regarding the migration strategy, clocks do not hold the clock state
+> internally, so there is nothing to migrate there. The consequence is that
+> a device must update its output clocks in its post_load to propagate the
+> migrated clock state. This allows migration from old-qemu-with-no-clock
+> to new-qemu-with-clock-support: newly added clocks will be correctly
+> initialized during migration.
+> But it is more complex for input clocks handling: there is no order
+> guarantee between a device state migration and the update of its inputs clocks
+> which will occur during other device state migrations.
+> I think that, for most the cases, this does not rise problems, although there
+> might be some jitter/glitch during migration before hitting the right value
+> (with consequences such as the baudrate of a character device changing several
+> times during migration, I don't think it is a problem but may well be wrong
+> here).
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+This doesn't seem like a good idea to me, since as you say there is
+no guarantee on migration order. It breaks a general principle that
+devices should migrate their own state and not do anything that
+disturbs other devices.
 
-> ---
->  include/hw/timer/aspeed_timer.h | 3 +--
->  hw/timer/aspeed_timer.c         | 1 -
->  2 files changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-> index 040a08873432..1fb949e16710 100644
-> --- a/include/hw/timer/aspeed_timer.h
-> +++ b/include/hw/timer/aspeed_timer.h
-> @@ -23,8 +23,7 @@
->  #define ASPEED_TIMER_H
->  
->  #include "qemu/timer.h"
-> -
-> -typedef struct AspeedSCUState AspeedSCUState;
-> +#include "hw/misc/aspeed_scu.h"
->  
->  #define ASPEED_TIMER(obj) \
->      OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
-> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-> index 5e3f51b66b43..54b400b94aa9 100644
-> --- a/hw/timer/aspeed_timer.c
-> +++ b/hw/timer/aspeed_timer.c
-> @@ -13,7 +13,6 @@
->  #include "qapi/error.h"
->  #include "hw/sysbus.h"
->  #include "hw/timer/aspeed_timer.h"
-> -#include "hw/misc/aspeed_scu.h"
->  #include "qemu-common.h"
->  #include "qemu/bitops.h"
->  #include "qemu/timer.h"
-> 
+There are several possible approaches here I think:
+
+ (1) the "clock" object holds no internal state; if a device on the
+destination end of a clock connection cares about clock state then
+it keeps and updates a copy of that state when the callback is called,
+and it is responsible for migrating that copy along with all its other
+state. This is how qemu_irq/gpio lines work.
+ (2) the "clock" object does hold internal state, and it is owned
+by the source-end device, which is responsible for migrating that
+state. This is how ptimer objects work -- hw/core/ptimer.c defines
+a vmstate struct, but it is the devices that use a ptimer that
+put a VMSTATE_PTIMER entry in their vmstate structs to migrate the data.
+ (3) the "clock" object can be a fully fledged device (ie a subclass
+of TYPE_DEVICE) which migrates its state entirely by itself.
+
+I don't have a firm view currently on which would be best here,
+but I guess I lean towards 2. 1 has the advantage of "just like
+qemu_irq" but the disadvantage that the destination end has no
+way to query the current clock value so has to manually track it
+itself. 3 is probably overkill here (and also makes it hard to
+retain migration backward compatibility when adding clock tree
+support to an existing machine model).
+
+> Concerning this frequency-reset port, we can obviously go back to the simple
+> frequency-only one if you think it is not a good idea.
+
+I don't really understand why reset is related here. Clock trees and
+reset domains don't sit in a 1-to-1 relationship, generally. Reset
+is a complicated and painful area and I think I would prefer to see
+a patchset which aimed to solve the clocktree modelling problem
+without dragging in the complexities of reset modelling.
+
+thanks
+-- PMM

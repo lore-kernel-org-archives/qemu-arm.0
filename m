@@ -1,89 +1,146 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp5624254wrd;
-        Tue, 18 Sep 2018 12:46:33 -0700 (PDT)
-X-Received: by 2002:aca:6b87:: with SMTP id g129-v6mr2654773oic.88.1537299993067;
-        Tue, 18 Sep 2018 12:46:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537299993; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp885960wrd;
+        Wed, 19 Sep 2018 09:39:18 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdbWZYUEfJNDqN1+J+0liV+wV7jZeOhF6iVPc/sUDYB4lfVmbDGN3/XFkYRtz3RnZMuhIKFZ
+X-Received: by 2002:a63:b914:: with SMTP id z20-v6mr33254795pge.396.1537375157878;
+        Wed, 19 Sep 2018 09:39:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537375157; cv=none;
         d=google.com; s=arc-20160816;
-        b=gfIQNg9yBMGgxsEYJesZN2g9tbhucKhrVZomlfBAHGWQYIwtXjzDahcmxYQre4z9xz
-         L6pF2rpkr229Cnbr731GfEceBqUY1YpSLCS/2PDgDZQbkmLD10ADZFEAX9vMzJeGJlnx
-         N8k/jDqjVOzHTme44+2pxNqtc0MeKvT0g25++C6Nt/fwKoVlDO55mqnxIlWufFdkiOKz
-         LLR+DBDfgds9kqUbA3rghZ11x/Dq8V7CIXv9IYl0eNw3wwxrZxtVtRPAd/GdVH/APtxs
-         LTgHGWms3iHy0+8T0a2VuhR2Ob1jO1LH1p7w+UYtCa1og3OowzHO9oNXKkqj+7oz64wk
-         iemw==
+        b=YXTZ3NjfRivlshhkFNe1a+LZk6YMoxoNXBvYQESs7SWE6e5uU+8F9Qlc7AIPKBy2L9
+         eakR2kZY5H3Vq2r+gZun4ArHDUXx1G9xVsq/D1/DqyyPCTVwKU+iLVOeXC7JFdjicpIp
+         TpscT7T3V6hAQcV/FATwIanFmTCqZDlRt/iqnJSYb2mpRFXdP03TJxulCQcB1o1Y6bQ5
+         yU6hiEx9SYjZIbVU6oktp6lOq3+yzAqcwWMzoa0tP6h1/9oJm1qaNujd3PA/OA2Lh7sW
+         5+6NrRq+/+hF122npO8qOKu8h8HXa7LVF2Fla9zHG6XWQo033b1WnAWcjyswJiUkqm0p
+         pcHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=JQt23cc6gVJ1TPCBcuAh/QGVDGLhmrIbVlyhCodIM7c=;
-        b=uDt1duRSt7Vm0l/xl9yFFSGJxgDlT9cRjGq2papGF/R9tfwKNdZWka5JeXxa3U29IV
-         /QUHK5EL/uPFmoSuo0Ut4CnAMj4IBdtemjtKN1QBg+FZjDkFMeNh3QhgJ9yx8eq9NiO1
-         laI8CHpXE5AgJ/5FOa7YgzWR7m0zV/31sgljpGDk1QDX2KRrtv5rn69EflT3GNygsEUA
-         R//GjLRYxFPtUeZWWlueL5BlDoHR0pfaDSvjIwybhFZlwxnrhHgkPDJ27Vs9fLDybo7G
-         TM/gLNU6uh2Q8ZOhL7cZpdNrleDQFKs1oA1TJv+4aHLHOfzZzec0MTpjZYQaZLYV3/Mx
-         BrLg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :organization:references:in-reply-to:message-id:subject:cc:to:from
+         :date;
+        bh=4UhhdpjDOdgD0+y29KUNLx0HQxHJahl3H65UYICt2Ek=;
+        b=h81UalJHYDOZM21FUKpwB3hv7GFSWimbUt9cw26C5BSsDhsk2hVMCuUVvY53edXj9D
+         hkJYwNzzWnM5YOiZZImz0KT23hwskds1DHZ1aKJxchX8Yx4nWKDV7ArslfgSWGuJfWYv
+         3AbE2pCCqno6mRuv4JWXKRtdvxZisRlJguXE9jJQ6mSh87Wz50rAOl8AAf589ArVksoe
+         mI48uD3lgm4bGSN8C3k4i7vCkPo0YD5Ib+p0+cRo+82xMSuqlswPhhzsfV1HGI6jbmIp
+         4TaInLIumTMjfSZymKgD3NNaG3X/hybY3DloRNoXGvV+kJSko4Cm4fOUGsk3z53FB1dd
+         uK1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A7Mjs+en;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id e44-v6sor11975374otd.266.2018.09.18.12.46.32
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 18 Sep 2018 12:46:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id s9-v6si20113466pgk.384.2018.09.19.09.39.17;
+        Wed, 19 Sep 2018 09:39:17 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A7Mjs+en;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=JQt23cc6gVJ1TPCBcuAh/QGVDGLhmrIbVlyhCodIM7c=;
-        b=A7Mjs+en85DENVgJYw33GN0zu5uo/Pcnn4SPBkS0xM1eVTrv8P3YF/ZEx+C8WqmioZ
-         PmI0tyKMaq/iP6xq8uGVLderK0YEyFnA7Xw4Ow3/ItC8w2xBDJoGpxXP8R60laPeHxbR
-         4nqHU9MLOLi8/UQ8xVxWz2FlPJkbt+wpmLta0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=JQt23cc6gVJ1TPCBcuAh/QGVDGLhmrIbVlyhCodIM7c=;
-        b=mejV9eZfPUkVV47daBR3AqRplyARKytJTSiIzlRvjGx0DolFxLLFY3nzi/5ee0YKMo
-         pmpUP7T6LJVB6mopiog5aBoF4cJGLdh/0wfyk+x4LgU+R+wBdRiSEeIC4Zt7Kzo2mV+Y
-         ZMU/Tyb9WBoZWExluNfcI/B8oyfJInHDCGwUrew3yumx48ALto+TvTh46hiTyQ9j1Fsg
-         iSW89D4hCF35tJ38UoUldwPAzR9tHtD62+IbymD/zI1QrnY4zQz2yt2Qbc9mSmGGnZiW
-         Ad/8Lwx49HRTnEQ6O0zPa4hcP/P4NTv1jjdLlOH4mzleTYr1oS98ViYBQ4UBzHZf9x8w
-         mb3Q==
-X-Gm-Message-State: APzg51BClfTFLTMXKlJ3YQ/lPE4PNSH/Ze4jBflPT4Iv7kYgJCEfBBV8
-	QECPqkuTTDNZOm+M6Aqk+PQDnRxm93+WvBaUC7rBH3J1R5s=
-X-Google-Smtp-Source: ANB0VdayvX9zbjcKXlrMfzRoEQqp81eVi5he8JtYmWS/zFbx6iMuGuu19vga/hg3szxWJfr3AOnNbqc+SkGJH+Kq4ko=
-X-Received: by 2002:a9d:2e92:: with SMTP id w18-v6mr17410980ota.324.1537299990953;
- Tue, 18 Sep 2018 12:46:30 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1731330AbeISWR6 (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Wed, 19 Sep 2018 18:17:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36950 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1726911AbeISWR6 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 19 Sep 2018 18:17:58 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id 3AEDAC04C27D;
+        Wed, 19 Sep 2018 16:39:15 +0000 (UTC)
+Received: from gondolin (ovpn-117-44.ams2.redhat.com [10.36.117.44])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id AB34487B6;
+        Wed, 19 Sep 2018 16:39:02 +0000 (UTC)
+Date:   Wed, 19 Sep 2018 18:38:59 +0200
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     "Emilio G. Cota" <cota@braap.org>
+Cc:     qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+        Aleksandar Markovic <amarkovic@wavecomp.com>,
+        Alexander Graf <agraf@suse.de>,
+        Anthony Green <green@moxielogic.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Chris Wulff <crwulff@gmail.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        David Hildenbrand <david@redhat.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Guan Xuetao <gxt@mprc.pku.edu.cn>,
+        James Hogan <jhogan@kernel.org>, kvm@vger.kernel.org,
+        Laurent Vivier <laurent@vivier.eu>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Marek Vasut <marex@denx.de>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Michael Walle <michael@walle.cc>,
+        Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+        qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+        Richard Henderson <rth@twiddle.net>,
+        Stafford Horne <shorne@gmail.com>
+Subject: Re: [PATCH 34/35] exec: push BQL down to cpu->do_interrupt
+Message-ID: <20180919183859.54e6d21d.cohuck@redhat.com>
+In-Reply-To: <20180917163103.6113-35-cota@braap.org>
+References: <20180917163103.6113-1-cota@braap.org>
+        <20180917163103.6113-35-cota@braap.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Tue, 18 Sep 2018 12:46:10
- -0700 (PDT)
-In-Reply-To: <CAFEAcA-vg88gJKHKa8xOVdNvTp_dk3THwhY+eFdxvPtrXq8CjQ@mail.gmail.com>
-References: <1536488638-29326-1-git-send-email-hongbo.zhang@linaro.org> <CAFEAcA-vg88gJKHKa8xOVdNvTp_dk3THwhY+eFdxvPtrXq8CjQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Sep 2018 12:46:10 -0700
-Message-ID: <CAFEAcA9UPZC0csO-jGWF1Y-Bksh9PCkHGyNgjx9Osa4q3_uB9Q@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/arm: Add arm SBSA reference machine
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: gIYrZZhUxOBV
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Wed, 19 Sep 2018 16:39:16 +0000 (UTC)
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: XqYgk9fcfn5o
 
-On 18 September 2018 at 12:44, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 9 September 2018 at 03:23, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->> +#include "hw/arm/primecell.h"
->> +#include "hw/arm/virt.h"Please remove all the code you don't need, rather than
-> just copin
+On Mon, 17 Sep 2018 12:31:02 -0400
+"Emilio G. Cota" <cota@braap.org> wrote:
 
-Oops, please ignore this line, it is stray editor junk that I failed
-to delete when writing my reply (my gmail window is very laggy here...)
+> From: Paolo Bonzini <pbonzini@redhat.com>
+> 
+> cpu->do_interrupt can now be called with BQL held (from
+> cpu->cpu_exec_interrupt) or without (from cpu_handle_exception).
+> 
+> Only a few targets rely on global device state in cc->do_interrupt;
+> add checks to those targets to acquire the BQL if not already held.
+> 
+> Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
+> Cc: Alexander Graf <agraf@suse.de>
+> Cc: Anthony Green <green@moxielogic.com>
+> Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+> Cc: Chris Wulff <crwulff@gmail.com>
+> Cc: Cornelia Huck <cohuck@redhat.com>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
+> Cc: James Hogan <jhogan@kernel.org>
+> Cc: kvm@vger.kernel.org
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Cc: Marcelo Tosatti <mtosatti@redhat.com>
+> Cc: Marek Vasut <marex@denx.de>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Michael Walle <michael@walle.cc>
+> Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-ppc@nongnu.org
+> Cc: qemu-s390x@nongnu.org
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: Stafford Horne <shorne@gmail.com>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Emilio G. Cota <cota@braap.org>
+> ---
+>  accel/tcg/cpu-exec.c       |  2 --
+>  target/arm/helper.c        | 28 ++++++++++++++++++++++++++--
+>  target/ppc/excp_helper.c   |  8 +++++++-
+>  target/s390x/excp_helper.c | 14 +++++++++++++-
+>  target/sh4/helper.c        | 14 +++++++++++++-
+>  target/xtensa/helper.c     | 16 ++++++++++++++--
+>  6 files changed, 73 insertions(+), 9 deletions(-)
 
-thanks
--- PMM
+s390x parts:
+
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>

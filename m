@@ -1,80 +1,105 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3349178wrd;
-        Fri, 21 Sep 2018 09:41:29 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdbqhdjTzKr1KMfUP85NbMG8Hp264EvokiZuf0+zHHj0xuKZLko2aeZRQezHELONg8qzImgb
-X-Received: by 2002:ac8:2db3:: with SMTP id p48-v6mr33277360qta.238.1537548088961;
-        Fri, 21 Sep 2018 09:41:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537548088; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp3449710wrd;
+        Fri, 21 Sep 2018 11:23:22 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV623oN60kgyCd7Aw2ZG9hjPXgqEY3dAQZdVutrTec5+vko00ThE5lTzcE9qDmnEmpPiR7fIt
+X-Received: by 2002:aed:2dc2:: with SMTP id i60-v6mr1403054qtd.340.1537554202586;
+        Fri, 21 Sep 2018 11:23:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537554202; cv=none;
         d=google.com; s=arc-20160816;
-        b=r3X5zTGMSCyZ09P4Kr+RnvUcXt8AwDfpVJo7x51xnqef8Varffbzz7HxYHV0Fd7QhD
-         dcxN13jQXlCFhnwPV2BjldLYcBItD74IR+LlSTV8pHnxF5cLsLikrHa+DhHE0WQqlOKj
-         hKl7wwM1zkvtPRSFAoSFSguapGQs38AMMzo4BCSik0a5Z/vmQuNMqoMfV0CeGNQTwRJP
-         SqwuOwF+gY0dFUTz25f8qGt9QYnSggkp9QPoSfrm5NMYh2Z9kPuKKXFpBJ2Hl+hyYQER
-         TImLlTZQTdhZw+L1cRkHziGzUUml0H/iUr7pVRpJFaCVqLAPLIz0RoW5B1RwQ9lGK4XO
-         KFuw==
+        b=R3d4chREbfePEy6E6hXLZgSv5jwqG9w/GUnmb2hGavUOM+eHkuepj9yZz+jampHnTZ
+         dZRXGGx3UTTWm8cNyUZcAyR98MaaDuaCuO6Im4xfCRJr+XiCrROCibWlc5EWNlthT31/
+         e51JrnCpZDpcRcNSQGPyBG8R6cCLfJ9XD8trUAnV8GOjuaFfJlQ8RpnhrMwgGLhS+UAs
+         dMHEHGhg5vPJ/E7MJ3Pi73Le+XpUicmbXit0yRddK7m8GVKc0tlLzILbj5BwimQ6ZB3e
+         8hdTjWpZ1pilU2QTnNoPlhBqvj3IGHVYk6JoV0/lexDChjBYsXnlRAe5AAe+qs9F5/tK
+         q9gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=U/0Q5IevpHN1+VZ1HVS0b5fmlpOvEhrUi26JMbmWVf4=;
-        b=wq6qm3w1oMK9ElXLls0ssej1QM2aEK9zIrp34r4KiZGwKlmWxCMFvEudhQqmQOr64s
-         yADd1aInf8PtYenL/4q5GAVlsuOvB8aNL7kPXqTyObYFQxeGN17omBA9T0xIYnOdmb80
-         Cokfz0sWvglH6tm5+1FqQabs+ogFggr/MRIPb2+S+iBAcb/9Diw7wXu+JSYbdNn34wK/
-         Z/WgZEnOtLapIW9ns+PL9mLIIPPPy+obc7WCBSyipQsp8rKxkIhZbQ3Rx7+Zo1Tyw6Ce
-         ++1Ex3PCfYRjrYmYihpzwn5Ii6yIEe8trkK3yELYOhTHu4fIUlGK1cwB5nAkliP+2G3L
-         eoKg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:date:message-id
+         :mime-version:content-transfer-encoding:from:dkim-signature;
+        bh=XylKQwFZofH8DtOZtSDXagBDhldIRSdIRv9iIxVb4wo=;
+        b=BmmW18yHKa9xcXQ4pap93pnMX/6kRaKeCVupbkH1ycbUqJzzsACg2IAEozWGSY7V/K
+         45oFlC4Tqhr0T0e0GiMloNR0m1hTjPyqCUFk7YiJPZu6ZQdTu1I/G7Io73iksVkd4arq
+         G+YlAFl0BEEw01g4tQg2UFOYQILq5tvfaO3X2yLLSDbI3bZDeE7NRinvZaERddArQ6vj
+         tACysNfofQK4YI7DqFpED8OlmNqFthtb+lkWeuETcBBl/a5Jt0+wYqUtlx/qxNKkBAK/
+         tQBenc66X6o7s1wkzoJdsa8rZhws7zu5FetYTrhpBP6DbuCbWWKuaqqSjxwgb9VTc8L6
+         n6dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nog2J1qC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v17-v6si5298927qta.297.2018.09.21.09.41.28
+        by mx.google.com with ESMTPS id x1-v6si88409qtb.89.2018.09.21.11.23.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 21 Sep 2018 09:41:28 -0700 (PDT)
+        Fri, 21 Sep 2018 11:23:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56506 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nog2J1qC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56883 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g3OUi-0006Gj-GZ
-	for alex.bennee@linaro.org; Fri, 21 Sep 2018 12:41:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42775)
+	id 1g3Q5K-0005mf-2K
+	for alex.bennee@linaro.org; Fri, 21 Sep 2018 14:23:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38854)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g3OQp-0002Rn-De
-	for qemu-arm@nongnu.org; Fri, 21 Sep 2018 12:37:30 -0400
+	(envelope-from <karthimohanraj.in@gmail.com>) id 1g3Pn8-00006I-OB
+	for qemu-arm@nongnu.org; Fri, 21 Sep 2018 14:04:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g3OB3-0004Q2-1d
-	for qemu-arm@nongnu.org; Fri, 21 Sep 2018 12:21:13 -0400
-Received: from 17.mo3.mail-out.ovh.net ([87.98.178.58]:42722)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g3OB0-0004Me-EM
-	for qemu-arm@nongnu.org; Fri, 21 Sep 2018 12:21:06 -0400
-Received: from player799.ha.ovh.net (unknown [10.109.159.222])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 13D121D7720
-	for <qemu-arm@nongnu.org>; Fri, 21 Sep 2018 18:21:03 +0200 (CEST)
-Received: from zorba.kaod.org.com (LFbn-1-10605-110.w90-89.abo.wanadoo.fr
-	[90.89.196.110]) (Authenticated sender: clg@kaod.org)
-	by player799.ha.ovh.net (Postfix) with ESMTPSA id 9FF5A520093;
-	Fri, 21 Sep 2018 18:20:53 +0200 (CEST)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: qemu-devel@nongnu.org
-Date: Fri, 21 Sep 2018 18:19:35 +0200
-Message-Id: <20180921161939.822-8-clg@kaod.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180921161939.822-1-clg@kaod.org>
-References: <20180921161939.822-1-clg@kaod.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1904459693030738752
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrledvgddutddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+	(envelope-from <karthimohanraj.in@gmail.com>) id 1g3Pn5-0000Pu-MX
+	for qemu-arm@nongnu.org; Fri, 21 Sep 2018 14:04:34 -0400
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c]:37597)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <karthimohanraj.in@gmail.com>)
+	id 1g3Pn5-0000P1-Ae
+	for qemu-arm@nongnu.org; Fri, 21 Sep 2018 14:04:31 -0400
+Received: by mail-pg1-x52c.google.com with SMTP id 2-v6so6401672pgo.4
+	for <qemu-arm@nongnu.org>; Fri, 21 Sep 2018 11:04:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:content-transfer-encoding:mime-version:subject:message-id:date
+	:to; bh=XylKQwFZofH8DtOZtSDXagBDhldIRSdIRv9iIxVb4wo=;
+	b=nog2J1qChh9+Nbc9cfQW5yLgZKDmq5WNrez/aXYHmlGvPxjpRndEqVB+SFsBtOa9tt
+	TM8W64UOfKvuTXQ8KlOOP5b7HLVOoqZD/KGLyhpSv140nxrUWXARxoKhvP4+YW+A5+Ja
+	qAENOHAJ15eGMoxQ+boDQw0E84M+wLf0pylIiF6ZOqJw+pd1gvbshH/33MuJ/MSQUjVc
+	c3dQPmb5mzNvl45ZGx3UJ+jHXwXyzf8k+W1iryHVDc8NGUuiZn6q1q8YO2LrwWnxJw64
+	+niAs/0LaZbqDBoumaEF66Ra9QaFqWEu6N2etIAtM0aSuwYVxHK345Np8G3cbBWq+dTM
+	D0sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:content-transfer-encoding:mime-version
+	:subject:message-id:date:to;
+	bh=XylKQwFZofH8DtOZtSDXagBDhldIRSdIRv9iIxVb4wo=;
+	b=iVDG9M2bT8XrApdkrdk0GAt5AqoDrk/a8KawzqcXaDwjmXFOMUZweheEduY49wswtO
+	VsJCZwk7/pdAq4TqxFuvXy+i/ref4Sxqe6jhnCrrC4leSYKMk2xy5MlVAZvBMGWrhm3n
+	b0renelW81h5jWEPh6mc6m2fmRT7r1GMIev4tx6xQjvjd4xBq4zVguhQMMxFU8eU9iVo
+	fZKJPRAsd5bQPZAnx91aNnEeyo/yA4OVMIEEONLq/qAUThcNjlBm/7dnfoyYuRM6kQMh
+	00+wc73MjHas3ColO+0lOffla2VKPYFrCCkxHo3ev3RwxKyzfzLqZc3QLxTfzE+AAuz2
+	Vftg==
+X-Gm-Message-State: APzg51BZrdAqpQX4rw5Y9ZIRHDiINULa2IUtwmqkEqBnKQ6HJThViaHi
+	0A2EIjKXyVZ8uLj0RYqBSi+S31yY
+X-Received: by 2002:a63:d401:: with SMTP id
+	a1-v6mr42290571pgh.414.1537553069311; 
+	Fri, 21 Sep 2018 11:04:29 -0700 (PDT)
+Received: from [192.168.1.100] ([103.6.156.105])
+	by smtp.gmail.com with ESMTPSA id
+	h4-v6sm29012435pgp.13.2018.09.21.11.04.27 for <qemu-arm@nongnu.org>
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 21 Sep 2018 11:04:28 -0700 (PDT)
+From: karthi mohanraj <karthimohanraj.in@gmail.com>
+Content-Type: text/plain;
+	charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 87.98.178.58
-Subject: [Qemu-arm] [PATCH v2 07/11] aspeed/smc: add a 'sdram_base' and
- 'max-ram-size' properties
+Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+Message-Id: <F594E1D2-CAB1-48DF-9A78-66C3DC66F41E@gmail.com>
+Date: Fri, 21 Sep 2018 23:34:25 +0530
+To: qemu-arm@nongnu.org
+X-Mailer: Apple Mail (2.3445.9.1)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::52c
+X-Mailman-Approved-At: Fri, 21 Sep 2018 14:23:05 -0400
+Subject: [Qemu-arm] Arm Cortex A-72 Emulator not able to configure
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,118 +111,20 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
-	Alistair Francis <alistair@alistair23.me>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ttyWHcD1ew1
+X-TUID: dqdRLcc20+0a
 
-The setting of the DRAM address of the DMA transaction depends on the
-DRAM base address and the maximum DRAM size of the SoC. Let's add a
-couple of properties to give this information to the SMC controller
-model.
+Hi All,=20
 
-Also, move the SDRAM Memory controller realization before the other
-controllers which need it.
+I=E2=80=99m new to Qemu Environment. I was trying to setup a Arm (64 =
+bit) emulator for getting hands-on and need to setup an development =
+environment. I was not able to find any document or any working article =
+for setting up the ARM Emulator using KVM. Can someone help me to point =
+in right direction to proceed?=20
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/ssi/aspeed_smc.h |  4 ++++
- hw/arm/aspeed_soc.c         | 28 +++++++++++++++++++---------
- hw/ssi/aspeed_smc.c         |  2 ++
- 3 files changed, 25 insertions(+), 9 deletions(-)
+can this be achieved in Nested Virtualization?=20
 
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 1f557313fa93..d7090bb5e9b7 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -97,6 +97,10 @@ typedef struct AspeedSMCState {
-     uint8_t r_timings;
-     uint8_t conf_enable_w0;
-=20
-+    /* for DMA support */
-+    uint64_t sdram_base;
-+    uint64_t max_ram_size;
-+
-     AspeedSMCFlash *flashes;
- } AspeedSMCState;
-=20
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 2cbacb4430bb..bbc05d172fe1 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -209,6 +209,14 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, ASPEED_SOC_SCU_BASE);
-=20
-+    /* SDMC - SDRAM Memory Controller */
-+    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE);
-+
-     /* VIC */
-     object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
-     if (err) {
-@@ -252,7 +260,17 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-                        qdev_get_gpio_in(DEVICE(&s->vic), 12));
-=20
-     /* FMC, The number of CS is set at the board level */
--    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &err);
-+    object_property_set_int(OBJECT(&s->fmc), sc->info->sdram_base, "sdra=
-m-base",
-+                            &err);
-+    object_property_set_int(OBJECT(&s->fmc), s->sdmc.max_ram_size,
-+                            "max-ram-size", &local_err);
-+    error_propagate(&err, local_err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    object_property_set_bool(OBJECT(&s->fmc), true, "realized", &local_e=
-rr);
-+    error_propagate(&err, local_err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
-@@ -278,14 +296,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-                         s->spi[i].ctrl->flash_window_base);
-     }
-=20
--    /* SDMC - SDRAM Memory Controller */
--    object_property_set_bool(OBJECT(&s->sdmc), true, "realized", &err);
--    if (err) {
--        error_propagate(errp, err);
--        return;
--    }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdmc), 0, ASPEED_SOC_SDMC_BASE);
--
-     /* Watch dog */
-     for (i =3D 0; i < sc->info->wdts_num; i++) {
-         object_property_set_bool(OBJECT(&s->wdt[i]), true, "realized", &=
-err);
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 6045ca11b969..500de6d16d09 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -800,6 +800,8 @@ static const VMStateDescription vmstate_aspeed_smc =3D=
- {
-=20
- static Property aspeed_smc_properties[] =3D {
-     DEFINE_PROP_UINT32("num-cs", AspeedSMCState, num_cs, 1),
-+    DEFINE_PROP_UINT64("sdram-base", AspeedSMCState, sdram_base, 0),
-+    DEFINE_PROP_UINT64("max-ram-size", AspeedSMCState, max_ram_size, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-=20
---=20
-2.17.1
 
+Thanks,
+Karthi=

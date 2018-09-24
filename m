@@ -1,85 +1,105 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2529889wrd;
-        Mon, 24 Sep 2018 06:28:57 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63o+KGMGzzhsAjtPWxXi0EzSZrWtUpy6KPhL1Uwzo6Waeu8sKI1/jCRt9+ptT8tMdvka2i2
-X-Received: by 2002:a0c:aac9:: with SMTP id g9-v6mr7649732qvb.78.1537795737672;
-        Mon, 24 Sep 2018 06:28:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537795737; cv=none;
+Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp2533046wrd;
+        Mon, 24 Sep 2018 06:31:53 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61vr6O+9ZIg5WLemr/Gz0qpNQjHO9IroQ1JZjDFdjrVEzxkdeZREGC/IO1Ps/aUFEHICWx2
+X-Received: by 2002:a37:7286:: with SMTP id n128-v6mr4783862qkc.124.1537795913247;
+        Mon, 24 Sep 2018 06:31:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537795913; cv=none;
         d=google.com; s=arc-20160816;
-        b=RX8SuiPLKbyIbP3ZwjT4Ln4ghHEcw4tVaAgOOsyAHECevDkJErn+5LNTD/7oU1x/jG
-         0S99T6T+55UW0kVhgVoD7qRfnVd5dGbaTjQKbdl6mPNk4pyzV3pGQONKcO0NH7uenuyq
-         4FMTpMtFnc1EjBNyiv1pR46oXa/2w2VnW/j0dm38VqUpAHp8gflS1A2aHiR1oKBcDe6P
-         TMVAjoipp4A7BTk+a1rIgCf+mj0swILMa6CchY5QYgt21uXwQG0NsoXneSiLw2hDUpjY
-         DmGdYShuWftjS7MgFtq/79vmb8doV84YI8uVI9GjO0NToYm0HqYXCEGeqb5UGaZ0zuOD
-         nhYg==
+        b=hUwp9KOHBgRrOlNpbA2dKvwXEZxC8XH4z9pSWz31JfoZllGHkRjZrd6241sl3YwAND
+         TvIInagX/6msE3ZyJo/mwH66WHpsflRhu/EftGwGVLNooKl9bdk6MldYu274XMB5WSo+
+         6pq2C3W9xCjACH1bioWiWOJsylUnxTUdSDzq9oO5r7ELeEljbMLj5cCEIxKNQP7mLsqo
+         L/gT8eVkY5wjj+MfoQd20z/Lx7SNSo3d+QuYNRQVfi6crYLrfBLAV/IZ4GZCod/m/RKX
+         6rO9NQPa19VhrB+vLcRP5yrmxRbzl/DZgV1FZF3n3KQG3o0HzUFMIYrJit7kn80NFnws
+         fadw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=0LMFwgi0JkJFBLujobpI84cgayLq5tITEbS4CRtbrSA=;
-        b=sR4f9OYA2v+j21m3Egz2v6nAzoT7e4Vvezkz3WQLorLEdKaPuNdP0UFrTtlJfJuYs+
-         FSDmk8Z4lVUAi7Qyh+I0pV52mwLT6EA7OVJgGSm1hoyZV8CoZU78QoxftMGJX3/pbg+F
-         8uQz3/4sGFVoU/c8ninEmZnDLFzYpn15pcRCj6NH7IexdILxWDH2UMYPMmQXtKPIVjha
-         ePh/sbiqWPU5zrLZPfBftqMNdMFEhnc6zwXSGHKVOPB4+5S2eoCLtVHNfD4I3wzEHuI4
-         uqZHfnBlADntzIEvuWSu/gXywleS6YSFWXRro8fAkI5p1ONkayOcZZPayOY+qEw36ziC
-         3m2g==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=QNxnyfiDn+bd/2VfWu3OgshXc7XDVCbmQ11eUfv7E+0=;
+        b=d87t9enOCTSXVVMM+QGu87ASy1WDaubPeZwokZ3f10048Q30wYg4s8V2NI1sPnLbIn
+         oED85pBAWNcGL92nusqC4jiEZpFiUhiqDgs4eeQ8B75srtVXtOkduSDPq5lTotHmAbzX
+         0oflUUo8s+BwMiagTCTU5dbx2wp+0guLqUb3sqqq8FwEd+CHBTwzjpWOFAqnttCI4ZXu
+         KxOJ9OQM2xP8dGKm3R2kSiOozkqIwLfhgw118qWDYuo/vOhAMtA3iNTdTS9dtaRyfG4+
+         +hR62IAoLEqtm9Ux1mmWsDudrLp/NOUVQnYmSeG0LkOAdlSEVRbQ3qAGk+JhPFMn0hj+
+         rZKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=A2lDUrEl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d75-v6si4760375qkj.254.2018.09.24.06.28.57
+        by mx.google.com with ESMTPS id p71-v6si523681qkp.259.2018.09.24.06.31.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 24 Sep 2018 06:28:57 -0700 (PDT)
+        Mon, 24 Sep 2018 06:31:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45249 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=A2lDUrEl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45265 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g4Qv3-0006PA-1q
-	for alex.bennee@linaro.org; Mon, 24 Sep 2018 09:28:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48224)
+	id 1g4Qxs-0007Wu-RC
+	for alex.bennee@linaro.org; Mon, 24 Sep 2018 09:31:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49072)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g4Qur-0006O4-MI
-	for qemu-arm@nongnu.org; Mon, 24 Sep 2018 09:28:46 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1g4Qxm-0007Wc-Eu
+	for qemu-arm@nongnu.org; Mon, 24 Sep 2018 09:31:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g4Qup-0005xn-1F
-	for qemu-arm@nongnu.org; Mon, 24 Sep 2018 09:28:45 -0400
-Received: from 8.mo4.mail-out.ovh.net ([188.165.33.112]:43924)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g4Quo-0005uV-Ql
-	for qemu-arm@nongnu.org; Mon, 24 Sep 2018 09:28:42 -0400
-Received: from player688.ha.ovh.net (unknown [10.109.143.145])
-	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 881F71B2AAE
-	for <qemu-arm@nongnu.org>; Mon, 24 Sep 2018 15:28:34 +0200 (CEST)
-Received: from zorba.kaod.org (LFbn-1-10605-110.w90-89.abo.wanadoo.fr
-	[90.89.196.110]) (Authenticated sender: postmaster@kaod.org)
-	by player688.ha.ovh.net (Postfix) with ESMTPSA id B7ABA200B2;
-	Mon, 24 Sep 2018 15:28:22 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1g4Qxl-0008Be-IO
+	for qemu-arm@nongnu.org; Mon, 24 Sep 2018 09:31:46 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41502)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1g4Qxl-00087U-C5
+	for qemu-arm@nongnu.org; Mon, 24 Sep 2018 09:31:45 -0400
+Received: by mail-ot1-x341.google.com with SMTP id e18-v6so19828702oti.8
+	for <qemu-arm@nongnu.org>; Mon, 24 Sep 2018 06:31:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=QNxnyfiDn+bd/2VfWu3OgshXc7XDVCbmQ11eUfv7E+0=;
+	b=A2lDUrElO1Xw1NogHwfR7HBFvoHHuJAubOZX6bAsnEuk5GaZLOgUA3wpP7CmQG/pY0
+	BsiJU2sA3CuFUrodIJ1XC/K5oPbK7ZO6rPMc9NkmLf64ZW59OLf9jt33auIo0gHvPVIf
+	I3Lo/txyM7Bi6uAjMNdG5xlMnjJH57Dqt79eY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=QNxnyfiDn+bd/2VfWu3OgshXc7XDVCbmQ11eUfv7E+0=;
+	b=kXTwBrwTPz/hNRKPASDxNa/TdmAWCtUMhOpdkMMB5Sv253sdcTEx/7uD2zoa0t35eB
+	Zq/8RpdaINdgCfmCCi/qfkzmXb3s79+iVuoZFeYpfFzIOpvDgAW2vcEM3hnMVpto+ov6
+	lhPvFM8NM7UYo7E7acI4TmIYDBTKGt3lsRGfrmPNdVUhdYA+wfNqMZuHWeET4RG+BfXa
+	8NdXj5lFO46Gbn00iZ2BbnAiPUD+qgqA6i52CQ87EdXdblKhhZ82Qjo+NWCda4OyYSbk
+	HeT9TzBjk6goADnuAdR0C1EzzjIKxEm8XZCSoAB6pn4KFQSqf+UxwZMw/XEcAvphjDGd
+	m17w==
+X-Gm-Message-State: APzg51CWrfqlfJajXAbjdhLGoWPnoU7jbvIN2fI0I0nOw7WOsAKsj1eZ
+	pbWZZI0Hfr8IfalpUsE7MXeY82N46yL7IrIdHH2gwg==
+X-Received: by 2002:a9d:730d:: with SMTP id
+	e13-v6mr6955609otk.203.1537795904398; 
+	Mon, 24 Sep 2018 06:31:44 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Mon, 24 Sep 2018 06:31:23
+	-0700 (PDT)
+In-Reply-To: <9cac65c1-5e5f-ccf7-072f-c8a0ac5c024e@kaod.org>
 References: <20180831103816.13479-1-clg@kaod.org>
 	<20180831103816.13479-5-clg@kaod.org>
 	<CAFEAcA-C05P6dBwSr1QBJX9-B+QCy3LCvqKM+uZnx5NP-7BU6g@mail.gmail.com>
 	<ce8fb63b-50d8-2d05-67a1-c89bb2e06e9a@kaod.org>
 	<2d4a3e71-89d4-ccb0-59e1-a61503569667@kaod.org>
 	<CAFEAcA_LsjvJGi8v1Wo0g9GfTFVVo8mzy_WcdkcHb=duwHQ9OA@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9cac65c1-5e5f-ccf7-072f-c8a0ac5c024e@kaod.org>
-Date: Mon, 24 Sep 2018 15:28:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_LsjvJGi8v1Wo0g9GfTFVVo8mzy_WcdkcHb=duwHQ9OA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 16609838376950074194
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedrleekgdeigecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+	<9cac65c1-5e5f-ccf7-072f-c8a0ac5c024e@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Sep 2018 14:31:23 +0100
+Message-ID: <CAFEAcA-0ik-TxyNpFp9-pfYGhnz7sjRH9ykY6ytQ2h16QjMEbQ@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 188.165.33.112
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
 Subject: Re: [Qemu-arm] [PATCH 04/11] hw/arm/aspeed: add a 'mmio-exec'
  property to boot from the FMC flash module
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,112 +118,40 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
 	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i1pVVSP5uKCc
+X-TUID: r/qzgsLN4Csf
 
-On 09/24/2018 01:41 PM, Peter Maydell wrote:
-> On 19 September 2018 at 11:19, C=C3=A9dric Le Goater <clg@kaod.org> wro=
-te:
->> These are the number of read operations done on the flash memory regio=
-n :
+On 24 September 2018 at 14:28, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> On 09/24/2018 01:41 PM, Peter Maydell wrote:
+>> On 19 September 2018 at 11:19, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
+e:
+>>> These are the number of read operations done on the flash memory region=
+ :
+>>>
+>>>     922478 ~ 3.5 MBytes   OpenBMC U-Boot
+>>>   20569977 ~ 80  MBytes   Mainline U-Boot
+>>>
+>>>
+>>> So we are trashing the TBs I would say. Is there a way to increase the
+>>> TB size ? or some other TB parameter ? Is that directly linked to the
+>>> instruction cache size ?
 >>
->>     922478 ~ 3.5 MBytes   OpenBMC U-Boot
->>   20569977 ~ 80  MBytes   Mainline U-Boot
->>
->>
->> So we are trashing the TBs I would say. Is there a way to increase the
->> TB size ? or some other TB parameter ? Is that directly linked to the
->> instruction cache size ?
->=20
-> Well, execution direct from MMIO means we read each instruction
-> as we execute it -- there's no caching of TBs. (We generate a
-> temporary TB with a single insn and throw it away after executing
-> from it.) This is because we can't be sure that we would get the
-> same data value the next time we read from the address.
+>> Well, execution direct from MMIO means we read each instruction
+>> as we execute it -- there's no caching of TBs. (We generate a
+>> temporary TB with a single insn and throw it away after executing
+>> from it.) This is because we can't be sure that we would get the
+>> same data value the next time we read from the address.
+>
+> In our case, we should have the same data. So may be I can introduce
+> a read-only region with a cache to speed up the accesses. A bit like
+> this was done with the previous mmio inteface.
 
-In our case, we should have the same data. So may be I can introduce=20
-a read-only region with a cache to speed up the accesses. A bit like=20
-this was done with the previous mmio inteface.
+Yes, this is in theory possible, but we dropped the old
+mmio-exec interface because it had some nasty race conditions:
+the problem is being able to be sure you've properly dropped
+the cached TBs when the device contents change.
 
-> So we definitely expect things to go slower -- I'm just a little
-> surprised that we spend so much time executing from flash devices
-> that aren't in "romd" mode.
+Which flash device is this? For pflash typically the 'romd mode'
+stuff suffices to allow execution as-if-from-ram most of the time.
 
-Yes. it is very slow but some instructions are loaded more than=20
-250.000 times. See below.
-
-Thanks,
-
-C.
-
-
-
-
-
-count   address
-    ... ...
- 149113 0x28a18
- 149113 0x28a1c
- 149113 0x28a20
- 149113 0x28a24
- 149113 0x28a28
- 149113 0x28a2c
- 149113 0x28a30
- 149113 0x28a34
- 149113 0x28a38
- 149113 0x28a3c
- 149113 0x28a40
- 253584 0x288b4
- 253584 0x288bc
- 253584 0x288c0
- 253584 0x288c8
- 253584 0x288cc
- 253584 0x288d4
- 253584 0x288e0
- 253584 0x288e4
- 253584 0x288f0
- 253584 0x288f4
- 253584 0x288fc
- 253584 0x28904
- 253584 0x28908
- 253584 0x28910
- 253584 0x28914
- 253584 0x28920
- 253584 0x28924
- 253584 0x28928
- 253584 0x2892c
- 253584 0x28934
- 253584 0x28938
- 253584 0x2893c
- 253584 0x28940
- 253584 0x28944
- 253584 0x2894c
- 253584 0x28954
- 253584 0x28958
- 253584 0x2895c
- 253584 0x28960
- 253584 0x28964
- 253584 0x28968
- 253584 0x2896c
- 253584 0x28970
- 253584 0x28974
- 253584 0x28978
- 253584 0x2897c
- 253584 0x28980
- 253584 0x53364
- 253585 0x288b8
- 253585 0x288c4
- 253585 0x288d0
- 253585 0x288d8
- 253585 0x288dc
- 253585 0x288f8
- 253585 0x28900
- 253585 0x2890c
- 253585 0x28918
- 253585 0x2891c
- 253585 0x28948
- 253585 0x53344
- 253586 0x28930
- 253586 0x28950
- 253587 0x288b0
- 257497 0x53348
- 277523 0x53354
+thanks
+-- PMM

@@ -1,86 +1,119 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp510992wrt;
-        Tue, 25 Sep 2018 03:45:13 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62plS3Yx0SBbJJEOip9euPX5CeqpLmP6ylIi2VpSIwus/ZkwbCsQcFgJ7C1p55O0j54TnTn
-X-Received: by 2002:a0c:ae71:: with SMTP id z46-v6mr277466qvc.108.1537872313190;
-        Tue, 25 Sep 2018 03:45:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537872313; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp570663wrt;
+        Tue, 25 Sep 2018 04:48:15 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62iiUBSbAm26+1ngZ79Qps2zJNhPgp/7yCfxQSMHHrhFq+b8219EBWT0Pr5YbO2S5YYeISW
+X-Received: by 2002:ac8:2ea1:: with SMTP id h30-v6mr409126qta.135.1537876095840;
+        Tue, 25 Sep 2018 04:48:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537876095; cv=none;
         d=google.com; s=arc-20160816;
-        b=JxAqRQWeLQ0mNffCPQyFyVCFJ3wO3Wd/5cglYuuvnvp21F0pqt+pCEfNbqKkTRWBJ/
-         POm96fljuCSlCL7UTaUaOcjClyQ4zuDEeZPuB3C5RNaEHOrY5BMMJhYfclRoT730hSfV
-         e8hRuuMCWki/z0JeXfp/cN0iD2GAPAq9s7S7C4TwhjTngzakjglRIpnUucDODRObGEDs
-         I3BYO7+mVtH62djaySLtDEGL4vfzuEDKopGAP79cepBXIvJvgqqdkp5g2n18oZHCJ2Pg
-         UULBMiFrL/fPF1bE9Kwiy4FH7Qew05BVOdC0va2SPCZuUJPcC/39ZkGXnZAA5thxAIxX
-         tPUA==
+        b=Nv9an5Uv1Nu6PyojPc9F1Ph5zGntoFQWiIDnKgexDOw/v1FivAgyKVaDTjIHNizwxW
+         +HhG6W6R8cV4nhiE01Cjn2dyAdxP7ul4kZyaISSY5+RBBmbe2OCWpDKVHf37gBF5iBLp
+         XQo10Gz+a8XDaaI67cko/8Ar0ScM0mwaGjy4mdrgNlJBcophRkcVdOrnNnNjH1mAjCl8
+         +iyHZQeJpjTReuodq/8a3xBwYULfiZTT0+xRI3ZrjK8T2j/sytdOX8Uv4FoMqcMzRP1P
+         hGs/twSGfPCFPb4FlXSu2G+plfiUq3vh30xS7hajDSzw6IC82j8QRUvmBtlCBconaD2r
+         pHZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=hLDyeyswFOB3T7yfdh0eKckS6IwKN1YlrjNX5HkQp5s=;
-        b=RcL1o+72wb8I6Wh4PcM2HjgtbMZ2rAO8dI0q6Ul9s34+yqavbcZL5P9LhRE+HqLBil
-         emCFKABkBPGQ3B/NQqq2yXgod1w3mmPb41KImXaUwias1AnzJi/Jq3UtxXf638WjVE3T
-         MVD0Pi04FcSwZRzequkp/YlwLYaHrlUDF9dgj3SvQXFWSTkq1GppeLUeJZUU4P1KSUwJ
-         TcTquXy7UZBd6HmMGJQZ22FSKKVmGFLn5wY6SeZ/8vC/5t+11r3+QBQZ7vKpWvSGMlNw
-         R19n0xh+PkxF43azV5itjlaZGl2rBlJ0RgJPCCtUVUSsUxKcEaVSIHKBXI3kFzghJNto
-         kP7A==
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=poc1u9/zxrKP6SDsGFdDwpBkvKrMqpZkuCmgOn5Agws=;
+        b=0Vw7Yj5Hyku3NkmEFw4lstztZ44ZFBrP6R0tP6oo2e+aGuw9Zr9zURR1vqkOZ38ybJ
+         RBeUDUDJfciodtGFR2Tbrm9phsgyxB2OC56HPbEP0fKM34MM5eVfXwY1J5eO5l401s3B
+         77YGXE2tEMQdpTY+wy4apVZ3O5mNhszwALid6oAMBaBgk2jrmCIc0UgQoCPV7LS6GCn/
+         jdDMEHk/ZQbQTXmQFSt8cBJEiqf91YC6emAyjqvFCDcokdYKo3bawv3Nru7go1+VSYxf
+         +H1DL99t5fjgWxfAr8yK+07YxSWNnosHItE2kZdi38JsanKB/RPUFMdSNYsYIMreQ9QI
+         zebA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="syS/Gewr";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=EpqUDjYo;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=EpqUDjYo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i93-v6si1586995qtb.266.2018.09.25.03.45.13
+        by mx.google.com with ESMTPS id m7-v6si1584718qvi.101.2018.09.25.04.48.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Sep 2018 03:45:13 -0700 (PDT)
+        Tue, 25 Sep 2018 04:48:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="syS/Gewr";
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=EpqUDjYo;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=EpqUDjYo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52141 helo=lists.gnu.org)
+Received: from localhost ([::1]:52401 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g4kq8-0008Qw-Pu
-	for alex.bennee@linaro.org; Tue, 25 Sep 2018 06:45:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45484)
+	id 1g4lp9-0003pP-Cy
+	for alex.bennee@linaro.org; Tue, 25 Sep 2018 07:48:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33703)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g4kpy-0008QZ-54
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 06:45:03 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1g4lp2-0003dH-BP
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 07:48:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g4kpu-00006D-21
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 06:45:02 -0400
-Received: from 5.mo179.mail-out.ovh.net ([46.105.43.140]:41368)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g4kpt-000058-Pj
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 06:44:57 -0400
-Received: from player761.ha.ovh.net (unknown [10.109.146.32])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 60D5B100A9B
-	for <qemu-arm@nongnu.org>; Tue, 25 Sep 2018 12:44:56 +0200 (CEST)
-Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
-	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
-	by player761.ha.ovh.net (Postfix) with ESMTPSA id B55DE4800BC;
-	Tue, 25 Sep 2018 12:44:48 +0200 (CEST)
+	(envelope-from <damien.hedde@greensocs.com>) id 1g4loz-00051B-04
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 07:48:08 -0400
+Received: from greensocs.com ([193.104.36.180]:38104)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>)
+	id 1g4loy-0004zr-Fx; Tue, 25 Sep 2018 07:48:04 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id B2E3D443555;
+	Tue, 25 Sep 2018 13:47:56 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537876076;
+	bh=JGPPrTIG+5GM7YY0Hhd/IIfT4ZVW9hrHgrJXFU0fDzM=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=syS/Gewrx9kybuTDiE1wEAL6HDTEcQMWWNMmqt83vA3uRZlyhICoRwhKiTaxvJ5jz
+	1xkovvij7AQL96GNvfwpdavTneFfXFlZ2H823uEl7qhE/nZbrQc1KWU+Cw0gLd0bom
+	yIE+8aOfaHnJy9Ilnxl8C5A+XJfSvg+Z2i7TjDbc=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=EpqUDjYo;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=EpqUDjYo
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XhvhBngHFbRs; Tue, 25 Sep 2018 13:47:55 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id CE545238705; Tue, 25 Sep 2018 13:47:55 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537876075;
+	bh=JGPPrTIG+5GM7YY0Hhd/IIfT4ZVW9hrHgrJXFU0fDzM=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=EpqUDjYo8FuSaxKnjD9iumuEcik0cASyZA7Xz7eiqQplZFjdlMcnh8Cqs9OAAsDwd
+	Cdoc45RmPol35NKRwm8Ze41Mn+Jkf5TOjk0nk4b+SHfW64fW+pty7Rl7Jnty/KDX5n
+	X0AXUOU84f/lCmKSOWXktk6RHztYW82iftwQTOfA=
+Received: from [172.16.10.171] (antfield.tima.u-ga.fr [147.171.129.253])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: damien.hedde@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 696F8E0878;
+	Tue, 25 Sep 2018 13:47:55 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537876075;
+	bh=JGPPrTIG+5GM7YY0Hhd/IIfT4ZVW9hrHgrJXFU0fDzM=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=EpqUDjYo8FuSaxKnjD9iumuEcik0cASyZA7Xz7eiqQplZFjdlMcnh8Cqs9OAAsDwd
+	Cdoc45RmPol35NKRwm8Ze41Mn+Jkf5TOjk0nk4b+SHfW64fW+pty7Rl7Jnty/KDX5n
+	X0AXUOU84f/lCmKSOWXktk6RHztYW82iftwQTOfA=
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180914063506.20815-1-clg@kaod.org>
-	<20180914063506.20815-2-clg@kaod.org>
-	<CAFEAcA8uGPPy0mr+iHiByS+HTwOKfUbSpuM6UjOG1+-uNYk0Ww@mail.gmail.com>
-	<ff6ef7d6-f41f-13df-26ce-ff7b4dad5cec@kaod.org>
-	<CAFEAcA_S3YMpzFVZm6a7fdu67jAVXFAnawFQhWsjPG63KjgZAw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <74b0ec3f-b2ae-161a-1446-af2a90a8d520@kaod.org>
-Date: Tue, 25 Sep 2018 12:44:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+References: <20180917084016.12750-1-damien.hedde@greensocs.com>
+	<20180917084016.12750-6-damien.hedde@greensocs.com>
+	<CAFEAcA95f0VNWSJf9GFXn791sp3Z5QmYEycm7VUsuwVhSMFPMg@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <19d468c3-0f28-c178-1f5e-ac547bee02bf@greensocs.com>
+Date: Tue, 25 Sep 2018 13:47:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_S3YMpzFVZm6a7fdu67jAVXFAnawFQhWsjPG63KjgZAw@mail.gmail.com>
+In-Reply-To: <CAFEAcA95f0VNWSJf9GFXn791sp3Z5QmYEycm7VUsuwVhSMFPMg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 1272266897398664107
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedruddtuddgudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.43.140
-Subject: Re: [Qemu-arm] [PATCH 1/3] aspeed/i2c: interrupts should be cleared
- by software only
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 05/10] docs/clocks: add
+ device's clock documentation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,89 +125,162 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Mark Burton <mark.burton@greensocs.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
+	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sntQpZeyzK/a
+X-TUID: bZsiKzVmsbJi
 
-On 09/25/2018 12:15 PM, Peter Maydell wrote:
-> On 25 September 2018 at 10:12, C=C3=A9dric Le Goater <clg@kaod.org> wro=
-te:
->> On 09/25/2018 11:02 AM, Peter Maydell wrote:
->>> On 14 September 2018 at 07:35, C=C3=A9dric Le Goater <clg@kaod.org> w=
-rote:
->>>> and the bus interrupt should be lowered when all interrupts have bee=
-n
->>>> cleared. Also, the model does not implement correctly the RX_DONE bi=
-t
->>>> behavior which should be cleared to allow more data to be received.
->>>> Yet to be fixed.
->>>>
->>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>>> ---
->>>>  hw/i2c/aspeed_i2c.c | 21 +++++++++++++++++----
->>>>  1 file changed, 17 insertions(+), 4 deletions(-)
->>>>
->>>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
->>>> index c762c7366ad9..de6b08378675 100644
->>>> --- a/hw/i2c/aspeed_i2c.c
->>>> +++ b/hw/i2c/aspeed_i2c.c
->>>> @@ -52,6 +52,13 @@
->>>>  #define I2CD_AC_TIMING_REG2     0x08       /* Clock and AC Timing C=
-ontrol #1 */
->>>>  #define I2CD_INTR_CTRL_REG      0x0c       /* I2CD Interrupt Contro=
-l */
->>>>  #define I2CD_INTR_STS_REG       0x10       /* I2CD Interrupt Status=
- */
->>>> +
->>>> +#define   I2CD_INTR_SLAVE_ADDR_MATCH       (0x1 << 31) /* 0: addr1 =
-1: addr2 */
->>>> +#define   I2CD_INTR_SLAVE_ADDR_RX_PENDING  (0x1 << 30)
->>>> +/* bits[19-16] Reserved */
->>>> +
->>>> +/* All bits below are cleared by writing 1 */
->>>> +#define   I2CD_INTR_SLAVE_INACTIVE_TIMEOUT (0x1 << 15)
->>>>  #define   I2CD_INTR_SDA_DL_TIMEOUT         (0x1 << 14)
->>>>  #define   I2CD_INTR_BUS_RECOVER_DONE       (0x1 << 13)
->>>>  #define   I2CD_INTR_SMBUS_ALERT            (0x1 << 12) /* Bus [0-3]=
- only */
->>>> @@ -59,11 +66,16 @@
->>>>  #define   I2CD_INTR_SMBUS_DEV_ALERT_ADDR   (0x1 << 10) /* Removed *=
-/
->>>>  #define   I2CD_INTR_SMBUS_DEF_ADDR         (0x1 << 9)  /* Removed *=
-/
->>>>  #define   I2CD_INTR_GCALL_ADDR             (0x1 << 8)  /* Removed *=
-/
->>>> -#define   I2CD_INTR_SLAVE_MATCH            (0x1 << 7)  /* use RX_DO=
-NE */
->>>> +#define   I2CD_INTR_SLAVE_ADDR_RX_MATCH    (0x1 << 7)  /* use RX_DO=
-NE */
->>>>  #define   I2CD_INTR_SCL_TIMEOUT            (0x1 << 6)
->>>>  #define   I2CD_INTR_ABNORMAL               (0x1 << 5)
->>>>  #define   I2CD_INTR_NORMAL_STOP            (0x1 << 4)
->>>>  #define   I2CD_INTR_ARBIT_LOSS             (0x1 << 3)
->>>> +
->>>> +/*
->>>> + * TODO: handle correctly I2CD_INTR_RX_DONE which needs to be clear=
-ed
->>>> + * to allow next data to be received.
->>>> + */
->>>>  #define   I2CD_INTR_RX_DONE                (0x1 << 2)
->>>
->>> Is this TODO something different from the behaviour involving
->>> this RX_DONE bit which is fixed in patch 3 in this set ?
+
+
+On 9/25/18 11:36 AM, Peter Maydell wrote:
+> On 17 September 2018 at 09:40,  <damien.hedde@greensocs.com> wrote:
+>> From: Damien Hedde <damien.hedde@greensocs.com>
 >>
->> no. It's the same but the TODO was not removed. I intended to do
->> so after a possible merge.
->=20
-> OK. I'll fix up the commit message and drop the TODO message from
-> this patch when I put the series into target-arm.next, if that's ok.
+>> Add the documentation about the clock inputs and outputs in devices.
+>>
+>> This is based on the original work of Frederic Konrad.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> 
+> I thought I might as well review the docs changes, since they're
+> a good overview of the API. I have one or two semantic changes
+> to suggest, a few function name alterations and some minor typo
+> fixes below.
 
-Sure.=20
+I've only kept the parts I'm responding to. I'll do the suggested name
+changes.
 
-Thanks,
+> 
+>> ---
+>>  docs/devel/clock.txt | 144 +++++++++++++++++++++++++++++++++++++++++++
+>>  1 file changed, 144 insertions(+)
+>>  create mode 100644 docs/devel/clock.txt
+>>
+>> diff --git a/docs/devel/clock.txt b/docs/devel/clock.txt
+>> new file mode 100644
+>> index 0000000000..d018fbef90
+>> --- /dev/null
+>> +++ b/docs/devel/clock.txt
+>> @@ -0,0 +1,144 @@
+>> +
+>> +Adding clocks to a device
+>> +=========================
+>> +
+>> +Adding clocks to a device must be done during the init phase of the Device
+>> +object.
+>> +
+>> +To add an input clock to a device, the function qdev_init_clock_in must be used.
+>> +It takes the name, a callback, and an opaque parameter for the clock.
+>> +output is more simple, only the name is required. Typically:
+> 
+> "Output"
+> 
+>> +qdev_init_clock_in(DEVICE(dev), "clk-in", clk_in_callback, dev);
+>> +qdev_init_clock_out(DEVICE(dev), "clk-out");
+>> +
+>> +Both functions return the created CLOCK_IN/OUT pointer. For an output, it should
+>> +be saved in the device's state structure in order to be able to change the
+>> +clock. For an input, it can be saved it one need to change the callback.
+> 
+> I think we should just simplify this to say that "pointer, which should be
+> saved in the device's state structure."
+> 
+> (Is freeing of the allocated memory handled by the usual
+> QOM reference-counting ?)
 
-C.
+Yes. I will add a note to signal not to worry about that.
 
+> 
+>> +
+>> +Changing a clock output
+>> +=======================
+>> +
+>> +A device can change its outputs using the clock_set function. It will trigger
+>> +updates on any connected inputs.
+>> +
+>> +For example, let's say that we have an output clock "clkout" and we have pointer
+> 
+> "a pointer to it"
+> 
+>> +on it in the device state because we did the following in init phase:
+>> +dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
+>> +
+>> +Then at any time, it is possible to change the clock value by doing:
+>> +ClockState state;
+>> +state.frequency = 1000 * 1000 * 1000; /* 1MHz */
+>> +clock_set(dev->clkout, &state);
+> 
+> 
+> This seems a bit indirect. Why doesn't clock_set() just take the
+> frequency as a direct argument ?
+
+The structure ClockState is here because it contains 2 fields (frequency
+value and reset flag).
+Since I am removing the reset, I can replace ClockState pointer by the
+frequency integer as you say.
+
+> 
+>> +
+>> +Outputs must be initialized in the device_reset method to ensure every connected
+>> +inputs is updated at machine startup.
+> 
+> device_reset should not set outputs.
+
+How do the initialization then ?
+Only alternative I see is to initialize a clock input when it is
+connected to an output.
+
+If device_reset does not set outputs (which are a direct consequence of
+a internal device state being reset). It means calling device_reset at
+any other point than simulation startup will break things. Is that the
+semantic behind device_reset ?
+
+> 
+>> +
+>> +Callback on input clock change
+>> +==============================
+>> +
+>> +Here is an example of an input callback:
+>> +void clock_callback(void *opaque, ClockState *state) {
+>> +    MyDeviceState *s = (MyDeviceState *) opaque;
+>> +    /*
+>> +     * opaque may not be the device state pointer, but most probably it is.
+>> +     * (It depends on what is given to the qdev_init_clock_in function)
+>> +     */
+>> +
+>> +    /* do something with the state */
+>> +    fprintf(stdout, "device new frequency is %" PRIu64 "Hz\n",
+>> +                    clock_state_get_frequency(state));
+>> +
+>> +    /* optionally store the value for later use in our state */
+>> +    clock_state_copy(&s->clkin_shadow, state);
+> 
+> 
+> This seems odd to me. Why do we have a clock_state_copy() at all?
+> The input end of a device has a pointer to the input end of the
+> clock, and there should just be a function for "what is the current
+> frequency of this CLOCK_IN ?".
+> 
+> The callback function should probably be passed a parameter
+> which is the CLOCK_IN it corresponds to, not an arbitrary
+> ClockState. (I'm not sure how useful the ClockState struct is.)
+> 
+
+Right now, there is no clock state in the input end and in consequence
+no way to have current frequency. Hence, if one wants to access the
+frequency later on, he has to save it himself.
+
+Since we're talking to add the state in the clock object to handle the
+migration, the copy function become useless too and we may also drop the
+ClockState pointer argument because we will be able to request the
+current frequency.
+
+Thanks
+--
+Damien

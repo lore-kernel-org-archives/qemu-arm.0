@@ -1,99 +1,117 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp721868wrt;
-        Tue, 25 Sep 2018 07:09:44 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62942/jrZYOeHPfRpt9JGBnW6pqxxPYmjudQRTrEt/Hz6t8BlMyP8yu0QBT4s0SOP5IwHv8
-X-Received: by 2002:a0c:f446:: with SMTP id h6-v6mr888058qvm.208.1537884584713;
-        Tue, 25 Sep 2018 07:09:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537884584; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp722850wrt;
+        Tue, 25 Sep 2018 07:10:32 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62tSwkP5JqzNDJlPHv7YhLEkZNENYFa0Y0VQiNxHKatr48lz8b6O5CBxVLkOgtdrDCRzB0y
+X-Received: by 2002:ac8:36c8:: with SMTP id b8-v6mr950145qtc.49.1537884632122;
+        Tue, 25 Sep 2018 07:10:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537884632; cv=none;
         d=google.com; s=arc-20160816;
-        b=NV0xxHL5MASJ9e6UjXOKTxn82jBaMFXmV1UfMK3uY3XBfpS3ImSK0YzM7X9vdbaQeD
-         2gIb6Cp6adVZh3B9QlajVbiuJDz7nVFBGRZMVdAezY2FmItY4OJtLFSJ7qVtJsgKpvCU
-         sKZsuIm3L0+LTTK4TDZKqu1IuGdD44Qprl751EFYf/9cxMLGSfZM/w3EL2Y+w7FwiChg
-         wWgIjDaNPivRWhWa4WjpmFPS0lMzFnQvyeSX5m3PY5upOXQ31Ies/9wRPDh22ZuaEUp7
-         YGQ9uaoNlRk3A0JQvdMZ9uHHtPoqScX2SU0ZVRsuYLlSsTsyxsStJjQjoYE35SVNstUB
-         6VbA==
+        b=fv60/qDn4VSRjNLTY6VS75oxfrQ4t8vQNqL+QQHkUrQxXPPqsef/SKKNg+h9d6drl4
+         C7S6SsWDjl9q1y+m+a7XriHjTHT0XoFAeGT6X/4cDiVxEU5Hfu146nKFc92CRNnAMOe3
+         uddDWBQzhMCkr2c2NmbEUsXxdUY7+2nwx7b+SnrKUhmIyD3db6tpi49s3AcHq8pmkWQ7
+         mqHdL9QMgk+ikiq1KqWyyRkI+BIUigX4lweEoY9Fvg/u+4fiLjT9dHb6GUn/KfCD7Aok
+         uEgKwM7bGxbLf0UbrBsZzVB2DYkXWnmcLeBHMNubBbm9/zemebq7p8RNTMjM93NUesJh
+         q4AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=il20ph/QDCP1VFlNx8IovEltBvww8tMWzWYFyb6Z3qk=;
-        b=o/bWsopGmUgqNIiaq2siwTH7EQ4JAfQWPzOEQnqcITIadyspmGeuu8txyEdacGi6gQ
-         7yj+H8mLowpywVLvvg1WKACWQDUeR5Ydg5C7BfAQvMLULFOJBPvDn682BnVRU8LamjQ6
-         xxgaX54Rf3k3aFFEHCuWvHH4usENY4Y6AjmqanzjLUVNX8SPTnAuF/hg+5zFv5RkyEjX
-         DSDsdLJqOS3s1DancrukQW0M+4DRoh1TMPiJgyKQH2GK1eiXo1KEBKhw4fg6SkI/Osk2
-         ptX8LQvPz1yA52nulhATURE/LjkxbgZ6s3gW6TjYZCtGcxQWFrFjo0oE8cJOyh1rRa9E
-         jPVg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=B819NQoRJogJwXi6i+5mjF9QDwJXGhdPDIl3TMm43zQ=;
+        b=Cz3RCWrwkntxvXOxeg36nd9XrYabzA6BdOk9lHuEzG1CB51bLZlHlHfnPsaPXChXn7
+         2NQdZIbYNLwkOluoz1VTqUv5kNOWJvNmr8g9kNMoaJAkXqWBS5inPYiTfqYSRnpvyAWO
+         P33S2gBndTjIrSnNk8cFkhZ5fspqSPlfUmgMsRB7brAMYDdnPov6f8i0cY5CYZD0nTAb
+         eHiZedmMvO8kyG3tWJfMl/kYTZsfJh0XlVMq5TjkFiUSMoFAU0CejWvMn42TfL4UagaY
+         sigOwKYOO6jA1871JlPI7JlHZIru/l4JJej2u68ocKqQbfij2Yx6VCwa9BroxRPvZTle
+         HWEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ESYdvvV3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=czvhtKIB;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b="2C4XF/kJ";
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=SmC4WJR3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g20-v6si1730886qtr.323.2018.09.25.07.09.44
+        by mx.google.com with ESMTPS id u32-v6si2097271qtb.176.2018.09.25.07.10.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Sep 2018 07:09:44 -0700 (PDT)
+        Tue, 25 Sep 2018 07:10:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ESYdvvV3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53304 helo=lists.gnu.org)
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=czvhtKIB;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b="2C4XF/kJ";
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=SmC4WJR3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53305 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g4o23-0005CJ-Kt
-	for alex.bennee@linaro.org; Tue, 25 Sep 2018 10:09:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44881)
+	id 1g4o2o-0005vH-Te
+	for alex.bennee@linaro.org; Tue, 25 Sep 2018 10:10:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g4ntw-0006mM-Aw
-	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 10:01:21 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1g4ns1-0005A2-81
+	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 09:59:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g4ntu-0000HN-0h
-	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 10:01:20 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:45276)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1g4nts-0000Ff-1j
-	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 10:01:16 -0400
-Received: by mail-oi1-x241.google.com with SMTP id d63-v6so1561873oic.12
-	for <qemu-devel@nongnu.org>; Tue, 25 Sep 2018 07:01:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=il20ph/QDCP1VFlNx8IovEltBvww8tMWzWYFyb6Z3qk=;
-	b=ESYdvvV3sHVO0AvgmOTBdRly7zKUWpDOBeZ5MICJDt61mN/bMP1IEgqXCr6x+T380L
-	pBDP5Td+WIQGQzAMc01olC0WlHihPe1OgtVOw3Gvu1WjyTHgfX0JIgyyQmXHABwqyVMH
-	ZgFOg6gaXW89wFVcdrDyMo5N4JErmXUiz4888=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=il20ph/QDCP1VFlNx8IovEltBvww8tMWzWYFyb6Z3qk=;
-	b=Vy5jh4xMNkbe/HGVWeC4Bi3UnQmV1ic/2ZWfMY8Ks17iKvs8/ql/k8wabEwtoD4dXO
-	L0qzh+0gjvsUm9Fcfp8nUK6gezu+nCOlpe/hqxNrFpJylP+F/zObByTCzSQG8Yrg13in
-	Z/Ca5u1IVeK+wk+zTRw0uKFyQdV7L9n+SXn0lXp5iQhnR18fHxMgQSMmFhIIxfS5L00h
-	BvfuOf4P7R0xYw93+bl1MoM/w2zmJJCZX0XycbsxrrirLUCCdG5vc1JRqSRwikqxMyTk
-	MDE2W87knknzAidzJMgVqJSC9AG0FgoF3FzagfmFm6s91FRfIrByOKf5bpUsoi2VBQC+
-	Lbbg==
-X-Gm-Message-State: ABuFfogXUcRVBLTIKtUVR9QnUNyzhY/LDr5DxeEAJIPFiSZEZcUU+tVd
-	IzOQNjFn0vPMRaqDL4RL7fhuij3NOMSNuTaVT9lMIg==
-X-Received: by 2002:aca:40d6:: with SMTP id
-	n205-v6mr697027oia.35.1537884074418; 
-	Tue, 25 Sep 2018 07:01:14 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Tue, 25 Sep 2018 07:00:53
-	-0700 (PDT)
-In-Reply-To: <7cac68bf-4047-c20a-dee5-2764ee595795@greensocs.com>
+	(envelope-from <damien.hedde@greensocs.com>) id 1g4ns0-0007Lw-6G
+	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 09:59:21 -0400
+Received: from greensocs.com ([193.104.36.180]:53241)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>)
+	id 1g4nrs-0007IV-9y; Tue, 25 Sep 2018 09:59:13 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id F14E84F7678;
+	Tue, 25 Sep 2018 15:59:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537883948;
+	bh=q8JfZURgBS8jwYKquxGQXCjfGa6jG/IK0XwcNTuu1Tg=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=czvhtKIBa0xDjqg98EUXS7XSpFoVJvozUyukUG2f8u5Wx3tdVTgfcKm43h8Y7iXFi
+	qPMYxXSTsiGSxYeU0V1a9DV0oB0PvVM1qrwm/AZMR+j048caGcSvtKSIRp+XssM7at
+	Cn2olGYhfZBYm5B0UyEH8d0JEAqXWmqXivD3JOjM=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=2C4XF/kJ;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=SmC4WJR3
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 29-9Ke_9rvUy; Tue, 25 Sep 2018 15:59:07 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 11A87238705; Tue, 25 Sep 2018 15:59:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537883947;
+	bh=q8JfZURgBS8jwYKquxGQXCjfGa6jG/IK0XwcNTuu1Tg=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=2C4XF/kJuQ3A9+DYyqx46I5sIPq7xBrQQMIM4gLx3yl3951/H55ma38MA+gtX1jQK
+	pUNYz7aZTM1BhI9fFq+i2ftCkvCdfvpNF315oxyLVu6lgJx+CBgaYjcJXcKrOU4HYj
+	p9yK+gJMy+rTnQIkbu6ggLauQsEyqQlP2F0I9rgY=
+Received: from [172.16.10.171] (antfield.tima.u-ga.fr [147.171.129.253])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: damien.hedde@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id A15E5E0878;
+	Tue, 25 Sep 2018 15:59:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1537883946;
+	bh=q8JfZURgBS8jwYKquxGQXCjfGa6jG/IK0XwcNTuu1Tg=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=SmC4WJR3TmgUjd2ejxTyHxWvKn5/rQvwhGozRT3CsFaZ/A78DtDKqDMS7w44hCzBc
+	ovhWia0j2J0gTDjNo8Cg2aaLXzxKxi4vG4s3fp4wRpgNi3xLUfUL2PrSktkYtHuf9t
+	5POc08OpdE8tlKLu6M4QmZbrGEB4eVttxRRhBiJI=
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20180917084016.12750-1-damien.hedde@greensocs.com>
 	<20180917084016.12750-2-damien.hedde@greensocs.com>
 	<CAFEAcA9M1MDcbx9CA60zaHnFbtHQD2G_HAWFdPimWhyn==_jqA@mail.gmail.com>
-	<7cac68bf-4047-c20a-dee5-2764ee595795@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Sep 2018 15:00:53 +0100
-Message-ID: <CAFEAcA8oekUL3XEnwDYbAbzwSfUQ74xQxRvb0gZ3cgmm_nF_PA@mail.gmail.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <7cac68bf-4047-c20a-dee5-2764ee595795@greensocs.com>
+Date: Tue, 25 Sep 2018 15:59:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9M1MDcbx9CA60zaHnFbtHQD2G_HAWFdPimWhyn==_jqA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
 Subject: Re: [Qemu-devel] [PATCH v4 01/10] hw/core/clock-port: introduce
  clock port objects
 X-BeenThere: qemu-devel@nongnu.org
@@ -116,44 +134,134 @@ Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
 	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W8jCxQ1ZGTKS
+X-TUID: USFiFhOubAsD
 
-On 25 September 2018 at 14:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
->
-> On 9/25/18 11:42 AM, Peter Maydell wrote:
->> Having a ClockPort which ClockIn and ClockOut are derived
->> from seems a bit heavyweight. When would you want to operate on
->> a generic ClockPort rather than either a ClockIn or ClockOut ?
->> Why would you want the name (canonical_path) to be different
->> at the input and output ends -- is it possible to simplify
->> to just having the output end keep the name string ?
->
-> Here the canonical path is the full qom's canonical path. It is cached
-> in the state to avoid recomputing it when needed. It is only used for
-> log/trace purpose (without it, log is useless and calling
-> object_get_canonical_path at every log seemed too costly to me).
-> A connected ClockOut and ClockIn do not have the same (qom) parent,
-> their canonical path is different.
-> For example, in the zynq platform, there are 2 uarts, each one having a
->  "refclk" input. There is also a clock controller (slcr) having 2
-> outputs "uart0_ref_clk" and "uart1_ref_clk". We end up with something
-> like this concerning canonical path:
-> + output "[...]/slcr/uart0_ref_clk" drives input "[...]/uart0/refclk"
-> + output "[...]/slcr/uart1_ref_clk" drives input "[...]/uart1/refclk"
->
-> Right now, I log a line for every end (output and input) when the clock
-> frequency change, which lead to a kind-of-duplicate log line (names
-> differ, but clock frequencies are obviously the same). I could only log
-> at the output end and drop the canonical path for the input or pust the
-> path in both objects.
->
-> Anyway it is easily possible to drop the ClockPort common ancestor. A
-> user never operates on it.
 
-I think that would be preferable -- having the debug logging
-drive the object hierarchy setup seems like the tail wagging
-the dog to me.
 
-thanks
--- PMM
+On 9/25/18 11:42 AM, Peter Maydell wrote:
+> On 17 September 2018 at 09:40,  <damien.hedde@greensocs.com> wrote:
+>> From: Damien Hedde <damien.hedde@greensocs.com>
+>>
+>> Introduce clock port objects: ClockIn and ClockOut.
+>>
+>> Theses ports may be used to distribute a clock from a object to several
+>> other objects. They do not contain any state and serve only as intermediate
+>> to carry a ClockState which contains 2 fields:
+>> * an integer which represent the frequency in Hertz
+>> * a boolean which represent the reset status of the clock domain
+>> Both are independent: eg the reset can be asserted while the clock running and
+>> vice versa.
+>>
+>> A ClockIn may be connected to a ClockOut so that it receives update,
+>> through the callback, whenever the Clockout is updated using the
+>> ClockOut's set function.
+>>
+>> This is based on the original work of Frederic Konrad.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>  Makefile.objs           |   1 +
+>>  include/hw/clock-port.h | 153 ++++++++++++++++++++++++++++++++++++++++
+>>  hw/core/clock-port.c    | 145 +++++++++++++++++++++++++++++++++++++
+>>  hw/core/Makefile.objs   |   1 +
+>>  hw/core/trace-events    |   6 ++
+>>  5 files changed, 306 insertions(+)
+>>  create mode 100644 include/hw/clock-port.h
+>>  create mode 100644 hw/core/clock-port.c
+>>  create mode 100644 hw/core/trace-events
+>>
+>> diff --git a/Makefile.objs b/Makefile.objs
+>> index ce9c79235e..b29747075f 100644
+>> --- a/Makefile.objs
+>> +++ b/Makefile.objs
+>> @@ -210,6 +210,7 @@ trace-events-subdirs += hw/audio
+>>  trace-events-subdirs += hw/block
+>>  trace-events-subdirs += hw/block/dataplane
+>>  trace-events-subdirs += hw/char
+>> +trace-events-subdirs += hw/core
+>>  trace-events-subdirs += hw/display
+>>  trace-events-subdirs += hw/dma
+>>  trace-events-subdirs += hw/hppa
+>> diff --git a/include/hw/clock-port.h b/include/hw/clock-port.h
+>> new file mode 100644
+>> index 0000000000..2ab554c30e
+>> --- /dev/null
+>> +++ b/include/hw/clock-port.h
+>> @@ -0,0 +1,153 @@
+>> +#ifndef CLOCK_PORT_H
+>> +#define CLOCK_PORT_H
+>> +
+>> +#include "qom/object.h"
+>> +#include "hw/qdev-core.h"
+>> +#include "qemu/queue.h"
+>> +
+>> +#define TYPE_CLOCK_PORT "clock-port"
+>> +#define CLOCK_PORT(obj) OBJECT_CHECK(ClockPort, (obj), TYPE_CLOCK_PORT)
+>> +#define TYPE_CLOCK_IN "clock-in"
+>> +#define CLOCK_IN(obj) OBJECT_CHECK(ClockIn, (obj), TYPE_CLOCK_IN)
+>> +#define TYPE_CLOCK_OUT "clock-out"
+>> +#define CLOCK_OUT(obj) OBJECT_CHECK(ClockOut, (obj), TYPE_CLOCK_OUT)
+>> +
+>> +typedef struct ClockState {
+>> +    uint64_t frequency; /* frequency of the clock in Hz */
+>> +    bool domain_reset; /* flag indicating if clock domain is under reset */
+>> +} ClockState;
+>> +
+>> +typedef void ClockCallback(void *opaque, ClockState *clk);
+>> +
+>> +typedef struct ClockPort {
+>> +    /*< private >*/
+>> +    Object parent_obj;
+>> +    /*< public >*/
+>> +    char *canonical_path; /* clock path shadow */
+>> +} ClockPort;
+> 
+> Having a ClockPort which ClockIn and ClockOut are derived
+> from seems a bit heavyweight. When would you want to operate on
+> a generic ClockPort rather than either a ClockIn or ClockOut ?
+> Why would you want the name (canonical_path) to be different
+> at the input and output ends -- is it possible to simplify
+> to just having the output end keep the name string ?
+
+Here the canonical path is the full qom's canonical path. It is cached
+in the state to avoid recomputing it when needed. It is only used for
+log/trace purpose (without it, log is useless and calling
+object_get_canonical_path at every log seemed too costly to me).
+A connected ClockOut and ClockIn do not have the same (qom) parent,
+their canonical path is different.
+For example, in the zynq platform, there are 2 uarts, each one having a
+ "refclk" input. There is also a clock controller (slcr) having 2
+outputs "uart0_ref_clk" and "uart1_ref_clk". We end up with something
+like this concerning canonical path:
++ output "[...]/slcr/uart0_ref_clk" drives input "[...]/uart0/refclk"
++ output "[...]/slcr/uart1_ref_clk" drives input "[...]/uart1/refclk"
+
+Right now, I log a line for every end (output and input) when the clock
+frequency change, which lead to a kind-of-duplicate log line (names
+differ, but clock frequencies are obviously the same). I could only log
+at the output end and drop the canonical path for the input or pust the
+path in both objects.
+
+Anyway it is easily possible to drop the ClockPort common ancestor. A
+user never operates on it.
+
+> 
+>> --- /dev/null
+>> +++ b/hw/core/trace-events
+>> @@ -0,0 +1,6 @@
+>> +# See docs/devel/tracing.txt for syntax documentation.
+>> +
+>> +# hw/core/clock-port.c
+>> +clock_connect(const char *clk, const char *driver) "'%s' drived-by '%s'"
+> 
+> "driven by"
+> 
+>> +clock_disconnect(const char *clk) "'%s'"
+>> +clock_update(const char *clk, uint64_t freq, int reset) "'%s' frequency %" PRIu64 "Hz reset %d"
+>> --
+>> 2.18.0
+>>
+> 
+> thanks
+> -- PMM
+> 

@@ -1,161 +1,159 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp720481wrt;
-        Tue, 25 Sep 2018 07:08:35 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60sJWSJFv7SG5REA4MBIB8/CkceV/I3QKDWl+88Bb04en1LexAN2DAoZP0Tsd8+lbs07eh7
-X-Received: by 2002:a37:c24c:: with SMTP id j12-v6mr842952qkm.14.1537884515212;
-        Tue, 25 Sep 2018 07:08:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537884515; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp721868wrt;
+        Tue, 25 Sep 2018 07:09:44 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62942/jrZYOeHPfRpt9JGBnW6pqxxPYmjudQRTrEt/Hz6t8BlMyP8yu0QBT4s0SOP5IwHv8
+X-Received: by 2002:a0c:f446:: with SMTP id h6-v6mr888058qvm.208.1537884584713;
+        Tue, 25 Sep 2018 07:09:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537884584; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Nl8BsoiKaSl54ukQq/o1iLyxAKyWnwVGhbOKTf4K2YDwkz4BgaIfhdeE4S4nGY9Y/
-         pbx0L/WC/uPH9EZHGoeFeVyX4I/+LZytxxoE7aufLKHB0WxmgSNLu7xplIQgdYITZ9RA
-         uxky9naBOmnMAj6rAMN4IAerPTmUef08iJCyZq8E6+2wdKwJYii8f6bsuNfHPSL69Twq
-         FLEE4MptLbzfF+kz7knmrkL8qWuARMfdzK8vHFn4cg7nyq7WH+W+IRiQlqf3eVLtCQDa
-         W0cBGtaCmCUhnYz7ntAhlCXwIezWbFF3xx0U1keX9wIjse6I9Tii6ADjVQZCn4ZqbJ77
-         8P4Q==
+        b=NV0xxHL5MASJ9e6UjXOKTxn82jBaMFXmV1UfMK3uY3XBfpS3ImSK0YzM7X9vdbaQeD
+         2gIb6Cp6adVZh3B9QlajVbiuJDz7nVFBGRZMVdAezY2FmItY4OJtLFSJ7qVtJsgKpvCU
+         sKZsuIm3L0+LTTK4TDZKqu1IuGdD44Qprl751EFYf/9cxMLGSfZM/w3EL2Y+w7FwiChg
+         wWgIjDaNPivRWhWa4WjpmFPS0lMzFnQvyeSX5m3PY5upOXQ31Ies/9wRPDh22ZuaEUp7
+         YGQ9uaoNlRk3A0JQvdMZ9uHHtPoqScX2SU0ZVRsuYLlSsTsyxsStJjQjoYE35SVNstUB
+         6VbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=vVKRcjoToIJHyoN5hATCsts4MJUqaZDzaQDwfTGV1Q8=;
-        b=c7sE47PipqV0lD6vB3e5COCVJuPZFEf6+AQ4zaKW8NrdfvI46nWCia1gwWVmwYsbJS
-         aDXmNYq54yijk0DZ1c5dqYLLIBJ5knQRUyJWfWhRGBXaVPRdTYvmcStxBxHLg1+L1xve
-         zfURdiNlGo/OWIOOJoyC1c/wB7UtGRTh/kxAF2kH8D9M8r1xiFeTyEV/yJTRjzZjammn
-         NnrJScbePeCvr9nKA7SFoAG/+Yen+mgK4wtqdfenjLB26aaDU42xwciNfZJKQaLuUOYA
-         ne161SYhNc2WO0Ff7av+iCLk75whon6zj/h03uvsNN+W2AheCqdQGxt7cO1skQrXR/hv
-         A9Ng==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=il20ph/QDCP1VFlNx8IovEltBvww8tMWzWYFyb6Z3qk=;
+        b=o/bWsopGmUgqNIiaq2siwTH7EQ4JAfQWPzOEQnqcITIadyspmGeuu8txyEdacGi6gQ
+         7yj+H8mLowpywVLvvg1WKACWQDUeR5Ydg5C7BfAQvMLULFOJBPvDn682BnVRU8LamjQ6
+         xxgaX54Rf3k3aFFEHCuWvHH4usENY4Y6AjmqanzjLUVNX8SPTnAuF/hg+5zFv5RkyEjX
+         DSDsdLJqOS3s1DancrukQW0M+4DRoh1TMPiJgyKQH2GK1eiXo1KEBKhw4fg6SkI/Osk2
+         ptX8LQvPz1yA52nulhATURE/LjkxbgZ6s3gW6TjYZCtGcxQWFrFjo0oE8cJOyh1rRa9E
+         jPVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ESYdvvV3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z16-v6si634812qvs.188.2018.09.25.07.08.35
+        by mx.google.com with ESMTPS id g20-v6si1730886qtr.323.2018.09.25.07.09.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Sep 2018 07:08:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 25 Sep 2018 07:09:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53298 helo=lists.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ESYdvvV3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53304 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g4o0w-0004dr-9o
-	for alex.bennee@linaro.org; Tue, 25 Sep 2018 10:08:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41797)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g4o23-0005CJ-Kt
+	for alex.bennee@linaro.org; Tue, 25 Sep 2018 10:09:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44881)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g4nkf-0005iR-Mn
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 09:51:46 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1g4ntw-0006mM-Aw
+	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 10:01:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g4nkb-0007id-Lb
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 09:51:45 -0400
-Received: from 9.mo69.mail-out.ovh.net ([46.105.56.78]:35067)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g4nkb-0007bS-DW
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 09:51:41 -0400
-Received: from player688.ha.ovh.net (unknown [10.109.143.220])
-	by mo69.mail-out.ovh.net (Postfix) with ESMTP id 8728F2CCC7
-	for <qemu-arm@nongnu.org>; Tue, 25 Sep 2018 15:51:34 +0200 (CEST)
-Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
-	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
-	by player688.ha.ovh.net (Postfix) with ESMTPSA id 562C3200B8;
-	Tue, 25 Sep 2018 15:51:23 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180921161939.822-1-clg@kaod.org>
-	<20180921161939.822-7-clg@kaod.org>
-	<CAFEAcA_z5qYObmkHoRTUzLTYD_ihom5gXtGgjhsD4mPsDb9GmA@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <ce0706a2-9ffa-553b-a3b8-d4c9f9df5956@kaod.org>
-Date: Tue, 25 Sep 2018 15:51:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(envelope-from <peter.maydell@linaro.org>) id 1g4ntu-0000HN-0h
+	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 10:01:20 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:45276)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1g4nts-0000Ff-1j
+	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 10:01:16 -0400
+Received: by mail-oi1-x241.google.com with SMTP id d63-v6so1561873oic.12
+	for <qemu-devel@nongnu.org>; Tue, 25 Sep 2018 07:01:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=il20ph/QDCP1VFlNx8IovEltBvww8tMWzWYFyb6Z3qk=;
+	b=ESYdvvV3sHVO0AvgmOTBdRly7zKUWpDOBeZ5MICJDt61mN/bMP1IEgqXCr6x+T380L
+	pBDP5Td+WIQGQzAMc01olC0WlHihPe1OgtVOw3Gvu1WjyTHgfX0JIgyyQmXHABwqyVMH
+	ZgFOg6gaXW89wFVcdrDyMo5N4JErmXUiz4888=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=il20ph/QDCP1VFlNx8IovEltBvww8tMWzWYFyb6Z3qk=;
+	b=Vy5jh4xMNkbe/HGVWeC4Bi3UnQmV1ic/2ZWfMY8Ks17iKvs8/ql/k8wabEwtoD4dXO
+	L0qzh+0gjvsUm9Fcfp8nUK6gezu+nCOlpe/hqxNrFpJylP+F/zObByTCzSQG8Yrg13in
+	Z/Ca5u1IVeK+wk+zTRw0uKFyQdV7L9n+SXn0lXp5iQhnR18fHxMgQSMmFhIIxfS5L00h
+	BvfuOf4P7R0xYw93+bl1MoM/w2zmJJCZX0XycbsxrrirLUCCdG5vc1JRqSRwikqxMyTk
+	MDE2W87knknzAidzJMgVqJSC9AG0FgoF3FzagfmFm6s91FRfIrByOKf5bpUsoi2VBQC+
+	Lbbg==
+X-Gm-Message-State: ABuFfogXUcRVBLTIKtUVR9QnUNyzhY/LDr5DxeEAJIPFiSZEZcUU+tVd
+	IzOQNjFn0vPMRaqDL4RL7fhuij3NOMSNuTaVT9lMIg==
+X-Received: by 2002:aca:40d6:: with SMTP id
+	n205-v6mr697027oia.35.1537884074418; 
+	Tue, 25 Sep 2018 07:01:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_z5qYObmkHoRTUzLTYD_ihom5gXtGgjhsD4mPsDb9GmA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 4424223684927327172
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedruddtuddghedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.56.78
-Subject: Re: [Qemu-arm] [PATCH v2 06/11] aspeed/smc: fix default read value
-X-BeenThere: qemu-arm@nongnu.org
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Tue, 25 Sep 2018 07:00:53
+	-0700 (PDT)
+In-Reply-To: <7cac68bf-4047-c20a-dee5-2764ee595795@greensocs.com>
+References: <20180917084016.12750-1-damien.hedde@greensocs.com>
+	<20180917084016.12750-2-damien.hedde@greensocs.com>
+	<CAFEAcA9M1MDcbx9CA60zaHnFbtHQD2G_HAWFdPimWhyn==_jqA@mail.gmail.com>
+	<7cac68bf-4047-c20a-dee5-2764ee595795@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Sep 2018 15:00:53 +0100
+Message-ID: <CAFEAcA8oekUL3XEnwDYbAbzwSfUQ74xQxRvb0gZ3cgmm_nF_PA@mail.gmail.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-devel] [PATCH v4 01/10] hw/core/clock-port: introduce
+ clock port objects
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Mark Burton <mark.burton@greensocs.com>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xzklp62H0VQ+
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
+	=?UTF-8?B?S09OUkFEIEZyw6lkw6lyaWM=?= <fred.konrad@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W8jCxQ1ZGTKS
 
-On 9/25/18 2:24 PM, Peter Maydell wrote:
-> On 21 September 2018 at 17:19, C=C3=A9dric Le Goater <clg@kaod.org> wro=
-te:
->> 0xFFFFFFFF should be returned for non implemented registers.
->>
->> Also,
->=20
-> Use of "Also" in a commit message often indicates that it
-> would be better to split the commit. The two changes here
-> don't seem to me to have much to do with each other.
+On 25 September 2018 at 14:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>
+>
+> On 9/25/18 11:42 AM, Peter Maydell wrote:
+>> Having a ClockPort which ClockIn and ClockOut are derived
+>> from seems a bit heavyweight. When would you want to operate on
+>> a generic ClockPort rather than either a ClockIn or ClockOut ?
+>> Why would you want the name (canonical_path) to be different
+>> at the input and output ends -- is it possible to simplify
+>> to just having the output end keep the name string ?
+>
+> Here the canonical path is the full qom's canonical path. It is cached
+> in the state to avoid recomputing it when needed. It is only used for
+> log/trace purpose (without it, log is useless and calling
+> object_get_canonical_path at every log seemed too costly to me).
+> A connected ClockOut and ClockIn do not have the same (qom) parent,
+> their canonical path is different.
+> For example, in the zynq platform, there are 2 uarts, each one having a
+>  "refclk" input. There is also a clock controller (slcr) having 2
+> outputs "uart0_ref_clk" and "uart1_ref_clk". We end up with something
+> like this concerning canonical path:
+> + output "[...]/slcr/uart0_ref_clk" drives input "[...]/uart0/refclk"
+> + output "[...]/slcr/uart1_ref_clk" drives input "[...]/uart1/refclk"
+>
+> Right now, I log a line for every end (output and input) when the clock
+> frequency change, which lead to a kind-of-duplicate log line (names
+> differ, but clock frequencies are obviously the same). I could only log
+> at the output end and drop the canonical path for the input or pust the
+> path in both objects.
+>
+> Anyway it is easily possible to drop the ClockPort common ancestor. A
+> user never operates on it.
 
-They do in the symptom which is to expose the correct register
-values. But I won't argue and next version will introduce two=20
-patches :)
+I think that would be preferable -- having the debug logging
+drive the object hierarchy setup seems like the tail wagging
+the dog to me.
 
-Thanks,
-
-C.
-
->> the model should expose one control register per possible CS
->> even if there is no flash device attached. When testing the validity
->> of the register number in the read operation, replace 's->num_cs' by
->> 'ctrl->max_slaves' which represents the maximum number of flash
->> devices a controller can handle.
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->> ---
->>  hw/ssi/aspeed_smc.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
->> index 1270842dcf0c..6045ca11b969 100644
->> --- a/hw/ssi/aspeed_smc.c
->> +++ b/hw/ssi/aspeed_smc.c
->> @@ -665,12 +665,12 @@ static uint64_t aspeed_smc_read(void *opaque, hw=
-addr addr, unsigned int size)
->>          addr =3D=3D s->r_ce_ctrl ||
->>          addr =3D=3D R_INTR_CTRL ||
->>          (addr >=3D R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_s=
-laves) ||
->> -        (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->num_cs)) {
->> +        (addr >=3D s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_sla=
-ves)) {
->=20
-> The commit message mentions changing the upper bound on the
-> address check here and also the unimplemented-register return
-> value, but this change also seems to be changing the lower bound
-> in the check ?
->=20
->>          return s->regs[addr];
->>      } else {
->>          qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PR=
-Ix "\n",
->>                        __func__, addr);
->> -        return 0;
->> +        return -1;
->>      }
->=20
-> thanks
-> -- PMM
->=20
-
+thanks
+-- PMM

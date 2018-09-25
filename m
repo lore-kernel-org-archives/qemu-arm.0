@@ -1,137 +1,88 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp577750wrt;
-        Tue, 25 Sep 2018 04:56:46 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63Ba5tueFE94UGs8OLerpYQ+sKTBkHjM5BTHLTpGkB9Vu/WEWEfwGFRXbz0XGdeTiCvOmi8
-X-Received: by 2002:a05:6214:d2:: with SMTP id f18mr417491qvs.205.1537876606416;
-        Tue, 25 Sep 2018 04:56:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537876606; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp589563wrt;
+        Tue, 25 Sep 2018 05:08:05 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV613t1GjliwXzdbok3MpGRvw4b/9TrFUh/+mjxd+mJDmUmuNjxquj939Evj/vH/94+icpiyT
+X-Received: by 2002:a0c:f788:: with SMTP id s8-v6mr487295qvn.192.1537877285572;
+        Tue, 25 Sep 2018 05:08:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537877285; cv=none;
         d=google.com; s=arc-20160816;
-        b=BFDDeg8fL+Pyk6YwXPRH+CslfqDlHpU5Xy54AEDh7svcQZFL+LK/TF5kEvGiALfSJ+
-         VPo5vRf9lR6/gXXcHz7+PpXLjfnvec977D2OyumDC7qu5GiH/nhcj99HcdWG+2+/Yt5n
-         VgvRmaL+nhRMyOaQdzq4FJlh/VNykg5lATLce0K0iyTZ4vio/qGo9gsDLy4l8PvUn6fP
-         5YrpUIjZR/zNupJZfQ4unDOZNrXmotbcqdE8OHW0AFT7QT6SeYep2aaGAmBaormXxuDb
-         lQ7Cb9kj6kVSx6G2pwcHaBghz+QeN6zslusc1LmUkwCaLViz0VBT5zqU5BKAdG1NxryR
-         bUow==
+        b=LAbgL81nmGEtl6OgYf45NgRiB3sQDyeeuEXCGXC0HcWtaCYZAmedVuYVkdpudIqg1m
+         3ljODN9dIFiBYFkzBVl34C0UFN/7PE3W+dCL9vkfWNPbrYTlM9Tb/lTQcbNsuCmPokEv
+         COzwNAb2LwAqnisuiK4JA+8K15FH3YJK6PgGhct7PztmfvKcVZJ/UYYUhzbNkGk1LI/d
+         Vm6VmR/5n/aM5pFvVZEarqmdp6tvq8Ht17+JFZazeUlhz8g8PM18BCwfUlZy2oOKT8zX
+         SRY41lDoFMlC+z0z1Hj8V+cwwLV1gwqYYt1M4M2RHC4AXy8z5v2/6zGzZRDjtl0FQlcO
+         Gxxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature;
-        bh=MRIRjv/nXqN+QGcxISV6LZDGHPHBOl/Y7YBnfewa/YM=;
-        b=lgw4+/rrofy7BI1sHq3d4NBYXsfWQuBmitRw5TFPsUDesSOgQk0ZL3/AxedvNl+l4A
-         xe+GGbuzu+4SrVz2lrooyUnbOL1Vx6xXCSx69IGCHHvfud0/1nRWTfpwoewk8dxfrl4t
-         fj88tZu6YtSW2XZRz0vno+RVlf0MsnYSNvrllZEi1A68PbKhBClLorlUSMFJDuAPl+UD
-         S6A48m2wu6/cjIj2A9iIAvFeCLiXaVLeG6Iex5eOALuSM9iRlwBLs5nZGmVoLc2hFvcI
-         RavSn/hxpIRp2NBPWVDQQeUq7lN9SDZzM9fMWGAfOMPW6pyBb7OQ/Mv/bkUsFc46s2Mb
-         UhDw==
+         :user-agent:date:message-id:from:references:to;
+        bh=xxR7sh/hE6wMILXHQ1ImkCV4Xrqwm43LLwb/JVHy44o=;
+        b=nUiSa3GELnRtBbz2N2v5K85nnY6Gt+9ATABg85UgcjesSbP+Dbcs28G90T3Q35GvnZ
+         cbEIz2Wv7bo4nLMxDdgt18vHYfCBxU7q0khtOPRKevIQgws/yKhM+gs/VPETiS7P3UAg
+         RmZLA7bRZoWuDP6HOZ0AAvMqESpSK8t26inpfUgswkTwLGh2YyJ6KpMjp6wRG/CsktOW
+         RYbEMShnMzdWyO6DqVgTQB3wcO1pNG0WUbVqqS+1ho76RI0n/1Fsd7aWbkXRKeZkzg3N
+         Glk3RxNc/uN8p+dVd+IZWj4ey4vt+tJM02WKP+8jNd7zSeXc7AuTz1cZpxPYrsoatY3O
+         /vdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nGBTEv6b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h4-v6si568262qva.66.2018.09.25.04.56.46
+        by mx.google.com with ESMTPS id 63-v6si872282qku.178.2018.09.25.05.08.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Sep 2018 04:56:46 -0700 (PDT)
+        Tue, 25 Sep 2018 05:08:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nGBTEv6b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52474 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52757 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g4lxN-0007fV-UI
-	for alex.bennee@linaro.org; Tue, 25 Sep 2018 07:56:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36522)
+	id 1g4m8L-0003o8-4X
+	for alex.bennee@linaro.org; Tue, 25 Sep 2018 08:08:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1g4lxE-0007de-Ff
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 07:56:37 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1g4m87-0003nw-Ei
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 08:07:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1g4lxD-0003Zz-IG
-	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 07:56:36 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38188)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1g4lx8-0003W1-Qm; Tue, 25 Sep 2018 07:56:31 -0400
-Received: by mail-wm1-x341.google.com with SMTP id z16-v6so6895355wmi.3;
-	Tue, 25 Sep 2018 04:56:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=MRIRjv/nXqN+QGcxISV6LZDGHPHBOl/Y7YBnfewa/YM=;
-	b=nGBTEv6bzq7dBdh/3/4/N8Wx4oximbMV2UcmQwPkYP5vOc9WekF7q4Mw5iXZf0x56c
-	1aYAQ/6aQvY6rOsK4smDn8k5G/MDGyqg+G5Lq60nImRax2y9nf9ihxeeS6WImzxlF0Qb
-	0eME1CHJId3tdQuJ/3iTMR48f6GUTCzxcNPInuA0Ts2sNgqEKm/MePjOHEc75GDvggCo
-	oVMmDsQDr8N9YuRvmvjDTODU0kCsftOKOYPO9u6jH7EMhNQhuWYU4wQj9FH+rZrQRGMr
-	KINOmOPF6fAAwwhSsSVamBBSU03TbuubWYluQzJ2vaflSPaHh27F0t2vOIDKvfYMlf4f
-	k2EA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=MRIRjv/nXqN+QGcxISV6LZDGHPHBOl/Y7YBnfewa/YM=;
-	b=Vm8JAahhubc3gka4NeD57B/5KD0V57HVa2Jyh+A+OB4C/ngRF7rjQj39ProhP+m159
-	5CQZKCFgWof9V2HwBEytY/tIhpJkQWHLsGFnBXldlkb5av0uXsrgNDArPJX+vy++Q7GJ
-	a4cA39OHQyk8JkRRNkKdXULDiQrrUlZZoyrmerZfn1hNunWncUh/YtEAW56s/zUXs7uw
-	CP+kJgAeAp/DY6D9KXW6zwOhi3BjZhGQZQpOSUc/d8RD8hFGSkNMEjow32ypDwx0gDUJ
-	cC+RuBA0xBAjoccwNUMYR50cz9MYUUAc6lfk39xET9yjBw4IdgYb8L60zyC66vavGlSM
-	iYGA==
-X-Gm-Message-State: ABuFfogAVEZ7HjV192g/DJAkWKi4Rg4lMhsfQjpbg75bHx6ehpmxWogZ
-	mvnaqpAzAR13XocIFYJ+Sv4=
-X-Received: by 2002:a1c:bc86:: with SMTP id
-	m128-v6mr357705wmf.147.1537876589652; 
-	Tue, 25 Sep 2018 04:56:29 -0700 (PDT)
-Received: from [10.201.33.207] ([195.166.127.210])
-	by smtp.gmail.com with ESMTPSA id
-	e13-v6sm1841476wrt.76.2018.09.25.04.56.28
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 25 Sep 2018 04:56:29 -0700 (PDT)
+	(envelope-from <eric.auger@redhat.com>) id 1g4m82-0003R4-Gj
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 08:07:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53692)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1g4m82-0003Q4-3X; Tue, 25 Sep 2018 08:07:46 -0400
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com
+	[10.5.11.24])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 650D9C0270D2;
+	Tue, 25 Sep 2018 12:07:44 +0000 (UTC)
+Received: from [10.36.117.210] (ovpn-117-210.ams2.redhat.com [10.36.117.210])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D8F97308BDB3;
+	Tue, 25 Sep 2018 12:07:40 +0000 (UTC)
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180823135047.16525-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Autocrypt: addr=f4bug@amsat.org; prefer-encrypt=mutual; keydata=
-	mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
-	u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
-	HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
-	YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
-	ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
-	dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
-	ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
-	Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
-	HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
-	Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
-	YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBAgA/AhsPBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJbkphvBQkm
-	loU1AAoJEOPjLCzercDeTLIP/3pzTBotxvkddIREaw2j/6RoxN1lj5hnCx/XHGF7QxAlO4uV
-	7eB6hcZxAqlt4AyNX5jcsSxNMfVNGnZ+u4ni6VdRRLUOw/QPXKGV8siK2E1zOG1GwZSCJ5zb
-	ol7gpXNnOG/+ZXDfvkfSNnpim0ahNIPX8WAaZ/qN7I1qsPGupK2JrlCot561TfIOT7KNZFAZ
-	m66Hf8MeNr8HQtn+oDk6j7g6WuIYZiqvF1MladikIZXndDMCsopXsjOikMXtoVuC/df7BlwS
-	UaM+DT47onbIfXOtsWQGd2dJhu07Kxphqlz1Uh3YA7IHsFzZkX+S9waPBEzC8YB39dkZKA2E
-	XbObk/ZTtCBLb39KTN2L7bv3Agm6wYO/hw3DQJQV3/07vW1EJd4fglQB5IY2A3eQ/ZSuRVm1
-	E1GyFszjLXKUQIKx1938zoLrUDDdWQH7bhhSvG7JWk1BKmJrIXDTDx1tvTOW2pYZuO1PNx+p
-	EhJraVuu3jtSbEfH+uPeoWtJtqSRkz1fLqp+dbha24ldPeKw4ija/YTviOem5baUlf/iNgS+
-	a0s0eoRiJFrGZFCKLGKgZYoJe1rccQR6JKKd8JpoaIQuzptcHZD4+qn8W8FUlkNWGfpTQrsN
-	iPLZt2EFOFkbjoZ2EoEByCs9nZ8ro91+lq7QfH9RFcldKLZfPEWwHPrchQ42
-Message-ID: <82a820bc-8977-4ec3-ec2a-7a0495f43060@amsat.org>
-Date: Tue, 25 Sep 2018 13:56:27 +0200
+References: <20180921070138.10114-1-eric.auger@redhat.com>
+	<20180921070138.10114-3-eric.auger@redhat.com>
+	<CAFEAcA8nZLRtpb7E4bf_8QNBugerS=9Eja7AV51cfEmhDssXgQ@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <0bbc92e0-be17-8154-985b-69f5d33be343@redhat.com>
+Date: Tue, 25 Sep 2018 14:07:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180823135047.16525-1-peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA8nZLRtpb7E4bf_8QNBugerS=9Eja7AV51cfEmhDssXgQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH] target/arm: Start AArch32 CPUs with EL2 but
- not EL3 in Hyp mode
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.24
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 25 Sep 2018 12:07:44 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 2/2] hw/arm/smmuv3: fix eventq recording and
+ IRQ triggerring
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -143,62 +94,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JBErjnwY84X/
+X-TUID: 2d20OaxTsgRx
 
-On 8/23/18 3:50 PM, Peter Maydell wrote:
-> The ARMv8 architecture defines that an AArch32 CPU starts
-> in SVC mode, unless EL2 is the highest available EL, in
-> which case it starts in Hyp mode. (In ARMv7 a CPU with EL2
-> but not EL3 was not a valid configuration, but we don't
-> specifically reject this if the user asks for one.)
+Hi Peter,
 
-ID090413 "G1.13 AArch32 state exception descriptions"
-
-  G1.13.1 Reset
-
-    When Reset is deasserted, the PE then starts executing
-    instructions in the highest implemented Exception level.
-    If that Exception level is using AArch32, then it starts
-    execution:
-    • In Secure state, if the implementation includes EL3.
-    • With interrupts disabled:
-    — In Hyp mode, if the highest implemented Exception level is EL2.
-    — In Supervisor mode, otherwise.
-
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> ---
->  target/arm/cpu.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
+On 9/25/18 12:25 PM, Peter Maydell wrote:
+> On 21 September 2018 at 08:01, Eric Auger <eric.auger@redhat.com> wrote:
+>> The event queue management is broken today. Event records
+>> are not properly written as EVT_SET_* macro was not updating
+>> the actual event record. Also the event queue interrupt
+>> is not correctly triggered.
+>>
+>> Fixes: bb981004eaf4 ("hw/arm/smmuv3: Event queue recording helper")
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>  hw/arm/smmuv3-internal.h | 26 +++++++++++++-------------
+>>  hw/arm/smmuv3.c          |  2 +-
+>>  2 files changed, 14 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+>> index bab25d640e..19540f8f41 100644
+>> --- a/hw/arm/smmuv3-internal.h
+>> +++ b/hw/arm/smmuv3-internal.h
+>> @@ -442,17 +442,17 @@ typedef struct SMMUEventInfo {
+>>
+>>  #define EVT_Q_OVERFLOW        (1 << 31)
+>>
+>> -#define EVT_SET_TYPE(x, v)              deposit32((x)->word[0], 0 , 8 , v)
+>> -#define EVT_SET_SSV(x, v)               deposit32((x)->word[0], 11, 1 , v)
+>> -#define EVT_SET_SSID(x, v)              deposit32((x)->word[0], 12, 20, v)
+>> -#define EVT_SET_SID(x, v)               ((x)->word[1] = v)
+>> -#define EVT_SET_STAG(x, v)              deposit32((x)->word[2], 0 , 16, v)
+>> -#define EVT_SET_STALL(x, v)             deposit32((x)->word[2], 31, 1 , v)
+>> -#define EVT_SET_PNU(x, v)               deposit32((x)->word[3], 1 , 1 , v)
+>> -#define EVT_SET_IND(x, v)               deposit32((x)->word[3], 2 , 1 , v)
+>> -#define EVT_SET_RNW(x, v)               deposit32((x)->word[3], 3 , 1 , v)
+>> -#define EVT_SET_S2(x, v)                deposit32((x)->word[3], 7 , 1 , v)
+>> -#define EVT_SET_CLASS(x, v)             deposit32((x)->word[3], 8 , 2 , v)
+>> +#define EVT_SET_TYPE(x, v)  ((x)->word[0] = deposit32((x)->word[0], 0 , 8 , v))
+>> +#define EVT_SET_SSV(x, v)   ((x)->word[0] = deposit32((x)->word[0], 11, 1 , v))
+>> +#define EVT_SET_SSID(x, v)  ((x)->word[0] = deposit32((x)->word[0], 12, 20, v))
+>> +#define EVT_SET_SID(x, v)   ((x)->word[1] = v)
+>> +#define EVT_SET_STAG(x, v)  ((x)->word[2] = deposit32((x)->word[2], 0 , 16, v))
+>> +#define EVT_SET_STALL(x, v) ((x)->word[2] = deposit32((x)->word[2], 31, 1 , v))
+>> +#define EVT_SET_PNU(x, v)   ((x)->word[3] = deposit32((x)->word[3], 1 , 1 , v))
+>> +#define EVT_SET_IND(x, v)   ((x)->word[3] = deposit32((x)->word[3], 2 , 1 , v))
+>> +#define EVT_SET_RNW(x, v)   ((x)->word[3] = deposit32((x)->word[3], 3 , 1 , v))
+>> +#define EVT_SET_S2(x, v)    ((x)->word[3] = deposit32((x)->word[3], 7 , 1 , v))
+>> +#define EVT_SET_CLASS(x, v) ((x)->word[3] = deposit32((x)->word[3], 8 , 2 , v))
 > 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 258ba6dcaad..b5e61cc1775 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -199,8 +199,18 @@ static void arm_cpu_reset(CPUState *s)
->          env->cp15.c15_cpar = 1;
->      }
->  #else
-> -    /* SVC mode with interrupts disabled.  */
-> -    env->uncached_cpsr = ARM_CPU_MODE_SVC;
-> +
-> +    /*
-> +     * If the highest available EL is EL2, AArch32 will start in Hyp
-> +     * mode; otherwise it starts in SVC. Note that if we start in
-> +     * AArch64 then these values in the uncached_cpsr will be ignored.
-> +     */
-> +    if (arm_feature(env, ARM_FEATURE_EL2) &&
-> +        !arm_feature(env, ARM_FEATURE_EL3)) {
-> +        env->uncached_cpsr = ARM_CPU_MODE_HYP;
-> +    } else {
-> +        env->uncached_cpsr = ARM_CPU_MODE_SVC;
-> +    }
->      env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
->  
->      if (arm_feature(env, ARM_FEATURE_M)) {
+> 
+> Oops. I'm a bit embarrassed I didn't notice that in code review...
+Well I am even more embarrassed than you ;-) Usually there are no
+faults. When I got some, mostly due to emulation code bugs, I mostly
+focused on QEMU guest_errors logs. I noticed the code was broken when
+attempting to report faults from host smmu driver. Sorry for the
+inconvenience.
+
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
 > 

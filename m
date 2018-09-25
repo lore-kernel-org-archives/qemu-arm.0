@@ -1,156 +1,180 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp501938wrt;
-        Tue, 25 Sep 2018 03:34:33 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63wlKGYGy0adjzwOFUb7HpIxPT683kO2z1s5JIuPI+DBtFWVxEY5KmqB4FejXciqzDnJ4IE
-X-Received: by 2002:ac8:3a64:: with SMTP id w91-v6mr254914qte.144.1537871673530;
-        Tue, 25 Sep 2018 03:34:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1537871673; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp510992wrt;
+        Tue, 25 Sep 2018 03:45:13 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62plS3Yx0SBbJJEOip9euPX5CeqpLmP6ylIi2VpSIwus/ZkwbCsQcFgJ7C1p55O0j54TnTn
+X-Received: by 2002:a0c:ae71:: with SMTP id z46-v6mr277466qvc.108.1537872313190;
+        Tue, 25 Sep 2018 03:45:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537872313; cv=none;
         d=google.com; s=arc-20160816;
-        b=FCxNxToxVIRh9pERw4zxzK/RI8tYQpeu8OAeekD4SrECxLWz9hPQ8Ct8yLk4Ddlruo
-         KJ7nquPybiOcg8I395/aOja1DBDhm/hEbUlG5kzn0JwUrhbckLnqD+UHGClXzKU00SkY
-         1tYf6OnGpPmOdlJn6F+d1wMx5vgwb0W448TNKnkKuB3ltEkOdAxqV5zxT39I5gjKvn1h
-         7i3INWojbhQPSbjWeDVh6SB8o589qaotx7HaiI0pKo/QkbXshjmAwKhayiUi+2AkXkbK
-         Rdta0w3oqDT9LgROah0Gr+oyYIeidECGYYcdq7GXBlr7kxDaAc0Tp7X5nyjwfLYHwR66
-         03yQ==
+        b=JxAqRQWeLQ0mNffCPQyFyVCFJ3wO3Wd/5cglYuuvnvp21F0pqt+pCEfNbqKkTRWBJ/
+         POm96fljuCSlCL7UTaUaOcjClyQ4zuDEeZPuB3C5RNaEHOrY5BMMJhYfclRoT730hSfV
+         e8hRuuMCWki/z0JeXfp/cN0iD2GAPAq9s7S7C4TwhjTngzakjglRIpnUucDODRObGEDs
+         I3BYO7+mVtH62djaySLtDEGL4vfzuEDKopGAP79cepBXIvJvgqqdkp5g2n18oZHCJ2Pg
+         UULBMiFrL/fPF1bE9Kwiy4FH7Qew05BVOdC0va2SPCZuUJPcC/39ZkGXnZAA5thxAIxX
+         tPUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=wXa3g24pqmoGwQZOOGkr4nHgqm1Iv3k2mp3t1STiBq8=;
-        b=oH5//+6nboxgqWeEwbSm4ytwQEH3doH4z0OAXk8/PGQSc9ysMW/1h/dUKzzpLSIzVD
-         Iy9kYMenAn2Qd7jlG4Bu0XagAG5189kWxcepl3xb10T5DTQdojiNdDetTOwcD7u36Cdh
-         crSm0CGDuoFt1bqjQBUGDYjEM5n4scPKy5vrrsOVtrdMrB6yd9rrZ5syG9B01F41k/VB
-         prVL6iGbHdu6S1CKUjsYdt13S1zZ6MFGjzmE1fPv4j4mYQQNnreNMJRMtGJUC6q3782S
-         yrG6aotT0Ei5R7NGLIZqSX4qlRAJXBlF6Yg0J7phOJgNXfC/wHHh1rm4X52SW5trnDH4
-         b5VA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=hLDyeyswFOB3T7yfdh0eKckS6IwKN1YlrjNX5HkQp5s=;
+        b=RcL1o+72wb8I6Wh4PcM2HjgtbMZ2rAO8dI0q6Ul9s34+yqavbcZL5P9LhRE+HqLBil
+         emCFKABkBPGQ3B/NQqq2yXgod1w3mmPb41KImXaUwias1AnzJi/Jq3UtxXf638WjVE3T
+         MVD0Pi04FcSwZRzequkp/YlwLYaHrlUDF9dgj3SvQXFWSTkq1GppeLUeJZUU4P1KSUwJ
+         TcTquXy7UZBd6HmMGJQZ22FSKKVmGFLn5wY6SeZ/8vC/5t+11r3+QBQZ7vKpWvSGMlNw
+         R19n0xh+PkxF43azV5itjlaZGl2rBlJ0RgJPCCtUVUSsUxKcEaVSIHKBXI3kFzghJNto
+         kP7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G78DcFl2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e1-v6si335269qvo.202.2018.09.25.03.34.33
+        by mx.google.com with ESMTPS id i93-v6si1586995qtb.266.2018.09.25.03.45.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 25 Sep 2018 03:34:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 25 Sep 2018 03:45:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G78DcFl2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52075 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52141 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g4kfp-0000UY-2R
-	for alex.bennee@linaro.org; Tue, 25 Sep 2018 06:34:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41608)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g4kq8-0008Qw-Pu
+	for alex.bennee@linaro.org; Tue, 25 Sep 2018 06:45:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45484)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g4kds-0007pm-Rl
-	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 06:32:33 -0400
+	(envelope-from <clg@kaod.org>) id 1g4kpy-0008QZ-54
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 06:45:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g4kdm-0008Tm-VS
-	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 06:32:32 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39831)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1g4kdj-0008Hc-1F
-	for qemu-devel@nongnu.org; Tue, 25 Sep 2018 06:32:25 -0400
-Received: by mail-ot1-x342.google.com with SMTP id c12-v6so23843516otl.6
-	for <qemu-devel@nongnu.org>; Tue, 25 Sep 2018 03:32:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=wXa3g24pqmoGwQZOOGkr4nHgqm1Iv3k2mp3t1STiBq8=;
-	b=G78DcFl285R2fRaX4tlPNAAUP2AmskVRyXew4nMCX2NvcbT21YJwenanD6nyQAeNWt
-	I/P+1EZ9aG91oOcDOdafMRwURODhWrNXTeAYymy7yg4QQ3a1Mrp3AcJfzNqdU8zpaEp5
-	59RxbSVlt22kAtZ4EaA0s6rcx8TFlffFkiEaE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=wXa3g24pqmoGwQZOOGkr4nHgqm1Iv3k2mp3t1STiBq8=;
-	b=eM7eREWtpnfr8fGz+EYx0ZWYNBFahlglYWNE94ISq/wp7q9aBZ0Vavipo0LP6d1HbC
-	ZbqP9Bu2WvrgTX69R2utEF8IFcu/KM+DKtPwolWKX4m5letNke7vcpoeVC2NrmzbEsJU
-	ScKAxtorKY9uVUOEKrz52HfysOYn8wXV3MuekMcuiQWAoPhKFwoKoVV0Y8gM5ZD3oVP3
-	45bwBOPdqqvQ1bD1pJBI5fq8lR+YH4Q/AIsSM4g5dQGY1nIFX3u2xJxVcJ/mo31rpWDp
-	D+9uLOjZCb0UwGaRmnMoBh3HjyW2nMPb2KnBTzp+SeXYwTriSB6Zzl7BClz75X2O+0e1
-	0c5Q==
-X-Gm-Message-State: ABuFfogu39DHygAqG/my/nsctBjX6fUU94qIYWdcH083/uxBRAcUhyO1
-	VpyBd5yasjrzuXpF8MjJPAV5cJ3DqAKI0UjEOBC6zg==
-X-Received: by 2002:a9d:59c5:: with SMTP id u5-v6mr241695otg.332.1537871534546;
-	Tue, 25 Sep 2018 03:32:14 -0700 (PDT)
+	(envelope-from <clg@kaod.org>) id 1g4kpu-00006D-21
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 06:45:02 -0400
+Received: from 5.mo179.mail-out.ovh.net ([46.105.43.140]:41368)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g4kpt-000058-Pj
+	for qemu-arm@nongnu.org; Tue, 25 Sep 2018 06:44:57 -0400
+Received: from player761.ha.ovh.net (unknown [10.109.146.32])
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 60D5B100A9B
+	for <qemu-arm@nongnu.org>; Tue, 25 Sep 2018 12:44:56 +0200 (CEST)
+Received: from zorba.kaod.org (deibp9eh1--blueice1n0.emea.ibm.com
+	[195.212.29.162]) (Authenticated sender: postmaster@kaod.org)
+	by player761.ha.ovh.net (Postfix) with ESMTPSA id B55DE4800BC;
+	Tue, 25 Sep 2018 12:44:48 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20180914063506.20815-1-clg@kaod.org>
+	<20180914063506.20815-2-clg@kaod.org>
+	<CAFEAcA8uGPPy0mr+iHiByS+HTwOKfUbSpuM6UjOG1+-uNYk0Ww@mail.gmail.com>
+	<ff6ef7d6-f41f-13df-26ce-ff7b4dad5cec@kaod.org>
+	<CAFEAcA_S3YMpzFVZm6a7fdu67jAVXFAnawFQhWsjPG63KjgZAw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <74b0ec3f-b2ae-161a-1446-af2a90a8d520@kaod.org>
+Date: Tue, 25 Sep 2018 12:44:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Tue, 25 Sep 2018 03:31:54
-	-0700 (PDT)
-In-Reply-To: <20180823135047.16525-1-peter.maydell@linaro.org>
-References: <20180823135047.16525-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Sep 2018 11:31:54 +0100
-Message-ID: <CAFEAcA9SKw-g+Yq1cc7mqyQgoen86PDpGmdQmu31W7T2WbgcWQ@mail.gmail.com>
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH] target/arm: Start AArch32 CPUs
- with EL2 but not EL3 in Hyp mode
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAFEAcA_S3YMpzFVZm6a7fdu67jAVXFAnawFQhWsjPG63KjgZAw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Ovh-Tracer-Id: 1272266897398664107
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtjedruddtuddgudduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 46.105.43.140
+Subject: Re: [Qemu-arm] [PATCH 1/3] aspeed/i2c: interrupts should be cleared
+ by software only
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "patches@linaro.org" <patches@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kPd2DWBzkpnX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Guenter Roeck <linux@roeck-us.net>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sntQpZeyzK/a
 
-Ping for code review, please?
+On 09/25/2018 12:15 PM, Peter Maydell wrote:
+> On 25 September 2018 at 10:12, C=C3=A9dric Le Goater <clg@kaod.org> wro=
+te:
+>> On 09/25/2018 11:02 AM, Peter Maydell wrote:
+>>> On 14 September 2018 at 07:35, C=C3=A9dric Le Goater <clg@kaod.org> w=
+rote:
+>>>> and the bus interrupt should be lowered when all interrupts have bee=
+n
+>>>> cleared. Also, the model does not implement correctly the RX_DONE bi=
+t
+>>>> behavior which should be cleared to allow more data to be received.
+>>>> Yet to be fixed.
+>>>>
+>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>> ---
+>>>>  hw/i2c/aspeed_i2c.c | 21 +++++++++++++++++----
+>>>>  1 file changed, 17 insertions(+), 4 deletions(-)
+>>>>
+>>>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+>>>> index c762c7366ad9..de6b08378675 100644
+>>>> --- a/hw/i2c/aspeed_i2c.c
+>>>> +++ b/hw/i2c/aspeed_i2c.c
+>>>> @@ -52,6 +52,13 @@
+>>>>  #define I2CD_AC_TIMING_REG2     0x08       /* Clock and AC Timing C=
+ontrol #1 */
+>>>>  #define I2CD_INTR_CTRL_REG      0x0c       /* I2CD Interrupt Contro=
+l */
+>>>>  #define I2CD_INTR_STS_REG       0x10       /* I2CD Interrupt Status=
+ */
+>>>> +
+>>>> +#define   I2CD_INTR_SLAVE_ADDR_MATCH       (0x1 << 31) /* 0: addr1 =
+1: addr2 */
+>>>> +#define   I2CD_INTR_SLAVE_ADDR_RX_PENDING  (0x1 << 30)
+>>>> +/* bits[19-16] Reserved */
+>>>> +
+>>>> +/* All bits below are cleared by writing 1 */
+>>>> +#define   I2CD_INTR_SLAVE_INACTIVE_TIMEOUT (0x1 << 15)
+>>>>  #define   I2CD_INTR_SDA_DL_TIMEOUT         (0x1 << 14)
+>>>>  #define   I2CD_INTR_BUS_RECOVER_DONE       (0x1 << 13)
+>>>>  #define   I2CD_INTR_SMBUS_ALERT            (0x1 << 12) /* Bus [0-3]=
+ only */
+>>>> @@ -59,11 +66,16 @@
+>>>>  #define   I2CD_INTR_SMBUS_DEV_ALERT_ADDR   (0x1 << 10) /* Removed *=
+/
+>>>>  #define   I2CD_INTR_SMBUS_DEF_ADDR         (0x1 << 9)  /* Removed *=
+/
+>>>>  #define   I2CD_INTR_GCALL_ADDR             (0x1 << 8)  /* Removed *=
+/
+>>>> -#define   I2CD_INTR_SLAVE_MATCH            (0x1 << 7)  /* use RX_DO=
+NE */
+>>>> +#define   I2CD_INTR_SLAVE_ADDR_RX_MATCH    (0x1 << 7)  /* use RX_DO=
+NE */
+>>>>  #define   I2CD_INTR_SCL_TIMEOUT            (0x1 << 6)
+>>>>  #define   I2CD_INTR_ABNORMAL               (0x1 << 5)
+>>>>  #define   I2CD_INTR_NORMAL_STOP            (0x1 << 4)
+>>>>  #define   I2CD_INTR_ARBIT_LOSS             (0x1 << 3)
+>>>> +
+>>>> +/*
+>>>> + * TODO: handle correctly I2CD_INTR_RX_DONE which needs to be clear=
+ed
+>>>> + * to allow next data to be received.
+>>>> + */
+>>>>  #define   I2CD_INTR_RX_DONE                (0x1 << 2)
+>>>
+>>> Is this TODO something different from the behaviour involving
+>>> this RX_DONE bit which is fixed in patch 3 in this set ?
+>>
+>> no. It's the same but the TODO was not removed. I intended to do
+>> so after a possible merge.
+>=20
+> OK. I'll fix up the commit message and drop the TODO message from
+> this patch when I put the series into target-arm.next, if that's ok.
 
-thanks
--- PMM
+Sure.=20
 
-On 23 August 2018 at 14:50, Peter Maydell <peter.maydell@linaro.org> wrote:
-> The ARMv8 architecture defines that an AArch32 CPU starts
-> in SVC mode, unless EL2 is the highest available EL, in
-> which case it starts in Hyp mode. (In ARMv7 a CPU with EL2
-> but not EL3 was not a valid configuration, but we don't
-> specifically reject this if the user asks for one.)
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/cpu.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 258ba6dcaad..b5e61cc1775 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -199,8 +199,18 @@ static void arm_cpu_reset(CPUState *s)
->          env->cp15.c15_cpar = 1;
->      }
->  #else
-> -    /* SVC mode with interrupts disabled.  */
-> -    env->uncached_cpsr = ARM_CPU_MODE_SVC;
-> +
-> +    /*
-> +     * If the highest available EL is EL2, AArch32 will start in Hyp
-> +     * mode; otherwise it starts in SVC. Note that if we start in
-> +     * AArch64 then these values in the uncached_cpsr will be ignored.
-> +     */
-> +    if (arm_feature(env, ARM_FEATURE_EL2) &&
-> +        !arm_feature(env, ARM_FEATURE_EL3)) {
-> +        env->uncached_cpsr = ARM_CPU_MODE_HYP;
-> +    } else {
-> +        env->uncached_cpsr = ARM_CPU_MODE_SVC;
-> +    }
->      env->daif = PSTATE_D | PSTATE_A | PSTATE_I | PSTATE_F;
->
->      if (arm_feature(env, ARM_FEATURE_M)) {
-> --
-> 2.18.0
->
->
+Thanks,
+
+C.
+

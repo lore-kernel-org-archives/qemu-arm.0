@@ -1,112 +1,241 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1785041wrt;
-        Thu, 27 Sep 2018 03:30:26 -0700 (PDT)
-X-Received: by 2002:aca:2c5:: with SMTP id 188-v6mr2704848oic.192.1538044226662;
-        Thu, 27 Sep 2018 03:30:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538044226; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1866659wrt;
+        Thu, 27 Sep 2018 04:55:20 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62rP84jBwvlbaBoDVVoMRm3ogjrDJ0Rf4XJXVXm7N/4qZ1tGTQ8wnFEnvRqbuliDMUZne4H
+X-Received: by 2002:a0c:a444:: with SMTP id w62-v6mr7801894qvw.53.1538049319929;
+        Thu, 27 Sep 2018 04:55:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538049319; cv=none;
         d=google.com; s=arc-20160816;
-        b=uTpi6Ica98L+ZkjRBGu1I2E+1kNpo/U70nyEP0zTPYld8yhTS2Iv7trD2G88zEAySy
-         KKNHWRr4Bu0uSaBt1tPng1MF2UePaJnefdjyNHqKWGqHTooNoC55YlaUk98G5WE3fKDU
-         p6U3mhCJLPBq+wNHpCkOYUNdDGNhB83OUbp95Ot+0Hc0giX35BjqDNdNXebY5oKjAnuM
-         o2djEWvI9XoB+8hn2cwUWr37RE2jVIFKt6SuNnx9v02xW4LgYqZ5KauXNTx+806Wvvt8
-         ayBkpMcCbMIrPulpCcDmIIv0dZYdaFeXZYx3v1dHNc+gdisLegeyIPzmgOku8Q/tYtBR
-         4DQg==
+        b=SE4iV2zOXncs/cf75/2h1ZbD9rSVA8dywYfIszJtLAbA9fKYetXDiZ/0X8OJkmEWmW
+         T/aqFr6HDn0ZiolHz+bqpZpqK/rStQRUQZzNxelNeXnzpMhfYwM4KGFKjVeD1Wb96ZkV
+         x5Aw9fy6wuNye2zFpXJJOheP563GBJYqbVOu2F1hwaJKNuTeTjAbX3XvIMyNj9zvq4yl
+         RHqmqo3MXt7DQ9JmOfkYdOycjc/td/fBpY5rhVJCMETZqII3T8A7JVWBkfx8A/d1PY+4
+         42AdigE9dHRWYldRpASOsPgWY9ppotRoxV6yUjFSkubTpndlekTSzSjM3KMTGubrHrL+
+         97Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=Keq2CNKvt8LQQLPsP1QpIqs5Icoj8BQBpM5TEf1qOP0=;
-        b=M/fHZJyus6J0hDTJiMG1g79Sk6ufLuBQ7oGymTh7OOJ4fdV6XATc3LuJejW0ZsukwZ
-         +pQ7w272ru6hu3IlWh8xK40wYvp1n3u6K+2qtRGEOGvrN1FDZcDwtq3jNQecBs7iBU0d
-         iKMvqdtBlbjKM3Mv9kMJzz3iM1RCyfmAuPOcVxqhYYnNwKYCE9MjNGhiVmrBUy5jJ3ns
-         1XugiR7Fbd+KaiNiMexPlaSl+/klQ+A/vh5Amyj6qNmX/PdPRsNl35rKf0Lqc7xLd1mv
-         Nf5Ra/5/+wvFRs3tLZM610zaY9kd8BEDR32qDdM3IslyiVAOIWSmxuTMig8I4Gv+2piC
-         PI6w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=dK+g0xb99QAsWJDFl8c/U90Vw94DVIGa7+oj2x2WOoE=;
+        b=Y7wnuvb+uqQfe1bDtB5mZ0i3KJ3EUWehrhGKyTFWpBwRPLWZsvGxsYyZETtEDFMB/D
+         7DZKEwR9Z/1HHCANjyKaAjsVgq0H5NtPemkyuZPTpukP+BR/FukQffd5L+eRsdFaN1K3
+         CwZMeUdWfgF1MRudvH9TI2j8i7UJnL8YUVcL59FtlGBbtOKbpC/D6supNF7/PO1gHU7q
+         k/Y45GZLDjPtWCYQ4xFFZjz46Ng6vjSMP6hXLgLS4iB084pFRGWRBmWJEFRWFbNSQF9+
+         fM0amS4W5pTn0wwVlHYLNc0L2+qi3huOlcbs619VMqTHfhHfK7gvBTPhtkiIzIsrNOxZ
+         rSTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Bi/e/HfA";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u1-v6sor698698oiv.7.2018.09.27.03.30.26
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id z15-v6si1331174qvk.98.2018.09.27.04.55.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Sep 2018 03:30:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 27 Sep 2018 04:55:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Bi/e/HfA";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=Keq2CNKvt8LQQLPsP1QpIqs5Icoj8BQBpM5TEf1qOP0=;
-        b=Bi/e/HfAqEd1wi4bWOEnEkR3GV4i1nz3y+waKfiCeE3wf4d9mFNv6SNy6sh+jv2Mdj
-         ZKY+gGpyFlsR0fkq0NOqlsyOhN7DMWeSP1owqxEElWAEFKVikiPk7uW1c0rgS4onbG+o
-         ip/PnUpwR5Jwt/SJYfvolTCq9t31ajJWYMi1M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=Keq2CNKvt8LQQLPsP1QpIqs5Icoj8BQBpM5TEf1qOP0=;
-        b=HCbo/zoRkgFYNsUJ4YqEq7Pm6uM0Aixz/9dHrgbrK8nunwTT24Xkb4fca+7PwhQv5D
-         Xy0LIQmf2ToN1sRWMCQemNKQKs4EGufRsZG+SWN0mgi90TdiNhlFt0YDkedMvwXUqAmt
-         pvvMfZjYpWcUiiHQCd20Qqp6Ws5loPv9/dNPDXpKCV8TKrk7jqctfJRc8uKI6dY1u8ZA
-         3FZK3ob2+i6DobjGQL5byQg6mkVo0sUwSpQtPmYL23H2IYPcUl+fEbQXfuN0pX+svUzd
-         P+iJ0yTJqGnJvDlaSJw9szZd+cbSI2sleV7QNbijHru0VZ2jLHSjpIpwita/F2lSOkDp
-         hOVA==
-X-Gm-Message-State: ABuFfohlz77l+NUlMxGBalD8Z3TPTHAj1L3A7lGPTrCneNH1ufP+VHRH
-	N+78vuJr9CBMuNOvq+M+X/lf6dHeO4GJEwTTtcN4wDDm
-X-Google-Smtp-Source: ACcGV61GN9bTGLZCHvWqhT1SlNlsS4ovoLJqgg7f1+PwmzdB1EtLiQcJiHSD5OvptuBmAmi+W7XUyq+BPGaosLWWQFc=
-X-Received: by 2002:aca:6898:: with SMTP id o24-v6mr2699915oik.44.1538044226334;
- Thu, 27 Sep 2018 03:30:26 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Thu, 27 Sep 2018 03:30:05
- -0700 (PDT)
-In-Reply-To: <CAHmQWvAL5BdgjuZ7wM02DqKhLFYasXy_OGiFQU50O_Q4zgXsNw@mail.gmail.com>
-References: <1536488638-29326-1-git-send-email-hongbo.zhang@linaro.org> <CAHmQWvAL5BdgjuZ7wM02DqKhLFYasXy_OGiFQU50O_Q4zgXsNw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Sep 2018 11:30:05 +0100
-Message-ID: <CAFEAcA9Cueh8+pJq20OhOTTXf+g=C0GCk3rG1F+43kDguYXoDw@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/arm: Add arm SBSA reference machine
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: K51bwEauW39g
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35217 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g5Ut5-0004oz-EX
+	for alex.bennee@linaro.org; Thu, 27 Sep 2018 07:55:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40635)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <geert@linux-m68k.org>) id 1g5Usq-0004jJ-TJ
+	for qemu-arm@nongnu.org; Thu, 27 Sep 2018 07:55:06 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <geert@linux-m68k.org>) id 1g5Usn-0000v9-LT
+	for qemu-arm@nongnu.org; Thu, 27 Sep 2018 07:55:04 -0400
+Received: from baptiste.telenet-ops.be ([2a02:1800:120:4::f00:13]:40474)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <geert@linux-m68k.org>)
+	id 1g5Usn-0000tw-8K
+	for qemu-arm@nongnu.org; Thu, 27 Sep 2018 07:55:01 -0400
+Received: from ramsan.of.borg ([84.194.111.163])
+	by baptiste.telenet-ops.be with bizsmtp
+	id gbux1y00V3XaVaC01buxVY; Thu, 27 Sep 2018 13:54:58 +0200
+Received: from rox.of.borg ([192.168.97.57])
+	by ramsan.of.borg with esmtp (Exim 4.86_2)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1g5Usj-0001ck-5e; Thu, 27 Sep 2018 13:54:57 +0200
+Received: from geert by rox.of.borg with local (Exim 4.90_1)
+	(envelope-from <geert@linux-m68k.org>)
+	id 1g5Usj-0008CQ-4X; Thu, 27 Sep 2018 13:54:57 +0200
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Alex Williamson <alex.williamson@redhat.com>
+Date: Thu, 27 Sep 2018 13:54:52 +0200
+Message-Id: <20180927115454.31471-2-geert+renesas@glider.be>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20180927115454.31471-1-geert+renesas@glider.be>
+References: <20180927115454.31471-1-geert+renesas@glider.be>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 2a02:1800:120:4::f00:13
+Subject: [Qemu-arm] [PATCH qemu v5 1/3] vfio/platform: Make the
+ vfio-platform device non-abstract
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Magnus Damm <damm+renesas@opensource.se>, qemu-devel@nongnu.org,
+	linux-renesas-soc@vger.kernel.org,
+	Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /KojILW1AXjW
 
-On 27 September 2018 at 11:23, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> I would mention that there are some issues in the base qemu tree to
-> boot this (and also 'virt') machine.
->
-> The MPIDR isn't emulated well, currently only 4 cores on one cluster
-> can be booted, if we have more cores / more clusters / different
-> number of cores on one clusters, SMP cannot boot correctly because
-> PSCI checks MPIDR for booting secondary cores.
+From: Auger Eric <eric.auger@redhat.com>
 
-8-core SMP boot works fine for me on 'virt'...
+Up to now the vfio-platform device has been abstract and could not be
+instantiated.  The integration of a new vfio platform device required
+creating a dummy derived device which only set the compatible string.
 
-> And I have to revert "device_tree: Increase FDT_MAX_SIZE to 1 MiB" and
-> revert "target/arm: Implement new do_transaction_failed hook" to boot
-> the system, these commits not only block this new sbsa machine , but
-> also the 'virt' machine, maybe the patches need to be checked or maybe
-> firmware needed some adapt to these commits, currently I just revert
-> them to boot.
+Following the few vfio-platform device integrations we have seen the
+actual requested adaptation happens on device tree node creation
+(sysbus-fdt).
 
-Problems with do_transaction_failed mean the guest tried
-to access some physical address where there is no device. This
-is always a guest bug or misconfiguration. The commit you cite
-there is the one that means we stop ignoring this and instead
-generate guest bus errors, as real hardware usually does.
+Hence remove the abstract setting, and read the list of compatible
+values from sysfs if not set by a derived device.
 
-Not sure about the device_tree one, but again, 'virt' machine
-works OK for me.
+Update the amd-xgbe and calxeda-xgmac drivers to fill in the number of
+compatible values, as there can now be more than one.
 
-> I will add a cover letter for the next iteration included explanation
-> of these issues.
+Note that sysbus-fdt does not support the instantiation of the
+vfio-platform device yet.
 
-Thanks. Where they affect the 'virt' board, instructions to reproduce
-there would be useful.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+[geert: Rebase, set user_creatable=true, use compatible values in sysfs
+	instead of user-supplied manufacturer/model options, reword]
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+---
+v5:
+  - Fix path leak on error,
+  - Add Reviewed-by, Tested-by,
 
--- PMM
+v4:
+  - Propagate g_file_get_contents() errors through errp,
+
+v3:
+  - Read all compatible values from sysfs instead of using user-supplied
+    manufacturer and model options,
+  - Reword patch description,
+  - Drop RFC state,
+
+v2:
+  - No changes,
+
+v1:
+  - Rebase, Set user_creatable=true,
+
+v0:
+  - Original version from Eric.
+---
+ hw/vfio/amd-xgbe.c              |  1 +
+ hw/vfio/calxeda-xgmac.c         |  1 +
+ hw/vfio/platform.c              | 25 ++++++++++++++++++++++++-
+ include/hw/vfio/vfio-platform.h |  3 ++-
+ 4 files changed, 28 insertions(+), 2 deletions(-)
+
+diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
+index 0c4ec4ba25170366..ee64a3b4a2e45bf5 100644
+--- a/hw/vfio/amd-xgbe.c
++++ b/hw/vfio/amd-xgbe.c
+@@ -20,6 +20,7 @@ static void amd_xgbe_realize(DeviceState *dev, Error **errp)
+     VFIOAmdXgbeDeviceClass *k = VFIO_AMD_XGBE_DEVICE_GET_CLASS(dev);
+ 
+     vdev->compat = g_strdup("amd,xgbe-seattle-v1a");
++    vdev->num_compat = 1;
+ 
+     k->parent_realize(dev, errp);
+ }
+diff --git a/hw/vfio/calxeda-xgmac.c b/hw/vfio/calxeda-xgmac.c
+index 24cee6d06512c1b6..e7767c4b021be566 100644
+--- a/hw/vfio/calxeda-xgmac.c
++++ b/hw/vfio/calxeda-xgmac.c
+@@ -20,6 +20,7 @@ static void calxeda_xgmac_realize(DeviceState *dev, Error **errp)
+     VFIOCalxedaXgmacDeviceClass *k = VFIO_CALXEDA_XGMAC_DEVICE_GET_CLASS(dev);
+ 
+     vdev->compat = g_strdup("calxeda,hb-xgmac");
++    vdev->num_compat = 1;
+ 
+     k->parent_realize(dev, errp);
+ }
+diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+index 57c4a0ee2b58da70..64c1af653d145cc0 100644
+--- a/hw/vfio/platform.c
++++ b/hw/vfio/platform.c
+@@ -655,6 +655,28 @@ static void vfio_platform_realize(DeviceState *dev, Error **errp)
+         goto out;
+     }
+ 
++    if (!vdev->compat) {
++        GError *gerr = NULL;
++        gchar *contents;
++        gsize length;
++        char *path;
++
++        path = g_strdup_printf("%s/of_node/compatible", vbasedev->sysfsdev);
++        if (!g_file_get_contents(path, &contents, &length, &gerr)) {
++            error_setg(errp, "%s", gerr->message);
++            g_error_free(gerr);
++            g_free(path);
++            return;
++        }
++        g_free(path);
++        vdev->compat = contents;
++        for (vdev->num_compat = 0; length; vdev->num_compat++) {
++            size_t skip = strlen(contents) + 1;
++            contents += skip;
++            length -= skip;
++        }
++    }
++
+     for (i = 0; i < vbasedev->num_regions; i++) {
+         if (vfio_region_mmap(vdev->regions[i])) {
+             error_report("%s mmap unsupported. Performance may be slow",
+@@ -700,6 +722,8 @@ static void vfio_platform_class_init(ObjectClass *klass, void *data)
+     dc->desc = "VFIO-based platform device assignment";
+     sbc->connect_irq_notifier = vfio_start_irqfd_injection;
+     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    /* Supported by TYPE_VIRT_MACHINE */
++    dc->user_creatable = true;
+ }
+ 
+ static const TypeInfo vfio_platform_dev_info = {
+@@ -708,7 +732,6 @@ static const TypeInfo vfio_platform_dev_info = {
+     .instance_size = sizeof(VFIOPlatformDevice),
+     .class_init = vfio_platform_class_init,
+     .class_size = sizeof(VFIOPlatformDeviceClass),
+-    .abstract   = true,
+ };
+ 
+ static void register_vfio_platform_dev_type(void)
+diff --git a/include/hw/vfio/vfio-platform.h b/include/hw/vfio/vfio-platform.h
+index 9baaa2db09b84f3e..0ee10b1d71ed2503 100644
+--- a/include/hw/vfio/vfio-platform.h
++++ b/include/hw/vfio/vfio-platform.h
+@@ -54,7 +54,8 @@ typedef struct VFIOPlatformDevice {
+     QLIST_HEAD(, VFIOINTp) intp_list; /* list of IRQs */
+     /* queue of pending IRQs */
+     QSIMPLEQ_HEAD(pending_intp_queue, VFIOINTp) pending_intp_queue;
+-    char *compat; /* compatibility string */
++    char *compat; /* DT compatible values, separated by NUL */
++    unsigned int num_compat; /* number of compatible values */
+     uint32_t mmap_timeout; /* delay to re-enable mmaps after interrupt */
+     QEMUTimer *mmap_timer; /* allows fast-path resume after IRQ hit */
+     QemuMutex intp_mutex; /* protect the intp_list IRQ state */
+-- 
+2.17.1
+

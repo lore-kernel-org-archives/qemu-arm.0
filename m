@@ -1,99 +1,100 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp832644wrt;
-        Fri, 28 Sep 2018 08:15:26 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60CaiL9O1MGZFkPqtFLHdMZvBjs9jxsqCgbGix82WF6wGI+C5nVbSru9hpZ9/eIMPxDKkQB
-X-Received: by 2002:a37:a107:: with SMTP id k7-v6mr12111220qke.276.1538147726912;
-        Fri, 28 Sep 2018 08:15:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538147726; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp835719wrt;
+        Fri, 28 Sep 2018 08:18:15 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61nO4tY0ePwzYFkS28z5cZLJ+0Hbee9ZExhsdkVU+LhnGUOrehRxUNJfMF5U11xbzr+ty9d
+X-Received: by 2002:ac8:4649:: with SMTP id f9-v6mr13051749qto.34.1538147895059;
+        Fri, 28 Sep 2018 08:18:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538147895; cv=none;
         d=google.com; s=arc-20160816;
-        b=brpVRzMGQPQ9BdoLodXDZQynHj2+rgP6nQDD4cvgFiQoeH9IeMmfGc09D+fxH0mcN5
-         XWSEWLdIampl42tpM24o+LGQ1GPu/1YPjPV0JqiXrNdAqJQa4Nnc1TKMtn/zsB6oK17I
-         37j/TClwneisoHzIerGfm2ROeZLayyr9zLNnk+mdSuO7ZBBfosedfFdrtjU9HU7f8NwW
-         T4DQKKqKUvT4SHBiczlQvfNRI6mKE+fyV3fdLTYHQqvIcdyZajgQSWAsHsUeycU6eIUO
-         R7/y42kgN3tk6mCiI5e6srtfrF35nmtQLrhXht7BHdVZ1Oz5eXtjxk361mTxoIoK5w63
-         01Jg==
+        b=D2bI5qYL0Zga52mVGJF7WdKJ1hkdAIWCEGktRLcLL9QLrz4uc1SZPG04MfdMoJ9eJZ
+         otsvbmWTAnKw+JU3jFvj2EU0mNQUrumSrfKlA8tEtt5qnsltA2K/APmRBxjx8tQNuHtN
+         HMJYD5JVCShNqNZ0l+FWdPUduBZVlOq7sKwDh9CA+Ic+o7qFTAOyJUeKM2td8NRavUPR
+         G7LRi5diJowJrcuBJNCNfvnyK36H0CEv9OVrHCHD6yKSQ1EGRsO9TrkByhK5CVhGdQYx
+         jvPt7VxACjpiYGdCtmwXnjb/C1sZ2H7KsR8Lml4ZFz8LgaC9+igGfHwqOHKHp8kR9vem
+         Zpuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=ze/NQzLsSrKKfRg/hqk5pVj2Rvg68igtk5KRYoaogkA=;
-        b=atKkcJYocXFbR1t9yBV7EsugW+pxAv7sA/l9TVGX4ahfTCzah1mZcCD8mJrECQMe0u
-         r7yLUFxgk6/XO4IgkGIJbosr6GuE/0T1XnMkqnMu6Kadxdk17pO/eL8ZFlWS6G4zhr8L
-         PZg1RPCfdJtV/Vc8FmPgDqJ6Fz4QbCw+8c/9P2htRcDgFZiMo0t+AtBsM9uuXmRoOLIk
-         LpdOwbKlp9mUhdSwWdcjJQu6CfBmpon8FDvxyAmOuAECwqe8VQxJ3qP3ulYpZOroMbxe
-         UFl1y2fkV1pKY954TGEIShqhKVrbhxkCgbyq3VL+NRYErSNtyNtUpJknQZAnlIKFxeoE
-         YPYw==
+        bh=g5glWBzjCUJNduyCpkoCrM+H+p3y07kw6thb0czz2aY=;
+        b=e9iOmEF/Z0r/+HvJrb4Gqua1r/7KAGKQkROQ4D6QDnUipqU442oyhLkQ9IFUy0MtlF
+         5fdfucOaWteMnkYHrxY3nDlR6aSjwmsmcqGGhGssvE3nzPxBUhQi46gxJt8GpW6Cyndv
+         ViPWIUCMcqWrWInrEuNVrI37nTlhhyXgpXJuogNucqg/ag02w07TC8qU20itHedn+LgU
+         m3yjHXryPUB0bqRnReSn27egq7gA5dITBuWaSA9G393SGCR3cf55Vt6tJHK7x0NY9yNw
+         AMTET7NHGScDszjojuyZMWWVwVsqtU/ftWX2DoVAFsbdItSKBJmrTPXuzLR8yTaaWYZc
+         wDew==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m67-v6si483987qte.64.2018.09.28.08.15.26
+        by mx.google.com with ESMTPS id z20-v6si1415353qvl.87.2018.09.28.08.18.14
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Sep 2018 08:15:26 -0700 (PDT)
+        Fri, 28 Sep 2018 08:18:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43940 helo=lists.gnu.org)
+Received: from localhost ([::1]:43958 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g5uUH-0004NH-RH
-	for alex.bennee@linaro.org; Fri, 28 Sep 2018 11:15:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49798)
+	id 1g5uX0-0006VS-3k
+	for alex.bennee@linaro.org; Fri, 28 Sep 2018 11:18:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50040)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g5uTm-0004Jm-Dk
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:14:58 -0400
+	(envelope-from <philmd@redhat.com>) id 1g5uUa-00051t-O9
+	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:15:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g5uTi-00064M-8j
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:14:54 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:40388)
+	(envelope-from <philmd@redhat.com>) id 1g5uUV-0006QM-Ct
+	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:15:44 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:35355)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g5uTe-000631-OG
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:14:48 -0400
-Received: by mail-wr1-f66.google.com with SMTP id y8-v6so6791261wrh.7
-	for <qemu-devel@nongnu.org>; Fri, 28 Sep 2018 08:14:45 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g5uUV-0006M5-1P
+	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:15:39 -0400
+Received: by mail-wm1-f68.google.com with SMTP id o18-v6so2608484wmc.0
+	for <qemu-devel@nongnu.org>; Fri, 28 Sep 2018 08:15:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ze/NQzLsSrKKfRg/hqk5pVj2Rvg68igtk5KRYoaogkA=;
-	b=kvRr3A1MQt7vrwRRwNONOoSaWq0MBXMIU6v9OY8REhyx7+4o3u2cpRJljgu+P1H/Aj
-	DP+xC0GsdrhenbmlMI+26eqRm6OGSFvb9/tUh+8xgk1ovr2ojJSiZHUDo0kLuBzwuhcb
-	nfHJst41SVy+AVrknslRbJ1VrfRt5h/3BxAzp5NBQQK7JNYdYDUUTh7BQFg8E5OtPKBc
-	pVu7JT7Dbi2lQ7AE3bw8pgP3Vafj468mo8HuIMe7p/a9Q3wVx/dD6TTZizPE8GqUxa3z
-	38O+/n3Mj6uV4MAZ8PkWzTDYvLV3ASHiJM8H+itW4kk5FWXxP/zBMh0NM+nHUdvtsyMH
-	2lJw==
-X-Gm-Message-State: ABuFfohUrOmC8IHLHuj+eaaHApyhAAwpt+gx0LHNmobte2R5wAbiNPB0
-	b65AlBysf4shArkGPdIr1Vc+3w==
-X-Received: by 2002:adf:f785:: with SMTP id q5-v6mr2437956wrp.86.1538147684977;
-	Fri, 28 Sep 2018 08:14:44 -0700 (PDT)
+	bh=g5glWBzjCUJNduyCpkoCrM+H+p3y07kw6thb0czz2aY=;
+	b=q3Hs0LGnTFa7s1RsX1m9PPgtTAtWq58799OoED2QOaNbm0D2N8+onmWa4W7x1+OCrz
+	YQz+dZVWa2bAWtyFuY9SLxsg6LXI+Qp6elb2MDfHdxd6kF6uyamkoHhvF67ExDQ8TrLS
+	EB4wBHuTjnIUOACXdSXb6TytOcpndOWdiKHTt/ld+h6TnqusrlGyvEQfyGjsalrs+IR7
+	dFZh72GhiDkWUBKGETVFDZR3icMUFrAmlYn3Vc62R13VgDtuIuDp0OISVNIj5NwjYDcA
+	C093H23ufDNhlcYTUmM7qmPpLygnXtHZQWIUnKQ28FwtpgzfV4FgfrBc9PiBw21sE+wY
+	CfTQ==
+X-Gm-Message-State: ABuFfohG7WLWhcqFJHLBf/+wI4CNLQqpUsClPZ5bPPCfUCHIeK+W/otW
+	ioxiSEcwjPahyf4cDzmI6H65LA==
+X-Received: by 2002:a1c:ee0c:: with SMTP id
+	m12-v6mr2299242wmh.112.1538147727163; 
+	Fri, 28 Sep 2018 08:15:27 -0700 (PDT)
 Received: from [10.201.33.229] ([195.166.127.210])
 	by smtp.gmail.com with ESMTPSA id
-	i4-v6sm11122909wrs.87.2018.09.28.08.14.43
+	x15-v6sm3667278wrt.53.2018.09.28.08.15.25
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Sep 2018 08:14:44 -0700 (PDT)
+	Fri, 28 Sep 2018 08:15:26 -0700 (PDT)
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
 	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
 References: <20180928135003.8650-1-clg@kaod.org>
-	<20180928135003.8650-10-clg@kaod.org>
+	<20180928135003.8650-11-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <95f1e611-46f5-2a97-74dd-74be8b5ed9f5@redhat.com>
-Date: Fri, 28 Sep 2018 17:14:43 +0200
+Message-ID: <5fff15cb-9f77-9a4f-1760-f4ff14dcd5eb@redhat.com>
+Date: Fri, 28 Sep 2018 17:15:25 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180928135003.8650-10-clg@kaod.org>
+In-Reply-To: <20180928135003.8650-11-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-devel] [PATCH 09/11] net: stellaris_enet: convert SysBus
- init method to a realize method
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-devel] [PATCH 10/11] net: stellaris_enet: add a reset
+ method
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,7 +109,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 370TqUq6f/hy
+X-TUID: Uk0h0eIFiAGb
 
 On 28/09/2018 15:50, Cédric Le Goater wrote:
 > Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -118,41 +119,39 @@ On 28/09/2018 15:50, Cédric Le Goater wrote:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 > ---
->  hw/net/stellaris_enet.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
+>  hw/net/stellaris_enet.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
 > diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
-> index 165562d7886a..3ee1e0f8a43f 100644
+> index 3ee1e0f8a43f..b3375ebb459c 100644
 > --- a/hw/net/stellaris_enet.c
 > +++ b/hw/net/stellaris_enet.c
-> @@ -473,9 +473,9 @@ static NetClientInfo net_stellaris_enet_info = {
->      .receive = stellaris_enet_receive,
+> @@ -457,8 +457,10 @@ static const MemoryRegionOps stellaris_enet_ops = {
+>      .endianness = DEVICE_NATIVE_ENDIAN,
 >  };
 >  
-> -static int stellaris_enet_init(SysBusDevice *sbd)
-> +static void stellaris_enet_realize(DeviceState *dev, Error **errp)
+> -static void stellaris_enet_reset(stellaris_enet_state *s)
+> +static void stellaris_enet_reset(DeviceState *dev)
 >  {
-> -    DeviceState *dev = DEVICE(sbd);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->      stellaris_enet_state *s = STELLARIS_ENET(dev);
->  
->      memory_region_init_io(&s->mmio, OBJECT(s), &stellaris_enet_ops, s,
-> @@ -489,7 +489,6 @@ static int stellaris_enet_init(SysBusDevice *sbd)
+> +    stellaris_enet_state *s =  STELLARIS_ENET(dev);
+> +
+>      s->mdv = 0x80;
+>      s->rctl = SE_RCTL_BADCRC;
+>      s->im = SE_INT_PHY | SE_INT_MD | SE_INT_RXER | SE_INT_FOV | SE_INT_TXEMP
+> @@ -487,8 +489,6 @@ static void stellaris_enet_realize(DeviceState *dev, Error **errp)
+>      s->nic = qemu_new_nic(&net_stellaris_enet_info, &s->conf,
+>                            object_get_typename(OBJECT(dev)), dev->id, s);
 >      qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
->  
->      stellaris_enet_reset(s);
-> -    return 0;
+> -
+> -    stellaris_enet_reset(s);
 >  }
 >  
 >  static Property stellaris_enet_properties[] = {
-> @@ -500,9 +499,8 @@ static Property stellaris_enet_properties[] = {
->  static void stellaris_enet_class_init(ObjectClass *klass, void *data)
->  {
+> @@ -501,6 +501,7 @@ static void stellaris_enet_class_init(ObjectClass *klass, void *data)
 >      DeviceClass *dc = DEVICE_CLASS(klass);
-> -    SysBusDeviceClass *k = SYS_BUS_DEVICE_CLASS(klass);
 >  
-> -    k->init = stellaris_enet_init;
-> +    dc->realize = stellaris_enet_realize;
+>      dc->realize = stellaris_enet_realize;
+> +    dc->reset = stellaris_enet_reset;
 >      dc->props = stellaris_enet_properties;
 >      dc->vmsd = &vmstate_stellaris_enet;
 >  }

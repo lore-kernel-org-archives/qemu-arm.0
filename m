@@ -1,100 +1,100 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp835719wrt;
-        Fri, 28 Sep 2018 08:18:15 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61nO4tY0ePwzYFkS28z5cZLJ+0Hbee9ZExhsdkVU+LhnGUOrehRxUNJfMF5U11xbzr+ty9d
-X-Received: by 2002:ac8:4649:: with SMTP id f9-v6mr13051749qto.34.1538147895059;
-        Fri, 28 Sep 2018 08:18:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538147895; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp838773wrt;
+        Fri, 28 Sep 2018 08:21:01 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV628ZfhhYxXyR6tDdgbUPuc4b4H6qTkiktSMnDZ8dRk6Svf7JlxujNKN1hAys2y3C1MV9kyC
+X-Received: by 2002:ac8:30e4:: with SMTP id w33-v6mr12330718qta.176.1538148061516;
+        Fri, 28 Sep 2018 08:21:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538148061; cv=none;
         d=google.com; s=arc-20160816;
-        b=D2bI5qYL0Zga52mVGJF7WdKJ1hkdAIWCEGktRLcLL9QLrz4uc1SZPG04MfdMoJ9eJZ
-         otsvbmWTAnKw+JU3jFvj2EU0mNQUrumSrfKlA8tEtt5qnsltA2K/APmRBxjx8tQNuHtN
-         HMJYD5JVCShNqNZ0l+FWdPUduBZVlOq7sKwDh9CA+Ic+o7qFTAOyJUeKM2td8NRavUPR
-         G7LRi5diJowJrcuBJNCNfvnyK36H0CEv9OVrHCHD6yKSQ1EGRsO9TrkByhK5CVhGdQYx
-         jvPt7VxACjpiYGdCtmwXnjb/C1sZ2H7KsR8Lml4ZFz8LgaC9+igGfHwqOHKHp8kR9vem
-         Zpuw==
+        b=zzUeVmFYRqC0bWtFNEWR6XexHRyHwkJgwqUKf2DoOZpG8KT8YmBKamZrSkYfikKCGp
+         lrHuQSQF8T+jNkajK69vJt/5fEGd8CswvvHaYGjO7AmwF4DCy+C3D9LslqVBl69yN0/n
+         S6DaoUOefNK1o4i6HAaPpJJR/eb3adWZ2N4xJ0OxRRWx92Kshv1aQDIUPlMB9UTk9XJ1
+         jQPOt0K2zziZkPDYgt1xIvyHWgRooJn1V3PR/HByc8I+6KmWuR37jZZ+hnQ3CxTwRsuu
+         1wcdVluPShWGNNn3pVgIfBlJkknlMZXNbs5V8wlXky3c8h1JLDN/nOjE7yIswuQv31cA
+         WQxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=g5glWBzjCUJNduyCpkoCrM+H+p3y07kw6thb0czz2aY=;
-        b=e9iOmEF/Z0r/+HvJrb4Gqua1r/7KAGKQkROQ4D6QDnUipqU442oyhLkQ9IFUy0MtlF
-         5fdfucOaWteMnkYHrxY3nDlR6aSjwmsmcqGGhGssvE3nzPxBUhQi46gxJt8GpW6Cyndv
-         ViPWIUCMcqWrWInrEuNVrI37nTlhhyXgpXJuogNucqg/ag02w07TC8qU20itHedn+LgU
-         m3yjHXryPUB0bqRnReSn27egq7gA5dITBuWaSA9G393SGCR3cf55Vt6tJHK7x0NY9yNw
-         AMTET7NHGScDszjojuyZMWWVwVsqtU/ftWX2DoVAFsbdItSKBJmrTPXuzLR8yTaaWYZc
-         wDew==
+        bh=EcEZDf8gVb8kROZb3QhFFpP5kYII9Ly8TBp2AheSNIc=;
+        b=u5ZbE9FnLKelLmdLbLBYScwDKdac15VljiIzOIjeOux7RB5SRaWBzfb2HTzNWYG4i5
+         JVy4n1LxVy12xZ+CFlTRAQVuabHZ/8xdQvtPZvYkl5RXgmC+OzeUb+uaS3WbaJ+an3ob
+         /qZKfhDoZ/WlQAYbqAOU9Ds9HouefiHKfs0+QFrAAtSdCt5IzxjS10kgqfEziDCBwkKO
+         J0wbIykAuWZ4iWudzaF/3WzDmH44LzkkJzK3J50xkV3fVcfoX9U+76j3oiJOASWbkjd3
+         gJ3GXUVUXl6LZPIljhpSR7/YkAlwEQom3/ghKA4shLv+TMfPMzBxY0zhe5j6rBYZdC7T
+         d1sw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z20-v6si1415353qvl.87.2018.09.28.08.18.14
+        by mx.google.com with ESMTPS id q63-v6si173867qkb.152.2018.09.28.08.21.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Sep 2018 08:18:15 -0700 (PDT)
+        Fri, 28 Sep 2018 08:21:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43958 helo=lists.gnu.org)
+Received: from localhost ([::1]:43976 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g5uX0-0006VS-3k
-	for alex.bennee@linaro.org; Fri, 28 Sep 2018 11:18:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50040)
+	id 1g5uZg-0000Y1-WF
+	for alex.bennee@linaro.org; Fri, 28 Sep 2018 11:21:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50471)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g5uUa-00051t-O9
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:15:45 -0400
+	(envelope-from <philmd@redhat.com>) id 1g5uWJ-0006Fb-P4
+	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:17:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g5uUV-0006QM-Ct
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:15:44 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:35355)
+	(envelope-from <philmd@redhat.com>) id 1g5uWF-0000Py-GF
+	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:17:31 -0400
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:35467)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g5uUV-0006M5-1P
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:15:39 -0400
-Received: by mail-wm1-f68.google.com with SMTP id o18-v6so2608484wmc.0
-	for <qemu-devel@nongnu.org>; Fri, 28 Sep 2018 08:15:28 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g5uW8-00008g-TL
+	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:17:23 -0400
+Received: by mail-wr1-f66.google.com with SMTP id o16so6815010wrx.2
+	for <qemu-devel@nongnu.org>; Fri, 28 Sep 2018 08:17:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=g5glWBzjCUJNduyCpkoCrM+H+p3y07kw6thb0czz2aY=;
-	b=q3Hs0LGnTFa7s1RsX1m9PPgtTAtWq58799OoED2QOaNbm0D2N8+onmWa4W7x1+OCrz
-	YQz+dZVWa2bAWtyFuY9SLxsg6LXI+Qp6elb2MDfHdxd6kF6uyamkoHhvF67ExDQ8TrLS
-	EB4wBHuTjnIUOACXdSXb6TytOcpndOWdiKHTt/ld+h6TnqusrlGyvEQfyGjsalrs+IR7
-	dFZh72GhiDkWUBKGETVFDZR3icMUFrAmlYn3Vc62R13VgDtuIuDp0OISVNIj5NwjYDcA
-	C093H23ufDNhlcYTUmM7qmPpLygnXtHZQWIUnKQ28FwtpgzfV4FgfrBc9PiBw21sE+wY
-	CfTQ==
-X-Gm-Message-State: ABuFfohG7WLWhcqFJHLBf/+wI4CNLQqpUsClPZ5bPPCfUCHIeK+W/otW
-	ioxiSEcwjPahyf4cDzmI6H65LA==
-X-Received: by 2002:a1c:ee0c:: with SMTP id
-	m12-v6mr2299242wmh.112.1538147727163; 
-	Fri, 28 Sep 2018 08:15:27 -0700 (PDT)
+	bh=EcEZDf8gVb8kROZb3QhFFpP5kYII9Ly8TBp2AheSNIc=;
+	b=hZ/ckXNU3cZ7Zhov55Zvv8Bybc4LMT7RnMkp/Poh64btwPLkW5dOvw92apN+E1HY/F
+	T/RYE0idGTAHbAzNGW864i5rp+4f5TNkOOmo0lsM4+p2T61oSYkEfvo56guALvzaRtbB
+	EXJBlbYKiUzx/a4N8AsU0TDAkfKS20jT1xqCUC547uXOokQt073dsGztdzEQQFN3xJiR
+	wNDrJxj+rubDUXwWva1+zKH5yp/Ysfn8IGZisAD3A0cCk4s9adAPikbY67RZXdmYFiHX
+	T+SDn+UQ1ylxTL9FAPqF+WP5cXgVnQhoDuiA/XQgsywYVuqaQZELkS1G2iJu4IrpLsX+
+	6Abw==
+X-Gm-Message-State: ABuFfojza4knLGlPqfYGCUKb/HJqsvjxVjmrKa6+zIjzfmyzZ7fYz7DG
+	/ucK//6IEvPrv5tshc0wv0GEeA==
+X-Received: by 2002:a5d:5301:: with SMTP id
+	e1-v6mr4955059wrv.297.1538147838792; 
+	Fri, 28 Sep 2018 08:17:18 -0700 (PDT)
 Received: from [10.201.33.229] ([195.166.127.210])
 	by smtp.gmail.com with ESMTPSA id
-	x15-v6sm3667278wrt.53.2018.09.28.08.15.25
+	f187-v6sm2653614wmg.17.2018.09.28.08.17.17
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Sep 2018 08:15:26 -0700 (PDT)
+	Fri, 28 Sep 2018 08:17:18 -0700 (PDT)
 To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
 	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
 References: <20180928135003.8650-1-clg@kaod.org>
-	<20180928135003.8650-11-clg@kaod.org>
+	<20180928135003.8650-12-clg@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5fff15cb-9f77-9a4f-1760-f4ff14dcd5eb@redhat.com>
-Date: Fri, 28 Sep 2018 17:15:25 +0200
+Message-ID: <060fe7ec-c33f-9fa8-030d-575d44560f14@redhat.com>
+Date: Fri, 28 Sep 2018 17:17:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20180928135003.8650-11-clg@kaod.org>
+In-Reply-To: <20180928135003.8650-12-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-devel] [PATCH 10/11] net: stellaris_enet: add a reset
- method
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-devel] [PATCH 11/11] net: xgmac: convert SysBus init
+ method to a realize method
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,53 +106,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Rob Herring <robh@kernel.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uk0h0eIFiAGb
+X-TUID: C0oRQV4Q22dM
 
 On 28/09/2018 15:50, Cédric Le Goater wrote:
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: qemu-arm@nongnu.org
+> Cc: Rob Herring <robh@kernel.org>
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 > ---
->  hw/net/stellaris_enet.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+>  hw/net/xgmac.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
 > 
-> diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
-> index 3ee1e0f8a43f..b3375ebb459c 100644
-> --- a/hw/net/stellaris_enet.c
-> +++ b/hw/net/stellaris_enet.c
-> @@ -457,8 +457,10 @@ static const MemoryRegionOps stellaris_enet_ops = {
->      .endianness = DEVICE_NATIVE_ENDIAN,
+> diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
+> index fa001563d3de..63f5a62ebf1b 100644
+> --- a/hw/net/xgmac.c
+> +++ b/hw/net/xgmac.c
+> @@ -374,9 +374,9 @@ static NetClientInfo net_xgmac_enet_info = {
+>      .receive = eth_rx,
 >  };
 >  
-> -static void stellaris_enet_reset(stellaris_enet_state *s)
-> +static void stellaris_enet_reset(DeviceState *dev)
+> -static int xgmac_enet_init(SysBusDevice *sbd)
+> +static void xgmac_enet_realize(DeviceState *dev, Error **errp)
 >  {
-> +    stellaris_enet_state *s =  STELLARIS_ENET(dev);
-> +
->      s->mdv = 0x80;
->      s->rctl = SE_RCTL_BADCRC;
->      s->im = SE_INT_PHY | SE_INT_MD | SE_INT_RXER | SE_INT_FOV | SE_INT_TXEMP
-> @@ -487,8 +489,6 @@ static void stellaris_enet_realize(DeviceState *dev, Error **errp)
->      s->nic = qemu_new_nic(&net_stellaris_enet_info, &s->conf,
->                            object_get_typename(OBJECT(dev)), dev->id, s);
->      qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+> -    DeviceState *dev = DEVICE(sbd);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>      XgmacState *s = XGMAC(dev);
+>  
+>      memory_region_init_io(&s->iomem, OBJECT(s), &enet_mem_ops, s,
+> @@ -397,8 +397,6 @@ static int xgmac_enet_init(SysBusDevice *sbd)
+>                                   (s->conf.macaddr.a[2] << 16) |
+>                                   (s->conf.macaddr.a[1] << 8) |
+>                                    s->conf.macaddr.a[0];
 > -
-> -    stellaris_enet_reset(s);
+> -    return 0;
 >  }
 >  
->  static Property stellaris_enet_properties[] = {
-> @@ -501,6 +501,7 @@ static void stellaris_enet_class_init(ObjectClass *klass, void *data)
+>  static Property xgmac_properties[] = {
+> @@ -408,10 +406,9 @@ static Property xgmac_properties[] = {
+>  
+>  static void xgmac_enet_class_init(ObjectClass *klass, void *data)
+>  {
+> -    SysBusDeviceClass *sbc = SYS_BUS_DEVICE_CLASS(klass);
 >      DeviceClass *dc = DEVICE_CLASS(klass);
 >  
->      dc->realize = stellaris_enet_realize;
-> +    dc->reset = stellaris_enet_reset;
->      dc->props = stellaris_enet_properties;
->      dc->vmsd = &vmstate_stellaris_enet;
+> -    sbc->init = xgmac_enet_init;
+> +    dc->realize = xgmac_enet_realize;
+>      dc->vmsd = &vmstate_xgmac;
+>      dc->props = xgmac_properties;
 >  }
 > 

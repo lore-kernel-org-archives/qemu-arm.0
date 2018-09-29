@@ -1,164 +1,129 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp838773wrt;
-        Fri, 28 Sep 2018 08:21:01 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV628ZfhhYxXyR6tDdgbUPuc4b4H6qTkiktSMnDZ8dRk6Svf7JlxujNKN1hAys2y3C1MV9kyC
-X-Received: by 2002:ac8:30e4:: with SMTP id w33-v6mr12330718qta.176.1538148061516;
-        Fri, 28 Sep 2018 08:21:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538148061; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1601783wrt;
+        Sat, 29 Sep 2018 01:07:36 -0700 (PDT)
+X-Received: by 2002:a81:9216:: with SMTP id j22-v6mr1068907ywg.259.1538208456068;
+        Sat, 29 Sep 2018 01:07:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538208456; cv=none;
         d=google.com; s=arc-20160816;
-        b=zzUeVmFYRqC0bWtFNEWR6XexHRyHwkJgwqUKf2DoOZpG8KT8YmBKamZrSkYfikKCGp
-         lrHuQSQF8T+jNkajK69vJt/5fEGd8CswvvHaYGjO7AmwF4DCy+C3D9LslqVBl69yN0/n
-         S6DaoUOefNK1o4i6HAaPpJJR/eb3adWZ2N4xJ0OxRRWx92Kshv1aQDIUPlMB9UTk9XJ1
-         jQPOt0K2zziZkPDYgt1xIvyHWgRooJn1V3PR/HByc8I+6KmWuR37jZZ+hnQ3CxTwRsuu
-         1wcdVluPShWGNNn3pVgIfBlJkknlMZXNbs5V8wlXky3c8h1JLDN/nOjE7yIswuQv31cA
-         WQxg==
+        b=MxWwA9hwFn51qg1CNfiv8GqrAPnJkdLPFIe9F/9dQ2RAmmTVHdgfT0wAatMNUbxz43
+         /N1hCkGVDvLZ0p+IZXV+6ZAkq7b9TX/ox+WIBNRIhJJN9KeoWydsJwYE56ofRsDWF7Ib
+         Nj0h4s7z0KO7J86jKIMdMHGYbHRoAqYztEI27K1qJymQiKZ/iJvFsQYtEgLwzsKFVJp/
+         hdUZb8Vr4hKECiuMst4Rmx6/h2DOzEZ9QvpvIR4k7sxyDNvZISq0Ae7sDRU6i76WD9G1
+         RMBw+cq+2KGptWjjdlqX75+DXoBZh6DY664iYG01i8KJnUOexyb6UPk1XVkTmE5xLQUj
+         gWHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=EcEZDf8gVb8kROZb3QhFFpP5kYII9Ly8TBp2AheSNIc=;
-        b=u5ZbE9FnLKelLmdLbLBYScwDKdac15VljiIzOIjeOux7RB5SRaWBzfb2HTzNWYG4i5
-         JVy4n1LxVy12xZ+CFlTRAQVuabHZ/8xdQvtPZvYkl5RXgmC+OzeUb+uaS3WbaJ+an3ob
-         /qZKfhDoZ/WlQAYbqAOU9Ds9HouefiHKfs0+QFrAAtSdCt5IzxjS10kgqfEziDCBwkKO
-         J0wbIykAuWZ4iWudzaF/3WzDmH44LzkkJzK3J50xkV3fVcfoX9U+76j3oiJOASWbkjd3
-         gJ3GXUVUXl6LZPIljhpSR7/YkAlwEQom3/ghKA4shLv+TMfPMzBxY0zhe5j6rBYZdC7T
-         d1sw==
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature;
+        bh=DwduC8KRd7JaDtM+eTf44fUFTnvtuXFLVePsQWkIHUk=;
+        b=j6HkiRN3fZ6/G7GkBCItAC86utXHlIsN95K3gZ0eK0u9/qrKUtSalh+m5wxPSX0emM
+         yAy4lrhG0I46UbVOEaLpLrsJEoupzkP2gMTWNT3s8tdYYGLWjt9cvBsDQ7QLw9REveCV
+         Thi8iXBYA0djvjndn+dKTbb4D5Y4gmC8IM5BmLWsuQxurqsQf9NYdBEPwophtZ3s8QJy
+         7X1HNAb8/41PpX9Un2NG1ogRqr3MT02FAzvEcbMZx60Q3LIcJaWQLPiV8h7DJVSVBCck
+         ibyiHt1BEyzSaZ6Pr+XpJjY65qozbA4RtB6iANoVGcijG/OvRNCLjQLoKTblSBpC+xfG
+         NtIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q63-v6si173867qkb.152.2018.09.28.08.21.01
+       dkim=pass header.i=@linaro.org header.s=google header.b=DzyImlpb;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g67-v6sor489002ywd.209.2018.09.29.01.07.35
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 28 Sep 2018 08:21:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Sat, 29 Sep 2018 01:07:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43976 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g5uZg-0000Y1-WF
-	for alex.bennee@linaro.org; Fri, 28 Sep 2018 11:21:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50471)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g5uWJ-0006Fb-P4
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:17:32 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g5uWF-0000Py-GF
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:17:31 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:35467)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g5uW8-00008g-TL
-	for qemu-devel@nongnu.org; Fri, 28 Sep 2018 11:17:23 -0400
-Received: by mail-wr1-f66.google.com with SMTP id o16so6815010wrx.2
-	for <qemu-devel@nongnu.org>; Fri, 28 Sep 2018 08:17:19 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=DzyImlpb;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=DwduC8KRd7JaDtM+eTf44fUFTnvtuXFLVePsQWkIHUk=;
+        b=DzyImlpbBhff+7WSe+D3rN5LDHcB6fo/Cf6WWydJ3qoIr02+Ny3AUt190Ok9SuaT44
+         npavgStmOdpqAiyB1lYe9wETyPLHaBNq597fog/9socSCU8cPBi8wBzE4GipIXBMhKRT
+         xgQcMctetYEgjyWt5hXWlaQ/24xbfCap9o850=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=EcEZDf8gVb8kROZb3QhFFpP5kYII9Ly8TBp2AheSNIc=;
-	b=hZ/ckXNU3cZ7Zhov55Zvv8Bybc4LMT7RnMkp/Poh64btwPLkW5dOvw92apN+E1HY/F
-	T/RYE0idGTAHbAzNGW864i5rp+4f5TNkOOmo0lsM4+p2T61oSYkEfvo56guALvzaRtbB
-	EXJBlbYKiUzx/a4N8AsU0TDAkfKS20jT1xqCUC547uXOokQt073dsGztdzEQQFN3xJiR
-	wNDrJxj+rubDUXwWva1+zKH5yp/Ysfn8IGZisAD3A0cCk4s9adAPikbY67RZXdmYFiHX
-	T+SDn+UQ1ylxTL9FAPqF+WP5cXgVnQhoDuiA/XQgsywYVuqaQZELkS1G2iJu4IrpLsX+
-	6Abw==
-X-Gm-Message-State: ABuFfojza4knLGlPqfYGCUKb/HJqsvjxVjmrKa6+zIjzfmyzZ7fYz7DG
-	/ucK//6IEvPrv5tshc0wv0GEeA==
-X-Received: by 2002:a5d:5301:: with SMTP id
-	e1-v6mr4955059wrv.297.1538147838792; 
-	Fri, 28 Sep 2018 08:17:18 -0700 (PDT)
-Received: from [10.201.33.229] ([195.166.127.210])
-	by smtp.gmail.com with ESMTPSA id
-	f187-v6sm2653614wmg.17.2018.09.28.08.17.17
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 28 Sep 2018 08:17:18 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
-References: <20180928135003.8650-1-clg@kaod.org>
-	<20180928135003.8650-12-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <060fe7ec-c33f-9fa8-030d-575d44560f14@redhat.com>
-Date: Fri, 28 Sep 2018 17:17:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=DwduC8KRd7JaDtM+eTf44fUFTnvtuXFLVePsQWkIHUk=;
+        b=TKN+E+uqB2ksLHerIlcvYwpMIV9IkSVnuyfIVLRV2iEJ2DaQOfG2+0wfQ7TPgocbfx
+         hTe41QFOki2JRMHA1qLJL2TfUFuPk/c9amKXUMhNFf4aJyHj1f1Moy7Qf3oVzTGBY1Sd
+         l2/g8/mjZC5DF5HaxX3UI69Qx6A8igAuWOUDMrv5KNdSea2qS/KgtPJaByer9K+op21K
+         PLPixkDSn2gHM22ee2Qyn/MB1xtiWZ+0gDT+1IvMtTrZhS+K6lZaBoMrTeS2mdcbnV4h
+         jzP01Ylwk3Wc2YLbbq40VzQmZKK5GfGo14vvvvduPubOjRqFf9sOR3d/M70fVg0Pvg9n
+         9O6Q==
+X-Gm-Message-State: ABuFfoj2fFThmOtzrgjBX/rCB1rpCgakZ2ANML0hgTpWTzaQGcEILr5f
+	Y5YtQeV/yl07UV1eTm33wl//Ddo5PMPre50FWfHgF5p+
+X-Google-Smtp-Source: ACcGV61Xr5TYcri3W+y2v/naCzqxRLzwC5UU9eLWKJ1/pyecn0P0Cxt1uqtAn02uG21g43lQsQXuqDm+/NDwJMTs47g=
+X-Received: by 2002:a81:9b83:: with SMTP id s125-v6mr1069221ywg.47.1538208455672;
+ Sat, 29 Sep 2018 01:07:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180928135003.8650-12-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-devel] [PATCH 11/11] net: xgmac: convert SysBus init
- method to a realize method
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Rob Herring <robh@kernel.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C0oRQV4Q22dM
+Received: by 2002:a25:58c2:0:0:0:0:0 with HTTP; Sat, 29 Sep 2018 01:07:34
+ -0700 (PDT)
+In-Reply-To: <CAFEAcA9Cueh8+pJq20OhOTTXf+g=C0GCk3rG1F+43kDguYXoDw@mail.gmail.com>
+References: <1536488638-29326-1-git-send-email-hongbo.zhang@linaro.org>
+ <CAHmQWvAL5BdgjuZ7wM02DqKhLFYasXy_OGiFQU50O_Q4zgXsNw@mail.gmail.com> <CAFEAcA9Cueh8+pJq20OhOTTXf+g=C0GCk3rG1F+43kDguYXoDw@mail.gmail.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Sat, 29 Sep 2018 16:07:34 +0800
+Message-ID: <CAHmQWvAxOxcUwzSmR1U=P3v_CpJ2CR81t-X2X4QFBgOkKr1duA@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/arm: Add arm SBSA reference machine
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: JN2dHe9Xb+jX
 
-On 28/09/2018 15:50, Cédric Le Goater wrote:
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: Rob Herring <robh@kernel.org>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+On 27 September 2018 at 18:30, Peter Maydell <peter.maydell@linaro.org> wrote:
+> On 27 September 2018 at 11:23, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>> I would mention that there are some issues in the base qemu tree to
+>> boot this (and also 'virt') machine.
+>>
+>> The MPIDR isn't emulated well, currently only 4 cores on one cluster
+>> can be booted, if we have more cores / more clusters / different
+>> number of cores on one clusters, SMP cannot boot correctly because
+>> PSCI checks MPIDR for booting secondary cores.
+>
+> 8-core SMP boot works fine for me on 'virt'...
+>
+Also depends on GIC version, and firmware usage, e.g. QEMU built-in
+PSCI or external ARMTF PSCI, let me check and summarize.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> And I have to revert "device_tree: Increase FDT_MAX_SIZE to 1 MiB" and
+>> revert "target/arm: Implement new do_transaction_failed hook" to boot
+>> the system, these commits not only block this new sbsa machine , but
+>> also the 'virt' machine, maybe the patches need to be checked or maybe
+>> firmware needed some adapt to these commits, currently I just revert
+>> them to boot.
+>
+> Problems with do_transaction_failed mean the guest tried
+> to access some physical address where there is no device. This
+> is always a guest bug or misconfiguration. The commit you cite
+> there is the one that means we stop ignoring this and instead
+> generate guest bus errors, as real hardware usually does.
+>
+> Not sure about the device_tree one, but again, 'virt' machine
+> works OK for me.
+>
+You didn't boot with ARMTF and UEFI I think, when both firmwares used,
+you likely get blocked at UEFI with message:
+(so I guess it is due to UEFI to do some adaption)
 
-> ---
->  hw/net/xgmac.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
-> index fa001563d3de..63f5a62ebf1b 100644
-> --- a/hw/net/xgmac.c
-> +++ b/hw/net/xgmac.c
-> @@ -374,9 +374,9 @@ static NetClientInfo net_xgmac_enet_info = {
->      .receive = eth_rx,
->  };
->  
-> -static int xgmac_enet_init(SysBusDevice *sbd)
-> +static void xgmac_enet_realize(DeviceState *dev, Error **errp)
->  {
-> -    DeviceState *dev = DEVICE(sbd);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->      XgmacState *s = XGMAC(dev);
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &enet_mem_ops, s,
-> @@ -397,8 +397,6 @@ static int xgmac_enet_init(SysBusDevice *sbd)
->                                   (s->conf.macaddr.a[2] << 16) |
->                                   (s->conf.macaddr.a[1] << 8) |
->                                    s->conf.macaddr.a[0];
-> -
-> -    return 0;
->  }
->  
->  static Property xgmac_properties[] = {
-> @@ -408,10 +406,9 @@ static Property xgmac_properties[] = {
->  
->  static void xgmac_enet_class_init(ObjectClass *klass, void *data)
->  {
-> -    SysBusDeviceClass *sbc = SYS_BUS_DEVICE_CLASS(klass);
->      DeviceClass *dc = DEVICE_CLASS(klass);
->  
-> -    sbc->init = xgmac_enet_init;
-> +    dc->realize = xgmac_enet_realize;
->      dc->vmsd = &vmstate_xgmac;
->      dc->props = xgmac_properties;
->  }
-> 
+ASSERT_EFI_ERROR (Status = Not Found)
+ASSERT [ResetSystemRuntimeDxe]
+/home/hongbo/work/edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/ResetSystemRuntimeDxe/ResetSystemRuntimeDxe/DEBUG/AutoGen.c(362):
+!EFI_ERROR (Status)
+
+>> I will add a cover letter for the next iteration included explanation
+>> of these issues.
+>
+> Thanks. Where they affect the 'virt' board, instructions to reproduce
+> there would be useful.
+>
+Yes, sure, will explain issues in detail. (when back from my National
+Day vocation)
+
+> -- PMM

@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5648062wrt;
-        Tue, 2 Oct 2018 16:48:22 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60u1Ka8HydZxQ5GJ0Ufwad8IlN0jnQmypJ6fbA2DnxbKcTl27afalBXGqt0VN1wkwwTP/Yg
-X-Received: by 2002:a0c:8722:: with SMTP id 31-v6mr14792865qvh.47.1538524102326;
-        Tue, 02 Oct 2018 16:48:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538524102; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5651437wrt;
+        Tue, 2 Oct 2018 16:53:42 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60kMgs5Dx6D/roV7YftznCqakAxWvoQLPzAWs47t3cPFkBKBl1uAakcg9lXJS9qVTEHQGmG
+X-Received: by 2002:a37:6583:: with SMTP id z125-v6mr13292434qkb.310.1538524422647;
+        Tue, 02 Oct 2018 16:53:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538524422; cv=none;
         d=google.com; s=arc-20160816;
-        b=e7OkeFryWoF5yr659ICq5RcQWU8DxZFCSGI+abRwOrx0eKNPNCfepqqD8KLMh1Q6jB
-         AUi4dnSMc+WDbhrLOTYFQvEHQTh4toeZBFd1YdrvyLcf3XVGPJ00rmjNqOHR2UPAcAWY
-         GwjCZz9+2B5tsghKFOHN1ioG8qEGYKZlt4hHfGYOyBnaAhjV6RsOVRL2oUDyBIAlN9ns
-         KOQbpSl+9FKqnmYDLKfvDCf5R9P106goHZEyju054xS8KXR8nvCs3BBlRwG1aXTu07Q3
-         4rITVhlOLO5aR3SsleDkBZNjgeahRZZgsU0SZ5k/b7MFbRsM+R6+5MHOCAvGqARLnv6H
-         zfRA==
+        b=i7z5iosmf0dWH9jaVn4f8Cf796aJnJrbJNo6Cus71DpPCpSKvUw/JaeVGEH8nxsqVP
+         ZZ7DYOSuiH0AMC0lZ8X7FH9dUyfBu2SKweOEMJKsZfZfCyRo8rRXm9IL9Ego7Ydx8CM6
+         E0gp5CJd+KoPhr+1dV6Dt4l5kxJZlxw/wztShcRg6h+aEpHXAQHJVNZA6hUS2ZH5xHeO
+         VufQO10cpcpY2sqqkERLyjTVkpl4zHjmN1Zvp0rwCvtOTJAnt3gn9744m5+4dFvA016N
+         mXoO6bxl6MIwP2nAPmQLdCafFoGDvUjmKOhjAvn9C26yNulBd1unDbykRHc0CG57UalD
+         B0hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=Ay/7QaKBEBjuH0Z+2zlJgvpPIQrZIELQ6rCX2mYu/eE=;
-        b=zaMo3MzPtN35nxaOm3WjaozI8J0BEylCPetEF4BIpdW30rrN5BD46M+PTTwdr85IYV
-         SMhEck1e+Lr2PQeGREAQPOWgLFpV4dqL7jodbkGurUoMlNSER98gRPhLQyLVgy+bN++7
-         MoipV0ScUxgFnNTPsbCMoyqYYO6XlGK+4M4isTV9/EMApMUqWXdlZ2lcp+v5E6kvT15p
-         bgO7V65JsQNSP7nN3CbarjCX7WloD8WkzOuPBuNKmqcLTjOxfBJ6CVcvWBPci+BHMFBs
-         8xP0R8Dv5ZWERP7cCDPaieNnXps3MH5BXFdEvWnKeIwRf9pNO+oKFXzklePNyEt/J8hy
-         Gucg==
+        bh=YXmsmYq2qwlMqAO7aJPee1UO4gAxSM9Ndcdr6IX3NKA=;
+        b=l6dYO+0iofS8As35TasY/uIAWtbOyRSCA5mzQX62xYTKdkfIWsoWdj9nOzUz49kydh
+         Lj1smctmIABex3/+yOquGXochvM83tSZlOxOzxU2IxbaA+so+tF6fQHqwpeTWNx2vyE7
+         cfOBaMQu1v9UhXpHTJCT/SaVqoBYbmaWdzmSGLy8z3GaG6bfxrXM/Nm1rW0Aoi06OjVy
+         5NnFr+hihZ1cJ1iLRliGKRF1PH1STgCJYjpgQr3PgPqfI9h8dQ2888U3E+S1oDQoH93H
+         0UFregAmFvyF3ugbc6WICRW38qyR4DKwb9jq8bIkeLOffekYHGeeNuQsv46LTArfIj7J
+         hqVw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 40-v6si1208945qkx.312.2018.10.02.16.48.22
+        by mx.google.com with ESMTPS id s11-v6si2449760qtq.369.2018.10.02.16.53.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Oct 2018 16:48:22 -0700 (PDT)
+        Tue, 02 Oct 2018 16:53:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46304 helo=lists.gnu.org)
+Received: from localhost ([::1]:46319 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7UOr-0002lN-Rd
-	for alex.bennee@linaro.org; Tue, 02 Oct 2018 19:48:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48227)
+	id 1g7UU2-00053v-4Z
+	for alex.bennee@linaro.org; Tue, 02 Oct 2018 19:53:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49118)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7UOe-0002bf-JY
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:48:09 -0400
+	(envelope-from <philmd@redhat.com>) id 1g7UTq-00053a-8z
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:53:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7UOb-00049n-6N
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:48:08 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:34613)
+	(envelope-from <philmd@redhat.com>) id 1g7UTm-0006d2-VM
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:53:30 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:40627)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7UOa-00049R-Sz
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:48:05 -0400
-Received: by mail-wm1-f66.google.com with SMTP id z25-v6so6421204wmf.1
-	for <qemu-arm@nongnu.org>; Tue, 02 Oct 2018 16:48:04 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7UTm-0006ce-IU
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:53:26 -0400
+Received: by mail-wr1-f68.google.com with SMTP id y8-v6so4083034wrh.7
+	for <qemu-arm@nongnu.org>; Tue, 02 Oct 2018 16:53:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=Ay/7QaKBEBjuH0Z+2zlJgvpPIQrZIELQ6rCX2mYu/eE=;
-	b=mSxJIRktyHe+dHHBZlnGVwwNKHTXyeN3jBr3bS9rEoK7t/mHbfyJTyPxyA0McpFJaV
-	VtRo7qvvCY6MI7swASnU5q7KhCy6UKBwAFfNSLgMhsQWDfVvA9MHMCWekDkaoVmPzcAJ
-	FEdbNJNcdhCM0NtrFfpvEsMM6LERY8J95NLHuQTi5IKXmQxZhF5U9qnQfBqB/ugVVF6F
-	2YBHtXl1bs1l72yO8cmlKRUxfD6VCnBQmK4M4ePxbm03Z2p+9/4fFocPeXxoJ96J6Yu2
-	yNAFlJ9QDufGDDBf+lRjn522A1nGn9xdhobBZC+P4foJIFV9CozkDTyjT0mGJOzWaRIM
-	AHzw==
-X-Gm-Message-State: ABuFfoiXNxmk/rlnE7shAFF8UHT3DmTfpR2/tLDRdu/oQ8eMZ7214qwE
-	WAUc/Cy3tPX0Hr84A2Acd1Yr4Q==
-X-Received: by 2002:a1c:3b87:: with SMTP id
-	i129-v6mr3142856wma.42.1538524083804; 
-	Tue, 02 Oct 2018 16:48:03 -0700 (PDT)
+	bh=YXmsmYq2qwlMqAO7aJPee1UO4gAxSM9Ndcdr6IX3NKA=;
+	b=F/ildklKum895IEOL1IEe3bEEEAVpd9q8OsFHaOWtku0SCeIMIwmusO3PN2vWpibSI
+	6qQenwVM0Ny/BMRNJZCCqEmrQs48JL8Yoj9GiQ2YyLQR11Wi9osyhPW1UeFH91Pp3b0B
+	89mVROC9Lwy2/0XNieiOhFbRowzpNcR/BnsLq+F+ibeYZgV508nIiobva7qmj61gk3Z2
+	hqbw7K0fNgcMQ4FYFPRieLj0kuPCZMLF9sEx6zdOKzTcPiV3UO/I39j/Qpa5Af+lgrhF
+	9H1uLLDTy2P5ql+bCKPyEPWEc0Boqi+2UHpWO7//LTco6erDvBX78/1aU9Boo1YblP4h
+	aK9A==
+X-Gm-Message-State: ABuFfoi8g4hZcIQElsV0DiWUqESBiq8phXg4Xz0v43tvIBKZHPYxncQz
+	9m9q0YrkX1Dd8Dx+rTig1gDSaA==
+X-Received: by 2002:a5d:6692:: with SMTP id
+	l18-v6mr13454315wru.154.1538524405379; 
+	Tue, 02 Oct 2018 16:53:25 -0700 (PDT)
 Received: from [192.168.2.51] (26.red-83-32-208.dynamicip.rima-tde.net.
 	[83.32.208.26]) by smtp.gmail.com with ESMTPSA id
-	w26-v6sm11806433wmi.27.2018.10.02.16.48.02
+	w72-v6sm26545900wrc.52.2018.10.02.16.53.23
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 02 Oct 2018 16:48:02 -0700 (PDT)
+	Tue, 02 Oct 2018 16:53:24 -0700 (PDT)
 To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
 References: <20181002142443.30976-1-damien.hedde@greensocs.com>
-	<20181002142443.30976-6-damien.hedde@greensocs.com>
+	<20181002142443.30976-2-damien.hedde@greensocs.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <5bd8bb78-e894-7e63-93fc-241d57f8cbd3@redhat.com>
-Date: Wed, 3 Oct 2018 01:48:02 +0200
+Message-ID: <ad0b1a3a-ead5-5515-6cd6-3434dc8102bc@redhat.com>
+Date: Wed, 3 Oct 2018 01:53:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20181002142443.30976-6-damien.hedde@greensocs.com>
+In-Reply-To: <20181002142443.30976-2-damien.hedde@greensocs.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 5/9] docs/clocks: add
- device's clock documentation
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/9] hw/core/clock-port:
+ introduce clock port objects
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,218 +111,381 @@ Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
 	luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3wNBvR/Jjswf
+X-TUID: IksnmYMM3Uuy
 
 On 10/2/18 4:24 PM, Damien Hedde wrote:
-> Add the documentation about the clock inputs and outputs in devices.
+> Introduce clock port objects: ClockIn and ClockOut.
+> 
+> Theses ports may be used to distribute a clock from a object to several
+> other objects. The ClockIn object contains the current state of the
+> clock: the frequency.
+> 
+> A ClockIn may be connected to a ClockOut so that it receives update,
+> through the callback, whenever the Clockout is updated using the
+> ClockOut's set function.
 > 
 > This is based on the original work of Frederic Konrad.
 > 
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
->  docs/devel/clock.txt | 163 +++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 163 insertions(+)
->  create mode 100644 docs/devel/clock.txt
+>  Makefile.objs           |   1 +
+>  include/hw/clock-port.h | 136 ++++++++++++++++++++++++++++++++++
+>  hw/core/clock-port.c    | 159 ++++++++++++++++++++++++++++++++++++++++
+>  hw/core/Makefile.objs   |   1 +
+>  hw/core/trace-events    |   7 ++
+>  5 files changed, 304 insertions(+)
+>  create mode 100644 include/hw/clock-port.h
+>  create mode 100644 hw/core/clock-port.c
+>  create mode 100644 hw/core/trace-events
 > 
-> diff --git a/docs/devel/clock.txt b/docs/devel/clock.txt
+> diff --git a/Makefile.objs b/Makefile.objs
+> index ce9c79235e..b29747075f 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -210,6 +210,7 @@ trace-events-subdirs += hw/audio
+>  trace-events-subdirs += hw/block
+>  trace-events-subdirs += hw/block/dataplane
+>  trace-events-subdirs += hw/char
+> +trace-events-subdirs += hw/core
+>  trace-events-subdirs += hw/display
+>  trace-events-subdirs += hw/dma
+>  trace-events-subdirs += hw/hppa
+> diff --git a/include/hw/clock-port.h b/include/hw/clock-port.h
 > new file mode 100644
-> index 0000000000..6dd8abdee6
+> index 0000000000..8266549350
 > --- /dev/null
-> +++ b/docs/devel/clock.txt
-> @@ -0,0 +1,163 @@
+> +++ b/include/hw/clock-port.h
+> @@ -0,0 +1,136 @@
+> +#ifndef CLOCK_PORT_H
+> +#define CLOCK_PORT_H
 > +
-> +What are device's clocks
-> +========================
+> +#include "qom/object.h"
+> +#include "hw/qdev-core.h"
+> +#include "qemu/queue.h"
+> +#include "migration/vmstate.h"
 > +
-> +Clocks are ports representing input and output clocks of a device. They are QOM
-> +objects developed for the purpose of modeling the distribution of clocks in
-> +QEMU.
+> +#define TYPE_CLOCK_IN "clock-in"
+> +#define CLOCK_IN(obj) OBJECT_CHECK(ClockIn, (obj), TYPE_CLOCK_IN)
+> +#define TYPE_CLOCK_OUT "clock-out"
+> +#define CLOCK_OUT(obj) OBJECT_CHECK(ClockOut, (obj), TYPE_CLOCK_OUT)
 > +
-> +This allows us to model the clock distribution of a platform and detect
-> +configuration errors in the clock tree such as badly configured PLL, clock
-> +source selection or disabled clock.
+> +typedef void ClockCallback(void *opaque);
 > +
-> +The objects are CLOCK_IN for the input and CLOCK_OUT for the output.
-
-A simple ASCII diagram would help to make this clearer.
-
+> +typedef struct ClockOut ClockOut;
+> +typedef struct ClockIn ClockIn;
 > +
-> +The clock value: ClockState
-> +===========================
-> +
-> +The ClockState is the structure carried by the CLOCK_OUT and CLOCK_IN objects.
-
-This is only true for ClockIn, right?
-
-> +It contains one integer field representing the frequency of the clock in Hertz.
-
-               unsigned
-
-> +
-> +It only simulates the clock by transmitting the frequency value and
-> +doesn't model the signal itself such as pin toggle or duty cycle.
-> +The special value 0 as a frequency is legal and represent the clock being
-> +inactive or gated.
-
-OK.
-
-> +
-> +Adding clocks to a device
-> +=========================
-> +
-> +Adding clocks to a device must be done during the init phase of the Device
-> +object.
-> +
-> +To add an input clock to a device, the function qdev_init_clock_in must be used.
-> +It takes the name, a callback, and an opaque parameter for the clock.
-> +Output is more simple, only the name is required. Typically:
-> +qdev_init_clock_in(DEVICE(dev), "clk-in", clk_in_callback, dev);
-> +qdev_init_clock_out(DEVICE(dev), "clk-out");
-> +
-> +Both functions return the created CLOCK_IN/OUT pointer, which should be saved
-
-ClockIn/ClockOut
-
-> +in the device's state structure.
-> +
-> +Theses objects will be automatically deleted by the qom reference mechanism.
-
-QOM
-
-> +
-> +Note that it is possible to create a static array describing clock inputs and
-> +outputs. The function qdev_init_clocks must be called with the array as
-> +parameters to initialize the clocks: it has the same behaviour as calling the
-> +qdev_init_clock/out for each clock in the array.
-> +
-> +Unconnected input clocks
-> +========================
-> +
-> +Unconnected input clocks have a default frequency value of 0. It means the
-> +clock will be considered as disabled. If this is not the wanted behaviour,
-> +clock_init_frequency should be called on the ClockIn object during device init.
-> +For example:
-> +clk = qdev_init_clock_in(DEVICE(dev), "clk-in", clk_in_callback, dev);
-> +clock_init_frequency(clk, 100 * 1000 * 1000); // init value is 100Mhz
-> +
-> +Forwarding clocks
-> +=================
-> +
-> +Sometimes, one needs to forward, or inherit, a clock from another device.
-> +Typically, when doing device composition, a device might expose a sub-device's
-> +clock without interfering with it.
-> +The function qdev_pass_clock can be used to achieve this behaviour. Note, that
-> +it is possible to expose the clock under a different name. This works for both
-> +inputs or outputs.
-> +
-> +For example, if device B is a child of device A, device_a_instance_init may
-> +do something like this:
-> +void device_a_instance_init(Object *obj)
-> +{
-> +    AState *A = DEVICE_A(obj);
-> +    BState *B;
-> +    [...] /* create B object as child of A */
-> +    qdev_pass_clock(A, "b_clk", B, "clk");
-> +    /*
-> +     * Now A has a clock "b_clk" which forwards to
-> +     * the "clk" of its child B.
-> +     */
-> +}
-> +
-> +This function does not returns any clock object. It is not possible to add
-> +a callback on a forwarded input clock.
-> +
-> +Connecting two clocks together
-> +==============================
-> +
-> +Let's say we have 2 devices A and B. A has an output clock named "clkout" and B
-> +has an input clock named "clkin".
-
-Maybe "clk_in" "clk_out" to avoid confusion with ClkIn and ClkOut.
-
-> +
-> +The clocks are connected together using the function qdev_connect_clock:
-> +qdev_connect_clock(B, "clkin", A, "clkout", &error_abort);
-> +The device which has the input must be the first argument.
-> +
-> +It is possible to connect several input clocks to the same output. Every
-> +input callback will be called when the output changes.
-> +
-> +It is not possible to disconnect a clock or to change the clock connection
-> +after it is done.
-> +
-> +Changing a clock output
-> +=======================
-> +
-> +A device can change its outputs using the clock_set function. It will trigger
-> +updates on any connected inputs.
-> +
-> +For example, let's say that we have an output clock "clkout" and we have a
-> +pointer to it in the device state because we did the following in init phase:
-> +dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
-> +
-> +Then at any time, it is possible to change the clock value by doing:
-> +clock_set_frequency(dev->clkout, 1000 * 1000 * 1000); /* 1Mhz */
-
-1GHz
-
-> +
-> +Callback on input clock change
-> +==============================
-> +
-> +Here is an example of an input callback:
-> +void clock_callback(void *opaque) {
-> +    MyDeviceState *s = (MyDeviceState *) opaque;
-> +    /*
-> +     * opaque may not be the device state pointer, but most probably it is.
-> +     * (It depends on what is given to the qdev_init_clock_in function)
-> +     */
-> +
-> +    /* do something with the new frequency */
-> +    fprintf(stdout, "device new frequency is %" PRIu64 "Hz\n",
-> +                    clock_get_frequency(dev->my_clk_input));
-
-Yes.
-
-> +}
-> +
-> +The state argument needs only to be copied if the device needs to use the value
-> +later: the state pointer argument of the pointer will not be valid anymore
-> +after the end of the function.
-> +
-> +Migration
-> +=========
-> +
-> +Only the CLOCK_IN object has a state. CLOCK_OUT frequency should not be set
-
-ClkIn ClkOut
-
-> +in migration post_load.
-> +
-> +In case the frequency of in input clock is needed for a device's migration,
-> +this state must be migrated. The VMSTATE_CLOCKIN macro defines an entry to
-> +be added in a vmstate description.
-> +
-> +For example, if a device has a clock input and the device state looks like:
-> +MyDeviceState {
-> +    DeviceState parent_obj;
-> +    ClockIn *clk;
+> +struct ClockIn {
+> +    /*< private >*/
+> +    Object parent_obj;
+> +    /*< private >*/
+> +    uint64_t frequency;
+> +    char *canonical_path; /* clock path cache */
+> +    ClockOut *driver; /* clock output controlling this clock */
+> +    ClockCallback *callback; /* local callback */
+> +    void *callback_opaque; /* opaque argument for the callback */
+> +    QLIST_ENTRY(ClockIn) sibling;  /* entry in a followers list */
 > +};
 > +
-> +Then, to add the clock frequency to the device's migrated state, the vmstate
-> +description is:
-> +VMStateDescription my_device_vmstate = {
-> +    .name = "my_device",
+> +struct ClockOut {
+> +    /*< private >*/
+> +    Object parent_obj;
+> +    /*< private >*/
+> +    char *canonical_path; /* clock path cache */
+> +    QLIST_HEAD(, ClockIn) followers; /* list of registered clocks */
+> +};
+> +
+> +extern const VMStateDescription vmstate_clockin;
+> +
+> +/*
+> + * vmstate description entry to be added in device vmsd.
+> + */
+> +#define VMSTATE_CLOCKIN(_field, _state) \
+> +    VMSTATE_CLOCKIN_V(_field, _state, 0)
+> +#define VMSTATE_CLOCKIN_V(_field, _state, _version) \
+> +    VMSTATE_STRUCT_POINTER_V(_field, _state, _version, vmstate_clockin, ClockIn)
+> +
+> +/**
+> + * clock_out_setup_canonical_path:
+> + * @clk: clock
+> + *
+> + * compute the canonical path of the clock (used by log messages)
+> + */
+> +void clock_out_setup_canonical_path(ClockOut *clk);
+> +
+> +/**
+> + * clock_in_setup_canonical_path:
+> + * @clk: clock
+> + *
+> + * compute the canonical path of the clock (used by log messages)
+> + */
+> +void clock_in_setup_canonical_path(ClockIn *clk);
+> +
+> +/**
+> + * clock_add_callback:
+> + * @clk: the clock to register the callback into
+> + * @cb: the callback function
+> + * @opaque: the argument to the callback
+> + *
+> + * Register a callback called on every clock update.
+> + */
+> +void clock_set_callback(ClockIn *clk, ClockCallback *cb, void *opaque);
+> +
+> +/**
+> + * clock_clear_callback:
+> + * @clk: the clock to delete the callback from
+> + *
+> + * Unregister the callback registered with clock_set_callback.
+> + */
+> +void clock_clear_callback(ClockIn *clk);
+> +
+> +/**
+> + * clock_init_frequency:
+> + * @clk: the clock to initialize.
+> + * @freq: the clock's frequency in Hz or 0 if unclocked.
+> + *
+> + * Initialize the local cached frequency value of @clk to @freq.
+> + * Note: this function must only be called during device inititialization
+> + * or migration.
+> + */
+> +void clock_init_frequency(ClockIn *clk, uint64_t freq);
+> +
+> +/**
+> + * clock_connect:
+> + * @clkin: the drived clock.
+> + * @clkout: the driving clock.
+> + *
+> + * Setup @clkout to drive @clkin: Any @clkout update will be propagated
+> + * to @clkin.
+> + */
+> +void clock_connect(ClockIn *clkin, ClockOut *clkout);
+> +
+> +/**
+> + * clock_set_frequency:
+> + * @clk: the clock to update.
+> + * @freq: the new clock's frequency in Hz or 0 if unclocked.
+> + *
+> + * Update the @clk to the new @freq.
+> + * This change will be propagated through registered clock inputs.
+> + */
+> +void clock_set_frequency(ClockOut *clk, uint64_t freq);
+> +
+> +/**
+> + * clock_get_frequency:
+> + * @clk: the clk to fetch the clock
+> + *
+> + * @return: the current frequency of @clk in Hz. If @clk is NULL, return 0.
+> + */
+> +static inline uint64_t clock_get_frequency(const ClockIn *clk)
+> +{
+> +    return clk ? clk->frequency : 0;
+> +}
+> +
+> +/**
+> + * clock_is_enabled:
+> + * @clk: a clock state
+> + *
+> + * @return: true if the clock is running. If @clk is NULL return false.
+> + */
+> +static inline bool clock_is_enabled(const ClockIn *clk)
+> +{
+> +    return clock_get_frequency(clk) != 0;
+> +}
+> +
+> +#endif /* CLOCK_PORT_H */
+> diff --git a/hw/core/clock-port.c b/hw/core/clock-port.c
+> new file mode 100644
+> index 0000000000..25bab0fbed
+> --- /dev/null
+> +++ b/hw/core/clock-port.c
+> @@ -0,0 +1,159 @@
+> +/*
+> + * Clock inputs and outputs
+> + *
+> + * Copyright GreenSocs 2016-2018
+> + *
+> + * Authors:
+> + *  Frederic Konrad <fred.konrad@greensocs.com>
+> + *  Damien Hedde <damien.hedde@greensocs.com>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/module.h"
+> +#include "hw/clock-port.h"
+> +#include "hw/qdev-core.h"
+> +#include "migration/vmstate.h"
+> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "trace.h"
+> +
+> +const VMStateDescription vmstate_clockin = {
+> +    .name = "clockin",
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
 > +    .fields = (VMStateField[]) {
-> +        VMSTATE_CLOCKIN(clk, MyDeviceState),
+> +        VMSTATE_UINT64(frequency, ClockIn),
 > +        VMSTATE_END_OF_LIST()
 > +    }
 > +};
 > +
-> +When adding a input clock support to an existing device, you must care about
-> +migration compatibility. To this end, you can use the clock_init_frequency in
-> +a pre_load function to setup a default value in case the source vm does not
-> +migrate the frequency.
+> +#define CLOCK_PATH(_clk) (_clk->canonical_path)
+> +
+> +void clock_out_setup_canonical_path(ClockOut *clk)
+> +{
+> +    g_free(clk->canonical_path);
+> +    clk->canonical_path = object_get_canonical_path(OBJECT(clk));
+> +}
+> +
+> +void clock_in_setup_canonical_path(ClockIn *clk)
+> +{
+> +    g_free(clk->canonical_path);
+> +    clk->canonical_path = object_get_canonical_path(OBJECT(clk));
+> +}
+> +
+> +void clock_set_callback(ClockIn *clk, ClockCallback *cb, void *opaque)
+> +{
+> +    assert(clk);
+> +
+> +    clk->callback = cb;
+> +    clk->callback_opaque = opaque;
+> +}
+> +
+> +void clock_init_frequency(ClockIn *clk, uint64_t freq)
+> +{
+> +    assert(clk);
+> +
+> +    clk->frequency = freq;
+> +}
+> +
+> +void clock_clear_callback(ClockIn *clk)
+> +{
+> +    clock_set_callback(clk, NULL, NULL);
+> +}
+> +
+> +void clock_connect(ClockIn *clkin, ClockOut *clkout)
+> +{
+> +    assert(clkin && clkin->driver == NULL);
+> +    assert(clkout);
+> +
+> +    trace_clock_connect(CLOCK_PATH(clkin), CLOCK_PATH(clkout));
+> +
+> +    QLIST_INSERT_HEAD(&clkout->followers, clkin, sibling);
+> +    clkin->driver = clkout;
+> +}
+> +
+> +static void clock_disconnect(ClockIn *clk)
+> +{
+> +    if (clk->driver == NULL) {
+> +        return;
+> +    }
+> +
+> +    trace_clock_disconnect(CLOCK_PATH(clk));
+> +
+> +    clk->driver = NULL;
+> +    QLIST_REMOVE(clk, sibling);
+> +}
+> +
+> +void clock_set_frequency(ClockOut *clk, uint64_t freq)
+> +{
+> +    ClockIn *follower;
+> +    trace_clock_update(CLOCK_PATH(clk), freq);
+
+Maybe the function name makes sens: trace_clock_set_frequency()
+
+> +
+> +    QLIST_FOREACH(follower, &clk->followers, sibling) {
+> +        trace_clock_propagate(CLOCK_PATH(clk), CLOCK_PATH(follower));
+> +        if (follower->frequency != freq) {
+> +            follower->frequency = freq;
+> +            if (follower->callback) {
+> +                follower->callback(follower->callback_opaque);
+> +            }
+> +        }
+> +    }
+> +}
+> +
+> +static void clock_out_initfn(Object *obj)
+> +{
+> +    ClockOut *clk = CLOCK_OUT(obj);
+> +
+> +    QLIST_INIT(&clk->followers);
+> +}
+> +
+> +static void clock_out_finalizefn(Object *obj)
+> +{
+> +    ClockOut *clk = CLOCK_OUT(obj);
+> +    ClockIn *follower, *next;
+> +
+> +    /* clear our list of followers */
+> +    QLIST_FOREACH_SAFE(follower, &clk->followers, sibling, next) {
+> +        clock_disconnect(follower);
+> +    }
+> +
+> +    g_free(clk->canonical_path);
+> +    clk->canonical_path = NULL;
+> +}
+> +
+> +static void clock_in_finalizefn(Object *obj)
+> +{
+> +    ClockIn *clk = CLOCK_IN(obj);
+> +
+> +    /* remove us from driver's followers list */
+> +    clock_disconnect(clk);
+> +
+> +    g_free(clk->canonical_path);
+> +    clk->canonical_path = NULL;
+> +}
+> +
+> +static const TypeInfo clock_out_info = {
+> +    .name              = TYPE_CLOCK_OUT,
+> +    .parent            = TYPE_OBJECT,
+> +    .instance_size     = sizeof(ClockOut),
+> +    .instance_init     = clock_out_initfn,
+> +    .instance_finalize = clock_out_finalizefn,
+> +};
+> +
+> +static const TypeInfo clock_in_info = {
+> +    .name              = TYPE_CLOCK_IN,
+> +    .parent            = TYPE_OBJECT,
+> +    .instance_size     = sizeof(ClockIn),
+> +    .instance_finalize = clock_in_finalizefn,
+> +};
+> +
+> +static void clock_register_types(void)
+> +{
+> +    type_register_static(&clock_in_info);
+> +    type_register_static(&clock_out_info);
+> +}
+> +
+> +type_init(clock_register_types)
+> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+> index eb88ca979e..f7102121f4 100644
+> --- a/hw/core/Makefile.objs
+> +++ b/hw/core/Makefile.objs
+> @@ -6,6 +6,7 @@ common-obj-$(CONFIG_SOFTMMU) += fw-path-provider.o
+>  # irq.o needed for qdev GPIO handling:
+>  common-obj-y += irq.o
+>  common-obj-y += hotplug.o
+> +common-obj-y += clock-port.o
+>  common-obj-$(CONFIG_SOFTMMU) += nmi.o
+>  
+>  common-obj-$(CONFIG_EMPTY_SLOT) += empty_slot.o
+> diff --git a/hw/core/trace-events b/hw/core/trace-events
+> new file mode 100644
+> index 0000000000..d4880ec138
+> --- /dev/null
+> +++ b/hw/core/trace-events
+> @@ -0,0 +1,7 @@
+> +# See docs/devel/tracing.txt for syntax documentation.
+> +
+> +# hw/core/clock-port.c
+> +clock_connect(const char *clk, const char *driver) "'%s' drived-by '%s'"
+> +clock_disconnect(const char *clk) "'%s'"
+> +clock_update(const char *clk, uint64_t freq) "'%s' frequency %" PRIu64 "Hz"
+> +clock_propagate(const char *clko, const char *clki) "'%s' => '%s'"
 > 
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>

@@ -1,141 +1,148 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5222419wrt;
-        Tue, 2 Oct 2018 08:58:28 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60LmhBJED3qE7To94edgN7svPGr6R3PMsOLEJaOZFsEZbNvtL8gAjQGJ//HrY0UNkF8f/u8
-X-Received: by 2002:a37:6204:: with SMTP id w4-v6mr12749589qkb.258.1538495908851;
-        Tue, 02 Oct 2018 08:58:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538495908; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5240094wrt;
+        Tue, 2 Oct 2018 09:13:09 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61yy4OJzYVrCMNtFsUNpXdBs87d0C7fRlOh2IZ6gi7m5a9pvJhtFe4TyR83pDsU1+UmqK1n
+X-Received: by 2002:ac8:5293:: with SMTP id s19-v6mr6236971qtn.336.1538496789756;
+        Tue, 02 Oct 2018 09:13:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538496789; cv=none;
         d=google.com; s=arc-20160816;
-        b=txHiCZc6b0CCxXYiGEku1ACm/51qvDT7psYVqO9FalsMw8lZfl2ktAZsL5AfML4hGk
-         Q4Z8Qky/sYeZjZWoQdvTC5kdrxt7KmSQUcWz2AlEqYCCr9YvELkcOJk/l40L6/356/dx
-         FP8vrm0ykTSC/3YmV1aRX+4rNwATKzpUmhdjVZ/iqtkJ4CLPgwenAhQQBwUa/AoTGuZn
-         p2GHaFJ5LQLzCPzegU4E7a/o2zigoOuAo9Glnc4UUdtkNpoAZ5PmCizHISwToqZMAaWi
-         s5IY2dlboh/EjJd6MJrko0rJX5RRYAQT2fj/6xCbqrDWNEcmQIvL7frXbyTuNqvrmrpc
-         O4qw==
+        b=VGOhr71J+xZ6ijpiQV4TTzJg7C1Kjl/6hUyftCGZv4hGIHJ4gWqmMc4xmK/63dU4Zi
+         eQdTIh5vidvKSUqKuTci9DYhOs+09HEkKYUymavl+25Qkp8Zl9OyG19rFVZluA7LwqC4
+         zpitiAVglgyedQv3bIV+I43sIMtLaeA51LB6lv3RL8H/IUR/VL3x5CX2i0/Qx0wxY0w9
+         0lgznxayWk9oQXjKbw0U/x4lw62CJZQOwrXMcAh2I+jAEea7StDYbcoImhOT9mxFst1B
+         r36FTHDDQRgd52DV0SQPKpoeYgGcvCLwWIPRYnW5ctYI8BtI8RrTjlzcsvJD03SV5vKO
+         BgfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=on5WAmcsryEsrITEHFyA7BF4gyFX2H+lY2+eJgJ7KkQ=;
-        b=v8YoG+VpECbExV9jY5sGKoqrppUT13F1012hrYNuseS5WgTTijXvMkUb4/CvLOs3mL
-         X98hbgnBdUyvXD/AyDY4oNdbdE6YFko/GsZ2/ykWS3I/3llQ9h+5tUUQ9Tspr+vXZWSk
-         b8AOAbiOZ18oJJK8WMyQo3EaB+xssL4/EAEFb/i+uxpLIf4Ylrrbs7u2JGdMHXCznV7H
-         IMw9kE8xgkw97C4G6AAmFIH+8yf/af1rmfk65ZHC9Fg9tMMMS4juKhVNrrBgSYjJypvt
-         Qcadx0ML5RepQC0poyzlBTPWPqdTLEiK8GToYObwOzx6fD6p9iMWQesqFIsNkVVzW70b
-         EY9A==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=K3CJeVedk2yNshFIgLMmDFWONCVGAOHB+JF/uuXJa+M=;
+        b=KZt/WRsCAlwAdYYB4tOY+rq/9cQji9MdAgn7NdavHNDVFiUcH41Udiavofohs/dv3l
+         nsImn/9NJni/Qj6FLZu+VXQV2LAGAf2q1F3UMumodl1FKzcjk7hKeo5axq1whI5kz5eu
+         rtHyt6mI9GLQXWF2FOg2vNtvRRRdCAEqJJPYX9iPDmE5u/1e1HZ8D55CCX8HxQWy9fhZ
+         QqZ+0mGXC/gElObF9DqYOcdxlkEOXXq6YZPdY7rjJ+wmYlh9aIx36o2JmLhw1Q2TrUpl
+         7PPlbrFiyOD2Z/3a3gfGqCkmHKyvfhPcO6fKLYmm3Kc25zMkuHJTVBfozvVpHEaXB+4G
+         ps7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Wz4FuVGG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c189-v6si1284335qkd.219.2018.10.02.08.58.28
+        by mx.google.com with ESMTPS id 75-v6si2319838qkv.68.2018.10.02.09.13.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Oct 2018 08:58:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 02 Oct 2018 09:13:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44418 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=Wz4FuVGG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44602 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7N48-0003kA-Bf
-	for alex.bennee@linaro.org; Tue, 02 Oct 2018 11:58:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48247)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g7NIL-00050q-8P
+	for alex.bennee@linaro.org; Tue, 02 Oct 2018 12:13:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g7N2N-0002Mf-Uc
-	for qemu-devel@nongnu.org; Tue, 02 Oct 2018 11:56:40 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1g7NIC-00050e-9u
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 12:13:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g7N2J-0001kJ-UJ
-	for qemu-devel@nongnu.org; Tue, 02 Oct 2018 11:56:39 -0400
-Received: from 2.mo3.mail-out.ovh.net ([46.105.75.36]:55147)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g7N2J-0001jx-LR
-	for qemu-devel@nongnu.org; Tue, 02 Oct 2018 11:56:35 -0400
-Received: from player755.ha.ovh.net (unknown [10.109.159.152])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 81E521D917F
-	for <qemu-devel@nongnu.org>; Tue,  2 Oct 2018 17:56:33 +0200 (CEST)
-Received: from zorba.kaod.org (unknown [145.131.95.179])
-	(Authenticated sender: postmaster@kaod.org)
-	by player755.ha.ovh.net (Postfix) with ESMTPSA id 82DD02600C9;
-	Tue,  2 Oct 2018 17:56:22 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20180921161939.822-1-clg@kaod.org>
-	<CAFEAcA_Nm7qX1w16spsW-VgsMOebW=tNo9VT0paws7+9YH+zZQ@mail.gmail.com>
-	<CAFEAcA8FuQRB-p-CxQ+D9ins1ubFzC4TpW21=0076LWETFv4Gg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <ddc7e69e-7ee7-2868-9d5d-23593bd31493@kaod.org>
-Date: Tue, 2 Oct 2018 17:56:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(envelope-from <peter.maydell@linaro.org>) id 1g7NIB-0000vp-72
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 12:13:00 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39459)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1g7NIA-0000uv-UG
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 12:12:59 -0400
+Received: by mail-ot1-x343.google.com with SMTP id c20-v6so2449161otl.6
+	for <qemu-arm@nongnu.org>; Tue, 02 Oct 2018 09:12:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=K3CJeVedk2yNshFIgLMmDFWONCVGAOHB+JF/uuXJa+M=;
+	b=Wz4FuVGG3niMSJXCFYj5bs7/u8oVJ3v4srYXy9ztPiz9uvJmvYboSwmHFyILMund7f
+	BP8RyDcYYF9Y4PEJTeE4o2CM81o14ENI8b24UoM/jWYubr/8EeuKVDZ8zhoC0aRM7l4Z
+	ATYzYNrkjdkaOLcPqKJ0IPD16QF6GZR3BUkI8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=K3CJeVedk2yNshFIgLMmDFWONCVGAOHB+JF/uuXJa+M=;
+	b=EnHvFBlZps18cEjWeqkpgrOYombnliqrG6rr6kMFgGLO7TXzpUT0ogoX4jD4qAwnnw
+	co08k7kXzoyXcmStYDXw8c5kNtP3O96k3yq9lIKPdNdU92VzjRbt7/Qvg3O++Ybj3J/N
+	hn3jXsGamtdyrBvzjAj02YC53GmNXJZtMXeYWnlGaJozk0oeXYoSHlDwCmaZYQCkJS5J
+	4OOpNMlckPMPmK8jSZD4pa5eSFjpuTGB3CXJbTd0h4ztEAkHAV5hlUUKiA8jj8sTsFhT
+	4fHy9j9zvSQ2hvVq2xzdgkHkyg92VapUAzJfd4XlPt7zvYD0sjJQ3QUvEd9fKWxSDdxO
+	87SQ==
+X-Gm-Message-State: ABuFfojLOne2RqGEESubad4zlMr2qmhQMf5LRYnj69ET+DGR9jGx3WKP
+	IOevVBWYa2UCb5v850IExLfJljOzdhadsoPYLu/rSg==
+X-Received: by 2002:a9d:554a:: with SMTP id
+	h10-v6mr8937823oti.151.1538496777450; 
+	Tue, 02 Oct 2018 09:12:57 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8FuQRB-p-CxQ+D9ins1ubFzC4TpW21=0076LWETFv4Gg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 10750373789099264964
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtkedrtddtgdeikecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP;
+	Tue, 2 Oct 2018 09:12:36 -0700 (PDT)
+In-Reply-To: <f18e92fa-7b49-04b6-0adb-4f1a84668168@kaod.org>
+References: <20180921161939.822-1-clg@kaod.org>
+	<20180921161939.822-9-clg@kaod.org>
+	<CAFEAcA8W0ixkfje4NSx-+kdw4rNh44JgNTu2OhDD_p91nHK7hw@mail.gmail.com>
+	<f18e92fa-7b49-04b6-0adb-4f1a84668168@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Oct 2018 17:12:36 +0100
+Message-ID: <CAFEAcA_injuKY7=fLvG7sj2p7Ffzx5tNQ4f3RxjsNk8Hy-rYMA@mail.gmail.com>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.75.36
-Subject: Re: [Qemu-devel] [PATCH v2 00/11] aspeed: misc fixes and
- enhancements (SMC)
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH v2 08/11] aspeed/smc: add support for DMAs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Alistair Francis <alistair@alistair23.me>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
 	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5QYngZ4wo4HR
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VKfPsOdOkUA+
 
-On 9/25/18 2:30 PM, Peter Maydell wrote:
-> On 25 September 2018 at 13:20, Peter Maydell <peter.maydell@linaro.org>=
- wrote:
->> On 21 September 2018 at 17:19, C=C3=A9dric Le Goater <clg@kaod.org> wr=
-ote:
->>> Hello,
->>>
->>> This series adds a couple of cleanups and two main features to the
->>> SMC controller of the Aspeed machines :
->>>
->>>  - a 'execute-in-place' property to boot directly from a memory regio=
-n
->>>    alias of the FMC flash module using MMIO execution. This is not
->>>    activated by default because boot time needs to be improved on
->>>    recent firmwares. It also breaks migration compatibility.
->>>
->>>  - support for DMA to access the flash modules. Our primary need is
->>>    the checksum calculation which is used to evaluate the best clock
->>>    settings for reads.
->>
->> I've picked out the easy parts of this series and added
->> them to target-arm.next:
->>
->>>   aspeed/timer: fix compile breakage with clang 3.4.2
->>>   hw/arm/aspeed: change the FMC flash model of the AST2500 evb
->>>   hw/arm/aspeed: Add an Aspeed machine class
->>>   aspeed/smc: fix some alignment issues
->>
->> and left the rest for the moment (I've still got this series
->> on my to-review list).
->=20
-> PS: review from people familiar with the SoC would also be helpful.
+On 2 October 2018 at 16:48, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+> On 10/2/18 12:56 PM, Peter Maydell wrote:
+>> Rather than having the DMA device directly grab the system_memory
+>> MR like this, it's better to have the device have a MemoryRegion
+>> property, which the SoC sets with whatever the DMA device should
+>> be able to see.
+>
+> ok. I see, but it seems I have a chicken & egg problem.
+>
+> The MemoryRegion I would liked to grab is the bmc->ram one in aspeed.c
+> but it is initialized after the SoC is. I don't know how to lazy bind
+> this region in the Aspeed SMC model using the Aspeed SoC model as a
+> proxy to pass the region property through a link or/and alias.
+>
+> If I could find a way, the model would be much cleaner.
 
-Joel has reviewed the u-boot patches. May be, he can chime in ?=20
+Usually what you want to pass is not the RAM region directly but
+some container object (which contains the RAM region among
+other things). This is often a container that you're passing
+to the SoC anyway so it can put its devices in it.
 
-Thanks,
+(The direct answer to your chicken-and-egg problem is that you
+can create a container before creating the SoC, pass that to
+the SoC, then create the RAM afterwards and put it in the
+container after. But that feels a bit like a workaround for
+a less than ideal structure, somehow.)
 
-C.=20
-
+thanks
+-- PMM

@@ -1,65 +1,65 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5267894wrt;
-        Tue, 2 Oct 2018 09:39:24 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60o2xKeD9OIkGKsfZX25oxDZUo5P+mILwQBOxOzN0fKs1myj7+BxDlxjVEe1zEmmcIh5deB
-X-Received: by 2002:a37:b506:: with SMTP id e6-v6mr11975970qkf.255.1538498364001;
-        Tue, 02 Oct 2018 09:39:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538498363; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5267909wrt;
+        Tue, 2 Oct 2018 09:39:25 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60cteYc6biCXpyvuEo3xfPb88QJAbhSxZAToOPBEiFAlFGQksJ4DUZSjrPLq/2u3Vg9V+6O
+X-Received: by 2002:a37:dd58:: with SMTP id n85-v6mr12668328qki.175.1538498365052;
+        Tue, 02 Oct 2018 09:39:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538498365; cv=none;
         d=google.com; s=arc-20160816;
-        b=l3oxw/QezTs04MOKh7zgr2VI2udUVv+JUZPbxjOGp2/bsdNyJmG5njnspzVXz3EhRo
-         Cpt6iC9JhL43XMhYjmd3XFl7lLddc4SXmjXKHSB9PHUEQflJHFWxVE8TUu68rZdfSip/
-         xEF66fJeCH59tumEGSK4CoX0hRCHP9MHUWQqtVaeVa89I9WZ8G5KhzfigeY7XDbo7Jsf
-         HU0fp+xbtmz+gYoscHzjSH4IgoY/vwyVcOjhReaLYOE2y7qsiaHImxjLNrTOdKLYKAfH
-         V/9ObI2tRJVMkXmxr1bcPH1C7OY7x7qnmq0PCzFn147nBbIwMsfuElgBVkIDtK63Gmqg
-         63Ww==
+        b=wSLbhn3C8uwCgAHtdgogP2USobbX1OZGhVHlTkyNL87WjcyzG7diofNAX7l4L7mHac
+         wz/V9yt8o0pl8jmXFxTASj518G9IU2kARTGLH1m5TRm3W+ZCJxGfaTdttG3wN0DBK5Xz
+         D2vNnSE9/RspHWp1L63q12d91FLhtov9DVOEEt3R3D0lXmxVLnvKMWSlqj6hCfJpcuTw
+         CAMHkGdy+gh0FDhOHqrskXXshRFaxbpLXmmX3dJOgxvivuYcGbc6gVfnW3TDcC1ptQy3
+         cVq6oGSAt9g2aWTulbkrO8QP+xiomT/Z+VFK94hYQBPnb+QuuYVsI2ZmZSMFJW/nmRSV
+         EfnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=zk3r9A0PCCkCYyoTknI1Wyv6k6uoizq8d9JFvlhqK9I=;
-        b=RKuT/F+aT1vGlDdnPMIyhZaVca6T5Z7cEONblwgLVeK7NCz3v+tXUg1d5y28W/2+Ik
-         w5d0M8D9ZYTkC4KWEpb+85+8JYhHosTqHDi6T0T4m4M8JScIFiAnVJSeq0yYZIEpC+K2
-         R5/91CUxqEHfOYCv0q+2Ve7pQva0o+lAL0QUN5PymoF88oOp08BEMHaYmnUJn0Egzkoj
-         5HMeuZq1OX/KHVq5kvsJEkvNftoZluUx/rz62utKb2tx7BcxtVgy1VALpx8crff/YcLU
-         VTRRkHgEUs3aC2L12dxoHMwvL8VmpjZUiC0nuX3ljpEjIcBGpUfalPd+X8wubvFStP1z
-         7J7A==
+        bh=O91EmS/KQug+8B2QivklTKp4WvXfc/uIybgpQC6pHlA=;
+        b=c3Q/HLEB8obAU7zIEAEZed5Lprgr4kkKiXJPNGeGC0F8HD6g3v4yGW1RJltlQMqAgE
+         DUXh4rzLHOdbIUDC/RXiF/G5XltHIeGt4VnL6vAXigsC/mo0GoD2gg7P6lenIgKtpUEd
+         oKxB9Vgb1mbGHNSY04UF1+qn41Ro0cCkZPdp4d4cOyUZ+s6BtWb3NzEwnZ5cZVrBxp61
+         nASk7HY3yGTkYUHN6LT6kIf02kyWcIUT6SeSB2GWutKphWq4VEKkSj0VHxM7pKov8TgB
+         oaTQP5lyXxaq/Yev0eWr9MEXJ1OzchGnf8e44LKr7ftDpiWGeUlW9l7HJ3iCvlZ2uz37
+         V/kA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u5-v6si74813qta.385.2018.10.02.09.39.23
+        by mx.google.com with ESMTPS id u37-v6si1588538qtj.69.2018.10.02.09.39.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Oct 2018 09:39:23 -0700 (PDT)
+        Tue, 02 Oct 2018 09:39:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44723 helo=lists.gnu.org)
+Received: from localhost ([::1]:44725 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7Nhj-00018F-EA
-	for alex.bennee@linaro.org; Tue, 02 Oct 2018 12:39:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34842)
+	id 1g7Nhk-0001BX-H0
+	for alex.bennee@linaro.org; Tue, 02 Oct 2018 12:39:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34791)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1g7Ned-0006fC-4a
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 12:36:11 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1g7Nea-00055W-In
+	(envelope-from <pm215@archaic.org.uk>) id 1g7Neb-0006cq-An
 	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 12:36:10 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:51564)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <pm215@archaic.org.uk>) id 1g7Nea-00054a-0G
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 12:36:09 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:51546)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1g7Nea-00053V-7W; Tue, 02 Oct 2018 12:36:08 -0400
+	id 1g7NeZ-0004yW-MQ; Tue, 02 Oct 2018 12:36:07 -0400
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1g7NeZ-0007I8-6o; Tue, 02 Oct 2018 17:36:07 +0100
+	id 1g7NeY-0007Hr-9O; Tue, 02 Oct 2018 17:36:06 +0100
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  2 Oct 2018 17:35:50 +0100
-Message-Id: <20181002163556.10279-8-peter.maydell@linaro.org>
+Date: Tue,  2 Oct 2018 17:35:49 +0100
+Message-Id: <20181002163556.10279-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.19.0
 In-Reply-To: <20181002163556.10279-1-peter.maydell@linaro.org>
 References: <20181002163556.10279-1-peter.maydell@linaro.org>
@@ -68,8 +68,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 07/13] target/arm: Add v8M stack limit checks on
- NS function calls
+Subject: [Qemu-arm] [PATCH 06/13] target/arm: Add v8M stack checks on
+ exception entry
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,72 +84,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pOoWrouWkoZM
+X-TUID: pXxcdM2kS7+d
 
-Check the v8M stack limits when pushing the frame for a
-non-secure function call via BLXNS.
+Add checks for breaches of the v8M stack limit when the
+stack pointer is decremented to push the exception frame
+for exception entry.
 
-In order to be able to generate the exception we need to
-promote raise_exception() from being local to op_helper.c
-so we can call it from helper.c.
+Note that the exception-entry case is unique in that the
+stack pointer is updated to be the limit value if the limit
+is hit (per rule R_ZLZG).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/internals.h | 9 +++++++++
- target/arm/helper.c    | 4 ++++
- target/arm/op_helper.c | 4 ++--
- 3 files changed, 15 insertions(+), 2 deletions(-)
+ target/arm/helper.c | 54 ++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 46 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 966a8131623..aa124a06a9d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -94,6 +94,15 @@ FIELD(V7M_EXCRET, RES1, 7, 25) /* including the must-be-1 prefix */
- #define M_FAKE_FSR_NSC_EXEC 0xf /* NS executing in S&NSC memory */
- #define M_FAKE_FSR_SFAULT 0xe /* SecureFault INVTRAN, INVEP or AUVIOL */
- 
-+/**
-+ * raise_exception: Raise the specified exception.
-+ * Raise a guest exception with the specified value, syndrome register
-+ * and target exception level. This should be called from helper functions,
-+ * and never returns because we will longjump back up to the CPU main loop.
-+ */
-+void QEMU_NORETURN raise_exception(CPUARMState *env, uint32_t excp,
-+                                   uint32_t syndrome, uint32_t target_el);
-+
- /*
-  * For AArch64, map a given EL to an index in the banked_spsr array.
-  * Note that this mapping and the AArch32 mapping defined in bank_number()
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a10dff01a90..074f7616272 100644
+index ef8c244fb84..a10dff01a90 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6710,6 +6710,10 @@ void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
-                       "BLXNS with misaligned SP is UNPREDICTABLE\n");
+@@ -6839,6 +6839,8 @@ static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t lr, bool dotailchain,
+     uint32_t frameptr;
+     ARMMMUIdx mmu_idx;
+     bool stacked_ok;
++    uint32_t limit;
++    bool want_psp;
+ 
+     if (dotailchain) {
+         bool mode = lr & R_V7M_EXCRET_MODE_MASK;
+@@ -6848,12 +6850,34 @@ static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t lr, bool dotailchain,
+         mmu_idx = arm_v7m_mmu_idx_for_secstate_and_priv(env, M_REG_S, priv);
+         frame_sp_p = get_v7m_sp_ptr(env, M_REG_S, mode,
+                                     lr & R_V7M_EXCRET_SPSEL_MASK);
++        want_psp = mode && (lr & R_V7M_EXCRET_SPSEL_MASK);
++        if (want_psp) {
++            limit = env->v7m.psplim[M_REG_S];
++        } else {
++            limit = env->v7m.msplim[M_REG_S];
++        }
+     } else {
+         mmu_idx = core_to_arm_mmu_idx(env, cpu_mmu_index(env, false));
+         frame_sp_p = &env->regs[13];
++        limit = v7m_sp_limit(env);
      }
  
-+    if (sp < v7m_sp_limit(env)) {
-+        raise_exception(env, EXCP_STKOF, 0, 1);
+     frameptr = *frame_sp_p - 0x28;
++    if (frameptr < limit) {
++        /*
++         * Stack limit failure: set SP to the limit value, and generate
++         * STKOF UsageFault. Stack pushes below the limit must not be
++         * performed. It is IMPDEF whether pushes above the limit are
++         * performed; we choose not to.
++         */
++        qemu_log_mask(CPU_LOG_INT,
++                      "...STKOF during callee-saves register stacking\n");
++        env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_STKOF_MASK;
++        armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE,
++                                env->v7m.secure);
++        *frame_sp_p = limit;
++        return true;
++    }
+ 
+     /* Write as much of the stack frame as we can. A write failure may
+      * cause us to pend a derived exception.
+@@ -6877,10 +6901,7 @@ static bool v7m_push_callee_stack(ARMCPU *cpu, uint32_t lr, bool dotailchain,
+         v7m_stack_write(cpu, frameptr + 0x24, env->regs[11], mmu_idx,
+                         ignore_faults);
+ 
+-    /* Update SP regardless of whether any of the stack accesses failed.
+-     * When we implement v8M stack limit checking then this attempt to
+-     * update SP might also fail and result in a derived exception.
+-     */
++    /* Update SP regardless of whether any of the stack accesses failed. */
+     *frame_sp_p = frameptr;
+ 
+     return !stacked_ok;
+@@ -7028,6 +7049,26 @@ static bool v7m_push_stack(ARMCPU *cpu)
+ 
+     frameptr -= 0x20;
+ 
++    if (arm_feature(env, ARM_FEATURE_V8)) {
++        uint32_t limit = v7m_sp_limit(env);
++
++        if (frameptr < limit) {
++            /*
++             * Stack limit failure: set SP to the limit value, and generate
++             * STKOF UsageFault. Stack pushes below the limit must not be
++             * performed. It is IMPDEF whether pushes above the limit are
++             * performed; we choose not to.
++             */
++            qemu_log_mask(CPU_LOG_INT,
++                          "...STKOF during stacking\n");
++            env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_STKOF_MASK;
++            armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_USAGE,
++                                    env->v7m.secure);
++            env->regs[13] = limit;
++            return true;
++        }
 +    }
 +
-     saved_psr = env->v7m.exception;
-     if (env->v7m.control[M_REG_S] & R_V7M_CONTROL_SFPA_MASK) {
-         saved_psr |= XPSR_SFPA;
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 38f885b290f..de0d3984ea4 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -28,8 +28,8 @@
- #define SIGNBIT (uint32_t)0x80000000
- #define SIGNBIT64 ((uint64_t)1 << 63)
+     /* Write as much of the stack frame as we can. If we fail a stack
+      * write this will result in a derived exception being pended
+      * (which may be taken in preference to the one we started with
+@@ -7043,10 +7084,7 @@ static bool v7m_push_stack(ARMCPU *cpu)
+         v7m_stack_write(cpu, frameptr + 24, env->regs[15], mmu_idx, false) &&
+         v7m_stack_write(cpu, frameptr + 28, xpsr, mmu_idx, false);
  
--static void raise_exception(CPUARMState *env, uint32_t excp,
--                            uint32_t syndrome, uint32_t target_el)
-+void raise_exception(CPUARMState *env, uint32_t excp,
-+                     uint32_t syndrome, uint32_t target_el)
- {
-     CPUState *cs = CPU(arm_env_get_cpu(env));
+-    /* Update SP regardless of whether any of the stack accesses failed.
+-     * When we implement v8M stack limit checking then this attempt to
+-     * update SP might also fail and result in a derived exception.
+-     */
++    /* Update SP regardless of whether any of the stack accesses failed. */
+     env->regs[13] = frameptr;
  
+     return !stacked_ok;
 -- 
 2.19.0
 

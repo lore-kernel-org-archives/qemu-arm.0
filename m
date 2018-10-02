@@ -1,83 +1,85 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5213066wrt;
-        Tue, 2 Oct 2018 08:49:13 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63ajZ5s+kkzhgkJdUUctRwMxPuUIU8PvqlCKL/d/pQEg8BUyTbh4m3SjW8FEP6XzDyO/kxT
-X-Received: by 2002:a37:14d4:: with SMTP id 81-v6mr12102137qku.201.1538495353646;
-        Tue, 02 Oct 2018 08:49:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538495353; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5213614wrt;
+        Tue, 2 Oct 2018 08:49:44 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62e46vHqltBO1zFPGnYxbnyk6eVb0GSJSJj/ortn/tq9e5UZGLuFVxSFpwRXdux8R4g/UUc
+X-Received: by 2002:ac8:3442:: with SMTP id v2-v6mr13070729qtb.231.1538495384576;
+        Tue, 02 Oct 2018 08:49:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538495384; cv=none;
         d=google.com; s=arc-20160816;
-        b=EqcvbwQzwzdeNT486PBTmkC1PIABiHDTkFAhm2BkSeuhR1UlfyhI/ROOsNplVRg1UV
-         ZWVWzok897x7l0o+m/gLPhrTS3xborFbHblAvRP/FxVRufatW+VAakUxN79ZAv3G45WJ
-         L3ySL5uCUbBazRvfmEJ1N2MDtDgTjOfrfViv4sO7yeQfSDJkp0pBAAuPv8px+vTapgxA
-         RWcIE/hq9fPVKw7jY9qdqcFKsn2Ha0zY69wdU1Z9cCrnL/Z7e2aFkV2CHfhrfmB0DJHg
-         hrKPzxZBBcgYOJivQ0lMCtwQwEJucx53h589OLoWz4EWFqJFALhHYP83gSYCdyzQw9iW
-         D/Bw==
+        b=F/1g07kQ+UfNUctL/fYrGmA1QdbwCR1BPw0z979/Q3kHXMZ+aBFjsqtAyNzF0783hC
+         ZZX/YI37D4+m4EzWLMk8+bzKZ4cpBWzcPWwD7wKj4NzCya58nJQBb/ULX0Up1dHlp1Ke
+         DOb3oCyvfe7jXITzKlbffH8f/aD6aK/d0NTiA5kFCYJTraFUyz3duQSs4gJd50qIajea
+         VMSZP5gQcZwORuxrhAFEeYvMVUL/ULPBi5pHy0HkTlqH7swzzfruAhKfN/NdUolfMDH4
+         LgxoBvo3PzWLQusdGnpj+IZiCwhW9BtmN/Zae0EpPiK4GaXAtQaBC62GTRJRIPgOt9d4
+         Qc7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:references:to:from;
-        bh=HpkUT0jiQhk8TQRtcFpsDpMNa57bkdtBSG9nDmP3MKM=;
-        b=sZCG0YSLw6/vJwEG0nVgzAM//nADhJ+Kf9L0yG+2b6ehzYcEenIondI5OCXsV9MTXe
-         QSZQkM9Ld/fUs7JNOmpuG2ECoIDA849g/ItHB776hwoVJ/uWMxUg29++b+r7OBUi9FR3
-         UM1BkDqtZLRjUhVspnCzH0MCDVac3FTmd6wH+W+7dIhgdRCqcWk31vjyJmcy3bmryKkp
-         7T6PKnjagOwp2jYL+aAWhPEahV8HfwEA87B/jnRbbI5Dt03ouJLRcPNawMmNKjRGrfDB
-         D9q61gatGyKFQpHRrNrpjPSRp0wkgOmXaET+ba05nxALQCETTklArRfZZo1pjZPOx+81
-         53yg==
+        bh=diGFEEHG/Pap5wqMYLfhQioYDFAxgt70drmZ5sa76LQ=;
+        b=Zpy4hKurCQofIElsgY7oLGq7UAolf4r3m3XCODeGAzfgJng39CzFpm3blNCiCq+8Vw
+         hGW1CzRmwqqTcnpfbWKPaVPSG1WF9kX2723GqMps73TwHvOW2kkWvcC8j+78n9NudBAL
+         Gb1+KW/ij6AZeg7iZvbyO2hTinRhfwYjchuw8b/qDJHqXhTSI37QZNRMD+HDZXMQB8kb
+         fzhLkBCs8ACWYMtsmLiDg2zOvFLsnQu0AcCaqOQ/1H5iixnUnG9NvkJmFkbvItbyCSP0
+         TOzTo1H4zPHz5o2d6sERLtFQoC0QQR8AH6dsT/+9FkNbTapn4M6pMZ+Y5nuOOt48fYEH
+         JnUw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 68-v6si3969899qkl.339.2018.10.02.08.49.13
+        by mx.google.com with ESMTPS id f6-v6si5702533qtj.82.2018.10.02.08.49.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Oct 2018 08:49:13 -0700 (PDT)
+        Tue, 02 Oct 2018 08:49:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44369 helo=lists.gnu.org)
+Received: from localhost ([::1]:44372 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7MvB-0003qm-5H
-	for alex.bennee@linaro.org; Tue, 02 Oct 2018 11:49:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45624)
+	id 1g7Mvg-00045O-3G
+	for alex.bennee@linaro.org; Tue, 02 Oct 2018 11:49:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g7Mv2-0003qF-On
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 11:49:05 -0400
+	(envelope-from <clg@kaod.org>) id 1g7MvK-00040H-LZ
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 11:49:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <clg@kaod.org>) id 1g7Muy-00073c-NR
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 11:49:04 -0400
-Received: from 4.mo3.mail-out.ovh.net ([178.33.46.10]:52254)
+	(envelope-from <clg@kaod.org>) id 1g7MvB-00079y-99
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 11:49:18 -0400
+Received: from 7.mo2.mail-out.ovh.net ([188.165.48.182]:46417)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g7Muy-00071X-F4
-	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 11:49:00 -0400
-Received: from player687.ha.ovh.net (unknown [10.109.160.239])
-	by mo3.mail-out.ovh.net (Postfix) with ESMTP id 636061CE377
-	for <qemu-arm@nongnu.org>; Tue,  2 Oct 2018 17:48:52 +0200 (CEST)
+	(Exim 4.71) (envelope-from <clg@kaod.org>) id 1g7MvB-00079J-1j
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 11:49:13 -0400
+Received: from player697.ha.ovh.net (unknown [10.109.159.136])
+	by mo2.mail-out.ovh.net (Postfix) with ESMTP id 74C0315CF96
+	for <qemu-arm@nongnu.org>; Tue,  2 Oct 2018 17:49:10 +0200 (CEST)
 Received: from zorba.kaod.org (unknown [145.131.95.179])
 	(Authenticated sender: postmaster@kaod.org)
-	by player687.ha.ovh.net (Postfix) with ESMTPSA id 855242C0093;
-	Tue,  2 Oct 2018 17:48:43 +0200 (CEST)
+	by player697.ha.ovh.net (Postfix) with ESMTPSA id 25E5B4800C1;
+	Tue,  2 Oct 2018 17:49:01 +0200 (CEST)
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20180921161939.822-1-clg@kaod.org>
-	<20180921161939.822-9-clg@kaod.org>
-	<CAFEAcA8W0ixkfje4NSx-+kdw4rNh44JgNTu2OhDD_p91nHK7hw@mail.gmail.com>
-Message-ID: <f18e92fa-7b49-04b6-0adb-4f1a84668168@kaod.org>
-Date: Tue, 2 Oct 2018 17:48:42 +0200
+	<CAFEAcA_Nm7qX1w16spsW-VgsMOebW=tNo9VT0paws7+9YH+zZQ@mail.gmail.com>
+	<539cfb28-e4bc-f7d4-6ed9-881bc0cab8bc@kaod.org>
+	<CAFEAcA-X7QdyjU9_aM9RAm-GZZWezyx-toEdT5vf-1P=XkdX-Q@mail.gmail.com>
+Message-ID: <1ea83c48-2150-7fc4-3423-3c43e100a848@kaod.org>
+Date: Tue, 2 Oct 2018 17:49:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8W0ixkfje4NSx-+kdw4rNh44JgNTu2OhDD_p91nHK7hw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-X7QdyjU9_aM9RAm-GZZWezyx-toEdT5vf-1P=XkdX-Q@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 10620613824464849860
+X-Ovh-Tracer-Id: 10625680371869322180
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtkedrtddtgdeiiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.33.46.10
-Subject: Re: [Qemu-arm] [PATCH v2 08/11] aspeed/smc: add support for DMAs
+X-Received-From: 188.165.48.182
+Subject: Re: [Qemu-arm] [PATCH v2 00/11] aspeed: misc fixes and enhancements
+ (SMC)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,117 +97,51 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
 	qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F1QWx2xZMZBg
+X-TUID: rB0gW1FipjfS
 
-On 10/2/18 12:56 PM, Peter Maydell wrote:
-> On 21 September 2018 at 17:19, C=C3=A9dric Le Goater <clg@kaod.org> wro=
+On 10/2/18 12:57 PM, Peter Maydell wrote:
+> On 25 September 2018 at 15:10, C=C3=A9dric Le Goater <clg@kaod.org> wro=
 te:
->> The FMC controller on the Aspeed SoCs support DMA to access the flash
->> modules. It can operate in a normal mode, to copy to or from the flash
->> module mapping window, or in a checksum calculation mode, to evaluate
->> the best clock settings for reads.
+>> On 9/25/18 2:20 PM, Peter Maydell wrote:
+>>> On 21 September 2018 at 17:19, C=C3=A9dric Le Goater <clg@kaod.org> w=
+rote:
+>>>> Hello,
+>>>>
+>>>> This series adds a couple of cleanups and two main features to the
+>>>> SMC controller of the Aspeed machines :
+>>>>
+>>>>  - a 'execute-in-place' property to boot directly from a memory regi=
+on
+>>>>    alias of the FMC flash module using MMIO execution. This is not
+>>>>    activated by default because boot time needs to be improved on
+>>>>    recent firmwares. It also breaks migration compatibility.
+>>>>
+>>>>  - support for DMA to access the flash modules. Our primary need is
+>>>>    the checksum calculation which is used to evaluate the best clock
+>>>>    settings for reads.
+>>>
+>>> I've picked out the easy parts of this series and added
+>>> them to target-arm.next:
+>>>
+>>>>   aspeed/timer: fix compile breakage with clang 3.4.2
+>>>>   hw/arm/aspeed: change the FMC flash model of the AST2500 evb
+>>>>   hw/arm/aspeed: Add an Aspeed machine class
+>>>>   aspeed/smc: fix some alignment issues
+>>>
+>>> and left the rest for the moment (I've still got this series
+>>> on my to-review list).
 >>
->> The model introduces a custom address space for DMAs populated with
->> the required regions : an alias region on the AHB window for the flash
->> devices and another alias on the SDRAM.
->>
->> Our primary need is to support the checksum calculation mode and the
->> model only implements synchronous DMA accesses. Something to improve
->> in the future.
->>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> I will wait for your comments on the DMA part before resending.
 >=20
->=20
->> +static void aspeed_smc_dma_rw(AspeedSMCState *s)
->> +{
->> +    MemTxResult result;
->> +    uint32_t data;
->> +
->> +    while (s->regs[R_DMA_LEN]) {
->> +        if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
->> +            result =3D address_space_read(&s->dma_as, s->regs[R_DMA_D=
-RAM_ADDR],
->> +                                        MEMTXATTRS_UNSPECIFIED,
->> +                                        (uint8_t *)&data, 4);
->> +            if (result !=3D MEMTX_OK) {
->> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM read failed =
-@%08x\n",
->> +                              __func__, s->regs[R_DMA_DRAM_ADDR]);
->> +                return;
->> +            }
->=20
-> Does the device really not report DMA read/write failures via
-> a status register bit or similar ?
+> I've now commented on that patch. I think I'm done with review on
+> this version, unless there's something specific you want more
+> input on ?
 
-The Interrupt Control and Status Register (FM0C8) has a DMA Status
-BIT(11) to indicate that a DMA transfer is in progress or not. Nothing
-for errors.
-
-There are a SPI command abort status BIT(10) and a SPI Write Address
-Protected status BIT(11) but these are for the command and address
-filters.
-=20
->> +
->> +/*
->> + * Populate our custom address space for DMAs with only the regions w=
-e
->> + * need : the AHB window for the flash devices and the SDRAM.
->> + */
->> +static void aspeed_smc_dma_setup(AspeedSMCState *s)
->> +{
->> +    char name[32];
->> +    MemoryRegion *sysmem =3D get_system_memory();
->> +    MemoryRegion *flash_alias =3D g_new(MemoryRegion, 1);
->> +    MemoryRegion *sdram_alias =3D g_new(MemoryRegion, 1);
->> +
->> +    snprintf(name, sizeof(name), "%s-dma", s->ctrl->name);
->=20
-> I would suggest using g_strdup_printf()/g_free(), since it's not
-> immediately obvious here that s->ctrl->name is guaranteed
-> to fit into the fixed-size array.
-
-yes. sure.
-
->> +    memory_region_init(&s->dma_mr, OBJECT(s), name,
->> +                       s->sdram_base + s->max_ram_size);
->> +    address_space_init(&s->dma_as, &s->dma_mr, name);
->> +
->> +    snprintf(name, sizeof(name), "%s.flash", s->ctrl->name);
->> +    memory_region_init_alias(flash_alias, OBJECT(s), name, &s->mmio_f=
-lash,
->> +                             0, s->ctrl->flash_window_size);
->> +    memory_region_add_subregion(&s->dma_mr, s->ctrl->flash_window_bas=
-e,
->> +                                flash_alias);
->> +
->> +    memory_region_init_alias(sdram_alias, OBJECT(s), "ram", sysmem,
->> +                             s->sdram_base, s->max_ram_size);
->> +    memory_region_add_subregion(&s->dma_mr, s->sdram_base, sdram_alia=
-s);
->=20
-> Rather than having the DMA device directly grab the system_memory
-> MR like this, it's better to have the device have a MemoryRegion
-> property, which the SoC sets with whatever the DMA device should
-> be able to see.
-
-ok. I see, but it seems I have a chicken & egg problem.=20
-
-The MemoryRegion I would liked to grab is the bmc->ram one in aspeed.c=20
-but it is initialized after the SoC is. I don't know how to lazy bind=20
-this region in the Aspeed SMC model using the Aspeed SoC model as a=20
-proxy to pass the region property through a link or/and alias.
-
-If I could find a way, the model would be much cleaner. =20
-
-> Otherwise, patch looks good, though I don't know enough about
-> the device/SoC to review those details.
-
-For the moment the only use of these registers is in the Aspeed custom=20
-u-boot of the SDK :=20
-
-or in the rewrite I proposed in mainline :
-
+No, a part from the chicken & egg problem on the RAM memory region
+may be if you have some idea.  I will dig in before re-sending anyhow.
 
 Thanks,
 
-C.
+C.=20
+
+

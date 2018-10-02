@@ -1,349 +1,386 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5629026wrt;
-        Tue, 2 Oct 2018 16:20:42 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62+aCZP/JG7vpe7XfzhKFXa2J566BGS+vmHyk3gjD9B79a4K40iunRJWmMer/EvZt9LmWO/
-X-Received: by 2002:a37:48e:: with SMTP id 136-v6mr13489731qke.316.1538522442441;
-        Tue, 02 Oct 2018 16:20:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538522442; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5633341wrt;
+        Tue, 2 Oct 2018 16:27:05 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61YkknevH96yFE7GENmhEWtPSjMksF6lVQKFREzV+7xhEwygh9GgiySioD8vGP3VT+qK/eb
+X-Received: by 2002:ac8:70c5:: with SMTP id g5-v6mr3615767qtp.271.1538522825218;
+        Tue, 02 Oct 2018 16:27:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538522825; cv=none;
         d=google.com; s=arc-20160816;
-        b=BXJLkM58ruKBJTPiaQlpvq20GrdlsdACkjxq1eS2+bjUTI0V10b4vToXj4fVSYghM7
-         PaepV3XWYYaap9CJqkrhFpHDK4ZO+G1XIKvDndgtOwi3i+tYIwmudSC0vZjDXymZgXiV
-         T9V8Ip53er/YP+b1zHIFv0yYDBvzSGkG1HGW1dPWG27NZmpcmOCSIobTwXWUVNQ7j5XV
-         h3u6LOzp8arRR9RU1QHqO78Y0dQ6hvrXPx2LohlNBh6n13T2K9zYdLlLKIKd+FNBa27y
-         /MOD8x3l8XomDjQwGe529Nm7GyhdSi1dyiCVNS3m6nYdnGc8BVn71U0m/tezbLvdiV+o
-         nmMw==
+        b=0gulvjDk9ddUXjFKt6M1HDfJHjONmoiG+e7/CIQfOT4JcIXJLX3hTdtJ+FJPGaVEEQ
+         Xfoh2ibmJ6FkFQg90lWFnCC4xSdWHPYKrWLrvOD+/bAzg6gwK9rCWGkhdTQa1X4Q/030
+         koAATVIz67qjirzpfdHb/s77aKiauwzwhzpq8OaE9OOY3IADs7W/ajvxNgoypKrgh5j+
+         TeyMJlqDGqy8dReR+EFjJBYzfvSWILMm9Dby7ukKnQBSSiT4e16hQ45P5YyfBe+NBYwB
+         pXv8NouLmlsPDskXtsRWcEqLTe3xWYi9lM30fhppW2pE+6Wgfy4/PDQfuBTt+9SZC2QK
+         jv0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=u3EMjY86/J1cWwlBUGhVSdyvWx2dgt11uMDcWpy32Sc=;
-        b=qNsovXpveHJwo6DV5Vx12hIG6cW9EntZmnG4Eopufce1zndN/bOhIo0dPmftth4wU5
-         cIsnPDogrVH8AQ2AIIWYUHmHbFpP6v7AjESJ5E1v3qjpkhOJTbG4C9b3E/YsA7d8c2Ni
-         Wf7i75n0s58Jz9vS5VTwH6oIuOf4/ghxd9IrVrtVt/P3sUjlfovQjC3ntEiWsD9pJasD
-         RU8Dm4gg05KX8w4ZX7DZl30ufdI8wPMO61jb8ocTkROLt0NmlDvKzQHnvJ3LbCxEANEp
-         NKTc1+O5Ve+sTVFpwaoi05SQdrnkK2WFtB2p4rfGbEiQvBlqmx0yxEX2lFEh4KIHMwSR
-         VNfQ==
+        bh=9BbPQzf05oD7M8/jik0dX/xwP2kXleJMbOJLPfIpeEE=;
+        b=A33yBfPYc8cTMgkFjVVFR7TF6bR3R10tP9IpOR7hJCNy7EyQ8L9RC3whEyhPxNpPdg
+         umtcb1rCIUiHDjDDBFX2fwJl91s5P49cGPUSrohnVS3JXZp+ut1++lQSyux3wfLqUr2j
+         Fk35UbLL0QYtg//aPAfrv65xbFhd4TFCJDl+aXJklvGBFRmEzb5csIWqDAJWcv4b888O
+         Z3UUv7Hsv/XbmCkyFmspcSfA5jbqe+7LP7lwAXGP30zyhgHSd/ntHQJJIm+1pnW7nMwR
+         /IncPyxxIqm2mW+SBioqN3k5zjhmbfvYvHozahyfdtPkCKf03zzPvTXCIaEugAyDzDLB
+         Y2DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i2-v6si5717552qkf.293.2018.10.02.16.20.42
+        by mx.google.com with ESMTPS id x17-v6si3282162qvo.77.2018.10.02.16.27.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 02 Oct 2018 16:20:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 02 Oct 2018 16:27:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46115 helo=lists.gnu.org)
+Received: from localhost ([::1]:46207 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7Ty5-0003lw-OD
-	for alex.bennee@linaro.org; Tue, 02 Oct 2018 19:20:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40866)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g7U4G-0001Op-MR
+	for alex.bennee@linaro.org; Tue, 02 Oct 2018 19:27:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43635)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7Tvh-0002Zl-89
-	for qemu-devel@nongnu.org; Tue, 02 Oct 2018 19:18:19 -0400
+	(envelope-from <philmd@redhat.com>) id 1g7U44-0001Nf-TT
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:26:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7ToK-0006Jt-9A
-	for qemu-devel@nongnu.org; Tue, 02 Oct 2018 19:10:41 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:37032)
+	(envelope-from <philmd@redhat.com>) id 1g7U40-0006FR-OU
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:26:52 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:37236)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7ToI-0006J2-DX
-	for qemu-devel@nongnu.org; Tue, 02 Oct 2018 19:10:35 -0400
-Received: by mail-wm1-f65.google.com with SMTP id 185-v6so3761846wmt.2
-	for <qemu-devel@nongnu.org>; Tue, 02 Oct 2018 16:10:33 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7U40-0006Dt-G5
+	for qemu-arm@nongnu.org; Tue, 02 Oct 2018 19:26:48 -0400
+Received: by mail-wm1-f66.google.com with SMTP id 185-v6so3786007wmt.2
+	for <qemu-arm@nongnu.org>; Tue, 02 Oct 2018 16:26:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=u3EMjY86/J1cWwlBUGhVSdyvWx2dgt11uMDcWpy32Sc=;
-	b=Vlf5+GAd7ArjR00t0X+od7mDR96SLgM2r8yceypU6JI5pkgDxY5u4ROOo8krZ9X/WX
-	4ptS8xyHt6ZpsT9E/t0AEergm78+ioyNFlaDZRR4RsXvQDLfb/jYK2zjSEk1ob9gOF+H
-	kE91xpLnPXlilVtuW7kS22QTpUEBxvcJKjCZFfbCrHN8/fSMw+BCux6e8+ojdhcMY3vA
-	6w+DQ8j/1e18pmZP7WW2sbcNaa+JjsRapFs9UZObyDBblok053gD97yJpdfU6+lnCsA0
-	2sQAskfS+n6Yl51sFd3croT7Q7W1QJ/y9cqrpCH986ROxyyYmYzDAPokWvQJALzI/7oN
-	rEvg==
-X-Gm-Message-State: ABuFfogVOI/ne6ThhQDiY3ACr0On97L/2jm5jj1XgUaj++tCR+4DqUKI
-	89iJTVFS9Xxj7kXe+/Gr4RUA8g==
-X-Received: by 2002:a1c:845:: with SMTP id 66-v6mr3462457wmi.61.1538521832295; 
-	Tue, 02 Oct 2018 16:10:32 -0700 (PDT)
+	bh=9BbPQzf05oD7M8/jik0dX/xwP2kXleJMbOJLPfIpeEE=;
+	b=JqnmebSSfoZDI+viv9M7qFMf5hMMrwj4AgdNu4ixI6kdbRJgrAS7s0lqTsNtNTuhfb
+	u5461COE3avH+DnfaDCZh6atSsCwmljXYdA94b45KKN1vTzXBlnd86V3nYEJyMxY8CcB
+	C07hzSfsZzvjfgO6ceL9x0TvvClo5Jz1Uv21pMcGTqp/Lq3F3Z9oAtHZsy1F1//hgYMO
+	Zl7u/Z1jJzWWlL4/eBNVyWwtwWTa47f+3MEoRbbVQaf5Gz3CwE58CQPKoR21j4DJktcc
+	Lm5n/4gGkHBjmqtdYvFb97ZRcXY4XdJdvG3Z0R1aFhGFwbEnEHyh+bIZHps5PLpVzORg
+	jByA==
+X-Gm-Message-State: ABuFfohemRzPB3D0qTF4TLHf4u57W2ZV1Pml29hAi83/KI2d44iLvrPe
+	6Av6AwpunwFLLFNAvoU4uFuuIA==
+X-Received: by 2002:a1c:84cd:: with SMTP id
+	g196-v6mr3157752wmd.38.1538522807258; 
+	Tue, 02 Oct 2018 16:26:47 -0700 (PDT)
 Received: from [192.168.2.51] (26.red-83-32-208.dynamicip.rima-tde.net.
 	[83.32.208.26]) by smtp.gmail.com with ESMTPSA id
-	l67-v6sm5288935wma.20.2018.10.02.16.10.30
+	b139-v6sm24042414wmd.36.2018.10.02.16.26.45
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 02 Oct 2018 16:10:31 -0700 (PDT)
+	Tue, 02 Oct 2018 16:26:46 -0700 (PDT)
 To: Damien Hedde <damien.hedde@greensocs.com>, qemu-devel@nongnu.org
 References: <20181002142443.30976-1-damien.hedde@greensocs.com>
-	<20181002142443.30976-8-damien.hedde@greensocs.com>
+	<20181002142443.30976-9-damien.hedde@greensocs.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <7621d3ab-7cfe-0dca-bc0e-dad913052b25@redhat.com>
-Date: Wed, 3 Oct 2018 01:10:30 +0200
+Message-ID: <3814fb09-5be7-834a-72a8-80f2f6dc005d@redhat.com>
+Date: Wed, 3 Oct 2018 01:26:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20181002142443.30976-8-damien.hedde@greensocs.com>
+In-Reply-To: <20181002142443.30976-9-damien.hedde@greensocs.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-devel] [PATCH v5 7/9] hw/misc/zynq_slcr: add clock
- generation for uarts
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 8/9] hw/char/cadence_uart:
+ add clock support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
 	mark.burton@greensocs.com, saipava@xilinx.com,
 	qemu-arm@nongnu.org, pbonzini@redhat.com, konrad@adacore.com,
 	luc.michel@greensocs.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YwOnlgZxEYYl
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lX4BElMOuL4B
 
 Hi Damien,
 
 On 10/2/18 4:24 PM, Damien Hedde wrote:
-> Add 2 clock outputs for each uart (uart0 & 1):
-> + the reference clock
-> + the bus interface clock
+> Add bus interface and uart reference clock inputs.
 > 
-> The clock frequencies are computed using the internal pll & uart configuration
-> registers.
+> Note: it is hard to find out from the doc what is the behavior when only one
+> of the clock is disabled.
 > 
-> All clocks depend on the main input clock (ps_clk), which is hard-coded
-> to 33.33MHz (zcu102 evaluation board frequency and frequency specified
-> in Xilinx's device tree file)
+> The implemented behaviour is that register access needs both clock being active.
+> 
+> The bus interface control the mmios visibility
 
-What about adding in zynq_init:
+This sentence sounds odd.
 
-    ClockOut *ps_clk = qdev_init_clock_out(DEVICE(machine), "ps_clk");
-    clock_set_frequency(ps_clk, PS_REF_CLK_FREQUENCY);
-
-and later:
-
-    qdev_connect_clock(slcr, "ps_clk",
-                       DEVICE(machine), "ps_clk_in", &error_abort);
-
-That would be a more complete example of clock tree.
-
+> 
+> The reference clock controls the baudrate generation. If it disabled,
+> any input characters and events are ignored. Also register accesses are
+> conditioned to the clock being enabled (but is it really the case in
+> reality ?) and a guest error is triggerred if that is not the case.
+> 
+> If theses clocks remains unconnected, the uart behaves as before
+> (default to 50MHz ref clock).
 > 
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
->  hw/misc/zynq_slcr.c | 125 ++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 125 insertions(+)
+>  include/hw/char/cadence_uart.h |  3 ++
+>  hw/char/cadence_uart.c         | 92 ++++++++++++++++++++++++++++++++--
+>  hw/char/trace-events           |  3 ++
+>  3 files changed, 93 insertions(+), 5 deletions(-)
 > 
-> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-> index baa13d1316..0b599ebd97 100644
-> --- a/hw/misc/zynq_slcr.c
-> +++ b/hw/misc/zynq_slcr.c
-> @@ -33,6 +33,8 @@
->          } \
->      } while (0)
+> diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uart.h
+> index 118e3f10de..fd1d4725f4 100644
+> --- a/include/hw/char/cadence_uart.h
+> +++ b/include/hw/char/cadence_uart.h
+> @@ -21,6 +21,7 @@
+>  #include "hw/sysbus.h"
+>  #include "chardev/char-fe.h"
+>  #include "qemu/timer.h"
+> +#include "hw/clock-port.h"
 >  
-> +#define INPUT_PS_REF_CLK_FREQUENCY (33333333)
-> +
->  #define XILINX_LOCK_KEY 0x767b
->  #define XILINX_UNLOCK_KEY 0xdf0d
+>  #define CADENCE_UART_RX_FIFO_SIZE           16
+>  #define CADENCE_UART_TX_FIFO_SIZE           16
+> @@ -47,6 +48,8 @@ typedef struct {
+>      CharBackend chr;
+>      qemu_irq irq;
+>      QEMUTimer *fifo_trigger_handle;
+> +    ClockIn *refclk;
+> +    ClockIn *busclk;
+>  } CadenceUARTState;
 >  
-> @@ -44,15 +46,27 @@ REG32(LOCKSTA, 0x00c)
->  REG32(ARM_PLL_CTRL, 0x100)
->  REG32(DDR_PLL_CTRL, 0x104)
->  REG32(IO_PLL_CTRL, 0x108)
-> +/* fields for [ARM|DDR|IO_PLL]_CTRL registers */
-> +    FIELD(xxx_PLL_CTRL, PLL_RESET, 0, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_PWRDWN, 1, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_BYPASS_QUAL, 3, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_BYPASS_FORCE, 4, 1)
-> +    FIELD(xxx_PLL_CTRL, PLL_FPDIV, 12, 7)
->  REG32(PLL_STATUS, 0x10c)
->  REG32(ARM_PLL_CFG, 0x110)
->  REG32(DDR_PLL_CFG, 0x114)
->  REG32(IO_PLL_CFG, 0x118)
+>  static inline DeviceState *cadence_uart_create(hwaddr addr,
+> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> index fbdbd463bb..feb5cee4d7 100644
+> --- a/hw/char/cadence_uart.c
+> +++ b/hw/char/cadence_uart.c
+> @@ -28,6 +28,7 @@
+>  #include "qemu/timer.h"
+>  #include "qemu/log.h"
+>  #include "hw/char/cadence_uart.h"
+> +#include "trace.h"
 >  
->  REG32(ARM_CLK_CTRL, 0x120)
-> +    FIELD(ARM_CLK_CTRL, SRCSEL,  4, 2)
-> +    FIELD(ARM_CLK_CTRL, DIVISOR, 8, 6)
-> +    FIELD(ARM_CLK_CTRL, CPU_1XCLKACT, 27, 1)
-> +    FIELD(ARM_CLK_CTRL, CPU_PERI_CLKACT, 28, 1)
->  REG32(DDR_CLK_CTRL, 0x124)
->  REG32(DCI_CLK_CTRL, 0x128)
->  REG32(APER_CLK_CTRL, 0x12c)
-> +    FIELD(APER_CLK_CTRL, UART0_CPU1XCLKACT, 20, 1)
-> +    FIELD(APER_CLK_CTRL, UART1_CPU1XCLKACT, 21, 1)
->  REG32(USB0_CLK_CTRL, 0x130)
->  REG32(USB1_CLK_CTRL, 0x134)
->  REG32(GEM0_RCLK_CTRL, 0x138)
-> @@ -63,12 +77,19 @@ REG32(SMC_CLK_CTRL, 0x148)
->  REG32(LQSPI_CLK_CTRL, 0x14c)
->  REG32(SDIO_CLK_CTRL, 0x150)
->  REG32(UART_CLK_CTRL, 0x154)
-> +    FIELD(UART_CLK_CTRL, CLKACT0, 0, 1)
-> +    FIELD(UART_CLK_CTRL, CLKACT1, 1, 1)
-> +    FIELD(UART_CLK_CTRL, SRCSEL,  4, 2)
-> +    FIELD(UART_CLK_CTRL, DIVISOR, 8, 6)
->  REG32(SPI_CLK_CTRL, 0x158)
->  REG32(CAN_CLK_CTRL, 0x15c)
->  REG32(CAN_MIOCLK_CTRL, 0x160)
->  REG32(DBG_CLK_CTRL, 0x164)
->  REG32(PCAP_CLK_CTRL, 0x168)
->  REG32(TOPSW_CLK_CTRL, 0x16c)
-> +/* common fields to lots of *_CLK_CTRL registers */
-> +    FIELD(xxx_CLK_CTRL, SRCSEL,  4, 2)
-> +    FIELD(xxx_CLK_CTRL, DIVISOR, 8, 6)
+>  #ifdef CADENCE_UART_ERR_DEBUG
+>  #define DB_PRINT(...) do { \
+> @@ -94,7 +95,7 @@
+>  #define LOCAL_LOOPBACK         (0x2 << UART_MR_CHMODE_SH)
+>  #define REMOTE_LOOPBACK        (0x3 << UART_MR_CHMODE_SH)
 >  
->  #define FPGA_CTRL_REGS(n, start) \
->      REG32(FPGA ## n ## _CLK_CTRL, (start)) \
-> @@ -178,8 +199,92 @@ typedef struct ZynqSLCRState {
->      MemoryRegion iomem;
+> -#define UART_INPUT_CLK         50000000
+> +#define UART_DEFAULT_REF_CLK (50 * 1000 * 1000)
 >  
->      uint32_t regs[ZYNQ_SLCR_NUM_REGS];
-> +
-> +    ClockOut *uart0_amba_clk;
-> +    ClockOut *uart1_amba_clk;
-> +    ClockOut *uart0_ref_clk;
-> +    ClockOut *uart1_ref_clk;
->  } ZynqSLCRState;
+>  #define R_CR       (0x00/4)
+>  #define R_MR       (0x04/4)
+> @@ -165,15 +166,30 @@ static void uart_send_breaks(CadenceUARTState *s)
+>                        &break_enabled);
+>  }
 >  
-> +/*
-> + * return the output frequency of ARM/DDR/IO pll
-> + * using input frequency and PLL_CTRL register
-> + */
-> +static uint64_t zynq_slcr_compute_pll(uint64_t input, uint32_t ctrl_reg)
+> +static unsigned int uart_input_clk(CadenceUARTState *s)
 > +{
-> +    uint32_t mult = ((ctrl_reg & R_xxx_PLL_CTRL_PLL_FPDIV_MASK) >>
-> +            R_xxx_PLL_CTRL_PLL_FPDIV_SHIFT);
-> +
-> +    /* first, check if pll is bypassed */
-> +    if (ctrl_reg & R_xxx_PLL_CTRL_PLL_BYPASS_FORCE_MASK) {
-> +        return input;
-> +    }
-> +
-> +    /* is pll disabled ? */
-> +    if (ctrl_reg & (R_xxx_PLL_CTRL_PLL_RESET_MASK |
-> +                    R_xxx_PLL_CTRL_PLL_PWRDWN_MASK)) {
-> +        return 0;
-> +    }
-> +
-> +    return input * mult;
+> +    return clock_get_frequency(s->refclk);
 > +}
 > +
-> +/*
-> + * return the output frequency of a clock given:
-> + * + the pll's frequencies in an array corresponding to mux's indexes
-> + * + the register xxx_CLK_CTRL value
-> + * + enable bit index in ctrl register
-> + *
-> + * This function make the assumption that ctrl_reg value is organized as follow:
-> + * + bits[13:8] clock divisor
-> + * + bits[5:4]  clock mux selector (index in array)
-> + * + bits[index] clock enable
-> + */
-> +static uint64_t zynq_slcr_compute_clock(const uint64_t plls[],
-> +                                        uint32_t ctrl_reg,
-> +                                        unsigned index)
-> +{
-> +    uint32_t divisor = FIELD_EX32(ctrl_reg, xxx_CLK_CTRL, DIVISOR);
-> +    uint32_t srcsel = FIELD_EX32(ctrl_reg, xxx_CLK_CTRL, SRCSEL);
-> +
-> +    if ((ctrl_reg & (1u << index)) == 0) {
-> +        return 0;
-> +    }
-> +
-> +    return plls[srcsel] / (divisor ? divisor : 1u);
-> +}
-> +
-> +#define ZYNQ_CLOCK(_state, _plls, _reg, _enable_field) \
-> +    zynq_slcr_compute_clock((_plls), (_state)->regs[R_ ## _reg], \
-> +            R_ ## _reg ## _ ## _enable_field ## _SHIFT)
-> +#define ZYNQ_GATE(_state, _clk, _reg, _field) \
-> +    (ARRAY_FIELD_EX32((_state)->regs, _reg, _field) ? (_clk) : 0)
-> +
-> +static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
-> +{
-> +    uint64_t ps_clk = INPUT_PS_REF_CLK_FREQUENCY;
-> +    uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
-> +    uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
-> +    uint64_t ddr_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_DDR_PLL_CTRL]);
-> +    uint64_t cpu_mux[4] = {arm_pll, arm_pll, ddr_pll, io_pll};
-> +    uint64_t uart_mux[4] = {io_pll, io_pll, arm_pll, ddr_pll};
-> +    uint64_t cpu1x_clk;
-> +
-> +    /* compute uartX amba clocks */
-> +    cpu1x_clk = ZYNQ_CLOCK(s, cpu_mux, ARM_CLK_CTRL, CPU_PERI_CLKACT);
-> +    cpu1x_clk = ZYNQ_GATE(s, cpu1x_clk, ARM_CLK_CTRL, CPU_1XCLKACT);
-> +    clock_set_frequency(s->uart0_amba_clk,
-> +            ZYNQ_GATE(s, cpu1x_clk, APER_CLK_CTRL, UART0_CPU1XCLKACT));
-> +    clock_set_frequency(s->uart1_amba_clk,
-> +            ZYNQ_GATE(s, cpu1x_clk, APER_CLK_CTRL, UART1_CPU1XCLKACT));
-> +
-> +    /* compute uartX ref clocks */
-> +    clock_set_frequency(s->uart0_ref_clk,
-> +            ZYNQ_CLOCK(s, uart_mux, UART_CLK_CTRL, CLKACT0));
-> +    clock_set_frequency(s->uart1_ref_clk,
-> +            ZYNQ_CLOCK(s, uart_mux, UART_CLK_CTRL, CLKACT1));
-> +}
-> +
->  static void zynq_slcr_reset(DeviceState *d)
+>  static void uart_parameters_setup(CadenceUARTState *s)
 >  {
->      ZynqSLCRState *s = ZYNQ_SLCR(d);
-> @@ -274,6 +379,8 @@ static void zynq_slcr_reset(DeviceState *d)
->      s->regs[R_DDRIOB + 4] = s->regs[R_DDRIOB + 5] = s->regs[R_DDRIOB + 6]
->                            = 0x00000e00;
->      s->regs[R_DDRIOB + 12] = 0x00000021;
+>      QEMUSerialSetParams ssp;
+>      unsigned int baud_rate, packet_size;
+>  
+>      baud_rate = (s->r[R_MR] & UART_MR_CLKS) ?
+> -            UART_INPUT_CLK / 8 : UART_INPUT_CLK;
+> +            uart_input_clk(s) / 8 : uart_input_clk(s);
+> +    baud_rate /= (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
+
+Safe because s->r[R_BRGR] >= 1, OK.
+
+> +    trace_cadence_uart_baudrate(baud_rate);
 > +
-> +    zynq_slcr_compute_clocks(s);
->  }
+> +    ssp.speed = baud_rate;
+> +    if (ssp.speed == 0) {
+> +        /*
+> +         * Avoid division-by-zero below.
+> +         * TODO: find something better
+> +         */
+> +        ssp.speed = 1;
+> +    }
 >  
+> -    ssp.speed = baud_rate / (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
+>      packet_size = 1;
 >  
-> @@ -408,6 +515,14 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
->              qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
->          }
->          break;
-> +    case R_IO_PLL_CTRL:
-> +    case R_ARM_PLL_CTRL:
-> +    case R_DDR_PLL_CTRL:
-> +    case R_ARM_CLK_CTRL:
-> +    case R_APER_CLK_CTRL:
-> +    case R_UART_CLK_CTRL:
-> +        zynq_slcr_compute_clocks(s);
-> +        break;
+>      switch (s->r[R_MR] & UART_MR_PAR) {
+> @@ -337,6 +353,11 @@ static void uart_receive(void *opaque, const uint8_t *buf, int size)
+>      CadenceUARTState *s = opaque;
+>      uint32_t ch_mode = s->r[R_MR] & UART_MR_CHMODE;
+>  
+> +    /* ignore characters when unclocked */
+> +    if (!clock_is_enabled(s->refclk)) {
+> +        return;
+> +    }
+> +
+>      if (ch_mode == NORMAL_MODE || ch_mode == ECHO_MODE) {
+>          uart_write_rx_fifo(opaque, buf, size);
 >      }
+> @@ -350,6 +371,11 @@ static void uart_event(void *opaque, int event)
+>      CadenceUARTState *s = opaque;
+>      uint8_t buf = '\0';
+>  
+> +    /* ignore events when unclocked */
+> +    if (!clock_is_enabled(s->refclk)) {
+> +        return;
+> +    }
+> +
+>      if (event == CHR_EVENT_BREAK) {
+>          uart_write_rx_fifo(opaque, &buf, 1);
+>      }
+> @@ -382,6 +408,14 @@ static void uart_write(void *opaque, hwaddr offset,
+>  {
+>      CadenceUARTState *s = opaque;
+>  
+> +    /* ignore accesses when bus or ref clock is disabled */
+> +    if (!(clock_is_enabled(s->busclk) && clock_is_enabled(s->refclk))) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                "cadence_uart: Trying to write register 0x%x"
+> +                " while clock is disabled\n", (unsigned) offset);
+> +        return;
+> +    }
+> +
+>      DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value);
+>      offset >>= 2;
+>      if (offset >= CADENCE_UART_R_MAX) {
+> @@ -440,6 +474,14 @@ static uint64_t uart_read(void *opaque, hwaddr offset,
+>      CadenceUARTState *s = opaque;
+>      uint32_t c = 0;
+>  
+> +    /* ignore accesses when bus or ref clock is disabled */
+> +    if (!(clock_is_enabled(s->busclk) && clock_is_enabled(s->refclk))) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                "cadence_uart: Trying to read register 0x%x"
+> +                " while clock is disabled\n", (unsigned) offset);
+> +        return 0;
+> +    }
+> +
+>      offset >>= 2;
+>      if (offset >= CADENCE_UART_R_MAX) {
+>          c = 0;
+> @@ -488,6 +530,14 @@ static void cadence_uart_realize(DeviceState *dev, Error **errp)
+>                               uart_event, NULL, s, NULL, true);
 >  }
 >  
-> @@ -417,6 +532,14 @@ static const MemoryRegionOps slcr_ops = {
->      .endianness = DEVICE_NATIVE_ENDIAN,
->  };
+> +static void cadence_uart_refclk_update(void *opaque)
+> +{
+> +    CadenceUARTState *s = opaque;
+> +
+> +    /* recompute uart's speed on clock change */
+> +    uart_parameters_setup(s);
+> +}
+> +
+>  static void cadence_uart_init(Object *obj)
+>  {
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> @@ -497,9 +547,26 @@ static void cadence_uart_init(Object *obj)
+>      sysbus_init_mmio(sbd, &s->iomem);
+>      sysbus_init_irq(sbd, &s->irq);
 >  
-> +static const ClockPortInitArray zynq_slcr_clocks = {
-> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart0_amba_clk),
-> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart1_amba_clk),
-> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart0_ref_clk),
-> +    QDEV_CLOCK_OUT(ZynqSLCRState, uart1_ref_clk),
-> +    QDEV_CLOCK_END,
+> +    s->refclk = qdev_init_clock_in(DEVICE(obj), "refclk",
+> +            cadence_uart_refclk_update, s);
+> +    /* initialize the frequency in case the clock remains unconnected */
+> +    clock_init_frequency(s->refclk, UART_DEFAULT_REF_CLK);
+> +    s->busclk = qdev_init_clock_in(DEVICE(obj), "busclk", NULL, NULL);
+> +    /* initialize the frequency to non-zero in case it remains unconnected */
+> +    clock_init_frequency(s->busclk, 100 * 1000 * 1000);
+
+#define INPUT_BUS_CLK_FREQUENCY (100 * 1000 * 1000)
+
+> +
+>      s->char_tx_time = (NANOSECONDS_PER_SECOND / 9600) * 10;
+>  }
+>  
+> +static int cadence_uart_pre_load(void *opaque)
+> +{
+> +    CadenceUARTState *s = opaque;
+> +
+> +    clock_init_frequency(s->refclk, UART_DEFAULT_REF_CLK);
+> +    clock_init_frequency(s->busclk, 100 * 1000 * 1000);
+
+INPUT_BUS_CLK_FREQUENCY
+
+> +    return 0;
+> +}
+> +
+>  static int cadence_uart_post_load(void *opaque, int version_id)
+>  {
+>      CadenceUARTState *s = opaque;
+> @@ -516,10 +583,22 @@ static int cadence_uart_post_load(void *opaque, int version_id)
+>      return 0;
+>  }
+>  
+> +static const VMStateDescription vmstate_cadence_uart_clocks = {
+> +    .name = "cadence_uart_clocks",
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_CLOCKIN(refclk, CadenceUARTState),
+> +        VMSTATE_CLOCKIN(busclk, CadenceUARTState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
 > +};
 > +
->  static void zynq_slcr_init(Object *obj)
->  {
->      ZynqSLCRState *s = ZYNQ_SLCR(obj);
-> @@ -424,6 +547,8 @@ static void zynq_slcr_init(Object *obj)
->      memory_region_init_io(&s->iomem, obj, &slcr_ops, s, "slcr",
->                            ZYNQ_SLCR_MMIO_SIZE);
->      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-> +
-> +    qdev_init_clocks(DEVICE(obj), zynq_slcr_clocks);
->  }
+>  static const VMStateDescription vmstate_cadence_uart = {
+>      .name = "cadence_uart",
+>      .version_id = 2,
+>      .minimum_version_id = 2,
+> +    .pre_load = cadence_uart_pre_load,
+>      .post_load = cadence_uart_post_load,
+>      .fields = (VMStateField[]) {
+>          VMSTATE_UINT32_ARRAY(r, CadenceUARTState, CADENCE_UART_R_MAX),
+> @@ -532,7 +611,10 @@ static const VMStateDescription vmstate_cadence_uart = {
+>          VMSTATE_UINT32(rx_wpos, CadenceUARTState),
+>          VMSTATE_TIMER_PTR(fifo_trigger_handle, CadenceUARTState),
+>          VMSTATE_END_OF_LIST()
+> -    }
+> +    },
+> +    .subsections = (const VMStateDescription * []) {
+> +        &vmstate_cadence_uart_clocks,
+> +    },
+>  };
 >  
->  static const VMStateDescription vmstate_zynq_slcr = {
+>  static Property cadence_uart_properties[] = {
+> @@ -548,7 +630,7 @@ static void cadence_uart_class_init(ObjectClass *klass, void *data)
+>      dc->vmsd = &vmstate_cadence_uart;
+>      dc->reset = cadence_uart_reset;
+>      dc->props = cadence_uart_properties;
+> -  }
+> +}
+>  
+>  static const TypeInfo cadence_uart_info = {
+>      .name          = TYPE_CADENCE_UART,
+> diff --git a/hw/char/trace-events b/hw/char/trace-events
+> index b64213d4dd..2ea25d1ea1 100644
+> --- a/hw/char/trace-events
+> +++ b/hw/char/trace-events
+> @@ -73,3 +73,6 @@ cmsdk_apb_uart_receive(uint8_t c) "CMSDK APB UART: got character 0x%x from backe
+>  cmsdk_apb_uart_tx_pending(void) "CMSDK APB UART: character send to backend pending"
+>  cmsdk_apb_uart_tx(uint8_t c) "CMSDK APB UART: character 0x%x sent to backend"
+>  cmsdk_apb_uart_set_params(int speed) "CMSDK APB UART: params set to %d 8N1"
+> +
+> +# hw/char/cadence_uart.c
+> +cadence_uart_baudrate(unsigned baudrate) "baudrate %u"
 > 
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Except migration:
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>

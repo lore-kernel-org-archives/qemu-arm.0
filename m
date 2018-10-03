@@ -1,99 +1,100 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6118730wrt;
-        Wed, 3 Oct 2018 03:18:34 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62ftm2HqhGhkHMFqI+1UCab7oJHGmfPOK8v7NUH/LJLUETxUzmIQovACh2qAG9vBFAQGd9a
-X-Received: by 2002:a37:1a8b:: with SMTP id l11-v6mr513572qkh.197.1538561914609;
-        Wed, 03 Oct 2018 03:18:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538561914; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6131957wrt;
+        Wed, 3 Oct 2018 03:32:52 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63tZ45MDILVPyZYkAE8hWStfRamGbsLiwo20ExHCsTmRz59aYtPHM4r47c93AzQIbaLrYlp
+X-Received: by 2002:a37:a0c2:: with SMTP id j185-v6mr575131qke.74.1538562772446;
+        Wed, 03 Oct 2018 03:32:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538562772; cv=none;
         d=google.com; s=arc-20160816;
-        b=BwDhieZyLG0Jhm8VMYEPopFNuoDwjkf4RTUZrMtoHKPRuej8f7tqub2JMBr545Mvti
-         V7OXs2YNpmx2q8KPzhXWF4xVX6+jTt1bVciWpAe/cKBezcEqVRqFFzXrzP/jPkXFdb+Q
-         //YsX0MV2yZ3nkeVLIviiS4CVivCV86xjdJL0vJhar9CFadDGPB7u/peu2a3QYuVVKfh
-         sgbh1aBSTgYPJcjhCsthoxQQygoURkebP9JNhnxinILOaCrnKsojxwh720tpPd0Q3Akx
-         n8cadb8qJ1hgyUmyFbhNBp6Xv6JNxyDuOk+cWyj5VY8t4ZY7uG9lA4bZvV58hW8EHj9K
-         ADFw==
+        b=LdljnFNdlN7D8PbQiEr6VGovbSozZK5haPwKWltiA/OU2Xi4OyDS4wcE5pJEsBg0mk
+         ICw17XcSgIIzwTZvjG31grrN24XGxAMDpx5j982/Op55YeF0lO38c4gNnNHW5DT1X6vD
+         2m9f5klMeXy67oR3IXv2rDE/908aeUNzUVWlckfiEkOnYI/XehFgvJsFx7K2+FuLzaRs
+         4h9iibbv1kLES7LLNSupCG6F9mWWkTJe7LXradIIo7vxvaZ9APdsM4YFRE4cOg8m8sU1
+         g6FoLmAhKmBK97/b5MooFewmKzlErAxOLiNY/ABrPVyjZm+e7zgxP6muOoRnOvLie1Pu
+         I2Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=YGvyBWgcukmF04PSlYcYjbkHtqawrOudLSEraUI+SwA=;
-        b=AXrmY6HtMvcxJkNjisAyui1/zXhsAyEptTLW5lJChQ+skktaBf0p/ZKxDh0ZutKxP+
-         JWSqpqBUQbAPkKzNuKoPfKW0Qko/Ye1L9MDmnYBs08mV01S+63ICI7Uf5iHeuWIk/5UN
-         Zo8UPlqvq1DzqaI4+iL2hpIIVoK3uX/Obbpn7pMDnxd8qAYZjAziIk5BFRAWgE5mgiu1
-         vj9GX5nF+r73Mmbv/pNoYxZNpWl6L1QgXUvhTaUytUex/haW0WOE/8UJK7NeyeYNnn27
-         xErp7kYYA+aY/vFzfd3NL41eNiYrGRctF+NhqLN+xwQRkMjElkBcFesqQFei+cEWF9BE
-         bW5Q==
+        bh=5A5sF3XVfRUsUHPL+ChPUXlrZzq/INTT0FI+o+6pO24=;
+        b=OTwOdCmjjUwlwb1yBns2mWtmsEWhUxw2qhsCAqvtFxSgWfwxwitPl6br6CKKr09+bT
+         H3K/LL6fZLzrbEdUdt7SgeMup3/FvC22lk7+JHhO4hYyGZoH7TnPJoqu32u1QZemxpWx
+         pdEhWdMilreMpk7wcehWHI6nNrUQUKRmWjVQPAhx0fBXeJ99smi9dPL8gQQKlfJqvW2n
+         4Zihh+w++PYknl85QKpb7fzjPWOENrizbZjdY3PwoDl9xA18SgdFpC99Jb2dhlAB3kew
+         GuVF2hwErizQwNRMLyWBaxRUcni1HmA8weFvU47fzcQownqOYTPmhlljlt6pRmzmzzBi
+         KMaw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e67-v6si547800qkd.399.2018.10.03.03.18.34
+        by mx.google.com with ESMTPS id f6-v6si579851qtj.82.2018.10.03.03.32.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 Oct 2018 03:18:34 -0700 (PDT)
+        Wed, 03 Oct 2018 03:32:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47835 helo=lists.gnu.org)
+Received: from localhost ([::1]:47909 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7eEk-00048V-62
-	for alex.bennee@linaro.org; Wed, 03 Oct 2018 06:18:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34166)
+	id 1g7eSZ-0000sD-V8
+	for alex.bennee@linaro.org; Wed, 03 Oct 2018 06:32:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36996)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7eEb-00047P-7K
-	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:18:28 -0400
+	(envelope-from <philmd@redhat.com>) id 1g7eSK-0000mx-00
+	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:32:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7eEX-0003qY-8a
-	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:18:24 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:36727)
+	(envelope-from <philmd@redhat.com>) id 1g7eSG-00040d-D7
+	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:32:35 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:35490)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7eEX-0003pn-1A
-	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:18:21 -0400
-Received: by mail-wr1-f68.google.com with SMTP id y16so5477103wrw.3
-	for <qemu-arm@nongnu.org>; Wed, 03 Oct 2018 03:18:20 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7eSG-0003yg-79
+	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:32:32 -0400
+Received: by mail-wr1-f65.google.com with SMTP id w5-v6so5532981wrt.2
+	for <qemu-arm@nongnu.org>; Wed, 03 Oct 2018 03:32:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=YGvyBWgcukmF04PSlYcYjbkHtqawrOudLSEraUI+SwA=;
-	b=afdLFTh+C4SERlyaPJ0CRrP9fTd6qRQc/7kgq34j/oulOSBYhhBzJcUZ2w5SR86/21
-	NqvzEFnM4WEpqK8XF60LAlWfD7BUVLu0pQVJZSLkJ78QLwR7Vb48dVcVT+I4ngVr07KF
-	gQ3n6XG5m2ebpIuJJxCVlD94SAjCcPgalBZWmJhl5OW9WLz91WMyc5j82TD0TJlX2mZn
-	nW6srFVd4eIssjYSTZgJJbPoQBkigpT3OPmLAKho1pOP9xiL4lfVOl1ouNNKI1YIRUSi
-	fLtRf8r166um7E5kqjobU2t35tWGdv4oEHNergGensTZ2QGHI/9cxppo+7rE9YyBWpxV
-	hKTA==
-X-Gm-Message-State: ABuFfohAHjd/dinaaEM6755UdBdVD51IKaFSqYlsf7ZzZ291/ksaS49G
-	W2UPzTTKgBpof3mNqomtlQKF/A==
-X-Received: by 2002:adf:c806:: with SMTP id d6-v6mr730819wrh.243.1538561899058;
-	Wed, 03 Oct 2018 03:18:19 -0700 (PDT)
+	bh=5A5sF3XVfRUsUHPL+ChPUXlrZzq/INTT0FI+o+6pO24=;
+	b=aiVnYU0ypyQL2BNCFuOWFhn4e2SncMrYBGrWvaH8g5Kxq4IJWLN9609zGB9DcbAAlo
+	+CzfjdQrc2EZn/Kc0Ps3WYys96QZiYbH1sos3JYAXHzQl5phc7A5Yqf32N7K4kE4Xcf3
+	M13yrJBoZgX2GycCv0CsqiPGNt5O2NCT6oN3tSn5tdwyyLIqDPlziPyD62Q6qz34Ov01
+	OFxxOZ7V6kgZlvH2y90fpZArtvgRBRGC0vYY/gIPb74wrqlH5vhvDILTsccBNwrusQaW
+	v2tXsDFSNY7wF+zMkWbdYuFiulTH82aSVPWHkmDPkz4pIDXLe0sAxMah9tWDUa97AnG7
+	uEow==
+X-Gm-Message-State: ABuFfoi60dBVpHc6HuoBC9hLjhb2oR0s/5tBRojDDbIKeIxKxTtQ6Jky
+	BmB3pExK/vmnAvUwNVQh+bvYQQ==
+X-Received: by 2002:adf:fccc:: with SMTP id
+	f12-v6mr867835wrs.166.1538562749121; 
+	Wed, 03 Oct 2018 03:32:29 -0700 (PDT)
 Received: from [192.168.2.33] (26.red-83-32-208.dynamicip.rima-tde.net.
 	[83.32.208.26]) by smtp.gmail.com with ESMTPSA id
-	y138-v6sm852561wmd.2.2018.10.03.03.18.17
+	e64-v6sm1381952wmg.0.2018.10.03.03.32.27
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 03 Oct 2018 03:18:18 -0700 (PDT)
+	Wed, 03 Oct 2018 03:32:28 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20181002163556.10279-1-peter.maydell@linaro.org>
-	<20181002163556.10279-14-peter.maydell@linaro.org>
+	<20181002163556.10279-6-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6516f5a5-449c-1d49-a4f0-241f49f16b61@redhat.com>
-Date: Wed, 3 Oct 2018 12:18:17 +0200
+Message-ID: <e9753178-49e9-884d-7ce9-faec4e43fee2@redhat.com>
+Date: Wed, 3 Oct 2018 12:32:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20181002163556.10279-14-peter.maydell@linaro.org>
+In-Reply-To: <20181002163556.10279-6-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 13/13] target/arm: Add v8M stack
- checks for MSR to SP_NS
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 05/13] target/arm: Add some
+ comments in Thumb decode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,49 +109,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uXV+8EB4MoPG
+X-TUID: 0xKfRX8JvUKL
 
 On 02/10/2018 18:35, Peter Maydell wrote:
-> Updating the NS stack pointer via MSR to SP_NS should include
-> a check whether the new SP value is below the stack limit.
-> No other kinds of update to the various stack pointer and
-> limit registers via MSR should perform a check.
+> Add some comments to the Thumb decoder indicating what bits
+> of the instruction have been decoded at various points in
+> the code.
+> 
+> This is not an exhaustive set of comments; we're gradually
+> adding comments as we work with particular bits of the code.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Specifically, I figured these out as I was going through looking
+> for the insns which write SP. These comments turn out not to
+> be relevant to those instructions, but I don't want to throw
+> them away.
+> ---
+>  target/arm/translate.c | 20 +++++++++++++++++---
+>  1 file changed, 17 insertions(+), 3 deletions(-)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 25a8fe672f5..fcb33b8a503 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -10623,6 +10623,10 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+>              tmp2 = load_reg(s, rm);
+>              if ((insn & 0x70) != 0)
+>                  goto illegal_op;
+> +            /*
+> +             * 0b1111_1010_0xxx_xxxx_1111_xxxx_0000_xxxx:
+> +             *  - MOV, MOVS (register-shifted register), flagsetting
+
+T2, OK
+
+> +             */
+>              op = (insn >> 21) & 3;
+>              logic_cc = (insn & (1 << 20)) != 0;
+>              gen_arm_shift_reg(tmp, op, tmp2, logic_cc);
+> @@ -11674,7 +11678,11 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+>          rd = insn & 7;
+>          op = (insn >> 11) & 3;
+>          if (op == 3) {
+> -            /* add/subtract */
+> +            /*
+> +             * 0b0001_1xxx_xxxx_xxxx
+> +             *  - Add, subtract (three low registers)
+> +             *  - Add, subtract (two low registers and immediate)
+
+T1, OK
+
+> +             */
+>              rn = (insn >> 3) & 7;
+>              tmp = load_reg(s, rn);
+>              if (insn & (1 << 10)) {
+> @@ -11711,7 +11719,10 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+>          }
+>          break;
+>      case 2: case 3:
+> -        /* arithmetic large immediate */
+> +        /*
+> +         * 0b001x_xxxx_xxxx_xxxx
+> +         *  - Add, subtract, compare, move (one low register and immediate)
+
+T2, OK
+
+> +         */
+>          op = (insn >> 11) & 3;
+>          rd = (insn >> 8) & 0x7;
+>          if (op == 0) { /* mov */
+> @@ -11848,7 +11859,10 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+>              break;
+>          }
+>  
+> -        /* data processing register */
+> +        /*
+> +         * 0b0100_00xx_xxxx_xxxx
+> +         *  - Data-processing (two low registers)
+
+T1, OK
+
+> +         */
+>          rd = insn & 7;
+>          rm = (insn >> 3) & 7;
+>          op = (insn >> 6) & 0xf;
+> 
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> ---
->  target/arm/helper.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 074f7616272..712828674fa 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -10963,11 +10963,23 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
->               * currently in handler mode or not, using the NS CONTROL.SPSEL.
->               */
->              bool spsel = env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SPSEL_MASK;
-> +            bool is_psp = !arm_v7m_is_handler_mode(env) && spsel;
-> +            uint32_t limit;
->  
->              if (!env->v7m.secure) {
->                  return;
->              }
-> -            if (!arm_v7m_is_handler_mode(env) && spsel) {
-> +
-> +            limit = is_psp ? env->v7m.psplim[false] : env->v7m.msplim[false];
-> +
-> +            if (val < limit) {
-> +                CPUState *cs = CPU(arm_env_get_cpu(env));
-> +
-> +                cpu_restore_state(cs, GETPC(), true);
-> +                raise_exception(env, EXCP_STKOF, 0, 1);
-> +            }
-> +
-> +            if (is_psp) {
->                  env->v7m.other_ss_psp = val;
->              } else {
->                  env->v7m.other_ss_msp = val;
-> 

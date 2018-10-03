@@ -1,157 +1,156 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6097797wrt;
-        Wed, 3 Oct 2018 02:57:21 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61lizRR70wP9GBlXFZ4T9Do0Jl6FCDkcEIqdBSqtw8nIuqQHNsBrjw/6+XgpFwcjPOK8dDN
-X-Received: by 2002:a0c:93c1:: with SMTP id g1-v6mr515360qvg.136.1538560641264;
-        Wed, 03 Oct 2018 02:57:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538560641; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6118730wrt;
+        Wed, 3 Oct 2018 03:18:34 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62ftm2HqhGhkHMFqI+1UCab7oJHGmfPOK8v7NUH/LJLUETxUzmIQovACh2qAG9vBFAQGd9a
+X-Received: by 2002:a37:1a8b:: with SMTP id l11-v6mr513572qkh.197.1538561914609;
+        Wed, 03 Oct 2018 03:18:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538561914; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmVCnTXaqAZfVJohiHiXX4UAEEZxIWZ7nNTGJge8Fjaj0NtY2HjHTkTeuf0p8N67no
-         IOlJn7PClU49J/4Cag8QsMWCa0EwHBKUVjJX2+MR/Vhr5jECp6mNI5MTbplGkaIy6mEO
-         +R41oOvpr7C80fg1qnNL0+rYWXoq9HkY8Ug85IrqxUCoLIp3fhhzSIpo6T1EOjdES6ac
-         UPcnWT+8Wm9gtcN2g3BhyaN9GXUD8R8Jw1vHFduYVLc+BVCGsMWEWgW6O9A7/43p53ZB
-         YvHs8T4RQZ2wDkvqnCFenYl0AxIRX+sCP0ckHJznxXqZ7Tt+b507kfhORicEEZtWlZiT
-         s5kg==
+        b=BwDhieZyLG0Jhm8VMYEPopFNuoDwjkf4RTUZrMtoHKPRuej8f7tqub2JMBr545Mvti
+         V7OXs2YNpmx2q8KPzhXWF4xVX6+jTt1bVciWpAe/cKBezcEqVRqFFzXrzP/jPkXFdb+Q
+         //YsX0MV2yZ3nkeVLIviiS4CVivCV86xjdJL0vJhar9CFadDGPB7u/peu2a3QYuVVKfh
+         sgbh1aBSTgYPJcjhCsthoxQQygoURkebP9JNhnxinILOaCrnKsojxwh720tpPd0Q3Akx
+         n8cadb8qJ1hgyUmyFbhNBp6Xv6JNxyDuOk+cWyj5VY8t4ZY7uG9lA4bZvV58hW8EHj9K
+         ADFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=ENK+Z3WCAE/rGXrKmwcjNVDvZoiz8wxswjTTba3TMuY=;
-        b=fWXou3/Dpw3jGJHKwbMhtoh/E36lBqS50Lg0ujDpuWCO0mprlTqXH8NDixHiq0KTft
-         T9Q3g40eSy3VhLqgO7/2/X3EHtjqp4PhANF8Y0YvMXoKHVtyf19B27/Sy/lkKsVkPEPo
-         BMNPVu8daNzHqIpGBdajHXLmQxH8/q1+4nQwXv2fUIckQN4nLBSy6CM7jZQtQL0kfQ1E
-         7HaIQjvyiQNBSvG5d2L6IgjXj5fpI0SnpWVd25CvL9CyPHEMtgr/XmFeWDiXCg0hDnWu
-         qQA7Jw66h5gEXzgWOWFazY3mrwxDcfT3jnPTaC5jmTmLTvrAdzVdq7FG0q1Da7NeB1sX
-         02Gw==
+        bh=YGvyBWgcukmF04PSlYcYjbkHtqawrOudLSEraUI+SwA=;
+        b=AXrmY6HtMvcxJkNjisAyui1/zXhsAyEptTLW5lJChQ+skktaBf0p/ZKxDh0ZutKxP+
+         JWSqpqBUQbAPkKzNuKoPfKW0Qko/Ye1L9MDmnYBs08mV01S+63ICI7Uf5iHeuWIk/5UN
+         Zo8UPlqvq1DzqaI4+iL2hpIIVoK3uX/Obbpn7pMDnxd8qAYZjAziIk5BFRAWgE5mgiu1
+         vj9GX5nF+r73Mmbv/pNoYxZNpWl6L1QgXUvhTaUytUex/haW0WOE/8UJK7NeyeYNnn27
+         xErp7kYYA+aY/vFzfd3NL41eNiYrGRctF+NhqLN+xwQRkMjElkBcFesqQFei+cEWF9BE
+         bW5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g38-v6si542405qve.248.2018.10.03.02.57.21
+        by mx.google.com with ESMTPS id e67-v6si547800qkd.399.2018.10.03.03.18.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 Oct 2018 02:57:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 03 Oct 2018 03:18:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47720 helo=lists.gnu.org)
+Received: from localhost ([::1]:47835 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7duC-000228-Pm
-	for alex.bennee@linaro.org; Wed, 03 Oct 2018 05:57:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57604)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g7eEk-00048V-62
+	for alex.bennee@linaro.org; Wed, 03 Oct 2018 06:18:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34166)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7dsq-0001SK-UJ
-	for qemu-devel@nongnu.org; Wed, 03 Oct 2018 05:55:57 -0400
+	(envelope-from <philmd@redhat.com>) id 1g7eEb-00047P-7K
+	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:18:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g7dsm-0001hA-UY
-	for qemu-devel@nongnu.org; Wed, 03 Oct 2018 05:55:56 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:51263)
+	(envelope-from <philmd@redhat.com>) id 1g7eEX-0003qY-8a
+	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:18:24 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:36727)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7dsm-0001gw-NP
-	for qemu-devel@nongnu.org; Wed, 03 Oct 2018 05:55:52 -0400
-Received: by mail-wm1-f68.google.com with SMTP id 143-v6so5055479wmf.1
-	for <qemu-devel@nongnu.org>; Wed, 03 Oct 2018 02:55:52 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g7eEX-0003pn-1A
+	for qemu-arm@nongnu.org; Wed, 03 Oct 2018 06:18:21 -0400
+Received: by mail-wr1-f68.google.com with SMTP id y16so5477103wrw.3
+	for <qemu-arm@nongnu.org>; Wed, 03 Oct 2018 03:18:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ENK+Z3WCAE/rGXrKmwcjNVDvZoiz8wxswjTTba3TMuY=;
-	b=P27sMYao6t97nZAmE6bzDZR7Tx1FieJiF1Cu8PPdXEHTo41OV4k1xcUytYhm0+iwev
-	tQnYSKkgan2+WkagN1ZLCAdzwapqafPF2mzCDg+wQ9GlQLVnz6GqDI4+r1Cm4V4ePwlY
-	bx4ocLz8/crsezqE/7Nj78wgKfcrAWLB89bD+rC7WUQPr9VAo5InEMFWtgu9ECkTULpp
-	6SiMxoTrUb/x+ZpON/BtUR7tEWymOmYrawzN6YC8be9IYLyV37lbKMbzqooIsVUH4bh7
-	wyQIaH514F4nCBmmbmpHRhlGf14JPI7+HSk54sPQ7wq+6pwizw/uLSczn6X5ECBRK4CG
-	5V0A==
-X-Gm-Message-State: ABuFfojcusTwWvC1PLHOHZXH4PHjTPYqbLgVaomlqmvTE0NL34eUSwPT
-	nhwcMBZZBzUB4T1d+DAd4eD3hQ==
-X-Received: by 2002:a1c:d986:: with SMTP id
-	q128-v6mr953730wmg.110.1538560551659; 
-	Wed, 03 Oct 2018 02:55:51 -0700 (PDT)
+	bh=YGvyBWgcukmF04PSlYcYjbkHtqawrOudLSEraUI+SwA=;
+	b=afdLFTh+C4SERlyaPJ0CRrP9fTd6qRQc/7kgq34j/oulOSBYhhBzJcUZ2w5SR86/21
+	NqvzEFnM4WEpqK8XF60LAlWfD7BUVLu0pQVJZSLkJ78QLwR7Vb48dVcVT+I4ngVr07KF
+	gQ3n6XG5m2ebpIuJJxCVlD94SAjCcPgalBZWmJhl5OW9WLz91WMyc5j82TD0TJlX2mZn
+	nW6srFVd4eIssjYSTZgJJbPoQBkigpT3OPmLAKho1pOP9xiL4lfVOl1ouNNKI1YIRUSi
+	fLtRf8r166um7E5kqjobU2t35tWGdv4oEHNergGensTZ2QGHI/9cxppo+7rE9YyBWpxV
+	hKTA==
+X-Gm-Message-State: ABuFfohAHjd/dinaaEM6755UdBdVD51IKaFSqYlsf7ZzZ291/ksaS49G
+	W2UPzTTKgBpof3mNqomtlQKF/A==
+X-Received: by 2002:adf:c806:: with SMTP id d6-v6mr730819wrh.243.1538561899058;
+	Wed, 03 Oct 2018 03:18:19 -0700 (PDT)
 Received: from [192.168.2.33] (26.red-83-32-208.dynamicip.rima-tde.net.
 	[83.32.208.26]) by smtp.gmail.com with ESMTPSA id
-	e7-v6sm1218096wra.37.2018.10.03.02.55.50
+	y138-v6sm852561wmd.2.2018.10.03.03.18.17
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 03 Oct 2018 02:55:50 -0700 (PDT)
+	Wed, 03 Oct 2018 03:18:18 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 References: <20181002163556.10279-1-peter.maydell@linaro.org>
-	<20181002163556.10279-13-peter.maydell@linaro.org>
+	<20181002163556.10279-14-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <35235ad8-c104-05a9-3f9e-677a743b73e2@redhat.com>
-Date: Wed, 3 Oct 2018 11:55:49 +0200
+Message-ID: <6516f5a5-449c-1d49-a4f0-241f49f16b61@redhat.com>
+Date: Wed, 3 Oct 2018 12:18:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20181002163556.10279-13-peter.maydell@linaro.org>
+In-Reply-To: <20181002163556.10279-14-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-devel] [PATCH 12/13] target/arm: Add v8M stack checks for
- VLDM/VSTM
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 13/13] target/arm: Add v8M stack
+ checks for MSR to SP_NS
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: patches@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YJXI86l/bU6c
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uXV+8EB4MoPG
 
 On 02/10/2018 18:35, Peter Maydell wrote:
-> Add the v8M stack checks for the VLDM/VSTM
-> (aka VPUSH/VPOP) instructions. This code is currently
-> unreachable because we haven't yet implemented M profile
-> floating point support, but since the change is simple,
-> we add it now because otherwise we're likely to forget to
-> do it later.
+> Updating the NS stack pointer via MSR to SP_NS should include
+> a check whether the new SP value is below the stack limit.
+> No other kinds of update to the various stack pointer and
+> limit registers via MSR should perform a check.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/translate.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index ef64d2559de..2d3a1be518b 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -4229,6 +4229,18 @@ static int disas_vfp_insn(DisasContext *s, uint32_t insn)
->                  if (insn & (1 << 24)) /* pre-decrement */
->                      tcg_gen_addi_i32(addr, addr, -((insn & 0xff) << 2));
->  
-> +                if (rn == 13 && w && s->v8m_stackcheck) {
-
-Following previous patches style:
-
-                   if (s->v8m_stackcheck && rn == 13 && w) {
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> +                    /*
-> +                     * Here 'addr' is the lowest address we will store to,
-> +                     * and is either the old SP (if post-increment) or
-> +                     * the new SP (if pre-decrement). For post-increment
-> +                     * where the old value is below the limit and the new
-> +                     * value is above, it is UNKNOWN whether the limit check
-> +                     * triggers; we choose to trigger.
-> +                     */
-> +                    gen_helper_v8m_stackcheck(cpu_env, addr);
-> +                }
+> ---
+>  target/arm/helper.c | 14 +++++++++++++-
+>  1 file changed, 13 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 074f7616272..712828674fa 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -10963,11 +10963,23 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+>               * currently in handler mode or not, using the NS CONTROL.SPSEL.
+>               */
+>              bool spsel = env->v7m.control[M_REG_NS] & R_V7M_CONTROL_SPSEL_MASK;
+> +            bool is_psp = !arm_v7m_is_handler_mode(env) && spsel;
+> +            uint32_t limit;
+>  
+>              if (!env->v7m.secure) {
+>                  return;
+>              }
+> -            if (!arm_v7m_is_handler_mode(env) && spsel) {
 > +
->                  if (dp)
->                      offset = 8;
->                  else
+> +            limit = is_psp ? env->v7m.psplim[false] : env->v7m.msplim[false];
+> +
+> +            if (val < limit) {
+> +                CPUState *cs = CPU(arm_env_get_cpu(env));
+> +
+> +                cpu_restore_state(cs, GETPC(), true);
+> +                raise_exception(env, EXCP_STKOF, 0, 1);
+> +            }
+> +
+> +            if (is_psp) {
+>                  env->v7m.other_ss_psp = val;
+>              } else {
+>                  env->v7m.other_ss_msp = val;
 > 

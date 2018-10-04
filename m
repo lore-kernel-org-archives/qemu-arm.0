@@ -1,99 +1,112 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1172873wrt;
-        Thu, 4 Oct 2018 10:37:28 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61ZfXmj1eEm9013VqOzIHkdyrNAtXb+bsvPKMkTtIj9/DGfKCmJna8GEd9ds2Smn0HWjjmX
-X-Received: by 2002:a37:a650:: with SMTP id p77-v6mr5965672qke.126.1538674648665;
-        Thu, 04 Oct 2018 10:37:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538674648; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1415261wrt;
+        Thu, 4 Oct 2018 15:15:05 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62blwLaCX7WSYS7JriX0QKcbRXZ6FA4Wat05uZV9VjdrXhNPvrZNekQZIK+2XOTRyXJs12d
+X-Received: by 2002:aed:2259:: with SMTP id o25-v6mr7245096qtc.13.1538691305652;
+        Thu, 04 Oct 2018 15:15:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538691305; cv=none;
         d=google.com; s=arc-20160816;
-        b=LKGokVO0J+BdOatNn813J2iPUScQ2sAOuJk+U4pz4c2Af+u0RJohyN5eXabP7vxLKO
-         JpLoFap5tZemZS0QthDiV8ZFMr1t97du7oJGG4gMUbrfhhPfgHa0MApd7S31NuQUCyPe
-         C48l2MiwIX4S7bkBOKAB3lVnlX2VP86lGwuPJmxCskd5/ku3JetcEqRQwk+fhaDxnh2k
-         sRNOyf3xV/TwIkG0fJaZKZEPefaE15UYTRNDI2o+1ME1mt+PWHE9xfYdV1OOLvaE4Gza
-         o3ihbQdHe9BSzFV7JsvgqC4TBD94QD9D1z/aQ71v5XzBaQFrqVxmpmtZQBIBa/Q/47wL
-         aS9w==
+        b=mV853bxltSKZIIUsZ8Iwa5jQza77+nHWH8Dcv6pInLbZJCm4XhMRNIFkCtK+uCu8fp
+         p4Zwmmx/3NoK1wvSF5I7Fu8ap90nQBRYBzIHv1K8hijcnGsy4ZMVWuLQZeKZmczcpIlM
+         volbfrQupIbCBHl5VUdeGtwt5qScgPX0RYY1iLnV0z7rU//bH7WEPzuT6AcYqaqiZhnX
+         p9mxXk2C7XC3hbZrEpD50D6WJ3pREPcEy8tuVd4eMJq2LLEGSea8P+mSFxKtGE1yOCj6
+         LQvfIC2A801HXnlq6CMwQevqwJY5+bATsuvS1MR+e9v1xr0TJg6+ApQAABwoRRb1W+dg
+         VNXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ajkM76D0M2PM17axf5TuSlcJWWiPTF8Kjlthn49NLig=;
-        b=LiJh5vKp+cClX7SCQv4Fo0ncB9ulFaYLCeyRXsNu5OFiyHsUD7oX1MOkvGCVbtJPy0
-         U4EkM0y4Vhw9XPdkewPbZkFvpvPJQdxsXtyzgK4BQ7Ql8x3jtoSXlAWSu4/Tekp2jQOc
-         dBmigHWz6un8HAPUu738sOlSbY8biE147N+vijMFK7G0fm9dwFvNRDGgm2CWKmLq5W06
-         dNr4a+z9fd0RQnMRxj6Dy8SMBiENZJqCv6RO7QjRwXWqiPOhso4HDCfCBoDE3eSJzfRy
-         i9VgwKWlwJOoIl5HM0CjG7zIxD/8YQxTCLlHYv79TP36jtblIBpIrc0hqKzgjtn9rTsi
-         e2/A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature;
+        bh=CVJ7gVdn5uKJMZ/lKhy646d4eZ9OgsPSW1SG7s1pQ34=;
+        b=yrY+Okr+qEr7JpfDAK+Qw3kHtYvoTihDWvsZe0kEnMjH3X6uiRfszgZVqTdIGEsidA
+         24U8OWOr5Iy5D9UWA+ry79ssup4HtC1ce9MvuZD4bj/qIDJXEfkFNrqodXauWb7lvm/2
+         Y40ZDH08APITf6J1ZQz0IrWFTba0an7Ygb0iT9BTgL01Q/zYDcX7qm3WVkF0meRnXm/0
+         nl+Amy2luTLpMKvT1X8IpqC45KtsqgzJTxSBgQTscIbT7w8iimTamA7BVpbRrMKHuobJ
+         HRUWO01Y7gcxOf5QbFECQq0X93C1hpynXFcf946D1WjNmVi/k4azGEmoMkAjwX01iep6
+         2U1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="I/Yi0Jhs";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nkB8q8Ng;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b187-v6si3624377qke.115.2018.10.04.10.37.28
+        by mx.google.com with ESMTPS id 7-v6si2707105qvo.211.2018.10.04.15.15.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 04 Oct 2018 10:37:28 -0700 (PDT)
+        Thu, 04 Oct 2018 15:15:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="I/Yi0Jhs";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nkB8q8Ng;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57999 helo=lists.gnu.org)
+Received: from localhost ([::1]:60224 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g87Z2-0005tU-7c
-	for alex.bennee@linaro.org; Thu, 04 Oct 2018 13:37:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55999)
+	id 1g8Bth-0008Rw-6E
+	for alex.bennee@linaro.org; Thu, 04 Oct 2018 18:15:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1g87Ys-0005sK-Mv
-	for qemu-arm@nongnu.org; Thu, 04 Oct 2018 13:37:19 -0400
+	(envelope-from <alistair23@gmail.com>) id 1g8BtW-0008QR-Pv
+	for qemu-arm@nongnu.org; Thu, 04 Oct 2018 18:14:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1g87Yr-0005jc-Va
-	for qemu-arm@nongnu.org; Thu, 04 Oct 2018 13:37:18 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:43903)
+	(envelope-from <alistair23@gmail.com>) id 1g8BtT-00056a-Ln
+	for qemu-arm@nongnu.org; Thu, 04 Oct 2018 18:14:54 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:35628)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1g87Yq-0005hR-6q; Thu, 04 Oct 2018 13:37:16 -0400
-Received: by mail-lj1-x244.google.com with SMTP id r8-v6so9118181ljc.10;
-	Thu, 04 Oct 2018 10:37:16 -0700 (PDT)
+	id 1g8BtT-00055k-FO; Thu, 04 Oct 2018 18:14:51 -0400
+Received: by mail-pf1-x444.google.com with SMTP id p12-v6so4066721pfh.2;
+	Thu, 04 Oct 2018 15:14:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=ajkM76D0M2PM17axf5TuSlcJWWiPTF8Kjlthn49NLig=;
-	b=I/Yi0JhsvbcGYObdVy9vdPfQwy9cvImX9nusufq3D+AkmT0TraJ1ZjNTF3fv0DhxcN
-	uOgKKSXhbYyprFADbmd5F36zXOJJeiiCB4DA1mzLcOBh2PkiyQA8uf35uLc6blN9j01i
-	HGtYe+a2DTWIQaGhqhziCyGdCTpbLq8pFJbR43uMdKEOzbkZS671MEIF0AKF8vmSotBW
-	up7M3u0UlPzX2oGXrkJllGfp+x4px0JblhWtwRzmtwPC7bEc3Jr+GzFpnU5SRQ8QfzTi
-	besJJRIHK6/eBOeRn9bp1JyZLhZVbPLSixwaYtS/6c7yVuCgLaDvJB2o8cUBd2AaLHEa
-	Alig==
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=CVJ7gVdn5uKJMZ/lKhy646d4eZ9OgsPSW1SG7s1pQ34=;
+	b=nkB8q8NgWziBjr9GfQwn+pZdeJRFVVQrhLB2FcdCa8f2igL/tpL/AyzxoHiBEYKIOZ
+	nce/lz6wWHUgMNhLFu5yRRGHMtPo221Ru6Hm3ZSf5eHAxsznl6YgH+5lcKdF0/6zGsk4
+	UInLSgVxTsHG1br9oXA0xZc0OJWkRmo8awl2usL0CI9hTs5BNCIbphQv5z6LUjlWwdNA
+	mcA3XSUF5AEo8BRILXnQTWmo5fr6X2Y1dl3tg+3uQctoR8CUm2a985tkS8JRq69sIgIn
+	i1erL5D6+v8qmk5iwHtKivjGu5QYrF/GXjK5dC3RKaKlMX4H46UzQG/0ZpjiXozDIaDF
+	q4kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=ajkM76D0M2PM17axf5TuSlcJWWiPTF8Kjlthn49NLig=;
-	b=d/Gl6QQEw+CgoTvm3VL+IYse9/5nzzFW/MxsCl2vBogQvfRtfp++TzOGHa/bBctZOm
-	3X3QLRaR+UVfogy9M95A2/PfguVMcKnLJNJvB71xtRNmtPp2uHNCqPsLJdriCRKSekWN
-	kGRCl0lqv6Et2UvsnxeXnafLoVhhRfd4oKXuxuLMoHpw1Bos5ZdTZ19Q0kMy2+9MMDCx
-	qVVxHynoERgyYe27sQ4wNGnisn3jGdjJHeyycIbGfkZen9PPqqW0dTFyumkIXX9aB9aN
-	xGHiKUaNg/4c5goFuk2CHyKZ+qJT/PPNLLbAP1HHTd9jOkMTo2GB92v0aPc1hj1UH484
-	c8/Q==
-X-Gm-Message-State: ABuFfoi9W3jQB4Hz2YDvbtmF9VjaGyty++0+PIpl55nSArez8rLXLzB+
-	iUEA8tDK0K8nzogZqp5q94zNjQyIH5/JFrMVIt8=
-X-Received: by 2002:a2e:6d0a:: with SMTP id
-	i10-v6mr4831019ljc.145.1538674634801; 
-	Thu, 04 Oct 2018 10:37:14 -0700 (PDT)
-MIME-Version: 1.0
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=CVJ7gVdn5uKJMZ/lKhy646d4eZ9OgsPSW1SG7s1pQ34=;
+	b=LdlyX5c5AdBHrXsiTUC1cr/FQUZpx23pbul+1euxDIobebdIZw5l4PaTEG3oKrhSuB
+	l8/OZDszeEmZ457xWEcm+yCFb06AdXKJZurZpO/s78rmLnscVRwqBDIkHoBLrHsL6aFE
+	jjMfXnSN4s+QZ7U9uTOktv0rYfvgy5YH1QsFHnFJvf971sjiR2a5n9MqMDMcP/sQoP3O
+	dG+wsi29KKYfvcOIM1u8d+cCtJPv6FxOOHJBRDqAQcE9jSnAhyyU5Mge4BuMGhAPtElE
+	C67x25Elsd9QGVAnO3lU8DLq5xNOnrH9u6rBZU4/Ir6bDG9zc4zr/auSlCRPXdE5ma9K
+	FruQ==
+X-Gm-Message-State: ABuFfogDelbfSkoBjnVOCMM9SbLSms5PeN2ELZlRQ2cYkPbMOP5Fe6oe
+	OwYEeyHGcQKY6+Tg9w84c2o=
+X-Received: by 2002:a63:e116:: with SMTP id
+	z22-v6mr7351541pgh.20.1538691290492; 
+	Thu, 04 Oct 2018 15:14:50 -0700 (PDT)
+Received: from [10.196.159.185] (rap-us.hgst.com. [199.255.44.250])
+	by smtp.gmail.com with ESMTPSA id
+	d81-v6sm8715328pfj.122.2018.10.04.15.14.47
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 04 Oct 2018 15:14:48 -0700 (PDT)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
 References: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
-	<1538579266-8389-2-git-send-email-edgar.iglesias@gmail.com>
-In-Reply-To: <1538579266-8389-2-git-send-email-edgar.iglesias@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 4 Oct 2018 10:36:47 -0700
-Message-ID: <CAKmqyKPh+mQFSOWdZHCmusn86vd5aMgACZAsCa8d=uaSYUdsFQ@mail.gmail.com>
-To: Edgar Iglesias <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+	<1538579266-8389-3-git-send-email-edgar.iglesias@gmail.com>
+From: Alistair <alistair23@gmail.com>
+Message-ID: <95a9c881-20fe-cba5-3e9b-25526e20de89@gmail.com>
+Date: Thu, 4 Oct 2018 15:14:47 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <1538579266-8389-3-git-send-email-edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 01/12] net: cadence_gem:
- Disable TSU feature bit
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 02/12] net: cadence_gem:
+ Announce availability of priority queues
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,28 +118,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
-	Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	Francisco Iglesias <frasse.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+	edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+	frasse.iglesias@gmail.com, alistair@alistair23.me,
+	richard.henderson@linaro.org, frederic.konrad@adacore.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tNPr4+uxfXb8
+X-TUID: qdIr6+LATK0X
 
-On Wed, Oct 3, 2018 at 8:11 AM Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
->
+On 10/03/2018 08:07 AM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Disable the Timestamping Unit feature bit since QEMU does not
-> yet support it. This allows guest SW to correctly probe for
-> its existance.
->
+> 
+> Announce the availability of the various priority queues.
+> This fixes an issue where guest kernels would miss to
+> configure secondary queues due to inproper feature bits.
+> 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -134,23 +140,31 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/net/cadence_gem.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
+>   hw/net/cadence_gem.c | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
+> 
 > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 0fa4b0d..e560b7a 100644
+> index e560b7a..901c173 100644
 > --- a/hw/net/cadence_gem.c
 > +++ b/hw/net/cadence_gem.c
-> @@ -1228,7 +1228,7 @@ static void gem_reset(DeviceState *d)
->      s->regs[GEM_MODID] = s->revision;
->      s->regs[GEM_DESCONF] = 0x02500111;
->      s->regs[GEM_DESCONF2] = 0x2ab13fff;
-> -    s->regs[GEM_DESCONF5] = 0x002f2145;
-> +    s->regs[GEM_DESCONF5] = 0x002f2045;
->      s->regs[GEM_DESCONF6] = 0x00000200;
->
->      /* Set MAC address */
-> --
-> 2.7.4
->
->
+> @@ -1213,6 +1213,7 @@ static void gem_reset(DeviceState *d)
+>       int i;
+>       CadenceGEMState *s = CADENCE_GEM(d);
+>       const uint8_t *a;
+> +    uint32_t queues_mask;
+>   
+>       DB_PRINT("\n");
+>   
+> @@ -1229,7 +1230,10 @@ static void gem_reset(DeviceState *d)
+>       s->regs[GEM_DESCONF] = 0x02500111;
+>       s->regs[GEM_DESCONF2] = 0x2ab13fff;
+>       s->regs[GEM_DESCONF5] = 0x002f2045;
+> -    s->regs[GEM_DESCONF6] = 0x00000200;
+> +    s->regs[GEM_DESCONF6] = 0x0;
+> +
+> +    queues_mask = MAKE_64BIT_MASK(1, s->num_priority_queues - 1);
+> +    s->regs[GEM_DESCONF6] |= queues_mask;
+>   
+>       /* Set MAC address */
+>       a = &s->conf.macaddr.a[0];
+> 

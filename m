@@ -1,181 +1,632 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6431520wrt;
-        Wed, 3 Oct 2018 08:09:21 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62MrO2Op7Ti+SjeZ7u7RU91wLpwHVcSauXLbFmQFEOG1r1Qatl0b3dONyGwMAKMeeLiLjX9
-X-Received: by 2002:ac8:2b1a:: with SMTP id 26-v6mr1573322qtu.119.1538579361187;
-        Wed, 03 Oct 2018 08:09:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538579361; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp955155wrt;
+        Fri, 5 Oct 2018 16:21:50 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63iZpTUBhzCImLqN+r0gF1el4tXa/yx8bVstRm3Yq5X7kOVEf7NMd/dAs3WMj7Q5hFdju8H
+X-Received: by 2002:ac8:7397:: with SMTP id t23-v6mr11100222qtp.4.1538781710080;
+        Fri, 05 Oct 2018 16:21:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538781710; cv=none;
         d=google.com; s=arc-20160816;
-        b=rFmqmpx7ozzhP2gXeZ2SfzHG6o7jFhZ4bIImW0paX+CoazUzKFJaZnzQ8ZgdOvG0Vg
-         neRDNURzGp34NS4uT0w3t02XVwMpZY/bTAMR8mpOJk5VlB4Rlgjjns5kGi8/SCjssROd
-         pq2gtzPzNc29dbKM1l5BtR3FZWQVO97H1vcYm8JKB14gzEIvzlG1r9TxdIC2P1eta87Z
-         85ryNa6Lb3yF5Mr46xMfJB0XULqjjMoeBjc2OWh/8ptDjjfMFd2CgFoaBBs7S9YzFfsI
-         lgDpBzTUgLl0DtobZ4oWMfNZVowwoSfycqAC8ZrYjPtAjHRcLZoORcM+vJzHjq/q/Fqn
-         LGGA==
+        b=yGPHCPYxN4yKy/Shx9l9FdHtFXNGFFTNMqLsaDW26p37uNXlSKBbZo8sFI5EUf4oHx
+         vpXCjnasudAvRlSEegqOYdvwhbB3N7QmA2kgjo/xe+NmJ6icyMZundmVIVh0uudoLNPT
+         4vYz636w+IWfTxmmltev0wkkpKugxRK4J54+bQnJzXpBE4zhOTwlrxbqSh+NuhwfhTdt
+         UJWRjqFyMqGvIgkpN5F3zZQpqmIYBa4FGMQvY0+COhIRH3kL8eY3gUTdntV0x9OYOSQg
+         qjIQ9YyjFDpgzq2xjn+KG7HkquQroE/acWCPwkZX8OhuJxztFEMHjr4XeElvQqIFI7Ia
+         jtBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=TSu7TXLosXbMGYJPt97EmFJsS+4b2RXVTpVkuO3j0OU=;
-        b=IaSaRyEkTGYCAL3Pw5oeREdddZu+dx0MotdP5IXMX6GE/ceB2xLz5uZOSA/ck90Dl8
-         /HeT1W/kBmTGPENi9VkHPfwkiqVNsJz0RrY3327WeRZ3dDaqVU1/+j45hXfK1ghOisJn
-         0/ugEKzYKBWrZWQljbpg3U7n9U0+aw29oxeTAlTYCv3v0vQejPaaTPOL8hH8D0go16Qt
-         2TQ+paro5zgEcFi9LS6M1xaRWWOojhCCES51g12l7XxARbQ80SQ7owgvCP4owFbHgSae
-         +8uBLPh/3lfBlB9oOkQY/HGyU/mHShsg6Fs1KpUCSPczqD9SZNgvSj9Q5ePx1U/5Dxwd
-         /YMg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=0oUxAtyiQp3Yu/4zgWQE4tAw/UIxMAEh9n9p7QiIRJI=;
+        b=akCgjv9yjHnMBwevI2ndE1ZTde4CssXMIL3YSMmrWgTmafctanQi6rqGTyChIHm//r
+         3zhbjtl5YAG76/boy94lUTjt3DSJh+4RW2p5598YB5Tk4FRgL09d/F1bk57p4tZ/00VD
+         36PnzDeksQA09V5Dcd00tSRTa5p+6YJgfRRkcAbFBVzRboZD1E2BlytJ/pyNM81zY3fu
+         qE0g5jvoYyg4KH9OX0qySWJfitgx51jNTuqu2OSr5r/f7666s7L6t8iUJyVWDxlIBoK4
+         6Wmv48dKisd7DF0MGEXfniXH+EuH8kQ/zEMK0WPXMZFYlbD8p3TIeDNqu2f36idVAMxg
+         znAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=szuXZ3Ou;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 133-v6si1083209qki.150.2018.10.03.08.09.21
+        by mx.google.com with ESMTPS id 2-v6si1221467qvb.39.2018.10.05.16.21.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 03 Oct 2018 08:09:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 05 Oct 2018 16:21:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=szuXZ3Ou;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49209 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37263 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g7im8-0003kB-KM
-	for alex.bennee@linaro.org; Wed, 03 Oct 2018 11:09:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47267)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g8ZPn-0006xn-4x
+	for alex.bennee@linaro.org; Fri, 05 Oct 2018 19:21:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53711)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1g7ilM-0003ik-DM
-	for qemu-devel@nongnu.org; Wed, 03 Oct 2018 11:08:33 -0400
+	(envelope-from <philmd@redhat.com>) id 1g8ZPZ-0006v1-Gq
+	for qemu-arm@nongnu.org; Fri, 05 Oct 2018 19:21:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1g7ilJ-0003t6-9T
-	for qemu-devel@nongnu.org; Wed, 03 Oct 2018 11:08:32 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a]:45108)
+	(envelope-from <philmd@redhat.com>) id 1g8ZPV-0000pp-TI
+	for qemu-arm@nongnu.org; Fri, 05 Oct 2018 19:21:33 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:37944)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1g7ilE-0003rO-8A; Wed, 03 Oct 2018 11:08:25 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id a23-v6so1813120pfi.12;
-	Wed, 03 Oct 2018 08:08:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=TSu7TXLosXbMGYJPt97EmFJsS+4b2RXVTpVkuO3j0OU=;
-	b=szuXZ3OuZnVOV/m7sG+cG3J9K19DW/fbbfh9BDoI+ssZkeudrjPw6nVFwTst0e1aw6
-	odq74zPPnMH4Gsg0FnkrHtkpblRCxo2vtpX4cGBqdaCkvSHjx74uuIEi97ZBJ3MIpRO7
-	gL1TwLuluZGSzXbsByuB6hU0A2Frek79UoUeTbsXYxMD5OCprwD9/Su/0DjQikj9/n0u
-	w3XWRlbldlp2UzKO7Ovo1Du5StG09cDMxIctvCv/iLRYe9otLh/OCfWjwhKuEkkuTLLV
-	OJx5tj3zIhe54c80Xv1mVxnQOXcw8hk87OG/P9enopQFVy/8QjL0Ret5fhhVCc91k3tp
-	Z63w==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g8ZPU-0000ds-2S
+	for qemu-arm@nongnu.org; Fri, 05 Oct 2018 19:21:29 -0400
+Received: by mail-wm1-f67.google.com with SMTP id 193-v6so3255394wme.3
+	for <qemu-arm@nongnu.org>; Fri, 05 Oct 2018 16:21:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=TSu7TXLosXbMGYJPt97EmFJsS+4b2RXVTpVkuO3j0OU=;
-	b=aeuYE2HtYum1+XKKy59Q9oywtF7QMDx9Tzv2OpEW76jrJALgMyMniFzqL0duUS3HJ9
-	xGl3NbQVVTCDNj2Xj8jBbmrjpPl2Sxj0FExKTvVQ8voyWPttOiKckTv2zv5tchD9BZQS
-	jENIMXXAI5jqDFP6qOgDNqVhriaBlw1ZWC4FdWIjsjgojwLyNRf9arHSGbzbCBBZRjTw
-	8fgieVzsjoQMdSWYGmvDwEGhEbnyQN7Rnj3cTCrj2je5uRixuJlugym0CrlRcboeGUq/
-	60bLW1MY+FYvzGZR8B6WxsjePyWv4tFTCahZPbNwZMBkDLlRWWVgmAKPSEceXigZRHIA
-	ENDQ==
-X-Gm-Message-State: ABuFfoijlSvvR7cWv9NSIH80ub1L1tcxqWFxajPUU3nlRXJhsHCWTtwA
-	Tfwh722ieuaT0/r8J9lrUyA9qH7oYjA=
-X-Received: by 2002:a62:9ec7:: with SMTP id
-	f68-v6mr2103435pfk.206.1538579300475; 
-	Wed, 03 Oct 2018 08:08:20 -0700 (PDT)
-Received: from localhost ([149.199.62.254]) by smtp.gmail.com with ESMTPSA id
-	k13-v6sm2738237pff.30.2018.10.03.08.08.18
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=0oUxAtyiQp3Yu/4zgWQE4tAw/UIxMAEh9n9p7QiIRJI=;
+	b=LDUDg79CUcxHlGFLFl23ZoBRJGMeBTwq9bPugL0lXozE6CzB1/wzIMAL+D/E4K7z2p
+	zdQpkM2Xn2MwEQ8PD4ZrH90PeFFTXCbJgnPCURSaFj2zIBl2hoKg2Rl9r76lglEdqpPD
+	wtU8V29GWf8sNh1FkSRqe1NKstGFAryaOiLcPOFmcnN7SgiOSY69CNoZ44G7Z9S1W/ET
+	D/7aVSmwz5IJLK4UjSqEN0Uswn7WLTZ+j0iZ2t32s5YYibOCnV7oa+gmGeIGKIhslbbk
+	6Ek5zUQtLQTJvNEm0B+cWxe0e7H9W73IgRSfRQTEFkiDmogL8pbBQxuAphobVBl4qQEg
+	RlFA==
+X-Gm-Message-State: ABuFfoi4BUTL8a+fBiCBzHAfjVFD2DKb55/U3ZKDhdaaohVWFlUTCphB
+	h7ogknVjvxkYHt15pvziKLxaZQ==
+X-Received: by 2002:a1c:f60c:: with SMTP id
+	w12-v6mr9354462wmc.80.1538781680224; 
+	Fri, 05 Oct 2018 16:21:20 -0700 (PDT)
+Received: from [192.168.2.33] (26.red-83-32-208.dynamicip.rima-tde.net.
+	[83.32.208.26]) by smtp.gmail.com with ESMTPSA id
+	l125-v6sm7601681wmb.1.2018.10.05.16.21.18
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 03 Oct 2018 08:08:19 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org,
+	Fri, 05 Oct 2018 16:21:19 -0700 (PDT)
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Wed,  3 Oct 2018 22:07:34 +0700
-Message-Id: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.7.4
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::42a
-Subject: [Qemu-devel] [PATCH v1 00/12] arm: Add first models of Xilinx
- Versal SoC
-X-BeenThere: qemu-devel@nongnu.org
+References: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
+	<1538579266-8389-12-git-send-email-edgar.iglesias@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <c79c7f34-f0f9-c0d6-17bc-6a858dfa5849@redhat.com>
+Date: Sat, 6 Oct 2018 01:21:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
+MIME-Version: 1.0
+In-Reply-To: <1538579266-8389-12-git-send-email-edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 11/12] hw/arm: versal: Add a
+ model of Xilinx Versal SoC
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
 	edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
 	frasse.iglesias@gmail.com, alistair@alistair23.me,
 	richard.henderson@linaro.org, frederic.konrad@adacore.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aKocg15xumvh
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F+mcZCQ53F9g
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On 03/10/2018 17:07, Edgar E. Iglesias wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> 
+> Add a model of Xilinx Versal SoC.
+> 
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> ---
+>  default-configs/aarch64-softmmu.mak |   1 +
+>  hw/arm/Makefile.objs                |   1 +
+>  hw/arm/xlnx-versal.c                | 339 ++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/xlnx-versal.h        | 122 +++++++++++++
+>  4 files changed, 463 insertions(+)
+>  create mode 100644 hw/arm/xlnx-versal.c
+>  create mode 100644 include/hw/arm/xlnx-versal.h
+> 
+> diff --git a/default-configs/aarch64-softmmu.mak b/default-configs/aarch64-softmmu.mak
+> index 6f790f0..4ea9add 100644
+> --- a/default-configs/aarch64-softmmu.mak
+> +++ b/default-configs/aarch64-softmmu.mak
+> @@ -8,4 +8,5 @@ CONFIG_DDC=y
+>  CONFIG_DPCD=y
+>  CONFIG_XLNX_ZYNQMP=y
+>  CONFIG_XLNX_ZYNQMP_ARM=y
+> +CONFIG_XLNX_VERSAL=y
+>  CONFIG_ARM_SMMUV3=y
+> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
+> index 5f88062..ec21d9b 100644
+> --- a/hw/arm/Makefile.objs
+> +++ b/hw/arm/Makefile.objs
+> @@ -26,6 +26,7 @@ obj-$(CONFIG_ALLWINNER_A10) += allwinner-a10.o cubieboard.o
+>  obj-$(CONFIG_RASPI) += bcm2835_peripherals.o bcm2836.o raspi.o
+>  obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
+>  obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
+> +obj-$(CONFIG_XLNX_VERSAL) += xlnx-versal.o
+>  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
+>  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
+>  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o sabrelite.o
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> new file mode 100644
+> index 0000000..c12fc85
+> --- /dev/null
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -0,0 +1,339 @@
+> +/*
+> + * Xilinx Versal SoC model.
+> + *
+> + * Copyright (c) 2018 Xilinx Inc.
+> + * Written by Edgar E. Iglesias
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 or
+> + * (at your option) any later version.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu-common.h"
+> +#include "qemu/log.h"
+> +#include "hw/sysbus.h"
+> +#include "net/net.h"
+> +#include "sysemu/sysemu.h"
+> +#include "sysemu/kvm.h"
+> +#include "hw/arm/arm.h"
+> +#include "kvm_arm.h"
+> +#include "hw/misc/unimp.h"
+> +#include "hw/intc/arm_gicv3_common.h"
+> +#include "hw/arm/xlnx-versal.h"
+> +
+> +#define XLNX_VERSAL_ACPU_TYPE "cortex-a72" "-" TYPE_ARM_CPU
+> +#define GEM_REVISION        0x40070106
+> +
+> +static void versal_create_apu_cpus(Versal *s, Error **errp)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->fpd.apu.cpu); i++) {
+> +        Object *obj;
+> +        char *name;
+> +
+> +        obj = object_new(XLNX_VERSAL_ACPU_TYPE);
+> +        if (!obj) {
+> +            /* Secondary CPUs start in PSCI powered-down state */
+> +            error_setg(errp, "Unable to create apu.cpu[%d] of type %s",
+> +                       i, XLNX_VERSAL_ACPU_TYPE);
+> +            return;
+> +        }
+> +
+> +        name = g_strdup_printf("apu-cpu[%d]", i);
+> +        object_property_add_child(OBJECT(s), name, obj, &error_fatal);
+> +        g_free(name);
+> +
+> +        object_property_set_int(obj, s->cfg.psci_conduit,
+> +                                "psci-conduit", &error_abort);
+> +        if (i) {
+> +            object_property_set_bool(obj, true,
+> +                                     "start-powered-off", &error_abort);
+> +        }
+> +
+> +        object_property_set_int(obj, ARRAY_SIZE(s->fpd.apu.cpu),
+> +                                "core-count", &error_abort);
+> +        object_property_set_link(obj, OBJECT(&s->fpd.apu.mr), "memory",
+> +                                 &error_abort);
+> +        object_property_set_bool(obj, true, "realized", &error_fatal);
+> +        s->fpd.apu.cpu[i] = ARM_CPU(obj);
+> +    }
+> +}
+> +
+> +static void versal_create_apu_gic(Versal *s, qemu_irq *pic, Error **errp)
+> +{
+> +    static const uint64_t addrs[] = {
+> +        MM_GIC_APU_DIST_MAIN,
+> +        MM_GIC_APU_REDIST_0
+> +    };
+> +    SysBusDevice *gicbusdev;
+> +    DeviceState *gicdev;
+> +    int nr_apu_cpus = ARRAY_SIZE(s->fpd.apu.cpu);
+> +    int i;
+> +
+> +    sysbus_init_child_obj(OBJECT(s), "apu-gic",
+> +                          &s->fpd.apu.gic, sizeof(s->fpd.apu.gic),
+> +                          gicv3_class_name());
+> +    gicbusdev = SYS_BUS_DEVICE(&s->fpd.apu.gic);
+> +    gicdev = DEVICE(&s->fpd.apu.gic);
+> +    qdev_prop_set_uint32(gicdev, "revision", 3);
+> +    qdev_prop_set_uint32(gicdev, "num-cpu", 2);
+> +    qdev_prop_set_uint32(gicdev, "num-irq", XLNX_VERSAL_NR_IRQS + 32);
+> +    qdev_prop_set_uint32(gicdev, "len-redist-region-count", 1);
+> +    qdev_prop_set_uint32(gicdev, "redist-region-count[0]", 2);
+> +    if (!kvm_irqchip_in_kernel()) {
+> +        qdev_prop_set_bit(gicdev, "has-security-extensions", true);
+> +    }
+> +
+> +    object_property_set_bool(OBJECT(&s->fpd.apu.gic), true, "realized", errp);
+> +
+> +    for (i = 0; i < ARRAY_SIZE(addrs); i++) {
+> +        MemoryRegion *mr;
+> +
+> +        mr = sysbus_mmio_get_region(gicbusdev, i);
+> +        memory_region_add_subregion(&s->fpd.apu.mr, addrs[i], mr);
+> +    }
+> +
+> +    for (i = 0; i < nr_apu_cpus; i++) {
+> +        DeviceState *cpudev = DEVICE(s->fpd.apu.cpu[i]);
+> +        int ppibase = XLNX_VERSAL_NR_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
+> +        qemu_irq maint_irq;
+> +        int ti;
+> +        /* Mapping from the output timer irq lines from the CPU to the
+> +         * GIC PPI inputs we use for the virt board.
+> +         */
+> +        const int timer_irq[] = {
+> +            [GTIMER_PHYS] = VERSAL_TIMER_NS_EL1_IRQ,
+> +            [GTIMER_VIRT] = VERSAL_TIMER_VIRT_IRQ,
+> +            [GTIMER_HYP]  = VERSAL_TIMER_NS_EL2_IRQ,
+> +            [GTIMER_SEC]  = VERSAL_TIMER_S_EL1_IRQ,
+> +        };
+> +
+> +        for (ti = 0; ti < ARRAY_SIZE(timer_irq); ti++) {
+> +            qdev_connect_gpio_out(cpudev, ti,
+> +                                  qdev_get_gpio_in(gicdev,
+> +                                                   ppibase + timer_irq[ti]));
+> +        }
+> +        maint_irq = qdev_get_gpio_in(gicdev,
+> +                                        ppibase + VERSAL_GIC_MAINT_IRQ);
+> +        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
+> +                                    0, maint_irq);
+> +        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+> +        sysbus_connect_irq(gicbusdev, i + nr_apu_cpus,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+> +        sysbus_connect_irq(gicbusdev, i + 2 * nr_apu_cpus,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+> +        sysbus_connect_irq(gicbusdev, i + 3 * nr_apu_cpus,
+> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+> +    }
+> +
+> +    for (i = 0; i < XLNX_VERSAL_NR_IRQS; i++) {
+> +        pic[i] = qdev_get_gpio_in(gicdev, i);
+> +    }
+> +}
+> +
+> +static void versal_create_uarts(Versal *s, qemu_irq *pic)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.uart); i++) {
+> +        static const int irqs[] = { VERSAL_UART0_IRQ_0, VERSAL_UART1_IRQ_0};
+> +        static const uint64_t addrs[] = { MM_UART0, MM_UART1 };
+> +        char *name = g_strdup_printf("uart%d", i);
+> +        DeviceState *dev;
+> +        MemoryRegion *mr;
+> +
+> +        dev = qdev_create(NULL, "pl011");
+> +        s->lpd.iou.uart[i] = SYS_BUS_DEVICE(dev);
+> +        qdev_prop_set_chr(dev, "chardev", serial_hd(i));
+> +        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
+> +        qdev_init_nofail(dev);
+> +
+> +        mr = sysbus_mmio_get_region(s->lpd.iou.uart[i], 0);
+> +        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
+> +
+> +        sysbus_connect_irq(s->lpd.iou.uart[i], 0, pic[irqs[i]]);
+> +        g_free(name);
+> +    }
+> +}
+> +
+> +static void versal_create_gems(Versal *s, qemu_irq *pic)
+> +{
+> +    int i;
+> +
+> +    for (i = 0; i < ARRAY_SIZE(s->lpd.iou.gem); i++) {
+> +        static const int irqs[] = { VERSAL_GEM0_IRQ_0, VERSAL_GEM1_IRQ_0};
+> +        static const uint64_t addrs[] = { MM_GEM0, MM_GEM1 };
+> +        char *name = g_strdup_printf("gem%d", i);
+> +        NICInfo *nd = &nd_table[i];
+> +        DeviceState *dev;
+> +        MemoryRegion *mr;
+> +
+> +        dev = qdev_create(NULL, "cadence_gem");
+> +        s->lpd.iou.gem[i] = SYS_BUS_DEVICE(dev);
+> +        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
+> +        if (nd->used) {
+> +            qemu_check_nic_model(nd, "cadence_gem");
+> +            qdev_set_nic_properties(dev, nd);
+> +        }
+> +        object_property_set_int(OBJECT(s->lpd.iou.gem[i]),
+> +                                2, "num-priority-queues",
+> +                                &error_abort);
+> +        object_property_set_link(OBJECT(s->lpd.iou.gem[i]),
+> +                                 OBJECT(&s->mr_ps), "dma",
+> +                                 &error_abort);
+> +        qdev_init_nofail(dev);
+> +
+> +        mr = sysbus_mmio_get_region(s->lpd.iou.gem[i], 0);
+> +        memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
+> +
+> +        sysbus_connect_irq(s->lpd.iou.gem[i], 0, pic[irqs[i]]);
+> +        g_free(name);
+> +    }
+> +}
+> +
+> +/* This takes the board allocated linear DDR memory and creates aliases
+> + * for each split DDR range/apperture on the Versal address map.
+> + */
+> +static void versal_map_ddr(Versal *s)
+> +{
+> +    uint64_t size = memory_region_size(s->cfg.mr_ddr);
+> +    /* Describes the various split DDR access regions.  */
+> +    static const struct {
+> +        uint64_t base;
+> +        uint64_t size;
+> +    } addr_ranges[] = {
+> +        { MM_TOP_DDR, MM_TOP_DDR_SIZE },
+> +        { MM_TOP_DDR_2, MM_TOP_DDR_2_SIZE },
+> +        { MM_TOP_DDR_3, MM_TOP_DDR_3_SIZE },
+> +        { MM_TOP_DDR_4, MM_TOP_DDR_4_SIZE }
+> +    };
+> +    uint64_t offset = 0;
+> +    int i;
+> +
+> +    assert(ARRAY_SIZE(addr_ranges) == ARRAY_SIZE(s->noc.mr_ddr_ranges));
+> +    for (i = 0; i < ARRAY_SIZE(addr_ranges) && size; i++) {
+> +        char *name;
+> +        uint64_t mapsize;
+> +
+> +        mapsize = size < addr_ranges[i].size ? size : addr_ranges[i].size;
+> +        name = g_strdup_printf("noc-ddr-range%d", i);
+> +        /* Create the MR alias.  */
+> +        memory_region_init_alias(&s->noc.mr_ddr_ranges[i], OBJECT(s),
+> +                                 name, s->cfg.mr_ddr,
+> +                                 offset, mapsize);
+> +
+> +        /* Map it onto the NoC MR.  */
+> +        memory_region_add_subregion(&s->mr_ps, addr_ranges[i].base,
+> +                                    &s->noc.mr_ddr_ranges[i]);
+> +        offset += mapsize;
+> +        size -= mapsize;
+> +        g_free(name);
+> +    }
+> +}
+> +
+> +static void versal_unimp_area(Versal *s, const char *name,
+> +                                MemoryRegion *mr,
+> +                                hwaddr base, hwaddr size)
+> +{
+> +    DeviceState *dev = qdev_create(NULL, TYPE_UNIMPLEMENTED_DEVICE);
+> +    MemoryRegion *mr_dev;
+> +
+> +    qdev_prop_set_string(dev, "name", name);
+> +    qdev_prop_set_uint64(dev, "size", size);
+> +    object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
+> +    qdev_init_nofail(dev);
+> +
+> +    mr_dev = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+> +    memory_region_add_subregion(mr, base, mr_dev);
+> +}
+> +
+> +static void versal_unimp(Versal *s)
+> +{
+> +    versal_unimp_area(s, "psm", &s->mr_ps,
+> +                        MM_PSM_START, MM_PSM_END - MM_PSM_START);
+> +    versal_unimp_area(s, "crl", &s->mr_ps,
+> +                        MM_CRL, MM_CRL_SIZE);
+> +    versal_unimp_area(s, "crf", &s->mr_ps,
+> +                        MM_FPD_CRF, MM_FPD_CRF_SIZE);
+> +    versal_unimp_area(s, "iou-scntr", &s->mr_ps,
+> +                        MM_IOU_SCNTR, MM_IOU_SCNTR_SIZE);
+> +    versal_unimp_area(s, "iou-scntr-seucre", &s->mr_ps,
+> +                        MM_IOU_SCNTRS, MM_IOU_SCNTRS_SIZE);
+> +}
+> +
+> +static void versal_realize(DeviceState *dev, Error **errp)
+> +{
+> +    Versal *s = XLNX_VERSAL(dev);
+> +    qemu_irq pic[XLNX_VERSAL_NR_IRQS];
+> +
+> +    versal_create_apu_cpus(s, errp);
+> +    versal_create_apu_gic(s, pic, errp);
+> +    versal_create_uarts(s, pic);
+> +    versal_create_gems(s, pic);
+> +    versal_map_ddr(s);
+> +    versal_unimp(s);
+> +
+> +    /* Create the OCM.  */
+> +    memory_region_init_ram(&s->lpd.mr_ocm, OBJECT(s), "ocm",
+> +                           MM_OCM_SIZE, &error_fatal);
+> +
+> +    memory_region_add_subregion_overlap(&s->mr_ps, MM_OCM, &s->lpd.mr_ocm, 0);
+> +    memory_region_add_subregion_overlap(&s->fpd.apu.mr, 0, &s->mr_ps, 0);
+> +}
+> +
+> +static void versal_init(Object *obj)
+> +{
+> +    Versal *s = XLNX_VERSAL(obj);
+> +
+> +    memory_region_init(&s->fpd.apu.mr, obj, "mr-apu", UINT64_MAX);
+> +    memory_region_init(&s->mr_ps, obj, "mr-ps-switch", UINT64_MAX);
+> +}
+> +
+> +static const VMStateDescription versal_vmstate = {
+> +    .name = "xlnx-ve",
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        /* FIXME.  */
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static Property versal_properties[] = {
+> +    DEFINE_PROP_LINK("ddr", Versal, cfg.mr_ddr, TYPE_MEMORY_REGION,
+> +                     MemoryRegion *),
+> +    DEFINE_PROP_UINT32("psci-conduit", Versal, cfg.psci_conduit, 0),
+> +    DEFINE_PROP_END_OF_LIST()
+> +};
+> +
+> +static void versal_reset(DeviceState *dev)
+> +{
+> +}
+> +
+> +static void versal_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = versal_realize;
+> +    dc->vmsd = &versal_vmstate;
+> +    dc->props = versal_properties;
+> +    dc->reset = versal_reset;
+> +}
+> +
+> +static const TypeInfo versal_info = {
+> +    .name = TYPE_XLNX_VERSAL,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(Versal),
+> +    .instance_init = versal_init,
+> +    .class_init = versal_class_init,
+> +};
+> +
+> +static void versal_register_types(void)
+> +{
+> +    type_register_static(&versal_info);
+> +}
+> +
+> +type_init(versal_register_types);
+> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
+> new file mode 100644
+> index 0000000..9da621e
+> --- /dev/null
+> +++ b/include/hw/arm/xlnx-versal.h
+> @@ -0,0 +1,122 @@
+> +/*
+> + * Model of the Xilinx Versal
+> + *
+> + * Copyright (c) 2018 Xilinx Inc.
+> + * Written by Edgar E. Iglesias
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 or
+> + * (at your option) any later version.
+> + */
+> +
+> +#ifndef XLNX_VERSAL_H
+> +#define XLNX_VERSAL_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "hw/arm/arm.h"
+> +#include "hw/intc/arm_gicv3.h"
+> +
+> +#define TYPE_XLNX_VERSAL "xlnx-versal"
+> +#define XLNX_VERSAL(obj) OBJECT_CHECK(Versal, (obj), TYPE_XLNX_VERSAL)
+> +
+> +#define XLNX_VERSAL_NR_ACPUS   2
+> +#define XLNX_VERSAL_NR_UARTS   2
+> +#define XLNX_VERSAL_NR_GEMS    2
+> +#define XLNX_VERSAL_NR_IRQS    256
+> +
+> +typedef struct Versal {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +
+> +    /*< public >*/
+> +    struct {
+> +        struct {
+> +            MemoryRegion mr;
+> +            ARMCPU *cpu[XLNX_VERSAL_NR_ACPUS];
+> +            GICv3State gic;
+> +        } apu;
+> +    } fpd;
+> +
+> +    MemoryRegion mr_ps;
+> +
+> +    struct {
+> +        /* 4 ranges to access DDR.  */
+> +        MemoryRegion mr_ddr_ranges[4];
+> +    } noc;
+> +
+> +    struct {
+> +        MemoryRegion mr_ocm;
+> +
+> +        struct {
+> +            SysBusDevice *uart[XLNX_VERSAL_NR_UARTS];
+> +            SysBusDevice *gem[XLNX_VERSAL_NR_GEMS];
+> +        } iou;
+> +    } lpd;
 
-This patch series adds initial support for Xilinx's Versal SoC.
-Xilinx is introducing Versal, an adaptive compute acceleration platform
-(ACAP), built on 7nm FinFET process technology. Versal ACAPs combine Scalar
-Processing Engines, Adaptable Hardware Engines, and Intelligent Engines with
-leading-edge memory and interfacing technologies to deliver powerful
-heterogeneous acceleration for any application. The Versal AI Core series has
-five devices, offering 128 to 400 AI Engines. The series includes dual-core Arm
-Cortex-A72 application processors, dual-core Arm Cortex-R5 real-time
-processors, 256KB of on-chip memory with ECC, more than 1,900 DSP engines
-optimized for high-precision floating point with low latency.
+Amazing how a so complex SoC is modelled that clear...
 
-More info can be found here:
-https://www.xilinx.com/news/press/2018/xilinx-unveils-versal-the-first-in-a-new-category-of-platforms-delivering-rapid-innovation-with-software-programmability-and-scalable-ai-inference.html
+You won my "clearest SoC model of the year" prize.
 
-
-In QEMU we'd like to have a virtual developer board with the Versal SoC
-and a selected set of peripherals under the control of QEMU.
-We'd like to gradually extend this board as QEMU gains more support
-for Versal hardware components. QEMU will generate a device-tree
-describing only the components it supports and includes in the virtual
-dev board.
-
-Before adding Versal support, this series starts with a few fixes to the
-GEM that I ran into when running recent kernels on the Versal and ZynqMP
-models.
-
-I also noticed a problem with HVC insns not being enabled when using
-QEMU's PSCI implementation on CPU's with EL2 and EL3 enabled. This causes
-problems for Linux/KVM guests, also fixed in this series.
-
-Best regards,
-Edgar
-
-Edgar E. Iglesias (12):
-  net: cadence_gem: Disable TSU feature bit
-  net: cadence_gem: Announce availability of priority queues
-  net: cadence_gem: Use uint32_t for 32bit descriptor words
-  net: cadence_gem: Add macro with max number of descriptor words
-  net: cadence_gem: Add support for extended descriptors
-  net: cadence_gem: Add support for selecting the DMA MemoryRegion
-  net: cadence_gem: Implement support for 64bit descriptor addresses
-  net: cadence_gem: Announce 64bit addressing support
-  target-arm: powerctl: Enable HVC when starting CPUs to EL2
-  target/arm: Add the Cortex-A72
-  hw/arm: versal: Add a model of Xilinx Versal SoC
-  hw/arm: versal: Add a virtual Xilinx Versal board
-
- default-configs/aarch64-softmmu.mak |   1 +
- hw/arm/Makefile.objs                |   1 +
- hw/arm/xlnx-versal-virt.c           | 494 ++++++++++++++++++++++++++++++++++++
- hw/arm/xlnx-versal.c                | 339 +++++++++++++++++++++++++
- hw/net/cadence_gem.c                | 196 ++++++++++----
- include/hw/arm/xlnx-versal.h        | 122 +++++++++
- include/hw/net/cadence_gem.h        |   7 +-
- target/arm/arm-powerctl.c           |  11 +
- target/arm/cpu64.c                  |  59 +++++
- 9 files changed, 1175 insertions(+), 55 deletions(-)
- create mode 100644 hw/arm/xlnx-versal-virt.c
- create mode 100644 hw/arm/xlnx-versal.c
- create mode 100644 include/hw/arm/xlnx-versal.h
-
--- 
-2.7.4
-
+> +
+> +    struct {
+> +        MemoryRegion *mr_ddr;
+> +        uint32_t psci_conduit;
+> +    } cfg;
+> +} Versal;
+> +
+> +/* Memory-map and IRQ definitions. Copied a subset from
+> + * auto-generated files.  */
+> +
+> +#define VERSAL_GIC_MAINT_IRQ        9
+> +#define VERSAL_TIMER_VIRT_IRQ       11
+> +#define VERSAL_TIMER_S_EL1_IRQ      13
+> +#define VERSAL_TIMER_NS_EL1_IRQ     14
+> +#define VERSAL_TIMER_NS_EL2_IRQ     10
+> +
+> +#define VERSAL_UART0_IRQ_0         18
+> +#define VERSAL_UART1_IRQ_0         19
+> +#define VERSAL_GEM0_IRQ_0          56
+> +#define VERSAL_GEM0_WAKE_IRQ_0     57
+> +#define VERSAL_GEM1_IRQ_0          58
+> +#define VERSAL_GEM1_WAKE_IRQ_0     59
+> +
+> +/* Architecturally eserved IRQs suitable for virtualization.  */
+> +#define VERSAL_RSVD_HIGH_IRQ_FIRST 160
+> +#define VERSAL_RSVD_HIGH_IRQ_LAST  255
+> +
+> +#define MM_TOP_RSVD                 0xa0000000U
+> +#define MM_TOP_RSVD_SIZE            0x4000000
+> +#define MM_GIC_APU_DIST_MAIN        0xf9000000U
+> +#define MM_GIC_APU_DIST_MAIN_SIZE   0x10000
+> +#define MM_GIC_APU_REDIST_0         0xf9080000U
+> +#define MM_GIC_APU_REDIST_0_SIZE    0x80000
+> +
+> +#define MM_UART0                    0xff000000U
+> +#define MM_UART0_SIZE               0x10000
+> +#define MM_UART1                    0xff010000U
+> +#define MM_UART1_SIZE               0x10000
+> +
+> +#define MM_GEM0                     0xff0c0000U
+> +#define MM_GEM0_SIZE                0x10000
+> +#define MM_GEM1                     0xff0d0000U
+> +#define MM_GEM1_SIZE                0x10000
+> +
+> +#define MM_OCM                      0xfffc0000U
+> +#define MM_OCM_SIZE                 0x40000
+> +
+> +#define MM_TOP_DDR                  0x0
+> +#define MM_TOP_DDR_SIZE             0x80000000U
+> +#define MM_TOP_DDR_2                0x800000000ULL
+> +#define MM_TOP_DDR_2_SIZE           0x800000000ULL
+> +#define MM_TOP_DDR_3                0xc000000000ULL
+> +#define MM_TOP_DDR_3_SIZE           0x4000000000ULL
+> +#define MM_TOP_DDR_4                0x10000000000ULL
+> +#define MM_TOP_DDR_4_SIZE           0xb780000000ULL
+> +
+> +#define MM_PSM_START                0xffc80000U
+> +#define MM_PSM_END                  0xffcf0000U
+> +
+> +#define MM_CRL                      0xff5e0000U
+> +#define MM_CRL_SIZE                 0x300000
+> +#define MM_IOU_SCNTR                0xff130000U
+> +#define MM_IOU_SCNTR_SIZE           0x10000
+> +#define MM_IOU_SCNTRS               0xff140000U
+> +#define MM_IOU_SCNTRS_SIZE          0x10000
+> +#define MM_FPD_CRF                  0xfd1a0000U
+> +#define MM_FPD_CRF_SIZE             0x140000
+> +#endif
+> 

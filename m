@@ -1,176 +1,253 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp947613wrt;
-        Fri, 5 Oct 2018 16:11:11 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60Hor/VMKJJpnb8hQ1tozYK5//2g2ujiE2KyVTcj7UFr/zNrWLfsshfSXTUAfceCze1IIkU
-X-Received: by 2002:aed:2647:: with SMTP id z65-v6mr10759435qtc.301.1538781071077;
-        Fri, 05 Oct 2018 16:11:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538781071; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp948791wrt;
+        Fri, 5 Oct 2018 16:12:50 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63yKvKDIGjF7uloOO62g2rRZlkO0PJuz1ko4IbObbDfIrWAVdFgh3rd6Vsqb6Yn+2H1LNoD
+X-Received: by 2002:a37:8c05:: with SMTP id o5-v6mr10554644qkd.154.1538781170197;
+        Fri, 05 Oct 2018 16:12:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538781170; cv=none;
         d=google.com; s=arc-20160816;
-        b=hdzH8AMIy/wDTbzvra6eEERiuL+GjYi7w5Oq08bx7WAUbH9dDjRR3CyhtGC5rk6gs+
-         J3qxvBRYI/J9yi4U3VoYscSS9hQSfOt6pAy8Tr3khreb8YIRTrX+o2yZst6/riB1cU9S
-         FFZzvaM6qmPZqYyy5Or29XCMSwWx+qso2Ut5bZGSYHAjQTyTUcJyqxn0zYQY7zGmugfg
-         KN+xtAJClaFlvZIrHPy9mZPtEqnR6ttcKjoJRwbo7cBejXEzklBcTzHVS1r4X/3i38y3
-         8Fk+NHBI9BIZgLbuiLJMX9QLC9A6kMKLa/dlR59ShIYpvHBPywbdaoX3+XIshJOQTIbz
-         SUQg==
+        b=ZzrSHiKL9fQNxOgmQ01tWWRi+B/e08rcq3HphEGBWTeTA4czUpTrmVPIDNaQR1IwD9
+         tBRUBu8GOEzZWfKYjrPo5rDMarJo3MzvUo3wP+uOzOdVn7kdNc88ezsgwKJs1KBTakYQ
+         C4X86EQD3Y7opFVbGkS61+uwqVsXgM2HNnQvZwZVB0PaV7qCNP0thj1t2P/mTah6V2hI
+         u5o3ZBhnsmOSNHphasLsqndbvOSD+f5oii6RtiVs9gt9Usx2WmHuBX4V1U/Apof2xMyR
+         TmTRi0G0f2frQnRBCyuyl2EC2NcT4TQFSFvaqaCVwquihckJkJ2Iv7ilejnWJwluO6TU
+         WJAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=CTggrJlOUoNR+lI6lRt8KqyI3K3YXHzoS4QdUqe1zsA=;
-        b=jbfxhW6nIFM2fFA5zC/v0b9EfFbvVekJ4OH3tBmqD9Wh+XIlsVltnn0cQGSYFOjXTE
-         Prszu4WzHt2Vh5acH1s+80mFVCHpIysvCkHn3Nz4atxU836lV0joShU/3iyVrX2LGJEr
-         gaqpOwkBH14wjoKohZSt71GU99FZY/vVwLVRMD8261oEldwS7Y1gv5dL+ngu3L3+vcQ8
-         zMD3BVhAPd28lAGbepsTOwaRMy/IklBbKgXK3tcmQKeMJsHyQcxmX5MGdElSvyXMhZCa
-         z0Dg72oz1fvXluzzwfXTkitOUBX99JN0k2WiR26o7w63oOCCw8hcSZemdhbqvkWyIFkA
-         AQCQ==
+         :user-agent:date:message-id:from:references:to:dkim-signature;
+        bh=813EIwplnpNy90CcLnmIEgFbafI1NS2QeAJ+0//jhAw=;
+        b=WIQzX7TpFprr3ASHavlmZ+FfB5XY0NsXW9xdpVesvqceruE/l4qjZSJZVABIICVcFf
+         fn2+nOzba6eWNq0301ApeJcxuDNw96uKNabi6vWQNA8nqXYjT6g1fyijiXAXiWWdlpRP
+         /TgRJyIQGvAcuMwMAPVCfvl1vhd8KNoGp55D4+PfeCnxLqXBzq84ggt6/w3BtXQ6hVqf
+         nTjDnqBB4U2pxKoMOq6oXcCCoNVK09J7PJuMNq34rCI0kaVJLB0yfVNetxVRW1+K4I9C
+         qWfecA9w+0aYJ90TXrXXb6Vch75+zoVVuxlZqavIGbcHtplP1saaftYR3zTM2AQvcf7C
+         RlyQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Go9HZbyL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t188-v6si1413447qkb.231.2018.10.05.16.11.10
+        by mx.google.com with ESMTPS id e2-v6si1259266qtf.249.2018.10.05.16.12.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 05 Oct 2018 16:11:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 05 Oct 2018 16:12:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37227 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Go9HZbyL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37240 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g8ZFW-0002m2-Gu
-	for alex.bennee@linaro.org; Fri, 05 Oct 2018 19:11:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51762)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g8ZH7-0004Cd-JG
+	for alex.bennee@linaro.org; Fri, 05 Oct 2018 19:12:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52333)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g8ZEs-0002lO-KJ
-	for qemu-devel@nongnu.org; Fri, 05 Oct 2018 19:10:31 -0400
+	(envelope-from <alistair23@gmail.com>) id 1g8ZGj-0003zN-Hq
+	for qemu-arm@nongnu.org; Fri, 05 Oct 2018 19:12:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1g8ZEm-0007gL-S7
-	for qemu-devel@nongnu.org; Fri, 05 Oct 2018 19:10:28 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:34369)
+	(envelope-from <alistair23@gmail.com>) id 1g8ZGg-00025Z-Dc
+	for qemu-arm@nongnu.org; Fri, 05 Oct 2018 19:12:25 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:44093)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1g8ZEl-0007bX-5s
-	for qemu-devel@nongnu.org; Fri, 05 Oct 2018 19:10:24 -0400
-Received: by mail-wm1-f66.google.com with SMTP id z25-v6so4667211wmf.1
-	for <qemu-devel@nongnu.org>; Fri, 05 Oct 2018 16:10:21 -0700 (PDT)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1g8ZGg-00023x-5I; Fri, 05 Oct 2018 19:12:22 -0400
+Received: by mail-pl1-x643.google.com with SMTP id p25-v6so7474864pli.11;
+	Fri, 05 Oct 2018 16:12:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=813EIwplnpNy90CcLnmIEgFbafI1NS2QeAJ+0//jhAw=;
+	b=Go9HZbyLpltMWTectWhYjbAr/VphpU9Q/KcHa2FePK5uBccaVYIWiYN3Z1U3zNxAoA
+	Wh2+JFpOh0eddJFrcI8G1g3EnrHmzuo+3vXQePBreH14OMJyuEEgA/n6HcL2POy6WnPE
+	BtmjLt5aIBoNbqJWcZDjoW0pOnPS732ZJUHgWGAQW5zP0V3AJ99dyJCxTFbhjzOfNo23
+	QTFZji3XOUbcMUtKEtfoy/3Pp1i+ZzvpgedX60rFBLeODIi32ths0+2TFmGWtu5KCwQc
+	WXH0i55v5EgsN3gmIPRySOYl/bxCa163Ox6cD1w49R41028m+VccguB9VKCSMJyVtbm8
+	qjiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=CTggrJlOUoNR+lI6lRt8KqyI3K3YXHzoS4QdUqe1zsA=;
-	b=g2BJ6COQlEx6YeqEwDW/2kCpvMxvjhJBLD5cDlvoSxCqcIg9RLlUS5oKzdhMv1PRsP
-	SRhve9uo33Jz/uWOZVHYz5IIGGaEWcY0IwDurzvuIstQly1nYWIqnT4EcDrRbEtGnttS
-	qjfBcZMx89KtMJ2P1hK+kjFd/41KNfHt+JssVhn6DBaqij5ItJl9w5WWfFSskIl6RE4s
-	Uvbq2s1TCjeglBfyshT4XfwKreEYyMnZ6vbuDGzk7ZCGHD4WZtR9NFKQzIW9Er5Sajld
-	ISsYcg5DckK7xw41/P0ndVGIBnjbC8hP7wsqgAz4dEM59R42oasRGIayrmyY+pABxoFz
-	18IQ==
-X-Gm-Message-State: ABuFfogxPgfr/ZCbtFpom+uVpds7GxTDeulpRWmuHPw9FsGR6EX/fPCL
-	VXSKRAoUucw13tAQYQDD96aULQ==
-X-Received: by 2002:a1c:d105:: with SMTP id i5-v6mr8727612wmg.69.1538781020500;
-	Fri, 05 Oct 2018 16:10:20 -0700 (PDT)
-Received: from [192.168.2.33] (26.red-83-32-208.dynamicip.rima-tde.net.
-	[83.32.208.26]) by smtp.gmail.com with ESMTPSA id
-	j20-v6sm2045923wmh.9.2018.10.05.16.10.19
+	bh=813EIwplnpNy90CcLnmIEgFbafI1NS2QeAJ+0//jhAw=;
+	b=f57Gtw09QtX81wwnVBnaanTu7MrQpCnQVpAuVnb1AyoNRxCEXBDOLma0hmU55CGlXt
+	y9hnffG5DH9B5ptXYcCnFY98s+zqW+wXAQxNQNkuCZNTI7aA0lNou4bWQQCcUFCylPdF
+	gGudVXDxp6vLEkKW31SZInIAm8lGB+wHp1B4hqmxtUmTXxxWIVdnmU9OBO8PSeEWPFEk
+	KtPWTYNosv672EeV8oAlntxKktjpQtUbh2clDZ+odHUAJkH1VoL9qWjeIOx3nZ5+IWUM
+	nNgh5R5bV45Hf67jE/gJemQwzeF+c2S5jgRD8v6NV/JTw0yYJXcDe+jo9YbPES+SM4bJ
+	Z4Uw==
+X-Gm-Message-State: ABuFfohm5T3FmUf0SZ2atscV4UfEsJhvUhOR/dk4cyB5VcagwE16D7dV
+	EX+Ahhz73QBj0SA8p5+VGZU=
+X-Received: by 2002:a17:902:5a45:: with SMTP id
+	f5-v6mr13856623plm.26.1538781141016; 
+	Fri, 05 Oct 2018 16:12:21 -0700 (PDT)
+Received: from [10.196.159.185] (rap-us.hgst.com. [199.255.44.250])
+	by smtp.gmail.com with ESMTPSA id
+	k13-v6sm11688450pff.30.2018.10.05.16.12.19
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 05 Oct 2018 16:10:19 -0700 (PDT)
+	Fri, 05 Oct 2018 16:12:19 -0700 (PDT)
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 References: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
-	<1538579266-8389-5-git-send-email-edgar.iglesias@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a7f59a2b-91d6-49e3-e2c7-79d69043c514@redhat.com>
-Date: Sat, 6 Oct 2018 01:10:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	<1538579266-8389-8-git-send-email-edgar.iglesias@gmail.com>
+From: Alistair <alistair23@gmail.com>
+Message-ID: <86063442-84a7-c546-a05e-fc4eb50edccc@gmail.com>
+Date: Fri, 5 Oct 2018 16:12:18 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <1538579266-8389-5-git-send-email-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1538579266-8389-8-git-send-email-edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-devel] [PATCH v1 04/12] net: cadence_gem: Add macro with
- max number of descriptor words
-X-BeenThere: qemu-devel@nongnu.org
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::643
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v1 07/12] net: cadence_gem:
+ Implement support for 64bit descriptor addresses
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
 	edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
 	frasse.iglesias@gmail.com, alistair@alistair23.me,
 	richard.henderson@linaro.org, frederic.konrad@adacore.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yaVzVFW8UbHk
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /LgBmSqW3YKF
 
-On 03/10/2018 17:07, Edgar E. Iglesias wrote:
+On 10/03/2018 08:07 AM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Add macro with max number of DMA descriptor words.
-> No functional change.
+> Implement support for 64bit descriptor addresses.
 > 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
 
 > ---
->  hw/net/cadence_gem.c         | 4 ++--
->  include/hw/net/cadence_gem.h | 5 ++++-
->  2 files changed, 6 insertions(+), 3 deletions(-)
+>   hw/net/cadence_gem.c | 47 +++++++++++++++++++++++++++++++++++++++--------
+>   1 file changed, 39 insertions(+), 8 deletions(-)
 > 
 > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 31f3fe0..4d769b0 100644
+> index ab02515..f93cd8e 100644
 > --- a/hw/net/cadence_gem.c
 > +++ b/hw/net/cadence_gem.c
-> @@ -1042,7 +1042,7 @@ static void gem_transmit_updatestats(CadenceGEMState *s, const uint8_t *packet,
->   */
->  static void gem_transmit(CadenceGEMState *s)
->  {
-> -    uint32_t desc[2];
-> +    uint32_t desc[DESC_MAX_NUM_WORDS];
->      hwaddr packet_desc_addr;
->      uint8_t     tx_packet[2048];
->      uint8_t     *p;
-> @@ -1108,7 +1108,7 @@ static void gem_transmit(CadenceGEMState *s)
->  
->              /* Last descriptor for this packet; hand the whole thing off */
->              if (tx_desc_get_last(desc)) {
-> -                uint32_t desc_first[2];
-> +                uint32_t desc_first[DESC_MAX_NUM_WORDS];
->  
->                  /* Modify the 1st descriptor of this packet to be owned by
->                   * the processor.
-> diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
-> index 633d564..b33ef65 100644
-> --- a/include/hw/net/cadence_gem.h
-> +++ b/include/hw/net/cadence_gem.h
-> @@ -32,6 +32,9 @@
->  
->  #define CADENCE_GEM_MAXREG        (0x00000800 / 4) /* Last valid GEM address */
->  
-> +/* Max number of words in a DMA descriptor.  */
-> +#define DESC_MAX_NUM_WORDS              2
+> @@ -153,6 +153,9 @@
+>   #define GEM_RECEIVE_Q1_PTR              (0x00000480 / 4)
+>   #define GEM_RECEIVE_Q7_PTR              (GEM_RECEIVE_Q1_PTR + 6)
+>   
+> +#define GEM_TBQPH                       (0x000004C8 / 4)
+> +#define GEM_RBQPH                       (0x000004D4 / 4)
 > +
->  #define MAX_PRIORITY_QUEUES             8
->  #define MAX_TYPE1_SCREENERS             16
->  #define MAX_TYPE2_SCREENERS             16
-> @@ -74,7 +77,7 @@ typedef struct CadenceGEMState {
->  
->      uint8_t can_rx_state; /* Debug only */
->  
-> -    uint32_t rx_desc[MAX_PRIORITY_QUEUES][2];
-> +    uint32_t rx_desc[MAX_PRIORITY_QUEUES][DESC_MAX_NUM_WORDS];
->  
->      bool sar_active[4];
->  } CadenceGEMState;
+>   #define GEM_INT_Q1_ENABLE               (0x00000600 / 4)
+>   #define GEM_INT_Q7_ENABLE               (GEM_INT_Q1_ENABLE + 6)
+>   
+> @@ -832,18 +835,42 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+>       return 0;
+>   }
+>   
+> +static hwaddr gem_get_desc_addr(CadenceGEMState *s, bool tx, int q)
+> +{
+> +    hwaddr desc_addr = 0;
+> +
+> +    if (s->regs[GEM_DMACFG] & GEM_DMACFG_ADDR_64B) {
+> +        desc_addr = s->regs[tx ? GEM_TBQPH : GEM_RBQPH];
+> +    }
+> +    desc_addr <<= 32;
+> +    desc_addr |= tx ? s->tx_desc_addr[q] : s->rx_desc_addr[q];
+> +    return desc_addr;
+> +}
+> +
+> +static hwaddr gem_get_tx_desc_addr(CadenceGEMState *s, int q)
+> +{
+> +    return gem_get_desc_addr(s, true, q);
+> +}
+> +
+> +static hwaddr gem_get_rx_desc_addr(CadenceGEMState *s, int q)
+> +{
+> +    return gem_get_desc_addr(s, false, q);
+> +}
+> +
+>   static void gem_get_rx_desc(CadenceGEMState *s, int q)
+>   {
+> -    DB_PRINT("read descriptor 0x%x\n", (unsigned)s->rx_desc_addr[q]);
+> +    hwaddr desc_addr = gem_get_rx_desc_addr(s, q);
+> +
+> +    DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", desc_addr);
+> +
+>       /* read current descriptor */
+> -    address_space_read(s->dma_as, s->rx_desc_addr[q], MEMTXATTRS_UNSPECIFIED,
+> +    address_space_read(s->dma_as, desc_addr, MEMTXATTRS_UNSPECIFIED,
+>                          (uint8_t *)s->rx_desc[q],
+>                          sizeof(uint32_t) * gem_get_desc_len(s, true));
+>   
+>       /* Descriptor owned by software ? */
+>       if (rx_desc_get_ownership(s->rx_desc[q]) == 1) {
+> -        DB_PRINT("descriptor 0x%x owned by sw.\n",
+> -                 (unsigned)s->rx_desc_addr[q]);
+> +        DB_PRINT("descriptor 0x%" HWADDR_PRIx " owned by sw.\n", desc_addr);
+>           s->regs[GEM_RXSTATUS] |= GEM_RXSTATUS_NOBUF;
+>           s->regs[GEM_ISR] |= GEM_INT_RXUSED & ~(s->regs[GEM_IMR]);
+>           /* Handle interrupt consequences */
+> @@ -947,6 +974,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>       q = get_queue_from_screen(s, rxbuf_ptr, rxbufsize);
+>   
+>       while (bytes_to_copy) {
+> +        hwaddr desc_addr;
+> +
+>           /* Do nothing if receive is not enabled. */
+>           if (!gem_can_receive(nc)) {
+>               assert(!first_desc);
+> @@ -994,7 +1023,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>           }
+>   
+>           /* Descriptor write-back.  */
+> -        address_space_write(s->dma_as, s->rx_desc_addr[q],
+> +        desc_addr = gem_get_rx_desc_addr(s, q);
+> +        address_space_write(s->dma_as, desc_addr,
+>                               MEMTXATTRS_UNSPECIFIED,
+>                               (uint8_t *)s->rx_desc[q],
+>                               sizeof(uint32_t) * gem_get_desc_len(s, true));
+> @@ -1098,7 +1128,7 @@ static void gem_transmit(CadenceGEMState *s)
+>   
+>       for (q = s->num_priority_queues - 1; q >= 0; q--) {
+>           /* read current descriptor */
+> -        packet_desc_addr = s->tx_desc_addr[q];
+> +        packet_desc_addr = gem_get_tx_desc_addr(s, q);
+>   
+>           DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
+>           address_space_read(s->dma_as, packet_desc_addr,
+> @@ -1144,16 +1174,17 @@ static void gem_transmit(CadenceGEMState *s)
+>               /* Last descriptor for this packet; hand the whole thing off */
+>               if (tx_desc_get_last(desc)) {
+>                   uint32_t desc_first[DESC_MAX_NUM_WORDS];
+> +                hwaddr desc_addr = gem_get_tx_desc_addr(s, q);
+>   
+>                   /* Modify the 1st descriptor of this packet to be owned by
+>                    * the processor.
+>                    */
+> -                address_space_read(s->dma_as, s->tx_desc_addr[q],
+> +                address_space_read(s->dma_as, desc_addr,
+>                                      MEMTXATTRS_UNSPECIFIED,
+>                                      (uint8_t *)desc_first,
+>                                      sizeof(desc_first));
+>                   tx_desc_set_used(desc_first);
+> -                address_space_write(s->dma_as, s->tx_desc_addr[q],
+> +                address_space_write(s->dma_as, desc_addr,
+>                                     MEMTXATTRS_UNSPECIFIED,
+>                                     (uint8_t *)desc_first,
+>                                      sizeof(desc_first));
 > 

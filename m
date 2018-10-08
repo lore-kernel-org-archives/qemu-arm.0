@@ -1,187 +1,172 @@
-Received: by 2002:adf:b2b8:0:0:0:0:0 with SMTP id g53-v6csp1032549wrd;
-        Wed, 29 Aug 2018 13:43:59 -0700 (PDT)
-X-Google-Smtp-Source: ANB0VdZKrIJbSsEdpzfndsl397U1x6oJWbnIi9yl7ZmyJQ77UaWrDlLZkGhL8vqU4b3O7aC5AOPn
-X-Received: by 2002:ae9:e8d8:: with SMTP id a207-v6mr8311448qkg.235.1535575439524;
-        Wed, 29 Aug 2018 13:43:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1535575439; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3416800wrt;
+        Mon, 8 Oct 2018 05:54:38 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61kNIhnFeny2GoHUEfb1buA/C+Z+E7ZfDhzOJzNSK9DPjM5rs+8sUeL84BQFNfkbQJ2Bdyx
+X-Received: by 2002:a37:4787:: with SMTP id u129-v6mr18661745qka.301.1539003278286;
+        Mon, 08 Oct 2018 05:54:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539003278; cv=none;
         d=google.com; s=arc-20160816;
-        b=YMQciY0eG+11/1iXl/uNbqfK9gQ14eiYn4L9+v1CMdc3gf3xFfW8Ravx5zCfvregxm
-         VAqhTn5EKPJ39gqfXZ7SGTY1OErTxv/xCN5wpfKedrLbNryUPMd4exOvzre/gzIsJDoN
-         cGKXAjlz4Ij1tG28ZoIKurjo06edgyQPQK4JkYbbR7xaAkZtr6JOcA0f4KVptEl/1bE8
-         tUmLUviLABv78xyBPnUtSSF8uDCoIOd5mps9L32vdITch3oDr1sTaeniuUywnVkoJgEI
-         Wt/tKGtiCtd18QdM9TCJ95bQrPu9KbTdVh+KoM1b/hEjKdzmj5g3Y4Jbbs4ljjrjqJcp
-         8oSg==
+        b=akijO+9MjhfPvZL/ZZxIOkcK3u+3unCTw+Zt7Ua7RK1AC8+fDaj5qAQW8aBjAJT+FN
+         YCx60ppK5SIe4aFU2hrdSYoaEZUPCy7uhUstPjm28K74wjhRmCT0ZX55cwL0xS5LoCjT
+         1Ir39FS1vQN7cUAVI/ZUlTRWiq2pWnFiVi/ksKe503X/xuAzLSrOGSfgeIMPExT8bnwn
+         r3qtifSe/dEMvVFfomBYUq6vLQIDNWaiaBQ+j+h/+pKcQw7digMy2U9Ivvi6E2vcbljC
+         UdqUX3Ocw75PWavSBRJHE4RtFc6+K81pA+j//E5YEgtdLLB0QadCyA/86KvZwRSAYkEU
+         dw4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:arc-authentication-results;
-        bh=bTUWMQKXwi1/2BkP7JQ2PT0h5W5LGzelpfTAWkT6XRA=;
-        b=t+1TiB0MBBCD84MdxH/JQq5/H8TjN8R/zZxxnIhPRkTTj1LxMZPtmGkWUw/6mgB/md
-         0k0Wv302OPiynxP9+PZ/wQw2iZ2coXvt/t2pp4Iaao4B1O4xI9yMaFL/07YEHpOUVrd0
-         2HX51dgo5G9MJ7z6OBE1N/jeuPwmmYCrGhfpjUJTS6ZrhXO7oRbR8w1xeGuf0Iyu/Mqa
-         8F7cKr7SiYQvfFx8P5PMzyn7HfnBadVjfZiWkQezDqTW7cI0y7ryDBzAFVK1fh4bkRR7
-         9+0SVdgbEKtIHxeqIfEPlgaWjP6jZkk3lLVUzAXAT++O8XNiTWDeTSs4qyLDDMsJWIo4
-         xgEw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=D554nSMIBaRlcQ0G+C0Pmp2GKu4Ft05HpQE4cGfMXn8=;
+        b=g/XMkrkBvZYaItMehdrgdtHVDl9gf/AcsDlDTNyPNJ9RsjPQ46SAVZzZJ8jBXoqvWU
+         uxlIQtc0u5Lq0tcELQ+bFCGyWhf4dvCWrk5ZPtH6Hhjt4NRzAC1XsBupzs2a8CKzJTcK
+         EdC4JH24O3nN2+/h5ozQXyRjx2pTFOwraIIY+s5AiJQ+FFAFY3VONUwDHpetvZMaU+uu
+         D/uAoPp0RkK5AmbPgra/fRuk5QT8xXWXruYxn48XgDFOoqIWzhZmJhIEIqgZw27s8vz4
+         Fz+zPzqyOIPM0M7VPXkosXgSN1/UwS8uSbqDijgJiCWU9baQxpMktV8DHCBbuXdmOmq+
+         SMXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mFZVzKo7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="ZCXi/uQG";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h4-v6si4196474qtq.135.2018.08.29.13.43.59
+        by mx.google.com with ESMTPS id j184-v6si6731266qka.181.2018.10.08.05.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 29 Aug 2018 13:43:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 08 Oct 2018 05:54:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mFZVzKo7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44868 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="ZCXi/uQG";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46026 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1fv7Jn-0000KC-2q
-	for alex.bennee@linaro.org; Wed, 29 Aug 2018 16:43:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57065)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1g9V3V-0007ar-PI
+	for alex.bennee@linaro.org; Mon, 08 Oct 2018 08:54:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45660)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fv7Je-0000JY-8Y
-	for qemu-arm@nongnu.org; Wed, 29 Aug 2018 16:43:50 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1g9V1F-0005tG-8r
+	for qemu-devel@nongnu.org; Mon, 08 Oct 2018 08:52:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fv7Jd-0003hS-De
-	for qemu-arm@nongnu.org; Wed, 29 Aug 2018 16:43:50 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35460)
+	(envelope-from <peter.maydell@linaro.org>) id 1g9UrG-0000Ca-8G
+	for qemu-devel@nongnu.org; Mon, 08 Oct 2018 08:41:59 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40883)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1fv7JX-0003bz-Cy; Wed, 29 Aug 2018 16:43:43 -0400
-Received: by mail-wr1-x441.google.com with SMTP id j26-v6so6042366wre.2;
-	Wed, 29 Aug 2018 13:43:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=bTUWMQKXwi1/2BkP7JQ2PT0h5W5LGzelpfTAWkT6XRA=;
-	b=mFZVzKo7aJBOEsJ5C/OhEJlVIRv/vr+IOLMNxZ6crJP99EJh3hMf7vByWw02a8bkku
-	9k2FJ+lUMetiPX6a5s+4L7Ure4G9lbmNKzpMnEn+jLtO7Rrs0vofcEiBelh/68eHxAMl
-	i6R30VgKUN+aKerwpWFHxQm9NnZqFY+sfKWXZsDsEcmVkprdas4mINVHpLkFJa8cJSKm
-	MDgkZhA7ofKST/OJBkysUxyK/JaLvRXKH5zzyM5OCkLGr6dp3Ryi8obFscgUyfvVOs/m
-	Hn7iCtSTCBQS5yCi3RGhUHaj/71+xc2bPEa33goqxqtAEt05Lay9Pu1z776zwtxYHT6/
-	/Vsg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1g9UrF-0000C1-Tt
+	for qemu-devel@nongnu.org; Mon, 08 Oct 2018 08:41:58 -0400
+Received: by mail-ot1-x343.google.com with SMTP id w67so19428205ota.7
+	for <qemu-devel@nongnu.org>; Mon, 08 Oct 2018 05:41:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=D554nSMIBaRlcQ0G+C0Pmp2GKu4Ft05HpQE4cGfMXn8=;
+	b=ZCXi/uQGEAnRDr7E9BMcbT3nGbtqhw8myltOW+sRsFVKmPuycS1ncfZjzBPlUGIJRH
+	nzqM3A0ErTMwBPiJaWRCTAc5XADAYYIAb6MVB7r1H8+pnxwAb3r1fjDDHtu6YDvTK6bv
+	za+JT1dMeBx/vEqlvMMNNEXsVlc8Gv16f7n7E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=bTUWMQKXwi1/2BkP7JQ2PT0h5W5LGzelpfTAWkT6XRA=;
-	b=M8aUttDIX4l/HP0ZHxxvtyBkJrNSA52CMUtn5FdcbL9/Z2TF8p4wudjmgKzJbj+ZR8
-	tJMi3Z5uzjOMYZp1YRPUW5+poygIY93URrQRnmQXZWJNBeoZ6Nj5RsWwxFtgm2r1tlbC
-	0z8jAJOI2SjNE6hDxtss67wzTfNeTCt5QHlhC2BFfXUDH0NxEtcPQPranh0fEV1EiGT6
-	XgrPSyDbQmnK8NaBrFnnMwem7kMOXHKUmTXzKAs8MRaieYVef8tWWsCNNpirs8aJHG10
-	D+p0375+z/10kDnwh4qHnOX/mVjoNqXYo3tmIipLHSXcYZJN3qS8LOKwUp7G2jcBk0BH
-	zdrA==
-X-Gm-Message-State: APzg51Bj9xs7CC7BdB75pR3krFBNyv5uSoC7IMKrFSVucSo6lHFfvAGL
-	NScClEQ3B5DS6PggzPL31qY=
-X-Received: by 2002:a5d:6451:: with SMTP id
-	d17-v6mr5049124wrw.64.1535575422009; 
-	Wed, 29 Aug 2018 13:43:42 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	g2-v6sm11344250wrd.71.2018.08.29.13.43.40
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 29 Aug 2018 13:43:40 -0700 (PDT)
-Date: Mon, 27 Aug 2018 14:19:31 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Joel Stanley <joel@jms.id.au>
-Message-ID: <20180827131931.GA20843@stefanha-x1.localdomain>
-References: <20180816141303.20518-1-joel@jms.id.au>
-	<20180816141303.20518-3-joel@jms.id.au>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=D554nSMIBaRlcQ0G+C0Pmp2GKu4Ft05HpQE4cGfMXn8=;
+	b=I3mAj/wsdXbqLq2rAZnBh2onpaSqHSg0Di0ky+aK6HXVH6X/wlDVYRHcT0CwVSnJk2
+	EkA4QwNt8wbfPrPsSexRSeHR36k5+uG8pd0fk7Hq+ktrrt3aSn0giPfr4FFf20OK5zXX
+	xZ4oHNtXfVJaFta2X6xVk2tv/lqv4oBU1HyCzzYr6O2ZEaVtZ9HZkv2wPYVlUFvrXn4l
+	CO8RVRjfcw4KdVMgC7hY58o7UQxnofL5Nloa06VBWBAPurv4a3OCunBCT74DbtVcutLy
+	xy+snY0tqHJsX0fjtoQAXSwafnPHZvU0+dqgUUPG0hTuHu4GvqZJnVfkriMq4zKh89om
+	qlDw==
+X-Gm-Message-State: ABuFfog9N1nzUgayXH7yaJGNmZWGQG5YxmaQLpwghib4r/8Ic0N87PdF
+	n7CVnNHt/SR6pcl+XX7aeUxNCv3jZ7m4FYGZTGjQGw==
+X-Received: by 2002:a9d:2377:: with SMTP id k52mr13939225otd.238.1539002516890;
+	Mon, 08 Oct 2018 05:41:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="8t9RHnE3ZwKMSgU+"
-Content-Disposition: inline
-In-Reply-To: <20180816141303.20518-3-joel@jms.id.au>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP;
+	Mon, 8 Oct 2018 05:41:36 -0700 (PDT)
+In-Reply-To: <1538579266-8389-10-git-send-email-edgar.iglesias@gmail.com>
+References: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
+	<1538579266-8389-10-git-send-email-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Oct 2018 13:41:36 +0100
+Message-ID: <CAFEAcA88T=VWXq5aSY2srgbo8PF7tLFJn-28nNpt3=ZGh5xM1g@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: Re: [Qemu-arm] [PATCH v5 2/3] arm: Add Nordic Semiconductor nRF51
- SoC
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-devel] [PATCH v1 09/12] target-arm: powerctl: Enable HVC
+ when starting CPUs to EL2
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Jim Mussared <jim.mussared@gmail.com>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: va9H25UG7cXs
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E2n+11iVjhlw
 
-
---8t9RHnE3ZwKMSgU+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Aug 16, 2018 at 11:43:02PM +0930, Joel Stanley wrote:
-> The nRF51 is a Cortex-M0 microcontroller with an on-board radio module,
-> plus other common ARM SoC peripherals.
->=20
->  http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.pdf
->=20
-> This defines a basic model of the CPU and memory, with no peripherals
-> implemented at this stage.
->=20
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+On 3 October 2018 at 16:07, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> When QEMU provides the equivalent of the EL3 firmware, we
+> need to enable HVCs in scr_el3 when turning on CPUs that
+> target EL2.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > ---
-> v2:
->   put memory as struct fileds in state structure
->   pass OBJECT(s) as owner, not NULL
->   Add missing addresses for ficr
->   Fix flash and sram sizes for microbit
->   Embed cpu object in state object an initalise it without use of armv7m_=
-init
->   Link to datasheet
-> v3:
->   rebase nrf51 on m0 changes
->   remove unused kernel_filename
->   clarify flash and sram size
->   make flash and sram size properties of the soc state
-> v4:
->   set the number of interrupts to 32
-> v5:
->  move back to armv7m calls, as v4 of Stefan's patch removed the
->  m_profile changes
-> ---
->  default-configs/arm-softmmu.mak |   1 +
->  hw/arm/Makefile.objs            |   1 +
->  hw/arm/nrf51_soc.c              | 119 ++++++++++++++++++++++++++++++++
->  include/hw/arm/nrf51_soc.h      |  42 +++++++++++
->  4 files changed, 163 insertions(+)
->  create mode 100644 hw/arm/nrf51_soc.c
->  create mode 100644 include/hw/arm/nrf51_soc.h
+>  target/arm/arm-powerctl.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+>
+> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+> index ce55eeb..54f2974 100644
+> --- a/target/arm/arm-powerctl.c
+> +++ b/target/arm/arm-powerctl.c
+> @@ -63,6 +63,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+>      struct CpuOnInfo *info = (struct CpuOnInfo *) data.host_ptr;
+>
+>      /* Initialize the cpu we are turning on */
+> +    qemu_log("CPU%d reset\n", target_cpu_state->cpu_index);
 
-Besides what has already been discussed:
+qemu_log logging should always be masked to a particular
+log kind (either via qemu_log_mask() or by explicit check on
+the log level). If this was accidentally left-in debug, you could
+just drop it :-)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+>      cpu_reset(target_cpu_state);
+>      target_cpu_state->halted = 0;
+>
+> @@ -103,6 +104,16 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+>      } else {
+>          /* Processor is not in secure mode */
+>          target_cpu->env.cp15.scr_el3 |= SCR_NS;
+> +
+> +        /*
+> +         * If QEMU is providing the equivalent of EL3 firmware, then we need
+> +         * to make sure a CPU targeting EL2 comes out of reset with a
+> +         * functional HVC insn.
+> +         */
+> +        if (arm_feature(&target_cpu->env, ARM_FEATURE_EL3)
+> +            && info->target_el == 2) {
+> +            target_cpu->env.cp15.scr_el3 |= SCR_HCE;
+> +        }
+>      }
 
---8t9RHnE3ZwKMSgU+
-Content-Type: application/pgp-signature; name="signature.asc"
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This is definitely required for PSCI and I think it makes sense
+in other cases that end up in this powerctl code with EL3 set.
 
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJbg/pjAAoJEJykq7OBq3PIYfAIAKU5HKGzSlW3FNQI9LBIYfiU
-xaQtcQpNZCPdPOMcWfhYsJpiu+3Y2TyepbEt8gX8LREhc3BXoRZv16D7ENKt9DbT
-lqBanTi/r4PdgxaAPAy+wsfiSgZ4xWFy/eeTi+jBcraSzVP9xZGTlF+oegZ0HB8w
-sUtBsLtDNlIGAnpQyMbimaffyPrsQ+ImbEzyCuGGerkXWnbbxvsPSozTWXi9Kj+Z
-am5fTiszM7c9XAb/FjWYdGjqJLu7j83o0ns1zC/qqRLwDGn1BPFGplvDV5zO94Y/
-5n1j08nRmEMNESwXMfrnOSTkSgl+tJivdR9ZlliPtD5pnmEF8UlGZxtYASySyIM=
-=ObAi
------END PGP SIGNATURE-----
-
---8t9RHnE3ZwKMSgU+--
+thanks
+-- PMM

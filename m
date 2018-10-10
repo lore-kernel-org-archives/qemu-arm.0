@@ -1,99 +1,105 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4459786wrt;
-        Tue, 9 Oct 2018 02:30:45 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60gt+XThpJq1zKepRrS/qeZE7GvUriogWdJsxfee4UA2Ijj6k4ZrQ/5NAXY7srX03j33uPL
-X-Received: by 2002:a37:7a87:: with SMTP id v129-v6mr20822282qkc.266.1539077444975;
-        Tue, 09 Oct 2018 02:30:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539077444; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1478486wrt;
+        Wed, 10 Oct 2018 13:38:34 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62mhWTGKmHGvtOMUFAr6uFBqRzJOevv17cj7c8REJRkFuHttT9lzSB3JAwNQL6UsdsxrO1Z
+X-Received: by 2002:a37:2f01:: with SMTP id v1-v6mr26238446qkh.278.1539203914598;
+        Wed, 10 Oct 2018 13:38:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539203914; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZVrUYsuRgNrmYLCS3scIHmk8dXhPmvInp6/ZuQMu2dMwTIjTQJlhW/O3wa9nsdfLNT
-         4fDQBG6aLXcm/jA5W/7P64r+VA1razOTX8mIalJ2RPmnPuLKTUFPNWtLbQDPlMlqK7Xf
-         vrYdgaxbt2JSAUNqlkhiD6QCqGu+DSAyf0a77Mweqn2X8beB1flO7RfGrHxJv887wIXK
-         8HL22Dl98qzJqXzB/rlBH7hUS76YMmRKsJcIerWsd/x6ApDVoYUcNXTfTIqOs1ZDWAWa
-         oikR6QG7gXvBnOveG7+KEXigcO31Tdoci7Z7cc3OAdtPSA6vthPOI9LqMosWyUycEjBA
-         nVVw==
+        b=N6gN7QV+npO4nfdgMf3VN3jHIHTyzyHIC5P+mUJ/rJMtUw1a7elfZLDur3jtmgCmRC
+         QW3uPSBUiHEDpusPNRvq7Nyr81hEgxzdrNGOtemz3pgC4DUT3lCriPBm2ZXj0DbYKU/A
+         8zPt2QnweFGD/2QJoLRag3lqfx/PsUQFCHwQVgBWDVU8bYVESZ2kPqOSLzqHNgabIASA
+         P5BjE8if89iQkrvQ1foLfDfJ3wTWK/l4CdTJ74jP+hSZ3Ce7cQz4Fpn3ByWynxkZhDLc
+         mxWOFog3z2IErv4DfStwSfnqBXL0/VgfIYhwbkwzfAnrybMSChdUejs7JgAfSx0i7h3r
+         egdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=en1/8HIZG44kwvLwpF9PIpCE9m0IjxvcPxESVdwOHTo=;
-        b=ZKBR6cdC2y8V6Ap/1lgfouPscjMIeBkUul4RtSl/vL2HTwwDt37s3hReytORa9Zo6v
-         +xmr2pEl5uy0zjWZ5lc1/A1taLnwn8ys9abW0jPyyXZ56TKBb4GWkx2a8IvxFinn/3qp
-         Ghl5J9ytJj/qWNWJbgXfQu7N7iyVEK1DYMo9kuXqtZR2X91qlDDkghHtb0jlPGCk8Tv0
-         407v0gip18WdrIpL0RN8EiEqJd8vyKWtP6Rqp6cIFy+mLr6tQbsohIaY1Lc2eki3rE78
-         TQHztrZbZhsDIozmUfUfgRTcTiLyvGyEIj5LFOJ4su0I3zEjzrCjq8rcYkpD31jUa0ZL
-         Z9cg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=Gj1Wz3YTSMIBnewLGtsEovmWfmex6XgUSSKzzs6EYLI=;
+        b=yl+HfHpW3m7DDmD9E5lpCqf8af96i7y0EMI8Wee8xC9n/eaHPvBrBBu02yw4x1DNHY
+         DTTmlJigBEkB3H6k/tab7GnwxhXBy0e++6aMfwNNHqFIQ9s0BBIZ4nwvXO7VmyhqX5ij
+         hWLIg9v+nYrdyuyUdhaAYPM6fqaWhgKe29bPjszFfSwl2456K+Kt9qFwONVnsVEQSwK2
+         cDDPh5UCYlTMsfOU2R/EFVqOZT2AU7FJtO8TPtJJxlXwSV+toizTAnGQUKro9FmTAJwc
+         ShAIVfXbWUSwnPtqnqss6WnCPtLn4CUDvC2jz+joF5B9mvIM9Rvo4/rVclBpWGaD4caa
+         tCOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hq5o91A1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XCUEHesE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l124-v6si862408qkf.206.2018.10.09.02.30.44
+        by mx.google.com with ESMTPS id k30-v6si643428qtd.180.2018.10.10.13.38.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 09 Oct 2018 02:30:44 -0700 (PDT)
+        Wed, 10 Oct 2018 13:38:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hq5o91A1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XCUEHesE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50367 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59020 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1g9oLk-0007VF-GJ
-	for alex.bennee@linaro.org; Tue, 09 Oct 2018 05:30:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48190)
+	id 1gALFa-0002mf-65
+	for alex.bennee@linaro.org; Wed, 10 Oct 2018 16:38:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g9oLW-0007Ta-UY
-	for qemu-arm@nongnu.org; Tue, 09 Oct 2018 05:30:35 -0400
+	(envelope-from <aclindsa@gmail.com>) id 1gALFQ-0002mO-0O
+	for qemu-arm@nongnu.org; Wed, 10 Oct 2018 16:38:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g9oLV-0003Nz-VP
-	for qemu-arm@nongnu.org; Tue, 09 Oct 2018 05:30:30 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37227)
+	(envelope-from <aclindsa@gmail.com>) id 1gALFM-0002LG-Nf
+	for qemu-arm@nongnu.org; Wed, 10 Oct 2018 16:38:23 -0400
+Received: from mail-yw1-xc43.google.com ([2607:f8b0:4864:20::c43]:34683)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1g9oLR-0003JS-UK
-	for qemu-arm@nongnu.org; Tue, 09 Oct 2018 05:30:27 -0400
-Received: by mail-ot1-x342.google.com with SMTP id o14so913213oth.4
-	for <qemu-arm@nongnu.org>; Tue, 09 Oct 2018 02:30:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=en1/8HIZG44kwvLwpF9PIpCE9m0IjxvcPxESVdwOHTo=;
-	b=hq5o91A131CNgiQJlDIG4V9LliXs6o/KvhYZr6KR5eJvLrwuiP63Rq2KyY56it3E0W
-	kvjSKZwGVvvxHPT8KmSZp9yLTyH7Zn7GZTOCTL1DkwnXu30BWe42wOfvRVgjpIrkCDsq
-	OqpGlQPkziex9CyZ9FMDcmrytAdCVTm8NnXto=
+	(Exim 4.71) (envelope-from <aclindsa@gmail.com>)
+	id 1gALFJ-0002J3-Ev; Wed, 10 Oct 2018 16:38:18 -0400
+Received: by mail-yw1-xc43.google.com with SMTP id m129-v6so2730744ywc.1;
+	Wed, 10 Oct 2018 13:38:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Gj1Wz3YTSMIBnewLGtsEovmWfmex6XgUSSKzzs6EYLI=;
+	b=XCUEHesE34ATCmtapNB1v4JEDXDBOasRVTqhi0zmoGgdju86QvZFcqvxZ4DWUdkk3l
+	Pn2N7uNuog5RMCH15L9YbHGmc5VpEz44wmW7RPPEsvgVRu+mnyuyQDMRlLYBXzxLNu5l
+	sq7aduCulrsnOKBbEk0Sz1sUu/MNXp2w2FXnwGjdrPFPfcn/SQvPhBdODSEBe49oeiNp
+	G7i/CxhwzZEvsnej/KDiRNx8DdrREdE4EMxVdN9wWEJGw6c9MKGhsvQ/IpXPTE2WozRK
+	HtPLP3WIsJfh7pBRHvtkfDVf4+WjqT1xCKq4F0vaEpXOrG77AvlFtCUsPQN2PnA82Nae
+	diBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=en1/8HIZG44kwvLwpF9PIpCE9m0IjxvcPxESVdwOHTo=;
-	b=b50WRDgLMUheaJxFc+JPchnb/l6lULdXzAEAe9wHxIHK49pxeDRbbjLJ/PbzusfUPt
-	UlMvtpdPByLRhGRtz7wBoxoMsvQ0BbiVCa9gmJfiCDT9dBpUO/WiaJR/5lligshz0bhh
-	9f7Pk+pIgk52SZwWdktVPzHE9FPrPMcOkUnMGS1482tappnqLbLk73Uv6kXQhnRvEDZc
-	JQIJmnktPhFocWERfniTUSDOn6ta08DuYr1Gm0tJOn6W29FwJnGqDVNI1SOpFoZuRyDK
-	/6YajVw2NdmqvZQsmaP7G3KqbwreZHTI28nA79AkRNybWeu1k7Koz/VD5wSNpHbQx2Gr
-	ms3A==
-X-Gm-Message-State: ABuFfoibuzh06aIxXcPvTLqi+7rk5OyPuotKPP3X3lx769KyoL0icEiF
-	wNn2tRt83GgaV6ddezOeFriWABI5fIoE1v+Im+vcVw==
-X-Received: by 2002:a9d:2377:: with SMTP id k52mr16654176otd.238.1539077422509;
-	Tue, 09 Oct 2018 02:30:22 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=Gj1Wz3YTSMIBnewLGtsEovmWfmex6XgUSSKzzs6EYLI=;
+	b=HP6MMtg4WRAVpN6bjgImKKW2GA20dHIMSGayAsnHG9Y/YiQvAO30OSCVfSbkCRulW2
+	bLhFAnibmzo0vQVtALsoNGef6QFLQN2yHtRHQ0xtf/LRcnIWp2DDvu4Fr1JUMQdu/ByA
+	c6ioQEyEc0fTcJS8GbReos5MTDrrtrLJmZNmqi1rtKYCILe+vlICPFR432bNdEcvptiN
+	p5kLmrsk9bHU4dpza/r3QFKbNCnKuZZrl/9Or9cSShG0HB+DVHoNHOAmFLG0dYrUWJXr
+	UAXGGZlCUSYeKHnSaQUlO1jdvukUKnJl4f6SQkxXNATKk+zQG2ytNdldILbbVlpj487S
+	OHhw==
+X-Gm-Message-State: ABuFfoj4cJ4xFrdXHhLCEs5csqB6SM3xhni3xQvzIjBTwmacoXRQe0dS
+	aWs0w6vNhH/B4c7uNkkXD2ue62S7
+X-Received: by 2002:a81:6657:: with SMTP id
+	a84-v6mr19047852ywc.311.1539203894523; 
+	Wed, 10 Oct 2018 13:38:14 -0700 (PDT)
+Received: from quinoa.localdomain ([216.85.170.153])
+	by smtp.gmail.com with ESMTPSA id
+	u131-v6sm15170728ywf.13.2018.10.10.13.38.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 10 Oct 2018 13:38:13 -0700 (PDT)
+From: Aaron Lindsay <aclindsa@gmail.com>
+To: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair.francis@xilinx.com>, Wei Huang <wei@redhat.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Date: Wed, 10 Oct 2018 16:37:21 -0400
+Message-Id: <20181010203735.27918-1-aclindsa@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP;
-	Tue, 9 Oct 2018 02:30:01 -0700 (PDT)
-In-Reply-To: <20181008213407.GF4229@toto>
-References: <1538579266-8389-1-git-send-email-edgar.iglesias@gmail.com>
-	<1538579266-8389-11-git-send-email-edgar.iglesias@gmail.com>
-	<CAFEAcA9b4O4HrMwNTgbZ7JYdO=S3dnzC8ayabBEpKY5=DyBMog@mail.gmail.com>
-	<20181008213407.GF4229@toto>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Oct 2018 10:30:01 +0100
-Message-ID: <CAFEAcA__7wJ-4mNe3rKe4T+gDUbdBH+rB-DHE+fddmjVzG2=Eg@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-arm] [PATCH v1 10/12] target/arm: Add the Cortex-A72
+X-Received-From: 2607:f8b0:4864:20::c43
+Subject: [Qemu-arm] [PATCH v6 00/14] More fully implement ARM PMUv3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,64 +111,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Stefano Stabellini <sstabellini@kernel.org>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	Francisco Iglesias <frasse.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>
+Cc: Aaron Lindsay <aclindsa@gmail.com>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	qemu-devel@nongnu.org, Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gIgtu01wcrsB
+X-TUID: 0bX9sjzW/FEO
 
-On 8 October 2018 at 22:34, Edgar E. Iglesias <edgar.iglesias@xilinx.com> wrote:
-> On Mon, Oct 08, 2018 at 02:10:29PM +0100, Peter Maydell wrote:
->> On 3 October 2018 at 16:07, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
->> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->> >
->> > Add the ARM Cortex-A72.
->> >
->> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+The ARM PMU implementation currently contains a basic cycle counter, but
+it is often useful to gather counts of other events, filter them based
+on execution mode, and/or be notified on counter overflow. These patches
+flesh out the implementations of various PMU registers including
+PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to represent
+arbitrary counter types, implement mode filtering, send interrupts on
+counter overflow, and add instruction, cycle, and software increment
+events.
 
->> > +    cpu->midr = 0x410fd083;
->> > +    cpu->revidr = 0x00000000;
->> > +    cpu->reset_fpsid = 0x41034080;
->> > +    cpu->mvfr0 = 0x10110222;
->> > +    cpu->mvfr1 = 0x12111111;
->> > +    cpu->mvfr2 = 0x00000043;
->> > +    cpu->ctr = 0x8444c004;
->> > +    cpu->reset_sctlr = 0x00c50838;
->>
->> Do you happen to have the hardware to hand to check what the
->> top 4 bits of the reset value of SCTLR_ELx are? I think they
->> should be 0x3 -- the Arm ARM says that [29:28] are RES1 (as
->> does the A72 TRM, though its top level summary table lists
->> 0x00c50838 as the reset value for some of the SCTLR_ELx.)
->>
->> QEMU may have the wrong value for A53/A57 here too, I suspect.
->
-> I don't have access to the A72s at the moment but looking at logs
-> it seems to be 0x00c50838 for both the A53 and A72.
-> Looking at "Table 4-118 SCTLR bit assignments" in the A72 TRM,
-> bits [30:28] seem to have been allocated. Bit 30 depends on
-> configuration inputs to the core and [29:28] seem to be hard-coded
-> to zero.
+Since v5 [1] I have:
+* Taken a first pass at addressing migration
+* Restructured the list of supported events, and ensured they're all
+  initialized 
+* Fixed aliasing for PMOVSSET
+* Added ARM_CP_IO for PMINTENCLR and PMINTENCLR_EL1
+* Addressed a few non-code issues (comment style, patch staging,
+  spelling, etc.)
 
-Ah, this is a 32-bit view vs 64-bit view thing. In 32-bit,
-SCTLR[28] is TRE (TEX remap enable), and SCTLR[29] is AFE
-(access flag enable), and both are resets-to-zero.
-HSCTLR[28] and [29] are both reserved, RES1.
-In 64-bit, SCTLR_EL1[29:28] are RES1 in ARMv8.1 and v8.0, and
-have new meanings assigned in v8.2 and v8.3.
-SCTLR_EL2[29:28] and SCTLR_EL3[29:28] are reserved, RES1.
+[1] - https://lists.gnu.org/archive/html/qemu-devel/2018-06/msg06830.html
 
-For QEMU at the moment we don't deal with this, and so we
-have only the one reset value, cpu->reset_sctlr, which we use
-for both the SCTLR_EL1 and SCTLR_EL3 resets. Our HSCTLR/SCTLR_EL2
-resets to zero, and we don't allow for the 64-bit and 32-bit views
-not necessarily being the same value.
+Aaron Lindsay (14):
+  target/arm: Mark PMINTENCLR and PMINTENCLR_EL1 accesses as possibly
+    doing IO
+  target/arm: Mask PMOVSR writes based on supported counters
+  migration: Add post_save function to VMStateDescription
+  target/arm: Swap PMU values before/after migrations
+  target/arm: Reorganize PMCCNTR accesses
+  target/arm: Filter cycle counter based on PMCCFILTR_EL0
+  target/arm: Allow AArch32 access for PMCCFILTR
+  target/arm: Implement PMOVSSET
+  target/arm: Add array for supported PMU events, generate PMCEID[01]
+  target/arm: Finish implementation of PM[X]EVCNTR and PM[X]EVTYPER
+  target/arm: PMU: Add instruction and cycle events
+  target/arm: PMU: Set PMCR.N to 4
+  target/arm: Implement PMSWINC
+  target/arm: Send interrupts on PMU counter overflow
 
-thanks
--- PMM
+ docs/devel/migration.rst    |   9 +-
+ include/migration/vmstate.h |   1 +
+ migration/vmstate.c         |  10 +-
+ target/arm/cpu.c            |  28 +-
+ target/arm/cpu.h            |  68 +++-
+ target/arm/cpu64.c          |   2 -
+ target/arm/helper.c         | 781 ++++++++++++++++++++++++++++++++----
+ target/arm/machine.c        |  19 +
+ 8 files changed, 817 insertions(+), 101 deletions(-)
+
+-- 
+2.19.1
+

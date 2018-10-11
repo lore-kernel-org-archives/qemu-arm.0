@@ -1,100 +1,103 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1816947wrt;
-        Wed, 10 Oct 2018 19:26:09 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63K2rTGeC359M+vPs+FD1athhmuhE1ihA4ToJ+kZGabO0BCefCUVwdTYDFZTe3c2eXITdSb
-X-Received: by 2002:ac8:3236:: with SMTP id x51-v6mr29555640qta.275.1539224769864;
-        Wed, 10 Oct 2018 19:26:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539224769; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1818843wrt;
+        Wed, 10 Oct 2018 19:28:30 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62HLCwEcsxWJVdKy6cvpZ1gu6VyiDhX3sUjd+el0325RAMfIQ52A3B2NMCFoutbJBfFnYKQ
+X-Received: by 2002:a0c:d238:: with SMTP id m53mr15291588qvh.195.1539224910197;
+        Wed, 10 Oct 2018 19:28:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539224910; cv=none;
         d=google.com; s=arc-20160816;
-        b=sulvd6GHGg9YF8siPU3V6Zq2+sYwIUGboZzboXGnQ4W1I1w26S0Nxfil/btLQGuHtS
-         McmGdWs/6CdxFuj/bpW593ZTGm4DlMYbXtIsITLYipmLdcfmIcVqzuWKZMzJOL3YLodg
-         6nkLHlISnEW03MPGjMgMunrKZj8fs5oF+wR+B8fZZcH7D35kbk6vR+Zkz15GzStUyRu0
-         yGYhkHM7gn0njoYsNcxsDii/XbnTXEOIKHFrO+5omNe+7hxKhMMTdimxIA7HIOx/7zQO
-         7zhDE/vJhCCimLn8Sd3qvs1Gqyswr47jlRhb8nITNBSsgyXn1CvDmNVAcY/hyD3vIs92
-         6AfQ==
+        b=wcbIs1HkOLUoAAKOFPgTGYqdXIBCtBGaM6fbzuOVZtUFuMQPtV0+bc62Y3e9m5CR61
+         sBOciLCBYNwf33iTJConEGbmWQHaTD477XS//LJZx4zoCCsUckpqBM11L/f3E2js1Bnb
+         EDJ9SaD/V8z60RAyttW4AvnqpMIbBoUrMDM8wW82tK1pjx46XAzQDKP6rCkglRDHwesW
+         dLgZ7vu/Tj1osNxauyJkF5FZBgIRsIB/i3rd8t172k2jFv8n3dXHtiWLrZx608OpWIme
+         v/UQGnfQFWv51aaIGuCugjzE9Z0Jd/gwtQTT1Mfsm37koBS+MKbqXo4nvXdWLqT54om4
+         sLyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=BO7Rn6pWzIDgtfAsiNGNFWz3BgN9Xedqk1qTsGEV740=;
-        b=dDoY+C5hR0FL+zochnXZQ1hiLdyiFeAknwxz2pIa9M2smM1s8uWpe96Vsb3C4M973p
-         O6cyQR7i6OHY8fD5LqMD3q6sw37PHtODsM/EsHwg1BKxUNuAa4EnBNq7UoBWjddlsbMz
-         HwrdvD4GHyaLdSMr1CLmr+iIwQOFuHObRuoMCTeH2rX3FGMrEENiRMC6DD6eM0KUbFsf
-         14L7bhlhHIinAgJxMDobO40hb7U//EfMp/olJR4pwN5GD4b3pubLTtEp5AuOsWCBbYOo
-         MMUJOpOJpN0IOIsPWnkP5+akW8b4P1+dEVV9tE6b3JK/LdA6p0V073eNDAIQ5iAnanKK
-         9WFw==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=fFsvrKm4gciGypCuNSgPGrf2QrNVmIfJiqo8XHJxGlI=;
+        b=zV47aEa3nNhh3+pXumEMcgVLiNbtZcBr9Q0ygujtIV7uuamuIUwKsm/rJouhoxRLT+
+         Q2SBPDzdTi8D9momj1lgvLWVyD97pDLvrIbyeJabiv384U5xdTHPEcICjZLp93pe6VLx
+         B6uxoX9g0vrWLyGsy2WZjaJe+HeAGey/eLwc9DmrSZCItfKVqZqVuoJircyA57DICdHg
+         quPDbTANUHtGS5GuEHv7LtIddyeGmDRwc6Hcp0BR1Pch51pxv5gt6FHKfQtUnA6DvKgW
+         vnb4oPpZ7Oab9Hn6unqxigfange0qfIfxbAX83cZ5fBVINm8DsOSndg+Tpy5zn0jorTJ
+         UyKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tHNoNVEP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mOiAGdQl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a20-v6si5684651qtj.202.2018.10.10.19.26.09
+        by mx.google.com with ESMTPS id h6-v6si4056073qkd.28.2018.10.10.19.28.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 Oct 2018 19:26:09 -0700 (PDT)
+        Wed, 10 Oct 2018 19:28:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tHNoNVEP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mOiAGdQl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59992 helo=lists.gnu.org)
+Received: from localhost ([::1]:60010 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gAQfx-0006kS-Dn
-	for alex.bennee@linaro.org; Wed, 10 Oct 2018 22:26:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48542)
+	id 1gAQiD-00007t-Lq
+	for alex.bennee@linaro.org; Wed, 10 Oct 2018 22:28:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48652)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZg-00028k-45
-	for qemu-devel@nongnu.org; Wed, 10 Oct 2018 22:19:41 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZl-0002Co-Eq
+	for qemu-devel@nongnu.org; Wed, 10 Oct 2018 22:19:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZb-0004Ii-48
-	for qemu-devel@nongnu.org; Wed, 10 Oct 2018 22:19:40 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:35897)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZk-0004OI-Dw
+	for qemu-devel@nongnu.org; Wed, 10 Oct 2018 22:19:45 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:45089)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1gAQZa-0004I3-SG; Wed, 10 Oct 2018 22:19:35 -0400
-Received: by mail-lf1-x142.google.com with SMTP id d4-v6so5480734lfa.3;
-	Wed, 10 Oct 2018 19:19:34 -0700 (PDT)
+	id 1gAQZk-0004Ni-25; Wed, 10 Oct 2018 22:19:44 -0400
+Received: by mail-lj1-x243.google.com with SMTP id j4-v6so6710610ljc.12;
+	Wed, 10 Oct 2018 19:19:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=BO7Rn6pWzIDgtfAsiNGNFWz3BgN9Xedqk1qTsGEV740=;
-	b=tHNoNVEPW2lSBX8ZxEhCnOImmweTH/ZT5tW782kDqEi+9FEtYQJkechasHB02tjimU
-	FVkZGhzb8ogGE28gRtAcMcwJJwCBgY4Rtrx5xXzay7ykxMiA7ZSzmF4vIL3POy7E49e/
-	nEjZMOSNyCSu0Ni7silxG2ITIp8bK2K39pELh9UR4CE5LYAuxUn9bLR2Do5UyMHBP83H
-	f9Ek/5BZ54H0R5TXN5NLJdrLGm6Fi5EAUVRzR+28m6jFiFss7H7sT26BeEg5++vtY0mv
-	BDbYGYyl9UbaQQOZmOjZA3xs/0Vhof+KIx31N5am4oJvyjZir5t+UmnIJZJ8cgyqR8Wh
-	ra5w==
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=fFsvrKm4gciGypCuNSgPGrf2QrNVmIfJiqo8XHJxGlI=;
+	b=mOiAGdQl11vYHs1cB9rlO+tdZZkHCt8aio0L4mH1rO/ew6QFebjA9lts/peXKOzBvV
+	uIOIbQYTh3NLTPv+fB9w1GQqXJBjX269Jp7dZH3yQhWqpVclSSZ40XhcwlaCqQxPWFW/
+	Gr7Yp2L/miWUc4eFqeb1qH+8+fSZhdr5x9MNYtw6Jkseq5RXbL+PNcuhVbK0lbqE65xu
+	TN1v3t3vhtfHwhQW60gkuqC/mOXjWW4x8AqPPQDW6MNgtZuQ6xOn3GsYFPd4mCw6S3Tb
+	RKgzR1kPL3Ouearz+h+PPs3Dl8afGS0t+xjDL7cq/A3bc3mRDIJg0kj49V+oV7aMXNBo
+	YMFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=BO7Rn6pWzIDgtfAsiNGNFWz3BgN9Xedqk1qTsGEV740=;
-	b=sZGlfrsOERcpyAx5SlzQudutFk74pqGX4kiR0FjSTbPHqSTxUTSEEswCkTa/w8rxGo
-	HgBPK7BAtQDsV0QOVns0io77jygNHdUxN9273gU1/ovVujXoTEQ4ncHQ6tx2QL+ZVkDS
-	Tu7rOLGO/z1+4WZNT4vPYXgUqQ3NKDDcztFh1JCoHJIpcJxc8tUmt/bcWiO1QDtfjT6j
-	/rTxpepm/Ln0sVMmcEU18ZzeAAENJwi3WeNmWGJ8JFu6sQXl79UdF0/6FZ/zCVXgxX2y
-	vdn7RzFxbIMVFG402HQPUzFzZF7uYz8Xr5eIh/CQWxhWa4TSdBMrnII70dZ7MnpmiRu/
-	Zaww==
-X-Gm-Message-State: ABuFfohG5H5llibtJYH2gGUgaw2lBHh012YyUGQE6ezoxLdHDReFnfsu
-	CnogH0HI04Pbarv+R5LHhoxLvGwZnYk=
-X-Received: by 2002:a19:d988:: with SMTP id
-	s8-v6mr19635995lfi.122.1539224372759; 
-	Wed, 10 Oct 2018 19:19:32 -0700 (PDT)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=fFsvrKm4gciGypCuNSgPGrf2QrNVmIfJiqo8XHJxGlI=;
+	b=tTaADaixewLSnYCyTtD98cksPjHWlYIFwa495O3bjQOWiQatbfvImjEksHshEWjZod
+	oxZ50Nn3zGe3IqwaedKYk9pDRiweAYu2rC3M7UZMwrNiSzf8OodRxonLOfNchVnk7f99
+	2pCeZWLBCrMBZ4EkI9oajWJggngeuqm+PwTmkGc5tK7+OH4EFcTmFPjHwgkODcIeAoE8
+	qH+mrMU97A7e6iK7Lv39Hcghl5NRD8mLxvmcWKCLKO9WXrhWXqz5dqwB1yfEaoPVOore
+	LReuwWUdkt3c7VXwvRsXA50miF2gl1yKUqB9qUYX1bWm2DyznNcfwpTspXYn1dg7p8+1
+	a0bw==
+X-Gm-Message-State: ABuFfoh3T+KHQSAXZwe/TdEtkKm9wZRCV5einBYqWWrxtGU8gXXXQxud
+	77o2gtcMl87U9msodZUQ9qBgLTaLVTQ=
+X-Received: by 2002:a2e:8514:: with SMTP id
+	j20-v6mr21850034lji.111.1539224382540; 
+	Wed, 10 Oct 2018 19:19:42 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
 	by smtp.gmail.com with ESMTPSA id
-	p24-v6sm5806381ljg.57.2018.10.10.19.19.31
+	u70-v6sm5457971lfg.48.2018.10.10.19.19.41
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 10 Oct 2018 19:19:31 -0700 (PDT)
+	Wed, 10 Oct 2018 19:19:41 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Thu, 11 Oct 2018 04:19:19 +0200
-Message-Id: <20181011021931.4249-1-edgar.iglesias@gmail.com>
+Date: Thu, 11 Oct 2018 04:19:25 +0200
+Message-Id: <20181011021931.4249-7-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20181011021931.4249-1-edgar.iglesias@gmail.com>
+References: <20181011021931.4249-1-edgar.iglesias@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::142
-Subject: [Qemu-devel] [PATCH v2 00/12] arm: Add first models of Xilinx
- Versal SoC
+X-Received-From: 2a00:1450:4864:20::243
+Subject: [Qemu-devel] [PATCH v2 06/12] net: cadence_gem: Add support for
+ selecting the DMA MemoryRegion
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,83 +116,167 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
 	philmd@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wBv0PaXWzjUZ
+X-TUID: oPh0hbzbOD1Z
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-This patch series adds initial support for Xilinx's Versal SoC.
-Xilinx is introducing Versal, an adaptive compute acceleration platform
-(ACAP), built on 7nm FinFET process technology. Versal ACAPs combine Scalar
-Processing Engines, Adaptable Hardware Engines, and Intelligent Engines with
-leading-edge memory and interfacing technologies to deliver powerful
-heterogeneous acceleration for any application. The Versal AI Core series has
-five devices, offering 128 to 400 AI Engines. The series includes dual-core Arm
-Cortex-A72 application processors, dual-core Arm Cortex-R5 real-time
-processors, 256KB of on-chip memory with ECC, more than 1,900 DSP engines
-optimized for high-precision floating point with low latency.
+Add support for selecting the Memory Region that the GEM
+will do DMA to.
 
-More info can be found here:
-https://www.xilinx.com/news/press/2018/xilinx-unveils-versal-the-first-in-a-new-category-of-platforms-delivering-rapid-innovation-with-software-programmability-and-scalable-ai-inference.html
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ hw/net/cadence_gem.c         | 59 ++++++++++++++++++++++--------------
+ include/hw/net/cadence_gem.h |  2 ++
+ 2 files changed, 39 insertions(+), 22 deletions(-)
 
-
-In QEMU we'd like to have a virtual developer board with the Versal SoC
-and a selected set of peripherals under the control of QEMU.
-We'd like to gradually extend this board as QEMU gains more support
-for Versal hardware components. QEMU will generate a device-tree
-describing only the components it supports and includes in the virtual
-dev board.
-
-Before adding Versal support, this series starts with a few fixes to the
-GEM that I ran into when running recent kernels on the Versal and ZynqMP
-models.
-
-I also noticed a problem with HVC insns not being enabled when using
-QEMU's PSCI implementation on CPU's with EL2 and EL3 enabled. This causes
-problems for Linux/KVM guests, also fixed in this series.
-
-Best regards,
-Edgar
-
-ChangeLog:
-
-v1 -> v2:
-* Spell out OCM as On Chip Memory
-* apperture -> aperture
-* Remove copy+pasted virt board comment
-* Remove VMSD for Versal SoC (with a comment on why it's not needed)
-* Embedd AddressSpace dma object in GEM
-* Remove debug left-overs in arm-powerctl
-* Enable PMU in Cortex-A72
-* Rename cortex_a57_a53_cp_reginfo -> cortex_a72_a57_a53_cp_reginfo
-
-Edgar E. Iglesias (12):
-  net: cadence_gem: Disable TSU feature bit
-  net: cadence_gem: Announce availability of priority queues
-  net: cadence_gem: Use uint32_t for 32bit descriptor words
-  net: cadence_gem: Add macro with max number of descriptor words
-  net: cadence_gem: Add support for extended descriptors
-  net: cadence_gem: Add support for selecting the DMA MemoryRegion
-  net: cadence_gem: Implement support for 64bit descriptor addresses
-  net: cadence_gem: Announce 64bit addressing support
-  target-arm: powerctl: Enable HVC when starting CPUs to EL2
-  target/arm: Add the Cortex-A72
-  hw/arm: versal: Add a model of Xilinx Versal SoC
-  hw/arm: versal: Add a virtual Xilinx Versal board
-
- default-configs/aarch64-softmmu.mak |   1 +
- hw/arm/Makefile.objs                |   1 +
- hw/arm/xlnx-versal-virt.c           | 494 ++++++++++++++++++++++++++++
- hw/arm/xlnx-versal.c                | 324 ++++++++++++++++++
- hw/net/cadence_gem.c                | 192 ++++++++---
- include/hw/arm/xlnx-versal.h        | 122 +++++++
- include/hw/net/cadence_gem.h        |   7 +-
- target/arm/arm-powerctl.c           |  10 +
- target/arm/cpu64.c                  |  66 +++-
- 9 files changed, 1159 insertions(+), 58 deletions(-)
- create mode 100644 hw/arm/xlnx-versal-virt.c
- create mode 100644 hw/arm/xlnx-versal.c
- create mode 100644 include/hw/arm/xlnx-versal.h
-
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 759c1d71e0..a40f136285 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -28,6 +28,7 @@
+ #include "hw/net/cadence_gem.h"
+ #include "qapi/error.h"
+ #include "qemu/log.h"
++#include "sysemu/dma.h"
+ #include "net/checksum.h"
+ 
+ #ifdef CADENCE_GEM_ERR_DEBUG
+@@ -835,9 +836,9 @@ static void gem_get_rx_desc(CadenceGEMState *s, int q)
+ {
+     DB_PRINT("read descriptor 0x%x\n", (unsigned)s->rx_desc_addr[q]);
+     /* read current descriptor */
+-    cpu_physical_memory_read(s->rx_desc_addr[q],
+-                             (uint8_t *)s->rx_desc[q],
+-                             sizeof(uint32_t) * gem_get_desc_len(s, true));
++    address_space_read(&s->dma_as, s->rx_desc_addr[q], MEMTXATTRS_UNSPECIFIED,
++                       (uint8_t *)s->rx_desc[q],
++                       sizeof(uint32_t) * gem_get_desc_len(s, true));
+ 
+     /* Descriptor owned by software ? */
+     if (rx_desc_get_ownership(s->rx_desc[q]) == 1) {
+@@ -956,10 +957,10 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+                 rx_desc_get_buffer(s->rx_desc[q]));
+ 
+         /* Copy packet data to emulated DMA buffer */
+-        cpu_physical_memory_write(rx_desc_get_buffer(s, s->rx_desc[q]) +
++        address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
+                                                                   rxbuf_offset,
+-                                  rxbuf_ptr,
+-                                  MIN(bytes_to_copy, rxbufsize));
++                            MEMTXATTRS_UNSPECIFIED, rxbuf_ptr,
++                            MIN(bytes_to_copy, rxbufsize));
+         rxbuf_ptr += MIN(bytes_to_copy, rxbufsize);
+         bytes_to_copy -= MIN(bytes_to_copy, rxbufsize);
+ 
+@@ -993,9 +994,10 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+         }
+ 
+         /* Descriptor write-back.  */
+-        cpu_physical_memory_write(s->rx_desc_addr[q],
+-                                  (uint8_t *)s->rx_desc[q],
+-                                  sizeof(uint32_t) * gem_get_desc_len(s, true));
++        address_space_write(&s->dma_as, s->rx_desc_addr[q],
++                            MEMTXATTRS_UNSPECIFIED,
++                            (uint8_t *)s->rx_desc[q],
++                            sizeof(uint32_t) * gem_get_desc_len(s, true));
+ 
+         /* Next descriptor */
+         if (rx_desc_get_wrap(s->rx_desc[q])) {
+@@ -1099,9 +1101,9 @@ static void gem_transmit(CadenceGEMState *s)
+         packet_desc_addr = s->tx_desc_addr[q];
+ 
+         DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
+-        cpu_physical_memory_read(packet_desc_addr,
+-                                 (uint8_t *)desc,
+-                                 sizeof(uint32_t) * gem_get_desc_len(s, false));
++        address_space_read(&s->dma_as, packet_desc_addr,
++                           MEMTXATTRS_UNSPECIFIED, (uint8_t *)desc,
++                           sizeof(uint32_t) * gem_get_desc_len(s, false));
+         /* Handle all descriptors owned by hardware */
+         while (tx_desc_get_used(desc) == 0) {
+ 
+@@ -1133,8 +1135,9 @@ static void gem_transmit(CadenceGEMState *s)
+             /* Gather this fragment of the packet from "dma memory" to our
+              * contig buffer.
+              */
+-            cpu_physical_memory_read(tx_desc_get_buffer(s, desc), p,
+-                                     tx_desc_get_length(desc));
++            address_space_read(&s->dma_as, tx_desc_get_buffer(s, desc),
++                               MEMTXATTRS_UNSPECIFIED,
++                               p, tx_desc_get_length(desc));
+             p += tx_desc_get_length(desc);
+             total_bytes += tx_desc_get_length(desc);
+ 
+@@ -1145,13 +1148,15 @@ static void gem_transmit(CadenceGEMState *s)
+                 /* Modify the 1st descriptor of this packet to be owned by
+                  * the processor.
+                  */
+-                cpu_physical_memory_read(s->tx_desc_addr[q],
+-                                         (uint8_t *)desc_first,
+-                                         sizeof(desc_first));
++                address_space_read(&s->dma_as, s->tx_desc_addr[q],
++                                   MEMTXATTRS_UNSPECIFIED,
++                                   (uint8_t *)desc_first,
++                                   sizeof(desc_first));
+                 tx_desc_set_used(desc_first);
+-                cpu_physical_memory_write(s->tx_desc_addr[q],
+-                                          (uint8_t *)desc_first,
+-                                          sizeof(desc_first));
++                address_space_write(&s->dma_as, s->tx_desc_addr[q],
++                                  MEMTXATTRS_UNSPECIFIED,
++                                  (uint8_t *)desc_first,
++                                   sizeof(desc_first));
+                 /* Advance the hardware current descriptor past this packet */
+                 if (tx_desc_get_wrap(desc)) {
+                     s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
+@@ -1204,8 +1209,9 @@ static void gem_transmit(CadenceGEMState *s)
+                 packet_desc_addr += 4 * gem_get_desc_len(s, false);
+             }
+             DB_PRINT("read descriptor 0x%" HWADDR_PRIx "\n", packet_desc_addr);
+-            cpu_physical_memory_read(packet_desc_addr, (uint8_t *)desc,
+-                                sizeof(uint32_t) * gem_get_desc_len(s, false));
++            address_space_read(&s->dma_as, packet_desc_addr,
++                              MEMTXATTRS_UNSPECIFIED, (uint8_t *)desc,
++                              sizeof(uint32_t) * gem_get_desc_len(s, false));
+         }
+ 
+         if (tx_desc_get_used(desc)) {
+@@ -1500,6 +1506,9 @@ static void gem_realize(DeviceState *dev, Error **errp)
+     CadenceGEMState *s = CADENCE_GEM(dev);
+     int i;
+ 
++    address_space_init(&s->dma_as,
++                       s->dma_mr ? s->dma_mr : get_system_memory(), "dma");
++
+     if (s->num_priority_queues == 0 ||
+         s->num_priority_queues > MAX_PRIORITY_QUEUES) {
+         error_setg(errp, "Invalid num-priority-queues value: %" PRIx8,
+@@ -1537,6 +1546,12 @@ static void gem_init(Object *obj)
+                           "enet", sizeof(s->regs));
+ 
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
++
++    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
++                             (Object **)&s->dma_mr,
++                             qdev_prop_allow_set_link_before_realize,
++                             OBJ_PROP_LINK_STRONG,
++                             &error_abort);
+ }
+ 
+ static const VMStateDescription vmstate_cadence_gem = {
+diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
+index 00dbf4f72e..5426961d91 100644
+--- a/include/hw/net/cadence_gem.h
++++ b/include/hw/net/cadence_gem.h
+@@ -45,6 +45,8 @@ typedef struct CadenceGEMState {
+ 
+     /*< public >*/
+     MemoryRegion iomem;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
+     NICState *nic;
+     NICConf conf;
+     qemu_irq irq[MAX_PRIORITY_QUEUES];
 -- 
 2.17.1
 

@@ -1,96 +1,123 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2651992wrt;
-        Thu, 11 Oct 2018 08:24:28 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60G3oGvw3FuD4HtPcgyB2pR5C9H/7o+1KKii0SBisUsc3YGY2XviHakt10pQA2jNF7ez+us
-X-Received: by 2002:ac8:2e11:: with SMTP id r17-v6mr2035068qta.12.1539271467955;
-        Thu, 11 Oct 2018 08:24:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539271467; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2666112wrt;
+        Thu, 11 Oct 2018 08:35:35 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60mE//xXDQZk6yOaj7xE7ybaJg0Zq3bXo9VSKMrqOrC0VoaIHZdXqdyilKqXqBvj2VLg6zx
+X-Received: by 2002:a37:60c4:: with SMTP id u187-v6mr1979541qkb.234.1539272135387;
+        Thu, 11 Oct 2018 08:35:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539272135; cv=none;
         d=google.com; s=arc-20160816;
-        b=lCrWhUM2+TUC14Cf6oiQ2qCJmj9OG+xc4Us7gGvaxWORpBo2+oVwRd3k17OgeqAXTt
-         ONkOEEr4rimAvcGjgJyctkzcNRCFhE+DfFP8qA8B2oJRcN6azKDEx98w/4YeeNg+FvG2
-         Pf1gr2xph5nsfdJUixVVEOPaaNHrZcXwmhEriVxhWv3MGxiS2G50H47lqtighAnLPI84
-         2MiMlTfVomYdvSniR/yP/CLw1RUrI4lHPCHRQn2/fGR+UghSRrgaCYiCRhnzb+YubWpi
-         JdzR1SAxGczMaX0QEQKGdwAtQr+qqjsUMlrNABSX0ufZvX7nFNgGJTNf/6wS8Dvr4/L7
-         dZ1g==
+        b=T7yasyvjAQIm6884SVztSO9eAywS/+W9RugEYA4H0MuFcsqWm2ltRcmfMYt4YIMV1A
+         JDlPulL8kQb5Rq02+aIrRRi+Z7xP9eRKAUVsVHHRPNd1T1T4gly7P63TbXok9EqKoQX7
+         oGQJ/tpOKwdiNEscTDQV6xfJNEwJT7sDnlLB7NB9memk3CvTEmArmbKfFojBLeI8XaqF
+         yPIRZx1X2LGfZpqCFnGQKL4PjmKlXv4QaUtLqyEQrsby2S8BlwIkVaO2l/c612Hu3vW8
+         F5IyFOePZppvwSelqJE6DHGHSFHbua3Q9d4PXI0B8H7LNdB/seoE1Qw2zorhOYgC995T
+         1vLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=GhZp7qIyyzbvFwWEFTvOfOXcpSLNRZCAErhrQKiMIg8=;
-        b=BWMk/7wdtWJ1vENPykoBqPIBmDdqRBc6J/1mJIm6qVjydWhb0Az7g53ZwLpDpSGSV5
-         bWmyKlGz9iMTW/DCGwvqo98BTbHs+7kpNcybAysdFN8dD8t4eZhjcjMxrDUXpkMK4Nup
-         Ytmd+Bhv7V51Ly/Nkt9Qc5WjbL7+3AnnxgNNXQcPKwP0vcQnt3CG1XY8fOY1ZTlesDIo
-         3T9IYwRevAWF3SJMc9fKSEfk7PeJRs4dyzKYljf/bWu7iTcpS0NYxNsjyppbB2zBH4o9
-         ypqsWWOUzEmvTtqnubMw5GmfoqDxiTFcQ8InMy+hZAv0WrUX2ecLf8dde1Sh1pfCcHUn
-         oc9g==
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
+        bh=9giHznzMCe+XBjQScuCmCI+SFIM1dPUclsky3Jw47tk=;
+        b=YhINAbsPst3eoDuXjbsSo1M4VbdIGPqXc5y201gJXrK9XlY9xwzIhPhyD8DX8NOp+1
+         94RjX8iaI83kyJb7o2SdfifGFJRnIqCT0XUPmnDhNDJE8S7+ZXoC8eFGLrU1Q932N1RG
+         YfvfxRoDXP7GnvrqDilRFgjvJJ9efbnLhXh/oQENjB17lit1psRlkts6VoQmH+zb4ccB
+         LGOjNtwOgqkuHCAJ1OPz8yDKOoA7u2mEVRfifnPl9MCqI7WLkl0jUSvJt+89r/lixEJ3
+         YMfM+QG/eT1RM9mxtRzCKn1/hn6lw07b79jZkg6q6vYsut60kr0cX93i8AM2S3UQ49ed
+         oKlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v78-v6si2539281qkg.90.2018.10.11.08.24.27
+        by mx.google.com with ESMTPS id e17-v6si160627qkm.130.2018.10.11.08.35.35
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Oct 2018 08:24:27 -0700 (PDT)
+        Thu, 11 Oct 2018 08:35:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35097 helo=lists.gnu.org)
+Received: from localhost ([::1]:35156 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gAcp8-0003n8-Qm
-	for alex.bennee@linaro.org; Thu, 11 Oct 2018 11:24:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34166)
+	id 1gAczu-0000Bb-R4
+	for alex.bennee@linaro.org; Thu, 11 Oct 2018 11:35:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37600)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gAcou-0003l3-6Q
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 11:24:13 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1gAczl-0000BS-Sk
+	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 11:35:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gAcoq-0001nT-Uu
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 11:24:12 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:35604)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gAcoq-0001mw-Ma
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 11:24:08 -0400
-Received: by mail-wr1-f68.google.com with SMTP id w5-v6so10177121wrt.2
-	for <qemu-arm@nongnu.org>; Thu, 11 Oct 2018 08:24:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=GhZp7qIyyzbvFwWEFTvOfOXcpSLNRZCAErhrQKiMIg8=;
-	b=oHYzyIdMBkcVUX54cYoGhcCqrUSdyK1zT5CeZV0aUbazMkjFqlaP56KMnZ4RmilxEy
-	Ii/1nf7y17K0+VC2koOOLeGdblVKXXMv24I4pGd0bwBjfwB9m5SzjUdSwKnNdLP3XfTE
-	AHfF5tlLfyqyLWvJc8G1qjY9bPKvsCCHiTn64+z0CDiilGivZeK3cyA1hS/frhMnc9qZ
-	4L01MSzQyJNOrUvHCsNt8sh19wmyKS8X7FFNkjxKLBgNkZAn067uTSaQQ+XV9NuSoTXA
-	gEVeOHzTBQe2BuSi4H7DWnTu4j4SIt7nIbhWOACDd+4i6SGG5u1T4ObbgRat3rSn9HuT
-	AW1w==
-X-Gm-Message-State: ABuFfogDRH1V+IpujfW/TJyE7q6x95YOpINOYPfVe6ap/hruhknC5Nfz
-	5c9sC3T0iNE/6HNj/ntGEVyt9A==
-X-Received: by 2002:adf:f346:: with SMTP id e6-v6mr1916814wrp.49.1539271447645;
-	Thu, 11 Oct 2018 08:24:07 -0700 (PDT)
-Received: from [10.201.33.229] ([195.166.127.210])
-	by smtp.gmail.com with ESMTPSA id
-	t194-v6sm26034812wmd.48.2018.10.11.08.24.02
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 Oct 2018 08:24:06 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>, Prasad J Pandit <ppandit@redhat.com>
+	(envelope-from <pbonzini@redhat.com>) id 1gAczg-0002OB-R2
+	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 11:35:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10584)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1gAczg-0002NI-In; Thu, 11 Oct 2018 11:35:20 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4074481F0D;
+	Thu, 11 Oct 2018 15:35:18 +0000 (UTC)
+Received: from [10.36.118.43] (unknown [10.36.118.43])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 19C551057041;
+	Thu, 11 Oct 2018 15:34:53 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Prasad J Pandit <ppandit@redhat.com>
 References: <20181011131413.22208-1-philmd@redhat.com>
 	<7762db82-6044-df69-a1b7-c05100a0e938@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <4b664769-9830-e186-05c4-132a8cfc423b@redhat.com>
-Date: Thu, 11 Oct 2018 17:24:01 +0200
+	<4b664769-9830-e186-05c4-132a8cfc423b@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <8d285029-2b6f-a841-2489-c6761e62c02c@redhat.com>
+Date: Thu, 11 Oct 2018 17:34:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <7762db82-6044-df69-a1b7-c05100a0e938@redhat.com>
+In-Reply-To: <4b664769-9830-e186-05c4-132a8cfc423b@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Thu, 11 Oct 2018 15:35:19 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] chardev: Convert IOReadHandler
  to read an unsigned number of bytes
 X-BeenThere: qemu-arm@nongnu.org
@@ -136,36 +163,51 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Michael Walle <michael@walle.cc>, "open list:sPAPR" <qemu-ppc@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A+V9HVYKU9ht
+X-TUID: 7JcADEplfXE4
 
-On 11/10/2018 17:14, Paolo Bonzini wrote:
-> On 11/10/2018 15:14, Philippe Mathieu-Daudé wrote:
->> The number of bytes can not be negative nor zero.
->>
->> Fixed 2 format string:
->> - hw/char/spapr_vty.c
->> - hw/usb/ccid-card-passthru.c
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> See: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg02212.html
-> 
-> Not that easy; you need to adjust qemu_chr_be_can_write,
-> qemu_chr_be_write_impl, qemu_chr_be_write (which is where the callbacks
-> are invoked).
+On 11/10/2018 17:24, Philippe Mathieu-Daud=C3=A9 wrote:
+>> On the other hand, fd_chr_read_poll is not an IOCanReadHandler, and th=
+is
+>> patch therefore probably doesn't compile?
+> It does compile.
+>=20
+> fd_chr_update_read_handler() uses fd_chr_read_poll with io_add_watch_po=
+ll():
+>=20
+> GSource *io_add_watch_poll(Chardev *chr,
+>                         QIOChannel *ioc,
+>                         IOCanReadHandler *fd_can_read,
+>                         QIOChannelFunc fd_read,
+>                         gpointer user_data,
+>                         GMainContext *context);
 
-OK.
+Oh, that's somewhat weird.  It could just as well return a bool.
 
-> On the other hand, fd_chr_read_poll is not an IOCanReadHandler, and this
-> patch therefore probably doesn't compile?
+However, this made me notice that you need to change e.g. s->max_size's
+declaration (in include/chardev/char-fd.h) from int to size_t, and
+likewise for: 1) all users of s->max_size, such as len in fd_chr_read;
+2) all the similar variables in other char backends.
 
-It does compile.
+So it's probably best to structure the series as follows:
 
-fd_chr_update_read_handler() uses fd_chr_read_poll with io_add_watch_poll():
+1) change fd_can_read from IOCanReadHandler to a GSourceFunc (which
+returns a boolean value), changing all "return s->foo" to "return s->foo
+> 0;".  Then you can remove the > 0 from
 
-GSource *io_add_watch_poll(Chardev *chr,
-                        QIOChannel *ioc,
-                        IOCanReadHandler *fd_can_read,
-                        QIOChannelFunc fd_read,
-                        gpointer user_data,
-                        GMainContext *context);
+    bool now_active =3D iwp->fd_can_read(iwp->opaque) > 0;
+
+(Having the > 0 repeated in all backends is now a bit ugly, but there
+are future cleanup opportunities here to move the qemu_chr_be_can_write
+call to qemu_chr_be_can_write; this way most chardev backends can skip
+defining a read_poll function.  But I digress).
+
+2) assert in qemu_chr_be_can_write that the returned value is >=3D 0
+
+3) for each backend, change the assigned variable from int to size_t
+
+4) now the rest of your patch, touching all front-ends.  The assertion
+from (2) now does not make sense anymore, since ->can_read returns an
+unsigned value, but perhaps you can keep a "fail-safe" assertion that
+(ssize_t)returned_value >=3D 0 to catch undesired overflows.
+
+Paolo

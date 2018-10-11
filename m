@@ -1,159 +1,156 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1814385wrt;
-        Wed, 10 Oct 2018 19:23:25 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63foKqF5TEYlRq1R4uBwzWUVUSTgV4x+ydl0TkTEB0BaN/FycsaqbV31lQZl7xukY4/Yhud
-X-Received: by 2002:aed:2d86:: with SMTP id i6-v6mr28887111qtd.279.1539224605897;
-        Wed, 10 Oct 2018 19:23:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539224605; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1814402wrt;
+        Wed, 10 Oct 2018 19:23:26 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60iYfQCBVk7esVb1owayAwfKkf+Oox/Iz7+0Bp0+ZoSKFMtVkgnm3tr9H7uYpqLdxa8Cpm/
+X-Received: by 2002:a0c:d927:: with SMTP id p36mr15537652qvj.181.1539224606521;
+        Wed, 10 Oct 2018 19:23:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539224606; cv=none;
         d=google.com; s=arc-20160816;
-        b=p5xG44smWYGm0wQTPjrCmj6t3u3li0h5RQqg9inTFYKh8aw8gFiN0rdcSvTCTA7Laf
-         pqZaYa+iujaPpbhXWSE2La5cI5tDJDcgqMTBJHs8j4566wcWBuF4HBVaXGSushtf/PGp
-         l73/7oE7EVre8Ld/DOIs37sLYzRRixO15hMJjl/VOOb8Omjb6rDa6s9NuYtblEXJycd+
-         iRSD1yD+K/4elUVp/x9m9uPbEgpv2dMcNSoq28hlWGM7RrcA2CQ9Ww9PxjLczZ8QQJw5
-         OTvUbGW3gCQrv2Ke2DXPmJ7NHZeKej7FwHbMP83o2g0uEY3Yhf1b3cIeGCcin+ApGDnR
-         BliA==
+        b=PbG9wjY9i0SE2WlU7ftzKJ9Dn3FO7HcYl4lTBotKzKH0Ob28VybrA1s3fDfjXr/MRZ
+         FD6400JSsIB6TSnTmaTn7LJ7t/LuhUZsND8QMtDfIoPpCJLM5sSsYMbL2Z9r6k+Dz8mu
+         QoCByOoiVMD0hu70+BK5UxEH1D5Mv4bdx8h/KLoV46xSbRO4IDACoPBizZLtIkCt76zR
+         nEWVKPDU+ZWmiWauZwyd52qn8STaPc/0I8f0Vhdy1uSR1jXL3qI4WcqzTbfYHO6vo5FZ
+         8P+hAqEhjiicCbvTX8aiNCBgk9wLYv6NMK1nUi29I35jrksuEJXaaNiCFFBVaDgfCq0t
+         fCPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=wQ033kISS2KsCWH3vuSZoNhCRQlAdDq8kj54pJg4qpA=;
-        b=ezltOF+m24WO4uhU47eIifxQ3CWVIcg4uG2EFFDKNvWPas0CXzlP71kTfGDQrWdWVi
-         ZC08w/EfN6dIiTwWRhtSavsmzHrkEfz0h6vVdeH4V8sDeZ+0amF99ibZtql85HV3rWB9
-         7Nf/yXPPnSVf4VcuhYjzkl3tKU5xi6XEFvHszfcInVx9u2ePM5YqGan8eeOF7IZRhOON
-         pjeaACP4lGz79sjtt2AYgTrK1ekAA1c7op4bG+CKO6P4A0seaUrVMa+qoiL7Fu6pxa+2
-         k7ixehX+X7+l0nlrQFUv07ToSq8bbJ+rzTlPRvldoV+8czesYkSXVWeXQyE8mg2uiNdj
-         Y+Cg==
+        bh=n4iHFXGonYr7tDAd30fweyW8DUKwSqMMRaT5TOdocK4=;
+        b=0BS6Yuv+N8Gw1PCIdyG2B9IzvR5BfA/bHe9H/Y0ngRn/8MNLA0qJ/kohAYvo08f4A5
+         CuFnolZzwn3FZflwMWByvY9ho41y0At9IvEbdfJrMn4x8dS+KdgipEh38v4Cgy1vg5C+
+         Te0KkWLOR8dfrxQ8OK82QttyF2JUp8azOc2b/o7wejTqaKO+Xxf0s1+CI/3JfpwLEy9z
+         /pPOSuu97Diwyu52x9hQBQ5x8iqk2awb0tdQxAX5HF6S/TofAc0Lzm/oeR8M/GP2ocWb
+         F9DhQGatnsfh6TpTFvO+NzSxJOKIeZO9XHbxv/Y8/lVJfKBnM8PB/cj5eOcSbsiaQiy7
+         dsCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PPNmK3Kj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jujuEiLp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n12-v6si1257647qta.256.2018.10.10.19.23.25
+        by mx.google.com with ESMTPS id i22si767591qvg.194.2018.10.10.19.23.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 10 Oct 2018 19:23:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 10 Oct 2018 19:23:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PPNmK3Kj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jujuEiLp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59969 helo=lists.gnu.org)
+Received: from localhost ([::1]:59974 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gAQdJ-0004e0-CM
-	for alex.bennee@linaro.org; Wed, 10 Oct 2018 22:23:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48545)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gAQdJ-0004xj-VB
+	for alex.bennee@linaro.org; Wed, 10 Oct 2018 22:23:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48740)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZg-00028m-4o
-	for qemu-devel@nongnu.org; Wed, 10 Oct 2018 22:19:40 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZt-0002I1-QE
+	for qemu-arm@nongnu.org; Wed, 10 Oct 2018 22:19:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZd-0004KB-Pi
-	for qemu-devel@nongnu.org; Wed, 10 Oct 2018 22:19:40 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:35899)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gAQZt-0004TB-04
+	for qemu-arm@nongnu.org; Wed, 10 Oct 2018 22:19:53 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:46867)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1gAQZd-0004Jd-He; Wed, 10 Oct 2018 22:19:37 -0400
-Received: by mail-lf1-x144.google.com with SMTP id d4-v6so5480780lfa.3;
-	Wed, 10 Oct 2018 19:19:37 -0700 (PDT)
+	id 1gAQZp-0004QD-4T; Wed, 10 Oct 2018 22:19:49 -0400
+Received: by mail-lj1-x241.google.com with SMTP id x3-v6so6705921lji.13;
+	Wed, 10 Oct 2018 19:19:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=wQ033kISS2KsCWH3vuSZoNhCRQlAdDq8kj54pJg4qpA=;
-	b=PPNmK3KjrNmGLAl72WRFpP/1ckZiW5TutFPQhQJNb2JkJWprW4s6Ir/Ew4AyyyvLjh
-	3vISyjUXRwaii0DdMAWtw02jzff8ht/C9WMShRraNixWYQXfaO/BZANrna/tic093yMG
-	hZjX2luOPhA/uTxPu10ABHMpY1U1PA7bmOssXTX4F4s/zj6k6tr0Jm5wETW5ZgRVNQhe
-	jyVkGZFZg6HBWa/3IMRccduOeEuouvNpGYMcE9vyCO+NULR2pRbMlPcwRI5+YOMxzGBB
-	hNejH8Bq/TyAspBdUqvtlGB+eC3Aq+n90hCqa42MDAyFxvvl5oigRl8mfoh9iQWG7CFs
-	q1MQ==
+	bh=n4iHFXGonYr7tDAd30fweyW8DUKwSqMMRaT5TOdocK4=;
+	b=jujuEiLpteV/Y08ZEmcBkAvqFQrW/TkmNmi9/PjME1kjB1LyQIIZOOBn/8yhYMkmPi
+	aZbn46sM1xQtDAix4nobrUC+em2jBBJJYfx/gYa0VrSfb/5uehiuSs+apXkP4LX+2tkI
+	80AIlr6lWuh0/mFN/Gc/qB8G9IsRoIgUIb49i6LhppHpQMmmuu9SLP8xbuoynrI/B1MS
+	mc+I9Xqt7JqTdVjrs4LwSqC5h8gNgCol4Bg6aD4mhH3xziE12BrvSDCpx+jLbD5tPwOy
+	o+qxk5lMlR/lvx9xOdvW2IyOIdx5ZLDScpuzKAVCGZSnin+WFQOovHtUhwUzhoSYhX/9
+	zvyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=wQ033kISS2KsCWH3vuSZoNhCRQlAdDq8kj54pJg4qpA=;
-	b=LGwubprJpiXpvArYc1+FExz2beGh+jiTyzv1RTquVgPzC/zAse2i2Msseec5ayW50w
-	49Pp0gvbXNEzazz6jAv8A62owQ+QWTv61vzD3y0I8xZzhraoIrPTcoUv6UL149enWQtj
-	wM9t9rvPAlh0lQtZ+y+1Fqp5mPHqvqxLuYxLneCefm5yyc8B2cy3mkK4gBz99rsc6alH
-	KL2qAzox9He0eAgOkY+qWja8k3Q4aUP5wHpJBAYrOADVRsQviWjc+BMoCCUJjtPScLq2
-	v0NwZ54T/CvwxvLuJpRzUwJoX0baUJok+ptlW/6ri+xaZHz8Yvc8zGtvvTbkvfZB/Ec+
-	Bc4A==
-X-Gm-Message-State: ABuFfohNaoZXCu4f5+8yekBEtsudtVelmVm9SZncxAt4+0jkG4+P8Me3
-	oDBEtnroiJQdYkUaH7fhYvJufD6p/BM=
-X-Received: by 2002:a19:3bcf:: with SMTP id
-	d76-v6mr18989086lfl.126.1539224375885; 
-	Wed, 10 Oct 2018 19:19:35 -0700 (PDT)
+	bh=n4iHFXGonYr7tDAd30fweyW8DUKwSqMMRaT5TOdocK4=;
+	b=ZrG2gkGHoCeGpBCq8AfMcr1Nbr8pN1ec+bfqO4Ru7ka1Eg9kDJljpAbT39BRy20Du2
+	lP6TkIlXdwjXg8riANHnbDHNY0nL2ENNv/bORmHnNv1p+fxjehuxnWqCJhaKWdPBiAHW
+	gGqddw1RGS3sK4gYSopetHU6Yv1jNsHVgDff82Eo2nJpAM71V2sTePQOo9yx7vIfEnxS
+	Bw+0P0E5LiyTV10ekbiY1ZX92bu1NEEAzFrl+qcD4GeQPGTy5tyBwElQHWKm/IBSEt2I
+	Hk/AAaF/z+MMOuJvD6n1S1fz1nY0y//3wUQ/TPxq2kmqZruKv4xSMrIWqp76NnvzR3T0
+	XH4A==
+X-Gm-Message-State: ABuFfoge4QnJheFHDeKiH1XXzSa0xXN0muPB+95aEVONHuhzwa7d1osk
+	cQU9uQ6R1f+gK2/GoDe4iO7dgbE5Xb8=
+X-Received: by 2002:a2e:591d:: with SMTP id
+	n29-v6mr21784774ljb.70.1539224387657; 
+	Wed, 10 Oct 2018 19:19:47 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
 	by smtp.gmail.com with ESMTPSA id
-	k23-v6sm5691008ljc.49.2018.10.10.19.19.34
+	k18-v6sm3528997ljk.58.2018.10.10.19.19.46
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 10 Oct 2018 19:19:34 -0700 (PDT)
+	Wed, 10 Oct 2018 19:19:46 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Thu, 11 Oct 2018 04:19:21 +0200
-Message-Id: <20181011021931.4249-3-edgar.iglesias@gmail.com>
+Date: Thu, 11 Oct 2018 04:19:28 +0200
+Message-Id: <20181011021931.4249-10-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20181011021931.4249-1-edgar.iglesias@gmail.com>
 References: <20181011021931.4249-1-edgar.iglesias@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::144
-Subject: [Qemu-devel] [PATCH v2 02/12] net: cadence_gem: Announce
- availability of priority queues
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::241
+Subject: [Qemu-arm] [PATCH v2 09/12] target-arm: powerctl: Enable HVC when
+ starting CPUs to EL2
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
 	edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
 	frasse.iglesias@gmail.com, alistair@alistair23.me,
 	richard.henderson@linaro.org, frederic.konrad@adacore.com,
 	philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yHutW1pngdRh
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r0dbe5N8qYdK
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Announce the availability of the various priority queues.
-This fixes an issue where guest kernels would miss to
-configure secondary queues due to inproper feature bits.
+When QEMU provides the equivalent of the EL3 firmware, we
+need to enable HVCs in scr_el3 when turning on CPUs that
+target EL2.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/net/cadence_gem.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ target/arm/arm-powerctl.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index e560b7a142..901c173970 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -1213,6 +1213,7 @@ static void gem_reset(DeviceState *d)
-     int i;
-     CadenceGEMState *s = CADENCE_GEM(d);
-     const uint8_t *a;
-+    uint32_t queues_mask;
- 
-     DB_PRINT("\n");
- 
-@@ -1229,7 +1230,10 @@ static void gem_reset(DeviceState *d)
-     s->regs[GEM_DESCONF] = 0x02500111;
-     s->regs[GEM_DESCONF2] = 0x2ab13fff;
-     s->regs[GEM_DESCONF5] = 0x002f2045;
--    s->regs[GEM_DESCONF6] = 0x00000200;
-+    s->regs[GEM_DESCONF6] = 0x0;
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index ce55eeb682..2b856930fb 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -103,6 +103,16 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+     } else {
+         /* Processor is not in secure mode */
+         target_cpu->env.cp15.scr_el3 |= SCR_NS;
 +
-+    queues_mask = MAKE_64BIT_MASK(1, s->num_priority_queues - 1);
-+    s->regs[GEM_DESCONF6] |= queues_mask;
++        /*
++         * If QEMU is providing the equivalent of EL3 firmware, then we need
++         * to make sure a CPU targeting EL2 comes out of reset with a
++         * functional HVC insn.
++         */
++        if (arm_feature(&target_cpu->env, ARM_FEATURE_EL3)
++            && info->target_el == 2) {
++            target_cpu->env.cp15.scr_el3 |= SCR_HCE;
++        }
+     }
  
-     /* Set MAC address */
-     a = &s->conf.macaddr.a[0];
+     /* We check if the started CPU is now at the correct level */
 -- 
 2.17.1
 

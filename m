@@ -1,117 +1,100 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2725265wrt;
-        Thu, 11 Oct 2018 09:20:39 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60d8Bpcwm2WkTRc1tt0jQcfSv0Ojxd7VmxhkwTFQyNmYu1Yl5D02LLOOvvoONPq4FKDPjrU
-X-Received: by 2002:ac8:1a95:: with SMTP id x21-v6mr2227588qtj.44.1539274839241;
-        Thu, 11 Oct 2018 09:20:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539274839; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2729344wrt;
+        Thu, 11 Oct 2018 09:23:59 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62cSAF5L+NnxG+iwHL3l3uNk4oRvnxf9IxQvrPkEDYg+gzujPXaq23j95KvPbs/bVL8NESb
+X-Received: by 2002:a0c:ea8c:: with SMTP id d12-v6mr2288372qvp.100.1539275039117;
+        Thu, 11 Oct 2018 09:23:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539275039; cv=none;
         d=google.com; s=arc-20160816;
-        b=hO+VB/xgheFGX9v0jC+XSgZBZFIVbGDVOaAgcTVbOk+utuYh8k0ZB0XDn7BaHY/Lp/
-         BrUsWgk9e5dsru+OHp1mE5XTi4AHyXmyMu3XPYjKYZUnGhRFAREqGY7p0XwJyLg78x2I
-         53gPO6MO++ob1SUOYqdAcaXniHY2CO88CaXQsENTewungB+VhcAONw8oilPjatD0IKpE
-         VvzlZObLtGLJFZ20Mx09vYRGmis8a3k01DvcO128kb2Zoz6d7T8w8jE8q9gLFDE2BmZi
-         6tDH151+mvFs8K54biFXS91nZuWlT7d4A3n2Us2Taa2V8VrgwV3Lkd9qMfXX0X+CCjAw
-         HLjQ==
+        b=j3N5B+MGsTS/WjUnbuILTtw+9fRWKbJ+zckWycQHyrRp6B2ocYTniwDfntO0UeLCiK
+         CaSR2vr8nqo0ff71ISa3hQpBnTunZsU4/CQwNr9Aj/flP38/OzpweuXZ2lSrQUgHNfdx
+         ZWOvBJ575BD/O3raeCU7e+zclJZq5gXRZ8eNjyI0ltuQBgn3aQ3CeZ4E88HDqOemb1aO
+         CvCPt5lM89ihVgA71yhdu3kSqrqyzf5uOJRkfynBYHOltO4JGf3VX90TFDzuNLNY+hay
+         I4DwbaxDr912fQtHVzb1CNqP/Ncpc59UKZ6gmVVQdZ74xJ6rPYvPacjcGAzhu9HneJXY
+         0x5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature
-         :dkim-signature:dkim-signature;
-        bh=Mxim8UKpYB36R18DBfNzbpKG7nVwLhDEFkykqIF6mIY=;
-        b=K+jV7JRUaczFDBjiUjv17HSQyhhTbtrP6noZa59E75O9CaQRKwA3BQpihbpi9IeBif
-         cGVB9PK33qFImhFcL3NhQxb8BFrvZC38/TIeQaafZX9/eF+COfNsx2Aj0ebHzKHILHjm
-         7u+7I1MOKBynyeASjgIpdMRKlgbAvGKVTEbWYrdIzrL/rPrPYK+BpzobD3AjQQafuzCF
-         XiXFBLbrKNpdw6I0d7tvvxlRl+v5cnExrHWn1FZoNyZsnyTocGZy3PsJ9KnyPADT88y3
-         uq3hmC5p2P0Qqm0usVr3Wz5M/uBUUu+yFWTrsvwD9W6BE8y5wvivFejEUkfiifIj/l/d
-         rXvA==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=gimnkCYNLVB14HAnV7eSWYMT+/M2HNaJdrUcOkdUySI=;
+        b=bJxITo5ONYIkXZTjRCg5dMQwCKIxcAQdI/Si0rqj8+IT4sTkhOxUM+79psmkX9+UZx
+         ON69WMl6+tR20kChVuruppySVzoXYWJdi1F6JSJfa3rH6zNyuNo5XUkHZch/KW1whO2Y
+         J/IeeHGwoaB5HbOsAShlDBwgmWfAFdavz/pyX0muHqyBgI9GF+firnNqtbSQV2+HSLJM
+         UHOaQglb0CySZqjMWpP5067k9KXXnn/IXYBpbp1wD00WsO4ibLPaSv1RGW8HYINdUHeg
+         rOy/8iehepJ/e6AkNlN9xXj2GYQ4p76lsorr0TA/aFEHrWui0UcrmUUgEI0TaoAowhRw
+         ZHeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=SR1VuTgr;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=QkdIPeeA;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=QkdIPeeA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="QqdGb/hH";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d54si2596999qvd.147.2018.10.11.09.20.39
+        by mx.google.com with ESMTPS id e131-v6si372072qkb.207.2018.10.11.09.23.58
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Oct 2018 09:20:39 -0700 (PDT)
+        Thu, 11 Oct 2018 09:23:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=SR1VuTgr;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=QkdIPeeA;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=QkdIPeeA;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35429 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="QqdGb/hH";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35442 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gAdhW-0006mp-Nv
-	for alex.bennee@linaro.org; Thu, 11 Oct 2018 12:20:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50067)
+	id 1gAdkk-0007kM-Kv
+	for alex.bennee@linaro.org; Thu, 11 Oct 2018 12:23:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1gAdhP-0006mc-5a
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 12:20:31 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gAdkZ-0007jy-9m
+	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 12:23:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>) id 1gAdhL-0005mS-7O
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 12:20:31 -0400
-Received: from greensocs.com ([193.104.36.180]:49507)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <damien.hedde@greensocs.com>)
-	id 1gAdhI-0005fh-HS; Thu, 11 Oct 2018 12:20:25 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id 939DF6FD87;
-	Thu, 11 Oct 2018 18:20:13 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1539274813;
-	bh=7AK0WfmqhkbPU6UOj7O71WJnGz0MbSRyLGX18PT8UUU=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=SR1VuTgrf6MQmm6l7MgNpwVP3lQuBz1JlpLGkFsJQ5huqoR8QtM3Cm7pZxmrYJXJ4
-	0OVIav856LeLlIJFJDo2DgPKWFaK7M+KjllHf65gvQP3QWVxNdaO8RMpPfT9QyCjiq
-	OlAsA8TZTSGA2nJF/JKPER2oaZ9FDHZnh0nVfQS8=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=QkdIPeeA;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=QkdIPeeA
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6JP8wEUsyW8j; Thu, 11 Oct 2018 18:20:12 +0200 (CEST)
-Received: by greensocs.com (Postfix, from userid 998)
-	id C708A6FD8B; Thu, 11 Oct 2018 18:20:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1539274812;
-	bh=7AK0WfmqhkbPU6UOj7O71WJnGz0MbSRyLGX18PT8UUU=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=QkdIPeeAipqV3/Og/bG/3I1/suvTLnWxCoXVNiceyRvHIQQI0MH4iZIG8NgnUvAUp
-	tpFgF2nfbIV/0bM01Ozk8d4hqXofT4uvQM6ql1M+H89Mx/Ql/lITdmDOmr490nN1L+
-	vJSqlwSdbxKZ+7xY5TDsr2SG3rZnvoV4+dWBQuog=
-Received: from [172.16.10.171] (antfield.tima.u-ga.fr [147.171.129.253])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: damien.hedde@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id CBBD16FD87;
-	Thu, 11 Oct 2018 18:20:11 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1539274812;
-	bh=7AK0WfmqhkbPU6UOj7O71WJnGz0MbSRyLGX18PT8UUU=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=QkdIPeeAipqV3/Og/bG/3I1/suvTLnWxCoXVNiceyRvHIQQI0MH4iZIG8NgnUvAUp
-	tpFgF2nfbIV/0bM01Ozk8d4hqXofT4uvQM6ql1M+H89Mx/Ql/lITdmDOmr490nN1L+
-	vJSqlwSdbxKZ+7xY5TDsr2SG3rZnvoV4+dWBQuog=
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
+	(envelope-from <peter.maydell@linaro.org>) id 1gAdkV-0007en-Sn
+	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 12:23:45 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:44427)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gAdkT-0007dP-TX
+	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 12:23:43 -0400
+Received: by mail-ot1-x341.google.com with SMTP id p23so9484994otf.11
+	for <qemu-arm@nongnu.org>; Thu, 11 Oct 2018 09:23:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=gimnkCYNLVB14HAnV7eSWYMT+/M2HNaJdrUcOkdUySI=;
+	b=QqdGb/hH2yftOh0aPnynUuR6FCpat8MM1HMueKfVaCoYZqXIF7CPNc627i6Xb3w3aJ
+	XqVSEdZdm0MZ0zKYCpgcNA/L0grB2CGaaGAvEytOrcA7Xv05rhPHDrMXRaPWYip/sFSa
+	0sQsqNYQG8t05bjxvE+OV2aDdqKu9zpiDjbNk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=gimnkCYNLVB14HAnV7eSWYMT+/M2HNaJdrUcOkdUySI=;
+	b=dyRySCEP9eUGrVvkgIzKv/aUBhy6asrY8LV3bd/ZA6+jrSBktNdoNMR10lTTW525bq
+	liSZcxFyiYmX1C0NSRWkZ1KnDvGUucgGlvZrMuklSI7scA8xxVWe/S7itqg34FiTK8Di
+	3k0FWbQM8Xmr+2poxIgAufZ7D//UQ6WDqZtVUOe2eN56+vAgspVmYyDkgVQxtq6z3z/l
+	gSHocarr4ygpQ4sQX6Yk/re3xCOnEfCKGk/6P3jZwRuIJIjfRmYF/Xgljge+1Q41Mi95
+	67ubyMUktSuYYO93GIcuoT3SwBuLJX9tDck11na5q0rgH3UCxHtXFr9K2Hr63LWLRBJl
+	eRSw==
+X-Gm-Message-State: ABuFfojRW42uW73LqgT3pg1B8/lZfuZGNv0BpfeysAGVbrh3WGCjtWvc
+	rMBn6Ki9K6z9p+YMM+SFxvZinoOZYJJYtgRcMKAehA==
+X-Received: by 2002:a9d:2377:: with SMTP id k52mr1498025otd.238.1539275020710; 
+	Thu, 11 Oct 2018 09:23:40 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP; Thu, 11 Oct 2018 09:23:20
+	-0700 (PDT)
+In-Reply-To: <2dddf6d3-4362-9ed1-18b5-f927e850c10f@greensocs.com>
 References: <20181002142443.30976-1-damien.hedde@greensocs.com>
 	<08d9d1e0-3c37-4b69-bb68-bf993b91289a@redhat.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <2dddf6d3-4362-9ed1-18b5-f927e850c10f@greensocs.com>
-Date: Thu, 11 Oct 2018 18:20:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
-MIME-Version: 1.0
-In-Reply-To: <08d9d1e0-3c37-4b69-bb68-bf993b91289a@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
+	<2dddf6d3-4362-9ed1-18b5-f927e850c10f@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Oct 2018 17:23:20 +0100
+Message-ID: <CAFEAcA-mv2k=fe_QoBpdow4afm6QR2BPAAaD+aC3hdxEfvcPAw@mail.gmail.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 193.104.36.180
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 0/9] Clock framework API.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -124,53 +107,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org,
-	Thomas Huth <thuth@redhat.com>, alistair@alistair23.me,
-	mark.burton@greensocs.com, saipava@xilinx.com,
-	qemu-arm@nongnu.org, pbonzini@redhat.com, konrad@adacore.com,
-	luc.michel@greensocs.com
+Cc: Edgar Iglesias <edgar.iglesias@xilinx.com>, Thomas Huth <thuth@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Mark Burton <mark.burton@greensocs.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Sai Pavan Boddu <saipava@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, konrad@adacore.com,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ifrE10Gbioa
+X-TUID: pMg9Ff04w+6y
 
-
-Hi Philippe,
-
-On 10/4/18 6:13 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi Damien,
->=20
-> On 02/10/2018 16:24, Damien Hedde wrote:
->> This series aims to add a way to model clocks in qemu between devices.
->> This allows to model the clock tree of a platform allowing us to inspe=
-ct clock
->> configuration and detect problems such as disabled clock or bad config=
-ured
->> pll.
+On 11 October 2018 at 17:20, Damien Hedde <damien.hedde@greensocs.com> wrot=
+e:
+>
+> Hi Philippe,
+>
+> On 10/4/18 6:13 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Hi Damien,
 >>
->> [...]
+>> On 02/10/2018 16:24, Damien Hedde wrote:
+>>> This series aims to add a way to model clocks in qemu between devices.
+>>> This allows to model the clock tree of a platform allowing us to inspec=
+t clock
+>>> configuration and detect problems such as disabled clock or bad configu=
+red
+>>> pll.
+>>>
+>>> [...]
+>>>
+>>> Any comments and suggestion are welcomed.
 >>
->> Any comments and suggestion are welcomed.
->=20
-> How would you instanciate devices and connect their clocks from the
-> command line (with the -device option)?
-I didn't not thought about that. I'm not sure to understand how this is
-done for a gpio for example. Is this done by setting the link property
-manually ?
+>> How would you instanciate devices and connect their clocks from the
+>> command line (with the -device option)?
+> I didn't not thought about that. I'm not sure to understand how this is
+> done for a gpio for example. Is this done by setting the link property
+> manually ?
 
-If that's the case, I suppose we can somehow add a link property on the
-input side to the output side to achieve that. The other way seem not
-possible due to the fact the output side has a dynamically allocated
-list of inputs.
->=20
-> Should clocked devices have DeviceClass::user_creatable =3D false by de=
-fault?
-It would be a solution, but I don't think we want this ?
->=20
-> Thanks,
->=20
-> Phil.
->=20
+You can't wire up GPIOs on the command line. I don't think we
+really need to be able to wire up clocks on the command line either,
+do we?
 
-Thanks,
+> Should clocked devices have DeviceClass::user_creatable =3D false by defa=
+ult?
 
-Damien
+How many devices have a clock and nothing else that would cause
+them to be non-user-creatable (ie no GPIOs, no IRQ lines, no
+memory-mapped memory regions) ?
+
+thanks
+-- PMM

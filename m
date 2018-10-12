@@ -1,83 +1,120 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp82363wrt;
-        Thu, 11 Oct 2018 17:26:54 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60/Uuiik6xQRSFwCQ4hrw7FyMImLckwRw2NwB94QSLuBVnFymKkBfp6/cLm50zLSXuNHjaP
-X-Received: by 2002:a0c:d285:: with SMTP id q5mr3950079qvh.46.1539304014321;
-        Thu, 11 Oct 2018 17:26:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539304014; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp585893wrt;
+        Fri, 12 Oct 2018 03:20:44 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62nvoq4tr/QUOtMdPSBB+HlrS6DzXe0eYz6/DPe7JQ/x9Fl0qPGTa3YNsscLRijCpBJbv/0
+X-Received: by 2002:a37:6a01:: with SMTP id f1-v6mr5037934qkc.8.1539339644776;
+        Fri, 12 Oct 2018 03:20:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539339644; cv=none;
         d=google.com; s=arc-20160816;
-        b=MAcHPuX/v+ImoJOxNTWlTB39nEy2lPxB+HR1NUkiWnNjZlCE4Pg7De446kZyqRslcD
-         y94Bkrp77Ww4NBJzuL/UQG81N+hp1rNDDKBfynQWiXMHCGi1LDmk6QhNjy37Jo0PAvF1
-         zxUsl+Dge95WGhkCJjDxIHafNUvdft/0K4qfDc9fJZc+cUMMLx+f6igQQA8F86xzhPWd
-         z8L7zW5JR7ywn6Wb7XOkZlqrscNtqYeQCropqxTunXMfxUV2LAZ9UBa1u6PE2lJe4/+3
-         TtxgD19UxPEoR1m1j3cT6ecgnV4/ZO9uQzwviqpDerhuG4CAeiDqek1WHfYLQeYqijRJ
-         60sQ==
+        b=poYfUP4gPC+ayY8fj8XajAuF5kzV9GlVeAVfC1as6cq+vAr/lu4Zhm3kQq2dN/B96L
+         Nq1nZmv9Y0M45lLft9Z8f884dni9HZk6TbkIzdLYKNc7Rln5VMTZUxR+looJSxvYLTvT
+         s20tMs2eMYVHCY/rH67rjkdFFMHZwKTpTzyjVDmF8YPMHDjnx1wC0cV9AJsyLX6dKed+
+         pujkESWyughlhx/agoqMWpVkKJjkJvPL4R/pfXI8WX0e1nTPacsJODfx2vD0VFNaFZO6
+         RD9wnFDcSC05WRqZ3/DfxWxq7aHjTSVxz5gVj64djQl950kDArp0aQrnFrburRWD97Yq
+         s/fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=ZwdjADF6JYyUadiS50NXZzlt7Pto2sACT0Ki9jJUCD8=;
-        b=R5N5tHTUPnp0UGMtq8jEXFqprAVBLdkNi/37btCvZcGFVroJ6au76yRTEWxnOrcHlo
-         zcXQTmH6ljyrgG4TKkdVW2K7aPUE9K6d3YtKi0oZbZbtEuXMN6yZ2ocpqgYTsFsK9Jif
-         OXb1zjaIqlr3pM6HX6mZE3DoL/zxQhhz+qsRcJhcZcKPLoddpOS0LUFkXmmmbj2zIODX
-         z2amZx0yqSQw+Jw9mG123+8xVDfe+aI5jHa26A/qYUgmPoz76hkEzcYCESIckjYSwHgw
-         kQ0CAB4/je78vqzV4feWV2BwIkmLVHvorjNxphpz5r3Z51e8Fb+nZOC2UvtwxPpISdvh
-         zo8g==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=L/MasrwFKLDDPGYSjLcwXDZXswHRaABfRfkxsb8/x+Y=;
+        b=l1IMR8z6zKcqNffNkxHllqHQEzF9MYzr6JOMij3NyBS2yqcmjIZYmpeQN79E+GURfy
+         xTu7R2cYhcE86wkNKoNJBY4+aMiYu9mwvb9i8hoCRkNY2C+t9HdEwh+h8mGpbMILlrUe
+         FJ8c1QdUyuECqL5LjFC8O5aSGZ3glzFIMMOiJ2+JEzbLngiH09Rbb5U7uQfe+c9abQQL
+         dm9c/qqOCLIArkiMjoNyCQnalBlKi/aFWWVHzViQKy6r386yE6PCCytWhIRVymSx0W+k
+         wfICKOsH+3oHdwC38Qe+9EJimtAeMUY7p0h0sQD0bmoBnQNMA25DKozMDskp/yxFg8A3
+         iaDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=IowSLUHt;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Fcj3d2SF;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Fcj3d2SF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m185-v6si3228566qkb.188.2018.10.11.17.26.54
+        by mx.google.com with ESMTPS id e68-v6si685183qtb.241.2018.10.12.03.20.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 11 Oct 2018 17:26:54 -0700 (PDT)
+        Fri, 12 Oct 2018 03:20:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37706 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=IowSLUHt;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Fcj3d2SF;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Fcj3d2SF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39378 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gAlI5-0000Mx-NU
-	for alex.bennee@linaro.org; Thu, 11 Oct 2018 20:26:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33591)
+	id 1gAuYm-00029n-7G
+	for alex.bennee@linaro.org; Fri, 12 Oct 2018 06:20:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gAlFA-0006Rh-3w
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 20:23:55 -0400
+	(envelope-from <damien.hedde@greensocs.com>) id 1gAuYb-00029g-FO
+	for qemu-arm@nongnu.org; Fri, 12 Oct 2018 06:20:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gAlF7-0006eJ-SL
-	for qemu-arm@nongnu.org; Thu, 11 Oct 2018 20:23:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42310)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gAlF7-0006du-Iw; Thu, 11 Oct 2018 20:23:49 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <damien.hedde@greensocs.com>) id 1gAuYY-00041s-8f
+	for qemu-arm@nongnu.org; Fri, 12 Oct 2018 06:20:33 -0400
+Received: from greensocs.com ([193.104.36.180]:51733)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <damien.hedde@greensocs.com>)
+	id 1gAuYX-00041C-QZ; Fri, 12 Oct 2018 06:20:30 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id A77736FD8A;
+	Fri, 12 Oct 2018 12:20:20 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1539339620;
+	bh=6YpIjxGQCU0ceTh0mp5tb9m8SioprJkN3LN+eSQqVRQ=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=IowSLUHtuvF7JyhgRanwfcr0es6T/GYHqUekhSRIkjND3bgVUqhOSzHiyqCAz2Jte
+	hPvPVr7g8sP+Fkys7uprOUuylnsnv0zMg326sznkg0ir/PPM3Fdj8IDwsgrxnvcfvH
+	m087gAqf8wmlGNthYQwvVvr403n1x7iVoxkCWoiM=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Fcj3d2SF;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Fcj3d2SF
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mJ7duCtRf1IU; Fri, 12 Oct 2018 12:20:19 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 6CCB76FD9A; Fri, 12 Oct 2018 12:20:19 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1539339619;
+	bh=6YpIjxGQCU0ceTh0mp5tb9m8SioprJkN3LN+eSQqVRQ=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=Fcj3d2SFvicw93fIggKRf8DnVi3jUpuoUrKflCuuSZKiHrwAcGVW9kCyu0U3xETGf
+	B8i4ZuC4PdtNd9Aqmxu7Alu8uodJxWA3QLTEytEVYO6ppn5mRR59O/7qH0M/w79DJO
+	ZN9RKyq7A6bm5wTW3NLzulKBWW2hOhCG7XCouyHE=
+Received: from [172.16.10.171] (antfield.tima.u-ga.fr [147.171.129.253])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 37554C050E0D;
-	Fri, 12 Oct 2018 00:23:48 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-29.brq.redhat.com [10.40.204.29])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 21BCC60557;
-	Fri, 12 Oct 2018 00:23:18 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, Prasad J Pandit <ppandit@redhat.com>
-Date: Fri, 12 Oct 2018 02:22:14 +0200
-Message-Id: <20181012002217.2864-9-philmd@redhat.com>
-In-Reply-To: <20181012002217.2864-1-philmd@redhat.com>
-References: <20181012002217.2864-1-philmd@redhat.com>
+	(Authenticated sender: damien.hedde@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id EB6526FD8A;
+	Fri, 12 Oct 2018 12:20:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1539339619;
+	bh=6YpIjxGQCU0ceTh0mp5tb9m8SioprJkN3LN+eSQqVRQ=;
+	h=Subject:To:Cc:References:From:Date:In-Reply-To;
+	b=Fcj3d2SFvicw93fIggKRf8DnVi3jUpuoUrKflCuuSZKiHrwAcGVW9kCyu0U3xETGf
+	B8i4ZuC4PdtNd9Aqmxu7Alu8uodJxWA3QLTEytEVYO6ppn5mRR59O/7qH0M/w79DJO
+	ZN9RKyq7A6bm5wTW3NLzulKBWW2hOhCG7XCouyHE=
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org
+References: <20181002142443.30976-1-damien.hedde@greensocs.com>
+	<20181002142443.30976-4-damien.hedde@greensocs.com>
+	<2478a2c0-7f5f-556c-09c3-1fa503984f38@redhat.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <d8807487-72b9-e5c4-ba81-281218023dc6@greensocs.com>
+Date: Fri, 12 Oct 2018 12:20:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 12 Oct 2018 00:23:48 +0000 (UTC)
+In-Reply-To: <2478a2c0-7f5f-556c-09c3-1fa503984f38@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 08/11] chardev: Let IOCanReadHandler use
- unsigned type
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 3/9] qdev-monitor: print the
+ device's clock with info qtree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,755 +126,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Palmer Dabbelt <palmer@sifive.com>, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Clark <mjc@sifive.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Alberto Garcia <berto@igalia.com>, Li Zhijian <lizhijian@cn.fujitsu.com>,
-	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>, Zhang Chen <zhangckid@gmail.com>,
-	"open list:PXA2XX" <qemu-arm@nongnu.org>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Samuel Thibault <samuel.thibault@ens-lyon.org>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>, Thomas Huth <huth@tuxfamily.org>,
-	Michael Walle <michael@walle.cc>, "open list:sPAPR" <qemu-ppc@nongnu.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Cc: edgar.iglesias@xilinx.com, peter.maydell@linaro.org, alistair@alistair23.me,
+	mark.burton@greensocs.com, saipava@xilinx.com,
+	qemu-arm@nongnu.org, pbonzini@redhat.com, konrad@adacore.com,
+	luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pZ2xkBOBjv3d
+X-TUID: 51ZmEzYCNmYx
 
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- backends/rng-egd.c          | 4 ++--
- chardev/char-mux.c          | 2 +-
- gdbstub.c                   | 2 +-
- hw/arm/pxa2xx.c             | 2 +-
- hw/arm/strongarm.c          | 2 +-
- hw/char/bcm2835_aux.c       | 2 +-
- hw/char/cadence_uart.c      | 4 ++--
- hw/char/cmsdk-apb-uart.c    | 2 +-
- hw/char/digic-uart.c        | 2 +-
- hw/char/escc.c              | 6 +++---
- hw/char/etraxfs_ser.c       | 2 +-
- hw/char/exynos4210_uart.c   | 2 +-
- hw/char/grlib_apbuart.c     | 2 +-
- hw/char/imx_serial.c        | 2 +-
- hw/char/ipoctal232.c        | 4 ++--
- hw/char/lm32_juart.c        | 2 +-
- hw/char/lm32_uart.c         | 2 +-
- hw/char/mcf_uart.c          | 2 +-
- hw/char/milkymist-uart.c    | 2 +-
- hw/char/parallel.c          | 2 +-
- hw/char/pl011.c             | 4 ++--
- hw/char/sclpconsole-lm.c    | 2 +-
- hw/char/sclpconsole.c       | 4 ++--
- hw/char/serial.c            | 4 ++--
- hw/char/sh_serial.c         | 4 ++--
- hw/char/spapr_vty.c         | 2 +-
- hw/char/stm32f2xx_usart.c   | 2 +-
- hw/char/terminal3270.c      | 2 +-
- hw/char/virtio-console.c    | 2 +-
- hw/char/xen_console.c       | 2 +-
- hw/char/xilinx_uartlite.c   | 2 +-
- hw/ipmi/ipmi_bmc_extern.c   | 2 +-
- hw/misc/ivshmem.c           | 2 +-
- hw/riscv/riscv_htif.c       | 2 +-
- hw/riscv/sifive_uart.c      | 2 +-
- hw/usb/ccid-card-passthru.c | 2 +-
- hw/usb/dev-serial.c         | 2 +-
- hw/usb/redirect.c           | 2 +-
- include/qemu/main-loop.h    | 2 +-
- monitor.c                   | 2 +-
- net/colo-compare.c          | 2 +-
- net/filter-mirror.c         | 2 +-
- net/slirp.c                 | 2 +-
- qtest.c                     | 2 +-
- target/xtensa/xtensa-semi.c | 2 +-
- 45 files changed, 54 insertions(+), 54 deletions(-)
+Hi Philippe,
 
-diff --git a/backends/rng-egd.c b/backends/rng-egd.c
-index b51c01f664..4a9a92a8e7 100644
---- a/backends/rng-egd.c
-+++ b/backends/rng-egd.c
-@@ -48,11 +48,11 @@ static void rng_egd_request_entropy(RngBackend *b, Rn=
-gRequest *req)
-     }
- }
-=20
--static int rng_egd_chr_can_read(void *opaque)
-+static size_t rng_egd_chr_can_read(void *opaque)
- {
-     RngEgd *s =3D RNG_EGD(opaque);
-     RngRequest *req;
--    int size =3D 0;
-+    size_t size =3D 0;
-=20
-     QSIMPLEQ_FOREACH(req, &s->parent.requests, next) {
-         size +=3D req->size - req->offset;
-diff --git a/chardev/char-mux.c b/chardev/char-mux.c
-index d8d6eaa646..98db12cf77 100644
---- a/chardev/char-mux.c
-+++ b/chardev/char-mux.c
-@@ -192,7 +192,7 @@ static void mux_chr_accept_input(Chardev *chr)
-     }
- }
-=20
--static int mux_chr_can_read(void *opaque)
-+static size_t mux_chr_can_read(void *opaque)
- {
-     MuxChardev *d =3D MUX_CHARDEV(opaque);
-     int m =3D d->focus;
-diff --git a/gdbstub.c b/gdbstub.c
-index a2fc3682ce..86d1fa62f8 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1916,7 +1916,7 @@ void gdbserver_fork(CPUState *cpu)
-     cpu_watchpoint_remove_all(cpu, BP_GDB);
- }
- #else
--static int gdb_chr_can_receive(void *opaque)
-+static size_t gdb_chr_can_receive(void *opaque)
- {
-   /* We can handle an arbitrarily large amount of data.
-    Pick the maximum packet size, which is as good as anything.  */
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index 75b6aa2772..a72d9bd4fe 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -1923,7 +1923,7 @@ static const MemoryRegionOps pxa2xx_fir_ops =3D {
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
- };
-=20
--static int pxa2xx_fir_is_empty(void *opaque)
-+static size_t pxa2xx_fir_is_empty(void *opaque)
- {
-     PXA2xxFIrState *s =3D (PXA2xxFIrState *) opaque;
-     return (s->rx_len < 64);
-diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
-index 40db4e5e0a..6fdd4da3d0 100644
---- a/hw/arm/strongarm.c
-+++ b/hw/arm/strongarm.c
-@@ -1058,7 +1058,7 @@ static void strongarm_uart_rx_push(StrongARMUARTSta=
-te *s, uint16_t c)
-         s->rx_fifo[(s->rx_start + 11) % 12] |=3D RX_FIFO_ROR;
- }
-=20
--static int strongarm_uart_can_receive(void *opaque)
-+static size_t strongarm_uart_can_receive(void *opaque)
- {
-     StrongARMUARTState *s =3D opaque;
-=20
-diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-index cb26df40f8..5dd1b652c0 100644
---- a/hw/char/bcm2835_aux.c
-+++ b/hw/char/bcm2835_aux.c
-@@ -211,7 +211,7 @@ static void bcm2835_aux_write(void *opaque, hwaddr of=
-fset, uint64_t value,
-     bcm2835_aux_update(s);
- }
-=20
--static int bcm2835_aux_can_receive(void *opaque)
-+static size_t bcm2835_aux_can_receive(void *opaque)
- {
-     BCM2835AuxState *s =3D opaque;
-=20
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index eb5cc974a1..5835362038 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -216,10 +216,10 @@ static void uart_parameters_setup(CadenceUARTState =
-*s)
-     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
- }
-=20
--static int uart_can_receive(void *opaque)
-+static size_t uart_can_receive(void *opaque)
- {
-     CadenceUARTState *s =3D opaque;
--    int ret =3D MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_SIZE=
+On 10/3/18 12:42 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Damien,
+>=20
+> On 10/2/18 4:24 PM, Damien Hedde wrote:
+>> This prints the clocks attached to a DeviceState when using "info qtre=
+e" monitor
+>> command. For every clock, it displays the direction, the name and if t=
+he
+>> clock is forwarded. For input clock, it displays also the frequency.
+>=20
+> What would also be really useful (during development mostly)
+> is a "info clktree" monitor command.
+
+What would be the output ? A list of all clock related devices and their
+clocks ? Or something more like a clock tree starting from the source(s)
+clock up to the last ones ? (or the opposite starting from a
+clocked-device down to the sources)
+
+Concerning development, it might also be useful to have access to the
+frequency of a clock output. Maybe I should add the value in the object
+for that purpose ?
+
+>=20
+>>
+>> This is based on the original work of Frederic Konrad.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>  qdev-monitor.c | 12 ++++++++++++
+>>  1 file changed, 12 insertions(+)
+>>
+>> diff --git a/qdev-monitor.c b/qdev-monitor.c
+>> index 61e0300991..8c39a3a65b 100644
+>> --- a/qdev-monitor.c
+>> +++ b/qdev-monitor.c
+>> @@ -682,6 +682,7 @@ static void qdev_print(Monitor *mon, DeviceState *=
+dev, int indent)
+>>      ObjectClass *class;
+>>      BusState *child;
+>>      NamedGPIOList *ngl;
+>> +    NamedClockList *clk;
+>> =20
+>>      qdev_printf("dev: %s, id \"%s\"\n", object_get_typename(OBJECT(de=
+v)),
+>>                  dev->id ? dev->id : "");
+>> @@ -696,6 +697,17 @@ static void qdev_print(Monitor *mon, DeviceState =
+*dev, int indent)
+>>                          ngl->num_out);
+>>          }
+>>      }
+>> +    QLIST_FOREACH(clk, &dev->clocks, node) {
+>> +        if (clk->out) {
+>> +            qdev_printf("clock-out%s \"%s\"\n",
+>> +                        clk->forward ? " (fw)" : "",
+>> +                        clk->name);
+>> +        } else {
+>> +            qdev_printf("clock-in%s \"%s\" freq=3D%" PRIu64 "Hz\n",
+>=20
+> IMHO 'freq_hz=3D%" PRIu64 "\n"' is easier to read.
+
+The frequency value in hertz is not easy to read in general (eg:
+33333333Hz). Maybe we should print it with an apropriate unit (eg:
+33.333333MHz). We can also use the "'" printf flag for thousand
+separator but it's locale-dependent (and in my case it prints nothing).
+
+>=20
+> However if we plan to add/use a qemu_strtohz() similar to
+> qemu_strtosz_metric(), that would be fine.
+
+You mean for test purpose ?
+
+>=20
+>> +                        clk->forward ? " (fw)" : "",
+>> +                        clk->name, clock_get_frequency(clk->in));
+>> +        }
+>> +    }
+>>      class =3D object_get_class(OBJECT(dev));
+>>      do {
+>>          qdev_print_props(mon, dev, DEVICE_CLASS(class)->props, indent=
 );
-+    size_t ret =3D MAX(CADENCE_UART_RX_FIFO_SIZE, CADENCE_UART_TX_FIFO_S=
-IZE);
-     uint32_t ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
-=20
-     if (ch_mode =3D=3D NORMAL_MODE || ch_mode =3D=3D ECHO_MODE) {
-diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
-index 774986d88d..c1437674a5 100644
---- a/hw/char/cmsdk-apb-uart.c
-+++ b/hw/char/cmsdk-apb-uart.c
-@@ -108,7 +108,7 @@ static void cmsdk_apb_uart_update(CMSDKAPBUART *s)
-     qemu_set_irq(s->uartint, !!(s->intstatus));
- }
-=20
--static int uart_can_receive(void *opaque)
-+static size_t uart_can_receive(void *opaque)
- {
-     CMSDKAPBUART *s =3D CMSDK_APB_UART(opaque);
-=20
-diff --git a/hw/char/digic-uart.c b/hw/char/digic-uart.c
-index 0f41a23b54..f805ee5766 100644
---- a/hw/char/digic-uart.c
-+++ b/hw/char/digic-uart.c
-@@ -112,7 +112,7 @@ static const MemoryRegionOps uart_mmio_ops =3D {
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
- };
-=20
--static int uart_can_rx(void *opaque)
-+static size_t uart_can_rx(void *opaque)
- {
-     DigicUartState *s =3D opaque;
-=20
-diff --git a/hw/char/escc.c b/hw/char/escc.c
-index e655b86273..decc35b990 100644
---- a/hw/char/escc.c
-+++ b/hw/char/escc.c
-@@ -166,7 +166,7 @@
- #define R_EXTINT 15
-=20
- static void handle_kbd_command(ESCCChannelState *s, int val);
--static int serial_can_receive(void *opaque);
-+static size_t serial_can_receive(void *opaque);
- static void serial_receive_byte(ESCCChannelState *s, int ch);
-=20
- static void clear_queue(void *opaque)
-@@ -573,10 +573,10 @@ static const MemoryRegionOps escc_mem_ops =3D {
-     },
- };
-=20
--static int serial_can_receive(void *opaque)
-+static size_t serial_can_receive(void *opaque)
- {
-     ESCCChannelState *s =3D opaque;
--    int ret;
-+    size_t ret;
-=20
-     if (((s->wregs[W_RXCTRL] & RXCTRL_RXEN) =3D=3D 0) // Rx not enabled
-         || ((s->rregs[R_STATUS] & STATUS_RXAV) =3D=3D STATUS_RXAV))
-diff --git a/hw/char/etraxfs_ser.c b/hw/char/etraxfs_ser.c
-index 79cd8d2dc1..970f6a6e90 100644
---- a/hw/char/etraxfs_ser.c
-+++ b/hw/char/etraxfs_ser.c
-@@ -187,7 +187,7 @@ static void serial_receive(void *opaque, const uint8_=
-t *buf, size_t size)
-     ser_update_irq(s);
- }
-=20
--static int serial_can_receive(void *opaque)
-+static size_t serial_can_receive(void *opaque)
- {
-     ETRAXSerial *s =3D opaque;
-=20
-diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-index 5fdf5b1f37..b93edec08a 100644
---- a/hw/char/exynos4210_uart.c
-+++ b/hw/char/exynos4210_uart.c
-@@ -487,7 +487,7 @@ static const MemoryRegionOps exynos4210_uart_ops =3D =
-{
-     },
- };
-=20
--static int exynos4210_uart_can_receive(void *opaque)
-+static size_t exynos4210_uart_can_receive(void *opaque)
- {
-     Exynos4210UartState *s =3D (Exynos4210UartState *)opaque;
-=20
-diff --git a/hw/char/grlib_apbuart.c b/hw/char/grlib_apbuart.c
-index d370609a52..7b57dce7fb 100644
---- a/hw/char/grlib_apbuart.c
-+++ b/hw/char/grlib_apbuart.c
-@@ -130,7 +130,7 @@ static void uart_add_to_fifo(UART          *uart,
-     uart->len +=3D length;
- }
-=20
--static int grlib_apbuart_can_receive(void *opaque)
-+static size_t grlib_apbuart_can_receive(void *opaque)
- {
-     UART *uart =3D opaque;
-=20
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index b9fdfaeb38..abbe68571d 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -293,7 +293,7 @@ static void imx_serial_write(void *opaque, hwaddr off=
-set,
-     }
- }
-=20
--static int imx_can_receive(void *opaque)
-+static size_t imx_can_receive(void *opaque)
- {
-     IMXSerialState *s =3D (IMXSerialState *)opaque;
-     return !(s->usr1 & USR1_RRDY);
-diff --git a/hw/char/ipoctal232.c b/hw/char/ipoctal232.c
-index 08e3f9e45f..be21303dcd 100644
---- a/hw/char/ipoctal232.c
-+++ b/hw/char/ipoctal232.c
-@@ -461,10 +461,10 @@ static void mem_write8(IPackDevice *ip, uint32_t ad=
-dr, uint8_t val)
-     }
- }
-=20
--static int hostdev_can_receive(void *opaque)
-+static size_t hostdev_can_receive(void *opaque)
- {
-     SCC2698Channel *ch =3D opaque;
--    int available_bytes =3D RX_FIFO_SIZE - ch->rx_pending;
-+    size_t available_bytes =3D RX_FIFO_SIZE - ch->rx_pending;
-     return ch->rx_enabled ? available_bytes : 0;
- }
-=20
-diff --git a/hw/char/lm32_juart.c b/hw/char/lm32_juart.c
-index ecb61ee086..51e598c570 100644
---- a/hw/char/lm32_juart.c
-+++ b/hw/char/lm32_juart.c
-@@ -95,7 +95,7 @@ static void juart_rx(void *opaque, const uint8_t *buf, =
-size_t size)
-     s->jrx =3D *buf | JRX_FULL;
- }
-=20
--static int juart_can_rx(void *opaque)
-+static size_t juart_can_rx(void *opaque)
- {
-     LM32JuartState *s =3D opaque;
-=20
-diff --git a/hw/char/lm32_uart.c b/hw/char/lm32_uart.c
-index ee0bf8e117..2593434f8f 100644
---- a/hw/char/lm32_uart.c
-+++ b/hw/char/lm32_uart.c
-@@ -225,7 +225,7 @@ static void uart_rx(void *opaque, const uint8_t *buf,=
- size_t size)
-     uart_update_irq(s);
- }
-=20
--static int uart_can_rx(void *opaque)
-+static size_t uart_can_rx(void *opaque)
- {
-     LM32UartState *s =3D opaque;
-=20
-diff --git a/hw/char/mcf_uart.c b/hw/char/mcf_uart.c
-index e126860b46..cd9c499a51 100644
---- a/hw/char/mcf_uart.c
-+++ b/hw/char/mcf_uart.c
-@@ -267,7 +267,7 @@ static void mcf_uart_event(void *opaque, int event)
-     }
- }
-=20
--static int mcf_uart_can_receive(void *opaque)
-+static size_t mcf_uart_can_receive(void *opaque)
- {
-     mcf_uart_state *s =3D (mcf_uart_state *)opaque;
-=20
-diff --git a/hw/char/milkymist-uart.c b/hw/char/milkymist-uart.c
-index a10c0957ff..0efcd829ce 100644
---- a/hw/char/milkymist-uart.c
-+++ b/hw/char/milkymist-uart.c
-@@ -170,7 +170,7 @@ static void uart_rx(void *opaque, const uint8_t *buf,=
- size_t size)
-     uart_update_irq(s);
- }
-=20
--static int uart_can_rx(void *opaque)
-+static size_t uart_can_rx(void *opaque)
- {
-     MilkymistUartState *s =3D opaque;
-=20
-diff --git a/hw/char/parallel.c b/hw/char/parallel.c
-index a80da47ecf..fe0e5c8756 100644
---- a/hw/char/parallel.c
-+++ b/hw/char/parallel.c
-@@ -513,7 +513,7 @@ static const VMStateDescription vmstate_parallel_isa =
-=3D {
-     }
- };
-=20
--static int parallel_can_receive(void *opaque)
-+static size_t parallel_can_receive(void *opaque)
- {
-      return 1;
- }
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 37973c32ce..10195679b4 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -224,10 +224,10 @@ static void pl011_write(void *opaque, hwaddr offset=
-,
-     }
- }
-=20
--static int pl011_can_receive(void *opaque)
-+static size_t pl011_can_receive(void *opaque)
- {
-     PL011State *s =3D (PL011State *)opaque;
--    int r;
-+    size_t r;
-=20
-     if (s->lcr & 0x10) {
-         r =3D s->read_count < 16;
-diff --git a/hw/char/sclpconsole-lm.c b/hw/char/sclpconsole-lm.c
-index a04a2a9d80..ad5f791227 100644
---- a/hw/char/sclpconsole-lm.c
-+++ b/hw/char/sclpconsole-lm.c
-@@ -61,7 +61,7 @@ typedef struct SCLPConsoleLM {
-  * truncated to the guest in case it doesn't fit into the SCCB.
-  */
-=20
--static int chr_can_read(void *opaque)
-+static size_t chr_can_read(void *opaque)
- {
-     SCLPConsoleLM *scon =3D opaque;
-=20
-diff --git a/hw/char/sclpconsole.c b/hw/char/sclpconsole.c
-index 62395c19f4..5ec1c4b607 100644
---- a/hw/char/sclpconsole.c
-+++ b/hw/char/sclpconsole.c
-@@ -47,10 +47,10 @@ typedef struct SCLPConsole {
- /* character layer call-back functions */
-=20
- /* Return number of bytes that fit into iov buffer */
--static int chr_can_read(void *opaque)
-+static size_t chr_can_read(void *opaque)
- {
-     SCLPConsole *scon =3D opaque;
--    int avail =3D SIZE_BUFFER_VT220 - scon->iov_data_len;
-+    size_t avail =3D SIZE_BUFFER_VT220 - scon->iov_data_len;
-=20
-     if (avail =3D=3D 0) {
-         scon->notify =3D true;
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 69baed105b..f83bb8ee4e 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -561,7 +561,7 @@ static uint64_t serial_ioport_read(void *opaque, hwad=
-dr addr, unsigned size)
-     return ret;
- }
-=20
--static int serial_can_receive(SerialState *s)
-+static size_t serial_can_receive(SerialState *s)
- {
-     if(s->fcr & UART_FCR_FE) {
-         if (s->recv_fifo.num < UART_FIFO_LENGTH) {
-@@ -600,7 +600,7 @@ static void fifo_timeout_int (void *opaque) {
-     }
- }
-=20
--static int serial_can_receive1(void *opaque)
-+static size_t serial_can_receive1(void *opaque)
- {
-     SerialState *s =3D opaque;
-     return serial_can_receive(s);
-diff --git a/hw/char/sh_serial.c b/hw/char/sh_serial.c
-index 04fdcee328..f5402d3b5c 100644
---- a/hw/char/sh_serial.c
-+++ b/hw/char/sh_serial.c
-@@ -300,7 +300,7 @@ static uint64_t sh_serial_read(void *opaque, hwaddr o=
-ffs,
-     return ret;
- }
-=20
--static int sh_serial_can_receive(sh_serial_state *s)
-+static size_t sh_serial_can_receive(sh_serial_state *s)
- {
-     return s->scr & (1 << 4);
- }
-@@ -311,7 +311,7 @@ static void sh_serial_receive_break(sh_serial_state *=
-s)
-         s->sr |=3D (1 << 4);
- }
-=20
--static int sh_serial_can_receive1(void *opaque)
-+static size_t sh_serial_can_receive1(void *opaque)
- {
-     sh_serial_state *s =3D opaque;
-     return sh_serial_can_receive(s);
-diff --git a/hw/char/spapr_vty.c b/hw/char/spapr_vty.c
-index 42b4b61cce..0ac9dc8448 100644
---- a/hw/char/spapr_vty.c
-+++ b/hw/char/spapr_vty.c
-@@ -21,7 +21,7 @@ typedef struct VIOsPAPRVTYDevice {
- #define VIO_SPAPR_VTY_DEVICE(obj) \
-      OBJECT_CHECK(VIOsPAPRVTYDevice, (obj), TYPE_VIO_SPAPR_VTY_DEVICE)
-=20
--static int vty_can_receive(void *opaque)
-+static size_t vty_can_receive(void *opaque)
- {
-     VIOsPAPRVTYDevice *dev =3D VIO_SPAPR_VTY_DEVICE(opaque);
-=20
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index 78bf142678..63256da77b 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -38,7 +38,7 @@
-=20
- #define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-=20
--static int stm32f2xx_usart_can_receive(void *opaque)
-+static size_t stm32f2xx_usart_can_receive(void *opaque)
- {
-     STM32F2XXUsartState *s =3D opaque;
-=20
-diff --git a/hw/char/terminal3270.c b/hw/char/terminal3270.c
-index 076516991e..a9db0a3401 100644
---- a/hw/char/terminal3270.c
-+++ b/hw/char/terminal3270.c
-@@ -38,7 +38,7 @@ typedef struct Terminal3270 {
- #define TERMINAL_3270(obj) \
-         OBJECT_CHECK(Terminal3270, (obj), TYPE_TERMINAL_3270)
-=20
--static int terminal_can_read(void *opaque)
-+static size_t terminal_can_read(void *opaque)
- {
-     Terminal3270 *t =3D opaque;
-=20
-diff --git a/hw/char/virtio-console.c b/hw/char/virtio-console.c
-index e3d368b976..b942159d82 100644
---- a/hw/char/virtio-console.c
-+++ b/hw/char/virtio-console.c
-@@ -126,7 +126,7 @@ static void guest_writable(VirtIOSerialPort *port)
- }
-=20
- /* Readiness of the guest to accept data on a port */
--static int chr_can_read(void *opaque)
-+static size_t chr_can_read(void *opaque)
- {
-     VirtConsole *vcon =3D opaque;
-=20
-diff --git a/hw/char/xen_console.c b/hw/char/xen_console.c
-index ca90c5c17e..0a1cbaeafa 100644
---- a/hw/char/xen_console.c
-+++ b/hw/char/xen_console.c
-@@ -116,7 +116,7 @@ static int ring_free_bytes(struct XenConsole *con)
-     return (sizeof(intf->in) - space);
- }
-=20
--static int xencons_can_receive(void *opaque)
-+static size_t xencons_can_receive(void *opaque)
- {
-     struct XenConsole *con =3D opaque;
-     return ring_free_bytes(con);
-diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
-index b1abf8b604..2473cb0ad7 100644
---- a/hw/char/xilinx_uartlite.c
-+++ b/hw/char/xilinx_uartlite.c
-@@ -195,7 +195,7 @@ static void uart_rx(void *opaque, const uint8_t *buf,=
- size_t size)
-     uart_update_irq(s);
- }
-=20
--static int uart_can_rx(void *opaque)
-+static size_t uart_can_rx(void *opaque)
- {
-     XilinxUARTLite *s =3D opaque;
-=20
-diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
-index c52f80f771..7107d2fe9f 100644
---- a/hw/ipmi/ipmi_bmc_extern.c
-+++ b/hw/ipmi/ipmi_bmc_extern.c
-@@ -307,7 +307,7 @@ static void handle_msg(IPMIBmcExtern *ibe)
-     k->handle_rsp(ibe->parent.intf, ibe->inbuf[0], ibe->inbuf + 1, ibe->=
-inpos - 1);
- }
-=20
--static int can_receive(void *opaque)
-+static size_t can_receive(void *opaque)
- {
-     return 1;
- }
-diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
-index f506479845..01b331aaab 100644
---- a/hw/misc/ivshmem.c
-+++ b/hw/misc/ivshmem.c
-@@ -620,7 +620,7 @@ static void process_msg(IVShmemState *s, int64_t msg,=
- int fd, Error **errp)
-     }
- }
-=20
--static int ivshmem_can_receive(void *opaque)
-+static size_t ivshmem_can_receive(void *opaque)
- {
-     IVShmemState *s =3D opaque;
-=20
-diff --git a/hw/riscv/riscv_htif.c b/hw/riscv/riscv_htif.c
-index 2625f5e9e8..565120df7d 100644
---- a/hw/riscv/riscv_htif.c
-+++ b/hw/riscv/riscv_htif.c
-@@ -65,7 +65,7 @@ void htif_symbol_callback(const char *st_name, int st_i=
-nfo, uint64_t st_value,
- /*
-  * Called by the char dev to see if HTIF is ready to accept input.
-  */
--static int htif_can_recv(void *opaque)
-+static size_t htif_can_recv(void *opaque)
- {
-     return 1;
- }
-diff --git a/hw/riscv/sifive_uart.c b/hw/riscv/sifive_uart.c
-index d4cbf91b9f..c6a8f5fbc4 100644
---- a/hw/riscv/sifive_uart.c
-+++ b/hw/riscv/sifive_uart.c
-@@ -137,7 +137,7 @@ static void uart_rx(void *opaque, const uint8_t *buf,=
- size_t size)
-     update_irq(s);
- }
-=20
--static int uart_can_rx(void *opaque)
-+static size_t uart_can_rx(void *opaque)
- {
-     SiFiveUARTState *s =3D opaque;
-=20
-diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
-index b6fa35a4b4..5dc10ef850 100644
---- a/hw/usb/ccid-card-passthru.c
-+++ b/hw/usb/ccid-card-passthru.c
-@@ -112,7 +112,7 @@ static void ccid_card_vscard_send_init(PassthruState =
-*s)
-                          (uint8_t *)&msg, sizeof(msg));
- }
-=20
--static int ccid_card_vscard_can_read(void *opaque)
-+static size_t ccid_card_vscard_can_read(void *opaque)
- {
-     PassthruState *card =3D opaque;
-=20
-diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
-index efaeab484d..e9735d4b5d 100644
---- a/hw/usb/dev-serial.c
-+++ b/hw/usb/dev-serial.c
-@@ -421,7 +421,7 @@ static void usb_serial_handle_data(USBDevice *dev, US=
-BPacket *p)
-     }
- }
-=20
--static int usb_serial_can_read(void *opaque)
-+static size_t usb_serial_can_read(void *opaque)
- {
-     USBSerialState *s =3D opaque;
-=20
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index a73076ba78..f025c91d28 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -1284,7 +1284,7 @@ static void usbredir_do_attach(void *opaque)
-  * chardev callbacks
-  */
-=20
--static int usbredir_chardev_can_read(void *opaque)
-+static size_t usbredir_chardev_can_read(void *opaque)
- {
-     USBRedirDevice *dev =3D opaque;
-=20
-diff --git a/include/qemu/main-loop.h b/include/qemu/main-loop.h
-index c5a7299266..b51f9a5267 100644
---- a/include/qemu/main-loop.h
-+++ b/include/qemu/main-loop.h
-@@ -182,7 +182,7 @@ typedef void IOReadHandler(void *opaque, const uint8_=
-t *buf, size_t size);
-  * is called again.  aio_notify() or qemu_notify_event() can be used to =
-kick
-  * the event loop.
-  */
--typedef int IOCanReadHandler(void *opaque);
-+typedef size_t IOCanReadHandler(void *opaque);
-=20
- /**
-  * qemu_set_fd_handler: Register a file descriptor with the main loop
-diff --git a/monitor.c b/monitor.c
-index 12401ec60b..3417c5f044 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -4038,7 +4038,7 @@ cleanup:
-     free_cmdline_args(args, nb_args);
- }
-=20
--static int monitor_can_read(void *opaque)
-+static size_t monitor_can_read(void *opaque)
- {
-     Monitor *mon =3D opaque;
-=20
-diff --git a/net/colo-compare.c b/net/colo-compare.c
-index 433e9ba287..9321d81a98 100644
---- a/net/colo-compare.c
-+++ b/net/colo-compare.c
-@@ -683,7 +683,7 @@ err:
-     return ret < 0 ? ret : -EIO;
- }
-=20
--static int compare_chr_can_read(void *opaque)
-+static size_t compare_chr_can_read(void *opaque)
- {
-     return COMPARE_READ_LEN_MAX;
- }
-diff --git a/net/filter-mirror.c b/net/filter-mirror.c
-index 27b6e52a1d..8e16535fad 100644
---- a/net/filter-mirror.c
-+++ b/net/filter-mirror.c
-@@ -114,7 +114,7 @@ static void redirector_to_filter(NetFilterState *nf,
-      }
- }
-=20
--static int redirector_chr_can_read(void *opaque)
-+static size_t redirector_chr_can_read(void *opaque)
- {
-     return REDIRECTOR_MAX_LEN;
- }
-diff --git a/net/slirp.c b/net/slirp.c
-index 5e864f4a4f..9dbcaffb07 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -712,7 +712,7 @@ struct GuestFwd {
-     Slirp *slirp;
- };
-=20
--static int guestfwd_can_read(void *opaque)
-+static size_t guestfwd_can_read(void *opaque)
- {
-     struct GuestFwd *fwd =3D opaque;
-     return slirp_socket_can_recv(fwd->slirp, fwd->server, fwd->port);
-diff --git a/qtest.c b/qtest.c
-index 0494afdfb3..bc685700cd 100644
---- a/qtest.c
-+++ b/qtest.c
-@@ -665,7 +665,7 @@ static void qtest_read(void *opaque, const uint8_t *b=
-uf, size_t size)
-     qtest_process_inbuf(chr, inbuf);
- }
-=20
--static int qtest_can_read(void *opaque)
-+static size_t qtest_can_read(void *opaque)
- {
-     return 1024;
- }
-diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
-index 241874ea4e..a57e61ef4a 100644
---- a/target/xtensa/xtensa-semi.c
-+++ b/target/xtensa/xtensa-semi.c
-@@ -161,7 +161,7 @@ typedef struct XtensaSimConsole {
-=20
- static XtensaSimConsole *sim_console;
-=20
--static int sim_console_can_read(void *opaque)
-+static size_t sim_console_can_read(void *opaque)
- {
-     XtensaSimConsole *p =3D opaque;
-=20
---=20
-2.17.1
-
+>>
+>=20
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>=20

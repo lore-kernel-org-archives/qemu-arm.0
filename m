@@ -1,203 +1,138 @@
-Received: by 10.223.150.237 with SMTP id u100csp1671132wrb;
-        Sun, 12 Nov 2017 09:34:36 -0800 (PST)
-X-Google-Smtp-Source: AGs4zMb8GM2yIH4Arjk6REOo07/kiZSlDemweIUed6JHC47dneH3UbkTAfpzzmtu0xbugCBfXXdo
-X-Received: by 10.129.162.147 with SMTP id z141mr4333020ywg.331.1510508076701;
-        Sun, 12 Nov 2017 09:34:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1510508076; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4913911wrt;
+        Mon, 15 Oct 2018 13:31:43 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61E/0Kg37kEFOAcn4/aLjxtZ6xLkDpLdhN/NO3qfXkdJ8YpMrvhqVZN0UrySQ+UQkc09c33
+X-Received: by 2002:ac8:c0b:: with SMTP id k11-v6mr17987585qti.31.1539635503037;
+        Mon, 15 Oct 2018 13:31:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539635503; cv=none;
         d=google.com; s=arc-20160816;
-        b=jYuUFh6uSEVt4+dO0F7tm3BoxgRuDtrD95AxD9InTcpRp0gJtoMWXGvUQIuHdSx53u
-         hfZeduecjgINAsb169//qmYMe/955VXo+gG2R/B6PvgH7FXYA866gZtqP8lo8xMwmdrO
-         a9KRysWWVCtxuxZDLq3lOAn9XrHyBr4kBgN7kkBjEWmMdntdckmJEweQ8ZZdldPUUsiq
-         BOYn6z5M39oRsHYAlVRai+dzJovgSNtkAbm4lG6G5DBvQfEdrkBAzjrUObWIPN1I4fIZ
-         /ijZBZU4TB9HC4N6yVnqRo7W8q81totry6n8w1Ogx3Kh2koGzaYsRMjz2WdOdNEqxsgZ
-         GBWw==
+        b=Ad+2hkrkC92kR1ctfw8/4J6Rq0tO0tgmGkr7JsOADDHSRlEDQCiSv7K2shRENFrd/y
+         LGNRzFYA8vXHSJm3HRA5wBb969cZFN4OOAYwhDyZMxgBoA3lLadEZTouQblFrhai63E4
+         uTSQk+0c2R8bQrp88E2MfsdbgFWLGGMhCHZ9K9cMa4NqQ6vnoV9WJjXOOeqRVqUruz65
+         b95ZO7+w828nXJikn80CD3dCFneoC67oN0YAg3k47uuRO/OzsQ42scQhIowmDabOpk6e
+         eGiMrpr8DU7wj8aAZ/D4KJDHd7Dy+pxBy0vszBufkpbO8hdhfkUZOk8MDdVsm0HCw7b6
+         NHLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature:arc-authentication-results;
-        bh=4EmpVVSnTfkMDw2JFXrQxCO5Pdgddqz/gMONXq1xRwY=;
-        b=pZWAhtr6QW3fRRsqwhkk/AToFvD9WEbmIto3ptOLyr+Aub7kp/jKuTWC25ciXw2KkB
-         Mtke8P9kheHRjOTMn24si2F4LjNmH4ZRUL9u3YNo8v/+6whkHqv3cFP1bPP/1M7/H2CH
-         CYu6GtxR356fv9Jwa+92S58LOr59u079KCFLbOF/IBab81WnlE4Fp+5vH5Bo2F7Ud9uq
-         jU26BA20nX3MQip7lfizEN6E6OomXaIju0X/JqdY0sHirxhUjtj9HNG7Suj7O4C/bCkj
-         8BsJtnYJV61FFWjo36wg8IfI1EJSWuug+MYdFQlAUhQq/ofjNRFWvp+voTLzUIgTbhYV
-         0wGw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=8+bPbcOavpPM4eV3QFZe/KklQtVUSLjG+X/1bnEeXNU=;
+        b=QKOvtyMAsEBujF1PVQd7Yiix7sFrxDP9hTyw9aMy38q38uZ10+2yC4Ske9KN7KVCgM
+         1PiSeGes2F2+zsdoXy4Zvph5OCL6thWn+zqhpmxFJ0kfLALNJqpu48QcNqDL2cAPQ0eL
+         wrBXsVDoMZw5t0nIwRPxfbaGbKa6dSCaSREQZp80uyO5ig2P4MaYFoIdeuTEAxHUMPym
+         T+vvbsUf0Z89Zkmip4Aeu2QrGdhpSeu0q9rKSxwBkCLJcKn7CelpL5xlq75njqgFYLzy
+         wDPUy4bT+zLDZZzL6XIk55gD21kS04RDwUgablh9zc7RmeepfQq8QoPchHKkPLr1YKJD
+         S7bQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rmVpZO9F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Sx8NYUCm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o138si1582204yba.794.2017.11.12.09.34.36
+        by mx.google.com with ESMTPS id r32si3745241qvr.26.2018.10.15.13.31.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 12 Nov 2017 09:34:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 15 Oct 2018 13:31:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rmVpZO9F;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom=qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Received: from localhost ([::1]:50802 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Sx8NYUCm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:54745 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1eDw9U-0003Ib-4j
-	for alex.bennee@linaro.org; Sun, 12 Nov 2017 12:34:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54739)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gC9Wg-00052z-Gt
+	for alex.bennee@linaro.org; Mon, 15 Oct 2018 16:31:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51887)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eDw9L-0003IH-9H
-	for qemu-arm@nongnu.org; Sun, 12 Nov 2017 12:34:28 -0500
+	(envelope-from <aclindsa@gmail.com>) id 1gC9W9-000521-RE
+	for qemu-devel@nongnu.org; Mon, 15 Oct 2018 16:31:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eDw9I-0001UA-4i
-	for qemu-arm@nongnu.org; Sun, 12 Nov 2017 12:34:27 -0500
-Received: from mail-qt0-x22b.google.com ([2607:f8b0:400d:c0d::22b]:50693)
+	(envelope-from <aclindsa@gmail.com>) id 1gC9W7-0004KK-Jv
+	for qemu-devel@nongnu.org; Mon, 15 Oct 2018 16:31:09 -0400
+Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:46216)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1eDw9I-0001Tz-0H; Sun, 12 Nov 2017 12:34:24 -0500
-Received: by mail-qt0-x22b.google.com with SMTP id d9so17088490qtd.7;
-	Sun, 12 Nov 2017 09:34:23 -0800 (PST)
+	(Exim 4.71) (envelope-from <aclindsa@gmail.com>)
+	id 1gC9Vy-00042H-GT; Mon, 15 Oct 2018 16:30:59 -0400
+Received: by mail-qt1-x841.google.com with SMTP id d8-v6so23063664qtk.13;
+	Mon, 15 Oct 2018 13:30:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=4EmpVVSnTfkMDw2JFXrQxCO5Pdgddqz/gMONXq1xRwY=;
-	b=rmVpZO9F8KYt4JQLPnX9m72woNE+LFfbgDAWdcNOceLTi/eIT7FP5c8siV5FCHureO
-	hKjPX/YZQt8JT4MWIyCP1VzAgpf4sYr6pj/gzYazSJDi3itGALf32GGWMHf4sz1rdjgy
-	+n3PdwuNd4nmrfp4k+z+6Xu3Q75F9M/y6KsJ3/oqzRXhuLlwJCP7hn0H3aBSM5y34fZw
-	xVKoxnhQfTp3mcAF0iOMPx/AgOuPvH3gF4JOgNsafsWYV7koYXuRGcVMxzg2zi3JfOzM
-	VWacVBTkT7iN8BYwcyNVySx+4vtjyx7CXD9cxl3b4VRjtxGvZpTOaP9RwkSofM5CtQPa
-	R7og==
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=8+bPbcOavpPM4eV3QFZe/KklQtVUSLjG+X/1bnEeXNU=;
+	b=Sx8NYUCmzajlPf/lXEFw481JeUV2puiIRrCiF70jGKUyJzZJfCYqgMzo87EX+c2iN/
+	Im+Q22/KP9PRMW/8q4wyQANABaEnFPgrqaJYcvASOFSzw++A2Hj1iK1ZvwxPSLoSG+r4
+	RmE0QjjhRla4j458McwFckO7dxTkjNI2ZRSFfSW+zimPFqhEjaygm/nXBB6+YHmxeuCj
+	zwPp+Le5a0i3lwOyl7ruWwGCVePWlqak6ZxiPuWxtHzsm1SqYNFXQ/W6cZ4m5vZLPHd1
+	3sQJcl0fkEMNrpIQjywH5ecuhh5vqF9o6KrKBgnIvr1gsipGBA9/AUHe0EEdHAlHoNf4
+	epDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=4EmpVVSnTfkMDw2JFXrQxCO5Pdgddqz/gMONXq1xRwY=;
-	b=qW6GcHge0RBeg9vR90+DQebw6txEQGRpeMTN4cBk4M5TdVJA3CYWM0Y6WKsmJHAaFJ
-	y1/xCjotWylg281NBsCeXh8f63etk1TwpIhyW+MZgZsSq+4l6ekMls57Gufo1QiGACBG
-	MNMrYcUq6WoaKPgqFGfXdMxqYyCD3r9CzBCvkOM4Gw6MY4fZeUYMrZaURMdTSHD2JImG
-	yMU7jtiZoO9JLSJoIkhLBwNPEV6Qkw6BmyOyr/GZSKafhvvJhl/dHY1/ECm903BorRwA
-	25itr1llCMkqMmvUjvSdoTDmNBub/eG7dovjFaVdzdW5Ln5S8WRCyYY92E/WcktZcZ8E
-	cx3A==
-X-Gm-Message-State: AJaThX7RH6xJHCs6tGmoJ1OGtebSMJh85HsVIQyj8ZjZ9eMxUazeCeGn
-	MfhDL0zKqKXfghZsHwmo+oc=
-X-Received: by 10.237.35.76 with SMTP id i12mr10265518qtc.276.1510508063380;
-	Sun, 12 Nov 2017 09:34:23 -0800 (PST)
-Received: from [192.168.1.240] ([181.93.89.178])
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=8+bPbcOavpPM4eV3QFZe/KklQtVUSLjG+X/1bnEeXNU=;
+	b=VUj78kkC6fkPwyaiQSXsa4wtzbSSEegELdxTRrOUQj1bc6cIYw1gcNzktw6n1VZJ6z
+	BLfsczrW4q18CmbXDPvNGACcY++l152PeobC55WRpUvwmthL6c1WLwb5oeLhtQLYcl8L
+	uXTHV4zuojTc7VLKnOLgY1gMGhwWYDlm012EVsoAd9pdOj+0EQNr6KvCzh7rtXIpzXvG
+	nzzh67sZSaLOSH7wNmrWgQuZBGtBc5wfvuXtpgoxZntqlxGNQOSbZgmGXJUnCOPrD86A
+	40icsTlTzJdod8W0tpyAv1NwqJoCM3tzflmKFQtDJvWZPv7TFXOYaVx/UZjuxpVMJCAU
+	3t9w==
+X-Gm-Message-State: ABuFfogWw6FivKgljnEVA8OD1MB4xZJrgOXVooS4/HfvZMNIn45eoipw
+	RAkUBeoYxIZ+ypgLicFUQcw=
+X-Received: by 2002:a0c:c204:: with SMTP id l4mr18776791qvh.212.1539635438456; 
+	Mon, 15 Oct 2018 13:30:38 -0700 (PDT)
+Received: from okra.localdomain ([2600:3c03::f03c:91ff:febb:cdda])
 	by smtp.gmail.com with ESMTPSA id
-	t48sm1266816qtc.10.2017.11.12.09.34.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 12 Nov 2017 09:34:22 -0800 (PST)
-To: P J P <ppandit@redhat.com>, Qemu Developers <qemu-devel@nongnu.org>
-References: <20171111081111.32724-1-ppandit@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <29f80a56-df32-0eb5-0152-683c85a7e421@amsat.org>
-Date: Sun, 12 Nov 2017 14:34:21 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
+	7-v6sm7537538qkv.56.2018.10.15.13.30.38
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 15 Oct 2018 13:30:38 -0700 (PDT)
+Date: Mon, 15 Oct 2018 16:30:37 -0400
+From: Aaron Lindsay <aclindsa@gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <20181015203037.GJ3671@okra.localdomain>
+References: <20181010203735.27918-1-aclindsa@gmail.com>
+	<20181010203735.27918-6-aclindsa@gmail.com>
+	<4fff310a-8fc6-91f9-6caf-315c84d983d0@linaro.org>
+	<8e83cbd8-8c2f-f6f1-4423-f19a5f13aa5e@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20171111081111.32724-1-ppandit@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8e83cbd8-8c2f-f6f1-4423-f19a5f13aa5e@linaro.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22b
-Subject: Re: [Qemu-arm] [PATCH v1] highbank: validate register offset before
- access
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::841
+Subject: Re: [Qemu-devel] [PATCH v6 05/14] target/arm: Reorganize PMCCNTR
+ accesses
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Prasad J Pandit <pjp@fedoraproject.org>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Shawn Guo <shawn.guo@linaro.org>, Moguofang <moguofang@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iK49FUQiHh1r
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Wei Huang <wei@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>, qemu-devel@nongnu.org,
+	Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RO7jUUfPmlfv
 
-Hi Prasad,
-
-Thanks for updating this patch so quickly :)
-
-On 11/11/2017 05:11 AM, P J P wrote:
-> From: Prasad J Pandit <pjp@fedoraproject.org>
+On Oct 15 13:19, Richard Henderson wrote:
+> On 10/15/18 12:50 PM, Richard Henderson wrote:
+> > Ok, looking at this follow-up makes more sense than the previous patch.  Would
+> > it make sense to squash these two together?
 > 
-> An 'offset' parameter sent to highbank register r/w functions
-> could be greater than number(NUM_REGS=0x200) of hb registers,
-> leading to an OOB access issue. Add check to avoid it.
-> 
-> Reported-by: Moguofang (Dennis mo) <moguofang@huawei.com>
-> Signed-off-by: Prasad J Pandit <pjp@fedoraproject.org>
-> ---
->  hw/arm/highbank.c | 15 ++++++++++++++-
->  1 file changed, 14 insertions(+), 1 deletion(-)
-> 
-> Update: log error message(via qemu_log_mask) before returning
->   -> https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg01914.html
-> 
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index 354c6b25a8..8494dc6a48 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -34,6 +34,7 @@
->  #include "hw/ide/ahci.h"
->  #include "hw/cpu/a9mpcore.h"
->  #include "hw/cpu/a15mpcore.h"
-> +#include "qemu/log.h"
->  
->  #define SMP_BOOT_ADDR           0x100
->  #define SMP_BOOT_REG            0x40
-> @@ -117,14 +118,26 @@ static void hb_regs_write(void *opaque, hwaddr offset,
->          }
->      }
->  
-> +    if (offset / 4 >= NUM_REGS) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "highbank: bad write offset 0x%x\n", (uint32_t)offset);
+> Or, rather, split into two different patches: the first splits pmccntr_sync and
+> updates all of the existing uses, and the second which adds the migration hooks.
 
-I'd rather use:
+To make sure I understand, you're suggesting essentially reversing the
+order of patches 4 and 5 (and fixing everything up to be consistent)?
 
-           "highbank: bad write offset 0x%" HWADDR_PRIx "\n", offset);
-
-> +        return;
-> +    }
->      regs[offset/4] = value;
->  }
->  
->  static uint64_t hb_regs_read(void *opaque, hwaddr offset,
->                               unsigned size)
->  {
-> +    uint32_t value;
->      uint32_t *regs = opaque;
-> -    uint32_t value = regs[offset/4];
-> +
-> +    if (offset / 4 >= NUM_REGS) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "highbank: bad read offset 0x%x\n", (uint32_t)offset);
-
-Ditto HWADDR_PRIx.
-
-> +        return 0;
-> +    }
-> +    value = regs[offset/4];
-
-  +    value = regs[offset / 4];
-
-With checkpatch fixed:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
->  
->      if ((offset == 0x100) || (offset == 0x108) || (offset == 0x10C)) {
->          value |= 0x30000000;
-> 
+-Aaron

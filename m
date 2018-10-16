@@ -1,99 +1,108 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5709185wrt;
-        Tue, 16 Oct 2018 03:58:08 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV6265sMl9GgWSK3r+LrOdpLrfUFPSd89ptWvFHBPMwp4Nx9F0bgw0HbxpMpwIIMx1VwOszSa
-X-Received: by 2002:a0c:ee8a:: with SMTP id u10mr13080933qvr.95.1539687488610;
-        Tue, 16 Oct 2018 03:58:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539687488; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5847418wrt;
+        Tue, 16 Oct 2018 05:47:10 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61hts0QlvLCXTvtYDFt8cHLd+91+4t/DKnE8ePm0VSOP4jm4ilae0UoiwTpKv/CEbXhQ4JQ
+X-Received: by 2002:a0c:b994:: with SMTP id v20-v6mr20727046qvf.110.1539694029956;
+        Tue, 16 Oct 2018 05:47:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539694029; cv=none;
         d=google.com; s=arc-20160816;
-        b=nHj9GmQGVcQNd8hDdMp9muvzY1w9JwVFVPP6OyBe2ij6ze1fDHXWYYblDKW3n90lGV
-         EDCmBvudU4qCkpDvZiOiuzom6WuOllabHVftMe3Fa8H9nuCoGv5E8LMTIleA4lTFFurA
-         G9aS73oLm9NT8ryDVa5v9PyOcfvPE0o5w11DA90VOTHQgRqLz9PvUEg/v5Xyx6D9bJ0a
-         h+ig8knXuH7kZLRMDEgbRxFUcOxzPHWilfVkR30jaxDACVlkvjIhPSzKMIpYy68XTfy3
-         svpVMdqSeW1uMVFdCsnJpIwEHI/OFH+rC1uyAnXqx2iLNz2S/IJ8+sYcRpY0WAs8fnBN
-         p7bw==
+        b=KPZt5WeyUdD7dDSaMO8Pu3hAqwciZIu7rHKhrsxf0kxZR4RcqFLWP+YEBOmFkYXaqS
+         xFs1GSXeQnYpIFpsNVIgMJMfKuhUdGlssI4oddOi9iijAfjo1C+//w6apYVNxTxZbysg
+         9lZrKBMBJJySqlEmhFjcFiG2prOq7liTgOABGQJ2yXizmwOGkDRmghBUTDamG3vZM/0T
+         cjIBVWqesa4GN/WII2jZnAsO9YgbguC1NaGxcrjXpHlL0JGOy+4q8UHWDSX/3mkcNNJ3
+         azBk8lv36LFUURPbPen0iQ1EbHavWLNhge/1m/JwyPRe/BN9q2RxtoaWFbiLgkvszSuO
+         pwEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=6fNQlT7a7uh/drHg7yE/0K0I4l0ifSOqfiZXxWYhEZs=;
-        b=xyu9ELl//XAp8fwW3Oe0AKgYF4Euim1atZxLwAeaBj397K/0Japxv4Wzp8q6t/P6wZ
-         fXHVeATa5rMml/l9ZL1gassmfnmsN2F+wt+uP7SpMLCB7QcSPZvE05osM+wHa4i7Zmqm
-         0U5XyfVCoSujg+es+nbn3MbjFAkt8m1A71Cnl0PfeGVYJP3J8xzsiDLaO4ndyijcXr0/
-         xm9PHwdbB7eAqTUNfxzIRfJBhL0dwaVUPSt7MJ5mlGusGf4CvTpEswcr23YZmySIALTT
-         +A0Jlpo+Zz6E/FQkHXKOiqSoKujoJi+tgfFgJ5h3L1AxE9CwPYjJNeDIuBMK/kVSZ5+X
-         1vzg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=1am6ykS4WWM6xRZyfnxdluMi2mj1/MGXoZplXJgEmg4=;
+        b=CxxFp5me1czK065dHPDL0MSaMKY5VhdtvGwvFdJ2kaNOOeV6NRUQKG1HnrH36bvG8j
+         ECk9ZOCHVO/853Jm3BsOS038ABSFQMyBqLz0Ye+zp29knIRj5YLHeUTvVZoONuvS4uay
+         hVaQ7CxqzUmo1ggpvmviuyQfh/O0Ca47WxVWouVQnjpYKNTbuApATlYpM4YAhePQpDKH
+         mJNBcsQm1avNmUMshes6816AnraAOjkT1caze8H1MBFqtf6PqtXORK5LRT+G1ibmtbWk
+         OiDcSTs6aai/fogGAnOVhLMGmTwPyA1eP+9hk1yUC/w6lgcrF8zhN++iaBeyobuc41nm
+         EvSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YYAZAzwC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JLZdcxBK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c23-v6si1893262qtn.327.2018.10.16.03.58.08
+        by mx.google.com with ESMTPS id p27-v6si491342qvf.61.2018.10.16.05.47.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 03:58:08 -0700 (PDT)
+        Tue, 16 Oct 2018 05:47:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YYAZAzwC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JLZdcxBK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57217 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57850 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCN3A-000524-2k
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 06:58:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33097)
+	id 1gCOkf-0007j7-G6
+	for alex.bennee@linaro.org; Tue, 16 Oct 2018 08:47:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gCN2y-0004zj-TO
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 06:57:57 -0400
+	(envelope-from <aclindsa@gmail.com>) id 1gCOkO-0007i8-2I
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 08:46:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gCN2y-0006zM-1x
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 06:57:56 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:39665)
+	(envelope-from <aclindsa@gmail.com>) id 1gCOkN-0001of-9R
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 08:46:51 -0400
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842]:33994)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gCN2x-0006yK-QP
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 06:57:55 -0400
-Received: by mail-oi1-x241.google.com with SMTP id y81-v6so17646520oia.6
-	for <qemu-arm@nongnu.org>; Tue, 16 Oct 2018 03:57:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=6fNQlT7a7uh/drHg7yE/0K0I4l0ifSOqfiZXxWYhEZs=;
-	b=YYAZAzwCY6xD1jIsU04ZMHJi/poVonhRTtL+Iv7Q64NGwB3Nhuv9b7d2OgQV5c9M5D
-	+27hFeL0o1Uk+VZ1ROe4BvIdvr2G8zOkymKt9UZF4tinSrHwim+SmUOIPFkz9vTeS9ip
-	ILFGn5iJBFIZW4+YdoU/fuP8/DDwkEmK+vGWw=
+	(Exim 4.71) (envelope-from <aclindsa@gmail.com>)
+	id 1gCOkN-0001oZ-4K; Tue, 16 Oct 2018 08:46:51 -0400
+Received: by mail-qt1-x842.google.com with SMTP id o17-v6so25471789qtr.1;
+	Tue, 16 Oct 2018 05:46:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=1am6ykS4WWM6xRZyfnxdluMi2mj1/MGXoZplXJgEmg4=;
+	b=JLZdcxBKAsO1dP2S9NV3migS4bGiEkOnUlB0VpoE76ybQzxzrcpFdw89moVdjcHKnd
+	O3lmzlPcnBhZBd21r7jP2xqX9/hr6j/DgYTjNFi7iR1feN/qHgTxByU8wXe8bpeZuS5v
+	7nG6+2i5CSRw8ho2oCxn3VJrSVZQyHT2A2ewFxwHYo1BTTTytHZi0MS43TFTaQVk3sja
+	kHT9QXE1GpmOJYEFcICAiymNXFF8ex4w9b6P9G513F1qq3IM72xK/qgTtouCpX1+zDuo
+	ERm9DXpim/9lR3UGXrxHgumTc5Jeka5xglTHEWlepqx0THma9pI/ahFDztZuP64mviHj
+	WJ2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=6fNQlT7a7uh/drHg7yE/0K0I4l0ifSOqfiZXxWYhEZs=;
-	b=KlA1qXoiUUBaxcRQD2dXh3PjIct61Gs6nyFrzQNVsEGJ1174hgmp+IBBw2tIpLTUCZ
-	C7HggbrusE5JmwybYx7oo4azfO2JJPjejV1+U67MGL0hCvwyb8kRjNuW+DIHBFwPQtVb
-	HFv6CQOGSV2mZlpKuX1F3bNYIQPCsgt+mh357+ntXgUM3P3ObkkMBXXUNKE5H4Jv50Ck
-	GWisSz8q5uKZ/haEQ8inFFv1uJ7TkfInOne5PSTvFYAgL1prFZU6WNZrIAPnv1Nko3aL
-	qtZAUPE7+8IpKp1T8pWyG3NDxm+0DNs2nWIVek5evfJ+f8pBmxF2mxjOMbgsFWuwZ4jI
-	qSCw==
-X-Gm-Message-State: ABuFfognhLnd/uIqiMCDkxUq8xjCaZ1wQ7DLRSXatoHQH2wCGIv413BK
-	BSr4EafulkcLUmvNETECWAhAn9mV48gcI8rWb4dRug==
-X-Received: by 2002:aca:53c4:: with SMTP id
-	h187-v6mr10480091oib.48.1539687474592; 
-	Tue, 16 Oct 2018 03:57:54 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=1am6ykS4WWM6xRZyfnxdluMi2mj1/MGXoZplXJgEmg4=;
+	b=lRKTEMqlOB8JE7LgmiqggMV8V/tnACw036lhPCoMBJr09QJFd9SR9Nx1mY8oe0UGI+
+	hZpIHTjxoxrY/vhywcDjANmXTY6PKDuwvWycQLT0/+Y5nooVD0qIX/PHa8+Edz/08F62
+	gdBO9p5tM+RymwcHQulc7wkxqDlXutrVSVgNLmhO8cWDgUQ17HMNYcwYXcwXQ/40dHUc
+	wGMQh3wvi9q9KyAzM1Jl5MGwT+nq7wps7aNDgpQvrQzFkeGIu2+AWGyjGrgo7BiUTjlh
+	cB5O39iUiWIn6qmONTTgxjaTsIiDRltRbW+SIBzn2LimrR2aHMAsZh3MuhxNh/hPhv60
+	qLeg==
+X-Gm-Message-State: ABuFfogyS9wAArumwIpt+bQcU5uI42+lBSvLsb8J+AI07Bs/VvQ3gyW6
+	75tT0W8TwQHGG8FmMwFQl8g=
+X-Received: by 2002:ac8:83a:: with SMTP id
+	u55-v6mr20199990qth.48.1539694010648; 
+	Tue, 16 Oct 2018 05:46:50 -0700 (PDT)
+Received: from okra.localdomain ([2600:3c03::f03c:91ff:febb:cdda])
+	by smtp.gmail.com with ESMTPSA id
+	c43-v6sm9911089qte.12.2018.10.16.05.46.49
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 16 Oct 2018 05:46:50 -0700 (PDT)
+Date: Tue, 16 Oct 2018 08:46:49 -0400
+From: Aaron Lindsay <aclindsa@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <20181016124648.GN3671@okra.localdomain>
+References: <20181010203735.27918-1-aclindsa@gmail.com>
+	<CAFEAcA9cACQa7A8VUdfuSk-FcmFeHu+4x5m7HDE1A-+LYcwvXA@mail.gmail.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Tue, 16 Oct 2018 03:57:34
-	-0700 (PDT)
-In-Reply-To: <20181011035026.23517-1-xypron.glpk@gmx.de>
-References: <20181010185445.10290-1-xypron.glpk@gmx.de>
-	<20181011035026.23517-1-xypron.glpk@gmx.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Oct 2018 11:57:34 +0100
-Message-ID: <CAFEAcA-95cCzjw6opxqCPvQjNOdRBh+ive3+G-SE-04c3qKF5Q@mail.gmail.com>
-To: Heinrich Schuchardt <xypron.glpk@gmx.de>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9cACQa7A8VUdfuSk-FcmFeHu+4x5m7HDE1A-+LYcwvXA@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-Subject: Re: [Qemu-arm] [PATCH v2 1/1] hw/arm/virt: provide a model property
- in the fdt
+X-Received-From: 2607:f8b0:4864:20::842
+Subject: Re: [Qemu-arm] [PATCH v6 00/14] More fully implement ARM PMUv3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,45 +114,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HbgIo5xEO8Nf
+X-TUID: HdqGU59SDKSg
 
-On 11 October 2018 at 04:50, Heinrich Schuchardt <xypron.glpk@gmx.de> wrote:
-> According to the "Devicetree Specification, Release v0.2" 'model' is a
-> required property of the root node.
->
-> Some software like the Debian flash-kernel package rely on this property
-> to identify boards.
->
-> The patch sets the model property to 'qemu,virt'.
->
-> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
-> ---
-> v2
->         use the recommended format of the model property
-> ---
->  hw/arm/virt.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 281ddcdf6e..abe366895a 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -200,6 +200,7 @@ static void create_fdt(VirtMachineState *vms)
->      vms->fdt = fdt;
->
->      /* Header */
-> +    qemu_fdt_setprop_string(fdt, "/", "model", "qemu,virt");
->      qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
->      qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
->      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+On Oct 16 13:01, Peter Maydell wrote:
+> On 10 October 2018 at 21:37, Aaron Lindsay <aclindsa@gmail.com> wrote:
+> > The ARM PMU implementation currently contains a basic cycle counter, but
+> > it is often useful to gather counts of other events, filter them based
+> > on execution mode, and/or be notified on counter overflow. These patches
+> > flesh out the implementations of various PMU registers including
+> > PM[X]EVCNTR and PM[X]EVTYPER, add a struct definition to represent
+> > arbitrary counter types, implement mode filtering, send interrupts on
+> > counter overflow, and add instruction, cycle, and software increment
+> > events.
+> >
+> > Since v5 [1] I have:
+> > * Taken a first pass at addressing migration
+> > * Restructured the list of supported events, and ensured they're all
+> >   initialized
+> > * Fixed aliasing for PMOVSSET
+> > * Added ARM_CP_IO for PMINTENCLR and PMINTENCLR_EL1
+> > * Addressed a few non-code issues (comment style, patch staging,
+> >   spelling, etc.)
+> >
+> > [1] - https://lists.gnu.org/archive/html/qemu-devel/2018-06/msg06830.html
+> >
+> > Aaron Lindsay (14):
+> >   target/arm: Mark PMINTENCLR and PMINTENCLR_EL1 accesses as possibly
+> >     doing IO
+> >   target/arm: Mask PMOVSR writes based on supported counters
+> 
+> Hi; Richard has reviewed most of this series and suggested some
+> changes (thanks!); I'll just take these first two patches into
+> target-arm.next, since they're simple fixes that have been reviewed.
 
-The spec says "a string that uniquely identifies the model of the system
-board". So should we be using "virt" for everything, or should we use
-"virt-2.10", "virt-2.11", "virt-2.12", etc ?
+Thanks, Peter and Richard!
 
-thanks
--- PMM
+Is anyone willing to take a glance at the final patch in this series,
+"target/arm: Send interrupts on PMU counter overflow", before my next
+iteration? I'm particularly interested in a review of the approach I
+took for detecting overflow.
+
+-Aaron

@@ -1,99 +1,112 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6140944wrt;
-        Tue, 16 Oct 2018 09:16:14 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63QbV/I75X18fsEyN3HHzItdPwvnZedO03pjAqCij1UunT4fmwa/F153zLq1pq9yc80XERW
-X-Received: by 2002:ac8:6616:: with SMTP id c22-v6mr20304736qtp.199.1539706573959;
-        Tue, 16 Oct 2018 09:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539706573; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6239794wrt;
+        Tue, 16 Oct 2018 10:30:17 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62Y9VxJXcE2nWDKq/jgyii8P4FdJFBvWk3JvMJ4+gAkSmjR3cQhwem/EghwineUNLazjOmo
+X-Received: by 2002:a0c:adaa:: with SMTP id w39mr21506655qvc.149.1539711017595;
+        Tue, 16 Oct 2018 10:30:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539711017; cv=none;
         d=google.com; s=arc-20160816;
-        b=kGmyK6zgHoAkpyCJy3Hp9BXCiW/3Lg1NH4J5LYskxxsxWCIFld8OV5AnuGyq3idcxO
-         4dyG4vy7VJ5EbtTZWHL42a5pflGFoiLOn8aUHa3UBO2iwupNcHdyaxhZVFMlWWHXtstH
-         bc0TI79S4vpmjWOCoVa56nueeSdnCh94x9amxeBiU52FLojikp25EFiTsrXZH+an+ZDw
-         VopGkj03KdgrJX2Dkc2nPa3WdxZ/fAj60gMX7iZdDhzTeNAtq0xSO0Bn4rF3zvFpUUBn
-         vmrgnata2G6REJFAdvaKWCadlYhmmEBFMbUyaDXuFWkQoyITJYUYIyjTUdMEZY1F2mB7
-         4jZw==
+        b=KepVWO2oCK+KX7/kWbo74sFS35Vo51Q+WPv+lNBcDb/X6M8fFr/O/uQ2ykFXvTv9Wk
+         6YR3KLOxTo60csLnDW8dptQwujBB9UVYsMULj/Wirm50RMYqCQ7Z6Como8r7/qHa1vaB
+         B+ObQGWZuRsmrbjgOg81eB9yNMXuVb2d9fsGt07ujzW7zgQ9GB+bI7jAgw9KZUtUuQxS
+         bQw5WRm/wvSEuGr/93SD5zL/RryvkcSlQoyxsPat3NGy83zBL3GMoBSGjjquMZNeC7ZQ
+         877CxdPZR1Z0TOd5YeBicMv+IZMe7OFrCjNA/SiZW6yexhMQDYVmT4sfu6MU/UsI4Y8a
+         Zj5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=OBagbrUWWQD0uDJlHlv1rJGy1fb6ns7g51dsVcM3XlU=;
-        b=Gn/TvbJj/E8jYvcgiIUllLs+qLiHFKOm2cjdXRi+j3BfcRbzH/nk3jsTZnp2O3hJE9
-         c1Ya03WPtgD08ZttGWOJ1irT95468XmeQWIpD+h1F8Xe/JDrjkxTRO8HM78T/FWxECTq
-         iKzgFL0dopbnxvHJyfUNDs/ol8c4C8uGYDtKwn+Lg9mpiDHSC+VwnHPEuVvSF+Tz4R9m
-         RLzpH1wR4zI1D1G/odoKPYFXOlFEE+eP3qLSed6IqG/SVuzlFBiDLK+01xp4M8xfNUVh
-         NcRFr+0rdRpSXvTs/VIFi1j2q/Jgi/q8zVtY7vw4YzJqOanyt0oV/cGfpcH2R5W3Pzna
-         dVtA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=+E6F5KwC1npBd70nUQGQXg6cWSfGu+RbhGfLQVIZtPo=;
+        b=zXPjYJUAX3jlo0vwz8M1iiOLfwNlwV5oP/R5au4mEvmJNjU9+esTxjpI0WfWDwsW57
+         LMnvkgaDPdXc1JzYNWdo4zpYaCguRv8fKgBGPamSZYoQUM+IdW84pRivpvIG7pNQ4qH+
+         Z96fudh2f6xEo8nuGqaAoTv7ytiPelBJdRFPn+UdXWFr5jYxmwBA7JlMKddx2QWRivYY
+         xYCqBGIQHOnj6iK3Q7+BTfx1BuN4jhj/i+QDTWwCHsReGv/wgKV5QE/O69pepbiHBG9s
+         ONmd3zMc1CBmWdOPOdSQTiWfgEAgCK4OiKGEjGFlHNajhzRv6Zdv1nzPq3USr8D71ztJ
+         OiKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="H9rW/HUS";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KU9K7hVz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l24-v6si1261194qtp.118.2018.10.16.09.16.13
+        by mx.google.com with ESMTPS id n7si831904qvp.165.2018.10.16.10.30.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 09:16:13 -0700 (PDT)
+        Tue, 16 Oct 2018 10:30:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="H9rW/HUS";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KU9K7hVz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59042 helo=lists.gnu.org)
+Received: from localhost ([::1]:59313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCS0z-0001Sb-Ez
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 12:16:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33393)
+	id 1gCTAf-00030n-4N
+	for alex.bennee@linaro.org; Tue, 16 Oct 2018 13:30:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53543)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gCS0n-0001Rv-Uk
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 12:16:03 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1gCTAW-00030R-B0
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 13:30:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gCS0m-0007cU-V4
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 12:16:01 -0400
-Received: from mail-it1-x143.google.com ([2607:f8b0:4864:20::143]:52629)
+	(envelope-from <richard.henderson@linaro.org>) id 1gCTAS-00016R-Aq
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 13:30:08 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:39184)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gCS0l-0007WB-4x
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 12:16:00 -0400
-Received: by mail-it1-x143.google.com with SMTP id 134-v6so33847674itz.2
-	for <qemu-arm@nongnu.org>; Tue, 16 Oct 2018 09:15:57 -0700 (PDT)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1gCTAR-00011n-LW
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 13:30:04 -0400
+Received: by mail-pf1-x442.google.com with SMTP id c25-v6so11796414pfe.6
+	for <qemu-arm@nongnu.org>; Tue, 16 Oct 2018 10:30:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=OBagbrUWWQD0uDJlHlv1rJGy1fb6ns7g51dsVcM3XlU=;
-	b=H9rW/HUSKu+nC7BLeKdA7XBgiVpTkVMRZsHO3QYwkaB+/IZMAWF0DOlmTLSYRo44EX
-	c3hp7a63cerwTQ0xsTdPMEl1xSymf2bImwhSZVmTLb1BY72NhkDI3g96e5cGrr05IOnQ
-	2df6v8f74GowwI081j3XztRnHihjd3rNkNrGs=
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=+E6F5KwC1npBd70nUQGQXg6cWSfGu+RbhGfLQVIZtPo=;
+	b=KU9K7hVzV65FTaMerTBpww8lFHm54j2YNJbEnKcgBzjTqOMG/InlgvyaFvqxO72kxt
+	YNYWzMCGKbQaB0fSxpi2Os5kLNgG4M9hR/+QLe5rEgMjFOZTFHI8tfLm7w8zkCFP32o+
+	i3mro6MHEBarPnJputSeprC0/mh7k4eu9FpEs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=OBagbrUWWQD0uDJlHlv1rJGy1fb6ns7g51dsVcM3XlU=;
-	b=U1UfjQsDtNXULKKYV0VI8EWvE/KO+nGf6AYZv1AO9Y/KJ3QFV70S17oRiSUj7a0Lr3
-	x7abeM7SCcdxYxR7p/R7mU0NuECwv44PI+Bd7/fjHb41dYCUbOm9amX/C2R4yLS3FDqU
-	rmV1GxEb0jiAydRrgpRcYWJHLc2gXoekWqPrCe6kZ48RAEgMzhpYopAlP5D5rjy57SmJ
-	NJUSmcPoclxXaHPBtYoN8uXFwcYIvMwvZkl2weM47b5KznTnoXfqPCNPrQsuWoJYbCQn
-	PvH7jXGp/eTmk37g9h3y4hW42r7iIZiozbRN7Nq2KkJjAo96jHjiAaTsibnctgUezYma
-	ZCLQ==
-X-Gm-Message-State: ABuFfoiRGTIi4UcAQKl8Y/TAkOUARH/hyIKNhVPhrQ9HNpZtyOiaTjP2
-	cX2AqXk89dg4OGMObWxcN5dQ87AI21ZFoRwjx4AYLA==
-X-Received: by 2002:a02:88f7:: with SMTP id
-	b52-v6mr16511068jak.25.1539706557070; 
-	Tue, 16 Oct 2018 09:15:57 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=+E6F5KwC1npBd70nUQGQXg6cWSfGu+RbhGfLQVIZtPo=;
+	b=lVpg9HPF+HewUio9yRIoALpXUb2pciB2tG930wlFWFXpmvlTzu8miIaE0GFsL6ok9Q
+	Wsb5zb0ruIawWegSZy6cFZo6X7qDHKwGf3b5cI5oc7cZX29qa2VerXGzHDHLBxjoo+bI
+	GVA0HI8Tcfdf+0Fn1wLcivR4b756WKne4BSEvNJ83pksRHvd/wr06sfPp/wqwSpxKfvI
+	VfABHloY+3KMaOX6zhWxbijEsb46gPWgcDsTmLb3ekaxoJDsJncFR1JQCSjPpBx4kr4x
+	UZIy0CKcXNfkGfbBMcCMTwXh+q6YkOOn7yImrN+L41/T8i5G37kLsB7Rvdom+mIk0k/K
+	0hkA==
+X-Gm-Message-State: ABuFfog21pYyiJaK+x79xhf3pS7T/dC6jf1NsIIqFj8MG9Y4ndgRgH3j
+	zsCcrFfZCzMC0VWXYeYaYmKXiQ==
+X-Received: by 2002:a62:be1a:: with SMTP id
+	l26-v6mr23515283pff.204.1539711002515; 
+	Tue, 16 Oct 2018 10:30:02 -0700 (PDT)
+Received: from cloudburst.twiddle.net (174-21-9-133.tukw.qwest.net.
+	[174.21.9.133]) by smtp.gmail.com with ESMTPSA id
+	u79-v6sm22646431pfd.117.2018.10.16.10.30.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 16 Oct 2018 10:30:01 -0700 (PDT)
+To: Aaron Lindsay <aclindsa@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20181010203735.27918-1-aclindsa@gmail.com>
+	<CAFEAcA9cACQa7A8VUdfuSk-FcmFeHu+4x5m7HDE1A-+LYcwvXA@mail.gmail.com>
+	<20181016124648.GN3671@okra.localdomain>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <2dcd14ea-7fec-c2f0-09aa-017377b578cd@linaro.org>
+Date: Tue, 16 Oct 2018 10:29:59 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-Received: by 2002:a02:983d:0:0:0:0:0 with HTTP; Tue, 16 Oct 2018 09:15:36
-	-0700 (PDT)
-In-Reply-To: <20181011021931.4249-3-edgar.iglesias@gmail.com>
-References: <20181011021931.4249-1-edgar.iglesias@gmail.com>
-	<20181011021931.4249-3-edgar.iglesias@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Oct 2018 17:15:36 +0100
-Message-ID: <CAFEAcA_c8YiyTtb1pE_ToSF_r6DGjCbjbDHF+6OQeCccbwpc=A@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20181016124648.GN3671@okra.localdomain>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::143
-Subject: Re: [Qemu-arm] [PATCH v2 02/12] net: cadence_gem: Announce
- availability of priority queues
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: Re: [Qemu-arm] [PATCH v6 00/14] More fully implement ARM PMUv3
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,70 +118,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	Francisco Iglesias <frasse.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
+Cc: Michael Spradling <mspradli@codeaurora.org>,
+	Digant Desai <digantd@codeaurora.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+	Alistair Francis <alistair.francis@xilinx.com>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BvkHj39cKFQx
+X-TUID: lm25iGCONFsT
 
-On 11 October 2018 at 03:19, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Announce the availability of the various priority queues.
-> This fixes an issue where guest kernels would miss to
-> configure secondary queues due to inproper feature bits.
->
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  hw/net/cadence_gem.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index e560b7a142..901c173970 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -1213,6 +1213,7 @@ static void gem_reset(DeviceState *d)
->      int i;
->      CadenceGEMState *s = CADENCE_GEM(d);
->      const uint8_t *a;
-> +    uint32_t queues_mask;
->
->      DB_PRINT("\n");
->
-> @@ -1229,7 +1230,10 @@ static void gem_reset(DeviceState *d)
->      s->regs[GEM_DESCONF] = 0x02500111;
->      s->regs[GEM_DESCONF2] = 0x2ab13fff;
->      s->regs[GEM_DESCONF5] = 0x002f2045;
-> -    s->regs[GEM_DESCONF6] = 0x00000200;
-> +    s->regs[GEM_DESCONF6] = 0x0;
-> +
-> +    queues_mask = MAKE_64BIT_MASK(1, s->num_priority_queues - 1);
-> +    s->regs[GEM_DESCONF6] |= queues_mask;
+On 10/16/18 5:46 AM, Aaron Lindsay wrote:
+> Is anyone willing to take a glance at the final patch in this series,
+> "target/arm: Send interrupts on PMU counter overflow", before my next
+> iteration? I'm particularly interested in a review of the approach I
+> took for detecting overflow.
 
-This causes the clang runtime sanitizer to complain:
-  /aarch64/qom/xilinx-zynq-a9:
-/home/petmay01/linaro/qemu-for-merges/hw/net/cadence_gem.c:1306:19:
-runtime error: shift exponent 64 is too large for 64-bit type
-'unsigned long long'
+I intend to finish reviewing the patch series today.
 
-because s->num_priority_queues is 1, and so you've
-asked for a zero-width mask, which MAKE_64BIT_MASK
-doesn't permit. What was the intention of the code here?
-I don't think any value of num_priority_queues can
-produce the old 0x200 value for this ID register.
 
-I'm going to drop this patch and "net: cadence_gem:
-Announce 64bit addressing support" (which depends
-on this one) from my pullreq.
-
-thanks
--- PMM
+r~

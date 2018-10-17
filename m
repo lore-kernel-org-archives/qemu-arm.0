@@ -1,138 +1,294 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6668078wrt;
-        Tue, 16 Oct 2018 17:15:20 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63qu75lJpswDlK2wqG9zNOOJYQ1ymKvCH1+OGAsIn78gPcS5bn2jWt18u0G7Jr5ERr59YtS
-X-Received: by 2002:ac8:3f11:: with SMTP id c17-v6mr22740833qtk.33.1539735320463;
-        Tue, 16 Oct 2018 17:15:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539735320; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6719545wrt;
+        Tue, 16 Oct 2018 18:10:55 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61fNtbvwA8+ozho6PkYGdCJSEbv7xBjA9YteyuwVeXWjge4bgNd+6z/5mF0siJJi+lzaqrB
+X-Received: by 2002:a0c:b62c:: with SMTP id f44-v6mr24616487qve.184.1539738655108;
+        Tue, 16 Oct 2018 18:10:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539738655; cv=none;
         d=google.com; s=arc-20160816;
-        b=EXfvzEHCb3ZUC93WiSxgSG7jMupml05L3dY5p5Jhefhem+0LY8ab8CcVr5D3YqUtzx
-         4wybPYklMZ1V4D3RXamqVMqwCTgRDt3dxnI3hfOCzwinGSg34+X9zb77pKbqI5OgRDLc
-         CNkD0k7cHN83+bhMYd0xmOJEE3KELOFBI6VIMROTjUp5DiXfrRwb06LrWHdj11E6JsTn
-         hLDwGpuMav4CAqJzhDxeZs3BVUdlp3sak6skeZsY1hR6OOB3uOsbwgZlnNSdb50juwSI
-         JcqZWNHV0/oCy585KBV45gs+1zd9Xr4psHPycNuaIfVteQiwp867NCi6BnwVCBEIGmDA
-         hI9A==
+        b=xWIs7KQqfUkpaAmOevF24CHFKV9KVOkwoeXM4JA700XB10UPdzXE5WVfy05Rr2hjRh
+         Y9CKkqd4oWzWWWd/khhnjS4TNP8Z32vW0BiwEkoYoW/Z9csssXGfzWkDmnLsce3qHSXB
+         1oyPHNbCg+EvOzL1vT4bYXYtEg2f8DJRjQVJ85fPa8UERDIGou5V+Jj+vXjIQCwsTLOd
+         ezZlxqnH41bb+tMdj22R7XLGD7z1yQ3bSqZ0njKns2dVEur9JT5PAufP0C3z/uQYzaLb
+         ZjwYoX2TI23JxITxxW+9OaFKLk/95OcOQvLURzyKjShUZkRm9WwPMJF1YJZd4tficZni
+         +VVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=XD9UpVeYlFjKnE96M7JW++6ZjDGG+lX2dPLDWNMdyT8=;
-        b=ivJxA0p2N9IvoUwfAEOiclVoJf4ZQpPFo7n8AOKnuFI8YxFbiwEvRi1GLAi1hEr52n
-         m3aY97zDVZjS0tFLUC666Vl3xzhHPS2HlE8qa1/FFzqt1QOBQIyi5uB7YcclxWXv6KIa
-         lN7bj93T1QCsfJeXZ6mmxCZArNdVG2SF/S3zY9Zx8PgZJrfRwFsK92CMEo5KtT5Z1HJR
-         CqPhDVBXU3kYJrt1jccSDiuxHv5CCzJNdOCkJcTYm6wF5nApApfH90dYmaYeyEA439MW
-         5k9QLVxRCV/yxsrDKuZbhMMDN9OHNlitf2TD6z+NA23qRiTCQQiK8dYO0xPYHQ/EKV56
-         WUMQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=fp+TrY3VCd/HbwlwGhDvEcx9+D5ySnb9KgmNWoYQCrc=;
+        b=C3TF9YrsdYUKQJcPJI8WlLKyRZ3W04+A8AdKLCBrksdGaqow1EHl3DDh1vNsviWeUF
+         sty1yHgTjEt4XMWcap00Wdfr4o6Zz2BF4nPxdc9kuKzsoJIBoS3Cfn74d66PiFbgqEvU
+         QAxoXm5whCKZIUhXwNOD86KjwF9vdnKmKuqRcnfdKAxd2zOvDdxJeVWTFLbNTLpw01HS
+         joOGeS2mby9dVy28dc113dfs+GPZ3MNpQ1px9Ta0fHCc8OADFVsnwD/CARJ/Rn9G6Ice
+         ozneyVUGhKlwpcsGMiu8apZjsp38txF4vxKJQUhdvS1BUgiFtZE8CsjjGlo+TvRyrZ9g
+         7a/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FXOPgroZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r77-v6si2042291qkl.132.2018.10.16.17.15.20
+        by mx.google.com with ESMTPS id a62-v6si2345349qkd.148.2018.10.16.18.10.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 17:15:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 16 Oct 2018 18:10:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FXOPgroZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60680 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33206 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCZUd-0004VS-Sq
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 20:15:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47458)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gCaMQ-0007eb-6S
+	for alex.bennee@linaro.org; Tue, 16 Oct 2018 21:10:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38021)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gCZUU-0004SX-8R
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 20:15:10 -0400
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gCaLF-0007If-2w
+	for qemu-devel@nongnu.org; Tue, 16 Oct 2018 21:09:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gCZUR-0004K6-34
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 20:15:10 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:39245)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gCZUQ-0004GU-Jj
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 20:15:06 -0400
-Received: by mail-pl1-x644.google.com with SMTP id e67-v6so2793614plb.6
-	for <qemu-arm@nongnu.org>; Tue, 16 Oct 2018 17:15:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=XD9UpVeYlFjKnE96M7JW++6ZjDGG+lX2dPLDWNMdyT8=;
-	b=FXOPgroZovlXcNuBmr7GAU1CDRv5Zv1pA+6EQ1fiHOaVkthgnw1V/2BOmSzOULKIDv
-	T8AGfWwmaEhbfiC/Oxml9wpYz3LAAf7FWSId6K7VjXgXFrMKEwErNUQ9LL6N76/ZBXcv
-	uv2TUlt9OqY6Uhrun5/LcRvoTXZLwq6JCANhQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=XD9UpVeYlFjKnE96M7JW++6ZjDGG+lX2dPLDWNMdyT8=;
-	b=sE9Fdgjx4qazj6QJvPkVwN2JHcCrmp8yqMzx233HTER044RerOX/9fQRRB1y+OW05X
-	JW00jIlN1Q4Kw8ydbyWSczX1JzoMlXBlh5Uy6pXum2I5YOqk1HGbH6lrydTdBuMGYtOu
-	J5bAN9u8PDa1PQjLtj2S7WDsdj7EEtlG/vddsYYxYQb+iEaaObzG+KSuEYjuH+zV0SRr
-	2NL4wnJxaCNIlNA3SWwWVzdjCNiHLvB7bb1JaroI+amHCetb/BPsnrQKvtqjybxwySWZ
-	8xHbdxMYaiDK6BU8pT3c7I+Dl6BFU8Fa66Onmn9Kk4nZfbUnR0Kq10aFObbtq+00egbD
-	KJVw==
-X-Gm-Message-State: ABuFfoiKa0LeP6ImWeHEcEIGDuqwbm5AWeDFXsSIu4j0QdgngSGdiCvV
-	R9dXbMRNTamsBITRjnpAj7ZxZA==
-X-Received: by 2002:a17:902:b03:: with SMTP id
-	3-v6mr23565348plq.141.1539735305452; 
-	Tue, 16 Oct 2018 17:15:05 -0700 (PDT)
-Received: from cloudburst.twiddle.net (174-21-9-133.tukw.qwest.net.
-	[174.21.9.133]) by smtp.gmail.com with ESMTPSA id
-	g17-v6sm23796609pfe.37.2018.10.16.17.15.03
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 16 Oct 2018 17:15:04 -0700 (PDT)
-To: Aaron Lindsay <aclindsa@gmail.com>, qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>,
-	Wei Huang <wei@redhat.com>, 
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <20181010203735.27918-1-aclindsa@gmail.com>
-	<20181010203735.27918-14-aclindsa@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <81270d53-724b-000e-0bb8-da7ad761871e@linaro.org>
-Date: Tue, 16 Oct 2018 17:15:02 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
-MIME-Version: 1.0
-In-Reply-To: <20181010203735.27918-14-aclindsa@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::644
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 13/14] target/arm: Implement
- PMSWINC
-X-BeenThere: qemu-arm@nongnu.org
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gCaLD-000849-V2
+	for qemu-devel@nongnu.org; Tue, 16 Oct 2018 21:09:41 -0400
+Received: from out1.zte.com.cn ([202.103.147.172]:46474 helo=mxct.zte.com.cn)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gCaL9-0007xR-0q; Tue, 16 Oct 2018 21:09:35 -0400
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id F2787FC338298C289E6F;
+	Wed, 17 Oct 2018 09:09:26 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id w9H19KHS021262;
+	Wed, 17 Oct 2018 09:09:20 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018101709093909-4968372 ;
+	Wed, 17 Oct 2018 09:09:39 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org
+Date: Wed, 17 Oct 2018 17:20:49 +0800
+Message-Id: <1539768049-18154-1-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-10-17 09:09:39,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-10-17 09:09:12,
+	Serialize complete at 2018-10-17 09:09:12
+X-MAIL: mse01.zte.com.cn w9H19KHS021262
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 202.103.147.172
+Subject: [Qemu-devel] [PATCH]  target/arm : add pvpanic mmio device
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>, qemu-devel@nongnu.org,
-	Digant Desai <digantd@codeaurora.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7e6WU8SFieYy
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	root <root@host121.localdomain>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ylcne83eqYl/
 
-On 10/10/18 1:37 PM, Aaron Lindsay wrote:
-> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> ---
->  target/arm/helper.c | 39 +++++++++++++++++++++++++++++++++++++--
->  1 file changed, 37 insertions(+), 2 deletions(-)
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+From: root <root@host121.localdomain>
 
+Add pvpanic mmio device that is similar to x86's pvpanic device.
 
-r~
+Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+---
+ default-configs/arm-softmmu.mak |  2 +-
+ hw/arm/virt.c                   | 21 ++++++++++++
+ hw/misc/Makefile.objs           |  1 +
+ hw/misc/pvpanic-mmio.c          | 76 +++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h           |  1 +
+ include/hw/misc/pvpanic-mmio.h  | 12 +++++++
+ 6 files changed, 112 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/pvpanic-mmio.c
+ create mode 100644 include/hw/misc/pvpanic-mmio.h
+
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 2420491..4713c92 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -43,7 +43,7 @@ CONFIG_USB_MUSB=y
+ CONFIG_USB_EHCI_SYSBUS=y
+ CONFIG_PLATFORM_BUS=y
+ CONFIG_VIRTIO_MMIO=y
+-
++CONFIG_PVPANIC_MMIO=y
+ CONFIG_ARM11MPCORE=y
+ CONFIG_A9MPCORE=y
+ CONFIG_A15MPCORE=y
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a472566..ab41128 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -140,6 +140,7 @@ static const MemMapEntry a15memmap[] = {
+     [VIRT_UART] =               { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
++    [VIRT_PVPANIC_MMIO] =       { 0x09020018, 0x00000002 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+@@ -798,6 +799,24 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+     g_free(nodename);
+ }
+ 
++static void create_pvpanic_device(const VirtMachineState *vms)
++{
++    char *nodename;
++    hwaddr base = vms->memmap[VIRT_PVPANIC_MMIO].base;
++    hwaddr size = vms->memmap[VIRT_PVPANIC_MMIO].size;
++
++    sysbus_create_simple("pvpanic-mmio", base, NULL);
++
++    nodename = g_strdup_printf("/pvpanic-mmio@%" PRIx64, base);
++    qemu_fdt_add_subnode(vms->fdt, nodename);
++    qemu_fdt_setprop_string(vms->fdt, nodename,
++                            "compatible", "pvpanic,mmio");
++    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++                                 2, base, 2, size);
++    g_free(nodename);
++
++}
++
+ static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
+ {
+     int i;
+@@ -1544,6 +1563,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_pcie(vms, pic);
+ 
++    create_pvpanic_device(vms);
++
+     create_gpio(vms, pic);
+ 
+     /* Create mmio transports, so the user can create virtio backends
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 6d50b03..6326260 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -71,6 +71,7 @@ obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
+ obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
+ 
+ obj-$(CONFIG_PVPANIC) += pvpanic.o
++obj-$(CONFIG_PVPANIC_MMIO) += pvpanic-mmio.o
+ obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+ obj-$(CONFIG_AUX) += auxbus.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
+diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
+new file mode 100644
+index 0000000..c7f373e
+--- /dev/null
++++ b/hw/misc/pvpanic-mmio.c
+@@ -0,0 +1,76 @@
++#include "qemu/osdep.h"
++#include "sysemu/sysemu.h"
++#include "qemu/log.h"
++#include "hw/misc/pvpanic-mmio.h"
++
++#define PVPANIC_MMIO_FEAT_CRASHED      0
++
++#define PVPANIC_MMIO_CRASHED        (1 << PVPANIC_MMIO_FEAT_CRASHED)
++
++static void handle_mmio_event(int event)
++{
++    static bool logged;
++
++    if (event & ~PVPANIC_MMIO_CRASHED && !logged) {
++        qemu_log_mask(LOG_GUEST_ERROR, "pvpanic-mmio: unknown event %#x.\n", event);
++        logged = true;
++    }
++
++    if (event & PVPANIC_MMIO_CRASHED) {
++        qemu_system_guest_panicked(NULL);
++        return;
++    }
++}
++
++static uint64_t pvpanic_mmio_read(void *opaque, hwaddr addr, unsigned size)
++{
++    return -1;
++}
++
++static void pvpanic_mmio_write(void *opaque, hwaddr addr, uint64_t value,
++                                 unsigned size)
++{
++   handle_mmio_event(value);
++}
++
++static const MemoryRegionOps pvpanic_mmio_ops = {
++    .read = pvpanic_mmio_read,
++    .write = pvpanic_mmio_write,
++    .impl = {
++        .min_access_size = 1,
++        .max_access_size = 2,
++    },
++};
++
++
++static void pvpanic_mmio_initfn(Object *obj)
++{
++    PVPanicState *s = PVPANIC_MMIO_DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->mmio, OBJECT(s), &pvpanic_mmio_ops, s,
++                          "pvpanic-mmio", 2);
++    sysbus_init_mmio(sbd, &s->mmio);
++}
++
++static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static TypeInfo pvpanic_mmio_info = {
++    .name          = TYPE_PVPANIC_MMIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(PVPanicState),
++    .instance_init = pvpanic_mmio_initfn,
++    .class_init    = pvpanic_mmio_class_init,
++};
++
++static void pvpanic_mmio_register_types(void)
++{
++    type_register_static(&pvpanic_mmio_info);
++}
++
++type_init(pvpanic_mmio_register_types)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 4cc57a7..61cc310 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -70,6 +70,7 @@ enum {
+     VIRT_MMIO,
+     VIRT_RTC,
+     VIRT_FW_CFG,
++    VIRT_PVPANIC_MMIO,
+     VIRT_PCIE,
+     VIRT_PCIE_MMIO,
+     VIRT_PCIE_PIO,
+diff --git a/include/hw/misc/pvpanic-mmio.h b/include/hw/misc/pvpanic-mmio.h
+new file mode 100644
+index 0000000..2e6bec3
+--- /dev/null
++++ b/include/hw/misc/pvpanic-mmio.h
+@@ -0,0 +1,12 @@
++#ifndef HW_MISC_PVPANIC_H
++#define HW_MISC_PVPANIC_H
++#include "hw/sysbus.h"
++#define TYPE_PVPANIC_MMIO "pvpanic-mmio"
++#define PVPANIC_MMIO_DEVICE(obj)    \
++    OBJECT_CHECK(PVPanicState, (obj), TYPE_PVPANIC_MMIO)
++#endif
++
++typedef struct PVPanicState {
++    SysBusDevice parent_obj;
++    MemoryRegion mmio;
++} PVPanicState;
+-- 
+1.8.3.1
+

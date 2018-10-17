@@ -1,81 +1,79 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp23470wrt;
-        Tue, 16 Oct 2018 18:39:24 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61OmgAdQPELwFH0ovDOC4o6Hy+YaImyCc+z81JY9q6pO07SOS8YuUWClpip7mTlO9RRKQNq
-X-Received: by 2002:a37:4250:: with SMTP id p77-v6mr18334768qka.91.1539740364542;
-        Tue, 16 Oct 2018 18:39:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539740364; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp54128wrt;
+        Tue, 16 Oct 2018 19:16:15 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV635JEEkOp7tNNdf/qvB7uVFD0RgOca7nQOl/umTwoHJKTd9NsQ8VPEEE/xLs83lj2zPTXPE
+X-Received: by 2002:a0c:b04d:: with SMTP id l13mr14825407qvc.139.1539742575753;
+        Tue, 16 Oct 2018 19:16:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539742575; cv=none;
         d=google.com; s=arc-20160816;
-        b=i/znSGtntPHtd2awvAcVDPWOI1o5PxgDXOQkO5T6q5l1RiW/m2rIwY7eN4tdh4Fj/F
-         lJBtk41OX4rDYk1jK3lg2rtKABwRgDiAekk3GIldT+4mLwKYaXLDWqr3lI4PZ6vDaSh8
-         6Bh/XwsJ3mTNqKUHzecfGaJvWofV0qfT4HuYHMlhA7916PW10uBZFYtTk8rFzZRLyaRc
-         eG/mAhLYf64WyjuPCWUbgv9IKcwk6PwrdCBr9HrqX4ZVW5vDYri18uNfem/U2aOVVkfV
-         TS0nJQBAzbK68eM+W7nj8LsfkZXpNwAZML4UNurXmDrU5sMCGmgCpMV3qd++36joTCLY
-         8QDw==
+        b=Alfwd+a1m+IcNJ8v+Hj70o6taLNpDL8Ynkbn22pWpf3C6OLzXMpgenuJFqkAwX8D7/
+         P0ILdgDgOjj4+re/vXPyBXyKgDEiuQIq7MsW62DuBMN43qraDtlW5/BsRevHzIFEhDBV
+         GnVFonD+uJmHtZC4B1s4kl5HY0rEVRgQm46lg8yrZXe6pysFTNqOz7s9r+oxLBnPRI00
+         JxQgnLUjdRqWinivesyhfn6vWzJEZeYEk1X7i1sXQhnFdDa74eangt8EWm0uxvDyLLXV
+         liEe+0K07BAjEnr3W/2eTF2rC2XimBqvdOIuqeOItb3k7Wbi8biY9TIgzakFajM96zKx
+         hSlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
-         :references:in-reply-to:message-id:date;
-        bh=tHzcH9J8QDiHaTsaum5M1FHW+3yOlnP4uBHD4k3lgVc=;
-        b=nEtE5g/wAxylzJbgj5q60i2kQW53oe4yYRDeFRSV0Ht+i/7jt+RaRAXIOFfGqFwGMf
-         QTgO843LhFUeK4nrDo1wlr7KnLx7Hw7k9zjBWr+3tDIETBXaZ1BFR4vBAWBJ+UoAE2kA
-         T9D98cWaHDXHpd75jxLeMrBHSF0Z2AWZOmkti7a2IKhYToBgcwUiDJQ9fI2pLGsQvQ+i
-         3+gik6/ZvXg0hYmDc7fbvly/WciJ1KgZztb1C2o6tuO4CqVOHgI1dPoDZtg/T24BJtZ6
-         u7vDQzgr+iiBOnS3DPthzEXNNO942i5+qM0dtLJ8AeW6Zv1T8nNIk1Kt+2bBTudWoYV6
-         sllQ==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=IHBLF0fw20qX/tKFDBrkInzi6aWGJHHFENf692m9Q8A=;
+        b=dK/F4Cl+p35YPYV2tbI7zktxwm0CbW9/AfYTlYALO0ShXHsOav4pdi6+jsljYES5XS
+         +nu2DVaCy0FKMBBEJGYtjsXS82qLznzJAqqqzHZZrgzb/Vfso7BmXy/bwgcGhnFMo2xf
+         F4cv0980CFHOvs+SaTKR+DNZqyr3JJRgArkN4K30K77h4jSjx79vDVB7k5HY76I0M9/9
+         gPm8RWex+360vJzKoR0jruAT0L8oouYBYnmB145g7mXdE97aFB4b/vagXEqM9I+HFgYY
+         MjdYwoBgzGTcIsk0dAgSH1zk+juzJIu0gRmpt6vCh25FDTbeascxRQyq9SiI0igGQyMe
+         l7nw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n79-v6si1745699qka.101.2018.10.16.18.39.24
+        by mx.google.com with ESMTPS id z17-v6si10471507qvn.179.2018.10.16.19.16.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 18:39:24 -0700 (PDT)
+        Tue, 16 Oct 2018 19:16:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33332 helo=lists.gnu.org)
+Received: from localhost ([::1]:33433 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCao0-0006iR-2r
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 21:39:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44715)
+	id 1gCbNe-0000FH-Q5
+	for alex.bennee@linaro.org; Tue, 16 Oct 2018 22:16:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51060)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gCanq-0006i5-FW
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 21:39:15 -0400
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gCbNS-0000Ew-9M
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 22:16:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gCanl-0006Hs-FA
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 21:39:14 -0400
-Received: from mx7.zte.com.cn ([202.103.147.169]:47596 helo=mxct.zte.com.cn)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gCbNP-00066J-06
+	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 22:16:02 -0400
+Received: from mxhk.zte.com.cn ([63.217.80.70]:15182)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gCanl-0006Eq-27; Tue, 16 Oct 2018 21:39:09 -0400
-Received: from mse02.zte.com.cn (unknown [10.30.3.21])
-	by Forcepoint Email with ESMTPS id 07BC4ADE840A34ABDDA6;
-	Wed, 17 Oct 2018 09:39:06 +0800 (CST)
-Received: from kjyxapp05.zte.com.cn ([10.30.12.204])
-	by mse02.zte.com.cn with SMTP id w9H1cwb5093160;
-	Wed, 17 Oct 2018 09:38:58 +0800 (GMT-8)
+	id 1gCbNO-00064W-Ag; Tue, 16 Oct 2018 22:15:58 -0400
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id E512DA88A6EDD5EC6417;
+	Wed, 17 Oct 2018 10:15:53 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id w9H2FfNE026444;
+	Wed, 17 Oct 2018 10:15:41 +0800 (GMT-8)
 	(envelope-from peng.hao2@zte.com.cn)
-Received: from mapi (kjyxapp01[null]) by mapi (Zmail) with MAPI id mid14;
-	Wed, 17 Oct 2018 09:39:00 +0800 (CST)
-Date: Wed, 17 Oct 2018 09:39:00 +0800 (CST)
-X-Zmail-TransId: 2b035bc692b45a845fe0
-X-Mailer: Zmail v1.0
-Message-ID: <201810170939000153425@zte.com.cn>
-In-Reply-To: <7847659e-4514-6f4c-a0d7-7434ed486227@linaro.org>
-References: 1539768207-18209-1-git-send-email-peng.hao2@zte.com.cn,
-	7847659e-4514-6f4c-a0d7-7434ed486227@linaro.org
-Mime-Version: 1.0
-From: <peng.hao2@zte.com.cn>
-To: <richard.henderson@linaro.org>
-Content-Type: multipart/mixed;
-	boundary="=====_001_next====="
-X-MAIL: mse02.zte.com.cn w9H1cwb5093160
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018101710154537-4981408 ;
+	Wed, 17 Oct 2018 10:15:45 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org
+Date: Wed, 17 Oct 2018 18:26:57 +0800
+Message-Id: <1539772017-18735-1-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-10-17 10:15:45,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-10-17 10:15:33,
+	Serialize complete at 2018-10-17 10:15:33
+X-MAIL: mse01.zte.com.cn w9H2FfNE026444
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 202.103.147.169
-Subject: Re: [Qemu-arm] 
- =?utf-8?q?=5BQemu-devel=5D_=5BPATCH=5D_target/arm_=3A?=
- =?utf-8?q?_add_pvpanic_mmio_device?=
+	[fuzzy]
+X-Received-From: 63.217.80.70
+Subject: [Qemu-arm] [PATCH v2]  target/arm : add pvpanic mmio device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,30 +85,252 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ATFC1Cg6yVrd
+X-TUID: McHAC+gzhm4R
 
+Add pvpanic mmio device that is similar to x86's pvpanic device.
 
+v1 ---> v2 add copyright and license for new files.
 
---=====_001_next=====
-Content-Type: multipart/alternative;
-	boundary="=====_003_next====="
+Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+---
+ default-configs/arm-softmmu.mak |  2 +-
+ hw/arm/virt.c                   | 21 +++++++++
+ hw/misc/Makefile.objs           |  1 +
+ hw/misc/pvpanic-mmio.c          | 97 +++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h           |  1 +
+ include/hw/misc/pvpanic-mmio.h  | 33 ++++++++++++++
+ 6 files changed, 154 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/pvpanic-mmio.c
+ create mode 100644 include/hw/misc/pvpanic-mmio.h
 
-
---=====_003_next=====
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
-
-Pk9uIDEwLzE3LzE4IDI6MjMgQU0sIFBlbmcgSGFvIHdyb3RlOgo+PiArKysgYi9ody9taXNjL3B2
-cGFuaWMtbW1pby5jCj4+IEBAIC0wLDAgKzEsNzYgQEAKPj4gKyNpbmNsdWRlICJxZW11L29zZGVw
-LmgiCj4KPk5ldyBmaWxlIHJlcXVpcmVzIGZpbGUgaGVhZGVyIHcvIGNvcHlyaWdodCBhbmQgbGlj
-ZW5zZS4KSSB3aWxsIGhhbmRsZSBpdCBpbiBuZXcgdmVyc2lvbiAuVGhhbmtzCgo+cn4=
-
-
---=====_003_next=====--
-
---=====_001_next=====--
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 2420491..4713c92 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -43,7 +43,7 @@ CONFIG_USB_MUSB=y
+ CONFIG_USB_EHCI_SYSBUS=y
+ CONFIG_PLATFORM_BUS=y
+ CONFIG_VIRTIO_MMIO=y
+-
++CONFIG_PVPANIC_MMIO=y
+ CONFIG_ARM11MPCORE=y
+ CONFIG_A9MPCORE=y
+ CONFIG_A15MPCORE=y
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a472566..ab41128 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -140,6 +140,7 @@ static const MemMapEntry a15memmap[] = {
+     [VIRT_UART] =               { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
++    [VIRT_PVPANIC_MMIO] =       { 0x09020018, 0x00000002 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+@@ -798,6 +799,24 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+     g_free(nodename);
+ }
+ 
++static void create_pvpanic_device(const VirtMachineState *vms)
++{
++    char *nodename;
++    hwaddr base = vms->memmap[VIRT_PVPANIC_MMIO].base;
++    hwaddr size = vms->memmap[VIRT_PVPANIC_MMIO].size;
++
++    sysbus_create_simple("pvpanic-mmio", base, NULL);
++
++    nodename = g_strdup_printf("/pvpanic-mmio@%" PRIx64, base);
++    qemu_fdt_add_subnode(vms->fdt, nodename);
++    qemu_fdt_setprop_string(vms->fdt, nodename,
++                            "compatible", "pvpanic,mmio");
++    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
++                                 2, base, 2, size);
++    g_free(nodename);
++
++}
++
+ static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
+ {
+     int i;
+@@ -1544,6 +1563,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_pcie(vms, pic);
+ 
++    create_pvpanic_device(vms);
++
+     create_gpio(vms, pic);
+ 
+     /* Create mmio transports, so the user can create virtio backends
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 6d50b03..6326260 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -71,6 +71,7 @@ obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
+ obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
+ 
+ obj-$(CONFIG_PVPANIC) += pvpanic.o
++obj-$(CONFIG_PVPANIC_MMIO) += pvpanic-mmio.o
+ obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+ obj-$(CONFIG_AUX) += auxbus.o
+ obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
+diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
+new file mode 100644
+index 0000000..bcb9791
+--- /dev/null
++++ b/hw/misc/pvpanic-mmio.c
+@@ -0,0 +1,97 @@
++/*
++ * pvpanic mmio device emulation
++ *
++ * Copyright (c) 2018 ZTE Ltd.
++ *
++ * Author:
++ *  Peng Hao <peng.hao2@zte.com.cn>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "sysemu/sysemu.h"
++#include "qemu/log.h"
++#include "hw/misc/pvpanic-mmio.h"
++
++#define PVPANIC_MMIO_FEAT_CRASHED      0
++
++#define PVPANIC_MMIO_CRASHED        (1 << PVPANIC_MMIO_FEAT_CRASHED)
++
++static void handle_mmio_event(int event)
++{
++    static bool logged;
++
++    if (event & ~PVPANIC_MMIO_CRASHED && !logged) {
++        qemu_log_mask(LOG_GUEST_ERROR, "pvpanic-mmio: unknown event %#x.\n", event);
++        logged = true;
++    }
++
++    if (event & PVPANIC_MMIO_CRASHED) {
++        qemu_system_guest_panicked(NULL);
++        return;
++    }
++}
++
++static uint64_t pvpanic_mmio_read(void *opaque, hwaddr addr, unsigned size)
++{
++    return -1;
++}
++
++static void pvpanic_mmio_write(void *opaque, hwaddr addr, uint64_t value,
++                                 unsigned size)
++{
++   handle_mmio_event(value);
++}
++
++static const MemoryRegionOps pvpanic_mmio_ops = {
++    .read = pvpanic_mmio_read,
++    .write = pvpanic_mmio_write,
++    .impl = {
++        .min_access_size = 1,
++        .max_access_size = 2,
++    },
++};
++
++
++static void pvpanic_mmio_initfn(Object *obj)
++{
++    PVPanicState *s = PVPANIC_MMIO_DEVICE(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->mmio, OBJECT(s), &pvpanic_mmio_ops, s,
++                          "pvpanic-mmio", 2);
++    sysbus_init_mmio(sbd, &s->mmio);
++}
++
++static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static TypeInfo pvpanic_mmio_info = {
++    .name          = TYPE_PVPANIC_MMIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(PVPanicState),
++    .instance_init = pvpanic_mmio_initfn,
++    .class_init    = pvpanic_mmio_class_init,
++};
++
++static void pvpanic_mmio_register_types(void)
++{
++    type_register_static(&pvpanic_mmio_info);
++}
++
++type_init(pvpanic_mmio_register_types)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 4cc57a7..61cc310 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -70,6 +70,7 @@ enum {
+     VIRT_MMIO,
+     VIRT_RTC,
+     VIRT_FW_CFG,
++    VIRT_PVPANIC_MMIO,
+     VIRT_PCIE,
+     VIRT_PCIE_MMIO,
+     VIRT_PCIE_PIO,
+diff --git a/include/hw/misc/pvpanic-mmio.h b/include/hw/misc/pvpanic-mmio.h
+new file mode 100644
+index 0000000..0c4f728
+--- /dev/null
++++ b/include/hw/misc/pvpanic-mmio.h
+@@ -0,0 +1,33 @@
++/*
++ * pvpanic mmio device emulation
++ *
++ * Copyright (c) 2018 ZTE Ltd.
++ *
++ * Author:
++ *  Peng Hao <peng.hao2@zte.com.cn>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_MISC_PVPANIC_H
++#define HW_MISC_PVPANIC_H
++#include "hw/sysbus.h"
++#define TYPE_PVPANIC_MMIO "pvpanic-mmio"
++#define PVPANIC_MMIO_DEVICE(obj)    \
++    OBJECT_CHECK(PVPanicState, (obj), TYPE_PVPANIC_MMIO)
++#endif
++
++typedef struct PVPanicState {
++    SysBusDevice parent_obj;
++    MemoryRegion mmio;
++} PVPanicState;
+-- 
+1.8.3.1
 

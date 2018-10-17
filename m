@@ -1,77 +1,78 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6719545wrt;
-        Tue, 16 Oct 2018 18:10:55 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61fNtbvwA8+ozho6PkYGdCJSEbv7xBjA9YteyuwVeXWjge4bgNd+6z/5mF0siJJi+lzaqrB
-X-Received: by 2002:a0c:b62c:: with SMTP id f44-v6mr24616487qve.184.1539738655108;
-        Tue, 16 Oct 2018 18:10:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539738655; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp302wrt;
+        Tue, 16 Oct 2018 18:13:18 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63xbQP/lF7Mh1v2tvioEps1kbIz6BmrH3Q3NlCyHixtI2YfTMEIgDuB8QnNwMqh96ArFv8u
+X-Received: by 2002:a37:6388:: with SMTP id x130-v6mr22071681qkb.118.1539738798764;
+        Tue, 16 Oct 2018 18:13:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539738798; cv=none;
         d=google.com; s=arc-20160816;
-        b=xWIs7KQqfUkpaAmOevF24CHFKV9KVOkwoeXM4JA700XB10UPdzXE5WVfy05Rr2hjRh
-         Y9CKkqd4oWzWWWd/khhnjS4TNP8Z32vW0BiwEkoYoW/Z9csssXGfzWkDmnLsce3qHSXB
-         1oyPHNbCg+EvOzL1vT4bYXYtEg2f8DJRjQVJ85fPa8UERDIGou5V+Jj+vXjIQCwsTLOd
-         ezZlxqnH41bb+tMdj22R7XLGD7z1yQ3bSqZ0njKns2dVEur9JT5PAufP0C3z/uQYzaLb
-         ZjwYoX2TI23JxITxxW+9OaFKLk/95OcOQvLURzyKjShUZkRm9WwPMJF1YJZd4tficZni
-         +VVw==
+        b=iNV32FoGasOjLAsY61/ZlO5ANyE870DbAXCzRVaRZ4MQ+s9+zWfvqCcntBeT2cE7Kn
+         p1fV1ihXtuXjF5FIJ4oJKfxk3AKDrI8VDpQeKM0EngnZ8LvSaAiWivhAfsY/9nLh+GKu
+         Fu2Ek9Baq5R5xOgelhOcCHOwPE95niMVy6iGlWz5fQs4g2+Ni1t4gEpI/9tba3anhuqI
+         /pmma7hjFQrXs2TiNmmJhuD5Qx7Is2YU5pxQI+0KrNTeyMxwe/BQAL+cRQJ6vuFRd+At
+         XbnukrD1w3yVP6lUaEc3yeu+la5VfyTkKsWw4mFl87URyFkqnsb0fpk/o2pKzIN1/RB6
+         MtSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
-        bh=fp+TrY3VCd/HbwlwGhDvEcx9+D5ySnb9KgmNWoYQCrc=;
-        b=C3TF9YrsdYUKQJcPJI8WlLKyRZ3W04+A8AdKLCBrksdGaqow1EHl3DDh1vNsviWeUF
-         sty1yHgTjEt4XMWcap00Wdfr4o6Zz2BF4nPxdc9kuKzsoJIBoS3Cfn74d66PiFbgqEvU
-         QAxoXm5whCKZIUhXwNOD86KjwF9vdnKmKuqRcnfdKAxd2zOvDdxJeVWTFLbNTLpw01HS
-         joOGeS2mby9dVy28dc113dfs+GPZ3MNpQ1px9Ta0fHCc8OADFVsnwD/CARJ/Rn9G6Ice
-         ozneyVUGhKlwpcsGMiu8apZjsp38txF4vxKJQUhdvS1BUgiFtZE8CsjjGlo+TvRyrZ9g
-         7a/Q==
+        bh=oTXVEhmp/dl/38FwuHabsivg9vgGUsef7HZP1qSW970=;
+        b=jZXtT76/yurqbaxACJnk5GWCuSd1/roAhrBTwt6t8+AetEAuWrW6GwGPjsuPutRAIm
+         uSGn+4ch0rqaQel2gqhENcwpluK3QHHTasqrBpJ5i5eJv8OOqKRT4tZCodKIcXuFxk6H
+         i6H7c1n2nN8wfR/jvE4fniuy0x+hD1zKKJJ65oMZaYotYZRQsXabI7fw8m4MzOcd+K8s
+         VfEOKHdbJSPwpIo3YQ0P1quQ2K+IhmfyG1bwWq9VqmffsGIPGDw4Upgg3lp20lSsHfhC
+         NFwnuqTWXQG+nrM0cKDx5Nss4G6CSuuVmsTX4RwLEisJdKqLVz36eUDpMb5Kc1WFiiZd
+         at9w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a62-v6si2345349qkd.148.2018.10.16.18.10.54
+        by mx.google.com with ESMTPS id 57-v6si4342528qtr.28.2018.10.16.18.13.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 18:10:55 -0700 (PDT)
+        Tue, 16 Oct 2018 18:13:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33206 helo=lists.gnu.org)
+Received: from localhost ([::1]:33222 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCaMQ-0007eb-6S
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 21:10:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38021)
+	id 1gCaOj-0000J2-9A
+	for alex.bennee@linaro.org; Tue, 16 Oct 2018 21:13:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38842)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gCaLF-0007If-2w
-	for qemu-devel@nongnu.org; Tue, 16 Oct 2018 21:09:42 -0400
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gCaNj-00083z-Du
+	for qemu-devel@nongnu.org; Tue, 16 Oct 2018 21:12:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gCaLD-000849-V2
-	for qemu-devel@nongnu.org; Tue, 16 Oct 2018 21:09:41 -0400
-Received: from out1.zte.com.cn ([202.103.147.172]:46474 helo=mxct.zte.com.cn)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gCaNf-0001s3-Lw
+	for qemu-devel@nongnu.org; Tue, 16 Oct 2018 21:12:14 -0400
+Received: from mxhk.zte.com.cn ([63.217.80.70]:41628)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gCaL9-0007xR-0q; Tue, 16 Oct 2018 21:09:35 -0400
+	id 1gCaNZ-0001kS-Ls; Tue, 16 Oct 2018 21:12:06 -0400
 Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id F2787FC338298C289E6F;
-	Wed, 17 Oct 2018 09:09:26 +0800 (CST)
+	by Forcepoint Email with ESMTPS id CF977B601CEFEB91874E;
+	Wed, 17 Oct 2018 09:12:01 +0800 (CST)
 Received: from notes_smtp.zte.com.cn ([10.30.1.239])
-	by mse01.zte.com.cn with ESMTP id w9H19KHS021262;
-	Wed, 17 Oct 2018 09:09:20 +0800 (GMT-8)
+	by mse01.zte.com.cn with ESMTP id w9H1BuHQ025161;
+	Wed, 17 Oct 2018 09:11:56 +0800 (GMT-8)
 	(envelope-from peng.hao2@zte.com.cn)
 Received: from localhost.localdomain.localdomain ([10.74.120.59])
 	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
-	with ESMTP id 2018101709093909-4968372 ;
-	Wed, 17 Oct 2018 09:09:39 +0800 
+	with ESMTP id 2018101709121548-4968574 ;
+	Wed, 17 Oct 2018 09:12:15 +0800 
 From: Peng Hao <peng.hao2@zte.com.cn>
 To: peter.maydell@linaro.org
-Date: Wed, 17 Oct 2018 17:20:49 +0800
-Message-Id: <1539768049-18154-1-git-send-email-peng.hao2@zte.com.cn>
+Date: Wed, 17 Oct 2018 17:23:27 +0800
+Message-Id: <1539768207-18209-1-git-send-email-peng.hao2@zte.com.cn>
 X-Mailer: git-send-email 1.8.3.1
 X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
-	8.5.3FP6|November 21, 2013) at 2018-10-17 09:09:39,
+	8.5.3FP6|November 21, 2013) at 2018-10-17 09:12:15,
 	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
-	2016) at 2018-10-17 09:09:12,
-	Serialize complete at 2018-10-17 09:09:12
-X-MAIL: mse01.zte.com.cn w9H19KHS021262
+	2016) at 2018-10-17 09:11:48,
+	Serialize complete at 2018-10-17 09:11:48
+X-MAIL: mse01.zte.com.cn w9H1BuHQ025161
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 202.103.147.172
+	[fuzzy]
+X-Received-From: 63.217.80.70
 Subject: [Qemu-devel] [PATCH]  target/arm : add pvpanic mmio device
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -84,13 +85,10 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	root <root@host121.localdomain>
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ylcne83eqYl/
-
-From: root <root@host121.localdomain>
+X-TUID: 7HjXGNzQR9ae
 
 Add pvpanic mmio device that is similar to x86's pvpanic device.
 

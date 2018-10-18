@@ -1,99 +1,86 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2234278wrt;
-        Thu, 18 Oct 2018 05:51:15 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61C2/SynvvHyRNAbmkwjGQ1z81pfZuvnRSmkuMiLuSyJXb6sKG0hfXf1k16AqSokRvAh3/d
-X-Received: by 2002:ac8:46da:: with SMTP id h26-v6mr29505850qto.369.1539867074883;
-        Thu, 18 Oct 2018 05:51:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539867074; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2240795wrt;
+        Thu, 18 Oct 2018 05:57:02 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63wHIz/bKHlwR5VA4IqFr3ODjMTLbayGHcNok0ajmk3IJ+wU7ozU8dx4WA6VryRFQlmMzue
+X-Received: by 2002:ac8:75d8:: with SMTP id z24-v6mr27773103qtq.362.1539867422219;
+        Thu, 18 Oct 2018 05:57:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539867422; cv=none;
         d=google.com; s=arc-20160816;
-        b=R1n06HV076IyZg2BS+HZzCYRVF2BAtqVPxXVXKzwTvgeYwh6GNa2o/GSsMU1Q4sMzf
-         X7zud1keI4E55Y0i/Nyu/Q8TJcJIxApM7VtNm7IcyHNcr6rGZRW6lNrsG84Qzgwz4W/H
-         DrDufWTmItEpbnBVFFarxBlqDDbBg8daRuOC8n+r1tc3en4CB6naqGgXaFyjAdBOFBIl
-         eqFnwRVw/gKfBAiMmxuITfdgUmNbV+k8Vy4eBFczxYa1PRxlmkes2aSvy0pDdep3FyEl
-         gZTtfTITl6W69vDoXJhtEONuKU/AAs8UKyliK+ZIoxMwB5jb8/f79ca6q5TttnnHc5Ek
-         TtHA==
+        b=AqMI2QrsRQPubzHRRmR1+HviWjB1u+9oqIhvjNtTBWflSgju93vSx9HRgtDYyNFu2z
+         HWH3QfM7mxs0NHeUf6OnckZHBi7tR34JUpofdyYn8QFPBgZWF0PGStgjsLbimABgUMFV
+         BwSthYaGS6lbs8u+BU3LLoqxWYZZBX92XphK1+6azlpo8xlx05LVM3VtGvGASw58dS3H
+         hZLnYDev47YCfeO9xd6isFQzVZrDa1niTmKVG1A199/2XSmMFU4FDe9vOegFLlhOjQ/t
+         cH+GyhSBjNOJO7DWrfE8X7LWf8MUl9cgyuJQqFg0kLlsRArBw+SNoKeYzW6BWCRz1qGo
+         h+qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=gudZkVOshz/gUh+WpPigKhBnStLlCIlk4qGCYkrJFjs=;
-        b=i1w2/o8yWepbOa8v0rvU5mMaCvQ12KdqjtWTaGw+Uz1Pkai5LU2trsCA9yiC8ktts9
-         cpRiscPjFLYFTRObdaUZdkdnIKzYe4RdlFRYp2aZGL5ak2mBt2ykLh7UM8fUDhz7qIEP
-         nrvGLwFzKBdx68I8KFFiQ70vnWIfXxNmKc0D04C8ZKYxA/oD4hTYb9r6J70MZIYPMMPu
-         XqziC2P9qthJphv81ZptnUgwSwA8Gv/r6yRRTIFVmV/yozfWgZDg4NzX4ehWlt5OFRT6
-         4dNkyxpFABE8z6nvMyUdjkemRYL+M21D/quH1Vo71gobMCyN0hOgpIJCZlm4oRG3rC8h
-         PQdQ==
+        bh=cBKlbh+vU28EMfUoXVBQst+a1flEEtVBmjrme3GaI2s=;
+        b=Tj/yTmOkVQBelpSEdhaJQGabFxJZEBTUAZOlStVUInWm6f+d/4mWRvRWvucibjJcDj
+         Z5+6kC4Emg9hZ3zQjX/osw01Qo/wrp1NViIymASZZT9FpgMPTH6DbhUVAFMiUEg2Rfb9
+         /vMTXePObBwQT+HB3W81uis++uAqEkqmVpws+uN6hUKEM8JlSexTOCzKGF+fJaWQNUGd
+         Hrps+8EkkzojOeAJjXWdqA2hqy4PoShZ8XJRCCGGtyI1FhICkirfA19EANB6V1aloYVF
+         UGevyEXczCItX+BRUSkJS2y85rWZFwiZbfykvAL8uQQUG7H70yOkUPyN+xSay3jepIzA
+         VijQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 42si10664488qvn.159.2018.10.18.05.51.14
+        by mx.google.com with ESMTPS id l4-v6si12984312qti.228.2018.10.18.05.57.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 05:51:14 -0700 (PDT)
+        Thu, 18 Oct 2018 05:57:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42182 helo=lists.gnu.org)
+Received: from localhost ([::1]:42203 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gD7li-0001X4-CA
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 08:51:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34125)
+	id 1gD7rJ-00044y-Qd
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 08:57:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36115)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gD7lR-0001RJ-Cj
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:50:58 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1gD7rC-00044n-Ru
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:56:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gD7lM-0005Ld-NU
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:50:57 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:42831)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gD7lM-0005J7-3n
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:50:52 -0400
-Received: by mail-wr1-f66.google.com with SMTP id r17-v6so1198576wrt.9
-	for <qemu-arm@nongnu.org>; Thu, 18 Oct 2018 05:50:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=gudZkVOshz/gUh+WpPigKhBnStLlCIlk4qGCYkrJFjs=;
-	b=VN6qq50xC+h8HTAmPfJmhDnKHlvoRCZPVFS4DX4WuP238XeQ7EbJn4Itsd3WzHlLwD
-	Yzjy6vx7qrS/VXX30tKChx1jcnmFFfD29X030y1Jvhn3z/sUyBIx80dmirTpnVD3fksX
-	IW8utsoYoRwxtbWRBr1rXa+CFpuXATTctXQJ4bC4oF3/h/G1m4Hv4MJNm+1eqS6w5OIe
-	eaWAgTDDNPIOJRzLr9WW0xTA6co2l+LFMboCbWhpdhUu7ptbJ10SdZRTzgVtGc9tLO0f
-	RSLf47t+k/vdtUEhRAo8qBrE/IEK9+VCpzcOp8oh11Zqk6M8kY9UTYYUDzhG+DEf6+hj
-	mRrQ==
-X-Gm-Message-State: ABuFfojMxA4eH1U3ZU4Z7XdNnoN8yloBPeHliMsd/sa8Ml7t2LIFIKru
-	GJ4Jxyx73lVLwka7C7uHtq5LwIt9CuFuMA==
-X-Received: by 2002:adf:9244:: with SMTP id
-	62-v6mr27676354wrj.130.1539867050264; 
-	Thu, 18 Oct 2018 05:50:50 -0700 (PDT)
-Received: from ?IPv6:2a01:e35:2eec:b420:d26b:a0d4:f86e:1389?
-	([2a01:e35:2eec:b420:d26b:a0d4:f86e:1389])
-	by smtp.gmail.com with ESMTPSA id
-	f16-v6sm18244578wrw.89.2018.10.18.05.50.49
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 18 Oct 2018 05:50:49 -0700 (PDT)
-To: Peng Hao <peng.hao2@zte.com.cn>
-References: <1539772017-18735-1-git-send-email-peng.hao2@zte.com.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e58e9c18-a850-2c57-af80-dd390376149d@redhat.com>
-Date: Thu, 18 Oct 2018 14:50:47 +0200
+	(envelope-from <eric.auger@redhat.com>) id 1gD7r9-0001kp-Fz
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:56:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46552)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1gD7r9-0001jN-6d; Thu, 18 Oct 2018 08:56:51 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 03A6DC058CB7;
+	Thu, 18 Oct 2018 12:56:49 +0000 (UTC)
+Received: from [10.36.116.215] (ovpn-116-215.ams2.redhat.com [10.36.116.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E146610021B2;
+	Thu, 18 Oct 2018 12:56:39 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>
+References: <1530602398-16127-1-git-send-email-eric.auger@redhat.com>
+	<20180718160832.0d754aa4@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <4bdd8486-f044-4a0c-8bcd-c6f357306781@redhat.com>
+Date: Thu, 18 Oct 2018 14:56:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <1539772017-18735-1-git-send-email-peng.hao2@zte.com.cn>
+In-Reply-To: <20180718160832.0d754aa4@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Thu, 18 Oct 2018 12:56:49 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] target/arm : add pvpanic
- mmio device
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [RFC v3 00/15] ARM virt: PCDIMM/NVDIMM at 2TB
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,261 +92,187 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, david@redhat.com,
+	qemu-devel@nongnu.org, shameerali.kolothum.thodi@huawei.com,
+	dgilbert@redhat.com, agraf@suse.de, qemu-arm@nongnu.org,
+	david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 767EqvBe7vBn
+X-TUID: bXyIJHQ42Bno
 
-On 17/10/2018 12:26, Peng Hao wrote:
-> Add pvpanic mmio device that is similar to x86's pvpanic device.
+Hi Igor,
+
+On 7/18/18 4:08 PM, Igor Mammedov wrote:
+> On Tue,  3 Jul 2018 09:19:43 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
 > 
-> v1 ---> v2 add copyright and license for new files.
+>> This series aims at supporting PCDIMM/NVDIMM intantiation in
+>> machvirt at 2TB guest physical address.
+>>
+>> This is achieved in 3 steps:
+>> 1) support more than 40b IPA/GPA
+> will it work for TCG as well?
+> /important from make check pov and maybe in cases when there is no ARM system available to test/play with the feature/
 > 
 
-This comment is not useful in the git history.
-Everything put below the next '---' line will be ignore from the patch
-description, you should put it there instead.
+Sorry I missed this comment.
 
-> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
-> ---
+On A TCG guest ID_AA64MMFR0_EL1.PARange ID register field is the machine
+limiting factor as it returns the supported physical address range
+(target/arm/cpu64.c):
 
-Here:
+aarch64_a53_initfn hardcodes PA range to 40bits
+	cpu->id_aa64mmfr0 = 0x00001122
+aarch64_a57_initfn hardcodes PA Range to 44 bits
+    	cpu->id_aa64mmfr0 = 0x00001124
 
-v1 ---> v2 add copyright and license for new files.
+for TCG guests we may add support for the phys-bits option which would
+allow to set the PARange instead of hardcoding it.
 
->  default-configs/arm-softmmu.mak |  2 +-
->  hw/arm/virt.c                   | 21 +++++++++
->  hw/misc/Makefile.objs           |  1 +
->  hw/misc/pvpanic-mmio.c          | 97 +++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/virt.h           |  1 +
->  include/hw/misc/pvpanic-mmio.h  | 33 ++++++++++++++
->  6 files changed, 154 insertions(+), 1 deletion(-)
->  create mode 100644 hw/misc/pvpanic-mmio.c
->  create mode 100644 include/hw/misc/pvpanic-mmio.h
+Thanks
+
+Eric
+
 > 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-> index 2420491..4713c92 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -43,7 +43,7 @@ CONFIG_USB_MUSB=y
->  CONFIG_USB_EHCI_SYSBUS=y
->  CONFIG_PLATFORM_BUS=y
->  CONFIG_VIRTIO_MMIO=y
-> -
-> +CONFIG_PVPANIC_MMIO=y
->  CONFIG_ARM11MPCORE=y
->  CONFIG_A9MPCORE=y
->  CONFIG_A15MPCORE=y
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a472566..ab41128 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -140,6 +140,7 @@ static const MemMapEntry a15memmap[] = {
->      [VIRT_UART] =               { 0x09000000, 0x00001000 },
->      [VIRT_RTC] =                { 0x09010000, 0x00001000 },
->      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-> +    [VIRT_PVPANIC_MMIO] =       { 0x09020018, 0x00000002 },
->      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
->      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
->      [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-> @@ -798,6 +799,24 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
->      g_free(nodename);
->  }
->  
-> +static void create_pvpanic_device(const VirtMachineState *vms)
-> +{
-> +    char *nodename;
-> +    hwaddr base = vms->memmap[VIRT_PVPANIC_MMIO].base;
-> +    hwaddr size = vms->memmap[VIRT_PVPANIC_MMIO].size;
-> +
-> +    sysbus_create_simple("pvpanic-mmio", base, NULL);
-> +
-> +    nodename = g_strdup_printf("/pvpanic-mmio@%" PRIx64, base);
-> +    qemu_fdt_add_subnode(vms->fdt, nodename);
-> +    qemu_fdt_setprop_string(vms->fdt, nodename,
-> +                            "compatible", "pvpanic,mmio");
-> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-> +                                 2, base, 2, size);
-> +    g_free(nodename);
-> +
-> +}
-> +
->  static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
->  {
->      int i;
-> @@ -1544,6 +1563,8 @@ static void machvirt_init(MachineState *machine)
->  
->      create_pcie(vms, pic);
->  
-> +    create_pvpanic_device(vms);
-> +
->      create_gpio(vms, pic);
->  
->      /* Create mmio transports, so the user can create virtio backends
-> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-> index 6d50b03..6326260 100644
-> --- a/hw/misc/Makefile.objs
-> +++ b/hw/misc/Makefile.objs
-> @@ -71,6 +71,7 @@ obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
->  obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
->  
->  obj-$(CONFIG_PVPANIC) += pvpanic.o
-> +obj-$(CONFIG_PVPANIC_MMIO) += pvpanic-mmio.o
->  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
->  obj-$(CONFIG_AUX) += auxbus.o
->  obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
-> diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
-> new file mode 100644
-> index 0000000..bcb9791
-> --- /dev/null
-> +++ b/hw/misc/pvpanic-mmio.c
-> @@ -0,0 +1,97 @@
-> +/*
-> + * pvpanic mmio device emulation
-> + *
-> + * Copyright (c) 2018 ZTE Ltd.
-> + *
-> + * Author:
-> + *  Peng Hao <peng.hao2@zte.com.cn>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License; either version 2
-> + * of the License, or (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "sysemu/sysemu.h"
-> +#include "qemu/log.h"
-> +#include "hw/misc/pvpanic-mmio.h"
-> +
-> +#define PVPANIC_MMIO_FEAT_CRASHED      0
-> +
-> +#define PVPANIC_MMIO_CRASHED        (1 << PVPANIC_MMIO_FEAT_CRASHED)
-> +
-> +static void handle_mmio_event(int event)
-> +{
-> +    static bool logged;
-> +
-> +    if (event & ~PVPANIC_MMIO_CRASHED && !logged) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "pvpanic-mmio: unknown event %#x.\n", event);
-> +        logged = true;
-> +    }
-> +
-> +    if (event & PVPANIC_MMIO_CRASHED) {
-> +        qemu_system_guest_panicked(NULL);
-> +        return;
-> +    }
-> +}
-> +
-> +static uint64_t pvpanic_mmio_read(void *opaque, hwaddr addr, unsigned size)
-> +{
-> +    return -1;
-> +}
-> +
-> +static void pvpanic_mmio_write(void *opaque, hwaddr addr, uint64_t value,
-> +                                 unsigned size)
-> +{
-> +   handle_mmio_event(value);
-> +}
-> +
-> +static const MemoryRegionOps pvpanic_mmio_ops = {
-> +    .read = pvpanic_mmio_read,
-> +    .write = pvpanic_mmio_write,
-> +    .impl = {
-> +        .min_access_size = 1,
-> +        .max_access_size = 2,
-> +    },
-> +};
-> +
-> +
-> +static void pvpanic_mmio_initfn(Object *obj)
-> +{
-> +    PVPanicState *s = PVPANIC_MMIO_DEVICE(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +
-> +    memory_region_init_io(&s->mmio, OBJECT(s), &pvpanic_mmio_ops, s,
-> +                          "pvpanic-mmio", 2);
-> +    sysbus_init_mmio(sbd, &s->mmio);
-> +}
-> +
-> +static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> +}
-> +
-> +static TypeInfo pvpanic_mmio_info = {
-> +    .name          = TYPE_PVPANIC_MMIO,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(PVPanicState),
-> +    .instance_init = pvpanic_mmio_initfn,
-> +    .class_init    = pvpanic_mmio_class_init,
-> +};
-> +
-> +static void pvpanic_mmio_register_types(void)
-> +{
-> +    type_register_static(&pvpanic_mmio_info);
-> +}
-> +
-> +type_init(pvpanic_mmio_register_types)
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 4cc57a7..61cc310 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -70,6 +70,7 @@ enum {
->      VIRT_MMIO,
->      VIRT_RTC,
->      VIRT_FW_CFG,
-> +    VIRT_PVPANIC_MMIO,
->      VIRT_PCIE,
->      VIRT_PCIE_MMIO,
->      VIRT_PCIE_PIO,
-> diff --git a/include/hw/misc/pvpanic-mmio.h b/include/hw/misc/pvpanic-mmio.h
-> new file mode 100644
-> index 0000000..0c4f728
-> --- /dev/null
-> +++ b/include/hw/misc/pvpanic-mmio.h
-> @@ -0,0 +1,33 @@
-> +/*
-> + * pvpanic mmio device emulation
-> + *
-> + * Copyright (c) 2018 ZTE Ltd.
-> + *
-> + * Author:
-> + *  Peng Hao <peng.hao2@zte.com.cn>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License; either version 2
-> + * of the License, or (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + * You should have received a copy of the GNU General Public License along
-> + * with this program; if not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef HW_MISC_PVPANIC_H
-> +#define HW_MISC_PVPANIC_H
-> +#include "hw/sysbus.h"
-> +#define TYPE_PVPANIC_MMIO "pvpanic-mmio"
-> +#define PVPANIC_MMIO_DEVICE(obj)    \
-> +    OBJECT_CHECK(PVPanicState, (obj), TYPE_PVPANIC_MMIO)
-> +#endif
-> +
-> +typedef struct PVPanicState {
-> +    SysBusDevice parent_obj;
-> +    MemoryRegion mmio;
-> +} PVPanicState;
+> 
+>> 2) support PCDIMM instantiation
+>> 3) support NVDIMM instantiation
+>>
+>> This series reuses/rebases patches initially submitted by Shameer in [1]
+>> and Kwangwoo in [2].
+>>
+>> I put all parts all together for consistency and due to dependencies
+>> however as soon as the kernel dependency is resolved we can consider
+>> upstreaming them separately.
+>>
+>> Support more than 40b IPA/GPA [ patches 1 - 5 ]
+>> -----------------------------------------------
+>> was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+>>
+>> At the moment the guest physical address space is limited to 40b
+>> due to KVM limitations. [0] bumps this limitation and allows to
+>> create a VM with up to 52b GPA address space.
+>>
+>> With this series, QEMU creates a virt VM with the max IPA range
+>> reported by the host kernel or 40b by default.
+>>
+>> This choice can be overriden by using the -machine kvm-type=<bits>
+>> option with bits within [40, 52]. If <bits> are not supported by
+>> the host, the legacy 40b value is used.
+>>
+>> Currently the EDK2 FW also hardcodes the max number of GPA bits to
+>> 40. This will need to be fixed.
+>>
+>> PCDIMM Support [ patches 6 - 11 ]
+>> ---------------------------------
+>> was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+>>
+>> We instantiate the device_memory at 2TB. Using it obviously requires
+>> at least 42b of IPA/GPA. While its max capacity is currently limited
+>> to 2TB, the actual size depends on the initial guest RAM size and
+>> maxmem parameter.
+>>
+>> Actual hot-plug and hot-unplug of PC-DIMM is not suported due to lack
+>> of support of those features in baremetal.
+>>
+>> NVDIMM support [ patches 12 - 15 ]
+>> ----------------------------------
+>>
+>> Once the memory hotplug framework is in place it is fairly
+>> straightforward to add support for NVDIMM. the machine "nvdimm" option
+>> turns the capability on.
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>> References:
+>>
+>> [0] [PATCH v3 00/20] arm64: Dynamic & 52bit IPA support
+>> https://www.spinics.net/lists/kernel/msg2841735.html
+>>
+>> [1] [RFC v2 0/6] hw/arm: Add support for non-contiguous iova regions
+>> http://patchwork.ozlabs.org/cover/914694/
+>>
+>> [2] [RFC PATCH 0/3] add nvdimm support on AArch64 virt platform
+>> https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg04599.html
+>>
+>> Tests:
+>> - On Cavium Gigabyte, a 48b VM was created.
+>> - Migration tests were performed between kernel supporting the
+>>   feature and destination kernel not suporting it
+>> - test with ACPI: to overcome the limitation of EDK2 FW, virt
+>>   memory map was hacked to move the device memory below 1TB.
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/v2.12.0-dimm-2tb-v3
+>>
+>> History:
+>>
+>> v2 -> v3:
+>> - fix pc_q35 and pc_piix compilation error
+>> - kwangwoo's email being not valid anymore, remove his address
+>>
+>> v1 -> v2:
+>> - kvm_get_max_vm_phys_shift moved in arch specific file
+>> - addition of NVDIMM part
+>> - single series
+>> - rebase on David's refactoring
+>>
+>> v1:
+>> - was "[RFC 0/6] KVM/ARM: Dynamic and larger GPA size"
+>> - was "[RFC 0/5] ARM virt: Support PC-DIMM at 2TB"
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>>
+>> Eric Auger (9):
+>>   linux-headers: header update for KVM/ARM KVM_ARM_GET_MAX_VM_PHYS_SHIFT
+>>   hw/boards: Add a MachineState parameter to kvm_type callback
+>>   kvm: add kvm_arm_get_max_vm_phys_shift
+>>   hw/arm/virt: support kvm_type property
+>>   hw/arm/virt: handle max_vm_phys_shift conflicts on migration
+>>   hw/arm/virt: Allocate device_memory
+>>   acpi: move build_srat_hotpluggable_memory to generic ACPI source
+>>   hw/arm/boot: Expose the pmem nodes in the DT
+>>   hw/arm/virt: Add nvdimm and nvdimm-persistence options
+>>
+>> Kwangwoo Lee (2):
+>>   nvdimm: use configurable ACPI IO base and size
+>>   hw/arm/virt: Add nvdimm hot-plug infrastructure
+>>
+>> Shameer Kolothum (4):
+>>   hw/arm/virt: Add memory hotplug framework
+>>   hw/arm/boot: introduce fdt_add_memory_node helper
+>>   hw/arm/boot: Expose the PC-DIMM nodes in the DT
+>>   hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+>>
+>>  accel/kvm/kvm-all.c                            |   2 +-
+>>  default-configs/arm-softmmu.mak                |   4 +
+>>  hw/acpi/aml-build.c                            |  51 ++++
+>>  hw/acpi/nvdimm.c                               |  28 ++-
+>>  hw/arm/boot.c                                  | 123 +++++++--
+>>  hw/arm/virt-acpi-build.c                       |  10 +
+>>  hw/arm/virt.c                                  | 330 ++++++++++++++++++++++---
+>>  hw/i386/acpi-build.c                           |  49 ----
+>>  hw/i386/pc_piix.c                              |   8 +-
+>>  hw/i386/pc_q35.c                               |   8 +-
+>>  hw/ppc/mac_newworld.c                          |   2 +-
+>>  hw/ppc/mac_oldworld.c                          |   2 +-
+>>  hw/ppc/spapr.c                                 |   2 +-
+>>  include/hw/acpi/aml-build.h                    |   3 +
+>>  include/hw/arm/arm.h                           |   2 +
+>>  include/hw/arm/virt.h                          |   7 +
+>>  include/hw/boards.h                            |   2 +-
+>>  include/hw/mem/nvdimm.h                        |  12 +
+>>  include/standard-headers/linux/virtio_config.h |  16 +-
+>>  linux-headers/asm-mips/unistd.h                |  18 +-
+>>  linux-headers/asm-powerpc/kvm.h                |   1 +
+>>  linux-headers/linux/kvm.h                      |  16 ++
+>>  target/arm/kvm.c                               |   9 +
+>>  target/arm/kvm_arm.h                           |  16 ++
+>>  24 files changed, 597 insertions(+), 124 deletions(-)
+>>
 > 

@@ -1,83 +1,80 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2836863wrt;
-        Thu, 18 Oct 2018 13:37:07 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62AidBuWw3jmq7WZmsYYvMWxcjIFNZLvGA3Di2UZ5rm1UsFqLkkfxZlwNMwou6Z87gYNF1N
-X-Received: by 2002:ac8:2b2d:: with SMTP id 42-v6mr30457433qtu.119.1539895027071;
-        Thu, 18 Oct 2018 13:37:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539895027; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2839251wrt;
+        Thu, 18 Oct 2018 13:39:35 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63Go6bJzzYI7Mmj78WCYF5gk2LyC84WcstW9k1N+XxcuIcAf2v15cFmcRymkGP21FbSJvKq
+X-Received: by 2002:a37:93c3:: with SMTP id v186-v6mr30164813qkd.186.1539895174945;
+        Thu, 18 Oct 2018 13:39:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539895174; cv=none;
         d=google.com; s=arc-20160816;
-        b=mrNAVa45QN0qsgFDgvHuooUx72KSodtNj/6RNWAp8jHsClEUgNZiz4PLVCqYfSqSOi
-         POtZvCRkRL+6radFgDN/EMfZM663O8boXfgBhXQOpvwcb0Q7giVgfX5cZ+ijV1ybNdia
-         DgKhUEPk3gPGJerQQJCMPtSncSn5gn3tw8I0YDJs/ZvYMTNCRO/35/vrc0fUvEp0b+nH
-         6X2LVpPUDE3VPVnxlwpr+QC3WKpLcnwldT3NJEPLmYsMEXqaiGKSray+jGdBzY+YkQGw
-         OJDy4CbFevv3KfZbDtrLobnrmRkU3uiXT6T2Dl6j3JGylWtRNdffV+E0pAo6B334z4WI
-         D6xg==
+        b=Z0sS9O80AX/+sJQcTnDX2EB5NBIMDQ3gumfI0z/5ZBTrWwWYvZotRFeFHqkwv1FFLZ
+         jiROsiSp5HMvF4cXRiwSy9iQhTY2bQU8nArpO27nc97C6nFT9QmeWibobzw4sPVniQXD
+         9V+4JPYjP2IjpOpLjfsYaMILg/gwsq0O/qSlRhS4naMna5FvUcuQZP6+S/CU+OqyPDyI
+         GnCJ8lVapNoJESvqupjyVuGm1yMQ6ii6jo5mqCujmQYnJyciBXLtjRZ0wXL/CXSHsv9V
+         xwWGWPlVGGDNCQHNDizam59gayONwB9D+tKu/KCYL7rBb0dZOfHiMPsFwwCGHWq3Jizh
+         IZVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=IKg33+gJHKuUrdnuLoThQ6+QYnF7xYOVFdAvRr/96Mk=;
-        b=XQux358czhpdWX1/XTXze9YWg4cnP4itSmD0BIARr46t7/lR7RREz/37ZOytPlHots
-         zaRlFIwFYPtxhlEi8QYSuFO0dTYxhc6J8ArWdm0/Egaci+Vw3cmIdnxypcAcojd8kE0Z
-         SnxPADquKmH8DIMtNqG71tW5XeJldNWcZpXW8tx0Tf/zd58VsV/GkGXXFOQbcc2yNRII
-         y49DPHpMwJ5bzaMEAcdgfZuLvcfI/roVLMqHStzqo/Fh8fyMTaNK2tOkk7IJYFKwWJou
-         tnh/XyIBHHTBLkLtNEiJ57hP9kCYcb+4E+Ht6IX7HcLLOqrcxciaMCyugyZP+Tk3CtHE
-         Lgqw==
+        bh=fPbu0RrE24kjoufASt2Yk7id5x42IlGDVzxhYENIfhM=;
+        b=cEmVrudhUjcCcAktdsodhMJzkH2OcyMjBw1W882kDfy6vllG3atjrH2zdXz4cb/Y7/
+         6Wl2fvj3c71TRdwH/TdQcMu4neYheIGW2hrG3pVMf04PcYJs+1uD2O9YgGvZJysvAWLw
+         qGywljjnzJ9K7nhxfFNXALO1dehrYl1wnSzpvRrM3nYKA3gV42ZaHmOvJR47eYA8OZXT
+         hU6fyNjTw5rHnskrgNh/w8O8hZATTwhHKGqda1aCUssajG+Uczsj13acGE5BzBKUUa+o
+         +WmqUdjYu/F19s7j3P+aCzHwIES466k6NYp1VDlfhIv4ywXr6qFnIGmph/ChjKSPNova
+         q3QA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c34si2208021qvc.76.2018.10.18.13.37.06
+        by mx.google.com with ESMTPS id c79-v6si16402782qka.3.2018.10.18.13.39.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 13:37:07 -0700 (PDT)
+        Thu, 18 Oct 2018 13:39:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44499 helo=lists.gnu.org)
+Received: from localhost ([::1]:44507 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDF2Y-0002A7-FI
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:37:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41121)
+	id 1gDF4v-00040L-W6
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:39:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41277)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEcK-00040u-PS
-	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 16:10:01 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gDEcq-0004W7-QN
+	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 16:10:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEcK-0004U5-38
-	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 16:10:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44196)
+	(envelope-from <ehabkost@redhat.com>) id 1gDEcl-0004dU-0U
+	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 16:10:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45282)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gDEcD-0004T4-Hq; Thu, 18 Oct 2018 16:09:53 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	id 1gDEcX-0004Wd-RX; Thu, 18 Oct 2018 16:10:14 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A366030C9EED;
-	Thu, 18 Oct 2018 20:09:52 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id AD2B4653C5;
+	Thu, 18 Oct 2018 20:10:12 +0000 (UTC)
 Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6D46F100034B;
-	Thu, 18 Oct 2018 20:09:45 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2A99D63BA1;
+	Thu, 18 Oct 2018 20:10:00 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 18 Oct 2018 17:04:20 -0300
-Message-Id: <20181018200422.4358-44-ehabkost@redhat.com>
+Date: Thu, 18 Oct 2018 17:04:22 -0300
+Message-Id: <20181018200422.4358-46-ehabkost@redhat.com>
 In-Reply-To: <20181018200422.4358-1-ehabkost@redhat.com>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Thu, 18 Oct 2018 20:09:52 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 18 Oct 2018 20:10:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL 43/45] net: stellaris_enet: add a reset method
+Subject: [Qemu-devel] [PULL 45/45] numa: Clean up error reporting in
+ parse_numa()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,7 +96,6 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
@@ -109,58 +105,72 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +BYEFiYzsj06
+X-TUID: 6XlYz7GmPgjb
 
-From: C=C3=A9dric Le Goater <clg@kaod.org>
+From: Markus Armbruster <armbru@redhat.com>
 
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Message-Id: <20181001063803.22330-11-clg@kaod.org>
+Calling error_report() in a function that takes an Error ** argument
+is suspicious.  parse_numa() does that, and then fails without setting
+an error.  Its caller main(), via qemu_opts_foreach(), is fine with
+it, but clean it up anyway.
+
+While there, give parse_numa() internal linkage.
+
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20181008173125.19678-26-armbru@redhat.com>
+Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- hw/net/stellaris_enet.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ include/sysemu/numa.h | 1 -
+ numa.c                | 8 +++-----
+ 2 files changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
-index 3ee1e0f8a4..b3375ebb45 100644
---- a/hw/net/stellaris_enet.c
-+++ b/hw/net/stellaris_enet.c
-@@ -457,8 +457,10 @@ static const MemoryRegionOps stellaris_enet_ops =3D =
-{
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
+diff --git a/include/sysemu/numa.h b/include/sysemu/numa.h
+index 7a0ae751aa..21713b7e2f 100644
+--- a/include/sysemu/numa.h
++++ b/include/sysemu/numa.h
+@@ -22,7 +22,6 @@ struct NumaNodeMem {
  };
-=20
--static void stellaris_enet_reset(stellaris_enet_state *s)
-+static void stellaris_enet_reset(DeviceState *dev)
+ 
+ extern NodeInfo numa_info[MAX_NODES];
+-int parse_numa(void *opaque, QemuOpts *opts, Error **errp);
+ void parse_numa_opts(MachineState *ms);
+ void numa_complete_configuration(MachineState *ms);
+ void query_numa_node_mem(NumaNodeMem node_mem[]);
+diff --git a/numa.c b/numa.c
+index 1d7c49ad43..50ec016013 100644
+--- a/numa.c
++++ b/numa.c
+@@ -215,7 +215,7 @@ end:
+     error_propagate(errp, err);
+ }
+ 
+-int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
++static int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
  {
-+    stellaris_enet_state *s =3D  STELLARIS_ENET(dev);
-+
-     s->mdv =3D 0x80;
-     s->rctl =3D SE_RCTL_BADCRC;
-     s->im =3D SE_INT_PHY | SE_INT_MD | SE_INT_RXER | SE_INT_FOV | SE_INT=
-_TXEMP
-@@ -487,8 +489,6 @@ static void stellaris_enet_realize(DeviceState *dev, =
-Error **errp)
-     s->nic =3D qemu_new_nic(&net_stellaris_enet_info, &s->conf,
-                           object_get_typename(OBJECT(dev)), dev->id, s);
-     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
--
--    stellaris_enet_reset(s);
+     NumaOptions *object = NULL;
+     MachineState *ms = MACHINE(opaque);
+@@ -239,7 +239,7 @@ int parse_numa(void *opaque, QemuOpts *opts, Error **errp)
+ end:
+     qapi_free_NumaOptions(object);
+     if (err) {
+-        error_report_err(err);
++        error_propagate(errp, err);
+         return -1;
+     }
+ 
+@@ -444,9 +444,7 @@ void numa_complete_configuration(MachineState *ms)
+ 
+ void parse_numa_opts(MachineState *ms)
+ {
+-    if (qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, NULL)) {
+-        exit(1);
+-    }
++    qemu_opts_foreach(qemu_find_opts("numa"), parse_numa, ms, &error_fatal);
  }
-=20
- static Property stellaris_enet_properties[] =3D {
-@@ -501,6 +501,7 @@ static void stellaris_enet_class_init(ObjectClass *kl=
-ass, void *data)
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-=20
-     dc->realize =3D stellaris_enet_realize;
-+    dc->reset =3D stellaris_enet_reset;
-     dc->props =3D stellaris_enet_properties;
-     dc->vmsd =3D &vmstate_stellaris_enet;
- }
---=20
+ 
+ void qmp_set_numa_node(NumaOptions *cmd, Error **errp)
+-- 
 2.18.0.rc1.1.g3f1ff2140
 

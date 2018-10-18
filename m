@@ -1,138 +1,80 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3192570wrt;
-        Mon, 22 Oct 2018 08:31:06 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fwTHD4Y9Bhsgq//CG5qVLsuHRql8f/Xq7+04EXHxcrIVt/NCpxyQNj4keIT15IcbjYvvte
-X-Received: by 2002:aed:35cb:: with SMTP id d11-v6mr7682955qte.212.1540222266831;
-        Mon, 22 Oct 2018 08:31:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540222266; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2800471wrt;
+        Thu, 18 Oct 2018 13:04:56 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62ammPlUiCC/AejC2Bo9i3O8NI3PpU2yvP3ucOYHRolqWlwyRoWBXU6INYuE6VMWzUOrE55
+X-Received: by 2002:ac8:769a:: with SMTP id g26-v6mr4399795qtr.213.1539893096421;
+        Thu, 18 Oct 2018 13:04:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539893096; cv=none;
         d=google.com; s=arc-20160816;
-        b=b4/blKAeEaSPpIzshSnK53ikl4f5Kq76LhHkdjYoI3Wa+Kyu1DbAA9Pkx25RHwf9c5
-         r9BpcwDcpipOWxrJjU3cT/NVbIUKu/aJHI2mOAhClNcHJAMyF1wVSQKo3/aE/j/5w37I
-         tJ+cOsLOU/RKgIPmXNlMk+ZNsq9KM0iHBitAgb7VT76FyUd2rQJ5g0JpZKWXzDYAr0Zr
-         RL0T2sAY3lYpcBGpVmbvyZ5rDJbnFrH0Q1qD1FKqwcWw3BfbkQMhg8QwrKRU0ynPKC0i
-         0YEjKSR7bUNjDGV1Rwy50RacNNIv9KSqzLR47232M4fspfuSinAO14Fx6V/YF35ts3YK
-         0vqA==
+        b=RQBkcXJ/ZzkGo+a+YiahTxWXIDtDg3ljbqw/MsJ7YhdCQI3lGnO9l6ze+p6Clv6VdV
+         M0yXNUZKWarEwEb1pXExyrCiJAmv6Tyn+T3/KAFaaLE0SqXx/mTo+9z8yjZcMuqas69y
+         emip4NT0FAsNfW4ctxrzlwRJdOokiWQq2Nshrlr3iEC7wJElR0qYsTZ03a82ufmJbOXL
+         DuvuBL1dsLde4S0dX59gVg2wZRnln7ncvUsCt1/bVDgWB969lh/Mpf10s9A8mmmkcp3U
+         LejyIdPOmWEI9X05n7uX2BwKlxkkAqJhskjUJlhJvEYQMAmARcM+q3aixRw61KJj5fo5
+         uHMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=5r9aVNnQYCtnDo7b0nLHUYjgxYk//pGB9buDVvpxyKo=;
-        b=r+i/LmJeKXSA8/5TgqkfEqYu2LClxOO5XXYoabO8Y1elWnsnWodmm+TTkj4e/hyH3Y
-         pe9fjQArwyP8bdMyeKBTURvpTU7GcpK95CJKwvr+pwD5a2D+aiN92M/L2Fo0l+0J/YD1
-         mewyJ04bCebZi2r5EXh/Pg4USIYruGnwWhoSFH1WsHoBnLf6vNvEP54fCUZ0PaL6OH/A
-         R/V5SLsoCdzPuToh1m0XhuQAS7pAnVaRmeq7eCIMtx2VRdM0C/17ErhjxEKmlwYDbVls
-         5Gvuuj9ncKqeEa8M9FhKEW6PCxFUjizGG5nQEHsuFHsvanBsJHhwIG43BlGCshbtwVXS
-         qdhg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=dApXQnj0re3RwAGavQl+uHijgwrI/m2cQVmAB4bjKCw=;
+        b=MxqjPf0esIxPNVPQDE079KqP0Wh4JXvsBJgSfunE+JcE6oHdmtEtBj8kHkQASXrdMK
+         q1pYC1EkrCTivAhcUW50Vwsafg5XMUHVtYXkxGFGYqtrjjVayAjaKHV3t+TkTqB8abBv
+         JMbu5AHjAH0jvPHfboFzc62U8XheOgHySmXEFwgfyr9jGStv0DLUoqS+PCUiw46xtW7q
+         jtli22SiRNuM1yprdSG8R99OGQqHd9bshzp3aiJzrPqxC14eXP8Kih7ZElsChMbSWocx
+         c6ncpcTPBdaw2snkKrirCz1MecNG9Vz5qI/1xi0mimErL2emwhGGk+2V4CwEdmuqB+x5
+         rs5g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o68-v6si7721379qkd.9.2018.10.22.08.31.06
+        by mx.google.com with ESMTPS id f15si15104567qvi.176.2018.10.18.13.04.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 22 Oct 2018 08:31:06 -0700 (PDT)
+        Thu, 18 Oct 2018 13:04:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35777 helo=lists.gnu.org)
+Received: from localhost ([::1]:44248 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gEcAc-0005Kw-8l
-	for alex.bennee@linaro.org; Mon, 22 Oct 2018 11:31:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41726)
+	id 1gDEXP-0007P8-Pj
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:04:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38309)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gEcAJ-0005Jb-4a
-	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 11:30:48 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gDEX7-0007Oo-7L
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:04:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gEcAE-0001Uv-Lo
-	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 11:30:47 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:40731)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1gEcAE-0001SC-AL
-	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 11:30:42 -0400
-Received: by mail-wr1-f67.google.com with SMTP id d2-v6so45470432wro.7
-	for <qemu-arm@nongnu.org>; Mon, 22 Oct 2018 08:30:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=5r9aVNnQYCtnDo7b0nLHUYjgxYk//pGB9buDVvpxyKo=;
-	b=dvAQ58Eog+dRlmlEauZTMRpG0TgZv+G4B62+/k83H+VKsk8NmRgDnJX4w5za/2fnE5
-	cYsxtmbzQr3OVBH/rU4aVxKQn2WTUc4nuz2gZCx4tJFL7RbaC2K0Ah3hOiykvpPHcDtQ
-	MquF22BxCI0blYjQR7wY0qXptLclTuQQDGKYGqVDTWV2P43vGlDVf3+pUG788CKjJrlh
-	OrTHaCpYSJQQG/RamEKNDJlcJHpobTVQf8kqYX1mWf/C4KceMWqKErMQj6I16z70sxvc
-	yxzFPFfHoggZAQ1Nydk2hZvrj7t2n69gdNiwFXiDlBpZUIwhuGlAGUVWfquO8VgnZrJg
-	vntw==
-X-Gm-Message-State: AGRZ1gJnROg2kyV8YLhYPuu9rg/2stDc9t0H95ogxqZyp78g+J73Inkx
-	ZY5GThKPpGhtmth4wZXxMjCk0Q==
-X-Received: by 2002:a05:6000:11c1:: with SMTP id
-	i1mr12449031wrx.310.1540222240180; 
-	Mon, 22 Oct 2018 08:30:40 -0700 (PDT)
-Received: from [10.223.168.229]
-	(host86-187-162-114.range86-187.btcentralplus.com. [86.187.162.114])
-	by smtp.gmail.com with ESMTPSA id
-	v30-v6sm11760055wra.67.2018.10.22.08.30.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 22 Oct 2018 08:30:39 -0700 (PDT)
-To: "Emilio G. Cota" <cota@braap.org>
-References: <20181019010625.25294-1-cota@braap.org>
-	<f7067d72-3b2a-9e6e-4636-f18ac1cf5202@redhat.com>
-	<20181019145018.GB7279@flamenco>
-	<6190036c-cd1f-4549-9b7e-9e7913c972d4@redhat.com>
-	<20181019192932.GA17761@flamenco> <20181019234608.GA32420@flamenco>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <74e14727-1174-0b91-94ae-6f07475e583d@redhat.com>
-Date: Mon, 22 Oct 2018 17:30:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(envelope-from <ehabkost@redhat.com>) id 1gDEX3-0006bQ-GY
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:04:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38544)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1gDEX2-0006Sv-Ib; Thu, 18 Oct 2018 16:04:33 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B3BB30B8F99;
+	Thu, 18 Oct 2018 20:04:29 +0000 (UTC)
+Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B9ABF67649;
+	Thu, 18 Oct 2018 20:04:23 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Date: Thu, 18 Oct 2018 17:03:37 -0300
+Message-Id: <20181018200422.4358-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20181019234608.GA32420@flamenco>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.49]);
+	Thu, 18 Oct 2018 20:04:30 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [RFC v3 0/56] per-CPU locks
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 00/45] Machine queue, 2018-10-18
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -144,45 +86,164 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	David Hildenbrand <david@redhat.com>, James Hogan <jhogan@kernel.org>,
-	Anthony Green <green@moxielogic.com>, Palmer Dabbelt <palmer@sifive.com>,
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Max Filippov <jcmvbkbc@gmail.com>,
-	Michael Clark <mjc@sifive.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
 	Alexander Graf <agraf@suse.de>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Pavel Dovgalyuk <dovgaluk@ispras.ru>, Richard Henderson <rth@twiddle.net>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, Alistair Francis <alistair23@gmail.com>,
-	Stafford Horne <shorne@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>
+	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4sXyBM+dxNvH
+X-TUID: Bkv2pNUL2vxT
 
-On 20/10/2018 01:46, Emilio G. Cota wrote:
->> So it is possible that it was my implementation, and not the approach,
->> what was at fault :-)
-> I've just observed a similar hang after adding the "BQL
-> pushdown" patches on top of this series. So it's likely that the
-> hangs come from those patches, and not from the work on
-> cpu->interrupt_request. I just confirmed with the prior
-> series, and removing the pushdown patches fixes the hangs there
-> as well.
+The following changes since commit 09558375a634e17cea6cfbfec883ac2376d2dc=
+7f:
 
-Oh well, not a big deal.  You already wrote these patches and I don't
-have much time for MTTCG anyway, so I am okay with sticking with them.
-Thanks!
+  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-201=
+81016-1' into staging (2018-10-16 17:42:56 +0100)
 
-Paolo
+are available in the Git repository at:
+
+  git://github.com/ehabkost/qemu.git tags/machine-next-pull-request
+
+for you to fetch changes up to 6d8e1bcc7dd5e819ce81e6a87fffe23e39c700cc:
+
+  numa: Clean up error reporting in parse_numa() (2018-10-17 16:33:40 -03=
+00)
+
+----------------------------------------------------------------
+Machine queue, 2018-10-18
+
+* sysbus init/realize cleanups
+  (C=C3=A9dric Le Goater, Philippe Mathieu-Daud=C3=A9)
+* memory-device refactoring (David Hildenbrand)
+* -smp: deprecate incorrect CPUs topology (Igor Mammedov)
+* -numa parsing cleanups (Markus Armbruster)
+* Fix hostmem-file memory leak (Zhang Yi)
+* Typo fix (Li Qiang)
+
+----------------------------------------------------------------
+
+Queue for Machine Core patches
+
+
+C=C3=A9dric Le Goater (11):
+  net: etraxfs_eth: convert SysBus init method to a realize method
+  net: etraxfs_eth: add a reset method
+  net: lan9118: convert SysBus init method to a realize method
+  net: lance: convert SysBus init method to a realize method
+  net: milkymist_minimac2: convert SysBus init method to a realize
+    method
+  net: mipsnet: convert SysBus init method to a realize method
+  net: opencores_eth: convert SysBus init method to a realize method
+  net: smc91c111: convert SysBus init method to a realize method
+  net: stellaris_enet: convert SysBus init method to a realize method
+  net: stellaris_enet: add a reset method
+  net: xgmac: convert SysBus init method to a realize method
+
+David Hildenbrand (16):
+  memory-device: fix alignment error message
+  memory-device: fix error message when hinted address is too small
+  memory-device: improve "range conflicts" error message
+  pc-dimm: pass PCDIMMDevice to pc_dimm_.*plug
+  memory-device: use memory device terminology in error messages
+  memory-device: introduce separate config option
+  memory-device: forward errors in get_region_size()/get_plugged_size()
+  memory-device: document MemoryDeviceClass
+  memory-device: add and use memory_device_get_region_size()
+  memory-device: factor out get_memory_region() from pc-dimm
+  memory-device: drop get_region_size()
+  memory-device: add device class function set_addr()
+  memory-device: complete factoring out pre_plug handling
+  memory-device: complete factoring out plug handling
+  memory-device: complete factoring out unplug handling
+  memory-device: trace when pre_plugging/plugging/unplugging
+
+Igor Mammedov (2):
+  vl.c deprecate incorrect CPUs topology
+  vl:c: make sure that sockets are calculated correctly in '-smp X' case
+
+Li Qiang (1):
+  machine: fix a typo
+
+Markus Armbruster (2):
+  numa: Fix QMP command set-numa-node error handling
+  numa: Clean up error reporting in parse_numa()
+
+Philippe Mathieu-Daud=C3=A9 (12):
+  trace-events: Fix copy/paste typo
+  hw/timer/sun4v-rtc: Convert from DPRINTF() macro to trace events
+  hw/timer/sun4v-rtc: Use DeviceState::realize rather than
+    SysBusDevice::init
+  hw/ssi/xilinx_spi: Use DeviceState::realize rather than
+    SysBusDevice::init
+  hw/sh4/sh_pci: Use DeviceState::realize rather than SysBusDevice::init
+  hw/pci-host/bonito: Use DeviceState::realize rather than
+    SysBusDevice::init
+  hw/mips/gt64xxx_pci: Convert gt64120_reset() function into Device
+    reset method
+  hw/mips/gt64xxx_pci: Mark as bridge device
+  hw/sparc64/niagara: Model the I/O Bridge with the
+    'unimplemented_device'
+  hw/alpha/typhoon: Remove unuseful code
+  hw/hppa/dino: Remove unuseful code
+  hw/mips/malta: Remove unuseful code
+
+Zhang Yi (1):
+  hostmem-file: fixed the memory leak while get pmem path.
+
+ default-configs/i386-softmmu.mak    |   3 +-
+ default-configs/ppc64-softmmu.mak   |   3 +-
+ default-configs/sparc64-softmmu.mak |   1 -
+ qapi/misc.json                      |   2 +-
+ include/hw/mem/memory-device.h      |  74 +++++++++++++++++---
+ include/hw/mem/pc-dimm.h            |  10 +--
+ include/sysemu/numa.h               |   1 -
+ backends/hostmem-file.c             |  10 ++-
+ hw/alpha/typhoon.c                  |  13 ----
+ hw/core/machine.c                   |   2 +-
+ hw/hppa/dino.c                      |   7 --
+ hw/i386/pc.c                        |   6 +-
+ hw/mem/memory-device.c              | 103 ++++++++++++++++++++++------
+ hw/mem/nvdimm.c                     |   9 ++-
+ hw/mem/pc-dimm.c                    |  84 ++++++++---------------
+ hw/mips/gt64xxx_pci.c               |  18 ++---
+ hw/mips/mips_malta.c                |  13 ----
+ hw/net/etraxfs_eth.c                |  44 ++++++++----
+ hw/net/lan9118.c                    |   9 +--
+ hw/net/lance.c                      |   8 +--
+ hw/net/milkymist-minimac2.c         |   9 +--
+ hw/net/mipsnet.c                    |   9 +--
+ hw/net/opencores_eth.c              |   8 +--
+ hw/net/smc91c111.c                  |   8 +--
+ hw/net/stellaris_enet.c             |  15 ++--
+ hw/net/xgmac.c                      |   9 +--
+ hw/pci-host/bonito.c                |   9 +--
+ hw/ppc/spapr.c                      |  29 +++-----
+ hw/sh4/sh_pci.c                     |  20 +++---
+ hw/sparc64/niagara.c                |   4 +-
+ hw/ssi/xilinx_spi.c                 |   9 +--
+ hw/timer/sun4v-rtc.c                |  23 +++----
+ numa.c                              |  21 +++---
+ vl.c                                |  12 +++-
+ hw/Makefile.objs                    |   2 +-
+ hw/mem/Makefile.objs                |   4 +-
+ hw/mem/trace-events                 |   5 +-
+ hw/timer/trace-events               |   6 +-
+ qemu-deprecated.texi                |  12 ++++
+ 39 files changed, 347 insertions(+), 287 deletions(-)
+
+--=20
+2.18.0.rc1.1.g3f1ff2140
+

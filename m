@@ -1,82 +1,82 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2392973wrt;
-        Thu, 18 Oct 2018 07:44:48 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63UxaDvxgjV/q1ECWXlJoXx3v/WsIq5r7abF9fRqaCCwHPiQFF7RUoJZLoO0o/3b9tZButF
-X-Received: by 2002:a0c:871a:: with SMTP id 26mr30286936qvh.29.1539873888817;
-        Thu, 18 Oct 2018 07:44:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539873888; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2394615wrt;
+        Thu, 18 Oct 2018 07:46:00 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61KCWw3GqMPP26wi0C0nuTyWT6RqOBhnFo9Dmgb7/lpOKkNxqQ6ydkhz+F7WYooYG2K4Cr/
+X-Received: by 2002:a0c:f30b:: with SMTP id j11mr30516780qvl.78.1539873960260;
+        Thu, 18 Oct 2018 07:46:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539873960; cv=none;
         d=google.com; s=arc-20160816;
-        b=GOnrrzxiQKJ2CXJQRPMYmqvGlpfX2P2FaZWlonVl9JVZqGo4D0uu95Nq4MhsU5FuFQ
-         y3Bb6lSiiAspA7qrqocY0B6ikUYHSaj7XbqVqdq7AA7tSlbqWIlI70nu/hzNNA6al2F2
-         3gke5LQhU2sl8GN7EQ2Ng13o6O3gAX8DM3Y23EvEGXqwdHmotF9LTbrGcFadJPdf1K6y
-         9uku1F7085PBbr5rafWqfHhG1qsy2Y7Pcdz9G0LKagOAYI30ZWQZc4/J4bvqf+Oh+J6X
-         C4PqIWLnh7j9/1feJjWJV+dTkU58BDZxTh0AeUwK8c49s7Asl3LmcLZrkmOcf9fU4cA4
-         bbZQ==
+        b=X6szJev98k5fc201L2qmAqnNXE11ife2Kbd+vmlLXL8ld0SuoVC3Jz8TTBC6khmQvO
+         yK0j6v6LnCS92MorJO4pT9uVJgBgLPsdwC3scRTH+y9cB7E4QEGSlVPYomz4NMnsTGRn
+         aJcmakMkTW9/+7quhyT1SyJBACjgObchr9oWCQLz0LAuTdUBEjjlUU8qmRN3eQFKlbkY
+         xFQhhftkDUYpStWIVRTU6C9otZ7Z0jUzQefHS7xecPRNjC0yihiJ1R8sBN3wPVk7oZb3
+         MPeZx2eDAdfPnF1hbHMOvL9jhnmouBo47xx4fOI+QfXQKY6HdfwJcqd+3gf0RxMrMzTF
+         GL9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=dpbRy1Yh3D6AeCifa78dd0y6X9ZmEqqTajfJYgUaNDs=;
-        b=nG5cGBQJRti9lbbMKUke0dDLqYBFjlJS3W06U/rUlMtkvXJ4enxtjk5LGLQTPqqLz1
-         yj/pKrL2CPnxU4G57yz/m34vboUpkB0ssRozZUTzYcXNNuW4MWNpr7tqzq/GGXXqoPrA
-         5qcVy88lXpIbPovW0iJWnkxWMJBVTHQbLk4y41nTOn0ieEafPBOTomkuWHhMeV9TUnCw
-         5FbvIaP12DrCEbztxHMQBofyf7Y3DSrMpWIIj3q2YAJtYrY8rzJTK3O5RRM/1zOpYXk6
-         8x6FLqpqbnbXGHvdvaA+In5lh5QEKkvTKBxJjbxe0cA6qM6UiurAX7m6jlPI04kPB6/F
-         LmAw==
+        bh=IgoWQiB1/45K1h96sbf4WyrGsj1N+Vh5sVnY+Vzp57Q=;
+        b=JblMkHR7xS1dS7fgRz7hliCdWwDFeQbEJb7s50r3YeLIHGTvj6nxZ6bOrw/fjW+uSR
+         cBrFEAiRKsWuty+tXVi7tRWmtfwHqVg4FVE8bF4dZp9HJS167JJtikW33Ua6yLhVH8Ll
+         dPIRF07RxKg3S/Ev4jZYxAm69rsgIqpEDjCa1GKNKDzfX27w/qkcdaaCTbFM5tZJaE18
+         EHMM6VuA6/Wbuby0Kf4RhY9k/o3ECkO12dFwAnO+eEzC7igdWlWUXY/hpy5BeybE+6pB
+         9ajte8A0cE1Y313LZY5WxhRus5KiDUPKq8UtWEdcGtS4P2mnpfr6EfC2Mhsyo8ljQJ9Q
+         7mDw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 15si5600167qvt.113.2018.10.18.07.44.48
+        by mx.google.com with ESMTPS id a8si1814642qvf.8.2018.10.18.07.46.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 07:44:48 -0700 (PDT)
+        Thu, 18 Oct 2018 07:46:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42754 helo=lists.gnu.org)
+Received: from localhost ([::1]:42758 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gD9Xc-0000Fh-8P
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 10:44:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36541)
+	id 1gD9Yl-0000mP-OJ
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 10:45:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gD9Lc-0006SG-U0
-	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 10:32:26 -0400
+	(envelope-from <eric.auger@redhat.com>) id 1gD9Lh-0006UO-BP
+	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 10:32:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gD9LY-00088z-Sd
-	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 10:32:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56872)
+	(envelope-from <eric.auger@redhat.com>) id 1gD9LZ-00089D-P0
+	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 10:32:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52436)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gD9LP-0007oZ-Do; Thu, 18 Oct 2018 10:32:11 -0400
+	id 1gD9LS-0007tE-5S; Thu, 18 Oct 2018 10:32:14 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B03C130F8BF0;
-	Thu, 18 Oct 2018 14:32:10 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6F57FC0587CE;
+	Thu, 18 Oct 2018 14:32:13 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-215.ams2.redhat.com [10.36.116.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 545F97899E;
-	Thu, 18 Oct 2018 14:32:02 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 00CF060150;
+	Thu, 18 Oct 2018 14:32:10 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org,
 	shameerali.kolothum.thodi@huawei.com, kwangwoo.lee@sk.com,
 	imammedo@redhat.com, david@redhat.com
-Date: Thu, 18 Oct 2018 16:30:39 +0200
-Message-Id: <20181018143042.29588-14-eric.auger@redhat.com>
+Date: Thu, 18 Oct 2018 16:30:40 +0200
+Message-Id: <20181018143042.29588-15-eric.auger@redhat.com>
 In-Reply-To: <20181018143042.29588-1-eric.auger@redhat.com>
 References: <20181018143042.29588-1-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 18 Oct 2018 14:32:10 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Thu, 18 Oct 2018 14:32:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC v4 13/16] nvdimm: use configurable ACPI IO base
- and size
+Subject: [Qemu-devel] [RFC v4 14/16] hw/arm/virt: Add nvdimm hot-plug
+ infrastructure
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,184 +91,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: drjones@redhat.com, dgilbert@redhat.com, Suzuki.Poulose@arm.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7SGkzoFBCsKb
+X-TUID: MvP1yd1uDRh3
 
 From: Kwangwoo Lee <kwangwoo.lee@sk.com>
 
-This patch uses configurable IO base and size to create NPIO AML for
-ACPI NFIT. Since a different architecture like AArch64 does not use
-port-mapped IO, a configurable IO base is required to create correct
-mapping of ACPI IO address and size.
+Pre-plug and plug handlers are prepared for NVDIMM support.
 
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
+Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
 ---
+ default-configs/arm-softmmu.mak |  2 ++
+ hw/arm/virt-acpi-build.c        |  6 ++++++
+ hw/arm/virt.c                   | 22 ++++++++++++++++++++++
+ include/hw/arm/virt.h           |  3 +++
+ 4 files changed, 33 insertions(+)
 
-v2 -> v3:
-- s/size/len in pc_piix.c and pc_q35.c
----
- hw/acpi/nvdimm.c        | 28 +++++++++++++++++++---------
- hw/i386/pc_piix.c       |  8 +++++++-
- hw/i386/pc_q35.c        |  8 +++++++-
- include/hw/mem/nvdimm.h | 12 ++++++++++++
- 4 files changed, 45 insertions(+), 11 deletions(-)
-
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 27eeb6609f..17d71469be 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -929,8 +929,8 @@ void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
-                             FWCfgState *fw_cfg, Object *owner)
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 1c110cfe7f..466b3d2c39 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -160,4 +160,6 @@ CONFIG_STRONGARM=y
+ CONFIG_HIGHBANK=y
+ CONFIG_MUSICPAL=y
+ CONFIG_MEM_HOTPLUG=y
++CONFIG_NVDIMM=y
++CONFIG_ACPI_NVDIMM=y
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 8818bbf5ec..dc100dd4c0 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -808,6 +808,7 @@ static
+ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
  {
-     memory_region_init_io(&state->io_mr, owner, &nvdimm_dsm_ops, state,
--                          "nvdimm-acpi-io", NVDIMM_ACPI_IO_LEN);
--    memory_region_add_subregion(io, NVDIMM_ACPI_IO_BASE, &state->io_mr);
-+                          "nvdimm-acpi-io", state->dsm_io.len);
-+    memory_region_add_subregion(io, state->dsm_io.base, &state->io_mr);
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
++    MachineState *ms = MACHINE(vms);
+     GArray *table_offsets;
+     unsigned dsdt, xsdt;
+     GArray *tables_blob = tables->table_data;
+@@ -848,6 +849,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+         }
+     }
  
-     state->dsm_mem = g_array_new(false, true /* clear */, 1);
-     acpi_data_push(state->dsm_mem, sizeof(NvdimmDsmIn));
-@@ -959,12 +959,14 @@ void nvdimm_init_acpi_state(AcpiNVDIMMState *state, MemoryRegion *io,
- 
- #define NVDIMM_QEMU_RSVD_UUID   "648B9CF2-CDA1-4312-8AD9-49C4AF32BD62"
- 
--static void nvdimm_build_common_dsm(Aml *dev)
-+static void nvdimm_build_common_dsm(Aml *dev,
-+                                    AcpiNVDIMMState *acpi_nvdimm_state)
- {
-     Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
-     Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
-     Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
-     uint8_t byte_list[1];
-+    AmlRegionSpace rs;
- 
-     method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
-     uuid = aml_arg(0);
-@@ -975,9 +977,16 @@ static void nvdimm_build_common_dsm(Aml *dev)
- 
-     aml_append(method, aml_store(aml_name(NVDIMM_ACPI_MEM_ADDR), dsm_mem));
- 
-+    if (acpi_nvdimm_state->dsm_io.type == NVDIMM_ACPI_IO_PORT) {
-+        rs = AML_SYSTEM_IO;
-+    } else {
-+        rs = AML_SYSTEM_MEMORY;
++    if (vms->acpi_nvdimm_state.is_enabled) {
++        nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
++                          &vms->acpi_nvdimm_state, ms->ram_slots);
 +    }
 +
-     /* map DSM memory and IO into ACPI namespace. */
--    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, AML_SYSTEM_IO,
--               aml_int(NVDIMM_ACPI_IO_BASE), NVDIMM_ACPI_IO_LEN));
-+    aml_append(method, aml_operation_region(NVDIMM_DSM_IOPORT, rs,
-+               aml_int(acpi_nvdimm_state->dsm_io.base),
-+               acpi_nvdimm_state->dsm_io.len));
-     aml_append(method, aml_operation_region(NVDIMM_DSM_MEMORY,
-                AML_SYSTEM_MEMORY, dsm_mem, sizeof(NvdimmDsmIn)));
+     if (its_class_name() && !vmc->no_its) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_iort(tables_blob, tables->linker, vms);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1548e9480a..d84d5a5841 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -141,6 +141,7 @@ static const MemMapEntry a15memmap[] = {
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+     [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
++    [VIRT_ACPI_IO] =            { 0x09070000, 0x00010000 },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -1609,6 +1610,18 @@ static void machvirt_init(MachineState *machine)
  
-@@ -1260,7 +1269,8 @@ static void nvdimm_build_nvdimm_devices(Aml *root_dev, uint32_t ram_slots)
- }
+     create_platform_bus(vms, pic);
  
- static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
--                              BIOSLinker *linker, GArray *dsm_dma_arrea,
-+                              BIOSLinker *linker,
-+                              AcpiNVDIMMState *acpi_nvdimm_state,
-                               uint32_t ram_slots)
++    if (vms->acpi_nvdimm_state.is_enabled) {
++        AcpiNVDIMMState *acpi_nvdimm_state = &vms->acpi_nvdimm_state;
++
++        acpi_nvdimm_state->dsm_io.type = NVDIMM_ACPI_IO_MEMORY;
++        acpi_nvdimm_state->dsm_io.base =
++                vms->memmap[VIRT_ACPI_IO].base + NVDIMM_ACPI_IO_BASE;
++        acpi_nvdimm_state->dsm_io.len = NVDIMM_ACPI_IO_LEN;
++
++        nvdimm_init_acpi_state(acpi_nvdimm_state, sysmem,
++                               vms->fw_cfg, OBJECT(vms));
++    }
++
+     vms->bootinfo.ram_size = machine->ram_size;
+     vms->bootinfo.kernel_filename = machine->kernel_filename;
+     vms->bootinfo.kernel_cmdline = machine->kernel_cmdline;
+@@ -1794,10 +1807,19 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
+                              DeviceState *dev, Error **errp)
  {
-     Aml *ssdt, *sb_scope, *dev;
-@@ -1288,7 +1298,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
-      */
-     aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0012")));
+     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++    bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
+     Error *local_err = NULL;
  
--    nvdimm_build_common_dsm(dev);
-+    nvdimm_build_common_dsm(dev, acpi_nvdimm_state);
+     pc_dimm_plug(dev, MACHINE(vms), &local_err);
++    if (local_err) {
++        goto out;
++    }
  
-     /* 0 is reserved for root device. */
-     nvdimm_build_device_dsm(dev, 0);
-@@ -1307,7 +1317,7 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
-                                                NVDIMM_ACPI_MEM_ADDR);
- 
-     bios_linker_loader_alloc(linker,
--                             NVDIMM_DSM_MEM_FILE, dsm_dma_arrea,
-+                             NVDIMM_DSM_MEM_FILE, acpi_nvdimm_state->dsm_mem,
-                              sizeof(NvdimmDsmIn), false /* high memory */);
-     bios_linker_loader_add_pointer(linker,
-         ACPI_BUILD_TABLE_FILE, mem_addr_offset, sizeof(uint32_t),
-@@ -1329,7 +1339,7 @@ void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
-         return;
-     }
- 
--    nvdimm_build_ssdt(table_offsets, table_data, linker, state->dsm_mem,
-+    nvdimm_build_ssdt(table_offsets, table_data, linker, state,
-                       ram_slots);
- 
-     device_list = nvdimm_get_device_list();
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index dc09466b3e..c569a19663 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -297,7 +297,13 @@ static void pc_init1(MachineState *machine,
-     }
- 
-     if (pcms->acpi_nvdimm_state.is_enabled) {
--        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-+        AcpiNVDIMMState *acpi_nvdimm_state = &pcms->acpi_nvdimm_state;
++    if (is_nvdimm) {
++        nvdimm_plug(&vms->acpi_nvdimm_state);
++    }
 +
-+        acpi_nvdimm_state->dsm_io.type = NVDIMM_ACPI_IO_PORT;
-+        acpi_nvdimm_state->dsm_io.base = NVDIMM_ACPI_IO_BASE;
-+        acpi_nvdimm_state->dsm_io.len = NVDIMM_ACPI_IO_LEN;
-+
-+        nvdimm_init_acpi_state(acpi_nvdimm_state, system_io,
-                                pcms->fw_cfg, OBJECT(pcms));
-     }
++out:
+     error_propagate(errp, local_err);
  }
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 532241e3f8..a693feb589 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -277,7 +277,13 @@ static void pc_q35_init(MachineState *machine)
-     pc_nic_init(pcmc, isa_bus, host_bus);
  
-     if (pcms->acpi_nvdimm_state.is_enabled) {
--        nvdimm_init_acpi_state(&pcms->acpi_nvdimm_state, system_io,
-+        AcpiNVDIMMState *acpi_nvdimm_state = &pcms->acpi_nvdimm_state;
-+
-+        acpi_nvdimm_state->dsm_io.type = NVDIMM_ACPI_IO_PORT;
-+        acpi_nvdimm_state->dsm_io.base = NVDIMM_ACPI_IO_BASE;
-+        acpi_nvdimm_state->dsm_io.len = NVDIMM_ACPI_IO_LEN;
-+
-+        nvdimm_init_acpi_state(acpi_nvdimm_state, system_io,
-                                pcms->fw_cfg, OBJECT(pcms));
-     }
- }
-diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
-index c5c9b3c7f8..af8a5fd034 100644
---- a/include/hw/mem/nvdimm.h
-+++ b/include/hw/mem/nvdimm.h
-@@ -123,6 +123,17 @@ struct NvdimmFitBuffer {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 032d88f4c4..974a110a38 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -37,6 +37,7 @@
+ #include "hw/arm/arm.h"
+ #include "sysemu/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
++#include "hw/mem/nvdimm.h"
+ 
+ #define NUM_GICV2M_SPIS       64
+ #define NUM_VIRTIO_TRANSPORTS 32
+@@ -81,6 +82,7 @@ enum {
+     VIRT_SECURE_UART,
+     VIRT_SECURE_MEM,
+     VIRT_DEVICE_MEM,
++    VIRT_ACPI_IO,
  };
- typedef struct NvdimmFitBuffer NvdimmFitBuffer;
  
-+typedef enum {
-+    NVDIMM_ACPI_IO_PORT,
-+    NVDIMM_ACPI_IO_MEMORY,
-+} AcpiNVDIMMIOType;
-+
-+typedef struct AcpiNVDIMMIOEntry {
-+    AcpiNVDIMMIOType type;
-+    hwaddr base;
-+    hwaddr len;
-+} AcpiNVDIMMIOEntry;
-+
- struct AcpiNVDIMMState {
-     /* detect if NVDIMM support is enabled. */
-     bool is_enabled;
-@@ -140,6 +151,7 @@ struct AcpiNVDIMMState {
-      */
-     int32_t persistence;
-     char    *persistence_string;
-+    AcpiNVDIMMIOEntry dsm_io;
- };
- typedef struct AcpiNVDIMMState AcpiNVDIMMState;
+ typedef enum VirtIOMMUType {
+@@ -128,6 +130,7 @@ typedef struct {
+     uint32_t msi_phandle;
+     uint32_t iommu_phandle;
+     int psci_conduit;
++    AcpiNVDIMMState acpi_nvdimm_state;
+ } VirtMachineState;
  
+ #define VIRT_ECAM_ID(high) (high ? VIRT_PCIE_ECAM_HIGH : VIRT_PCIE_ECAM)
 -- 
 2.17.1
 

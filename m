@@ -1,249 +1,257 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2069079wrt;
-        Thu, 18 Oct 2018 03:32:51 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60uY7d+W0HWaujL8JfS/TQW8iEQKUgOnFZ8vy283Ye7N36NLO7lsb3mAai6/py4mPvt9TwW
-X-Received: by 2002:ac8:23ad:: with SMTP id q42-v6mr28534320qtq.322.1539858771718;
-        Thu, 18 Oct 2018 03:32:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539858771; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2232568wrt;
+        Thu, 18 Oct 2018 05:49:40 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60zWvSp9f+RCd+mABPLN1fyCUjfa8IPOMD7NGjzlPcE7vTjzw0dXC0XbgRZmpE/SSSGh/z1
+X-Received: by 2002:aed:2c86:: with SMTP id g6-v6mr29355232qtd.15.1539866980552;
+        Thu, 18 Oct 2018 05:49:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539866980; cv=none;
         d=google.com; s=arc-20160816;
-        b=sPh09tKN571f+PkiaeE9XE72u9GySMXldJ26M/aF2ACGhWs+D2qHKgkebMGgTd54th
-         3op552BZJgkM797pX74dLijzApWrLY7Ji+1BpuN+LT6XvBu4P8zkbJ7Jgx/EidC1AOO/
-         TSsqrh94Tig3n+tsGImY8LwttK7uqW4dW0kW7PjQtrd1+MAYXpcAfir8RAAezvn2poD/
-         2PY6LP1YFc3PkRrU16iRgW+po2yu/YAhHbDSTW1v1OEhmhlVxZ1mntTFzoRsqV3eHVLV
-         xz4mgT4vOb05po0j5qtepgR/5eZbVZm5jeQ8BgvAXSH+jg11r9e4Pbg2k+MtDbfVRrET
-         CwNw==
+        b=r9edzTdy55qyIRwFdP1ZpnPXfGi3u7r/yKxhia23IFHevRUN+pSdhrn1c8N7gJkZtc
+         vPhmTqbv8ZDzhUTCPRv533UnkTtwFVFb9qmcTlrmCKAgpMN8Qq5S7B7ZnKxDfBrxYyo5
+         U5NjbeDSxkft/wgE6Czu0cS5LArjVkqIOaqDR9Aw/dNfs7izFnWcNnWH2aQYl1uvXkWc
+         wIzDSI/AM6TTIpD2AeKmQMk7EKb3li14lgjiQwwSgvVC6qUvJiQrF4ZLT8fIHm836q+f
+         zggDxzy2GJ5JcPdg6nznM/tQQRqbMDOaUEW+elHY5D2DwrALNkrN4l1Yoh+jJvGCCdkW
+         AtPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from;
-        bh=qwgAT4X9NxjH/3WQejGlL6yUEDcRZPNDMcdw+fmBDX4=;
-        b=phjtH+Wxdci7mqNvTNPx3KLGd/BotfagaEYXiZKxzUp5ml1PdSjmbMAvfoXAE03jnW
-         Oa6KA98rP7nBgFwF+91Xe/qLk4fztJcUzuRg1gWqITJo6iou6A2S+Z5rgI2A+60ki7HS
-         z7zZyyDYWPD8elmCNk87Vp5eWgy2V/ZgbfyR5qPR926S4urJ1ceH9XhJaq3TVtzB2OJ8
-         HKe51G8HbltiRzxcixInIWCssZachUqIT1ZDjQ7/S9YRPkozlh4LN8UT96QrJ+m2nl1B
-         34DwqKN6LDJaz2gu3KFKfQx0MDNSFmou5vjpG8Gfnzj375IF8B0WXCtofDjsFFJ5zrgd
-         rBVQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=1ePZOn1XEGTVsPL0JMD7DeNqNA6QlC7UqlnCkdm933M=;
+        b=Hhw3JiPRGBm6Ru5DaNgL+bPkydipdricScs69bydfEQynSrBtASIbJdi5pNrMgjnAV
+         w+PReV7lnpE0ZLd9Dq9F+6r/sLV9lOeuCJW+n0hkoIaDunEkNriZiaUXTzc7fmrVLxDK
+         Yorc7AxzKbbzAaq9fyNl0GWkLdJzOhLIgzd2Bk4GkuYeB5ssjnuCF6qe1RlTBuhCghOx
+         kKvzvqpfXsBC73Mpd8pm/y8kpH9vZHl/IGULgfx7EVLeLbAeEHHLMD7/oUb8ANyuGjG0
+         9crBxo7N0guuYEPxL6HqZvTXbMj+sja5YrFEf5mCiOXZK0TwoX0rdEAZpbzv+DxQlakm
+         WOXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i13-v6si801508qtm.305.2018.10.18.03.32.51
+        by mx.google.com with ESMTPS id 23-v6si179108qkl.66.2018.10.18.05.49.40
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 03:32:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 18 Oct 2018 05:49:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:41524 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42169 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gD5bn-0001er-8M
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 06:32:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55469)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gD7kC-0000cS-1A
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 08:49:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33497)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yi.l.liu@intel.com>) id 1gD5a0-00014l-3C
-	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 06:31:01 -0400
+	(envelope-from <philmd@redhat.com>) id 1gD7jv-0000af-Ez
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:49:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yi.l.liu@intel.com>) id 1gD5Zu-00039U-W4
-	for qemu-devel@nongnu.org; Thu, 18 Oct 2018 06:30:59 -0400
-Received: from mga02.intel.com ([134.134.136.20]:19503)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <yi.l.liu@intel.com>)
-	id 1gD5Zu-00033e-Ln; Thu, 18 Oct 2018 06:30:54 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-	by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	18 Oct 2018 03:30:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.54,396,1534834800"; d="scan'208";a="96290831"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
-	by fmsmga002.fm.intel.com with ESMTP; 18 Oct 2018 03:30:51 -0700
-Received: from fmsmsx119.amr.corp.intel.com (10.18.124.207) by
-	FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server
-	(TLS) id 14.3.319.2; Thu, 18 Oct 2018 03:30:50 -0700
-Received: from shsmsx103.ccr.corp.intel.com (10.239.4.69) by
-	FMSMSX119.amr.corp.intel.com (10.18.124.207) with Microsoft SMTP Server
-	(TLS) id 14.3.319.2; Thu, 18 Oct 2018 03:30:49 -0700
-Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.48]) by
-	SHSMSX103.ccr.corp.intel.com ([169.254.4.245]) with mapi id
-	14.03.0319.002; Thu, 18 Oct 2018 18:30:47 +0800
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
-	<eric.auger.pro@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>
-Thread-Topic: [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO integration
-Thread-Index: AQHUUYPG4Vn8CydKKEelflcsj1GMg6Uk8aPw
-Date: Thu, 18 Oct 2018 10:30:46 +0000
-Message-ID: <A2975661238FB949B60364EF0F2C257439D32CBE@SHSMSX104.ccr.corp.intel.com>
-References: <20180921081819.9203-1-eric.auger@redhat.com>
-In-Reply-To: <20180921081819.9203-1-eric.auger@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.0.400.15
-dlp-reaction: no-action
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjQ3YzU4NjctYmFmYS00ODZjLTk4MjEtMmY2MDNkN2U0NzFjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUnR2enRaeUwrbXRuN2hjVkIzZjh2TWlIVHlyUitxclpnYTIzdGdxXC9TYlR6aWJHS0IzSjNJSThtSzJzSFB4M2IifQ==
-x-originating-ip: [10.239.127.40]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <philmd@redhat.com>) id 1gD7jg-0004G6-ON
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:49:13 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:39996)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gD7jg-0004FJ-FY
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 08:49:08 -0400
+Received: by mail-wr1-f67.google.com with SMTP id d2-v6so33558602wro.7
+	for <qemu-arm@nongnu.org>; Thu, 18 Oct 2018 05:49:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=1ePZOn1XEGTVsPL0JMD7DeNqNA6QlC7UqlnCkdm933M=;
+	b=DqBZOj2o3GLm7zZlyuKFUDtBfuknX9WLAenAZrZt2Mr1utRfkiylz57N/tT9joF8Yq
+	jqd246SZE7aYnAWP3RiTH9G/OZ5mt8IVCHfpd0txlQFBD/RTcO7t+eNInNxswDfzU9Qh
+	TNSrUPSnbgzyf4ZBegmHdy9uD0RAAn4fstgWgB0QSlOf5leMfnefWwWUFQNTD67fSLCQ
+	oRUSqLwoJdS4r4+OMEIo63hXkmOnAPdX9jarDpsnJigbMsUR943RpxAJyXjBT5F3JyVz
+	EBb6Wase7wtlZ6Mw1resEFfs9L2oqIJ1NOLkjxqXbAjxieSsSlAqyzJeHokNZ807TPfW
+	HbuA==
+X-Gm-Message-State: ABuFfogLNQ16W/mVn4G1XeJzvNYmBoRLmGveYvheSsbI+rtHu8pFuWzw
+	FudLqGY7HWdkQ8Ccq4Vrk7veXTJsBG9oWw==
+X-Received: by 2002:adf:e784:: with SMTP id
+	n4-v6mr30736025wrm.187.1539866947325; 
+	Thu, 18 Oct 2018 05:49:07 -0700 (PDT)
+Received: from ?IPv6:2a01:e35:2eec:b420:d26b:a0d4:f86e:1389?
+	([2a01:e35:2eec:b420:d26b:a0d4:f86e:1389])
+	by smtp.gmail.com with ESMTPSA id
+	y125-v6sm146561wme.12.2018.10.18.05.49.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 18 Oct 2018 05:49:06 -0700 (PDT)
+To: peng.hao2@zte.com.cn
+References: <201810180855169525575@zte.com.cn>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <f8e8f743-4205-1258-b3ed-a83c15df3507@redhat.com>
+Date: Thu, 18 Oct 2018 14:49:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.20
-Subject: Re: [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO
- integration
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <201810180855169525575@zte.com.cn>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target/arm : add pvpanic mmio
+ device
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Tian, Kevin" <kevin.tian@intel.com>, "cdall@kernel.org" <cdall@kernel.org>,
-	"mst@redhat.com" <mst@redhat.com>,
-	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>, "Sun, 
-	Yi Y" <yi.y.sun@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qtmGsHYWvb2x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gz2efpFnRUEX
 
-Hi Eric,
+On 18/10/2018 02:55, peng.hao2@zte.com.cn wrote:
+>> Hi Peng,
+>>
+>> On 17/10/2018 11:23, Peng Hao wrote:
+>>> Add pvpanic mmio device that is similar to x86's pvpanic device.
+>>
+>>>
+>>> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+>>> ---
+>>>  default-configs/arm-softmmu.mak |  2 +-
+>>>  hw/arm/virt.c                   | 21 ++++++++++++
+>>>  hw/misc/Makefile.objs           |  1 +
+>>>  hw/misc/pvpanic-mmio.c          | 76 +++++++++++++++++++++++++++++++++++++++++
+>>>  include/hw/arm/virt.h           |  1 +
+>>>  include/hw/misc/pvpanic-mmio.h  | 12 +++++++
+>>>  6 files changed, 112 insertions(+), 1 deletion(-)
+>>>  create mode 100644 hw/misc/pvpanic-mmio.c
+>>>  create mode 100644 include/hw/misc/pvpanic-mmio.h
+>>>
+>>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+>>> index 2420491..4713c92 100644
+>>> --- a/default-configs/arm-softmmu.mak
+>>> +++ b/default-configs/arm-softmmu.mak
+>>> @@ -43,7 +43,7 @@ CONFIG_USB_MUSB=y
+>>>  CONFIG_USB_EHCI_SYSBUS=y
+>>>  CONFIG_PLATFORM_BUS=y
+>>>  CONFIG_VIRTIO_MMIO=y
+>>> -
+>>> +CONFIG_PVPANIC_MMIO=y
+>>>  CONFIG_ARM11MPCORE=y
+>>>  CONFIG_A9MPCORE=y
+>>>  CONFIG_A15MPCORE=y
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index a472566..ab41128 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -140,6 +140,7 @@ static const MemMapEntry a15memmap[] = {
+>>>      [VIRT_UART] =               { 0x09000000, 0x00001000 },
+>>>      [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+>>>      [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+>>> +    [VIRT_PVPANIC_MMIO] =       { 0x09020018, 0x00000002 },
+>>>      [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+>>>      [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
+>>>      [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+>>> @@ -798,6 +799,24 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+>>>      g_free(nodename);
+>>>  }
+>>>
+>>> +static void create_pvpanic_device(const VirtMachineState *vms)
+>>> +{
+>>> +    char *nodename;
+>>> +    hwaddr base = vms->memmap[VIRT_PVPANIC_MMIO].base;
+>>> +    hwaddr size = vms->memmap[VIRT_PVPANIC_MMIO].size;
+>>> +
+>>> +    sysbus_create_simple("pvpanic-mmio", base, NULL);
+>>> +
+>>> +    nodename = g_strdup_printf("/pvpanic-mmio@%" PRIx64, base);
+>>> +    qemu_fdt_add_subnode(vms->fdt, nodename);
+>>> +    qemu_fdt_setprop_string(vms->fdt, nodename,
+>>> +                            "compatible", "pvpanic,mmio");
+>>> +    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+>>> +                                 2, base, 2, size);
+>>> +    g_free(nodename);
+>>> +
+>>> +}
+>>> +
+>>>  static void create_virtio_devices(const VirtMachineState *vms, qemu_irq *pic)
+>>>  {
+>>>      int i;
+>>> @@ -1544,6 +1563,8 @@ static void machvirt_init(MachineState *machine)
+>>>
+>>>      create_pcie(vms, pic);
+>>>
+>>> +    create_pvpanic_device(vms);
+>>> +
+>>>      create_gpio(vms, pic);
+>>>
+>>>      /* Create mmio transports, so the user can create virtio backends
+>>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>>> index 6d50b03..6326260 100644
+>>> --- a/hw/misc/Makefile.objs
+>>> +++ b/hw/misc/Makefile.objs
+>>> @@ -71,6 +71,7 @@ obj-$(CONFIG_IOTKIT_SYSCTL) += iotkit-sysctl.o
+>>>  obj-$(CONFIG_IOTKIT_SYSINFO) += iotkit-sysinfo.o
+>>>
+>>>  obj-$(CONFIG_PVPANIC) += pvpanic.o
+>>> +obj-$(CONFIG_PVPANIC_MMIO) += pvpanic-mmio.o
+>>>  obj-$(CONFIG_HYPERV_TESTDEV) += hyperv_testdev.o
+>>>  obj-$(CONFIG_AUX) += auxbus.o
+>>>  obj-$(CONFIG_ASPEED_SOC) += aspeed_scu.o aspeed_sdmc.o
+>>> diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
+>>> new file mode 100644
+>>> index 0000000..c7f373e
+>>> --- /dev/null
+>>> +++ b/hw/misc/pvpanic-mmio.c
+>>> @@ -0,0 +1,76 @@
+>>> +#include "qemu/osdep.h"
+>>> +#include "sysemu/sysemu.h"
+>>> +#include "qemu/log.h"
+>>> +#include "hw/misc/pvpanic-mmio.h"
+>>> +
+>>> +#define PVPANIC_MMIO_FEAT_CRASHED      0
+>>> +
+>>> +#define PVPANIC_MMIO_CRASHED        (1 << PVPANIC_MMIO_FEAT_CRASHED)
+>>> +
+>>> +static void handle_mmio_event(int event)
+>>> +{
+>>> +    static bool logged;
+>>> +
+>>> +    if (event & ~PVPANIC_MMIO_CRASHED && !logged) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR, "pvpanic-mmio: unknown event %#x.\n", event);
+>>> +        logged = true;
+>>> +    }
+>>> +
+>>> +    if (event & PVPANIC_MMIO_CRASHED) {
+>>> +        qemu_system_guest_panicked(NULL);
+>>> +        return;
+>>> +    }
+>>
+>> It would be easier to maintain a single pvpanic device. There is no
+>> improvement here, it is the same handler than 'pvpanic.c'.
+>>
+>> The current pvpanic device is not x86-only, it only implements the
+>> ioport API.
+> But in linux kernel the driver of pvpanic device is x86-only.
+> 
+>> If you want to use the mmio API, please add it there.
+>> Basically you don't have to write any more code that in this patch, but
+>> just move it in the pvpanic.c file.
+> I want to use pvpanic directly instead of adding a new device emulation.
+> But I can't use it. Firstly pvpanic use ioport, but arm don't support ioport.
+> secondly pvpanic device is emulated as a isa bus device, but arm don't support
+> isa bus.
 
-> From: Eric Auger [mailto:eric.auger@redhat.com]
-> Sent: Friday, September 21, 2018 4:18 PM
-> Subject: [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO integration
->=20
-> Up to now vSMMUv3 has not been integrated with VFIO. VFIO
-> integration requires to program the physical IOMMU consistently
-> with the guest mappings. However, as opposed to VTD, SMMUv3 has
-> no "Caching Mode" which allows easy trapping of guest mappings.
-> This means the vSMMUV3 cannot use the same VFIO integration as VTD.
->=20
-> However SMMUv3 has 2 translation stages. This was devised with
-> virtualization use case in mind where stage 1 is "owned" by the
-> guest whereas the host uses stage 2 for VM isolation.
->=20
-> This series sets up this nested translation stage. It only works
-> if there is one physical SMMUv3 used along with QEMU vSMMUv3 (in
-> other words, it does not work if there is a physical SMMUv2).
->=20
-> The series uses a new kernel user API [1], still under definition.
->=20
-> - We force the host to use stage 2 instead of stage 1, when we
->   detect a vSMMUV3 is behind a VFIO device. For a VFIO device
->   without any virtual IOMMU, we still use stage 1 as many existing
->   SMMUs expect this behavior.
-> - We introduce new IOTLB "config" notifiers, requested to notify
->   changes in the config of a given iommu memory region. So now
->   we have notifiers for IOTLB changes and config changes.
-> - vSMMUv3 calls config notifiers when STE (Stream Table Entries)
->   are updated by the guest.
-> - We implement a specific UNMAP notifier that conveys guest
->   IOTLB invalidations to the host
-> - We implement a new MAP notifiers only used for MSI IOVAs so
->   that the host can build a nested stage translation for MSI IOVAs
-> - As the legacy MAP notifier is not called anymore, we must make
->   sure stage 2 mappings are set. This is achieved through another
->   memory listener.
-> - Physical SMMUs faults are reported to the guest via en eventfd
->   mechanism and reinjected into this latter.
->=20
-> Note: some iommu memory notifier rework related patches are close
-> to those previously published by Peter and Liu. I will be pleased to
-> add their Signed-off-by if they agree/wish.
+I tried to explain how to do it, but it was easier to just refactor your
+patch to show what I was expecting, so I'll send a series instead.
 
-Yeah, feel free to add mine if it's originated from our previous work.
-
-BTW. Curiously, are you planning to implement all vIOMMU related
-operations through MemoryRegion notifiers? Honestly, I did it in such
-way in early RFC for vSVA work. However, we encountered two issues
-at that time. First, how to check whether the notifier should be registered=
-.
-Second, there are cases in which the vfio_listener_region_add is not
-triggered but vIOMMU exists. Details can be got by the link below:
-(http://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00078.html)
-
-As thus, we had some discussions in community. Last time, PCIPASIDOps
-was proposed. It is to add callbacks in PCIDevice. VFIO would register its
-implementations in vfio_realize(). Supposedly, pasid_table_bind,
-page_table_bind, sva_tlb_invalidation_passdown and other vIOMMU
-related operations can be done in such way. The sample patch below
-may show how it looks like. (the full patch is in my sandbox, planned to
-send out with Scalable Mode emulation patch).
-
-Sample patch:
-include/hw/pci/pci.h:
- +typedef struct PCIPASIDOps PCIPASIDOps;
- +struct PCIPASIDOps {
- +    void (*pasid_bind_table)(PCIBus *bus, int32_t devfn,
- +                            struct pasid_table_config *ptbl_cfg);
- +    void (*pasid_invalidate_extend_iotlb)(PCIBus *bus, int32_t devfn,
- +                            struct tlb_invalidate_info *inv_info);
- +};
-
- @@ -350,6 +359,7 @@ struct PCIDevice {
-      MSIVectorUseNotifier msix_vector_use_notifier;
-      MSIVectorReleaseNotifier msix_vector_release_notifier;
-      MSIVectorPollNotifier msix_vector_poll_notifier;
- +    PCIPASIDOps *pasid_ops;
-  };
-
-hw/pci/pci.c:
-+void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops)
- +{
- +    assert(ops && !dev->pasid_ops);
- +    dev->pasid_ops =3D ops;
- +}
- +
- +void pci_device_pasid_bind_table(PCIBus *bus, int32_t devfn,
- +                                 struct pasid_table_config *ptbl_cfg)
- +{
- +    PCIDevice *dev;
- +
- +    if (!bus) {
- +        return;
- +    }
- +
- +    dev =3D bus->devices[devfn];
- +    if (dev && dev->pasid_ops) {
- +        dev->pasid_ops->pasid_bind_table(bus, devfn, ptbl_cfg);
- +    }
- +}
-
-hw/vfio/pci.c:
-+static PCIPASIDOps vfio_pci_pasid_ops =3D {
- +    .pasid_bind_table =3D vfio_pci_device_pasid_bind_table,
- +    .pasid_invalidate_extend_iotlb =3D vfio_pci_device_pasid_invalidate_e=
-iotlb,
- +};
- +
-  static void vfio_realize(PCIDevice *pdev, Error **errp)
-  {
-      VFIOPCIDevice *vdev =3D DO_UPCAST(VFIOPCIDevice, pdev, pdev);
- @@ -3048,6 +3068,8 @@ static void vfio_realize(PCIDevice *pdev, Error **er=
-rp)
-      vfio_register_req_notifier(vdev);
-      vfio_setup_resetfn_quirk(vdev);
-
- +    pci_setup_pasid_ops(pdev, &vfio_pci_pasid_ops);
- +
-      return;
-
-Regards,
-Yi Liu
-
+> thirdly the realization of pvpanic device is depends on ACPI in linux kernel driver and in qemu
+> the port info is passed through ACPI , but It is not necessary to configure ACPI for arm guest. 
+> 
+> Thanks.
+>>
+>> Thanks,
+>>
+>> Phil.

@@ -1,84 +1,84 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2802467wrt;
-        Thu, 18 Oct 2018 13:06:25 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62d1G82uCyhuO0Gx2oyxn/xehXvYSvnzgEWU+ORpag68KsZTNxRdgHp0OpT5LtKnexBDUJ5
-X-Received: by 2002:a37:b101:: with SMTP id a1-v6mr29878199qkf.222.1539893185167;
-        Thu, 18 Oct 2018 13:06:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539893185; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2804933wrt;
+        Thu, 18 Oct 2018 13:08:24 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60Nu7IRiYkgWKH26Ou0hLr1LsERfR9+2lQWgHQ4lzQKT87wSWD1Oba4oM7Mb+caQcHHGodH
+X-Received: by 2002:ac8:47c4:: with SMTP id d4-v6mr2385882qtr.220.1539893304238;
+        Thu, 18 Oct 2018 13:08:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539893304; cv=none;
         d=google.com; s=arc-20160816;
-        b=mhJQBXw8ebsdkqOmx6us/LLkybi8O+hKA819maokEUpw/Qf2nBte9GIW8I5000Im6S
-         aMYy2BRP+Cnqt7njtzCr7fyENaEJfshwdJ+IhfH4p4ldshfMa07+f6RGMFmk1Z+euqm6
-         VyoXW7il8z3+DS221ogRyWvbgFM+J54RkjNAh03x24KOnl6l7xY/PLuGC+a5R7YBOFQK
-         tctyTlvcespzguR1Z0g8iM4ofhaVj6w52SvEa5woR2m8SZlWJkY/juag2dqpH+xhXrKB
-         4N++AcSfRrcrfP6UJaGGZr20BoDgoM4MEBlUssf7GCIYuOnvONFpX4Xet+SkZOcVdIg/
-         9pdQ==
+        b=UT3BqldqmB1FLB5+j/pnjvtmSJbcnP0Vg0Fea6nmLdcvizubxgHJromM8/Hnz9mpru
+         pRhesaJtJVLs7u4K1Ar3fAh59jKhV0POemxGPz3928yvQP2WPzf53x+i/4HB+GSmsepp
+         3mR74hN/vz/hqaFu3YvvPK/RtdIsiXF/qHPaRhKqVyfxy46qahSuSoyAPgtKy4nI187V
+         Q1Q0KkdzcNIUQoSzgFvb2WOn2GJ29EZLJua46NB6qrjNvZRvZ5XisSx//DegB789stpM
+         Z2RKG5TTUqos7wYkciTAfvG6pNjgnUbO7Wlbv11GFte8I0DwMYs7xkOFCbcUsQ3Zq95d
+         S5YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=I9nKnkCGE9FNPzgHKitMkrYh6r6m4r4LkTzDi8kivS4=;
-        b=OGmWdQnVB+mTXvxtZ0lQfWqjnOyqXH15EkasnzK+b9RGB9EX37BkQI3Oj7Dg3nZVe+
-         7aYP2xDSOQE5xcnrjeqFYD5Io8Rel9H9PTY1fEXU7ThQPBVExfMy2P5y0xxJ01ST7CcM
-         W7pYcjB4KX5MHRTXUVBcBBbx63fWM+D5eUp5Yfzmobr+/kf9ailwXVXMGBvAzsnri5tT
-         kaO+qkAA3fKMiV2h1zu2MwZ1Y8gkVH5CWU8UHi38AtE4NhO5Gwc41fWcpDGQvKK1ihss
-         x1dIRmf9rb4G+ydogBqweQEMMq9ISv/zpm7UeQ/GlTdYZV165raTWqOJZL62VNHfiF4T
-         vauA==
+        bh=6Q53XhXX1+k8jqEEE7bCucbh+UJcorj4UXA//S/dLfM=;
+        b=haVi+8fLandb2DgUfx4W1nOlQz5GGUKZgvjcU45F4nKjwGjsvbrqy6LDIDaZVr2VKI
+         FE6RBPXrsP/ktqTFDGNmVtmxMwWX+hno1dxfmz4p08goqMm7x/6oDFfXyF7Z4fb4AChR
+         +tQ0wR0qo7G6cRjsG9yJhfKKmVVFdDi3dcka+eJj/7g4Fa7EvaM01l8ILMMyFycDuaw7
+         OLD7I2N5Uc0px/xKEMHRHIcFxsgklu4BBh+4tTQKAiIbi4ta7sSBQyq1aDf62qxT3til
+         hwDUgEcFdiYcfS/aS3eZqtLOBqglzwu8hx7WRCzOh6XcgveFIIdazXvE7Aex3vK6Cgjr
+         FhzA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q82-v6si1880065qkq.116.2018.10.18.13.06.25
+        by mx.google.com with ESMTPS id o68-v6si3622735qkd.9.2018.10.18.13.08.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 13:06:25 -0700 (PDT)
+        Thu, 18 Oct 2018 13:08:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44268 helo=lists.gnu.org)
+Received: from localhost ([::1]:44277 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDEYq-00008x-G5
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:06:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38803)
+	id 1gDEal-00022r-Lu
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:08:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38610)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEYA-0008BP-Dj
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:05:43 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gDEXh-0007qK-Lt
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:05:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEY7-000839-2T
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:05:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43948)
+	(envelope-from <ehabkost@redhat.com>) id 1gDEXe-0007Z3-Ji
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:05:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43348)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gDEY2-0007ma-Jg; Thu, 18 Oct 2018 16:05:35 -0400
+	id 1gDEXe-0007Vq-9m; Thu, 18 Oct 2018 16:05:10 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
 	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4EE4680F6C;
-	Thu, 18 Oct 2018 20:05:18 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2A3C07F7B2;
+	Thu, 18 Oct 2018 20:05:09 +0000 (UTC)
 Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BAB4A5D75C;
-	Thu, 18 Oct 2018 20:05:17 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8254963BB2;
+	Thu, 18 Oct 2018 20:05:08 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 18 Oct 2018 17:03:45 -0300
-Message-Id: <20181018200422.4358-9-ehabkost@redhat.com>
+Date: Thu, 18 Oct 2018 17:03:43 -0300
+Message-Id: <20181018200422.4358-7-ehabkost@redhat.com>
 In-Reply-To: <20181018200422.4358-1-ehabkost@redhat.com>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 18 Oct 2018 20:05:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 18 Oct 2018 20:05:09 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 08/45] hw/ssi/xilinx_spi: Use DeviceState::realize
- rather than SysBusDevice::init
+Subject: [Qemu-arm] [PULL 06/45] hw/timer/sun4v-rtc: Convert from DPRINTF()
+ macro to trace events
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,58 +110,79 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SIlXQ5sngYHG
+X-TUID: ZCF8yyh4UKwN
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Move from the legacy SysBusDevice::init method to using DeviceState::real=
-ize.
-
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
 Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20181002212522.23303-5-f4bug@amsat.org>
+Message-Id: <20181002212522.23303-3-f4bug@amsat.org>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- hw/ssi/xilinx_spi.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ hw/timer/sun4v-rtc.c  | 13 +++----------
+ hw/timer/trace-events |  4 ++++
+ 2 files changed, 7 insertions(+), 10 deletions(-)
 
-diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
-index 83585bc8b2..3dae303d5b 100644
---- a/hw/ssi/xilinx_spi.c
-+++ b/hw/ssi/xilinx_spi.c
-@@ -319,9 +319,9 @@ static const MemoryRegionOps spi_ops =3D {
-     }
- };
+diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
+index 310523225f..13be94f8da 100644
+--- a/hw/timer/sun4v-rtc.c
++++ b/hw/timer/sun4v-rtc.c
+@@ -14,15 +14,8 @@
+ #include "hw/sysbus.h"
+ #include "qemu/timer.h"
+ #include "hw/timer/sun4v-rtc.h"
++#include "trace.h"
 =20
--static int xilinx_spi_init(SysBusDevice *sbd)
-+static void xilinx_spi_realize(DeviceState *dev, Error **errp)
- {
--    DeviceState *dev =3D DEVICE(sbd);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     XilinxSPI *s =3D XILINX_SPI(dev);
-     int i;
-=20
-@@ -344,8 +344,6 @@ static int xilinx_spi_init(SysBusDevice *sbd)
-=20
-     fifo8_create(&s->tx_fifo, FIFO_CAPACITY);
-     fifo8_create(&s->rx_fifo, FIFO_CAPACITY);
+-//#define DEBUG_SUN4V_RTC
 -
--    return 0;
+-#ifdef DEBUG_SUN4V_RTC
+-#define DPRINTF(fmt, ...)                                       \
+-    do { printf("sun4v_rtc: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) do {} while (0)
+-#endif
+=20
+ #define TYPE_SUN4V_RTC "sun4v_rtc"
+ #define SUN4V_RTC(obj) OBJECT_CHECK(Sun4vRtc, (obj), TYPE_SUN4V_RTC)
+@@ -41,14 +34,14 @@ static uint64_t sun4v_rtc_read(void *opaque, hwaddr a=
+ddr,
+         /* accessing the high 32 bits */
+         val >>=3D 32;
+     }
+-    DPRINTF("read from " TARGET_FMT_plx " val %lx\n", addr, val);
++    trace_sun4v_rtc_read(addr, val);
+     return val;
  }
 =20
- static const VMStateDescription vmstate_xilinx_spi =3D {
-@@ -368,9 +366,8 @@ static Property xilinx_spi_properties[] =3D {
- static void xilinx_spi_class_init(ObjectClass *klass, void *data)
+ static void sun4v_rtc_write(void *opaque, hwaddr addr,
+                              uint64_t val, unsigned size)
  {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
--    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
+-    DPRINTF("write 0x%x to " TARGET_FMT_plx "\n", (unsigned)val, addr);
++    trace_sun4v_rtc_read(addr, val);
+ }
 =20
--    k->init =3D xilinx_spi_init;
-+    dc->realize =3D xilinx_spi_realize;
-     dc->reset =3D xlx_spi_reset;
-     dc->props =3D xilinx_spi_properties;
-     dc->vmsd =3D &vmstate_xilinx_spi;
+ static const MemoryRegionOps sun4v_rtc_ops =3D {
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index ca9ad6321a..75bd3b1042 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -66,5 +66,9 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data=
+, unsigned size) "CMSDK A
+ cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size)=
+ "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size=
+ %u"
+ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
+=20
++# hw/timer/sun4v-rtc.c
++sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " =
+value 0x%" PRIx64
++sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 =
+" value 0x%" PRIx64
++
+ # hw/timer/xlnx-zynqmp-rtc.c
+ xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min,=
+ int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
 --=20
 2.18.0.rc1.1.g3f1ff2140
 

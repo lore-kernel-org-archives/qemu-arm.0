@@ -1,80 +1,80 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2825087wrt;
-        Thu, 18 Oct 2018 13:25:48 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60RHXr1gQe0rY6fs6VU6OZdBAvAwZNNZqb62+up/9z/mfBWyVY7aG+EF3qCG8m+pTphTgmK
-X-Received: by 2002:a0c:e9cc:: with SMTP id q12mr22521709qvo.198.1539894348365;
-        Thu, 18 Oct 2018 13:25:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539894348; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2825634wrt;
+        Thu, 18 Oct 2018 13:26:19 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62UtBoeQPs1B1X2QC0nMe6xQxm70DWcXWDF5D3AGZuc0Uri5PqdtCXxTY9gfbpO57mAcjsb
+X-Received: by 2002:a37:9dd5:: with SMTP id g204-v6mr30150681qke.41.1539894379752;
+        Thu, 18 Oct 2018 13:26:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539894379; cv=none;
         d=google.com; s=arc-20160816;
-        b=OOk/Ewz3idt2mguWznyRoVcoR7qi4yGl64X5Fjga6WPQrD5NQh/vQXqRdXPTS1ltOH
-         LYwLLAxcqHFgnN0zu1o6+0vDRwsaUdPFGlCLxsVy/VFQXEp4SFOBVGgFyrwdQpRZsDEn
-         lHt8Zhhc8FgarmQwVqrQ5mfk1kkLSbp1YHk7nqDkwls4XXis8D0INJMtKaViiOIqq85S
-         3Ow8tiSodaoW1BqsvqYSvsaSmUlWSffwDIVIuBSp0ocJV+TWcnCpd2czSXnT8K6ZUqxK
-         z3+Q//PIRpCSi16H0Sy8ioGotsL/khj21e3MCjNKNalddmDOdAYubEPITNlWl97bEcTj
-         yIoA==
+        b=Aeh+GUHCT74aj0yR56DABfjVztlvvMf36ToymGYe3wQggzoIxSpW3W3b2hL8uwElWA
+         ZT6nda8qMT74DsFoRHCALuzaKWOFCKVuiVMhyBwPScKFRHPDJWhPFWI737NbBEJTD4vD
+         atbc8a2etzq3zcZe5QQQ5AjWdHm0Dw8QZXt65Qtr1cUbbE6v5VGnQC7KnOjwatM4RNUh
+         XclQlCh8fGVN00p4iAP9MMiYlw0TxKGeehBbze+XlMZxYZf5CE/GysE0/Wsn2A5rIpWs
+         3qpXqq6iE1OrAB6KiD2ioCQa+XQB0g6Om4xQPtJnVD+FSFsiG47HC7DOLpfA2x5MsND3
+         Gv0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=meQQPMmhuPGN3puA9i8OWwVZ2w63yFb0ydmy4qwDgEY=;
-        b=lmlA7OqG87+PvExCpdiX9NKUNdml+/YAq5OrlTqcHDfW5+B47S7rkmyq2tBWCPtJsv
-         HIiJUCOeMyza2zx1ePa3nOAmiYjEh9CTdvKbiG6+uhj/ln4+vS4N37ic2rMvLAi6HXiw
-         1jF1I1vPiqpCag0Ftl4eranypk0tbjXHmsdhoCiok3uJzbsbUft4mikC1q7oG0Pd3A7r
-         Tx3FjUaH3kbU4n+Dfm9jKjczbAwROKVZw1WdhgMjSgGHQDaUYADXrntXf5TjQF7NzICR
-         zea0T1jNDq5GAEU7HLkOkG9x8Aj/GQqSWJhMzEYQzi89wzENsDkfDig4SHNyv8LNZQIN
-         RrDQ==
+        bh=RGrjDC8mPziQGW0LtIbvvBWfXMSMaLQ9AEiBJhYwx6c=;
+        b=TjuUf+L1rYnPS9GI4IWug7b4BoYUVnym8+JRCEs4Q4qYaRZ3kR/FMogThqp605hR95
+         2d9SwoVbaPlg/Seyl4Y5/qObFv4Kxb+ya5bsUMVt+aM+sQhlAQCw/lp7NbhSxC/RIHKi
+         /r4dlbgVGj6LdCa/WSs8q1SdOs7Jk5vqxt4/kODF8oKMT7H0yktCaJ+GKtpe4+r8cC3y
+         2wn1p3/9cWqazjDVyfLlLmbcW6n5l+AGl6jefWOzlWFRuuzZspzPEdCDVDvDDiI6pyfM
+         vMFOaOXXrkSA0jZ7hKr4ihellHmT7AzB7ETNcDwqNM++8mKU4MjLhUvy2DY4u7OMX8VL
+         JyMw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n94-v6si118801qtd.110.2018.10.18.13.25.48
+        by mx.google.com with ESMTPS id 3-v6si1045027qth.374.2018.10.18.13.26.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 13:25:48 -0700 (PDT)
+        Thu, 18 Oct 2018 13:26:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44410 helo=lists.gnu.org)
+Received: from localhost ([::1]:44417 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDErb-000163-Lq
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:25:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40004)
+	id 1gDEs7-0001Xq-5C
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:26:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40044)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEaX-0001x7-Cz
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:08:12 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gDEaa-00026H-MQ
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:08:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEaV-0002Xl-T0
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:08:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39066)
+	(envelope-from <ehabkost@redhat.com>) id 1gDEaX-0002a6-SD
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:08:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39110)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gDEaV-0002Wp-FG; Thu, 18 Oct 2018 16:08:07 -0400
+	id 1gDEaX-0002ZH-Hl; Thu, 18 Oct 2018 16:08:09 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 233CE4E91C;
-	Thu, 18 Oct 2018 20:08:06 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7F8D232B669;
+	Thu, 18 Oct 2018 20:08:08 +0000 (UTC)
 Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C3C4818F02;
-	Thu, 18 Oct 2018 20:07:57 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E09BF60160;
+	Thu, 18 Oct 2018 20:08:07 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 18 Oct 2018 17:04:03 -0300
-Message-Id: <20181018200422.4358-27-ehabkost@redhat.com>
+Date: Thu, 18 Oct 2018 17:04:04 -0300
+Message-Id: <20181018200422.4358-28-ehabkost@redhat.com>
 In-Reply-To: <20181018200422.4358-1-ehabkost@redhat.com>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.38]);
-	Thu, 18 Oct 2018 20:08:06 +0000 (UTC)
+	Thu, 18 Oct 2018 20:08:08 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 26/45] memory-device: add and use
- memory_device_get_region_size()
+Subject: [Qemu-arm] [PULL 27/45] memory-device: factor out
+ get_memory_region() from pc-dimm
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,181 +105,218 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dwiOJi51d5/n
+X-TUID: Hl4glWUP3mKY
 
 From: David Hildenbrand <david@redhat.com>
 
-We will factor out get_memory_region() from pc-dimm to memory device code
-soon. Once that is done, get_region_size() can be implemented
-generically and essentially be replaced by
-memory_device_get_region_size (and work only on get_memory_region()).
+The memory region is necessary for plugging/unplugging a memory device.
+The region size (via get_region_size()) is no longer sufficient, as
+besides the alignment, also the region itself is required in order to
+add it to the device memory region of the machine via
+- memory_region_add_subregion
+- memory_region_del_subregion
 
-We have some users of get_memory_region() (spapr and pc-dimm code) that are
-only interested in the size. So let's rework them to use
-memory_device_get_region_size() first, then we can factor out
-get_memory_region() and eventually remove get_region_size() without
-touching the same code multiple times.
+So, to factor out plugging/unplugging of memory devices from pc-dimm
+code, we have to factor out access to the memory region first.
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: David Hildenbrand <david@redhat.com>
-Message-Id: <20181005092024.14344-10-david@redhat.com>
+Message-Id: <20181005092024.14344-11-david@redhat.com>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- include/hw/mem/memory-device.h |  2 ++
- hw/mem/memory-device.c         | 13 ++++++++++---
- hw/mem/pc-dimm.c               | 10 ++++------
- hw/ppc/spapr.c                 | 21 +++++++--------------
- 4 files changed, 23 insertions(+), 23 deletions(-)
+ include/hw/mem/memory-device.h | 15 +++++++++++++++
+ include/hw/mem/pc-dimm.h       |  4 ----
+ hw/mem/nvdimm.c                |  9 ++++++---
+ hw/mem/pc-dimm.c               | 27 ++++++++++++++++++---------
+ 4 files changed, 39 insertions(+), 16 deletions(-)
 
 diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
-index 0474a3dd11..898df3057d 100644
+index 898df3057d..659f38385c 100644
 --- a/include/hw/mem/memory-device.h
 +++ b/include/hw/mem/memory-device.h
-@@ -83,5 +83,7 @@ uint64_t memory_device_get_free_addr(MachineState *ms, const uint64_t *hint,
- void memory_device_plug_region(MachineState *ms, MemoryRegion *mr,
-                                uint64_t addr);
- void memory_device_unplug_region(MachineState *ms, MemoryRegion *mr);
-+uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
-+                                       Error **errp);
+@@ -38,6 +38,11 @@ typedef struct MemoryDeviceState {
+  * mapped into guest physical address space at a certain address. The
+  * address in guest physical memory can either be specified explicitly
+  * or get assigned automatically.
++ *
++ * Conceptually, memory devices only span one memory region. If multiple
++ * successive memory regions are used, a covering memory region has to
++ * be provided. Scattered memory regions are not supported for single
++ * devices.
+  */
+ typedef struct MemoryDeviceClass {
+     /* private */
+@@ -68,6 +73,16 @@ typedef struct MemoryDeviceClass {
+     uint64_t (*get_plugged_size)(const MemoryDeviceState *md, Error **errp);
+     uint64_t (*get_region_size)(const MemoryDeviceState *md, Error **errp);
  
- #endif
-diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index c1e1b81cf2..425830c65c 100644
---- a/hw/mem/memory-device.c
-+++ b/hw/mem/memory-device.c
-@@ -57,10 +57,9 @@ static int memory_device_used_region_size(Object *obj, void *opaque)
-     if (object_dynamic_cast(obj, TYPE_MEMORY_DEVICE)) {
-         const DeviceState *dev = DEVICE(obj);
-         const MemoryDeviceState *md = MEMORY_DEVICE(obj);
--        const MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(obj);
++    /*
++     * Return the memory region of the memory device.
++     *
++     * Called when (un)plugging the memory device, to (un)map the
++     * memory region in guest physical memory, but also to detect the
++     * required alignment during address assignment or when the size of the
++     * memory region is required.
++     */
++    MemoryRegion *(*get_memory_region)(MemoryDeviceState *md, Error **errp);
++
+     /*
+      * Translate the memory device into #MemoryDeviceInfo.
+      */
+diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
+index 99cbd54de7..01436b9f50 100644
+--- a/include/hw/mem/pc-dimm.h
++++ b/include/hw/mem/pc-dimm.h
+@@ -61,9 +61,6 @@ typedef struct PCDIMMDevice {
+  * PCDIMMDeviceClass:
+  * @realize: called after common dimm is realized so that the dimm based
+  * devices get the chance to do specified operations.
+- * @get_memory_region: returns #MemoryRegion associated with @dimm which
+- * is directly mapped into the physical address space of guest. Will not
+- * fail after the device was realized.
+  * @get_vmstate_memory_region: returns #MemoryRegion which indicates the
+  * memory of @dimm should be kept during live migration. Will not fail
+  * after the device was realized.
+@@ -74,7 +71,6 @@ typedef struct PCDIMMDeviceClass {
  
-         if (dev->realized) {
--            *size += mdc->get_region_size(md, &error_abort);
-+            *size += memory_device_get_region_size(md, &error_abort);
-         }
-     }
+     /* public */
+     void (*realize)(PCDIMMDevice *dimm, Error **errp);
+-    MemoryRegion *(*get_memory_region)(PCDIMMDevice *dimm, Error **errp);
+     MemoryRegion *(*get_vmstate_memory_region)(PCDIMMDevice *dimm,
+                                                Error **errp);
+ } PCDIMMDeviceClass;
+diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
+index 1c6674c4ed..49324f3fae 100644
+--- a/hw/mem/nvdimm.c
++++ b/hw/mem/nvdimm.c
+@@ -27,6 +27,7 @@
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/mem/memory-device.h"
  
-@@ -167,7 +166,7 @@ uint64_t memory_device_get_free_addr(MachineState *ms, const uint64_t *hint,
-         uint64_t md_size, md_addr;
- 
-         md_addr = mdc->get_addr(md);
--        md_size = mdc->get_region_size(md, &error_abort);
-+        md_size = memory_device_get_region_size(md, &error_abort);
- 
-         if (ranges_overlap(md_addr, md_size, new_addr, size)) {
-             if (hint) {
-@@ -266,6 +265,14 @@ void memory_device_unplug_region(MachineState *ms, MemoryRegion *mr)
-     memory_region_del_subregion(&ms->device_memory->mr, mr);
+ static void nvdimm_get_label_size(Object *obj, Visitor *v, const char *name,
+                                   void *opaque, Error **errp)
+@@ -118,9 +119,10 @@ static void nvdimm_prepare_memory_region(NVDIMMDevice *nvdimm, Error **errp)
+     nvdimm->nvdimm_mr->align = align;
  }
  
-+uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
-+                                       Error **errp)
-+{
-+    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(md);
-+
-+    return mdc->get_region_size(md, errp);
-+}
-+
- static const TypeInfo memory_device_info = {
-     .name          = TYPE_MEMORY_DEVICE,
-     .parent        = TYPE_INTERFACE,
+-static MemoryRegion *nvdimm_get_memory_region(PCDIMMDevice *dimm, Error **errp)
++static MemoryRegion *nvdimm_md_get_memory_region(MemoryDeviceState *md,
++                                                 Error **errp)
+ {
+-    NVDIMMDevice *nvdimm = NVDIMM(dimm);
++    NVDIMMDevice *nvdimm = NVDIMM(md);
+     Error *local_err = NULL;
+ 
+     if (!nvdimm->nvdimm_mr) {
+@@ -190,11 +192,12 @@ static Property nvdimm_properties[] = {
+ static void nvdimm_class_init(ObjectClass *oc, void *data)
+ {
+     PCDIMMDeviceClass *ddc = PC_DIMM_CLASS(oc);
++    MemoryDeviceClass *mdc = MEMORY_DEVICE_CLASS(oc);
+     NVDIMMClass *nvc = NVDIMM_CLASS(oc);
+     DeviceClass *dc = DEVICE_CLASS(oc);
+ 
+     ddc->realize = nvdimm_realize;
+-    ddc->get_memory_region = nvdimm_get_memory_region;
++    mdc->get_memory_region = nvdimm_md_get_memory_region;
+     dc->props = nvdimm_properties;
+ 
+     nvc->read_label_data = nvdimm_read_label_data;
 diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 130f78d0de..3e43ec8742 100644
+index 3e43ec8742..c9f6ad589e 100644
 --- a/hw/mem/pc-dimm.c
 +++ b/hw/mem/pc-dimm.c
-@@ -161,16 +161,14 @@ static Property pc_dimm_properties[] = {
- static void pc_dimm_get_size(Object *obj, Visitor *v, const char *name,
-                              void *opaque, Error **errp)
+@@ -32,7 +32,7 @@ static int pc_dimm_get_free_slot(const int *hint, int max_slots, Error **errp);
+ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
+                       const uint64_t *legacy_align, Error **errp)
  {
-+    Error *local_err = NULL;
-     uint64_t value;
--    MemoryRegion *mr;
--    PCDIMMDevice *dimm = PC_DIMM(obj);
--    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(obj);
- 
--    mr = ddc->get_memory_region(dimm, errp);
--    if (!mr) {
-+    value = memory_device_get_region_size(MEMORY_DEVICE(obj), &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-         return;
-     }
--    value = memory_region_size(mr);
- 
-     visit_type_uint64(v, name, &value, errp);
- }
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index c078347b66..c08130facb 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3128,12 +3128,10 @@ static void spapr_memory_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     Error *local_err = NULL;
-     sPAPRMachineState *ms = SPAPR_MACHINE(hotplug_dev);
-     PCDIMMDevice *dimm = PC_DIMM(dev);
 -    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
--    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
-     uint64_t size, addr;
-     uint32_t node;
++    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(dimm);
+     Error *local_err = NULL;
+     MemoryRegion *mr;
+     uint64_t addr, align;
+@@ -49,7 +49,7 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
+                             &error_abort);
+     trace_mhp_pc_dimm_assigned_slot(slot);
  
--    size = memory_region_size(mr);
-+    size = memory_device_get_region_size(MEMORY_DEVICE(dev), &error_abort);
- 
-     pc_dimm_plug(dimm, MACHINE(ms), &local_err);
+-    mr = ddc->get_memory_region(dimm, &local_err);
++    mr = mdc->get_memory_region(MEMORY_DEVICE(dimm), &local_err);
      if (local_err) {
-@@ -3169,9 +3167,7 @@ static void spapr_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     const sPAPRMachineClass *smc = SPAPR_MACHINE_GET_CLASS(hotplug_dev);
-     sPAPRMachineState *spapr = SPAPR_MACHINE(hotplug_dev);
-     PCDIMMDevice *dimm = PC_DIMM(dev);
--    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-     Error *local_err = NULL;
--    MemoryRegion *mr;
-     uint64_t size;
-     Object *memdev;
-     hwaddr pagesize;
-@@ -3181,11 +3177,11 @@ static void spapr_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
+         goto out;
      }
+@@ -72,9 +72,11 @@ out:
+ void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
+ {
+     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
++    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(dimm);
+     MemoryRegion *vmstate_mr = ddc->get_vmstate_memory_region(dimm,
+                                                               &error_abort);
+-    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
++    MemoryRegion *mr = mdc->get_memory_region(MEMORY_DEVICE(dimm),
++                                              &error_abort);
+     uint64_t addr;
+ 
+     addr = object_property_get_uint(OBJECT(dimm), PC_DIMM_ADDR_PROP,
+@@ -87,9 +89,11 @@ void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
+ void pc_dimm_unplug(PCDIMMDevice *dimm, MachineState *machine)
+ {
+     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
++    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(dimm);
+     MemoryRegion *vmstate_mr = ddc->get_vmstate_memory_region(dimm,
+                                                               &error_abort);
+-    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
++    MemoryRegion *mr = mdc->get_memory_region(MEMORY_DEVICE(dimm),
++                                              &error_abort);
+ 
+     memory_device_unplug_region(machine, mr);
+     vmstate_unregister_ram(vmstate_mr, DEVICE(dimm));
+@@ -235,12 +239,11 @@ static uint64_t pc_dimm_md_get_addr(const MemoryDeviceState *md)
+ static uint64_t pc_dimm_md_get_region_size(const MemoryDeviceState *md,
+                                            Error **errp)
+ {
+-    /* dropping const here is fine as we don't touch the memory region */
+-    PCDIMMDevice *dimm = PC_DIMM(md);
+-    const PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(md);
++    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(md);
+     MemoryRegion *mr;
  
 -    mr = ddc->get_memory_region(dimm, errp);
--    if (!mr) {
-+    size = memory_device_get_region_size(MEMORY_DEVICE(dimm), &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-         return;
++    /* dropping const here is fine as we don't touch the memory region */
++    mr = mdc->get_memory_region((MemoryDeviceState *)md, errp);
+     if (!mr) {
+         return 0;
      }
--    size = memory_region_size(mr);
+@@ -248,6 +251,12 @@ static uint64_t pc_dimm_md_get_region_size(const MemoryDeviceState *md,
+     return memory_region_size(mr);
+ }
  
-     if (size % SPAPR_MEMORY_BLOCK_SIZE) {
-         error_setg(errp, "Hotplugged memory size must be a multiple of "
-@@ -3257,9 +3253,8 @@ static sPAPRDIMMState *spapr_recover_pending_dimm_state(sPAPRMachineState *ms,
-                                                         PCDIMMDevice *dimm)
++static MemoryRegion *pc_dimm_md_get_memory_region(MemoryDeviceState *md,
++                                                  Error **errp)
++{
++    return pc_dimm_get_memory_region(PC_DIMM(md), errp);
++}
++
+ static void pc_dimm_md_fill_device_info(const MemoryDeviceState *md,
+                                         MemoryDeviceInfo *info)
  {
-     sPAPRDRConnector *drc;
--    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
--    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
--    uint64_t size = memory_region_size(mr);
-+    uint64_t size = memory_device_get_region_size(MEMORY_DEVICE(dimm),
-+                                                  &error_abort);
-     uint32_t nr_lmbs = size / SPAPR_MEMORY_BLOCK_SIZE;
-     uint32_t avail_lmbs = 0;
-     uint64_t addr_start, addr;
-@@ -3325,14 +3320,12 @@ static void spapr_memory_unplug_request(HotplugHandler *hotplug_dev,
-     sPAPRMachineState *spapr = SPAPR_MACHINE(hotplug_dev);
-     Error *local_err = NULL;
-     PCDIMMDevice *dimm = PC_DIMM(dev);
--    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
--    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
-     uint32_t nr_lmbs;
-     uint64_t size, addr_start, addr;
-     int i;
-     sPAPRDRConnector *drc;
+@@ -289,13 +298,13 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
+     dc->props = pc_dimm_properties;
+     dc->desc = "DIMM memory module";
  
--    size = memory_region_size(mr);
-+    size = memory_device_get_region_size(MEMORY_DEVICE(dimm), &error_abort);
-     nr_lmbs = size / SPAPR_MEMORY_BLOCK_SIZE;
+-    ddc->get_memory_region = pc_dimm_get_memory_region;
+     ddc->get_vmstate_memory_region = pc_dimm_get_memory_region;
  
-     addr_start = object_property_get_uint(OBJECT(dimm), PC_DIMM_ADDR_PROP,
+     mdc->get_addr = pc_dimm_md_get_addr;
+     /* for a dimm plugged_size == region_size */
+     mdc->get_plugged_size = pc_dimm_md_get_region_size;
+     mdc->get_region_size = pc_dimm_md_get_region_size;
++    mdc->get_memory_region = pc_dimm_md_get_memory_region;
+     mdc->fill_device_info = pc_dimm_md_fill_device_info;
+ }
+ 
 -- 
 2.18.0.rc1.1.g3f1ff2140
 

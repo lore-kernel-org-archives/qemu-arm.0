@@ -1,82 +1,82 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp1501289wrt;
-        Wed, 17 Oct 2018 17:55:54 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63JTLD36Ze3hu2VSf/tWaK+XCHeFoCyNueid5UIMomL8XMrjPCoLzj1D0kj7gw98re43lCH
-X-Received: by 2002:a0c:819c:: with SMTP id 28mr28677763qvd.7.1539824154572;
-        Wed, 17 Oct 2018 17:55:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539824154; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2011332wrt;
+        Thu, 18 Oct 2018 02:39:15 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63Ny0g1OB7XpnJ/xltXsmnyiMIgrOCEVex/o7VEoRZFr1Q2YOgYmCsyOiPDqkS2EWsmMBWz
+X-Received: by 2002:ac8:2bb9:: with SMTP id m54-v6mr28185555qtm.36.1539855555663;
+        Thu, 18 Oct 2018 02:39:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539855555; cv=none;
         d=google.com; s=arc-20160816;
-        b=DOBtPabhpTjj7mo1mGzrLfmcQplBs2jkVUvca5NfblKFzUlsZhVHMT63w0YsJDDxcO
-         62fbHyZAivpV9qY5daIzmcULm6NlffYfof+EMBhbQjTGugAniGKfEGPJVHzB34OiOumC
-         Kgo16ml4jOhTzId2Gp6X8I08ccgrNLFPQYxfQTytJkoAnzW/Qm90Un5c9EkHxS9q8k1h
-         TjUl+o2HlXckm/ost92VumQcBumpYBQbQGhiu37Z6plddpE6iVRotK8AY4UqPQUawB7L
-         McFYUB+46KFgxTUL1Gr34oOpYDXrjMmPdd1sLgso+zVxHGsIU8xjyto+LHrsWlNKr9DC
-         g9Sg==
+        b=pSrIL8rhm2OMVb1MicKQNvCsZpa+/frja9tpRXGANpebIRdcwlxBqXbf1W2KRdB0Ys
+         51eE+jC/sPGMk/Us9iwZxzc547lRKPC2cvktlCsOZhSiUo8HRChXmgEjWaedpIYvLbYd
+         8AFK6raU8Aq40XxVDnBRe/dmbpLJQVGh8308UIRxc5bNfV+8hPvZybE/67f1iIZbPnEq
+         S3kJx+TJZrufENfsIOfUNrSs2gkJsgzCzLXIZMSlrf1RoSB/AelUbBFFCoK2lrnxjipA
+         Gq8GZ/BGvT7WlGTLVhKQ/GxjRMJCTjQUQmr6VDuwI6oo9tteeQE91XT4Ta7j5TBAd3q8
+         7xuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
-         :references:in-reply-to:message-id:date;
-        bh=p9RQ8/A+f4Kj0r256RgvEX+wmx8NOWpdLMj2PeJIAro=;
-        b=mtnmOz+d2FiTAFcLzSohFdkkEpY/9y54TLkfmOM2q9f/BmFf9GNHGkTU+IqFCGoIKQ
-         oZbpv2qT8VnrtIXrltUJsI06y6UpjXH0P+qyOJElIg6Z/G0AqRsUOrrTOlNq+TAWIy6S
-         9a/OUd5/4eKyElI+vHgQ0DpY/FojhFtY8TLvIjR4GmTcrbK7AWeB6Bz9gcpJbkAQdO3Y
-         Atn6sxQMQTx/wLQFcmtrZEEARiR3YJcJKLfKLLRhVA1PJcpFjlIJBeLhEcR3GpJ1mZ4C
-         RTpYYfFLfuN+ASOE7LZ1c2Hh5xIAJVXMc+ZiCOH8Rkj0Mjjc9i6Yxk+bDhws1L1dLRCH
-         KNKQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:date
+         :thread-index:thread-topic:to:from:message-id;
+        bh=uJgCJZz4dShu+kX90Gy/L/G/laLREKKGuLUL98rzUUc=;
+        b=zFvjexQtGXtFclcl3OEiRgB7dUCPnyEhcefVktG+Nb+CJyu6fdqHzslwMF4GEB+3eo
+         TksY5flXb87C96C17F5dmZQchePfFDtxtAze3joS8CUtDapaMrEkeEOrrenm2tJaatuE
+         47LhM/kavcP9EWOlmbg/2JjGNrn3YcJhgEFVzEOYTb1r3bqqo1BP45niVWDzRcU/SPRf
+         rF3xcUPZSYkcx8827so6sqjRwjS5ZO5z3rgPx2Gl9jIlPXdhVwihwgvE2S+vpOw30apu
+         Aj0Ae/uMqCd8K+R4Ue1doFRdGvhK4Lyq63JMyfVJg0nu+odlYvJ1LKy8bxf7zmzHg/qA
+         Do/w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u17si5448091qvg.55.2018.10.17.17.55.54
+        by mx.google.com with ESMTPS id p31-v6si10422635qtp.114.2018.10.18.02.39.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 17 Oct 2018 17:55:54 -0700 (PDT)
+        Thu, 18 Oct 2018 02:39:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39679 helo=lists.gnu.org)
+Message-ID: <5bc854c3.1c69fb81.68978.0d20SMTPIN_ADDED_BROKEN@mx.google.com>
+X-Google-Original-Message-ID: 9239E1F2-6FF6-4C64-9A3E-C71F0D9F5479
+Received: from localhost ([::1]:41281 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCwbS-0004l9-57
-	for alex.bennee@linaro.org; Wed, 17 Oct 2018 20:55:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43273)
+	id 1gD4lv-0003I4-4O
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 05:39:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42481)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gCwbK-0004ks-L3
-	for qemu-arm@nongnu.org; Wed, 17 Oct 2018 20:55:47 -0400
+	(envelope-from <gengdongjiu@huawei.com>) id 1gD4lj-0003Hv-9v
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 05:39:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gCwbF-0007xU-Px
-	for qemu-arm@nongnu.org; Wed, 17 Oct 2018 20:55:46 -0400
-Received: from mxhk.zte.com.cn ([63.217.80.70]:44800)
+	(envelope-from <gengdongjiu@huawei.com>) id 1gD4lf-0007xh-9t
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 05:39:03 -0400
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2285 helo=huawei.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gCwbF-0007uX-52; Wed, 17 Oct 2018 20:55:41 -0400
-Received: from mse02.zte.com.cn (unknown [10.30.3.21])
-	by Forcepoint Email with ESMTPS id D6FF2DAD85F8D85A40E2;
-	Thu, 18 Oct 2018 08:55:36 +0800 (CST)
-Received: from kjyxapp05.zte.com.cn ([10.30.12.204])
-	by mse02.zte.com.cn with SMTP id w9I0tGBo096076;
-	Thu, 18 Oct 2018 08:55:16 +0800 (GMT-8)
-	(envelope-from peng.hao2@zte.com.cn)
-Received: from mapi (kjyxapp01[null]) by mapi (Zmail) with MAPI id mid14;
-	Thu, 18 Oct 2018 08:55:16 +0800 (CST)
-Date: Thu, 18 Oct 2018 08:55:16 +0800 (CST)
-X-Zmail-TransId: 2b035bc7d9f487de1e1d
-X-Mailer: Zmail v1.0
-Message-ID: <201810180855169525575@zte.com.cn>
-In-Reply-To: <61bc5059-e7b1-3371-66b3-5bc10d06935b@redhat.com>
-References: 1539768207-18209-1-git-send-email-peng.hao2@zte.com.cn,
-	61bc5059-e7b1-3371-66b3-5bc10d06935b@redhat.com
-Mime-Version: 1.0
-From: <peng.hao2@zte.com.cn>
-To: <philmd@redhat.com>
-Content-Type: multipart/mixed;
-	boundary="=====_001_next====="
-X-MAIL: mse02.zte.com.cn w9I0tGBo096076
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 63.217.80.70
-Subject: Re: [Qemu-arm] 
- =?utf-8?q?=5BQemu-devel=5D_=5BPATCH=5D_target/arm_=3A?=
- =?utf-8?q?_add_pvpanic_mmio_device?=
+	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+	id 1gD4le-0007vC-44; Thu, 18 Oct 2018 05:38:59 -0400
+Received: from DGGEMA403-HUB.china.huawei.com (unknown [172.30.72.57])
+	by Forcepoint Email with ESMTP id 82AFE6D6A223B;
+	Thu, 18 Oct 2018 17:38:45 +0800 (CST)
+Received: from DGGEMA523-MBX.china.huawei.com ([169.254.5.214]) by
+	DGGEMA403-HUB.china.huawei.com ([10.3.20.44]) with mapi id
+	14.03.0399.000; Thu, 18 Oct 2018 17:38:41 +0800
+From: gengdongjiu <gengdongjiu@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Thread-Topic: [PATCH RFC v11 0/2] add support for VCPU event states
+Thread-Index: AQHUZU/pyQ+uVrGW0k2ivbQr6T/c16UkwhND
+Date: Thu, 18 Oct 2018 09:38:40 +0000
+References: <1538067351-23931-1-git-send-email-gengdongjiu@huawei.com>,
+	<CAFEAcA97eSpOzU_xJZLFgFBZUCW1Z8mYDMzYsdpK99S5WiPf=A@mail.gmail.com>
+In-Reply-To: <CAFEAcA97eSpOzU_xJZLFgFBZUCW1Z8mYDMzYsdpK99S5WiPf=A@mail.gmail.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Content-Type: multipart/alternative;
+	boundary="_000_9239E1F26FF64C649A3EC71F0D9F5479_"
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 45.249.212.189
+Subject: Re: [Qemu-arm] [PATCH RFC v11 0/2] add support for VCPU event states
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,116 +88,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: "zhengxiang \(A\)" <zhengxiang9@huawei.com>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, Andrew Jones <drjones@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jkvO8vLsT6aM
+X-TUID: CGDd6wowWaTP
+
+--_000_9239E1F26FF64C649A3EC71F0D9F5479_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+Hi peter,
+
+    Thanks very much for this comments and very sorry for my late response =
+due to business trave.
+
+     Yes, the reason that tag the patchset to RFC is that it just  hasn't b=
+een tested on 32-bit. if someone else can test it on 32-bit platform, it wi=
+ll be great.
+
+    I do not have 32-bit environment, so only tested it on 64-bit.
 
 
+On 27 September 2018 at 17:55, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> Support KVM_GET/SET_VCPU_EVENTS to get/set the SError exception state, an=
+d
+> support the state migration.
+>
+> Now the VCPU event only includes the SError exception status, it can be
+> extended if needed. When do migration, If source machine has serror pendi=
+ng,
+> the target machine is also needed to pend this serror regardless of wheth=
+er
+> target machine can support to set the serror syndrome.
+>
+> Note: Because I do not have arm32 environment, I only this patch in the K=
+VM64,
+> not test it in the KVM32. So I need someone else test it in the 32 bit KV=
+M platform.
+> Thanks.
 
---=====_001_next=====
-Content-Type: multipart/alternative;
-	boundary="=====_003_next====="
+Hi; could you clarify why this patchset is tagged RFC, please?
+Is it just that it hasn't been tested on 32-bit ?
 
+thanks
+-- PMM
 
---=====_003_next=====
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
+--_000_9239E1F26FF64C649A3EC71F0D9F5479_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
-PkhpIFBlbmcsCj4KPk9uIDE3LzEwLzIwMTggMTE6MjMsIFBlbmcgSGFvIHdyb3RlOgo+PiBBZGQg
-cHZwYW5pYyBtbWlvIGRldmljZSB0aGF0IGlzIHNpbWlsYXIgdG8geDg2J3MgcHZwYW5pYyBkZXZp
-Y2UuCj4KPj4KPj4gU2lnbmVkLW9mZi1ieTogUGVuZyBIYW8gPHBlbmcuaGFvMkB6dGUuY29tLmNu
-Pgo+PiAtLS0KPj4gIGRlZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsgfCAgMiArLQo+PiAg
-aHcvYXJtL3ZpcnQuYyAgICAgICAgICAgICAgICAgICB8IDIxICsrKysrKysrKysrKwo+PiAgaHcv
-bWlzYy9NYWtlZmlsZS5vYmpzICAgICAgICAgICB8ICAxICsKPj4gIGh3L21pc2MvcHZwYW5pYy1t
-bWlvLmMgICAgICAgICAgfCA3NiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKwo+PiAgaW5jbHVkZS9ody9hcm0vdmlydC5oICAgICAgICAgICB8ICAxICsKPj4gIGluY2x1
-ZGUvaHcvbWlzYy9wdnBhbmljLW1taW8uaCAgfCAxMiArKysrKysrCj4+ICA2IGZpbGVzIGNoYW5n
-ZWQsIDExMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4+ICBjcmVhdGUgbW9kZSAxMDA2
-NDQgaHcvbWlzYy9wdnBhbmljLW1taW8uYwo+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUv
-aHcvbWlzYy9wdnBhbmljLW1taW8uaAo+Pgo+PiBkaWZmIC0tZ2l0IGEvZGVmYXVsdC1jb25maWdz
-L2FybS1zb2Z0bW11Lm1hayBiL2RlZmF1bHQtY29uZmlncy9hcm0tc29mdG1tdS5tYWsKPj4gaW5k
-ZXggMjQyMDQ5MS4uNDcxM2M5MiAxMDA2NDQKPj4gLS0tIGEvZGVmYXVsdC1jb25maWdzL2FybS1z
-b2Z0bW11Lm1hawo+PiArKysgYi9kZWZhdWx0LWNvbmZpZ3MvYXJtLXNvZnRtbXUubWFrCj4+IEBA
-IC00Myw3ICs0Myw3IEBAIENPTkZJR19VU0JfTVVTQj15Cj4+ICBDT05GSUdfVVNCX0VIQ0lfU1lT
-QlVTPXkKPj4gIENPTkZJR19QTEFURk9STV9CVVM9eQo+PiAgQ09ORklHX1ZJUlRJT19NTUlPPXkK
-Pj4gLQo+PiArQ09ORklHX1BWUEFOSUNfTU1JTz15Cj4+ICBDT05GSUdfQVJNMTFNUENPUkU9eQo+
-PiAgQ09ORklHX0E5TVBDT1JFPXkKPj4gIENPTkZJR19BMTVNUENPUkU9eQo+PiBkaWZmIC0tZ2l0
-IGEvaHcvYXJtL3ZpcnQuYyBiL2h3L2FybS92aXJ0LmMKPj4gaW5kZXggYTQ3MjU2Ni4uYWI0MTEy
-OCAxMDA2NDQKPj4gLS0tIGEvaHcvYXJtL3ZpcnQuYwo+PiArKysgYi9ody9hcm0vdmlydC5jCj4+
-IEBAIC0xNDAsNiArMTQwLDcgQEAgc3RhdGljIGNvbnN0IE1lbU1hcEVudHJ5IGExNW1lbW1hcFtd
-ID0gewo+PiAgICAgIFtWSVJUX1VBUlRdID0gICAgICAgICAgICAgICB7IDB4MDkwMDAwMDAsIDB4
-MDAwMDEwMDAgfSwKPj4gICAgICBbVklSVF9SVENdID0gICAgICAgICAgICAgICAgeyAweDA5MDEw
-MDAwLCAweDAwMDAxMDAwIH0sCj4+ICAgICAgW1ZJUlRfRldfQ0ZHXSA9ICAgICAgICAgICAgIHsg
-MHgwOTAyMDAwMCwgMHgwMDAwMDAxOCB9LAo+PiArICAgIFtWSVJUX1BWUEFOSUNfTU1JT10gPSAg
-ICAgICB7IDB4MDkwMjAwMTgsIDB4MDAwMDAwMDIgfSwKPj4gICAgICBbVklSVF9HUElPXSA9ICAg
-ICAgICAgICAgICAgeyAweDA5MDMwMDAwLCAweDAwMDAxMDAwIH0sCj4+ICAgICAgW1ZJUlRfU0VD
-VVJFX1VBUlRdID0gICAgICAgIHsgMHgwOTA0MDAwMCwgMHgwMDAwMTAwMCB9LAo+PiAgICAgIFtW
-SVJUX1NNTVVdID0gICAgICAgICAgICAgICB7IDB4MDkwNTAwMDAsIDB4MDAwMjAwMDAgfSwKPj4g
-QEAgLTc5OCw2ICs3OTksMjQgQEAgc3RhdGljIHZvaWQgY3JlYXRlX2dwaW8oY29uc3QgVmlydE1h
-Y2hpbmVTdGF0ZSAqdm1zLCBxZW11X2lycSAqcGljKQo+PiAgICAgIGdfZnJlZShub2RlbmFtZSk7
-Cj4+ICB9Cj4+Cj4+ICtzdGF0aWMgdm9pZCBjcmVhdGVfcHZwYW5pY19kZXZpY2UoY29uc3QgVmly
-dE1hY2hpbmVTdGF0ZSAqdm1zKQo+PiArewo+PiArICAgIGNoYXIgKm5vZGVuYW1lOwo+PiArICAg
-IGh3YWRkciBiYXNlID0gdm1zLT5tZW1tYXBbVklSVF9QVlBBTklDX01NSU9dLmJhc2U7Cj4+ICsg
-ICAgaHdhZGRyIHNpemUgPSB2bXMtPm1lbW1hcFtWSVJUX1BWUEFOSUNfTU1JT10uc2l6ZTsKPj4g
-Kwo+PiArICAgIHN5c2J1c19jcmVhdGVfc2ltcGxlKCJwdnBhbmljLW1taW8iLCBiYXNlLCBOVUxM
-KTsKPj4gKwo+PiArICAgIG5vZGVuYW1lID0gZ19zdHJkdXBfcHJpbnRmKCIvcHZwYW5pYy1tbWlv
-QCUiIFBSSXg2NCwgYmFzZSk7Cj4+ICsgICAgcWVtdV9mZHRfYWRkX3N1Ym5vZGUodm1zLT5mZHQs
-IG5vZGVuYW1lKTsKPj4gKyAgICBxZW11X2ZkdF9zZXRwcm9wX3N0cmluZyh2bXMtPmZkdCwgbm9k
-ZW5hbWUsCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgImNvbXBhdGlibGUiLCAicHZw
-YW5pYyxtbWlvIik7Cj4+ICsgICAgcWVtdV9mZHRfc2V0cHJvcF9zaXplZF9jZWxscyh2bXMtPmZk
-dCwgbm9kZW5hbWUsICJyZWciLAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-MiwgYmFzZSwgMiwgc2l6ZSk7Cj4+ICsgICAgZ19mcmVlKG5vZGVuYW1lKTsKPj4gKwo+PiArfQo+
-PiArCj4+ICBzdGF0aWMgdm9pZCBjcmVhdGVfdmlydGlvX2RldmljZXMoY29uc3QgVmlydE1hY2hp
-bmVTdGF0ZSAqdm1zLCBxZW11X2lycSAqcGljKQo+PiAgewo+PiAgICAgIGludCBpOwo+PiBAQCAt
-MTU0NCw2ICsxNTYzLDggQEAgc3RhdGljIHZvaWQgbWFjaHZpcnRfaW5pdChNYWNoaW5lU3RhdGUg
-Km1hY2hpbmUpCj4+Cj4+ICAgICAgY3JlYXRlX3BjaWUodm1zLCBwaWMpOwo+Pgo+PiArICAgIGNy
-ZWF0ZV9wdnBhbmljX2RldmljZSh2bXMpOwo+PiArCj4+ICAgICAgY3JlYXRlX2dwaW8odm1zLCBw
-aWMpOwo+Pgo+PiAgICAgIC8qIENyZWF0ZSBtbWlvIHRyYW5zcG9ydHMsIHNvIHRoZSB1c2VyIGNh
-biBjcmVhdGUgdmlydGlvIGJhY2tlbmRzCj4+IGRpZmYgLS1naXQgYS9ody9taXNjL01ha2VmaWxl
-Lm9ianMgYi9ody9taXNjL01ha2VmaWxlLm9ianMKPj4gaW5kZXggNmQ1MGIwMy4uNjMyNjI2MCAx
-MDA2NDQKPj4gLS0tIGEvaHcvbWlzYy9NYWtlZmlsZS5vYmpzCj4+ICsrKyBiL2h3L21pc2MvTWFr
-ZWZpbGUub2Jqcwo+PiBAQCAtNzEsNiArNzEsNyBAQCBvYmotJChDT05GSUdfSU9US0lUX1NZU0NU
-TCkgKz0gaW90a2l0LXN5c2N0bC5vCj4+ICBvYmotJChDT05GSUdfSU9US0lUX1NZU0lORk8pICs9
-IGlvdGtpdC1zeXNpbmZvLm8KPj4KPj4gIG9iai0kKENPTkZJR19QVlBBTklDKSArPSBwdnBhbmlj
-Lm8KPj4gK29iai0kKENPTkZJR19QVlBBTklDX01NSU8pICs9IHB2cGFuaWMtbW1pby5vCj4+ICBv
-YmotJChDT05GSUdfSFlQRVJWX1RFU1RERVYpICs9IGh5cGVydl90ZXN0ZGV2Lm8KPj4gIG9iai0k
-KENPTkZJR19BVVgpICs9IGF1eGJ1cy5vCj4+ICBvYmotJChDT05GSUdfQVNQRUVEX1NPQykgKz0g
-YXNwZWVkX3NjdS5vIGFzcGVlZF9zZG1jLm8KPj4gZGlmZiAtLWdpdCBhL2h3L21pc2MvcHZwYW5p
-Yy1tbWlvLmMgYi9ody9taXNjL3B2cGFuaWMtbW1pby5jCj4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0
-Cj4+IGluZGV4IDAwMDAwMDAuLmM3ZjM3M2UKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9ody9t
-aXNjL3B2cGFuaWMtbW1pby5jCj4+IEBAIC0wLDAgKzEsNzYgQEAKPj4gKyNpbmNsdWRlICJxZW11
-L29zZGVwLmgiCj4+ICsjaW5jbHVkZSAic3lzZW11L3N5c2VtdS5oIgo+PiArI2luY2x1ZGUgInFl
-bXUvbG9nLmgiCj4+ICsjaW5jbHVkZSAiaHcvbWlzYy9wdnBhbmljLW1taW8uaCIKPj4gKwo+PiAr
-I2RlZmluZSBQVlBBTklDX01NSU9fRkVBVF9DUkFTSEVEICAgICAgMAo+PiArCj4+ICsjZGVmaW5l
-IFBWUEFOSUNfTU1JT19DUkFTSEVEICAgICAgICAoMSA8PCBQVlBBTklDX01NSU9fRkVBVF9DUkFT
-SEVEKQo+PiArCj4+ICtzdGF0aWMgdm9pZCBoYW5kbGVfbW1pb19ldmVudChpbnQgZXZlbnQpCj4+
-ICt7Cj4+ICsgICAgc3RhdGljIGJvb2wgbG9nZ2VkOwo+PiArCj4+ICsgICAgaWYgKGV2ZW50ICYg
-flBWUEFOSUNfTU1JT19DUkFTSEVEICYmICFsb2dnZWQpIHsKPj4gKyAgICAgICAgcWVtdV9sb2df
-bWFzayhMT0dfR1VFU1RfRVJST1IsICJwdnBhbmljLW1taW86IHVua25vd24gZXZlbnQgJSN4Llxu
-IiwgZXZlbnQpOwo+PiArICAgICAgICBsb2dnZWQgPSB0cnVlOwo+PiArICAgIH0KPj4gKwo+PiAr
-ICAgIGlmIChldmVudCAmIFBWUEFOSUNfTU1JT19DUkFTSEVEKSB7Cj4+ICsgICAgICAgIHFlbXVf
-c3lzdGVtX2d1ZXN0X3Bhbmlja2VkKE5VTEwpOwo+PiArICAgICAgICByZXR1cm47Cj4+ICsgICAg
-fQo+Cj5JdCB3b3VsZCBiZSBlYXNpZXIgdG8gbWFpbnRhaW4gYSBzaW5nbGUgcHZwYW5pYyBkZXZp
-Y2UuIFRoZXJlIGlzIG5vCj5pbXByb3ZlbWVudCBoZXJlLCBpdCBpcyB0aGUgc2FtZSBoYW5kbGVy
-IHRoYW4gJ3B2cGFuaWMuYycuCj4KPlRoZSBjdXJyZW50IHB2cGFuaWMgZGV2aWNlIGlzIG5vdCB4
-ODYtb25seSwgaXQgb25seSBpbXBsZW1lbnRzIHRoZQo+aW9wb3J0IEFQSS4KQnV0IGluIGxpbnV4
-IGtlcm5lbCB0aGUgZHJpdmVyIG9mIHB2cGFuaWMgZGV2aWNlIGlzIHg4Ni1vbmx5LgoKPklmIHlv
-dSB3YW50IHRvIHVzZSB0aGUgbW1pbyBBUEksIHBsZWFzZSBhZGQgaXQgdGhlcmUuCj5CYXNpY2Fs
-bHkgeW91IGRvbid0IGhhdmUgdG8gd3JpdGUgYW55IG1vcmUgY29kZSB0aGF0IGluIHRoaXMgcGF0
-Y2gsIGJ1dAo+anVzdCBtb3ZlIGl0IGluIHRoZSBwdnBhbmljLmMgZmlsZS4KSSB3YW50IHRvIHVz
-ZSBwdnBhbmljIGRpcmVjdGx5IGluc3RlYWQgb2YgYWRkaW5nIGEgbmV3IGRldmljZSBlbXVsYXRp
-b24uCkJ1dCBJIGNhbid0IHVzZSBpdC4gRmlyc3RseSBwdnBhbmljIHVzZSBpb3BvcnQsIGJ1dCBh
-cm0gZG9uJ3Qgc3VwcG9ydCBpb3BvcnQuCnNlY29uZGx5IHB2cGFuaWMgZGV2aWNlIGlzIGVtdWxh
-dGVkIGFzIGEgaXNhIGJ1cyBkZXZpY2UsIGJ1dCBhcm0gZG9uJ3Qgc3VwcG9ydAppc2EgYnVzLgp0
-aGlyZGx5IHRoZSByZWFsaXphdGlvbiBvZiBwdnBhbmljIGRldmljZSBpcyBkZXBlbmRzIG9uIEFD
-UEkgaW4gbGludXgga2VybmVsIGRyaXZlciBhbmQgaW4gcWVtdQp0aGUgcG9ydCBpbmZvIGlzIHBh
-c3NlZCB0aHJvdWdoIEFDUEkgLCBidXQgSXQgaXMgbm90IG5lY2Vzc2FyeSB0byBjb25maWd1cmUg
-QUNQSSBmb3IgYXJtIGd1ZXN0LiAKClRoYW5rcy4KPgo+VGhhbmtzLAo+Cj5QaGlsLg==
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+</mata><style type=3D"text/css">=0A=
+* {box-sizing:border-box;}=0A=
+body {font-family: Calibri;}=0A=
+</style>
+</head>
+<body>
+<div>Hi peter,<br>
+<br>
+&nbsp;&nbsp;&nbsp; Thanks very much for this comments and very sorry for my=
+ late response due to business trave.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Yes, the reason that tag the patchset to RFC is th=
+at it just&nbsp; hasn't been tested on 32-bit. if someone else can test it =
+on 32-bit platform, it will be great.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; I do not have 32-bit environment, so only tested it on 6=
+4-bit.</div>
+<div></div>
+<div name=3D"AnyOffice-Background-Image" style=3D"border-top:1px solid #B5C=
+4DF;padding:8px; background-image:url(data:image/png;base64,iVBORw0KGgoAAAA=
+NSUhEUgAAAAEAAABBCAYAAAAQTc7lAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfP=
+tRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2&#43;SX8VGAAAAN0lEQ=
+VR42mJ48u7PfyYGBoZ/cOIvKgsb8QeVhZ/4jYX7GwsXpxh&#43;gghTcLoFJ4HmS2wEUlgBBgAj=
+PkNRQlGPfAAAAABJRU5ErkJggg=3D=3D); background-repeat: repeat-x;">
+<div style=3D"word-break:break-all;"><br>
+</div>
+<div><br>
+</div>
+</div>
+<div><!DOCTYPE html><div&nbsp;name=3D"mail_hist_content"&nbsp;style=3D"word=
+-wrap:break-word;">On&nbsp;27&nbsp;September&nbsp;2018&nbsp;at&nbsp;17:55,&=
+nbsp;Dongjiu&nbsp;Geng&nbsp;&lt;gengdongjiu@huawei.com&gt;&nbsp;wrote:<br>
+&gt;&nbsp;Support&nbsp;KVM_GET/SET_VCPU_EVENTS&nbsp;to&nbsp;get/set&nbsp;th=
+e&nbsp;SError&nbsp;exception&nbsp;state,&nbsp;and<br>
+&gt;&nbsp;support&nbsp;the&nbsp;state&nbsp;migration.<br>
+&gt;<br>
+&gt;&nbsp;Now&nbsp;the&nbsp;VCPU&nbsp;event&nbsp;only&nbsp;includes&nbsp;th=
+e&nbsp;SError&nbsp;exception&nbsp;status,&nbsp;it&nbsp;can&nbsp;be<br>
+&gt;&nbsp;extended&nbsp;if&nbsp;needed.&nbsp;When&nbsp;do&nbsp;migration,&n=
+bsp;If&nbsp;source&nbsp;machine&nbsp;has&nbsp;serror&nbsp;pending,<br>
+&gt;&nbsp;the&nbsp;target&nbsp;machine&nbsp;is&nbsp;also&nbsp;needed&nbsp;t=
+o&nbsp;pend&nbsp;this&nbsp;serror&nbsp;regardless&nbsp;of&nbsp;whether<br>
+&gt;&nbsp;target&nbsp;machine&nbsp;can&nbsp;support&nbsp;to&nbsp;set&nbsp;t=
+he&nbsp;serror&nbsp;syndrome.<br>
+&gt;<br>
+&gt;&nbsp;Note:&nbsp;Because&nbsp;I&nbsp;do&nbsp;not&nbsp;have&nbsp;arm32&n=
+bsp;environment,&nbsp;I&nbsp;only&nbsp;this&nbsp;patch&nbsp;in&nbsp;the&nbs=
+p;KVM64,<br>
+&gt;&nbsp;not&nbsp;test&nbsp;it&nbsp;in&nbsp;the&nbsp;KVM32.&nbsp;So&nbsp;I=
+&nbsp;need&nbsp;someone&nbsp;else&nbsp;test&nbsp;it&nbsp;in&nbsp;the&nbsp;3=
+2&nbsp;bit&nbsp;KVM&nbsp;platform.<br>
+&gt;&nbsp;Thanks.<br>
+<br>
+Hi;&nbsp;could&nbsp;you&nbsp;clarify&nbsp;why&nbsp;this&nbsp;patchset&nbsp;=
+is&nbsp;tagged&nbsp;RFC,&nbsp;please?<br>
+Is&nbsp;it&nbsp;just&nbsp;that&nbsp;it&nbsp;hasn't&nbsp;been&nbsp;tested&nb=
+sp;on&nbsp;32-bit&nbsp;?<br>
+<br>
+thanks<br>
+--&nbsp;PMM<br>
+</div>
+<div></div>
+</body>
+</html>
 
-
---=====_003_next=====--
-
---=====_001_next=====--
-
+--_000_9239E1F26FF64C649A3EC71F0D9F5479_--

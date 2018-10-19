@@ -1,173 +1,135 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3514388wrt;
-        Fri, 19 Oct 2018 01:55:27 -0700 (PDT)
-X-Received: by 2002:a65:47cb:: with SMTP id f11-v6mr32387914pgs.166.1539939327010;
-        Fri, 19 Oct 2018 01:55:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539939327; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3640919wrt;
+        Fri, 19 Oct 2018 04:00:11 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63IpLMnzyFtjIqPRf4Vmyy3mvLmuz/uZ9aYjcfsZUkTCvCsVLV8xITVQ1xLNY1Cy83TS/gP
+X-Received: by 2002:ac8:e88:: with SMTP id v8-v6mr11381189qti.140.1539946811718;
+        Fri, 19 Oct 2018 04:00:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539946811; cv=none;
         d=google.com; s=arc-20160816;
-        b=gi8jixOFDZE6FdBAHSGL29fbNCeIMB36A5ZnGh0maXQoBeWM7JyXr0ZB3Yyq6XXaY0
-         dYAaipAGRewFbqM+oIc97GzOnJnlZxAoDP6hIbcTO0pFdhRyHgmN9HslVtzFxwvJQAo3
-         7oBOHBPN7XZQCorH12iIYqF6fWqjiDkILPCk5pV251SYlh2Byfto9YFYoXotmgywxGyq
-         hcyeoFoZLEhqfu1w06LeJ6F7BquzV+ofmrhYuAMDqp2uJVg7UKdo/LTA1IMInQ94+0V5
-         czeVnlsQPhCGo+trQ5w+P6myJT6LiHITzRzOlch2bvlwz2J3f+pLwDipCMIo1y78NctO
-         RRvA==
+        b=pseUKa8ja/KaZ3gdfEVb5D++GoAyHf37DFXj2p/FBsIJLBWvIbT/g/NEIxZ97MskCM
+         HPP9zlBm1nDwDc7WmSPODlkoM+7TCnnn+P9aGWHx1pFmFRLS0ionNks7JhGTnA5DOCzI
+         MX1BdyBUiI2CgoaPCNx1hYHUFFSmd2XNUOkoIfIM532xnSo+XYBvPCVpiszknNYlsgNf
+         Dv61gBJQcjHex0wCZP7+Ylk2OkI5sdna5Ad4/UHjYw9PirGH0oi8AQ/xwID1N6S6NjsN
+         RuYaB5xN2Xvci+HwdorFxdjjd8Toixd7wrHVkH7yQYzoY4oWoMTLMh6VANyo4q+yVOki
+         KmSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=s8pAzoNQqEqxlE9LdJ4WKpDxgUQdzL6rdpfVRqGWPik=;
-        b=HeMHgnwXYqUN+F5V1qGEteduvK6AZHf5EoXdUXAtSpTj9L7m0ZESEI3VU8rDftmO6/
-         4lmTJjKLVUr0HJZc5VyyecabJwkIX31Ek41fk4+/CEoIHghkRZhLwHJf08+rdQ24OoS3
-         DK822VsbVJ8/vM8hlLs08JptgWjEvKe6f8iyx95pci+1xuA5TV4DR3dKEOZRrMawdcNh
-         ElpISvxPJXU/NEXobVmwoB33X4yo8Rs6i8z6qJNMx8V9ZS29kfqmQ7LIJZES6/30Teua
-         lMKOqzfgzR8MFnV61vlieP7OP9yQ9b7CElTR7Nk+VUepDQ8LZ1hUX8V1eNzUmhADPYUN
-         LDog==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=2IKBjxMc9VfsZHo2A6AdOOKGNERd1TaTup/rDsSUqyk=;
+        b=sqD+uXGVGbJhzIT8v650p1HS7F8PVou7nL0fuUoVnbBSPh5nTEzM+LaTIh/04l/q6G
+         r8q57qNlcDRyw/tmMqftBmQ08oZpuT3Qk746NrOtg/e8V9GeJwrARcLloai4xbVIhleW
+         EWWx9ILX6SMzfZ+jWcyXgfYRreozZXODD/t9daC/ky11HxU/tSkhRl3hwgjoYMC3cD2r
+         K6/N6Ydy/3Hm+gKFDgLoV+F5aV/t9lL3YCT5mOEDB5mmdRDXHg0r1CrF3aynE5A1TV95
+         qrhReKbgyutadHe+axaM02PLBGv16b19nwqjmCjPPt4Al3U9T8TV1ZCboqrdtQ2U5F8d
+         XY/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QyZqdqK9;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <hongbo.zhang@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id o5-v6sor11846714plh.18.2018.10.19.01.55.26
+       dkim=fail header.i=@linaro.org header.s=google header.b=khuFJ0YO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id d6-v6si3805333qvb.143.2018.10.19.04.00.11
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Oct 2018 01:55:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 19 Oct 2018 04:00:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QyZqdqK9;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=s8pAzoNQqEqxlE9LdJ4WKpDxgUQdzL6rdpfVRqGWPik=;
-        b=QyZqdqK9u5PuqYp7JwnPyMS2f3DpAYdzABILJH6c5K1n1BAGdoYod0Y6nCw9iLjFtH
-         XUY2OxHN3sF2wYZodg0HOEN0075OWi08tnuPLkFX2CpGPj3aqi9+XBSYmDYKQmKpI9Lq
-         1g6CTIDTRWrdKsR9E1o37ogdi7KybvI1Tvyhg=
+       dkim=fail header.i=@linaro.org header.s=google header.b=khuFJ0YO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48585 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gDSVn-0002Km-3j
+	for alex.bennee@linaro.org; Fri, 19 Oct 2018 07:00:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60064)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gDSVc-0002JM-DP
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 07:00:01 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gDSVZ-0004WA-Vq
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 06:59:59 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44191)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gDSVZ-0004QC-GX
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 06:59:57 -0400
+Received: by mail-ot1-x344.google.com with SMTP id p23so32748185otf.11
+	for <qemu-arm@nongnu.org>; Fri, 19 Oct 2018 03:59:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=2IKBjxMc9VfsZHo2A6AdOOKGNERd1TaTup/rDsSUqyk=;
+	b=khuFJ0YOszy7idsTbhObBRq3BsKMiP5zwcIa7hE8xUMrekx5T0NHhBLsEmBgwM6+WG
+	zfRfUpnw2PtIyNY4t/L5LmuZ/4O9b6V5MrdkWdODjDyf3F7+DkUy1cOX02N8R+JlZH10
+	4XrrrbvYACuiynhF9CFirvAA+TraYol8LhnNE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=s8pAzoNQqEqxlE9LdJ4WKpDxgUQdzL6rdpfVRqGWPik=;
-        b=hh/ooRCFrU6LjkKAY2JWngpSNIjWbFwRnTkEWtTrdR2e040W6ggozE/wbBbRarCGav
-         cS9Zwun8U3tl/65bW8SWYjdoex4MMJZ/z1HormH6J1EcaSlN19BLfCOTobUjxGmEkZ8P
-         ryos3QZ3qCq48CyBBorXlhtxuWDP/KnQ3C5SoelZ/VOcXZR6JgQZwxRHwHTgmaFx82f8
-         IiPAiyw/luszn7kWbFm7RU1rygXJV3vbmceXMfpI5Y4jQ8B3baK48HkUANt3RBfxe35Q
-         JvMYtA+l9TVorQKdzCpoSsO+07dVyD6dGsoi1pE6V8J1tdp/Vum+g1nBXSRtruBoZwQ2
-         x6Nw==
-X-Gm-Message-State: ABuFfohNngJqfmggPr5/oOD2u49D7LQi8EsiWmvoPZyCf0fcN2sDcqzp
-	xNUGwtPrhdc1kLV8CABjLYRJGmPAESNb4SS4
-X-Google-Smtp-Source: ACcGV61d0rHNVewxrzSvvwLO2GxWsgUSTl89SicvWvbWRKMKR/n/q7jR+Uz6uGU3FrRDzGZWkMCJNw==
-X-Received: by 2002:a17:902:1104:: with SMTP id d4-v6mr27083178pla.289.1539939326451;
-        Fri, 19 Oct 2018 01:55:26 -0700 (PDT)
-Return-Path: <hongbo.zhang@linaro.org>
-Received: from localhost.localdomain ([45.56.155.225])
-        by smtp.gmail.com with ESMTPSA id q68-v6sm23758129pfb.160.2018.10.19.01.55.23
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 19 Oct 2018 01:55:25 -0700 (PDT)
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-To: peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: ard.biesheuvel@linaro.org,
-	leif.lindholm@linaro.org,
-	radoslaw.biernacki@linaro.org,
-	Hongbo Zhang <hongbo.zhang@linaro.org>
-Subject: [PATCH v4] Add arm SBSA reference machine
-Date: Fri, 19 Oct 2018 16:55:11 +0800
-Message-Id: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org>
-X-Mailer: git-send-email 2.7.4
-X-TUID: zfW6lYj0v9xl
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=2IKBjxMc9VfsZHo2A6AdOOKGNERd1TaTup/rDsSUqyk=;
+	b=he137YkUsKRN629Yvpmm3apDzkuXHJiy5pZbqhAzJaLJwXFjfVnUFBaJN1HIGdx0jP
+	5qwdKmYUtwiR/OmGP4Oy5bEzDnaKPBHYQmyEEJfmetjDVuwitUIRvsG+LlhzxlosrcTj
+	2rVViQnLyr+cuFoV/17QSoI+okGOvycuM5MtaqZlp+irEcyuy9GJaseGodJfl7rMhHCl
+	cXfNIM3TkVHZQaOAyvCpnOX2eFAKt3eGikbsBjQ1+31waDkCIaxiCJGGDsXNnzbiKCxw
+	D1EJSl/1mazxrJldYdkPGxP+RTAdpIN12S5zWOUhX1Dzw7jg0Af0wOUUNNAogar4COLE
+	gUIw==
+X-Gm-Message-State: ABuFfohh0z9YtrAyKn8jVhF0o1JYXqvR04Xb8W1DuE/cTSlgIJ7nJdce
+	Dlhqs0sDIsKGyt4V6jMRthu6NLG6/pmnNM+hDSh+vQ==
+X-Received: by 2002:a9d:1ea3:: with SMTP id n32mr20815522otn.352.1539946793934;
+	Fri, 19 Oct 2018 03:59:53 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Fri, 19 Oct 2018 03:59:33
+	-0700 (PDT)
+In-Reply-To: <b8a89518794b4436af0c151ed10de4fa@dornerworks.com>
+References: <b8a89518794b4436af0c151ed10de4fa@dornerworks.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 19 Oct 2018 11:59:33 +0100
+Message-ID: <CAFEAcA8FU97+DZH127zNgUwzornSCg2qMX=FDfXV1B40yqgGPA@mail.gmail.com>
+To: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH v2] hw/arm/boot: Increase compliance with
+ kernel arm64 boot protocol
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andre Przywara <andre.przywara@arm.com>,
+	Julien Grall <julien.grall@arm.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Na5EBISvcoMv
 
-For the Aarch64, there is one machine 'virt', it is primarily meant to
-run on KVM and execute virtualization workloads, but we need an
-environment as faithful as possible to physical hardware,  to support
-firmware and OS development for pysical Aarch64 machines.
-
-See the patch commit comments for the features description.
-
-V4 changes:
- - rebased to v3.0.0
- - removed timer, uart, rtc, *hci device tree nodes
-   (others were removerd in v3)
- - other minore codes clean up, mainly unsed header files, comments etc.
-
-V3 changes:
- - rename the platform 'sbsa-ref'
- - move all the codes to a separate file sbsa-ref.c
- - remove paravirtualized fw_cfg device
- - do not supply ACPI tables, since firmware will do it
- - supply only necessary DT nodes
- - and other minor code clean up
+On 16 October 2018 at 16:06, Stewart Hildebrand
+<Stewart.Hildebrand@dornerworks.com> wrote:
+> "The Image must be placed text_offset bytes from a 2MB aligned base
+> address anywhere in usable system RAM and called there."
+>
+> For the virt board, we write our startup bootloader at the very
+> bottom of RAM, so that bit can't be used for the image. To avoid
+> overlap in case the image requests to be loaded at an offset
+> smaller than our bootloader, we increment the load offset to the
+> next 2MB.
+>
+> This fixes a boot failure for Xen AArch64.
+>
+> Signed-off-by: Stewart Hildebrand <stewart.hildebrand@dornerworks.com>
+> ---
 
 
-Well, there are still pending issues, you can find my whole tree here:
-http://git.linaro.org/people/hongbo.zhang/qemu-enterprise.git/log/?h=sbsa-v3.0.0
+Applied to target-arm.next, thanks. I rephrased the comment a bit,
+since this isn't a virt-board specific issue.
 
- workaround: add fw_cfg, smbios and acpi
- workaround: add device tree nodes back
- hw/arm: Add arm SBSA reference machine
- Revert "target/arm: Implement new do_transaction_failed hook"
- Revert "device_tree: Increase FDT_MAX_SIZE to 1 MiB"
-
-there are two commit reverts I have to do to boot system currently, these block not only my new 'sbsa-ref', but also the 'virt'.
-(other two workarounds can be ignored, they are just for temp using before firmware porting is fully finished)
-
-I am not saying the comments themselves have problem, maybe firmware need to be adapted accordingly too. But before they are fixed, I just simply revert them to not block my run.
-(And, I've mentioned in v3 list that there are still problem of booting SMP too, but I won't mention it here this time, otherwise this patch/cover letter becomes too complicated -- at least we can boot one core, I can fix/discuss it later separately.)
-
-Steps to reproduce issues:
-1. Compile ARMTF
-make CROSS_COMPILE=aarch64-linux-gnu- PLAT=qemu all DEBUG=1
-
-2. Compile edk2
-make -C BaseTools
-. edksetup.sh
-export GCC49_AARCH64_PREFIX=aarch64-linux-gnu-
-build -a AARCH64 -t GCC49 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
-
-3. Run QEMU
-3a. copy or link ARMTF and edk2 images to the directory where you want to launch QEMU
-bl1.bin -> /home/hongbo/work/arm-trusted-firmware/build/qemu/debug/bl1.bin*
-bl2.bin -> /home/hongbo/work/arm-trusted-firmware/build/qemu/debug/bl2.bin*
-bl31.bin -> /home/hongbo/work/arm-trusted-firmware/build/qemu/debug/bl31.bin*
-bl33.bin -> /home/hongbo/work/edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC49/FV/QEMU_EFI.fd
-
-3b. command to launch QEMU
-command1 to load a whole system
-qemu-system-aarch64 -machine virt,secure=on,virtualization=on -cpu cortex-a57 -m 1024 -bios bl1.bin -semihosting -serial stdio -device virtio-scsi-device,id=scsi -drive file=../qemu-imgs/deb9_arm64_netinst_uefi.raw,id=rootimg,if=none -device scsi-hd,drive=rootimg -netdev user,id=unet -device virtio-net-device,netdev=unet -net user
-
-or command2 simply load a kernel
-qemu-system-aarch64 -machine virt,secure=on,virtualization=on -cpu cortex-a57 -m 1024 -bios bl1.bin -semihosting -serial stdio -kernel Image -initrd xxx -append "root=/dev/xxx console=ttyAMA0"
-
-4a. system halt with error message
-ASSERT_EFI_ERROR (Status = Not Found)
-ASSERT [ResetSystemRuntimeDxe] /home/hongbo/work/edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC49/AARCH64/MdeModulePkg/Universal/ResetSystemRuntimeDxe/ResetSystemRuntimeDxe/DEBUG/AutoGen.c(370): !EFI_ERROR (Status)
-
-4b. Revert "device_tree: Increase FDT_MAX_SIZE to 1 MiB"
-command1 can run further to halt at nother place, see 5a and 5b
-command2 can load kernel successfully
-
-5a. 2nd system halt with message
-Synchronous Exception at 0x0000000078A152F0
-PC 0x000078A152F0 (0x000078A00000+0x000152F0) [ 0] ArmVeNorFlashDxe.dll
-PC 0x000078A152A0 (0x000078A00000+0x000152A0) [ 0] ArmVeNorFlashDxe.dll
-PC 0x000078A11DF0 (0x000078A00000+0x00011DF0) [ 0] ArmVeNorFlashDxe.dll
-[...snip...]
-PC 0x0000600088C4
-PC 0x000060008230
-PC 0x580B24C2580B24A1
-
-Recursive exception occurred while dumping the CPU state
-
-5b Revert "target/arm: Implement new do_transaction_failed hook"
-then no halt, command1 can boot OS successfully
-
-Hongbo Zhang (1):
-  hw/arm: Add arm SBSA reference machine
-
- hw/arm/Makefile.objs  |   2 +-
- hw/arm/sbsa-ref.c     | 937 ++++++++++++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/virt.h |   2 +
- 3 files changed, 940 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/sbsa-ref.c
-
--- 
-2.7.4
+-- PMM

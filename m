@@ -1,122 +1,107 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4027797wrt;
-        Fri, 19 Oct 2018 09:06:04 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV61s0SZQYR+f9hDJMWCVj/pQivYCD/Z2NI67x/tjTE5Z+K4pvzjjqioJ4vVkt1K5QnOWIPF0
-X-Received: by 2002:ad4:424c:: with SMTP id l12mr23337760qvq.118.1539965164742;
-        Fri, 19 Oct 2018 09:06:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539965164; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4269093wrt;
+        Fri, 19 Oct 2018 12:29:52 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV637KQPnDCfR0XBL3kv4beOH8qJHZb7ifQ0lYjMvDu9DSnEpVpRqnfgfF6JPHyxnRr0vPk6d
+X-Received: by 2002:a37:7ec7:: with SMTP id z190-v6mr7184381qkc.20.1539977392079;
+        Fri, 19 Oct 2018 12:29:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539977392; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQJieQZiVoRiu2jlpDcarfdA2bVY0Wngsu/3AtOhdsW8w+geDS/rLJ5CN0ubw8joDN
-         2U91fhLEVIhKUcRcaQAlBrqf7dyrcIL24UmFZHgGW81+WkU9OA7NaRJmuQvTx69Bb5Y5
-         zJy8yTFD3CDdu9pRIO7gX4iAo3bMmYfsHQxE0Rs1h/dMN7rcoouREas41Rsv/grNKgh7
-         HbBeVXm98NKDxGrgZEmshrUuTWlABZWb6Sr+kvmEgCZ/ZfhxbBeC/IC0tTp56UQfvt1A
-         fSMjJ5hPwHJh9dnl5qqqTtPuQqbbTqz0DaV+aGNgC/UrYylfc8VzDn+Z+FB4iOINiJgQ
-         qtKA==
+        b=Cu9YstaFZy/bYYoSytDpXKCnB0jUC5/oFdVq5+rdDvPuw9Ra7jP3qaHSdz4b9Ey0Q/
+         ZoKi+kMm/LHlouqfKuBW/HvOkYPHJOmzK8x1zW0WatXK093GB3bK4zDibgZfaDHnuH0w
+         5D4o1hjWA6SmSLOG5C3ns+KSrkF5IbXMrqEwEkKTOTzORXoeylSyPN0RXIDgnO9yxrMc
+         71UAA5oCGP+4XTiUSdWwYlQeb2ZDqz0H6Fsrt6jOhPuvoqzMEy3h5Fdkn2zJlFCU3mso
+         losYNMKX4CuIc4Jh7S+bg5174TfyJ2GbMm/0UxTglFSJRRTUEfV6wMTznpBpes1nn6ya
+         WQYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=mmj41YrDAPuLSIUX1O8MBB4qkq/6M3ewGhPCoIGKIEU=;
-        b=wc3YenxiSfk1l4iSiHAPxUosLaTLKL0cl16TuOK2yoL//hj7o+TIMLAgWhMKVKVXxD
-         2KSjtOVTKQGQi80jcdfk6KuDn3HfNrO2CeJ9SWRo7uOuI1s7Y+a3nJXNYk5vMPJrmRRZ
-         bva8XiSnrKzw7jYvDhZ1IvFxDinc/tp+jjPbjGX1Jrsz9jHhLnBJJbOBPLJNe4BZO+ty
-         eoEBKzSgOYxsyuFeHoSD+gyAWj2d2tAcG60z83a7iqpRzMXP14r+XOlqvjV1Pa+jw8Ry
-         FyGCtpYcnv0Iyk/3th6kfx5e50cheiY6vCHZSfcAeL+VCwPzKhyVNKxGnvjyzSA78b1u
-         tsGQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=U9OHKHb1r3NrWD2xUGwW5NEwhuYoka4RFeKE+96Zocs=;
+        b=ZXNO59wMPwnmERaYFTa+BEHvZvAgtzsPct4BSz3Mfr5K3A1OwnaCYGvl6Ers/P2woY
+         xWlgO11B1qiqqk7VLFwfddNrU5W1LbvVJnYDLcTaWr4YM27bhWJNAX7Fc7f2RLsW3vzd
+         eb0i1XmVA1ygDqn0TIljOkwCghxVvmeYv1nOFnG4mNBGwED5FXil+zU6ZssLXpHB3aCo
+         7jP6Nsnx0cG+94KYQ3qTuW45ABhrBPqgQMUgjeARkhteqnjBxPAkep1/uenFuc7Fy7TN
+         Decq9zioyszL0cHfsP92khHM0p15o3oaptXAFxoVfxwDJvvXm9184iuW1XEfWIRaeNoQ
+         G/9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b="M3/6Ou3m";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=xvhLgnG1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j34si4187390qvc.121.2018.10.19.09.06.04
+        by mx.google.com with ESMTPS id d13-v6si5744917qki.23.2018.10.19.12.29.51
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Oct 2018 09:06:04 -0700 (PDT)
+        Fri, 19 Oct 2018 12:29:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51403 helo=lists.gnu.org)
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b="M3/6Ou3m";
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=xvhLgnG1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52363 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDXHo-0001C8-81
-	for alex.bennee@linaro.org; Fri, 19 Oct 2018 12:06:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55710)
+	id 1gDaT1-0005cH-7C
+	for alex.bennee@linaro.org; Fri, 19 Oct 2018 15:29:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35490)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gDXDm-0006W0-Fb
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 12:02:00 -0400
+	(envelope-from <cota@braap.org>) id 1gDaSs-0005cB-Fk
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 15:29:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gDXDa-0005QK-Gz
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 12:01:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:32850)
+	(envelope-from <cota@braap.org>) id 1gDaSp-0008KJ-7R
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 15:29:42 -0400
+Received: from out3-smtp.messagingengine.com ([66.111.4.27]:43001)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gDXDa-0005Or-7h; Fri, 19 Oct 2018 12:01:42 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C6AA88830A;
-	Fri, 19 Oct 2018 16:01:39 +0000 (UTC)
-Received: from [10.36.112.30] (ovpn-112-30.ams2.redhat.com [10.36.112.30])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2A14B751E0;
-	Fri, 19 Oct 2018 16:01:20 +0000 (UTC)
-To: "Emilio G. Cota" <cota@braap.org>
+	(Exim 4.71) (envelope-from <cota@braap.org>)
+	id 1gDaSo-0008EY-TY; Fri, 19 Oct 2018 15:29:39 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id E634921EF0;
+	Fri, 19 Oct 2018 15:29:37 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+	by compute4.internal (MEProxy); Fri, 19 Oct 2018 15:29:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
+	date:from:to:cc:subject:message-id:references:mime-version
+	:content-type:in-reply-to; s=mesmtp; bh=U9OHKHb1r3NrWD2xUGwW5NEw
+	huYoka4RFeKE+96Zocs=; b=M3/6Ou3m6KWB+EuMccB7sS9a0t1dch9HJRs0nnjh
+	LksGqwbOtZ3Wc9NHpl3+bqLRnrp2RiRjAJBgr9eQXpXJ92eGH1kOzyPjhNKpVKCH
+	NJwFsjtN6kSRetRCw73HduLpUv89FDebiS87XGTdQMdRJV4uvVXWPRWJ1BnUh90l
+	z+w=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=U9OHKH
+	b1r3NrWD2xUGwW5NEwhuYoka4RFeKE+96Zocs=; b=xvhLgnG1Z5T7yJNyr4U027
+	/N+b0lgcN1St/Ki10Mwj6obCPxxeu5mTwLxez/aAiP5KeIy2Q78iVi2fRRwa2Slz
+	ATil3noaFuFogC8z9H4cv2Kn6yHQyOfFP08HvUQ5ELkD31ZE2pV6V0Dpr4EGZEOn
+	ZPaCeqh6bnK3UGULQjAKHaYPzE3yLoH95tAB48L24JiYBRHILBBsXgUUc1cR7a2S
+	myMq17dhgQSXxbN3zaC1UdvrDmZ+nA3YFrO1CiRMWuttbMNicqbcqQMkCwKzldLi
+	OBC5iF1LlBTzfOk8LYpKzDwMqcC9yGyzWiGhmdSM1kA/RPD4FSxUcJbB39LanwzQ
+	==
+X-ME-Sender: <xms:nTDKW7gl9dKQP1ppgtYC4qrMpmKPBBP2JSmrONecDgo9JqnMuPPWNQ>
+X-ME-Proxy: <xmx:nTDKW42wDWfmLVV1807uuZmVZ9XkheYh01tytSnMjVYvi9KuQetTrg>
+	<xmx:nTDKW-QXbgUAsExR9i25VraXBE6XSqlkcN2CMtednBEpXLbbSqZjnw>
+	<xmx:nTDKW0uCvzOtPkahyzscM8H2CwPyGvPh3l-Inn6H726XwWHkIl8Qgg>
+	<xmx:nTDKW8Lhah12-LC460kJSztX0npJ8JV3XZdMyMNvwoQHD8Fowy059Q>
+	<xmx:nTDKW4c1sJXPUEwRxFWceJss7POTAmjNebLNUZcH-yBy_gnxWIbt7w>
+	<xmx:oTDKW4TwsyiLX_EKlKpo87NEADIzJBHU4CmRPoGqwIq-QKn6xJQocA>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 5171AE489B;
+	Fri, 19 Oct 2018 15:29:33 -0400 (EDT)
+Date: Fri, 19 Oct 2018 15:29:32 -0400
+From: "Emilio G. Cota" <cota@braap.org>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20181019192932.GA17761@flamenco>
 References: <20181019010625.25294-1-cota@braap.org>
 	<f7067d72-3b2a-9e6e-4636-f18ac1cf5202@redhat.com>
 	<20181019145018.GB7279@flamenco>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
-	CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
-	hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
-	DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
-	P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
-	Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
-	UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
-	tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
-	wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0f
-	UGFvbG8gQm9uemluaSA8Ym9uemluaUBnbnUub3JnPsLBTQQTAQIAIwUCVEJ7AwIbAwcLCQgH
-	AwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEH4VEAzNNmmxNcwOniaZVLsuy1lW/ntYCA0Caz0i
-	sHpmecK8aWlvL9wpQCk4GlOX9L1emyYXZPmzIYB0IRqmSzAlZxi+A2qm9XOxs5gJ2xqMEXX5
-	FMtUH3kpkWWJeLqe7z0EoQdUI4EG988uv/tdZyqjUn2XJE+K01x7r3MkUSFz/HZKZiCvYuze
-	VlS0NTYdUt5jBXualvAwNKfxEkrxeHjxgdFHjYWhjflahY7TNRmuqPM/Lx7wAuyoDjlYNE40
-	Z+Kun4/KjMbjgpcF4Nf3PJQR8qXI6p3so2qsSn91tY7DFSJO6v2HwFJkC2jU95wxfNmTEUZc
-	znXahYbVOwCDJRuPrE5GKFd/XJU9u5hNtr/uYipHij01WXal2cce1S5mn1/HuM1yo1u8xdHy
-	IupCd57EWI948e8BlhpujUCU2tzOb2iYS0kpmJ9/oLVZrOcSZCcCl2P0AaCAsj59z2kwQS9D
-	du0WxUs8waso0Qq6tDEHo8yLCOJDzSz4oojTtWe4zsulVnWV+wu70AioemAT8S6JOtlu60C5
-	dHgQUD1Tp+ReXpDKXmjbASJx4otvW0qah3o6JaqO79tbDqIvncu3tewwp6c85uZd48JnIOh3
-	utBAu684nJakbbvZUGikJfxd887ATQRUQnHuAQgAx4dxXO6/Zun0eVYOnr5GRl76+2UrAAem
-	Vv9Yfn2PbDIbxXqLff7oyVJIkw4WdhQIIvvtu5zH24iYjmdfbg8iWpP7NqxUQRUZJEWbx2CR
-	wkMHtOmzQiQ2tSLjKh/cHeyFH68xjeLcinR7jXMrHQK+UCEw6jqi1oeZzGvfmxarUmS0uRuf
-	fAb589AJW50kkQK9VD/9QC2FJISSUDnRC0PawGSZDXhmvITJMdD4TjYrePYhSY4uuIV02v02
-	8TVAaYbIhxvDY0hUQE4r8ZbGRLn52bEzaIPgl1p/adKfeOUeMReg/CkyzQpmyB1TSk8lDMxQ
-	zCYHXAzwnGi8WU9iuE1P0wARAQABwsEzBBgBAgAJBQJUQnHuAhsMAAoJEH4VEAzNNmmxp1EO
-	oJy0uZggJm7gZKeJ7iUpeX4eqUtqelUw6gU2daz2hE/jsxsTbC/w5piHmk1H1VWDKEM4bQBT
-	uiJ0bfo55SWsUNN+c9hhIX+Y8LEe22izK3w7mRpvGcg+/ZRG4DEMHLP6JVsv5GMpoYwYOmHn
-	plOzCXHvmdlW0i6SrMsBDl9rw4AtIa6bRwWLim1lQ6EM3PWifPrWSUPrPcw4OLSwFk0CPqC4
-	HYv/7ZnASVkR5EERFF3+6iaaVi5OgBd81F1TCvCX2BEyIDRZLJNvX3TOd5FEN+lIrl26xecz
-	876SvcOb5SL5SKg9/rCBufdPSjojkGFWGziHiFaYhbuI2E+NfWLJtd+ZvWAAV+O0d8vFFSvr
-	iy9enJ8kxJwhC0ECbSKFY+W1eTIhMD3aeAKY90drozWEyHhENf4l/V+Ja5vOnW+gCDQkGt2Y
-	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
-	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
-	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <6190036c-cd1f-4549-9b7e-9e7913c972d4@redhat.com>
-Date: Fri, 19 Oct 2018 18:01:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	<6190036c-cd1f-4549-9b7e-9e7913c972d4@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20181019145018.GB7279@flamenco>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 19 Oct 2018 16:01:41 +0000 (UTC)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6190036c-cd1f-4549-9b7e-9e7913c972d4@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 66.111.4.27
 Subject: Re: [Qemu-arm] [RFC v3 0/56] per-CPU locks
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -154,41 +139,57 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2saBLUwyg99i
+X-TUID: KQbaMx1J7JXq
 
-On 19/10/2018 16:50, Emilio G. Cota wrote:
-> On Fri, Oct 19, 2018 at 08:59:24 +0200, Paolo Bonzini wrote:
->> On 19/10/2018 03:05, Emilio G. Cota wrote:
->>> I'm calling this series a v3 because it supersedes the two series
->>> I previously sent about using atomics for interrupt_request:
->>>   https://lists.gnu.org/archive/html/qemu-devel/2018-09/msg02013.html
->>> The approach in that series cannot work reliably; using (locked) atomics
->>> to set interrupt_request but not using (locked) atomics to read it
->>> can lead to missed updates.
->>
->> The idea here was that changes to protected fields are all followed by
->> kick.  That may not have been the case, granted, but I wonder if the
->> plan is unworkable.
+On Fri, Oct 19, 2018 at 18:01:18 +0200, Paolo Bonzini wrote:
+> On 19/10/2018 16:50, Emilio G. Cota wrote:
+> > On Fri, Oct 19, 2018 at 08:59:24 +0200, Paolo Bonzini wrote:
+> >> On 19/10/2018 03:05, Emilio G. Cota wrote:
+> >>> I'm calling this series a v3 because it supersedes the two series
+> >>> I previously sent about using atomics for interrupt_request:
+> >>>   https://lists.gnu.org/archive/html/qemu-devel/2018-09/msg02013.html
+> >>> The approach in that series cannot work reliably; using (locked) atomics
+> >>> to set interrupt_request but not using (locked) atomics to read it
+> >>> can lead to missed updates.
+> >>
+> >> The idea here was that changes to protected fields are all followed by
+> >> kick.  That may not have been the case, granted, but I wonder if the
+> >> plan is unworkable.
+> > 
+> > I suspect that the cpu->interrupt_request+kick mechanism is not the issue,
+> > otherwise master should not work--we do atomic_read(cpu->interrupt_request)
+> > and only if that read != 0 we take the BQL.
+> > 
+> > My guess is that the problem is with other reads of cpu->interrupt_request,
+> > e.g. those in cpu_has_work. Currently those reads happen with the
+> > BQL held, and updates to cpu->interrupt_request take the BQL. If we drop
+> > the BQL from the setters to instead use locked atomics (like in the
+> > aforementioned series), those BQL-protected readers might miss updates.
 > 
-> I suspect that the cpu->interrupt_request+kick mechanism is not the issue,
-> otherwise master should not work--we do atomic_read(cpu->interrupt_request)
-> and only if that read != 0 we take the BQL.
+> cpu_has_work is only needed to handle the processor's halted state (or
+> is it?).  If it is, OR+kick should work.
 > 
-> My guess is that the problem is with other reads of cpu->interrupt_request,
-> e.g. those in cpu_has_work. Currently those reads happen with the
-> BQL held, and updates to cpu->interrupt_request take the BQL. If we drop
-> the BQL from the setters to instead use locked atomics (like in the
-> aforementioned series), those BQL-protected readers might miss updates.
+> > Given that we need a per-CPU lock anyway to remove the BQL from the
+> > CPU loop, extending this lock to protect cpu->interrupt_request is
+> > a simple solution that keeps the current logic and allows for
+> > greater scalability.
+> 
+> Sure, I was just curious what the problem was.  KVM uses OR+kick with no
+> problems.
 
-cpu_has_work is only needed to handle the processor's halted state (or
-is it?).  If it is, OR+kick should work.
+I never found exactly where things break. The hangs happen
+pretty early when booting a large (-smp > 16) x86_64 Ubuntu guest.
+Booting never completes (ssh unresponsive) if I don't have the
+console output (I suspect the console output slows things down
+enough to hide some races). I only see a few threads busy:
+a couple of vCPU threads, and the I/O thread.
 
-> Given that we need a per-CPU lock anyway to remove the BQL from the
-> CPU loop, extending this lock to protect cpu->interrupt_request is
-> a simple solution that keeps the current logic and allows for
-> greater scalability.
+I didn't have time to debug any further, so I moved on
+to an alternative approach.
 
-Sure, I was just curious what the problem was.  KVM uses OR+kick with no
-problems.
+So it is possible that it was my implementation, and not the approach,
+what was at fault :-)
 
-Paolo
+Thanks,
+
+		E.

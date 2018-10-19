@@ -1,77 +1,97 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp6120635wrt;
-        Tue, 16 Oct 2018 09:02:56 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV60WrCRrmh6xKjzi9eH48+TW39P59zi3Rjx8ZrVuIADFa1hKKRupVJiKqvAJkekG8Qq2dYrm
-X-Received: by 2002:a37:19cd:: with SMTP id 74-v6mr20640967qkz.253.1539705776846;
-        Tue, 16 Oct 2018 09:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539705776; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3130523wrt;
+        Thu, 18 Oct 2018 18:44:30 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60XrtXo4AWOZ+zDj8oiEavUBuTsVG5vA9m7agg8Vg9Cn3x5vqf+wPMSZN4q3bhc+4DH9rBV
+X-Received: by 2002:a37:e114:: with SMTP id c20-v6mr30852336qkm.75.1539913470492;
+        Thu, 18 Oct 2018 18:44:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539913470; cv=none;
         d=google.com; s=arc-20160816;
-        b=lwZQYPqda2AR7R2AIdi8PowFJqrpnwxfNxhSgr1qweidjYJi5vGgUWe7g4HX0UVIAt
-         I+cFmq8LsMpcNt0r0dnv4gD207uWZtuSSWJTToHhVYySMl1YNgqhgh3bLhoAsXU8tJI1
-         8449Hj8IE2PpxuuEgXUxBAXikBAV+Y/RfaG95NLjuISIU8Ucb+5EGktK6NWl+v+cCcsi
-         gQdWorWnd4rHfD/ZSUWzYLjitEehpV/P4ku1iN5hGyefrTqhqWCjqY31Uj8gCdAHp3eh
-         +fDr909cZCkN2nHhFKp2wt/7Go197n5/U2QsW/hirYIqgSkYQZsiXixqXn3dJ7wI+T17
-         LKrA==
+        b=vF3zdxxYWdSVif+vQuuHShPT7nzrHUEIRBOrBg7LNQ+//f6X/Xhs5PnGZXiiY9gmKK
+         cX0iTQxlBxaLHiZxti0fmCcA+TrH3G1JwOiVmZJUQ9e4bZFWzdln5hZYGb9iUlAZzazM
+         6pj8nxn/ijv1+fuONdsTwK5B6NBLZleSBrVr/OU3FDIFrJjw5IHeOaMtz7fPVAmg2Qmy
+         Jn0Ejo1xNb7c329LPsDtGR02JCeItdXmrfVR3D9P1R8KzbykYugbLtjSaNgBDz9JJwPe
+         wtYi9otEEr5OzcYqUxiaIr8+jw3GAS+GuJ9Erdsks++9SphXabEaht0Zk3tCDhAmpPOB
+         rYpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=Sz+bnrWbnMMJU3QRC0IdTqirq4FzXBuI7O3CR6FooqA=;
-        b=xmQ4n2VcdAnISmw8UMlgqLGZsTmTf+BmTrymzM2xSuxgvPrl0vexQcewhvIyh9xhDf
-         5gEeV/0Qe3T++b24vwBQyjvfUVG2b69zTIpH1d5H7PNY62WUm1JYBxNvk9Vzki+/lALU
-         vPmmf7fC3mbuXFrmjXoMUl1X/w0ar4niEHfKRvTJr7K2iomsILBekb2EoilVB+mpujDa
-         tF9f6ORSRiND+B5//MMwbWhD6Wy2sGTfUtYWQqvHJqOQEhQ3dM65Lo6zlr2BMd8l9TK+
-         q3eGx7qKmXOsWoZIOnMzDDG4ejNYYs6eVIFs5WTejDkXg24exfmOwt5RLTN3RDUwwwoJ
-         IY1A==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature:dkim-signature;
+        bh=HbKb0pJ76rCWLu1WB1iyeYXI3ROCCC4O1l+taoQSHVo=;
+        b=kZWmzJNeh7i1EGtveZtptIDoASfEICfT7Ea++CXwsWejJ/V05inh85TKhiYCNN5qQO
+         DoBeq82WS2/B49IXRWZ7sKobQYRNXAwOiQaczl2BJESt9lKatY7RhriZmTmtTpXORnwv
+         oCiQhow2O9A+Kud92/2tZ65UU9h7GgiZsY2dp6RKAnHtf1Ep61CXxzi2MIUEzOKJXNNU
+         4I+fnytQbBf58mPae28FenGjwJibygsY9cSWQfG3/04+b73RW7cXjlzLqeRW3nXi53p8
+         qs49rDj6BcIuHn6kP1visg965UByplHn3i/lW2TX4znbQ4RNNsx2LIg4CdxaYfYMNANP
+         xuhA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=AsUM6q0m;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=P8deeZIa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a193-v6si11327213qkb.20.2018.10.16.09.02.56
+        by mx.google.com with ESMTPS id f12-v6si9380911qth.324.2018.10.18.18.44.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 09:02:56 -0700 (PDT)
+        Thu, 18 Oct 2018 18:44:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@braap.org header.s=mesmtp header.b=AsUM6q0m;
+       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=P8deeZIa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58967 helo=lists.gnu.org)
+Received: from localhost ([::1]:46104 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCRo8-0004Nz-CZ
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 12:02:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57148)
+	id 1gDJq1-0004pg-VE
+	for alex.bennee@linaro.org; Thu, 18 Oct 2018 21:44:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andre.przywara@arm.com>) id 1gCRns-0004K2-53
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 12:02:45 -0400
+	(envelope-from <cota@braap.org>) id 1gDJGJ-0005MY-1L
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 21:07:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <andre.przywara@arm.com>) id 1gCRnn-0000Qe-8P
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 12:02:40 -0400
-Received: from foss.arm.com ([217.140.101.70]:46500)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <andre.przywara@arm.com>)
-	id 1gCRnm-0008UH-St; Tue, 16 Oct 2018 12:02:35 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AA43D341;
-	Tue, 16 Oct 2018 09:02:27 -0700 (PDT)
-Received: from donnerap.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
-	[10.72.51.249])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 589953F71C;
-	Tue, 16 Oct 2018 09:02:26 -0700 (PDT)
-Date: Tue, 16 Oct 2018 17:02:06 +0100
-From: Andre Przywara <andre.przywara@arm.com>
-To: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>
-Message-ID: <20181016170206.500a12de@donnerap.cambridge.arm.com>
-In-Reply-To: <b8a89518794b4436af0c151ed10de4fa@dornerworks.com>
-References: <b8a89518794b4436af0c151ed10de4fa@dornerworks.com>
-Organization: ARM
-X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; aarch64-unknown-linux-gnu)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	(envelope-from <cota@braap.org>) id 1gDJG4-0003fW-8V
+	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 21:07:27 -0400
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:56941)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cota@braap.org>)
+	id 1gDJG0-0002lS-R5; Thu, 18 Oct 2018 21:07:18 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 71FD022959;
+	Thu, 18 Oct 2018 21:06:29 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+	by compute4.internal (MEProxy); Thu, 18 Oct 2018 21:06:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
+	from:to:cc:subject:date:message-id; s=mesmtp; bh=HbKb0pJ76rCWLu1
+	WB1iyeYXI3ROCCC4O1l+taoQSHVo=; b=AsUM6q0mVYPNG8ZG5W2s/natuplmMRJ
+	+FCwl0ksgG4EzDiwa/M/7AMrpBvD5Iv8yxz2qkmp5PQbmk/NOXMR0quVJ7s3RMs6
+	nA+UzNSUNx332ox6ety2fhczgAKAY6bEjIdejJep/Nh7g0OvI+xaMjBAa6OwXnGH
+	l+5XhJhpIaNI=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:date:from:message-id:subject:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm1; bh=HbKb0pJ76rCWLu1WB1iyeYXI3ROCCC4O1l+taoQSHVo=; b=P8deeZIa
+	HeULIRXNKlMUi9h92XS1C5IUf0Hqn2TIz64F6Dw0sHvkKu0s0JG1LkyQM13oip9y
+	46+uABy9sfzxg6OMKpkO96K0QUzlcuEfkzo8NKVfA0FgR4aowaYEWh0CnwoRPfDK
+	ZHmImxq/DTuLMi+AyWI8Qg0ysOZb3VrszVkLp/VCKoG3byEq/stuKora3UutmaRU
+	W/iGHpv/FLI8iymGfT9aYdQ3QLzFCZtCCoWZPHAhx9t2yRR7QxIKFFEWWBru6CoT
+	hJowZ5WLHd7PG96jOq/YwF4Og7U8S0orpM77ZLLPSR8OGN6FPgNWGAuLDAzvOvdf
+	J2StFsHOY3h0mw==
+X-ME-Sender: <xms:Ei7JW6lovua_0KuUtbTdIFwmUVeIgmYtvOo26xAIhAZpGz-vlFRPFg>
+X-ME-Proxy: <xmx:Ei7JW4K-lN307J5-llU2RvJKDVKkg08_OuA11E_PzotrXJlz90AIEA>
+	<xmx:Ei7JW7BL4UUGPa74euw4B_j9dwY-UBIjzC6RvL4C0n9p0oLhHmySqQ>
+	<xmx:Ei7JW5j5oHIdTV98Bl_Mfw7I56T3MHQkLj4ow9_tyjEldsmq0UiaNw>
+	<xmx:Ei7JW3OrpYh5cc1y6XeKACD9fjUsBHNu4bKL1aHnR9UHT_MkrEZEug>
+	<xmx:Ei7JW9WEhGu2aP0sJjVql4kWmdZwAQcbDXaSTJB92djlLTcFrCi-Zw>
+	<xmx:FS7JWwfSSpTzGVPWNupa9Uc0ExYhGuZn7WP9bh_ddSpCWOOXeE-_Lw>
+Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
+	by mail.messagingengine.com (Postfix) with ESMTPA id 7B51D102E9;
+	Thu, 18 Oct 2018 21:06:26 -0400 (EDT)
+From: "Emilio G. Cota" <cota@braap.org>
+To: qemu-devel@nongnu.org
+Date: Thu, 18 Oct 2018 21:05:29 -0400
+Message-Id: <20181019010625.25294-1-cota@braap.org>
+X-Mailer: git-send-email 2.17.1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.101.70
-Subject: Re: [Qemu-arm] [PATCH v2] hw/arm/boot: Increase compliance with
- kernel arm64 boot protocol
+X-Received-From: 66.111.4.29
+Subject: [Qemu-arm] [RFC v3 0/56] per-CPU locks
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,36 +103,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Julien Grall <julien.grall@arm.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	David Hildenbrand <david@redhat.com>, James Hogan <jhogan@kernel.org>,
+	Anthony Green <green@moxielogic.com>, Palmer Dabbelt <palmer@sifive.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>,
+	Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
+	Alexander Graf <agraf@suse.de>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Pavel Dovgalyuk <dovgaluk@ispras.ru>, Richard Henderson <rth@twiddle.net>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>, qemu-s390x@nongnu.org,
+	qemu-arm@nongnu.org, Alistair Francis <alistair23@gmail.com>,
+	Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sD67p6U6kcWK
+X-TUID: 4GccnV6ehrxH
 
-On Tue, 16 Oct 2018 15:06:29 +0000
-Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com> wrote:
+Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
+Cc: Alexander Graf <agraf@suse.de>
+Cc: Alistair Francis <alistair23@gmail.com>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Anthony Green <green@moxielogic.com>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Cc: Christian Borntraeger <borntraeger@de.ibm.com>
+Cc: Chris Wulff <crwulff@gmail.com>
+Cc: Cornelia Huck <cohuck@redhat.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: David Hildenbrand <david@redhat.com>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Fabien Chouteau <chouteau@adacore.com>
+Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
+Cc: James Hogan <jhogan@kernel.org>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Marek Vasut <marex@denx.de>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Max Filippov <jcmvbkbc@gmail.com>
+Cc: Michael Clark <mjc@sifive.com>
+Cc: Michael Walle <michael@walle.cc>
+Cc: Palmer Dabbelt <palmer@sifive.com>
+Cc: Pavel Dovgalyuk <dovgaluk@ispras.ru>
+Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-ppc@nongnu.org
+Cc: qemu-s390x@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>
+Cc: Stafford Horne <shorne@gmail.com>
 
-Hi, 
+I'm calling this series a v3 because it supersedes the two series
+I previously sent about using atomics for interrupt_request:
+  https://lists.gnu.org/archive/html/qemu-devel/2018-09/msg02013.html
+The approach in that series cannot work reliably; using (locked) atomics
+to set interrupt_request but not using (locked) atomics to read it
+can lead to missed updates.
 
-> "The Image must be placed text_offset bytes from a 2MB aligned base
-> address anywhere in usable system RAM and called there."
-> 
-> For the virt board, we write our startup bootloader at the very
-> bottom of RAM, so that bit can't be used for the image. To avoid
-> overlap in case the image requests to be loaded at an offset
-> smaller than our bootloader, we increment the load offset to the
-> next 2MB.
-> 
-> This fixes a boot failure for Xen AArch64.
+This series takes a different approach: it serializes access to many
+CPUState fields, including .interrupt_request, with a per-CPU lock.
 
-Thanks for that, works for me.
+Protecting more fields of CPUState with the lock then allows us to
+substitute the BQL for the per-CPU lock in many places, notably
+the execution loop in cpus.c. This leads to better scalability
+for MTTCG, since CPUs don't have to acquire a contended lock
+(the BQL) every time they stop executing code.
 
-> Signed-off-by: Stewart Hildebrand <stewart.hildebrand@dornerworks.com>
+Some hurdles that remain:
 
-Tested-by: Andre Przywara <andre.przywara@arm.com>
+1. I am not happy with the shutdown path via pause_all_vcpus.
+   What happens if
+   (a) A CPU is added while we're calling pause_all_vcpus?
+   (b) Some CPUs are trying to run exclusive work while we
+       call pause_all_vcpus?
+   Am I being overly paranoid here?
 
-Cheers,
-Andre.
+2. I have done very light testing with x86_64 KVM, and no
+   testing with other accels (hvf, hax, whpx). check-qtest
+   works, except for an s390x test that to me is broken
+   in master -- I reported the problem here:
+     https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03728.html
+
+3. This might break record-replay. Furthermore, a quick test with icount
+   on aarch64 seems to work, but I haven't tested icount extensively.
+
+4. Some architectures still need the BQL in cpu_has_work.
+   This leads to some contortions to avoid deadlock, since
+   in this series cpu_has_work is called with the CPU lock held.
+
+5. The interrupt handling path remains with the BQL held, mostly
+   because the ISAs I routinely work with need the BQL anyway
+   when handling the interrupt. We can complete the pushdown
+   of the BQL to .do_interrupt/.exec_interrupt later on; this
+   series is already way too long.
+
+Points (1)-(3) makes this series an RFC and not a proper patch series.
+I'd appreciate feedback on this approach and/or testing.
+
+Note that this series fixes a bug by which cpu_has_work is
+called without the BQL (from cpu_handle_halt). After
+this series, cpu_has_work is called with the CPU lock,
+and only the targets that need the BQL in cpu_has_work
+acquire it.
+
+For some performance numbers, see the last patch.
+
+The series is checkpatch-clean; only one warning due to the
+use of __COVERITY__ in cpus.c.
+
+You can fetch this series from:
+
+  https://github.com/cota/qemu/tree/cpu-lock-v3
+
+Note that it applies on top of tcg-next + my dynamic TLB series,
+which I'm using in the faint hope that the ubuntu experiments might
+run a bit faster.
+
+Thanks!
+
+		Emilio

@@ -1,77 +1,80 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3804289wrt;
-        Fri, 19 Oct 2018 06:14:28 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63wZOpB75Ske69RCOA7jFqKli+OWVlAfWqOx4yFwK/R9PBScz/k5d1KRme6SAdcfCK5sosJ
-X-Received: by 2002:a0c:959a:: with SMTP id s26mr34139961qvs.199.1539954868301;
-        Fri, 19 Oct 2018 06:14:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539954868; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3804393wrt;
+        Fri, 19 Oct 2018 06:14:32 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV63plfqw7aJPIDEbq9ujiBJYH/R6kZTgmbYNK/zQ2mL/jIMOmU0kIGOz2X0YwVvXRWCOQkJr
+X-Received: by 2002:ac8:3397:: with SMTP id c23-v6mr32915965qtb.190.1539954872636;
+        Fri, 19 Oct 2018 06:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539954872; cv=none;
         d=google.com; s=arc-20160816;
-        b=EJ/VTauMigZV4G7KjtiGvIkEYgAITZ3whyrwA7QwMUJU0i9hCnLUDFIGtrKHWnivRg
-         oUb4LNEFt9GyoQnYVbvToZj0ePULOFPRMwfOAYMNOjJfeNVTnY/l+jE6SClaJgQnq4xf
-         mIbZlMa24f/bFqD22vVwwxepgTK5w9P3QxjhsAO/ax7j6hkYy8D4IiLcvaW3gxS5eeuq
-         tfsHcYKu5cQ1GR+XDwMl44bCtddVZZmgHyvTIVIXFlb0+/TZ5K8GFcIJ1+WDluyojuaB
-         8EGrrf9A63fmZ8qM+fa1eXl+BiB884qsvtWi7fRPoUb+/hX8Ulek6p09H92Z0X12sADU
-         73Ew==
+        b=HRiGJGSlVHkBv6V7Z1hKUjPfqIf6CzSfDdnNdX3vt7ZiqBLrP4ovHCSwAPrzB325Vs
+         G2KLIrpa2b7+Y14YoCdGG0Xr08LyRH8I1G6kxYEhmn7n64pe8zTU253KFU7um7CnfnjT
+         9pItljETLUlztSryJiQD2H6mR585NnuzCsYfQ7O+aqw4JwB8939CpmZpuutgkh3i8lRV
+         PYsYkvRwWcVb1+o5km5VBAndZ74J8QaYsFsjam7lCHzvr65UG7eR3Q7RaY0A4yaijhxY
+         x2mIxjgPmzmeShtZuTyN75tpN2E3FsLeQNUWcTi6mOqGGGGrQA/JrQBU4XyCgMIn/vAk
+         4TCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
-        bh=5N2Oac+sChemWp+ddSKeu4kkUNFeJA1opD2WVIAPFGM=;
-        b=YM879QZG2n6AJIVKjqAyPZBGxhBNQGGYCxCmaaN2FzsDnnxy95WzOoa+YYDg8nIe4O
-         e0GY2FZNGNzb9h05b+ckr3phRjGds6HFa+Sd7ZEL6CWBNWBu0V/ixLvZ/VIH2H/WyqvV
-         uRM6k4edida/NZqh4B7hv91+pV8hJK2KXW+yYt2fuul0N/h/uE6o61aEfWKpp3o6YhhQ
-         uAOPMldFAPg0DJHY8eD3ewC4hDdJCSIQ1J7TUxXMgLPbtDwZYQwSSr2NMey6ScpqM4er
-         SRKxCXcB6WSR5rdSvtag7hZe+9xeW6au7/Jjl9jqx8Lwmf3NidiZDaOWfCJOD9ZLp9m8
-         +3xA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=9ShRzrx3aq+MmOkAluMihAGnV+V6OFrIAbktN6X14/s=;
+        b=RJ1+59/gPSGpW2NjdzNubwtu88il9sy2o0+rhT46s122jyZydnajI09tYxIK7KaGPJ
+         3QhBu18RJwIPYXmBImwTD3BXTm00HhAFNDjkZdEkXJ0Wcx3L3PXINseflsupWAgAiv/a
+         /ty8yDetBtUN4MGzo8AuzJ9b/bfyN5HHQRpZsznb2j9OVpIyemmmObdRHopTnK+e2TIx
+         suzXuvoSB2st+MzY9alpHJS6u95QFDpKlzHgJ0tuYsy8NYWG+DzOgjUp3V9vm4ZL9Nof
+         LunoYQQjbC5h5NlPb/vPU607kpgDBiwbbFGW60W0vTk+1cK/6FlukQNKByECVPEnTlFv
+         YxDg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s86-v6si2139515qki.14.2018.10.19.06.14.28
+        by mx.google.com with ESMTPS id q2-v6si508963qti.99.2018.10.19.06.14.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Oct 2018 06:14:28 -0700 (PDT)
+        Fri, 19 Oct 2018 06:14:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50476 helo=lists.gnu.org)
+Received: from localhost ([::1]:50477 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDUbj-0007rg-Kw
-	for alex.bennee@linaro.org; Fri, 19 Oct 2018 09:14:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57521)
+	id 1gDUbo-0007s3-2n
+	for alex.bennee@linaro.org; Fri, 19 Oct 2018 09:14:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57542)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gDUbT-0007pb-Ep
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 09:14:12 -0400
+	(envelope-from <thuth@redhat.com>) id 1gDUbV-0007rO-87
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 09:14:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gDUbS-0005ja-Oh
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 09:14:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50326)
+	(envelope-from <thuth@redhat.com>) id 1gDUbU-0005lC-Hh
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 09:14:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55442)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gDUbS-0005iR-IK; Fri, 19 Oct 2018 09:14:10 -0400
+	id 1gDUbU-0005kp-Bn; Fri, 19 Oct 2018 09:14:12 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 98AE943A33;
-	Fri, 19 Oct 2018 13:14:09 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8E0587F7B2;
+	Fri, 19 Oct 2018 13:14:11 +0000 (UTC)
 Received: from thuth.com (ovpn-116-78.ams2.redhat.com [10.36.116.78])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C888D612BF;
-	Fri, 19 Oct 2018 13:14:07 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DD1AB5DD6B;
+	Fri, 19 Oct 2018 13:14:09 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Oct 2018 15:14:00 +0200
-Message-Id: <1539954845-26716-1-git-send-email-thuth@redhat.com>
+Date: Fri, 19 Oct 2018 15:14:01 +0200
+Message-Id: <1539954845-26716-2-git-send-email-thuth@redhat.com>
+In-Reply-To: <1539954845-26716-1-git-send-email-thuth@redhat.com>
+References: <1539954845-26716-1-git-send-email-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 19 Oct 2018 13:14:09 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 19 Oct 2018 13:14:11 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 0/5] Add more CONFIG switches to make the build
- more modular
+Subject: [Qemu-arm] [PATCH 1/5] configs: Add a CONFIG_OR_IRQ switch for the
+ or-irq device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,31 +93,53 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B+OFW1os0xSy
+X-TUID: u597cAgu1SZS
 
-We've got many devices that can not be created directly by the user
-and which are only used on some few target architectures. When the
-user does not compile the corresponding qemu-softmmu-xxx target, we
-should also not compile these devices. Add some CONFIG switches to
-make our build system a little bit more flexible here.
+If the user only wants to compile targets that do not require the
+"or-irq" device, we should also not compile or-irq.c. Add a proper
+CONFIG_OR_IRQ switch to be able to choose this more flexibly.
 
-Thomas Huth (5):
-  configs: Add a CONFIG_OR_IRQ switch for the or-irq device
-  configs: Add a CONFIG_SPLIT_IRQ switch for the split-irq device
-  configs: Add a CONFIG_REGISTER switch for the "register" device
-  configs: Add a CONFIG_UNIMP switch for the "unimplemented-device"
-  configs: Add a CONFIG_SMC37C669 switch for the "smc37c669-superio"
-    device
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ default-configs/arm-softmmu.mak | 1 +
+ default-configs/ppc-softmmu.mak | 1 +
+ hw/core/Makefile.objs           | 2 +-
+ 3 files changed, 3 insertions(+), 1 deletion(-)
 
- default-configs/alpha-softmmu.mak      | 1 +
- default-configs/arm-softmmu.mak        | 4 ++++
- default-configs/microblaze-softmmu.mak | 1 +
- default-configs/ppc-softmmu.mak        | 1 +
- hw/core/Makefile.objs                  | 6 +++---
- hw/isa/Makefile.objs                   | 3 ++-
- hw/misc/Makefile.objs                  | 2 +-
- 7 files changed, 13 insertions(+), 5 deletions(-)
-
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 2420491..dc6a581 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -4,6 +4,7 @@ include pci.mak
+ include usb.mak
+ CONFIG_VGA=y
+ CONFIG_NAND=y
++CONFIG_OR_IRQ=y
+ CONFIG_ECC=y
+ CONFIG_SERIAL=y
+ CONFIG_SERIAL_ISA=y
+diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
+index 3181bbf..83235af 100644
+--- a/default-configs/ppc-softmmu.mak
++++ b/default-configs/ppc-softmmu.mak
+@@ -68,3 +68,4 @@ CONFIG_PC87312=y
+ CONFIG_PCSPK=y
+ CONFIG_IDE_ISA=y
+ CONFIG_CS4231A=y
++CONFIG_OR_IRQ=y
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index b736ce2..29b5cfd 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -17,7 +17,7 @@ common-obj-$(CONFIG_SOFTMMU) += loader.o
+ common-obj-$(CONFIG_FITLOADER) += loader-fit.o
+ common-obj-$(CONFIG_SOFTMMU) += qdev-properties-system.o
+ common-obj-$(CONFIG_SOFTMMU) += register.o
+-common-obj-$(CONFIG_SOFTMMU) += or-irq.o
++common-obj-$(CONFIG_OR_IRQ) += or-irq.o
+ common-obj-$(CONFIG_SOFTMMU) += split-irq.o
+ common-obj-$(CONFIG_PLATFORM_BUS) += platform-bus.o
+ common-obj-$(CONFIG_SOFTMMU) += generic-loader.o
 -- 
 1.8.3.1
 

@@ -1,84 +1,100 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2849678wrt;
-        Thu, 18 Oct 2018 13:49:45 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62nGP0mph6KHcXC0zO020UuxJdMwo8FZfGCIZtVKZVR/Ixl7H+4UCwzrKdfby0ghpJBsaH4
-X-Received: by 2002:ac8:2cb5:: with SMTP id 50-v6mr31378664qtw.338.1539895785749;
-        Thu, 18 Oct 2018 13:49:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539895785; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3880635wrt;
+        Fri, 19 Oct 2018 07:13:13 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV62b45asFSChdjl4KElsXzN4JY6aIqLCqKh6W+quC8rqOjYgOPU5CMNbRX4ZrnbgdacB2ZiX
+X-Received: by 2002:a37:c11:: with SMTP id 17-v6mr32502595qkm.95.1539958392950;
+        Fri, 19 Oct 2018 07:13:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1539958392; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y6NuI9ZcqD1OR5nXY2v3+7ygTKtK145YLPLwMLhoKy9sW2KxwAvyTuhFnEh5T4iyUx
-         1IqKZ+hyybmiNwghDrc9I4n4EJylBXzMwBA6ViQFItEzH9xc2uYHOXXe6PX7t+r9vjwc
-         Ace7E9pyiHR+b/0bpZcFbAeGUnK8Vp09OPDeDEaSgW3ENHoRszodN9oFZ2phYBXO59mO
-         y/LVAi2f/xmizwDrEPF44pTLAgxnx9FreqmRQmqKs92w+hW2TtapyvHSjWJ7AAseHgw6
-         iH0MN2BvbJFxpPwNWy/WYlBXzQe//MG/VW/nEl2ThOpqAPzvOXTtYX2nwF2lgGEZ0g6d
-         gduA==
+        b=js/EgLYbtwrlC+3RyGwOgAXiykCXIL/Fvnjib36pdIrwVGj2/PZr9GImcrCZBi4QOj
+         RLX/g8S3qLEZ03qt4E/K+pOefTZVqcvtL8v28cG5vLAXPAWvi2RlXhkxewuAPcfYI/Zj
+         Hn0WJbWEH7j37awyBQZ2HGiHETsCXsda+iDAoOKRWhtt9fmiwiFV5g4rUlOdaXXhZNBg
+         gZn0nkZVtzTi+mdCu42oJWeqjokS/jHp+QQ+VviN79M9J+9mBfcjcE5xj3sVtCgGPnn+
+         nPOb5gP+c0c+AnqHvPprRDWyrzXv8pjzkd42X37ZetE1b+OY1jvtk1ldue9v/DOon3lg
+         4+7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=WoS8uV+Sd4oVuD4b/UR6vx06AUg3AVZztikywsalSCY=;
-        b=dOJAwUMYvmy9TmQEhCm/ocjjBkQ5eOi6AAZbYXwq5+3TTKMYtlo7d1Ip/y9JTwBUlB
-         etIxBef40ZevRB380+Z462fSpcIdZzd5TYPc9aSzZr2evd3jimY6W014r4JCkvtdp4We
-         aLePxm1ILNWE1VHMtzFLscBki0wU8nZ9w+hkZF62N0uEJaym3wOcJCjo6+iVQM4X6ldo
-         XVfzxA5xFFYIkVms9y5DDhk157xRCyUjau50zrjHyscEY91MFva9RU0vBUZ7Cz9nfQdV
-         Apu/r03chVUssZ3209cVx0I/dQmeLVb5I2ggQLuSIjvzjYj4Kq/5pCOV17xKcvntWGJg
-         MeOQ==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=mWZGi3q2EILvpxoCUZ6SG83lwTDzGdlxsIq3kabTq30=;
+        b=U6JPCLqidkMHYdTVTSTzYP6jjRWs/bZbItJQN9qcFNgFhPfKEEfrv51qYizmPs4WIP
+         f4ykyU8ybN9D5EOpnVjJ+IzQ7G/p4G2rr/rcyu3qIJfLAAv2Sx8mod+2DJx8qSVS0xMm
+         ea8SRQHU3nPcWpow/v4u/c9ajfWUyp1DPcsdxyznlmtQYwqb9IsO880ipPyWFuFr+bG9
+         51yCW+Fn8eJOrjQWQAfAThT0yVhp9SSET0o5nNELBxx4jls+ps/5yGbF2wfEaebqHEuZ
+         rb0E652gjmr9HbWhHCwioI0orBN6hxlfcVf70YkGXollB0e6rR7Yiqvjs+E9lYAdDzdB
+         8sRg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="V/NlS3ku";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m77-v6si1195669qkh.35.2018.10.18.13.49.45
+        by mx.google.com with ESMTPS id n64-v6si5900018qkd.186.2018.10.19.07.13.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 18 Oct 2018 13:49:45 -0700 (PDT)
+        Fri, 19 Oct 2018 07:13:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="V/NlS3ku";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44590 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50829 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDFEn-0005Hv-6x
-	for alex.bennee@linaro.org; Thu, 18 Oct 2018 16:49:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40720)
+	id 1gDVWa-00029p-Eh
+	for alex.bennee@linaro.org; Fri, 19 Oct 2018 10:13:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50302)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEbn-0003Th-Ad
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:09:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gDVWN-00028e-6a
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 10:13:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEbl-00040Q-Af
-	for qemu-arm@nongnu.org; Thu, 18 Oct 2018 16:09:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48780)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gDEbh-0003g4-GN; Thu, 18 Oct 2018 16:09:24 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7D9D230F8BE5;
-	Thu, 18 Oct 2018 20:09:12 +0000 (UTC)
-Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0CA86105704F;
-	Thu, 18 Oct 2018 20:09:05 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Date: Thu, 18 Oct 2018 17:04:13 -0300
-Message-Id: <20181018200422.4358-37-ehabkost@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gDVWH-0005Xy-3P
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 10:12:59 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:41981)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gDVWG-0005Wk-L1
+	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 10:12:52 -0400
+Received: by mail-oi1-x241.google.com with SMTP id l197-v6so26897527oib.8
+	for <qemu-arm@nongnu.org>; Fri, 19 Oct 2018 07:12:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=mWZGi3q2EILvpxoCUZ6SG83lwTDzGdlxsIq3kabTq30=;
+	b=V/NlS3ku9B8sC9QwyXus3lI1ksRplrYHcEMIleL1DsoZqvJ/6T8y8amJMPW6XYgy9H
+	nvKXlhhivpBudC5ihtdOu1WEys9IVpqEuPj9FTIVsanJDRDp6o8pTYAhtc5G0JFMU23R
+	ajKSljnR/6wbwDn4myd89AKzTg9OAO8uUMe9M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=mWZGi3q2EILvpxoCUZ6SG83lwTDzGdlxsIq3kabTq30=;
+	b=ZdrHF6oYTqeuCaNemk/xFuqZFzOHRZBMTQNx1T8EmiG4SmOFqPbdq8qgAoyYU6tI5/
+	MHlFecpHwTsc623qb9SIYcS1kZMlJRciuLkUKxjgMWcAo/byzbuRTkCGgLwGeUlIso0H
+	8ecvZ0lryy+nZavtCMXwhXS5GWoeRrNs+tlBDrIdoBT/ohFX6Q0KXbYJ3GvFptNr1Ot4
+	oUZBiX69U/87kC0jXQZasM84W5nTE7+sD+uv/GH2xULeOxAIvFGdhxJ/bKDPlEFDEk2Q
+	eGI5qUe1j3G+tNbw9S1LbqJf2PKUwPECUTp696W6Dxi3lO+IW1IQzwhkV3Sra9t/LEef
+	q76Q==
+X-Gm-Message-State: ABuFfogEJcZiAxpmbTtmIBua7fPN9O7IGl7unweluc+mEgLbhfwepdBy
+	ABmOdx4/UgLbe5sccjnUqUP+EQlOG44SHvtecLfieQ==
+X-Received: by 2002:aca:fd14:: with SMTP id
+	b20-v6mr19639749oii.337.1539958371762; 
+	Fri, 19 Oct 2018 07:12:51 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Fri, 19 Oct 2018 07:12:31
+	-0700 (PDT)
 In-Reply-To: <20181018200422.4358-1-ehabkost@redhat.com>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 18 Oct 2018 20:09:12 +0000 (UTC)
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 19 Oct 2018 15:12:31 +0100
+Message-ID: <CAFEAcA9p0dLoNQy7kBdcXMz0HiMGEZTBX67Lq2SizTY3kgeksw@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 36/45] net: lan9118: convert SysBus init method to
- a realize method
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [PULL 00/45] Machine queue, 2018-10-18
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,77 +106,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Libvirt <libvir-list@redhat.com>,
 	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
 	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
-	Alexander Graf <agraf@suse.de>,
+	Markus Armbruster <armbru@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L+GWeIhXtmkW
+X-TUID: x4IqnFvo4nRo
 
-From: C=C3=A9dric Le Goater <clg@kaod.org>
+On 18 October 2018 at 21:03, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> The following changes since commit 09558375a634e17cea6cfbfec883ac2376d2dc=
+7f:
+>
+>   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-201=
+81016-1' into staging (2018-10-16 17:42:56 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/ehabkost/qemu.git tags/machine-next-pull-request
+>
+> for you to fetch changes up to 6d8e1bcc7dd5e819ce81e6a87fffe23e39c700cc:
+>
+>   numa: Clean up error reporting in parse_numa() (2018-10-17 16:33:40 -03=
+00)
+>
+> ----------------------------------------------------------------
+> Machine queue, 2018-10-18
+>
+> * sysbus init/realize cleanups
+>   (C=C3=A9dric Le Goater, Philippe Mathieu-Daud=C3=A9)
+> * memory-device refactoring (David Hildenbrand)
+> * -smp: deprecate incorrect CPUs topology (Igor Mammedov)
+> * -numa parsing cleanups (Markus Armbruster)
+> * Fix hostmem-file memory leak (Zhang Yi)
+> * Typo fix (Li Qiang)
+>
+> ----------------------------------------------------------------
+>
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20181001063803.22330-4-clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- hw/net/lan9118.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+Hi. This had some problems in merge testing, I'm afraid:
 
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index b9032dac59..a6269d9463 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -1320,9 +1320,9 @@ static NetClientInfo net_lan9118_info =3D {
-     .link_status_changed =3D lan9118_set_link,
- };
-=20
--static int lan9118_init1(SysBusDevice *sbd)
-+static void lan9118_realize(DeviceState *dev, Error **errp)
- {
--    DeviceState *dev =3D DEVICE(sbd);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     lan9118_state *s =3D LAN9118(dev);
-     QEMUBH *bh;
-     int i;
-@@ -1349,8 +1349,6 @@ static int lan9118_init1(SysBusDevice *sbd)
-     s->timer =3D ptimer_init(bh, PTIMER_POLICY_DEFAULT);
-     ptimer_set_freq(s->timer, 10000);
-     ptimer_set_limit(s->timer, 0xffff, 1);
--
--    return 0;
- }
-=20
- static Property lan9118_properties[] =3D {
-@@ -1362,12 +1360,11 @@ static Property lan9118_properties[] =3D {
- static void lan9118_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
--    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
-=20
--    k->init =3D lan9118_init1;
-     dc->reset =3D lan9118_reset;
-     dc->props =3D lan9118_properties;
-     dc->vmsd =3D &vmstate_lan9118;
-+    dc->realize =3D lan9118_realize;
- }
-=20
- static const TypeInfo lan9118_info =3D {
---=20
-2.18.0.rc1.1.g3f1ff2140
+On aarch64 host, warnings running tests/cpu-plug-test for i386 and s390 tar=
+gets:
 
+TEST: tests/cpu-plug-test... (pid=3D12602)
+  /i386/cpu-plug/pc-i440fx-3.0/cpu-add/1x3x2&maxcpus=3D12:
+qemu-system-i386: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (2) !=3D maxcpus (12)
+OK
+  /i386/cpu-plug/pc-i440fx-3.0/device-add/1x3x2&maxcpus=3D12:
+qemu-system-i386: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (2) !=3D maxcpus (12)
+OK
+  /i386/cpu-plug/pc-q35-3.0/cpu-add/1x3x2&maxcpus=3D12:
+qemu-system-i386: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (2) !=3D maxcpus (12)
+OK
+  /i386/cpu-plug/pc-q35-3.0/device-add/1x3x2&maxcpus=3D12:
+qemu-system-i386: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (2) !=3D maxcpus (12)
+OK
+  /arm/qom/n800:                                                       OK
+PASS: tests/cpu-plug-test
+[...]
+TEST: tests/cpu-plug-test... (pid=3D15040)
+  /s390x/cpu-plug/s390-ccw-virtio-3.1/cpu-add/1x3x1&maxcpus=3D6:
+qemu-system-s390x: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (1) !=3D maxcpus (6)
+OK
+  /s390x/cpu-plug/s390-ccw-virtio-3.1/device-add/1x3x1&maxcpus=3D6:
+qemu-system-s390x: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (1) !=3D maxcpus (6)
+OK
+  /s390x/cpu-plug/s390-ccw-virtio-3.0/cpu-add/1x3x1&maxcpus=3D6:
+qemu-system-s390x: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (1) !=3D maxcpus (6)
+OK
+  /s390x/cpu-plug/s390-ccw-virtio-3.0/device-add/1x3x1&maxcpus=3D6:
+qemu-system-s390x: warning: Invalid CPU topology deprecated: sockets
+(1) * cores (3) * threads (1) !=3D maxcpus (6)
+OK
+PASS: tests/cpu-plug-test
+
+(plus similar ppc64, x86_64 targets)
+
+I see similar warnings on hosts SPARC, PPC64BE, S390, 32-bit Arm
+and x86 FreeBSD.
+
+I also got a build failure on one of my configs, but I think that
+is caused by some latent bug in our makefiles where we don't
+correctly rebuild x86_64-softmmu/config-devices.mak when a
+change is made to default-configs/i386-softmmu.mak -- doing a
+hand rm of the config-devices.mak fixed it.
+
+
+thanks
+-- PMM

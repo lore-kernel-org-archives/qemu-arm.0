@@ -1,81 +1,104 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3508509wrt;
-        Fri, 19 Oct 2018 01:48:55 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63bnnmXLv6VESYRH0mq2puqLeBjHZw8qcRbIJPT9bY/ddziudfxp971f2hkDk22gsebvmrR
-X-Received: by 2002:ac8:4a11:: with SMTP id x17-v6mr32711609qtq.232.1539938935253;
-        Fri, 19 Oct 2018 01:48:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539938935; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp986252wrt;
+        Sat, 20 Oct 2018 12:58:21 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60EOFejDb8SuuhfHEbkO3arv30lo/pL9gNrrIMmFwfzcd2YQlL9lCIB9jvuXmioUS6w6dP0
+X-Received: by 2002:ac8:1770:: with SMTP id u45-v6mr37830288qtk.285.1540065501415;
+        Sat, 20 Oct 2018 12:58:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540065501; cv=none;
         d=google.com; s=arc-20160816;
-        b=xClNpRhUTy4+7bnkCUUig79N7P66Mfizi+fyVh0T2J1pYd5rJarEx50pVTzwthi4i5
-         mwFt0i3fnrAHF8wQbyn59npMTz3qGjfjSUQKtQw6g5o0/qDmWCo35kO/o9pMCiOo2NAL
-         tLV583sQZfyYgENoKr+CNIqOG6lT+EKHpaKRwXwqBanqqYn4aB9GInOGgS6AhMp4LCxR
-         e9sx4mUdL5TPACPDIecKccLLB3NCIut/grc3df9+eN7kCaSJYR7qOYtP6tdtmltX/b45
-         1iBdQYuuJC+BLG/m1UO3WJ49HiWCTGWvlapFy6r2WQIn7BkWSx0BlbNgpEJ18yDswot/
-         nmDg==
+        b=CFKDQNZfVl38ofyoF+6zCyUMJMmfyZ9skq13Rf+9TfZzWbU/QHhRsdvWE375TTcS45
+         MaGvOtxL22JrF8Ym+aE83pntRStTczt5LSvVC8yl/yroNDsZ/qUtvMdO2URqj9bzH0O8
+         o53eoaPk+SvXj8SZP5HXMdAfRLc5bAnVmH3YwnsWOHCfaDVYGXgscCZSxdJEACrIKuft
+         d2kr1kX/XsUPXl4zx+egLTEhw5+fILCxvySvNf0c4E5zfg/QYjp5Xrg/tHeM3Qvjato/
+         gtCKQDhIWVfEnfR0uj/yuVCi5mnsQr7mMtXg48QgUZbeB/iLrChz8ARuYggG7HsS9/+9
+         XWOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=O/BOWkucKm6vdEEdZwAbv8A0RI/pvM9AjWCIDcIlh4U=;
-        b=KQCfYdgrhEg9+7YKS1nh0XhaTBYL9DuRzuu7tK0hMc3BC4bmeDi3cDN150H2IJ1Gr4
-         8YrhbbZ5jQq4BMgmU4zAhsSiTTwkBBDQmSce4VD4+fWMQ5uO2b7UOZhM4X7SQx2BkC9I
-         e9FdpAY/bzSmssQXGD1YDXgiMuJqUXCsR0S3ngHjdXIOtEH8uf/AZwMmnEHBrmfh1XRb
-         WGaZBIJXNc3obf0E3vfhudr9FVuo7VTCvagWjE0qHWFGG865BHEGpfBuI+4FuPiMqh/v
-         yGpswy23nfoMPdeKy/tYKFSBIPby7gWxC7l+W6e8GGaeyYznfreTPYHZ0i0DmRyIYyjV
-         HR6w==
+        bh=6hHYF+ibVeEBWB7ajnzRYahThkxrLFyXkGx+MDGS5xM=;
+        b=r8ARSOng0/gJDUbqidwa2IIY+u7z/Cb8x65kFGfqj33ecqnbd7k0xjyJjOArDWV/Up
+         qwpQCB+hZRizoyQX8pzKg7fFzg63PqD3m3qt2KberTkgI6ICXPsYGSbaC7J6+VDohKXH
+         2tlthhQlGZF5fL4S2rrbTLygeRzIJWYj0UJqrQUyLygsWz4jDu1ODXGLxR8ow1FHzhHk
+         lMbWeVoFBEDAO5hjvRbRQVkAnHLD75+3wLuyNv7Wpw0knveXD9bGzZXFVqcpiEbArIqo
+         ONTXRl8mutYHNbUaBYqj8VEvoqnXCOHqn+7gpCbfokYyPSuDK5ydnENnmFbV61h/OaJK
+         /sjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c3-v6si10567970qta.188.2018.10.19.01.48.55
+        by mx.google.com with ESMTPS id a16-v6si8642032qkg.11.2018.10.20.12.58.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Oct 2018 01:48:55 -0700 (PDT)
+        Sat, 20 Oct 2018 12:58:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47910 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56396 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDQSk-0001bZ-Ip
-	for alex.bennee@linaro.org; Fri, 19 Oct 2018 04:48:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39666)
+	id 1gDxO8-0003RJ-Ub
+	for alex.bennee@linaro.org; Sat, 20 Oct 2018 15:58:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <suzuki.poulose@arm.com>) id 1gDQSW-0001WC-3t
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 04:48:40 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1gDxNl-0003JP-8S
+	for qemu-arm@nongnu.org; Sat, 20 Oct 2018 15:57:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <suzuki.poulose@arm.com>) id 1gDQSP-0005ye-Kp
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 04:48:37 -0400
-Received: from foss.arm.com ([217.140.101.70]:56292)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <suzuki.poulose@arm.com>)
-	id 1gDQSL-0005fk-Qo; Fri, 19 Oct 2018 04:48:31 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7407580D;
-	Fri, 19 Oct 2018 01:48:21 -0700 (PDT)
-Received: from [10.37.12.214] (unknown [10.37.12.214])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 0E9F03F5D3;
-	Fri, 19 Oct 2018 01:48:18 -0700 (PDT)
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	shameerali.kolothum.thodi@huawei.com, kwangwoo.lee@sk.com,
-	imammedo@redhat.com, david@redhat.com
-References: <20181018143042.29588-1-eric.auger@redhat.com>
-	<20181018143042.29588-3-eric.auger@redhat.com>
-From: Suzuki K Poulose <suzuki.poulose@arm.com>
-Message-ID: <872eeab2-7f0d-6cba-fd05-c75a32aac81b@arm.com>
-Date: Fri, 19 Oct 2018 09:49:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <pbonzini@redhat.com>) id 1gDxNh-0002lX-Un
+	for qemu-arm@nongnu.org; Sat, 20 Oct 2018 15:57:57 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:37880)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1gDxNh-0002l6-Mk
+	for qemu-arm@nongnu.org; Sat, 20 Oct 2018 15:57:53 -0400
+Received: by mail-wr1-f67.google.com with SMTP id q1-v6so7874371wrs.4
+	for <qemu-arm@nongnu.org>; Sat, 20 Oct 2018 12:57:52 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=6hHYF+ibVeEBWB7ajnzRYahThkxrLFyXkGx+MDGS5xM=;
+	b=XLkE80Coiz7+x/1V2doHw1EmAiIwLV4dPzfj3t66mz/e+5zu/aFXi5Lux+/OOx4dcG
+	UdLosbh1NVuR6CAqMB7+eGFOg2XXdnOBuJWkfb7P2g2LgsaqrVOk/GTNDe896R2C5uFl
+	XbVzI3QcrF1Zm6Twz8bkHiaibWtNG0BFs569ripwcdRNErwlbvIHEEpx1nWKfI6ePrFW
+	QjDhZpG9MgpHIz3xIrqFBAgY7MS6SE0fGchm2FKE3Lx8WOEOT1XLEWNhPMo3zBL8oA42
+	ru+V4adGwvFH1ytLq0V9uZl2Bz3IO3HVOtW6RoY3E3EwVqETE4NEMW9eMf+akyVdUCkw
+	Mmyw==
+X-Gm-Message-State: ABuFfojHP1ChEdMaUade13OUKpKVl1eG0tVQiRiXgDVe9VMrXDYEgswF
+	Nuo56xa4W+MMqSCjYTvkMBGczg==
+X-Received: by 2002:a5d:424c:: with SMTP id
+	s12-v6mr17945950wrr.260.1540065471849; 
+	Sat, 20 Oct 2018 12:57:51 -0700 (PDT)
+Received: from [192.168.10.165] (dynamic-adsl-78-12-231-174.clienti.tiscali.it.
+	[78.12.231.174]) by smtp.gmail.com with ESMTPSA id
+	5-v6sm13915695wra.48.2018.10.20.12.57.50
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 20 Oct 2018 12:57:51 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1539954845-26716-1-git-send-email-thuth@redhat.com>
+	<1539954845-26716-5-git-send-email-thuth@redhat.com>
+	<CAFEAcA-ahq3Y4sgs=Vijq_fsDPgX4JuG0gGdMwE5oOLOrsvxjQ@mail.gmail.com>
+	<a6b421a6-439e-ac87-0f96-b28ca349bc70@redhat.com>
+	<CAAdtpL4M9zD3LPOMgQNtN50pKzZAsoKn0c_uBe5vajPFwUMJvQ@mail.gmail.com>
+	<b43a36a4-bb35-77e4-42e3-d15aebd618f9@redhat.com>
+	<CAFEAcA9QtLnFhPfgRgeduB+avJcC9X8Tea1Hi-2q3p9GtU_j8g@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <004ec9ef-8568-c645-627d-f7cc2b4df3f6@redhat.com>
+Date: Sat, 20 Oct 2018 21:57:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <20181018143042.29588-3-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAFEAcA9QtLnFhPfgRgeduB+avJcC9X8Tea1Hi-2q3p9GtU_j8g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.101.70
-Subject: Re: [Qemu-arm] [RFC v4 02/16] linux-headers: header update for
- KVM/ARM KVM_ARM_GET_MAX_VM_PHYS_SHIFT
+	[fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/5] configs: Add a CONFIG_UNIMP
+ switch for the "unimplemented-device"
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,60 +110,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, dgilbert@redhat.com
+Cc: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	"qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
+	Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /EVliIr0maSl
+X-TUID: jqv9Xl+1ujrC
 
-Hi Eric,
+On 19/10/2018 18:54, Peter Maydell wrote:
+> On 19 October 2018 at 17:44, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>> On 19/10/2018 18:25, Philippe Mathieu-Daudé wrote:
+>>>
+>>> First because I'm using it heavily on MIPS and PPC boards, when no
+>>> datashits are available.
+>>> I'll submit that during the next merge window, although the MIPS tree
+>>> seems now reluctant to that kind of hobbyist work.
+>>>
+>>> Second, because it is very clean when you implement a SoC to first
+>>> start with an empty UNIMP region and a cpu core,
+>>> then declare the mmio regions for each device (still UNIMP), then you
+>>> can slowly add devices one at a time.
+>>> This let you (me, so far) push at most a dozen of tiny patches in a
+>>> working series, instead of a small series of a dozen of huge patches,
+>>> or a series of 100 tiny patches.
+>>
+>> I don't see however why it's a problem to add/remove CONFIG_UNIMP to
+>> default-configs though (in the Kconfig world the board would "select
+>> UNIMP").
+> 
+> Well, it's extra friction for people writing new board models,
+> and the benefit of having CONFIG_UNIMP is all to downstream
+> redistributors, not to upstream...
+> 
+> I'm not vetoing this patchset, but I do think that if RedHat
+> wants to distribute significantly-cut-down binaries then
+> it would be worth working on a mechanism for making that
+> more conveniently doable, rather than just hacking up
+> the very creaky default-configs/ stuff.
 
-On 10/18/2018 03:30 PM, Eric Auger wrote:
-> This is a header update against kvmarm next branch
-> 
-> git://git.kernel.org/pub/scm/linux/kernel/git/kvmarm/kvmarm kvmarm/next
-> 
-> to get the KVM_ARM_GET_MAX_VM_PHYS_SHIFT ioctl. This allows to retrieve
-> the IPA address range KVM supports.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
-> ---
-> 
-> v3 -> v4:
-> - update against kvmarm next
-> ---
->   linux-headers/linux/kvm.h | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-> index 83ba4eb571..9647ce4fcb 100644
-> --- a/linux-headers/linux/kvm.h
-> +++ b/linux-headers/linux/kvm.h
-> @@ -750,6 +750,15 @@ struct kvm_ppc_resize_hpt {
->   
->   #define KVM_S390_SIE_PAGE_OFFSET 1
->   
-> +/*
-> + * On arm64, machine type can be used to request the physical
-> + * address size for the VM. Bits[7-0] are reserved for the guest
-> + * PA size shift (i.e, log2(PA_Size)). For backward compatibility,
-> + * value 0 implies the default IPA size, 40bits.
-> + */
-> +#define KVM_VM_TYPE_ARM_IPA_SIZE_MASK	0xffULL
-> +#define KVM_VM_TYPE_ARM_IPA_SIZE(x)		\
-> +	((x) & KVM_VM_TYPE_ARM_IPA_SIZE_MASK)
->   /*
->    * ioctls for /dev/kvm fds:
->    */
-> @@ -953,6 +962,7 @@ struct kvm_ppc_resize_hpt {
->   #define KVM_CAP_NESTED_STATE 157
->   #define KVM_CAP_ARM_INJECT_SERROR_ESR 158
->   #define KVM_CAP_MSR_PLATFORM_INFO 159
-> +#define KVM_CAP_ARM_VM_IPA_SIZE 160 /* returns maximum IPA bits for a VM */
+Yes, we are going to meet the NEMU guys at KVM Forum and talk about the
+"mini-Kconfig" stuff; in the meanwhile, default-configs/ is what we
+have, it was enough while we were caring basically only about x86 and
+thus we only needed to disable PCI devices, but now it's showing its age.
 
-Please be aware that there have been multiple merge conflicts with
-the kvmarm-tree onto kvm tree upstream and the numbers have changed.
-I assume that you will be rebasing this to mainline anyways.
-
-Cheers
-Suzuki
+Paolo

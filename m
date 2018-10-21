@@ -1,250 +1,200 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp447929wrt;
-        Sat, 20 Oct 2018 03:27:25 -0700 (PDT)
-X-Received: by 2002:adf:eac2:: with SMTP id o2-v6mr6546555wrn.287.1540031245943;
-        Sat, 20 Oct 2018 03:27:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540031245; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2093627wrt;
+        Sun, 21 Oct 2018 12:10:13 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61YyxASsYSkZotY1pcUEBFJZbsY9pY08YrtV6AV486yQU6TTxZEYtNJKxxhZvm3IK9IbM82
+X-Received: by 2002:a0c:93c5:: with SMTP id g5mr42535031qvg.136.1540149013310;
+        Sun, 21 Oct 2018 12:10:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540149013; cv=none;
         d=google.com; s=arc-20160816;
-        b=bT7exIlNROQ3CShWSSEKXl6vEUYjCpg4H/N4neJB8JJLV139EIQBELAAfOIofm7KVh
-         L5/wBrpNfo4SJ2+Icx4wCD/Ct7ZcVK9oUkvWqJ+51MlPlNH/SDHqRWijbtMuefjSo9DL
-         RuJzAtCR0NsDcB92JoxTOnrs00xShJP4jhGUJCLT+H7mSO8Fb3rQjH8l4raxSXNzIaos
-         UqRgrZTHlKufezLqr0r2no0Kwv9c7suQy/TJqSz101Aw/9Pquy6E1qpiIOdyNFBT5TX3
-         nV+i+Pq4/a3y1qKx0Cn+etXaqw4aglrVVPHby5w2hF5sluCDffXqdbyn8mGf53S5R9xk
-         D8IQ==
+        b=f2B6qRJ0J2Psnjb1clpd/ln54NXs/5qO1wwHXQ33+nrkMFwJHPZRmi6xizUK/3HCC7
+         /ewEcwuCkhOdTttxkXmXYwFewWHkmbhkCsCEd3T26wQ54FLTQQXZSh/TLdIakKW3woI9
+         xnO/oEW8hOtTJny9ZCZdwA+RCGD7gGb1d25tq+iTT/uB/uMhgWvxBAecYT95qZ3STFkP
+         UIExIDuzFzUDOwPfKJJwaEwS5oY71L0JU6QNnVx+ZMa8aV1bi9Dum9vqlJR9CiVhA/l6
+         iO7+v8BUYWu6BKWVaigQq0u59pTv856uY1aWH8T0Ji0yo/Y3pDdywbDh+uIJXIozhYCK
+         CURA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:cc:to:subject:from;
-        bh=aJXEGhXmOMGadYGZKEnG7wKp5Gdh+tIjkDu3JJdJbB0=;
-        b=jUBCMqSm3A5cyLVgC1rrFCt62+zRVvV28fCg38ZpomyZZuddT5E5xZuzGm3Zh0ObR4
-         5Lz5brXglt/2MAOpYcxnTtJcPrTRN4ESmCno466+wlk2VvHqlyevz6SjdqLuWYH+uA5B
-         MocAnOG3wtQR02keAhA231TkAA/AOATO6nziUJCuLRc/qdJS0rDtA84hKtH6mQIoBhyE
-         4nS2p1l0zRGT18BmQv5WE94n026nOATQveN+K2RaY4dWzxh2eQBzmIlFnIfwozonHwWx
-         6sY7EU8uXY37IL1AbbdPELT2wB5q5nElUtprorSuuSDJE1yeIsxqZrhW3S7Ip6KjjK+L
-         w8aA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=1zyTRUGjxmCoWpFc/LoeecqtGzbwXb88vWz2x96J+4I=;
+        b=AYflM7789T0OrcRY0lgL5oc6Nx9ANrXs7qm+dM5imaWXJ6xbvJHLZxFBrBRfeg3FhT
+         0Z3Ar7eZVqEh8AL833SAxYq/5vc3V6hzLR8XFi3k0Ly4qCYy4LjYGmIh73h9z9G+pDS6
+         T6s8BPY966bvYaADBS0cQXdbXhNx1KDYbHgZAe0kDiHmBFG4wPemPaL89/tks/41Veku
+         1dd6/vEClR4Z+ckyyC4jJuYHqCKYbVnnJqs8bIjVVZWHivZ5nDQhiUgmP9TdGoiz2cYm
+         Lr/VK3GoQeFatiwOBgh+/iiDBXi+9PdOmqKxRCQLHw9vwPWNe503zo6cLHb0QJuEChKL
+         YNPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j13-v6sor16723514wrp.24.2018.10.20.03.27.25
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=LN++PutY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id o48si1147047qvc.181.2018.10.21.12.10.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 20 Oct 2018 03:27:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 21 Oct 2018 12:10:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:subject:to:cc:references:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=aJXEGhXmOMGadYGZKEnG7wKp5Gdh+tIjkDu3JJdJbB0=;
-        b=ZGYVM6S+kbYMvYj94qriIozgsm6OYLy7y/YQujMDGcsau5yA+deNXNAB3RmlQRCV45
-         Wltbk5QgCbKy6AuZlNRrQ+cpFKw8lwOQu0CAhtAOuFlW2yPWFTSO/yMWhB7+GYedwUcE
-         aJIqCzheewSkE6NRU+IL5b0vru+vNp/kT4IhcSc1DF2xGE7UGqfRMgo15Ppeocli9dYj
-         wbNCgO8F4N4nw2MtDNuC0GfCVv0WiSro+T3fxKGJ+tM194YA66roVyN2bqkbsaF/9Yy1
-         l+kwLBCjSIKMjGqxMTERVhgcfkEzcU0mjrKfE0OvKrelaSzxehMWVQIYccYUQI7+Dio+
-         F/tQ==
-X-Gm-Message-State: AGRZ1gJvP3UEHUQVJY9bH1tIjvsw93oiotkl9DmcWoI3GGNv/0K399Mv
-	KMGFn1leAYdRGPcXA05qasEYwA==
-X-Google-Smtp-Source: AJdET5dMc5El9sxiNblbeTozU508mFXSp2UYlZ8OmJ9OdCtITszc1FLpr2mfRFfezZyT8feFaBZf/w==
-X-Received: by 2002:a5d:62d1:: with SMTP id o17-v6mr5577676wrv.27.1540031245594;
-        Sat, 20 Oct 2018 03:27:25 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.130] ([139.47.31.187])
-        by smtp.gmail.com with ESMTPSA id 67-v6sm4206890wmd.1.2018.10.20.03.27.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 20 Oct 2018 03:27:24 -0700 (PDT)
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Subject: Re: [Qemu-devel] [PULL 00/45] Machine queue, 2018-10-18
-To: Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov
- <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Libvirt <libvir-list@redhat.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
- Max Filippov <jcmvbkbc@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring
- <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Peter Crosthwaite <crosthwaite.peter@gmail.com>,
- Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=LN++PutY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59920 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gEJ76-0003Ap-Pc
+	for alex.bennee@linaro.org; Sun, 21 Oct 2018 15:10:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57089)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <dgibson@ozlabs.org>) id 1gEJ6H-00037Y-Hn
+	for qemu-devel@nongnu.org; Sun, 21 Oct 2018 15:09:22 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <dgibson@ozlabs.org>) id 1gEJ58-0000YD-7c
+	for qemu-devel@nongnu.org; Sun, 21 Oct 2018 15:08:11 -0400
+Received: from ozlabs.org ([203.11.71.1]:59807)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1gEJ53-0000Us-5w; Sun, 21 Oct 2018 15:08:06 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 42dTgc4K0hz9sCt; Mon, 22 Oct 2018 06:07:56 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1540148876;
+	bh=I25YpT/SmCCUBx/fBNmeeWiT6hFSLbNsTxUtWPtFs+8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LN++PutYvuZWwn46NxIfen0kqWnI9UFTaOPpj94C4IB/VFZScwF98zJmuQZ4hgWeN
+	ASU9ZcS8r3YwQEM5yavORrDHUAOd/NB0HLwwkWF7pP+VXx6L/Q2ymtNK0h+0ZFcsfz
+	vgUKPAEJU+pSmRs/9jD5yZg6O0NPOUMy8itBaH9s=
+Date: Sun, 21 Oct 2018 18:37:25 +0100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20181021173723.GC2215@umbus>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
- <CAFEAcA9p0dLoNQy7kBdcXMz0HiMGEZTBX67Lq2SizTY3kgeksw@mail.gmail.com>
- <20181019184408.GG31060@habkost.net>
- <20181019215345.521d58d7@igors-macbook-pro.local>
- <20181019202321.GM31060@habkost.net>
-Message-ID: <f3d35b09-cec1-7d18-4d42-86dfb5b63fba@redhat.com>
-Date: Sat, 20 Oct 2018 12:27:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.2.1
+	<20181018200422.4358-2-ehabkost@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20181019202321.GM31060@habkost.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: gGBFVL39joXf
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="6zdv2QT/q3FMhpsV"
+Content-Disposition: inline
+In-Reply-To: <20181018200422.4358-2-ehabkost@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-devel] [PULL 01/45] hostmem-file: fixed the memory leak
+ while get pmem path.
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+	Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
+	Zhang Yi <yi.z.zhang@linux.intel.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4kxIxyDOHdpm
 
-On 19/10/2018 22:23, Eduardo Habkost wrote:
-> On Fri, Oct 19, 2018 at 09:53:45PM +0200, Igor Mammedov wrote:
->> On Fri, 19 Oct 2018 15:44:08 -0300
->> Eduardo Habkost <ehabkost@redhat.com> wrote:
->>
->>> On Fri, Oct 19, 2018 at 03:12:31PM +0100, Peter Maydell wrote:
->>>> On 18 October 2018 at 21:03, Eduardo Habkost <ehabkost@redhat.com> wrote:
->>>>> The following changes since commit 09558375a634e17cea6cfbfec883ac2376d2dc7f:
->>>>>
->>>>>   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20181016-1' into staging (2018-10-16 17:42:56 +0100)
->>>>>
->>>>> are available in the Git repository at:
->>>>>
->>>>>   git://github.com/ehabkost/qemu.git tags/machine-next-pull-request
->>>>>
->>>>> for you to fetch changes up to 6d8e1bcc7dd5e819ce81e6a87fffe23e39c700cc:
->>>>>
->>>>>   numa: Clean up error reporting in parse_numa() (2018-10-17 16:33:40 -0300)
->>>>>
->>>>> ----------------------------------------------------------------
->>>>> Machine queue, 2018-10-18
->>>>>
->>>>> * sysbus init/realize cleanups
->>>>>   (Cédric Le Goater, Philippe Mathieu-Daudé)
->>>>> * memory-device refactoring (David Hildenbrand)
->>>>> * -smp: deprecate incorrect CPUs topology (Igor Mammedov)
->>>>> * -numa parsing cleanups (Markus Armbruster)
->>>>> * Fix hostmem-file memory leak (Zhang Yi)
->>>>> * Typo fix (Li Qiang)
->>>>>
->>>>> ----------------------------------------------------------------
->>>>>
->>>>
->>>> Hi. This had some problems in merge testing, I'm afraid:
->>>>
->>>> On aarch64 host, warnings running tests/cpu-plug-test for i386 and s390 targets:
->>>>
->>>> TEST: tests/cpu-plug-test... (pid=12602)
->>>>   /i386/cpu-plug/pc-i440fx-3.0/cpu-add/1x3x2&maxcpus=12:
->>>> qemu-system-i386: warning: Invalid CPU topology deprecated: sockets
->>>> (1) * cores (3) * threads (2) != maxcpus (12)
->>> [...]
->>>>
->>>> (plus similar ppc64, x86_64 targets)
->>>
->>> Ouch.  Apologies.
->>>
->>> Can we please do something make sure "make check" will fail on
->>> these cases?  I'd like to be able to trust CI systems like
->>> travis-ci.
->>>
->>
->> we probably don't want make check fail on warning.
-> 
-> I disagree.  If a warning is blocking a pull request from being
-> merged, it must make CI systems fail too.  Otherwise we're
-> defeating the purpose of CI systems.
 
-We can, we also have the hardware (courtesy of Packet), we just need to
-make time to set it up.
+--6zdv2QT/q3FMhpsV
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-QEMU Summit is a good place where to talk about this.
+On Thu, Oct 18, 2018 at 05:03:38PM -0300, Eduardo Habkost wrote:
+> From: Zhang Yi <yi.z.zhang@linux.intel.com>
+>=20
+> object_get_canonical_path_component() returns a string which
+> must be freed using g_free().
+>=20
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Zhang Yi <yi.z.zhang@linux.intel.com>
+> Message-Id: <7328fb16c394eaf5d65437d11c2a9343647b6d3d.1535471899.git.yi.z=
+=2Ezhang@linux.intel.com>
+> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-> 
-> 
->> Test was written with assumption that s/c/t tuples matches initially present CPUs, hence a warning.
->> Would something like following fix the issue (local x86 build/test looks fixed with it)?
-> 
-> It works for me.  I will queue it on machine-next, thanks!
-> 
->>
->> diff --git a/tests/cpu-plug-test.c b/tests/cpu-plug-test.c
->> index 3e93c8e..f4a677d 100644
->> --- a/tests/cpu-plug-test.c
->> +++ b/tests/cpu-plug-test.c
->> @@ -32,12 +32,12 @@ static void test_plug_with_cpu_add(gconstpointer data)
->>      unsigned int i;
->>  
->>      args = g_strdup_printf("-machine %s -cpu %s "
->> -                           "-smp sockets=%u,cores=%u,threads=%u,maxcpus=%u",
->> +                           "-smp 1,sockets=%u,cores=%u,threads=%u,maxcpus=%u",
->>                             s->machine, s->cpu_model,
->>                             s->sockets, s->cores, s->threads, s->maxcpus);
->>      qtest_start(args);
->>  
->> -    for (i = s->sockets * s->cores * s->threads; i < s->maxcpus; i++) {
->> +    for (i = 1; i < s->maxcpus; i++) {
->>          response = qmp("{ 'execute': 'cpu-add',"
->>                         "  'arguments': { 'id': %d } }", i);
->>          g_assert(response);
->> @@ -56,7 +56,7 @@ static void test_plug_without_cpu_add(gconstpointer data)
->>      QDict *response;
->>  
->>      args = g_strdup_printf("-machine %s -cpu %s "
->> -                           "-smp sockets=%u,cores=%u,threads=%u,maxcpus=%u",
->> +                           "-smp 1,sockets=%u,cores=%u,threads=%u,maxcpus=%u",
->>                             s->machine, s->cpu_model,
->>                             s->sockets, s->cores, s->threads, s->maxcpus);
->>      qtest_start(args);
->> @@ -79,12 +79,12 @@ static void test_plug_with_device_add_x86(gconstpointer data)
->>      unsigned int s, c, t;
->>  
->>      args = g_strdup_printf("-machine %s -cpu %s "
->> -                           "-smp sockets=%u,cores=%u,threads=%u,maxcpus=%u",
->> +                           "-smp 1,sockets=%u,cores=%u,threads=%u,maxcpus=%u",
->>                             td->machine, td->cpu_model,
->>                             td->sockets, td->cores, td->threads, td->maxcpus);
->>      qtest_start(args);
->>  
->> -    for (s = td->sockets; s < td->maxcpus / td->cores / td->threads; s++) {
->> +    for (s = 1; s < td->sockets; s++) {
->>          for (c = 0; c < td->cores; c++) {
->>              for (t = 0; t < td->threads; t++) {
->>                  char *id = g_strdup_printf("id-%i-%i-%i", s, c, t);
->> @@ -113,7 +113,7 @@ static void test_plug_with_device_add_coreid(gconstpointer data)
->>                             td->sockets, td->cores, td->threads, td->maxcpus);
->>      qtest_start(args);
->>  
->> -    for (c = td->cores; c < td->maxcpus / td->sockets / td->threads; c++) {
->> +    for (c = 1; c < td->cores; c++) {
->>          char *id = g_strdup_printf("id-%i", c);
->>          qtest_qmp_device_add(td->device_model, id, "{'core-id':%u}", c);
->>          g_free(id);
->> @@ -148,7 +148,7 @@ static void add_pc_test_case(const char *mname)
->>      data->sockets = 1;
->>      data->cores = 3;
->>      data->threads = 2;
->> -    data->maxcpus = data->sockets * data->cores * data->threads * 2;
->> +    data->maxcpus = data->sockets * data->cores * data->threads;
->>      if (g_str_has_suffix(mname, "-1.4") ||
->>          (strcmp(mname, "pc-1.3") == 0) ||
->>          (strcmp(mname, "pc-1.2") == 0) ||
->> @@ -203,7 +203,7 @@ static void add_pseries_test_case(const char *mname)
->>      data->sockets = 2;
->>      data->cores = 3;
->>      data->threads = 1;
->> -    data->maxcpus = data->sockets * data->cores * data->threads * 2;
->> +    data->maxcpus = data->sockets * data->cores * data->threads;
->>  
->>      path = g_strdup_printf("cpu-plug/%s/device-add/%ux%ux%u&maxcpus=%u",
->>                             mname, data->sockets, data->cores,
->> @@ -229,7 +229,7 @@ static void add_s390x_test_case(const char *mname)
->>      data->sockets = 1;
->>      data->cores = 3;
->>      data->threads = 1;
->> -    data->maxcpus = data->sockets * data->cores * data->threads * 2;
->> +    data->maxcpus = data->sockets * data->cores * data->threads;
->>  
->>      data2 = g_memdup(data, sizeof(PlugTestData));
->>      data2->machine = g_strdup(data->machine);
->>
->>
-> 
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-This patch with Igor Signed-off-by:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  backends/hostmem-file.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
+> index e64074954f..639c8d4307 100644
+> --- a/backends/hostmem-file.c
+> +++ b/backends/hostmem-file.c
+> @@ -145,20 +145,26 @@ static void file_memory_backend_set_pmem(Object *o,=
+ bool value, Error **errp)
+>      HostMemoryBackendFile *fb =3D MEMORY_BACKEND_FILE(o);
+> =20
+>      if (host_memory_backend_mr_inited(backend)) {
+> +        char *path =3D object_get_canonical_path_component(o);
+> +
+>          error_setg(errp, "cannot change property 'pmem' of %s '%s'",
+>                     object_get_typename(o),
+> -                   object_get_canonical_path_component(o));
+> +                   path);
+> +        g_free(path);
+>          return;
+>      }
+> =20
+>  #ifndef CONFIG_LIBPMEM
+>      if (value) {
+>          Error *local_err =3D NULL;
+> +        char *path =3D object_get_canonical_path_component(o);
+> +
+>          error_setg(&local_err,
+>                     "Lack of libpmem support while setting the 'pmem=3Don=
+'"
+>                     " of %s '%s'. We can't ensure data persistence.",
+>                     object_get_typename(o),
+> -                   object_get_canonical_path_component(o));
+> +                   path);
+> +        g_free(path);
+>          error_propagate(errp, local_err);
+>          return;
+>      }
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--6zdv2QT/q3FMhpsV
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvMuU0ACgkQbDjKyiDZ
+s5KQVRAAujLtGt2u14Wco4jGuGQbcGdgHa7R+y/ybLvp5daHKuQ4TX5hufFEAunj
+tthwhwnyqXYzZaZaGmAAkdM9keMYwYMcHqGJmVO7psRbg1PKzIui7GvQn+n2HSZw
+tEOP5xOE+8hDTF8/mTJ3AZxR43qZEBvVSFB5ZaFguVvLcBxlkcG+jHSL1HlBeh0I
+wrVQ8JOFmxlJuiY9BKAJqHu2Lu+7JKKao6wglT8pX+LpNSVKU/ejn2nMs2W68IP4
+JQQlD/3WzgKv09vGDQR3hji+2edBepvkTTp8p4TJFq3QYDe4MJrIOdcYQ5wcI3Jt
++2vsUA4efWMT9MtEa+MPhmLoedYN5M9IZdoj1cv1G0/hs/LrFBhImtMQSRvOYkhg
+0TXbYcB3rKdC5ip1T/1nqZs/nikDhNv8oDYJogK+sUeZFytHKs1UXi78UyqVPvNq
+tQP2YaChH54jHYwrvMzgmAaBpt+KTB8sMerpEpexI4R6/phO8Ry7Lb0fKxnwaDVg
+1mFbf0GOTN6C7nKfhsqSqWLhcyf+DuBCZj5VxoCn1IHpwT+B4gmc+iED4xvP6uvx
+dFi6t5VGZsnbRyPtx0iRzY8dVhvguXgDayWEkGOX+biUJ8DsY9XVqmwBGE6RH4FH
+EKuwWQK9Ulcabl2e1pF0aTL6DXMBY9XY/iCGG4Z6H/wxg+IdVoM=
+=WsnR
+-----END PGP SIGNATURE-----
+
+--6zdv2QT/q3FMhpsV--

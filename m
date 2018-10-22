@@ -1,108 +1,137 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4506000wrt;
-        Fri, 19 Oct 2018 16:46:37 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63kLfQZNcAA1Dg5W042f0wSc/QDY22DhrBPYQDQ1BD4R6698zmcqJh9wvoVQT0b9mJqHfg8
-X-Received: by 2002:a37:3642:: with SMTP id d63-v6mr33569965qka.306.1539992797898;
-        Fri, 19 Oct 2018 16:46:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539992797; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp3192570wrt;
+        Mon, 22 Oct 2018 08:31:06 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fwTHD4Y9Bhsgq//CG5qVLsuHRql8f/Xq7+04EXHxcrIVt/NCpxyQNj4keIT15IcbjYvvte
+X-Received: by 2002:aed:35cb:: with SMTP id d11-v6mr7682955qte.212.1540222266831;
+        Mon, 22 Oct 2018 08:31:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540222266; cv=none;
         d=google.com; s=arc-20160816;
-        b=mRKgZU5u9SAlsvkYiJTnFfSlNqiTNDE3/HDKEw1+OHSj09upNY1dBsfECX9ZQBI6TH
-         8/TbhuU+DeCtYD5ygJJvrRDGj8At5bvfO2/1F619Qwlftpmkrl7l8/q+VWe7Yo8UedRU
-         xQMzGx4kcROQg0HTtZHpggcsxuW2D4CDAhtDs72MqE453BcFtbiZlsFnUjATw1uw9aNE
-         xGoBPvLy2Tvflgz2E7JSqMzy7/qZTMKnGNDJvV4vhb+R0wS/pobdiY9hiR60Y2DM8p56
-         ofsOJwSa1lfJ4f2pdhTTr5oOxvBmKkgpHYnLu2FxObFdh06iDk6KII1TZLaD90nYRwqC
-         Wtlg==
+        b=b4/blKAeEaSPpIzshSnK53ikl4f5Kq76LhHkdjYoI3Wa+Kyu1DbAA9Pkx25RHwf9c5
+         r9BpcwDcpipOWxrJjU3cT/NVbIUKu/aJHI2mOAhClNcHJAMyF1wVSQKo3/aE/j/5w37I
+         tJ+cOsLOU/RKgIPmXNlMk+ZNsq9KM0iHBitAgb7VT76FyUd2rQJ5g0JpZKWXzDYAr0Zr
+         RL0T2sAY3lYpcBGpVmbvyZ5rDJbnFrH0Q1qD1FKqwcWw3BfbkQMhg8QwrKRU0ynPKC0i
+         0YEjKSR7bUNjDGV1Rwy50RacNNIv9KSqzLR47232M4fspfuSinAO14Fx6V/YF35ts3YK
+         0vqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature:dkim-signature;
-        bh=r2wZV8RiAIuzOfbpHWBIH+hxRH4LBZOcToVYN/gL8cE=;
-        b=KO3OoHOE0Sxwoh+uk8WAY66sOaEwHagg8WcLJoKdu0oGfnkXXgvO8yY6a2kR1U2tgv
-         3zZ6L16BzpAqPxqwVeYDFhOuWrONphqP6h2aFXW5LnVHgkPKUeKLinT3qtnBpZDbPEDL
-         DSQyVvX5y84LMllki+fundjtdFQYGVybmU+CpYZZw7RfeYfLjG30nok3dxCYhJi7rOpC
-         CxDHSTWlYPpq5IUNhJSDUT34/F8nZZo0M81eTdLDh2YBzfYpaR0Bf1ehXRrc7hh31/Bn
-         58xQ26DazOgQifC8RDsQb/vpecRNveRh0bRjUd2jqlKwiE+RbGD5Lksmuf8Gnp1oxa3k
-         hfrA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
+        bh=5r9aVNnQYCtnDo7b0nLHUYjgxYk//pGB9buDVvpxyKo=;
+        b=r+i/LmJeKXSA8/5TgqkfEqYu2LClxOO5XXYoabO8Y1elWnsnWodmm+TTkj4e/hyH3Y
+         pe9fjQArwyP8bdMyeKBTURvpTU7GcpK95CJKwvr+pwD5a2D+aiN92M/L2Fo0l+0J/YD1
+         mewyJ04bCebZi2r5EXh/Pg4USIYruGnwWhoSFH1WsHoBnLf6vNvEP54fCUZ0PaL6OH/A
+         R/V5SLsoCdzPuToh1m0XhuQAS7pAnVaRmeq7eCIMtx2VRdM0C/17ErhjxEKmlwYDbVls
+         5Gvuuj9ncKqeEa8M9FhKEW6PCxFUjizGG5nQEHsuFHsvanBsJHhwIG43BlGCshbtwVXS
+         qdhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=oDF1Y1NA;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MnxhQC23;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 14-v6si1357552qkk.201.2018.10.19.16.46.37
+        by mx.google.com with ESMTPS id o68-v6si7721379qkd.9.2018.10.22.08.31.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 19 Oct 2018 16:46:37 -0700 (PDT)
+        Mon, 22 Oct 2018 08:31:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b=oDF1Y1NA;
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=MnxhQC23;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53073 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35777 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gDeTV-000148-FJ
-	for alex.bennee@linaro.org; Fri, 19 Oct 2018 19:46:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41813)
+	id 1gEcAc-0005Kw-8l
+	for alex.bennee@linaro.org; Mon, 22 Oct 2018 11:31:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41726)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1gDeTM-000140-PD
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 19:46:31 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1gEcAJ-0005Jb-4a
+	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 11:30:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1gDeTB-0006qI-4b
-	for qemu-arm@nongnu.org; Fri, 19 Oct 2018 19:46:23 -0400
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:37367)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1gDeTA-0006my-5p; Fri, 19 Oct 2018 19:46:16 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 014BE22133;
-	Fri, 19 Oct 2018 19:46:14 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-	by compute4.internal (MEProxy); Fri, 19 Oct 2018 19:46:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
-	date:from:to:cc:subject:message-id:references:mime-version
-	:content-type:in-reply-to; s=mesmtp; bh=r2wZV8RiAIuzOfbpHWBIH+hx
-	RH4LBZOcToVYN/gL8cE=; b=oDF1Y1NAnnIX4THEtdU9Brfr0qcCjRzeAX9ALIwG
-	gauE1+xG1Istmb+yJ+4ksB4OWHsRd1b+KLPZ0BKG64fHaxK0k8BPrM3qO7jlJFBC
-	K6pgqp7PymLkFaQFIFG7cW65QKozeGaG/zYYSQ7/QITGIM0V14Dor/QgtxRLJnzH
-	2DQ=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to:x-me-proxy
-	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=r2wZV8
-	RiAIuzOfbpHWBIH+hxRH4LBZOcToVYN/gL8cE=; b=MnxhQC23ZR1cljYdsgrlfu
-	s0LrJKpf+nAS4wETsGWWHveJKF5XokmMn64+iej7LkU3w+ZS++5DkrH9B095n71p
-	a4od9myCIXAVV7QVAjxjsPTyjZah5S4JYxQP4oB2gG3GsKsJDavt7rU8f1aIhPw0
-	GkkSWMbpclTsCNAjEiDFHPpw62lC5HqfO/XxqSeaetE+yw6C8G5UAOmb3HuBOOGl
-	BR/y8v+fI2FUo7jJw/3Jm03QRq5TXtIPeIPSBHWjstyhQjTZr5usSJRx/sgHNdVn
-	EmlI5Zm6RpEMltPkannbAqiR/MNmLYWodn2UDEoBiujE6RcCP9cxWcJu6plQslbQ
-	==
-X-ME-Sender: <xms:wWzKWw5ag4G9k2sSBkVUlMeeu97FLcHpGdRPNsX41UN02_iDuxM6ug>
-X-ME-Proxy: <xmx:wWzKW1PH3D1zIC4cJK3Wz-dtxvPi8ljdjfAPm_oBgsrMe0fojAuZjA>
-	<xmx:wWzKW2x8YL6v6ey9YHw9AepfsjGCcy68gL8uGRjm5pgJ032vdoSyrA>
-	<xmx:wWzKW-98YYc9-n75hff1nPX2eMpdkLGa8kA9WCGCcc6zdYDMQbN_kw>
-	<xmx:wWzKW4xeb6jXk01kYEiG5ESp4GDsAe7RfJnQGS5C-wt_I7dLVB7rnQ>
-	<xmx:wWzKWzElqbu--ni7q4KarhPrLWZLnY6qzUsdX8hghSO61dnJcWyg2A>
-	<xmx:xWzKW_ngwqdlQz3SNqs48-KuWJPdKp49XIuYgCTsehn0rxWvDLuExg>
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 46C75102DD;
-	Fri, 19 Oct 2018 19:46:09 -0400 (EDT)
-Date: Fri, 19 Oct 2018 19:46:08 -0400
-From: "Emilio G. Cota" <cota@braap.org>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20181019234608.GA32420@flamenco>
+	(envelope-from <pbonzini@redhat.com>) id 1gEcAE-0001Uv-Lo
+	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 11:30:47 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:40731)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1gEcAE-0001SC-AL
+	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 11:30:42 -0400
+Received: by mail-wr1-f67.google.com with SMTP id d2-v6so45470432wro.7
+	for <qemu-arm@nongnu.org>; Mon, 22 Oct 2018 08:30:41 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=5r9aVNnQYCtnDo7b0nLHUYjgxYk//pGB9buDVvpxyKo=;
+	b=dvAQ58Eog+dRlmlEauZTMRpG0TgZv+G4B62+/k83H+VKsk8NmRgDnJX4w5za/2fnE5
+	cYsxtmbzQr3OVBH/rU4aVxKQn2WTUc4nuz2gZCx4tJFL7RbaC2K0Ah3hOiykvpPHcDtQ
+	MquF22BxCI0blYjQR7wY0qXptLclTuQQDGKYGqVDTWV2P43vGlDVf3+pUG788CKjJrlh
+	OrTHaCpYSJQQG/RamEKNDJlcJHpobTVQf8kqYX1mWf/C4KceMWqKErMQj6I16z70sxvc
+	yxzFPFfHoggZAQ1Nydk2hZvrj7t2n69gdNiwFXiDlBpZUIwhuGlAGUVWfquO8VgnZrJg
+	vntw==
+X-Gm-Message-State: AGRZ1gJnROg2kyV8YLhYPuu9rg/2stDc9t0H95ogxqZyp78g+J73Inkx
+	ZY5GThKPpGhtmth4wZXxMjCk0Q==
+X-Received: by 2002:a05:6000:11c1:: with SMTP id
+	i1mr12449031wrx.310.1540222240180; 
+	Mon, 22 Oct 2018 08:30:40 -0700 (PDT)
+Received: from [10.223.168.229]
+	(host86-187-162-114.range86-187.btcentralplus.com. [86.187.162.114])
+	by smtp.gmail.com with ESMTPSA id
+	v30-v6sm11760055wra.67.2018.10.22.08.30.37
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 22 Oct 2018 08:30:39 -0700 (PDT)
+To: "Emilio G. Cota" <cota@braap.org>
 References: <20181019010625.25294-1-cota@braap.org>
 	<f7067d72-3b2a-9e6e-4636-f18ac1cf5202@redhat.com>
 	<20181019145018.GB7279@flamenco>
 	<6190036c-cd1f-4549-9b7e-9e7913c972d4@redhat.com>
-	<20181019192932.GA17761@flamenco>
+	<20181019192932.GA17761@flamenco> <20181019234608.GA32420@flamenco>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <74e14727-1174-0b91-94ae-6f07475e583d@redhat.com>
+Date: Mon, 22 Oct 2018 17:30:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20181019192932.GA17761@flamenco>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20181019234608.GA32420@flamenco>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.27
+	[fuzzy]
+X-Received-From: 209.85.221.67
 Subject: Re: [Qemu-arm] [RFC v3 0/56] per-CPU locks
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -140,38 +169,20 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +bPJ6bI4OP15
+X-TUID: 4sXyBM+dxNvH
 
-On Fri, Oct 19, 2018 at 15:29:32 -0400, Emilio G. Cota wrote:
-> On Fri, Oct 19, 2018 at 18:01:18 +0200, Paolo Bonzini wrote:
-> > > Given that we need a per-CPU lock anyway to remove the BQL from the
-> > > CPU loop, extending this lock to protect cpu->interrupt_request is
-> > > a simple solution that keeps the current logic and allows for
-> > > greater scalability.
-> > 
-> > Sure, I was just curious what the problem was.  KVM uses OR+kick with no
-> > problems.
-> 
-> I never found exactly where things break. The hangs happen
-> pretty early when booting a large (-smp > 16) x86_64 Ubuntu guest.
-> Booting never completes (ssh unresponsive) if I don't have the
-> console output (I suspect the console output slows things down
-> enough to hide some races). I only see a few threads busy:
-> a couple of vCPU threads, and the I/O thread.
-> 
-> I didn't have time to debug any further, so I moved on
-> to an alternative approach.
-> 
-> So it is possible that it was my implementation, and not the approach,
-> what was at fault :-)
+On 20/10/2018 01:46, Emilio G. Cota wrote:
+>> So it is possible that it was my implementation, and not the approach,
+>> what was at fault :-)
+> I've just observed a similar hang after adding the "BQL
+> pushdown" patches on top of this series. So it's likely that the
+> hangs come from those patches, and not from the work on
+> cpu->interrupt_request. I just confirmed with the prior
+> series, and removing the pushdown patches fixes the hangs there
+> as well.
 
-I've just observed a similar hang after adding the "BQL
-pushdown" patches on top of this series. So it's likely that the
-hangs come from those patches, and not from the work on
-cpu->interrupt_request. I just confirmed with the prior
-series, and removing the pushdown patches fixes the hangs there
-as well.
+Oh well, not a big deal.  You already wrote these patches and I don't
+have much time for MTTCG anyway, so I am okay with sticking with them.
+Thanks!
 
-Thanks,
-
-		Emilio
+Paolo

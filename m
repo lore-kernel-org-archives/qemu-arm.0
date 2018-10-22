@@ -1,216 +1,189 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2094523wrt;
-        Sun, 21 Oct 2018 12:11:15 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62BHyaPnINjgqd8csqyowJTyTdXVa5nPHfFZs8ERaqwPalJFnpHKmLe5Y8GjqCLqTrLAMBW
-X-Received: by 2002:aed:25f7:: with SMTP id y52-v6mr4786146qtc.217.1540149075160;
-        Sun, 21 Oct 2018 12:11:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540149075; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp2731969wrt;
+        Mon, 22 Oct 2018 02:01:05 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV6160A1jEfBkkjUTQ8W3wDBn0FAtTxP9K/uOC78lD4OErRQ/kxsqV1sbRbPhuCiiPeDs33vj
+X-Received: by 2002:a37:cfc7:: with SMTP id v68-v6mr41869491qkl.35.1540198865799;
+        Mon, 22 Oct 2018 02:01:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540198865; cv=none;
         d=google.com; s=arc-20160816;
-        b=YrEQfeRy0PeQ5Q6ZpotGrlRFNeMp0EJOGAQKOMcCUb7Ag3x2sAw6epMlyq/52xkFCo
-         h+o38qzAKmtJQG1g0zTkKw/UVn63lDvzMmIpTiYdQi2t/ZpdOLJJC9Qxai3Ye+M8NPV1
-         8f1Z74FcVgrR8oEzmQiCf6ImMy+kw+LRVZVBjEpX7EuvUSidM5VOcZ9RnCiWadm3rS7t
-         e5NjpO+XQEWYgB/xMZjLTNpT1tShaKxRg/m5XZNiwHBYLe5FnxFvNPQOvPpneme4Tn5h
-         W2/1pTwqjvUgEQnzqhNOo5nxq32gn+LxEqKHfNXH+qr91BG61xoEdXlQBualo0tudsoD
-         lEeg==
+        b=RRR333bSViqFR3/SROBjyeLHqB7XLyktDisSJzEPfzuLBYq9JZMZW2G3H8dCH0qkXf
+         +sGKahLoIwQnMFbOetbXlsCJ4HBBK7YSy3MN/gJkOaE16aFGq8AUrq0vowGa6BqYrpLi
+         P3cRaFqvEdpGifFUfJF3AigaEeRdcLcGoaoJ9c88h0JCYIasQjOenPt4FtyzPsaIxu0h
+         Y2Aa9gPuWhTBPHH8cbILD/xBgMokdVjvr7/1ZFeJIajNoCNyrMdNVUe9XuKOodwXN1+m
+         S2yXyStmVL2SsYCMNNnvaIXUYAsbNipE1EVQlHw33luIfJjUAvfwJ++OU+rgsXX60e4t
+         RH6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=ONHw2U0hbjN5On2g5jOKpD+NXdHWWl04UBa7hve4mLE=;
-        b=o4igAdulzKgcalvrpdjpnD0RZ8T2/jnB7vrSzGRFfPgKBFdx+lcK1JN6uO2e5FNqfg
-         30UINwo3eg7hJtN9IruD8+4gyq1H+L8i3T+GofH1rQuoZiT3tu9LSpFLnPItI+GE9VVn
-         bV/cXVapl5gn1TZJWMz5IDRpYUltCUTDqwRrF09y3VB72sXjjRvvEEldBpjxu0G58CwO
-         44WKGg7jBZ2eLCasQLAZrjcqN3Vhdq6BGWipWCnjFqclzPNBExXZBN76yp5pUmmlYQxN
-         YyRGjTnczOIf4xlipvDc6x5O9nxDO1APJ3EfMNmVAIMY1Dio04E9ejv9bTqNLlEfeVhv
-         8XDw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=YslPpdOdMT3T/bGRY+XfBzPsuNOCBBcq9nNcBQ/5EBE=;
+        b=fIKNLsOiYRfd6J82lpjDj1UPrPpZ7Ymm5TYcXjYiR3swr9bRte10KMZvE1Qb7ZozLL
+         O+dbz5oJ5pRKe7l65nnjSUcp4C6o9/N+44d/u32TKGi2+ZnCGJjQpoKgnZnezd4q8cLl
+         hiVAkV8lDFMS2LtlL5hNb50tDfg0V2LBSC1ed5doT5gVkZi9Jh1ziFxkseUYy/PIRKwz
+         VYR1X4V4gmg5HULmRpznu+8azmDLFSjAfR5t/cEJAJ4OJn/s1o+tpe646ngngNsEwBEl
+         ohoOpYrEeC3KgLL/P6C1xtZiLK5vZ8VqMdvJOa+Bzot4dE55P48GahkF4MeBtYzSQ3MH
+         Lh7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Jjh6+npQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s86-v6si2001186qki.14.2018.10.21.12.11.14
+        by mx.google.com with ESMTPS id d14si5107738qvp.215.2018.10.22.02.01.05
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 21 Oct 2018 12:11:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 22 Oct 2018 02:01:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Jjh6+npQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59936 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33625 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gEJ86-00043N-Kq
-	for alex.bennee@linaro.org; Sun, 21 Oct 2018 15:11:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57089)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gEW5B-0007ZY-10
+	for alex.bennee@linaro.org; Mon, 22 Oct 2018 05:01:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36968)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEJ6J-00037Y-Bl
-	for qemu-devel@nongnu.org; Sun, 21 Oct 2018 15:09:24 -0400
+	(envelope-from <imammedo@redhat.com>) id 1gEW50-0007ZI-0O
+	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 05:00:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEJ55-0000Xc-Cf
-	for qemu-devel@nongnu.org; Sun, 21 Oct 2018 15:08:08 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:48521)
+	(envelope-from <imammedo@redhat.com>) id 1gEW4u-00080U-4k
+	for qemu-arm@nongnu.org; Mon, 22 Oct 2018 05:00:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45116)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gEJ53-0000Uw-5x; Sun, 21 Oct 2018 15:08:06 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 42dTgc559rz9sC2; Mon, 22 Oct 2018 06:07:56 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1540148876;
-	bh=BiDDW0Bm7MnmVzBtPVuenX7Yf7OWOGd2SPldKhUlhII=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Jjh6+npQ/mh3N1zCmj+cBucqh7CysMwASGfokGwTPM9aFBjZNhbcyI0ApgLWBURD7
-	dHJeWeSxY2bDoDg9bkBjGWowxLjWMkrP85hB8ErEy+f9KS5K9t/sOR8EuYWbZ3dZ+o
-	q5kUzejMKgYG2dfdCVReNdJ6N7iLjo5lXlmmMRUU=
-Date: Sun, 21 Oct 2018 18:38:20 +0100
-From: David Gibson <david@gibson.dropbear.id.au>
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1gEW4t-0007zY-PM; Mon, 22 Oct 2018 05:00:48 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CB5E430821C4;
+	Mon, 22 Oct 2018 09:00:44 +0000 (UTC)
+Received: from igors-macbook-pro.local (ovpn-112-55.ams2.redhat.com
+	[10.36.112.55])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8F02B226FF;
+	Mon, 22 Oct 2018 09:00:27 +0000 (UTC)
+Date: Mon, 22 Oct 2018 10:00:22 +0100
+From: Igor Mammedov <imammedo@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181021173820.GD2215@umbus>
+Message-ID: <20181022100022.0dc514b9@igors-macbook-pro.local>
+In-Reply-To: <20181019202321.GM31060@habkost.net>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
-	<20181018200422.4358-3-ehabkost@redhat.com>
+	<CAFEAcA9p0dLoNQy7kBdcXMz0HiMGEZTBX67Lq2SizTY3kgeksw@mail.gmail.com>
+	<20181019184408.GG31060@habkost.net>
+	<20181019215345.521d58d7@igors-macbook-pro.local>
+	<20181019202321.GM31060@habkost.net>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="a2FkP9tdjPU2nyhF"
-Content-Disposition: inline
-In-Reply-To: <20181018200422.4358-3-ehabkost@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-devel] [PULL 02/45] vl.c deprecate incorrect CPUs topology
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.47]);
+	Mon, 22 Oct 2018 09:00:45 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 00/45] Machine queue, 2018-10-18
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+	"Michael S. Tsirkin" <mst@redhat.com>, Libvirt <libvir-list@redhat.com>,
 	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>, Rob Herring <robh@kernel.org>,
+	Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +zFPYJa20AT7
+	Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Nq16usR++0r/
 
+On Fri, 19 Oct 2018 17:23:21 -0300
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
---a2FkP9tdjPU2nyhF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Oct 18, 2018 at 05:03:39PM -0300, Eduardo Habkost wrote:
-> From: Igor Mammedov <imammedo@redhat.com>
+> On Fri, Oct 19, 2018 at 09:53:45PM +0200, Igor Mammedov wrote:
+> > On Fri, 19 Oct 2018 15:44:08 -0300
+> > Eduardo Habkost <ehabkost@redhat.com> wrote:
+> >=20
+> > > On Fri, Oct 19, 2018 at 03:12:31PM +0100, Peter Maydell wrote:
+> > > > On 18 October 2018 at 21:03, Eduardo Habkost <ehabkost@redhat.com> =
+wrote:
+> > > > > The following changes since commit 09558375a634e17cea6cfbfec883ac=
+2376d2dc7f:
+> > > > >
+> > > > >   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target=
+-arm-20181016-1' into staging (2018-10-16 17:42:56 +0100)
+> > > > >
+> > > > > are available in the Git repository at:
+> > > > >
+> > > > >   git://github.com/ehabkost/qemu.git tags/machine-next-pull-reque=
+st
+> > > > >
+> > > > > for you to fetch changes up to 6d8e1bcc7dd5e819ce81e6a87fffe23e39=
+c700cc:
+> > > > >
+> > > > >   numa: Clean up error reporting in parse_numa() (2018-10-17 16:3=
+3:40 -0300)
+> > > > >
+> > > > > ----------------------------------------------------------------
+> > > > > Machine queue, 2018-10-18
+> > > > >
+> > > > > * sysbus init/realize cleanups
+> > > > >   (C=C3=A9dric Le Goater, Philippe Mathieu-Daud=C3=A9)
+> > > > > * memory-device refactoring (David Hildenbrand)
+> > > > > * -smp: deprecate incorrect CPUs topology (Igor Mammedov)
+> > > > > * -numa parsing cleanups (Markus Armbruster)
+> > > > > * Fix hostmem-file memory leak (Zhang Yi)
+> > > > > * Typo fix (Li Qiang)
+> > > > >
+> > > > > ----------------------------------------------------------------
+> > > > >
+> > > >=20
+> > > > Hi. This had some problems in merge testing, I'm afraid:
+> > > >=20
+> > > > On aarch64 host, warnings running tests/cpu-plug-test for i386 and =
+s390 targets:
+> > > >=20
+> > > > TEST: tests/cpu-plug-test... (pid=3D12602)
+> > > >   /i386/cpu-plug/pc-i440fx-3.0/cpu-add/1x3x2&maxcpus=3D12:
+> > > > qemu-system-i386: warning: Invalid CPU topology deprecated: sockets
+> > > > (1) * cores (3) * threads (2) !=3D maxcpus (12)
+> > > [...]
+> > > >=20
+> > > > (plus similar ppc64, x86_64 targets)
+> > >=20
+> > > Ouch.  Apologies.
+> > >=20
+> > > Can we please do something make sure "make check" will fail on
+> > > these cases?  I'd like to be able to trust CI systems like
+> > > travis-ci.
+> > >=20
+> >=20
+> > we probably don't want make check fail on warning.
 >=20
-> -smp [cpus],sockets/cores/threads[,maxcpus] should describe topology
-> so that total number of logical CPUs [sockets * cores * threads]
-> would be equal to [maxcpus], however historically we didn't have
-> such check in QEMU and it is possible to start VM with an invalid
-> topology.
-> Deprecate invalid options combination so we can make sure that
-> the topology VM started with is always correct in the future.
-> Users with an invalid sockets/cores/threads/maxcpus values should
-> fix their CLI to make sure that
->    [sockets * cores * threads] =3D=3D [maxcpus]
->=20
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
-> Message-Id: <1536836762-273036-2-git-send-email-imammedo@redhat.com>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> I disagree.  If a warning is blocking a pull request from being
+> merged, it must make CI systems fail too.  Otherwise we're
+> defeating the purpose of CI systems.
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+When we deprecate options we are bound to trigger warning which are not err=
+ors
+and are meant to be there until deprecated options are removed/tested by ma=
+ke check.
+So what would you suggest to do wrt tests that use deprecated features,
+drop testing for it?
 
-> ---
->  vl.c                 |  7 +++++++
->  qemu-deprecated.texi | 12 ++++++++++++
->  2 files changed, 19 insertions(+)
->=20
-> diff --git a/vl.c b/vl.c
-> index 4e25c78bff..027d04c7ca 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -1235,6 +1235,13 @@ static void smp_parse(QemuOpts *opts)
->              exit(1);
->          }
-> =20
-> +        if (sockets * cores * threads !=3D max_cpus) {
-> +            warn_report("Invalid CPU topology deprecated: "
-> +                        "sockets (%u) * cores (%u) * threads (%u) "
-> +                        "!=3D maxcpus (%u)",
-> +                        sockets, cores, threads, max_cpus);
-> +        }
-> +
->          smp_cpus =3D cpus;
->          smp_cores =3D cores;
->          smp_threads =3D threads;
-> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-> index 11b870c5c1..5d2d7a3588 100644
-> --- a/qemu-deprecated.texi
-> +++ b/qemu-deprecated.texi
-> @@ -86,6 +86,18 @@ for these file types is 'host_cdrom' or 'host_device' =
-as appropriate.
->  The @option{name} parameter of the @option{-net} option is a synonym
->  for the @option{id} parameter, which should now be used instead.
-> =20
-> +@subsection -smp (invalid topologies) (since 3.1)
-> +
-> +CPU topology properties should describe whole machine topology including
-> +possible CPUs.
-> +
-> +However, historically it was possible to start QEMU with an incorrect to=
-pology
-> +where @math{@var{n} <=3D @var{sockets} * @var{cores} * @var{threads} < @=
-var{maxcpus}},
-> +which could lead to an incorrect topology enumeration by the guest.
-> +Support for invalid topologies will be removed, the user must ensure
-> +topologies described with -smp include all possible cpus, i.e.
-> +  @math{@var{sockets} * @var{cores} * @var{threads} =3D @var{maxcpus}}.
-> +
->  @section QEMU Machine Protocol (QMP) commands
-> =20
->  @subsection block-dirty-bitmap-add "autoload" parameter (since 2.12.0)
+[...]
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---a2FkP9tdjPU2nyhF
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvMuYwACgkQbDjKyiDZ
-s5JDig/5AU+8EdxrE6ysYLety6twLv162003yw1dC/ZcWhwZEVO18rYmld22uS1S
-qPVx2sCJrXh82xQNra2wajNAMHqMRdg0empoDb9AuFlQR6uVqfYNt1rbCue47/O0
-+IHUh3V8DWV6P/gzUTvPUTqhwRXJpakoogCbLnEBLgixAmTZRuiatqiiB1CQLn4H
-1eR1rQt6yg1GFpFmlo1UR5RKNa8tl01e2qj3hcktSnaeKQWCE+PHOKVZCsSWkhvc
-qv67wZ26Q9Wyn4RWw4THbUsA1U2h4n0k2QFPtea59p+2Kl49EZzekpKkPeV43Dd2
-MSvdWfvP102sEjlgftrN8FWeQJX7jq8FNQOgAq2a5h+J4zjLvJoxFNh8F9ZfsFOj
-WwpJe2L2Y1eJmJR1lmUvVdii61NUO5uvQDI5opB2xReajrCTfeIFryqiTd3Kmg4G
-cAtY8YXBhG4SC24PSaWDLCzgevoWIaGvxj3wFW7JlqpDq32YJEJcY7wAxBQEskY4
-AVqRuwyulSgjsvlKkqPCwWDWT3shZR9u4iYUj/mQKegmeWYU0I2MIbKahf5xxQJW
-cXdeZovywR3UjIL2SXi+jP3pSUfi7WUbF12pNm2mQweMxfbBqT+RaYIrVGNpgtsF
-6p01oY0EGUhS586EBsQ1U5SfUhK+pddPWwRX5iw9M3PxpWHq7rI=
-=IaX3
------END PGP SIGNATURE-----
-
---a2FkP9tdjPU2nyhF--

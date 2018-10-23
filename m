@@ -1,83 +1,83 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4704496wrt;
-        Tue, 23 Oct 2018 08:49:58 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cbmc+Nvtu8cUxeKy6inR1QR23JUje4paxv2ICVOqNWV/eWc1oKVipl2h44QDG8gP0mQn8v
-X-Received: by 2002:ac8:3fb7:: with SMTP id d52-v6mr13158769qtk.46.1540309797920;
-        Tue, 23 Oct 2018 08:49:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540309797; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4704690wrt;
+        Tue, 23 Oct 2018 08:50:08 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV60Gt4Mhjv3QHOONLsIEKFc3EUsU05f77lnJ6PbYE0rGRrkSj+GqlixBSYxO1lw2sq0X8LkW
+X-Received: by 2002:ac8:794a:: with SMTP id r10-v6mr49773923qtt.386.1540309807979;
+        Tue, 23 Oct 2018 08:50:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540309807; cv=none;
         d=google.com; s=arc-20160816;
-        b=DfO3olnkVQZT/J/kCnZfbc/ae6rf8Kn2Yi9/0NN9ODy0jDv5xE798o8WDIYdUwZ1x6
-         gl1FaRg5RztYgs8xZj2yMvPveFWMGtrQ8JwRVgAfD5/HVLlz49PLzfKfclxMMpsoFPdZ
-         8EhcdQfIaSMybQTqjGeAT+keEMPfkK1ciIXZZslVkgvOKBAl1rtdIT4M2NRGRQ4Fn92I
-         4DPmQKwXdY9JfVjrSUlOd17mCJuV7JhXl6r1g4zsKXnBNc/pAlK0DbeQ8p3GL1rrkOp7
-         ha5h8Th6oV5ouUTQjs18K/Aa6sQfXLHigOet0DtnVDqCsk/BW3ZFVDu8ra6nTTMX3E00
-         6i/A==
+        b=B176Jy8paguxZw61P+RisJzJXCJ8H+gtBc9MemJdu0BVmFvHSZNZUGyNDE1uS/ZEn0
+         Te7GDpn0tBaAYzTrwh+8MB/I320e9ZqF6zdOWv5Ol9CrwQTiimAFFu+1UHS9fTrzZFbP
+         C9vPodxuaTeOYKFj5ZvdMLpAUo5qQn4rbm7XxzsJLz6L0XjZItSCgkJNio5MALTVP4eI
+         a1D/GiUhJCO+9iGyayexNrZdP3P14XlS5DCys6ci2jBro/Zi/WGtAqgccMdMEV6as2tl
+         h9QmMehLec1m/CyJ1OTpNMOTtehD5/BySQldxUPascOpSO4jQGe+Q+Lbc+pMKou6WDt5
+         Md3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=JE9GDkoSHrrVhZW7g8Ijgphx9tBtyzOEc9SGZ4/tNhs=;
-        b=g0VvXeAQc3/OES2F8POorvZoW2vJEmHas/BWX5XMxkaiqXkGyEOXH1k+qPpMlU4jVB
-         OF9uuRVSgpApykS8LY7POMl5IuyD6eLtWFCHionuztiSEY2Q7hncekYnIDLYRae3hrNF
-         jLilBZo9oBlSSEmPiR4NYmcVRmmpLhO+q0YyklfKhoFywKbjPsKxOKXPntzjApRyZNlK
-         qJmiM2KFe3EaogIU1XlTTLscHFludA37d2mM0Mk4AAPb04pUUzveTQ1EJllqHmM/j4AB
-         Vbv8GltVHgOGLhZXQBGP9GHsV6/K0jHn5FrwBt/VHNg0ZAxKQhuO0LdPiPt1V2eFIufN
-         PBtA==
+        bh=GIJI40Hq6Xbfs3C51WrSqgKPZjqtXHXS8Prqtzbj2xw=;
+        b=r68pW6bkSCipMBddX8bX2oibX2Z1QOvNY9H7gmO7ZzCbVkrJoWOfdMg1sPKrJDoWBb
+         3jDYr61n+np2AhKX9X/v5XYFwIECf6euT63ObaxT5QzPg5a5Ud33jxH4K2i1WRHXs1QP
+         ILIgcXYurwq/Gv3Hb8LAOuVQpB+cFmreA+7UzXpE9DaPOohh7foNNsm/qMuW12pdrwdM
+         uah1woULweP9XItFtxm1o7kcfL4tvSqvMVhFUGYDobhi8pPQlT41qnNin0UFB6iH+3xz
+         80lKINFB4PCyFFTNPrU/W+WqEfM4HTKNpEnoorcGLSLY2lqj7ri6d+DVywYACPmTdWde
+         Togg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=d7NCys7e;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="F/n40Yhk";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s29si1302486qvs.151.2018.10.23.08.49.57
+        by mx.google.com with ESMTPS id l15-v6si1392395qkj.184.2018.10.23.08.50.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Oct 2018 08:49:57 -0700 (PDT)
+        Tue, 23 Oct 2018 08:50:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=d7NCys7e;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="F/n40Yhk";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42800 helo=lists.gnu.org)
+Received: from localhost ([::1]:42801 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gEywP-0005Hu-7J
-	for alex.bennee@linaro.org; Tue, 23 Oct 2018 11:49:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37006)
+	id 1gEywZ-0005NN-Bb
+	for alex.bennee@linaro.org; Tue, 23 Oct 2018 11:50:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEyhh-0006ks-M7
+	(envelope-from <dgibson@ozlabs.org>) id 1gEyhh-0006fy-NS
 	for qemu-arm@nongnu.org; Tue, 23 Oct 2018 11:34:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEybQ-0006et-DA
+	(envelope-from <dgibson@ozlabs.org>) id 1gEybQ-0006eo-Cn
 	for qemu-arm@nongnu.org; Tue, 23 Oct 2018 11:28:17 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:33841)
+Received: from ozlabs.org ([2401:3900:2:1::2]:50455)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gEybP-0006c4-1q; Tue, 23 Oct 2018 11:28:16 -0400
+	id 1gEybP-0006c5-2Y; Tue, 23 Oct 2018 11:28:16 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 42fcj66MNxz9sD4; Wed, 24 Oct 2018 02:28:10 +1100 (AEDT)
+	id 42fcj65NjTz9sLt; Wed, 24 Oct 2018 02:28:10 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1540308490;
-	bh=H7pPgka/RVCdFmKUW/34pXRDV7K7BVPX2r/JutsDZOY=;
+	bh=4a9TwVqDAaYOZKtkt6k5IUDW9Y/QEeQxeZ3C8NDpE0w=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=d7NCys7ePQgZU+VSkXqXovPOKoNahbsDi5kXFJhqiepQhPiJ4eYe0Q8BmfdBkXDS6
-	wre1qfisN9O/GB9F7mKpJGnfUkx3cQ48eq7auqQBxXOcvVc8k/9qCWSAAcXWIySLlA
-	VRHGMn3S5+qKyugJLPwfVzTry/EGqbaefNdrivAk=
-Date: Tue, 23 Oct 2018 16:14:08 +0100
+	b=F/n40Yhk+TcqPn5y40QBmi+c1P2eNCgCEULs9UeYZvWO6YyFhIr9YygE3FVlTH+Bl
+	rXcIR6K4oUdJOab0lWjL6HAozJlCMK7RczHEKsGXNmE0W+yHIklWB0X2eIUjrYu/Ji
+	t1zv/WpwWPJjpZxyLZnkjIjnefZAQ+94wpACorXQ=
+Date: Tue, 23 Oct 2018 16:07:30 +0100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181023151408.GI12127@umbus.hotspot.internet-for-guests.com>
+Message-ID: <20181023150730.GC12127@umbus.hotspot.internet-for-guests.com>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
-	<20181018200422.4358-11-ehabkost@redhat.com>
+	<20181018200422.4358-5-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/GPgYEyhnw15BExa"
+	protocol="application/pgp-signature"; boundary="ABTtc+pdwF7KHXCz"
 Content-Disposition: inline
-In-Reply-To: <20181018200422.4358-11-ehabkost@redhat.com>
+In-Reply-To: <20181018200422.4358-5-ehabkost@redhat.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PULL 10/45] hw/pci-host/bonito: Use
- DeviceState::realize rather than SysBusDevice::init
+Subject: Re: [Qemu-arm] [PULL 04/45] numa: Fix QMP command set-numa-node
+ error handling
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,81 +102,114 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
 	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JD3eGw71L/D1
+X-TUID: TferMHG4UHp0
 
 
---/GPgYEyhnw15BExa
-Content-Type: text/plain; charset=iso-8859-1
+--ABTtc+pdwF7KHXCz
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 18, 2018 at 05:03:47PM -0300, Eduardo Habkost wrote:
-> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+On Thu, Oct 18, 2018 at 05:03:41PM -0300, Eduardo Habkost wrote:
+> From: Markus Armbruster <armbru@redhat.com>
 >=20
-> Move from the legacy SysBusDevice::init method to using DeviceState::real=
-ize.
+> Calling error_report() in a function that takes an Error ** argument
+> is suspicious.  parse_numa_node() does that, and then exit()s.  It
+> also passes &error_fatal to machine_set_cpu_numa_node().  Both wrong.
+> Attempting to configure numa when the machine doesn't support it kills
+> the VM:
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> Message-Id: <20181002212522.23303-7-f4bug@amsat.org>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>     $ qemu-system-x86_64 -nodefaults -S -display none -M none -preconfig =
+-qmp stdio
+>     {"QMP": {"version": {"qemu": {"micro": 50, "minor": 0, "major": 3}, "=
+package": "v3.0.0-837-gc5e4e49258"}, "capabilities": []}}
+>     {"execute": "qmp_capabilities"}
+>     {"return": {}}
+>     {"execute": "set-numa-node", "arguments": {"type": "node"}}
+>     NUMA is not supported by this machine-type
+>     $ echo $?
+>     1
+>=20
+> Messed up when commit 64c2a8f6d3f and 7c88e65d9e9 (v2.10.0) added
+> incorrect error handling right next to correct examples.  Latent bug
+> until commit f3be67812c2 (v3.0.0) made it accessible via QMP.  Fairly
+> harmless in practice, because it's limited to RUN_STATE_PRECONFIG.
+> The fix is obvious: replace error_report(); exit() by error_setg();
+> return.
+>=20
+> This affects parse_numa_node()'s other caller
+> numa_complete_configuration(): since it ignores errors, the "NUMA is
+> not supported by this machine-type" is now ignored, too.  But that
+> error is as unexpected there as any other.  Change it to abort on
+> error instead.
+>=20
+> Fixes: f3be67812c226162f86ce92634bd913714445420
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Message-Id: <20181008173125.19678-15-armbru@redhat.com>
+> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/pci-host/bonito.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
+>  numa.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
 >=20
-> diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-> index 9868e2eccc..9f33582706 100644
-> --- a/hw/pci-host/bonito.c
-> +++ b/hw/pci-host/bonito.c
-> @@ -595,7 +595,7 @@ static const VMStateDescription vmstate_bonito =3D {
+> diff --git a/numa.c b/numa.c
+> index 81542d4ebb..1d7c49ad43 100644
+> --- a/numa.c
+> +++ b/numa.c
+> @@ -60,6 +60,7 @@ NodeInfo numa_info[MAX_NODES];
+>  static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
+>                              Error **errp)
+>  {
+> +    Error *err =3D NULL;
+>      uint16_t nodenr;
+>      uint16List *cpus =3D NULL;
+>      MachineClass *mc =3D MACHINE_GET_CLASS(ms);
+> @@ -82,8 +83,8 @@ static void parse_numa_node(MachineState *ms, NumaNodeO=
+ptions *node,
 >      }
->  };
 > =20
-> -static int bonito_pcihost_initfn(SysBusDevice *dev)
-> +static void bonito_pcihost_realize(DeviceState *dev, Error **errp)
->  {
->      PCIHostState *phb =3D PCI_HOST_BRIDGE(dev);
+>      if (!mc->cpu_index_to_instance_props || !mc->get_default_cpu_node_id=
+) {
+> -        error_report("NUMA is not supported by this machine-type");
+> -        exit(1);
+> +        error_setg(errp, "NUMA is not supported by this machine-type");
+> +        return;
+>      }
+>      for (cpus =3D node->cpus; cpus; cpus =3D cpus->next) {
+>          CpuInstanceProperties props;
+> @@ -97,7 +98,11 @@ static void parse_numa_node(MachineState *ms, NumaNode=
+Options *node,
+>          props =3D mc->cpu_index_to_instance_props(ms, cpus->value);
+>          props.node_id =3D nodenr;
+>          props.has_node_id =3D true;
+> -        machine_set_cpu_numa_node(ms, &props, &error_fatal);
+> +        machine_set_cpu_numa_node(ms, &props, &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+>      }
 > =20
-> @@ -603,8 +603,6 @@ static int bonito_pcihost_initfn(SysBusDevice *dev)
->                                       pci_bonito_set_irq, pci_bonito_map_=
-irq,
->                                       dev, get_system_memory(), get_syste=
-m_io(),
->                                       0x28, 32, TYPE_PCI_BUS);
-> -
-> -    return 0;
->  }
+>      if (node->has_mem && node->has_memdev) {
+> @@ -367,7 +372,7 @@ void numa_complete_configuration(MachineState *ms)
+>      if (ms->ram_slots > 0 && nb_numa_nodes =3D=3D 0 &&
+>          mc->auto_enable_numa_with_memhp) {
+>              NumaNodeOptions node =3D { };
+> -            parse_numa_node(ms, &node, NULL);
+> +            parse_numa_node(ms, &node, &error_abort);
+>      }
 > =20
->  static void bonito_realize(PCIDevice *dev, Error **errp)
-> @@ -684,7 +682,6 @@ PCIBus *bonito_init(qemu_irq *pic)
->      pcihost->pic =3D pic;
->      qdev_init_nofail(dev);
-> =20
-> -    /* set the pcihost pointer before bonito_initfn is called */
->      d =3D pci_create(phb->bus, PCI_DEVFN(0, 0), TYPE_PCI_BONITO);
->      s =3D PCI_BONITO(d);
->      s->pcihost =3D pcihost;
-> @@ -726,9 +723,9 @@ static const TypeInfo bonito_info =3D {
-> =20
->  static void bonito_pcihost_class_init(ObjectClass *klass, void *data)
->  {
-> -    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
-> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> =20
-> -    k->init =3D bonito_pcihost_initfn;
-> +    dc->realize =3D bonito_pcihost_realize;
->  }
-> =20
->  static const TypeInfo bonito_pcihost_info =3D {
+>      assert(max_numa_nodeid <=3D MAX_NODES);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -184,24 +217,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---/GPgYEyhnw15BExa
+--ABTtc+pdwF7KHXCz
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvPOsAACgkQbDjKyiDZ
-s5I3ZBAAsEOTikPIJ/qw5PGMfw2LDIqfMfTPvxnrOoilFLfKD4TM9KuVY5+q+chg
-t3sGsI09D/e9WxQNy8w8r2a6zac00eUA6cvPqxCpahWNN2+ELQ4K96vfWytrYFxL
-ZL8Q/nUi0GIjBDLf3zcPfPfN19tmPlwjWJrmNb+WQREz5ZFQ/47eNEsNF4R2Cxw2
-Yp7oKwjRFVIhczozs/8GXcOEdPW5ssrUshHyEMXKl3k0eKKraCg6puEzl3XNd9aV
-g4g/FoHMLT0U1TQbbKOZTn685KVj3xUzGaKeJB+OwI0ywZNY+NWo/U58dnjRbXuK
-Ej0ywtDNCfu6QtdCsSEIdCtDcENhJwGMTHY6sAfytVFR1dQQq0xOrPs7eN0G8ALR
-rPBqi2bQMV2/Cq2n0KghzZ0Sdpn31ojdjoB0GLnbWM2bN65mmcuVmNcPt1enwODO
-g0D5xmdwB83GWk5WXT4YQMwHKssQze/HjxT+Yrmvlzgv161y7BsonOWyYg5N8Mmt
-y1of1kyPLeaxLhNw9BEIcGwsBMeA/Zd5O5dsPfmxiUl6q5lU9+ER4Qf4Vii3HL6b
-CVMMSSpR3E2Kif39Lx+E4goKS//On8Mfz8ZozmoFUd7VIONqGEJLz2INyPN4UN70
-7PGoa7IaZEgGkXm/06C9DcPd1MjSpCf3D8h0M35Csyas3RCcfm0=
-=8sO1
+iQIyBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvPOTEACgkQbDjKyiDZ
+s5Kkfg/1F7EiKb6PzQLitWENFPMhvZYtuMoM8Qzjjm/c7n/Gyq9u3u46R46966sz
+WBpeS2iZUEHV9omRjt+lvvLSkfLXakVHg0FJUNEahJfkI7FfTtNKMcOYOwIdMBod
+8rce7miZBDkMbiLpG2/1WSb94vdAgV4JDvp5362AIdDyALJoe7LgIIruYKIdiUgw
+36llXm4ttdJcUAcAAU4H81Q6jGYWvE/YsU3fFWjfQn0mcBt7R0oWEFR1rrD8LnMa
+IN+TG62MZA+ENbYtbiLIQAMZP+TsMHbufLKeipHAm3P0yi9SXUQYIIfbg8ckXfn9
+4p3xR1QQbUUonczrGvU00Zu+V9Ywv/xEYmHtKRYEKRxed90dF7uz8fjP6vG1Hgzz
+NEyEMsa2qMwcXH8yT887pxl7Negb2TszYpSRCD0iqzkpLe4ceVT1eDEMeXkWqJec
+WJETZjY/O+GiqCS3OQ/C69XJPsVY3PIqr9ypgBccatMj781RT1UZXZWWz78ikQCh
+ww4rPpDL/iVujaRUnKAHXsh5zXrq9WkI39GXUw/pAxXgEJOw13+1eztgyJGB6FR8
+M1hQR7K/+DrLueTh/k+j6ug1BDHuO7DI5i7SxhcJu1Hsi9y1iMIaPQ1/C+FhdAjz
+G079KAhmc3NuQ4g7TeefI5NiJch9pZEiDK6ga3UvDH4sJ8xwaw==
+=mhXp
 -----END PGP SIGNATURE-----
 
---/GPgYEyhnw15BExa--
+--ABTtc+pdwF7KHXCz--

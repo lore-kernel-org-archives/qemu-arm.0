@@ -1,81 +1,83 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4696000wrt;
-        Tue, 23 Oct 2018 08:43:12 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63GSnGF2vv8Uy08fYE3tAqDWLGREnA26uyn1nrAsZ9jBgS3bu52EYgzQ04jjz9X6cKRLVdC
-X-Received: by 2002:a0c:cb87:: with SMTP id p7mr48074458qvk.63.1540309392779;
-        Tue, 23 Oct 2018 08:43:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540309392; cv=none;
+Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp4697947wrt;
+        Tue, 23 Oct 2018 08:44:45 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fg5BDuIwNrcQ0C+PfZkGeR98IKFw4GbuF5NfQxG201R8pfsDm6jpztpF18kXtc0CcDuIF2
+X-Received: by 2002:a37:380b:: with SMTP id f11mr4888669qka.309.1540309485035;
+        Tue, 23 Oct 2018 08:44:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540309485; cv=none;
         d=google.com; s=arc-20160816;
-        b=HmcT6ytnrP5wiH5TrUy8ky3VpbjM07oOxdUKyyw0D1Ef0ru2Gr04lhzzEXPQ4WSEBY
-         +BfV6UnBL4lE9pCzzkI9Rp4Y2hMeIJVA0zPz2llcwj2u+Lqw3223SnsGty9r6Cg+6Ff8
-         rclT8PZVt0o+n95QVCf3WP9BK/hK90viIl231Jbu+uAImrqOmFtgM1m1OT9MyaxqrzvR
-         jGrZo4kfJ1MK05BESB7cbcMZHKeHJuFIyYqqoBzDnA7W4osG4gdxJmOwZmBrKurp9N4c
-         AeddscjNJirJDQRFJIyEYIHSusljX2Jk7oUFj7PPP5nzUGZ5jB1KH1dE8T1jxeHn1Qah
-         Zb3g==
+        b=qiOX1CaMP+fQ6Dv8u3nQEPMjw/C/fD3HYvUZMAPGHoGtToYw5WcptZ3u7GcSCh8QcH
+         BcAirAnKfRCuhjE372grrOFZMRVMFmYp4JUV3Q0ZfvfVSdG7AM6TMcyx3bExA7evlr1A
+         l0/hmjnDCobGUoxbhdUu/Gsz79whjL84hDD0LxPH+7xAc3tCJfpQ0KJ6gmQqD9BxWU2y
+         TnQfNG+9VWsaXp5OhpnW0tDFbILgenZ0QHvIwfvKpNDyVPwQvfdFZvdGdh3nn2THlXEN
+         uh/+dMW8rwQCYIaK7Gu9qkyQvUHcovKP/+ZjaK0XZhCl8WGVJPLTfG76sKlMy+RqjEtT
+         8B3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=XdI/dZ/Dem4MAmc1ZeZdqUDNKfKRax/8EvqI5POegi0=;
-        b=XYb028Ns7DrZHZXlRCqs8Q2bFaAQIev5agt+eeUTtUue48X66UiyXwprcg8E066jHC
-         1T9gmUKJW6BqOVLo1WbnUa5WPOIzsO09GYET3ELLOdJNTsKP9PTiikJ8auKB5pvJ7Ovo
-         DbJpl+jiLDfm+vTdDcPGQjEgPbXe1LvWDF42KDVGtcZ53BoZ43ZQjjR23Ah4IYRqPxLt
-         xfEWR+mp1Kar58Bg4ZSWBpSQgZGKHrsp5yPtiIGzqdWaMKEmAtLFaKnRPpJ4Uj4mOxcy
-         aNoKXIuin3Gp8Nu/CsnAgEfH2Bm/JNVTMbURrwmGzKwjZkAGxD1O1Yep1P86Mvc+uvqu
-         V86A==
+        bh=n2AQS4SDMfXQgOwEqs8JR01U9CH3pQYJWVXlDvkvUmM=;
+        b=A/BRL+LqBJJSgeL36bJvNPPFaIbH8617vP6DKjx0YTNqCspkaGwShH/7tLlkp2P5KV
+         LUVvMRBnb+0UYW6FeTlBJ0NCOR8sBtT+QgY/Az99KlA2cZxLOW9k8uUwTij4sOmJiEP7
+         lhUOazwl4LgJZnBBW344SCxqyMR2CLavS2qCNqGy6Pte+K7We2GXRb8tLxVUeqZo39I7
+         HGRKHleQTpbErnh8y17FiFpswg3JE6KnzZW0Y9PJYi96zaidLAjdHEaLlFrT12OhX2h1
+         UK/JKzdGSnjw7dZdS+vFUiHJZt/VLDYCIQ25uiUbFpolQTeBAkMSR5oiXkyhjp3LQo5L
+         1tmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bMF4Ft9D;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=CNJ2DrvK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w31-v6si1247365qtj.360.2018.10.23.08.43.12
+        by mx.google.com with ESMTPS id c4si269412qve.184.2018.10.23.08.44.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 23 Oct 2018 08:43:12 -0700 (PDT)
+        Tue, 23 Oct 2018 08:44:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bMF4Ft9D;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=CNJ2DrvK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42751 helo=lists.gnu.org)
+Received: from localhost ([::1]:42756 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gEyps-0005mV-7J
-	for alex.bennee@linaro.org; Tue, 23 Oct 2018 11:43:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37233)
+	id 1gEyrM-00087g-GJ
+	for alex.bennee@linaro.org; Tue, 23 Oct 2018 11:44:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEyhU-0007C3-Ay
-	for qemu-devel@nongnu.org; Tue, 23 Oct 2018 11:34:33 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1gEyhS-0006ks-To
+	for qemu-devel@nongnu.org; Tue, 23 Oct 2018 11:34:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEybu-00070K-2m
-	for qemu-devel@nongnu.org; Tue, 23 Oct 2018 11:28:47 -0400
-Received: from ozlabs.org ([203.11.71.1]:55061)
+	(envelope-from <dgibson@ozlabs.org>) id 1gEybv-000720-Ck
+	for qemu-devel@nongnu.org; Tue, 23 Oct 2018 11:28:48 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:52859)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gEybr-0006sb-Ae; Tue, 23 Oct 2018 11:28:43 -0400
+	id 1gEybr-0006pS-B4; Tue, 23 Oct 2018 11:28:44 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 42fcj816h9z9sNr; Wed, 24 Oct 2018 02:28:11 +1100 (AEDT)
+	id 42fcj80Nlnz9sNp; Wed, 24 Oct 2018 02:28:11 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1540308492;
-	bh=vQoIAnxEk5We/wFgSysi6WoJaVxV7bh9PCS+torRFGM=;
+	bh=aXouyZGVDvTa6F8zSH9Mod/OyiYxwfq2Gi6WkhUqTtk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bMF4Ft9D/Rfmj44Br7vRgzjOvaJvbau6PmVdsPhTVbfLVJfR/OYYm4evIiuCFI27s
-	yD5W2pxBeA/nd3kw3J6wB1fpQt4exJ8XsFbonrzWFP4gYXnJkUBLbkSMug/2ZnFy+A
-	S9IqxidYmt2YhxisBxflgD1oFbhI7DSzAQ3oayAU=
-Date: Tue, 23 Oct 2018 16:20:01 +0100
+	b=CNJ2DrvKJK+UP7TWkrPY4JWoBwiDpC8By/bL/R+lnRSWh9rTu+IrM40kRH+f5VNRc
+	sIhf+FQZsz+V4XDxSa9Dkk+2IxwbcIPkblgFBJ64YEzMWzL66vPKCsggGOXF+LnzZu
+	83fgdUygpLUQf/h7PBMhVcxNcFAoA2RS3O+R/POY=
+Date: Tue, 23 Oct 2018 16:26:19 +0100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181023152001.GN12127@umbus.hotspot.internet-for-guests.com>
+Message-ID: <20181023152619.GW12127@umbus.hotspot.internet-for-guests.com>
 References: <20181018200422.4358-1-ehabkost@redhat.com>
-	<20181018200422.4358-18-ehabkost@redhat.com>
+	<20181018200422.4358-43-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8CNmCRe8Sh4keFKJ"
+	protocol="application/pgp-signature"; boundary="JaUdphvQ2+4F/M7k"
 Content-Disposition: inline
-In-Reply-To: <20181018200422.4358-18-ehabkost@redhat.com>
+In-Reply-To: <20181018200422.4358-43-ehabkost@redhat.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-devel] [PULL 17/45] machine: fix a typo
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-devel] [PULL 42/45] net: stellaris_enet: convert SysBus
+ init method to a realize method
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,10 +96,10 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Rob Herring <robh@kernel.org>, qemu-trivial@nongnu.org,
-	Li Qiang <liq3ea@163.com>, Markus Armbruster <armbru@redhat.com>,
+	Rob Herring <robh@kernel.org>, Markus Armbruster <armbru@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
@@ -106,43 +108,66 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rTY6xBYj0odk
+X-TUID: h9DZO7sWth/x
 
 
---8CNmCRe8Sh4keFKJ
-Content-Type: text/plain; charset=us-ascii
+--JaUdphvQ2+4F/M7k
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 18, 2018 at 05:03:54PM -0300, Eduardo Habkost wrote:
-> From: Li Qiang <liq3ea@163.com>
+On Thu, Oct 18, 2018 at 05:04:19PM -0300, Eduardo Habkost wrote:
+> From: C=E9dric Le Goater <clg@kaod.org>
 >=20
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Li Qiang <liq3ea@163.com>
-> Message-Id: <20181010161025.34796-1-liq3ea@163.com>
-> Reviewed-by: Stefano Garzarella <stefanogarzarella@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: C=E9dric Le Goater <clg@kaod.org>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> Message-Id: <20181001063803.22330-10-clg@kaod.org>
 > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/core/machine.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/net/stellaris_enet.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
 >=20
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 1987557833..da50ad6de7 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -636,7 +636,7 @@ static void machine_class_init(ObjectClass *oc, void =
-*data)
->          machine_get_memory_encryption, machine_set_memory_encryption,
->          &error_abort);
->      object_class_property_set_description(oc, "memory-encryption",
-> -        "Set memory encyption object to use", &error_abort);
-> +        "Set memory encryption object to use", &error_abort);
+> diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+> index 165562d788..3ee1e0f8a4 100644
+> --- a/hw/net/stellaris_enet.c
+> +++ b/hw/net/stellaris_enet.c
+> @@ -473,9 +473,9 @@ static NetClientInfo net_stellaris_enet_info =3D {
+>      .receive =3D stellaris_enet_receive,
+>  };
+> =20
+> -static int stellaris_enet_init(SysBusDevice *sbd)
+> +static void stellaris_enet_realize(DeviceState *dev, Error **errp)
+>  {
+> -    DeviceState *dev =3D DEVICE(sbd);
+> +    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>      stellaris_enet_state *s =3D STELLARIS_ENET(dev);
+> =20
+>      memory_region_init_io(&s->mmio, OBJECT(s), &stellaris_enet_ops, s,
+> @@ -489,7 +489,6 @@ static int stellaris_enet_init(SysBusDevice *sbd)
+>      qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+> =20
+>      stellaris_enet_reset(s);
+> -    return 0;
 >  }
 > =20
->  static void machine_class_base_init(ObjectClass *oc, void *data)
+>  static Property stellaris_enet_properties[] =3D {
+> @@ -500,9 +499,8 @@ static Property stellaris_enet_properties[] =3D {
+>  static void stellaris_enet_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> -    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
+> =20
+> -    k->init =3D stellaris_enet_init;
+> +    dc->realize =3D stellaris_enet_realize;
+>      dc->props =3D stellaris_enet_properties;
+>      dc->vmsd =3D &vmstate_stellaris_enet;
+>  }
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -150,24 +175,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---8CNmCRe8Sh4keFKJ
+--JaUdphvQ2+4F/M7k
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvPPCEACgkQbDjKyiDZ
-s5L3+Q/+JhO7ZX8Js1h3E7W084g9DevCgdEkiDxRw/wUcYNsu/YoIa1mAw28AonM
-I5ge5kV4xkqq1uJO0ZqnFPgi4GoKF+k3/i8/5GNLnl9cF97YWTxmvJOb040D9oaN
-VsGoPfErDy0MW3pZNCTzTr3+MKAKoNT8yBFjfeSGMiOrRKeExPlHx/EOrm00ZDPZ
-e5jcJU8h+34Xu6eBud72hstSiFYrPN/FaZChNJq/TGH+DUqGs8O1qA77B7ELc+Ne
-VkKt1+OoIkWzNz52I7NKGYgWPh1MWRvTErzr/2hU4wg0CdRelUmgkLHHCZR211z1
-qpkWqb9R+eZ9Re33QeaEqdpSd1rupBUGEq28PVOgmcZFvvzQ3D1vHvQbNN1oeNiH
-3w2RcIZn1H+7xuAA1U7V+R30RNqqvr9K1NagvOJe8g/Wa2V2sMbJBPMMJR5WG7Rs
-DXpl3g9esM7llDmSV3nDDQg4l8lClSpF1fleH0frB3AQMMzWwwcOVUVSNmpCnoh5
-3oalkRlmUSn/bBHks0WNR4thV7yAOsec3cooRtJUAH79U04j4Q9BWVsb+KPBwsCQ
-ziDcrNjE7DMc6QAPwKirMXdNRu+ytSKGgk7KXUOIKkbU9EkJ7lwpFqALtFFxUqnL
-+Zm/5b2ZTid44ME/VfnMrvuvM+7WRMMd+M82Bz0L83kt5BjfUAo=
-=WozB
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvPPZsACgkQbDjKyiDZ
+s5InPhAAjofTEnoZcH4eM733YnaRa6hiPq2Q1G2qjRLIY8UzfSgff+Ewu1Qg2fWT
+RGy75W9W1vCacsU79NwPwpnstD+cI/drmVXLzkr4SzoQ358CJg5p+4hfD/jRyOuB
+dD/SGjIPkJuc2PTdHspvp+q3xkVkHN9d9RHIf/mpojFm+XeOU65ije0gYSBWnK/7
+scfJwt13gNyGpn7//b4suh4YsUAnMeH+fSgt/znaGLguLeZRm4AC3bTeCXKpC1pg
+74kzMW+zLlgzgscstA/qHnaeNIAP/DzKPvQkjo/hR9H2n/ARJDMieEN9ny7YaTt/
+hUMhlqCE+pSjUicFjOxA+59SvKOwX2KEYDwKC3+XLPXpmxisrciRgNapaPfdR6N1
+XOrbInQQtJk0WOOOgCWzjEZr02BQ7EL8xsSTLU0UNFqAQFtmrMU2pY0HtQiNYUrX
+IptBN7Ajbtd7WBN/zL2fMQWm5w4OPhRS/bKZtv6qAo0C1q6A66FB+67MlkcjeAjU
+Ci63dlt4cUPir8ZIycK+p1L+e1ynsspBh8JqzGwHaof/UmWv23sip71Pl0K+tjGY
+mtLa6M/IxWZiJCm62e5FSuJK6j6lZowhBY/uOsSlRlwrkc4dyopkNGAMHXpoR0Em
+niWEI+ADeuoVf2VMYr0zw5R33o9REzb2GmMYkggxX9RMFlyCU1o=
+=iHIh
 -----END PGP SIGNATURE-----
 
---8CNmCRe8Sh4keFKJ--
+--JaUdphvQ2+4F/M7k--

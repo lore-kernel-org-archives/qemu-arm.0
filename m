@@ -1,101 +1,98 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp725108wro;
-        Thu, 25 Oct 2018 06:46:04 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f+F2p+yCqbw9vlt4+0WpMZGQyDnk2G5vj7zD3qONmG1FZbJnCzxINeXXxzf6CP/NU2SBEx
-X-Received: by 2002:aed:3923:: with SMTP id l32-v6mr1492820qte.378.1540475164319;
-        Thu, 25 Oct 2018 06:46:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540475164; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp727303wro;
+        Thu, 25 Oct 2018 06:47:54 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cUgAbjILiyIxj4+Bf/NIfHzfWDmem1MLwYyJ0PQN3ky7PZiwBSP7pdrWqgQbt/TrbU3Bk9
+X-Received: by 2002:a0c:9c8c:: with SMTP id i12mr1614751qvf.122.1540475274017;
+        Thu, 25 Oct 2018 06:47:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540475274; cv=none;
         d=google.com; s=arc-20160816;
-        b=n5ct72u+pb5NmvlPwVOmFkxpOQwPYEr7rIuNtOHN0TWr0yP3RG7lNnAwv713XAUWh6
-         I1i/DHTbA/RKKpqj96+4wRqiqH01PBzAQW2neKfmYTUv3J0mLMZZebvz1mJ3D3YnyLZ2
-         VLtE/q/pZgHqQeJf9PsJHmMnBPUTK5vc9iRtDz+2eA5Xpcn7dA5bhUIg4hv6pzTcihZn
-         RxHuyIVfStUUf+lK1NreKhkOljk3Gn1yj4lWZMsIYaQDYqT8hYjZg+krxHIIFHC/i2T2
-         WmvarYoVwGgI8K+oKSwYVugFXOw2DZo8pZIM8DnLIHct0IPIaqZFtMRriv2DE0ExDK2b
-         hDcw==
+        b=rIoWIE6sIfiMzd0j5raHsgDex1e/akMf0xcCtmZ6QA3BOjKOVDeF9gWZ24xarBmQhe
+         7E6NZDVCJ+2oiqoBuC6sK4hgIxXStkK1kK8833G6hc4Agp/mXWeiyllD5By+B/Iy5X9C
+         S1fSOlWFBYJE7JJDNACIbEnzFSGQXite7MgOv9CxgOAtD8VZe9LgNVYMOdrnoGjugx+5
+         13lDq3y0Y+FPvDt3YsOKjUaM6ZPrB6keMQZTls96DRBqGGOoK0Uj0HSYjFZqEAwEKhUS
+         RQlzidV+8CtVBvg8/RM6E77hCeJ+Lrn246kg05+JtVLujACMt/4WDuVZ/Z7KgmOGhRKQ
+         EJNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=pHMaGyqq/l1f2Bel3mGx5xpGit6Wq4bbMRy2WnhgrTA=;
-        b=o+j/7Uo2/6BdUZOq2/aC+mzsBjVpR+ISbbjgHwJKh9TzuLN7uoSmDAbYbjx7Vxc+/C
-         UojYM3SrugFvBAPJyTjmjwhQBGVdhBycugysKTz4vKQcFZcgBf+m63dmY+xGyHLQi9Bz
-         KknEjBL3Zq4OVVrpt9jW6kNHJsIsM4JmrcKNT9Gj3Vf1lRmM2rb//0Jq3je5KTmF8+EN
-         RHruENzYuUw9B45PeLkiPUlW5r4kZCKqfNAXlMnGTKEjJRyTYerxLYKlNDw3RgR1jc7q
-         d/kKlqsZYjHLDx64n2K0fonivDkDKzzgEsofrYyxfQ157N3Jfg6mMCo7sONCaR222Vth
-         WIaA==
+        bh=sSMLpxOzlLaElkpl+MaoqAofsK04U1LBHbo661ShjFA=;
+        b=uhHxutJ5eTYtqpq099HQK1UCTDhJpHnV3RX+zz2UQ+OMNnJ4sZMZ6FcxhZF3o3tdF3
+         G8IaLWl7IdFV5/9DjEycn4pMRn6hMaAmCfNsTRc3bgm3UcRij43pegnmjL/eqIkC1Q3O
+         LHtsUkvfRS2OU6zWGRM1F0UauN4Dr/8REqWPeUcLrI6oFCIT6FNx6CEgtHyoSS/xgIb6
+         pKoIrm/XugHWrCKZBquo30R6Sxv9XR71cfMohCHMdtKeDJ86s8Mdxw96hfpeRCgKHKlP
+         9N8RWv4AaFDA8B4XVCynDfh0AWc25k8jRdWLvYhi1ReqIvY8AIJfIh5q0TYs7ol+8eYa
+         3nIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p52-v6si1498330qtc.174.2018.10.25.06.46.04
+        by mx.google.com with ESMTPS id o2-v6si6594687qkg.195.2018.10.25.06.47.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 06:46:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 25 Oct 2018 06:47:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54548 helo=lists.gnu.org)
+Received: from localhost ([::1]:54563 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFfxb-0003YJ-L5
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:46:03 -0400
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gFfzN-0005lt-F1
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:47:53 -0400
 Received: from eggs.gnu.org ([2001:4830:134:3::10]:57123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfmr-00026L-CO
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:34:58 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFfmt-00026L-HJ
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:35:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFflr-0007A9-Vv
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:33:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50530)
+	(envelope-from <ehabkost@redhat.com>) id 1gFfld-0006r6-Ho
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:33:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38190)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFflq-00074P-7m; Thu, 25 Oct 2018 09:33:54 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1gFfld-0006md-9l; Thu, 25 Oct 2018 09:33:41 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 204E430012EB;
-	Thu, 25 Oct 2018 13:33:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id EBF2C3091D6F;
+	Thu, 25 Oct 2018 13:33:34 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BCB9560A9E;
-	Thu, 25 Oct 2018 13:33:48 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3BD2610018FD;
+	Thu, 25 Oct 2018 13:33:33 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:32:24 -0300
-Message-Id: <20181025133301.16578-7-ehabkost@redhat.com>
+Date: Thu, 25 Oct 2018 10:32:21 -0300
+Message-Id: <20181025133301.16578-4-ehabkost@redhat.com>
 In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
 References: <20181025133301.16578-1-ehabkost@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Thu, 25 Oct 2018 13:33:53 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.42]);
+	Thu, 25 Oct 2018 13:33:35 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL v2 06/43] hw/timer/sun4v-rtc: Use
- DeviceState::realize rather than SysBusDevice::init
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PULL v2 03/43] vl:c: make sure that sockets are
+ calculated correctly in '-smp X' case
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Rob Herring <robh@kernel.org>, Alexander Graf <agraf@suse.de>,
+	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
+	Alexander Graf <agraf@suse.de>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
@@ -104,60 +101,62 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pR8OwOytDNe+
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OlSTaCihmly3
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Igor Mammedov <imammedo@redhat.com>
 
-Move from the legacy SysBusDevice::init method to using DeviceState::real=
-ize.
+commit
+  (5cdc9b76e3 vl.c: Remove dead assignment)
+removed sockets calculation when 'sockets' weren't provided on CLI
+since there wasn't any users for it back then. Exiting checks
+are neither reachable
+   } else if (sockets * cores * threads < cpus) {
+or nor triggerable
+   if (sockets * cores * threads > max_cpus)
+so we weren't noticing wrong topology since then, since users
+recalculate sockets adhoc on their own.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-Message-Id: <20181002212522.23303-4-f4bug@amsat.org>
+However with deprecation check it becomes noticable, for example
+  -smp 2
+will start printing warning:
+  "warning: Invalid CPU topology deprecated: sockets (1) * cores (1) * threads (1) != maxcpus (2)"
+calculating sockets if they weren't specified.
+
+Fix it by returning back sockets calculation if it's omitted on CLI.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+Message-Id: <1536836762-273036-3-git-send-email-imammedo@redhat.com>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- hw/timer/sun4v-rtc.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ vl.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
-index 13be94f8da..4e7f6a1eff 100644
---- a/hw/timer/sun4v-rtc.c
-+++ b/hw/timer/sun4v-rtc.c
-@@ -63,21 +63,21 @@ void sun4v_rtc_init(hwaddr addr)
-     sysbus_mmio_map(s, 0, addr);
- }
-=20
--static int sun4v_rtc_init1(SysBusDevice *dev)
-+static void sun4v_rtc_realize(DeviceState *dev, Error **errp)
- {
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     Sun4vRtc *s =3D SUN4V_RTC(dev);
-=20
-     memory_region_init_io(&s->iomem, OBJECT(s), &sun4v_rtc_ops, s,
-                           "sun4v-rtc", 0x08ULL);
--    sysbus_init_mmio(dev, &s->iomem);
--    return 0;
-+    sysbus_init_mmio(sbd, &s->iomem);
- }
-=20
- static void sun4v_rtc_class_init(ObjectClass *klass, void *data)
- {
--    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-=20
--    k->init =3D sun4v_rtc_init1;
-+    dc->realize =3D sun4v_rtc_realize;
- }
-=20
- static const TypeInfo sun4v_rtc_info =3D {
---=20
+diff --git a/vl.c b/vl.c
+index 31febe965c..1fcacc5caa 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1230,11 +1230,14 @@ static void smp_parse(QemuOpts *opts)
+ 
+         /* compute missing values, prefer sockets over cores over threads */
+         if (cpus == 0 || sockets == 0) {
+-            sockets = sockets > 0 ? sockets : 1;
+             cores = cores > 0 ? cores : 1;
+             threads = threads > 0 ? threads : 1;
+             if (cpus == 0) {
++                sockets = sockets > 0 ? sockets : 1;
+                 cpus = cores * threads * sockets;
++            } else {
++                max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
++                sockets = max_cpus / (cores * threads);
+             }
+         } else if (cores == 0) {
+             threads = threads > 0 ? threads : 1;
+-- 
 2.18.0.rc1.1.g3f1ff2140
 

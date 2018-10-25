@@ -1,80 +1,79 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp728149wro;
-        Thu, 25 Oct 2018 06:48:33 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5er6b7NJY1IyG3tv7p7TbUmBXxdIMO5FqTbqzKIdt+GaLzfnXcZedQiyEbge6SpjFS5o/vs
-X-Received: by 2002:aed:2c42:: with SMTP id f60-v6mr1549174qtd.340.1540475313026;
-        Thu, 25 Oct 2018 06:48:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540475313; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp728844wro;
+        Thu, 25 Oct 2018 06:49:10 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5d00udGbrqkNOq1oiBKzbeFz0F/1g++qA2DAzJv/R1MdZVDKfu0Ihi6U980XsGcLjrFDEA+
+X-Received: by 2002:ac8:72c1:: with SMTP id o1-v6mr1449314qtp.134.1540475350177;
+        Thu, 25 Oct 2018 06:49:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540475350; cv=none;
         d=google.com; s=arc-20160816;
-        b=YXYtlp/lAAIG04+BSBMDZiMTSrc6+YYeaa0ovxL+QSnXxwWvcJeiXIs/ZxKCFLwKQa
-         tnnpMA3rjvJS1IPjwq3vCU2ACjYzIOJixUVChUus/gRJF/KZg323NL6Hi75xNt9GPHej
-         p8w/2cVqP63VFZSkk1VldJ3lFoBFYagegOh5J5R/ARxcRXmYd53TQxR0rA+Pjk7sXmJs
-         A23XcApUMd79334yZjCjpBb2uEeJReSPPrd03V4Ehruq0pRzrzdC7iK/WGVuRZk0904a
-         oygzdmeEhXC1MAKe9JUEWLyqVsfSa2E6LtzkDEAtASeaVbbMvIdoaPFWH/XzwmkC8r2e
-         YNdw==
+        b=g+9fCsDxiFvbwloBuq5QSioLgRvXVVn27nWFc+h1iHN4MYf8dgEySVp0YZEuNpvEzn
+         qGsHKKIo3QrAGBhUuS1L4usuIfpnBAKH8ATYmH3jmD3IUUgcNSTCoesGGE2JuSyolVJ5
+         nSkGBGYKXrm0nlTruVKG528V2x0bzz3hqBZETSP8fIZLQ8VGejtN0rKezjDWi5e/XG+Y
+         NwMqKGF4jRF4aib+qdxXM7Dcmi4poYfOHlckErJc4/X0VRZsBMHEtPSZETi0xVj2DmhC
+         /usHQ99gBr+g/RpQxfFBA6YkwJsCgCxOQsJYEFIeI7Yjg9RQr2ooS7ol0iW1mYofz3Xz
+         rM6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=xJDRRbgrgOlUt4WAi/7x3KCxZrBpXiTml71bA0BRFM0=;
-        b=kLnxUaai5FatSzIenmriaRxW0fDoE77ZQXaL063qXTxHfnXem1o7DRzuL3IfL6N9QX
-         AoT+lUh06g/ox9S3WVHp0pXIN8GCr6bRYMJXRTZVc1QfVfj3NpU6CY9cRbyvirpucmxm
-         sBJ/9Ct54Ya/DSVBoSgd8J1LSDsoL6MuoeWnhtmDl8HCbgLRsyzBsU6ZY3i+OJvxvUHC
-         qhTPAN/+O2PtPM+WHCdpz6RbFrFSwxsmT2aTGSRPRjXXBCbEe/Kj2uqnAlWNP7awJ+Ed
-         2MnWcHlzjnYblmBeE0Of1cVh7NaVW6NokMo94iCNgqt7+cL06N6NkPqArEI+OBlEnCOP
-         kZxQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=WpOVeD4HObO/pPEB191IlF7PXtxxiLOjxHHBI82/Lv4=;
+        b=bqcU6bwfVvLc379VIl6dIQceRxWobrS/lNbL3Y0bY+bW1mGMm4laQ4ds0Rw9rXrOz0
+         lOJmoWzew8vP/dab+W38wR1SfXK1s4h0iai8RwnPxPUsiSp/YuoURE7AOy5Il8yVpdIo
+         5nuKhlc9Wv0rky3zE1/Mb7pI0kjMJOy9Zctm+8jvl6MPfJ0v1hVIlvGAVGaNLmXtBe2O
+         uUzmCbb2JKKWTTQvlSJrpW2lFv6bnS5Y6pPG3o7qPv9ILBlHalFW9wv7YyKcZCcEaWDv
+         ySpbqHWosCIiLBQBxfoEh94E5t2PnIFBCyg84aFjXPH4SOQPj4QVs8m4lMwPG09vpe14
+         ialw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c24-v6si251121qtd.358.2018.10.25.06.48.32
+        by mx.google.com with ESMTPS id r21-v6si5398225qta.244.2018.10.25.06.49.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 06:48:33 -0700 (PDT)
+        Thu, 25 Oct 2018 06:49:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54571 helo=lists.gnu.org)
+Received: from localhost ([::1]:54576 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFg00-0006IS-C6
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:48:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57229)
+	id 1gFg0b-0007mq-Lr
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:49:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58376)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfmu-0002Dq-Kv
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:35:05 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFfoQ-0003gW-TJ
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:36:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFflC-0006Vb-VN
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:33:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34390)
+	(envelope-from <ehabkost@redhat.com>) id 1gFfoN-0000cU-Ie
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:36:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47728)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFflC-0006Uy-L5; Thu, 25 Oct 2018 09:33:14 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1gFfoN-0000c5-A5; Thu, 25 Oct 2018 09:36:31 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 04BF53082A24;
-	Thu, 25 Oct 2018 13:33:13 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 22EC23084022;
+	Thu, 25 Oct 2018 13:36:30 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 02C0F662CF;
-	Thu, 25 Oct 2018 13:33:01 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3FB4668D27;
+	Thu, 25 Oct 2018 13:36:11 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:32:18 -0300
-Message-Id: <20181025133301.16578-1-ehabkost@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Date: Thu, 25 Oct 2018 10:32:42 -0300
+Message-Id: <20181025133301.16578-25-ehabkost@redhat.com>
+In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
+References: <20181025133301.16578-1-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Thu, 25 Oct 2018 13:33:13 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.40]);
+	Thu, 25 Oct 2018 13:36:30 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL v2 00/43] Machine queue, 2018-10-25
+Subject: [Qemu-arm] [PULL v2 24/43] memory-device: document MemoryDeviceClass
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,7 +90,7 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
 	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
-	Alexander Graf <agraf@suse.de>,
+	David Hildenbrand <david@redhat.com>, Alexander Graf <agraf@suse.de>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -106,144 +105,78 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qukqiNSEUyAb
+X-TUID: xizaavkztXtL
 
-Changes v1 -> v2:
-* Fix 'make check' warnings (Igor)
+From: David Hildenbrand <david@redhat.com>
 
+Document the functions. Don't document get_region_size(), as we will be
+dropping/replacing that one soon.
 
-The following changes since commit 13399aad4fa87b2878c49d02a5d3bafa6c966b=
-a3:
+Use same documentation style as in include/exec/memory.h, but don't
+document the parameters, as they are self-explanatory.
 
-  Merge remote-tracking branch 'remotes/armbru/tags/pull-error-2018-10-22=
-' into staging (2018-10-23 17:20:23 +0100)
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: David Hildenbrand <david@redhat.com>
+Message-Id: <20181005092024.14344-9-david@redhat.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+ include/hw/mem/memory-device.h | 36 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-are available in the Git repository at:
-
-  git://github.com/ehabkost/qemu.git tags/machine-next-pull-request
-
-for you to fetch changes up to 8fa922c241e63f018f5b55c03ac494ae3d5fe594:
-
-  net: xgmac: convert SysBus init method to a realize method (2018-10-24 =
-06:44:59 -0300)
-
-----------------------------------------------------------------
-Machine queue, 2018-10-25
-
-* sysbus init/realize cleanups
-  (C=C3=A9dric Le Goater, Philippe Mathieu-Daud=C3=A9)
-* memory-device refactoring (David Hildenbrand)
-* -smp: deprecate incorrect CPUs topology (Igor Mammedov)
-* -numa parsing cleanups (Markus Armbruster)
-* Fix hostmem-file memory leak (Zhang Yi)
-* Typo fix (Li Qiang)
-
-----------------------------------------------------------------
-
-Queue for Machine Core patches
-
-
-C=C3=A9dric Le Goater (11):
-  net: etraxfs_eth: convert SysBus init method to a realize method
-  net: etraxfs_eth: add a reset method
-  net: lan9118: convert SysBus init method to a realize method
-  net: lance: convert SysBus init method to a realize method
-  net: milkymist_minimac2: convert SysBus init method to a realize
-    method
-  net: mipsnet: convert SysBus init method to a realize method
-  net: opencores_eth: convert SysBus init method to a realize method
-  net: smc91c111: convert SysBus init method to a realize method
-  net: stellaris_enet: convert SysBus init method to a realize method
-  net: stellaris_enet: add a reset method
-  net: xgmac: convert SysBus init method to a realize method
-
-David Hildenbrand (16):
-  memory-device: fix alignment error message
-  memory-device: fix error message when hinted address is too small
-  memory-device: improve "range conflicts" error message
-  pc-dimm: pass PCDIMMDevice to pc_dimm_.*plug
-  memory-device: use memory device terminology in error messages
-  memory-device: introduce separate config option
-  memory-device: forward errors in get_region_size()/get_plugged_size()
-  memory-device: document MemoryDeviceClass
-  memory-device: add and use memory_device_get_region_size()
-  memory-device: factor out get_memory_region() from pc-dimm
-  memory-device: drop get_region_size()
-  memory-device: add device class function set_addr()
-  memory-device: complete factoring out pre_plug handling
-  memory-device: complete factoring out plug handling
-  memory-device: complete factoring out unplug handling
-  memory-device: trace when pre_plugging/plugging/unplugging
-
-Igor Mammedov (2):
-  vl.c deprecate incorrect CPUs topology
-  vl:c: make sure that sockets are calculated correctly in '-smp X' case
-
-Li Qiang (1):
-  machine: fix a typo
-
-Philippe Mathieu-Daud=C3=A9 (12):
-  trace-events: Fix copy/paste typo
-  hw/timer/sun4v-rtc: Convert from DPRINTF() macro to trace events
-  hw/timer/sun4v-rtc: Use DeviceState::realize rather than
-    SysBusDevice::init
-  hw/ssi/xilinx_spi: Use DeviceState::realize rather than
-    SysBusDevice::init
-  hw/sh4/sh_pci: Use DeviceState::realize rather than SysBusDevice::init
-  hw/pci-host/bonito: Use DeviceState::realize rather than
-    SysBusDevice::init
-  hw/mips/gt64xxx_pci: Convert gt64120_reset() function into Device
-    reset method
-  hw/mips/gt64xxx_pci: Mark as bridge device
-  hw/sparc64/niagara: Model the I/O Bridge with the
-    'unimplemented_device'
-  hw/alpha/typhoon: Remove unuseful code
-  hw/hppa/dino: Remove unuseful code
-  hw/mips/malta: Remove unuseful code
-
-Zhang Yi (1):
-  hostmem-file: fixed the memory leak while get pmem path.
-
- default-configs/i386-softmmu.mak    |   3 +-
- default-configs/ppc64-softmmu.mak   |   3 +-
- default-configs/sparc64-softmmu.mak |   1 -
- qapi/misc.json                      |   2 +-
- include/hw/mem/memory-device.h      |  74 +++++++++++++++++---
- include/hw/mem/pc-dimm.h            |  10 +--
- backends/hostmem-file.c             |  10 ++-
- hw/alpha/typhoon.c                  |  13 ----
- hw/core/machine.c                   |   2 +-
- hw/hppa/dino.c                      |   7 --
- hw/i386/pc.c                        |   6 +-
- hw/mem/memory-device.c              | 103 ++++++++++++++++++++++------
- hw/mem/nvdimm.c                     |   9 ++-
- hw/mem/pc-dimm.c                    |  84 ++++++++---------------
- hw/mips/gt64xxx_pci.c               |  18 ++---
- hw/mips/mips_malta.c                |  13 ----
- hw/net/etraxfs_eth.c                |  44 ++++++++----
- hw/net/lan9118.c                    |   9 +--
- hw/net/lance.c                      |   8 +--
- hw/net/milkymist-minimac2.c         |   9 +--
- hw/net/mipsnet.c                    |   9 +--
- hw/net/opencores_eth.c              |   8 +--
- hw/net/smc91c111.c                  |   8 +--
- hw/net/stellaris_enet.c             |  15 ++--
- hw/net/xgmac.c                      |   9 +--
- hw/pci-host/bonito.c                |   9 +--
- hw/ppc/spapr.c                      |  29 +++-----
- hw/sh4/sh_pci.c                     |  20 +++---
- hw/sparc64/niagara.c                |   4 +-
- hw/ssi/xilinx_spi.c                 |   9 +--
- hw/timer/sun4v-rtc.c                |  23 +++----
- tests/cpu-plug-test.c               |  18 ++---
- vl.c                                |  12 +++-
- hw/Makefile.objs                    |   2 +-
- hw/mem/Makefile.objs                |   4 +-
- hw/mem/trace-events                 |   5 +-
- hw/timer/trace-events               |   6 +-
- qemu-deprecated.texi                |  12 ++++
- 38 files changed, 344 insertions(+), 286 deletions(-)
-
---=20
+diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
+index f02b229837..0474a3dd11 100644
+--- a/include/hw/mem/memory-device.h
++++ b/include/hw/mem/memory-device.h
+@@ -29,12 +29,48 @@ typedef struct MemoryDeviceState {
+     Object parent_obj;
+ } MemoryDeviceState;
+ 
++/**
++ * MemoryDeviceClass:
++ *
++ * All memory devices need to implement TYPE_MEMORY_DEVICE as an interface.
++ *
++ * A memory device is a device that owns a memory region which is
++ * mapped into guest physical address space at a certain address. The
++ * address in guest physical memory can either be specified explicitly
++ * or get assigned automatically.
++ */
+ typedef struct MemoryDeviceClass {
++    /* private */
+     InterfaceClass parent_class;
+ 
++    /*
++     * Return the address of the memory device in guest physical memory.
++     *
++     * Called when (un)plugging a memory device or when iterating over
++     * all memory devices mapped into guest physical address space.
++     *
++     * If "0" is returned, no address has been specified by the user and
++     * no address has been assigned to this memory device yet.
++     */
+     uint64_t (*get_addr)(const MemoryDeviceState *md);
++
++    /*
++     * Return the amount of memory provided by the memory device currently
++     * usable ("plugged") by the VM.
++     *
++     * Called when calculating the total amount of ram available to the
++     * VM (e.g. to report memory stats to the user).
++     *
++     * This is helpful for devices that dynamically manage the amount of
++     * memory accessible by the guest via the reserved memory region. For
++     * most devices, this corresponds to the size of the memory region.
++     */
+     uint64_t (*get_plugged_size)(const MemoryDeviceState *md, Error **errp);
+     uint64_t (*get_region_size)(const MemoryDeviceState *md, Error **errp);
++
++    /*
++     * Translate the memory device into #MemoryDeviceInfo.
++     */
+     void (*fill_device_info)(const MemoryDeviceState *md,
+                              MemoryDeviceInfo *info);
+ } MemoryDeviceClass;
+-- 
 2.18.0.rc1.1.g3f1ff2140
 

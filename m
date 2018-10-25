@@ -1,51 +1,302 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id o81-v6sm2004014wmo.38.2018.11.09.07.45.58
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Nov 2018 07:45:58 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id ACE083E043F;
-	Fri,  9 Nov 2018 15:45:57 +0000 (GMT)
-References: <20181109152119.9242-1-alex.bennee@linaro.org>
-User-agent: mu4e 1.1.0; emacs 26.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [PATCH  v3 0/7] KVM Guest Debug fixes (plus TCG EL2 debug tweaks)
-In-reply-to: <20181109152119.9242-1-alex.bennee@linaro.org>
-Date: Fri, 09 Nov 2018 15:45:57 +0000
-Message-ID: <87ftwa5k5m.fsf@linaro.org>
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp581772wro;
+        Thu, 25 Oct 2018 04:39:14 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cym6wBvUbeo/aNbES2O1Djb4ew6yp7yWC0T2LrDIuOw++qy6nVPxU5c2KuOj2x3U77RMaT
+X-Received: by 2002:ac8:6709:: with SMTP id e9-v6mr1117118qtp.62.1540467554913;
+        Thu, 25 Oct 2018 04:39:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540467554; cv=none;
+        d=google.com; s=arc-20160816;
+        b=o4luHvkURMX1scihkAtPCu/k8OMLHFG8mQ6U7/sIb11qGija8OrjbqqDmKQ7zKCzBb
+         BdF/4s1lrASp9AOHN0IECuwZopgRzCa+5yt4xlN/UeqEoilOXzVaYJdTOq2k6pGfUcM8
+         Weg4LRAs3+YpSkLzwhbKEOlyBNrdcWQIrDRTUtOgzGi38J4iybl0nD5SL3kQKA47FLTN
+         bgzfF7pFqsu0mChG3JXOuVRykLxO2sCz/Ms426SFKDZRHRX2/GaoWj395UVeQi3rgVEi
+         rqoEFVDXezFdDhWqOlhtfVmNE4DBjRz1yLdjbTux2GEjJ/xu4YSOrlxYcuQJwmlACmHk
+         tD6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=Wz9qMJOHSdAk3glmkowQewFEIbOruZN22S3NQF1dxKM=;
+        b=hGfHDjI8x0DUpa78zElp+PAet7MhjnV9mlqnFBs/nRyvx5QZDZqJMH6RdBylVnSJ+V
+         WO9jSfWWHTxU5GXPaeeGji7klvxa7v8YkhVVGQ9lBLqasx0H3Z4jBF6StKfzxg1OnNLy
+         JiMPjno/h/6LgtjxP1f2QGzaOQizRhy1BZZmFrMfp02zAZyzaN7DqI9xXtmToIlvetYz
+         EZpAvRd4AccuTSuKgI+03io+buJzwYmo1K/NREVNHsG02BSaKxyUZ1C0Zhnv/XDv2uPa
+         Dee3+IBaNuq63sA+4HbQAHLYm4na9YYwqAea5BHjfdU31Ad8Imx0JbGQS4p/lbNw01Zy
+         6DUw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id j184-v6si1526255qka.181.2018.10.25.04.39.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 25 Oct 2018 04:39:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53921 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gFdys-0004QW-Ey
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 07:39:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56287)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1gFdxo-00049I-Ol
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 07:38:09 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1gFdxl-0003Ea-AA
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 07:38:08 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:45954)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gFdxl-00036r-2A
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 07:38:05 -0400
+Received: by mail-wr1-f67.google.com with SMTP id n5-v6so5171162wrw.12
+	for <qemu-devel@nongnu.org>; Thu, 25 Oct 2018 04:38:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Wz9qMJOHSdAk3glmkowQewFEIbOruZN22S3NQF1dxKM=;
+	b=Wxd3lnrX+GbxMs92xfI77OXmVG4JeHZ+PkeYKNZ635jeu+DoCx23zup83p5ztbAInT
+	C1oOAC+i8RjSyffYY/S4XdNhNolIYL5bBzWp+xKX+xq5Bs+/kwNvr5ZMwzZdMOBodCCN
+	TWy+fCnasDh1gdrs4WeG9kwG9BChXu4crXXT8z1c5vYTtcciFXLWjwEyNKKICdsEF0M+
+	Pn6GENaV7XoehyQCOvQu9BOkx8gqpOBv6ByW8vfTFvsMJrI1ylKnTHXiYU/jWIC8wCzy
+	pMoURHZUrtVZmBFiMKFe35JM2jsyllz//v7yiIkRp8MjjM0mD1KbDSYPJULWLQd+f1wQ
+	C0bg==
+X-Gm-Message-State: AGRZ1gL0rCRbK1w4YUZLzD3AQvpQgdaphDTq/6QeYrRscUJjE5qfidMW
+	6IHuRhSRMNWhyu5Iu9ouJNtlOw==
+X-Received: by 2002:adf:ce86:: with SMTP id
+	r6-v6mr1594027wrn.258.1540467483297; 
+	Thu, 25 Oct 2018 04:38:03 -0700 (PDT)
+Received: from [10.101.215.143] ([185.7.230.216])
+	by smtp.gmail.com with ESMTPSA id
+	2-v6sm8126088wro.96.2018.10.25.04.38.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 25 Oct 2018 04:38:02 -0700 (PDT)
+To: Peng Hao <peng.hao2@zte.com.cn>, peter.maydell@linaro.org
+References: <1540495397-88089-1-git-send-email-peng.hao2@zte.com.cn>
+	<1540495397-88089-4-git-send-email-peng.hao2@zte.com.cn>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <467e77d8-48af-5361-3e31-b9eac79d968d@redhat.com>
+Date: Thu, 25 Oct 2018 13:38:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: eAw3peWnZlk5
+In-Reply-To: <1540495397-88089-4-git-send-email-peng.hao2@zte.com.cn>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-devel] [PATCH V4 3/5] hw/misc/pvpanic: Add the MMIO
+ interface
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zpiV9g+/EJp6
 
+On 25/10/18 21:23, Peng Hao wrote:
+> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>   hw/misc/pvpanic.c         | 74 ++++++++++++++++++++++++++++++++++++++---------
+>   include/hw/misc/pvpanic.h |  2 ++
+>   2 files changed, 62 insertions(+), 14 deletions(-)
+> 
+> diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+> index dd3aef2..b575e01 100644
+> --- a/hw/misc/pvpanic.c
+> +++ b/hw/misc/pvpanic.c
+> @@ -2,10 +2,12 @@
+>    * QEMU simulated pvpanic device.
+>    *
+>    * Copyright Fujitsu, Corp. 2013
+> + * Copyright (c) 2018 ZTE Ltd.
+>    *
+>    * Authors:
+>    *     Wen Congyang <wency@cn.fujitsu.com>
+>    *     Hu Tao <hutao@cn.fujitsu.com>
+> + *     Peng Hao <peng.hao2@zte.com.cn>
+>    *
+>    * This work is licensed under the terms of the GNU GPL, version 2 or later.
+>    * See the COPYING file in the top-level directory.
+> @@ -45,30 +47,48 @@ static void handle_event(int event)
+>   
+>   #include "hw/isa/isa.h"
+>   
+> -typedef struct PVPanicState {
+> +typedef struct PVPanicCommonState {
+> +    MemoryRegion mr;
+> +} PVPanicCommonState;
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Maybe we can drop this type now.
 
-> Hi,
->
-> I missed a fix I'd applied locally from v2 so this is a resend with
-> some additional tags, some changes suggested by rth and one more fix
-> for the test case.
->
-> So these are fixes for guest debug when running under KVM. While
-> re-spinning these I came across an anomaly which pointed to a kernel bug
-> that caused the 1st single-step to fail. This is being discussed at on
-> the kvm-arm list:
->
->   Subject: [RFC PATCH] KVM: arm64: don't single-step for non-emulated fau=
-lts
->   Date: Wed, 7 Nov 2018 17:10:31 +0000
->   Message-Id: <20181107171031.22573-1-alex.bennee@linaro.org>
->
-> It looks like there will be another patch series on its way to address
-> this.
+> +
+> +typedef struct PVPanicISAState {
+>       /* private */
+>       ISADevice isadev;
 
-For reference Mark has posted this now:
+Here goes this comment:
 
-   Subject: [PATCH 0/2] kvm/arm: make singlestep behaviour consistent
-   Date: Fri,  9 Nov 2018 15:07:09 +0000
-   Message-Id: <20181109150711.45864-1-mark.rutland@arm.com>
---
-Alex Benn=C3=A9e
+         /* public */
+
+> +    uint16_t ioport;
+> +    /* public */
+> +    PVPanicCommonState common;
+> +} PVPanicISAState;
+> +
+> +typedef struct PVPanicMMIOState {
+> +    /* private */
+> +    SysBusDevice busdev;
+>   
+>       /* public */
+> -    MemoryRegion mr;
+> -    uint16_t ioport;
+> -} PVPanicState;
+> +    PVPanicCommonState common;
+> +} PVPanicMMIOState;
+> +
+> +#define PVPANIC_ISA(obj)    \
+> +    OBJECT_CHECK(PVPanicISAState, (obj), TYPE_PVPANIC)
+> +
+> +#define PVPANIC_MMIO(obj)    \
+> +    OBJECT_CHECK(PVPanicMMIOState, (obj), TYPE_PVPANIC_MMIO)
+> +
+>   
+>   /* return supported events on read */
+> -static uint64_t pvpanic_ioport_read(void *opaque, hwaddr addr, unsigned size)
+> +static uint64_t pvpanic_read(void *opaque, hwaddr addr, unsigned size)
+>   {
+>       return PVPANIC_PANICKED;
+>   }
+>   
+> -static void pvpanic_ioport_write(void *opaque, hwaddr addr, uint64_t val,
+> +static void pvpanic_write(void *opaque, hwaddr addr, uint64_t val,
+>                                    unsigned size)
+>   {
+>       handle_event(val);
+>   }
+>   
+>   static const MemoryRegionOps pvpanic_ops = {
+> -    .read = pvpanic_ioport_read,
+> -    .write = pvpanic_ioport_write,
+> +    .read = pvpanic_read,
+> +    .write = pvpanic_write,
+>       .impl = {
+>           .min_access_size = 1,
+>           .max_access_size = 1,
+> @@ -77,15 +97,15 @@ static const MemoryRegionOps pvpanic_ops = {
+>   
+>   static void pvpanic_isa_initfn(Object *obj)
+>   {
+> -    PVPanicState *s = PVPANIC(obj);
+> +    PVPanicISAState *s = PVPANIC_ISA(obj);
+>   
+> -    memory_region_init_io(&s->mr, OBJECT(s), &pvpanic_ops, s, "pvpanic", 1);
+> +    memory_region_init_io(&s->common.mr, OBJECT(s), &pvpanic_ops, s, TYPE_PVPANIC, 1);
+>   }
+>   
+>   static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
+>   {
+>       ISADevice *d = ISA_DEVICE(dev);
+> -    PVPanicState *s = PVPANIC(dev);
+> +    PVPanicISAState *s = PVPANIC_ISA(dev);
+>       FWCfgState *fw_cfg = fw_cfg_find();
+>       uint16_t *pvpanic_port;
+>   
+> @@ -98,11 +118,11 @@ static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
+>       fw_cfg_add_file(fw_cfg, "etc/pvpanic-port", pvpanic_port,
+>                       sizeof(*pvpanic_port));
+>   
+> -    isa_register_ioport(d, &s->mr, s->ioport);
+> +    isa_register_ioport(d, &s->common.mr, s->ioport);
+>   }
+>   
+>   static Property pvpanic_isa_properties[] = {
+> -    DEFINE_PROP_UINT16(PVPANIC_IOPORT_PROP, PVPanicState, ioport, 0x505),
+> +    DEFINE_PROP_UINT16(PVPANIC_IOPORT_PROP, PVPanicISAState, ioport, 0x505),
+>       DEFINE_PROP_END_OF_LIST(),
+>   };
+>   
+> @@ -118,14 +138,40 @@ static void pvpanic_isa_class_init(ObjectClass *klass, void *data)
+>   static TypeInfo pvpanic_isa_info = {
+>       .name          = TYPE_PVPANIC,
+>       .parent        = TYPE_ISA_DEVICE,
+> -    .instance_size = sizeof(PVPanicState),
+> +    .instance_size = sizeof(PVPanicISAState),
+>       .instance_init = pvpanic_isa_initfn,
+>       .class_init    = pvpanic_isa_class_init,
+>   };
+>   
+> +static void pvpanic_mmio_initfn(Object *obj)
+> +{
+> +    PVPanicMMIOState *s = PVPANIC_MMIO(obj);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +
+> +    memory_region_init_io(&s->common.mr, OBJECT(s), &pvpanic_ops, s,
+> +                          TYPE_PVPANIC_MMIO, 2);
+> +    sysbus_init_mmio(sbd, &s->common.mr);
+> +}
+> +
+> +static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +}
+> +
+> +static TypeInfo pvpanic_mmio_info = {
+> +    .name          = TYPE_PVPANIC_MMIO,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(PVPanicMMIOState),
+> +    .instance_init = pvpanic_mmio_initfn,
+> +    .class_init    = pvpanic_mmio_class_init,
+> +};
+> +
+>   static void pvpanic_register_types(void)
+>   {
+>       type_register_static(&pvpanic_isa_info);
+> +    type_register_static(&pvpanic_mmio_info);
+>   }
+>   
+>   type_init(pvpanic_register_types)
+> diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
+> index 1ee071a..c0d2d38 100644
+> --- a/include/hw/misc/pvpanic.h
+> +++ b/include/hw/misc/pvpanic.h
+> @@ -16,6 +16,8 @@
+>   
+>   #define TYPE_PVPANIC "pvpanic"
+>   
+> +#define TYPE_PVPANIC_MMIO "pvpanic-mmio"
+> +
+>   #define PVPANIC_IOPORT_PROP "ioport"
+>   
+>   static inline uint16_t pvpanic_port(void)
+> 
+
+Depending of the response to Peter's question [*]:
+
+     I'd also like some confirmation from folks more familiar with the
+     current state of the art in guest-to-management-layer communication
+     that pvpanic is still the recommended way to achieve this goal,
+     and hasn't been obsoleted by something else.
+
+I might work a bit on this patch next week.
+
+[*] https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03861.html

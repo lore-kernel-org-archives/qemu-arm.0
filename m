@@ -1,83 +1,83 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp717904wro;
-        Thu, 25 Oct 2018 06:39:30 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fU4DLu0B/vbcoVuTt0Y0R9b6QNu/MiMLdKblDMvy4EopMdIClO71IRj8E3gJvq9/gpYAKj
-X-Received: by 2002:a37:7745:: with SMTP id s66-v6mr1440566qkc.240.1540474770379;
-        Thu, 25 Oct 2018 06:39:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540474770; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp717921wro;
+        Thu, 25 Oct 2018 06:39:31 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5deEvkVY0BeSNdH34g8PSlz4i8wU92mV1yeQkHkmslvaUIK6ZivLLsh2m4T3c/atavvCfXK
+X-Received: by 2002:ac8:33ad:: with SMTP id c42-v6mr1537487qtb.190.1540474771419;
+        Thu, 25 Oct 2018 06:39:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540474771; cv=none;
         d=google.com; s=arc-20160816;
-        b=066DVC0U9hWa22MFy0mJangR0Zxn9+IFPV0LSjtipRvNcLWR8P6Q7FsyDIfQrjxxUn
-         i9Q92Gal9xCd+VO3fVigNOPqru1M6KGisWfryFB8LPDD9r99zqb0O7G73eo5o2TOi8x1
-         SERbWxYUTEmOICMnMnjLLXeRZHwWcFJulbKJDGlNPdbPLAMYNTtRneCPJnzCIRKw2nZh
-         M0PJPGVzik9ULGC8eCByb9ao28QarabJ84R8G/KhA8kPRwxw8K9WevG2CbGKTgMnvCaR
-         OWu+MYSFM14Uzk7qIZEvN8XhMf+TbbxMRt1hEQ6xBo7qYSQzaAbkf2luM+iFx8yQY0Jw
-         jo/w==
+        b=UYwAcQyzsSPJ2C9cOUMO7jX4RQj7JSPVMbipPE83WHVxwq+zrqXWDzkyZ6WI/YOOj8
+         EiteNJLMO2FAyHBhS14T3W8kJVJA39Q9PF/FaXM2+MOLYy3csF74uNBNoGKViaDcTQrv
+         C1KCkYgDRbKPrJk6qTSzfPoib0sEtzz60EwHPQgVvpoER9zmS+JWDRCPDGYiqnN8SVcG
+         VLB2ZtTp5PhuFEttVc1W3pm5GLwMTE4HpTkLdM1DT/uAPA5c7DO7VMofrR5+7XL4mZZ1
+         ACMR0Wv6F5f1PLmqdUoo2Elvqo3xJ8MVLDJCLUq70/nkGdw3Cp0RTapwkFGRtPLGc8Cj
+         jKYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=bd3w/cucKR/qhFQlPAzecLCQv0iBTA0XcLaB5Pcyhlk=;
-        b=RimA2j3plXswuMAqV3go9zXFF9C5JeNXGc/VB4p6WZjcUwg8ACUEJoQgzMNEhU1uDq
-         xCIGIqrJKwvuQxWXw9/04l4QHGdZvecRyTy+hLJf/nK7lWth0Yqf4VbcVTf/IE/IBG+m
-         2SnGOhIIZIfqdZyiJJU22iKLkDv2er4TVglLLBXFMmsaHobQK8LC/48L3cWfv0TehZag
-         ij6QLd0BDpqN1EmfsSrkoXu8Wauxg4fGl5GfmTYZ0XNpiHULhpLN4ZXDWQRQbhfl4PD6
-         rF7sMT09TRnNYa2zF+6AwSm2/K3Rmc9lJ10zZKe2bmwrVDXz1jzFoFNtvIeMOVe4fKE8
-         EkoA==
+        bh=EH/Uk1TWJ0BoPPGcBtM0jFZXGIrdO0VMW6yh5DzSkYY=;
+        b=oIKBRKKb0m7VYKUjZC8XJn2jzfrPtdqt1qWscAk053jXWcG7GvIQI/qzSLiB3P3RVI
+         S8tuJB5w+iNQ2cTBNvPn/OukSCzUKmNFHy+exxc80kec/6P6+emS6CPx91mZ7208D6ni
+         U2Ty5hSjBJzd/5ZL3nX8T46Wfty/Op1JUrkn/JK7OFEuhbTt5PbB+tTGCNmnKtYDFHfd
+         O8bAXg5Nei0H2aohSQE+pBWk2M7zDljncBkX6nCM6RkauvUhObz6m+jlgQAm+/+tF+xI
+         hEfesiVOEwga+SCGf3uSZLByHIj8tKT2nivdrUPeY4glLTPCGEVvy07a6Z2k3BOG8I2x
+         ZEPg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l5-v6si2176647qtp.365.2018.10.25.06.39.30
+        by mx.google.com with ESMTPS id r23-v6si1107324qtm.319.2018.10.25.06.39.31
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 06:39:30 -0700 (PDT)
+        Thu, 25 Oct 2018 06:39:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54509 helo=lists.gnu.org)
+Received: from localhost ([::1]:54508 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFfrF-0006rf-TM
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:39:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57229)
+	id 1gFfrG-0006r8-QU
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:39:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfmr-0002Dq-27
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:34:57 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFfmt-00028V-Ck
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:35:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfmp-0007sZ-8H
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:34:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46682)
+	(envelope-from <ehabkost@redhat.com>) id 1gFfld-0006rE-Kp
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:33:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50286)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFfmo-0007rc-Vr; Thu, 25 Oct 2018 09:34:55 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1gFfld-0006nq-AU; Thu, 25 Oct 2018 09:33:41 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EB00C3084022;
-	Thu, 25 Oct 2018 13:34:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B693B30012D7;
+	Thu, 25 Oct 2018 13:33:37 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 066C71974A;
-	Thu, 25 Oct 2018 13:34:50 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 02F125E1B4;
+	Thu, 25 Oct 2018 13:33:36 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:32:33 -0300
-Message-Id: <20181025133301.16578-16-ehabkost@redhat.com>
+Date: Thu, 25 Oct 2018 10:32:22 -0300
+Message-Id: <20181025133301.16578-5-ehabkost@redhat.com>
 In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
 References: <20181025133301.16578-1-ehabkost@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Thu, 25 Oct 2018 13:34:54 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 25 Oct 2018 13:33:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL v2 15/43] hw/mips/malta: Remove unuseful code
+Subject: [Qemu-arm] [PULL v2 04/43] trace-events: Fix copy/paste typo
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,46 +110,38 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +/QLGKdlibP1
+X-TUID: tsZ4aEZHQKMO
 
 From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
+Missed while reviewing 5dd85b4b486.
+
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20181002212522.23303-13-f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Message-Id: <20181002212522.23303-2-f4bug@amsat.org>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- hw/mips/mips_malta.c | 13 -------------
- 1 file changed, 13 deletions(-)
+ hw/timer/trace-events | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 29b90bacf3..c1cf0fe12e 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -1422,23 +1422,10 @@ void mips_malta_init(MachineState *machine)
-     pci_vga_init(pci_bus);
- }
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index fa4213df5b..ca9ad6321a 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -56,7 +56,7 @@ systick_timer_tick(void) "systick reload"
+ systick_read(uint64_t addr, uint32_t value, unsigned size) "systick read=
+ addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ systick_write(uint64_t addr, uint32_t value, unsigned size) "systick wri=
+te addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
 =20
--static int mips_malta_sysbus_device_init(SysBusDevice *sysbusdev)
--{
--    return 0;
--}
--
--static void mips_malta_class_init(ObjectClass *klass, void *data)
--{
--    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
--
--    k->init =3D mips_malta_sysbus_device_init;
--}
--
- static const TypeInfo mips_malta_device =3D {
-     .name          =3D TYPE_MIPS_MALTA,
-     .parent        =3D TYPE_SYS_BUS_DEVICE,
-     .instance_size =3D sizeof(MaltaState),
--    .class_init    =3D mips_malta_class_init,
- };
-=20
- static void mips_malta_machine_init(MachineClass *mc)
+-# hw/char/cmsdk_apb_timer.c
++# hw/timer/cmsdk_apb_timer.c
+ cmsdk_apb_timer_read(uint64_t offset, uint64_t data, unsigned size) "CMS=
+DK APB timer read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_timer_write(uint64_t offset, uint64_t data, unsigned size) "CM=
+SDK APB timer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_timer_reset(void) "CMSDK APB timer: reset"
 --=20
 2.18.0.rc1.1.g3f1ff2140
 

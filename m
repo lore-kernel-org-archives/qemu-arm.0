@@ -1,136 +1,130 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp497720wrt;
-        Wed, 24 Oct 2018 04:40:11 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5exo8w0zgxGxbuq466Xy7QGNSfP416O1kXctj0iIgT1TJujvMSqouBo+vlNlbee83rgH12Q
-X-Received: by 2002:a37:182a:: with SMTP id j42mr1875165qkh.83.1540381211270;
-        Wed, 24 Oct 2018 04:40:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540381211; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp555469wro;
+        Thu, 25 Oct 2018 04:13:20 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fK345Jh67NEIu4QnijGvwSRkFSQ0ci2wpJ/VzSvp9XHSc8IqkMgFEUma9SiYI50oRCivl/
+X-Received: by 2002:a37:ae06:: with SMTP id x6-v6mr915787qke.238.1540466000086;
+        Thu, 25 Oct 2018 04:13:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540466000; cv=none;
         d=google.com; s=arc-20160816;
-        b=UBosZaik2gx7I7wRp6HAuPLyy5RoGEZ575HgIQ/Ml/Z57r/DsOr6YtanonPa7tOgJK
-         7v8/FlGtkoxgIVNowxbd/DMetFl9iMD+/yZDf/HwDpViYqGLfq8q8VyhVCjYHdbmRKeP
-         wcwrXMsSEwc6N2Ip4FG+G9lao89GA4nT8LmIzusrA9pbD2p4tj7WDsIJit7cXVMfzMI9
-         PwmYXIgT5SEo7UDa7CFVSb1V1fg4IrMgR8Uipj2eYxyRtsnXd3NzOsCDCbf7Fwg3nSlg
-         gIwTlJ/0j07PphK5t9yVZ6xUNC8rgjv6qG+GrqBjDABzm5PJPLApzcwOuSjpxd0tcVwC
-         Sr+w==
+        b=cwm7AGbIZ5u6e10P51dYh58fcuvGJ1M/sMkuaNwejqo2H/UAOJy/HAWej5xzIA8GWO
+         T5TggB3VjcJsnQ66Yjxi1A4SzxFr1C2CyyLjYw/pkhAygUX0YyUJhtP0ago1jVvkklj6
+         KyhZ5sLfZjpNE8G3yzSBHqikdBYFOssJdP6/iZ/L8mFKw1wU06Bf5XGHScCxeMBhUd08
+         kSd/2EL4Rfe9HYmBukfI7OkSn1ZAUpeouNN7MqImB1DLNB+XXSEfPy9R4/p/Stph3Nfe
+         d+KhRhj4propKn7tpp0Sq3WrsHETExMUlgVNBpuc/h84KUu6o9k728UDhPaKQ4snF6x7
+         +K4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=2LDZThc3dp3Vtr/oFZEiNBhenqoyrEIJyESGovuT+A8=;
-        b=1GnGiwj476g4fJQTGvnM9wFCrgxBXvzaL0uBL/3pAgwVjl0pSVnEQ6wfD0kQBCy50v
-         p5Er3hIpOyctYaHhQWjDCFbLAxVZwJd/z9NX3By8t9bBK18DiqlKjsdCjOkLS4nvaXYM
-         x7RcaGs0xC6qU4S3m0QgHw50jQT/itb0bpN56AtuGiiB7MMkeulgmLtBoaQxNPGh/RI2
-         Mu48IuVQY8gytOArtj1CwuFnx2hGYAQDWjJTpAPKMnCMRI7AIswr/fEVyaUUMNEo87Mx
-         VxdmbBI7h93QjAmH9ODcUr9pioHW/z+fCdM4t1TjedKurr8ZZRol5Hpe7yu/iLNSBUcT
-         zowg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=oLKEEKxuTpqSnlYbbxwMM0laDcQ3UHLpXlsElKthKf4=;
+        b=GvVZm1G21PCMILURo3Qmuhu+IX1sYYlRWHdw7netjs19roiBUhHc4ak18xMkIAfahl
+         tVSXXQkdVRPBGVjd5mf2dT2qE8DvLImqVo1KCuiRKjA3mwfYoCOroZwMbDzyCRRMIlmv
+         HvvtOtW7OSCkybB9SP4cXTLOVk2bAbexca4vEn5hanPO5nVwaDkMukJCCrDpJ5RVCQxu
+         f7OgQ8RG9YwkW5LZUkWCrzP2fklHFCtMulKTgig1WAkvzPubl1BAts4yJ9zIlX+/RHaZ
+         ZMjdxqWQjG1C+6voE4uVgJeZPXSh3JyL/RqLpfMj7bfNE8ikDm7QlqnZco8Dafjf99R0
+         rPIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z9si3677477qvg.165.2018.10.24.04.40.11
+        by mx.google.com with ESMTPS id k14si2488304qvp.85.2018.10.25.04.13.19
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 24 Oct 2018 04:40:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 25 Oct 2018 04:13:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47650 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53763 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFHWE-0005Hk-Ml
-	for alex.bennee@linaro.org; Wed, 24 Oct 2018 07:40:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46187)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gFdZn-0006Gb-HA
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 07:13:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gFHST-0000w4-Lp
-	for qemu-devel@nongnu.org; Wed, 24 Oct 2018 07:36:21 -0400
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gFdZQ-0006DP-6t
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 07:12:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gFHIF-0006kT-41
-	for qemu-devel@nongnu.org; Wed, 24 Oct 2018 07:25:43 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53040)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gFdZK-0000Yr-HC
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 07:12:55 -0400
+Received: from out1.zte.com.cn ([202.103.147.172]:43336 helo=mxct.zte.com.cn)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1gFHI9-0006Zm-Li; Wed, 24 Oct 2018 07:25:37 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B1BCB307D864;
-	Wed, 24 Oct 2018 11:25:33 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.205.115])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5AA5B5DD64;
-	Wed, 24 Oct 2018 11:25:28 +0000 (UTC)
-Date: Wed, 24 Oct 2018 12:25:25 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20181024112525.wdysex6exqd5aued@kamzik.brq.redhat.com>
-References: <20181024085602.16611-1-eric.auger@redhat.com>
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gFdZI-0000Qy-52; Thu, 25 Oct 2018 07:12:48 -0400
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id E3C37305AA589F7C8229;
+	Thu, 25 Oct 2018 19:12:28 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id w9PBCIHL015289;
+	Thu, 25 Oct 2018 19:12:18 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018102519124982-6703127 ;
+	Thu, 25 Oct 2018 19:12:49 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org, philmd@redhat.com
+Date: Fri, 26 Oct 2018 03:23:13 +0800
+Message-Id: <1540495397-88089-2-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1540495397-88089-1-git-send-email-peng.hao2@zte.com.cn>
+References: <1540495397-88089-1-git-send-email-peng.hao2@zte.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20181024085602.16611-1-eric.auger@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Wed, 24 Oct 2018 11:25:33 +0000 (UTC)
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-10-25 19:12:49,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-10-25 19:12:06
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-MAIL: mse01.zte.com.cn w9PBCIHL015289
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH] hw/arm/virt: Set VIRT_COMPAT_3_0 compat
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 202.103.147.172
+Subject: [Qemu-arm] [PATCH V4 1/5] hw/misc/pvpanic: Build the pvpanic device
+ in $(common-obj)
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cBPlREsCOge2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: seQQXLMR6+5M
 
-On Wed, Oct 24, 2018 at 10:56:02AM +0200, Eric Auger wrote:
-> We are missing the VIRT_COMPAT_3_0 definition and setting.
-> Let's add them.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/virt.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 9f677825f9..a2b8d8f7c2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1871,6 +1871,9 @@ static void virt_machine_3_1_options(MachineClass *mc)
->  }
->  DEFINE_VIRT_MACHINE_AS_LATEST(3, 1)
->  
-> +#define VIRT_COMPAT_3_0 \
-> +    HW_COMPAT_3_0
-> +
->  static void virt_3_0_instance_init(Object *obj)
->  {
->      virt_3_1_instance_init(obj);
-> @@ -1879,6 +1882,7 @@ static void virt_3_0_instance_init(Object *obj)
->  static void virt_machine_3_0_options(MachineClass *mc)
->  {
->      virt_machine_3_1_options(mc);
-> +    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_3_0);
->  }
->  DEFINE_VIRT_MACHINE(3, 0)
->  
-> -- 
-> 2.17.2
-> 
->
+From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Oops, I should have done this with the 3.1 machine type. Thanks for the
-catching and patching.
+The 'pvpanic' ISA device can be use by any machine with an ISA bus.
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/misc/Makefile.objs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 6d50b03..24997d6 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -8,6 +8,7 @@ common-obj-$(CONFIG=5FISA=5FTESTDEV) +=3D pc-testdev.o
+ common-obj-$(CONFIG=5FPCI=5FTESTDEV) +=3D pci-testdev.o
+ common-obj-$(CONFIG=5FEDU) +=3D edu.o
+ common-obj-$(CONFIG=5FPCA9552) +=3D pca9552.o
++common-obj-$(CONFIG=5FPVPANIC) +=3D pvpanic.o
+=20
+ common-obj-y +=3D unimp.o
+ common-obj-$(CONFIG=5FFW=5FCFG=5FDMA) +=3D vmcoreinfo.o
+@@ -70,7 +71,6 @@ obj-$(CONFIG=5FIOTKIT=5FSECCTL) +=3D iotkit-secctl.o
+ obj-$(CONFIG=5FIOTKIT=5FSYSCTL) +=3D iotkit-sysctl.o
+ obj-$(CONFIG=5FIOTKIT=5FSYSINFO) +=3D iotkit-sysinfo.o
+=20
+-obj-$(CONFIG=5FPVPANIC) +=3D pvpanic.o
+ obj-$(CONFIG=5FHYPERV=5FTESTDEV) +=3D hyperv=5Ftestdev.o
+ obj-$(CONFIG=5FAUX) +=3D auxbus.o
+ obj-$(CONFIG=5FASPEED=5FSOC) +=3D aspeed=5Fscu.o aspeed=5Fsdmc.o
+--=20
+1.8.3.1
+

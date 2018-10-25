@@ -1,79 +1,80 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp732921wro;
-        Thu, 25 Oct 2018 06:53:11 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5feD2LV5ZHZ2RrmFnKz42hc9EpBPZyQQJo6/6Hm8uIy241YYJ+gaGJZOg9ICRmfxHVn5fKd
-X-Received: by 2002:a37:8006:: with SMTP id b6-v6mr1474096qkd.178.1540475591096;
-        Thu, 25 Oct 2018 06:53:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540475591; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp733813wro;
+        Thu, 25 Oct 2018 06:54:00 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5e3ZVSmA//QKkb0pHtwlJbldP2HstHN4XB0deDC+/wIyp70RKRtdWimaXa8bbxytMEE8kgS
+X-Received: by 2002:ac8:2837:: with SMTP id 52-v6mr1552776qtq.243.1540475640658;
+        Thu, 25 Oct 2018 06:54:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540475640; cv=none;
         d=google.com; s=arc-20160816;
-        b=ebtKOU8flyabM+p7PbbO7cb2j4p4lYayt2B3fLDq7pJusiX+zld9su7h0OSXXWFuXi
-         vcVbqK0RGQq4a4ATcM9Vz3/EVIiR99g2/dpCo6DT3C2w6aWUkriBBfneVH94DxGJ4X+g
-         GL++7WoeIOT7BDb+mJx03u/uCcKUddmzrRYu7g8FcXsPDD0zNivaUbZfTpBQnBPQXEsr
-         +cvsAhLCGN1T2MikdTrOMzN1//W0hetxN6G6j9QWNxrVAEGg0OzL1XrQxXiJJDQzmaM+
-         e7sJx38DBvOe30zY3cJhm5g/9M+o4NHd+l/kDm0rU62nS44qMn1wAs1fe5+99o8zI7gR
-         Ubjw==
+        b=wkbsMcI3bn/SQHDjy3935+uPaNdTA5/d/dHgnpdToCQWzIDeO8EyszI9tvK/XB/N4X
+         JiNLOh/BSN3aBk1TD8QZw2nu83t9PJpXrUh8K7mgl1ojMjBDZOuYdPYZje3rq0tXP119
+         ADYbMhWo5u4LZJVKqq8en1qkE4ADYFqZ0FcxauqLjGIUuLdQCAUrr4VflbZHq1YIyitk
+         +nydn6DCMU8FVvPJ9sQ+3Ob1fKyOBzoG8KrPeg/Xp6k93vCGRfY8R+T47BqD2zV5y0Dr
+         4FTGeikjGkTlLE20XVbtE2gaS2oT/ItuNjVL50qpYQJgRiXWw4q7Zcrz9HZKjBn/zvkS
+         bPHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=gaWBWt6JOwKv15gSZp7hXenCml5iypYO3jctCuqVBHM=;
-        b=ufIGtZ3IDwFVKy8QJOxwBsN/0zkzK6XS9pqS5jhqk3WXAyxlcF0ppOWcBK05z8DEYP
-         ANG7NSWx03SFW1Wp7WiDiSQ4t3nu1Hfj0DsU3VXNPUZKYhPljqd+L/5AwbgE2Z2W47Fr
-         YocQYQLcmlNazG77++jZzCQvJJIYdA2+cWkgmq/PSvJf8/J4xfPd/bz5GFU5CCG41FLa
-         kDKk7Jk/WMPHnNgkkLZhcAsyaJJ44ckYgcaljfXYXKZRgtg9HLsrQl41f7WFsP7waH02
-         XCnxlhs8Uo3wLpVO90lxsigMf8ebHVLjs+aEqYVDCkPpfqFPfo5xaXLnpsGk73v6W6jE
-         0FCg==
+        bh=DcpWzBpinwNwOJnp9B9Pe4RJGYlZHZiU4zGtA3qg+kE=;
+        b=DqchZuxVt/TJpeYLCb7GqXgM9q8XNubQxNCMVTAQiYS2uW8MQIq6Tw9bFkDCjxF90S
+         eibFClUO/S/PZLh95ZexHN2XFn9ui5uz2mYs/RuE1Y77sj0iBlFJMscdvNTs8pPtsGbK
+         krphAuHwFnOBIKf0pGJZjSij0nGLrRnFX4cvMKmgzhGZuluVLmkoGgUTykCyXd0LcO9G
+         Nm5i1d7MK5yXrXj40js1wXEfjFmY4XYpeLlCEOQS2gKtMPiY4EUnCX4r/b/11VcCQT8s
+         ulcGchUrQG0ARYm+vf3BdzFDTC4VCOfG3bl96LPOqG1MEpwTPvtgj+15CfCmlP9AXtbf
+         JJnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n42-v6si6823753qtn.383.2018.10.25.06.53.10
+        by mx.google.com with ESMTPS id t18-v6si3588966qtj.158.2018.10.25.06.54.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 06:53:11 -0700 (PDT)
+        Thu, 25 Oct 2018 06:54:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54597 helo=lists.gnu.org)
+Received: from localhost ([::1]:54603 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFg4S-00023O-5c
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:53:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59037)
+	id 1gFg5I-0003Ae-4Q
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:54:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58234)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfq5-000659-2B
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:38:23 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFfo2-0003NJ-Q8
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:36:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfpx-0001ZR-5Y
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:38:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40778)
+	(envelope-from <ehabkost@redhat.com>) id 1gFfo1-0000Qk-LQ
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:36:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52708)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFfpg-0001HE-G5; Thu, 25 Oct 2018 09:37:52 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1gFfnz-0000OK-4F; Thu, 25 Oct 2018 09:36:07 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E82F930F8C05;
-	Thu, 25 Oct 2018 13:37:39 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2BDFC30C79BA;
+	Thu, 25 Oct 2018 13:36:05 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6835C1974A;
-	Thu, 25 Oct 2018 13:37:27 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5209A17F43;
+	Thu, 25 Oct 2018 13:35:57 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:32:45 -0300
-Message-Id: <20181025133301.16578-28-ehabkost@redhat.com>
+Date: Thu, 25 Oct 2018 10:32:40 -0300
+Message-Id: <20181025133301.16578-23-ehabkost@redhat.com>
 In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
 References: <20181025133301.16578-1-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 25 Oct 2018 13:37:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.43]);
+	Thu, 25 Oct 2018 13:36:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PULL v2 27/43] memory-device: drop get_region_size()
+Subject: [Qemu-devel] [PULL v2 22/43] memory-device: introduce separate
+ config option
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,100 +106,92 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /fSO6D7zx5F3
+X-TUID: y1cp4YQVVQ76
 
 From: David Hildenbrand <david@redhat.com>
 
-There are no remaining users of get_region_size() except
-memory_device_get_region_size() itself. We can make
-memory_device_get_region_size() work directly on get_memory_region()
-instead and drop get_region_size().
+Some architectures might support memory devices, while they don't
+support DIMM/NVDIMM. So let's
+- Rename CONFIG_MEM_HOTPLUG to CONFIG_MEM_DEVICE
+- Introduce CONFIG_DIMM and use it similarly to CONFIG NVDIMM
 
-In addition, we can now use memory_device_get_region_size() in pc-dimm
-code to implement get_plugged_size()"
+CONFIG_DIMM and CONFIG_NVDIMM require CONFIG_MEM_DEVICE.
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: David Hildenbrand <david@redhat.com>
-Message-Id: <20181005092024.14344-12-david@redhat.com>
+Message-Id: <20181005092024.14344-7-david@redhat.com>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- include/hw/mem/memory-device.h |  1 -
- hw/mem/memory-device.c         | 11 +++++++++--
- hw/mem/pc-dimm.c               | 18 +-----------------
- 3 files changed, 10 insertions(+), 20 deletions(-)
+ default-configs/i386-softmmu.mak  | 3 ++-
+ default-configs/ppc64-softmmu.mak | 3 ++-
+ qapi/misc.json                    | 2 +-
+ hw/Makefile.objs                  | 2 +-
+ hw/mem/Makefile.objs              | 4 ++--
+ 5 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
-index 659f38385c..9c3398bc4a 100644
---- a/include/hw/mem/memory-device.h
-+++ b/include/hw/mem/memory-device.h
-@@ -71,7 +71,6 @@ typedef struct MemoryDeviceClass {
-      * most devices, this corresponds to the size of the memory region.
-      */
-     uint64_t (*get_plugged_size)(const MemoryDeviceState *md, Error **errp);
--    uint64_t (*get_region_size)(const MemoryDeviceState *md, Error **errp);
- 
-     /*
-      * Return the memory region of the memory device.
-diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index 425830c65c..07749bab69 100644
---- a/hw/mem/memory-device.c
-+++ b/hw/mem/memory-device.c
-@@ -268,9 +268,16 @@ void memory_device_unplug_region(MachineState *ms, MemoryRegion *mr)
- uint64_t memory_device_get_region_size(const MemoryDeviceState *md,
-                                        Error **errp)
- {
--    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(md);
-+    const MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(md);
-+    MemoryRegion *mr;
- 
--    return mdc->get_region_size(md, errp);
-+    /* dropping const here is fine as we don't touch the memory region */
-+    mr = mdc->get_memory_region((MemoryDeviceState *)md, errp);
-+    if (!mr) {
-+        return 0;
-+    }
-+
-+    return memory_region_size(mr);
- }
- 
- static const TypeInfo memory_device_info = {
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index c9f6ad589e..47b2e83389 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -236,21 +236,6 @@ static uint64_t pc_dimm_md_get_addr(const MemoryDeviceState *md)
-     return dimm->addr;
- }
- 
--static uint64_t pc_dimm_md_get_region_size(const MemoryDeviceState *md,
--                                           Error **errp)
--{
--    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(md);
--    MemoryRegion *mr;
--
--    /* dropping const here is fine as we don't touch the memory region */
--    mr = mdc->get_memory_region((MemoryDeviceState *)md, errp);
--    if (!mr) {
--        return 0;
--    }
--
--    return memory_region_size(mr);
--}
--
- static MemoryRegion *pc_dimm_md_get_memory_region(MemoryDeviceState *md,
-                                                   Error **errp)
- {
-@@ -302,8 +287,7 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
- 
-     mdc->get_addr = pc_dimm_md_get_addr;
-     /* for a dimm plugged_size == region_size */
--    mdc->get_plugged_size = pc_dimm_md_get_region_size;
--    mdc->get_region_size = pc_dimm_md_get_region_size;
-+    mdc->get_plugged_size = memory_device_get_region_size;
-     mdc->get_memory_region = pc_dimm_md_get_memory_region;
-     mdc->fill_device_info = pc_dimm_md_fill_device_info;
- }
+diff --git a/default-configs/i386-softmmu.mak b/default-configs/i386-softmmu.mak
+index 210cff2781..64c998c4c8 100644
+--- a/default-configs/i386-softmmu.mak
++++ b/default-configs/i386-softmmu.mak
+@@ -51,7 +51,8 @@ CONFIG_PCI_Q35=y
+ CONFIG_APIC=y
+ CONFIG_IOAPIC=y
+ CONFIG_PVPANIC=y
+-CONFIG_MEM_HOTPLUG=y
++CONFIG_MEM_DEVICE=y
++CONFIG_DIMM=y
+ CONFIG_NVDIMM=y
+ CONFIG_ACPI_NVDIMM=y
+ CONFIG_PCIE_PORT=y
+diff --git a/default-configs/ppc64-softmmu.mak b/default-configs/ppc64-softmmu.mak
+index b94af6c7c6..f550573782 100644
+--- a/default-configs/ppc64-softmmu.mak
++++ b/default-configs/ppc64-softmmu.mak
+@@ -16,4 +16,5 @@ CONFIG_VIRTIO_VGA=y
+ CONFIG_XICS=$(CONFIG_PSERIES)
+ CONFIG_XICS_SPAPR=$(CONFIG_PSERIES)
+ CONFIG_XICS_KVM=$(call land,$(CONFIG_PSERIES),$(CONFIG_KVM))
+-CONFIG_MEM_HOTPLUG=y
++CONFIG_MEM_DEVICE=y
++CONFIG_DIMM=y
+diff --git a/qapi/misc.json b/qapi/misc.json
+index c85c6c8ca3..6c1c5c0a37 100644
+--- a/qapi/misc.json
++++ b/qapi/misc.json
+@@ -2066,7 +2066,7 @@
+ #
+ # @plugged-memory: size of memory that can be hot-unplugged. This field
+ #                  is omitted if target doesn't support memory hotplug
+-#                  (i.e. CONFIG_MEM_HOTPLUG not defined on build time).
++#                  (i.e. CONFIG_MEM_DEVICE not defined at build time).
+ #
+ # Since: 2.11.0
+ ##
+diff --git a/hw/Makefile.objs b/hw/Makefile.objs
+index 30722ccf98..39d882af6f 100644
+--- a/hw/Makefile.objs
++++ b/hw/Makefile.objs
+@@ -34,7 +34,7 @@ devices-dirs-$(CONFIG_SOFTMMU) += vfio/
+ devices-dirs-$(CONFIG_SOFTMMU) += virtio/
+ devices-dirs-$(CONFIG_SOFTMMU) += watchdog/
+ devices-dirs-$(CONFIG_SOFTMMU) += xen/
+-devices-dirs-$(CONFIG_MEM_HOTPLUG) += mem/
++devices-dirs-$(CONFIG_MEM_DEVICE) += mem/
+ devices-dirs-$(CONFIG_SOFTMMU) += smbios/
+ devices-dirs-y += core/
+ common-obj-y += $(devices-dirs-y)
+diff --git a/hw/mem/Makefile.objs b/hw/mem/Makefile.objs
+index 10be4df2a2..3e2f7c5ca2 100644
+--- a/hw/mem/Makefile.objs
++++ b/hw/mem/Makefile.objs
+@@ -1,3 +1,3 @@
+-common-obj-$(CONFIG_MEM_HOTPLUG) += pc-dimm.o
+-common-obj-$(CONFIG_MEM_HOTPLUG) += memory-device.o
++common-obj-$(CONFIG_DIMM) += pc-dimm.o
++common-obj-$(CONFIG_MEM_DEVICE) += memory-device.o
+ common-obj-$(CONFIG_NVDIMM) += nvdimm.o
 -- 
 2.18.0.rc1.1.g3f1ff2140
 

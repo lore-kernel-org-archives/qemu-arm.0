@@ -1,80 +1,83 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp752009wro;
-        Thu, 25 Oct 2018 07:08:35 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5d9GdqStgY87w/UVSjDMd9a8871Sd5WphBUzdU840EyYAGPP+Ivonc4KObucja/AjbbGUIa
-X-Received: by 2002:a37:d4d9:: with SMTP id s86mr1569296qks.190.1540476515568;
-        Thu, 25 Oct 2018 07:08:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540476515; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1013150wro;
+        Thu, 25 Oct 2018 10:51:27 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dr6KCasOXOAIF4wOlPKumkCijqn79mLWyz6E3ZcIbblSeP238H6rtV2S0r7GrrPCXft8Ae
+X-Received: by 2002:a37:2008:: with SMTP id g8mr214022qkg.120.1540489887427;
+        Thu, 25 Oct 2018 10:51:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540489887; cv=none;
         d=google.com; s=arc-20160816;
-        b=SyIyigQJXkGLL/g/eopqgNCR7CG8YKXVUN2z9sxUAa3lvDlrLpZZZS74Mov0rAg4ea
-         CNmCP4cneoC7D12JDBJd1ws0I8UySCqspglBPdywVxY6MgNGg9eG2z9LGHxJb37fKwQU
-         SULHDLeLO0c+2iQvdzOVpb5kpZRAXS0RHArYtGJbRSKW/DlK2mjKLLbYgWsRtjFJ2WF0
-         VovE/miJ1BC0uKfU1LNQa4VTkwWSIkGPWTpPvrCsnYhjYeaAB5e9IIgI5r51HxwbmEGR
-         u+IwWKxWL/9oPD6R7vnAX4c+QqQREaAegAt0Anw+vQ1y8AQFmuNSIYYLHW3bxTWgMfOv
-         ZZ9Q==
+        b=dv6jCLKhKk/F9NpAE0j36DJuv+jo2a33BtBzaPuYfY0aPWE2o+A7gwMZXkrsQMU1ME
+         MH6zElh4zoVkU41DMFa7ihQPTh2Thp4p3DgFT6TcLmOuhopMiyg3Y6dZE/1odgOdmovi
+         I3KesSz0IEWnvL8FeK5KS2clH/uASA2c5Afo3ht4It13oPQ79CH236/GanwV0gjaP7SR
+         OFe6Yo6cM25BdkVmROPzR/GFbLE9HWTB3/vQFT9WhHCJLYHyr08Os5xMB5T0oj9DNvaA
+         0YcZjPxgBL0Ns7kH1YPcH3GxwUHGHPGOmwcVcx66hBJD/zm67J7w839CwfYGNNbsiuYr
+         /Qcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from;
-        bh=RGrjDC8mPziQGW0LtIbvvBWfXMSMaLQ9AEiBJhYwx6c=;
-        b=urP13AGi44/MJavFdr2EjEiYqq7zVuHv3NiSh126HG2ji56K4PqoOLI7bDG1QLeZOn
-         a0Ds08nVUqRL4M7FmnDCnKuKHw5BY5K45nAzB2eVT+Fb/pkibKYUpbVh7Yf8qMe8YljO
-         xjNstPSDTC0Re6LKB91wT5/Nke/QXjIJPyaR0flVYvzq9SV8IXh2KF2rSzy26+OhrxvM
-         ZGisOzlYXih9lsVKtSMuqJqXgHn44yCPUJQJC0ldfFVwXknFj2gAMlx71Ed9/FmJrCKw
-         mNwZDPVqt1M4xBFHoBLDHKZD1hHZqUaByYmq5d55Dp14k/cLeQ/Yz3L4TRa9VODyssT5
-         5xkg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=dlPkFB8G0+XVPayRz2T6TnWdpLFfNoPB1K+WzUZaKdk=;
+        b=ezRrYnQtSdwzpXlB0MfzGUjp2GE9b3OzABQBPO0c3SHuzr4xtx6nrN2pQGtjwdA/Wh
+         b6FiZ5rhBrkD3Q9JFSNucaI0GEdw746wX9FJy4y/cIHoh5dUVes7VmMR/R2NshAXmbKQ
+         LTmzMQiWC52HHi5kpoAVKK47ZsHviUo1ipk0cBopFk2okBM89pc0Mp9lr3vh1Tb25rDj
+         oulqVmO9qkuLaohFAzALN5gcML/qaYBJgdmRpQM3734n2St4Y62dWOMRT01Ei0JT/gOV
+         eFlso9nkxD2i/McYf7LHF/KqsJyGHXgDV00mHQXud46CafbKzw4uSabOvIk026JF8jPN
+         xhSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=EQX6jacz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q37-v6si6588853qtj.66.2018.10.25.07.08.35
+        by mx.google.com with ESMTPS id 57-v6si7218626qtr.28.2018.10.25.10.51.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 07:08:35 -0700 (PDT)
+        Thu, 25 Oct 2018 10:51:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54740 helo=lists.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=EQX6jacz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56166 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFgJP-0000m7-02
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 10:08:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58954)
+	id 1gFjn4-00026P-RB
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 13:51:26 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40359)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfpz-000601-Bq
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:38:12 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1gFjKr-0006hv-6m
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 13:22:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfpw-0001Z2-M8
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:38:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39114)
+	(envelope-from <dgibson@ozlabs.org>) id 1gFjJ8-00085e-08
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 13:20:31 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:34931)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFfpw-00018Q-AI; Thu, 25 Oct 2018 09:38:08 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8F0DF43A3D;
-	Thu, 25 Oct 2018 13:37:24 +0000 (UTC)
-Received: from localhost (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 170B8662DF;
-	Thu, 25 Oct 2018 13:36:58 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:32:44 -0300
-Message-Id: <20181025133301.16578-27-ehabkost@redhat.com>
-In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1gFjIy-0007xo-AY; Thu, 25 Oct 2018 13:20:24 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 42gv5P0y9mz9sDF; Fri, 26 Oct 2018 04:20:08 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1540488009;
+	bh=FYWXIU3D0p3z5GaJI6kXzFoGLQU9kdCJMVjvLbX29RY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EQX6jacz89E2/O94pnTeKNyQBPy7o//Oy6dC3l070ecIw+BVxQo0zeNPsfGF6Evhs
+	Cu/q/t2/M+uNYtYj+Qz4RHSmqz3D6AYZdQDE7Z8AiwFa8k61QGl7ROQuU2aYzGkFJY
+	PS/G5FF2p8zkXb2f7qm+LjvU74u2MiFCQmSNgVSU=
+Date: Thu, 25 Oct 2018 18:17:59 +0100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20181025171759.GG2697@umbus.hotspot.internet-for-guests.com>
 References: <20181025133301.16578-1-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 25 Oct 2018 13:37:25 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL v2 26/43] memory-device: factor out
- get_memory_region() from pc-dimm
+	<20181025133301.16578-6-ehabkost@redhat.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ahP6B03r4gLOj5uD"
+Content-Disposition: inline
+In-Reply-To: <20181025133301.16578-6-ehabkost@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-arm] [PULL v2 05/43] hw/timer/sun4v-rtc: Convert from
+ DPRINTF() macro to trace events
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,238 +89,134 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
 	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
-	David Hildenbrand <david@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Markus Armbruster <armbru@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
 	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
 	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9YXNxR0ILFZX
+X-TUID: QbRiKO6Ks9Df
 
-From: David Hildenbrand <david@redhat.com>
 
-The memory region is necessary for plugging/unplugging a memory device.
-The region size (via get_region_size()) is no longer sufficient, as
-besides the alignment, also the region itself is required in order to
-add it to the device memory region of the machine via
-- memory_region_add_subregion
-- memory_region_del_subregion
+--ahP6B03r4gLOj5uD
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-So, to factor out plugging/unplugging of memory devices from pc-dimm
-code, we have to factor out access to the memory region first.
+On Thu, Oct 25, 2018 at 10:32:23AM -0300, Eduardo Habkost wrote:
+> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+> Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
+> Message-Id: <20181002212522.23303-3-f4bug@amsat.org>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
+>  hw/timer/sun4v-rtc.c  | 13 +++----------
+>  hw/timer/trace-events |  4 ++++
+>  2 files changed, 7 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
+> index 310523225f..13be94f8da 100644
+> --- a/hw/timer/sun4v-rtc.c
+> +++ b/hw/timer/sun4v-rtc.c
+> @@ -14,15 +14,8 @@
+>  #include "hw/sysbus.h"
+>  #include "qemu/timer.h"
+>  #include "hw/timer/sun4v-rtc.h"
+> +#include "trace.h"
+> =20
+> -//#define DEBUG_SUN4V_RTC
+> -
+> -#ifdef DEBUG_SUN4V_RTC
+> -#define DPRINTF(fmt, ...)                                       \
+> -    do { printf("sun4v_rtc: " fmt , ## __VA_ARGS__); } while (0)
+> -#else
+> -#define DPRINTF(fmt, ...) do {} while (0)
+> -#endif
+> =20
+>  #define TYPE_SUN4V_RTC "sun4v_rtc"
+>  #define SUN4V_RTC(obj) OBJECT_CHECK(Sun4vRtc, (obj), TYPE_SUN4V_RTC)
+> @@ -41,14 +34,14 @@ static uint64_t sun4v_rtc_read(void *opaque, hwaddr a=
+ddr,
+>          /* accessing the high 32 bits */
+>          val >>=3D 32;
+>      }
+> -    DPRINTF("read from " TARGET_FMT_plx " val %lx\n", addr, val);
+> +    trace_sun4v_rtc_read(addr, val);
+>      return val;
+>  }
+> =20
+>  static void sun4v_rtc_write(void *opaque, hwaddr addr,
+>                               uint64_t val, unsigned size)
+>  {
+> -    DPRINTF("write 0x%x to " TARGET_FMT_plx "\n", (unsigned)val, addr);
+> +    trace_sun4v_rtc_read(addr, val);
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: David Hildenbrand <david@redhat.com>
-Message-Id: <20181005092024.14344-11-david@redhat.com>
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- include/hw/mem/memory-device.h | 15 +++++++++++++++
- include/hw/mem/pc-dimm.h       |  4 ----
- hw/mem/nvdimm.c                |  9 ++++++---
- hw/mem/pc-dimm.c               | 27 ++++++++++++++++++---------
- 4 files changed, 39 insertions(+), 16 deletions(-)
+Uh.. as in v1, it looks like this should be trace_sun4v_rtc_write().
 
-diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
-index 898df3057d..659f38385c 100644
---- a/include/hw/mem/memory-device.h
-+++ b/include/hw/mem/memory-device.h
-@@ -38,6 +38,11 @@ typedef struct MemoryDeviceState {
-  * mapped into guest physical address space at a certain address. The
-  * address in guest physical memory can either be specified explicitly
-  * or get assigned automatically.
-+ *
-+ * Conceptually, memory devices only span one memory region. If multiple
-+ * successive memory regions are used, a covering memory region has to
-+ * be provided. Scattered memory regions are not supported for single
-+ * devices.
-  */
- typedef struct MemoryDeviceClass {
-     /* private */
-@@ -68,6 +73,16 @@ typedef struct MemoryDeviceClass {
-     uint64_t (*get_plugged_size)(const MemoryDeviceState *md, Error **errp);
-     uint64_t (*get_region_size)(const MemoryDeviceState *md, Error **errp);
- 
-+    /*
-+     * Return the memory region of the memory device.
-+     *
-+     * Called when (un)plugging the memory device, to (un)map the
-+     * memory region in guest physical memory, but also to detect the
-+     * required alignment during address assignment or when the size of the
-+     * memory region is required.
-+     */
-+    MemoryRegion *(*get_memory_region)(MemoryDeviceState *md, Error **errp);
-+
-     /*
-      * Translate the memory device into #MemoryDeviceInfo.
-      */
-diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
-index 99cbd54de7..01436b9f50 100644
---- a/include/hw/mem/pc-dimm.h
-+++ b/include/hw/mem/pc-dimm.h
-@@ -61,9 +61,6 @@ typedef struct PCDIMMDevice {
-  * PCDIMMDeviceClass:
-  * @realize: called after common dimm is realized so that the dimm based
-  * devices get the chance to do specified operations.
-- * @get_memory_region: returns #MemoryRegion associated with @dimm which
-- * is directly mapped into the physical address space of guest. Will not
-- * fail after the device was realized.
-  * @get_vmstate_memory_region: returns #MemoryRegion which indicates the
-  * memory of @dimm should be kept during live migration. Will not fail
-  * after the device was realized.
-@@ -74,7 +71,6 @@ typedef struct PCDIMMDeviceClass {
- 
-     /* public */
-     void (*realize)(PCDIMMDevice *dimm, Error **errp);
--    MemoryRegion *(*get_memory_region)(PCDIMMDevice *dimm, Error **errp);
-     MemoryRegion *(*get_vmstate_memory_region)(PCDIMMDevice *dimm,
-                                                Error **errp);
- } PCDIMMDeviceClass;
-diff --git a/hw/mem/nvdimm.c b/hw/mem/nvdimm.c
-index 1c6674c4ed..49324f3fae 100644
---- a/hw/mem/nvdimm.c
-+++ b/hw/mem/nvdimm.c
-@@ -27,6 +27,7 @@
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "hw/mem/nvdimm.h"
-+#include "hw/mem/memory-device.h"
- 
- static void nvdimm_get_label_size(Object *obj, Visitor *v, const char *name,
-                                   void *opaque, Error **errp)
-@@ -118,9 +119,10 @@ static void nvdimm_prepare_memory_region(NVDIMMDevice *nvdimm, Error **errp)
-     nvdimm->nvdimm_mr->align = align;
- }
- 
--static MemoryRegion *nvdimm_get_memory_region(PCDIMMDevice *dimm, Error **errp)
-+static MemoryRegion *nvdimm_md_get_memory_region(MemoryDeviceState *md,
-+                                                 Error **errp)
- {
--    NVDIMMDevice *nvdimm = NVDIMM(dimm);
-+    NVDIMMDevice *nvdimm = NVDIMM(md);
-     Error *local_err = NULL;
- 
-     if (!nvdimm->nvdimm_mr) {
-@@ -190,11 +192,12 @@ static Property nvdimm_properties[] = {
- static void nvdimm_class_init(ObjectClass *oc, void *data)
- {
-     PCDIMMDeviceClass *ddc = PC_DIMM_CLASS(oc);
-+    MemoryDeviceClass *mdc = MEMORY_DEVICE_CLASS(oc);
-     NVDIMMClass *nvc = NVDIMM_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-     ddc->realize = nvdimm_realize;
--    ddc->get_memory_region = nvdimm_get_memory_region;
-+    mdc->get_memory_region = nvdimm_md_get_memory_region;
-     dc->props = nvdimm_properties;
- 
-     nvc->read_label_data = nvdimm_read_label_data;
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 3e43ec8742..c9f6ad589e 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -32,7 +32,7 @@ static int pc_dimm_get_free_slot(const int *hint, int max_slots, Error **errp);
- void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                       const uint64_t *legacy_align, Error **errp)
- {
--    PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-+    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(dimm);
-     Error *local_err = NULL;
-     MemoryRegion *mr;
-     uint64_t addr, align;
-@@ -49,7 +49,7 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                             &error_abort);
-     trace_mhp_pc_dimm_assigned_slot(slot);
- 
--    mr = ddc->get_memory_region(dimm, &local_err);
-+    mr = mdc->get_memory_region(MEMORY_DEVICE(dimm), &local_err);
-     if (local_err) {
-         goto out;
-     }
-@@ -72,9 +72,11 @@ out:
- void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
- {
-     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-+    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(dimm);
-     MemoryRegion *vmstate_mr = ddc->get_vmstate_memory_region(dimm,
-                                                               &error_abort);
--    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
-+    MemoryRegion *mr = mdc->get_memory_region(MEMORY_DEVICE(dimm),
-+                                              &error_abort);
-     uint64_t addr;
- 
-     addr = object_property_get_uint(OBJECT(dimm), PC_DIMM_ADDR_PROP,
-@@ -87,9 +89,11 @@ void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
- void pc_dimm_unplug(PCDIMMDevice *dimm, MachineState *machine)
- {
-     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-+    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(dimm);
-     MemoryRegion *vmstate_mr = ddc->get_vmstate_memory_region(dimm,
-                                                               &error_abort);
--    MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
-+    MemoryRegion *mr = mdc->get_memory_region(MEMORY_DEVICE(dimm),
-+                                              &error_abort);
- 
-     memory_device_unplug_region(machine, mr);
-     vmstate_unregister_ram(vmstate_mr, DEVICE(dimm));
-@@ -235,12 +239,11 @@ static uint64_t pc_dimm_md_get_addr(const MemoryDeviceState *md)
- static uint64_t pc_dimm_md_get_region_size(const MemoryDeviceState *md,
-                                            Error **errp)
- {
--    /* dropping const here is fine as we don't touch the memory region */
--    PCDIMMDevice *dimm = PC_DIMM(md);
--    const PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(md);
-+    MemoryDeviceClass *mdc = MEMORY_DEVICE_GET_CLASS(md);
-     MemoryRegion *mr;
- 
--    mr = ddc->get_memory_region(dimm, errp);
-+    /* dropping const here is fine as we don't touch the memory region */
-+    mr = mdc->get_memory_region((MemoryDeviceState *)md, errp);
-     if (!mr) {
-         return 0;
-     }
-@@ -248,6 +251,12 @@ static uint64_t pc_dimm_md_get_region_size(const MemoryDeviceState *md,
-     return memory_region_size(mr);
- }
- 
-+static MemoryRegion *pc_dimm_md_get_memory_region(MemoryDeviceState *md,
-+                                                  Error **errp)
-+{
-+    return pc_dimm_get_memory_region(PC_DIMM(md), errp);
-+}
-+
- static void pc_dimm_md_fill_device_info(const MemoryDeviceState *md,
-                                         MemoryDeviceInfo *info)
- {
-@@ -289,13 +298,13 @@ static void pc_dimm_class_init(ObjectClass *oc, void *data)
-     dc->props = pc_dimm_properties;
-     dc->desc = "DIMM memory module";
- 
--    ddc->get_memory_region = pc_dimm_get_memory_region;
-     ddc->get_vmstate_memory_region = pc_dimm_get_memory_region;
- 
-     mdc->get_addr = pc_dimm_md_get_addr;
-     /* for a dimm plugged_size == region_size */
-     mdc->get_plugged_size = pc_dimm_md_get_region_size;
-     mdc->get_region_size = pc_dimm_md_get_region_size;
-+    mdc->get_memory_region = pc_dimm_md_get_memory_region;
-     mdc->fill_device_info = pc_dimm_md_fill_device_info;
- }
- 
--- 
-2.18.0.rc1.1.g3f1ff2140
+>  }
+> =20
+>  static const MemoryRegionOps sun4v_rtc_ops =3D {
+> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+> index ca9ad6321a..75bd3b1042 100644
+> --- a/hw/timer/trace-events
+> +++ b/hw/timer/trace-events
+> @@ -66,5 +66,9 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data=
+, unsigned size) "CMSDK A
+>  cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size)=
+ "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %=
+u"
+>  cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
+> =20
+> +# hw/timer/sun4v-rtc.c
+> +sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " =
+value 0x%" PRIx64
+> +sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 =
+" value 0x%" PRIx64
+> +
+>  # hw/timer/xlnx-zynqmp-rtc.c
+>  xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min,=
+ int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
 
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--ahP6B03r4gLOj5uD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvR+sUACgkQbDjKyiDZ
+s5IjihAAycOrLvJAAjv8H+wZEeCx0QpYlntXHq0oEbs5cur0D2LihCguyJx+PI8j
+3iSLVkG8uFEBuvIE6wVMlrDt+S4HReo58hYPgZkdvedHuOozb5JgSRB45e6SzO7x
+Q8SRbnZWazgHNq8Cm+5sFCbND2tF5vVVgbH3+6SrWjrgy6d/C4HYLfIgGRqH4JtD
+peiOzs9nEYvzHGLQcwqLR8TxbMrB+5Qu8YmV7UwSQSaFenILkWX4sx+W7LA8Zqdx
+2OG4rI57dDnc8lv/3UneShTicqyx0i/2Xwyu1rZHzkPCgiXEKfIcmkULRUH1tXM5
+8qWrtqk+IlLFMKLwUwQRuXTnk/aHx4pFJ3pxad+yzler6CGIK+CEutgs1EDOoYxg
+BPc86uF/jc+yDeFTmuqKTsoR14GEyR4HhsHsErQxQLvxQZi50Q5ERoei59seBmYH
+W8UXEaq6vAL36EXsegPS9xC4B7sVkMBHeRGtRuHnVO/2veAWRPnzBtBhmCT0+JC3
+YZU6voRcn7Kz8fmRrSqxw+4Cd+dFEjMfZOmyV0ZEDARF2t8gVMRCVqxmOIA+e2gM
+mybkLaiY1kNlqdXCoedcwOsNsuEvlskwYA5ywiMAXh/dXeKkeFgXpnQk8Xd0wh99
+VKT3SJzluQg8EZJOmXf83jjIbNiRqY+AH0Bot2zw6fmv7kJ0Smk=
+=8+nS
+-----END PGP SIGNATURE-----
+
+--ahP6B03r4gLOj5uD--

@@ -1,98 +1,101 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp723142wro;
-        Thu, 25 Oct 2018 06:44:16 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f0yfkBUArAmuNZEOFPGQqurjMChliWYO4s3rFp5YJUHtRn3kBPDATg6uEjEH9ID/MpiBe5
-X-Received: by 2002:ac8:2bb9:: with SMTP id m54-v6mr1566488qtm.36.1540475056538;
-        Thu, 25 Oct 2018 06:44:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540475056; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp725108wro;
+        Thu, 25 Oct 2018 06:46:04 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f+F2p+yCqbw9vlt4+0WpMZGQyDnk2G5vj7zD3qONmG1FZbJnCzxINeXXxzf6CP/NU2SBEx
+X-Received: by 2002:aed:3923:: with SMTP id l32-v6mr1492820qte.378.1540475164319;
+        Thu, 25 Oct 2018 06:46:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540475164; cv=none;
         d=google.com; s=arc-20160816;
-        b=bRcNBBqJZYVyzXJ43qPVVdvD+/zMd6LFSV0L+au2+BBugWnD0804zB7xPKIkTw/LFM
-         CJsElI1b7Alk5sUwt9WvU/BF06DInDvSGTiTt6SFqid3SzsvrbIhLksd3qillp7Fti3y
-         HOFr2UO8kyI7RqpmrMdN7PMuBlvMFjFrp8mCUjrh5pG4BgfrS/sAhsAYltwF4/OIjM58
-         mHI3sPDmB3zQ1y5u1MLaWIgB+vXBYaa6QzO7TCz6EWLB3f25MWuDd8M1Qtase17eA2PL
-         TMsAhrP8zWUAY3DUgbAcyWSimxC9n2PfY//MHyV0EdM7RY0OTEGiKFHFcI9AWe4oPap3
-         KHsw==
+        b=n5ct72u+pb5NmvlPwVOmFkxpOQwPYEr7rIuNtOHN0TWr0yP3RG7lNnAwv713XAUWh6
+         I1i/DHTbA/RKKpqj96+4wRqiqH01PBzAQW2neKfmYTUv3J0mLMZZebvz1mJ3D3YnyLZ2
+         VLtE/q/pZgHqQeJf9PsJHmMnBPUTK5vc9iRtDz+2eA5Xpcn7dA5bhUIg4hv6pzTcihZn
+         RxHuyIVfStUUf+lK1NreKhkOljk3Gn1yj4lWZMsIYaQDYqT8hYjZg+krxHIIFHC/i2T2
+         WmvarYoVwGgI8K+oKSwYVugFXOw2DZo8pZIM8DnLIHct0IPIaqZFtMRriv2DE0ExDK2b
+         hDcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=v72pDRrrrDOumq20mOs0QK/DW0Aojlxbb60/ZIstJsg=;
-        b=aQw40BffmNz00XysfI9FWb5mClXT1kd1HVWccjdnUxvEn2ylUtUe4hov985E1KVoLm
-         KDU6/QQNKa9hmCHJvUNC7g6td3TFAZ3bECD+IZtH89CbqzEpvJr8wVSfIE6N7j6FCV/J
-         bbAcim88lpLKdmzsi7OJ6FSg4Q0vxH2CIQHgBzCyBEOBFpQwGUGCFOV2VpLTchRUwPhm
-         RDkwqvnBafFUy3FnqeWN7rsbGwM9MxOOid0ICqLuBagUqV3/KEl03aCU7B6QxO4411C1
-         kY7FTyUFZxODild4cN24cggd01ChYb7Q/Kkgwd6UOnP9/pv/MoBbtn5M1KkDnMYaQIr0
-         3uDA==
+        bh=pHMaGyqq/l1f2Bel3mGx5xpGit6Wq4bbMRy2WnhgrTA=;
+        b=o+j/7Uo2/6BdUZOq2/aC+mzsBjVpR+ISbbjgHwJKh9TzuLN7uoSmDAbYbjx7Vxc+/C
+         UojYM3SrugFvBAPJyTjmjwhQBGVdhBycugysKTz4vKQcFZcgBf+m63dmY+xGyHLQi9Bz
+         KknEjBL3Zq4OVVrpt9jW6kNHJsIsM4JmrcKNT9Gj3Vf1lRmM2rb//0Jq3je5KTmF8+EN
+         RHruENzYuUw9B45PeLkiPUlW5r4kZCKqfNAXlMnGTKEjJRyTYerxLYKlNDw3RgR1jc7q
+         d/kKlqsZYjHLDx64n2K0fonivDkDKzzgEsofrYyxfQ157N3Jfg6mMCo7sONCaR222Vth
+         WIaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n2-v6si6575359qti.351.2018.10.25.06.44.16
+        by mx.google.com with ESMTPS id p52-v6si1498330qtc.174.2018.10.25.06.46.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 06:44:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 25 Oct 2018 06:46:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54543 helo=lists.gnu.org)
+Received: from localhost ([::1]:54548 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFfvr-0002Dy-Kt
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:44:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57864)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gFfxb-0003YJ-L5
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 09:46:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfnc-0002wr-Jx
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:35:45 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFfmr-00026L-CO
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:34:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFfnZ-0008To-TI
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 09:35:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43924)
+	(envelope-from <ehabkost@redhat.com>) id 1gFflr-0007A9-Vv
+	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 09:33:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50530)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFfnZ-0008Se-Kj; Thu, 25 Oct 2018 09:35:41 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1gFflq-00074P-7m; Thu, 25 Oct 2018 09:33:54 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 63CE540100;
-	Thu, 25 Oct 2018 13:35:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 204E430012EB;
+	Thu, 25 Oct 2018 13:33:53 +0000 (UTC)
 Received: from localhost (unknown [10.33.36.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5682866D21;
-	Thu, 25 Oct 2018 13:35:31 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BCB9560A9E;
+	Thu, 25 Oct 2018 13:33:48 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:32:38 -0300
-Message-Id: <20181025133301.16578-21-ehabkost@redhat.com>
+Date: Thu, 25 Oct 2018 10:32:24 -0300
+Message-Id: <20181025133301.16578-7-ehabkost@redhat.com>
 In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
 References: <20181025133301.16578-1-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Thu, 25 Oct 2018 13:35:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 25 Oct 2018 13:33:53 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL v2 20/43] pc-dimm: pass PCDIMMDevice to
- pc_dimm_.*plug
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PULL v2 06/43] hw/timer/sun4v-rtc: Use
+ DeviceState::realize rather than SysBusDevice::init
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Jason Wang <jasowang@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Markus Armbruster <armbru@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
-	David Hildenbrand <david@redhat.com>, Alexander Graf <agraf@suse.de>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Rob Herring <robh@kernel.org>, Alexander Graf <agraf@suse.de>,
 	Richard Henderson <rth@twiddle.net>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
@@ -101,206 +104,60 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N4qEnHripR0S
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pR8OwOytDNe+
 
-From: David Hildenbrand <david@redhat.com>
+From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-We're plugging/unplugging a PCDIMMDevice, so directly pass this type
-instead of a more generic DeviceState.
+Move from the legacy SysBusDevice::init method to using DeviceState::real=
+ize.
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: David Hildenbrand <david@redhat.com>
-Message-Id: <20181005092024.14344-5-david@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Message-Id: <20181002212522.23303-4-f4bug@amsat.org>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- include/hw/mem/pc-dimm.h |  6 +++---
- hw/i386/pc.c             |  6 +++---
- hw/mem/pc-dimm.c         | 24 +++++++++++-------------
- hw/ppc/spapr.c           |  8 ++++----
- 4 files changed, 21 insertions(+), 23 deletions(-)
+ hw/timer/sun4v-rtc.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
-index b382eb4303..99cbd54de7 100644
---- a/include/hw/mem/pc-dimm.h
-+++ b/include/hw/mem/pc-dimm.h
-@@ -79,8 +79,8 @@ typedef struct PCDIMMDeviceClass {
-                                                Error **errp);
- } PCDIMMDeviceClass;
- 
--void pc_dimm_pre_plug(DeviceState *dev, MachineState *machine,
-+void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                       const uint64_t *legacy_align, Error **errp);
--void pc_dimm_plug(DeviceState *dev, MachineState *machine, Error **errp);
--void pc_dimm_unplug(DeviceState *dev, MachineState *machine);
-+void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp);
-+void pc_dimm_unplug(PCDIMMDevice *dimm, MachineState *machine);
- #endif
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index eab8572f2a..f095725dba 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1704,7 +1704,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
-     }
- 
--    pc_dimm_pre_plug(dev, MACHINE(hotplug_dev),
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev),
-                      pcmc->enforce_aligned_dimm ? NULL : &legacy_align, errp);
+diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
+index 13be94f8da..4e7f6a1eff 100644
+--- a/hw/timer/sun4v-rtc.c
++++ b/hw/timer/sun4v-rtc.c
+@@ -63,21 +63,21 @@ void sun4v_rtc_init(hwaddr addr)
+     sysbus_mmio_map(s, 0, addr);
  }
- 
-@@ -1716,7 +1716,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_dev,
-     PCMachineState *pcms = PC_MACHINE(hotplug_dev);
-     bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
- 
--    pc_dimm_plug(dev, MACHINE(pcms), &local_err);
-+    pc_dimm_plug(PC_DIMM(dev), MACHINE(pcms), &local_err);
-     if (local_err) {
-         goto out;
-     }
-@@ -1776,7 +1776,7 @@ static void pc_memory_unplug(HotplugHandler *hotplug_dev,
-         goto out;
-     }
- 
--    pc_dimm_unplug(dev, MACHINE(pcms));
-+    pc_dimm_unplug(PC_DIMM(dev), MACHINE(pcms));
-     object_unparent(OBJECT(dev));
- 
-  out:
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index fb6bcaedc4..f46fb7ada2 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -29,24 +29,24 @@
- 
- static int pc_dimm_get_free_slot(const int *hint, int max_slots, Error **errp);
- 
--void pc_dimm_pre_plug(DeviceState *dev, MachineState *machine,
-+void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                       const uint64_t *legacy_align, Error **errp)
+=20
+-static int sun4v_rtc_init1(SysBusDevice *dev)
++static void sun4v_rtc_realize(DeviceState *dev, Error **errp)
  {
--    PCDIMMDevice *dimm = PC_DIMM(dev);
-     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-     Error *local_err = NULL;
-     MemoryRegion *mr;
-     uint64_t addr, align;
-     int slot;
- 
--    slot = object_property_get_int(OBJECT(dev), PC_DIMM_SLOT_PROP,
-+    slot = object_property_get_int(OBJECT(dimm), PC_DIMM_SLOT_PROP,
-                                    &error_abort);
-     slot = pc_dimm_get_free_slot(slot == PC_DIMM_UNASSIGNED_SLOT ? NULL : &slot,
-                                  machine->ram_slots, &local_err);
-     if (local_err) {
-         goto out;
-     }
--    object_property_set_int(OBJECT(dev), slot, PC_DIMM_SLOT_PROP, &error_abort);
-+    object_property_set_int(OBJECT(dimm), slot, PC_DIMM_SLOT_PROP,
-+                            &error_abort);
-     trace_mhp_pc_dimm_assigned_slot(slot);
- 
-     mr = ddc->get_memory_region(dimm, &local_err);
-@@ -55,7 +55,7 @@ void pc_dimm_pre_plug(DeviceState *dev, MachineState *machine,
-     }
- 
-     align = legacy_align ? *legacy_align : memory_region_get_alignment(mr);
--    addr = object_property_get_uint(OBJECT(dev), PC_DIMM_ADDR_PROP,
-+    addr = object_property_get_uint(OBJECT(dimm), PC_DIMM_ADDR_PROP,
-                                     &error_abort);
-     addr = memory_device_get_free_addr(machine, !addr ? NULL : &addr, align,
-                                        memory_region_size(mr), &local_err);
-@@ -63,38 +63,36 @@ void pc_dimm_pre_plug(DeviceState *dev, MachineState *machine,
-         goto out;
-     }
-     trace_mhp_pc_dimm_assigned_address(addr);
--    object_property_set_uint(OBJECT(dev), addr, PC_DIMM_ADDR_PROP,
-+    object_property_set_uint(OBJECT(dimm), addr, PC_DIMM_ADDR_PROP,
-                              &error_abort);
- out:
-     error_propagate(errp, local_err);
++    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+     Sun4vRtc *s =3D SUN4V_RTC(dev);
+=20
+     memory_region_init_io(&s->iomem, OBJECT(s), &sun4v_rtc_ops, s,
+                           "sun4v-rtc", 0x08ULL);
+-    sysbus_init_mmio(dev, &s->iomem);
+-    return 0;
++    sysbus_init_mmio(sbd, &s->iomem);
  }
- 
--void pc_dimm_plug(DeviceState *dev, MachineState *machine, Error **errp)
-+void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
+=20
+ static void sun4v_rtc_class_init(ObjectClass *klass, void *data)
  {
--    PCDIMMDevice *dimm = PC_DIMM(dev);
-     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-     MemoryRegion *vmstate_mr = ddc->get_vmstate_memory_region(dimm,
-                                                               &error_abort);
-     MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
-     uint64_t addr;
- 
--    addr = object_property_get_uint(OBJECT(dev), PC_DIMM_ADDR_PROP,
-+    addr = object_property_get_uint(OBJECT(dimm), PC_DIMM_ADDR_PROP,
-                                     &error_abort);
- 
-     memory_device_plug_region(machine, mr, addr);
--    vmstate_register_ram(vmstate_mr, dev);
-+    vmstate_register_ram(vmstate_mr, DEVICE(dimm));
+-    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
+=20
+-    k->init =3D sun4v_rtc_init1;
++    dc->realize =3D sun4v_rtc_realize;
  }
- 
--void pc_dimm_unplug(DeviceState *dev, MachineState *machine)
-+void pc_dimm_unplug(PCDIMMDevice *dimm, MachineState *machine)
- {
--    PCDIMMDevice *dimm = PC_DIMM(dev);
-     PCDIMMDeviceClass *ddc = PC_DIMM_GET_CLASS(dimm);
-     MemoryRegion *vmstate_mr = ddc->get_vmstate_memory_region(dimm,
-                                                               &error_abort);
-     MemoryRegion *mr = ddc->get_memory_region(dimm, &error_abort);
- 
-     memory_device_unplug_region(machine, mr);
--    vmstate_unregister_ram(vmstate_mr, dev);
-+    vmstate_unregister_ram(vmstate_mr, DEVICE(dimm));
- }
- 
- static int pc_dimm_slot2bitmap(Object *obj, void *opaque)
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 98868d893a..c078347b66 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3135,7 +3135,7 @@ static void spapr_memory_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
- 
-     size = memory_region_size(mr);
- 
--    pc_dimm_plug(dev, MACHINE(ms), &local_err);
-+    pc_dimm_plug(dimm, MACHINE(ms), &local_err);
-     if (local_err) {
-         goto out;
-     }
-@@ -3158,7 +3158,7 @@ static void spapr_memory_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     return;
- 
- out_unplug:
--    pc_dimm_unplug(dev, MACHINE(ms));
-+    pc_dimm_unplug(dimm, MACHINE(ms));
- out:
-     error_propagate(errp, local_err);
- }
-@@ -3202,7 +3202,7 @@ static void spapr_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
-     }
- 
--    pc_dimm_pre_plug(dev, MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(dimm, MACHINE(hotplug_dev), NULL, errp);
- }
- 
- struct sPAPRDIMMState {
-@@ -3314,7 +3314,7 @@ static void spapr_memory_unplug(HotplugHandler *hotplug_dev, DeviceState *dev)
-     sPAPRMachineState *spapr = SPAPR_MACHINE(hotplug_dev);
-     sPAPRDIMMState *ds = spapr_pending_dimm_unplugs_find(spapr, PC_DIMM(dev));
- 
--    pc_dimm_unplug(dev, MACHINE(hotplug_dev));
-+    pc_dimm_unplug(PC_DIMM(dev), MACHINE(hotplug_dev));
-     object_unparent(OBJECT(dev));
-     spapr_pending_dimm_unplugs_remove(spapr, ds);
- }
--- 
+=20
+ static const TypeInfo sun4v_rtc_info =3D {
+--=20
 2.18.0.rc1.1.g3f1ff2140
 

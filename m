@@ -1,302 +1,150 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp581772wro;
-        Thu, 25 Oct 2018 04:39:14 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cym6wBvUbeo/aNbES2O1Djb4ew6yp7yWC0T2LrDIuOw++qy6nVPxU5c2KuOj2x3U77RMaT
-X-Received: by 2002:ac8:6709:: with SMTP id e9-v6mr1117118qtp.62.1540467554913;
-        Thu, 25 Oct 2018 04:39:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540467554; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp590801wro;
+        Thu, 25 Oct 2018 04:48:32 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5d8TisZBb3Ed4iW1kfxfO22g+jkGEWUF7RfVK0B+F7r5DvnUTvpAD7o6p+J6lTC+ySRlS11
+X-Received: by 2002:ae9:df02:: with SMTP id t2-v6mr1012462qkf.161.1540468112467;
+        Thu, 25 Oct 2018 04:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540468112; cv=none;
         d=google.com; s=arc-20160816;
-        b=o4luHvkURMX1scihkAtPCu/k8OMLHFG8mQ6U7/sIb11qGija8OrjbqqDmKQ7zKCzBb
-         BdF/4s1lrASp9AOHN0IECuwZopgRzCa+5yt4xlN/UeqEoilOXzVaYJdTOq2k6pGfUcM8
-         Weg4LRAs3+YpSkLzwhbKEOlyBNrdcWQIrDRTUtOgzGi38J4iybl0nD5SL3kQKA47FLTN
-         bgzfF7pFqsu0mChG3JXOuVRykLxO2sCz/Ms426SFKDZRHRX2/GaoWj395UVeQi3rgVEi
-         rqoEFVDXezFdDhWqOlhtfVmNE4DBjRz1yLdjbTux2GEjJ/xu4YSOrlxYcuQJwmlACmHk
-         tD6g==
+        b=RX9dZK1mfvb8yoTwQQNjz8+g/VlSGdeMxYGHdsvEkl//glKJEM0IBTHwEqnHLLJNy8
+         0+6Ta7OMlcxk7jBVDMTMmw9uunM2i8wZDSM2tryMjqdYlQbXtJP/A/GdPg9eFegQCLp0
+         g1wjkLbTL7Iahsq3xaUyRP7qyOo0Go2mTk7Cx9AHi9lS54hraz45nKUmNQKP6Tjbzl7s
+         B7yd6/gvJz7OLw8adu3qryRmBjIJt2pZPqqZbZwwXS6oi+GGc/tKLxtBA6KvhU8r3vVi
+         iDr+RzIwvxRgRux9KFlmZVszsKhg2iULG9wklBExY/2B4Egb01Gg4zd9H/aDxjFIbyfc
+         DrLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=Wz9qMJOHSdAk3glmkowQewFEIbOruZN22S3NQF1dxKM=;
-        b=hGfHDjI8x0DUpa78zElp+PAet7MhjnV9mlqnFBs/nRyvx5QZDZqJMH6RdBylVnSJ+V
-         WO9jSfWWHTxU5GXPaeeGji7klvxa7v8YkhVVGQ9lBLqasx0H3Z4jBF6StKfzxg1OnNLy
-         JiMPjno/h/6LgtjxP1f2QGzaOQizRhy1BZZmFrMfp02zAZyzaN7DqI9xXtmToIlvetYz
-         EZpAvRd4AccuTSuKgI+03io+buJzwYmo1K/NREVNHsG02BSaKxyUZ1C0Zhnv/XDv2uPa
-         Dee3+IBaNuq63sA+4HbQAHLYm4na9YYwqAea5BHjfdU31Ad8Imx0JbGQS4p/lbNw01Zy
-         6DUw==
+         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
+         :references:in-reply-to:message-id:date;
+        bh=qiN47MNrehVFD4KFzTbXOMP9iZGyveQEYZS93TLtgo4=;
+        b=SS7dygrdp1ALwIlRl/wlJPsuA5nY3wGUjDi/wt3Vzg1h2GBBWmGocEpEccBxING+sO
+         mcpgR/CfX6TmBb1zGofI/LkcHYBMJqlX/2Sn1i9xvxBrkwvLXRv/GW/jfi82q8DIDUfw
+         CZAl05E5vOskBKti4Q0Mqzk8zTX1v3hZnyADFGhvF0fiPOifh9IlxTj9H0aRzQVVZwPE
+         a63ZGRDUeZVqxn0oNzZ8NPI9b1VlJVDEEYbIVuHtjad0rFv8UC72EVVrSCEAxpZwEEs9
+         6+6SBNaT7EsOW5LjHqq+7LTyjpsrJxvaX5qYpjONCmjNQTc1yjp9KcHJEVqIZM/OTHOe
+         Se9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j184-v6si1526255qka.181.2018.10.25.04.39.14
+        by mx.google.com with ESMTPS id v12-v6si1236375qtp.151.2018.10.25.04.48.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 04:39:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 25 Oct 2018 04:48:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53921 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53939 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFdys-0004QW-Ey
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 07:39:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56287)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gFe7s-00078g-1G
+	for alex.bennee@linaro.org; Thu, 25 Oct 2018 07:48:32 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58622)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gFdxo-00049I-Ol
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 07:38:09 -0400
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gFe7a-00075c-BF
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 07:48:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gFdxl-0003Ea-AA
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 07:38:08 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:45954)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gFdxl-00036r-2A
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 07:38:05 -0400
-Received: by mail-wr1-f67.google.com with SMTP id n5-v6so5171162wrw.12
-	for <qemu-devel@nongnu.org>; Thu, 25 Oct 2018 04:38:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Wz9qMJOHSdAk3glmkowQewFEIbOruZN22S3NQF1dxKM=;
-	b=Wxd3lnrX+GbxMs92xfI77OXmVG4JeHZ+PkeYKNZ635jeu+DoCx23zup83p5ztbAInT
-	C1oOAC+i8RjSyffYY/S4XdNhNolIYL5bBzWp+xKX+xq5Bs+/kwNvr5ZMwzZdMOBodCCN
-	TWy+fCnasDh1gdrs4WeG9kwG9BChXu4crXXT8z1c5vYTtcciFXLWjwEyNKKICdsEF0M+
-	Pn6GENaV7XoehyQCOvQu9BOkx8gqpOBv6ByW8vfTFvsMJrI1ylKnTHXiYU/jWIC8wCzy
-	pMoURHZUrtVZmBFiMKFe35JM2jsyllz//v7yiIkRp8MjjM0mD1KbDSYPJULWLQd+f1wQ
-	C0bg==
-X-Gm-Message-State: AGRZ1gL0rCRbK1w4YUZLzD3AQvpQgdaphDTq/6QeYrRscUJjE5qfidMW
-	6IHuRhSRMNWhyu5Iu9ouJNtlOw==
-X-Received: by 2002:adf:ce86:: with SMTP id
-	r6-v6mr1594027wrn.258.1540467483297; 
-	Thu, 25 Oct 2018 04:38:03 -0700 (PDT)
-Received: from [10.101.215.143] ([185.7.230.216])
-	by smtp.gmail.com with ESMTPSA id
-	2-v6sm8126088wro.96.2018.10.25.04.38.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 25 Oct 2018 04:38:02 -0700 (PDT)
-To: Peng Hao <peng.hao2@zte.com.cn>, peter.maydell@linaro.org
-References: <1540495397-88089-1-git-send-email-peng.hao2@zte.com.cn>
-	<1540495397-88089-4-git-send-email-peng.hao2@zte.com.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <467e77d8-48af-5361-3e31-b9eac79d968d@redhat.com>
-Date: Thu, 25 Oct 2018 13:38:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
-MIME-Version: 1.0
-In-Reply-To: <1540495397-88089-4-git-send-email-peng.hao2@zte.com.cn>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gFe7X-0000SL-M4
+	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 07:48:14 -0400
+Received: from out1.zte.com.cn ([202.103.147.172]:38246 helo=mxct.zte.com.cn)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gFe7X-0000Pj-7n; Thu, 25 Oct 2018 07:48:11 -0400
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id CCD79A44B8648262C917;
+	Thu, 25 Oct 2018 19:48:05 +0800 (CST)
+Received: from kjyxapp02.zte.com.cn ([10.30.12.201])
+	by mse01.zte.com.cn with SMTP id w9PBlwGo041183;
+	Thu, 25 Oct 2018 19:47:58 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from mapi (kjyxapp07[null]) by mapi (Zmail) with MAPI id mid14;
+	Thu, 25 Oct 2018 19:48:00 +0800 (CST)
+Date: Thu, 25 Oct 2018 19:48:00 +0800 (CST)
+X-Zmail-TransId: 2b095bd1ad70f60f6b13
+X-Mailer: Zmail v1.0
+Message-ID: <201810251948005355437@zte.com.cn>
+In-Reply-To: <467e77d8-48af-5361-3e31-b9eac79d968d@redhat.com>
+References: 1540495397-88089-1-git-send-email-peng.hao2@zte.com.cn,
+	467e77d8-48af-5361-3e31-b9eac79d968d@redhat.com
+Mime-Version: 1.0
+From: <peng.hao2@zte.com.cn>
+To: <philmd@redhat.com>
+Content-Type: multipart/mixed;
+	boundary="=====_001_next====="
+X-MAIL: mse01.zte.com.cn w9PBlwGo041183
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-devel] [PATCH V4 3/5] hw/misc/pvpanic: Add the MMIO
- interface
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 202.103.147.172
+Subject: Re: [Qemu-arm] 
+ =?utf-8?q?=5BPATCH_V4_3/5=5D_hw/misc/pvpanic=3A_Add_t?=
+ =?utf-8?q?he_MMIO_interface?=
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zpiV9g+/EJp6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Dyc55nMa9kgQ
 
-On 25/10/18 21:23, Peng Hao wrote:
-> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->   hw/misc/pvpanic.c         | 74 ++++++++++++++++++++++++++++++++++++++---------
->   include/hw/misc/pvpanic.h |  2 ++
->   2 files changed, 62 insertions(+), 14 deletions(-)
-> 
-> diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
-> index dd3aef2..b575e01 100644
-> --- a/hw/misc/pvpanic.c
-> +++ b/hw/misc/pvpanic.c
-> @@ -2,10 +2,12 @@
->    * QEMU simulated pvpanic device.
->    *
->    * Copyright Fujitsu, Corp. 2013
-> + * Copyright (c) 2018 ZTE Ltd.
->    *
->    * Authors:
->    *     Wen Congyang <wency@cn.fujitsu.com>
->    *     Hu Tao <hutao@cn.fujitsu.com>
-> + *     Peng Hao <peng.hao2@zte.com.cn>
->    *
->    * This work is licensed under the terms of the GNU GPL, version 2 or later.
->    * See the COPYING file in the top-level directory.
-> @@ -45,30 +47,48 @@ static void handle_event(int event)
->   
->   #include "hw/isa/isa.h"
->   
-> -typedef struct PVPanicState {
-> +typedef struct PVPanicCommonState {
-> +    MemoryRegion mr;
-> +} PVPanicCommonState;
 
-Maybe we can drop this type now.
 
-> +
-> +typedef struct PVPanicISAState {
->       /* private */
->       ISADevice isadev;
+--=====_001_next=====
+Content-Type: multipart/alternative;
+	boundary="=====_003_next====="
 
-Here goes this comment:
 
-         /* public */
+--=====_003_next=====
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: base64
 
-> +    uint16_t ioport;
-> +    /* public */
-> +    PVPanicCommonState common;
-> +} PVPanicISAState;
-> +
-> +typedef struct PVPanicMMIOState {
-> +    /* private */
-> +    SysBusDevice busdev;
->   
->       /* public */
-> -    MemoryRegion mr;
-> -    uint16_t ioport;
-> -} PVPanicState;
-> +    PVPanicCommonState common;
-> +} PVPanicMMIOState;
-> +
-> +#define PVPANIC_ISA(obj)    \
-> +    OBJECT_CHECK(PVPanicISAState, (obj), TYPE_PVPANIC)
-> +
-> +#define PVPANIC_MMIO(obj)    \
-> +    OBJECT_CHECK(PVPanicMMIOState, (obj), TYPE_PVPANIC_MMIO)
-> +
->   
->   /* return supported events on read */
-> -static uint64_t pvpanic_ioport_read(void *opaque, hwaddr addr, unsigned size)
-> +static uint64_t pvpanic_read(void *opaque, hwaddr addr, unsigned size)
->   {
->       return PVPANIC_PANICKED;
->   }
->   
-> -static void pvpanic_ioport_write(void *opaque, hwaddr addr, uint64_t val,
-> +static void pvpanic_write(void *opaque, hwaddr addr, uint64_t val,
->                                    unsigned size)
->   {
->       handle_event(val);
->   }
->   
->   static const MemoryRegionOps pvpanic_ops = {
-> -    .read = pvpanic_ioport_read,
-> -    .write = pvpanic_ioport_write,
-> +    .read = pvpanic_read,
-> +    .write = pvpanic_write,
->       .impl = {
->           .min_access_size = 1,
->           .max_access_size = 1,
-> @@ -77,15 +97,15 @@ static const MemoryRegionOps pvpanic_ops = {
->   
->   static void pvpanic_isa_initfn(Object *obj)
->   {
-> -    PVPanicState *s = PVPANIC(obj);
-> +    PVPanicISAState *s = PVPANIC_ISA(obj);
->   
-> -    memory_region_init_io(&s->mr, OBJECT(s), &pvpanic_ops, s, "pvpanic", 1);
-> +    memory_region_init_io(&s->common.mr, OBJECT(s), &pvpanic_ops, s, TYPE_PVPANIC, 1);
->   }
->   
->   static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
->   {
->       ISADevice *d = ISA_DEVICE(dev);
-> -    PVPanicState *s = PVPANIC(dev);
-> +    PVPanicISAState *s = PVPANIC_ISA(dev);
->       FWCfgState *fw_cfg = fw_cfg_find();
->       uint16_t *pvpanic_port;
->   
-> @@ -98,11 +118,11 @@ static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
->       fw_cfg_add_file(fw_cfg, "etc/pvpanic-port", pvpanic_port,
->                       sizeof(*pvpanic_port));
->   
-> -    isa_register_ioport(d, &s->mr, s->ioport);
-> +    isa_register_ioport(d, &s->common.mr, s->ioport);
->   }
->   
->   static Property pvpanic_isa_properties[] = {
-> -    DEFINE_PROP_UINT16(PVPANIC_IOPORT_PROP, PVPanicState, ioport, 0x505),
-> +    DEFINE_PROP_UINT16(PVPANIC_IOPORT_PROP, PVPanicISAState, ioport, 0x505),
->       DEFINE_PROP_END_OF_LIST(),
->   };
->   
-> @@ -118,14 +138,40 @@ static void pvpanic_isa_class_init(ObjectClass *klass, void *data)
->   static TypeInfo pvpanic_isa_info = {
->       .name          = TYPE_PVPANIC,
->       .parent        = TYPE_ISA_DEVICE,
-> -    .instance_size = sizeof(PVPanicState),
-> +    .instance_size = sizeof(PVPanicISAState),
->       .instance_init = pvpanic_isa_initfn,
->       .class_init    = pvpanic_isa_class_init,
->   };
->   
-> +static void pvpanic_mmio_initfn(Object *obj)
-> +{
-> +    PVPanicMMIOState *s = PVPANIC_MMIO(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +
-> +    memory_region_init_io(&s->common.mr, OBJECT(s), &pvpanic_ops, s,
-> +                          TYPE_PVPANIC_MMIO, 2);
-> +    sysbus_init_mmio(sbd, &s->common.mr);
-> +}
-> +
-> +static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-> +}
-> +
-> +static TypeInfo pvpanic_mmio_info = {
-> +    .name          = TYPE_PVPANIC_MMIO,
-> +    .parent        = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(PVPanicMMIOState),
-> +    .instance_init = pvpanic_mmio_initfn,
-> +    .class_init    = pvpanic_mmio_class_init,
-> +};
-> +
->   static void pvpanic_register_types(void)
->   {
->       type_register_static(&pvpanic_isa_info);
-> +    type_register_static(&pvpanic_mmio_info);
->   }
->   
->   type_init(pvpanic_register_types)
-> diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
-> index 1ee071a..c0d2d38 100644
-> --- a/include/hw/misc/pvpanic.h
-> +++ b/include/hw/misc/pvpanic.h
-> @@ -16,6 +16,8 @@
->   
->   #define TYPE_PVPANIC "pvpanic"
->   
-> +#define TYPE_PVPANIC_MMIO "pvpanic-mmio"
-> +
->   #define PVPANIC_IOPORT_PROP "ioport"
->   
->   static inline uint16_t pvpanic_port(void)
-> 
+Pj4gU2lnbmVkLW9mZi1ieTogUGVuZyBIYW8gPHBlbmcuaGFvMkB6dGUuY29tLmNuPgo+PiBTaWdu
+ZWQtb2ZmLWJ5OiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1kQHJlZGhhdC5jb20+Cj4+
+IC0tLQo+PiAgIGh3L21pc2MvcHZwYW5pYy5jICAgICAgICAgfCA3NCArKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLQo+PiAgIGluY2x1ZGUvaHcvbWlzYy9wdnBh
+bmljLmggfCAgMiArKwo+PiAgIDIgZmlsZXMgY2hhbmdlZCwgNjIgaW5zZXJ0aW9ucygrKSwgMTQg
+ZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9ody9taXNjL3B2cGFuaWMuYyBiL2h3L21p
+c2MvcHZwYW5pYy5jCj4+IGluZGV4IGRkM2FlZjIuLmI1NzVlMDEgMTAwNjQ0Cj4+IC0tLSBhL2h3
+L21pc2MvcHZwYW5pYy5jCj4+ICsrKyBiL2h3L21pc2MvcHZwYW5pYy5jCj4+IEBAIC0yLDEwICsy
+LDEyIEBACj4+ICAgICogUUVNVSBzaW11bGF0ZWQgcHZwYW5pYyBkZXZpY2UuCj4+ICAgICoKPj4g
+ICAgKiBDb3B5cmlnaHQgRnVqaXRzdSwgQ29ycC4gMjAxMwo+PiArICogQ29weXJpZ2h0IChjKSAy
+MDE4IFpURSBMdGQuCj4+ICAgICoKPj4gICAgKiBBdXRob3JzOgo+PiAgICAqICAgICBXZW4gQ29u
+Z3lhbmcgPHdlbmN5QGNuLmZ1aml0c3UuY29tPgo+PiAgICAqICAgICBIdSBUYW8gPGh1dGFvQGNu
+LmZ1aml0c3UuY29tPgo+PiArICogICAgIFBlbmcgSGFvIDxwZW5nLmhhbzJAenRlLmNvbS5jbj4K
+Pj4gICAgKgo+PiAgICAqIFRoaXMgd29yayBpcyBsaWNlbnNlZCB1bmRlciB0aGUgdGVybXMgb2Yg
+dGhlIEdOVSBHUEwsIHZlcnNpb24gMiBvciBsYXRlci4KPj4gICAgKiBTZWUgdGhlIENPUFlJTkcg
+ZmlsZSBpbiB0aGUgdG9wLWxldmVsIGRpcmVjdG9yeS4KPj4gQEAgLTQ1LDMwICs0Nyw0OCBAQCBz
+dGF0aWMgdm9pZCBoYW5kbGVfZXZlbnQoaW50IGV2ZW50KQo+Pgo+PiAgICNpbmNsdWRlICJody9p
+c2EvaXNhLmgiCj4+Cj4+IC10eXBlZGVmIHN0cnVjdCBQVlBhbmljU3RhdGUgewo+PiArdHlwZWRl
+ZiBzdHJ1Y3QgUFZQYW5pY0NvbW1vblN0YXRlIHsKPj4gKyAgICBNZW1vcnlSZWdpb24gbXI7Cj4+
+ICt9IFBWUGFuaWNDb21tb25TdGF0ZTsKPgo+TWF5YmUgd2UgY2FuIGRyb3AgdGhpcyB0eXBlIG5v
+dy4KPgp5ZWFoLCBqdXN0IGtlZXBpbmcgUFZQYW5pY0lTQVN0YXRlIGFuZCBQVlBhbmljTU1JT1N0
+YXRlIGlzIGZpbmUuCgo+PiArCj4+ICt0eXBlZGVmIHN0cnVjdCBQVlBhbmljSVNBU3RhdGUgewo+
+PiAgICAgICAvKiBwcml2YXRlICovCj4+ICAgICAgIElTQURldmljZSBpc2FkZXY7Cj4KPkhlcmUg
+Z29lcyB0aGlzIGNvbW1lbnQ6Cj4KPi8qIHB1YmxpYyAqLwo+Cj4+ICsgICAgdWludDE2X3QgaW9w
+b3J0Owo+PiArICAgIC8qIHB1YmxpYyAqLwo+PiArICAgIFBWUGFuaWNDb21tb25TdGF0ZSBjb21t
+b247Cj4+ICt9IFBWUGFuaWNJU0FTdGF0ZTsKPj4gKwo+PiArdHlwZWRlZiBzdHJ1Y3QgUFZQYW5p
+Y01NSU9TdGF0ZSB7Cj4+ICsgICAgLyogcHJpdmF0ZSAqLwo+PiArICAgIFN5c0J1c0RldmljZSBi
+dXNkZXY7Cj4+ClsuLi5dCgo+Pgo+Cj5EZXBlbmRpbmcgb2YgdGhlIHJlc3BvbnNlIHRvIFBldGVy
+J3MgcXVlc3Rpb24gWypdOgo+Cj5JJ2QgYWxzbyBsaWtlIHNvbWUgY29uZmlybWF0aW9uIGZyb20g
+Zm9sa3MgbW9yZSBmYW1pbGlhciB3aXRoIHRoZQo+Y3VycmVudCBzdGF0ZSBvZiB0aGUgYXJ0IGlu
+IGd1ZXN0LXRvLW1hbmFnZW1lbnQtbGF5ZXIgY29tbXVuaWNhdGlvbgo+dGhhdCBwdnBhbmljIGlz
+IHN0aWxsIHRoZSByZWNvbW1lbmRlZCB3YXkgdG8gYWNoaWV2ZSB0aGlzIGdvYWwsCj5hbmQgaGFz
+bid0IGJlZW4gb2Jzb2xldGVkIGJ5IHNvbWV0aGluZyBlbHNlLgo+CgpCZWNhdXNlIHRoaXMgcHZw
+YW5pYyBkZXZpY2UgIGlzIHVzZWQgd2hlbiBHVUVTVCBPUyBwYW5pY3MuIEF0IHRoaXMgcG9pbnQs
+IGNvbW11bmljYXRpb24gd2l0aCBRRU1VIGNhbiBub3QgcmVseSBvbiBhbnkgZHJpdmVyLAogYW5k
+IG9ubHkgdGhlIHNpbXBsZXN0IElPIG9yIE1NSU8gY2FuIGJlIHVzZWQuIAoKPkkgbWlnaHQgd29y
+ayBhIGJpdCBvbiB0aGlzIHBhdGNoIG5leHQgd2Vlay4KPgo+WypdIGh0dHBzOi8vbGlzdHMuZ251
+Lm9yZy9hcmNoaXZlL2h0bWwvcWVtdS1kZXZlbC8yMDE4LTEwL21zZzAzODYxLmh0bWw=
 
-Depending of the response to Peter's question [*]:
 
-     I'd also like some confirmation from folks more familiar with the
-     current state of the art in guest-to-management-layer communication
-     that pvpanic is still the recommended way to achieve this goal,
-     and hasn't been obsoleted by something else.
+--=====_003_next=====--
 
-I might work a bit on this patch next week.
+--=====_001_next=====--
 
-[*] https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03861.html

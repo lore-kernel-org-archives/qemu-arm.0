@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881285wro;
-        Fri, 26 Oct 2018 08:32:16 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dNSMPpp6nbZD09C8C931RzbYpXc21sRzizRnc34JRm6dLzfNIqm/QeGdDUPrbt9O406cV2
-X-Received: by 2002:a1c:3584:: with SMTP id c126-v6mr6081136wma.120.1540567936350;
-        Fri, 26 Oct 2018 08:32:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567936; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881397wro;
+        Fri, 26 Oct 2018 08:32:20 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f/MARQGkZ5Bsez4f735WnLw6QTR8JlluAUcp3PZG7uS+Dkymz06nHQV2QQoPYyAOxS9Esb
+X-Received: by 2002:a1c:970e:: with SMTP id z14-v6mr5964230wmd.100.1540567940784;
+        Fri, 26 Oct 2018 08:32:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540567940; cv=none;
         d=google.com; s=arc-20160816;
-        b=bk77qpKCaeK82r7O2PVVpHBnluQrA5HbimuU8rSU+k7ZLKaHc4cQ70kIVL5kV9t7mt
-         POu6q5W0slW1I9Db2IVWldoWTc7tlFRU3s6y/x67mfGcWOr+PEA7UiI4cSOI/beLVgPE
-         AXeClhGYlOZKqgWhjwE8imLolnJ9KxZh3GHZDF2iu5xWFtpLxqTsEM5/FOL1gqImkhZK
-         4o/0IswMJfIjVfRNoLo5EV/jIBIS8PYQ9Ks6CuZyNWlFwHgEdgaJNsa5gFwOFQcNbA9C
-         GqQICt0HD1HOOPEmasWXNlM79IvAefZ6rC3W50CEJdYjc+2NaDTgi+EP8Sc//kuS6n5X
-         tmUQ==
+        b=rf2SsfyKIumwY6gjpaEQUFbZBk/bA4psfqYRV2Q362GZo5y+Q/EyIXgdLZq1nMzbGf
+         VCRPgRcUmUCW5ilyG+kBnPaJNqB1R61xd++9hDyJPIv0q2NEwMyRiqaeNiLugtdRi7fY
+         fQX0HDa0QfggsVEhmHNQ4i7x616dfd4qY5zTed1Hs1Z28ilCp2rnP9NVs0SmnSFebc1n
+         jVcp9RFgq4uLLWbck2iGmqWImguGELpGJlb4u9pTtGdvi5CpZgUsjZ3qYus//h7tVF5z
+         SUfsr7PNL9fOikLA8crYO6wYhU/jnPxjiuNpFmsJ50+OB55Ok36EBGnvco5WmOHqhr3b
+         bUWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=/8lbiZUhaAEwbfK6zkzyHN/TffMZZ88qqoKQUb3VUkw=;
-        b=uf3ZYOxCKPwC670JGeHbdZEWwoi4SewQCAxbX+Drpj/2ZJJx2GE0UZmBz/BCuatfvu
-         C7lHg+KIp63VAVESgIhI1Ktb3u2EzgrAJZqXk7hI6JghB6Yt3tiTQXjK6Nsts4vNrecd
-         CoXHf31mV1XqWpNQ29R/a+7WF0FV+M4EKoJX/Fpia3V2YvGqVy97ne2Y+N7t82k5URi9
-         GKSyNblXyJr633biq3atnfr5Ksj2Y+QBRJQirRguNGQCPfiYhKsOqQSU1uZLOSH5Qyh2
-         /CwrRpjh0krk0tm3a9cBPWhBa8zA+ZbYWnYY20lwc9kpK9+PjfZfcfvn7pJSLrumEjWD
-         XpXQ==
+        bh=WFc87kg9LBDJnpDmj44WyS7UWtkcUsACEih56d2kGZo=;
+        b=KLDOg+YjMKb2UItYp8hUWpJt1b60SQ+6afz6Bw3S8911lhyLdWXeuDhzK7TnU6c4gL
+         V135OI4t3Smed6D+otRAd8jkKTj1txyA6t3dzPMd37h64sx6fkfNN+s5nOQLKSbDgNTg
+         4eEixMMimA+ESCoA+y0w35+WTmaCbje07B0qbUWR45RIN+azXq1T2SveG5zynb32TaMA
+         uowkAvVB7fJi6KRZc/4SuR3H67OuhtYv7yYxGjiTC5+ARpL3KYXs9/4YwllbUqzC3tWN
+         SNf8ab6FyTgzCMFf/8c7gnZiD5gHgli2XPsgbAGYUw+lzZYdKNACDuqFRHMZffbR+KjH
+         axXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
-        by mx.google.com with ESMTPS id a9-v6si9605552wrd.453.2018.10.26.08.32.16
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by mx.google.com with ESMTPS id t143-v6si3877927wmd.37.2018.10.26.08.32.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:32:16 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
+        Fri, 26 Oct 2018 08:32:20 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.130;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N3Xvv-1fXPaK0qXL-010fOy; Fri, 26 Oct 2018 17:32:11 +0200
+ id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N3Xvv-1fXPaK0qXL-010fOy; Fri, 26 Oct 2018 17:32:11 +0200
+ id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -68,89 +68,62 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PULL 15/20] xen: Use the PCI_DEVICE macro
-Date: Fri, 26 Oct 2018 17:31:20 +0200
-Message-Id: <20181026153125.24738-16-laurent@vivier.eu>
+Subject: [PULL 18/20] hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
+Date: Fri, 26 Oct 2018 17:31:23 +0200
+Message-Id: <20181026153125.24738-19-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ujcQMLVnNdlA+bT6z6rODRtkZg/zsDEqRdCnz0gVnaZ9/UQrReP
- yYwtX/6ZZtTkN6YZvVq54IrtX1iqx1Xkwd5t2OJ98jNQ1a4UmWDICn6a7FyQKjgJF7W+Ctn
- QhTDR0tSekyjaYRLrbiYdL3X6UDp5aoM44K76g4syHvKF2eQxJRCBHixUz5iJDvpc3V9THi
- BBKc9sIV3voKPz5VYe5HA==
+X-Provags-ID: V03:K1:7uzmE3hXAIS81p8gYH56fkh6UHOHziydz3GRt0kqKk+9lI6V8tO
+ ymcxVNd2k3nNh5OSk2Pk/jxynYGCbtG21Hh/1CgAkkVIWi48rsrCDSx+W4i0sR1XGlWK5kC
+ NFLNOXod/A5Ns+fCSGK2nX6J9jQuXZ1bP7IV0vckAO2dQYDS8esPHcMSEKZ+oges4O0L4eH
+ Ro/pTH0X+jX3PNs37yFqQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:mDkSnPqe98M=:915bT4UpaXUVeT5R6liQYf
- w/dv7Ug2RSxa3KsGn+7+8g4f1ywSgyhZLKn7vYN0GfwmGhQArERISpZTBitmSAY/82mJJmPsB
- NvNdFf4tNjCK5ssXJsNtv4ZxU3h6e8CLvgCrGYxPKh7ON6DvOHEghV97LQUtR2E6sJxPGbrEZ
- ZRlftgPq3oJ8N7oFLRto2bVzIkVNDQOsWcxilAaFgKkd69mz/O60aiqy5qkym+i4hnDr7uMY/
- 9Bty4ZbNp8mf1y3rtQc1uP1s7RWAf8BuDXeXiuSduAVbuwXcyUw5eMnWDkeJcgB2HdrMFYsxI
- vOPGdwsLZJqj+TLxiozh3y9lfi1YknPb7Nng/4fj0Z9nHsSJCGrJzacfFvYHyp/5YRuusD7Sk
- QDnBpWVYTJMnyyAVrNS9S+l2kR3n51RrIXDY6HjJ9GwcySHizBRyu8W3Ztj5QreLn/pYPvpS2
- JuOJj0emB9SmQ6hwpmHc7LUwYSCzX1fQK4stbEF0T0+/Aeyk/SL95f+fuoJhrN9vZVtTTCqjH
- 7FHhGf525pC5VBpO0KCdiFwCDn5lEz3jfF5FGRgSVj2nqarRkJHS0cVsD1dUb9NCdAu4yCzSH
- CTOXdBv7ZjNZnlzw1rTTha8FTBVxwBEsgRVwSFOGR97Ilorc3IWMoWTq/HkwO/V8CFb9ERV1K
- RtoS1dDCoMkV+DEU4xVCJs5o1o9hNYzAlmnp1F9m1kIUuvD+OX+edWjILFNP//jnYmbq/OIji
- qt4DZM7g+prHqIIV
-X-TUID: ALpHicPK2bMr
+X-UI-Out-Filterresults: notjunk:1;V01:K0:sMp6R0Un3T8=:UOJ0GTL/xFzLMW0oWfWIC2
+ Wb/tFPUw5Dh4J/s5cNR5yAwXQDeWxdwkapc7bVXyEB7qk8b5KLPc6g6zbjOrT0HQ64QjHADx3
+ Jy/eAX7Ibk1C3TV0pHnvhXGjf+ALK7PvjZZr6zkh604AcvqGmjNrrLAt605XHBvD1gocDXbMc
+ KmgLzntqdGbaJGd5Rj3FZ2YInkY6Z7kjuvfWw3/alimzMA4osUNiXO2MK43tk9gCcThE2DZbx
+ 2fhGim5AgG9W4uOj0WJNef8Q+mzVEXdb8kdMAqDnRuiZfedp/GvojmlgPZnSn2TQ07vrz3UiC
+ 6XpBYFAyTaBQ7EWq5F9gK6Bx6nqzFCXrVQeq7KJcjBoutxxntMLX97AVILrCuzgb0cRrS6OcJ
+ bLr1tHAhuUb9PpMInWchc417uZgHQrlvfi67OdLltNOW3z1UGSvS1QvDzeAzaOLnYammOejmQ
+ /SZ4DFuo/vtcO/ObBniPTq7K39xFuXE/feMgl8RrMxNDSJSVmsiVnlmtQ9v0hwyTjQFoXxyB2
+ QO993deYXeBHkKavB1yq98L+sUDD6ylz3m1MIr/hivJaZnHZ89YUApJ9IKC2kvIeIBjx1GkQ8
+ h6JdeXvBuzHAdU7bAceIG9aVfoDHfXwJ+f6q9VlbJWtNQPf1Pg2U0PqQv8WgOV4O5VMJjC56z
+ hbhvur6+k1acJnD2K45fVbP9dNiRZlWtB30XVCjH6qmiKZZw1t9e48srm2CnaKE7k73kGGdxW
+ ngmAYwqy4WUPDYeW
+X-TUID: I0mY43Kb3awI
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-TYPE_XEN_PT_DEVICE is a subclass of TYPE_PCI_DEVICE, the clean way
-to access the PCIDevice pointer is using the PCI_DEVICE() macro.
+Patch created mechanically by rerunning:
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+  $  spatch --sp-file scripts/coccinelle/round.cocci \
+            --macro-file scripts/cocci-macro-file.h \
+            --dir . --in-place
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
 Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-4-f4bug@amsat.org>
+Message-Id: <20180705155811.20366-8-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/xen/xen_pt_config_init.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/intc/arm_gicv3_common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
-index aee31c62bb..47f9010c75 100644
---- a/hw/xen/xen_pt_config_init.c
-+++ b/hw/xen/xen_pt_config_init.c
-@@ -358,7 +358,7 @@ static uint64_t xen_pt_get_bar_size(PCIIORegion *r)
- static XenPTBarFlag xen_pt_bar_reg_parse(XenPCIPassthroughState *s,
-                                          int index)
- {
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     XenPTRegion *region = NULL;
-     PCIIORegion *r;
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index b798486ecf..31ec9a1ae4 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -62,7 +62,7 @@
+  * avoids bugs where we forget to subtract GIC_INTERNAL from an
+  * interrupt number.
+  */
+-#define GICV3_BMP_SIZE (DIV_ROUND_UP(GICV3_MAXIRQ, 32))
++#define GICV3_BMP_SIZE DIV_ROUND_UP(GICV3_MAXIRQ, 32)
  
-@@ -469,7 +469,7 @@ static int xen_pt_bar_reg_write(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
- {
-     XenPTRegInfo *reg = cfg_entry->reg;
-     XenPTRegion *base = NULL;
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     const PCIIORegion *r;
-     uint32_t writable_mask = 0;
-     uint32_t bar_emu_mask = 0;
-@@ -543,7 +543,7 @@ static int xen_pt_exp_rom_bar_reg_write(XenPCIPassthroughState *s,
- {
-     XenPTRegInfo *reg = cfg_entry->reg;
-     XenPTRegion *base = NULL;
--    PCIDevice *d = (PCIDevice *)&s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     uint32_t writable_mask = 0;
-     uint32_t throughable_mask = get_throughable_mask(s, reg, valid_mask);
-     pcibus_t r_size = 0;
-@@ -1587,7 +1587,7 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
-                                  const XenPTRegGroupInfo *grp_reg,
-                                  uint32_t base_offset, uint8_t *size)
- {
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     uint8_t version = get_capability_version(s, base_offset);
-     uint8_t type = get_device_type(s, base_offset);
-     uint8_t pcie_size = 0;
+ #define GIC_DECLARE_BITMAP(name) \
+     uint32_t name[GICV3_BMP_SIZE]
 -- 
 2.17.2

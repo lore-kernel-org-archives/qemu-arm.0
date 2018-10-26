@@ -1,144 +1,169 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881535wro;
-        Fri, 26 Oct 2018 08:32:26 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fJkOQceCazsKQcG+dI5gSEiVfs4hbDGfcqYRZHlg58CgCNPFA99EAzLr6Ft/5pdNn2e5tW
-X-Received: by 2002:a1c:b088:: with SMTP id z130-v6mr3025287wme.95.1540567946762;
-        Fri, 26 Oct 2018 08:32:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567946; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1126155wro;
+        Fri, 26 Oct 2018 12:16:55 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5d9BQX9ZUVBRTrQv8n/hanbNy8DclmyHYXdVKug1LS+8Nt6+oVK9KQ3RZrWI5V8iW3yij6L
+X-Received: by 2002:a0c:ea51:: with SMTP id u17mr2804074qvp.56.1540581415840;
+        Fri, 26 Oct 2018 12:16:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540581415; cv=none;
         d=google.com; s=arc-20160816;
-        b=H+1nmpVLZPZB2a21noZQODOGnA1NQFLbfPo04CD8/8gnmr9Kgno2JlBl3srctcZtL0
-         H4qP2GGBwAKDHab2RRH+5xYk/Sg0CcwyMOANFjV+Felmv03AIhQU+nzxO6WDvPxBd92g
-         Xrth9SzD75ZhjkUsbyMFsJ+uUskSAYQ8/oZU8bs3ogmjTJEbWvGH51YeBUPjVak4nmyt
-         ZmgGxK4/p2toC59P/PQ2SK5n58OnAXiVdPQ0gGZ6Z7NVSpgzHQlTLJGJIvnN2QW4KLfQ
-         WZlPs5MT14zLrYYOYI97L0Iztf47OfF0JwMHS+/eNlJX/fSKq6BW1fUGcqCmZEiFqwYP
-         wWVg==
+        b=SGAH01YkkeLRiUa6gMmhdYPDOYTtHE+NDjVcUFxh5HReSBDVM1odFfXEvnV8rc4AN6
+         Mx15WDWsPKt2BJCjBOs0TNtSZPZB0i/2mL6N/hWEQ7Te3bbTU5PAAQFnDAE4POtAaP6k
+         TJv6gIaugGMRdwVxKPKi4lr957gcABCWiQHyc/KeP+k5q8TgLwXb5HI6Medyy09rsPd+
+         T7Z3rDuuBXvlf9ssc8cCAZNwwLNDx76JHwSnRnXoctU2dhjOQRAMUQOQ9YJQQ8tq5ZeJ
+         f557DR9Ya5MuHqlFJP4Fk/GKKKLJbtjW14VeA1RIVd7lulRjTaygMlWgI4hUMBSIzlgt
+         RJlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=GXkG06WTjDyvKDjj1SHe0ZHnqdsPYAQxekBKIWdOc84=;
-        b=IfsxZYDPxCxAu52U3YKtqJnqVARjIVP0vVr2UIuIDj1Vc8stRXLigRAWLMvcP5gGhZ
-         Mz3o1V8BTY541JgWGZ/58q+l6zM1m5GvR82JcAme1Mxz/sIH+s3RowTkkzNu0XvutGrG
-         B+0fhIQ3Tqa5204tn9YeU1aaVcnngYCJO3qn2TsGifwjVTIyC6Hu0M7drafUKxvxGk3N
-         XLOxA8PYaQrLBS+WZRHcH8LB3Q8IVtat7fxBm6hs6kMmkMR4lu0aVwyuekThDEhWOJiL
-         2DpdXudWZ/K9pc9GRiqrDjww8fKlhSlNVEiTsi5GFAfAj35qG3jFdP+TX8XDcstxSiTt
-         1ocQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=pnvfCd5kH9DuxP2YXVDB/Jm0bxWv5ynqLelwKWPQCcs=;
+        b=aeoC2oEB6loK3KgRnmtHYfZmhXXxa3Xk9Bygz+2htYUeS3g4rrVBp7W7APPDKwsqgs
+         /KKjgUFFMyt2vw/IixQqJLydOCqqyPSgSsf36twk0mWWxVth6eCsiQJR5FZsJkGCqUvb
+         TkfyhcPytvbiEMrN66VmfGJbN8Pp5ru0x+4h0InUphRpSb3lc91p5L10y031UdXwrbEl
+         d709+WGLUpOzhPrda44WkyxlhczUOVBDw41F1O8V1/DrxGKJrx+MZ6oJ1phAvNPLNTQT
+         UoO/1KYSGEfbUbUCqx84wL80q79oXshehwAQcoVQx36xy2XEZ/qy8ZN5ClNLxuRPMB+f
+         9fDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by mx.google.com with ESMTPS id y15-v6si8764484wrp.369.2018.10.26.08.32.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:32:26 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.131;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fimtg4l1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w8si2854379qvc.170.2018.10.26.12.16.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 26 Oct 2018 12:16:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MyvFC-1fKVQL0l0M-00vyS1; Fri, 26 Oct 2018 17:32:15 +0200
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MyvFC-1fKVQL0l0M-00vyS1; Fri, 26 Oct 2018 17:32:15 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Jason Wang <jasowang@redhat.com>,
-	qemu-arm@nongnu.org,
-	Michael Walle <michael@walle.cc>,
-	Laurent Vivier <lvivier@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	xen-devel@lists.xenproject.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Max Reitz <mreitz@redhat.com>,
-	Fam Zheng <famz@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Kevin Wolf <kwolf@redhat.com>,
-	qemu-block@nongnu.org,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial@nongnu.org,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PULL 17/20] hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
-Date: Fri, 26 Oct 2018 17:31:22 +0200
-Message-Id: <20181026153125.24738-18-laurent@vivier.eu>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
-References: <20181026153125.24738-1-laurent@vivier.eu>
+       dkim=fail header.i=@linaro.org header.s=google header.b=fimtg4l1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33872 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gG7bL-0007Dn-CC
+	for alex.bennee@linaro.org; Fri, 26 Oct 2018 15:16:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57724)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gG7az-00076j-M2
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 15:16:34 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gG7ay-0002rK-T7
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 15:16:33 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:45139)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gG7ay-0002ml-Gh
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 15:16:32 -0400
+Received: by mail-oi1-x242.google.com with SMTP id e14-v6so1942409oie.12
+	for <qemu-arm@nongnu.org>; Fri, 26 Oct 2018 12:16:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=pnvfCd5kH9DuxP2YXVDB/Jm0bxWv5ynqLelwKWPQCcs=;
+	b=fimtg4l1WDfd7hyjMlhsUxwLQWzGmZbyHJeOzYbZwXIK6KVdpb1H2JOP2pYVjghkoW
+	TympJW1L7ULhP91dtzSEA5kSvGt1LVgrwXfjKMhzC7bm6whhmmvsanBbfXUi0UaEtn12
+	OPNk+IwwDgNfAB+pCHtjSEWKbi24lTl/pBpno=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=pnvfCd5kH9DuxP2YXVDB/Jm0bxWv5ynqLelwKWPQCcs=;
+	b=C6288u3X0yDwvaQXy6v8ntJhPIFqM5yhNAUCrfaAlVVZz3oIrF02DaLquGeMio9yXw
+	Bh6b26aYauKpu3Xcb1+t/2/l53KQK9PWRG3tT3OOWShxRwjK6B1Hv0RCAicxnJgZ6NtC
+	mvsSaRDBzfSrL9YFjIC9eYMmhmvhY8RIoRF9kppjLqlRs1vPxjhbGeAC9TNVX/NUuGV5
+	+Q0eJpsh5qotDrF4EnrCaaSCPqWqRjki+uIomQcgGc6PgpT+YZhYsjiJSgTjHEqjzzz7
+	H4WslrgIE4OB59TYKuEoOkGLB3LnM/Mem60g6BCV30yPCP4mMTaV+1YfgDZd1sl6koxC
+	/Gfw==
+X-Gm-Message-State: AGRZ1gIqLFC+N7/XiPJ/waempTGvW6I4/zquDwsR1/Fry026AOJIbY+W
+	CHzhEhHxWvByYSAg6X/Ch89fSrMegZLNtAcWK7NaaQ==
+X-Received: by 2002:aca:ed51:: with SMTP id
+	l78-v6mr2773206oih.112.1540581385294; 
+	Fri, 26 Oct 2018 12:16:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:+i9Bmgk1IwQUv0MsCRCyQhrt4v9377EbiyAgWwyN+GK3Ka67Uwc
- YTeH4mU8BLVpCOUY9aKO+ZRqTWJUjPIj6fxmgPwvxkX85DJcw4aKfnE9bphEJlQss8M1MDi
- 9DS8GuY7l8dCB8ktIvBkdMv/8dXcs2DLiDuhmRZL/Yf7FnFuD3PvOPam/Kj+VW8ixwy4AG+
- eBFkvKCStAnisgNt+o9bg==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:XmlXAmcRL4g=:KUSW9NWdAz/RjQzT10cBel
- oyM7NeKHFGR0Hi8+Lh6N2OI/21Q8LBP/9H6a+DZzk5PKt/9jf0l4iOajmxAnF3PgWz/xZodrL
- TA4BADz7pegVmfru0fTQ5aOZ2w5UXGvTPFI9tm5qNChVJ52VkOyVY0aDTQPu5RhRps9L2cBnF
- T1RToV3bACvarYCbYbAyR6ZC8GXB6iE4gSwokEnXm3zpWnJDOdugPwdkNkvPVul1g+KsLbgkC
- PsTxZaWA7zLknlcNLDBPg6kmhe774/k+L3EJMsTliBkzs7+JOWr4Qpxk24qTdUu8wqGrGAh07
- deWqSBxD3MAObcNWA9/n7E/0BI14dL8A3cyqCr6dWPP8xvTbLrFyCnWJaRAu8EsCaPFS2e5AJ
- kfGAZ1H2jsTBo2KuBp+41J+hdV/UNSBNLvT6vNHQlsBDbmjGEFImCzKLNNHWTsULk4SAhluFl
- fNjU9uN1syOseVb/R7oFsSmNma2u0B7lscb6SVFiQBAyKcyQXr0FjDNax8KT1p4xiUc1OO19f
- /n3j4QnwEncpmBVSGZhQ0t1LJQJlpD10Fyhrnh/SUA3Uyi8gkzJvtRuOccVGNjs+NI8cAylTJ
- Pru3W1G65yvNJHTtLvhZgRWj3kCBGuRvRTSyiXOX920vu/DBptYNxNX9FGgU4pqB7oCqsrJKr
- 2WpciZlD5A+IyHYBns7hGfKI0RdAMhIYYgFDVHB9PhCImXzYvZGwaCPIgneLDi1PmgPix0g36
- pMJJEoDceB9fLR5n
-X-TUID: tflyUQeIQ7E8
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Fri, 26 Oct 2018 12:16:04
+	-0700 (PDT)
+In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
+References: <20181025133301.16578-1-ehabkost@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Oct 2018 20:16:04 +0100
+Message-ID: <CAFEAcA-qe-Sa1-XtmBdokuwX36V2PAsacYNkv1guvXzoUfC1Jw@mail.gmail.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-arm] [PULL v2 00/43] Machine queue, 2018-10-25
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Libvirt <libvir-list@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EHYsRbvK2Z2E
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On 25 October 2018 at 14:32, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> Changes v1 -> v2:
+> * Fix 'make check' warnings (Igor)
+>
+>
+> The following changes since commit 13399aad4fa87b2878c49d02a5d3bafa6c966b=
+a3:
+>
+>   Merge remote-tracking branch 'remotes/armbru/tags/pull-error-2018-10-22=
+' into staging (2018-10-23 17:20:23 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/ehabkost/qemu.git tags/machine-next-pull-request
+>
+> for you to fetch changes up to 8fa922c241e63f018f5b55c03ac494ae3d5fe594:
+>
+>   net: xgmac: convert SysBus init method to a realize method (2018-10-24 =
+06:44:59 -0300)
+>
+> ----------------------------------------------------------------
+> Machine queue, 2018-10-25
+>
+> * sysbus init/realize cleanups
+>   (C=C3=A9dric Le Goater, Philippe Mathieu-Daud=C3=A9)
+> * memory-device refactoring (David Hildenbrand)
+> * -smp: deprecate incorrect CPUs topology (Igor Mammedov)
+> * -numa parsing cleanups (Markus Armbruster)
+> * Fix hostmem-file memory leak (Zhang Yi)
+> * Typo fix (Li Qiang)
+>
+> ----------------------------------------------------------------
+>
+> Queue for Machine Core patches
+>
 
-Patch created mechanically by rerunning:
+Applied, thanks.
 
-  $  spatch --sp-file scripts/coccinelle/round.cocci \
-            --macro-file scripts/cocci-macro-file.h \
-            --dir . --in-place
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-7-f4bug@amsat.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/pci-host/piix.c | 2 +-
- hw/pci-host/q35.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
-index da73743fa2..47293a3915 100644
---- a/hw/pci-host/piix.c
-+++ b/hw/pci-host/piix.c
-@@ -144,7 +144,7 @@ static void i440fx_update_memory_mappings(PCII440FXState *d)
-     memory_region_transaction_begin();
-     for (i = 0; i < 13; i++) {
-         pam_update(&d->pam_regions[i], i,
--                   pd->config[I440FX_PAM + (DIV_ROUND_UP(i, 2))]);
-+                   pd->config[I440FX_PAM + DIV_ROUND_UP(i, 2)]);
-     }
-     memory_region_set_enabled(&d->smram_region,
-                               !(pd->config[I440FX_SMRAM] & SMRAM_D_OPEN));
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 8ce1e09932..966a7cf92d 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -356,7 +356,7 @@ static void mch_update_pam(MCHPCIState *mch)
-     memory_region_transaction_begin();
-     for (i = 0; i < 13; i++) {
-         pam_update(&mch->pam_regions[i], i,
--                   pd->config[MCH_HOST_BRIDGE_PAM0 + (DIV_ROUND_UP(i, 2))]);
-+                   pd->config[MCH_HOST_BRIDGE_PAM0 + DIV_ROUND_UP(i, 2)]);
-     }
-     memory_region_transaction_commit();
- }
--- 
-2.17.2
+-- PMM

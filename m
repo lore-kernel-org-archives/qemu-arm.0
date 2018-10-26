@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881397wro;
-        Fri, 26 Oct 2018 08:32:20 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f/MARQGkZ5Bsez4f735WnLw6QTR8JlluAUcp3PZG7uS+Dkymz06nHQV2QQoPYyAOxS9Esb
-X-Received: by 2002:a1c:970e:: with SMTP id z14-v6mr5964230wmd.100.1540567940784;
-        Fri, 26 Oct 2018 08:32:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567940; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881423wro;
+        Fri, 26 Oct 2018 08:32:22 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5flpTATLR2shIgt2oQ1MvGvO4IUxylD9bN2bIEra549ZaSEnKo5zE/ndIF34D5iXQlMFTTN
+X-Received: by 2002:adf:eb48:: with SMTP id u8-v6mr5674322wrn.22.1540567942340;
+        Fri, 26 Oct 2018 08:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540567942; cv=none;
         d=google.com; s=arc-20160816;
-        b=rf2SsfyKIumwY6gjpaEQUFbZBk/bA4psfqYRV2Q362GZo5y+Q/EyIXgdLZq1nMzbGf
-         VCRPgRcUmUCW5ilyG+kBnPaJNqB1R61xd++9hDyJPIv0q2NEwMyRiqaeNiLugtdRi7fY
-         fQX0HDa0QfggsVEhmHNQ4i7x616dfd4qY5zTed1Hs1Z28ilCp2rnP9NVs0SmnSFebc1n
-         jVcp9RFgq4uLLWbck2iGmqWImguGELpGJlb4u9pTtGdvi5CpZgUsjZ3qYus//h7tVF5z
-         SUfsr7PNL9fOikLA8crYO6wYhU/jnPxjiuNpFmsJ50+OB55Ok36EBGnvco5WmOHqhr3b
-         bUWA==
+        b=Zm9x3D2/gpgBCqaJYiqFzSek7ZapwrOQZ0C2Sp91IJQi9cfPfIH6xUP+nZeNK2HSmT
+         yOUm271UwBN5fts40uMu5oLvuqydmNGhUcLg2zaOlaDv1cKAWTH7EK3hdW7rJ9KXmH1D
+         Uwgosgeb1n1vTQMSWNHQH7AesUAW6RQy7xYriirDfoaRkEcLOpf2CW7uXJrWl+WPNexI
+         5vBFYGkIXEuY5p6HP5cQKZqeVkQTR+bZfu+dPbkwyJT44APP8KDUbH1amhrzJuLOAC5o
+         weyO6PrT/G5du7IZiXX1WwOugyMExpScoZY43GKnlKW0Na5ScIMU92DsU1UcoBJFfiSB
+         6TGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=WFc87kg9LBDJnpDmj44WyS7UWtkcUsACEih56d2kGZo=;
-        b=KLDOg+YjMKb2UItYp8hUWpJt1b60SQ+6afz6Bw3S8911lhyLdWXeuDhzK7TnU6c4gL
-         V135OI4t3Smed6D+otRAd8jkKTj1txyA6t3dzPMd37h64sx6fkfNN+s5nOQLKSbDgNTg
-         4eEixMMimA+ESCoA+y0w35+WTmaCbje07B0qbUWR45RIN+azXq1T2SveG5zynb32TaMA
-         uowkAvVB7fJi6KRZc/4SuR3H67OuhtYv7yYxGjiTC5+ARpL3KYXs9/4YwllbUqzC3tWN
-         SNf8ab6FyTgzCMFf/8c7gnZiD5gHgli2XPsgbAGYUw+lzZYdKNACDuqFRHMZffbR+KjH
-         axXA==
+        bh=AajCLcaVT0d/AebLZ5R4ZcbJsB4p2btqHuY6dlENIbM=;
+        b=jB4P3y8DbRcnyEi/ghsZ1w1GVJNV5AP97aw+9MwoRKBRuUSOzRmFTxLlOaJHYQIKiL
+         wUA7Ng5rHK/GgMqJrGH3kgbWA3omO/ER1gcSuXfKq+UVxM7HtGI6/DlxfiHLd4CS2BEs
+         g7kMiQg4+ctaeMGTBmwpzxNngVwJ+fPgylQIfjomf6/bjmMZf2ypj78Qpo8tntmPIPtI
+         f586AqXLTL7gdyukmk7g49BQJ4GFYUhYOxsVJ+ylI8jGCPJz/mXQ3BXVPB5h3aakAiJ2
+         VmHHJfXT/JLAe7tuVcCaydPEHxAdygKZsf6Bpek6mlKnhYBzihqnaXiX28fHGukPtVeQ
+         FJPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by mx.google.com with ESMTPS id t143-v6si3877927wmd.37.2018.10.26.08.32.20
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
+        by mx.google.com with ESMTPS id i5si3627464wrx.100.2018.10.26.08.32.22
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:32:20 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.130;
+        Fri, 26 Oct 2018 08:32:22 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
+ id 1N62mG-1fW2030jY8-016T6J; Fri, 26 Oct 2018 17:32:19 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
+ id 1N62mG-1fW2030jY8-016T6J; Fri, 26 Oct 2018 17:32:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -68,62 +68,95 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PULL 18/20] hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
-Date: Fri, 26 Oct 2018 17:31:23 +0200
-Message-Id: <20181026153125.24738-19-laurent@vivier.eu>
+Subject: [PULL 19/20] milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report
+Date: Fri, 26 Oct 2018 17:31:24 +0200
+Message-Id: <20181026153125.24738-20-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:7uzmE3hXAIS81p8gYH56fkh6UHOHziydz3GRt0kqKk+9lI6V8tO
- ymcxVNd2k3nNh5OSk2Pk/jxynYGCbtG21Hh/1CgAkkVIWi48rsrCDSx+W4i0sR1XGlWK5kC
- NFLNOXod/A5Ns+fCSGK2nX6J9jQuXZ1bP7IV0vckAO2dQYDS8esPHcMSEKZ+oges4O0L4eH
- Ro/pTH0X+jX3PNs37yFqQ==
+X-Provags-ID: V03:K1:peG9vs6GsMt7FvJ9IOcJtpr6YQ/f1NgGwuxCXLS10Tzwh7VvfDj
+ bumB+gWdPNWZw6tKFratVmDSwhx5bzldZ0O4v00tNLyAm8FG+3+ljvGTfditOJ2aGYQXi78
+ xo9z6fuF8lhjoTnQ/BEZx0tGvwNDs/NqAMEfI/RdnZUzbAAT/Nm79xVwnJ/7sSDYSPJGHb9
+ LOIUKPcwnf0R6LBzrrJww==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:sMp6R0Un3T8=:UOJ0GTL/xFzLMW0oWfWIC2
- Wb/tFPUw5Dh4J/s5cNR5yAwXQDeWxdwkapc7bVXyEB7qk8b5KLPc6g6zbjOrT0HQ64QjHADx3
- Jy/eAX7Ibk1C3TV0pHnvhXGjf+ALK7PvjZZr6zkh604AcvqGmjNrrLAt605XHBvD1gocDXbMc
- KmgLzntqdGbaJGd5Rj3FZ2YInkY6Z7kjuvfWw3/alimzMA4osUNiXO2MK43tk9gCcThE2DZbx
- 2fhGim5AgG9W4uOj0WJNef8Q+mzVEXdb8kdMAqDnRuiZfedp/GvojmlgPZnSn2TQ07vrz3UiC
- 6XpBYFAyTaBQ7EWq5F9gK6Bx6nqzFCXrVQeq7KJcjBoutxxntMLX97AVILrCuzgb0cRrS6OcJ
- bLr1tHAhuUb9PpMInWchc417uZgHQrlvfi67OdLltNOW3z1UGSvS1QvDzeAzaOLnYammOejmQ
- /SZ4DFuo/vtcO/ObBniPTq7K39xFuXE/feMgl8RrMxNDSJSVmsiVnlmtQ9v0hwyTjQFoXxyB2
- QO993deYXeBHkKavB1yq98L+sUDD6ylz3m1MIr/hivJaZnHZ89YUApJ9IKC2kvIeIBjx1GkQ8
- h6JdeXvBuzHAdU7bAceIG9aVfoDHfXwJ+f6q9VlbJWtNQPf1Pg2U0PqQv8WgOV4O5VMJjC56z
- hbhvur6+k1acJnD2K45fVbP9dNiRZlWtB30XVCjH6qmiKZZw1t9e48srm2CnaKE7k73kGGdxW
- ngmAYwqy4WUPDYeW
-X-TUID: I0mY43Kb3awI
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Wmacvs2eZ1k=:3W4TmCzU9ZcT1LHL9taMaS
+ AMPowxQE21LLEE0iygB5vtvM+3A8KTVZkIXddciNyIC5AGDSuKT3D99st/Z0ALRGkuTHSTdiY
+ 1gIpMQbcmuKCPcm38Hbph+QG+miYgVBbYezydmHajI+vSMW00D+t4v+FJ0ZIbkG8lV7hixG5V
+ dWtboDiLCgRT9tw8NH9oQVOqOuw3cOPmxG1XK7etdJ1/oOaCeGrayEMIkzkii6zuFxEpChQK9
+ lQhcllu29uiOER8BnjLxRGM/wwfqA7VVk+n4TEntn+KzAA2ZaqZAtonUwusfw7PfsfjVawNMJ
+ npC6rYxYSZPL8PyAxXlolSC1uKW345ma6WhoWTaPqPBbUAG+oW95l/5tKpWSwBHHVGfS4EHlw
+ dbYNr7zsv0iGiV+CICcE47Yebc/UjUNpcCkTFCKQPC/l/OJr58NdQs0kbX5gQsk/Pr7hyKRkD
+ 896fLW/uApf7+6YL+wz/nt28ZHKEj0w6u00Zgy1dZ0cgFeL+sv0shGL6+JXJzg4MESR1zAodL
+ +1gqMXBGelfL/T4FYpypaMa6bhOQfu0V2WfR5oyJV1BYhr4s5tCO8HdkwZRDuzS0B9dnMYiU8
+ zOOB1he6vkqTXeHJGMx/XT1aVOHqTRRHpYSzam+kqGdDV6wfCUwC8xtIefiH4hmzVwtPrrR6o
+ X+D0sH95Ge56tgvFjKJwhr40j79u7gRsyxaUjL+1Y1DgRQdtiSOw+thGiOELiRdRHM7YC+jkc
+ n4IZuoP+NmpIK5b8
+X-TUID: 8q3S6168DOCK
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Patch created mechanically by rerunning:
+qemu_log_mask(GUEST_ERROR) is more appropriate:
 
-  $  spatch --sp-file scripts/coccinelle/round.cocci \
-            --macro-file scripts/cocci-macro-file.h \
-            --dir . --in-place
+  $ qemu -d help
+  Log items (comma separated):
+  guest_errors    log when the guest OS does something invalid (eg accessing a non-existent register)
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-8-f4bug@amsat.org>
+Acked-by: Michael Walle <michael@walle.cc>
+Message-Id: <20180702014022.12395-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/hw/intc/arm_gicv3_common.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/net/milkymist-minimac2.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index b798486ecf..31ec9a1ae4 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -62,7 +62,7 @@
-  * avoids bugs where we forget to subtract GIC_INTERNAL from an
-  * interrupt number.
-  */
--#define GICV3_BMP_SIZE (DIV_ROUND_UP(GICV3_MAXIRQ, 32))
-+#define GICV3_BMP_SIZE DIV_ROUND_UP(GICV3_MAXIRQ, 32)
+diff --git a/hw/net/milkymist-minimac2.c b/hw/net/milkymist-minimac2.c
+index 3eaa19dfde..322fb77e46 100644
+--- a/hw/net/milkymist-minimac2.c
++++ b/hw/net/milkymist-minimac2.c
+@@ -30,6 +30,7 @@
+ #include "hw/sysbus.h"
+ #include "trace.h"
+ #include "net/net.h"
++#include "qemu/log.h"
+ #include "qemu/error-report.h"
  
- #define GIC_DECLARE_BITMAP(name) \
-     uint32_t name[GICV3_BMP_SIZE]
+ #include <zlib.h>
+@@ -214,7 +215,8 @@ static size_t assemble_frame(uint8_t *buf, size_t size,
+     uint32_t crc;
+ 
+     if (size < payload_size + 12) {
+-        error_report("milkymist_minimac2: received too big ethernet frame");
++        qemu_log_mask(LOG_GUEST_ERROR, "milkymist_minimac2: frame too big "
++                      "(%zd bytes)\n", payload_size);
+         return 0;
+     }
+ 
+@@ -347,8 +349,9 @@ minimac2_read(void *opaque, hwaddr addr, unsigned size)
+         break;
+ 
+     default:
+-        error_report("milkymist_minimac2: read access to unknown register 0x"
+-                TARGET_FMT_plx, addr << 2);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "milkymist_minimac2_rd%d: 0x%" HWADDR_PRIx "\n",
++                      size, addr << 2);
+         break;
+     }
+ 
+@@ -413,8 +416,9 @@ minimac2_write(void *opaque, hwaddr addr, uint64_t value,
+         break;
+ 
+     default:
+-        error_report("milkymist_minimac2: write access to unknown register 0x"
+-                TARGET_FMT_plx, addr << 2);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "milkymist_minimac2_wr%d: 0x%" HWADDR_PRIx " = 0x%lx\n",
++                      size, addr << 2, value);
+         break;
+     }
+ }
 -- 
 2.17.2

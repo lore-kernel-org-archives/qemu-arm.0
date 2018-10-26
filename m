@@ -1,41 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp880786wro;
-        Fri, 26 Oct 2018 08:31:54 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dYF+0F8iwU1PCQwR4SLsTg/wZfs92XYzRW25jNge0gb94ObphSJLIlHz/kkJ7LG1HZsix5
-X-Received: by 2002:adf:b519:: with SMTP id a25-v6mr5819234wrd.273.1540567914572;
-        Fri, 26 Oct 2018 08:31:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567914; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp880872wro;
+        Fri, 26 Oct 2018 08:31:58 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5e+YWrIXsujghe31G3NMKe+8woLd0l1nsLYnNZoa2g71k7DqSru0qm1HSpIkcof0+4w+949
+X-Received: by 2002:a1c:6483:: with SMTP id y125-v6mr4737567wmb.66.1540567918632;
+        Fri, 26 Oct 2018 08:31:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540567918; cv=none;
         d=google.com; s=arc-20160816;
-        b=GuVuIeOgWHUDCF3cbnnsMBJUNbGhMW3zEQYQEZmb3vbWKGnDuw4DMXwPL0iHlxKNJ5
-         fPVWGSpVGKX+vIBuNMRDdCqZFeQEqzuZ7twv/tk4Ptnz+gYjWojHDc9HxrbQKl/jLsWg
-         UpvK0ha+X5la4HI2GqgwJ5LBMM9+DoIqf/KciEINApC9gruCENjdNTJa2Y5z1bdboMuU
-         1g4cwEJr6+t12LwqLSESor4oEp14yHp20SE6RP1/A5hIOf7sYYeEFE82j+qqSzk+XPjI
-         dX0vwB9hG2QnyHPpcdpNbUhLNdzQ03rq4Dtt7CTcGxIdQlHHi04V2sNLv2bpoAeUwn/X
-         qC0w==
+        b=CfaBaQ+XeWm9IAPAUZoo3iCuDGwVB0Fm+cprLp2Qm4CG25co05y2dWUUimot47DPBa
+         hrrSyGViK9mgnVdgGSSN9htGubchhuttJWlE3Net1jld8QXrPK+i40caf12l1sOZzE3k
+         fscaJpP9oI8PHVtuVmh0498PtTjNmzemlI+V32vBP+eYGA13Wz4K7TL0iYJH9ddsYpFX
+         PTDkUwtchg53+1yglPbW3/21Pjj5D5mMe4iFfEVMTMECwAqSsqSkBTucSR2b/kGQwfEa
+         D660GeJkCuxSD/Ux0VGlX8nopLotxclILBP2he5/oRnj2DWfipgmQuVYErK04Are1G0d
+         FKUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from;
-        bh=CueiWp4DGxQDHJY4etXxbM38EWqbHGQZb2TBCCD2mOY=;
-        b=J1BPjcpwAA6s6/0M5hWIu9pwEcczWTc2vAkn7nrX135NzSE/jSY3uxE18/bHQgn9VN
-         kmr66uWiI1hacAMBiF22MGZpIEGlDaGLfxUbbPLsHl3pRmNyP5omUnwZSnadce3UA25G
-         Q7srK+GLrN/osFyeGHS+0Vx4vG50v1m4GOVKI7Vnh2l6vZIj9xljb62MejNey3aDYMlp
-         m7XhRiM9pkVhTyM1TM8hIAsrUMen7hH7js0Lf2xGJiXn3xGB/su8O4rHgE9aImRga29r
-         yIvVRcfGdepRbkMdER6gafHBaujBiAZKAHw0lAuWej11CxwddDBN6C71TYAB6AZpAMNE
-         0iNA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=h8Is6ZlK6KghHO/McdY7YhiNvQhp4nrDR4TpXrDWhRs=;
+        b=JFg1CC+7nOqBLCqxIRee961jr5bJwedUQ8bu3HFrrgeMiXIJl9R1htQ6bIfqXsrGAg
+         QFUTO9JgQeQP468dKIb0Hetj+49QkBowCB2YI3y8kup1eKqzc0kq3aAp4DogNhDvvp74
+         dDXWn36oJTnqo6o1ZS6cEV3uQDG00sqPmvOU8pyN+Mz4ageZMbxXxtUqrbHDpFKG70ts
+         ZIT39ZYou3DYHHdLbVYgzMrStLl11tV2LUh/Y/SCLQZp4OB6HAp3Ai270x2UQml/XRhI
+         fSiEZWfYtrNoqHlcGB0SSYGGKe0ZyA06U1EusMlwlqRpDqZzoPoVC82YPy8FcueZCxg+
+         caew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by mx.google.com with ESMTPS id y67-v6si3737964wmd.63.2018.10.26.08.31.54
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
+        by mx.google.com with ESMTPS id q16-v6si3572817wmq.2.2018.10.26.08.31.58
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:31:54 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
+        Fri, 26 Oct 2018 08:31:58 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MTOZQ-1gAc183Rs4-00ToMR; Fri, 26 Oct 2018 17:31:47 +0200
+ id 1MTw02-1g6kOk3SfS-00R3T7; Fri, 26 Oct 2018 17:31:49 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MTOZQ-1gAc183Rs4-00ToMR; Fri, 26 Oct 2018 17:31:47 +0200
+ id 1MTw02-1g6kOk3SfS-00R3T7; Fri, 26 Oct 2018 17:31:49 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -66,73 +67,59 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Li Qiang <liq3ea@gmail.com>
-Subject: [PULL 03/20] memory.h: fix typos in comments
-Date: Fri, 26 Oct 2018 17:31:08 +0200
-Message-Id: <20181026153125.24738-4-laurent@vivier.eu>
+	Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PULL 04/20] tests/tcg/README: fix location for lm32 tests
+Date: Fri, 26 Oct 2018 17:31:09 +0200
+Message-Id: <20181026153125.24738-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:kZEj9JglbRW2FesANw2/HZOsdrHk8/OHFw64y91KTz11EYf+3oK
- 7ZzeSp8mMDCAQ6bF3DuoD3LlgGfGQCH0lj4lQUWko1GcelP2Dn1zQiqhyL0IoQb6oYg5LJU
- Psxa4KPYBA2DrW6aDL91hamu7kHwdOcATSbSjLa1Yd0pW8bjLxc1PlW0P1MKykgm46Zoexm
- X3SdiZg0xVzI3npVN/nEw==
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:EqrCcCCeryytj/EJt3z+yvPaYKZmo+zIeqXRDhM4eiT4LD5VtWt
+ XJDWHA9dqlGUPNVoPTS5vrGwQtX7WRjb8KrjCiNro3nhuJhF9tAhaXk2PnCjcguW/qfVlEW
+ OXUG9066WSidDiXc2d7fW+koK6xO0INnTgOhGeeMcB+nGnnIitXMwXifNYqDGXM+hes1xKb
+ JwztgEokHeIxqwQlDmNWQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:bdivrMHNBek=:2ZJEsyHlCb3wurBMkhn7N/
- 4nCEuOhazb+/j0d6nHmbFA2m3oFMAdSFrBE+GkHMhwG2IQestGZJV5YWA8fxOHLZCwFIM/knW
- x3zMmB3mn/SpN+qTUo4C2rodcwYTUwb1lkSqWZmW5Kc8JJK+hnBwXkWreIcrY55T20rgjGkck
- uAi0zE3iaglbYC4HdLiC1LXnoBwphBEkzD3ScjrBEFBlpszewEwSCwn1HBVKUpGeMUwAgJyji
- iPWnIxXc2XW2gLv8E2r7yKsUGLFrfJL1+KF+x4n0YDkT3G7/RCVo8nrYubQvA+zBURLPILNSa
- ojophlfSRbU1shzrqBosYIn2w9AwWm8+rc9dvMOcWSu52aY+L+ywC0M5yfA98deZnlLV5/tue
- TVbSpXbL7+7FChM+2+PX7xfif0RzmIcgw6HElc2fKTVAE/AR6od/+wfHNLu0o8A512RjFw3uH
- VGAVeOrE50jzdxvO3OG5EvcOQNJ90xRhxns2KX6pz38TRc8gf251X7qnI2X95ad61B6TA9WAb
- kZ+OWBxb6b1yvTdn/8WQaQ/Uq3N8fUxh9ZWAnbkEHV2IzK7xITH4JpbgMc/wFRIDKlQbjD6Px
- m6Wo0HeMfAi8TpdHfOr22t/r7AV1x0bJeGxavhfLHdPo9Qxjw4e0CMaD5M50geOF6s8o+KIuq
- wLqCMS6gdbWLQJQ3F/M+lTnMZnPVgmPud7xXenNkr46++Wl/3i9fRe6Xo4yiX0yFqWzo=
-X-TUID: sGKjaQ0755fy
+X-UI-Out-Filterresults: notjunk:1;V01:K0:gxbSjhlq8I4=:STMEumJ8Sz+ty5IwIg/FB1
+ AFtEOP+h3oIIQS0T2rUik2u5roQibFBgBavr3G74H5678wEF1W6GIVceCw31+o6XwfwR1RMBf
+ m0Gq2NPhBPIu1EiFvk9aaLY4HRL5OpQTsKR/d+MPJOx2lHOhMwqN4jnXHCRjcdGV+/4MLaqdd
+ oGgvompMUsypet3dwP+I0j3wM8uoXPSi6+KbsFIEZUuX2uCHNyhuA/g5otXnT8BinLS2i2/78
+ ZoUrARLrUSv1WAqLuSyoqeTvxVy71vbDt2m6lfHkqPO/gKX1eUcd/s9iN1nEC2xLAy3fJskos
+ EphgktAY9EZuZ+Y+acHy/jzs/DBj3Eh0N/VkWAs33Ve8ikh+Gbyrf8ctfdCecMkoT6LhVzfkN
+ OAI7ncLVqkwcbUUtI14Kbg5cl+gTv35P7LA43TLoskJLTxQE2STzluxM5pg0Zb5q7ZLjLPm6g
+ XaFq4ixfhpIpLYBIouGRl6Piitgyz41IFDoEW84LjrSvZ17K1doclJjApwqWCUqtNjdbe5Vv2
+ c+4MlcbufO4v4zH6spt8tP6wOuZZsbt7GEjl3FcrydCbKQ6YLVlyQ0QUUPONulC6GL69hUMQk
+ n11mJlqmL1T6mg0J8qvu9Cm7e/IF6B6HpNYT6iQpN3Ho491EMByJcpJsc2rJBSAM5kxUo5fzt
+ H6knrHll5RdgQZ0UI0eszuIU4yCkAEgAMRA5pC+qjckUGWdLC6zdiRD72ntZ5a0mkZqn8JFbt
+ Fjt0gjbxRq8iiOHF
+X-TUID: RWGQs4v2y/j3
 
-From: Li Qiang <liq3ea@gmail.com>
+From: Cleber Rosa <crosa@redhat.com>
 
-Signed-off-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <1539080467-2976-1-git-send-email-liq3ea@gmail.com>
-[lv: s/types/typos/]
+Point to the right and obvious location for lm32 tests.
+
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20181004161852.11673-3-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/exec/memory.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests/tcg/README | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 667466b8f3..d0c7f0d9e9 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -935,7 +935,7 @@ uint64_t memory_region_size(MemoryRegion *mr);
- /**
-  * memory_region_is_ram: check whether a memory region is random access
-  *
-- * Returns %true is a memory region is random access.
-+ * Returns %true if a memory region is random access.
-  *
-  * @mr: the memory region being queried
-  */
-@@ -947,7 +947,7 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
- /**
-  * memory_region_is_ram_device: check whether a memory region is a ram device
-  *
-- * Returns %true is a memory region is a device backed ram region
-+ * Returns %true if a memory region is a device backed ram region
-  *
-  * @mr: the memory region being queried
-  */
-@@ -1161,7 +1161,7 @@ uint8_t memory_region_get_dirty_log_mask(MemoryRegion *mr);
- /**
-  * memory_region_is_rom: check whether a memory region is ROM
-  *
-- * Returns %true is a memory region is read-only memory.
-+ * Returns %true if a memory region is read-only memory.
-  *
-  * @mr: the memory region being queried
-  */
+diff --git a/tests/tcg/README b/tests/tcg/README
+index a5643d33e7..2a58f9a058 100644
+--- a/tests/tcg/README
++++ b/tests/tcg/README
+@@ -10,6 +10,6 @@ with "make test-cris".
+ 
+ LM32
+ ====
+-The testsuite for LM32 is in tests/tcg/cris.  You can run it
++The testsuite for LM32 is in tests/tcg/lm32.  You can run it
+ with "make test-lm32".
+ 
 -- 
 2.17.2

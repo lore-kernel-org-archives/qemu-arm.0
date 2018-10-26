@@ -1,178 +1,170 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp438453wro;
-        Fri, 26 Oct 2018 01:28:02 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fAiYS+mFipmQ1NMqoT0hm77JZbmKfTeL4IAv9zpqPQ6GSDCKtLZP2dvdvE0AhKwQLALh1J
-X-Received: by 2002:a37:31cf:: with SMTP id x198-v6mr2162084qkx.206.1540542482649;
-        Fri, 26 Oct 2018 01:28:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540542482; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp439507wro;
+        Fri, 26 Oct 2018 01:29:32 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fVXIiAnyQanAe61RNYgR1oCy0rOhbdAoJOZlnz2pMlKYJ+rfVkFbfooBDu8RNUCq5Fj+Hx
+X-Received: by 2002:ac8:72c1:: with SMTP id o1-v6mr2341719qtp.134.1540542572405;
+        Fri, 26 Oct 2018 01:29:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540542572; cv=none;
         d=google.com; s=arc-20160816;
-        b=DsDkWYslHAnXYKSYgINn89qrUT4ok3mb4X5e8G/8okXZgsEOpuZ0l4KhXbsKNU7m7p
-         yOVQRf0aacNw2SGfN7SeZ+i3fBHn/Feko7MU9BwCRuUmHfYoeySu4LyUsU8lzLy0gyai
-         rNdBZZejJw2yvJU06xK0PdUndRbqOSdtcYCbDHOiyaGIkZu4Oaa4a03H+HpXYFCJYSJp
-         5KR3SuKlBaZMtaRMyl3ki0w1dveQwdq/E8JtwtDVcJsZH1UxZsO1I0x++ilUvEyDgWiG
-         T8whfm9LiQdg0xpAYgWY6WNn8WkaZasUTnkq+ATOhVtpTSoKzoCLIFfHp4J5XMQPQprb
-         kMaA==
+        b=sdhTXWhUUwl+gfA9qTi1ZFh5aTzSMaD3hrRl618+g/ltEBTTsTA+wGo8XWnF0oEdyG
+         Reom8ZmiEj4ddSYM0I8f2rULVEoIA20r00BB0AyzEidej90bHmLrhSRn+/T8TWxnS0a5
+         L4aaArtAz9iUo+qwqWMp24OdfU2dmVSJPwy3vuOooXWAz0APcKyfZl+VyArbftQW2TVv
+         uLvREisEXS+U1qAvojWf1LAjFUt487e0jmLx1CjQJCAXuRGwdIZ90+4w6WbEkzdUPkzI
+         LTlp0IKw+zWCAKUbnNHuBhu6+mNsT9zckUCApEvveG2bMUPb/36OnVXM20OzGBrMVA4v
+         0HBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=RJpg/GCxTn21w+Po2lDhGOZXoha2aUeHjUMl1lMLnWs=;
-        b=LzXPfyEFWG54LcNr5JnurXrNIlVUih6iVaDeJ5vZfmQrDYCFKULT1wHGoLr5PV7Or+
-         0YZol7OLJKtQKLHZl/dv+wzhttWwHwKNaX5YRXZ439ObQ8kseV/SmyEKFetKmB21Sr71
-         arFmj2AzVQwGelzPERNqh92kG+OmbydPmqlIJGpD4PWHve5cO9oHF+krROmURyQmGOPs
-         QRpQ5XQgPf/gruVuULjMXF/SpKbcHxP7kYYkAhKcSLysOSJXzTv8aFJNkbpG37ds8Vqt
-         GiO1vMv+kk3FEfLRTbiMSsrYnKZ9wBOKgBVaTdrFS4VrFUQkmDyijQndicujiIcLMJaE
-         RH/w==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature;
+        bh=m8/hfzCglUuAvf1Qb4deXjVxSBQI2LWR/rGEX+7TYzM=;
+        b=lr32BNf5KWn/EnBRk0Anx96A9egBQVYrwYt43nr6YsGyoAzF4rPCy2qjezCE92AcZZ
+         REQjp+LxiTm/CAEc0AbfX6bn3jId4wKnH+XZHey2dVEwc8F6Jau5P9bwFpoZf+AYVmT5
+         rs0F5GzgKVY06TMVq+xLubz0E797Ex13C/nNG1WxzFicy2jjlHZX++zpdaF+Bu9a1yyS
+         5/SdibG+mGt2RhPY9R0G/AJ77eBxkgLAPG+eeKvmE6/ZCnMCZaY2o8OdQm5UkzFV88N0
+         Y01/e0BuyrGDTv4zE7+tAMm0RBywa1bf90mg+jGbnaQqwjkKjTxqzLZ2o0aeTU/KiRoo
+         IJtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=bNZUvPHc;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7VV7M8cd;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7VV7M8cd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a8-v6si359548qtb.19.2018.10.26.01.28.02
+        by mx.google.com with ESMTPS id 3si1412119qkx.42.2018.10.26.01.29.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Oct 2018 01:28:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 26 Oct 2018 01:29:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58790 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=bNZUvPHc;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7VV7M8cd;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7VV7M8cd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58798 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFxTN-0000La-Vz
-	for alex.bennee@linaro.org; Fri, 26 Oct 2018 04:28:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59943)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gFxUp-0002kd-PQ
+	for alex.bennee@linaro.org; Fri, 26 Oct 2018 04:29:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60010)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFxTE-0000LS-Nt
-	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 04:27:53 -0400
+	(envelope-from <luc.michel@greensocs.com>) id 1gFxUD-0000gX-4J
+	for qemu-devel@nongnu.org; Fri, 26 Oct 2018 04:28:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gFxTB-0001wi-7s
-	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 04:27:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40556)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gFxTA-0001wY-W5; Fri, 26 Oct 2018 04:27:49 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <luc.michel@greensocs.com>) id 1gFxJY-0004yG-H6
+	for qemu-devel@nongnu.org; Fri, 26 Oct 2018 04:17:53 -0400
+Received: from greensocs.com ([193.104.36.180]:45415)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1gFxJX-0004nb-1o; Fri, 26 Oct 2018 04:17:51 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id AD07D441B50;
+	Fri, 26 Oct 2018 10:17:21 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1540541841;
+	bh=dfLZPGnN7TiC869jTmK6DB7RFN22ebNE4iK7hrEv7XY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=bNZUvPHc1ah3zN06p9cAJ9591A0gyTfA5dltxL3aT7xNQzwWAJByyExjiCY9+J3fr
+	y17U3SSZBWUHl8r1BOvWUUd0rpjfin6yalLDsEL/YdLOUuUl7Wsunl4/OB0WkKlU7I
+	8BBtiHvAF5imDSaBld08nWO8N8HAxdRnHNBBYWrs=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7VV7M8cd;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7VV7M8cd
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PabWieQPEDVJ; Fri, 26 Oct 2018 10:17:21 +0200 (CEST)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 50633441B4E; Fri, 26 Oct 2018 10:17:19 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1540541839;
+	bh=dfLZPGnN7TiC869jTmK6DB7RFN22ebNE4iK7hrEv7XY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=7VV7M8cdbaU3iq4U42RfG6bQ1av8p5xoNWyZoYcVdjkiZUM4glP8R3fxcCApeODra
+	odRPqiDxSr6o18udwULB/SDAzg8R/WSjD1u8w7c5+Hlb+7MA7C8rRvBfkdr7rCUhWr
+	w9vC4G0HbiABERlcj75pIHPp8PpTKoHF0PQkeGZE=
+Received: from michell-laptop.home.lmichel.fr
+	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BC00130020BF;
-	Fri, 26 Oct 2018 08:27:47 +0000 (UTC)
-Received: from localhost (unknown [10.33.36.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D35EC100164A;
-	Fri, 26 Oct 2018 08:27:42 +0000 (UTC)
-Date: Fri, 26 Oct 2018 05:27:41 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Message-ID: <20181026082741.GK4096@habkost.net>
-References: <20181025133301.16578-1-ehabkost@redhat.com>
-	<20181025133301.16578-6-ehabkost@redhat.com>
-	<20181025171759.GG2697@umbus.hotspot.internet-for-guests.com>
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id CC187441B47;
+	Fri, 26 Oct 2018 10:17:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1540541839;
+	bh=dfLZPGnN7TiC869jTmK6DB7RFN22ebNE4iK7hrEv7XY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=7VV7M8cdbaU3iq4U42RfG6bQ1av8p5xoNWyZoYcVdjkiZUM4glP8R3fxcCApeODra
+	odRPqiDxSr6o18udwULB/SDAzg8R/WSjD1u8w7c5+Hlb+7MA7C8rRvBfkdr7rCUhWr
+	w9vC4G0HbiABERlcj75pIHPp8PpTKoHF0PQkeGZE=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 26 Oct 2018 10:16:52 +0200
+Message-Id: <20181026081653.24602-16-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181026081653.24602-1-luc.michel@greensocs.com>
+References: <20181026081653.24602-1-luc.michel@greensocs.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20181025171759.GG2697@umbus.hotspot.internet-for-guests.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Fri, 26 Oct 2018 08:27:48 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PULL v2 05/43] hw/timer/sun4v-rtc: Convert from
- DPRINTF() macro to trace events
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-devel] [PATCH v3 15/16] gdbstub: add multiprocess extension
+ support
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
-	Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fTXJwNwPILWK
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vmC6P94aNa5z
 
-On Thu, Oct 25, 2018 at 06:17:59PM +0100, David Gibson wrote:
-> On Thu, Oct 25, 2018 at 10:32:23AM -0300, Eduardo Habkost wrote:
-> > From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> >=20
-> > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> > Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
-> > Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
-> > Message-Id: <20181002212522.23303-3-f4bug@amsat.org>
-> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> > ---
-> >  hw/timer/sun4v-rtc.c  | 13 +++----------
-> >  hw/timer/trace-events |  4 ++++
-> >  2 files changed, 7 insertions(+), 10 deletions(-)
-> >=20
-> > diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
-> > index 310523225f..13be94f8da 100644
-> > --- a/hw/timer/sun4v-rtc.c
-> > +++ b/hw/timer/sun4v-rtc.c
-> > @@ -14,15 +14,8 @@
-> >  #include "hw/sysbus.h"
-> >  #include "qemu/timer.h"
-> >  #include "hw/timer/sun4v-rtc.h"
-> > +#include "trace.h"
-> > =20
-> > -//#define DEBUG_SUN4V_RTC
-> > -
-> > -#ifdef DEBUG_SUN4V_RTC
-> > -#define DPRINTF(fmt, ...)                                       \
-> > -    do { printf("sun4v_rtc: " fmt , ## __VA_ARGS__); } while (0)
-> > -#else
-> > -#define DPRINTF(fmt, ...) do {} while (0)
-> > -#endif
-> > =20
-> >  #define TYPE_SUN4V_RTC "sun4v_rtc"
-> >  #define SUN4V_RTC(obj) OBJECT_CHECK(Sun4vRtc, (obj), TYPE_SUN4V_RTC)
-> > @@ -41,14 +34,14 @@ static uint64_t sun4v_rtc_read(void *opaque, hwad=
-dr addr,
-> >          /* accessing the high 32 bits */
-> >          val >>=3D 32;
-> >      }
-> > -    DPRINTF("read from " TARGET_FMT_plx " val %lx\n", addr, val);
-> > +    trace_sun4v_rtc_read(addr, val);
-> >      return val;
-> >  }
-> > =20
-> >  static void sun4v_rtc_write(void *opaque, hwaddr addr,
-> >                               uint64_t val, unsigned size)
-> >  {
-> > -    DPRINTF("write 0x%x to " TARGET_FMT_plx "\n", (unsigned)val, add=
-r);
-> > +    trace_sun4v_rtc_read(addr, val);
->=20
-> Uh.. as in v1, it looks like this should be trace_sun4v_rtc_write().
+Add multiprocess extension support by enabling multiprocess mode when
+the peer requests it, and by replying that we actually support it in the
+qSupported reply packet.
 
-Oops, my bad.  I can fix this manually in case there's a v3 pull
-request, but I would really prefer that to be included in a
-follow up patch instead of making this block the entire pull
-request.
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ gdbstub.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
+diff --git a/gdbstub.c b/gdbstub.c
+index 09480df2bf..a1b63de34b 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1718,10 +1718,16 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+             snprintf(buf, sizeof(buf), "PacketSize=3D%x", MAX_PACKET_LEN=
+GTH);
+             cc =3D CPU_GET_CLASS(first_cpu);
+             if (cc->gdb_core_xml_file !=3D NULL) {
+                 pstrcat(buf, sizeof(buf), ";qXfer:features:read+");
+             }
++
++            if (strstr(p, "multiprocess+")) {
++                s->multiprocess =3D true;
++            }
++            pstrcat(buf, sizeof(buf), ";multiprocess+");
++
+             put_packet(s, buf);
+             break;
+         }
+         if (strncmp(p, "Xfer:features:read:", 19) =3D=3D 0) {
+             const char *xml;
 --=20
-Eduardo
+2.19.1
+

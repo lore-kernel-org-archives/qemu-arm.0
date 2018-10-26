@@ -1,42 +1,41 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp880906wro;
-        Fri, 26 Oct 2018 08:32:00 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fY7rCttxMjfodl1vvL9Pk4NQDoAFMpnL7/dktlRdGyxUiMQ7w4gCq8shOI7YR4+BL4bN1U
-X-Received: by 2002:a1c:a342:: with SMTP id m63-v6mr6167481wme.54.1540567920658;
-        Fri, 26 Oct 2018 08:32:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567920; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp880927wro;
+        Fri, 26 Oct 2018 08:32:01 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fi4d+h8aP2aNDWRMQczhIzKctCM3l2Ws2C/PMNOgoU2YH26RYTQFNR5XUWivwbThJPbSGd
+X-Received: by 2002:a1c:13d0:: with SMTP id 199-v6mr1855210wmt.132.1540567921627;
+        Fri, 26 Oct 2018 08:32:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540567921; cv=none;
         d=google.com; s=arc-20160816;
-        b=dlslHW3KRL87N62LsSPrnChRqAR6FB3sw9II4L6JPIlP82vxx6Ffm8zK802V2vJPLy
-         76KFzwVQyge89VEaQP4RX3moSehKMabScUg3zS6ZP03FqvCbI3BwTYXmN7GiT2SwGAYo
-         nEySSVxWpEoRKM7N3nkY634zmTuoQ4aCRqrRaVz9ky6e9+qDoZU8uYmFa4I7qran2RI9
-         kMmWosji0iCVKzu3MbjHQ1ov74iuKu2xqct/ujEeJ+w0F28JAQCi5IYZPVnoF51hpi9R
-         faPdCBGv1/qhfjWgesn/Uq+Kncnokc/iixuKS26dTeBBtKWLz+SdFAoNTrH1wCsmtnH0
-         E5Ng==
+        b=JnqocwfS4wq2iKz9qExNL+dhEmXtjlhuHoFr0tTlHZiN8HIn2OKqXXaDTgHu5EL5YO
+         292mPfmvQZQSpvtzB95SFIgcb/sMlqpBGPRB7kia5AuW4sJrGMrF75MtCWsXqVpy9yQT
+         jSOQq8GH910kY7yX0fQ5M7OyyD9zvBlY9Fcdv16lbwdOnpmcNl1Jp/BonGcOSzBXg8QF
+         3fudm5MabMP1cY/K9Ok3AKBvJ6WsVhMbcZLZKHLXWgWwBAl1iZQ/fNqYNMdmu2XYtJoL
+         LtQT7KBx1U85qhN0MC5GNpiaSCXwvquk7roIvIhRpoQCPfTIbZS/XQxuydHY7sMD1/3g
+         UKDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=/CsIuiB+skwdhSrpe/BjT+1uzRIbua4QxtSgsnBKVO0=;
-        b=knMuF+dLX6lPZangd73ENdjPZQjc20hRLlw3CptmWHIVss8M7vX3Oq+ysVfAaSyQz4
-         UDmqevp2STeSPwofnmBto1QX5JyaOxLGbOvwVTZnv6GlaluJqdvZfLOkK0zx//A6+t5z
-         ocF47/IZ/u+aHX0pU338wclbyJQ1ENDfZMr+JM07tCfCVpPf+MHCwh9NlcK5zB9W5yXL
-         1gsHc/L+hAGT6Fs6U9Ew3PlH0aXjVgXEs4/UwT6k4RrXCJc3ZxF6CvINZzNZpj7xp7lO
-         loIW/AAYHahU3Hi6B8bCZhJqaFZRAUvrJTZa2IoMeaTwhldDjSHU/qiWogMrFHtW08wD
-         8A/A==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from;
+        bh=hUPRBk12+PjAvaLGHeJb8B74S86vAhHYQBzFS8sJjS0=;
+        b=BQQOuNsl6LxZCbdiLZ29DLDGCi3IK3hG6Dyc8l7RyMqB8W0qx3vmg2JrDfVz5QPRbZ
+         ThbxE1wZ0iD1Djm4r6SAp8dY3x3b24s4ff3wesDd8bk2Jdr6NxPkfh9Ako0RIoPRRAC9
+         DlZo7qeLzZAgDN10ppUrq6a2YwqnEuo7RBckDnnaWWV3xoEi8mirxcirxCQq3+JcYF4k
+         GuI/86f+JEIUlKWnVfYPjcnljrOqr0sdpMaAjyLVqFgpIiXSm5fIfbC3O1WKe555VboE
+         TvmHNrlkpLLE3m6Ry2ClxrM2wOJ4B4+qrhSpnvJ1P7ea06kdShOTzwGXUVdbx0I3kOo+
+         BhNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
-        by mx.google.com with ESMTPS id j12-v6si5586994wrh.77.2018.10.26.08.32.00
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
+        by mx.google.com with ESMTPS id 30-v6si10258160wrs.162.2018.10.26.08.32.01
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:32:00 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
+        Fri, 26 Oct 2018 08:32:01 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M9qYn-1gCTaj3BfJ-005nJ0; Fri, 26 Oct 2018 17:31:57 +0200
+ id 1N3Gok-1fXghI38r4-010OHp; Fri, 26 Oct 2018 17:31:59 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M9qYn-1gCTaj3BfJ-005nJ0; Fri, 26 Oct 2018 17:31:57 +0200
+ id 1N3Gok-1fXghI38r4-010OHp; Fri, 26 Oct 2018 17:31:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -68,56 +67,45 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PULL 08/20] scripts/qemu.py: remove trailing quotes on docstring
-Date: Fri, 26 Oct 2018 17:31:13 +0200
-Message-Id: <20181026153125.24738-9-laurent@vivier.eu>
+Subject: [PULL 09/20] qemu-iotests: make 218 executable
+Date: Fri, 26 Oct 2018 17:31:14 +0200
+Message-Id: <20181026153125.24738-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Y9ErdKazy18pRB4sG30VI0C2WaT1vuPEezP7oCLYrbTfLCVfYYH
- oNPCWNLcp7NXxcXxQQUjHLCr2pTZGohUEtfYpAr+KXetrMfFky2zQmFY6CXbKAO3fEh6ON2
- 5DUKTcThUbkphkRoQYijLb1KR7+QzpeZ8kAU/ZS8C3nw1gz7r3+iRBRRj4jrAYJrwrUwM6g
- eo+1kef5MijhhbhuYk9cw==
+X-Provags-ID: V03:K1:gMxyO7cWiaH3Jx8M5bWDfTmNhiRZ8d5Z+EEnmLDHlJVSZ9g4bZj
+ zqBcvvzl2TYWPx/7WhLpoop4bCMqP++g9JYwv6Ri89uwvtUWF3vdETI2ZN1I++X3yLGL9OX
+ s6ArVYQwsnEAPqlwLQrCaSRbaMgzNfR//jGK/mP1C+paIUcS/cDCBs/TpiVD1Jzg8BkkKaB
+ 7hhrZW8gYoMhvQet2cfpQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Job3xHGt+as=:7GzYCbv+GfH3YLI0X+i0bY
- wBk2kGtdFyNPJOk0wnMLRyf3Fxaq3CUxJxXMTiJrb0G2IfIRl7oNmgnkrp85B8IbpB2xiL7S6
- DRzg18Y32vgrTfEBN3OBiZuDCQyhz6CT/M1ii77z5nAQ/lubRApo5R3+waKa3qAMsrq/fMssj
- Jm48HFZ9kTI/Hxq/mtS27YinTvQHfNEomASwXihOWkfZ7v3rknVRVc4FagcuA+zdSCA32OHVD
- Xe0bDQj9qz39k8aTVCFHQ/PnLJlBhef5acy5DOkO9ndrdiybST5mZ+cV4+cvMI8nibibVZAnW
- F4ySnL/fwtmqDVPPOjs9+E/SzBOiNEDBLDgc7GUaCmxBFmHol/fY4Xm6Epxp2HjpVKC91fsSw
- 0qh9zye7bEc+pqu8E16KphS5YwDDhD7DOena0wQntAJJr75vNc8Uf0NwFAekbKyR0+rLVJUDl
- aaj3lJiNsTkCuzOIzlmW5VDh8q/zvafsSE4/5k2dZhEFBqwo1mERB5ikY3/fHmqcCYp0YfyA2
- ffqTjuYltCtgMNQT9z1jbJT7vQKmJelToPG43+WbOEGf4OPqEFHiWFshayRDcLw0txzrnDiGL
- 2/cxafNSLLa7C0+VmJAPX1CmRNHH84jMYgRq+E7lrKUvkL9ABid1mNsemWb8DLccyJ+ENHW8h
- mFZStuKOYKnDyJ14ySTu9HDMpPTVz1R+KAsjrlpiIZTXbqhggj4CCh63ENWSYrnlBd65NjmOG
- 3f6LrvJnLsHoQ4J1
-X-TUID: EpCRYr3d1twQ
+X-UI-Out-Filterresults: notjunk:1;V01:K0:wLyk8Prc9+g=:4d34OV/M03Vrq/gr64rvqz
+ fDNpJ8apH/4Rv4HxBKnTHLtM0MzqNCxjD0j+KG1kbx08dw4i3hMxHwJOKoYQDVgjFB1faSCqk
+ GqAeO2zEYN6cw960JcuhIGhmIViv//bKi3FNjEeQAJgxWGuTVPHs+CrvtrvoaIj8X119vJ9YO
+ ErJ4rGc9oEYKHaDrB7X+mQVtPvTKlAbCvub4WVJy+3sYkZU+l7uY6S9GE6RlGeUq5LHFwx/7h
+ uC89UyxrdVvYSUgXPdG7DH4KB7ITc7VYsdmPng044RVXynctAqrFd+3l5P/CWGXmlqbKhoNHS
+ dYhuvUNltKeMXlc0hXU8IuRUWxF6GpovJ7snoDi/ybu8o7dSptV/RkmE/06T1EoVmMu1LlGPu
+ xhOPwCxvdN2W7RBB6+C6pYaEPTK2r1Z6vaINqQFXOpXX/YWAgfWLrkZd39o/BtdIeKZtTdwsp
+ Jeli3FaSlzqe5zuw6WJgbPowY57mygF/Jeywp50C3m6HWhT733raY6vpms4QB1njTJDyMV8QZ
+ Im5ivmbWw0JJBpwYel5zZ2VrFs376L/JGWQzDaeKzF1C2mva3YrKr7jySocoUe5UwV55e4a1H
+ 7xsxxLEHE0t3tD9/7T7Agsh4ZGyx+2lYSHqpiXa65SXRNZ7don+LbKe6K83qQkVaIlxTmqA9R
+ bRDvOiag+lobbRxbL+UmnMo4gVbsQQjms5Nh73zQopuoWh2mkFhJpKWu9cEF7EbJYexY=
+X-TUID: HabFGfHtzMKi
 
 From: Cleber Rosa <crosa@redhat.com>
 
+Commit 990dc39c made all tests executable at the time, but 218 came in
+later, and missing those permissions.
+
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181004161852.11673-11-crosa@redhat.com>
+Message-Id: <20181004161852.11673-4-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- scripts/qemu.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qemu-iotests/218 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 tests/qemu-iotests/218
 
-diff --git a/scripts/qemu.py b/scripts/qemu.py
-index f099ce7278..b0b2f12ce6 100644
---- a/scripts/qemu.py
-+++ b/scripts/qemu.py
-@@ -87,7 +87,7 @@ class QEMUMachine(object):
-         @param name: prefix for socket and log file names (default: qemu-PID)
-         @param test_dir: where to create socket and log file
-         @param monitor_address: address for QMP monitor
--        @param socket_scm_helper: helper program, required for send_fd_scm()"
-+        @param socket_scm_helper: helper program, required for send_fd_scm()
-         @note: Qemu process is not started until launch() is used.
-         '''
-         if args is None:
+diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
+old mode 100644
+new mode 100755
 -- 
 2.17.2

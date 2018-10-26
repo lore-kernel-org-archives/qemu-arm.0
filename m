@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881473wro;
-        Fri, 26 Oct 2018 08:32:24 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cs0jmw8etZBoj6ciGVyBVOcHxKQXlkROkFHR9zMLm8sdhoySL63axQUB/OyntXiu24oSd7
-X-Received: by 2002:a1c:19c2:: with SMTP id 185-v6mr6321980wmz.4.1540567944251;
-        Fri, 26 Oct 2018 08:32:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567944; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881516wro;
+        Fri, 26 Oct 2018 08:32:26 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cYNYV4QngDPt5zjMvjdWHACs64VQZUqJM3OEZeNmMf3VAsg2PLQx3s9v6veu0LKFB5t8A5
+X-Received: by 2002:adf:92e6:: with SMTP id 93-v6mr6457017wrn.124.1540567946032;
+        Fri, 26 Oct 2018 08:32:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540567946; cv=none;
         d=google.com; s=arc-20160816;
-        b=u5TKh40af+c8wIJEUlO3LFAIjOmOeZ7NwNUUKbEDTp82uSJ11ONdKKrPFK5n4XNrP2
-         9FgX46m/KZC2+lD0hMVKt5HsWQUb32TVfIF8sIF95wxnqDUXEGItGsBi91RyU8VuZk3j
-         MnO/1jWay5Su3WVgiDfzvPyRT7PMvvLbW5V4vGHIm+/QiBOOkp/L1+5IgQNJPBUEn6oH
-         dacy0PglebPLECDgb3WOva1nY52zD9X0WorEWIXVwOGqrdnDOBN/q/WzEQsdmIgDaMg2
-         nW3Nor3PXY/EeJkBZ1Jz9OXVDFb7N5ItoDGhkNdtdG2rZmOHFVPthhrSehkzmJFczzmu
-         rAzw==
+        b=NCHLCpyVtH+aYLU9nTfEXhiwHProZ9NMIrw+LM1O0p0w3vS0fQ4XFc3LbJqSc+QObq
+         yTHC+6j/LH67iFqU05I+Jkn00TxXMntjPMMYUFc8oyqXCyPOLOiqhgALAMgBn7IHj5FG
+         2ZtTVrC0lOxDPaSYTKoPie9Reddyx/Yuyj5cbEsYv5c7sZ8qFz8Oe7NI+RGH/jYnFd7b
+         Ex+cVXCiUfE1iFtAYvizKcYtXwAt2fpvPrpqszk6V1G63lOmrCyix6nC3dqOuFrvgqqC
+         /e0FkxvXmX5sGpsikR/UjrhTy7Xz6eOwbDwhCGILnWHu/WsylyE1e0xuEw2U614T6Hu/
+         QJUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=vjvNFrt8/ZAp+dNsWvrA/p6Dys9I9VzsBSvTQCYMdgc=;
-        b=i7f30wBzHjK9B+h2RiWjO9uRmRi8hPOX+wdyrkq6ax8H8NcXmxktxVII4dB0EYVG3l
-         FSA3ZZP7KqCIelVrmHsJoLRYREc1TZizUl1dD8F9NXZx2Og+Ce3/EKR9dxqeiYPJUe7c
-         S7FIJEZkaqQBfR5fApBYYnbxzNIQ2tHflIxVlk2Bn9PV9V7LpMpV1UQZhMRYGKOiVXpv
-         +LKALmpS2VAibfcqldElA/M0PYeWrOjgMNBGO0hVtUKwPo5yLgRDNCpS1Rqw0ESu415K
-         8ORl14c9VEVW37cHWfiXbxVN0MFcDQj4QrNwkTkCx0AHH0sCcrl1idI7Rf9hT9+OHmVD
-         JFBQ==
+        bh=5+FK91EiMz7zwPVdwTNxGbaLkyUtEHLv99gvZtsbh8c=;
+        b=aBSG0XtkxOWO8iOV8qekVK4tncH5GalwrFVUwX7nE1nNA7FaHxLd8Ji4a1ZFa1UoQL
+         vRZdThFy7veXn9t9Zn0OrbftT6zINcrV9B4FfD9lf1fnjcGMJm9Xf20ipdQsFfL8P6LI
+         YmaJsgV1R1KzWrI8E9ZecIYT2L7+ztb9nFg1kAeCW9IdQXyIugSudspWWTWggUhDJgXa
+         CYNjnq2OykCFHvRGl0FyxDdX3s+yAz5edQKsC0y2bEgt6yMdkeAFY0imDh0UoE2rnH8c
+         MPAX/IKhrZHQSmh9g9Sjifrw3aj7g9U1bap/6RQjSpL4P1IdM7WmxrDfbLjTjz0CbYia
+         aZhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
-        by mx.google.com with ESMTPS id b25-v6si6162218wrc.52.2018.10.26.08.32.24
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
+        by mx.google.com with ESMTPS id q4-v6si8861216wrj.1.2018.10.26.08.32.25
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:32:24 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
+        Fri, 26 Oct 2018 08:32:26 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mv3M8-1fPTTZ0ozo-00r0dP; Fri, 26 Oct 2018 17:32:21 +0200
+ id 1N3Xvv-1fXPaQ0kwV-010fOy; Fri, 26 Oct 2018 17:32:13 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mv3M8-1fPTTZ0ozo-00r0dP; Fri, 26 Oct 2018 17:32:21 +0200
+ id 1N3Xvv-1fXPaQ0kwV-010fOy; Fri, 26 Oct 2018 17:32:13 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -68,75 +68,63 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PULL 20/20] ppc: move at24c to its own CONFIG_ symbol
-Date: Fri, 26 Oct 2018 17:31:25 +0200
-Message-Id: <20181026153125.24738-21-laurent@vivier.eu>
+Subject: [PULL 16/20] tests/bios-tables-test: Remove an useless cast
+Date: Fri, 26 Oct 2018 17:31:21 +0200
+Message-Id: <20181026153125.24738-17-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:KclRKIrIPGBTOGMjoqcysLNDM8QxCF5ssfwQakHXJ9Nqg9/6fxz
- /1aniyI3DJXYydjEE1QS3TSzttpEMiuvyJFGSFkv/63u3VFFF417jlGodsTsOHP7fqZ6dke
- 5EV9QB95RAdcFyvGs4QkymIceWgtU1iyqM2pX6UcyLxikvjo1Imv7atLScwLaSktlS1rQr3
- ldOWvFO7er8LMfVe1x/LA==
+X-Provags-ID: V03:K1:jyFUglwv22ZGvQhGYHhC9I79VIt+cGsDI6GkuGxaHtotGw1i812
+ NY5fhRWppxfts+BIGYlT9+CFsQBIi9YOPobjRk6yGrv7p3XJtUaiEHuzfaYcPre/54W/5fz
+ u+S8zriEuPn4ob6AJ5IVDCUEInX/eLQckyi5EMhYDLS/1YeouXlhmUe3diKxFl3lxdGxA/W
+ xShGMcOi94+N8+L+g0tIw==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:2s2VV2pj5yM=:HjZv4m41rAcvloX/Ghjz63
- m+hNHTf6s7a1a7XQtxkbpnbfVXbli5kTCxigU+CU0YBvVfVbgduFIZeZn4iKDgmaqOqNkm8bX
- FA/dVNYyQyFxWz0XKEMprHHg68T+RCkw/CdeNRHjbUWfhIsjE2dEuHdC9J/6RNh5sxJAGle/3
- I+xV5YTmQVz1Ws9Ii6ybl7B0n6HJtSayg+rc5dQB5E1uum2o+syGCfYBcYP9SYWW9kJytwxcA
- KbtacHALrDYQ0XMARTGSWxR283QCcbAY0DJeIRht2zqrwB+WTY+Y+DoTrMIkKic3qvTK6I2cS
- Ze84KA70qyGeWshHl5rBusNyw5mBXDh4ZGPODlAswUQkrNgzMSHR8T1cDxFmW7DHSizRUNXo7
- 1wUpnqmSIL1zpbQsDdtgf65svyynic2j2Cq8cfO1kZavOprfQ5/oEMPPWv1U3R/4h4Xeyd3jX
- ncLLBmwYJc9BU9GsUOBlQLTgER7RM7BS5XQBjIEAhQxRNh0rxMxopOQpKx8SqbBpdsolUxF0Y
- nHfv2fLogDSSwJ+OSPjrmWFjoICJP1cdowZ+oSTN/lJUnni/XNqqn9p5W0GmJiUyjrXUiuKFE
- 59AoqcoHp0JXFvEoQZA2Kqc+SmpRm0a5GUYMHIZ+OCBfLv7X4lqSPcdzbRFml0r84P7wkXnE5
- uG6MXLtT8uFM1BJR5BReguM2/SL0IFidTx/G+HhD7p5VayEIHnppMI86j1P49oEX3SfC+F7lb
- UDbN1MpfG58zcPo/
-X-TUID: MMdTJkP2t7gn
+X-UI-Out-Filterresults: notjunk:1;V01:K0:/1PXSljl2Y4=:6Kj16mcRkzvlI6uvICand2
+ KhQJ/ZKwV0E9ydZSHLRwpUakacRHwHVnnDwsXo2rD+OB3WdN2lTW9g41qOJxLJ3ruvMsnIYyH
+ UhMABuBkQ0R6UaAgFnGLVmR96kOE2UF+D4CTaq9XoZCL/DIqnbcOmHcU7U4f9EZkzSwUWRsNE
+ b70rVKHVbX9+A+ZyJePcd+cIBKnqCc/ezrK6opSjT0oIfGYPVQu3vlshpJdg/j+vkM6KzPbsC
+ GApHIJoeGcjbHhIoPc6XV9O7SluYMnJ09IgTvvs/27VLnkpEQqMvAXIwGswtgjdthNlTHsw+4
+ f/Vyt40YleKh8d+S1h8wMkUfCezJ5c6NIKE8RbqTR1y55RbctbQXuKYnD1cmPW8LdwLTiWhVQ
+ KNZsB+isGvHRkpyZ/1Fk+1smheBVN2znegsKs0sjW+LIkHviJXrf3elt538yMByqqzd8potmR
+ K9JpltaDes3yfdUNrdvjDek6UsB6r6UPvmb7p+GEltz0FgSBjeAB8TCKKRjscsbLgUyi8MJGz
+ fhBGs2KIyfrwTLVHP/sy3ybI6edLQ703zdKLELxQMzmS0V5o8RzMKPJcRNpvmgEMPtfXiCd0d
+ fFa5sYi4VDRmHmjElP8sckOhb1YQ7V4q+Z2ijW4r1vrWGYqaEMVbCZScObm8dmTFFtr1Nn08S
+ SI1u73UPQkoljvXGXeVoV4yphSbfEplPwl2fv2YE0eszq1iboFiNVrwdf8QZmJNgk/Ysu82C1
+ HNHEZ3Ts7yqxZHSV
+X-TUID: 6HTtR05gA3l9
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-AT24c EEPROM is currently gated by CONFIG_I2C, and as such it is
-being included in all emulators that use I2C, even if they do not
-really need it.  Separate it and, since it was added for the e500
-machines, add it to qemu-system-ppc and qemu-system-ppc64.
+Patch created mechanically by rerunning:
 
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20180522191743.12872-1-pbonzini@redhat.com>
-[lv: rebase]
+  $  spatch --sp-file scripts/coccinelle/typecast.cocci \
+            --macro-file scripts/cocci-macro-file.h \
+            --dir . --in-place
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20180705155811.20366-5-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- default-configs/ppc-softmmu.mak | 1 +
- hw/nvram/Makefile.objs          | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ tests/bios-tables-test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
-index 3181bbf163..23d871fb3e 100644
---- a/default-configs/ppc-softmmu.mak
-+++ b/default-configs/ppc-softmmu.mak
-@@ -28,6 +28,7 @@ CONFIG_SM501=y
- CONFIG_DDC=y
- CONFIG_IDE_SII3112=y
- CONFIG_I2C=y
-+CONFIG_AT24C=y
- CONFIG_BITBANG_I2C=y
- CONFIG_M41T80=y
- CONFIG_VGA_CIRRUS=y
-diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
-index a912d25391..b318e53a43 100644
---- a/hw/nvram/Makefile.objs
-+++ b/hw/nvram/Makefile.objs
-@@ -1,6 +1,6 @@
- common-obj-$(CONFIG_DS1225Y) += ds1225y.o
- common-obj-y += eeprom93xx.o
--common-obj-$(CONFIG_I2C) += eeprom_at24c.o
-+common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
- common-obj-y += fw_cfg.o
- common-obj-y += chrp_nvram.o
- common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index af4b1fb6bd..02e77ec811 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -319,7 +319,7 @@ static bool load_asl(GArray *sdts, AcpiSdtTable *sdt)
+     ret = g_spawn_command_line_sync(command_line->str, &out, &out_err, NULL, &error);
+     g_assert_no_error(error);
+     if (ret) {
+-        ret = g_file_get_contents(sdt->asl_file, (gchar **)&sdt->asl,
++        ret = g_file_get_contents(sdt->asl_file, &sdt->asl,
+                                   &sdt->asl_len, &error);
+         g_assert(ret);
+         g_assert_no_error(error);
 -- 
 2.17.2

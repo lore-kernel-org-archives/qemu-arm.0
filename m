@@ -1,80 +1,97 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp524630wro;
-        Fri, 26 Oct 2018 03:07:41 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dXUSCbJBAw15zsk64aN9r5QJZywpxCqq6CT2UhxxgNZs1l0XHPQo/7mtqXUL6i6WDpGZzS
-X-Received: by 2002:ac8:3a81:: with SMTP id x1-v6mr2633145qte.370.1540548461742;
-        Fri, 26 Oct 2018 03:07:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540548461; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp530280wro;
+        Fri, 26 Oct 2018 03:13:25 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eH53OXmaxeBNKr3tX+fH4T3n2ys7QX3CtBJvDf1r6eXrhMSfB5dagyDCw4tFI/QF40kg9G
+X-Received: by 2002:aed:3bf9:: with SMTP id s54-v6mr2482498qte.207.1540548805244;
+        Fri, 26 Oct 2018 03:13:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540548805; cv=none;
         d=google.com; s=arc-20160816;
-        b=MRulw4xBsgB0fwP6Ab5wPQe/ZjV3hERJk96Ta/k4jGugU8VjNMTKrMd3PxWTpAwYO1
-         mfVP8GlPV1fD7aULJjHxvvPShpgiIU6vls11ziuJlspaPg/BTjqpuiCHzSYis8bHWnfy
-         deU2l3yvo4RGDxAKwKoxSwLBpQqMUZ7Jno1oIposhbMgOxZLs8A5WGHeTnxz82Ntcjx5
-         HgZTo0aqO9INIdmVSVq8sKwzk80uG5fMJoAZsvp6pqg9G/Dvqj9F27RLDIaUeocTUeqH
-         AldI9eL2jhX20pC/8ksMZzRbaVuLWqHeW2rfn2DtfDt5JtlUtIUb6X9aghHfzvnsyT7w
-         oBHQ==
+        b=yCaXkg5ni4+ZHVnA2dP8gmAIWZ4J6srpxkPgpFtpsRSVjvicfpPK9coA5urPZCL5ZJ
+         9vCAf9G1oFOKoIJAbqQkVFyUOGgRH3lJtsr8tKuDZAkGZ8H0jiFoG+YRowxLLU3N9TpZ
+         5Ft/4RYFLCAVXmqNlMtfI0Ys8mOpNiT2fqcntq20vqA+JHbKWcI+Uq2lpKtplM9Ss4zm
+         cy9xqDJ6+59qWgKs+whOdfc2s62N/Bi+CYnbw+q6DObvHkVwYEkAyvLjqQiYK/Zg8pL1
+         CUCzdOprQv1cUVdP5AuEeKEOc2fhC7R/CtxA0tuIExLMP24WLaY6LgmawzdfcEPoiUBp
+         z23g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from;
-        bh=KmVECDxncu4gV4IhVM8d/m/YaQvQYwQBwAvu6Fgmves=;
-        b=eNGt+LPkXFGxqOos6gSyyz9O3yFpRCal+1WXJyN2VCdPpDo3q//Wt/y5cLezfcTyy/
-         +E9Sl5e7N9TTbwNg0foJH5nwTQvW2IXOSWyG5Vy1gd7y6GOVvcxPPA38F7gUpA5octEY
-         u98R22De/1CHnQlTpeA25xb9TQT0bO4hSEVh7HvFtMDjFkJDpargDMBaQfyjY63bFcsx
-         DV9nejwA66Oq0ZRHb3zM5sZSj1/Vy4j8DbTvo1xE7gvghehrVRKU0aXqnFKQQ1kPYqEc
-         lN/5wSOJjqDHVYiHcf7TqFzNtHUdLJ63qTkbrF29GibKkv3cDJi/O64/LI13JE07zvon
-         Mjvg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=Rh9kAUzK2/b/+VIyOw3EFLBBHbHuunAdnxvJwtV9PJk=;
+        b=U7OLCJ+0/o4Z2VQ6xHz1IZs+ymvGDe0IsPvUn38aL+KOfIAz6apV1pxW0PvCgIyg1b
+         Pki5aads3vEZeNSHcgBc2jmw0i/mDQ8wPEmRhvP0Ca9TaxboZclo5FMXq+r2tHGzvIVH
+         ty5aXvOWiJnBN6d359Osw8LRbYEuFI/VL5BPrNmaBgfolR4QlhDxjj9RxfL6zzkDl6j0
+         X6r/uFz+41hI+BvRjwo+lRkuWDYFhT+hkL8z6iQymuA6g1O4waKvQBP01u3xzsfd7aMp
+         Zu7rf2BOTQBbTfdYhH36Pw4Gind5u4B/DtpoqNek8uZWGGilxWH7NZQRqcczEcFWdCgq
+         LMhg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gn22unCx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o4-v6si2032551qte.269.2018.10.26.03.07.41
+        by mx.google.com with ESMTPS id m34si2582466qkh.8.2018.10.26.03.13.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Oct 2018 03:07:41 -0700 (PDT)
+        Fri, 26 Oct 2018 03:13:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gn22unCx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59294 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59313 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFz1p-0006S1-5O
-	for alex.bennee@linaro.org; Fri, 26 Oct 2018 06:07:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35254)
+	id 1gFz7M-0002EK-Ox
+	for alex.bennee@linaro.org; Fri, 26 Oct 2018 06:13:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38347)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gFz1E-0006Ed-3n
-	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 06:07:06 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gFz7C-0002D7-Ef
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 06:13:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gFz1B-0005b4-6i
-	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 06:07:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38494)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gFz1A-0005WO-Pk; Fri, 26 Oct 2018 06:07:00 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6DFE483F45;
-	Fri, 26 Oct 2018 10:06:57 +0000 (UTC)
-Received: from thuth.com (ovpn-117-235.ams2.redhat.com [10.36.117.235])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2590B65F55;
-	Fri, 26 Oct 2018 10:06:55 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Date: Fri, 26 Oct 2018 11:06:49 +0100
-Message-Id: <1540548409-22560-3-git-send-email-thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gFz7B-0001Lu-Cl
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 06:13:14 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38882)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gFz7A-0001LS-MA
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 06:13:13 -0400
+Received: by mail-ot1-x344.google.com with SMTP id l1so558316otj.5
+	for <qemu-arm@nongnu.org>; Fri, 26 Oct 2018 03:13:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Rh9kAUzK2/b/+VIyOw3EFLBBHbHuunAdnxvJwtV9PJk=;
+	b=gn22unCxqAyal6Xu9tBctz0heK8jnvoUsXp9vLNHeQsNZ2IQ2JpWLpm6AioSaI4SaS
+	Q8lTs1Zcyd3fpjowfZjQJrE260kfIaH4u8JBrHSUOyHHm/WQ2/b6TqcO1YKKWB7hNuXp
+	7TVrF50GEnnrzafZiya6foab4W9AXoU+2Hdn4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Rh9kAUzK2/b/+VIyOw3EFLBBHbHuunAdnxvJwtV9PJk=;
+	b=Xe4oyEne0ZEWptfy9SpQGf/TOx2IXDhiNpgcIvWPBltornaIAnx54DF+KYFxC6y6hN
+	oiR7mC7hDZ7DcxCp8AacWtd+ooIObv+YR16Q07GnO1w5Z6klDZXzy1diojFkjhoYF26t
+	pW7eoJtOjKsHLW3EiLMb6Qs04TKif1Bk60U7ZEaZLoVZLjqG3RZ9dK6CZOtBREA90e//
+	e+cv9e8ChZh/NjXylhNtGIHANKoE4X7EsB8Y3VwrKyU8WTZ11T9WxFCP0DmAsHabqdNC
+	tvq8J+/8SCQRZzMU+LvlNfVA6rzcOzPiJURzxVcOC/YVY4RzGokIAV4kBuh519yf1bNy
+	RoIQ==
+X-Gm-Message-State: AGRZ1gKSpVl1NfoVOI+YR3GaFXFA5NkY7XBpCD0oCSgQVQ32MK/GNPo4
+	394TAWVNQrmUcJ9wx2I0zKKOAnNcGJzzZ2TDg4T8gg==
+X-Received: by 2002:a9d:cd8:: with SMTP id o24mr1591636otd.363.1540548791994; 
+	Fri, 26 Oct 2018 03:13:11 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Fri, 26 Oct 2018 03:12:51
+	-0700 (PDT)
 In-Reply-To: <1540548409-22560-1-git-send-email-thuth@redhat.com>
 References: <1540548409-22560-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 26 Oct 2018 10:06:57 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 2/2] arm: Deprecate the Strongarm sa1100 and
- sa1110 processors
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Oct 2018 11:12:51 +0100
+Message-ID: <CAFEAcA8EubWya8ey9VxhaCw4m2U=KA+i2C-R9P-p+P6oEBBLew@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH 0/2] Deprecate the "collie" machine and
+ Strongarm devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,36 +103,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Guenter Roeck <linux@roeck-us.net>, Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 52xb1Fhb51L6
+X-TUID: 3nhDw0xRPOxI
 
-The deprecated "collie" board is the only user of the Strongarm
-devices, so if "collie" goes away, we should remove the Strongarm
-devices, too.
+On 26 October 2018 at 11:06, Thomas Huth <thuth@redhat.com> wrote:
+> These files lack an entry in the MAINTAINERS file, and according to
+> the initial commits, the board and devices are incomplete. Since there
+> have hardly been any commits in the past to really improve them, we
+> should consider to mark them as deprecated now.
+>
+> Thomas Huth (2):
+>   hw/arm: Deprecate the "collie" board
+>   arm: Deprecate the Strongarm sa1100 and sa1110 processors
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- qemu-deprecated.texi | 5 +++++
- 1 file changed, 5 insertions(+)
+Hi Guenter; there's a proposal here to deprecate (and eventually
+remove) the 'collie' board (strongarm) from QEMU. Is that one of
+the ones you're currently using in your automated testing of Linux
+kernels on QEMU?
 
-diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-index acf9809..0de5c7f 100644
---- a/qemu-deprecated.texi
-+++ b/qemu-deprecated.texi
-@@ -116,6 +116,11 @@ The @option{[hub_id name]} parameter tuple of the 'hostfwd_add' and
- The ``ivshmem'' device type is replaced by either the ``ivshmem-plain''
- or ``ivshmem-doorbell`` device types.
- 
-+@subsection Strongarm sa1100 and sa1110 and related devices (since 3.1)
-+
-+Without the deprecated "collie" board there is no other machine which is
-+able to use these devices.
-+
- @section System emulator machines
- 
- @subsection pc-0.10 and pc-0.11 (since 3.0)
--- 
-1.8.3.1
-
+thanks
+-- PMM

@@ -1,83 +1,133 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1013150wro;
-        Thu, 25 Oct 2018 10:51:27 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dr6KCasOXOAIF4wOlPKumkCijqn79mLWyz6E3ZcIbblSeP238H6rtV2S0r7GrrPCXft8Ae
-X-Received: by 2002:a37:2008:: with SMTP id g8mr214022qkg.120.1540489887427;
-        Thu, 25 Oct 2018 10:51:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540489887; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp367815wro;
+        Fri, 26 Oct 2018 00:02:25 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eyxGNcsVVnNEgGWIBXGVx/mtWwMrN5PkMG/dX8c6G+LWugUe+xr4NfSZy/nskpbMGMeE/O
+X-Received: by 2002:a37:8984:: with SMTP id l126-v6mr1909360qkd.195.1540537345836;
+        Fri, 26 Oct 2018 00:02:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540537345; cv=none;
         d=google.com; s=arc-20160816;
-        b=dv6jCLKhKk/F9NpAE0j36DJuv+jo2a33BtBzaPuYfY0aPWE2o+A7gwMZXkrsQMU1ME
-         MH6zElh4zoVkU41DMFa7ihQPTh2Thp4p3DgFT6TcLmOuhopMiyg3Y6dZE/1odgOdmovi
-         I3KesSz0IEWnvL8FeK5KS2clH/uASA2c5Afo3ht4It13oPQ79CH236/GanwV0gjaP7SR
-         OFe6Yo6cM25BdkVmROPzR/GFbLE9HWTB3/vQFT9WhHCJLYHyr08Os5xMB5T0oj9DNvaA
-         0YcZjPxgBL0Ns7kH1YPcH3GxwUHGHPGOmwcVcx66hBJD/zm67J7w839CwfYGNNbsiuYr
-         /Qcg==
+        b=RBd9poFZ5lT4uerASgvU7iLsxc40I/2fdpuC93uuJzqdk+5VNKmgBqw2kn8I70FyTw
+         D1BKohey3250Ae4Fb46Lfm2XQVhpZ5Bpi7AkhK8k88MwVn4nHSIyP1VBAvWJuAgIuk3P
+         szhipmv7tg4uXpht05Z9aUFAOHBRMUf4x7vvcZWJMdYc6W/RhrWMUAQmeS3zmjjgUn3O
+         lBPDP3RP3itUXz6swy7C49fOeIGvOJXw/dir+3Iz/ciyN2YkY6oY92n9YgjwIz8PsKGH
+         Z+nJCOBwylUwLjsfHc5WLIdSBvc+F+3gtd9sYMQYAQcolIMyo8OV1yxc52tv7LtNbkx8
+         YaRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=dlPkFB8G0+XVPayRz2T6TnWdpLFfNoPB1K+WzUZaKdk=;
-        b=ezRrYnQtSdwzpXlB0MfzGUjp2GE9b3OzABQBPO0c3SHuzr4xtx6nrN2pQGtjwdA/Wh
-         b6FiZ5rhBrkD3Q9JFSNucaI0GEdw746wX9FJy4y/cIHoh5dUVes7VmMR/R2NshAXmbKQ
-         LTmzMQiWC52HHi5kpoAVKK47ZsHviUo1ipk0cBopFk2okBM89pc0Mp9lr3vh1Tb25rDj
-         oulqVmO9qkuLaohFAzALN5gcML/qaYBJgdmRpQM3734n2St4Y62dWOMRT01Ei0JT/gOV
-         eFlso9nkxD2i/McYf7LHF/KqsJyGHXgDV00mHQXud46CafbKzw4uSabOvIk026JF8jPN
-         xhSg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=Vb3vufRuLCEn18DNJg4xgV19FWJECe3GMYL/UfkeS/U=;
+        b=zVhj8pLuQEURt6zAPdtvXD3IjRUfLpASOr0EmY7MUCNUAlCXj7exDI/B4O5z7M+yLW
+         ajIgT3GFgBEmN4ZYbQNaOnKutlkD0b/p89j+8W25kZgXiadIUwQSv7h58bTeX6uRnKVC
+         HKFpxLWqoFeZWFXmiYnYdDgMhndaV3UsuJg40lK00OaABl8y4uZxKjbKNtdXnB4tQTaK
+         Ewl9zcqQKZR+h7/Av2x3GSep2vppKuqriD6bUS3Zh8TG2WNv26pXh4dcZO5+UZhzbAjW
+         RW2x1HbYehXJ84rMcUlWRDIEEKOTJdJUN634Y9aW/XDW4W6bXECx6iQ+vw/T+bhMHAyn
+         4Pew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=EQX6jacz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 57-v6si7218626qtr.28.2018.10.25.10.51.27
+        by mx.google.com with ESMTPS id i2-v6si167136qtp.305.2018.10.26.00.02.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 10:51:27 -0700 (PDT)
+        Fri, 26 Oct 2018 00:02:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=EQX6jacz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56166 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58428 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFjn4-00026P-RB
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 13:51:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40359)
+	id 1gFw8X-0005ui-DB
+	for alex.bennee@linaro.org; Fri, 26 Oct 2018 03:02:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35623)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gFjKr-0006hv-6m
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 13:22:18 -0400
+	(envelope-from <thuth@redhat.com>) id 1gFw8E-0005qC-Bd
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 03:02:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gFjJ8-00085e-08
-	for qemu-arm@nongnu.org; Thu, 25 Oct 2018 13:20:31 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:34931)
+	(envelope-from <thuth@redhat.com>) id 1gFw8B-0004gs-3K
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 03:02:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46352)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gFjIy-0007xo-AY; Thu, 25 Oct 2018 13:20:24 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 42gv5P0y9mz9sDF; Fri, 26 Oct 2018 04:20:08 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1540488009;
-	bh=FYWXIU3D0p3z5GaJI6kXzFoGLQU9kdCJMVjvLbX29RY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EQX6jacz89E2/O94pnTeKNyQBPy7o//Oy6dC3l070ecIw+BVxQo0zeNPsfGF6Evhs
-	Cu/q/t2/M+uNYtYj+Qz4RHSmqz3D6AYZdQDE7Z8AiwFa8k61QGl7ROQuU2aYzGkFJY
-	PS/G5FF2p8zkXb2f7qm+LjvU74u2MiFCQmSNgVSU=
-Date: Thu, 25 Oct 2018 18:17:59 +0100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20181025171759.GG2697@umbus.hotspot.internet-for-guests.com>
-References: <20181025133301.16578-1-ehabkost@redhat.com>
-	<20181025133301.16578-6-ehabkost@redhat.com>
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gFw8A-0004gO-Oy; Fri, 26 Oct 2018 03:02:02 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3AC4F300C230;
+	Fri, 26 Oct 2018 07:02:01 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-151.ams2.redhat.com [10.36.116.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AE11436F9;
+	Fri, 26 Oct 2018 07:01:58 +0000 (UTC)
+To: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-devel@nongnu.org,
+	peter.maydell@linaro.org, peter.chubb@nicta.com.au,
+	andrew.smirnov@gmail.com, qemu-arm <qemu-arm@nongnu.org>
+References: <cover.1532984236.git.jcd@tribudubois.net>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <2cfde3e3-7c63-d96f-921b-5a49fdc91762@redhat.com>
+Date: Fri, 26 Oct 2018 08:01:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ahP6B03r4gLOj5uD"
-Content-Disposition: inline
-In-Reply-To: <20181025133301.16578-6-ehabkost@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PULL v2 05/43] hw/timer/sun4v-rtc: Convert from
- DPRINTF() macro to trace events
+In-Reply-To: <cover.1532984236.git.jcd@tribudubois.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Fri, 26 Oct 2018 07:02:01 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 0/3] i.MX: Add the i.MX6UL
+ SOC and a reference board.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,134 +139,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
-	Jason Wang <jasowang@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QbRiKO6Ks9Df
+X-TUID: GA9ASctonfmP
 
+On 2018-07-30 22:03, Jean-Christophe Dubois wrote:
+> This series adds the i.MX6UL SOC from NXP/Freescale and the reference
+> evaluation board.
+> 
+> This series was tested by booting linux 4.18 (built using imx_v6_v7_defconfig)
+> on the emulated board (with the appropriate device tree).
+> 
+> Jean-Christophe Dubois (3):
+>   i.MX6UL: Add i.MX6UL specific CCM device
+>   i.MX6UL: Add i.MX6UL SOC
+>   i.MX6UL: Add Freescale i.MX6 UltraLite 14x14 EVK Board
+> 
+>  default-configs/arm-softmmu.mak |   1 +
+>  hw/arm/Makefile.objs            |   1 +
+>  hw/arm/fsl-imx6ul.c             | 617 ++++++++++++++++++++++
+>  hw/arm/mcimx6ul-evk.c           |  85 +++
+>  hw/misc/Makefile.objs           |   1 +
+>  hw/misc/imx6ul_ccm.c            | 890 ++++++++++++++++++++++++++++++++
+>  hw/misc/trace-events            |   7 +
+>  include/hw/arm/fsl-imx6ul.h     | 339 ++++++++++++
+>  include/hw/misc/imx6ul_ccm.h    | 226 ++++++++
+>  9 files changed, 2167 insertions(+)
+>  create mode 100644 hw/arm/fsl-imx6ul.c
+>  create mode 100644 hw/arm/mcimx6ul-evk.c
+>  create mode 100644 hw/misc/imx6ul_ccm.c
+>  create mode 100644 include/hw/arm/fsl-imx6ul.h
+>  create mode 100644 include/hw/misc/imx6ul_ccm.h
 
---ahP6B03r4gLOj5uD
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Can we please also get an entry to the MAINTAINERS file for this new
+board / files?
 
-On Thu, Oct 25, 2018 at 10:32:23AM -0300, Eduardo Habkost wrote:
-> From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
-> Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
-> Message-Id: <20181002212522.23303-3-f4bug@amsat.org>
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
->  hw/timer/sun4v-rtc.c  | 13 +++----------
->  hw/timer/trace-events |  4 ++++
->  2 files changed, 7 insertions(+), 10 deletions(-)
->=20
-> diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
-> index 310523225f..13be94f8da 100644
-> --- a/hw/timer/sun4v-rtc.c
-> +++ b/hw/timer/sun4v-rtc.c
-> @@ -14,15 +14,8 @@
->  #include "hw/sysbus.h"
->  #include "qemu/timer.h"
->  #include "hw/timer/sun4v-rtc.h"
-> +#include "trace.h"
-> =20
-> -//#define DEBUG_SUN4V_RTC
-> -
-> -#ifdef DEBUG_SUN4V_RTC
-> -#define DPRINTF(fmt, ...)                                       \
-> -    do { printf("sun4v_rtc: " fmt , ## __VA_ARGS__); } while (0)
-> -#else
-> -#define DPRINTF(fmt, ...) do {} while (0)
-> -#endif
-> =20
->  #define TYPE_SUN4V_RTC "sun4v_rtc"
->  #define SUN4V_RTC(obj) OBJECT_CHECK(Sun4vRtc, (obj), TYPE_SUN4V_RTC)
-> @@ -41,14 +34,14 @@ static uint64_t sun4v_rtc_read(void *opaque, hwaddr a=
-ddr,
->          /* accessing the high 32 bits */
->          val >>=3D 32;
->      }
-> -    DPRINTF("read from " TARGET_FMT_plx " val %lx\n", addr, val);
-> +    trace_sun4v_rtc_read(addr, val);
->      return val;
->  }
-> =20
->  static void sun4v_rtc_write(void *opaque, hwaddr addr,
->                               uint64_t val, unsigned size)
->  {
-> -    DPRINTF("write 0x%x to " TARGET_FMT_plx "\n", (unsigned)val, addr);
-> +    trace_sun4v_rtc_read(addr, val);
-
-Uh.. as in v1, it looks like this should be trace_sun4v_rtc_write().
-
->  }
-> =20
->  static const MemoryRegionOps sun4v_rtc_ops =3D {
-> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> index ca9ad6321a..75bd3b1042 100644
-> --- a/hw/timer/trace-events
-> +++ b/hw/timer/trace-events
-> @@ -66,5 +66,9 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data=
-, unsigned size) "CMSDK A
->  cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size)=
- "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %=
-u"
->  cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
-> =20
-> +# hw/timer/sun4v-rtc.c
-> +sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " =
-value 0x%" PRIx64
-> +sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 =
-" value 0x%" PRIx64
-> +
->  # hw/timer/xlnx-zynqmp-rtc.c
->  xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min,=
- int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---ahP6B03r4gLOj5uD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvR+sUACgkQbDjKyiDZ
-s5IjihAAycOrLvJAAjv8H+wZEeCx0QpYlntXHq0oEbs5cur0D2LihCguyJx+PI8j
-3iSLVkG8uFEBuvIE6wVMlrDt+S4HReo58hYPgZkdvedHuOozb5JgSRB45e6SzO7x
-Q8SRbnZWazgHNq8Cm+5sFCbND2tF5vVVgbH3+6SrWjrgy6d/C4HYLfIgGRqH4JtD
-peiOzs9nEYvzHGLQcwqLR8TxbMrB+5Qu8YmV7UwSQSaFenILkWX4sx+W7LA8Zqdx
-2OG4rI57dDnc8lv/3UneShTicqyx0i/2Xwyu1rZHzkPCgiXEKfIcmkULRUH1tXM5
-8qWrtqk+IlLFMKLwUwQRuXTnk/aHx4pFJ3pxad+yzler6CGIK+CEutgs1EDOoYxg
-BPc86uF/jc+yDeFTmuqKTsoR14GEyR4HhsHsErQxQLvxQZi50Q5ERoei59seBmYH
-W8UXEaq6vAL36EXsegPS9xC4B7sVkMBHeRGtRuHnVO/2veAWRPnzBtBhmCT0+JC3
-YZU6voRcn7Kz8fmRrSqxw+4Cd+dFEjMfZOmyV0ZEDARF2t8gVMRCVqxmOIA+e2gM
-mybkLaiY1kNlqdXCoedcwOsNsuEvlskwYA5ywiMAXh/dXeKkeFgXpnQk8Xd0wh99
-VKT3SJzluQg8EZJOmXf83jjIbNiRqY+AH0Bot2zw6fmv7kJ0Smk=
-=8+nS
------END PGP SIGNATURE-----
-
---ahP6B03r4gLOj5uD--
+ Thanks,
+  Thomas

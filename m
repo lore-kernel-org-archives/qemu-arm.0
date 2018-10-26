@@ -1,41 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881184wro;
-        Fri, 26 Oct 2018 08:32:11 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dYFqrrFPQPnjwNWrLZhM7+i/t1vltrCVCE5n7Ba+c9C6Mk49CGYKJaWaZHlJBiPQAOVwRB
-X-Received: by 2002:a5d:45c6:: with SMTP id b6-v6mr6015405wrs.296.1540567931854;
-        Fri, 26 Oct 2018 08:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540567931; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp881285wro;
+        Fri, 26 Oct 2018 08:32:16 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dNSMPpp6nbZD09C8C931RzbYpXc21sRzizRnc34JRm6dLzfNIqm/QeGdDUPrbt9O406cV2
+X-Received: by 2002:a1c:3584:: with SMTP id c126-v6mr6081136wma.120.1540567936350;
+        Fri, 26 Oct 2018 08:32:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540567936; cv=none;
         d=google.com; s=arc-20160816;
-        b=xmAdXSBkah4jdTXHb+XNu/z3iuE8GC6Xftgp4zLeZgA2mZX4fUJitMUk6l8TGhnBPc
-         /TIP/5bSNNuIjo62LKwdCTR+dzLVCR5OREIkpM9HjbfIdgCicKwaj+30/8jPBQc88dQ6
-         Up5cSYlvLYpHH7XktBTFd0A0TsVGMYvSXoEFR/YGzEooHRInCKN1sr1Fx0KgUmU9Al7l
-         7MxHhugupOG/NviN6sEzBRajsCNeVvCjCEzVFsAmS8PM/RlOSNC0ueE/ek+eYRBZ0rtm
-         fAq2rOxoZq+DEw/w7+o2kLFtkiVf2TlfWAfO2ufGr2JFtOW62wPYx9KmtiGENOLxmGlL
-         GvDw==
+        b=bk77qpKCaeK82r7O2PVVpHBnluQrA5HbimuU8rSU+k7ZLKaHc4cQ70kIVL5kV9t7mt
+         POu6q5W0slW1I9Db2IVWldoWTc7tlFRU3s6y/x67mfGcWOr+PEA7UiI4cSOI/beLVgPE
+         AXeClhGYlOZKqgWhjwE8imLolnJ9KxZh3GHZDF2iu5xWFtpLxqTsEM5/FOL1gqImkhZK
+         4o/0IswMJfIjVfRNoLo5EV/jIBIS8PYQ9Ks6CuZyNWlFwHgEdgaJNsa5gFwOFQcNbA9C
+         GqQICt0HD1HOOPEmasWXNlM79IvAefZ6rC3W50CEJdYjc+2NaDTgi+EP8Sc//kuS6n5X
+         tmUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from;
-        bh=dGC2iS4BTQHfV89I4wd9yr9IBuMVfGd7t2Ic2sT3f+o=;
-        b=JueAmL8cpUJLRJ2qW/sg5WbmBa5GfNOUBO+qAL+KeYWqlE6c7bVqGmSOwTgkH5cXWX
-         O/SK0RJohla0xMBmCMGrdPA1pz5fx9Pw2y/EFjPIT8s0cRx0hMUTc5DX5mV9KcBNvnwV
-         za1UhBHkxL8VCR8iFKfj1nHOuyrimqUkzO1NDGwIRgU/XnzNTDPbRE1lxrb8m0VoFVk7
-         tqFCl1pRdwQXS5JpThJZ84QirZ4ohtobywV1JhIyRNRabG49dNcBMn41hk5drAkhaTil
-         nKc/aPi9emUDU/9nE8kkk3CfsY4U2ayZwNzGYH6JvwAlL0/Puu0wJfsO521vIvG2Fql5
-         wlzg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=/8lbiZUhaAEwbfK6zkzyHN/TffMZZ88qqoKQUb3VUkw=;
+        b=uf3ZYOxCKPwC670JGeHbdZEWwoi4SewQCAxbX+Drpj/2ZJJx2GE0UZmBz/BCuatfvu
+         C7lHg+KIp63VAVESgIhI1Ktb3u2EzgrAJZqXk7hI6JghB6Yt3tiTQXjK6Nsts4vNrecd
+         CoXHf31mV1XqWpNQ29R/a+7WF0FV+M4EKoJX/Fpia3V2YvGqVy97ne2Y+N7t82k5URi9
+         GKSyNblXyJr633biq3atnfr5Ksj2Y+QBRJQirRguNGQCPfiYhKsOqQSU1uZLOSH5Qyh2
+         /CwrRpjh0krk0tm3a9cBPWhBa8zA+ZbYWnYY20lwc9kpK9+PjfZfcfvn7pJSLrumEjWD
+         XpXQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
-        by mx.google.com with ESMTPS id x18-v6si2740933wrv.22.2018.10.26.08.32.11
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
+        by mx.google.com with ESMTPS id a9-v6si9605552wrd.453.2018.10.26.08.32.16
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Oct 2018 08:32:11 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
+        Fri, 26 Oct 2018 08:32:16 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N2SXX-1faiyG0v0B-013yG4; Fri, 26 Oct 2018 17:32:07 +0200
+ id 1N3Xvv-1fXPaK0qXL-010fOy; Fri, 26 Oct 2018 17:32:11 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N2SXX-1faiyG0v0B-013yG4; Fri, 26 Oct 2018 17:32:07 +0200
+ id 1N3Xvv-1fXPaK0qXL-010fOy; Fri, 26 Oct 2018 17:32:11 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -66,106 +67,90 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Stefan Weil <sw@weilnetz.de>
-Subject: [PULL 13/20] configure: Support pkg-config for zlib
-Date: Fri, 26 Oct 2018 17:31:18 +0200
-Message-Id: <20181026153125.24738-14-laurent@vivier.eu>
+	Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PULL 15/20] xen: Use the PCI_DEVICE macro
+Date: Fri, 26 Oct 2018 17:31:20 +0200
+Message-Id: <20181026153125.24738-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:nHwqIfD7U1p4B2yoxOg3RbD7c0Q74lJnwOwV3+memYJKXd3VPHe
- ukJt7WzZgTFF8QfTFWEH8S+Kf/pXvB56SNq79YrtKkct5Bc1bE62Zqold5ehue7Ngj6gXZh
- ic4RlJ9ug1N1xqIQLYFSHfDHmWQrNQNJII4YgJ9s/ruhmlhI0LVhrIjrNYsS161Z4ZQTuKq
- dKIkAR8/79m8hupRwCipQ==
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:ujcQMLVnNdlA+bT6z6rODRtkZg/zsDEqRdCnz0gVnaZ9/UQrReP
+ yYwtX/6ZZtTkN6YZvVq54IrtX1iqx1Xkwd5t2OJ98jNQ1a4UmWDICn6a7FyQKjgJF7W+Ctn
+ QhTDR0tSekyjaYRLrbiYdL3X6UDp5aoM44K76g4syHvKF2eQxJRCBHixUz5iJDvpc3V9THi
+ BBKc9sIV3voKPz5VYe5HA==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:u0w10T44iq4=:9aPSRBKTLB6nG1raNJUVAo
- IYRblKzQ+KTyDtQ5cT/QxcnxjdO49BCoiVJHMAEjzye5s+4S9kjyXuoCI8Tkkt21yBPP0OWdv
- Dr3qGNEEGXw9IUyGQm5/aMVxIsq5CG83Y5pyS+ovvttzW0MYl/ELBNfDUSxt44VEDbVSo4ned
- MsvIrXR3OOy+uNW+p3BzEOnaVRUCGJMzqShk8XdgN3G1ERVd6pjFmBwTP9/8C6CcGyrAodSof
- uqd6KajrBc9i1pyszFjLIC9pgSXPsLsrcw6jYMGnQ/Gzm2kXzrmLR8D/1Vyq7dKkJSCbaLH1T
- gBvSfUd0l+7fhqn+bOcRYtMVFL3Kwj7YMDHNMwbZL9h2hF9U3I3M/EK0MyZq5YV8cds8xYDzf
- GDGrKjUpEZglB82W3MmQLxOhh/t2gSfUW0PHmM1ngibCUXy9AdubtpOIU548idKOEOTjvxpVT
- /NDq2RzWYsW7/iUHPZFC7ocJR++HqEV8ITNdJoispY6ycRT/yH10zJZoefv9yTb9/t1lvEau6
- FyvbdlPtubEFjF/OexQiSoq+t24OgmoPIz7VxoNiNcLpyfRCHUUf3Vpq6GRpPk9B6q00P/k1V
- E4EcwT9Wy7fM3v/5XallPkxURFRxwoEPCJgAAdX2UGeRjsyml4M5iPua4zPeCAfOyYU9trVH3
- Ul9Ee0TcZx1paAZ66Su+q25L2H952IEeRu1bLXrcs5HoVDGyMnznCjR1P6FGpMk+MGrE=
-X-TUID: 3unxPTFpS33I
+X-UI-Out-Filterresults: notjunk:1;V01:K0:mDkSnPqe98M=:915bT4UpaXUVeT5R6liQYf
+ w/dv7Ug2RSxa3KsGn+7+8g4f1ywSgyhZLKn7vYN0GfwmGhQArERISpZTBitmSAY/82mJJmPsB
+ NvNdFf4tNjCK5ssXJsNtv4ZxU3h6e8CLvgCrGYxPKh7ON6DvOHEghV97LQUtR2E6sJxPGbrEZ
+ ZRlftgPq3oJ8N7oFLRto2bVzIkVNDQOsWcxilAaFgKkd69mz/O60aiqy5qkym+i4hnDr7uMY/
+ 9Bty4ZbNp8mf1y3rtQc1uP1s7RWAf8BuDXeXiuSduAVbuwXcyUw5eMnWDkeJcgB2HdrMFYsxI
+ vOPGdwsLZJqj+TLxiozh3y9lfi1YknPb7Nng/4fj0Z9nHsSJCGrJzacfFvYHyp/5YRuusD7Sk
+ QDnBpWVYTJMnyyAVrNS9S+l2kR3n51RrIXDY6HjJ9GwcySHizBRyu8W3Ztj5QreLn/pYPvpS2
+ JuOJj0emB9SmQ6hwpmHc7LUwYSCzX1fQK4stbEF0T0+/Aeyk/SL95f+fuoJhrN9vZVtTTCqjH
+ 7FHhGf525pC5VBpO0KCdiFwCDn5lEz3jfF5FGRgSVj2nqarRkJHS0cVsD1dUb9NCdAu4yCzSH
+ CTOXdBv7ZjNZnlzw1rTTha8FTBVxwBEsgRVwSFOGR97Ilorc3IWMoWTq/HkwO/V8CFb9ERV1K
+ RtoS1dDCoMkV+DEU4xVCJs5o1o9hNYzAlmnp1F9m1kIUuvD+OX+edWjILFNP//jnYmbq/OIji
+ qt4DZM7g+prHqIIV
+X-TUID: ALpHicPK2bMr
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-This is needed for builds with the mingw64-* packages from Cygwin,
-but also works for Linux.
+TYPE_XEN_PT_DEVICE is a subclass of TYPE_PCI_DEVICE, the clean way
+to access the PCIDevice pointer is using the PCI_DEVICE() macro.
 
-Move the zlib test also more to the end because users should
-get information on the really important missing packages
-(which also require zlib) first.
-
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20180712192603.11599-1-sw@weilnetz.de>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20180705155811.20366-4-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 40 +++++++++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 17 deletions(-)
+ hw/xen/xen_pt_config_init.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/configure b/configure
-index 1ee09bd112..a02df30dde 100755
---- a/configure
-+++ b/configure
-@@ -2151,23 +2151,6 @@ EOF
-   fi
- fi
+diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
+index aee31c62bb..47f9010c75 100644
+--- a/hw/xen/xen_pt_config_init.c
++++ b/hw/xen/xen_pt_config_init.c
+@@ -358,7 +358,7 @@ static uint64_t xen_pt_get_bar_size(PCIIORegion *r)
+ static XenPTBarFlag xen_pt_bar_reg_parse(XenPCIPassthroughState *s,
+                                          int index)
+ {
+-    PCIDevice *d = &s->dev;
++    PCIDevice *d = PCI_DEVICE(s);
+     XenPTRegion *region = NULL;
+     PCIIORegion *r;
  
--#########################################
--# zlib check
--
--if test "$zlib" != "no" ; then
--    cat > $TMPC << EOF
--#include <zlib.h>
--int main(void) { zlibVersion(); return 0; }
--EOF
--    if compile_prog "" "-lz" ; then
--        :
--    else
--        error_exit "zlib check failed" \
--            "Make sure to have the zlib libs and headers installed."
--    fi
--fi
--LIBS="$LIBS -lz"
--
- ##########################################
- # lzo check
- 
-@@ -3479,6 +3462,29 @@ if ! compile_prog "$glib_cflags -Werror" "$glib_libs" ; then
-     fi
- fi
- 
-+#########################################
-+# zlib check
-+
-+if test "$zlib" != "no" ; then
-+    if $pkg_config --exists zlib; then
-+        zlib_cflags=$($pkg_config --cflags zlib)
-+        zlib_libs=$($pkg_config --libs zlib)
-+        QEMU_CFLAGS="$zlib_cflags $QEMU_CFLAGS"
-+        LIBS="$zlib_libs $LIBS"
-+    else
-+        cat > $TMPC << EOF
-+#include <zlib.h>
-+int main(void) { zlibVersion(); return 0; }
-+EOF
-+        if compile_prog "" "-lz" ; then
-+            LIBS="$LIBS -lz"
-+        else
-+            error_exit "zlib check failed" \
-+                "Make sure to have the zlib libs and headers installed."
-+        fi
-+    fi
-+fi
-+
- ##########################################
- # SHA command probe for modules
- if test "$modules" = yes; then
+@@ -469,7 +469,7 @@ static int xen_pt_bar_reg_write(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
+ {
+     XenPTRegInfo *reg = cfg_entry->reg;
+     XenPTRegion *base = NULL;
+-    PCIDevice *d = &s->dev;
++    PCIDevice *d = PCI_DEVICE(s);
+     const PCIIORegion *r;
+     uint32_t writable_mask = 0;
+     uint32_t bar_emu_mask = 0;
+@@ -543,7 +543,7 @@ static int xen_pt_exp_rom_bar_reg_write(XenPCIPassthroughState *s,
+ {
+     XenPTRegInfo *reg = cfg_entry->reg;
+     XenPTRegion *base = NULL;
+-    PCIDevice *d = (PCIDevice *)&s->dev;
++    PCIDevice *d = PCI_DEVICE(s);
+     uint32_t writable_mask = 0;
+     uint32_t throughable_mask = get_throughable_mask(s, reg, valid_mask);
+     pcibus_t r_size = 0;
+@@ -1587,7 +1587,7 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
+                                  const XenPTRegGroupInfo *grp_reg,
+                                  uint32_t base_offset, uint8_t *size)
+ {
+-    PCIDevice *d = &s->dev;
++    PCIDevice *d = PCI_DEVICE(s);
+     uint8_t version = get_capability_version(s, base_offset);
+     uint8_t type = get_device_type(s, base_offset);
+     uint8_t pcie_size = 0;
 -- 
 2.17.2

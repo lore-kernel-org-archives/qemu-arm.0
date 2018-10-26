@@ -1,133 +1,87 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp367815wro;
-        Fri, 26 Oct 2018 00:02:25 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eyxGNcsVVnNEgGWIBXGVx/mtWwMrN5PkMG/dX8c6G+LWugUe+xr4NfSZy/nskpbMGMeE/O
-X-Received: by 2002:a37:8984:: with SMTP id l126-v6mr1909360qkd.195.1540537345836;
-        Fri, 26 Oct 2018 00:02:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540537345; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp438453wro;
+        Fri, 26 Oct 2018 01:28:02 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fAiYS+mFipmQ1NMqoT0hm77JZbmKfTeL4IAv9zpqPQ6GSDCKtLZP2dvdvE0AhKwQLALh1J
+X-Received: by 2002:a37:31cf:: with SMTP id x198-v6mr2162084qkx.206.1540542482649;
+        Fri, 26 Oct 2018 01:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540542482; cv=none;
         d=google.com; s=arc-20160816;
-        b=RBd9poFZ5lT4uerASgvU7iLsxc40I/2fdpuC93uuJzqdk+5VNKmgBqw2kn8I70FyTw
-         D1BKohey3250Ae4Fb46Lfm2XQVhpZ5Bpi7AkhK8k88MwVn4nHSIyP1VBAvWJuAgIuk3P
-         szhipmv7tg4uXpht05Z9aUFAOHBRMUf4x7vvcZWJMdYc6W/RhrWMUAQmeS3zmjjgUn3O
-         lBPDP3RP3itUXz6swy7C49fOeIGvOJXw/dir+3Iz/ciyN2YkY6oY92n9YgjwIz8PsKGH
-         Z+nJCOBwylUwLjsfHc5WLIdSBvc+F+3gtd9sYMQYAQcolIMyo8OV1yxc52tv7LtNbkx8
-         YaRw==
+        b=DsDkWYslHAnXYKSYgINn89qrUT4ok3mb4X5e8G/8okXZgsEOpuZ0l4KhXbsKNU7m7p
+         yOVQRf0aacNw2SGfN7SeZ+i3fBHn/Feko7MU9BwCRuUmHfYoeySu4LyUsU8lzLy0gyai
+         rNdBZZejJw2yvJU06xK0PdUndRbqOSdtcYCbDHOiyaGIkZu4Oaa4a03H+HpXYFCJYSJp
+         5KR3SuKlBaZMtaRMyl3ki0w1dveQwdq/E8JtwtDVcJsZH1UxZsO1I0x++ilUvEyDgWiG
+         T8whfm9LiQdg0xpAYgWY6WNn8WkaZasUTnkq+ATOhVtpTSoKzoCLIFfHp4J5XMQPQprb
+         kMaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=Vb3vufRuLCEn18DNJg4xgV19FWJECe3GMYL/UfkeS/U=;
-        b=zVhj8pLuQEURt6zAPdtvXD3IjRUfLpASOr0EmY7MUCNUAlCXj7exDI/B4O5z7M+yLW
-         ajIgT3GFgBEmN4ZYbQNaOnKutlkD0b/p89j+8W25kZgXiadIUwQSv7h58bTeX6uRnKVC
-         HKFpxLWqoFeZWFXmiYnYdDgMhndaV3UsuJg40lK00OaABl8y4uZxKjbKNtdXnB4tQTaK
-         Ewl9zcqQKZR+h7/Av2x3GSep2vppKuqriD6bUS3Zh8TG2WNv26pXh4dcZO5+UZhzbAjW
-         RW2x1HbYehXJ84rMcUlWRDIEEKOTJdJUN634Y9aW/XDW4W6bXECx6iQ+vw/T+bhMHAyn
-         4Pew==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=RJpg/GCxTn21w+Po2lDhGOZXoha2aUeHjUMl1lMLnWs=;
+        b=LzXPfyEFWG54LcNr5JnurXrNIlVUih6iVaDeJ5vZfmQrDYCFKULT1wHGoLr5PV7Or+
+         0YZol7OLJKtQKLHZl/dv+wzhttWwHwKNaX5YRXZ439ObQ8kseV/SmyEKFetKmB21Sr71
+         arFmj2AzVQwGelzPERNqh92kG+OmbydPmqlIJGpD4PWHve5cO9oHF+krROmURyQmGOPs
+         QRpQ5XQgPf/gruVuULjMXF/SpKbcHxP7kYYkAhKcSLysOSJXzTv8aFJNkbpG37ds8Vqt
+         GiO1vMv+kk3FEfLRTbiMSsrYnKZ9wBOKgBVaTdrFS4VrFUQkmDyijQndicujiIcLMJaE
+         RH/w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i2-v6si167136qtp.305.2018.10.26.00.02.25
+        by mx.google.com with ESMTPS id a8-v6si359548qtb.19.2018.10.26.01.28.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 26 Oct 2018 00:02:25 -0700 (PDT)
+        Fri, 26 Oct 2018 01:28:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58428 helo=lists.gnu.org)
+Received: from localhost ([::1]:58790 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFw8X-0005ui-DB
-	for alex.bennee@linaro.org; Fri, 26 Oct 2018 03:02:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35623)
+	id 1gFxTN-0000La-Vz
+	for alex.bennee@linaro.org; Fri, 26 Oct 2018 04:28:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59943)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gFw8E-0005qC-Bd
-	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 03:02:12 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFxTE-0000LS-Nt
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 04:27:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gFw8B-0004gs-3K
-	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 03:02:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46352)
+	(envelope-from <ehabkost@redhat.com>) id 1gFxTB-0001wi-7s
+	for qemu-arm@nongnu.org; Fri, 26 Oct 2018 04:27:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40556)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gFw8A-0004gO-Oy; Fri, 26 Oct 2018 03:02:02 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1gFxTA-0001wY-W5; Fri, 26 Oct 2018 04:27:49 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3AC4F300C230;
-	Fri, 26 Oct 2018 07:02:01 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-151.ams2.redhat.com [10.36.116.151])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AE11436F9;
-	Fri, 26 Oct 2018 07:01:58 +0000 (UTC)
-To: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-devel@nongnu.org,
-	peter.maydell@linaro.org, peter.chubb@nicta.com.au,
-	andrew.smirnov@gmail.com, qemu-arm <qemu-arm@nongnu.org>
-References: <cover.1532984236.git.jcd@tribudubois.net>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <2cfde3e3-7c63-d96f-921b-5a49fdc91762@redhat.com>
-Date: Fri, 26 Oct 2018 08:01:57 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	by mx1.redhat.com (Postfix) with ESMTPS id BC00130020BF;
+	Fri, 26 Oct 2018 08:27:47 +0000 (UTC)
+Received: from localhost (unknown [10.33.36.71])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D35EC100164A;
+	Fri, 26 Oct 2018 08:27:42 +0000 (UTC)
+Date: Fri, 26 Oct 2018 05:27:41 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Message-ID: <20181026082741.GK4096@habkost.net>
+References: <20181025133301.16578-1-ehabkost@redhat.com>
+	<20181025133301.16578-6-ehabkost@redhat.com>
+	<20181025171759.GG2697@umbus.hotspot.internet-for-guests.com>
 MIME-Version: 1.0
-In-Reply-To: <cover.1532984236.git.jcd@tribudubois.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20181025171759.GG2697@umbus.hotspot.internet-for-guests.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Fri, 26 Oct 2018 07:02:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Fri, 26 Oct 2018 08:27:48 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 0/3] i.MX: Add the i.MX6UL
- SOC and a reference board.
+Subject: Re: [Qemu-arm] [PULL v2 05/43] hw/timer/sun4v-rtc: Convert from
+ DPRINTF() macro to trace events
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,40 +93,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, libvir-list@redhat.com,
+	Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Alexander Graf <agraf@suse.de>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Eric Blake <eblake@redhat.com>, Rob Herring <robh@kernel.org>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GA9ASctonfmP
+X-TUID: fTXJwNwPILWK
 
-On 2018-07-30 22:03, Jean-Christophe Dubois wrote:
-> This series adds the i.MX6UL SOC from NXP/Freescale and the reference
-> evaluation board.
-> 
-> This series was tested by booting linux 4.18 (built using imx_v6_v7_defconfig)
-> on the emulated board (with the appropriate device tree).
-> 
-> Jean-Christophe Dubois (3):
->   i.MX6UL: Add i.MX6UL specific CCM device
->   i.MX6UL: Add i.MX6UL SOC
->   i.MX6UL: Add Freescale i.MX6 UltraLite 14x14 EVK Board
-> 
->  default-configs/arm-softmmu.mak |   1 +
->  hw/arm/Makefile.objs            |   1 +
->  hw/arm/fsl-imx6ul.c             | 617 ++++++++++++++++++++++
->  hw/arm/mcimx6ul-evk.c           |  85 +++
->  hw/misc/Makefile.objs           |   1 +
->  hw/misc/imx6ul_ccm.c            | 890 ++++++++++++++++++++++++++++++++
->  hw/misc/trace-events            |   7 +
->  include/hw/arm/fsl-imx6ul.h     | 339 ++++++++++++
->  include/hw/misc/imx6ul_ccm.h    | 226 ++++++++
->  9 files changed, 2167 insertions(+)
->  create mode 100644 hw/arm/fsl-imx6ul.c
->  create mode 100644 hw/arm/mcimx6ul-evk.c
->  create mode 100644 hw/misc/imx6ul_ccm.c
->  create mode 100644 include/hw/arm/fsl-imx6ul.h
->  create mode 100644 include/hw/misc/imx6ul_ccm.h
+On Thu, Oct 25, 2018 at 06:17:59PM +0100, David Gibson wrote:
+> On Thu, Oct 25, 2018 at 10:32:23AM -0300, Eduardo Habkost wrote:
+> > From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> >=20
+> > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> > Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+> > Reviewed-by: C=E9dric Le Goater <clg@kaod.org>
+> > Message-Id: <20181002212522.23303-3-f4bug@amsat.org>
+> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> > ---
+> >  hw/timer/sun4v-rtc.c  | 13 +++----------
+> >  hw/timer/trace-events |  4 ++++
+> >  2 files changed, 7 insertions(+), 10 deletions(-)
+> >=20
+> > diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
+> > index 310523225f..13be94f8da 100644
+> > --- a/hw/timer/sun4v-rtc.c
+> > +++ b/hw/timer/sun4v-rtc.c
+> > @@ -14,15 +14,8 @@
+> >  #include "hw/sysbus.h"
+> >  #include "qemu/timer.h"
+> >  #include "hw/timer/sun4v-rtc.h"
+> > +#include "trace.h"
+> > =20
+> > -//#define DEBUG_SUN4V_RTC
+> > -
+> > -#ifdef DEBUG_SUN4V_RTC
+> > -#define DPRINTF(fmt, ...)                                       \
+> > -    do { printf("sun4v_rtc: " fmt , ## __VA_ARGS__); } while (0)
+> > -#else
+> > -#define DPRINTF(fmt, ...) do {} while (0)
+> > -#endif
+> > =20
+> >  #define TYPE_SUN4V_RTC "sun4v_rtc"
+> >  #define SUN4V_RTC(obj) OBJECT_CHECK(Sun4vRtc, (obj), TYPE_SUN4V_RTC)
+> > @@ -41,14 +34,14 @@ static uint64_t sun4v_rtc_read(void *opaque, hwad=
+dr addr,
+> >          /* accessing the high 32 bits */
+> >          val >>=3D 32;
+> >      }
+> > -    DPRINTF("read from " TARGET_FMT_plx " val %lx\n", addr, val);
+> > +    trace_sun4v_rtc_read(addr, val);
+> >      return val;
+> >  }
+> > =20
+> >  static void sun4v_rtc_write(void *opaque, hwaddr addr,
+> >                               uint64_t val, unsigned size)
+> >  {
+> > -    DPRINTF("write 0x%x to " TARGET_FMT_plx "\n", (unsigned)val, add=
+r);
+> > +    trace_sun4v_rtc_read(addr, val);
+>=20
+> Uh.. as in v1, it looks like this should be trace_sun4v_rtc_write().
 
-Can we please also get an entry to the MAINTAINERS file for this new
-board / files?
+Oops, my bad.  I can fix this manually in case there's a v3 pull
+request, but I would really prefer that to be included in a
+follow up patch instead of making this block the entire pull
+request.
 
- Thanks,
-  Thomas
+--=20
+Eduardo

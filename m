@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp880674wro;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp880679wro;
         Fri, 26 Oct 2018 08:31:48 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dXb8YhTe2LQCbNsegUxvL8XnbPShqjEcoq+uyESyIhivhPkGwtETimBvMfDjYCYTT65QWZ
-X-Received: by 2002:adf:df8b:: with SMTP id z11-v6mr5870192wrl.118.1540567908687;
+X-Google-Smtp-Source: AJdET5ckX9gnUqQJ66r2kA7+OEdy8yEgdcLx6FK8sv1hOsGVK1D4jRC8LJ0G+TWClfUThkixybcI
+X-Received: by 2002:adf:9403:: with SMTP id 3-v6mr6141179wrq.54.1540567908845;
         Fri, 26 Oct 2018 08:31:48 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1540567908; cv=none;
         d=google.com; s=arc-20160816;
-        b=EF3t/ZTHtYR2mtNvhSTAHxHHWNUajvXq0Nw5Tfj3y/Wq6o7uycPX0ziSHNnmMA4XD8
-         IM+0X8VgOL2ahlZKwOqwwBYHTQDsawEqZBcMqP7eVsMv6TvBHkj5bqtXysncdsLsis0X
-         G6LRVvu/alU3qDB+GClpB11ndDPzw6gIyqaKqB75CJU+jUH8m6JcohjV30fSJPBZrhdr
-         RBPtJVMYHQAMdZJuzzUkl2UJg0FTgu+pYKvS7GdmttRDZ2ylN2FzRsNzaFyqyhWXGJaH
-         WgAdmFqmggyco9Z1R1djymTbYpyeJ5i59G5Y7kdaE2uWuLWh34eQiSxiWr5NAXVMjm/d
-         N+zw==
+        b=NlqdfNbJu/XnXnAlYeJ66qabuZc5BPOUMf/KwyXQa4ERlG3tm6sPPwJjJfbf4ZhlS+
+         wASBEQNj9NrJP0Q+PWyFvF0E20ur0KSdv12g47TNXQVknyY6+ihRPYT2seaWJnNGccJw
+         vk6Jvv2lJ+Hyf3lxd3GekX04ZN2JLWiap/woar5dc9I6uaZiD0sd2MDF0691Sp9SK0it
+         Rwl19zk7m2UGCKbR5/BdlCwiX0UzBAxOIE5a13panjGzE94f7sVjjXWUJRKA3iHAVRlv
+         0gW3Db8LSqhak7WWr0Bb+1EgAc1/5JLsGm35+MWCbjiKhtffac9DvPct/ao4+RUQ9FlA
+         A4Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=PBT5D6UIuigq19dQCvDE1WktRMGE5WMPcjvrRnLCvxQ=;
-        b=K1XQy9sfjCrtTxNwJ4FxUD1k75VUX/VaCTY4pIjz5LUNSJZC724oT+GViic3OjkMXX
-         0ijnt1tKVO0KNMcWFuH5Eta7aLNoFOsfrcdVOAw1Gwu0fj6ktuzCrGXpP2lEHK6Cibck
-         JWQliwmBmyJH1N0J64LU8281sTdBeU+mKf737PJNsvs0udigf/gapNvVjGnxvSuwmILg
-         AU4S0Lthk5AyaT09E8vSGydhA877zrVdArE0V5Tb2hzZan27LD/97YLSPa03pBWsVH6s
-         KmYZ/ps6bPCqxjD+uIMOWdfy2KXjcUBIOoxqIHZVa75yn9//PmmC6D1GR5dTjKgaEOL/
-         3LSg==
+        bh=x72wGazpZPqiR4VPR3HYovlBNDCcYn9E9Ay7uvF1WNg=;
+        b=FsU3rj2z6YpTCCXFvFFGmU61JHMFBhBSUtz6aljHK40xfcY1hFK4jG0jwlj1KP7/SF
+         SsqNC2V4Y5H1paslyqGNqHtT5sX3QFlrHqO7S9ZoSvQ4oHKMMr1fU3z5p+OnmW70XJa2
+         kcYmPaBjPwgAVVoaytSompcWR6M3n1J2nFjW1qSZfXH+cStuUQqVPA/R/F9z9pVJoqdC
+         Z+0uXaD3ViTdrkKxpuRor10E9jI/e0lE91YI2rkoX3oPkZ4MTCuG3U6Zjui1idToQdGt
+         hXCQ/We/CDUwf25XK6fGYfPGgYd1G8MNMneVIi6oTH1hky94MiT5eHPlO6E8D689U7uC
+         HxSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by mx.google.com with ESMTPS id r185-v6si3434071wmf.166.2018.10.26.08.31.48
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by mx.google.com with ESMTPS id w1-v6si10133613wrp.196.2018.10.26.08.31.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
         Fri, 26 Oct 2018 08:31:48 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.131;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MlsWZ-1fowSp3FMh-00izzc; Fri, 26 Oct 2018 17:31:45 +0200
+ id 1Mpkwn-1foOEz3MAH-00qAjm; Fri, 26 Oct 2018 17:31:41 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MlsWZ-1fowSp3FMh-00izzc; Fri, 26 Oct 2018 17:31:45 +0200
+ id 1Mpkwn-1foOEz3MAH-00qAjm; Fri, 26 Oct 2018 17:31:41 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
@@ -67,57 +67,61 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	yuchenlin <yuchenlin@synology.com>
-Subject: [PULL 02/20] vga_int: remove unused function protype
-Date: Fri, 26 Oct 2018 17:31:07 +0200
-Message-Id: <20181026153125.24738-3-laurent@vivier.eu>
+	Eduardo Habkost <ehabkost@redhat.com>
+Subject: [PULL 01/20] configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
+Date: Fri, 26 Oct 2018 17:31:06 +0200
+Message-Id: <20181026153125.24738-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zBjl53BXLDe83XDR0nGwZqpIXJTfSYzSSQLcc1Ra1jlaNe34CWR
- KOkhU7t9XI7rx/kTUZ6JQIGoHDEUYDO/crW3v6gOJOTdRkiq0sf3t1QVk+pyDhuX6hfVfR4
- kHS4Xb0mY/mbilVRTy3F0UJ9pYANfzYsgWyMJsqZm+jGoBpyOuSF87ktwatxSgMuRbckFWz
- HXJU8o0zIXuiqbQwn1XlQ==
+X-Provags-ID: V03:K1:He25IKfwYFFVyHEil/j6dKpPeRhUiROgBqc5BJx27k1B1AKKmXO
+ qa8n5M3ZE4MoK5dD72n7rLGWNdhQKeKRZLiQb20zepMpYZIyPxxa/tDYamLBUAHqHzeE9CF
+ 4uCMn0kDcpBEdHiNAh7bfjj9WrnhhbuPeQVYcTLldb4t988sA3gQv3vSBVpdNk+cPIfGu1l
+ uaiFLEWI12qDiH0aJW4rA==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:R69yLWdoEGY=:/6fuZA9vUDYa94U80yL7Re
- BTxE+68DjkiHBvTqKlI0jY1909EIV4woPaDZmHy5MuFOXIrBjJnzuWjcboP4ubrXU8okMPYzq
- UQTx+nRaKB3KKS8pqZZfYy0SU6pPBdfjK87EFi6iRWrFW94NBbhvvMLD2njSEulDDlrdT+RKw
- 513MvxTFnfEquqWka5ORcrEbkTN4DyrODfT0OoDO0QJdGVldNjcsiC3gtaulQ6q1DYUT3kBhU
- ZstMW6xCehFfo2/g0NXPs1KFT3FtZFenLgNai9kK1ZPynGt3unahHqTgA0zCpvBXnqUI8fTx1
- D+lM+TZo1/13GZfV3H3b0N5CRb70UoBP0NeIV07euKhFqLHVDeAJYHhFz01/v5XLHgw1G/ypm
- zFi0rQmGckhn6xpkMoTI8K6CfYY70EXft1Y7Y5UAySW23pAbQ6miILtz7W/Q+YuBJdngzhLib
- d/oWJMsnezo+SAL5/RiD3hXXm5tsUmY6nPgdjj9aKoPLOnPK2ocXOHt7C5RkT3BPhEB6bFirO
- sZeQGCNX2DkaGNIy0te5gub4ztYiLUfkWfQvP6nPv4iC7dAz1Q2n7/0zPUSK/WCq9QReRT7lz
- CbPBK0YyJ9DkZZ5ckykzaZcMsYJSGWPgKJlgyFQ/p2HSAe4pG5rrrTR0y//VkeO6wc8CEFIN+
- TbBnsetVUjD8+TVrD+RQxkBm4nh8thOK6yqJP+0d6JbcJzNNHVRnrOFWLZkLTZFS0naQWG2+5
- Z7Ywxyj4PChWLkZt
-X-TUID: enpuqp8uTXO6
+X-UI-Out-Filterresults: notjunk:1;V01:K0:6TtGxG1Ucd0=:lLo9Hj/tctiwpnmBpNrNBf
+ hyV45z8dHa9qmM3TGPdSvl+k3jr2G3LmZyn1W2g6oPRBE4XSpcdrG9E3WkE9EK/+NU9pYypq5
+ EG1tJYW0zhr7tWDypkjZVvxTM4AnQ8LSrBSCLMmVEundB430Pn/Z+1hpz7c3Jbk/ML36ztSnF
+ r2PQDbtJR9H8fv8whKhxUdngZRSswtekR7ly4CSAosseCZsNWblwX+msGI9fdiBkxw4yFihe9
+ TrYitG1AqLDCAxyU6U0uFoXRUuVHtM+OnvVw3Ik2WZ9nmNcG3g0kF8eLz27DfTLSgOMs0Lb10
+ TIsp27Wpt2WvLCDwHG0jrngTLHsDEupVkpCt0XdH9C31XlexChk2z19Zroi6F4IW3X6vCY3Fo
+ i5D4ka0H8luKFMjeFLq3osLzPt0a527TmjHipahqnOP4m87vr5JYN/yqzTMs7w/Z8Sf0CNqrD
+ c9zizvtI5YPlgL6EvpLuh1F7jwZurUunqwdPI7daHhCDhuBLOP99lBLNz7ZZ0H6cqCKqqxfX6
+ cIaAAdzF4vUaYZlHOuT667ktqwSWxbVgXC0GH263SGWxLZLChuATuTbjX+j+Va95ZfT+u/YcH
+ kQKgwANzVb9V23a++4YwkdxnsIa/nkatt00ZcTBC1F/gmxBmLKbY2wsZMUHNbagGfXDO4flHz
+ NgINbg49DOFmqEeyHssKEWbG7mX4BaFDU1kdvbw4Qr2+QyTUwGxCHBPFkjc1WHUI/i8hoWGjY
+ NN1m4AMuT7+XV11O
+X-TUID: gBoXkh8Q2AD7
 
-From: yuchenlin <yuchenlin@synology.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: yuchenlin <yuchenlin@synology.com>
+We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
+is just a dead config option which can be removed.
+
+Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181022080053.9379-1-yuchenlin@synology.com>
+Message-Id: <1540376314-5727-1-git-send-email-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/display/vga_int.h | 1 -
+ default-configs/alpha-softmmu.mak | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/display/vga_int.h b/hw/display/vga_int.h
-index 6e4fa48a79..55c418eab5 100644
---- a/hw/display/vga_int.h
-+++ b/hw/display/vga_int.h
-@@ -166,7 +166,6 @@ MemoryRegion *vga_init_io(VGACommonState *s, Object *obj,
-                           const MemoryRegionPortio **vbe_ports);
- void vga_common_reset(VGACommonState *s);
- 
--void vga_sync_dirty_bitmap(VGACommonState *s);
- void vga_dirty_log_start(VGACommonState *s);
- void vga_dirty_log_stop(VGACommonState *s);
- 
+diff --git a/default-configs/alpha-softmmu.mak b/default-configs/alpha-softmmu.mak
+index eb58b40254..4d654eaa0b 100644
+--- a/default-configs/alpha-softmmu.mak
++++ b/default-configs/alpha-softmmu.mak
+@@ -8,7 +8,6 @@ CONFIG_I82374=y
+ CONFIG_I8254=y
+ CONFIG_I8257=y
+ CONFIG_PARALLEL=y
+-CONFIG_PARALLEL_ISA=y
+ CONFIG_FDC=y
+ CONFIG_PCKBD=y
+ CONFIG_VGA_CIRRUS=y
 -- 
 2.17.2

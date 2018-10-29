@@ -1,99 +1,86 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4213088wro;
-        Mon, 29 Oct 2018 06:25:13 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5e3YtanQSKInDhg4CP/Ex2NoPQQpnLvMMzpPSXFalfHKGzqnQDc/FutSVA4ZZwNWxjZa2If
-X-Received: by 2002:a37:12a1:: with SMTP id 33mr11572355qks.189.1540819513486;
-        Mon, 29 Oct 2018 06:25:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540819513; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4227725wro;
+        Mon, 29 Oct 2018 06:37:47 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5d0Tl+V/GPI1OzZbT0/RenVjIwRp5S5OYSvFfW3sPkn0eCcaChKHbxLpAnL2DOB1JM2uu5d
+X-Received: by 2002:a37:291:: with SMTP id v17mr1454009qkg.208.1540820267231;
+        Mon, 29 Oct 2018 06:37:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540820267; cv=none;
         d=google.com; s=arc-20160816;
-        b=GfCGwi5H49yvmd6lhk2P9bgFs1/EbljKbFM7Ua+ghb3sNUMHuUKRU+j79nz1GuL4KK
-         KRdMKEG/bQybcBIaZWWLzm+Kb7712hyCGJR5UUhgykGZmvx45FKHUJUsgBX4yWwgvJSN
-         h9R2kXmQJfjKVop4ZZA18rG++Oig+XywKUwpiNC68mjNjgpxa1IX5cBP9Cl+0DHucamh
-         rQoRP8QGfD0+VVR/pjkqzhpWrMEz/olcFQcct83iiYLNrLjpCj+7EJXbPSmMVavg8SRu
-         CYjqTzVEHzllbuvOu94FMv3QZ3S/qtpmZH/F983zAkl7kwjD7tza5jSurYziOXxNOILb
-         Xg4A==
+        b=wM67a/zl4kthRU5ljQwmFTmAICL3UJJfWKtHkGXCqwSVfm2Cbe7y0CD+ne+vITKege
+         q9sbuAzzSNAqqFPz1pso1yI5iiVQoKP6/UFcLmpoBUSA4BwAW8b0KPpiBGpwFV8iPbmM
+         dMnjnkKA7Z/0SfYdbRk6i308PahBUkeJgPt8B/6Dy+InW6tvMJLlxAZFzuPFpfEmXo01
+         TNeL6qb8YqLqcJj9knuZZNlsLqSADJQyM0S2jgOja/qxHxiFNygD28RzjEDdJbLrclds
+         rf13jTYQB+inURwHl6cWNfcIFXV7ldyutSXviXH19sjlynzXFkLt+9c2D5uAyoGFwtaR
+         3ioA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=XI7846LV+74G9lGTdm+pUHKXEFq+9A5OBB4vMRQrSNU=;
-        b=xV19MolDYZ1QPzgYDcGiPuaN29WYhvD+3dqP1+6dOklFsClBLcMkEOvPlkqiwIk6Du
-         RNhJMoe4pp1EafYKJK1KIFiLY2xEGM08708BdBhWV/mbv0tv0NwRncDHa4PzcxV7epXV
-         6Q/O6uiG+w+NcG/XXNEtIRpIwRW+IkRS96Z2HJYnzsmiVmdANdyhozicUuEJqVbWrnxB
-         2faNPaU9r0YYCL9YvrNQRcXtdNKoH+yb0IcvVEFXZ53uQDfCsLuJsHYAbFkHQduy+av2
-         iPnVnJPBfvAmU9PlAXD+h3RfTzQTxpIKM+FXzbuyxUR1fkcM9znKZuzHkXrPg7EAJWhq
-         rrsQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=0/0m0UejLKDlRsZTp4CTbo5kPUbgGjJWo3is6ch011U=;
+        b=yBkaxRi3XKt1BiuatKSPVUAT8dBlJCu7CYc2Ch1wXDC897VZyijUfEAQP6HQoFSY8R
+         kCdBZ+/tQWN3NjhmHbyvcINjl/R+zm9P7NQSbMwkHNI0/AlcEn18y360+64Kx9ky24AQ
+         M5914PzoogPd2MKHdD9i6G+S3ROoLKr/RzyEBWPiCJaYmQ9FwXCKgmQRlVejQAilWRwa
+         fZX/Vmin98KUyi/f/JvLkzedXaLS50xdFWkxVcjxXhJybxe3PUSFe0iaCfZR49cYagmQ
+         xopwU1zGTE3cHTGQ5FlsQ4C3tYYW9yySJ8+EapJvP4njpieiq6e2XtpXAV+MQb0O9QMo
+         xlLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h4yeAUyX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k26-v6si170158qtk.49.2018.10.29.06.25.13
+        by mx.google.com with ESMTPS id p77-v6si4249742qka.203.2018.10.29.06.37.47
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Oct 2018 06:25:13 -0700 (PDT)
+        Mon, 29 Oct 2018 06:37:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h4yeAUyX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45574 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45628 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gH7Xd-0004Ig-1g
-	for alex.bennee@linaro.org; Mon, 29 Oct 2018 09:25:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57327)
+	id 1gH7jm-00012n-Kk
+	for alex.bennee@linaro.org; Mon, 29 Oct 2018 09:37:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60284)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gH7XS-0004C5-9A
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:25:03 -0400
+	(envelope-from <kraxel@redhat.com>) id 1gH7je-00012H-J6
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:37:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gH7XR-0003En-G9
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:25:02 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:42838)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gH7XR-0003DD-8X
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:25:01 -0400
-Received: by mail-ot1-x341.google.com with SMTP id j3so1675154otl.9
-	for <qemu-arm@nongnu.org>; Mon, 29 Oct 2018 06:25:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=XI7846LV+74G9lGTdm+pUHKXEFq+9A5OBB4vMRQrSNU=;
-	b=h4yeAUyXncqzba/Qt49VXT0pzCMTjl3h3qxKca1kg9PeSu0pp3/WahLS1lcQ7d03D1
-	k9JY9fKVnY8hb6COwikhdyywW2bznqfxs+fO7qcRPeq6BwSMYHsO9SGjh0qlZ2jSrUFb
-	6cUwvYxVQIMG7HYUjhj/7jakGONN0/2cSErwM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=XI7846LV+74G9lGTdm+pUHKXEFq+9A5OBB4vMRQrSNU=;
-	b=ceh6q1bZY3SM+7eq5smwHgfC0jIbxkdAtexiJzo8w6XU2NR5jjdthB2tZ4xO+Qnvn6
-	xcztYJJpEG8N3svpYEAlxU9sAFesNoWsfWmhrMJ0rH+9BHIzpK+lHGUu6vznSrlbk/Tq
-	Fv6eAdqyV+OkSxHraj+R8L/e9nfzChK9uktQwy6/8pJdbZdmy3fe0mG/QQmVB+1O4WlM
-	Cw378iw0KCJVg0kWqlM1l4FPG+/n9UGwt5CGi+mhE0ja5sEdV4IpcGwnH76amOlgTbql
-	xYrJmL/ZnN6o592ryftixyAoNhHZl/heNufdxRKtrrSvuy+HOHHinpPLKFL7b4F4cpJV
-	V2Sg==
-X-Gm-Message-State: AGRZ1gLaGNidCp3gVecLlia29XXXktXrj1GV5nMWVvsfxSdUxLyzLMeN
-	iX4IBJGRj9J0/8dg24aBcvvQrSdAskLCh7yxWUswOQ==
-X-Received: by 2002:a9d:217a:: with SMTP id l55mr4800384otd.316.1540819498088; 
-	Mon, 29 Oct 2018 06:24:58 -0700 (PDT)
+	(envelope-from <kraxel@redhat.com>) id 1gH7jW-0004Tg-LT
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:37:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51018)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1gH7jW-0004SH-3q; Mon, 29 Oct 2018 09:37:30 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B0A5531129E1;
+	Mon, 29 Oct 2018 13:37:27 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-158.ams2.redhat.com
+	[10.36.116.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A113F5DD7E;
+	Mon, 29 Oct 2018 13:37:23 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id C34A216444D; Mon, 29 Oct 2018 14:37:22 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 29 Oct 2018 14:37:22 +0100
+Message-Id: <20181029133722.12415-5-kraxel@redhat.com>
+In-Reply-To: <20181029133722.12415-1-kraxel@redhat.com>
+References: <20181029133722.12415-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Mon, 29 Oct 2018 06:24:37
-	-0700 (PDT)
-In-Reply-To: <7fc49925-36ff-bd9a-0cd7-e5f8d4bb3672@roeck-us.net>
-References: <1540548409-22560-1-git-send-email-thuth@redhat.com>
-	<CAFEAcA8EubWya8ey9VxhaCw4m2U=KA+i2C-R9P-p+P6oEBBLew@mail.gmail.com>
-	<7fc49925-36ff-bd9a-0cd7-e5f8d4bb3672@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Oct 2018 13:24:37 +0000
-Message-ID: <CAFEAcA-UF+SyXvcU+NGZsbqBF2qg+s_x4HPU7yvf7B2G-=HPOg@mail.gmail.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH 0/2] Deprecate the "collie" machine and
- Strongarm devices
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.45]);
+	Mon, 29 Oct 2018 13:37:27 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 4/4] audio: use TYPE_MV88W8618_AUDIO instead of
+ hardcoded string
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,27 +92,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Mao Zhongyi <maozhongyi@cmss.chinamobile.com>,
+	qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x2xJ0dvybCDt
+X-TUID: cc9mTOMGfKRe
 
-On 27 October 2018 at 12:04, Guenter Roeck <linux@roeck-us.net> wrote:
-> On 10/26/18 3:12 AM, Peter Maydell wrote:
->> Hi Guenter; there's a proposal here to deprecate (and eventually
->> remove) the 'collie' board (strongarm) from QEMU. Is that one of
->> the ones you're currently using in your automated testing of Linux
->> kernels on QEMU?
->>
->
-> Yes. I can run the test with older versions of qemu, so it is ok for me
-> if it is removed (as long as that removal is not backported).
+From: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
 
-Mmm, but if we have an active user who's testing them then they
-probably shouldn't be in the frontline of boards to remove.
-Which other boards do you test with mainline QEMU?
+Cc: Jan Kiszka <jan.kiszka@web.de>
+Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 
-thanks
--- PMM
+Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Message-id: 20181022074050.19638-4-maozhongyi@cmss.chinamobile.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/hw/audio/wm8750.h  | 1 +
+ hw/arm/musicpal.c          | 2 +-
+ hw/audio/marvell_88w8618.c | 1 -
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/hw/audio/wm8750.h b/include/hw/audio/wm8750.h
+index 84e7a119bb..e12cb886d1 100644
+--- a/include/hw/audio/wm8750.h
++++ b/include/hw/audio/wm8750.h
+@@ -17,6 +17,7 @@
+ #include "hw/hw.h"
+=20
+ #define TYPE_WM8750 "wm8750"
++#define TYPE_MV88W8618_AUDIO "mv88w8618_audio"
+=20
+ typedef void data_req_cb(void *opaque, int free_out, int free_in);
+=20
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index ac266f9253..9648b3af44 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1693,7 +1693,7 @@ static void musicpal_init(MachineState *machine)
+     }
+=20
+     wm8750_dev =3D i2c_create_slave(i2c, TYPE_WM8750, MP_WM_ADDR);
+-    dev =3D qdev_create(NULL, "mv88w8618_audio");
++    dev =3D qdev_create(NULL, TYPE_MV88W8618_AUDIO);
+     s =3D SYS_BUS_DEVICE(dev);
+     object_property_set_link(OBJECT(dev), OBJECT(wm8750_dev),
+                              TYPE_WM8750, NULL);
+diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
+index 1c7080e844..6600ab4851 100644
+--- a/hw/audio/marvell_88w8618.c
++++ b/hw/audio/marvell_88w8618.c
+@@ -39,7 +39,6 @@
+ #define MP_AUDIO_CLOCK_24MHZ    (1 << 9)
+ #define MP_AUDIO_MONO           (1 << 14)
+=20
+-#define TYPE_MV88W8618_AUDIO "mv88w8618_audio"
+ #define MV88W8618_AUDIO(obj) \
+     OBJECT_CHECK(mv88w8618_audio_state, (obj), TYPE_MV88W8618_AUDIO)
+=20
+--=20
+2.9.3
+

@@ -1,90 +1,131 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 2-v6sm22701493wro.96.2018.10.29.09.00.47
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Oct 2018 09:00:47 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTPS id 960193E0070;
-	Mon, 29 Oct 2018 16:00:46 +0000 (GMT)
-References: <20181025144644.15464-1-cota@braap.org> <20181025151103.GA19931@flamenco> <878t2j21ko.fsf@linaro.org> <20181029154728.GA17805@flamenco>
-User-agent: mu4e 1.1.0; emacs 26.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Emilio G. Cota" <cota@braap.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Chris
- Wulff <crwulff@gmail.com>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>, James Hogan <jhogan@kernel.org>,
- Anthony Green <green@moxielogic.com>, Palmer Dabbelt <palmer@sifive.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Max Filippov
- <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>, Guan Xuetao
- <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>, Alexander Graf
- <agraf@suse.de>, Christian Borntraeger <borntraeger@de.ibm.com>, Pavel
- Dovgalyuk <dovgaluk@ispras.ru>, Andrzej Zaborowski <balrogg@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost
- <ehabkost@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Alistair Francis <alistair23@gmail.com>, Stafford
- Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Cornelia Huck
- <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>, Michael Walle
- <michael@walle.cc>, qemu-ppc@nongnu.org, Aleksandar Markovic
- <amarkovic@wavecomp.com>, Paolo Bonzini <pbonzini@redhat.com>, Aurelien
- Jarno <aurelien@aurel32.net>
-Subject: Re: [Qemu-arm] [RFC v4 00/71] per-CPU locks
-In-reply-to: <20181029154728.GA17805@flamenco>
-Date: Mon, 29 Oct 2018 16:00:46 +0000
-Message-ID: <871s88agk1.fsf@linaro.org>
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4106488wro;
+        Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
+X-Received: by 2002:a9d:4355:: with SMTP id y21mr6651944oti.290.1540814067770;
+        Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540814067; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iNVJMTm7W43zIuCb8G6+9hbExv9JY20rPhBsPmC/jx3bacBwE0j5c4fDRnlsNHY8V7
+         HfoN3bNo2TZH9fdvVEMEnEhfmJDpD/tE7B7dqd8sX+ujdPOsdRkCyQM2zDSJN/V3sHdA
+         X+4MGOfCZ1KA8fz2jRFPmRSkS0ZitVFJK1iP0ngd2M+nQhmhRAVA2xJoG8bc4l0ux3gm
+         xwdj5YidmSoEJafEGwQ5JWbi8bv/uUFO2YHp1vWwl6F8TkPc1RFTn5Emzz6Kr4fZJJNU
+         nPbtAaYGAC0onNjSdQ5LcTI7KkZrLjX+ZbavsPubESDkEBQBw+97nNwIc3gQpoHu9khr
+         Z0WQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:references:in-reply-to
+         :mime-version:dkim-signature;
+        bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
+        b=T7yjXQwkv67epERJCWrvCzB/1NRwPRXfXVYg0se/I173i2vdlMtBgVfKxE+t45PmQV
+         l0O+QkFJu0wFbs+skLVPvZCxDlEGQMJ2UNThuxXFr1tx953RObFBKh9fQ5SrfHxlLAvQ
+         BwRfczhoWc35EQ4QRfjfbV7vac5XYQwAJGotewsyCdTVPnmE6ykVjePoFqbUUg3EgkG0
+         oduo10U6FVHW3I8ljAZKt970xhEikvOtUn5EcnBmUW0dtlT4dTtzaMyatQYuPMxWB7rA
+         yMy/UcxXJEXl5UXsEc+X+tZRGNqR/WLG51XK3ouSYqA8m+inpveO8R1MgkEWXe74yV4W
+         UdfA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hyl9Xec+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id l62-v6sor8717275oif.94.2018.10.29.04.54.27
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hyl9Xec+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc;
+        bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
+        b=hyl9Xec+0issRvxxfMji7qUYEIlErPCw6h5RlkydBiX9OH1ngBVMJOEMNv1HsoEv9k
+         ot46Jh8ABhfz6NfoGk2PLoqEJZBl2e6zMeMiccRKw+IRrym8/FuevOzJWu7srgquFrW+
+         lznUXZfRwqDBb2kHnBicBWfmgwxdpeOpa8xgo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc;
+        bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
+        b=ccVqm1QU6a32jSod1/u8MQjTNVVD5X/3bcUgBNxQVMzB6uA8Jv8eAhEgDmrLSkVu6s
+         e/fDh53Ip2dA6ZlUYdsJr6XAzDttSWq6YACX3YS9gRgYHd35+EwFd3fKCHx501NfmFcb
+         NqScr54TC2I3/ilEYSM7phpfMCwgMHro1/conm1NDuTQuRU8IPIQIRReYRu4mh5lUjLX
+         8RaJiem/sMuDTJ/DYaCDrU5IPrHLCgLnhogFt24gelxeUIkyDeYa3RCgsOKyKtM2QTns
+         6qkOI+gCj6D1NNwbVz41KIOzhrDKqi+pLIRU4ZLJJAP3I+1tCWokBCt7g7xg5+9Mce1C
+         21Ww==
+X-Gm-Message-State: AGRZ1gJa90vvlC0Ar+oAfqE39Tmkw440E7Ur+hmZDISjXU7edg8P9oY1
+	lLkOpakp78rwW/pG82IJFiT39Gh6BxKYMxwZdK3NDn5W
+X-Google-Smtp-Source: AJdET5ehURSSvcsUSsBmx/awNHewJrPOLYG4gJ/DtIIivq41+pIrhA/ThnUuBG7J2h7ZVmEu2iJiz84nIiymJnQ+nFA=
+X-Received: by 2002:aca:c509:: with SMTP id v9-v6mr7717600oif.48.1540814067282;
+ Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 3/Cg2FnswS4l
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Mon, 29 Oct 2018 04:54:06
+ -0700 (PDT)
+In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
+References: <20181026153125.24738-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Oct 2018 11:54:06 +0000
+Message-ID: <CAFEAcA-8sN2MGK6OcK5uMbMuw33MMOAgsdr9y4Uj2qmpbTkeig@mail.gmail.com>
+Subject: Re: [PULL 00/20] Trivial patches patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+	Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	Michael Walle <michael@walle.cc>, Laurent Vivier <lvivier@redhat.com>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
+	"open list:X86" <xen-devel@lists.xenproject.org>, 
+	Aleksandar Markovic <amarkovic@wavecomp.com>, Markus Armbruster <armbru@redhat.com>, 
+	Max Reitz <mreitz@redhat.com>, Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Anthony Perard <anthony.perard@citrix.com>, Aurelien Jarno <aurelien@aurel32.net>, 
+	Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
+	Stefano Stabellini <sstabellini@kernel.org>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: NsDMFeKwQSob
 
-
-Emilio G. Cota <cota@braap.org> writes:
-
-> On Sat, Oct 27, 2018 at 10:14:47 +0100, Alex Benn=C3=A9e wrote:
->>
->> Emilio G. Cota <cota@braap.org> writes:
->>
->> > [I forgot to add the cover letter to git send-email; here it is]
->> >
->> > v3: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg04179.html
->> >
->> > "Why is this an RFC?" See v3 link above. Also, see comment at
->> > the bottom of this message regarding the last patch of this series.
->>
->> I'm also seeing his hang on check-tcg, specifically qemu-aarch64 ./tests=
-/linux-test
+On 26 October 2018 at 16:31, Laurent Vivier <laurent@vivier.eu> wrote:
+> The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
 >
-> Thanks for reporting. The last patch in the series is the one
-> that causes the hang. I didn't test that patch much, since I
-> did not intend to get it merged.
-
-See patch 3, I think it's just because the per-cpu locks aren't
-available in linux-user, breaking the exclusive mechanism.
-
-> Over the weekend I had a bit of time to think about an actual fix, i.e.
-> how to reduce safe work calls for TLB invalidations. The idea is to check
-> whether the remote invalidation is necessary at all; we can take the remo=
-te
-> tlb's lock, and check whether the address we want to invalidate has been
-> read by the remote CPU since its latest flush. On some quick tests
-> booting an aarch64 system I measured that only up to ~2% of remote
-> invalidations are actually necessary.
+>   Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
 >
-> I just did a search on google scholar and found a similar approach
-> to reduce remote TLB shootdowns on ARM, this time for hardware.
-> This paper
->   "TLB Shootdown Mitigation for Low-Power Many-Core Servers with
->   L1 Virtual Caches"
->   https://dl.acm.org/citation.cfm?id=3D3202975
-> addresses the issue by employing bloom filters in hardware to
-> determine whether an address has been accessed by a TLB before
-> performing an invalidation (and the corresponding icache flush).
+> are available in the Git repository at:
 >
-> In software, using a per-TLB hash table might be enough. I'll try
-> to have something ready for v5.
+>   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
+>
+> for you to fetch changes up to 4b03da6e87c34793137a231b558231fd406c05e8:
+>
+>   ppc: move at24c to its own CONFIG_ symbol (2018-10-26 17:17:32 +0200)
+>
+> ----------------------------------------------------------------
+> QEMU trivial patches collected between June and October 2018
+> (Thank you to Thomas Huth)
+>
+> ----------------------------------------------------------------
 
-OK.
+Hi; I get a compile error due to a format string issue:
 
---
-Alex Benn=C3=A9e
+In file included from
+/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c:33:0:
+/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c: In
+function 'minimac2_write':
+/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c:420:23:
+error: format '%lx' expects
+ argument of type 'long unsigned int', but argument 4 has type
+'uint64_t {aka long long unsign
+ed int}' [-Werror=format=]
+                       "milkymist_minimac2_wr%d: 0x%" HWADDR_PRIx " = 0x%lx\n",
+                       ^
+/home/petmay01/qemu-for-merges/include/qemu/log.h:85:22: note: in
+definition of macro 'qemu_lo
+g_mask'
+             qemu_log(FMT, ## __VA_ARGS__);              \
+                      ^
+cc1: all warnings being treated as errors
+
+(affects windows crossbuilds, OSX and 32-bit hosts).
+
+thanks
+-- PMM

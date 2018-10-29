@@ -1,85 +1,86 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4228173wro;
-        Mon, 29 Oct 2018 06:38:11 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5ejT4fHx5+zh8xD+QOwQvpFVHWBc7e1TJ4W/lcKoZStC6iHu0jaXyUMDkYf0LVQySKHPuHu
-X-Received: by 2002:aed:32e2:: with SMTP id z89-v6mr7985501qtd.106.1540820291546;
-        Mon, 29 Oct 2018 06:38:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540820291; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4228188wro;
+        Mon, 29 Oct 2018 06:38:12 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dWff5LPNeoYhWZrBY3wBVVmjpdw1de0i2F7c+PxpbbVzFQutY4iXPC3KIEcUmIvt0/bcyk
+X-Received: by 2002:a37:bb42:: with SMTP id l63-v6mr12348418qkf.214.1540820292063;
+        Mon, 29 Oct 2018 06:38:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540820292; cv=none;
         d=google.com; s=arc-20160816;
-        b=YYOZHirY17ojJbE9SXctp0kLnhdx4yMI3faQdw12qmy9d6u567+ls4PhwRfCx2JH2c
-         clCtcvfWVyuY/1C9XX9QPR/5yErQ6T/vMnN/0qVOf+FZZ5kW6qxsYipchJUUX8JR2eRv
-         dq2YEXaKI+IiyOvHouR3hcEzvhv2jCuGo55vOXwoEyRJwr+y8Tz+m/U+ntCqVLQEi87f
-         /R5BzzPSua/BdnH7YueruuDIBLMD1f+tBu3GidvLRHN1EjZjraKWOw+2Bp9orzyWA9x3
-         M3jorFAKw8ToCzEUyVA9wSXCKEtx3CU5CNmjmrdVcDkUnv6EnI8rtmY9gV718Ke9GjiG
-         gtGw==
+        b=yMg45FvAm6L1685Z5ZODCxwpdZLeqWLnKSBcUKw3l2C/XN4bEZJtRc7QD/TNb7PazA
+         4cy+KS5eXObER7pg3+qmSTIcPOSK1l4IvIg8hfL3I5tcGao9U4APg70f7KYwRI2J5zXX
+         bs4dqQ/Gnlt847IGrowUGhdTRn46ytX/QWfHCsnYyZMLrqVGQY4pvVRaEM9qH2xJnyzF
+         9capL1cATJAOapOoIaJqvKV1ctjsHi9/2CAHdGuhJugOv07XC+exgz9Mt3v3oAy+ZRCz
+         YotN2TX1UtfYsIwd3J9AdqhPbnGZw4noNlyEcHe/ZHK53+zxnJ3UVYzXAAbYsKjJqFJb
+         tegg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=2X08bFvayi+PpGvNve1zgC+UCK1M9MY0+MJ2AJ+gftg=;
-        b=qz5UvYM9v9gIvRes2wYgFxhxiN59dqPv2+R096HfD6ceGqA5pl4/M2gvLdeOFlbMxw
-         FcMggsrcYarnxaa7b00aKCJDAB3AyN6+r9A8UpN4jef++NTcu3ympXDFBym31qAw3W/U
-         xvT/MdVF+lALL+W9Pcs3uISF58daaCmloIVxeHaqeHhcyvtcJNWrHHUgKx9+oAmpUJT1
-         6u5bfplMigx3mp32H8kJuXEKGNvj3hzyAYfn965XWUJvU7dAe8ywZ3cwU1dwDH5f6sjQ
-         GPqw6FpW0+TW3cRN9+kiNCFird8DancLTxtgikFPx6c7HeuFR7U05yISXA+jkOhD1hgB
-         61kw==
+        bh=NXJ368lnva4dYRbrb0QY/Uc6x821MpwSsVe6EeEYAA8=;
+        b=rWQjnma5YT+2XluTeowvUZOWFbhFIvbHHw8uIPctWE42f1cSadywO5N2k9Q4/rLOsS
+         c5wUK3hsPngxA3/xj9YXQzv+A/sn/j0nO3C74HgcJs/wuvN6j1UX1DkSZkJwku7Fq7cA
+         15WVIfYs5mN0GfRajb8IF6IVLbeZfQ+V5B1fLfJSgvAzFl4qku2u27xg6RtGcuIhj5Xt
+         PYEXXpGlRxwzqqoE0oe1YI/cHd5UhgvvaTzvsoSf298CrveHAMXkcAbIg/mPINUuXpKu
+         v7P6/fbTMNCArqSfSEedy3Hu7kPDbtm8xXRjEidgrZywt5HADNr4dgpP+OmI38WKtB6m
+         f3Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l65-v6si6678464qkc.26.2018.10.29.06.38.11
+        by mx.google.com with ESMTPS id m17si10330452qvh.10.2018.10.29.06.38.11
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Oct 2018 06:38:11 -0700 (PDT)
+        Mon, 29 Oct 2018 06:38:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45633 helo=lists.gnu.org)
+Received: from localhost ([::1]:45634 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gH7kB-0001Ov-2n
+	id 1gH7kB-0001P2-Jg
 	for alex.bennee@linaro.org; Mon, 29 Oct 2018 09:38:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60399)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1gH7jq-0001Ae-36
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:37:55 -0400
+	(envelope-from <kraxel@redhat.com>) id 1gH7jl-00016a-UU
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:37:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1gH7jk-0004ck-9s
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:37:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55404)
+	(envelope-from <kraxel@redhat.com>) id 1gH7jk-0004cZ-5d
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 09:37:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:62633)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1gH7jk-0004Vd-1Y; Mon, 29 Oct 2018 09:37:44 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	id 1gH7ji-0004WA-5O; Mon, 29 Oct 2018 09:37:44 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 59ED6AD899;
-	Mon, 29 Oct 2018 13:37:34 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 33D4630A480F;
+	Mon, 29 Oct 2018 13:37:36 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-116-158.ams2.redhat.com
 	[10.36.116.158])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6FB4C608FA;
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A12B05B687;
 	Mon, 29 Oct 2018 13:37:23 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id A4007B3E01; Mon, 29 Oct 2018 14:37:22 +0100 (CET)
+	id B6D0916444B; Mon, 29 Oct 2018 14:37:22 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 29 Oct 2018 14:37:19 +0100
-Message-Id: <20181029133722.12415-2-kraxel@redhat.com>
+Date: Mon, 29 Oct 2018 14:37:21 +0100
+Message-Id: <20181029133722.12415-4-kraxel@redhat.com>
 In-Reply-To: <20181029133722.12415-1-kraxel@redhat.com>
 References: <20181029133722.12415-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 29 Oct 2018 13:37:34 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.46]);
+	Mon, 29 Oct 2018 13:37:36 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PULL 1/4] hw: AC97: make it more QOMconventional
+Subject: [Qemu-arm] [PULL 3/4] audio: use object link instead of qdev
+ property to pass wm8750 reference
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,75 +93,91 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Jan Kiszka <jan.kiszka@web.de>,
-	Gerd Hoffmann <kraxel@redhat.com>, Li Qiang <liq3ea@163.com>
+	Jan Kiszka <jan.kiszka@web.de>, Gerd Hoffmann <kraxel@redhat.com>,
+	Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KBdt4nBiGITy
+X-TUID: Do87w1tqBNqU
 
-From: Li Qiang <liq3ea@163.com>
+From: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
 
-Signed-off-by: Li Qiang <liq3ea@163.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Message-id: 20181013060809.52496-1-liq3ea@163.com
+According to qdev-properties.h, properties of pointer type should
+be avoided, it seems a link type property is a good substitution.
+
+Cc: Jan Kiszka <jan.kiszka@web.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+
+Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Message-id: 20181022074050.19638-3-maozhongyi@cmss.chinamobile.com
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/audio/ac97.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ hw/arm/musicpal.c          |  3 ++-
+ hw/audio/marvell_88w8618.c | 13 ++++++-------
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index 337402e9c6..d799533aa9 100644
---- a/hw/audio/ac97.c
-+++ b/hw/audio/ac97.c
-@@ -123,6 +123,10 @@ enum {
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 3dafb41b0b..ac266f9253 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1695,7 +1695,8 @@ static void musicpal_init(MachineState *machine)
+     wm8750_dev =3D i2c_create_slave(i2c, TYPE_WM8750, MP_WM_ADDR);
+     dev =3D qdev_create(NULL, "mv88w8618_audio");
+     s =3D SYS_BUS_DEVICE(dev);
+-    qdev_prop_set_ptr(dev, TYPE_WM8750, wm8750_dev);
++    object_property_set_link(OBJECT(dev), OBJECT(wm8750_dev),
++                             TYPE_WM8750, NULL);
+     qdev_init_nofail(dev);
+     sysbus_mmio_map(s, 0, MP_AUDIO_BASE);
+     sysbus_connect_irq(s, 0, pic[MP_AUDIO_IRQ]);
+diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
+index cf6ce6979b..1c7080e844 100644
+--- a/hw/audio/marvell_88w8618.c
++++ b/hw/audio/marvell_88w8618.c
+@@ -15,6 +15,7 @@
+ #include "hw/i2c/i2c.h"
+ #include "hw/audio/wm8750.h"
+ #include "audio/audio.h"
++#include "qapi/error.h"
 =20
- #define MUTE_SHIFT 15
+ #define MP_AUDIO_SIZE           0x00001000
 =20
-+#define TYPE_AC97 "AC97"
-+#define AC97(obj) \
-+    OBJECT_CHECK(AC97LinkState, (obj), TYPE_AC97)
+@@ -252,6 +253,11 @@ static void mv88w8618_audio_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &mv88w8618_audio_ops, s,
+                           "audio", MP_AUDIO_SIZE);
+     sysbus_init_mmio(dev, &s->iomem);
 +
- #define REC_MASK 7
- enum {
-     REC_MIC =3D 0,
-@@ -1340,7 +1344,7 @@ static void ac97_on_reset (DeviceState *dev)
-=20
- static void ac97_realize(PCIDevice *dev, Error **errp)
- {
--    AC97LinkState *s =3D DO_UPCAST (AC97LinkState, dev, dev);
-+    AC97LinkState *s =3D AC97(dev);
-     uint8_t *c =3D s->dev.config;
-=20
-     /* TODO: no need to override */
-@@ -1389,7 +1393,7 @@ static void ac97_realize(PCIDevice *dev, Error **er=
-rp)
-=20
- static void ac97_exit(PCIDevice *dev)
- {
--    AC97LinkState *s =3D DO_UPCAST(AC97LinkState, dev, dev);
-+    AC97LinkState *s =3D AC97(dev);
-=20
-     AUD_close_in(&s->card, s->voice_pi);
-     AUD_close_out(&s->card, s->voice_po);
-@@ -1399,7 +1403,7 @@ static void ac97_exit(PCIDevice *dev)
-=20
- static int ac97_init (PCIBus *bus)
- {
--    pci_create_simple (bus, -1, "AC97");
-+    pci_create_simple(bus, -1, TYPE_AC97);
-     return 0;
++    object_property_add_link(OBJECT(dev), "wm8750", TYPE_WM8750,
++                             (Object **) &s->wm,
++                             qdev_prop_allow_set_link_before_realize,
++                             0, &error_abort);
  }
 =20
-@@ -1427,7 +1431,7 @@ static void ac97_class_init (ObjectClass *klass, vo=
-id *data)
+ static void mv88w8618_audio_realize(DeviceState *dev, Error **errp)
+@@ -279,11 +285,6 @@ static const VMStateDescription mv88w8618_audio_vmsd=
+ =3D {
+     }
+ };
+=20
+-static Property mv88w8618_audio_properties[] =3D {
+-    DEFINE_PROP_PTR(TYPE_WM8750, mv88w8618_audio_state, wm),
+-    {/* end of list */},
+-};
+-
+ static void mv88w8618_audio_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -291,8 +292,6 @@ static void mv88w8618_audio_class_init(ObjectClass *k=
+lass, void *data)
+     dc->realize =3D mv88w8618_audio_realize;
+     dc->reset =3D mv88w8618_audio_reset;
+     dc->vmsd =3D &mv88w8618_audio_vmsd;
+-    dc->props =3D mv88w8618_audio_properties;
+-    /* Reason: pointer property "wm8750" */
+     dc->user_creatable =3D false;
  }
 =20
- static const TypeInfo ac97_info =3D {
--    .name          =3D "AC97",
-+    .name          =3D TYPE_AC97,
-     .parent        =3D TYPE_PCI_DEVICE,
-     .instance_size =3D sizeof (AC97LinkState),
-     .class_init    =3D ac97_class_init,
 --=20
 2.9.3
 

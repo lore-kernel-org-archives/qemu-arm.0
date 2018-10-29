@@ -1,99 +1,99 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4607378wro;
-        Mon, 29 Oct 2018 12:09:44 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fjHXwvx9St/6an9oxeongqqFFhku3fCEfVUvNq6YsFGRc3lhh5YgB8I9EBdDULVv1FR609
-X-Received: by 2002:ac8:5343:: with SMTP id d3-v6mr4662691qto.259.1540840184094;
-        Mon, 29 Oct 2018 12:09:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540840184; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4639317wro;
+        Mon, 29 Oct 2018 12:40:22 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5ed/8j8lrciGXEYc/VUcd0vVa3lFcQ0xVig5o5RUGa5H6p3hNhR+SPuNEzR4Oq2sUao8Lb4
+X-Received: by 2002:ac8:22ed:: with SMTP id g42-v6mr14577924qta.105.1540842022721;
+        Mon, 29 Oct 2018 12:40:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540842022; cv=none;
         d=google.com; s=arc-20160816;
-        b=DFdfSz+7hfl2Bpt8Wgh+v/7asxCRKFyjgTqTLY0OXwzWjWH9qbT3w2uX1UfpXBnVap
-         sE82Z450GxKelp6QnQzEWQoyRhS5uuTMb0uw2/BDpurenoGpKhsLaT1SpifZG2JyaAtq
-         UAsxRFs6m7Ds7bKMgKe+nJApzU2MZitYIp94c0knRYM88JNMGv60/ck3e9aqlPmLBW3k
-         c7zOU5D9i/rOtO6tjhnvvvGU8opjBTZmxp0vJJl2COkgjBqY9XaUruJtjrlVQKpNeczh
-         oW7Pk2hIBIFmIpJnto1Pc8TyjcDxSMZ5HSm5QrbqSZ6FtAa4xY1Y8fzUuYo2ooAoxiRd
-         G9ag==
+        b=Ua4jeXmJqhZDE2nOJ226jtCsMmoRnDXRDnu/e6GO07OHTnT8vjZlBhqv652K6IE7us
+         KJqj5KI00WfwkkI5nZ8ZXltb8zXoGx++lKiOEumIIv2ZmclrduWExzxPtDropCQYLRS5
+         kalhvp/Na/l4xvj+pO6KXEBFhqnAS1t/vW0qj0kfHkpcH5930OGU8I6McCHd6WJ5dbTz
+         woMRlzAVbCnT9cmblGvmrLRalgkqCZ93tT04xvbP3kR0D/D5wNFOAGHOwQd4xROUf3dO
+         sOjSSzJIFkdr/BEvv3zO4ecMPPGeqxZ6SNKKnszLIHhAq7luVDfruszJbc8BHtg3WmEl
+         va3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=0aKNzEOlmWfrh+wLqnunfbcEZvc04NL92ZwIK6yGEUk=;
-        b=dXT3O8zYmoQZXX9nNwgE1yN/W3UUQ7wD+T1axJMzrmGU2MDBt5GNj4YrnrPZgXn6eK
-         L9ECsug1XD6+2uIRjaDcuzEw9icUnUyUPVHUus83NPpqfhq/WBYts+Y3LELMuJkyGtIS
-         lljcre0AeMoGB/VaLLG70IAQdOQMZyjd31d+AIEGQaxy8FDsJSxmLYFgurUU4vI7jSc/
-         Xhi5F9aIeINLQfGov5+1OBCljIem43qjvRyJd6cQ8EQP15tIZ1xZlYKseMlKbLtiplJH
-         zy+NZZgj33CXQwaxrVeLb5gA2mqWrBnIh6UhHjqDlEMWV3D2ZXPG1zjwCAGoZ8VaYaPi
-         K3Yw==
+        bh=8Bj3/HpZa0sqg7/P5W/hfy4GS6o+bkusS6edIZETvlE=;
+        b=KCW96WTQJEBechAWHIbZqo27dBjAzwDkGIg2DrPmw0dpO4gBh7FNDc1BoMQmothzU8
+         ag0Za1OrYpkaSdE8SotFs4OY7OXarWYU62geykZgyIbgbxQj8luO3SZnn9wExY3/Xj9z
+         TGyYScMaV4oHcZQ6C53Advr3jT0VQElctatm7fMlZBoPRutHH1oZw3mBCsz82Rdd1ega
+         V3xGuX0OFBRgJKRFYXvZ+qrslaaA+PnlmKSEj42VgNbDRRdDH/Dgf8ps4hh0nOiiggTy
+         Z8q7vSqoma061ELsNUMKWN1Fk9PDtTDhvR6LnLPa5aM4F+L237/+IHcIY5UmPcFKx7cL
+         7HSg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r29-v6si1967434qtc.338.2018.10.29.12.09.43
+        by mx.google.com with ESMTPS id u27si1054733qtb.176.2018.10.29.12.40.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Oct 2018 12:09:44 -0700 (PDT)
+        Mon, 29 Oct 2018 12:40:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48356 helo=lists.gnu.org)
+Received: from localhost ([::1]:48505 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHCv1-0004jk-GO
-	for alex.bennee@linaro.org; Mon, 29 Oct 2018 15:09:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35987)
+	id 1gHDOg-0006Go-8n
+	for alex.bennee@linaro.org; Mon, 29 Oct 2018 15:40:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44317)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHCur-0004i6-0l
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 15:09:36 -0400
+	(envelope-from <philmd@redhat.com>) id 1gHDOU-0006Fo-Bl
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 15:40:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHCul-00049y-9P
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 15:09:32 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:37130)
+	(envelope-from <philmd@redhat.com>) id 1gHDOQ-0003qv-9D
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 15:40:10 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:55482)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHCue-000477-3U
-	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 15:09:21 -0400
-Received: by mail-wr1-f65.google.com with SMTP id g9-v6so9933370wrq.4
-	for <qemu-arm@nongnu.org>; Mon, 29 Oct 2018 12:09:19 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHDOP-0003nV-Uk
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 15:40:06 -0400
+Received: by mail-wm1-f68.google.com with SMTP id s10-v6so9467697wmc.5
+	for <qemu-arm@nongnu.org>; Mon, 29 Oct 2018 12:40:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=0aKNzEOlmWfrh+wLqnunfbcEZvc04NL92ZwIK6yGEUk=;
-	b=bALWVkiqGTcRv517ev6Qj3Hp92r9cDUlrHqmtWaIVNbGU96Rlab+m473a+ggO6y7PT
-	eXmtlbbINiTQ6y/1SPHWpVSjNraohu+FWSD7GojAgogl2JKcaU7xn/EapMtKrz9daUNI
-	gfQFNyG4/k5O0wChelhyWq+wrydmXvOvZ4ib1Cn8Q/aIfbyrEA+60eIj6l2x3QscounA
-	jZLE8phbGUS7JC1k/r5t66Q3TyxImr+iQTRHM9IvcC3mCStr/4xjmbty1lVOF2x40pbJ
-	Qm21ZUROrODPDVfdvIRhe90SPMXRnvuOJMeuZ+mCePHVdBGKaxBI3+4n3R7UWnu73zwP
-	mgZA==
-X-Gm-Message-State: AGRZ1gI0+Ku11wl/4d+5jegtJiviDslxWbdY/J6YgTRf3l4a8bnJiacu
-	V2So+9YAa+UjZwjkSC/Wji+e4g==
-X-Received: by 2002:adf:ab50:: with SMTP id
-	r16-v6mr15021465wrc.62.1540840158756; 
-	Mon, 29 Oct 2018 12:09:18 -0700 (PDT)
+	bh=8Bj3/HpZa0sqg7/P5W/hfy4GS6o+bkusS6edIZETvlE=;
+	b=GC6LHaJNNWA9osHQ8XOTdqEPwsrNibFffmblEHSvl0mhkbY7rvvJb7x5PpmBR2GWRB
+	tKLqnAmfZ/J+zMEhfB2PwFpCV01Q2RJ1ARa7SD648Q3ToGnKFgcdtpbEhEaNulnPVSUw
+	emwtYpY1G5GftJDeUWZ0igJxiuPOz3wrqYiiNhEo5y00BltsT1yUUR4IC5qxZRDt6FFp
+	cfu/qLGoWMw7UXf3gWfcTKZO5ZVh8A59fsyTgwAtKeojz1sdOGSKQSSe1HoENzv9cJ95
+	+xTSJ84C3mJg3urKyDCfLujFfd8FZcMKnxVDNkOX9r0AdjKnEFG/aNIGxgICqVJiTArj
+	dVIA==
+X-Gm-Message-State: AGRZ1gLQKKCSfHkTPi5zKQyWGRMX1Sn9dCU95k8fIDMxnZjYmKUAfiOe
+	/A8SCLCoe6+G5EYCiSKKDXq9Ow==
+X-Received: by 2002:a1c:80c4:: with SMTP id
+	b187-v6mr3609820wmd.97.1540842002896; 
+	Mon, 29 Oct 2018 12:40:02 -0700 (PDT)
 Received: from [192.168.1.130] ([139.47.13.138])
 	by smtp.gmail.com with ESMTPSA id
-	y19-v6sm8382562wma.7.2018.10.29.12.09.16
+	n2-v6sm1748719wrm.36.2018.10.29.12.40.00
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 29 Oct 2018 12:09:17 -0700 (PDT)
+	Mon, 29 Oct 2018 12:40:02 -0700 (PDT)
 To: Samuel Ortiz <sameo@linux.intel.com>, qemu-devel@nongnu.org
 References: <20181029170159.3801-1-sameo@linux.intel.com>
-	<20181029170159.3801-7-sameo@linux.intel.com>
+	<20181029170159.3801-14-sameo@linux.intel.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <fc9cf79c-055c-5ace-12d1-832e13d7ac31@redhat.com>
-Date: Mon, 29 Oct 2018 20:09:15 +0100
+Message-ID: <e7cc3caf-3ee6-c9a8-0c2d-482f06a02019@redhat.com>
+Date: Mon, 29 Oct 2018 20:40:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.2.1
 MIME-Version: 1.0
-In-Reply-To: <20181029170159.3801-7-sameo@linux.intel.com>
+In-Reply-To: <20181029170159.3801-14-sameo@linux.intel.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 06/19] hw: acpi: Generalize
- AML build routines
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 13/19] hw: acpi: Export the
+ SRAT AML build API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,1195 +113,359 @@ Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ty/PFch8Mevt
+X-TUID: BQRWkyPZkRTZ
 
 On 29/10/18 18:01, Samuel Ortiz wrote:
 > From: Yang Zhong <yang.zhong@intel.com>
 > 
-> Most of the AML build routines under acpi-build are not even
-> architecture specific. They can be moved to the more generic hw/acpi
-> folder where they could be shared across machine types and
-> architectures.
+> The SRAT ACPI table is not x86 specific and will be needed for the
+> Hardware-reduced ACPI implementation. So we should export it through the
+> architecture independent hw/acpi folder.
+> 
+> Also, now that the generic build_srat() API is exported, we have to
+> rename the ARM static one in order to avoid build time conflicts.
 > 
 > Signed-off-by: Yang Zhong <yang.zhong@intel.com>
 > ---
->   hw/acpi/aml-build.c         | 498 ++++++++++++++++++++++++++++++++++
+>   hw/acpi/aml-build.c         | 130 ++++++++++++++++++++++++++++++++++++
 >   hw/arm/virt-acpi-build.c    |   4 +-
->   hw/i386/acpi-build.c        | 516 +-----------------------------------
->   include/hw/acpi/aml-build.h |  25 ++
->   4 files changed, 528 insertions(+), 515 deletions(-)
+>   hw/i386/acpi-build.c        | 129 -----------------------------------
+>   include/hw/acpi/aml-build.h |   3 +
+>   4 files changed, 135 insertions(+), 131 deletions(-)
 > 
 > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 77eb17b113..43aec8dacd 100644
+> index 2110e18799..c3f652a68f 100644
 > --- a/hw/acpi/aml-build.c
 > +++ b/hw/acpi/aml-build.c
-> @@ -25,6 +25,10 @@
+> @@ -22,6 +22,7 @@
+>   #include "qemu/osdep.h"
+>   #include <glib/gprintf.h>
+>   #include "hw/acpi/aml-build.h"
+> +#include "hw/mem/memory-device.h"
 >   #include "qemu/bswap.h"
 >   #include "qemu/bitops.h"
 >   #include "sysemu/numa.h"
-> +#include "hw/pci/pci.h"
-> +#include "hw/pci/pci_bus.h"
-> +#include "qemu/range.h"
-> +#include "hw/pci/pci_bridge.h"
->   
->   static GArray *build_alloc_array(void)
->   {
-> @@ -1597,6 +1601,500 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
->       g_array_free(tables->vmgenid, mfre);
+> @@ -2459,6 +2460,135 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+>       numamem->range_length = cpu_to_le64(len);
 >   }
 >   
-> +static void crs_range_insert(GPtrArray *ranges, uint64_t base, uint64_t limit)
-> +{
-> +    CrsRangeEntry *entry;
-> +
-> +    entry = g_malloc(sizeof(*entry));
-> +    entry->base = base;
-> +    entry->limit = limit;
-> +
-> +    g_ptr_array_add(ranges, entry);
-> +}
-> +
-> +static void crs_range_free(gpointer data)
-> +{
-> +    CrsRangeEntry *entry = (CrsRangeEntry *)data;
-> +    g_free(entry);
-> +}
-> +
-> +void crs_range_set_init(CrsRangeSet *range_set)
-> +{
-> +    range_set->io_ranges = g_ptr_array_new_with_free_func(crs_range_free);
-> +    range_set->mem_ranges = g_ptr_array_new_with_free_func(crs_range_free);
-> +    range_set->mem_64bit_ranges =
-> +            g_ptr_array_new_with_free_func(crs_range_free);
-> +}
-> +
-> +void crs_range_set_free(CrsRangeSet *range_set)
-> +{
-> +    g_ptr_array_free(range_set->io_ranges, true);
-> +    g_ptr_array_free(range_set->mem_ranges, true);
-> +    g_ptr_array_free(range_set->mem_64bit_ranges, true);
-> +}
-> +
-> +static gint crs_range_compare(gconstpointer a, gconstpointer b)
-> +{
-> +     CrsRangeEntry *entry_a = *(CrsRangeEntry **)a;
-> +     CrsRangeEntry *entry_b = *(CrsRangeEntry **)b;
-> +
-> +     return (int64_t)entry_a->base - (int64_t)entry_b->base;
-> +}
-> +
-> +/*
-> + * crs_replace_with_free_ranges - given the 'used' ranges within [start - end]
-> + * interval, computes the 'free' ranges from the same interval.
-> + * Example: If the input array is { [a1 - a2],[b1 - b2] }, the function
-> + * will return { [base - a1], [a2 - b1], [b2 - limit] }.
-> + */
-> +void crs_replace_with_free_ranges(GPtrArray *ranges,
-> +                                         uint64_t start, uint64_t end)
-> +{
-> +    GPtrArray *free_ranges = g_ptr_array_new();
-> +    uint64_t free_base = start;
-> +    int i;
-> +
-> +    g_ptr_array_sort(ranges, crs_range_compare);
-> +    for (i = 0; i < ranges->len; i++) {
-> +        CrsRangeEntry *used = g_ptr_array_index(ranges, i);
-> +
-> +        if (free_base < used->base) {
-> +            crs_range_insert(free_ranges, free_base, used->base - 1);
-> +        }
-> +
-> +        free_base = used->limit + 1;
-> +    }
-> +
-> +    if (free_base < end) {
-> +        crs_range_insert(free_ranges, free_base, end);
-> +    }
-> +
-> +    g_ptr_array_set_size(ranges, 0);
-> +    for (i = 0; i < free_ranges->len; i++) {
-> +        g_ptr_array_add(ranges, g_ptr_array_index(free_ranges, i));
-> +    }
-> +
-> +    g_ptr_array_free(free_ranges, true);
-> +}
-> +
-> +/*
-> + * crs_range_merge - merges adjacent ranges in the given array.
-> + * Array elements are deleted and replaced with the merged ranges.
-> + */
-> +static void crs_range_merge(GPtrArray *range)
-> +{
-> +    GPtrArray *tmp =  g_ptr_array_new_with_free_func(crs_range_free);
-> +    CrsRangeEntry *entry;
-> +    uint64_t range_base, range_limit;
-> +    int i;
-> +
-> +    if (!range->len) {
-> +        return;
-> +    }
-> +
-> +    g_ptr_array_sort(range, crs_range_compare);
-> +
-> +    entry = g_ptr_array_index(range, 0);
-> +    range_base = entry->base;
-> +    range_limit = entry->limit;
-> +    for (i = 1; i < range->len; i++) {
-> +        entry = g_ptr_array_index(range, i);
-> +        if (entry->base - 1 == range_limit) {
-> +            range_limit = entry->limit;
-> +        } else {
-> +            crs_range_insert(tmp, range_base, range_limit);
-> +            range_base = entry->base;
-> +            range_limit = entry->limit;
-> +        }
-> +    }
-> +    crs_range_insert(tmp, range_base, range_limit);
-> +
-> +    g_ptr_array_set_size(range, 0);
-> +    for (i = 0; i < tmp->len; i++) {
-> +        entry = g_ptr_array_index(tmp, i);
-> +        crs_range_insert(range, entry->base, entry->limit);
-> +    }
-> +    g_ptr_array_free(tmp, true);
-> +}
-> +
-> +Aml *build_crs(PCIHostState *host, CrsRangeSet *range_set)
-> +{
-> +    Aml *crs = aml_resource_template();
-> +    CrsRangeSet temp_range_set;
-> +    CrsRangeEntry *entry;
-> +    uint8_t max_bus = pci_bus_num(host->bus);
-> +    uint8_t type;
-> +    int devfn;
-> +    int i;
-> +
-> +    crs_range_set_init(&temp_range_set);
-> +    for (devfn = 0; devfn < ARRAY_SIZE(host->bus->devices); devfn++) {
-> +        uint64_t range_base, range_limit;
-> +        PCIDevice *dev = host->bus->devices[devfn];
-> +
-> +        if (!dev) {
-> +            continue;
-> +        }
-> +
-> +        for (i = 0; i < PCI_NUM_REGIONS; i++) {
-> +            PCIIORegion *r = &dev->io_regions[i];
-> +
-> +            range_base = r->addr;
-> +            range_limit = r->addr + r->size - 1;
-> +
-> +            /*
-> +             * Work-around for old bioses
-> +             * that do not support multiple root buses
-> +             */
-> +            if (!range_base || range_base > range_limit) {
-> +                continue;
-> +            }
-> +
-> +            if (r->type & PCI_BASE_ADDRESS_SPACE_IO) {
-> +                crs_range_insert(temp_range_set.io_ranges,
-> +                                 range_base, range_limit);
-> +            } else { /* "memory" */
-> +                crs_range_insert(temp_range_set.mem_ranges,
-> +                                 range_base, range_limit);
-> +            }
-> +        }
-> +
-> +        type = dev->config[PCI_HEADER_TYPE] & ~PCI_HEADER_TYPE_MULTI_FUNCTION;
-> +        if (type == PCI_HEADER_TYPE_BRIDGE) {
-> +            uint8_t subordinate = dev->config[PCI_SUBORDINATE_BUS];
-> +            if (subordinate > max_bus) {
-> +                max_bus = subordinate;
-> +            }
-> +
-> +            range_base = pci_bridge_get_base(dev, PCI_BASE_ADDRESS_SPACE_IO);
-> +            range_limit = pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_SPACE_IO);
-> +
-> +            /*
-> +             * Work-around for old bioses
-> +             * that do not support multiple root buses
-> +             */
-> +            if (range_base && range_base <= range_limit) {
-> +                crs_range_insert(temp_range_set.io_ranges,
-> +                                 range_base, range_limit);
-> +            }
-> +
-> +            range_base =
-> +                pci_bridge_get_base(dev, PCI_BASE_ADDRESS_SPACE_MEMORY);
-> +            range_limit =
-> +                pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_SPACE_MEMORY);
-> +
-> +            /*
-> +             * Work-around for old bioses
-> +             * that do not support multiple root buses
-> +             */
-> +            if (range_base && range_base <= range_limit) {
-> +                uint64_t length = range_limit - range_base + 1;
-> +                if (range_limit <= UINT32_MAX && length <= UINT32_MAX)  {
-> +                    crs_range_insert(temp_range_set.mem_ranges,
-> +                                     range_base, range_limit);
-> +                } else {
-> +                    crs_range_insert(temp_range_set.mem_64bit_ranges,
-> +                                     range_base, range_limit);
-> +                }
-> +            }
-> +
-> +            range_base =
-> +                pci_bridge_get_base(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-> +            range_limit =
-> +                pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-> +
-> +            /*
-> +             * Work-around for old bioses
-> +             * that do not support multiple root buses
-> +             */
-> +            if (range_base && range_base <= range_limit) {
-> +                uint64_t length = range_limit - range_base + 1;
-> +                if (range_limit <= UINT32_MAX && length <= UINT32_MAX) {
-> +                    crs_range_insert(temp_range_set.mem_ranges,
-> +                                     range_base, range_limit);
-> +                } else {
-> +                    crs_range_insert(temp_range_set.mem_64bit_ranges,
-> +                                     range_base, range_limit);
-> +                }
-> +            }
-> +        }
-> +    }
-> +
-> +    crs_range_merge(temp_range_set.io_ranges);
-> +    for (i = 0; i < temp_range_set.io_ranges->len; i++) {
-> +        entry = g_ptr_array_index(temp_range_set.io_ranges, i);
-> +        aml_append(crs,
-> +                   aml_word_io(AML_MIN_FIXED, AML_MAX_FIXED,
-> +                               AML_POS_DECODE, AML_ENTIRE_RANGE,
-> +                               0, entry->base, entry->limit, 0,
-> +                               entry->limit - entry->base + 1));
-> +        crs_range_insert(range_set->io_ranges, entry->base, entry->limit);
-> +    }
-> +
-> +    crs_range_merge(temp_range_set.mem_ranges);
-> +    for (i = 0; i < temp_range_set.mem_ranges->len; i++) {
-> +        entry = g_ptr_array_index(temp_range_set.mem_ranges, i);
-> +        aml_append(crs,
-> +                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED,
-> +                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
-> +                                    AML_READ_WRITE,
-> +                                    0, entry->base, entry->limit, 0,
-> +                                    entry->limit - entry->base + 1));
-> +        crs_range_insert(range_set->mem_ranges, entry->base, entry->limit);
-> +    }
-> +
-> +    crs_range_merge(temp_range_set.mem_64bit_ranges);
-> +    for (i = 0; i < temp_range_set.mem_64bit_ranges->len; i++) {
-> +        entry = g_ptr_array_index(temp_range_set.mem_64bit_ranges, i);
-> +        aml_append(crs,
-> +                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
-> +                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
-> +                                    AML_READ_WRITE,
-> +                                    0, entry->base, entry->limit, 0,
-> +                                    entry->limit - entry->base + 1));
-> +        crs_range_insert(range_set->mem_64bit_ranges,
-> +                         entry->base, entry->limit);
-> +    }
-> +
-> +    crs_range_set_free(&temp_range_set);
-> +
-> +    aml_append(crs,
-> +        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
-> +                            0,
-> +                            pci_bus_num(host->bus),
-> +                            max_bus,
-> +                            0,
-> +                            max_bus - pci_bus_num(host->bus) + 1));
-> +
-> +    return crs;
-> +}
-> +
-> +Aml *build_osc_method(void)
-> +{
-> +    Aml *if_ctx;
-> +    Aml *if_ctx2;
-> +    Aml *else_ctx;
-> +    Aml *method;
-> +    Aml *a_cwd1 = aml_name("CDW1");
-> +    Aml *a_ctrl = aml_local(0);
-> +
-> +    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> +    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> +
-> +    if_ctx = aml_if(aml_equal(
-> +        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
-> +    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> +    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-> +
-> +    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
-> +
-> +    /*
-> +     * Always allow native PME, AER (no dependencies)
-> +     * Allow SHPC (PCI bridges can have SHPC controller)
-> +     */
-> +    aml_append(if_ctx, aml_and(a_ctrl, aml_int(0x1F), a_ctrl));
-> +
-> +    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-> +    /* Unknown revision */
-> +    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
-> +    aml_append(if_ctx, if_ctx2);
-> +
-> +    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
-> +    /* Capabilities bits were masked */
-> +    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
-> +    aml_append(if_ctx, if_ctx2);
-> +
-> +    /* Update DWORD3 in the buffer */
-> +    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
-> +    aml_append(method, if_ctx);
-> +
-> +    else_ctx = aml_else();
-> +    /* Unrecognized UUID */
-> +    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
-> +    aml_append(method, else_ctx);
-> +
-> +    aml_append(method, aml_return(aml_arg(3)));
-> +    return method;
-> +}
+> +#define HOLE_640K_START  (640 * KiB)
+> +#define HOLE_640K_END   (1 * MiB)
 > +
 > +void
-> +build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
+> +build_srat(GArray *table_data, BIOSLinker *linker,
+> +           MachineState *machine, AcpiConfiguration *conf)
 > +{
-> +    AcpiTableMcfg *mcfg;
-> +    const char *sig;
-> +    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
+> +    AcpiSystemResourceAffinityTable *srat;
+> +    AcpiSratMemoryAffinity *numamem;
 > +
-> +    mcfg = acpi_data_push(table_data, len);
-> +    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
-> +    /* Only a single allocation so no need to play with segments */
-> +    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-> +    mcfg->allocation[0].start_bus_number = 0;
-> +    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
+> +    int i;
+> +    int srat_start, numa_start, slots;
+> +    uint64_t mem_len, mem_base, next_base;
+> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> +    const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(machine);
+> +    ram_addr_t hotplugabble_address_space_size =
+> +        object_property_get_int(OBJECT(machine), MEMORY_DEVICE_REGION_SIZE,
+> +                                NULL);
 > +
-> +    /* MCFG is used for ECAM which can be enabled or disabled by guest.
-> +     * To avoid table size changes (which create migration issues),
-> +     * always create the table even if there are no allocations,
-> +     * but set the signature to a reserved value in this case.
-> +     * ACPI spec requires OSPMs to ignore such tables.
-> +     */
-> +    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
-> +        /* Reserved signature: ignored by OSPM */
-> +        sig = "QEMU";
-> +    } else {
-> +        sig = "MCFG";
+> +    srat_start = table_data->len;
+> +
+> +    srat = acpi_data_push(table_data, sizeof *srat);
+> +    srat->reserved1 = cpu_to_le32(1);
+> +
+> +    for (i = 0; i < apic_ids->len; i++) {
+> +        int node_id = apic_ids->cpus[i].props.node_id;
+> +        uint32_t apic_id = apic_ids->cpus[i].arch_id;
+> +
+> +        if (apic_id < 255) {
+> +            AcpiSratProcessorAffinity *core;
+> +
+> +            core = acpi_data_push(table_data, sizeof *core);
+> +            core->type = ACPI_SRAT_PROCESSOR_APIC;
+> +            core->length = sizeof(*core);
+> +            core->local_apic_id = apic_id;
+> +            core->proximity_lo = node_id;
+> +            memset(core->proximity_hi, 0, 3);
+> +            core->local_sapic_eid = 0;
+> +            core->flags = cpu_to_le32(1);
+> +        } else {
+> +            AcpiSratProcessorX2ApicAffinity *core;
+> +
+> +            core = acpi_data_push(table_data, sizeof *core);
+> +            core->type = ACPI_SRAT_PROCESSOR_x2APIC;
+> +            core->length = sizeof(*core);
+> +            core->x2apic_id = cpu_to_le32(apic_id);
+> +            core->proximity_domain = cpu_to_le32(node_id);
+> +            core->flags = cpu_to_le32(1);
+> +        }
 > +    }
-> +    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
-> +}
 > +
-> +Aml *build_gsi_link_dev(const char *name, uint8_t uid, uint8_t gsi)
-> +{
-> +    Aml *dev;
-> +    Aml *crs;
-> +    Aml *method;
-> +    uint32_t irqs;
 > +
-> +    dev = aml_device("%s", name);
-> +    aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0C0F")));
-> +    aml_append(dev, aml_name_decl("_UID", aml_int(uid)));
+> +    /* the memory map is a bit tricky, it contains at least one hole
+> +     * from 640k-1M and possibly another one from 3.5G-4G.
+> +     */
+> +    next_base = 0;
+> +    numa_start = table_data->len;
 > +
-> +    crs = aml_resource_template();
-> +    irqs = gsi;
-> +    aml_append(crs, aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> +                                  AML_SHARED, &irqs, 1));
-> +    aml_append(dev, aml_name_decl("_PRS", crs));
+> +    for (i = 1; i < conf->numa_nodes + 1; ++i) {
+> +        mem_base = next_base;
+> +        mem_len = conf->node_mem[i - 1];
+> +        next_base = mem_base + mem_len;
 > +
-> +    aml_append(dev, aml_name_decl("_CRS", crs));
+> +        /* Cut out the 640K hole */
+
+It seems we are now using x86 specific code for a supposed arch agnostic 
+file. I'm not very comfortable with this change.
+
+> +        if (mem_base <= HOLE_640K_START &&
+> +            next_base > HOLE_640K_START) {
+> +            mem_len -= next_base - HOLE_640K_START;
+> +            if (mem_len > 0) {
+> +                numamem = acpi_data_push(table_data, sizeof *numamem);
+> +                build_srat_memory(numamem, mem_base, mem_len, i - 1,
+> +                                  MEM_AFFINITY_ENABLED);
+> +            }
+> +
+> +            /* Check for the rare case: 640K < RAM < 1M */
+> +            if (next_base <= HOLE_640K_END) {
+> +                next_base = HOLE_640K_END;
+> +                continue;
+> +            }
+> +            mem_base = HOLE_640K_END;
+> +            mem_len = next_base - HOLE_640K_END;
+> +        }
+> +
+> +        /* Cut out the ACPI_PCI hole */
+> +        if (mem_base <= conf->below_4g_mem_size &&
+> +            next_base > conf->below_4g_mem_size) {
+> +            mem_len -= next_base - conf->below_4g_mem_size;
+> +            if (mem_len > 0) {
+> +                numamem = acpi_data_push(table_data, sizeof *numamem);
+> +                build_srat_memory(numamem, mem_base, mem_len, i - 1,
+> +                                  MEM_AFFINITY_ENABLED);
+> +            }
+> +            mem_base = 1ULL << 32;
+> +            mem_len = next_base - conf->below_4g_mem_size;
+> +            next_base = mem_base + mem_len;
+> +        }
+> +
+> +        if (mem_len > 0) {
+> +            numamem = acpi_data_push(table_data, sizeof *numamem);
+> +            build_srat_memory(numamem, mem_base, mem_len, i - 1,
+> +                              MEM_AFFINITY_ENABLED);
+> +        }
+> +    }
+> +    slots = (table_data->len - numa_start) / sizeof *numamem;
+> +    for (; slots < conf->numa_nodes + 2; slots++) {
+> +        numamem = acpi_data_push(table_data, sizeof *numamem);
+> +        build_srat_memory(numamem, 0, 0, 0, MEM_AFFINITY_NOFLAGS);
+> +    }
 > +
 > +    /*
-> +     * _DIS can be no-op because the interrupt cannot be disabled.
+> +     * Entry is required for Windows to enable memory hotplug in OS
+> +     * and for Linux to enable SWIOTLB when booted with less than
+> +     * 4G of RAM. Windows works better if the entry sets proximity
+> +     * to the highest NUMA node in the machine.
+> +     * Memory devices may override proximity set by this entry,
+> +     * providing _PXM method if necessary.
 > +     */
-> +    method = aml_method("_DIS", 0, AML_NOTSERIALIZED);
-> +    aml_append(dev, method);
-> +
-> +    method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
-> +    aml_append(dev, method);
-> +
-> +    return dev;
-> +}
-> +
-> +/**
-> + * build_prt_entry:
-> + * @link_name: link name for PCI route entry
-> + *
-> + * build AML package containing a PCI route entry for @link_name
-> + */
-> +static Aml *build_prt_entry(const char *link_name)
-> +{
-> +    Aml *a_zero = aml_int(0);
-> +    Aml *pkg = aml_package(4);
-> +    aml_append(pkg, a_zero);
-> +    aml_append(pkg, a_zero);
-> +    aml_append(pkg, aml_name("%s", link_name));
-> +    aml_append(pkg, a_zero);
-> +    return pkg;
-> +}
-> +
-> +/*
-> + * initialize_route - Initialize the interrupt routing rule
-> + * through a specific LINK:
-> + *  if (lnk_idx == idx)
-> + *      route using link 'link_name'
-> + */
-> +static Aml *initialize_route(Aml *route, const char *link_name,
-> +                             Aml *lnk_idx, int idx)
-> +{
-> +    Aml *if_ctx = aml_if(aml_equal(lnk_idx, aml_int(idx)));
-> +    Aml *pkg = build_prt_entry(link_name);
-> +
-> +    aml_append(if_ctx, aml_store(pkg, route));
-> +
-> +    return if_ctx;
-> +}
-> +
-> +/*
-> + * build_prt - Define interrupt rounting rules
-> + *
-> + * Returns an array of 128 routes, one for each device,
-> + * based on device location.
-> + * The main goal is to equaly distribute the interrupts
-> + * over the 4 existing ACPI links (works only for i440fx).
-> + * The hash function is  (slot + pin) & 3 -> "LNK[D|A|B|C]".
-> + *
-> + */
-> +Aml *build_prt(bool is_pci0_prt)
-> +{
-> +    Aml *method, *while_ctx, *pin, *res;
-> +
-> +    method = aml_method("_PRT", 0, AML_NOTSERIALIZED);
-> +    res = aml_local(0);
-> +    pin = aml_local(1);
-> +    aml_append(method, aml_store(aml_package(128), res));
-> +    aml_append(method, aml_store(aml_int(0), pin));
-> +
-> +    /* while (pin < 128) */
-> +    while_ctx = aml_while(aml_lless(pin, aml_int(128)));
-> +    {
-> +        Aml *slot = aml_local(2);
-> +        Aml *lnk_idx = aml_local(3);
-> +        Aml *route = aml_local(4);
-> +
-> +        /* slot = pin >> 2 */
-> +        aml_append(while_ctx,
-> +                   aml_store(aml_shiftright(pin, aml_int(2), NULL), slot));
-> +        /* lnk_idx = (slot + pin) & 3 */
-> +        aml_append(while_ctx,
-> +            aml_store(aml_and(aml_add(pin, slot, NULL), aml_int(3), NULL),
-> +                      lnk_idx));
-> +
-> +        /* route[2] = "LNK[D|A|B|C]", selection based on pin % 3  */
-> +        aml_append(while_ctx, initialize_route(route, "LNKD", lnk_idx, 0));
-> +        if (is_pci0_prt) {
-> +            Aml *if_device_1, *if_pin_4, *else_pin_4;
-> +
-> +            /* device 1 is the power-management device, needs SCI */
-> +            if_device_1 = aml_if(aml_equal(lnk_idx, aml_int(1)));
-> +            {
-> +                if_pin_4 = aml_if(aml_equal(pin, aml_int(4)));
-> +                {
-> +                    aml_append(if_pin_4,
-> +                        aml_store(build_prt_entry("LNKS"), route));
-> +                }
-> +                aml_append(if_device_1, if_pin_4);
-> +                else_pin_4 = aml_else();
-> +                {
-> +                    aml_append(else_pin_4,
-> +                        aml_store(build_prt_entry("LNKA"), route));
-> +                }
-> +                aml_append(if_device_1, else_pin_4);
-> +            }
-> +            aml_append(while_ctx, if_device_1);
-> +        } else {
-> +            aml_append(while_ctx, initialize_route(route, "LNKA", lnk_idx, 1));
-> +        }
-> +        aml_append(while_ctx, initialize_route(route, "LNKB", lnk_idx, 2));
-> +        aml_append(while_ctx, initialize_route(route, "LNKC", lnk_idx, 3));
-> +
-> +        /* route[0] = 0x[slot]FFFF */
-> +        aml_append(while_ctx,
-> +            aml_store(aml_or(aml_shiftleft(slot, aml_int(16)), aml_int(0xFFFF),
-> +                             NULL),
-> +                      aml_index(route, aml_int(0))));
-> +        /* route[1] = pin & 3 */
-> +        aml_append(while_ctx,
-> +            aml_store(aml_and(pin, aml_int(3), NULL),
-> +                      aml_index(route, aml_int(1))));
-> +        /* res[pin] = route */
-> +        aml_append(while_ctx, aml_store(route, aml_index(res, pin)));
-> +        /* pin++ */
-> +        aml_append(while_ctx, aml_increment(pin));
+> +    if (hotplugabble_address_space_size) {
+> +        numamem = acpi_data_push(table_data, sizeof *numamem);
+> +        build_srat_memory(numamem, machine->device_memory->base,
+> +                          hotplugabble_address_space_size, conf->numa_nodes - 1,
+> +                          MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
 > +    }
-> +    aml_append(method, while_ctx);
-> +    /* return res*/
-> +    aml_append(method, aml_return(res));
 > +
-> +    return method;
+> +    build_header(linker, table_data,
+> +                 (void *)(table_data->data + srat_start),
+> +                 "SRAT",
+> +                 table_data->len - srat_start, 1, NULL, NULL);
 > +}
 > +
->   /* Build rsdt table */
->   void
->   build_rsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
+>   /*
+>    * ACPI spec 5.2.17 System Locality Distance Information Table
+>    * (Revision 2.0 or later)
 > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 0a6a88380a..6822ee4eaa 100644
+> index f9a60907f1..353aa55357 100644
 > --- a/hw/arm/virt-acpi-build.c
 > +++ b/hw/arm/virt-acpi-build.c
-> @@ -546,7 +546,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> @@ -469,7 +469,7 @@ build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
 >   }
 >   
 >   static void
-> -build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> +virt_build_mcfg(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> -build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> +virt_build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
 >   {
->       AcpiTableMcfg *mcfg;
->       const MemMapEntry *memmap = vms->memmap;
-> @@ -791,7 +791,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->       build_gtdt(tables_blob, tables->linker, vms);
+>       AcpiSystemResourceAffinityTable *srat;
+>       AcpiSratProcessorGiccAffinity *core;
+> @@ -759,7 +759,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
 >   
->       acpi_add_table(table_offsets, tables_blob);
-> -    build_mcfg(tables_blob, tables->linker, vms);
-> +    virt_build_mcfg(tables_blob, tables->linker, vms);
->   
->       acpi_add_table(table_offsets, tables_blob);
->       build_spcr(tables_blob, tables->linker, vms);
+>       if (nb_numa_nodes > 0) {
+>           acpi_add_table(table_offsets, tables_blob);
+> -        build_srat(tables_blob, tables->linker, vms);
+> +        virt_build_srat(tables_blob, tables->linker, vms);
+>           if (have_numa_distance) {
+>               acpi_add_table(table_offsets, tables_blob);
+>               build_slit(tables_blob, tables->linker);
 > diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index eee2eb3ed2..3ab68fd24d 100644
+> index dfc02a8a85..5932dbe825 100644
 > --- a/hw/i386/acpi-build.c
 > +++ b/hw/i386/acpi-build.c
-
-You can now remove these includes from this file :
-
-   -#include "hw/pci/pci.h"
-   -#include "hw/pci/pci_bus.h"
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> @@ -86,11 +86,6 @@
->   /* Default IOAPIC ID */
->   #define ACPI_BUILD_IOAPIC_ID 0x0
->   
-> -typedef struct AcpiMcfgInfo {
-> -    uint64_t mcfg_base;
-> -    uint32_t mcfg_size;
-> -} AcpiMcfgInfo;
-> -
->   typedef struct AcpiPmInfo {
->       bool s3_disabled;
->       bool s4_disabled;
-> @@ -567,403 +562,6 @@ static void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus,
->       qobject_unref(bsel);
+> @@ -1614,135 +1614,6 @@ build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>                    (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
 >   }
 >   
-> -/**
-> - * build_prt_entry:
-> - * @link_name: link name for PCI route entry
-> - *
-> - * build AML package containing a PCI route entry for @link_name
-> - */
-> -static Aml *build_prt_entry(const char *link_name)
+> -#define HOLE_640K_START  (640 * KiB)
+> -#define HOLE_640K_END   (1 * MiB)
+> -
+> -static void
+> -build_srat(GArray *table_data, BIOSLinker *linker,
+> -           MachineState *machine, AcpiConfiguration *conf)
 > -{
-> -    Aml *a_zero = aml_int(0);
-> -    Aml *pkg = aml_package(4);
-> -    aml_append(pkg, a_zero);
-> -    aml_append(pkg, a_zero);
-> -    aml_append(pkg, aml_name("%s", link_name));
-> -    aml_append(pkg, a_zero);
-> -    return pkg;
-> -}
+> -    AcpiSystemResourceAffinityTable *srat;
+> -    AcpiSratMemoryAffinity *numamem;
 > -
-> -/*
-> - * initialize_route - Initialize the interrupt routing rule
-> - * through a specific LINK:
-> - *  if (lnk_idx == idx)
-> - *      route using link 'link_name'
-> - */
-> -static Aml *initialize_route(Aml *route, const char *link_name,
-> -                             Aml *lnk_idx, int idx)
-> -{
-> -    Aml *if_ctx = aml_if(aml_equal(lnk_idx, aml_int(idx)));
-> -    Aml *pkg = build_prt_entry(link_name);
+> -    int i;
+> -    int srat_start, numa_start, slots;
+> -    uint64_t mem_len, mem_base, next_base;
+> -    MachineClass *mc = MACHINE_GET_CLASS(machine);
+> -    const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(machine);
+> -    ram_addr_t hotplugabble_address_space_size =
+> -        object_property_get_int(OBJECT(machine), MEMORY_DEVICE_REGION_SIZE,
+> -                                NULL);
 > -
-> -    aml_append(if_ctx, aml_store(pkg, route));
+> -    srat_start = table_data->len;
 > -
-> -    return if_ctx;
-> -}
+> -    srat = acpi_data_push(table_data, sizeof *srat);
+> -    srat->reserved1 = cpu_to_le32(1);
 > -
-> -/*
-> - * build_prt - Define interrupt rounting rules
-> - *
-> - * Returns an array of 128 routes, one for each device,
-> - * based on device location.
-> - * The main goal is to equaly distribute the interrupts
-> - * over the 4 existing ACPI links (works only for i440fx).
-> - * The hash function is  (slot + pin) & 3 -> "LNK[D|A|B|C]".
-> - *
-> - */
-> -static Aml *build_prt(bool is_pci0_prt)
-> -{
-> -    Aml *method, *while_ctx, *pin, *res;
+> -    for (i = 0; i < apic_ids->len; i++) {
+> -        int node_id = apic_ids->cpus[i].props.node_id;
+> -        uint32_t apic_id = apic_ids->cpus[i].arch_id;
 > -
-> -    method = aml_method("_PRT", 0, AML_NOTSERIALIZED);
-> -    res = aml_local(0);
-> -    pin = aml_local(1);
-> -    aml_append(method, aml_store(aml_package(128), res));
-> -    aml_append(method, aml_store(aml_int(0), pin));
+> -        if (apic_id < 255) {
+> -            AcpiSratProcessorAffinity *core;
 > -
-> -    /* while (pin < 128) */
-> -    while_ctx = aml_while(aml_lless(pin, aml_int(128)));
-> -    {
-> -        Aml *slot = aml_local(2);
-> -        Aml *lnk_idx = aml_local(3);
-> -        Aml *route = aml_local(4);
+> -            core = acpi_data_push(table_data, sizeof *core);
+> -            core->type = ACPI_SRAT_PROCESSOR_APIC;
+> -            core->length = sizeof(*core);
+> -            core->local_apic_id = apic_id;
+> -            core->proximity_lo = node_id;
+> -            memset(core->proximity_hi, 0, 3);
+> -            core->local_sapic_eid = 0;
+> -            core->flags = cpu_to_le32(1);
+> -        } else {
+> -            AcpiSratProcessorX2ApicAffinity *core;
 > -
-> -        /* slot = pin >> 2 */
-> -        aml_append(while_ctx,
-> -                   aml_store(aml_shiftright(pin, aml_int(2), NULL), slot));
-> -        /* lnk_idx = (slot + pin) & 3 */
-> -        aml_append(while_ctx,
-> -            aml_store(aml_and(aml_add(pin, slot, NULL), aml_int(3), NULL),
-> -                      lnk_idx));
+> -            core = acpi_data_push(table_data, sizeof *core);
+> -            core->type = ACPI_SRAT_PROCESSOR_x2APIC;
+> -            core->length = sizeof(*core);
+> -            core->x2apic_id = cpu_to_le32(apic_id);
+> -            core->proximity_domain = cpu_to_le32(node_id);
+> -            core->flags = cpu_to_le32(1);
+> -        }
+> -    }
 > -
-> -        /* route[2] = "LNK[D|A|B|C]", selection based on pin % 3  */
-> -        aml_append(while_ctx, initialize_route(route, "LNKD", lnk_idx, 0));
-> -        if (is_pci0_prt) {
-> -            Aml *if_device_1, *if_pin_4, *else_pin_4;
 > -
-> -            /* device 1 is the power-management device, needs SCI */
-> -            if_device_1 = aml_if(aml_equal(lnk_idx, aml_int(1)));
-> -            {
-> -                if_pin_4 = aml_if(aml_equal(pin, aml_int(4)));
-> -                {
-> -                    aml_append(if_pin_4,
-> -                        aml_store(build_prt_entry("LNKS"), route));
-> -                }
-> -                aml_append(if_device_1, if_pin_4);
-> -                else_pin_4 = aml_else();
-> -                {
-> -                    aml_append(else_pin_4,
-> -                        aml_store(build_prt_entry("LNKA"), route));
-> -                }
-> -                aml_append(if_device_1, else_pin_4);
+> -    /* the memory map is a bit tricky, it contains at least one hole
+> -     * from 640k-1M and possibly another one from 3.5G-4G.
+> -     */
+> -    next_base = 0;
+> -    numa_start = table_data->len;
+> -
+> -    for (i = 1; i < conf->numa_nodes + 1; ++i) {
+> -        mem_base = next_base;
+> -        mem_len = conf->node_mem[i - 1];
+> -        next_base = mem_base + mem_len;
+> -
+> -        /* Cut out the 640K hole */
+> -        if (mem_base <= HOLE_640K_START &&
+> -            next_base > HOLE_640K_START) {
+> -            mem_len -= next_base - HOLE_640K_START;
+> -            if (mem_len > 0) {
+> -                numamem = acpi_data_push(table_data, sizeof *numamem);
+> -                build_srat_memory(numamem, mem_base, mem_len, i - 1,
+> -                                  MEM_AFFINITY_ENABLED);
 > -            }
-> -            aml_append(while_ctx, if_device_1);
-> -        } else {
-> -            aml_append(while_ctx, initialize_route(route, "LNKA", lnk_idx, 1));
-> -        }
-> -        aml_append(while_ctx, initialize_route(route, "LNKB", lnk_idx, 2));
-> -        aml_append(while_ctx, initialize_route(route, "LNKC", lnk_idx, 3));
 > -
-> -        /* route[0] = 0x[slot]FFFF */
-> -        aml_append(while_ctx,
-> -            aml_store(aml_or(aml_shiftleft(slot, aml_int(16)), aml_int(0xFFFF),
-> -                             NULL),
-> -                      aml_index(route, aml_int(0))));
-> -        /* route[1] = pin & 3 */
-> -        aml_append(while_ctx,
-> -            aml_store(aml_and(pin, aml_int(3), NULL),
-> -                      aml_index(route, aml_int(1))));
-> -        /* res[pin] = route */
-> -        aml_append(while_ctx, aml_store(route, aml_index(res, pin)));
-> -        /* pin++ */
-> -        aml_append(while_ctx, aml_increment(pin));
-> -    }
-> -    aml_append(method, while_ctx);
-> -    /* return res*/
-> -    aml_append(method, aml_return(res));
-> -
-> -    return method;
-> -}
-> -
-> -typedef struct CrsRangeEntry {
-> -    uint64_t base;
-> -    uint64_t limit;
-> -} CrsRangeEntry;
-> -
-> -static void crs_range_insert(GPtrArray *ranges, uint64_t base, uint64_t limit)
-> -{
-> -    CrsRangeEntry *entry;
-> -
-> -    entry = g_malloc(sizeof(*entry));
-> -    entry->base = base;
-> -    entry->limit = limit;
-> -
-> -    g_ptr_array_add(ranges, entry);
-> -}
-> -
-> -static void crs_range_free(gpointer data)
-> -{
-> -    CrsRangeEntry *entry = (CrsRangeEntry *)data;
-> -    g_free(entry);
-> -}
-> -
-> -typedef struct CrsRangeSet {
-> -    GPtrArray *io_ranges;
-> -    GPtrArray *mem_ranges;
-> -    GPtrArray *mem_64bit_ranges;
-> - } CrsRangeSet;
-> -
-> -static void crs_range_set_init(CrsRangeSet *range_set)
-> -{
-> -    range_set->io_ranges = g_ptr_array_new_with_free_func(crs_range_free);
-> -    range_set->mem_ranges = g_ptr_array_new_with_free_func(crs_range_free);
-> -    range_set->mem_64bit_ranges =
-> -            g_ptr_array_new_with_free_func(crs_range_free);
-> -}
-> -
-> -static void crs_range_set_free(CrsRangeSet *range_set)
-> -{
-> -    g_ptr_array_free(range_set->io_ranges, true);
-> -    g_ptr_array_free(range_set->mem_ranges, true);
-> -    g_ptr_array_free(range_set->mem_64bit_ranges, true);
-> -}
-> -
-> -static gint crs_range_compare(gconstpointer a, gconstpointer b)
-> -{
-> -     CrsRangeEntry *entry_a = *(CrsRangeEntry **)a;
-> -     CrsRangeEntry *entry_b = *(CrsRangeEntry **)b;
-> -
-> -     return (int64_t)entry_a->base - (int64_t)entry_b->base;
-> -}
-> -
-> -/*
-> - * crs_replace_with_free_ranges - given the 'used' ranges within [start - end]
-> - * interval, computes the 'free' ranges from the same interval.
-> - * Example: If the input array is { [a1 - a2],[b1 - b2] }, the function
-> - * will return { [base - a1], [a2 - b1], [b2 - limit] }.
-> - */
-> -static void crs_replace_with_free_ranges(GPtrArray *ranges,
-> -                                         uint64_t start, uint64_t end)
-> -{
-> -    GPtrArray *free_ranges = g_ptr_array_new();
-> -    uint64_t free_base = start;
-> -    int i;
-> -
-> -    g_ptr_array_sort(ranges, crs_range_compare);
-> -    for (i = 0; i < ranges->len; i++) {
-> -        CrsRangeEntry *used = g_ptr_array_index(ranges, i);
-> -
-> -        if (free_base < used->base) {
-> -            crs_range_insert(free_ranges, free_base, used->base - 1);
-> -        }
-> -
-> -        free_base = used->limit + 1;
-> -    }
-> -
-> -    if (free_base < end) {
-> -        crs_range_insert(free_ranges, free_base, end);
-> -    }
-> -
-> -    g_ptr_array_set_size(ranges, 0);
-> -    for (i = 0; i < free_ranges->len; i++) {
-> -        g_ptr_array_add(ranges, g_ptr_array_index(free_ranges, i));
-> -    }
-> -
-> -    g_ptr_array_free(free_ranges, true);
-> -}
-> -
-> -/*
-> - * crs_range_merge - merges adjacent ranges in the given array.
-> - * Array elements are deleted and replaced with the merged ranges.
-> - */
-> -static void crs_range_merge(GPtrArray *range)
-> -{
-> -    GPtrArray *tmp =  g_ptr_array_new_with_free_func(crs_range_free);
-> -    CrsRangeEntry *entry;
-> -    uint64_t range_base, range_limit;
-> -    int i;
-> -
-> -    if (!range->len) {
-> -        return;
-> -    }
-> -
-> -    g_ptr_array_sort(range, crs_range_compare);
-> -
-> -    entry = g_ptr_array_index(range, 0);
-> -    range_base = entry->base;
-> -    range_limit = entry->limit;
-> -    for (i = 1; i < range->len; i++) {
-> -        entry = g_ptr_array_index(range, i);
-> -        if (entry->base - 1 == range_limit) {
-> -            range_limit = entry->limit;
-> -        } else {
-> -            crs_range_insert(tmp, range_base, range_limit);
-> -            range_base = entry->base;
-> -            range_limit = entry->limit;
-> -        }
-> -    }
-> -    crs_range_insert(tmp, range_base, range_limit);
-> -
-> -    g_ptr_array_set_size(range, 0);
-> -    for (i = 0; i < tmp->len; i++) {
-> -        entry = g_ptr_array_index(tmp, i);
-> -        crs_range_insert(range, entry->base, entry->limit);
-> -    }
-> -    g_ptr_array_free(tmp, true);
-> -}
-> -
-> -static Aml *build_crs(PCIHostState *host, CrsRangeSet *range_set)
-> -{
-> -    Aml *crs = aml_resource_template();
-> -    CrsRangeSet temp_range_set;
-> -    CrsRangeEntry *entry;
-> -    uint8_t max_bus = pci_bus_num(host->bus);
-> -    uint8_t type;
-> -    int devfn;
-> -    int i;
-> -
-> -    crs_range_set_init(&temp_range_set);
-> -    for (devfn = 0; devfn < ARRAY_SIZE(host->bus->devices); devfn++) {
-> -        uint64_t range_base, range_limit;
-> -        PCIDevice *dev = host->bus->devices[devfn];
-> -
-> -        if (!dev) {
-> -            continue;
-> -        }
-> -
-> -        for (i = 0; i < PCI_NUM_REGIONS; i++) {
-> -            PCIIORegion *r = &dev->io_regions[i];
-> -
-> -            range_base = r->addr;
-> -            range_limit = r->addr + r->size - 1;
-> -
-> -            /*
-> -             * Work-around for old bioses
-> -             * that do not support multiple root buses
-> -             */
-> -            if (!range_base || range_base > range_limit) {
+> -            /* Check for the rare case: 640K < RAM < 1M */
+> -            if (next_base <= HOLE_640K_END) {
+> -                next_base = HOLE_640K_END;
 > -                continue;
 > -            }
-> -
-> -            if (r->type & PCI_BASE_ADDRESS_SPACE_IO) {
-> -                crs_range_insert(temp_range_set.io_ranges,
-> -                                 range_base, range_limit);
-> -            } else { /* "memory" */
-> -                crs_range_insert(temp_range_set.mem_ranges,
-> -                                 range_base, range_limit);
-> -            }
+> -            mem_base = HOLE_640K_END;
+> -            mem_len = next_base - HOLE_640K_END;
 > -        }
 > -
-> -        type = dev->config[PCI_HEADER_TYPE] & ~PCI_HEADER_TYPE_MULTI_FUNCTION;
-> -        if (type == PCI_HEADER_TYPE_BRIDGE) {
-> -            uint8_t subordinate = dev->config[PCI_SUBORDINATE_BUS];
-> -            if (subordinate > max_bus) {
-> -                max_bus = subordinate;
+> -        /* Cut out the ACPI_PCI hole */
+> -        if (mem_base <= conf->below_4g_mem_size &&
+> -            next_base > conf->below_4g_mem_size) {
+> -            mem_len -= next_base - conf->below_4g_mem_size;
+> -            if (mem_len > 0) {
+> -                numamem = acpi_data_push(table_data, sizeof *numamem);
+> -                build_srat_memory(numamem, mem_base, mem_len, i - 1,
+> -                                  MEM_AFFINITY_ENABLED);
 > -            }
+> -            mem_base = 1ULL << 32;
+> -            mem_len = next_base - conf->below_4g_mem_size;
+> -            next_base = mem_base + mem_len;
+> -        }
 > -
-> -            range_base = pci_bridge_get_base(dev, PCI_BASE_ADDRESS_SPACE_IO);
-> -            range_limit = pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_SPACE_IO);
-> -
-> -            /*
-> -             * Work-around for old bioses
-> -             * that do not support multiple root buses
-> -             */
-> -            if (range_base && range_base <= range_limit) {
-> -                crs_range_insert(temp_range_set.io_ranges,
-> -                                 range_base, range_limit);
-> -            }
-> -
-> -            range_base =
-> -                pci_bridge_get_base(dev, PCI_BASE_ADDRESS_SPACE_MEMORY);
-> -            range_limit =
-> -                pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_SPACE_MEMORY);
-> -
-> -            /*
-> -             * Work-around for old bioses
-> -             * that do not support multiple root buses
-> -             */
-> -            if (range_base && range_base <= range_limit) {
-> -                uint64_t length = range_limit - range_base + 1;
-> -                if (range_limit <= UINT32_MAX && length <= UINT32_MAX) {
-> -                    crs_range_insert(temp_range_set.mem_ranges,
-> -                                     range_base, range_limit);
-> -                } else {
-> -                    crs_range_insert(temp_range_set.mem_64bit_ranges,
-> -                                     range_base, range_limit);
-> -                }
-> -            }
-> -
-> -            range_base =
-> -                pci_bridge_get_base(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-> -            range_limit =
-> -                pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-> -
-> -            /*
-> -             * Work-around for old bioses
-> -             * that do not support multiple root buses
-> -             */
-> -            if (range_base && range_base <= range_limit) {
-> -                uint64_t length = range_limit - range_base + 1;
-> -                if (range_limit <= UINT32_MAX && length <= UINT32_MAX) {
-> -                    crs_range_insert(temp_range_set.mem_ranges,
-> -                                     range_base, range_limit);
-> -                } else {
-> -                    crs_range_insert(temp_range_set.mem_64bit_ranges,
-> -                                     range_base, range_limit);
-> -                }
-> -            }
+> -        if (mem_len > 0) {
+> -            numamem = acpi_data_push(table_data, sizeof *numamem);
+> -            build_srat_memory(numamem, mem_base, mem_len, i - 1,
+> -                              MEM_AFFINITY_ENABLED);
 > -        }
 > -    }
-> -
-> -    crs_range_merge(temp_range_set.io_ranges);
-> -    for (i = 0; i < temp_range_set.io_ranges->len; i++) {
-> -        entry = g_ptr_array_index(temp_range_set.io_ranges, i);
-> -        aml_append(crs,
-> -                   aml_word_io(AML_MIN_FIXED, AML_MAX_FIXED,
-> -                               AML_POS_DECODE, AML_ENTIRE_RANGE,
-> -                               0, entry->base, entry->limit, 0,
-> -                               entry->limit - entry->base + 1));
-> -        crs_range_insert(range_set->io_ranges, entry->base, entry->limit);
+> -    slots = (table_data->len - numa_start) / sizeof *numamem;
+> -    for (; slots < conf->numa_nodes + 2; slots++) {
+> -        numamem = acpi_data_push(table_data, sizeof *numamem);
+> -        build_srat_memory(numamem, 0, 0, 0, MEM_AFFINITY_NOFLAGS);
 > -    }
-> -
-> -    crs_range_merge(temp_range_set.mem_ranges);
-> -    for (i = 0; i < temp_range_set.mem_ranges->len; i++) {
-> -        entry = g_ptr_array_index(temp_range_set.mem_ranges, i);
-> -        aml_append(crs,
-> -                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED,
-> -                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
-> -                                    AML_READ_WRITE,
-> -                                    0, entry->base, entry->limit, 0,
-> -                                    entry->limit - entry->base + 1));
-> -        crs_range_insert(range_set->mem_ranges, entry->base, entry->limit);
-> -    }
-> -
-> -    crs_range_merge(temp_range_set.mem_64bit_ranges);
-> -    for (i = 0; i < temp_range_set.mem_64bit_ranges->len; i++) {
-> -        entry = g_ptr_array_index(temp_range_set.mem_64bit_ranges, i);
-> -        aml_append(crs,
-> -                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
-> -                                    AML_MAX_FIXED, AML_NON_CACHEABLE,
-> -                                    AML_READ_WRITE,
-> -                                    0, entry->base, entry->limit, 0,
-> -                                    entry->limit - entry->base + 1));
-> -        crs_range_insert(range_set->mem_64bit_ranges,
-> -                         entry->base, entry->limit);
-> -    }
-> -
-> -    crs_range_set_free(&temp_range_set);
-> -
-> -    aml_append(crs,
-> -        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
-> -                            0,
-> -                            pci_bus_num(host->bus),
-> -                            max_bus,
-> -                            0,
-> -                            max_bus - pci_bus_num(host->bus) + 1));
-> -
-> -    return crs;
-> -}
-> -
->   static void build_hpet_aml(Aml *table)
->   {
->       Aml *crs;
-> @@ -1334,37 +932,6 @@ static Aml *build_link_dev(const char *name, uint8_t uid, Aml *reg)
->       return dev;
->    }
->   
-> -static Aml *build_gsi_link_dev(const char *name, uint8_t uid, uint8_t gsi)
-> -{
-> -    Aml *dev;
-> -    Aml *crs;
-> -    Aml *method;
-> -    uint32_t irqs;
-> -
-> -    dev = aml_device("%s", name);
-> -    aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0C0F")));
-> -    aml_append(dev, aml_name_decl("_UID", aml_int(uid)));
-> -
-> -    crs = aml_resource_template();
-> -    irqs = gsi;
-> -    aml_append(crs, aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> -                                  AML_SHARED, &irqs, 1));
-> -    aml_append(dev, aml_name_decl("_PRS", crs));
-> -
-> -    aml_append(dev, aml_name_decl("_CRS", crs));
 > -
 > -    /*
-> -     * _DIS can be no-op because the interrupt cannot be disabled.
+> -     * Entry is required for Windows to enable memory hotplug in OS
+> -     * and for Linux to enable SWIOTLB when booted with less than
+> -     * 4G of RAM. Windows works better if the entry sets proximity
+> -     * to the highest NUMA node in the machine.
+> -     * Memory devices may override proximity set by this entry,
+> -     * providing _PXM method if necessary.
 > -     */
-> -    method = aml_method("_DIS", 0, AML_NOTSERIALIZED);
-> -    aml_append(dev, method);
-> -
-> -    method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
-> -    aml_append(dev, method);
-> -
-> -    return dev;
-> -}
-> -
->   /* _CRS method - get current settings */
->   static Aml *build_iqcr_method(bool is_piix4)
->   {
-> @@ -1728,54 +1295,6 @@ static void build_piix4_pci_hotplug(Aml *table)
->       aml_append(table, scope);
->   }
->   
-> -static Aml *build_q35_osc_method(void)
-> -{
-> -    Aml *if_ctx;
-> -    Aml *if_ctx2;
-> -    Aml *else_ctx;
-> -    Aml *method;
-> -    Aml *a_cwd1 = aml_name("CDW1");
-> -    Aml *a_ctrl = aml_local(0);
-> -
-> -    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
-> -    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
-> -
-> -    if_ctx = aml_if(aml_equal(
-> -        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
-> -    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
-> -    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
-> -
-> -    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
-> -
-> -    /*
-> -     * Always allow native PME, AER (no dependencies)
-> -     * Allow SHPC (PCI bridges can have SHPC controller)
-> -     */
-> -    aml_append(if_ctx, aml_and(a_ctrl, aml_int(0x1F), a_ctrl));
-> -
-> -    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
-> -    /* Unknown revision */
-> -    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
-> -    aml_append(if_ctx, if_ctx2);
-> -
-> -    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
-> -    /* Capabilities bits were masked */
-> -    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
-> -    aml_append(if_ctx, if_ctx2);
-> -
-> -    /* Update DWORD3 in the buffer */
-> -    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
-> -    aml_append(method, if_ctx);
-> -
-> -    else_ctx = aml_else();
-> -    /* Unrecognized UUID */
-> -    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
-> -    aml_append(method, else_ctx);
-> -
-> -    aml_append(method, aml_return(aml_arg(3)));
-> -    return method;
-> -}
-> -
->   static void
->   build_dsdt(GArray *table_data, BIOSLinker *linker,
->              AcpiPmInfo *pm, AcpiMiscInfo *misc,
-> @@ -1818,7 +1337,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->           aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
->           aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
->           aml_append(dev, aml_name_decl("_UID", aml_int(1)));
-> -        aml_append(dev, build_q35_osc_method());
-> +        aml_append(dev, build_osc_method());
->           aml_append(sb_scope, dev);
->           aml_append(dsdt, sb_scope);
->   
-> @@ -1883,7 +1402,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->               aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
->               aml_append(dev, aml_name_decl("_BBN", aml_int(bus_num)));
->               if (pci_bus_is_express(bus)) {
-> -                aml_append(dev, build_q35_osc_method());
-> +                aml_append(dev, build_osc_method());
->               }
->   
->               if (numa_node != NUMA_NODE_UNASSIGNED) {
-> @@ -2369,35 +1888,6 @@ build_srat(GArray *table_data, BIOSLinker *linker,
->                    table_data->len - srat_start, 1, NULL, NULL);
->   }
->   
-> -static void
-> -build_mcfg_q35(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info)
-> -{
-> -    AcpiTableMcfg *mcfg;
-> -    const char *sig;
-> -    int len = sizeof(*mcfg) + 1 * sizeof(mcfg->allocation[0]);
-> -
-> -    mcfg = acpi_data_push(table_data, len);
-> -    mcfg->allocation[0].address = cpu_to_le64(info->mcfg_base);
-> -    /* Only a single allocation so no need to play with segments */
-> -    mcfg->allocation[0].pci_segment = cpu_to_le16(0);
-> -    mcfg->allocation[0].start_bus_number = 0;
-> -    mcfg->allocation[0].end_bus_number = PCIE_MMCFG_BUS(info->mcfg_size - 1);
-> -
-> -    /* MCFG is used for ECAM which can be enabled or disabled by guest.
-> -     * To avoid table size changes (which create migration issues),
-> -     * always create the table even if there are no allocations,
-> -     * but set the signature to a reserved value in this case.
-> -     * ACPI spec requires OSPMs to ignore such tables.
-> -     */
-> -    if (info->mcfg_base == PCIE_BASE_ADDR_UNMAPPED) {
-> -        /* Reserved signature: ignored by OSPM */
-> -        sig = "QEMU";
-> -    } else {
-> -        sig = "MCFG";
+> -    if (hotplugabble_address_space_size) {
+> -        numamem = acpi_data_push(table_data, sizeof *numamem);
+> -        build_srat_memory(numamem, machine->device_memory->base,
+> -                          hotplugabble_address_space_size, conf->numa_nodes - 1,
+> -                          MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
 > -    }
-> -    build_header(linker, table_data, (void *)mcfg, sig, len, 1, NULL, NULL);
+> -
+> -    build_header(linker, table_data,
+> -                 (void *)(table_data->data + srat_start),
+> -                 "SRAT",
+> -                 table_data->len - srat_start, 1, NULL, NULL);
 > -}
 > -
 >   /*
 >    * VT-d spec 8.1 DMA Remapping Reporting Structure
 >    * (version Oct. 2014 or later)
-> @@ -2625,7 +2115,7 @@ void acpi_build(AcpiBuildTables *tables,
->       }
->       if (acpi_get_mcfg(&mcfg)) {
->           acpi_add_table(table_offsets, tables_blob);
-> -        build_mcfg_q35(tables_blob, tables->linker, &mcfg);
-> +        build_mcfg(tables_blob, tables->linker, &mcfg);
->       }
->       if (x86_iommu_get_default()) {
->           IommuType IOMMUType = x86_iommu_get_type();
 > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index 8d1063a40b..cd744e9472 100644
+> index 1fabf58df2..654ce2ec26 100644
 > --- a/include/hw/acpi/aml-build.h
 > +++ b/include/hw/acpi/aml-build.h
-> @@ -3,6 +3,7 @@
+> @@ -1,6 +1,7 @@
+>   #ifndef HW_ACPI_AML_BUILD_H
+>   #define HW_ACPI_AML_BUILD_H
 >   
+> +#include "hw/acpi/acpi.h"
 >   #include "hw/acpi/acpi-defs.h"
 >   #include "hw/acpi/bios-linker-loader.h"
-> +#include "hw/pci/pcie_host.h"
+>   #include "hw/pci/pcie_host.h"
+> @@ -438,6 +439,8 @@ void
+>   build_xsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
+>              const char *oem_id, const char *oem_table_id);
 >   
->   /* Reserve RAM space for tables: add another order of magnitude. */
->   #define ACPI_BUILD_TABLE_MAX_SIZE         0x200000
-> @@ -224,6 +225,21 @@ struct AcpiBuildTables {
->       BIOSLinker *linker;
->   } AcpiBuildTables;
->   
-> +typedef struct AcpiMcfgInfo {
-> +    uint64_t mcfg_base;
-> +    uint32_t mcfg_size;
-> +} AcpiMcfgInfo;
-> +
-> +typedef struct CrsRangeEntry {
-> +    uint64_t base;
-> +    uint64_t limit;
-> +} CrsRangeEntry;
-> +
-> +typedef struct CrsRangeSet {
-> +    GPtrArray *io_ranges;
-> +    GPtrArray *mem_ranges;
-> +    GPtrArray *mem_64bit_ranges;
-> +} CrsRangeSet;
->   /**
->    * init_aml_allocator:
->    *
-> @@ -389,6 +405,15 @@ void acpi_align_size(GArray *blob, unsigned align);
->   void acpi_add_table(GArray *table_offsets, GArray *table_data);
->   void acpi_build_tables_init(AcpiBuildTables *tables);
->   void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre);
-> +Aml *build_osc_method(void);
-> +void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
-> +Aml *build_gsi_link_dev(const char *name, uint8_t uid, uint8_t gsi);
-> +Aml *build_prt(bool is_pci0_prt);
-> +void crs_range_set_init(CrsRangeSet *range_set);
-> +Aml *build_crs(PCIHostState *host, CrsRangeSet *range_set);
-> +void crs_replace_with_free_ranges(GPtrArray *ranges,
-> +                                  uint64_t start, uint64_t end);
-> +void crs_range_set_free(CrsRangeSet *range_set);
->   void
->   build_rsdp_rsdt(GArray *table_data,
->                   BIOSLinker *linker, unsigned rsdt_tbl_offset);
+> +void build_srat(GArray *table_data, BIOSLinker *linker,
+> +                MachineState *machine, AcpiConfiguration *conf);
+>   int
+>   build_append_named_dword(GArray *array, const char *name_format, ...)
+>   GCC_FMT_ATTR(2, 3);
 > 

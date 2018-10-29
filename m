@@ -1,157 +1,146 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4477044wro;
-        Mon, 29 Oct 2018 10:07:23 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5e4/0XpeShJDFo6ChphNiMrVqMIFp48gxdDL9GpIxI4qIeOHnnpyB12MJopLNJlAoNUG20J
-X-Received: by 2002:ac8:4804:: with SMTP id g4-v6mr13484952qtq.66.1540832843050;
-        Mon, 29 Oct 2018 10:07:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540832843; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4477152wro;
+        Mon, 29 Oct 2018 10:07:29 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dAzRKFa+JqaVve6aqy3nkUQbG4xQ5udkV1GQSjS7+8s1cAwxZdDujmojCWx7HFy90nxLHV
+X-Received: by 2002:a0c:9e65:: with SMTP id z37mr1883524qve.188.1540832848958;
+        Mon, 29 Oct 2018 10:07:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540832848; cv=none;
         d=google.com; s=arc-20160816;
-        b=yMyGxSdHH+lzkqqPwzFKvIHwNlw9Yl+QdqHQxzQXIr7iY4LKzqBKEPre6a4kHR8gPH
-         rACkIYKpN7t70nfZtHG6xUwSxsa3ijQ9a1mFW5d0pG45esiqSrLrScHGoFumLw7Q5L05
-         ongjgo9se7zcV3IjVslqp5qCM6Dl7XvReEgqeYbe5eRqN3dpsWD3sEKMu3Pj1sxINoGO
-         A7nzrtOeJLBC/UgTWUBaAArbrlNCjHnCZHcL13cNo3b/kf3mEx8LbpUXzGDFswBHVrAl
-         YK7Xy77+HPLJFA/b5EQLb8iC683CM7A0VAufRPEmZ5c1MC470bEsoTjUAW+bFxww4IjO
-         540w==
+        b=tm2nb9bJeRrI3QZ9+WWNWIChHOEcb2OX2mp+Nhjy+xbyb8QP4wyigXi8JMEat6jwcc
+         KOgA2CpWkxmTdMdwYfVvH6ip9X/4ZOC6O9pQqzAa9jt6CpG54QXU4FknmBGEWVSGbiQ3
+         R+d6fKjH6E1WumI3y/3zJHPto9hfUl+obQYzlH+GQSsTtRiburlJygDpj9QVwcRcpWG2
+         a6lvcdi+D9rVYmAS5dCKRr2wMgFWpAFPZIAsO/TVq7GrXI64qmNDNFjm33s7nlzVCBcC
+         CgXrOVWEFtBMR0+Wj/G/rabsvImm/UUrWuXScuIFTqmacVXXluSlWMy6A/GsmtYktifc
+         /ZAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from;
-        bh=iYF3ohCSNBJ+PATkGUDQfLkJnx9Fay7fJ8BzovlGFOk=;
-        b=AbgZRCtj+X37WI18/qIzasWDvvjSw9i35iMj1vyBF/Ccvgs19nstuVcm6QtxN0puyI
-         g/qFbGJ1uiiUQpCvoVuHM8nnz5QYHGeRs4LZdgveHdug5zIrBpo3QFVQrQjAgOoD/U9V
-         Mey//bQFIu5iDvqTlYD/NIFsTuI+TsvZ18jiELwyKuPtiZGjQzZIuDxLf6ekS1PBL7dK
-         42Z9beGSPA7kYqxapmGL4Y07TUt6nVCDO6Wy9/8a3MYHRCBj406XBTS1R/fw2sxQwIZ5
-         BUznnK2VX/1Z8/3hA4uNXRpGArMluXr6B45WVXnBgEDE9kfipUVA9aWEvE+bv0FZArPq
-         xQSA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=copcel0gL4mF6EEuzbQ89301GTDPwP43vd1vi9UkQoo=;
+        b=LYobvhOUIxdR17YLOxrij0raBoFxhW31kN36wLq8ePoxYFL4ibnp8s/Sw4vU5QY1G+
+         yGF2Bg1T9SwKLhwW+VNoHOtEGksyj8tMdqHWyWA84nbWkdIhYeucRmQlWYsZ6sGYNK9c
+         Ykw2FBj3pz8f3Epn48RPKahuqxaiCGjQIdGff60ORIsATliRKwc3de2C/gE+ucBzPfTa
+         9KJ18Tli9375lMNf8VyvF0p3P46FZwhgSM804p2rwe/i4DsQVYqjXIQIG4rD4lJLNGKd
+         O5cLf2Q4AKoc2BdLg2mmLpft/xwc9iVFkLl1J6hN7C7FlgNaq/0+v/MihnCuJny2UNPF
+         VoRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="f/rCB8wT";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g1si4508111qvi.36.2018.10.29.10.07.22
+        by mx.google.com with ESMTPS id p72si2240114qkp.103.2018.10.29.10.07.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Oct 2018 10:07:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 29 Oct 2018 10:07:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:47187 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="f/rCB8wT";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47196 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHB0c-00048P-Dx
-	for alex.bennee@linaro.org; Mon, 29 Oct 2018 13:07:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47058)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gHB0i-0004kw-Dl
+	for alex.bennee@linaro.org; Mon, 29 Oct 2018 13:07:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gHAwY-0001i1-2p
-	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 13:03:13 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gHAx7-00027U-B7
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 13:03:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gHAwS-0004HZ-Pg
-	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 13:03:09 -0400
-Received: from mga02.intel.com ([134.134.136.20]:15755)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gHAwS-0003rZ-8R; Mon, 29 Oct 2018 13:03:04 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-	by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	29 Oct 2018 10:03:03 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.54,441,1534834800"; d="scan'208";a="276598894"
-Received: from mjadwisz-mobl.ger.corp.intel.com (HELO localhost.localdomain)
-	([10.252.7.64])
-	by fmsmga006.fm.intel.com with ESMTP; 29 Oct 2018 10:03:01 -0700
-From: Samuel Ortiz <sameo@linux.intel.com>
-To: qemu-devel@nongnu.org
-Date: Mon, 29 Oct 2018 18:01:45 +0100
-Message-Id: <20181029170159.3801-6-sameo@linux.intel.com>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20181029170159.3801-1-sameo@linux.intel.com>
-References: <20181029170159.3801-1-sameo@linux.intel.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gHAx6-0004kZ-E6
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 13:03:45 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336]:40483)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gHAx5-0004bo-So
+	for qemu-arm@nongnu.org; Mon, 29 Oct 2018 13:03:44 -0400
+Received: by mail-ot1-x336.google.com with SMTP id m15so8264192otl.7
+	for <qemu-arm@nongnu.org>; Mon, 29 Oct 2018 10:03:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=copcel0gL4mF6EEuzbQ89301GTDPwP43vd1vi9UkQoo=;
+	b=f/rCB8wT/+jnlyGeAlu3I8I+VcgJC7OwpOdu19Gxv1aCqBNMrrAX68kBdnF5Z0ZqxB
+	9Iaf2FeSz9WXZe3srxzHQUpWU/U6FWbxNe5UBC4fJnO92ee/EfD78R6TfAk0Gl9E384y
+	GH5sIarw5J7YkZq+hG2s1Lw7POAQdgolIfLo4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=copcel0gL4mF6EEuzbQ89301GTDPwP43vd1vi9UkQoo=;
+	b=faXnwV2UkK5SwCGxX2VajRuuJFomV16P4x3kS1DMrHAAjbMccpciLMjFTxQBmKmSQS
+	tFMWNJM5sMPtI0RYnySswh9vM1ynxJKpuiDpcgokb0OvoLnur4uYEc1mQ5pZY87GCCrd
+	wOvtanQR4DFEZcg1V52vTQ9tXDB+y262sRWMh7hNGxSMGgUsY32mU9RFBEkFktlJbpMv
+	2W7xLZoW5axHldD+mD4FZ1FVeVzKSOy5I8VGYzSQdNQ3VD3iILzbbScvazEjRLXp2T8y
+	701BgxVhnPDgXJNOxHJdAF50HzSd5HE96XDnr9JZa9rq/vXXIuL8jcMrwy/o3v33GdzZ
+	lTvg==
+X-Gm-Message-State: AGRZ1gLyLW9kRRzhvgIyQ1MiDOc1hObDUDmIylijw/0RsgkWvFX7kZ8+
+	C1asa8/VxNPLaeBEp5dQmNGO0awrBPzdG7UphByAhQ==
+X-Received: by 2002:a9d:217a:: with SMTP id l55mr5310673otd.316.1540832606839; 
+	Mon, 29 Oct 2018 10:03:26 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Mon, 29 Oct 2018 10:03:06
+	-0700 (PDT)
+In-Reply-To: <20181029133722.12415-1-kraxel@redhat.com>
+References: <20181029133722.12415-1-kraxel@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Oct 2018 17:03:06 +0000
+Message-ID: <CAFEAcA-mjgjC1DPTcArqoLDv+jgOrY_8v-qRhiwDpsFu-4cxUQ@mail.gmail.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.20
-Subject: [Qemu-devel] [PATCH v3 05/19] hw: arm: Switch to the AML build RSDP
- building routine
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::336
+Subject: Re: [Qemu-arm] [PULL 0/4] Audio 20181029 patches
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	"open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gobZVJ+jt53n
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1osHiT8VHTgL
 
-We make the ARM virt ACPI code use the now shared build_rsdp() API from
-aml-build.c. By doing so we fix a bug where the ARM implementation was
-missing adding both the legacy and extended checksums, which was
-building an invalid RSDP table.
+On 29 October 2018 at 13:37, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> The following changes since commit 285278ca785f5fa9a570927e1c0958a2ca2b2150:
+>
+>   Merge remote-tracking branch 'remotes/famz/tags/testing-pull-request' into staging (2018-10-27 19:55:08 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.kraxel.org/qemu tags/audio-20181029-pull-request
+>
+> for you to fetch changes up to d436d4e7a50a7c4fddc0569c2107fe5eaf0e1fbc:
+>
+>   audio: use TYPE_MV88W8618_AUDIO instead of hardcoded string (2018-10-29 13:50:15 +0100)
+>
+> ----------------------------------------------------------------
+> audio: qom cleanups.
+>
+> ----------------------------------------------------------------
+>
+> Li Qiang (1):
+>   hw: AC97: make it more QOMconventional
+>
+> Mao Zhongyi (3):
+>   audio: use TYPE_WM8750 instead of a hardcoded string
+>   audio: use object link instead of qdev property to pass wm8750
+>     reference
+>   audio: use TYPE_MV88W8618_AUDIO instead of hardcoded string
+>
+>  include/hw/audio/wm8750.h  |  1 +
+>  hw/arm/musicpal.c          |  5 +++--
+>  hw/audio/ac97.c            | 12 ++++++++----
+>  hw/audio/marvell_88w8618.c | 14 ++++++--------
+>  4 files changed, 18 insertions(+), 14 deletions(-)
+>
+Applied, thanks.
 
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
----
- hw/arm/virt-acpi-build.c | 31 +------------------------------
- 1 file changed, 1 insertion(+), 30 deletions(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index f28a2faa53..0a6a88380a 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -35,6 +35,7 @@
- #include "target/arm/cpu.h"
- #include "hw/acpi/acpi-defs.h"
- #include "hw/acpi/acpi.h"
-+#include "hw/acpi/aml-build.h"
- #include "hw/nvram/fw_cfg.h"
- #include "hw/acpi/bios-linker-loader.h"
- #include "hw/loader.h"
-@@ -366,36 +367,6 @@ static void acpi_dsdt_add_power_button(Aml *scope)
-     aml_append(scope, dev);
- }
- 
--/* RSDP */
--static GArray *
--build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
--{
--    AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
--    unsigned xsdt_pa_size = sizeof(rsdp->xsdt_physical_address);
--    unsigned xsdt_pa_offset =
--        (char *)&rsdp->xsdt_physical_address - rsdp_table->data;
--
--    bios_linker_loader_alloc(linker, ACPI_BUILD_RSDP_FILE, rsdp_table, 16,
--                             true /* fseg memory */);
--
--    memcpy(&rsdp->signature, "RSD PTR ", sizeof(rsdp->signature));
--    memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, sizeof(rsdp->oem_id));
--    rsdp->length = cpu_to_le32(sizeof(*rsdp));
--    rsdp->revision = 0x02;
--
--    /* Address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker,
--        ACPI_BUILD_RSDP_FILE, xsdt_pa_offset, xsdt_pa_size,
--        ACPI_BUILD_TABLE_FILE, xsdt_tbl_offset);
--
--    /* Checksum to be filled by Guest linker */
--    bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
--        (char *)rsdp - rsdp_table->data, sizeof *rsdp,
--        (char *)&rsdp->checksum - rsdp_table->data);
--
--    return rsdp_table;
--}
--
- static void
- build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
--- 
-2.17.2
-
+-- PMM

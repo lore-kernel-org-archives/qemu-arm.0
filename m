@@ -1,111 +1,98 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4268495wro;
-        Mon, 29 Oct 2018 07:11:50 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5d/jC2dB5J5YvVvuzc8HxbtmwvCrg1vzcikUXlcglRR80+G7a7wPIwZLG8uFeo6LDUKQwm9
-X-Received: by 2002:a0c:a912:: with SMTP id y18mr12992215qva.39.1540822309396;
-        Mon, 29 Oct 2018 07:11:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540822309; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4285834wro;
+        Mon, 29 Oct 2018 07:25:50 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fGTGvdbBRb8gOorIEQLQFB/XNE5R/WIgdYahnJdqxQpgBI9BuWkCE6G7oU2n2s8YK3QkrQ
+X-Received: by 2002:ac8:72c1:: with SMTP id o1-v6mr13194060qtp.134.1540823150507;
+        Mon, 29 Oct 2018 07:25:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540823150; cv=none;
         d=google.com; s=arc-20160816;
-        b=gGGbQ9ltOuOXo1IoQUxfQWE+TNX4tAk6K3xh0VIG9sLd7+Lvv/6uIVSEFNMrf7P7rr
-         xLZIxfVUPfV94ZI8ss6nFGZsvv512RXnGKlLddmlTsEAfdIBU8zcRGGRQRy0ce6Ite5X
-         TPq52VZlJlr/4nVvjEKEc/Ps2Cj6w9KAgIZ/ffKRUKRwPjOtBYuqFfJvNWK4TVV4UgfQ
-         gcZhDZkFqD6/DkYNrKZ5NclUqVSp3cAJ3owfLlZGsEWPU1IsYoN3VE51o1js3Jnfx5tb
-         asqOqr/J06JVVvz+E4hjVcVVcvwVVwSXKXGMVOiQBdzGHzkRWAiy+60IJXwji4ly96lW
-         3ecg==
+        b=qNo1tinWY4a1RdjnF6sGNVsM5iM10J404v2cJk9bpKK9T18H4gerMJ+bNpRimNBr9j
+         MikndU5iwd7C6+RwkaPJi5U4fC7uUctID20GTh6M9jAPS3pmuZluXuTGi4GPROSxeQs/
+         I5JhfyF5ejiBQpfDsrgC8O/9x4KFjnFWngXC3I5z9LDP88axDvM88zFlRlMwB9jJp/ac
+         pVQX92WVv/HjLP65mq7Z6mycxcazgWDI8aaDwPk4S7oXQrNEWUeXe+ny+JLIyVFC5JXs
+         K2eagqjTIuXro0eC0ibe7eRGjn1Tv+yaKEyydQwJHQPQ7uRGxmO/3nomoLv9bsVaYY6B
+         oi2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature;
-        bh=lk+Quu4wKHVdvR07NNWqZYtaZxBwFqaxgPkwitEOg9U=;
-        b=VZ3iOoNH6uP5+7DBYp1wUkj7148lses/UIgZE/UreHbQRRa5f+WsnDQwqhwdG7h7zy
-         ArI4vFdWZcFZ2nvDiKsQkUnPs4zQMj5rd+HwbNe+hVfitXizv30dlWt9kKHTw+s/bS8X
-         /wJI68Y9XfEru9tRjJCponkNX+/ZElV3EwxyXZkKYhsI3O3IfLrj3TJ1I9d2ZUIdJgu8
-         ErWxL/3vCjThvhMhyJUepqwgQWA3J0bC4q3PtL3mCPayinp7Tr0y1Wq4jPvmbQmyaE9K
-         XE983htU37KIw/YMV0nekRRkAoseZ7SIZkcPgrUhMpcT1dgz9b2JnGX4JJS9EUbJxezO
-         H2+Q==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=7xrldP4RNMK8V+iZBladrxFVbVmFtSnoyKAIDI7wM9c=;
+        b=IZL3inb0PnsZ6FOdPydqcf4QHRBALjd5ohLE8RW8wLGEaaxXlF2FWTCvqBKjWvPDS2
+         t7c+6WdMdao6vWpm4hRkQmts3ArKQCrhgRvA69xMLgagK9NJfqijlzuAMfifQjyqrIby
+         pKXjL4KCRvDBx5t9hlTiZbFjDESxiUCoWAofqzpvKgCO/MRXVjnArpexvWyimZnwXfv4
+         rFccOey0sA6T7LJhC9IsG95CMw5seY7PURa/FINpht8FEBz5FQzJYBeR0yMFLlX1L+IF
+         d9XOmS9SAVsVUWD9aCja93+6fYes51DREEwbWV7mUxrjeUoqCfloWt6Y2dfuOgRTv6Zz
+         wwsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I0sslUl9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="X/pbUozn";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i6si9144422qvb.119.2018.10.29.07.11.49
+        by mx.google.com with ESMTPS id r30-v6si3231831qta.244.2018.10.29.07.25.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 29 Oct 2018 07:11:49 -0700 (PDT)
+        Mon, 29 Oct 2018 07:25:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I0sslUl9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45867 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="X/pbUozn";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45963 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gH8Gi-0006pU-Sh
-	for alex.bennee@linaro.org; Mon, 29 Oct 2018 10:11:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41879)
+	id 1gH8UH-0006jq-UM
+	for alex.bennee@linaro.org; Mon, 29 Oct 2018 10:25:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1gH8Ej-0005lX-Qs
-	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 10:09:47 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gH8QX-00039r-Uc
+	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 10:21:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1gH8Ei-0004mf-Gv
-	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 10:09:45 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:33788)
+	(envelope-from <peter.maydell@linaro.org>) id 1gH8QX-0005a4-2q
+	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 10:21:57 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:38483)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
-	id 1gH8Ei-0004b5-3F; Mon, 29 Oct 2018 10:09:44 -0400
-Received: by mail-pf1-x441.google.com with SMTP id a15-v6so4094635pfn.0;
-	Mon, 29 Oct 2018 07:09:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=lk+Quu4wKHVdvR07NNWqZYtaZxBwFqaxgPkwitEOg9U=;
-	b=I0sslUl9zmkF+QV17Cnua8wBEV6/NjJ0lWu2pXhrAtoS1gVeiHeMpIUi9fbCHRyPJY
-	LPahAjFQ8El/N4YcOf1kxQNMluEMFYbV4AGnzHRODNzbqbWlwrDSDN+x2C2Tx9AarFbw
-	i3Gx+79l6fP8Etyqwhh3nYSV3+8uai5jAbhxrCiE8jO3GEXilOTtO3X0X3hZtVORSN1K
-	4heCYDKmuxWPIjvARm1a3RVyd4mQj7kSWq1QH06s6SJzGhx+NJw7T5Au6esZolzmo8fv
-	NqbHOnwXrBpIVdXgYfs8SD1b9Hs6ZXQxBsrT7wzAeBfj4FZUBzOirOSLV32PdSnhK5/C
-	7PtQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gH8QW-0005Zi-GT
+	for qemu-devel@nongnu.org; Mon, 29 Oct 2018 10:21:56 -0400
+Received: by mail-oi1-x241.google.com with SMTP id v83-v6so1237626oia.5
+	for <qemu-devel@nongnu.org>; Mon, 29 Oct 2018 07:21:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=7xrldP4RNMK8V+iZBladrxFVbVmFtSnoyKAIDI7wM9c=;
+	b=X/pbUozntf+xbnRhkNYjbjQOaDjdPzc+6d1lvfbq8PYipYTawkVY7e7/92ukwvWm6Y
+	1JQhhfOlX5eEWQt4yiJo2fx2KSlEXCy0LUIbyDSWSE9KCxbPz8k1nB83KzQ4k+E2sw/H
+	GKG7qggdydYNYMEw4GYOylvxxQgWEfCeQk2Sc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=lk+Quu4wKHVdvR07NNWqZYtaZxBwFqaxgPkwitEOg9U=;
-	b=H9Cxr3EgNz+HsiyXjWUXWGLu6dfHp1XF4AGc387oj+Zi+myvWKZegDlBpfocHMJAqq
-	DRnilNYqC/GtOn0zG9f1TvsEqlDHXGbcghTNP1SH4P19KIxOq9nL+C3OOVDgCbIxiubR
-	JEoLVHckNQgceUwdDCh70Y5cPm0xnlpq9aBuGyResgG0whNID+0BFD66U2jUl2fzy1FH
-	iD7bES9vDR/F/J8M2vS3+MwUSB1AItbtITvwArPth+4TWXpzhtYfyuOPtcDAfnSW9mpi
-	RH+QwW+qfr0RT9TXE3X1PokwkEXwIprmFLJPsm3fuFM2RzzjMGlO2lSYiieDL9jtMzGy
-	opZw==
-X-Gm-Message-State: AGRZ1gLZBieo2Wu1Qfnp+DcoZgu8CllonTb09OhG/RZkgoJ4D4cXshjS
-	ewjWa2TN86fciz7r1PxkXKY=
-X-Received: by 2002:a63:db04:: with SMTP id
-	e4-v6mr14028655pgg.280.1540822171099; 
-	Mon, 29 Oct 2018 07:09:31 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-	by smtp.gmail.com with ESMTPSA id
-	x23-v6sm21785895pfh.56.2018.10.29.07.09.29
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 29 Oct 2018 07:09:30 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1540548409-22560-1-git-send-email-thuth@redhat.com>
-	<CAFEAcA8EubWya8ey9VxhaCw4m2U=KA+i2C-R9P-p+P6oEBBLew@mail.gmail.com>
-	<7fc49925-36ff-bd9a-0cd7-e5f8d4bb3672@roeck-us.net>
-	<CAFEAcA-UF+SyXvcU+NGZsbqBF2qg+s_x4HPU7yvf7B2G-=HPOg@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <b4f6cbd2-68fe-5b07-e8fb-93b1c4d8a6de@roeck-us.net>
-Date: Mon, 29 Oct 2018 07:09:29 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=7xrldP4RNMK8V+iZBladrxFVbVmFtSnoyKAIDI7wM9c=;
+	b=GoGO5db6WZgr8CiZTPHlRfMiR6j948jSnhDCpTh0iYsIWZg2IWB/9cMisHCHOs+kYr
+	9vMEvkDM+ZVme5i9b0kEULPLijMITemPv40zugBO2L9Qgs2k/sS7XtcQ/ThRO7BP8CRu
+	tqKaSFbUjpIsnYmK0ImZvLhoFq1u++YmLAMJSXAMFkALVJrmIPwOs5W9gAbcd6Ji6Oip
+	ZYBYfWw6qvXLWcOK3g6mspRfM/Fiz2kqg0cuYheNok50nX6ivsbPFMNElzBzpC7OqEQd
+	y3BwEo6Oq0uPLMywf2qoiLG1zshmfyNxRNSp3ypgJbYtQ8Iv5N5pojAo2dl+3mcH8+6o
+	S4lQ==
+X-Gm-Message-State: AGRZ1gKUhJ0zp7SzzBnGz0H6bkpkbCb3w6VqlucRJ+PVtgUmSvZRYkaZ
+	ehnIRC4b6paRGoK1bSdeUaulo+Rflh1jmIkzV/JlVw==
+X-Received: by 2002:aca:f1d6:: with SMTP id
+	p205-v6mr5958795oih.332.1540822912470; 
+	Mon, 29 Oct 2018 07:21:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-UF+SyXvcU+NGZsbqBF2qg+s_x4HPU7yvf7B2G-=HPOg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Mon, 29 Oct 2018 07:21:31
+	-0700 (PDT)
+In-Reply-To: <20181022173559.17111-1-edgar.iglesias@gmail.com>
+References: <20181022173559.17111-1-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Oct 2018 14:21:31 +0000
+Message-ID: <CAFEAcA_i0MHixDocr95Dhedj1jqHxA7JPg_1qbW+eAK8qQefcg@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: Re: [Qemu-devel] [PATCH 0/2] Deprecate the "collie" machine and
- Strongarm devices
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-devel] [PATCH v4 0/4] arm: Add first models of Xilinx
+ Versal SoC
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,68 +104,54 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iYclD8OZRvI8
+X-TUID: H37sgSkzyLL9
 
-On 10/29/18 6:24 AM, Peter Maydell wrote:
-> On 27 October 2018 at 12:04, Guenter Roeck <linux@roeck-us.net> wrote:
->> On 10/26/18 3:12 AM, Peter Maydell wrote:
->>> Hi Guenter; there's a proposal here to deprecate (and eventually
->>> remove) the 'collie' board (strongarm) from QEMU. Is that one of
->>> the ones you're currently using in your automated testing of Linux
->>> kernels on QEMU?
->>>
->>
->> Yes. I can run the test with older versions of qemu, so it is ok for me
->> if it is removed (as long as that removal is not backported).
-> 
-> Mmm, but if we have an active user who's testing them then they
-> probably shouldn't be in the frontline of boards to remove.
-> Which other boards do you test with mainline QEMU?
-> 
+On 22 October 2018 at 18:35, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> This patch series adds initial support for Xilinx's Versal SoC.
+> Xilinx is introducing Versal, an adaptive compute acceleration platform
+> (ACAP), built on 7nm FinFET process technology. Versal ACAPs combine Scalar
+> Processing Engines, Adaptable Hardware Engines, and Intelligent Engines with
+> leading-edge memory and interfacing technologies to deliver powerful
+> heterogeneous acceleration for any application. The Versal AI Core series has
+> five devices, offering 128 to 400 AI Engines. The series includes dual-core Arm
+> Cortex-A72 application processors, dual-core Arm Cortex-R5 real-time
+> processors, 256KB of on-chip memory with ECC, more than 1,900 DSP engines
+> optimized for high-precision floating point with low latency.
+>
+> More info can be found here:
+> https://www.xilinx.com/news/press/2018/xilinx-unveils-versal-the-first-in-a-new-category-of-platforms-delivering-rapid-innovation-with-software-programmability-and-scalable-ai-inference.html
+>
+>
+> In QEMU we'd like to have a virtual developer board with the Versal SoC
+> and a selected set of peripherals under the control of QEMU.
+> We'd like to gradually extend this board as QEMU gains more support
+> for Versal hardware components. QEMU will generate a device-tree
+> describing only the components it supports and includes in the virtual
+> dev board.
+>
+> Before adding Versal support, this series starts with a few fixes to the
+> GEM that I ran into when running recent kernels on the Versal and ZynqMP
+> models.
+>
+> I also noticed a problem with HVC insns not being enabled when using
+> QEMU's PSCI implementation on CPU's with EL2 and EL3 enabled. This causes
+> problems for Linux/KVM guests, also fixed in this series.
 
-For arm:
+Applied patches 3 and 4 to target-arm.next (1 and 2 being already
+in master), thanks.
 
-akita
-ast2500-evb
-beagle
-beaglexm
-borzoi
-collie
-cubieboard
-imx25-pdk
-integratorcp
-kzm
-mainstone
-midway
-mps2-an385
-overo
-palmetto-bmc
-raspi2
-realview-eb
-realview-eb-mpcore
-realview-pb-a8
-realview-pbx-a9
-romulus-bmc
-sabrelite
-smdkc210
-spitz
-terrier
-tosa
-versatileab
-versatilepb
-vexpress-a15
-vexpress-a15-a7
-vexpress-a9
-witherspoon-bmc
-xilinx-zynq-a9
-z2
-
-Though not all of them are supported by upstream qemu. For some of them I carry local patches,
-for others I use out-of-tree versions of qemu (beagle/beaglexm).
-
-Guenter
+-- PMM

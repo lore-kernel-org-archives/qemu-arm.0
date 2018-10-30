@@ -1,41 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440163wro;
-        Tue, 30 Oct 2018 04:24:02 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cRcCSIAPTUHtuIKr9a5sOvAdWH5FtRO0LPR+aAVwa6oZKYk3aYDoi7KtV8SRWt4qX0WiR+
-X-Received: by 2002:adf:e50f:: with SMTP id j15-v6mr18154610wrm.94.1540898642450;
-        Tue, 30 Oct 2018 04:24:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898642; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440184wro;
+        Tue, 30 Oct 2018 04:24:03 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5chjToBg6fmma3hPi60BIMB+/5hsusN5ytLIRZJom+qDdWefEh9O0mq8Bjq0bG/Env6l2Gu
+X-Received: by 2002:adf:e7cd:: with SMTP id e13-v6mr19220925wrn.115.1540898643254;
+        Tue, 30 Oct 2018 04:24:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898643; cv=none;
         d=google.com; s=arc-20160816;
-        b=K46uxEQbOL0wll/bF1fZUeYactVxFgkVwipjHQ7ciyaS+XULPlqk6gN6egBU5qL1AZ
-         Wpcz5D+tQW2h2GCnJ+Mod3PMZ4wkxiS9MbMG+fBawkKtpXKDWn3/NEV08MkWctyYctso
-         WOh2nsaIutpSZXCRZhn8ZticlwiyQNryhP6jwrRuEZCCD+tn2VuarDbSdfsuURoBKqiy
-         47bhUgA5oOIt9OfOMzEPeXciklioqq0evWQ7zPYUDGT2OdiQ3jaJnIsgBUdnr23qHkiS
-         8Xn4WbxH8Yn6zVQab+hOEp9o/QsnpD2m0YLo0tgL2cilzKUBPNfyH/GTz5v+O70AhbAH
-         UMtA==
+        b=br2MDWD0F2Ru+QfVp/e4rgP9XAQGrMfiCURIshPpqxncQlSA8FTp0cFsRekXeqr4eN
+         McZuP53iMvna+WqtcdmaT1vtVC8PCyt7BvfAsIrVd7uj7FVpJi/B6m1NJD2UeZTBqQ0f
+         O3R9ESKVBcbfEzQOhvNcnAY4PEJbTUG+6Pe/ONoNkylq2iGTDU+IBkj6W/W6CmCk1FWX
+         ENoiMMlIREgC2SuyvW751vnZIE6EA07qSZQpF5tZqEi9k5DuGKot9DxbjHz8iC2LuDzU
+         HiZl9wmRlKW7oSvFa3cf8cah1W3peWpHYUvZYamXuuhEz/HJC7hIYezgFhJpOwaHFpuZ
+         4GwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from;
-        bh=CdEUwtbFvTwY4SjUy/9oI1GE3pSfAg7oELF9Mang8fU=;
-        b=hMrSyCzZB6Ur9C/HbTg9gdvv2/nJuSFGwJU8WhNjIizohWDfp+nCYj50iKizTfYeUC
-         WxOEPfDq7mxUlJCQdw+mn7vFKiI/8M3QNn2LjYJibnyv3v01kJTQaDkS1mpTK+3ie3i8
-         mGyVn1t/prWt6JA7HuuRdKdKL0mp+jaX2+0eU2lEPgmpl4fuZJyBhWIx6nt3BygQ9K1J
-         y0RziQCOk7WsuFGB4/1SLXD+7D+T/nwWGG2/W2GMqO+4Q6ky5wVwtCqmR5VZ6p3rd6p5
-         /kQ59bN5A/KbTjrqekfdgj3P82FC5Qj+TMvCgKpT797fMG85fQtcBTO7QNYoaC4E1frk
-         Ob8w==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=W2YOHj5Pwm8aShV3wuWNO2BSWNjXz4ckeADk7WwbePI=;
+        b=NWc7RD1nxyqqHHjtiz3mRr4VQYpPp+VdUsCK9ZA5dNqLZ2g7AAwe7fK3Q/KK0Lgj2B
+         Qw8o6SQmc9Fppohe6R25wzvxXDR9LK3J3Z9uS2944shrAmfSC/FVMvkYrI0xERyszV3q
+         U35rI+vdTzlFlyj2+oJNxtvmidc5IoX7Imt1xq4d0/7Ew92GXExFngWzZx3nwsd9dank
+         NUIfzWXqDocSaMu5JtNODSWSD1hItk1aHV35zL9bzm8DeocBHRgo0nPDCe69x1fFeCgK
+         vlpSbqOEnbZBC1YV9K7YoQjK8NVI6vXO+BBrdDPofHJeCTprNqrw7PKR4x08rfOpaqTo
+         1r8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
-        by mx.google.com with ESMTPS id u1-v6si2086343wre.217.2018.10.30.04.24.02
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
+        by mx.google.com with ESMTPS id e197-v6si12923425wmg.125.2018.10.30.04.24.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:24:02 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
+        Tue, 30 Oct 2018 04:24:03 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.130;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MTzrW-1g9EeF45MQ-00QyF6; Tue, 30 Oct 2018 12:23:58 +0100
+ id 1MOQu6-1fuwMb3vR8-00PtOG; Tue, 30 Oct 2018 12:24:00 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MTzrW-1g9EeF45MQ-00QyF6; Tue, 30 Oct 2018 12:23:58 +0100
+ id 1MOQu6-1fuwMb3vR8-00PtOG; Tue, 30 Oct 2018 12:24:00 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -67,81 +68,60 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 06/20] docs/devel/testing.rst: add missing newlines after code block
-Date: Tue, 30 Oct 2018 12:23:23 +0100
-Message-Id: <20181030112337.17973-7-laurent@vivier.eu>
+Subject: [PULL v2 07/20] scripts/decodetree.py: remove unused imports
+Date: Tue, 30 Oct 2018 12:23:24 +0100
+Message-Id: <20181030112337.17973-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:JX1TAk6usLYJXFNrVTIYoQHw5D9Chnj+I/UQBtTU0G9hdMQz7Jy
- b5rAuOIuqcjCYOcSjc93W2rIyZdRwOjXgsFjjXcV4J8C9Jq3WWtP7cUTe+T3iyy57t1E3Mi
- dAsR0lZrFzkxht8M9XMYKWNd8SkohNvcycql/Zr1iVXcpFG2zDdS4hQM3mO6SDlL+E6/HBP
- kQSYMaMPIO/8Wm0OmhPbw==
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:Q67xc6fcWLfjbG7Ml7jpS1Aya7e9ae37lnkUty+YWGKEVwlvsPw
+ tAf2OifniHA81i/uHFvQud+ZwGtJXJS5utKj0UMYz55wPI21InZVZCgYdHJEnDeOO0NW0RW
+ pUPOgggjjd1m6OQQXuQ5yeN25RmxdabzLdgGY1/KGvCmLYzPOc509Bdy4NMa4FD9XlKiWKG
+ vdtsb0ddP8BpUoV8wxuHQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:WBgrBvfitp8=:57AUDuSR2bNYzP4Is4oH6a
- i3OZdim+pZaYSnKtxVH9SGrC2vbdg16XfHS6QDf/3yW1krjxpGcrxc0xFf0wrhO2T+k8gRFWE
- OnW8Hv4+HcYlc6+IQCwlqqmnfXr4mAI1xG4wyuaKTwRwGvvcUIXB0OgH34ObBDajQuR4zhQrA
- 0niK2WEXNLVlL3blMoP+I9Xlnuo9KQ+BknzvaypRIZcjp8Fjtl2/QiTm8fq/zho2ROrqrgPiH
- V1AxzRiIBG9BIGsUqsHFW+bLStUDoF6HUOmIcgvNZgcU6NpAH2yiAfUUnFXYxDFoycc0PyshI
- /0BCOB3+Fp5FgzGv4g5MsLQmdDVEzZ82IcwwYka2W8FYqyqn6RhAJy3desNtagsF6/O/r536S
- eTqAEEEiUH5mQcuE3555yyt4nyJkPUVGRGnYf4gbGtq78PmdqGYwIeoav6oFvJ4ZfuF4x0qUR
- q4XJIh75DxWHeHgnD9BB4VdPy0Al9gWLLIXxXUAGMbWwfw3Aci0ortws0kh9sr5E/YUD2r3Bf
- DJim/JwUCMss27qVQbajjDjpFtT0MdXfa1P4A97HKtzrmGBF+MrD6v9vkuYObSOeKODiy4T+7
- g73ZlkTPR2/HRVO92SBW88yaxhBksi9C8HaXepAtMv/dzR2kVHEj0QwmtbuBebcgnu0Ru4PHC
- qlndKISTtt/EBtT7S80sdKC53duA+XHWIGSEKhJSW6ie4MjZTUeF2xCkYrU6fOhSodf7P/y/O
- dkzQBZd/E/Ik+QESooEDPrGI2KVapdzGLi2FTzWquVSyumS8+56iEiqXDjnAtKT1aza6VGvfX
- gZlc+FeSaS3ZpKJpfjhTQvDnqh1Uzu7/V/9uVUyZ3ELgyxBVCXB4ir3dQBsH04zBs0lxa6zlf
- KLwTJeYH5RXuKN1jn4L+N2FeoS6wg+2tu3I9DNxRM=
-X-TUID: xLoHbAyzfk4a
+X-UI-Out-Filterresults: notjunk:1;V01:K0:B7DB0orcvlQ=:viB53D0U/y5OC/zItp+l8+
+ jcS9reEAgNas082Zug1uXgfMTR7jJ2wEZVY9DPxEVHyzqrXGUcKLVWth5YSxo78DQuYnhEW4V
+ kDejINzHR0M2rOXmsah50i7Alc5nA7gw/A0vAZI0439g4yM9pPiWn+xrqxBNFNcX498MOiN/h
+ 3nIqO3kWOLbpJQ6GCuQC/sItgAPLuRlD9WOA2tr3Vh9FoYvZTgQhh1A+hd5Q2EGzW34lb11hb
+ tkxK3JVP7wfO1bu6hTYB22cpe2tuoUF+YHThzEHZseOCnLCn8QXWEqlLMRYIEVpvWCNBcvoGG
+ S48qamGeVTtvoDY3N7mts/wCy5bp+qYRD8VmS9FW0xYDLMtlVIE5tSqIC/D6I9GRwn5pJU4+u
+ b4Tj1+n/VgfF1TCTkkbaHqp2s4j0WAGkZegsvzBpZNVNHcNNFd6qe1anRMbdYN7Q2tdlQx48C
+ iNWQYPgwZcDDT4norsuqgvVQbswy73i/m9+5a1HA8tUOjidJWnp/knIS7+QYg5LRNCDYVFtfS
+ mQ9/q9k323i/UA41woCDG7eKHj/Iqq2mdU8CS7UY3tToyCCBLXClKbRO15yPsBOQsWEqhqPNi
+ dTNYOTa+7qG5l592jJ/eYi8D6FcOKjNbkbOUVDK+0h7zWVBYdYSUaB+r1ykDo9ONWwrSkmVkP
+ vP3blloWjqKCumjFRCC8vnp652kg4EUIYbmA1954S7W3zxWXmIfjXQ/Dv+CGOM8sX8HfykvHd
+ 9oWVpESufZ8Bsv+q
+X-TUID: dE5k+vpdWjuc
 
 From: Cleber Rosa <crosa@redhat.com>
 
-The line immediate following a ".. code::" block is considered
-to contains arguments to the "code directive".  The lack of a
-new line gives me during at parse time:
-
-   testing.rst:63: (ERROR/3) Error in "code" directive:
-   maximum 1 argument(s) allowed, 3 supplied.
-
-   .. code::
-     make check-unit V=1
-
-   testing.rst:120: (ERROR/3) Error in "code" directive:
-   maximum 1 argument(s) allowed, 3 supplied.
-
-   .. code::
-     make check-qtest V=1
-
-Let's add the missing newlines, both for consistency and to
-avoid the parsing errors.
-
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: John Snow <jsnow@redhat.com>
-Message-Id: <20181004161852.11673-6-crosa@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20181004161852.11673-8-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- docs/devel/testing.rst | 2 ++
- 1 file changed, 2 insertions(+)
+ scripts/decodetree.py | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index fcfad87614..a227754f86 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -59,6 +59,7 @@ variable (which affects memory reclamation and catches invalid pointers better)
- and gtester options. If necessary, you can run
+diff --git a/scripts/decodetree.py b/scripts/decodetree.py
+index 277f9a9bba..457cffea90 100755
+--- a/scripts/decodetree.py
++++ b/scripts/decodetree.py
+@@ -149,12 +149,10 @@
+ #   trans_addl_i(ctx, &arg_opi, insn)
+ #
  
- .. code::
-+
-   make check-unit V=1
+-import io
+ import os
+ import re
+ import sys
+ import getopt
+-import pdb
  
- and copy the actual command line which executes the unit test, then run
-@@ -116,6 +117,7 @@ and using gdb on the test is still simple to do: find out the actual command
- from the output of
- 
- .. code::
-+
-   make check-qtest V=1
- 
- which you can run manually.
+ insnwidth = 32
+ insnmask = 0xffffffff
 -- 
 2.17.2

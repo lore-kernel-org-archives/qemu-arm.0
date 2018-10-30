@@ -1,41 +1,41 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440267wro;
-        Tue, 30 Oct 2018 04:24:07 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cE0+M8nVUWwUCIPQxgehNlQEjzIp5fMdHmh4F2r8rH0fW01A/IiJumD1noSYjK/ogFL9Sv
-X-Received: by 2002:a5d:410d:: with SMTP id l13-v6mr17670470wrp.61.1540898647006;
-        Tue, 30 Oct 2018 04:24:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898647; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440350wro;
+        Tue, 30 Oct 2018 04:24:11 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5euvOgZeGZKnRQmFzpcod8rdxhDqAm9jQm9V7WxM4PSPXqWaYdKRckRTjfzvyBGvLWZQj60
+X-Received: by 2002:adf:b519:: with SMTP id a25-v6mr16920183wrd.273.1540898651172;
+        Tue, 30 Oct 2018 04:24:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898651; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZFrTF5AN4eMmz4Vt5GynSTPW3xpJkJJCu2Tvx0KT1slfQ26CETYhwynyye7kT5eWKB
-         0UwO81eqDXKlgcbUte4XaDcT8yI+zo+e8CX+l8KSfut4w0KVKgxucLfq6QYFrVNj77x5
-         oMV8dxWoaDQtrMYN7yT2lyx9OiGjdVQJVoW1qfHgkCYNBKhIzorU8t/gp0y9fruOFx0N
-         WlsibJj6rBevqpGMT7PQD9efpxyVwzdJ9VgfxLeIqZ/oNJP8KQP35Dlu8+A0mcwEuL6X
-         lwsZn4ZKl0Y749TnBl15vMwRiU9lsg6cvXoohAe4b8cFsjoMc9vR5aRSynY4zm1XOseV
-         HMyQ==
+        b=hnx+R9hUdVfOAv8han4JKIfGZOEHj2/zjak85Fw9irmxGWr/ZVKSjRG+nyi8Y9QeDK
+         42OHMkVUJf5NeV8pDU0hk5/wZAmRjkZvfF6nDNiIA6d2g9PdqKSBGyhN9L0kuC76vOnp
+         Oa/xltWABqcCVKV1AyMn81Lc9ni0L9lu8UarR7iPT+WiLVEcE1eF6lApbWkaEqE9oVpC
+         x3m6c0yl1h3rTnU+znDgCi+omZhG7GF4QKE8UHZPDOV/rAL4aVIsLhisaGtYxNEwpNAs
+         TD9zdy1LSN3H9XeI3dXpuEwpQUk88QWSNDyuCbAuIagOul05nHetI8kFpmXKmvImbf+B
+         haqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from;
-        bh=hUPRBk12+PjAvaLGHeJb8B74S86vAhHYQBzFS8sJjS0=;
-        b=ZxZykyDyCLGEKd0B2e0OTDQwdxTx10waM2+Cyj8WCAw7Dp+FJQ+qnN3BIRqWFklPha
-         6b0oqlD4I35d28K2HfJ2v21JL/7dhNl8OOnSAalUiY5X4kGFKBRueWZxvoOwiMVUjCn4
-         IlD2Ot9u5UCwD40FfMCeATg/zY0/ABGrIMje8idiL1lMh6qBXJTgIcYH4pVEJwjueMIR
-         2TzRFH/EXRXI2HYYhFYpt7yrO3yi9SwDeWRQ/xYyIAHsTB+qzQYHeX6Js3Ic5Iba6yrY
-         YVhUtwqlHTLewecAyJcQlACKYiE7Jfo2FoBBbZaXNwD8hfN29JyOubNitqac2fqZ+vde
-         wvFQ==
+        bh=H1g7uAYFfliUFwCjuIzZo0P6uBxcYGghcQyoLVgeGRw=;
+        b=gcYhRgZV66SPnV+zYlVEenSx/lFR5HsBXTstUM8h1TnWN76hu+KnU7AYxeH4868tWA
+         OwRLUbPmqG87Oi9ya8cVtpDiuUhNG6i14iWpPaArqFkcSZ1a+EVbR73aCiuMqVge9yjR
+         FrBj0+zKC7YNQxjgeLhRtefODSnr4NcVoc4xXkzYOBnIqiJVsQl51juk3po5Ha5kWhRF
+         n/Vaq2jIyfL9iQ+Q5c7xJTboI12CvY+G9muj/eI1znKgMvfjnozl7ghbFJbbsiAze4Ty
+         dWkjFSI0OAtJamNYdn/EIi7vyUxrP7PuSHOPmfBZ9zTIF3wKb/KTSf1npiTczcIdVXuy
+         k4yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.130])
-        by mx.google.com with ESMTPS id t63-v6si12013890wmb.136.2018.10.30.04.24.06
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
+        by mx.google.com with ESMTPS id f6-v6si18849474wrh.303.2018.10.30.04.24.10
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:24:06 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.130;
+        Tue, 30 Oct 2018 04:24:11 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.130 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MS43X-1g7Ii04BtD-00TS9B; Tue, 30 Oct 2018 12:24:04 +0100
+ id 1MqsL3-1fn0zx1rWb-00msqh; Tue, 30 Oct 2018 12:24:08 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MS43X-1g7Ii04BtD-00TS9B; Tue, 30 Oct 2018 12:24:04 +0100
+ id 1MqsL3-1fn0zx1rWb-00msqh; Tue, 30 Oct 2018 12:24:08 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -66,46 +66,55 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 09/20] qemu-iotests: make 218 executable
-Date: Tue, 30 Oct 2018 12:23:26 +0100
-Message-Id: <20181030112337.17973-10-laurent@vivier.eu>
+	Markus Armbruster <armbru@redhat.com>,
+	Li Qiang <liq3ea@gmail.com>
+Subject: [PULL v2 11/20] cpu.h: fix a typo in comment
+Date: Tue, 30 Oct 2018 12:23:28 +0100
+Message-Id: <20181030112337.17973-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:fRXDuC7A+9gUdg2j7rbgPGWEzu26PAaeJ3msJENwEZyMBuht2XZ
- +vOUYRgnozCOMELkhIeuNQz1yzaBNsGxsneK5EruGaaVC/HLrSwQ70ROeGVhpqmOCMBFCo/
- z1I096nvniR7qD+aCEKNSbY7sYzfL/uCaaKCfY+91VGPUmCFRWN7UMsHYrw31MMbktHm5Q9
- BvYJmAqzKjwdHTOerJwcQ==
+X-Provags-ID: V03:K1:Yjf2ebhyBBOqqgfJyr+mzJqt5S8tkY4j56FZpmecQpTDZ/v4uOU
+ faHtWIUMSDvWVYzOvNMV2egasm5Nv/Sw86QCJGPHvRHZetzWLbGZLwewTg1GN5UCCMix8Jo
+ 2Hc6CFJ9FGlaIpdH5QdtN9CSvoHAfCACXeilSysUSbI5v9quFdAc7IvB9U0JMUqXumqcrWc
+ MVgQ5/EvTTQjlLI0YXZyA==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:orvFnjlgs3U=:CUwiEiQns+64lQSW6CWlzC
- VYDiXoWcsXGwECHonjRY5d+VSnxWorYYtviVFe0jIoXpvdfLAMJR7kDFT64OvHnXWqwKAMebD
- FHszgeIb3sWnCMryki7XXjO6m6BByK16UO/ydbCOLPtPdDDrT1V4JtuybO8RVUXD0YJ2kwcwF
- JADyEXW4tB4AvW28Q1kysvCTb8XfbWZ5AiAPYLkPMVPBPGUJcnT92WUa70rSoEsilep9PxLME
- ys8EHT14Q2QLZiEM84KQRUHBaou9TEedkLMABiNAr3vS4Koi6aCgnb1hkLRfHMNBoLx3RHR9x
- 2726J59rdfjIqEHxSbfJYDWHVR9/by++0tsvQgzRCa3j9S3tshq3Bx7wwNtcM5FXzTClhVSDR
- 4UHVddBo/tg5TLWngQ3somVoByE2ep8bfljZCIkMd4MYP4E+np0Y4gLCt/EjskovP4A/UKNED
- dZQWU1SHEmBCjj/zfsOTLHJrIurD/TgGIfP13HAjpZIBpJBHKRd4sKj8iNld7fCCUpLvnsoSI
- Fl8djWyaWxQ/8dW6O/3Fc0jgtmV9Ff//eoSiftM6t+81YcIy8axBC0hFkuK4Z42kXtKFlemHy
- t/ewlPTEf40aWTzL/3+IdFdMicfAEVsKTnQVQ1HdTjkDetZTqfcUdoacCxANxRHwtws4oozHN
- zjOUHU13jL+89Ni6Wu2QLvCXbsftYsdMIbj3v9sn0SkT8gKkDOOkRVbhIytIpzqchsl8=
-X-TUID: fZGfWh5XF4iI
+X-UI-Out-Filterresults: notjunk:1;V01:K0:+LC4JChDFpQ=:9My5E99dnArsVIYlhHsbIJ
+ xKWIRA2JWFSl805LKNHOY1RAxyIY+ZYTJ5K6DqhsBEIQ4ajsStioOlZb6tKb++8xKxB/8LzWY
+ nPlFMX5w6CJDNQJxGRR82urgKZe9kdl2n1lT8gK/Aj2H99P4hB8onnq8UM5f0lL4lNy3CyiHR
+ Xe1uqk72xRUZYQXHBxB3q3YgGA2+CILp51r54byEq7p6rMz9jt4++jmVG2QYG+ghzKhOPitDa
+ 8Bn0Q4i6d8kAf2fmjLMgUwr0YkxhlaJ+BPApJsb/5iYsk5K6sf+ADyjNgAEFRs+UzDZWG44FT
+ G0XWc4RXKnXYNWBaQffU1G87MSrhpgHKnlTMgnLEZVqFwQagiD8CmWgZfVI89Jxz8xNqF5A+B
+ dSni8uFfc+b3ZFWdjsxynYkKT3QIqD/b53JcLstaSkWrnpCmGw0dkN4MohmDtzGjBLdIeOGLd
+ U8nN3HmZAlj6QyGXzQJwOG1RkTo8dDomSh+k0JVIT58cxodTQdOMEAmlIhd+P2/Dr5nBrOUeh
+ HUpKr2NZfCTOTIVIwlggRkqWAqZGMdIijZE3f4C1rLcFGUvxc+cGvERszEBBjNxHZrlmzS+D1
+ nwe341NK7vXSt230PYaSv+YX0Z5xsmWgxplU36y6npeIB8hugIV8iN3ig4ttKz81VTfwNu35I
+ i/YFCCaTYbQnnqOfRkMJKwo9McooJXQc4tDF43rwWo9V3IH2ftmEFFlfw1qZM2ZUHJYE=
+X-TUID: Iz07wgoEVyuy
 
-From: Cleber Rosa <crosa@redhat.com>
+From: Li Qiang <liq3ea@gmail.com>
 
-Commit 990dc39c made all tests executable at the time, but 218 came in
-later, and missing those permissions.
+Found by reading the code.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Message-Id: <20181004161852.11673-4-crosa@redhat.com>
+Signed-off-by: Li Qiang <liq3ea@gmail.com>
+Message-Id: <1536150548-2797-1-git-send-email-liq3ea@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qemu-iotests/218 | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- mode change 100644 => 100755 tests/qemu-iotests/218
+ include/qom/cpu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
-old mode 100644
-new mode 100755
+diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+index 4e238b0d9f..def0c64308 100644
+--- a/include/qom/cpu.h
++++ b/include/qom/cpu.h
+@@ -852,7 +852,7 @@ extern CPUInterruptHandler cpu_interrupt_handler;
+ /**
+  * cpu_interrupt:
+  * @cpu: The CPU to set an interrupt on.
+- * @mask: The interupts to set.
++ * @mask: The interrupts to set.
+  *
+  * Invokes the interrupt handler.
+  */
 -- 
 2.17.2

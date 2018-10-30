@@ -1,42 +1,41 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440123wro;
-        Tue, 30 Oct 2018 04:24:00 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fNcYpiJGWoRw6a4S5FyVSbrRDbn3gKPekBdV+KynOC58dH1wi1Hc2TgnUuDfoXyW/sj41o
-X-Received: by 2002:adf:82c9:: with SMTP id 67-v6mr17047038wrc.131.1540898640860;
-        Tue, 30 Oct 2018 04:24:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898640; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440372wro;
+        Tue, 30 Oct 2018 04:24:12 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fHhkAzKoWv8pa5Ex/OMRmuZ9yV0JGw0Pl5mBQls81USppwe8jPs6K8Q6C3Qhz+8pYJ00+n
+X-Received: by 2002:a1c:e456:: with SMTP id b83-v6mr1390935wmh.143.1540898652436;
+        Tue, 30 Oct 2018 04:24:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898652; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikkvWEKEbcXMzUJTV9dIGiSsiVetUNL7s+M7Ozl0AbCJG9N5OYPtUzplKRRfd5haNE
-         XYtiFvzDnkrkpJx8OBWo6jJGAkWXFKX99G5AIj2BQdbT/GI+lEq1WnzUytevp3WLqO4h
-         p5hvi+C9Q7aJEQZcA9VVhuEVTyApE9RnvbQvlXUt/ja3cM9lxV4Ol4lsaAQQxy5/HjJV
-         bXuK/uTtBIYFlai7g+vqb49oKnEwA+Pji5atdB67bqSIKb1krk8wqRpvUa0wJDDb/rjA
-         jB1a3tJWl6pKmVSJDB79YW91OMdUPBJnXMEqn1Fbm6Kg+MtndbliuPRpmWRYkz5FWdKU
-         sNtw==
+        b=qJGqowTgTTB60oN+GiXYYQFGhOIywwfrDtkGI8DvxJbjXdlmfcS6DPndQVJaYksU2x
+         rRC7tcIecqZtkVtKGGtlLg2+nOZ7TESoWWePnAfEOUVUJi43Ab0TMeSRBLJr74OkBX1G
+         shbFFnKxZwGnWDHCvzS4x6o+UjsyaxNi6b7OO0MvjMXKd53+X7TPs9WVHJNcqD1YiLKS
+         mGnpl0EYXWPEALfSEQS4p2eviZ2KflyhEUq+MziZb8BHaU3+demXOXRzMuUHuRPzoShr
+         n8wXnbqlBnaLl3Wi0H4omb3PkxMFbO+rhQvrC1FgdeOE42TY2wbrNkwtgCvCruw+4lu7
+         xSXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=h8Is6ZlK6KghHO/McdY7YhiNvQhp4nrDR4TpXrDWhRs=;
-        b=UaZyQjOF7p9cv11Ys0kUbKBF33zZHp9oNR9hPQUz0uIFz27YsMHVHrh7XUVE++UE2q
-         EUWfUR2wHDdpMDuheX5XnfyCqHqk0xpBST4raxBuVa5Z3Mptj0GEE++SDrUS83LS5vie
-         fKT6N8wG7QJ2rmY/trI1sacHCQLC63lXbMR7QIXdITeTRiW2lRikh/CmQJ9VYFbzRWwH
-         By2UcUY+f88VFWSGjvkOA5eVyf+iWmbC7CTINIoSFEzcpxxrScGaZXS5meOklW6yzEO+
-         0WnGipiyW2ZZ6HW1txyYEh/4vOBs/lCYhg8e+deAG2QpP4i7iWK6pGwvp/TUM4TadkbJ
-         qhaA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from;
+        bh=iZ7n7YIqNgH45zuLemr8TahtXZv0wVk6BLGyQosj4mU=;
+        b=e1MeJPwjo2byG16yAkdwybCriYjlEAG14OsfxKjly5ChfzHpDYMr1Gn9muV5NTEDqo
+         mUDPDGtQ3F4FSErdIxUe1MhZEEyaBdpNYuMQ2vXirXx9tgvx1DWbP0WcdemP3nTeduQM
+         nsIkVlXQUGLoJqUbZsqzpmwIW0f+o2eOO0l0b3Mig+xWjFQHHF9xkNouvSSWjJrt8jjW
+         BkWSH5tyTF1Z/NhaHPL7NCSsWkAXZHR5lVdCxV0A9zamxzL3pFWUlQcZjWMDzFh3vWHh
+         Kx+w+fifFkgo7BXiWAUnDP3XEDsJKcCM8TAM6gd3C0Ns92YLgntY0iygCV9mS4qOjQVv
+         Xs3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
-        by mx.google.com with ESMTPS id g5-v6si6603832wrm.253.2018.10.30.04.24.00
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
+        by mx.google.com with ESMTPS id l63-v6si13531958wma.100.2018.10.30.04.24.12
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:24:00 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
+        Tue, 30 Oct 2018 04:24:12 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.131;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
+ id 1MmlCY-1fsnlA1Eta-00js2W; Tue, 30 Oct 2018 12:24:06 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
+ id 1MmlCY-1fsnlA1Eta-00js2W; Tue, 30 Oct 2018 12:24:06 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -67,59 +66,53 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 04/20] tests/tcg/README: fix location for lm32 tests
-Date: Tue, 30 Oct 2018 12:23:21 +0100
-Message-Id: <20181030112337.17973-5-laurent@vivier.eu>
+	Markus Armbruster <armbru@redhat.com>,
+	"Emilio G. Cota" <cota@braap.org>
+Subject: [PULL v2 10/20] linux-user: fix comment s/atomic_write/atomic_set/
+Date: Tue, 30 Oct 2018 12:23:27 +0100
+Message-Id: <20181030112337.17973-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:F8l4smf1nL5W4DsrL/7cTra6H6sZJmx/uvzB/1jWx/wdKk/NVxp
- m/fq6/P0ALLGTaCdkdXooOLOe8GgI0XFOI0jqL6wU/uL32dCmmytmJOvG40vDdoivXgaMTY
- M4UmUveDPmCbjaUkB6SPRFzmAkBQ7ibaH2p90ew21v1SCeCuiT3cCz9p+K7+scs3WGgCzqc
- 1kM4wMQC2oXZpiX9tZNjQ==
+X-Provags-ID: V03:K1:iduT3obFj7K1iAg6oBhUb4ixk+5svClYbEK4LAQjtywllXs7/pM
+ KXdwAq9BbVsAnnocLClN5VeDPuS5pSgniB0jCgpETNrOyncCHDVNVNHf/HwfQeRwSQV52Sd
+ bnDFZq3BMN2jn/YUk214peMgOqk83B7IPxVZiM6mNua6l8epS3P7+F3tt0+8oXBZfExdljW
+ JpP14TVIduHIXRp5BFgHQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:OPbiJZFlUtg=:6UDHRGrOhs4uRU3/KtYvSw
- JPuR5jLG8ZkuaBXlmbxZ8h5Te0MlKiH1Sx9O8MbGT6Z0frkx3JC9bKvj/v3qO1oTwRu6/Lt2p
- +Mo3kkzwKoP4r3n2oZkuQDjVl+fvUtpdI19jyeG4Eblpnb7e5fdSt21hhhu8FgvADgAUlqTe7
- jYfDVl4kI9/CqArD5CQdKC2kd8xy0SzdqpyTrTuNBDwYtFLEEpngDGNDGBAftp26GqiExsGIX
- zzlBjrVD5gi0PXuN6jJQSI44BFgEgWn/m8MswbJXFMyyA6FZkccEpi2aNgUtAyP5tWlLb8ivA
- AQK7eTq7916LYMPAD+/bLYblvQ3Vw1VuMC4X8xTInVDfQl47b8ASDXSTzCKjEJZaXQ7G5bpe5
- 8vzAlsOaCKeLJyOmSEODYlNJ2R5LPONDg7okAChcO5682rGabP4D1wEYeCyznLX/8ioMZq4tX
- d/0EYIEow0m/JKrKGeYs5aqGjN15l4aGDwp16ehnbBVbIkaHbgawNfl5INwQWMSTf6UyIfkuc
- bnkgdPtUBETO/Tm1DJlA+gtXb8w5TMX35TPmd1izoXoMzQWyjFXw+cISmGk5OgPvKhH7FJuwz
- g/RdPSoTYva8w+2/Qq93jWQstEOruf0zB5/bXlvvf4mi4CL+NR5v6wj/QJnyMngjvU02yN7K6
- d7XPWYuO6lv//2y430+cnd9rie9/F8D5R5qJDKMQjRsgz+QbPrpqX7WzIZNVC/g6UUN7AfLrh
- 8a7Y/XO3wclCG/RS
-X-TUID: tgRi8hp+Fzrs
+X-UI-Out-Filterresults: notjunk:1;V01:K0:ZEHEYkSyeuk=:+dN7qyj6pb9jR30KZVhYzu
+ FOtMRzx5/1qaHSnyB1NSWcMpuSZ/GbpA4bIK5UmyVfC2mB2jRq4VccFEnTqcVkFe5Zj/cCvKA
+ 9QyuzRchLb1zn8jfW2ydLrxDIzo/BOarg/yxv/xo4zPdOxJ3kZChuLXKOakzZLoKYU7t/CcuO
+ rIfwVwiwxJECIVRe+mOvWVlNobvufNW4LgRj6FOkdBBVshhjR9DOKoqQl10SlVWQMAv3iO7IB
+ bLMjPJquuoL9Dd6UL2RTGysrvTmfnZVuJsRsyvBeQG77UagJc4OnaiGLSLkBlEYZVJjh4nH0G
+ VYAJdKPtGMb86o18DKxc3dNBIms7MInQghS7NMQ5TLw1RvgZ8n/qO4lOhbmN11kEVf1JCg5ke
+ bFv5yLJXwiXCmT8EdyKejSdSWDmTGFN3cpmFw37EXw8AAe80KgRCWQATRcYTTqmeq88jWKuEd
+ zxBHI++7gQL0+d8zqZh3XXd5mf/KApY2W2/JlFviGRKsMOYCL8T09qbDmEg/e2uhTZ8jQI3dR
+ ML8tjymLTQJhygcxFcVjXPIMQ3lIRkZEyba7bQScKoUSO1Sw1lU3pPD3u3MyfhxEUCqZyECeE
+ 8D9lpJ7kU7hsXNvnacajRIPBrOT7TD0Ve2XvuH7WhbCUeYmobBjn3v4W8AlIXXTWVq1Eqi3YK
+ VhO3pa8uOhf4ududqK2QQFNHBtGmCj/G/DcYCc2IIopmtM/TygbiSyzDF1lwangG0OZI=
+X-TUID: YJ06Ne30wenu
 
-From: Cleber Rosa <crosa@redhat.com>
+From: "Emilio G. Cota" <cota@braap.org>
 
-Point to the right and obvious location for lm32 tests.
-
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20181004161852.11673-3-crosa@redhat.com>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+Message-Id: <20180811211011.6277-1-cota@braap.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/tcg/README | 2 +-
+ linux-user/qemu.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/README b/tests/tcg/README
-index a5643d33e7..2a58f9a058 100644
---- a/tests/tcg/README
-+++ b/tests/tcg/README
-@@ -10,6 +10,6 @@ with "make test-cris".
- 
- LM32
- ====
--The testsuite for LM32 is in tests/tcg/cris.  You can run it
-+The testsuite for LM32 is in tests/tcg/lm32.  You can run it
- with "make test-lm32".
- 
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 1beb6a2cfc..dde3f26f5a 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -143,7 +143,7 @@ typedef struct TaskState {
+     /* Nonzero if process_pending_signals() needs to do something (either
+      * handle a pending signal or unblock signals).
+      * This flag is written from a signal handler so should be accessed via
+-     * the atomic_read() and atomic_write() functions. (It is not accessed
++     * the atomic_read() and atomic_set() functions. (It is not accessed
+      * from multiple threads.)
+      */
+     int signal_pending;
 -- 
 2.17.2

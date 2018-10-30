@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440572wro;
-        Tue, 30 Oct 2018 04:24:23 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5coBkvjrU+RbIIIp2VffiCOF9cd5sMRy4n3vcRpUGfgdCHughiiTwbphkzlt4NDlCqXcEds
-X-Received: by 2002:a1c:650b:: with SMTP id z11-v6mr1445261wmb.28.1540898663483;
-        Tue, 30 Oct 2018 04:24:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898663; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440642wro;
+        Tue, 30 Oct 2018 04:24:27 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5ejfUul7BoFyhlxSxD1h4pL4OOcxv/38y0LC97tylK7fh6IfwQDROfT5QUC164RoW4S3/7T
+X-Received: by 2002:a1c:c50f:: with SMTP id v15-v6mr1472005wmf.22.1540898667623;
+        Tue, 30 Oct 2018 04:24:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898667; cv=none;
         d=google.com; s=arc-20160816;
-        b=UqYLMXBzh1kQ3P9OMjl+GBLOdOYjgbfzMXfOVWzdmqNK5R0+O4WpY/Ba1ZbvzYhG3n
-         XOH/P5aZCE1IWLOK0P4ewXOpN4eh9fkvwoQ6A88ZlrdvSVnez3aGBtkttlDDybnt3+/L
-         jNnSNuBmz2MKiB4sj7QKzlkuDOAwGgs3zq29rSBkkkHT3IILXI1D13Gv30ePJXYraV35
-         UB83efvIXSovzSMUP9UY+Zr/bdOpCUph0DVsq8TUzrVXsA9ohlhT4wnvHDOYBX329Kue
-         LBaYu0UCB0PSbr8FdFhCZR+ViRP3numIhA8URjfB/I8Di0gioTnlGr3KEeIzjrNdS7JH
-         hRYw==
+        b=pMFOQxR3Odr76aO36RKfQy1STDFL4IM6hEm8eZoBgMFeNrpUyCfmCHR1jSgN3vgW85
+         uACbY1JPczdCBXDloxgYhmfAHwnh8lFAMal4yJB4Ln1E8GFmqunxkxc3fTkquhb6z3LV
+         IHZT0SbI3Spu+uPHIHSLZ6Sy4Jen/j4+nAu37PmRwtBvH9x/M1n8elveVc6R4tMTA7BS
+         GvQVNzOKH+91SOIiEQbak7yGgf/kV7As3NQuDgSlv0SZudee0AEwFG5xS0QsqDSEJjyZ
+         vibQO4dE+T4KAZ5uSbqtRG2pvO4wtdfVZ3yaZo+TkBvOt9tOwo7RZnDWHgy+T3lKdUGo
+         Pzmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=GXkG06WTjDyvKDjj1SHe0ZHnqdsPYAQxekBKIWdOc84=;
-        b=G6ecauoQrmg3ZPXJ0UJpbxB8Y9FNwkgKeDCwYZ3yw/NbuOrbEycYkAPjOWfBt54OJ2
-         I/iTvJC8gkoyNDkfGi9XTbgT/QZExTGLl2UioJY0QJ/0e1vAFaMGhg9lUenfbC5ffjDP
-         OBQukT08Dtm75sbIbsytL6tyzdgwtfbveq7tLtk1CCsgxyB2iuO4PxFsRCKOb+4vE3KJ
-         iJ6TlcTZgq2k4BNdyrp10NlhmmxCTEVl17KdIF5RVZLw8hml13mNQm4Nt15pRNvCgV97
-         y7/26UJLwNyedsJAF2pmBhGuw6p6H++qfbzllNn2V7+YxOjLMl1uG6bbJ4t5QG9OswJ0
-         yWvg==
+        bh=vjvNFrt8/ZAp+dNsWvrA/p6Dys9I9VzsBSvTQCYMdgc=;
+        b=LBYIz0inayjnO3UBhyHmh+NC6z3lXY3G2HSfpRiuH1ZUNlwlc8P++5N0hDewvDjU9L
+         Fvwbd7Rs2MjMHeHh1SmvcITgGqoAwvopMjpQTW5CGrSlvxQDz295VeQX1ZPUhHe5QEtc
+         iUCwmAHhOiFAaN74/mUEn7YoCIewIz6IisKxqajjX1xJ/jsJz+XXlj7/Lh7a21+W7X1W
+         I05zyrOrrashkNpSJVG3qxJeqidBvVNA5Xc6A9gXxezjVPViB5GRnPQ7bvBfSschGQJG
+         Em54I8MKJaiqqaaohgnWHGXGbFkpWrfZHF+nuhIDORRYGd/xBxhvA4/uAQyiMKEcxhcO
+         tt8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
-        by mx.google.com with ESMTPS id r14-v6si12843940wmb.13.2018.10.30.04.24.23
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
+        by mx.google.com with ESMTPS id 30-v6si20382642wrs.162.2018.10.30.04.24.27
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:24:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
+        Tue, 30 Oct 2018 04:24:27 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M7sUE-1gDaFi25T8-0053ea; Tue, 30 Oct 2018 12:24:20 +0100
+ id 1M5wgF-1gBeJH20Xj-007XYf; Tue, 30 Oct 2018 12:24:24 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M7sUE-1gDaFi25T8-0053ea; Tue, 30 Oct 2018 12:24:20 +0100
+ id 1M5wgF-1gBeJH20Xj-007XYf; Tue, 30 Oct 2018 12:24:24 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -68,77 +68,75 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 17/20] hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
-Date: Tue, 30 Oct 2018 12:23:34 +0100
-Message-Id: <20181030112337.17973-18-laurent@vivier.eu>
+Subject: [PULL v2 19/20] ppc: move at24c to its own CONFIG_ symbol
+Date: Tue, 30 Oct 2018 12:23:36 +0100
+Message-Id: <20181030112337.17973-20-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:g0UQ27pPr0n6Gyo7LTiu2X1b3crfe9Pm3advV87kTAPQ4NK+fWJ
- Xf5appWG1VLn8k/+NN/WlIJdCitF4we8ARZSBbgZjCUBo9MzBEObQS8igCkGdA3ZjazEjzD
- XCyq7a86LpzUywGmv/CifZsacBvlToGprSzrt9oqVZ/6w6WKZ46XCdbaLn0GX66UZ+dgsXZ
- jhhqWwVQByojY7GTVTPpQ==
+X-Provags-ID: V03:K1:Onxu/4XDh0jaT2PjMMZ+DvHlJo5HYaBM3GOMvdxKAvezyiybZ4/
+ +wBQgSHXjv9ia+tJuI9ezUmg2W7KXx3ekOySgDSHgV/JajGwABC9/HRq2jO/MBf08Lr4h4/
+ hV1O3ULqiwllm49AcUbvDZJOM9Du49YN8PhQCdk1FEF3V2psI8EhxX1LNrKITzQ3c4F4ufp
+ QiCrKnsLmPc+5mJDmIbvw==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:mntFo7Cu7ps=:9qbwB0tB8iavhB2cnZRZV6
- R30MtderFv6PZ7irMB6ijohG3Vhe3c4X5W3O+FHMNMgTbayqVGurCXRJ1I8vRRWc1sT/T2ggu
- jvVeofrclBb7uiOFLO87v1MseYkSNkNl8AqPEj0f0POZyNgse24eUXv94VFOTZGKuhGlVB+rz
- gwg3eWpWEmtARaOWfw7GXWKPcWTdExERgFwGf89AybkWwhNOeBzQRQoV69Y8+1uCvaA28XQQb
- O58rrDhqRt6JLSCrqHUoIBmPV/qS+bTcTdFuoZIgpPM+krSKD8HWgR74r16A5Fq+sZD/ajtZd
- tHxvKYq6H1u/3VWnJ7a8q7scgTdMzX6+bTSoiMm9v8UmP0Z4pQHZ8UscWNWS0912jQSxyxjpc
- CYAaryo7LgutjbDe8CBR/WEZOxEFr2tHPZ/rliQiXF82hmPj5/8n2th/Ez81u3ozpf0GCrZLK
- VYAEvMINgtKkJ0rz6wS9QfklzoGgruNugWRicYBheTbSPGqBL4bERILoqrTtkXfDBUX1m9Agj
- jbGn/RN3PfZJvGxJgPD8FLbbOQTuGU43vQyRurxD2UvNjOsfP2hXLaFEW9ioRGd6EFvP3sGxA
- 6c7BzsIWA7WGa7QtrmF7/KPVEfhbn/36sR8Gk+P9gT4IdZMq+JAFcHE9vjPUw7ZnlSg9X3sUB
- k7ZfXHDGL3O+Z0csxnMRdhXVMOzfFFhsqcO3MRF7BqNRbcbSicsmCTMlzevmSFo437/XQCtjF
- +eHIIdQTqYqEO3xj
-X-TUID: uVxrbpvmfaT5
+X-UI-Out-Filterresults: notjunk:1;V01:K0:IBrtWAJUG3Q=:48MbjHQVjHgFfr+mUIdERq
+ DbrYiHzyjdS2+pk0cHQxqT6IpblKYxCdeznEPdT8LaZutoiTIa8N1Pe8KAGqhukBzGYkjKsIw
+ yHIAzJkPvELvEmU5SoWhtgtNhiOUPbC41r/r2NZ7HoZ0yYJgtLAzE40S9szAhaXTz4Kg1L60I
+ 1pHcaKd5wkutSo3idcx82Bs6z0Pkr7l//IGpWYzdeWd5GK9pQlGzZ7Xxe64TgywIjH08HxxF1
+ djaZqniHhjzd1Or3u6w0nlJUQpxqhp1oW0YOxlO9l19fHGURCsgoerWDF2kvjPl2oCV7zxmuX
+ G46Ie0uPrfDVXCIdBfTFoH0+3DMPENw5ICaPSlZ7XJrlMWGC7P06An52sSAoXgW4AVo7aoW1j
+ wBHrwcJvqb8VW1bUrxOOrv8JtVHETg7N128QmamS79eqZuX4sLfimlXDG5wxLSapt7/c1VSDp
+ GicZlsDDc4I1Dmcx6sxvzN/MB+pv7An3JbjEoboLFVZxaZC7K9fhgGLKBM270lepNqj9CZ7dt
+ n8g5L15nh4xirzqp88vif7a9IBvR5hfti/VKWYZxCHShl9wdBNaa2YOY6l9stbcvaG6jWWkRT
+ bocLUfLAOh8nTUaiPGnG5pjGRbFBtaIDbMtLs1ocdowapZme4xDYSGgdRfbCzDuxL41KGjXzo
+ 6eCHNit5O8NG20I69LtUdCaq4Ej1QWbm7QfAaPS2Bd4PhRsbOYrC+fTcw4TdLKOMtGUuruMn6
+ seAvkdKV7Rrh6O9I
+X-TUID: GITGiVMeEKXp
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Patch created mechanically by rerunning:
+AT24c EEPROM is currently gated by CONFIG_I2C, and as such it is
+being included in all emulators that use I2C, even if they do not
+really need it.  Separate it and, since it was added for the e500
+machines, add it to qemu-system-ppc and qemu-system-ppc64.
 
-  $  spatch --sp-file scripts/coccinelle/round.cocci \
-            --macro-file scripts/cocci-macro-file.h \
-            --dir . --in-place
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-7-f4bug@amsat.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20180522191743.12872-1-pbonzini@redhat.com>
+[lv: rebase]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/pci-host/piix.c | 2 +-
- hw/pci-host/q35.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ default-configs/ppc-softmmu.mak | 1 +
+ hw/nvram/Makefile.objs          | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
-index da73743fa2..47293a3915 100644
---- a/hw/pci-host/piix.c
-+++ b/hw/pci-host/piix.c
-@@ -144,7 +144,7 @@ static void i440fx_update_memory_mappings(PCII440FXState *d)
-     memory_region_transaction_begin();
-     for (i = 0; i < 13; i++) {
-         pam_update(&d->pam_regions[i], i,
--                   pd->config[I440FX_PAM + (DIV_ROUND_UP(i, 2))]);
-+                   pd->config[I440FX_PAM + DIV_ROUND_UP(i, 2)]);
-     }
-     memory_region_set_enabled(&d->smram_region,
-                               !(pd->config[I440FX_SMRAM] & SMRAM_D_OPEN));
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 8ce1e09932..966a7cf92d 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -356,7 +356,7 @@ static void mch_update_pam(MCHPCIState *mch)
-     memory_region_transaction_begin();
-     for (i = 0; i < 13; i++) {
-         pam_update(&mch->pam_regions[i], i,
--                   pd->config[MCH_HOST_BRIDGE_PAM0 + (DIV_ROUND_UP(i, 2))]);
-+                   pd->config[MCH_HOST_BRIDGE_PAM0 + DIV_ROUND_UP(i, 2)]);
-     }
-     memory_region_transaction_commit();
- }
+diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
+index 3181bbf163..23d871fb3e 100644
+--- a/default-configs/ppc-softmmu.mak
++++ b/default-configs/ppc-softmmu.mak
+@@ -28,6 +28,7 @@ CONFIG_SM501=y
+ CONFIG_DDC=y
+ CONFIG_IDE_SII3112=y
+ CONFIG_I2C=y
++CONFIG_AT24C=y
+ CONFIG_BITBANG_I2C=y
+ CONFIG_M41T80=y
+ CONFIG_VGA_CIRRUS=y
+diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
+index a912d25391..b318e53a43 100644
+--- a/hw/nvram/Makefile.objs
++++ b/hw/nvram/Makefile.objs
+@@ -1,6 +1,6 @@
+ common-obj-$(CONFIG_DS1225Y) += ds1225y.o
+ common-obj-y += eeprom93xx.o
+-common-obj-$(CONFIG_I2C) += eeprom_at24c.o
++common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
+ common-obj-y += fw_cfg.o
+ common-obj-y += chrp_nvram.o
+ common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
 -- 
 2.17.2

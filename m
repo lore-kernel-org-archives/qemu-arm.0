@@ -1,224 +1,264 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6002470wro;
-        Tue, 30 Oct 2018 12:31:42 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dRC1i737XBhg3DTJEFQoIkKWOW07exj+YR1q/ttJWsdzbMPyJ8E31SXQ8uZ+XXNSmBM3Gx
-X-Received: by 2002:a37:8d81:: with SMTP id p123mr8714qkd.241.1540927902477;
-        Tue, 30 Oct 2018 12:31:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540927902; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6128429wro;
+        Tue, 30 Oct 2018 14:43:30 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5e57zOEw3tCv/VrWA+4X1OywCACnZ1IMM0JvcaHOl++l6uuds8oxf8k0/lEIudgrXNfyUa0
+X-Received: by 2002:a37:8fc7:: with SMTP id r190-v6mr420393qkd.36.1540935810450;
+        Tue, 30 Oct 2018 14:43:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540935810; cv=none;
         d=google.com; s=arc-20160816;
-        b=QAPRWJlYEnKTBMpsVa7PnaUuCsoGPikQeu4V+4PJTqN1cchbdMlPJNigBYsKQJDzE2
-         SjNIYLAX3WllEPBtu8e4dF6vHDqRuKK6lrxfjoDqsEgfE5ytNTK21SUWh7Sas/SpHPQD
-         yQrkoxclOeingaR60e2V2i/0goMSHDwlBvN1kyh7TPXjNYSb/bD++y5FAl6YEhFGgdCA
-         hyvm2OSPpyA3dBS3rky6QCRhedxVwXTF28iXllrDGbwYN44PpZpVBkdJkFbpdJ3YdFM+
-         eRSW767OZHc4SshNzqiImYCxMKP67kKKa7HRqYJaJPKlDubA7Zr4mjK8p+wULS3B210u
-         bTkA==
+        b=029NIj0pY0Z/8FUqoZi7faKr0cYKXpCbqXDc1fokES0OeEs4UWSMhiFLz7vDpNVwKT
+         r6ZmCGwx/Fv4uqOvu92GODNVO08mAPUhkQRRcOb+ix1ncE5BIc0/LsBUUjThx2pLcGrb
+         WrIo+EZzwfPoYYFwzowAoVDYhDuGo9R8xRdbMB9KVUtRmaMBx+ZOuJHbSJ1UiERhH3c8
+         dUo1B6sl0G46VmC28jVnIREbpHqU7njCEaQ1aFhS2gLUDnyoH7YMsXntbeLFNAXT1Ytl
+         54ml2P7CqU+V7p6jFkMEzohmAvFrllmJAkDVWYNHX5bUAj4Xq+YutUpGDwYy02Y+Mmhn
+         T1Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=MJ7KFIuV351JS9Vidou1V2iz/LCgoVVSJhEpJ5TPnk4=;
-        b=hiKbZOegQEyIvU83KfpGAu+kWYlILDJHOy4Bho26/k9eKB5yEcuAP5aHG+vSmeggcE
-         UVgYX7Ff9PJx7QDjeR2X4p8vHSCEGq4Mayueukk0cqgAn0/T2eUJMgGReS1RBRJ9YbTF
-         368+H0h7tGkx8yCGJTL0ZspoTmB9Qdz9KwsarOg6/uhmwNTUd+PyjZ3Sk+1RF7enCfoW
-         W+myDNTGnMoGAWLj8SOcAc+s4Ug3ay/PAkX3aBrJlE9Fq+AdkRjZJGKrfNHOFLPOcfdA
-         XqOCF7p5omx+XDHFuxQTMKIOQr37Ei9gn2hD5zwb4pIAqnaZqb4H4attZwHPcaQYANJA
-         2pIg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=PWNS2WDAF9pdqRgxCV20IBTMLQXNP6KsNvYai3fFFb0=;
+        b=X6iQ2Rl2TmXsdHQjUCycI7b9ZR4sM6y3eQTcuApZEJa3b4ugH86iKDJmtMEw/9RiLn
+         dL6hvjbcuQdeb+w78MrBY61o6DmCwhMhVDYaxPEIUclQ1iP6gUHnXhhidUENEJaBnwJn
+         +NQhSja/PRTxKikomAbTgj36WeV0SiSosqz3TflACZM/SAY5uTPBUP8tadfNOVBkwqz7
+         Ce2sVnsvqDtWVoRj+h9MUIZqrrwrKegEAT5+GiYmv0vZS6Q3h/3KfuS4Ap0s9xOMvs++
+         HmKbH3vD9/vUFy+MbxhTEyrYY9X7AQbbcCUstwGyaYPh5FCyVXr05g8hXBMb5w98N1ia
+         4Yzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m7si463373qvq.39.2018.10.30.12.31.42
+        by mx.google.com with ESMTPS id i1-v6si602754qtc.57.2018.10.30.14.43.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Oct 2018 12:31:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 30 Oct 2018 14:43:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55136 helo=lists.gnu.org)
+Received: from localhost ([::1]:55713 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHZjq-0005VS-12
-	for alex.bennee@linaro.org; Tue, 30 Oct 2018 15:31:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42606)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gHbnN-0002X4-Vl
+	for alex.bennee@linaro.org; Tue, 30 Oct 2018 17:43:30 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53339)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHZjV-0005S2-8B
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 15:31:23 -0400
+	(envelope-from <philmd@redhat.com>) id 1gHbmg-0002Id-50
+	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 17:42:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHZjR-0007qo-6Q
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 15:31:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58440)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gHZjP-0007pZ-TA; Tue, 30 Oct 2018 15:31:16 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B0F46308A95D;
-	Tue, 30 Oct 2018 19:31:14 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-205.brq.redhat.com [10.40.204.205])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6F57C1057042;
-	Tue, 30 Oct 2018 19:31:06 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>
-Date: Tue, 30 Oct 2018 20:30:43 +0100
-Message-Id: <20181030193044.25954-1-philmd@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1gHbmd-0002eh-Ea
+	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 17:42:46 -0400
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:33976)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHbmd-0002b0-5t
+	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 17:42:43 -0400
+Received: by mail-wm1-f65.google.com with SMTP id f1-v6so12828447wmg.1
+	for <qemu-devel@nongnu.org>; Tue, 30 Oct 2018 14:42:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=PWNS2WDAF9pdqRgxCV20IBTMLQXNP6KsNvYai3fFFb0=;
+	b=fbnnzJ6Y2yh20mX63NvQfLXpeH73mITnkViCnoWImSWcszd0H4gx5apYg81sjHCs0X
+	RJUcLzvIoxDXaY+g++Eta7tj+ISbBOHqgIMHln2OBNAV+QMyM/BK9eeQuvxOHj2VpcIk
+	+Uysw89ipx2a0brokXpTeBFuXax9H/EGUYtbQIUURWN6vyjQPhrWANer875YFZAwWQGS
+	P7VLZFXxWtmRlUXroKUGGwZFGf4uEvgr/N1kjKm8UHvIW0+khjo8KKjMikR2reZR7usm
+	Jq6g65MmVF3iCj65hAcf8ZwfBGXTLd6Cecncyp/rN/U/rXffBog6VncKtId+bSiq+ewn
+	VviA==
+X-Gm-Message-State: AGRZ1gJO5HMfl2IXFScpMNLWYGf2BPnEs+oFZCCzKzR3yhY9gHWiEZjs
+	IkcDDGaPlbGqn4jOSQKyPi3ByA==
+X-Received: by 2002:a1c:3288:: with SMTP id
+	y130-v6mr295769wmy.11.1540935752864; 
+	Tue, 30 Oct 2018 14:42:32 -0700 (PDT)
+Received: from [192.168.1.130] ([139.47.13.138])
+	by smtp.gmail.com with ESMTPSA id
+	g8-v6sm29790663wri.58.2018.10.30.14.42.30
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 30 Oct 2018 14:42:32 -0700 (PDT)
+To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
+References: <20181026081653.24602-1-luc.michel@greensocs.com>
+	<20181026081653.24602-2-luc.michel@greensocs.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <54d908e0-2704-a3b6-5fb9-9cf751308bdc@redhat.com>
+Date: Tue, 30 Oct 2018 22:42:29 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Tue, 30 Oct 2018 19:31:15 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20181026081653.24602-2-luc.michel@greensocs.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3] arm: exynos4: Add dma support for smdkc210
-X-BeenThere: qemu-arm@nongnu.org
+	[fuzzy]
+X-Received-From: 209.85.128.65
+Subject: Re: [Qemu-devel] [PATCH v3 01/16] hw/cpu: introduce CPU clusters
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
-	qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c+BRr/i7a8ox
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gtcQsaN+cqrI
 
-From: Guenter Roeck <linux@roeck-us.net>
+Hi Luc,
 
-QEMU already supports pl330. Instantiate it for smdkc210.
+On 26/10/18 10:16, Luc Michel wrote:
+> This commit adds the cpu-cluster type. It aims at gathering CPUs from
+> the same cluster in a machine.
+> 
+> For now it only has a `cluster-id` property.
+> 
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> ---
+>   include/hw/cpu/cluster.h | 38 +++++++++++++++++++++++++++++++
+>   hw/cpu/cluster.c         | 49 ++++++++++++++++++++++++++++++++++++++++
+>   hw/cpu/Makefile.objs     |  2 +-
+>   3 files changed, 88 insertions(+), 1 deletion(-)
+>   create mode 100644 include/hw/cpu/cluster.h
+>   create mode 100644 hw/cpu/cluster.c
+> 
+> diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
+> new file mode 100644
+> index 0000000000..f233a47a4a
+> --- /dev/null
+> +++ b/include/hw/cpu/cluster.h
+> @@ -0,0 +1,38 @@
+> +/*
+> + * QEMU CPU cluster
+> + *
+> + * Copyright (c) 2018 GreenSocs SAS
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License
+> + * as published by the Free Software Foundation; either version 2
+> + * of the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see
+> + * <http://www.gnu.org/licenses/gpl-2.0.html>
+> + */
+> +#ifndef QEMU_HW_CPU_CLUSTER_H
+> +#define QEMU_HW_CPU_CLUSTER_H
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/qdev.h"
+> +
+> +#define TYPE_CPU_CLUSTER "cpu-cluster"
+> +#define CPU_CLUSTER(obj) \
+> +    OBJECT_CHECK(CPUClusterState, (obj), TYPE_CPU_CLUSTER)
+> +
+> +typedef struct CPUClusterState {
+> +    /*< private >*/
+> +    DeviceState parent_obj;
+> +
+> +    /*< public >*/
+> +    uint32_t cluster_id;
 
-Relevant part of Linux arch/arm/boot/dts/exynos4.dtsi:
+32-bit is future proof!
 
-/ {
-    soc: soc {
-        amba {
-            pdma0: pdma@12680000 {
-                compatible =3D "arm,pl330", "arm,primecell";
-                reg =3D <0x12680000 0x1000>;
-                interrupts =3D <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-                clocks =3D <&clock CLK_PDMA0>;
-                clock-names =3D "apb_pclk";
-                #dma-cells =3D <1>;
-                #dma-channels =3D <8>;
-                #dma-requests =3D <32>;
-            };
-            pdma1: pdma@12690000 {
-                compatible =3D "arm,pl330", "arm,primecell";
-                reg =3D <0x12690000 0x1000>;
-                interrupts =3D <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
-                clocks =3D <&clock CLK_PDMA1>;
-                clock-names =3D "apb_pclk";
-                #dma-cells =3D <1>;
-                #dma-channels =3D <8>;
-                #dma-requests =3D <32>;
-            };
-            mdma1: mdma@12850000 {
-                compatible =3D "arm,pl330", "arm,primecell";
-                reg =3D <0x12850000 0x1000>;
-                interrupts =3D <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
-                clocks =3D <&clock CLK_MDMA>;
-                clock-names =3D "apb_pclk";
-                #dma-cells =3D <1>;
-                #dma-channels =3D <8>;
-                #dma-requests =3D <1>;
-            };
-        };
-    };
-};
+> +} CPUClusterState;
+> +
+> +#endif
+> diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
+> new file mode 100644
+> index 0000000000..11121e6f26
+> --- /dev/null
+> +++ b/hw/cpu/cluster.c
+> @@ -0,0 +1,49 @@
+> +/*
+> + * QEMU CPU cluster
+> + *
+> + * Copyright (c) 2018 GreenSocs SAS
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License
+> + * as published by the Free Software Foundation; either version 2
+> + * of the License, or (at your option) any later version.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see
+> + * <http://www.gnu.org/licenses/gpl-2.0.html>
+> + */
+> +
+> +#include "hw/cpu/cluster.h"
+> +#include "qapi/error.h"
+> +#include "qemu/module.h"
+> +
+> +static Property cpu_cluster_properties[] = {
+> +    DEFINE_PROP_UINT32("cluster-id", CPUClusterState, cluster_id, 0),
+> +    DEFINE_PROP_END_OF_LIST()
+> +};
+> +
+> +static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->props = cpu_cluster_properties;
+> +}
+> +
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-[PMD: Do not set default qdev properties, create the controllers in the S=
-oC
-      rather than the board (Peter Maydell), add dtsi in commit message]
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-Another intent to salvage previous work from Guenter Roeck:
-https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg06302.html
+Can we unburden the CPU_CLUSTER user of setting the cluster_id?
+('qdev_prop_set_uint32(cpu_cluster, "cluster-id", id);' calls in patch #16)
 
-Since v2: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg06459.=
-html
-- rename init -> create
-- create controllers in SoC rather than the board (Peter Maydell)
-- add Linux dtsi in commit message
+Something like:
 
-Since v1: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg06335.=
-html
-- Do not factor out pl330_init, which resulted in buggy v1, see:
-  https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg06448.html
+static void cpu_cluster_instance_init(Object *obj)
+{
+     CPUClusterState *s = CPU_CLUSTER(obj);
+     static uint32_t cpu_cluster_auto_increment_id;
 
- hw/arm/exynos4210.c | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+     s->cluster_id = cpu_cluster_auto_increment_id++;
+}
 
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 827318a003..cd27b9387c 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -96,6 +96,11 @@
- /* EHCI */
- #define EXYNOS4210_EHCI_BASE_ADDR           0x12580000
-=20
-+/* DMA */
-+#define EXYNOS4210_PL330_BASE0_ADDR         0x12680000
-+#define EXYNOS4210_PL330_BASE1_ADDR         0x12690000
-+#define EXYNOS4210_PL330_BASE2_ADDR         0x12850000
-+
- static uint8_t chipid_and_omr[] =3D { 0x11, 0x02, 0x21, 0x43,
-                                     0x09, 0x00, 0x00, 0x00 };
-=20
-@@ -160,6 +165,19 @@ static uint64_t exynos4210_calc_affinity(int cpu)
-     return (0x9 << ARM_AFF1_SHIFT) | cpu;
- }
-=20
-+static void pl330_create(uint32_t base, qemu_irq irq, int nreq)
-+{
-+    SysBusDevice *busdev;
-+    DeviceState *dev;
-+
-+    dev =3D qdev_create(NULL, "pl330");
-+    qdev_prop_set_uint8(dev, "num_periph_req",  nreq);
-+    qdev_init_nofail(dev);
-+    busdev =3D SYS_BUS_DEVICE(dev);
-+    sysbus_mmio_map(busdev, 0, base);
-+    sysbus_connect_irq(busdev, 0, irq);
-+}
-+
- Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
- {
-     Exynos4210State *s =3D g_new(Exynos4210State, 1);
-@@ -410,5 +428,13 @@ Exynos4210State *exynos4210_init(MemoryRegion *syste=
-m_mem)
-     sysbus_create_simple(TYPE_EXYNOS4210_EHCI, EXYNOS4210_EHCI_BASE_ADDR=
-,
-             s->irq_table[exynos4210_get_irq(28, 3)]);
-=20
-+    /*** DMA controllers ***/
-+    pl330_create(EXYNOS4210_PL330_BASE0_ADDR,
-+                 qemu_irq_invert(s->irq_table[exynos4210_get_irq(35, 1)]=
-), 32);
-+    pl330_create(EXYNOS4210_PL330_BASE1_ADDR,
-+                 qemu_irq_invert(s->irq_table[exynos4210_get_irq(36, 1)]=
-), 32);
-+    pl330_create(EXYNOS4210_PL330_BASE2_ADDR,
-+                 qemu_irq_invert(s->irq_table[exynos4210_get_irq(34, 1)]=
-), 1);
-+
-     return s;
- }
---=20
-2.17.2
+> +static const TypeInfo cpu_cluster_type_info = {
+> +    .name = TYPE_CPU_CLUSTER,
+> +    .parent = TYPE_DEVICE,
+> +    .instance_size = sizeof(CPUClusterState),
 
+        .instance_init = cpu_cluster_instance_init,
+
+
+> +    .class_init = cpu_cluster_class_init,
+> +};
+> +
+> +static void cpu_cluster_register_types(void)
+> +{
+> +    type_register_static(&cpu_cluster_type_info);
+> +}
+> +
+> +type_init(cpu_cluster_register_types)
+> diff --git a/hw/cpu/Makefile.objs b/hw/cpu/Makefile.objs
+> index cd52d20b65..8db9e8a7b3 100644
+> --- a/hw/cpu/Makefile.objs
+> +++ b/hw/cpu/Makefile.objs
+> @@ -1,5 +1,5 @@
+>   obj-$(CONFIG_ARM11MPCORE) += arm11mpcore.o
+>   obj-$(CONFIG_REALVIEW) += realview_mpcore.o
+>   obj-$(CONFIG_A9MPCORE) += a9mpcore.o
+>   obj-$(CONFIG_A15MPCORE) += a15mpcore.o
+> -common-obj-y += core.o
+> +common-obj-y += core.o cluster.o
+> 

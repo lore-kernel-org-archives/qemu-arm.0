@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440506wro;
-        Tue, 30 Oct 2018 04:24:20 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5d+rAdxc/tmg+VfDkWQYoCzNL1KFF7a7dreeZQ7Q3BNHCKYzN1LiQ7+V0uomk/jwglhjFXo
-X-Received: by 2002:adf:ed06:: with SMTP id a6-v6mr16447376wro.262.1540898659999;
-        Tue, 30 Oct 2018 04:24:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898659; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440572wro;
+        Tue, 30 Oct 2018 04:24:23 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5coBkvjrU+RbIIIp2VffiCOF9cd5sMRy4n3vcRpUGfgdCHughiiTwbphkzlt4NDlCqXcEds
+X-Received: by 2002:a1c:650b:: with SMTP id z11-v6mr1445261wmb.28.1540898663483;
+        Tue, 30 Oct 2018 04:24:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898663; cv=none;
         d=google.com; s=arc-20160816;
-        b=UpT/3A2SLwXjaYoLF5lN8d09zSPtXh52rY14Xo2FJVvE9ZAdEcFutLw3HyZ/IFn7rv
-         6kEr2GvGQF+6oimp8URZ9hFQNlxsnqkjBcOYjtNGrSSHQa/bcmw9bAVgIGb+6EPnbQ0W
-         uHTBLmT21zVmrCyPxBGMnSBgDQ6iUzMiffMcGme7cws9U1BPnxYQGb6u7A4B+As0MStS
-         FXxyfpZR09RshUsy+n08dllYougB3osAQmNjtpjjsd0Ngm1a1UPyiKUk4k2Et8zV06cL
-         2czDbACZv0VFiQxyzUo0d73hmqRppWq2sVEzzsQx+3U+FSYptqnMEUbA6+mGmusU7y/6
-         Fukw==
+        b=UqYLMXBzh1kQ3P9OMjl+GBLOdOYjgbfzMXfOVWzdmqNK5R0+O4WpY/Ba1ZbvzYhG3n
+         XOH/P5aZCE1IWLOK0P4ewXOpN4eh9fkvwoQ6A88ZlrdvSVnez3aGBtkttlDDybnt3+/L
+         jNnSNuBmz2MKiB4sj7QKzlkuDOAwGgs3zq29rSBkkkHT3IILXI1D13Gv30ePJXYraV35
+         UB83efvIXSovzSMUP9UY+Zr/bdOpCUph0DVsq8TUzrVXsA9ohlhT4wnvHDOYBX329Kue
+         LBaYu0UCB0PSbr8FdFhCZR+ViRP3numIhA8URjfB/I8Di0gioTnlGr3KEeIzjrNdS7JH
+         hRYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=5+FK91EiMz7zwPVdwTNxGbaLkyUtEHLv99gvZtsbh8c=;
-        b=vx5HVhw212Zb6SdsarSjHrcBRj3EzhIKMFMpp0I9LD0ZCL5acBNmQ7GirasmGgZJ/G
-         NCd2vpFItuVc5GfWIKbJZxOGmbAUbf1orSOnZrd9tTZ8DvonW5Cba1sZXNfWMWKbhv6H
-         Ju5itWx7m3/UbolgoKHf5P2VT8Ta6KqTjPKWPOSFdEk/j66Tm4W0CDhLHSxYYKDhTZPG
-         fK3hcnPdOiyWqaMZQXFIXvr8P4BlegfTqq7xbg8SGpERLhVXF0is9wMqZqOVRLS6uG5P
-         9XlZ1NAkVIY2f5+c+b3SQ33DW89HfiWZoaAb6ft9uvLMB0O24+Xt39zM1cdGhSVh3/X8
-         /6PQ==
+        bh=GXkG06WTjDyvKDjj1SHe0ZHnqdsPYAQxekBKIWdOc84=;
+        b=G6ecauoQrmg3ZPXJ0UJpbxB8Y9FNwkgKeDCwYZ3yw/NbuOrbEycYkAPjOWfBt54OJ2
+         I/iTvJC8gkoyNDkfGi9XTbgT/QZExTGLl2UioJY0QJ/0e1vAFaMGhg9lUenfbC5ffjDP
+         OBQukT08Dtm75sbIbsytL6tyzdgwtfbveq7tLtk1CCsgxyB2iuO4PxFsRCKOb+4vE3KJ
+         iJ6TlcTZgq2k4BNdyrp10NlhmmxCTEVl17KdIF5RVZLw8hml13mNQm4Nt15pRNvCgV97
+         y7/26UJLwNyedsJAF2pmBhGuw6p6H++qfbzllNn2V7+YxOjLMl1uG6bbJ4t5QG9OswJ0
+         yWvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by mx.google.com with ESMTPS id g195-v6si7605763wmd.139.2018.10.30.04.24.19
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
+        by mx.google.com with ESMTPS id r14-v6si12843940wmb.13.2018.10.30.04.24.23
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:24:19 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.131;
+        Tue, 30 Oct 2018 04:24:23 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mwfn8-1fKmk429BS-00y8DA; Tue, 30 Oct 2018 12:24:18 +0100
+ id 1M7sUE-1gDaFi25T8-0053ea; Tue, 30 Oct 2018 12:24:20 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mwfn8-1fKmk429BS-00y8DA; Tue, 30 Oct 2018 12:24:18 +0100
+ id 1M7sUE-1gDaFi25T8-0053ea; Tue, 30 Oct 2018 12:24:20 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -68,63 +68,77 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 16/20] tests/bios-tables-test: Remove an useless cast
-Date: Tue, 30 Oct 2018 12:23:33 +0100
-Message-Id: <20181030112337.17973-17-laurent@vivier.eu>
+Subject: [PULL v2 17/20] hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
+Date: Tue, 30 Oct 2018 12:23:34 +0100
+Message-Id: <20181030112337.17973-18-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EpruMGy6kLNFKcNKdwgN4oApQRq9Ua5ve0hSsyZevrvuEOLxFc4
- 2Nqf2j/9dU3TPz80iNgSeRKlsezndeqcHywks0NFYU5MkfQSa4sYTUpO/MEKiUyCsPZZ5Wy
- ahYNkw12j6L2RNMPjMH9Riw9mYkn7mmgZXv7jcyT/X5+Yl1P/sBQZMCMIhSRAC9FDrELnp9
- SMnt99y5KYywok5bdaeJg==
+X-Provags-ID: V03:K1:g0UQ27pPr0n6Gyo7LTiu2X1b3crfe9Pm3advV87kTAPQ4NK+fWJ
+ Xf5appWG1VLn8k/+NN/WlIJdCitF4we8ARZSBbgZjCUBo9MzBEObQS8igCkGdA3ZjazEjzD
+ XCyq7a86LpzUywGmv/CifZsacBvlToGprSzrt9oqVZ/6w6WKZ46XCdbaLn0GX66UZ+dgsXZ
+ jhhqWwVQByojY7GTVTPpQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:9FQOfexKcM0=:NtcgCNiX0Z1re1GuN9rjrK
- +Di5n16IIA+qeSi26hI9XVjofW9P/dCUhBO7DsvG/fdHUxTD2pOyMebghEF4UhekctkDaUmzq
- 7QUcDibk6QiRZ36TFULl7tHGdci3upYSRzi9nrWP9VdZ4WBuHImiFO4ehdw//o/kreCTL37jz
- Vi6NDclDy5CuekGaukehwTk7y1YWpz3CjI8bKjvuaFE6LrRW/Kp5YIFSVOxqlSVve/KaRekFi
- Utr0fl73GbrFGnTouKhcN1H4WWPseKJMsSXYEAoO26pVncs6vjoT1Z37A2WEfYCfS8n1bMFeE
- J5mN89PQZe9H8K/hbVQXDDYse5DVfu9oeePxuhvnEMD6nJ+L8NHMEzGHixevWc/yYqTeqADDm
- g54olO2wS0GXbfFA/Dh2vzRq8M8CYkZCy1Y1haneAnPThvJKgdMFXj1ONODYPoddgnDM3nEpl
- Qa8GcRNBN7vkb1G+NWGsmuJTc6ZhDGbtI3myru+jReYiSq3WvXSkOSRJc2U6fTXy227elrX6z
- CM8McIC1BIOIJCsCu9p9YSGMq//du/1U7EPen5aKOItr/hUxEGu+UGlw16ASuw9S/tdDuyUr8
- 5MLWvf+SVoTKXpgT2TjmJBGj3tbbKKWh5eQXWYtHGal1mjzxzkrCSUZWcxfMr/Pf3zeLQtlaC
- a+dCer0bz6h9g8Y8ODaYLfm2nbpsh2wpimVhjC0y37wc1Gs6rw61kbAKFpRlfYvC2PnqDmgFx
- ButyD5EUhHUfybJQ
-X-TUID: FzIUQeUxERkp
+X-UI-Out-Filterresults: notjunk:1;V01:K0:mntFo7Cu7ps=:9qbwB0tB8iavhB2cnZRZV6
+ R30MtderFv6PZ7irMB6ijohG3Vhe3c4X5W3O+FHMNMgTbayqVGurCXRJ1I8vRRWc1sT/T2ggu
+ jvVeofrclBb7uiOFLO87v1MseYkSNkNl8AqPEj0f0POZyNgse24eUXv94VFOTZGKuhGlVB+rz
+ gwg3eWpWEmtARaOWfw7GXWKPcWTdExERgFwGf89AybkWwhNOeBzQRQoV69Y8+1uCvaA28XQQb
+ O58rrDhqRt6JLSCrqHUoIBmPV/qS+bTcTdFuoZIgpPM+krSKD8HWgR74r16A5Fq+sZD/ajtZd
+ tHxvKYq6H1u/3VWnJ7a8q7scgTdMzX6+bTSoiMm9v8UmP0Z4pQHZ8UscWNWS0912jQSxyxjpc
+ CYAaryo7LgutjbDe8CBR/WEZOxEFr2tHPZ/rliQiXF82hmPj5/8n2th/Ez81u3ozpf0GCrZLK
+ VYAEvMINgtKkJ0rz6wS9QfklzoGgruNugWRicYBheTbSPGqBL4bERILoqrTtkXfDBUX1m9Agj
+ jbGn/RN3PfZJvGxJgPD8FLbbOQTuGU43vQyRurxD2UvNjOsfP2hXLaFEW9ioRGd6EFvP3sGxA
+ 6c7BzsIWA7WGa7QtrmF7/KPVEfhbn/36sR8Gk+P9gT4IdZMq+JAFcHE9vjPUw7ZnlSg9X3sUB
+ k7ZfXHDGL3O+Z0csxnMRdhXVMOzfFFhsqcO3MRF7BqNRbcbSicsmCTMlzevmSFo437/XQCtjF
+ +eHIIdQTqYqEO3xj
+X-TUID: uVxrbpvmfaT5
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 Patch created mechanically by rerunning:
 
-  $  spatch --sp-file scripts/coccinelle/typecast.cocci \
+  $  spatch --sp-file scripts/coccinelle/round.cocci \
             --macro-file scripts/cocci-macro-file.h \
             --dir . --in-place
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-5-f4bug@amsat.org>
+Message-Id: <20180705155811.20366-7-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/bios-tables-test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/pci-host/piix.c | 2 +-
+ hw/pci-host/q35.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-index af4b1fb6bd..02e77ec811 100644
---- a/tests/bios-tables-test.c
-+++ b/tests/bios-tables-test.c
-@@ -319,7 +319,7 @@ static bool load_asl(GArray *sdts, AcpiSdtTable *sdt)
-     ret = g_spawn_command_line_sync(command_line->str, &out, &out_err, NULL, &error);
-     g_assert_no_error(error);
-     if (ret) {
--        ret = g_file_get_contents(sdt->asl_file, (gchar **)&sdt->asl,
-+        ret = g_file_get_contents(sdt->asl_file, &sdt->asl,
-                                   &sdt->asl_len, &error);
-         g_assert(ret);
-         g_assert_no_error(error);
+diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+index da73743fa2..47293a3915 100644
+--- a/hw/pci-host/piix.c
++++ b/hw/pci-host/piix.c
+@@ -144,7 +144,7 @@ static void i440fx_update_memory_mappings(PCII440FXState *d)
+     memory_region_transaction_begin();
+     for (i = 0; i < 13; i++) {
+         pam_update(&d->pam_regions[i], i,
+-                   pd->config[I440FX_PAM + (DIV_ROUND_UP(i, 2))]);
++                   pd->config[I440FX_PAM + DIV_ROUND_UP(i, 2)]);
+     }
+     memory_region_set_enabled(&d->smram_region,
+                               !(pd->config[I440FX_SMRAM] & SMRAM_D_OPEN));
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index 8ce1e09932..966a7cf92d 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -356,7 +356,7 @@ static void mch_update_pam(MCHPCIState *mch)
+     memory_region_transaction_begin();
+     for (i = 0; i < 13; i++) {
+         pam_update(&mch->pam_regions[i], i,
+-                   pd->config[MCH_HOST_BRIDGE_PAM0 + (DIV_ROUND_UP(i, 2))]);
++                   pd->config[MCH_HOST_BRIDGE_PAM0 + DIV_ROUND_UP(i, 2)]);
+     }
+     memory_region_transaction_commit();
+ }
 -- 
 2.17.2

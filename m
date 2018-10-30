@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5439936wro;
-        Tue, 30 Oct 2018 04:23:49 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cuJ6QuJGhwJX8mxn/W0phoePnzGmy+gPjnstXqIiv1n+kYVDG+Yjq/pBdwaaLULDRDOttz
-X-Received: by 2002:adf:df0a:: with SMTP id y10-v6mr7333751wrl.127.1540898629197;
-        Tue, 30 Oct 2018 04:23:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898629; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440009wro;
+        Tue, 30 Oct 2018 04:23:53 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5c1dHDHoz+NuiDuPd5TyPy7wgk1JONMNbJ8iBUJMl3up53fr+g7xAAHtytxbcL3+J86wS1k
+X-Received: by 2002:a5d:43ca:: with SMTP id v10-v6mr9304020wrr.244.1540898633445;
+        Tue, 30 Oct 2018 04:23:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898633; cv=none;
         d=google.com; s=arc-20160816;
-        b=LGCNWjMjcMKB1TwwLlTtKEQDMEU4yH/4cd9rTWz4R5yMKqYc+uHYRhGD+IP4PnIPDK
-         9a4tQgsiY94eUsrrQDgDnNgOilTd20627ZhywOLnoJqwkRIQDxEWeeaHSSyJ+GUWTUJ7
-         iahEXHgzjr/CRTs9QLk0mL2KMdijsJLPaIg4qpuw4AR0LtcOgBDQKSjIfhFB/QxXfmEZ
-         TVGnjAQjCpHU8trsDQbmd21FEAdxQCROCoe5xGReQqpZFU5ocyzX6DcaHL/m3r6xkvj8
-         cHaM6mOln8p2JvHepaGm7MZquP6l2sn2uYw+dJJ5GiSW35HUCgCO1WLK3+DKUz58QOy2
-         Re8Q==
+        b=B7bmxjlWq6Zuw9yQK4Yxg5liRrPN7VPSMshzTa7b+Fnf+iEacJ2aDqEzZEchefbTqg
+         u9amkozo/kIhNVdPrhJAxzLlSZlYzzaPwPIOdT/YqAjTFM0Kl4bdPgeTwxA7wi8exd4+
+         BiY5LU5+T5s1DzYUNidVSEiTNDOMU0B6dIhe6sgQb6SA4nT3EQ8zszhC9GVJSt/InISH
+         dHGXNvCsB3KChz56W+22k2R/hM+xrENq46bb+oIhWqp8VEP9vR5LQPwU+B1wDyCvE/YL
+         1h6N+Y3lq89RSMxULrO4LRRCZWh5ly+l1rO8qlCzfYnQ5oSpMxL3E4YX5JkotZc/EP5Z
+         E/Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=ifaRWI41tyCnSbrJyN2NHpirtSfMW734F/DycCVQmY8=;
-        b=N9EMCvmmkgcbhSHNi1NR1hOVmxRADCuILQn95n1LCfr03cxFGWg+Wr+uS7X7EBb2TJ
-         58SJPUrS3a2BAJZa3M06LdWwJfJB2aSkDag0VqDvoAqTMxahDYOtNOFBF/mqRLTgpKFH
-         Lg73JrWzhD8Zt31l9YaAvuLDwsmehjFNMWFze4Z02+6zio4izhFEkaZoJmBP2ggjX82B
-         EKCxDwSuMmgTH8KNd+/o5xlT6WiWGOGMDF4jveM3a7Vjr1XQRIejB3YXxnE6BEMd7jkn
-         qULcdwDFWbzvnqhoovi+n/s+qkNXz9TYD1mkygawap/s59hIvBGiJsOefFI8tnaj8H6E
-         9OkQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=x72wGazpZPqiR4VPR3HYovlBNDCcYn9E9Ay7uvF1WNg=;
+        b=ItBOPE4/HU0pBq2gVd5twjfVdQKy5pa26tYsx/h0a4kFVztnj5afmCepLwkGxxHfYk
+         1FaTxxn0ZlQU1eErzBVa2A5tbnq26kHNVSuGQngNO5K5oRoy4QctJGIQAINBPK7brDkg
+         hRfQwbExVm2oVD1LHhAPgf/PhWRRyPsR9jIukATxcRtZy5nLOhkl/2m7ACZ221LLaaWZ
+         rYH9mS18mc0VGSJIWRag0Jp3F0pPcMJS6NO8lr9qB483drewS+4oKKRnIMss6mAUisjR
+         Xk6+dhW39nNZaCnYY//UjCwNYuzpbnDk7bBBTd2qiOu3fdIW7f7qUH9kHvLAXVzMBdKb
+         /zvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
-        by mx.google.com with ESMTPS id r4-v6si11962543wrs.80.2018.10.30.04.23.48
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
+        by mx.google.com with ESMTPS id f16-v6si12620045wmb.59.2018.10.30.04.23.53
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:23:49 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
+        Tue, 30 Oct 2018 04:23:53 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
+ id 1MWRmF-1g2srR2WfT-00Xprt; Tue, 30 Oct 2018 12:23:46 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
+ id 1MWRmF-1g2srR2WfT-00Xprt; Tue, 30 Oct 2018 12:23:46 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -68,120 +68,60 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 00/20] Qemu trivial for 3.1 patches
-Date: Tue, 30 Oct 2018 12:23:17 +0100
-Message-Id: <20181030112337.17973-1-laurent@vivier.eu>
+Subject: [PULL v2 01/20] configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
+Date: Tue, 30 Oct 2018 12:23:18 +0100
+Message-Id: <20181030112337.17973-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
+References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:y4wJZBQa36fYeIfafVVGOGE7fIbv9mjAWFxbq5hFhvYf5uTUIa4
- uUXJnKGwf48j3geM8iJBwHm12geZVEqo4OxKyqMKBzMUs26F7O+hRzAmq9E6jSNhmQrcquq
- 5qluvC9rh1yysZGuNFdD7Aew6vNJm6CVVZmTclHhX7Wpro/q1MR2HikUg4oP9+owQUb5qo5
- AEgQnCING+xIHCLAgVQaw==
+X-Provags-ID: V03:K1:b/w7jnw+xQS1YeEBcE70ncEpRJovYtV1+sIVuHxfe9l0XSPc9x0
+ /0PzbNLbMR/lw3sSIKlarCSchPH7YlnG/mRMr1hPKxLcydqlXQPa1p95OnGeEdYcOILxNWq
+ CTK/WSJVwga/Kty+ja1LfXgStGt3ypPOt3JS6MxdtckiX9aaS9J3A5S46HJ+PBOYRW0vv7x
+ 32V8nd4SqU7x7HIgezJtQ==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Y1WZhTh/8Ew=:LtGR41t7EDavmeMarZFYsD
- hDyqbpoeUu7TV1BrlADahHWN3Kry8UxhokdYr/+NkLiQlQCDz7dW8XvCVFy5qP6bd8nr/uzjT
- 0Wy836k88tRTsHnzmq6dwAt2i9cSgb17gywcCMqSzgRUxkrcZvyc1Fl3pkZyMW5HMvSvcMGDT
- 1jJNZ13O2CxYXMyvnerEkrs5BU941xgXrAbew9Wvp0udQ6hI5xmO93hUUuLw6Kz3fhVXecl4y
- sQOqKJpuzV+v7jShGRmWoyQ6nHQkBLPtmx7RPCFtQnuJf8R6cbuaM8HAd4rs9tkAa985MKLus
- bQ7bZbs80OM4UBGV/Ja8jVz2edhuSLenIKofgyDFssst1yPvtBxGIOdze2wi43yEv88LYofz2
- /Nl8v/HIDDqPBYf/49mHQzK66GMdtyocSmHLcyOXc4hlBx2adojXeqqDLkVFOieCFKEqcQjG+
- EPFMrGN9WtkRcE9zEhoWU3qP1nnNdUtCeJTZwPSEauaFXoYC0T4TDdQTM0l4mHwnCC5/iufVn
- T3tQS3HcKC5M1ARS48qExmQ3TokoYy/VzBfHYn6YPgnHt4q+1M6iFxaDjJ+tNTxBvN5SrzamC
- MoCJoixHxcYHkkT94ijuI2S+KusRzWAlnp8Qdox2JInnux1efEWdkBeM/tT/EuVOtOrpEfA+P
- Gr8Ijpm5WK/R/UmrUY+jcKVXi1V4qJipG+TNPF07terMEF3GTj8lxjhHsJceezAlR/soyVhm+
- Z7CHSJ6pzYZk2xjP
-X-TUID: X95PYY78CuSp
+X-UI-Out-Filterresults: notjunk:1;V01:K0:TH/Q2sY14Bg=:yT7jHMpnaFZCZkw6rbfXIJ
+ EcFF2Vca62jNEfwh5/UJtV2+b6ys6mKqLVT2ZwneVUWyTNBuT2/tkM3RX0lSmo5QxXoAMFnHN
+ aMZMtwLhSgFOjs8Fc3XwbP3uDozsL0CyQFJL5y6jzni8uaz5kx1N3xyuLg6QPHYKA0DWRPVMM
+ q1ktZqSpSh7f/QvdNzUc/2YRefp97Fit6Ds17sQ26sPxUM4XQ+JagO4IXEBRE3n//4l+yfacJ
+ FIo6gC32TJDW7o26QkxsXvycNP7DQc373MwEslRGwBZ8xZ87n8ty0YE+6lAvZumMAuO7XD+17
+ TGc++15N8oBfekxKk81ukhWYPDz28smKgfNd811oI4zaZhxCPbYprAB41gANMWjcGRm7LNPMp
+ ntnxdJV24SshT9FNtazGTQS88IKf8VXkk/Yij8CnqyJ+7bye77plV7yJII+KgZulsnMui0sdt
+ AckogIUghm5RKNI5Z7Rkqqn2u8NORlS4ABysCcO9U+5kfvMOck0Xs+x1c594mvX8I1s1PKdq4
+ 5grf0+bChZFBGxYdHYtn3gH+zIfW3H+HWZFproRs2Kwmx9+wdVzU1AlnKlYt01vgvUVJjHMoC
+ ymmXaGN9jNWeLRqO3QQEcexiLcUmeft1SX/jrceMEx0/TSWCzTo7iJu/VGyrseWYnvcHMgltG
+ 6UOH5kgyAiG6mjC+NDnPK6hBeQxngXDGt2HvASy+wJw2DU8Mj5D13cnCzaGYfhuhuckwpRtcz
+ OA8aDGBMuE4MmkL3
+X-TUID: U6fpTNZb2WQy
 
-The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
+From: Thomas Huth <thuth@redhat.com>
 
-  Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
+We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
+is just a dead config option which can be removed.
 
-are available in the Git repository at:
+Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ default-configs/alpha-softmmu.mak | 1 -
+ 1 file changed, 1 deletion(-)
 
-  git://github.com/vivier/qemu.git tags/qemu-trivial-for-3.1-pull-request
-
-for you to fetch changes up to 7b2b797cf0addac789ba858fdbd95c55128d72d5:
-
-  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report (2018-10-30 09:13:31 +0100)
-
-----------------------------------------------------------------
-QEMU trivial patches collected between June and October 2018
-(Thank you to Thomas Huth)
-
-v2: fix 32bit build with updated patch (v3) from Philippe Mathieu-Daudé
-    built in a 32bit debian sid chroot
-
-----------------------------------------------------------------
-
-Cleber Rosa (6):
-  tests/tcg/README: fix location for lm32 tests
-  qemu-iotests: fix filename containing checks
-  docs/devel/testing.rst: add missing newlines after code block
-  scripts/decodetree.py: remove unused imports
-  scripts/qemu.py: remove trailing quotes on docstring
-  qemu-iotests: make 218 executable
-
-Emilio G. Cota (1):
-  linux-user: fix comment s/atomic_write/atomic_set/
-
-Li Qiang (2):
-  memory.h: fix typos in comments
-  cpu.h: fix a typo in comment
-
-Paolo Bonzini (1):
-  ppc: move at24c to its own CONFIG_ symbol
-
-Philippe Mathieu-Daudé (6):
-  qobject: Catch another straggler for use of qdict_put_str()
-  xen: Use the PCI_DEVICE macro
-  tests/bios-tables-test: Remove an useless cast
-  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
-  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
-  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of
-    error_report
-
-Stefan Weil (2):
-  tests: Fix typos in comments and help message (found by codespell)
-  configure: Support pkg-config for zlib
-
-Thomas Huth (1):
-  configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
-
-yuchenlin (1):
-  vga_int: remove unused function protype
-
- configure                             | 40 +++++++++++++++------------
- default-configs/alpha-softmmu.mak     |  1 -
- default-configs/ppc-softmmu.mak       |  1 +
- docs/devel/testing.rst                |  2 ++
- hw/display/vga_int.h                  |  1 -
- hw/net/milkymist-minimac2.c           | 15 ++++++----
- hw/nvram/Makefile.objs                |  2 +-
- hw/pci-host/piix.c                    |  2 +-
- hw/pci-host/q35.c                     |  2 +-
- hw/xen/xen_pt_config_init.c           |  8 +++---
- include/exec/memory.h                 |  6 ++--
- include/hw/intc/arm_gicv3_common.h    |  2 +-
- include/qom/cpu.h                     |  2 +-
- linux-user/qemu.h                     |  2 +-
- qobject/block-qdict.c                 |  2 +-
- scripts/decodetree.py                 |  2 --
- scripts/qemu.py                       |  2 +-
- tests/bios-tables-test.c              |  4 +--
- tests/docker/Makefile.include         |  2 +-
- tests/docker/docker.py                |  4 +--
- tests/guest-debug/test-gdbstub.py     |  2 +-
- tests/qemu-iotests/218                |  0
- tests/qemu-iotests/common.qemu        |  2 +-
- tests/qemu-iotests/common.rc          |  4 +--
- tests/tcg/Makefile.include            |  2 +-
- tests/tcg/Makefile.probe              |  2 +-
- tests/tcg/README                      |  2 +-
- tests/tcg/mips/mips64-dsp/subq_s_pw.c |  2 +-
- 28 files changed, 64 insertions(+), 54 deletions(-)
- mode change 100644 => 100755 tests/qemu-iotests/218
-
+diff --git a/default-configs/alpha-softmmu.mak b/default-configs/alpha-softmmu.mak
+index eb58b40254..4d654eaa0b 100644
+--- a/default-configs/alpha-softmmu.mak
++++ b/default-configs/alpha-softmmu.mak
+@@ -8,7 +8,6 @@ CONFIG_I82374=y
+ CONFIG_I8254=y
+ CONFIG_I8257=y
+ CONFIG_PARALLEL=y
+-CONFIG_PARALLEL_ISA=y
+ CONFIG_FDC=y
+ CONFIG_PCKBD=y
+ CONFIG_VGA_CIRRUS=y
 -- 
 2.17.2

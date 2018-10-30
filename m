@@ -1,102 +1,99 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5547196wro;
-        Tue, 30 Oct 2018 06:02:02 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f07odZkYcr1Ck2jp3eoJCJa3KqqN5Rvt0ffvdV7vIhrDLUaACkg2tMot6TD2nqqSFlD8x2
-X-Received: by 2002:ae9:d801:: with SMTP id u1-v6mr15999435qkf.291.1540904521876;
-        Tue, 30 Oct 2018 06:02:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540904521; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5588187wro;
+        Tue, 30 Oct 2018 06:32:43 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eVkOCV9G/wmGX9dhrj3mV3d9TmiV9/eRUql0S/rF9e2n2lgX8s60TTuj8ozmgh/bZlvW1h
+X-Received: by 2002:aed:2867:: with SMTP id r94-v6mr2279140qtd.112.1540906363453;
+        Tue, 30 Oct 2018 06:32:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540906363; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dj3woHdRXbnBH3W8jgAeZy55q2Rsd/KhU6GhqRtq1emUK8uPhkRiRDGleL5sVGbbw7
-         pPCB7Dl2fjGCH9QpbMDfjSZ/BGBsyn3KzIljPlKfOrU6zrOzdNalI2KCok4Buih99e/t
-         DVZ6ndmCoPWH8IJ1kLQleI8KE+hvsd3ZF8UXvPikq9GS2SzsL182wgChC8kKfVRPC5vv
-         2XwWCZZF+OTFpdnAodg6PioxfQYfqf0aHf3UPgnL2z0UpWj910jPq1kfX5E+zpTYWM3F
-         u4Fa/hJ1casB6/Xd9UfK2poLre3/IXpw4m5kVUquF5IGmQrE81aep9WrxF1NLFO6qKjz
-         5Nxg==
+        b=Uv4zQ9Nc0Ht2f27GCoIbhtEd2+YzbPjdb3/Uc8QsQHF6ybBhCDuLK5KJCKBYaJF9vk
+         +RtCwGU8ygUl0Rxm/agNGp6Fq5CqKrn3DruvniD/M7UMqUpSjddHHLsU9x9DnwLtfbCO
+         6l34896k6wOjex9aoivGe3z7h2gaykg5MWtlyJ5XEYkshxXyGhAWjjM67JEFLd1K9gLv
+         Df5HMJ4nE7SXmDQcMQDcqOkFU6MpiBGiD1LY/jKrmGPYfb/frlGi6HcJWTTGx8F0Sdpo
+         tInHw2C+XJekzJTY0iDoU3PzUoKRWoQX+7a341ySKoMdEbpW3VEGSxwAck4T7nXX7xJ3
+         29Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=dKDKjqjwDSmFPGcqUAnFY8hjWYTW0XPI8cDRdcBhVF4=;
-        b=ljMXcm+94WoJoj/fNc53oUpa5+Sgsfg7XaGpyvysc1CyUd8kIHKalRfvcTgYox0Tni
-         qlT9rpe9N5RuWBRUbTGbE5urjR7uLuCnqIXrCYyu0zjzFqvGtKggtPENaMS/Ob4jjjm4
-         YGOz9V0wNjEqT0VqtLQ4xsC0mWSUr3B8lp0bTv5NEUk/0sGz1Nmv+9peAoy2A08Fdo4Z
-         j4rmCKc0o10a5RhJVRMGLSt4ied23efQ91SsPObqdS+1kYdE1ordrIgLV/VhRZIIDxfo
-         v2QwYiNqjNGEZyGmH9vH/PX/RPjCOKjq/fVl3vZfdaF+svtHISm/Xiom7XS+9x0z8cb3
-         604w==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=Dl7raQEEhwKje+N80Pxwd4IDIQTTRAafiRJOMieGPHU=;
+        b=BKICACd9jn8D6fm8YcfZDqYgxY0UqvZXpAlt85EORJlxyO1vgQEuNXPnRBZkYrEBEB
+         gCh7kcdgMJ8zDHe1OATBm0HT6Ab19yj1RXI5I4AEVRCg5SfrDeyGFH7ox4B6VUZsqz+M
+         +YUCmtlO4LH9IKkNK3Q1SsAXItyfehEIjuEJX9ZzMmov3r5Eh6CqBWyNIMdYXbqT3gCI
+         xl0BTsqEWcQNRcvsqbmYA/6KPcOK1l4pBvd5s7ApJAbpJkW/y807es/io8jSEcOjmp02
+         IoDCa8QaM91HU0g8lmov6M85jjpCFo6bHNNzXg0KopmXHv9DIiFr5k+n+t5Jt15UpAoK
+         kPfQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="UI6S/j/7";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r77-v6si2061799qkl.132.2018.10.30.06.02.01
+        by mx.google.com with ESMTPS id g2-v6si5299121qtc.224.2018.10.30.06.32.43
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Oct 2018 06:02:01 -0700 (PDT)
+        Tue, 30 Oct 2018 06:32:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="UI6S/j/7";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53134 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53306 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHTej-0004bR-Er
-	for alex.bennee@linaro.org; Tue, 30 Oct 2018 09:02:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41682)
+	id 1gHU8Q-0003eo-V0
+	for alex.bennee@linaro.org; Tue, 30 Oct 2018 09:32:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52179)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHTeV-0004Zj-R3
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 09:01:48 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gHU85-0003aH-Ru
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 09:32:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHTeM-0003nG-Uj
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 09:01:44 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:43149)
+	(envelope-from <peter.maydell@linaro.org>) id 1gHU83-0004HF-Sa
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 09:32:21 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46017)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHTeM-0003kq-MC
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 09:01:38 -0400
-Received: by mail-wr1-f65.google.com with SMTP id t10-v6so12479787wrn.10
-	for <qemu-arm@nongnu.org>; Tue, 30 Oct 2018 06:01:35 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gHU7y-0003vg-A2
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 09:32:14 -0400
+Received: by mail-oi1-x242.google.com with SMTP id p144-v6so6472098oic.12
+	for <qemu-arm@nongnu.org>; Tue, 30 Oct 2018 06:32:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=Dl7raQEEhwKje+N80Pxwd4IDIQTTRAafiRJOMieGPHU=;
+	b=UI6S/j/7RJ/B69lslhO3u70NrKOfjDw3HbK5+ihMvR+J5hEFVgDRanz+nRD8a3cKsM
+	nKLffEqV3fVo69AKRUdvs5+zss8590aDFb2wTfOf2QlVmVJ92KkUM1vtLVzk+YQ3l0kc
+	5hkSuclMtqF7SUSsHdoJ2sESKr3YAbsQl867E=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=dKDKjqjwDSmFPGcqUAnFY8hjWYTW0XPI8cDRdcBhVF4=;
-	b=hWV4U9iimq/Fh4ZNU3ll8tMV9eG5cm+IR3whpa41Direslmnk1GFud5zriTGMwaTa4
-	ivXz1rto0/4mseVGlydnmonaSwFCKArYjLYRb+8uj4DzGo7cEb7rpf2SR9qmvmXkr0c3
-	1f5vld1p1jbsntfOiW4ofTUeKJooAQElwvs6lSAKGbfJE4U5BHSiR4+yMb9wdsJlARf8
-	vxNS/HGK3MJQ8xrlV9/M2vWFTH29bzkTyQkqCmErnRP8YhzORfL5TUNz8LrrhGCHEviG
-	dPg5Ubx4fpq/fhDucBnsumQezpFEVlEG84JMsZCyqwJ961VZl4ct6f1mHML3uLO/QAug
-	cMOg==
-X-Gm-Message-State: AGRZ1gIDH9ospTamLWOPfsMFMohrH46f2kLb0Md9GqkXXFGiUb+6Tbzl
-	rpPbF9RgM86NNuh2OoWMwZ63hMRZSDY=
-X-Received: by 2002:adf:800b:: with SMTP id
-	11-v6mr5175333wrk.106.1540904494538; 
-	Tue, 30 Oct 2018 06:01:34 -0700 (PDT)
-Received: from [192.168.1.130] ([139.47.13.138])
-	by smtp.gmail.com with ESMTPSA id
-	w6-v6sm1256744wrk.62.2018.10.30.06.01.32
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 30 Oct 2018 06:01:33 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20181029232100.8454-1-philmd@redhat.com>
-	<20181029232100.8454-3-philmd@redhat.com>
-	<CAFEAcA_yde+Ppuqet7KFE-AvZrjnrfYeY=R1aWD86cox+WYsxg@mail.gmail.com>
-	<f2832be6-83ab-83ac-2063-13bf0b556d80@redhat.com>
-	<CAFEAcA_6mDdxVU_TY583uOTgAX_eT-s52QRCDWTd0_uCrUTwhA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <2aba69a5-c466-b94c-0d83-3f4fd9d1722c@redhat.com>
-Date: Tue, 30 Oct 2018 14:01:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=Dl7raQEEhwKje+N80Pxwd4IDIQTTRAafiRJOMieGPHU=;
+	b=kngyKd1ddsiKqJJupmw+KwWPHzF5C2ac1YDaMrreY/4HuD1C+kRB28x1CQZc0zubmM
+	x3k3O8ZgbfyPyFnrE6AsyVdsEl49ykLZ0mVj1qQZSWPQTjH5McEgIAPrs+lD36ijo19b
+	2DBBJCVYSopEBufGJrmtRDG5Xkr8sKmzMpR+TuUEpbtwhoIp65pQl08R21QRw6rEaUud
+	wCHM/p3ZRmL1WK3Wd3hXa1H6zQlxqEuX9SVjaa+b9aSYj9jOaoj1twuc+KP9UXTMXFs0
+	jTFhLR2wJY156suiNtE9f61oRR3Vqik2rHxAZ7/j5E5HfdKkVn2ZyPdAIBmZrW4gZpiv
+	jPUg==
+X-Gm-Message-State: AGRZ1gKjnvMaMq8KOsOk6EG06RtZ4OiVnwZ4PoHaLpS7M0IlwWeSl8GF
+	CWK0wH7tYhctf7FBCB0aMo9bAWWmmE/bTmEF96CJ1g==
+X-Received: by 2002:aca:ed51:: with SMTP id
+	l78-v6mr10401379oih.112.1540906325398; 
+	Tue, 30 Oct 2018 06:32:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_6mDdxVU_TY583uOTgAX_eT-s52QRCDWTd0_uCrUTwhA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-arm] [PATCH 2/3] hw/dma/pl330: Factor out pl330_init()
- from hw/arm/xilinx_zynq.c
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Tue, 30 Oct 2018 06:31:44
+	-0700 (PDT)
+In-Reply-To: <20181022173559.17111-5-edgar.iglesias@gmail.com>
+References: <20181022173559.17111-1-edgar.iglesias@gmail.com>
+	<20181022173559.17111-5-edgar.iglesias@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 Oct 2018 13:31:44 +0000
+Message-ID: <CAFEAcA_BGhqMiQGgF3TSXBXHacQf31emVTZv2tcr0Qo77bKcvA@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-arm] [PATCH v4 4/4] hw/arm: versal: Add a virtual Xilinx
+ Versal board
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,72 +105,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>,
 	Alistair Francis <alistair@alistair23.me>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Guenter Roeck <linux@roeck-us.net>
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S6+jpDHSPaIc
+X-TUID: EVRDHFGYFymb
 
-On 30/10/18 13:42, Peter Maydell wrote:
-> On 30 October 2018 at 11:28, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->> On 30/10/18 10:36, Peter Maydell wrote:
->>>
->>> On 29 October 2018 at 23:20, Philippe Mathieu-Daudé <philmd@redhat.com>
->>> wrote:
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>>> ---
->>>>    MAINTAINERS            |  1 +
->>>>    hw/arm/xilinx_zynq.c   | 18 ++----------------
->>>>    hw/dma/pl330.c         |  2 +-
->>>>    include/hw/dma/pl330.h | 41 +++++++++++++++++++++++++++++++++++++++++
->>>>    4 files changed, 45 insertions(+), 17 deletions(-)
->>>>    create mode 100644 include/hw/dma/pl330.h
->>>
->>>
->>>> +static inline void pl330_init(uint32_t base, qemu_irq irq, int nreq)
->>>> +{
->>>> +    SysBusDevice *busdev;
->>>> +    DeviceState *dev;
->>>> +
->>>> +    dev = qdev_create(NULL, TYPE_PL330);
->>>> +    qdev_prop_set_uint8(dev, "num_chnls", 8);
->>>> +    qdev_prop_set_uint8(dev, "num_periph_req", nreq);
->>>> +    qdev_prop_set_uint8(dev, "num_events", 16);
->>>> +    qdev_prop_set_uint8(dev, "data_width", 64);
->>>> +    qdev_prop_set_uint8(dev, "wr_cap", 8);
->>>> +    qdev_prop_set_uint8(dev, "wr_q_dep", 16);
->>>> +    qdev_prop_set_uint8(dev, "rd_cap", 8);
->>>> +    qdev_prop_set_uint8(dev, "rd_q_dep", 16);
->>>> +    qdev_prop_set_uint16(dev, "data_buffer_dep", 256);
->>>> +    qdev_init_nofail(dev);
->>>
->>>
->>> These are the settings the Xilinx board uses, but are
->>> they really the settings every SoC that has a PL330 will use ?
->>
->>
->> Except "num_periph_req", all are pl330_properties defaults.
-> 
-> If they're all the device's defaults there's not much point
-> in setting them by hand. But my point is that the reason they're
-> properties is that in the real hardware these are configurable
-> values in the RTL. So any given SoC model needs to be able to
-> set them appropriately. Having a helper function that doesn't
-> let you set them makes it too easy for people modelling SoCs
-> not to think about the question, I think...
+On 22 October 2018 at 18:35, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Add a virtual Xilinx Versal board.
+>
+> This board is based on the Xilinx Versal SoC. The exact
+> details of what peripherals are attached to this board
+> will remain in control of QEMU. QEMU will generate an
+> FDT on the fly for Linux and other software to auto-discover
+> peripherals.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Yes, I understood and agree.
+> +static void fdt_add_fixed_link_nodes(VersalVirt *s, char *gemname,
+> +                                     uint32_t phandle)
+> +{
+> +    char *name = g_strdup_printf("%s/fixed-link", gemname);
+> +
+> +    qemu_fdt_add_subnode(s->fdt, name);
+> +    qemu_fdt_setprop_cell(s->fdt, name, "phandle", phandle);
+> +    qemu_fdt_setprop_cells(s->fdt, name, "full-duplex");
 
-I now respined v2 without this.
+Hi. This fails to compile in a non-debug build:
 
-Thanks for your review!
+In file included from /home/peter.maydell/qemu/hw/arm/xlnx-versal-virt.c:16:0:
+/home/peter.maydell/qemu/hw/arm/xlnx-versal-virt.c: In function
+'fdt_add_fixed_link_nodes':
+/home/peter.maydell/qemu/include/sysemu/device_tree.h:110:23: error:
+comparison of unsigned expression < 0 is always false
+[-Werror=type-limits]
+         for (i = 0; i < ARRAY_SIZE(qdt_tmp); i++) {                           \
+                       ^
+/home/peter.maydell/qemu/hw/arm/xlnx-versal-virt.c:191:5: note: in
+expansion of macro 'qemu_fdt_setprop_cells'
+     qemu_fdt_setprop_cells(s->fdt, name, "full-duplex");
+     ^
 
-Phil.
+because qemu_fdt_setprop_cells() requires you to provide
+at least one cell value for the property being set.
+What was the intention here ?
 
-> 
-> thanks
-> -- PMM
-> 
+
+> +    qemu_fdt_setprop_cell(s->fdt, name, "speed", 1000);
+> +    g_free(name);
+> +}
+
+In the meantime, I'm dropping the versal patches from
+target-arm.next.
+
+thanks
+-- PMM

@@ -1,42 +1,42 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440009wro;
-        Tue, 30 Oct 2018 04:23:53 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5c1dHDHoz+NuiDuPd5TyPy7wgk1JONMNbJ8iBUJMl3up53fr+g7xAAHtytxbcL3+J86wS1k
-X-Received: by 2002:a5d:43ca:: with SMTP id v10-v6mr9304020wrr.244.1540898633445;
-        Tue, 30 Oct 2018 04:23:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540898633; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440029wro;
+        Tue, 30 Oct 2018 04:23:54 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5f8BIrayLQOYeoXiDkoyFFwvnqlsTYFzF/ZfGTVhocvrROUmtNE9I+/uPPA9zxY848y4bX2
+X-Received: by 2002:a1c:b088:: with SMTP id z130-v6mr1339505wme.95.1540898634725;
+        Tue, 30 Oct 2018 04:23:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898634; cv=none;
         d=google.com; s=arc-20160816;
-        b=B7bmxjlWq6Zuw9yQK4Yxg5liRrPN7VPSMshzTa7b+Fnf+iEacJ2aDqEzZEchefbTqg
-         u9amkozo/kIhNVdPrhJAxzLlSZlYzzaPwPIOdT/YqAjTFM0Kl4bdPgeTwxA7wi8exd4+
-         BiY5LU5+T5s1DzYUNidVSEiTNDOMU0B6dIhe6sgQb6SA4nT3EQ8zszhC9GVJSt/InISH
-         dHGXNvCsB3KChz56W+22k2R/hM+xrENq46bb+oIhWqp8VEP9vR5LQPwU+B1wDyCvE/YL
-         1h6N+Y3lq89RSMxULrO4LRRCZWh5ly+l1rO8qlCzfYnQ5oSpMxL3E4YX5JkotZc/EP5Z
-         E/Ng==
+        b=rcxRm0LJtOi6RcwwxsggN+MZ1238kTUjTVlHGjYw6r0A/hFvCxpU110B52rj6WRafe
+         iKK8TqHe5TVcZ7dWPyHoAFU86TeJZppeT95JFAUl05oUvTvdhGOODUY1u+ixQBV3J0zQ
+         H2DhejK4kaIhMQk0w4xT2Y39N8Rl1dK3pck+nqkz5iiXye3aEkiTb1rr/E8XuNTsj8Qu
+         MJ83DoQZbn00gvlmsMO9pMjYg+7/vOPNFjxKz3BzJRFJnjvMsvWwwvPbQV2D/UMlB+DB
+         VQXvQRP4v38cHIsN9Wdo1JU/Y+ZJ81l+GDhRewgHv2wypGDmVBCwMcfnc8l1gLJKKZyM
+         9KUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=x72wGazpZPqiR4VPR3HYovlBNDCcYn9E9Ay7uvF1WNg=;
-        b=ItBOPE4/HU0pBq2gVd5twjfVdQKy5pa26tYsx/h0a4kFVztnj5afmCepLwkGxxHfYk
-         1FaTxxn0ZlQU1eErzBVa2A5tbnq26kHNVSuGQngNO5K5oRoy4QctJGIQAINBPK7brDkg
-         hRfQwbExVm2oVD1LHhAPgf/PhWRRyPsR9jIukATxcRtZy5nLOhkl/2m7ACZ221LLaaWZ
-         rYH9mS18mc0VGSJIWRag0Jp3F0pPcMJS6NO8lr9qB483drewS+4oKKRnIMss6mAUisjR
-         Xk6+dhW39nNZaCnYY//UjCwNYuzpbnDk7bBBTd2qiOu3fdIW7f7qUH9kHvLAXVzMBdKb
-         /zvA==
+        bh=PBT5D6UIuigq19dQCvDE1WktRMGE5WMPcjvrRnLCvxQ=;
+        b=d4GSOWdZnHJuK8tdV/eAPjqKH61mAn/qDCwGT/7PEN5s/1a7VSlK/68yQuQUpHOt4P
+         6xQgHVDOdWyVR+4xFmz3gLcMd7ZTjRbkRhNH5gsgJ8LM6dzkB+7TrdehRUPdGn+3Uyg9
+         +NUq4u+S7PJPFPlHXGt4ntGRDM6241oNBrLHQCV2aBqQ5w3j6Iq12FQwA1IDNBMUxk8m
+         frvo60Etyv+SlZuJhp/OMzaYQVQtmdl7AqVeiYKqBw0DpR/RG0cAhg5baEZHayNt6DfD
+         2MPP8Bh+2RGPWw6tK1gp6QLVRPXUAQLtkA0EepIwtQCaJWrC7PA2Z/33gvKUUPuGE6Pu
+         0gNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by mx.google.com with ESMTPS id f16-v6si12620045wmb.59.2018.10.30.04.23.53
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.135])
+        by mx.google.com with ESMTPS id z3-v6si16829981wro.30.2018.10.30.04.23.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Oct 2018 04:23:53 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.187;
+        Tue, 30 Oct 2018 04:23:54 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.135;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.187 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+       spf=neutral (google.com: 212.227.126.135 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MWRmF-1g2srR2WfT-00Xprt; Tue, 30 Oct 2018 12:23:46 +0100
+ id 1N6KpF-1fTHCB0FFR-016ceh; Tue, 30 Oct 2018 12:23:50 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MWRmF-1g2srR2WfT-00Xprt; Tue, 30 Oct 2018 12:23:46 +0100
+ id 1N6KpF-1fTHCB0FFR-016ceh; Tue, 30 Oct 2018 12:23:50 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -67,61 +67,57 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PULL v2 01/20] configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
-Date: Tue, 30 Oct 2018 12:23:18 +0100
-Message-Id: <20181030112337.17973-2-laurent@vivier.eu>
+	Markus Armbruster <armbru@redhat.com>,
+	yuchenlin <yuchenlin@synology.com>
+Subject: [PULL v2 02/20] vga_int: remove unused function protype
+Date: Tue, 30 Oct 2018 12:23:19 +0100
+Message-Id: <20181030112337.17973-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:b/w7jnw+xQS1YeEBcE70ncEpRJovYtV1+sIVuHxfe9l0XSPc9x0
- /0PzbNLbMR/lw3sSIKlarCSchPH7YlnG/mRMr1hPKxLcydqlXQPa1p95OnGeEdYcOILxNWq
- CTK/WSJVwga/Kty+ja1LfXgStGt3ypPOt3JS6MxdtckiX9aaS9J3A5S46HJ+PBOYRW0vv7x
- 32V8nd4SqU7x7HIgezJtQ==
+X-Provags-ID: V03:K1:VdGPgtjUAK2VHmCK3f2ylcttjAeYbvGsyLbGr9yPbuJqMU1q2ZU
+ pD66VUqYbTpjNKd/AXShpQsmE+2txaznUMX9R1cxelhdGolGa6WVdYyPTHRLI/1Vs8qNIvF
+ I/w8nDmAsuH+PpBozNOGwq44jLIFsU+Nm7/GgcqBCOqZ1UBteQ0b1axHCUeGKnW4kHHn+m4
+ +ZZgGiR40E+T6L1NV56vA==
 X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V01:K0:TH/Q2sY14Bg=:yT7jHMpnaFZCZkw6rbfXIJ
- EcFF2Vca62jNEfwh5/UJtV2+b6ys6mKqLVT2ZwneVUWyTNBuT2/tkM3RX0lSmo5QxXoAMFnHN
- aMZMtwLhSgFOjs8Fc3XwbP3uDozsL0CyQFJL5y6jzni8uaz5kx1N3xyuLg6QPHYKA0DWRPVMM
- q1ktZqSpSh7f/QvdNzUc/2YRefp97Fit6Ds17sQ26sPxUM4XQ+JagO4IXEBRE3n//4l+yfacJ
- FIo6gC32TJDW7o26QkxsXvycNP7DQc373MwEslRGwBZ8xZ87n8ty0YE+6lAvZumMAuO7XD+17
- TGc++15N8oBfekxKk81ukhWYPDz28smKgfNd811oI4zaZhxCPbYprAB41gANMWjcGRm7LNPMp
- ntnxdJV24SshT9FNtazGTQS88IKf8VXkk/Yij8CnqyJ+7bye77plV7yJII+KgZulsnMui0sdt
- AckogIUghm5RKNI5Z7Rkqqn2u8NORlS4ABysCcO9U+5kfvMOck0Xs+x1c594mvX8I1s1PKdq4
- 5grf0+bChZFBGxYdHYtn3gH+zIfW3H+HWZFproRs2Kwmx9+wdVzU1AlnKlYt01vgvUVJjHMoC
- ymmXaGN9jNWeLRqO3QQEcexiLcUmeft1SX/jrceMEx0/TSWCzTo7iJu/VGyrseWYnvcHMgltG
- 6UOH5kgyAiG6mjC+NDnPK6hBeQxngXDGt2HvASy+wJw2DU8Mj5D13cnCzaGYfhuhuckwpRtcz
- OA8aDGBMuE4MmkL3
-X-TUID: U6fpTNZb2WQy
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Erk1HJDdJHg=:F/r/ZCIZlvIXgbC4fd1bF6
+ 3Vxwu/R8hiCysIvrSSu76BqL9kmzhaSVZAovKsGS8zRr+Vk8haasgSPT6GrGLDdVwM1eyyAkn
+ 7dmbHTaoAb6qNezywtGZkwRQEHq8XCfN6eXAK8Ds5GUq5H2VGrnK0BQ+9b0amcR8GzF4tyEE8
+ zm3TWDuscDfb2CFis8D3g6hLsO4+jsu6PTP6hZ766hqaRcqwbqISedCk6qOJWdGTIt3T7hIyU
+ 6xME1bHMItSdH027YI4lduSnPN7Hj67K3e+S1dN6yA+gm6TUlIsf9q75NpeX4Fj7IE8w/XLFr
+ GdOrZJ50fsLoiNIe2TBvF950a6cfT8d4N0DZ/IPLCHNb8rr8p+Cdzd8wjbYwkVqYmBK5NMwZD
+ 9HeJiT+sePiA9yagv07IYZLvtKEdCfaLF192QiFWazmOfk175etYOMwJSzgHszO0iOzAyn7T2
+ CLc8xbMF0WScbeID7MYRdDgJeVfEy1DlS8B/QGIpwKo3D4QO9bClktVsWfWx1LKN2dX2ImR5u
+ U08kN6WOcOORq4jQN/Uiy/OPWdHcFtU9gD1CV9JF1thaPAi62xRvW6Z8gxNXeFFiwcET65TIU
+ Ukvpb/S4ea7yxu1VdxLleksJQsqyFQ5a5NlIKMQsHuii7P31ogsy5OEdTsMJ/cyf+NnLQZrad
+ 245Pj1EIt3o96jtfvz/Cop3kRHqKk5BeAM3cHhE+HwfLExrqD7JV9sG3rGEuQUgfjxOHjT4vx
+ CsQuvedFqMBV01Wr
+X-TUID: OXWF2gs50XfY
 
-From: Thomas Huth <thuth@redhat.com>
+From: yuchenlin <yuchenlin@synology.com>
 
-We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
-is just a dead config option which can be removed.
-
-Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: yuchenlin <yuchenlin@synology.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+Message-Id: <20181022080053.9379-1-yuchenlin@synology.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- default-configs/alpha-softmmu.mak | 1 -
+ hw/display/vga_int.h | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/default-configs/alpha-softmmu.mak b/default-configs/alpha-softmmu.mak
-index eb58b40254..4d654eaa0b 100644
---- a/default-configs/alpha-softmmu.mak
-+++ b/default-configs/alpha-softmmu.mak
-@@ -8,7 +8,6 @@ CONFIG_I82374=y
- CONFIG_I8254=y
- CONFIG_I8257=y
- CONFIG_PARALLEL=y
--CONFIG_PARALLEL_ISA=y
- CONFIG_FDC=y
- CONFIG_PCKBD=y
- CONFIG_VGA_CIRRUS=y
+diff --git a/hw/display/vga_int.h b/hw/display/vga_int.h
+index 6e4fa48a79..55c418eab5 100644
+--- a/hw/display/vga_int.h
++++ b/hw/display/vga_int.h
+@@ -166,7 +166,6 @@ MemoryRegion *vga_init_io(VGACommonState *s, Object *obj,
+                           const MemoryRegionPortio **vbe_ports);
+ void vga_common_reset(VGACommonState *s);
+ 
+-void vga_sync_dirty_bitmap(VGACommonState *s);
+ void vga_dirty_log_start(VGACommonState *s);
+ void vga_dirty_log_stop(VGACommonState *s);
+ 
 -- 
 2.17.2

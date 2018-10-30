@@ -1,227 +1,187 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp848608wro;
-        Thu, 25 Oct 2018 08:25:13 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cLJAHT9RDndCywfc6ASIUmZQxR44kSY0FgAMhsP9canobTkoyMkzrhT8toHPfbFKdCg9Kc
-X-Received: by 2002:a37:a48d:: with SMTP id n135-v6mr1854783qke.160.1540481113152;
-        Thu, 25 Oct 2018 08:25:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540481113; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5439936wro;
+        Tue, 30 Oct 2018 04:23:49 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cuJ6QuJGhwJX8mxn/W0phoePnzGmy+gPjnstXqIiv1n+kYVDG+Yjq/pBdwaaLULDRDOttz
+X-Received: by 2002:adf:df0a:: with SMTP id y10-v6mr7333751wrl.127.1540898629197;
+        Tue, 30 Oct 2018 04:23:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898629; cv=none;
         d=google.com; s=arc-20160816;
-        b=OmZu7EiESysTG5ItapLXuqcPd6Moc69dQimQ1McwnL8BIbgvxxIDgJd5u1zFGtxysE
-         zYl/2/Tuf6CkOlRO1sBAHhWrbCiF7wlsiJG4jxFUL3XS3zhiiPbGyAvYwEo+bSA+lQhn
-         05OA8yahoifKmSnbeKOd7sOENqoBCe7Mm/8bRnoUipQPZ89LNpygPqmSeoHXG5oHC2h6
-         ExbxspDGUlrzUzCApscZL1c+isEeS8wBOpKs80tD8RYepy/Ase/9JfWJC9YrWCC7tdeQ
-         1WFcVKl2c0lXlVVa3Qq5lKSUP9EVYS8G4caEVKyG9ceDkIqB4epD/YGoa59ziVNO4Dx3
-         aJlQ==
+        b=LGCNWjMjcMKB1TwwLlTtKEQDMEU4yH/4cd9rTWz4R5yMKqYc+uHYRhGD+IP4PnIPDK
+         9a4tQgsiY94eUsrrQDgDnNgOilTd20627ZhywOLnoJqwkRIQDxEWeeaHSSyJ+GUWTUJ7
+         iahEXHgzjr/CRTs9QLk0mL2KMdijsJLPaIg4qpuw4AR0LtcOgBDQKSjIfhFB/QxXfmEZ
+         TVGnjAQjCpHU8trsDQbmd21FEAdxQCROCoe5xGReQqpZFU5ocyzX6DcaHL/m3r6xkvj8
+         cHaM6mOln8p2JvHepaGm7MZquP6l2sn2uYw+dJJ5GiSW35HUCgCO1WLK3+DKUz58QOy2
+         Re8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:dkim-signature;
-        bh=3j9F53GR3YtLPEfc6I3qE4RlsSU6R+YltslfjdjAowM=;
-        b=bSuxGnPn6XY3ooCSPm/V4DGQ/TGE7/bwWl/9Y71pAjdc45IleM5Z5PK2rsN8jLL0pb
-         mWuDXbxZdjY9pBm5kfCB5SbRqK/g1QT9p6QSGpf9mVDA+/dpup/WZdHqKF0zGmMowQ85
-         O4pL1DElcJmd8bscTT5i2Xj+LUzw8Y0tZHWcEjTqiel8z5SvAJv+MKyoE4jSVyoXfQLJ
-         U9YXXMz3mZ0q1Le1swAoIENGEKLaUJZpZCeUwCEvom6+6efT2Wvpw51Tz4HYYtARU5Zx
-         Ws3b6ceJXEpepra7PqYpEoqMlwSqYJ/GM6qBeeHoOuB/YImMKnZ26OJthrSqNlUazGS4
-         10AA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=ifaRWI41tyCnSbrJyN2NHpirtSfMW734F/DycCVQmY8=;
+        b=N9EMCvmmkgcbhSHNi1NR1hOVmxRADCuILQn95n1LCfr03cxFGWg+Wr+uS7X7EBb2TJ
+         58SJPUrS3a2BAJZa3M06LdWwJfJB2aSkDag0VqDvoAqTMxahDYOtNOFBF/mqRLTgpKFH
+         Lg73JrWzhD8Zt31l9YaAvuLDwsmehjFNMWFze4Z02+6zio4izhFEkaZoJmBP2ggjX82B
+         EKCxDwSuMmgTH8KNd+/o5xlT6WiWGOGMDF4jveM3a7Vjr1XQRIejB3YXxnE6BEMd7jkn
+         qULcdwDFWbzvnqhoovi+n/s+qkNXz9TYD1mkygawap/s59hIvBGiJsOefFI8tnaj8H6E
+         9OkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b="zD/urpk/";
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=iTW5T6cF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y8si1736569qvr.117.2018.10.25.08.25.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 25 Oct 2018 08:25:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.133])
+        by mx.google.com with ESMTPS id r4-v6si11962543wrs.80.2018.10.30.04.23.48
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 Oct 2018 04:23:49 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.133;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@braap.org header.s=mesmtp header.b="zD/urpk/";
-       dkim=fail header.i=@messagingengine.com header.s=fm1 header.b=iTW5T6cF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55153 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gFhVY-0005JP-Gq
-	for alex.bennee@linaro.org; Thu, 25 Oct 2018 11:25:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60330)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1gFh5K-0004FR-Nd
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 10:58:08 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cota@braap.org>) id 1gFgvG-0008Et-Pa
-	for qemu-devel@nongnu.org; Thu, 25 Oct 2018 10:47:48 -0400
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:53107)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cota@braap.org>)
-	id 1gFgvB-0007mb-Hw; Thu, 25 Oct 2018 10:47:38 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 620AC220A4;
-	Thu, 25 Oct 2018 10:46:49 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-	by compute4.internal (MEProxy); Thu, 25 Oct 2018 10:46:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=braap.org; h=
-	from:to:cc:subject:date:message-id:in-reply-to:references; s=
-	mesmtp; bh=3j9F53GR3YtLPEfc6I3qE4RlsSU6R+YltslfjdjAowM=; b=zD/ur
-	pk/RMlANZiR5t3kCVBo3mo05ua9/OjXxOXecsoqFlhg+Pwdk8sLOfYfMco1R7Liv
-	hennJ+CopAU/B8GBHjIbmCp+aanK/dZj4juoj4eR6JmE0bNiJR0TgcfMeVPnWSOj
-	tb9hnT+mC0hCCkbKT7YD06Cuyxl/ta84DCroYc=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:date:from:in-reply-to:message-id
-	:references:subject:to:x-me-proxy:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; bh=3j9F53GR3YtLPEfc6I3qE4RlsSU6R
-	+YltslfjdjAowM=; b=iTW5T6cFMLX7oQUo9Dh5QYu4fRAwm0ZL+ck6W1KenzxQK
-	MVQO794ciLyIj3xt4my1GnQtlF5Jy+FTxDNOUZuoimKw+7skj2/16zVrUU2fe9CV
-	nr3lphBVN2EiHpA9juo4kj+//zX8hr6JxW+FLejEza6uX9AYg4ieyn5SdHZxD0hy
-	TrW8d8eBBZNnSqv5iviM71yDQWgW3pFPBL+bL1PDO+mH8+a/2JLMyzpscNFoj/lW
-	GkYoYcGz4NhMmx5V2+gy2+A0y2x5NAc9T5e24E30ffnGTC108YXV6WVsAjcItfIk
-	JHgJnj+e0vWFhkwiUxy5l+4hi+RgQq0KwzoPC8e0g==
-X-ME-Sender: <xms:WdfRWzaurVb5wUGnmQngzJyEEvPWfRssakIwu6NiXJqTe74114sVNw>
-X-ME-Proxy: <xmx:WdfRW808aCjCxj_lIz18P7r5sbVAmxNZxxLvK6pKfI0m0bhOah9EXA>
-	<xmx:WdfRW-0EhF2cQJpg3HaUcp32TSs7N1oMePBm6zEZnx2M5hB3oN-hfg>
-	<xmx:WdfRWzctkWGmdG1dXW9ilBFUqyRS7JL9a1EWJR5qUXVGveVcTFNgyw>
-	<xmx:WdfRWwKstlM4Fii8MiHw_GSACe6DM5LZ_h6YG5MtgScivqpRu8aMJA>
-	<xmx:WdfRWy-06ZwSw5b0gdRvBnLj_7FAPF13Jq2sVReincv-xRrSTVToiw>
-	<xmx:WdfRWx1OphpRcTwttnwtZFrZNbSFvWleOGYnKQ20Dw8ch-tHoYqXsg>
-Received: from localhost (flamenco.cs.columbia.edu [128.59.20.216])
-	by mail.messagingengine.com (Postfix) with ESMTPA id 087E6E44D4;
-	Thu, 25 Oct 2018 10:46:49 -0400 (EDT)
-From: "Emilio G. Cota" <cota@braap.org>
+       spf=neutral (google.com: 212.227.126.133 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
+From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
-Date: Thu, 25 Oct 2018 10:45:49 -0400
-Message-Id: <20181025144644.15464-16-cota@braap.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20181025144644.15464-1-cota@braap.org>
-References: <20181025144644.15464-1-cota@braap.org>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.27
-Subject: [Qemu-devel] [RFC v4 16/71] arm: convert to cpu_halted
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-	Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JuARPQS2+/ro
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	qemu-arm@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Max Reitz <mreitz@redhat.com>,
+	Fam Zheng <famz@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Kevin Wolf <kwolf@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	qemu-trivial@nongnu.org,
+	qemu-block@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	xen-devel@lists.xenproject.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Michael Walle <michael@walle.cc>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PULL v2 00/20] Qemu trivial for 3.1 patches
+Date: Tue, 30 Oct 2018 12:23:17 +0100
+Message-Id: <20181030112337.17973-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.17.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:y4wJZBQa36fYeIfafVVGOGE7fIbv9mjAWFxbq5hFhvYf5uTUIa4
+ uUXJnKGwf48j3geM8iJBwHm12geZVEqo4OxKyqMKBzMUs26F7O+hRzAmq9E6jSNhmQrcquq
+ 5qluvC9rh1yysZGuNFdD7Aew6vNJm6CVVZmTclHhX7Wpro/q1MR2HikUg4oP9+owQUb5qo5
+ AEgQnCING+xIHCLAgVQaw==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Y1WZhTh/8Ew=:LtGR41t7EDavmeMarZFYsD
+ hDyqbpoeUu7TV1BrlADahHWN3Kry8UxhokdYr/+NkLiQlQCDz7dW8XvCVFy5qP6bd8nr/uzjT
+ 0Wy836k88tRTsHnzmq6dwAt2i9cSgb17gywcCMqSzgRUxkrcZvyc1Fl3pkZyMW5HMvSvcMGDT
+ 1jJNZ13O2CxYXMyvnerEkrs5BU941xgXrAbew9Wvp0udQ6hI5xmO93hUUuLw6Kz3fhVXecl4y
+ sQOqKJpuzV+v7jShGRmWoyQ6nHQkBLPtmx7RPCFtQnuJf8R6cbuaM8HAd4rs9tkAa985MKLus
+ bQ7bZbs80OM4UBGV/Ja8jVz2edhuSLenIKofgyDFssst1yPvtBxGIOdze2wi43yEv88LYofz2
+ /Nl8v/HIDDqPBYf/49mHQzK66GMdtyocSmHLcyOXc4hlBx2adojXeqqDLkVFOieCFKEqcQjG+
+ EPFMrGN9WtkRcE9zEhoWU3qP1nnNdUtCeJTZwPSEauaFXoYC0T4TDdQTM0l4mHwnCC5/iufVn
+ T3tQS3HcKC5M1ARS48qExmQ3TokoYy/VzBfHYn6YPgnHt4q+1M6iFxaDjJ+tNTxBvN5SrzamC
+ MoCJoixHxcYHkkT94ijuI2S+KusRzWAlnp8Qdox2JInnux1efEWdkBeM/tT/EuVOtOrpEfA+P
+ Gr8Ijpm5WK/R/UmrUY+jcKVXi1V4qJipG+TNPF07terMEF3GTj8lxjhHsJceezAlR/soyVhm+
+ Z7CHSJ6pzYZk2xjP
+X-TUID: X95PYY78CuSp
 
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Emilio G. Cota <cota@braap.org>
----
- hw/arm/omap1.c            | 4 ++--
- hw/arm/pxa2xx_gpio.c      | 2 +-
- hw/arm/pxa2xx_pic.c       | 2 +-
- target/arm/arm-powerctl.c | 4 ++--
- target/arm/cpu.c          | 2 +-
- target/arm/op_helper.c    | 2 +-
- 6 files changed, 8 insertions(+), 8 deletions(-)
+The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 539d29ef9c..55a7672976 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -1769,7 +1769,7 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
-     case 0x18:	/* DSP_SYSST */
-         cpu = CPU(s->cpu);
-         return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
--                (cpu->halted << 6);      /* Quite useless... */
-+                (cpu_halted(cpu) << 6);      /* Quite useless... */
-     }
- 
-     OMAP_BAD_REG(addr);
-@@ -3790,7 +3790,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req)
-     struct omap_mpu_state_s *mpu = (struct omap_mpu_state_s *) opaque;
-     CPUState *cpu = CPU(mpu->cpu);
- 
--    if (cpu->halted) {
-+    if (cpu_halted(cpu)) {
-         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
-     }
- }
-diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
-index e15070188e..5c3fea42e9 100644
---- a/hw/arm/pxa2xx_gpio.c
-+++ b/hw/arm/pxa2xx_gpio.c
-@@ -128,7 +128,7 @@ static void pxa2xx_gpio_set(void *opaque, int line, int level)
-         pxa2xx_gpio_irq_update(s);
- 
-     /* Wake-up GPIOs */
--    if (cpu->halted && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
-+    if (cpu_halted(cpu) && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
-         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
-     }
- }
-diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-index 61275fa040..46ab4c3fc2 100644
---- a/hw/arm/pxa2xx_pic.c
-+++ b/hw/arm/pxa2xx_pic.c
-@@ -58,7 +58,7 @@ static void pxa2xx_pic_update(void *opaque)
-     PXA2xxPICState *s = (PXA2xxPICState *) opaque;
-     CPUState *cpu = CPU(s->cpu);
- 
--    if (cpu->halted) {
-+    if (cpu_halted(cpu)) {
-         mask[0] = s->int_pending[0] & (s->int_enabled[0] | s->int_idle);
-         mask[1] = s->int_pending[1] & (s->int_enabled[1] | s->int_idle);
-         if (mask[0] || mask[1]) {
-diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-index ce55eeb682..e4477444fc 100644
---- a/target/arm/arm-powerctl.c
-+++ b/target/arm/arm-powerctl.c
-@@ -64,7 +64,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
- 
-     /* Initialize the cpu we are turning on */
-     cpu_reset(target_cpu_state);
--    target_cpu_state->halted = 0;
-+    cpu_halted_set(target_cpu_state, 0);
- 
-     if (info->target_aa64) {
-         if ((info->target_el < 3) && arm_feature(&target_cpu->env,
-@@ -228,7 +228,7 @@ static void arm_set_cpu_off_async_work(CPUState *target_cpu_state,
- 
-     assert(qemu_mutex_iothread_locked());
-     target_cpu->power_state = PSCI_OFF;
--    target_cpu_state->halted = 1;
-+    cpu_halted_set(target_cpu_state, 1);
-     target_cpu_state->exception_index = EXCP_HLT;
- }
- 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index b5e61cc177..9c5cda8eb7 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -149,7 +149,7 @@ static void arm_cpu_reset(CPUState *s)
-     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->mvfr2;
- 
-     cpu->power_state = cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
--    s->halted = cpu->start_powered_off;
-+    cpu_halted_set(s, cpu->start_powered_off);
- 
-     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
-         env->iwmmxt.cregs[ARM_IWMMXT_wCID] = 0x69051000 | 'Q';
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index fb15a13e6c..8e393823f8 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -465,7 +465,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
-     }
- 
-     cs->exception_index = EXCP_HLT;
--    cs->halted = 1;
-+    cpu_halted_set(cs, 1);
-     cpu_loop_exit(cs);
- }
- 
+  Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
+
+are available in the Git repository at:
+
+  git://github.com/vivier/qemu.git tags/qemu-trivial-for-3.1-pull-request
+
+for you to fetch changes up to 7b2b797cf0addac789ba858fdbd95c55128d72d5:
+
+  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report (2018-10-30 09:13:31 +0100)
+
+----------------------------------------------------------------
+QEMU trivial patches collected between June and October 2018
+(Thank you to Thomas Huth)
+
+v2: fix 32bit build with updated patch (v3) from Philippe Mathieu-Daudé
+    built in a 32bit debian sid chroot
+
+----------------------------------------------------------------
+
+Cleber Rosa (6):
+  tests/tcg/README: fix location for lm32 tests
+  qemu-iotests: fix filename containing checks
+  docs/devel/testing.rst: add missing newlines after code block
+  scripts/decodetree.py: remove unused imports
+  scripts/qemu.py: remove trailing quotes on docstring
+  qemu-iotests: make 218 executable
+
+Emilio G. Cota (1):
+  linux-user: fix comment s/atomic_write/atomic_set/
+
+Li Qiang (2):
+  memory.h: fix typos in comments
+  cpu.h: fix a typo in comment
+
+Paolo Bonzini (1):
+  ppc: move at24c to its own CONFIG_ symbol
+
+Philippe Mathieu-Daudé (6):
+  qobject: Catch another straggler for use of qdict_put_str()
+  xen: Use the PCI_DEVICE macro
+  tests/bios-tables-test: Remove an useless cast
+  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
+  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
+  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of
+    error_report
+
+Stefan Weil (2):
+  tests: Fix typos in comments and help message (found by codespell)
+  configure: Support pkg-config for zlib
+
+Thomas Huth (1):
+  configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
+
+yuchenlin (1):
+  vga_int: remove unused function protype
+
+ configure                             | 40 +++++++++++++++------------
+ default-configs/alpha-softmmu.mak     |  1 -
+ default-configs/ppc-softmmu.mak       |  1 +
+ docs/devel/testing.rst                |  2 ++
+ hw/display/vga_int.h                  |  1 -
+ hw/net/milkymist-minimac2.c           | 15 ++++++----
+ hw/nvram/Makefile.objs                |  2 +-
+ hw/pci-host/piix.c                    |  2 +-
+ hw/pci-host/q35.c                     |  2 +-
+ hw/xen/xen_pt_config_init.c           |  8 +++---
+ include/exec/memory.h                 |  6 ++--
+ include/hw/intc/arm_gicv3_common.h    |  2 +-
+ include/qom/cpu.h                     |  2 +-
+ linux-user/qemu.h                     |  2 +-
+ qobject/block-qdict.c                 |  2 +-
+ scripts/decodetree.py                 |  2 --
+ scripts/qemu.py                       |  2 +-
+ tests/bios-tables-test.c              |  4 +--
+ tests/docker/Makefile.include         |  2 +-
+ tests/docker/docker.py                |  4 +--
+ tests/guest-debug/test-gdbstub.py     |  2 +-
+ tests/qemu-iotests/218                |  0
+ tests/qemu-iotests/common.qemu        |  2 +-
+ tests/qemu-iotests/common.rc          |  4 +--
+ tests/tcg/Makefile.include            |  2 +-
+ tests/tcg/Makefile.probe              |  2 +-
+ tests/tcg/README                      |  2 +-
+ tests/tcg/mips/mips64-dsp/subq_s_pw.c |  2 +-
+ 28 files changed, 64 insertions(+), 54 deletions(-)
+ mode change 100644 => 100755 tests/qemu-iotests/218
+
 -- 
-2.17.1
-
+2.17.2

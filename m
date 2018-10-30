@@ -1,131 +1,125 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp4106488wro;
-        Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
-X-Received: by 2002:a9d:4355:: with SMTP id y21mr6651944oti.290.1540814067770;
-        Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540814067; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5440123wro;
+        Tue, 30 Oct 2018 04:24:00 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fNcYpiJGWoRw6a4S5FyVSbrRDbn3gKPekBdV+KynOC58dH1wi1Hc2TgnUuDfoXyW/sj41o
+X-Received: by 2002:adf:82c9:: with SMTP id 67-v6mr17047038wrc.131.1540898640860;
+        Tue, 30 Oct 2018 04:24:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540898640; cv=none;
         d=google.com; s=arc-20160816;
-        b=iNVJMTm7W43zIuCb8G6+9hbExv9JY20rPhBsPmC/jx3bacBwE0j5c4fDRnlsNHY8V7
-         HfoN3bNo2TZH9fdvVEMEnEhfmJDpD/tE7B7dqd8sX+ujdPOsdRkCyQM2zDSJN/V3sHdA
-         X+4MGOfCZ1KA8fz2jRFPmRSkS0ZitVFJK1iP0ngd2M+nQhmhRAVA2xJoG8bc4l0ux3gm
-         xwdj5YidmSoEJafEGwQ5JWbi8bv/uUFO2YHp1vWwl6F8TkPc1RFTn5Emzz6Kr4fZJJNU
-         nPbtAaYGAC0onNjSdQ5LcTI7KkZrLjX+ZbavsPubESDkEBQBw+97nNwIc3gQpoHu9khr
-         Z0WQ==
+        b=ikkvWEKEbcXMzUJTV9dIGiSsiVetUNL7s+M7Ozl0AbCJG9N5OYPtUzplKRRfd5haNE
+         XYtiFvzDnkrkpJx8OBWo6jJGAkWXFKX99G5AIj2BQdbT/GI+lEq1WnzUytevp3WLqO4h
+         p5hvi+C9Q7aJEQZcA9VVhuEVTyApE9RnvbQvlXUt/ja3cM9lxV4Ol4lsaAQQxy5/HjJV
+         bXuK/uTtBIYFlai7g+vqb49oKnEwA+Pji5atdB67bqSIKb1krk8wqRpvUa0wJDDb/rjA
+         jB1a3tJWl6pKmVSJDB79YW91OMdUPBJnXMEqn1Fbm6Kg+MtndbliuPRpmWRYkz5FWdKU
+         sNtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
-        b=T7yjXQwkv67epERJCWrvCzB/1NRwPRXfXVYg0se/I173i2vdlMtBgVfKxE+t45PmQV
-         l0O+QkFJu0wFbs+skLVPvZCxDlEGQMJ2UNThuxXFr1tx953RObFBKh9fQ5SrfHxlLAvQ
-         BwRfczhoWc35EQ4QRfjfbV7vac5XYQwAJGotewsyCdTVPnmE6ykVjePoFqbUUg3EgkG0
-         oduo10U6FVHW3I8ljAZKt970xhEikvOtUn5EcnBmUW0dtlT4dTtzaMyatQYuPMxWB7rA
-         yMy/UcxXJEXl5UXsEc+X+tZRGNqR/WLG51XK3ouSYqA8m+inpveO8R1MgkEWXe74yV4W
-         UdfA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=h8Is6ZlK6KghHO/McdY7YhiNvQhp4nrDR4TpXrDWhRs=;
+        b=UaZyQjOF7p9cv11Ys0kUbKBF33zZHp9oNR9hPQUz0uIFz27YsMHVHrh7XUVE++UE2q
+         EUWfUR2wHDdpMDuheX5XnfyCqHqk0xpBST4raxBuVa5Z3Mptj0GEE++SDrUS83LS5vie
+         fKT6N8wG7QJ2rmY/trI1sacHCQLC63lXbMR7QIXdITeTRiW2lRikh/CmQJ9VYFbzRWwH
+         By2UcUY+f88VFWSGjvkOA5eVyf+iWmbC7CTINIoSFEzcpxxrScGaZXS5meOklW6yzEO+
+         0WnGipiyW2ZZ6HW1txyYEh/4vOBs/lCYhg8e+deAG2QpP4i7iWK6pGwvp/TUM4TadkbJ
+         qhaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hyl9Xec+;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l62-v6sor8717275oif.94.2018.10.29.04.54.27
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Return-Path: <laurent@vivier.eu>
+Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.134])
+        by mx.google.com with ESMTPS id g5-v6si6603832wrm.253.2018.10.30.04.24.00
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 Oct 2018 04:24:00 -0700 (PDT)
+Received-SPF: neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.134;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hyl9Xec+;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
-        b=hyl9Xec+0issRvxxfMji7qUYEIlErPCw6h5RlkydBiX9OH1ngBVMJOEMNv1HsoEv9k
-         ot46Jh8ABhfz6NfoGk2PLoqEJZBl2e6zMeMiccRKw+IRrym8/FuevOzJWu7srgquFrW+
-         lznUXZfRwqDBb2kHnBicBWfmgwxdpeOpa8xgo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
-        b=ccVqm1QU6a32jSod1/u8MQjTNVVD5X/3bcUgBNxQVMzB6uA8Jv8eAhEgDmrLSkVu6s
-         e/fDh53Ip2dA6ZlUYdsJr6XAzDttSWq6YACX3YS9gRgYHd35+EwFd3fKCHx501NfmFcb
-         NqScr54TC2I3/ilEYSM7phpfMCwgMHro1/conm1NDuTQuRU8IPIQIRReYRu4mh5lUjLX
-         8RaJiem/sMuDTJ/DYaCDrU5IPrHLCgLnhogFt24gelxeUIkyDeYa3RCgsOKyKtM2QTns
-         6qkOI+gCj6D1NNwbVz41KIOzhrDKqi+pLIRU4ZLJJAP3I+1tCWokBCt7g7xg5+9Mce1C
-         21Ww==
-X-Gm-Message-State: AGRZ1gJa90vvlC0Ar+oAfqE39Tmkw440E7Ur+hmZDISjXU7edg8P9oY1
-	lLkOpakp78rwW/pG82IJFiT39Gh6BxKYMxwZdK3NDn5W
-X-Google-Smtp-Source: AJdET5ehURSSvcsUSsBmx/awNHewJrPOLYG4gJ/DtIIivq41+pIrhA/ThnUuBG7J2h7ZVmEu2iJiz84nIiymJnQ+nFA=
-X-Received: by 2002:aca:c509:: with SMTP id v9-v6mr7717600oif.48.1540814067282;
- Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
+       spf=neutral (google.com: 212.227.126.134 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	qemu-arm@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Max Reitz <mreitz@redhat.com>,
+	Fam Zheng <famz@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Kevin Wolf <kwolf@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	qemu-trivial@nongnu.org,
+	qemu-block@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	xen-devel@lists.xenproject.org,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Michael Walle <michael@walle.cc>,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PULL v2 04/20] tests/tcg/README: fix location for lm32 tests
+Date: Tue, 30 Oct 2018 12:23:21 +0100
+Message-Id: <20181030112337.17973-5-laurent@vivier.eu>
+X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
+References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Mon, 29 Oct 2018 04:54:06
- -0700 (PDT)
-In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
-References: <20181026153125.24738-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Oct 2018 11:54:06 +0000
-Message-ID: <CAFEAcA-8sN2MGK6OcK5uMbMuw33MMOAgsdr9y4Uj2qmpbTkeig@mail.gmail.com>
-Subject: Re: [PULL 00/20] Trivial patches patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
-	Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Michael Walle <michael@walle.cc>, Laurent Vivier <lvivier@redhat.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
-	"open list:X86" <xen-devel@lists.xenproject.org>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, Markus Armbruster <armbru@redhat.com>, 
-	Max Reitz <mreitz@redhat.com>, Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Anthony Perard <anthony.perard@citrix.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
-	Stefano Stabellini <sstabellini@kernel.org>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: NsDMFeKwQSob
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:F8l4smf1nL5W4DsrL/7cTra6H6sZJmx/uvzB/1jWx/wdKk/NVxp
+ m/fq6/P0ALLGTaCdkdXooOLOe8GgI0XFOI0jqL6wU/uL32dCmmytmJOvG40vDdoivXgaMTY
+ M4UmUveDPmCbjaUkB6SPRFzmAkBQ7ibaH2p90ew21v1SCeCuiT3cCz9p+K7+scs3WGgCzqc
+ 1kM4wMQC2oXZpiX9tZNjQ==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V01:K0:OPbiJZFlUtg=:6UDHRGrOhs4uRU3/KtYvSw
+ JPuR5jLG8ZkuaBXlmbxZ8h5Te0MlKiH1Sx9O8MbGT6Z0frkx3JC9bKvj/v3qO1oTwRu6/Lt2p
+ +Mo3kkzwKoP4r3n2oZkuQDjVl+fvUtpdI19jyeG4Eblpnb7e5fdSt21hhhu8FgvADgAUlqTe7
+ jYfDVl4kI9/CqArD5CQdKC2kd8xy0SzdqpyTrTuNBDwYtFLEEpngDGNDGBAftp26GqiExsGIX
+ zzlBjrVD5gi0PXuN6jJQSI44BFgEgWn/m8MswbJXFMyyA6FZkccEpi2aNgUtAyP5tWlLb8ivA
+ AQK7eTq7916LYMPAD+/bLYblvQ3Vw1VuMC4X8xTInVDfQl47b8ASDXSTzCKjEJZaXQ7G5bpe5
+ 8vzAlsOaCKeLJyOmSEODYlNJ2R5LPONDg7okAChcO5682rGabP4D1wEYeCyznLX/8ioMZq4tX
+ d/0EYIEow0m/JKrKGeYs5aqGjN15l4aGDwp16ehnbBVbIkaHbgawNfl5INwQWMSTf6UyIfkuc
+ bnkgdPtUBETO/Tm1DJlA+gtXb8w5TMX35TPmd1izoXoMzQWyjFXw+cISmGk5OgPvKhH7FJuwz
+ g/RdPSoTYva8w+2/Qq93jWQstEOruf0zB5/bXlvvf4mi4CL+NR5v6wj/QJnyMngjvU02yN7K6
+ d7XPWYuO6lv//2y430+cnd9rie9/F8D5R5qJDKMQjRsgz+QbPrpqX7WzIZNVC/g6UUN7AfLrh
+ 8a7Y/XO3wclCG/RS
+X-TUID: tgRi8hp+Fzrs
 
-On 26 October 2018 at 16:31, Laurent Vivier <laurent@vivier.eu> wrote:
-> The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
->
->   Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
->
-> for you to fetch changes up to 4b03da6e87c34793137a231b558231fd406c05e8:
->
->   ppc: move at24c to its own CONFIG_ symbol (2018-10-26 17:17:32 +0200)
->
-> ----------------------------------------------------------------
-> QEMU trivial patches collected between June and October 2018
-> (Thank you to Thomas Huth)
->
-> ----------------------------------------------------------------
+From: Cleber Rosa <crosa@redhat.com>
 
-Hi; I get a compile error due to a format string issue:
+Point to the right and obvious location for lm32 tests.
 
-In file included from
-/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c:33:0:
-/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c: In
-function 'minimac2_write':
-/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c:420:23:
-error: format '%lx' expects
- argument of type 'long unsigned int', but argument 4 has type
-'uint64_t {aka long long unsign
-ed int}' [-Werror=format=]
-                       "milkymist_minimac2_wr%d: 0x%" HWADDR_PRIx " = 0x%lx\n",
-                       ^
-/home/petmay01/qemu-for-merges/include/qemu/log.h:85:22: note: in
-definition of macro 'qemu_lo
-g_mask'
-             qemu_log(FMT, ## __VA_ARGS__);              \
-                      ^
-cc1: all warnings being treated as errors
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20181004161852.11673-3-crosa@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ tests/tcg/README | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-(affects windows crossbuilds, OSX and 32-bit hosts).
-
-thanks
--- PMM
+diff --git a/tests/tcg/README b/tests/tcg/README
+index a5643d33e7..2a58f9a058 100644
+--- a/tests/tcg/README
++++ b/tests/tcg/README
+@@ -10,6 +10,6 @@ with "make test-cris".
+ 
+ LM32
+ ====
+-The testsuite for LM32 is in tests/tcg/cris.  You can run it
++The testsuite for LM32 is in tests/tcg/lm32.  You can run it
+ with "make test-lm32".
+ 
+-- 
+2.17.2

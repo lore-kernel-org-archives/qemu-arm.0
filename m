@@ -1,100 +1,83 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5655703wro;
-        Tue, 30 Oct 2018 07:27:36 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cpHHpE7946oaju00S+yYZfs1rOmQBrmePhz6CvcF23jzKWqLSVvDecAiLB1ZNip1qhbO/S
-X-Received: by 2002:aed:3882:: with SMTP id k2-v6mr2311330qte.345.1540909656528;
-        Tue, 30 Oct 2018 07:27:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540909656; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp5722509wro;
+        Tue, 30 Oct 2018 08:21:56 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eHHDgEsZ6i4UMVozrwU0hYY1TaJgRcxId2xlmVKlT754UL1i3No+5mzqBH5MwrOua79PPL
+X-Received: by 2002:a37:14a4:: with SMTP id 36mr15996601qku.126.1540912916180;
+        Tue, 30 Oct 2018 08:21:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540912916; cv=none;
         d=google.com; s=arc-20160816;
-        b=ws1PzctBO5QBbUXODLwlF9XeRbx6/sVRjplOi69FhQVKLhrfi6N43BMecS/VBPuubz
-         CHGEmsHhk4YbhRnJy1/xBScwyrH1zAC9uNxnMQQ5mRqPcp1OBkBz5tg1GDegkTluEWAe
-         pQ9VCNklQk3Jdn9qzkJnkvSy6vdaoTQCeCZOEG8CYoTX+niksFve/WCvLzMJwdOw3f1s
-         D3bTV/uXF0s7h80JwJYM9jh2J6niGz62IP9SISO++k4OyEuAwhHexsBKTyuKLKSCj7QH
-         bj9iQXnj+d8xwR4NdIh2mhrhd5rzW/QdxY4j9niBnWXGwK1ci1AVqtQdP3uJeclejxbE
-         +oAg==
+        b=hb7kxSQn9YmoR5qGGmd9EM4Kd7yhFiC3aa5muXKloiNxxRDn+8Gm7pKbKmZLzqDVYw
+         vtKyIkMys5qNEz1v8jRQk+ATRhV2OwAywPmzV/Y0u/EnD8GOtaZk9ciiGPVeVugebYWc
+         KZCEhi5HBv92BDDhVRCJtlBKYkNGDw2fPUeWgUlOyRUZ9PdSnd3SYasRIiniEmMrm8li
+         7aat/U4ECXpDU21nWlSqLcUdZVn7DNcMrnaMoosW0twGvfJOZHMhOAekcJ2Fwry1h/DG
+         LInCj0KtN0lQFH/Gn6xM1V9thPNjlMF09IbXqoArUyWpV//pVA2sgxjwTyaWGiVBtJez
+         mz8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=df+HY5WVAeDRq6rtZB9Ft6AaUeVZ6J03o+NwZYQfvoc=;
-        b=QiqXqw+bc+ndQTFlqboQnfhycMR4JaHlNvPI/SSc/to4p7D5HPQJmYxvmmrrHYklSD
-         JSZHlB9s7hD2ethJfipu9qxR7edrTQHO9UzMqjqVOmzebLXC/MWflaLHIeifsabjXOlZ
-         VGpUjBq0Fm0ttlKZuWKFict//2cdF3AekgcV+8/yToADfi8wS9L8CXhWSTBNIIE+IfY/
-         72+cCElmUz9LkuTAImsiB0A0vQ6agoIgmBri2hhzVxz+z/m0/zfHYyXk6mCguATjnH6q
-         LKtsIW8WKhftdQ3Ilf/P5U/vYwR8biz7IAZXM59BBZuzUW0kzaVWVzHSirnOyyVjbgFl
-         7l8Q==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=yZcsrN8KKbhdfelGFCb//XQ6yDk2xRIx3CgdIdmnaiI=;
+        b=FTyqlpYAlds2vxehmBcPcjHbSLiP2J//HQGI4U2l2zJMmrKKapVpRs3RByU6yZmsGm
+         PpPfM55/U+6gkomSKfoVRhD4OU3LIFh23jqiuS5i550W4UALCH0Z/iMA0hOfX8dkWl+C
+         EJIVGzr4WNE3o2l7ccnFceSvzYsvXY24AyBloSU/AVZBhShl+md5yaWlZ4Jg2h7W8Ug8
+         dFzSCQrS8NuoQ2GyCTcPv98DkosND6O4mxiC3xhoGqoplTDL2Wm5b1/piUwRUcGy9418
+         LSjdAgHxJ6o1dHpGv6+yvTPti9ylV5a7w6TGL1eJawBSxUEdBylDAINmBTF3NybrsunA
+         yzzg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h15si687716qvo.103.2018.10.30.07.27.36
+        by mx.google.com with ESMTPS id k18si255237qtb.401.2018.10.30.08.21.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Oct 2018 07:27:36 -0700 (PDT)
+        Tue, 30 Oct 2018 08:21:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53562 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:53858 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHUzX-0003gd-Tr
-	for alex.bennee@linaro.org; Tue, 30 Oct 2018 10:27:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42026)
+	id 1gHVq7-0001lL-C8
+	for alex.bennee@linaro.org; Tue, 30 Oct 2018 11:21:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57817)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHUzI-0003ej-FF
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 10:27:21 -0400
+	(envelope-from <sameo@linux.intel.com>) id 1gHVpq-0001jK-No
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 11:21:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHUzB-0003TD-MN
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 10:27:20 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:51102)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHUzB-0003SV-EN
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 10:27:13 -0400
-Received: by mail-wm1-f66.google.com with SMTP id h2-v6so8167060wmb.0
-	for <qemu-arm@nongnu.org>; Tue, 30 Oct 2018 07:27:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=df+HY5WVAeDRq6rtZB9Ft6AaUeVZ6J03o+NwZYQfvoc=;
-	b=LwgcF/alcqCtuvvBaK7coIARe8+wOh7dTj4EFzotaRQ4LwhZq1S0gvZCE7CaWL2vWg
-	AdgbmAKj1HCyjxJOP6Y5V52TEoIwOj48xaMLrrmEQkA9+3T8FszR4jMETWT21dPOHV52
-	bLUMTSR2tkqHMHZjMsGWCw4U8WnVPRFGAssUkNm2PiSxNrWpuiuV9tI/sOk6g6xVT7qK
-	Sqz9vQKvQ0LmKnykksDqwPIACc9b5mlQW66VUymhk3zwD8QMhNrqTmtlbBqge5Fz3H3a
-	inmli5yDZOijtadgnCUVVEvt1Lyp9rNmvpJoZUgdOs3Sg0xNqyejYs6XhsWCOl2esnHl
-	aZew==
-X-Gm-Message-State: AGRZ1gKs6Y4SGyNHcNYOQhXzJ66LOC4RJTxgLTkRsRLeSLaoaKSNq+pL
-	3+Zy0+WeOsgw/y9RIAjVGz9FhA==
-X-Received: by 2002:a7b:c0cc:: with SMTP id
-	s12-v6mr2100433wmh.39.1540909632393; 
-	Tue, 30 Oct 2018 07:27:12 -0700 (PDT)
-Received: from [192.168.1.130] ([139.47.13.138])
-	by smtp.gmail.com with ESMTPSA id
-	l70-v6sm43345252wma.0.2018.10.30.07.27.10
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 30 Oct 2018 07:27:11 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20181030114048.21527-1-philmd@redhat.com>
-	<20181030114048.21527-3-philmd@redhat.com>
-	<CAFEAcA-4_fn19H9aCio4QKikdMBv_oicgWNrThCXshNJ3HOnig@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <b27c4766-794e-a3dd-7931-6c54e30bd30d@redhat.com>
-Date: Tue, 30 Oct 2018 15:27:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	(envelope-from <sameo@linux.intel.com>) id 1gHVpk-0000H3-N6
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 11:21:36 -0400
+Received: from mga01.intel.com ([192.55.52.88]:36634)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
+	id 1gHVpi-0008L9-9l; Tue, 30 Oct 2018 11:21:30 -0400
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	30 Oct 2018 08:21:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.54,444,1534834800"; d="scan'208";a="101937491"
+Received: from davidbur-mobl1.ger.corp.intel.com (HELO caravaggio)
+	([10.252.4.36])
+	by fmsmga004.fm.intel.com with ESMTP; 30 Oct 2018 08:21:23 -0700
+Date: Tue, 30 Oct 2018 16:20:41 +0100
+From: Samuel Ortiz <sameo@linux.intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Message-ID: <20181030152041.GD5291@caravaggio.home>
+References: <20181029162441.31631-1-sameo@linux.intel.com>
+	<874ld4mzlb.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-4_fn19H9aCio4QKikdMBv_oicgWNrThCXshNJ3HOnig@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [PATCH v2 2/2] arm: exynos4: Add dma support for
- smdkc210
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <874ld4mzlb.fsf@dusky.pond.sub.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.88
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 00/19] ACPI reorganization
+ for hardware-reduced support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,50 +89,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
-	Guenter Roeck <linux@roeck-us.net>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <zhaoshenglong@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ctPsw8+TkK/d
+X-TUID: hu7MZ/5R8YX6
 
-On 30/10/18 15:06, Peter Maydell wrote:
-> On 30 October 2018 at 11:40, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->> From: Guenter Roeck <linux@roeck-us.net>
->>
->> QEMU already supports pl330. Instantiate it for smdkc210.
->>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->> [PMD: Do not set default qdev properties]
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>   hw/arm/exynos4_boards.c | 24 ++++++++++++++++++++++++
->>   1 file changed, 24 insertions(+)
-> 
->>   static void exynos4_boards_init_ram(Exynos4BoardState *s,
->>                                       MemoryRegion *system_mem,
->>                                       unsigned long ram_size)
->> @@ -171,6 +187,14 @@ static void smdkc210_init(MachineState *machine)
->>
->>       lan9215_init(SMDK_LAN9118_BASE_ADDR,
->>               qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(37, 1)]));
->> +
->> +    pl330_init(SMDK_PL330_BASE0_ADDR,
->> +            qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(35, 1)]), 32);
->> +    pl330_init(SMDK_PL330_BASE1_ADDR,
->> +            qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(36, 1)]), 32);
->> +    pl330_init(SMDK_PL330_BASE2_ADDR,
->> +            qemu_irq_invert(s->soc->irq_table[exynos4210_get_irq(34, 1)]), 1);
->> +
->>       arm_load_kernel(ARM_CPU(first_cpu), &exynos4_board_binfo);
->>   }
-> 
-> Are the PL330s really on the board and not part of the SoC? The
-> layout of the dts files in the kernel suggests they're in the
-> SoC, in which case they would belong in hw/arm/exynos4210.c.
+Hi Markus,
 
-Yes you are right, I missed that :|
+On Mon, Oct 29, 2018 at 06:28:48PM +0100, Markus Armbruster wrote:
+> You neglected to cc: maintainers.  I'm doing that for you now.
+> scripts/get_maintainer.pl can help you finding maintainers.
+Sorry about that. I sent a v3 with all maintainers cc'ed.
+
+Cheers,
+Samuel.
+
+
+> Samuel Ortiz <sameo@linux.intel.com> writes:
+> 
+> > This patch set provides an ACPI code reorganization in preparation for
+> > adding hardware-reduced support to QEMU.
+> >
+> > The changes are coming from the NEMU [1] project where we're defining
+> > a new x86 machine type: i386/virt. This is an EFI only, ACPI
+> > hardware-reduced platform and as such we had to implement support
+> > for the latter.
+> >
+> > As a preliminary for adding hardware-reduced support to QEMU, we did
+> > some ACPI code reorganization with the following goals:
+> >
+> > * Share as much as possible of the current ACPI build APIs between
+> >   legacy and hardware-reduced ACPI.
+> > * Share the ACPI build code across machine types and architectures and
+> >   remove the typical PC machine type dependency.
+> >   Eventually we hope to see arm/virt also re-use much of that code.
+> >
+> > The patches are also available in their own git branch [2].
+> >
+> > [1] https://github.com/intel/nemu
+> > [2] https://github.com/intel/nemu/tree/topic/upstream/acpi
+> >
+> > v1 -> v2:
+> >    * Drop the hardware-reduced implementation for now. Our next patch set
+> >      will add hardware-reduced and convert arm/virt to it.
+> >    * Implement the ACPI build methods as a QOM Interface Class and convert
+> >      the PC machine type to it.
+> [...]
+> 

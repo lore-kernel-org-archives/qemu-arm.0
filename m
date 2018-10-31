@@ -1,63 +1,63 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6267118wro;
-        Tue, 30 Oct 2018 17:27:01 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5f+csJWw8Xra+92w6c2YEWBkBpgfy6VYmUeY165P3l/bMpIU4qSH6RiF2WATy/0JRY5dQr+
-X-Received: by 2002:a37:4f92:: with SMTP id d140-v6mr754121qkb.17.1540945620921;
-        Tue, 30 Oct 2018 17:27:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540945620; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6269063wro;
+        Tue, 30 Oct 2018 17:29:32 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fsfJBGntJJ40oFkylQZLkVhQ2hfcS8BhjzwTfG6+aW0HLC35jARN8fvMO2YRFvg1A7+F0x
+X-Received: by 2002:a0c:f313:: with SMTP id j19mr830070qvl.200.1540945772385;
+        Tue, 30 Oct 2018 17:29:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540945772; cv=none;
         d=google.com; s=arc-20160816;
-        b=HB4CYxSVacI4GkPW/hj47a4hEYs9EYPJv8V8rvVLnFeYqqhjV8s26N7suIUYrazfxG
-         l8x3Y45JBhO8KZI+cjv/MO41yVlstATAbGm7BtXkI4+EDl184fdnbiZ/6zPhvzJZongK
-         La8CZ06qSzYDHare4ENUfcGnXPVVD1a1wp3o6JNQrEVG/hrqg7pxLm3vuhKRWhg+Bnra
-         yL/IVV3SrTh+IMgV1r61TMZWqu4LxB9+nWgWAHMZSSOd4qcYgBGI55wJXvVETBdyDc4B
-         LmEHCZ+m7LvT5MyGjOFB3vE2lFOinrzeUifg7uAh0Nm2WNNrNsEZOM9YJGLSaJtZo8dl
-         hlxg==
+        b=fXXdUv4H38jcupcNdhGiVNn8R+6GayEziGJRvJOA6HsV5wa0hhn4bOAg18RvoQ0Y/K
+         ZiNrXWE/EWvm67JmjypE0Sf2ZpRFDCSQgzsuht70MWkPnE/HQ8piFbnbIQbmaHGpUPmK
+         kzZZvaAcIe448KC2+HsSgxds51r/UhrVgJcDpBxMjKVCFtCjsUiUjW92P11yFaEUReWj
+         pLqEuWyl5/MS3ZXiv5sn7aoRUSQa8RROAMBElmoFbrYp/I6fQkWRj8jKnS0p3haUr8sd
+         q7qY2753n1J43fS/wehEK63yajZSjotrnfvUPi3scs/JatX0X3UKaudSHH7u0iFuGZ2J
+         UkRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=eeIAgxcZqSxpuBVanVj9bxsdAunCUdcvN5PVnho87bk=;
-        b=HlyC8YZjumWBrhNjSgG6nGXQXVjV1dyUT8/IFAJruP5DIItWIge0N8T6WtQEIF/71c
-         MwfYL71P0IJ+EMj6UdKOSkHG2qCcgsdaYSIwz7bxLv2q0g5yLGoLzE8Qvdb045SACk4Z
-         e+VdL9P4+3LgFZAkA7H8rinqc7fYN2tB3geix3xUqCq+/3XrXrAsLab+j8Wj4GAK1KbS
-         0XTNEP+sO4ZDTG/HWvbSlL1zJ/LUf8r0qFkBPdKVtcEpSiYLwWm4jwEhENbYZt6QBWX8
-         8VsibpHslI5URMg92btSOMcmNU4sDtNrsR51eWiOY4Qu6QWPYk6iwa97wH9yYkkphMRf
-         0cEg==
+        bh=eUjbP5/ZNff66dEqwXrbjqtklRTAnm1M6A9K7iQ0flM=;
+        b=nvvw4Yfl/XQ2xh0iP+ike1i4qHirqbhtHIqJbaoTa36DDcI5JkanzSGocW6hiM0yOr
+         JlyGwaFhuaKhBn8AoibBP165s4K9rngBrHVWDlKoYIrcdPihqhTwf+GOHcNhxskl6Vpy
+         Hv7L7LRaHQFtvkxsRP/qMRFDbDy4x7Mq03qI/qXDx8E4GDdvUBBnb6kQmNCWltUx4mPs
+         BUAdRLDaxcrtRCDBSxugS320TV7VGThiNaSNfFuyIDawwCr8d0hAF6+YEMnetzbz8nF/
+         wx2vZlYOSioxOM1CcZa8RNdZOm0NroFxNpY1U51ChD0BGqWYp1zgDOBjQEVUaufqFpc1
+         cn1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x60-v6si11222454qte.108.2018.10.30.17.27.00
+        by mx.google.com with ESMTPS id m65si2310595qke.232.2018.10.30.17.29.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Oct 2018 17:27:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 30 Oct 2018 17:29:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56208 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56217 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHeLc-00055B-At
-	for alex.bennee@linaro.org; Tue, 30 Oct 2018 20:27:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41506)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gHeO3-0000Dp-Ol
+	for alex.bennee@linaro.org; Tue, 30 Oct 2018 20:29:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41552)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <contrib@steffen-goertz.de>) id 1gHeKe-0004nJ-EL
-	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 20:26:01 -0400
+	(envelope-from <contrib@steffen-goertz.de>) id 1gHeKh-0004ph-K6
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 20:26:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <contrib@steffen-goertz.de>) id 1gHeKd-0000AP-8c
-	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 20:26:00 -0400
-Received: from steffen-goertz.de ([88.198.119.201]:60380)
+	(envelope-from <contrib@steffen-goertz.de>) id 1gHeKg-0000Ce-NM
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 20:26:03 -0400
+Received: from steffen-goertz.de ([88.198.119.201]:60428)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <contrib@steffen-goertz.de>)
-	id 1gHeKa-00008p-Hg; Tue, 30 Oct 2018 20:25:56 -0400
+	id 1gHeKg-0000C9-Cl; Tue, 30 Oct 2018 20:26:02 -0400
 Received: from gouranga.fios-router.home
 	(pool-71-183-97-129.nycmny.fios.verizon.net [71.183.97.129])
-	by steffen-goertz.de (Postfix) with ESMTPSA id A8C154FB6C;
-	Wed, 31 Oct 2018 01:23:21 +0100 (CET)
+	by steffen-goertz.de (Postfix) with ESMTPSA id 7E5584FB6E;
+	Wed, 31 Oct 2018 01:23:27 +0100 (CET)
 From: =?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>
 To: qemu-devel@nongnu.org
-Date: Tue, 30 Oct 2018 20:25:16 -0400
-Message-Id: <20181031002526.14262-3-contrib@steffen-goertz.de>
+Date: Tue, 30 Oct 2018 20:25:20 -0400
+Message-Id: <20181031002526.14262-7-contrib@steffen-goertz.de>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181031002526.14262-1-contrib@steffen-goertz.de>
 References: <20181031002526.14262-1-contrib@steffen-goertz.de>
@@ -67,186 +67,127 @@ Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 88.198.119.201
-Subject: [Qemu-devel] [PATCH v3 02/13] arm: Add header to host common
- definition for nRF51 SOC peripherals
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v3 06/13] arm: Instantiate NRF51 special NVM's
+ and NVMC
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Jim Mussared <jim@groklearning.com>, Stefan Hajnoczi <stefanha@gmail.com>,
 	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
 	"open list:NRF51" <qemu-arm@nongnu.org>,
 	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MimJYCw+0iv+
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BzlJmpT6q0mh
 
-Adds a header that provides definitions that are used
-across nRF51 peripherals
+Instantiates UICR, FICR and NVMC in nRF51 SOC.
 
 Signed-off-by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
 ---
- hw/arm/nrf51_soc.c           | 33 ++++++++++-----------------
- include/hw/arm/nrf51.h       | 44 ++++++++++++++++++++++++++++++++++++
- include/hw/char/nrf51_uart.h |  1 -
- 3 files changed, 56 insertions(+), 22 deletions(-)
- create mode 100644 include/hw/arm/nrf51.h
+ hw/arm/nrf51_soc.c         | 37 ++++++++++++++++++++++++++++++++++---
+ include/hw/arm/nrf51_soc.h |  2 ++
+ 2 files changed, 36 insertions(+), 3 deletions(-)
 
 diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index b89c1bdea0..55f8eaafcb 100644
+index d2a19b8ead..fd0efd0ee8 100644
 --- a/hw/arm/nrf51_soc.c
 +++ b/hw/arm/nrf51_soc.c
-@@ -21,27 +21,16 @@
- #include "qemu/log.h"
- #include "cpu.h"
-=20
-+#include "hw/arm/nrf51.h"
- #include "hw/arm/nrf51_soc.h"
-=20
--#define IOMEM_BASE      0x40000000
--#define IOMEM_SIZE      0x20000000
--
--#define FICR_BASE       0x10000000
--#define FICR_SIZE       0x000000fc
--
--#define FLASH_BASE      0x00000000
--#define SRAM_BASE       0x20000000
--
--#define PRIVATE_BASE    0xF0000000
--#define PRIVATE_SIZE    0x10000000
--
- /*
-  * The size and base is for the NRF51822 part. If other parts
+@@ -29,7 +29,8 @@
   * are supported in the future, add a sub-class of NRF51SoC for
   * the specific variants
   */
--#define NRF51822_FLASH_SIZE     (256 * 1024)
--#define NRF51822_SRAM_SIZE      (16 * 1024)
-+#define NRF51822_FLASH_SIZE     (256 * NRF51_PAGE_SIZE)
-+#define NRF51822_SRAM_SIZE      (16 * NRF51_PAGE_SIZE)
+-#define NRF51822_FLASH_SIZE     (256 * NRF51_PAGE_SIZE)
++#define NRF51822_FLASH_PAGES    256
++#define NRF51822_FLASH_SIZE     (NRF51822_FLASH_PAGES * NRF51_PAGE_SIZE)
+ #define NRF51822_SRAM_SIZE      (16 * NRF51_PAGE_SIZE)
 =20
  #define BASE_TO_IRQ(base) ((base >> 12) & 0x1F)
-=20
-@@ -76,14 +65,14 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
-         error_propagate(errp, err);
-         return;
-     }
--    memory_region_add_subregion(&s->container, FLASH_BASE, &s->flash);
-+    memory_region_add_subregion(&s->container, NRF51_FLASH_BASE, &s->fla=
-sh);
-=20
-     memory_region_init_ram(&s->sram, NULL, "nrf51.sram", s->sram_size, &=
-err);
-     if (err) {
-         error_propagate(errp, err);
-         return;
-     }
--    memory_region_add_subregion(&s->container, SRAM_BASE, &s->sram);
-+    memory_region_add_subregion(&s->container, NRF51_SRAM_BASE, &s->sram=
-);
-=20
-     /* UART */
-     object_property_set_bool(OBJECT(&s->uart), true, "realized", &err);
-@@ -92,15 +81,17 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
-         return;
-     }
-     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0);
--    memory_region_add_subregion_overlap(&s->container, UART_BASE, mr, 0)=
-;
-+    memory_region_add_subregion_overlap(&s->container, NRF51_UART_BASE, =
-mr, 0);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart), 0,
+@@ -99,10 +100,37 @@ static void nrf51_soc_realize(DeviceState *dev_soc, =
+Error **errp)
                         qdev_get_gpio_in(DEVICE(&s->cpu),
--                       BASE_TO_IRQ(UART_BASE)));
-+                       BASE_TO_IRQ(NRF51_UART_BASE)));
+                        BASE_TO_IRQ(NRF51_RNG_BASE)));
 =20
--    create_unimplemented_device("nrf51_soc.io", IOMEM_BASE, IOMEM_SIZE);
--    create_unimplemented_device("nrf51_soc.ficr", FICR_BASE, FICR_SIZE);
-+    create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
-+                                NRF51_IOMEM_SIZE);
-+    create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
-+                                NRF51_FICR_SIZE);
++    /* UICR, FICR, NVMC */
++    object_property_set_link(OBJECT(&s->nvm), OBJECT(&s->container), "me=
+mory",
++                             &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_uint(OBJECT(&s->nvm), NRF51822_FLASH_PAGES, "cod=
+e_size",
++                             &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    object_property_set_bool(OBJECT(&s->nvm), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->nvm), 0);
++    memory_region_add_subregion_overlap(&s->container, NRF51_NVMC_BASE, =
+mr, 0);
++    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->nvm), 1);
++    memory_region_add_subregion_overlap(&s->container, NRF51_FICR_BASE, =
+mr, 0);
++    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->nvm), 2);
++    memory_region_add_subregion_overlap(&s->container, NRF51_UICR_BASE, =
+mr, 0);
++
++
+     create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
+                                 NRF51_IOMEM_SIZE);
+-    create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
+-                                NRF51_FICR_SIZE);
      create_unimplemented_device("nrf51_soc.private",
--                                PRIVATE_BASE, PRIVATE_SIZE);
-+                                NRF51_PRIVATE_BASE, NRF51_PRIVATE_SIZE);
+                                 NRF51_PRIVATE_BASE, NRF51_PRIVATE_SIZE);
+ }
+@@ -126,6 +154,9 @@ static void nrf51_soc_init(Object *obj)
+=20
+     sysbus_init_child_obj(obj, "rng", &s->rng, sizeof(s->rng),
+                            TYPE_NRF51_RNG);
++
++    sysbus_init_child_obj(obj, "nvm", &s->nvm, sizeof(s->nvm), TYPE_NRF5=
+1_NVM);
++
  }
 =20
- static void nrf51_soc_init(Object *obj)
-diff --git a/include/hw/arm/nrf51.h b/include/hw/arm/nrf51.h
-new file mode 100644
-index 0000000000..a89b6c23f0
---- /dev/null
-+++ b/include/hw/arm/nrf51.h
-@@ -0,0 +1,44 @@
-+/*
-+ * Nordic Semiconductor nRF51 Series SOC Common Defines
-+ *
-+ * This file hosts generic defines used in various nRF51 peripheral devi=
-ces.
-+ *
-+ * Reference Manual: http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.=
-pdf
-+ * Product Spec: http://infocenter.nordicsemi.com/pdf/nRF51822_PS_v3.1.p=
-df
-+ *
-+ * Copyright 2018 Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
-+ *
-+ * This code is licensed under the GPL version 2 or later.  See
-+ * the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef NRF51_H
-+#define NRF51_H
-+
-+#define NRF51_FLASH_BASE      0x00000000
-+#define NRF51_FICR_BASE       0x10000000
-+#define NRF51_FICR_SIZE       0x00000100
-+#define NRF51_UICR_BASE       0x10001000
-+#define NRF51_SRAM_BASE       0x20000000
-+
-+#define NRF51_IOMEM_BASE      0x40000000
-+#define NRF51_IOMEM_SIZE      0x20000000
-+
-+#define NRF51_UART_BASE       0x40002000
-+#define NRF51_TIMER_BASE      0x40008000
-+#define NRF51_RNG_BASE        0x4000D000
-+#define NRF51_NVMC_BASE       0x4001E000
-+#define NRF51_GPIO_BASE       0x50000000
-+
-+#define NRF51_PRIVATE_BASE    0xF0000000
-+#define NRF51_PRIVATE_SIZE    0x10000000
-+
-+#define NRF51_PAGE_SIZE       1024
-+
-+/* Trigger */
-+#define NRF51_TRIGGER_TASK 0x01
-+
-+/* Events */
-+#define NRF51_EVENT_CLEAR  0x00
-+
-+#endif
-diff --git a/include/hw/char/nrf51_uart.h b/include/hw/char/nrf51_uart.h
-index e3ecb7c81c..eb1c15b490 100644
---- a/include/hw/char/nrf51_uart.h
-+++ b/include/hw/char/nrf51_uart.h
-@@ -16,7 +16,6 @@
- #include "hw/registerfields.h"
+ static Property nrf51_soc_properties[] =3D {
+diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
+index 9e3ba916bd..c3f4d5bcdc 100644
+--- a/include/hw/arm/nrf51_soc.h
++++ b/include/hw/arm/nrf51_soc.h
+@@ -14,6 +14,7 @@
+ #include "hw/arm/armv7m.h"
+ #include "hw/char/nrf51_uart.h"
+ #include "hw/misc/nrf51_rng.h"
++#include "hw/nvram/nrf51_nvm.h"
 =20
- #define UART_FIFO_LENGTH 6
--#define UART_BASE 0x40002000
- #define UART_SIZE 0x1000
+ #define TYPE_NRF51_SOC "nrf51-soc"
+ #define NRF51_SOC(obj) \
+@@ -28,6 +29,7 @@ typedef struct NRF51State {
 =20
- #define TYPE_NRF51_UART "nrf51_soc.uart"
+     NRF51UARTState uart;
+     NRF51RNGState rng;
++    NRF51NVMState nvm;
+=20
+     MemoryRegion iomem;
+     MemoryRegion sram;
 --=20
 2.19.1
 

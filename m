@@ -1,110 +1,110 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp76813wro;
-        Wed, 31 Oct 2018 16:44:00 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cxyIAFXAU4ie8df8Fixw6ZAscwk1aVo5nqMqOXZNM4HrbgcYdQReDtseIgbez2PxRTERuh
-X-Received: by 2002:ac8:4912:: with SMTP id e18-v6mr4767811qtq.34.1541029440652;
-        Wed, 31 Oct 2018 16:44:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541029440; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp80472wro;
+        Wed, 31 Oct 2018 16:48:25 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5c3iuYOBtn2fdfU+6pQdcvwX+5Y+75PlQBlHgOR0cNkkZ7JtvVAid7eAb9mQjET6CC7m0pt
+X-Received: by 2002:ac8:1289:: with SMTP id y9-v6mr14833qti.47.1541029705363;
+        Wed, 31 Oct 2018 16:48:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541029705; cv=none;
         d=google.com; s=arc-20160816;
-        b=fHbh4dXXlii+jQVqza0X2oU3sIjAFX0jszdK53erjuahXjuVTIQznegQAcaKJvJsld
-         ZP+XE26T7BmWWQcGn0leNdgykNrv2C5bxDHALYAfrKYhGMUpvwrXfeyopp5Mn8ZQqOae
-         JKwTwH9opAhpYoqBJ/DsL608I2+XBne8ZSqDyGBvyy5TJFvl3t/ve0CZWJ+4AFJ3E9AR
-         LdXmSpaYaLU0o622KpBAB4/VW+54ZCFHI3hYdeYo7CaUSKBsXu2yaRoe2mOq/C0i7Spf
-         X3CnlM45vGJ37xnAfwE2HGfDtW8tOyWHj46NJHLjnJ9s/jogl2EY4cgakECgAcGKECCQ
-         bLOA==
+        b=M4vhlBAq0n13DCPw0KxQ/XVzTvkUu9QkDPyP7zGo9SOUIIMTEVkZFcO+xw1VTOeekJ
+         /+hcRvZEgBc2enZRSqMt94p031qKJ/8KWRVnJIgJPVP1ZiPX0CqOGm6VrxCAME0rMn2Y
+         ZS1mqCl2qKj3V3AG83FUECHy0zH5P68BwafjlRa4/uXRnVHPwX/WZp8l+zrF0HkUIe1i
+         wz4kjGoMAjmLMRPnA31Q47hI0r24pt2MaYHViALAPm4InM2d+DI4U4Ba/zN1cT3pB51k
+         z+CsoT0DV90MnfE4mYem5zABT6E8k62fOkmjBVPF3cCjI/CVwRsfbn8DHpr2OfMmMMtz
+         RwcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature;
-        bh=eQ+VjDb0i92Wr+IAUZ7tL2KSpEQEPqCKguVAXSZLqc4=;
-        b=PvIRXtyAEggRpTJO/tSowOyn1ACh1vpdnnFb56LB80AHzL+rb7dEZqaDaJx/tpT4xP
-         VIhmcVQqK7e6YXnNhwPgLw4Jw+o0+GNawfeY8MvmsaVjsv4CzUNRZok0y0U6mdCHiRiI
-         YFTtQKmZkBU/yR4pzAhj54WyK+xyaG5qwqYiY5ml8BL2uV+IMnfzWBtnZottOsaCM5cM
-         pGTzmbDpXMtnWno1muk4fPUzRXLs1AluBYgGh3nKNy4COmNolOu2Ad23l40lr5PvhsgZ
-         8G3SrB5MqqszDE/8ZQiVQ0GanwInaUP7FxtRZ8MEcRlBxnZVi4lzirjIexZ4K/H75wrM
-         LrXg==
+        bh=kaPG4amynBZa8WeWE/JMGhbNBumbogMiswRfeOzbFbg=;
+        b=zoI7wwBdjktVCRW7WVU9P8A7nHxTzVlIq9hfeCYePZN2yuCqp7fdTGQ+QZiElGSK8i
+         MYp8m1LjhEzH5Fmfu2ia9guHVNcpmUZ6GKBvXplSSO3cmdeJUVmR1vJJDPRe4JScSkEg
+         yuyD/xmwKdwFY2DBW4XYTXl+sG7+BBv6+HDGGJYbvTdFU/VfCAf7ZfTcCz8fJ70axak2
+         dxqIDCu5Vl/YVN4J9m7JRvHdM+Gv6L2uf9uQsr8OdCEbXiJzUlyb98A+WbPOz/cNNj5Q
+         23gWUHcC+5q6GNwxWHRJc60q7qjoRXbYdqV+I4V389nyZvl+laswMtxgquokhzzVXsms
+         ua4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ONKhlA+R;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uQIWbVka;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 2-v6si2473442qtg.51.2018.10.31.16.44.00
+        by mx.google.com with ESMTPS id y39-v6si4191590qth.357.2018.10.31.16.48.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 31 Oct 2018 16:44:00 -0700 (PDT)
+        Wed, 31 Oct 2018 16:48:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ONKhlA+R;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uQIWbVka;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34040 helo=lists.gnu.org)
+Received: from localhost ([::1]:34055 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gI09Y-0002AN-4Y
-	for alex.bennee@linaro.org; Wed, 31 Oct 2018 19:44:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53422)
+	id 1gI0Do-00047e-Rj
+	for alex.bennee@linaro.org; Wed, 31 Oct 2018 19:48:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54554)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gI09M-0002AG-BI
-	for qemu-arm@nongnu.org; Wed, 31 Oct 2018 19:43:49 -0400
+	(envelope-from <alistair23@gmail.com>) id 1gI0Dc-00041A-Fs
+	for qemu-arm@nongnu.org; Wed, 31 Oct 2018 19:48:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gI09I-0004Tv-AN
-	for qemu-arm@nongnu.org; Wed, 31 Oct 2018 19:43:48 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:39530)
+	(envelope-from <alistair23@gmail.com>) id 1gI0DY-0006vL-Sv
+	for qemu-arm@nongnu.org; Wed, 31 Oct 2018 19:48:12 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:35254)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1gI09H-0004Te-VH; Wed, 31 Oct 2018 19:43:44 -0400
-Received: by mail-pg1-x543.google.com with SMTP id r9-v6so8120488pgv.6;
-	Wed, 31 Oct 2018 16:43:43 -0700 (PDT)
+	id 1gI0DY-0006uA-Jg; Wed, 31 Oct 2018 19:48:08 -0400
+Received: by mail-pf1-x444.google.com with SMTP id z2-v6so5798825pfe.2;
+	Wed, 31 Oct 2018 16:48:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=eQ+VjDb0i92Wr+IAUZ7tL2KSpEQEPqCKguVAXSZLqc4=;
-	b=ONKhlA+RqluLI0sBY6/sznQl2YAmVYqSYQ9vI9nPDpm8Yh+Vi2fJJb9Tk8mpDL7/x6
-	ZVX9Qu4h79q2+ADH+Gxes+e5xiRIFAyRlgdFO6kkZBwxFfj/Rw7jPhmR6Wz+1J7+kvjw
-	rcxxEYK1fYtWSAVXHUrv+tDd6fsJoVj4whoXAZIYhWkfwcsHeX4P7AkdTMsoUzbQ4bgq
-	IJ+xhtTpL1LH5gp9FsmA7hPRmhlKXrLrJxxSXdItiOEekGsShWuoLadqMbuKqD0ArC1c
-	tQF1MGz+5pHrDQoiwxHD7WUNGy5O0lThR/DHtS7r5xPbkAVwTdsdAYh99EP8K/7ZQ5Mx
-	wTJg==
+	bh=kaPG4amynBZa8WeWE/JMGhbNBumbogMiswRfeOzbFbg=;
+	b=uQIWbVkaXHi8HJ7Xb/Xu7cq1uW0YgJouX/wNrAO8eDwOLq1mS12K4881aU2/hvIhe0
+	nW3Z4niPnaeWO6Jjcvr8lTIdYCgtYE+AXZGRR5Vqj6tc7WHIOgV4nTQhyzTJ0aE9kT5O
+	dywysDv6ShJX2/mNLLojHfVQhghkMk+ILDM8kZ/6g7tCLfcPOoaca1OVfO6uxN3jdMTc
+	v7FY36yTKTXALdzFAoP+NbtU9+SuEDRHdsr+Oz98PBQD3Nd10Y2mPGnUX4kXvKLAAZSC
+	ccX93kPKaZKSQOCr8VuztrTrsqiMmFQR840hqcVzCGmNTjrsPLXMe2xQvuKVDcJwB3Mn
+	eLUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=eQ+VjDb0i92Wr+IAUZ7tL2KSpEQEPqCKguVAXSZLqc4=;
-	b=lGmtwhb2KpZgm/DB9V8eaa16DPbuXlpeneIELaSK7Ilbt+i5q4jNAzlBLDWFS6zPP8
-	926frNU4+02HpNMbr5tjgZIaPk9x2H15EVGGKJMU5SQM8h+y4GTJQQBfOCXhJjJ8xXn9
-	/qrfZd2BFjTGP11+JpbOuHXFpZXFsBsu50jjZWauvgrSDXa65DJyzpNE9ON7C5U+kY7/
-	shg2j1+qH++QRseJy2PvxH8RxmbaDMuKrN7TsDnbI5G7+F4ZKZlObPyvs4LfNAYaVI1F
-	Qz9wstB/j3uXQPxhZYrb+C481rE0OcWbRUc8G+A4K1cwRO3WCo6wv6YuuvGw/Lx4/3cH
-	py9Q==
-X-Gm-Message-State: AGRZ1gKizeGPxjkzmX27lGEToJ6z1JhuPYH7l7wX4UlPQxLz/H9UVJGO
-	MHZqcSf8aoTBVB4ks633hk8nRHmF
-X-Received: by 2002:a63:b218:: with SMTP id x24mr4834664pge.223.1541029422093; 
-	Wed, 31 Oct 2018 16:43:42 -0700 (PDT)
+	bh=kaPG4amynBZa8WeWE/JMGhbNBumbogMiswRfeOzbFbg=;
+	b=tYUVcoAO/8V4X2VqL4xCvAkuso7LMLOaSHPbfHdWYnZMycflOPoyufUr3xJZ+R+QUr
+	/AFaOW0vx2x23lbYuEz2rWzUpB/wczl5Ef4BQ6ZFQA5brg9VMLswJZN/PJ5BAAfXJd29
+	qZaOlLYZP2xolknoB/759yX0LLtl0rziEXGlmqIjWnUogdvfz5fO1MTtM+mdX8jxBJdj
+	yWYpQRFy+I47nLxfikWuEXeqlzDE+1a/vNKv0rPt2ZCfhp9u7rp3yHdkSGsWMdtwGDIe
+	szgz9tLev1RaPNSB1t4fTgnHZ/rFMdnNAWfx7CzMmsHkKTYMuv+0bHtgrdUEmJgsTf+n
+	9WAw==
+X-Gm-Message-State: AGRZ1gIe03cTlljq4dHQBN1GwR6EhlEDKwmZeiKMHT+0ngJWLZ1hw++n
+	qRSdVRiTFOJsET9mP6e5wWMTC9bU
+X-Received: by 2002:a63:4450:: with SMTP id t16mr4973178pgk.102.1541029686753; 
+	Wed, 31 Oct 2018 16:48:06 -0700 (PDT)
 Received: from [10.196.159.185] (rap-us.hgst.com. [199.255.44.250])
 	by smtp.gmail.com with ESMTPSA id
-	f68-v6sm67491096pfe.143.2018.10.31.16.43.40
+	d187-v6sm39775095pfc.60.2018.10.31.16.48.05
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 31 Oct 2018 16:43:40 -0700 (PDT)
+	Wed, 31 Oct 2018 16:48:05 -0700 (PDT)
 To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
 References: <20181026081653.24602-1-luc.michel@greensocs.com>
-	<20181026081653.24602-3-luc.michel@greensocs.com>
+	<20181026081653.24602-4-luc.michel@greensocs.com>
 From: Alistair <alistair23@gmail.com>
-Message-ID: <0881ef95-2a1d-9956-655d-1706f7e9dd6c@gmail.com>
-Date: Wed, 31 Oct 2018 16:43:39 -0700
+Message-ID: <3b5854a8-66d5-a8ea-4f60-8e2534d5e0d5@gmail.com>
+Date: Wed, 31 Oct 2018 16:48:04 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.2.1
 MIME-Version: 1.0
-In-Reply-To: <20181026081653.24602-3-luc.michel@greensocs.com>
+In-Reply-To: <20181026081653.24602-4-luc.michel@greensocs.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::543
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 02/16] gdbstub: introduce GDB
- processes
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 03/16] gdbstub: add
+ multiprocess support to '?' packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -123,199 +123,137 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZH/U49/qC+f+
+X-TUID: hSxVRWn4CWG3
 
 On 10/26/18 1:16 AM, Luc Michel wrote:
-> Add a structure GDBProcess that represent processes from the GDB
-> semantic point of view.
+> The gdb_get_cpu_pid() function does the PID lookup for the given CPU. It
+> checks if the CPU is a direct child of a CPU cluster. If it is, the
+> returned PID is the cluster ID plus one (cluster IDs start at 0, GDB
+> PIDs at 1). When the CPU is not a child of such a container, the PID of
+> the first process is returned.
 > 
-> CPUs can be split into different processes, by grouping them under
-> different cpu-cluster objects.  Each occurrence of a cpu-cluster object
-> implies the existence of the corresponding process in the GDB stub. The
-> GDB process ID is derived from the corresponding cluster ID as follows:
+> The gdb_fmt_thread_id() function generates the string to be used to identify
+> a given thread, in a response packet for the peer. This function
+> supports generating thread IDs when multiprocess mode is enabled (in the
+> form `p<pid>.<tid>').
 > 
->    GDB PID = cluster ID + 1
-> 
-> This is because PIDs -1 and 0 are reserved in GDB and cannot be used by
-> processes.
-> 
-> When no such container are found, all the CPUs are put in a unique GDB
-> process (create_unique_process()). This is also the case when compiled
-> in user mode, where multi-processes do not make much sense for now.
+> Use them in the reply to a '?' request.
 > 
 > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 > ---
->   gdbstub.c | 75 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 75 insertions(+)
+>   gdbstub.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
+>   1 file changed, 55 insertions(+), 2 deletions(-)
 > 
 > diff --git a/gdbstub.c b/gdbstub.c
-> index c4e4f9f082..096ac8e99c 100644
+> index 096ac8e99c..9ca743a4c6 100644
 > --- a/gdbstub.c
 > +++ b/gdbstub.c
-> @@ -27,10 +27,11 @@
->   #include "monitor/monitor.h"
->   #include "chardev/char.h"
->   #include "chardev/char-fe.h"
->   #include "sysemu/sysemu.h"
->   #include "exec/gdbstub.h"
-> +#include "hw/cpu/cluster.h"
->   #endif
->   
->   #define MAX_PACKET_LENGTH 4096
->   
->   #include "qemu/sockets.h"
-> @@ -294,10 +295,15 @@ typedef struct GDBRegisterState {
->       gdb_reg_cb set_reg;
->       const char *xml;
->       struct GDBRegisterState *next;
->   } GDBRegisterState;
->   
-> +typedef struct GDBProcess {
-> +    uint32_t pid;
-> +    bool attached;
-> +} GDBProcess;
-> +
->   enum RSState {
->       RS_INACTIVE,
->       RS_IDLE,
->       RS_GETLINE,
->       RS_GETLINE_ESC,
-> @@ -322,10 +328,13 @@ typedef struct GDBState {
->       int running_state;
->   #else
->       CharBackend chr;
->       Chardev *mon_chr;
->   #endif
-> +    bool multiprocess;
-> +    GDBProcess *processes;
-> +    int process_num;
->       char syscall_buf[256];
->       gdb_syscall_complete_cb current_syscall_cb;
->   } GDBState;
->   
->   /* By default use no IRQs and no timers while single stepping so as to
-> @@ -1749,10 +1758,24 @@ void gdb_exit(CPUArchState *env, int code)
->   #ifndef CONFIG_USER_ONLY
->     qemu_chr_fe_deinit(&s->chr, true);
->   #endif
+> @@ -638,10 +638,49 @@ static int memtox(char *buf, const char *mem, int len)
+>           }
+>       }
+>       return p - buf;
 >   }
 >   
-> +/*
-> + * Create a unique process containing all the CPUs.
-> + */
-> +static void create_unique_process(GDBState *s)
+> +static uint32_t gdb_get_cpu_pid(const GDBState *s, CPUState *cpu)
 > +{
-> +    GDBProcess *process;
+> +#ifndef CONFIG_USER_ONLY
+> +    gchar *path, *name;
+> +    Object *obj;
+> +    CPUClusterState *cluster;
+> +    uint32_t ret;
 > +
-> +    s->processes = g_malloc0(sizeof(GDBProcess));
-> +    s->process_num = 1;
-> +    process = &s->processes[0];
+> +    path = object_get_canonical_path(OBJECT(cpu));
+> +    name = object_get_canonical_path_component(OBJECT(cpu));
 > +
-> +    process->pid = 1;
-> +}
+> +    if (path == NULL) {
+> +        ret = s->processes[0].pid;
+> +        goto out;
+> +    }
 > +
->   #ifdef CONFIG_USER_ONLY
->   int
->   gdb_handlesig(CPUState *cpu, int sig)
->   {
->       GDBState *s;
-> @@ -1846,10 +1869,11 @@ static bool gdb_accept(void)
->       }
->   
->       s = g_malloc0(sizeof(GDBState));
->       s->c_cpu = first_cpu;
->       s->g_cpu = first_cpu;
-> +    create_unique_process(s);
->       s->fd = fd;
->       gdb_has_xml = false;
->   
->       gdbserver_state = s;
->       return true;
-> @@ -2002,10 +2026,57 @@ static const TypeInfo char_gdb_type_info = {
->       .name = TYPE_CHARDEV_GDB,
->       .parent = TYPE_CHARDEV,
->       .class_init = char_gdb_class_init,
->   };
->   
-> +static int find_cpu_clusters(Object *child, void *opaque)
-> +{
-> +    if (object_dynamic_cast(child, TYPE_CPU_CLUSTER)) {
-> +        GDBState *s = (GDBState *) opaque;
-> +        CPUClusterState *cluster = CPU_CLUSTER(child);
-> +
-> +        s->processes = g_renew(GDBProcess, s->processes, ++s->process_num);
-> +
-> +        GDBProcess *process = &s->processes[s->process_num - 1];
+> +    path[strlen(path) - strlen(name) - 1] = '\0';
 
-Variables shouldn't be declared mid code.
-
-Otherwise:
+Can you add a comment here of what you are doing and why you are 
+removing the name?
 
 Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > +
-> +        /* GDB process IDs -1 and 0 are reserved */
-> +        process->pid = cluster->cluster_id + 1;
-> +        process->attached = false;
-> +        return 0;
+> +    obj = object_resolve_path_type(path, TYPE_CPU_CLUSTER, NULL);
+> +
+> +    if (obj == NULL) {
+> +        ret = s->processes[0].pid;
+> +        goto out;
 > +    }
 > +
-> +    return object_child_foreach(child, find_cpu_clusters, opaque);
+> +    cluster = CPU_CLUSTER(obj);
+> +    ret = cluster->cluster_id + 1;
+> +
+> +out:
+> +    g_free(name);
+> +    g_free(path);
+> +
+> +    return ret;
+> +
+> +#else
+> +    return s->processes[0].pid;
+> +#endif
 > +}
 > +
-> +static int pid_order(const void *a, const void *b)
-> +{
-> +    GDBProcess *pa = (GDBProcess *) a;
-> +    GDBProcess *pb = (GDBProcess *) b;
-> +
-> +    return pa->pid - pb->pid;
-> +}
-> +
-> +static void create_processes(GDBState *s)
-> +{
-> +    object_child_foreach(object_get_root(), find_cpu_clusters, s);
-> +
-> +    if (!s->processes) {
-> +        /* No CPU cluster specified by the machine */
-> +        create_unique_process(s);
-> +    } else {
-> +        /* Sort by PID */
-> +        qsort(s->processes, s->process_num, sizeof(s->processes[0]), pid_order);
-> +    }
-> +}
-> +
-> +static void cleanup_processes(GDBState *s)
-> +{
-> +    g_free(s->processes);
-> +    s->process_num = 0;
-> +    s->processes = NULL;
-> +}
-> +
->   int gdbserver_start(const char *device)
+>   static const char *get_feature_xml(const char *p, const char **newp,
+>                                      CPUClass *cc)
 >   {
->       trace_gdbstub_op_start(device);
+>       size_t len;
+>       int i;
+> @@ -907,10 +946,23 @@ static CPUState *find_cpu(uint32_t thread_id)
+>       }
 >   
->       GDBState *s;
-> @@ -2058,15 +2129,19 @@ int gdbserver_start(const char *device)
->                                      NULL, &error_abort);
->           monitor_init(mon_chr, 0);
->       } else {
->           qemu_chr_fe_deinit(&s->chr, true);
->           mon_chr = s->mon_chr;
-> +        cleanup_processes(s);
->           memset(s, 0, sizeof(GDBState));
->           s->mon_chr = mon_chr;
->       }
->       s->c_cpu = first_cpu;
->       s->g_cpu = first_cpu;
+>       return NULL;
+>   }
+>   
+> +static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
+> +                           char *buf, size_t buf_size)
+> +{
+> +    if (s->multiprocess) {
+> +        snprintf(buf, buf_size, "p%02x.%02x",
+> +                 gdb_get_cpu_pid(s, cpu), cpu_gdb_index(cpu));
+> +    } else {
+> +        snprintf(buf, buf_size, "%02x", cpu_gdb_index(cpu));
+> +    }
 > +
-> +    create_processes(s);
+> +    return buf;
+> +}
 > +
->       if (chr) {
->           qemu_chr_fe_init(&s->chr, chr, &error_abort);
->           qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_receive,
->                                    gdb_chr_event, NULL, NULL, NULL, true);
->       }
+>   static int is_query_packet(const char *p, const char *query, char separator)
+>   {
+>       unsigned int query_len = strlen(query);
+>   
+>       return strncmp(p, query, query_len) == 0 &&
+> @@ -1018,22 +1070,23 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+>       const char *p;
+>       uint32_t thread;
+>       int ch, reg_size, type, res;
+>       uint8_t mem_buf[MAX_PACKET_LENGTH];
+>       char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
+> +    char thread_id[16];
+>       uint8_t *registers;
+>       target_ulong addr, len;
+>   
+>       trace_gdbstub_io_command(line_buf);
+>   
+>       p = line_buf;
+>       ch = *p++;
+>       switch(ch) {
+>       case '?':
+>           /* TODO: Make this return the correct value for user-mode.  */
+> -        snprintf(buf, sizeof(buf), "T%02xthread:%02x;", GDB_SIGNAL_TRAP,
+> -                 cpu_gdb_index(s->c_cpu));
+> +        snprintf(buf, sizeof(buf), "T%02xthread:%s;", GDB_SIGNAL_TRAP,
+> +                 gdb_fmt_thread_id(s, s->c_cpu, thread_id, sizeof(thread_id)));
+>           put_packet(s, buf);
+>           /* Remove all the breakpoints when this query is issued,
+>            * because gdb is doing and initial connect and the state
+>            * should be cleaned up.
+>            */
 > 

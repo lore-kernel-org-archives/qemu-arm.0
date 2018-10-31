@@ -1,97 +1,94 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp7117557wro;
-        Wed, 31 Oct 2018 09:06:02 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5dYlcJQA6w8FVKBFdd0ad2w1hjY1GkGN7Lwito7GTEoAC+2IJLTChvNLLfexGOS9xxZ94Yo
-X-Received: by 2002:a37:8d06:: with SMTP id p6-v6mr3046306qkd.4.1541001962388;
-        Wed, 31 Oct 2018 09:06:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541001962; cv=none;
+Received: by 2002:a17:90a:3d4c:0:0:0:0 with SMTP id o12-v6csp3387937pjf;
+        Wed, 31 Oct 2018 11:47:00 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5ctFRfTeoKrXAZcakMbhHyFgaSZzPl6dL6MKdCePZDE7qTXc6BMoKxsbhIfihN2VZxjToRL
+X-Received: by 2002:ae9:de46:: with SMTP id s67-v6mr3649753qkf.257.1541011620866;
+        Wed, 31 Oct 2018 11:47:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541011620; cv=none;
         d=google.com; s=arc-20160816;
-        b=RyCHmuRXsv0sW80/HoEBBSVqyxXXu+7S+kvFC+McLOPUOWR71g9Ur3vIGpLq3NTLq5
-         Vs3vgU8KxxSaEnzWJJaEUlwrGO1dmNh8bSolppxurHmPObIo6a778v1wIi4qkcqpn+24
-         llUZ2TXRFUrDKkUzo9Gei+63vF+JwAfHrE4cot10ycj5asyvl6QJgNHUI4xOUk1VYMYT
-         kllK4ccHUBzP8eowBgdb3COtNkN1H894v4K2ImIBaW4izK1jdTRl4ijzyYJr39Ys6xKg
-         ouNs2AKAr9JyI56wkVTajM3lB9frSje94/bMkXBZFFasKdZIyrhwDCmR1yxiKdXuVkIp
-         2cNQ==
+        b=i8NsdERS5zdiYJIIF1kZMV7WFfbVvo7dKm5K3eCKZpovsjcJQvBeB1NpezGpAQaNiy
+         ZqulM2/GylRtT33Q9DtyTIzryArw3xGhkPS5lOM0LjsA1ot3JbzsDC0FgyeUN3rmLVmQ
+         yCd2e5kZks6Ev5IXfYa/MRfvkuy17/kqNKi/gEZ1o5vDYyBCa0Ztt8+TZ2IbZxtmXgn8
+         yzKCYeAgN8+azE4aIcx6gIXyUVypZeOzAmpEVub3Jpuq5D7cicdugOedBvdy/v9ZCt8A
+         bMLLQjQDrYTXX3Qbh0xnoqzR9lRIZjF82zPIOdamMPwUVnAwstbVOeASX7Hx2/+LQ5S1
+         yeiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=Pmp7GpUoX/vi6OkcgEhmifkukA0WjtVGLaKZPVp495I=;
-        b=Tka1rjcUaTily6v6p44TS6oxZE022Yj+IWyyMkwDIhy0e4KxEcSXwGg7si0eXWod8D
-         /cqhXd/qxqHHFztpR6RxOdNCTlCO5qXmjvixMBsZyKCj7URCE30b2NdiSHShzakbHuUP
-         YivPoZFVSPAue5I6WQfrA/CgzsTN1xTAEHiUDe1/c3HtMNaSP4jL3TQhz9lLg2QcaN6X
-         bR5xiw/gEvEASno2gK/LKjPrSosscaYV3ZiYl6UpTPgz/upuzItuQK/qd8P+rTVy5hLo
-         gkHtQ+9Opic8jl/EwbkJngwgvxQLXcmiQNtcYNCBXq9kz97TWsCbY4eduDrVlAJwryoK
-         XNWA==
+         :user-agent:date:message-id:from:references:to:dkim-signature;
+        bh=4wAi0MVHch1/CZVdhq0cnKjwo97A19+gYXS6tzHHUzQ=;
+        b=nXwilfiRe+U+m4b5KNMM78GsD0J3c4HW1ePldMMEkWgfVmxmCaiEFg8L/Jy10Lyd4q
+         gNXF4NHVahROaaZnKlKr2m2M72TW/B/0w5fEUoyTRSg8qJngKllI0WZrg95a90NrCMe0
+         hmo/4plY4WxlxhIP2QEFAfpYiaW15VthAloLztA6kdlGMInccvVgL3YxfrznUSly5rV/
+         54Xyf9xuSZ6Q40/s7nFW+94B7TAPzpRQALGYybhXd1717eltIdHXEYeREtiv7L6T+gDo
+         dldrCpLfoBpMWyWtLnNwl0ISPoveYawwzwK4sQAArdZKMsGHt8F/wYyUBb3MAvb1Qqla
+         AjfA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@posteo.de header.s=2017 header.b=kB3OxU+R;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=posteo.de
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w128-v6si1599485qkc.27.2018.10.31.09.06.02
+        by mx.google.com with ESMTPS id s29-v6si472265qta.136.2018.10.31.11.47.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 31 Oct 2018 09:06:02 -0700 (PDT)
+        Wed, 31 Oct 2018 11:47:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@posteo.de header.s=2017 header.b=kB3OxU+R;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60445 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=posteo.de
+Received: from localhost ([::1]:33009 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHt0L-0004CV-E3
-	for alex.bennee@linaro.org; Wed, 31 Oct 2018 12:06:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35266)
+	id 1gHvW8-0004gW-Fk
+	for alex.bennee@linaro.org; Wed, 31 Oct 2018 14:47:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:32902)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHsvN-0000LO-KZ
-	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 12:00:57 -0400
+	(envelope-from <th.huth@posteo.de>) id 1gHvVr-0004gJ-Fa
+	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 14:46:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHsvH-0003m1-LN
-	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 12:00:53 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:50695)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHsvH-0003l9-Cp
-	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 12:00:47 -0400
-Received: by mail-wm1-f68.google.com with SMTP id h2-v6so11824194wmb.0
-	for <qemu-devel@nongnu.org>; Wed, 31 Oct 2018 09:00:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Pmp7GpUoX/vi6OkcgEhmifkukA0WjtVGLaKZPVp495I=;
-	b=HX8t02IjL2pl3RzJNfGw4QNt4RlLYVKJpX/uA6Nv8QEkeEjmi36589ElgQr5GLEl0B
-	0rxaxsYVypcods/NZmxfRO4i0WVcUe/6gHqd0LkN5Eym03pdzY1vZZCcRwp1Tqi3IGN+
-	NAiX61BKSK9gk+VZ5yAMG7zbNOj/lXxfUWVvtm7dPIOpU13c17yOTa47aytmneecVMpw
-	bhN5RODe9Pg4hnZkm/zxn6hIZ4xqj2nZT3hD3hB0Lw0D7uUEgDzp1kOinb7tywvKdwx+
-	AtWAnGBlQKbCttMIb55nMHREYKklBCpNkbWGtzh/aIDfpREkUVMhFX4s93pRCtbbG+pU
-	RhQg==
-X-Gm-Message-State: AGRZ1gIhaX8FpgECSHf9L0ojkEb7fbHTpp9+FXlwMXNBua9Mq3Xi9tpZ
-	stY5UoyEEMPtWQaEoJpn4yGMPw==
-X-Received: by 2002:a7b:c153:: with SMTP id
-	z19-v6mr2942385wmi.132.1541001646211; 
-	Wed, 31 Oct 2018 09:00:46 -0700 (PDT)
-Received: from [10.201.33.126] ([195.166.127.210])
-	by smtp.gmail.com with ESMTPSA id 65-v6sm94599wmj.1.2018.10.31.09.00.44
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 31 Oct 2018 09:00:45 -0700 (PDT)
-To: qemu-devel@nongnu.org
-References: <154098485103.7774.2165977871054805313@015909e0f939>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <84c5dc6a-6507-1b72-9808-ef4a58ff26d4@redhat.com>
-Date: Wed, 31 Oct 2018 17:00:43 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	(envelope-from <th.huth@posteo.de>) id 1gHvVl-0002tC-Pm
+	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 14:46:43 -0400
+Received: from mout02.posteo.de ([185.67.36.66]:49357)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <th.huth@posteo.de>) id 1gHvVj-0002ou-Sc
+	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 14:46:37 -0400
+Received: from submission (posteo.de [89.146.220.130]) 
+	by mout02.posteo.de (Postfix) with ESMTPS id 8AAFD2400FB
+	for <qemu-devel@nongnu.org>; Wed, 31 Oct 2018 19:46:33 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.de; s=2017;
+	t=1541011593; bh=B+SFwSL2zPCU1p6ZdR7lBplqgWAHq4f6pD6gvTljQKM=;
+	h=Subject:To:Cc:From:Date:From;
+	b=kB3OxU+RUrqdlyutWMJN5nu3BAfspnuLdPViAJpd/Lg1TzO+PmFX1zOxtyTDLdTWK
+	u6J9CPhd1B19zxvApikusznuESPUIgXYiPQaxv61S+jwrEF/6pYJj12CZ+5Gi5gPS3
+	TMs+iOoNpbEU0gc83QrijTOWwp+i0PciJ7IiVi+0A6+Afrugu+xtvgg5EJpN54SxOn
+	b71ZZ9FkYWQIuCSdahI5Qef06nIteAscjU+Kt5/AbEMtzrSYAw6AQ/U72FsK7/s0DA
+	IOR2j4fwD92whZxs5zdsFu3jLBkiAlv6AznLXekbUTAeS9WSCyVXGJdjsuNSp9TSA6
+	KRBqw8TDDA3kQ==
+Received: from customer (localhost [127.0.0.1])
+	by submission (posteo.de) with ESMTPSA id 42lckG67zGz9rxm;
+	Wed, 31 Oct 2018 19:46:30 +0100 (CET)
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Guenter Roeck <linux@roeck-us.net>
+References: <1540548409-22560-1-git-send-email-thuth@redhat.com>
+	<CAFEAcA8EubWya8ey9VxhaCw4m2U=KA+i2C-R9P-p+P6oEBBLew@mail.gmail.com>
+	<7fc49925-36ff-bd9a-0cd7-e5f8d4bb3672@roeck-us.net>
+	<CAFEAcA-UF+SyXvcU+NGZsbqBF2qg+s_x4HPU7yvf7B2G-=HPOg@mail.gmail.com>
+From: Thomas Huth <th.huth@posteo.de>
+Message-ID: <6861d4a0-c48d-9d48-726b-a1801012b757@posteo.de>
+Date: Wed, 31 Oct 2018 18:46:29 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <154098485103.7774.2165977871054805313@015909e0f939>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAFEAcA-UF+SyXvcU+NGZsbqBF2qg+s_x4HPU7yvf7B2G-=HPOg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-devel] [PATCH v2 0/2] hw/arm/exynos4: Add DMA support for
- SMDKC210 board
+X-Received-From: 185.67.36.66
+Subject: Re: [Qemu-devel] [PATCH 0/2] Deprecate the "collie" machine and
+ Strongarm devices
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,83 +100,30 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, famz@redhat.com, i.mitsyanko@gmail.com,
-	alistair@alistair23.me, richard.henderson@linaro.org,
-	qemu-arm@nongnu.org, edgar.iglesias@gmail.com, linux@roeck-us.net
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sZEXdffifrMl
+X-TUID: JFNcihd45j3Y
 
-On 31/10/18 12:20, no-reply@patchew.org wrote:
-> === TEST SCRIPT BEGIN ===
-> #!/bin/bash
-> time make docker-test-quick@centos7 SHOW_ENV=1 J=8
-> === TEST SCRIPT END ===
+On 2018-10-29 13:24, Peter Maydell wrote:
+> On 27 October 2018 at 12:04, Guenter Roeck <linux@roeck-us.net> wrote:
+>> On 10/26/18 3:12 AM, Peter Maydell wrote:
+>>> Hi Guenter; there's a proposal here to deprecate (and eventually
+>>> remove) the 'collie' board (strongarm) from QEMU. Is that one of
+>>> the ones you're currently using in your automated testing of Linux
+>>> kernels on QEMU?
+>>>
+>>
+>> Yes. I can run the test with older versions of qemu, so it is ok for me
+>> if it is removed (as long as that removal is not backported).
 > 
-> Updating 3c8cf5a9c21ff8782164d1def7f44bd888713384
->  From https://github.com/patchew-project/qemu
->   t [tag update]            patchew/20181030162517.21816-1-peter.maydell@linaro.org -> patchew/20181030162517.21816-1-peter.maydell@linaro.org
-> Switched to a new branch 'test'
-> 17c45854c8 arm: exynos4: Add dma support for smdkc210
-> 8c077ecece hw/arm/xilinx_zynq: Use the ARRAY_SIZE macro
-> 
-> === OUTPUT BEGIN ===
-[...]> /tmp/qemu-test/src/tests/libqtest.c:125: kill_qemu() detected 
-QEMU death from signal 11 (Segmentation fault) (core dumped)
+> Mmm, but if we have an active user who's testing them then they
+> probably shouldn't be in the frontline of boards to remove.
 
-Program terminated with signal SIGSEGV, Segmentation fault.
-#0  qemu_set_irq (irq=0x7070707070707070, level=1) at qemu/hw/core/irq.c:45
-45	    irq->handler(irq->opaque, irq->n, level);
-[Current thread is 1 (Thread 0x7f1e02629640 (LWP 5756))]
+Yes, I agree. I based my patch on the assumption that the board was
+incomplete and not really usable (as mentioned in the patch
+description), but if it is still usable to some degree, then please
+disregard my patch.
 
-(gdb) bt
-#0  0x0000556eecf2ae1a in qemu_set_irq (irq=0x7070707070707070, level=1) 
-at qemu/hw/core/irq.c:45
-#1  0x0000556eecf2af98 in qemu_set_irq (level=1, irq=0x556eee8256b0) at 
-qemu/hw/core/irq.c:45
-#2  0x0000556eecf2af98 in qemu_irq_raise (irq=0x556eee8256b0) at 
-qemu/include/hw/irq.h:16
-#3  0x0000556eecf2af98 in qemu_irq_invert (irq=0x556eee8256b0) at 
-qemu/hw/core/irq.c:105
-#4  0x0000556eecd9a7ed in exynos4210_init (system_mem=0x556eee546c00) at 
-qemu/hw/arm/exynos4210.c:432
-#5  0x0000556eecd87fb7 in exynos4_boards_init_common (machine=<optimized 
-out>, board_type=board_type@entry=EXYNOS4_BOARD_SMDKC210) at 
-qemu/hw/arm/exynos4_boards.c:155
-#6  0x0000556eecd88070 in smdkc210_init (machine=<optimized out>) at 
-qemu/hw/arm/exynos4_boards.c:169
-#7  0x0000556eecf2df2b in machine_run_board_init 
-(machine=0x556eee4c7710) at qemu/hw/core/machine.c:834
-#8  0x0000556eecc7664f in main (argc=<optimized out>, argv=<optimized 
-out>, envp=<optimized out>) at qemu/vl.c:4503
-
-(gdb) fr 1
-#1  0x00005566eb1dbfc7 in qemu_set_irq (level=1, irq=0x556eee8256b0) at 
-qemu/hw/core/irq.c:47
-47	    irq->handler(irq->opaque, irq->n, level);
-
-(gdb) p *irq
-$2 = {parent_obj = {class = 0x5566ed477c10, free = 0x7f38e31ef530 
-<g_free>, Python Exception <class 'gdb.error'> There is no member named 
-keys.:
-properties = 0x5566ed7a7d80, ref = 1, parent = 0x0}, handler = 
-0x5566eafdbcd0 <exynos4210_irq_handler>,
-   opaque = 0x5566ed5bd660, n = 281}
-
-
-The following patch fixes this crash, but I'm not sure this is the 
-correct fix:
-
--- >8 --
---- a/hw/intc/exynos4210_gic.c
-+++ b/hw/intc/exynos4210_gic.c
-@@ -213,6 +213,8 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
-  {
-      uint32_t grp, bit, irq_id, n;
-
-+    memset(s->board_irqs, 0, sizeof(s->board_irqs));
-+
-      for (n = 0; n < EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ; n++) {
-          irq_id = 0;
-          if (n == EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 4) ||
----
+ Thomas

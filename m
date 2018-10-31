@@ -1,161 +1,159 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6179008wro;
-        Tue, 30 Oct 2018 15:40:37 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5erhTMA8Ek1IBoX4u4u7aK5ktl+f/EMyTiB4dQf40jsNszTAGY8Q5FAdTcvemoZTHxIE/oO
-X-Received: by 2002:a0c:b746:: with SMTP id q6mr519626qve.235.1540939237372;
-        Tue, 30 Oct 2018 15:40:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540939237; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6266625wro;
+        Tue, 30 Oct 2018 17:26:20 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5fy12fxQGdub6hoGjfcJZOOOpIZyQAKBOpCgLDXtjASK/StQ1yWgvXQgIAKpGh5BI4xdaXB
+X-Received: by 2002:a0c:ad47:: with SMTP id v7mr822402qvc.228.1540945580578;
+        Tue, 30 Oct 2018 17:26:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1540945580; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZlcqsYMIxSajbXZCkeK9+fp3PxrUM1l52Nu/ZVSljMubwBAhQOUOqF+l4cd9p+giy
-         tiPKnKgNe/Z7v7QNOhXivY91xdz6S9y+bPTaliTD8UvdIM6Vg3hA+KARleljzrgyfuBt
-         rqewam3SEZ3sswKO+ChHTFIqnzT+fdVwgNeICSp4JXl5BbH90ZoLFxPE5Hvu8o72Q79K
-         4mvpcm2Khs71P2WjH0rGIGxRstdyVLQ0mtqmP4BXAs8xAHkkgRQJDNLlQICaQE+ZDmNg
-         4lB+pFx4pkI116sUuvGsyLMMLCGmiaNbh2CHgzRPCWi1LxCkFjl0ACMNZUunewCCsTss
-         aBbg==
+        b=Rmm/ErPnNfBkY7Fi7B3NRhrS/sm6mC4ncved61qNwfOQmGdl9BPGY/MfaI5By2V8Kt
+         9p+hSANbmLe4At2JUgwf4iKJ2M1nl8MD54Ruz4Uz6/Lt/iKXCINqvwFmpL4g6TPT3w17
+         AQhO/APBD9d/+61P9caJPdZHVem5hTpzh5vx879bX8EGARFvCMfY0+LIG/22l4OSpzsn
+         uxlAadlk8KwNYXlhyyMkNNyp8MY0Rded9YsdGywMvcmp9Q2IzsLcbh+r80J2fPttc47M
+         9n3quKvoO1JyNPej531jaF3espNSJkujWvPe8BFPpE28UjiZ4uATu/JKqaO8uRHRNrve
+         xuPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=QYAVk1A2XF0HvmJvvZWVGAniQvRNspot94Wvf8eO7tI=;
-        b=cNdGf4aTGGXoIh2/4afe1FeTQIgSJvBUeQn/6NDZgknVdks9D/GgoGWZYClpLoBCIt
-         4hkamrvqTmvR1F+y18o0MgXSIvHGMKd0C54jthzJGT8hHckXg5KLXchBN2Y5KVU7t7xj
-         blKdVEA7ni04i8b3KcyBNRP2nA/FOxmctZEfqY6FEJzlj8NNTPdyjpdCBzbCeqHZiohr
-         Giocx/0lTov1IAPzdMCZx1IKNqKFywV55cOm8OpjqzIfIjturxF2JEvfjg+4noOJlAHu
-         MewHyvI0N+qj7U2OchHMru866s9JNtaFpFYT5ZqAoILBr+WIKC8mc+FxmwJxHImSqrKV
-         vmFA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=qvcyqYAfKIOVnaIJmiC+ZZMm10xUPzQ+9OesD72K60k=;
+        b=WhGNEmw8xkyIJvIAoB8YMW83HNUhPuuMwWfMEYwY7xoErvwpNnT527Ijfii9cFjcJ4
+         HUr+a8c2XJEyH4tY09AMD9EwEWAW7K13W5nIxlMVY192gUczgpxzgf1H7u80d+ZEM8K2
+         55ooQnF50TSLSfrhcx8+nIdCbET6o0Id4Q8jMkj1ISPmDn1jKU131hQhxv14pAKNzDd+
+         hoqmrhoBUvCxxZNRKbNnGcvSPnocvNV0G3ARnkAW4sZPdJqoaKXL7sf4iPv0wKwkINrX
+         z8zVHCGGBJC3Wkt3xt5NBLEsystsJHpf3rA+YTD3QCG/dfEJZNu2qdvg4IAWZ+vUxR6z
+         iFwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e1-v6si2520970qtb.330.2018.10.30.15.40.37
+        by mx.google.com with ESMTPS id z37si4358556qve.158.2018.10.30.17.26.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Oct 2018 15:40:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 30 Oct 2018 17:26:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55906 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56204 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHcge-0008W5-UI
-	for alex.bennee@linaro.org; Tue, 30 Oct 2018 18:40:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43492)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gHeKy-0004oS-0f
+	for alex.bennee@linaro.org; Tue, 30 Oct 2018 20:26:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41508)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHcfi-0008Da-KO
-	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 18:39:39 -0400
+	(envelope-from <contrib@steffen-goertz.de>) id 1gHeKe-0004nW-Kj
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 20:26:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gHcfc-00078d-9H
-	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 18:39:38 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:36450)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHcfa-00075v-Bo
-	for qemu-devel@nongnu.org; Tue, 30 Oct 2018 18:39:32 -0400
-Received: by mail-wm1-f66.google.com with SMTP id a8-v6so12799121wmf.1
-	for <qemu-devel@nongnu.org>; Tue, 30 Oct 2018 15:39:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=QYAVk1A2XF0HvmJvvZWVGAniQvRNspot94Wvf8eO7tI=;
-	b=I7LM4FoD0HmJisxZByQ+tQ38vkGBpZpJ/PUgJ4ntfk8aW5qVWAzVWIeQ8R4Ik31Jyk
-	9ephSwjs2blji15xH1z4FY6zsOahqQMIrZBketDtzPEfsy5RmUiPMoDgGnPjTgrTZguq
-	xO6gr1TUx5zo7rfyCgrLAcTWw5aQejiL4GMiWE/fX7+p0ksKsRli8pK43wYBTrZAPkLa
-	J61kIOfyq/1gdu60zn+fl3fCHApav0MA1kPgXl+b3dNKM5yhXdlCoSAnx3k+fReGMPaf
-	7GxgdcMDnPGC36VnqU2S51HTtVM1mkCf5cpPsj4noNCWn+XWuQLlsMVR1WuXCjw+LoVn
-	hZrA==
-X-Gm-Message-State: AGRZ1gIX/7ldL1cOTh4wo31d4McYgYY2HlZUjF+BSUSz+KQvuFei118n
-	OyY2uNf0twzoYiTfQDQQYEBJ6g==
-X-Received: by 2002:a1c:8fcc:: with SMTP id
-	r195-v6mr448514wmd.44.1540939166978; 
-	Tue, 30 Oct 2018 15:39:26 -0700 (PDT)
-Received: from [192.168.1.130] ([139.47.13.138])
-	by smtp.gmail.com with ESMTPSA id
-	y7-v6sm15133408wmy.27.2018.10.30.15.39.24
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 30 Oct 2018 15:39:26 -0700 (PDT)
-To: Gerd Hoffmann <kraxel@redhat.com>
-References: <20181029223207.31878-1-philmd@redhat.com>
-	<20181029223207.31878-4-philmd@redhat.com>
-	<20181030063830.edjacusffvgwvnt2@sirius.home.kraxel.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <fc4b00b2-dda0-a0fb-e7b8-487065dbf6cc@redhat.com>
-Date: Tue, 30 Oct 2018 23:39:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	(envelope-from <contrib@steffen-goertz.de>) id 1gHeKd-0000Ai-O0
+	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 20:26:00 -0400
+Received: from steffen-goertz.de ([88.198.119.201]:60408)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <contrib@steffen-goertz.de>)
+	id 1gHeKd-0000AV-Hd; Tue, 30 Oct 2018 20:25:59 -0400
+Received: from gouranga.fios-router.home
+	(pool-71-183-97-129.nycmny.fios.verizon.net [71.183.97.129])
+	by steffen-goertz.de (Postfix) with ESMTPSA id 8DAC14FB6E;
+	Wed, 31 Oct 2018 01:23:24 +0100 (CET)
+From: =?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>
+To: qemu-devel@nongnu.org
+Date: Tue, 30 Oct 2018 20:25:18 -0400
+Message-Id: <20181031002526.14262-5-contrib@steffen-goertz.de>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181031002526.14262-1-contrib@steffen-goertz.de>
+References: <20181031002526.14262-1-contrib@steffen-goertz.de>
 MIME-Version: 1.0
-In-Reply-To: <20181030063830.edjacusffvgwvnt2@sirius.home.kraxel.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-devel] [PATCH 3/3] arm: allwinner: Enable USB EHCI
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 88.198.119.201
+Subject: [Qemu-arm] [PATCH v3 04/13] arm: Instantiate NRF51 random number
+ generator
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	Icenowy Zheng <icenowy@aosc.xyz>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TauUUif3FjzG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Jim Mussared <jim@groklearning.com>, Stefan Hajnoczi <stefanha@gmail.com>,
+	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
+	"open list:NRF51" <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dnoXMJUDJZJu
 
-Hi Gerd,
+Use RNG in SOC.
 
-On 30/10/18 7:38, Gerd Hoffmann wrote:
-> On Mon, Oct 29, 2018 at 11:32:07PM +0100, Philippe Mathieu-Daudé wrote:
->> From: Guenter Roeck <linux@roeck-us.net>
->>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> [PMD: Intented tabs -> space]
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>   hw/arm/allwinner-a10.c | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
->> index 0a8ac929f5..92ab66354a 100644
->> --- a/hw/arm/allwinner-a10.c
->> +++ b/hw/arm/allwinner-a10.c
->> @@ -116,6 +116,8 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
->>       if (machine_usb(current_machine)) {
->>           sysbus_create_simple("sysbus-ohci", 0x01c14400, s->irq[64]);
->>           sysbus_create_simple("sysbus-ohci", 0x01c1c400, s->irq[65]);
->> +        sysbus_create_simple(TYPE_AW_A10_EHCI, 0x01c14000, s->irq[39]);
->> +        sysbus_create_simple(TYPE_AW_A10_EHCI, 0x01c1c000, s->irq[40]);
-> 
-> Hmm, is this a companion controller setup?  If so, then this is a bit
-> more complicated  (see ehci_create_ich9_with_companions()).
+Signed-off-by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
+---
+ hw/arm/nrf51_soc.c         | 16 ++++++++++++++++
+ include/hw/arm/nrf51_soc.h |  2 ++
+ 2 files changed, 18 insertions(+)
 
-I don't have enough USB knowledge. Can we have companion setup without PCI?
+diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+index 55f8eaafcb..d2a19b8ead 100644
+--- a/hw/arm/nrf51_soc.c
++++ b/hw/arm/nrf51_soc.c
+@@ -86,6 +86,19 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Er=
+ror **errp)
+                        qdev_get_gpio_in(DEVICE(&s->cpu),
+                        BASE_TO_IRQ(NRF51_UART_BASE)));
+=20
++    /* RNG */
++    object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++
++    mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0);
++    memory_region_add_subregion_overlap(&s->container, NRF51_RNG_BASE, m=
+r, 0);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng), 0,
++                       qdev_get_gpio_in(DEVICE(&s->cpu),
++                       BASE_TO_IRQ(NRF51_RNG_BASE)));
++
+     create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
+                                 NRF51_IOMEM_SIZE);
+     create_unimplemented_device("nrf51_soc.ficr", NRF51_FICR_BASE,
+@@ -110,6 +123,9 @@ static void nrf51_soc_init(Object *obj)
+                            TYPE_NRF51_UART);
+     object_property_add_alias(obj, "serial0", OBJECT(&s->uart), "chardev=
+",
+                               &error_abort);
++
++    sysbus_init_child_obj(obj, "rng", &s->rng, sizeof(s->rng),
++                           TYPE_NRF51_RNG);
+ }
+=20
+ static Property nrf51_soc_properties[] =3D {
+diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
+index 73fc92e9a8..9e3ba916bd 100644
+--- a/include/hw/arm/nrf51_soc.h
++++ b/include/hw/arm/nrf51_soc.h
+@@ -13,6 +13,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/arm/armv7m.h"
+ #include "hw/char/nrf51_uart.h"
++#include "hw/misc/nrf51_rng.h"
+=20
+ #define TYPE_NRF51_SOC "nrf51-soc"
+ #define NRF51_SOC(obj) \
+@@ -26,6 +27,7 @@ typedef struct NRF51State {
+     ARMv7MState cpu;
+=20
+     NRF51UARTState uart;
++    NRF51RNGState rng;
+=20
+     MemoryRegion iomem;
+     MemoryRegion sram;
+--=20
+2.19.1
 
-Per the datashit [1] p. 215 "21. USB Host Controller", each controller 
-share the same PHY. There is no mention of companion setup:
-
-   The USB host controller includes the following features:
-   ..
-   - Complies with EHCI Specification, Version 1.0,
-   - and  the OHCI Specification, Version 1.0a.
-   ..
-   - Support only 1 USB Root Port shared between EHCI and OHCI.
-
-
-[1] http://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf
-
-> 
-> cheers,
->    Gerd
-> 

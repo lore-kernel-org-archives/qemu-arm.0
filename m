@@ -1,193 +1,185 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp6278749wro;
-        Tue, 30 Oct 2018 17:40:26 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cZ8TctpFIKDd3RgpkesnXTsV63p7Eh3NATOa6Uugx3ytfQl85NSq3iyqfazahPUgm1Nehs
-X-Received: by 2002:a37:8d4:: with SMTP id 203mr794328qki.338.1540946426780;
-        Tue, 30 Oct 2018 17:40:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1540946426; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp7117557wro;
+        Wed, 31 Oct 2018 09:06:02 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dYlcJQA6w8FVKBFdd0ad2w1hjY1GkGN7Lwito7GTEoAC+2IJLTChvNLLfexGOS9xxZ94Yo
+X-Received: by 2002:a37:8d06:: with SMTP id p6-v6mr3046306qkd.4.1541001962388;
+        Wed, 31 Oct 2018 09:06:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541001962; cv=none;
         d=google.com; s=arc-20160816;
-        b=Np2d0H7p4DsqlBS4XZjNWcGB7mF56CiiFDUi1Zr2o2LP8f3Z8Ji4pDTv3uRL0RG8Ua
-         tyo9b/4KS8PEZ2+XAorLhJZ3wCoY9TpCmLfNAFADAPiCVpq/3McmtnzwaM0rZSPlQcrD
-         jIwinITPYeM1jmpwMRdVh8L9dDy0F3GFBYXKsTn0eFKqrW47D4Z5ORpjT2Dpza7AFLzf
-         4r2aL4MKROVCG21HmgBOzD+E7Jo/NXJBn4ddHXkYLx6QitrL0i/Tmch+I+dOz9GQaXp7
-         YTHKkwb0uR1IqLYJIYv2eWqg4e+XNA3UBfnk+uhN9VGWqGyMnOEgjwzoi/q9Ww0Z6QqH
-         IWiQ==
+        b=RyCHmuRXsv0sW80/HoEBBSVqyxXXu+7S+kvFC+McLOPUOWR71g9Ur3vIGpLq3NTLq5
+         Vs3vgU8KxxSaEnzWJJaEUlwrGO1dmNh8bSolppxurHmPObIo6a778v1wIi4qkcqpn+24
+         llUZ2TXRFUrDKkUzo9Gei+63vF+JwAfHrE4cot10ycj5asyvl6QJgNHUI4xOUk1VYMYT
+         kllK4ccHUBzP8eowBgdb3COtNkN1H894v4K2ImIBaW4izK1jdTRl4ijzyYJr39Ys6xKg
+         ouNs2AKAr9JyI56wkVTajM3lB9frSje94/bMkXBZFFasKdZIyrhwDCmR1yxiKdXuVkIp
+         2cNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=I8QCrLNlx2UBno0rGYQLqp6c7Q9Ve2h3mkhwC113ZnY=;
-        b=LuR0eCs9jhaI7K7vU8cCbeTbvamOD2t0mJf02+peD/LYwUVUNaDctz7gF3TnqTF9zI
-         AcKcfXAc52dZttpJ+TRS+6AQXRjMqpvkxNE13NGUeqw0B+nd1tkzIp1iJg6CQ4q6HtoO
-         gNVE3lI+OqrpfjilX6iUit0hwPPO5/2dlh7PBEqTA/DmowuG/E6e/rubWSRRNIJ2FSOy
-         hOvmNYOP6aWr6XBPG2AhhQvZCt5R9Y6Tux6dYnlbm6ci2ACyQRj7OfMrhHOZA50Co14Q
-         mhtKWRjhT51J3C2ONhmC0H98+cVAfNk8wS6Nfn33NOnq7ivM2pVBFm1EaHT1KBImkRMp
-         h29A==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=Pmp7GpUoX/vi6OkcgEhmifkukA0WjtVGLaKZPVp495I=;
+        b=Tka1rjcUaTily6v6p44TS6oxZE022Yj+IWyyMkwDIhy0e4KxEcSXwGg7si0eXWod8D
+         /cqhXd/qxqHHFztpR6RxOdNCTlCO5qXmjvixMBsZyKCj7URCE30b2NdiSHShzakbHuUP
+         YivPoZFVSPAue5I6WQfrA/CgzsTN1xTAEHiUDe1/c3HtMNaSP4jL3TQhz9lLg2QcaN6X
+         bR5xiw/gEvEASno2gK/LKjPrSosscaYV3ZiYl6UpTPgz/upuzItuQK/qd8P+rTVy5hLo
+         gkHtQ+9Opic8jl/EwbkJngwgvxQLXcmiQNtcYNCBXq9kz97TWsCbY4eduDrVlAJwryoK
+         XNWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z19-v6si9502385qtn.184.2018.10.30.17.40.26
+        by mx.google.com with ESMTPS id w128-v6si1599485qkc.27.2018.10.31.09.06.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 30 Oct 2018 17:40:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 31 Oct 2018 09:06:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56295 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60445 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gHeYc-0001yQ-87
-	for alex.bennee@linaro.org; Tue, 30 Oct 2018 20:40:26 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41758)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gHt0L-0004CV-E3
+	for alex.bennee@linaro.org; Wed, 31 Oct 2018 12:06:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35266)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <contrib@steffen-goertz.de>) id 1gHeLX-0005RW-Mm
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 20:26:56 -0400
+	(envelope-from <philmd@redhat.com>) id 1gHsvN-0000LO-KZ
+	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 12:00:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <contrib@steffen-goertz.de>) id 1gHeLU-0000b9-BB
-	for qemu-arm@nongnu.org; Tue, 30 Oct 2018 20:26:55 -0400
-Received: from steffen-goertz.de ([88.198.119.201]:60506)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <contrib@steffen-goertz.de>)
-	id 1gHeLU-0000IE-1t; Tue, 30 Oct 2018 20:26:52 -0400
-Received: from gouranga.fios-router.home
-	(pool-71-183-97-129.nycmny.fios.verizon.net [71.183.97.129])
-	by steffen-goertz.de (Postfix) with ESMTPSA id C89A44FB77;
-	Wed, 31 Oct 2018 01:23:36 +0100 (CET)
-From: =?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>
+	(envelope-from <philmd@redhat.com>) id 1gHsvH-0003m1-LN
+	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 12:00:53 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:50695)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gHsvH-0003l9-Cp
+	for qemu-devel@nongnu.org; Wed, 31 Oct 2018 12:00:47 -0400
+Received: by mail-wm1-f68.google.com with SMTP id h2-v6so11824194wmb.0
+	for <qemu-devel@nongnu.org>; Wed, 31 Oct 2018 09:00:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Pmp7GpUoX/vi6OkcgEhmifkukA0WjtVGLaKZPVp495I=;
+	b=HX8t02IjL2pl3RzJNfGw4QNt4RlLYVKJpX/uA6Nv8QEkeEjmi36589ElgQr5GLEl0B
+	0rxaxsYVypcods/NZmxfRO4i0WVcUe/6gHqd0LkN5Eym03pdzY1vZZCcRwp1Tqi3IGN+
+	NAiX61BKSK9gk+VZ5yAMG7zbNOj/lXxfUWVvtm7dPIOpU13c17yOTa47aytmneecVMpw
+	bhN5RODe9Pg4hnZkm/zxn6hIZ4xqj2nZT3hD3hB0Lw0D7uUEgDzp1kOinb7tywvKdwx+
+	AtWAnGBlQKbCttMIb55nMHREYKklBCpNkbWGtzh/aIDfpREkUVMhFX4s93pRCtbbG+pU
+	RhQg==
+X-Gm-Message-State: AGRZ1gIhaX8FpgECSHf9L0ojkEb7fbHTpp9+FXlwMXNBua9Mq3Xi9tpZ
+	stY5UoyEEMPtWQaEoJpn4yGMPw==
+X-Received: by 2002:a7b:c153:: with SMTP id
+	z19-v6mr2942385wmi.132.1541001646211; 
+	Wed, 31 Oct 2018 09:00:46 -0700 (PDT)
+Received: from [10.201.33.126] ([195.166.127.210])
+	by smtp.gmail.com with ESMTPSA id 65-v6sm94599wmj.1.2018.10.31.09.00.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 31 Oct 2018 09:00:45 -0700 (PDT)
 To: qemu-devel@nongnu.org
-Date: Tue, 30 Oct 2018 20:25:26 -0400
-Message-Id: <20181031002526.14262-13-contrib@steffen-goertz.de>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181031002526.14262-1-contrib@steffen-goertz.de>
-References: <20181031002526.14262-1-contrib@steffen-goertz.de>
+References: <154098485103.7774.2165977871054805313@015909e0f939>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <84c5dc6a-6507-1b72-9808-ef4a58ff26d4@redhat.com>
+Date: Wed, 31 Oct 2018 17:00:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <154098485103.7774.2165977871054805313@015909e0f939>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 88.198.119.201
-Subject: [Qemu-arm] [PATCH v3 12/13] arm: Instantiate NRF51 Timers
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-devel] [PATCH v2 0/2] hw/arm/exynos4: Add DMA support for
+ SMDKC210 board
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Jim Mussared <jim@groklearning.com>, Stefan Hajnoczi <stefanha@gmail.com>,
-	=?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
-	"open list:NRF51" <qemu-arm@nongnu.org>,
-	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QoD8OSJzy/YM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, famz@redhat.com, i.mitsyanko@gmail.com,
+	alistair@alistair23.me, richard.henderson@linaro.org,
+	qemu-arm@nongnu.org, edgar.iglesias@gmail.com, linux@roeck-us.net
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sZEXdffifrMl
 
-Instantiates TIMER0 - TIMER2
+On 31/10/18 12:20, no-reply@patchew.org wrote:
+> === TEST SCRIPT BEGIN ===
+> #!/bin/bash
+> time make docker-test-quick@centos7 SHOW_ENV=1 J=8
+> === TEST SCRIPT END ===
+> 
+> Updating 3c8cf5a9c21ff8782164d1def7f44bd888713384
+>  From https://github.com/patchew-project/qemu
+>   t [tag update]            patchew/20181030162517.21816-1-peter.maydell@linaro.org -> patchew/20181030162517.21816-1-peter.maydell@linaro.org
+> Switched to a new branch 'test'
+> 17c45854c8 arm: exynos4: Add dma support for smdkc210
+> 8c077ecece hw/arm/xilinx_zynq: Use the ARRAY_SIZE macro
+> 
+> === OUTPUT BEGIN ===
+[...]> /tmp/qemu-test/src/tests/libqtest.c:125: kill_qemu() detected 
+QEMU death from signal 11 (Segmentation fault) (core dumped)
 
-Signed-off-by: Steffen G=C3=B6rtz <contrib@steffen-goertz.de>
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0  qemu_set_irq (irq=0x7070707070707070, level=1) at qemu/hw/core/irq.c:45
+45	    irq->handler(irq->opaque, irq->n, level);
+[Current thread is 1 (Thread 0x7f1e02629640 (LWP 5756))]
+
+(gdb) bt
+#0  0x0000556eecf2ae1a in qemu_set_irq (irq=0x7070707070707070, level=1) 
+at qemu/hw/core/irq.c:45
+#1  0x0000556eecf2af98 in qemu_set_irq (level=1, irq=0x556eee8256b0) at 
+qemu/hw/core/irq.c:45
+#2  0x0000556eecf2af98 in qemu_irq_raise (irq=0x556eee8256b0) at 
+qemu/include/hw/irq.h:16
+#3  0x0000556eecf2af98 in qemu_irq_invert (irq=0x556eee8256b0) at 
+qemu/hw/core/irq.c:105
+#4  0x0000556eecd9a7ed in exynos4210_init (system_mem=0x556eee546c00) at 
+qemu/hw/arm/exynos4210.c:432
+#5  0x0000556eecd87fb7 in exynos4_boards_init_common (machine=<optimized 
+out>, board_type=board_type@entry=EXYNOS4_BOARD_SMDKC210) at 
+qemu/hw/arm/exynos4_boards.c:155
+#6  0x0000556eecd88070 in smdkc210_init (machine=<optimized out>) at 
+qemu/hw/arm/exynos4_boards.c:169
+#7  0x0000556eecf2df2b in machine_run_board_init 
+(machine=0x556eee4c7710) at qemu/hw/core/machine.c:834
+#8  0x0000556eecc7664f in main (argc=<optimized out>, argv=<optimized 
+out>, envp=<optimized out>) at qemu/vl.c:4503
+
+(gdb) fr 1
+#1  0x00005566eb1dbfc7 in qemu_set_irq (level=1, irq=0x556eee8256b0) at 
+qemu/hw/core/irq.c:47
+47	    irq->handler(irq->opaque, irq->n, level);
+
+(gdb) p *irq
+$2 = {parent_obj = {class = 0x5566ed477c10, free = 0x7f38e31ef530 
+<g_free>, Python Exception <class 'gdb.error'> There is no member named 
+keys.:
+properties = 0x5566ed7a7d80, ref = 1, parent = 0x0}, handler = 
+0x5566eafdbcd0 <exynos4210_irq_handler>,
+   opaque = 0x5566ed5bd660, n = 281}
+
+
+The following patch fixes this crash, but I'm not sure this is the 
+correct fix:
+
+-- >8 --
+--- a/hw/intc/exynos4210_gic.c
++++ b/hw/intc/exynos4210_gic.c
+@@ -213,6 +213,8 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
+  {
+      uint32_t grp, bit, irq_id, n;
+
++    memset(s->board_irqs, 0, sizeof(s->board_irqs));
++
+      for (n = 0; n < EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ; n++) {
+          irq_id = 0;
+          if (n == EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 4) ||
 ---
- hw/arm/nrf51_soc.c         | 27 +++++++++++++++++++++++++++
- include/hw/arm/nrf51_soc.h |  4 ++++
- 2 files changed, 31 insertions(+)
-
-diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-index 695b335dc5..c29b80c0ca 100644
---- a/hw/arm/nrf51_soc.c
-+++ b/hw/arm/nrf51_soc.c
-@@ -40,6 +40,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Err=
-or **errp)
-     NRF51State *s =3D NRF51_SOC(dev_soc);
-     MemoryRegion *mr;
-     Error *err =3D NULL;
-+    uint8_t i =3D 0;
-+    hwaddr base_addr =3D 0;
-=20
-     if (!s->board_memory) {
-         error_setg(errp, "memory property was not set");
-@@ -141,6 +143,22 @@ static void nrf51_soc_realize(DeviceState *dev_soc, =
-Error **errp)
-     /* Pass all GPIOs to the SOC layer so they are available to the boar=
-d */
-     qdev_pass_gpios(DEVICE(&s->gpio), dev_soc, NULL);
-=20
-+    /* TIMER */
-+    for (i =3D 0; i < NRF51_NUM_TIMERS; i++) {
-+        object_property_set_bool(OBJECT(&s->timer[i]), true, "realized",=
- &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        base_addr =3D NRF51_TIMER_BASE + i * 0x1000;
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer[i]), 0, base_addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer[i]), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->cpu),
-+                                            BASE_TO_IRQ(base_addr)));
-+    }
-+
-=20
-     create_unimplemented_device("nrf51_soc.io", NRF51_IOMEM_BASE,
-                                 NRF51_IOMEM_SIZE);
-@@ -150,6 +168,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
-=20
- static void nrf51_soc_init(Object *obj)
- {
-+    uint8_t i =3D 0;
-+
-     NRF51State *s =3D NRF51_SOC(obj);
-=20
-     memory_region_init(&s->container, obj, "nrf51-container", UINT64_MAX=
-);
-@@ -173,6 +193,13 @@ static void nrf51_soc_init(Object *obj)
-     sysbus_init_child_obj(obj, "gpio", &s->gpio, sizeof(s->gpio),
-                           TYPE_NRF51_GPIO);
-=20
-+    for (i =3D 0; i < NRF51_NUM_TIMERS; i++) {
-+        sysbus_init_child_obj(obj, "timer[*]", &s->timer[i],
-+                              sizeof(s->timer[i]), TYPE_NRF51_TIMER);
-+
-+    }
-+
-+
- }
-=20
- static Property nrf51_soc_properties[] =3D {
-diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
-index d4a48ccf91..89525dcb39 100644
---- a/include/hw/arm/nrf51_soc.h
-+++ b/include/hw/arm/nrf51_soc.h
-@@ -16,11 +16,14 @@
- #include "hw/misc/nrf51_rng.h"
- #include "hw/nvram/nrf51_nvm.h"
- #include "hw/gpio/nrf51_gpio.h"
-+#include "hw/timer/nrf51_timer.h"
-=20
- #define TYPE_NRF51_SOC "nrf51-soc"
- #define NRF51_SOC(obj) \
-     OBJECT_CHECK(NRF51State, (obj), TYPE_NRF51_SOC)
-=20
-+#define NRF51_NUM_TIMERS 3
-+
- typedef struct NRF51State {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -32,6 +35,7 @@ typedef struct NRF51State {
-     NRF51RNGState rng;
-     NRF51NVMState nvm;
-     NRF51GPIOState gpio;
-+    NRF51TimerState timer[NRF51_NUM_TIMERS];
-=20
-     MemoryRegion iomem;
-     MemoryRegion sram;
---=20
-2.19.1
-

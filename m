@@ -1,108 +1,108 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp757199wro;
-        Thu, 1 Nov 2018 05:41:57 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5e1TjqefH5LR2iartxNroRgsW13AcdU7qOiITPtv4nuVuedQP8XltYy7NUauxpvo1nB01zO
-X-Received: by 2002:ac8:4506:: with SMTP id q6-v6mr6673026qtn.68.1541076117873;
-        Thu, 01 Nov 2018 05:41:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541076117; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp786839wro;
+        Thu, 1 Nov 2018 06:08:33 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cXgkQebH2c22a7yIHtSyi6A3FRFtVMkpc1rhvONlZcsDwzrEvRiQidZJlaTP/g8cplMy7l
+X-Received: by 2002:a0c:9626:: with SMTP id 35mr6546394qvx.207.1541077713789;
+        Thu, 01 Nov 2018 06:08:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541077713; cv=none;
         d=google.com; s=arc-20160816;
-        b=eDF2KQyKyzI0Gm3eh6/V4HNGXigJh5zC760Y9RZA0G64zg4i4Crqityatct4UqE3bd
-         Rr+Ka2Htvje8ObndQqqQPtlboIM+Km9/Wn0NrDDReF3fIQLMDf15mHOK/sCIUXrF9glp
-         U8T6Q2lpJimEthzsDgFvlQzU6Po9IIdZot0hBBoICZ0rqGjhTZ8PiH5zwpS9rFMFnXvY
-         5zUYKKuM2HmL+cK2nvgHpICqyFWYMQ0zKFAODv8vmsH0icrBLH+6WX/k/wsTeVZaucnw
-         qlmHfVFiMXr/HEwYBZ/i7Uq7blU1eIB5bocADEux9O8FJYsvgWcRu0pXlZXHMrTJljxt
-         g7MA==
+        b=CG4vHuqQ9e3x1iGt0uvUuhqE4O1gJx4Tq3ml9kd2yLH9h0B7fQJofcI9mjO9cm5plT
+         3Lb2e//MBiatWxPCOm8S+kUwZcVyVupOTHBRVndsWZTSz5cYqOJgIHPyAJ3ozLyX0JKT
+         T1ft9jiMq4WOWFi8rKHMymUm7YUNfmpXkPAK4NKi/u1ay4gBJXctzgyS23jiKksD8UZD
+         c6bNNIbYXQ68KowffpK+UCNJWtncu4UgV0/O1nIWzNjQNchr27ykIsCMysg+RwJSjj78
+         iyDNfi1L2JbMBqUcjrIuCkUGPSH3hP5GzgPbet62c2soWccflGaa8i2XACHpXY3v9jGA
+         kpYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=IlrC3b9QmmdK8qvYyrSDWvA0GN655hcEYauJXW1l8/s=;
-        b=SLQLIOx/1iCtbXuIhK9fRa43RXnUNu3jK6SAQwk2n1EtWRiVbv+We7nizdmtuT1at9
-         CrR+vbQKqNy1cAtpqFDgCG/Jv/gthaR6hA2mEoUjpcIPNQWRnvfn4jHFi6yV3aeZgo0w
-         jJzxGj4Y15lA1h1WxqWbdUO5KhbiPip4PXdOTBqbtiw+DnkN9gFPpOEa7tC3JvP5/ELc
-         SQy+v82DFwpATvPHu0xK1treSkNqVVdcQ54oUlD2RD5CipfYiW3W5/tCpMQbvKRiAvNW
-         nCeo4cdyOHAkm5DU4W8oBkj1nymnDtI/Qh3GPguQ48J7iygs4A9J2ND18OOom+4o3bIR
-         poaA==
+        bh=GeOAC4+GOxZna++S8Beb4O6Md3bN/jQUfHNqlw6Q8wE=;
+        b=FZj0SMGvJTYWHIpjAjmvomI73GRxHaxIegCDmDBkDx1EbIoxXMo2QDTdj+hmLxz5k3
+         FNUsHeKQZ4iqg2mdwIff296X2Xnw5zgiCPXXqHMHmf4cBxnHh6qZwe3GvGJIzCyzLBfR
+         Jk7mz3gSeji7FYAdYlNw6Q+MIOev1GPLiPOHV8xbzlFNbqsNpvHe+p6b2lqhJ+KHY/ne
+         GYq39I6ESOwHoDedppkDzokL1y6nfrOvw9E2fVcq0VxSJIQPIfqFp5db/lFGhIAaF7Jz
+         1KwJE5mpiXYLdljdiVSVYyUYTLp33ob8Xou1CKfpODoB8jpJcTGxVm7IxXZqC+R5uMqV
+         9Olw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fu2OYQl8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VS4EEA36;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 64-v6si7069qks.145.2018.11.01.05.41.57
+        by mx.google.com with ESMTPS id 34-v6si807042qtp.70.2018.11.01.06.08.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Nov 2018 05:41:57 -0700 (PDT)
+        Thu, 01 Nov 2018 06:08:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fu2OYQl8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VS4EEA36;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41955 helo=lists.gnu.org)
+Received: from localhost ([::1]:42046 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gICIP-0004Vx-Dp
-	for alex.bennee@linaro.org; Thu, 01 Nov 2018 08:41:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39112)
+	id 1gICi9-0000n6-Au
+	for alex.bennee@linaro.org; Thu, 01 Nov 2018 09:08:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1gICHy-0004S1-7j
-	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 08:41:35 -0400
+	(envelope-from <stefanha@gmail.com>) id 1gIChw-0000n1-8X
+	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 09:08:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1gICHj-00081j-EY
-	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 08:41:23 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:36627)
+	(envelope-from <stefanha@gmail.com>) id 1gIChr-0007aP-WF
+	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 09:08:20 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44466)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1gICHj-00080l-47; Thu, 01 Nov 2018 08:41:15 -0400
-Received: by mail-wr1-x444.google.com with SMTP id y16so19946180wrw.3;
-	Thu, 01 Nov 2018 05:41:14 -0700 (PDT)
+	id 1gIChr-0007Zq-N5; Thu, 01 Nov 2018 09:08:15 -0400
+Received: by mail-wr1-x442.google.com with SMTP id d17-v6so19706123wre.11;
+	Thu, 01 Nov 2018 06:08:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:references:mime-version
 	:content-disposition:in-reply-to:user-agent;
-	bh=IlrC3b9QmmdK8qvYyrSDWvA0GN655hcEYauJXW1l8/s=;
-	b=Fu2OYQl8p+VeJWCVsVRtPd4+F/xuIZU4ihqlwSXx/lIYu44jiFnC010E9c4oj0CPXU
-	u3PfZZQxOhuh/hZ2GsW1tNO7NNI2jY9+yhtToHC+Wa9swtvcZ0YDMDkSUhnyyhFycm+9
-	p95bx7iC8s7ToqW8+wqYzMO0Xxk+5L4sf0H9l1Mxb4f5Kvubw4QlqIJCWF5nM0pxcl2R
-	80GpcnZv29U1zUy+tTYMU336JYp0jnX8bj7tqU3hgFDUgsyLmnXasbXUjVKcTt+5vLX4
-	HRid0QdmO0JjFYuuPhlklZJ2DnGUIYWjJM2qaKoGBIzbBkcHxeHCOYEBABrFqtWTMzPd
-	jEbw==
+	bh=GeOAC4+GOxZna++S8Beb4O6Md3bN/jQUfHNqlw6Q8wE=;
+	b=VS4EEA36syt9iiVbpEwCy7dKtpZ9GL9Ysq5g+okOjs6bWGS0am0PFPDgERNHm5mDj3
+	N+0pSHK5x9l+2n5AFaZsHtGcmjJIV8QYRQrzDuV2+8HZa6aSEVy9H3z327Lg/DGCsKtp
+	taeBhg4pcoE3sAGTQIBvjjW5XCvAwMujN3MwggQJfll0FyNnVgtb6ZORiUiR09p6E5Il
+	k09uXdiZ7ZDPf5BDKVxQKFBpDrH8E0d3jNZYipXT5EZ/vkZoh2TolCnsHK1eydnOeoHk
+	CgHzRH5K51Vaiq7Wz6ZNgh6zkBzSxk8e/1m1CsoL4QEyzMyPYGzIS8gdfEUxxejxW2zX
+	VNVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
 	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=IlrC3b9QmmdK8qvYyrSDWvA0GN655hcEYauJXW1l8/s=;
-	b=VSp/XPk/wqjmsdeAwMlBuuYLpxYHNhighWZswU6FnjxpYbcRhgdyhyU3VvBTEr8+lO
-	PofMyedyTcON9ZqOSDMc4SlQ5DnckMPtDb1PsWqP6QK+JlF6jN2o0GXB7mW2RwJA/prz
-	la13VPCjBpboUzPesQW+OP5rizO1QRNxD24YBMmbg537xatpnszuLLg/MRVcRMGOJTN3
-	liM6PIigR5aLdx5eXxMiVbjdrBIUZIf/SNvafTb9XTeJC3f91WGP8unV/8WOf5St2vYE
-	CmImNdMeiisjjqCR1tN6eSWOn1MtCBEe0UGQlNTSJTmSNk7Uwq2TZpjr6GjL2thRC4R+
-	2LBA==
-X-Gm-Message-State: AGRZ1gI15h3XKAnyMHCLHVcNiI0P6IjQDTP6U9pDMOyynV/BnADmFq5j
-	ijgOQx//43Hhe8HjXTiJT7w=
-X-Received: by 2002:adf:fa04:: with SMTP id
-	m4-v6mr6512815wrr.155.1541076074069; 
-	Thu, 01 Nov 2018 05:41:14 -0700 (PDT)
+	bh=GeOAC4+GOxZna++S8Beb4O6Md3bN/jQUfHNqlw6Q8wE=;
+	b=ih4YnKtJgK7HWcUvlvKE9BGoEq/0ZnFpW/l+3lUmpTAvBeJH3Iw6FPGkj0ihCzDetM
+	9FazXyy8prCLZ6csMSzYOtPPDkCSNVMlR9qMBcOrmB4lQg/DwJ6kGzm+Hw4QOXwtVDxv
+	tuoHur0Yr/4Qwc1nX090FYf97UYKSud8RN3Fa4T3yNG86F7ZByZDe5ZtgJb/+FRr2T8Q
+	bJH7/wg7rrgwYVxaA/GbGinlJYtKS9DplXjJygA9OQ16ZXf7mxNCAo7k6Pd4pAqZGl0Z
+	KVaF/XAFWUpInhECSn2FUIGQZC6LlqfENunlUo1J9vAFkVIJEVFDA4+U8Cp1MAnGj1/C
+	Crjg==
+X-Gm-Message-State: AGRZ1gLwXITaoov8KhNMcjSz+AzndlrGB37Jdi4YQCs7w3wRzCOC1GHJ
+	0GmhXLuOq6F/Ef9E3V7B8+M=
+X-Received: by 2002:adf:e0ce:: with SMTP id
+	e14-v6mr6713811wri.199.1541077694515; 
+	Thu, 01 Nov 2018 06:08:14 -0700 (PDT)
 Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	134-v6sm22518973wmp.6.2018.11.01.05.41.13
+	v19-v6sm16961510wmd.20.2018.11.01.06.08.13
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 01 Nov 2018 05:41:13 -0700 (PDT)
-Date: Thu, 1 Nov 2018 12:41:12 +0000
+	Thu, 01 Nov 2018 06:08:13 -0700 (PDT)
+Date: Thu, 1 Nov 2018 13:08:12 +0000
 From: Stefan Hajnoczi <stefanha@gmail.com>
 To: Steffen =?iso-8859-1?Q?G=F6rtz?= <contrib@steffen-goertz.de>
-Message-ID: <20181101124112.GR24946@stefanha-x1.localdomain>
+Message-ID: <20181101130812.GV24946@stefanha-x1.localdomain>
 References: <20181031002526.14262-1-contrib@steffen-goertz.de>
-	<20181031002526.14262-10-contrib@steffen-goertz.de>
+	<20181031002526.14262-14-contrib@steffen-goertz.de>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="eyYj78xbwv+yMvU1"
+	protocol="application/pgp-signature"; boundary="b3OyYALfe3DXUU4J"
 Content-Disposition: inline
-In-Reply-To: <20181031002526.14262-10-contrib@steffen-goertz.de>
+In-Reply-To: <20181031002526.14262-14-contrib@steffen-goertz.de>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: Re: [Qemu-devel] [PATCH v3 09/13] arm: Instantiate NRF51 general
- purpose I/O
+X-Received-From: 2a00:1450:4864:20::442
+Subject: Re: [Qemu-devel] [PATCH v3 13/13] arm: Add Clock peripheral stub to
+ NRF51 SOC
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -120,37 +120,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bcXWeUe/SMiY
+X-TUID: flyryjg0rDVG
 
 
---eyYj78xbwv+yMvU1
+--b3OyYALfe3DXUU4J
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Oct 30, 2018 at 08:25:23PM -0400, Steffen G=F6rtz wrote:
-> Instantiates GPIO peripheral model
+On Tue, Oct 30, 2018 at 08:25:27PM -0400, Steffen G=F6rtz wrote:
+> This stubs enables the microbit-micropython firmware to run
+> on the microbit machine.
 >=20
 > Signed-off-by: Steffen G=F6rtz <contrib@steffen-goertz.de>
 > ---
->  hw/arm/nrf51_soc.c         | 16 ++++++++++++++++
->  include/hw/arm/nrf51_soc.h |  2 ++
->  2 files changed, 18 insertions(+)
+>  hw/arm/nrf51_soc.c         | 27 +++++++++++++++++++++++++++
+>  include/hw/arm/nrf51_soc.h |  1 +
+>  2 files changed, 28 insertions(+)
 
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
---eyYj78xbwv+yMvU1
+--b3OyYALfe3DXUU4J
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAEBAgAGBQJb2vRoAAoJEJykq7OBq3PIXesH/3sra0UaIff56ob2DhPbY+Ls
-lEDkXfxMTwdw4QQwhSaTW6yH3h2KEDx5qBp7LLp/6aZlsSQ+obBqeBqJ5vhTzM97
-9OG21ZoYPBF0JQML82jc8NHPJu7LOQRG4CMoH2Uxt9fLalmUsdGbqhUf2WF3TVNF
-SIoFeevXCBuL92KgPKqL1qFRtYJc7Gw7MggwEiYKHOPkAqbtZSDiHAwn4H0vyvwV
-lRyH2e46HU04DFcQFrkti7AaG4GvBXNXXnuV0/obLiK44nPIkvs6DWfoUp1gpyR7
-wBazZAFKemU9CKuxem3z7CMWYf+wxCTWuj6BbZN+bx1oRXKVzBhPHA1VybTOKWQ=
-=XODn
+iQEcBAEBAgAGBQJb2vq8AAoJEJykq7OBq3PIktkIAJKWpH2zEto8HkjNlQyBwdkN
+EeuZb7Y+W0gnCb/oCo7iYt0MSUDrHiwNqSgfU/FAj14xfFJaaND5mA5mZv76PWxo
+V/4VKHw3Kmr0lnMlZqenknCf+BYdaze0A3AB393HiUKTVkvGLjvY6RSVYKAoaxnV
+MzPn+02zod4bOVAhg6WTJp+tEKjyjy4AbEemrBLuw+fIyG09yDp+VRX+xucHRyGH
+0fv8C43ZeYwPDLVu+BQXysbcCaonlYBiE6jfPpvNCGnpciK2n6HBzBIPDKTkzzOM
+X7rmN0Hd/KyAg3fR9eooA9N1sJPFGZwsPbwwR78kc28pVTOYUIyMDwVML15PFN4=
+=mtG6
 -----END PGP SIGNATURE-----
 
---eyYj78xbwv+yMvU1--
+--b3OyYALfe3DXUU4J--

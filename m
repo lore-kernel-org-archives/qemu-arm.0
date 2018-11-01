@@ -1,228 +1,156 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp945703wro;
-        Thu, 1 Nov 2018 08:26:10 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5em2Ovu1IC/qZen+H+uuWrJOZI16tj28d+X1MySs1LghSm1qQvYL6t2lKQc+h4yIHtoxZGK
-X-Received: by 2002:ac8:8ea:: with SMTP id y39-v6mr7162428qth.3.1541085970308;
-        Thu, 01 Nov 2018 08:26:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541085970; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1077686wro;
+        Thu, 1 Nov 2018 10:19:16 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5dstwlPBM94/9ySEHutptfwNp/EGkCw+qkqT2lYN8fuINcy8QgjqiTl+VVCvlPlbTEPbtWI
+X-Received: by 2002:a0c:d107:: with SMTP id a7mr7694371qvh.104.1541092755946;
+        Thu, 01 Nov 2018 10:19:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541092755; cv=none;
         d=google.com; s=arc-20160816;
-        b=hwLI6sGqbUzMSdLBUXEQ3rh+pB4HHF7O3D/iShQS2vMS6LAlk0SeUa8BMk3sLdmlp6
-         dAFaoYDq9YHxbWMKpXdi0Pa6aFoGZXc7yleqno6vz76OvGNTrw5Hi5KsKG+16724iu9O
-         CNcEsy5m5PPHYpN6a+JCqlg4w/TOsn6NrnaR9vWTW3NbYsZ7//8wlb7l4c6cu+zSgpg4
-         KrO/R0LVxDKf4wLxJUKzjwpwMnJ1nwGHchKK4T48xGAl4DmZDxxi3u1ua7LwOhNPjQ4T
-         oB/qnxoMnc1VJPxR5BEjPMXTeiW7QpFi6MlB6v+f3Zxne0fUGGqtJ+PUfdRF54Zv+fnv
-         OA1w==
+        b=QXxS241kaULz2PGhCPRMLgBeTDsSyJORPVM+3Rw4Np/IvP0jUtEtu3MsReNYjXKXy3
+         6KU7X3dG4gbV5nw9y7r14H2UZ3v6Y26mffvnUEBiUWGDIZyk4F0R/ofi3ETHPwKVooZV
+         n/Tdwr5nCBacwLXaenTDKaXIyHp0xQOieulbJBvmopq02iit7VHKZ/MnXYWPNjsYaRp8
+         9mV2fODGc3mdRS+tM5Ky6GTMFY7uBJZK7sjW2k00u4lW3Rbl2h3z4uzpjPlfo6XuH8fw
+         QKbZyfPAx4Pq+M39CfHoAjWW5Lzdgv3UuMy5v6B47tDwOiN23ovKujcqpF9yv88AG6qU
+         4prg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from;
-        bh=gFt1648mA2aujnevTP7gNCCtw3iu0Sb6bOmyRqdOebQ=;
-        b=klBus1VF4ITwlbPG2SqAEFy11rGvtdQirVZxxTmZ0ktIJrxRjFZa/SdfUge7tWG0pQ
-         U5c2Deupd2HyfPbOmNBLSPeWLMN6vY/1+BuHCE9j6PO5hXSsn/TDmJ3018FV/6gn9qk/
-         K0cynNZIvNvZCbXd3oDlrI49b3nqrQSpcvXJNBL+aGjxk+kpkxwCLQeaAl0KiBJlFCXy
-         QiZDjReyPvntEmUBfbglb5oKcFNL8/2pHq498rHLWiFaDd5ksRfPlilk5P1cq7PBwAje
-         4af1nvU7O8rC37M9RNuyopxhoKh0b0+6ob+31nHrrtYfiN+uAErSOAuveh20EELrcf0p
-         Xqqg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=bpczqcJypmUB047JDTFfTOoqT0F49kKd/mJrJQesVoA=;
+        b=ZcK98QptPzlDIcshL5+rXq4amiR7NPkHhXVjPbLLPJ+v9Y+fZEyRyoUBqNzCj4FwV2
+         1OENnh+l+efcjiiF2e4gHJY5Qubfh1eSh4ZKmp2P6fbIFnARdBOa0UQ4pJV/xKuXonCY
+         QlvFzQy4ZDyQhqSkVstXAKjWpwVzi6Ubgxzpms9c4SqmqGcmlEAV31Cl9yqk/7WPEw95
+         3niFroyAHjYUUzrUaJOIez6PXr40OLj3xI6RAv6en9NyBqL3HYTOm5d5+FIxMpjdjA8w
+         r2Epi3tBfDFEFw61N4lDnUja96uHw/mMNxXAd7kieVHe/bmtErkKThHTlCFno9q/Udr4
+         6nQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="Ic/tUR21";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 7-v6si575350qto.215.2018.11.01.08.26.10
+        by mx.google.com with ESMTPS id f13si8805903qvj.22.2018.11.01.10.19.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Nov 2018 08:26:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 01 Nov 2018 10:19:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42615 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="Ic/tUR21";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43164 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gIErJ-0000DM-P8
-	for alex.bennee@linaro.org; Thu, 01 Nov 2018 11:26:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60085)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gIGck-0007Tw-L6
+	for alex.bennee@linaro.org; Thu, 01 Nov 2018 13:19:14 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36532)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gIEq4-0007uQ-4M
-	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 11:24:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gIGcZ-0007T9-V7
+	for qemu-arm@nongnu.org; Thu, 01 Nov 2018 13:19:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gIEq0-0005Si-Sg
-	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 11:24:52 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:38927)
+	(envelope-from <peter.maydell@linaro.org>) id 1gIGcY-0006H0-4a
+	for qemu-arm@nongnu.org; Thu, 01 Nov 2018 13:19:03 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:36435)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gIEpy-0005Rj-RG
-	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 11:24:46 -0400
-Received: by mail-wm1-f67.google.com with SMTP id u13-v6so1655297wmc.4
-	for <qemu-devel@nongnu.org>; Thu, 01 Nov 2018 08:24:46 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gIGcX-0006GQ-M9
+	for qemu-arm@nongnu.org; Thu, 01 Nov 2018 13:19:02 -0400
+Received: by mail-ot1-x344.google.com with SMTP id x4so18439176otg.3
+	for <qemu-arm@nongnu.org>; Thu, 01 Nov 2018 10:19:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=bpczqcJypmUB047JDTFfTOoqT0F49kKd/mJrJQesVoA=;
+	b=Ic/tUR21e0NATGE/kpqdg8zibBx5fZSBre6SajuYDfp65f4hpNaPBemN4Tp2jKvbms
+	shZ0F8MatLoubjQSDu+2MoShkhwNHfpaHiQtNkTx8rHOvALzuFJYYXv1j9mQt8U24qrT
+	pqeArqj9SvIWcHmV50SFMt4xown+9qs1r654I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:from:to:cc:references:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=gFt1648mA2aujnevTP7gNCCtw3iu0Sb6bOmyRqdOebQ=;
-	b=aQhGzUA686ld7X06WhzZXDiISq/UFYVuvBwC2GuSigAgk/6fFIhEREHd1nM7REELMh
-	Hz7Lwd6RyrlbS38eH5hfBbJce47YlS9ZK953vgxwMLnWnnriB9Cvzxr0N2H0+QDqHNZb
-	n47W/vEOjSPLXlPET+FOsnBsyb2KYueUo41ACD3s/FDAmIElTEGoyhehGgy06qyvkJTX
-	xteE+1Nfk6GrbM1FoSAa8Lg98FP3gBW6LRBJ1uGZBUJvO+L9WmXiZpkIAjJIwDIapjHR
-	8hmNfXnNGvAEdouo6Lw4LtxXMoH77wcQUOu2I1jOudCRiU3luPJDJdKWUOlaF+Kq8Ca1
-	MQcw==
-X-Gm-Message-State: AGRZ1gKwgv98l+CkKF73xefnvhLGzhlb5pM+1h9LdHEd0nFkh9Afuxz7
-	3QfozylUVwtUbDyyA/Aa7+U7eg==
-X-Received: by 2002:a1c:ab0a:: with SMTP id
-	u10-v6mr5875126wme.55.1541085885327; 
-	Thu, 01 Nov 2018 08:24:45 -0700 (PDT)
-Received: from [192.168.1.130] ([139.47.31.199])
-	by smtp.gmail.com with ESMTPSA id
-	x18-v6sm5876185wrs.50.2018.11.01.08.24.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 01 Nov 2018 08:24:44 -0700 (PDT)
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>, qemu-devel@nongnu.org
-References: <20181101102303.16439-1-sameo@linux.intel.com>
-	<20181101102303.16439-18-sameo@linux.intel.com>
-	<68eae1f8-ca6a-d096-c9ac-d492e4523c7c@redhat.com>
-Message-ID: <a090a6f5-62a9-c187-775b-3b485eaabbc2@redhat.com>
-Date: Thu, 1 Nov 2018 16:24:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=bpczqcJypmUB047JDTFfTOoqT0F49kKd/mJrJQesVoA=;
+	b=MEYFy19sephHW8NP1hTXDElqc7+8D0JdDpaMdPIz8UOs4YX3oUSrEq3yMOpo/6pGq0
+	naWFMHkCrZqEOdau/VCTHNly578iJOF9dO83RjOUIEUmHRuOcotqdL0TdKBAHVVXKxnX
+	hhseylu/DeIRmtgRJdB9IVDJft78NeORg0TkCQS2jKIhYgkz29+vKxC2k9gcGwIkT6tR
+	CguTWO4MouusP0NYmjqBcK9JV8/hCiYV+GZeQwTgWa/LdKake+y2j7//+kj9WuYlUXbu
+	s59G2g7xWh50Vz3BwacnJKGLH6Fh4h0bRK4JeW8tRnjntgqsw+qSxVDUeZ+8Ex9eHMlv
+	EWVA==
+X-Gm-Message-State: AGRZ1gJT+dS9K45TaxTg7M7oVi4GShQBXVCNgSivPyQkwRWeRbymuU4c
+	MLTU8QRFpZRTj45cATFS6D4eOjBUOJ3AtMEq5j550A==
+X-Received: by 2002:a9d:5f81:: with SMTP id g1mr5312248oti.317.1541092740588; 
+	Thu, 01 Nov 2018 10:19:00 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <68eae1f8-ca6a-d096-c9ac-d492e4523c7c@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-devel] [PATCH v4 17/23] hw: i386: Export the MADT build
- method
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
+	Thu, 1 Nov 2018 10:18:40 -0700 (PDT)
+In-Reply-To: <84c5dc6a-6507-1b72-9808-ef4a58ff26d4@redhat.com>
+References: <154098485103.7774.2165977871054805313@015909e0f939>
+	<84c5dc6a-6507-1b72-9808-ef4a58ff26d4@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Nov 2018 17:18:40 +0000
+Message-ID: <CAFEAcA_ByKuDeei4TtqRzWQT-W9CFtFRywrSCbp3TQXuTk9pCQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 0/2] hw/arm/exynos4: Add DMA
+ support for SMDKC210 board
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	"open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>,
-	Shannon Zhao <zhaoshenglong@huawei.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ovWQHQSSdD+x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <famz@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2fAgZnmZr6a0
 
-On 1/11/18 16:12, Philippe Mathieu-Daudé wrote:
-> Hi Samuel,
-> 
-> On 1/11/18 11:22, Samuel Ortiz wrote:
->> It is going to be used by the PC machine type as the MADT table builder
->> method and thus needs to be exported outside of acpi-build.c
->>
->> Also, now that the generic build_madt() API is exported, we have to
->> rename the ARM static one in order to avoid build time conflicts.
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
->> ---
->>   hw/arm/virt-acpi-build.c |  4 ++--
->>   hw/i386/acpi-build.c     |  3 ++-
->>   include/hw/i386/acpi.h   | 27 +++++++++++++++++++++++++++
->>   3 files changed, 31 insertions(+), 3 deletions(-)
->>   create mode 100644 include/hw/i386/acpi.h
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index f9a60907f1..4a37c5997c 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -565,7 +565,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, 
->> VirtMachineState *vms)
->>   /* MADT */
->>   static void
->> -build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState 
->> *vms)
->> +virt_build_madt(GArray *table_data, BIOSLinker *linker, 
->> VirtMachineState *vms)
->>   {
->>       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->>       int madt_start = table_data->len;
->> @@ -746,7 +746,7 @@ void virt_acpi_build(VirtMachineState *vms, 
->> AcpiBuildTables *tables)
->>       build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
->>       acpi_add_table(table_offsets, tables_blob);
->> -    build_madt(tables_blob, tables->linker, vms);
->> +    virt_build_madt(tables_blob, tables->linker, vms);
->>       acpi_add_table(table_offsets, tables_blob);
->>       build_gtdt(tables_blob, tables->linker, vms);
->> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> index 6c9b61cea2..f4afdbcd1a 100644
->> --- a/hw/i386/acpi-build.c
->> +++ b/hw/i386/acpi-build.c
->> @@ -60,6 +60,7 @@
->>   #include "qom/qom-qobject.h"
->>   #include "hw/i386/amd_iommu.h"
->>   #include "hw/i386/intel_iommu.h"
->> +#include "hw/i386/acpi.h"
->>   #include "hw/acpi/ipmi.h"
->> @@ -279,7 +280,7 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
->>       }
->>   }
->> -static void
->> +void
->>   build_madt(GArray *table_data, BIOSLinker *linker,
->>              MachineState *ms, AcpiConfiguration *acpi_conf)
->>   {
->> diff --git a/include/hw/i386/acpi.h b/include/hw/i386/acpi.h
->> new file mode 100644
->> index 0000000000..ee1203914a
->> --- /dev/null
->> +++ b/include/hw/i386/acpi.h
->> @@ -0,0 +1,27 @@
->> +/*
->> + *
->> + * Copyright (c) 2018 Intel Corportation
->> + *
->> + * This program is free software; you can redistribute it and/or 
->> modify it
->> + * under the terms and conditions of the GNU General Public License,
->> + * version 2 or later, as published by the Free Software Foundation.
->> + *
->> + * This program is distributed in the hope it will be useful, but 
->> WITHOUT
->> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
->> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public 
->> License for
->> + * more details.
->> + *
->> + * You should have received a copy of the GNU General Public License 
->> along with
->> + * this program.  If not, see <http://www.gnu.org/licenses/>.
->> + */
->> +
->> +#ifndef HW_I386_ACPI_H
->> +#define HW_I386_ACPI_H
->> +
->> +#include "hw/acpi/acpi.h"
-> 
-> You forgot the following header:
-> 
-> #include "hw/acpi/bios-linker-loader.h"
+On 31 October 2018 at 16:00, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+>
+> The following patch fixes this crash, but I'm not sure this is the correc=
+t
+> fix:
+>
+> -- >8 --
+> --- a/hw/intc/exynos4210_gic.c
+> +++ b/hw/intc/exynos4210_gic.c
+> @@ -213,6 +213,8 @@ void exynos4210_init_board_irqs(Exynos4210Irq *s)
+>  {
+>      uint32_t grp, bit, irq_id, n;
+>
+> +    memset(s->board_irqs, 0, sizeof(s->board_irqs));
+> +
+>      for (n =3D 0; n < EXYNOS4210_MAX_EXT_COMBINER_IN_IRQ; n++) {
+>          irq_id =3D 0;
+>          if (n =3D=3D EXYNOS4210_COMBINER_GET_IRQ_NUM(1, 4) ||
 
-You can also remove it from hw/i386/acpi-build.c.
+Generally devices should be able to assume that their state
+structures are zero-initialized. In this case this memory
+comes from
+    Exynos4210State *s =3D g_new(Exynos4210State, 1);
+in exynos4210_init().
 
-> 
-> The BIOSLinker is not provided by "acpi/acpi.h", which results in a 
-> failure when trying to precompile this header.
-> 
->> +
->> +/* ACPI MADT (Multiple APIC Description Table) build method */
->> +void build_madt(GArray *table_data, BIOSLinker *linker,
->> +                MachineState *ms, AcpiConfiguration *conf);
->> +
->> +#endif
->>
+So the quick fix for 3.1 would be to make that use g_new0().
+
+Longer term, the code in hw/arm/exynos4210.c is implementing
+an SoC, but it is not doing it in what is (now) the standard
+way of having the SoC be a device object which contains all
+the relevant SoC device objects. Making it work like that
+would mean that the memory for the state struct would naturally
+be zeroed out because it would be allocated by the functions
+for "create me a QOM object or device".
+
+thanks
+-- PMM

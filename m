@@ -1,100 +1,99 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2211271wro;
-        Fri, 2 Nov 2018 07:57:45 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5e76rvrLuDKUKOzTo1eNo/Udha4BRDMaXZPpmPf1KuboaLdD+zVYyisXtzGytNd36zR8xOz
-X-Received: by 2002:ac8:1987:: with SMTP id u7mr8592115qtj.86.1541170665774;
-        Fri, 02 Nov 2018 07:57:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541170665; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2212787wro;
+        Fri, 2 Nov 2018 07:59:22 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cx/5haJLy5PILX9ap/iRpGKpf5dodfAQ24VYmcSSGY8qhifT07PjW462GccfU7nDby0VRE
+X-Received: by 2002:ae9:f40b:: with SMTP id y11mr10831486qkl.228.1541170762890;
+        Fri, 02 Nov 2018 07:59:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541170762; cv=none;
         d=google.com; s=arc-20160816;
-        b=RrtTGtlH6sndXmtpmvaQvvpasvzuDYpXyWj/bwkCZVk6I01ungfB0dDQi141fSlTmc
-         rdOqR/ICXJh9iQMnaJgtOB2UwOFz8JumfjCBxh4TJZAH/6QnzDFY5A402MWVQxGbtojs
-         dk2dlrTf08JV7tgQhSUujewTQynm0u6OSUEIwHEZIN/6BwRc9lrhAoJkJZDPv7s7w+WQ
-         8zXQk+c68bK8mOtySilP/VtcmjLwIb9yotOgcGL4ZP/TCvLjQh3icS3fB8a7Bjybmmja
-         XnRHpWKYhusXdZ7e3Q/BM8VRpXQ7R/8XzIvkI/5bi2vcnQDjNkn+tJLLtPF7OSkeunWh
-         kqzA==
+        b=tsjZIVXcGQVxtNtXuhrhxYFBS29UTXlClgRGkHkCaygjvNATunrPXIyfkoQO2XgXgZ
+         b1oSBvxntzzaKivlXEC0x4KzxCPLEgx2/TAUpdqi/fdYGKn7/TVdMLXUTBLoDAkexxKD
+         rvpPoPPn5dmuq9nZkk34XVlCzZjlf3jY94Mo7mW6/S93qiuqCoVaXpMzvA1HuThqhG+z
+         /aXNDVUWwF0Bm3dZ76lhmc8JMExVDdDfBP+tL7Uxlp8EtbCS2kfMOKbY+HLcRGhmUVMW
+         RTIQ91cyilsgRWY7FkC/i6d/W4Q0fw5dYjmPGVsQKz6jkqnQzQkZ7C0lpAsMMHA27gCM
+         dq6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=gYge3JpLCAszNSWZKrrE6al9e3ChMpf2vAek9PkFKjE=;
-        b=zXFRykEZ226+0zzhPxm7Nbsg9y7piVUORkWJfLqkrLbVnvhitDc2Ca1Q4tmv4iyEy6
-         5K7v5Ekrm9dIFrAO7ou2FINxmzfU92VUeNN8nADEyZkBAIi4fl+CVXVAlH+3Pciw9luL
-         GSi6byKYSCKqw3signiyNNl1iGbBiuO8btIV2KyqoWgFcYYyTN1QLpGgXHEfCXxclzTM
-         kf3CpRsC/btl/dfbGOQhmTHNLoeyl6nIMNkPEaVZSlVHo++W7AnaXLzGKdK2VqpbAMxX
-         hgWqfAZp1RLPSv0yqPcHC8r2ym+x+08FNiy3Pay3WoZMCIllOp2X9GJo+FujEKURuG1a
-         9cAg==
+        bh=Xb8qasGGEBVJuzUJvReZfnwfw3l/sa7Djl2gXpUSNbI=;
+        b=uv/kLbYWKjzMeSObqOFOQOv9w8b/FD564UrT9UaWIovgKW3UuehVklSMJpddnMXK2w
+         SXAxmk2uNuK9zaj70rvl1hs7+WC2HKloDcDp0ZMXc7KEI0fS3uvd1LeUdNA115iwgv2d
+         eXs1RbFT3iPIAMfnXIEsRH9UWjcUJAu8yvlgeO/ZZbN33rwHkBdqH/4rXW8ujyDcq1NM
+         0AaNRlu5U/oGtKooX8rc5GA7PbWu5zDrdL/5fyAmsjbH6urAbXepUpE5nnGL65T4gGIL
+         +4gCS5txDicSy3SwWBOm2mS7TEf6YJxvgmzNSpRwinXvUe+dnntraCtKN89IZj9yXPNc
+         qMZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D6lyjo2E;
+       dkim=fail header.i=@linaro.org header.s=google header.b=H02un9kK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j95-v6si5036732qte.235.2018.11.02.07.57.45
+        by mx.google.com with ESMTPS id q36si4127904qvj.97.2018.11.02.07.59.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Nov 2018 07:57:45 -0700 (PDT)
+        Fri, 02 Nov 2018 07:59:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D6lyjo2E;
+       dkim=fail header.i=@linaro.org header.s=google header.b=H02un9kK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52041 helo=lists.gnu.org)
+Received: from localhost ([::1]:52050 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gIatN-0004Iy-7S
-	for alex.bennee@linaro.org; Fri, 02 Nov 2018 10:57:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56709)
+	id 1gIauw-0007B6-Dx
+	for alex.bennee@linaro.org; Fri, 02 Nov 2018 10:59:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56623)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gIaqX-0002Fm-9D
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:54:50 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1gIaqV-0002EL-Ca
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:54:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gIaqV-0003IU-R2
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:54:49 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:32803)
+	(envelope-from <richard.henderson@linaro.org>) id 1gIaqT-0003Gc-9c
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:54:47 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54963)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gIaqV-0003G4-En
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:54:47 -0400
-Received: by mail-wr1-x441.google.com with SMTP id u1-v6so2301300wrn.0
-	for <qemu-arm@nongnu.org>; Fri, 02 Nov 2018 07:54:44 -0700 (PDT)
+	id 1gIaqR-0003FN-C8
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:54:43 -0400
+Received: by mail-wm1-x342.google.com with SMTP id r63-v6so2231082wma.4
+	for <qemu-arm@nongnu.org>; Fri, 02 Nov 2018 07:54:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=gYge3JpLCAszNSWZKrrE6al9e3ChMpf2vAek9PkFKjE=;
-	b=D6lyjo2EhDFZR6R+dExJAJ+tCB5dzPbRemOKLpQDlUaMxddUG0naBZbF8mtGwkHJuZ
-	G6UzQSK29PC2ltfakMN+8rNCDM4RnpGgpJZvWQdyN/wBJjgWts6SBM1eqyCHr4HJEEwV
-	DTxHcBaPZAz1zei/oSgzagiTTsX/VGwESR+ic=
+	bh=Xb8qasGGEBVJuzUJvReZfnwfw3l/sa7Djl2gXpUSNbI=;
+	b=H02un9kKY4HwUC6DAMGOmRsimNiZIkBVj9UB9ZOzhB2TDviQfJz9JeKYE+UtduRbZD
+	VGB7ILbyYQwqjMDHlGhJsp5Y7TUD4X+EVmRZq3VgV6tKS2lQz74TRtX4tsyO1BNGh4It
+	I2RKLKdUggwd5fSsKpFzzhLuBYeumuUE/MHCQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
 	:references;
-	bh=gYge3JpLCAszNSWZKrrE6al9e3ChMpf2vAek9PkFKjE=;
-	b=LvFWxA2pKa9cnw2EG9TCPAEgC8tMNNYMoJZih1uzrRX8OJ4QiEPNeuCx6W0vO9Oki6
-	a30/TTG5oyv7XYUuQOwcM5p6bQhIzzURNllYbOzY2XzbxsWV0r5bPcDRNdgTS++bKV92
-	m08S9VvPW+ALzf2i9VAmWWQY5Bi8FPZAXLxvAxDj0BFowMBsBZ1IAXDNqVqhK8DzITrD
-	NGBkwhk35ZqmoJrJQbWBQS6Zb4zqKQlWw9Qw6qPLos/myxzgJIXOKZ3lsZR+Fg8Sdbf/
-	CIHgyNMlHieSWfsYV71ASm5xP1idXeu4vnfDwllaQS9Yeqo8TUUkubzj1GUGX2icnspN
-	vKrw==
-X-Gm-Message-State: AGRZ1gK2s5cyCfuOv0rqEecUa4wK2iMIieVNgG/cl6PMt6DmLFtY9Nt8
-	pOwJHwwrccQMtYpk2glmKsr+3FoU37k=
-X-Received: by 2002:adf:fdc8:: with SMTP id
-	i8-v6mr11143944wrs.276.1541170483105; 
-	Fri, 02 Nov 2018 07:54:43 -0700 (PDT)
+	bh=Xb8qasGGEBVJuzUJvReZfnwfw3l/sa7Djl2gXpUSNbI=;
+	b=TGcIulUmSsZw5CNTw+j699gIXdyC1DiEobSU8oH+H9hWxT1dUJJPjQPt71QxV+VpFp
+	kMWryU6KawQ/mrpj7NXXWHmccLf3Lk9cgLuQRhAR3QYBcq23mf6as2z6TxPOTx0UytyV
+	2KqUxi0ELWap7+iW63A6beKUx8A1krVXt6jhr8ZUcv6TDZ2XE4Km3taErDjoeFl74uuI
+	jjSnvhiTssEuSl4sKLzMHfvQRb0nQnn4C0TOxnxJo0IrwHDBxGHlYuDmDhGQjiwZuWmX
+	12puBadJKIh9MKd6vRjoLSMfaU7kCLPacxMCrjIxFhv2riFpe7SS0eoNmbxH4SVtUjVE
+	2chg==
+X-Gm-Message-State: AGRZ1gIW06FeQ47u66hAk88b3gy+4TTY7/93mi+yMr3U681QG5EuIJKN
+	KHvmDLOfM1rxak65OqIvu+FyFA==
+X-Received: by 2002:a1c:1984:: with SMTP id 126-v6mr36015wmz.7.1541170482142; 
+	Fri, 02 Nov 2018 07:54:42 -0700 (PDT)
 Received: from cloudburst.Home ([2a02:c7f:504f:6300:a3de:88d8:75ae:bf4c])
 	by smtp.gmail.com with ESMTPSA id
-	l5-v6sm10698454wrv.84.2018.11.02.07.54.42
+	l5-v6sm10698454wrv.84.2018.11.02.07.54.40
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 02 Nov 2018 07:54:42 -0700 (PDT)
+	Fri, 02 Nov 2018 07:54:41 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Fri,  2 Nov 2018 14:54:33 +0000
-Message-Id: <20181102145433.4553-6-richard.henderson@linaro.org>
+Date: Fri,  2 Nov 2018 14:54:32 +0000
+Message-Id: <20181102145433.4553-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181102145433.4553-1-richard.henderson@linaro.org>
 References: <20181102145433.4553-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: [Qemu-arm] [PATCH v2 5/5] target/arm: Convert t32ee from feature
- bit to isar3 test
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-arm] [PATCH v2 4/5] target/arm: Fill in ARMISARegisters for
+ kvm32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,134 +108,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j3p6KtQbJp0T
+X-TUID: 2pNapkwBsu/K
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h     | 6 +++++-
- linux-user/elfload.c | 2 +-
- target/arm/cpu.c     | 4 ----
- target/arm/helper.c  | 2 +-
- target/arm/kvm32.c   | 3 ---
- target/arm/machine.c | 3 +--
- 6 files changed, 8 insertions(+), 12 deletions(-)
+ target/arm/kvm32.c | 33 ++++++++++++++++++++++++++++-----
+ 1 file changed, 28 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8e6779936e..895f9909d8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1575,7 +1575,6 @@ enum arm_features {
-     ARM_FEATURE_NEON,
-     ARM_FEATURE_M, /* Microcontroller profile.  */
-     ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
--    ARM_FEATURE_THUMB2EE,
-     ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
-     ARM_FEATURE_V7VE, /* v7 Virtualization Extensions (non-EL2 parts) */
-     ARM_FEATURE_V4T,
-@@ -3172,6 +3171,11 @@ static inline bool isar_feature_jazelle(const ARMISARegisters *id)
-     return FIELD_EX32(id->id_isar1, ID_ISAR1, JAZELLE) != 0;
- }
- 
-+static inline bool isar_feature_t32ee(const ARMISARegisters *id)
-+{
-+    return FIELD_EX32(id->id_isar3, ID_ISAR3, T32EE) != 0;
-+}
-+
- static inline bool isar_feature_aa32_aes(const ARMISARegisters *id)
- {
-     return FIELD_EX32(id->id_isar5, ID_ISAR5, AES) != 0;
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 5bccd2e243..a3503c83c9 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -466,7 +466,7 @@ static uint32_t get_elf_hwcap(void)
-     GET_FEATURE(ARM_FEATURE_V5, ARM_HWCAP_ARM_EDSP);
-     GET_FEATURE(ARM_FEATURE_VFP, ARM_HWCAP_ARM_VFP);
-     GET_FEATURE(ARM_FEATURE_IWMMXT, ARM_HWCAP_ARM_IWMMXT);
--    GET_FEATURE(ARM_FEATURE_THUMB2EE, ARM_HWCAP_ARM_THUMBEE);
-+    GET_FEATURE_ID(t32ee, ARM_HWCAP_ARM_THUMBEE);
-     GET_FEATURE(ARM_FEATURE_NEON, ARM_HWCAP_ARM_NEON);
-     GET_FEATURE(ARM_FEATURE_VFP3, ARM_HWCAP_ARM_VFPv3);
-     GET_FEATURE(ARM_FEATURE_V6K, ARM_HWCAP_ARM_TLS);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 8f16e96b6c..e08a2d2d79 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1440,7 +1440,6 @@ static void cortex_a8_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7);
-     set_feature(&cpu->env, ARM_FEATURE_VFP3);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     cpu->midr = 0x410fc080;
-@@ -1509,7 +1508,6 @@ static void cortex_a9_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_VFP3);
-     set_feature(&cpu->env, ARM_FEATURE_VFP_FP16);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     /* Note that A9 supports the MP extensions even for
-      * A9UP and single-core A9MP (which are both different
-@@ -1572,7 +1570,6 @@ static void cortex_a7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7VE);
-     set_feature(&cpu->env, ARM_FEATURE_VFP4);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-@@ -1618,7 +1615,6 @@ static void cortex_a15_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7VE);
-     set_feature(&cpu->env, ARM_FEATURE_VFP4);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 0ea95b0815..bea4d5350d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5455,7 +5455,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, vmsa_pmsa_cp_reginfo);
-         define_arm_cp_regs(cpu, vmsa_cp_reginfo);
-     }
--    if (arm_feature(env, ARM_FEATURE_THUMB2EE)) {
-+    if (cpu_isar_feature(t32ee, cpu)) {
-         define_arm_cp_regs(cpu, t2ee_cp_reginfo);
-     }
-     if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
 diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 9ededa3c73..8b2c9b3075 100644
+index de573f9aa8..9ededa3c73 100644
 --- a/target/arm/kvm32.c
 +++ b/target/arm/kvm32.c
-@@ -115,9 +115,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     set_feature(&features, ARM_FEATURE_VFP3);
-     set_feature(&features, ARM_FEATURE_GENERIC_TIMER);
+@@ -44,7 +44,7 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      * and then query that CPU for the relevant ID registers.
+      */
+     int err = 0, fdarray[3];
+-    uint32_t midr, id_pfr0, mvfr1;
++    uint32_t midr, id_pfr0;
+     uint64_t features = 0;
  
--    if (extract32(id_pfr0, 12, 4) == 1) {
--        set_feature(&features, ARM_FEATURE_THUMB2EE);
--    }
-     if (extract32(ahcf->isar.mvfr1, 20, 4) == 1) {
+     /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
+@@ -71,9 +71,32 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+     err |= read_sys_reg32(fdarray[2], &midr, ARM_CP15_REG32(0, 0, 0, 0));
+     err |= read_sys_reg32(fdarray[2], &id_pfr0, ARM_CP15_REG32(0, 0, 1, 0));
+-    err |= read_sys_reg32(fdarray[2], &mvfr1,
++
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar0,
++                          ARM_CP15_REG32(0, 0, 2, 0));
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar1,
++                          ARM_CP15_REG32(0, 0, 2, 1));
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar2,
++                          ARM_CP15_REG32(0, 0, 2, 2));
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar3,
++                          ARM_CP15_REG32(0, 0, 2, 3));
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar4,
++                          ARM_CP15_REG32(0, 0, 2, 4));
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar5,
++                          ARM_CP15_REG32(0, 0, 2, 5));
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar6,
++                          ARM_CP15_REG32(0, 0, 2, 7));
++
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr0,
++                          KVM_REG_ARM | KVM_REG_SIZE_U32 |
++                          KVM_REG_ARM_VFP | KVM_REG_ARM_VFP_MVFR0);
++    err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr1,
+                           KVM_REG_ARM | KVM_REG_SIZE_U32 |
+                           KVM_REG_ARM_VFP | KVM_REG_ARM_VFP_MVFR1);
++    /*
++     * FIXME: There is not yet a way to read MVFR2.
++     * Fortunately there is not yet anything in there that affects migration.
++     */
+ 
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+ 
+@@ -95,13 +118,13 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     if (extract32(id_pfr0, 12, 4) == 1) {
+         set_feature(&features, ARM_FEATURE_THUMB2EE);
+     }
+-    if (extract32(mvfr1, 20, 4) == 1) {
++    if (extract32(ahcf->isar.mvfr1, 20, 4) == 1) {
          set_feature(&features, ARM_FEATURE_VFP_FP16);
      }
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 239fe4e84d..07f904709a 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -321,9 +321,8 @@ static const VMStateDescription vmstate_m = {
- static bool thumb2ee_needed(void *opaque)
- {
-     ARMCPU *cpu = opaque;
--    CPUARMState *env = &cpu->env;
- 
--    return arm_feature(env, ARM_FEATURE_THUMB2EE);
-+    return cpu_isar_feature(t32ee, cpu);
- }
- 
- static const VMStateDescription vmstate_thumb2ee = {
+-    if (extract32(mvfr1, 12, 4) == 1) {
++    if (extract32(ahcf->isar.mvfr1, 12, 4) == 1) {
+         set_feature(&features, ARM_FEATURE_NEON);
+     }
+-    if (extract32(mvfr1, 28, 4) == 1) {
++    if (extract32(ahcf->isar.mvfr1, 28, 4) == 1) {
+         /* FMAC support implies VFPv4 */
+         set_feature(&features, ARM_FEATURE_VFP4);
+     }
 -- 
 2.17.2
 

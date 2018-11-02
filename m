@@ -1,97 +1,96 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1460291wro;
-        Thu, 1 Nov 2018 17:14:07 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cN2q80ypRSxSv/DOkx/lXad5CvmyyTpWPE1JRP1oyg7KywRoUf/f5El2eFtk4kk7Ki3Ed0
-X-Received: by 2002:aed:3722:: with SMTP id i31-v6mr8205215qtb.385.1541117646986;
-        Thu, 01 Nov 2018 17:14:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541117646; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1461851wro;
+        Thu, 1 Nov 2018 17:16:01 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5c5gEV2fajONmE23+lcf38l/Yg14scP4CIfasirxSs14cYLCOsmDufT/AxW64JKWlvD4tDB
+X-Received: by 2002:a37:14ca:: with SMTP id 71mr8263831qku.295.1541117761865;
+        Thu, 01 Nov 2018 17:16:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541117761; cv=none;
         d=google.com; s=arc-20160816;
-        b=kDTt8IQLN3IwG354tMcQMTcNnAN33yIdlQx7ZLAkLlJjQ+c0QS8nz1JiSIWIKnAXRE
-         djzpmGilaKEgJQ+lueHSH1rx3q01i3yhF5FUyOtiBcwLKSDXQlVjbmf8wJJPlX+kO4Av
-         bWly/holI7Z8w5FgArihsXHOpGKiZHS0pOuuw99cUyEfLboMD85pS6zlOx6osE1zYrUQ
-         8tXM615Tckmitmrjjli7JtQABJg3XH4eO4P02Bar7Dyo2sEv37bjktIjxuyg1RWTfbhC
-         Ftq3aINVdADBz7PaWKZxzQgMXBgRyAxeeFJvxqViJ22wey46hErNmPOFWbprqJ6iNlOi
-         fb3g==
+        b=h6FP/WnVCVA5fBzD+QBAlzKAF0BkRw7uiOOzjWCuJ2JG9HRcWQXfTupbowHQiT12eF
+         TQ4tGw4GJNgrDP42nEiUQF6P3vph//uO9QqYaLdJ+8sGWCoTZ/w0CkPgbKj0cpe1iiew
+         Y9P45hNLEN/0s8a9+nvWQZ1Jos/kKtecYnpqyJKVbcnbGhTze3gy7Jpe6/hGReedTWVe
+         li70T4bkuL3nz3jy7UHwvyJ5T6QCijrif2Gxv1NAsZp1V0EdjxjS8P/yuvdF6jbVZQjL
+         IIQH9NPwv3Se2xX1mGUijU4jlHjCk69cPn33PXTMfDWADq91e1Wc+kN5lXjUTNU6OT2a
+         Dqkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=Ve5Dy1cNhQ/uwACXXwTkneM+nVRvmxt+SYfZfVBxO60=;
-        b=ykXGqaPFKOz/t4iptSQ5xenYEXZ+4MV2euQhoofL8aTVC7se3YdpqTJ7+EUJYNX45P
-         iySIqtBk6jQvpdnTXckBalQUkq3nybHis+m7RvtVDykZUBDKHdyCM7c9FZeODyaSN2o2
-         DT+/KROATUE0sZejc6wr4thFEtCNlgLzLJNl15EPwORMSqPqgiyFgoLCXuAmoTY+OmCJ
-         g1TXUjNbsRrin7GZY1B1vYC6bQlODpmvLvUxIkA67TYKpj+IuiSbSVTkyOP0vV5HdcUG
-         fvDjakGAhOB1mBgkSYl9zF62nxmnCXXFwemhNAJIzTXJ5tM24dvDSuXW7mPssFcwFqJ8
-         HIsA==
+        bh=nTfLBj87cY6bTRYPpdKgILVVHqtMz6IBFBmmd7GrCiI=;
+        b=hiWR9n/FXV2UPnJUEsD4SLVw9o3+TAHyvDzkOqX9DQ2WGNyhcmz6HxpQz7T45eECAl
+         r+zpEjzJjHpgEWVYm03z8Uckohg4RRSji5VBOW1Cwdd/mt4Hs6Xg/y7+GHMGisOShP0l
+         gl2hq52djMV6tJJlTPW063uV5EaGtJfNTpbQC9APmOdXDBC/rl3C2DprIlh42yE7Vc0E
+         /DnysPgeN9/xiyqz7+MdFGhWGWyDasjykj1QbAYyZ/5Lls2EChtNXsdU6TXCLXKsV7jH
+         A0GiXQXrcPtGGHVqInmVuRwI7YsYSCcG2WRfUfy8VO9vjmSDZZX3bWPVd7UCIv7V693w
+         XpFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xz7hyWHu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Tz+7gV2B;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t12si967105qta.353.2018.11.01.17.14.06
+        by mx.google.com with ESMTPS id j22-v6si14659575qtp.239.2018.11.01.17.16.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Nov 2018 17:14:06 -0700 (PDT)
+        Thu, 01 Nov 2018 17:16:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xz7hyWHu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Tz+7gV2B;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47659 helo=lists.gnu.org)
+Received: from localhost ([::1]:47667 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gIN6E-0000tn-Cr
-	for alex.bennee@linaro.org; Thu, 01 Nov 2018 20:14:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56673)
+	id 1gIN85-0002qV-A2
+	for alex.bennee@linaro.org; Thu, 01 Nov 2018 20:16:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56668)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gIN5a-0000pV-GZ
+	id 1gIN5a-0000pT-GI
 	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 20:13:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gIN5W-0004zW-Bv
+	id 1gIN5X-00050Y-Do
 	for qemu-devel@nongnu.org; Thu, 01 Nov 2018 20:13:25 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34976)
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34021)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gIN5W-0004ym-3p; Thu, 01 Nov 2018 20:13:22 -0400
-Received: by mail-wm1-x342.google.com with SMTP id q12-v6so516106wmq.0;
-	Thu, 01 Nov 2018 17:13:22 -0700 (PDT)
+	id 1gIN5X-0004zj-6S; Thu, 01 Nov 2018 20:13:23 -0400
+Received: by mail-wr1-x442.google.com with SMTP id j26-v6so251962wre.1;
+	Thu, 01 Nov 2018 17:13:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Ve5Dy1cNhQ/uwACXXwTkneM+nVRvmxt+SYfZfVBxO60=;
-	b=Xz7hyWHuIWOs+LdK5OsnVKpIJI6GnF2krhxhnMWt2ggp2NYQDsdxQ2w+o1tuOwn4ag
-	BUgx0mvCFBEzT3t7xu1ZbVxSSuyu8IF9/6dC7jylBRcPht3Q41rVPkPp0zWV9k4EMSJd
-	ejIRgPCEtDDy/7uTGqhgS11CXKM/sVFpxbaeP4Itm1H0UoWhyXTW1PIk3eAwYrXInIDx
-	LkD+H/VKoD6YGJJB77Gwt4+yCo2VECfMWVZxdwcqODwy/Cv0cOubXtL4Y7P+eg9y+j6m
-	mLELSt1I+OjKHD4aBsFTonKMjkXRlzzbN9CNsFs+VnzOvbc2i6wxEMOpxyJIhQoKOaa2
-	QEmA==
+	bh=nTfLBj87cY6bTRYPpdKgILVVHqtMz6IBFBmmd7GrCiI=;
+	b=Tz+7gV2B+akaaYG522pOzsL7ykU7Q+5fGG11H4OUc8ZoSjg8/MC58ysXV7lBb+P7Cp
+	5xpXGGZ5DC8yKRnR2Nu0T8U0rE0Zny+A9KZYsr1oSIzamY0mkvOduyHgpPv5s75nn1RP
+	gZMyNAUQQx5NKspe1vboiJz+M54f4A09K41A9xxUID/DoCzlW3iYmR4iIjoVJii/z90W
+	WInubFV7X0jOuo8mqWNm/xHMgU0BfwElsHZDdv06RwLgpw/bYeW4olvp/dBAtpKy4XLB
+	hBfWGxi0PGA4YIdtJKn5ziLp9mEMQkGm5zoawPc4SEN9M8DviOaoXJul34qrcsxyYhkc
+	9E0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Ve5Dy1cNhQ/uwACXXwTkneM+nVRvmxt+SYfZfVBxO60=;
-	b=n/tAvnULcMG2iivzlDJHaaROWIY0tKgO/vyANUlgWUL6F99IgD5Iq7YLAPCvDzIbBo
-	h6uHSTx0k81jYpvE4Graq6iB9dT/tsHd0qFV9MrNHsZkTFuZtg7Vugk32J2TswTkirEE
-	8Mjw+NkTKhJ7pGxO4LNf25BhoGog13VzmUFOhu9ohru35PHmnYR6X48zNrLPC/4KsMXC
-	Sso7Q5EPk6D7DreXKje1/DtDskt56TssQOoFGHQ5DbRJ2k06tWAlwOOhmyzrz1+AvLNO
-	JSF/OqoWm/KuwJ5K0MlPBaWdiIpS9mxRJoWEX7yiMsVNyJR4d4cDCKWotwBGVxlaqubE
-	jZzQ==
-X-Gm-Message-State: AGRZ1gJyoicuQcP+PmPNA1GyW7ob09gkDZm3r30B1nkTeii3jl2a9Oay
-	1kjZpwPMIKw1rCFaBtogE3M=
-X-Received: by 2002:a1c:a141:: with SMTP id
-	k62-v6mr6795703wme.68.1541117601011; 
-	Thu, 01 Nov 2018 17:13:21 -0700 (PDT)
+	bh=nTfLBj87cY6bTRYPpdKgILVVHqtMz6IBFBmmd7GrCiI=;
+	b=NToh0pq+RptvYCh5MjU+vtwANEmUL3WMz3hQdGMTRYn1vHTp147dKyg/WZHAdNK8O6
+	2fPMX4Q6SH8j/3Ji7F/eWZqcpS/clJCSq/9PMwZ1RKcSVJGlmraBKk5T+SNWZuWD4hKd
+	NUNRqq0EKum7eYrXNcs0J3+TCMs9opuG2uIXylBhMdWTsCrTLg4Avc0GoF2KJwhc/q2T
+	tQDgBuzm64UEZazByCuxAdfpsB3AgJF4rXXveaLN/gm4s3rgAbQl0+zonwQlgxLRPvJD
+	hAMHKAbhpaD9JhdUkesdY1qTnzm/AyD9MbqixIymp1CcpFfjTjeSTS64ozkNPkEcurhg
+	WYTA==
+X-Gm-Message-State: AGRZ1gLIXKtSqfy2CUdP56pSbSUnDSCKqtNvoNAkk2Pe5em8TtwKzAv/
+	UQixKjJ0GrgEDO/D6SD8pa+KMKvt
+X-Received: by 2002:a5d:4dc2:: with SMTP id f2-v6mr8873099wru.45.1541117602233;
+	Thu, 01 Nov 2018 17:13:22 -0700 (PDT)
 Received: from x1.redhat.com ([195.166.127.210])
 	by smtp.gmail.com with ESMTPSA id
-	z6-v6sm10539894wrs.19.2018.11.01.17.13.19
+	z6-v6sm10539894wrs.19.2018.11.01.17.13.21
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 01 Nov 2018 17:13:20 -0700 (PDT)
+	Thu, 01 Nov 2018 17:13:21 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Guenter Roeck <linux@roeck-us.net>
-Date: Fri,  2 Nov 2018 01:12:57 +0100
-Message-Id: <20181102001303.32640-2-f4bug@amsat.org>
+Date: Fri,  2 Nov 2018 01:12:58 +0100
+Message-Id: <20181102001303.32640-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181102001303.32640-1-f4bug@amsat.org>
 References: <20181102001303.32640-1-f4bug@amsat.org>
@@ -100,9 +99,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-devel] [PATCH for 3.1 v2 1/7] MAINTAINERS: Add an entry for
- the Raspberry Pi machines
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-devel] [PATCH for 3.2 v2 2/7] hw/misc/bcm2835_property:
+ Handle the 'domain state' property
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -119,33 +118,30 @@ Cc: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yd9c7LhCuYwe
-
-So far the Raspi machines use the BCM2836 SoC which includes
-a BCM2835 for the peripherals.
+X-TUID: iUmolEwFFa5T
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- MAINTAINERS | 6 ++++++
+ hw/misc/bcm2835_property.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f2360efe3e..c41ea5ed3f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -683,6 +683,12 @@ F: hw/arm/nrf51_soc.c
- F: hw/arm/microbit.c
- F: include/hw/arm/nrf51_soc.h
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index 145427ae0f..5d332324bd 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -121,6 +121,12 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 8;
+             break;
  
-+Raspberry Pi
-+L: qemu-arm@nongnu.org
-+S: Odd Fixes
-+F: hw/*/bcm283*
-+F: include/hw/*/bcm283*
++        case 0x00030030: /* domain state */
++            qemu_log_mask(LOG_UNIMP,
++                          "bcm2835_property: %x get domain state NYI\n", tag);
++            resplen = 8;
++            break;
 +
- CRIS Machines
- -------------
- Axis Dev88
+         case 0x00038002: /* Set clock rate */
+         case 0x00038004: /* Set max clock rate */
+         case 0x00038007: /* Set min clock rate */
 -- 
 2.17.2
 

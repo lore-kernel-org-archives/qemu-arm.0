@@ -1,109 +1,97 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1580391wro;
-        Thu, 1 Nov 2018 19:52:50 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5eU7N8iH4wkRBsVGxhMGI0ejbP3/uMd40Imoda2VQP4bID6HeLq8rPbFFGpydr2ULYF7Ao+
-X-Received: by 2002:a37:3c9:: with SMTP id 192mr9181626qkd.113.1541127170763;
-        Thu, 01 Nov 2018 19:52:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541127170; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2323418wro;
+        Fri, 2 Nov 2018 09:37:05 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5eSNQDeOSpTn3MiDOZi0VRykGyR0MMOEtNj6LFD+E/lBtIQTH1RM9QyBtc7sTF13NxqIsYx
+X-Received: by 2002:ae9:e102:: with SMTP id g2mr10635412qkm.343.1541176625086;
+        Fri, 02 Nov 2018 09:37:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541176625; cv=none;
         d=google.com; s=arc-20160816;
-        b=xM+m2HERNIQtszm0s+RG1OABrSrM6OcPvdV5wn2PNdOwisKRXDEVtSSa+B8aTT6Bb3
-         uyuy81u6+NVIeYqqihNXYDtq+jVg9Zcy4BnVURGvkBEX5tVLPz1u6kc2/HWJyNNuMeGB
-         cwgzE01glYOFIIEgqhiGAo/kOMVGJvnp0QGt95C0W1388bjJUHuCyp3PyZ1yWrJSOZkv
-         F/JmOrMHT6r/+tBdusw/53levQidCXXg+t9zDz1u81ar05UBJ9typEpSmQm4f5W8K1jO
-         B1ZMIYTsTeZ2H3gin1RyGZQfcnVNDnelYj3Bo0bHk8OmhXCRNkZp3gD3HPXlClH+oeaj
-         fdGA==
+        b=c5yjHWk/WFJ0MlkPFQJtZCvGTf5W0iV6zcPpyUcigKBbKt+e0ltwqQFQG/IMtjy48J
+         3YehZ/zOoD5c4g8OEAByvxHC2YZBS6vDieS4ihtb+yDBGJ9SAsv6wvO1ryaDg1dchEbE
+         1a7G97QeB78xgUOWOyan+kHOPZ77Iq4vfmeNfRZ2tLSK2T48SR81Ide4L9EBD0nXscCx
+         J7t/s9V2ipragT0FVi774L/ursZx+Q9Oi880XK8X3O1SaibYZ4vbAwqklu3w85q6rRd+
+         wR2Yhg2cNd0qJPwdNXOOx8qjZesXpO57uhI7PSOHU4TXg99eykRuNV+kDQoT/tBSdKZ/
+         gBGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature;
-        bh=7gOXUROybBczvox7hUsnDKTIaGPP0vmsEav0vGSzmn4=;
-        b=qt3zHgCQu01rHO0DCDuYc1Ml5LGGlLY0RBisj01SB0tUHz9p5QPTrhsdOM7jfch2Rp
-         zDNhpJB5ZRECEUA+QL9dJq+pOJia4mQl8pvGjxca3apqOmno6rYgH/4Ob3keU/HKzX++
-         4fFAw8dSTf18jq1P5iw+x2D+uhAKfHLm+mBmybxds1sye8e9mdQ7RvY42g3q8ZAwjf7P
-         pRg0pUIN51DzYgRFoTSXzpi/LoSUwx7KvcHeTMHv+XpQqdJVD0lkE58gSj0I4Yq+70Qn
-         Z2j69HxmHhu3PEju8jnM/5ILqkcsaYoLi3Kk+caTJbCVeBrd8oIwOHfHLnpPlbc/VY74
-         lfaQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=7NS3JL6tIWvZgq8cl+Ju7nhTiqZlf/l4Nlp6ZRU7JZ4=;
+        b=rZr4RY+NmPvWhZ6++lSO5cQqBTRlZWbKONVLsY+VZHwnupc99CAJu0Z8Wq32waPP3s
+         CfCeYj8c3EI1K7Q6M5iWDndtGVhCUBQ1BVIKle8WVrVDDPzxatv2KH84A+Rpb8D9lVdb
+         jsdvQR+NPierv5wAPMpkLbWsgHiQVJh0yuktGzNz7RtbZrU3nsnuGgH5Hm2TckbhhnNb
+         V358VdQk6t4B38eFWGYwMjmGp9m69aG7i1O5ZOppwnOQR2OhAan+5wEo2blmSNB9v0Vw
+         NPVkr4mgwKH0qwFPTlyWWyJv9uleBSF9+RFpikQlcNeuzj+T2v8f4gRUw/lGYZ5OoXtX
+         DZCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NOvX7s5k;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=jL3kLfcA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m60-v6si12261743qtd.187.2018.11.01.19.52.50
+        by mx.google.com with ESMTPS id d7si9550qvj.110.2018.11.02.09.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 01 Nov 2018 19:52:50 -0700 (PDT)
+        Fri, 02 Nov 2018 09:37:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NOvX7s5k;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48832 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=jL3kLfcA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52577 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gIPZq-0003fw-BY
-	for alex.bennee@linaro.org; Thu, 01 Nov 2018 22:52:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36196)
+	id 1gIcRU-0002x3-KK
+	for alex.bennee@linaro.org; Fri, 02 Nov 2018 12:37:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33193)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1gIPZg-0003X7-H4
-	for qemu-arm@nongnu.org; Thu, 01 Nov 2018 22:52:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gIcRO-0002wm-1Z
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 12:36:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1gIPZc-0004RC-TS
-	for qemu-arm@nongnu.org; Thu, 01 Nov 2018 22:52:38 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:35549)
+	(envelope-from <peter.maydell@linaro.org>) id 1gIcRM-0001l2-Uj
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 12:36:57 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:33322)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
-	id 1gIPZY-0004Of-Vi; Thu, 01 Nov 2018 22:52:34 -0400
-Received: by mail-pf1-x441.google.com with SMTP id z2-v6so310803pfe.2;
-	Thu, 01 Nov 2018 19:52:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=7gOXUROybBczvox7hUsnDKTIaGPP0vmsEav0vGSzmn4=;
-	b=NOvX7s5k1Seex4QS+pBv6xjk/Ix9IpS4CKp6oAhciJD2Q/EBO6lyjowakh8CEoFj24
-	TxFJg6dNZ3wR2Is/PHuYv0CstHQBPuhLzn+yNKAoNF5ZNE1gplr8Ln17e4Ha6YNOPode
-	26MBBru2lU6j5P03CR2lerGZdF2MTw66kaO1ICgtkfgjj2KkvEca4BUjngwAXfYRKGHt
-	z7flUZlX8aJf/RDJ1/6EJZByd04VQAWukBcTm965aAdAhLLCwvWarEgH7O8vEBq6q3qr
-	uRFCrEi26iNCp2ACTAILWT5rTVubDpuuqFwO7VslCLHujtSTKh8nEtntM84pUZ5s5ArV
-	4iNg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gIcRM-0001iD-Hf
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 12:36:56 -0400
+Received: by mail-oi1-x241.google.com with SMTP id c25-v6so2097793oiy.0
+	for <qemu-arm@nongnu.org>; Fri, 02 Nov 2018 09:36:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=7NS3JL6tIWvZgq8cl+Ju7nhTiqZlf/l4Nlp6ZRU7JZ4=;
+	b=jL3kLfcAXg2nTh7grAknew72ymk+i7FhLfG4nxlpDYX83X3umh2XhAfGiCsDOab31r
+	HAK1gDlvhSHdioTbn0NFqBowEP2T1wZDCByrZxudG4h3gPFSo3whUyp3yZJPbGITgPzU
+	pcx2dilDbu5PVrOoSvjNUTRAWp8x9+9YraojQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=7gOXUROybBczvox7hUsnDKTIaGPP0vmsEav0vGSzmn4=;
-	b=olK2D31TFe+R5m2C3zm/W5y9sT7RWjj4bvwZWSxFtFPZW+KyupNbXQecvaYOu/B3YZ
-	FlNFYAGWKoypYhFi2Tc2ky1KJxWuFy2GYeA2WP/sYRUG4HIB02C84SGbtFpSqYAzJ34i
-	e+jBqhaoH7YjU1ZOzn/NgFWNZgRGkZNyIxa+4i+Bmj5FKH5OjebKFIF9mxFoI0Oprq/e
-	y/9ZNdHBIwUc8zbGaOy0vi7RY0LFhXf6tRDmJc2rNdccp8T+LoSPcPps/55g/T+HQeaS
-	ZAqgEnM+Ba8c0E96FFD3KorK1lIUd822lGwgaCOIvIVxRmeF9cps9Yp6YEhuf9L3iUZT
-	P92g==
-X-Gm-Message-State: AGRZ1gLCtZ3UsroKWH9XaUzjgbOhAnDzOQQmhEtrcuui7VKBlX8sPF6Q
-	uYwHZGk25PWsk5krHcnj7/1gNBP1
-X-Received: by 2002:a63:9742:: with SMTP id
-	d2-v6mr9493319pgo.278.1541127148835; 
-	Thu, 01 Nov 2018 19:52:28 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-	by smtp.gmail.com with ESMTPSA id
-	y71-v6sm46798769pfk.70.2018.11.01.19.52.26
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 01 Nov 2018 19:52:27 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20181102001303.32640-1-f4bug@amsat.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <b32bf2a0-08ac-6b16-6372-455f9a239f9f@roeck-us.net>
-Date: Thu, 1 Nov 2018 19:52:25 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=7NS3JL6tIWvZgq8cl+Ju7nhTiqZlf/l4Nlp6ZRU7JZ4=;
+	b=nQ9t10OuaJAsFXkhFo+eHVe+sgeuq59LwNaNMEMXr8qBQcVaNfmZkuHEaA1sBnRsth
+	ePJEBmr/oQ7J/XFnPgmLYQf9sVpOoRxBo25txoS+Uqy0HL8SHelV4jMdL0NrPAvHxDOu
+	/7GLjsaBj7Quou+bntEJ/hxKaz5Bte9nUfqKdpmI6vAiFE1Vryee+YXTBsdpsP/jlhq7
+	EPtnNXT7ENAVgrV7iVY6vg8tJrv3NkpxkvCSlmFVXk5H+bPNpREk8lp0IfZ7JnKLKxxi
+	8Pu1UcWX7SRBy8go4DqFWVpkR98CJwqd6ED6+eGcSXFoH53JVzyJh39/Gzy4ma4NjwHk
+	nD3w==
+X-Gm-Message-State: AGRZ1gIuC7Rl/ATArBj7QJTcaGMGUVdAD1uq4YEeQi5HhGiTJmtRCPZ6
+	S92zcWKSbicvHNx3KWZesAgrvV6XGxlP6naU1TSnfA==
+X-Received: by 2002:aca:f1d6:: with SMTP id
+	p205-v6mr7455299oih.332.1541176615657; 
+	Fri, 02 Nov 2018 09:36:55 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20181102001303.32640-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
+	Fri, 2 Nov 2018 09:36:35 -0700 (PDT)
+In-Reply-To: <20181102145433.4553-1-richard.henderson@linaro.org>
+References: <20181102145433.4553-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 2 Nov 2018 16:36:35 +0000
+Message-ID: <CAFEAcA_tcR_33Q+2ZFHdzo4_9khXggum=gRfZ8+L49KmP3hHiw@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: Re: [Qemu-arm] [PATCH for 3.2 v2 0/7] hw/arm/bcm2835: Add basic
- support for cprman (clock subsystem)
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [PATCH v2 0/5] target/arm: KVM vs ARMISARegisters
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,70 +103,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Christoffer Dall <christoffer.dall@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1Md+K2uHAONb
+X-TUID: gvCLMkIxHPCI
 
-On 11/1/18 5:12 PM, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> This series is a mix of a previous work I had for the raspi, and a patch from
-> Guenter: https://lists.gnu.org/archive/html/qemu-devel/2018-07/msg03153.html
-> 
-> The final patch keep Guenter ideas and comments, but is mostly a rewrite.
-> I dropped the A2W code from this work, it doesn't seems unuseful to me.
-> 
-> Guenter can you test this series?
-> 
+On 2 November 2018 at 14:54, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> My previous patch set for replacing feature bits with id registers
+> failed to consider that these id registers are beginning to control
+> migration, and thus we must fill them in for KVM as well.
+>
+> Thus, we want to initialize these values within CPU from the host.
+>
+> Finally, re-send the T32EE conversion patch, fixing the build
+> failure on an arm32 host in kvm32.c.
+>
+> Changes, v1->v2:
+>   * Remove assert that AArch32 sysreg <= UINT32_MAX.
+>   * Remove unused local variable.
+>   * Add commentary for AArch32 sysregs vs missing AArch32 support.
 
-arm/raspi2 works, but aarch64/raspi3 stalls.
+As noted on IRC, on my admittedly pretty ancient 4.8.0 kernel some
+of these ID register reads via KVM_GET_ONE_REG fail ENOENT.
+strace says:
 
-[   45.683302] Run /sbin/init as init process
-[   50.745961] random: dd: uninitialized urandom read (512 bytes read)
-[   77.478266] Writes:  Total: 2074828  Max/Min: 0/0   Fail: 0
+openat(AT_FDCWD, "/dev/kvm", O_RDWR|O_CLOEXEC) = 18
+ioctl(18, KVM_CREATE_VM or LOGGER_GET_LOG_BUF_SIZE, 0) = 19
+ioctl(19, KVM_CREATE_VCPU, 0)           = 20
+ioctl(19, KVM_ARM_PREFERRED_TARGET, 0xffffcfeb4e88) = 0
+ioctl(20, KVM_ARM_VCPU_INIT, 0xffffcfeb4e88) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28) = 0
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
+ioctl(20, KVM_ARM_SET_DEVICE_ADDR or KVM_GET_ONE_REG, 0xffffcfeb4e28)
+= -1 ENOENT (No such file or directory)
 
-... then nothing else until I abort the session.
 
-This is with the series applied on top of master.
+I added a bit of extra tracing, since strace doesn't
+print the ID field for the ioctl:
 
-Guenter
+peter.maydell@mustang-maydell:~/qemu$
+~/test-images/virtv8-for-nesting/runme-kvm
+./build/for-kvm/aarch64-softmmu/qemu-system-aarch64 -enable-kvm -cpu
+max -machine gic-version=max
+read_sys_reg64: reading ID 0x603000000013c030...-1
+read_sys_reg64: reading ID 0x603000000013c031...-1
+read_sys_reg64: reading ID 0x603000000013c020...-1
+read_sys_reg64: reading ID 0x603000000013c021...-1
+read_sys_reg32: reading ID 0x603000000013c010...0
+read_sys_reg32: reading ID 0x603000000013c011...0
+read_sys_reg32: reading ID 0x603000000013c012...0
+read_sys_reg32: reading ID 0x603000000013c013...0
+read_sys_reg32: reading ID 0x603000000013c014...0
+read_sys_reg32: reading ID 0x603000000013c015...0
+read_sys_reg32: reading ID 0x603000000013c017...-1
+read_sys_reg32: reading ID 0x603000000013c018...-1
+read_sys_reg32: reading ID 0x603000000013c019...-1
+read_sys_reg32: reading ID 0x603000000013c01a...-1
+qemu-system-aarch64: Failed to retrieve host CPU features
 
-> I kept Guenter S-o-b and (C), is that OK? (Guenter?, Peter?)
-> 
-> - patches 1, 7: obvious updates in MAINTAINERS
-> - patches 3, 4: simple cleanups
-> - patches 2, 5: add UNIMP code
-> - patch 6: add the cprman (KISS init values from Guenter)
-> 
-> Peter: can you take patch #1 for 3.1?
-> 
-> Regards,
-> 
-> Phil.
-> 
-> Philippe Mathieu-Daudé (7):
->    MAINTAINERS: Add an entry for the Raspberry Pi machines
->    hw/misc/bcm2835_property: Handle the 'domain state' property
->    hw/arm/bcm2835: Use 0x prefix for hex numbers
->    hw/arm/bcm2835: Rename some definitions
->    hw/arm/bcm2835: Add various unimplemented peripherals
->    hw/arm/bcm2835: Add basic support for cprman (clock subsystem)
->    MAINTAINERS: Volunteer to review Raspi patches
-> 
->   MAINTAINERS                          |   7 +
->   hw/arm/bcm2835_peripherals.c         |  42 +++-
->   hw/char/bcm2835_aux.c                |   2 +-
->   hw/intc/bcm2836_control.c            |   4 +-
->   hw/misc/Makefile.objs                |   1 +
->   hw/misc/bcm2835_cprman.c             | 277 +++++++++++++++++++++++++++
->   hw/misc/bcm2835_property.c           |   8 +-
->   hw/misc/trace-events                 |   8 +
->   include/hw/arm/bcm2835_peripherals.h |  11 ++
->   include/hw/arm/raspi_platform.h      |   6 +-
->   include/hw/misc/bcm2835_cprman.h     |  28 +++
->   11 files changed, 387 insertions(+), 7 deletions(-)
->   create mode 100644 hw/misc/bcm2835_cprman.c
->   create mode 100644 include/hw/misc/bcm2835_cprman.h
-> 
+It looks like the kernel can handle reads of ID_ISAR0_EL1
+through ID_ISAR5_EL1, but not ID_ISAR6_EL1, any of the
+MVFR*_EL1 or ID_AA64_ISAR* or ID_AA64PFR*.
 
+This is probably because the kernel is way too old to be
+interestingly supportable for KVM, but we did previously
+manage to boot on this setup.
+
+We should probably at least figure out which version of
+the kernel fixed this bug and made the ID registers available
+to userspace... if it's sufficiently ancient we could
+likely say "not supported", but if it's more recent we
+need a workaround somehow. I have cc'd a couple of kernel
+folks who might be able to help with the "which version"
+question.
+
+thanks
+-- PMM

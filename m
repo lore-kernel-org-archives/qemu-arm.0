@@ -1,79 +1,77 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2261088wro;
-        Fri, 2 Nov 2018 08:39:58 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5cZxu0DKmcsMm6W0yjEQ6KgGZbllDoUSXC21xWQ8fKB0yFFPTXdYuqSwBsl2cBDqes3Kctq
-X-Received: by 2002:a0c:88e6:: with SMTP id 35mr11381373qvo.61.1541173198132;
-        Fri, 02 Nov 2018 08:39:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541173198; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2279707wro;
+        Fri, 2 Nov 2018 08:58:11 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5c4FUkBPo7rmn9VlGoFc1thzQb0IGVrOI+4N8oKgxxXLyr+9m+D6ypMlOMt8bT+fFFH/9yB
+X-Received: by 2002:ac8:1096:: with SMTP id a22-v6mr11215691qtj.359.1541174291134;
+        Fri, 02 Nov 2018 08:58:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541174291; cv=none;
         d=google.com; s=arc-20160816;
-        b=fpB/pUiGskmqb0zgYGdY51GhNFwxQENpsN72eCdSF4Dp9byTlylABQIlhSvi5dOy8/
-         lsEpxhBQA03Yqr1ppSwQHMgaRBO7kiu+ymi/B7w51pZ1XwMWbDnpldmJT96kyIALmpsP
-         PYbrzkILyEF76iGa7CoUMtX1aiI38ewWAWd3Ig5vRiCZ19VtJIAQqtZF6Pst6yq1UUa9
-         WVDv2I8p9jUorRITEV9a+AVxhh8rrnt9xmzU5DB73DU9t+Bxo3BbB4f7QmSZkOGbp/tR
-         eC50+cS3f2XHZykYeitTBCjnD+NkZ/99wG267hif+u4E0wSmuCIX8qfPRBfcMEhBmh7W
-         WKjw==
+        b=REh1eu4gPUjY3ZMIUiO0aWkwt96nXWjYpQtDqclSjT1fxPXn6eA+Wn7MNGucCDSuUV
+         Qi+Ek+i17QESeilzOQneKhRfU/y1NFUmMuxUc73KWBPAffzZsb/vgFXYnb21Va3m9Luz
+         6vfH0CnzG12xuGy+ymZphLpkhk+0IB/tN3JUj071oBB01VuAv1bu+BQsLbmpsITnKZxC
+         t70HdI5hinu3Z7tpIPQvlGcFP73hI3frppB24gndSEivz/aI62yioVjD1WoVwdqCdp8m
+         qrwB1WdaiM0iVYuUvkOy0AkUtr+3y4LldWm1OX8jhm3Pta2ZEPaPKoahNd/2hhCYRJJT
+         51Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=Kyj8+kNf9U2VqBXgDNflLcsWIwrTnrZG/tTXw6gsi0g=;
-        b=EyzOqeUZDjBjBFONOK1Tt/dsJhIKWGhu1RfnO4IR0RJMnnuCeN6CbeILyFdygP0nmt
-         5f5yQ5BwjKfibX1pU634pKCeUMJ9d4s+J7kA+Gtthpr4nn3AmZ/Abb9mkqetwVPhi7e2
-         2PAdNkmNdm2V2mMFsTN7iFzcw4OKs6auxE8n8Ws6OLuwhBdRcN9IfxvaxyBQB3E/K73+
-         XWBYNto3X02MSMmGUxVV04CO0uaMiGGJFiO1lOL8OUrDOjtGT2eJNBa4Quw8F27oivai
-         doc8teVjfBaBIqLJeOzwBlf/+N9XO1iydvGC/3QlLDDpJwJCI/jmVwreYOsn7KH6kdc9
-         aOqg==
+        bh=S+A0D/hvSrrjUsALnBb61jhRQ4wwWO4S3wNQ9E0F0wc=;
+        b=fSIZA866dBivTi/7/cezMzD66B+TWwtJTZPHDi2JTWFu6wTJjJMWJi+YRycaLhGKkQ
+         V21Z/WzNvhkGgN/LENixv3+6paHass3gRqw+fSd3VD+FsI5Ql2eTSjTL3/6iuixhFWfI
+         Qa0FV+ORsdzq0om4lzawuXm3EOUKrQaAXe9CVbprtVu4+pm/PReE0oePiQ1EMqFGgPqX
+         V08fJT+lq01gCtevzLOqIkLFRti6V1FX8JxP7f1D06N7H5f0Rc5yLE+WyxoVn4FsTxui
+         JBXDktIAOCYIwLb0qxIFBAx8kUcVSc4m+qwbj79NOKVgZlbqM8bztaMVJ2usRgH9jrGQ
+         Zjcw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n3si833208qte.138.2018.11.02.08.39.57
+        by mx.google.com with ESMTPS id t4si8206564qve.191.2018.11.02.08.58.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Nov 2018 08:39:58 -0700 (PDT)
+        Fri, 02 Nov 2018 08:58:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52228 helo=lists.gnu.org)
+Received: from localhost ([::1]:52279 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gIbYD-0005B0-Iz
-	for alex.bennee@linaro.org; Fri, 02 Nov 2018 11:39:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41830)
+	id 1gIbpq-00063x-6s
+	for alex.bennee@linaro.org; Fri, 02 Nov 2018 11:58:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mail@steffen-goertz.de>) id 1gIbXz-00058W-UJ
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 11:39:47 -0400
+	(envelope-from <mail@steffen-goertz.de>) id 1gIbph-0005xa-6C
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 11:58:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mail@steffen-goertz.de>) id 1gIbXq-00019y-UA
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 11:39:38 -0400
-Received: from steffen-goertz.de ([88.198.119.201]:33078)
+	(envelope-from <mail@steffen-goertz.de>) id 1gIbpe-0002vH-0t
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 11:58:01 -0400
+Received: from steffen-goertz.de ([88.198.119.201]:33100)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mail@steffen-goertz.de>)
-	id 1gIbXf-00010B-8R; Fri, 02 Nov 2018 11:39:24 -0400
+	id 1gIbpd-0002q0-Oy; Fri, 02 Nov 2018 11:57:57 -0400
 Received: from [172.27.223.37] (unknown [192.76.177.125])
-	by steffen-goertz.de (Postfix) with ESMTPSA id 54C574FF03;
-	Fri,  2 Nov 2018 16:36:31 +0100 (CET)
-To: Julia Suvorova <jusual@mail.ru>, =?UTF-8?Q?Steffen_G=c3=b6rtz?=
-	<contrib@steffen-goertz.de>, qemu-devel@nongnu.org
+	by steffen-goertz.de (Postfix) with ESMTPSA id C55004FF03;
+	Fri,  2 Nov 2018 16:55:16 +0100 (CET)
+To: =?UTF-8?Q?Steffen_G=c3=b6rtz?= <contrib@steffen-goertz.de>,
+	qemu-devel@nongnu.org
 References: <20181031002526.14262-1-contrib@steffen-goertz.de>
-	<20181031002526.14262-3-contrib@steffen-goertz.de>
-	<93e1b8e1-c8f2-6a61-122a-8354b933782c@mail.ru>
+	<20181031002526.14262-13-contrib@steffen-goertz.de>
 From: =?UTF-8?Q?Steffen_G=c3=b6rtz?= <mail@steffen-goertz.de>
 Openpgp: preference=signencrypt
-Message-ID: <a9a9af81-dbbd-0145-a245-e3c2f50e964c@steffen-goertz.de>
-Date: Fri, 2 Nov 2018 11:39:09 -0400
+Message-ID: <bdcf79c4-d5af-0e03-0963-78603b268467@steffen-goertz.de>
+Date: Fri, 2 Nov 2018 11:57:54 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.2.1
 MIME-Version: 1.0
-In-Reply-To: <93e1b8e1-c8f2-6a61-122a-8354b933782c@mail.ru>
+In-Reply-To: <20181031002526.14262-13-contrib@steffen-goertz.de>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 88.198.119.201
-Subject: Re: [Qemu-arm] [PATCH v3 02/13] arm: Add header to host common
- definition for nRF51 SOC peripherals
+Subject: Re: [Qemu-arm] [PATCH v3 12/13] arm: Instantiate NRF51 Timers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,24 +83,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@gmail.com>, Jim Mussared <jim@groklearning.com>,
-	"open list:NRF51" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
-	Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Jim Mussared <jim@groklearning.com>, Stefan Hajnoczi <stefanha@gmail.com>,
+	"open list:NRF51" <qemu-arm@nongnu.org>,
+	Joel Stanley <joel@jms.id.au>, Julia Suvorova <jusual@mail.ru>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HeZ0uLDErmuE
+X-TUID: JzIAfIlD34do
 
-Hi Julia,
+Hi Stefan,
+> 
+> Indentation is off here.  One way of formatting it:
+> 
+>                 address_space_write(&s->as, i * NRF51_PAGE_SIZE,
+>                                     MEMTXATTRS_UNSPECIFIED, s->empty_page,
+> 				    NRF51_PAGE_SIZE);
 
-> Why do we need an extra file for this? nrf51_soc.h seemed like a good fit.
+Good catch.
 
-nrf51_soc.h is not included in the peripheral devices. It would be possible to put the definitions into nrf51_soc.h but i just did not want to mix up the dependency directions. 
+>> +static void nrf51_nvm_reset(DeviceState *dev)
+>> +{
+>> +    NRF51NVMState *s = NRF51_NVM(dev);
+>> +
+>> +    memset(s->uicr_content, '\0', sizeof(s->uicr_content));
+>> +}
+> 
+> We will zero UICR.  Does UICR come zero-initialized on a real micro:bit?
+> 
+> I remember there was an issue with .hex files that set UICR values.
+> Will nrf51_nvm_reset() overwrite values from .hex files when the generic
+> loader devices is used (-device loader,file=test.hex)?
+> 
+UICR comes 0xFF initialized ([1] 8.1) and yes we had a conflict with the js-runtime.
+I now moved the memset to init just before mapping the region:
 
-> What's the purpose of renaming?
+memset(s->uicr_content, 0xFF, sizeof(s->uicr_content));
+memory_region_init_io(&s->uicr, NULL, &uicr_ops, s, "nrf51_soc.uicr",
+                      sizeof(s->uicr_content));
+ysbus_init_mmio(sbd, &s->uicr);
 
-To avoid name conflicts down the road.
+That should do the trick.
+A reset without loading of a new firmware blob will not change the (flash) user memory any longer, which should match the real device.
 
-Cheers,
+Best,
 Steffen
 
 
+[1] http://infocenter.nordicsemi.com/pdf/nRF51_RM_v3.0.pdf

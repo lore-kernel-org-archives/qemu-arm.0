@@ -1,97 +1,79 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2200567wro;
-        Fri, 2 Nov 2018 07:46:58 -0700 (PDT)
-X-Google-Smtp-Source: AJdET5fSF45pup8y1anAFp2Kesa8ZkNunIvw1zCZIpORfPNPLMNG8S6MB+xiZHejOXolIwWrg90z
-X-Received: by 2002:ac8:1207:: with SMTP id x7-v6mr11094366qti.317.1541170017909;
-        Fri, 02 Nov 2018 07:46:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1541170017; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2261088wro;
+        Fri, 2 Nov 2018 08:39:58 -0700 (PDT)
+X-Google-Smtp-Source: AJdET5cZxu0DKmcsMm6W0yjEQ6KgGZbllDoUSXC21xWQ8fKB0yFFPTXdYuqSwBsl2cBDqes3Kctq
+X-Received: by 2002:a0c:88e6:: with SMTP id 35mr11381373qvo.61.1541173198132;
+        Fri, 02 Nov 2018 08:39:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1541173198; cv=none;
         d=google.com; s=arc-20160816;
-        b=kxDMdcq67rfL8LvAZeOWNQUQhirp1kz7KM4tNGrkjq4OyVIMZZBoQUirm42IsL8IMh
-         O9tHO+lg8uG7NZl5qn/ovJ0qp/qNrW40ECnBsCTPMs85p7X3U3uOCRKDTo+ZCUBU7amr
-         cKgnfHjF/Yidm6ET8I3vDl81CWkMRj44kTjBi6yFRtAfc7m8140CvaAT4T4ajCgC/BBJ
-         A1hy9KfmYed1+h+zhm9H1mvFj0RVaK4cUl62N9NPphc9WZpDwubiwhpY0wkMrMg6Qs5j
-         Az6btAKA0zG6cZR+ElNGSpxhj1n/P+vg2TO31qPVxmDiDxJCyFV1x3iDCMaw1VVF2AcS
-         NeqQ==
+        b=fpB/pUiGskmqb0zgYGdY51GhNFwxQENpsN72eCdSF4Dp9byTlylABQIlhSvi5dOy8/
+         lsEpxhBQA03Yqr1ppSwQHMgaRBO7kiu+ymi/B7w51pZ1XwMWbDnpldmJT96kyIALmpsP
+         PYbrzkILyEF76iGa7CoUMtX1aiI38ewWAWd3Ig5vRiCZ19VtJIAQqtZF6Pst6yq1UUa9
+         WVDv2I8p9jUorRITEV9a+AVxhh8rrnt9xmzU5DB73DU9t+Bxo3BbB4f7QmSZkOGbp/tR
+         eC50+cS3f2XHZykYeitTBCjnD+NkZ/99wG267hif+u4E0wSmuCIX8qfPRBfcMEhBmh7W
+         WKjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=e9PBeLt4S7lHWom4cJqedhAMkMxe+GG3PFCOn/WTEm8=;
-        b=upTirjuCoKkegz5lsSk+//ghYtQ7J+0aF7LastiMQD6TsE5DlrkFPrmJbo5FN28ZSI
-         wJirCRrfP9W4Du/taMmPpp9x7STk9QSkTwQuYbvSjsnnp6k2jMh4enOAsxMtfsOidVxN
-         /C4x0gnwl9HPy6Iqen3EMEOy+sD+1TZ3qJr92y31L+la5NIkMIZ0ABqO3oWyHWiqhrOd
-         p1XliYZQVmFnALOWjCSh+o1swQevcjiJA7kZ9X7t/29bAddoLZFC4GvA7riw0cVmj5Jj
-         hkddQ1WnJqcIAGefpx+/E18GLM5i6xKV6ZWj77AXLk0Jlvm5HjIrZLVbrsjOWEyxbVIF
-         RW9g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=Kyj8+kNf9U2VqBXgDNflLcsWIwrTnrZG/tTXw6gsi0g=;
+        b=EyzOqeUZDjBjBFONOK1Tt/dsJhIKWGhu1RfnO4IR0RJMnnuCeN6CbeILyFdygP0nmt
+         5f5yQ5BwjKfibX1pU634pKCeUMJ9d4s+J7kA+Gtthpr4nn3AmZ/Abb9mkqetwVPhi7e2
+         2PAdNkmNdm2V2mMFsTN7iFzcw4OKs6auxE8n8Ws6OLuwhBdRcN9IfxvaxyBQB3E/K73+
+         XWBYNto3X02MSMmGUxVV04CO0uaMiGGJFiO1lOL8OUrDOjtGT2eJNBa4Quw8F27oivai
+         doc8teVjfBaBIqLJeOzwBlf/+N9XO1iydvGC/3QlLDDpJwJCI/jmVwreYOsn7KH6kdc9
+         aOqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LG1sx5TK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id i8si869292qvp.40.2018.11.02.07.46.57
+        by mx.google.com with ESMTPS id n3si833208qte.138.2018.11.02.08.39.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 02 Nov 2018 07:46:57 -0700 (PDT)
+        Fri, 02 Nov 2018 08:39:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=LG1sx5TK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51992 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52228 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gIaiv-0004Vw-EE
-	for alex.bennee@linaro.org; Fri, 02 Nov 2018 10:46:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54378)
+	id 1gIbYD-0005B0-Iz
+	for alex.bennee@linaro.org; Fri, 02 Nov 2018 11:39:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41830)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gIaik-0004Vn-Jo
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:46:47 -0400
+	(envelope-from <mail@steffen-goertz.de>) id 1gIbXz-00058W-UJ
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 11:39:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gIaij-0008F6-P4
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:46:46 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44444)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gIaif-0008AH-VX
-	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 10:46:43 -0400
-Received: by mail-oi1-x243.google.com with SMTP id k19-v6so1752878oic.11
-	for <qemu-arm@nongnu.org>; Fri, 02 Nov 2018 07:46:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=e9PBeLt4S7lHWom4cJqedhAMkMxe+GG3PFCOn/WTEm8=;
-	b=LG1sx5TK9WpOQlBmrlDwO/I/gGUj6amKLAeagE5DeXgZKmqYLGNauQvQ/ZY+brvjhP
-	0k0jkMNiL9Fu5RfX4GyzHyiqNV3OiSD/vw6Dilid3Cx4tE/4xaQdoWQL574Ggmp3TIi8
-	IGXrF5aA05W7ybDuw2yU5cI+zKRsPRdXlaiUw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=e9PBeLt4S7lHWom4cJqedhAMkMxe+GG3PFCOn/WTEm8=;
-	b=ZDz6LSV+uXQ+qrlFeVzfOuJdVpin1Z21qHPM3dzomaN4U4B4h7Uc3Vy0jYfsz8g7mX
-	Yd8P65wfBmSKNsXW7AtrO/ChrPt/SXfj3Mwos4nEMh251d5e9H5BMsN58OX/j5ipKlxh
-	Tfd/JFXe2nNmSmzRRv+B1p8DLFTKgp2mWg+9dWluyS5foWWRjC9IpdigikOderhgXfDU
-	ws2MttY7SELmdkl5aAgg7FCyA7EL4cG0vhTVbvSM89070lfGVYpM3JKCQisKfPP+kmO3
-	zPMtYZurBuvIvwdwcim5ZgJY41YXGi8GfJyrD9yjJ1b/p9fpxBsS1ddPyVrB6CDHJljH
-	UL+A==
-X-Gm-Message-State: AGRZ1gK3JHVRywLMUX2StVi8iHmcH7V2RBuIYi78w11PjaHhYXOHJNFl
-	QD4+oa518HKpYblsJA3A+Nks8eDBeyRd48AXoBd5SQ==
-X-Received: by 2002:aca:c509:: with SMTP id v9-v6mr6514177oif.48.1541169989658;
-	Fri, 02 Nov 2018 07:46:29 -0700 (PDT)
+	(envelope-from <mail@steffen-goertz.de>) id 1gIbXq-00019y-UA
+	for qemu-arm@nongnu.org; Fri, 02 Nov 2018 11:39:38 -0400
+Received: from steffen-goertz.de ([88.198.119.201]:33078)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mail@steffen-goertz.de>)
+	id 1gIbXf-00010B-8R; Fri, 02 Nov 2018 11:39:24 -0400
+Received: from [172.27.223.37] (unknown [192.76.177.125])
+	by steffen-goertz.de (Postfix) with ESMTPSA id 54C574FF03;
+	Fri,  2 Nov 2018 16:36:31 +0100 (CET)
+To: Julia Suvorova <jusual@mail.ru>, =?UTF-8?Q?Steffen_G=c3=b6rtz?=
+	<contrib@steffen-goertz.de>, qemu-devel@nongnu.org
+References: <20181031002526.14262-1-contrib@steffen-goertz.de>
+	<20181031002526.14262-3-contrib@steffen-goertz.de>
+	<93e1b8e1-c8f2-6a61-122a-8354b933782c@mail.ru>
+From: =?UTF-8?Q?Steffen_G=c3=b6rtz?= <mail@steffen-goertz.de>
+Openpgp: preference=signencrypt
+Message-ID: <a9a9af81-dbbd-0145-a245-e3c2f50e964c@steffen-goertz.de>
+Date: Fri, 2 Nov 2018 11:39:09 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
-	Fri, 2 Nov 2018 07:46:09 -0700 (PDT)
-In-Reply-To: <20181102131913.1535-1-edgar.iglesias@xilinx.com>
-References: <20181102131913.1535-1-edgar.iglesias@xilinx.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 2 Nov 2018 14:46:09 +0000
-Message-ID: <CAFEAcA_S0VSaPz=T4bvP=gVNh4Mw_jQ92C1n4zeovkD_KMMCJw@mail.gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-Subject: Re: [Qemu-arm] [PATCH v5 0/2] arm: Add first models of Xilinx
- Versal SoC
+In-Reply-To: <93e1b8e1-c8f2-6a61-122a-8354b933782c@mail.ru>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 88.198.119.201
+Subject: Re: [Qemu-arm] [PATCH v3 02/13] arm: Add header to host common
+ definition for nRF51 SOC peripherals
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,39 +85,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Stefano Stabellini <sstabellini@kernel.org>,
-	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
-	Francisco Iglesias <frasse.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Jim Mussared <jim@groklearning.com>,
+	"open list:NRF51" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+	Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ssgzD4lM8CkZ
+X-TUID: HeZ0uLDErmuE
 
-On 2 November 2018 at 13:19, Edgar E. Iglesias
-<edgar.iglesias@xilinx.com> wrote:
-> This patch series adds initial support for Xilinx's Versal SoC.
-> Xilinx is introducing Versal, an adaptive compute acceleration platform
-> (ACAP), built on 7nm FinFET process technology. Versal ACAPs combine Scalar
-> Processing Engines, Adaptable Hardware Engines, and Intelligent Engines with
-> leading-edge memory and interfacing technologies to deliver powerful
-> heterogeneous acceleration for any application. The Versal AI Core series has
-> five devices, offering 128 to 400 AI Engines. The series includes dual-core Arm
-> Cortex-A72 application processors, dual-core Arm Cortex-R5 real-time
-> processors, 256KB of on-chip memory with ECC, more than 1,900 DSP engines
-> optimized for high-precision floating point with low latency.
->
-> More info can be found here:
-> https://www.xilinx.com/news/press/2018/xilinx-unveils-versal-the-first-in-a-new-category-of-platforms-delivering-rapid-innovation-with-software-programmability-and-scalable-ai-inference.html
->
->
+Hi Julia,
+
+> Why do we need an extra file for this? nrf51_soc.h seemed like a good fit.
+
+nrf51_soc.h is not included in the peripheral devices. It would be possible to put the definitions into nrf51_soc.h but i just did not want to mix up the dependency directions. 
+
+> What's the purpose of renaming?
+
+To avoid name conflicts down the road.
+
+Cheers,
+Steffen
 
 
-
-Applied to target-arm.next, thanks.
-
--- PMM

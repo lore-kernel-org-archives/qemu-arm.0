@@ -1,162 +1,483 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2033828wro;
-        Sun, 4 Nov 2018 17:48:31 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fOidwrm/FnxKOIQMqon0XPMIGNJmxeF1ykXldUDUGv6cmyYlZxBMwlqooAct0bK3nl/gKd
-X-Received: by 2002:a37:8806:: with SMTP id k6-v6mr18797786qkd.119.1541382511218;
-        Sun, 04 Nov 2018 17:48:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541382511; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2034650wro;
+        Sun, 4 Nov 2018 17:49:42 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fzn7w8Km2v5KMFCUUNlTguDiRK2O644gAd8Dv3ARcpi3uqFMQ5cCG77khcweVgAq7oeBSQ
+X-Received: by 2002:a0c:b919:: with SMTP id u25mr359674qvf.104.1541382582228;
+        Sun, 04 Nov 2018 17:49:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541382582; cv=none;
         d=google.com; s=arc-20160816;
-        b=HUUP1ny77LSNrDqdQMOyaj8YrkYPTS/xn/NFkrlH+EJcAs1K9nVm/uUG3Ce365tqsy
-         Fd1LOyuerOgdChTHpOdLp6IOngE/UzlHeLcPoI3QW+KFuFYbEEFgQ6ucciHMIvmLR09E
-         GS4pUf4gY2/XVO8Hydo/V52eeFk6k4PBs7Jv4qHFxcfBfT/cM9cASDMFAkDE+BpkGfXj
-         Own/QmLAjpb7S5udDRV7dNPLhyzbXluzDhvbNoUxa/Up/HtC1b3WnJRpQw7I++peyOyK
-         3L1GgegVAOMSVrbBJgTJRa1WSgtI9PfWxxW8C7/eILkFLmpsKUeZH0BKNLwApki8fEbP
-         z5bQ==
+        b=oCyGjDo3IRvKCeov2agRMRtlYfPRewZzK7QkSMn9pwI21kdKdWLU/NY+vcuqRd42bz
+         2neHG/zmHnS8UbKaODGr0KRjNlD7RnZxq2oY3R/b48kV7pMq5pCWFZWwRj6i+Wpq3OLo
+         vSw1jLhkBb2SHRXJc7x1kQxt8MuXCWV7thySXnHJZLQzV4OJdovbuB8iUxmjhnjoGxCV
+         2H+IxK5ih8oiDJPX1qz5kUHifmoZNjHfTOHCcLukwhw+9fsq7s+o6RgYKQpCGoU2PhPC
+         ErCirpzmaVq0SeKeZr5jf2hHV2BceOFQ6Y+NrZhPWNBhXT0QwIaHkrB5oexes+otoDQv
+         F+dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=yngy3YctG1UhwMIwvrBWUvxF1mq0ud8J+F3MR9fC1lE=;
-        b=UonPZh1mrfAhSltTg81PyFAfg9xhQQi6QnHp2d+a8J0QGVPuUASNwt5UxWJJYUH8Ls
-         qONeBAQ/1F4X+6KYhiFpy+vWwhRZsyai2F2aFHPISBpMr58onSCdjcrxHNF5CMrQ4glV
-         SN3L6lkmfHUPck0sGdspxofJ0GC/CJrIZJRqqVI7YYAgzxvFO46c2AMC61/+lNppuagR
-         OMKRAf272+M8HRukZMB+8DF5BhGLqIFjDvSTo+XPFRawUHbnFDe9lQK81cRTnE0mHJl8
-         Ra7AveKAZ6MVNVaDOe8BGw3l5ziZhd06KJcrVArRAVPCZGzQEBv9vU48qxDlaAt71oCR
-         O5QA==
+        bh=vdlIAy3oHB45RrJ6DUgT1+MJixd6581uTJZ+CZ/5CkE=;
+        b=J45pWaFow9TbiRm5DO6S9eBJZisX6FFq5wxPxxrh4iU8GfQ9M6qGRmhcF3tc1Dydh1
+         fN2EygpOk5R5vprKObv4JVApzCC6bTtnrB7O/Rf88TvAslWDERpOY4xiHNi4y7yQiNvp
+         MK3jUQOefkI7DzOd194O5MSWPnye+qIgJMqbTGosXmvLa0GCHTaCP0imT8iKcmk42B9w
+         Vj71EzT6QWY63bdfChGTZ01TXRPcnUr31FMqluY+7YGZ8J5WvZwCJk5pnw/Q7Ll+m8XO
+         TVoPIAbPR7wcDjc5LUY0oqIeNFo/q4s8YBj9RFvmhLD2bb0wexzmXMtcATwDpyZA/rC7
+         PfWw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j16si2038592qvp.114.2018.11.04.17.48.31
+        by mx.google.com with ESMTPS id i23si4772108qtq.113.2018.11.04.17.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 04 Nov 2018 17:48:31 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 04 Nov 2018 17:49:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:60877 helo=lists.gnu.org)
+Received: from localhost ([::1]:60889 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJU0E-0004Re-MU
-	for alex.bennee@linaro.org; Sun, 04 Nov 2018 20:48:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47095)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gJU1N-0006bE-IA
+	for alex.bennee@linaro.org; Sun, 04 Nov 2018 20:49:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47066)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gJTup-0007xA-2s
-	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:42:55 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gJTul-0007qF-AN
+	for qemu-arm@nongnu.org; Sun, 04 Nov 2018 20:42:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gJTui-0002yv-O1
-	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:42:54 -0500
-Received: from mga03.intel.com ([134.134.136.65]:22001)
+	(envelope-from <sameo@linux.intel.com>) id 1gJTuf-0002sN-8g
+	for qemu-arm@nongnu.org; Sun, 04 Nov 2018 20:42:51 -0500
+Received: from mga14.intel.com ([192.55.52.115]:64889)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gJTui-0002wL-1d; Sun, 04 Nov 2018 20:42:48 -0500
+	id 1gJTub-0002dU-9b; Sun, 04 Nov 2018 20:42:44 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-	by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	04 Nov 2018 17:42:47 -0800
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	04 Nov 2018 17:42:36 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.54,466,1534834800"; d="scan'208";a="277074386"
+X-IronPort-AV: E=Sophos;i="5.54,466,1534834800"; d="scan'208";a="277074372"
 Received: from emurphy1-mobl1.ger.corp.intel.com (HELO localhost.localdomain)
 	([10.252.26.250])
-	by fmsmga005.fm.intel.com with ESMTP; 04 Nov 2018 17:42:42 -0800
+	by fmsmga005.fm.intel.com with ESMTP; 04 Nov 2018 17:42:31 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 Nov 2018 02:40:36 +0100
-Message-Id: <20181105014047.26447-14-sameo@linux.intel.com>
+Date: Mon,  5 Nov 2018 02:40:34 +0100
+Message-Id: <20181105014047.26447-12-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181105014047.26447-1-sameo@linux.intel.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.65
-Subject: [Qemu-devel] [PATCH v5 13/24] hw: acpi: Do not create hotplug
- method when handler is not defined
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 192.55.52.115
+Subject: [Qemu-arm] [PATCH v5 11/24] hw: acpi: Export and generalize the PCI
+ host AML API
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
+	Rob Bradford <robert.bradford@intel.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Shannon Zhao <shannon.zhaosl@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
 	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GP/CXuLnaEUT
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cOSfreilyvjl
 
-CPU and memory ACPI hotplug are not necessarily handled through SCI
-events. For example, with Hardware-reduced ACPI, the GED device will
-manage ACPI hotplug entirely.
-As a consequence, we make the CPU and memory specific events AML
-generation optional. The code will only be added when the method name is
-not NULL.
+From: Yang Zhong <yang.zhong@intel.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+The AML build routines for the PCI host bridge and the corresponding
+DSDT addition are neither x86 nor PC machine type specific.
+We can move them to the architecture agnostic hw/acpi folder, and by
+carrying all the needed information through a new AcpiPciBus structure,
+we can make them PC machine type independent.
+
+Signed-off-by: Yang Zhong <yang.zhong@intel.com>
+Signed-off-by: Rob Bradford <robert.bradford@intel.com>
 Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
 ---
- hw/acpi/cpu.c            |  8 +++++---
- hw/acpi/memory_hotplug.c | 11 +++++++----
- 2 files changed, 12 insertions(+), 7 deletions(-)
+ include/hw/acpi/aml-build.h |   8 ++
+ hw/acpi/aml-build.c         | 157 ++++++++++++++++++++++++++++++++++++
+ hw/i386/acpi-build.c        | 115 ++------------------------
+ 3 files changed, 173 insertions(+), 107 deletions(-)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index f10b190019..cd41377b5a 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -569,9 +569,11 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
-     aml_append(sb_scope, cpus_dev);
-     aml_append(table, sb_scope);
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index fde2785b9a..1861e37ebf 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -229,6 +229,12 @@ typedef struct AcpiMcfgInfo {
+     uint32_t mcfg_size;
+ } AcpiMcfgInfo;
  
--    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
--    aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD));
--    aml_append(table, method);
-+    if (event_handler_method) {
-+        method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
-+        aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD));
-+        aml_append(table, method);
-+    }
++typedef struct AcpiPciBus {
++    PCIBus *pci_bus;
++    Range *pci_hole;
++    Range *pci_hole64;
++} AcpiPciBus;
++
+ typedef struct CrsRangeEntry {
+     uint64_t base;
+     uint64_t limit;
+@@ -411,6 +417,8 @@ Aml *build_osc_method(uint32_t value);
+ void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
+ Aml *build_gsi_link_dev(const char *name, uint8_t uid, uint8_t gsi);
+ Aml *build_prt(bool is_pci0_prt);
++void acpi_dsdt_add_pci_bus(Aml *dsdt, AcpiPciBus *pci_host);
++Aml *build_pci_host_bridge(Aml *table, AcpiPciBus *pci_host);
+ void crs_range_set_init(CrsRangeSet *range_set);
+ Aml *build_crs(PCIHostState *host, CrsRangeSet *range_set);
+ void crs_replace_with_free_ranges(GPtrArray *ranges,
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index b8e32f15f7..869ed70db3 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -29,6 +29,19 @@
+ #include "hw/pci/pci_bus.h"
+ #include "qemu/range.h"
+ #include "hw/pci/pci_bridge.h"
++#include "hw/i386/pc.h"
++#include "sysemu/tpm.h"
++#include "hw/acpi/tpm.h"
++
++#define PCI_HOST_BRIDGE_CONFIG_ADDR        0xcf8
++#define PCI_HOST_BRIDGE_IO_0_MIN_ADDR      0x0000
++#define PCI_HOST_BRIDGE_IO_0_MAX_ADDR      0x0cf7
++#define PCI_HOST_BRIDGE_IO_1_MIN_ADDR      0x0d00
++#define PCI_HOST_BRIDGE_IO_1_MAX_ADDR      0xffff
++#define PCI_VGA_MEM_BASE_ADDR              0x000a0000
++#define PCI_VGA_MEM_MAX_ADDR               0x000bffff
++#define IO_0_LEN                           0xcf8
++#define VGA_MEM_LEN                        0x20000
  
-     g_free(cphp_res_path);
+ static GArray *build_alloc_array(void)
+ {
+@@ -2142,6 +2155,150 @@ Aml *build_prt(bool is_pci0_prt)
+     return method;
  }
-diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
-index 8c7c1013f3..db2c4df961 100644
---- a/hw/acpi/memory_hotplug.c
-+++ b/hw/acpi/memory_hotplug.c
-@@ -715,10 +715,13 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+ 
++Aml *build_pci_host_bridge(Aml *table, AcpiPciBus *pci_host)
++{
++    CrsRangeEntry *entry;
++    Aml *scope, *dev, *crs;
++    CrsRangeSet crs_range_set;
++    Range *pci_hole = NULL;
++    Range *pci_hole64 = NULL;
++    PCIBus *bus = NULL;
++    int root_bus_limit = 0xFF;
++    int i;
++
++    bus = pci_host->pci_bus;
++    assert(bus);
++    pci_hole = pci_host->pci_hole;
++    pci_hole64 = pci_host->pci_hole64;
++
++    crs_range_set_init(&crs_range_set);
++    QLIST_FOREACH(bus, &bus->child, sibling) {
++        uint8_t bus_num = pci_bus_num(bus);
++        uint8_t numa_node = pci_bus_numa_node(bus);
++
++        /* look only for expander root buses */
++        if (!pci_bus_is_root(bus)) {
++            continue;
++        }
++
++        if (bus_num < root_bus_limit) {
++            root_bus_limit = bus_num - 1;
++        }
++
++        scope = aml_scope("\\_SB");
++        dev = aml_device("PC%.02X", bus_num);
++        aml_append(dev, aml_name_decl("_UID", aml_int(bus_num)));
++        aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
++        aml_append(dev, aml_name_decl("_BBN", aml_int(bus_num)));
++        if (pci_bus_is_express(bus)) {
++            aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
++            aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
++            aml_append(dev, build_osc_method(0x1F));
++        }
++        if (numa_node != NUMA_NODE_UNASSIGNED) {
++            aml_append(dev, aml_name_decl("_PXM", aml_int(numa_node)));
++        }
++
++        aml_append(dev, build_prt(false));
++        crs = build_crs(PCI_HOST_BRIDGE(BUS(bus)->parent), &crs_range_set);
++        aml_append(dev, aml_name_decl("_CRS", crs));
++        aml_append(scope, dev);
++        aml_append(table, scope);
++    }
++    scope = aml_scope("\\_SB.PCI0");
++    /* build PCI0._CRS */
++    crs = aml_resource_template();
++    /* set the pcie bus num */
++    aml_append(crs,
++        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
++                            0x0000, 0x0, root_bus_limit,
++                            0x0000, root_bus_limit + 1));
++    aml_append(crs, aml_io(AML_DECODE16, PCI_HOST_BRIDGE_CONFIG_ADDR,
++                           PCI_HOST_BRIDGE_CONFIG_ADDR, 0x01, 0x08));
++    /* set the io region 0 in pci host bridge */
++    aml_append(crs,
++        aml_word_io(AML_MIN_FIXED, AML_MAX_FIXED,
++                    AML_POS_DECODE, AML_ENTIRE_RANGE,
++                    0x0000, PCI_HOST_BRIDGE_IO_0_MIN_ADDR,
++                    PCI_HOST_BRIDGE_IO_0_MAX_ADDR, 0x0000, IO_0_LEN));
++
++    /* set the io region 1 in pci host bridge */
++    crs_replace_with_free_ranges(crs_range_set.io_ranges,
++                                 PCI_HOST_BRIDGE_IO_1_MIN_ADDR,
++                                 PCI_HOST_BRIDGE_IO_1_MAX_ADDR);
++    for (i = 0; i < crs_range_set.io_ranges->len; i++) {
++        entry = g_ptr_array_index(crs_range_set.io_ranges, i);
++        aml_append(crs,
++            aml_word_io(AML_MIN_FIXED, AML_MAX_FIXED,
++                        AML_POS_DECODE, AML_ENTIRE_RANGE,
++                        0x0000, entry->base, entry->limit,
++                        0x0000, entry->limit - entry->base + 1));
++    }
++
++    /* set the vga mem region(0) in pci host bridge */
++    aml_append(crs,
++        aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
++                         AML_CACHEABLE, AML_READ_WRITE,
++                         0, PCI_VGA_MEM_BASE_ADDR, PCI_VGA_MEM_MAX_ADDR,
++                         0, VGA_MEM_LEN));
++
++    /* set the mem region 1 in pci host bridge */
++    crs_replace_with_free_ranges(crs_range_set.mem_ranges,
++                                 range_lob(pci_hole),
++                                 range_upb(pci_hole));
++    for (i = 0; i < crs_range_set.mem_ranges->len; i++) {
++        entry = g_ptr_array_index(crs_range_set.mem_ranges, i);
++        aml_append(crs,
++            aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
++                             AML_NON_CACHEABLE, AML_READ_WRITE,
++                             0, entry->base, entry->limit,
++                             0, entry->limit - entry->base + 1));
++    }
++
++    /* set the mem region 2 in pci host bridge */
++    if (!range_is_empty(pci_hole64)) {
++        crs_replace_with_free_ranges(crs_range_set.mem_64bit_ranges,
++                                     range_lob(pci_hole64),
++                                     range_upb(pci_hole64));
++        for (i = 0; i < crs_range_set.mem_64bit_ranges->len; i++) {
++            entry = g_ptr_array_index(crs_range_set.mem_64bit_ranges, i);
++            aml_append(crs,
++                       aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
++                                        AML_MAX_FIXED,
++                                        AML_CACHEABLE, AML_READ_WRITE,
++                                        0, entry->base, entry->limit,
++                                        0, entry->limit - entry->base + 1));
++        }
++    }
++
++    if (TPM_IS_TIS(tpm_find())) {
++        aml_append(crs, aml_memory32_fixed(TPM_TIS_ADDR_BASE,
++                   TPM_TIS_ADDR_SIZE, AML_READ_WRITE));
++    }
++
++    aml_append(scope, aml_name_decl("_CRS", crs));
++    crs_range_set_free(&crs_range_set);
++    return scope;
++}
++
++void acpi_dsdt_add_pci_bus(Aml *dsdt, AcpiPciBus *pci_host)
++{
++    Aml *dev, *pci_scope;
++
++    dev = aml_device("\\_SB.PCI0");
++    aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
++    aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
++    aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
++    aml_append(dev, aml_name_decl("_UID", aml_int(1)));
++    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
++    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
++    aml_append(dev, build_osc_method(0x1F));
++    aml_append(dsdt, dev);
++
++    pci_scope = build_pci_host_bridge(dsdt, pci_host);
++    aml_append(dsdt, pci_scope);
++}
++
+ /* Build rsdt table */
+ void
+ build_rsdt(GArray *table_data, BIOSLinker *linker, GArray *table_offsets,
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index a5f5f83500..14e2624d14 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1253,16 +1253,11 @@ static void build_piix4_pci_hotplug(Aml *table)
+ static void
+ build_dsdt(GArray *table_data, BIOSLinker *linker,
+            AcpiPmInfo *pm, AcpiMiscInfo *misc,
+-           Range *pci_hole, Range *pci_hole64,
++           AcpiPciBus *pci_host,
+            MachineState *machine, AcpiConfiguration *acpi_conf)
+ {
+-    CrsRangeEntry *entry;
+     Aml *dsdt, *sb_scope, *scope, *dev, *method, *field, *pkg, *crs;
+-    CrsRangeSet crs_range_set;
+     uint32_t nr_mem = machine->ram_slots;
+-    int root_bus_limit = 0xFF;
+-    PCIBus *bus = NULL;
+-    int i;
+ 
+     dsdt = init_aml_allocator();
+ 
+@@ -1337,104 +1332,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
      }
-     aml_append(table, dev_container);
+     aml_append(dsdt, scope);
  
--    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
--    aml_append(method,
--        aml_call0(MEMORY_DEVICES_CONTAINER "." MEMORY_SLOT_SCAN_METHOD));
--    aml_append(table, method);
-+    if (event_handler_method) {
-+        method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
-+        aml_append(method,
-+                   aml_call0(MEMORY_DEVICES_CONTAINER "."
-+                             MEMORY_SLOT_SCAN_METHOD));
-+        aml_append(table, method);
-+    }
+-    crs_range_set_init(&crs_range_set);
+-    bus = PC_MACHINE(machine)->bus;
+-    if (bus) {
+-        QLIST_FOREACH(bus, &bus->child, sibling) {
+-            uint8_t bus_num = pci_bus_num(bus);
+-            uint8_t numa_node = pci_bus_numa_node(bus);
+-
+-            /* look only for expander root buses */
+-            if (!pci_bus_is_root(bus)) {
+-                continue;
+-            }
+-
+-            if (bus_num < root_bus_limit) {
+-                root_bus_limit = bus_num - 1;
+-            }
+-
+-            scope = aml_scope("\\_SB");
+-            dev = aml_device("PC%.02X", bus_num);
+-            aml_append(dev, aml_name_decl("_UID", aml_int(bus_num)));
+-            aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
+-            aml_append(dev, aml_name_decl("_BBN", aml_int(bus_num)));
+-            if (pci_bus_is_express(bus)) {
+-                aml_append(dev, build_osc_method(ACPI_OSC_CTRL_PCI_ALL));
+-            }
+-
+-            if (numa_node != NUMA_NODE_UNASSIGNED) {
+-                aml_append(dev, aml_name_decl("_PXM", aml_int(numa_node)));
+-            }
+-
+-            aml_append(dev, build_prt(false));
+-            crs = build_crs(PCI_HOST_BRIDGE(BUS(bus)->parent), &crs_range_set);
+-            aml_append(dev, aml_name_decl("_CRS", crs));
+-            aml_append(scope, dev);
+-            aml_append(dsdt, scope);
+-        }
+-    }
+-
+-    scope = aml_scope("\\_SB.PCI0");
+-    /* build PCI0._CRS */
+-    crs = aml_resource_template();
+-    aml_append(crs,
+-        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
+-                            0x0000, 0x0, root_bus_limit,
+-                            0x0000, root_bus_limit + 1));
+-    aml_append(crs, aml_io(AML_DECODE16, 0x0CF8, 0x0CF8, 0x01, 0x08));
+-
+-    aml_append(crs,
+-        aml_word_io(AML_MIN_FIXED, AML_MAX_FIXED,
+-                    AML_POS_DECODE, AML_ENTIRE_RANGE,
+-                    0x0000, 0x0000, 0x0CF7, 0x0000, 0x0CF8));
+-
+-    crs_replace_with_free_ranges(crs_range_set.io_ranges, 0x0D00, 0xFFFF);
+-    for (i = 0; i < crs_range_set.io_ranges->len; i++) {
+-        entry = g_ptr_array_index(crs_range_set.io_ranges, i);
+-        aml_append(crs,
+-            aml_word_io(AML_MIN_FIXED, AML_MAX_FIXED,
+-                        AML_POS_DECODE, AML_ENTIRE_RANGE,
+-                        0x0000, entry->base, entry->limit,
+-                        0x0000, entry->limit - entry->base + 1));
+-    }
+-
+-    aml_append(crs,
+-        aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                         AML_CACHEABLE, AML_READ_WRITE,
+-                         0, 0x000A0000, 0x000BFFFF, 0, 0x00020000));
+-
+-    crs_replace_with_free_ranges(crs_range_set.mem_ranges,
+-                                 range_lob(pci_hole),
+-                                 range_upb(pci_hole));
+-    for (i = 0; i < crs_range_set.mem_ranges->len; i++) {
+-        entry = g_ptr_array_index(crs_range_set.mem_ranges, i);
+-        aml_append(crs,
+-            aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                             AML_NON_CACHEABLE, AML_READ_WRITE,
+-                             0, entry->base, entry->limit,
+-                             0, entry->limit - entry->base + 1));
+-    }
+-
+-    if (!range_is_empty(pci_hole64)) {
+-        crs_replace_with_free_ranges(crs_range_set.mem_64bit_ranges,
+-                                     range_lob(pci_hole64),
+-                                     range_upb(pci_hole64));
+-        for (i = 0; i < crs_range_set.mem_64bit_ranges->len; i++) {
+-            entry = g_ptr_array_index(crs_range_set.mem_64bit_ranges, i);
+-            aml_append(crs,
+-                       aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED,
+-                                        AML_MAX_FIXED,
+-                                        AML_CACHEABLE, AML_READ_WRITE,
+-                                        0, entry->base, entry->limit,
+-                                        0, entry->limit - entry->base + 1));
+-        }
+-    }
+-
+-    if (TPM_IS_TIS(tpm_find())) {
+-        aml_append(crs, aml_memory32_fixed(TPM_TIS_ADDR_BASE,
+-                   TPM_TIS_ADDR_SIZE, AML_READ_WRITE));
+-    }
+-    aml_append(scope, aml_name_decl("_CRS", crs));
++    scope = build_pci_host_bridge(dsdt, pci_host);
  
-     g_free(mhp_res_path);
- }
+     /* reserve GPE0 block resources */
+     dev = aml_device("GPE0");
+@@ -1454,8 +1352,6 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+     aml_append(dev, aml_name_decl("_CRS", crs));
+     aml_append(scope, dev);
+ 
+-    crs_range_set_free(&crs_range_set);
+-
+     /* reserve PCIHP resources */
+     if (pm->pcihp_io_len) {
+         dev = aml_device("PHPR");
+@@ -2012,6 +1908,11 @@ void acpi_build(AcpiBuildTables *tables,
+                              64 /* Ensure FACS is aligned */,
+                              false /* high memory */);
+ 
++    AcpiPciBus pci_host = {
++        .pci_bus    = PC_MACHINE(machine)->bus,
++        .pci_hole   = &pci_hole,
++        .pci_hole64 = &pci_hole64,
++    };
+     /*
+      * FACS is pointed to by FADT.
+      * We place it first since it's the only table that has alignment
+@@ -2023,7 +1924,7 @@ void acpi_build(AcpiBuildTables *tables,
+     /* DSDT is pointed to by FADT */
+     dsdt = tables_blob->len;
+     build_dsdt(tables_blob, tables->linker, &pm, &misc,
+-               &pci_hole, &pci_hole64, machine, acpi_conf);
++               &pci_host, machine, acpi_conf);
+ 
+     /* Count the size of the DSDT and SSDT, we will need it for legacy
+      * sizing of ACPI tables.
 -- 
 2.19.1
 

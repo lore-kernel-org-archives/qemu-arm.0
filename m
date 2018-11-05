@@ -1,101 +1,102 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2779379wro;
-        Mon, 5 Nov 2018 08:23:44 -0800 (PST)
-X-Google-Smtp-Source: AJdET5c4hYp5Q8nLlyyE2EglC7M3VgoRz3xw8dlstWHKtfHKTp09GF/9iUaxinVvyDlpq+pCYfDy
-X-Received: by 2002:ac8:208a:: with SMTP id 10mr382573qtd.79.1541435024618;
-        Mon, 05 Nov 2018 08:23:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541435024; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2779877wro;
+        Mon, 5 Nov 2018 08:24:08 -0800 (PST)
+X-Google-Smtp-Source: AJdET5e9bMDFGfOEoDD5R2tJiO8IJkt/sttSLsxP+X0//K2DpSYegZwl5YNR2euMBHk6uvd9mS/f
+X-Received: by 2002:a37:1b46:: with SMTP id b67mr21362546qkb.144.1541435048499;
+        Mon, 05 Nov 2018 08:24:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541435048; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lw71eJ2qtcoHNpv6dVW5DbGR4pdLn8jLw56pACFXrQK9uCVWVLFlPzM+/nM7cf5jmF
-         dblVZFuSST0oa5nJ8Jg5f7dc38I2kKF5sRyqwVLJSzxMw8h5+D0lIC5yvgo2wxDdI4Ff
-         hnEPExSAxp3gKUX4Rl0nnQ0l02v9QtNT9S6WPMp3+kIfYNTIDQOK8GYhyGZMx9+oJ2JP
-         +2Ing9NFi4S/xDWfZV1rBQrcjNGRJtXTQr/wP4o71PhsNSk2yLzuyWSRlLcZfLvueUwo
-         Sdfw7VcC2bsYKSW24mi/yRX9pOPJK7wyigF9iZ/kuNvMFBsvxTBIzeyWFi55p/1KYuzF
-         b0eg==
+        b=hOG9YiEuZ5wlVlpAghnYvvi57tJ9mrZ3l82GJeaxcaBVRGOmI4WU1Ux117iAtEyBQP
+         y6HadYuM2VNjrt6ZwtiT7H/nKBg/d7cqp0PpU0oiMX7puv8Lt/RweqRSkEoU967Ypr17
+         Pl+eXdaBNSZ/PBEPJIwlFYvkebKlhmvqJHrxH3RHIvqSb8ITzokjtv+Li/FkdNGmKOEe
+         T9lJAQ6b3exer6EBT1/LqScGtqPjlDRENj/HulFycrw4g4U6u2iUUWBcp84Pi+4vS9NG
+         MVBH2/8Fo5XFxRB5AFsP5MpwTAWgthE/lm8iJ3KWokwCvjgdn+TmISYEXRBQApQsSgPw
+         wVgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=lIItoZhAzovNoOHBhffgyiDN9IJPdMDXV6xxnMHmlJQ=;
-        b=ZHJgMYKCiOdloFIWZWrvH48t8mQmd6nwZSYoeuu9K2a+RrcKp+CHuT9NfnGY+lxPZE
-         Re/lhfGpHcmIEHNg6spp/LaFS0RNduTN2ao6tCiPglMFpW7FbjzWvd/OzZTAgXlF7YkM
-         bUb6fXo0OfEoEZdn99f/AWNyO3G+fLZuI+QbptiqZz00JtJnUhp/lCRKVD5T1ifKi1GG
-         nGaG84FZhL+r2pTqA5b+DuS8p7WB/TThXrUmtCj5+/y8ZPhQl2tyAhU5Z41sesv7Ph2Z
-         +Ely3mg3k6PhDKfFY/ET72PBgp8eaxg+BrYHbUUdR1UTtFWxXcbww3Y6/cdPD93W2xac
-         tTwg==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=FyuQuHr0mj+dUtHMObw/i1B5BPVQf20beM0N09bxwzE=;
+        b=gevJQh+GUKp0eaiXNTlGo6JmjkGPeGQuHn0HzB6SCwSh4Scs/oGcjn8SBtE5gj14/T
+         9ubiyOtn3w9ETI5wnpfpoxTJLu4NrHBsBvBZPThzrQcSbMFC3lzxYqqKNZnIvDpNDMlC
+         L6q3dz36RmySEFH+rEog8dAyP1RyC/XHhYSVa2LD0nnSNexi6kORejK/XoJOmpyMOXiA
+         ubBXsgKtNZcKV9STiVDsRpRm00OUGHE5UGuFFduMfGYyV2rFEBzPTUb0thyY8BYqPuHk
+         Bs5ZjlZel3PI5PLR8teQUDM4s2pRg2XodF2eOwsxoUveTc92Jo7zA/otnQokNKheZNU7
+         JkOA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UXEh18xS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h12si921745qto.184.2018.11.05.08.23.44
+        by mx.google.com with ESMTPS id r37si422022qtb.257.2018.11.05.08.24.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Nov 2018 08:23:44 -0800 (PST)
+        Mon, 05 Nov 2018 08:24:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UXEh18xS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36050 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36054 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJhfE-0000ZH-3v
-	for alex.bennee@linaro.org; Mon, 05 Nov 2018 11:23:44 -0500
+	id 1gJhfb-0001C5-Mz
+	for alex.bennee@linaro.org; Mon, 05 Nov 2018 11:24:07 -0500
 Received: from eggs.gnu.org ([2001:4830:134:3::10]:40775)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gJhaS-0004ho-KW
-	for qemu-devel@nongnu.org; Mon, 05 Nov 2018 11:18:52 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gJhb3-0004ho-HR
+	for qemu-devel@nongnu.org; Mon, 05 Nov 2018 11:19:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gJhUb-0000dB-DV
-	for qemu-devel@nongnu.org; Mon, 05 Nov 2018 11:12:49 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:43516)
+	(envelope-from <peter.maydell@linaro.org>) id 1gJhKx-0002Sp-0O
+	for qemu-devel@nongnu.org; Mon, 05 Nov 2018 11:02:48 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:44503)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gJhUZ-0000O3-B1
-	for qemu-devel@nongnu.org; Mon, 05 Nov 2018 11:12:45 -0500
-Received: by mail-wr1-f67.google.com with SMTP id y3-v6so9842447wrh.10
-	for <qemu-devel@nongnu.org>; Mon, 05 Nov 2018 08:12:32 -0800 (PST)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gJhKw-0002R1-LR
+	for qemu-devel@nongnu.org; Mon, 05 Nov 2018 11:02:46 -0500
+Received: by mail-oi1-x244.google.com with SMTP id k19-v6so7868813oic.11
+	for <qemu-devel@nongnu.org>; Mon, 05 Nov 2018 08:02:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=FyuQuHr0mj+dUtHMObw/i1B5BPVQf20beM0N09bxwzE=;
+	b=UXEh18xSoqINVOjtVp9LUY+ZBzHWRxqa9gSHHQJbn6DPLTXDy7oUFhwqFLVD/HgAfg
+	chIO8JVn2iC2KRX6FhIuD3I+aI/CC3Kt6WYSOvLkYqn7lzhOuzlWlYYpEOiWf1ZOKtuU
+	K7FnOwbaSNnn5hr/spWZ1LaLhMueXAZun7+7c=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=lIItoZhAzovNoOHBhffgyiDN9IJPdMDXV6xxnMHmlJQ=;
-	b=Xv7jh3cs0JeP5IEmM5Me39Kcuv393KUtR1rUf9CqVoLPM23IaF/9IY5BjMmTW3e/nG
-	PuZwlyrpNHbYjDNEyyW4A3FLuV0KZAjSYP1lw7+3cdPrMdZhJmxEvxN9hKdR3aCeOePM
-	eiCPcbSpu9QoH3TPOPxi4r5zzvuMYei7EW8EksgXbc7Hy0hfNvW9ZLSobl//dxk+9oqA
-	Up92v4Keiyu3qBEXKiCX+PIyN4PoviUoHmmKYp0UeNd2Ufxh7raRdXsturNH4INBYzJ/
-	H5GDEV6RIuR7mEjMlgqvWjLbHblcGGCIyQeUT6VkIytlG0JZFGTMq0n6Kfy+2Vg7iRKs
-	VJYQ==
-X-Gm-Message-State: AGRZ1gKed+ojcsQmqE6IqORBFHUrZpTk4iqqEkAXpSh0dHFduVDp4QaE
-	Zo+Y63sQa3xbyl8qsW5XjRd1+Q==
-X-Received: by 2002:adf:92a6:: with SMTP id
-	35-v6mr21046442wrn.137.1541434351292; 
-	Mon, 05 Nov 2018 08:12:31 -0800 (PST)
-Received: from [192.168.1.41] (lfbn-1-6433-245.w90-113.abo.wanadoo.fr.
-	[90.113.127.245]) by smtp.gmail.com with ESMTPSA id
-	h16-v6sm12859116wrb.73.2018.11.05.08.12.29
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 05 Nov 2018 08:12:30 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20181102001303.32640-1-f4bug@amsat.org>
-	<20181102001303.32640-4-f4bug@amsat.org>
-	<CAFEAcA8LOR7mCVMe6R1A+VJMXpJMreLV-0KQ0nTXZM=7VXcmSA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9beca7b9-258d-436c-8dd7-ad877745b949@redhat.com>
-Date: Mon, 5 Nov 2018 17:12:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=FyuQuHr0mj+dUtHMObw/i1B5BPVQf20beM0N09bxwzE=;
+	b=Z4KZ7Sirwj7InZvAxtI6fY5QleEDCvk3PTQU/Doq4d7qo1Uzr9MCrMssp9WfQbSWYc
+	oRKqU9t2+e9ZJoz490ijpLZvNBRQ2Gvmk0dB9q7dUBY9SkcBTLAehcrr57wfsObg/aw6
+	ForheLrpxP5P2c/LVvWgnOdypmoFDKeccSbmBkZUPzroMncvrv+y4Pg++Fp0prOJ+SXL
+	Nu1VZ65FYW3Jw6m2hH+5sxTncLKeDuWUnxV7QMvOw6wDwr0XwPjG/bG5x5/sl+WvLrwj
+	kbASbzdf5wd6E4yl1VGpf9Dlo2mlZNaKz3fl13ADFZF9vJoSwxQL/i2pC/uUN28XNs33
+	pWeA==
+X-Gm-Message-State: AGRZ1gI6KM2E4rkB/33FkZroK2rVk/HDUHT41+/WfiKBDka+2IFDaKea
+	sWGb46MUggakm8peu/IidcnlOD5/xu3elrZq2DQxfA==
+X-Received: by 2002:aca:1c6:: with SMTP id
+	189-v6mr13851873oib.325.1541433765411; 
+	Mon, 05 Nov 2018 08:02:45 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8LOR7mCVMe6R1A+VJMXpJMreLV-0KQ0nTXZM=7VXcmSA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-devel] [PATCH for 3.2 v2 3/7] hw/arm/bcm2835: Use 0x
- prefix for hex numbers
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
+	Mon, 5 Nov 2018 08:02:24 -0800 (PST)
+In-Reply-To: <20181102001303.32640-7-f4bug@amsat.org>
+References: <20181102001303.32640-1-f4bug@amsat.org>
+	<20181102001303.32640-7-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 5 Nov 2018 16:02:24 +0000
+Message-ID: <CAFEAcA_C05O__SG-pLT6XRAKY6Bz5Q2CXeypvJJEkvN1aevB+w@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-devel] [PATCH for 3.2 v2 6/7] hw/arm/bcm2835: Add basic
+ support for cprman (clock subsystem)
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,90 +112,198 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
 	Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0DcGpAQXmR+t
+X-TUID: HsOSsrXZWBgu
 
-On 5/11/18 16:39, Peter Maydell wrote:
-> On 2 November 2018 at 00:12, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   hw/char/bcm2835_aux.c      | 2 +-
->>   hw/intc/bcm2836_control.c  | 4 ++--
->>   hw/misc/bcm2835_property.c | 2 +-
->>   3 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> Commit message says it's just adding 0x prefixes, but the
-> patch adds extra logging of new numbers that weren't there
-> before. I don't think the patch needs splitting, but the
-> commit message could be improved.
+On 2 November 2018 at 00:13, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+> Add basic support for BCM283x CPRMAN. Provide support for reading and
+> writing CPRMAN registers and initialize registers with sensible default
+> values. During runtime retain any written values.
+>
+> Basic CPRMAN support is necessary and sufficient to boot Linux on raspi2
+> and raspi3 systems.
+>
+> Without this change, recent Linux kernels fail to boot on raspi2 and
+> raspi3. raspi2 images experience with various divide by 0 errors and
+> hang. raspi3 images fail to initialize the console (ttyS1).
+>
+> Register addresses and fields taken from the "BCM2835 ARM Peripherals"
+> datasheet from February 06 2012:
+> https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.p=
+df
+>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/bcm2835_peripherals.c         |  16 +-
+>  hw/misc/Makefile.objs                |   1 +
+>  hw/misc/bcm2835_cprman.c             | 277 +++++++++++++++++++++++++++
+>  hw/misc/trace-events                 |   8 +
+>  include/hw/arm/bcm2835_peripherals.h |   3 +-
+>  include/hw/misc/bcm2835_cprman.h     |  28 +++
+>  6 files changed, 331 insertions(+), 2 deletions(-)
+>  create mode 100644 hw/misc/bcm2835_cprman.c
+>  create mode 100644 include/hw/misc/bcm2835_cprman.h
+>
+> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+> index 108c058d17..11fb098063 100644
+> --- a/hw/arm/bcm2835_peripherals.c
+> +++ b/hw/arm/bcm2835_peripherals.c
+> @@ -99,6 +99,11 @@ static void bcm2835_peripherals_init(Object *obj)
+>      object_property_add_const_link(OBJECT(&s->property), "dma-mr",
+>                                     OBJECT(&s->gpu_bus_mr), &error_abort)=
+;
+>
+> +    /* Clock subsystem */
+> +    object_initialize(&s->cprman, sizeof(s->cprman), TYPE_BCM2835_CPRMAN=
+);
+> +    object_property_add_child(obj, "cprman", OBJECT(&s->cprman), NULL);
+> +    qdev_set_parent_bus(DEVICE(&s->cprman), sysbus_get_default());
 
-OK
+Rather than this set of 3 calls we can use one call:
+    sysbus_init_child_obj(obj, "cprman", &s->cprman, sizeof(s->cprman),
+                          TYPE_BCM2835_CPRMAN)
 
-> 
-> Also, the compile test says some of these new additions
-> are using the wrong kind of format string specifier.
+This is shorter and also avoids a refcount leak that means the
+child object isn't correctly unlinked from the parent bus if the
+parent device is destroyed.
 
-Yes, sorry I forgot to run this test.
+(As separate cleanup, we could fix the existing cases of this pattern
+in this file.)
 
-> 
->>
->> diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
->> index 0364596c55..9632e8972c 100644
->> --- a/hw/char/bcm2835_aux.c
->> +++ b/hw/char/bcm2835_aux.c
->> @@ -159,7 +159,7 @@ static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
->>       case AUX_ENABLES:
->>           if (value != 1) {
->>               qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable SPI "
->> -                          "or disable UART\n", __func__);
->> +                          "or disable UART: 0x%lx\n", __func__, value);
-> 
-> uint64_t needs PRIx64, not %lx.
-> 
->>           }
->>           break;
->>
->> diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
->> index cfa5bc7365..96cc53f8a7 100644
->> --- a/hw/intc/bcm2836_control.c
->> +++ b/hw/intc/bcm2836_control.c
->> @@ -204,8 +204,8 @@ static void bcm2836_control_write(void *opaque, hwaddr offset,
->>       } else if (offset >= REG_MBOX0_RDCLR && offset < REG_LIMIT) {
->>           s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2] &= ~val;
->>       } else {
->> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
->> -                      __func__, offset);
->> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%"HWADDR_PRIx" 0x%lx\n",
->> +                      __func__, offset, val);
-> 
-> Ditto. If you want to print the value you should also say in the
-> log message string what the second hex number in it is.
-> (Mostly we don't seem to worry about printing the data value
-> for "write to bogus device address" messages.)
+> +
+>      /* Random Number Generator */
+>      object_initialize(&s->rng, sizeof(s->rng), TYPE_BCM2835_RNG);
+>      object_property_add_child(obj, "rng", OBJECT(&s->rng), NULL);
+> @@ -258,6 +263,13 @@ static void bcm2835_peripherals_realize(DeviceState =
+*dev, Error **errp)
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->property), 0,
+>                        qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_PRO=
+PERTY));
+>
+> +    /* Clock subsystem */
+> +    object_property_set_bool(OBJECT(&s->cprman), true, "realized", &err)=
+;
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+>      /* Random Number Generator */
+>      object_property_set_bool(OBJECT(&s->rng), true, "realized", &err);
+>      if (err) {
+> @@ -265,6 +277,9 @@ static void bcm2835_peripherals_realize(DeviceState *=
+dev, Error **errp)
+>          return;
+>      }
+>
+> +    memory_region_add_subregion(&s->peri_mr, CPRMAN_OFFSET,
+> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->cprman), 0));
+> +
+>      memory_region_add_subregion(&s->peri_mr, RNG_OFFSET,
+>                  sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0));
+>
+> @@ -350,7 +365,6 @@ static void bcm2835_peripherals_realize(DeviceState *=
+dev, Error **errp)
+>      }
+>
+>      create_unimp(s, &s->pm, "bcm2835-pm", PM_OFFSET, 0x1000);
+> -    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000)=
+;
+>      create_unimp(s, &s->a2w, "bcm2835-a2w", 0x102000, 0x1000);
+>      create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+>      create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 680350b3c3..93c11a2d4d 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -53,6 +53,7 @@ obj-$(CONFIG_OMAP) +=3D omap_tap.o
+>  obj-$(CONFIG_RASPI) +=3D bcm2835_mbox.o
+>  obj-$(CONFIG_RASPI) +=3D bcm2835_property.o
+>  obj-$(CONFIG_RASPI) +=3D bcm2835_rng.o
+> +obj-$(CONFIG_RASPI) +=3D bcm2835_cprman.o
+>  obj-$(CONFIG_SLAVIO) +=3D slavio_misc.o
+>  obj-$(CONFIG_ZYNQ) +=3D zynq_slcr.o
+>  obj-$(CONFIG_ZYNQ) +=3D zynq-xadc.o
+> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> new file mode 100644
+> index 0000000000..df7e92e77f
+> --- /dev/null
+> +++ b/hw/misc/bcm2835_cprman.c
+> @@ -0,0 +1,277 @@
+> +/*
+> + * BCM2835 Clock subsystem (poor man's version)
 
-Hmm OK, I guess I added this to understand the firmware initialization, 
-so some are probably UNIMP rather than GUEST_ERRORS (The firmware is 
-built by people having access to the specs).
+Rather than saying this we should have a comment that says
+that this is missing functionality and giving a summary
+of what it does and does not implement.
 
-> 
->>           return;
->>       }
->>
->> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
->> index 5d332324bd..c715cbaef6 100644
->> --- a/hw/misc/bcm2835_property.c
->> +++ b/hw/misc/bcm2835_property.c
->> @@ -277,7 +277,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
->>
->>           default:
->>               qemu_log_mask(LOG_GUEST_ERROR,
->> -                          "bcm2835_property: unhandled tag %08x\n", tag);
->> +                          "bcm2835_property: unhandled tag 0x%08x\n", tag);
->>               break;
->>           }
->>
->> --
->> 2.17.2
-> 
-> thanks
-> -- PMM
-> 
+> + * https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Periphera=
+ls.pdf
+> + *
+> + * Copyright (C) 2018 Guenter Roeck <linux@roeck-us.net>
+> + * Copyright (C) 2018 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+
+We don't use SPDX tags in QEMU at the moment, but I guess it's
+clear enough what this means.
+
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "hw/misc/bcm2835_cprman.h"
+> +#include "hw/register.h"
+> +#include "trace.h"
+> +
+> +FIELD(CM,     PASSWD,   24, 8)
+> +
+> +FIELD(CM_CTL, SRC,       0, 4)
+> +FIELD(CM_CTL, ENABLE,    4, 1)
+> +FIELD(CM_CTL, KILL,      5, 1)
+> +FIELD(CM_CTL, GATE,      6, 1)
+> +FIELD(CM_CTL, BUSY,      7, 1)
+> +FIELD(CM_CTL, BUSYD,     8, 1)
+> +FIELD(CM_CTL, FRAC,      9, 1)
+> +
+> +FIELD(CM_DIV, FRAC,      0, 12)
+> +FIELD(CM_DIV, INTEGER,  12, 12)
+> +
+> +enum cprman_clock_source {
+> +    SRC_GND =3D 0,
+> +    SRC_OSC =3D 1,
+> +    SRC_TEST_DBG0 =3D 2,
+> +    SRC_TEST_DBG1 =3D 3,
+> +    SRC_PLLA_CORE =3D 4,
+> +    SRC_PLLC_CORE0 =3D 5,
+> +    SRC_PLLD_CORE =3D 6,
+> +    SRC_PLLH_AUX =3D 7,
+> +    SRC_PLLC_CORE1 =3D 8,
+> +    SRC_PLLC_CORE2 =3D 9
+> +};
+> +
+> +static const char *src_name(int src)
+> +{
+> +    static const char *src_names[16] =3D {
+> +        [SRC_GND] =3D "GND",
+> +        [SRC_OSC] =3D "OSC",
+> +        [SRC_TEST_DBG0] =3D "TEST_DBG0",
+> +        [SRC_TEST_DBG1] =3D "TEST_DBG1",
+> +        [SRC_PLLA_CORE] =3D "PLLA_CORE",
+> +        [SRC_PLLC_CORE0] =3D "PLLC_CORE0",
+> +        [SRC_PLLD_CORE] =3D "PLLD_CORE",
+> +        [SRC_PLLH_AUX] =3D "PLLH_AUX",
+> +        [SRC_PLLC_CORE1] =3D "PLLC_CORE1",
+> +        [SRC_PLLC_CORE2] =3D "PLLC_CORE2",
+> +    };
+> +    return src_names[src] ? src_names[src] : "UNKN";
+
+I suspect it's not possible to get here with an array
+index that's out of range, but I think it's easier to
+review and to be sure the code isn't going to walk off the
+end of the array if there's an explicit bounds check here.
+Similarly for the regs[] array and others below.
+
+thanks
+-- PMM

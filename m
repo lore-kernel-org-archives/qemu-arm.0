@@ -1,16 +1,16 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2944522wro;
-        Mon, 5 Nov 2018 10:54:01 -0800 (PST)
-X-Google-Smtp-Source: AJdET5endgEPP2x7+ke9e+zUjqW9EMV4HIC7UO2UTqmA6kAdEc4O2dp8PP/98KTtBrzBQaEoonFF
-X-Received: by 2002:ac8:12cc:: with SMTP id b12mr22169731qtj.90.1541444041646;
-        Mon, 05 Nov 2018 10:54:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541444041; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2947543wro;
+        Mon, 5 Nov 2018 10:57:15 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fVbT6lKjHkXMEL+bVtdBg+P7RdtP+w+VyunjEhKYfB4ITpnYX6D4kjzDVOmcPZO5vt1euC
+X-Received: by 2002:a0c:9471:: with SMTP id i46mr22628235qvi.120.1541444235552;
+        Mon, 05 Nov 2018 10:57:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541444235; cv=none;
         d=google.com; s=arc-20160816;
-        b=zWK8EPNWpJ/9HrFq66xzyH0T4fGfxDr3mMT+o+F20dknYyBm+84S6+fnM3Ipti0jRy
-         WPPNNqfLeFEYxZUI0HeuwWCgN0HiJh0yJ14saWwAi/XD0DiNHqdX5pIMZD7tOa21lksJ
-         7a/us0HhHtF+qM6yrWmM09UyVuqxbzAvLYcqGucuI7QKUVm8HU3wKDeKg70Rs9yGgl7+
-         p+UZO6X1aJ9qRT99lxMatTbM+kTp8q9CnW6XfbTeHCte56nvlyz8Z+newfA/Jp0ajxAw
-         /fY47BT7boSI5mo60EyXED/gdChMQIgD7+K53H7ilTsPJc2edJDU1Qkqt54kdyOOHGHJ
-         alIw==
+        b=SHqLUasA19AVpO94PMNxiJaP6SYqUmYvGktGZ08SEyMXuSrpH4Xo2piTJ5I/gdWM8Y
+         VKhhWflliSK1g2hb3C69sb2GEKwyN2UWma0LxcZ5qJ3uXDVMflMtr7Si6rSPbZqTOSNz
+         yUPXMnlpJM1SLqXZNz1bSp346X44oDITA4iJwBT8741P3HqReuLEIcxtzhE7nm9uCfqJ
+         Shl3b7JMOp0NzdDnpL1SJqWaFloZbJI35nURUMSqEEOTgMdb97zsvVlCbE2gzGSNZ5C2
+         cU/c9p8w1JceMjZBwJOV+EFVnUdyhSY6fPkA9RPSdLCk0RdfAlbwE0hfL82+GF+9r0OP
+         RH3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
@@ -18,59 +18,59 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :spamdiagnosticoutput:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:to:from
          :dkim-signature;
-        bh=/CNyYYKQ2zHBGozh5/XI9kTs4hsJztEG8bskxDqUVUI=;
-        b=bXOK88RmYhAHeYrIxBK3c+hAbMSkN6k4HMYpKjfjnhQhCc/T5RFFPavDRrCI6K3flB
-         7tW4R1cfCxIAb7EieM8d9oIZGumNjsrg1iBBVNIjXWV2+4uv1N5OFgctz/v7S6GbtmNl
-         De7g7fd9XEqsTbKIpp2t+k+r/xzJ4s7o8tFNACKXG0JktAtRt+juJN8HGHFa94RpVM7C
-         DohgEwTDNK9Ned656qg2tO4lzUrLqqj1Wsdtgo4n/VlHcrJ9CGQzIp9QLZltIWnWq+RX
-         4ATqlUrQARZaj9EzCr9aynKjAU6g+t8jLnJ3LmnFygKodJp0J+11hmYJmQm+SCzgJbGE
-         x9AA==
+        bh=H2D6sw7M1tf0FGlfciFc1U7nQt5fwH39+wFUtf8S6oA=;
+        b=E3B3FtfJGmalQjGZNFmBmt0AhYd4ioqgGBlk5CKhm0uszMidX58PTuz/+xv1dMI2tx
+         sJNkugJzGpmzC/7CZ89QneAwvTiqkf56DpwKFRVIk/8a6BCXXzvxoytzd5/9zue6IStB
+         zqbAMvpj2GgWKSiqLuRy8V6/Wa1Kg9AEa4gwcF6MTvZNOvz243USXeDDA1SfwkEwF8iK
+         WYF0RU7RDgjQ8xnTUFkroq+jcywkBqIXAa+Nz6xWb2fgpe4zuPjBJiVv6viLrnQM+bmC
+         sN4VLrlwWLodBpyKyslmkg6ICOPmmaSeQXXTWOeIGu8EmsDJp0cD9qKhf5FJY5ir9x4G
+         uFSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=RGKtrspS;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=idjQ1iS+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w5-v6si951839qkc.37.2018.11.05.10.54.01
+        by mx.google.com with ESMTPS id b72si5045661qkh.258.2018.11.05.10.57.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Nov 2018 10:54:01 -0800 (PST)
+        Mon, 05 Nov 2018 10:57:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=RGKtrspS;
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=idjQ1iS+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:37115 helo=lists.gnu.org)
+Received: from localhost ([::1]:37137 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJk0f-0008HC-58
-	for alex.bennee@linaro.org; Mon, 05 Nov 2018 13:54:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46787)
+	id 1gJk3n-0002W8-2G
+	for alex.bennee@linaro.org; Mon, 05 Nov 2018 13:57:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46599)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gJjzS-0005Uq-20
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 13:52:49 -0500
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gJjyu-0004hk-OZ
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 13:52:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gJjzQ-0001Dw-2V
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 13:52:45 -0500
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gJjyp-0000Zv-0L
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 13:52:10 -0500
 Received: from mail-cys01nam02on0099.outbound.protection.outlook.com
 	([104.47.37.99]:43926
 	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
-	id 1gJjzP-0000UT-F8; Mon, 05 Nov 2018 13:52:43 -0500
+	id 1gJjyn-0000UT-Er; Mon, 05 Nov 2018 13:52:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=/CNyYYKQ2zHBGozh5/XI9kTs4hsJztEG8bskxDqUVUI=;
-	b=RGKtrspSkmHm3ALbmFz9OQLrF5isoXmPPQhgQsKnskgdG+KuCcKrKwy/xInDwdUz8TeCdRCV2+WqVM8rOTXXFdvglxAKThDKZzgygCy8RZ5oRGUoWfUBJQoNYP1HhOK+hI7+sYzZWJ8nVJY419J76cLd+OZBi7hwGKL4sNjAUoo=
+	bh=H2D6sw7M1tf0FGlfciFc1U7nQt5fwH39+wFUtf8S6oA=;
+	b=idjQ1iS+WtptdTHmYn7RmYN8eSa7qM3JyfbYNVDRuoyj9XB03szKm5vCj8JbV3O+6Ha4McV3BSuJXGBjn3osDGq0V7DBRV32jG399T9Nzvsq6APNFWYegP3tZGDeJSNtkZjeBWdYWbLEBwr9vOgQbjzkr9HK3Q2IEPVU/CQ/LD4=
 Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
 	DM6PR01MB5194.prod.exchangelabs.com (20.176.122.31) with Microsoft SMTP
 	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1294.21; Mon, 5 Nov 2018 18:52:03 +0000
+	15.20.1294.21; Mon, 5 Nov 2018 18:51:59 +0000
 Received: from DM6PR01MB4825.prod.exchangelabs.com
 	([fe80::4cf7:c8dc:b673:ec66]) by DM6PR01MB4825.prod.exchangelabs.com
 	([fe80::4cf7:c8dc:b673:ec66%3]) with mapi id 15.20.1294.028;
-	Mon, 5 Nov 2018 18:52:03 +0000
+	Mon, 5 Nov 2018 18:51:59 +0000
 From: Aaron Lindsay <aaron@os.amperecomputing.com>
 To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
 	<peter.maydell@linaro.org>,
@@ -78,11 +78,11 @@ To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
 	Wei Huang <wei@redhat.com>,
 	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
 	Richard Henderson <richard.henderson@linaro.org>
-Thread-Topic: [PATCH v7 12/12] target/arm: Send interrupts on PMU counter
-	overflow
-Thread-Index: AQHUdTikL9h6qRBa00SUiul/aHxLzg==
-Date: Mon, 5 Nov 2018 18:52:03 +0000
-Message-ID: <20181105185046.2802-13-aaron@os.amperecomputing.com>
+Thread-Topic: [PATCH v7 08/12] target/arm: Finish implementation of
+	PM[X]EVCNTR and PM[X]EVTYPER
+Thread-Index: AQHUdTihBOOM77DBnUa0vIMauKNftw==
+Date: Mon, 5 Nov 2018 18:51:58 +0000
+Message-ID: <20181105185046.2802-9-aaron@os.amperecomputing.com>
 References: <20181105185046.2802-1-aaron@os.amperecomputing.com>
 In-Reply-To: <20181105185046.2802-1-aaron@os.amperecomputing.com>
 Accept-Language: en-US
@@ -98,44 +98,44 @@ x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [216.85.170.153]
 x-ms-publictraffictype: Email
 x-microsoft-exchange-diagnostics: 1; DM6PR01MB5194;
-	6:rxqLLKjaNa4u+i+6K/zs4/gYzqkGk/Atha2YnxI6+5u+YHM7FpDjyckdr9ked7UiNvgm+3+M8K12zlSfawXJpqqWAjeVI7/9ACeiAltiS9LV+gHmeVPnrj1E9oQUV3DhzPYbPiYIMmQugvsJklfhGeL5Ol9HnXaVMIpTm0Qy63RGslKy30i115zEX4jBYa1LEKgLE7mYh6lweVKqv8O2vknvTXrBIV3L8ID4bei9lUSK77ZIdCsVBnjNm3OfPbI1yJngiIfTp9WUfqWWsjbgKDUOu/2RCvPWW1dDTFVJS9ASFlXw9GMG/AT5jxhPDuCXsiM7KQbneRFuIiPvLFXLeMA/KXzS9YjyYQFhfKnDiQiOBbfRxElBFn3snyKh5/Z7UrSAWF1sRxpzLQ3Durz+7bjnN2zp/T2eYsaCOkVfpV1o9xhSDMQBn5FcHaTMXR3JnmR1xFRbvo/kloCKRhu6tg==;
-	5:FIxBpkCN/0BBC5/2kyqg9KDp8PUUrYYh1p6FubeLvxwlh+w2N+VBeBjAbkbUaiex7T2Z4Blf07EGgNmzzyE6reVYXhw9epnTCD3L8+M+DghmE5aUROJIkSlRb9Ap9ylF8z0cYh9ADmbJzMUUNrAtwBHmfbhjI/jIkKhIGurI2hU=;
-	7:Kp5eAGqfQXQMTiillTKKRmRF2S6P9G0OMBNZ8SXOjGn8/J29LJEnFIDTvr1k5Raoq79T8Omjq0QMObGHTL42TuePS9Xo4QPlb1AXUnE+1pMNMKLIGgsvmhdnNhQFMy0wi6EI4quNjE4/k77X6sSsNQ==
-x-ms-office365-filtering-correlation-id: 65b52f08-e488-4b4f-11e4-08d6434fc6a7
+	6:RqxiA0CoF6o0S4YUH8mAU5oyYRKYR50AcO5yp9LOBkwvabVqP0ktvEjmPVaclG0iCrG5i3rDMlVzgP+Idl1BZ9sXWTwo5zNMCdusSYS+LcUV6fZuKKIM9OeclITUheojloLTm09KXJlckMzB40Pr4r/6NeGt1yaKknkU9VHX5Reb7ZTSRHz5HFg2qYEMsyT05RbaiiFieAexpMIqNpMjkLpnZg9NmDeJ4LUPQ1kiSb/qAmO0/RGwEGhzpDrgP+iKKDprDE+76UJKMNvpGrLSJyPc1aHjgoJPh9MQzobcpk024sJZF0XrsjAdyzg+I16cwvFtq7I05RDrFeMLTW0D3PqfGw7WH7HgeUn6JE9OuXxQhISfYZnNGX2CcUHALQ1VBj4RMj1ePpbdLmWt5sDSH1NrPIZxgnGyX1n6Jhea3TsnwsW6JVWqorU4e/5jGRf9rDZz1T9/CQWjdZyfplke5A==;
+	5:Wngu6fnUB0qmpPw/7MZNDAMw230K9xW0V/2lfSkvnX67Wdxf5QNZCEHk4ejQmPjMwEfsPHRC1MNw7UnjioHYsu47hpk7fuqpEM3AAHF4Wdr+RL+BUYCsSVq9mPnonTIQUmap5qvoKXsTyc+suTIKWaiGdLRe1pDt4KhWRLYfm6w=;
+	7:e/vE5icGyOYQAvmfPObC66WQSW5sY1+1O5qNXNzbF7/J6bxyAPmWhl8k2/WABcrU8s/m12+h1IyzuRBI9HdAfmb4juDrHML99VTvcfy8k/FoV9bRMomHPn1ZIUUF2qQv47Mz7hD1SBoW4J112p3+WA==
+x-ms-office365-filtering-correlation-id: a6053a07-a7fc-4a53-4575-08d6434fc3eb
 x-microsoft-antispam: BCL:0; PCL:0;
 	RULEID:(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600074)(711020)(2017052603328)(7153060)(7193020);
 	SRVR:DM6PR01MB5194; 
 x-ms-traffictypediagnostic: DM6PR01MB5194:
-x-microsoft-antispam-prvs: <DM6PR01MB5194376F24F79D3C8FFC31988ACA0@DM6PR01MB5194.prod.exchangelabs.com>
-x-exchange-antispam-report-test: UriScan:;
+x-microsoft-antispam-prvs: <DM6PR01MB519433F9A1F32130D6E9EEAB8ACA0@DM6PR01MB5194.prod.exchangelabs.com>
+x-exchange-antispam-report-test: UriScan:(163750095850);
 x-ms-exchange-senderadcheck: 1
 x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
 	RULEID:(8211001083)(6040522)(2401047)(5005006)(8121501046)(10201501046)(3002001)(93006095)(93001095)(3231382)(944501410)(52105095)(148016)(149066)(150057)(6041310)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123564045)(20161123560045)(20161123562045)(20161123558120)(201708071742011)(7699051)(76991095);
 	SRVR:DM6PR01MB5194; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB5194; 
 x-forefront-prvs: 08476BC6EF
 x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(396003)(346002)(136003)(39840400004)(376002)(366004)(189003)(199004)(81166006)(81156014)(53936002)(66066001)(6436002)(486006)(6486002)(6116002)(14444005)(110136005)(256004)(25786009)(4326008)(54906003)(14454004)(7736002)(305945005)(106356001)(26005)(105586002)(186003)(97736004)(39060400002)(102836004)(8936002)(2900100001)(2501003)(386003)(6506007)(8676002)(7416002)(476003)(316002)(52116002)(6512007)(2616005)(99286004)(76176011)(5660300001)(2906002)(86362001)(68736007)(71200400001)(71190400001)(575784001)(3846002)(478600001)(4744004)(446003)(1076002)(11346002);
+	SFS:(10019020)(396003)(346002)(136003)(39840400004)(376002)(366004)(189003)(199004)(81166006)(81156014)(53936002)(53946003)(66066001)(6436002)(486006)(6486002)(6116002)(14444005)(110136005)(256004)(25786009)(4326008)(54906003)(14454004)(7736002)(305945005)(106356001)(26005)(105586002)(186003)(97736004)(39060400002)(102836004)(8936002)(2900100001)(2501003)(386003)(6506007)(8676002)(7416002)(476003)(316002)(52116002)(6512007)(2616005)(99286004)(76176011)(5660300001)(2906002)(86362001)(68736007)(71200400001)(71190400001)(3846002)(478600001)(4744004)(446003)(1076002)(11346002);
 	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5194;
 	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
 	PTR:InfoNoRecords; MX:1; A:0; 
 received-spf: None (protection.outlook.com: os.amperecomputing.com does not
 	designate permitted sender hosts)
-x-microsoft-antispam-message-info: U2IjCjKRgN9zqJMko/JJli+lQjqbc0AiTXkn7NQCRvNckpgS3QM3xPDZNBH5qDK5LRmbAe8vc+c2ekIf/SFJUJ92yuP/hPphKlXKkl/CmifIEi8EHGU5Wtdu75KBF4EMPwT72h3vdHYJGyBhUbe9UvS0Tcsyl4NZGBY+g16u6s5RkfIGCqlA9y8fNES2X4BKuLAgsJsq/27wO7l0BZV0hRbWcIPNhblSjs0aHwuOMeR9r/Jb9jiEVXRIryxfvBOB7ugcq4XZVRGKmbWMBxYiUv++q3yjRglJpq1EQRDEExofwKlwzbyPS9GYs/0Q7YagmsA6IkDC1W9DRrhCiSwT1lexcLH+VFAAu3TOuDxeE6M=
+x-microsoft-antispam-message-info: GB9RVSZucNkrzavHQBiUdsYG3+QcKMC4ToO/Mkf38LspIXq/CDsM+RMZ2yVDoSQKhq4K39Y4K714trLybaFD9lrTGcJo+RO/RX5qhKPfpzJqVwzB//7x7RG3be50nbDLXNFZa4yuL5OraFrnIwniF921t5ocrHQ6eo8TRF3BBV1Noe0wwXqetYXVgR7hZAPUD4wDyMTUa+bGHZomh8ol8RuSzy6OgiiOjobv/MJln+iFGn9m4aIhzWWMtdOWGnv459BewEt92ODAxQQD0GXBm5P0apjTY8cSRe2rMEiJXjZEi2Jq5Yxba8iZMTzhiaIBOlsumW+qhEV9JNDxuJQIg+DjxYLmDzR2f5tdNwyiScs=
 spamdiagnosticoutput: 1:99
 spamdiagnosticmetadata: NSPM
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 65b52f08-e488-4b4f-11e4-08d6434fc6a7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Nov 2018 18:52:03.5250 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a6053a07-a7fc-4a53-4575-08d6434fc3eb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Nov 2018 18:51:58.9618 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5194
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
 X-Received-From: 104.47.37.99
-Subject: [Qemu-arm] [PATCH v7 12/12] target/arm: Send interrupts on PMU
- counter overflow
+Subject: [Qemu-arm] [PATCH v7 08/12] target/arm: Finish implementation of
+ PM[X]EVCNTR and PM[X]EVTYPER
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -154,386 +154,484 @@ Cc: Aaron Lindsay <alindsay@codeaurora.org>,
 	Digant Desai <digantd@codeaurora.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TUxTvPlXgSGr
+X-TUID: KL2CE2ysWTk9
 
-Setup a QEMUTimer to get a callback when we expect counters to next
-overflow and trigger an interrupt at that time.
+Add arrays to hold the registers, the definitions themselves, access
+functions, and logic to reset counters when PMCR.P is set. Update
+filtering code to support counters other than PMCCNTR. Support migration
+with raw read/write functions.
 
 Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.c    |  11 ++++
- target/arm/cpu.h    |   7 +++
- target/arm/helper.c | 126 +++++++++++++++++++++++++++++++++++++++++---
- 3 files changed, 138 insertions(+), 6 deletions(-)
+ target/arm/cpu.h    |   3 +
+ target/arm/helper.c | 296 +++++++++++++++++++++++++++++++++++++++++---
+ 2 files changed, 282 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d1c766d180..7cb6a76afb 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -764,6 +764,12 @@ static void arm_cpu_finalizefn(Object *obj)
-         QLIST_REMOVE(hook, node);
-         g_free(hook);
-     }
-+#ifndef CONFIG_USER_ONLY
-+    if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
-+        timer_deinit(cpu->pmu_timer);
-+        timer_free(cpu->pmu_timer);
-+    }
-+#endif
- }
-=20
- static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-@@ -967,6 +973,11 @@ static void arm_cpu_realizefn(DeviceState *dev, Error =
-**errp)
-             arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
-             arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
-         }
-+
-+#ifndef CONFIG_USER_ONLY
-+        cpu->pmu_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, arm_pmu_timer_=
-cb,
-+                cpu);
-+#endif
-     } else {
-         cpu->pmceid0 =3D 0x00000000;
-         cpu->pmceid1 =3D 0x00000000;
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 067f6efdb6..fa49dc4c47 100644
+index f991ff370e..067f6efdb6 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -730,6 +730,8 @@ struct ARMCPU {
-=20
-     /* Timers used by the generic (architected) timer */
-     QEMUTimer *gt_timer[NUM_GTIMERS];
-+    /* Timer used by the PMU */
-+    QEMUTimer *pmu_timer;
-     /* GPIO outputs for generic timer */
-     qemu_irq gt_timer_outputs[NUM_GTIMERS];
-     /* GPIO output for GICv3 maintenance interrupt signal */
-@@ -988,6 +990,11 @@ void pmccntr_op_finish(CPUARMState *env);
- void pmu_op_start(CPUARMState *env);
- void pmu_op_finish(CPUARMState *env);
-=20
-+/**
-+ * Called when a PMU counter is due to overflow
-+ */
-+void arm_pmu_timer_cb(void *opaque);
-+
- /**
-  * Functions to register as EL change hooks for PMU mode filtering
-  */
+@@ -482,6 +482,9 @@ typedef struct CPUARMState {
+          * pmccntr_op_finish.
+          */
+         uint64_t c15_ccnt_delta;
++        uint64_t c14_pmevcntr[31];
++        uint64_t c14_pmevcntr_delta[31];
++        uint64_t c14_pmevtyper[31];
+         uint64_t pmccfiltr_el0; /* Performance Monitor Filter Register */
+         uint64_t vpidr_el2; /* Virtualization Processor ID Register */
+         uint64_t vmpidr_el2; /* Virtualization Multiprocessor ID Register =
+*/
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cff3a5a562..6c3f997b0e 100644
+index b9d8441497..b7297d72a8 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -977,6 +977,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] =3D {
- /* Definitions for the PMU registers */
- #define PMCRN_MASK  0xf800
- #define PMCRN_SHIFT 11
-+#define PMCRLC  0x40
+@@ -979,6 +979,7 @@ static const ARMCPRegInfo v6_cp_reginfo[] =3D {
  #define PMCRDP  0x10
  #define PMCRD   0x8
  #define PMCRC   0x4
-@@ -996,6 +997,8 @@ static const ARMCPRegInfo v6_cp_reginfo[] =3D {
-                                PMXEVTYPER_M | PMXEVTYPER_MT | \
-                                PMXEVTYPER_EVTCOUNT)
++#define PMCRP   0x2
+ #define PMCRE   0x1
 =20
-+#define PMEVCNTR_OVERFLOW_MASK ((uint64_t)1 << 31)
-+
- #define PMCCFILTR             0xf8000000
- #define PMCCFILTR_M           PMXEVTYPER_M
- #define PMCCFILTR_EL0         (PMCCFILTR | PMCCFILTR_M)
-@@ -1020,6 +1023,11 @@ typedef struct pm_event {
-      * counters hold a difference from the return value from this function
-      */
-     uint64_t (*get_count)(CPUARMState *);
-+    /* Return how many nanoseconds it will take (at a minimum) for count e=
-vents
-+     * to occur. A negative value indicates the counter will never overflo=
-w, or
-+     * that the counter has otherwise arranged for the overflow bit to be =
-set
-+     * and the PMU interrupt to be raised on overflow. */
-+    int64_t (*ns_per_count)(uint64_t);
- } pm_event;
-=20
- static bool event_always_supported(CPUARMState *env)
-@@ -1036,6 +1044,11 @@ static uint64_t swinc_get_count(CPUARMState *env)
-     return 0;
+ #define PMXEVTYPER_P          0x80000000
+@@ -1051,6 +1052,17 @@ uint64_t get_pmceid(CPUARMState *env)
+     return pmceid;
  }
 =20
-+static int64_t swinc_ns_per(uint64_t ignored)
++/*
++ * Check at runtime whether a PMU event is supported for the current machi=
+ne
++ */
++static bool event_supported(uint16_t number)
 +{
-+    return -1;
++    if (number > MAX_EVENT_ID) {
++        return false;
++    }
++    return supported_event_map[number] !=3D UNSUPPORTED_EVENT;
 +}
 +
- /*
-  * Return the underlying cycle count for the PMU cycle counters. If we're =
-in
-  * usermode, simply return 0.
-@@ -1051,6 +1064,11 @@ static uint64_t cycles_get_count(CPUARMState *env)
- }
-=20
- #ifndef CONFIG_USER_ONLY
-+static int64_t cycles_ns_per(uint64_t cycles)
-+{
-+    return (ARM_CPU_FREQ / NANOSECONDS_PER_SECOND) * cycles;
-+}
-+
- static bool instructions_supported(CPUARMState *env)
+ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *r=
+i,
+                                    bool isread)
  {
-     return use_icount =3D=3D 1 /* Precise instruction counting */;
-@@ -1060,21 +1078,29 @@ static uint64_t instructions_get_count(CPUARMState =
-*env)
- {
-     return (uint64_t)cpu_get_icount_raw();
- }
-+
-+static int64_t instructions_ns_per(uint64_t icount)
-+{
-+    return cpu_icount_to_ns((int64_t)icount);
-+}
- #endif
-=20
- static const pm_event pm_events[] =3D {
-     { .number =3D 0x000, /* SW_INCR */
-       .supported =3D event_always_supported,
-       .get_count =3D swinc_get_count,
-+      .ns_per_count =3D swinc_ns_per,
-     },
- #ifndef CONFIG_USER_ONLY
-     { .number =3D 0x008, /* INST_RETIRED, Instruction architecturally exec=
-uted */
-       .supported =3D instructions_supported,
-       .get_count =3D instructions_get_count,
-+      .ns_per_count =3D instructions_ns_per,
-     },
-     { .number =3D 0x011, /* CPU_CYCLES, Cycle */
-       .supported =3D event_always_supported,
-       .get_count =3D cycles_get_count,
-+      .ns_per_count =3D cycles_ns_per,
-     }
- #endif
- };
-@@ -1273,6 +1299,13 @@ static bool pmu_counter_enabled(CPUARMState *env, ui=
+@@ -1170,9 +1182,11 @@ static bool pmu_counter_enabled(CPUARMState *env, ui=
 nt8_t counter)
+         prohibited =3D env->cp15.c9_pmcr & PMCRDP;
+     }
+=20
+-    /* TODO Remove assert, set filter to correct PMEVTYPER */
+-    assert(counter =3D=3D 31);
+-    filter =3D env->cp15.pmccfiltr_el0;
++    if (counter =3D=3D 31) {
++        filter =3D env->cp15.pmccfiltr_el0;
++    } else {
++        filter =3D env->cp15.c14_pmevtyper[counter];
++    }
+=20
+     p   =3D filter & PMXEVTYPER_P;
+     u   =3D filter & PMXEVTYPER_U;
+@@ -1192,6 +1206,17 @@ static bool pmu_counter_enabled(CPUARMState *env, ui=
+nt8_t counter)
+         filtered =3D m !=3D p;
+     }
+=20
++    if (counter !=3D 31) {
++        /*
++         * If not checking PMCCNTR, ensure the counter is setup to an even=
+t we
++         * support
++         */
++        uint16_t event =3D filter & PMXEVTYPER_EVTCOUNT;
++        if (!event_supported(event)) {
++            return false;
++        }
++    }
++
      return enabled && !prohibited && !filtered;
  }
 =20
-+static void pmu_update_irq(CPUARMState *env)
+@@ -1238,14 +1263,47 @@ void pmccntr_op_finish(CPUARMState *env)
+     }
+ }
+=20
++static void pmevcntr_op_start(CPUARMState *env, uint8_t counter)
 +{
-+    ARMCPU *cpu =3D arm_env_get_cpu(env);
-+    qemu_set_irq(cpu->pmu_interrupt, (env->cp15.c9_pmcr & PMCRE) &&
-+            (env->cp15.c9_pminten & env->cp15.c9_pmovsr));
-+}
 +
- /*
-  * Ensure c15_ccnt is the guest-visible count so that operations such as
-  * enabling/disabling the counter or filtering, modifying the count itself=
-,
-@@ -1290,7 +1323,18 @@ void pmccntr_op_start(CPUARMState *env)
-             eff_cycles /=3D 64;
-         }
-=20
--        env->cp15.c15_ccnt =3D eff_cycles - env->cp15.c15_ccnt_delta;
-+        uint64_t new_pmccntr =3D eff_cycles - env->cp15.c15_ccnt_delta;
-+
-+        unsigned int overflow_bit =3D (env->cp15.c9_pmcr & PMCRLC) ? 63 : =
-31;
-+        uint64_t overflow_mask =3D (uint64_t)1 << overflow_bit;
-+        if (!(new_pmccntr & overflow_mask) &&
-+                (env->cp15.c15_ccnt & overflow_mask)) {
-+            env->cp15.c9_pmovsr |=3D (1 << 31);
-+            new_pmccntr &=3D ~overflow_mask;
-+            pmu_update_irq(env);
-+        }
-+
-+        env->cp15.c15_ccnt =3D new_pmccntr;
-     }
-     env->cp15.c15_ccnt_delta =3D cycles;
- }
-@@ -1303,13 +1347,28 @@ void pmccntr_op_start(CPUARMState *env)
- void pmccntr_op_finish(CPUARMState *env)
- {
-     if (pmu_counter_enabled(env, 31)) {
--        uint64_t prev_cycles =3D env->cp15.c15_ccnt_delta;
-+#ifndef CONFIG_USER_ONLY
-+        uint64_t delta;
-+        if (env->cp15.c9_pmcr & PMCRLC) {
-+            delta =3D UINT64_MAX - env->cp15.c15_ccnt + 1;
-+        } else {
-+            delta =3D UINT32_MAX - (uint32_t)env->cp15.c15_ccnt + 1;
-+        }
-+        int64_t overflow_in =3D cycles_ns_per(delta);
-+
-+        if (overflow_in > 0) {
-+            int64_t overflow_at =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) =
-+
-+                overflow_in;
-+            ARMCPU *cpu =3D arm_env_get_cpu(env);
-+            timer_mod_anticipate_ns(cpu->pmu_timer, overflow_at);
-+        }
-+#endif
-=20
-+        uint64_t prev_cycles =3D env->cp15.c15_ccnt_delta;
-         if (env->cp15.c9_pmcr & PMCRD) {
-             /* Increment once every 64 processor clock cycles */
-             prev_cycles /=3D 64;
-         }
--
-         env->cp15.c15_ccnt_delta =3D prev_cycles - env->cp15.c15_ccnt;
-     }
- }
-@@ -1325,8 +1384,15 @@ static void pmevcntr_op_start(CPUARMState *env, uint=
-8_t counter)
-     }
-=20
-     if (pmu_counter_enabled(env, counter)) {
--        env->cp15.c14_pmevcntr[counter] =3D
--            count - env->cp15.c14_pmevcntr_delta[counter];
-+        uint64_t new_pmevcntr =3D count - env->cp15.c14_pmevcntr_delta[cou=
-nter];
-+
-+        if (!(new_pmevcntr & PMEVCNTR_OVERFLOW_MASK) &&
-+                (env->cp15.c14_pmevcntr[counter] & PMEVCNTR_OVERFLOW_MASK)=
-) {
-+            env->cp15.c9_pmovsr |=3D (1 << counter);
-+            new_pmevcntr &=3D ~PMEVCNTR_OVERFLOW_MASK;
-+            pmu_update_irq(env);
-+        }
-+        env->cp15.c14_pmevcntr[counter] =3D new_pmevcntr;
-     }
-     env->cp15.c14_pmevcntr_delta[counter] =3D count;
- }
-@@ -1334,6 +1400,21 @@ static void pmevcntr_op_start(CPUARMState *env, uint=
-8_t counter)
- static void pmevcntr_op_finish(CPUARMState *env, uint8_t counter)
- {
-     if (pmu_counter_enabled(env, counter)) {
-+#ifndef CONFIG_USER_ONLY
-+        uint16_t event =3D env->cp15.c14_pmevtyper[counter] & PMXEVTYPER_E=
-VTCOUNT;
++    uint16_t event =3D env->cp15.c14_pmevtyper[counter] & PMXEVTYPER_EVTCO=
+UNT;
++    uint64_t count =3D 0;
++    if (event_supported(event)) {
 +        uint16_t event_idx =3D supported_event_map[event];
-+        uint64_t delta =3D UINT32_MAX -
-+            (uint32_t)env->cp15.c14_pmevcntr[counter] + 1;
-+        int64_t overflow_in =3D pm_events[event_idx].ns_per_count(delta);
++        count =3D pm_events[event_idx].get_count(env);
++    }
 +
-+        if (overflow_in > 0) {
-+            int64_t overflow_at =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) =
-+
-+                overflow_in;
-+            ARMCPU *cpu =3D arm_env_get_cpu(env);
-+            timer_mod_anticipate_ns(cpu->pmu_timer, overflow_at);
-+        }
-+#endif
-+
-         env->cp15.c14_pmevcntr_delta[counter] -=3D
-             env->cp15.c14_pmevcntr[counter];
-     }
-@@ -1367,6 +1448,19 @@ void pmu_post_el_change(ARMCPU *cpu, void *ignored)
-     pmu_op_finish(&cpu->env);
- }
-=20
-+void arm_pmu_timer_cb(void *opaque)
-+{
-+    ARMCPU *cpu =3D opaque;
-+
-+    /* Update all the counter values based on the current underlying count=
-s,
-+     * triggering interrupts to be raised, if necessary. pmu_op_finish() a=
-lso
-+     * has the effect of setting the cpu->pmu_timer to the next earliest t=
-ime a
-+     * counter may expire.
-+     */
-+    pmu_op_start(&cpu->env);
-+    pmu_op_finish(&cpu->env);
++    if (pmu_counter_enabled(env, counter)) {
++        env->cp15.c14_pmevcntr[counter] =3D
++            count - env->cp15.c14_pmevcntr_delta[counter];
++    }
++    env->cp15.c14_pmevcntr_delta[counter] =3D count;
 +}
 +
- static void pmcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                        uint64_t value)
++static void pmevcntr_op_finish(CPUARMState *env, uint8_t counter)
++{
++    if (pmu_counter_enabled(env, counter)) {
++        env->cp15.c14_pmevcntr_delta[counter] -=3D
++            env->cp15.c14_pmevcntr[counter];
++    }
++}
++
+ void pmu_op_start(CPUARMState *env)
  {
-@@ -1403,7 +1497,21 @@ static void pmswinc_write(CPUARMState *env, const AR=
-MCPRegInfo *ri,
-                 /* counter is SW_INCR */
-                 (env->cp15.c14_pmevtyper[i] & PMXEVTYPER_EVTCOUNT) =3D=3D =
-0x0) {
-             pmevcntr_op_start(env, i);
--            env->cp15.c14_pmevcntr[i]++;
-+
-+            /* Detect if this write causes an overflow since we can't pred=
-ict
-+             * PMSWINC overflows like we can for other events
-+             */
-+            uint64_t new_pmswinc =3D env->cp15.c14_pmevcntr[i] + 1;
-+
-+            if (!(new_pmswinc & PMEVCNTR_OVERFLOW_MASK) &&
-+                    (env->cp15.c14_pmevcntr[i] & PMEVCNTR_OVERFLOW_MASK)) =
-{
-+                env->cp15.c9_pmovsr |=3D (1 << i);
-+                new_pmswinc &=3D ~PMEVCNTR_OVERFLOW_MASK;
-+                pmu_update_irq(env);
-+            }
-+
-+            env->cp15.c14_pmevcntr[i] =3D new_pmswinc;
-+
-             pmevcntr_op_finish(env, i);
-         }
++    unsigned int i;
+     pmccntr_op_start(env);
++    for (i =3D 0; i < pmu_num_counters(env); i++) {
++        pmevcntr_op_start(env, i);
++    }
+ }
+=20
+ void pmu_op_finish(CPUARMState *env)
+ {
++    unsigned int i;
+     pmccntr_op_finish(env);
++    for (i =3D 0; i < pmu_num_counters(env); i++) {
++        pmevcntr_op_finish(env, i);
++    }
+ }
+=20
+ void pmu_pre_el_change(ARMCPU *cpu, void *ignored)
+@@ -1268,6 +1326,13 @@ static void pmcr_write(CPUARMState *env, const ARMCP=
+RegInfo *ri,
+         env->cp15.c15_ccnt =3D 0;
      }
-@@ -1474,6 +1582,7 @@ static void pmcntenset_write(CPUARMState *env, const =
-ARMCPRegInfo *ri,
+=20
++    if (value & PMCRP) {
++        unsigned int i;
++        for (i =3D 0; i < pmu_num_counters(env); i++) {
++            env->cp15.c14_pmevcntr[i] =3D 0;
++        }
++    }
++
+     /* only the DP, X, D and E bits are writable */
+     env->cp15.c9_pmcr &=3D ~0x39;
+     env->cp15.c9_pmcr |=3D (value & 0x39);
+@@ -1321,6 +1386,14 @@ void pmccntr_op_finish(CPUARMState *env)
  {
-     value &=3D pmu_counter_mask(env);
-     env->cp15.c9_pmcnten |=3D value;
-+    pmu_update_irq(env);
  }
 =20
- static void pmcntenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1481,6 +1590,7 @@ static void pmcntenclr_write(CPUARMState *env, const =
-ARMCPRegInfo *ri,
++void pmevcntr_op_start(CPUARMState *env, uint8_t i)
++{
++}
++
++void pmevcntr_op_finish(CPUARMState *env, uint8_t i)
++{
++}
++
+ void pmu_op_start(CPUARMState *env)
  {
-     value &=3D pmu_counter_mask(env);
-     env->cp15.c9_pmcnten &=3D ~value;
-+    pmu_update_irq(env);
  }
-=20
- static void pmovsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1488,6 +1598,7 @@ static void pmovsr_write(CPUARMState *env, const ARMC=
-PRegInfo *ri,
- {
-     value &=3D pmu_counter_mask(env);
-     env->cp15.c9_pmovsr &=3D ~value;
-+    pmu_update_irq(env);
- }
-=20
- static void pmovsset_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1495,6 +1606,7 @@ static void pmovsset_write(CPUARMState *env, const AR=
-MCPRegInfo *ri,
- {
-     value &=3D pmu_counter_mask(env);
+@@ -1391,30 +1464,174 @@ static void pmovsset_write(CPUARMState *env, const=
+ ARMCPRegInfo *ri,
      env->cp15.c9_pmovsr |=3D value;
-+    pmu_update_irq(env);
  }
 =20
- static void pmevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1681,6 +1793,7 @@ static void pmintenset_write(CPUARMState *env, const =
-ARMCPRegInfo *ri,
-     /* We have no event counters so only the C bit can be changed */
-     value &=3D pmu_counter_mask(env);
-     env->cp15.c9_pminten |=3D value;
-+    pmu_update_irq(env);
- }
-=20
- static void pmintenclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -1688,6 +1801,7 @@ static void pmintenclr_write(CPUARMState *env, const =
-ARMCPRegInfo *ri,
+-static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                             uint64_t value)
++static void pmevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value, const uint8_t counter)
  {
-     value &=3D pmu_counter_mask(env);
-     env->cp15.c9_pminten &=3D ~value;
-+    pmu_update_irq(env);
++    if (counter =3D=3D 31) {
++        pmccfiltr_write(env, ri, value);
++    } else if (counter < pmu_num_counters(env)) {
++        pmevcntr_op_start(env, counter);
++
++        /*
++         * If this counter's event type is changing, store the current
++         * underlying count for the new type in c14_pmevcntr_delta[counter=
+] so
++         * pmevcntr_op_finish has the correct baseline when it converts ba=
+ck to
++         * a delta.
++         */
++        uint16_t old_event =3D env->cp15.c14_pmevtyper[counter] &
++            PMXEVTYPER_EVTCOUNT;
++        uint16_t new_event =3D value & PMXEVTYPER_EVTCOUNT;
++        if (old_event !=3D new_event) {
++            uint64_t count =3D 0;
++            if (event_supported(new_event)) {
++                uint16_t event_idx =3D supported_event_map[new_event];
++                count =3D pm_events[event_idx].get_count(env);
++            }
++            env->cp15.c14_pmevcntr_delta[counter] =3D count;
++        }
++
++        env->cp15.c14_pmevtyper[counter] =3D value & PMXEVTYPER_MASK;
++        pmevcntr_op_finish(env, counter);
++    }
+     /* Attempts to access PMXEVTYPER are CONSTRAINED UNPREDICTABLE when
+      * PMSELR value is equal to or greater than the number of implemented
+      * counters, but not equal to 0x1f. We opt to behave as a RAZ/WI.
+      */
+-    if (env->cp15.c9_pmselr =3D=3D 0x1f) {
+-        pmccfiltr_write(env, ri, value);
++}
++
++static uint64_t pmevtyper_read(CPUARMState *env, const ARMCPRegInfo *ri,
++                               const uint8_t counter)
++{
++    if (counter =3D=3D 31) {
++        return env->cp15.pmccfiltr_el0;
++    } else if (counter < pmu_num_counters(env)) {
++        return env->cp15.c14_pmevtyper[counter];
++    } else {
++      /*
++       * We opt to behave as a RAZ/WI when attempts to access PMXEVTYPER
++       * are CONSTRAINED UNPREDICTABLE. See comments in pmevtyper_write().
++       */
++        return 0;
+     }
  }
 =20
- static void vbar_write(CPUARMState *env, const ARMCPRegInfo *ri,
++static void pmevtyper_writefn(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    pmevtyper_write(env, ri, value, counter);
++}
++
++static void pmevtyper_rawwrite(CPUARMState *env, const ARMCPRegInfo *ri,
++                               uint64_t value)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    env->cp15.c14_pmevtyper[counter] =3D value;
++
++    /*
++     * pmevtyper_rawwrite is called between a pair of pmu_op_start and
++     * pmu_op_finish calls when loading saved state for a migration. Becau=
+se
++     * we're potentially updating the type of event here, the value writte=
+n to
++     * c14_pmevcntr_delta by the preceeding pmu_op_start call may be for a
++     * different counter type. Therefore, we need to set this value to the
++     * current count for the counter type we're writing so that pmu_op_fin=
+ish
++     * has the correct count for its calculation.
++     */
++    uint16_t event =3D value & PMXEVTYPER_EVTCOUNT;
++    if (event_supported(event)) {
++        uint16_t event_idx =3D supported_event_map[event];
++        env->cp15.c14_pmevcntr_delta[counter] =3D
++            pm_events[event_idx].get_count(env);
++    }
++}
++
++static uint64_t pmevtyper_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    return pmevtyper_read(env, ri, counter);
++}
++
++static void pmxevtyper_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    pmevtyper_write(env, ri, value, env->cp15.c9_pmselr & 31);
++}
++
+ static uint64_t pmxevtyper_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+-    /* We opt to behave as a RAZ/WI when attempts to access PMXEVTYPER
+-     * are CONSTRAINED UNPREDICTABLE. See comments in pmxevtyper_write().
++    return pmevtyper_read(env, ri, env->cp15.c9_pmselr & 31);
++}
++
++static void pmevcntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value, uint8_t counter)
++{
++    if (counter < pmu_num_counters(env)) {
++        pmevcntr_op_start(env, counter);
++        env->cp15.c14_pmevcntr[counter] =3D value;
++        pmevcntr_op_finish(env, counter);
++    }
++    /*
++     * We opt to behave as a RAZ/WI when attempts to access PM[X]EVCNTR
++     * are CONSTRAINED UNPREDICTABLE.
+      */
+-    if (env->cp15.c9_pmselr =3D=3D 0x1f) {
+-        return env->cp15.pmccfiltr_el0;
++}
++
++static uint64_t pmevcntr_read(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint8_t counter)
++{
++    if (counter < pmu_num_counters(env)) {
++        uint64_t ret;
++        pmevcntr_op_start(env, counter);
++        ret =3D env->cp15.c14_pmevcntr[counter];
++        pmevcntr_op_finish(env, counter);
++        return ret;
+     } else {
++      /* We opt to behave as a RAZ/WI when attempts to access PM[X]EVCNTR
++       * are CONSTRAINED UNPREDICTABLE. */
+         return 0;
+     }
+ }
+=20
++static void pmevcntr_writefn(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    pmevcntr_write(env, ri, value, counter);
++}
++
++static uint64_t pmevcntr_readfn(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    return pmevcntr_read(env, ri, counter);
++}
++
++static void pmevcntr_rawwrite(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    assert(counter < pmu_num_counters(env));
++    env->cp15.c14_pmevcntr[counter] =3D value;
++    pmevcntr_write(env, ri, value, counter);
++}
++
++static uint64_t pmevcntr_rawread(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint8_t counter =3D ((ri->crm & 3) << 3) | (ri->opc2 & 7);
++    assert(counter < pmu_num_counters(env));
++    return env->cp15.c14_pmevcntr[counter];
++}
++
++static void pmxevcntr_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    pmevcntr_write(env, ri, value, env->cp15.c9_pmselr & 31);
++}
++
++static uint64_t pmxevcntr_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return pmevcntr_read(env, ri, env->cp15.c9_pmselr & 31);
++}
++
+ static void pmuserenr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
+ {
+@@ -1618,16 +1835,23 @@ static const ARMCPRegInfo v7_cp_reginfo[] =3D {
+       .fieldoffset =3D offsetof(CPUARMState, cp15.pmccfiltr_el0),
+       .resetvalue =3D 0, },
+     { .name =3D "PMXEVTYPER", .cp =3D 15, .crn =3D 9, .crm =3D 13, .opc1 =
+=3D 0, .opc2 =3D 1,
+-      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW, .accessfn =3D pmreg_acc=
+ess,
++      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW | ARM_CP_IO,
++      .accessfn =3D pmreg_access,
+       .writefn =3D pmxevtyper_write, .readfn =3D pmxevtyper_read },
+     { .name =3D "PMXEVTYPER_EL0", .state =3D ARM_CP_STATE_AA64,
+       .opc0 =3D 3, .opc1 =3D 3, .crn =3D 9, .crm =3D 13, .opc2 =3D 1,
+-      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW, .accessfn =3D pmreg_acc=
+ess,
++      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW | ARM_CP_IO,
++      .accessfn =3D pmreg_access,
+       .writefn =3D pmxevtyper_write, .readfn =3D pmxevtyper_read },
+-    /* Unimplemented, RAZ/WI. */
+     { .name =3D "PMXEVCNTR", .cp =3D 15, .crn =3D 9, .crm =3D 13, .opc1 =
+=3D 0, .opc2 =3D 2,
+-      .access =3D PL0_RW, .type =3D ARM_CP_CONST, .resetvalue =3D 0,
+-      .accessfn =3D pmreg_access_xevcntr },
++      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW | ARM_CP_IO,
++      .accessfn =3D pmreg_access_xevcntr,
++      .writefn =3D pmxevcntr_write, .readfn =3D pmxevcntr_read },
++    { .name =3D "PMXEVCNTR_EL0", .state =3D ARM_CP_STATE_AA64,
++      .opc0 =3D 3, .opc1 =3D 3, .crn =3D 9, .crm =3D 13, .opc2 =3D 2,
++      .access =3D PL0_RW, .type =3D ARM_CP_NO_RAW | ARM_CP_IO,
++      .accessfn =3D pmreg_access_xevcntr,
++      .writefn =3D pmxevcntr_write, .readfn =3D pmxevcntr_read },
+     { .name =3D "PMUSERENR", .cp =3D 15, .crn =3D 9, .crm =3D 14, .opc1 =
+=3D 0, .opc2 =3D 0,
+       .access =3D PL0_R | PL1_RW, .accessfn =3D access_tpm,
+       .fieldoffset =3D offsetoflow32(CPUARMState, cp15.c9_pmuserenr),
+@@ -4435,7 +4659,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] =3D {
+ #endif
+     /* The only field of MDCR_EL2 that has a defined architectural reset v=
+alue
+      * is MDCR_EL2.HPMN which should reset to the value of PMCR_EL0.N; but=
+ we
+-     * don't impelment any PMU event counters, so using zero as a reset
++     * don't implement any PMU event counters, so using zero as a reset
+      * value for MDCR_EL2 is okay
+      */
+     { .name =3D "MDCR_EL2", .state =3D ARM_CP_STATE_BOTH,
+@@ -5287,6 +5511,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+          * field as main ID register, and we implement only the cycle
+          * count register.
+          */
++        unsigned int i, pmcrn =3D 0;
+ #ifndef CONFIG_USER_ONLY
+         ARMCPRegInfo pmcr =3D {
+             .name =3D "PMCR", .cp =3D 15, .crn =3D 9, .crm =3D 12, .opc1 =
+=3D 0, .opc2 =3D 0,
+@@ -5307,6 +5532,43 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         };
+         define_one_arm_cp_reg(cpu, &pmcr);
+         define_one_arm_cp_reg(cpu, &pmcr64);
++        for (i =3D 0; i < pmcrn; i++) {
++            char *pmevcntr_name =3D g_strdup_printf("PMEVCNTR%d", i);
++            char *pmevcntr_el0_name =3D g_strdup_printf("PMEVCNTR%d_EL0", =
+i);
++            char *pmevtyper_name =3D g_strdup_printf("PMEVTYPER%d", i);
++            char *pmevtyper_el0_name =3D g_strdup_printf("PMEVTYPER%d_EL0"=
+, i);
++            ARMCPRegInfo pmev_regs[] =3D {
++                { .name =3D pmevcntr_name, .cp =3D 15, .crn =3D 15,
++                  .crm =3D 8 | (3 & (i >> 3)), .opc1 =3D 0, .opc2 =3D i & =
+7,
++                  .access =3D PL0_RW, .type =3D ARM_CP_IO | ARM_CP_ALIAS,
++                  .readfn =3D pmevcntr_readfn, .writefn =3D pmevcntr_write=
+fn,
++                  .accessfn =3D pmreg_access },
++                { .name =3D pmevcntr_el0_name, .state =3D ARM_CP_STATE_AA6=
+4,
++                  .opc0 =3D 3, .opc1 =3D 3, .crn =3D 15, .crm =3D 8 | (3 &=
+ (i >> 3)),
++                  .opc2 =3D i & 7, .access =3D PL0_RW, .accessfn =3D pmreg=
+_access,
++                  .type =3D ARM_CP_IO,
++                  .readfn =3D pmevcntr_readfn, .writefn =3D pmevcntr_write=
+fn,
++                  .raw_readfn =3D pmevcntr_rawread,
++                  .raw_writefn =3D pmevcntr_rawwrite },
++                { .name =3D pmevtyper_name, .cp =3D 15, .crn =3D 15,
++                  .crm =3D 12 | (3 & (i >> 3)), .opc1 =3D 0, .opc2 =3D i &=
+ 7,
++                  .access =3D PL0_RW, .type =3D ARM_CP_IO | ARM_CP_ALIAS,
++                  .readfn =3D pmevtyper_readfn, .writefn =3D pmevtyper_wri=
+tefn,
++                  .accessfn =3D pmreg_access },
++                { .name =3D pmevtyper_el0_name, .state =3D ARM_CP_STATE_AA=
+64,
++                  .opc0 =3D 3, .opc1 =3D 3, .crn =3D 15, .crm =3D 12 | (3 =
+& (i >> 3)),
++                  .opc2 =3D i & 7, .access =3D PL0_RW, .accessfn =3D pmreg=
+_access,
++                  .type =3D ARM_CP_IO,
++                  .readfn =3D pmevtyper_readfn, .writefn =3D pmevtyper_wri=
+tefn,
++                  .raw_writefn =3D pmevtyper_rawwrite },
++                REGINFO_SENTINEL
++            };
++            define_arm_cp_regs(cpu, pmev_regs);
++            g_free(pmevcntr_name);
++            g_free(pmevcntr_el0_name);
++            g_free(pmevtyper_name);
++            g_free(pmevtyper_el0_name);
++        }
+ #endif
+         ARMCPRegInfo clidr =3D {
+             .name =3D "CLIDR", .state =3D ARM_CP_STATE_BOTH,
 --=20
 2.19.1
 

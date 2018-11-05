@@ -1,79 +1,77 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp1401237wro;
-        Sun, 4 Nov 2018 03:25:36 -0800 (PST)
-X-Google-Smtp-Source: AJdET5e4S0jL6mi11eaZIohsN6d73uOwJo6RohgxE+GlZwAlBEthXrQ4iKe/+2WW93uxwu7l9qWw
-X-Received: by 2002:ac8:2a97:: with SMTP id b23-v6mr17670484qta.110.1541330736653;
-        Sun, 04 Nov 2018 03:25:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541330736; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2474586wro;
+        Mon, 5 Nov 2018 03:48:12 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ekWAndrByS6jsZFckobKiLQi1K+hqjqKRQO6qpaJF8tqRno4EEoTr5GhhomEqqVSOrNYKa
+X-Received: by 2002:ae9:de46:: with SMTP id s67-v6mr1223169qkf.257.1541418492295;
+        Mon, 05 Nov 2018 03:48:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541418492; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z4S3LQvdARt4sM/2i9XdquO1tG2Npr+50/dRWjMBBgzqi9K/uJc/pz9GevoylTANrv
-         WTx2sTpmSgEgP7A3BX1tiZCoQTxySdacIW5hLuG2HwH9DfiTMF3yyxdjkFm1uy9X4VgX
-         WS/aKNSLY8nt+K/l9wJEevNbAbOzrkSgl341xdbUz4sHTEjE3W+YRSM3lC9FMJ+DiVKj
-         Wm82xFZyGpwfxCWomHuFrarrsXOseQHDb2xmE6tDdpsL05GqGlfP1BLPB9JYGdV9OLjG
-         vXlWuJm2uV4V7WhRCCcImfrEyJFT6d7ZlJnBMdJ+4kr9sVn/3ALit+pPQIf0GG6Yc1fD
-         SHmA==
+        b=WCG2WOVqV6wwZm/N/HJfh/KZJX24kSBwTBRsPLYmvC+7F9Dm6lWrv5QmzZ9bV5rLhr
+         A69yEqsPVYf55PzHocCaIEAQ8Y5g6zr/+FPbAkG8DmTpQbOYutxvfHrLdTIxkdsLAgIu
+         df3mTqnR9AlzoH9CpqcfpJQCXJoDgwDKg6S31QAjUqWp0S4XiWsRsHSKRpl7vp41lsTy
+         StiYPoyQXPs8mw4QOZvsuSBoy8QZo2NX3Xz7MTnSJnLgB37sGpQl46Y+t4/KYpKBAnAM
+         p8IB3Y7oYbtdGjsQJqTjLTicUN3owl7TgOjr1P+IU0rimru7HY+RHGwomYbCzNm3a0I1
+         accg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :organization:user-agent:references:in-reply-to:to:from:message-id
-         :date;
-        bh=wO6DtJV+JhMNn2ePp8vHzBzN5EEdfLh/zhkWQy0xiHM=;
-        b=geDW1aWIQNCcd/rx2iKH8h+o0sIhJnzyHpwoNaGMF5YVxWirXx6IVuJkPnjDkUEXNO
-         HNUvrZ/4PB1rheQ+ZaHukFVx+nm9nF+2sJAV8PfM3Fb2tdUC9+1f+Ln+ENfBb9zfaRiu
-         tj3JsUHZhq+WkDMNMTh8/tNtMG7JjFqxPyPoQHQ0tf/iscFw/C/vTBd6JAj0JV9Vs8Pf
-         UaGES42n2+8b+qONWuZEdyHG/c3gY+OmM6ESrrMOHSw1IE19HockSAlnP76+dF1f9SEe
-         Mn+oIlVA7PcRe4eJYd7jhlVo8RrJUq7CvJiMXLnO4nWEKtUHCENA4yWyi77zmRE88OzW
-         d5jQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=LlUa7QpDUCn3/tTBxcQ0pl6ARvqlnJeHFWxtDx5fOK0=;
+        b=zBDECgOQYgBvQFRwuqe+6q530+DspBS4wA4T6hr8q31I9tmZbl9xYHT/OGwwuaC0wB
+         OX7V7rHXohGKVdhbNwibv+PAloUpH61keseG/B1Uj+S7tvsDw/HbHr006dStSkHL5KAM
+         QGUhr8j1jd3YKHA0VxGiHloU342jm+dMekM2f8kbW4dlT+mv83gmENlYj5m5ZExbjroe
+         FDyR2LHuaFTNa87wcUmBUWtBY5LPfFnHmZ/7xB6qfvoQXRldfSsTsAuHxhcZv/KElrEA
+         0ua2szPPcyQBtNKjbnYrkKQl6bouZGUIeK6NZXpaxjCfFl9KPdoQW3NalT3KUcPOEyq7
+         XRpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y27si4728103qtk.149.2018.11.04.03.25.36
+        by mx.google.com with ESMTPS id k41si4707986qvh.67.2018.11.05.03.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 04 Nov 2018 03:25:36 -0800 (PST)
+        Mon, 05 Nov 2018 03:48:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58444 helo=lists.gnu.org)
+Received: from localhost ([::1]:34672 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJGXA-00024z-1f
-	for alex.bennee@linaro.org; Sun, 04 Nov 2018 06:25:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38010)
+	id 1gJdMZ-0007Gu-Px
+	for alex.bennee@linaro.org; Mon, 05 Nov 2018 06:48:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50493)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marc.zyngier@arm.com>) id 1gJGWz-00024r-7B
-	for qemu-arm@nongnu.org; Sun, 04 Nov 2018 06:25:26 -0500
+	(envelope-from <mark.rutland@arm.com>) id 1gJdMP-0007Ga-8g
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 06:48:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marc.zyngier@arm.com>) id 1gJGWu-0006bP-DX
-	for qemu-arm@nongnu.org; Sun, 04 Nov 2018 06:25:24 -0500
-Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:37640
+	(envelope-from <mark.rutland@arm.com>) id 1gJdML-0006sx-VG
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 06:48:01 -0500
+Received: from usa-sjc-mx-foss1.foss.arm.com ([217.140.101.70]:49106
 	helo=foss.arm.com) by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marc.zyngier@arm.com>)
-	id 1gJGWg-0006Lr-KA; Sun, 04 Nov 2018 06:25:10 -0500
+	(envelope-from <mark.rutland@arm.com>)
+	id 1gJdML-0006VB-Mx; Mon, 05 Nov 2018 06:47:57 -0500
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.72.51.249])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F0FC8A78;
-	Sun,  4 Nov 2018 03:25:04 -0800 (PST)
-Received: from big-swifty.misterjones.org (usa-sjc-mx-foss1.foss.arm.com
-	[217.140.101.70])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 171333F71E;
-	Sun,  4 Nov 2018 03:25:02 -0800 (PST)
-Date: Sun, 04 Nov 2018 11:25:00 +0000
-Message-ID: <86zhupdr03.wl-marc.zyngier@arm.com>
-From: Marc Zyngier <marc.zyngier@arm.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <1ee4127a-aa3e-4e19-1dde-af83147f8bc4@linaro.org>
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9797180D;
+	Mon,  5 Nov 2018 03:47:55 -0800 (PST)
+Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+	[10.72.51.249])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 41B203F5BD;
+	Mon,  5 Nov 2018 03:47:54 -0800 (PST)
+Date: Mon, 5 Nov 2018 11:47:51 +0000
+From: Mark Rutland <mark.rutland@arm.com>
+To: Marc Zyngier <marc.zyngier@arm.com>
+Message-ID: <20181105114751.7d3xulnflnmamjbq@lakrids.cambridge.arm.com>
 References: <20181102145433.4553-1-richard.henderson@linaro.org>
 	<CAFEAcA_tcR_33Q+2ZFHdzo4_9khXggum=gRfZ8+L49KmP3hHiw@mail.gmail.com>
 	<20181102193529.GB12057@e113682-lin.lund.arm.com>
 	<effa3839-f0ab-e6ab-e034-a1a6d1d06923@linaro.org>
 	<20181103123246.16b5b101@why.wild-wind.fr.eu.org>
 	<1ee4127a-aa3e-4e19-1dde-af83147f8bc4@linaro.org>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
-	FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/25.1
-	(aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-Organization: ARM Ltd
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
+	<86zhupdr03.wl-marc.zyngier@arm.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <86zhupdr03.wl-marc.zyngier@arm.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.140.101.70
 Subject: Re: [Qemu-arm] [PATCH v2 0/5] target/arm: KVM vs ARMISARegisters
@@ -88,109 +86,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	Christoffer Dall <christoffer.dall@arm.com>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Dave Martin <Dave.Martin@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +voFBSaWjQRo
+X-TUID: zCDAnGkKykdb
 
-Hi Richard,
+On Sun, Nov 04, 2018 at 11:25:00AM +0000, Marc Zyngier wrote:
+> diff --git a/arch/arm64/kvm/sys_regs.c b/arch/arm64/kvm/sys_regs.c
+> index 22fbbdbece3c..d50f912d3f4a 100644
+> --- a/arch/arm64/kvm/sys_regs.c
+> +++ b/arch/arm64/kvm/sys_regs.c
+> @@ -314,10 +314,15 @@ static bool trap_raz_wi(struct kvm_vcpu *vcpu,
+>  		return read_zero(vcpu, p);
+>  }
+>  
+> -static bool trap_undef(struct kvm_vcpu *vcpu,
+> -		       struct sys_reg_params *p,
+> -		       const struct sys_reg_desc *r)
 
-On Sun, 04 Nov 2018 09:50:29 +0000,
-Richard Henderson <richard.henderson@linaro.org> wrote:
-> 
-> On 11/3/18 12:32 PM, Marc Zyngier wrote:
-> > We actively hide the LORegion feature from the guest since
-> > cc33c4e20185a391766ed5e78e2acc97e17ba511 (in the 4.17 time frame), so
-> > you shouldn't be able to obtain these on a recent host.
-> 
-> I don't think that patch is ideal.
-> 
-> In particular, LOR is a mandatory requirement of ARMv8.1.
-> The OS can rightly presume it is present in context.
-> 
-> Better, I think, is to trap the LOR registers, as you are doing,
-> and have them act as RAZ/WI.  This indicates, via LORID_EL1, that
-> there are zero supported LO regions, which is a valid ARMv8.1
-> configuration.
+We should probably have a comment here, like:
 
-I agree this looks like a much better solution. I seem to remember
-Mark (now cc'd) battling some half baked implementation that didn't
-expose the LOR feature, and yet allowed the various LOR registers to
-be freely used, with unknown consequences.
+/*
+ * ARMv8.1 mandates at least a trivial LORegion implementation, where
+ * all the RW registers are RES0 (which we can implement as RAZ/WI). On
+ * an ARMv8.0 system, these registers should UNDEF.
+ */
 
-Since we unfortunately need to handle that sorry excuse for a CPU (and
-assuming I remember the case correctly), I'd suggest the following
-(untested) change:
+> +static bool trap_loregion(struct kvm_vcpu *vcpu,
+> +			  struct sys_reg_params *p,
+> +			  const struct sys_reg_desc *r)
+>  {
+> +	u64 val = read_sanitised_ftr_reg(SYS_ID_AA64MMFR1_EL1);
+> +
+> +	if (val & (0xfUL << ID_AA64MMFR1_LOR_SHIFT))
+> +		return trap_raz_wi(vcpu, p, r);
+> +
+>  	kvm_inject_undefined(vcpu);
+>  	return false;
+>  }
+> @@ -1040,11 +1045,6 @@ static u64 read_id_reg(struct sys_reg_desc const *r, bool raz)
+>  			kvm_debug("SVE unsupported for guests, suppressing\n");
+>  
+>  		val &= ~(0xfUL << ID_AA64PFR0_SVE_SHIFT);
+> -	} else if (id == SYS_ID_AA64MMFR1_EL1) {
+> -		if (val & (0xfUL << ID_AA64MMFR1_LOR_SHIFT))
+> -			kvm_debug("LORegions unsupported for guests, suppressing\n");
+> -
+> -		val &= ~(0xfUL << ID_AA64MMFR1_LOR_SHIFT);
+>  	}
+>  
+>  	return val;
+> @@ -1330,11 +1330,11 @@ static const struct sys_reg_desc sys_reg_descs[] = {
+>  	{ SYS_DESC(SYS_MAIR_EL1), access_vm_reg, reset_unknown, MAIR_EL1 },
+>  	{ SYS_DESC(SYS_AMAIR_EL1), access_vm_reg, reset_amair_el1, AMAIR_EL1 },
+>  
+> -	{ SYS_DESC(SYS_LORSA_EL1), trap_undef },
+> -	{ SYS_DESC(SYS_LOREA_EL1), trap_undef },
+> -	{ SYS_DESC(SYS_LORN_EL1), trap_undef },
+> -	{ SYS_DESC(SYS_LORC_EL1), trap_undef },
+> -	{ SYS_DESC(SYS_LORID_EL1), trap_undef },
+> +	{ SYS_DESC(SYS_LORSA_EL1), trap_loregion },
+> +	{ SYS_DESC(SYS_LOREA_EL1), trap_loregion },
+> +	{ SYS_DESC(SYS_LORN_EL1), trap_loregion },
+> +	{ SYS_DESC(SYS_LORC_EL1), trap_loregion },
+> +	{ SYS_DESC(SYS_LORID_EL1), trap_loregion },
 
-- We leave the LOR feature visible
-- We handle the LOR registers as RAZ/WI
-- We still delivering an UNDEF when we're in the aforementioned case.
+LORID_EL1 is always RO, so we need to UNDEF on writes. Either we add a
+separate helper, or special-case LORID_EL1 in trap_loregion().
 
-It would also solve the pathological cases that would result from
-mixing 8.0 and 8.1+ CPUs in the same system (yeah, we all foolishly
-thought it would never happen...).
+Otherwise, this looks good to me.
 
-Thoughts?
-
-	M.
-
-diff --git a/arch/arm64/kvm/sys_regs.c b/arch/arm64/kvm/sys_regs.c
-index 22fbbdbece3c..d50f912d3f4a 100644
---- a/arch/arm64/kvm/sys_regs.c
-+++ b/arch/arm64/kvm/sys_regs.c
-@@ -314,10 +314,15 @@ static bool trap_raz_wi(struct kvm_vcpu *vcpu,
- 		return read_zero(vcpu, p);
- }
- 
--static bool trap_undef(struct kvm_vcpu *vcpu,
--		       struct sys_reg_params *p,
--		       const struct sys_reg_desc *r)
-+static bool trap_loregion(struct kvm_vcpu *vcpu,
-+			  struct sys_reg_params *p,
-+			  const struct sys_reg_desc *r)
- {
-+	u64 val = read_sanitised_ftr_reg(SYS_ID_AA64MMFR1_EL1);
-+
-+	if (val & (0xfUL << ID_AA64MMFR1_LOR_SHIFT))
-+		return trap_raz_wi(vcpu, p, r);
-+
- 	kvm_inject_undefined(vcpu);
- 	return false;
- }
-@@ -1040,11 +1045,6 @@ static u64 read_id_reg(struct sys_reg_desc const *r, bool raz)
- 			kvm_debug("SVE unsupported for guests, suppressing\n");
- 
- 		val &= ~(0xfUL << ID_AA64PFR0_SVE_SHIFT);
--	} else if (id == SYS_ID_AA64MMFR1_EL1) {
--		if (val & (0xfUL << ID_AA64MMFR1_LOR_SHIFT))
--			kvm_debug("LORegions unsupported for guests, suppressing\n");
--
--		val &= ~(0xfUL << ID_AA64MMFR1_LOR_SHIFT);
- 	}
- 
- 	return val;
-@@ -1330,11 +1330,11 @@ static const struct sys_reg_desc sys_reg_descs[] = {
- 	{ SYS_DESC(SYS_MAIR_EL1), access_vm_reg, reset_unknown, MAIR_EL1 },
- 	{ SYS_DESC(SYS_AMAIR_EL1), access_vm_reg, reset_amair_el1, AMAIR_EL1 },
- 
--	{ SYS_DESC(SYS_LORSA_EL1), trap_undef },
--	{ SYS_DESC(SYS_LOREA_EL1), trap_undef },
--	{ SYS_DESC(SYS_LORN_EL1), trap_undef },
--	{ SYS_DESC(SYS_LORC_EL1), trap_undef },
--	{ SYS_DESC(SYS_LORID_EL1), trap_undef },
-+	{ SYS_DESC(SYS_LORSA_EL1), trap_loregion },
-+	{ SYS_DESC(SYS_LOREA_EL1), trap_loregion },
-+	{ SYS_DESC(SYS_LORN_EL1), trap_loregion },
-+	{ SYS_DESC(SYS_LORC_EL1), trap_loregion },
-+	{ SYS_DESC(SYS_LORID_EL1), trap_loregion },
- 
- 	{ SYS_DESC(SYS_VBAR_EL1), NULL, reset_val, VBAR_EL1, 0 },
- 	{ SYS_DESC(SYS_DISR_EL1), NULL, reset_val, DISR_EL1, 0 },
-
-
--- 
-Jazz is not dead, it just smell funny.
+Thanks,
+Mark.

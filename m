@@ -1,71 +1,71 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2031446wro;
-        Sun, 4 Nov 2018 17:45:13 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ezz7nSD2DNrzaKwgwhDv9QX4pZg1TRtAvD6WVggfzahHl0rXjkW1E9JR+zDmqBrlkSiL/q
-X-Received: by 2002:ac8:6892:: with SMTP id m18mr18816278qtq.157.1541382313837;
-        Sun, 04 Nov 2018 17:45:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541382313; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2032472wro;
+        Sun, 4 Nov 2018 17:46:39 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fcBJ39Z97jB2JsGVpB2nykbrmD0GRP2/A8iBaKBVcieD3H0v/Vx9N3MIUrXMbDuEY5A0PO
+X-Received: by 2002:ac8:1102:: with SMTP id c2-v6mr19122174qtj.307.1541382399471;
+        Sun, 04 Nov 2018 17:46:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541382399; cv=none;
         d=google.com; s=arc-20160816;
-        b=fuoaI1puPWCr7KfI/QDziiyOy92hihxSxfaLfc/UQSnUDKjzxdCTwnwKeRlRzZAayi
-         9dVd+CZKdZsAqUkg9FgHQAxVJGFavLnxAuzChRIDHKj8FEtP5u/79lZf2ZC83tFR8RKA
-         YOwOUYHJWAjNhv4MNVpHN9smhn1dowYupZIDMYHlnS5FqoM5mvw/lBfTrGHYEwiZCy9o
-         d8lYK1Az1PbV4YIgI0VHIDnijnt1SF12MB88XN10PoGAVhU8lIZrRz4ZwfdY3q7E35U1
-         3AkFCTCJtkmyNwHIi8OBbKg8GrSW/vQNtOplS9FgId+FB06QefzyzGcQ5FPEpwIyZx2S
-         b6Fw==
+        b=BDyzxHvO6KLOVvqeB3oJq/WseKXBA9eRqmW6B5aHu/q2B6QB5Lv76rJpZ8tnnENqfY
+         l7ckAyFFq/rEOHsdx2cK9OdUNdmZXJRvJ87ItFZVlz1VwvMW+G7TtjiGD5izv2cT0Ioa
+         0TmUuaEuNyazGK5Z7Qaa5wiiDn9D6FAMlVd7W0qWdkmUqK/p6TpvaoPFiYwmAZiTBRtV
+         cwj557diH1Z1X/6db7EMV1o5KditE8D7jJnyKtq706ZZFItOLSiDbmEgZ/h+wjkDFg8i
+         LhJQgk7Zmy0+1LkqruxiyXkTf5OYl2mjPf7ww8iyACekN9g63kZXFMA+zlg550i+R8g7
+         8leQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=QhVQd36IXCIyu/Km2aCnjkIju/vHi3m89bdbgcSfgkA=;
-        b=KD32YNkxaeCEOm62Ps5qc6iIIykH8CudYYaoQq4emT+/BZ8G4RCZEZdrI7OZ68TrPO
-         Wy/1bF0cP60Whj2K1hjrX54zKF1IFscMCMVDrI4yHOSbJDH+cGp3IrBYhRtsWEKOyiQM
-         ShQbBSf2/v8A4fZoUYM1jSuK2ZU2wkRrZx+mJGUTeUNIxS5+O3dwaOPkHU43O4SKZ5vV
-         4Sg2hBEbxIHb7wDLc1KgnD0Ba5PqFX5hIEm9DJFCi22AcsO2LLVFsoFk2BeqSTsKPy0x
-         5eMuxl+7lMqzxv85eKD4j00bj4Z6TMA89+HcTh85J5t8Fgne72sVSy5ieMyWkj0CfHZ5
-         ahyQ==
+        bh=iPrxq9QHs2jlJvf8LaGT839NqkxfIc1vhrXfMNQgPbI=;
+        b=teXzdfPOPOh5WaiIukNUer4+4QdEpsOqtPabi1dJIs4Y5/klQfsL2ynqxrw6Z1nNe/
+         rRuOwi9n4JhH0Y2ysPJCBF67QrC5ukWAshwFkYAN7xa0RASMXXl+d2+g/qd1wILFsIIe
+         gyQVJpLb5iOigiBKwu+VfL/tKY6kBn/tg7SGOb1V82Lb8lAcLGEA5XlWkq1p52NXAUaP
+         vtXIP74OGnb5wAhQWhK6SK6GHMMvJk32XZO530yTV5VQstuV2xWQRjNxS0zwG44EKuiH
+         bwRXgtcRX2IrKjhA2+O/VDpDvVnOAgGlKpS/codlp7pRfkVN12PosFTcjTSMOBGheN9I
+         ZRtg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g10si4221575qkm.38.2018.11.04.17.45.13
+        by mx.google.com with ESMTPS id z12si8472889qts.351.2018.11.04.17.46.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 04 Nov 2018 17:45:13 -0800 (PST)
+        Sun, 04 Nov 2018 17:46:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:60856 helo=lists.gnu.org)
+Received: from localhost ([::1]:60870 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJTx3-0001Jg-9Q
-	for alex.bennee@linaro.org; Sun, 04 Nov 2018 20:45:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46990)
+	id 1gJTyQ-0002aV-V1
+	for alex.bennee@linaro.org; Sun, 04 Nov 2018 20:46:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gJTuf-0007Lp-Ab
-	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:42:46 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gJTug-0007UK-Vf
+	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:42:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gJTua-0002kY-Ci
-	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:42:45 -0500
-Received: from mga04.intel.com ([192.55.52.120]:9699)
+	(envelope-from <sameo@linux.intel.com>) id 1gJTuf-0002sI-8E
+	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:42:46 -0500
+Received: from mga18.intel.com ([134.134.136.126]:7967)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gJTuW-0002YD-9u; Sun, 04 Nov 2018 20:42:37 -0500
+	id 1gJTuK-0002NK-9k; Sun, 04 Nov 2018 20:42:28 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-	by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	04 Nov 2018 17:42:30 -0800
+	by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	04 Nov 2018 17:42:20 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.54,466,1534834800"; d="scan'208";a="277074352"
+X-IronPort-AV: E=Sophos;i="5.54,466,1534834800"; d="scan'208";a="277074344"
 Received: from emurphy1-mobl1.ger.corp.intel.com (HELO localhost.localdomain)
 	([10.252.26.250])
-	by fmsmga005.fm.intel.com with ESMTP; 04 Nov 2018 17:42:25 -0800
+	by fmsmga005.fm.intel.com with ESMTP; 04 Nov 2018 17:42:15 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 Nov 2018 02:40:33 +0100
-Message-Id: <20181105014047.26447-11-sameo@linux.intel.com>
+Date: Mon,  5 Nov 2018 02:40:31 +0100
+Message-Id: <20181105014047.26447-9-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181105014047.26447-1-sameo@linux.intel.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
@@ -73,9 +73,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.120
-Subject: [Qemu-devel] [PATCH v5 10/24] hw: acpi: Export the PCI host and
- holes getters
+X-Received-From: 134.134.136.126
+Subject: [Qemu-devel] [PATCH v5 08/24] hw: acpi: Factorize _OSC AML across
+ architectures
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,7 +87,7 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
@@ -98,159 +98,246 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oSquUQDO3bGv
+X-TUID: zaKiuGw2p6JT
 
-This is going to be needed by the hardware reduced implementation, so
-let's export it.
-Once the ACPI builder methods and getters will be implemented, the
-acpi_get_pci_host() implementation will become hardware agnostic.
+From: Yang Zhong <yang.zhong@intel.com>
 
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+The _OSC AML table is almost identical between the i386 Q35 and arm virt
+machine types. We can make it slightly more generic and share it across
+all PCIe architectures.
+
+Signed-off-by: Yang Zhong <yang.zhong@intel.com>
 ---
- include/hw/acpi/aml-build.h |  2 ++
- hw/acpi/aml-build.c         | 43 +++++++++++++++++++++++++++++++++
- hw/i386/acpi-build.c        | 47 ++-----------------------------------
- 3 files changed, 47 insertions(+), 45 deletions(-)
+ include/hw/acpi/acpi-defs.h | 14 +++++++
+ include/hw/acpi/aml-build.h |  2 +-
+ hw/acpi/aml-build.c         | 84 +++++++++++++++++++------------------
+ hw/arm/virt-acpi-build.c    | 45 ++------------------
+ hw/i386/acpi-build.c        |  6 ++-
+ 5 files changed, 66 insertions(+), 85 deletions(-)
 
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index af8e023968..6e1726e0a2 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -652,4 +652,18 @@ struct AcpiIortRC {
+ } QEMU_PACKED;
+ typedef struct AcpiIortRC AcpiIortRC;
+ 
++/* _OSC */
++
++#define ACPI_OSC_CTRL_PCIE_NATIVE_HP (1 << 0)
++#define ACPI_OSC_CTRL_SHPC_NATIVE_HP (1 << 1)
++#define ACPI_OSC_CTRL_PCIE_PM_EVT    (1 << 2)
++#define ACPI_OSC_CTRL_PCIE_AER       (1 << 3)
++#define ACPI_OSC_CTRL_PCIE_CAP_CTRL  (1 << 4)
++#define ACPI_OSC_CTRL_PCI_ALL \
++    (ACPI_OSC_CTRL_PCIE_NATIVE_HP |             \
++     ACPI_OSC_CTRL_SHPC_NATIVE_HP |             \
++     ACPI_OSC_CTRL_PCIE_PM_EVT |                \
++     ACPI_OSC_CTRL_PCIE_AER |                   \
++     ACPI_OSC_CTRL_PCIE_CAP_CTRL)
++
+ #endif
 diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index c27c0935ae..fde2785b9a 100644
+index 4f678c45a5..c27c0935ae 100644
 --- a/include/hw/acpi/aml-build.h
 +++ b/include/hw/acpi/aml-build.h
-@@ -400,6 +400,8 @@ build_header(BIOSLinker *linker, GArray *table_data,
-              const char *oem_id, const char *oem_table_id);
- void *acpi_data_push(GArray *table_data, unsigned size);
- unsigned acpi_data_len(GArray *table);
-+Object *acpi_get_pci_host(void);
-+void acpi_get_pci_holes(Range *hole, Range *hole64);
- /* Align AML blob size to a multiple of 'align' */
- void acpi_align_size(GArray *blob, unsigned align);
+@@ -405,7 +405,7 @@ void acpi_align_size(GArray *blob, unsigned align);
  void acpi_add_table(GArray *table_offsets, GArray *table_data);
+ void acpi_build_tables_init(AcpiBuildTables *tables);
+ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre);
+-Aml *build_osc_method(void);
++Aml *build_osc_method(uint32_t value);
+ void build_mcfg(GArray *table_data, BIOSLinker *linker, AcpiMcfgInfo *info);
+ Aml *build_gsi_link_dev(const char *name, uint8_t uid, uint8_t gsi);
+ Aml *build_prt(bool is_pci0_prt);
 diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 2b9a636e75..b8e32f15f7 100644
+index d3242c6b31..2b9a636e75 100644
 --- a/hw/acpi/aml-build.c
 +++ b/hw/acpi/aml-build.c
-@@ -1601,6 +1601,49 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
-     g_array_free(tables->vmgenid, mfre);
+@@ -1869,51 +1869,55 @@ Aml *build_crs(PCIHostState *host, CrsRangeSet *range_set)
+     return crs;
  }
  
+-Aml *build_osc_method(void)
 +/*
-+ * Because of the PXB hosts we cannot simply query TYPE_PCI_HOST_BRIDGE.
++ * ctrl_mask is the _OSC capabilities buffer control field mask.
 + */
-+Object *acpi_get_pci_host(void)
-+{
-+    PCIHostState *host;
-+
-+    host = OBJECT_CHECK(PCIHostState,
-+                        object_resolve_path("/machine/i440fx", NULL),
-+                        TYPE_PCI_HOST_BRIDGE);
-+    if (!host) {
-+        host = OBJECT_CHECK(PCIHostState,
-+                            object_resolve_path("/machine/q35", NULL),
-+                            TYPE_PCI_HOST_BRIDGE);
-+    }
-+
-+    return OBJECT(host);
-+}
-+
-+
-+void acpi_get_pci_holes(Range *hole, Range *hole64)
-+{
-+    Object *pci_host;
-+
-+    pci_host = acpi_get_pci_host();
-+    g_assert(pci_host);
-+
-+    range_set_bounds1(hole,
-+                      object_property_get_uint(pci_host,
-+                                               PCI_HOST_PROP_PCI_HOLE_START,
-+                                               NULL),
-+                      object_property_get_uint(pci_host,
-+                                               PCI_HOST_PROP_PCI_HOLE_END,
-+                                               NULL));
-+    range_set_bounds1(hole64,
-+                      object_property_get_uint(pci_host,
-+                                               PCI_HOST_PROP_PCI_HOLE64_START,
-+                                               NULL),
-+                      object_property_get_uint(pci_host,
-+                                               PCI_HOST_PROP_PCI_HOLE64_END,
-+                                               NULL));
-+}
-+
- static void crs_range_insert(GPtrArray *ranges, uint64_t base, uint64_t limit)
++Aml *build_osc_method(uint32_t ctrl_mask)
  {
-     CrsRangeEntry *entry;
+-    Aml *if_ctx;
+-    Aml *if_ctx2;
+-    Aml *else_ctx;
+-    Aml *method;
+-    Aml *a_cwd1 = aml_name("CDW1");
+-    Aml *a_ctrl = aml_local(0);
++    Aml *ifctx, *ifctx1, *elsectx, *method, *UUID;
+ 
+     method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
+-    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
+-
+-    if_ctx = aml_if(aml_equal(
+-        aml_arg(0), aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766")));
+-    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
+-    aml_append(if_ctx, aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+-
+-    aml_append(if_ctx, aml_store(aml_name("CDW3"), a_ctrl));
+-
+-    /*
+-     * Always allow native PME, AER (no dependencies)
+-     * Allow SHPC (PCI bridges can have SHPC controller)
++    aml_append(method,
++        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
++
++    /* PCI Firmware Specification 3.0
++     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
++     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
++     * identified by the Universal Unique IDentifier (UUID)
++     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
+      */
+-    aml_append(if_ctx, aml_and(a_ctrl, aml_int(0x1F), a_ctrl));
+-
+-    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
+-    /* Unknown revision */
+-    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x08), a_cwd1));
+-    aml_append(if_ctx, if_ctx2);
+-
+-    if_ctx2 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), a_ctrl)));
+-    /* Capabilities bits were masked */
+-    aml_append(if_ctx2, aml_or(a_cwd1, aml_int(0x10), a_cwd1));
+-    aml_append(if_ctx, if_ctx2);
+-
+-    /* Update DWORD3 in the buffer */
+-    aml_append(if_ctx, aml_store(a_ctrl, aml_name("CDW3")));
+-    aml_append(method, if_ctx);
+-
+-    else_ctx = aml_else();
+-    /* Unrecognized UUID */
+-    aml_append(else_ctx, aml_or(a_cwd1, aml_int(4), a_cwd1));
+-    aml_append(method, else_ctx);
++    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
++    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
++    aml_append(ifctx,
++        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
++    aml_append(ifctx,
++        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
++    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
++    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
++    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"),
++                                        aml_int(ctrl_mask), NULL),
++                                aml_name("CTRL")));
++
++    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
++    aml_append(ifctx1, aml_store(aml_or(aml_name("CDW1"), aml_int(0x08), NULL),
++                                 aml_name("CDW1")));
++    aml_append(ifctx, ifctx1);
++
++    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
++    aml_append(ifctx1, aml_store(aml_or(aml_name("CDW1"), aml_int(0x10), NULL),
++                                 aml_name("CDW1")));
++    aml_append(ifctx, ifctx1);
++
++    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
++    aml_append(ifctx, aml_return(aml_arg(3)));
++    aml_append(method, ifctx);
++
++    elsectx = aml_else();
++    aml_append(elsectx, aml_store(aml_or(aml_name("CDW1"), aml_int(4), NULL),
++                                  aml_name("CDW1")));
++    aml_append(elsectx, aml_return(aml_arg(3)));
++    aml_append(method, elsectx);
+ 
+-    aml_append(method, aml_return(aml_arg(3)));
+     return method;
+ }
+ 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index c9b4916ba7..b5e165543a 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -153,7 +153,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+                               uint32_t irq, bool use_highmem, bool highmem_ecam)
+ {
+     int ecam_id = VIRT_ECAM_ID(highmem_ecam);
+-    Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
++    Aml *method, *crs, *ifctx, *UUID, *ifctx1, *buf;
+     int i, bus_no;
+     hwaddr base_mmio = memmap[VIRT_PCIE_MMIO].base;
+     hwaddr size_mmio = memmap[VIRT_PCIE_MMIO].size;
+@@ -247,47 +247,8 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+     /* Declare an _OSC (OS Control Handoff) method */
+     aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
+     aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
+-    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
+-    aml_append(method,
+-        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
+-
+-    /* PCI Firmware Specification 3.0
+-     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
+-     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
+-     * identified by the Universal Unique IDentifier (UUID)
+-     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
+-     */
+-    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
+-    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
+-    aml_append(ifctx,
+-        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
+-    aml_append(ifctx,
+-        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+-    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
+-    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+-    aml_append(ifctx, aml_store(aml_and(aml_name("CTRL"), aml_int(0x1D), NULL),
+-                                aml_name("CTRL")));
+-
+-    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+-    aml_append(ifctx1, aml_store(aml_or(aml_name("CDW1"), aml_int(0x08), NULL),
+-                                 aml_name("CDW1")));
+-    aml_append(ifctx, ifctx1);
+-
+-    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
+-    aml_append(ifctx1, aml_store(aml_or(aml_name("CDW1"), aml_int(0x10), NULL),
+-                                 aml_name("CDW1")));
+-    aml_append(ifctx, ifctx1);
+-
+-    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
+-    aml_append(ifctx, aml_return(aml_arg(3)));
+-    aml_append(method, ifctx);
+-
+-    elsectx = aml_else();
+-    aml_append(elsectx, aml_store(aml_or(aml_name("CDW1"), aml_int(4), NULL),
+-                                  aml_name("CDW1")));
+-    aml_append(elsectx, aml_return(aml_arg(3)));
+-    aml_append(method, elsectx);
+-    aml_append(dev, method);
++    aml_append(dev, build_osc_method(ACPI_OSC_CTRL_PCI_ALL &
++                                     ~ACPI_OSC_CTRL_SHPC_NATIVE_HP));
+ 
+     method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
+ 
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index bd147a6bd2..a5f5f83500 100644
+index 996d8a11dc..bd147a6bd2 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
-@@ -232,49 +232,6 @@ static void acpi_get_misc_info(AcpiMiscInfo *info)
-     info->applesmc_io_base = applesmc_port();
- }
+@@ -1335,7 +1335,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+         aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+         aml_append(dev, aml_name_decl("_ADR", aml_int(0)));
+         aml_append(dev, aml_name_decl("_UID", aml_int(1)));
+-        aml_append(dev, build_osc_method());
++        aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
++        aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
++        aml_append(dev, build_osc_method(ACPI_OSC_CTRL_PCI_ALL));
+         aml_append(sb_scope, dev);
+         aml_append(dsdt, sb_scope);
  
--/*
-- * Because of the PXB hosts we cannot simply query TYPE_PCI_HOST_BRIDGE.
-- * On i386 arch we only have two pci hosts, so we can look only for them.
-- */
--static Object *acpi_get_i386_pci_host(void)
--{
--    PCIHostState *host;
--
--    host = OBJECT_CHECK(PCIHostState,
--                        object_resolve_path("/machine/i440fx", NULL),
--                        TYPE_PCI_HOST_BRIDGE);
--    if (!host) {
--        host = OBJECT_CHECK(PCIHostState,
--                            object_resolve_path("/machine/q35", NULL),
--                            TYPE_PCI_HOST_BRIDGE);
--    }
--
--    return OBJECT(host);
--}
--
--static void acpi_get_pci_holes(Range *hole, Range *hole64)
--{
--    Object *pci_host;
--
--    pci_host = acpi_get_i386_pci_host();
--    g_assert(pci_host);
--
--    range_set_bounds1(hole,
--                      object_property_get_uint(pci_host,
--                                               PCI_HOST_PROP_PCI_HOLE_START,
--                                               NULL),
--                      object_property_get_uint(pci_host,
--                                               PCI_HOST_PROP_PCI_HOLE_END,
--                                               NULL));
--    range_set_bounds1(hole64,
--                      object_property_get_uint(pci_host,
--                                               PCI_HOST_PROP_PCI_HOLE64_START,
--                                               NULL),
--                      object_property_get_uint(pci_host,
--                                               PCI_HOST_PROP_PCI_HOLE64_END,
--                                               NULL));
--}
--
- /* FACS */
- static void
- build_facs(GArray *table_data, BIOSLinker *linker)
-@@ -1634,7 +1591,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         Object *pci_host;
-         PCIBus *bus = NULL;
+@@ -1400,7 +1402,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+             aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A03")));
+             aml_append(dev, aml_name_decl("_BBN", aml_int(bus_num)));
+             if (pci_bus_is_express(bus)) {
+-                aml_append(dev, build_osc_method());
++                aml_append(dev, build_osc_method(ACPI_OSC_CTRL_PCI_ALL));
+             }
  
--        pci_host = acpi_get_i386_pci_host();
-+        pci_host = acpi_get_pci_host();
-         if (pci_host) {
-             bus = PCI_HOST_BRIDGE(pci_host)->bus;
-         }
-@@ -2008,7 +1965,7 @@ static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
-     Object *pci_host;
-     QObject *o;
- 
--    pci_host = acpi_get_i386_pci_host();
-+    pci_host = acpi_get_pci_host();
-     g_assert(pci_host);
- 
-     o = object_property_get_qobject(pci_host, PCIE_HOST_MCFG_BASE, NULL);
+             if (numa_node != NUMA_NODE_UNASSIGNED) {
 -- 
 2.19.1
 

@@ -1,71 +1,107 @@
-Received: by 2002:a5d:4c4c:0:0:0:0:0 with SMTP id n12-v6csp5624031wrt;
-        Tue, 16 Oct 2018 02:37:35 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62tn2LKQH++RTYvmBI7EdR0ritwqNISKGGk/Xk+kdm4iQ8zOVBc0/0SuhJH9wiOVBKTNztC
-X-Received: by 2002:ad4:4143:: with SMTP id z3mr11992586qvp.18.1539682655081;
-        Tue, 16 Oct 2018 02:37:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1539682655; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2710035wro;
+        Mon, 5 Nov 2018 07:23:55 -0800 (PST)
+X-Google-Smtp-Source: AJdET5d/LV9xnDzdT7clG3cw6LBuo1319K9Hsvz2osxV4Fw7g3Bg9oxm6RJC1sjRPHgSFken8Rs/
+X-Received: by 2002:a37:d2c2:: with SMTP id f185-v6mr20782191qkj.30.1541431433729;
+        Mon, 05 Nov 2018 07:23:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541431433; cv=none;
         d=google.com; s=arc-20160816;
-        b=ADiigeTtT21wzqraIzqfDCLLYDtpUR8MNDZ8dnnttbTvat/6JVqh/PeFGmouK8tG5S
-         3h9JNIk4O/iGU/bz/E0YVE5QeyndwDZ57rZXYovZdh7GjE5avAPyKMvo9c1d6RbAb073
-         2itx21QhvRafVXHacNfQcMZeiBtfx40bgsC4cTmmANk1slG7bRqRZL5xX2xpVjLqpaVf
-         t69R23s6jot8Ygq2LwaOSNG+RCTT97L000z4kF9JXaEzyFL/1xlgt2yD7sD3RZKXXnIx
-         6c/ysvHz4woDdk0lwqqABBY7K8C6fTMRYVi1Mh5Jc2vHo4LrITQ/6nXXIywVQlxmq2K7
-         IaMg==
+        b=fwteP9dWzy7UwaWJ8Y8qDIVWznFHwodd+bL0O+6VsxhN1RcC3eT1lQh+7vvu+iEXAs
+         Jmkm9WW8zTnA4PSEOf2bxUTdxUXVPR84ikVUSBQ2HAYcbXNkY8apoCFXchA5Oe7eBBm4
+         jX62nCJAEUI7ckgiUYeQPKVsehe7yTK++x5pVcC9VYLseTsf2X00uHeqxhy3OBEJ+FPc
+         Vqa+ry6ddFJ6mFL8X90yoWQNug6wUUFj8Z6rW8ap7kGoElE6fdOeRGnArk2zr1twkkGl
+         AynRXWRMIPVqRboElbCBzAMmIBUnzzvDnXXvn6bCFZZGEE2g2DU5ZICqHizVkwGrL8N8
+         Rnag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=vKKDpmWN/34vWO91RistmXTOb7sdY96nkMDgBK+/U2k=;
-        b=oVAdBtGEy8wZFI4mYA0snFYblzYoH2PzqSp61o41YkQi1MqPk8uHDP3xGJhqqH0Opw
-         0Dh6RvXTY8ZH6aWoMv8YJ9DiVxL1Fgagp5AS1iAB3MHjUscWYSal6AeEBpEsDsQmoO8h
-         L0Wb8zOuG1+x2Y7rnu/SO2LSb2BPKJ9Pk2MeOVpKSgBagnLqLkBampjxx6SoWSES9laP
-         QT1L93+5xkN7gY0gjd8bxL9tu3j4ZFthQnGztWiQxo4kg+VRdK5QvTasiF+FMQ25qJ52
-         5ZoTMKy6Lc/dcIeLH0PP8nM2N5P3eTWj0ko7PvEErWntPcGVI/4CBlGBKZa/094oH3vZ
-         vHvg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=bH4BLTgaCXefXlO6QruZORVRfV8Hz/AVVJ0mr/9JkIE=;
+        b=x50pWdBOagUMqLT+xo8VNQptRvLCSg5CifYbOq+6fl/D0PoX8D2vMSXBmlCgEMk/GT
+         EuafrcBlmYN5jPg02JHwS5bJ+yDPY75ctxeutZ03UCwN7DnBM06gBoz1pWd9oM9JMFSy
+         C3Ab09HcnTCNPhTSM/flLReqX3IGl8fYVg+npPWuS0YuFuE+oxo19v21GyaSibdojYxY
+         +uyWXbzSLLEVYd39tDZDRw/8o3eYLBQzs459BwOa36+4nOWiURSnfKyH8wSvZe4I5Zlm
+         8kwVwYGsFrjwfsEae/sU5S6+uNWnkNc4okGUn6/FAu9JIS0uMnN6P6AH9KFWycEKfn3Z
+         +1dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jWHu2FuT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w198-v6si2678823qkb.168.2018.10.16.02.37.34
+        by mx.google.com with ESMTPS id w11si564124qvf.141.2018.11.05.07.23.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 16 Oct 2018 02:37:35 -0700 (PDT)
+        Mon, 05 Nov 2018 07:23:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jWHu2FuT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56838 helo=lists.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35768 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gCLnC-0007G6-KK
-	for alex.bennee@linaro.org; Tue, 16 Oct 2018 05:37:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33798)
+	id 1gJgjJ-0007Or-87
+	for alex.bennee@linaro.org; Mon, 05 Nov 2018 10:23:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52151)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gCLmt-0007Fn-Ni
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 05:37:16 -0400
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gJgjA-0007OU-F2
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:23:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gCLms-0000wg-Vp
-	for qemu-arm@nongnu.org; Tue, 16 Oct 2018 05:37:15 -0400
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:51888)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1gCLms-0000qT-Of; Tue, 16 Oct 2018 05:37:14 -0400
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1gCLmk-0003Xd-NR; Tue, 16 Oct 2018 10:37:06 +0100
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 16 Oct 2018 10:37:01 +0100
-Message-Id: <20181016093703.10637-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.19.0
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gJgj0-0002rA-AE
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:23:38 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:40355)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1gJgiv-0001jI-6P; Mon, 05 Nov 2018 10:23:31 -0500
+Received: by mail-lf1-x144.google.com with SMTP id v5so1429074lfe.7;
+	Mon, 05 Nov 2018 07:23:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=bH4BLTgaCXefXlO6QruZORVRfV8Hz/AVVJ0mr/9JkIE=;
+	b=jWHu2FuTu0Nsk/+yHpdx3y2Fe0CFF0yXK5cfCnLmFLX511TSm2BqmcErfafbDgLbXb
+	o+fk4dmXyWJcS6gT5oTNiLTFpzmZz7cW8x8QUwxiudOtDeZzb492bV7nxX7ewW+Kx9O7
+	QmJNQfgZJ/gS5foFtKA1CFy5AuBDDndyQ1J8KDejQZnpSQpofGAvced8WOMqz+uo8tjQ
+	muCtDNEIvAbntLD7c+IBDSksm6X2IQ4vLxWrJBkuw4cckazzroo89NDYwNuRR4YZ6hg3
+	ezBRjp4hfcPGL46R7aY5wzU9fJiZzy2meRrOkYi30DsllTdJvfhJMvnhdtflviQszhkT
+	n4sw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=bH4BLTgaCXefXlO6QruZORVRfV8Hz/AVVJ0mr/9JkIE=;
+	b=BU08POJJVJSHE0mABFzfn88W3fsefpgqpc50bna3kopdIBFa4Q2pyhsXF1GW7gdUR7
+	qaX+132F7Ta1DyYX7ruTKRw+N/TzUpH6n8+bOSotTu8beb0Jw7j0hkmnmH5H6gMVE9hH
+	b29Yr4iwivM8v5qifZujW4a5UwcPqxBOkmeqzzQm8Db9APioRON3/Rkz5wdHGQ0X6KVK
+	jXzP8zLlNGO3Tmh1d+hbZrjw0PJrUSc2z7YjzNFdF4jgBP59qQUo6v431og9L56wnErq
+	DPpvELwgo2zYaNRnD5XdDSzGsxrX/PuH8wctdRZ8YSfmecNsnqczEPMnOoaNLyodpiuB
+	V7rw==
+X-Gm-Message-State: AGRZ1gKpU9HDNUvj/boHsm7bccQMnm0s/deTkbnzHoUuBsXSYrH0MkYj
+	uRykFVKFL2FYzbXFh9EitvM=
+X-Received: by 2002:a19:1f46:: with SMTP id f67mr12226377lff.1.1541431397362; 
+	Mon, 05 Nov 2018 07:23:17 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+	by smtp.gmail.com with ESMTPSA id
+	t77-v6sm7621832lfi.63.2018.11.05.07.23.00
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 05 Nov 2018 07:23:17 -0800 (PST)
+Date: Mon, 5 Nov 2018 16:23:00 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20181105152300.GA1148@toto>
+References: <20181016093703.10637-1-peter.maydell@linaro.org>
+	<20181016093703.10637-2-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181016093703.10637-2-peter.maydell@linaro.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 0/2] target/arm: fix some ATS* bugs
+X-Received-From: 2a00:1450:4864:20::144
+Subject: Re: [Qemu-arm] [PATCH 1/2] target/arm: Set S and PTW in 64-bit PAR
+ format
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,45 +113,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: patches@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cu17C6GaYHsU
+X-TUID: fIhfzlG0IVZN
 
-This small patchset fixes a couple of bugs in our ATS insn
-handling:
- * for faults reported to the 64-bit PAR we were not
-   setting the S and PTW bits to indicate stage 2
-   fault information
-   (NB: stage 2 faults aren't reported with 32-bit
-   PAR formats so there's no need to change the 32-bit
-   code path)
- * ATS1Hx were implementing the wrong thing (doing a
-   stage 2 lookup rather than an EL2 stage 1 lookup)
+On Tue, Oct 16, 2018 at 10:37:02AM +0100, Peter Maydell wrote:
+> In do_ats_write() we construct a PAR value based on the result
+> of the translation.  A comment says "S2WLK and FSTAGE are always
+> zero, because we don't implement virtualization".
+> Since we do in fact now implement virtualization, add the missing
+> code that sets these bits based on the reported ARMMMUFaultInfo.
+> 
+> (These bits are named PTW and S in ARMv8, so we follow that
+> convention in the new comments in this patch.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-The major missing bit of ATS at the moment is that a stage
-2 fault during execution of an NS-EL1 ATS insn that asks
-for a stage 1 lookup should cause a trap to EL2. I started
-to sketch out some code to do that, but I realised by
-putting an assert() in it that I didn't have any guests
-that actually hit the problem, so put it on the back burner.
-If anybody does hit that missing feature, feel free to send
-me a test case :-)
 
-Based-on: <20181012144235.19646-1-peter.maydell@linaro.org>
-("[PATCH 00/10] target/arm: more HCR bits, improve syndrome reporting")
-but only to avoid a textual conflict in the patch context.
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-thanks
--- PMM
 
-Peter Maydell (2):
-  target/arm: Set S and PTW in 64-bit PAR format
-  target/arm: Fix ATS1Hx instructions
-
- target/arm/helper.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
-
--- 
-2.19.0
-
+> ---
+>  target/arm/helper.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 43afdd082e1..dc849b09893 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2344,10 +2344,12 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+>  
+>              par64 |= 1; /* F */
+>              par64 |= (fsr & 0x3f) << 1; /* FS */
+> -            /* Note that S2WLK and FSTAGE are always zero, because we don't
+> -             * implement virtualization and therefore there can't be a stage 2
+> -             * fault.
+> -             */
+> +            if (fi.stage2) {
+> +                par64 |= (1 << 9); /* S */
+> +            }
+> +            if (fi.s1ptw) {
+> +                par64 |= (1 << 8); /* PTW */
+> +            }
+>          }
+>      } else {
+>          /* fsr is a DFSR/IFSR value for the short descriptor
+> -- 
+> 2.19.0
+> 
+> 

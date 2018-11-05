@@ -1,72 +1,100 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2698140wro;
-        Mon, 5 Nov 2018 07:13:58 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cvpovknDJPTwUy/JHeNHWTP/RRFqgLrw44C4srXDm3rHnrz3minlbh41B+XlP2+1N3er1O
-X-Received: by 2002:ac8:478f:: with SMTP id k15mr8078853qtq.281.1541430838740;
-        Mon, 05 Nov 2018 07:13:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541430838; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2706865wro;
+        Mon, 5 Nov 2018 07:21:02 -0800 (PST)
+X-Google-Smtp-Source: AJdET5esQbAnOLdZkjyVA75F7XN9sdxpajzwERvJ8lAgtSKzA12iGmwavhqH+3fzhVL3xaBmoyCp
+X-Received: by 2002:a0c:88a8:: with SMTP id 37mr21251176qvn.63.1541431261991;
+        Mon, 05 Nov 2018 07:21:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541431261; cv=none;
         d=google.com; s=arc-20160816;
-        b=oQ1Esji3OPXQh4LpGRFz8i7kN6srXOzlSXWOo1Cx/8WprjtS86UmlBBKMz6uYEaEy7
-         9W8OL32tW8olyHo7NfNHGQ2qczEVF89PFoV4p1Jdcg4fQ2fVqYobQ7SsHIknNND5U+zW
-         /5PUECbiJ61PwWmihe0p8LiWfkF/noORf8nOlL5hLDdRu13c+cl+7MRdp/A3YiumhlP0
-         vIEWhii1O12kI+hSIS+ZXGSmXRM5qg6F4ywcJtvNrM5f9+jENfL+RRXqP3OO2fTeNnT/
-         0gemngdUnWClD6SiTkfvNXbi0iBiGG1gh/RbGGJEVoyGbgQZuoyKk8TqFP4cGTaUcCP8
-         +LtA==
+        b=KM6E4qufAsXxLoWiwPXc1UpK1Op7dKKIIELYzUnrecDMW33pDw5sPdO++G/CuCZupc
+         +CioH0R0dehVh/PoDrla65i/e7zIb/GI3uOxGbyx/tuGKHT7EkS/TgTDyrnEOulMdtoW
+         +6AGSQi6zgr8ph55t2vCJns3nEt9mn2pgIJloaen9TEMESV89Cp4qxz0HpR+c/RYVgA8
+         qTBPYHy8rF5fA11J994sx5mFZLJqJgUeXlu/cX2q3h2iSxb3/CQ1w8iPGsHmS0nzhzJB
+         fI3AAXIju69HbG8/+0g+8NBIJv+lU59+O2oNK7WAwsu3Geo5dfiKAiTHmrwItvOBwhnT
+         7krg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=KOH+SCAfduq0uFXDMHk05ZCfASxwmfBMLvhPu+KASTU=;
-        b=xbwDnv473QKNmcPP5pGehRwWdcDpdi4l2z4088N8s8vlhDHAS9GkQoWx6OuvVNLdCN
-         wGEReeQOLKHPTfbL4WNGOM/ZPzB6D+GnwXnWEAcylenT6XnzGZ6MkMw66QRTU/Ws+xAr
-         9wOciUelObAMvlWPnKNKL2JmaDwiZ+T5P2rkCluKF8H+1OQcbAOzdrbFaY9n0GilU6wo
-         G20LC9dhIJl6P9lspSt3NzKK22bnD1Sg1pC+nkN7kaLS/GYIVl7fnuZJrH00KfZvvS9e
-         nGMGpARx/qjq57ULJVJqG/FvPg/UL2SyM2cdmT1FH2WsNhCXk6eIcq/7BKwLWSgtQTWs
-         4MvQ==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=7ZN4vbBnTUI7oO6Cuf5wRl0kX71cylfK1hS0zWdRAT4=;
+        b=of3/PSu35gPmS8V1dtojOMNd+P5nLc9DIRLi8GUdQSzKncXFlWub/z7t9CdY77R51+
+         H4m5KSLhs5VBXp6DdF5nkG8vQbraMDcek1gY/e40o+jWJxOuRGeiY8Yrc9lWseN2OvWP
+         Kfbj3dOsya+1xc4jOcCWt/WTvJ3ukrMLR2Ue9cyusQOll7EscARqJXuDxwa5qnjQN4pw
+         ChvAirr5S/E7dOsgPoipbcVXDRJ8RmlhKdskKGjy4QQmwbbq+MnMWF1Wg46LbWOfX/qN
+         TDKqj60J2N8EW2Yx0sRZW10P2u3rD6dGmIxA4/wHXHDhZSHrHsJOS9z2rJ8l53vUgBuu
+         TFkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BSGHRFWz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v5-v6si17078960qtv.322.2018.11.05.07.13.58
+        by mx.google.com with ESMTPS id j47si1006223qvc.124.2018.11.05.07.21.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Nov 2018 07:13:58 -0800 (PST)
+        Mon, 05 Nov 2018 07:21:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BSGHRFWz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35729 helo=lists.gnu.org)
+Received: from localhost ([::1]:35760 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJgZh-0002bk-Kx
-	for alex.bennee@linaro.org; Mon, 05 Nov 2018 10:13:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49161)
+	id 1gJggX-0006Om-4C
+	for alex.bennee@linaro.org; Mon, 05 Nov 2018 10:21:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51512)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gJgXV-0007qW-Ro
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:11:43 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gJggM-0006Nh-EF
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:20:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gJgXT-0006Il-G5
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:11:41 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:52298)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1gJgXT-0005uO-5c; Mon, 05 Nov 2018 10:11:39 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1gJgXP-0006MU-35; Mon, 05 Nov 2018 15:11:35 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  5 Nov 2018 15:11:32 +0000
-Message-Id: <20181105151132.13884-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.19.1
+	(envelope-from <peter.maydell@linaro.org>) id 1gJggD-0001k4-Tk
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:20:49 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46687)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gJgg6-0001Yt-Kh
+	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 10:20:35 -0500
+Received: by mail-ot1-x344.google.com with SMTP id q5so8233708otl.13
+	for <qemu-arm@nongnu.org>; Mon, 05 Nov 2018 07:20:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=7ZN4vbBnTUI7oO6Cuf5wRl0kX71cylfK1hS0zWdRAT4=;
+	b=BSGHRFWzKYMy7LjwOBcT28ndvni21AQWhEsB7ew740vxCDQCyhthtWAVMnb4ZUVmzR
+	e6ntubVf9KBWAY3s3+dVbUe4kjza2E4b+9OmRla7+os5Xl/gU6UQGlhcwzkaBS2KxwxK
+	IRZZfBBUZeQhwmWmC7qbOvYhYcOVO3M6CnMFs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=7ZN4vbBnTUI7oO6Cuf5wRl0kX71cylfK1hS0zWdRAT4=;
+	b=UTCSlvdbaRrtoakWNe+lp9C0q7/TBBNUuSvabl399Y+aZxJK9kirgopFrv4TNLWc17
+	mOovGtU7I0AuCYxP8hQu+qm5zfYj69ZNvR36efk1hrNuv8oYHW7sJsQHie+SRXuwNMy2
+	vjhya+r6PWb2D5oWW6gHk6jRBznxl8RLaHaZvcnrT7aWEgODoRO1CCjpFUx0W3GI/nC1
+	lKDDZdeRzUuweP98eqVlwhi9KN4+2JVRALqRDzbUAgnG9uNQ+NmMaai0H8vpxpi+3lzG
+	2Jp22/WYHQ7mFmU2BARpPMmxhg/y0CDn0rsZ/m5SH/AJ8WGcZzeQI3TmEtxSn9BKlZm7
+	v6GA==
+X-Gm-Message-State: AGRZ1gK7/0XzUP/LU8HuXqPJ0yyPEkmEE9XOk19F4eOIW4tIDnoMPV9n
+	bZbKHA1ucWo2Xy/2Yk6VjMZ3UUP1WR34MODZg/WSeg==
+X-Received: by 2002:a9d:582e:: with SMTP id r46mr9013589oth.238.1541431233294; 
+	Mon, 05 Nov 2018 07:20:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
+	Mon, 5 Nov 2018 07:20:12 -0800 (PST)
+In-Reply-To: <20181102001303.32640-1-f4bug@amsat.org>
+References: <20181102001303.32640-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 5 Nov 2018 15:20:12 +0000
+Message-ID: <CAFEAcA8kho6tBJMB6qXgKEq_tt5GQm1wHE96mqoM_vx95x44Pw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-3.1] hw/arm/exynos4210: Zero memory allocated
- for Exynos4210State
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH for 3.2 v2 0/7] hw/arm/bcm2835: Add basic
+ support for cprman (clock subsystem)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,50 +106,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	patches@linaro.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+	Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WRnggg2AAGXB
+X-TUID: sNKYUHOh/dcw
 
-In exynos4210_init() we allocate memory for an Exynos4210State
-struct. Generally devices can assume that the memory allocated
-for their state struct is zero-initialized; we broke that
-assumption here by using g_new(). Use g_new0() instead.
-(In particular, some code assumes that the various irq arrays
-in the Exynos4210Irq sub-struct are zero-initialized.)
+On 2 November 2018 at 00:12, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+> Hi,
+>
+> This series is a mix of a previous work I had for the raspi, and a patch =
+from
+> Guenter: https://lists.gnu.org/archive/html/qemu-devel/2018-07/msg03153.h=
+tml
+>
+> The final patch keep Guenter ideas and comments, but is mostly a rewrite.
+> I dropped the A2W code from this work, it doesn't seems unuseful to me.
+>
+> Guenter can you test this series?
+>
+> I kept Guenter S-o-b and (C), is that OK? (Guenter?, Peter?)
 
-In the longer term, this code should be QOMified, and then
-the struct memory will be allocated elsewhere and by functions
-which always zero-initalize it; but for 3.1 this is a
-simple fix.
+Yes, that's the general approach the project takes. If you've
+made changes to the patches yourself you should note those with
+something like
+[me: changed foo, bar, baz]
+after Guenter's signoff and before your own.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I suggested this fix the other day:
-https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg00135.html
-so here it is as an actual patch.
-
-Probably we should go through other uses of g_new() in
-board/device code at some point.
-
- hw/arm/exynos4210.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
-index 827318a0036..af82e955421 100644
---- a/hw/arm/exynos4210.c
-+++ b/hw/arm/exynos4210.c
-@@ -162,7 +162,7 @@ static uint64_t exynos4210_calc_affinity(int cpu)
- 
- Exynos4210State *exynos4210_init(MemoryRegion *system_mem)
- {
--    Exynos4210State *s = g_new(Exynos4210State, 1);
-+    Exynos4210State *s = g_new0(Exynos4210State, 1);
-     qemu_irq gate_irq[EXYNOS4210_NCPUS][EXYNOS4210_IRQ_GATE_NINPUTS];
-     SysBusDevice *busdev;
-     DeviceState *dev;
--- 
-2.19.1
-
+thanks
+-- PMM

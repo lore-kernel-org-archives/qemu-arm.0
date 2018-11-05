@@ -1,81 +1,81 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2039887wro;
-        Sun, 4 Nov 2018 17:58:15 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fjrcQeES3gK5+jZoghJvCzHTu2PIph+rklTyctM57cJpkHIOijryrROrO1C2bC0zgBrllL
-X-Received: by 2002:aed:2a1a:: with SMTP id c26mr7510045qtd.147.1541383095267;
-        Sun, 04 Nov 2018 17:58:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541383095; cv=none;
+Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2041606wro;
+        Sun, 4 Nov 2018 18:00:46 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cPKJzaMh4u5M2Grq0f6PHkfdMyMya+oEJuIsdFlb93ONnNjiGEDrr/JHPnMK4b1JrRZBn1
+X-Received: by 2002:ac8:7119:: with SMTP id z25-v6mr19514815qto.270.1541383246438;
+        Sun, 04 Nov 2018 18:00:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541383246; cv=none;
         d=google.com; s=arc-20160816;
-        b=DuWt2N43NpAdkH/iqnast7lPxvBlhl2/Xhdxx+DTghhB9qWhr4TtCrHqdrqK0a+qqA
-         bLcyrjTh8BQQuobJ7/QHe0d55AQ8p5jS80j7Y9PeTcPfD68YNb80XM7EG/7KTLOkFGn3
-         eikgF5u6cIytHBWFH0tn9/ycH20iSiACxJjbPxWXlxTMMCEOcACD2rpbjxoHVh/UFlGD
-         Nn1Sgcu/98mIPu1X091R60wL5UE+V0fdTP40MpoTdsZCRTicVP6ZhP4Oy7VOqpOPLEqM
-         +iGBcOfoEX8j88yTb/ELfZ0FqUtQ47pKGbhLYRRgaOC4bhyPfvZxkYcQwT8GCltpAwTk
-         k/YQ==
+        b=TNFwpGZeitWu45NzQDeQslZxMW14fTul66nv3wH+dvBfsAGJ3F4NXDfom7l3GV9JW4
+         3WKWqEASdMq3dDLcpQlz5KTqZYMtsktp9tM4dptuyl+ay0UFISnreZILUek65X72N50M
+         E0J2p1JzybJBiSUZywoPIQ8I0UCRW1hXU2GfsRyuJFJwW8eHdzwEQkmHnqM1qPrpMguO
+         k9VUWd/gIpzdfB6gjuZZY/bkzsLk82pcfetyQMX9dTZGklPzhw1+WjDekYbcJhCyWnth
+         hjUVrQ/ChQkLPdat4mmGyy4J/rYNFOwHbD+9RAGDD09DUawfriqO+xV5hlMRYRiC3VyP
+         h4kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=x7XPSFYzsJYlSNWxTmpTJpOs9T5ggglwfb7cfhOQWY8=;
-        b=fd+wyBRz2ODR+0stqM5UP5kFAOZODT4+c2pgUBjPJDYUN37TOImNorLkN/Ou0/4QTV
-         0gasTtwN8UV6nbc4R2lnxBrlX4hbIMLbfdBLMSf7bDNGej4FvSaSRqGJ2KKiSeRSvxkt
-         /6A3tR2RUkjDqJZ4T7oy8HCdNG+U7YqNmDgSgHyYaZKDdQM0hQDTLMZE4IMMpZu5SGHP
-         qxDNDoSrurwWIbFXd4LlYPBENFkU8wUEWGjaQY55OL+ToPKZZDtNSaOX9+RYgEV6vNe8
-         oITdswQKTD3Nzo8lZFYusGKoY7knpnJio7pn64AlA0JsFXtFBMbYbC7L9HrSbS7Ec03+
-         bcxg==
+        bh=zjKQfoqipuMwsLVRaMciJvlDPj52rATv8Ev80gIV/gQ=;
+        b=gp4xaF8fGWWv6g0snr9SugoemF4p5b4HnvdO8iU0ua59mjKyS27UohFSvJrOetdDuC
+         78+1goTYH0t3M7MZ4R/QYUBwnPD6z12RCNyBiTId9p+LhBJbZ8aHoPCDfDcggbMi/WPO
+         uc91fDGYB1QUti2Fwt3Poq2bUhaTbtlj3uEryIeV/uXgbDsr3Otj7KcFwqOJXZ6RqCJe
+         rxc97pcRrbbJqefiw4I2kYg5RwtmHfrUQQiV8hIGwhjXlgpbrlBYq3ASKovFrtPR2ybZ
+         SvAdiiUkNazAlYrxh776prsXuCUT26c8w44Ofa7KtmUN54QNzJwrRW5LQ2YgT9XL7niM
+         WGBw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u2si145577qtd.231.2018.11.04.17.58.15
+        by mx.google.com with ESMTPS id k38si3451272qvk.220.2018.11.04.18.00.46
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 04 Nov 2018 17:58:15 -0800 (PST)
+        Sun, 04 Nov 2018 18:00:46 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:60938 helo=lists.gnu.org)
+Received: from localhost ([::1]:60960 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJU9e-0006D4-M4
-	for alex.bennee@linaro.org; Sun, 04 Nov 2018 20:58:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47533)
+	id 1gJUC5-0001q8-Pq
+	for alex.bennee@linaro.org; Sun, 04 Nov 2018 21:00:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47267)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gJTvi-0000xe-FS
-	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:43:51 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gJTvA-0008PB-Kw
+	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:43:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gJTvd-0003os-5F
-	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:43:50 -0500
-Received: from mga01.intel.com ([192.55.52.88]:6359)
+	(envelope-from <sameo@linux.intel.com>) id 1gJTv9-0003LM-EC
+	for qemu-devel@nongnu.org; Sun, 04 Nov 2018 20:43:16 -0500
+Received: from mga05.intel.com ([192.55.52.43]:26671)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gJTvc-0003eP-R0; Sun, 04 Nov 2018 20:43:45 -0500
+	id 1gJTv9-0003Ia-2y; Sun, 04 Nov 2018 20:43:15 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	04 Nov 2018 17:43:35 -0800
+	by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	04 Nov 2018 17:43:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.54,466,1534834800"; d="scan'208";a="277074531"
+X-IronPort-AV: E=Sophos;i="5.54,466,1534834800"; d="scan'208";a="277074476"
 Received: from emurphy1-mobl1.ger.corp.intel.com (HELO localhost.localdomain)
 	([10.252.26.250])
-	by fmsmga005.fm.intel.com with ESMTP; 04 Nov 2018 17:43:30 -0800
+	by fmsmga005.fm.intel.com with ESMTP; 04 Nov 2018 17:43:10 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Mon,  5 Nov 2018 02:40:45 +0100
-Message-Id: <20181105014047.26447-23-sameo@linux.intel.com>
+Date: Mon,  5 Nov 2018 02:40:41 +0100
+Message-Id: <20181105014047.26447-19-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181105014047.26447-1-sameo@linux.intel.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.88
-Subject: [Qemu-devel] [PATCH v5 22/24] hw: pci-host: piix: Return PCI host
- pointer instead of PCI bus
+X-Received-From: 192.55.52.43
+Subject: [Qemu-devel] [PATCH v5 18/24] hw: i386: Export the MADT build method
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,139 +98,109 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KNhCCHKP+0jf
+X-TUID: cHce/Crl2It2
 
-For building the MCFG table, we need to track a given machine
-type PCI host pointer, and we can't get it from the bus pointer alone.
-As piix returns a PCI bus pointer, we simply modify its builder to
-return a PCI host pointer instead.
+It is going to be used by the PC machine type as the MADT table builder
+method and thus needs to be exported outside of acpi-build.c
 
+Also, now that the generic build_madt() API is exported, we have to
+rename the ARM static one in order to avoid build time conflicts.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
 ---
- include/hw/i386/pc.h | 21 +++++++++++----------
- hw/i386/pc_piix.c    | 18 +++++++++++-------
- hw/pci-host/piix.c   | 24 ++++++++++++------------
- 3 files changed, 34 insertions(+), 29 deletions(-)
+ include/hw/i386/acpi.h   | 28 ++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c |  4 ++--
+ hw/i386/acpi-build.c     |  4 ++--
+ 3 files changed, 32 insertions(+), 4 deletions(-)
+ create mode 100644 include/hw/i386/acpi.h
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 8e5f1464eb..b6b79e146d 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -244,16 +244,17 @@ typedef struct PCII440FXState PCII440FXState;
-  */
- #define RCR_IOPORT 0xcf9
+diff --git a/include/hw/i386/acpi.h b/include/hw/i386/acpi.h
+new file mode 100644
+index 0000000000..b7a887111d
+--- /dev/null
++++ b/include/hw/i386/acpi.h
+@@ -0,0 +1,28 @@
++/*
++ *
++ * Copyright (c) 2018 Intel Corportation
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_I386_ACPI_H
++#define HW_I386_ACPI_H
++
++#include "hw/acpi/acpi.h"
++#include "hw/acpi/bios-linker-loader.h"
++
++/* ACPI MADT (Multiple APIC Description Table) build method */
++void build_madt(GArray *table_data, BIOSLinker *linker,
++                MachineState *ms, AcpiConfiguration *conf);
++
++#endif
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index b5e165543a..b0354c5f03 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -564,7 +564,7 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  
--PCIBus *i440fx_init(const char *host_type, const char *pci_type,
--                    PCII440FXState **pi440fx_state, int *piix_devfn,
--                    ISABus **isa_bus, qemu_irq *pic,
--                    MemoryRegion *address_space_mem,
--                    MemoryRegion *address_space_io,
--                    ram_addr_t ram_size,
--                    ram_addr_t below_4g_mem_size,
--                    ram_addr_t above_4g_mem_size,
--                    MemoryRegion *pci_memory,
--                    MemoryRegion *ram_memory);
-+struct PCIHostState *i440fx_init(const char *host_type, const char *pci_type,
-+                                 PCII440FXState **pi440fx_state,
-+                                 int *piix_devfn,
-+                                 ISABus **isa_bus, qemu_irq *pic,
-+                                 MemoryRegion *address_space_mem,
-+                                 MemoryRegion *address_space_io,
-+                                 ram_addr_t ram_size,
-+                                 ram_addr_t below_4g_mem_size,
-+                                 ram_addr_t above_4g_mem_size,
-+                                 MemoryRegion *pci_memory,
-+                                 MemoryRegion *ram_memory);
- 
- /* piix4.c */
- extern PCIDevice *piix4_dev;
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 0620d10715..f5b139a3eb 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -32,6 +32,7 @@
- #include "hw/display/ramfb.h"
- #include "hw/smbios/smbios.h"
- #include "hw/pci/pci.h"
-+#include "hw/pci/pci_host.h"
- #include "hw/pci/pci_ids.h"
- #include "hw/usb.h"
- #include "net/net.h"
-@@ -75,6 +76,7 @@ static void pc_init1(MachineState *machine,
-     MemoryRegion *system_memory = get_system_memory();
-     MemoryRegion *system_io = get_system_io();
-     int i;
-+    struct PCIHostState *pci_host;
-     PCIBus *pci_bus;
-     ISABus *isa_bus;
-     PCII440FXState *i440fx_state;
-@@ -196,15 +198,17 @@ static void pc_init1(MachineState *machine,
-     }
- 
-     if (pcmc->pci_enabled) {
--        pci_bus = i440fx_init(host_type,
--                              pci_type,
--                              &i440fx_state, &piix3_devfn, &isa_bus, pcms->gsi,
--                              system_memory, system_io, machine->ram_size,
--                              acpi_conf->below_4g_mem_size,
--                              acpi_conf->above_4g_mem_size,
--                              pci_memory, ram_memory);
-+        pci_host = i440fx_init(host_type,
-+                               pci_type,
-+                               &i440fx_state, &piix3_devfn, &isa_bus, pcms->gsi,
-+                               system_memory, system_io, machine->ram_size,
-+                               acpi_conf->below_4g_mem_size,
-+                               acpi_conf->above_4g_mem_size,
-+                               pci_memory, ram_memory);
-+        pci_bus = pci_host->bus;
-         pcms->bus = pci_bus;
-     } else {
-+        pci_host = NULL;
-         pci_bus = NULL;
-         i440fx_state = NULL;
-         isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
-diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
-index 658460264b..4a412db44c 100644
---- a/hw/pci-host/piix.c
-+++ b/hw/pci-host/piix.c
-@@ -342,17 +342,17 @@ static void i440fx_realize(PCIDevice *dev, Error **errp)
-     }
- }
- 
--PCIBus *i440fx_init(const char *host_type, const char *pci_type,
--                    PCII440FXState **pi440fx_state,
--                    int *piix3_devfn,
--                    ISABus **isa_bus, qemu_irq *pic,
--                    MemoryRegion *address_space_mem,
--                    MemoryRegion *address_space_io,
--                    ram_addr_t ram_size,
--                    ram_addr_t below_4g_mem_size,
--                    ram_addr_t above_4g_mem_size,
--                    MemoryRegion *pci_address_space,
--                    MemoryRegion *ram_memory)
-+struct PCIHostState *i440fx_init(const char *host_type, const char *pci_type,
-+                                 PCII440FXState **pi440fx_state,
-+                                 int *piix3_devfn,
-+                                 ISABus **isa_bus, qemu_irq *pic,
-+                                 MemoryRegion *address_space_mem,
-+                                 MemoryRegion *address_space_io,
-+                                 ram_addr_t ram_size,
-+                                 ram_addr_t below_4g_mem_size,
-+                                 ram_addr_t above_4g_mem_size,
-+                                 MemoryRegion *pci_address_space,
-+                                 MemoryRegion *ram_memory)
+ /* MADT */
+ static void
+-build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
++virt_build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
  {
-     DeviceState *dev;
-     PCIBus *b;
-@@ -442,7 +442,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     int madt_start = table_data->len;
+@@ -745,7 +745,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     build_fadt_rev5(tables_blob, tables->linker, vms, dsdt);
  
-     i440fx_update_memory_mappings(f);
+     acpi_add_table(table_offsets, tables_blob);
+-    build_madt(tables_blob, tables->linker, vms);
++    virt_build_madt(tables_blob, tables->linker, vms);
  
--    return b;
-+    return s;
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms);
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index bef5b23168..4b1d8fbe3f 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -35,7 +35,6 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/cpu.h"
+ #include "hw/nvram/fw_cfg.h"
+-#include "hw/acpi/bios-linker-loader.h"
+ #include "hw/loader.h"
+ #include "hw/isa/isa.h"
+ #include "hw/block/fdc.h"
+@@ -60,6 +59,7 @@
+ #include "qom/qom-qobject.h"
+ #include "hw/i386/amd_iommu.h"
+ #include "hw/i386/intel_iommu.h"
++#include "hw/i386/acpi.h"
+ 
+ #include "hw/acpi/ipmi.h"
+ 
+@@ -279,7 +279,7 @@ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+     }
  }
  
- /* PIIX3 PCI to ISA bridge */
+-static void
++void
+ build_madt(GArray *table_data, BIOSLinker *linker,
+            MachineState *ms, AcpiConfiguration *acpi_conf)
+ {
 -- 
 2.19.1
 

@@ -1,127 +1,116 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp698255wrw;
-        Tue, 6 Nov 2018 02:19:01 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fvq1Fn1P98KJbyKvIJvKYWdugNub2hiW3PbJiW8PshnqcSbh6dNIN/hNpjLWeKmnAUwQR5
-X-Received: by 2002:aed:210e:: with SMTP id 14-v6mr25036221qtc.9.1541499541285;
-        Tue, 06 Nov 2018 02:19:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541499541; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp738419wrw;
+        Tue, 6 Nov 2018 03:06:30 -0800 (PST)
+X-Google-Smtp-Source: AJdET5emr9pXNH8bdkzQ1GOvqDq4cp9XmAS+oUkrTCOOj7MnE4d1ywyRIxbwSYGWt5r+dPFbDJxn
+X-Received: by 2002:a0c:9359:: with SMTP id e25mr25258264qve.203.1541502390195;
+        Tue, 06 Nov 2018 03:06:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541502390; cv=none;
         d=google.com; s=arc-20160816;
-        b=tcni4XKORi9SekmoFiBbQFE/1xxrhb1lnyTphgJXCwTr+yraBlrUuLtEDonXWcGOGr
-         41pyzoispr12mkBulctkvsMRFyEs4K39X6ma5BO6G73zCnKycT3cKOAVPCdhk8BTICWb
-         7f/yNd+t9QGQyzJ6lrTLIDR2lIA2Bp9NJlGK4QmnJ9kvby7I7IjCxFH8qjoPom/5hN8W
-         /w6z4xK5yjpRBpt0g+NdE+zrny2zoydHKVY4v6tOZFY9GU/2jovkzQ9aPYM8YPOn/mVN
-         82E38qCVrYoVIZLBKzW73vYrq2rPcrxtJ72JQTPLwV73rQgBcbCrwrXpVL+geERRCvRN
-         Eysg==
+        b=r/PGzxctkg7Yg/y6NHvxBkdm2sCcQ6RxCof81KKGWkD42HoqAilbtpksjxYcBmJ/KA
+         YbrMap66TEZwhqTbBVRYTnX/CguMsMfLjOD9Rg1tlEY5aDi29t1QyUihaK2Z81zyaDZ6
+         y/7pDZSlfxk8PBvIV+Td63V0cKsKrNBACmoRhyVZW63EHyIRonYCOGeJ9G196Vcj6MSU
+         sPbdL/cnKPv66sf4DDSf9BQ/cjsMqT1Ld1wd6mE+nZfTMC0AcFQ2UQLqw8Op9Vtg/yqj
+         pasiVoFo31XQ9MEts4O2im3Wi43kQ7dMaBR5dAWgD830AkJgi1iywp2njjG5uTbMwOJL
+         YDHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=8jyTyuRpNayvQxJ/zNu0zPgUbJDOzb0H/N8qdQSagts=;
-        b=bcNU+IAlpOdx4Le6D1h3XKQbpqpL0/Dq4DC4cvzriwUTo/KHfBGbW92Drtij3df7i1
-         vj4GJbrgS4l4cxyMzEuOxI5/eiERqoPmonhNMRTYNj4naFj7hi8YAyTIySCrcP7+CUHx
-         3uulhxA8oCDr5/dd/hzdZM4o2l+L4X/za4Dxn7o1kRDk2slSMCAige2nZyEgyU3aQxEG
-         HIKx6sOjX6PK4bL25bdELBnCQfY66yO+IIj9/3KMZSqAzwRGpGHRW5OFTdj/p2N4jSum
-         bEp5jwYcNqNdmrKwWoQ+4hwAVm1hoEnLb83PlP92QETN1VzlN2JrR/ljZricfRLjv4vm
-         asPA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature;
+        bh=2qKz7YiYLDKmcxbEj9RAM95yfhVKEF5BYbsJ2HbQtfA=;
+        b=WQRzlxp8eTYxSEwFeyR+B4Phzgc5L00tdu4D5piARiCAX5GRq+DkbRpgNb59BNje3x
+         2W1JEY+bJgXndm0jaQxte2vzPZ+JWUmK477X04lydouSxJM8H4Vw3gSPHenzESwqkuEu
+         cE/GdzlPlGvY3WCmXZKD97RdC2/SWJeJgsPecDiqnx52X0E6u1+rf2WaaT5Dwn6EamsA
+         kSTOvgkluy98TAt0Ev5nlzATthQvNHOBzdk8p+OP4xg5NY0ssi64tc/4yG8xCld6wPsu
+         az4hIvwEGM2/RcZLc73XBwz9tCTVMwgg1ezkTIvQtGIrCecW8QSzJ/WNFE/WrAfQzaIu
+         MdEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=zx1abv78;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=y83m76xy;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=y83m76xy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b15si2981160qka.263.2018.11.06.02.19.01
+        by mx.google.com with ESMTPS id g5si6606323qtj.167.2018.11.06.03.06.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Nov 2018 02:19:01 -0800 (PST)
+        Tue, 06 Nov 2018 03:06:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40064 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=zx1abv78;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=y83m76xy;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=y83m76xy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40287 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJyRo-0003fz-Qu
-	for alex.bennee@linaro.org; Tue, 06 Nov 2018 05:19:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34367)
+	id 1gJzBl-0006Gz-JN
+	for alex.bennee@linaro.org; Tue, 06 Nov 2018 06:06:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48763)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gJyQv-0003FN-BP
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:18:07 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1gJzBZ-0006El-Bn
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 06:06:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gJyQo-0003tv-TY
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:18:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39160)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gJyQo-0003mU-KJ; Tue, 06 Nov 2018 05:17:58 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(envelope-from <luc.michel@greensocs.com>) id 1gJzBU-0000p7-TD
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 06:06:17 -0500
+Received: from greensocs.com ([193.104.36.180]:46713)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1gJzBU-0000or-IZ; Tue, 06 Nov 2018 06:06:12 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id DEBF75C9D9C;
+	Tue,  6 Nov 2018 12:06:11 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1541502371;
+	bh=8S5wpPVVq90/1QKwmLRWhYH1Jn4czok6NwCnRlvPVDQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=zx1abv78+b4zrtIGWEBNaAkCgCFpRg4zAh0LIcXXQi/0lwtGvObXGzM5KG92VR8Lt
+	VFjOUjmU6/SttIVow23OyX2pwurrx2gm6wpZ0eS4sVH5H5Y0oK1u0plhYVHnyJpJ8x
+	vISVBfy+UThfo+c/DGyZpCGVDAP52sPYHvIpAyas=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=y83m76xy;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=y83m76xy
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id czowl89wQmz9; Tue,  6 Nov 2018 12:06:11 +0100 (CET)
+Received: by greensocs.com (Postfix, from userid 998)
+	id E10995C0265; Tue,  6 Nov 2018 12:06:07 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1541502367;
+	bh=8S5wpPVVq90/1QKwmLRWhYH1Jn4czok6NwCnRlvPVDQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=y83m76xyHnyJF/abMtvfRPGmadfyfdcgWX2O7WUABArAl+PRdYn9cWpfxMXxH8RAS
+	DftDH4YnEZOH5+n5Kapf+QJKDBAqVZF53fgyBJEtvO4v45RojuT0c+xdp21hodVnLh
+	8gQ9e7wqiyRY13cAoMEU8Kphw/EHDPEXVWyY9mds=
+Received: from michell-laptop.home.lmichel.fr
+	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5F7EE58E23;
-	Tue,  6 Nov 2018 10:17:54 +0000 (UTC)
-Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4176B1710F;
-	Tue,  6 Nov 2018 10:17:45 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, Samuel Ortiz
-	<sameo@linux.intel.com>, qemu-devel@nongnu.org
-References: <20181101102303.16439-1-sameo@linux.intel.com>
-	<20181101102303.16439-4-sameo@linux.intel.com>
-	<a7c05368-908e-0249-5702-63a844f9dc71@gmail.com>
-	<0a0f830b-e9a3-8cb4-12f5-d3fc234036cc@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <26bc6ef8-f9c4-b75b-4157-62f81d972340@redhat.com>
-Date: Tue, 6 Nov 2018 11:17:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 73FEA5C024F;
+	Tue,  6 Nov 2018 12:06:07 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1541502367;
+	bh=8S5wpPVVq90/1QKwmLRWhYH1Jn4czok6NwCnRlvPVDQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=y83m76xyHnyJF/abMtvfRPGmadfyfdcgWX2O7WUABArAl+PRdYn9cWpfxMXxH8RAS
+	DftDH4YnEZOH5+n5Kapf+QJKDBAqVZF53fgyBJEtvO4v45RojuT0c+xdp21hodVnLh
+	8gQ9e7wqiyRY13cAoMEU8Kphw/EHDPEXVWyY9mds=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  6 Nov 2018 12:05:39 +0100
+Message-Id: <20181106110548.4209-8-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181106110548.4209-1-luc.michel@greensocs.com>
+References: <20181106110548.4209-1-luc.michel@greensocs.com>
 MIME-Version: 1.0
-In-Reply-To: <0a0f830b-e9a3-8cb4-12f5-d3fc234036cc@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 06 Nov 2018 10:17:54 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 03/23] hw: acpi: Export the
- RSDP build API
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH v4 07/16] gdbstub: add multiprocess support to
+ (f|s)ThreadInfo and ThreadExtraInfo
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -134,38 +123,103 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	"open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uFAZoJQWrOaN
+X-TUID: oc5xBsI0Wyjl
 
-On 02/11/2018 10:56, Philippe Mathieu-Daud=C3=A9 wrote:
->>>
->>> =C2=A0 }
->>> =C2=A0 /* RSDP */
->>> -static GArray *
->>> +static void
->>> =C2=A0 build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned
->>> xsdt_tbl_offset)
->>> =C2=A0 {
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AcpiRsdpDescriptor *rsdp =3D acpi_data=
-_push(rsdp_table, sizeof
->>> *rsdp);
->>
->> Why change this? It's not related to your patch purpose.
->=20
-> This patch updates include/hw/acpi/aml-build.h to export the
-> build_rsdp() function.
-> Since this file includes this header, the orototype needs to match.
+Change the thread info related packets handling to support multiprocess
+extension.
 
-But then it should also remove the "return".  I think something is
-broken for bisectability between this patch and patch 4.
+Add the CPUs class name in the extra info to help differentiate
+them in multiprocess mode.
 
-Perhaps this patch should already rename the function to
-build_rsdp_rsdt, and patch 4 should move build_rsdp from hw/arm to hw/acp=
-i?
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ gdbstub.c | 35 +++++++++++++++++++++++++----------
+ 1 file changed, 25 insertions(+), 10 deletions(-)
 
-Paolo
+diff --git a/gdbstub.c b/gdbstub.c
+index 9be83486f5..43c9211bfa 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1260,11 +1260,10 @@ out:
+ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+ {
+     CPUState *cpu;
+     CPUClass *cc;
+     const char *p;
+-    uint32_t thread;
+     uint32_t pid, tid;
+     int ch, reg_size, type, res;
+     uint8_t mem_buf[MAX_PACKET_LENGTH];
+     char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
+     char thread_id[16];
+@@ -1556,30 +1555,46 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+             snprintf(buf, sizeof(buf), "QC%s",
+                      gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thread_=
+id)));
+             put_packet(s, buf);
+             break;
+         } else if (strcmp(p,"fThreadInfo") =3D=3D 0) {
+-            s->query_cpu =3D first_cpu;
++            s->query_cpu =3D gdb_first_cpu(s);
+             goto report_cpuinfo;
+         } else if (strcmp(p,"sThreadInfo") =3D=3D 0) {
+         report_cpuinfo:
+             if (s->query_cpu) {
+-                snprintf(buf, sizeof(buf), "m%x", cpu_gdb_index(s->query=
+_cpu));
++                snprintf(buf, sizeof(buf), "m%s",
++                         gdb_fmt_thread_id(s, s->query_cpu,
++                                       thread_id, sizeof(thread_id)));
+                 put_packet(s, buf);
+-                s->query_cpu =3D CPU_NEXT(s->query_cpu);
++                s->query_cpu =3D gdb_next_cpu(s, s->query_cpu);
+             } else
+                 put_packet(s, "l");
+             break;
+         } else if (strncmp(p,"ThreadExtraInfo,", 16) =3D=3D 0) {
+-            thread =3D strtoull(p+16, (char **)&p, 16);
+-            cpu =3D find_cpu(thread);
++            if (read_thread_id(p + 16, &p, &pid, &tid) =3D=3D GDB_READ_T=
+HREAD_ERR) {
++                put_packet(s, "E22");
++                break;
++            }
++            cpu =3D gdb_get_cpu(s, pid, tid);
+             if (cpu !=3D NULL) {
+                 cpu_synchronize_state(cpu);
+-                /* memtohex() doubles the required space */
+-                len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
+-                               "CPU#%d [%s]", cpu->cpu_index,
+-                               cpu->halted ? "halted " : "running");
++
++                if (s->multiprocess && (s->process_num > 1)) {
++                    /* Print the CPU model in multiprocess mode */
++                    ObjectClass *oc =3D object_get_class(OBJECT(cpu));
++                    const char *cpu_model =3D object_class_get_name(oc);
++                    len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
++                                   "CPU#%d %s [%s]", cpu->cpu_index,
++                                   cpu_model,
++                                   cpu->halted ? "halted " : "running");
++                } else {
++                    /* memtohex() doubles the required space */
++                    len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
++                                   "CPU#%d [%s]", cpu->cpu_index,
++                                   cpu->halted ? "halted " : "running");
++                }
+                 trace_gdbstub_op_extra_info((char *)mem_buf);
+                 memtohex(buf, mem_buf, len);
+                 put_packet(s, buf);
+             }
+             break;
+--=20
+2.19.1
+

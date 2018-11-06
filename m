@@ -1,115 +1,98 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp752118wrw;
-        Tue, 6 Nov 2018 03:20:36 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cMzn7e5tPvkKiXqTQgDsVtwA70145dB126wERdwHn9LSJN5xP68s74fLKHaOvfJm7Q39Ml
-X-Received: by 2002:a37:9046:: with SMTP id s67mr22917334qkd.289.1541503236079;
-        Tue, 06 Nov 2018 03:20:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541503236; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp1041764wrw;
+        Tue, 6 Nov 2018 07:48:12 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fnNENM38CJ96aDlK8k8da63Mok6Rhikhg3q0cdfPzYMO2EHIQVBa8JFHG1jq4HR/7jJWzx
+X-Received: by 2002:a37:8743:: with SMTP id j64-v6mr24796276qkd.210.1541519292708;
+        Tue, 06 Nov 2018 07:48:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541519292; cv=none;
         d=google.com; s=arc-20160816;
-        b=PPQGgZJX7GQmoJbRSK24j3iQhzxMEY1uwj0sDNIwB430Y3vspdjSRO0oi+hn1EZOvr
-         j0a84KQRiXVy2flX/zlrNAHOA8EFR3hDojk8mqH+WwBEPF0S1p7Zec2xzbAppqMF/TyN
-         47BIcbDQfQz8fjgyS/oQk0cyov3+/25EEVkriX8MBxA5GK1ZPa/V3Ws7Dq4X8utNzgBx
-         IOGEXzlWsCP0MdvUn4UwLhXakO+UeQ2xfQoYaLkNlX4m5vrjQWPcUjZMvCd4zq5CH8a3
-         P3pWq6IpdN/1AjDmq7Kl6fJxAskXQAWcWgpC03AMEZ3DTqdjtAImMzvLOXMqMMMI745y
-         3i+w==
+        b=PitXQYFp8T4qysoUtAsWKcOCTfP+U0MFB/mJau+cdTZ9v9necK0ApQTa5xWhb9YZlV
+         htIB3w5/rEhgnc0Gtq9TA5hunN/xgB0honJFZ9Q4jICLUBgRI8yLQq36XifzqNNNg0is
+         DpG1ZgGwiYGhvg7Jwud7ysbXStoE3Pk20vmzXZkRi9Hoku9AqkxNrJIMs6SN/Su3AQ5b
+         ZIFJaZwCu48Yi5t3Zaq5a1hlBNhLBmITpL0VBu9xOB0ycUb/p8jqN/JrevIP4ihztuW0
+         bordKYdGgbNSPojR+DPvovKAohbKR5ObBgzSqSqea13Nbu5ZtPPCJEBD0k3elpPZmUvW
+         fPUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature:dkim-signature
-         :dkim-signature;
-        bh=pjXUpgOUGeK5dTocPFrhxuE/Oqaq+JchJ8+sNY0Rkag=;
-        b=ofPVOChTl8xfnwUc+0cAhfKsPWoKe+CYef0WssJNMX/3CZ0R6aMwDeTWTrjASfu0aN
-         Sz46YMC0J/HEwlGu7h48Oqa5lKDG3zSoHPlw+nq8TNX3+E+5NWwLba/SvPXsMedJbxOe
-         1Pv+HuSyiDXbZYWMlhBTtAVOFXfB3GtQpIVJvgs8LhZtLHNIVnWtyCGP66itQ2h51qq2
-         9QTbvpBgLNfCJZCgWnSL3C/bEhI8v8awOnDpjn2HhIq4jZwSBUdiAMD8rap2TC+oA64O
-         VmjMs7Mzy0vjk8ssjhCtwyfuPfzGNDBxRksrQze1Kd7njuZXwTIr/Z7v7B4lNAclbYjl
-         4BVA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=NLbHLAaXPnqebwye0n3REK4xpkkKTE9x4/akycv9VJs=;
+        b=e3q7+HWub5mAs158+NgOTAMXh3kNQLuz7/gVcRbY8nXUHCoQ8qSivG/kT8RhFNFQ/w
+         LRiwKaRxxil327ShxEmGBwQH+yelcpB1IsV3ySuy6JLGTAWeJEEI+smz9gOpgocnG7SJ
+         aLRIu6cvUhioFpL51oGIKqeIl0SBd4ErwhpQ9FucYvpt+8NxFx+RgiH8eQniNupL6NiH
+         D/KEnlwwMb70Ic0Vb4iXjuWVT0PiBjKPxIL5nIzLeBiYto6kB8Zrayd17btjM/C4o3R6
+         EPNdRbkmmQ76jqz/38+Ur9eA1b4gmNoP1zfZq8oHVLDvydwGAQvlTEIYaFGBSociJ8CF
+         NNtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=HeVVH0he;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=R4N11l2t;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=R4N11l2t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=VXsMj3NC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t12-v6si10232908qtp.212.2018.11.06.03.20.35
+        by mx.google.com with ESMTPS id q18si3293025qkh.210.2018.11.06.07.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Nov 2018 03:20:36 -0800 (PST)
+        Tue, 06 Nov 2018 07:48:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=HeVVH0he;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=R4N11l2t;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=R4N11l2t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40375 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=VXsMj3NC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41790 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJzPP-0006pH-HY
-	for alex.bennee@linaro.org; Tue, 06 Nov 2018 06:20:35 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49079)
+	id 1gK3aO-00028E-6Q
+	for alex.bennee@linaro.org; Tue, 06 Nov 2018 10:48:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46019)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gJzBy-0006dt-Lh
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 06:06:47 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gK3a9-000285-0A
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 10:47:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gJzBt-0001I6-Gn
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 06:06:42 -0500
-Received: from greensocs.com ([193.104.36.180]:46757)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1gJzBt-0000rN-0B; Tue, 06 Nov 2018 06:06:37 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id BEE325C024F;
-	Tue,  6 Nov 2018 12:06:15 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541502375;
-	bh=WgnMQ5pr+n/ESL8puF7jtpCC/FdzwfDNBDnQ0ACltqA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=HeVVH0heJOMDA+QGO9c54JgekKX6dhBEfx2lf244IXICmBfEA+lQwpW2/StL9Wkvn
-	d9D1Aex0QeOwSK2odlPuaZlyM8kiXAgVRh+BI3/2Rqu4x6W2mFFdJ7nxttuV9gwzFQ
-	FOvFlciOAmuAG0c7/h37yu9lDLQh1oCVd94Wm+Fc=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=R4N11l2t;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=R4N11l2t
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ak2o_1jwB_cM; Tue,  6 Nov 2018 12:06:15 +0100 (CET)
-Received: by greensocs.com (Postfix, from userid 998)
-	id 619705C9D9A; Tue,  6 Nov 2018 12:06:11 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541502371;
-	bh=WgnMQ5pr+n/ESL8puF7jtpCC/FdzwfDNBDnQ0ACltqA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=R4N11l2tv026tICF5QcMKE9GdctVx+m843XPTPvZ0tvJOnAU0b6RQ2bm3pKeyoZjZ
-	8Wr21x0Uco3kFN7UDS+sUW2m63ZdFEDwZSL1JoZeF788Q3odXQjGSmVhOj9dlB226H
-	JAvxuiLe7Lyvfa4iwtMSDyGxHZHgOAAzSzNs/Ubs=
-Received: from michell-laptop.home.lmichel.fr
-	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id CE81A5C0276;
-	Tue,  6 Nov 2018 12:06:10 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541502371;
-	bh=WgnMQ5pr+n/ESL8puF7jtpCC/FdzwfDNBDnQ0ACltqA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=R4N11l2tv026tICF5QcMKE9GdctVx+m843XPTPvZ0tvJOnAU0b6RQ2bm3pKeyoZjZ
-	8Wr21x0Uco3kFN7UDS+sUW2m63ZdFEDwZSL1JoZeF788Q3odXQjGSmVhOj9dlB226H
-	JAvxuiLe7Lyvfa4iwtMSDyGxHZHgOAAzSzNs/Ubs=
-From: Luc Michel <luc.michel@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  6 Nov 2018 12:05:46 +0100
-Message-Id: <20181106110548.4209-15-luc.michel@greensocs.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181106110548.4209-1-luc.michel@greensocs.com>
-References: <20181106110548.4209-1-luc.michel@greensocs.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gK3a8-00048K-7P
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 10:47:56 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:39537)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gK3a7-000470-Se
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 10:47:56 -0500
+Received: by mail-oi1-x242.google.com with SMTP id 192-v6so10331499oii.6
+	for <qemu-arm@nongnu.org>; Tue, 06 Nov 2018 07:47:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=NLbHLAaXPnqebwye0n3REK4xpkkKTE9x4/akycv9VJs=;
+	b=VXsMj3NCkZyUwYtaDcvpSjEiFPQUrSSOByXENLHygnzid4Ijm72OB0f+qYvVJ/rxyP
+	oV0YqsB35qRU6QRFPidDLz9oPlCqq7qWdeNx3gk5fWuWAtbOt1ljOfAi/P7F+YD8jBdY
+	bq7MAsd0/Z7dVxHDyS+ICgi0okRImk0G9ij2U=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=NLbHLAaXPnqebwye0n3REK4xpkkKTE9x4/akycv9VJs=;
+	b=csQeI/NUAiN2Tk1Hb4FWWXR2pvraInwtuUEozaWLy4cNkFndJlUBySnOsf1QZynV67
+	EysDlHkKEjTltCFcmpfb00A+6Q4qh9SYbuOoPNPp6LRjHLYWSB1Gs40LYwCNQL98PRTM
+	e4MYjxeruPqx2Ai/h7HXzvxeL3Sy7nMcp1IXyzI9D0no4ySwGd3lRZgZamvPyTtNKt6c
+	ChM/YuQvrsJjXCoWzVA9gOhb9Kl2OtAeNEnRJHUo/Dg1aAZxbP3DHRJUfziW3iTEDLSc
+	LbDtuzSZVG/Gpu8VY5h6balQiksbhdAaCLbdGi9JSGxHZGB3S28OIW7WSQr9bDW19l+v
+	kprQ==
+X-Gm-Message-State: AGRZ1gJoSu0RRBjpD99lN2ALEE+HJbX45g6megfWOBLDMAaq73MwGjM4
+	X+yW3LMMUVQCN5vSQmmYaszoJV0iG9rWRZFzMJoONQ==
+X-Received: by 2002:aca:ef56:: with SMTP id
+	n83-v6mr14760471oih.146.1541519275101; 
+	Tue, 06 Nov 2018 07:47:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v4 14/16] gdbstub: gdb_set_stop_cpu: ignore
- request when process is not attached
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
+	Tue, 6 Nov 2018 07:47:34 -0800 (PST)
+In-Reply-To: <20181105153520.18528-1-eric.auger@redhat.com>
+References: <20181105153520.18528-1-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Nov 2018 15:47:34 +0000
+Message-ID: <CAFEAcA-9gig3vNVF0QwpCPGCrA_1NOTrd=ALnA924jHJEWa4mA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-arm] [RESEND PATCH for-3.1] hw/arm/sysbus-fdt: Only call
+ match_fn callback if the type matches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,53 +104,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
-	mark.burton@greensocs.com,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
-	Luc Michel <luc.michel@greensocs.com>
+Cc: Thomas Huth <thuth@redhat.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2T6GeariEJpj
+X-TUID: App5yQrUqk0j
 
-When gdb_set_stop_cpu() is called with a CPU associated to a process
-currently not attached by the GDB client, return without modifying the
-stop CPU. Otherwise, GDB gets confused if it receives packets with a
-thread-id it does not know about.
+On 5 November 2018 at 15:35, Eric Auger <eric.auger@redhat.com> wrote:
+> Commit af7d64ede0b9 (hw/arm/sysbus-fdt: Allow device matching with DT
+> compatible value) introduced a match_fn callback which gets called
+> for each registered combo to check whether a sysbus device can be
+> dynamically instantiated. However the callback gets called even if
+> the device type does not match the binding combo typename field.
+>
+> Let's change the add_fdt_node() logic so that we first check the
+> type and if the match_fn callback is defined, then we also call it.
+>
+> Binding combos only requesting a type check do not define the
+> match_fn callback.
+>
+> Fixes: af7d64ede0b9 (hw/arm/sysbus-fdt: Allow device matching with
+> DT compatible value)
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/arm/sysbus-fdt.c | 18 +++++++++++++-----
+>  1 file changed, 13 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+> index 0e24c803a1..a44cf7f255 100644
+> --- a/hw/arm/sysbus-fdt.c
+> +++ b/hw/arm/sysbus-fdt.c
+> @@ -449,7 +449,7 @@ static bool type_match(SysBusDevice *sbdev, const BindingEntry *entry)
+>      return !strcmp(object_get_typename(OBJECT(sbdev)), entry->typename);
+>  }
+>
+> -#define TYPE_BINDING(type, add_fn) {(type), NULL, (add_fn), type_match}
+> +#define TYPE_BINDING(type, add_fn) {(type), NULL, (add_fn), NULL}
+>
+>  /* list of supported dynamic sysbus bindings */
+>  static const BindingEntry bindings[] = {
+> @@ -481,10 +481,18 @@ static void add_fdt_node(SysBusDevice *sbdev, void *opaque)
+>      for (i = 0; i < ARRAY_SIZE(bindings); i++) {
+>          const BindingEntry *iter = &bindings[i];
+>
+> -        if (iter->match_fn(sbdev, iter)) {
+> -            ret = iter->add_fn(sbdev, opaque);
+> -            assert(!ret);
+> -            return;
+> +        if (type_match(sbdev, iter)) {
+> +            if (iter->match_fn) {
+> +                if (iter->match_fn(sbdev, iter)) {
 
-Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
----
- gdbstub.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+"if (!iter->match_fn || iter->match_fn(sbdev, iter)) {"
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 1a3353ff3c..c662ada6ff 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1787,10 +1787,19 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
-     return RS_IDLE;
- }
-=20
- void gdb_set_stop_cpu(CPUState *cpu)
- {
-+    GDBProcess *p =3D gdb_get_cpu_process(gdbserver_state, cpu);
-+
-+    if (!p->attached) {
-+        /* Having a stop CPU corresponding to a process that is not atta=
-ched
-+         * confuses GDB. So we ignore the request.
-+         */
-+        return;
-+    }
-+
-     gdbserver_state->c_cpu =3D cpu;
-     gdbserver_state->g_cpu =3D cpu;
- }
-=20
- #ifndef CONFIG_USER_ONLY
---=20
-2.19.1
+would let you avoid duplicating the code in the body
+of this if and the else clause later.
 
+(Or you could have a match_always() function that always
+returns true instead of having to special case NULL.)
+
+> +                    ret = iter->add_fn(sbdev, opaque);
+> +                    assert(!ret);
+> +                    return;
+> +                }
+> +            } else {
+> +                ret = iter->add_fn(sbdev, opaque);
+> +                assert(!ret);
+> +                return;
+> +            }
+>          }
+
+thanks
+-- PMM

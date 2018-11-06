@@ -1,97 +1,84 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp713670wrw;
-        Tue, 6 Nov 2018 02:37:44 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fPVnPuSw20cYYHRoYU4FZOvrEAYu76+5O6CePQwW8eRaP5TpK8DmzdbnwIqtcH9w9CPtpE
-X-Received: by 2002:a37:d947:: with SMTP id u68mr23708544qki.296.1541500664305;
-        Tue, 06 Nov 2018 02:37:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541500664; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp683391wrw;
+        Tue, 6 Nov 2018 02:02:44 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dEXg1ckfcIhFLLNRlW7S22xMYLs8KTsZz7Dnq+MzdLfqsn/cMFD3BR5wPjw6OrLTMSh/sN
+X-Received: by 2002:ac8:3e91:: with SMTP id y17-v6mr24093986qtf.314.1541498564488;
+        Tue, 06 Nov 2018 02:02:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541498564; cv=none;
         d=google.com; s=arc-20160816;
-        b=BTb2YpBFfY6thkZ3SXgapmNVAE/BtLu8ejaoBttPd6ratRbgRu2xKBY8xaU1+oMJMl
-         fBWQSlfJekX1rGquwRbl3VvppVbGyNZcSE7dkcnTlQCsAN+XBBvgE31V2oGmDZikVSSp
-         AKJm4t/2wbYGUVwedks5tFbtpb2c3GIY1dkaFX3Az2LVmFo8R5PCgfqg4N6+7fmiQ4ta
-         5Yx3s2hAMOkvKPaPV6H3MUFxlWUtTl5G8dcKTbH9jcPx9gkEoZZiB1/H68QEw7q6D3k3
-         h1DGwkFuJU9WeTlHpffyPC1KcaP3gZ0zyk67vj8xjbKXO8eKmK1zzaPnVQsLEjy4AErU
-         VL+A==
+        b=tR1VPt2z5yXhgB+UDV0iAOQQjR98zB8ep6jTLyfGFJOld2HXV0x0PJKTmO48wAALpu
+         bV0G3vGoCDM5zEoTEU7h9sgwy6WXyLBNmkZu0S2kbkA39aXqIC2N3/ENE4d0AuCY3ixm
+         +BLfgdOTPD7/6i8cA+eI0ryrxJntDpSAjsVm3u2pZph5fhg67Qs3Q+aJ6ok/TMuBF9Hz
+         5j7TBZU8xAu1XJXfyh3/MoL7FRKRQoRpkXq2lgPHDOL7gYNpshSPf6xeNkzkViXxB1bJ
+         h0LPMxUZxExSH2xUtIJE2W1xjhrF02nXXVssZ+qFdIfdws/CCLH+0Qm3Fci+lEkLxn2a
+         WTyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=0AbyeiiJsB8MmbB4FIUZzFNEeNartDHNfCjTaxGhepg=;
-        b=F/n+5VUxYfLe1bUoPzF5YYynghrbevNff/eV1WhSFgTasB2Jw+WDUJNUddj/yvUruW
-         VABbY8tM8PxWT9XStxnSzsK5ufrEoW99xELV/5YgC8r5Lp3pSXyknrZb+LrPD/N5ndf+
-         XRQdOvjwdSFMVEfego7dj3fQTD27FaOMO7IdDp//yr2pkb4nKSDKyDN5EF4cRmDN1z/H
-         5hh9LQs8DHobzeEqEcoDh5SRZXZeECvqa2oMiByHMLAZBn98BuybmENkVDdkzw1/zOgl
-         dJk7ST6yp1sOD/EWrV7RiA3Q8VOE8yxJGj7nAHb2YSkeXQINU/Vq8BfGGfM2lahX7Znh
-         Mzng==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=1exEABqghJDi/WhbQ129GsdQ8pafM2Bkjm+tUxQqLa8=;
+        b=xZZccomOMVALRRtsHbhVSgwvlZw95a/4AxneXjj06MHMY7AGcvb+dMaxhWLR6CcffJ
+         lVxMaHOEvbvXnYtxCH3l5Gda1NeiY7Hq7mXpiZkixtFdfj+DTE2T3+tCQA3aV0R103S7
+         SJhszt/MvivxFE6JKj8zEtNZlG0mpBzYFH26IuJC9EISppA4NjuzWPBfCceT3jvwkjkv
+         PaqFjC9MIbvFX8btyp1islBkYO09DMQ8siOESGLTuLJ/YpI9n4/8mUpX6ul4stSeW441
+         ZEjXDb5/t7sasMdvPCbkNnqrZKdg41LwvJdwWi7ZqMWdlHEHykzYdytxCCT3QSb6EcgO
+         U9Aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HZWVNWa4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g30si5016840qtk.14.2018.11.06.02.37.44
+        by mx.google.com with ESMTPS id m70si6672178qkl.245.2018.11.06.02.02.44
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Nov 2018 02:37:44 -0800 (PST)
+        Tue, 06 Nov 2018 02:02:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=HZWVNWa4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40107 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40001 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJyjv-0005YJ-RI
-	for alex.bennee@linaro.org; Tue, 06 Nov 2018 05:37:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39244)
+	id 1gJyC3-0008V8-WD
+	for alex.bennee@linaro.org; Tue, 06 Nov 2018 05:02:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57752)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gJyjk-0005Rx-7J
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:37:33 -0500
+	(envelope-from <famz@redhat.com>) id 1gJyAD-0007YQ-Ej
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:00:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gJyf7-0007BZ-On
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:32:47 -0500
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:45194)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gJyf7-00074S-6y
-	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:32:45 -0500
-Received: by mail-oi1-x233.google.com with SMTP id p144-v6so10234713oic.12
-	for <qemu-arm@nongnu.org>; Tue, 06 Nov 2018 02:32:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=0AbyeiiJsB8MmbB4FIUZzFNEeNartDHNfCjTaxGhepg=;
-	b=HZWVNWa45ustRkADl3/NDmCiiOKlRm1G26rJQcqRIkffBgsVkF1cPAyGRTDMaEbNi7
-	2hXPh5qrQ/vEDmIB6NIoDHtrWH2bdGBIx4ylNVRVhdF/5JBeSz6xbTkG8cwLtclOYyQn
-	dDHDBQA/gXtAFMi+x9szt8Tlg873TGIfwKKZM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=0AbyeiiJsB8MmbB4FIUZzFNEeNartDHNfCjTaxGhepg=;
-	b=H0vCokBkggwV8AwTiLfbZ7G+VFowXoNlcICdKlL3yomUWLxg9SKfYYZG7bkdKnVR71
-	AUTn3Sy5mo7AW7KQtdWZ6rrGzLtFxB0+XYf6mgYn65f+RZcv38bjWfzkbtCB2P2dWFnm
-	Nkmap+QoQWBXX5B9lcANxEq2hgF6S7bRLbeAdr39zgPipTT3BzAvWosuo2EyV9uo7uXU
-	CuYeRpkEYmXHpwBQ52pcIvZIJXgE+JB9iA/XNkQLS5ycHG1/TBDrMJ82SFzGg+gHrFi2
-	1kUtE65pbRLGpuZC1VD79CHd5NR8weQrXu1Moo7LKLuA0tYTgzfScep1KJIkAL+vL8pz
-	HX1A==
-X-Gm-Message-State: AGRZ1gKRA/h+l3BzQP3MlfLr36PrjMD1MIlKczGvgX9URILBq/yf7Q79
-	sH2br6POGO1lxi2YFhiUkRLJhyZpmaXu2Md24/lmVw==
-X-Received: by 2002:aca:ef56:: with SMTP id
-	n83-v6mr14186221oih.146.1541500354422; 
-	Tue, 06 Nov 2018 02:32:34 -0800 (PST)
+	(envelope-from <famz@redhat.com>) id 1gJyA2-0007lx-KQ
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:00:49 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51176)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <famz@redhat.com>)
+	id 1gJyA2-0007YG-9P; Tue, 06 Nov 2018 05:00:38 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0548B89AC7;
+	Tue,  6 Nov 2018 10:00:28 +0000 (UTC)
+Received: from localhost (dhcp-14-131.nay.redhat.com [10.66.14.131])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5D11965F48;
+	Tue,  6 Nov 2018 10:00:27 +0000 (UTC)
+Date: Tue, 6 Nov 2018 18:00:24 +0800
+From: Fam Zheng <famz@redhat.com>
+To: qemu-devel@nongnu.org
+Message-ID: <20181106100024.GB10330@lemon.usersys.redhat.com>
+References: <20181016093703.10637-1-peter.maydell@linaro.org>
+	<154149783586.4748.1822263784766763922@015909e0f939>
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
-	Tue, 6 Nov 2018 02:32:14 -0800 (PST)
-In-Reply-To: <1d1c0473-cd71-c7de-9d56-072596501e4c@redhat.com>
-References: <1d1c0473-cd71-c7de-9d56-072596501e4c@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Nov 2018 10:32:14 +0000
-Message-ID: <CAFEAcA-6hMmfQuiA-23fgzYyp7bz0yb+t-rhD0wt_h0UMH=CgQ@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::233
-Subject: Re: [Qemu-arm] How to use the 'canon-a1100' machine?
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <154149783586.4748.1822263784766763922@015909e0f939>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 06 Nov 2018 10:00:28 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/2] target/arm: fix some ATS*
+ bugs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,56 +90,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
-	Antony Pavlov <antonynpavlov@gmail.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XxlpQm7S24VR
+X-TUID: PE3CLgxsqnVh
 
-On 6 November 2018 at 09:40, Thomas Huth <thuth@redhat.com> wrote:
->
->  Hi,
->
-> does anybody know whether the "canon-a1100" machine in QEMU is still
-> usable, or rather how it can be used at all?
->
-> According to
-> http://lists.infradead.org/pipermail/barebox/2014-July/020327.html there
-> should be support for "-serial stdio" and on
-> https://lists.gnu.org/archive/html/qemu-devel/2013-10/msg02969.html
-> there is a link to a firmware image ... but when I try to use it, there
-> is simply no output on stdio...
->
-> Is there a way this machine can still be tested in QEMU?
+On Tue, 11/06 01:50, no-reply@patchew.org wrote:
+> ERROR: unknown option --with-gtkabi=3.0
 
-I have an image in my test set:
-$ ~/test-images/digic/runme ./build/x86/arm-softmmu/qemu-system-arm
-Switch to console [cs0]
+Patchew is testing old series branches of which are heavily lagging behind. This
+configure option in the mingw docker testing is recently dropped, so it's a
+false positive.
+
+Fam
 
 
-barebox 2013.12.0-00160-g2e82c4a #507 Thu Dec 12 12:42:43 MSK 2013
-
-
-Board: Canon PowerShot A1100 IS
-digic-gpio c0220000.gpio: probed gpiochip-1 with base 0
-cfi_flash f8000000.flash: found cfi flash at f8000000, size 4194304
-malloc space: 0x00100000 -> 0x002fffff (size 2 MiB)
-Open /dev/env0 No such file or directory
-no valid environment found on /dev/env0. Using default environment
-running /env/bin/init...
-canon> /
-
-Command line is:
-
-${QEMU} \
-  -M canon-a1100 -serial stdio -display none \
-  --machine firmware="$TESTDIR"/canon-a1100-rom1.bin
-
-filename suggests that's the same firmware image you link to?
-
-$ md5sum ~/test-images/digic/canon-a1100-rom1.bin
-66e76691cbd8b140549c878ae3849147
-/home/petmay01/test-images/digic/canon-a1100-rom1.bin
-
-thanks
--- PMM
+> Try '/tmp/qemu-test/src/configure --help' for more information
+> # QEMU configure log Tue Nov  6 09:50:16 UTC 2018
+> # Configured with: '/tmp/qemu-test/src/configure' '--enable-werror' '--target-list=x86_64-softmmu,aarch64-softmmu' '--prefix=/tmp/qemu-test/install' '--python=/usr/bin/python3' '--cross-prefix=x86_64-w64-mingw32-' '--enable-trace-backends=simple' '--enable-gnutls' '--enable-nettle' '--enable-curl' '--enable-vnc' '--enable-bzip2' '--enable-guest-agent' '--with-sdlabi=2.0' '--with-gtkabi=3.0'
+> #
+> 
+> funcs: do_compiler do_cc compile_object check_define main
+> lines: 92 119 608 625 0
+> x86_64-w64-mingw32-gcc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+> config-temp/qemu-conf.c:2:2: error: #error __linux__ not defined
+>  #error __linux__ not defined
+>   ^~~~~
+> 
+> funcs: do_compiler do_cc compile_object check_define main
+> lines: 92 119 608 627 0
+> x86_64-w64-mingw32-gcc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+> 
+> funcs: do_compiler do_cc compile_object check_define main
+> lines: 92 119 608 677 0
+> x86_64-w64-mingw32-gcc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+> config-temp/qemu-conf.c:2:2: error: #error __i386__ not defined
+>  #error __i386__ not defined
+>   ^~~~~
+> 
+> funcs: do_compiler do_cc compile_object check_define main
+> lines: 92 119 608 679 0
+> x86_64-w64-mingw32-gcc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+> 
+> funcs: do_compiler do_cc compile_object check_define main
+> lines: 92 119 608 680 0
+> x86_64-w64-mingw32-gcc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+> config-temp/qemu-conf.c:2:2: error: #error __ILP32__ not defined
+>  #error __ILP32__ not defined
+>   ^~~~~
+> 
+> funcs: do_compiler do_cc compile_object check_include main
+> lines: 92 119 616 771 0
+> x86_64-w64-mingw32-gcc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -c -o config-temp/qemu-conf.o config-temp/qemu-conf.c
+> 
+> funcs: do_compiler do_cc compile_prog main
+> lines: 92 125 907 0
+> x86_64-w64-mingw32-gcc -mthreads -D__USE_MINGW_ANSI_STDIO=1 -DWIN32_LEAN_AND_MEAN -DWINVER=0x501 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -o config-temp/qemu-conf.exe config-temp/qemu-conf.c -g -liberty
+> /usr/lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/bin/ld: cannot find -liberty
+> collect2: error: ld returned 1 exit status
+> Failed to run 'configure'
+> Traceback (most recent call last):
+>   File "./tests/docker/docker.py", line 563, in <module>
+>     sys.exit(main())
+>   File "./tests/docker/docker.py", line 560, in main
+>     return args.cmdobj.run(args, argv)
+>   File "./tests/docker/docker.py", line 306, in run
+>     return Docker().run(argv, args.keep, quiet=args.quiet)
+>   File "./tests/docker/docker.py", line 274, in run
+>     quiet=quiet)
+>   File "./tests/docker/docker.py", line 181, in _do_check
+>     return subprocess.check_call(self._command + cmd, **kwargs)
+>   File "/usr/lib64/python2.7/subprocess.py", line 186, in check_call
+>     raise CalledProcessError(retcode, cmd)
+> subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run', '--label', 'com.qemu.instance.uuid=5bcf7f1ce1a911e88b3152540069c830', '-u', '1000', '--security-opt', 'seccomp=unconfined', '--rm', '--net=none', '-e', 'TARGET_LIST=', '-e', 'EXTRA_CONFIGURE_OPTS=', '-e', 'V=', '-e', 'J=8', '-e', 'DEBUG=', '-e', 'SHOW_ENV=1', '-e', 'CCACHE_DIR=/var/tmp/ccache', '-v', '/home/patchew/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v', '/var/tmp/patchew-tester-tmp-j_cwgv70/src/docker-src.2018-11-06-04.49.59.28947:/var/tmp/qemu:z,ro', 'qemu:fedora', '/var/tmp/qemu/run', 'test-mingw']' returned non-zero exit status 1
+> make[1]: *** [tests/docker/Makefile.include:217: docker-run] Error 1
+> make[1]: Leaving directory '/var/tmp/patchew-tester-tmp-j_cwgv70/src'
+> make: *** [tests/docker/Makefile.include:251: docker-run-test-mingw@fedora] Error 2
+> 
+> real	0m37.093s
+> user	0m5.048s
+> sys	0m3.799s
+> === OUTPUT END ===
+> 
+> Test command exited with code: 2
+> 
+> 
+> ---
+> Email generated automatically by Patchew [http://patchew.org/].
+> Please send your feedback to patchew-devel@redhat.com

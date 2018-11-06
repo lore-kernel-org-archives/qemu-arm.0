@@ -1,140 +1,127 @@
-Received: by 2002:adf:a111:0:0:0:0:0 with SMTP id o17-v6csp2887734wro;
-        Mon, 5 Nov 2018 10:00:07 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ceZXlmv6hnRC4lZQhwZDWk4DXGesrYUBhmNT5CEY1SPuVSy3aekumVfpENGtZ+ZTLNsfE0
-X-Received: by 2002:a0c:ebc8:: with SMTP id k8mr16767333qvq.14.1541440807635;
-        Mon, 05 Nov 2018 10:00:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541440807; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp698255wrw;
+        Tue, 6 Nov 2018 02:19:01 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fvq1Fn1P98KJbyKvIJvKYWdugNub2hiW3PbJiW8PshnqcSbh6dNIN/hNpjLWeKmnAUwQR5
+X-Received: by 2002:aed:210e:: with SMTP id 14-v6mr25036221qtc.9.1541499541285;
+        Tue, 06 Nov 2018 02:19:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541499541; cv=none;
         d=google.com; s=arc-20160816;
-        b=q21UziE1ysJiL67/MKeSri8SX64ZakovjbWoK8InCAV/AyVQR2BRlMxqZPnr41FM7b
-         bZ4OOnrwDD2YGXUM+7sdYPZGvYEFPkunhefmdvxccrUmeJ2cLAIyVuDj7S/FnMmJ+BPH
-         u5SvhXyf75JRN5MUh9hHd6Z3aoEnCX/vc4tPlnJbgZNWhDu/3TtgcoSAKG/zdPERZ4El
-         LR/aSIVJUQJi7aOhe9Bmtcajnft25ZrieAIelBeD/sg1fhqyP3HtCOmi+6W6UARs4f9Q
-         yRslmzKrBOPheRsQBs1Jm+ki8VxxsRnP0h384tvP5XpAGKO/x797VOLN24HVhdG+r989
-         qNKA==
+        b=tcni4XKORi9SekmoFiBbQFE/1xxrhb1lnyTphgJXCwTr+yraBlrUuLtEDonXWcGOGr
+         41pyzoispr12mkBulctkvsMRFyEs4K39X6ma5BO6G73zCnKycT3cKOAVPCdhk8BTICWb
+         7f/yNd+t9QGQyzJ6lrTLIDR2lIA2Bp9NJlGK4QmnJ9kvby7I7IjCxFH8qjoPom/5hN8W
+         /w6z4xK5yjpRBpt0g+NdE+zrny2zoydHKVY4v6tOZFY9GU/2jovkzQ9aPYM8YPOn/mVN
+         82E38qCVrYoVIZLBKzW73vYrq2rPcrxtJ72JQTPLwV73rQgBcbCrwrXpVL+geERRCvRN
+         Eysg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:from:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:subject
-         :mime-version:content-transfer-encoding:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
-         :references:message-id:date:thread-index:thread-topic:to
-         :dkim-signature;
-        bh=E2DHxVmKPxIDqWA3eWc5ccx9Q2rBb4b4QGeEEhH8NUE=;
-        b=IaB7mruHYFg14alNnFPqtLAHFfTYl4EELcqj6ZuTfw5w9Re5f9doxVbH27RVp0HjPh
-         4Wq4r8cUl+Oq7gOAKa0pby5N7ztjJ/astI9TeHErC+iur2wbMsXs+vExDs4obb6kSCTj
-         9kGQyIzhTJVf7GSqqbQl8todmITAMtYi2R91ngcW3XIuVbogE4pPDeiq4a9awb8HyKST
-         pHhr1NCj/wOEY/2okYuPlyrPOV+h2XegsyqS57PRxWvlqJIjhs7d734WSEyYMA+HAkGc
-         1VyA4k6IUM5yGmXrXxmztLM8yYKw5UKAhoCM+UxAX58GFZgRrPHd1UGRj4PuuSETNkdE
-         eTnQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
+        bh=8jyTyuRpNayvQxJ/zNu0zPgUbJDOzb0H/N8qdQSagts=;
+        b=bcNU+IAlpOdx4Le6D1h3XKQbpqpL0/Dq4DC4cvzriwUTo/KHfBGbW92Drtij3df7i1
+         vj4GJbrgS4l4cxyMzEuOxI5/eiERqoPmonhNMRTYNj4naFj7hi8YAyTIySCrcP7+CUHx
+         3uulhxA8oCDr5/dd/hzdZM4o2l+L4X/za4Dxn7o1kRDk2slSMCAige2nZyEgyU3aQxEG
+         HIKx6sOjX6PK4bL25bdELBnCQfY66yO+IIj9/3KMZSqAzwRGpGHRW5OFTdj/p2N4jSum
+         bEp5jwYcNqNdmrKwWoQ+4hwAVm1hoEnLb83PlP92QETN1VzlN2JrR/ljZricfRLjv4vm
+         asPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@microsoft.com header.s=selector1 header.b=LAStrsAB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n7-v6si923583qtr.249.2018.11.05.10.00.07
+        by mx.google.com with ESMTPS id b15si2981160qka.263.2018.11.06.02.19.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 05 Nov 2018 10:00:07 -0800 (PST)
+        Tue, 06 Nov 2018 02:19:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@microsoft.com header.s=selector1 header.b=LAStrsAB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36809 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40064 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJjAU-0004xz-SW
-	for alex.bennee@linaro.org; Mon, 05 Nov 2018 13:00:06 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55191)
+	id 1gJyRo-0003fz-Qu
+	for alex.bennee@linaro.org; Tue, 06 Nov 2018 05:19:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34367)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1gJjAK-0004we-Dr
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 12:59:57 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gJyQv-0003FN-BP
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:18:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Andrew.Baumann@microsoft.com>) id 1gJjAJ-000489-KL
-	for qemu-arm@nongnu.org; Mon, 05 Nov 2018 12:59:56 -0500
-Received: from mail-eopbgr740103.outbound.protection.outlook.com
-	([40.107.74.103]:34240
-	helo=NAM01-BN3-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Andrew.Baumann@microsoft.com>)
-	id 1gJjAE-0003zH-Vf; Mon, 05 Nov 2018 12:59:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
-	s=selector1;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=E2DHxVmKPxIDqWA3eWc5ccx9Q2rBb4b4QGeEEhH8NUE=;
-	b=LAStrsABEykQw8nEztMvpvYVxqbDA1hL/aAzlC5hVwe1pnGezemrs/npzg4pBU1R+amVmn00ig7AMpTPTUmd222VY3zbm+TXAv2FzM33/z1OzcoHQqFez7Ze11t1JWZr88uOl27qrDy0S9KJ/rv2UnEJidJ3O5dWtmGcSgygcy8=
-Received: from MWHPR21MB0189.namprd21.prod.outlook.com (10.173.52.135) by
-	MWHPR21MB0143.namprd21.prod.outlook.com (10.173.52.13) with Microsoft
-	SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1339.6; Mon, 5 Nov 2018 17:59:49 +0000
-Received: from MWHPR21MB0189.namprd21.prod.outlook.com
-	([fe80::cdac:4513:3c87:dd56]) by
-	MWHPR21MB0189.namprd21.prod.outlook.com
-	([fe80::cdac:4513:3c87:dd56%16]) with mapi id 15.20.1339.006;
-	Mon, 5 Nov 2018 17:59:48 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [PATCH for 3.1 v2 1/7] MAINTAINERS: Add an entry for the
-	Raspberry Pi machines
-Thread-Index: AQHUdRvimBICU3vmBUWrS716vXkjCqVBaLPwgAAPKACAAABxUA==
-Date: Mon, 5 Nov 2018 17:59:48 +0000
-Message-ID: <MWHPR21MB0189B958EA566F8418FBC44B9ECA0@MWHPR21MB0189.namprd21.prod.outlook.com>
-References: <20181102001303.32640-1-f4bug@amsat.org>
-	<20181102001303.32640-2-f4bug@amsat.org>
-	<CAFEAcA-DZMivo-epUmM6NxPzCUbGCfSU+SxEjszTNLdVaB8UxQ@mail.gmail.com>
-	<MWHPR21MB018970A4F8FA0E42B5DD48229ECA0@MWHPR21MB0189.namprd21.prod.outlook.com>
-	<CAFEAcA-=Y80ZgFOJfVzCxqjaJvG1yO5aBR7efX4OGtOKSXeq2w@mail.gmail.com>
-In-Reply-To: <CAFEAcA-=Y80ZgFOJfVzCxqjaJvG1yO5aBR7efX4OGtOKSXeq2w@mail.gmail.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [131.107.147.183]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; MWHPR21MB0143;
-	6:iGhb26zCJun3IEgzza58np9a95LVKYYX6wq6muKtB+jwzseRtQdeDPgM2jWIKkNTLSWE40VooPmvlxQP8tPOCD7SpjAkdRTjck/8bqJ6+qBdU7KHnPdcfCcC6YijZ4uGigVUckfaGPvmpXrPylc4dQn8e13XACI4C5ae0PQLkcaulYHLkVxUSiq12vO4CV6eijlFDINemsMlPIA+RFOlmzb+9HGGKpXgtZh3ojl5d5mPYdrpR3/blZiFqvXK6KBnPM30aZMQdfxobtfBRUz3QtoPL3MAH4ok1KmkNRGbJB8PzkIDY4/o0LBP6DN+8W/fqwOoputPIZaMqv8IrE1s0N8BSRH1jMOjmMZjs5Pjr1JI2rO/YO9v7kdsPHGgvV83NASc+fgzsrDmXXf1G31WtVi42WxYSNrNtuG7hKyodiSschIPLSkGj52RXllbBlTly2X85dardAmcwgtNC2wYdg==;
-	5:2H4SG7FZlpBxgEsqNkBVV0zf685DGdLfA8+2aoKCmbcqfCVw82aQ+wA/pz5fEtGe4FxBUAJD5AkwiqhbVe5PYhmZJ/Aa7BQ1yRrC7dYtQhUKcNd8F9kubqnsdTwJxuGBAgylhf0z850q0mQtlC1HONkfgYf0KnKNvIcL6f5I1Bk=;
-	7:kTYM16jCWo1qw4w6lymkJsTgrCwxPzV4IM7MthWF6N0vGhMmAQ5Yw4OvMNnbYhE5+v9CkqH8RNpBbZ0MlEr6KSKSMqI5MXOEZ13Fz+mBYpLkkqiHuCOMYbssPJeu+4hg0wdFFxhKUPV2RMieGWei4A==
-x-ms-exchange-antispam-srfa-diagnostics: SOS;
-x-ms-office365-filtering-correlation-id: 104994cf-e435-45c4-b5ce-08d643487a68
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(7020095)(4652040)(8989299)(5600074)(711020)(4618075)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7193020);
-	SRVR:MWHPR21MB0143; 
-x-ms-traffictypediagnostic: MWHPR21MB0143:
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Andrew.Baumann@microsoft.com; 
-x-o365-sonar-daas-pilot: True
-x-o365eop-header: O365_EOP: Allow for Unauthenticated Relay
-x-o365ent-eop-header: Message processed by -  O365_ENT: Allow from ranges
-	(Engineering ONLY)
-x-microsoft-antispam-prvs: <MWHPR21MB014336D3C3729EBF076478A39ECA0@MWHPR21MB0143.namprd21.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(8220035)(2401047)(8121501046)(5005006)(93006095)(93001095)(3002001)(3231382)(944501410)(52105095)(2018427008)(10201501046)(6055026)(148016)(149066)(150057)(6041310)(20161123564045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123560045)(20161123562045)(201708071742011)(7699051)(76991095);
-	SRVR:MWHPR21MB0143; BCL:0; PCL:0; RULEID:; SRVR:MWHPR21MB0143; 
-x-forefront-prvs: 08476BC6EF
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(39860400002)(376002)(136003)(396003)(346002)(366004)(189003)(199004)(86612001)(71190400001)(71200400001)(102836004)(26005)(99286004)(66066001)(10090500001)(7696005)(186003)(53546011)(6506007)(76176011)(97736004)(68736007)(53936002)(316002)(54906003)(22452003)(93886005)(6436002)(9686003)(2900100001)(6916009)(14454004)(55016002)(8936002)(81166006)(2906002)(3846002)(4326008)(6116002)(10290500003)(6246003)(72206003)(81156014)(8676002)(478600001)(106356001)(8990500004)(446003)(25786009)(476003)(11346002)(256004)(486006)(229853002)(305945005)(86362001)(33656002)(105586002)(5660300001)(7736002)(74316002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:MWHPR21MB0143;
-	H:MWHPR21MB0189.namprd21.prod.outlook.com; FPR:; SPF:None;
-	LANG:en; PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
-	permitted sender hosts)
-x-microsoft-antispam-message-info: vR99VQzfzMDI9sB8JdtQsTQHeo8c1zxuSEE1pB+KSsnvx3zgwgbaRHh6Z7E+axP59v41f3Ct/bVr2tdaDCZV2fsdGPCCd7iy3INIVuTcyfGA8ygB1cCfzstEX5u6OlFdHGguOrtOFfMDEjoz1IKC93Wg2k033qhvylKPpn1H3gi186lSoOVE3PfZvlZSeCmxo41vObC8EsT+2T9IoAe9ps/4jMBsgjDcdKx5+IPx+FNP/OBhK0a404KapYDYdgZtuBpc7uuoFU+9TYMX8DYmOoby6R24rTt72xY7ejdCn7dQudSrTYTghmCaMe+/CR8LIX+3WtRXRP0pK4nMU1BBpSsaxhwVlYGjbiIVnh7SfHs=
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+	(envelope-from <pbonzini@redhat.com>) id 1gJyQo-0003tv-TY
+	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 05:18:05 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39160)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1gJyQo-0003mU-KJ; Tue, 06 Nov 2018 05:17:58 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5F7EE58E23;
+	Tue,  6 Nov 2018 10:17:54 +0000 (UTC)
+Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4176B1710F;
+	Tue,  6 Nov 2018 10:17:45 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, Samuel Ortiz
+	<sameo@linux.intel.com>, qemu-devel@nongnu.org
+References: <20181101102303.16439-1-sameo@linux.intel.com>
+	<20181101102303.16439-4-sameo@linux.intel.com>
+	<a7c05368-908e-0249-5702-63a844f9dc71@gmail.com>
+	<0a0f830b-e9a3-8cb4-12f5-d3fc234036cc@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <26bc6ef8-f9c4-b75b-4157-62f81d972340@redhat.com>
+Date: Tue, 6 Nov 2018 11:17:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 104994cf-e435-45c4-b5ce-08d643487a68
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Nov 2018 17:59:48.7851 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR21MB0143
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.74.103
-Subject: Re: [Qemu-arm] [PATCH for 3.1 v2 1/7] MAINTAINERS: Add an entry for
- the Raspberry Pi machines
+In-Reply-To: <0a0f830b-e9a3-8cb4-12f5-d3fc234036cc@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 06 Nov 2018 10:17:54 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 03/23] hw: acpi: Export the
+ RSDP build API
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -146,26 +133,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-From: Andrew Baumann via Qemu-arm <qemu-arm@nongnu.org>
-Reply-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	=?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
-	Guenter Roeck <linux@roeck-us.net>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	"open list:ARM ACPI Subsystem" <qemu-arm@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BUwXg5ijOExN
+X-TUID: uFAZoJQWrOaN
 
-PiBGcm9tOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+DQo+IFNlbnQ6
-IE1vbmRheSwgNSBOb3ZlbWJlciAyMDE4IDA5OjU4DQo+IA0KPiBPbiA1IE5vdmVtYmVyIDIwMTgg
-YXQgMTc6MDYsIEFuZHJldyBCYXVtYW5uDQo+IDxBbmRyZXcuQmF1bWFubkBtaWNyb3NvZnQuY29t
-PiB3cm90ZToNCj4gPiBGcm9tOiBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxsQGxpbmFyby5v
-cmc+DQo+ID4+IEFuZHJldywgYXMgdGhlIG9yaWdpbmFsIHN1Ym1pdHRlciBvZiB0aGUgUmFzcGJl
-cnJ5IFBpIGNvZGUgd291bGQgeW91DQo+ID4+IGxpa2UgdG8gYmUgbGlzdGVkIGFzIGEgbWFpbnRh
-aW5lciBmb3IgaXQ/DQo+ID4NCj4gPiBUaGFua3MgZm9yIGFza2luZzsgcHJvYmFibHkgbm90IC0t
-IEknbSBoYXBweSB0byByZXZpZXcgdGhlIG9kZCBwYXRjaA0KPiA+IGlmIG15IGlucHV0IHdvdWxk
-IGJlIGhlbHBmdWwsIGJ1dCBJIGhhdmVuJ3Qgd29ya2VkIG9uIGl0IGZvciB5ZWFycywNCj4gPiBh
-bmQgSSBkb24ndCBoYXZlIHNwYXJlIGN5Y2xlcywgc28gSSdkIGp1c3QgYmUgYSBib3R0bGVuZWNr
-Lg0KPiANCj4gU3VyZSwgbm8gcHJvYmxlbS4gV291bGQgeW91IGxpa2UgdG8gYmUgbGlzdGVkIGFz
-IGEgInJldmlld2VyIg0KPiAobWVhbnMgcGVvcGxlIHdpbGwgQ0MgeW91IG9uIHBhdGNoZXMsIGJh
-c2ljYWxseSksIG9yIG5vdCBhdCBhbGw/DQoNClN1cmUsIHJldmlld2VyIGlzIGZpbmUgd2l0aCBt
-ZS4NCg0KQW5kcmV3DQo=
+On 02/11/2018 10:56, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>
+>>> =C2=A0 }
+>>> =C2=A0 /* RSDP */
+>>> -static GArray *
+>>> +static void
+>>> =C2=A0 build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned
+>>> xsdt_tbl_offset)
+>>> =C2=A0 {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AcpiRsdpDescriptor *rsdp =3D acpi_data=
+_push(rsdp_table, sizeof
+>>> *rsdp);
+>>
+>> Why change this? It's not related to your patch purpose.
+>=20
+> This patch updates include/hw/acpi/aml-build.h to export the
+> build_rsdp() function.
+> Since this file includes this header, the orototype needs to match.
+
+But then it should also remove the "return".  I think something is
+broken for bisectability between this patch and patch 4.
+
+Perhaps this patch should already rename the function to
+build_rsdp_rsdt, and patch 4 should move build_rsdp from hw/arm to hw/acp=
+i?
+
+Paolo

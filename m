@@ -1,106 +1,106 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp738847wrw;
-        Tue, 6 Nov 2018 03:06:51 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dQa6+RFFZWy1Pi7aQ2ydjP0rFygTEtm+JxW2ATgNhBCu2UR20AQwqyEQmxnbtck7K5CWUh
-X-Received: by 2002:aed:3c0c:: with SMTP id t12mr25515690qte.226.1541502411466;
-        Tue, 06 Nov 2018 03:06:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541502411; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp738977wrw;
+        Tue, 6 Nov 2018 03:06:57 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fwzrgIAW6AvJLTebyvXAerC6VgeqFuAN+OghRb7yIq3+zI+e7dyGxayqSjBTna/hcMSqRI
+X-Received: by 2002:a0c:edcb:: with SMTP id i11mr24924576qvr.95.1541502417620;
+        Tue, 06 Nov 2018 03:06:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541502417; cv=none;
         d=google.com; s=arc-20160816;
-        b=DW3KvXEhEaNzYqyMH/Dg0c3VOYMJK9+RysIeLIezEltU4YxeNU5cT+WZkC+WCaiJwm
-         Yfzt5DTlcVYJwCC5gDcPI/A11Hz+Bef4xr5ABh43h1X/m9Mukbry75g/WYsVSdxxl8UR
-         mMI9KLAg43/RPfCpjpyjOTrYhKMvPvDnLZFpTiZZCahX5C4X6ivaHLEmHLRNynlAv0Az
-         +IM/5Kpr+bNJdOemjWgUQSaZp7dot5gqH+krgbE8idesKdrBDcD52hApVAOUTu79zBIL
-         v7j5H0mWAusIyYxPMP2LdAwEj4u6nErnLfpOpucpTNN41yfP+TIYU43/+4eAGWau06D8
-         tn9w==
+        b=IH0vha1C6ncInSZAw1a94TON7VJDkmdUikU/5EF1za8N1nK36TPE5tzQZ4hqzZGvaO
+         68xyIkAeACgenoMl3rK9muWs8A/HUEWwBnvyKHNjgnPsaHlFPYe03qWWiLoiXUXZ1vZ7
+         ThZ27a5ZdI5g5Lp0VgG/phQbPfzHkCzdBc6XQ5MSPIGnUl1r9OjiJmrrxHdzB1677Omu
+         iRkTsg/dFQ8acfe5Giz59I1IQ2pyqyycmaAPNb5v7IpMeI6GpEqrmZw6WaCj8X9QqzNg
+         CswjounNxXhVWCHvY2FpJR2TKjUH/yO7gAjKPSWwzJT1B1CDRNDNwuI+nqG7KHNeEK+1
+         BeNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=zcBaI+pRF72rAndb2ajEh3xsuiynZzDLLDLLye+Dks8=;
-        b=0Xn8wiEEUiJ9x+VJOlVcnzE3nymMWHqtm1q2PW1BLVsYlQRjT1DgdZ9T6mvkwFx1jR
-         YxBo3F5PIR1dcQvbPQ5JG5ft8jlooD80L/YpNP+upWtLvUTYE0CYv8t7mPuWJLR7SLMB
-         X8qzlDKKfLiABO4H7/+LEQm/axlKiFrjT4UzuQ3fmBJE2quTA/MYKyvpmuKE8Npj3+bA
-         9e3kZ/GcVDn6ncsAxJuHZTmQ4AUHSu6vBqzD51NDwMtSg868kx/OFC2NmuOCVGlg7Mkc
-         VL5DyDNnepwRHFO2JiBXLS8FFXcp8U1Eb+e9vqnW7ocOj2K+AO9J0OgrwSU8GF87kDAB
-         BiYg==
+        bh=vkYS8yCQZTPVPigP4R/mvKkWOWkuhrQG5NhEBJDe/KY=;
+        b=GJegh0h7jFgN1jIfc0x2Yp8mklAKLq99DzvJFBaTlgrHdrOfl+P1+IjgzBO4A5kC7h
+         ROmptmoaJP3fO45Sr6U2o1SuOCe50HGpttDuEbxtrle/BH4g+iJ9VFEFucvRJQ0685V4
+         e0yUM8TugGL5/hQTthAEb0MPtL1cwBRntGFt2LkybI93KNFWEFHwG2Lwv8RNsICsYQO9
+         HRUhNyLw74O0rJ9UBicqT307MnOAuGznKZmTPUkHCRezTN3Wz5yp3+mwcJ5+WPvV/BO5
+         ftO6WKOPaRfCSuF7lkng3zcnBqwIQSk1m+REAUJFTv5IItvcOHBXxFj1h/rlzgkwMA1f
+         Ging==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="sS/oFJhh";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=iDzyXRJU;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=iDzyXRJU;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=P+jEEtme;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LCf0CiTz;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LCf0CiTz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u2si8087170qva.47.2018.11.06.03.06.51
+        by mx.google.com with ESMTPS id s17si4632182qki.14.2018.11.06.03.06.57
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Nov 2018 03:06:51 -0800 (PST)
+        Tue, 06 Nov 2018 03:06:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="sS/oFJhh";
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=iDzyXRJU;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=iDzyXRJU;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=P+jEEtme;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LCf0CiTz;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=LCf0CiTz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40292 helo=lists.gnu.org)
+Received: from localhost ([::1]:40296 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJzC7-0006Um-0I
-	for alex.bennee@linaro.org; Tue, 06 Nov 2018 06:06:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48771)
+	id 1gJzCD-0006bK-2f
+	for alex.bennee@linaro.org; Tue, 06 Nov 2018 06:06:57 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48765)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gJzBZ-0006Eu-Ev
+	(envelope-from <luc.michel@greensocs.com>) id 1gJzBZ-0006Eo-E8
 	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 06:06:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gJzBW-0000qI-9H
+	(envelope-from <luc.michel@greensocs.com>) id 1gJzBV-0000py-Rk
 	for qemu-arm@nongnu.org; Tue, 06 Nov 2018 06:06:17 -0500
-Received: from greensocs.com ([193.104.36.180]:46713)
+Received: from greensocs.com ([193.104.36.180]:46712)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1gJzBV-0000or-VO; Tue, 06 Nov 2018 06:06:14 -0500
+	id 1gJzBV-0000os-HL; Tue, 06 Nov 2018 06:06:13 -0500
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id A69024F7670;
+	by greensocs.com (Postfix) with ESMTP id 3B4A85C026C;
 	Tue,  6 Nov 2018 12:06:13 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1541502373;
-	bh=fC05Ss4NtDnlUcYu1G7ZDk22A00EuZP6bFkSpzrSNxc=;
+	bh=oEhtZP/9SjD4dnBg12InDEYfGFug7U6sbGl0KVHhliU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=sS/oFJhhSgpqNsSokL790zBPD50ntRa78lvFuQcalr2r8OpmslcIsIJ7MBKsz1sDs
-	ucTJtMRg8EI0086yUjsYZ+HuKmYM7rNz62u/yDaZf4qXNFI4OZ8sLa9mJsDQf6waPW
-	VpOK3bYyFazllwr6jm3MWOskK1px8QY4X6SVoT7o=
+	b=P+jEEtme3BeKKujxPAK6lMMqVG5MpfA5hrVlFRA/44diMrll2cNnNHpk3ozw5ZDSh
+	rcUPHqUmkOQkZnTnn0BAyxOMOmXbEbMXemYLTSzjkBrPeQHRFmF4viYFpWLYqN14LJ
+	V1JCEc2dZ4S0/5PBQexEEqpw+x/VS9sGgdlyC/44=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=iDzyXRJU;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=iDzyXRJU
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=LCf0CiTz;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=LCf0CiTz
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7Pi-k8flFZ3F; Tue,  6 Nov 2018 12:06:12 +0100 (CET)
+	with ESMTP id l8MY5U-dQHWM; Tue,  6 Nov 2018 12:06:07 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id C1AC45C024F; Tue,  6 Nov 2018 12:06:08 +0100 (CET)
+	id 7A8364F7670; Tue,  6 Nov 2018 12:06:06 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541502368;
-	bh=fC05Ss4NtDnlUcYu1G7ZDk22A00EuZP6bFkSpzrSNxc=;
+	s=mail; t=1541502366;
+	bh=oEhtZP/9SjD4dnBg12InDEYfGFug7U6sbGl0KVHhliU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=iDzyXRJU7XjuU/doTqw9KOhLggJBeq51zK3YBxDxXl5CK8oJK0OcEn3T7kmAsCHsF
-	yR4cvTf+pFRE5YxksJsWh4qgRBkYf8sxMN1WyRKKuGBOSYNC1EI8whqyNE5KouEjJS
-	5FRzK6f92xclJw5eMHf1nXe/t4dOxK1+d2Jyk39k=
+	b=LCf0CiTz6LbhAS+diVeL99YiXnVAc9zIHKwZ/WXr3xsd2MyxcygthsBriJE30Y9Ew
+	aHYC1p8lRs1s8GLX1akSwKOD7xJ36z9WxIBlPZelRvQLt6Y/hbHLwhlPekBjGTF3XS
+	IY3Ya3u1yChwbhrJs4M63YGQwbnq6dmKcyxB+sy0=
 Received: from michell-laptop.home.lmichel.fr
 	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 585825C024F;
-	Tue,  6 Nov 2018 12:06:08 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id 0692E5C024B;
+	Tue,  6 Nov 2018 12:06:06 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541502368;
-	bh=fC05Ss4NtDnlUcYu1G7ZDk22A00EuZP6bFkSpzrSNxc=;
+	s=mail; t=1541502366;
+	bh=oEhtZP/9SjD4dnBg12InDEYfGFug7U6sbGl0KVHhliU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=iDzyXRJU7XjuU/doTqw9KOhLggJBeq51zK3YBxDxXl5CK8oJK0OcEn3T7kmAsCHsF
-	yR4cvTf+pFRE5YxksJsWh4qgRBkYf8sxMN1WyRKKuGBOSYNC1EI8whqyNE5KouEjJS
-	5FRzK6f92xclJw5eMHf1nXe/t4dOxK1+d2Jyk39k=
+	b=LCf0CiTz6LbhAS+diVeL99YiXnVAc9zIHKwZ/WXr3xsd2MyxcygthsBriJE30Y9Ew
+	aHYC1p8lRs1s8GLX1akSwKOD7xJ36z9WxIBlPZelRvQLt6Y/hbHLwhlPekBjGTF3XS
+	IY3Ya3u1yChwbhrJs4M63YGQwbnq6dmKcyxB+sy0=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  6 Nov 2018 12:05:41 +0100
-Message-Id: <20181106110548.4209-10-luc.michel@greensocs.com>
+Date: Tue,  6 Nov 2018 12:05:36 +0100
+Message-Id: <20181106110548.4209-5-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181106110548.4209-1-luc.michel@greensocs.com>
 References: <20181106110548.4209-1-luc.michel@greensocs.com>
@@ -109,8 +109,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v4 09/16] gdbstub: add multiprocess support to
- gdb_vm_state_change()
+Subject: [Qemu-arm] [PATCH v4 04/16] gdbstub: add multiprocess support to
+ 'H' and 'T' packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -130,85 +130,268 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WM7460VJTEAv
+X-TUID: mCcRhCJ4Coxe
 
-Add support for multiprocess extension in gdb_vm_state_change()
-function.
+Add a couple of helper functions to cope with GDB threads and processes.
+
+The gdb_get_process() function looks for a process given a pid.
+
+The gdb_get_cpu() function returns the CPU corresponding to the (pid,
+tid) pair given as parameters.
+
+The read_thread_id() function parses the thread-id sent by the peer.
+This function supports the multiprocess extension thread-id syntax.  The
+return value specifies if the parsing failed, or if a special case was
+encountered (all processes or all threads).
+
+Use them in 'H' and 'T' packets handling to support the multiprocess
+extension.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- gdbstub.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ gdbstub.c | 152 +++++++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 134 insertions(+), 18 deletions(-)
 
 diff --git a/gdbstub.c b/gdbstub.c
-index aae3cce01a..decf56c610 100644
+index d26bad4b67..598a89b3ba 100644
 --- a/gdbstub.c
 +++ b/gdbstub.c
-@@ -1713,10 +1713,11 @@ void gdb_set_stop_cpu(CPUState *cpu)
- static void gdb_vm_state_change(void *opaque, int running, RunState stat=
-e)
- {
-     GDBState *s =3D gdbserver_state;
-     CPUState *cpu =3D s->c_cpu;
-     char buf[256];
-+    char thread_id[16];
-     const char *type;
-     int ret;
+@@ -680,10 +680,73 @@ out:
+ #else
+     return s->processes[0].pid;
+ #endif
+ }
 =20
-     if (running || s->state =3D=3D RS_INACTIVE) {
-         return;
-@@ -1724,10 +1725,18 @@ static void gdb_vm_state_change(void *opaque, int=
- running, RunState state)
-     /* Is there a GDB syscall waiting to be sent?  */
-     if (s->current_syscall_cb) {
-         put_packet(s, s->syscall_buf);
-         return;
-     }
++static GDBProcess *gdb_get_process(const GDBState *s, uint32_t pid)
++{
++    int i;
 +
-+    if (cpu =3D=3D NULL) {
-+        /* No process attached */
-+        return;
++    if (!pid) {
++        /* 0 means any process, we take the first one */
++        return &s->processes[0];
 +    }
 +
-+    gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thread_id));
++    for (i =3D 0; i < s->process_num; i++) {
++        if (s->processes[i].pid =3D=3D pid) {
++            return &s->processes[i];
++        }
++    }
 +
-     switch (state) {
-     case RUN_STATE_DEBUG:
-         if (cpu->watchpoint_hit) {
-             switch (cpu->watchpoint_hit->flags & BP_MEM_ACCESS) {
-             case BP_MEM_READ:
-@@ -1741,12 +1750,12 @@ static void gdb_vm_state_change(void *opaque, int=
- running, RunState state)
-                 break;
-             }
-             trace_gdbstub_hit_watchpoint(type, cpu_gdb_index(cpu),
-                     (target_ulong)cpu->watchpoint_hit->vaddr);
-             snprintf(buf, sizeof(buf),
--                     "T%02xthread:%02x;%swatch:" TARGET_FMT_lx ";",
--                     GDB_SIGNAL_TRAP, cpu_gdb_index(cpu), type,
-+                     "T%02xthread:%s;%swatch:" TARGET_FMT_lx ";",
-+                     GDB_SIGNAL_TRAP, thread_id, type,
-                      (target_ulong)cpu->watchpoint_hit->vaddr);
-             cpu->watchpoint_hit =3D NULL;
-             goto send_packet;
-         } else {
-             trace_gdbstub_hit_break();
-@@ -1784,11 +1793,11 @@ static void gdb_vm_state_change(void *opaque, int=
- running, RunState state)
-         trace_gdbstub_hit_unknown(state);
-         ret =3D GDB_SIGNAL_UNKNOWN;
-         break;
++    return NULL;
++}
++
++static GDBProcess *gdb_get_cpu_process(const GDBState *s, CPUState *cpu)
++{
++    return gdb_get_process(s, gdb_get_cpu_pid(s, cpu));
++}
++
++static CPUState *find_cpu(uint32_t thread_id)
++{
++    CPUState *cpu;
++
++    CPU_FOREACH(cpu) {
++        if (cpu_gdb_index(cpu) =3D=3D thread_id) {
++            return cpu;
++        }
++    }
++
++    return NULL;
++}
++
++static CPUState *gdb_get_cpu(const GDBState *s, uint32_t pid, uint32_t t=
+id)
++{
++    GDBProcess *process;
++    CPUState *cpu =3D find_cpu(tid);
++
++    if (!tid) {
++        /* 0 means any thread, we take the first one */
++        tid =3D 1;
++    }
++
++    if (cpu =3D=3D NULL) {
++        return NULL;
++    }
++
++    process =3D gdb_get_cpu_process(s, cpu);
++
++    if (process->pid !=3D pid) {
++        return NULL;
++    }
++
++    if (!process->attached) {
++        return NULL;
++    }
++
++    return cpu;
++}
++
+ static const char *get_feature_xml(const char *p, const char **newp,
+                                    CPUClass *cc)
+ {
+     size_t len;
+     int i;
+@@ -936,23 +999,10 @@ static void gdb_set_cpu_pc(GDBState *s, target_ulon=
+g pc)
+=20
+     cpu_synchronize_state(cpu);
+     cpu_set_pc(cpu, pc);
+ }
+=20
+-static CPUState *find_cpu(uint32_t thread_id)
+-{
+-    CPUState *cpu;
+-
+-    CPU_FOREACH(cpu) {
+-        if (cpu_gdb_index(cpu) =3D=3D thread_id) {
+-            return cpu;
+-        }
+-    }
+-
+-    return NULL;
+-}
+-
+ static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
+                            char *buf, size_t buf_size)
+ {
+     if (s->multiprocess) {
+         snprintf(buf, buf_size, "p%02x.%02x",
+@@ -962,10 +1012,64 @@ static char *gdb_fmt_thread_id(const GDBState *s, =
+CPUState *cpu,
      }
-     gdb_set_stop_cpu(cpu);
--    snprintf(buf, sizeof(buf), "T%02xthread:%02x;", ret, cpu_gdb_index(c=
-pu));
-+    snprintf(buf, sizeof(buf), "T%02xthread:%s;", ret, thread_id);
 =20
- send_packet:
-     put_packet(s, buf);
+     return buf;
+ }
 =20
-     /* disable single step if it was enabled */
++typedef enum GDBThreadIdKind {
++    GDB_ONE_THREAD =3D 0,
++    GDB_ALL_THREADS,     /* One process, all threads */
++    GDB_ALL_PROCESSES,
++    GDB_READ_THREAD_ERR
++} GDBThreadIdKind;
++
++static GDBThreadIdKind read_thread_id(const char *buf, const char **end_=
+buf,
++                                      uint32_t *pid, uint32_t *tid)
++{
++    unsigned long p, t;
++    int ret;
++
++    if (*buf =3D=3D 'p') {
++        buf++;
++        ret =3D qemu_strtoul(buf, &buf, 16, &p);
++
++        if (ret) {
++            return GDB_READ_THREAD_ERR;
++        }
++
++        /* Skip '.' */
++        buf++;
++    } else {
++        p =3D 1;
++    }
++
++    ret =3D qemu_strtoul(buf, &buf, 16, &t);
++
++    if (ret) {
++        return GDB_READ_THREAD_ERR;
++    }
++
++    *end_buf =3D buf;
++
++    if (p =3D=3D -1) {
++        return GDB_ALL_PROCESSES;
++    }
++
++    if (pid) {
++        *pid =3D p;
++    }
++
++    if (t =3D=3D -1) {
++        return GDB_ALL_THREADS;
++    }
++
++    if (tid) {
++        *tid =3D t;
++    }
++
++    return GDB_ONE_THREAD;
++}
++
+ static int is_query_packet(const char *p, const char *query, char separa=
+tor)
+ {
+     unsigned int query_len =3D strlen(query);
+=20
+     return strncmp(p, query, query_len) =3D=3D 0 &&
+@@ -1070,16 +1174,18 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+ {
+     CPUState *cpu;
+     CPUClass *cc;
+     const char *p;
+     uint32_t thread;
++    uint32_t pid, tid;
+     int ch, reg_size, type, res;
+     uint8_t mem_buf[MAX_PACKET_LENGTH];
+     char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
+     char thread_id[16];
+     uint8_t *registers;
+     target_ulong addr, len;
++    GDBThreadIdKind thread_kind;
+=20
+     trace_gdbstub_io_command(line_buf);
+=20
+     p =3D line_buf;
+     ch =3D *p++;
+@@ -1283,16 +1389,22 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+         else
+             put_packet(s, "E22");
+         break;
+     case 'H':
+         type =3D *p++;
+-        thread =3D strtoull(p, (char **)&p, 16);
+-        if (thread =3D=3D -1 || thread =3D=3D 0) {
++
++        thread_kind =3D read_thread_id(p, &p, &pid, &tid);
++        if (thread_kind =3D=3D GDB_READ_THREAD_ERR) {
++            put_packet(s, "E22");
++            break;
++        }
++
++        if (thread_kind !=3D GDB_ONE_THREAD) {
+             put_packet(s, "OK");
+             break;
+         }
+-        cpu =3D find_cpu(thread);
++        cpu =3D gdb_get_cpu(s, pid, tid);
+         if (cpu =3D=3D NULL) {
+             put_packet(s, "E22");
+             break;
+         }
+         switch (type) {
+@@ -1308,12 +1420,16 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+              put_packet(s, "E22");
+              break;
+         }
+         break;
+     case 'T':
+-        thread =3D strtoull(p, (char **)&p, 16);
+-        cpu =3D find_cpu(thread);
++        thread_kind =3D read_thread_id(p, &p, &pid, &tid);
++        if (thread_kind =3D=3D GDB_READ_THREAD_ERR) {
++            put_packet(s, "E22");
++            break;
++        }
++        cpu =3D gdb_get_cpu(s, pid, tid);
+=20
+         if (cpu !=3D NULL) {
+             put_packet(s, "OK");
+         } else {
+             put_packet(s, "E22");
 --=20
 2.19.1
 

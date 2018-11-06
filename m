@@ -1,109 +1,150 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp695822wrw;
-        Tue, 6 Nov 2018 02:16:20 -0800 (PST)
-X-Received: by 2002:a25:220a:: with SMTP id i10-v6mr24412184ybi.185.1541499380119;
-        Tue, 06 Nov 2018 02:16:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541499380; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp704359wrw;
+        Tue, 6 Nov 2018 02:26:43 -0800 (PST)
+X-Received: by 2002:a25:59c1:: with SMTP id n184-v6mr24977294ybb.28.1541500003842;
+        Tue, 06 Nov 2018 02:26:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541500003; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pg3Cy8/pJdaL3iMpCmvCbec+mkbA/WWo7P0iXvWylTaJB2ZaiiSmA1UZeC76dPA5Ca
-         3r8FF9YGs21QTxoktzyUt4B2DT773ZNeDAnCiasTdTx1cL0EjWJAd7HahochW1Ro9DfE
-         2u0brKaFiO3xYtNwI5Tb22LnTa1/gaik9Jzg9Zi60ugCJF7obqi4RlgCuFPPEyAEs05d
-         mRk3fU99EpahYy9wKPqeByAA83XAeAH0Ti8p6Rnm9Tw4kvJAsYOo0qc4GSVi+ARZ8pe1
-         uZ9MmiPsaqYzuz1iJalaxutRezV4+pS6QN+DAsRj5Nokf6uSHMvNWO43ZA9wy4e6RQQQ
-         zt3w==
+        b=uoAT79bW4v/cOCZdRlcCf5oj1MU6w28SJvFO2DChZIXscvTOa+YJePNSEdIyvkcUhm
+         /ssj6hH4KzZZoab/BqGn+/FVe4PPwObkthmclFXNYDX5DqpzYjG5S+aVbofaLxBbR6zR
+         OxjMvYqoVLu9Yj00//APaenVhCKRKN9Eu2VKSyhKrydVQc9kR0J9678DXZSFCDOp2WCz
+         2bIwDJqjVBytE95aaOdI1QpeOVegO9embLN2Fh2AvcDf2rq/LHftCjvFMzv+PIHsrhao
+         XJigt5T0YSYzJG2zvA7EP6rLZk2hOdM6OWO0uelWSYmJ8Id8r7wvCuQbkiVqKBKQzm2G
+         wyvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature;
-        bh=9UHwy01ndqGiz4mtm+mkejOXuqVRB1S2aTKGbXJTc2k=;
-        b=WZqWPs1puSfIOJe4D4ShjNylOYCAe5tOp9vonAPEPSeeTkko9hz9UH/qG1ivCfyrMM
-         9enc5YYl4isiodPRT54BMoho9BUY6p17Z5bRMuodPwSvXUnUqie6q1vY47sEnF6xjCeW
-         9Sz0uo93l52topsfejdtOK365wF5SLt9sIbg9/yw+8Llp7NGy5g1K00TR3jCkhpkj8+3
-         ccl74oUjxig74Yk+o0TgZy/WJKqkh2V+WKYDXDAqv1mJX5W8gxecDJ9xmMziMbSsuGuM
-         BzqbO9viWitF4Z+ZEREcOtrgAxnmIYGLccmdk3NZxcdb00F0/KFxETNAdFxIuFkg++9h
-         kBfw==
+        bh=mm+5Va9VMm9aPu6+dV+pWUYrDmqWaQlgvNRXIlACrAU=;
+        b=ovY9CUGqhE57XxxAr/eSDrU1tCjrhyLnRZeZI0dufMvOsek08feCqYeqiztXjcMk9c
+         mKYOgm2TGkvdd8lDLMrMHkdQou6JdHOP81RiLdKW+D59i0V1C+WAkPm7Tg/6pGkZZtPx
+         EtnQaFuknbqnJ6uxeOXbX3zbDZNVUdiqqC5p+zEsYCWxQNLonn9PN/SuwhLdELN1X15+
+         oGsz2m/KQiNyHnHMBist3kCLBWr7byb2ER4Q5BxFd3JZlbFTWZ5PfWUltw/xOTq5jg6i
+         xMZOaoOwcCnhgEZcdH4sXPG3xFA9mbKgc99R7sMSIXDjO4YODLmT70v/FPzOmvarBWIF
+         6lbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ap7ldsGd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ffnb43tJ;
        spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <hongbo.zhang@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b5-v6sor23191553ybq.112.2018.11.06.02.16.19
+        by mx.google.com with SMTPS id c135-v6sor5755591ywb.163.2018.11.06.02.26.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 06 Nov 2018 02:16:20 -0800 (PST)
+        Tue, 06 Nov 2018 02:26:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ap7ldsGd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ffnb43tJ;
        spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=9UHwy01ndqGiz4mtm+mkejOXuqVRB1S2aTKGbXJTc2k=;
-        b=ap7ldsGdh6S8hGnqmkykjFgz5eBasB3etnHZvBAp54f5tCvKt4yPHglzdwe7YjFK8v
-         Z3Zi18QgJc0c/BzMGI+rlFox296MXs7UKsSfVsBd1ufNR9E7BdQA1j7chrwACzTh3L2N
-         1nLC1Ux+Kq5BfhlewlbrtFSG9oF2RqQSalNNw=
+        bh=mm+5Va9VMm9aPu6+dV+pWUYrDmqWaQlgvNRXIlACrAU=;
+        b=Ffnb43tJYjgLqmoYrpCeQCJLgmKRex6yV0KcM4EmwNg5SguQ9wFewU1jzRC6GH6eBB
+         uLw6NoJErt1kyyx2Cm+ymARnn8Vxg9oGjx4tYl2YuQgOF2isWHq0b5rD+z43QwpcJRIg
+         h97Hxg4umss80yw/MhcTlvn0sK43wwSJ+afSQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=9UHwy01ndqGiz4mtm+mkejOXuqVRB1S2aTKGbXJTc2k=;
-        b=e7Sv1OiWT76NFmmT4KEpE5VPKMu7UPQQvG3/mPI2mjafwtWVT1uWO46uxlz8sRVNWF
-         qKvkfKPpNpRYR9fxlgpG4cbOGESX9skTsjY/oJN0s+nUOHFh7G+mxpQl9RCh27FaaDeT
-         qbyeQkm4ld22FsVC8yRdFVztkZxj77qs9Qp/D7LU6eA2bqcp2J3zGv5O91mKwigFSxzN
-         07ODK1VlP+n8YvfH+7S4DcZwQW3ze6l13LH+7g/sQXpMPjneubnrOqmYgvAhlhJqowib
-         JgW+IjpZbw1IK99fofFofhqhAxgCOgWTyae0PwWowb+Dhcc+Wgsasy2Y+08cxvOe4ndy
-         f1TQ==
-X-Gm-Message-State: AGRZ1gJcOVRjGm9E2qmJXTtCf8QTGLfaXNbOF4+0vUnZk3UJXAOaUsw0
-	CQEpPpNkU6AimlgTara7fR56/78l9fv2KGZ4dPB/rzK9eVCRyP+q
-X-Google-Smtp-Source: AJdET5fixBd5QhuTK0WTr2k+4+3okFAZe2khrgeXJv4yQp6JtPesE7yg1mP0sp7YRYEne/HKKYA2ZinrxZRxLsqGX3k=
-X-Received: by 2002:a25:5443:: with SMTP id i64-v6mr26041206ybb.287.1541499379790;
- Tue, 06 Nov 2018 02:16:19 -0800 (PST)
+        bh=mm+5Va9VMm9aPu6+dV+pWUYrDmqWaQlgvNRXIlACrAU=;
+        b=IL7xO9IqPs4DrqolGvOGwaVK/1bwTzOkXNQPticMOlD28lpaciLtjNhOD9ujtwUeLd
+         SN1zLRH6qA/JlC6bDYPz4oGkvp+qk2EQMwI0pWT3jodvI1cPi9ZlxFaCdAuuxjGFnwzA
+         rxrWNJzcOaXivq3SxajLrlF5QLVTZIVzlrcw+rQkSLYocjtyOee9pa4aJd/C5+8ndxX3
+         5Ga88hNzYHwEctFEtXqtp0hwE5iagOYXw58T/129JReSYttivp9fFm5y6jZPjgok5Un7
+         npuavZPiDnXzcoNRdzLsc5cDZaOV+yqaYL58MrpBOnRhuKIPNSNzKw3psGDRKoHdhyMS
+         dt6Q==
+X-Gm-Message-State: AGRZ1gJ9ZAYWl4Y29UFZxUAEHKUmC0kUhOvZ/MO8wUsmk3NATa3CL/UB
+	GRlI8uVlPK7gWQWg0IIgfeIapeOAsiySsCQa680FMnWUAD20ZP7LuG4=
+X-Google-Smtp-Source: AJdET5dKXVRcetITFAy3bmHb1V3BQQM6t9pkOIy4HN029jJB+PZbHOsg8+qwrxEQdCHG3bIoDVD4zgdh8qwXo45jvf0=
+X-Received: by 2002:a81:5f03:: with SMTP id t3-v6mr4488229ywb.98.1541500003426;
+ Tue, 06 Nov 2018 02:26:43 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a25:428f:0:0:0:0:0 with HTTP; Tue, 6 Nov 2018 02:16:19 -0800 (PST)
-In-Reply-To: <CAFEAcA8hB=+YKNc8WSxrdmqigtErOsPJSAhYnq0Ha8_Ey=NaMg@mail.gmail.com>
-References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org> <CAFEAcA8hB=+YKNc8WSxrdmqigtErOsPJSAhYnq0Ha8_Ey=NaMg@mail.gmail.com>
+Received: by 2002:a25:428f:0:0:0:0:0 with HTTP; Tue, 6 Nov 2018 02:26:42 -0800 (PST)
+In-Reply-To: <5f1373d9-7f43-a481-3f12-44ed0ff2e311@redhat.com>
+References: <1539944335-19556-1-git-send-email-hongbo.zhang@linaro.org>
+ <CAFEAcA-MD7aE1phES3RPEH2mk5USfKv0j1tGtbrOnid3hLQmXw@mail.gmail.com>
+ <CAHmQWvDfvOJcEdco7xx+g9oTG9=Vmor9CE+p8dpg+ou5zK7Skw@mail.gmail.com>
+ <CAHmQWvAb7pyKY92=q0cKbJpZtAtr9upb0CEEezgBQkd1Li9Z3Q@mail.gmail.com>
+ <CAHmQWvBqUaEGdRt+QVJkq=D8_wc=aVNqiGbrTr=X4yAH4Cvkgw@mail.gmail.com> <5f1373d9-7f43-a481-3f12-44ed0ff2e311@redhat.com>
 From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Tue, 6 Nov 2018 18:16:19 +0800
-Message-ID: <CAHmQWvBOo=g_ZB0RMxuL-fBRzxPZ89u9cmtTLgx_CdnqZgjQUg@mail.gmail.com>
-Subject: Re: [PATCH v4] Add arm SBSA reference machine
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Date: Tue, 6 Nov 2018 18:26:42 +0800
+Message-ID: <CAHmQWvCKA8N=iFPrYRbCR=Vt879SAwZhufNNnsdsKHxdW7sqVA@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/virt: remove unused header files
+To: Auger Eric <eric.auger@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: gYh1llVlJUFP
+X-TUID: VirMEqM2wPap
 
-On 6 November 2018 at 00:31, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 19 October 2018 at 09:55, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->> For the Aarch64, there is one machine 'virt', it is primarily meant to
->> run on KVM and execute virtualization workloads, but we need an
->> environment as faithful as possible to physical hardware,  to support
->> firmware and OS development for pysical Aarch64 machines.
->>
->> See the patch commit comments for the features description.
->>
->> V4 changes:
->>  - rebased to v3.0.0
->>  - removed timer, uart, rtc, *hci device tree nodes
->>    (others were removerd in v3)
->>  - other minore codes clean up, mainly unsed header files, comments etc.
->>
->> V3 changes:
->>  - rename the platform 'sbsa-ref'
->>  - move all the codes to a separate file sbsa-ref.c
->>  - remove paravirtualized fw_cfg device
->>  - do not supply ACPI tables, since firmware will do it
->>  - supply only necessary DT nodes
->>  - and other minor code clean up
+On 5 November 2018 at 21:26, Auger Eric <eric.auger@redhat.com> wrote:
+> Hi Hongbo,
 >
-> Hi; just a note that this series isn't going to make it into
-> the 3.1 release. It is still on my to-review queue for 4.0,
-> but I may not get to reviewing it for a little bit while I
-> deal with for-3.1 work.
+> On 10/23/18 12:21 PM, Hongbo Zhang wrote:
+>> Well, after checking manually, the header files
+>> "hw/arm/primecell.h"
+>> "qapi/visitor.h"
+>> "hw/arm/smmuv3.h"
+>> are really not used in virt.c, still can be removed.
+>>
+>> On 22 October 2018 at 18:17, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>>> On 22 October 2018 at 09:37, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>>>> On 19 October 2018 at 19:59, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>>> On 19 October 2018 at 11:18, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+>>>>>> Remove the unused herder files, 'virt' can be compiled and run without
+>>>>>> including them.
+>>>>>>
+>>>>>> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+>>>>>> ---
+>>>>>>  hw/arm/virt.c | 8 --------
+>>>>>>  1 file changed, 8 deletions(-)
+>>>>>>
+>>>>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>>>>> index 9f67782..f0066cb 100644
+>>>>>> --- a/hw/arm/virt.c
+>>>>>> +++ b/hw/arm/virt.c
+>>>>>> @@ -30,9 +30,6 @@
+>>>>>>
+>>>>>>  #include "qemu/osdep.h"
+>>>>>>  #include "qapi/error.h"
+>>>>>> -#include "hw/sysbus.h"
+>>>>>> -#include "hw/arm/arm.h"
+>>>>>> -#include "hw/arm/primecell.h"
+>>>>>
+>>>>> Dropping primecell.h makes sense, we don't use what it provides.
+>>>>> But I suspect the others are "unused" only because some other
+>>>>> header we include drags them in implicitly. I think it's better
+>>>>> to explicitly include what we need, in case that other header
+>>>>> changes in future.
+>>>>>
+>>> I think at least another "hw/arm/smmuv3.h" can be removed too, even if
+>>> we want to explicit including.
+> Yes I think you can safely remove this one.
 >
-Get it, thanks.
+Thanks.
 
-> thanks
-> -- PMM
+As my summary, I think these three can be removed,
+"hw/arm/primecell.h"
+"qapi/visitor.h"
+"hw/arm/smmuv3.h"
+Peter confirmed the first, Auger confirmed the third, anybody has
+comments for the second? so that I can send out a v2 for this.
+
+> Thanks
+>
+> Eric
+>>> Will check others one by one.
+>>>
+>>>>> How did you determine which #includes to drop here?
+>>>>>
+>>>> Well, while I was working on the 'sbsa-ref' machine, I believed I
+>>>> could remove some header files because I deleted some functions for
+>>>> that platform, so I did.
+>>>> And later, I thought I can try to test to remove part of what I did
+>>>> for 'sbsa-ref' for 'virt' too, tests showed me that 'virt'  can be
+>>>> compiled and run without them.
+>>>>
+>>>>> thanks
+>>>>> -- PMM
+>>

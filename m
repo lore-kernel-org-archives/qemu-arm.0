@@ -1,106 +1,106 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp749991wrw;
-        Tue, 6 Nov 2018 03:18:19 -0800 (PST)
-X-Google-Smtp-Source: AJdET5f23pJ1eF4l0F/aXJYiVtGDP0kMluQHhxtqpELx75fpEH1GkGx7BURVQRMda1sSftybzadU
-X-Received: by 2002:a37:a703:: with SMTP id q3mr24394841qke.272.1541503099467;
-        Tue, 06 Nov 2018 03:18:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541503099; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp750052wrw;
+        Tue, 6 Nov 2018 03:18:22 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eR3v3w7GgqHBy1LqeYHBwJiRUtRHKzt+KW8tjqIR7jbp++ywJXS4IJv22hDW+fZlxjRpMb
+X-Received: by 2002:ac8:107:: with SMTP id e7mr4318273qtg.221.1541503102672;
+        Tue, 06 Nov 2018 03:18:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541503102; cv=none;
         d=google.com; s=arc-20160816;
-        b=uXnhomAwH8oOFYkNYj2KUX8XiGDqJQ6uNniQE1eTU7klP0h1EiQ6vFgU1veXK3dNm5
-         wbPGX/p76uZgxYxOczeRlBUrdBnQ+WSqlyKDmLTsxwwf3WoR/PtdioJOwo6+QO1kxXYL
-         IyykAfR6nKtykZsmQXZs3JTQLr6HMkRBh2lbRiw76J6w1+gNzoluTB7AkwoSdg25qX2+
-         VoKgUMbdPcz+RXTqexLleHuI1VJFmM2SlSkDkzSO+rfivsZSx5aUPngSVIi1B9ZL6cnl
-         eRYnORPoPOGc8pAgj96/8ai6vBjIfUDpVcx7wOguWF9poz0m686Ygh9IOLtwqfcmVWsf
-         RG1g==
+        b=aV9wrEnKB0Dr9bfjdMhbKYRJ7xDIINtd9u0JTMYsJ47Rghy4/EcbP2aWEh4dlLLFYu
+         vC0FQuYYhSYpSd0gPOuJTlkxsSS8pruoCZhasejBMkFTXPL1FTxvZXhsH7Vi9kCcEq/R
+         gXLl+fipdWrXUOxy1hBgLuOJQlOiZ0gMJ23Env+K/svWwHWvyjC39PBpQKJga6sMAEvj
+         aat6Gn+7oMX9grLUDEYgSfGBZSdM1wRRhNvEbocUqQAmE6KzBVO7WLTDVno7DMM3d+jL
+         EqeF3pExZInXqPJpu+KvC4LqHECOBEvO1sb1dsnF1dEc9668UZ7sAPz/BbwUD5P4EP3l
+         wmnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=yEEfEsi6+XAjBxk95n8NYwVQ8wvzJMCTZAdq9BxhknE=;
-        b=dbnfrwx8dmu/kKWKfjjvskzwXqueiL470t21HYw6U2aybxdXnLjyUw/g3Yis4dSrQF
-         MiLmsocfgDHeJeOutYDHQZBnq5xOnUmcNCysr6lyO4+qz15brK98rysmSQp+yzoOiI3U
-         o7me2Tz7CBakFepYLsTzHhrclOsjE4F2Q37TrCc1yCjXYL1mkCGH/Kmb6xMTvJE/sEri
-         oJpm+6a3tJsexI5kWv7cYTlgOuLto1wRTORNp8ki138p+ro/N7XQ36h/sr1vwmtHI6WJ
-         fIvpCcJ2bYtBFgggR8fT3H9A3PA5XyzvqxgS82UT3+bkZWjlvfFXEJZzMYdM+WT8S+Dt
-         cP0w==
+        bh=EVW0BNNMP+gNjzmW5jP424dnsN634vDt8JyPmQpcLEs=;
+        b=zDXl2qADd0nrIuZdMq7xe5obyBRZUDmgszyLcF5+gNrcSkqBXeojOroKxftL5zFkvv
+         Y9ZSUfe0GvAMOR7Gz32sEjo8LzoNW+5zgo8A2o+elPU96vGvkzCQrWDkKF78TLAtjn/U
+         sI6K3sjlonUgzejfzTm32LOOcHH7vZJ1v1FuOAWgl2qp4QeTfSbhtAHH/Ne7sZMtx7yB
+         MVn9mNHgFx+ISmdyiCfHEjwFd26p9ZZkpCFoNgSlItfN7S7Whhp+gY5n3wTaRV5Won2n
+         7isPqe1yD6jvS3i1M9Mpwo0ZLboYzmUNonQ3GpGFpGSPGpRfib5JefdUqm5p+Uf1FvhW
+         raBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=cn+2VUa9;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7WIts+2M;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7WIts+2M;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=o+JG0tIK;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=VcvKCiMB;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=VcvKCiMB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id v63si3977604qkg.134.2018.11.06.03.18.19
+        by mx.google.com with ESMTPS id x11si18071239qtb.89.2018.11.06.03.18.22
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 06 Nov 2018 03:18:19 -0800 (PST)
+        Tue, 06 Nov 2018 03:18:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=cn+2VUa9;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7WIts+2M;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=7WIts+2M;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=o+JG0tIK;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=VcvKCiMB;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=VcvKCiMB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40359 helo=lists.gnu.org)
+Received: from localhost ([::1]:40363 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gJzNC-0002SA-QY
-	for alex.bennee@linaro.org; Tue, 06 Nov 2018 06:18:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49182)
+	id 1gJzNG-0003GQ-3o
+	for alex.bennee@linaro.org; Tue, 06 Nov 2018 06:18:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gJzC9-0006mi-Jr
-	for qemu-devel@nongnu.org; Tue, 06 Nov 2018 06:06:59 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1gJzC5-0006jn-U5
+	for qemu-devel@nongnu.org; Tue, 06 Nov 2018 06:06:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gJzC4-0001tz-Im
-	for qemu-devel@nongnu.org; Tue, 06 Nov 2018 06:06:53 -0500
-Received: from greensocs.com ([193.104.36.180]:46712)
+	(envelope-from <luc.michel@greensocs.com>) id 1gJzC0-0001cM-59
+	for qemu-devel@nongnu.org; Tue, 06 Nov 2018 06:06:49 -0500
+Received: from greensocs.com ([193.104.36.180]:46751)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1gJzBs-0000os-IH; Tue, 06 Nov 2018 06:06:37 -0500
+	id 1gJzBs-0000rC-PF; Tue, 06 Nov 2018 06:06:37 -0500
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id EA729441B53;
-	Tue,  6 Nov 2018 12:06:14 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id 5235F5C025F;
+	Tue,  6 Nov 2018 12:06:15 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541502374;
-	bh=o3KJuqJsYNukd/ec4ozLQhf6Dd7aHydQxO2sBiH7PrY=;
+	s=mail; t=1541502375;
+	bh=gqBhDPpxGlbslzJ48Mohw6BqhBqD+2sU66wHvcW48ag=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=cn+2VUa9fyPkfidaxNGwOe8e5O+PdNc0Cvm1UXFeiDOTN2rvMFrLJvJ5ZO50frgtd
-	XaWO9gnEkVYVmmCyODRAc3tGWooF37Xfvz54AKbxZ1Jn73e7V7MVYaoVY2Vy6zBYXO
-	KvTFWiryX0zA1cQZxEyn/r9C2RZiGpYn66bRnTMM=
+	b=o+JG0tIKnp+9O4yIfD9IQl81k6mQba/WPItPEPiNEF69w8TUps/l+NSd0+oPl99D2
+	vUFqANGc3VPzHBPLeSB8WcdxGYTdxe0JXCnz7HrZmQQoCtFq8ji4+QdiFnvTpKAJDX
+	wkFzZcmt80FArHUGPXmvUp4Q/mnvSRTzz7nf812E=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7WIts+2M;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=7WIts+2M
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=VcvKCiMB;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=VcvKCiMB
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aV-oaka--RQA; Tue,  6 Nov 2018 12:06:14 +0100 (CET)
+	with ESMTP id JkPd5eGj574G; Tue,  6 Nov 2018 12:06:14 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 21F165C9D98; Tue,  6 Nov 2018 12:06:10 +0100 (CET)
+	id 962215C026D; Tue,  6 Nov 2018 12:06:10 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1541502370;
-	bh=o3KJuqJsYNukd/ec4ozLQhf6Dd7aHydQxO2sBiH7PrY=;
+	bh=gqBhDPpxGlbslzJ48Mohw6BqhBqD+2sU66wHvcW48ag=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=7WIts+2MS0Lfqpez9opuO08aybUrWkBoObTXe+keTARL8M/FUbf3Hr3K4yxQeXMjK
-	DAQWm2NJpzfBDugezcWsFv7VrAk5r33/8LMwZUAmF5ls+EaNwOuPPPoIGh4qkGqlH0
-	jkFVNPPG2kkqsMHyhoy6ISa4BKvBpgzGmTNu6jT0=
+	b=VcvKCiMBw9oI7xXa2XZomltzMrJZI21jZJT8COJ8O7F3zJodzgwvT6Q8PoyJhp1Pf
+	50bD3AGen89Gmzgr0UG4SvcKoWJuQh8gmfPLYOUzvfE8gkEXk8/mjKlSwdaQcq88m0
+	r2YOeMpZOAo6Iawr/6aZJxfm6Y3XyXv22RIh/0CU=
 Received: from michell-laptop.home.lmichel.fr
 	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id A7CDB5C0276;
-	Tue,  6 Nov 2018 12:06:09 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id 209665C0279;
+	Tue,  6 Nov 2018 12:06:10 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
 	s=mail; t=1541502370;
-	bh=o3KJuqJsYNukd/ec4ozLQhf6Dd7aHydQxO2sBiH7PrY=;
+	bh=gqBhDPpxGlbslzJ48Mohw6BqhBqD+2sU66wHvcW48ag=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=7WIts+2MS0Lfqpez9opuO08aybUrWkBoObTXe+keTARL8M/FUbf3Hr3K4yxQeXMjK
-	DAQWm2NJpzfBDugezcWsFv7VrAk5r33/8LMwZUAmF5ls+EaNwOuPPPoIGh4qkGqlH0
-	jkFVNPPG2kkqsMHyhoy6ISa4BKvBpgzGmTNu6jT0=
+	b=VcvKCiMBw9oI7xXa2XZomltzMrJZI21jZJT8COJ8O7F3zJodzgwvT6Q8PoyJhp1Pf
+	50bD3AGen89Gmzgr0UG4SvcKoWJuQh8gmfPLYOUzvfE8gkEXk8/mjKlSwdaQcq88m0
+	r2YOeMpZOAo6Iawr/6aZJxfm6Y3XyXv22RIh/0CU=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  6 Nov 2018 12:05:44 +0100
-Message-Id: <20181106110548.4209-13-luc.michel@greensocs.com>
+Date: Tue,  6 Nov 2018 12:05:45 +0100
+Message-Id: <20181106110548.4209-14-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181106110548.4209-1-luc.michel@greensocs.com>
 References: <20181106110548.4209-1-luc.michel@greensocs.com>
@@ -108,8 +108,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-devel] [PATCH v4 12/16] gdbstub: add support for vAttach
- packets
+Subject: [Qemu-devel] [PATCH v4 13/16] gdbstub: processes initialization on
+ new peer connection
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -129,69 +129,86 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /F2e/pmVb+vo
+X-TUID: EgocunIJd36v
 
-Add support for the vAttach packets. In multiprocess mode, GDB sends
-them to attach to additional processes.
+When a new connection is established, we set the first process to be
+attached, and the others detached. The first CPU of the first process
+is selected as the current CPU.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- gdbstub.c | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ gdbstub.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/gdbstub.c b/gdbstub.c
-index 4132227092..ba365808db 100644
+index ba365808db..1a3353ff3c 100644
 --- a/gdbstub.c
 +++ b/gdbstub.c
-@@ -1340,10 +1340,45 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
-                     break;
-                 }
-                 goto unknown_command;
-             }
-             break;
-+        } else if (strncmp(p, "Attach;", 7) =3D=3D 0) {
-+            unsigned long pid;
+@@ -2245,13 +2245,14 @@ static bool gdb_accept(void)
+         close(fd);
+         return false;
+     }
+=20
+     s =3D g_malloc0(sizeof(GDBState));
+-    s->c_cpu =3D first_cpu;
+-    s->g_cpu =3D first_cpu;
+     create_unique_process(s);
++    s->processes[0].attached =3D true;
++    s->c_cpu =3D gdb_first_cpu(s);
++    s->g_cpu =3D s->c_cpu;
+     s->fd =3D fd;
+     gdb_has_xml =3D false;
+=20
+     gdbserver_state =3D s;
+     return true;
+@@ -2333,12 +2334,23 @@ static void gdb_chr_receive(void *opaque, const u=
+int8_t *buf, int size)
+     }
+ }
+=20
+ static void gdb_chr_event(void *opaque, int event)
+ {
++    int i;
++    GDBState *s =3D (GDBState *) opaque;
 +
-+            p +=3D 7;
+     switch (event) {
+     case CHR_EVENT_OPENED:
++        /* Start with first process attached, others detached */
++        for (i =3D 0; i < s->process_num; i++) {
++            s->processes[i].attached =3D !i;
++        }
 +
-+            if (qemu_strtoul(p, &p, 16, &pid)) {
-+                put_packet(s, "E22");
-+                break;
-+            }
++        s->c_cpu =3D gdb_first_cpu(s);
++        s->g_cpu =3D s->c_cpu;
 +
-+            process =3D gdb_get_process(s, pid);
-+
-+            if (process =3D=3D NULL) {
-+                put_packet(s, "E22");
-+                break;
-+            }
-+
-+            cpu =3D get_first_cpu_in_process(s, process);
-+
-+            if (cpu =3D=3D NULL) {
-+                /* Refuse to attach an empty process */
-+                put_packet(s, "E22");
-+                break;
-+            }
-+
-+            process->attached =3D true;
-+
-+            s->g_cpu =3D cpu;
-+            s->c_cpu =3D cpu;
-+
-+            snprintf(buf, sizeof(buf), "T%02xthread:%s;", GDB_SIGNAL_TRA=
-P,
-+                     gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thread_=
-id)));
-+
-+            put_packet(s, buf);
-+            break;
-         } else {
-             goto unknown_command;
-         }
-     case 'k':
-         /* Kill the target */
+         vm_stop(RUN_STATE_PAUSED);
+         gdb_has_xml =3D false;
+         break;
+     default:
+         break;
+@@ -2513,19 +2525,17 @@ int gdbserver_start(const char *device)
+         mon_chr =3D s->mon_chr;
+         cleanup_processes(s);
+         memset(s, 0, sizeof(GDBState));
+         s->mon_chr =3D mon_chr;
+     }
+-    s->c_cpu =3D first_cpu;
+-    s->g_cpu =3D first_cpu;
+=20
+     create_processes(s);
+=20
+     if (chr) {
+         qemu_chr_fe_init(&s->chr, chr, &error_abort);
+         qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_r=
+eceive,
+-                                 gdb_chr_event, NULL, NULL, NULL, true);
++                                 gdb_chr_event, NULL, s, NULL, true);
+     }
+     s->state =3D chr ? RS_IDLE : RS_INACTIVE;
+     s->mon_chr =3D mon_chr;
+     s->current_syscall_cb =3D NULL;
+=20
 --=20
 2.19.1
 

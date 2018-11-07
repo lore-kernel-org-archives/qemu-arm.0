@@ -1,94 +1,94 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2086600wrw;
-        Wed, 7 Nov 2018 04:43:10 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dMZJ6C1ZU4Se9o7jKe0JnvDWBberbr9GkFeDxeWVyOGScYL0VXegutSbvgUyMB5ACxmVmO
-X-Received: by 2002:ac8:2cfc:: with SMTP id 57-v6mr21938qtx.277.1541594590790;
-        Wed, 07 Nov 2018 04:43:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541594590; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2088300wrw;
+        Wed, 7 Nov 2018 04:45:08 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dGT2Hw+LfVWxSFy4b46PHJoDJQwd8DpVcCVxwrPnafVneu0h6mrbvzeqUwhxG11GKluNVr
+X-Received: by 2002:ac8:2a81:: with SMTP id b1mr69781qta.110.1541594708485;
+        Wed, 07 Nov 2018 04:45:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541594708; cv=none;
         d=google.com; s=arc-20160816;
-        b=YykCKmWD58N+dP5qh1zUccdeyS7h/6/7Ox8gCM9c1VnFs6V1qYd9DVGB93/GrU28wK
-         nPJfm68z5rn8g5HzDTnOrGOj7rzqYJhCKrCHj+lHlupY6/uSxdfgLPQEW8w1IOgDcAS5
-         IZ+Zkx4AHpi5FYD+AlJyB3jh5MFEadR8ebL+ZH4S5sHfuEhv9JQNEZoOnojYFhNmdSQt
-         BuvhMuQqJNlBWMyZbXlMQ1v7twJheLldnzVfesvVIQmuVa6OYTYcWfB3v6tz5viVxv8b
-         XfdktuVU1Ubx483GdrNBG52ilLRUPgZyPN/4A94p/SLRT472tvxHqEZQq+UppUkQ+eck
-         L74Q==
+        b=Iq7VPjQiLXcL7wnAf5NstoFZBuSN0cNsQyFFn8hUhe755E12pa30Gk9j5SdLIW3Xc4
+         Nn/b7mp7FMC6TtTugDshAzoYXU5iV3jcy+3BX+q/IbZ+aKcJ6XLtYhw+sDNJUNDIokRy
+         2suFK4Psb0iC/+9yp5QSyrXjJ36fscCmzDj4yn5AUN5abM/KiGteQ6m4Ek7NW7u9vIOy
+         5K1FmQ/UotJgGJRwiVtPLlHzOzg9YXakTr8r0Et2HWFvb28jAYhqhackGT8y6/n5Uojo
+         YLRvylK4jaQLwCesQj+vvLf1cM18VRqu0Jmpo6itaEm6Cttoevi2SU+8zf76ugEzIHUB
+         Hwbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=j0wTL/pTKbdmnJVfzYN5TU6CTZtCLMY36/9QAAtRqFQ=;
-        b=uGI8mBUKD6LE4InNwxbObVqZNEjQ4GCw6JZjpz4mWAVb8QZXAeM7VxEMyUMLrPE1WR
-         Dh0tiAQiEagBm9yJU/XdJcM7dq6cg0dA9RdOiktgtVdkRvnjLFFIIk1buW7SmWc2F/Ue
-         d1VncyOedqAtI4XNsHxVejAV06wbDL7wOYRZyMMV/R/p77nmOiA4Yd/i1ebj6+M4qqQP
-         6wsbKSYW1T6kRviTQzpukxwNjOCGxcElIqKdvBemJklXsTkpaPnZeuWhnQDHirb+fHzT
-         amUihNUnrAdt80eJ5XeptAoMfYscvVfxsanIzm+mdwSGdLCV7lntNpNAWUJeohQRCk1N
-         J94A==
+        bh=V74nTbJnk4Ro9LlTq094o3Jdml4Mdjl/KeIBk1lPOJ0=;
+        b=bX5EjXmrVUEcHp3nqYXmS4956QbR4fUgaE43tfwjkY0pObPmj1jAnqXjMUMMA7M8B+
+         Xtm5WgOY4uIMuayrEtn2A9Vqlje+HTGimipvEl33rzUYDhAy8l12TMXkN+gpJI5kyoFz
+         7V7TxwRuOdBjtWf6xS0pw7dioRLrRCwVFQVygbsaO2V+ETCefp5phJ7t9JfnZ1qRmlEW
+         IJ5NYF7UYnLm116QxC1+iXFj7ybA3zEvcjsW7ogoCmDS3dVi5rQe0iPyoFs+UnTsjQC2
+         zQPgpyUur0pjmHvcrxzCOVlsE3PjKP/P7Yewf2QkAMPEgq8s9mYkV7yvWFkbxF1MF5Zr
+         6CcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p77-v6si373901qka.203.2018.11.07.04.43.10
+        by mx.google.com with ESMTPS id y36si392448qvf.4.2018.11.07.04.45.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Nov 2018 04:43:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 07 Nov 2018 04:45:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47647 helo=lists.gnu.org)
+Received: from localhost ([::1]:47660 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKNAs-0002rK-6x
-	for alex.bennee@linaro.org; Wed, 07 Nov 2018 07:43:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38068)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gKNCl-0006he-Rz
+	for alex.bennee@linaro.org; Wed, 07 Nov 2018 07:45:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37746)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN7b-00005N-I8
-	for qemu-devel@nongnu.org; Wed, 07 Nov 2018 07:39:50 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN70-0007wU-9B
+	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 07:39:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN7Y-0007lW-SN
-	for qemu-devel@nongnu.org; Wed, 07 Nov 2018 07:39:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44172)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN6z-0007EO-3Y
+	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 07:39:10 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39370)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1gKN7A-0007NR-HA; Wed, 07 Nov 2018 07:39:23 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	id 1gKN6x-000713-4i; Wed, 07 Nov 2018 07:39:08 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9156130D4DD9;
-	Wed,  7 Nov 2018 12:39:11 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 775F930B7DE6;
+	Wed,  7 Nov 2018 12:38:40 +0000 (UTC)
 Received: from localhost (ovpn-112-43.ams2.redhat.com [10.36.112.43])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C7E791054FD5;
-	Wed,  7 Nov 2018 12:39:03 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 245F126328;
+	Wed,  7 Nov 2018 12:38:32 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed,  7 Nov 2018 16:36:52 +0400
-Message-Id: <20181107123652.23417-15-marcandre.lureau@redhat.com>
+Date: Wed,  7 Nov 2018 16:36:49 +0400
+Message-Id: <20181107123652.23417-12-marcandre.lureau@redhat.com>
 In-Reply-To: <20181107123652.23417-1-marcandre.lureau@redhat.com>
 References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Wed, 07 Nov 2018 12:39:11 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.48]);
+	Wed, 07 Nov 2018 12:38:40 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH for-3.2 v3 14/14] hostmem: use object id for
- memory region name with >= 3.1
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH for-3.2 v3 11/14] qom: teach interfaces to
+ implement post-init
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	xen-devel@lists.xenproject.org, Corey Minyard <minyard@acm.org>,
@@ -99,239 +99,113 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	dgilbert@redhat.com, Eduardo Habkost <ehabkost@redhat.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>,
 	Anthony Perard <anthony.perard@citrix.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
 	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cnTKpLZYfwYH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4ZHRB5sPLe89
 
-hostmem-file and hostmem-memfd use the whole object path for the
-memory region name, and hostname-ram uses only the path component (the
-object id, or canonical path basename):
-
-qemu -m 1024 -object memory-backend-file,id=3Dmem,size=3D1G,mem-path=3D/t=
-mp/foo -numa node,memdev=3Dmem -monitor stdio
-(qemu) info ramblock
-              Block Name    PSize              Offset               Used =
-             Total
-            /objects/mem    4 KiB  0x0000000000000000 0x0000000040000000 =
-0x0000000040000000
-
-qemu -m 1024 -object memory-backend-memfd,id=3Dmem,size=3D1G -numa node,m=
-emdev=3Dmem -monitor stdio
-(qemu) info ramblock
-              Block Name    PSize              Offset               Used =
-             Total
-            /objects/mem    4 KiB  0x0000000000000000 0x0000000040000000 =
-0x0000000040000000
-
-qemu -m 1024 -object memory-backend-ram,id=3Dmem,size=3D1G -numa node,mem=
-dev=3Dmem -monitor stdio
-(qemu) info ramblock
-              Block Name    PSize              Offset               Used =
-             Total
-                     mem    4 KiB  0x0000000000000000 0x0000000040000000 =
-0x0000000040000000
-
-Use the object id for -file and -memfd with >=3D 3.1 for consistency.
-Having a consistent naming allow to migrate to different hostmem
-backends.
+The following patches are going to implement post_init callbacks for
+settings properties. The interface post_init are called before the
+instance post_init, so the default interface behaviour can be
+overriden if necessary.
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/compat.h      | 10 +++++++++-
- include/sysemu/hostmem.h |  3 ++-
- backends/hostmem-file.c  |  8 ++++----
- backends/hostmem-memfd.c |  2 +-
- backends/hostmem-ram.c   |  9 ++++-----
- backends/hostmem.c       | 31 +++++++++++++++++++++++++++++++
- 6 files changed, 51 insertions(+), 12 deletions(-)
+ qom/object.c                |  8 +++++++-
+ tests/check-qom-interface.c | 23 +++++++++++++++++++++--
+ 2 files changed, 28 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/compat.h b/include/hw/compat.h
-index 70958328fe..99cf6b1e03 100644
---- a/include/hw/compat.h
-+++ b/include/hw/compat.h
-@@ -2,7 +2,15 @@
- #define HW_COMPAT_H
-=20
- #define HW_COMPAT_3_1 \
--    /* empty */
-+    {\
-+        .driver   =3D "memory-backend-file",\
-+        .property =3D "x-use-canonical-path-for-ramblock-id",\
-+        .value    =3D "true",\
-+    },{\
-+        .driver   =3D "memory-backend-memfd",\
-+        .property =3D "x-use-canonical-path-for-ramblock-id",\
-+        .value    =3D "true",\
-+    },
-=20
- #define HW_COMPAT_3_0 \
-     /* empty */
-diff --git a/include/sysemu/hostmem.h b/include/sysemu/hostmem.h
-index 6e6bd2c1cb..a023b372a4 100644
---- a/include/sysemu/hostmem.h
-+++ b/include/sysemu/hostmem.h
-@@ -53,7 +53,7 @@ struct HostMemoryBackend {
-=20
-     /* protected */
-     uint64_t size;
--    bool merge, dump;
-+    bool merge, dump, use_canonical_path;
-     bool prealloc, force_prealloc, is_mapped, share;
-     DECLARE_BITMAP(host_nodes, MAX_NODES + 1);
-     HostMemPolicy policy;
-@@ -67,5 +67,6 @@ MemoryRegion *host_memory_backend_get_memory(HostMemory=
-Backend *backend);
- void host_memory_backend_set_mapped(HostMemoryBackend *backend, bool map=
-ped);
- bool host_memory_backend_is_mapped(HostMemoryBackend *backend);
- size_t host_memory_backend_pagesize(HostMemoryBackend *memdev);
-+char *host_memory_backend_get_name(HostMemoryBackend *backend);
-=20
- #endif
-diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
-index 639c8d4307..c01a7cdf8d 100644
---- a/backends/hostmem-file.c
-+++ b/backends/hostmem-file.c
-@@ -55,16 +55,16 @@ file_backend_memory_alloc(HostMemoryBackend *backend,=
- Error **errp)
-     error_setg(errp, "-mem-path not supported on this host");
- #else
-     if (!host_memory_backend_mr_inited(backend)) {
--        gchar *path;
-+        gchar *name;
-         backend->force_prealloc =3D mem_prealloc;
--        path =3D object_get_canonical_path(OBJECT(backend));
-+        name =3D host_memory_backend_get_name(backend);
-         memory_region_init_ram_from_file(&backend->mr, OBJECT(backend),
--                                 path,
-+                                 name,
-                                  backend->size, fb->align,
-                                  (backend->share ? RAM_SHARED : 0) |
-                                  (fb->is_pmem ? RAM_PMEM : 0),
-                                  fb->mem_path, errp);
--        g_free(path);
-+        g_free(name);
+diff --git a/qom/object.c b/qom/object.c
+index b1a7f70550..980eeb8283 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -290,7 +290,6 @@ static void type_initialize(TypeImpl *ti)
+         assert(ti->instance_size =3D=3D 0);
+         assert(ti->abstract);
+         assert(!ti->instance_init);
+-        assert(!ti->instance_post_init);
+         assert(!ti->instance_finalize);
+         assert(!ti->num_interfaces);
      }
- #endif
- }
-diff --git a/backends/hostmem-memfd.c b/backends/hostmem-memfd.c
-index b6836b28e5..c5a4a9b530 100644
---- a/backends/hostmem-memfd.c
-+++ b/backends/hostmem-memfd.c
-@@ -57,7 +57,7 @@ memfd_backend_memory_alloc(HostMemoryBackend *backend, =
-Error **errp)
-         return;
-     }
+@@ -363,6 +362,13 @@ static void object_init_with_type(Object *obj, TypeI=
+mpl *ti)
 =20
--    name =3D object_get_canonical_path(OBJECT(backend));
-+    name =3D host_memory_backend_get_name(backend);
-     memory_region_init_ram_from_fd(&backend->mr, OBJECT(backend),
-                                    name, backend->size, true, fd, errp);
-     g_free(name);
-diff --git a/backends/hostmem-ram.c b/backends/hostmem-ram.c
-index 7ddd08d370..24b65d9ae3 100644
---- a/backends/hostmem-ram.c
-+++ b/backends/hostmem-ram.c
-@@ -16,21 +16,20 @@
-=20
- #define TYPE_MEMORY_BACKEND_RAM "memory-backend-ram"
-=20
--
- static void
- ram_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+ static void object_post_init_with_type(Object *obj, TypeImpl *ti)
  {
--    char *path;
-+    char *name;
-=20
-     if (!backend->size) {
-         error_setg(errp, "can't create backend with size 0");
-         return;
-     }
-=20
--    path =3D object_get_canonical_path_component(OBJECT(backend));
--    memory_region_init_ram_shared_nomigrate(&backend->mr, OBJECT(backend=
-), path,
-+    name =3D host_memory_backend_get_name(backend);
-+    memory_region_init_ram_shared_nomigrate(&backend->mr, OBJECT(backend=
-), name,
-                            backend->size, backend->share, errp);
--    g_free(path);
-+    g_free(name);
- }
-=20
- static void
-diff --git a/backends/hostmem.c b/backends/hostmem.c
-index 1a89342039..35c665fca2 100644
---- a/backends/hostmem.c
-+++ b/backends/hostmem.c
-@@ -28,6 +28,16 @@ QEMU_BUILD_BUG_ON(HOST_MEM_POLICY_BIND !=3D MPOL_BIND)=
-;
- QEMU_BUILD_BUG_ON(HOST_MEM_POLICY_INTERLEAVE !=3D MPOL_INTERLEAVE);
- #endif
-=20
-+char *
-+host_memory_backend_get_name(HostMemoryBackend *self)
-+{
-+    if (!self->use_canonical_path) {
-+        return object_get_canonical_path_component(OBJECT(self));
++    GSList *e;
++
++    for (e =3D ti->class->interfaces; e; e =3D e->next) {
++        TypeImpl *itype =3D OBJECT_CLASS(e->data)->type;
++        object_post_init_with_type(obj, itype);
 +    }
 +
-+    return object_get_canonical_path(OBJECT(self));
-+}
-+
- static void
- host_memory_backend_get_size(Object *obj, Visitor *v, const char *name,
-                              void *opaque, Error **errp)
-@@ -386,6 +396,23 @@ static void host_memory_backend_set_share(Object *o,=
- bool value, Error **errp)
-     backend->share =3D value;
- }
-=20
-+static bool
-+host_memory_backend_get_use_canonical_path(Object *obj, Error **errp)
-+{
-+    HostMemoryBackend *self =3D MEMORY_BACKEND(obj);
-+
-+    return self->use_canonical_path;
-+}
-+
-+static void
-+host_memory_backend_set_use_canonical_path(Object *obj, bool value,
-+                                           Error **errp)
-+{
-+    HostMemoryBackend *self =3D MEMORY_BACKEND(obj);
-+
-+    self->use_canonical_path =3D value;
-+}
-+
- static void
- host_memory_backend_class_init(ObjectClass *oc, void *data)
- {
-@@ -432,6 +459,9 @@ host_memory_backend_class_init(ObjectClass *oc, void =
-*data)
-         &error_abort);
-     object_class_property_set_description(oc, "share",
-         "Mark the memory as private to QEMU or shared", &error_abort);
-+    object_class_property_add_bool(oc, "x-use-canonical-path-for-rambloc=
-k-id",
-+        host_memory_backend_get_use_canonical_path,
-+        host_memory_backend_set_use_canonical_path, &error_abort);
- }
-=20
- static const TypeInfo host_memory_backend_info =3D {
-@@ -444,6 +474,7 @@ static const TypeInfo host_memory_backend_info =3D {
-     .instance_init =3D host_memory_backend_init,
-     .interfaces =3D (InterfaceInfo[]) {
-         { TYPE_USER_CREATABLE },
-+        { TYPE_COMPAT_PROPS },
-         { }
+     if (ti->instance_post_init) {
+         ti->instance_post_init(obj);
      }
+diff --git a/tests/check-qom-interface.c b/tests/check-qom-interface.c
+index 2177f0dce5..cd2dd6dcee 100644
+--- a/tests/check-qom-interface.c
++++ b/tests/check-qom-interface.c
+@@ -31,9 +31,27 @@ typedef struct TestIfClass {
+     uint32_t test;
+ } TestIfClass;
+=20
++typedef struct DirectImpl {
++    Object parent_obj;
++
++    bool if_post_init;
++} DirectImpl;
++
++#define TYPE_DIRECT_IMPL "direct-impl"
++#define DIRECT_IMPL(obj) \
++    OBJECT_CHECK(DirectImpl, (obj), TYPE_DIRECT_IMPL)
++
++static void test_if_post_init(Object *obj)
++{
++    DirectImpl *d =3D DIRECT_IMPL(obj);
++
++    d->if_post_init =3D true;
++}
++
+ static const TypeInfo test_if_info =3D {
+     .name          =3D TYPE_TEST_IF,
+     .parent        =3D TYPE_INTERFACE,
++    .instance_post_init =3D test_if_post_init,
+     .class_size =3D sizeof(TestIfClass),
  };
+=20
+@@ -47,11 +65,10 @@ static void test_class_init(ObjectClass *oc, void *da=
+ta)
+     tc->test =3D PATTERN;
+ }
+=20
+-#define TYPE_DIRECT_IMPL "direct-impl"
+-
+ static const TypeInfo direct_impl_info =3D {
+     .name =3D TYPE_DIRECT_IMPL,
+     .parent =3D TYPE_OBJECT,
++    .instance_size =3D sizeof(DirectImpl),
+     .class_init =3D test_class_init,
+     .interfaces =3D (InterfaceInfo[]) {
+         { TYPE_TEST_IF },
+@@ -70,10 +87,12 @@ static void test_interface_impl(const char *type)
+ {
+     Object *obj =3D object_new(type);
+     TestIf *iobj =3D TEST_IF(obj);
++    DirectImpl *d =3D DIRECT_IMPL(obj);
+     TestIfClass *ioc =3D TEST_IF_GET_CLASS(iobj);
+=20
+     g_assert(iobj);
+     g_assert(ioc->test =3D=3D PATTERN);
++    g_assert(d->if_post_init =3D=3D true);
+     object_unref(obj);
+ }
+=20
 --=20
 2.19.1.708.g4ede3d42df
 

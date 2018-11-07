@@ -1,83 +1,83 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2084562wrw;
-        Wed, 7 Nov 2018 04:40:58 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fWh0HrYuUoixJcOgwjMQYF6aVq0Z4/vHi5NdZRZq0f0dIsH+YSb6M0dP4jEZBOVplrIglD
-X-Received: by 2002:ac8:4294:: with SMTP id o20mr57239qtl.118.1541594458086;
-        Wed, 07 Nov 2018 04:40:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541594458; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2084839wrw;
+        Wed, 7 Nov 2018 04:41:15 -0800 (PST)
+X-Google-Smtp-Source: AJdET5etGX3fxiBNB3vaBM/4GHY+w3GbnkBrq8YLZXUoM5cG7+9/jwT0M0Ayrdoed7diXPANXezZ
+X-Received: by 2002:a37:6b42:: with SMTP id g63mr20978qkc.297.1541594475499;
+        Wed, 07 Nov 2018 04:41:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541594475; cv=none;
         d=google.com; s=arc-20160816;
-        b=XKkch7j7CniqBCTJkOJWWeQAbgeYhkcHIXhNFKprXCPVi/k3a2Rk5nP1kR1xq/mPMM
-         Hg6p3F1ijoxK52MR1rMHkcBtES2D1IqZ+YqLeY4EIRbiKYedQ/rnWqexWjR48yKwoPHH
-         RdPcYUe9s1kdOtuE4l88yyg8fFXRHE3ZK7gxd2gNC5xXvcjnTPOQE+AgzBfCDfTnxFsd
-         Epq1UEVsgutWcCrVUbDh44Ez/aOT6bkKD41xr8M+/JBU62AT2tanxqkpUiDxTFWEYm58
-         soYQ6DMYu9wZ1o3mwgqTxlzkMn/R8PDeJqTpd3uIeY8V6jzNvJHEKIAN1+iLBnKm9Yte
-         YDeQ==
+        b=n3MtL95Wjpne5Y2cklIL/TE8ipHLix4ZDar7bvScYfBQfvbLgK6mugQPbrVqEnLWuf
+         pu6umkKvUZ1N8QGWDj44a/1XlZNGETffn3K7BK7xK2+tJVOC0iGOeLLvSCkgXzPl7Vt3
+         gLN4MoqLLTGx5KzqBx5ipGjsEGvKaKFM0IZcZVm/r6xoblODDciIw51Fpy2SNl5kZZc0
+         JBtAT9uj+zOtwSHEdgebKfp7co7m4RK3Dj+9lecnKQXF612V+dknbuJAo+MVzsHS25R6
+         e61YH3B1eHZKmibk0EAL9Z1zGZjYrITBQzpbdPrT/sdLsnHkdTYt4FuTNGLMdKia6r6I
+         5zDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=acnvEtsCl5Aun9FELUhEzGGbCOR0a2v9pudaX6jixsQ=;
-        b=HmmkX1qbf0mjgVFjua/MUS0jW1Kg90Otn9ZNGwirJ4aiPC8qrAnMulmJUj4qswTJzo
-         PCEJLmxGqmd/qzPvnBAPLY49/LBoJt5Itr5kzAalUkk+stbGFAjBMUG52xYDWKjDNbYR
-         6qGtH6X7Brq52ZitXScf3itcl4lx2qprjJ+KKrm2xhb3XeS+wM24mmunR+JthzjbEy5m
-         kqhkiG8uITh2omp8M1kMs5321CpYKwowvQuB559Zdal5Z4PKEWsBdhjEkSXKeop3m3My
-         Q+3EOyYBRk+iit8u6e4XWY83q9+X8bOAvPBzqKdZsWUiMau15KMa5Yy/uyvEQzqzx+Co
-         mBpg==
+        bh=qM4PYM/NnOL8J+1z3wmNRRAUmaCEUmfuvqdOC8fiX7o=;
+        b=jJDkB5Kkcs+RGQ733xb9be9bjpfW8n3h05AVzeBSviebivxca8VLykXsepfFu+9Hje
+         qc+T38LKnvqTBO8M/PCZCkYK3XUT7rFLPCE8SkiC7Ohn8LQqYw5t8myWaV3VJuQLsjz1
+         1qtnR3p5Ct99MM3iR0bvMg0LDJeontkvap9QVORZkJxfeEurjEgEbe3Ev4b0uPRkypN9
+         cBJMKBqKixtzM0KnXvtpnKxG4GkDqJR6Fmpnp2e42XDhX8pYppuB1ABqCFi8klJTL4dz
+         6FaB5sqPGFUudl4n7GkZ/X9zTRyMZtTW9iybNt2bdr1yk0MV1vwneBr6SfqMYYXwrOLb
+         PChA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k34si370420qtf.286.2018.11.07.04.40.57
+        by mx.google.com with ESMTPS id c143si424297qka.3.2018.11.07.04.41.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Nov 2018 04:40:58 -0800 (PST)
+        Wed, 07 Nov 2018 04:41:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47632 helo=lists.gnu.org)
+Received: from localhost ([::1]:47635 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKN8j-00011W-HQ
-	for alex.bennee@linaro.org; Wed, 07 Nov 2018 07:40:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37394)
+	id 1gKN90-0001En-Ud
+	for alex.bennee@linaro.org; Wed, 07 Nov 2018 07:41:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN5q-0005hX-Dl
-	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 07:38:00 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN5z-0006LH-UK
+	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 07:38:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN5n-0006co-SO
-	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 07:37:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39086)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN5y-0006iw-UX
+	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 07:38:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43968)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1gKN5n-0006bX-GE; Wed, 07 Nov 2018 07:37:55 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1gKN5y-0006id-Mr; Wed, 07 Nov 2018 07:38:06 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7CE9E30B7DF5;
-	Wed,  7 Nov 2018 12:37:54 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D968E30D4DA0;
+	Wed,  7 Nov 2018 12:38:05 +0000 (UTC)
 Received: from localhost (ovpn-112-43.ams2.redhat.com [10.36.112.43])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DCF4F18E3D;
-	Wed,  7 Nov 2018 12:37:46 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 897D14D730;
+	Wed,  7 Nov 2018 12:37:58 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Wed,  7 Nov 2018 16:36:44 +0400
-Message-Id: <20181107123652.23417-7-marcandre.lureau@redhat.com>
+Date: Wed,  7 Nov 2018 16:36:45 +0400
+Message-Id: <20181107123652.23417-8-marcandre.lureau@redhat.com>
 In-Reply-To: <20181107123652.23417-1-marcandre.lureau@redhat.com>
 References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Wed, 07 Nov 2018 12:37:54 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Wed, 07 Nov 2018 12:38:06 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-3.2 v3 06/14] qdev: do not mix compat props
- with global props
+Subject: [Qemu-arm] [PATCH for-3.2 v3 07/14] qdev: all globals are now
+ user-provided
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,269 +107,164 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4inN6CES78tC
+X-TUID: 8NVZ7KqlFur8
 
-Machine & Accel props are not provided by user. Let's not mix them
-with the global properties.
-
-Call a new helper function object_apply_global_props() during
-device_post_init().
-
-Add a stub for current_machine, so qemu-user and tests can find a
-fallback symbol when linking with QDev.
-
-The following patches is going to reuse object_apply_global_props()
-for qdev globals.
+Considering that CPU features are provided via command line, the
+global_props are now all user-provided globals. No need to track this
+anymore for qdev_prop_check_globals().
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/boards.h            |  1 -
- include/qom/object.h           |  2 ++
- include/sysemu/accel.h         |  4 +---
- accel/accel.c                  | 12 ------------
- hw/core/machine.c              | 18 ------------------
- hw/core/qdev.c                 |  8 ++++++++
- hw/xen/xen-common.c            |  9 ++++++++-
- qom/object.c                   | 25 +++++++++++++++++++++++++
- stubs/machine.c                |  4 ++++
- tests/test-qdev-global-props.c |  1 -
- vl.c                           |  2 --
- stubs/Makefile.objs            |  1 +
- 12 files changed, 49 insertions(+), 38 deletions(-)
- create mode 100644 stubs/machine.c
+ include/hw/qdev-core.h         |  3 --
+ hw/core/qdev-properties.c      |  4 ---
+ tests/test-qdev-global-props.c | 57 ++++------------------------------
+ vl.c                           |  1 -
+ 4 files changed, 6 insertions(+), 59 deletions(-)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index f82f28468b..c02190fc52 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -69,7 +69,6 @@ int machine_kvm_shadow_mem(MachineState *machine);
- int machine_phandle_start(MachineState *machine);
- bool machine_dump_guest_core(MachineState *machine);
- bool machine_mem_merge(MachineState *machine);
--void machine_register_compat_props(MachineState *machine);
- HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machi=
-ne);
- void machine_set_cpu_numa_node(MachineState *machine,
-                                const CpuInstanceProperties *props,
-diff --git a/include/qom/object.h b/include/qom/object.h
-index f0b0bf39cc..e58eeb280f 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -679,6 +679,8 @@ Object *object_new_with_propv(const char *typename,
-                               Error **errp,
-                               va_list vargs);
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index a24d0dd566..baaf097212 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -249,8 +249,6 @@ struct PropertyInfo {
 =20
-+void object_apply_global_props(Object *obj, GArray *props, Error **errp)=
-;
-+
  /**
-  * object_set_props:
-  * @obj: the object instance to set properties on
-diff --git a/include/sysemu/accel.h b/include/sysemu/accel.h
-index 637358f430..f4f71134b5 100644
---- a/include/sysemu/accel.h
-+++ b/include/sysemu/accel.h
-@@ -49,7 +49,7 @@ typedef struct AccelClass {
-      * global properties may be overridden by machine-type
-      * compat_props or user-provided global properties.
-      */
--    GlobalProperty *global_props;
-+    GArray *compat_props;
- } AccelClass;
-=20
- #define TYPE_ACCEL "accel"
-@@ -67,8 +67,6 @@ typedef struct AccelClass {
- extern unsigned long tcg_tb_size;
-=20
- void configure_accelerator(MachineState *ms);
--/* Register accelerator specific global properties */
--void accel_register_compat_props(AccelState *accel);
- /* Called just before os_setup_post (ie just before drop OS privs) */
- void accel_setup_post(MachineState *ms);
-=20
-diff --git a/accel/accel.c b/accel/accel.c
-index 3da26eb90f..6db5d8f4df 100644
---- a/accel/accel.c
-+++ b/accel/accel.c
-@@ -119,18 +119,6 @@ void configure_accelerator(MachineState *ms)
-     }
- }
-=20
--void accel_register_compat_props(AccelState *accel)
--{
--    AccelClass *class =3D ACCEL_GET_CLASS(accel);
--    GlobalProperty *prop =3D class->global_props;
--
--    for (; prop && prop->driver; prop++) {
--        /* Any compat_props must never cause error */
--        prop->errp =3D &error_abort;
--        qdev_prop_register_global(prop);
--    }
--}
--
- void accel_setup_post(MachineState *ms)
- {
-     AccelState *accel =3D ms->accelerator;
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index da50ad6de7..4444d45945 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -844,24 +844,6 @@ static void machine_class_finalize(ObjectClass *klas=
-s, void *data)
-     g_free(mc->name);
- }
-=20
--void machine_register_compat_props(MachineState *machine)
--{
--    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
--    int i;
--    GlobalProperty *p;
--
--    if (!mc->compat_props) {
--        return;
--    }
--
--    for (i =3D 0; i < mc->compat_props->len; i++) {
--        p =3D g_array_index(mc->compat_props, GlobalProperty *, i);
--        /* Machine compat_props must never cause errors: */
--        p->errp =3D &error_abort;
--        qdev_prop_register_global(p);
--    }
--}
--
- static const TypeInfo machine_info =3D {
-     .name =3D TYPE_MACHINE,
-     .parent =3D TYPE_OBJECT,
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 6b3cc55b27..30890f2c8d 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -972,6 +972,14 @@ static void device_initfn(Object *obj)
-=20
- static void device_post_init(Object *obj)
- {
-+    if (current_machine) {
-+        MachineClass *mc =3D MACHINE_GET_CLASS(current_machine);
-+        AccelClass *ac =3D ACCEL_GET_CLASS(current_machine->accelerator)=
-;
-+
-+        object_apply_global_props(obj, mc->compat_props, &error_abort);
-+        object_apply_global_props(obj, ac->compat_props, &error_abort);
-+    }
-+
-     qdev_prop_set_globals(DEVICE(obj));
- }
-=20
-diff --git a/hw/xen/xen-common.c b/hw/xen/xen-common.c
-index 6ec14c73ca..d1ef7a53cc 100644
---- a/hw/xen/xen-common.c
-+++ b/hw/xen/xen-common.c
-@@ -181,11 +181,18 @@ static GlobalProperty xen_compat_props[] =3D {
- static void xen_accel_class_init(ObjectClass *oc, void *data)
- {
-     AccelClass *ac =3D ACCEL_CLASS(oc);
-+    int i;
-+
-     ac->name =3D "Xen";
-     ac->init_machine =3D xen_init;
-     ac->setup_post =3D xen_setup_post;
-     ac->allowed =3D &xen_allowed;
--    ac->global_props =3D xen_compat_props;
-+
-+    ac->compat_props =3D g_array_new(false, false, sizeof(void *));
-+    for (i =3D 0; xen_compat_props[i].driver !=3D NULL; i++) {
-+        GlobalProperty *prop =3D &xen_compat_props[i];
-+        g_array_append_val(ac->compat_props, prop);
-+    }
- }
-=20
- #define TYPE_XEN_ACCEL ACCEL_CLASS_NAME("xen")
-diff --git a/qom/object.c b/qom/object.c
-index eb770dbf7f..9acdf9e16d 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -372,6 +372,31 @@ static void object_post_init_with_type(Object *obj, =
-TypeImpl *ti)
-     }
- }
-=20
-+void object_apply_global_props(Object *obj, GArray *props, Error **errp)
-+{
-+    Error *err =3D NULL;
-+    int i;
-+
-+    if (!props) {
-+        return;
-+    }
-+
-+    for (i =3D 0; i < props->len; i++) {
-+        GlobalProperty *p =3D g_array_index(props, GlobalProperty *, i);
-+
-+        if (object_dynamic_cast(obj, p->driver) =3D=3D NULL) {
-+            continue;
-+        }
-+        p->used =3D true;
-+        object_property_parse(obj, p->value, p->property, &err);
-+        if (err !=3D NULL) {
-+            error_prepend(&err, "can't apply global %s.%s=3D%s: ",
-+                          p->driver, p->property, p->value);
-+            error_propagate(errp, err);
-+        }
-+    }
-+}
-+
- static void object_initialize_with_type(void *data, size_t size, TypeImp=
-l *type)
- {
-     Object *obj =3D data;
-diff --git a/stubs/machine.c b/stubs/machine.c
-new file mode 100644
-index 0000000000..51d40fd677
---- /dev/null
-+++ b/stubs/machine.c
-@@ -0,0 +1,4 @@
-+#include "qemu/osdep.h"
-+#include "qemu-common.h"
-+
-+MachineClass *current_machine;
+  * GlobalProperty:
+- * @user_provided: Set to true if property comes from user-provided conf=
+ig
+- * (command-line or config file).
+  * @used: Set to true if property was used when initializing a device.
+  * @errp: Error destination, used like first argument of error_setg()
+  *        in case property setting fails later. If @errp is NULL, we
+@@ -262,7 +260,6 @@ typedef struct GlobalProperty {
+     const char *driver;
+     const char *property;
+     const char *value;
+-    bool user_provided;
+     bool used;
+     Error **errp;
+ } GlobalProperty;
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index bd84c4ea4c..43c30a57f4 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -1192,9 +1192,6 @@ int qdev_prop_check_globals(void)
+         if (prop->used) {
+             continue;
+         }
+-        if (!prop->user_provided) {
+-            continue;
+-        }
+         oc =3D object_class_by_name(prop->driver);
+         oc =3D object_class_dynamic_cast(oc, TYPE_DEVICE);
+         if (!oc) {
+@@ -1233,7 +1230,6 @@ void qdev_prop_set_globals(DeviceState *dev)
+             if (!dev->hotplugged && prop->errp) {
+                 error_propagate(prop->errp, err);
+             } else {
+-                assert(prop->user_provided);
+                 warn_report_err(err);
+             }
+         }
 diff --git a/tests/test-qdev-global-props.c b/tests/test-qdev-global-prop=
 s.c
-index b1eb505442..3a8d3170a0 100644
+index 3a8d3170a0..f49a1b70b5 100644
 --- a/tests/test-qdev-global-props.c
 +++ b/tests/test-qdev-global-props.c
-@@ -28,7 +28,6 @@
- #include "qom/object.h"
- #include "qapi/visitor.h"
-=20
--
- #define TYPE_STATIC_PROPS "static_prop_type"
- #define STATIC_TYPE(obj) \
-     OBJECT_CHECK(MyType, (obj), TYPE_STATIC_PROPS)
-diff --git a/vl.c b/vl.c
-index 55bab005b6..2aea884c9d 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2963,8 +2963,6 @@ static void user_register_global_props(void)
-  */
- static void register_global_properties(MachineState *ms)
+@@ -215,12 +215,12 @@ static void test_dynamic_globalprop_subprocess(void=
+)
  {
--    accel_register_compat_props(ms->accelerator);
--    machine_register_compat_props(ms);
-     user_register_global_props();
+     MyType *mt;
+     static GlobalProperty props[] =3D {
+-        { TYPE_DYNAMIC_PROPS, "prop1", "101", true },
+-        { TYPE_DYNAMIC_PROPS, "prop2", "102", true },
+-        { TYPE_DYNAMIC_PROPS"-bad", "prop3", "103", true },
+-        { TYPE_UNUSED_HOTPLUG, "prop4", "104", true },
+-        { TYPE_UNUSED_NOHOTPLUG, "prop5", "105", true },
+-        { TYPE_NONDEVICE, "prop6", "106", true },
++        { TYPE_DYNAMIC_PROPS, "prop1", "101", },
++        { TYPE_DYNAMIC_PROPS, "prop2", "102", },
++        { TYPE_DYNAMIC_PROPS"-bad", "prop3", "103", },
++        { TYPE_UNUSED_HOTPLUG, "prop4", "104", },
++        { TYPE_UNUSED_NOHOTPLUG, "prop5", "105", },
++        { TYPE_NONDEVICE, "prop6", "106", },
+         {}
+     };
+     int global_error;
+@@ -255,46 +255,6 @@ static void test_dynamic_globalprop(void)
+     g_test_trap_assert_stdout("");
  }
 =20
-diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-index 5dd0aeeec6..6ce33ae46f 100644
---- a/stubs/Makefile.objs
-+++ b/stubs/Makefile.objs
-@@ -18,6 +18,7 @@ stub-obj-y +=3D iothread-lock.o
- stub-obj-y +=3D is-daemonized.o
- stub-obj-$(CONFIG_LINUX_AIO) +=3D linux-aio.o
- stub-obj-y +=3D machine-init-done.o
-+stub-obj-y +=3D machine.o
- stub-obj-y +=3D migr-blocker.o
- stub-obj-y +=3D change-state-handler.o
- stub-obj-y +=3D monitor.o
+-/* Test setting of dynamic properties using user_provided=3Dfalse proper=
+ties */
+-static void test_dynamic_globalprop_nouser_subprocess(void)
+-{
+-    MyType *mt;
+-    static GlobalProperty props[] =3D {
+-        { TYPE_DYNAMIC_PROPS, "prop1", "101" },
+-        { TYPE_DYNAMIC_PROPS, "prop2", "102" },
+-        { TYPE_DYNAMIC_PROPS"-bad", "prop3", "103" },
+-        { TYPE_UNUSED_HOTPLUG, "prop4", "104" },
+-        { TYPE_UNUSED_NOHOTPLUG, "prop5", "105" },
+-        { TYPE_NONDEVICE, "prop6", "106" },
+-        {}
+-    };
+-    int global_error;
+-
+-    register_global_properties(props);
+-
+-    mt =3D DYNAMIC_TYPE(object_new(TYPE_DYNAMIC_PROPS));
+-    qdev_init_nofail(DEVICE(mt));
+-
+-    g_assert_cmpuint(mt->prop1, =3D=3D, 101);
+-    g_assert_cmpuint(mt->prop2, =3D=3D, 102);
+-    global_error =3D qdev_prop_check_globals();
+-    g_assert_cmpuint(global_error, =3D=3D, 0);
+-    g_assert(props[0].used);
+-    g_assert(props[1].used);
+-    g_assert(!props[2].used);
+-    g_assert(!props[3].used);
+-    g_assert(!props[4].used);
+-    g_assert(!props[5].used);
+-}
+-
+-static void test_dynamic_globalprop_nouser(void)
+-{
+-    g_test_trap_subprocess("/qdev/properties/dynamic/global/nouser/subpr=
+ocess", 0, 0);
+-    g_test_trap_assert_passed();
+-    g_test_trap_assert_stderr("");
+-    g_test_trap_assert_stdout("");
+-}
+-
+ /* Test if global props affecting subclasses are applied in the right or=
+der */
+ static void test_subclass_global_props(void)
+ {
+@@ -344,11 +304,6 @@ int main(int argc, char **argv)
+     g_test_add_func("/qdev/properties/dynamic/global",
+                     test_dynamic_globalprop);
+=20
+-    g_test_add_func("/qdev/properties/dynamic/global/nouser/subprocess",
+-                    test_dynamic_globalprop_nouser_subprocess);
+-    g_test_add_func("/qdev/properties/dynamic/global/nouser",
+-                    test_dynamic_globalprop_nouser);
+-
+     g_test_add_func("/qdev/properties/global/subclass",
+                     test_subclass_global_props);
+=20
+diff --git a/vl.c b/vl.c
+index 2aea884c9d..d11b070e70 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2931,7 +2931,6 @@ static int global_init_func(void *opaque, QemuOpts =
+*opts, Error **errp)
+     g->driver   =3D qemu_opt_get(opts, "driver");
+     g->property =3D qemu_opt_get(opts, "property");
+     g->value    =3D qemu_opt_get(opts, "value");
+-    g->user_provided =3D true;
+     g->errp =3D &error_fatal;
+     qdev_prop_register_global(g);
+     return 0;
 --=20
 2.19.1.708.g4ede3d42df
 

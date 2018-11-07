@@ -1,182 +1,291 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2090441wrw;
-        Wed, 7 Nov 2018 04:47:12 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cwJ6mGdYHLW4OOL6V7Bl77uNFRnLFMBOx7LwutiSn4RuXFLXhLhorTdd0z2eGNqqKWB/xE
-X-Received: by 2002:a37:aa91:: with SMTP id t139mr48498qke.139.1541594832353;
-        Wed, 07 Nov 2018 04:47:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541594832; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2283895wrw;
+        Wed, 7 Nov 2018 07:50:38 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eXRmBLcbooMQlagQftbcDwnkCJEWY6wwJwuLe10XTobp6FzanaIfSOW0+xRlkyYw27mOti
+X-Received: by 2002:ac8:668c:: with SMTP id d12mr721646qtp.242.1541605838441;
+        Wed, 07 Nov 2018 07:50:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541605838; cv=none;
         d=google.com; s=arc-20160816;
-        b=bC8nlGcj/3/FtYySZFZIMKFPjx0uOQCbOOHE3wPOcmTXiCz5/oTNOBRHGKFYnXN24E
-         TdpWLdHi2dx673radxUGT5fEMRsl0piIPmz6N4S374l7JwVPX5H0bX0GzxSEjeiRuyCf
-         DN9bQE+gMZtCudFJy8A9hSJkggABzQr03psx+wewiI2r9pOuGmoWsB8P07+7RpQGhSJt
-         W7hyij+DcQrf958rXLacItS/ZsnuOMPa1izLZgG1gJDURPndWV4XnY03CZPlCixid0Cj
-         gnc6B3ocyK1KWE2FRpd8rTYWiOle8EZThijyNHZTmOpTJoFvi9JhrZutKr02rfqqPHB6
-         rflQ==
+        b=kqE4/4q5160xg+kdCwsEWPhnVkCICCK4a5nBGzQLJ1g7CwsUCKYQ29ipgiIMQkbA0j
+         XpUzIrHtFQ/fLPpveBAmy38gLY+Xtc1mCqksPJ0S0jpVkbefYqaYY0uZT3rGVox5jnz4
+         FjHSGf0ubPugjqPnRaIHPWrHEZTS+HXE+lNzuLfjuTAqF0T5xdR3Kdola3rnWeAoN4kl
+         EuNSWrrrckotCI4QLiwzMHCe4f6zdkU8ANZ9XncXZc4EC1T0HzbAd6zE6kxU1M1kR46I
+         jo1N5+5Cl1yKttlGeAdiVpKMlM82O86/2zKwJNYrpstoLTuDEGLu00+eIV1mrdXov0xR
+         MwMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=FQTtAZunPkqoja3scBVrXzfTi2r0DVoiLYv1zqlPrQc=;
-        b=i9HZxVvbjmNJZyTwLjFMZJh31hPaNh6i2NYb6+6WOVUrk9MLL9/PrjoDzgnd7+fAdT
-         IdLKb+TLCED7xRvdgunSxelqi/cAM1K5YoXjOnCL4fPp+akFNI7Jq5jcWXz2gTuo9IrK
-         x9HsSk6yVWY3owHAE58O34D5JWES0O097qKtChrrU9qk/Dc/qefAouJoTcOr3M8ZESWe
-         Sx2JY/0RUJpxmuu7V/P4JEJwK/NXQqJ6p5QZjUCzLGU2d8tOq8xhUZoG0ZRHad5xi58L
-         xTcOq9fRjXKCYjwtZm7B1+Dy46VC12ij1ra7K9OSl1umPUBzRvWfjXWhFW+gO8LYp3lZ
-         BQtw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=AoxkZ6tnyY4H8hILH0lGHJMwh/Jczvxdp1jN6GZL3qQ=;
+        b=krcWmH6Z34a3WhKgDvwNAkgEOPJrOU45pKQXhFh94IOO3FYKHioaxuKnAUYdqYN++P
+         nEDWjN125Ml2LvL2i/1i7jrCUD+yrdp/F1wzbePKtgDrq/K4BTk25BEPSZAWo5O+gSBN
+         jz67XWd6YMKK5DQeer8lAFAowHZtbcR8/J0AI6+U7hwtAmTo2eQPxfNZbM415GWj/evU
+         ctYN55nQuI9VLhrGaGpzauGZZD9XL4FoWTo4NYp6nIoenBPSLC3Yr9sl2iIayi579gNE
+         kKnrs6mPtm4Ie7NYroIaJ1IFW5Eb16XXM3B3qCvvKD5fZoQDRKK2VLvXAnNTr3XoRRab
+         MEhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="lVHo/S9S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y24si379978qve.86.2018.11.07.04.47.12
+        by mx.google.com with ESMTPS id a18si723284qvj.20.2018.11.07.07.50.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Nov 2018 04:47:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 07 Nov 2018 07:50:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47679 helo=lists.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="lVHo/S9S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49025 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKNEl-00088a-QT
-	for alex.bennee@linaro.org; Wed, 07 Nov 2018 07:47:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37610)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gKQ6H-0005uK-Ud
+	for alex.bennee@linaro.org; Wed, 07 Nov 2018 10:50:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN6j-0007hE-Rt
-	for qemu-devel@nongnu.org; Wed, 07 Nov 2018 07:38:56 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1gKQ67-0005si-NL
+	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 10:50:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gKN6f-00074j-Ov
-	for qemu-devel@nongnu.org; Wed, 07 Nov 2018 07:38:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44012)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1gKN6K-0006lP-KI; Wed, 07 Nov 2018 07:38:29 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4DD7730D4DAA;
-	Wed,  7 Nov 2018 12:38:14 +0000 (UTC)
-Received: from localhost (ovpn-112-43.ams2.redhat.com [10.36.112.43])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 77BCE6012D;
-	Wed,  7 Nov 2018 12:38:09 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Wed,  7 Nov 2018 16:36:46 +0400
-Message-Id: <20181107123652.23417-9-marcandre.lureau@redhat.com>
-In-Reply-To: <20181107123652.23417-1-marcandre.lureau@redhat.com>
-References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
+	(envelope-from <marcandre.lureau@gmail.com>) id 1gKQ5s-0004dL-Eo
+	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 10:50:17 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34695)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1gKQ5o-0004N4-Pw; Wed, 07 Nov 2018 10:50:09 -0500
+Received: by mail-wr1-x442.google.com with SMTP id j26-v6so17951324wre.1;
+	Wed, 07 Nov 2018 07:50:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=AoxkZ6tnyY4H8hILH0lGHJMwh/Jczvxdp1jN6GZL3qQ=;
+	b=lVHo/S9SZRObCRVog/LbxyAfyDijAYYT+myYid2mttaYygLg7JsaxmxTocW3OCEKsE
+	Sep6vpX3KIjvyB4UOqOYNO43UhRUbBlhLbX9TOuQ9bGFk2CD7PbnLWn9HXcmo7cwZEOF
+	QeBI28EOgBWK1uw1ekJuCYD/84jg98xDNE1tP3yRxejx6OyayfbTjqjj57vPn8U3A28p
+	Kllnpm5wX5vI0jZHFndU24nOG8a5Ya6+Ck3i6LrZ5hIt0E6lIyIwTOMPnGy01WAs2Jru
+	CimDm0M2JBGs+dPIHS4WmaXs3ZfMaQYHA5+EC7Laj6rSJh6NdHWNKqruEp+ts+YMSRHh
+	gpyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=AoxkZ6tnyY4H8hILH0lGHJMwh/Jczvxdp1jN6GZL3qQ=;
+	b=SJehJMdKJwQxftMNSD3ARB4gB6hznFoxx3G7DY8f/4g1vsdoxJ6T6z2hRt+xG+BJ2p
+	H5x7iSmvNsK69BI04MMJ9d0tBlcxRt+9gtVDviqfs/TCVtXQ6RgpG3RlzxZzEFXb0xV1
+	EatAuuZfw8xJxL7XCdyRYVCyXVJKF1w7UziRBvwoIel4zu61SNvi6kvqw6iMvETiYylf
+	VX43JDpqkACJulrGV2T/SUjHjtzdhTymYDWO49qRExdciJkjt++ADff6/QphqFbOh5UF
+	g2OARzuCtd62mUJ9ohWUUMcroz2OKKRTtBFNjMQYpdgacz3xwWoFrJoTAVOvoDfsIG5i
+	EcvA==
+X-Gm-Message-State: AGRZ1gIE8AH8txcG2zrP84JmL9iXkaGJ44AeToAmnIXJRNwm55KCg5x7
+	9fzkT4Qm7B/tIoqc3WH8GlktozlFAu1Z9KjYsnW2qB5ySeU=
+X-Received: by 2002:adf:bd0f:: with SMTP id
+	j15-v6mr662203wrh.267.1541605806973; 
+	Wed, 07 Nov 2018 07:50:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Wed, 07 Nov 2018 12:38:14 +0000 (UTC)
+References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
+	<20181107123652.23417-14-marcandre.lureau@redhat.com>
+In-Reply-To: <20181107123652.23417-14-marcandre.lureau@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Wed, 7 Nov 2018 19:49:54 +0400
+Message-ID: <CAJ+F1CLWy0xbb-Pc7yUNpHh70GsSTKJ=v+TeoTGJOThYO_xE2g@mail.gmail.com>
+To: QEMU <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH for-3.2 v3 08/14] qdev-props: convert
- global_props to GArray
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::442
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v3 13/14] hw/i386: add
+ pc-i440fx-3.2 & pc-q35-3.2
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
-	xen-devel@lists.xenproject.org, Corey Minyard <minyard@acm.org>,
-	Amit Shah <amit@kernel.org>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Corey Minyard <minyard@acm.org>, amit@kernel.org,
+	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	dgilbert@redhat.com, Eduardo Habkost <ehabkost@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>, hpoussin@reactos.org,
 	Igor Mammedov <imammedo@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: brMZmeXsJfun
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	atar4qemu@gmail.com, stefanb@linux.ibm.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8FIiEVnB2DbP
 
-A step towards being able to call object_apply_global_props().
+Hi
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- hw/core/qdev-properties.c | 29 ++++++++++++++++++++---------
- 1 file changed, 20 insertions(+), 9 deletions(-)
+On Wed, Nov 7, 2018 at 4:49 PM Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@redhat.com> wrote:
+>
+> The following patch is going to add compatiblity parameters for
+> qemu <=3D 3.1.
+>
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index 43c30a57f4..353e67c05a 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -1173,22 +1173,32 @@ void qdev_prop_set_ptr(DeviceState *dev, const ch=
-ar *name, void *value)
-     *ptr =3D value;
- }
-=20
--static GList *global_props;
-+static GArray *global_props(void)
-+{
-+    static GArray *gp;
-+
-+    if (!gp) {
-+        gp =3D g_array_new(false, false, sizeof(GlobalProperty *));
-+    }
-+
-+    return gp;
-+}
-=20
- void qdev_prop_register_global(GlobalProperty *prop)
- {
--    global_props =3D g_list_append(global_props, prop);
-+    g_array_append_val(global_props(), prop);
- }
-=20
- int qdev_prop_check_globals(void)
- {
--    GList *l;
--    int ret =3D 0;
-+    int i, ret =3D 0;
-=20
--    for (l =3D global_props; l; l =3D l->next) {
--        GlobalProperty *prop =3D l->data;
-+    for (i =3D 0; i < global_props()->len; i++) {
-+        GlobalProperty *prop;
-         ObjectClass *oc;
-         DeviceClass *dc;
-+
-+        prop =3D g_array_index(global_props(), GlobalProperty *, i);
-         if (prop->used) {
-             continue;
-         }
-@@ -1213,12 +1223,13 @@ int qdev_prop_check_globals(void)
-=20
- void qdev_prop_set_globals(DeviceState *dev)
- {
--    GList *l;
-+    int i;
-=20
--    for (l =3D global_props; l; l =3D l->next) {
--        GlobalProperty *prop =3D l->data;
-+    for (i =3D 0; i < global_props()->len; i++) {
-+        GlobalProperty *prop;
-         Error *err =3D NULL;
-=20
-+        prop =3D g_array_index(global_props(), GlobalProperty *, i);
-         if (object_dynamic_cast(OBJECT(dev), prop->driver) =3D=3D NULL) =
-{
-             continue;
-         }
+I realize this may be good enough for x86 i440/q35 machines, but what
+about other machines & architectures?
+
+What do we officially support, for migration, across different versions?
+
+It seems we have versionized:
+- arm "virt" machines
+- "s390-ccw-virtio" machines
+- ppc "pseries" machines
+- x86 piix/q35 machines
+
+At least, I think I should update this patch to add new 3.2 machines for th=
+ose.
+
+Is there any way to check compat properties are handled properly for
+those various machines? It looks like it is generally lacking. For
+example, if there is a new HW_COMPAT, it would be nice if something
+failed if a corresponding machine hasn't been added.
+
+It also looks like there is a bit of code duplication and a bit too
+much macros :) unfortunately, I don't yet have a good idea how to
+improve things...
+
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  include/hw/compat.h  |  3 +++
+>  include/hw/i386/pc.h |  3 +++
+>  hw/i386/pc_piix.c    | 21 ++++++++++++++++++---
+>  hw/i386/pc_q35.c     | 19 +++++++++++++++++--
+>  4 files changed, 41 insertions(+), 5 deletions(-)
+>
+> diff --git a/include/hw/compat.h b/include/hw/compat.h
+> index 6f4d5fc647..70958328fe 100644
+> --- a/include/hw/compat.h
+> +++ b/include/hw/compat.h
+> @@ -1,6 +1,9 @@
+>  #ifndef HW_COMPAT_H
+>  #define HW_COMPAT_H
+>
+> +#define HW_COMPAT_3_1 \
+> +    /* empty */
+> +
+>  #define HW_COMPAT_3_0 \
+>      /* empty */
+>
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 136fe497b6..c37d4333a0 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -294,6 +294,9 @@ int e820_add_entry(uint64_t, uint64_t, uint32_t);
+>  int e820_get_num_entries(void);
+>  bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+>
+> +#define PC_COMPAT_3_1 \
+> +    HW_COMPAT_3_1
+> +
+>  #define PC_COMPAT_3_0 \
+>      HW_COMPAT_3_0 \
+>      {\
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index dc09466b3e..ba371bfcd7 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -428,21 +428,36 @@ static void pc_i440fx_machine_options(MachineClass =
+*m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+>  }
+>
+> -static void pc_i440fx_3_0_machine_options(MachineClass *m)
+> +static void pc_i440fx_3_2_machine_options(MachineClass *m)
+>  {
+>      pc_i440fx_machine_options(m);
+>      m->alias =3D "pc";
+>      m->is_default =3D 1;
+>  }
+>
+> +DEFINE_I440FX_MACHINE(v3_2, "pc-i440fx-3.2", NULL,
+> +                      pc_i440fx_3_2_machine_options);
+> +
+> +static void pc_i440fx_3_1_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_3_2_machine_options(m);
+> +    m->is_default =3D 0;
+> +    m->alias =3D NULL;
+> +    SET_MACHINE_COMPAT(m, PC_COMPAT_3_1);
+> +}
+> +
+> +static void pc_i440fx_3_0_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_3_1_machine_options(m);
+> +    SET_MACHINE_COMPAT(m, PC_COMPAT_3_0);
+> +}
+> +
+>  DEFINE_I440FX_MACHINE(v3_0, "pc-i440fx-3.0", NULL,
+>                        pc_i440fx_3_0_machine_options);
+>
+>  static void pc_i440fx_2_12_machine_options(MachineClass *m)
+>  {
+>      pc_i440fx_3_0_machine_options(m);
+> -    m->is_default =3D 0;
+> -    m->alias =3D NULL;
+>      SET_MACHINE_COMPAT(m, PC_COMPAT_2_12);
+>  }
+>
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 532241e3f8..64d6ea65d5 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -311,19 +311,34 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus =3D 288;
+>  }
+>
+> -static void pc_q35_3_0_machine_options(MachineClass *m)
+> +static void pc_q35_3_2_machine_options(MachineClass *m)
+>  {
+>      pc_q35_machine_options(m);
+>      m->alias =3D "q35";
+>  }
+>
+> +DEFINE_Q35_MACHINE(v3_2, "pc-q35-3.2", NULL,
+> +                   pc_q35_3_2_machine_options);
+> +
+> +static void pc_q35_3_1_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_3_2_machine_options(m);
+> +    m->alias =3D NULL;
+> +    SET_MACHINE_COMPAT(m, PC_COMPAT_3_1);
+> +}
+> +
+> +static void pc_q35_3_0_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_3_1_machine_options(m);
+> +    SET_MACHINE_COMPAT(m, PC_COMPAT_3_0);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v3_0, "pc-q35-3.0", NULL,
+>                      pc_q35_3_0_machine_options);
+>
+>  static void pc_q35_2_12_machine_options(MachineClass *m)
+>  {
+>      pc_q35_3_0_machine_options(m);
+> -    m->alias =3D NULL;
+>      SET_MACHINE_COMPAT(m, PC_COMPAT_2_12);
+>  }
+>
+> --
+> 2.19.1.708.g4ede3d42df
+>
+>
+
+
 --=20
-2.19.1.708.g4ede3d42df
-
+Marc-Andr=C3=A9 Lureau

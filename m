@@ -1,48 +1,48 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210424wrw;
-        Thu, 8 Nov 2018 02:32:50 -0800 (PST)
-X-Google-Smtp-Source: AJdET5f3mPkQePx7spXTb9yzwj+Dnp0UNuMISNUjDJOKKD2BvAz21tSmFN1bKeljKz48Odr+6vbw
-X-Received: by 2002:a17:902:29e3:: with SMTP id h90-v6mr4058957plb.158.1541673170609;
-        Thu, 08 Nov 2018 02:32:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541673170; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210294wrw;
+        Thu, 8 Nov 2018 02:32:40 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ff0Wf3jSFKrWYLkuzQaY298s29MDlpy7HJo8zcY/B74Zk+F5lrN+1HALLSCrGGSMr9ls4h
+X-Received: by 2002:a62:647:: with SMTP id 68-v6mr4166398pfg.42.1541673160729;
+        Thu, 08 Nov 2018 02:32:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541673160; cv=none;
         d=google.com; s=arc-20160816;
-        b=u8yJKOkNIee8yqazTWN5S5G9jUQtnBDRcRdwbTqafpGTmy9fDpfsjDkgPJJ5x53WW6
-         2x5fgzB/C6/1Qp7uCxNjdMHoxdO+xp/y/ja6pXcNbVo3PDaO1soTD0rY05O+esJ62kHb
-         lV1pfxHIqaJrtaDuzIw/rZRJ6TriH5vrZiT5qReeV9uxyk4R36mNzV4lzOBkkb3QFUfE
-         vzk1FqxLu5V2UCWMi7cIHrNP8T2sG4oKYAJqOJ6k0/K+EmUu1VTv89DJQobkRaX4Jush
-         Z31HYuUdYN/n02+spnoUdeBX8h99CXhlDZGxEV7FVHLiFdwK33+1+Oj7qZs24IRE2PSo
-         wlXA==
+        b=xXM0Jn8j/+exi/H4PlpFBCUYE7qAUu8wxumw+15Q+OwYMP5oPqYyI2kN3NcrpuNtJc
+         6p0OK8X+P1FDQ1DDxken+FvxLzDdUd75DKI9BNe0Bbfw227Unsq/TuJHIzBvFZk8uDqu
+         UCa8pLPh4FsY4jLix8nfaBIAzsrISTKdXSN82pN45HJQVccE0P9plvZhE041iuF+yuq0
+         AnJSFzo8sjAZn4teAGUYBkhhip2I/yqDKG6vg2WAa4luFGysLkmQXOQWbS86mDQYcoAj
+         cfXFf2OM4i2l9v6oTxqQ0tGqwMzLwn66wNzVMfQKgoGcWYzMqYoGDAqm6bHqJhzwwUBz
+         0Y8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:to:from;
-        bh=KTEWe1Vex7c8TedMPilDro560EOdW2C5EHdqbNliJzU=;
-        b=LusUSrn26OBJBTCYctyK1JwPs8nOMoQteUorgwnh9LmGoIvuSkVrcJ2h6yAp5YQzEn
-         SB+UYxU1UbSfH3Jws1oSI4iSZj3QmP1HkSsb0RAZuVYYhBBH8NlIkQaL01MzeaG53At/
-         tITbqnFgBgY4SI3lmP87CaOlWzdJ++D24FPzL++PqgxbOa93uQoHXm0mAet42Gmou2ge
-         nU+MrLITtqgcNU3L1AMD+PwNGIcbu2gy3kt918qmlYX6tV+cI7bCRniy781ejTFSmNdU
-         EMmlvwT4kJyjX0gOTMfgk1+E0co6JS9cnZNWRTE/64ytbh9nFNBwHa1VJeBXV5EwBosR
-         rXqw==
+        bh=2WuWaaFP3429exA0umwDiN0bPJXRTHfJmWQr1u3+nfI=;
+        b=TeegxI4EmS0IY9mG5pkfCNWU9mCcq4k9Ec4dNxR81HIp3cYQXoMZXaH0QL/P1fZg3x
+         mLlh9TINbe2D5TC+eQz0Yhv9L7zYFJysob+STy7pIyxNCnHtl/LmpdIWnZSq+8Np1BEN
+         u1tF177QiCqR/Vcz2nukV85SFECkJu+Q06eB4r7zQoKQn2FP8BstslEBDg34jvTGm/E6
+         L7oxog1GZSwPQrjZmSovYYN6+EQmb3zi8Ez/e/da2c8aZQFsmCuuX8ker4Bcyw9CBKvB
+         RcIMna5t3sHG6ASWfnb3eXHCaTTNQ8d6h8u5NTziWRA8r3YnP8oBFGNMHRM5Dj8yZ5Lm
+         /WHA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.50;
-        Thu, 08 Nov 2018 02:32:50 -0800 (PST)
+        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.40;
+        Thu, 08 Nov 2018 02:32:40 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727164AbeKHUHh (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 8 Nov 2018 15:07:37 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:38303 "EHLO huawei.com"
+        id S1727029AbeKHUH2 (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Thu, 8 Nov 2018 15:07:28 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:14625 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727074AbeKHUHe (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 8 Nov 2018 15:07:34 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 288591C0281A;
-        Thu,  8 Nov 2018 18:32:41 +0800 (CST)
+        id S1726509AbeKHUH1 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 8 Nov 2018 15:07:27 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id CE341E0E57B8B;
+        Thu,  8 Nov 2018 18:32:35 +0800 (CST)
 Received: from ros.huawei.com (10.143.28.118) by
  DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.408.0; Thu, 8 Nov 2018 18:32:33 +0800
+ 14.3.408.0; Thu, 8 Nov 2018 18:32:31 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <peter.maydell@linaro.org>, <lersek@redhat.com>,
@@ -52,9 +52,9 @@ To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <gengdongjiu@huawei.com>
-Subject: [PATCH RESEND v15 07/10] KVM: Move related hwpoison page functions to accel/kvm/ folder
-Date:   Thu, 8 Nov 2018 02:29:46 -0800
-Message-ID: <1541672989-15967-8-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v15 04/10] acpi: add build_append_ghes_generic_status() helper for Generic Error Status Block
+Date:   Thu, 8 Nov 2018 02:29:43 -0800
+Message-ID: <1541672989-15967-5-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
 References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
@@ -66,131 +66,59 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 9hA/ErwQw3rF
+X-TUID: 2q9RUN9NCfRe
 
-kvm_hwpoison_page_add() and kvm_unpoison_all() will be used both
-by X86 and ARM platforms, so move these functions to a common
-accel/kvm/ folder to avoid duplicate code.
+It will help to add Generic Error Status Block to ACPI tables
+without using packed C structures and avoid endianness
+issues as API doesn't need explicit conversion.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
-Address Peter's comments to move related hwpoison page function to
-accel/kvm folder in [1]
-Address Paolo's comments to move HWPoisonPage definition back to
-accel/kvm/kvm-all.c
+ hw/acpi/aml-build.c         | 14 ++++++++++++++
+ include/hw/acpi/aml-build.h |  6 ++++++
+ 2 files changed, 20 insertions(+)
 
-[1]:
-https://lists.gnu.org/archive/html/qemu-arm/2017-09/msg00077.html
-https://lists.gnu.org/archive/html/qemu-arm/2017-09/msg00152.html
----
- accel/kvm/kvm-all.c     | 33 +++++++++++++++++++++++++++++++++
- include/exec/ram_addr.h |  5 +++++
- target/i386/kvm.c       | 33 ---------------------------------
- 3 files changed, 38 insertions(+), 33 deletions(-)
-
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 4880a05..003deac 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -625,6 +625,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
-     return ret;
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 00b166e..5923248 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
+         build_append_int_noprefix(table, error_threshold_window, 4);
  }
  
-+typedef struct HWPoisonPage {
-+    ram_addr_t ram_addr;
-+    QLIST_ENTRY(HWPoisonPage) list;
-+} HWPoisonPage;
-+
-+static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
-+    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
-+
-+void kvm_unpoison_all(void *param)
++/* Generic Error Status Block
++ * ACPI 4.0: 17.3.2.6.1 Generic Error Data
++ */
++void build_append_ghes_generic_status(GArray *table, uint32_t block_status,
++                      uint32_t raw_data_offset, uint32_t raw_data_length,
++                      uint32_t data_length, uint32_t error_severity)
 +{
-+    HWPoisonPage *page, *next_page;
-+
-+    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
-+        QLIST_REMOVE(page, list);
-+        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
-+        g_free(page);
-+    }
++    build_append_int_noprefix(table, block_status, 4);
++    build_append_int_noprefix(table, raw_data_offset, 4);
++    build_append_int_noprefix(table, raw_data_length, 4);
++    build_append_int_noprefix(table, data_length, 4);
++    build_append_int_noprefix(table, error_severity, 4);
 +}
 +
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr)
-+{
-+    HWPoisonPage *page;
+ /* Generic Error Data Entry
+  * ACPI 4.0: 17.3.2.6.1 Generic Error Data
+  */
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 147eb38..657a0d5 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -423,6 +423,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
+                                     uint32_t error_data_length, uint8_t *fru_id,
+                                     uint8_t *fru_text, uint64_t time_stamp);
+ 
++void
++build_append_ghes_generic_status(GArray *table, uint32_t block_status,
++                                 uint32_t raw_data_offset,
++                                 uint32_t raw_data_length,
++                                 uint32_t data_length, uint32_t error_severity);
 +
-+    QLIST_FOREACH(page, &hwpoison_page_list, list) {
-+        if (page->ram_addr == ram_addr) {
-+            return;
-+        }
-+    }
-+    page = g_new(HWPoisonPage, 1);
-+    page->ram_addr = ram_addr;
-+    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
-+}
-+
- static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
- {
- #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
-diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
-index 9ecd911..1e02fb9 100644
---- a/include/exec/ram_addr.h
-+++ b/include/exec/ram_addr.h
-@@ -115,6 +115,11 @@ void qemu_ram_free(RAMBlock *block);
+ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+                        uint64_t len, int node, MemoryAffinityFlags flags);
  
- int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp);
- 
-+/* Add a poisoned page to the list */
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr);
-+/* Free and remove all the poisoned pages in the list */
-+void kvm_unpoison_all(void *param);
-+
- #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
- #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_CODE))
- 
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 796a049..08b3feb 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -457,39 +457,6 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
- }
- 
- 
--typedef struct HWPoisonPage {
--    ram_addr_t ram_addr;
--    QLIST_ENTRY(HWPoisonPage) list;
--} HWPoisonPage;
--
--static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
--    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
--
--static void kvm_unpoison_all(void *param)
--{
--    HWPoisonPage *page, *next_page;
--
--    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
--        QLIST_REMOVE(page, list);
--        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
--        g_free(page);
--    }
--}
--
--static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
--{
--    HWPoisonPage *page;
--
--    QLIST_FOREACH(page, &hwpoison_page_list, list) {
--        if (page->ram_addr == ram_addr) {
--            return;
--        }
--    }
--    page = g_new(HWPoisonPage, 1);
--    page->ram_addr = ram_addr;
--    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
--}
--
- static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
-                                      int *max_banks)
- {
 -- 
 1.8.3.1

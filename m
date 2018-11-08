@@ -1,61 +1,63 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3199318wrw;
-        Thu, 8 Nov 2018 02:18:49 -0800 (PST)
-X-Google-Smtp-Source: AJdET5c833Dc6EgCqtenw+qEFjZzJt/lb6VBP8d6iCt+EbteCG23Kr9HP8I0jWxQrajl8jhqlVxt
-X-Received: by 2002:a62:8d92:: with SMTP id p18-v6mr4077680pfk.217.1541672329684;
-        Thu, 08 Nov 2018 02:18:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541672329; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210458wrw;
+        Thu, 8 Nov 2018 02:32:52 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fvPrQUKgE6mR09qSoNYJTvlzZbqxCzREMi4QrO1q/7S9qvPYJfGQRN8PIFMcdqZp4VgJ2N
+X-Received: by 2002:a62:d148:: with SMTP id t8-v6mr3967567pfl.212.1541673172727;
+        Thu, 08 Nov 2018 02:32:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541673172; cv=none;
         d=google.com; s=arc-20160816;
-        b=EAE89nRekQfzy4oysDCF9Ke2nVxLpaCyBx3BjWtrq7oz9m/vFOaD2j3BVrdRbgOqEa
-         LH4GIF5915E/vZoLFeGXT6e9mz+hg+HkWMyUG7yNWzbMr72VRYjQ9BUj1tE+D5V4p6Pw
-         mmrAMDDE3hHn759cqQjqWfyyQmqrrfxe6hKOKhigTbXYXcm+I+Zal44pJ5w3m+w7d2h3
-         Rg/VFIfpzoC3qobddnEw1B0tHvoYIg3dPJLy6s50Uo5c3CeYJtncO+1jD3fINsg3Jgyq
-         Tss/w3i4UiiQIQ0u9SccsJ4Xo3fz/62QgYvC57lB9NB6BgwRK/MV4vJLXl21jm0MfBsd
-         7MAg==
+        b=jgm7iKl8eO+pJ3TZ6/py1EReoCJJpwvzj/FLRGwkWR2vjuJoXqAZZ9apY7Nd5Fy93J
+         K5TkG1YW47b3MxsXaP3VMqi86T1hL2ftzcotmVf+rvh13/uiQ1saeVnmWqApLUwFKh7O
+         h3pj5rJ8ItDGPNc25ZE1OWR7Tzuh1rR9fye/jIWmeyvfcVGN5RJhZlwYF2H3I99TIGBO
+         rqnHSWt8N+4qce4ppgcnuN2nSzJJoxxEOIvvSo6J9w/zFbZ41GOjVaVCaCvkBdHuf456
+         xdp9G+5yfxoS1pROnIzJ0cKOY8vlqvgdSq4uKr06HUsSxmNL1xfYHhr2fzlgYOIRMPJw
+         N1Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:to:from;
-        bh=dy2bkBZ9d6tCd+8UIkoeQ8b33fxziJLCDkTGG53P2Qo=;
-        b=mq1BIbqQe9B2mpzBiT/ybfquNvpeme8ZnD5/vgwA2y2CCX4krRl9LLCNOPO68lkJ+g
-         +cnbANtIPU5dx/sP8H2ATZaducfFCQMJRldsM1de8kzFPwA5PICw/dX7pmjsPw/JApsX
-         kQIbFoKk2rQ/pDeClhC8CwgFSKwe8VXod7P6mh73NuMKX4XnX2podEr73XXVKdWWcwAQ
-         60NB9mnEbJ/S1VfM0RSDuMoc69ek4XEMgVUc8WZYPgVaAh9XQGF6kKKFoef3+SdC+hY6
-         cFtQ0fUdrpbg1Iaf5Qol/JjxKVqyLLONVCjE3Ot2uls2Mjj5ZU9V1ILe1SwCNbI+Joc7
-         IGWg==
+        bh=dLIHgIV92DoznB17iS4Il36IwdvYKLtJHYvI67ZdwuM=;
+        b=fzc8gXRNZ+7cQCO8Sjw6nzltIxSwm8QJHjhqcnO+ZXF0hVqE0PDYupxwB8vVWu/Qt5
+         Vx4yK7GFHrfm97tJGkfZv4N1GMsLWWv1V4mrV6MaKDuEsbW/vwQUw9ILdmdjKzpZ+skJ
+         Zt+sR6qtmSRDz++4U3t6IMJDRN189bPzvfVeMfbPr2A0VcLWXo115EMseX+PhFzMID22
+         z1A1d5+FpxdeuplOh0qt7BhgYFZxFkBsn3nTpg1LBJdnq+cr+pIl6MyKt0OQKwEl2ae8
+         1tNtTczBnAMEGH3ndNcw8ahVpL8PGhq8bN4LJsSHPP/jjiV7guICTJNOQ9g8bDJJg3kZ
+         j1dw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id v26-v6si3400052pge.101.2018.11.08.02.18.49;
-        Thu, 08 Nov 2018 02:18:49 -0800 (PST)
+        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.52;
+        Thu, 08 Nov 2018 02:32:52 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727188AbeKHTxd (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 8 Nov 2018 14:53:33 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:14620 "EHLO huawei.com"
+        id S1727074AbeKHUHj (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Thu, 8 Nov 2018 15:07:39 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:14634 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727083AbeKHTxd (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 8 Nov 2018 14:53:33 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 3F12F941E61D9;
-        Thu,  8 Nov 2018 18:18:44 +0800 (CST)
+        id S1727068AbeKHUHc (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 8 Nov 2018 15:07:32 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 7E8F3C7690A51;
+        Thu,  8 Nov 2018 18:32:40 +0800 (CST)
 Received: from ros.huawei.com (10.143.28.118) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.408.0; Thu, 8 Nov 2018 18:18:37 +0800
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.408.0; Thu, 8 Nov 2018 18:32:34 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <imammedo@redhat.com>, <mst@redhat.com>,
-        <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
-        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <peter.maydell@linaro.org>, <lersek@redhat.com>,
+        <marc.zyngier@arm.com>, <james.morse@arm.com>,
+        <pbonzini@redhat.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <zhengxiang9@huawei.com>, <ehabkost@redhat.com>,
         <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <gengdongjiu@huawei.com>
-Subject: [PATCH v15 08/10] target-arm: kvm64: inject synchronous External Abort
-Date:   Thu, 8 Nov 2018 02:15:51 -0800
-Message-ID: <1541672153-15529-9-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v15 08/10] target-arm: kvm64: inject synchronous External Abort
+Date:   Thu, 8 Nov 2018 02:29:47 -0800
+Message-ID: <1541672989-15967-9-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1541672153-15529-1-git-send-email-gengdongjiu@huawei.com>
-References: <1541672153-15529-1-git-send-email-gengdongjiu@huawei.com>
+In-Reply-To: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
+References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.143.28.118]
@@ -64,7 +66,7 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: bLUP83JTsnAO
+X-TUID: JQCVyDdvoAcJ
 
 Add synchronous external abort injection logic, setup
 exception type and syndrome value. When switch to guest,
@@ -78,7 +80,7 @@ These value will be set to KVM register structures through
 KVM_SET_ONE_REG IOCTL.
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-
+---
 Marc is against that KVM inject the synchronous external abort(SEA) in [1],
 so user space how to inject it. The test result that injection SEA to guest by Qemu
 is shown in [2].

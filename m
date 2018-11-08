@@ -1,48 +1,48 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210344wrw;
-        Thu, 8 Nov 2018 02:32:45 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eh/fd9L3iQr8O+4sqCOETSWvgpmOZ9NRAxIAVfSZZx6fX0SXfbMklBpsUQFa+bC15ktnAr
-X-Received: by 2002:a17:902:930a:: with SMTP id bc10-v6mr4099887plb.17.1541673165225;
-        Thu, 08 Nov 2018 02:32:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541673165; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210369wrw;
+        Thu, 8 Nov 2018 02:32:46 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fBYg9dUOb5m682Hgv+vMZScqIzwFsATPNe+c8tvaofRilsvQoMqiJ0z3qzqApSWv+LdF2N
+X-Received: by 2002:a17:902:7c87:: with SMTP id y7-v6mr4021064pll.232.1541673166713;
+        Thu, 08 Nov 2018 02:32:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541673166; cv=none;
         d=google.com; s=arc-20160816;
-        b=mQi4Xxy9+iiG8fstjLjjpFcERhcfMmccItGIAwU5a5Y6E5088XPlrwRS6R0qNy8DWI
-         CfcAv4gdoOiuobN/Ae82eus8nCLKUdRb1Gql1BDowqQZoHDhFNJ+pAWAr+dVM+jXNvCd
-         Mgdv3jOnvOaV29fjdP3hxuoi0fJwUYFLphuoCBUSb+/z/c9gExbNZevCKFBN7n/GnQTq
-         a9zmQwTtUhpfRTdXiDmOXQQm7FOuDkV5icjZzZtMF+hJCffBBWJ/BD1nVtQjnVTF4gai
-         VufWbaBcz16GG939l1LVhbu3hBHnzcMAwr7RP71ZVN6Qn26dZhk8Wlmnyd5Q4Bp9QJLn
-         JV2g==
+        b=AMIFjpigCtR4M/kIWYy6SxOdocRcoEBKCqHdysHRhgLqCMICpwguoqbx59BWkqXxRV
+         oB4d2bs69cckHpkWDrskK4CxCwsf7uZFxmBlM7I6fZGb0nhr4qBLZ5U1x+Yx/qlYC6qS
+         TsH2wnXghvfpIPIrfWZsVRPpXIJawHiZULrv53nTqtPVFVbUhFJh9cQspPuB60rRPyRg
+         zOOiKafK4pWrqhQrDSqUuf43leNcUHyW5C3yxgqhrvaLIaLYCtIIVpZxXnpy0/iWdTPn
+         jo+BaiFR8lSDxd0B9hmzTSRzrN/R7vb4jTtyDxMpzey/na9YGWHNYdivvYySoxUo51vA
+         9l/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:to:from;
-        bh=+W8KZCABEScPZt7qL/6qGOicSs3dVFygt1gXRSPRKQs=;
-        b=bIvSDucCe1zP5FobWYU4h+6zFfmJRId3sClbc19vLQs9fHnxD7Az/dHvGq8J5PMNmx
-         fOqfXzV4MyK+AyhW2qQ8PhQpzqnIyyyAF7U72pOLXHsu3RQCvY5MeTa+ks6lsKvtfa6j
-         BrdLYEaEau3xx9Gaf04XRgjTE7/adK8qU5Uww04pWQh6vuGIz9cn1LcWjT5CeaLUtPoC
-         Xak2sE+Xv0XxHkdv/OT6bjLLWBhUvfMjRX+UJO3tnqWlHtgpQuLWDoKutn57EcpNy0rm
-         HOVpCtjPSwV0Fw5rMxbvlxnVj5lXVporcRo+CcRo+DCsvOKGD8NoH8FVZLZpvIxzFJi/
-         9pLA==
+        bh=uDkjJTv9HsFC+ExgPkmpdin4Ys/B0jcGALyA7zyALa0=;
+        b=OA5He59HUk2DAoN5JK25QS3Z16+4f2HGG3YD5rqgG9/rHVn0+J+N5YrpoCZK/feSsE
+         sS8fpkaqGYydR6+gsX6YJ5tgi7mq4xMzzMrJkuMRuVkAP2EKaSmCyVLHYk4T8oxsuyLJ
+         4KgqfXf+MsTxw2j4qaJu/1E61HkLubShdrXKsMMbeovfja/jWNa/iO+Dg/DRwSpREjIw
+         YC4CYcv9XY/QlpRWiuBMMmrILIGpWrvqOvzfVl3OAnssBnnViNH9kuFA5E0wI9EgDG9a
+         q6OgCfNf5aF6KGf6ll1fE2Ah5Y0F1+poDbkGFMOApH53pQtAZcSLXQbFTjCSA/q79b+J
+         OFQw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.44;
-        Thu, 08 Nov 2018 02:32:45 -0800 (PST)
+        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.46;
+        Thu, 08 Nov 2018 02:32:46 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727019AbeKHUH1 (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 8 Nov 2018 15:07:27 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:38270 "EHLO huawei.com"
+        id S1727155AbeKHUHe (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Thu, 8 Nov 2018 15:07:34 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:14199 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726252AbeKHUH1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 8 Nov 2018 15:07:27 -0500
+        id S1727064AbeKHUHd (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 8 Nov 2018 15:07:33 -0500
 Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 22BA2913DE1EA;
-        Thu,  8 Nov 2018 18:32:36 +0800 (CST)
+        by Forcepoint Email with ESMTP id 7516DD0562E21;
+        Thu,  8 Nov 2018 18:32:40 +0800 (CST)
 Received: from ros.huawei.com (10.143.28.118) by
  DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.408.0; Thu, 8 Nov 2018 18:32:28 +0800
+ 14.3.408.0; Thu, 8 Nov 2018 18:32:32 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <peter.maydell@linaro.org>, <lersek@redhat.com>,
@@ -52,9 +52,9 @@ To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
         <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
         <gengdongjiu@huawei.com>
-Subject: [PATCH RESEND v15 01/10] ACPI: add some GHES structures and macros definition
-Date:   Thu, 8 Nov 2018 02:29:40 -0800
-Message-ID: <1541672989-15967-2-git-send-email-gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v15 06/10] docs: APEI GHES generation and CPER record description
+Date:   Thu, 8 Nov 2018 02:29:45 -0800
+Message-ID: <1541672989-15967-7-git-send-email-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
 References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
@@ -66,101 +66,120 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: tdxyDXRK9Z58
+X-TUID: LybEwnOUAKSq
 
-Add Generic Error Status Block structures and some macros
-definitions, which is referred to the ACPI 4.0 or ACPI 6.2. The
-HEST table generation and CPER record will use them.
+Add APEI/GHES detailed design document
 
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 ---
-Change since v14:
-Thanks Igor's review and comments
-1. Update spec comment for AcpiHestNotifyType
-2. drop () for the macro definition
-
-Change since v13:
-1. Clean the new added structures and macros definition
-
-Change since v12:
-1. Address Igor's comments to to get rid of most structures and use
-build_append_int_noprefix() API to compose whole error status block
-and APEI table in [1]
-
-[1]: https://lkml.org/lkml/2017/8/29/187
+Address Igor's comments to add a doc
 ---
- include/hw/acpi/acpi-defs.h | 52 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ docs/specs/acpi_hest_ghes.txt | 97 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 97 insertions(+)
+ create mode 100644 docs/specs/acpi_hest_ghes.txt
 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index af8e023..f85cf98 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -226,6 +226,25 @@ typedef struct AcpiMultipleApicTable AcpiMultipleApicTable;
- #define ACPI_APIC_RESERVED              16   /* 16 and greater are reserved */
- 
- /*
-+ * Values for Hardware Error Notification Type field
-+ */
-+enum AcpiHestNotifyType {
-+    ACPI_HEST_NOTIFY_POLLED = 0,
-+    ACPI_HEST_NOTIFY_EXTERNAL = 1,
-+    ACPI_HEST_NOTIFY_LOCAL = 2,
-+    ACPI_HEST_NOTIFY_SCI = 3,
-+    ACPI_HEST_NOTIFY_NMI = 4,
-+    ACPI_HEST_NOTIFY_CMCI = 5,  /* ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_HEST_NOTIFY_MCE = 6,   /* ACPI 5.0: 18.3.2.7, Table 18-290 */
-+    ACPI_HEST_NOTIFY_GPIO = 7,  /* ACPI 6.0: 18.3.2.7, Table 18-332 */
-+    ACPI_HEST_NOTIFY_SEA = 8,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_HEST_NOTIFY_SEI = 9,   /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_HEST_NOTIFY_GSIV = 10, /* ACPI 6.1: 18.3.2.9, Table 18-345 */
-+    ACPI_HEST_NOTIFY_SDEI = 11, /* ACPI 6.2: 18.3.2.9, Table 18-383 */
-+    ACPI_HEST_NOTIFY_RESERVED = 12 /* 12 and greater are reserved */
-+};
+diff --git a/docs/specs/acpi_hest_ghes.txt b/docs/specs/acpi_hest_ghes.txt
+new file mode 100644
+index 0000000..fbfc787
+--- /dev/null
++++ b/docs/specs/acpi_hest_ghes.txt
+@@ -0,0 +1,97 @@
++APEI tables generating and CPER record
++=============================
 +
-+/*
-  * MADT sub-structures (Follow MULTIPLE_APIC_DESCRIPTION_TABLE)
-  */
- #define ACPI_SUB_HEADER_DEF   /* Common ACPI sub-structure header */\
-@@ -402,6 +421,39 @@ struct AcpiSystemResourceAffinityTable {
- } QEMU_PACKED;
- typedef struct AcpiSystemResourceAffinityTable AcpiSystemResourceAffinityTable;
- 
-+/*
-+ * Generic Error Status Block
-+ */
-+struct AcpiGenericErrorStatus {
-+    /* It is a bitmask composed of ACPI_GEBS_xxx macros */
-+    uint32_t block_status;
-+    uint32_t raw_data_offset;
-+    uint32_t raw_data_length;
-+    uint32_t data_length;
-+    uint32_t error_severity;
-+} QEMU_PACKED;
-+typedef struct AcpiGenericErrorStatus AcpiGenericErrorStatus;
++Copyright (C) 2017 HuaWei Corporation.
 +
-+/*
-+ * Masks for block_status flags above
-+ */
-+#define ACPI_GEBS_UNCORRECTABLE         1
++Design Details:
++-------------------
 +
-+/*
-+ * Values for error_severity field above
-+ */
-+enum AcpiGenericErrorSeverity {
-+    ACPI_CPER_SEV_RECOVERABLE,
-+    ACPI_CPER_SEV_FATAL,
-+    ACPI_CPER_SEV_CORRECTED,
-+    ACPI_CPER_SEV_NONE,
-+};
++       etc/acpi/tables                                 etc/hardware_errors
++    ====================                      ==========================================
+++ +--------------------------+            +-----------------------+
++| | HEST                     |            |    address            |            +--------------+
++| +--------------------------+            |    registers          |            | Error Status |
++| | GHES1                    |            | +---------------------+            | Data Block 1 |
++| +--------------------------+ +--------->| |error_block_address1 |----------->| +------------+
++| | .................        | |          | +---------------------+            | |  CPER      |
++| | error_status_address-----+-+ +------->| |error_block_address2 |--------+   | |  CPER      |
++| | .................        |   |        | +---------------------+        |   | |  ....      |
++| | read_ack_register--------+-+ |        | |    ..............   |        |   | |  CPER      |
++| | read_ack_preserve        | | |        +-----------------------+        |   | +------------+
++| | read_ack_write           | | | +----->| |error_block_addressN |------+ |   | Error Status |
+++ +--------------------------+ | | |      | +---------------------+      | |   | Data Block 2 |
++| | GHES2                    | +-+-+----->| |read_ack_register1   |      | +-->| +------------+
+++ +--------------------------+   | |      | +---------------------+      |     | |  CPER      |
++| | .................        |   | | +--->| |read_ack_register2   |      |     | |  CPER      |
++| | error_status_address-----+---+ | |    | +---------------------+      |     | |  ....      |
++| | .................        |     | |    | |  .............      |      |     | |  CPER      |
++| | read_ack_register--------+-----+-+    | +---------------------+      |     +-+------------+
++| | read_ack_preserve        |     |   +->| |read_ack_registerN   |      |     | |..........  |
++| | read_ack_write           |     |   |  | +---------------------+      |     | +------------+
+++ +--------------------------|     |   |                                 |     | Error Status |
++| | ...............          |     |   |                                 |     | Data Block N |
+++ +--------------------------+     |   |                                 +---->| +------------+
++| | GHESN                    |     |   |                                       | |  CPER      |
+++ +--------------------------+     |   |                                       | |  CPER      |
++| | .................        |     |   |                                       | |  ....      |
++| | error_status_address-----+-----+   |                                       | |  CPER      |
++| | .................        |         |                                       +-+------------+
++| | read_ack_register--------+---------+
++| | read_ack_preserve        |
++| | read_ack_write           |
+++ +--------------------------+
 +
-+/*
-+ * Generic Hardware Error Source version 2
-+ */
-+#define ACPI_HEST_SOURCE_GENERIC_ERROR_V2    10
++(1) QEMU generates the ACPI HEST table. This table goes in the current
++    "etc/acpi/tables" fw_cfg blob. Each error source has different
++    notification type.
 +
- #define ACPI_SRAT_PROCESSOR_APIC     0
- #define ACPI_SRAT_MEMORY             1
- #define ACPI_SRAT_PROCESSOR_x2APIC   2
++(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
++    also need to populate this blob. The "etc/hardwre_errors" fw_cfg blob
++    contains one address registers table and one Error Status Data Block
++    table, all of which are pre-allocated.
++
++(3) The address registers table contains N Error Block Address entries
++    and N Read Ack Address entries, the size for each entry is 8-byte.
++    The Error Status Data Block table contains N Error Status Data Block
++    entries, the size for each entry is 4096(0x1000) bytes. The total size
++    for "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
++
++(4) QEMU generates the ACPI linker/loader script for the firmware
++
++(4a) The HEST table is part of "etc/acpi/tables", the firmware already
++    allocates the memory for it, because QEMU already generates an ALLOCATE
++    linker/loader command for it
++
++(4b) QEMU creates another ALLOCATE command for the "etc/hardware_errors"
++    blob. The firmware allocates memory for this blob and downloads it.
++
++(5) QEMU generates N ADD_POINTER commands, which patch address in the
++    "error_status_address" fields of the HEST table with a pointer to the
++    corresponding "address registers" in the downloaded "etc/hardware_errors"
++    blob.
++
++(6) QEMU generates N ADD_POINTER commands, which patch address in the
++    "read_ack_register" fields of the HEST table with a pointer to the
++    corresponding "address registers" in the downloaded "etc/hardware_errors" blob.
++
++(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
++    address in the " error_block_address" fields with a pointer to the
++    respective "Error Status Data Block" in the downloaded "etc/hardware_errors"
++    blob.
++
++(8) QEMU Defines a third and write-only fw_cfg blob which is called
++    "etc/hardware_errors_addr". Through that blob, the firmware can send back
++    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
++    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER commands
++    for the firmware, the firmware will write back the start address of
++    "etc/hardware_errors" blob to fw_cfg file "etc/hardware_errors_addr". Then
++    Qemu will know the Error Status Data Block for every error source. Each of
++    Error Status Data Block has fixed size which is 4096(0x1000).
++
++(9) When QEMU gets SIGBUS from the kernel, QEMU formats the CPER right into
++    guest memory, and then injects whatever interrupt (or assert whatever GPIO line)
++    as a notification which is necessary for notifying the guest.
++
++(10) This notification (in virtual hardware) will be handled by guest kernel,
++    guest APEI driver will read the CPER which is recorded by QEMU and do the
++    recovery.
 -- 
 1.8.3.1

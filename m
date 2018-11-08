@@ -1,88 +1,101 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp367033wrw;
-        Thu, 8 Nov 2018 08:54:41 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fVFH9Uds/K3diesiDeS9+jBSygQaRKEn0wtcGinY7e5gRPzqI0+dNhIDKzfBJfUg4z1bMP
-X-Received: by 2002:ac8:dc5:: with SMTP id t5mr4998251qti.80.1541696081528;
-        Thu, 08 Nov 2018 08:54:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541696081; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp442858wrw;
+        Thu, 8 Nov 2018 09:55:09 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cliiJutiCyZNlaqJX3Po/w/RIzVN5iOQph0LojY7dva6OyTwl4D6pguIs/G1eRwMC3XQBn
+X-Received: by 2002:a0c:c2ce:: with SMTP id c14mr5649896qvi.7.1541699708984;
+        Thu, 08 Nov 2018 09:55:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541699708; cv=none;
         d=google.com; s=arc-20160816;
-        b=VVOAOle641u85ANgQ5XtYSHjzZGy7HLMFlZZe1OiMsT88HLJkyPhWAZVabEXcZbg/k
-         obpIPpyr1QzY7GZMIE662QamRimtZzTXs9MMTpGc6DvXVz8qjfcTua+g8dNL7/NDIVn6
-         g+KeBkkgvCNgal3TqSjTeStC0kplUrY6GMv+gYUhwxvp/ZP3MgzbVwkeActmiaXCHdlq
-         E5eSXRVU/DP8FfVB4k332EHbdWLzU7X2Z0C6aQx678lCcz5O8QsGDDskUoZnjYGioocY
-         W43URJUfZM8wuXMUYXDgh3PSLbUvqCoj3u8EIPW7L+sOY3BJUyNjhaO8k0Mbv3XDp3ig
-         Y7kw==
+        b=A447pA29jWckOgUf6Hm7X3tDZTFqG/EcGFeIVTjoCpdNk/bhkTjOHli+dUDgqUn8hC
+         k0bmq7YTNbGR5NGfk1bewUJIJwvemPI+/ITvXOimFK4UVDHBVcTw+wT3STDS98X7FZ94
+         ce89f43t70YWF6lDJwx3JhMfvb+dwPEP5Gswaq1noW6v/KFJVOIIvmW5JBUBMjpYwUnR
+         rrjzzmxrm7y+PLQ2GQ8SpzyRo9mliu6oVXucgbbFBVnJcbEG9pX23u/05RMsdeJsuzKB
+         abX6hebBdQ+XoRtXLxnlBPRJVI8/ecWVIP10Ohd7kQWZd+h9+LOKFAh83O1xk+QZuXFt
+         M/Kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=Zt9aOO64iPrBbhM5bkwd0h5D6PCLPsom7B766e7D3A8=;
-        b=pqhC70F9uJn0g4sagk0naUQ/5CO99Lyu7EoHWvi8Pn5lkWQ162RHhmTFN4eUeStguU
-         ozFIV+IsLGpgCekt2qjvjGC0FqFzknGpzscjpUYjfLgFqoKy2rIo/hmsvyGMzNVxAxzY
-         1pbkcLxHi+3oi/q5w8TFntGbweDQ3T4y+8EUbEsbhYAe7cjr3XYWJ+KTSCbVqKNjxHU5
-         xQnmf7l3vbRsU4PPCzteXjIU55sPAVYuVAZNDs91zFNCx3GEM2odMOkRqgL09tkqN6CU
-         54+Iz7C1iNGAOxRvM+iTL93WjuzNYVu+/KUPci4Y7fuocVuLAuBA3oQoUdJQPGS+d7Sz
-         ESKQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=6uQuU327VC/BRal1lZ+nVzurXjaVdMxrSfBdC83uyXQ=;
+        b=Y4CP1LQtGQkIF2+x/damfciePAlZ+dZmt0A+eVeJ+KziU3DFV+fPIp/szYRd9WbLCx
+         i+0WWFinRQulUbaqWFXQuG3aOdnph4NsUUMm22MCi2EIph0bwZIUsuxTMTkS9zV82PSY
+         mJtIAnexLuNXUGMIDojDD7BnedTuk1LgsgQX2N/sFqdBsS66u95W0mxeJLAeZjpjcw+F
+         abZuHKsSuETqRnzUW72KHNMIy4ON22u1ONLbKKh9XhwJ8x5GnmaScdDchRAS840dPU1h
+         sm7oXXYj+vX2eg/wjvD7mLk/SOcyQQVMYBqb2H4RnYrT8l6GEcHKLc+ItIoow+/2ItSl
+         kqiw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AdXeHyjb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l61-v6si1467661qte.331.2018.11.08.08.54.41
+        by mx.google.com with ESMTPS id r19si2072114qki.200.2018.11.08.09.55.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Nov 2018 08:54:41 -0800 (PST)
+        Thu, 08 Nov 2018 09:55:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AdXeHyjb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57942 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58327 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKnZp-0002bc-33
-	for alex.bennee@linaro.org; Thu, 08 Nov 2018 11:54:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48656)
+	id 1gKoWK-0001d3-FH
+	for alex.bennee@linaro.org; Thu, 08 Nov 2018 12:55:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gKnZi-0002bV-0K
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 11:54:34 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gKoW8-0001cA-Dt
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 12:54:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gKnZe-0004Xo-Gb
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 11:54:33 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44406)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gKnZa-0004TW-KO; Thu, 08 Nov 2018 11:54:27 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BFDC930820C8;
-	Thu,  8 Nov 2018 16:54:22 +0000 (UTC)
-Received: from localhost (ovpn-116-36.gru2.redhat.com [10.97.116.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BFBA9601A1;
-	Thu,  8 Nov 2018 16:54:18 +0000 (UTC)
-Date: Thu, 8 Nov 2018 14:54:17 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20181108165417.GL12503@habkost.net>
-References: <20181106110548.4209-1-luc.michel@greensocs.com>
-	<20181106110548.4209-2-luc.michel@greensocs.com>
-	<28f0188a-e8fb-ad21-0c1d-9aaa5b81d261@redhat.com>
-	<CAP+75-XPStesboG8yybAaknYHg0k6nxwsihJdEVeHJnOJHNKNQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <CAP+75-XPStesboG8yybAaknYHg0k6nxwsihJdEVeHJnOJHNKNQ@mail.gmail.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Thu, 08 Nov 2018 16:54:23 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 01/16] hw/cpu: introduce CPU
- clusters
+	(envelope-from <richard.henderson@linaro.org>) id 1gKoW4-0008AF-IE
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 12:54:56 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36224)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1gKoW4-00089r-Au
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 12:54:52 -0500
+Received: by mail-wr1-x443.google.com with SMTP id z13-v6so19843972wrs.3
+	for <qemu-arm@nongnu.org>; Thu, 08 Nov 2018 09:54:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references;
+	bh=6uQuU327VC/BRal1lZ+nVzurXjaVdMxrSfBdC83uyXQ=;
+	b=AdXeHyjb4bhTngj2jOmlKAc+dTMxjLHweNLh6SHBSnPE0K3GeEmT3U3xirg7jyd1e/
+	9umS4anC7dFpYyxGLE2d4zVVd+OS/aj2jO//ZoznjvfVngGp2SyF9ux/HAxeZ4DZXxBo
+	DDOyDu+DmeJplsM5Wuhk/URBVkdQMAhYMXx6k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references;
+	bh=6uQuU327VC/BRal1lZ+nVzurXjaVdMxrSfBdC83uyXQ=;
+	b=JB4UNIQNluq8ka5DkKRmT895k/jqrysW7aDai/hWdwDbi+XoQDlsMBUsg2wMioxTuL
+	M6eYQwhmrdzasXSh+YMfrvA6XkR5zfeMRKxcs/gxNBnf8udlqFXeCOMG9mJfjwFMI/Fl
+	X8aBzS5USEd88BwlKvrrrzuO0EZNm4M2N2vjiJXHsqdkhan9i8+jfdbqiqmV5QSWnxtV
+	py6tBDT1kz+Ppqvkw0GitAFe5hMlMG0kFAxAMJMJFvwrB0UfSoFSpVs9oq0p4mL76g6q
+	AxPgVx5xFF5AzB8GPE6Ovs+qIN0yy7cmQOEZMCXBV6SzZelkRaf25AObYR+QNpqd/9c1
+	nSQg==
+X-Gm-Message-State: AGRZ1gKM8IK9pG9P7lPqxDwWstGht1XwQPcEjuN22mPvgwoVXEUa8v2r
+	/b7jarU43fyEWkLRcvkC7wcVhA==
+X-Received: by 2002:adf:fb12:: with SMTP id
+	c18-v6mr5172342wrr.200.1541699691212; 
+	Thu, 08 Nov 2018 09:54:51 -0800 (PST)
+Received: from cloudburst.twiddle.net
+	(70.red-2-141-114.dynamicip.rima-tde.net. [2.141.114.70])
+	by smtp.gmail.com with ESMTPSA id
+	l42-v6sm4411384wre.37.2018.11.08.09.54.50
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 08 Nov 2018 09:54:50 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Thu,  8 Nov 2018 18:52:43 +0100
+Message-Id: <20181108175246.13416-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20181108175246.13416-1-richard.henderson@linaro.org>
+References: <20181108175246.13416-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::443
+Subject: [Qemu-arm] [PATCH v3 2/5] target/arm: Fill in ARMISARegisters for
+ kvm64
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,38 +107,135 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>,
-	Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Luc Michel <luc.michel@greensocs.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HY7ZNZVqT7c0
+X-TUID: ontSsrBJzu/3
 
-On Thu, Nov 08, 2018 at 05:23:14PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> On Thu, Nov 8, 2018 at 5:17 PM Philippe Mathieu-Daud=E9 <philmd@redhat.=
-com> wrote:
-> > On 6/11/18 12:05, Luc Michel wrote:
-> > > This commit adds the cpu-cluster type. It aims at gathering CPUs fr=
-om
-> > > the same cluster in a machine.
-> > >
-> > > For now it only has a `cluster-id` property.
-> > >
-> > > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> > > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> > > ---
-> > >   include/hw/cpu/cluster.h | 38 ++++++++++++++++++++++++++
-> > >   hw/cpu/cluster.c         | 59 +++++++++++++++++++++++++++++++++++=
-+++++
->=20
-> Eduardo are you OK to cover these files in your "Machine core"
-> MAINTAINER's section?
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/kvm64.c | 90 ++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 88 insertions(+), 2 deletions(-)
 
-Yes, no problem.
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 5de8ff0ac5..e1128b94b2 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -443,17 +443,40 @@ static inline void unset_feature(uint64_t *features, int feature)
+     *features &= ~(1ULL << feature);
+ }
+ 
++static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
++{
++    uint64_t ret;
++    struct kvm_one_reg idreg = { .id = id, .addr = (uintptr_t)&ret };
++    int err;
++
++    assert((id & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U64);
++    err = ioctl(fd, KVM_GET_ONE_REG, &idreg);
++    if (err < 0) {
++        return -1;
++    }
++    *pret = ret;
++    return 0;
++}
++
++static int read_sys_reg64(int fd, uint64_t *pret, uint64_t id)
++{
++    struct kvm_one_reg idreg = { .id = id, .addr = (uintptr_t)pret };
++
++    assert((id & KVM_REG_SIZE_MASK) == KVM_REG_SIZE_U64);
++    return ioctl(fd, KVM_GET_ONE_REG, &idreg);
++}
++
+ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+      * fill out the ARMHostCPUClass fields accordingly. To do this
+      * we have to create a scratch VM, create a single CPU inside it,
+      * and then query that CPU for the relevant ID registers.
+-     * For AArch64 we currently don't care about ID registers at
+-     * all; we just want to know the CPU type.
+      */
+     int fdarray[3];
+     uint64_t features = 0;
++    int err;
++
+     /* Old kernels may not know about the PREFERRED_TARGET ioctl: however
+      * we know these will only support creating one kind of guest CPU,
+      * which is its preferred CPU type. Fortunately these old kernels
+@@ -474,8 +497,71 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     ahcf->target = init.target;
+     ahcf->dtb_compatible = "arm,arm-v8";
+ 
++    err = read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr0,
++                         ARM64_SYS_REG(3, 0, 0, 4, 0));
++    if (unlikely(err < 0)) {
++        /*
++         * Before v4.15, the kernel only exposed a limited number of system
++         * registers, not including any of the interesting AArch64 ID regs.
++         * For the most part we could leave these fields as zero with minimal
++         * effect, since this does not affect the values seen by the guest.
++         *
++         * However, it could cause problems down the line for QEMU,
++         * so provide a minimal v8.0 default.
++         *
++         * ??? Could read MIDR and use knowledge from cpu64.c.
++         * ??? Could map a page of memory into our temp guest and
++         *     run the tiniest of hand-crafted kernels to extract
++         *     the values seen by the guest.
++         * ??? Either of these sounds like too much effort just
++         *     to work around running a modern host kernel.
++         */
++        ahcf->isar.id_aa64pfr0 = 0x00000011; /* EL1&0, AArch64 only */
++        err = 0;
++    } else {
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64pfr1,
++                              ARM64_SYS_REG(3, 0, 0, 4, 1));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar0,
++                              ARM64_SYS_REG(3, 0, 0, 6, 0));
++        err |= read_sys_reg64(fdarray[2], &ahcf->isar.id_aa64isar1,
++                              ARM64_SYS_REG(3, 0, 0, 6, 1));
++
++        /*
++         * Note that if AArch32 support is not present in the host,
++         * the AArch32 sysregs are present to be read, but will
++         * return UNKNOWN values.  This is neither better nor worse
++         * than skipping the reads and leaving 0, as we must avoid
++         * considering the values in every case.
++         */
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar0,
++                              ARM64_SYS_REG(3, 0, 0, 2, 0));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar1,
++                              ARM64_SYS_REG(3, 0, 0, 2, 1));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar2,
++                              ARM64_SYS_REG(3, 0, 0, 2, 2));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar3,
++                              ARM64_SYS_REG(3, 0, 0, 2, 3));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar4,
++                              ARM64_SYS_REG(3, 0, 0, 2, 4));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar5,
++                              ARM64_SYS_REG(3, 0, 0, 2, 5));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_isar6,
++                              ARM64_SYS_REG(3, 0, 0, 2, 7));
++
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr0,
++                              ARM64_SYS_REG(3, 0, 0, 3, 0));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr1,
++                              ARM64_SYS_REG(3, 0, 0, 3, 1));
++        err |= read_sys_reg32(fdarray[2], &ahcf->isar.mvfr2,
++                              ARM64_SYS_REG(3, 0, 0, 3, 2));
++    }
++
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+ 
++    if (err < 0) {
++        return false;
++    }
++
+    /* We can assume any KVM supporting CPU is at least a v8
+      * with VFPv4+Neon; this in turn implies most of the other
+      * feature bits.
+-- 
+2.17.2
 
---=20
-Eduardo

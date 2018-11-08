@@ -1,170 +1,305 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2486158wrw;
-        Wed, 7 Nov 2018 11:02:02 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dzROQR4GLh4e+t1P4CQIQwj9jalDo1EsjKVQg1Tftg6CGpNB2cbLPl9mUhP/Z4rtPcjC/0
-X-Received: by 2002:ac8:101a:: with SMTP id z26-v6mr1479903qti.308.1541617322812;
-        Wed, 07 Nov 2018 11:02:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541617322; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210351wrw;
+        Thu, 8 Nov 2018 02:32:45 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f0sTONEUz45CB0DuoVbqHz5phpLVHoDdg0/Q1/S1b2+Bw8FVJCJyk9RJt5AzUFF5i5ptkU
+X-Received: by 2002:a62:5547:: with SMTP id j68-v6mr4023335pfb.166.1541673165760;
+        Thu, 08 Nov 2018 02:32:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541673165; cv=none;
         d=google.com; s=arc-20160816;
-        b=oADUXhrvJldw+foASguZiS6MGDXS202BvFsZwisfHLCrR3s9LaBAAhxu2QyG9+Dfzb
-         r9Ctfm89mIY0kjOMnu6xbUnDQMRSvyGxpvnwAogBZnZKYqVMZvryocWV8JBwe8WXwCbk
-         F87A8/3JvgkRPs1BttZ24DYzUc3oMrVlhlMZ6i8zRjVuZN34mous1G/LcVf8NDyxgIeg
-         Lp0B/LaB98UDx7eLPh4+OyZv5mhtjiHbVqh+SFL3u5+TMtEtugBEilmf5gStWIJO4eI1
-         IZN1CJaxrAQFxfft4bC5weQWbtUho9vdrmG9wo/YbqZnJrt+c7WWmdFJU0DudpEeyGHr
-         dCyA==
+        b=wwLI+aFa/7U+hfLZM/kTwvXe9QgL7LKMB+wi/rVWABadj2ChHiKTOmk/IDcpqtR1ZP
+         zBHavlgFMiYIGMHL7lT7Upf78tUK6E7nCdkBn8Fgvf2XbnlOSuqcoTPodeqe6gfOOVDo
+         OtRX/pUe8m9BIBx+4GRGUiIpdRvpkd4HjWkD696+/avogIuDFwARJ4o6JBOwsKI8nTyB
+         4NeEDovHSPIk140HjsV7aBxVuFv3Q/oWNzCj5ntJTfA4PwEPvUJ4j6qwXvZPHjIepNPt
+         dXebq4z9KU12MhB/QN4C/mzJlBkNchvRKOU5T/qpiyBjz75msQPtvUO2Cf4n3DyBjl0u
+         HKjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=1mjLdyMtaeS79KnjSkBCw5bYW0S6WRZJsUACbsq2iZE=;
-        b=OzzAU80qDdTci8uxdL9+u5oJ7Fn/JiD4Z2UGE3inzcB/vj3rlvz89UgzskpXAmUIKu
-         Mg2rm6rFS1QaoMwahvfPRH+lRiO5a7s5ib30Pe578jm/nA7tgSfoP6FupwA21u1+b0K7
-         DIsRyREm1edOwH7xEQhoTpV1MclimY59rvVDNPgidjvY7Bvf3iRqIaJIyeu5jJNMNzWD
-         MmVKmOUTh4zroYe8+mCsA+CmWMycbRhmh8EFhALwWtDhcxiTA1IVyTsj8pjP9q5po6TA
-         FHUwTrvQE6GJh6heRtrZRzJ1jIPAPtZHWWrwoIgvFiTBNuCniflIS8ROEHd0eoWH+kQa
-         DnOA==
+        h=list-id:precedence:sender:mime-version:message-id:date:subject:to
+         :from;
+        bh=xdwtJVdgy/nNalY0N5RfSb14KL9dYH8ACA1e7dezsYk=;
+        b=rDQQLjbKSGYXyorm9Y5Ayq6VvznlAGloWqY+H4rjzJrMPoL81qbOZmYmz923SkgKvF
+         graXqVGOde4XysqPZuDbiNRubqSMe93qeAQ0MhoPRHSDuw6edXAN/t2iMVRuH8AtK5dh
+         9MvnRqywdsX6VrzGOiVadVmfmS/Vi9CUVyN8/mBVeJO2va81hu3VKSVJwSC2FQXXxxB0
+         ffHxk9MJC265j99Ycy6ZCc/c5Zrqv0cBcG5UtPHSllBV2QjCVbZpgpY+CjVH6mBA6uPl
+         a3KvVnKsDSY7lUHpDfiRVu9Lt///JHTcEX2tXY36EZtfgvOhVw6t5tgLrpUJbOb/M//K
+         +qeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f18si1146566qtg.117.2018.11.07.11.02.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Nov 2018 11:02:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.45;
+        Thu, 08 Nov 2018 02:32:45 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50218 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKT5W-0008CI-Aw
-	for alex.bennee@linaro.org; Wed, 07 Nov 2018 14:02:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49488)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gKT5L-0008BN-07
-	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 14:01:51 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gKT5G-000290-5C
-	for qemu-arm@nongnu.org; Wed, 07 Nov 2018 14:01:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46612)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gKT5D-0001rb-GD; Wed, 07 Nov 2018 14:01:44 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9A89D87642;
-	Wed,  7 Nov 2018 19:01:18 +0000 (UTC)
-Received: from localhost (ovpn-116-36.gru2.redhat.com [10.97.116.36])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ACAFC6015E;
-	Wed,  7 Nov 2018 19:01:15 +0000 (UTC)
-Date: Wed, 7 Nov 2018 17:01:14 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>
-Message-ID: <20181107190114.GD12503@habkost.net>
-References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
-	<20181107123652.23417-14-marcandre.lureau@redhat.com>
-	<CAJ+F1CLWy0xbb-Pc7yUNpHh70GsSTKJ=v+TeoTGJOThYO_xE2g@mail.gmail.com>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727084AbeKHUHd (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Thu, 8 Nov 2018 15:07:33 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:14626 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1726421AbeKHUH1 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 8 Nov 2018 15:07:27 -0500
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id D7430B81E1663;
+        Thu,  8 Nov 2018 18:32:35 +0800 (CST)
+Received: from ros.huawei.com (10.143.28.118) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.408.0; Thu, 8 Nov 2018 18:32:27 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <imammedo@redhat.com>, <mst@redhat.com>,
+        <peter.maydell@linaro.org>, <lersek@redhat.com>,
+        <marc.zyngier@arm.com>, <james.morse@arm.com>,
+        <pbonzini@redhat.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <zhengxiang9@huawei.com>, <ehabkost@redhat.com>,
+        <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v15 00/10] Add ARMv8 RAS virtualization support in QEMU
+Date:   Thu, 8 Nov 2018 02:29:39 -0800
+Message-ID: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <CAJ+F1CLWy0xbb-Pc7yUNpHh70GsSTKJ=v+TeoTGJOThYO_xE2g@mail.gmail.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 07 Nov 2018 19:01:19 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v3 13/14] hw/i386: add
- pc-i440fx-3.2 & pc-q35-3.2
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Corey Minyard <minyard@acm.org>, amit@kernel.org,
-	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	QEMU <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>, hpoussin@reactos.org,
-	Igor Mammedov <imammedo@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
-	Richard Henderson <rth@twiddle.net>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	atar4qemu@gmail.com, stefanb@linux.ibm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wQ1JygxoHDUd
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.118]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: tSYKn0aACXKX
 
-On Wed, Nov 07, 2018 at 07:49:54PM +0400, Marc-Andr=E9 Lureau wrote:
-> Hi
->=20
-> On Wed, Nov 7, 2018 at 4:49 PM Marc-Andr=E9 Lureau
-> <marcandre.lureau@redhat.com> wrote:
-> >
-> > The following patch is going to add compatiblity parameters for
-> > qemu <=3D 3.1.
-> >
->=20
-> I realize this may be good enough for x86 i440/q35 machines, but what
-> about other machines & architectures?
->=20
-> What do we officially support, for migration, across different versions=
-?
->=20
-> It seems we have versionized:
-> - arm "virt" machines
-> - "s390-ccw-virtio" machines
-> - ppc "pseries" machines
-> - x86 piix/q35 machines
->=20
-> At least, I think I should update this patch to add new 3.2 machines fo=
-r those.
+In the ARMv8 platform, the CPU error type are synchronous external
+abort(SEA) and SError Interrupt (SEI). If exception happens to guest,
+sometimes  guest itself do the recovery is better, because host 
+does not know guest's detailed information. For example, if a guest
+user-space application happen exception, host doe not which application
+encounter errors.
 
-This QEMU release seems to be unusual: normally we add features
-that require adding new machine-types long before soft freeze.
-If we didn't add new machine-types until now, this means we
-didn't introduce any guest ABI changes that require them.
+For the ARMv8 SEA/SEI, KVM or host kernel will deliver SIGBUS or
+use other interface to notify user space. After user space gets 
+the notification, it will record the CPER to guest GHES buffer
+for guest and inject a exception or IRQ to KVM.
 
-Now, this is an interesting case: we probably don't _need_ the
-new machine-types, but users might be confused if they don't see
-new machine-types.  Should we add them anyway?
+In the current implement, if the SIGBUS is BUS_MCEERR_AR, we will
+treat it as synchronous exception, and use ARMv8 SEA notification type
+to notify guest after recording CPER for guest;
+
+This series patches are based on Qemu 2.12, which have two parts:
+1. Generate APEI/GHES table and record CPER for guest in runtime.
+2. Handle the SIGBUS signal, record the CPER and fill into guest memory,
+   then according to SIGBUS type(BUS_MCEERR_AR or BUS_MCEERR_AO), using
+   different ACPI notification type to notify guest.
+
+Whole solution was suggested by James(james.morse@arm.com); APEI part solution is suggested by
+Laszlo(lersek@redhat.com). Shown some discussion in [1].
 
 
->=20
-> Is there any way to check compat properties are handled properly for
-> those various machines? It looks like it is generally lacking. For
-> example, if there is a new HW_COMPAT, it would be nice if something
-> failed if a corresponding machine hasn't been added.
->=20
-> It also looks like there is a bit of code duplication and a bit too
-> much macros :) unfortunately, I don't yet have a good idea how to
-> improve things...
+This series patches have already tested on ARM64 platform with RAS feature enabled:
+Show the APEI part verification result in [2]
+Show the BUS_MCEERR_AR SIGBUS handling verification result in [3]
 
-I dream with the day all this compatibility data will be treated
-like what it is: just data.  The ugly macro trickery needs to go
-away eventually, but this requires making the QOM/machine-type
-APIs more practical.
+---
+Change since v14:
+1. Remove the BUS_MCEERR_AO handling logic because this asynchronous signal was masked by main thread 
+2. Address some Igor Mammedov's comments(ACPI part)
+   1) change the comments for the enum AcpiHestNotifyType definition and remove ditto in patch 1
+   2) change some patch commit messages and separate "APEI GHES table generation" patch to more patches.
+3. Address some peter's comments(arm64 Synchronous External Abort injection)
+   1) change some code notes
+   2) using arm_current_el() for current EL
+   2) use the helper functions for those (syn_data_abort_*).
 
-Removing very old machine-types will probably make this task
-easier, because they are the main source of compatibility code
-that is not represented as <driver.property=3Dvalue> tuples (grep
-for "static void pc_compat_" and you'll see them).
+Change since v13:
+1. Move the patches that set guest ESR and inject virtual SError out of this series
+2. Clean and optimize the APEI part patches 
+3. Update the commit messages and add some comments for the code
 
---=20
-Eduardo
+Change since v12:
+1. Address Paolo's comments to move HWPoisonPage definition to accel/kvm/kvm-all.c
+2. Only call kvm_cpu_synchronize_state() when get the BUS_MCEERR_AR signal
+3. Only add and enable GPIO-Signal and ARMv8 SEA two hardware error sources
+4. Address Michael's comments to not sync SPDX from Linux kernel header file 
+
+Change since v11:
+Address James's comments(james.morse@arm.com)
+1. Check whether KVM has the capability to to set ESR instead of detecting host CPU RAS capability
+2. For SIGBUS_MCEERR_AR SIGBUS, use Synchronous-External-Abort(SEA) notification type
+   for SIGBUS_MCEERR_AO SIGBUS, use GPIO-Signal notification
+
+
+Address Shannon's comments(for ACPI part):
+1. Unify hest_ghes.c and hest_ghes.h license declaration
+2. Remove unnecessary including "qmp-commands.h" in hest_ghes.c
+3. Unconditionally add guest APEI table based on James's comments(james.morse@arm.com) 
+4. Add a option to virt machine for migration compatibility. On new virt machine it's on
+   by default while off for old ones, we enabled it since 2.12
+5. Refer to the ACPI spec version which introduces Hardware Error Notification first time
+6. Add ACPI_HEST_NOTIFY_RESERVED notification type
+
+Address Igor's comments(for ACPI part):
+1. Add doc patch first which will describe how it's supposed to work between QEMU/firmware/guest
+   OS with expected flows.
+2. Move APEI diagrams into doc/spec patch
+3. Remove redundant g_malloc in ghes_record_cper()
+4. Use build_append_int_noprefix() API to compose whole error status block and whole APEI table, 
+   and try to get rid of most structures in patch 1, as they will be left unused after that
+5. Reuse something like https://github.com/imammedo/qemu/commit/3d2fd6d13a3ea298d2ee814835495ce6241d085c
+   to build GAS
+6. Remove much offsetof() in the function
+7. Build independent tables first and only then build dependent tables passing to it pointers
+   to previously build table if necessary.
+8. Redefine macro GHES_ACPI_HEST_NOTIFY_RESERVED to ACPI_HEST_ERROR_SOURCE_COUNT to avoid confusion
+
+
+Address Peter Maydell's comments
+1. linux-headers is done as a patch of their own created using scripts/update-linux-headers.sh run against a
+   mainline kernel tree 
+2. Tested whether this patchset builds OK on aarch32  
+3. Abstract Hwpoison page adding code  out properly into a cpu-independent source file from target/i386/kvm.c,
+   such as kvm-all.c
+4. Add doc-comment formatted documentation comment for new globally-visible function prototype in a header
+
+---
+[1]:
+https://lkml.org/lkml/2017/2/27/246
+https://patchwork.kernel.org/patch/9633105/
+https://patchwork.kernel.org/patch/9925227/
+
+[2]:
+Note: the UEFI(QEMU_EFI.fd) is needed if guest want to use ACPI table.
+
+After guest boot up, dump the APEI table, then can see the initialized table
+(1) # iasl -p ./HEST -d /sys/firmware/acpi/tables/HEST
+(2) # cat HEST.dsl
+    /*
+     * Intel ACPI Component Architecture
+     * AML/ASL+ Disassembler version 20170728 (64-bit version)
+     * Copyright (c) 2000 - 2017 Intel Corporation
+     *
+     * Disassembly of /sys/firmware/acpi/tables/HEST, Mon Sep  5 07:59:17 2016
+     *
+     * ACPI Data Table [HEST]
+     *
+     * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue
+     */
+
+    ..................................................................................
+    [308h 0776   2]                Subtable Type : 000A [Generic Hardware Error Source V2]
+    [30Ah 0778   2]                    Source Id : 0001
+    [30Ch 0780   2]            Related Source Id : FFFF
+    [30Eh 0782   1]                     Reserved : 00
+    [30Fh 0783   1]                      Enabled : 01
+    [310h 0784   4]       Records To Preallocate : 00000001
+    [314h 0788   4]      Max Sections Per Record : 00000001
+    [318h 0792   4]          Max Raw Data Length : 00001000
+
+    [31Ch 0796  12]         Error Status Address : [Generic Address Structure]
+    [31Ch 0796   1]                     Space ID : 00 [SystemMemory]
+    [31Dh 0797   1]                    Bit Width : 40
+    [31Eh 0798   1]                   Bit Offset : 00
+    [31Fh 0799   1]         Encoded Access Width : 04 [QWord Access:64]
+    [320h 0800   8]                      Address : 00000000785D0040
+
+    [328h 0808  28]                       Notify : [Hardware Error Notification Structure]
+    [328h 0808   1]                  Notify Type : 08 [SEA]
+    [329h 0809   1]                Notify Length : 1C
+    [32Ah 0810   2]   Configuration Write Enable : 0000
+    [32Ch 0812   4]                 PollInterval : 00000000
+    [330h 0816   4]                       Vector : 00000000
+    [334h 0820   4]      Polling Threshold Value : 00000000
+    [338h 0824   4]     Polling Threshold Window : 00000000
+    [33Ch 0828   4]        Error Threshold Value : 00000000
+    [340h 0832   4]       Error Threshold Window : 00000000
+
+    [344h 0836   4]    Error Status Block Length : 00001000
+    [348h 0840  12]            Read Ack Register : [Generic Address Structure]
+    [348h 0840   1]                     Space ID : 00 [SystemMemory]
+    [349h 0841   1]                    Bit Width : 40
+    [34Ah 0842   1]                   Bit Offset : 00
+    [34Bh 0843   1]         Encoded Access Width : 04 [QWord Access:64]
+    [34Ch 0844   8]                      Address : 00000000785D0098
+
+    [354h 0852   8]            Read Ack Preserve : 00000000FFFFFFFE
+    [35Ch 0860   8]               Read Ack Write : 0000000000000001
+
+    .....................................................................................
+
+(3) After a synchronous external abort(SEA) happen, Qemu receive a SIGBUS and 
+    filled the CPER into guest GHES memory.  For example, according to above table,
+    the address that contains the physical address of a block of memory that holds
+    the error status data for this abort is 0x00000000785D0040
+(4) the address for SEA notification error source is 0x785d80b0
+    (qemu) xp /1 0x00000000785D0040
+    00000000785d0040: 0x785d80b0
+
+(5) check the content of generic error status block and generic error data entry
+    (qemu) xp /100x 0x785d80b0
+    00000000785d80b0: 0x00000001 0x00000000 0x00000000 0x00000098
+    00000000785d80c0: 0x00000000 0xa5bc1114 0x4ede6f64 0x833e63b8
+    00000000785d80d0: 0xb1837ced 0x00000000 0x00000300 0x00000050
+    00000000785d80e0: 0x00000000 0x00000000 0x00000000 0x00000000
+    00000000785d80f0: 0x00000000 0x00000000 0x00000000 0x00000000
+    00000000785d8100: 0x00000000 0x00000000 0x00000000 0x00004002
+(6) check the OSPM's ACK value(for example SEA)
+    /* Before OSPM acknowledges the error, check the ACK value */
+    (qemu) xp /1 0x00000000785D0098
+    00000000785d00f0: 0x00000000
+
+    /* After OSPM acknowledges the error, check the ACK value, it change to 1 from 0 */
+    (qemu) xp /1 0x00000000785D0098
+    00000000785d00f0: 0x00000001
+
+[3]: KVM deliver "BUS_MCEERR_AR" to Qemu, Qemu record the guest CPER and inject
+    synchronous external abort to notify guest, then guest do the recovery.
+
+[ 1552.516170] Synchronous External Abort: synchronous external abort (0x92000410) at 0x000000003751c6b4
+[ 1553.074073] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 8
+[ 1553.081654] {1}[Hardware Error]: event severity: recoverable
+[ 1554.034191] {1}[Hardware Error]:  Error 0, type: recoverable
+[ 1554.037934] {1}[Hardware Error]:   section_type: memory error
+[ 1554.513261] {1}[Hardware Error]:   physical_address: 0x0000000040fa6000
+[ 1554.513944] {1}[Hardware Error]:   error_type: 0, unknown
+[ 1555.041451] Memory failure: 0x40fa6: Killing mca-recover:1296 due to hardware memory corruption
+[ 1555.373116] Memory failure: 0x40fa6: recovery action for dirty LRU page: Recovered
+
+Dongjiu Geng (10):
+  ACPI: add some GHES structures and macros definition
+  acpi: add build_append_ghes_notify() helper for Hardware Error
+    Notification
+  acpi: add build_append_ghes_generic_data() helper for Generic Error
+    Data Entry
+  acpi: add build_append_ghes_generic_status() helper for Generic Error
+    Status Block
+  ACPI: Add APEI GHES table generation and CPER record support
+  docs: APEI GHES generation and CPER record description
+  KVM: Move related hwpoison page functions to accel/kvm/ folder
+  target-arm: kvm64: inject synchronous External Abort
+  hw/arm/virt: Add RAS platform version for migration
+  target-arm: kvm64: handle SIGBUS signal from kernel or KVM
+
+ accel/kvm/kvm-all.c             |  33 ++++
+ default-configs/arm-softmmu.mak |   1 +
+ docs/specs/acpi_hest_ghes.txt   |  97 ++++++++++++
+ hw/acpi/Makefile.objs           |   1 +
+ hw/acpi/acpi_ghes.c             | 335 ++++++++++++++++++++++++++++++++++++++++
+ hw/acpi/aml-build.c             |  70 +++++++++
+ hw/arm/virt-acpi-build.c        |  12 ++
+ hw/arm/virt.c                   |   4 +
+ include/exec/ram_addr.h         |   5 +
+ include/hw/acpi/acpi-defs.h     |  52 +++++++
+ include/hw/acpi/acpi_ghes.h     |  86 +++++++++++
+ include/hw/acpi/aml-build.h     |  21 +++
+ include/hw/arm/virt.h           |   1 +
+ include/sysemu/kvm.h            |   2 +-
+ target/arm/cpu.h                |   2 +
+ target/arm/helper.c             |  23 +++
+ target/arm/internals.h          |   5 +-
+ target/arm/kvm.c                |   3 +
+ target/arm/kvm64.c              |  73 +++++++++
+ target/arm/op_helper.c          |   2 +-
+ target/i386/kvm.c               |  33 ----
+ 21 files changed, 824 insertions(+), 37 deletions(-)
+ create mode 100644 docs/specs/acpi_hest_ghes.txt
+ create mode 100644 hw/acpi/acpi_ghes.c
+ create mode 100644 include/hw/acpi/acpi_ghes.h
+
+-- 
+1.8.3.1

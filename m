@@ -1,54 +1,46 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaro.local ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id o130-v6sm7213212wmd.11.2018.11.08.08.33.30
+        by smtp.gmail.com with ESMTPSA id k4sm6288158wrx.91.2018.11.08.08.33.31
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 08 Nov 2018 08:33:32 -0800 (PST)
 Received: from zen.linaroharston (localhost [127.0.0.1])
-	by zen.linaro.local (Postfix) with ESMTP id 22F1C3E04A5;
+	by zen.linaro.local (Postfix) with ESMTP id 476673E0593;
 	Thu,  8 Nov 2018 16:33:30 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v2 3/6] target/arm64: kvm debug set target_el when passing exception to guest
-Date: Thu,  8 Nov 2018 16:33:26 +0000
-Message-Id: <20181108163329.19940-4-alex.bennee@linaro.org>
+Subject: [PATCH  v2 5/6] arm: use symbolic MDCR_TDE in arm_debug_target_el
+Date: Thu,  8 Nov 2018 16:33:28 +0000
+Message-Id: <20181108163329.19940-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20181108163329.19940-1-alex.bennee@linaro.org>
 References: <20181108163329.19940-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tdlW6CDmMSPv
+X-TUID: 9bZsgp0VDfYq
 
-When we are debugging the guest all exceptions come our way but might
-be for the guest's own debug exceptions. We use the ->do_interrupt()
-infrastructure to inject the exception into the guest. However, we are
-missing a full setup of the exception structure, causing an assert
-later down the line.
+We already have this symbol defined so lets use it.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
 ---
-v2
-  - tweak commit msg for grammar
----
- target/arm/kvm64.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/cpu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 03b0f78831..bf7824d862 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -1000,6 +1000,7 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
-     cs->exception_index = EXCP_BKPT;
-     env->exception.syndrome = debug_exit->hsr;
-     env->exception.vaddress = debug_exit->far;
-+    env->exception.target_el = 1;
-     qemu_mutex_lock_iothread();
-     cc->do_interrupt(cs);
-     qemu_mutex_unlock_iothread();
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b5eff79f73..1efff21a18 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2743,7 +2743,7 @@ static inline int arm_debug_target_el(CPUARMState *env)
+ 
+     if (arm_feature(env, ARM_FEATURE_EL2) && !secure) {
+         route_to_el2 = env->cp15.hcr_el2 & HCR_TGE ||
+-                       env->cp15.mdcr_el2 & (1 << 8);
++                       env->cp15.mdcr_el2 & MDCR_TDE;
+     }
+ 
+     if (route_to_el2) {
 -- 
 2.17.1

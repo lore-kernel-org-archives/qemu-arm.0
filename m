@@ -1,185 +1,258 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5411180wrt;
-        Mon, 26 Nov 2018 03:33:22 -0800 (PST)
-X-Google-Smtp-Source: AJdET5csRayoYBnq3Cyiy5+jlgBJ4t9ml7rdw15cdbmvgE0xzQ/f1DUBL+OIPRGMvER3cuTUSKO3
-X-Received: by 2002:a81:1b09:: with SMTP id b9-v6mr27789695ywb.248.1543232002342;
-        Mon, 26 Nov 2018 03:33:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543232002; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3199318wrw;
+        Thu, 8 Nov 2018 02:18:49 -0800 (PST)
+X-Google-Smtp-Source: AJdET5c833Dc6EgCqtenw+qEFjZzJt/lb6VBP8d6iCt+EbteCG23Kr9HP8I0jWxQrajl8jhqlVxt
+X-Received: by 2002:a62:8d92:: with SMTP id p18-v6mr4077680pfk.217.1541672329684;
+        Thu, 08 Nov 2018 02:18:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541672329; cv=none;
         d=google.com; s=arc-20160816;
-        b=xPYSD7r++/I+lubIu8Lmb4bXmOR+th08totXj5JFnbn1XKe7LRThAF7cx1ggiivjv4
-         NcztYaDXhgNrVw9t5n64ScLyl5Pzg7brIBWr1DWkqacRVtNa2UnjG84JgPpzrvO/WOX7
-         WC6fvcDBZQ6OD+SGmGgXiKvFH8kYqNvYb5dE7vyz+/3RyjZ2wX3NmrCq/IIs1gAH8fdi
-         yHngbIASkIKoPTlHYXksh753vyWQQtJlTTJ68Ea/5s/ZPaGSgZtrRUBBSfuKODIS8VHn
-         d08LvUyvVJ2Bq3tN0o98pTYSLivLRXnfLzeDyyCAy1zNn6PCGTSRAso4vtbhwv6C7qv2
-         0WJQ==
+        b=EAE89nRekQfzy4oysDCF9Ke2nVxLpaCyBx3BjWtrq7oz9m/vFOaD2j3BVrdRbgOqEa
+         LH4GIF5915E/vZoLFeGXT6e9mz+hg+HkWMyUG7yNWzbMr72VRYjQ9BUj1tE+D5V4p6Pw
+         mmrAMDDE3hHn759cqQjqWfyyQmqrrfxe6hKOKhigTbXYXcm+I+Zal44pJ5w3m+w7d2h3
+         Rg/VFIfpzoC3qobddnEw1B0tHvoYIg3dPJLy6s50Uo5c3CeYJtncO+1jD3fINsg3Jgyq
+         Tss/w3i4UiiQIQ0u9SccsJ4Xo3fz/62QgYvC57lB9NB6BgwRK/MV4vJLXl21jm0MfBsd
+         7MAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=ziBkGp8QdzwSLzLsm2rR/2JebrrVkRXnWdk79tzswGU=;
-        b=CdHMa1Po/5ha1XgULn3fauiZkdn5HHalWxo7pgrQgOzM3OM7t8JEhDFRJJJ6A/8d/1
-         ja77hootW29PtdxMg4+nuUIm9mokFTkuvkwh1gLFaEQHNtio+t6ELET9JW1/CfbosqQ1
-         g49vh3QgbEk3LhyvDr+g/Eoi7UCmjiQ17UexqNazEK6CZDF5PaEfn9VOLg+qjKRqzul6
-         JG9ZZmpnmQouz8xWv3LY4Pqk1lNZsQGLGzCYq5ZmkIFRdnAHkCUSbQ/Cs9OEw/np0ifk
-         Xy5VqyqcKv3TtWxZyANjPIPkzXqEa1pv/WUdohOevrHVO8RkIDP2xWKRicdO5rc7upVp
-         TYqg==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from;
+        bh=dy2bkBZ9d6tCd+8UIkoeQ8b33fxziJLCDkTGG53P2Qo=;
+        b=mq1BIbqQe9B2mpzBiT/ybfquNvpeme8ZnD5/vgwA2y2CCX4krRl9LLCNOPO68lkJ+g
+         +cnbANtIPU5dx/sP8H2ATZaducfFCQMJRldsM1de8kzFPwA5PICw/dX7pmjsPw/JApsX
+         kQIbFoKk2rQ/pDeClhC8CwgFSKwe8VXod7P6mh73NuMKX4XnX2podEr73XXVKdWWcwAQ
+         60NB9mnEbJ/S1VfM0RSDuMoc69ek4XEMgVUc8WZYPgVaAh9XQGF6kKKFoef3+SdC+hY6
+         cFtQ0fUdrpbg1Iaf5Qol/JjxKVqyLLONVCjE3Ot2uls2Mjj5ZU9V1ILe1SwCNbI+Joc7
+         IGWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 64-v6si26340ybs.233.2018.11.26.03.33.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 03:33:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id v26-v6si3400052pge.101.2018.11.08.02.18.49;
+        Thu, 08 Nov 2018 02:18:49 -0800 (PST)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35260 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRF8j-0000DA-M4
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 06:33:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56696)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gRF8X-0000Cm-8A
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 06:33:11 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gRF8U-0001qW-HQ
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 06:33:09 -0500
-Received: from mxhk.zte.com.cn ([63.217.80.70]:20460)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gRF8U-0001lR-4Z; Mon, 26 Nov 2018 06:33:06 -0500
-Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id 341DF34CFD8B3F4EA918;
-	Mon, 26 Nov 2018 19:32:58 +0800 (CST)
-Received: from notes_smtp.zte.com.cn ([10.30.1.239])
-	by mse01.zte.com.cn with ESMTP id wAQBWo9t031644;
-	Mon, 26 Nov 2018 19:32:50 +0800 (GMT-8)
-	(envelope-from peng.hao2@zte.com.cn)
-Received: from localhost.localdomain.localdomain ([10.74.120.59])
-	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
-	with ESMTP id 2018112619325831-13057758 ;
-	Mon, 26 Nov 2018 19:32:58 +0800 
-From: Peng Hao <peng.hao2@zte.com.cn>
-To: peter.maydell@linaro.org, drjones@redhat.com, philmd@redhat.com
-Date: Tue, 27 Nov 2018 03:55:53 +0800
-Message-Id: <1543262162-6351-1-git-send-email-peng.hao2@zte.com.cn>
-X-Mailer: git-send-email 1.8.3.1
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727188AbeKHTxd (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Thu, 8 Nov 2018 14:53:33 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:14620 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727083AbeKHTxd (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 8 Nov 2018 14:53:33 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 3F12F941E61D9;
+        Thu,  8 Nov 2018 18:18:44 +0800 (CST)
+Received: from ros.huawei.com (10.143.28.118) by
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.408.0; Thu, 8 Nov 2018 18:18:37 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <imammedo@redhat.com>, <mst@redhat.com>,
+        <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
+        <mtosatti@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>,
+        <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <gengdongjiu@huawei.com>
+Subject: [PATCH v15 08/10] target-arm: kvm64: inject synchronous External Abort
+Date:   Thu, 8 Nov 2018 02:15:51 -0800
+Message-ID: <1541672153-15529-9-git-send-email-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1541672153-15529-1-git-send-email-gengdongjiu@huawei.com>
+References: <1541672153-15529-1-git-send-email-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
-	8.5.3FP6|November 21, 2013) at 2018-11-26 19:32:58,
-	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
-	2016) at 2018-11-26 19:32:50
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-MAIL: mse01.zte.com.cn wAQBWo9t031644
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 63.217.80.70
-Subject: [Qemu-arm] [PATCH V9 0/9] add pvpanic mmio support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wu6UjRDrNivB
+Content-Type: text/plain
+X-Originating-IP: [10.143.28.118]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: bLUP83JTsnAO
 
-The first patches are simple cleanups:
-     - patch 1 move the pvpanic device with the 'ocmmon objects' so we comp=
-ile
-               it once for the x86/arm/aarch64 archs,
-     - patch 2 simply renames ISA fields/definitions to generic ones.
+Add synchronous external abort injection logic, setup
+exception type and syndrome value. When switch to guest,
+guest will jump to the synchronous external abort vector
+table entry.
 
-     Then instead of add/use the MMIO pvpanic device in the virt machine in=
- an
-     unique patch, I split it in two distinct patches:
-     - patch 3 uses Peng Hao's work, but add the MMIO interface to the exis=
-ting
-        device (no logical change).
-     - patch 4 is Peng Hao's work in the virt machine (no logical change).
-     - patch 5 add pvpanic device in acpi table in virt machine
-     v2 from Peng Hao is:
-     https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03433.html
+The ESR_ELx.DFSC is set to synchronous external abort(0x10),
+and ESR_ELx.FnV is set to not valid(0x1), which will tell
+guest that FAR is not valid and holds an UNKNOWN value.
+These value will be set to KVM register structures through
+KVM_SET_ONE_REG IOCTL.
 
-v3 --> v4
-     patch 1,2 no modification.
-     patch 3, add TYPE=5FPANIC=5FMMIO for distinguishing different bus devi=
-ce,
-              virt + isa=5Fpvpanic will abnormally terminate virtual machin=
-e.
-     patch 4, "pvpanic,mmio" --> "qemu,pvpanic-mmio".
-     patch 5, newly added.
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 
-v4 --> v5
-     patch 1,2 no modification.
-     patch 3 delete PvpanicCommonState structure.
-     patch 4 VIRT=5FPVPANIC=5FMMIO --> VIRT=5FPVPANIC
-             correct VIRT=5FPVPANIC's overlap start address
-     patch 5 no modification.
+Marc is against that KVM inject the synchronous external abort(SEA) in [1],
+so user space how to inject it. The test result that injection SEA to guest by Qemu
+is shown in [2].
 
-v5 --> v6
-     add document.
+[1]: https://lkml.org/lkml/2017/3/2/110
+[2]:
+Taking exception 4 [Data Abort]
+...from EL0 to EL1
+...with ESR 0x24/0x92000410
+...with FAR 0x0
+...with ELR 0x40cf04
+...to EL1 PC 0xffffffc000084c00 PSTATE 0x3c5
+after kvm_inject_arm_sea
+Unhandled fault: synchronous external abort (0x92000410) at 0x0000007fa234c12c
+CPU: 0 PID: 536 Comm: devmem Not tainted 4.1.0+ #20
+Hardware name: linux,dummy-virt (DT)
+task: ffffffc019ab2b00 ti: ffffffc008134000 task.ti: ffffffc008134000
+PC is at 0x40cf04
+LR is at 0x40cdec
+pc : [<000000000040cf04>] lr : [<000000000040cdec>] pstate: 60000000
+sp : 0000007ff7b24130
+x29: 0000007ff7b24260 x28: 0000000000000000
+x27: 00000000000000ad x26: 000000000049c000
+x25: 000000000048904b x24: 000000000049c000
+x23: 0000000040600000 x22: 0000007ff7b243a0
+x21: 0000000000000002 x20: 0000000000000000
+x19: 0000000000000020 x18: 0000000000000000
+x17: 000000000049c6d0 x16: 0000007fa22c85c0
+x15: 0000000000005798 x14: 0000007fa2205f1c
+x13: 0000007fa241ccb0 x12: 0000000000000137
+x11: 0000000000000000 x10: 0000000000000000
+x9 : 0000000000000000 x8 : 00000000000000de
+x7 : 0000000000000000 x6 : 0000000000002000
+x5 : 0000000040600000 x4 : 0000000000000003
+x3 : 0000000000000001 x2 : 0000000000000000
+x1 : 0000000000000000 x0 : 0000007fa2418000
+---
+ target/arm/cpu.h       |  2 ++
+ target/arm/helper.c    | 23 +++++++++++++++++++++++
+ target/arm/internals.h |  5 +++--
+ target/arm/kvm64.c     | 39 +++++++++++++++++++++++++++++++++++++++
+ target/arm/op_helper.c |  2 +-
+ 5 files changed, 68 insertions(+), 3 deletions(-)
 
-v6 --> v7
-     patch 5 modify device name from "PANC" to "PEVT".
-     patch 6 modify document description.
-
-v7 --> v8
-     add configure interface for pvpanic-mmio
-
-v8 --> v9
-     revert "moving structure definition to header file"
-     because of compile error in x86.
-
-the kernel part of the series:
-     https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/char-misc.git/l=
-og/?h=3Dchar-misc-testing
-     misc/pvpanic: remove a redundant comma
-     misc/pvpanic: convert to SPDX license tags
-     misc/pvpanic: change header file sort style
-     misc/pvpanic: remove unnecessary header file
-     misc/pvpanic : break dependency on ACPI
-     misc/pvpanic : grouping ACPI related stuff
-     misc/pvpanic: add support to get pvpanic device info FDT
-     dt-bindings: misc/pvpanic: add document for pvpanic-mmio
-     misc/pvpanic: add MMIO support
-     misc/pvpanic: simplify the code using acpi=5Fdev=5Fresource=5Fio
-     pvpanic: move pvpanic to misc as common driver =20
-
-Philippe Mathieu-Daud=C3=A9 (2):
-  hw/misc/pvpanic: Build the pvpanic device in $(common-obj)
-  hw/misc/pvpanic: Cosmetic renaming
-
-Peng Hao (7):
-  hw/misc/pvpanic: Add the MMIO interface
-  hw/arm/virt: Use the pvpanic device
-  hw/arm/virt: add pvpanic device in virt acpi table
-  hw/misc/pvpanic: add configure query interface
-  hw/misc/pvpanic: preparing for adding configure interface
-  hw/misc/pvpanic: realize the configure interface
-  pvpanic : update pvpanic document
-
- default-configs/arm-softmmu.mak |  1 +
- docs/specs/pvpanic.txt          | 15 ++++++-
- hw/arm/sysbus-fdt.c             |  2 +
- hw/arm/virt-acpi-build.c        | 17 ++++++++
- hw/arm/virt.c                   | 23 ++++++++++-
- hw/misc/Makefile.objs           |  2 +-
- hw/misc/pvpanic.c               | 87 +++++++++++++++++++++++++++++++++----=
-----
- include/hw/arm/virt.h           |  1 +
- include/hw/misc/pvpanic.h       |  6 +++
- 9 files changed, 134 insertions(+), 20 deletions(-)
-
---=20
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b5eff79..502507d 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2331,6 +2331,8 @@ bool write_list_to_cpustate(ARMCPU *cpu);
+  */
+ bool write_cpustate_to_list(ARMCPU *cpu);
+ 
++bool write_part_cpustate_to_list(ARMCPU *cpu, ptrdiff_t fieldoffset);
++
+ #define ARM_CPUID_TI915T      0x54029152
+ #define ARM_CPUID_TI925T      0x54029252
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 9630193..df078ff 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -263,6 +263,29 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
+     return true;
+ }
+ 
++bool write_part_cpustate_to_list(ARMCPU *cpu, ptrdiff_t fieldoffset)
++{
++    const ARMCPRegInfo *ri;
++    uint32_t regidx, i;
++
++    for (i = 0; i < cpu->cpreg_array_len; i++) {
++        regidx = kvm_to_cpreg_id(cpu->cpreg_indexes[i]);
++        ri = get_arm_cp_reginfo(cpu->cp_regs, regidx);
++        if (!ri) {
++            continue;
++        }
++
++        if (ri->type & ARM_CP_NO_RAW) {
++            continue;
++        }
++        if (ri->fieldoffset == fieldoffset) {
++            cpu->cpreg_values[i] = read_raw_cp_reg(&cpu->env, ri);
++            return true;
++        }
++    }
++    return false;
++}
++
+ bool write_cpustate_to_list(ARMCPU *cpu)
+ {
+     /* Write the coprocessor state from cpu->env to the (index,value) list. */
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 6c2bb2d..04ea074 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -415,13 +415,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
+         | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
+ }
+ 
+-static inline uint32_t syn_data_abort_no_iss(int same_el,
++static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
+                                              int ea, int cm, int s1ptw,
+                                              int wnr, int fsc)
+ {
+     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
+            | ARM_EL_IL
+-           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
++           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
++           | (wnr << 6) | fsc;
+ }
+ 
+ static inline uint32_t syn_data_abort_with_iss(int same_el,
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 5de8ff0..0ca2b29 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -594,6 +594,45 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+     return KVM_PUT_RUNTIME_STATE;
+ }
+ 
++/* Inject synchronous external abort */
++static void kvm_inject_arm_sea(CPUState *c)
++{
++    ARMCPU *cpu = ARM_CPU(c);
++    CPUARMState *env = &cpu->env;
++    CPUClass *cc = CPU_GET_CLASS(c);
++    uint32_t esr;
++    int ret;
++
++    /* This exception is synchronous data abort */
++    c->exception_index = EXCP_DATA_ABORT;
++    /* Inject the exception to guest EL1 */
++    env->exception.target_el = 1;
++
++    /* Set the DFSC to synchronous external abort and set FnV to not valid,
++     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
++     */
++
++    /* This exception comes from lower or current exception level. */
++    if (arm_current_el(env) == PSTATE_MODE_EL0t) {
++        esr = syn_data_abort_no_iss(0, 1, 0, 0, 0, 0, 0x10);
++    } else {
++        esr = syn_data_abort_no_iss(1, 1, 0, 0, 0, 0, 0x10);
++    }
++
++    env->exception.syndrome = esr;
++
++    cc->do_interrupt(c);
++    if (kvm_enabled()) {
++        /* write ESR_EL1 from cpustate to list*/
++        ret = write_part_cpustate_to_list(cpu,
++                    offsetof(CPUARMState, cp15.esr_el[1]));
++        if (!ret) {
++            fprintf(stderr, "<%s> failed to set esr_el1\n", __func__);
++            abort();
++        }
++    }
++}
++
+ #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+ 
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 90741f6..3f1d656 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -109,7 +109,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+      * ISV field.
+      */
+     if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
+-        syn = syn_data_abort_no_iss(same_el,
++        syn = syn_data_abort_no_iss(same_el, 0,
+                                     ea, 0, s1ptw, is_write, fsc);
+     } else {
+         /* Fields: IL, ISV, SAS, SSE, SRT, SF and AR come from the template
+-- 
 1.8.3.1
-

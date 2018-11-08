@@ -1,124 +1,142 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210294wrw;
-        Thu, 8 Nov 2018 02:32:40 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ff0Wf3jSFKrWYLkuzQaY298s29MDlpy7HJo8zcY/B74Zk+F5lrN+1HALLSCrGGSMr9ls4h
-X-Received: by 2002:a62:647:: with SMTP id 68-v6mr4166398pfg.42.1541673160729;
-        Thu, 08 Nov 2018 02:32:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541673160; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp146985wrw;
+        Thu, 8 Nov 2018 05:45:21 -0800 (PST)
+X-Google-Smtp-Source: AJdET5exUbZggjnS4feO5HoT51xWqRYN6owbN5PlaMxlxG27qug3w5i+dCfT3HN8Jxos5ZA5aijS
+X-Received: by 2002:a0c:aff9:: with SMTP id t54mr4352697qvc.93.1541684721039;
+        Thu, 08 Nov 2018 05:45:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541684721; cv=none;
         d=google.com; s=arc-20160816;
-        b=xXM0Jn8j/+exi/H4PlpFBCUYE7qAUu8wxumw+15Q+OwYMP5oPqYyI2kN3NcrpuNtJc
-         6p0OK8X+P1FDQ1DDxken+FvxLzDdUd75DKI9BNe0Bbfw227Unsq/TuJHIzBvFZk8uDqu
-         UCa8pLPh4FsY4jLix8nfaBIAzsrISTKdXSN82pN45HJQVccE0P9plvZhE041iuF+yuq0
-         AnJSFzo8sjAZn4teAGUYBkhhip2I/yqDKG6vg2WAa4luFGysLkmQXOQWbS86mDQYcoAj
-         cfXFf2OM4i2l9v6oTxqQ0tGqwMzLwn66wNzVMfQKgoGcWYzMqYoGDAqm6bHqJhzwwUBz
-         0Y8A==
+        b=eM78GO7EkgV/VlBB2mIIbbrq0q9ZTeo9+DUAKUWTS+T4SJ+hjwRIvzPV/178pErNXK
+         OGI+HeiZGb+zcOiXK9QY8z8rzsopzg+VEiAnGhG7e8jiMjdE/QzsFZrd9wF0AUa+Kf0r
+         dRlYuKkwQtPlIu28Ro3SR6dBOznHFMNK/DG/SDyc3opYHDUS2nVaOfQnpp2ymqPGKytp
+         C6J7/rIa06at9stoOpjGjWrgMbbXZRpEFqiYUDQM9vDO/QEDLmyfRj9Pe+SSYilMhIxm
+         G0jptdjL7mOS3DaIyY4L5IRSvFVK/QzQbAXjYgiHycsKJEDpSbpfPz2E0W2YV0rV78v1
+         QC/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from;
-        bh=2WuWaaFP3429exA0umwDiN0bPJXRTHfJmWQr1u3+nfI=;
-        b=TeegxI4EmS0IY9mG5pkfCNWU9mCcq4k9Ec4dNxR81HIp3cYQXoMZXaH0QL/P1fZg3x
-         mLlh9TINbe2D5TC+eQz0Yhv9L7zYFJysob+STy7pIyxNCnHtl/LmpdIWnZSq+8Np1BEN
-         u1tF177QiCqR/Vcz2nukV85SFECkJu+Q06eB4r7zQoKQn2FP8BstslEBDg34jvTGm/E6
-         L7oxog1GZSwPQrjZmSovYYN6+EQmb3zi8Ez/e/da2c8aZQFsmCuuX8ker4Bcyw9CBKvB
-         RcIMna5t3sHG6ASWfnb3eXHCaTTNQ8d6h8u5NTziWRA8r3YnP8oBFGNMHRM5Dj8yZ5Lm
-         /WHA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=5at51GgcraKo2IxwR36ilv2o6GMwgl/OFPqs/WTSnIc=;
+        b=FFifVMaANhBEoY2jG7YAqattrpTlSQeQyhhtcnSpleTTi3dKi/7pTMhN1cT2LPVXaH
+         RSYKCHXZYo2lU1RsWXqDztHI2StfT/RXBZrF6aT4xAkMVqjVHMOEq+F/lgEgTss0Rauj
+         MldxcN7sKU+P6Cq48GkxkFuhH9AUHmn9ou1tCEkU4IhAsa834dcwfljpsa+bTU/LZeID
+         RmY6Aj3GeFC3dgrU4ATqwFGjjEycleWZpkfgyhRqUuZYXXPgO3sV/+ui/0YZkmLScKZT
+         cQOc1DxakRr+TAMJMwfD5lcdIxDwfBOFpoJLfAL7i1NP5AoZhvVkpss+2OxbPcyjMCu/
+         Rdfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.40;
-        Thu, 08 Nov 2018 02:32:40 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=aOKMEQAt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w2si37447qta.292.2018.11.08.05.45.20
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 08 Nov 2018 05:45:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727029AbeKHUH2 (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 8 Nov 2018 15:07:28 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:14625 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726509AbeKHUH1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 8 Nov 2018 15:07:27 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id CE341E0E57B8B;
-        Thu,  8 Nov 2018 18:32:35 +0800 (CST)
-Received: from ros.huawei.com (10.143.28.118) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.408.0; Thu, 8 Nov 2018 18:32:31 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <imammedo@redhat.com>, <mst@redhat.com>,
-        <peter.maydell@linaro.org>, <lersek@redhat.com>,
-        <marc.zyngier@arm.com>, <james.morse@arm.com>,
-        <pbonzini@redhat.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
-        <zhengxiang9@huawei.com>, <ehabkost@redhat.com>,
-        <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <gengdongjiu@huawei.com>
-Subject: [PATCH RESEND v15 04/10] acpi: add build_append_ghes_generic_status() helper for Generic Error Status Block
-Date:   Thu, 8 Nov 2018 02:29:43 -0800
-Message-ID: <1541672989-15967-5-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=aOKMEQAt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56858 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gKkca-0001tx-Da
+	for alex.bennee@linaro.org; Thu, 08 Nov 2018 08:45:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39921)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gKkcN-0001pW-6x
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 08:45:10 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gKkcL-00019Q-FG
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 08:45:07 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:37093)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gKkcL-000198-7Z
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 08:45:05 -0500
+Received: by mail-ot1-x342.google.com with SMTP id 40so17907562oth.4
+	for <qemu-arm@nongnu.org>; Thu, 08 Nov 2018 05:45:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=5at51GgcraKo2IxwR36ilv2o6GMwgl/OFPqs/WTSnIc=;
+	b=aOKMEQAtNlLB330HCFKbgVetePvXSORA1sw34gw44xtaMEUNwFnjWsRuidqB7cjYE8
+	Tmms8LalekLvePRWZ09rxiGK03KfheTxrxWg/ux9wW09Rdy02gM8px3UGHr/gTNj6nSg
+	UghX9WbXItLhtVkSgFc2XCAOLL1N5fH7ydUUw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=5at51GgcraKo2IxwR36ilv2o6GMwgl/OFPqs/WTSnIc=;
+	b=Py9BgZsJtT5wLqBPVMqV6NfH1yp9TLHjuIrpYv/Y7uvt13MzuZIif4HQiWacOMmSoD
+	GWMq5j8XUaIIVpBFQlohok15vPNmB4MeoIivsAOacaVVjJKH0OhbAEmFexBRACa1gmGv
+	wFy8IVvz6ngoMuZCpHvnxFNLOPSAo7q/KpBLiSqxhW29h99RsVOqj+xcrr2a06Kqpybe
+	U0ueafSWrCdzT2K3ZJ4GFOZB+buTRyT3yOPETM39tzQQHQcsYOZAuoSaV1nBPelWUjB/
+	K75s+EnfFImd/Lag/6rvTWdfVSGnlOcq7iBoDySYflWNGZ9JNs4UsGVb9PX2/R2N/O4a
+	dvLg==
+X-Gm-Message-State: AGRZ1gJOjIiPhhLVwXfBFWeRMZRfTj+WTQaEsqPRtO02LyQtZ1pRZaxe
+	qFI4hwML7Gofpcd1ZO7ge+YJgqFf9x8PrAaGNbKi1w==
+X-Received: by 2002:a9d:582e:: with SMTP id r46mr2820930oth.238.1541684704410; 
+	Thu, 08 Nov 2018 05:45:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.143.28.118]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 2q9RUN9NCfRe
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP;
+	Thu, 8 Nov 2018 05:44:43 -0800 (PST)
+In-Reply-To: <1541528230-31817-1-git-send-email-thuth@redhat.com>
+References: <1541528230-31817-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Nov 2018 13:44:43 +0000
+Message-ID: <CAFEAcA9D6uGgppP3o3Jq_DvqWGNkNF8UXgRk_4yWfKS++ExMmg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-arm] [PATCH] MAINTAINERS: Add an entry for the 'collie'
+ machine
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>,
+	qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2tOM3vvfeAEt
 
-It will help to add Generic Error Status Block to ACPI tables
-without using packed C structures and avoid endianness
-issues as API doesn't need explicit conversion.
+On 6 November 2018 at 18:17, Thomas Huth <thuth@redhat.com> wrote:
+> There is no active maintainer, but since Peter is picking up
+> patches via qemu-arm@nongnu.org, I think we could at least use
+> "Odd Fixes" as status here.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  MAINTAINERS | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 0499e11..471cf72 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -592,6 +592,12 @@ F: hw/*/pxa2xx*
+>  F: hw/misc/mst_fpga.c
+>  F: include/hw/arm/pxa.h
+>
+> +Sharp SL-5500 (Collie) PDA
+> +L: qemu-arm@nongnu.org
+> +S: Odd Fixes
+> +F: hw/arm/collie.c
+> +F: hw/arm/strongarm*
+> +
+>  Stellaris
+>  M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
----
- hw/acpi/aml-build.c         | 14 ++++++++++++++
- include/hw/acpi/aml-build.h |  6 ++++++
- 2 files changed, 20 insertions(+)
+Applied to target-arm.next with myself added as an M: contact, thanks.
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 00b166e..5923248 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -296,6 +296,20 @@ void build_append_ghes_notify(GArray *table, const uint8_t type,
-         build_append_int_noprefix(table, error_threshold_window, 4);
- }
- 
-+/* Generic Error Status Block
-+ * ACPI 4.0: 17.3.2.6.1 Generic Error Data
-+ */
-+void build_append_ghes_generic_status(GArray *table, uint32_t block_status,
-+                      uint32_t raw_data_offset, uint32_t raw_data_length,
-+                      uint32_t data_length, uint32_t error_severity)
-+{
-+    build_append_int_noprefix(table, block_status, 4);
-+    build_append_int_noprefix(table, raw_data_offset, 4);
-+    build_append_int_noprefix(table, raw_data_length, 4);
-+    build_append_int_noprefix(table, data_length, 4);
-+    build_append_int_noprefix(table, error_severity, 4);
-+}
-+
- /* Generic Error Data Entry
-  * ACPI 4.0: 17.3.2.6.1 Generic Error Data
-  */
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index 147eb38..657a0d5 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -423,6 +423,12 @@ void build_append_ghes_generic_data(GArray *table, const char *section_type,
-                                     uint32_t error_data_length, uint8_t *fru_id,
-                                     uint8_t *fru_text, uint64_t time_stamp);
- 
-+void
-+build_append_ghes_generic_status(GArray *table, uint32_t block_status,
-+                                 uint32_t raw_data_offset,
-+                                 uint32_t raw_data_length,
-+                                 uint32_t data_length, uint32_t error_severity);
-+
- void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
-                        uint64_t len, int node, MemoryAffinityFlags flags);
- 
--- 
-1.8.3.1
+-- PMM

@@ -1,94 +1,86 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3045791wrw;
-        Wed, 7 Nov 2018 23:04:56 -0800 (PST)
-X-Google-Smtp-Source: AJdET5esOq165i3izHp3CVq90krDSn4ckljvI3Y5ZxsOpvb82HBzmeRF7HWBoQcg+tD1gHtl1nK2
-X-Received: by 2002:a37:b101:: with SMTP id a1-v6mr3065923qkf.222.1541660696161;
-        Wed, 07 Nov 2018 23:04:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541660696; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3141863wrw;
+        Thu, 8 Nov 2018 01:07:00 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cdGc1qFnvzhDWg4gM5gAZuOQtLrDnHoSfnj9mRmnSaSqlFndjdzTM5OijCjD1G6LImRa+4
+X-Received: by 2002:a0c:8286:: with SMTP id i6mr3581810qva.65.1541668020492;
+        Thu, 08 Nov 2018 01:07:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541668020; cv=none;
         d=google.com; s=arc-20160816;
-        b=AFFk+I+p2KQV3tu1vvvJkXWV90FoEvJye78jdOTqFYiNZH2VROFMerRiNAH9NKgQYW
-         ciWdQkMJ9tF/mTsa3g+vk5lhuhMbiCnvSHpav4VjfFpW6Tw8hqpw1x5zshUiy+J8n2VY
-         99botJfRd0OYPMAQaxu/5/Diw10/dA2ZGCynuIDQ3sR7/TXsDghqD0fr4dUh/4bS4Jjp
-         lq8r/LJQVIs7ie8CJqNnuDBuBjzpd5yi/9gUq2lcrTPfJtPhBtvZX9CSYViOqJAWPkhd
-         WOCJj9IsHmz2bz3P1LPQb9EeeshQi5X50Y+vDnye7arADXJ0wKOEZM0aOrS1pMaLvFmo
-         GmGA==
+        b=we2IeWAR3NBhSSAzx1xyvWgJSR5J3DbhmPLbw3y8w7zYCTsVC1Rc2O8XVY55VidQwh
+         7WHpPEYvLmYvIriVNWIe1RnKVsOcXi3r1T1zuwdkzK/ZJ+vJ2fh11aIc2r7bdV+8UTSm
+         bUa66Gm8M+Uggr2rQFkpLxCF5lYU8s9+1eHLhtT8smcgU4KhFgAtFhoiszxmGMorgm8Y
+         xSEBQVvB5nJREg7Q4I2Mm6NY4cEi3Izdug0djOQtNN8uzhxSojmfrJk9q0nLebVKwcei
+         K1zp4UpxOZPvqoET1S271YLOTvjZ4m+3waU6maS0V8wT/m8lAcZotqkmCrve2MTRXvUJ
+         fwWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:to:from;
-        bh=5Q42DlulGdOeFCVCxgGvTDzo9lLFUJxlh7BBJh1hN70=;
-        b=gJGeWiQ346xTSvfeve36VkTXTN/IdMIQC7Eb1alNzTP89KvZjT93JLmrWTwbh/lw/w
-         hTrv9243HNOjyIemneQxw5PQL1V3hAlNYL/2dEYYiJtJI9XvJcT0BC5OVvrrRWWdBIHq
-         RBjdwRatnItkzPJWLcnfgRScy7hK38zA4HuelnZW/ZXdmFUXJbvVFNNeDgrc00L+TAVD
-         /lsjDYRJU0IZvhH3zR955HiIOkEtjbpSyHUtBPX8OyFKz5guLJB4aLkr/pSUSMrmpIws
-         tKApi/J0jnNRoaNc5QqL7EhDPaslCiCXhNoa4kqIhDoUa0DDxtHzgSmqWSjQ+JfayMDW
-         eZcg==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=kXapxHFs7sY/B/muJ/u6Tq57U2lhpX2ML7QF2ziLwQ8=;
+        b=DiVwhhk2yRLw3j6SlmYNH0KMHZD6K+7/zTP+d0sp3bC5ikGVpCs7ZVqYmMXUIX29Si
+         PW2XR14ONdDxqxtsY/zkLw+9KF59AcNeWq+V+6SFzLH7uzkCfMZgw96wqjjVOnGLjNgi
+         N8u4/UJxyBlTJaEhsMtBVOrNcgcScZS9ddC8XHqiJNGGi1gMMLnZp3AERivaewy5e3MR
+         qVBy+Hqhk9FSP6wLCf1tCB2LHJX7UG1U7d5wDqsBt5TvnM4gQr9RoYXuaR/3uZpLTJRS
+         2ONWnktxxxwZgM55z7QWQmRGVVRJK4dT25tH3GEV5uPuRFequPv4Km4XjlKexoutJuBl
+         EU0g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q3si2465847qtd.95.2018.11.07.23.04.56
+        by mx.google.com with ESMTPS id l189-v6si373666qkd.32.2018.11.08.01.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 07 Nov 2018 23:04:56 -0800 (PST)
+        Thu, 08 Nov 2018 01:07:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54698 helo=lists.gnu.org)
+Received: from localhost ([::1]:55153 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKeN5-0002gv-NM
-	for alex.bennee@linaro.org; Thu, 08 Nov 2018 02:04:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43438)
+	id 1gKgHB-0003Jm-MQ
+	for alex.bennee@linaro.org; Thu, 08 Nov 2018 04:06:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46879)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gKeMx-0002gk-RD
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 02:04:48 -0500
+	(envelope-from <drjones@redhat.com>) id 1gKgGx-0003JT-DH
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 04:06:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gKeMu-0000D7-HI
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 02:04:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:58218)
+	(envelope-from <drjones@redhat.com>) id 1gKgGm-0000FJ-7O
+	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 04:06:39 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48358)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1gKeMr-00008Y-87; Thu, 08 Nov 2018 02:04:41 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1gKgGi-00008l-Ti; Thu, 08 Nov 2018 04:06:29 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0D4CF2D7F0;
-	Thu,  8 Nov 2018 07:04:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-117-34.ams2.redhat.com
-	[10.36.117.34])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D3D0183C3;
-	Thu,  8 Nov 2018 07:04:27 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A612211385F2; Thu,  8 Nov 2018 08:04:25 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1541528230-31817-1-git-send-email-thuth@redhat.com>
-	<c0febf9a-f098-112d-9c8d-c320cc66b04a@redhat.com>
-	<12974ebb-09de-c6e9-1dd7-5199a8ae6b05@redhat.com>
-	<CAFEAcA-B74FQgj3COyGZ_SAAvSUA6=OaLdy5--NoAgHgEGZkpg@mail.gmail.com>
-	<87k1louaze.fsf@dusky.pond.sub.org>
-	<4b0e9b3f-5d88-9ef2-d0c5-f241067001d0@redhat.com>
-	<CAFEAcA_N7zeuMGGvUBC6xu-AK2gH0n+aNwJOkhs7yWFx_3DbsQ@mail.gmail.com>
-Date: Thu, 08 Nov 2018 08:04:25 +0100
-In-Reply-To: <CAFEAcA_N7zeuMGGvUBC6xu-AK2gH0n+aNwJOkhs7yWFx_3DbsQ@mail.gmail.com>
-	(Peter Maydell's message of "Wed, 7 Nov 2018 19:42:11 +0000")
-Message-ID: <87in18qccm.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id 571F2312E9DE;
+	Thu,  8 Nov 2018 09:06:23 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4664E5D75F;
+	Thu,  8 Nov 2018 09:06:19 +0000 (UTC)
+Date: Thu, 8 Nov 2018 10:06:16 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Peng Hao <peng.hao2@zte.com.cn>
+Message-ID: <20181108090616.txip6wi3sfwcigvs@kamzik.brq.redhat.com>
+References: <1540663650-106694-1-git-send-email-peng.hao2@zte.com.cn>
+	<1540663650-106694-4-git-send-email-peng.hao2@zte.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <1540663650-106694-4-git-send-email-peng.hao2@zte.com.cn>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 08 Nov 2018 07:04:31 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.40]);
+	Thu, 08 Nov 2018 09:06:23 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] MAINTAINERS: Add an entry for
- the 'collie' machine
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V5 3/5] hw/misc/pvpanic: Add the
+ MMIO interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,65 +92,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>,
-	Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 10+repr+/3zm
+X-TUID: cAPfd1dkyVhR
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Hi Peng,
 
-> On 7 November 2018 at 19:39, Thomas Huth <thuth@redhat.com> wrote:
->> On 2018-11-07 17:08, Markus Armbruster wrote:
->>> Peter Maydell <peter.maydell@linaro.org> writes:
->>>
->>>> On 6 November 2018 at 18:52, Thomas Huth <thuth@redhat.com> wrote:
->>>>> On 2018-11-06 19:49, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>> On 6/11/18 19:17, Thomas Huth wrote:
->>>>>>> There is no active maintainer, but since Peter is picking up
->>>>>>> patches via qemu-arm@nongnu.org, I think we could at least use
->>>>>>> "Odd Fixes" as status here.
->>>>>>
->>>>>> This looks more as "Orphan" to me...
->>>>>
->>>>> I'll leave it up to Peter for the final decision...
->>>>
->>>> I think we're not very consistent[*] in our usage of the various
->>>> statuses in the MAINTAINERS file. I guess "Odd Fixes" makes
->>>> sense in that, well, if you send a patch to this
->>>> code and cc me I'll review it and put it in the tree. (This
->>>> is true of any of the arm boards we have.)
->>>>
->>>> [*] We have one thing tagged Orphan, which is bsd-user/,
->>>> and some things tagged Odd Fixes with no listed maintainer,
->>>> and some things tagged Odd Fixes which are in practice more
->>>> like Orphan (for instance sh4), and we list "fpu/" as
->>>> Odd Fixes despite having given it a pretty thorough
->>>> overhaul very recently, and so on...
->>>>
->>>> If you wanted a mechanizable rule, you could try something
->>>> like "every file which is in status Odd Fixes or better
->>>> must list with M: at least one named individual who has
->>>> submitted a pull request in the last nine months" :-)
->>>
->>> Sounds like an excellent idea to me!
->>
->> Well, for me "odd fixes" means that there is someone around who might
->> pick up the patch and throw it into a PULL request.
+On Sun, Oct 28, 2018 at 02:07:28AM +0800, Peng Hao wrote:
 
-That someone should be listed with M:.
+[missing commit message]
 
->>                                                     "Orphan" means it's
->> mostly in vain to send patches for this subsystem, since there is nobody
->> going to pick up your patch. So for the ARM boards, I'd say that "odd
->> fixes" is a better choice, since Peter still picks up most of the
->> patches via the "L: qemu-arm@nongnu.org" (big thanks for this, by the wa=
-y!).
->
-> I think there should be a named person, though. A list
-> isn't a maintainer (at least not for the big whole
-> subsystem lists we have).
+> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> ---
+>  hw/misc/pvpanic.c         | 81 +++++++++++++++++++++++++++++++++++++--=
+--------
+>  include/hw/misc/pvpanic.h |  1 +
+>  2 files changed, 65 insertions(+), 17 deletions(-)
 
-Agree.
+This patch should also include an update to docs/specs/pvpanic.txt
+
+Thanks,
+drew

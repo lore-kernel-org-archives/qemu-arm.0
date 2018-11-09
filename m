@@ -1,390 +1,293 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp3210394wrw;
-        Thu, 8 Nov 2018 02:32:48 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dA7kvGq9NiFZMzejl1kjRdQexh4lxJeR8T0hWJa9XgBPjdtfA1KZm/S7Zeu20g/2BuUjgu
-X-Received: by 2002:a17:902:a614:: with SMTP id u20-v6mr3993544plq.77.1541673168512;
-        Thu, 08 Nov 2018 02:32:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541673168; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp566909wrw;
+        Fri, 9 Nov 2018 03:30:59 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f2ZV8BbR2BPhhXF+eaKdG/bYRL0enchZ6addTQEf1Hkj9+DJav7U4DWdPtNOv6ulufnYnY
+X-Received: by 2002:a0c:98ca:: with SMTP id g10mr8355455qvd.13.1541763058988;
+        Fri, 09 Nov 2018 03:30:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541763058; cv=none;
         d=google.com; s=arc-20160816;
-        b=hyM9Mf7Ph0KlevGQpswSa8Y3ROYjJWnnNhW+P0lP73gumg9XJiJG2kZQQrTCf++x3q
-         YWGYk1awSeRO1Yqmu8EACrfQTeonHxJww6X4hgH2U5w6aht2uG+sUbanq04vc10B18ct
-         VMwsAa7j30Xlu2cMjTflPujjexh03wlTRs0Y8KC7nbhTfwNlI5mS7tK+lyZj+PnRXKXf
-         Epq+waJzaLVXofhO0vxdaeOFyTekepBAo7Ubm1eO2vSL4c0jBuuU74RTzSX40ihU64QR
-         rjypO72Au3UUvLrX4G01sbBJaLH68lMcWZqKCZhZJ65OR+b+90TCWn3eqEjLJBLAzMz1
-         sJOQ==
+        b=fqwADP0lIFB6Tc7w1ucmJG80peOl5juGhVbQRif3vPPk221C/gsdyHR1Rat6++QZZW
+         FQ+uLctkLGJwRY+ADBUcWjj+ar4U16be0M2OW5a/h5atN7c1CHWVu7ciZu5RFS3E+cYB
+         CUnEbTn+uzgYKvU/wPtPSjCu5umjxJ+2bjSlcVDIz/TGVlD/GLJqjiomLyN3y7FSKSrG
+         9CqMi2CPb1m7+Qucgt2O+HlSKE8iAry78sm9aQs2MmAhgTOA+ak+t1qSbEwh8G5pZtAI
+         +hKf8SAOvFxoqfCV3w7a/QNpBLSu8F15vGiUY6jmAEmoQ46AT2hZ+aWWWODWD6HJDI89
+         a2Tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from;
-        bh=VSJZrBw2ezzkEA77DzFBwtoxtS7DZkS30tFMu5deyX4=;
-        b=AFfWIWF8gOHDUUWdoFFmmhbVSDTwE2Hs9R/pPiCiRh7nRTaSC2IuIC84esRZsG8v9t
-         BEBpnT8gVp4W9/dWHqOKRiUlfPo6Fzv65rSHvCcpRc97Mb9olc9lSAxIyRduoF9lxSpH
-         LWytWnpD/cXizDF/lf2SVibfZTeKdlYzSBrLtVAc1FY3UHKInT7CCqmoUzkFl+PVkzs1
-         3MJ3iaf/zSlK96xVGu1MIb6zEDJKHzOmXQMXyzMqq2plvlTs959mNkKV3vS5DFV3u5Ms
-         7dZ8RywOJs7vP9PDt0xlZ2YM5+f9umLkbXeRsMXDp5r5CqAE0usp5Mkwrj+HjVn6sTB8
-         y17g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=SgyD7wz72TifdoUHL4QAwH4+TwP4WlZmvcinz9JGkXk=;
+        b=weq1+pDQQWtmr+R24YL2jTkJKWr5/xOYDFEn/B7dwdfjFLtHLonHBMVYq2cdRh8hp1
+         lGKMbGhntrZyMas3lxVYP6NK3c5tV74y+qsgzvYGk13BDQ8vHSt4u1d/r4py/YHDY+um
+         icrkCTvPkkdHPo5HoOY27rHLw+eNzoNfdOwjcR4bmkyYTxyElDc+KpgeaX7dfNz5Bcjr
+         bVpEDgrdDr38LwjSKVbGHQwtIO0pJA1pPFqzPqHeAV3ptLApyjrwikBBGk6pfc6N4pQp
+         /8KWRASjgep9c5HFQ795sJkq4sA+ejHz9OXjWImfzbHt624mX8utppW6Obakw/l4Ce73
+         JGQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id a4-v6si4090403pln.67.2018.11.08.02.32.48;
-        Thu, 08 Nov 2018 02:32:48 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id w54si5371662qtk.68.2018.11.09.03.30.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Fri, 09 Nov 2018 03:30:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727136AbeKHUHe (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 8 Nov 2018 15:07:34 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:14635 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1727081AbeKHUHd (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 8 Nov 2018 15:07:33 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 88868F68A33BC;
-        Thu,  8 Nov 2018 18:32:40 +0800 (CST)
-Received: from ros.huawei.com (10.143.28.118) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.408.0; Thu, 8 Nov 2018 18:32:35 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <imammedo@redhat.com>, <mst@redhat.com>,
-        <peter.maydell@linaro.org>, <lersek@redhat.com>,
-        <marc.zyngier@arm.com>, <james.morse@arm.com>,
-        <pbonzini@redhat.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
-        <zhengxiang9@huawei.com>, <ehabkost@redhat.com>,
-        <kvm@vger.kernel.org>, <shannon.zhaosl@gmail.com>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <gengdongjiu@huawei.com>
-Subject: [PATCH RESEND v15 10/10] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
-Date:   Thu, 8 Nov 2018 02:29:49 -0800
-Message-ID: <1541672989-15967-11-git-send-email-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.143.28.118]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: QoFqzEUY2e5H
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33259 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gL506-0006Xu-AH
+	for alex.bennee@linaro.org; Fri, 09 Nov 2018 06:30:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45354)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1gL4zk-0006Ts-9j
+	for qemu-arm@nongnu.org; Fri, 09 Nov 2018 06:30:41 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <eric.auger@redhat.com>) id 1gL4zc-0007ao-6p
+	for qemu-arm@nongnu.org; Fri, 09 Nov 2018 06:30:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59212)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1gL4zZ-00071q-FX; Fri, 09 Nov 2018 06:30:27 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 706CF3084243;
+	Fri,  9 Nov 2018 11:30:17 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-55.ams2.redhat.com [10.36.116.55])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 272945C219;
+	Fri,  9 Nov 2018 11:30:14 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+	jean-philippe.brucker@arm.com
+Date: Fri,  9 Nov 2018 12:29:41 +0100
+Message-Id: <20181109112957.10067-3-eric.auger@redhat.com>
+In-Reply-To: <20181109112957.10067-1-eric.auger@redhat.com>
+References: <20181109112957.10067-1-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Fri, 09 Nov 2018 11:30:17 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v8 02/18] linux-headers: Partial update for
+ virtio-iommu v0.8
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: tn@semihalf.com, kevin.tian@intel.com, bharat.bhushan@nxp.com,
+	peterx@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pOO4vSd0Yg0c
 
-Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-translates the host VA delivered by host to guest PA, then fill this PA
-to guest APEI GHES memory, then notify guest according to the SIGBUS type.
-There are two kinds of SIGBUS that QEMU needs to handle, which are
-BUS_MCEERR_AO and BUS_MCEERR_AR.
+Partial sync against Jean-Philippe's branch:
+git://linux-arm.org/linux-jpb.git virtio-iommu/v0.8
 
-If guest accesses the poisoned memory, it generates Synchronous External
-Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
-to unmapped the affected page from the guest's stage 2, finally return
-to guest.
-
-Guest continues to access PG_hwpoison page, it will trap to KVM as stage2 fault,
-then a SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this
-error into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
-
-Suggested-by: James Morse <james.morse@arm.com>
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
-Address James's comments to record CPER and notify guest for SIGBUS signal handling.
-Shown some discussion in [1].
+ include/standard-headers/linux/virtio_ids.h   |   1 +
+ include/standard-headers/linux/virtio_iommu.h | 159 ++++++++++++++++++
+ linux-headers/linux/virtio_iommu.h            |   1 +
+ 3 files changed, 161 insertions(+)
+ create mode 100644 include/standard-headers/linux/virtio_iommu.h
+ create mode 100644 linux-headers/linux/virtio_iommu.h
 
-[1]:
-https://lkml.org/lkml/2017/2/27/246
-https://lkml.org/lkml/2017/9/14/241
-https://lkml.org/lkml/2017/9/22/499
----
- hw/acpi/acpi_ghes.c         | 164 ++++++++++++++++++++++++++++++++++++++++++++
- include/hw/acpi/acpi_ghes.h |   4 ++
- include/sysemu/kvm.h        |   2 +-
- target/arm/kvm.c            |   3 +
- target/arm/kvm64.c          |  34 +++++++++
- 5 files changed, 206 insertions(+), 1 deletion(-)
-
-diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
-index d03e797..ef83c05 100644
---- a/hw/acpi/acpi_ghes.c
-+++ b/hw/acpi/acpi_ghes.c
-@@ -26,6 +26,87 @@
- #include "sysemu/sysemu.h"
- #include "qemu/error-report.h"
+diff --git a/include/standard-headers/linux/virtio_ids.h b/include/standard-headers/linux/virtio_ids.h
+index 6d5c3b2d4f..cfe47c5d9a 100644
+--- a/include/standard-headers/linux/virtio_ids.h
++++ b/include/standard-headers/linux/virtio_ids.h
+@@ -43,5 +43,6 @@
+ #define VIRTIO_ID_INPUT        18 /* virtio input */
+ #define VIRTIO_ID_VSOCK        19 /* virtio vsock transport */
+ #define VIRTIO_ID_CRYPTO       20 /* virtio crypto */
++#define VIRTIO_ID_IOMMU        23 /* virtio IOMMU */
  
-+/* UEFI 2.6: N.2.5 Memory Error Section */
-+static void build_append_mem_cper(GArray *table, uint64_t error_physical_addr)
-+{
-+    /*
-+     * Memory Error Record
-+     */
-+    build_append_int_noprefix(table,
-+                 (1UL << 14) | /* Type Valid */
-+                 (1UL << 1) /* Physical Address Valid */,
-+                 8);
-+    /* Memory error status information */
-+    build_append_int_noprefix(table, 0, 8);
-+    /* The physical address at which the memory error occurred */
-+    build_append_int_noprefix(table, error_physical_addr, 8);
-+    build_append_int_noprefix(table, 0, 48);
-+    build_append_int_noprefix(table, 0 /* Unknown error */, 1);
-+    build_append_int_noprefix(table, 0, 7);
-+}
+ #endif /* _LINUX_VIRTIO_IDS_H */
+diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/standard-headers/linux/virtio_iommu.h
+new file mode 100644
+index 0000000000..0a40b21ea9
+--- /dev/null
++++ b/include/standard-headers/linux/virtio_iommu.h
+@@ -0,0 +1,159 @@
++/* SPDX-License-Identifier: BSD-3-Clause */
++/*
++ * Virtio-iommu definition v0.8
++ *
++ * Copyright (C) 2018 Arm Ltd.
++ */
++#ifndef _LINUX_VIRTIO_IOMMU_H
++#define _LINUX_VIRTIO_IOMMU_H
 +
-+static int ghes_record_mem_error(uint64_t error_block_address,
-+                                    uint64_t error_physical_addr)
-+{
-+    GArray *block;
-+    uint64_t current_block_length;
-+    uint32_t data_length;
-+    /* Memory section */
-+    char mem_section_id_le[] = {0x14, 0x11, 0xBC, 0xA5, 0x64, 0x6F, 0xDE,
-+                                0x4E, 0xB8, 0x63, 0x3E, 0x83, 0xED, 0x7C,
-+                                0x83, 0xB1};
-+    uint8_t fru_id[16] = {0};
-+    uint8_t fru_text[20] = {0};
++#include "standard-headers/linux/types.h"
 +
-+    block = g_array_new(false, true /* clear */, 1);
++/* Feature bits */
++#define VIRTIO_IOMMU_F_INPUT_RANGE		0
++#define VIRTIO_IOMMU_F_DOMAIN_BITS		1
++#define VIRTIO_IOMMU_F_MAP_UNMAP		2
++#define VIRTIO_IOMMU_F_BYPASS			3
++#define VIRTIO_IOMMU_F_PROBE			4
 +
-+    /* Read the current length in bytes of the generic error data */
-+    cpu_physical_memory_read(error_block_address +
-+        offsetof(AcpiGenericErrorStatus, data_length), &data_length, 4);
++struct virtio_iommu_config {
++	/* Supported page sizes */
++	uint64_t					page_size_mask;
++	/* Supported IOVA range */
++	struct virtio_iommu_range {
++		uint64_t				start;
++		uint64_t				end;
++	} input_range;
++	/* Max domain ID size */
++	uint8_t					domain_bits;
++	uint8_t					padding[3];
++	/* Probe buffer size */
++	uint32_t					probe_size;
++};
 +
-+    /* The current whole length in bytes of the generic error status block */
-+    current_block_length = sizeof(AcpiGenericErrorStatus) + le32_to_cpu(data_length);
++/* Request types */
++#define VIRTIO_IOMMU_T_ATTACH			0x01
++#define VIRTIO_IOMMU_T_DETACH			0x02
++#define VIRTIO_IOMMU_T_MAP			0x03
++#define VIRTIO_IOMMU_T_UNMAP			0x04
++#define VIRTIO_IOMMU_T_PROBE			0x05
 +
-+    /* Add a new generic error data entry*/
-+    data_length += GHES_DATA_LENGTH;
-+    data_length += GHES_CPER_LENGTH;
++/* Status types */
++#define VIRTIO_IOMMU_S_OK			0x00
++#define VIRTIO_IOMMU_S_IOERR			0x01
++#define VIRTIO_IOMMU_S_UNSUPP			0x02
++#define VIRTIO_IOMMU_S_DEVERR			0x03
++#define VIRTIO_IOMMU_S_INVAL			0x04
++#define VIRTIO_IOMMU_S_RANGE			0x05
++#define VIRTIO_IOMMU_S_NOENT			0x06
++#define VIRTIO_IOMMU_S_FAULT			0x07
 +
-+    /* Check whether it will run out of the preallocated memory if adding a new
-+     * generic error data entry
-+     */
-+    if ((data_length + sizeof(AcpiGenericErrorStatus)) > GHES_MAX_RAW_DATA_LENGTH) {
-+        error_report("Record CPER out of boundary!!!");
-+        return GHES_CPER_FAIL;
-+    }
-+    /* Build the new generic error status block header */
-+    build_append_ghes_generic_status(block, cpu_to_le32(ACPI_GEBS_UNCORRECTABLE), 0, 0,
-+        cpu_to_le32(data_length), cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE));
++struct virtio_iommu_req_head {
++	uint8_t					type;
++	uint8_t					reserved[3];
++};
 +
-+    /* Write back above generic error status block header to guest memory */
-+    cpu_physical_memory_write(error_block_address, block->data,
-+                              block->len);
++struct virtio_iommu_req_tail {
++	uint8_t					status;
++	uint8_t					reserved[3];
++};
 +
-+    /* Build the generic error data entries */
++struct virtio_iommu_req_attach {
++	struct virtio_iommu_req_head		head;
++	uint32_t					domain;
++	uint32_t					endpoint;
++	uint8_t					reserved[8];
++	struct virtio_iommu_req_tail		tail;
++};
 +
-+    data_length = block->len;
-+    /* Build the new generic error data entry header */
-+    build_append_ghes_generic_data(block, mem_section_id_le,
-+                    cpu_to_le32(ACPI_CPER_SEV_RECOVERABLE), cpu_to_le32(0x300), 0, 0,
-+                    cpu_to_le32(80)/* the total size of Memory Error Record */, fru_id,
-+                    fru_text, 0);
++struct virtio_iommu_req_detach {
++	struct virtio_iommu_req_head		head;
++	uint32_t					domain;
++	uint32_t					endpoint;
++	uint8_t					reserved[8];
++	struct virtio_iommu_req_tail		tail;
++};
 +
-+    /* Build the memory section CPER */
-+    build_append_mem_cper(block, error_physical_addr);
++#define VIRTIO_IOMMU_MAP_F_READ			(1 << 0)
++#define VIRTIO_IOMMU_MAP_F_WRITE		(1 << 1)
++#define VIRTIO_IOMMU_MAP_F_EXEC			(1 << 2)
++#define VIRTIO_IOMMU_MAP_F_MMIO			(1 << 3)
 +
-+    /* Write back above whole new generic error data entry to guest memory */
-+    cpu_physical_memory_write(error_block_address + current_block_length,
-+                    block->data + data_length, block->len - data_length);
++#define VIRTIO_IOMMU_MAP_F_MASK			(VIRTIO_IOMMU_MAP_F_READ |	\
++						 VIRTIO_IOMMU_MAP_F_WRITE |	\
++						 VIRTIO_IOMMU_MAP_F_EXEC |	\
++						 VIRTIO_IOMMU_MAP_F_MMIO)
 +
-+    g_array_free(block, true);
++struct virtio_iommu_req_map {
++	struct virtio_iommu_req_head		head;
++	uint32_t					domain;
++	uint64_t					virt_start;
++	uint64_t					virt_end;
++	uint64_t					phys_start;
++	uint32_t					flags;
++	struct virtio_iommu_req_tail		tail;
++};
 +
-+    return GHES_CPER_OK;
-+}
++struct virtio_iommu_req_unmap {
++	struct virtio_iommu_req_head		head;
++	uint32_t					domain;
++	uint64_t					virt_start;
++	uint64_t					virt_end;
++	uint8_t					reserved[4];
++	struct virtio_iommu_req_tail		tail;
++};
 +
- /* Build table for the hardware error fw_cfg blob */
- void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker)
- {
-@@ -169,3 +250,86 @@ void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_error)
-     fw_cfg_add_file_callback(s, GHES_DATA_ADDR_FW_CFG_FILE, NULL, NULL, NULL,
-         &ges.ghes_addr_le, sizeof(ges.ghes_addr_le), false);
- }
++#define VIRTIO_IOMMU_PROBE_T_NONE		0
++#define VIRTIO_IOMMU_PROBE_T_RESV_MEM		1
 +
-+bool ghes_record_errors(uint32_t notify, uint64_t physical_address)
-+{
-+    uint64_t error_block_addr, read_ack_register_addr;
-+    int read_ack_register = 0, loop = 0;
-+    uint64_t start_addr = le32_to_cpu(ges.ghes_addr_le);
-+    bool ret = GHES_CPER_FAIL;
-+    const uint8_t error_source_id[] = { 0xff, 0xff, 0xff, 0xff,
-+                                        0xff, 0xff, 0xff, 0, 1};
++#define VIRTIO_IOMMU_PROBE_T_MASK		0xfff
 +
-+    /*
-+     * | +---------------------+ ges.ghes_addr_le
-+     * | |error_block_address0|
-+     * | +---------------------+
-+     * | |error_block_address1|
-+     * | +---------------------+ --+--
-+     * | |    .............    | GHES_ADDRESS_SIZE
-+     * | +---------------------+ --+--
-+     * | |error_block_addressN|
-+     * | +---------------------+
-+     * | | read_ack_register0  |
-+     * | +---------------------+ --+--
-+     * | | read_ack_register1  | GHES_ADDRESS_SIZE
-+     * | +---------------------+ --+--
-+     * | |   .............     |
-+     * | +---------------------+
-+     * | | read_ack_registerN  |
-+     * | +---------------------+ --+--
-+     * | |      CPER           |   |
-+     * | |      ....           | GHES_MAX_RAW_DATA_LENGT
-+     * | |      CPER           |   |
-+     * | +---------------------+ --+--
-+     * | |    ..........       |
-+     * | +---------------------+
-+     * | |      CPER           |
-+     * | |      ....           |
-+     * | |      CPER           |
-+     * | +---------------------+
-+     */
-+    if (physical_address && notify < ACPI_HEST_NOTIFY_RESERVED) {
-+        /* Find and check the source id for this new CPER */
-+        if (error_source_id[notify] != 0xff) {
-+            start_addr += error_source_id[notify] * GHES_ADDRESS_SIZE;
-+        } else {
-+            goto out;
-+        }
++struct virtio_iommu_probe_property {
++	uint16_t					type;
++	uint16_t					length;
++};
 +
-+        cpu_physical_memory_read(start_addr, &error_block_addr,
-+                                    GHES_ADDRESS_SIZE);
++#define VIRTIO_IOMMU_RESV_MEM_T_RESERVED	0
++#define VIRTIO_IOMMU_RESV_MEM_T_MSI		1
 +
-+        read_ack_register_addr = start_addr +
-+                        ACPI_HEST_ERROR_SOURCE_COUNT * GHES_ADDRESS_SIZE;
-+retry:
-+        cpu_physical_memory_read(read_ack_register_addr,
-+                                 &read_ack_register, GHES_ADDRESS_SIZE);
++struct virtio_iommu_probe_resv_mem {
++	struct virtio_iommu_probe_property	head;
++	uint8_t					subtype;
++	uint8_t					reserved[3];
++	uint64_t					start;
++	uint64_t					end;
++};
 +
-+        /* zero means OSPM does not acknowledge the error */
-+        if (!read_ack_register) {
-+            if (loop < 3) {
-+                usleep(100 * 1000);
-+                loop++;
-+                goto retry;
-+            } else {
-+                error_report("Last time OSPM does not acknowledge the error,"
-+                    " record CPER failed this time, set the ack value to"
-+                    " avoid blocking next time CPER record! exit");
-+                read_ack_register = 1;
-+                cpu_physical_memory_write(read_ack_register_addr,
-+                    &read_ack_register, GHES_ADDRESS_SIZE);
-+            }
-+        } else {
-+            if (error_block_addr) {
-+                read_ack_register = 0;
-+                cpu_physical_memory_write(read_ack_register_addr,
-+                    &read_ack_register, GHES_ADDRESS_SIZE);
-+                ret = ghes_record_mem_error(error_block_addr, physical_address);
-+            }
-+        }
-+    }
++struct virtio_iommu_req_probe {
++	struct virtio_iommu_req_head		head;
++	uint32_t					endpoint;
++	uint8_t					reserved[64];
 +
-+out:
-+    return ret;
-+}
-diff --git a/include/hw/acpi/acpi_ghes.h b/include/hw/acpi/acpi_ghes.h
-index 0a7c6c2..95d22ef 100644
---- a/include/hw/acpi/acpi_ghes.h
-+++ b/include/hw/acpi/acpi_ghes.h
-@@ -40,6 +40,9 @@
- #define GHES_CPER_OK                1
- #define GHES_CPER_FAIL              0
- 
-+#define GHES_CPER_OK                1
-+#define GHES_CPER_FAIL              0
++	uint8_t					properties[];
 +
- /* The max size in bytes for one error block */
- #define GHES_MAX_RAW_DATA_LENGTH        0x1000
- /* Now only have GPIO-Signal and ARMv8 SEA notification types error sources
-@@ -79,4 +82,5 @@ void build_apei_hest(GArray *table_data, GArray *hardware_error,
- 
- void build_hardware_error_table(GArray *hardware_errors, BIOSLinker *linker);
- void ghes_add_fw_cfg(FWCfgState *s, GArray *hardware_errors);
-+bool ghes_record_errors(uint32_t notify, uint64_t error_physical_addr);
- #endif
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 97d8d9d..fd07d62 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -377,7 +377,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
--#ifdef TARGET_I386
-+#if defined(TARGET_I386) || defined(TARGET_AARCH64)
- #define KVM_HAVE_MCE_INJECTION 1
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- #endif
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 09a86e2..f22dc4e 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -28,6 +28,7 @@
- #include "exec/address-spaces.h"
- #include "hw/boards.h"
- #include "qemu/log.h"
-+#include "exec/ram_addr.h"
- 
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
-@@ -176,6 +177,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
- 
-     cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
- 
-+    qemu_register_reset(kvm_unpoison_all, NULL);
++	/*
++	 * Tail follows the variable-length properties array. No padding,
++	 * property lengths are all aligned on 8 bytes.
++	 */
++};
 +
-     return 0;
- }
- 
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index 0ca2b29..913e707 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -27,6 +27,9 @@
- #include "kvm_arm.h"
- #include "internals.h"
- #include "hw/arm/arm.h"
-+#include "exec/ram_addr.h"
-+#include "hw/acpi/acpi-defs.h"
-+#include "hw/acpi/acpi_ghes.h"
- 
- static bool have_guest_debug;
- 
-@@ -929,6 +932,37 @@ int kvm_arch_get_registers(CPUState *cs)
-     return ret;
- }
- 
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+{
-+    ram_addr_t ram_addr;
-+    hwaddr paddr;
++/* Fault types */
++#define VIRTIO_IOMMU_FAULT_R_UNKNOWN		0
++#define VIRTIO_IOMMU_FAULT_R_DOMAIN		1
++#define VIRTIO_IOMMU_FAULT_R_MAPPING		2
 +
-+    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-+    if (addr) {
-+        ram_addr = qemu_ram_addr_from_host(addr);
-+        if (ram_addr != RAM_ADDR_INVALID &&
-+            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_hwpoison_page_add(ram_addr);
-+            if (code == BUS_MCEERR_AR) {
-+                kvm_cpu_synchronize_state(c);
-+                if (ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
-+                    kvm_inject_arm_sea(c);
-+                } else {
-+                    fprintf(stderr, "failed to record the error\n");
-+                }
-+            }
-+            return;
-+        }
-+        fprintf(stderr, "Hardware memory error for memory used by "
-+                "QEMU itself instead of guest system!\n");
-+    }
++#define VIRTIO_IOMMU_FAULT_F_READ		(1 << 0)
++#define VIRTIO_IOMMU_FAULT_F_WRITE		(1 << 1)
++#define VIRTIO_IOMMU_FAULT_F_EXEC		(1 << 2)
++#define VIRTIO_IOMMU_FAULT_F_ADDRESS		(1 << 8)
 +
-+    if (code == BUS_MCEERR_AR) {
-+        fprintf(stderr, "Hardware memory error!\n");
-+        exit(1);
-+    }
-+}
++struct virtio_iommu_fault {
++	uint8_t					reason;
++	uint8_t					reserved[3];
++	uint32_t					flags;
++	uint32_t					endpoint;
++	uint8_t					reserved2[4];
++	uint64_t					address;
++};
 +
- /* C6.6.29 BRK instruction */
- static const uint32_t brk_insn = 0xd4200000;
- 
++#endif
+diff --git a/linux-headers/linux/virtio_iommu.h b/linux-headers/linux/virtio_iommu.h
+new file mode 100644
+index 0000000000..2dc4609c16
+--- /dev/null
++++ b/linux-headers/linux/virtio_iommu.h
+@@ -0,0 +1 @@
++#include "standard-headers/linux/virtio_iommu.h"
 -- 
-1.8.3.1
+2.17.2
+

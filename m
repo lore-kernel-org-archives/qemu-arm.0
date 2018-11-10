@@ -1,115 +1,115 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp807880wrw;
-        Sat, 10 Nov 2018 00:14:02 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dTVMLg/E3ZNSx263i0hNc3Whx/E68D/ue27VU8oLEhNISUQHDxacQ7q+YPuchWJ6S5TZQw
-X-Received: by 2002:ac8:43d0:: with SMTP id w16mr11759299qtn.78.1541837642879;
-        Sat, 10 Nov 2018 00:14:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541837642; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp807894wrw;
+        Sat, 10 Nov 2018 00:14:04 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eyEqdI2tvJVD6OwUbzJeR1yc1sLQMvjz5C2rs1XMYBegrRDPuIBiHd8sV8pWPcBjsgNsw2
+X-Received: by 2002:a37:7fc6:: with SMTP id a189mr11284405qkd.12.1541837644588;
+        Sat, 10 Nov 2018 00:14:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541837644; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q7jCaMj3GQlecEsMheRgniZ78So9Hugk3vzQ5vAGpYbgZV90+qpF0+y/SmaK/+wzk/
-         ygOm+Ni2Xh2SYJAJsZAZ4wfYHAAfWOBFjQZ/jn+uuHZQ7Z40vh7TRDNX92P+SatJCp6q
-         KOZy0PY+nSYMqoEwiO1Q1sqEfESG2KNMlDZfWMKalA/D3ZaEfFstDivhAHAWGPUVK2xz
-         5amuwraVi/XXFCsLKcJQsjFmFKKasLrZZuEFkxpKtYvNXrY94qRiyf8K7zv69ZU/6af5
-         vG51/12CH2M1OVs69X5rcNcqrNaPNACg0yPtu4yzWN7lc/HXWqtNV1wpYh4isnyigNBi
-         msAw==
+        b=jpy7ZDuo1QRetTAJj3oEvc/QXc6MUZKlV+YgXu5i94A+0NuRMYZYtdHdQiP2ByYBgN
+         DjdmmNdRtgm8BQXErhuGyqriEzRXp1t/cWo7YgaNIeTrS7hB4oIJSDp7xOh/vwaLSc7z
+         Qy4hVAuUDlsJvQQ5PkPLBjgJq4BAM/bnWd83YPgtSGul0Uuo8TQYCD8js/lDvKCbxqOs
+         9XJ6NhzdPsS+mCOGqBvgLIi096siortqfRsPtAQIEHnF7p82zM7bjWXizStbr2ftV0qh
+         PQKrPYZTJvIuMFenXSiqHAArfcj58y5+FD4xColZV8fSg25AxhVf+NOY4y1Hj2NxUPSn
+         /l6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature:dkim-signature
          :dkim-signature;
-        bh=02RQdFbYjAUFtHRXhyS6PnnA16j9PPsqVektP6D0n7c=;
-        b=NFLieJHYPuymTNhjEg2VeOiVj+aNvQv8v8Jn76YZRMIN6r/cQR0Bu9v4hC8wizqWMt
-         WmxvQe4it6b8VbWRwULEUSXKmcuswct22f9qYu1rLdE70RI1QmQ08RpXGx1+9foYrhtz
-         l+nvxHFBX7E/+WS4jIC379AnXhjO1tlofmIzQZJjrowMCVv17DgSDTTG1QaWzoylEm9O
-         zw0PiUoqTcGQh+I7CeWhxoLQaVTE3hHDPrMyw9IchRL3KjieJDdpL1IAYSzLWjy735au
-         F+sD9/shoYs+pUObyvYdHxCemjHwNfGCX6wpDahGCtzBb+Z1Y1nMfuh3RXJJAu9eCokF
-         LC6A==
+        bh=KCK+v2OmYvpDY+tLuuVSl7zdKAAf1f71la/xEqyqhCI=;
+        b=GG9iJ218SkPk226Uzna4KGWsKvmWu1FJaIgZBV6B+o34pCD3DR0z5eRPGRqNWBL/SO
+         fzG/9Iby8bJY1noweMvh1A3mutG8lU9RhTD++zIzuOwabmdl0yrA9YaX0pbc0B2kz4QX
+         cgM55UfHQkfc831d5n8fvlOz2cPCnwhlgipSV1erf0IflyNyWYYoQWRd76ieMubrk8+w
+         xTGdE/UwHIgYJvFu1Q7WPHO/oCGhPtOceN0Too17GRR6dOwPhJJWC5lWBkROZDaKAgGL
+         qxmm3LomunJhRDyTlMq5goUMqFg7Z7U3mlMY3UMad0GhlhbrmZHgReJLAr1Ioi3lmEkT
+         oo3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=kBRl5ZDX;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CMO0sjKH;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=gyW4Mjcs;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=cdvsjN8z;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Q+zXzKTx;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Q+zXzKTx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g24si7181196qtm.208.2018.11.10.00.14.02
+        by mx.google.com with ESMTPS id 127si956454qkl.122.2018.11.10.00.14.04
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 10 Nov 2018 00:14:02 -0800 (PST)
+        Sat, 10 Nov 2018 00:14:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=kBRl5ZDX;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CMO0sjKH;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=gyW4Mjcs;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=cdvsjN8z;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Q+zXzKTx;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Q+zXzKTx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37473 helo=lists.gnu.org)
+Received: from localhost ([::1]:37474 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gLOP4-0003nA-8O
-	for alex.bennee@linaro.org; Sat, 10 Nov 2018 03:14:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35952)
+	id 1gLOP6-0003oS-14
+	for alex.bennee@linaro.org; Sat, 10 Nov 2018 03:14:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35957)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gLOOm-0003lD-7E
+	(envelope-from <luc.michel@greensocs.com>) id 1gLOOm-0003lI-7O
 	for qemu-arm@nongnu.org; Sat, 10 Nov 2018 03:13:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gLOOZ-0000Ti-Ba
+	(envelope-from <luc.michel@greensocs.com>) id 1gLOOY-0000T0-K0
 	for qemu-arm@nongnu.org; Sat, 10 Nov 2018 03:13:38 -0500
-Received: from greensocs.com ([193.104.36.180]:43679)
+Received: from greensocs.com ([193.104.36.180]:43611)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <luc.michel@greensocs.com>)
-	id 1gLOOY-0000TB-Vc; Sat, 10 Nov 2018 03:13:31 -0500
+	id 1gLOOX-0000QE-Uz; Sat, 10 Nov 2018 03:13:30 -0500
 Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id E08565D19A6;
-	Sat, 10 Nov 2018 09:13:27 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTP id AB330443259;
+	Sat, 10 Nov 2018 09:13:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541837607;
-	bh=JiC+TmMFd9OLB4+WksacmGkhv9++c1guh9aOUkKjcTo=;
+	s=mail; t=1541837603;
+	bh=fPhNMVOgnILrdu8vEVGAW8FkOUJiKmx8HxmopOK4UcM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=kBRl5ZDX/CyglnRFtf7DPe2vBe4uX7hsAonqGiswXHvHxkhJ7KjJkGZ/UfGpUm3tN
-	9iXoo7lu2GZK7NPxZ1sM5w43/0MaEJ5MigOXEjczKVq/c8Q/U98bAZRsZchELgpP9d
-	d+4LTeGspLbBSLlaEtar9WEMLwEiDQ/tGwE7Um7c=
+	b=cdvsjN8zSxF8dRTvJMXjCDpxi9htagfrccCUzGSLDJp/84BU3Sr5Eq2zKBilrtGMC
+	kD4nWGItT5rDzyidm7/LKRCopRZKDMg+Ujic1RjSEU632gQsVe8xDCAOQoh7K1HDgp
+	WfkreXA/a9xu1a2hmSjGci4Eu2xFKX01Evn5Boac=
 X-Virus-Scanned: amavisd-new at greensocs.com
 Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=CMO0sjKH;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=gyW4Mjcs
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Q+zXzKTx;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=Q+zXzKTx
 Received: from greensocs.com ([127.0.0.1])
 	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Mttch_idWQUd; Sat, 10 Nov 2018 09:13:21 +0100 (CET)
+	with ESMTP id sKOD5PWb-YKF; Sat, 10 Nov 2018 09:13:22 +0100 (CET)
 Received: by greensocs.com (Postfix, from userid 998)
-	id 08FA45E2E3; Sat, 10 Nov 2018 09:13:20 +0100 (CET)
+	id 5DDAB6FD81; Sat, 10 Nov 2018 09:13:22 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541837601;
-	bh=JiC+TmMFd9OLB4+WksacmGkhv9++c1guh9aOUkKjcTo=;
+	s=mail; t=1541837602;
+	bh=fPhNMVOgnILrdu8vEVGAW8FkOUJiKmx8HxmopOK4UcM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=CMO0sjKHOzCYWZasLKPTpbj5K4X9t60XwFEhTXsJ4OZPv66J6VEtZ0dQGnKw6E3Vx
-	u0f27VV5ncfmQuWbghf2vmc5PwcNkVj34p9OrlFmSjkenpzh9G2i4NpHRW3xr3lXu3
-	L1OYuGgVg/YjDtu0PeoPZc2eWnEHgi4zCzlg8VRQ=
+	b=Q+zXzKTxf+iXlD+RqbWG6CzpBVh2323to5MV434rD6fwXNTpi5ZxCzvGWj/jUNJcG
+	T6S9LnsPKULfrqLBff5XaAUIyVgFKGOgidhxx1BABT4yfffNA20RC892Ra5DEhlUf4
+	YipkrL59SJ7ERRojS+/614PIPj5WNZ1Ep/wkse+g=
 Received: from michell-laptop.home.lmichel.fr
 	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
 	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 7E5746FD81;
-	Sat, 10 Nov 2018 09:13:20 +0100 (CET)
+	by greensocs.com (Postfix) with ESMTPSA id BCFB26FD86;
+	Sat, 10 Nov 2018 09:13:21 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1541837600;
-	bh=JiC+TmMFd9OLB4+WksacmGkhv9++c1guh9aOUkKjcTo=;
+	s=mail; t=1541837602;
+	bh=fPhNMVOgnILrdu8vEVGAW8FkOUJiKmx8HxmopOK4UcM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=gyW4MjcsM76OkwCYLYonZZ9swsUkCoWF9UyYVte2dWUJovrt1y5al3xbAWVoIO9R0
-	dqJwGoxaUiRy11+w6jzMPfjW5ZqTG5imcgJCoiNpfrt9xuMBJeVp5H845jfNwdi6X2
-	u22fUTCrxNKPCdBSCbrWHkz24DaKCMTzLDGjDsWI=
+	b=Q+zXzKTxf+iXlD+RqbWG6CzpBVh2323to5MV434rD6fwXNTpi5ZxCzvGWj/jUNJcG
+	T6S9LnsPKULfrqLBff5XaAUIyVgFKGOgidhxx1BABT4yfffNA20RC892Ra5DEhlUf4
+	YipkrL59SJ7ERRojS+/614PIPj5WNZ1Ep/wkse+g=
 From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Sat, 10 Nov 2018 09:11:32 +0100
-Message-Id: <20181110081147.4027-2-luc.michel@greensocs.com>
+Date: Sat, 10 Nov 2018 09:11:34 +0100
+Message-Id: <20181110081147.4027-4-luc.michel@greensocs.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181110081147.4027-1-luc.michel@greensocs.com>
 References: <20181110081147.4027-1-luc.michel@greensocs.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 193.104.36.180
-Subject: [Qemu-arm] [PATCH v5 01/16] hw/cpu: introduce CPU clusters
+Subject: [Qemu-arm] [PATCH v5 03/16] gdbstub: add multiprocess support to
+ '?' packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -129,164 +129,140 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BM55JJnhm7YC
+X-TUID: sPtIXbDnCSuF
 
-This commit adds the cpu-cluster type. It aims at gathering CPUs from
-the same cluster in a machine.
+The gdb_get_cpu_pid() function does the PID lookup for the given CPU. It
+checks if the CPU is a direct child of a CPU cluster. If it is, the
+returned PID is the cluster ID plus one (cluster IDs start at 0, GDB
+PIDs at 1). When the CPU is not a child of such a container, the PID of
+the first process is returned.
 
-For now it only has a `cluster-id` property.
+The gdb_fmt_thread_id() function generates the string to be used to ident=
+ify
+a given thread, in a response packet for the peer. This function
+supports generating thread IDs when multiprocess mode is enabled (in the
+form `p<pid>.<tid>').
+
+Use them in the reply to a '?' request.
 
 Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- include/hw/cpu/cluster.h | 38 ++++++++++++++++++++++++++
- hw/cpu/cluster.c         | 59 ++++++++++++++++++++++++++++++++++++++++
- MAINTAINERS              |  2 ++
- hw/cpu/Makefile.objs     |  2 +-
- 4 files changed, 100 insertions(+), 1 deletion(-)
- create mode 100644 include/hw/cpu/cluster.h
- create mode 100644 hw/cpu/cluster.c
+ gdbstub.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 58 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
-new file mode 100644
-index 0000000000..11f50d5f6b
---- /dev/null
-+++ b/include/hw/cpu/cluster.h
-@@ -0,0 +1,38 @@
-+/*
-+ * QEMU CPU cluster
-+ *
-+ * Copyright (c) 2018 GreenSocs SAS
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version 2
-+ * of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see
-+ * <http://www.gnu.org/licenses/gpl-2.0.html>
-+ */
-+#ifndef HW_CPU_CLUSTER_H
-+#define HW_CPU_CLUSTER_H
-+
-+#include "qemu/osdep.h"
-+#include "hw/qdev.h"
-+
-+#define TYPE_CPU_CLUSTER "cpu-cluster"
-+#define CPU_CLUSTER(obj) \
-+    OBJECT_CHECK(CPUClusterState, (obj), TYPE_CPU_CLUSTER)
-+
-+typedef struct CPUClusterState {
-+    /*< private >*/
-+    DeviceState parent_obj;
-+
-+    /*< public >*/
-+    uint32_t cluster_id;
-+} CPUClusterState;
-+
-+#endif
-diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
-new file mode 100644
-index 0000000000..e0ffd76152
---- /dev/null
-+++ b/hw/cpu/cluster.c
-@@ -0,0 +1,59 @@
-+/*
-+ * QEMU CPU cluster
-+ *
-+ * Copyright (c) 2018 GreenSocs SAS
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License
-+ * as published by the Free Software Foundation; either version 2
-+ * of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see
-+ * <http://www.gnu.org/licenses/gpl-2.0.html>
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/cpu/cluster.h"
-+#include "qapi/error.h"
-+#include "qemu/module.h"
-+
-+static void cpu_cluster_init(Object *obj)
-+{
-+    static uint32_t cluster_id_auto_increment;
-+    CPUClusterState *cluster =3D CPU_CLUSTER(obj);
-+
-+    cluster->cluster_id =3D cluster_id_auto_increment++;
-+}
-+
-+static Property cpu_cluster_properties[] =3D {
-+    DEFINE_PROP_UINT32("cluster-id", CPUClusterState, cluster_id, 0),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
-+static void cpu_cluster_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->props =3D cpu_cluster_properties;
-+}
-+
-+static const TypeInfo cpu_cluster_type_info =3D {
-+    .name =3D TYPE_CPU_CLUSTER,
-+    .parent =3D TYPE_DEVICE,
-+    .instance_size =3D sizeof(CPUClusterState),
-+    .instance_init =3D cpu_cluster_init,
-+    .class_init =3D cpu_cluster_class_init,
-+};
-+
-+static void cpu_cluster_register_types(void)
-+{
-+    type_register_static(&cpu_cluster_type_info);
-+}
-+
-+type_init(cpu_cluster_register_types)
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 126fe0be7e..8e20b0e672 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1022,11 +1022,13 @@ Machine core
- M: Eduardo Habkost <ehabkost@redhat.com>
- M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
- S: Supported
- F: hw/core/machine.c
- F: hw/core/null-machine.c
-+F: hw/cpu/cluster.c
- F: include/hw/boards.h
-+F: include/hw/cpu/cluster.h
- T: git git://github.com/ehabkost/qemu.git machine-next
+diff --git a/gdbstub.c b/gdbstub.c
+index 0d70b89598..d26bad4b67 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -638,10 +638,52 @@ static int memtox(char *buf, const char *mem, int l=
+en)
+         }
+     }
+     return p - buf;
+ }
 =20
- Xtensa Machines
- ---------------
- sim
-diff --git a/hw/cpu/Makefile.objs b/hw/cpu/Makefile.objs
-index cd52d20b65..8db9e8a7b3 100644
---- a/hw/cpu/Makefile.objs
-+++ b/hw/cpu/Makefile.objs
-@@ -1,5 +1,5 @@
- obj-$(CONFIG_ARM11MPCORE) +=3D arm11mpcore.o
- obj-$(CONFIG_REALVIEW) +=3D realview_mpcore.o
- obj-$(CONFIG_A9MPCORE) +=3D a9mpcore.o
- obj-$(CONFIG_A15MPCORE) +=3D a15mpcore.o
--common-obj-y +=3D core.o
-+common-obj-y +=3D core.o cluster.o
++static uint32_t gdb_get_cpu_pid(const GDBState *s, CPUState *cpu)
++{
++#ifndef CONFIG_USER_ONLY
++    gchar *path, *name;
++    Object *obj;
++    CPUClusterState *cluster;
++    uint32_t ret;
++
++    path =3D object_get_canonical_path(OBJECT(cpu));
++    name =3D object_get_canonical_path_component(OBJECT(cpu));
++
++    if (path =3D=3D NULL) {
++        ret =3D s->processes[0].pid;
++        goto out;
++    }
++
++    /*
++     * Retrieve the CPU parent path by removing the last '/' and the CPU=
+ name
++     * from the CPU canonical path. */
++    path[strlen(path) - strlen(name) - 1] =3D '\0';
++
++    obj =3D object_resolve_path_type(path, TYPE_CPU_CLUSTER, NULL);
++
++    if (obj =3D=3D NULL) {
++        ret =3D s->processes[0].pid;
++        goto out;
++    }
++
++    cluster =3D CPU_CLUSTER(obj);
++    ret =3D cluster->cluster_id + 1;
++
++out:
++    g_free(name);
++    g_free(path);
++
++    return ret;
++
++#else
++    return s->processes[0].pid;
++#endif
++}
++
+ static const char *get_feature_xml(const char *p, const char **newp,
+                                    CPUClass *cc)
+ {
+     size_t len;
+     int i;
+@@ -907,10 +949,23 @@ static CPUState *find_cpu(uint32_t thread_id)
+     }
+=20
+     return NULL;
+ }
+=20
++static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
++                           char *buf, size_t buf_size)
++{
++    if (s->multiprocess) {
++        snprintf(buf, buf_size, "p%02x.%02x",
++                 gdb_get_cpu_pid(s, cpu), cpu_gdb_index(cpu));
++    } else {
++        snprintf(buf, buf_size, "%02x", cpu_gdb_index(cpu));
++    }
++
++    return buf;
++}
++
+ static int is_query_packet(const char *p, const char *query, char separa=
+tor)
+ {
+     unsigned int query_len =3D strlen(query);
+=20
+     return strncmp(p, query, query_len) =3D=3D 0 &&
+@@ -1018,22 +1073,23 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+     const char *p;
+     uint32_t thread;
+     int ch, reg_size, type, res;
+     uint8_t mem_buf[MAX_PACKET_LENGTH];
+     char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
++    char thread_id[16];
+     uint8_t *registers;
+     target_ulong addr, len;
+=20
+     trace_gdbstub_io_command(line_buf);
+=20
+     p =3D line_buf;
+     ch =3D *p++;
+     switch(ch) {
+     case '?':
+         /* TODO: Make this return the correct value for user-mode.  */
+-        snprintf(buf, sizeof(buf), "T%02xthread:%02x;", GDB_SIGNAL_TRAP,
+-                 cpu_gdb_index(s->c_cpu));
++        snprintf(buf, sizeof(buf), "T%02xthread:%s;", GDB_SIGNAL_TRAP,
++                 gdb_fmt_thread_id(s, s->c_cpu, thread_id, sizeof(thread=
+_id)));
+         put_packet(s, buf);
+         /* Remove all the breakpoints when this query is issued,
+          * because gdb is doing and initial connect and the state
+          * should be cleaned up.
+          */
 --=20
 2.19.1
 

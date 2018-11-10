@@ -1,101 +1,115 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp450407wrw;
-        Thu, 8 Nov 2018 10:02:11 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cRx2jtb40QS9FGGJupwODOKl0bHGrIE9jILV180jKNn36fxptP09EQh7afTPvne/TyYGlP
-X-Received: by 2002:a0c:87b7:: with SMTP id 52mr5514972qvj.8.1541700131382;
-        Thu, 08 Nov 2018 10:02:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541700131; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp807880wrw;
+        Sat, 10 Nov 2018 00:14:02 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dTVMLg/E3ZNSx263i0hNc3Whx/E68D/ue27VU8oLEhNISUQHDxacQ7q+YPuchWJ6S5TZQw
+X-Received: by 2002:ac8:43d0:: with SMTP id w16mr11759299qtn.78.1541837642879;
+        Sat, 10 Nov 2018 00:14:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541837642; cv=none;
         d=google.com; s=arc-20160816;
-        b=T6icAdEray1ZnJgEvuKa2cK21wcaQqv468UUMkcgSq68bFLU5+8ZhYxTFHnBiEW8s8
-         0HXs4e80gzM7VJSIpiAixaK1QZEKYpNVszKsAf6trVugwYqCfZt36EjcNzyiFqs/c4+6
-         S5DHom2lfqC9+uwHYfeP33Qzuq3YZgf/Q595aMdCiVnXz+YPi0P/3v3SsEx8naWahRuQ
-         G1PU37BuBjYqMiNSoLewdq8dso0AzZzPnRhP+Vs1eUvavu7tLJcuziJ4f6NXapm3Ua5l
-         Muu/q5vUIaZg3htQi9lnkPhEGy4z69WI2l+2xWOvArxJoUwcoELg3GMHuGsaGP/fu7qs
-         8Mbw==
+        b=Q7jCaMj3GQlecEsMheRgniZ78So9Hugk3vzQ5vAGpYbgZV90+qpF0+y/SmaK/+wzk/
+         ygOm+Ni2Xh2SYJAJsZAZ4wfYHAAfWOBFjQZ/jn+uuHZQ7Z40vh7TRDNX92P+SatJCp6q
+         KOZy0PY+nSYMqoEwiO1Q1sqEfESG2KNMlDZfWMKalA/D3ZaEfFstDivhAHAWGPUVK2xz
+         5amuwraVi/XXFCsLKcJQsjFmFKKasLrZZuEFkxpKtYvNXrY94qRiyf8K7zv69ZU/6af5
+         vG51/12CH2M1OVs69X5rcNcqrNaPNACg0yPtu4yzWN7lc/HXWqtNV1wpYh4isnyigNBi
+         msAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=zlFdkBkZo5nt5LFadOS5kmImPmiLZuKCuNQcIkYLDuU=;
-        b=egW08P6IqXsfgAzXVKuOrBHOgQYgD9fqjxMCNcZy7GnZcD7lXtWDF0Id+etOJ8p9vI
-         ZEiPxiePB8YPYkhCQHyTsXMe4drh5Xpmyz6zTHAOU27E4G4W/hB0npkkIdvkAPNsf9NH
-         zfi1LbctZq9UTK+7Ir07bIQ2ytWrayRPqPd5yvoQ2Sn/JdrFhtmckHG5u8U++pPicuBT
-         7dLjifplrzNQILnAF/SlwB8VWllN8sieQ8sam+ocVX7m0LjphCiUGpOz8XL7GhLll9o7
-         VSgjiBnIkH0RkJL8Sq/RIPsxfrLjrGB/TtyDtHhbTeW6dAzXzwCx4KHRnjbLQ9U3gD1T
-         V+9w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature;
+        bh=02RQdFbYjAUFtHRXhyS6PnnA16j9PPsqVektP6D0n7c=;
+        b=NFLieJHYPuymTNhjEg2VeOiVj+aNvQv8v8Jn76YZRMIN6r/cQR0Bu9v4hC8wizqWMt
+         WmxvQe4it6b8VbWRwULEUSXKmcuswct22f9qYu1rLdE70RI1QmQ08RpXGx1+9foYrhtz
+         l+nvxHFBX7E/+WS4jIC379AnXhjO1tlofmIzQZJjrowMCVv17DgSDTTG1QaWzoylEm9O
+         zw0PiUoqTcGQh+I7CeWhxoLQaVTE3hHDPrMyw9IchRL3KjieJDdpL1IAYSzLWjy735au
+         F+sD9/shoYs+pUObyvYdHxCemjHwNfGCX6wpDahGCtzBb+Z1Y1nMfuh3RXJJAu9eCokF
+         LC6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iKmxGaMW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=kBRl5ZDX;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CMO0sjKH;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=gyW4Mjcs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c55si3755490qta.170.2018.11.08.10.02.11
+        by mx.google.com with ESMTPS id g24si7181196qtm.208.2018.11.10.00.14.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 08 Nov 2018 10:02:11 -0800 (PST)
+        Sat, 10 Nov 2018 00:14:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iKmxGaMW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58377 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=kBRl5ZDX;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CMO0sjKH;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=gyW4Mjcs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37473 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gKod8-0008Pt-U0
-	for alex.bennee@linaro.org; Thu, 08 Nov 2018 13:02:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39587)
+	id 1gLOP4-0003nA-8O
+	for alex.bennee@linaro.org; Sat, 10 Nov 2018 03:14:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gKoWA-0001cY-Dz
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 12:54:59 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1gLOOm-0003lD-7E
+	for qemu-arm@nongnu.org; Sat, 10 Nov 2018 03:13:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gKoW8-0008Df-9o
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 12:54:58 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34551)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gKoW7-0008Cg-U3
-	for qemu-arm@nongnu.org; Thu, 08 Nov 2018 12:54:56 -0500
-Received: by mail-wm1-x342.google.com with SMTP id f1-v6so2075018wmg.1
-	for <qemu-arm@nongnu.org>; Thu, 08 Nov 2018 09:54:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=zlFdkBkZo5nt5LFadOS5kmImPmiLZuKCuNQcIkYLDuU=;
-	b=iKmxGaMW4tihGC/qQdP4MkkPVOeTV3lkT+LEx6VeHFTUeNlVXS821ei5djZx+OAh9X
-	GGMv2/6LEyFZiAa/xrwwD2/C0bKBvMmJcNIIfMITE/frD1lrZL2TPw1ha5uMubU/ZJd3
-	syD7pbaYkRKxkP2j8fs55pyrTBEhuvxNOsAoE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=zlFdkBkZo5nt5LFadOS5kmImPmiLZuKCuNQcIkYLDuU=;
-	b=hUIpX9AIJh8ESju00tJXztI7XCSvxbZXktnwlrwmcJnCN/BouBoJkebmjIYIR/7fib
-	pwXcDLZ/3gnR1J4Gjv5Ji0jh041ErBnbovi1jZ3wAx9VFMpLtzDJbzryrsx/co5sytH1
-	2iEvszFPkb5UCQAC0zCdXCjFcFGvXAO9BSeHH3MAvdTY24h9BAxlA85hnyNIeEN8qWPI
-	GiPDUaMQxw2UxYFdRCOzQQblTwT0pB3hKzgvv3xUQ5Xh/QPXlGHjBnygrSmJ8tsm5fjt
-	BK50TGBIHhz/umk96Js27WEJWnqYP9jkYvckb1DP3dEoJpudNMorKBNgKlvbG5wHttcd
-	Hd7w==
-X-Gm-Message-State: AGRZ1gL6bTqd1FJWmbAZCYnepUQQm1/C/laBD5bgGruRvHjqHLa1KIdQ
-	8LFCJ/06wYlaH6yAFaRrWHyA6g==
-X-Received: by 2002:a1c:5885:: with SMTP id
-	m127-v6mr2005469wmb.118.1541699694705; 
-	Thu, 08 Nov 2018 09:54:54 -0800 (PST)
-Received: from cloudburst.twiddle.net
-	(70.red-2-141-114.dynamicip.rima-tde.net. [2.141.114.70])
-	by smtp.gmail.com with ESMTPSA id
-	l42-v6sm4411384wre.37.2018.11.08.09.54.53
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 08 Nov 2018 09:54:54 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
+	(envelope-from <luc.michel@greensocs.com>) id 1gLOOZ-0000Ti-Ba
+	for qemu-arm@nongnu.org; Sat, 10 Nov 2018 03:13:38 -0500
+Received: from greensocs.com ([193.104.36.180]:43679)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1gLOOY-0000TB-Vc; Sat, 10 Nov 2018 03:13:31 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id E08565D19A6;
+	Sat, 10 Nov 2018 09:13:27 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1541837607;
+	bh=JiC+TmMFd9OLB4+WksacmGkhv9++c1guh9aOUkKjcTo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=kBRl5ZDX/CyglnRFtf7DPe2vBe4uX7hsAonqGiswXHvHxkhJ7KjJkGZ/UfGpUm3tN
+	9iXoo7lu2GZK7NPxZ1sM5w43/0MaEJ5MigOXEjczKVq/c8Q/U98bAZRsZchELgpP9d
+	d+4LTeGspLbBSLlaEtar9WEMLwEiDQ/tGwE7Um7c=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=CMO0sjKH;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=gyW4Mjcs
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Mttch_idWQUd; Sat, 10 Nov 2018 09:13:21 +0100 (CET)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 08FA45E2E3; Sat, 10 Nov 2018 09:13:20 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1541837601;
+	bh=JiC+TmMFd9OLB4+WksacmGkhv9++c1guh9aOUkKjcTo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=CMO0sjKHOzCYWZasLKPTpbj5K4X9t60XwFEhTXsJ4OZPv66J6VEtZ0dQGnKw6E3Vx
+	u0f27VV5ncfmQuWbghf2vmc5PwcNkVj34p9OrlFmSjkenpzh9G2i4NpHRW3xr3lXu3
+	L1OYuGgVg/YjDtu0PeoPZc2eWnEHgi4zCzlg8VRQ=
+Received: from michell-laptop.home.lmichel.fr
+	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 7E5746FD81;
+	Sat, 10 Nov 2018 09:13:20 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1541837600;
+	bh=JiC+TmMFd9OLB4+WksacmGkhv9++c1guh9aOUkKjcTo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=gyW4MjcsM76OkwCYLYonZZ9swsUkCoWF9UyYVte2dWUJovrt1y5al3xbAWVoIO9R0
+	dqJwGoxaUiRy11+w6jzMPfjW5ZqTG5imcgJCoiNpfrt9xuMBJeVp5H845jfNwdi6X2
+	u22fUTCrxNKPCdBSCbrWHkz24DaKCMTzLDGjDsWI=
+From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Thu,  8 Nov 2018 18:52:46 +0100
-Message-Id: <20181108175246.13416-6-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20181108175246.13416-1-richard.henderson@linaro.org>
-References: <20181108175246.13416-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH v3 5/5] target/arm: Convert t32ee from feature
- bit to isar3 test
+Date: Sat, 10 Nov 2018 09:11:32 +0100
+Message-Id: <20181110081147.4027-2-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181110081147.4027-1-luc.michel@greensocs.com>
+References: <20181110081147.4027-1-luc.michel@greensocs.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH v5 01/16] hw/cpu: introduce CPU clusters
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,137 +121,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rHVXsBczZIdp
+X-TUID: BM55JJnhm7YC
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+This commit adds the cpu-cluster type. It aims at gathering CPUs from
+the same cluster in a machine.
+
+For now it only has a `cluster-id` property.
+
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- target/arm/cpu.h     | 6 +++++-
- linux-user/elfload.c | 2 +-
- target/arm/cpu.c     | 4 ----
- target/arm/helper.c  | 2 +-
- target/arm/kvm32.c   | 3 ---
- target/arm/machine.c | 3 +--
- 6 files changed, 8 insertions(+), 12 deletions(-)
+ include/hw/cpu/cluster.h | 38 ++++++++++++++++++++++++++
+ hw/cpu/cluster.c         | 59 ++++++++++++++++++++++++++++++++++++++++
+ MAINTAINERS              |  2 ++
+ hw/cpu/Makefile.objs     |  2 +-
+ 4 files changed, 100 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/cpu/cluster.h
+ create mode 100644 hw/cpu/cluster.c
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b5eff79f73..5c2c77c31d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1575,7 +1575,6 @@ enum arm_features {
-     ARM_FEATURE_NEON,
-     ARM_FEATURE_M, /* Microcontroller profile.  */
-     ARM_FEATURE_OMAPCP, /* OMAP specific CP15 ops handling.  */
--    ARM_FEATURE_THUMB2EE,
-     ARM_FEATURE_V7MP,    /* v7 Multiprocessing Extensions */
-     ARM_FEATURE_V7VE, /* v7 Virtualization Extensions (non-EL2 parts) */
-     ARM_FEATURE_V4T,
-@@ -3172,6 +3171,11 @@ static inline bool isar_feature_jazelle(const ARMISARegisters *id)
-     return FIELD_EX32(id->id_isar1, ID_ISAR1, JAZELLE) != 0;
- }
- 
-+static inline bool isar_feature_t32ee(const ARMISARegisters *id)
+diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
+new file mode 100644
+index 0000000000..11f50d5f6b
+--- /dev/null
++++ b/include/hw/cpu/cluster.h
+@@ -0,0 +1,38 @@
++/*
++ * QEMU CPU cluster
++ *
++ * Copyright (c) 2018 GreenSocs SAS
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see
++ * <http://www.gnu.org/licenses/gpl-2.0.html>
++ */
++#ifndef HW_CPU_CLUSTER_H
++#define HW_CPU_CLUSTER_H
++
++#include "qemu/osdep.h"
++#include "hw/qdev.h"
++
++#define TYPE_CPU_CLUSTER "cpu-cluster"
++#define CPU_CLUSTER(obj) \
++    OBJECT_CHECK(CPUClusterState, (obj), TYPE_CPU_CLUSTER)
++
++typedef struct CPUClusterState {
++    /*< private >*/
++    DeviceState parent_obj;
++
++    /*< public >*/
++    uint32_t cluster_id;
++} CPUClusterState;
++
++#endif
+diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
+new file mode 100644
+index 0000000000..e0ffd76152
+--- /dev/null
++++ b/hw/cpu/cluster.c
+@@ -0,0 +1,59 @@
++/*
++ * QEMU CPU cluster
++ *
++ * Copyright (c) 2018 GreenSocs SAS
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see
++ * <http://www.gnu.org/licenses/gpl-2.0.html>
++ */
++
++#include "qemu/osdep.h"
++#include "hw/cpu/cluster.h"
++#include "qapi/error.h"
++#include "qemu/module.h"
++
++static void cpu_cluster_init(Object *obj)
 +{
-+    return FIELD_EX32(id->id_isar3, ID_ISAR3, T32EE) != 0;
++    static uint32_t cluster_id_auto_increment;
++    CPUClusterState *cluster =3D CPU_CLUSTER(obj);
++
++    cluster->cluster_id =3D cluster_id_auto_increment++;
 +}
 +
- static inline bool isar_feature_aa32_aes(const ARMISARegisters *id)
- {
-     return FIELD_EX32(id->id_isar5, ID_ISAR5, AES) != 0;
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 5bccd2e243..a3503c83c9 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -466,7 +466,7 @@ static uint32_t get_elf_hwcap(void)
-     GET_FEATURE(ARM_FEATURE_V5, ARM_HWCAP_ARM_EDSP);
-     GET_FEATURE(ARM_FEATURE_VFP, ARM_HWCAP_ARM_VFP);
-     GET_FEATURE(ARM_FEATURE_IWMMXT, ARM_HWCAP_ARM_IWMMXT);
--    GET_FEATURE(ARM_FEATURE_THUMB2EE, ARM_HWCAP_ARM_THUMBEE);
-+    GET_FEATURE_ID(t32ee, ARM_HWCAP_ARM_THUMBEE);
-     GET_FEATURE(ARM_FEATURE_NEON, ARM_HWCAP_ARM_NEON);
-     GET_FEATURE(ARM_FEATURE_VFP3, ARM_HWCAP_ARM_VFPv3);
-     GET_FEATURE(ARM_FEATURE_V6K, ARM_HWCAP_ARM_TLS);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 784a4c2dfc..d4dc0bc225 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1451,7 +1451,6 @@ static void cortex_a8_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7);
-     set_feature(&cpu->env, ARM_FEATURE_VFP3);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     cpu->midr = 0x410fc080;
-@@ -1520,7 +1519,6 @@ static void cortex_a9_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_VFP3);
-     set_feature(&cpu->env, ARM_FEATURE_VFP_FP16);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     /* Note that A9 supports the MP extensions even for
-      * A9UP and single-core A9MP (which are both different
-@@ -1583,7 +1581,6 @@ static void cortex_a7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7VE);
-     set_feature(&cpu->env, ARM_FEATURE_VFP4);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-@@ -1629,7 +1626,6 @@ static void cortex_a15_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_V7VE);
-     set_feature(&cpu->env, ARM_FEATURE_VFP4);
-     set_feature(&cpu->env, ARM_FEATURE_NEON);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB2EE);
-     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
-     set_feature(&cpu->env, ARM_FEATURE_DUMMY_C15_REGS);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 96301930cc..e28770833a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5457,7 +5457,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         define_arm_cp_regs(cpu, vmsa_pmsa_cp_reginfo);
-         define_arm_cp_regs(cpu, vmsa_cp_reginfo);
-     }
--    if (arm_feature(env, ARM_FEATURE_THUMB2EE)) {
-+    if (cpu_isar_feature(t32ee, cpu)) {
-         define_arm_cp_regs(cpu, t2ee_cp_reginfo);
-     }
-     if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 9ededa3c73..8b2c9b3075 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -115,9 +115,6 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     set_feature(&features, ARM_FEATURE_VFP3);
-     set_feature(&features, ARM_FEATURE_GENERIC_TIMER);
- 
--    if (extract32(id_pfr0, 12, 4) == 1) {
--        set_feature(&features, ARM_FEATURE_THUMB2EE);
--    }
-     if (extract32(ahcf->isar.mvfr1, 20, 4) == 1) {
-         set_feature(&features, ARM_FEATURE_VFP_FP16);
-     }
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 239fe4e84d..07f904709a 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -321,9 +321,8 @@ static const VMStateDescription vmstate_m = {
- static bool thumb2ee_needed(void *opaque)
- {
-     ARMCPU *cpu = opaque;
--    CPUARMState *env = &cpu->env;
- 
--    return arm_feature(env, ARM_FEATURE_THUMB2EE);
-+    return cpu_isar_feature(t32ee, cpu);
- }
- 
- static const VMStateDescription vmstate_thumb2ee = {
--- 
-2.17.2
++static Property cpu_cluster_properties[] =3D {
++    DEFINE_PROP_UINT32("cluster-id", CPUClusterState, cluster_id, 0),
++    DEFINE_PROP_END_OF_LIST()
++};
++
++static void cpu_cluster_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->props =3D cpu_cluster_properties;
++}
++
++static const TypeInfo cpu_cluster_type_info =3D {
++    .name =3D TYPE_CPU_CLUSTER,
++    .parent =3D TYPE_DEVICE,
++    .instance_size =3D sizeof(CPUClusterState),
++    .instance_init =3D cpu_cluster_init,
++    .class_init =3D cpu_cluster_class_init,
++};
++
++static void cpu_cluster_register_types(void)
++{
++    type_register_static(&cpu_cluster_type_info);
++}
++
++type_init(cpu_cluster_register_types)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 126fe0be7e..8e20b0e672 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1022,11 +1022,13 @@ Machine core
+ M: Eduardo Habkost <ehabkost@redhat.com>
+ M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ S: Supported
+ F: hw/core/machine.c
+ F: hw/core/null-machine.c
++F: hw/cpu/cluster.c
+ F: include/hw/boards.h
++F: include/hw/cpu/cluster.h
+ T: git git://github.com/ehabkost/qemu.git machine-next
+=20
+ Xtensa Machines
+ ---------------
+ sim
+diff --git a/hw/cpu/Makefile.objs b/hw/cpu/Makefile.objs
+index cd52d20b65..8db9e8a7b3 100644
+--- a/hw/cpu/Makefile.objs
++++ b/hw/cpu/Makefile.objs
+@@ -1,5 +1,5 @@
+ obj-$(CONFIG_ARM11MPCORE) +=3D arm11mpcore.o
+ obj-$(CONFIG_REALVIEW) +=3D realview_mpcore.o
+ obj-$(CONFIG_A9MPCORE) +=3D a9mpcore.o
+ obj-$(CONFIG_A15MPCORE) +=3D a15mpcore.o
+-common-obj-y +=3D core.o
++common-obj-y +=3D core.o cluster.o
+--=20
+2.19.1
 

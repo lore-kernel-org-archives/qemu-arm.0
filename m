@@ -1,106 +1,101 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2064701wrw;
-        Sun, 11 Nov 2018 06:00:21 -0800 (PST)
-X-Received: by 2002:adf:8b0a:: with SMTP id n10-v6mr13482795wra.282.1541944821605;
-        Sun, 11 Nov 2018 06:00:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541944821; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2107269wrw;
+        Sun, 11 Nov 2018 06:47:41 -0800 (PST)
+X-Received: by 2002:aca:c752:: with SMTP id x79-v6mr8705039oif.139.1541947661806;
+        Sun, 11 Nov 2018 06:47:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541947661; cv=none;
         d=google.com; s=arc-20160816;
-        b=a0lV8LTLr54R5eAXD5nPhqk3qRc8QUVjRdxG2R1cyvYLmaJsI2hMppPJ8dEbGwa1EC
-         DRBa6F/Kl5S7dXvILqddpv7p6D7ZFbCH3jqbJoBvtvfrz2KSuiAQpGqHh87oql9MIhf5
-         BSgGd4R1DnFmTGbbauv7OSKe1QehiWyaTDlKHMRxqeGfN4LS72qUpooihP3NXrqz/DJk
-         gqd+x2i4UPbb1MZIV2JXqDdnqDnY9X9S25bDwMqs7m8795hBB2PhFxqGEdKiii6YOK2F
-         NUjkvXjKKJuAERN3izd1Wfl/EMiSCu3MX+8pmwIFNe2OYfIEvVP/c0HYsgKAG/l74bqB
-         Q+AA==
+        b=f0FHWCBFrT4Gp4xPMMVnZj/kVyIL6ZZps7aP5FEO2GEbxVlYr99vvn1NK2ISFcP9c4
+         Xl6JdTtuCMYHxdrOKPzfarcyl2bwyLNzofbgPffwEGzgfO/uylSWviH1UA59npp3rGHo
+         rihE5Y/p4+NRxLNM86RUo2PtfzoPQwcCTyJM+SicbIeDIIx9U50ZK7nKy0I1QocNv0Mb
+         3eRzjFtGJuZeYvOTsZf2JSb61X0b5wfI0MzdENgGlLmYy4SB462ZsRCfYr3gD6lxbAgN
+         FibrfsxhU045YaT1ewA8lfBw8cLfysCtMB45VzPeP/AxXUb5yXCixOhQ593BpWEMFhEE
+         Y5+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=sJtDq0OHcoi7QlzI/HBVoyam0aupZgdGrQwy7HkwgvY=;
-        b=E0GF4g7wQco7deNOBeOlYmL8xyIfizCzvY/eL7SB1/6yIw1B/ZS3ts6ixZDbF8wuix
-         ODCF1Y100oERISJOYRR34YeTJjGy093VHXEqqBrtWoCfv1KCI/ZUrUhQJwAXnT0n2D3c
-         +33onySJAO4Fg+UBctxW4afyCbGgDP80IHAE9anGqHjtK3C2AE+s5+yCnoW8RVyIXhfx
-         3Q1vlYD9k6+qUCJbVd0aC/AI+uaQi0hOt3K+gs7SRL2DxHOTgHBW3uoydvf7oN3K4Apr
-         Ltvhr3yvwD6jAWuU2FYCn+pO7yzXX4raEAM6Wsm2m4Hh+cIUTV/tkuppF/YDlI0lvgLQ
-         +Aqg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=ob4k/Tayy0dSO0hnW2xSnONtF1NUnABM3DzGUw9d/30=;
+        b=KdNcTBWMtx3+hxdZzFOEKVSKKwiGHTF+6R6fZBrgaMmAIUtv8uF2T7LHIEEWLVmQk9
+         xdYnzCBy3CaRgtfJpU+W5d7fyX54Ve0diYL+0C8JwlQ/JLIP3NdD4dz0Ll//hoLBxRPn
+         UzFGRi+N+Cm5Om/QtLiz84JavAMFNbL9iOrTEbVeb+VbIEZb/jDlkSNMmToNnJono6R8
+         XGxZjPpxatxiImNjAgb1mq+B4m/tNj0EEdOg9CFkAt0bAAw8+EijAy5e9/bhiWjlYCkb
+         AAXo+xqnv8xmvbuYPSVcQwaCzsmnNYTVvN1BXsSmfGAZpEoJTgJr5KFSCD5ZOehXPNf4
+         y5Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nv8BeJ2K;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ikr446mu;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b77-v6sor3918396wme.9.2018.11.11.06.00.21
+        by mx.google.com with SMTPS id i17sor7917914ota.181.2018.11.11.06.47.41
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 11 Nov 2018 06:00:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Sun, 11 Nov 2018 06:47:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nv8BeJ2K;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ikr446mu;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=sJtDq0OHcoi7QlzI/HBVoyam0aupZgdGrQwy7HkwgvY=;
-        b=Nv8BeJ2KcNOKV55YZcy+1zIAT9HsjiogGxjWMIuDf29WseXuNa1X4/ZLP1yNUz74DY
-         B+QLXeKl+Q73P8b6nXmPwlc3uYrmvVPE7ZRBzlOixgcOPA+RAPhCD9741ZsETVC+lqos
-         YW0OFZTh9903KQn7HkvAjn2GXI7KQ/GneQb5k=
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=ob4k/Tayy0dSO0hnW2xSnONtF1NUnABM3DzGUw9d/30=;
+        b=ikr446mu4m9saC4zNimiDURGbPhz/gpYQEqOITxy4NfUd2I+iVKofVy8PBkiAEhm/5
+         CTot2AqqWc/aTBo9y6qVIuARA4IBITCy3ylAGHzB251XcbM4T4cDkla5+nL2Mg0tiSEP
+         jupFZqkuSM1gQjW+lKefZ+zYbeXukNM1OZkyU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=sJtDq0OHcoi7QlzI/HBVoyam0aupZgdGrQwy7HkwgvY=;
-        b=L6oTnqw6b1BWspnfXKZb896VkugXA+vMr/l3AhRM9+OFukqkGpH3tSzHQ4Df4FYYVV
-         VEnDtgVsM+owKXh4SH2tdh9sZfJgzz9EACgwEgXNwQ1kl3U6j9bVfgZQq3liNkQ9X2wa
-         6bBPJoqX2q30sA0EZLP+Kkm1FhJI6aBQnj7cDvby2jg/B3rrCm0180fPsiG+vhafLGvE
-         KLjCiFU6W0nLw+HBEeMySt/4Lf0y8Y5Fvlzr/oeFfM7wwXixgn48TGKFhKYmMJQPaMrS
-         XGDZgOJAMAJLAUDILozNsPSynmzamRbTzGwWuikFzbxH1y8/imNmaKfLoQrFj5RPgCWm
-         VR7Q==
-X-Gm-Message-State: AGRZ1gJbOy8WwT/bBHUVOut1zhEL/jawrVGatIzxw/M6d1BG+mthjHhb
-	Ho+S/o8sB1YOtiyfK+8c2xc1DvQKAxS2QScz
-X-Google-Smtp-Source: AJdET5fV8rePe6nppLKs1y2i92ngb/jPRcdB1EcFW7z3cxl0gfact5hNxIkYkV6k+YK76E2tj0Q5FA==
-X-Received: by 2002:a1c:a782:: with SMTP id q124-v6mr4955930wme.21.1541944821178;
-        Sun, 11 Nov 2018 06:00:21 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from cloudburst.twiddle.net (151.red-213-99-169.dynamicip.rima-tde.net. [213.99.169.151])
-        by smtp.gmail.com with ESMTPSA id d15-v6sm9619930wre.25.2018.11.11.06.00.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 11 Nov 2018 06:00:20 -0800 (PST)
-Subject: Re: [Qemu-devel] [PATCH v3 7/7] arm: fix
- aa64_generate_debug_exceptions to work with EL2
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <20181109152119.9242-1-alex.bennee@linaro.org>
- <20181109152119.9242-8-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <01878252-88e2-43cd-1431-afde9510eecf@linaro.org>
-Date: Sun, 11 Nov 2018 15:00:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.3.0
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=ob4k/Tayy0dSO0hnW2xSnONtF1NUnABM3DzGUw9d/30=;
+        b=qLQqwhFpAsZ1rFHtAorcbMNX8HHrUjAPdZVkYbPpz95H6MPFl5pbsmjDjXriqxYEOe
+         YUTxB3CiHqa9QCrhbPYdsw2GLPXu2FWhLR7eyFGvA2qyWm5g70n2gewVubUySOLLrJNa
+         DVMd6gQda2OWkF/ENzjie4ORh5k3XSKBS1dvMxdKB4y0GkVWUrpXJwpitnybVHZGi1JZ
+         gK8K9tQaXbuLjVjbR7rNa6SmYWwfVdswGxdy45TjEvya26g4HtuKqGEnHji7DfGow97M
+         Wm378iD1jO3nnmoNwKiJMEIywcwvSNbgrColV+HRWIKvXXF0OuvoYChetRYsDlyEAvgB
+         QyVA==
+X-Gm-Message-State: AGRZ1gLAT6mVrq6XZlU9qzW0BuDKSabnZ9A2Lz6vwF+mZ9//BF8YNTWT
+	/KJNAuFjXuytE9RSrw76khC0OEq+F5obeKO3qwUbOhaasQs=
+X-Google-Smtp-Source: AJdET5e0yH+5lGvx7me+mvJPYChcmJI3uFe6fA7RcfO5WZ0tzt7ad1emRfODJXJKcVqh5wvdoRWW6v91i6Ikt+lszU4=
+X-Received: by 2002:a9d:156d:: with SMTP id z42mr10197685otz.201.1541947661243;
+ Sun, 11 Nov 2018 06:47:41 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Sun, 11 Nov 2018 06:47:20
+ -0800 (PST)
 In-Reply-To: <20181109152119.9242-8-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: unrVBfDsLc4r
+References: <20181109152119.9242-1-alex.bennee@linaro.org> <20181109152119.9242-8-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 11 Nov 2018 14:47:20 +0000
+Message-ID: <CAFEAcA-iOLcP50jbKLJwpwL333hbQi1t0ig6zp8SNNLsJL8=vw@mail.gmail.com>
+Subject: Re: [PATCH v3 7/7] arm: fix aa64_generate_debug_exceptions to work
+ with EL2
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 7YWhKT5aC2La
 
-On 11/9/18 4:21 PM, Alex Bennée wrote:
+On 9 November 2018 at 15:21, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 > The test was incomplete and incorrectly caused debug exceptions to be
 > generated when returning to EL2 after a failed attempt to single-step
 > an EL1 instruction. Fix this while cleaning up the function a little.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-> ---
-> v3
->   - further re-arrangement as suggested by rth
-> ---
->  target/arm/cpu.h | 39 ++++++++++++++++++++++++---------------
->  1 file changed, 24 insertions(+), 15 deletions(-)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> @@ -2833,9 +2845,6 @@ static inline bool aa32_generate_debug_exceptions(C=
+PUARMState *env)
+>   * since the pseudocode has it at all callsites except for the one in
+>   * CheckSoftwareStep(), where it is elided because both branches would
+>   * always return the same value.
+> - *
+> - * Parts of the pseudocode relating to EL2 and EL3 are omitted because w=
+e
+> - * don't yet implement those exception levels or their associated trap b=
+its.
+>   */
 
+In hindsight I regret not standardizing on a greppable tag for
+marking these kinds of "we don't do X because we don't implement
+feature Y" comments...
 
-r~
+thanks
+-- PMM

@@ -1,90 +1,90 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2516243wrw;
-        Sun, 11 Nov 2018 15:46:13 -0800 (PST)
-X-Google-Smtp-Source: AJdET5di+KcABCsjfP8wLzmBWvonJ6FhJgBF0mcJDExTPl65SDSrGWf+NrH3X/Mn3QBJ1ZLkZNj+
-X-Received: by 2002:aed:2259:: with SMTP id o25-v6mr17512456qtc.13.1541979973899;
-        Sun, 11 Nov 2018 15:46:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541979973; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2539183wrw;
+        Sun, 11 Nov 2018 16:15:21 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cWnUB8ir8oPjoySHKIBx+t61a/MqVjiULLeb5EBIowyzVX0F90DY/LopB+hI8+2ji5ssoD
+X-Received: by 2002:ad4:4312:: with SMTP id c18mr17329927qvs.59.1541981721666;
+        Sun, 11 Nov 2018 16:15:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1541981721; cv=none;
         d=google.com; s=arc-20160816;
-        b=F8nEhOQOnzZOlXFePuYIOomMopjTkM84j8JaEzANHU9NFbfgN6eQwN6WAhUqMD5sJV
-         uadfPxVvrcPknStt7bEVjEKMlE+oD/7/GoMNTYtqQd8CuRYSVo00jp/R4tkeNr+EksCV
-         XESL2YoshKolRLtjjoiQg2pIXKihu0Y63iZd6Bg5/b3siDHp1LU96GrtObSDuPUuz+r3
-         DyXzxU7121tP2CSxIfP1oXbrpH68qgAX1V1oyPUP+xsf+qJKFqj8edXzaPu4Dq+iy40X
-         j2a0kdwO3zb2iH6A1BJI+vP64E1GdRUAX6IYBeVsfnkuCYgQeyJWHoLTrPImF/+2ikXF
-         nUHQ==
+        b=jX1k2TZAOIvNjbCOGXL9VlFlrxFK3138iqZAaY+9s9RQNFs4Lt+TABA3UEZwpqBpXr
+         Hlf33yKPIqsEhtvvT+lnfs8nK6kkYcFpB3a7Z1umqQGke34g18xdd42KT4Y3c+DeMejN
+         dIxX+DXBeFQOy+ehleu7LWH6ygPMgrSVFLFiHVAgBWlR+hxpW8SiLImv4QCgoUP7MpSK
+         UxvmqvMTyKId9eSt8Drf/5hfqy2r2f7dPaoV+mCbNuDb87t9kfy0ASWtfESz+7h4vq4c
+         pSp/uTlBRmDlMIEV5eu7F76V8FJMCNOGEridFBeWnwG63qIzW1sG+bMhl3k0bsGFwBXn
+         PHgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version;
-        bh=gXu1hJaniJXaWK9kAC4B4Mu2RnhwKBMyVp7MGDBp3MM=;
-        b=iYYC0mcB/QSqIQxzWaNrjblktPAg+GBFJhOlB+jwU+riMX9DwKFMKwT+TeMvC52cyQ
-         3AX6u8u8Z8no0F/iHdOlioh7mkhLOdC6na85VYZXYUf5a5S9ipQL/j4gShsTChxBbFVr
-         F9+XsmMtGO0jcoLctHqkxSoyy7jXJdpbRq1zAxV6YVs+527//oP5OJ2p78e3RcF6oNw9
-         pYRDp+7wp0P2E2qKknUCpBR9iYK22sz+TIBCWZMOLExwPC+obhw1tGMu8AtCIbIRR09I
-         9iO/fLUrEg2FEtRf+dSZ8e0VnPilbZ076FkiB8Wael8aa9WvijR78+nihVehGTCJ3OyT
-         fWhg==
+        bh=A0OmViwzpP309rzc4Ea3IJFBU0o1mDWV4k5ORmY+26A=;
+        b=HdFcFRcReDUbv+uTSWMasipx/9pXEFaP3firFpfaG4xh3U69/7h2aUhSSgr2PlwnsI
+         aAFVs7FO3VFzADubxjucdGGDFLgxcOlC8Z/u9IPgDcO4f1NjFHvWb0JuzNM2xmriNTdI
+         zyMC161BxNLLKK3HRxvvQjltPJskUNr+nj8e1Vpw09j1XTygSj0digb8MrodiWP0ns4i
+         jOGa3I3PLpzI+96qzjHSl7nR/sscRoW1+6e1feVso6+tfhMsbO+5bQAJexwcBbxL/NPH
+         VfmlB+bYGpSSYR+fdQGinzGtBKBUu3jM2ZqxvUZSRYx2ZUPIOGf5I+MC6iaOBg1hR46z
+         b7jw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f187-v6si1508669qkj.251.2018.11.11.15.46.13
+        by mx.google.com with ESMTPS id d3si6363322qvc.78.2018.11.11.16.15.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Nov 2018 15:46:13 -0800 (PST)
+        Sun, 11 Nov 2018 16:15:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44061 helo=lists.gnu.org)
+Received: from localhost ([::1]:44150 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gLzQg-0005iz-8z
-	for alex.bennee@linaro.org; Sun, 11 Nov 2018 18:46:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55612)
+	id 1gLzsv-0001R7-6Q
+	for alex.bennee@linaro.org; Sun, 11 Nov 2018 19:15:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36700)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gLzQS-0005hf-LE
-	for qemu-arm@nongnu.org; Sun, 11 Nov 2018 18:45:57 -0500
+	id 1gLzsn-0001Qj-8q
+	for qemu-arm@nongnu.org; Sun, 11 Nov 2018 19:15:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gLzQN-000607-92
-	for qemu-arm@nongnu.org; Sun, 11 Nov 2018 18:45:54 -0500
-Received: from mail-yb1-f194.google.com ([209.85.219.194]:44928)
+	id 1gLzsj-00010j-Ud
+	for qemu-arm@nongnu.org; Sun, 11 Nov 2018 19:15:13 -0500
+Received: from mail-yw1-f49.google.com ([209.85.161.49]:38885)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gLzQM-0005zF-T2; Sun, 11 Nov 2018 18:45:51 -0500
-Received: by mail-yb1-f194.google.com with SMTP id p144-v6so3219278yba.11;
-	Sun, 11 Nov 2018 15:45:48 -0800 (PST)
+	id 1gLzsj-0000sb-MM; Sun, 11 Nov 2018 19:15:09 -0500
+Received: by mail-yw1-f49.google.com with SMTP id i65-v6so3755685ywc.5;
+	Sun, 11 Nov 2018 16:15:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=gXu1hJaniJXaWK9kAC4B4Mu2RnhwKBMyVp7MGDBp3MM=;
-	b=mDzgUzQdVgE4if5OE9qFTW9YeXGCRoDbwkCSqDa8+skh3kQvNgPnfpuzlxty+MdEx2
-	2asXumjHpyoR5W3N+gVe6I7C3iPmiw4bwmc9gP3rHOh3ODsI/uA52/7xLBqbl2u3lYlm
-	04jwMlTmNa+wFVPZl7CThx29bVy1MuDcJhX68hz38j9BEGIW63fP8IkamPEAKKMCWFZw
-	ENHxunDFjjptNyBfYaSwou9axUrAQAqD7iZYNZOppOkbEyCMrG6no1GLpbLzkmOBtjpv
-	fOpmYHNmrvB4jPSKlFIGgTBxYP0o+52n3fd/uroBtDaXdO+uD/gTUauxvRDRgstGekX9
-	uyxQ==
-X-Gm-Message-State: AGRZ1gIu8II48oFewyb9TJi0B8V8KnKYbttGXfC9asduvkx2CXWic6kW
-	dh5ejvpWdzhSCYNDKfGuuFTYdtdvjQ9Z4W0o1FA=
-X-Received: by 2002:a25:49c1:: with SMTP id
-	w184-v6mr16774523yba.457.1541979947781; 
-	Sun, 11 Nov 2018 15:45:47 -0800 (PST)
+	bh=A0OmViwzpP309rzc4Ea3IJFBU0o1mDWV4k5ORmY+26A=;
+	b=BM/tq+Sp8HDC1Z1CwK9qqDyPGzBOl1g3iRhzsL5wWeIqhWlAVnFBylGt4k/2LBXaCa
+	smoVnFbOXnMKtygrpm7umu5EUJKhMedXXwkNYChtFMea+JD2Rw2T3lI16w+29cuRFvSJ
+	M8iJQVAIbTK6ohaKWqrQUucsfWj3v6Zg3u6jdnWiX44UAKJYP9sQzlKJR8iQi8MwGcEt
+	Ed9YsZgqog//Jh2Y9RCY9aGaKluEQA0yQlwd+FdoIS9dMazaIqzx38VRahFJOSWCTHfR
+	H0zihyP3C6KePhaRmA22CayN4rEXaLRZrF8BudMU/2rbJAkx5+Q8z/UNu+e0CGdAc3Sl
+	/pFQ==
+X-Gm-Message-State: AGRZ1gJ4UpdCd/bsR2uEUF05BcZww3S3+0SP2lNlTH0n+FL/SrMRFIfD
+	NJeznZ2L+83GSB/me475J5wPYcv1X1+KraBNFaY=
+X-Received: by 2002:a0d:e654:: with SMTP id
+	p81-v6mr16144959ywe.217.1541981708876; 
+	Sun, 11 Nov 2018 16:15:08 -0800 (PST)
 MIME-Version: 1.0
 References: <20181109134731.11605-1-peter.maydell@linaro.org>
-	<20181109134731.11605-3-peter.maydell@linaro.org>
-In-Reply-To: <20181109134731.11605-3-peter.maydell@linaro.org>
+	<20181109134731.11605-4-peter.maydell@linaro.org>
+In-Reply-To: <20181109134731.11605-4-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Mon, 12 Nov 2018 00:45:36 +0100
-Message-ID: <CAAdtpL5e=LfsKy_HLFYU4UZPF9-gDw=keZA8ooCJ6e_ayjgiiQ@mail.gmail.com>
+Date: Mon, 12 Nov 2018 01:14:57 +0100
+Message-ID: <CAAdtpL4JRDUQafj2fGapgJsG+vAaexu7ACP6cjUiCDh33gdA4w@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.219.194
-Subject: Re: [Qemu-arm] [PATCH for-v3.1 2/3] target/arm: Track the state of
- our irq lines from the GIC explicitly
+X-Received-From: 209.85.161.49
+Subject: Re: [Qemu-arm] [PATCH for-v3.1 3/3] target/arm: Correctly implement
+ handling of HCR_EL2.{VI, VF}
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,7 +101,24 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, adam.lackorzynski@kernkonzept.com,
 	Patch Tracking <patches@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ftcUaV2W/z4z
+X-TUID: na5hozq+L27q
+
+On Fri, Nov 9, 2018 at 2:48 PM Peter Maydell <peter.maydell@linaro.org> wro=
+te:
+>
+> In commit 8a0fc3a29fc2315325400 we tried to implement HCR_EL2.{VI,VF},
+> but we got it wrong and had to revert it.
+>
+> In that commit we implemented them as simply tracking whether there
+> is a pending virtual IRQ or virtual FIQ. This is not correct -- these
+> bits cause a software-generated VIRQ/VFIQ, which is distinct from
+> whether there is a hardware-generated VIRQ/VFIQ caused by the
+> external interrupt controller. So we need to track separately
+> the HCR_EL2 bit state and the external virq/vfiq line state, and
+> OR the two together to get the actual pending VIRQ/VFIQ state.
+>
+> Fixes: 8a0fc3a29fc2315325400c738f807d0d4ae0ab7f
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 On Fri, Nov 9, 2018 at 2:49 PM Peter Maydell <peter.maydell@linaro.org> wro=
 te:
@@ -131,162 +148,168 @@ te:
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 > ---
->  target/arm/cpu.h     |  3 +++
->  target/arm/cpu.c     | 16 ++++++++++++++
->  target/arm/machine.c | 51 ++++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 70 insertions(+)
+>  target/arm/internals.h | 18 ++++++++++++++++
+>  target/arm/cpu.c       | 48 +++++++++++++++++++++++++++++++++++++++++-
+>  target/arm/helper.c    | 20 ++++++++++++++++--
+>  3 files changed, 83 insertions(+), 3 deletions(-)
 >
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index b5eff79f73b..f1913cdad26 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -538,6 +538,9 @@ typedef struct CPUARMState {
->          uint64_t esr;
->      } serror;
->
-> +    /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
-> +    uint32_t irq_line_state;
-> +
->      /* Thumb-2 EE state.  */
->      uint32_t teecr;
->      uint32_t teehbr;
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 784a4c2dfcc..45c16ae90ba 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -449,6 +449,12 @@ static void arm_cpu_set_irq(void *opaque, int irq, i=
-nt level)
->          [ARM_CPU_VFIQ] =3D CPU_INTERRUPT_VFIQ
->      };
->
-> +    if (level) {
-> +        env->irq_line_state |=3D mask[irq];
-> +    } else {
-> +        env->irq_line_state &=3D ~mask[irq];
-> +    }
-> +
->      switch (irq) {
->      case ARM_CPU_VIRQ:
->      case ARM_CPU_VFIQ:
-> @@ -473,17 +479,27 @@ static void arm_cpu_kvm_set_irq(void *opaque, int i=
-rq, int level)
->      ARMCPU *cpu =3D opaque;
->      CPUState *cs =3D CPU(cpu);
->      int kvm_irq =3D KVM_ARM_IRQ_TYPE_CPU << KVM_ARM_IRQ_TYPE_SHIFT;
-> +    uint32_t linestate_bit;
->
->      switch (irq) {
->      case ARM_CPU_IRQ:
->          kvm_irq |=3D KVM_ARM_IRQ_CPU_IRQ;
-> +        linestate_bit =3D CPU_INTERRUPT_HARD;
->          break;
->      case ARM_CPU_FIQ:
->          kvm_irq |=3D KVM_ARM_IRQ_CPU_FIQ;
-> +        linestate_bit =3D CPU_INTERRUPT_FIQ;
->          break;
->      default:
->          g_assert_not_reached();
->      }
-> +
-> +    if (level) {
-> +        env->irq_line_state |=3D linestate_bit;
-> +    } else {
-> +        env->irq_line_state &=3D ~linestate_bit;
-> +    }
-> +
->      kvm_irq |=3D cs->cpu_index << KVM_ARM_IRQ_VCPU_SHIFT;
->      kvm_set_irq(kvm_state, kvm_irq, level ? 1 : 0);
->  #endif
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index 239fe4e84d1..2033816a64e 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -192,6 +192,22 @@ static const VMStateDescription vmstate_serror =3D {
->      }
->  };
->
-> +static bool irq_line_state_needed(void *opaque)
-> +{
-> +    return true;
-> +}
-> +
-> +static const VMStateDescription vmstate_irq_line_state =3D {
-> +    .name =3D "cpu/irq-line-state",
-> +    .version_id =3D 1,
-> +    .minimum_version_id =3D 1,
-> +    .needed =3D irq_line_state_needed,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(env.irq_line_state, ARMCPU),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static bool m_needed(void *opaque)
->  {
->      ARMCPU *cpu =3D opaque;
-> @@ -625,11 +641,44 @@ static int cpu_pre_save(void *opaque)
->      return 0;
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 6c2bb2deebd..a32d359dd03 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -871,4 +871,22 @@ static inline const char *aarch32_mode_name(uint32_t=
+ psr)
+>      return cpu_mode_names[psr & 0xf];
 >  }
 >
-> +static int cpu_pre_load(void *opaque)
+> +/**
+> + * arm_cpu_update_virq: Update CPU_INTERRUPT_VIRQ bit in cs->interrupt_r=
+equest
+> + *
+> + * Update the CPU_INTERRUPT_VIRQ bit in cs->interrupt_request, following
+> + * a change to either the input VIRQ line from the GIC or the HCR_EL2.VI=
+ bit.
+> + * Must be called with the iothread lock held.
+> + */
+> +void arm_cpu_update_virq(ARMCPU *cpu);
+> +
+> +/**
+> + * arm_cpu_update_vfiq: Update CPU_INTERRUPT_VFIQ bit in cs->interrupt_r=
+equest
+> + *
+> + * Update the CPU_INTERRUPT_VFIQ bit in cs->interrupt_request, following
+> + * a change to either the input VFIQ line from the GIC or the HCR_EL2.VF=
+ bit.
+> + * Must be called with the iothread lock held.
+> + */
+> +void arm_cpu_update_vfiq(ARMCPU *cpu);
+> +
+>  #endif
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 45c16ae90ba..6fbea4dc88c 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -436,6 +436,48 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs,=
+ int interrupt_request)
+>  }
+>  #endif
+>
+> +void arm_cpu_update_virq(ARMCPU *cpu)
 > +{
-> +    ARMCPU *cpu =3D opaque;
-> +    CPUARMState *env =3D &cpu->env;
-> +
 > +    /*
-> +     * Pre-initialize irq_line_state to a value that's never valid as
-> +     * real data, so cpu_post_load() can tell whether we've seen the
-> +     * irq-line-state subsection in the incoming migration state.
+> +     * Update the interrupt level for VIRQ, which is the logical OR of
+> +     * the HCR_EL2.VI bit and the input line level from the GIC.
 > +     */
-> +    env->irq_line_state =3D UINT32_MAX;
+> +    CPUARMState *env =3D &cpu->env;
+> +    CPUState *cs =3D CPU(cpu);
 > +
-> +    return 0;
+> +    bool new_state =3D (env->cp15.hcr_el2 & HCR_VI) ||
+> +        (env->irq_line_state & CPU_INTERRUPT_VIRQ);
+> +
+> +    if (new_state !=3D ((cs->interrupt_request & CPU_INTERRUPT_VIRQ) !=
+=3D 0)) {
+> +        if (new_state) {
+> +            cpu_interrupt(cs, CPU_INTERRUPT_VIRQ);
+> +        } else {
+> +            cpu_reset_interrupt(cs, CPU_INTERRUPT_VIRQ);
+> +        }
+> +    }
 > +}
 > +
->  static int cpu_post_load(void *opaque, int version_id)
->  {
->      ARMCPU *cpu =3D opaque;
-> +    CPUARMState *env =3D &cpu->env;
->      int i, v;
->
+> +void arm_cpu_update_vfiq(ARMCPU *cpu)
+> +{
 > +    /*
-> +     * Handle migration compatibility from old QEMU which didn't
-> +     * send the irq-line-state subsection. A QEMU without it did not
-> +     * implement the HCR_EL2.{VI,VF} bits as generating interrupts,
-> +     * so for TCG the line state matches the bits set in cs->interrupt_r=
-equest.
-> +     * For KVM the line state is not stored in cs->interrupt_request
-> +     * and so this will leave irq_line_state as 0, but this is OK becaus=
-e
-> +     * we only need to care about it for TCG.
+> +     * Update the interrupt level for VFIQ, which is the logical OR of
+> +     * the HCR_EL2.VF bit and the input line level from the GIC.
 > +     */
-> +    if (env->irq_line_state =3D=3D UINT32_MAX) {
-> +        CPUState *cs =3D CPU(cpu);
+> +    CPUARMState *env =3D &cpu->env;
+> +    CPUState *cs =3D CPU(cpu);
 > +
-> +        env->irq_line_state =3D cs->interrupt_request &
-> +            (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ |
-> +             CPU_INTERRUPT_VIRQ | CPU_INTERRUPT_VFIQ);
+> +    bool new_state =3D (env->cp15.hcr_el2 & HCR_VF) ||
+> +        (env->irq_line_state & CPU_INTERRUPT_VFIQ);
+> +
+> +    if (new_state !=3D ((cs->interrupt_request & CPU_INTERRUPT_VFIQ) !=
+=3D 0)) {
+> +        if (new_state) {
+> +            cpu_interrupt(cs, CPU_INTERRUPT_VFIQ);
+> +        } else {
+> +            cpu_reset_interrupt(cs, CPU_INTERRUPT_VFIQ);
+> +        }
 > +    }
+> +}
 > +
->      /* Update the values list from the incoming migration data.
->       * Anything in the incoming data which we don't know about is
->       * a migration failure; anything we know about but the incoming
-> @@ -680,6 +729,7 @@ const VMStateDescription vmstate_arm_cpu =3D {
->      .version_id =3D 22,
->      .minimum_version_id =3D 22,
->      .pre_save =3D cpu_pre_save,
-> +    .pre_load =3D cpu_pre_load,
->      .post_load =3D cpu_post_load,
->      .fields =3D (VMStateField[]) {
->          VMSTATE_UINT32_ARRAY(env.regs, ARMCPU, 16),
-> @@ -747,6 +797,7 @@ const VMStateDescription vmstate_arm_cpu =3D {
->          &vmstate_sve,
->  #endif
->          &vmstate_serror,
-> +        &vmstate_irq_line_state,
->          NULL
+>  #ifndef CONFIG_USER_ONLY
+>  static void arm_cpu_set_irq(void *opaque, int irq, int level)
+>  {
+> @@ -457,9 +499,13 @@ static void arm_cpu_set_irq(void *opaque, int irq, i=
+nt level)
+>
+>      switch (irq) {
+>      case ARM_CPU_VIRQ:
+> +        assert(arm_feature(env, ARM_FEATURE_EL2));
+> +        arm_cpu_update_virq(cpu);
+> +        break;
+>      case ARM_CPU_VFIQ:
+>          assert(arm_feature(env, ARM_FEATURE_EL2));
+> -        /* fall through */
+> +        arm_cpu_update_vfiq(cpu);
+> +        break;
+>      case ARM_CPU_IRQ:
+>      case ARM_CPU_FIQ:
+>          if (level) {
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index f3878f505b7..771e4c3d0fb 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -3958,6 +3958,21 @@ static void hcr_write(CPUARMState *env, const ARMC=
+PRegInfo *ri, uint64_t value)
+>          tlb_flush(CPU(cpu));
 >      }
->  };
+>      env->cp15.hcr_el2 =3D value;
+> +
+> +    /*
+> +     * Updates to VI and VF require us to update the status of
+> +     * virtual interrupts, which are the logical OR of these bits
+> +     * and the state of the input lines from the GIC. (This requires
+> +     * that we have the iothread lock, which is done by marking the
+> +     * reginfo structs as ARM_CP_IO.)
+> +     * Note that if a write to HCR pends a VIRQ or VFIQ it is never
+> +     * possible for it to be taken immediately, because VIRQ and
+> +     * VFIQ are masked unless running at EL0 or EL1, and HCR
+> +     * can only be written at EL2.
+> +     */
+> +    g_assert(qemu_mutex_iothread_locked());
+> +    arm_cpu_update_virq(cpu);
+> +    arm_cpu_update_vfiq(cpu);
+>  }
+>
+>  static void hcr_writehigh(CPUARMState *env, const ARMCPRegInfo *ri,
+> @@ -3978,11 +3993,12 @@ static void hcr_writelow(CPUARMState *env, const =
+ARMCPRegInfo *ri,
+>
+>  static const ARMCPRegInfo el2_cp_reginfo[] =3D {
+>      { .name =3D "HCR_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .type =3D ARM_CP_IO,
+>        .opc0 =3D 3, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 0,
+>        .access =3D PL2_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.hc=
+r_el2),
+>        .writefn =3D hcr_write },
+>      { .name =3D "HCR", .state =3D ARM_CP_STATE_AA32,
+> -      .type =3D ARM_CP_ALIAS,
+> +      .type =3D ARM_CP_ALIAS | ARM_CP_IO,
+>        .cp =3D 15, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 0,
+>        .access =3D PL2_RW, .fieldoffset =3D offsetof(CPUARMState, cp15.hc=
+r_el2),
+>        .writefn =3D hcr_writelow },
+> @@ -4222,7 +4238,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] =3D {
+>
+>  static const ARMCPRegInfo el2_v8_cp_reginfo[] =3D {
+>      { .name =3D "HCR2", .state =3D ARM_CP_STATE_AA32,
+> -      .type =3D ARM_CP_ALIAS,
+> +      .type =3D ARM_CP_ALIAS | ARM_CP_IO,
+>        .cp =3D 15, .opc1 =3D 4, .crn =3D 1, .crm =3D 1, .opc2 =3D 4,
+>        .access =3D PL2_RW,
+>        .fieldoffset =3D offsetofhigh32(CPUARMState, cp15.hcr_el2),
 > --
 > 2.19.1
 >

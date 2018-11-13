@@ -1,101 +1,78 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4618293wrw;
-        Tue, 13 Nov 2018 09:10:08 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dJybGTysNyGtAlgkWTMIE9/Xl/NyGIrGZurL9PXglzq+t55BnaK9b1mPERfzs1g8WYWO5D
-X-Received: by 2002:a37:8541:: with SMTP id h62mr5522094qkd.213.1542129008691;
-        Tue, 13 Nov 2018 09:10:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542129008; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4624457wrw;
+        Tue, 13 Nov 2018 09:15:06 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f4+G1T70+10fBxekf/PC38j1HmDqSjSuYYLNM7XIX0lwTELBtv7INlNaIaxldzq3LbvvaG
+X-Received: by 2002:ac8:468f:: with SMTP id g15mr5735409qto.363.1542129306493;
+        Tue, 13 Nov 2018 09:15:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542129306; cv=none;
         d=google.com; s=arc-20160816;
-        b=AENEy5x86OG8kLzvN6Gv1+0Ynxt0lS/bb0A0rY4KnRBeg0WV7j0sQAkXXSvTE7qQ+N
-         LYsOPAN7l00GLr7e5c52f70GThLJt+MHg1cjb6/8+PHIgzb4BPh3+enf7ZzhmMiw2rcj
-         7Ha2PcdongJ8HYezwHO86jx/YwDP4LPZ2shWfjDQ34HK4RmgOl/tjhkyKPD11vFwAxNP
-         Ex1sq96ungldcqXEyX7DL0+86cRka77VHtOv6xMHkOJqokUw7DkOBh6Fe8XL4dudWGlw
-         w/W93iVBYmHU4QUBwih9SxtNC3cazeV6sORsvre8sno8Y7lgjUK35YDUv6MRr3ZQjUTx
-         HfLA==
+        b=yUJZkchJUmOQkEv11NYRExVqym75AyGhU7zx59EeYjXXF6MnrfG7G3DQ+yBiEp2gY7
+         9n7Z1fGiSADNnQXP7OinJCuhji6mXi7GHQH4dhbIr8OH87H/UdLO3xtNnCNsHLOLJJYD
+         IznPidSWPwb3nIqrxzA2dL7Zmu2zRK0p96mNMCqYkVX5oUbBDNFVcelwmymAvO6b0IzJ
+         yFUQpbDPZF7GF2rmWuCBaku9kHnL562ipcjixZsnDky98tHPAuH7kveqGiln+v/TooZ+
+         /1UsVOj6gzG3kE1uh+UahyDQyHi7UzLiyJIeoL25euaaKJeQy7YLfopUzAbYaNjYbnb+
+         Tpag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:references
-         :in-reply-to:mime-version:dkim-signature;
-        bh=iKa68JpuUKsbx/m/GdG74lzvTWA4XMJSXLAeTSd97hg=;
-        b=B0KERd4WMNbKpcLmwxHpOCVmw0K3dPAQNkYlRMm+luFEuijb4z+oobhyDT9Y7oUSQ2
-         odSnNx5QK7Mqaq9Uwc9tpMh7VmXKTks4nQ8ZiDbnxqJb7avoTqogPL26VJIQWJVTFX/m
-         p90ISixtb3KGzolDxWfbD45k7QCiaIlOalIYiHNWwqEAzOZWqTGVc+fcg+YweTF9Tbm0
-         F0D6X9J4+Qt672XSokr/V9CW8XFf+Q3/9ufL/hYMnde+yicbmDd2ZB42GipkM53RSQD3
-         /dtG8W/oib61Q60qxoMO5uJ2k/AV8YarbsslmH2xn+/N9Jro8rJ924Emuibd8cqBcEj7
-         WwGg==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=AzKWLEHM17VI0o4jLQ/tT6arGYhwQMv+0wJ/UZsxmjA=;
+        b=hkD6d/VvMkrIb+c/AtxDqlu3O9e25cPpFC3vEsgLabnMLXquyL2tgIl1DJdeu9IdWX
+         rAA3Sget1tBOBkkiNPUcooVdEVhcxGvF2clPeOqoai9MzacF5zQ8DQy6MTCsdxKkfw8j
+         yDHxaJSKUiCxIp/OqhcT5QN39ikhz62ofVbRRv94mT+VBhrqLtorrgOQHjBD88vQqOhi
+         oeRbvCyxv5U3+gH0YmqHs2b85r1BHOzJ6mdq7rOTeawizFpOixa6Odn+n4re839YimgR
+         b61xu6pngqNW7RfMAaTLm/qv82iSgVxnYGy88Fv+SHCTUmeNvw0shXgPPXN7Q/X3hrTr
+         MWLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W88pfunS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m93si10722908qtd.270.2018.11.13.09.10.08
+        by mx.google.com with ESMTPS id f12-v6si876156qth.324.2018.11.13.09.15.06
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Nov 2018 09:10:08 -0800 (PST)
+        Tue, 13 Nov 2018 09:15:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=W88pfunS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55171 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:55217 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gMcCW-00020P-29
-	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:10:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35179)
+	id 1gMcHK-0006in-0L
+	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:15:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36285)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gMc9m-0006P5-76
-	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 12:07:19 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gMcAj-0007T6-K7
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 12:08:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gMc1m-0000BY-9s
-	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:59:03 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41165)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gMc1l-0000Ad-Tn
-	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:59:02 -0500
-Received: by mail-oi1-x244.google.com with SMTP id g188-v6so10918958oif.8
-	for <qemu-arm@nongnu.org>; Tue, 13 Nov 2018 08:59:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=iKa68JpuUKsbx/m/GdG74lzvTWA4XMJSXLAeTSd97hg=;
-	b=W88pfunSXeJDS4FaXw5lqMb5mV0pNAuFCSeODrPF0fgkF50WChHqfDoUok4WLUIMSi
-	AHRG90lUO14JotChU3i8KAc47CiMBQXTFMAQ/x6dPMm6QOOdbXr4X3BvRbSa6Zlr92zM
-	idm3GzIBvmmfGADFdb8JLOtYb57lHozYv7G5U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=iKa68JpuUKsbx/m/GdG74lzvTWA4XMJSXLAeTSd97hg=;
-	b=sdglPK/AZOXikDfIJQedvqkT49wdjsA8bWz3b8AXPKjhBZpF41LiG03OhsmIslvtAy
-	WAFUuiwJ+IJJp0Fw2b8PulevywPTvM+4qXYeI6c5HydslSy2m07xjm+xGLXMmpysa1M6
-	j5mooE5FCMAeKedyGbOmNmwMsISzCWtHIG2eW7Czf1Kc57zhr/FZQK7YSEQxNYwlHgKj
-	uSKlBYqzzN5KYpnrVHIC8pZ0CTGMRWZRsFMYvvy+9af6B6bs2F+CqIxrblrxb4YLsJPN
-	Ou9TbR6YoMrnkG9E/WLsDAqC5r03rzC3Ioq1eyFCntrrfwEC+7k0vzswJHWbcm4BZc7a
-	zLMQ==
-X-Gm-Message-State: AGRZ1gK7mkkQ9PEGqifro+srsv/SIm7a5cj5CBH+enUC0nhmkcB11aHo
-	rM0gLWCZdYX+OnxjiXOP9sh+WYlRtdp6sz0VZFuzkg==
-X-Received: by 2002:aca:5ac5:: with SMTP id
-	o188-v6mr3222614oib.146.1542128340837; 
-	Tue, 13 Nov 2018 08:59:00 -0800 (PST)
+	(envelope-from <sameo@linux.intel.com>) id 1gMbwl-0003zR-So
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:53:53 -0500
+Received: from mga06.intel.com ([134.134.136.31]:62850)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
+	id 1gMbwd-0003nD-Qq; Tue, 13 Nov 2018 11:53:44 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	13 Nov 2018 08:53:24 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922086"
+Received: from qingbai-mobl.ger.corp.intel.com (HELO
+	caravaggio.ger.corp.intel.com) ([10.249.41.239])
+	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:22 -0800
+From: Samuel Ortiz <sameo@linux.intel.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 13 Nov 2018 17:52:34 +0100
+Message-Id: <20181113165247.4806-1-sameo@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Tue, 13 Nov 2018 08:58:40
-	-0800 (PST)
-In-Reply-To: <20181113165247.4806-2-sameo@linux.intel.com>
-References: <20181113165247.4806-1-sameo@linux.intel.com>
-	<20181113165247.4806-2-sameo@linux.intel.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Nov 2018 16:58:40 +0000
-Message-ID: <CAFEAcA-npVS1Q0=or=p-kjP0Nf4h1n+qUL7y8+yYCdtuHa7Fxg@mail.gmail.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH 01/13] target: arm: Add copyright boilerplate
+X-Received-From: 134.134.136.31
+Subject: [Qemu-arm] [PATCH 00/13] Support disabling TCG on ARM
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,40 +84,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	richard.henderson@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zuBFVk/zIDSn
+X-TUID: PNkt64V5sCOP
 
-On 13 November 2018 at 16:52, Samuel Ortiz <sameo@linux.intel.com> wrote:
-> From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
-> Reviewed-by: Samuel Ortiz <sameo@linux.intel.com>
-> ---
->  target/arm/helper.c | 7 +++++++
->  1 file changed, 7 insertions(+)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 0da1424f72..3d4e9c5c8a 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -1,3 +1,10 @@
-> +/*
-> + * ARM generic helpers.
-> + *
-> + * This code is licensed under the GNU GPL v2.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
+This patchset allows for building and running ARM targets with TCG
+disabled. It splits the target/arm/helper.c file into logical TCG and
+non TCG dependent files so that one can build and run QEMU binaries with
+or without TCG enabled.
 
-The human readable text says "v2", but the SPDX tag says
-"v2 or later". Which is right? (The top level LICENSE file says
-source files with no specific license are 2-or-later).
+The rationale behind this work comes from the NEMU project where we're
+trying to only support x86 and ARM 64-bit architectures, without
+including the TCG code base. We can only do so if we can build and run
+ARM binaries with TCG disabled.
 
-thanks
--- PMM
+The patches are also available here:
+https://github.com/intel/nemu/tree/topic/upstream/arm-tcg-disable
+
+Philippe Mathieu-Daudé (2):
+  target: arm: Add copyright boilerplate
+  target: arm: Remove unused headers
+
+Samuel Ortiz (11):
+  target: arm: Move all v7m helpers into their own file
+  target: arm: Move all interrupt and exception handlers into their own
+    file
+  target: arm: Move the DC ZVA helper into op_helper
+  target: arm: Make ARM TLB filling routine static
+  target: arm: Remove the LDST headers
+  target: arm: Move all VFP helpers into their own file
+  target: arm: Move CPU state dumping routines to helper.c
+  target: arm: Move watchpoints APIs to helper.c
+  target: arm: Define TCG dependent functions when TCG is enabled
+  target: arm: Makefile cleanup
+  target: arm: Do not build TCG objects when TCG is off
+
+ target/arm/internals.h     |   60 +-
+ target/arm/translate.h     |    7 -
+ target/arm/cpu.c           |    8 +-
+ target/arm/excp_helper.c   |  550 +++
+ target/arm/helper.c        | 8467 ++++++++++++------------------------
+ target/arm/m_helper.c      | 1892 ++++++++
+ target/arm/op_helper.c     |  326 +-
+ target/arm/translate-a64.c |  125 -
+ target/arm/translate.c     |   87 -
+ target/arm/vfp_helper.c    |  893 ++++
+ target/arm/Makefile.objs   |   19 +-
+ 11 files changed, 6262 insertions(+), 6172 deletions(-)
+ create mode 100644 target/arm/excp_helper.c
+ create mode 100644 target/arm/m_helper.c
+ create mode 100644 target/arm/vfp_helper.c
+
+-- 
+2.19.1
+

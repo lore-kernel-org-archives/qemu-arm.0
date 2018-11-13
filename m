@@ -1,81 +1,82 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4616030wrw;
-        Tue, 13 Nov 2018 09:08:29 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fxwr+wO8zoSoDRtgwCvOPfoMpm/7YgTk26vfeAwXStJDJu/hdAb2/TXpH+yvSeQT4nCMnK
-X-Received: by 2002:ac8:3a64:: with SMTP id w91mr5849779qte.70.1542128909892;
-        Tue, 13 Nov 2018 09:08:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542128909; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4616559wrw;
+        Tue, 13 Nov 2018 09:08:52 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fHWicVKOFHX7BTN3FE4BY6reYyvO++CwVOiDTqgBtQJzMn1bpNCwg6l9ODIUGLYuw+5NcM
+X-Received: by 2002:ac8:4086:: with SMTP id p6mr5540981qtl.378.1542128932328;
+        Tue, 13 Nov 2018 09:08:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542128932; cv=none;
         d=google.com; s=arc-20160816;
-        b=ql2gIOvYegLb3IrACQmUUzq56Px7nhTI6KeKTPGC/XpyNHhmgoUL5gJyDCU+jvG44o
-         TvDC7Y/7Zhtmcm82FHGPcsC9nZ7utOXzhr7JWoLMUhvnx1Pt61Dy4ygKGv8CtqD6pVAP
-         86k7/zGwmeJ5k/KCB1Rf2yR0dAfEGjnRI3yzRqeBOdG+6Zl2hHpdzQdzaG19Hu/NexDN
-         KJKXbXfTE5AxujKcmTP/LejuQ7InCK7SMSh+Ie9imhzNd7lcqxowAlHyrfFObxk7KeUJ
-         uiGzX6SULTEYuZIQfii3bG+mmGImz6sVyDstnVPBU9oecBoGXeWwt9Rrv0Bly3Cq9QfP
-         NuJg==
+        b=LLJsK81CTFuPXMOIdjaG6suvRXfl0B8C5aYiRK9L7tNa78hhi0jwAC5eruiuDqzpe3
+         L4Pwy33vekInE/Hb29MJDFOW7t83mNHwJZ+Mu8PINySEcNA2ZTs/igkPpwj+coJu4b1V
+         kSo6r3oV8XX7R1Bc0iAibVcswNKBkI8C5A8dSjSefiYOkRxVpfRN4TDys36QKFssQNuU
+         THasPu3LGVfprFmerBgqwKCA0YSKHMhwqoMb1j/E4dVo88i4B51aMROnfWO18pgH9RWt
+         i22T8s4YPwNGfUY73Cg9TzXIp+PJG1v819FMgFQomokAfNYfDF4RYHyx1Tmk2RwEyZsz
+         Ujag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=bRQkcSP88C73nDvIQDV0PeUDgtIBCQ3EZpUOuGh6RgE=;
-        b=SpY3gQwzNYOOL07IDlFPMRriQIXS7Kd6mTZW6rDA4urAgXXPT+MPj2U9Mn0f81H6PR
-         FjZVv2JeElYgxmuq72JS8qpvJd1PN1WLWu5NynBb5zf2sp9+5kRZxHqZGOSkiDSm8DiQ
-         /Ve3ezUSj3Nh3Qo/4NQr4aEM9Fc9FVbtaHtAjMrtXoMV7Lv1wsXvT4ykNcbm6IjkdXyo
-         TKFg5WjUG+PvzICtRFNpeTA8ha3tf+PAAlhZIncUF1q6r0uSfGUmVKCAoonM92glI4Dj
-         rsVB8NOdwjXOMKUUCbGR3yfffInoC8TN1a4vW2LrCJ0IoI0bEVI/nXFyK6S+P7Nk/txl
-         6jEg==
+        bh=Nyz4L+yVNi5UKAmJDC9hKnUutSHQU7Ax/ziAYK9VWME=;
+        b=cp0tJNkV3qU8ZKRD8ORDQUS64wUltVe564+6DkpnIlfCfTZpHZYXQJG3h3g5FdehZq
+         qL8MCF6SYiJu0z6X65F9zgkg6v6zBTzLh8/0qE7skmpzugeLTHDbL/hcyAnl644LKP83
+         d1EqXNfwi6QH8lqNsKUTNigJ8Ar15uPKoDG96QHPGiQPjB0+ngpeD/PQWpKAagS+GvV3
+         ttpn2B+sC2HSgkH62jdh7XpnJJyvmBE931TdkOvApN31eoi9hKc+O8rr2fpTW3RhhO2x
+         TGGJ8WEIRX0+sYIHJfQertqlCGncTeIEJjlKx9D+q1WoD0QjAnmj1TAo2xB3bjJiQSnZ
+         7Rrg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b20si1705886qvd.185.2018.11.13.09.08.29
+        by mx.google.com with ESMTPS id p13si1161750qvn.168.2018.11.13.09.08.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Nov 2018 09:08:29 -0800 (PST)
+        Tue, 13 Nov 2018 09:08:52 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:55160 helo=lists.gnu.org)
+Received: from localhost ([::1]:55165 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gMcAv-0000IH-76
-	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:08:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35072)
+	id 1gMcBH-0000gP-Kz
+	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:08:51 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35456)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMcAR-0006Fr-P2
-	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 12:08:05 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gMcAf-0006qZ-EI
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 12:08:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMbwo-000412-7x
-	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:53:56 -0500
-Received: from mga06.intel.com ([134.134.136.31]:62850)
+	(envelope-from <sameo@linux.intel.com>) id 1gMbwl-0003zK-Rk
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:53:53 -0500
+Received: from mga06.intel.com ([134.134.136.31]:62852)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gMbwi-0003nD-E2; Tue, 13 Nov 2018 11:53:51 -0500
+	id 1gMbwf-0003pH-PW; Tue, 13 Nov 2018 11:53:46 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
 	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	13 Nov 2018 08:53:44 -0800
+	13 Nov 2018 08:53:36 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922117"
+X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922105"
 Received: from qingbai-mobl.ger.corp.intel.com (HELO
 	caravaggio.ger.corp.intel.com) ([10.249.41.239])
-	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:42 -0800
+	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:34 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 13 Nov 2018 17:52:43 +0100
-Message-Id: <20181113165247.4806-10-sameo@linux.intel.com>
+Date: Tue, 13 Nov 2018 17:52:39 +0100
+Message-Id: <20181113165247.4806-6-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181113165247.4806-1-sameo@linux.intel.com>
 References: <20181113165247.4806-1-sameo@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 134.134.136.31
-Subject: [Qemu-arm] [PATCH 09/13] target: arm: Move CPU state dumping
- routines to helper.c
+Subject: [Qemu-arm] [PATCH 05/13] target: arm: Move the DC ZVA helper into
+ op_helper
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,524 +92,204 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	richard.henderson@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T99kKodOKk8B
-
-They're not TCG specific and should be living the generic helper file
-instead.
+X-TUID: eYRobHlmsP3i
 
 Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Robert Bradford <robert.bradford@intel.com>
 ---
- target/arm/internals.h     |  12 +++
- target/arm/translate.h     |   7 --
- target/arm/helper.c        | 214 +++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c | 125 ----------------------
- target/arm/translate.c     |  87 ---------------
- 5 files changed, 226 insertions(+), 219 deletions(-)
+ target/arm/helper.c    | 84 ------------------------------------------
+ target/arm/op_helper.c | 84 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 84 insertions(+), 84 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 06439467d2..ddb594d58d 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -937,4 +937,16 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-                        int *prot, bool *is_subpage,
-                        ARMMMUFaultInfo *fi, uint32_t *mregion);
- 
-+#ifdef TARGET_AARCH64
-+void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
-+                            fprintf_function cpu_fprintf, int flags);
-+
-+#else
-+static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
-+                                          fprintf_function cpu_fprintf,
-+                                          int flags)
-+{
-+}
-+#endif
-+
- #endif
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 1550aa8bc7..059645c23c 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -155,8 +155,6 @@ static inline void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
- #ifdef TARGET_AARCH64
- void a64_translate_init(void);
- void gen_a64_set_pc_im(uint64_t val);
--void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
--                            fprintf_function cpu_fprintf, int flags);
- extern const TranslatorOps aarch64_translator_ops;
- #else
- static inline void a64_translate_init(void)
-@@ -167,11 +165,6 @@ static inline void gen_a64_set_pc_im(uint64_t val)
- {
- }
- 
--static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
--                                          fprintf_function cpu_fprintf,
--                                          int flags)
--{
--}
- #endif
- 
- void arm_test_cc(DisasCompare *cmp, int cc);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 996dfbbda2..ff3011fcb6 100644
+index 7b30a4cb49..bc2c8cdb67 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -9555,4 +9555,218 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
-         aarch64_sve_narrow_vq(env, new_len + 1);
+@@ -8917,90 +8917,6 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+ 
+ #endif
+ 
+-void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
+-{
+-    /* Implement DC ZVA, which zeroes a fixed-length block of memory.
+-     * Note that we do not implement the (architecturally mandated)
+-     * alignment fault for attempts to use this on Device memory
+-     * (which matches the usual QEMU behaviour of not implementing either
+-     * alignment faults or any memory attribute handling).
+-     */
+-
+-    ARMCPU *cpu = arm_env_get_cpu(env);
+-    uint64_t blocklen = 4 << cpu->dcz_blocksize;
+-    uint64_t vaddr = vaddr_in & ~(blocklen - 1);
+-
+-#ifndef CONFIG_USER_ONLY
+-    {
+-        /* Slightly awkwardly, QEMU's TARGET_PAGE_SIZE may be less than
+-         * the block size so we might have to do more than one TLB lookup.
+-         * We know that in fact for any v8 CPU the page size is at least 4K
+-         * and the block size must be 2K or less, but TARGET_PAGE_SIZE is only
+-         * 1K as an artefact of legacy v5 subpage support being present in the
+-         * same QEMU executable.
+-         */
+-        int maxidx = DIV_ROUND_UP(blocklen, TARGET_PAGE_SIZE);
+-        void *hostaddr[maxidx];
+-        int try, i;
+-        unsigned mmu_idx = cpu_mmu_index(env, false);
+-        TCGMemOpIdx oi = make_memop_idx(MO_UB, mmu_idx);
+-
+-        for (try = 0; try < 2; try++) {
+-
+-            for (i = 0; i < maxidx; i++) {
+-                hostaddr[i] = tlb_vaddr_to_host(env,
+-                                                vaddr + TARGET_PAGE_SIZE * i,
+-                                                1, mmu_idx);
+-                if (!hostaddr[i]) {
+-                    break;
+-                }
+-            }
+-            if (i == maxidx) {
+-                /* If it's all in the TLB it's fair game for just writing to;
+-                 * we know we don't need to update dirty status, etc.
+-                 */
+-                for (i = 0; i < maxidx - 1; i++) {
+-                    memset(hostaddr[i], 0, TARGET_PAGE_SIZE);
+-                }
+-                memset(hostaddr[i], 0, blocklen - (i * TARGET_PAGE_SIZE));
+-                return;
+-            }
+-            /* OK, try a store and see if we can populate the tlb. This
+-             * might cause an exception if the memory isn't writable,
+-             * in which case we will longjmp out of here. We must for
+-             * this purpose use the actual register value passed to us
+-             * so that we get the fault address right.
+-             */
+-            helper_ret_stb_mmu(env, vaddr_in, 0, oi, GETPC());
+-            /* Now we can populate the other TLB entries, if any */
+-            for (i = 0; i < maxidx; i++) {
+-                uint64_t va = vaddr + TARGET_PAGE_SIZE * i;
+-                if (va != (vaddr_in & TARGET_PAGE_MASK)) {
+-                    helper_ret_stb_mmu(env, va, 0, oi, GETPC());
+-                }
+-            }
+-        }
+-
+-        /* Slow path (probably attempt to do this to an I/O device or
+-         * similar, or clearing of a block of code we have translations
+-         * cached for). Just do a series of byte writes as the architecture
+-         * demands. It's not worth trying to use a cpu_physical_memory_map(),
+-         * memset(), unmap() sequence here because:
+-         *  + we'd need to account for the blocksize being larger than a page
+-         *  + the direct-RAM access case is almost always going to be dealt
+-         *    with in the fastpath code above, so there's no speed benefit
+-         *  + we would have to deal with the map returning NULL because the
+-         *    bounce buffer was in use
+-         */
+-        for (i = 0; i < blocklen; i++) {
+-            helper_ret_stb_mmu(env, vaddr + i, 0, oi, GETPC());
+-        }
+-    }
+-#else
+-    memset(g2h(vaddr), 0, blocklen);
+-#endif
+-}
+-
+ /* Note that signed overflow is undefined in C.  The following routines are
+    careful to use unsigned types where modulo arithmetic is required.
+    Failure to do so _will_ break on newer gcc.  */
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index eb6fb82fb8..44a74cb296 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -1480,3 +1480,87 @@ uint32_t HELPER(ror_cc)(CPUARMState *env, uint32_t x, uint32_t i)
+         return ((uint32_t)x >> shift) | (x << (32 - shift));
      }
  }
 +
-+void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
-+                            fprintf_function cpu_fprintf, int flags)
++void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
 +{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    uint32_t psr = pstate_read(env);
-+    int i;
-+    int el = arm_current_el(env);
-+    const char *ns_status;
++    /* Implement DC ZVA, which zeroes a fixed-length block of memory.
++     * Note that we do not implement the (architecturally mandated)
++     * alignment fault for attempts to use this on Device memory
++     * (which matches the usual QEMU behaviour of not implementing either
++     * alignment faults or any memory attribute handling).
++     */
 +
-+    cpu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
-+    for (i = 0; i < 32; i++) {
-+        if (i == 31) {
-+            cpu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
-+        } else {
-+            cpu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
-+                        (i + 2) % 3 ? " " : "\n");
-+        }
-+    }
++    ARMCPU *cpu = arm_env_get_cpu(env);
++    uint64_t blocklen = 4 << cpu->dcz_blocksize;
++    uint64_t vaddr = vaddr_in & ~(blocklen - 1);
 +
-+    if (arm_feature(env, ARM_FEATURE_EL3) && el != 3) {
-+        ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-+    } else {
-+        ns_status = "";
-+    }
-+    cpu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
-+                psr,
-+                psr & PSTATE_N ? 'N' : '-',
-+                psr & PSTATE_Z ? 'Z' : '-',
-+                psr & PSTATE_C ? 'C' : '-',
-+                psr & PSTATE_V ? 'V' : '-',
-+                ns_status,
-+                el,
-+                psr & PSTATE_SP ? 'h' : 't');
++#ifndef CONFIG_USER_ONLY
++    {
++        /* Slightly awkwardly, QEMU's TARGET_PAGE_SIZE may be less than
++         * the block size so we might have to do more than one TLB lookup.
++         * We know that in fact for any v8 CPU the page size is at least 4K
++         * and the block size must be 2K or less, but TARGET_PAGE_SIZE is only
++         * 1K as an artefact of legacy v5 subpage support being present in the
++         * same QEMU executable.
++         */
++        int maxidx = DIV_ROUND_UP(blocklen, TARGET_PAGE_SIZE);
++        void *hostaddr[maxidx];
++        int try, i;
++        unsigned mmu_idx = cpu_mmu_index(env, false);
++        TCGMemOpIdx oi = make_memop_idx(MO_UB, mmu_idx);
 +
-+    if (!(flags & CPU_DUMP_FPU)) {
-+        cpu_fprintf(f, "\n");
-+        return;
-+    }
-+    if (fp_exception_el(env, el) != 0) {
-+        cpu_fprintf(f, "    FPU disabled\n");
-+        return;
-+    }
-+    cpu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
-+                vfp_get_fpcr(env), vfp_get_fpsr(env));
++        for (try = 0; try < 2; try++) {
 +
-+    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
-+        int j, zcr_len = sve_zcr_len_for_el(env, el);
-+
-+        for (i = 0; i <= FFR_PRED_NUM; i++) {
-+            bool eol;
-+            if (i == FFR_PRED_NUM) {
-+                cpu_fprintf(f, "FFR=");
-+                /* It's last, so end the line.  */
-+                eol = true;
-+            } else {
-+                cpu_fprintf(f, "P%02d=", i);
-+                switch (zcr_len) {
-+                case 0:
-+                    eol = i % 8 == 7;
-+                    break;
-+                case 1:
-+                    eol = i % 6 == 5;
-+                    break;
-+                case 2:
-+                case 3:
-+                    eol = i % 3 == 2;
-+                    break;
-+                default:
-+                    /* More than one quadword per predicate.  */
-+                    eol = true;
++            for (i = 0; i < maxidx; i++) {
++                hostaddr[i] = tlb_vaddr_to_host(env,
++                                                vaddr + TARGET_PAGE_SIZE * i,
++                                                1, mmu_idx);
++                if (!hostaddr[i]) {
 +                    break;
 +                }
 +            }
-+            for (j = zcr_len / 4; j >= 0; j--) {
-+                int digits;
-+                if (j * 4 + 4 <= zcr_len + 1) {
-+                    digits = 16;
-+                } else {
-+                    digits = (zcr_len % 4 + 1) * 4;
++            if (i == maxidx) {
++                /* If it's all in the TLB it's fair game for just writing to;
++                 * we know we don't need to update dirty status, etc.
++                 */
++                for (i = 0; i < maxidx - 1; i++) {
++                    memset(hostaddr[i], 0, TARGET_PAGE_SIZE);
 +                }
-+                cpu_fprintf(f, "%0*" PRIx64 "%s", digits,
-+                            env->vfp.pregs[i].p[j],
-+                            j ? ":" : eol ? "\n" : " ");
++                memset(hostaddr[i], 0, blocklen - (i * TARGET_PAGE_SIZE));
++                return;
++            }
++            /* OK, try a store and see if we can populate the tlb. This
++             * might cause an exception if the memory isn't writable,
++             * in which case we will longjmp out of here. We must for
++             * this purpose use the actual register value passed to us
++             * so that we get the fault address right.
++             */
++            helper_ret_stb_mmu(env, vaddr_in, 0, oi, GETPC());
++            /* Now we can populate the other TLB entries, if any */
++            for (i = 0; i < maxidx; i++) {
++                uint64_t va = vaddr + TARGET_PAGE_SIZE * i;
++                if (va != (vaddr_in & TARGET_PAGE_MASK)) {
++                    helper_ret_stb_mmu(env, va, 0, oi, GETPC());
++                }
 +            }
 +        }
 +
-+        for (i = 0; i < 32; i++) {
-+            if (zcr_len == 0) {
-+                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
-+                            i, env->vfp.zregs[i].d[1],
-+                            env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
-+            } else if (zcr_len == 1) {
-+                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
-+                            ":%016" PRIx64 ":%016" PRIx64 "\n",
-+                            i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
-+                            env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
-+            } else {
-+                for (j = zcr_len; j >= 0; j--) {
-+                    bool odd = (zcr_len - j) % 2 != 0;
-+                    if (j == zcr_len) {
-+                        cpu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
-+                    } else if (!odd) {
-+                        if (j > 0) {
-+                            cpu_fprintf(f, "   [%x-%x]=", j, j - 1);
-+                        } else {
-+                            cpu_fprintf(f, "     [%x]=", j);
-+                        }
-+                    }
-+                    cpu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
-+                                env->vfp.zregs[i].d[j * 2 + 1],
-+                                env->vfp.zregs[i].d[j * 2],
-+                                odd || j == 0 ? "\n" : ":");
-+                }
-+            }
-+        }
-+    } else {
-+        for (i = 0; i < 32; i++) {
-+            uint64_t *q = aa64_vfp_qreg(env, i);
-+            cpu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
-+                        i, q[1], q[0], (i & 1 ? "\n" : " "));
++        /* Slow path (probably attempt to do this to an I/O device or
++         * similar, or clearing of a block of code we have translations
++         * cached for). Just do a series of byte writes as the architecture
++         * demands. It's not worth trying to use a cpu_physical_memory_map(),
++         * memset(), unmap() sequence here because:
++         *  + we'd need to account for the blocksize being larger than a page
++         *  + the direct-RAM access case is almost always going to be dealt
++         *    with in the fastpath code above, so there's no speed benefit
++         *  + we would have to deal with the map returning NULL because the
++         *    bounce buffer was in use
++         */
++        for (i = 0; i < blocklen; i++) {
++            helper_ret_stb_mmu(env, vaddr + i, 0, oi, GETPC());
 +        }
 +    }
++#else
++    memset(g2h(vaddr), 0, blocklen);
++#endif
 +}
-+
- #endif
-+
-+void arm_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
-+                        int flags)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    int i;
-+
-+    if (is_a64(env)) {
-+        aarch64_cpu_dump_state(cs, f, cpu_fprintf, flags);
-+        return;
-+    }
-+
-+    for (i = 0; i < 16; i++) {
-+        cpu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
-+        if ((i % 4) == 3) {
-+            cpu_fprintf(f, "\n");
-+        } else {
-+            cpu_fprintf(f, " ");
-+        }
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        uint32_t xpsr = xpsr_read(env);
-+        const char *mode;
-+        const char *ns_status = "";
-+
-+        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+            ns_status = env->v7m.secure ? "S " : "NS ";
-+        }
-+
-+        if (xpsr & XPSR_EXCP) {
-+            mode = "handler";
-+        } else {
-+            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_MASK) {
-+                mode = "unpriv-thread";
-+            } else {
-+                mode = "priv-thread";
-+            }
-+        }
-+
-+        cpu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
-+                    xpsr,
-+                    xpsr & XPSR_N ? 'N' : '-',
-+                    xpsr & XPSR_Z ? 'Z' : '-',
-+                    xpsr & XPSR_C ? 'C' : '-',
-+                    xpsr & XPSR_V ? 'V' : '-',
-+                    xpsr & XPSR_T ? 'T' : 'A',
-+                    ns_status,
-+                    mode);
-+    } else {
-+        uint32_t psr = cpsr_read(env);
-+        const char *ns_status = "";
-+
-+        if (arm_feature(env, ARM_FEATURE_EL3) &&
-+            (psr & CPSR_M) != ARM_CPU_MODE_MON) {
-+            ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
-+        }
-+
-+        cpu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
-+                    psr,
-+                    psr & CPSR_N ? 'N' : '-',
-+                    psr & CPSR_Z ? 'Z' : '-',
-+                    psr & CPSR_C ? 'C' : '-',
-+                    psr & CPSR_V ? 'V' : '-',
-+                    psr & CPSR_T ? 'T' : 'A',
-+                    ns_status,
-+                    aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
-+    }
-+
-+    if (flags & CPU_DUMP_FPU) {
-+        int numvfpregs = 0;
-+        if (arm_feature(env, ARM_FEATURE_VFP)) {
-+            numvfpregs += 16;
-+        }
-+        if (arm_feature(env, ARM_FEATURE_VFP3)) {
-+            numvfpregs += 16;
-+        }
-+        for (i = 0; i < numvfpregs; i++) {
-+            uint64_t v = *aa32_vfp_dreg(env, i);
-+            cpu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
-+                        i * 2, (uint32_t)v,
-+                        i * 2 + 1, (uint32_t)(v >> 32),
-+                        i, v);
-+        }
-+        cpu_fprintf(f, "FPSCR: %08x\n", (int)env->vfp.xregs[ARM_VFP_FPSCR]);
-+    }
-+}
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index fd36425f1a..642df2f821 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -128,131 +128,6 @@ static inline int get_a64_user_mem_index(DisasContext *s)
-     return arm_to_core_mmu_idx(useridx);
- }
- 
--void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
--                            fprintf_function cpu_fprintf, int flags)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    uint32_t psr = pstate_read(env);
--    int i;
--    int el = arm_current_el(env);
--    const char *ns_status;
--
--    cpu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
--    for (i = 0; i < 32; i++) {
--        if (i == 31) {
--            cpu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
--        } else {
--            cpu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
--                        (i + 2) % 3 ? " " : "\n");
--        }
--    }
--
--    if (arm_feature(env, ARM_FEATURE_EL3) && el != 3) {
--        ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
--    } else {
--        ns_status = "";
--    }
--    cpu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
--                psr,
--                psr & PSTATE_N ? 'N' : '-',
--                psr & PSTATE_Z ? 'Z' : '-',
--                psr & PSTATE_C ? 'C' : '-',
--                psr & PSTATE_V ? 'V' : '-',
--                ns_status,
--                el,
--                psr & PSTATE_SP ? 'h' : 't');
--
--    if (!(flags & CPU_DUMP_FPU)) {
--        cpu_fprintf(f, "\n");
--        return;
--    }
--    if (fp_exception_el(env, el) != 0) {
--        cpu_fprintf(f, "    FPU disabled\n");
--        return;
--    }
--    cpu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
--                vfp_get_fpcr(env), vfp_get_fpsr(env));
--
--    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
--        int j, zcr_len = sve_zcr_len_for_el(env, el);
--
--        for (i = 0; i <= FFR_PRED_NUM; i++) {
--            bool eol;
--            if (i == FFR_PRED_NUM) {
--                cpu_fprintf(f, "FFR=");
--                /* It's last, so end the line.  */
--                eol = true;
--            } else {
--                cpu_fprintf(f, "P%02d=", i);
--                switch (zcr_len) {
--                case 0:
--                    eol = i % 8 == 7;
--                    break;
--                case 1:
--                    eol = i % 6 == 5;
--                    break;
--                case 2:
--                case 3:
--                    eol = i % 3 == 2;
--                    break;
--                default:
--                    /* More than one quadword per predicate.  */
--                    eol = true;
--                    break;
--                }
--            }
--            for (j = zcr_len / 4; j >= 0; j--) {
--                int digits;
--                if (j * 4 + 4 <= zcr_len + 1) {
--                    digits = 16;
--                } else {
--                    digits = (zcr_len % 4 + 1) * 4;
--                }
--                cpu_fprintf(f, "%0*" PRIx64 "%s", digits,
--                            env->vfp.pregs[i].p[j],
--                            j ? ":" : eol ? "\n" : " ");
--            }
--        }
--
--        for (i = 0; i < 32; i++) {
--            if (zcr_len == 0) {
--                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
--                            i, env->vfp.zregs[i].d[1],
--                            env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
--            } else if (zcr_len == 1) {
--                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
--                            ":%016" PRIx64 ":%016" PRIx64 "\n",
--                            i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
--                            env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
--            } else {
--                for (j = zcr_len; j >= 0; j--) {
--                    bool odd = (zcr_len - j) % 2 != 0;
--                    if (j == zcr_len) {
--                        cpu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
--                    } else if (!odd) {
--                        if (j > 0) {
--                            cpu_fprintf(f, "   [%x-%x]=", j, j - 1);
--                        } else {
--                            cpu_fprintf(f, "     [%x]=", j);
--                        }
--                    }
--                    cpu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
--                                env->vfp.zregs[i].d[j * 2 + 1],
--                                env->vfp.zregs[i].d[j * 2],
--                                odd || j == 0 ? "\n" : ":");
--                }
--            }
--        }
--    } else {
--        for (i = 0; i < 32; i++) {
--            uint64_t *q = aa64_vfp_qreg(env, i);
--            cpu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
--                        i, q[1], q[0], (i & 1 ? "\n" : " "));
--        }
--    }
--}
--
- void gen_a64_set_pc_im(uint64_t val)
- {
-     tcg_gen_movi_i64(cpu_pc, val);
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 7c4675ffd8..839ca85cd4 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -13528,93 +13528,6 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
-     translator_loop(ops, &dc.base, cpu, tb);
- }
- 
--void arm_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
--                        int flags)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    int i;
--
--    if (is_a64(env)) {
--        aarch64_cpu_dump_state(cs, f, cpu_fprintf, flags);
--        return;
--    }
--
--    for(i=0;i<16;i++) {
--        cpu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
--        if ((i % 4) == 3)
--            cpu_fprintf(f, "\n");
--        else
--            cpu_fprintf(f, " ");
--    }
--
--    if (arm_feature(env, ARM_FEATURE_M)) {
--        uint32_t xpsr = xpsr_read(env);
--        const char *mode;
--        const char *ns_status = "";
--
--        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
--            ns_status = env->v7m.secure ? "S " : "NS ";
--        }
--
--        if (xpsr & XPSR_EXCP) {
--            mode = "handler";
--        } else {
--            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_MASK) {
--                mode = "unpriv-thread";
--            } else {
--                mode = "priv-thread";
--            }
--        }
--
--        cpu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
--                    xpsr,
--                    xpsr & XPSR_N ? 'N' : '-',
--                    xpsr & XPSR_Z ? 'Z' : '-',
--                    xpsr & XPSR_C ? 'C' : '-',
--                    xpsr & XPSR_V ? 'V' : '-',
--                    xpsr & XPSR_T ? 'T' : 'A',
--                    ns_status,
--                    mode);
--    } else {
--        uint32_t psr = cpsr_read(env);
--        const char *ns_status = "";
--
--        if (arm_feature(env, ARM_FEATURE_EL3) &&
--            (psr & CPSR_M) != ARM_CPU_MODE_MON) {
--            ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
--        }
--
--        cpu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
--                    psr,
--                    psr & CPSR_N ? 'N' : '-',
--                    psr & CPSR_Z ? 'Z' : '-',
--                    psr & CPSR_C ? 'C' : '-',
--                    psr & CPSR_V ? 'V' : '-',
--                    psr & CPSR_T ? 'T' : 'A',
--                    ns_status,
--                    aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
--    }
--
--    if (flags & CPU_DUMP_FPU) {
--        int numvfpregs = 0;
--        if (arm_feature(env, ARM_FEATURE_VFP)) {
--            numvfpregs += 16;
--        }
--        if (arm_feature(env, ARM_FEATURE_VFP3)) {
--            numvfpregs += 16;
--        }
--        for (i = 0; i < numvfpregs; i++) {
--            uint64_t v = *aa32_vfp_dreg(env, i);
--            cpu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
--                        i * 2, (uint32_t)v,
--                        i * 2 + 1, (uint32_t)(v >> 32),
--                        i, v);
--        }
--        cpu_fprintf(f, "FPSCR: %08x\n", (int)env->vfp.xregs[ARM_VFP_FPSCR]);
--    }
--}
--
- void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
-                           target_ulong *data)
- {
 -- 
 2.19.1
 

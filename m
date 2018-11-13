@@ -1,1223 +1,614 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4612223wrw;
-        Tue, 13 Nov 2018 09:05:47 -0800 (PST)
-X-Google-Smtp-Source: AJdET5crk20tV4fBVsJVixEvieYf2GakNMmYpJw/L8ZitHzxEGO3HmsojX5VoTXFFJpeZ51nHVjI
-X-Received: by 2002:a0c:a3e2:: with SMTP id v89mr6079896qvv.226.1542128747363;
-        Tue, 13 Nov 2018 09:05:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542128747; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4616030wrw;
+        Tue, 13 Nov 2018 09:08:29 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fxwr+wO8zoSoDRtgwCvOPfoMpm/7YgTk26vfeAwXStJDJu/hdAb2/TXpH+yvSeQT4nCMnK
+X-Received: by 2002:ac8:3a64:: with SMTP id w91mr5849779qte.70.1542128909892;
+        Tue, 13 Nov 2018 09:08:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542128909; cv=none;
         d=google.com; s=arc-20160816;
-        b=cz+BS+TaWwpngMsGUHXpW9491iJ5XPcV3f2vrMDMW5qrocQf9ORhK3ou/wCteOXdcR
-         R49z1loJQxlj6o+B6XGKVUCz39N4U4oSXnjTsMsim5VyVI6SUu+yEwsSGoehOzeLIzQD
-         9WyiRBVPcTRln6iJjeV6EcNtshBBtLLckJNJM9zrmLOIjbkU4QVmZvmiA6DV/3WYAh7y
-         DnxRyMlRrr9AEOda4BhzsW4v7Nk8P6ptG7K43RE2p9uiKk1kYnJGGuw5R++u6J3bh/FC
-         iyt7Uzy3y3/lj3/e0lrl/n58dhkexNZNexmUSqegaHIo4aNwdbDQ055LssRj4+qxJN34
-         aykQ==
+        b=ql2gIOvYegLb3IrACQmUUzq56Px7nhTI6KeKTPGC/XpyNHhmgoUL5gJyDCU+jvG44o
+         TvDC7Y/7Zhtmcm82FHGPcsC9nZ7utOXzhr7JWoLMUhvnx1Pt61Dy4ygKGv8CtqD6pVAP
+         86k7/zGwmeJ5k/KCB1Rf2yR0dAfEGjnRI3yzRqeBOdG+6Zl2hHpdzQdzaG19Hu/NexDN
+         KJKXbXfTE5AxujKcmTP/LejuQ7InCK7SMSh+Ie9imhzNd7lcqxowAlHyrfFObxk7KeUJ
+         uiGzX6SULTEYuZIQfii3bG+mmGImz6sVyDstnVPBU9oecBoGXeWwt9Rrv0Bly3Cq9QfP
+         NuJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=aeeSR1WXEL2KQ92flpk1K1G9MA8qLe8hBg1KuHoNTw8=;
-        b=awWlDalupgJXk8lEzeh2nd1eyt7fkEcSt9rK4D2rFEIDCM3QXp6oD+yvDuBtz8NH4H
-         /ePDmXwdXc+durKU2hF3NKHay/8k19nVV4KKRW2lm8kkXO7CEfcvvjq9E8+y9eSXFNTN
-         DBMGiPjYnGsVLsb2dacJ8Ej2B/Ilq6JjnrEB7y9dhF583r9eO7rrT9kWJv67eskIUDG8
-         8lCO0XZrzVQ8UmB3yEaqoZHyvN1YIhIBm0ts9WJJ+BVZumP+tSkT6DiUqb92kLb4Ohsg
-         EEAmcB7g6hjC2MdLutQL1STAF5V2ivliTXdtTa2my+Rx6MEXkjlu+/AidkyThg41UqVb
-         2cVg==
+        bh=bRQkcSP88C73nDvIQDV0PeUDgtIBCQ3EZpUOuGh6RgE=;
+        b=SpY3gQwzNYOOL07IDlFPMRriQIXS7Kd6mTZW6rDA4urAgXXPT+MPj2U9Mn0f81H6PR
+         FjZVv2JeElYgxmuq72JS8qpvJd1PN1WLWu5NynBb5zf2sp9+5kRZxHqZGOSkiDSm8DiQ
+         /Ve3ezUSj3Nh3Qo/4NQr4aEM9Fc9FVbtaHtAjMrtXoMV7Lv1wsXvT4ykNcbm6IjkdXyo
+         TKFg5WjUG+PvzICtRFNpeTA8ha3tf+PAAlhZIncUF1q6r0uSfGUmVKCAoonM92glI4Dj
+         rsVB8NOdwjXOMKUUCbGR3yfffInoC8TN1a4vW2LrCJ0IoI0bEVI/nXFyK6S+P7Nk/txl
+         6jEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g1si3230316qtq.235.2018.11.13.09.05.47
+        by mx.google.com with ESMTPS id b20si1705886qvd.185.2018.11.13.09.08.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Nov 2018 09:05:47 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 13 Nov 2018 09:08:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:55108 helo=lists.gnu.org)
+Received: from localhost ([::1]:55160 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gMc8I-0006KI-QZ
-	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:05:46 -0500
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gMcAv-0000IH-76
+	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:08:29 -0500
 Received: from eggs.gnu.org ([2001:4830:134:3::10]:35072)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMc7X-0006Fr-7L
-	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 12:05:04 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gMcAR-0006Fr-P2
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 12:08:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMbwg-0003wZ-5N
-	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 11:53:51 -0500
-Received: from mga06.intel.com ([134.134.136.31]:62858)
+	(envelope-from <sameo@linux.intel.com>) id 1gMbwo-000412-7x
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:53:56 -0500
+Received: from mga06.intel.com ([134.134.136.31]:62850)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gMbwe-0003pu-Ib; Tue, 13 Nov 2018 11:53:45 -0500
+	id 1gMbwi-0003nD-E2; Tue, 13 Nov 2018 11:53:51 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
 	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	13 Nov 2018 08:53:34 -0800
+	13 Nov 2018 08:53:44 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922101"
+X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922117"
 Received: from qingbai-mobl.ger.corp.intel.com (HELO
 	caravaggio.ger.corp.intel.com) ([10.249.41.239])
-	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:32 -0800
+	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:42 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 13 Nov 2018 17:52:38 +0100
-Message-Id: <20181113165247.4806-5-sameo@linux.intel.com>
+Date: Tue, 13 Nov 2018 17:52:43 +0100
+Message-Id: <20181113165247.4806-10-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20181113165247.4806-1-sameo@linux.intel.com>
 References: <20181113165247.4806-1-sameo@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 134.134.136.31
-Subject: [Qemu-devel] [PATCH 04/13] target: arm: Move all interrupt and
- exception handlers into their own file
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH 09/13] target: arm: Move CPU state dumping
+ routines to helper.c
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
 	richard.henderson@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EYQOGkL3ohx1
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: T99kKodOKk8B
 
-Most of them are TCG dependent so we want to be able to not build them
-in order to support TCG disablement with ARM.
+They're not TCG specific and should be living the generic helper file
+instead.
 
 Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: Robert Bradford <robert.bradford@intel.com>
 ---
- target/arm/excp_helper.c | 550 +++++++++++++++++++++++++++++++++++++++
- target/arm/helper.c      | 531 -------------------------------------
- target/arm/Makefile.objs |   2 +-
- 3 files changed, 551 insertions(+), 532 deletions(-)
- create mode 100644 target/arm/excp_helper.c
+ target/arm/internals.h     |  12 +++
+ target/arm/translate.h     |   7 --
+ target/arm/helper.c        | 214 +++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c | 125 ----------------------
+ target/arm/translate.c     |  87 ---------------
+ 5 files changed, 226 insertions(+), 219 deletions(-)
 
-diff --git a/target/arm/excp_helper.c b/target/arm/excp_helper.c
-new file mode 100644
-index 0000000000..38fe9703de
---- /dev/null
-+++ b/target/arm/excp_helper.c
-@@ -0,0 +1,550 @@
-+/*
-+ * Exception and interrupt helpers.
-+ *
-+ * This code is licensed under the GNU GPL v2 and later.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "trace.h"
-+#include "cpu.h"
-+#include "internals.h"
-+#include "sysemu/sysemu.h"
-+#include "exec/exec-all.h"
-+#include "exec/cpu_ldst.h"
-+#include "arm_ldst.h"
-+#include "exec/semihost.h"
-+#include "sysemu/kvm.h"
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 06439467d2..ddb594d58d 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -937,4 +937,16 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                        int *prot, bool *is_subpage,
+                        ARMMMUFaultInfo *fi, uint32_t *mregion);
+ 
++#ifdef TARGET_AARCH64
++void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
++                            fprintf_function cpu_fprintf, int flags);
 +
-+static void take_aarch32_exception(CPUARMState *env, int new_mode,
-+                                   uint32_t mask, uint32_t offset,
-+                                   uint32_t newpc)
++#else
++static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
++                                          fprintf_function cpu_fprintf,
++                                          int flags)
 +{
-+    /* Change the CPU state so as to actually take the exception. */
-+    switch_mode(env, new_mode);
-+    /*
-+     * For exceptions taken to AArch32 we must clear the SS bit in both
-+     * PSTATE and in the old-state value we save to SPSR_<mode>, so zero it now.
-+     */
-+    env->uncached_cpsr &= ~PSTATE_SS;
-+    env->spsr = cpsr_read(env);
-+    /* Clear IT bits.  */
-+    env->condexec_bits = 0;
-+    /* Switch to the new mode, and to the correct instruction set.  */
-+    env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
-+    /* Set new mode endianness */
-+    env->uncached_cpsr &= ~CPSR_E;
-+    if (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_EE) {
-+        env->uncached_cpsr |= CPSR_E;
-+    }
-+    /* J and IL must always be cleared for exception entry */
-+    env->uncached_cpsr &= ~(CPSR_IL | CPSR_J);
-+    env->daif |= mask;
-+
-+    if (new_mode == ARM_CPU_MODE_HYP) {
-+        env->thumb = (env->cp15.sctlr_el[2] & SCTLR_TE) != 0;
-+        env->elr_el[2] = env->regs[15];
-+    } else {
-+        /*
-+         * this is a lie, as there was no c1_sys on V4T/V5, but who cares
-+         * and we should just guard the thumb mode on V4
-+         */
-+        if (arm_feature(env, ARM_FEATURE_V4T)) {
-+            env->thumb =
-+                (A32_BANKED_CURRENT_REG_GET(env, sctlr) & SCTLR_TE) != 0;
-+        }
-+        env->regs[14] = env->regs[15] + offset;
-+    }
-+    env->regs[15] = newpc;
 +}
++#endif
 +
-+static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
-+{
-+    /*
-+     * Handle exception entry to Hyp mode; this is sufficiently
-+     * different to entry to other AArch32 modes that we handle it
-+     * separately here.
-+     *
-+     * The vector table entry used is always the 0x14 Hyp mode entry point,
-+     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
-+     * The offset applied to the preferred return address is always zero
-+     * (see DDI0487C.a section G1.12.3).
-+     * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ values.
-+     */
-+    uint32_t addr, mask;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (cs->exception_index) {
-+    case EXCP_UDEF:
-+        addr = 0x04;
-+        break;
-+    case EXCP_SWI:
-+        addr = 0x14;
-+        break;
-+    case EXCP_BKPT:
-+        /* Fall through to prefetch abort.  */
-+    case EXCP_PREFETCH_ABORT:
-+        env->cp15.ifar_s = env->exception.vaddress;
-+        qemu_log_mask(CPU_LOG_INT, "...with HIFAR 0x%x\n",
-+                      (uint32_t)env->exception.vaddress);
-+        addr = 0x0c;
-+        break;
-+    case EXCP_DATA_ABORT:
-+        env->cp15.dfar_s = env->exception.vaddress;
-+        qemu_log_mask(CPU_LOG_INT, "...with HDFAR 0x%x\n",
-+                      (uint32_t)env->exception.vaddress);
-+        addr = 0x10;
-+        break;
-+    case EXCP_IRQ:
-+        addr = 0x18;
-+        break;
-+    case EXCP_FIQ:
-+        addr = 0x1c;
-+        break;
-+    case EXCP_HVC:
-+        addr = 0x08;
-+        break;
-+    case EXCP_HYP_TRAP:
-+        addr = 0x14;
-+    default:
-+        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
-+    }
-+
-+    if (cs->exception_index != EXCP_IRQ && cs->exception_index != EXCP_FIQ) {
-+        if (!arm_feature(env, ARM_FEATURE_V8)) {
-+            /*
-+             * QEMU syndrome values are v8-style. v7 has the IL bit
-+             * UNK/SBZP for "field not valid" cases, where v8 uses RES1.
-+             * If this is a v7 CPU, squash the IL bit in those cases.
-+             */
-+            if (cs->exception_index == EXCP_PREFETCH_ABORT ||
-+                (cs->exception_index == EXCP_DATA_ABORT &&
-+                 !(env->exception.syndrome & ARM_EL_ISV)) ||
-+                syn_get_ec(env->exception.syndrome) == EC_UNCATEGORIZED) {
-+                env->exception.syndrome &= ~ARM_EL_IL;
-+            }
-+        }
-+        env->cp15.esr_el[2] = env->exception.syndrome;
-+    }
-+
-+    if (arm_current_el(env) != 2 && addr < 0x14) {
-+        addr = 0x14;
-+    }
-+
-+    mask = 0;
-+    if (!(env->cp15.scr_el3 & SCR_EA)) {
-+        mask |= CPSR_A;
-+    }
-+    if (!(env->cp15.scr_el3 & SCR_IRQ)) {
-+        mask |= CPSR_I;
-+    }
-+    if (!(env->cp15.scr_el3 & SCR_FIQ)) {
-+        mask |= CPSR_F;
-+    }
-+
-+    addr += env->cp15.hvbar;
-+
-+    take_aarch32_exception(env, ARM_CPU_MODE_HYP, mask, 0, addr);
-+}
-+
-+static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    uint32_t addr;
-+    uint32_t mask;
-+    int new_mode;
-+    uint32_t offset;
-+    uint32_t moe;
-+
-+    /* If this is a debug exception we must update the DBGDSCR.MOE bits */
-+    switch (syn_get_ec(env->exception.syndrome)) {
-+    case EC_BREAKPOINT:
-+    case EC_BREAKPOINT_SAME_EL:
-+        moe = 1;
-+        break;
-+    case EC_WATCHPOINT:
-+    case EC_WATCHPOINT_SAME_EL:
-+        moe = 10;
-+        break;
-+    case EC_AA32_BKPT:
-+        moe = 3;
-+        break;
-+    case EC_VECTORCATCH:
-+        moe = 5;
-+        break;
-+    default:
-+        moe = 0;
-+        break;
-+    }
-+
-+    if (moe) {
-+        env->cp15.mdscr_el1 = deposit64(env->cp15.mdscr_el1, 2, 4, moe);
-+    }
-+
-+    if (env->exception.target_el == 2) {
-+        arm_cpu_do_interrupt_aarch32_hyp(cs);
-+        return;
-+    }
-+
-+    /* TODO: Vectored interrupt controller.  */
-+    switch (cs->exception_index) {
-+    case EXCP_UDEF:
-+        new_mode = ARM_CPU_MODE_UND;
-+        addr = 0x04;
-+        mask = CPSR_I;
-+        if (env->thumb) {
-+            offset = 2;
-+        } else {
-+            offset = 4;
-+        }
-+        break;
-+    case EXCP_SWI:
-+        new_mode = ARM_CPU_MODE_SVC;
-+        addr = 0x08;
-+        mask = CPSR_I;
-+        /* The PC already points to the next instruction.  */
-+        offset = 0;
-+        break;
-+    case EXCP_BKPT:
-+        /* Fall through to prefetch abort.  */
-+    case EXCP_PREFETCH_ABORT:
-+        A32_BANKED_CURRENT_REG_SET(env, ifsr, env->exception.fsr);
-+        A32_BANKED_CURRENT_REG_SET(env, ifar, env->exception.vaddress);
-+        qemu_log_mask(CPU_LOG_INT, "...with IFSR 0x%x IFAR 0x%x\n",
-+                      env->exception.fsr, (uint32_t)env->exception.vaddress);
-+        new_mode = ARM_CPU_MODE_ABT;
-+        addr = 0x0c;
-+        mask = CPSR_A | CPSR_I;
-+        offset = 4;
-+        break;
-+    case EXCP_DATA_ABORT:
-+        A32_BANKED_CURRENT_REG_SET(env, dfsr, env->exception.fsr);
-+        A32_BANKED_CURRENT_REG_SET(env, dfar, env->exception.vaddress);
-+        qemu_log_mask(CPU_LOG_INT, "...with DFSR 0x%x DFAR 0x%x\n",
-+                      env->exception.fsr,
-+                      (uint32_t)env->exception.vaddress);
-+        new_mode = ARM_CPU_MODE_ABT;
-+        addr = 0x10;
-+        mask = CPSR_A | CPSR_I;
-+        offset = 8;
-+        break;
-+    case EXCP_IRQ:
-+        new_mode = ARM_CPU_MODE_IRQ;
-+        addr = 0x18;
-+        /* Disable IRQ and imprecise data aborts.  */
-+        mask = CPSR_A | CPSR_I;
-+        offset = 4;
-+        if (env->cp15.scr_el3 & SCR_IRQ) {
-+            /* IRQ routed to monitor mode */
-+            new_mode = ARM_CPU_MODE_MON;
-+            mask |= CPSR_F;
-+        }
-+        break;
-+    case EXCP_FIQ:
-+        new_mode = ARM_CPU_MODE_FIQ;
-+        addr = 0x1c;
-+        /* Disable FIQ, IRQ and imprecise data aborts.  */
-+        mask = CPSR_A | CPSR_I | CPSR_F;
-+        if (env->cp15.scr_el3 & SCR_FIQ) {
-+            /* FIQ routed to monitor mode */
-+            new_mode = ARM_CPU_MODE_MON;
-+        }
-+        offset = 4;
-+        break;
-+    case EXCP_VIRQ:
-+        new_mode = ARM_CPU_MODE_IRQ;
-+        addr = 0x18;
-+        /* Disable IRQ and imprecise data aborts.  */
-+        mask = CPSR_A | CPSR_I;
-+        offset = 4;
-+        break;
-+    case EXCP_VFIQ:
-+        new_mode = ARM_CPU_MODE_FIQ;
-+        addr = 0x1c;
-+        /* Disable FIQ, IRQ and imprecise data aborts.  */
-+        mask = CPSR_A | CPSR_I | CPSR_F;
-+        offset = 4;
-+        break;
-+    case EXCP_SMC:
-+        new_mode = ARM_CPU_MODE_MON;
-+        addr = 0x08;
-+        mask = CPSR_A | CPSR_I | CPSR_F;
-+        offset = 0;
-+        break;
-+    default:
-+        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
-+        return; /* Never happens.  Keep compiler happy.  */
-+    }
-+
-+    if (new_mode == ARM_CPU_MODE_MON) {
-+        addr += env->cp15.mvbar;
-+    } else if (A32_BANKED_CURRENT_REG_GET(env, sctlr) & SCTLR_V) {
-+        /* High vectors. When enabled, base address cannot be remapped. */
-+        addr += 0xffff0000;
-+    } else {
-+        /* ARM v7 architectures provide a vector base address register to remap
-+         * the interrupt vector table.
-+         * This register is only followed in non-monitor mode, and is banked.
-+         * Note: only bits 31:5 are valid.
-+         */
-+        addr += A32_BANKED_CURRENT_REG_GET(env, vbar);
-+    }
-+
-+    if ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_MON) {
-+        env->cp15.scr_el3 &= ~SCR_NS;
-+    }
-+
-+    take_aarch32_exception(env, new_mode, mask, offset, addr);
-+}
-+
-+/* Handle exception entry to a target EL which is using AArch64 */
-+static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    unsigned int new_el = env->exception.target_el;
-+    target_ulong addr = env->cp15.vbar_el[new_el];
-+    unsigned int new_mode = aarch64_pstate_mode(new_el, true);
-+    unsigned int cur_el = arm_current_el(env);
-+
-+    /*
-+     * Note that new_el can never be 0.  If cur_el is 0, then
-+     * el0_a64 is is_a64(), else el0_a64 is ignored.
-+     */
-+    aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
-+
-+    if (cur_el < new_el) {
-+        /* Entry vector offset depends on whether the implemented EL
-+         * immediately lower than the target level is using AArch32 or AArch64
-+         */
-+        bool is_aa64;
-+
-+        switch (new_el) {
-+        case 3:
-+            is_aa64 = (env->cp15.scr_el3 & SCR_RW) != 0;
-+            break;
-+        case 2:
-+            is_aa64 = (env->cp15.hcr_el2 & HCR_RW) != 0;
-+            break;
-+        case 1:
-+            is_aa64 = is_a64(env);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+
-+        if (is_aa64) {
-+            addr += 0x400;
-+        } else {
-+            addr += 0x600;
-+        }
-+    } else if (pstate_read(env) & PSTATE_SP) {
-+        addr += 0x200;
-+    }
-+
-+    switch (cs->exception_index) {
-+    case EXCP_PREFETCH_ABORT:
-+    case EXCP_DATA_ABORT:
-+        env->cp15.far_el[new_el] = env->exception.vaddress;
-+        qemu_log_mask(CPU_LOG_INT, "...with FAR 0x%" PRIx64 "\n",
-+                      env->cp15.far_el[new_el]);
-+        /* fall through */
-+    case EXCP_BKPT:
-+    case EXCP_UDEF:
-+    case EXCP_SWI:
-+    case EXCP_HVC:
-+    case EXCP_HYP_TRAP:
-+    case EXCP_SMC:
-+        if (syn_get_ec(env->exception.syndrome) == EC_ADVSIMDFPACCESSTRAP) {
-+            /*
-+             * QEMU internal FP/SIMD syndromes from AArch32 include the
-+             * TA and coproc fields which are only exposed if the exception
-+             * is taken to AArch32 Hyp mode. Mask them out to get a valid
-+             * AArch64 format syndrome.
-+             */
-+            env->exception.syndrome &= ~MAKE_64BIT_MASK(0, 20);
-+        }
-+        env->cp15.esr_el[new_el] = env->exception.syndrome;
-+        break;
-+    case EXCP_IRQ:
-+    case EXCP_VIRQ:
-+        addr += 0x80;
-+        break;
-+    case EXCP_FIQ:
-+    case EXCP_VFIQ:
-+        addr += 0x100;
-+        break;
-+    case EXCP_SEMIHOST:
-+        qemu_log_mask(CPU_LOG_INT,
-+                      "...handling as semihosting call 0x%" PRIx64 "\n",
-+                      env->xregs[0]);
-+        env->xregs[0] = do_arm_semihosting(env);
-+        return;
-+    default:
-+        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
-+    }
-+
-+    if (is_a64(env)) {
-+        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = pstate_read(env);
-+        aarch64_save_sp(env, arm_current_el(env));
-+        env->elr_el[new_el] = env->pc;
-+    } else {
-+        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = cpsr_read(env);
-+        env->elr_el[new_el] = env->regs[15];
-+
-+        aarch64_sync_32_to_64(env);
-+
-+        env->condexec_bits = 0;
-+    }
-+    qemu_log_mask(CPU_LOG_INT, "...with ELR 0x%" PRIx64 "\n",
-+                  env->elr_el[new_el]);
-+
-+    pstate_write(env, PSTATE_DAIF | new_mode);
-+    env->aarch64 = 1;
-+    aarch64_restore_sp(env, new_el);
-+
-+    env->pc = addr;
-+
-+    qemu_log_mask(CPU_LOG_INT, "...to EL%d PC 0x%" PRIx64 " PSTATE 0x%x\n",
-+                  new_el, env->pc, pstate_read(env));
-+}
-+
-+static inline bool check_for_semihosting(CPUState *cs)
-+{
-+    /* Check whether this exception is a semihosting call; if so
-+     * then handle it and return true; otherwise return false.
-+     */
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    if (is_a64(env)) {
-+        if (cs->exception_index == EXCP_SEMIHOST) {
-+            /* This is always the 64-bit semihosting exception.
-+             * The "is this usermode" and "is semihosting enabled"
-+             * checks have been done at translate time.
-+             */
-+            qemu_log_mask(CPU_LOG_INT,
-+                          "...handling as semihosting call 0x%" PRIx64 "\n",
-+                          env->xregs[0]);
-+            env->xregs[0] = do_arm_semihosting(env);
-+            return true;
-+        }
-+        return false;
-+    } else {
-+        uint32_t imm;
-+
-+        /* Only intercept calls from privileged modes, to provide some
-+         * semblance of security.
-+         */
-+        if (cs->exception_index != EXCP_SEMIHOST &&
-+            (!semihosting_enabled() ||
-+             ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_USR))) {
-+            return false;
-+        }
-+
-+        switch (cs->exception_index) {
-+        case EXCP_SEMIHOST:
-+            /* This is always a semihosting call; the "is this usermode"
-+             * and "is semihosting enabled" checks have been done at
-+             * translate time.
-+             */
-+            break;
-+        case EXCP_SWI:
-+            /* Check for semihosting interrupt.  */
-+            if (env->thumb) {
-+                imm = arm_lduw_code(env, env->regs[15] - 2, arm_sctlr_b(env))
-+                    & 0xff;
-+                if (imm == 0xab) {
-+                    break;
-+                }
-+            } else {
-+                imm = arm_ldl_code(env, env->regs[15] - 4, arm_sctlr_b(env))
-+                    & 0xffffff;
-+                if (imm == 0x123456) {
-+                    break;
-+                }
-+            }
-+            return false;
-+        case EXCP_BKPT:
-+            /* See if this is a semihosting syscall.  */
-+            if (env->thumb) {
-+                imm = arm_lduw_code(env, env->regs[15], arm_sctlr_b(env))
-+                    & 0xff;
-+                if (imm == 0xab) {
-+                    env->regs[15] += 2;
-+                    break;
-+                }
-+            }
-+            return false;
-+        default:
-+            return false;
-+        }
-+
-+        qemu_log_mask(CPU_LOG_INT,
-+                      "...handling as semihosting call 0x%x\n",
-+                      env->regs[0]);
-+        env->regs[0] = do_arm_semihosting(env);
-+        return true;
-+    }
-+}
-+
-+/* Handle a CPU exception for A and R profile CPUs.
-+ * Do any appropriate logging, handle PSCI calls, and then hand off
-+ * to the AArch64-entry or AArch32-entry function depending on the
-+ * target exception level's register width.
-+ */
-+void arm_cpu_do_interrupt(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    unsigned int new_el = env->exception.target_el;
-+
-+    assert(!arm_feature(env, ARM_FEATURE_M));
-+
-+    arm_log_exception(cs->exception_index);
-+    qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
-+                  new_el);
-+    if (qemu_loglevel_mask(CPU_LOG_INT)
-+        && !excp_is_internal(cs->exception_index)) {
-+        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx32 "\n",
-+                      syn_get_ec(env->exception.syndrome),
-+                      env->exception.syndrome);
-+    }
-+
-+    if (arm_is_psci_call(cpu, cs->exception_index)) {
-+        arm_handle_psci_call(cpu);
-+        qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-+        return;
-+    }
-+
-+    /* Semihosting semantics depend on the register width of the
-+     * code that caused the exception, not the target exception level,
-+     * so must be handled here.
-+     */
-+    if (check_for_semihosting(cs)) {
-+        return;
-+    }
-+
-+    /* Hooks may change global state so BQL should be held, also the
-+     * BQL needs to be held for any modification of
-+     * cs->interrupt_request.
-+     */
-+    g_assert(qemu_mutex_iothread_locked());
-+
-+    arm_call_pre_el_change_hook(cpu);
-+
-+    assert(!excp_is_internal(cs->exception_index));
-+    if (arm_el_is_aa64(env, new_el)) {
-+        arm_cpu_do_interrupt_aarch64(cs);
-+    } else {
-+        arm_cpu_do_interrupt_aarch32(cs);
-+    }
-+
-+    arm_call_el_change_hook(cpu);
-+
-+    if (!kvm_enabled()) {
-+        cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
-+    }
-+}
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8aa5a9e41d..7b30a4cb49 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6700,537 +6700,6 @@ void aarch64_sync_64_to_32(CPUARMState *env)
-     env->regs[15] = env->pc;
+ #endif
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 1550aa8bc7..059645c23c 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -155,8 +155,6 @@ static inline void disas_set_insn_syndrome(DisasContext *s, uint32_t syn)
+ #ifdef TARGET_AARCH64
+ void a64_translate_init(void);
+ void gen_a64_set_pc_im(uint64_t val);
+-void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
+-                            fprintf_function cpu_fprintf, int flags);
+ extern const TranslatorOps aarch64_translator_ops;
+ #else
+ static inline void a64_translate_init(void)
+@@ -167,11 +165,6 @@ static inline void gen_a64_set_pc_im(uint64_t val)
+ {
  }
  
--static void take_aarch32_exception(CPUARMState *env, int new_mode,
--                                   uint32_t mask, uint32_t offset,
--                                   uint32_t newpc)
+-static inline void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
+-                                          fprintf_function cpu_fprintf,
+-                                          int flags)
 -{
--    /* Change the CPU state so as to actually take the exception. */
--    switch_mode(env, new_mode);
--    /*
--     * For exceptions taken to AArch32 we must clear the SS bit in both
--     * PSTATE and in the old-state value we save to SPSR_<mode>, so zero it now.
--     */
--    env->uncached_cpsr &= ~PSTATE_SS;
--    env->spsr = cpsr_read(env);
--    /* Clear IT bits.  */
--    env->condexec_bits = 0;
--    /* Switch to the new mode, and to the correct instruction set.  */
--    env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
--    /* Set new mode endianness */
--    env->uncached_cpsr &= ~CPSR_E;
--    if (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_EE) {
--        env->uncached_cpsr |= CPSR_E;
--    }
--    /* J and IL must always be cleared for exception entry */
--    env->uncached_cpsr &= ~(CPSR_IL | CPSR_J);
--    env->daif |= mask;
--
--    if (new_mode == ARM_CPU_MODE_HYP) {
--        env->thumb = (env->cp15.sctlr_el[2] & SCTLR_TE) != 0;
--        env->elr_el[2] = env->regs[15];
--    } else {
--        /*
--         * this is a lie, as there was no c1_sys on V4T/V5, but who cares
--         * and we should just guard the thumb mode on V4
--         */
--        if (arm_feature(env, ARM_FEATURE_V4T)) {
--            env->thumb =
--                (A32_BANKED_CURRENT_REG_GET(env, sctlr) & SCTLR_TE) != 0;
--        }
--        env->regs[14] = env->regs[15] + offset;
--    }
--    env->regs[15] = newpc;
 -}
--
--static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
--{
--    /*
--     * Handle exception entry to Hyp mode; this is sufficiently
--     * different to entry to other AArch32 modes that we handle it
--     * separately here.
--     *
--     * The vector table entry used is always the 0x14 Hyp mode entry point,
--     * unless this is an UNDEF/HVC/abort taken from Hyp to Hyp.
--     * The offset applied to the preferred return address is always zero
--     * (see DDI0487C.a section G1.12.3).
--     * PSTATE A/I/F masks are set based only on the SCR.EA/IRQ/FIQ values.
--     */
--    uint32_t addr, mask;
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    switch (cs->exception_index) {
--    case EXCP_UDEF:
--        addr = 0x04;
--        break;
--    case EXCP_SWI:
--        addr = 0x14;
--        break;
--    case EXCP_BKPT:
--        /* Fall through to prefetch abort.  */
--    case EXCP_PREFETCH_ABORT:
--        env->cp15.ifar_s = env->exception.vaddress;
--        qemu_log_mask(CPU_LOG_INT, "...with HIFAR 0x%x\n",
--                      (uint32_t)env->exception.vaddress);
--        addr = 0x0c;
--        break;
--    case EXCP_DATA_ABORT:
--        env->cp15.dfar_s = env->exception.vaddress;
--        qemu_log_mask(CPU_LOG_INT, "...with HDFAR 0x%x\n",
--                      (uint32_t)env->exception.vaddress);
--        addr = 0x10;
--        break;
--    case EXCP_IRQ:
--        addr = 0x18;
--        break;
--    case EXCP_FIQ:
--        addr = 0x1c;
--        break;
--    case EXCP_HVC:
--        addr = 0x08;
--        break;
--    case EXCP_HYP_TRAP:
--        addr = 0x14;
--    default:
--        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
--    }
--
--    if (cs->exception_index != EXCP_IRQ && cs->exception_index != EXCP_FIQ) {
--        if (!arm_feature(env, ARM_FEATURE_V8)) {
--            /*
--             * QEMU syndrome values are v8-style. v7 has the IL bit
--             * UNK/SBZP for "field not valid" cases, where v8 uses RES1.
--             * If this is a v7 CPU, squash the IL bit in those cases.
--             */
--            if (cs->exception_index == EXCP_PREFETCH_ABORT ||
--                (cs->exception_index == EXCP_DATA_ABORT &&
--                 !(env->exception.syndrome & ARM_EL_ISV)) ||
--                syn_get_ec(env->exception.syndrome) == EC_UNCATEGORIZED) {
--                env->exception.syndrome &= ~ARM_EL_IL;
--            }
--        }
--        env->cp15.esr_el[2] = env->exception.syndrome;
--    }
--
--    if (arm_current_el(env) != 2 && addr < 0x14) {
--        addr = 0x14;
--    }
--
--    mask = 0;
--    if (!(env->cp15.scr_el3 & SCR_EA)) {
--        mask |= CPSR_A;
--    }
--    if (!(env->cp15.scr_el3 & SCR_IRQ)) {
--        mask |= CPSR_I;
--    }
--    if (!(env->cp15.scr_el3 & SCR_FIQ)) {
--        mask |= CPSR_F;
--    }
--
--    addr += env->cp15.hvbar;
--
--    take_aarch32_exception(env, ARM_CPU_MODE_HYP, mask, 0, addr);
--}
--
--static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    uint32_t addr;
--    uint32_t mask;
--    int new_mode;
--    uint32_t offset;
--    uint32_t moe;
--
--    /* If this is a debug exception we must update the DBGDSCR.MOE bits */
--    switch (syn_get_ec(env->exception.syndrome)) {
--    case EC_BREAKPOINT:
--    case EC_BREAKPOINT_SAME_EL:
--        moe = 1;
--        break;
--    case EC_WATCHPOINT:
--    case EC_WATCHPOINT_SAME_EL:
--        moe = 10;
--        break;
--    case EC_AA32_BKPT:
--        moe = 3;
--        break;
--    case EC_VECTORCATCH:
--        moe = 5;
--        break;
--    default:
--        moe = 0;
--        break;
--    }
--
--    if (moe) {
--        env->cp15.mdscr_el1 = deposit64(env->cp15.mdscr_el1, 2, 4, moe);
--    }
--
--    if (env->exception.target_el == 2) {
--        arm_cpu_do_interrupt_aarch32_hyp(cs);
--        return;
--    }
--
--    switch (cs->exception_index) {
--    case EXCP_UDEF:
--        new_mode = ARM_CPU_MODE_UND;
--        addr = 0x04;
--        mask = CPSR_I;
--        if (env->thumb)
--            offset = 2;
--        else
--            offset = 4;
--        break;
--    case EXCP_SWI:
--        new_mode = ARM_CPU_MODE_SVC;
--        addr = 0x08;
--        mask = CPSR_I;
--        /* The PC already points to the next instruction.  */
--        offset = 0;
--        break;
--    case EXCP_BKPT:
--        /* Fall through to prefetch abort.  */
--    case EXCP_PREFETCH_ABORT:
--        A32_BANKED_CURRENT_REG_SET(env, ifsr, env->exception.fsr);
--        A32_BANKED_CURRENT_REG_SET(env, ifar, env->exception.vaddress);
--        qemu_log_mask(CPU_LOG_INT, "...with IFSR 0x%x IFAR 0x%x\n",
--                      env->exception.fsr, (uint32_t)env->exception.vaddress);
--        new_mode = ARM_CPU_MODE_ABT;
--        addr = 0x0c;
--        mask = CPSR_A | CPSR_I;
--        offset = 4;
--        break;
--    case EXCP_DATA_ABORT:
--        A32_BANKED_CURRENT_REG_SET(env, dfsr, env->exception.fsr);
--        A32_BANKED_CURRENT_REG_SET(env, dfar, env->exception.vaddress);
--        qemu_log_mask(CPU_LOG_INT, "...with DFSR 0x%x DFAR 0x%x\n",
--                      env->exception.fsr,
--                      (uint32_t)env->exception.vaddress);
--        new_mode = ARM_CPU_MODE_ABT;
--        addr = 0x10;
--        mask = CPSR_A | CPSR_I;
--        offset = 8;
--        break;
--    case EXCP_IRQ:
--        new_mode = ARM_CPU_MODE_IRQ;
--        addr = 0x18;
--        /* Disable IRQ and imprecise data aborts.  */
--        mask = CPSR_A | CPSR_I;
--        offset = 4;
--        if (env->cp15.scr_el3 & SCR_IRQ) {
--            /* IRQ routed to monitor mode */
--            new_mode = ARM_CPU_MODE_MON;
--            mask |= CPSR_F;
--        }
--        break;
--    case EXCP_FIQ:
--        new_mode = ARM_CPU_MODE_FIQ;
--        addr = 0x1c;
--        /* Disable FIQ, IRQ and imprecise data aborts.  */
--        mask = CPSR_A | CPSR_I | CPSR_F;
--        if (env->cp15.scr_el3 & SCR_FIQ) {
--            /* FIQ routed to monitor mode */
--            new_mode = ARM_CPU_MODE_MON;
--        }
--        offset = 4;
--        break;
--    case EXCP_VIRQ:
--        new_mode = ARM_CPU_MODE_IRQ;
--        addr = 0x18;
--        /* Disable IRQ and imprecise data aborts.  */
--        mask = CPSR_A | CPSR_I;
--        offset = 4;
--        break;
--    case EXCP_VFIQ:
--        new_mode = ARM_CPU_MODE_FIQ;
--        addr = 0x1c;
--        /* Disable FIQ, IRQ and imprecise data aborts.  */
--        mask = CPSR_A | CPSR_I | CPSR_F;
--        offset = 4;
--        break;
--    case EXCP_SMC:
--        new_mode = ARM_CPU_MODE_MON;
--        addr = 0x08;
--        mask = CPSR_A | CPSR_I | CPSR_F;
--        offset = 0;
--        break;
--    default:
--        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
--        return; /* Never happens.  Keep compiler happy.  */
--    }
--
--    if (new_mode == ARM_CPU_MODE_MON) {
--        addr += env->cp15.mvbar;
--    } else if (A32_BANKED_CURRENT_REG_GET(env, sctlr) & SCTLR_V) {
--        /* High vectors. When enabled, base address cannot be remapped. */
--        addr += 0xffff0000;
--    } else {
--        /* ARM v7 architectures provide a vector base address register to remap
--         * the interrupt vector table.
--         * This register is only followed in non-monitor mode, and is banked.
--         * Note: only bits 31:5 are valid.
--         */
--        addr += A32_BANKED_CURRENT_REG_GET(env, vbar);
--    }
--
--    if ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_MON) {
--        env->cp15.scr_el3 &= ~SCR_NS;
--    }
--
--    take_aarch32_exception(env, new_mode, mask, offset, addr);
--}
--
--/* Handle exception entry to a target EL which is using AArch64 */
--static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+ #endif
+ 
+ void arm_test_cc(DisasCompare *cmp, int cc);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 996dfbbda2..ff3011fcb6 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9555,4 +9555,218 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+         aarch64_sve_narrow_vq(env, new_len + 1);
+     }
+ }
++
++void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
++                            fprintf_function cpu_fprintf, int flags)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++    uint32_t psr = pstate_read(env);
++    int i;
++    int el = arm_current_el(env);
++    const char *ns_status;
++
++    cpu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
++    for (i = 0; i < 32; i++) {
++        if (i == 31) {
++            cpu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
++        } else {
++            cpu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
++                        (i + 2) % 3 ? " " : "\n");
++        }
++    }
++
++    if (arm_feature(env, ARM_FEATURE_EL3) && el != 3) {
++        ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
++    } else {
++        ns_status = "";
++    }
++    cpu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
++                psr,
++                psr & PSTATE_N ? 'N' : '-',
++                psr & PSTATE_Z ? 'Z' : '-',
++                psr & PSTATE_C ? 'C' : '-',
++                psr & PSTATE_V ? 'V' : '-',
++                ns_status,
++                el,
++                psr & PSTATE_SP ? 'h' : 't');
++
++    if (!(flags & CPU_DUMP_FPU)) {
++        cpu_fprintf(f, "\n");
++        return;
++    }
++    if (fp_exception_el(env, el) != 0) {
++        cpu_fprintf(f, "    FPU disabled\n");
++        return;
++    }
++    cpu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
++                vfp_get_fpcr(env), vfp_get_fpsr(env));
++
++    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
++        int j, zcr_len = sve_zcr_len_for_el(env, el);
++
++        for (i = 0; i <= FFR_PRED_NUM; i++) {
++            bool eol;
++            if (i == FFR_PRED_NUM) {
++                cpu_fprintf(f, "FFR=");
++                /* It's last, so end the line.  */
++                eol = true;
++            } else {
++                cpu_fprintf(f, "P%02d=", i);
++                switch (zcr_len) {
++                case 0:
++                    eol = i % 8 == 7;
++                    break;
++                case 1:
++                    eol = i % 6 == 5;
++                    break;
++                case 2:
++                case 3:
++                    eol = i % 3 == 2;
++                    break;
++                default:
++                    /* More than one quadword per predicate.  */
++                    eol = true;
++                    break;
++                }
++            }
++            for (j = zcr_len / 4; j >= 0; j--) {
++                int digits;
++                if (j * 4 + 4 <= zcr_len + 1) {
++                    digits = 16;
++                } else {
++                    digits = (zcr_len % 4 + 1) * 4;
++                }
++                cpu_fprintf(f, "%0*" PRIx64 "%s", digits,
++                            env->vfp.pregs[i].p[j],
++                            j ? ":" : eol ? "\n" : " ");
++            }
++        }
++
++        for (i = 0; i < 32; i++) {
++            if (zcr_len == 0) {
++                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
++                            i, env->vfp.zregs[i].d[1],
++                            env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
++            } else if (zcr_len == 1) {
++                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
++                            ":%016" PRIx64 ":%016" PRIx64 "\n",
++                            i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
++                            env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
++            } else {
++                for (j = zcr_len; j >= 0; j--) {
++                    bool odd = (zcr_len - j) % 2 != 0;
++                    if (j == zcr_len) {
++                        cpu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
++                    } else if (!odd) {
++                        if (j > 0) {
++                            cpu_fprintf(f, "   [%x-%x]=", j, j - 1);
++                        } else {
++                            cpu_fprintf(f, "     [%x]=", j);
++                        }
++                    }
++                    cpu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
++                                env->vfp.zregs[i].d[j * 2 + 1],
++                                env->vfp.zregs[i].d[j * 2],
++                                odd || j == 0 ? "\n" : ":");
++                }
++            }
++        }
++    } else {
++        for (i = 0; i < 32; i++) {
++            uint64_t *q = aa64_vfp_qreg(env, i);
++            cpu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
++                        i, q[1], q[0], (i & 1 ? "\n" : " "));
++        }
++    }
++}
++
+ #endif
++
++void arm_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
++                        int flags)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++    int i;
++
++    if (is_a64(env)) {
++        aarch64_cpu_dump_state(cs, f, cpu_fprintf, flags);
++        return;
++    }
++
++    for (i = 0; i < 16; i++) {
++        cpu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
++        if ((i % 4) == 3) {
++            cpu_fprintf(f, "\n");
++        } else {
++            cpu_fprintf(f, " ");
++        }
++    }
++
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        uint32_t xpsr = xpsr_read(env);
++        const char *mode;
++        const char *ns_status = "";
++
++        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++            ns_status = env->v7m.secure ? "S " : "NS ";
++        }
++
++        if (xpsr & XPSR_EXCP) {
++            mode = "handler";
++        } else {
++            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_MASK) {
++                mode = "unpriv-thread";
++            } else {
++                mode = "priv-thread";
++            }
++        }
++
++        cpu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
++                    xpsr,
++                    xpsr & XPSR_N ? 'N' : '-',
++                    xpsr & XPSR_Z ? 'Z' : '-',
++                    xpsr & XPSR_C ? 'C' : '-',
++                    xpsr & XPSR_V ? 'V' : '-',
++                    xpsr & XPSR_T ? 'T' : 'A',
++                    ns_status,
++                    mode);
++    } else {
++        uint32_t psr = cpsr_read(env);
++        const char *ns_status = "";
++
++        if (arm_feature(env, ARM_FEATURE_EL3) &&
++            (psr & CPSR_M) != ARM_CPU_MODE_MON) {
++            ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
++        }
++
++        cpu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
++                    psr,
++                    psr & CPSR_N ? 'N' : '-',
++                    psr & CPSR_Z ? 'Z' : '-',
++                    psr & CPSR_C ? 'C' : '-',
++                    psr & CPSR_V ? 'V' : '-',
++                    psr & CPSR_T ? 'T' : 'A',
++                    ns_status,
++                    aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
++    }
++
++    if (flags & CPU_DUMP_FPU) {
++        int numvfpregs = 0;
++        if (arm_feature(env, ARM_FEATURE_VFP)) {
++            numvfpregs += 16;
++        }
++        if (arm_feature(env, ARM_FEATURE_VFP3)) {
++            numvfpregs += 16;
++        }
++        for (i = 0; i < numvfpregs; i++) {
++            uint64_t v = *aa32_vfp_dreg(env, i);
++            cpu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
++                        i * 2, (uint32_t)v,
++                        i * 2 + 1, (uint32_t)(v >> 32),
++                        i, v);
++        }
++        cpu_fprintf(f, "FPSCR: %08x\n", (int)env->vfp.xregs[ARM_VFP_FPSCR]);
++    }
++}
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index fd36425f1a..642df2f821 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -128,131 +128,6 @@ static inline int get_a64_user_mem_index(DisasContext *s)
+     return arm_to_core_mmu_idx(useridx);
+ }
+ 
+-void aarch64_cpu_dump_state(CPUState *cs, FILE *f,
+-                            fprintf_function cpu_fprintf, int flags)
 -{
 -    ARMCPU *cpu = ARM_CPU(cs);
 -    CPUARMState *env = &cpu->env;
--    unsigned int new_el = env->exception.target_el;
--    target_ulong addr = env->cp15.vbar_el[new_el];
--    unsigned int new_mode = aarch64_pstate_mode(new_el, true);
--    unsigned int cur_el = arm_current_el(env);
+-    uint32_t psr = pstate_read(env);
+-    int i;
+-    int el = arm_current_el(env);
+-    const char *ns_status;
 -
--    /*
--     * Note that new_el can never be 0.  If cur_el is 0, then
--     * el0_a64 is is_a64(), else el0_a64 is ignored.
--     */
--    aarch64_sve_change_el(env, cur_el, new_el, is_a64(env));
--
--    if (cur_el < new_el) {
--        /* Entry vector offset depends on whether the implemented EL
--         * immediately lower than the target level is using AArch32 or AArch64
--         */
--        bool is_aa64;
--
--        switch (new_el) {
--        case 3:
--            is_aa64 = (env->cp15.scr_el3 & SCR_RW) != 0;
--            break;
--        case 2:
--            is_aa64 = (env->cp15.hcr_el2 & HCR_RW) != 0;
--            break;
--        case 1:
--            is_aa64 = is_a64(env);
--            break;
--        default:
--            g_assert_not_reached();
--        }
--
--        if (is_aa64) {
--            addr += 0x400;
+-    cpu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
+-    for (i = 0; i < 32; i++) {
+-        if (i == 31) {
+-            cpu_fprintf(f, " SP=%016" PRIx64 "\n", env->xregs[i]);
 -        } else {
--            addr += 0x600;
+-            cpu_fprintf(f, "X%02d=%016" PRIx64 "%s", i, env->xregs[i],
+-                        (i + 2) % 3 ? " " : "\n");
 -        }
--    } else if (pstate_read(env) & PSTATE_SP) {
--        addr += 0x200;
 -    }
 -
--    switch (cs->exception_index) {
--    case EXCP_PREFETCH_ABORT:
--    case EXCP_DATA_ABORT:
--        env->cp15.far_el[new_el] = env->exception.vaddress;
--        qemu_log_mask(CPU_LOG_INT, "...with FAR 0x%" PRIx64 "\n",
--                      env->cp15.far_el[new_el]);
--        /* fall through */
--    case EXCP_BKPT:
--    case EXCP_UDEF:
--    case EXCP_SWI:
--    case EXCP_HVC:
--    case EXCP_HYP_TRAP:
--    case EXCP_SMC:
--        if (syn_get_ec(env->exception.syndrome) == EC_ADVSIMDFPACCESSTRAP) {
--            /*
--             * QEMU internal FP/SIMD syndromes from AArch32 include the
--             * TA and coproc fields which are only exposed if the exception
--             * is taken to AArch32 Hyp mode. Mask them out to get a valid
--             * AArch64 format syndrome.
--             */
--            env->exception.syndrome &= ~MAKE_64BIT_MASK(0, 20);
--        }
--        env->cp15.esr_el[new_el] = env->exception.syndrome;
--        break;
--    case EXCP_IRQ:
--    case EXCP_VIRQ:
--        addr += 0x80;
--        break;
--    case EXCP_FIQ:
--    case EXCP_VFIQ:
--        addr += 0x100;
--        break;
--    case EXCP_SEMIHOST:
--        qemu_log_mask(CPU_LOG_INT,
--                      "...handling as semihosting call 0x%" PRIx64 "\n",
--                      env->xregs[0]);
--        env->xregs[0] = do_arm_semihosting(env);
+-    if (arm_feature(env, ARM_FEATURE_EL3) && el != 3) {
+-        ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
+-    } else {
+-        ns_status = "";
+-    }
+-    cpu_fprintf(f, "PSTATE=%08x %c%c%c%c %sEL%d%c",
+-                psr,
+-                psr & PSTATE_N ? 'N' : '-',
+-                psr & PSTATE_Z ? 'Z' : '-',
+-                psr & PSTATE_C ? 'C' : '-',
+-                psr & PSTATE_V ? 'V' : '-',
+-                ns_status,
+-                el,
+-                psr & PSTATE_SP ? 'h' : 't');
+-
+-    if (!(flags & CPU_DUMP_FPU)) {
+-        cpu_fprintf(f, "\n");
 -        return;
--    default:
--        cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index);
 -    }
--
--    if (is_a64(env)) {
--        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = pstate_read(env);
--        aarch64_save_sp(env, arm_current_el(env));
--        env->elr_el[new_el] = env->pc;
--    } else {
--        env->banked_spsr[aarch64_banked_spsr_index(new_el)] = cpsr_read(env);
--        env->elr_el[new_el] = env->regs[15];
--
--        aarch64_sync_32_to_64(env);
--
--        env->condexec_bits = 0;
+-    if (fp_exception_el(env, el) != 0) {
+-        cpu_fprintf(f, "    FPU disabled\n");
+-        return;
 -    }
--    qemu_log_mask(CPU_LOG_INT, "...with ELR 0x%" PRIx64 "\n",
--                  env->elr_el[new_el]);
+-    cpu_fprintf(f, "     FPCR=%08x FPSR=%08x\n",
+-                vfp_get_fpcr(env), vfp_get_fpsr(env));
 -
--    pstate_write(env, PSTATE_DAIF | new_mode);
--    env->aarch64 = 1;
--    aarch64_restore_sp(env, new_el);
+-    if (cpu_isar_feature(aa64_sve, cpu) && sve_exception_el(env, el) == 0) {
+-        int j, zcr_len = sve_zcr_len_for_el(env, el);
 -
--    env->pc = addr;
--
--    qemu_log_mask(CPU_LOG_INT, "...to EL%d PC 0x%" PRIx64 " PSTATE 0x%x\n",
--                  new_el, env->pc, pstate_read(env));
--}
--
--static inline bool check_for_semihosting(CPUState *cs)
--{
--    /* Check whether this exception is a semihosting call; if so
--     * then handle it and return true; otherwise return false.
--     */
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    if (is_a64(env)) {
--        if (cs->exception_index == EXCP_SEMIHOST) {
--            /* This is always the 64-bit semihosting exception.
--             * The "is this usermode" and "is semihosting enabled"
--             * checks have been done at translate time.
--             */
--            qemu_log_mask(CPU_LOG_INT,
--                          "...handling as semihosting call 0x%" PRIx64 "\n",
--                          env->xregs[0]);
--            env->xregs[0] = do_arm_semihosting(env);
--            return true;
--        }
--        return false;
--    } else {
--        uint32_t imm;
--
--        /* Only intercept calls from privileged modes, to provide some
--         * semblance of security.
--         */
--        if (cs->exception_index != EXCP_SEMIHOST &&
--            (!semihosting_enabled() ||
--             ((env->uncached_cpsr & CPSR_M) == ARM_CPU_MODE_USR))) {
--            return false;
--        }
--
--        switch (cs->exception_index) {
--        case EXCP_SEMIHOST:
--            /* This is always a semihosting call; the "is this usermode"
--             * and "is semihosting enabled" checks have been done at
--             * translate time.
--             */
--            break;
--        case EXCP_SWI:
--            /* Check for semihosting interrupt.  */
--            if (env->thumb) {
--                imm = arm_lduw_code(env, env->regs[15] - 2, arm_sctlr_b(env))
--                    & 0xff;
--                if (imm == 0xab) {
--                    break;
--                }
+-        for (i = 0; i <= FFR_PRED_NUM; i++) {
+-            bool eol;
+-            if (i == FFR_PRED_NUM) {
+-                cpu_fprintf(f, "FFR=");
+-                /* It's last, so end the line.  */
+-                eol = true;
 -            } else {
--                imm = arm_ldl_code(env, env->regs[15] - 4, arm_sctlr_b(env))
--                    & 0xffffff;
--                if (imm == 0x123456) {
+-                cpu_fprintf(f, "P%02d=", i);
+-                switch (zcr_len) {
+-                case 0:
+-                    eol = i % 8 == 7;
+-                    break;
+-                case 1:
+-                    eol = i % 6 == 5;
+-                    break;
+-                case 2:
+-                case 3:
+-                    eol = i % 3 == 2;
+-                    break;
+-                default:
+-                    /* More than one quadword per predicate.  */
+-                    eol = true;
 -                    break;
 -                }
 -            }
--            return false;
--        case EXCP_BKPT:
--            /* See if this is a semihosting syscall.  */
--            if (env->thumb) {
--                imm = arm_lduw_code(env, env->regs[15], arm_sctlr_b(env))
--                    & 0xff;
--                if (imm == 0xab) {
--                    env->regs[15] += 2;
--                    break;
+-            for (j = zcr_len / 4; j >= 0; j--) {
+-                int digits;
+-                if (j * 4 + 4 <= zcr_len + 1) {
+-                    digits = 16;
+-                } else {
+-                    digits = (zcr_len % 4 + 1) * 4;
 -                }
+-                cpu_fprintf(f, "%0*" PRIx64 "%s", digits,
+-                            env->vfp.pregs[i].p[j],
+-                            j ? ":" : eol ? "\n" : " ");
 -            }
--            return false;
--        default:
--            return false;
 -        }
 -
--        qemu_log_mask(CPU_LOG_INT,
--                      "...handling as semihosting call 0x%x\n",
--                      env->regs[0]);
--        env->regs[0] = do_arm_semihosting(env);
--        return true;
+-        for (i = 0; i < 32; i++) {
+-            if (zcr_len == 0) {
+-                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64 "%s",
+-                            i, env->vfp.zregs[i].d[1],
+-                            env->vfp.zregs[i].d[0], i & 1 ? "\n" : " ");
+-            } else if (zcr_len == 1) {
+-                cpu_fprintf(f, "Z%02d=%016" PRIx64 ":%016" PRIx64
+-                            ":%016" PRIx64 ":%016" PRIx64 "\n",
+-                            i, env->vfp.zregs[i].d[3], env->vfp.zregs[i].d[2],
+-                            env->vfp.zregs[i].d[1], env->vfp.zregs[i].d[0]);
+-            } else {
+-                for (j = zcr_len; j >= 0; j--) {
+-                    bool odd = (zcr_len - j) % 2 != 0;
+-                    if (j == zcr_len) {
+-                        cpu_fprintf(f, "Z%02d[%x-%x]=", i, j, j - 1);
+-                    } else if (!odd) {
+-                        if (j > 0) {
+-                            cpu_fprintf(f, "   [%x-%x]=", j, j - 1);
+-                        } else {
+-                            cpu_fprintf(f, "     [%x]=", j);
+-                        }
+-                    }
+-                    cpu_fprintf(f, "%016" PRIx64 ":%016" PRIx64 "%s",
+-                                env->vfp.zregs[i].d[j * 2 + 1],
+-                                env->vfp.zregs[i].d[j * 2],
+-                                odd || j == 0 ? "\n" : ":");
+-                }
+-            }
+-        }
+-    } else {
+-        for (i = 0; i < 32; i++) {
+-            uint64_t *q = aa64_vfp_qreg(env, i);
+-            cpu_fprintf(f, "Q%02d=%016" PRIx64 ":%016" PRIx64 "%s",
+-                        i, q[1], q[0], (i & 1 ? "\n" : " "));
+-        }
 -    }
 -}
 -
--/* Handle a CPU exception for A and R profile CPUs.
-- * Do any appropriate logging, handle PSCI calls, and then hand off
-- * to the AArch64-entry or AArch32-entry function depending on the
-- * target exception level's register width.
-- */
--void arm_cpu_do_interrupt(CPUState *cs)
+ void gen_a64_set_pc_im(uint64_t val)
+ {
+     tcg_gen_movi_i64(cpu_pc, val);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 7c4675ffd8..839ca85cd4 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -13528,93 +13528,6 @@ void gen_intermediate_code(CPUState *cpu, TranslationBlock *tb)
+     translator_loop(ops, &dc.base, cpu, tb);
+ }
+ 
+-void arm_cpu_dump_state(CPUState *cs, FILE *f, fprintf_function cpu_fprintf,
+-                        int flags)
 -{
 -    ARMCPU *cpu = ARM_CPU(cs);
 -    CPUARMState *env = &cpu->env;
--    unsigned int new_el = env->exception.target_el;
+-    int i;
 -
--    assert(!arm_feature(env, ARM_FEATURE_M));
--
--    arm_log_exception(cs->exception_index);
--    qemu_log_mask(CPU_LOG_INT, "...from EL%d to EL%d\n", arm_current_el(env),
--                  new_el);
--    if (qemu_loglevel_mask(CPU_LOG_INT)
--        && !excp_is_internal(cs->exception_index)) {
--        qemu_log_mask(CPU_LOG_INT, "...with ESR 0x%x/0x%" PRIx32 "\n",
--                      syn_get_ec(env->exception.syndrome),
--                      env->exception.syndrome);
--    }
--
--    if (arm_is_psci_call(cpu, cs->exception_index)) {
--        arm_handle_psci_call(cpu);
--        qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
+-    if (is_a64(env)) {
+-        aarch64_cpu_dump_state(cs, f, cpu_fprintf, flags);
 -        return;
 -    }
 -
--    /* Semihosting semantics depend on the register width of the
--     * code that caused the exception, not the target exception level,
--     * so must be handled here.
--     */
--    if (check_for_semihosting(cs)) {
--        return;
+-    for(i=0;i<16;i++) {
+-        cpu_fprintf(f, "R%02d=%08x", i, env->regs[i]);
+-        if ((i % 4) == 3)
+-            cpu_fprintf(f, "\n");
+-        else
+-            cpu_fprintf(f, " ");
 -    }
 -
--    /* Hooks may change global state so BQL should be held, also the
--     * BQL needs to be held for any modification of
--     * cs->interrupt_request.
--     */
--    g_assert(qemu_mutex_iothread_locked());
+-    if (arm_feature(env, ARM_FEATURE_M)) {
+-        uint32_t xpsr = xpsr_read(env);
+-        const char *mode;
+-        const char *ns_status = "";
 -
--    arm_call_pre_el_change_hook(cpu);
+-        if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
+-            ns_status = env->v7m.secure ? "S " : "NS ";
+-        }
 -
--    assert(!excp_is_internal(cs->exception_index));
--    if (arm_el_is_aa64(env, new_el)) {
--        arm_cpu_do_interrupt_aarch64(cs);
+-        if (xpsr & XPSR_EXCP) {
+-            mode = "handler";
+-        } else {
+-            if (env->v7m.control[env->v7m.secure] & R_V7M_CONTROL_NPRIV_MASK) {
+-                mode = "unpriv-thread";
+-            } else {
+-                mode = "priv-thread";
+-            }
+-        }
+-
+-        cpu_fprintf(f, "XPSR=%08x %c%c%c%c %c %s%s\n",
+-                    xpsr,
+-                    xpsr & XPSR_N ? 'N' : '-',
+-                    xpsr & XPSR_Z ? 'Z' : '-',
+-                    xpsr & XPSR_C ? 'C' : '-',
+-                    xpsr & XPSR_V ? 'V' : '-',
+-                    xpsr & XPSR_T ? 'T' : 'A',
+-                    ns_status,
+-                    mode);
 -    } else {
--        arm_cpu_do_interrupt_aarch32(cs);
+-        uint32_t psr = cpsr_read(env);
+-        const char *ns_status = "";
+-
+-        if (arm_feature(env, ARM_FEATURE_EL3) &&
+-            (psr & CPSR_M) != ARM_CPU_MODE_MON) {
+-            ns_status = env->cp15.scr_el3 & SCR_NS ? "NS " : "S ";
+-        }
+-
+-        cpu_fprintf(f, "PSR=%08x %c%c%c%c %c %s%s%d\n",
+-                    psr,
+-                    psr & CPSR_N ? 'N' : '-',
+-                    psr & CPSR_Z ? 'Z' : '-',
+-                    psr & CPSR_C ? 'C' : '-',
+-                    psr & CPSR_V ? 'V' : '-',
+-                    psr & CPSR_T ? 'T' : 'A',
+-                    ns_status,
+-                    aarch32_mode_name(psr), (psr & 0x10) ? 32 : 26);
 -    }
 -
--    arm_call_el_change_hook(cpu);
--
--    if (!kvm_enabled()) {
--        cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
+-    if (flags & CPU_DUMP_FPU) {
+-        int numvfpregs = 0;
+-        if (arm_feature(env, ARM_FEATURE_VFP)) {
+-            numvfpregs += 16;
+-        }
+-        if (arm_feature(env, ARM_FEATURE_VFP3)) {
+-            numvfpregs += 16;
+-        }
+-        for (i = 0; i < numvfpregs; i++) {
+-            uint64_t v = *aa32_vfp_dreg(env, i);
+-            cpu_fprintf(f, "s%02d=%08x s%02d=%08x d%02d=%016" PRIx64 "\n",
+-                        i * 2, (uint32_t)v,
+-                        i * 2 + 1, (uint32_t)(v >> 32),
+-                        i, v);
+-        }
+-        cpu_fprintf(f, "FPSCR: %08x\n", (int)env->vfp.xregs[ARM_VFP_FPSCR]);
 -    }
 -}
 -
- /* Return the exception level which controls this address translation regime */
- static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+ void restore_state_to_opc(CPUARMState *env, TranslationBlock *tb,
+                           target_ulong *data)
  {
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index 76634b2437..85e35ee668 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -6,7 +6,7 @@ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
- obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
- obj-y += translate.o op_helper.o helper.o cpu.o
- obj-y += neon_helper.o iwmmxt_helper.o vec_helper.o
--obj-y += gdbstub.o m_helper.o
-+obj-y += gdbstub.o m_helper.o excp_helper.o
- obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
- obj-y += crypto_helper.o
- obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
 -- 
 2.19.1
 

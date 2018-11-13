@@ -1,147 +1,139 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp349317wrt;
-        Tue, 20 Nov 2018 01:40:18 -0800 (PST)
-X-Received: by 2002:a24:470a:: with SMTP id t10-v6mr1398740itb.82.1542706818847;
-        Tue, 20 Nov 2018 01:40:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542706818; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4619249wrw;
+        Tue, 13 Nov 2018 09:10:49 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cgiuzupEw4eR/ff3MZSKkn7e0KeGOa7oidOrCHIE5ETBSq0NARH9NGmyPE4WnRAuT4qKgJ
+X-Received: by 2002:a0c:f403:: with SMTP id h3mr3165662qvl.137.1542129049537;
+        Tue, 13 Nov 2018 09:10:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542129049; cv=none;
         d=google.com; s=arc-20160816;
-        b=NVT9LhvbjHr1uvYf9rhstVp92eiLQZUrrze275ytVZKvcTiYRI160qSvOIgrR7aokS
-         yFY3Sy6huIRueUC1iDpOSYLAbCbhMuGNZbs8S1YY2BYR8Kd7fuMA0CNMYNwYWlbFPccn
-         oxJhbPVl+yGixg8SHLqEcI/I8RcQFzmo0oqtCuL+eL6QSRYmPfHtrhJSolS+Qp4wT6cT
-         mfj6KNEPaNNkRgitPNCq8MfIlnv+Dgybh89Rx4RWYFhjpcfuaMtPRBUlZt1w2UTBScrR
-         4nmKgEB6UBFRH+xwh0mFkfellWhdp7uG2H5mudZwPUbfi9BKzcN+UPdiZzYwbmNIbZ8e
-         76jg==
+        b=y8HsQMshtGDEcvVFI0+MK0d6E2e8G4vXslHOaIOiLWeJQvui0ETh1XV0Ut7uO9fh0n
+         lo+t886nEMSaIp6RQys+A0iMqSOJ7bZji29BrBUdEpjC+SL5cpc2rgjdfq08Vb2hZibG
+         +XK1PJ4mVJeiF6AbOf28iUC4H6deqELrVmLXkJ2CzxuUdCnaUL9WOre707v1FFnc0t6H
+         ccJMJ+iZPTriBD+RFrFFXYLldORlWZwDkIr8ZA4EelLBJyyP7Ji2RapG0cFD10LVN4ut
+         IgbihktRzscaLUcWKBSty0YdwJKA56csLJ783TpPAYsmOfjrI+XHV62FT5T5jAPT/EN1
+         kmsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=SQhh9BLbCTquIE8hNbvIhauYFtZ5sAg1Bu8gqjhCv2Y=;
-        b=kFiAi+wu1Svl3cRjAEj1e6afdYBMXubVjDcZiLupaGk3AcFjNrFptYc93+xqy3rx7J
-         GLkMBFIeyGzphGW23KLvK0pEY7QX9558wFMhSYRqkZrOdCRTA6Leb2H3UmTby6nqRoZA
-         x525wkLlOGdB7txbY4I8wvsBU7oVT67cJOd4/WbJDS/TPLJIdRmVoTd9pN/ER1sXuK+V
-         lut1lQ4tKwKkPzHfaPss3zjgJJSFz1eAdZFwjMB5BCDAqAWOHPF8gEMxn31QRy9Dhplv
-         E6tk48oemyjxuLHuTDmPDTPQiXnY3WaADOEAocZprbKOyEoBtxXUZYmkLnPvwyZTJ5t5
-         rJTw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=U1v1kkYa2l4Xo6AYZCE1I4oWEEdT/BPkY+tltdP4j3U=;
+        b=AHP8wld89Ez/nH24Gtb6jQBLNrawkGWF+HSx0d28Mu2vVYwZlatq813HJGV4oKQSe1
+         1K0jnqHQTQV7cEvPvKeTDYNFGC73f7yh+HLrgU+WrRruovF8KfMLc76dhCvIQnSSTUS2
+         UEZ50NRI47EWX0lkt6jt7iONg4quTtRsjraC+j4JiRhENx2nXdyO1CiiqH9msee2j+CP
+         4qhOKvC5YveFmlnT4eF4YZHGY5F5LY8ijivc0hQ3DOX5Svap3OPKChZIGM0OgHsimlf1
+         uhpXGnZV/zybif+VOQ79QtFbUUlVhIna1rNsK6ypvn6Ae4vEKRnzXMrc4RigUHkUIv0G
+         d8uQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dPPcKDCs;
-       spf=pass (google.com: domain of ard.biesheuvel@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=ard.biesheuvel@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <ard.biesheuvel@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v20sor13011035ita.10.2018.11.20.01.40.18
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id u4si5891028qkc.197.2018.11.13.09.10.49
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 20 Nov 2018 01:40:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of ard.biesheuvel@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 13 Nov 2018 09:10:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dPPcKDCs;
-       spf=pass (google.com: domain of ard.biesheuvel@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=ard.biesheuvel@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=SQhh9BLbCTquIE8hNbvIhauYFtZ5sAg1Bu8gqjhCv2Y=;
-        b=dPPcKDCsOXQk8dzUCFZp6m959Q+1yI8aPePoMLM5BrUpwlAJO5xrFzQz4J9yf6BltR
-         /fkis0PcWlUJay140nW80TEvM1PaQx77QXm3DAI+csCtvD3VaJ139vmt291Sjek3E0mD
-         GXMVrnQJ6ZXwYr5OGOrkFMFYKunyAIyoPGi/c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=SQhh9BLbCTquIE8hNbvIhauYFtZ5sAg1Bu8gqjhCv2Y=;
-        b=SPgeXPEUieIWtoBn4cYguy3znjjgg8/jGgcQ7eE9Bz6iUM8/CXrDXnw2XcuHZDyN9Y
-         PxhvJazfQhbFyqFSqMpm40Q/IMhZPvWsqOHtWxIBvDrch8fOErw50fSpGkiEU4bOnI/9
-         Lgeh1vC0iur5+tm183nL42o0yfIpShU66ydjJq2i7K0Mxsy1+gnScCD87P4yQ1C8jTrS
-         fvpgI2G4RWLMBuivGQfYQYZf4Nunp0KqkUBL2hENBCBQnpS82oO4yx9yCeAQJ+g0/yPQ
-         1xXEOtPYfauwK+GUu3qPHzLB3B1udhTbU48rzXQ7K6aibW9YDEFs31LEvlpaHRd1RvWR
-         /XFg==
-X-Gm-Message-State: AGRZ1gLbDWJcUXxDEXUlHDbPvv6cOBXG/shu516JCtFWuI4BdABWdnDz
-	A06c9Sk3XIzXPtszFKwdc1mS9DmZcxNdt2WnSxnZ0DSZ
-X-Google-Smtp-Source: AFSGD/WusShgDKa904IVmttKgWjq+Sb7AZslxeECzRf3mwMWgYcn9n6Yl2wY0YKRB++IIV0mbzqJdzOGlCjw7tfNcxk=
-X-Received: by 2002:a24:edc4:: with SMTP id r187mr1669235ith.158.1542706818385;
- Tue, 20 Nov 2018 01:40:18 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:55184 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gMcDA-0002fY-T2
+	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:10:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36712)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sameo@linux.intel.com>) id 1gMcAJ-0007vY-D0
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 12:07:53 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sameo@linux.intel.com>) id 1gMbxW-0004S6-6J
+	for qemu-arm@nongnu.org; Tue, 13 Nov 2018 11:54:43 -0500
+Received: from mga06.intel.com ([134.134.136.31]:62852)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
+	id 1gMbx5-0003pH-Tz; Tue, 13 Nov 2018 11:54:16 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	13 Nov 2018 08:53:49 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922127"
+Received: from qingbai-mobl.ger.corp.intel.com (HELO
+	caravaggio.ger.corp.intel.com) ([10.249.41.239])
+	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:48 -0800
+From: Samuel Ortiz <sameo@linux.intel.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 13 Nov 2018 17:52:46 +0100
+Message-Id: <20181113165247.4806-13-sameo@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181113165247.4806-1-sameo@linux.intel.com>
+References: <20181113165247.4806-1-sameo@linux.intel.com>
 MIME-Version: 1.0
-References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org>
- <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
- <CAFEAcA-vF5orNpfGFe2sGWh=TxWL054PmCM-Yu4faJne+4CkbA@mail.gmail.com>
- <CAHmQWvD1ocAfZo=9aJYeuVDWrBk=AF_D-AgHriYb3-7=n+rR6A@mail.gmail.com>
- <20181116122705.msdb5hydmhtyzzxy@sirius.home.kraxel.org> <CAKv+Gu8QXaRioVPNze_+mJg4aqjJmwn4O-1jdRcYwrkieXrBwQ@mail.gmail.com>
- <20181119124423.qj3sjhhdyetrbju5@bivouac.eciton.net> <CAKv+Gu_-U8BHthhen-GBkium9qJMdd-pe_PB9TPdUaP=koeajQ@mail.gmail.com>
- <20181119164421.me2j4fwzo43aghaa@bivouac.eciton.net> <CAKv+Gu9VjERXDdb=ZkvzVocL4Fd3_2e+F=H0nqEJVs4UEkYmhw@mail.gmail.com>
- <20181120081613.bezcjotqhmqflvvb@sirius.home.kraxel.org> <CAHmQWvDua+3fXT7wA2j7wDRbOi5VJWfMa_+YYt6Xjv9XZF1Skg@mail.gmail.com>
-In-Reply-To: <CAHmQWvDua+3fXT7wA2j7wDRbOi5VJWfMa_+YYt6Xjv9XZF1Skg@mail.gmail.com>
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Date: Tue, 20 Nov 2018 10:40:07 +0100
-Message-ID: <CAKv+Gu_hMyn0g0hV9z1nZY+neGKg_7Rjm_cS-u33HkGQra_6ng@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v4] hw/arm: Add arm SBSA reference machine
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 7nyYebo7c+sg
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.31
+Subject: [Qemu-arm] [PATCH 12/13] target: arm: Makefile cleanup
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	richard.henderson@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Hm3f/8QlWbS/
 
-On Tue, 20 Nov 2018 at 09:49, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
->
-> On Tue, 20 Nov 2018 at 16:16, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> >
-> >   Hi,
-> >
-> > > > But I assume you specifically want things that do a lot of DMA, so I
-> > > > couldn't get away with asking for keeping it to the SBSA UART(s)? :)
-> > >
-> > > Ideally, it would be something that supports platform MSIs as well,
-> > > but that is unlikely to be a priority for anyone (and i would be very
-> > > surprised if any of QEMU's sysbus host controllers implement that at
-> > > the moment)
-> > >
-> > > I can live with just sysbus AHCI, though, if EHCI/XHCI are too cumbersome.
-> >
-> > Generic sysbus ehci should not be difficuilt, 10 lines patch or so.
-> >
-> > Gives you only usb2 though.  usb1 devices are handled either via ohci
-> > companion controller (should be doable), or via integrated usb2 hub
-> > (more common on recent hardware, but qemu usb-hub is usb1 only).
-> >
-> > Generic sysbus xhci would be more work.  But you'll get usb 1+2+3
-> > support.  And wiring up platform MSIs should be possible too.
-> >
-> In kernel, these drivers are enabled by default:
-> CONFIG_USB_XHCI_PLATFORM=y
-> CONFIG_USB_EHCI_HCD_PLATFORM=y
-> CONFIG_USB_OHCI_HCD_PLATFORM=y
->
-> If we do generic EHCI or XHCI in qemu, can the driver in kernel work
-> with it? (I guess yes?)
-> My thought is if the available kernel driver will work without any
-> change, then we can create it in qemu.
->
+Group objects with the same build dependencies together.
 
-Yes that should work. Our MacchiatoBin DSDT has the following for its
-XHCI controllers:
+Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Robert Bradford <robert.bradford@intel.com>
+---
+ target/arm/Makefile.objs | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-Device (XHC0)
-{
-    Name (_HID, "PNP0D10")      // _HID: Hardware ID
-    Name (_UID, 0x00)           // _UID: Unique ID
-    Name (_CCA, 0x01)           // _CCA: Cache Coherency Attribute
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 6e880df727..8e513748e3 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -1,15 +1,13 @@
+-obj-y += arm-semi.o
+-obj-$(CONFIG_SOFTMMU) += machine.o psci.o arch_dump.o monitor.o
++obj-y += arm-semi.o crypto_helper.o gdbstub.o helper.o cpu.o
++obj-y += translate.o op_helper.o neon_helper.o
++obj-y += iwmmxt_helper.o vec_helper.o m_helper.o
++obj-y += excp_helper.o vfp_helper.o
++
++obj-$(CONFIG_SOFTMMU) += machine.o psci.o arch_dump.o monitor.o arm-powerctl.o
+ obj-$(CONFIG_KVM) += kvm.o
+ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
+ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
+ obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
+-obj-y += translate.o op_helper.o helper.o cpu.o
+-obj-y += neon_helper.o iwmmxt_helper.o vec_helper.o
+-obj-y += gdbstub.o m_helper.o excp_helper.o vfp_helper.o
+-obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
+-obj-y += crypto_helper.o
+-obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
+ 
+ DECODETREE = $(SRC_PATH)/scripts/decodetree.py
+ 
+@@ -20,3 +18,4 @@ target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODETREE)
+ 
+ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+ obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
++obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
+-- 
+2.19.1
 
-    Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-    {
-        Memory32Fixed (ReadWrite,
-            0xF2500000,         // Address Base (MMIO)
-            0x00004000,         // Address Length
-            )
-        Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
-        {
-          CP_GIC_SPI_CP0_USB_H0
-        }
-    })
-}
-
-and this gets picked up by the kernel without problems.
-
-Wiring up platform MSIs would involve modifying the IORT as well,
-which is one of the reasons I'd prefer to make these fixed devices: we
-cannot rely on qemu_fw_cfg to generate it for us, and adding a lot of
-new code to generate this on the fly is simply not worth the effort.

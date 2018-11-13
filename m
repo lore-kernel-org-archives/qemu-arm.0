@@ -1,1152 +1,272 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7184631wrw;
-        Thu, 15 Nov 2018 08:05:45 -0800 (PST)
-X-Received: by 2002:a9d:3c19:: with SMTP id q25mr4251000otc.315.1542297945816;
-        Thu, 15 Nov 2018 08:05:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542297945; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4229644wrw;
+        Tue, 13 Nov 2018 03:07:08 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f/VqvNE/pzNBq/50HGIheL9dX7HWET5vE3lQltYMocacjR4feJAUC6tkBxbvXhD/VUFgNM
+X-Received: by 2002:ac8:2eeb:: with SMTP id i40mr4567678qta.300.1542107228113;
+        Tue, 13 Nov 2018 03:07:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542107228; cv=none;
         d=google.com; s=arc-20160816;
-        b=e+njVP7ELcx6v6rzZRTLhnyP1bhSbaCXyvP34FUoU/0+SlIdjyXr8Sw3+i/oqjUCtV
-         v+46gtiWmIBU+h8fwpSUe/WG5t0hNMMFhQC36BGAK3aJ8+hz/OzsgA63fe0NaMrIWIje
-         XlqgM2+PW/kRmEI6y9/WWow4sEQ7JkyqIywHZwnl3rN3vvR/NUeFHjd0y6kU7RUb5R9X
-         pWRUShaVxNnZA12GVzpjp7YCGZi3Z2w0IkTYyos9qNb8yOP7RjYVjxahZJe0wiBcLKbX
-         I1Lk98/btIIE4hMqX9ib30chyuLg4+w1wiIJm/8Zy9PkOReBoAKDwJQw26ALyvJVxE48
-         2lMw==
+        b=OZzW3tycQhtV1oDtyxHMeCeRKLWj8kYWfKirLshnoMuohyMJIEcyFk/eW1itu7oRsK
+         H2tN3tZ8cx66C9O9ika1EHtYCSSVNWxeeKx4B3u+5iKBHdrrJTRvvLV/FnCScLNRgFns
+         hlS0xDOWk5KD6rbHnaTEgOk7utsls/nvZxYmGyq6mkZFMVHXzD6PtU0Gk4mVseNLftbX
+         oSEtXEmruDf8JoZRGsQKsQNA2JGotIzkUb7o7omrdHYuZGhxy/haw1xMrQ/KlvPBuQnq
+         bQhbc+ko8yBYPYAjhC2QW13xmRZJ+KxzDrIDUx5Fiz3FFq+pIQcCLqKJvz2dkv1i525s
+         z3Uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=BQSoW51xV6hNAxnw8IIZNzmydM3O9u4LydhIawkXY48=;
-        b=FEK3jTc7VoIPxWulhQHpVZJ45T1lQAg+uKc1egbKd7CEUWpyVlioEJuycnoDcvw2B/
-         kZ0Q6PUQAZKwXIu6MWSKjZ3hCjtjpzES/TM5rMTG6Gkf2fQ0l9cr5L99d5+mh6Rc04OP
-         ANr1br6Kw/8myIRXQo6PTZWDGGVzdB7+OKhtE0Zl57le6e+gyH09b9ETFkTqa3nuU50r
-         fq+ta+2b9QxWz38nj3TDkVZk5ZNLVuyKRau0tgorM0oBPDw/kyXXvGX3HavOwJemQIv+
-         qg3TQYlNd93tmNj0LEcg6qO0GSrxDH0XwIW6jjBVcHy7djCYtbzKseqgbvxuxkrtpq24
-         QuYQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=F4WVXGPjjjHqzqyEheHwK2n4ieSfVRdjZ22078KCOZk=;
+        b=npOFMkEfAAov12xPN3YxUkk5ayGQmvZeM+UajACjyrNyuynSP9BLg0NnVVhovrAlLm
+         nfL71eZJ8vZpzd910aL762BK5O5BIBYoxAm6Nk+sGbPoja+mUX9oJRLbwRT43w2YMsix
+         JVhhCreDuSromZpL9q2BSech48cYOMne3wDz9jrHCYpVa5g0TkciUQzmxzHBdx3h9cjn
+         q9LiI9Aqo9tyLsYkaqUCug6QkxrLkmRYGu69RkkEkWYTkn9ctR0k1PONz5t4rD6RAGnJ
+         J/yVpzllNPDvVc0dSASB3lhfZ5qUljFyCuofoOUsMYQGd/ekpTNm+4E2cEJUM7CYhLa6
+         2iaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Y4B/bfKT";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c2sor8923391otk.173.2018.11.15.08.05.45
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p2nBjqcA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id v60si6514232qtd.31.2018.11.13.03.07.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 15 Nov 2018 08:05:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 13 Nov 2018 03:07:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Y4B/bfKT";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=BQSoW51xV6hNAxnw8IIZNzmydM3O9u4LydhIawkXY48=;
-        b=Y4B/bfKTSk0Y6O+2x1NpFwjRxWw6kStYcNZzjsCbx0386T0W4R2a5JFRi1++tZzoFe
-         rzldCjfQ9FVAvCPXYPBSMhBzVNK2APTUURvHH8ZzIAxirTiO47TQKzm0JhsKg+myFj1m
-         LVtHy3m44TmyHxm2Gos/sm9wfNY790vcuwAkk=
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p2nBjqcA;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53176 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gMWXD-00085v-GO
+	for alex.bennee@linaro.org; Tue, 13 Nov 2018 06:07:07 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53885)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gMWWw-00085U-Nw
+	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 06:06:55 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gMWWl-0008Bk-UB
+	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 06:06:46 -0500
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:37845)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1gMWWl-0008BG-Hu; Tue, 13 Nov 2018 06:06:39 -0500
+Received: by mail-lj1-x243.google.com with SMTP id e5-v6so10442124lja.4;
+	Tue, 13 Nov 2018 03:06:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=F4WVXGPjjjHqzqyEheHwK2n4ieSfVRdjZ22078KCOZk=;
+	b=p2nBjqcATfEmDXL0zlI+uJbmsTWC03U+SNHO31qFDdiIuf3T6pw9uQ7S3tepmSgL75
+	ajovEJMZdMYRGyiSe/3R1KWLm0nwoB/P/Kh1AbugzRVISp/40gPY76dW6QX/u+MC/tNq
+	E0OZ+/YjCXz169/NAnu2L/Lj9R4feUkS2UD1cVzKScGhOvE8YMNFAfBeV3j169YFUzXL
+	oOUEmzW1jVH45ROWR8fmE1D6pga+LBxAhwpL558nmUrA+F9t4bVg24zn2uuCJsvsShHA
+	DcDoKwatE5cdThrrWDTLDh+EK8/YJJBShv7P5sA7/JIdGYtpCBzwO9rUYdTw67RckG/D
+	K23w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=BQSoW51xV6hNAxnw8IIZNzmydM3O9u4LydhIawkXY48=;
-        b=D5PRJdEuelsBHn+sXfZmU9lSxtuERGpWuffagxdOcgcWmr31UCyX6dF0cBVH3v0cr5
-         /tISKWFmlrYd62UyNrPZp2qjvUxGmxOkgDfAlIaJOXFpCLX00mPd4Hggm9+Y5nWirtqp
-         8+n4yDKw+Yg4b06+1/XNboPuXLTnQ0Rya5EEG/eU0xT9WWUedQ1ZbzVzJPsGUYnLwFVQ
-         IwTqjAtpDUV5znt/g7I9suqTo2P1OMG6VM/3P7OJ9L6VLMu6fTMBY0EOcNTocep6QCd0
-         BmjzXE9s7ebEEcv18WANHt+UunbTau+K6rNJ2H6+2NA59PxfBnlgbq3fkPaOroH2A4CC
-         mFgw==
-X-Gm-Message-State: AGRZ1gLZkyQ+FZlPGMdU8lE7fX5vTqBujha7HD5We/YE7xLAQawfDM5B
-	+VmOLSDSRRGFaAGnVJz9MsZrHdxSXuqCX2MqkHJzeoHgjSw/YQ==
-X-Google-Smtp-Source: AJdET5frh48+U20aRI7N+PYEA5v9XOUFJGmtpIrtVIcx9bNUydhlOjFrHvoaOub3awSJ/F94dpObDMZ6YrnK5NWNWLc=
-X-Received: by 2002:a9d:5617:: with SMTP id e23mr3670603oti.151.1542297945347;
- Thu, 15 Nov 2018 08:05:45 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=F4WVXGPjjjHqzqyEheHwK2n4ieSfVRdjZ22078KCOZk=;
+	b=Iv0m+Y4jNIBcdyZvpAZaQdAt4aA0Uu1LLkPuW++TH1pOJNWFeXEa78CcCsMTvKD2gv
+	Hcivg4FgAQDAJlwd0l1aTgM71cBSxyXTu2P/aOveS7k7gq4iXyJmh6JajzNFbKoREB7i
+	ltUZvTkQv/HAUcRhdoS4LfbOwjLLlNlg38hjoh9YRHCIJpcxXG++qUP5jGffYHpczU2j
+	r6495VKzLZ1vb3jtvMyPS8cHyNpDlQuChxyOemQMutdnDLeQajM/gETN1OJMy6BBsV1n
+	vP+SESlax9OGr0D/nBG6B8KJaXUKxGXspRjxNWlGcsE1ePWyR90YpwLppRoMNOZvSt8t
+	bthA==
+X-Gm-Message-State: AGRZ1gKNJkkFokN6Mg7FIocoAN1agVcCH4eZkv06cOFC6isegfhJYV6q
+	5faM+oi2n4Y3jv4GarAlA5k=
+X-Received: by 2002:a2e:824c:: with SMTP id
+	j12-v6mr2766228ljh.168.1542107197962; 
+	Tue, 13 Nov 2018 03:06:37 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+	by smtp.gmail.com with ESMTPSA id
+	1-v6sm2021368lju.61.2018.11.13.03.06.36
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 13 Nov 2018 03:06:36 -0800 (PST)
+Date: Tue, 13 Nov 2018 12:06:36 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Message-ID: <20181113110636.GH1148@toto>
+References: <20181110081147.4027-1-luc.michel@greensocs.com>
+	<20181110081147.4027-4-luc.michel@greensocs.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Thu, 15 Nov 2018 08:05:24
- -0800 (PST)
-In-Reply-To: <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
-References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org> <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Nov 2018 16:05:24 +0000
-Message-ID: <CAFEAcA-vF5orNpfGFe2sGWh=TxWL054PmCM-Yu4faJne+4CkbA@mail.gmail.com>
-Subject: Re: [PATCH v4] hw/arm: Add arm SBSA reference machine
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 5iCpsM6CCf18
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181110081147.4027-4-luc.michel@greensocs.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::243
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v5 03/16] gdbstub: add
+ multiprocess support to '?' packets
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, saipava@xilinx.com, edgari@xilinx.com,
+	qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tnQi8l60whqY
 
-On 19 October 2018 at 09:55, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> run on KVM and execute virtualization workloads, but we need an
-> environment as faithful as possible to physical hardware, for supporting
-> firmware and OS development for pysical Aarch64 machines.
->
-> This patch introduces new machine type 'sbsa-ref' with main features:
->  - Based on 'virt' machine type.
->  - CPU type cortex-a57.
->  - EL2 and EL3 are enabled by default.
->  - GIC version 3 only.
->  - Re-designed memory map.
->  - AHCI controller attached to system bus.
->  - EHCI controller attached to system bus.
->  - CDROM and hard disc on AHCI bus.
->  - USB mouse and key board.
->  - E1000E ethernet card on PCIE bus.
->  - VGA display adaptor on PCIE bus.
->  - No virtio deivces.
->  - No paravirtualized fw_cfg device.
->  - No ACPI table supplied.
->  - Only minimal device tree nodes.
->
-> Arm Trusted Firmware and UEFI porting to this are done accordingly.
->
-> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
+On Sat, Nov 10, 2018 at 09:11:34AM +0100, Luc Michel wrote:
+> The gdb_get_cpu_pid() function does the PID lookup for the given CPU. It
+> checks if the CPU is a direct child of a CPU cluster. If it is, the
+> returned PID is the cluster ID plus one (cluster IDs start at 0, GDB
+> PIDs at 1). When the CPU is not a child of such a container, the PID of
+> the first process is returned.
+> 
+> The gdb_fmt_thread_id() function generates the string to be used to identify
+> a given thread, in a response packet for the peer. This function
+> supports generating thread IDs when multiprocess mode is enabled (in the
+> form `p<pid>.<tid>').
+> 
+> Use them in the reply to a '?' request.
+> 
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-Hi; I've had a quick run through this patch. My comments
-below are mostly about there still being a lot of code
-here which has been copied from virt.c but which you do
-not need.
 
-If after you've done that this patch is still more than
-about 500 lines long, I would recommend that you split it
-up into coherent pieces, to make it easier to review.
+This is also theoretical but:
+When looking at this, it seems like you could have lazily created
+the s->processes array entries (if you find a cluster but the
+no valid entry in s->processes). Then we could perhaps eliminate the
+scan of all objects at startup and also support CPU/Cluster hotplug.
+
+Anyway, this looks good to me!
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+Cheers,
+Edgar
+
 
 > ---
->  hw/arm/Makefile.objs  |   2 +-
->  hw/arm/sbsa-ref.c     | 937 ++++++++++++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/virt.h |   2 +
->  3 files changed, 940 insertions(+), 1 deletion(-)
->  create mode 100644 hw/arm/sbsa-ref.c
->
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index d51fcec..a8895eb 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -1,4 +1,4 @@
-> -obj-y += boot.o virt.o sysbus-fdt.o
-> +obj-y += boot.o virt.o sbsa-ref.o sysbus-fdt.o
->  obj-$(CONFIG_ACPI) += virt-acpi-build.o
->  obj-$(CONFIG_DIGIC) += digic_boards.o
->  obj-$(CONFIG_EXYNOS4) += exynos4_boards.o
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> new file mode 100644
-> index 0000000..28ebb3a
-> --- /dev/null
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -0,0 +1,937 @@
-> +/*
-> + * ARM SBSA Reference Platform emulation
-> + *
-> + * Copyright (c) 2018 Linaro Limited
-> + * Written by Hongbo Zhang <hongbo.zhang@linaro.org>
-> + *
-> + * Based on hw/arm/virt.c
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms and conditions of the GNU General Public License,
-> + * version 2 or later, as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-> + * more details.
-> + *
-> + * You should have received a copy of the GNU General Public License along with
-> + * this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/arm/virt.h"
-> +#include "hw/devices.h"
-> +#include "net/net.h"
-> +#include "sysemu/device_tree.h"
-> +#include "sysemu/numa.h"
-> +#include "hw/loader.h"
-> +#include "qemu/error-report.h"
-> +#include "hw/pci-host/gpex.h"
-> +#include "hw/arm/sysbus-fdt.h"
-> +#include "hw/arm/fdt.h"
-> +#include "hw/intc/arm_gic.h"
-> +#include "hw/intc/arm_gicv3_common.h"
-> +#include "kvm_arm.h"
-> +#include "hw/ide/internal.h"
-> +#include "hw/ide/ahci_internal.h"
-> +#include "hw/usb.h"
-> +#include "qemu/units.h"
-> +
-> +#define NUM_IRQS 256
-> +
-> +#define SATA_NUM_PORTS 6
-> +
-> +#define RAMLIMIT_GB 255
-> +#define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
-
-You probably don't want to stick yourself with the same
-ram limits that the virt board has, especially since you
-don't need to care about AArch32. Strongly consider
-putting the RAM somwhere that lets you get up to a
-maximum value that matches what we might expect in
-server-class hardware.
-
-> +
-> +static const MemMapEntry sbsa_ref_memmap[] = {
-> +    /* Space up to 0x8000000 is reserved for a boot ROM */
-> +    [VIRT_FLASH] =              {          0, 0x08000000 },
-> +    [VIRT_CPUPERIPHS] =         { 0x08000000, 0x00020000 },
-> +    /* GIC distributor and CPU interfaces sit inside the CPU peripheral space */
-> +    [VIRT_GIC_DIST] =           { 0x08000000, 0x00010000 },
-> +    [VIRT_GIC_CPU] =            { 0x08010000, 0x00010000 },
-> +    /* The space in between here is reserved for GICv3 CPU/vCPU/HYP */
-> +    /* This redistributor space allows up to 2*64kB*123 CPUs */
-
-You don't need to do the split-redistributor layout that
-"virt" does because you have no backwards compatibility
-concerns. So make the space for redistributors big enough
-to fit more CPUs in (at least 512, or more if you expect
-this board to be used in future for development of a
-software stack that handles more).
-
-> +    [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
-> +    [VIRT_UART] =               { 0x09000000, 0x00001000 },
-> +    [VIRT_RTC] =                { 0x09010000, 0x00001000 },
-> +    [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
-> +    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
-> +    [VIRT_AHCI] =               { 0x09050000, 0x00010000 },
-> +    [VIRT_EHCI] =               { 0x09060000, 0x00010000 },
-> +    [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
-> +    [VIRT_PCIE_MMIO] =          { 0x10000000, 0x7fff0000 },
-> +    [VIRT_PCIE_PIO] =           { 0x8fff0000, 0x00010000 },
-> +    [VIRT_PCIE_ECAM] =          { 0x90000000, 0x10000000 },
-> +    /* Second PCIe window, 508GB wide at the 4GB boundary */
-> +    [VIRT_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0x7F00000000ULL },
-
-Again, you don't need the layout that "virt" has to
-satisfy 32-bit guests and backwards compatibility. You
-can just have a single large MMIO window.
-
-
-> +    [VIRT_MEM] =                { 0x8000000000ULL, RAMLIMIT_BYTES },
-> +};
-> +
-> +static const int sbsa_ref_irqmap[] = {
-> +    [VIRT_UART] = 1,
-> +    [VIRT_RTC] = 2,
-> +    [VIRT_PCIE] = 3, /* ... to 6 */
-> +    [VIRT_GPIO] = 7,
-> +    [VIRT_SECURE_UART] = 8,
-> +    [VIRT_AHCI] = 9,
-> +    [VIRT_EHCI] = 10,
-> +};
-> +
-> +static void create_fdt(VirtMachineState *vms)
+>  gdbstub.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 58 insertions(+), 2 deletions(-)
+> 
+> diff --git a/gdbstub.c b/gdbstub.c
+> index 0d70b89598..d26bad4b67 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -638,10 +638,52 @@ static int memtox(char *buf, const char *mem, int len)
+>          }
+>      }
+>      return p - buf;
+>  }
+>  
+> +static uint32_t gdb_get_cpu_pid(const GDBState *s, CPUState *cpu)
 > +{
-> +    void *fdt = create_device_tree(&vms->fdt_size);
+> +#ifndef CONFIG_USER_ONLY
+> +    gchar *path, *name;
+> +    Object *obj;
+> +    CPUClusterState *cluster;
+> +    uint32_t ret;
 > +
-> +    if (!fdt) {
-> +        error_report("create_device_tree() failed");
-> +        exit(1);
+> +    path = object_get_canonical_path(OBJECT(cpu));
+> +    name = object_get_canonical_path_component(OBJECT(cpu));
+> +
+> +    if (path == NULL) {
+> +        ret = s->processes[0].pid;
+> +        goto out;
 > +    }
 > +
-> +    vms->fdt = fdt;
+> +    /*
+> +     * Retrieve the CPU parent path by removing the last '/' and the CPU name
+> +     * from the CPU canonical path. */
+> +    path[strlen(path) - strlen(name) - 1] = '\0';
 > +
-> +    /* Header */
-> +    qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
-> +    qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-> +    qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+> +    obj = object_resolve_path_type(path, TYPE_CPU_CLUSTER, NULL);
 > +
-> +    /* /chosen must exist for load_dtb to fill in necessary properties later */
-> +    qemu_fdt_add_subnode(fdt, "/chosen");
-> +
-> +    if (have_numa_distance) {
-> +        int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-> +        uint32_t *matrix = g_malloc0(size);
-> +        int idx, i, j;
-> +
-> +        for (i = 0; i < nb_numa_nodes; i++) {
-> +            for (j = 0; j < nb_numa_nodes; j++) {
-> +                idx = (i * nb_numa_nodes + j) * 3;
-> +                matrix[idx + 0] = cpu_to_be32(i);
-> +                matrix[idx + 1] = cpu_to_be32(j);
-> +                matrix[idx + 2] = cpu_to_be32(numa_info[i].distance[j]);
-> +            }
-> +        }
-> +
-> +        qemu_fdt_add_subnode(fdt, "/distance-map");
-> +        qemu_fdt_setprop_string(fdt, "/distance-map", "compatible",
-> +                                "numa-distance-map-v1");
-> +        qemu_fdt_setprop(fdt, "/distance-map", "distance-matrix",
-> +                         matrix, size);
-> +        g_free(matrix);
+> +    if (obj == NULL) {
+> +        ret = s->processes[0].pid;
+> +        goto out;
 > +    }
+> +
+> +    cluster = CPU_CLUSTER(obj);
+> +    ret = cluster->cluster_id + 1;
+> +
+> +out:
+> +    g_free(name);
+> +    g_free(path);
+> +
+> +    return ret;
+> +
+> +#else
+> +    return s->processes[0].pid;
+> +#endif
 > +}
 > +
-> +static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>  static const char *get_feature_xml(const char *p, const char **newp,
+>                                     CPUClass *cc)
+>  {
+>      size_t len;
+>      int i;
+> @@ -907,10 +949,23 @@ static CPUState *find_cpu(uint32_t thread_id)
+>      }
+>  
+>      return NULL;
+>  }
+>  
+> +static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
+> +                           char *buf, size_t buf_size)
 > +{
-> +    int cpu;
-> +    const MachineState *ms = MACHINE(vms);
-> +
-> +    qemu_fdt_add_subnode(vms->fdt, "/cpus");
-> +    /* #address-cells should be 2 for Arm v8 64-bit systems */
-> +    qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#address-cells", 2);
-> +    qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#size-cells", 0x0);
-> +
-> +    for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-> +        char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
-> +        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-> +        CPUState *cs = CPU(armcpu);
-> +
-> +        qemu_fdt_add_subnode(vms->fdt, nodename);
-> +        qemu_fdt_setprop_string(vms->fdt, nodename, "device_type", "cpu");
-> +        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-> +                                    armcpu->dtb_compatible);
-> +
-> +        if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED
-> +            && vms->smp_cpus > 1) {
-> +            qemu_fdt_setprop_string(vms->fdt, nodename,
-> +                                        "enable-method", "psci");
-> +        }
-> +
-> +        qemu_fdt_setprop_u64(vms->fdt, nodename, "reg", armcpu->mp_affinity);
-> +
-> +        if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
-> +            qemu_fdt_setprop_cell(vms->fdt, nodename, "numa-node-id",
-> +                ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-> +        }
-> +
-> +        g_free(nodename);
-> +    }
-> +}
-> +
-> +static void fdt_add_gic_node(VirtMachineState *vms)
-> +{
-> +    char *nodename;
-> +    int nb_redist_regions = virt_gicv3_redist_region_count(vms);
-> +
-> +    vms->gic_phandle = qemu_fdt_alloc_phandle(vms->fdt);
-> +    qemu_fdt_setprop_cell(vms->fdt, "/", "interrupt-parent", vms->gic_phandle);
-> +
-> +    nodename = g_strdup_printf("/intc@%" PRIx64,
-> +                               vms->memmap[VIRT_GIC_DIST].base);
-> +    qemu_fdt_add_subnode(vms->fdt, nodename);
-> +    qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 3);
-> +    qemu_fdt_setprop(vms->fdt, nodename, "interrupt-controller", NULL, 0);
-> +    qemu_fdt_setprop_cell(vms->fdt, nodename, "#address-cells", 0x2);
-> +    qemu_fdt_setprop_cell(vms->fdt, nodename, "#size-cells", 0x2);
-> +    qemu_fdt_setprop(vms->fdt, nodename, "ranges", NULL, 0);
-> +
-> +    /* Only GICv3 created */
-> +    qemu_fdt_setprop_string(vms->fdt, nodename, "compatible",
-> +                            "arm,gic-v3");
-> +
-> +    qemu_fdt_setprop_cell(vms->fdt, nodename,
-> +                          "#redistributor-regions", nb_redist_regions);
-> +
-> +    if (nb_redist_regions == 1) {
-> +        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-> +                                     2, vms->memmap[VIRT_GIC_DIST].base,
-> +                                     2, vms->memmap[VIRT_GIC_DIST].size,
-> +                                     2, vms->memmap[VIRT_GIC_REDIST].base,
-> +                                     2, vms->memmap[VIRT_GIC_REDIST].size);
+> +    if (s->multiprocess) {
+> +        snprintf(buf, buf_size, "p%02x.%02x",
+> +                 gdb_get_cpu_pid(s, cpu), cpu_gdb_index(cpu));
 > +    } else {
-> +        qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-> +                                     2, vms->memmap[VIRT_GIC_DIST].base,
-> +                                     2, vms->memmap[VIRT_GIC_DIST].size,
-> +                                     2, vms->memmap[VIRT_GIC_REDIST].base,
-> +                                     2, vms->memmap[VIRT_GIC_REDIST].size,
-> +                                     2, vms->memmap[VIRT_GIC_REDIST2].base,
-> +                                     2, vms->memmap[VIRT_GIC_REDIST2].size);
+> +        snprintf(buf, buf_size, "%02x", cpu_gdb_index(cpu));
 > +    }
 > +
-> +    if (vms->virt) {
-> +        qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
-> +                               GIC_FDT_IRQ_TYPE_PPI, ARCH_GICV3_MAINT_IRQ,
-> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +    }
-> +
-> +    qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle", vms->gic_phandle);
-> +    g_free(nodename);
-> +}
-
-This is still generating a lot of device tree nodes.
-I thought we had agreed that we were going to just have
-a minimal device tree that says "here is the RAM" and nothing
-else ?
-
-> +
-> +static void create_gic(VirtMachineState *vms, qemu_irq *pic)
-> +{
-> +    /* We create a standalone GIC */
-> +    DeviceState *gicdev;
-> +    SysBusDevice *gicbusdev;
-> +    const char *gictype;
-> +    int i;
-> +    uint32_t nb_redist_regions = 0;
-> +    uint32_t redist0_capacity, redist0_count;
-> +
-> +    /* Only GICv3 created */
-> +    gictype = gicv3_class_name();
-> +
-> +    gicdev = qdev_create(NULL, gictype);
-> +    qdev_prop_set_uint32(gicdev, "revision", 3);
-> +    qdev_prop_set_uint32(gicdev, "num-cpu", smp_cpus);
-> +    /* Note that the num-irq property counts both internal and external
-> +     * interrupts; there are always 32 of the former (mandated by GIC spec).
-> +     */
-> +    qdev_prop_set_uint32(gicdev, "num-irq", NUM_IRQS + 32);
-> +    if (!kvm_irqchip_in_kernel()) {
-> +        qdev_prop_set_bit(gicdev, "has-security-extensions", vms->secure);
-> +    }
-> +
-> +    redist0_capacity =
-> +                vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
-> +    redist0_count = MIN(smp_cpus, redist0_capacity);
-> +
-> +    nb_redist_regions = virt_gicv3_redist_region_count(vms);
-> +
-> +    qdev_prop_set_uint32(gicdev, "len-redist-region-count",
-> +                         nb_redist_regions);
-> +    qdev_prop_set_uint32(gicdev, "redist-region-count[0]", redist0_count);
-> +
-> +    if (nb_redist_regions == 2) {
-> +        uint32_t redist1_capacity =
-> +                    vms->memmap[VIRT_GIC_REDIST2].size / GICV3_REDIST_SIZE;
-> +
-> +        qdev_prop_set_uint32(gicdev, "redist-region-count[1]",
-> +            MIN(smp_cpus - redist0_count, redist1_capacity));
-> +    }
-> +
-> +    qdev_init_nofail(gicdev);
-> +    gicbusdev = SYS_BUS_DEVICE(gicdev);
-> +    sysbus_mmio_map(gicbusdev, 0, vms->memmap[VIRT_GIC_DIST].base);
-> +    sysbus_mmio_map(gicbusdev, 1, vms->memmap[VIRT_GIC_REDIST].base);
-> +    if (nb_redist_regions == 2) {
-> +        sysbus_mmio_map(gicbusdev, 2, vms->memmap[VIRT_GIC_REDIST2].base);
-> +    }
-> +
-> +    /* Wire the outputs from each CPU's generic timer and the GICv3
-> +     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-> +     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-> +     */
-> +    for (i = 0; i < smp_cpus; i++) {
-> +        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-> +        int ppibase = NUM_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
-> +        int irq;
-> +        /* Mapping from the output timer irq lines from the CPU to the
-> +         * GIC PPI inputs we use for the virt board.
-> +         */
-> +        const int timer_irq[] = {
-> +            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
-> +            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
-> +            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
-> +            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
-> +        };
-> +
-> +        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-> +            qdev_connect_gpio_out(cpudev, irq,
-> +                                  qdev_get_gpio_in(gicdev,
-> +                                                   ppibase + timer_irq[irq]));
-> +        }
-> +
-> +        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
-> +                                    qdev_get_gpio_in(gicdev, ppibase
-> +                                                     + ARCH_GICV3_MAINT_IRQ));
-> +        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-> +                                    qdev_get_gpio_in(gicdev, ppibase
-> +                                                     + VIRTUAL_PMU_IRQ));
-> +
-> +        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-> +        sysbus_connect_irq(gicbusdev, i + smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-> +        sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-> +        sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-> +                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-> +    }
-> +
-> +    for (i = 0; i < NUM_IRQS; i++) {
-> +        pic[i] = qdev_get_gpio_in(gicdev, i);
-> +    }
-> +
-> +    fdt_add_gic_node(vms);
+> +    return buf;
 > +}
 > +
-> +static void create_uart(const VirtMachineState *vms, qemu_irq *pic, int uart,
-> +                        MemoryRegion *mem, Chardev *chr)
-> +{
-> +    hwaddr base = vms->memmap[uart].base;
-> +    int irq = vms->irqmap[uart];
-> +    DeviceState *dev = qdev_create(NULL, "pl011");
-> +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-> +
-> +    qdev_prop_set_chr(dev, "chardev", chr);
-> +    qdev_init_nofail(dev);
-> +    memory_region_add_subregion(mem, base,
-> +                                sysbus_mmio_get_region(s, 0));
-> +    sysbus_connect_irq(s, 0, pic[irq]);
-> +}
-> +
-> +static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
-> +{
-> +    hwaddr base = vms->memmap[VIRT_RTC].base;
-> +    int irq = vms->irqmap[VIRT_RTC];
-> +
-> +    sysbus_create_simple("pl031", base, pic[irq]);
-> +}
-> +
-> +static void create_ahci(const VirtMachineState *vms, qemu_irq *pic)
-> +{
-> +    hwaddr base = vms->memmap[VIRT_AHCI].base;
-> +    int irq = vms->irqmap[VIRT_AHCI];
-> +    DeviceState *dev;
-> +    DriveInfo *hd[SATA_NUM_PORTS];
-> +    SysbusAHCIState *sysahci;
-> +    AHCIState *ahci;
-> +    int i;
-> +
-> +    dev = qdev_create(NULL, "sysbus-ahci");
-> +    qdev_prop_set_uint32(dev, "num-ports", SATA_NUM_PORTS);
-> +    qdev_init_nofail(dev);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
-> +
-> +    sysahci = SYSBUS_AHCI(dev);
-> +    ahci = &sysahci->ahci;
-> +    ide_drive_get(hd, ARRAY_SIZE(hd));
-> +    for (i = 0; i < ahci->ports; i++) {
-> +        if (hd[i] == NULL) {
-> +            continue;
-> +        }
-> +        ide_create_drive(&ahci->dev[i].port, 0, hd[i]);
-> +    }
-> +}
-> +
-> +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
-> +{
-> +    hwaddr base = vms->memmap[VIRT_EHCI].base;
-> +    int irq = vms->irqmap[VIRT_EHCI];
-> +    USBBus *usb_bus;
-> +
-> +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
-
-What is this using the exynos4210 USB device for? That
-is definitely not correct for a generic board.
-
-> +
-> +    usb_bus = usb_bus_find(-1);
-> +    usb_create_simple(usb_bus, "usb-kbd");
-> +    usb_create_simple(usb_bus, "usb-mouse");
-
-Don't create USB devices by default -- let the user do it on
-the command line.
-
-> +}
-> +
-> +static DeviceState *gpio_key_dev;
-> +static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
-> +{
-> +    /* use gpio Pin 3 for power button event */
-> +    qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
-> +}
-> +
-> +static Notifier sbsa_ref_powerdown_notifier = {
-> +    .notify = sbsa_ref_powerdown_req
-> +};
-> +
-> +static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
-> +{
-> +    DeviceState *pl061_dev;
-> +    hwaddr base = vms->memmap[VIRT_GPIO].base;
-> +    int irq = vms->irqmap[VIRT_GPIO];
-> +
-> +    pl061_dev = sysbus_create_simple("pl061", base, pic[irq]);
-> +
-> +    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> +                                        qdev_get_gpio_in(pl061_dev, 3));
-> +
-> +    /* connect powerdown request */
-> +    qemu_register_powerdown_notifier(&sbsa_ref_powerdown_notifier);
-> +}
-> +
-> +static void create_one_flash(const char *name, hwaddr flashbase,
-> +                             hwaddr flashsize, const char *file,
-> +                             MemoryRegion *sysmem)
-> +{
-> +    /* Create and map a single flash device. We use the same
-> +     * parameters as the flash devices on the Versatile Express board.
-> +     */
-> +    DriveInfo *dinfo = drive_get_next(IF_PFLASH);
-> +    DeviceState *dev = qdev_create(NULL, "cfi.pflash01");
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +    const uint64_t sectorlength = 256 * 1024;
-> +
-> +    if (dinfo) {
-> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo),
-> +                            &error_abort);
-> +    }
-> +
-> +    qdev_prop_set_uint32(dev, "num-blocks", flashsize / sectorlength);
-> +    qdev_prop_set_uint64(dev, "sector-length", sectorlength);
-> +    qdev_prop_set_uint8(dev, "width", 4);
-> +    qdev_prop_set_uint8(dev, "device-width", 2);
-> +    qdev_prop_set_bit(dev, "big-endian", false);
-> +    qdev_prop_set_uint16(dev, "id0", 0x89);
-> +    qdev_prop_set_uint16(dev, "id1", 0x18);
-> +    qdev_prop_set_uint16(dev, "id2", 0x00);
-> +    qdev_prop_set_uint16(dev, "id3", 0x00);
-> +    qdev_prop_set_string(dev, "name", name);
-> +    qdev_init_nofail(dev);
-> +
-> +    memory_region_add_subregion(sysmem, flashbase,
-> +                                sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0));
-> +
-> +    if (file) {
-> +        char *fn;
-> +        int image_size;
-> +
-> +        if (drive_get(IF_PFLASH, 0, 0)) {
-> +            error_report("The contents of the first flash device may be "
-> +                         "specified with -bios or with -drive if=pflash... "
-> +                         "but you cannot use both options at once");
-> +            exit(1);
-> +        }
-> +        fn = qemu_find_file(QEMU_FILE_TYPE_BIOS, file);
-> +        if (!fn) {
-> +            error_report("Could not find ROM image '%s'", file);
-> +            exit(1);
-> +        }
-> +        image_size = load_image_mr(fn, sysbus_mmio_get_region(sbd, 0));
-> +        g_free(fn);
-> +        if (image_size < 0) {
-> +            error_report("Could not load ROM image '%s'", file);
-> +            exit(1);
-> +        }
-> +    }
-> +}
-> +
-> +static void create_flash(const VirtMachineState *vms,
-> +                         MemoryRegion *sysmem,
-> +                         MemoryRegion *secure_sysmem)
-> +{
-> +    /* Create two flash devices to fill the VIRT_FLASH space in the memmap.
-> +     * Any file passed via -bios goes in the first of these.
-> +     * sysmem is the system memory space. secure_sysmem is the secure view
-> +     * of the system, and the first flash device should be made visible only
-> +     * there. The second flash device is visible to both secure and nonsecure.
-> +     * If sysmem == secure_sysmem this means there is no separate Secure
-> +     * address space and both flash devices are generally visible.
-> +     */
-> +    hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
-> +    hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
-> +
-> +    create_one_flash("sbsa-ref.flash0", flashbase, flashsize,
-> +                     bios_name, secure_sysmem);
-> +    create_one_flash("sbsa-ref.flash1", flashbase + flashsize, flashsize,
-> +                     NULL, sysmem);
-> +}
-> +
-> +static void create_smmu(const VirtMachineState *vms, qemu_irq *pic,
-> +                        PCIBus *bus)
-> +{
-> +    int irq =  vms->irqmap[VIRT_SMMU];
-> +    int i;
-> +    hwaddr base = vms->memmap[VIRT_SMMU].base;
-> +    DeviceState *dev;
-> +
-> +    if (vms->iommu != VIRT_IOMMU_SMMUV3) {
-> +        return;
-> +    }
-> +
-> +    dev = qdev_create(NULL, "arm-smmuv3");
-> +
-> +    object_property_set_link(OBJECT(dev), OBJECT(bus), "primary-bus",
-> +                             &error_abort);
-> +    qdev_init_nofail(dev);
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> +    for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +    }
-> +}
-> +
-> +static void create_pcie(VirtMachineState *vms, qemu_irq *pic)
-> +{
-> +    hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
-> +    hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
-> +    hwaddr base_mmio_high = vms->memmap[VIRT_PCIE_MMIO_HIGH].base;
-> +    hwaddr size_mmio_high = vms->memmap[VIRT_PCIE_MMIO_HIGH].size;
-> +    hwaddr base_pio = vms->memmap[VIRT_PCIE_PIO].base;
-> +    hwaddr base_ecam, size_ecam;
-> +    int irq = vms->irqmap[VIRT_PCIE];
-> +    MemoryRegion *mmio_alias;
-> +    MemoryRegion *mmio_reg;
-> +    MemoryRegion *ecam_alias;
-> +    MemoryRegion *ecam_reg;
-> +    DeviceState *dev;
-> +    int i, ecam_id;
-> +    PCIHostState *pci;
-> +
-> +    dev = qdev_create(NULL, TYPE_GPEX_HOST);
-> +    qdev_init_nofail(dev);
-> +
-> +    ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
-> +    base_ecam = vms->memmap[ecam_id].base;
-> +    size_ecam = vms->memmap[ecam_id].size;
-> +    /* Map only the first size_ecam bytes of ECAM space */
-> +    ecam_alias = g_new0(MemoryRegion, 1);
-> +    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-> +    memory_region_init_alias(ecam_alias, OBJECT(dev), "pcie-ecam",
-> +                             ecam_reg, 0, size_ecam);
-> +    memory_region_add_subregion(get_system_memory(), base_ecam, ecam_alias);
-> +
-> +    /* Map the MMIO window into system address space so as to expose
-> +     * the section of PCI MMIO space which starts at the same base address
-> +     * (ie 1:1 mapping for that part of PCI MMIO space visible through
-> +     * the window).
-> +     */
-> +    mmio_alias = g_new0(MemoryRegion, 1);
-> +    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-> +    memory_region_init_alias(mmio_alias, OBJECT(dev), "pcie-mmio",
-> +                             mmio_reg, base_mmio, size_mmio);
-> +    memory_region_add_subregion(get_system_memory(), base_mmio, mmio_alias);
-> +
-> +    if (vms->highmem) {
-> +        /* Map high MMIO space */
-> +        MemoryRegion *high_mmio_alias = g_new0(MemoryRegion, 1);
-> +
-> +        memory_region_init_alias(high_mmio_alias, OBJECT(dev), "pcie-mmio-high",
-> +                                 mmio_reg, base_mmio_high, size_mmio_high);
-> +        memory_region_add_subregion(get_system_memory(), base_mmio_high,
-> +                                    high_mmio_alias);
-> +    }
-> +
-> +    /* Map IO port space */
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
-> +
-> +    for (i = 0; i < GPEX_NUM_IRQS; i++) {
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pic[irq + i]);
-> +        gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
-> +    }
-> +
-> +    pci = PCI_HOST_BRIDGE(dev);
-> +    if (pci->bus) {
-> +        for (i = 0; i < nb_nics; i++) {
-> +            NICInfo *nd = &nd_table[i];
-> +
-> +            if (!nd->model) {
-> +                nd->model = g_strdup("e1000e");
-> +            }
-> +
-> +            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
-> +        }
-> +    }
-> +
-> +    pci_create_simple(pci->bus, -1, "VGA");
-> +
-> +    if (vms->iommu) {
-> +        create_smmu(vms, pic, pci->bus);
-> +    }
-> +}
-> +
-> +static void create_secure_ram(VirtMachineState *vms,
-> +                              MemoryRegion *secure_sysmem)
-> +{
-> +    MemoryRegion *secram = g_new(MemoryRegion, 1);
-> +    hwaddr base = vms->memmap[VIRT_SECURE_MEM].base;
-> +    hwaddr size = vms->memmap[VIRT_SECURE_MEM].size;
-> +
-> +    memory_region_init_ram(secram, NULL, "sbsa-ref.secure-ram", size,
-> +                           &error_fatal);
-> +    memory_region_add_subregion(secure_sysmem, base, secram);
-> +}
-> +
-> +static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
-> +{
-> +    const VirtMachineState *board = container_of(binfo, VirtMachineState,
-> +                                                 bootinfo);
-> +
-> +    *fdt_size = board->fdt_size;
-> +    return board->fdt;
-> +}
-> +
-> +static
-> +void sbsa_ref_machine_done(Notifier *notifier, void *data)
-> +{
-> +    VirtMachineState *vms = container_of(notifier, VirtMachineState,
-> +                                         machine_done);
-> +    ARMCPU *cpu = ARM_CPU(first_cpu);
-> +    struct arm_boot_info *info = &vms->bootinfo;
-> +    AddressSpace *as = arm_boot_address_space(cpu, info);
-> +
-> +    if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as) < 0) {
-> +        exit(1);
-> +    }
-> +}
-
-The virt board needs a machine-done notifier because it has
-to add extra things to the DTB here. You don't, so you don't
-need one. Don't set bootinfo.skip_dtb_autoload to true, and
-then the boot.c code will do the arm_load_dtb() call for you.
-
-> +
-> +static void sbsa_ref_init(MachineState *machine)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(machine);
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
-> +    MachineClass *mc = MACHINE_GET_CLASS(machine);
-> +    const CPUArchIdList *possible_cpus;
-> +    qemu_irq pic[NUM_IRQS];
-> +    MemoryRegion *sysmem = get_system_memory();
-> +    MemoryRegion *secure_sysmem = NULL;
-> +    int n, sbsa_max_cpus;
-> +    MemoryRegion *ram = g_new(MemoryRegion, 1);
-> +    bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
-> +    bool aarch64 = true;
-> +
-> +    if (strcmp(machine->cpu_type, ARM_CPU_TYPE_NAME("cortex-a57"))) {
-> +        error_report("sbsa-ref: CPU type %s not supported", machine->cpu_type);
-> +        exit(1);
-> +    }
-> +
-> +    if (kvm_enabled()) {
-> +        error_report("sbsa-ref: KVM is not supported at this machine");
-> +        exit(1);
-> +    }
-> +
-> +    if (machine->kernel_filename && firmware_loaded) {
-> +        error_report("sbsa-ref: No fw_cfg device on this machine, "
-> +                     "so -kernel option is not supported when firmware loaded, "
-> +                     "please load hard disk instead");
-> +        exit(1);
-> +    }
-
-If ther is no fw_cfg device, why does your memory map datastructure
-have an entry for it earlier ?
-> +    [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-
-> +
-> +    /* If we have an EL3 boot ROM then the assumption is that it will
-> +     * implement PSCI itself, so disable QEMU's internal implementation
-> +     * so it doesn't get in the way. Instead of starting secondary
-> +     * CPUs in PSCI powerdown state we will start them all running and
-> +     * let the boot ROM sort them out.
-> +     * The usual case is that we do use QEMU's PSCI implementation;
-> +     * if the guest has EL2 then we will use SMC as the conduit,
-> +     * and otherwise we will use HVC (for backwards compatibility and
-> +     * because if we're using KVM then we must use HVC).
-> +     */
-> +    if (vms->secure && firmware_loaded) {
-> +        vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
-> +    } else if (vms->virt) {
-> +        vms->psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-> +    } else {
-> +        vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
-> +    }
-
-Do you actually intend this to work in all these cases? I
-thought the intention was "always start the boot rom in EL3"
-for this board, like the real hardware would. In that case, most
-of these if clauses are dead code.
-
-> +
-> +    /* Only GICv3 is uesd in this machine */
-> +    sbsa_max_cpus = vms->memmap[VIRT_GIC_REDIST].size / GICV3_REDIST_SIZE;
-> +    sbsa_max_cpus += vms->memmap[VIRT_GIC_REDIST2].size / GICV3_REDIST_SIZE;
-> +
-> +    if (max_cpus > sbsa_max_cpus) {
-> +        error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
-> +                     "supported by machine 'sbsa-ref' (%d)",
-> +                     max_cpus, sbsa_max_cpus);
-> +        exit(1);
-> +    }
-> +
-> +    vms->smp_cpus = smp_cpus;
-> +
-> +    if (machine->ram_size > vms->memmap[VIRT_MEM].size) {
-> +        error_report("sbsa-ref: cannot model more than %dGB RAM", RAMLIMIT_GB);
-> +        exit(1);
-> +    }
-> +
-> +    if (vms->secure) {
-> +        /* The Secure view of the world is the same as the NonSecure,
-> +         * but with a few extra devices. Create it as a container region
-> +         * containing the system memory at low priority; any secure-only
-> +         * devices go in at higher priority and take precedence.
-> +         */
-> +        secure_sysmem = g_new(MemoryRegion, 1);
-> +        memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-> +                           UINT64_MAX);
-> +        memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-> +    }
-
-Again, unless you intentionally want to support both "has EL3"
-and "does not have EL3" configs for this board, you don't need
-to do this conditionally.
-
-> +
-> +    create_fdt(vms);
-> +
-> +    possible_cpus = mc->possible_cpu_arch_ids(machine);
-> +    for (n = 0; n < possible_cpus->len; n++) {
-> +        Object *cpuobj;
-> +        CPUState *cs;
-> +
-> +        if (n >= smp_cpus) {
-> +            break;
-> +        }
-> +
-> +        cpuobj = object_new(possible_cpus->cpus[n].type);
-> +        object_property_set_int(cpuobj, possible_cpus->cpus[n].arch_id,
-> +                                "mp-affinity", NULL);
-> +
-> +        cs = CPU(cpuobj);
-> +        cs->cpu_index = n;
-> +
-> +        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
-> +                          &error_fatal);
-> +
-> +        aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-> +
-> +        if (!vms->secure) {
-> +            object_property_set_bool(cpuobj, false, "has_el3", NULL);
-> +        }
-> +
-> +        if (!vms->virt && object_property_find(cpuobj, "has_el2", NULL)) {
-> +            object_property_set_bool(cpuobj, false, "has_el2", NULL);
-> +        }
-> +
-> +        if (vms->psci_conduit != QEMU_PSCI_CONDUIT_DISABLED) {
-> +            object_property_set_int(cpuobj, vms->psci_conduit,
-> +                                    "psci-conduit", NULL);
-> +
-> +            /* Secondary CPUs start in PSCI powered-down state */
-> +            if (n > 0) {
-> +                object_property_set_bool(cpuobj, true,
-> +                                         "start-powered-off", NULL);
-> +            }
-> +        }
-> +
-> +        if (vmc->no_pmu && object_property_find(cpuobj, "pmu", NULL)) {
-> +            object_property_set_bool(cpuobj, false, "pmu", NULL);
-> +        }
-> +
-> +        if (object_property_find(cpuobj, "reset-cbar", NULL)) {
-> +            object_property_set_int(cpuobj, vms->memmap[VIRT_CPUPERIPHS].base,
-> +                                    "reset-cbar", &error_abort);
-> +        }
-> +
-> +        object_property_set_link(cpuobj, OBJECT(sysmem), "memory",
-> +                                 &error_abort);
-> +        if (vms->secure) {
-> +            object_property_set_link(cpuobj, OBJECT(secure_sysmem),
-> +                                     "secure-memory", &error_abort);
-> +        }
-> +
-> +        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
-> +        object_unref(cpuobj);
-> +    }
-> +    fdt_add_cpu_nodes(vms);
-> +
-> +    memory_region_allocate_system_memory(ram, NULL, "sbsa-ref.ram",
-> +                                         machine->ram_size);
-> +    memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
-> +
-> +    create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
-> +
-> +    create_gic(vms, pic);
-> +
-> +    create_uart(vms, pic, VIRT_UART, sysmem, serial_hd(0));
-> +
-> +    if (vms->secure) {
-> +        create_secure_ram(vms, secure_sysmem);
-> +        create_uart(vms, pic, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
-> +    }
-> +
-> +    vms->highmem_ecam &= vms->highmem && (!firmware_loaded || aarch64);
-> +
-> +    create_rtc(vms, pic);
-> +
-> +    create_pcie(vms, pic);
-> +
-> +    create_gpio(vms, pic);
-> +
-> +    create_ahci(vms, pic);
-> +
-> +    create_ehci(vms, pic);
-> +
-> +    vms->bootinfo.ram_size = machine->ram_size;
-> +    vms->bootinfo.kernel_filename = machine->kernel_filename;
-> +    vms->bootinfo.kernel_cmdline = machine->kernel_cmdline;
-> +    vms->bootinfo.initrd_filename = machine->initrd_filename;
-> +    vms->bootinfo.nb_cpus = smp_cpus;
-> +    vms->bootinfo.board_id = -1;
-> +    vms->bootinfo.loader_start = vms->memmap[VIRT_MEM].base;
-> +    vms->bootinfo.get_dtb = sbsa_ref_dtb;
-> +    vms->bootinfo.skip_dtb_autoload = true;
-> +    vms->bootinfo.firmware_loaded = firmware_loaded;
-> +    arm_load_kernel(ARM_CPU(first_cpu), &vms->bootinfo);
-> +
-> +    vms->machine_done.notify = sbsa_ref_machine_done;
-> +    qemu_add_machine_init_done_notifier(&vms->machine_done);
-> +}
-> +
-> +static bool sbsa_ref_get_secure(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    return vms->secure;
-> +}
-> +
-> +static void sbsa_ref_set_secure(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->secure = value;
-> +}
-> +
-> +static bool sbsa_ref_get_virt(Object *obj, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    return vms->virt;
-> +}
-> +
-> +static void sbsa_ref_set_virt(Object *obj, bool value, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->virt = value;
-> +}
-> +
-> +static CpuInstanceProperties
-> +sbsa_ref_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-> +{
-> +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> +    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-> +
-> +    assert(cpu_index < possible_cpus->len);
-> +    return possible_cpus->cpus[cpu_index].props;
-> +}
-> +
-> +static int64_t
-> +sbsa_ref_get_default_cpu_node_id(const MachineState *ms, int idx)
-> +{
-> +    return idx % nb_numa_nodes;
-> +}
-> +
-> +static uint64_t sbsa_ref_cpu_mp_affinity(VirtMachineState *vms, int idx)
-> +{
-> +    uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> +
-> +    if (!vmc->disallow_affinity_adjustment) {
-> +        /* Only GICv3 is used in this machine */
-> +        clustersz = GICV3_TARGETLIST_BITS;
-> +    }
-> +    return arm_cpu_mp_affinity(idx, clustersz);
-> +}
-> +
-> +static const CPUArchIdList *sbsa_ref_possible_cpu_arch_ids(MachineState *ms)
-> +{
-> +    int n;
-> +    VirtMachineState *vms = VIRT_MACHINE(ms);
-> +
-> +    if (ms->possible_cpus) {
-> +        assert(ms->possible_cpus->len == max_cpus);
-> +        return ms->possible_cpus;
-> +    }
-> +
-> +    ms->possible_cpus = g_malloc0(sizeof(CPUArchIdList) +
-> +                                  sizeof(CPUArchId) * max_cpus);
-> +    ms->possible_cpus->len = max_cpus;
-> +    for (n = 0; n < ms->possible_cpus->len; n++) {
-> +        ms->possible_cpus->cpus[n].type = ms->cpu_type;
-> +        ms->possible_cpus->cpus[n].arch_id =
-> +            sbsa_ref_cpu_mp_affinity(vms, n);
-> +        ms->possible_cpus->cpus[n].props.has_thread_id = true;
-> +        ms->possible_cpus->cpus[n].props.thread_id = n;
-> +    }
-> +    return ms->possible_cpus;
-> +}
-> +
-> +static void sbsa_ref_instance_init(Object *obj)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(obj);
-> +
-> +    vms->secure = true;
-> +    object_property_add_bool(obj, "secure", sbsa_ref_get_secure,
-> +                             sbsa_ref_set_secure, NULL);
-> +    object_property_set_description(obj, "secure",
-> +                                    "Set on/off to enable/disable the ARM "
-> +                                    "Security Extensions (TrustZone)",
-> +                                    NULL);
-> +
-> +    vms->virt = true;
-> +    object_property_add_bool(obj, "virtualization", sbsa_ref_get_virt,
-> +                             sbsa_ref_set_virt, NULL);
-> +    object_property_set_description(obj, "virtualization",
-> +                                    "Set on/off to enable/disable emulating a "
-> +                                    "guest CPU which implements the ARM "
-> +                                    "Virtualization Extensions",
-> +                                    NULL);
-
-Drop the properties unless you need to actually support
-all the different variations.
-
-> +
-> +    vms->highmem = true;
-> +    vms->iommu = VIRT_IOMMU_NONE;
-> +    vms->gic_version = 3;
-> +    vms->memmap = sbsa_ref_memmap;
-> +    vms->irqmap = sbsa_ref_irqmap;
-> +}
-> +
-> +static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +
-> +    mc->init = sbsa_ref_init;
-> +    mc->max_cpus = 246;
-> +    mc->block_default_type = IF_IDE;
-> +    mc->no_cdrom = 1;
-> +    mc->pci_allow_0_address = true;
-> +    mc->minimum_page_bits = 12;
-> +    mc->possible_cpu_arch_ids = sbsa_ref_possible_cpu_arch_ids;
-> +    mc->cpu_index_to_instance_props = sbsa_ref_cpu_index_to_props;
-> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
-> +    mc->get_default_cpu_node_id = sbsa_ref_get_default_cpu_node_id;
-> +    mc->default_ram_size = 1 * GiB;
-> +    mc->default_cpus = 4;
-> +    mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
-> +}
-> +
-> +static const TypeInfo sbsa_ref_info = {
-> +    .name          = MACHINE_TYPE_NAME("sbsa-ref"),
-> +    .parent        = TYPE_VIRT_MACHINE,
-> +    .instance_init = sbsa_ref_instance_init,
-> +    .class_init    = sbsa_ref_class_init,
-> +};
-> +
-> +static void sbsa_ref_machine_init(void)
-> +{
-> +    type_register_static(&sbsa_ref_info);
-> +}
-> +
-> +type_init(sbsa_ref_machine_init);
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 9a870cc..f6c48be 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -78,6 +78,8 @@ enum {
->      VIRT_GPIO,
->      VIRT_SECURE_UART,
->      VIRT_SECURE_MEM,
-> +    VIRT_AHCI,
-> +    VIRT_EHCI,
->  };
->
->  typedef enum VirtIOMMUType {
-> --
-
-thanks
--- PMM
+>  static int is_query_packet(const char *p, const char *query, char separator)
+>  {
+>      unsigned int query_len = strlen(query);
+>  
+>      return strncmp(p, query, query_len) == 0 &&
+> @@ -1018,22 +1073,23 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+>      const char *p;
+>      uint32_t thread;
+>      int ch, reg_size, type, res;
+>      uint8_t mem_buf[MAX_PACKET_LENGTH];
+>      char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
+> +    char thread_id[16];
+>      uint8_t *registers;
+>      target_ulong addr, len;
+>  
+>      trace_gdbstub_io_command(line_buf);
+>  
+>      p = line_buf;
+>      ch = *p++;
+>      switch(ch) {
+>      case '?':
+>          /* TODO: Make this return the correct value for user-mode.  */
+> -        snprintf(buf, sizeof(buf), "T%02xthread:%02x;", GDB_SIGNAL_TRAP,
+> -                 cpu_gdb_index(s->c_cpu));
+> +        snprintf(buf, sizeof(buf), "T%02xthread:%s;", GDB_SIGNAL_TRAP,
+> +                 gdb_fmt_thread_id(s, s->c_cpu, thread_id, sizeof(thread_id)));
+>          put_packet(s, buf);
+>          /* Remove all the breakpoints when this query is issued,
+>           * because gdb is doing and initial connect and the state
+>           * should be cleaned up.
+>           */
+> -- 
+> 2.19.1
+> 
+> 

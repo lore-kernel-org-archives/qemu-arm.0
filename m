@@ -1,90 +1,79 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp2516986wrw;
-        Sun, 11 Nov 2018 15:47:06 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dqcQIiAaZxnpr9dQd+auEFqyuNGwSQV2ilxTlZdAdzpvMFkJNQaWUxXwn3+aHtWBGAAzNN
-X-Received: by 2002:aed:2185:: with SMTP id l5mr17391694qtc.276.1541980026451;
-        Sun, 11 Nov 2018 15:47:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1541980026; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp5719622wrw;
+        Wed, 14 Nov 2018 05:30:16 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eEQCGslrwOA94LFy2w0QJkPO++xjzwrhmmuGipk14IONg3H8IAT7X58W3pg7VuVm86/HZt
+X-Received: by 2002:a37:5e85:: with SMTP id s127mr1617955qkb.234.1542202216131;
+        Wed, 14 Nov 2018 05:30:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542202216; cv=none;
         d=google.com; s=arc-20160816;
-        b=05/4yIvq8gLitJvr+WuD9eFSjKSNk6wFlK4MbMv+miGd68of0BcHb6XpfsedIQZbOO
-         qz5EXpU3XgphE1VpE0GEoW5jCocYuT647JjH63Gbn/gHqmfYrYJRlooNieqP2xH0FS+Q
-         2sBMCjssZf0igGmJC+W8XvFNDESYZtzCOockk+2yBnhqqBLD2eGi2VTeT+swJK2jsYbb
-         G2c6PNEF06e0bx5A9bbk7QRBR+oE5chsBB7RTvcpB3koVGnhKuFh8RuyX+bOfBojQuW3
-         x5jQLBGKXbit7idveVyed/8m+gzabJshCXbLnRTJLCupJOZpM+T2/+KlgG5OUGyzWJTJ
-         hI3Q==
+        b=ybZG8q8W0DUjbtas39pNzdZ3pRwVgXBUWpPSOx1OOpMcOodkAhqm05UFw/bq7gW38A
+         jGXLr7YShtmSomic6+Z6yMFJe+PMNI7Mka3m/gsWiZa+JNmFzECNR1gdMBH2IsgsHy/z
+         b3jTVlvHLncBLK4qqhMxoKLvLLpCyrVSnUQhpSVroymIx+bZHItR51JoJqC0Z++bVl/y
+         mc5OoD1KaJXHQxIQy6/yhvIp3Ro3RwTK7PfqLREUsWQEARFq9a3h1L9AJXfMcHP7MlEq
+         DZ1hLL+prLO/GHIsZ9QVorNMsp7/tIfWo7/QdRVPdeCOnhliIj0c4BNpZy79ST9HxtPs
+         VCHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version;
-        bh=Zo89gc9XfOr4sSmgxGg53VVeQBsjJB6dS8rg5LeBICY=;
-        b=q6FBaAvu3z++brk5NARJA6mGN5bfn3wnpX9AmQPPMMLn6Lp6Gxr38NfHtKzdGaQ1R5
-         UwxOETo7sLO1pyMVW9x2kABBPBFZ3Hxu3KVFiDfuei/+PJQpIoUw696ro6Aei27lwAKK
-         jJGMpBP63UqkIgXdIeKFLdyAIsJV7ontQUOk25De8sEpiI3YaXMYNk/xfpmAghApe3PJ
-         G+tFA0t9byc6c2LlbDiVokX5ipUkQ9lyDTwJVpVOoV1Y8RcbB6nm84vR8khhG6GjhQT9
-         0q7Fdqy8Th+SjnthI4UMkK+ThjaLmcxtgAtkgJsB1XkqoqoC/Bi+RG32VvrBnw66Fdv9
-         kGxQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=2u51He3wmon4BQ0KDACuCcUaTpgenMEiPD4b9iXZtPw=;
+        b=gl9cwoCaBa+bcc+of4ULLav/AcLnqSPrnVA0fCdek1zQUa7Ax4O/vekwYLMRzk2jHS
+         j3AXgHftWFvWjm5qRjYGtiA5CHpoO3L+PW8xhTvIcwjVDBv1kTJAhCGK+jyB6XBRj0vE
+         xxdT6Xotg0avMMMAWHrZREYZhptSjeeRm/9nq4qovpvMA1QhJ0AB51Seq8eeMN4w5rnh
+         elL62Ymntf2ZV6F63Ddjq820DEluA0c7MThIdbIz9rBXv+r7OJH70v22t/Jru3pZVds8
+         sCLNWAoyipbCkj8JhkncbJpUGSGmN1e2m0hqQpE+h3xWBB3qWxIOEXa5xz7e+oa+erFA
+         Lbrw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o6si921166qtp.370.2018.11.11.15.47.06
+        by mx.google.com with ESMTPS id a2si2670208qvj.165.2018.11.14.05.30.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 11 Nov 2018 15:47:06 -0800 (PST)
+        Wed, 14 Nov 2018 05:30:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44064 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60260 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gLzRZ-0006Ft-Gc
-	for alex.bennee@linaro.org; Sun, 11 Nov 2018 18:47:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55777)
+	id 1gMvFH-0000Z4-Do
+	for alex.bennee@linaro.org; Wed, 14 Nov 2018 08:30:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47238)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gLzRH-0006CE-9r
-	for qemu-arm@nongnu.org; Sun, 11 Nov 2018 18:46:50 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gMvEz-0000Rj-3n
+	for qemu-arm@nongnu.org; Wed, 14 Nov 2018 08:30:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gLzRG-0006FM-5D
-	for qemu-arm@nongnu.org; Sun, 11 Nov 2018 18:46:47 -0500
-Received: from mail-yw1-f67.google.com ([209.85.161.67]:40518)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1gLzR8-0006Dp-4d; Sun, 11 Nov 2018 18:46:38 -0500
-Received: by mail-yw1-f67.google.com with SMTP id l66-v6so3729104ywl.7;
-	Sun, 11 Nov 2018 15:46:36 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Zo89gc9XfOr4sSmgxGg53VVeQBsjJB6dS8rg5LeBICY=;
-	b=b9zzki9456Tm/v3yDCOVKz571/KkCzCB7KJ3ju04mGR83Qak8B21e9kWYItmZrCNL5
-	wJjmb6Mr1Z6uPvC0ljFAmPaAApRmWGKPwvGN0Ts/0RdmSAU5sLz1uvuUbkYgt+W1GvqQ
-	D5dBMo9QR6MMvPY+WvXMyHF1+ft08CcFOESOYFYxFIDu1Dhtx8jSE/a3tHPhiRJctktS
-	noZ8bdXkKUaHo1MMId06vvTE4kmNQRykKD5phW0UkD01mPjrsVK1exD8wCjsyViWMRR9
-	x9q8yKwyYXCEfKXvvo/UJpb7966pGw+BLQ5PFeD3Z15r8S4qTqcv35MQNmYYyTbkfyuP
-	fvqA==
-X-Gm-Message-State: AGRZ1gIjtMED1n9TcVthRnA2p4dgWWE4D41odYrC2FkJSNK/9ySm97XU
-	kTvm3dEkoQcuDXfyzoLRGcnO8xnLT85CndkRWzM=
-X-Received: by 2002:a81:f8f:: with SMTP id
-	137-v6mr16373965ywp.184.1541979996107; 
-	Sun, 11 Nov 2018 15:46:36 -0800 (PST)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gMvEv-0006zO-Fz
+	for qemu-arm@nongnu.org; Wed, 14 Nov 2018 08:29:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57456)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1gMvEs-0006wu-Li; Wed, 14 Nov 2018 08:29:51 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D3159C05D401;
+	Wed, 14 Nov 2018 13:29:48 +0000 (UTC)
+Received: from localhost (ovpn-112-55.ams2.redhat.com [10.36.112.55])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F39341001F41;
+	Wed, 14 Nov 2018 13:29:34 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed, 14 Nov 2018 17:29:30 +0400
+Message-Id: <20181114132931.22624-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
-	<20181107123652.23417-6-marcandre.lureau@redhat.com>
-In-Reply-To: <20181107123652.23417-6-marcandre.lureau@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Mon, 12 Nov 2018 00:46:24 +0100
-Message-ID: <CAAdtpL7Ppk1CNVFzXrjgoaQ13wXuK=7pQ_DDUrEVm8wsxmsDnQ@mail.gmail.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 14 Nov 2018 13:29:49 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.161.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v3 05/14] qdev: move
- qdev_prop_register_global_list() to tests
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH] vmstate: constify VMStateField
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,138 +85,1311 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	"qemu-ppc@nongnu.org list:PowerPC" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <famz@redhat.com>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, stefanb@linux.ibm.com
+	dgilbert@redhat.com, Artyom Tarasenko <atar4qemu@gmail.com>,
+	quintela@redhat.com, "open list:S390" <qemu-s390x@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k24LFcKc6vSX
+X-TUID: cN+90Ew0QzRm
 
-On Wed, Nov 7, 2018 at 1:40 PM Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@redhat.com> wrote:
->
-> The function is only used by a test, move it there.
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+Because they are supposed to remain const.
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ include/migration/vmstate.h |   6 +-
+ hw/display/virtio-gpu.c     |   4 +-
+ hw/intc/s390_flic_kvm.c     |   4 +-
+ hw/nvram/eeprom93xx.c       |   6 +-
+ hw/nvram/fw_cfg.c           |   6 +-
+ hw/pci/msix.c               |   4 +-
+ hw/pci/pci.c                |   8 +--
+ hw/pci/shpc.c               |   7 ++-
+ hw/scsi/scsi-bus.c          |   4 +-
+ hw/timer/twl92230.c         |   4 +-
+ hw/usb/redirect.c           |  12 ++--
+ hw/virtio/virtio.c          |   8 +--
+ migration/savevm.c          |   7 ++-
+ migration/vmstate-types.c   | 119 ++++++++++++++++++++----------------
+ migration/vmstate.c         |  31 +++++-----
+ target/alpha/machine.c      |   5 +-
+ target/arm/machine.c        |  12 ++--
+ target/hppa/machine.c       |  10 +--
+ target/mips/machine.c       |  14 +++--
+ target/openrisc/machine.c   |   5 +-
+ target/ppc/machine.c        |  14 +++--
+ target/sparc/machine.c      |   7 ++-
+ 22 files changed, 162 insertions(+), 135 deletions(-)
 
-> ---
->  include/hw/qdev-properties.h   |  1 -
->  hw/core/qdev-properties.c      |  9 ---------
->  tests/test-qdev-global-props.c | 18 ++++++++++++++----
->  3 files changed, 14 insertions(+), 14 deletions(-)
->
-> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-> index a95f4a73eb..3ab9cd2eb6 100644
-> --- a/include/hw/qdev-properties.h
-> +++ b/include/hw/qdev-properties.h
-> @@ -249,7 +249,6 @@ void qdev_prop_set_enum(DeviceState *dev, const char =
-*name, int value);
->  void qdev_prop_set_ptr(DeviceState *dev, const char *name, void *value);
->
->  void qdev_prop_register_global(GlobalProperty *prop);
-> -void qdev_prop_register_global_list(GlobalProperty *props);
->  int qdev_prop_check_globals(void);
->  void qdev_prop_set_globals(DeviceState *dev);
->  void error_set_from_qdev_prop_error(Error **errp, int ret, DeviceState *=
-dev,
-> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-> index ab61d502fd..bd84c4ea4c 100644
-> --- a/hw/core/qdev-properties.c
-> +++ b/hw/core/qdev-properties.c
-> @@ -1180,15 +1180,6 @@ void qdev_prop_register_global(GlobalProperty *pro=
-p)
->      global_props =3D g_list_append(global_props, prop);
->  }
->
-> -void qdev_prop_register_global_list(GlobalProperty *props)
-> -{
-> -    int i;
-> -
-> -    for (i =3D 0; props[i].driver !=3D NULL; i++) {
-> -        qdev_prop_register_global(props+i);
-> -    }
-> -}
-> -
->  int qdev_prop_check_globals(void)
->  {
->      GList *l;
-> diff --git a/tests/test-qdev-global-props.c b/tests/test-qdev-global-prop=
-s.c
-> index ccdf6c57c1..b1eb505442 100644
-> --- a/tests/test-qdev-global-props.c
-> +++ b/tests/test-qdev-global-props.c
-> @@ -89,6 +89,16 @@ static void test_static_prop(void)
->      g_test_trap_assert_stdout("");
->  }
->
-> +static void register_global_properties(GlobalProperty *props)
-> +{
-> +    int i;
-> +
-> +    for (i =3D 0; props[i].driver !=3D NULL; i++) {
-> +        qdev_prop_register_global(props + i);
-> +    }
-> +}
-> +
-> +
->  /* Test setting of static property using global properties */
->  static void test_static_globalprop_subprocess(void)
->  {
-> @@ -98,7 +108,7 @@ static void test_static_globalprop_subprocess(void)
->          {}
->      };
->
-> -    qdev_prop_register_global_list(props);
-> +    register_global_properties(props);
->
->      mt =3D STATIC_TYPE(object_new(TYPE_STATIC_PROPS));
->      qdev_init_nofail(DEVICE(mt));
-> @@ -216,7 +226,7 @@ static void test_dynamic_globalprop_subprocess(void)
->      };
->      int global_error;
->
-> -    qdev_prop_register_global_list(props);
-> +    register_global_properties(props);
->
->      mt =3D DYNAMIC_TYPE(object_new(TYPE_DYNAMIC_PROPS));
->      qdev_init_nofail(DEVICE(mt));
-> @@ -261,7 +271,7 @@ static void test_dynamic_globalprop_nouser_subprocess=
-(void)
->      };
->      int global_error;
->
-> -    qdev_prop_register_global_list(props);
-> +    register_global_properties(props);
->
->      mt =3D DYNAMIC_TYPE(object_new(TYPE_DYNAMIC_PROPS));
->      qdev_init_nofail(DEVICE(mt));
-> @@ -299,7 +309,7 @@ static void test_subclass_global_props(void)
->          {}
->      };
->
-> -    qdev_prop_register_global_list(props);
-> +    register_global_properties(props);
->
->      mt =3D STATIC_TYPE(object_new(TYPE_SUBCLASS));
->      qdev_init_nofail(DEVICE(mt));
-> --
-> 2.19.1.708.g4ede3d42df
->
->
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 2b501d0466..61bef3ef5c 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -40,8 +40,8 @@ typedef struct VMStateField VMStateField;
+  */
+ struct VMStateInfo {
+     const char *name;
+-    int (*get)(QEMUFile *f, void *pv, size_t size, VMStateField *field);
+-    int (*put)(QEMUFile *f, void *pv, size_t size, VMStateField *field,
++    int (*get)(QEMUFile *f, void *pv, size_t size, const VMStateField *f=
+ield);
++    int (*put)(QEMUFile *f, void *pv, size_t size, const VMStateField *f=
+ield,
+                QJSON *vmdesc);
+ };
+=20
+@@ -186,7 +186,7 @@ struct VMStateDescription {
+     int (*post_load)(void *opaque, int version_id);
+     int (*pre_save)(void *opaque);
+     bool (*needed)(void *opaque);
+-    VMStateField *fields;
++    const VMStateField *fields;
+     const VMStateDescription **subsections;
+ };
+=20
+diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
+index 7be3a9d404..c6fab56f9b 100644
+--- a/hw/display/virtio-gpu.c
++++ b/hw/display/virtio-gpu.c
+@@ -1073,7 +1073,7 @@ static const VMStateDescription vmstate_virtio_gpu_=
+scanouts =3D {
+ };
+=20
+ static int virtio_gpu_save(QEMUFile *f, void *opaque, size_t size,
+-                           VMStateField *field, QJSON *vmdesc)
++                           const VMStateField *field, QJSON *vmdesc)
+ {
+     VirtIOGPU *g =3D opaque;
+     struct virtio_gpu_simple_resource *res;
+@@ -1101,7 +1101,7 @@ static int virtio_gpu_save(QEMUFile *f, void *opaqu=
+e, size_t size,
+ }
+=20
+ static int virtio_gpu_load(QEMUFile *f, void *opaque, size_t size,
+-                           VMStateField *field)
++                           const VMStateField *field)
+ {
+     VirtIOGPU *g =3D opaque;
+     struct virtio_gpu_simple_resource *res;
+diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
+index 3f804ad52e..a03df37560 100644
+--- a/hw/intc/s390_flic_kvm.c
++++ b/hw/intc/s390_flic_kvm.c
+@@ -376,7 +376,7 @@ static void kvm_s390_release_adapter_routes(S390FLICS=
+tate *fs,
+  * reached
+  */
+ static int kvm_flic_save(QEMUFile *f, void *opaque, size_t size,
+-                         VMStateField *field, QJSON *vmdesc)
++                         const VMStateField *field, QJSON *vmdesc)
+ {
+     KVMS390FLICState *flic =3D opaque;
+     int len =3D FLIC_SAVE_INITIAL_SIZE;
+@@ -426,7 +426,7 @@ static int kvm_flic_save(QEMUFile *f, void *opaque, s=
+ize_t size,
+  * in QEMUFile
+  */
+ static int kvm_flic_load(QEMUFile *f, void *opaque, size_t size,
+-                         VMStateField *field)
++                         const VMStateField *field)
+ {
+     uint64_t len =3D 0;
+     uint64_t count =3D 0;
+diff --git a/hw/nvram/eeprom93xx.c b/hw/nvram/eeprom93xx.c
+index 2fd0e3c29f..2db3d7cce6 100644
+--- a/hw/nvram/eeprom93xx.c
++++ b/hw/nvram/eeprom93xx.c
+@@ -95,15 +95,15 @@ struct _eeprom_t {
+  */
+=20
+ static int get_uint16_from_uint8(QEMUFile *f, void *pv, size_t size,
+-                                 VMStateField *field)
++                                 const VMStateField *field)
+ {
+     uint16_t *v =3D pv;
+     *v =3D qemu_get_ubyte(f);
+     return 0;
+ }
+=20
+-static int put_unused(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_unused(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     fprintf(stderr, "uint16_from_uint8 is used only for backwards compat=
+ibility.\n");
+     fprintf(stderr, "Never should be used to write a new state.\n");
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index 946f765f7f..3cb726ff68 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -520,15 +520,15 @@ static void fw_cfg_reset(DeviceState *d)
+  */
+=20
+ static int get_uint32_as_uint16(QEMUFile *f, void *pv, size_t size,
+-                                VMStateField *field)
++                                const VMStateField *field)
+ {
+     uint32_t *v =3D pv;
+     *v =3D qemu_get_be16(f);
+     return 0;
+ }
+=20
+-static int put_unused(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_unused(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     fprintf(stderr, "uint32_as_uint16 is only used for backward compatib=
+ility.\n");
+     fprintf(stderr, "This functions shouldn't be called.\n");
+diff --git a/hw/pci/msix.c b/hw/pci/msix.c
+index c944c02135..702dac4ec7 100644
+--- a/hw/pci/msix.c
++++ b/hw/pci/msix.c
+@@ -625,7 +625,7 @@ void msix_unset_vector_notifiers(PCIDevice *dev)
+ }
+=20
+ static int put_msix_state(QEMUFile *f, void *pv, size_t size,
+-                          VMStateField *field, QJSON *vmdesc)
++                          const VMStateField *field, QJSON *vmdesc)
+ {
+     msix_save(pv, f);
+=20
+@@ -633,7 +633,7 @@ static int put_msix_state(QEMUFile *f, void *pv, size=
+_t size,
+ }
+=20
+ static int get_msix_state(QEMUFile *f, void *pv, size_t size,
+-                          VMStateField *field)
++                          const VMStateField *field)
+ {
+     msix_load(pv, f);
+     return 0;
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index b937f0dc0a..56b13b3320 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -450,7 +450,7 @@ int pci_bus_numa_node(PCIBus *bus)
+ }
+=20
+ static int get_pci_config_device(QEMUFile *f, void *pv, size_t size,
+-                                 VMStateField *field)
++                                 const VMStateField *field)
+ {
+     PCIDevice *s =3D container_of(pv, PCIDevice, config);
+     PCIDeviceClass *pc =3D PCI_DEVICE_GET_CLASS(s);
+@@ -490,7 +490,7 @@ static int get_pci_config_device(QEMUFile *f, void *p=
+v, size_t size,
+=20
+ /* just put buffer */
+ static int put_pci_config_device(QEMUFile *f, void *pv, size_t size,
+-                                 VMStateField *field, QJSON *vmdesc)
++                                 const VMStateField *field, QJSON *vmdes=
+c)
+ {
+     const uint8_t **v =3D pv;
+     assert(size =3D=3D pci_config_size(container_of(pv, PCIDevice, confi=
+g)));
+@@ -506,7 +506,7 @@ static VMStateInfo vmstate_info_pci_config =3D {
+ };
+=20
+ static int get_pci_irq_state(QEMUFile *f, void *pv, size_t size,
+-                             VMStateField *field)
++                             const VMStateField *field)
+ {
+     PCIDevice *s =3D container_of(pv, PCIDevice, irq_state);
+     uint32_t irq_state[PCI_NUM_PINS];
+@@ -528,7 +528,7 @@ static int get_pci_irq_state(QEMUFile *f, void *pv, s=
+ize_t size,
+ }
+=20
+ static int put_pci_irq_state(QEMUFile *f, void *pv, size_t size,
+-                             VMStateField *field, QJSON *vmdesc)
++                             const VMStateField *field, QJSON *vmdesc)
+ {
+     int i;
+     PCIDevice *s =3D container_of(pv, PCIDevice, irq_state);
+diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
+index a8462d48bb..96a43d2f70 100644
+--- a/hw/pci/shpc.c
++++ b/hw/pci/shpc.c
+@@ -688,8 +688,8 @@ void shpc_cap_write_config(PCIDevice *d, uint32_t add=
+r, uint32_t val, int l)
+     shpc_cap_update_dword(d);
+ }
+=20
+-static int shpc_save(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield,
+-                     QJSON *vmdesc)
++static int shpc_save(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     PCIDevice *d =3D container_of(pv, PCIDevice, shpc);
+     qemu_put_buffer(f, d->shpc->config, SHPC_SIZEOF(d));
+@@ -697,7 +697,8 @@ static int shpc_save(QEMUFile *f, void *pv, size_t si=
+ze, VMStateField *field,
+     return 0;
+ }
+=20
+-static int shpc_load(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield)
++static int shpc_load(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field)
+ {
+     PCIDevice *d =3D container_of(pv, PCIDevice, shpc);
+     int ret =3D qemu_get_buffer(f, d->shpc->config, SHPC_SIZEOF(d));
+diff --git a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
+index 5905f6bf29..97cd167114 100644
+--- a/hw/scsi/scsi-bus.c
++++ b/hw/scsi/scsi-bus.c
+@@ -1571,7 +1571,7 @@ SCSIDevice *scsi_device_find(SCSIBus *bus, int chan=
+nel, int id, int lun)
+ /* SCSI request list.  For simplicity, pv points to the whole device */
+=20
+ static int put_scsi_requests(QEMUFile *f, void *pv, size_t size,
+-                             VMStateField *field, QJSON *vmdesc)
++                             const VMStateField *field, QJSON *vmdesc)
+ {
+     SCSIDevice *s =3D pv;
+     SCSIBus *bus =3D DO_UPCAST(SCSIBus, qbus, s->qdev.parent_bus);
+@@ -1599,7 +1599,7 @@ static int put_scsi_requests(QEMUFile *f, void *pv,=
+ size_t size,
+ }
+=20
+ static int get_scsi_requests(QEMUFile *f, void *pv, size_t size,
+-                             VMStateField *field)
++                             const VMStateField *field)
+ {
+     SCSIDevice *s =3D pv;
+     SCSIBus *bus =3D DO_UPCAST(SCSIBus, qbus, s->qdev.parent_bus);
+diff --git a/hw/timer/twl92230.c b/hw/timer/twl92230.c
+index 3b43b46199..51ec355f3f 100644
+--- a/hw/timer/twl92230.c
++++ b/hw/timer/twl92230.c
+@@ -750,7 +750,7 @@ static int menelaus_rx(I2CSlave *i2c)
+  */
+=20
+ static int get_int32_as_uint16(QEMUFile *f, void *pv, size_t size,
+-                               VMStateField *field)
++                               const VMStateField *field)
+ {
+     int *v =3D pv;
+     *v =3D qemu_get_be16(f);
+@@ -758,7 +758,7 @@ static int get_int32_as_uint16(QEMUFile *f, void *pv,=
+ size_t size,
+ }
+=20
+ static int put_int32_as_uint16(QEMUFile *f, void *pv, size_t size,
+-                               VMStateField *field, QJSON *vmdesc)
++                               const VMStateField *field, QJSON *vmdesc)
+ {
+     int *v =3D pv;
+     qemu_put_be16(f, *v);
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 99094a721e..18a42d1938 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -2155,7 +2155,7 @@ static int usbredir_post_load(void *priv, int versi=
+on_id)
+=20
+ /* For usbredirparser migration */
+ static int usbredir_put_parser(QEMUFile *f, void *priv, size_t unused,
+-                               VMStateField *field, QJSON *vmdesc)
++                               const VMStateField *field, QJSON *vmdesc)
+ {
+     USBRedirDevice *dev =3D priv;
+     uint8_t *data;
+@@ -2178,7 +2178,7 @@ static int usbredir_put_parser(QEMUFile *f, void *p=
+riv, size_t unused,
+ }
+=20
+ static int usbredir_get_parser(QEMUFile *f, void *priv, size_t unused,
+-                               VMStateField *field)
++                               const VMStateField *field)
+ {
+     USBRedirDevice *dev =3D priv;
+     uint8_t *data;
+@@ -2222,7 +2222,7 @@ static const VMStateInfo usbredir_parser_vmstate_in=
+fo =3D {
+=20
+ /* For buffered packets (iso/irq) queue migration */
+ static int usbredir_put_bufpq(QEMUFile *f, void *priv, size_t unused,
+-                              VMStateField *field, QJSON *vmdesc)
++                              const VMStateField *field, QJSON *vmdesc)
+ {
+     struct endp_data *endp =3D priv;
+     USBRedirDevice *dev =3D endp->dev;
+@@ -2245,7 +2245,7 @@ static int usbredir_put_bufpq(QEMUFile *f, void *pr=
+iv, size_t unused,
+ }
+=20
+ static int usbredir_get_bufpq(QEMUFile *f, void *priv, size_t unused,
+-                              VMStateField *field)
++                              const VMStateField *field)
+ {
+     struct endp_data *endp =3D priv;
+     USBRedirDevice *dev =3D endp->dev;
+@@ -2349,7 +2349,7 @@ static const VMStateDescription usbredir_ep_vmstate=
+ =3D {
+=20
+ /* For PacketIdQueue migration */
+ static int usbredir_put_packet_id_q(QEMUFile *f, void *priv, size_t unus=
+ed,
+-                                    VMStateField *field, QJSON *vmdesc)
++                                    const VMStateField *field, QJSON *vm=
+desc)
+ {
+     struct PacketIdQueue *q =3D priv;
+     USBRedirDevice *dev =3D q->dev;
+@@ -2368,7 +2368,7 @@ static int usbredir_put_packet_id_q(QEMUFile *f, vo=
+id *priv, size_t unused,
+ }
+=20
+ static int usbredir_get_packet_id_q(QEMUFile *f, void *priv, size_t unus=
+ed,
+-                                    VMStateField *field)
++                                    const VMStateField *field)
+ {
+     struct PacketIdQueue *q =3D priv;
+     USBRedirDevice *dev =3D q->dev;
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 4136d239dd..5828ed14df 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -1816,7 +1816,7 @@ static const VMStateDescription vmstate_virtio_ring=
+size =3D {
+ };
+=20
+ static int get_extra_state(QEMUFile *f, void *pv, size_t size,
+-                           VMStateField *field)
++                           const VMStateField *field)
+ {
+     VirtIODevice *vdev =3D pv;
+     BusState *qbus =3D qdev_get_parent_bus(DEVICE(vdev));
+@@ -1830,7 +1830,7 @@ static int get_extra_state(QEMUFile *f, void *pv, s=
+ize_t size,
+ }
+=20
+ static int put_extra_state(QEMUFile *f, void *pv, size_t size,
+-                           VMStateField *field, QJSON *vmdesc)
++                           const VMStateField *field, QJSON *vmdesc)
+ {
+     VirtIODevice *vdev =3D pv;
+     BusState *qbus =3D qdev_get_parent_bus(DEVICE(vdev));
+@@ -1979,14 +1979,14 @@ int virtio_save(VirtIODevice *vdev, QEMUFile *f)
+=20
+ /* A wrapper for use as a VMState .put function */
+ static int virtio_device_put(QEMUFile *f, void *opaque, size_t size,
+-                              VMStateField *field, QJSON *vmdesc)
++                              const VMStateField *field, QJSON *vmdesc)
+ {
+     return virtio_save(VIRTIO_DEVICE(opaque), f);
+ }
+=20
+ /* A wrapper for use as a VMState .get function */
+ static int virtio_device_get(QEMUFile *f, void *opaque, size_t size,
+-                             VMStateField *field)
++                             const VMStateField *field)
+ {
+     VirtIODevice *vdev =3D VIRTIO_DEVICE(opaque);
+     DeviceClass *dc =3D DEVICE_CLASS(VIRTIO_DEVICE_GET_CLASS(vdev));
+diff --git a/migration/savevm.c b/migration/savevm.c
+index ef707b8c43..236b242642 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -263,15 +263,16 @@ void timer_get(QEMUFile *f, QEMUTimer *ts)
+  * Not in vmstate.c to not add qemu-timer.c as dependency to vmstate.c
+  */
+=20
+-static int get_timer(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield)
++static int get_timer(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field)
+ {
+     QEMUTimer *v =3D pv;
+     timer_get(f, v);
+     return 0;
+ }
+=20
+-static int put_timer(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield,
+-                     QJSON *vmdesc)
++static int put_timer(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     QEMUTimer *v =3D pv;
+     timer_put(f, v);
+diff --git a/migration/vmstate-types.c b/migration/vmstate-types.c
+index 48184c380d..6f75f97a07 100644
+--- a/migration/vmstate-types.c
++++ b/migration/vmstate-types.c
+@@ -22,15 +22,16 @@
+=20
+ /* bool */
+=20
+-static int get_bool(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
+eld)
++static int get_bool(QEMUFile *f, void *pv, size_t size,
++                    const VMStateField *field)
+ {
+     bool *v =3D pv;
+     *v =3D qemu_get_byte(f);
+     return 0;
+ }
+=20
+-static int put_bool(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
+eld,
+-                    QJSON *vmdesc)
++static int put_bool(QEMUFile *f, void *pv, size_t size,
++                    const VMStateField *field, QJSON *vmdesc)
+ {
+     bool *v =3D pv;
+     qemu_put_byte(f, *v);
+@@ -45,15 +46,16 @@ const VMStateInfo vmstate_info_bool =3D {
+=20
+ /* 8 bit int */
+=20
+-static int get_int8(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
+eld)
++static int get_int8(QEMUFile *f, void *pv, size_t size,
++                    const VMStateField *field)
+ {
+     int8_t *v =3D pv;
+     qemu_get_s8s(f, v);
+     return 0;
+ }
+=20
+-static int put_int8(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
+eld,
+-                     QJSON *vmdesc)
++static int put_int8(QEMUFile *f, void *pv, size_t size,
++                    const VMStateField *field, QJSON *vmdesc)
+ {
+     int8_t *v =3D pv;
+     qemu_put_s8s(f, v);
+@@ -68,15 +70,16 @@ const VMStateInfo vmstate_info_int8 =3D {
+=20
+ /* 16 bit int */
+=20
+-static int get_int16(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield)
++static int get_int16(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field)
+ {
+     int16_t *v =3D pv;
+     qemu_get_sbe16s(f, v);
+     return 0;
+ }
+=20
+-static int put_int16(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield,
+-                     QJSON *vmdesc)
++static int put_int16(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     int16_t *v =3D pv;
+     qemu_put_sbe16s(f, v);
+@@ -91,15 +94,16 @@ const VMStateInfo vmstate_info_int16 =3D {
+=20
+ /* 32 bit int */
+=20
+-static int get_int32(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield)
++static int get_int32(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field)
+ {
+     int32_t *v =3D pv;
+     qemu_get_sbe32s(f, v);
+     return 0;
+ }
+=20
+-static int put_int32(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield,
+-                     QJSON *vmdesc)
++static int put_int32(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     int32_t *v =3D pv;
+     qemu_put_sbe32s(f, v);
+@@ -116,7 +120,7 @@ const VMStateInfo vmstate_info_int32 =3D {
+    in the field */
+=20
+ static int get_int32_equal(QEMUFile *f, void *pv, size_t size,
+-                           VMStateField *field)
++                           const VMStateField *field)
+ {
+     int32_t *v =3D pv;
+     int32_t v2;
+@@ -142,7 +146,8 @@ const VMStateInfo vmstate_info_int32_equal =3D {
+  * and less than or equal to the one in the field.
+  */
+=20
+-static int get_int32_le(QEMUFile *f, void *pv, size_t size, VMStateField=
+ *field)
++static int get_int32_le(QEMUFile *f, void *pv, size_t size,
++                        const VMStateField *field)
+ {
+     int32_t *cur =3D pv;
+     int32_t loaded;
+@@ -166,15 +171,16 @@ const VMStateInfo vmstate_info_int32_le =3D {
+=20
+ /* 64 bit int */
+=20
+-static int get_int64(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield)
++static int get_int64(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field)
+ {
+     int64_t *v =3D pv;
+     qemu_get_sbe64s(f, v);
+     return 0;
+ }
+=20
+-static int put_int64(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield,
+-                      QJSON *vmdesc)
++static int put_int64(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     int64_t *v =3D pv;
+     qemu_put_sbe64s(f, v);
+@@ -189,15 +195,16 @@ const VMStateInfo vmstate_info_int64 =3D {
+=20
+ /* 8 bit unsigned int */
+=20
+-static int get_uint8(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield)
++static int get_uint8(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field)
+ {
+     uint8_t *v =3D pv;
+     qemu_get_8s(f, v);
+     return 0;
+ }
+=20
+-static int put_uint8(QEMUFile *f, void *pv, size_t size, VMStateField *f=
+ield,
+-                     QJSON *vmdesc)
++static int put_uint8(QEMUFile *f, void *pv, size_t size,
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     uint8_t *v =3D pv;
+     qemu_put_8s(f, v);
+@@ -212,15 +219,16 @@ const VMStateInfo vmstate_info_uint8 =3D {
+=20
+ /* 16 bit unsigned int */
+=20
+-static int get_uint16(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field)
++static int get_uint16(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field)
+ {
+     uint16_t *v =3D pv;
+     qemu_get_be16s(f, v);
+     return 0;
+ }
+=20
+-static int put_uint16(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_uint16(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     uint16_t *v =3D pv;
+     qemu_put_be16s(f, v);
+@@ -235,15 +243,16 @@ const VMStateInfo vmstate_info_uint16 =3D {
+=20
+ /* 32 bit unsigned int */
+=20
+-static int get_uint32(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field)
++static int get_uint32(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field)
+ {
+     uint32_t *v =3D pv;
+     qemu_get_be32s(f, v);
+     return 0;
+ }
+=20
+-static int put_uint32(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_uint32(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     uint32_t *v =3D pv;
+     qemu_put_be32s(f, v);
+@@ -260,7 +269,7 @@ const VMStateInfo vmstate_info_uint32 =3D {
+    in the field */
+=20
+ static int get_uint32_equal(QEMUFile *f, void *pv, size_t size,
+-                            VMStateField *field)
++                            const VMStateField *field)
+ {
+     uint32_t *v =3D pv;
+     uint32_t v2;
+@@ -284,15 +293,16 @@ const VMStateInfo vmstate_info_uint32_equal =3D {
+=20
+ /* 64 bit unsigned int */
+=20
+-static int get_uint64(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field)
++static int get_uint64(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field)
+ {
+     uint64_t *v =3D pv;
+     qemu_get_be64s(f, v);
+     return 0;
+ }
+=20
+-static int put_uint64(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_uint64(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     uint64_t *v =3D pv;
+     qemu_put_be64s(f, v);
+@@ -305,7 +315,8 @@ const VMStateInfo vmstate_info_uint64 =3D {
+     .put  =3D put_uint64,
+ };
+=20
+-static int get_nullptr(QEMUFile *f, void *pv, size_t size, VMStateField =
+*field)
++static int get_nullptr(QEMUFile *f, void *pv, size_t size,
++                       const VMStateField *field)
+=20
+ {
+     if (qemu_get_byte(f) =3D=3D VMS_NULLPTR_MARKER) {
+@@ -316,7 +327,7 @@ static int get_nullptr(QEMUFile *f, void *pv, size_t =
+size, VMStateField *field)
+ }
+=20
+ static int put_nullptr(QEMUFile *f, void *pv, size_t size,
+-                        VMStateField *field, QJSON *vmdesc)
++                        const VMStateField *field, QJSON *vmdesc)
+=20
+ {
+     if (pv =3D=3D NULL) {
+@@ -337,7 +348,7 @@ const VMStateInfo vmstate_info_nullptr =3D {
+    in the field */
+=20
+ static int get_uint64_equal(QEMUFile *f, void *pv, size_t size,
+-                            VMStateField *field)
++                            const VMStateField *field)
+ {
+     uint64_t *v =3D pv;
+     uint64_t v2;
+@@ -363,7 +374,7 @@ const VMStateInfo vmstate_info_uint64_equal =3D {
+    in the field */
+=20
+ static int get_uint8_equal(QEMUFile *f, void *pv, size_t size,
+-                           VMStateField *field)
++                           const VMStateField *field)
+ {
+     uint8_t *v =3D pv;
+     uint8_t v2;
+@@ -389,7 +400,7 @@ const VMStateInfo vmstate_info_uint8_equal =3D {
+    in the field */
+=20
+ static int get_uint16_equal(QEMUFile *f, void *pv, size_t size,
+-                            VMStateField *field)
++                            const VMStateField *field)
+ {
+     uint16_t *v =3D pv;
+     uint16_t v2;
+@@ -414,7 +425,7 @@ const VMStateInfo vmstate_info_uint16_equal =3D {
+ /* floating point */
+=20
+ static int get_float64(QEMUFile *f, void *pv, size_t size,
+-                       VMStateField *field)
++                       const VMStateField *field)
+ {
+     float64 *v =3D pv;
+=20
+@@ -422,8 +433,8 @@ static int get_float64(QEMUFile *f, void *pv, size_t =
+size,
+     return 0;
+ }
+=20
+-static int put_float64(QEMUFile *f, void *pv, size_t size, VMStateField =
+*field,
+-                       QJSON *vmdesc)
++static int put_float64(QEMUFile *f, void *pv, size_t size,
++                       const VMStateField *field, QJSON *vmdesc)
+ {
+     uint64_t *v =3D pv;
+=20
+@@ -440,7 +451,7 @@ const VMStateInfo vmstate_info_float64 =3D {
+ /* CPU_DoubleU type */
+=20
+ static int get_cpudouble(QEMUFile *f, void *pv, size_t size,
+-                         VMStateField *field)
++                         const VMStateField *field)
+ {
+     CPU_DoubleU *v =3D pv;
+     qemu_get_be32s(f, &v->l.upper);
+@@ -449,7 +460,7 @@ static int get_cpudouble(QEMUFile *f, void *pv, size_=
+t size,
+ }
+=20
+ static int put_cpudouble(QEMUFile *f, void *pv, size_t size,
+-                         VMStateField *field, QJSON *vmdesc)
++                         const VMStateField *field, QJSON *vmdesc)
+ {
+     CPU_DoubleU *v =3D pv;
+     qemu_put_be32s(f, &v->l.upper);
+@@ -466,15 +477,15 @@ const VMStateInfo vmstate_info_cpudouble =3D {
+ /* uint8_t buffers */
+=20
+ static int get_buffer(QEMUFile *f, void *pv, size_t size,
+-                      VMStateField *field)
++                      const VMStateField *field)
+ {
+     uint8_t *v =3D pv;
+     qemu_get_buffer(f, v, size);
+     return 0;
+ }
+=20
+-static int put_buffer(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_buffer(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     uint8_t *v =3D pv;
+     qemu_put_buffer(f, v, size);
+@@ -491,7 +502,7 @@ const VMStateInfo vmstate_info_buffer =3D {
+    not useful anymore */
+=20
+ static int get_unused_buffer(QEMUFile *f, void *pv, size_t size,
+-                             VMStateField *field)
++                             const VMStateField *field)
+ {
+     uint8_t buf[1024];
+     int block_len;
+@@ -505,7 +516,7 @@ static int get_unused_buffer(QEMUFile *f, void *pv, s=
+ize_t size,
+ }
+=20
+ static int put_unused_buffer(QEMUFile *f, void *pv, size_t size,
+-                             VMStateField *field, QJSON *vmdesc)
++                             const VMStateField *field, QJSON *vmdesc)
+ {
+     static const uint8_t buf[1024];
+     int block_len;
+@@ -531,7 +542,8 @@ const VMStateInfo vmstate_info_unused_buffer =3D {
+  * in fields that don't really exist in the parent but need to be in the
+  * stream.
+  */
+-static int get_tmp(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld)
++static int get_tmp(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field)
+ {
+     int ret;
+     const VMStateDescription *vmsd =3D field->vmsd;
+@@ -545,8 +557,8 @@ static int get_tmp(QEMUFile *f, void *pv, size_t size=
+, VMStateField *field)
+     return ret;
+ }
+=20
+-static int put_tmp(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld,
+-                    QJSON *vmdesc)
++static int put_tmp(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     const VMStateDescription *vmsd =3D field->vmsd;
+     void *tmp =3D g_malloc(size);
+@@ -573,7 +585,8 @@ const VMStateInfo vmstate_info_tmp =3D {
+  */
+ /* This is the number of 64 bit words sent over the wire */
+ #define BITS_TO_U64S(nr) DIV_ROUND_UP(nr, 64)
+-static int get_bitmap(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field)
++static int get_bitmap(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field)
+ {
+     unsigned long *bmp =3D pv;
+     int i, idx =3D 0;
+@@ -587,8 +600,8 @@ static int get_bitmap(QEMUFile *f, void *pv, size_t s=
+ize, VMStateField *field)
+     return 0;
+ }
+=20
+-static int put_bitmap(QEMUFile *f, void *pv, size_t size, VMStateField *=
+field,
+-                      QJSON *vmdesc)
++static int put_bitmap(QEMUFile *f, void *pv, size_t size,
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     unsigned long *bmp =3D pv;
+     int i, idx =3D 0;
+@@ -613,7 +626,7 @@ const VMStateInfo vmstate_info_bitmap =3D {
+  * meta data about the QTAILQ is encoded in a VMStateField structure
+  */
+ static int get_qtailq(QEMUFile *f, void *pv, size_t unused_size,
+-                      VMStateField *field)
++                      const VMStateField *field)
+ {
+     int ret =3D 0;
+     const VMStateDescription *vmsd =3D field->vmsd;
+@@ -652,7 +665,7 @@ static int get_qtailq(QEMUFile *f, void *pv, size_t u=
+nused_size,
+=20
+ /* put for QTAILQ */
+ static int put_qtailq(QEMUFile *f, void *pv, size_t unused_size,
+-                      VMStateField *field, QJSON *vmdesc)
++                      const VMStateField *field, QJSON *vmdesc)
+ {
+     const VMStateDescription *vmsd =3D field->vmsd;
+     /* offset of the QTAILQ entry in a QTAILQ element*/
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index 0bc240a317..80b59009aa 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -26,7 +26,7 @@ static int vmstate_subsection_save(QEMUFile *f, const V=
+MStateDescription *vmsd,
+ static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription=
+ *vmsd,
+                                    void *opaque);
+=20
+-static int vmstate_n_elems(void *opaque, VMStateField *field)
++static int vmstate_n_elems(void *opaque, const VMStateField *field)
+ {
+     int n_elems =3D 1;
+=20
+@@ -50,7 +50,7 @@ static int vmstate_n_elems(void *opaque, VMStateField *=
+field)
+     return n_elems;
+ }
+=20
+-static int vmstate_size(void *opaque, VMStateField *field)
++static int vmstate_size(void *opaque, const VMStateField *field)
+ {
+     int size =3D field->size;
+=20
+@@ -64,7 +64,8 @@ static int vmstate_size(void *opaque, VMStateField *fie=
+ld)
+     return size;
+ }
+=20
+-static void vmstate_handle_alloc(void *ptr, VMStateField *field, void *o=
+paque)
++static void vmstate_handle_alloc(void *ptr, const VMStateField *field,
++                                 void *opaque)
+ {
+     if (field->flags & VMS_POINTER && field->flags & VMS_ALLOC) {
+         gsize size =3D vmstate_size(opaque, field);
+@@ -78,7 +79,7 @@ static void vmstate_handle_alloc(void *ptr, VMStateFiel=
+d *field, void *opaque)
+ int vmstate_load_state(QEMUFile *f, const VMStateDescription *vmsd,
+                        void *opaque, int version_id)
+ {
+-    VMStateField *field =3D vmsd->fields;
++    const VMStateField *field =3D vmsd->fields;
+     int ret =3D 0;
+=20
+     trace_vmstate_load_state(vmsd->name, version_id);
+@@ -171,9 +172,10 @@ int vmstate_load_state(QEMUFile *f, const VMStateDes=
+cription *vmsd,
+     return ret;
+ }
+=20
+-static int vmfield_name_num(VMStateField *start, VMStateField *search)
++static int vmfield_name_num(const VMStateField *start,
++                            const VMStateField *search)
+ {
+-    VMStateField *field;
++    const VMStateField *field;
+     int found =3D 0;
+=20
+     for (field =3D start; field->name; field++) {
+@@ -188,9 +190,10 @@ static int vmfield_name_num(VMStateField *start, VMS=
+tateField *search)
+     return -1;
+ }
+=20
+-static bool vmfield_name_is_unique(VMStateField *start, VMStateField *se=
+arch)
++static bool vmfield_name_is_unique(const VMStateField *start,
++                                   const VMStateField *search)
+ {
+-    VMStateField *field;
++    const VMStateField *field;
+     int found =3D 0;
+=20
+     for (field =3D start; field->name; field++) {
+@@ -206,7 +209,7 @@ static bool vmfield_name_is_unique(VMStateField *star=
+t, VMStateField *search)
+     return true;
+ }
+=20
+-static const char *vmfield_get_type_name(VMStateField *field)
++static const char *vmfield_get_type_name(const VMStateField *field)
+ {
+     const char *type =3D "unknown";
+=20
+@@ -221,7 +224,7 @@ static const char *vmfield_get_type_name(VMStateField=
+ *field)
+     return type;
+ }
+=20
+-static bool vmsd_can_compress(VMStateField *field)
++static bool vmsd_can_compress(const VMStateField *field)
+ {
+     if (field->field_exists) {
+         /* Dynamically existing fields mess up compression */
+@@ -229,7 +232,7 @@ static bool vmsd_can_compress(VMStateField *field)
+     }
+=20
+     if (field->flags & VMS_STRUCT) {
+-        VMStateField *sfield =3D field->vmsd->fields;
++        const VMStateField *sfield =3D field->vmsd->fields;
+         while (sfield->name) {
+             if (!vmsd_can_compress(sfield)) {
+                 /* Child elements can't compress, so can't we */
+@@ -248,7 +251,7 @@ static bool vmsd_can_compress(VMStateField *field)
+ }
+=20
+ static void vmsd_desc_field_start(const VMStateDescription *vmsd, QJSON =
+*vmdesc,
+-                                  VMStateField *field, int i, int max)
++                                  const VMStateField *field, int i, int =
+max)
+ {
+     char *name, *old_name;
+     bool is_array =3D max > 1;
+@@ -287,7 +290,7 @@ static void vmsd_desc_field_start(const VMStateDescri=
+ption *vmsd, QJSON *vmdesc,
+ }
+=20
+ static void vmsd_desc_field_end(const VMStateDescription *vmsd, QJSON *v=
+mdesc,
+-                                VMStateField *field, size_t size, int i)
++                                const VMStateField *field, size_t size, =
+int i)
+ {
+     if (!vmdesc) {
+         return;
+@@ -323,7 +326,7 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDe=
+scription *vmsd,
+                          void *opaque, QJSON *vmdesc, int version_id)
+ {
+     int ret =3D 0;
+-    VMStateField *field =3D vmsd->fields;
++    const VMStateField *field =3D vmsd->fields;
+=20
+     trace_vmstate_save_state_top(vmsd->name);
+=20
+diff --git a/target/alpha/machine.c b/target/alpha/machine.c
+index 0914ba5fc1..abc81cef7b 100644
+--- a/target/alpha/machine.c
++++ b/target/alpha/machine.c
+@@ -5,7 +5,8 @@
+ #include "hw/boards.h"
+ #include "migration/cpu.h"
+=20
+-static int get_fpcr(QEMUFile *f, void *opaque, size_t size, VMStateField=
+ *field)
++static int get_fpcr(QEMUFile *f, void *opaque, size_t size,
++                    const VMStateField *field)
+ {
+     CPUAlphaState *env =3D opaque;
+     cpu_alpha_store_fpcr(env, qemu_get_be64(f));
+@@ -13,7 +14,7 @@ static int get_fpcr(QEMUFile *f, void *opaque, size_t s=
+ize, VMStateField *field)
+ }
+=20
+ static int put_fpcr(QEMUFile *f, void *opaque, size_t size,
+-                    VMStateField *field, QJSON *vmdesc)
++                    const VMStateField *field, QJSON *vmdesc)
+ {
+     CPUAlphaState *env =3D opaque;
+     qemu_put_be64(f, cpu_alpha_load_fpcr(env));
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 2033816a64..7a22ebc209 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -18,7 +18,7 @@ static bool vfp_needed(void *opaque)
+ }
+=20
+ static int get_fpscr(QEMUFile *f, void *opaque, size_t size,
+-                     VMStateField *field)
++                     const VMStateField *field)
+ {
+     ARMCPU *cpu =3D opaque;
+     CPUARMState *env =3D &cpu->env;
+@@ -29,7 +29,7 @@ static int get_fpscr(QEMUFile *f, void *opaque, size_t =
+size,
+ }
+=20
+ static int put_fpscr(QEMUFile *f, void *opaque, size_t size,
+-                     VMStateField *field, QJSON *vmdesc)
++                     const VMStateField *field, QJSON *vmdesc)
+ {
+     ARMCPU *cpu =3D opaque;
+     CPUARMState *env =3D &cpu->env;
+@@ -503,7 +503,7 @@ static const VMStateDescription vmstate_m_security =3D=
+ {
+ };
+=20
+ static int get_cpsr(QEMUFile *f, void *opaque, size_t size,
+-                    VMStateField *field)
++                    const VMStateField *field)
+ {
+     ARMCPU *cpu =3D opaque;
+     CPUARMState *env =3D &cpu->env;
+@@ -559,7 +559,7 @@ static int get_cpsr(QEMUFile *f, void *opaque, size_t=
+ size,
+ }
+=20
+ static int put_cpsr(QEMUFile *f, void *opaque, size_t size,
+-                    VMStateField *field, QJSON *vmdesc)
++                    const VMStateField *field, QJSON *vmdesc)
+ {
+     ARMCPU *cpu =3D opaque;
+     CPUARMState *env =3D &cpu->env;
+@@ -585,7 +585,7 @@ static const VMStateInfo vmstate_cpsr =3D {
+ };
+=20
+ static int get_power(QEMUFile *f, void *opaque, size_t size,
+-                    VMStateField *field)
++                    const VMStateField *field)
+ {
+     ARMCPU *cpu =3D opaque;
+     bool powered_off =3D qemu_get_byte(f);
+@@ -594,7 +594,7 @@ static int get_power(QEMUFile *f, void *opaque, size_=
+t size,
+ }
+=20
+ static int put_power(QEMUFile *f, void *opaque, size_t size,
+-                    VMStateField *field, QJSON *vmdesc)
++                    const VMStateField *field, QJSON *vmdesc)
+ {
+     ARMCPU *cpu =3D opaque;
+=20
+diff --git a/target/hppa/machine.c b/target/hppa/machine.c
+index 8e077788c3..a1bee9796f 100644
+--- a/target/hppa/machine.c
++++ b/target/hppa/machine.c
+@@ -46,7 +46,8 @@
+     VMSTATE_UINTTR_ARRAY_V(_f, _s, _n, 0)
+=20
+=20
+-static int get_psw(QEMUFile *f, void *opaque, size_t size, VMStateField =
+*field)
++static int get_psw(QEMUFile *f, void *opaque, size_t size,
++                   const VMStateField *field)
+ {
+     CPUHPPAState *env =3D opaque;
+     cpu_hppa_put_psw(env, qemu_get_betr(f));
+@@ -54,7 +55,7 @@ static int get_psw(QEMUFile *f, void *opaque, size_t si=
+ze, VMStateField *field)
+ }
+=20
+ static int put_psw(QEMUFile *f, void *opaque, size_t size,
+-                   VMStateField *field, QJSON *vmdesc)
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     CPUHPPAState *env =3D opaque;
+     qemu_put_betr(f, cpu_hppa_get_psw(env));
+@@ -68,7 +69,8 @@ static const VMStateInfo vmstate_psw =3D {
+ };
+=20
+ /* FIXME: Use the PA2.0 format, which is a superset of the PA1.1 format.=
+  */
+-static int get_tlb(QEMUFile *f, void *opaque, size_t size, VMStateField =
+*field)
++static int get_tlb(QEMUFile *f, void *opaque, size_t size,
++                   const VMStateField *field)
+ {
+     hppa_tlb_entry *ent =3D opaque;
+     uint32_t val;
+@@ -94,7 +96,7 @@ static int get_tlb(QEMUFile *f, void *opaque, size_t si=
+ze, VMStateField *field)
+ }
+=20
+ static int put_tlb(QEMUFile *f, void *opaque, size_t size,
+-                   VMStateField *field, QJSON *vmdesc)
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     hppa_tlb_entry *ent =3D opaque;
+     uint32_t val =3D 0;
+diff --git a/target/mips/machine.c b/target/mips/machine.c
+index 70a8909b90..704e9c01bf 100644
+--- a/target/mips/machine.c
++++ b/target/mips/machine.c
+@@ -20,7 +20,8 @@ static int cpu_post_load(void *opaque, int version_id)
+=20
+ /* FPU state */
+=20
+-static int get_fpr(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld)
++static int get_fpr(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field)
+ {
+     int i;
+     fpr_t *v =3D pv;
+@@ -31,8 +32,8 @@ static int get_fpr(QEMUFile *f, void *pv, size_t size, =
+VMStateField *field)
+     return 0;
+ }
+=20
+-static int put_fpr(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld,
+-                   QJSON *vmdesc)
++static int put_fpr(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     int i;
+     fpr_t *v =3D pv;
+@@ -128,7 +129,8 @@ const VMStateDescription vmstate_mvp =3D {
+=20
+ /* TLB state */
+=20
+-static int get_tlb(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld)
++static int get_tlb(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field)
+ {
+     r4k_tlb_t *v =3D pv;
+     uint16_t flags;
+@@ -155,8 +157,8 @@ static int get_tlb(QEMUFile *f, void *pv, size_t size=
+, VMStateField *field)
+     return 0;
+ }
+=20
+-static int put_tlb(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld,
+-                   QJSON *vmdesc)
++static int put_tlb(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     r4k_tlb_t *v =3D pv;
+=20
+diff --git a/target/openrisc/machine.c b/target/openrisc/machine.c
+index 1eedbf3dbe..5d822f7ab1 100644
+--- a/target/openrisc/machine.c
++++ b/target/openrisc/machine.c
+@@ -49,7 +49,8 @@ static const VMStateDescription vmstate_cpu_tlb =3D {
+     }
+ };
+=20
+-static int get_sr(QEMUFile *f, void *opaque, size_t size, VMStateField *=
+field)
++static int get_sr(QEMUFile *f, void *opaque, size_t size,
++                  const VMStateField *field)
+ {
+     CPUOpenRISCState *env =3D opaque;
+     cpu_set_sr(env, qemu_get_be32(f));
+@@ -57,7 +58,7 @@ static int get_sr(QEMUFile *f, void *opaque, size_t siz=
+e, VMStateField *field)
+ }
+=20
+ static int put_sr(QEMUFile *f, void *opaque, size_t size,
+-                  VMStateField *field, QJSON *vmdesc)
++                  const VMStateField *field, QJSON *vmdesc)
+ {
+     CPUOpenRISCState *env =3D opaque;
+     qemu_put_be32(f, cpu_get_sr(env));
+diff --git a/target/ppc/machine.c b/target/ppc/machine.c
+index b2745ec4e5..e7b3725273 100644
+--- a/target/ppc/machine.c
++++ b/target/ppc/machine.c
+@@ -110,7 +110,8 @@ static int cpu_load_old(QEMUFile *f, void *opaque, in=
+t version_id)
+     return 0;
+ }
+=20
+-static int get_avr(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld)
++static int get_avr(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field)
+ {
+     ppc_avr_t *v =3D pv;
+=20
+@@ -120,8 +121,8 @@ static int get_avr(QEMUFile *f, void *pv, size_t size=
+, VMStateField *field)
+     return 0;
+ }
+=20
+-static int put_avr(QEMUFile *f, void *pv, size_t size, VMStateField *fie=
+ld,
+-                   QJSON *vmdesc)
++static int put_avr(QEMUFile *f, void *pv, size_t size,
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     ppc_avr_t *v =3D pv;
+=20
+@@ -452,7 +453,8 @@ static const VMStateDescription vmstate_sr =3D {
+ };
+=20
+ #ifdef TARGET_PPC64
+-static int get_slbe(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
+eld)
++static int get_slbe(QEMUFile *f, void *pv, size_t size,
++                    const VMStateField *field)
+ {
+     ppc_slb_t *v =3D pv;
+=20
+@@ -462,8 +464,8 @@ static int get_slbe(QEMUFile *f, void *pv, size_t siz=
+e, VMStateField *field)
+     return 0;
+ }
+=20
+-static int put_slbe(QEMUFile *f, void *pv, size_t size, VMStateField *fi=
+eld,
+-                    QJSON *vmdesc)
++static int put_slbe(QEMUFile *f, void *pv, size_t size,
++                    const VMStateField *field, QJSON *vmdesc)
+ {
+     ppc_slb_t *v =3D pv;
+=20
+diff --git a/target/sparc/machine.c b/target/sparc/machine.c
+index 8ff9dea297..7791c84963 100644
+--- a/target/sparc/machine.c
++++ b/target/sparc/machine.c
+@@ -56,7 +56,8 @@ static const VMStateDescription vmstate_tlb_entry =3D {
+ };
+ #endif
+=20
+-static int get_psr(QEMUFile *f, void *opaque, size_t size, VMStateField =
+*field)
++static int get_psr(QEMUFile *f, void *opaque, size_t size,
++                   const VMStateField *field)
+ {
+     SPARCCPU *cpu =3D opaque;
+     CPUSPARCState *env =3D &cpu->env;
+@@ -69,8 +70,8 @@ static int get_psr(QEMUFile *f, void *opaque, size_t si=
+ze, VMStateField *field)
+     return 0;
+ }
+=20
+-static int put_psr(QEMUFile *f, void *opaque, size_t size, VMStateField =
+*field,
+-                   QJSON *vmdesc)
++static int put_psr(QEMUFile *f, void *opaque, size_t size,
++                   const VMStateField *field, QJSON *vmdesc)
+ {
+     SPARCCPU *cpu =3D opaque;
+     CPUSPARCState *env =3D &cpu->env;
+--=20
+2.19.1.708.g4ede3d42df
+

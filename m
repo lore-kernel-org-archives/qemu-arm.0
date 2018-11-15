@@ -1,100 +1,83 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp960497wrt;
-        Tue, 20 Nov 2018 11:34:33 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UtFRdfAObPrWjbXF/UjEXGzvdj2vhosa3f5m65jiyLG5os3xX5yxdluZMT4DT1QiaM7Wvk
-X-Received: by 2002:a25:9703:: with SMTP id d3-v6mr3210448ybo.306.1542742473593;
-        Tue, 20 Nov 2018 11:34:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542742473; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp6954426wrw;
+        Thu, 15 Nov 2018 04:37:26 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cwA9pen480BNvylxJXwbMO9DbdEvx9MpbgdREwFP+sCXRpbukx5+C7RsUeu5KiMtCUZXCD
+X-Received: by 2002:ac8:4611:: with SMTP id p17mr5842224qtn.263.1542285446667;
+        Thu, 15 Nov 2018 04:37:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542285446; cv=none;
         d=google.com; s=arc-20160816;
-        b=TJrAlpLXrzmKAxRqUY3kyPkEjIYNAyRpm8qMwuqYghy9C59rimhH48SgFn8rOKWjTz
-         W/zaWl+gulGe1+Dr/dX1MIVO0dtHaRG+GsaxYTQk76l4W1PGmNOjOstCQQ2QkL9JoI/3
-         ljctb3ByIVs2RNz9MOSOun0W22L6vAuyEfgxEtMp7w7J8q6N+0+sVKwcyf+QmRKI8ERR
-         DHE5gxG7t9p7sljJL8/hOeyPjyEYT8blYsDIBsqlXJsdD4ImlzdsTFP/gbpEzyDgUpG7
-         ErZlihpkHSiQTeH7qgju70QFdV9ROYS5eEZb1Gh1EFGi9AZmljTTUwx0OgNE+TIQu0us
-         4s2w==
+        b=o6WCM0HQFatGyqSq7+IRmtDUWAeLN51+Ar+OSG6XCBJ/qFx+lUktuXS3lIuIXJXmGe
+         MNiqTPKOK183YUk5RBz3mYs7d31u8JBi+oolI2TPVw0TChdxEa4dmhzrf0f3JIV6yagx
+         MiqVGAi8U4/K/fE07dnAd69mWtwrYVGqEKkk3RQ0nqKIFZj+IkKuo4gu2Oy491byQoVb
+         WhCUD+oI8KVhk8iY90sDdKSHAiUOZJs9gpU7jvE+nTW3BT4vaFaBJbpoNJaHrRUvq9WX
+         leAsh5rJ+BQomupWwcQzONFSnaU1TXKi9smVMftmkvSYvysMvOVQbdlni3wy2tGaQ/gI
+         FWTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=+UW26rhSVXAW/lwczbDg8WPvlLENyaBsNow5YWfk7yA=;
-        b=ecWYKIpljynMivhKRbN0LqE+WwiJnjcsWnr5ieX21FvxeckSLTceaj34GWwpZXmdFB
-         +R/UTa/Vbvr9hpviFC3bc3RXEPdTarwahB/RrIS1XAMWpUfYm8iXI+Iv3jNzkEbLqLPK
-         uTa+3leFCIcFNrtywHqcMcZk7z38eLBwuEQA9CoArIXL/Kaljn+SPHlYBmE3SR8Ccuug
-         xUYyNnfoAsp1PJcy7JbCMAP78EmnKixtTrBHAOSxj3i/9XArAADQaKxQlZyKqjI6D929
-         mE6PGMrtVZcWDtTEoAtXqdIiGwIenJvQgZborJ3URb5dsN7Dorm7ShiFgaOWnfgpoG+f
-         gEFA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=lNY/SdxT2O9hhqsMF2dzEtFJEXpKk8KvfbwtKDIpsTY=;
+        b=gBgbOvGxcPyN4LBmZvs63yMlhlHUKSjRiib9gtvnnaFm4oCzYey89KWrsmfmVIoPVO
+         zYY12+Z/z05VsDI8qJYl0ZfwvuAAZiOY/j+YbH9M9S/Cu7O6KMUZO3EjVhKu8zgriezI
+         y9oUCTLU04ERecK/dUtf0g4U1DRQ4hvCLPNp1F5gRJC0sjxIeZ2ac73etGpqBSYUPNje
+         9NCpFTomGJYYyzyvAJmW7TUHtow1fQRGQjhz2R4627TcQD9t8Bwln5FNu8TfwXN3itld
+         bxWjyCD+E5LK9E7llIl/nmLUV+gOmfGzzg2gHeF8cxE5OWqBbVVVrZfroCYNlveKalCH
+         VgLw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c201si7605937ywb.163.2018.11.20.11.34.33
+        by mx.google.com with ESMTPS id m23si5298597qtn.236.2018.11.15.04.37.26
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Nov 2018 11:34:33 -0800 (PST)
+        Thu, 15 Nov 2018 04:37:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35545 helo=lists.gnu.org)
+Received: from localhost ([::1]:38418 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPBn6-0006Td-Vj
-	for alex.bennee@linaro.org; Tue, 20 Nov 2018 14:34:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34904)
+	id 1gNGti-00084E-0z
+	for alex.bennee@linaro.org; Thu, 15 Nov 2018 07:37:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gPBmi-0006Az-F6
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 14:34:13 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gNGtU-00082E-4R
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 07:37:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gPBfW-0002ZI-QF
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 14:26:46 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:36203)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gPBfW-0002VD-HJ
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 14:26:42 -0500
-Received: by mail-wm1-f67.google.com with SMTP id s11so3459225wmh.1
-	for <qemu-arm@nongnu.org>; Tue, 20 Nov 2018 11:26:36 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=+UW26rhSVXAW/lwczbDg8WPvlLENyaBsNow5YWfk7yA=;
-	b=PQ6fnFhLbO52y6xvt2LHpawG6EkqhCsaxOotT0m53nCqM52t9HRjKl1juRR0K6gM0t
-	cx4IRKgZRy21T3i9RSFMVZ3NtDfp0mixTGz56CERCET49+ZEiNlB9F72R6yGP16EjCkm
-	lAEHCfnmQk6x3AUvsret7Kr4gAnc2Namj7YpO3vu5ZiuXXyPNcr8Tnf0/1vsJCvTQ+tT
-	31yJN78L8GaeBLQLJhrpCgA0ZLUv7OpfNBfK7PGAotIKgma4mIgqyZzHLdkg4hLKmPEh
-	jNQ7tgcelJPWA6M8KgLfnELo4euuFaanjpgEe4UzcajflBuLGCWLPrAGcGcfceNIpk60
-	+23w==
-X-Gm-Message-State: AGRZ1gJzZuLZ7VnQeKUHwWLlKHA7XqocIt+9ggBg+0LOYK1Xxxe/L2vx
-	NeCCkHvBixa8GxSzDNVJH6vW13qitJw=
-X-Received: by 2002:a1c:88c7:: with SMTP id k190mr3027498wmd.97.1542741995658; 
-	Tue, 20 Nov 2018 11:26:35 -0800 (PST)
-Received: from [192.168.1.36] (35.red-88-21-102.staticip.rima-tde.net.
-	[88.21.102.35]) by smtp.gmail.com with ESMTPSA id
-	z192-v6sm25385568wmc.37.2018.11.20.11.26.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 20 Nov 2018 11:26:35 -0800 (PST)
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Samuel Ortiz <sameo@linux.intel.com>
-References: <20181113165247.4806-1-sameo@linux.intel.com>
-	<20181113165247.4806-4-sameo@linux.intel.com>
-	<CAFEAcA98so9yyJN=qAhD=Kr6pi1xxfrxt28atqZ8ATVJYXTaMg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <a145c571-b5d9-1ef4-de8b-fad7dc7855c7@redhat.com>
-Date: Tue, 20 Nov 2018 20:26:33 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+	(envelope-from <imammedo@redhat.com>) id 1gNGtQ-0007pk-Qc
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 07:37:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50544)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1gNGtQ-0007p6-I5; Thu, 15 Nov 2018 07:37:08 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8B238308AA0F;
+	Thu, 15 Nov 2018 12:37:06 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3D6765D9D1;
+	Thu, 15 Nov 2018 12:37:00 +0000 (UTC)
+Date: Thu, 15 Nov 2018 13:36:58 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Samuel Ortiz <sameo@linux.intel.com>
+Message-ID: <20181115133658.2cdbd918@redhat.com>
+In-Reply-To: <20181105014047.26447-13-sameo@linux.intel.com>
+References: <20181105014047.26447-1-sameo@linux.intel.com>
+	<20181105014047.26447-13-sameo@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA98so9yyJN=qAhD=Kr6pi1xxfrxt28atqZ8ATVJYXTaMg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.41]);
+	Thu, 15 Nov 2018 12:37:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-arm] [PATCH 03/13] target: arm: Move all v7m helpers into
- their own file
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v5 12/24] hw: acpi: Export the MCFG getter
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,130 +89,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m78wsfMwHZjl
+X-TUID: GMCLZUPJ+00C
 
-On 20/11/18 14:54, Peter Maydell wrote:
-> On 13 November 2018 at 16:52, Samuel Ortiz <sameo@linux.intel.com> wrote:
->> In preparation for supporting TCG disablement on ARM, we move all TCG
->> related v7m helpers and APIs into their own file (m_helper.c for all
->> v*-m helpers).
->> arm_v7m_cpu_do_interrupt pulls a large number of static functions
->> out of helper.c into m_helper.c because it is TCG dependent.
->>
->> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
->> ---
->>   target/arm/internals.h   |   37 +
->>   target/arm/helper.c      | 2209 +++-----------------------------------
->>   target/arm/m_helper.c    | 1892 ++++++++++++++++++++++++++++++++
->>   target/arm/Makefile.objs |    2 +-
->>   4 files changed, 2086 insertions(+), 2054 deletions(-)
->>   create mode 100644 target/arm/m_helper.c
-> 
->> +/* Function used to synchronize QEMU's AArch64 register set with AArch32
->> + * register set.  This is necessary when switching between AArch32 and AArch64
->> + * execution state.
->> + */
->> +void aarch64_sync_32_to_64(CPUARMState *env)
->>   {
->> -    uint32_t new_ss_msp, new_ss_psp;
->> +    int i;
->> +    uint32_t mode = env->uncached_cpsr & CPSR_M;
->>
->> -    if (env->v7m.secure == new_secstate) {
->> -        return;
->> +    /* We can blanket copy R[0:7] to X[0:7] */
->> +    for (i = 0; i < 8; i++) {
->> +        env->xregs[i] = env->regs[i];
->>       }
->>
->> -    /* All the banked state is accessed by looking at env->v7m.secure
->> -     * except for the stack pointer; rearrange the SP appropriately.
->> +    /* Unless we are in FIQ mode, x8-x12 come from the user registers r8-r12.
->> +     * Otherwise, they come from the banked user regs.
->>        */
->> -    new_ss_msp = env->v7m.other_ss_msp;
->> -    new_ss_psp = env->v7m.other_ss_psp;
->> -
->> -    if (v7m_using_psp(env)) {
->> -        env->v7m.other_ss_psp = env->regs[13];
->> -        env->v7m.other_ss_msp = env->v7m.other_sp;
->> -    } else {
->> -        env->v7m.other_ss_msp = env->regs[13];
->> -        env->v7m.other_ss_psp = env->v7m.other_sp;
->> -    }
->> -
->> -    env->v7m.secure = new_secstate;
->> -
->> -    if (v7m_using_psp(env)) {
->> -        env->regs[13] = new_ss_psp;
->> -        env->v7m.other_sp = new_ss_msp;
->> +    if (mode == ARM_CPU_MODE_FIQ) {
->> +        for (i = 8; i < 13; i++) {
->> +            env->xregs[i] = env->usr_regs[i - 8];
->> +        }
->>       } else {
->> -        env->regs[13] = new_ss_msp;
->> -        env->v7m.other_sp = new_ss_psp;
->> +        for (i = 8; i < 13; i++) {
->> +            env->xregs[i] = env->regs[i];
->> +        }
->>       }
->> -}
->>
->> -void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
->> -{
->> -    /* Handle v7M BXNS:
->> -     *  - if the return value is a magic value, do exception return (like BX)
->> -     *  - otherwise bit 0 of the return value is the target security state
->> +    /* Registers x13-x23 are the various mode SP and FP registers. Registers
->> +     * r13 and r14 are only copied if we are in that mode, otherwise we copy
->> +     * from the mode banked register.
->>        */
->> -    uint32_t min_magic;
->> -
->> -    if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
->> -        /* Covers FNC_RETURN and EXC_RETURN magic */
->> -        min_magic = FNC_RETURN_MIN_MAGIC;
->> +    if (mode == ARM_CPU_MODE_USR || mode == ARM_CPU_MODE_SYS) {
->> +        env->xregs[13] = env->regs[13];
->> +        env->xregs[14] = env->regs[14];
->>       } else {
->> -        /* EXC_RETURN magic only */
->> -        min_magic = EXC_RETURN_MIN_MAGIC;
->> +        env->xregs[13] = env->banked_r13[bank_number(ARM_CPU_MODE_USR)];
->> +        /* HYP is an exception in that it is copied from r14 */
->> +        if (mode == ARM_CPU_MODE_HYP) {
->> +            env->xregs[14] = env->regs[14];
->> +        } else {
->> +            env->xregs[14] = env->banked_r14[bank_number(ARM_CPU_MODE_USR)];
->> +        }
->>       }
-> 
-> This part of the patch is a mess to read. I suspect this is a
-> combination of (a) your git not being configured to use a better
-> diff algorithm than the default (try "algorithm = histogram"
-> in the [diff] section of your .gitconfig), and it doing an effective
-> revert of 593cfa2b637b92d37 by accident.
+On Mon,  5 Nov 2018 02:40:35 +0100
+Samuel Ortiz <sameo@linux.intel.com> wrote:
 
-I did the review offline, applying the series then looking at each 
-commit with gitk, this is why I did not notice this.
+> From: Yang Zhong <yang.zhong@intel.com>
+>=20
+> The ACPI MCFG getter is not x86 specific and could be called from
+> anywhere within generic ACPI API, so let's export it.
+So far it's x86 or more exactly q35 specific thing,
+for example it won't work with arm/virt without refactoring
+the later.
 
-> It's also an absolutely enormous patch, even for a "just
-> moving code" patch, which makes it hard to review even
-> with diff --color-moved. Maybe it would be better in two
-> pieces ("helper routines for various insns" and "exception
-> handling functions" seems like a workable split).
+We probably over-engineered it and could get by without
+properties here at all, but that's not related to this series.
 
-Good idea.
+So for now I'd suggest to move it to x86/acpi-pci.c for now
+and we can generalize the way we get address/size later,
+but if you feel like replacing all this property complications
+and making it simpler go ahead.
 
-Regards,
 
-Phil.
+=20
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Signed-off-by: Yang Zhong <yang.zhong@intel.com>
+> ---
+>  include/hw/acpi/aml-build.h |  1 +
+>  hw/acpi/aml-build.c         | 24 ++++++++++++++++++++++++
+>  hw/i386/acpi-build.c        | 22 ----------------------
+>  3 files changed, 25 insertions(+), 22 deletions(-)
+>=20
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 1861e37ebf..64ea371656 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -408,6 +408,7 @@ void *acpi_data_push(GArray *table_data, unsigned siz=
+e);
+>  unsigned acpi_data_len(GArray *table);
+>  Object *acpi_get_pci_host(void);
+>  void acpi_get_pci_holes(Range *hole, Range *hole64);
+> +bool acpi_get_mcfg(AcpiMcfgInfo *mcfg);
+>  /* Align AML blob size to a multiple of 'align' */
+>  void acpi_align_size(GArray *blob, unsigned align);
+>  void acpi_add_table(GArray *table_offsets, GArray *table_data);
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 869ed70db3..2c5446ab23 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -32,6 +32,8 @@
+>  #include "hw/i386/pc.h"
+>  #include "sysemu/tpm.h"
+>  #include "hw/acpi/tpm.h"
+> +#include "qom/qom-qobject.h"
+> +#include "qapi/qmp/qnum.h"
+> =20
+>  #define PCI_HOST_BRIDGE_CONFIG_ADDR        0xcf8
+>  #define PCI_HOST_BRIDGE_IO_0_MIN_ADDR      0x0000
+> @@ -1657,6 +1659,28 @@ void acpi_get_pci_holes(Range *hole, Range *hole64)
+>                                                 NULL));
+>  }
+> =20
+> +bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
+> +{
+> +    Object *pci_host;
+> +    QObject *o;
+> +
+> +    pci_host =3D acpi_get_pci_host();
+
+it would be better to get bus from struct AcpiPciBus
+instead of doing lookup again. (that's a separate patch from moving functio=
+n around)
+
+> +    g_assert(pci_host);
+> +
+> +    o =3D object_property_get_qobject(pci_host, PCIE_HOST_MCFG_BASE, NUL=
+L);
+> +    if (!o) {
+> +        return false;
+> +    }
+> +    mcfg->mcfg_base =3D qnum_get_uint(qobject_to(QNum, o));
+> +    qobject_unref(o);
+> +
+> +    o =3D object_property_get_qobject(pci_host, PCIE_HOST_MCFG_SIZE, NUL=
+L);
+> +    assert(o);
+> +    mcfg->mcfg_size =3D qnum_get_uint(qobject_to(QNum, o));
+> +    qobject_unref(o);
+> +    return true;
+> +}
+> +
+>  static void crs_range_insert(GPtrArray *ranges, uint64_t base, uint64_t =
+limit)
+>  {
+>      CrsRangeEntry *entry;
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 14e2624d14..d8bba16776 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1856,28 +1856,6 @@ build_amd_iommu(GArray *table_data, BIOSLinker *li=
+nker)
+>                   "IVRS", table_data->len - iommu_start, 1, NULL, NULL);
+>  }
+> =20
+> -static bool acpi_get_mcfg(AcpiMcfgInfo *mcfg)
+> -{
+> -    Object *pci_host;
+> -    QObject *o;
+> -
+> -    pci_host =3D acpi_get_pci_host();
+> -    g_assert(pci_host);
+> -
+> -    o =3D object_property_get_qobject(pci_host, PCIE_HOST_MCFG_BASE, NUL=
+L);
+> -    if (!o) {
+> -        return false;
+> -    }
+> -    mcfg->mcfg_base =3D qnum_get_uint(qobject_to(QNum, o));
+> -    qobject_unref(o);
+> -
+> -    o =3D object_property_get_qobject(pci_host, PCIE_HOST_MCFG_SIZE, NUL=
+L);
+> -    assert(o);
+> -    mcfg->mcfg_size =3D qnum_get_uint(qobject_to(QNum, o));
+> -    qobject_unref(o);
+> -    return true;
+> -}
+> -
+>  static
+>  void acpi_build(AcpiBuildTables *tables,
+>                  MachineState *machine, AcpiConfiguration *acpi_conf)
+

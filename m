@@ -1,153 +1,160 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7298811wrw;
-        Thu, 15 Nov 2018 09:42:19 -0800 (PST)
-X-Google-Smtp-Source: AJdET5c8lZXs5XC2SPjcFK+f0ZgDi7VUqihnht638CWzjA2xGw85ZGFyaUv/dtEKaFamjVqG9fGU
-X-Received: by 2002:ac8:5509:: with SMTP id j9mr6646354qtq.287.1542303739332;
-        Thu, 15 Nov 2018 09:42:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542303739; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7312367wrw;
+        Thu, 15 Nov 2018 09:55:02 -0800 (PST)
+X-Google-Smtp-Source: AJdET5f7/FxTCogw/MFAae+d6Yng6eZE0Eb39d0Eajax5GyB6uJqPpwmHV/bo0m372OXpAYM+F77
+X-Received: by 2002:a37:2b5b:: with SMTP id r88mr7162781qkh.336.1542304502271;
+        Thu, 15 Nov 2018 09:55:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542304502; cv=none;
         d=google.com; s=arc-20160816;
-        b=S9YvE/3Fsc3u0DWH6zLWO5ArjkK+lW55vu6wvYv81+DtGJlNHlcTweJSNXPvcrmYId
-         GoIhgwLv94pObb3+Ha9TyVw0tswzTg5sQtXB6Xvts6Jcn3KzWGKoxolALKvGlws4LI+a
-         Pm36YAym0ZfK4j2F+8eEBszDsNnxruXVSzV5umevKYUEWWuknkO6Q+A7+WnVP87fqH6W
-         0VPX0eY6zaq0zSNuRKZBKgD32qYVxm0ftwjvSWB2Kp2G2LiDUVJankaI3Esdrb1BViSj
-         t1CEeZDjb15rxRK7rzoTg/ClLVfXXMjRtANkNP3c8O6odDzC5JP6oh2HEEjhINv1+4Dd
-         lIrg==
+        b=DKt8KfXIguDueXj8qqlXELJaDQUbixTlri87wLUGdMcw+Pqt+1QEzsTVBY4BWpxs/t
+         TRLtiGALfv/nH+vRqo6vwJKmLTcwdc+Dl6ymC1I526gACU+cekK2OZYHHByuHwISSdJe
+         7HizbAZKPW2HqOgXFStXn4PNdpVZtVLzPywx1HiT/v5j87997eaG7xua62qw/aH0uhPU
+         luPt3W7t4mev3keSKyETQsLSkuQ3JZb36/H99xVlyurOU0DXeyPl420eoMjjTciq+zip
+         OSblqEmB6lVXWkpvtX9r4O5rpHMnYCOZULDbjXpizyl7ZeHBLOQY139gtDqMbUx0fOti
+         4L7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature;
-        bh=U+JPJWwFX6K9l8iwn+PdWj5cDswQ5acl6fFEn45wqcQ=;
-        b=h2fRX9gwd7chT8ObwGgiQj4lgLcDTBta4kbPiVHb3ZGDtORSLPkaEz7z2s9dk/ByYM
-         hqGuYwywBjhGCXxStF1YLJ9vN8uMUW02yUnmGWavl3fBIcZ2m4MY85rBcpIc2zhxriTY
-         Mc+4TWYJTsw0Jxs0qUN3lqxPMIlOpm2R5eaEypkmCZC/sC89giXwK4QMZAigbttI/vo5
-         syD3IKRIr62Q768z8PR2W3nRqAK8mI2M5yHm5gdlIyvUsI8LR00BGMN5JeUrdlx8y2WH
-         Xf/aoI42NjzAcmM6TgRmA3/4N6Ey/4onc1aWhIxDFBcfGFORPjgrHkLow7odWX2BONzB
-         V+xw==
+        bh=54133OLfa4AzLmyCw3NXVU6LKcbj4i+BFYaFKi9+gR0=;
+        b=JsQmXenLc7ToPSJQmA/Z2NlYQZJ//41lY6471I2thA5y8F3NCyP8RsgyHcd/YG9p8A
+         rgOx8a/OxEcmpCIb/zadKM08F9WCan2CDxvS27jojz0Ar56YGeqDjiO6knqnnxHYiDmD
+         gL1WpdlviE/zGNBU0Ukyvb3iMAajqUFJ6lPCchDuOHLDCYSJ1Cq7qMt2Avsy3B9F3j+6
+         Nv1UAlhugw/V+ggdVJblMbkCQBYU7YQYd1LBUBXQA8sD2reLA7EPgrGGP0UJcctSvHQu
+         2S10L3HEkA5Tq3NmooDTicC+bKGVA7OpRYeXj65UwzxwIFzPwAx+e/lYeDq4LbNvVgMb
+         zFoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YVM49p5h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=X9ugxRVB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f2-v6si5141280qtl.390.2018.11.15.09.42.19
+        by mx.google.com with ESMTPS id t74si5058134qke.33.2018.11.15.09.55.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Nov 2018 09:42:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 15 Nov 2018 09:55:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YVM49p5h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=X9ugxRVB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40098 helo=lists.gnu.org)
+Received: from localhost ([::1]:40128 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNLek-0000Xp-T3
-	for alex.bennee@linaro.org; Thu, 15 Nov 2018 12:42:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56860)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gNLr3-0003pe-NF
+	for alex.bennee@linaro.org; Thu, 15 Nov 2018 12:55:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gNLeW-0000XT-NB
-	for qemu-devel@nongnu.org; Thu, 15 Nov 2018 12:42:05 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gNLqw-0003pU-7N
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 12:54:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gNLeV-0006Kc-IU
-	for qemu-devel@nongnu.org; Thu, 15 Nov 2018 12:42:04 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:37354)
+	(envelope-from <peter.maydell@linaro.org>) id 1gNLqv-0000S7-7E
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 12:54:54 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39121)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gNLeV-0006DC-5d
-	for qemu-devel@nongnu.org; Thu, 15 Nov 2018 12:42:03 -0500
-Received: by mail-oi1-x242.google.com with SMTP id y23so8313407oia.4
-	for <qemu-devel@nongnu.org>; Thu, 15 Nov 2018 09:42:03 -0800 (PST)
+	id 1gNLqu-000081-L6
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 12:54:53 -0500
+Received: by mail-ot1-x341.google.com with SMTP id g27so18822884oth.6
+	for <qemu-arm@nongnu.org>; Thu, 15 Nov 2018 09:54:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=U+JPJWwFX6K9l8iwn+PdWj5cDswQ5acl6fFEn45wqcQ=;
-	b=YVM49p5hiROTrSioSD4wxiyv5+J5DEijTfAL2CvFcVuPDnn8WXU66nDeNWeSJ4fvbm
-	wOLavuGDIMIi8EDJYqFfghGfr2gBolzobzZo8tXgxA35KJrSk0ia8b0cYRAQrJ4hbbEC
-	l9ge5EKYYXCY4TbxGn/zgXvMUQDVXBtrunnvM=
+	:cc; bh=54133OLfa4AzLmyCw3NXVU6LKcbj4i+BFYaFKi9+gR0=;
+	b=X9ugxRVBi06bluwJEub2McO0fGsXHWATVEUalgIpSHZv5XMyVW8cTo2w05zQE2mC2K
+	hpZX7IvzrqXox2BoyesF3OcEQ+ntvhCorh9xAEL/kgmZOVqjCpLUD/ubJzzEGE6RXO16
+	EY664Q7beqBu3ExoPNbGdhjkPg2tvBDfHQV5I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=U+JPJWwFX6K9l8iwn+PdWj5cDswQ5acl6fFEn45wqcQ=;
-	b=PTssZVF2oCPtRkUFsery6Q2jV/O5dqzzSEca18zNkxXny/yRS981vNnfk57yr/bhXc
-	NeC4K0UDZtQ8ZK2wPaYWA1aSndWJuhRnD3ci8X1dG5Wr7jg/dgDdAfgmFu6p9hLZkL8K
-	WeP5OEQQap53HL7foy8ECpq3P7xmtKA1HzunyQsjeDI3YM5ErVlroWlva+sHQGG4ebD5
-	2qMoUKwpljig7BLU6TValOVW/kVYHwMJwoa4GCoyLQt1NpuoHDQLaIVztWZ30MA2GiQh
-	ZCDZNWETVunbfj6Dm1lrQP7Hsos40oPl6/7J4OtsJ8R8ip0Or/5qegTx9Ta0N47qHUOZ
-	WwSQ==
-X-Gm-Message-State: AGRZ1gLFQPMCkYrUvluHlrqVzN0eBW/SyKvoFdQmXTxhd4v1LUwddfqk
-	ybz8/n7WOcnZNmpnLLROr6K+jCPRBmG9NXiJAGiYvg==
-X-Received: by 2002:aca:b68b:: with SMTP id
-	g133-v6mr4285797oif.25.1542303722448; 
-	Thu, 15 Nov 2018 09:42:02 -0800 (PST)
+	bh=54133OLfa4AzLmyCw3NXVU6LKcbj4i+BFYaFKi9+gR0=;
+	b=fLngnkNDJ9qVBj6iP8tNpwFv5oVT1Rs0Q6/0mhLpTfIP2NXJweTblocDdVaEOpxsXk
+	lnhCJk5jJa5S+jWzuUXyAb9ROBU8RUQ9zp8e2CNg8BvreGjbfUuh7okrLWuxI0o4Ls+s
+	4V7m3LFhe2xV0ZVFk6OoEwCVD4cpQw6tGZr/LpVOcVjoAT3kj4mGX08QPdhK7lcCaF/5
+	PurwrKN/U7kVdF7YGg8xuzGIpMtXcd3WCxZIx1szO0hG4vmzpOkDX5euvKXAXtuqHqU8
+	u4b2Vo9fWvEBb8jLEo+oUJrjtGLJW8ByRmOYJt3ykdZ947+BViEsrjWndCZv0u5mtq6q
+	/pvA==
+X-Gm-Message-State: AGRZ1gKbjdRtWwIJSkMfsGUrbpmJh6M/Rm56/n71i5bpDHATf4sjYqOv
+	6j9krnREKRWmPLSYdg60+qcNUBBPvDmx8YkqIg0P+A==
+X-Received: by 2002:a9d:5a81:: with SMTP id w1mr4476602oth.317.1542304491672; 
+	Thu, 15 Nov 2018 09:54:51 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Thu, 15 Nov 2018 09:41:41
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Thu, 15 Nov 2018 09:54:31
 	-0800 (PST)
-In-Reply-To: <20181102134112.26370-4-richard.henderson@linaro.org>
+In-Reply-To: <20181102134112.26370-5-richard.henderson@linaro.org>
 References: <20181102134112.26370-1-richard.henderson@linaro.org>
-	<20181102134112.26370-4-richard.henderson@linaro.org>
+	<20181102134112.26370-5-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Nov 2018 17:41:41 +0000
-Message-ID: <CAFEAcA-96EyPc3RnR5-EveW=F+SgatMw52M0W_A=Dk0fCkOypg@mail.gmail.com>
+Date: Thu, 15 Nov 2018 17:54:31 +0000
+Message-ID: <CAFEAcA8C1x8HRDd5JiV8sUgBM48CE+YcLH3HU2=3Vu6mSz_ACw@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-devel] [PATCH for-4.0 3/4] target/arm: Implement the
- ARMv8.1-HPD extension
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.0 4/4] target/arm:
+ Implement the ARMv8.2-AA32HPD extension
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TiTx8QuNpBX8
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2qT4XSqQKvM9
 
 On 2 November 2018 at 13:41, Richard Henderson
 <richard.henderson@linaro.org> wrote:
-> Since the TCR_*.HPD bits were RES0 in ARMv8.0, we can simply
-> interpret the bits as if ARMv8.1-HPD is present without checking.
-> We will need a slightly different check for hpd for aarch32.
+> The bulk of the work here, beyond base HPD, is defining the TTBCR2 register.
+> In addition we must check TTBCR.T2E, which is not present (RES0) for AArch64.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.h    |  8 ++++++++
+>  target/arm/cpu.c    |  4 ++++
+>  target/arm/helper.c | 37 +++++++++++++++++++++++++++++--------
+>  3 files changed, 41 insertions(+), 8 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index f12a6afddc..a253cdebde 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1517,6 +1517,14 @@ FIELD(ID_ISAR6, FHM, 8, 4)
+>  FIELD(ID_ISAR6, SB, 12, 4)
+>  FIELD(ID_ISAR6, SPECRES, 16, 4)
+>
+> +FIELD(ID_MMFR4, SPECSEI, 0, 4)
+> +FIELD(ID_MMFR4, AC2, 4, 4)
+> +FIELD(ID_MMFR4, XNX, 8, 4)
+> +FIELD(ID_MMFR4, CNP, 12, 4)
+> +FIELD(ID_MMFR4, HPDS, 16, 4)
+> +FIELD(ID_MMFR4, LSM, 20, 4)
+> +FIELD(ID_MMFR4, CCIDX, 24, 4)
 
+Maybe add the v8.5 field too?
+FIELD(ID_MMFR4, EVT, 28, 4)
+
+> +/* Note that unlike TTBCR, writing to TTBCR2 does not require flushing
+> + * qemu tlbs nor adjusting cached masks.
+> + */
+> +static const ARMCPRegInfo ttbcr2_reginfo = {
+> +    .name = "TTBCR2", .cp = 15, .crn = 2, .crm = 0, .opc1 = 0, .opc2 = 3,
+
+Our usual order for these fields is cp, opc1, crn, crm, opc2.
+
+> +    .access = PL1_RW, .type = ARM_CP_ALIAS,
+> +    .bank_fieldoffsets = { offsetofhigh32(CPUARMState, cp15.tcr_el[3]),
+> +                           offsetofhigh32(CPUARMState, cp15.tcr_el[1]) },
+> +};
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-Another way to write the tail end of the loop would be
-to move the nstable handling up, so:
-
-        if (mmu_idx == ARMMMUIdx_S2NS) {
-            /* Stage 2 table descriptors do not include any attribute fields */
-            break;
-        }
-        /* Merge in attributes from table descriptors */
-        attrs |= nstable << 3; /* NS */
-        if (!hpd) {
-            /* HPD disables all the table attributes except NSTable */
-            break;
-        }
-        attrs |= extract32(tableattrs, 0, 2) << 11; /* XN, PXN */
-        attrs |= extract32(tableattrs, 3, 1) << 5; /* APTable[1] => AP[2] */
-        /* The sense of AP[1] vs APTable[0] is reversed, as APTable[0] == 1
-         * means "force PL1 access only", which means forcing AP[1] to 0.
-         */
-        if (extract32(tableattrs, 2, 1)) {
-            attrs &= ~(1 << 4);
-        }
-        attrs |= nstable << 3; /* NS */
-        break;
-
-which would then make the hpd handling use the same
-approach we already have for "don't merge attributes if
-this is a stage 2 table". But don't bother changing your
-patch unless you think that's actually better.
 
 thanks
 -- PMM

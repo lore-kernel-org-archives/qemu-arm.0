@@ -1,111 +1,116 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp6780737wrw;
-        Thu, 15 Nov 2018 01:22:23 -0800 (PST)
-X-Google-Smtp-Source: AJdET5c0nL13a2R8ocW/zr16HiddPv+tVM0NqFhSRPfB/TrmyKEgc28GMRwMqGLnmCj0UIU80ndv
-X-Received: by 2002:a0c:8c8a:: with SMTP id p10mr5429682qvb.218.1542273743099;
-        Thu, 15 Nov 2018 01:22:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542273743; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp6797710wrw;
+        Thu, 15 Nov 2018 01:42:50 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dLPpAVSHkq4s40EgdLIV1QMu7EYfpfDRg5ImreAGK4d9udBlHn+gpc6HoBhBwRwpCObgNJ
+X-Received: by 2002:a37:34f:: with SMTP id 76mr5228837qkd.347.1542274970376;
+        Thu, 15 Nov 2018 01:42:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542274970; cv=none;
         d=google.com; s=arc-20160816;
-        b=CYl0yeObnEp1WUk8QNiPYutqm+2hexSwaGneBEvnjectojrCNGBq1MEoFaBIdKijyh
-         nwSWX1+wvvpcKS9oTmsg79RXkN0d6zj3YDIWP/bYnrlqe9YoRbVOs+PtMQNXjdGhVgQC
-         KWWqXNN0RAgsCkU8UsRIa8z+V3ChzrrsVx7kii3R6EDZZm6sfxPI9Er4RZPck84u1dmP
-         g7PZ7JY6G3QIP855CnMTCuvU0pHSreeVOYmxx9G8yw3LE/3ELP1mQ3I6A+nUzbXaTXrf
-         Yf+YAlH3ZOt967mf2vni4MYrrJGkzMWoZBIo3suQLluzzBmrlHSIlR7XRs0HEYVNopqB
-         JE2Q==
+        b=IQh8JTL/jMZLx7zPaR7Gmj4B9aBgu2wBO0SPjvhr+pLlSos24bIh6k+kFbmyMWBMdR
+         /+ygR1+RaLVjmUVc3saG0SDgCnAwCP8N2dDvmd3CINVnuZQmjN2UeBXukcPyqmND1j3q
+         6FGm2yZ9z11xyXV4c1CQBqeSPViubu2b3AeX+oLlrn5oBUUE0Cd1Hbz/zs0u7Kjc0VE3
+         7cJQmFrjSAodp7/DPr69XCs61h0pQLDL39jsCNu4WmK2Jm8l1I3zG0KUaDrpYp5A1soa
+         NscTcLDopfuJtV60jXJNBn/8I0RwBocBl1iV+ycBYFY0ujE4szqg+VJwc45gobol3ali
+         03IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:dkim-signature;
-        bh=J4jOJmLmgw9jv+3jHWUXJaIOfRBhuYdyJ3k0ZIblZcQ=;
-        b=mlb5XNgIUA5lgdlrqYL7G3MEzDu1+OE0hKuCaNN1+/kl44S0IGzAEau21AMPo/Np+q
-         dV3pf17kOXrCnau9q8jnVTMF4ZKTU8BFcKJwj7lmCmuEhs2JTiKSKbqUCrGvCJGk1gln
-         cdm8T1XX/T7x0fP/CSPbDeq/dgzVG3hihg7CyuL4XtPKE5kD2d53T45DiTKf/usNtIoD
-         W/rYE0zcTUOvYUBxO4GVFsL6pblOXewNUvk6QLzHjfGhqSENy0UeWETG2zsWX/0WPWus
-         V0pIkHyAs3ZpnDTrGiNZd8rfNHUc/ZYZAvvRGYYUCGq/1Xk4pIrxJpJO4NqbayiBkdVa
-         Nm5Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature:dkim-signature
+         :dkim-signature;
+        bh=4RU7K8XftIpFnpXns/UL28N9uRyaWDCTy4k6Fr3tstE=;
+        b=YVMEO3ci/DX+uUg7uz9BYcRxNMr3b92YlcvcJd85sQLea7VHPJHLx2nztW5tSnD1gL
+         k6t1ZUfJnMeuQJuEoDiyufndBp5OwWVv5IxSDjdUNKxe/o/0Un0vNYOkpcYGTCGYsSIP
+         TfMBjP8RXE3ILrwWMidb8wzXp6jxGbqn/SfA068lJXUY88jQRSx4EvJmIzpGMGmUPNLA
+         ZTVvVmEfeYrrFz7nKApTTRnhIUVQQ66Ht+ymDqRmJ12XTLfJWDc9orowTQgDIvE65t2h
+         P7nKoPN9dqVZaruaq3YU87fCtCuK29kzIET5sGxh2P1FgOR+2PIg+rF+xD7WpLerS0HQ
+         EnRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lo6ap7b0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Wle3qshW;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=fOvA3+EL;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=nNZINng3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f9si2633886qvr.101.2018.11.15.01.22.22
+        by mx.google.com with ESMTPS id g51si821507qtc.224.2018.11.15.01.42.50
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Nov 2018 01:22:23 -0800 (PST)
+        Thu, 15 Nov 2018 01:42:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Lo6ap7b0;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37600 helo=lists.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=Wle3qshW;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=fOvA3+EL;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=nNZINng3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37647 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNDqw-0002LG-I4
-	for alex.bennee@linaro.org; Thu, 15 Nov 2018 04:22:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35932)
+	id 1gNEAj-0006sd-Mp
+	for alex.bennee@linaro.org; Thu, 15 Nov 2018 04:42:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40044)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gNDqi-0002LA-8i
-	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 04:22:09 -0500
+	(envelope-from <luc.michel@greensocs.com>) id 1gNEAU-0006mw-QF
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 04:42:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gNDqh-0001PF-9G
-	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 04:22:08 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:50983)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <nicholas.a.hudson@gmail.com>)
-	id 1gNDqh-0001Oi-1a; Thu, 15 Nov 2018 04:22:07 -0500
-Received: by mail-wm1-x344.google.com with SMTP id 124-v6so18183690wmw.0;
-	Thu, 15 Nov 2018 01:22:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:subject:to:cc:references:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding:content-language;
-	bh=J4jOJmLmgw9jv+3jHWUXJaIOfRBhuYdyJ3k0ZIblZcQ=;
-	b=Lo6ap7b0r4UujjdrY3lWjzBKA0wZFdqyKQhsqAurR8xPNoJK8cQZ1qGy2mMhyOQ1wL
-	dTrUVisSwFwFGNit1zRWFnxOBYFHb/I9TviTLpsRGs8WaYKkvjDJwOk/M3Uw7yE7Tzxk
-	2pfRSdPFTxKYnKKYIZv6C66+1hHCcb7t8NbvorJG/aXkm5yyk355qrKx7HtlTHd6oKmv
-	YWtnhLnz92pgJJcFTD2yRQUWBYxKLZu3PAA/U5fu+/vICeMOZ/Xp0jB95+gw0hVFhx0i
-	UOCncAvPbs9VQ25hSrKhWYh8GybRUrj4deJL9sSokk16jp1bEVcsca0JjHGEI5dQdJ1F
-	92Yg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:subject:to:cc:references:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding
-	:content-language;
-	bh=J4jOJmLmgw9jv+3jHWUXJaIOfRBhuYdyJ3k0ZIblZcQ=;
-	b=mzPW7iIBpcduAykBZNUg8Ch1nuGnn5JCMPwwJsWR50mSE5zPkh0U86wVBYfoR6ArU8
-	1GoBGmlOnG5cwEGhvWTlDIcKajxegcFw7QUtSMD9aKN6Qlq/bfndV2VXhJUTr3USHIW4
-	0VFNUR4Eb936ijp3um0EgMbfYIMYo8jwD8kvHZ55mG0fZY0z60UcEXDZmHb+vaJYgNj3
-	QMv6oYDL3GnGz11zZYrCeMDLh293UBG3GlePnVxAp7xCL7DulY7ZF1paljcHId3Iqi5Z
-	iWYyqCW48WQYR/gR2duBffohD3LoMpwCOa6iQI/aB63UjNOw+NLkoTeP5irAxuSTzpLs
-	fmnQ==
-X-Gm-Message-State: AGRZ1gJPlaOWGY53A+4v0Nj0dEc+KkwB2whpK69oV8+hn7n84NySulxn
-	4CqwIGYxlS891pmjcDGmpI8=
-X-Received: by 2002:a7b:c315:: with SMTP id k21mr4547332wmj.145.1542273725432; 
-	Thu, 15 Nov 2018 01:22:05 -0800 (PST)
-Received: from ?IPv6:2a02:c7d:860f:7601:7503:9d7c:2958:5e7d?
-	([2a02:c7d:860f:7601:7503:9d7c:2958:5e7d])
-	by smtp.gmail.com with ESMTPSA id
-	q7-v6sm18201631wmg.27.2018.11.15.01.22.04
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 15 Nov 2018 01:22:04 -0800 (PST)
-From: Nick Hudson <nicholas.a.hudson@gmail.com>
-X-Google-Original-From: Nick Hudson <skrll@netbsd.org>
+	(envelope-from <luc.michel@greensocs.com>) id 1gNEAH-0004Mu-NE
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 04:42:28 -0500
+Received: from greensocs.com ([193.104.36.180]:41852)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <luc.michel@greensocs.com>)
+	id 1gNEAH-0004Li-0n; Thu, 15 Nov 2018 04:42:21 -0500
+Received: from localhost (localhost [127.0.0.1])
+	by greensocs.com (Postfix) with ESMTP id 107185BD196;
+	Thu, 15 Nov 2018 10:42:15 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1542274935;
+	bh=woUz5gMr1yRY+/kHBr+hdGYA01XkDhQ/ai5lFu+hIhE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Wle3qshWqZdbHhvI7pq6YFmq8Yef/nOwfbQgubsq1i+daadJmkg1b9+tm3MRhlQDL
+	lerwrtud1JYwKP+6hZiVqOImf6MnKgMD18BIXlEbWhUpwRERpKx1dHk0kAX9u8Ki2I
+	JlMiXkfAC1jKlwaKZVEGtjmZuEk2HcviPL0qAKHo=
+X-Virus-Scanned: amavisd-new at greensocs.com
+Authentication-Results: gs-01.greensocs.com (amavisd-new);
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=fOvA3+EL;
+	dkim=pass (1024-bit key) header.d=greensocs.com header.b=nNZINng3
+Received: from greensocs.com ([127.0.0.1])
+	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UAuRcvF8-ecm; Thu, 15 Nov 2018 10:42:14 +0100 (CET)
+Received: by greensocs.com (Postfix, from userid 998)
+	id 059555BD1AF; Thu, 15 Nov 2018 10:42:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1542274934;
+	bh=woUz5gMr1yRY+/kHBr+hdGYA01XkDhQ/ai5lFu+hIhE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=fOvA3+ELec/3T0FOgdxNmCKhB6cLI1GcoutUa2ty7wJ4ZKhMY1etk3ys4ShxT1Tud
+	8C70oB1QNF7OiWW1+QqBdWJS9z1u0wwrbcTbfmAXshvlJ5s2EqxsdIBiQWaG6rmp5G
+	aF6uBc1d8/6dTXPl6drzF8jUjCM6GdgYa/7M3OuU=
+Received: from michell-laptop.hive.antfield.fr
+	(lfbn-1-8165-82.w90-112.abo.wanadoo.fr [90.112.74.82])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: luc.michel@greensocs.com)
+	by greensocs.com (Postfix) with ESMTPSA id 92F325BD1BB;
+	Thu, 15 Nov 2018 10:42:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
+	s=mail; t=1542274933;
+	bh=woUz5gMr1yRY+/kHBr+hdGYA01XkDhQ/ai5lFu+hIhE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=nNZINng3jq1X0C5i3T1fGo0fi3o8LLfuMbpj3jDw3XtQ+EEXai+asIReVUsYLVIJe
+	zI5Ar7u7BpO58K1bECNdmTHBbBy/vtWO65d9epcwOyemRTP1YtcUcLau67aBchrtr/
+	V7uQ+9XL4Hw+26MIYUfxrppNd9msrqAyPfgyp9d8=
+From: Luc Michel <luc.michel@greensocs.com>
 To: qemu-devel@nongnu.org
-References: <d9876015-2126-79fe-415f-ca7427ab3059@gmail.com>
-Message-ID: <293e1825-5f9d-1e40-85d7-cca1fb16ba94@gmail.com>
-Date: Thu, 15 Nov 2018 09:22:01 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+Date: Thu, 15 Nov 2018 10:41:55 +0100
+Message-Id: <20181115094207.22846-5-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181115094207.22846-1-luc.michel@greensocs.com>
+References: <20181115094207.22846-1-luc.michel@greensocs.com>
 MIME-Version: 1.0
-In-Reply-To: <d9876015-2126-79fe-415f-ca7427ab3059@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-GB
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] Support u-boot noload images
- for arm as used by NetBSD/evbarm GENERIC kernel.
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 193.104.36.180
+Subject: [Qemu-arm] [PATCH v6 04/16] gdbstub: add multiprocess support to
+ 'H' and 'T' packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,97 +122,276 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org,
+	Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: soeJeQzDLEAA
+X-TUID: 2gVl2KtCFmqk
 
-ping
+Add a couple of helper functions to cope with GDB threads and processes.
 
-On 07/11/2018 13:19, Nick Hudson wrote:
-> noload kernels are loaded with the u-boot image header and as a result
-> the header size needs adding to the entry point.  Fake up a hdr so the
-> kernel image is loaded at the right address and the entry point is
-> adjusted appropriately
->
-> Signed-off-by: Nick Hudson <skrll@netbsd.org>
-> ---
->  hw/arm/boot.c         |  8 +++++---
->  hw/core/loader.c      | 12 +++++++++---
->  hw/core/uboot_image.h |  1 +
->  3 files changed, 15 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 586baa9b64..450267566a 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -30,8 +30,9 @@
->   * Documentation/arm/Booting and Documentation/arm64/booting.txt
->   * They have different preferred image load offsets from system RAM 
-> base.
->   */
-> -#define KERNEL_ARGS_ADDR 0x100
-> -#define KERNEL_LOAD_ADDR 0x00010000
-> +#define KERNEL_ARGS_ADDR   0x100
-> +#define KERNEL_NOLOAD_ADDR 0x00000000
-> +#define KERNEL_LOAD_ADDR   0x00010000
->  #define KERNEL64_LOAD_ADDR 0x00080000
->
->  #define ARM64_TEXT_OFFSET_OFFSET    8
-> @@ -1078,7 +1079,8 @@ void arm_load_kernel(ARMCPU *cpu, struct 
-> arm_boot_info *info)
->      }
->      entry = elf_entry;
->      if (kernel_size < 0) {
-> -        kernel_size = load_uimage_as(info->kernel_filename, &entry, 
-> NULL,
-> +        uint64_t loadaddr = info->loader_start + KERNEL_NOLOAD_ADDR;
-> +        kernel_size = load_uimage_as(info->kernel_filename, &entry, 
-> &loadaddr,
->                                       &is_linux, NULL, NULL, as);
->      }
->      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) && kernel_size < 
-> 0) {
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index aa0b3fc867..952562c2da 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -638,13 +638,19 @@ static int load_uboot_image(const char 
-> *filename, hwaddr *ep, hwaddr *loadaddr,
->          goto out;
->
->      if (hdr->ih_type != image_type) {
-> -        fprintf(stderr, "Wrong image type %d, expected %d\n", 
-> hdr->ih_type,
-> -                image_type);
-> -        goto out;
-> +        if (image_type != IH_TYPE_KERNEL && hdr->ih_type != 
-> IH_TYPE_KERNEL_NOLOAD) {
-> +            fprintf(stderr, "Wrong image type %d, expected %d\n", 
-> hdr->ih_type,
-> +                    image_type);
-> +            goto out;
-> +        }
->      }
->
->      /* TODO: Implement other image types.  */
->      switch (hdr->ih_type) {
-> +    case IH_TYPE_KERNEL_NOLOAD:
-> +        hdr->ih_load = *loadaddr + sizeof(*hdr);
-> +        hdr->ih_ep += hdr->ih_load;
-> +
->      case IH_TYPE_KERNEL:
->          address = hdr->ih_load;
->          if (translate_fn) {
-> diff --git a/hw/core/uboot_image.h b/hw/core/uboot_image.h
-> index 34c11a70a6..608022de6e 100644
-> --- a/hw/core/uboot_image.h
-> +++ b/hw/core/uboot_image.h
-> @@ -124,6 +124,7 @@
->  #define IH_TYPE_SCRIPT        6    /* Script file            */
->  #define IH_TYPE_FILESYSTEM    7    /* Filesystem Image (any type)    */
->  #define IH_TYPE_FLATDT        8    /* Binary Flat Device Tree Blob    */
-> +#define IH_TYPE_KERNEL_NOLOAD  14    /* OS Kernel Image (noload)    */
->
->  /*
->   * Compression Types
+The gdb_get_process() function looks for a process given a pid.
+
+The gdb_get_cpu() function returns the CPU corresponding to the (pid,
+tid) pair given as parameters.
+
+The read_thread_id() function parses the thread-id sent by the peer.
+This function supports the multiprocess extension thread-id syntax.  The
+return value specifies if the parsing failed, or if a special case was
+encountered (all processes or all threads).
+
+Use them in 'H' and 'T' packets handling to support the multiprocess
+extension.
+
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ gdbstub.c | 152 +++++++++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 134 insertions(+), 18 deletions(-)
+
+diff --git a/gdbstub.c b/gdbstub.c
+index 4fbc05dfe3..fa2b7077b2 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -680,10 +680,73 @@ out:
+ #else
+     return s->processes[0].pid;
+ #endif
+ }
+=20
++static GDBProcess *gdb_get_process(const GDBState *s, uint32_t pid)
++{
++    int i;
++
++    if (!pid) {
++        /* 0 means any process, we take the first one */
++        return &s->processes[0];
++    }
++
++    for (i =3D 0; i < s->process_num; i++) {
++        if (s->processes[i].pid =3D=3D pid) {
++            return &s->processes[i];
++        }
++    }
++
++    return NULL;
++}
++
++static GDBProcess *gdb_get_cpu_process(const GDBState *s, CPUState *cpu)
++{
++    return gdb_get_process(s, gdb_get_cpu_pid(s, cpu));
++}
++
++static CPUState *find_cpu(uint32_t thread_id)
++{
++    CPUState *cpu;
++
++    CPU_FOREACH(cpu) {
++        if (cpu_gdb_index(cpu) =3D=3D thread_id) {
++            return cpu;
++        }
++    }
++
++    return NULL;
++}
++
++static CPUState *gdb_get_cpu(const GDBState *s, uint32_t pid, uint32_t t=
+id)
++{
++    GDBProcess *process;
++    CPUState *cpu =3D find_cpu(tid);
++
++    if (!tid) {
++        /* 0 means any thread, we take the first one */
++        tid =3D 1;
++    }
++
++    if (cpu =3D=3D NULL) {
++        return NULL;
++    }
++
++    process =3D gdb_get_cpu_process(s, cpu);
++
++    if (process->pid !=3D pid) {
++        return NULL;
++    }
++
++    if (!process->attached) {
++        return NULL;
++    }
++
++    return cpu;
++}
++
+ static const char *get_feature_xml(const char *p, const char **newp,
+                                    CPUClass *cc)
+ {
+     size_t len;
+     int i;
+@@ -936,23 +999,10 @@ static void gdb_set_cpu_pc(GDBState *s, target_ulon=
+g pc)
+=20
+     cpu_synchronize_state(cpu);
+     cpu_set_pc(cpu, pc);
+ }
+=20
+-static CPUState *find_cpu(uint32_t thread_id)
+-{
+-    CPUState *cpu;
+-
+-    CPU_FOREACH(cpu) {
+-        if (cpu_gdb_index(cpu) =3D=3D thread_id) {
+-            return cpu;
+-        }
+-    }
+-
+-    return NULL;
+-}
+-
+ static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
+                            char *buf, size_t buf_size)
+ {
+     if (s->multiprocess) {
+         snprintf(buf, buf_size, "p%02x.%02x",
+@@ -962,10 +1012,64 @@ static char *gdb_fmt_thread_id(const GDBState *s, =
+CPUState *cpu,
+     }
+=20
+     return buf;
+ }
+=20
++typedef enum GDBThreadIdKind {
++    GDB_ONE_THREAD =3D 0,
++    GDB_ALL_THREADS,     /* One process, all threads */
++    GDB_ALL_PROCESSES,
++    GDB_READ_THREAD_ERR
++} GDBThreadIdKind;
++
++static GDBThreadIdKind read_thread_id(const char *buf, const char **end_=
+buf,
++                                      uint32_t *pid, uint32_t *tid)
++{
++    unsigned long p, t;
++    int ret;
++
++    if (*buf =3D=3D 'p') {
++        buf++;
++        ret =3D qemu_strtoul(buf, &buf, 16, &p);
++
++        if (ret) {
++            return GDB_READ_THREAD_ERR;
++        }
++
++        /* Skip '.' */
++        buf++;
++    } else {
++        p =3D 1;
++    }
++
++    ret =3D qemu_strtoul(buf, &buf, 16, &t);
++
++    if (ret) {
++        return GDB_READ_THREAD_ERR;
++    }
++
++    *end_buf =3D buf;
++
++    if (p =3D=3D -1) {
++        return GDB_ALL_PROCESSES;
++    }
++
++    if (pid) {
++        *pid =3D p;
++    }
++
++    if (t =3D=3D -1) {
++        return GDB_ALL_THREADS;
++    }
++
++    if (tid) {
++        *tid =3D t;
++    }
++
++    return GDB_ONE_THREAD;
++}
++
+ static int is_query_packet(const char *p, const char *query, char separa=
+tor)
+ {
+     unsigned int query_len =3D strlen(query);
+=20
+     return strncmp(p, query, query_len) =3D=3D 0 &&
+@@ -1070,16 +1174,18 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+ {
+     CPUState *cpu;
+     CPUClass *cc;
+     const char *p;
+     uint32_t thread;
++    uint32_t pid, tid;
+     int ch, reg_size, type, res;
+     uint8_t mem_buf[MAX_PACKET_LENGTH];
+     char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
+     char thread_id[16];
+     uint8_t *registers;
+     target_ulong addr, len;
++    GDBThreadIdKind thread_kind;
+=20
+     trace_gdbstub_io_command(line_buf);
+=20
+     p =3D line_buf;
+     ch =3D *p++;
+@@ -1283,16 +1389,22 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+         else
+             put_packet(s, "E22");
+         break;
+     case 'H':
+         type =3D *p++;
+-        thread =3D strtoull(p, (char **)&p, 16);
+-        if (thread =3D=3D -1 || thread =3D=3D 0) {
++
++        thread_kind =3D read_thread_id(p, &p, &pid, &tid);
++        if (thread_kind =3D=3D GDB_READ_THREAD_ERR) {
++            put_packet(s, "E22");
++            break;
++        }
++
++        if (thread_kind !=3D GDB_ONE_THREAD) {
+             put_packet(s, "OK");
+             break;
+         }
+-        cpu =3D find_cpu(thread);
++        cpu =3D gdb_get_cpu(s, pid, tid);
+         if (cpu =3D=3D NULL) {
+             put_packet(s, "E22");
+             break;
+         }
+         switch (type) {
+@@ -1308,12 +1420,16 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+              put_packet(s, "E22");
+              break;
+         }
+         break;
+     case 'T':
+-        thread =3D strtoull(p, (char **)&p, 16);
+-        cpu =3D find_cpu(thread);
++        thread_kind =3D read_thread_id(p, &p, &pid, &tid);
++        if (thread_kind =3D=3D GDB_READ_THREAD_ERR) {
++            put_packet(s, "E22");
++            break;
++        }
++        cpu =3D gdb_get_cpu(s, pid, tid);
+=20
+         if (cpu !=3D NULL) {
+             put_packet(s, "OK");
+         } else {
+             put_packet(s, "E22");
+--=20
+2.19.1
+

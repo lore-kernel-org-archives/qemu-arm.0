@@ -1,188 +1,169 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7033109wrw;
-        Thu, 15 Nov 2018 05:55:16 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cqRsPhRvbuo9yrDAdnQEV581FD/zOTDbeE62EToti79/sposffEErVHfvAtaSNxR4PNssV
-X-Received: by 2002:aed:24c2:: with SMTP id u2mr5851646qtc.230.1542290116855;
-        Thu, 15 Nov 2018 05:55:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542290116; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7082528wrw;
+        Thu, 15 Nov 2018 06:39:12 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cQmad5vqQwTnK8/+AnkAe9LUx2BuPtFyg8bbtPsvVAP1Cey2rw65RYXZNFXcs7ddsSMkiu
+X-Received: by 2002:a37:5002:: with SMTP id e2mr6355603qkb.169.1542292752401;
+        Thu, 15 Nov 2018 06:39:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542292752; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkumxbK/77jyCKWne/+HIkMtQ8ZjWfVSMgjhx1ec+7/VyWLgY+Feepm+j1xpnVK+27
-         I96B075xpZ/cKd+jhkBrT/Gs1xjNQjIaGlg+hywRBGsfMSYTAj7M4eKTEIIRaI82tSnJ
-         ZdQ/cjhgupQQMr1Nbg2h4ZUjw4hf5p4L2Cs5UfStsrBgpB8T27SGa7jCq/Tk2AlJs8BM
-         GwIF8dL/UZ1RxhfiULn/1ntIL6vkAgeKu0qX167sbF2Bp01ZzQSooNZ9avylkkW+Qej8
-         1RHJZKrMLaNWKyVfqrm4zRtRLwPfG4xAaGWEmbXv9SIEePc3sCmiHzLkk23ISyYf5A/O
-         V/gw==
+        b=sRlb17tzuFZdl+3CTqkxdBKnb0bZkgafOzyyHrBA4iqq/zs9bLh4BVAFj/aTkCsK9E
+         BQ1zAsB53CktkvrLq65MDFUloAMVwzyZdZ8CH0TwZUtK68QpewJmBeoEmyt8XSqUWPRo
+         XAdO4pw5UXeIhEuS1yBX9UoJIzki4VLnumxcwQrY6RNKUPQAQEf1Gwx1cOc0rg+672AE
+         eiYQLvHbMCE+jVle6CoWn7EALsbqvnmkQVIxxnHEwqcpHZR17K6yXqIt4/hk6VLk8K13
+         AHoSCLHtFH0+MhhY++TYSMVXTchyngOJtUN6bQ3ceq0jz7CitP3D9/MYo9UWAE3Wv0Pk
+         zgxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=2StxqoXpgFycCXCjPXaT/HWsSqWymVOLdBPMnALdbhE=;
-        b=Fkdz2UIF5CmgyPbASOR6JK5kOGkI41D/s9s5oTquKwQn4CPCoTsDBwiwuOo1ZVhduw
-         T9FanaTgUj2DprKB2ggrI6Hd4LWJPfOaTcgbnFzxIu4Bv7zBCPqsJPjDAOqPRgG6mug5
-         uZXy13ey9TwUd4UV584CTa4BCLOBcHt0jDRgVv+obXlasexRiEvd0emrS1CqQUWE9Ixx
-         H4opeDTgY2OOYY6NVVzKOAZVOHFPaNnKRTrtUXpMGXolDfoXDCVQ7qhWXjinyPim5Ymg
-         AI1a3abeMenm7FW1xWGzMfoYrouq/Sq00gPXlMNTwdQCoQpAS91cg6pkU6QqfPCyCUAV
-         gKuw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=3tC8hJrceHVQhA/F3T0oiZIn7KukXlswJIvnabIYYA8=;
+        b=GP6fpxTdjHVp7rdNZLnfMXIryA9l3TVyhU6kovpXoZ63Mc/PURhtie3yXaqr/q9Swf
+         1SBCjQsU8FKJJ1qygtv1QJqUN/uRq6N2CWPtyTsMaEcI6gS7PyyIpOIGGdfntgBsDl91
+         n3qffEFlkP9MI5k5OihC7ZhnC7zuG04KvKbeMhVyOCsX18eYb1KxeL/4kllUhUMi9FyI
+         tkL6sIowmWVe5MFfARZbuLj3NcWhFO6EH9wzh8rv+qU6M8F1v4IsMlrMSuboe6VEfqdN
+         O34SvAmmbKeRzV4ktSorxq75IPzI0iGSXwFJuZ4iViIDYHbXfa8+O8MmcUxAsRBg2OrP
+         +zBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jNd3+4jm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 4si2846292qtw.283.2018.11.15.05.55.16
+        by mx.google.com with ESMTPS id x24si4961741qtp.214.2018.11.15.06.39.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Nov 2018 05:55:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 15 Nov 2018 06:39:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=jNd3+4jm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38918 helo=lists.gnu.org)
+Received: from localhost ([::1]:39225 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNI72-0002WO-8e
-	for alex.bennee@linaro.org; Thu, 15 Nov 2018 08:55:16 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49863)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gNInX-0007xZ-RB
+	for alex.bennee@linaro.org; Thu, 15 Nov 2018 09:39:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36418)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gNI5l-000251-0a
-	for qemu-devel@nongnu.org; Thu, 15 Nov 2018 08:53:57 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1gNIkM-0005UF-25
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 09:35:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gNI5k-0006E3-6u
-	for qemu-devel@nongnu.org; Thu, 15 Nov 2018 08:53:56 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:40215)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gNI5j-0006Dj-LU
-	for qemu-devel@nongnu.org; Thu, 15 Nov 2018 08:53:56 -0500
-Received: by mail-oi1-x242.google.com with SMTP id u130-v6so16763236oie.7
-	for <qemu-devel@nongnu.org>; Thu, 15 Nov 2018 05:53:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=2StxqoXpgFycCXCjPXaT/HWsSqWymVOLdBPMnALdbhE=;
-	b=jNd3+4jmA0PianQ6kb1wl/l0a//iecaYGlHCIr3Mj4CV+md5VvfaI1mid+yrZUxgJj
-	0U8OZumEoz7QqB2Bae2RphRReW5loBlMIcZlFyJs+k/Hg5cOglogEKIwaP7ERr8KFfhS
-	B5XXgLzXFZb+CT9kK0nVCGOvB5UQ8mavxw03c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=2StxqoXpgFycCXCjPXaT/HWsSqWymVOLdBPMnALdbhE=;
-	b=kaGH7PJAdLOmNn011tgzelAxiqlb2tJw3tou4JTJOEAwOhm9IkNon7/SGmycC1B4xS
-	0/EephIaKT25o9z6ryitaSGHh0B7F8b9h/7kQvbu2NnMhbI1NrUm2saGzc2f8ESwmNbA
-	mHvgJUNWdcfuIoUvncunow8nZmJKmwMmCLx7caPFs9oG/ZgHf05SfXtHXTMlHSpR+KUy
-	JV/cfKZBsH1bK9zHZKhId4WY8gbskWQvpMjt/D0MQOy1jB4ajFopnHAnH+WE9OIcnS8L
-	U4RiBGfXV1k+sHkxwpJHoIKxqce+4sq1tW8dXvx/3lUuagYbPlrdxxsBSp6EdLItuYmG
-	y3HQ==
-X-Gm-Message-State: AGRZ1gL5vsrto1m60Otw6r/NxC5ZVSDyXq+ECignI/eSV4mpNkUPW+Dx
-	zXwSpSHJRaQBNyu3c9SfkqiAtNOvt/YAzwP1yXLkqQ==
-X-Received: by 2002:aca:ed92:: with SMTP id l140mr326802oih.112.1542290035003; 
-	Thu, 15 Nov 2018 05:53:55 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Thu, 15 Nov 2018 05:53:34
-	-0800 (PST)
-In-Reply-To: <7e05e89a-6eec-257d-03af-78a2d2b60628@twiddle.net>
-References: <20180710160013.26559-1-peter.maydell@linaro.org>
-	<20180710160013.26559-6-peter.maydell@linaro.org>
-	<3ac12d41-2095-f0ad-db1b-0e3ceea8f44e@redhat.com>
-	<7e05e89a-6eec-257d-03af-78a2d2b60628@twiddle.net>
+	(envelope-from <pm215@archaic.org.uk>) id 1gNIkL-0005vj-6q
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 09:35:54 -0500
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:52634)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1gNIkK-0005m2-WA; Thu, 15 Nov 2018 09:35:53 -0500
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1gNIk8-0001X8-FQ; Thu, 15 Nov 2018 14:35:40 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Nov 2018 13:53:34 +0000
-Message-ID: <CAFEAcA-cE1cBe3BAxMRbdNjtHde3XGf842rqdc8gV8bN7WHNHQ@mail.gmail.com>
-To: Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu, 15 Nov 2018 14:35:35 +0000
+Message-Id: <20181115143535.5885-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181115143535.5885-1-peter.maydell@linaro.org>
+References: <20181115143535.5885-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-devel] [PATCH 5/6] accel/tcg: Return -1 for execution
- from MMIO regions in get_page_addr_code()
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-arm] [PATCH for-3.1 2/2] hw/block/onenand: use
+ qemu_log_mask() for reporting
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, "patches@linaro.org" <patches@linaro.org>,
-	"Emilio G . Cota" <cota@braap.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3T5n2aK248TA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>, patches@linaro.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d5Cc07I9A4I4
 
-On 15 November 2018 at 07:32, Richard Henderson <rth@twiddle.net> wrote:
-> On 11/14/18 6:19 PM, Thomas Huth wrote:
->> Program received signal SIGSEGV, Segmentation fault.
->> [...]
->> (gdb) bt
->> #0  0x0000555555addc68 in onenand_read (opaque=0x555557600600, addr=98304, size=4) at hw/block/onenand.c:612
->
-> So the crash is an off-by-one on the line above:
->
-> --- a/hw/block/onenand.c
-> +++ b/hw/block/onenand.c
-> @@ -608,7 +608,7 @@ static uint64_t onenand_read(void *opaque, hwaddr addr,
->      int offset = addr >> s->shift;
->
->      switch (offset) {
-> -    case 0x0000 ... 0xc000:
-> +    case 0x0000 ... 0xbfff:
->          return lduw_le_p(s->boot[0] + addr);
->
->      case 0xf000:       /* Manufacturer ID */
->
-> as the memory segment has size 0xc000.
+Update the onenand device to use qemu_log_mask() for reporting
+guest errors and unimplemented features, rather than plain
+fprintf() and hw_error().
 
-Presumably it should be ... 0xbffe, since we are
-doing a 16-bit load ?
+(We leave the hw_error() in onenand_reset(), as that is
+triggered by a failure to read the underlying block device
+for the bootRAM, not by guest action.)
 
-> The guest will now eventually crash with
->
-> onenand_read: unknown OneNAND register c000
-> ...
-> onenand_read: unknown OneNAND register fefe
-> qemu: hardware error: onenand_read: implement ECC
->
-> CPU #0:
-> R00=00000000 R01=00000000 R02=00000000 R03=00000000
-> R04=00000000 R05=00000000 R06=00000000 R07=00000000
-> R08=00000000 R09=00000000 R10=00000000 R11=00000000
-> R12=00000000 R13=00000000 R14=00000000 R15=0001fe04
-> PSR=400001d3 -Z-- A svc32
-> s00=00000000 s01=00000000 d00=0000000000000000
-> s02=00000000 s03=00000000 d01=0000000000000000
-> s04=00000000 s05=00000000 d02=0000000000000000
-> s06=00000000 s07=00000000 d03=0000000000000000
-> s08=00000000 s09=00000000 d04=0000000000000000
-> s10=00000000 s11=00000000 d05=0000000000000000
-> s12=00000000 s13=00000000 d06=0000000000000000
-> s14=00000000 s15=00000000 d07=0000000000000000
-> s16=00000000 s17=00000000 d08=0000000000000000
-> s18=00000000 s19=00000000 d09=0000000000000000
-> s20=00000000 s21=00000000 d10=0000000000000000
-> s22=00000000 s23=00000000 d11=0000000000000000
-> s24=00000000 s25=00000000 d12=0000000000000000
-> s26=00000000 s27=00000000 d13=0000000000000000
-> s28=00000000 s29=00000000 d14=0000000000000000
-> s30=00000000 s31=00000000 d15=0000000000000000
-> FPSCR: 00000000
-> Aborted (core dumped)
->
-> I'll note that fprintf at the end of onenand_read should be
-> qemu_log(LOG_GUEST_ERROR) instead.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/block/onenand.c | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
 
-Yeah, I'll put together a patch which makes it use the qemu_log
-facilities rather than fprintf() and hw_error(). With that
-plus the case statement fix then QEMU correctly just sits there
-as the guest execution races through memory...
+diff --git a/hw/block/onenand.c b/hw/block/onenand.c
+index 49ef68c9b14..2b48609776d 100644
+--- a/hw/block/onenand.c
++++ b/hw/block/onenand.c
+@@ -28,6 +28,7 @@
+ #include "exec/memory.h"
+ #include "hw/sysbus.h"
+ #include "qemu/error-report.h"
++#include "qemu/log.h"
+ 
+ /* 11 for 2kB-page OneNAND ("2nd generation") and 10 for 1kB-page chips */
+ #define PAGE_SHIFT	11
+@@ -594,8 +595,8 @@ static void onenand_command(OneNANDState *s)
+     default:
+         s->status |= ONEN_ERR_CMD;
+         s->intstatus |= ONEN_INT;
+-        fprintf(stderr, "%s: unknown OneNAND command %x\n",
+-                        __func__, s->command);
++        qemu_log_mask(LOG_GUEST_ERROR, "unknown OneNAND command %x\n",
++                      s->command);
+     }
+ 
+     onenand_intr_update(s);
+@@ -657,12 +658,13 @@ static uint64_t onenand_read(void *opaque, hwaddr addr,
+     case 0xff02:	/* ECC Result of spare area data */
+     case 0xff03:	/* ECC Result of main area data */
+     case 0xff04:	/* ECC Result of spare area data */
+-        hw_error("%s: implement ECC\n", __func__);
++        qemu_log_mask(LOG_UNIMP,
++                      "onenand: ECC result registers unimplemented\n");
+         return 0x0000;
+     }
+ 
+-    fprintf(stderr, "%s: unknown OneNAND register %x\n",
+-                    __func__, offset);
++    qemu_log_mask(LOG_GUEST_ERROR, "read of unknown OneNAND register 0x%x\n",
++                  offset);
+     return 0;
+ }
+ 
+@@ -706,8 +708,9 @@ static void onenand_write(void *opaque, hwaddr addr,
+             break;
+ 
+         default:
+-            fprintf(stderr, "%s: unknown OneNAND boot command %"PRIx64"\n",
+-                            __func__, value);
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "unknown OneNAND boot command %" PRIx64 "\n",
++                          value);
+         }
+         break;
+ 
+@@ -757,8 +760,9 @@ static void onenand_write(void *opaque, hwaddr addr,
+         break;
+ 
+     default:
+-        fprintf(stderr, "%s: unknown OneNAND register %x\n",
+-                        __func__, offset);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "write to unknown OneNAND register 0x%x\n",
++                      offset);
+     }
+ }
+ 
+-- 
+2.19.1
 
-thanks
--- PMM

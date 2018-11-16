@@ -1,84 +1,84 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp159617wrw;
-        Fri, 16 Nov 2018 01:39:37 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fC/80uNgyc8zsYPlYPugEeTWkWFeN1LCeUtrv/vOiNQze9wZrPeY0ZVxeCUFz4jo3zCrF2
-X-Received: by 2002:a37:2881:: with SMTP id o1mr9572751qko.130.1542361177407;
-        Fri, 16 Nov 2018 01:39:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542361177; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp263911wrw;
+        Fri, 16 Nov 2018 03:31:08 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fh0oL3mkIhPSqEqx4uAV3q1PqZyplm0nNB4N60vKbqbxQzVvzTw7cZy6WN880Ok975xfoo
+X-Received: by 2002:ac8:35b1:: with SMTP id k46mr9833680qtb.141.1542367868294;
+        Fri, 16 Nov 2018 03:31:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542367868; cv=none;
         d=google.com; s=arc-20160816;
-        b=yMwTwuQWcNPKwMmKoncejYaus2zkXXdXhIHH8PjJEjtAIl8M2J3QJXgOA4M9qZ6pWo
-         +XVA8fy5g61kKf46F3a/rykLPXS8JvR1snbBh0+nb7SE7/v/TCuTiLO1/AzXL61HJmRm
-         IHkbHuhTdjE1Y2sXv5EM6ipad2wsGO59CLmCso7hldaqYMT+B5jrtpMYeMV/h17tF93f
-         CwIrtOCpn7JSO4Oyj0N8NNT8YzYIfZ8iprpzR9qZfuxyT+nBsA5bPmwdML1T0YPC2gt8
-         pcIQt3ikOa6F/+o6yOkW7lnHwRmQftfL1kocHpCqBIpANoiqQ29vsYNVT0m5WX1ynQtc
-         pyRA==
+        b=OSuoY5uZSzywLH57BElsQ2HwuclS4Rl8wCxrPUi4/cLQWgCYfIxbJo9c24gGdL0JKb
+         Ob81P9QGeKbM0243ikj7NIweA/I61A0Pl03/j6FxaxtI//9TeUhuUjEZBfBPlUzSKZvW
+         DLwtcF+mnEbbn7hLQgCPwJpWKdd6t8kR4kQDY2/Wib0jp/dcFkxVZaZZ8eJqkkKLPbll
+         R7JbqmqiKvHoTRZc/ydO2pzwC47UKm/NFJekw+hfY95mgI7JcM9Dpsh0IiaoLLgjhMi6
+         5kyYKW2cw2SMRKmn1eUKL/Y/3dvcMciLBCtHRy++QKdPu62E+vCmkIbdup2A//Hf3ww3
+         jRwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=uwJGuLKhWpi4FRPcdi3sqKkUX5zJJ3iZlCAFuc53Y0g=;
-        b=Pzk9OBht3uH6QOiYNBiW7gOCSp0H93kAjdOt1T2khM//Il/4XrHwksWTGnLqbiK3lq
-         YlJwlDiZahnaHgvlDJJytadBICFJUEl5LsouAJYHO7d/xJoS4dO29DhZpoUEyaLsuz5T
-         JozwGSnWJgBAVoTgj29eTuzOgkJml9CqNGJwwBnOY95lsdEgRCXvk6nGjphy7BvUeNmS
-         v78S3PIy8k8i2f6M0gLtvIUdXL+u+90MEolrvTkbqX52L2BPRvd8QkS4sCWFSbqW7/Ly
-         9gNKtZYW5zj+Kkuy9jCrRy8+pFk1Tqu3uwvI5FcT5bLHsycugQCs5qeWkhVuN5fF5Q7I
-         RpxA==
+        bh=kBPNLNvXKjxtNk+c/+Wi+DfDPwB5nzDH1+5tYSpmeI4=;
+        b=O/k1aHAzlMQO6PcuxKzFB6THYXoyDp85hZqlq9yzOznhB9drbExfutVD3YUhTLfwgW
+         gXjcYzL9IaYJNzfCTiJGCExUf9DUHi8yJdnNa4YT6F5kx6C+ubDBtKCzkaQoKKS146TO
+         796rab8TT+8U1aSpcc5Tb4dt22e9E/E71LzPtXpY+btfB5PLNC5Z6H0Zf2N7DeEcCH+4
+         sDGamhPwrzqF+cX4ik1oCRBRC6fl7hAUjP6mDITK4oj1FmZZvmxy61cVoqHl9dl4Wm+Y
+         BuMJa6dgCUAuOTdrSwRKn9yVy/Ms5Sg9WS1ESjvl7kvlXoO7OWW5cN+8MsEvi2DCWa19
+         7AIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k18si920950qtb.401.2018.11.16.01.39.37
+        by mx.google.com with ESMTPS id k46si3044871qtk.49.2018.11.16.03.31.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 01:39:37 -0800 (PST)
+        Fri, 16 Nov 2018 03:31:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43633 helo=lists.gnu.org)
+Received: from localhost ([::1]:44236 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNabA-00085u-Us
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 04:39:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37950)
+	id 1gNcL4-0001ua-US
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 06:31:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37245)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gNab3-00085d-1V
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:39:30 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gNc0i-0007j3-P6
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 06:10:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gNaau-0003gG-67
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:39:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45842)
+	(envelope-from <imammedo@redhat.com>) id 1gNc0d-0005tv-UO
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 06:10:04 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39350)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gNaat-0003fo-Nq; Fri, 16 Nov 2018 04:39:20 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gNc0d-0005sd-4K; Fri, 16 Nov 2018 06:09:59 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BE505356CE;
-	Fri, 16 Nov 2018 09:39:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 92AF53082AF0;
+	Fri, 16 Nov 2018 11:09:57 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3F304600C2;
-	Fri, 16 Nov 2018 09:39:11 +0000 (UTC)
-Date: Fri, 16 Nov 2018 10:39:09 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 16B2C5D6B3;
+	Fri, 16 Nov 2018 11:09:49 +0000 (UTC)
+Date: Fri, 16 Nov 2018 12:09:48 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181116103909.64f35d5d@redhat.com>
-In-Reply-To: <20181105014047.26447-20-sameo@linux.intel.com>
+Message-ID: <20181116120948.7ce7bcd5@redhat.com>
+In-Reply-To: <20181105014047.26447-23-sameo@linux.intel.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
-	<20181105014047.26447-20-sameo@linux.intel.com>
+	<20181105014047.26447-23-sameo@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 16 Nov 2018 09:39:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.45]);
+	Fri, 16 Nov 2018 11:09:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v5 19/24] hw: acpi: Retrieve the PCI bus from
- AcpiPciHpState
+Subject: Re: [Qemu-arm] [PATCH v5 22/24] hw: pci-host: piix: Return PCI host
+ pointer instead of PCI bus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,162 +90,204 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Jing Liu <jing2.liu@linux.intel.com>, qemu-devel@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
 	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
-	Sebastien Boeuf <sebastien.boeuf@intel.com>,
-	Richard Henderson <rth@twiddle.net>
+	Auger Eric <eric.auger@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wwEbqQlUXl7s
+X-TUID: ZFuR4m3tXu2j
 
-On Mon,  5 Nov 2018 02:40:42 +0100
+On Mon,  5 Nov 2018 02:40:45 +0100
 Samuel Ortiz <sameo@linux.intel.com> wrote:
 
-> From: Sebastien Boeuf <sebastien.boeuf@intel.com>
->=20
-> Instead of using the machine type specific method find_i440fx() to
-> retrieve the PCI bus, this commit aims to rely on the fact that the
-> PCI bus is known by the structure AcpiPciHpState.
->=20
-> When the structure is initialized through acpi_pcihp_init() call,
-> it saves the PCI bus, which means there is no need to invoke a
-> special function later on.
->=20
-> Based on the fact that find_i440fx() was only used there, this
-> patch also removes the function find_i440fx() itself from the
-> entire codebase.
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Signed-off-by: Sebastien Boeuf <sebastien.boeuf@intel.com>
-> Signed-off-by: Jing Liu <jing2.liu@linux.intel.com>
-Thanks for cleaning it up
+All remaining patches a bit out of proper order,
+they should be around patch 12/24 where you started to touch MCFG code.
 
-minor nit:
-Taking in account that you're removing '/* TODO: Q35 support */'
-comment along with find_i440fx(), it might be worth to mention
-in this commit message. Something along lines that ACPI PCIHP
-exist to support guests without SHPC support on PCI
-based PC machine. Considering that Q35 provides native
-PCI-E hotplug, there is no need to add ACPI hotplug there.
+> For building the MCFG table, we need to track a given machine
+> type PCI host pointer, and we can't get it from the bus pointer alone.
+> As piix returns a PCI bus pointer, we simply modify its builder to
+> return a PCI host pointer instead.
+PC machine doesn't build MCFG so we don't really need it to provide
+this pointer, having this patch doesn't hurt but I'm not sure we
+need it.
 
+CCing ARM folks since we are talking about generalizing MCFG table generation.
 
-with commit message fixed
+we have following invariants wrt using MCFG:
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+   pc [pci_host != NULL] -> bail out early + do not build MCFG
 
+   pc [pci_host == NULL] -> would explode if not only for [has_acpi_build = false] guard
+                            should be: do not even call acpi_get_mcfg().
+
+   q35 [pci_host == NULL] -> not valid combo and must assert
+
+   q35 [pci_host != NULL && mcfg_base != PCIE_BASE_ADDR_UNMAPPED]
+        generate MCFG using mcfg_base/size
+
+   q35 [pci_host != NULL && mcfg_base == PCIE_BASE_ADDR_UNMAPPED]
+        generate place-holder 'QEMU' table for legacy machine versions without
+        resizable MemoryRegion support.
+        Mapped/not mapped could be dynamic accross reboots, so we need
+        access to PCIE(pci_host) to fetch current values.
+
+   arm/virt gpex [memmap[ecam_id].base/size] do build MCFG
+        hacked up variant that doesn't use pci_host mcfg_base/size fields
+        not sure if it's possible to disable ecam as on q35 (does it need any fixing?)
+        we should fix arm/virt to use pci-host mcfg_base/size so we
+        could reuse properties PCIE_HOST_MCFG_BASE/PCIE_HOST_MCFG_SIZE
+        on ARM and generic build_mcfg()
+
+So we have quite a mess here, the current acpi_get_mcfg() does 2 things
+  1. indirectly checks that pci_host is PCI-E (presence of PCIE_HOST_MCFG_BASE property)
+  2. fetches mcfg_base/size if it's PCI-E host
+
+and i386/build_mcfg() is called only when #1 is true
+
+As far as see we use pci_host only to fetch mcfg_base/size and not for anything
+else.
+Maybe as refactoring plan we should"
+ * pass to acpi_setup(PCIHostState* pcie_host) as an argument pcie host pointer,
+   which for PC will be NULL and for the rest set it to q35/gxpe/... PCI-E host.
+ * call build_mcfg() if pcie_host != NULL
+   (no more indirect guessing using PCIE_HOST_MCFG_BASE property presence)
+ * move MCFG/QEMU table signature decision out of build_mcfg() and pass
+   it as argument 'build_mcfg(...,char *mcfg_signature)'. It moves out masking
+   table quirk into caller, where q35 can decide to change signature
+   if ECAM is not mapped. The rest (arm|i386/virt) will always pass 'MCFG'.
+   Or even better if ecam is mapped, create MCFG (with masking trick if q35
+   machine is old and do not support resizable MemoryRegions).
+
+> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
 > ---
->  include/hw/i386/pc.h  |  1 -
->  hw/acpi/pcihp.c       | 10 ++++------
->  hw/pci-host/piix.c    |  8 --------
->  stubs/pci-host-piix.c |  6 ------
->  stubs/Makefile.objs   |  1 -
->  5 files changed, 4 insertions(+), 22 deletions(-)
->  delete mode 100644 stubs/pci-host-piix.c
->=20
+>  include/hw/i386/pc.h | 21 +++++++++++----------
+>  hw/i386/pc_piix.c    | 18 +++++++++++-------
+>  hw/pci-host/piix.c   | 24 ++++++++++++------------
+>  3 files changed, 34 insertions(+), 29 deletions(-)
+> 
 > diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 44cb6bf3f3..8e5f1464eb 100644
+> index 8e5f1464eb..b6b79e146d 100644
 > --- a/include/hw/i386/pc.h
 > +++ b/include/hw/i386/pc.h
-> @@ -255,7 +255,6 @@ PCIBus *i440fx_init(const char *host_type, const char=
- *pci_type,
->                      MemoryRegion *pci_memory,
->                      MemoryRegion *ram_memory);
-> =20
-> -PCIBus *find_i440fx(void);
+> @@ -244,16 +244,17 @@ typedef struct PCII440FXState PCII440FXState;
+>   */
+>  #define RCR_IOPORT 0xcf9
+>  
+> -PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+> -                    PCII440FXState **pi440fx_state, int *piix_devfn,
+> -                    ISABus **isa_bus, qemu_irq *pic,
+> -                    MemoryRegion *address_space_mem,
+> -                    MemoryRegion *address_space_io,
+> -                    ram_addr_t ram_size,
+> -                    ram_addr_t below_4g_mem_size,
+> -                    ram_addr_t above_4g_mem_size,
+> -                    MemoryRegion *pci_memory,
+> -                    MemoryRegion *ram_memory);
+> +struct PCIHostState *i440fx_init(const char *host_type, const char *pci_type,
+> +                                 PCII440FXState **pi440fx_state,
+> +                                 int *piix_devfn,
+> +                                 ISABus **isa_bus, qemu_irq *pic,
+> +                                 MemoryRegion *address_space_mem,
+> +                                 MemoryRegion *address_space_io,
+> +                                 ram_addr_t ram_size,
+> +                                 ram_addr_t below_4g_mem_size,
+> +                                 ram_addr_t above_4g_mem_size,
+> +                                 MemoryRegion *pci_memory,
+> +                                 MemoryRegion *ram_memory);
+>  
 >  /* piix4.c */
 >  extern PCIDevice *piix4_dev;
->  int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn);
-> diff --git a/hw/acpi/pcihp.c b/hw/acpi/pcihp.c
-> index 80d42e12ff..254b2e50ab 100644
-> --- a/hw/acpi/pcihp.c
-> +++ b/hw/acpi/pcihp.c
-> @@ -93,10 +93,9 @@ static void *acpi_set_bsel(PCIBus *bus, void *opaque)
->      return bsel_alloc;
->  }
-> =20
-> -static void acpi_set_pci_info(void)
-> +static void acpi_set_pci_info(AcpiPciHpState *s)
->  {
->      static bool bsel_is_set;
-> -    PCIBus *bus;
->      unsigned bsel_alloc =3D ACPI_PCIHP_BSEL_DEFAULT;
-> =20
->      if (bsel_is_set) {
-> @@ -104,10 +103,9 @@ static void acpi_set_pci_info(void)
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 0620d10715..f5b139a3eb 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -32,6 +32,7 @@
+>  #include "hw/display/ramfb.h"
+>  #include "hw/smbios/smbios.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/pci/pci_host.h"
+>  #include "hw/pci/pci_ids.h"
+>  #include "hw/usb.h"
+>  #include "net/net.h"
+> @@ -75,6 +76,7 @@ static void pc_init1(MachineState *machine,
+>      MemoryRegion *system_memory = get_system_memory();
+>      MemoryRegion *system_io = get_system_io();
+>      int i;
+> +    struct PCIHostState *pci_host;
+>      PCIBus *pci_bus;
+>      ISABus *isa_bus;
+>      PCII440FXState *i440fx_state;
+> @@ -196,15 +198,17 @@ static void pc_init1(MachineState *machine,
 >      }
->      bsel_is_set =3D true;
-> =20
-> -    bus =3D find_i440fx(); /* TODO: Q35 support */
-> -    if (bus) {
-> +    if (s->root) {
->          /* Scan all PCI buses. Set property to enable acpi based hotplug=
-. */
-> -        pci_for_each_bus_depth_first(bus, acpi_set_bsel, NULL, &bsel_all=
-oc);
-> +        pci_for_each_bus_depth_first(s->root, acpi_set_bsel, NULL, &bsel=
-_alloc);
->      }
->  }
-> =20
-> @@ -213,7 +211,7 @@ static void acpi_pcihp_update(AcpiPciHpState *s)
-> =20
->  void acpi_pcihp_reset(AcpiPciHpState *s)
->  {
-> -    acpi_set_pci_info();
-> +    acpi_set_pci_info(s);
->      acpi_pcihp_update(s);
->  }
-> =20
+>  
+>      if (pcmc->pci_enabled) {
+> -        pci_bus = i440fx_init(host_type,
+> -                              pci_type,
+> -                              &i440fx_state, &piix3_devfn, &isa_bus, pcms->gsi,
+> -                              system_memory, system_io, machine->ram_size,
+> -                              acpi_conf->below_4g_mem_size,
+> -                              acpi_conf->above_4g_mem_size,
+> -                              pci_memory, ram_memory);
+> +        pci_host = i440fx_init(host_type,
+> +                               pci_type,
+> +                               &i440fx_state, &piix3_devfn, &isa_bus, pcms->gsi,
+> +                               system_memory, system_io, machine->ram_size,
+> +                               acpi_conf->below_4g_mem_size,
+> +                               acpi_conf->above_4g_mem_size,
+> +                               pci_memory, ram_memory);
+> +        pci_bus = pci_host->bus;
+>          pcms->bus = pci_bus;
+>      } else {
+> +        pci_host = NULL;
+>          pci_bus = NULL;
+>          i440fx_state = NULL;
+>          isa_bus = isa_bus_new(NULL, get_system_memory(), system_io,
 > diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
-> index 47293a3915..658460264b 100644
+> index 658460264b..4a412db44c 100644
 > --- a/hw/pci-host/piix.c
 > +++ b/hw/pci-host/piix.c
-> @@ -445,14 +445,6 @@ PCIBus *i440fx_init(const char *host_type, const cha=
-r *pci_type,
->      return b;
+> @@ -342,17 +342,17 @@ static void i440fx_realize(PCIDevice *dev, Error **errp)
+>      }
 >  }
-> =20
-> -PCIBus *find_i440fx(void)
-> -{
-> -    PCIHostState *s =3D OBJECT_CHECK(PCIHostState,
-> -                                   object_resolve_path("/machine/i440fx"=
-, NULL),
-> -                                   TYPE_PCI_HOST_BRIDGE);
-> -    return s ? s->bus : NULL;
-> -}
-> -
->  /* PIIX3 PCI to ISA bridge */
->  static void piix3_set_irq_pic(PIIX3State *piix3, int pic_irq)
+>  
+> -PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+> -                    PCII440FXState **pi440fx_state,
+> -                    int *piix3_devfn,
+> -                    ISABus **isa_bus, qemu_irq *pic,
+> -                    MemoryRegion *address_space_mem,
+> -                    MemoryRegion *address_space_io,
+> -                    ram_addr_t ram_size,
+> -                    ram_addr_t below_4g_mem_size,
+> -                    ram_addr_t above_4g_mem_size,
+> -                    MemoryRegion *pci_address_space,
+> -                    MemoryRegion *ram_memory)
+> +struct PCIHostState *i440fx_init(const char *host_type, const char *pci_type,
+> +                                 PCII440FXState **pi440fx_state,
+> +                                 int *piix3_devfn,
+> +                                 ISABus **isa_bus, qemu_irq *pic,
+> +                                 MemoryRegion *address_space_mem,
+> +                                 MemoryRegion *address_space_io,
+> +                                 ram_addr_t ram_size,
+> +                                 ram_addr_t below_4g_mem_size,
+> +                                 ram_addr_t above_4g_mem_size,
+> +                                 MemoryRegion *pci_address_space,
+> +                                 MemoryRegion *ram_memory)
 >  {
-> diff --git a/stubs/pci-host-piix.c b/stubs/pci-host-piix.c
-> deleted file mode 100644
-> index 6ed81b1f21..0000000000
-> --- a/stubs/pci-host-piix.c
-> +++ /dev/null
-> @@ -1,6 +0,0 @@
-> -#include "qemu/osdep.h"
-> -#include "hw/i386/pc.h"
-> -PCIBus *find_i440fx(void)
-> -{
-> -    return NULL;
-> -}
-> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
-> index 5dd0aeeec6..725f78bedc 100644
-> --- a/stubs/Makefile.objs
-> +++ b/stubs/Makefile.objs
-> @@ -41,6 +41,5 @@ stub-obj-y +=3D pc_madt_cpu_entry.o
->  stub-obj-y +=3D vmgenid.o
->  stub-obj-y +=3D xen-common.o
->  stub-obj-y +=3D xen-hvm.o
-> -stub-obj-y +=3D pci-host-piix.o
->  stub-obj-y +=3D ram-block.o
->  stub-obj-y +=3D ramfb.o
+>      DeviceState *dev;
+>      PCIBus *b;
+> @@ -442,7 +442,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+>  
+>      i440fx_update_memory_mappings(f);
+>  
+> -    return b;
+> +    return s;
+>  }
+>  
+>  /* PIIX3 PCI to ISA bridge */
 

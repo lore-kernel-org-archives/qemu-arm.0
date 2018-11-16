@@ -1,133 +1,84 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7934170wrw;
-        Thu, 15 Nov 2018 22:19:31 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dmOonBIjJJfljhQMtlRvlOYqKVI0tzvFovWsl2KrnbnSGK7ytyZ4rgG/F0gb1yGleMge4r
-X-Received: by 2002:ac8:6983:: with SMTP id o3mr9104315qtq.60.1542349171061;
-        Thu, 15 Nov 2018 22:19:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542349171; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp131797wrw;
+        Fri, 16 Nov 2018 01:08:18 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cVFAy1cN5jvVv0tY2bBCcc2Cj+aJdWEO7fBbaDuXFI4UbH2nDPxuSdptTcxk6JQ2ITIYlp
+X-Received: by 2002:ac8:32b2:: with SMTP id z47mr9199242qta.209.1542359298729;
+        Fri, 16 Nov 2018 01:08:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542359298; cv=none;
         d=google.com; s=arc-20160816;
-        b=zNKNPhIbkddx2knTiYdRLc/lxnAMHxx69fXzwpi81IrGUAqQOQXb+okVYGPk07To99
-         WqGEU5bHPlixIpoL7lr+5ORPTBx/GKZOJGMn4mIXWlRDS2DwX7x26Sxbj6Rcvqpvtb1f
-         zwqWBcO1J8oX+1fDRtWEv8lfKcccbPw8mHbDdmwli6tFfv1An3AC8yB8fVQ4W9RQuqTa
-         F1nrHy78/pxqzgIblEtPMVYFcI5HqwLcJcNec47ql2Kj3QioCyqJOVzyfL81c2dW8A9B
-         mioJNaQHzM9xuLMINNKz+6JUaqUXyUev5jMZJNitrDyvIV3OtsGc58cxQHU2TsDQYw6a
-         esmw==
+        b=cNYzZhmV3ZkFYEDUcRMfuzc9ada3Gvz50sKHKOzJEfALDj3Mg5p+3FfPx439xPzhLL
+         YwL29l8rksHaro3e16S2CpwF87CuYQCtrEHKv/pWcUPKs0rHqkjbgohEaHfpJuNE6GXj
+         anDv4AZ/78mg9+bgont1/iRbX+5MeOssMN0kXGngJ72lxgx9jD5S2PjIqHoF0CsglyZa
+         8p/XrHfy/NRRpkVdCVG+Hc3q7Mw4XtQu44QFq/Jd1oGBU5x+puI++j33yiDbWn3DG8mL
+         qjXkPUkJL+nHl7PX4LkdYrQadjKzY77vgV2tlxZY0gc3a0Ss8Lu2/733sRw4l+ZPZTqW
+         1lJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=A8W5FSUc4uvqu3Ax2Gyz7PXumNGTV/K1LJR5j8IlG2Y=;
-        b=N0q7Z+geQDD3GZ9MbNKuK8iDSkz3fxD1Unu4X7K856PkneknB/Sp6z2DgiCbolTK+X
-         Xszh3cxs7W8cNGHKWIS9SZBlpKPDIvpWmz6B/90yT8GRJ9eOf6tAXOAamGI7qzdXQtk9
-         Y6sTVbzoNKyOIfCyIzsPXVWIix8De+sHN+zFX3gebCG1pb4Fba1brm5TIjGlpntGdQ66
-         GuYbcs+tgNjVxv77jn2agE2i6+qZJDYk2veP6gkjF56vM7kMuOIedrEWZ/pxc8JmEIPW
-         F6AkebBWfiiTTi/pTOR2S8Y8i+obHpLrdzFuRcSDubzYcqud3hJgZNxryvtTZeSD15Gs
-         ZCXg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=xZI4vCOztVkMvbtdFc1O2WaS4HwNRrNV+m4sf9TK6xk=;
+        b=p7pjltFOeSANPz86nT3yuJAB95wXPcdvdsfe53kPTjua4+mohAxlCI8/sc0L007yFN
+         iq308jzhSJpBB9Xap9P38Rnaoy+1qPYbDk2MItc3A1/ljuVRCIS2jTMLv2xrj6bSJBDD
+         z3AkJFuMkl2sUcIdtnfIaTd530J+2AgsH3suKOZJ4A485W0zMwJBjpXHiHPwNUYAZeRI
+         uzdHC+N73qGl2bVXFMt0VgeFZRG586432pfpKyQF1cTzyhBQX83UMCX9NfBWXx79d9Fs
+         bDNgqbB5P1YF/exoJR+WVR3VQUevu/wfFpgajg1cGKvMxEF58JtU4/EVCZ7vSR5sVvDt
+         vLAw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w4si2487563qtn.346.2018.11.15.22.19.30
+        by mx.google.com with ESMTPS id k3si5681947qvh.178.2018.11.16.01.08.18
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Nov 2018 22:19:31 -0800 (PST)
+        Fri, 16 Nov 2018 01:08:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42334 helo=lists.gnu.org)
+Received: from localhost ([::1]:43144 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNXTW-0006zU-Gh
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 01:19:30 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59719)
+	id 1gNa6s-0001d0-30
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 04:08:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54147)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gNXTM-0006zO-O8
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 01:19:21 -0500
+	(envelope-from <drjones@redhat.com>) id 1gNa6i-0001ct-PH
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:08:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gNXTI-0003gV-W3
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 01:19:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55982)
+	(envelope-from <drjones@redhat.com>) id 1gNa6c-0000pM-Si
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:08:08 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52186)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gNXTH-0003fG-6X; Fri, 16 Nov 2018 01:19:16 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	(Exim 4.71) (envelope-from <drjones@redhat.com>)
+	id 1gNa6Z-0000ln-4h; Fri, 16 Nov 2018 04:08:00 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8DA0458E25;
-	Fri, 16 Nov 2018 06:19:13 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-131.ams2.redhat.com [10.36.116.131])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8301F26FC7;
-	Fri, 16 Nov 2018 06:19:11 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20181115143535.5885-1-peter.maydell@linaro.org>
-	<20181115143535.5885-3-peter.maydell@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <fe946842-bd54-2db9-c064-44d551c52a2f@redhat.com>
-Date: Fri, 16 Nov 2018 07:19:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	by mx1.redhat.com (Postfix) with ESMTPS id 4DBCB81F13;
+	Fri, 16 Nov 2018 09:07:57 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C5C7A5DE00;
+	Fri, 16 Nov 2018 09:07:53 +0000 (UTC)
+Date: Fri, 16 Nov 2018 10:07:51 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: peng.hao2@zte.com.cn
+Message-ID: <20181116090751.272tyagevqwvosy6@kamzik.brq.redhat.com>
+References: <20181115141003.r6imovu25ymatm4w@kamzik.brq.redhat.com>
+	<201811160945428164241@zte.com.cn>
 MIME-Version: 1.0
-In-Reply-To: <20181115143535.5885-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <201811160945428164241@zte.com.cn>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 16 Nov 2018 06:19:13 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Fri, 16 Nov 2018 09:07:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-3.1 2/2] hw/block/onenand: use
- qemu_log_mask() for reporting
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V6 5/6] hw/arm/virt: add pvpanic
+ device invirt acpi table
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -139,22 +90,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>, patches@linaro.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /I7aoxjXPfGu
+X-TUID: AFmw0kQzg5/J
 
-On 2018-11-15 15:35, Peter Maydell wrote:
-> Update the onenand device to use qemu_log_mask() for reporting
-> guest errors and unimplemented features, rather than plain
-> fprintf() and hw_error().
+On Fri, Nov 16, 2018 at 09:45:42AM +0800, peng.hao2@zte.com.cn wrote:
+> >> add pvpanic device in virt acpi table, so when kenrel command line uses
+> >> acpi=force, kernel can get info from acpi table in aarch64.
 > 
-> (We leave the hw_error() in onenand_reset(), as that is
-> triggered by a failure to read the underlying block device
-> for the bootRAM, not by guest action.)
+> [...]
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/block/onenand.c | 22 +++++++++++++---------
->  1 file changed, 13 insertions(+), 9 deletions(-)
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+> >>
+> >> +static void acpi_dsdt_add_pvpanic(Aml *scope, const MemMapEntry *pvpanic_memmap)
+> >> +{
+> >> +    Aml *dev = aml_device("PANC");
+> >
+> >Shouldn't this be "PEVT" ("panic event"), like it is for x86?
+> >
+> yeah, I will change it.
+> >> +    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0001")));
+> >> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> >
+> >Why add _UID? Also, I see x86 had some issues with not having _STA and
+> >then having a _STA without the UI flag. It now has _STA=0xf
+> >(PRESENT|ENABLED|UI|FUNCTIONING). I'm not saying we need to do that to,
+> >but I'd like to know if it was considered and decided we don't need to.
+> >
+> The way the kernel code processes _STA is that if _STA is not found, the default 
+> setting is (PRESENT|ENABLED|UI|FUNCTIONING). So I think it is not necessary
+>  to add it. It is only parsed in the pvpanic driver. 
+
+Good enough for me.
+
+> for _UID, I think it is used for device index. I just fill it with 0 because there is 
+> only one pvpanic device.
+
+OK, but I'm still not sure it's necessary.
+
+> 
+> by the way, How to get the value of ACPI conveniently? how dou you get the 
+> value of _STA?
+
+Not sure what you mean here. From where do you want to check the value?
+If you mean from guest userspace, then there's nothing convenient that I
+know of. You'll have to disassemble the tables you extract from sysfs,
+afaik.
+
+Thanks,
+drew
+
+> 
+> Thanks.
+> >> +
+> >> +    Aml *crs = aml_resource_template();
+> >> +    aml_append(crs, aml_memory32_fixed(pvpanic_memmap->base,
+> >> +                                       pvpanic_memmap->size, AML_READ_WRITE));
+> >> +
+> >> +    aml_append(dev, aml_name_decl("_CRS", crs));
+> >> +
+> >> +    aml_append(scope, dev);
+> >> +}
+> >> +
+> >>  static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+> >>                                             uint32_t uart_irq)
+> >>  {
+> >> @@ -770,6 +785,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
+> >>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+> >>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+> >> +    acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
+> >>      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+> >>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+> >>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+> >> --
+> >> 1.8.3.1
+> >>
+> >>
+> >
+> >Thanks,
+> >drew

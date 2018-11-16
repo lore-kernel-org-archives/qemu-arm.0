@@ -1,163 +1,218 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp599412wrw;
-        Fri, 16 Nov 2018 08:40:35 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fO9321vT0e2q8s3ooh2vjEZnkJa3DH/+VzQCgkPFFLNLxCM+74Xvjn/GA9RUTuh1CS3H40
-X-Received: by 2002:a37:7a06:: with SMTP id v6mr10525857qkc.10.1542386434973;
-        Fri, 16 Nov 2018 08:40:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542386434; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp786589wrw;
+        Fri, 16 Nov 2018 11:43:50 -0800 (PST)
+X-Google-Smtp-Source: AJdET5crjL31EhQeh7Om1fphpOnCTyjZMzkK8BXHLud0GXsGZv2X5ifx9V8dTkSZriqtno18EscD
+X-Received: by 2002:ac8:1909:: with SMTP id t9mr11142420qtj.327.1542397429949;
+        Fri, 16 Nov 2018 11:43:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542397429; cv=none;
         d=google.com; s=arc-20160816;
-        b=qmzfUGJobyxPLZPAk4zq7187ObY6WVc/GCf1yUNNyfAZo81xCA1NdmgOoj+T/a/Lit
-         HhyL3Gxv2IzmBF7KI0XxwoLXhFmS8rqTXlAp6Jui+x0fi4BsbII5ZCdslHBOiEO2WTyp
-         A7WfXROzmpclLSEDfY2A60nV5svhvs8b6NlSDqkaHazon9CXtQcjq0ouHVAw7a02LRJB
-         jzwwxCW409qIX0f8VOqfDaEO0wiD1HS4Kg50Nq9r/rCBEXbtf/szyzcixEsfqz9vIvn6
-         mrSKPTpMbdX2GCMMgXD1JhRntd/Ugkz+xxSnNT3FDeDOAKDo6yAJOJYl0hsjhTBIJqOg
-         zecQ==
+        b=XO9Q4vnEr4w4bq5jiQOfeVXV4KKm+xvR4moxUc0C5NQwtXnKLaU0PAJvxx6LHee/sJ
+         pHSgovZEHRfWNJdlCvvJPQK+ZkDdFRsnbGwfuXeLOubxiByC5P3b1S+1bqwgbNxci5cJ
+         bHmhOP7VIN0rTypQyAxC8jVbxLT/U57KC1mTaYX3qxeVPPJ/l1Avf+fbOgcomyIvJ2ar
+         PWvyMxJI8S7mDIPznXIdMP9pkjGLThSPmWy5ve1c6ByVzSAl6aGugnRYeX66THtUFc06
+         ERUGPqXB4xzhnRjItGiGF3G9DK5c8YWS7bOtGahN/Hmh1SKymRi8uY49hgbrfDA+jxbB
+         hVvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=jvPPCsgcB3DIpYH1Vx/gn/vgG8Eyz3VriTnyjSaJ39Q=;
-        b=XgqCVXyTTJ4P63Q2DKd2H40tN1Vx5DIJfnGwfMWuZRVi1RnAcP8FLvMZgBb1l7s3La
-         J11kijwiIrvHchAb2tr948O4wiIA2BP5ZOyQzzRtECfQCegIak7jfsDWyCwh/w9Zn5iW
-         jCssKksYo7V7FdoUHvmjWB8xcu4LJboTJyGmonsy+j1svaV5CKLuf56PIgvJzb4AGGqP
-         nxUkPiMLPmdyopZnV1vIF07Yk8fIIaNJ+PxCd4970x3+7OxlHpDkrULZ7P0iMLvVrWaB
-         PL3icSkD9merXGILyhm3eHvUHQSI4t8BrbxbXurn8KhI+tlgupJQsyrplTA6NwLdP2nm
-         s2ZA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:to:from;
+        bh=COmgw+U9TLp47K06MAIRxCVwsmyo4qEH3LRmhLd2EFU=;
+        b=fGAd/u2TbzVSfN8xpm7rdiHzJlOf6Z4eYEBh8bgCV2X5i7EjCuFcPB0NDm9ppoXDXE
+         9DNmcOVZp0FTfEpG/HIBr2e5bHGfnKvlxhxgtANiEp2MEwdiFOM9Ct5bIIF5X8ldg3RT
+         ATP7OgIRpI+MQA0ZpY8F8TGjddLK+Xt31ShS1H/4ibSkDDt3l1bN1OejTxb8gVflZLJ+
+         wxAgGh4FzbkLO0yHpNq3XP4U29tjQgfekGm+X1LPeOX55D1g2b1X9FaIqq56X37R4skS
+         i/WCLAMZnp8F5jA0fK6OYf0WuRew7a/6YDjdzTJitHKUyvVCjqCy0Wci1qsqmH2/7la0
+         vNCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f4si391233qvj.221.2018.11.16.08.40.34
+        by mx.google.com with ESMTPS id 52si4102394qvr.211.2018.11.16.11.43.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 08:40:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 16 Nov 2018 11:43:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45699 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:46582 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNhAY-00083T-Ba
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 11:40:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40871)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gNk1r-00005z-Ce
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 14:43:47 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gNh8D-0006Ox-DZ
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 11:38:11 -0500
+	(envelope-from <sebastien.boeuf@intel.com>) id 1gNk0Y-0007fU-9M
+	for qemu-devel@nongnu.org; Fri, 16 Nov 2018 14:42:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gNh88-0001hw-Gi
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 11:38:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45850)
+	(envelope-from <sebastien.boeuf@intel.com>) id 1gNk0N-00061T-HM
+	for qemu-devel@nongnu.org; Fri, 16 Nov 2018 14:42:22 -0500
+Received: from mga14.intel.com ([192.55.52.115]:21242)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gNh88-0001hF-9P; Fri, 16 Nov 2018 11:38:04 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ED6A6307D86D;
-	Fri, 16 Nov 2018 16:38:01 +0000 (UTC)
-Received: from [10.36.112.60] (ovpn-112-60.ams2.redhat.com [10.36.112.60])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 80A25648A0;
-	Fri, 16 Nov 2018 16:37:56 +0000 (UTC)
-To: Igor Mammedov <imammedo@redhat.com>, Samuel Ortiz <sameo@linux.intel.com>
+	(Exim 4.71) (envelope-from <sebastien.boeuf@intel.com>)
+	id 1gNk0M-0005zL-PJ; Fri, 16 Nov 2018 14:42:15 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	16 Nov 2018 11:42:10 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,241,1539673200"; d="scan'208";a="100906996"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+	by orsmga003.jf.intel.com with ESMTP; 16 Nov 2018 11:42:10 -0800
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.106]) by
+	ORSMSX107.amr.corp.intel.com ([169.254.1.232]) with mapi id
+	14.03.0415.000; Fri, 16 Nov 2018 11:42:09 -0800
+From: "Boeuf, Sebastien" <sebastien.boeuf@intel.com>
+To: "sameo@linux.intel.com" <sameo@linux.intel.com>, "imammedo@redhat.com"
+	<imammedo@redhat.com>
+Thread-Topic: [PATCH v5 19/24] hw: acpi: Retrieve the PCI bus from
+	AcpiPciHpState
+Thread-Index: AQHUdKj2E8jcUo63ekSqtLcSonmHrKVSvTyAgACoc4A=
+Date: Fri, 16 Nov 2018 19:42:08 +0000
+Message-ID: <1542397323.18399.3.camel@intel.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
-	<20181116172919.43f3e27d@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <d4f6f0ef-1333-a917-e3eb-d9bad47c9648@redhat.com>
-Date: Fri, 16 Nov 2018 17:37:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
-MIME-Version: 1.0
-In-Reply-To: <20181116172919.43f3e27d@redhat.com>
-Content-Type: text/plain; charset=utf-8
+	<20181105014047.26447-20-sameo@linux.intel.com>
+	<20181116103909.64f35d5d@redhat.com>
+In-Reply-To: <20181116103909.64f35d5d@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Fri, 16 Nov 2018 16:38:03 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 00/24] ACPI reorganization
- for hardware-reduced API addition
-X-BeenThere: qemu-arm@nongnu.org
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.54.74.42]
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <B92904E1858E1343BC680CD9F2F58131@intel.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.115
+Subject: Re: [Qemu-devel] [PATCH v5 19/24] hw: acpi: Retrieve the PCI bus
+ from AcpiPciHpState
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
-	Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1MU9Eu36PO6/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"sstabellini@kernel.org" <sstabellini@kernel.org>,
+	"ehabkost@redhat.com" <ehabkost@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>,
+	"jing2.liu@linux.intel.com" <jing2.liu@linux.intel.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+	"anthony.perard@citrix.com" <anthony.perard@citrix.com>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"rth@twiddle.net" <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 80JXN1q0Zpoz
 
-On 16/11/18 17:29, Igor Mammedov wrote:
-> General suggestions for this series:
->   1. Preferably don't do multiple changes within a patch
->      neither post huge patches (unless it's pure code movement).
->      (it's easy to squash patches later it necessary)
->   2. Start small, pick a table generalize it and send as
->      one small patchset. Tables are often independent
->      and it's much easier on both author/reviewer to agree upon
->      changes and rewrite it if necessary.
-
-How would that be done?  This series is on the bigger side, agreed, but
-most of it is really just code movement.  It's a starting point, having
-a generic ACPI library is way beyond what this is trying to do.
-
-Paolo
-
->   3. when you think about refactoring acpi into a generic API
->      think about it as routines that go into a separate library
->      (pure acpi spec code) and qemu/acpi glue routines and
->       divide them correspondingly.
-
+SGkgSWdvciwNCg0KT24gRnJpLCAyMDE4LTExLTE2IGF0IDEwOjM5ICswMTAwLCBJZ29yIE1hbW1l
+ZG92IHdyb3RlOg0KPiBPbiBNb24swqDCoDUgTm92IDIwMTggMDI6NDA6NDIgKzAxMDANCj4gU2Ft
+dWVsIE9ydGl6IDxzYW1lb0BsaW51eC5pbnRlbC5jb20+IHdyb3RlOg0KPiANCj4gPiANCj4gPiBG
+cm9tOiBTZWJhc3RpZW4gQm9ldWYgPHNlYmFzdGllbi5ib2V1ZkBpbnRlbC5jb20+DQo+ID4gDQo+
+ID4gSW5zdGVhZCBvZiB1c2luZyB0aGUgbWFjaGluZSB0eXBlIHNwZWNpZmljIG1ldGhvZCBmaW5k
+X2k0NDBmeCgpIHRvDQo+ID4gcmV0cmlldmUgdGhlIFBDSSBidXMsIHRoaXMgY29tbWl0IGFpbXMg
+dG8gcmVseSBvbiB0aGUgZmFjdCB0aGF0IHRoZQ0KPiA+IFBDSSBidXMgaXMga25vd24gYnkgdGhl
+IHN0cnVjdHVyZSBBY3BpUGNpSHBTdGF0ZS4NCj4gPiANCj4gPiBXaGVuIHRoZSBzdHJ1Y3R1cmUg
+aXMgaW5pdGlhbGl6ZWQgdGhyb3VnaCBhY3BpX3BjaWhwX2luaXQoKSBjYWxsLA0KPiA+IGl0IHNh
+dmVzIHRoZSBQQ0kgYnVzLCB3aGljaCBtZWFucyB0aGVyZSBpcyBubyBuZWVkIHRvIGludm9rZSBh
+DQo+ID4gc3BlY2lhbCBmdW5jdGlvbiBsYXRlciBvbi4NCj4gPiANCj4gPiBCYXNlZCBvbiB0aGUg
+ZmFjdCB0aGF0IGZpbmRfaTQ0MGZ4KCkgd2FzIG9ubHkgdXNlZCB0aGVyZSwgdGhpcw0KPiA+IHBh
+dGNoIGFsc28gcmVtb3ZlcyB0aGUgZnVuY3Rpb24gZmluZF9pNDQwZngoKSBpdHNlbGYgZnJvbSB0
+aGUNCj4gPiBlbnRpcmUgY29kZWJhc2UuDQo+ID4gDQo+ID4gUmV2aWV3ZWQtYnk6IFBoaWxpcHBl
+IE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNvbT4NCj4gPiBUZXN0ZWQtYnk6IFBoaWxp
+cHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5
+OiBTZWJhc3RpZW4gQm9ldWYgPHNlYmFzdGllbi5ib2V1ZkBpbnRlbC5jb20+DQo+ID4gU2lnbmVk
+LW9mZi1ieTogSmluZyBMaXUgPGppbmcyLmxpdUBsaW51eC5pbnRlbC5jb20+DQo+IFRoYW5rcyBm
+b3IgY2xlYW5pbmcgaXQgdXANCj4gDQo+IG1pbm9yIG5pdDoNCj4gVGFraW5nIGluIGFjY291bnQg
+dGhhdCB5b3UncmUgcmVtb3ZpbmcgJy8qIFRPRE86IFEzNSBzdXBwb3J0ICovJw0KPiBjb21tZW50
+IGFsb25nIHdpdGggZmluZF9pNDQwZngoKSwgaXQgbWlnaHQgYmUgd29ydGggdG8gbWVudGlvbg0K
+PiBpbiB0aGlzIGNvbW1pdCBtZXNzYWdlLiBTb21ldGhpbmcgYWxvbmcgbGluZXMgdGhhdCBBQ1BJ
+IFBDSUhQDQo+IGV4aXN0IHRvIHN1cHBvcnQgZ3Vlc3RzIHdpdGhvdXQgU0hQQyBzdXBwb3J0IG9u
+IFBDSQ0KPiBiYXNlZCBQQyBtYWNoaW5lLiBDb25zaWRlcmluZyB0aGF0IFEzNSBwcm92aWRlcyBu
+YXRpdmUNCj4gUENJLUUgaG90cGx1ZywgdGhlcmUgaXMgbm8gbmVlZCB0byBhZGQgQUNQSSBob3Rw
+bHVnIHRoZXJlLg0KDQpPaCB5ZXMgc3VyZSB3ZSBjYW4gdXBkYXRlIHRoZSBjb21taXQgbWVzc2Fn
+ZSA6KS4gQnV0IGp1c3Qgd2FudGVkIHRvDQptZW50aW9uIHRoYXQgJ3BjJyBtYWNoaW5lIHR5cGUg
+dXNlcyBBQ1BJIFBDSUhQIGFuZCBkb2VzIHN1cHBvcnQNClNIUEMsIHNvIGl0J3Mgbm90IG11dHVh
+bGx5IGV4Y2x1c2l2ZS4NCg0KPiANCj4gDQo+IHdpdGggY29tbWl0IG1lc3NhZ2UgZml4ZWQNCj4g
+DQo+IFJldmlld2VkLWJ5OiBJZ29yIE1hbW1lZG92IDxpbWFtbWVkb0ByZWRoYXQuY29tPg0KPiAN
+Cj4gPiANCj4gPiAtLS0NCj4gPiDCoGluY2x1ZGUvaHcvaTM4Ni9wYy5owqDCoHzCoMKgMSAtDQo+
+ID4gwqBody9hY3BpL3BjaWhwLmPCoMKgwqDCoMKgwqDCoHwgMTAgKysrKy0tLS0tLQ0KPiA+IMKg
+aHcvcGNpLWhvc3QvcGlpeC5jwqDCoMKgwqB8wqDCoDggLS0tLS0tLS0NCj4gPiDCoHN0dWJzL3Bj
+aS1ob3N0LXBpaXguYyB8wqDCoDYgLS0tLS0tDQo+ID4gwqBzdHVicy9NYWtlZmlsZS5vYmpzwqDC
+oMKgfMKgwqAxIC0NCj4gPiDCoDUgZmlsZXMgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAyMiBk
+ZWxldGlvbnMoLSkNCj4gPiDCoGRlbGV0ZSBtb2RlIDEwMDY0NCBzdHVicy9wY2ktaG9zdC1waWl4
+LmMNCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9ody9pMzg2L3BjLmggYi9pbmNsdWRl
+L2h3L2kzODYvcGMuaA0KPiA+IGluZGV4IDQ0Y2I2YmYzZjMuLjhlNWYxNDY0ZWIgMTAwNjQ0DQo+
+ID4gLS0tIGEvaW5jbHVkZS9ody9pMzg2L3BjLmgNCj4gPiArKysgYi9pbmNsdWRlL2h3L2kzODYv
+cGMuaA0KPiA+IEBAIC0yNTUsNyArMjU1LDYgQEAgUENJQnVzICppNDQwZnhfaW5pdChjb25zdCBj
+aGFyICpob3N0X3R5cGUsDQo+ID4gY29uc3QgY2hhciAqcGNpX3R5cGUsDQo+ID4gwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgTWVtb3J5UmVnaW9uICpwY2lfbWVtb3J5
+LA0KPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoE1lbW9yeVJl
+Z2lvbiAqcmFtX21lbW9yeSk7DQo+ID4gwqANCj4gPiAtUENJQnVzICpmaW5kX2k0NDBmeCh2b2lk
+KTsNCj4gPiDCoC8qIHBpaXg0LmMgKi8NCj4gPiDCoGV4dGVybiBQQ0lEZXZpY2UgKnBpaXg0X2Rl
+djsNCj4gPiDCoGludCBwaWl4NF9pbml0KFBDSUJ1cyAqYnVzLCBJU0FCdXMgKippc2FfYnVzLCBp
+bnQgZGV2Zm4pOw0KPiA+IGRpZmYgLS1naXQgYS9ody9hY3BpL3BjaWhwLmMgYi9ody9hY3BpL3Bj
+aWhwLmMNCj4gPiBpbmRleCA4MGQ0MmUxMmZmLi4yNTRiMmU1MGFiIDEwMDY0NA0KPiA+IC0tLSBh
+L2h3L2FjcGkvcGNpaHAuYw0KPiA+ICsrKyBiL2h3L2FjcGkvcGNpaHAuYw0KPiA+IEBAIC05Mywx
+MCArOTMsOSBAQCBzdGF0aWMgdm9pZCAqYWNwaV9zZXRfYnNlbChQQ0lCdXMgKmJ1cywgdm9pZA0K
+PiA+ICpvcGFxdWUpDQo+ID4gwqDCoMKgwqDCoHJldHVybiBic2VsX2FsbG9jOw0KPiA+IMKgfQ0K
+PiA+IMKgDQo+ID4gLXN0YXRpYyB2b2lkIGFjcGlfc2V0X3BjaV9pbmZvKHZvaWQpDQo+ID4gK3N0
+YXRpYyB2b2lkIGFjcGlfc2V0X3BjaV9pbmZvKEFjcGlQY2lIcFN0YXRlICpzKQ0KPiA+IMKgew0K
+PiA+IMKgwqDCoMKgwqBzdGF0aWMgYm9vbCBic2VsX2lzX3NldDsNCj4gPiAtwqDCoMKgwqBQQ0lC
+dXMgKmJ1czsNCj4gPiDCoMKgwqDCoMKgdW5zaWduZWQgYnNlbF9hbGxvYyA9IEFDUElfUENJSFBf
+QlNFTF9ERUZBVUxUOw0KPiA+IMKgDQo+ID4gwqDCoMKgwqDCoGlmIChic2VsX2lzX3NldCkgew0K
+PiA+IEBAIC0xMDQsMTAgKzEwMyw5IEBAIHN0YXRpYyB2b2lkIGFjcGlfc2V0X3BjaV9pbmZvKHZv
+aWQpDQo+ID4gwqDCoMKgwqDCoH0NCj4gPiDCoMKgwqDCoMKgYnNlbF9pc19zZXQgPSB0cnVlOw0K
+PiA+IMKgDQo+ID4gLcKgwqDCoMKgYnVzID0gZmluZF9pNDQwZngoKTsgLyogVE9ETzogUTM1IHN1
+cHBvcnQgKi8NCj4gPiAtwqDCoMKgwqBpZiAoYnVzKSB7DQo+ID4gK8KgwqDCoMKgaWYgKHMtPnJv
+b3QpIHsNCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqAvKiBTY2FuIGFsbCBQQ0kgYnVzZXMuIFNldCBw
+cm9wZXJ0eSB0byBlbmFibGUgYWNwaSBiYXNlZA0KPiA+IGhvdHBsdWcuICovDQo+ID4gLcKgwqDC
+oMKgwqDCoMKgwqBwY2lfZm9yX2VhY2hfYnVzX2RlcHRoX2ZpcnN0KGJ1cywgYWNwaV9zZXRfYnNl
+bCwgTlVMTCwNCj4gPiAmYnNlbF9hbGxvYyk7DQo+ID4gK8KgwqDCoMKgwqDCoMKgwqBwY2lfZm9y
+X2VhY2hfYnVzX2RlcHRoX2ZpcnN0KHMtPnJvb3QsIGFjcGlfc2V0X2JzZWwsIE5VTEwsDQo+ID4g
+JmJzZWxfYWxsb2MpOw0KPiA+IMKgwqDCoMKgwqB9DQo+ID4gwqB9DQo+ID4gwqANCj4gPiBAQCAt
+MjEzLDcgKzIxMSw3IEBAIHN0YXRpYyB2b2lkIGFjcGlfcGNpaHBfdXBkYXRlKEFjcGlQY2lIcFN0
+YXRlDQo+ID4gKnMpDQo+ID4gwqANCj4gPiDCoHZvaWQgYWNwaV9wY2locF9yZXNldChBY3BpUGNp
+SHBTdGF0ZSAqcykNCj4gPiDCoHsNCj4gPiAtwqDCoMKgwqBhY3BpX3NldF9wY2lfaW5mbygpOw0K
+PiA+ICvCoMKgwqDCoGFjcGlfc2V0X3BjaV9pbmZvKHMpOw0KPiA+IMKgwqDCoMKgwqBhY3BpX3Bj
+aWhwX3VwZGF0ZShzKTsNCj4gPiDCoH0NCj4gPiDCoA0KPiA+IGRpZmYgLS1naXQgYS9ody9wY2kt
+aG9zdC9waWl4LmMgYi9ody9wY2ktaG9zdC9waWl4LmMNCj4gPiBpbmRleCA0NzI5M2EzOTE1Li42
+NTg0NjAyNjRiIDEwMDY0NA0KPiA+IC0tLSBhL2h3L3BjaS1ob3N0L3BpaXguYw0KPiA+ICsrKyBi
+L2h3L3BjaS1ob3N0L3BpaXguYw0KPiA+IEBAIC00NDUsMTQgKzQ0NSw2IEBAIFBDSUJ1cyAqaTQ0
+MGZ4X2luaXQoY29uc3QgY2hhciAqaG9zdF90eXBlLA0KPiA+IGNvbnN0IGNoYXIgKnBjaV90eXBl
+LA0KPiA+IMKgwqDCoMKgwqByZXR1cm4gYjsNCj4gPiDCoH0NCj4gPiDCoA0KPiA+IC1QQ0lCdXMg
+KmZpbmRfaTQ0MGZ4KHZvaWQpDQo+ID4gLXsNCj4gPiAtwqDCoMKgwqBQQ0lIb3N0U3RhdGUgKnMg
+PSBPQkpFQ1RfQ0hFQ0soUENJSG9zdFN0YXRlLA0KPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgb2JqZWN0X3Jl
+c29sdmVfcGF0aCgiL21hY2hpbmUvaQ0KPiA+IDQ0MGZ4IiwgTlVMTCksDQo+ID4gLcKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqBUWVBFX1BDSV9IT1NUX0JSSURHRSk7DQo+ID4gLcKgwqDCoMKgcmV0dXJuIHMgPyBzLT5i
+dXMgOiBOVUxMOw0KPiA+IC19DQo+ID4gLQ0KPiA+IMKgLyogUElJWDMgUENJIHRvIElTQSBicmlk
+Z2UgKi8NCj4gPiDCoHN0YXRpYyB2b2lkIHBpaXgzX3NldF9pcnFfcGljKFBJSVgzU3RhdGUgKnBp
+aXgzLCBpbnQgcGljX2lycSkNCj4gPiDCoHsNCj4gPiBkaWZmIC0tZ2l0IGEvc3R1YnMvcGNpLWhv
+c3QtcGlpeC5jIGIvc3R1YnMvcGNpLWhvc3QtcGlpeC5jDQo+ID4gZGVsZXRlZCBmaWxlIG1vZGUg
+MTAwNjQ0DQo+ID4gaW5kZXggNmVkODFiMWYyMS4uMDAwMDAwMDAwMA0KPiA+IC0tLSBhL3N0dWJz
+L3BjaS1ob3N0LXBpaXguYw0KPiA+ICsrKyAvZGV2L251bGwNCj4gPiBAQCAtMSw2ICswLDAgQEAN
+Cj4gPiAtI2luY2x1ZGUgInFlbXUvb3NkZXAuaCINCj4gPiAtI2luY2x1ZGUgImh3L2kzODYvcGMu
+aCINCj4gPiAtUENJQnVzICpmaW5kX2k0NDBmeCh2b2lkKQ0KPiA+IC17DQo+ID4gLcKgwqDCoMKg
+cmV0dXJuIE5VTEw7DQo+ID4gLX0NCj4gPiBkaWZmIC0tZ2l0IGEvc3R1YnMvTWFrZWZpbGUub2Jq
+cyBiL3N0dWJzL01ha2VmaWxlLm9ianMNCj4gPiBpbmRleCA1ZGQwYWVlZWM2Li43MjVmNzhiZWRj
+IDEwMDY0NA0KPiA+IC0tLSBhL3N0dWJzL01ha2VmaWxlLm9ianMNCj4gPiArKysgYi9zdHVicy9N
+YWtlZmlsZS5vYmpzDQo+ID4gQEAgLTQxLDYgKzQxLDUgQEAgc3R1Yi1vYmoteSArPSBwY19tYWR0
+X2NwdV9lbnRyeS5vDQo+ID4gwqBzdHViLW9iai15ICs9IHZtZ2VuaWQubw0KPiA+IMKgc3R1Yi1v
+YmoteSArPSB4ZW4tY29tbW9uLm8NCj4gPiDCoHN0dWItb2JqLXkgKz0geGVuLWh2bS5vDQo+ID4g
+LXN0dWItb2JqLXkgKz0gcGNpLWhvc3QtcGlpeC5vDQo+ID4gwqBzdHViLW9iai15ICs9IHJhbS1i
+bG9jay5vDQo+ID4gwqBzdHViLW9iai15ICs9IHJhbWZiLm8NCg0KVGhhbmtzLA0KU2ViYXN0aWVu

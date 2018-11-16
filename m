@@ -1,82 +1,85 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7766434wrw;
-        Thu, 15 Nov 2018 18:28:13 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dVu+BAY0hZCPqbP15gUaCZRTbhKdFP6vaAz51r7s4+XTNuztQWfzhaMoGtwq8e4z1bis/Y
-X-Received: by 2002:a37:7d05:: with SMTP id y5mr8066168qkc.310.1542335293416;
-        Thu, 15 Nov 2018 18:28:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542335293; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp7766520wrw;
+        Thu, 15 Nov 2018 18:28:21 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dYafQM8O7adavRzQjPopjO1K0GimomYKb1n3/1kycj7IsCwiC6p76lzd69NYkbBGwD7biC
+X-Received: by 2002:a0c:a4a3:: with SMTP id x32mr8538287qvx.89.1542335301099;
+        Thu, 15 Nov 2018 18:28:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542335301; cv=none;
         d=google.com; s=arc-20160816;
-        b=BzakgFeuJ19lHZrLMtCrvUd4HvhCHm/I00Vhvp6JoHSSunCIKzgVdnYUjVJvGFzYoA
-         WU1bKrj0d4pI1b6XuCgFMlWHtHDNoU79M8E7s9tI/5nEIlFTZdrgxB2tsgs25Udz2hR+
-         wAQnHFM4bUBt4ZrvsFB1UyMcFh0C3a2qDtKtxi9lnOSEVn3d6moikrblcI+88ricELjG
-         4fm7kquIAgYXl0jhd3g3LYmjnjliu+ALvyXFAgOLXy9aQvHN9+1p38aaC/35obVHxWWl
-         Mq0CaxTXoUg5AB199n4QeLFLl5YdCX388hGNxp7ch8C8WJ8dv5NyqgAXcNCY12iLjLFd
-         LZdg==
+        b=hnV10aHbOCKnjPTBETCqaDtOdwCrQ/pvr8pHUZ+E3HVIR4gAHcULM/iEb7U6TKgjhe
+         uRBJ9dk7DqHBSaHUCfRL0Br5ermj4/jW9fvbVMJwEv6V22vRTlhVOv8UYWr3CyNsr434
+         Fkjsk5hWdYFK9MWf6d54t93gn9I/O20CaUY8Thm+H0H9lh6JFhw5y3Gefj8skx6T8eiu
+         XQ6dqP+eqbPTcKDbGiqjrb01mgp1DrxWG8tSFsqJAcAvvAq3Rsu0d5lARU7k736fWeHp
+         /uja3zvofoQTP/VqA4jLW/SDcJWfAIL1DduQSNpIVvTYrPV6Hh7RSGRCpwcanySiI7w6
+         TRPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=4wdsh89OLwmoorLw+ZJOLwsbNylad8xYFvlaMPxI4B8=;
-        b=Th85SFK622Hubg5Cph5mCIAd1dvr6CUqNWhAVlBvNS6abGUtGOGA3FhXeS0t98/nLS
-         +vf85AKWziRp1G7R58CjQBT/TVjoO8dpUIZ0OBHHF75t4YPOVCAaBhalLYGHY7X16qjo
-         RlwC5CkjHi9ZgnGGGKiBnI6MwxgXXvhc1RGDhnv7JA7encBo76uEXMVQ9M9OV+svg57l
-         GNcHFSrq/H88zhGquu/vKgjTa2J6FbCrV4NF6qaMEHnU/hqMXOuVpLySXuGaJnMAmjJn
-         q1ZZdQv+hbAiv6ple/D9hw2KuyRsbUeGV0jgz9w27E+BqwrxJqwe9he2K6Tcq9E/QVtN
-         1ayw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=3niWLmtCe5PBDs5AYXQ/5gqXixIIHJUS3EeLDOM9Eow=;
+        b=VhglJxRMu7CgFKci970CpI/80pWM1vhpEC3fatIfFWwzp9jDJ99oVVxxV+DVKzZy+H
+         itTRA8Dcnylkr5DDiN4nK3Op9jY2ayiJ0ey6CK1pFVQehlUmVvZ6fX5KBK4NOLper9rx
+         biMxQhFtvmY3JnoHiyS5ChstIGDabMPjrm1hjF9nXwf/z0yj7GG0NxBawY0yDO7sceXq
+         2N/K1AA3zyH6uNBlZmDNyv90ABq6LMX3QyMo2B2rr0rVTuM2RN8CuQ3WQBq94EubjW4d
+         Qr7NvkFcZYgRHF2af36lPPzS7W9Npb2TJOrxUxskHoWofO3FpA6tqhq3wzC0mJF3QCOo
+         YhFg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n2si7995414qvp.28.2018.11.15.18.28.13
+        by mx.google.com with ESMTPS id c73si5643536qke.177.2018.11.15.18.28.20
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 15 Nov 2018 18:28:13 -0800 (PST)
+        Thu, 15 Nov 2018 18:28:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41795 helo=lists.gnu.org)
+Received: from localhost ([::1]:41796 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNTrg-00037C-T0
-	for alex.bennee@linaro.org; Thu, 15 Nov 2018 21:28:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42657)
+	id 1gNTro-00039R-Cj
+	for alex.bennee@linaro.org; Thu, 15 Nov 2018 21:28:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42674)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gNTrS-00036f-5z
-	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 21:28:02 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gNTrU-00036h-T0
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 21:28:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gNTrN-0007Wl-0C
-	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 21:27:58 -0500
-Received: from mxhk.zte.com.cn ([63.217.80.70]:16720)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gNTrQ-0007iD-JS
+	for qemu-arm@nongnu.org; Thu, 15 Nov 2018 21:28:00 -0500
+Received: from out1.zte.com.cn ([202.103.147.172]:34810 helo=mxct.zte.com.cn)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gNTrM-0007OD-Lj; Thu, 15 Nov 2018 21:27:52 -0500
+	id 1gNTrQ-0007Zx-8U; Thu, 15 Nov 2018 21:27:56 -0500
 Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id 3C7D284F80ED1F3E2EB7;
-	Fri, 16 Nov 2018 10:27:48 +0800 (CST)
+	by Forcepoint Email with ESMTPS id E41A18A74E207497601F;
+	Fri, 16 Nov 2018 10:27:53 +0800 (CST)
 Received: from notes_smtp.zte.com.cn ([10.30.1.239])
-	by mse01.zte.com.cn with ESMTP id wAG2Rgih028482;
-	Fri, 16 Nov 2018 10:27:42 +0800 (GMT-8)
+	by mse01.zte.com.cn with ESMTP id wAG2RlZg028648;
+	Fri, 16 Nov 2018 10:27:47 +0800 (GMT-8)
 	(envelope-from peng.hao2@zte.com.cn)
 Received: from localhost.localdomain.localdomain ([10.74.120.59])
 	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
-	with ESMTP id 2018111610281800-11036236 ;
-	Fri, 16 Nov 2018 10:28:18 +0800 
+	with ESMTP id 2018111610282292-11036267 ;
+	Fri, 16 Nov 2018 10:28:22 +0800 
 From: Peng Hao <peng.hao2@zte.com.cn>
 To: peter.maydell@linaro.org, drjones@redhat.com, philmd@redhat.com
-Date: Fri, 16 Nov 2018 18:50:00 +0800
-Message-Id: <1542365406-81310-1-git-send-email-peng.hao2@zte.com.cn>
+Date: Fri, 16 Nov 2018 18:50:03 +0800
+Message-Id: <1542365406-81310-4-git-send-email-peng.hao2@zte.com.cn>
 X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1542365406-81310-1-git-send-email-peng.hao2@zte.com.cn>
+References: <1542365406-81310-1-git-send-email-peng.hao2@zte.com.cn>
 MIME-Version: 1.0
 X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
-	8.5.3FP6|November 21, 2013) at 2018-11-16 10:28:18,
+	8.5.3FP6|November 21, 2013) at 2018-11-16 10:28:22,
 	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
-	2016) at 2018-11-16 10:27:26
+	2016) at 2018-11-16 10:27:31
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-MAIL: mse01.zte.com.cn wAG2Rgih028482
+X-MAIL: mse01.zte.com.cn wAG2RlZg028648
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 63.217.80.70
-Subject: [Qemu-arm] [PATCH V7 0/5]  add pvpanic mmio support
+X-Received-From: 202.103.147.172
+Subject: [Qemu-arm] [PATCH V7 3/6] hw/misc/pvpanic: Add the MMIO interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,80 +94,197 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w+R8JDsE2Wgm
+X-TUID: XVhg81+25/fk
 
-The first patches are simple cleanups:
-- patch 1 move the pvpanic device with the 'ocmmon objects' so we compile
-  it once for the x86/arm/aarch64 archs,
-- patch 2 simply renames ISA fields/definitions to generic ones.
+Add pvpanic new type "TYPE=5FPVPANIC=5FMMIO"
 
-Then instead of add/use the MMIO pvpanic device in the virt machine in an
-unique patch, I split it in two distinct patches:
-- patch 3 uses Peng Hao's work, but add the MMIO interface to the existing
-  device (no logical change).
-- patch 4 is Peng Hao's work in the virt machine (no logical change).
-- patch 5 add pvpanic device in acpi table in virt machine
-v2 from Peng Hao is:
-https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03433.html
-
-v3 --> v4
-  patch 1,2 no modification.
-  patch 3, add TYPE=5FPANIC=5FMMIO for distinguishing different bus device,
-           virt + isa=5Fpvpanic will abnormally terminate virtual machine. =
-
-  patch 4, "pvpanic,mmio" --> "qemu,pvpanic-mmio".
-  patch 5, newly added.
-
-v4 --> v5
-  patch 1,2 no modification.
-  patch 3 delete PvpanicCommonState structure.
-  patch 4 VIRT=5FPVPANIC=5FMMIO --> VIRT=5FPVPANIC
-          correct VIRT=5FPVPANIC's overlap start address
-  patch 5 no modification.
-
-v5 --> v6
-  add document.
-
-v6 --> v7
-  patch 5 modify device name from "PANC" to "PEVT".
-  patch 6 modify document description.
- =20
-the kernel part of the series:
-https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/char-misc.git/log/?h=
-=3Dchar-misc-testing
-misc/pvpanic: remove a redundant comma=20
-misc/pvpanic: convert to SPDX license tags=20
-misc/pvpanic: change header file sort style=20
-misc/pvpanic: remove unnecessary header file =20
-misc/pvpanic : break dependency on ACPI=20
-misc/pvpanic : grouping ACPI related stuff =20
-misc/pvpanic: add support to get pvpanic device info FDT =20
-dt-bindings: misc/pvpanic: add document for pvpanic-mmio =20
-misc/pvpanic: add MMIO support =20
-misc/pvpanic: simplify the code using acpi=5Fdev=5Fresource=5Fio =20
-pvpanic: move pvpanic to misc as common driver=20
-
-Philippe Mathieu-Daud=C3=A9 (2):
-  hw/misc/pvpanic: Build the pvpanic device in $(common-obj)
-  hw/misc/pvpanic: Cosmetic renaming
-
-Peng Hao (3):
-  hw/misc/pvpanic: Add the MMIO interface
-  hw/arm/virt: Use the pvpanic device
-  hw/arm/virt: add pvpanic device in virt acpi table
-  pvpanic : update pvpanic document
-
- default-configs/aarch64-softmmu.mak |  1 +
- hw/arm/virt-acpi-build.c            | 16 ++++++++
- hw/arm/virt.c                       | 21 ++++++++++
- hw/misc/Makefile.objs               |  2 +-
- hw/misc/pvpanic.c                   | 78 ++++++++++++++++++++++++++++++---=
+Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/misc/pvpanic.c         | 81 +++++++++++++++++++++++++++++++++++++------=
 ----
- include/hw/arm/virt.h               |  1 +
- include/hw/misc/pvpanic.h           |  2 +
- docs/specs/pvpanic.txt              | 13 ++++++++++++-
- 8 files changed, 118 insertions(+), 17 deletions(-)
+ include/hw/misc/pvpanic.h |  1 +
+ 2 files changed, 65 insertions(+), 17 deletions(-)
 
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index dd3aef2..5d0fbc6 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -2,10 +2,12 @@
+  * QEMU simulated pvpanic device.
+  *
+  * Copyright Fujitsu, Corp. 2013
++ * Copyright (c) 2018 ZTE Ltd.
+  *
+  * Authors:
+  *     Wen Congyang <wency@cn.fujitsu.com>
+  *     Hu Tao <hutao@cn.fujitsu.com>
++ *     Peng Hao <peng.hao2@zte.com.cn>
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or late=
+r.
+  * See the COPYING file in the top-level directory.
+@@ -25,9 +27,6 @@
+ /* The pv event value */
+ #define PVPANIC=5FPANICKED        (1 << PVPANIC=5FF=5FPANICKED)
+=20
+-#define PVPANIC(obj)    \
+-    OBJECT=5FCHECK(PVPanicState, (obj), TYPE=5FPVPANIC)
+-
+ static void handle=5Fevent(int event)
+ {
+     static bool logged;
+@@ -45,30 +44,50 @@ static void handle=5Fevent(int event)
+=20
+ #include "hw/isa/isa.h"
+=20
+-typedef struct PVPanicState {
+-    /* private */
+-    ISADevice isadev;
++/* PVPanicISAState for ISA device and
++ * use ioport.
++ */
++typedef struct PVPanicISAState {
++     /* private */
++     ISADevice isadev;
++     uint16=5Ft ioport;
+=20
+     /* public */
+     MemoryRegion mr;
+-    uint16=5Ft ioport;
+-} PVPanicState;
++} PVPanicISAState;
++
++/* PVPanicMMIOState for sysbus device and
++ * use mmio.
++ */
++typedef struct PVPanicMMIOState {
++    /* private */
++    SysBusDevice busdev;
++
++     /* public */
++    MemoryRegion mr;
++} PVPanicMMIOState;
++
++#define PVPANIC=5FISA(obj)    \
++    OBJECT=5FCHECK(PVPanicISAState, (obj), TYPE=5FPVPANIC)
++
++#define PVPANIC=5FMMIO(obj)    \
++    OBJECT=5FCHECK(PVPanicMMIOState, (obj), TYPE=5FPVPANIC=5FMMIO)
+=20
+ /* return supported events on read */
+-static uint64=5Ft pvpanic=5Fioport=5Fread(void *opaque, hwaddr addr, unsig=
+ned size)
++static uint64=5Ft pvpanic=5Fread(void *opaque, hwaddr addr, unsigned size)
+ {
+     return PVPANIC=5FPANICKED;
+ }
+=20
+-static void pvpanic=5Fioport=5Fwrite(void *opaque, hwaddr addr, uint64=5Ft=
+ val,
++static void pvpanic=5Fwrite(void *opaque, hwaddr addr, uint64=5Ft val,
+                                  unsigned size)
+ {
+     handle=5Fevent(val);
+ }
+=20
+ static const MemoryRegionOps pvpanic=5Fops =3D {
+-    .read =3D pvpanic=5Fioport=5Fread,
+-    .write =3D pvpanic=5Fioport=5Fwrite,
++    .read =3D pvpanic=5Fread,
++    .write =3D pvpanic=5Fwrite,
+     .impl =3D {
+         .min=5Faccess=5Fsize =3D 1,
+         .max=5Faccess=5Fsize =3D 1,
+@@ -77,15 +96,16 @@ static const MemoryRegionOps pvpanic=5Fops =3D {
+=20
+ static void pvpanic=5Fisa=5Finitfn(Object *obj)
+ {
+-    PVPanicState *s =3D PVPANIC(obj);
++    PVPanicISAState *s =3D PVPANIC=5FISA(obj);
+=20
+-    memory=5Fregion=5Finit=5Fio(&s->mr, OBJECT(s), &pvpanic=5Fops, s, "pvp=
+anic", 1);
++    memory=5Fregion=5Finit=5Fio(&s->mr, OBJECT(s), &pvpanic=5Fops, s,
++                          TYPE=5FPVPANIC, 1);
+ }
+=20
+ static void pvpanic=5Fisa=5Frealizefn(DeviceState *dev, Error **errp)
+ {
+     ISADevice *d =3D ISA=5FDEVICE(dev);
+-    PVPanicState *s =3D PVPANIC(dev);
++    PVPanicISAState *s =3D PVPANIC=5FISA(dev);
+     FWCfgState *fw=5Fcfg =3D fw=5Fcfg=5Ffind();
+     uint16=5Ft *pvpanic=5Fport;
+=20
+@@ -102,7 +122,7 @@ static void pvpanic=5Fisa=5Frealizefn(DeviceState *dev,=
+ Error **errp)
+ }
+=20
+ static Property pvpanic=5Fisa=5Fproperties[] =3D {
+-    DEFINE=5FPROP=5FUINT16(PVPANIC=5FIOPORT=5FPROP, PVPanicState, ioport, =
+0x505),
++    DEFINE=5FPROP=5FUINT16(PVPANIC=5FIOPORT=5FPROP, PVPanicISAState, iopor=
+t, 0x505),
+     DEFINE=5FPROP=5FEND=5FOF=5FLIST(),
+ };
+=20
+@@ -118,14 +138,41 @@ static void pvpanic=5Fisa=5Fclass=5Finit(ObjectClass =
+*klass, void *data)
+ static TypeInfo pvpanic=5Fisa=5Finfo =3D {
+     .name          =3D TYPE=5FPVPANIC,
+     .parent        =3D TYPE=5FISA=5FDEVICE,
+-    .instance=5Fsize =3D sizeof(PVPanicState),
++    .instance=5Fsize =3D sizeof(PVPanicISAState),
+     .instance=5Finit =3D pvpanic=5Fisa=5Finitfn,
+     .class=5Finit    =3D pvpanic=5Fisa=5Fclass=5Finit,
+ };
+=20
++
++static void pvpanic=5Fmmio=5Finitfn(Object *obj)
++{
++    PVPanicMMIOState *s =3D PVPANIC=5FMMIO(obj);
++    SysBusDevice *sbd =3D SYS=5FBUS=5FDEVICE(obj);
++
++    memory=5Fregion=5Finit=5Fio(&s->mr, OBJECT(s), &pvpanic=5Fops, s,
++                          TYPE=5FPVPANIC=5FMMIO, 2);
++    sysbus=5Finit=5Fmmio(sbd, &s->mr);
++}
++
++static void pvpanic=5Fmmio=5Fclass=5Finit(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE=5FCLASS(klass);
++
++    set=5Fbit(DEVICE=5FCATEGORY=5FMISC, dc->categories);
++}
++
++static TypeInfo pvpanic=5Fmmio=5Finfo =3D {
++    .name          =3D TYPE=5FPVPANIC=5FMMIO,
++    .parent        =3D TYPE=5FSYS=5FBUS=5FDEVICE,
++    .instance=5Fsize =3D sizeof(PVPanicMMIOState),
++    .instance=5Finit =3D pvpanic=5Fmmio=5Finitfn,
++    .class=5Finit    =3D pvpanic=5Fmmio=5Fclass=5Finit,
++};
++
+ static void pvpanic=5Fregister=5Ftypes(void)
+ {
+     type=5Fregister=5Fstatic(&pvpanic=5Fisa=5Finfo);
++    type=5Fregister=5Fstatic(&pvpanic=5Fmmio=5Finfo);
+ }
+=20
+ type=5Finit(pvpanic=5Fregister=5Ftypes)
+diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
+index 1ee071a..19c0fbb 100644
+--- a/include/hw/misc/pvpanic.h
++++ b/include/hw/misc/pvpanic.h
+@@ -17,6 +17,7 @@
+ #define TYPE=5FPVPANIC "pvpanic"
+=20
+ #define PVPANIC=5FIOPORT=5FPROP "ioport"
++#define TYPE=5FPVPANIC=5FMMIO "pvpanic-mmio"
+=20
+ static inline uint16=5Ft pvpanic=5Fport(void)
+ {
 --=20
 1.8.3.1
 

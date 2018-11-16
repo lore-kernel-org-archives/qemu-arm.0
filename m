@@ -1,189 +1,190 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp192353wrw;
-        Fri, 16 Nov 2018 02:15:10 -0800 (PST)
-X-Google-Smtp-Source: AJdET5duf5kjgPfb72eLkvo5XRyDWS9A4KUwAv8wR/TVc+JSYVn8GMzWI/1M82lLbpzlbpUGLkMl
-X-Received: by 2002:a37:9101:: with SMTP id t1mr9000279qkd.243.1542363310801;
-        Fri, 16 Nov 2018 02:15:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542363310; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp192662wrw;
+        Fri, 16 Nov 2018 02:15:28 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ccCU1EyszFtCFvW7cwKzXO5yMB1gPaKrwF9ekbhzgSZQxAEQiiYz7lbWEnPZWO9siTjcvf
+X-Received: by 2002:ad4:510f:: with SMTP id g15mr9897038qvp.46.1542363328541;
+        Fri, 16 Nov 2018 02:15:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542363328; cv=none;
         d=google.com; s=arc-20160816;
-        b=K2nRMaBPJJw5b1RYL3vYRd82rTOSZNk7kOGyUMy/4bkT2HUy2fZ2M2L0l64jgndmGl
-         4OtFHhYl3rSFkH7zY5XaBuxX6lUfFSxroRS92qOtiu5zN1ra1CaRusxmWe2Dh+xEpY9a
-         ydFO8HZicFlIAXM8iZfvKC0AO1U2s8TMS3vWMUl9MyYxDyijiJThJ2vkXqHvhpKs778b
-         xZZOLIdZICxi4xnAapqxsRtBTa4fYHM/YEsnnVdXfqKveDuRzbmWL0SOYJWPOWUR5fGQ
-         hxPH8dpkQmUOCQsJEhPH9jxlPynYVfph7gfGtPDPOAjZ//x+AgPXR82Ps59Ok/UvVsO8
-         +oSg==
+        b=V/ga2MOyl7f45+s8DVeEvXoZu//zbhF76FR2UU5DL2ovktgO+Ld5+x9OFD5HoNe32e
+         mJvFuAv2KsCnUFC/R7XhNkbMeHBzeAYalHZJWTm1kgziM1uowCiuDpriOnFDqotWylkB
+         z3bmpneJLRdfME54bf34oSSIn+WF6dOpYalZcKoRALuTtsAaib0KF0EKX48icdZKWBuM
+         5BgSfqM3qh6PS9Kz6nWNHWslnSWHTpsF6kerYbuANR9eR7946by8YIlqlTXcS7aGlOfc
+         8V0i3bd6pSn29Hai5ebTZAnvk7LsZaAHzatkFT0DbfXKfFuoE8bMsjVZuL1hE9L/FCGS
+         MDPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
-         :spamdiagnosticoutput:user-agent:in-reply-to:content-disposition
-         :mime-version:references:message-id:to:from:date:dkim-signature;
-        bh=JPOv/DUzaemkP3H2R7CRJwftKn5P8egcUgLY/w26V4Y=;
-        b=xXcZOoHWs5MpHR50bYhU6D3Boz9M+msWFETifm5zODtBOwh4oITlch+99NwMowzArN
-         nhsNsG+dDahSG4L1ZS7ZYl2vHYfj8ng7l07ArEnpKGaARttv5QdCSN+sVj2hM4BhLxt6
-         u+L5owSoV6p57P50Tw/uP3hN55D01aA9U888ve3J8x8wpquhHbwgh78j3lZWJnwraOQp
-         0+z4G/49Gn6zgVGMA7PCfcfMvHccG591Z2YhtUipxP5yihpXdWkQ0SX2TyLkzCH1uwwG
-         7dhlhX+mqgOHhsVGegqGskpZtzzibyPDwvU5dhDnzZLMfPZf1x6RgCjrlXCXvFfI81HE
-         T5hQ==
+         :spamdiagnosticoutput:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:to:from:date:dkim-signature;
+        bh=HIfrrbPIOwPTMeWa9xV8EXNSULEZfWAaPbeCrry8D7w=;
+        b=Pr8n1D/J+JcWFt/BOyQXfC0jxBpntvbN4og4nSs9/bfqFvzf+RVABlfwhWhNq91C79
+         yDrgMfjZy8M5+b5q+Bi7wpkUT5IeDgbvefvP8cQWBeZeDo1OXYqZarL5ZYw0/DIa5hq1
+         kJGgplURwHn4OCIjVC+0ZbLCYXceP4/EB8VwqDLqGoo9NlpoyyTf3oIkT2P9/rYlRo0S
+         3sA5NUHFIF9/lOB1kjGgCzzmpMNt1UDqrQuvAF4Jt/fcoxMd32+rTJYQo4UaFGJaCHK2
+         Lkf+67MXBg0bx+Zg98a1/b3EWX8HsYjFua1YOr4UKQ1dOIOXnQy/W1arDE4xb1BO4aZC
+         vUbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=RzKVmQNE;
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=YFda+lar;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y22si3140959qtc.39.2018.11.16.02.15.10
+        by mx.google.com with ESMTPS id a6si1800402qtj.202.2018.11.16.02.15.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 02:15:10 -0800 (PST)
+        Fri, 16 Nov 2018 02:15:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=RzKVmQNE;
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=YFda+lar;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43807 helo=lists.gnu.org)
+Received: from localhost ([::1]:43814 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNb9a-0000rZ-5m
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 05:15:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48136)
+	id 1gNb9r-0001D1-Uj
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 05:15:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48296)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1gNb9I-0000no-B3
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 05:14:56 -0500
+	(envelope-from <edgari@xilinx.com>) id 1gNb9R-0000wE-NT
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 05:15:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1gNb9E-0005u0-5Y
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 05:14:52 -0500
-Received: from mail-eopbgr700073.outbound.protection.outlook.com
-	([40.107.70.73]:36393
-	helo=NAM04-SN1-obe.outbound.protection.outlook.com)
+	(envelope-from <edgari@xilinx.com>) id 1gNb9N-00064C-QP
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 05:15:01 -0500
+Received: from mail-eopbgr710044.outbound.protection.outlook.com
+	([40.107.71.44]:31680
+	helo=NAM05-BY2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <edgari@xilinx.com>)
-	id 1gNb9D-0005jY-9t; Fri, 16 Nov 2018 05:14:47 -0500
+	id 1gNb9N-000633-GA; Fri, 16 Nov 2018 05:14:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=JPOv/DUzaemkP3H2R7CRJwftKn5P8egcUgLY/w26V4Y=;
-	b=RzKVmQNEGjpypEk30DJUiyoIC7dCllu/CPApVTMcT8qBALCRWQ571wUzwMCzEV5KKHGLSpqRknZ2PI60KCBziPHzcBFFxfZ7CZ9AVTZN3z+HgKcR6lXkfQJVERhfFbWUP/vuzWAruQLkLSKgDAG20Wu51+O2u9eQFoGOjnVp3sw=
-Received: from SN4PR0201CA0060.namprd02.prod.outlook.com
-	(2603:10b6:803:20::22) by BL0PR02MB4450.namprd02.prod.outlook.com
-	(2603:10b6:208:45::27) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1339.21;
-	Fri, 16 Nov 2018 10:14:33 +0000
-Received: from SN1NAM02FT019.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e44::204) by SN4PR0201CA0060.outlook.office365.com
-	(2603:10b6:803:20::22) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1339.21 via
-	Frontend Transport; Fri, 16 Nov 2018 10:14:33 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+	bh=nTBTd+kFKeTJ/nnHubXFWfL8TvdufnuS9WTM3K/8A4w=;
+	b=YFda+larMq9hvmhL55R1RieuIHrH4NuE/QtIMcZBU4Qn5aFEsDiEAgRLJWgO8W20pdDBAwv91rMdJRyHKXRNHFNmUuAU+s1gb+hKb+OnDEA3JfMTWAah0ELYYvVGFnczq305gAZK3Hgof9ZLfsk00xu1A4vTTzD/Zys81+STNFE=
+Received: from MWHPR0201CA0069.namprd02.prod.outlook.com
+	(2603:10b6:301:73::46) by DM6PR02MB4459.namprd02.prod.outlook.com
+	(2603:10b6:5:29::28) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1294.27;
+	Fri, 16 Nov 2018 10:14:54 +0000
+Received: from CY1NAM02FT062.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e45::204) by MWHPR0201CA0069.outlook.office365.com
+	(2603:10b6:301:73::46) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1339.22 via
+	Frontend Transport; Fri, 16 Nov 2018 10:14:53 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
 	smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
 	header.d=none;redhat.com; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	SN1NAM02FT019.mail.protection.outlook.com (10.152.72.130) with
-	Microsoft SMTP Server (version=TLS1_0,
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	CY1NAM02FT062.mail.protection.outlook.com (10.152.75.60) with Microsoft
+	SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1339.15
-	via Frontend Transport; Fri, 16 Nov 2018 10:14:32 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:54064
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+	via Frontend Transport; Fri, 16 Nov 2018 10:14:53 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gNb8y-0002xs-HV; Fri, 16 Nov 2018 02:14:32 -0800
+	id 1gNb9I-0000BW-M6; Fri, 16 Nov 2018 02:14:52 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gNb8t-0007d4-E7; Fri, 16 Nov 2018 02:14:27 -0800
-Received: from xsj-pvapsmtp01 (smtp3.xilinx.com [149.199.38.66])
+	id 1gNb9D-0007eY-IW; Fri, 16 Nov 2018 02:14:47 -0800
+Received: from xsj-pvapsmtp01 (xsj-smtp1.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	wAGAEJ38025287; Fri, 16 Nov 2018 02:14:19 -0800
+	wAGAEdN5025343; Fri, 16 Nov 2018 02:14:40 -0800
 Received: from [10.23.116.79] (helo=xsjedgari31.xlnx.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gNb8l-0007cU-Ci; Fri, 16 Nov 2018 02:14:19 -0800
-Date: Fri, 16 Nov 2018 11:14:18 +0100
+	id 1gNb95-0007dq-HI; Fri, 16 Nov 2018 02:14:39 -0800
+Date: Fri, 16 Nov 2018 11:14:38 +0100
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 To: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <20181116101418.GX7447@toto>
+Message-ID: <20181116101438.GY7447@toto>
 References: <20181115094207.22846-1-luc.michel@greensocs.com>
-	<20181115094207.22846-15-luc.michel@greensocs.com>
+	<20181115094207.22846-16-luc.michel@greensocs.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
-In-Reply-To: <20181115094207.22846-15-luc.michel@greensocs.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20181115094207.22846-16-luc.michel@greensocs.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(7916004)(396003)(136003)(346002)(376002)(39860400002)(2980300002)(438002)(199004)(189003)(106466001)(106002)(2906002)(77096007)(4326008)(356004)(8936002)(186003)(54906003)(316002)(478600001)(486006)(16586007)(81166006)(58126008)(63266004)(81156014)(26005)(33716001)(33656002)(9786002)(229853002)(6916009)(6246003)(5024004)(76176011)(5660300001)(47776003)(426003)(11346002)(14444005)(305945005)(8676002)(46406003)(9686003)(476003)(126002)(50466002)(1076002)(97756001)(23726003)(36386004)(336012)(446003)(18370500001)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BL0PR02MB4450; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; LANG:en;
-	PTR:unknown-60-100.xilinx.com,xapps1.xilinx.com; A:1; MX:1; 
-X-Microsoft-Exchange-Diagnostics: 1; SN1NAM02FT019;
-	1:CkdOrH+S4c0D2+92QK819pb5gdpPAJiZCYzaLHnfGKIap3fhVq3tFOhaHs5PqM5U78Wrergtr7uf6Fj06zCKh0oLcLNPbQSjkTYB6iry1Lq7WVwoUw8QsV7PvLeuY4HQ
+	SFS:(10009020)(7916004)(396003)(136003)(39860400002)(346002)(376002)(2980300002)(438002)(189003)(199004)(336012)(356004)(186003)(426003)(11346002)(305945005)(126002)(446003)(486006)(476003)(575784001)(23756003)(5660300001)(9786002)(63266004)(106466001)(77096007)(33656002)(26005)(2870700001)(47776003)(9686003)(1076002)(8676002)(81166006)(81156014)(36386004)(229853002)(76176011)(33716001)(8936002)(4326008)(106002)(2906002)(54906003)(6916009)(478600001)(50466002)(58126008)(316002)(6246003)(18370500001)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR02MB4459; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; MX:1; A:1;
+X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT062;
+	1:X3qiHPrTU5pVxZ5P5kEpSkEGJoqhccWuZrit0F5XGAo/08aRGhnLChLlUklbpIwvfAoqzCeRl+pw/uBwiGL3pisVQGleV0k/I+tsE6WdI9ChdqghiR+aAiCYXSmgx1qB
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 72520fee-037a-45b3-d5d1-08d64bac4ddb
+X-MS-Office365-Filtering-Correlation-Id: 66cfdef1-c433-459e-3aca-08d64bac59fc
 X-Microsoft-Antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600074)(711020)(4608076)(2017052603328)(7153060);
-	SRVR:BL0PR02MB4450; 
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4450;
-	3:1D08dNlWmq/hc1JLsk0GGAQDCT0MiCjMHJ231Hm3AJjbm3xHwfoLhI4eGh8WO3nV4ZrGiztzMG827GZ0bh1x2x+WnY/C+IxGMWwlp+8gVYqVJSXi96tWbEUMk5jvL5ZwaLV5iFsIE6/3Wbuvqc0dNpz552zSw5zcJNQszUWJBeYp0JTUV1wf4PmJcloCG6vRdHMPd46TYBtJHr7vTWSD7EHBKJmf5w6a7Nqsbh4STxeY66ueAv88OZ/n7lcARTfufC8FN9V8WKS1SXGURBGqEM7SVI+R0mZ1ClNMWePLnE9IugASSqkSJ8lFmIEiccv08ShFE/igx8wRZJZ10BIQlNvtytlpwlhoi8Mjsa2dhVM=;
-	25:ErjwsvHhaKDAeWuHI9DVHIuVKc6HLrybrf2HQt5aGhIAcKlBK8ALegBtLhpqtjbpOUOEU3xvrINzDnUCJRdreXP1xxFDeO8j9gMdvAZWKdW1C5BFa66Z9m16/rFWLF4hirspTee0qrJBKGAmN/pJSqtBORxLdKjV4/BLPhsZ39NcEXYGmXsXQ7kq/+5hJZm4FGk7q4djQOOOqo/+Sdusj4CfuRYewspm4leR8WwnLIArIDemdKxXuWwau/p9FaK6xvQYiv5q6uz95GhyM38ZlAEP0ndJqBMKgDYu/9wbMiGnbJWmQAzVaDh0W8NxBGzVbjw6bDdtvW51MxCP58eJug==
-X-MS-TrafficTypeDiagnostic: BL0PR02MB4450:
+	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4608076)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060);
+	SRVR:DM6PR02MB4459; 
+X-Microsoft-Exchange-Diagnostics: 1; DM6PR02MB4459;
+	3:z1IVX+K1Ars42iAuGT+ij+8tHL37A6e0wL6+TeIRwnWVRsBq6dALgNi2ZI/w39zovURUZwrbthnZTY1uNeX+xfkK/Z+uRbPPX8rl5kpi8loYDOdjFpm5RERZfdN4OwO06WyLHYcQAb5mMLjtuMXcm/QE+R7a6iUtjvGBGoNqKLmDrJqY1Ci41kw/DwhcZuDRnL1nNnPhomom2/RcFIVWL2gC4RcgegWaSInpnvtEnHrdWyMwhCEhGc1IjsWCu1ZY13pCGNbaYvL9BxfYt+G2erbAZ87V6AtpRKxdabnY5ZgQ8G19VlUdewt6XQiTmZoYJVMaCUSrQzejUfrHGYPvJVOCMN137K6j2wnX9IdiGCU=;
+	25:nfb1CU3TcNeheaGt7DNxKQgm3M/HW3fcZBO+gp95e5ggZKi09WuTaSQ/3tzYxYijkiG4/bMu9FUDnanonvCdGCLX0HDEj1zi1egsILgbHHXhyq9us7GCIIgJ2H4VqlGj1uSn+7Tvyna13dVktuCBEXaNghIKgFscOZYhdw1kbdm+RzWL92QWqCL+lHH2Vrmu68JsO0akou5v2tjbdE4XJeIXyzCk6JEsopYovfDemT3s0Q2TctCFN7G18tsKOiZayMJ9IjIbauZxCI4X2ekxvhOsgh8eSgT/raucl8VNao6n3NB71KzCpKkDptVBI1u6onRH3IM8nmLpJ/7IfB0hiQzl4Sw3T8JF9fWiR/KtfyA=
+X-MS-TrafficTypeDiagnostic: DM6PR02MB4459:
 X-LD-Processed: 657af505-d5df-48d0-8300-c31994686c5c,ExtAddr
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4450;
-	31:g+XUtrcwma2SXSVcnSKjEYYHgZidrHsobkqlYasaYBKiyQ0dBFg+XoIZE5IPOPyYpz9RI0RAh6cZhjTucoa7F6CoYzL9iohP7OBEHg7NMbs9z1Llh6LYZzVhsBwYSzvb+o7N/O3hzos+mQ/tbRq3LGD3dm5V9/Q9EXuSflFaO3rTzs2yPy8e16I35NfVE93PKGMaR3Ybsunj2zl2c4l3T5qk0mNROo/HX0d3DIwCFj4=;
-	20:nt6wwirFpriVpm+rnMep2/IfZYnOQlxhfBrEChl6BMempW+MPaDEgG9VKDJVQg3W1H5m8QUy/e2gaI5uauYcAQJ89e3ernyh+9YrHaRPcYip4Lex0Bi1eU/Vaa+oyoEZeQKtUuUaL3dukyXKYSEGsFWEijDK5QtB1cIcWCv8L9MCNwPDpeeX1wRBNWpCtHj3jQ6gNVkfe+n8zBLNxo1awuAaR57uzWZvgZKe4ejrE9FKX3BMTZF1VmvYgCpn2uEV5n+s+0z1W4vSGcPPGAjpKcBVhoAmB5cJGqCs6m/OukydQ8w+jSVlqxEJPwFEBtJzXtK48y7uYjGfBNue0XALbVwq9TWs7Q1LDUTrA4Fn6msHy7PWy3j7N2YaUr/oKIyznHiv8DRYKfFxglmFqBsjti/4hDZehvBOTUUeWELWfbFtCKm4iV2BqmG7gV8evQl1oevUsoHZw8KjjdPNVaf840F2hSC2LwK3RdQnXNExN6kNoUkU8D3Kv5GxOZF81uwp
+X-Microsoft-Exchange-Diagnostics: 1; DM6PR02MB4459;
+	31:Cj1Yrn+YUaKtTiyeTGzPu3J2U1IdaXo7yd+2dktcLzsCDx7N6AHSyqaGV3R6KDtUqN5+gMQ9mHR11OYH20MQBbkew5tcCr9QKXRFWsaDVPRI+bqw9n5LXFoqG5vkIPPuhkKdD02vnO3n1UezVGfNfGlUYycIWbL9XZLNa09ll1xvL2diQANJAKiNg9XzY3xrVv++xJIvy2ZiSpLeoq6DjP0DFJIFJNjv0phqU6qQI3I=;
+	20:M/hHlKlmm657MzFE0kDsCWyhsym4tKXsqLP1blG6AcZhcCbHocgdVK4+rFtXenbVzJApKv8GCwvJL8Db8O9XfPf/clvekXh2HMuQLbQP74OgzYDWCqkhe+OpI8x2qfG5Z+PugD907O9/6oTQxpSYfB4SSiE6OnEn+xfOELcbJu5Y08EOYGYH0GP+5JvHrr/oGRvx3tc55Jg4vNRbkRloIlJhTiUeftMsScXdVLghVlnYOMuUQm2DGB8gXYxjdlAFeEcHKdL6TGarvArxoTihiwF+zF0Y9s9F8zzOsWeO2iRgyVnVh7l72IkVh6qHDUhB4N4936VtlKOnNFMhIW0cqXUo2HNAEEn7a031Y8dgP52HkOq3UlZR+5dXin1sGa7Q1opOk29vAHV9bqeiy9FXT1rmeoa5dazQVaTkbqspVhflimiWM+Migd5IU+mbxS9Ahag2jbNZJthrprCWzA2rSa9Qw3Sy+6B5Xf2z/SMy3S67QEdd/TY7V5V+WY0D13FA
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-Microsoft-Antispam-PRVS: <BL0PR02MB44500B289BC10C55C7166664ABDD0@BL0PR02MB4450.namprd02.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <DM6PR02MB445922FF66A60038FA3956A7ABDD0@DM6PR02MB4459.namprd02.prod.outlook.com>
+X-Exchange-Antispam-Report-Test: UriScan:(192813158149592);
 X-MS-Exchange-SenderADCheck: 1
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(10201501046)(93006095)(93004095)(3002001)(3231415)(944501410)(52105112)(6055026)(148016)(149066)(150057)(6041310)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(20161123560045)(20161123564045)(201708071742011)(7699051)(76991095);
-	SRVR:BL0PR02MB4450; BCL:0; PCL:0; RULEID:; SRVR:BL0PR02MB4450; 
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4450;
-	4:YaFphiyTpomM2rpTW4utPyiJjnpawiVsfwNYx7nK69XahUG5QhT/ol2sDIPXyhNdL3Jza00N+FWYWr/mbEmrbDhzIBkHFPDnShROwQWqa2g9LQcsgIT3JMaQYwLaJcZEw+R3ISk8WAv68eXwMRB38K7TOLMGugdXdWeCc4HkLoIe7iG25RuiM/tl3CE6OmMm9S5W9wVP3mO5H/yL6suG+leJuEm3HHFZ+g06B/TOTXNdKRaRMOTB8abBKhhWM7B4hD32N9vzXRfx4JdqE/7fuA==
+	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(3002001)(10201501046)(3231415)(944501410)(52105112)(93006095)(93004095)(6055026)(148016)(149066)(150057)(6041310)(20161123560045)(20161123564045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(20161123558120)(201708071742011)(7699051)(76991095);
+	SRVR:DM6PR02MB4459; BCL:0; PCL:0; RULEID:; SRVR:DM6PR02MB4459; 
+X-Microsoft-Exchange-Diagnostics: 1; DM6PR02MB4459;
+	4:AGD+VbqJ8xjZWzSms/DT/cTqtpsBtjt0+9eJEqGy8VAx1X85/3lGggNmXKObRrGau6+CHkMbNwqH7NHMqjt6LPcO+3XlDnVO/Qz6NQaqVvQ/05g72sYdVX4LhoiC66iMQwIlEgxgfMlzolYZTi6COmb9QHPTfDQYz/Gz64KwioDOT7Jv3RPMzibnscMMyJjasdAip4VgpRhTlOCNkrwzYsWBhjlaAPZss+voBg6FsfbRsFYPjPYg2GcgsPMdOmanQVZc2keJPpY0uCpDBbww8NGKjr1b4fannGJYYBzQtqArUVYFUDhw3xW9KKUF4h67
 X-Forefront-PRVS: 0858FF8026
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BL0PR02MB4450;
-	23:V4EQoTrsDsBiq2psNKxBJONqppwx3WZvhV0AROgXs?=
-	=?us-ascii?Q?yFBcNJHVEmrGex/UyZ0EOfGS4hLOCMFuavF0MvuNWz37QYv5dq16vpRreWQ7?=
-	=?us-ascii?Q?TIINpAazQXz0wjVHSyqcQTXN7eA41dHl3KsoIP43urF3u5Qt8N/MpXblFeL+?=
-	=?us-ascii?Q?i9Ehl4XHdRrrpG7zLKj6/FmsSnk4CqeLPF9WWgevrR9mV3FeNxrabRMQ5EVz?=
-	=?us-ascii?Q?32yM/h0Ba9rgVteosUnhXTOJdG31pg5q60c1spPywdfGt2N0p/VoAyNi+Kew?=
-	=?us-ascii?Q?cAEQpEX4RLp353wbmFYjdMZMIDKZWRSyQ9uEYBF64VAUw/A/EDaIxBFktDIl?=
-	=?us-ascii?Q?aE9714AWD4HGMaHM2SylJobkii1nTca1n1OZt3UtM950eF6Q4cSermpbYcd6?=
-	=?us-ascii?Q?tUMBhA60T3/n3CHGaUhirmYbv6YsuM6NyrOXcVm9wqwI40/nbFkvhlM856bA?=
-	=?us-ascii?Q?VEqGepmTJbGrYTzunTgQ52ClD5EXxKtL94lpbb3SYpi+ucwmVFkRE46jFhp6?=
-	=?us-ascii?Q?lI91ECu5lEmrFfmENOghuY4/lIBJHgMNDlgpF1pDxtlMuCnKwEzJa+gCqjJK?=
-	=?us-ascii?Q?XvT01tyVJQB8YwgRP9JWswvW5GvkzHjvg6an93WiNGqKgBkI5HnIpLw5dH7F?=
-	=?us-ascii?Q?lBz3dW61ReZHtSvTjzduUlliPklLUM/zrabDqQ55MtmSPYtm4OivFuH+S9Uh?=
-	=?us-ascii?Q?dDyzk4Rlr3E18MUoYst4z1GLgV7yBlj26yHKrwJOUQj6kELMCc475auDbn0d?=
-	=?us-ascii?Q?I/k7PXZGEAiF6KjVR+V8h58iGcoJxJbozpQX7+cMJJTKjwccoRUmkdXAwQlI?=
-	=?us-ascii?Q?t7mC7GnI2QyCLxd1HoKS8uXdc51maUliLmnIzgp3uGao7tpiaBoS8iSL5gOz?=
-	=?us-ascii?Q?xEcVVwgMczY8Q5ymGR+W67tih99DjDttZ7yAt4V54pZdKdnm1+NEyRS5Q33W?=
-	=?us-ascii?Q?V7FwloURmGiPsKb8ol/kJbI3zGKZVH2uMuLqRgtrFDxnGW4UYv0tx2FKDzG7?=
-	=?us-ascii?Q?e+MNjCs1msTLzOGvoYwsPyUUqUenBSMv1b+MWeYDYbU0AziFASj7JQhzWeAj?=
-	=?us-ascii?Q?mn6U0ttyW/Cg1+zr1SS/xZMx9kkjzbB4DD7zH5YkIwfghbg77UkRYZx/9oiK?=
-	=?us-ascii?Q?KwEdZK7JUVWESehQJo2NFKOa0F7r286xhePDKrWmRPmCazQxw+4wYgywOccV?=
-	=?us-ascii?Q?ELBGifoDmlVHMZZX23e/2CwPFaMalbj29WTgzNPZLAFiyv7G2zNewvvHfIqP?=
-	=?us-ascii?Q?03+d3dwmVIjae/0vEPFm1Dq2Cp7Fdhie8aFWDID?=
-X-Microsoft-Antispam-Message-Info: tBRF5ZNNOtL1NTM47361tD6OMfldXiOvYqJGjnIr4+fNx3bfjY30r/w+97GlwhTEU2fZXEfcBGxB7LhNdPPcgJxnBfijHzrzqNOxxbITNbAUV8B92R222/CYrEKjmhzpmyBobukN2KeFPOOfxA+4Gw1cgJgsbp2wj6lTCudfcL+0sVkrjtlIzVe3PVUpqYaJg4Siz5SfP43djfodCdUQD2dWSXjDT6JIc4xC7t59uv2htbenioeXIBQVSeQXaL0p4Akea5osmjOlXUmep132Utnl8yk5ULccbpSovuOrQqlg8iVPGb6AuIYgoXWAto4rXS+IXnel+5v2uy45GFqx57T2nscDA/UGqTg5nA4J49o=
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4450;
-	6:QhZNYhFzfXHJaVbtkDX/1iu2q4Wh3P0u7gZM8BS7ltAJLK3YdKUWpeLziK7JdsKfHcwq4uIeBtL0tuNADe/299dKwqCisU9La/dawwc+aUV7Ds1+3+zlym/WokBdBxtbKAFk5vV3oplFuM6tz/v/gtiWZKqJk5XRp8f8KtUTahpZt6tXyJoOG9jls0c78hygfHrC0QZVd39tCLS4+iJnpNikv0wkORis6DpUaxKeT607B1ksV4oXuW6tz4DhoXeLhZBdN2to4Z5QKcwDguH6Nx4asX9K8yQy3zZ6vQ+dMjg8ISubmRsS+x/8eXOWt9qXlgcWY/ykpkQCn3TAY3v8NwRsP56OFPmhi0AL/Bj5cOJ1D/AhoZMIIceVJP4BbrjxBJQ5mqFqoxgBsYjow2Y/UGBaIfkjRUj/o8znAdB5w4vBkrsKMneCfwHaGQMASjBJTm9YKE3bw1C6pGyXIw1btQ==;
-	5:IBT0RCuquqpvhbVoFwXITJXawSnoIsX/gQnFgBP8ViwcEHuZCxQH/Jon3p0Puq5U9sFbxe9xFiRWoXzoBjJdViZA5k4S8gb6glaWhvYXPY61DkLait6NzK0P3B3ZXQhz9TKfSRPwB3pMRdJ8jM40WZyA2y0icLHnjqpBBRn4Bvk=;
-	7:/UgIRg5Ghb35f8/9MiMRQvQluI5w6Z5akLe7Kw5EJw90AcbqRgMw6ThcMPXgxg4lwfS+b5WtQhgz/V8xlfgC/qphvEYcnl459V1QfOZ+e4TqhvKyg3fnlhj+RGjIH+8WKS9jZMrawOhl+LzqNK+yrg==
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM6PR02MB4459;
+	23:067cmnMSTRmjoMXoZRyZXSUhoQYbdydg6Q+555Un9?=
+	=?us-ascii?Q?iSYf5G3xCTldwV82nqvFZDHdjMiEDuxyUopzqE9gWNZ461WadrfUwODldvWa?=
+	=?us-ascii?Q?Tb16s9Myseda9vVFiIH9V68tx1bppgFjQN6Sd8pFseMHMz91iG9+b+pfUXIn?=
+	=?us-ascii?Q?4nlJjglZe0VMIjRQqNlzhd756YXZx5FNvqOVdPWGo7R2lkMk7gcHFgO0/itX?=
+	=?us-ascii?Q?G45ceqwqc40d9oYhh5nbMp5YLRqbk/O2nB17UgcHR+aVrPJp9epz31BzHa8b?=
+	=?us-ascii?Q?il13WTjmTAqydu4PJs+ESN97hAYNjFpAoQbpTkPoL0c+er27ab5Nc8wsuD6T?=
+	=?us-ascii?Q?p4tYP6365g2TdX/ORvD6Z1D07jnQPcdJsT4uIcd60lilVrdHt3fuUwfKuFNc?=
+	=?us-ascii?Q?7CbwKdy1KgTjUnzEE1fiUHm20P1EsG3TFm2j9FnBq/qtzJYu9k5HLpgUI1xI?=
+	=?us-ascii?Q?FPt7bRebmFVrvw4o21KystLshijCuPYBinmeGp8HpQcogV8Ulw+NiO3XgYMj?=
+	=?us-ascii?Q?jYSuAt6xMzNMyiS8ibn5WDvoITMU/3VAVGKQADhusxM3sP4zSYxiWT97JrBZ?=
+	=?us-ascii?Q?fuvDGeuD6FR8UhkyHrmfFdvj0aV7QG61vbMWnr3Uhf110piXv/AZMhdplm0C?=
+	=?us-ascii?Q?XU017OZZl0wjZM3qk1zApFkQSIZWKrP1T6JWd9Z4ae4nkHOIrNTfHaBqt6+I?=
+	=?us-ascii?Q?QAu6yJnoevV0N3D9DreNEH2+jO90mDRw7+pfd+W5thgK3Xi9YHexXcgThutQ?=
+	=?us-ascii?Q?5diqvHYI+EjhTBaBkblZ97N0tjIVoKWEKMFWOhzUZzUepWNrKHHlzMwS/Nzw?=
+	=?us-ascii?Q?96ZcszW2eXsCV0b8cLIwCYi/Q42G59xpzRY/B0FUvM7jqQhpqV5iUvXj3k8t?=
+	=?us-ascii?Q?bq8JFThgb5LrwlPJfTbaDQj+vfdc0gjbQZNeitOGgoWLX371A9P9AEzKWHZR?=
+	=?us-ascii?Q?WliEiad572W8QeR4emU9wT7/3sj0Dok6HDhK3gHieUyqhh5iBXC3P6Fwce9J?=
+	=?us-ascii?Q?NXtxmAdCm0/ud1QVEUK+X941vlE0XXPpUpw1ZTKGBrwoehiDwn3sHk2C6Sbk?=
+	=?us-ascii?Q?xv5w56SnGutt4SwInsBibNZabVTalStjCmdIukNtydccAbk4rP6ikAMWCi+b?=
+	=?us-ascii?Q?M/hL2NvzVWQVJvJytDIyLChPpUy+ETv+V4Sv60rGKCFyy3ndaZ/bDdd8Dt4n?=
+	=?us-ascii?Q?1FSBcIWmCsUS4A=3D?=
+X-Microsoft-Antispam-Message-Info: d1zVZMe7UN5Zt7VrJjeWsg5kMb92YOlhoR0LPMXbpTvKZrHhmP7a7cb4O8OqwCswUoR/EI+vPUsrnTHehJnJpvCTOkhgwYvWGjo4+jOK141+LMljsptnLAkxJC2KqQYiLTDSyZu2Uk+kpynXEsL64HmDETjs0f80oYOUGQDjhgm9ftsIRWrZsrgmw2y/780OwNau6gPIUuz+CFxOu/V3JoS8ugfRD2Sxs614FHjhBX8QikWIQiVTttcHqo3jN6AjGc1Zi0eTFYe2obPBpawPEVv9dgxlpqzcnCUKOgXGfa2VKJGpCxNJGZHf/QrOoR9OHI8Jpor1uyYetIfTDq4EygdKwnfn1tYExgjwZdMlwl4=
+X-Microsoft-Exchange-Diagnostics: 1; DM6PR02MB4459;
+	6:mTvKMwjYiZOUq1+B2oRR42uezWSHrhvJNTkuxjV+eQJg2LuvMb5MPT4DzyyfK59K+l9P68hzgE15uRYNDITKwo5SGo4fDUQxm/yFj1Pz2pD20VKoIF0tvrPVss5MWbI2TwU4DVMeZbYrlxEU2d4vQDLGNsXkN8gICmRhAIiPSy7QOng8FmG512RkvSQa95Wfe3PlVu2Gpou65UnKnmRX67bpi6nBfnLr67V98F248S4/8eerlmqXjXaQBu3wbxHXdsV+2YVZYT+AK6t5VOhTzH886ijph7GscS8klg4Ca5kTVqPXOANZ5rFxBtvWQpMytNoUECytaJxKFo3WDiG9cTcXy+MasvlNtoDMtw3t2qKHd6OAx6JNuk9aOMKKciksE2yMriFPYH7TeCGx/lj2c06qjAb0enHKXFSIxxVsdOSmuRxUVa1vPCePLJr4J5l8J+f8pd0+beLfvtL/k8YHCQ==;
+	5:mpQUyjp5dRIHD922RjRSx1ajDrl5r8EySO2PRDx02ievYT9k4T4eq1lO8mbY9n9RM8zhkOjEYJYYQvYnkwojxH72Ei/vyZdwwzcWFRSIFC1oxO5aM9CDS8Pc5MZHkLkO/nJNNnrhJq2a7NYlS5NgWZdIo/WatcxryQsj2LM6hVY=;
+	7:LRKVoAJuG2faaMiYVGvY6NVlfD+b1zHbMmkjXPZDl8xDQxAf0BTLxXmXWApNsUFSixUD2bwwPQvicm44N6qQv8l04ML/Ua/02JBPMcDfNbb45QayZ5c6JiM26W8sHHUZumwn4bp18uAbnAjtK3Dnlw==
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2018 10:14:32.9089 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72520fee-037a-45b3-d5d1-08d64bac4ddb
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2018 10:14:53.0820 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66cfdef1-c433-459e-3aca-08d64bac59fc
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR02MB4450
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB4459
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.70.73
-Subject: Re: [Qemu-arm] [PATCH v6 14/16] gdbstub: gdb_set_stop_cpu: ignore
- request when process is not attached
+X-Received-From: 40.107.71.44
+Subject: Re: [Qemu-arm] [PATCH v6 15/16] gdbstub: add multiprocess extension
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -202,48 +203,48 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: feUkXYY3Yam5
+X-TUID: ZUQ5Bs9rGtdP
 
-On Thu, Nov 15, 2018 at 10:42:05AM +0100, Luc Michel wrote:
-> When gdb_set_stop_cpu() is called with a CPU associated to a process
-> currently not attached by the GDB client, return without modifying the
-> stop CPU. Otherwise, GDB gets confused if it receives packets with a
-> thread-id it does not know about.
-> 
+On Thu, Nov 15, 2018 at 10:42:06AM +0100, Luc Michel wrote:
+> Add multiprocess extension support by enabling multiprocess mode when
+> the peer requests it, and by replying that we actually support it in the
+> qSupported reply packet.
+>=20
 > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
+
 > ---
->  gdbstub.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
+>  gdbstub.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
 > diff --git a/gdbstub.c b/gdbstub.c
-> index 59eed3b878..89819a6a72 100644
+> index 89819a6a72..e0b844c040 100644
 > --- a/gdbstub.c
 > +++ b/gdbstub.c
-> @@ -1787,10 +1787,19 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
->      return RS_IDLE;
->  }
->  
->  void gdb_set_stop_cpu(CPUState *cpu)
->  {
-> +    GDBProcess *p = gdb_get_cpu_process(gdbserver_state, cpu);
+> @@ -1721,10 +1721,16 @@ static int gdb_handle_packet(GDBState *s, const c=
+har *line_buf)
+>              snprintf(buf, sizeof(buf), "PacketSize=3D%x", MAX_PACKET_LEN=
+GTH);
+>              cc =3D CPU_GET_CLASS(first_cpu);
+>              if (cc->gdb_core_xml_file !=3D NULL) {
+>                  pstrcat(buf, sizeof(buf), ";qXfer:features:read+");
+>              }
 > +
-> +    if (!p->attached) {
-> +        /* Having a stop CPU corresponding to a process that is not attached
-> +         * confuses GDB. So we ignore the request.
-> +         */
-> +        return;
-> +    }
+> +            if (strstr(p, "multiprocess+")) {
+> +                s->multiprocess =3D true;
+> +            }
+> +            pstrcat(buf, sizeof(buf), ";multiprocess+");
 > +
->      gdbserver_state->c_cpu = cpu;
->      gdbserver_state->g_cpu = cpu;
->  }
->  
->  #ifndef CONFIG_USER_ONLY
-> -- 
+>              put_packet(s, buf);
+>              break;
+>          }
+>          if (strncmp(p, "Xfer:features:read:", 19) =3D=3D 0) {
+>              const char *xml;
+> --=20
 > 2.19.1
-> 
+>=20

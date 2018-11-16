@@ -1,99 +1,99 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp469012wrw;
-        Fri, 16 Nov 2018 06:43:34 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eBYzVlpnS5fFQ7UfYWwHBW8ca2KtyRE5SW/0O0B+HoqrkgH9aLAwqx7VbRTTszpZSk75Ds
-X-Received: by 2002:a37:9841:: with SMTP id a62mr10298672qke.348.1542379414324;
-        Fri, 16 Nov 2018 06:43:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542379414; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp478438wrw;
+        Fri, 16 Nov 2018 06:51:57 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dkbEEZ6NWwyUnUKXFXJ304cfTwleuvcaCM0qg1ghvlOGwc0sJ4JNuKBprcUkQUyXHuMMfg
+X-Received: by 2002:a37:ea0a:: with SMTP id t10mr10191553qkj.273.1542379916932;
+        Fri, 16 Nov 2018 06:51:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542379916; cv=none;
         d=google.com; s=arc-20160816;
-        b=kQl7bMv72tw7VebWKL35W6NGQ6S8Qm4W64LcGPAB+CKR79D4e/aKein5j0Bwf7Pb9n
-         5OANYF+SH3x1FeH35CVlDIWsSadeLZIL/0tiKy1YO5pM+oyAJbsP/2tz8XgbyIZKna4/
-         v6T4pWxrd6rH2mTidjzjDbBAyycA1lE6wfhydikigL+ZokfdJoJ38KCMuiLahvg0gpVh
-         PM7MCiZULrLYe1NrtHXyMlZ0Fu/I7S+yFMoeJvBNVGM57ml+NGrzxdglPmWx8H1Q0yZ7
-         SRkZ5TW8KJl1bZ9Wk/W0DHDfszXFFlNl1iOa3P9GxPzfsuiwFjwsPUIpcVANkkHtRz+c
-         /fMw==
+        b=zoQW9KtoGdrEhzgmsnCU8zkvLdlm3mTt/ynJsAkVFi1wRo2xRxFKUtnVlDXCnBrUU1
+         rNcUYPYz4t18Qi5h8+WeyDJtAc5LG6s+eaDALyyjsSl0h8D8OaDT7CWcXgGsqxs9diDY
+         Eu80idFm8eUuluSPd1tnVMOdgOzl9Nn/Q0Pue3wWBc9/CzWaHgUKIIUWDkYKaH4NZiIL
+         0edNxYrbiLLD09XjOUKnM0jltlpJiOyOkwsSMO411HGU3BOiR6caqhkPc5AEpefv9wpL
+         y66m4tXkuCJ4FwxoSZTcSTehPjiba2q8W+u0Y8ztTlEkyrwTTQ6gSbyymCtfGDmN1k3n
+         124w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :references:in-reply-to:mime-version:dkim-signature;
-        bh=dkNDc8vJLRX0r1dHMILsPe2pXmELTrO5pJ2baxw2BAw=;
-        b=nIP1dceAF+MWQqSgEM+IAeCaKV4kdszA/feQKC5vnf1Cd5KJhJ3WrWeijygH4OBIfZ
-         WPBgZeF9jFN4ISBWid9HBGZVWw+6paL+Ad9biLvC9rx1zaRSCmniu760s4+xG/hGjb6L
-         D6KEFlxdr1SJMninYrOu/4SHmu0jsOUcpCmAj9BKybEAALiBXLCoIRsY1QbjwOiBHDvl
-         CvYeHihtlkLuRfWI+zoD9jFB4eSdHGEUDomZI8DyQRoYeuJFew2ozXlk5nMhdyfSgGY8
-         7F/xQM6sACxllhYg66oEQrvp6J8VcTXiqoCtFloSyqPFI7fifQf0uYGVuIlR6SUIzOKa
-         LmzA==
+        bh=YP/35K0lYm4uFdT8+q1D9h/ee64jqjT+/GPEVe/MkaU=;
+        b=TVn4fsyIqGYJlJQUiEqJl6UFXaIef1JfwQ0quQI7GUHu1bBc3GgQge6CSstZHP6ELZ
+         Ax2revknjlVkD7Sj6yB8VA9lRWDcOg84tbD3hVcCtyECZXY/8w2u6ZTlqs0cVIbt1Hzt
+         Ta7z1f7e0qecET1dD3zzHEfFXkZj8DZRZVl4AuTbhGoPmvofiPwpChzBGjdpZ1eMlahN
+         JAzy4lFPzl/rlTBvf7YH855R3sKKtXm+paKLktXuRlci427lS361eWokX2Snn2tUIc8h
+         0tuEVvnS6GIOEO2cq8Mz4W6zd9y7SXQ7PxjJVFxwZDTtqBReskxBlNmfzL+9tVwj0tar
+         Xv3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AXo+7ffU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SAa1UyCW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o56si1043237qvh.84.2018.11.16.06.43.34
+        by mx.google.com with ESMTPS id k38si11735005qvk.220.2018.11.16.06.51.56
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 06:43:34 -0800 (PST)
+        Fri, 16 Nov 2018 06:51:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AXo+7ffU;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SAa1UyCW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45126 helo=lists.gnu.org)
+Received: from localhost ([::1]:45168 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNfLJ-0002cX-Lx
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 09:43:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35107)
+	id 1gNfTQ-0006f9-AE
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 09:51:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37429)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gNfLA-0002UU-5y
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 09:43:24 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gNfTG-0006eD-7L
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 09:51:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gNfL7-0007eg-Rz
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 09:43:23 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37786)
+	(envelope-from <peter.maydell@linaro.org>) id 1gNfT1-0004sZ-JU
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 09:51:36 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:45808)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gNfL7-0007cE-JU
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 09:43:21 -0500
-Received: by mail-ot1-x344.google.com with SMTP id 40so21511817oth.4
-	for <qemu-arm@nongnu.org>; Fri, 16 Nov 2018 06:43:19 -0800 (PST)
+	id 1gNfSz-0004jq-7g
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 09:51:29 -0500
+Received: by mail-oi1-x242.google.com with SMTP id b141so10809704oii.12
+	for <qemu-arm@nongnu.org>; Fri, 16 Nov 2018 06:51:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=dkNDc8vJLRX0r1dHMILsPe2pXmELTrO5pJ2baxw2BAw=;
-	b=AXo+7ffUfc5WHisJdEeudr/oBg4UEniM28kI5BUbEXtgrqeONCt0MLqZcGQRpLPXqP
-	LFT76bl04J71bBvCmGOFpfWgSfA0xYxQdlzPYKSSOdPRZq1hkHZ9cU0hvhfND1ZtGD/D
-	Oqd6iotfNttuJgjHkE5sa6UGOwyUR3Y+OD3tM=
+	:cc; bh=YP/35K0lYm4uFdT8+q1D9h/ee64jqjT+/GPEVe/MkaU=;
+	b=SAa1UyCW1nj2rZ36idK1cPl5EYYSsrEpHN/zVDlfkllEn8pWpUhHJUc70H02jP9LBH
+	szPXtqYRhz+mBgKrp633d9WPkM8+R4EQteSRigE0i62/UGI6fZheG+m4cECs70vdCuMj
+	5VZOrcaHvxfhPrPxjHWC4V2wMmVYM2G0xvmW8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc;
-	bh=dkNDc8vJLRX0r1dHMILsPe2pXmELTrO5pJ2baxw2BAw=;
-	b=gSw0XGd9ryQRewz6Vgr7G/VuiMVg9fA0VHcY4epbys0h86biLNGkuqTGwRJdALG7+c
-	IvGabx7ASQMWAIDOp3KQ0MQkIuHp00ogP1iZLvhbs7WwF3Gn6Mt1SHOza64mSDt0hKfi
-	r16Nso3FyGCJhaeQil3yeHGr/rFwFfiwOnTX0RyFR08QR71aBllHy7AGjOs1dKs6vRpX
-	GS0pNZAKc0Z3cHPgLu1wlnENGpflWZoSPjONHZKmHIXIrZvMmBHUiP1PGdejBcf7D/jm
-	Vc+ps6e4GmAbD5MSftTDKHK1gFpx3Je81u4HRoQHXtmo5m1Su7iVm5XDx0hxgWiSpj+m
-	QJng==
-X-Gm-Message-State: AA+aEWa/NdVm7+6XC52rHMqsxhoUTiJP5SKIZl47JDG3e6KQnmCkxyub
-	MzkqnyjDUPnIZI+/XjvQT+dLXzXBycZTwiHqbjIyFg==
-X-Received: by 2002:a05:6830:1115:: with SMTP id
-	w21mr832580otq.316.1542379398689; 
-	Fri, 16 Nov 2018 06:43:18 -0800 (PST)
+	bh=YP/35K0lYm4uFdT8+q1D9h/ee64jqjT+/GPEVe/MkaU=;
+	b=uYm8xfWQU8ZmIstJ1OaDalEWvoU+7ZyCTJxdhOL/wmBpmejXYdp7a1mnQetaCQhVdx
+	IX8JbVJv65KgEtUgTytRbg+kU77uSrPqV9uQVfOO1MVjQ16ym9YzhvVM6Rj5cjRASSdV
+	bE8mlIThLrm21yK4H5hh1QTBC1XQcQuStYY/HeCwz3UMCJ+ZcfbYGPfZe8aXsu2AyAB0
+	Tzqm7uu6kRJdhY9q7wHR8gslrcFP6MMaevhoO2VlimFZSaipDfky1CLa3OqDx50eFpo8
+	IGFSKqYN7moAFawDYOs5MEPe0ANPuEpQss5TOISPNM7VTeLjDL/4VHlQMnx4H+Qu2rUB
+	qELw==
+X-Gm-Message-State: AGRZ1gK33cnjcBvViSG+4sWPY4NKis8YpjhkiqAZfXzWB7DzYSrgvb3l
+	+a99xas78iHUKcEUwpQOIqbbaUqX/AnxtlCZOVLBDg==
+X-Received: by 2002:aca:fd12:: with SMTP id
+	b18-v6mr1152143oii.337.1542379879459; 
+	Fri, 16 Nov 2018 06:51:19 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Fri, 16 Nov 2018 06:42:58
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Fri, 16 Nov 2018 06:50:58
 	-0800 (PST)
-In-Reply-To: <20181105185046.2802-2-aaron@os.amperecomputing.com>
+In-Reply-To: <20181105185046.2802-3-aaron@os.amperecomputing.com>
 References: <20181105185046.2802-1-aaron@os.amperecomputing.com>
-	<20181105185046.2802-2-aaron@os.amperecomputing.com>
+	<20181105185046.2802-3-aaron@os.amperecomputing.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 16 Nov 2018 14:42:58 +0000
-Message-ID: <CAFEAcA_M=KfiFdtVbyuiFPfAh1r+p=vQT+CHBpRNdiqPBxN_4g@mail.gmail.com>
+Date: Fri, 16 Nov 2018 14:50:58 +0000
+Message-ID: <CAFEAcA-ryywQJsequ9F2Yhb2So0U5XuojF5B2o6ttPA3hN732Q@mail.gmail.com>
 To: Aaron Lindsay <aaron@os.amperecomputing.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-arm] [PATCH v7 01/12] migration: Add post_save function
- to VMStateDescription
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-arm] [PATCH v7 02/12] target/arm: Reorganize PMCCNTR
+ accesses
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,32 +105,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Michael Spradling <mspradli@codeaurora.org>,
+Cc: Aaron Lindsay <alindsay@codeaurora.org>,
+	Michael Spradling <mspradli@codeaurora.org>,
 	Digant Desai <digantd@codeaurora.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
 	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	Aaron Lindsay <aclindsa@gmail.com>,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>
+	Aaron Lindsay <aclindsa@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 21ICApX9vvZ4
+X-TUID: 2QqZQw2pZvfl
 
 On 5 November 2018 at 18:51, Aaron Lindsay <aaron@os.amperecomputing.com> wrote:
-> In some cases it may be helpful to modify state before saving it for
-> migration, and then modify the state back after it has been saved. The
-> existing pre_save function provides half of this functionality. This
-> patch adds a post_save function to provide the second half.
+> pmccntr_read and pmccntr_write contained duplicate code that was already
+> being handled by pmccntr_sync. Consolidate the duplicated code into two
+> functions: pmccntr_op_start and pmccntr_op_finish. Add a companion to
+> c15_ccnt in CPUARMState so that we can simultaneously save both the
+> architectural register value and the last underlying cycle count - this
+> ensures time isn't lost and will also allow us to access the 'old'
+> architectural register value in order to detect overflows in later
+> patches.
 >
+> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
 > Signed-off-by: Aaron Lindsay <aclindsa@gmail.com>
-> Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> ---
 
+
+>  /**
+> - * pmccntr_sync
+> + * pmccntr_op_start/finish
+> + * @env: CPUARMState
+> + *
+> + * Convert the counter in the PMCCNTR between its delta form (the typical mode
+> + * when it's enabled) and the guest-visible value. These two calls must always
+> + * surround any action which might affect the counter.
+> + */
+> +void pmccntr_op_start(CPUARMState *env);
+> +void pmccntr_op_finish(CPUARMState *env);
+> +
+> +/**
+> + * pmu_op_start/finish
+>   * @env: CPUARMState
+>   *
+> - * Synchronises the counter in the PMCCNTR. This must always be called twice,
+> - * once before any action that might affect the timer and again afterwards.
+> - * The function is used to swap the state of the register if required.
+> - * This only happens when not in user mode (!CONFIG_USER_ONLY)
+> + * Convert all PMU counters between their delta form (the typical mode when
+> + * they are enabled) and the guest-visible values. These two calls must
+> + * surround any action which might affect the counters, and the return value
+> + * from pmu_op_start must be supplied as the second argument to pmu_op_finish.
+>   */
+> -void pmccntr_sync(CPUARMState *env);
+> +void pmu_op_start(CPUARMState *env);
+> +void pmu_op_finish(CPUARMState *env);
+
+The comment says that pmu_op_start returns a value and pmu_op_finish
+has a second argument, but the prototypes disagree...
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-David: do you want to provide a reviewed-by/acked-by for
-the migration vmstate API change ?
+so if this turns out to be the only problem I can fix it up when
+I apply it to my tree, if you provide suitable new comment text.
 
 thanks
 -- PMM

@@ -1,16 +1,16 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp810132wrw;
-        Fri, 16 Nov 2018 12:09:33 -0800 (PST)
-X-Google-Smtp-Source: AJdET5eMudOR10OVHAy4Cj5moicaQP7Ot5ht0Ik8ggQEiP15qR8gEkjwMZhGYoNri7WfaHro7Ucq
-X-Received: by 2002:a37:90e:: with SMTP id 14mr11332943qkj.63.1542398973582;
-        Fri, 16 Nov 2018 12:09:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542398973; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp860528wrw;
+        Fri, 16 Nov 2018 13:07:01 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fGjx96QvfDSoDnuLaaUFdN6faVIF4D6vQbnccn5IE5M2mS4IoR/AnFGQc0h+6jQnWtr5rE
+X-Received: by 2002:ad4:4391:: with SMTP id s17mr12023422qvr.32.1542402420968;
+        Fri, 16 Nov 2018 13:07:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542402420; cv=none;
         d=google.com; s=arc-20160816;
-        b=uV6huqDsrp0R6YkHvv3WMANJubjsWvbnENTnVi8NbMo5hYbqVbXFFEirfOKrq4yjjH
-         KJzaavH+BGlVsmC7phJcoSu1+XLinkLTXb+fOOBTzZTfUkI7qBCGCqzv5ZNyVKkZnPgK
-         CBAJX+83WKpRIz/shXDRtyOCP5yR28zR3vEyGnM1AQ4LANhPVqfjQKsqCtadjKlV79D6
-         HXZTcYYux22I75DajnL1jYto2kC9PcekDPT/ogwmZ6LFsIpEnBCu78ychbbxlVMTntUT
-         H5EYgAAQGLwl9Sg1POkP7JsGz1SMJXguDFjI9Qll8+hu6SS4bw/q3bZbY7TaJRchVexp
-         9LMg==
+        b=o9JOslWyNE9/l7KIoUmXIkt95ZfoHMw23ErIPolDY2mToKhmJrRTaEYfd+VLzq26kC
+         Z7NIgsfPXaP+XV/dTGIBrevF9Ckw416bGdHX/wjh7QxAFDAyH4Lqb4++8M+9powq8/MZ
+         cFboLkJ8CBGrpZbHrVoHZ4zPCpSVOAtmKaY/8f5IDob8VXdlnzsZAI41rcSAhf2FDTYB
+         m1hSC2pVUXb30MMYGhWoBSNRR7GpGPT+20hU+RFqBfRhqCPTO0ucbQc8m20VaTMERLGr
+         CJfkAx5JD+yMj3m2GiMj7uZSxxciz72oqMGNl44KIKDCXbkXCQqfXXuu0y4Q8SxnPt9D
+         77HA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
@@ -18,122 +18,123 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc
          :spamdiagnosticoutput:content-language:accept-language:in-reply-to
          :references:message-id:date:thread-index:thread-topic:to:from
          :dkim-signature;
-        bh=Yzat8WxU1EOhARz5nwvGU8NJEjOhLylHJ1BY/9gbxIo=;
-        b=sTz7fOfueYs8sULbNSvPhwmM9NoTa0ltagF254LK4ByyuSLhJSTQCDYQB9TUwwYm+A
-         sQ2P4aJmvP8rwjiFV2+XyNNqeyCGUjyY0j6dwIBL1hhWcTg6P9HgIThfcVfAF3hZqvIo
-         iW2g09DhKLYgRB/78TjNUOtbS1Wh8NJFErgVtyIJTme5avVuLX1FmymufPBnZbYxyfvc
-         /HENZUHvv0QU3GmGq63ru/Z533gp1woZSqgy6scAQ+I7o4hesDC2mH2eXiaWYrIdDLFv
-         Yas+OKZWTEXBd8Kubxj9gUZbtiynkMfHhna8O/W4nt+GkDVsmm/WMr0gfG4a/ojL6dla
-         dCwA==
+        bh=+Xo8IAvhZN9Ta7j3F3i4iJP/7r4V65tj40P5L8RDd2w=;
+        b=v1zWH993ffaEQL3rVRKrkyJFrzv7CEot6AM0FQC91LngfA3qWQ/bbZtudQU7HGe6qS
+         qIWKCXAfeEWdqscxX4RU0MwU8WK0/ZUvAeX5t2LR6jcTbru8GMSXddKmehaaUuqFqq9Q
+         1BcFy0w3ivosa/SlrJFDHH+0yAUmshPNcwLXt1gxN6olXgjDN+YIzs8K2L6Mt+mxG+Nz
+         NEQWuzQHbTZWo3pdyeZR883UQ1N5Pq5w33za2ZXMpRPkEWgGIp5hsC02dr9+s4Yn07fs
+         25Y7quTMslKDyv6iWW59RRKZFDWpF/BLsQ4z8mQuc1YMpbgcG2rDIvke5YVtJVxkmCi8
+         CGQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b="E4/fGflv";
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=n8Yi0z7r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k1si111346qvf.53.2018.11.16.12.09.33
+        by mx.google.com with ESMTPS id 16si4916743qve.150.2018.11.16.13.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 12:09:33 -0800 (PST)
+        Fri, 16 Nov 2018 13:07:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b="E4/fGflv";
+       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=n8Yi0z7r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:46874 helo=lists.gnu.org)
+Received: from localhost ([::1]:46995 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNkQm-0006L5-SB
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 15:09:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44161)
+	id 1gNlKO-0002XX-A4
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 16:07:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gNkQd-0006Kn-T6
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 15:09:24 -0500
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gNlKG-0002XO-W7
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 16:06:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gNkQZ-0004Lw-05
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 15:09:22 -0500
-Received: from mail-eopbgr780103.outbound.protection.outlook.com
-	([40.107.78.103]:4192
+	(envelope-from <aaron@os.amperecomputing.com>) id 1gNlKC-00031J-2q
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 16:06:52 -0500
+Received: from mail-eopbgr780108.outbound.protection.outlook.com
+	([40.107.78.108]:36960
 	helo=NAM03-BY2-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
-	id 1gNkQY-0004KV-1K; Fri, 16 Nov 2018 15:09:18 -0500
+	id 1gNlKB-0002zU-Pd; Fri, 16 Nov 2018 16:06:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=Yzat8WxU1EOhARz5nwvGU8NJEjOhLylHJ1BY/9gbxIo=;
-	b=E4/fGflvFDbv9Nop+TP+RT6lz63B7qftuEagjm8onklS10jzHWe9z65HziE4ZZuhhIm/Uv/A3OqGeaIsvO7PqrQmr6N08JN5XDoVyIFpdQbgyGO0fmYjWhIWdpO+m+eEA53spwY4GH4nxoqDn1PxM7FnIFG77/Zg8Y6GdiI1NsE=
+	bh=+Xo8IAvhZN9Ta7j3F3i4iJP/7r4V65tj40P5L8RDd2w=;
+	b=n8Yi0z7rFSGi1nbRrJnOiaw1omVzNZ4XJKT4nhkrvPPLB1/XgBQXR9vqEd/L8GW8EhfViGZa54MxEHjGbWeZNTPmstKIKVGI9xv2rsf94v6y7/2P6ga8djGLEFq6YvgYJDD9KSG/vLUaqQ+lLOJAVnSjBJ+KV7zFBOVSGlSpBQ4=
 Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
-	DM6PR01MB5164.prod.exchangelabs.com (20.176.121.209) with Microsoft
-	SMTP
+	DM6PR01MB5195.prod.exchangelabs.com (20.176.122.32) with Microsoft SMTP
 	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1339.20; Fri, 16 Nov 2018 20:09:13 +0000
+	15.20.1339.20; Fri, 16 Nov 2018 21:06:44 +0000
 Received: from DM6PR01MB4825.prod.exchangelabs.com
 	([fe80::d5ed:ce81:19eb:c9ea]) by DM6PR01MB4825.prod.exchangelabs.com
 	([fe80::d5ed:ce81:19eb:c9ea%5]) with mapi id 15.20.1294.045;
-	Fri, 16 Nov 2018 20:09:13 +0000
+	Fri, 16 Nov 2018 21:06:44 +0000
 From: Aaron Lindsay <aaron@os.amperecomputing.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [PATCH v7 07/12] target/arm: Add array for supported PMU events, 
-	generate PMCEID[01]
-Thread-Index: AQHUdTigFzoivX0Aakiay0YA2QVOXaVSkYGAgABUfwA=
-Date: Fri, 16 Nov 2018 20:09:13 +0000
-Message-ID: <20181116200904.GE23658@quinoa.localdomain>
+Thread-Topic: [PATCH v7 03/12] target/arm: Swap PMU values before/after
+	migrations
+Thread-Index: AQHUdTie+eZYbSFIzE2VUuP1qr4hf6VSjcQAgAAVNICAAAnqAIAASTCA
+Date: Fri, 16 Nov 2018 21:06:44 +0000
+Message-ID: <20181116210635.GF23658@quinoa.localdomain>
 References: <20181105185046.2802-1-aaron@os.amperecomputing.com>
-	<20181105185046.2802-8-aaron@os.amperecomputing.com>
-	<CAFEAcA8F5ZhPHU2ZC53xeXOEuR2NqzwHqjG9858VELjorwYj5g@mail.gmail.com>
-In-Reply-To: <CAFEAcA8F5ZhPHU2ZC53xeXOEuR2NqzwHqjG9858VELjorwYj5g@mail.gmail.com>
+	<20181105185046.2802-4-aaron@os.amperecomputing.com>
+	<CAFEAcA9va2QarkMFPWNMf43u_GRDoajM-=E0dwinVEgaqRgjHQ@mail.gmail.com>
+	<20181116160909.GD23658@quinoa.localdomain>
+	<CAFEAcA-FMcrYXfD97G4ezSOpvWExA5s8X+gVzbV1ojYg9vq_gw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-FMcrYXfD97G4ezSOpvWExA5s8X+gVzbV1ojYg9vq_gw@mail.gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-clientproxiedby: BN6PR2201CA0034.namprd22.prod.outlook.com
-	(2603:10b6:405:5e::47) To DM6PR01MB4825.prod.exchangelabs.com
+x-clientproxiedby: BN6PR0101CA0032.prod.exchangelabs.com
+	(2603:10b6:405:2a::45) To DM6PR01MB4825.prod.exchangelabs.com
 	(2603:10b6:5:6b::30)
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=aaron@os.amperecomputing.com; 
 x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [216.85.170.153]
 x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; DM6PR01MB5164;
-	6:BjK+2IWYP+WuoLXQ712HWxveT4NehZCBxdsVWJFYuVnYW320lYFUWqLmosHDz7kgP+Y3WqoY13Z9vtJCGcsK6C5zBZ+wt57x4iBBoU36N6pMeXSHjiEbgT4s0ceM3JlLYTdC1rSOwjZPDSpoERFKJzIDJXj4IlTmVZkDtcptfUGo+NieceuK1r2iuHyU8NrfBd3IL2oCybFwRxXiLm//yKgZDv0z6jmJ0K4aY1pwD+6WIfCn5iuxSG6XBRM/xKUnCKL8Fb7jMudVWpxVmKRdaceZJuS/gtAsnkbdVhzmjS/u893NR8Kxyj28sqFcG0xadUcUdLhHDT+3g52Hs5Q9LJ2C5t4XBMCk30lO2pe0YJs9qmy1awYnxggKiSGUoM35fj+/rdvSXlRLUewsiht7zy326lTRJcSVQW+6yTg571RcjoId9W52OwqrM3Vvg5O9QDHziJAAdfvl8QcyJ4qTgQ==;
-	5:Q2+YRB2eEHT2ID5hnrPfISwtVCBIfhJ9WfDlJPVfYr5wjuBWaOWwZU1UpeU3/os/SdWbyCCYfJZqT1SRaGYAD3etMIz48kKlyQgkX+XbnnrlzNBKCi9ASWSiphfR7i+Pnc5yKuPyT0opc/cSNamDoHg+Q12866TKu11xOlOY338=;
-	7:ksDJadIf7pp+tPkkSbwqBGMUvOwALjkXwhuvPZ+vXTFhkbksRaI/i0GebsbEdzG1Wty3QyVgePPQ3YFn7JzdB1sw1xBl6M8ZmIpX1teMpl2gWnDfHbbZGswOksSqmh6a5Z6RQWkiU8l5PAzOlISCXQ==
-x-ms-office365-filtering-correlation-id: 793c916a-74f7-49dc-f382-08d64bff60f1
+x-microsoft-exchange-diagnostics: 1; DM6PR01MB5195;
+	6:yLh9SxUNSe5mGFO2ZLvh+LuQGjlP5PQLqwJR6xu6uwVRMc7TSdzJQKL2jrbg4Kn9Kpa5BbEHJ8OkdgHq1w08Ct29rMe2FICi9Vb2orTbC1FoZfNEvn1Fn7pidlpaKK4AH1CPXkoDkLY2haxfO/zXFMKsWr9uRDSwi130btBRXXNQppm4nqzC3MnDFt9VtLyY4uaQ51fGh7vyJErxUqlLbAoKdwQrr4AlZE8kUG0fLfyeXAoYO5fQ9nQHtWHVe383YqJDO5/ilnkBOwv9soDLndJxGc/Wz9E3s/B1h6lIYDS/jbK5kEeYilemfYrbWyt12BX9PuV47qkcQWOYdlNunjQkBCILHbMGDtFA90GQ1FC+sJ++wCXuVAkQZVeD1An0TVB43GRH+GlL89/UVnTB/lcKmuOjdCQKLnLuJZ3M5DPdAn6t4pqOVdSkaNcEKjIVhbH6orG0bbu5skWjRfbFBQ==;
+	5:1OARG6gAA9JjquJGh+vJSu7a/c8fjTd1zArlt4TdgfMvXaKXPLbXArN+akUJv5+VE7JA4/KURDBL7iqE+6D9XYnOTpNZTRJwNQd0TVIoSZ28YS1bDvT7Jb/UuprxppG1yCBa0sNqv5c8T1fj53tzmd+er137lYl/7Q9LOg2DLLY=;
+	7:3qsi+CNbZnDgpJ39VeDWhLrENCAcIO6qzvaojDoW1p3Z09/x69xlbkz7gFgazV58GzUGQjRkbOMyvzGSnpaS+J5256z2ZgX6b1HkMJoeCujqHDolGGFKnEUwQ2XnnAXVINe08tnYIAiQG2h5az1vhA==
+x-ms-office365-filtering-correlation-id: 0bbb2543-c223-486b-ec07-08d64c076986
 x-microsoft-antispam: BCL:0; PCL:0;
 	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060)(7193020);
-	SRVR:DM6PR01MB5164; 
-x-ms-traffictypediagnostic: DM6PR01MB5164:
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=aaron@os.amperecomputing.com; 
-x-microsoft-antispam-prvs: <DM6PR01MB51640B490F4567888017ECA08ADD0@DM6PR01MB5164.prod.exchangelabs.com>
+	SRVR:DM6PR01MB5195; 
+x-ms-traffictypediagnostic: DM6PR01MB5195:
+x-microsoft-antispam-prvs: <DM6PR01MB5195AF6A2673FE80242A84A48ADD0@DM6PR01MB5195.prod.exchangelabs.com>
 x-ms-exchange-senderadcheck: 1
 x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(93006095)(93001095)(10201501046)(3002001)(3231415)(944501410)(52105112)(148016)(149066)(150057)(6041310)(20161123562045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123560045)(20161123558120)(20161123564045)(201708071742011)(7699051)(76991095);
-	SRVR:DM6PR01MB5164; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB5164; 
+	RULEID:(8211001083)(6040522)(2401047)(5005006)(8121501046)(3002001)(10201501046)(93006095)(93001095)(3231415)(944501410)(52105112)(148016)(149066)(150057)(6041310)(20161123564045)(20161123558120)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(201708071742011)(7699051)(76991095);
+	SRVR:DM6PR01MB5195; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB5195; 
 x-forefront-prvs: 0858FF8026
 x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(396003)(136003)(39840400004)(346002)(366004)(376002)(124014002)(199004)(189003)(476003)(186003)(478600001)(4326008)(486006)(229853002)(71200400001)(1076002)(9686003)(71190400001)(97736004)(6512007)(6486002)(26005)(316002)(8676002)(7416002)(446003)(76176011)(14454004)(5660300001)(52116002)(256004)(66066001)(11346002)(14444005)(99286004)(105586002)(305945005)(33656002)(25786009)(3846002)(39060400002)(33896004)(53546011)(6116002)(6506007)(386003)(106356001)(81166006)(6916009)(6246003)(7736002)(53936002)(2900100001)(8936002)(54906003)(2906002)(6436002)(81156014)(102836004)(86362001)(68736007);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5164;
+	SFS:(10019020)(136003)(396003)(346002)(39840400004)(376002)(366004)(199004)(189003)(1076002)(7416002)(76176011)(316002)(102836004)(6512007)(6916009)(68736007)(33656002)(476003)(99286004)(6116002)(4326008)(3846002)(386003)(486006)(54906003)(33896004)(53546011)(39060400002)(6506007)(9686003)(446003)(478600001)(52116002)(11346002)(8936002)(6486002)(71200400001)(305945005)(256004)(66066001)(81156014)(81166006)(14444005)(106356001)(53936002)(105586002)(7736002)(25786009)(71190400001)(2906002)(6436002)(26005)(86362001)(8676002)(5660300001)(186003)(14454004)(97736004)(229853002)(2900100001)(93886005)(6246003);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5195;
 	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
 	PTR:InfoNoRecords; A:0; MX:1; 
 received-spf: None (protection.outlook.com: os.amperecomputing.com does not
 	designate permitted sender hosts)
-x-microsoft-antispam-message-info: 8aGCEqoxKJKjqeYCWSvn2RLA2DwWDaVYkxAVFEeAMtoOEybdVra9CDTjbdwpizRsfCQUn22hlgrRUIVwBEesq/omWHu3V5jkZNwMCxGKYj4wy9YZg2coZ0/nrAn7/aNaCnRYT3ZTLBlCgHJlhpATzfEkbM5ZgHo/XNwYQEGCOymPLU+hU8h2AyayFe9FpZZxxV2NRDSvMq0/OtBIfxMJa6pQ200oyopmYQppoEk/k4afIcrnw10mynmEAg38vksPxKr9auqFORzUOLBO3IIODxyD5rzs7PkkdWFfggsR/wZkTpXJ6HIDPVzPRr3RJSKJev7aIiOkpaQv17J9XpDtLE9CDPPxwOtTnsYnQSR020Q=
+x-microsoft-antispam-message-info: RvP5EomjcKPLfTKEQJrQWhUTltbKzrscF9hAyyXiHA8YtCgWEsoLIP9nfZ8D//M977ztKl/q28FJhd1B6beucreoAHQU0L5Dejg55A+bbhqK0rj+dUmgbXQ1b+eaQGu51mvlrCEtg3unfnQ6xjcdeA07fabNEFsEc1xKYdA9m8XhBpWVN6OD7XA8zHFyiurHXYpFwNPT7HSS2NVXbah6Yvt+fubFtNLZYBkU93jUb6oZgIW0ZpppWuQ3FTPQE9wKUta2/t4cKbfsHfZNaxShAX3pDBlrB7tohb0TLyP+OIQVl2qVSm1uTSjd7iMLnvPcmKhrwuSCwRqKvmJS6UGz1CRxSZ00FyL0BtjNqEfphrY=
 spamdiagnosticoutput: 1:99
 spamdiagnosticmetadata: NSPM
 Content-Type: text/plain; charset="us-ascii"
-Content-ID: <689726F3A8957D40976F9424C435FD0D@prod.exchangelabs.com>
+Content-ID: <3E5F93F76303B544983D763443E63D25@prod.exchangelabs.com>
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 793c916a-74f7-49dc-f382-08d64bff60f1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2018 20:09:13.8623 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0bbb2543-c223-486b-ec07-08d64c076986
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2018 21:06:44.3591 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5164
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5195
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.78.103
-Subject: Re: [Qemu-arm] [PATCH v7 07/12] target/arm: Add array for supported
- PMU events, generate PMCEID[01]
+X-Received-From: 40.107.78.108
+Subject: Re: [Qemu-arm] [PATCH v7 03/12] target/arm: Swap PMU values
+ before/after migrations
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -145,86 +146,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aaron Lindsay <alindsay@codeaurora.org>,
-	Michael Spradling <mspradli@codeaurora.org>,
+Cc: Michael Spradling <mspradli@codeaurora.org>,
 	Digant Desai <digantd@codeaurora.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
 	Alistair Francis <alistair.francis@xilinx.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	Aaron Lindsay <aclindsa@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NAcKgd+wcTzT
+X-TUID: FgbbkggrrKQs
 
-On Nov 16 15:06, Peter Maydell wrote:
-> On 5 November 2018 at 18:51, Aaron Lindsay <aaron@os.amperecomputing.com>=
- wrote:
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -957,9 +957,19 @@ static void arm_cpu_realizefn(DeviceState *dev, Er=
-ror **errp)
-> >      if (!cpu->has_pmu) {
-> >          unset_feature(env, ARM_FEATURE_PMU);
-> >          cpu->id_aa64dfr0 &=3D ~0xf00;
-> > -    } else if (!kvm_enabled()) {
-> > -        arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0);
-> > -        arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
-> > +    }
-> > +    if (arm_feature(env, ARM_FEATURE_PMU)) {
-> > +        uint64_t pmceid =3D get_pmceid(&cpu->env);
-> > +        cpu->pmceid0 =3D extract64(pmceid, 0, 32);
-> > +        cpu->pmceid1 =3D extract64(pmceid, 32, 32);
-> > +
-> > +        if (!kvm_enabled()) {
-> > +            arm_register_pre_el_change_hook(cpu, &pmu_pre_el_change, 0=
-);
-> > +            arm_register_el_change_hook(cpu, &pmu_post_el_change, 0);
-> > +        }
-> > +    } else {
-> > +        cpu->pmceid0 =3D 0x00000000;
-> > +        cpu->pmceid1 =3D 0x00000000;
-> >      }
+On Nov 16 16:44, Peter Maydell wrote:
+> On 16 November 2018 at 16:09, Aaron Lindsay
+> <aaron@os.amperecomputing.com> wrote:
+> > On Nov 16 14:53, Peter Maydell wrote:
+> >> On 5 November 2018 at 18:51, Aaron Lindsay <aaron@os.amperecomputing.c=
+om> wrote:
+> >> > Because of the PMU's design, many register accesses have side effect=
+s
+> >> > which are inter-related, meaning that the normal method of saving CP
+> >> > registers can result in inconsistent state. These side-effects are
+> >> > largely handled in pmu_op_start/finish functions which can be called
+> >> > before and after the state is saved/restored. By doing this and addi=
+ng
+> >> > raw read/write functions for the affected registers, we avoid
+> >> > migration-related inconsistencies.
+> >> >
+> >> > Signed-off-by: Aaron Lindsay <aclindsa@gmail.com>
+> >>
+> >> > --- a/target/arm/machine.c
+> >> > +++ b/target/arm/machine.c
+> >> > @@ -604,6 +604,8 @@ static int cpu_pre_save(void *opaque)
+> >> >  {
+> >> >      ARMCPU *cpu =3D opaque;
+> >> >
+> >> > +    pmu_op_start(&cpu->env);
+> >> > +
+> >> >      if (kvm_enabled()) {
+> >> >          if (!write_kvmstate_to_list(cpu)) {
+> >> >              /* This should never fail */
+> >> > @@ -625,6 +627,20 @@ static int cpu_pre_save(void *opaque)
+> >> >      return 0;
+> >> >  }
+> >> >
+> >> > +static int cpu_post_save(void *opaque)
+> >> > +{
+> >> > +    ARMCPU *cpu =3D opaque;
+> >> > +    pmu_op_finish(&cpu->env);
+> >> > +    return 0;
+> >> > +}
+> >> > +
+> >> > +static int cpu_pre_load(void *opaque)
+> >> > +{
+> >> > +    ARMCPU *cpu =3D opaque;
+> >> > +    pmu_op_start(&cpu->env);
+> >> > +    return 0;
+> >> > +}
+> >> > +
+> >> >  static int cpu_post_load(void *opaque, int version_id)
+> >> >  {
+> >> >      ARMCPU *cpu =3D opaque;
+> >> > @@ -672,6 +688,8 @@ static int cpu_post_load(void *opaque, int versi=
+on_id)
+> >> >      hw_breakpoint_update_all(cpu);
+> >> >      hw_watchpoint_update_all(cpu);
+> >> >
+> >> > +    pmu_op_finish(&cpu->env);
+> >> > +
+> >> >      return 0;
+> >> >  }
+> >>
+> >> This will end up calling pmu_op_start() and pmu_op_finish()
+> >> even if the guest is running KVM and we're not using the
+> >> TCG code. Is that what you intended?
+> >
+> > The counters are still stored in their 'difference' format for KVM, so =
+I
+> > think this still makes sense. Or is there something I'm missing about
+> > how this will interact with KVM? I'm much more familiar with TCG.
 >=20
-> This now sets one of the ID registers for "we have no
-> PMU" in the first "if (!cpu->has_pmu)" statement (id_aa64dfr0),
-> and some of them (pmceid0, pcmeid1) in this else clause at the
-> end. We should put them all in the same place.
+> For KVM the counter values are stored in the kernel, until the
+> write_kvmstate_to_list() function (which is performed after your
+> pmu_op_start() call in cpu_pre_save()) writes them from the
+> kernel into the cpreg_vmstate array. Similarly on load they
+> go straight from the vmstate array into the kernel registers.
+> It's not clear to me what the pmu_op_start()/finish() calls
+> are intended to do in the KVM case, and they look at fields
+> in the env->cp15 struct which will not have valid values at
+> this point.
 
-I agree that would be cleaner - I'll move the id_aa64dfr0 update to
-later else clause.
+Oh, I had a fundamental misunderstanding and expected the registers
+would be in env->cp15 when this was called, even for KVM.
 
-> > +/*
-> > + * get_pmceid
-> > + * @env: CPUARMState
-> > + *
-> > + * Return the PMCEID[01] register values corresponding to the counters=
- which
-> > + * are supported given the current configuration (0 is low 32, 1 is hi=
-gh 32
-> > + * bits)
-> > + */
-> > +uint64_t get_pmceid(CPUARMState *env);
->=20
-> This doesn't look like the right API, because in AArch64
-> PMCEID0_EL0 and PMCEID1_EL0 are both 64-bit registers,
-> so you can't fit them both into a single uint64_t.
+After looking into this more, it seems like my pmu_op_* calls here
+should be contained in `if (!kvm_enabled())` blocks. It doesn't seem
+like anything bad would happen otherwise, but it also isn't necessary or
+helpful to make those calls.
 
-Heh, I think I started working on this long enough ago that I was using
-a copy of the ARMv8.0 ARM - before the statistical profiling extensions
-were announced. I believe those are the only currently-defined common
-events >=3D 0x4000, so they're the only bits defined in the upper 32 bits
-of PMCEID[01].
-
-Now that I look at it, pmceid[01] are currently only defined as
-uint32_t, and we don't have PMCEID[23] for the high bits for AArch32.
-Perhaps that should be a separate patch.
-
-At any rate, I'll plan to update this the following signature for the
-next version, where `which` is [01] for which PMCEID is being requested.
-For now I'll probably just put a comment about not supporting the 0x40xx
-events, since I don't know that coming up with a sparse array is worth
-it, but the signature will be appropriate if we add support later:
-
-uint64_t get_pmceid(CPUARMState *env, unsigned which);
+I'll make this change for v8 if you don't have further feedback.
 
 -Aaron

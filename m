@@ -1,84 +1,83 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp563407wrw;
-        Fri, 16 Nov 2018 08:08:20 -0800 (PST)
-X-Google-Smtp-Source: AJdET5d3N28J5fKa+dvCZZLFAV6rBU2g0Bi2ZZloeh7KLLyGDLlOR3I7ccFV5jhyudbFZfsgM38i
-X-Received: by 2002:ac8:160b:: with SMTP id p11mr10671102qtj.113.1542384500572;
-        Fri, 16 Nov 2018 08:08:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542384500; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp587293wrw;
+        Fri, 16 Nov 2018 08:29:38 -0800 (PST)
+X-Google-Smtp-Source: AJdET5c/GMfbDfqvyOorBc7OX69t09xfVQLNJtWzCw2LZlNzaXR2Wv41EwiyizgimWyXbmVuaxZb
+X-Received: by 2002:ac8:5509:: with SMTP id j9mr10413443qtq.287.1542385777979;
+        Fri, 16 Nov 2018 08:29:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542385777; cv=none;
         d=google.com; s=arc-20160816;
-        b=bA8JsMS9DWTRkqoI/2F8NCDReXJseosMMuKU4mX4oZhsmh80yZKx5e5HdqBMVksHy+
-         qPqfPY1rzPEuC2+04TfLTvV0ocjwGyuU4cMlTFRpeH4749QdRyIQ2ypksjW68WeMjL6b
-         46ALMQMjVLn2vTeUC56AbmgKqcDYWKLW3YLAlHl9BfmiKLnA5YGz0UCw+vxpDboMywTy
-         0i9ShMiH8HOXT4wlbZ7CLhTA2Qg3k6SgMOFhmIryb8uN718rmJhm6LiNX+p9fhRSqFqU
-         KAv57GCaubheQFu5qnCMF3sn3abDzvcfaq2lHgpdtIIqyVejnSW0Dr7mBhTCjIuIfNmL
-         Onyg==
+        b=Lay7VOPchb2gMzihPJAzyzB6togcHzvaTDH2Ry6danf/op6fWpDCsG5LZKgO4/MXQI
+         /iZZm4s8LQbe/P1oas3tkOyO99J18ZZXYG3mB1VbD+TUg2gT6htR+QeV7sGU8ut4bFdn
+         iUKFbZo6eJHIziPE5vat0KaSZkF/41GjTIGItzvRI0Hw+Z5lL3BaRqt0hJ05xrAkvCCY
+         ImhS4arHebou1IY49eB0CuVfn53zwhJhoyNvJzOXae8+Gr5ywo/MDXPSZfsBFh7k1nc4
+         J4zd6SPqXYciQcJfC0PYQ1L3gDtkXZV+zUpMqMK2JZlbdVLlBcq8m+cOUh10dEANEtNz
+         XphQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=SDdyHa4NLvOcUzhk/kWiu4bzX2R4Ogt8WjLS9bdNkVk=;
-        b=UVAv/tJ0ZRwZFwItsOwJdxEIVQD6Buxi4Wd9IWsrJiKPrk7X1PP5RpkgotGo9YogEm
-         7+3s3PGWCxzAUfJuIusCWYBiaFDsrZODC5O3v2zaMKDVM52t7IUs8krVaDBR9M85Qec9
-         58POJLBcLZ3YYmtR02/QJdQgVvz/kSjmdT9Zp4tAOurgp/ZZfylzUNr/t+CWTJIpAUkU
-         lwWkChW6svq2dsuBhjPrHlD09suysquc6iXFA9o5uT1PrzGFxekkURR+hGoWPK9daylg
-         vrKkhQzSnBfKWz4D7J34m9NbwXv4ODD3YSkGTtCJ5ABN2/Oj8wm3l6F+hZZItgeG6yX6
-         C5BA==
+        bh=cX2re8ICMgQ9/nt/sVFiSWqV1LuKqP1Laf2uOFTnkQc=;
+        b=pNyOQ5ebiXwiKkyFlTKPKLvyV2sxZbk1PpsVug879kBtRo3naMSpo7S9crIwXqE23m
+         2jTH+xCubFqnmPJoYrNz3jNNtoUfk7pR7XuK5n6d1rQI/mV9iUBE4sZfdbHQyw7jzY1T
+         EQUFz5VQ2OQH86ppetb/Jf1lgwJJwec/lHTd3WwXn15xzxrQQugcx7fQrGDpk8AnVKdY
+         c5vAa6DlD5SBrog59sClx7YUmOQQpgZ0DHY3O0euMDuRy6AN5Rlr4qwIS76n5n37ZchL
+         8rG4XxpwLhS7ja+6eCYIYhUECtphMZuwePtdq9q34z1MpQ9K0ku8vCjig6mLERgu6STx
+         OQbw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h21si2077289qtn.354.2018.11.16.08.08.20
+        by mx.google.com with ESMTPS id z17si157671qvn.203.2018.11.16.08.29.37
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 08:08:20 -0800 (PST)
+        Fri, 16 Nov 2018 08:29:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45514 helo=lists.gnu.org)
+Received: from localhost ([::1]:45633 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNgfL-00061G-Ua
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 11:08:19 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57648)
+	id 1gNgzx-0000v2-EN
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 11:29:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37672)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gNgZr-0001cr-9n
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 11:02:40 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gNgzq-0000ul-Jt
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 11:29:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gNgZp-0005AI-Hw
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 11:02:39 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:58836)
+	(envelope-from <imammedo@redhat.com>) id 1gNgzm-0003cD-Sd
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 11:29:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38738)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gNgZp-00055g-91; Fri, 16 Nov 2018 11:02:37 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	id 1gNgzm-0003bp-KE; Fri, 16 Nov 2018 11:29:26 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CA34882EA;
-	Fri, 16 Nov 2018 16:02:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A41AB30012DF;
+	Fri, 16 Nov 2018 16:29:25 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6AAF5101962A;
-	Fri, 16 Nov 2018 16:02:28 +0000 (UTC)
-Date: Fri, 16 Nov 2018 17:02:26 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 329B9600C2;
+	Fri, 16 Nov 2018 16:29:21 +0000 (UTC)
+Date: Fri, 16 Nov 2018 17:29:19 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181116170226.35385388@redhat.com>
-In-Reply-To: <20181105014047.26447-21-sameo@linux.intel.com>
+Message-ID: <20181116172919.43f3e27d@redhat.com>
+In-Reply-To: <20181105014047.26447-1-sameo@linux.intel.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
-	<20181105014047.26447-21-sameo@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 16 Nov 2018 16:02:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Fri, 16 Nov 2018 16:29:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 20/24] hw: acpi: Define ACPI
- tables builder interface
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 00/24] ACPI reorganization
+ for hardware-reduced API addition
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,293 +98,146 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dRZYzw4KrBr6
+X-TUID: t+3QOrhYf12l
 
-On Mon,  5 Nov 2018 02:40:43 +0100
+On Mon,  5 Nov 2018 02:40:23 +0100
 Samuel Ortiz <sameo@linux.intel.com> wrote:
 
-> In order to decouple ACPI APIs from specific machine types, we are
-> creating an ACPI builder interface that each ACPI platform can choose to
-> implement.
-> This way, a new machine type can re-use the high level ACPI APIs and
-> define some custom table build methods, without having to duplicate most
-> of the existing implementation only to add small variations to it.
-I'm not sure about motivation behind so high APIs,
-what obvious here is an extra level of indirection for not clear gain.
+> This patch set provides an ACPI code reorganization in preparation for
+> adding a shared hardware-reduced ACPI API to QEMU.
+> 
+> The changes are coming from the NEMU [1] project where we're defining
+> a new x86 machine type: i386/virt. This is an EFI only, ACPI
+> hardware-reduced platform that is built on top of a generic
+> hardware-reduced ACPI API [2]. This API was initially based off the
+> generic parts of the arm/virt-acpi-build.c implementation, and the goal
+> is for both i386/virt and arm/virt to duplicate as little code as
+> possible by using this new, shared API.
+> 
+> As a preliminary for adding this hardware-reduced ACPI API to QEMU, we did
+> some ACPI code reorganization with the following goals:
+> 
+> * Share as much as possible of the current ACPI build APIs between
+>   legacy and hardware-reduced ACPI.
+> * Share the ACPI build code across machine types and architectures and
+>   remove the typical PC machine type dependency.
+> 
+> The patches are also available in their own git branch [3].
+I think, I'm done with reviewing this patchset, to sum up
+thanks for trying generalize acpi parts. It is implemented not
+exactly generic way and patches aren't split perfectly but
+we can work on it.
 
-Yep using table callbacks, one can attempt to generalize
-acpi_setup() and help boards to decide which tables do not build
-(MCFG comes to the mind). But I'm not convinced that acpi_setup()
-could be cleanly generalized as a whole (probably some parts but
-not everything) so it's minor benefit for extra headache of
-figuring out what callback will be actually called when reading code.
+General suggestions for this series:
+  1. Preferably don't do multiple changes within a patch
+     neither post huge patches (unless it's pure code movement).
+     (it's easy to squash patches later it necessary)
+  2. Start small, pick a table generalize it and send as
+     one small patchset. Tables are often independent
+     and it's much easier on both author/reviewer to agree upon
+     changes and rewrite it if necessary.
+  3. when you think about refactoring acpi into a generic API
+     think about it as routines that go into a separate library
+     (pure acpi spec code) and qemu/acpi glue routines and
+      divide them correspondingly.
 
-However if board needs a slightly different table, it will have to
-duplicate an exiting one and then modify to suit its needs.
-
-to me it pretty much looks the same as calling build_foo()
-we use now but with an extra indirection level and then
-duplicating the later for usage in another board in slightly
-different manner.
-
-I agree with Paolo's suggestion to use interfaces for generalization,
-however I'd suggest a fine grained approach for providing board/target
-specific items/actions for generic tables.
-
-For example take a look at AcpiDeviceIfClass interface that is
-implemented by GPE devices and its madt_cpu() method. That should
-simplify generalizing cpu hotplug for arm/virt and also help
-to generalize build_madt(). It's not cleanest impl. by far but
-headed in the right generic direction. I have it on my TODO list to
-do list to generalize acpi parts of build_fadt()/cpu hotplug
-some day as part of the project that adds cpu hotplug to arm/virt board.
-
-GPE/GED device might be not ideal place to implement that interface
-(worked for pc/q35) and may be we should move it to machine level
-as board has access to much more data for building ACPI tables.
-For i386/virt, I'd extend/modify AcpiDeviceIfClass when/where it's
-necessary instead of adding high level table hooks.
-That way generic build_foo() API's would share much more code.
-
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> ---
->  include/hw/acpi/builder.h | 100 ++++++++++++++++++++++++++++++++++++++
->  hw/acpi/builder.c         |  97 ++++++++++++++++++++++++++++++++++++
->  hw/acpi/Makefile.objs     |   1 +
->  3 files changed, 198 insertions(+)
+> [1] https://github.com/intel/nemu
+> [2] https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/reduced.c
+> [3] https://github.com/intel/nemu/tree/topic/upstream/acpi
+> 
+> v1 -> v2:
+>    * Drop the hardware-reduced implementation for now. Our next patch
+>    * set
+>      will add hardware-reduced and convert arm/virt to it.
+>    * Implement the ACPI build methods as a QOM Interface Class and
+>    * convert
+>      the PC machine type to it.
+>    * acpi_conf_pc_init() uses a PCMachineState pointer and not a
+>      MachineState one as its argument.
+> 
+> v2 -> v3:
+>    * Cc all relevant maintainers, no functional changes.
+> 
+> v3 -> v4:
+>    * Renamed all AcpiConfiguration pointers from conf to acpi_conf.
+>    * Removed the ACPI_BUILD_ALIGN_SIZE export.
+>    * Temporarily updated the arm virt build_rsdp() prototype for
+>      bisectability purposes.
+>    * Removed unneeded pci headers from acpi-build.c.
+>    * Refactor the acpi PCI host getter so that it truly is architecture
+>      agnostic, by carrying the PCI host pointer through the
+>      AcpiConfiguration structure.
+>    * Splitted the PCI host AML builder API export patch from the PCI
+>      host and holes getter one.
+>    * Reduced the build_srat() export scope to hw/i386 instead of the
+>      broader hw/acpi. SRAT builders are truly architecture specific
+>      and can hardly be generalized.
+>    * Completed the ACPI builder documentation.
+> 
+> v4 -> v5:
+>    * Reorganize the ACPI RSDP export and XSDT implementation into 3
+>      patches.
+>    * Fix the hw/i386/acpi header inclusions.
+> 
+> Samuel Ortiz (16):
+>   hw: i386: Decouple the ACPI build from the PC machine type
+>   hw: acpi: Export ACPI build alignment API
+>   hw: acpi: The RSDP build API can return void
+>   hw: acpi: Export the RSDP build API
+>   hw: acpi: Implement XSDT support for RSDP
+>   hw: acpi: Factorize the RSDP build API implementation
+>   hw: i386: Move PCI host definitions to pci_host.h
+>   hw: acpi: Export the PCI host and holes getters
+>   hw: acpi: Do not create hotplug method when handler is not defined
+>   hw: i386: Make the hotpluggable memory size property more generic
+>   hw: i386: Export the i386 ACPI SRAT build method
+>   hw: i386: Export the MADT build method
+>   hw: acpi: Define ACPI tables builder interface
+>   hw: i386: Implement the ACPI builder interface for PC
+>   hw: pci-host: piix: Return PCI host pointer instead of PCI bus
+>   hw: i386: Set ACPI configuration PCI host pointer
+> 
+> Sebastien Boeuf (2):
+>   hw: acpi: Export the PCI hotplug API
+>   hw: acpi: Retrieve the PCI bus from AcpiPciHpState
+> 
+> Yang Zhong (6):
+>   hw: acpi: Generalize AML build routines
+>   hw: acpi: Factorize _OSC AML across architectures
+>   hw: acpi: Export and generalize the PCI host AML API
+>   hw: acpi: Export the MCFG getter
+>   hw: acpi: Fix memory hotplug AML generation error
+>   hw: i386: Refactor PCI host getter
+> 
+>  hw/i386/acpi-build.h           |    9 +-
+>  include/hw/acpi/acpi-defs.h    |   14 +
+>  include/hw/acpi/acpi.h         |   44 ++
+>  include/hw/acpi/aml-build.h    |   47 ++
+>  include/hw/acpi/builder.h      |  100 +++
+>  include/hw/i386/acpi.h         |   28 +
+>  include/hw/i386/pc.h           |   49 +-
+>  include/hw/mem/memory-device.h |    2 +
+>  include/hw/pci/pci_host.h      |    6 +
+>  hw/acpi/aml-build.c            |  981 +++++++++++++++++++++++++++++
+>  hw/acpi/builder.c              |   97 +++
+>  hw/acpi/cpu.c                  |    8 +-
+>  hw/acpi/cpu_hotplug.c          |    9 +-
+>  hw/acpi/memory_hotplug.c       |   21 +-
+>  hw/acpi/pcihp.c                |   10 +-
+>  hw/arm/virt-acpi-build.c       |   93 +--
+>  hw/i386/acpi-build.c           | 1072 +++-----------------------------
+>  hw/i386/pc.c                   |  198 +++---
+>  hw/i386/pc_piix.c              |   36 +-
+>  hw/i386/pc_q35.c               |   22 +-
+>  hw/i386/xen/xen-hvm.c          |   19 +-
+>  hw/pci-host/piix.c             |   32 +-
+>  stubs/pci-host-piix.c          |    6 -
+>  hw/acpi/Makefile.objs          |    1 +
+>  stubs/Makefile.objs            |    1 -
+>  25 files changed, 1644 insertions(+), 1261 deletions(-)
 >  create mode 100644 include/hw/acpi/builder.h
+>  create mode 100644 include/hw/i386/acpi.h
 >  create mode 100644 hw/acpi/builder.c
->=20
-> diff --git a/include/hw/acpi/builder.h b/include/hw/acpi/builder.h
-> new file mode 100644
-> index 0000000000..a63b88ffe9
-> --- /dev/null
-> +++ b/include/hw/acpi/builder.h
-> @@ -0,0 +1,100 @@
-> +/*
-> + *
-> + * Copyright (c) 2018 Intel Corporation
-> + *
-> + * This program is free software; you can redistribute it and/or modify =
-it
-> + * under the terms and conditions of the GNU General Public License,
-> + * version 2 or later, as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License=
- for
-> + * more details.
-> + *
-> + * You should have received a copy of the GNU General Public License alo=
-ng with
-> + * this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#ifndef ACPI_BUILDER_H
-> +#define ACPI_BUILDER_H
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/acpi/bios-linker-loader.h"
-> +#include "qom/object.h"
-> +
-> +#define TYPE_ACPI_BUILDER "acpi-builder"
-> +
-> +#define ACPI_BUILDER_METHODS(klass) \
-> +     OBJECT_CLASS_CHECK(AcpiBuilderMethods, (klass), TYPE_ACPI_BUILDER)
-> +#define ACPI_BUILDER_GET_METHODS(obj) \
-> +     OBJECT_GET_CLASS(AcpiBuilderMethods, (obj), TYPE_ACPI_BUILDER)
-> +#define ACPI_BUILDER(obj)                                       \
-> +     INTERFACE_CHECK(AcpiBuilder, (obj), TYPE_ACPI_BUILDER)
-> +
-> +typedef struct AcpiConfiguration AcpiConfiguration;
-> +typedef struct AcpiBuildState AcpiBuildState;
-> +typedef struct AcpiMcfgInfo AcpiMcfgInfo;
-> +
-> +typedef struct AcpiBuilder {
-> +    /* <private> */
-> +    Object Parent;
-> +} AcpiBuilder;
-> +
-> +/**
-> + * AcpiBuildMethods:
-> + *
-> + * Interface to be implemented by a machine type that needs to provide
-> + * custom ACPI tables build method.
-> + *
-> + * @parent: Opaque parent interface.
-> + * @rsdp: ACPI RSDP (Root System Description Pointer) table build callba=
-ck.
-> + * @madt: ACPI MADT (Multiple APIC Description Table) table build callba=
-ck.
-> + * @mcfg: ACPI MCFG table build callback.
-> + * @srat: ACPI SRAT (System/Static Resource Affinity Table)
-> + *        table build callback.
-> + * @slit: ACPI SLIT (System Locality System Information Table)
-> + *        table build callback.
-> + * @configuration: ACPI configuration getter.
-> + *                 This is used to query the machine instance for its
-> + *                 AcpiConfiguration pointer.
-> + */
-> +typedef struct AcpiBuilderMethods {
-> +    /* <private> */
-> +    InterfaceClass parent;
-> +
-> +    /* <public> */
-> +    void (*rsdp)(GArray *table_data, BIOSLinker *linker,
-> +                 unsigned rsdt_tbl_offset);
-> +    void (*madt)(GArray *table_data, BIOSLinker *linker,
-> +                 MachineState *ms, AcpiConfiguration *conf);
-> +    void (*mcfg)(GArray *table_data, BIOSLinker *linker,
-> +                 AcpiMcfgInfo *info);
-> +    void (*srat)(GArray *table_data, BIOSLinker *linker,
-> +                 MachineState *machine, AcpiConfiguration *conf);
-> +    void (*slit)(GArray *table_data, BIOSLinker *linker);
-> +
-> +    AcpiConfiguration *(*configuration)(AcpiBuilder *builder);
-> +} AcpiBuilderMethods;
-> +
-> +void acpi_builder_rsdp(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       unsigned rsdt_tbl_offset);
-> +
-> +void acpi_builder_madt(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       MachineState *ms, AcpiConfiguration *conf);
-> +
-> +void acpi_builder_mcfg(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       AcpiMcfgInfo *info);
-> +
-> +void acpi_builder_srat(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       MachineState *machine, AcpiConfiguration *conf);
-> +
-> +void acpi_builder_slit(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker);
-> +
-> +AcpiConfiguration *acpi_builder_configuration(AcpiBuilder *builder);
-> +
-> +#endif
-> diff --git a/hw/acpi/builder.c b/hw/acpi/builder.c
-> new file mode 100644
-> index 0000000000..c29a614793
-> --- /dev/null
-> +++ b/hw/acpi/builder.c
-> @@ -0,0 +1,97 @@
-> +/*
-> + *
-> + * Copyright (c) 2018 Intel Corporation
-> + *
-> + * This program is free software; you can redistribute it and/or modify =
-it
-> + * under the terms and conditions of the GNU General Public License,
-> + * version 2 or later, as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License=
- for
-> + * more details.
-> + *
-> + * You should have received a copy of the GNU General Public License alo=
-ng with
-> + * this program.  If not, see <http://www.gnu.org/licenses/>.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/module.h"
-> +#include "qom/object.h"
-> +#include "hw/acpi/builder.h"
-> +
-> +void acpi_builder_rsdp(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       unsigned rsdt_tbl_offset)
-> +{
-> +    AcpiBuilderMethods *abm =3D ACPI_BUILDER_GET_METHODS(builder);
-> +
-> +    if (abm && abm->rsdp) {
-> +        abm->rsdp(table_data, linker, rsdt_tbl_offset);
-> +    }
-> +}
-> +
-> +void acpi_builder_madt(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       MachineState *ms, AcpiConfiguration *conf)
-> +{
-> +    AcpiBuilderMethods *abm =3D ACPI_BUILDER_GET_METHODS(builder);
-> +
-> +    if (abm && abm->madt) {
-> +        abm->madt(table_data, linker, ms, conf);
-> +    }
-> +}
-> +
-> +void acpi_builder_mcfg(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       AcpiMcfgInfo *info)
-> +{
-> +    AcpiBuilderMethods *abm =3D ACPI_BUILDER_GET_METHODS(builder);
-> +
-> +    if (abm && abm->mcfg) {
-> +        abm->mcfg(table_data, linker, info);
-> +    }
-> +}
-> +
-> +void acpi_builder_srat(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker,
-> +                       MachineState *machine, AcpiConfiguration *conf)
-> +{
-> +    AcpiBuilderMethods *abm =3D ACPI_BUILDER_GET_METHODS(builder);
-> +
-> +    if (abm && abm->srat) {
-> +        abm->srat(table_data, linker, machine, conf);
-> +    }
-> +}
-> +
-> +void acpi_builder_slit(AcpiBuilder *builder,
-> +                       GArray *table_data, BIOSLinker *linker)
-> +{
-> +    AcpiBuilderMethods *abm =3D ACPI_BUILDER_GET_METHODS(builder);
-> +
-> +    if (abm && abm->slit) {
-> +        abm->slit(table_data, linker);
-> +    }
-> +}
-> +
-> +AcpiConfiguration *acpi_builder_configuration(AcpiBuilder *builder)
-> +{
-> +    AcpiBuilderMethods *abm =3D ACPI_BUILDER_GET_METHODS(builder);
-> +    if (abm && abm->configuration) {
-> +        return abm->configuration(builder);
-> +    }
-> +    return NULL;
-> +}
-> +
-> +static const TypeInfo acpi_builder_info =3D {
-> +    .name          =3D TYPE_ACPI_BUILDER,
-> +    .parent        =3D TYPE_INTERFACE,
-> +    .class_size    =3D sizeof(AcpiBuilderMethods),
-> +};
-> +
-> +static void acpi_builder_register_type(void)
-> +{
-> +    type_register_static(&acpi_builder_info);
-> +}
-> +
-> +type_init(acpi_builder_register_type)
-> diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
-> index 11c35bcb44..2f383adc6f 100644
-> --- a/hw/acpi/Makefile.objs
-> +++ b/hw/acpi/Makefile.objs
-> @@ -11,6 +11,7 @@ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) +=3D acpi-st=
-ub.o
->  common-obj-y +=3D acpi_interface.o
->  common-obj-y +=3D bios-linker-loader.o
->  common-obj-y +=3D aml-build.o
-> +common-obj-y +=3D builder.o
-> =20
->  common-obj-$(CONFIG_IPMI) +=3D ipmi.o
->  common-obj-$(call lnot,$(CONFIG_IPMI)) +=3D ipmi-stub.o
+>  delete mode 100644 stubs/pci-host-piix.c
+> 
 

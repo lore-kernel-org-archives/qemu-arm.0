@@ -1,111 +1,109 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp898072wrw;
-        Fri, 16 Nov 2018 13:51:55 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fuON+lkJEifSydFSi3VaoLHbFBEckh4VEM2jEQB5JTojwzCLwE/yI4SaknL4bwm4dPfwvF
-X-Received: by 2002:a37:a1c1:: with SMTP id k184mr11430552qke.166.1542405115370;
-        Fri, 16 Nov 2018 13:51:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542405115; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp900206wrw;
+        Fri, 16 Nov 2018 13:55:01 -0800 (PST)
+X-Google-Smtp-Source: AJdET5euZ+Zrmu4PKBTx8ARq4Cs9ea5emlo7QT4fAT5So9Hze80DMQDFxnjA8sZWpm41kiUZELhm
+X-Received: by 2002:ac8:2881:: with SMTP id i1mr12355670qti.382.1542405301132;
+        Fri, 16 Nov 2018 13:55:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542405301; cv=none;
         d=google.com; s=arc-20160816;
-        b=sW+OMXAb9fUfDX/YdmB73lA9+wwnS0IXfqt0IQWt5N1NwfZmeqC/VhfCnqm+dv+bA3
-         vKh5H22dQRoa6K7wVycZjoKyFMtc3LWLx4Hnm5fC4K4KJ2rJvW1DoSmp9E9wzERSvNvc
-         H0Na0k5fVQ6v/2G7lV/bpx7vRAKagBmXE+1+/5hXVa62nZJ7Vbza3QRpv753vLW6xB0U
-         PsXbMoJqq2ZBQLMOrTYrbMmhS65Pegzq91+TmTeijW2iSc4S5xitgcKQKVzMN7q3KxFb
-         1l3gzkuuXK1rJHSLjnZqTaSl9ccgxxWO4yEMEP21CSqPPFqZqmXP3uPi7D92oVThu3OV
-         PYhQ==
+        b=oQO/S0Y+TAZusn8SPk6xii83Cmu5T5HU4t/TkB/Zi21L3Yi4LqUEQiaqqCboVZGJT5
+         ckbLGVvqz9qPdzkausOvbg3jjoR2tgQVbKxPL7xdQDhtjMAKQYS+8FZEKt472kjRtwGR
+         kVuYX4WfohqWNHjbwhfsL3EOtNubPM05HXOxijMYi4OpsQCJRawKHoKoEV24vherBpww
+         o+lGH9+IAGpk7jleWLqrT1waqGNhYFx//CVJO5nOwpaYE7zkdDjpod71/Bo0mDb8n4xK
+         DMEK8BXDFvypy7SsDRnv4dB/gam/kb3CJUecOzWummtshhX+bMdjcqd9yhcYj/JaepnG
+         qHVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to:dkim-signature;
-        bh=6hqChB71/7kZpjaBL9j572kKjjMxQ+3+zx1a7oasSdc=;
-        b=ibiqN+quCVOy5kEjfBj0NpoGq4TPxA2+w3kBpc3aIMe2nqkDenJQ1T8tp9/I8iqbpr
-         vrGkIfuJ47ZdS7urB2dGdKW4y+zrBVOkw+gh11RShu/Y9gyTnZZ+nAma3vQdp+VvymlO
-         uVRuk9/uxh5VqjzvoNBKBjb8g6ii8Zs7fm1kgDGVh935CKg6J8xdw7bApbpkkDX9xpyU
-         r6JaHGS9s1XPjUwnCRAzplHQ7F6U7gRV53of1obBzCYo2jjVArBBvab7Y1jWskZKMfU4
-         2USUtQhv/JXXqabUNvxAdJWDQ8fWiHGYSP0uPgYsfMtWyThFvi45hl7RT9fEXrWwdFM9
-         SbOQ==
+        bh=6oeVnmzdJyYQzvKTBienukarLIdhUbGv1lhXs4fiYP0=;
+        b=vnoOfAuHuLw8/JwJs1JAM/ZAc50GlKt+sqh0sOwP3FjgA8ZUjeWbWkN5hLOWalSD39
+         Jwe/XdK2jJoQiqW1hIuM2aw3QILjzVWlMyAmkS0SLqCdgt+L96BtzyS+RXdDSNU3k2aR
+         3L0vlQ+1zAW3RL2q4S8+5KS2XusukL6o3gK5jDB5+shVeeox7dzcAxkZGX1qjqMbeYT2
+         EqaH3fjvhLuTcYa4fhoQMKpZ2wTJlRvLocaSORh0yAwzyV2fM0qowPRf26JI/hSG8D6A
+         lghP6ji7cP/dBjXGsukh+8bRjCtvs0Jn+QYlhtmEf6sQ7WO4dTWRU2eGZDlyEBCo/Mxp
+         WOwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JNbjxe63;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LfKzcxjZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y31si4839661qvf.184.2018.11.16.13.51.55
+        by mx.google.com with ESMTPS id d8si192565qtk.102.2018.11.16.13.55.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 13:51:55 -0800 (PST)
+        Fri, 16 Nov 2018 13:55:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JNbjxe63;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LfKzcxjZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47133 helo=lists.gnu.org)
+Received: from localhost ([::1]:47141 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNm1q-0001GD-Mc
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 16:51:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36511)
+	id 1gNm4q-0002Zz-Ei
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 16:55:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37172)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gNm1g-0001FK-Bz
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 16:51:45 -0500
+	(envelope-from <alistair23@gmail.com>) id 1gNm4f-0002Zp-S5
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 16:54:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gNm1c-0001MF-GP
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 16:51:44 -0500
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:40507)
+	(envelope-from <alistair23@gmail.com>) id 1gNm4c-0003iO-NP
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 16:54:49 -0500
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:44289)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1gNm1Z-0001I5-Bc; Fri, 16 Nov 2018 16:51:38 -0500
-Received: by mail-pl1-x643.google.com with SMTP id b22-v6so6292702pls.7;
-	Fri, 16 Nov 2018 13:51:36 -0800 (PST)
+	id 1gNm4c-0003hO-Cv; Fri, 16 Nov 2018 16:54:46 -0500
+Received: by mail-pg1-x544.google.com with SMTP id t13so2498567pgr.11;
+	Fri, 16 Nov 2018 13:54:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=subject:to:cc:references:from:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=6hqChB71/7kZpjaBL9j572kKjjMxQ+3+zx1a7oasSdc=;
-	b=JNbjxe636q8Tq7Ww/GpeOPLsuCpwnoG2EnnCGThDk2Y8ADPgdnPaeDgaITZPXhHSpg
-	gCi6XqCMSTSerZXxJ/mr4U3WGDyBJamk146RC2LcKN1+vHVvQvriELuMcmdOkdMc//1f
-	1jNPr3zbtxGJV3kZlzhM6sTYTpVXKBdFlcUXakj4R6jUoRH2ZCLGc8/JsyxN2tOuX0f6
-	7jbmPt9B+BCVX0AU5NsLPN5kkCdrMxKiavL3PQZUxsIppYhzjOu9lDWqlU4BWVkXKR9H
-	cxsTiFCjOMFuukQHOpWXWUDW/euzX2pecYMBNf0v/jZvitGBZbu+eIEMRCykvHG/5DxH
-	y9tA==
+	bh=6oeVnmzdJyYQzvKTBienukarLIdhUbGv1lhXs4fiYP0=;
+	b=LfKzcxjZpunGN/UJYFUgAOQYNfw/bM8f4sWbi5jQxGv8Twy2dwSinqtJi7zeDxFJ4s
+	5OG0M2Y5dIAZPJ5lGMGJtdsdn1QreX0mzHwXz5Goso51QyQ+GvLlK6x5iHHeYpenK0tE
+	8Xj5HZ+lBLsi/cArHu89Ir3w4JEf7HC9ElJuPIO2GnANQ3OgcNe9eZaaAANEP1YR6lKt
+	ayA5DHLbKWxOGFtrZMcjT7uzSBfmnePfu4zYgLUDkNfv2Jv3FN7DDUJvGV4tIGM17cug
+	vY3x2uAsovl0qQ+CBC8sR5r/3FWQqO6S40UZc6ZjsfX1ft0yhC5faPWH+22rSmFQ0jCc
+	cwfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=6hqChB71/7kZpjaBL9j572kKjjMxQ+3+zx1a7oasSdc=;
-	b=K0NLNzRVzGkHGcQZkfMqjdQ1fRxVuGSunfT7rchAL9AYcBYyeZShEJZ4NdfF9e4bOE
-	LbpEqgb2KhhprVlT8I45RrpJ9AymBgkQocNNbpWP3WwVPg5cK2v9Wid1XBEf+RKonUST
-	D+RMvdBcYnBsNDnX4+nYrWk3REkWL4dz6nwzMO7ZzgklhRggc0JABZVtlbeYAEH3XAjm
-	NLjDUduOw9sPljBz7sZyl2R7zwh8bRLf7Y1/suNRmY5R/iFY4vM8qS3CCbHLtMqYlSqP
-	chTf8bibBt7f6EFt7KRo9OVAsRyY2cTSPGpP9Xs25nxLX/ovfjHzpdo1TW7Znnd+OCDN
-	rL9Q==
-X-Gm-Message-State: AGRZ1gKhEkBL5+7tvjs39GhGGRfgrOk/lq1XgHTXJcYn3IRfigTQQl75
-	jehd0UX1xKbN6C9A2hpPeNYUlhN6
-X-Received: by 2002:a17:902:930b:: with SMTP id
-	bc11mr8783999plb.17.1542405094618; 
-	Fri, 16 Nov 2018 13:51:34 -0800 (PST)
+	bh=6oeVnmzdJyYQzvKTBienukarLIdhUbGv1lhXs4fiYP0=;
+	b=NEsts9kWlOJpvGcSAn3FImLwTWczAcs2UOlOdkVbO4WM54YaiJ+JRm5GlDEFRo0WPM
+	9TJuYrbFxWgmXzwSh/4wF6EIxRvVOMUqmkhqW1IooLS0cbEmXYyOVbU9qMU5+gEpniSN
+	fqQTMaUCqAyihTMsjwd5UOtiAlIypeqF8bunpKBJnFlLinaulYBFqirUcUacaS/h5h0n
+	cj5sBhPO5E1CPWJnM7WTWprAvb/188Ob9dH5viK//E+p+v4mP17tte14ec/1edh5xx9N
+	oyfaZ4f/QkfkKoX5i/iVGaMbsv3ZOpqtG+3YZ/3/CrvW+eN7GAAmNPD0YzpREovfD4tW
+	uBEQ==
+X-Gm-Message-State: AGRZ1gILFrDyM6NwhCdwPzLfuOMuzuB8T38GURwfq6/r3T5JFESP5L5e
+	ioTf9WTMtzx2krlVYFOph+N8RNxj
+X-Received: by 2002:a62:13c3:: with SMTP id 64mr12866810pft.93.1542405284293; 
+	Fri, 16 Nov 2018 13:54:44 -0800 (PST)
 Received: from [10.86.55.164] (rap-us.hgst.com. [199.255.44.250])
-	by smtp.gmail.com with ESMTPSA id
-	n23-v6sm54308022pfg.84.2018.11.16.13.51.32
+	by smtp.gmail.com with ESMTPSA id b2sm33860197pfm.3.2018.11.16.13.54.41
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 16 Nov 2018 13:51:33 -0800 (PST)
+	Fri, 16 Nov 2018 13:54:43 -0800 (PST)
 To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
 References: <20181115094207.22846-1-luc.michel@greensocs.com>
-	<20181115094207.22846-6-luc.michel@greensocs.com>
+	<20181115094207.22846-9-luc.michel@greensocs.com>
 From: Alistair Francis <alistair23@gmail.com>
-Message-ID: <c649426c-4c57-749a-0877-fd29eabf11c2@gmail.com>
-Date: Fri, 16 Nov 2018 13:51:28 -0800
+Message-ID: <68d1155c-7df8-4c95-343b-b84cae661796@gmail.com>
+Date: Fri, 16 Nov 2018 13:54:38 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <20181115094207.22846-6-luc.michel@greensocs.com>
+In-Reply-To: <20181115094207.22846-9-luc.michel@greensocs.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 05/16] gdbstub: add
- multiprocess support to vCont packets
+X-Received-From: 2607:f8b0:4864:20::544
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 08/16] gdbstub: add
+ multiprocess support to Xfer:features:read:
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,211 +122,169 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jRQ26tf3AhPE
+X-TUID: G7cmmB13lLNW
 
 On 15/11/2018 1:41 am, Luc Michel wrote:
-> Add the gdb_first_cpu() and gdb_next_cpu() to iterate over all
-> the CPUs in currently attached processes.
+> Change the Xfer:features:read: packet handling to support the
+> multiprocess extension. This packet is used to request the XML
+> description of the CPU. In multiprocess mode, different descriptions can
+> be sent for different processes.
 > 
-> Add the gdb_first_cpu_in_process() and gdb_next_cpu_in_process() to
-> iterate over CPUs of a given process.
+> This function now takes the process to send the description for as a
+> parameter, and use a buffer in the process structure to store the
+> generated description.
 > 
-> Use them to add multiprocess extension support to vCont packets.
+> It takes the first CPU of the process to generate the description.
 > 
 > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 > Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->   gdbstub.c | 117 +++++++++++++++++++++++++++++++++++++++++++++++-------
->   1 file changed, 102 insertions(+), 15 deletions(-)
+>   gdbstub.c | 47 +++++++++++++++++++++++++++--------------------
+>   1 file changed, 27 insertions(+), 20 deletions(-)
 > 
 > diff --git a/gdbstub.c b/gdbstub.c
-> index fa2b7077b2..f1ec3481cb 100644
+> index 292dee8914..4cbc81ae5b 100644
 > --- a/gdbstub.c
 > +++ b/gdbstub.c
-> @@ -716,10 +716,40 @@ static CPUState *find_cpu(uint32_t thread_id)
->       }
+> @@ -298,10 +298,12 @@ typedef struct GDBRegisterState {
+>   } GDBRegisterState;
 >   
->       return NULL;
->   }
+>   typedef struct GDBProcess {
+>       uint32_t pid;
+>       bool attached;
+> +
+> +    char target_xml[1024];
+>   } GDBProcess;
 >   
-> +static CPUState *get_first_cpu_in_process(const GDBState *s,
-> +                                          GDBProcess *process)
-> +{
-> +    CPUState *cpu;
-> +
-> +    CPU_FOREACH(cpu) {
-> +        if (gdb_get_cpu_pid(s, cpu) == process->pid) {
-> +            return cpu;
-> +        }
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
-> +static CPUState *gdb_next_cpu_in_process(const GDBState *s, CPUState *cpu)
-> +{
-> +    uint32_t pid = gdb_get_cpu_pid(s, cpu);
-> +    cpu = CPU_NEXT(cpu);
-> +
-> +    while (cpu) {
-> +        if (gdb_get_cpu_pid(s, cpu) == pid) {
-> +            break;
-> +        }
-> +
-> +        cpu = CPU_NEXT(cpu);
-> +    }
-> +
-> +    return cpu;
-> +}
-> +
->   static CPUState *gdb_get_cpu(const GDBState *s, uint32_t pid, uint32_t tid)
->   {
->       GDBProcess *process;
->       CPUState *cpu = find_cpu(tid);
->   
-> @@ -743,10 +773,41 @@ static CPUState *gdb_get_cpu(const GDBState *s, uint32_t pid, uint32_t tid)
+>   enum RSState {
+>       RS_INACTIVE,
+>       RS_IDLE,
+> @@ -804,55 +806,57 @@ static CPUState *gdb_first_cpu(const GDBState *s)
 >       }
 >   
 >       return cpu;
 >   }
 >   
-> +/* Return the cpu following @cpu, while ignoring
-> + * unattached processes.
-> + */
-> +static CPUState *gdb_next_cpu(const GDBState *s, CPUState *cpu)
-> +{
-> +    cpu = CPU_NEXT(cpu);
-> +
-> +    while (cpu) {
-> +        if (gdb_get_cpu_process(s, cpu)->attached) {
-> +            break;
-> +        }
-> +
-> +        cpu = CPU_NEXT(cpu);
-> +    }
-> +
-> +    return cpu;
-> +}
-> +
-> +/* Return the first attached cpu */
-> +static CPUState *gdb_first_cpu(const GDBState *s)
-> +{
-> +    CPUState *cpu = first_cpu;
-> +    GDBProcess *process = gdb_get_cpu_process(s, cpu);
-> +
-> +    if (!process->attached) {
-> +        return gdb_next_cpu(s, cpu);
-> +    }
-> +
-> +    return cpu;
-> +}
-> +
->   static const char *get_feature_xml(const char *p, const char **newp,
->                                      CPUClass *cc)
+> -static const char *get_feature_xml(const char *p, const char **newp,
+> -                                   CPUClass *cc)
+> +static const char *get_feature_xml(const GDBState *s, const char *p,
+> +                                   const char **newp, GDBProcess *process)
 >   {
 >       size_t len;
 >       int i;
-> @@ -1081,14 +1142,16 @@ static int is_query_packet(const char *p, const char *query, char separator)
->    * returns -ENOTSUP if a command is unsupported, -EINVAL or -ERANGE if there is
->    *         a format error, 0 on success.
->    */
->   static int gdb_handle_vcont(GDBState *s, const char *p)
->   {
-> -    int res, idx, signal = 0;
-> +    int res, signal = 0;
->       char cur_action;
->       char *newstates;
->       unsigned long tmp;
-> +    uint32_t pid, tid;
-> +    GDBProcess *process;
->       CPUState *cpu;
->   #ifdef CONFIG_USER_ONLY
->       int max_cpus = 1; /* global variable max_cpus exists only in system mode */
+>       const char *name;
+> -    static char target_xml[1024];
+> +    CPUState *cpu = get_first_cpu_in_process(s, process);
+> +    CPUClass *cc = CPU_GET_CLASS(cpu);
 >   
->       CPU_FOREACH(cpu) {
-> @@ -1127,29 +1190,52 @@ static int gdb_handle_vcont(GDBState *s, const char *p)
->           } else if (cur_action != 'c' && cur_action != 's') {
->               /* unknown/invalid/unsupported command */
->               res = -ENOTSUP;
->               goto out;
+>       len = 0;
+>       while (p[len] && p[len] != ':')
+>           len++;
+>       *newp = p + len;
+>   
+>       name = NULL;
+>       if (strncmp(p, "target.xml", len) == 0) {
+> +        char *buf = process->target_xml;
+> +        const size_t buf_sz = sizeof(process->target_xml);
+> +
+>           /* Generate the XML description for this CPU.  */
+> -        if (!target_xml[0]) {
+> +        if (!buf[0]) {
+>               GDBRegisterState *r;
+> -            CPUState *cpu = first_cpu;
+>   
+> -            pstrcat(target_xml, sizeof(target_xml),
+> +            pstrcat(buf, buf_sz,
+>                       "<?xml version=\"1.0\"?>"
+>                       "<!DOCTYPE target SYSTEM \"gdb-target.dtd\">"
+>                       "<target>");
+>               if (cc->gdb_arch_name) {
+>                   gchar *arch = cc->gdb_arch_name(cpu);
+> -                pstrcat(target_xml, sizeof(target_xml), "<architecture>");
+> -                pstrcat(target_xml, sizeof(target_xml), arch);
+> -                pstrcat(target_xml, sizeof(target_xml), "</architecture>");
+> +                pstrcat(buf, buf_sz, "<architecture>");
+> +                pstrcat(buf, buf_sz, arch);
+> +                pstrcat(buf, buf_sz, "</architecture>");
+>                   g_free(arch);
+>               }
+> -            pstrcat(target_xml, sizeof(target_xml), "<xi:include href=\"");
+> -            pstrcat(target_xml, sizeof(target_xml), cc->gdb_core_xml_file);
+> -            pstrcat(target_xml, sizeof(target_xml), "\"/>");
+> +            pstrcat(buf, buf_sz, "<xi:include href=\"");
+> +            pstrcat(buf, buf_sz, cc->gdb_core_xml_file);
+> +            pstrcat(buf, buf_sz, "\"/>");
+>               for (r = cpu->gdb_regs; r; r = r->next) {
+> -                pstrcat(target_xml, sizeof(target_xml), "<xi:include href=\"");
+> -                pstrcat(target_xml, sizeof(target_xml), r->xml);
+> -                pstrcat(target_xml, sizeof(target_xml), "\"/>");
+> +                pstrcat(buf, buf_sz, "<xi:include href=\"");
+> +                pstrcat(buf, buf_sz, r->xml);
+> +                pstrcat(buf, buf_sz, "\"/>");
+>               }
+> -            pstrcat(target_xml, sizeof(target_xml), "</target>");
+> +            pstrcat(buf, buf_sz, "</target>");
 >           }
-> -        /* thread specification. special values: (none), -1 = all; 0 = any */
-> -        if ((p[0] == ':' && p[1] == '-' && p[2] == '1') || (p[0] != ':')) {
-> -            if (*p == ':') {
-> -                p += 3;
-> -            }
-> -            for (idx = 0; idx < max_cpus; idx++) {
-> -                if (newstates[idx] == 1) {
-> -                    newstates[idx] = cur_action;
-> +
-> +        if (*p++ != ':') {
-> +            res = -ENOTSUP;
-> +            goto out;
-> +        }
-> +
-> +        switch (read_thread_id(p, &p, &pid, &tid)) {
-> +        case GDB_READ_THREAD_ERR:
-> +            res = -EINVAL;
-> +            goto out;
-> +
-> +        case GDB_ALL_PROCESSES:
-> +            cpu = gdb_first_cpu(s);
-> +            while (cpu) {
-> +                if (newstates[cpu->cpu_index] == 1) {
-> +                    newstates[cpu->cpu_index] = cur_action;
->                   }
-> +
-> +                cpu = gdb_next_cpu(s, cpu);
->               }
-> -        } else if (*p == ':') {
-> -            p++;
-> -            res = qemu_strtoul(p, &p, 16, &tmp);
-> -            if (res) {
-> +            break;
-> +
-> +        case GDB_ALL_THREADS:
-> +            process = gdb_get_process(s, pid);
-> +
-> +            if (!process->attached) {
-> +                res = -EINVAL;
->                   goto out;
->               }
->   
-> -            /* 0 means any thread, so we pick the first valid CPU */
-> -            cpu = tmp ? find_cpu(tmp) : first_cpu;
-> +            cpu = get_first_cpu_in_process(s, process);
-> +            while (cpu) {
-> +                if (newstates[cpu->cpu_index] == 1) {
-> +                    newstates[cpu->cpu_index] = cur_action;
-> +                }
-> +
-> +                cpu = gdb_next_cpu_in_process(s, cpu);
-> +            }
-> +            break;
-> +
-> +        case GDB_ONE_THREAD:
-> +            cpu = gdb_get_cpu(s, pid, tid);
->   
->               /* invalid CPU/thread specified */
->               if (!cpu) {
->                   res = -EINVAL;
->                   goto out;
-> @@ -1157,10 +1243,11 @@ static int gdb_handle_vcont(GDBState *s, const char *p)
->   
->               /* only use if no previous match occourred */
->               if (newstates[cpu->cpu_index] == 1) {
->                   newstates[cpu->cpu_index] = cur_action;
->               }
-> +            break;
->           }
+> -        return target_xml;
+> +        return buf;
 >       }
->       s->signal = signal;
->       gdb_continue_partial(s, newstates);
+>       if (cc->gdb_get_dynamic_xml) {
+> -        CPUState *cpu = first_cpu;
+>           char *xmlname = g_strndup(p, len);
+>           const char *xml = cc->gdb_get_dynamic_xml(cpu, xmlname);
 >   
+>           g_free(xmlname);
+>           if (xml) {
+> @@ -1258,10 +1262,11 @@ out:
+>   }
+>   
+>   static int gdb_handle_packet(GDBState *s, const char *line_buf)
+>   {
+>       CPUState *cpu;
+> +    GDBProcess *process;
+>       CPUClass *cc;
+>       const char *p;
+>       uint32_t pid, tid;
+>       int ch, reg_size, type, res;
+>       uint8_t mem_buf[MAX_PACKET_LENGTH];
+> @@ -1639,18 +1644,19 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
+>           }
+>           if (strncmp(p, "Xfer:features:read:", 19) == 0) {
+>               const char *xml;
+>               target_ulong total_len;
+>   
+> -            cc = CPU_GET_CLASS(first_cpu);
+> +            process = gdb_get_cpu_process(s, s->g_cpu);
+> +            cc = CPU_GET_CLASS(s->g_cpu);
+>               if (cc->gdb_core_xml_file == NULL) {
+>                   goto unknown_command;
+>               }
+>   
+>               gdb_has_xml = true;
+>               p += 19;
+> -            xml = get_feature_xml(p, &p, cc);
+> +            xml = get_feature_xml(s, p, &p, process);
+>               if (!xml) {
+>                   snprintf(buf, sizeof(buf), "E00");
+>                   put_packet(s, buf);
+>                   break;
+>               }
+> @@ -2323,10 +2329,11 @@ static int find_cpu_clusters(Object *child, void *opaque)
+>            * runtime, we enforce here that the machine does not use a cluster ID
+>            * that would lead to PID 0. */
+>           assert(process->pid != UINT32_MAX);
+>           process->pid = cluster->cluster_id + 1;
+>           process->attached = false;
+> +        process->target_xml[0] = '\0';
+>   
+>           return 0;
+>       }
+>   
+>       return object_child_foreach(child, find_cpu_clusters, opaque);
 > 
 

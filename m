@@ -1,191 +1,190 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp170704wrw;
-        Fri, 16 Nov 2018 01:52:28 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fkngSVoRiLlo2muqx9zA3Se+vOdJeZYVOLfKHWolp/u0fnzIwe1jwH901DE7jWoegeu4lw
-X-Received: by 2002:aed:2921:: with SMTP id s30mr9361700qtd.346.1542361947917;
-        Fri, 16 Nov 2018 01:52:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542361947; cv=none;
+Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp174583wrw;
+        Fri, 16 Nov 2018 01:57:33 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dlyHXEjJj1WYOAXs4cqA8HCRyjzlHLt19t4VSK//lCSw5mYtsM4KT8YAzfzrkkXqIkl2DT
+X-Received: by 2002:ac8:278a:: with SMTP id w10mr9525850qtw.149.1542362253485;
+        Fri, 16 Nov 2018 01:57:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542362253; cv=none;
         d=google.com; s=arc-20160816;
-        b=xLkoYkORwHMqY/7FAtY45dRnKBPQtSAwH7fNWn2QTjm4PUemCS1VuTgF3pyzXfSQ1a
-         jxSlQGaHOjOZqgFjeKxlmcvm5hzODaspmJ0W0PEZbbPL/OC3UM8dKjadzMi9h6Y50UbH
-         eaXSui596IIOUBNl74XYXNSv1D0hUVgU1l01/2EQu8+OtU0dWdxvI0Wm5dfFMwjRIVUx
-         sz31QUqDOQetnfXK6x2qbSG4znTG+ZW+SiMlwYwpDFKzZ4aa5bo4vLPn0SYrMN6sanVZ
-         OVSpu04VMyS5DUmw+XKkEncEK2b7CdRzxDS15N+iDQhauK6KqQdsUXch1A+EHtv++bvF
-         LsXA==
+        b=rcb6YH/VXA/ocYAp/C85w3OZK22hqJfgn0nL6RaQVZTtdz05R/rYmTb1Evsx5r9xez
+         KUlMUxkhW0gLD7aJ9UOt85zC9Jt7Cwpgtv0w8Bp3Tjw+sLpJzUbCPZ8H/ZznK6t8czdW
+         zRwipnrQFD+3DAdcASgc41GbLXIwY436RBVSHLq1xwBGhtF8zl19KY2sMAPbSJ/TfO82
+         Gk2iiEZPUGEvoSbSOf2hw7PeQR6HgcbSEPkWThB3Oaj0+Togo326veKVfaBCTeodBrFX
+         HfmEZ/rrtlGp/fEZ2wImrh2aMky4hAzRB4nHqF0Fiyb6AbvvigZM61N+d13cqj0LeReo
+         M0Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
          :spamdiagnosticoutput:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:to:from:date:dkim-signature;
-        bh=2MGvc1pRAGFNq4WxSMLHfjyNT30qDkpLmb+fTd4OdGU=;
-        b=kuZcwpPF23JYsAEQ5DMaoeFHKrgsK2U2F6ALmcKLvu3KMHnvz7Ic72+tuAKx4Sfn3j
-         PTlQurhQpzzjd+WdeaOvtpPdLmnJT253zX+hoFHAZNACNC+HdNVHKZdLLmiWjUAvfZV2
-         9VR47+OsITMdB7ejDlP+Xv6iJkityjZ1pI29e+BRG4l+9B7d0zqarZ68GVEbc2WfdDX7
-         oD9v1SaHBIRnxFaNeSWNjIfEezzN/YwMX32DSVCG+STiFurXA37v7z/Iplzoy6PBEg1p
-         MuitrTutQRwqO2GM/KZuFVm6LzJ25HwTD71h+N0fV08RE+G6bZxtxxnHiNArPYqUfjlU
-         U01w==
+        bh=DVgmitVpPFnE2KwllSIe1Vr3VoukKbmVCw14ZH3G+r0=;
+        b=RLtZWEbJqPLHJG1v+mdyRvmqPBbKmf6jckhMJdw5oqfbmTqURJsZNMpniLoRMzm8cR
+         9cPJvRwuGTfwdGppUNTtt5ekG5y01FNyLxwX/NOaS5V8qEk2zJ/r7Czp1kAUUPpteuI0
+         vmGFY2SWOn4AWFPDzb4Vh2W/F9rdGKKoIjE5clVZI9/JIDomgbZLIBzW/llZm2omFx34
+         1VNEvgX98l8LlgZiReAcuYLkO/LUWw4hxjPj3ULMVfEzBOc9qJRPcIZ7tcPo/2oVlbZ6
+         SSJ92VGHrPZQsA4JnYySEpCgmxMdW8F31f8m4r1teQzBHgmVR01YJ9ISpzaOa+2j2C9b
+         6QAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=lzYoTmVz;
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=AFCqfH5m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e5si293446qtq.387.2018.11.16.01.52.27
+        by mx.google.com with ESMTPS id h60si3157364qtd.228.2018.11.16.01.57.33
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 16 Nov 2018 01:52:27 -0800 (PST)
+        Fri, 16 Nov 2018 01:57:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=lzYoTmVz;
+       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=AFCqfH5m;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43679 helo=lists.gnu.org)
+Received: from localhost ([::1]:43705 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gNanb-0003s8-FK
-	for alex.bennee@linaro.org; Fri, 16 Nov 2018 04:52:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40952)
+	id 1gNasX-0005ta-2D
+	for alex.bennee@linaro.org; Fri, 16 Nov 2018 04:57:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1gNanI-0003qE-9W
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:52:12 -0500
+	(envelope-from <edgari@xilinx.com>) id 1gNasI-0005sS-42
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:57:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1gNanF-0000TR-2c
-	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:52:08 -0500
-Received: from mail-eopbgr760057.outbound.protection.outlook.com
-	([40.107.76.57]:48992
-	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
+	(envelope-from <edgari@xilinx.com>) id 1gNasE-0001xQ-TQ
+	for qemu-arm@nongnu.org; Fri, 16 Nov 2018 04:57:18 -0500
+Received: from mail-eopbgr720040.outbound.protection.outlook.com
+	([40.107.72.40]:5690
+	helo=NAM05-CO1-obe.outbound.protection.outlook.com)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <edgari@xilinx.com>)
-	id 1gNanE-0000Sk-Ln; Fri, 16 Nov 2018 04:52:05 -0500
+	id 1gNasE-0001wb-Jm; Fri, 16 Nov 2018 04:57:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=UGN6AimAlLcXRirq7SsW+waEJTf6MJJgGYemOrWW3fc=;
-	b=lzYoTmVzSOTDVGO7L0wkXxbH1Gz2+VQwtvts3zC8irTnuwjDtUU01QUweomjxxgO43Ej6xPZ0EwxBfxR9X2ulwFxq3I4ao2rxNWGqC7d+1rs4bPeEz1lkRbKGz9KX41U7VAjS8V/P2h1CRwfLfuGGFU+ObblTyZhV8rccA2krPY=
-Received: from BYAPR02CA0044.namprd02.prod.outlook.com (2603:10b6:a03:54::21)
-	by BL0PR02MB4322.namprd02.prod.outlook.com (2603:10b6:208:40::27)
+	bh=dvUmzhZh00ODbuJA8b3mwWtOaabWqM5GI4deuNVpn58=;
+	b=AFCqfH5mY5hmTuHaanA6zWrQhr31MOaIAa9kTY+Gm9pzEpPy9ROSyLJDFWtdkFebzGT8YCY5WEtEysVo4ZRqMs1nH0uaMNRiyEyXHU4OEBXXzT3oW6RGWDi378Ig0KY6uPe9vtlH00yveU9coRcN0hVVTbK0wcuPhYdNUdhqRYs=
+Received: from MWHPR02CA0003.namprd02.prod.outlook.com (2603:10b6:300:4b::13)
+	by BYAPR02MB4453.namprd02.prod.outlook.com (2603:10b6:a03:57::26)
 	with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1294.27;
-	Fri, 16 Nov 2018 09:52:01 +0000
-Received: from CY1NAM02FT056.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e45::208) by BYAPR02CA0044.outlook.office365.com
-	(2603:10b6:a03:54::21) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.1294.23;
+	Fri, 16 Nov 2018 09:57:12 +0000
+Received: from CY1NAM02FT021.eop-nam02.prod.protection.outlook.com
+	(2a01:111:f400:7e45::207) by MWHPR02CA0003.outlook.office365.com
+	(2603:10b6:300:4b::13) with Microsoft SMTP Server (version=TLS1_2,
 	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1339.21 via
-	Frontend Transport; Fri, 16 Nov 2018 09:52:00 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
+	Frontend Transport; Fri, 16 Nov 2018 09:57:11 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
 	smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
 	header.d=none;redhat.com; dmarc=bestguesspass action=none
 	header.from=xilinx.com;
 Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	CY1NAM02FT056.mail.protection.outlook.com (10.152.74.160) with
+	149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+	client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+	CY1NAM02FT021.mail.protection.outlook.com (10.152.75.187) with
 	Microsoft SMTP Server (version=TLS1_0,
 	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1339.15
-	via Frontend Transport; Fri, 16 Nov 2018 09:51:59 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:51503
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
+	via Frontend Transport; Fri, 16 Nov 2018 09:57:11 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gNan9-0002lq-6E; Fri, 16 Nov 2018 01:51:59 -0800
+	id 1gNasA-0008T4-HN; Fri, 16 Nov 2018 01:57:10 -0800
 Received: from [127.0.0.1] (helo=localhost)
 	by xsj-pvapsmtp01 with smtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gNan4-0001Lo-2v; Fri, 16 Nov 2018 01:51:54 -0800
-Received: from xsj-pvapsmtp01 (mailhub.xilinx.com [149.199.38.66])
+	id 1gNas5-0002G1-EM; Fri, 16 Nov 2018 01:57:05 -0800
+Received: from xsj-pvapsmtp01 (mailhost.xilinx.com [149.199.38.66])
 	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	wAG9pkGM028286; Fri, 16 Nov 2018 01:51:46 -0800
+	wAG9v1oY029412; Fri, 16 Nov 2018 01:57:01 -0800
 Received: from [10.23.116.79] (helo=xsjedgari31.xlnx.xilinx.com)
 	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
 	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gNamw-0001Kf-2f; Fri, 16 Nov 2018 01:51:46 -0800
-Date: Fri, 16 Nov 2018 10:51:45 +0100
+	id 1gNas0-0002EX-Ud; Fri, 16 Nov 2018 01:57:01 -0800
+Date: Fri, 16 Nov 2018 10:57:00 +0100
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 To: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <20181116095145.GN7447@toto>
+Message-ID: <20181116095659.GO7447@toto>
 References: <20181115094207.22846-1-luc.michel@greensocs.com>
-	<20181115094207.22846-5-luc.michel@greensocs.com>
+	<20181115094207.22846-6-luc.michel@greensocs.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20181115094207.22846-5-luc.michel@greensocs.com>
+In-Reply-To: <20181115094207.22846-6-luc.michel@greensocs.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-RCIS-Action: ALLOW
 X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
 X-TM-AS-User-Approved-Sender: Yes;Yes
 X-EOPAttributedMessage: 0
 X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
 	SFV:NSPM;
-	SFS:(10009020)(7916004)(136003)(39860400002)(396003)(346002)(376002)(2980300002)(438002)(199004)(189003)(33656002)(229853002)(9686003)(356004)(36386004)(6246003)(6916009)(63266004)(446003)(11346002)(50466002)(33716001)(486006)(426003)(478600001)(476003)(126002)(76176011)(336012)(47776003)(4326008)(106466001)(77096007)(186003)(1076002)(23756003)(2906002)(26005)(8936002)(9786002)(2870700001)(106002)(305945005)(5024004)(316002)(81166006)(8676002)(5660300001)(81156014)(58126008)(54906003)(18370500001)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:BL0PR02MB4322; H:xsj-pvapsmtpgw02;
-	FPR:; SPF:Pass; LANG:en;
-	PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com; A:1; MX:1; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT056;
-	1:wrR9jEAfJvCmWgjzw081cH/Dj/7diS+9RWkIhxiHAAQF/oKC5PJzRMgOAiAqw2LtiWR4X9hFgMF9K7+Vi0ESnds/105d7GhKWX4/5699XKzl0vA2zYGP5AilKIeEXI9F
+	SFS:(10009020)(7916004)(376002)(346002)(39860400002)(396003)(136003)(2980300002)(438002)(189003)(199004)(106466001)(126002)(9786002)(316002)(5660300001)(58126008)(8676002)(81166006)(81156014)(63266004)(6916009)(8936002)(106002)(9686003)(50466002)(54906003)(6246003)(229853002)(4326008)(305945005)(478600001)(426003)(2906002)(36386004)(47776003)(356004)(33656002)(186003)(1076002)(76176011)(2870700001)(23756003)(26005)(33716001)(486006)(446003)(336012)(5024004)(476003)(77096007)(11346002)(18370500001)(107986001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:BYAPR02MB4453; H:xsj-pvapsmtpgw01;
+	FPR:; SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; MX:1; A:1;
+X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT021;
+	1:Fq3nzC7GkOavnrctEUkJPZTHkWYGpHwzOelZdwuuz9r3iGL7+RbvO2UJtYTmNjL3wNwmezvh++CBoh5UB6B0HIQllXWOoAayqS3Y0V42L0sQYrAi52F/aY9dEKycXed1
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 9210c9e4-abe6-4cfe-dcf3-08d64ba9274f
+X-MS-Office365-Filtering-Correlation-Id: 7cfcd9dc-5060-4961-a251-08d64ba9e107
 X-Microsoft-Antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4608076)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060);
-	SRVR:BL0PR02MB4322; 
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4322;
-	3:j3j+d1rGotwh4l0k8lwIhRrRzsslhoavIZ1UBhhoa6yk3DwiDetzhkfTeh9lBGf7br+qzJhAiX0WkQQAl9F2tNUh1+jpktC9iAYiuMG7cEC0v1UQsFCNF+GIiMhj0Hkf33lyxzSnnGp3e+Tfv7PPmdi5FoNHaTcOopKfbPSnAycz1wM1UDb4M/UvQiysyzfeRYvDXqvovyVKo73Q5VN382PbXmao2IgEBZcPDB6hd4i0L+c5DhOSWsfyjaIiz+rAxZzn6Glr5i6/6g/B/hwRATDmw0x6LaORoGWlrS+Dj55Hj3y9MhXi3vPRB6kWFq58RMVzxSVZbphxUUcGEGZiJ7yrihGbPqYfkTGOA8krSx4=;
-	25:jgOT5owX0TuC/4a9IerA2WJJBvZXdr+hPsf1bVDaIIiza7u85grmyi+2+kzw6MQ1qrWq5wRDIYqXzNMEF/tAI+3r7lPkSk+oPdRqAiF1+iAY8FALbrQa0IiMqJPqOq149mLm661UebNu/XMCO5nhSkY5joUEcHAc7c/mXu2Zsh+CHezM1abhl608n9nZ/QVrQ3BpnKMribncR6AKyjellA/QKP38oC1IjAFapXRbRumdOTdWKNX/bz+kinFh1DfELpQ+Izam/kbRCY7w9+5RFbDx1Kw6Mv4dXmpADP4S5BF7WakpF78reW8FGNLOTzJVJxYmgXApz4fQhmvOmrTZug==
-X-MS-TrafficTypeDiagnostic: BL0PR02MB4322:
+	RULEID:(2390098)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600074)(711020)(4608076)(2017052603328)(7153060);
+	SRVR:BYAPR02MB4453; 
+X-Microsoft-Exchange-Diagnostics: 1; BYAPR02MB4453;
+	3:jlrQmPTPCIB2Aggmz6ZKnoATU9uO2NBUcKgx0qgYrlLpRKf4jENsF0urFxvGKiBDtxOWib1cLmwLWsCywpPAWTM13yn3+pYzDZuYSRBSBNW/jAbS39Khl3uL6yfCJ3BK17iBCCNNoIgXcMMRSCokVXFIs+MlruRWMjWQ5wwuay/NkGcDWDBaf2M0QPRcBQy8f6w1PI5TNDHWKUa0YXxdNd0tVAUGV3r7qiV+7aAGOVfflY7+xS61/ou4lm7dStnfI+dYypPJdjdN4orVImq+iT/YiTVytWKUtSRTnjfXqbxRNY1f4O3rYPmqjgmE626AEHT6QXuOB7Twy+q3KgiYkSsdnqr6Q25C8esb9oUyXbY=;
+	25:/eKnsNZZ13MVOrDms/HSmNETNccPWAf+JsJbp39yxxERbfCl5gtDrf5LhdgDPJqZm2YVE4csE7a9rqL8zcvZWJK9jy43AMz0M7pYXEncIhs8gFVDsBQLi3NNzrbxcwBCg//M7cPb2sdA+enH7MR+/xKEirWepNX48ETbgbJKeAuGC+lblaXFXAkQNoaPe+HV62gu7qRKlbpzTUSUX7uL7owBwyDt98rWOj2fxNZgolXeuXuf1KHu5F1VTt6jTK0qFKpqPzTiRsMfK5C9mvI453hGEB8j/u/C7Lup3lKZE5EcnDrq/qCbXuo+d2a9buBC8ZKafFU8vWGMdtC7amylcA==
+X-MS-TrafficTypeDiagnostic: BYAPR02MB4453:
 X-LD-Processed: 657af505-d5df-48d0-8300-c31994686c5c,ExtAddr
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4322;
-	31:07ydsjDsZr4Q2M1srGQHYVQ7u8w1+HzfrAF7x+Vvdd3NdQannG0nr7p2FuGxSNYDTu47ApO/WveIPLwwbNZDvX5PqO87Y2wqlxk8ZXpIyvXjDuB7uaNECcgQIP3SJGMg6nEsR974vkmYEN09tCOCEij8D71NmBiOCoFVZbaUxsebcHO2eVr4GHmCRmwbR86QUaa6UB4bjeh0/8whTRstjIUzwGXEDrfrb78fQABKTwI=;
-	20:I3OtyUYF3ckZsu6uezMjZUY+nx6YVJUwPVWj8KG4XeuDacolVtnGB7Hf3rhceXsQbOtobMNe0050DUEeH9+hMpyKTrbsEHlnCr0890INkhI/vBb0DIY7itg+LiFAlzplZsmizzgwzKcmEzjtGVARgONQdymEwTaxJ8KI+7+Ep83AXFzc9394792t2Tc0r8vYLtuBtRItrMuyROuKdhvXUxq2oNQ9FXOmSeh8aMInZNEvK+JbI0u6DfIKNhl8NZBL+bwrE1ywrUJzG+Mt/ygaTUrELNu7D14Uc4KOZMSFJk6HUgUzjA7l1aDqjDgJoLKycrJIycof52eha9V+5oYT92gF0AjbVwEuDzzrPjZG4EKoSx1+LT4j1PMJrP22sXAW/D37nCSvhNnlexH7ipjxTW9AWqe5hYfTuUDZcU+HsgMgvskM8G70ISjodnsiLp4B6X/UzWtFct4KumAWAbsonESrf514vR8/6zLi/FSygFwurVuvA5DZEII31mrC8MgC
+X-Microsoft-Exchange-Diagnostics: 1; BYAPR02MB4453;
+	31:cRGvnadEEqZy5Rm2mOG+Ga1m6+A2imFryffh0hDW0vEzDgqWLSXgr6nERQci0LkWNFAVQwYOmSgE8vQtPIwkAbIBbGGUnbmQr7CIm2q9E971BQIeE8Ldo4CHzKNaLbjRCO7sly6SzqunjGnm3GbEevmBnZYA03WrvrufQF/K++RdLMIxwn34B+9e6dMKCkOnqKndTFhRjCq7VyRw0i+JO2fIzHVk0/9n6dSPlYoUAuI=;
+	20:Sm8MTxDKBLnG0P8NYAgVh2UXeBux9vcPHKocYcVHQgvkmw4HpcTYr7MTZIiyiWmN34ycsYEUZpn19try01ISoWZg1rgvjXdVmnPMBXrzAR1D2okcePrP5IzeKQ58DwkqG7DUCHDVw5KQDFxOUCToz2PBbDmPcHKjBiLrNIXS3/pnTmlYElORstoaXfjKA/DQxTlGQqGz5T7qp5oxXo/EOH+W/oxJ5A02BVnGteBjI83dQwjyfQgQ0wo0OQSGp6ppuBlhe5yje0fTQWmP8uKJw/hKiw1et7CHNSKrlrYg043oPTBNvjJtHUj0SfGkpGKd7UJpASUOIK4cczc/QGCh5wRSu/7doyUkeBpSOpAUxCIavTDds8uoVYRmgdkq2TeHmv9dSn3e5/JtYHsVcfKWSpn56QCAF1Y+NflxRbkOQ2dwVpsOEqU7+C6bWWJvq1Rgl6b6eJRxO5Jvk8vRlnk2uAGORL8ALv4HLP9LOYqQnUuB96tr0lcH+jtdc7pAEUTU
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-Microsoft-Antispam-PRVS: <BL0PR02MB4322BBCA738892C81D8625C9ABDD0@BL0PR02MB4322.namprd02.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <BYAPR02MB44535D4524D538387BE76F97ABDD0@BYAPR02MB4453.namprd02.prod.outlook.com>
 X-Exchange-Antispam-Report-Test: UriScan:(192813158149592);
 X-MS-Exchange-SenderADCheck: 1
 X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(93006095)(93004095)(3231415)(944501410)(52105112)(3002001)(10201501046)(6055026)(148016)(149066)(150057)(6041310)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123558120)(20161123560045)(20161123562045)(20161123564045)(201708071742011)(7699051)(76991095);
-	SRVR:BL0PR02MB4322; BCL:0; PCL:0; RULEID:; SRVR:BL0PR02MB4322; 
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4322;
-	4:ssi2cD9cGWretual3/uLecMnd9VGM78//YIgTqa2Bpv3lDTe3FqXz7SGRyNJQhKYEGxBPAB+PrL+iY/S8gxvrYjoUglMB2QAsRj4ULmvm5Ak8je8I/exrCiDIr58D8pj/2VjfvKt2K+ED4N8zw0TOewvmH8y7Cdzo9eVDSHJnf8JXNkPLym2MKIoDCDd8LXsoKb+0tdmOs7d6nfCVlbV8QAR7SndbdyZxZF+IkzxVIaNzHbogV/ARyAdnox/3ogzZoA2ZWcM1B9rX4MT6X614HN3UhDJi0p7uwANnxQBIb8UPmKAT4rk96LxxGE+gw3E
+	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(3002001)(93006095)(93004095)(3231415)(944501410)(52105112)(10201501046)(6055026)(148016)(149066)(150057)(6041310)(20161123562045)(20161123564045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123560045)(201708071742011)(7699051)(76991095);
+	SRVR:BYAPR02MB4453; BCL:0; PCL:0; RULEID:; SRVR:BYAPR02MB4453; 
+X-Microsoft-Exchange-Diagnostics: 1; BYAPR02MB4453;
+	4:I3V3+Q9ZhOarMiRuqpvNpXmCINSOdj7Q1Vxll4eZDXH0kKFYXVr5ouHzZQIbIeNlWsgMGH9xdgl4ZhFytrlTUmIJkbzLpeJyJsRrOMbfuibO5R6EYmj0nJInu2z5hzZ5NUcNsV7E0xjswHDZSjgF4ULqN1WtDuyKVktbw3nVW6s/Omk4EK8VXQzTtjOXA6+Q1+IpcmlU2XSFSch1U9Ts4dzCIApTwKG3TAnXH4ANWDQE7Yr81MKtLHjCEaoNB4LR70l0cw6kYHQ2qdsQYHUybRjvVxi+R2hZ4CC/XUMFhP33sPsYT52uKXJWlxPXrM/t
 X-Forefront-PRVS: 0858FF8026
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BL0PR02MB4322;
-	23:8iAYvkqGAofVTAMD86bWXZ+SV7HqB/Ev3mAlLaZOJ?=
-	=?us-ascii?Q?3HAK62u/B1/xE/c3Ej2sslXb9fv2qmovHvIMGE1qHmU1qE4j8mb7fiTVynX1?=
-	=?us-ascii?Q?jvvDxY9ls9xU0W75U37szIwUVP1kGRop5DepxqNKPUVsjfSZTOWd1YPxkgLI?=
-	=?us-ascii?Q?Epfj/qBQE7JptyJdBECYSReWM/gOJ4E0QRW6NRZooL0LmBpU0961NEq9QVGZ?=
-	=?us-ascii?Q?FJLsTWddeoS/cKWn98OfxytFqhp7ejCX1zbqgavvIMgTVzJ0GHkfaLlfY0q1?=
-	=?us-ascii?Q?3fRNrwE7ffUslirjIeqjzuKBb00l4ufxULPFpmRZdtr/ujQwXX+3gCPHeyB2?=
-	=?us-ascii?Q?iTDbjymKkX3s4Bwtf182NsV58dDHDzM9xLnWcyhvHyHLKJrzYYwyY+Ba4hxH?=
-	=?us-ascii?Q?fkzObIoS5jdeiZvPzoz00dBx4+N7HSzKTNryj2+Dt8/gm5fnD6VF2c/K6C2p?=
-	=?us-ascii?Q?w1VLTCThXFNkqTWinlRp8pZVI8Eg8AryKtRK1xArpBJpfAhw/TMraPqEq8bS?=
-	=?us-ascii?Q?EmDtY3tvjm6oYAEHjNkIcEvwsNaytj2zERUZmTnzS7PKieecJWChU8h/YYsU?=
-	=?us-ascii?Q?z6ZP6oaoCCNFiEqV1MzfkBb0LYT/wsq3jfZa269xXT218YPSkPcgNRGx65oy?=
-	=?us-ascii?Q?G2KJqVQEmZvKyi+qadW1eoAxk9fik0q8Ro1yJ9R/VL7qkINLbxZ+KjUBlwX1?=
-	=?us-ascii?Q?nU638V/5GHOiPHGZEGv9D5aFlHsIOuFLZdMt22m4MqHSXTLaz3ClX8Hm+C7C?=
-	=?us-ascii?Q?UrFv8nQc+Jjuz5Y9idWafOE22eRWQUnpvMjjsM/Q3JF52YWAa8mEXUVkZmzQ?=
-	=?us-ascii?Q?j/XzbqkEJcWFJ1yKALMNh/DQ5N3eq0vNMjaTHv60prpoAYaTHnu4wnGO7qIC?=
-	=?us-ascii?Q?2f/U5yILs6bVBS8NIX27utSchm7fui6jxA9lo6dofvNL3pmLyDLyIB7kevah?=
-	=?us-ascii?Q?tgELJbcYyszMpTgWq30LqrUamxz1Dnneu9vTQGjtq7iIkLSFe/bEKo1aS/jt?=
-	=?us-ascii?Q?p3VcoN5xe1RIailC64Dh4TpRI0Em6oK0jJXe72V5JYJNYheQu3YS+nfgD4/S?=
-	=?us-ascii?Q?o1dxlt+XrCqUBMURhalhjaoTBbp2FCVYOoQkf04LjadKR9OORAaUriKo2Oj/?=
-	=?us-ascii?Q?YKc7Q/VXPwy7fbE49FLL03XlQCF9DHbF0xKGRWoNIJd79pRfuXpJGtWagvkW?=
-	=?us-ascii?Q?FHnJ92bTegiK98VkPm2TPSWuu35BvwBhCu6?=
-X-Microsoft-Antispam-Message-Info: JcY2ezIIkt+6P0R/iItv5p6KCXJHm5w9nOa9dLlGPbMdQRgcw4B7iGx95x1vFHw2aCT3MWof3PBpEFy74j8Gj3frprzqt+GhVjQYCtji3Xlvt/99ZnXZJqounuRPEh2SBB7xADtkY2YxYtojVU/K36BuaNAOYGmHGf0E2PkyfXW9Eq/Q7mtNS7C9010TCJENHd/evh0oespcxT7X8WXH8tvZz83Pg194IOvb3bofbkCLQPe1nPkEi0gJKwnKWgMjSLJltAEUmOqSkNqdyrvQQAImR4Gfe4eohGsI6OHOuASc6a2pM4WgJ9XWNplOw60zRmhrejZxpjmYK5hKse/WvpssgmQ0uASjabVzvQ8CMDU=
-X-Microsoft-Exchange-Diagnostics: 1; BL0PR02MB4322;
-	6:UZgs0Fpvkd8V9ViPgU+FjHBr5DZwmeg+bfVFGFucyCesiWB/xrg4VxMeTw/i+vqqDP0HulXhBvkHYpgbT4bqkJ9cApjThIB8BcM8BjbC1D4q+arHv0tAk3uk3YrCxFqRM5MKdipW6emZpuG8EpaCT3lJnijtDdq8wiRlILnOrd/pTE57//c8gcpDQsOJvqgpnmfCM7t1R4jOIKy4YdcXqqhV/qgg6K45gyE+FL4SWxM7xyEPhfnafgOvEw6HjuXZPewkrmWRdKDGkTiJ4ey+cFpcAK8n88KdOvpfTrn1r1L9KHi3812BGTpNy0kh3lEukf/DPyMCXtdms89ul5if/2rfubKsv5hmJXEtZsM9YEbTQQ9jiPLrvVztaZufszF3NpaLAZbIlvWQBGsGWJ5Op7lheXugNb2nX5XePgw/kM/Smi22i32tLR9pCyHSn3OTQFyHAx1x+DT/XyyZ/bJuJA==;
-	5:NnfspEGvTmqejKvvJDNTF3a8sVBtMc5J3ZH4ist8JzevlcrqjLrfQswIZiEV/9DlKPu8Q6LH+lQg3SOGjqkyb3bD0PCl6miHyfc84i6iK7iarqh7bkx+3yGp6twKj9Qk5WTfh9z2ZEmFMnRtw2N+N5QHhJiq+oOQwOmYD1ccFxo=;
-	7:U1WcleW7UuAHZHfCQloZBjVbVKWNNjo1bjzx6oFRvTaO/m8FQ1w3ab1BVrLcoNtI3wl6FfBGAU4AH281k2DJ3eG1xg0HQpSSAobpVfX/AMtFDwg2wWfdkAgf54EivOZzee0e5x+hMBT4HttbWE1dvw==
+X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; BYAPR02MB4453;
+	23:3x2nLp7rF/pRi1O+/w2sbDG0JyLDrN3RKgAxjlC1F?=
+	=?us-ascii?Q?Ued5wlt3xRPeYlEwfFh6Czgyf56v6wPbMfaDR7r8jY7vhzLzqLZXmbJdVWGg?=
+	=?us-ascii?Q?SFtsqB5umkPdiMJC/bL7flFu83J11H+n93DXbPoCrwUKGz1oeSWK7977gf/Y?=
+	=?us-ascii?Q?liz7B34/CLk7NRQJ2i40XtpJgD0MjM964+DKBFk8RmxNw7veAkMjHvu1iyKw?=
+	=?us-ascii?Q?uLWbM6HwgasPhtnxGl9oZgv8luh0qWTEyl66hG+YdqDQXpwwhX5cR/EmoofL?=
+	=?us-ascii?Q?q+ucSP2ST0rc+V4jaractIabz85skeKO6/L08aTYhNNhaLUuvxAchJYphUow?=
+	=?us-ascii?Q?hbeQjDZxtdMsuUzg32BX8/SYslV/qvC+nE9SbHRkvviqVc4S3vQgn/bolsjv?=
+	=?us-ascii?Q?v+Z13Ti4zJFKAldYG66V/lTOxT0LHpICfOqIweWHXIY4NJ7OP/ArVK2jko30?=
+	=?us-ascii?Q?sk+k/+btHXXYapuAYiDzwuHxaRI8lqvJBTSvQZiweQLuKqn4BUrpvoM2bA/3?=
+	=?us-ascii?Q?UdbcgySVdN4856a2Rys0G7qgzLvs+Y7oWDdNrMuWmjWQD7yAfto6mqIFp+BL?=
+	=?us-ascii?Q?6fuhDXXBQFOsMwb0Vk55X1ZozDQvwWGeU/RY0SzQ2RJH3JD2qJQ9FPGn+K8L?=
+	=?us-ascii?Q?e3u9va/FTP4KJqwtD8A346EvmyUbXnHVKdC8CwLnBg5FEp3SwCz4J1Ww8qL0?=
+	=?us-ascii?Q?zw9P6Qyowb2tyCwY/lrIaTR3caM5UaLm+EGUZ90+S9OvGXN/jqbDm/HdtI33?=
+	=?us-ascii?Q?Y378QOFGndh+vaqWJMVtGFftREzIpVeJohKa0KfzrBu3+HClPeecNni0b/zS?=
+	=?us-ascii?Q?Hbv834gKMmcZ9UhmUlJU2ucWlGvIFLC2jVqNXhNKqO8i32VG3xIySswrPTxP?=
+	=?us-ascii?Q?81VOdPTCPtd6q2rzQPQ4KGer6AEeUBp8Q3aoXv9roKXp9aqb6XrEIhQVFQoy?=
+	=?us-ascii?Q?u4GFEdek3rzW4Wpd18yZgQaD733uGTTf7zbMYJ6dSVzCSDyCFCL0TxyiEY56?=
+	=?us-ascii?Q?XbVj++jcfVOo2YEa6qBkOipLfXtS7LT4+ZDpXqQ7OsxetoDp8MmKBoOP7KP0?=
+	=?us-ascii?Q?wZ2AEVL5skHpG2V97r+GKwdsHaPUgsZVJcJJsmBB2c6mSFwz+LZtYj9hoKpX?=
+	=?us-ascii?Q?EQ/h0jijlAdEW6TQXdRQsa2f0RDndtZL0v+7bKgs5GVjAny0gafiwtdiKZvO?=
+	=?us-ascii?Q?O8+VFyQCWGF3Tg=3D?=
+X-Microsoft-Antispam-Message-Info: 6k7F0kGVFJUsT24sBZjqCc9PjSWP7C2QTiNjCf0A0dcv1AjIQKDKIyaTED+MQJFp/vFIRFdWetiG5TqUnPLwcQNXg30aEV8d4G/6r40+rvk6ICBfx8d0VXLiJLznEP5v1lOqdIJn9YwE5VHMrbSTotk/5gBg8e4IFhVj9o7m75qasRvM8912lqX85YCkPqi3oxVg3D3OcEJUYV8dc5Nk7XyadTJvOT6X9nQR7ACXxrfEokAkt7mPguOBtaTgfs/0vw+gAZnsr/1faa8uOoNRv5y92xlgt5c1TdUyMn8GRAXGqqUbEp3l8WxK6HbqyJXXcS833JwvAgHU5AngpWlWNAQeTzOfX3FIC3qNCubS4w4=
+X-Microsoft-Exchange-Diagnostics: 1; BYAPR02MB4453;
+	6:+YIMNIwP3iCCRlPmrIk/xbObaBZOb1yoBMKzVnQTeeJjNleA9kVVJafC1/pGHLvwpmrxpz4+75jDTvjrOkFuErfyyD87MgXQdQEftdv3Jo+Mj++vndy2Df8IvAnwThRouWdxhKC1rtT/58mZUkN3Y1UuDxaZyhKqC3nJgVnTurHe4/BnM4bo/zKZ/3xWdJ/6satKJdTDe529BEG3DnE8ZB2z8mh/AAdzaHUXm0+ehpYIm760sy8oLey0yRkgejcRcyQwoj68vjOLZ1HwAUUtDErOfaTCx2uBrn7xC0L0/QDReV4NVYMShYe4ljIfGEProtd1SGrvMOVBqpGhfWsiUIAJhEfl+A2SAQslZX97iSrvIL/GszfahnipIh2p7L3KLEwB4UiAicriQN0T145G6j7Wadf/mnnp7Pfn1uDUmwBDGgEYqtgwkU/GHVu8xy39pjxOEld9GG6Jmf98WW+T1Q==;
+	5:rH5KYZi/nED0JW/GpbD9C+BBJEb/HQL2PGM1yakxduUI87fGqkgyT51vLimSJCjTEHu5oN7OApTSdRgVaJM0SKj9PIixReSFRsK+uFp3xNf8URn8aSzOk9Xi7qG2iGntxgUnrdpEbBEE5AzaC9Ibsx2nGSYXfG65/DZFzyaY5X8=;
+	7:GfKWTIl4614sZtw2Xx5TbB2B6ewxpgQQu2439TFrPRtWZ6QRvpzXztKpMcZc+wShILq9dyf0azzaUECQ/wyzgpA7J7z7dZ0rIodmgTsfJpDhoajPt0ME+vhBZXfe2gUBxnNY6viPsrAe6YzRmSni9g==
 SpamDiagnosticOutput: 1:99
 SpamDiagnosticMetadata: NSPM
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2018 09:51:59.6073 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9210c9e4-abe6-4cfe-dcf3-08d64ba9274f
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2018 09:57:11.0098 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7cfcd9dc-5060-4961-a251-08d64ba9e107
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
+	Ip=[149.199.60.83]; Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR02MB4322
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB4453
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.76.57
-Subject: Re: [Qemu-arm] [PATCH v6 04/16] gdbstub: add multiprocess support
- to 'H' and 'T' packets
+X-Received-From: 40.107.72.40
+Subject: Re: [Qemu-arm] [PATCH v6 05/16] gdbstub: add multiprocess support
+ to vCont packets
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -204,75 +203,40 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uDt8drSeFjf2
+X-TUID: 1ZPYmi834FCY
 
-On Thu, Nov 15, 2018 at 10:41:55AM +0100, Luc Michel wrote:
-> Add a couple of helper functions to cope with GDB threads and processes.
+On Thu, Nov 15, 2018 at 10:41:56AM +0100, Luc Michel wrote:
+> Add the gdb_first_cpu() and gdb_next_cpu() to iterate over all
+> the CPUs in currently attached processes.
 >=20
-> The gdb_get_process() function looks for a process given a pid.
+> Add the gdb_first_cpu_in_process() and gdb_next_cpu_in_process() to
+> iterate over CPUs of a given process.
 >=20
-> The gdb_get_cpu() function returns the CPU corresponding to the (pid,
-> tid) pair given as parameters.
->=20
-> The read_thread_id() function parses the thread-id sent by the peer.
-> This function supports the multiprocess extension thread-id syntax.  The
-> return value specifies if the parsing failed, or if a special case was
-> encountered (all processes or all threads).
->=20
-> Use them in 'H' and 'T' packets handling to support the multiprocess
-> extension.
+> Use them to add multiprocess extension support to vCont packets.
 >=20
 > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
 > Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-
-Hi Luc,
-
-
-
 > ---
->  gdbstub.c | 152 +++++++++++++++++++++++++++++++++++++++++++++++-------
->  1 file changed, 134 insertions(+), 18 deletions(-)
+>  gdbstub.c | 117 +++++++++++++++++++++++++++++++++++++++++++++++-------
+>  1 file changed, 102 insertions(+), 15 deletions(-)
 >=20
 > diff --git a/gdbstub.c b/gdbstub.c
-> index 4fbc05dfe3..fa2b7077b2 100644
+> index fa2b7077b2..f1ec3481cb 100644
 > --- a/gdbstub.c
 > +++ b/gdbstub.c
-> @@ -680,10 +680,73 @@ out:
->  #else
->      return s->processes[0].pid;
->  #endif
+> @@ -716,10 +716,40 @@ static CPUState *find_cpu(uint32_t thread_id)
+>      }
+> =20
+>      return NULL;
 >  }
 > =20
-> +static GDBProcess *gdb_get_process(const GDBState *s, uint32_t pid)
-> +{
-> +    int i;
-> +
-> +    if (!pid) {
-> +        /* 0 means any process, we take the first one */
-> +        return &s->processes[0];
-> +    }
-> +
-> +    for (i =3D 0; i < s->process_num; i++) {
-> +        if (s->processes[i].pid =3D=3D pid) {
-> +            return &s->processes[i];
-> +        }
-> +    }
-> +
-> +    return NULL;
-> +}
-> +
-> +static GDBProcess *gdb_get_cpu_process(const GDBState *s, CPUState *cpu)
-> +{
-> +    return gdb_get_process(s, gdb_get_cpu_pid(s, cpu));
-> +}
-> +
-> +static CPUState *find_cpu(uint32_t thread_id)
+> +static CPUState *get_first_cpu_in_process(const GDBState *s,
+> +                                          GDBProcess *process)
 > +{
 > +    CPUState *cpu;
 > +
 > +    CPU_FOREACH(cpu) {
-> +        if (cpu_gdb_index(cpu) =3D=3D thread_id) {
+> +        if (gdb_get_cpu_pid(s, cpu) =3D=3D process->pid) {
 > +            return cpu;
 > +        }
 > +    }
@@ -280,41 +244,71 @@ Hi Luc,
 > +    return NULL;
 > +}
 > +
-> +static CPUState *gdb_get_cpu(const GDBState *s, uint32_t pid, uint32_t t=
-id)
+> +static CPUState *gdb_next_cpu_in_process(const GDBState *s, CPUState *cp=
+u)
 > +{
-> +    GDBProcess *process;
-> +    CPUState *cpu =3D find_cpu(tid);
+> +    uint32_t pid =3D gdb_get_cpu_pid(s, cpu);
+> +    cpu =3D CPU_NEXT(cpu);
 > +
-> +    if (!tid) {
-> +        /* 0 means any thread, we take the first one */
-> +        tid =3D 1;
+> +    while (cpu) {
+> +        if (gdb_get_cpu_pid(s, cpu) =3D=3D pid) {
+> +            break;
+> +        }
+> +
+> +        cpu =3D CPU_NEXT(cpu);
 > +    }
 > +
-> +    if (cpu =3D=3D NULL) {
-> +        return NULL;
-> +    }
+> +    return cpu;
+> +}
+> +
+>  static CPUState *gdb_get_cpu(const GDBState *s, uint32_t pid, uint32_t t=
+id)
+>  {
+>      GDBProcess *process;
+>      CPUState *cpu =3D find_cpu(tid);
+> =20
+> @@ -743,10 +773,41 @@ static CPUState *gdb_get_cpu(const GDBState *s, uin=
+t32_t pid, uint32_t tid)
+>      }
+> =20
+>      return cpu;
+>  }
+> =20
+> +/* Return the cpu following @cpu, while ignoring
+> + * unattached processes.
+> + */
+> +static CPUState *gdb_next_cpu(const GDBState *s, CPUState *cpu)
 
-Not sure about this. If tid is zero, you fix up the wildcard by setting tid=
- to one.
-Shouldn't you also retry find_cpu(tid) in that case?
+Perhaps a better name would be gdb_next_attached_cpu() ?
 
-Otherwise, tid doesn't seem to be used after the wildcard fixup.
-
-Other than that, I think this looks good:
+With that name change:
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
 
+
+> +{
+> +    cpu =3D CPU_NEXT(cpu);
 > +
-> +    process =3D gdb_get_cpu_process(s, cpu);
+> +    while (cpu) {
+> +        if (gdb_get_cpu_process(s, cpu)->attached) {
+> +            break;
+> +        }
 > +
-> +    if (process->pid !=3D pid) {
-> +        return NULL;
+> +        cpu =3D CPU_NEXT(cpu);
 > +    }
 > +
+> +    return cpu;
+> +}
+> +
+> +/* Return the first attached cpu */
+> +static CPUState *gdb_first_cpu(const GDBState *s)
+> +{
+> +    CPUState *cpu =3D first_cpu;
+> +    GDBProcess *process =3D gdb_get_cpu_process(s, cpu);
+> +
 > +    if (!process->attached) {
-> +        return NULL;
+> +        return gdb_next_cpu(s, cpu);
 > +    }
 > +
 > +    return cpu;
@@ -325,166 +319,110 @@ Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 >  {
 >      size_t len;
 >      int i;
-> @@ -936,23 +999,10 @@ static void gdb_set_cpu_pc(GDBState *s, target_ulon=
-g pc)
-> =20
->      cpu_synchronize_state(cpu);
->      cpu_set_pc(cpu, pc);
->  }
-> =20
-> -static CPUState *find_cpu(uint32_t thread_id)
-> -{
-> -    CPUState *cpu;
-> -
-> -    CPU_FOREACH(cpu) {
-> -        if (cpu_gdb_index(cpu) =3D=3D thread_id) {
-> -            return cpu;
-> -        }
-> -    }
-> -
-> -    return NULL;
-> -}
-> -
->  static char *gdb_fmt_thread_id(const GDBState *s, CPUState *cpu,
->                             char *buf, size_t buf_size)
+> @@ -1081,14 +1142,16 @@ static int is_query_packet(const char *p, const c=
+har *query, char separator)
+>   * returns -ENOTSUP if a command is unsupported, -EINVAL or -ERANGE if t=
+here is
+>   *         a format error, 0 on success.
+>   */
+>  static int gdb_handle_vcont(GDBState *s, const char *p)
 >  {
->      if (s->multiprocess) {
->          snprintf(buf, buf_size, "p%02x.%02x",
-> @@ -962,10 +1012,64 @@ static char *gdb_fmt_thread_id(const GDBState *s, =
-CPUState *cpu,
->      }
-> =20
->      return buf;
->  }
-> =20
-> +typedef enum GDBThreadIdKind {
-> +    GDB_ONE_THREAD =3D 0,
-> +    GDB_ALL_THREADS,     /* One process, all threads */
-> +    GDB_ALL_PROCESSES,
-> +    GDB_READ_THREAD_ERR
-> +} GDBThreadIdKind;
-> +
-> +static GDBThreadIdKind read_thread_id(const char *buf, const char **end_=
-buf,
-> +                                      uint32_t *pid, uint32_t *tid)
-> +{
-> +    unsigned long p, t;
-> +    int ret;
-> +
-> +    if (*buf =3D=3D 'p') {
-> +        buf++;
-> +        ret =3D qemu_strtoul(buf, &buf, 16, &p);
-> +
-> +        if (ret) {
-> +            return GDB_READ_THREAD_ERR;
-> +        }
-> +
-> +        /* Skip '.' */
-> +        buf++;
-> +    } else {
-> +        p =3D 1;
-> +    }
-> +
-> +    ret =3D qemu_strtoul(buf, &buf, 16, &t);
-> +
-> +    if (ret) {
-> +        return GDB_READ_THREAD_ERR;
-> +    }
-> +
-> +    *end_buf =3D buf;
-> +
-> +    if (p =3D=3D -1) {
-> +        return GDB_ALL_PROCESSES;
-> +    }
-> +
-> +    if (pid) {
-> +        *pid =3D p;
-> +    }
-> +
-> +    if (t =3D=3D -1) {
-> +        return GDB_ALL_THREADS;
-> +    }
-> +
-> +    if (tid) {
-> +        *tid =3D t;
-> +    }
-> +
-> +    return GDB_ONE_THREAD;
-> +}
-> +
->  static int is_query_packet(const char *p, const char *query, char separa=
-tor)
->  {
->      unsigned int query_len =3D strlen(query);
-> =20
->      return strncmp(p, query, query_len) =3D=3D 0 &&
-> @@ -1070,16 +1174,18 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
->  {
->      CPUState *cpu;
->      CPUClass *cc;
->      const char *p;
->      uint32_t thread;
+> -    int res, idx, signal =3D 0;
+> +    int res, signal =3D 0;
+>      char cur_action;
+>      char *newstates;
+>      unsigned long tmp;
 > +    uint32_t pid, tid;
->      int ch, reg_size, type, res;
->      uint8_t mem_buf[MAX_PACKET_LENGTH];
->      char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
->      char thread_id[16];
->      uint8_t *registers;
->      target_ulong addr, len;
-> +    GDBThreadIdKind thread_kind;
+> +    GDBProcess *process;
+>      CPUState *cpu;
+>  #ifdef CONFIG_USER_ONLY
+>      int max_cpus =3D 1; /* global variable max_cpus exists only in syste=
+m mode */
 > =20
->      trace_gdbstub_io_command(line_buf);
-> =20
->      p =3D line_buf;
->      ch =3D *p++;
-> @@ -1283,16 +1389,22 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
->          else
->              put_packet(s, "E22");
->          break;
->      case 'H':
->          type =3D *p++;
-> -        thread =3D strtoull(p, (char **)&p, 16);
-> -        if (thread =3D=3D -1 || thread =3D=3D 0) {
+>      CPU_FOREACH(cpu) {
+> @@ -1127,29 +1190,52 @@ static int gdb_handle_vcont(GDBState *s, const ch=
+ar *p)
+>          } else if (cur_action !=3D 'c' && cur_action !=3D 's') {
+>              /* unknown/invalid/unsupported command */
+>              res =3D -ENOTSUP;
+>              goto out;
+>          }
+> -        /* thread specification. special values: (none), -1 =3D all; 0 =
+=3D any */
+> -        if ((p[0] =3D=3D ':' && p[1] =3D=3D '-' && p[2] =3D=3D '1') || (=
+p[0] !=3D ':')) {
+> -            if (*p =3D=3D ':') {
+> -                p +=3D 3;
+> -            }
+> -            for (idx =3D 0; idx < max_cpus; idx++) {
+> -                if (newstates[idx] =3D=3D 1) {
+> -                    newstates[idx] =3D cur_action;
 > +
-> +        thread_kind =3D read_thread_id(p, &p, &pid, &tid);
-> +        if (thread_kind =3D=3D GDB_READ_THREAD_ERR) {
-> +            put_packet(s, "E22");
-> +            break;
+> +        if (*p++ !=3D ':') {
+> +            res =3D -ENOTSUP;
+> +            goto out;
 > +        }
 > +
-> +        if (thread_kind !=3D GDB_ONE_THREAD) {
->              put_packet(s, "OK");
->              break;
->          }
-> -        cpu =3D find_cpu(thread);
-> +        cpu =3D gdb_get_cpu(s, pid, tid);
->          if (cpu =3D=3D NULL) {
->              put_packet(s, "E22");
->              break;
->          }
->          switch (type) {
-> @@ -1308,12 +1420,16 @@ static int gdb_handle_packet(GDBState *s, const c=
-har *line_buf)
->               put_packet(s, "E22");
->               break;
->          }
->          break;
->      case 'T':
-> -        thread =3D strtoull(p, (char **)&p, 16);
-> -        cpu =3D find_cpu(thread);
-> +        thread_kind =3D read_thread_id(p, &p, &pid, &tid);
-> +        if (thread_kind =3D=3D GDB_READ_THREAD_ERR) {
-> +            put_packet(s, "E22");
+> +        switch (read_thread_id(p, &p, &pid, &tid)) {
+> +        case GDB_READ_THREAD_ERR:
+> +            res =3D -EINVAL;
+> +            goto out;
+> +
+> +        case GDB_ALL_PROCESSES:
+> +            cpu =3D gdb_first_cpu(s);
+> +            while (cpu) {
+> +                if (newstates[cpu->cpu_index] =3D=3D 1) {
+> +                    newstates[cpu->cpu_index] =3D cur_action;
+>                  }
+> +
+> +                cpu =3D gdb_next_cpu(s, cpu);
+>              }
+> -        } else if (*p =3D=3D ':') {
+> -            p++;
+> -            res =3D qemu_strtoul(p, &p, 16, &tmp);
+> -            if (res) {
 > +            break;
-> +        }
-> +        cpu =3D gdb_get_cpu(s, pid, tid);
+> +
+> +        case GDB_ALL_THREADS:
+> +            process =3D gdb_get_process(s, pid);
+> +
+> +            if (!process->attached) {
+> +                res =3D -EINVAL;
+>                  goto out;
+>              }
 > =20
->          if (cpu !=3D NULL) {
->              put_packet(s, "OK");
->          } else {
->              put_packet(s, "E22");
+> -            /* 0 means any thread, so we pick the first valid CPU */
+> -            cpu =3D tmp ? find_cpu(tmp) : first_cpu;
+> +            cpu =3D get_first_cpu_in_process(s, process);
+> +            while (cpu) {
+> +                if (newstates[cpu->cpu_index] =3D=3D 1) {
+> +                    newstates[cpu->cpu_index] =3D cur_action;
+> +                }
+> +
+> +                cpu =3D gdb_next_cpu_in_process(s, cpu);
+> +            }
+> +            break;
+> +
+> +        case GDB_ONE_THREAD:
+> +            cpu =3D gdb_get_cpu(s, pid, tid);
+> =20
+>              /* invalid CPU/thread specified */
+>              if (!cpu) {
+>                  res =3D -EINVAL;
+>                  goto out;
+> @@ -1157,10 +1243,11 @@ static int gdb_handle_vcont(GDBState *s, const ch=
+ar *p)
+> =20
+>              /* only use if no previous match occourred */
+>              if (newstates[cpu->cpu_index] =3D=3D 1) {
+>                  newstates[cpu->cpu_index] =3D cur_action;
+>              }
+> +            break;
+>          }
+>      }
+>      s->signal =3D signal;
+>      gdb_continue_partial(s, newstates);
+> =20
 > --=20
 > 2.19.1
 >=20

@@ -1,117 +1,141 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp73593wrt;
-        Thu, 6 Dec 2018 18:30:05 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/X5dv8dOgZKYJhEODmaK5ald4L2NpfVhobx+hy30sY7ueo+LopNEb/8rBy3GERNP0PwLIDb
-X-Received: by 2002:a37:ef07:: with SMTP id j7mr335462qkk.35.1544149805790;
-        Thu, 06 Dec 2018 18:30:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1544149805; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1496921wrt;
+        Mon, 19 Nov 2018 15:46:45 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dxYtJOEnaqjHxstXUVv/s4YTPseZ1f1amYUAFfw0q9ECGVp2wokLnEmTz4HQgMrTVilOzO
+X-Received: by 2002:a81:3150:: with SMTP id x77mr16167756ywx.180.1542671205795;
+        Mon, 19 Nov 2018 15:46:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542671205; cv=none;
         d=google.com; s=arc-20160816;
-        b=fo69g34WEF508RQU9fnt+yT6MMQNxIjo0Sydm+9pQbWuyI/1IEkSvKsjmTZqc7q7uz
-         5LvrhUdc1qgVNQCq3P23otcuCVeLrxt9qI6GIMipYROl9irW5I5bXQoXqxW6KOma/3yt
-         hqY6eXVkcXkNSIu+Ks2Ws5Ctvcv3NIgS5/hhGikyX3JXqR5ZoOh9V0OoMJ3+ww5TEzkL
-         Olrki++Bfv9y+PUEWLchYM1anLuLCx5VZStWW6/wW7ClSEZZGCF5FyLBRDRQSWUbH9Y8
-         UC5DHLzEV4PRvomTBIY2mYDPv4pTtAyh6dUBydhIPo5os9lUq1TYV7AQTrE4dzs//GXx
-         hL3Q==
+        b=z6/rDXMCRAN0uwJ5Tb1IUVDLcmVB9aNtW/eCARrvgTR4s+nZscNiKm1Z4w5s/K0fVH
+         juPyDiBmbutFC+sRS6oW9J4K4JIWox8qfQZfje0uR6+ssKgOx4+8OEUNCJdTyOv+vdF9
+         3exs+iymObyAP5Z6IjR3YjMJVDUBmMY1W6YRRpS1VpIRrGVEzLD5KS7V0uWoZoKVZ8q0
+         t5T0DO6k0rjj+Mx7vKhp2vyddmJs72VXWdwoXDuzz+kKEiJS+Rz1GcMZSIlszuaV6QSh
+         8AgG1fn5JVpGVHtkQE4KgUntWd+C60JOBwNBoaIlZQXBTVT8C1MTWoba9SXILalQdshT
+         8t7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=yU12hub9q8T//P5o5eWEkxKX9beZe6lA34ybyznv80A=;
-        b=weBaip3USpP36oSE1yCypjPmak3XPjylKrhLk8r4KB4vXmHdpmv17Ii4GXE02ja0cK
-         CbSzvsC2HEzvj5xcw9ytW7JzTdEjziHB0AbLND5+1i1e4m9sfsur5dA8pcwUJE7RAfSf
-         CpJNdQZadrHNwn3MeVezoLgL4xbf97hGrJirvS35D22Jx6LYPp6gZgKa55gpQUMivShA
-         QXlGMNMncieGR5HOenJW0vGr3CqKKUUDq6ZaVqacYRkU6t25GuKC2QgTqPgSjLKoM9IE
-         4KYBBHuJh9U/2AZi3psa/WQOjMw2tHyQQS7HN2vrXYweIpF395Bg/K91oFeIx4eq7Okz
-         i31Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=WacBpSXTGVag3R7QfmsDHOY3Ltxakzua/Yf8xfkVs+E=;
+        b=p/FTeaJaqFKC5LNuKVxIjz3GLM7YiRD6Mj6+g4ZUHkFSbN/ZKmDxLifOiXRORzrkKa
+         6qExLg7fT+HmBQCHG4uOC+U2oK10t+JCpy2IL+5kWfJR4VbOQGZBabIqAac8hSRs+Oyj
+         4l+H/y2o06o1AkwbSSl4bMB+01kjBL1w4jeyzUGwZCN2/o466BPrVFbqMBR1Z6FBU600
+         n+AmqpWZjHWlfaI616c+xCVOPlquU+5ihErtcKLMWdEwZgtaj29HqpEn1nbmTd1NgEun
+         7pLMauLo29WGwFEarW4T6b1NjDHK375+5RI4v9Ea6f8yWc815rV/Mp+uD1dUqa/1w7Ov
+         wT2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@zx2c4.com header.s=mail header.b=ed8404z8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id r37si1428275qtb.257.2018.12.06.18.30.05
+        by mx.google.com with ESMTPS id t129-v6si25273821ywc.416.2018.11.19.15.46.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 06 Dec 2018 18:30:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Mon, 19 Nov 2018 15:46:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43823 helo=lists.gnu.org)
+       dkim=fail header.i=@zx2c4.com header.s=mail header.b=ed8404z8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=zx2c4.com
+Received: from localhost ([::1]:59508 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gV5u1-0004oX-Bu
-	for alex.bennee@linaro.org; Thu, 06 Dec 2018 21:30:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48667)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gOtFd-0004YI-9A
+	for alex.bennee@linaro.org; Mon, 19 Nov 2018 18:46:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44744)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1gV5th-0004n5-Fj
-	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 21:29:46 -0500
+	(envelope-from <Jason@zx2c4.com>) id 1gOtFV-0004Xp-Gb
+	for qemu-arm@nongnu.org; Mon, 19 Nov 2018 18:46:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <gengdongjiu@huawei.com>) id 1gV5tg-0006L0-RL
-	for qemu-devel@nongnu.org; Thu, 06 Dec 2018 21:29:45 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:40632 helo=huawei.com)
+	(envelope-from <Jason@zx2c4.com>) id 1gOtFQ-0008FQ-Gt
+	for qemu-arm@nongnu.org; Mon, 19 Nov 2018 18:46:37 -0500
+Received: from frisell.zx2c4.com ([192.95.5.64]:46551)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
-	id 1gV5tb-0006Ea-Ll; Thu, 06 Dec 2018 21:29:39 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
-	by Forcepoint Email with ESMTP id D134331B2BD7E;
-	Fri,  7 Dec 2018 10:29:29 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
-	(10.3.19.212) with Microsoft SMTP Server id 14.3.408.0; Fri, 7 Dec 2018
-	10:29:30 +0800
-To: Peter Maydell <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>
-References: <20181206151401.13455-1-peter.maydell@linaro.org>
-From: gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <4c74e17a-840b-e1d9-6dac-71f64a190945@huawei.com>
-Date: Fri, 7 Dec 2018 10:29:24 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.6.0
+	(Exim 4.71) (envelope-from <Jason@zx2c4.com>)
+	id 1gOtFQ-0008EZ-BK; Mon, 19 Nov 2018 18:46:32 -0500
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTP id 32c1430c;
+	Mon, 19 Nov 2018 23:40:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=zx2c4.com; h=mime-version
+	:from:date:message-id:subject:to:content-type; s=mail; bh=GZac3l
+	9h+dj0S0shsvm4g+9RmM0=; b=ed8404z8egGemhBhRXm1vTAZ2EwhXoKpaTuEE1
+	R/Eerqa3cqBz0ZhYwc8m3FKV63KzXcwo7cqf1pP3xx8ACyG7HaK7IlCmRz/N63aw
+	UbGLiNjt+YnqBFhbr2CoQhoVIkYGGkaUEz+xah57N2v0lFUZy/Xw8mr+sbVFZcH2
+	myPnWEsiAlnCmIJlbYeRhjO/+mK0HOrNMQsNDTm3RZxuV/feIlOw++njsztqJ/r+
+	m/yf41b9LqGEMAJTnYuiFbNIG73CAjRTwT5D5LTK4V84hS4+E7LxuKq5W/mbJoaS
+	0DesOv4uN1BJXbqmHji9EFw24BCTf7thrdsT1oAjFZHCawKw==
+Received: by frisell.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id 6b8631dd
+	(TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256:NO); 
+	Mon, 19 Nov 2018 23:40:27 +0000 (UTC)
+Received: by mail-oi1-f174.google.com with SMTP id v6so76402oif.2;
+	Mon, 19 Nov 2018 15:46:30 -0800 (PST)
+X-Gm-Message-State: AGRZ1gKmg8t5UNUQprIXhXmWFEfuxYtSpERDy4M01OA8um2BZYuKqivP
+	rWUc0kLqGRCIIuHUwIQesydA9UTcGYmq9+6f1o0=
+X-Received: by 2002:aca:c650:: with SMTP id w77mr7660249oif.122.1542671189797; 
+	Mon, 19 Nov 2018 15:46:29 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20181206151401.13455-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
-X-Received-From: 45.249.212.35
-Subject: Re: [Qemu-devel] [RFC] arm: Allow system registers for KVM guests
- to be changed by QEMU code
-X-BeenThere: qemu-devel@nongnu.org
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Tue, 20 Nov 2018 00:46:18 +0100
+X-Gmail-Original-Message-ID: <CAHmME9qhe0ZemTkc2jkEO=_hu6PhvKUKGHC9QYTj2j+QHhNf8g@mail.gmail.com>
+Message-ID: <CAHmME9qhe0ZemTkc2jkEO=_hu6PhvKUKGHC9QYTj2j+QHhNf8g@mail.gmail.com>
+To: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: multipart/mixed; boundary="00000000000046243d057b0d209f"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 192.95.5.64
+Subject: [Qemu-arm] more serial ports on arm?
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, patches@linaro.org
-X-Mailman-Copy: yes
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d0jQ9t/sItoz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jhHBPVUGDeef
 
-On 2018/12/6 23:14, Peter Maydell wrote:
-> ---
-> I think this patch:
->  * should be necessary for the current KVM debug code to be able
->    to actually set the ESR_EL1 for the guest when it wants to
->    deliver a breakpoint exception to it
->  * will also be necessary for Dongjiu's patchset to inject
->    external aborts on memory errors
-> 
-> I have tagged it "RFC" because I don't have a setup to test
-> that; I've just given it a quick smoke test that it runs a
-> VM OK. Please test this and check whether it really does
-> fix the bugs I think it does :-)
+--00000000000046243d057b0d209f
+Content-Type: text/plain; charset="UTF-8"
 
-Great! thanks Peter follow up this issue and patch to fix it.
-I will test it and give response.
+Hey guys,
 
-> 
-> Opinions welcome on whether the "try the write-and-read-back"
-> approach in write_cpustate_to_list() is too hacky and it
-> would be better to actually record whether write_list_to_cpustate()
-> succeeded for each register. (That would require another array.)
+I sort of lost track of the discussion, but what ever happened to
+adding an extra serial port to the arm virt machine? I'm still
+carrying around the attached patch to run build.wireguard.com and I'd
+of course like to see a real solution upstream.
 
+Jason
+
+--00000000000046243d057b0d209f
+Content-Type: text/x-patch; charset="US-ASCII"; name="virt-serial-ports.patch"
+Content-Disposition: attachment; filename="virt-serial-ports.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_jooykdm00>
+X-Attachment-Id: f_jooykdm00
+
+ZGlmZiAtcnUgcWVtdS0zLjAuMC9ody9hcm0vdmlydC5jIHFlbXUtMy4wLjAtbW9kaWZpZWQvaHcv
+YXJtL3ZpcnQuYwotLS0gcWVtdS0zLjAuMC9ody9hcm0vdmlydC5jCTIwMTgtMDgtMTQgMjE6MTA6
+MzQuMDAwMDAwMDAwICswMjAwCisrKyBxZW11LTMuMC4wLW1vZGlmaWVkL2h3L2FybS92aXJ0LmMJ
+MjAxOC0wOS0xNCAxMTo0ODozMS45MTQ3NzIyOTQgKzAyMDAKQEAgLTY3MiwxMyArNjcyLDcgQEAK
+ICAgICBxZW11X2ZkdF9zZXRwcm9wKHZtcy0+ZmR0LCBub2RlbmFtZSwgImNsb2NrLW5hbWVzIiwK
+ICAgICAgICAgICAgICAgICAgICAgICAgICBjbG9ja25hbWVzLCBzaXplb2YoY2xvY2tuYW1lcykp
+OwogCi0gICAgaWYgKHVhcnQgPT0gVklSVF9VQVJUKSB7Ci0gICAgICAgIHFlbXVfZmR0X3NldHBy
+b3Bfc3RyaW5nKHZtcy0+ZmR0LCAiL2Nob3NlbiIsICJzdGRvdXQtcGF0aCIsIG5vZGVuYW1lKTsK
+LSAgICB9IGVsc2UgewotICAgICAgICAvKiBNYXJrIGFzIG5vdCB1c2FibGUgYnkgdGhlIG5vcm1h
+bCB3b3JsZCAqLwotICAgICAgICBxZW11X2ZkdF9zZXRwcm9wX3N0cmluZyh2bXMtPmZkdCwgbm9k
+ZW5hbWUsICJzdGF0dXMiLCAiZGlzYWJsZWQiKTsKLSAgICAgICAgcWVtdV9mZHRfc2V0cHJvcF9z
+dHJpbmcodm1zLT5mZHQsIG5vZGVuYW1lLCAic2VjdXJlLXN0YXR1cyIsICJva2F5Iik7Ci0gICAg
+fQorICAgIHFlbXVfZmR0X3NldHByb3Bfc3RyaW5nKHZtcy0+ZmR0LCAiL2Nob3NlbiIsICJzdGRv
+dXQtcGF0aCIsIG5vZGVuYW1lKTsKIAogICAgIGdfZnJlZShub2RlbmFtZSk7CiB9CkBAIC0xNDk3
+LDExICsxNDkxLDExIEBACiAKICAgICBmZHRfYWRkX3BtdV9ub2Rlcyh2bXMpOwogCisgICAgY3Jl
+YXRlX3VhcnQodm1zLCBwaWMsIFZJUlRfU0VDVVJFX1VBUlQsIHN5c21lbSwgc2VyaWFsX2hkKDEp
+KTsKICAgICBjcmVhdGVfdWFydCh2bXMsIHBpYywgVklSVF9VQVJULCBzeXNtZW0sIHNlcmlhbF9o
+ZCgwKSk7CiAKICAgICBpZiAodm1zLT5zZWN1cmUpIHsKICAgICAgICAgY3JlYXRlX3NlY3VyZV9y
+YW0odm1zLCBzZWN1cmVfc3lzbWVtKTsKLSAgICAgICAgY3JlYXRlX3VhcnQodm1zLCBwaWMsIFZJ
+UlRfU0VDVVJFX1VBUlQsIHNlY3VyZV9zeXNtZW0sIHNlcmlhbF9oZCgxKSk7CiAgICAgfQogCiAg
+ICAgdm1zLT5oaWdobWVtX2VjYW0gJj0gdm1zLT5oaWdobWVtICYmICghZmlybXdhcmVfbG9hZGVk
+IHx8IGFhcmNoNjQpOwo=
+--00000000000046243d057b0d209f--

@@ -1,375 +1,226 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp660464wrt;
-        Mon, 19 Nov 2018 02:24:14 -0800 (PST)
-X-Google-Smtp-Source: AJdET5f9OQ70tyaEOH/IMJywtKPWKwp10OzI0UkHcqOl/zpRzirbMcvMpRlgCEwjUwXcHeN/uNCR
-X-Received: by 2002:a0c:91e8:: with SMTP id r37mr20520275qvr.141.1542623054047;
-        Mon, 19 Nov 2018 02:24:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542623054; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp681416wrt;
+        Mon, 19 Nov 2018 02:49:13 -0800 (PST)
+X-Received: by 2002:a19:4f0c:: with SMTP id d12mr3860262lfb.121.1542624553677;
+        Mon, 19 Nov 2018 02:49:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542624553; cv=none;
         d=google.com; s=arc-20160816;
-        b=nB7IwF5fQD8R9lwmcEc2tnl/tR5VNyf1ilod+t3xNcAIfMLF3ethNMQjL/7VPZx+7i
-         7kZEsJ9q0Yo1kSn5mmwEt7Qt0Lb/D4S6MGGxIkHMEe8Ka13wR1Ise6ypPTBRdm4PQL0V
-         THgA25oi2Ec4TvlPPdYV4kzfD6Xk+R3eLklRWGw6+oslgD+VHlLjiVM3MNy+7sanv3CV
-         0YTBXFlUm9IcZ3/K0xF4bWR3drZMZRL1jD1XZdo+WSR27oA57831zGCATJt4R7VF7Sbt
-         oB/vTCEgF8uwORTrjzp2u0EKBiHhyoaY8GabDkTM94PON+jngtSlgD5DL8pqrWnJT8xF
-         BDEg==
+        b=RC7PDnDX3bqWXbmEHrFma4YkGYjbwwGMKoUaKrMTxpsp43FsTInIJo1wrBIScKltxv
+         +OFhkS0dh7AX3NVlSFN/vYrCfWWNrStTTHMl6llhDyJV8EyWKas2NJxAaKjy9wBv/GUG
+         9tip4XFSzY+vuld3WiRa4v6vFzzrMTIAeBrLgdwBoojn6jGoO+xwVJrrcLS8And5q9Fd
+         OkqK3NMP/v2dISFPjD5PhT2ikxqi3+By9hJ6/z5UQqXo4nP+liEIzW/4VVpfzXxDq2av
+         qGvN49Ok4XRUxpAKXTiPAw4NvWPuBlyWc7B67LO9pZKB1xDLXWCc9ZIhQupfg5kZVyTX
+         uBfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to
-         :dkim-signature:dkim-signature:dkim-signature;
-        bh=dpVTpmmgwAXOY4hZj7yupcVc1ldws4b9n/9s9LQuioQ=;
-        b=WdW37d49F8NaXO1Eh50gijSEhfTtOk8Clo8669yZIInAZM1chaiLKoTDk26SsqWXRu
-         16PpwNQOrL5i0Zd2NW2xqXUZnaGgN6z7rQpjOCtBt7A3j1DGWlFmzIuHOk92qUsK6JlK
-         hOy+fzo3VehP0yx2qw46TNZCzdWEZ+Tu8vLoyAO0bKZu/9Z1ccpCEtLE3Ai5sEAnjyhv
-         zjDZGZTzAHk5XVigMGdux2zX0bgCCEnqcB6LqJ/mIhKs4G+dAmIDrSpqXZFds1TrfT0/
-         u784UY24bS8M2ZTiQEVoBYKXqoKG9dBvKA1lAvLfpkl8pterLluuzP4ukIsACjhleXOS
-         mILQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=eveR05UXzoJmeTS+ueFKhOBTIzU3SxrxH+xJAPjM7wY=;
+        b=ayFInjnSJAddOR4ZlFyWvt91lcFnRD12HHciXuc/9KJdugWiPzU632cYwZjfOCqeyX
+         zA5hUPW0/PkjLpZeLGI/UWR4GpqR4wVfgX+38ywkcWJn3YoYWgNmIuD1Gilf44VLVjgq
+         /42hqqb45TH+/awNmwsLWL9uv8WO/302CCnOChWjkZHVv+9zu6XP6+34KQFztbZ0boW/
+         A9Kc9+HB+MrM4uooQ0S5KSjR7Nos9VyDGMnhqww5BxUNGdwPCmTaXweiPVvMvvE91x2R
+         2WO7m83pXbKRlGItfgShqcz7OP1ZYAGzRDolfoqbKGm4jw+69jHypGSViXypcCZDoqIc
+         ZWUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=0PnjKtol;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=47zyLes5;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=47zyLes5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h73si8718160qke.201.2018.11.19.02.24.13
+       dkim=pass header.i=@linaro.org header.s=google header.b=XNgFJzjX;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <hongbo.zhang@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d15sor9166318lfb.51.2018.11.19.02.49.13
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Nov 2018 02:24:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Mon, 19 Nov 2018 02:49:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=0PnjKtol;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=47zyLes5;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=47zyLes5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55072 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gOgiz-0001eL-GN
-	for alex.bennee@linaro.org; Mon, 19 Nov 2018 05:24:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47481)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gOgg1-00079f-Aw
-	for qemu-arm@nongnu.org; Mon, 19 Nov 2018 05:21:10 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>) id 1gOgY9-0003yb-Nz
-	for qemu-arm@nongnu.org; Mon, 19 Nov 2018 05:13:05 -0500
-Received: from greensocs.com ([193.104.36.180]:60346)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <luc.michel@greensocs.com>)
-	id 1gOgY5-0003oz-U3; Mon, 19 Nov 2018 05:12:59 -0500
-Received: from localhost (localhost [127.0.0.1])
-	by greensocs.com (Postfix) with ESMTP id B056844325D;
-	Mon, 19 Nov 2018 11:12:47 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1542622367;
-	bh=38qIJ3FVi2072qJECpS6JbWKKz1yETCxYM3Iy+Du11w=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=0PnjKtol2jnnd9+Mk97vRbYjBFbeQwQoIYTo9tk6eXUMsYawSkHkiwRWbeABJcFrb
-	ZAuC/qiftb+QW5Bysgrfvsx0ooKPfD9bsffygUu25mB9Ph26buKDT9QRrTXrE94uW5
-	j1cUDpDC5NqK5Y7XjgppptPWDyQ5Xv3Yp3D+NPhM=
-X-Virus-Scanned: amavisd-new at greensocs.com
-Authentication-Results: gs-01.greensocs.com (amavisd-new);
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=47zyLes5;
-	dkim=pass (1024-bit key) header.d=greensocs.com header.b=47zyLes5
-Received: from greensocs.com ([127.0.0.1])
-	by localhost (gs-01.greensocs.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dElkzqvsGzoL; Mon, 19 Nov 2018 11:12:46 +0100 (CET)
-Received: by greensocs.com (Postfix, from userid 998)
-	id B9C09446876; Mon, 19 Nov 2018 11:12:46 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1542622366;
-	bh=38qIJ3FVi2072qJECpS6JbWKKz1yETCxYM3Iy+Du11w=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=47zyLes5LhgK96I/4FTE1Lr4IEi92ASV/rX2elkjKmyvzHCFiB8+tnq6PByYQW4rL
-	geDJybsIpT6jM15NvaavujktglM3WSqcvmLRnQMPRlXyL06sfHS1BmzL5C3oxBdXxV
-	lefzQQJ3vw6vrpZ7S9xWpx7zz3ZecpeyUtXXqwqc=
-Received: from [192.168.61.102] (lfbn-1-8165-82.w90-112.abo.wanadoo.fr
-	[90.112.74.82])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: luc.michel@greensocs.com)
-	by greensocs.com (Postfix) with ESMTPSA id 3F74F44325D;
-	Mon, 19 Nov 2018 11:12:46 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greensocs.com;
-	s=mail; t=1542622366;
-	bh=38qIJ3FVi2072qJECpS6JbWKKz1yETCxYM3Iy+Du11w=;
-	h=Subject:To:Cc:References:From:Date:In-Reply-To;
-	b=47zyLes5LhgK96I/4FTE1Lr4IEi92ASV/rX2elkjKmyvzHCFiB8+tnq6PByYQW4rL
-	geDJybsIpT6jM15NvaavujktglM3WSqcvmLRnQMPRlXyL06sfHS1BmzL5C3oxBdXxV
-	lefzQQJ3vw6vrpZ7S9xWpx7zz3ZecpeyUtXXqwqc=
-To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-References: <20181115094207.22846-1-luc.michel@greensocs.com>
-	<20181115094207.22846-8-luc.michel@greensocs.com>
-	<20181116100407.GQ7447@toto>
-From: Luc Michel <luc.michel@greensocs.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=luc.michel@greensocs.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <d4fc764e-f23f-0154-f6f5-29b509422b7b@greensocs.com>
-Date: Mon, 19 Nov 2018 11:12:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=XNgFJzjX;
+       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=eveR05UXzoJmeTS+ueFKhOBTIzU3SxrxH+xJAPjM7wY=;
+        b=XNgFJzjX0N9/TI1QrqHFPCAKE01teEAzavqL5+XLVcsNbJ9QlxMge3OeMTyn7yE6N/
+         beu1kffYJX/NFE05UlXFBlfRhVRAh4lSuZo/K7pxjEaZPytK0WquZaCKHtEr2eXgVpOx
+         x0hEm4KR1OyXShF7z6mk5MzVjJOCGxd0a6ggo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=eveR05UXzoJmeTS+ueFKhOBTIzU3SxrxH+xJAPjM7wY=;
+        b=G9ea1sOJp83HIL1nz9MsUsvWQV/HsCmytMFvq25so3dTkzYQELBpeDjO5Wq5DE1jsL
+         fzbZfths6foHZBoVl26i6STkwqLDbQ4nPqW2Gxc6a/UiQeCRJHRXqLhL9X0X89Xk+DlY
+         4RXGNdWZAu+D5SHE/nBjTERiZ2ruqAWVWTg4kYIAITO5OhqcLrack79Zpy9lrYH0rW4R
+         vghqbEXKo4+VUq/IMY63xdm5G0oljqSGgYJXk2FwcaRU5Q9pNaTmoiXLfPED1mNY7Bva
+         lF3C15MUhq9qBG9XYvFjsiRg6aFfnvbupfgEdmDtuAl34wNngQ782bIEJE4ir7K4oOzL
+         kFMA==
+X-Gm-Message-State: AGRZ1gIU5gkIONHjSTBnOU/asxWirh00vm1mL+sAFL2/LObMWn9cHkW9
+	EE5/XzVlbqlCHc30idILCF80jXsTFJYWrE9oOMmJeHxD
+X-Google-Smtp-Source: AJdET5dASuQE8FXrAuDhsAXtVl8gxWz9iQQR3siSlqUoUyYEQF77/X+H5MoUAR8q5q96ZtnOg6LCxed3S/+IF1yj0xQ=
+X-Received: by 2002:a19:c18d:: with SMTP id r135mr9742040lff.59.1542624553209;
+ Mon, 19 Nov 2018 02:49:13 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20181116100407.GQ7447@toto>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-GB
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 193.104.36.180
-Subject: Re: [Qemu-arm] [PATCH v6 07/16] gdbstub: add multiprocess support
- to (f|s)ThreadInfo and ThreadExtraInfo
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
-	mark.burton@greensocs.com, qemu-devel@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QfwcjCtDvZt1
+References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org>
+ <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
+ <CAFEAcA-vF5orNpfGFe2sGWh=TxWL054PmCM-Yu4faJne+4CkbA@mail.gmail.com>
+ <CAHmQWvD1ocAfZo=9aJYeuVDWrBk=AF_D-AgHriYb3-7=n+rR6A@mail.gmail.com> <CAFEAcA_a-YMNaGtPPn+8DBFmx4xGYCkuybMck_Wquw6zmLTbCQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA_a-YMNaGtPPn+8DBFmx4xGYCkuybMck_Wquw6zmLTbCQ@mail.gmail.com>
+From: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Mon, 19 Nov 2018 18:49:01 +0800
+Message-ID: <CAHmQWvCuYVBabQ77dhQ+5wX0r9a2rNTJ0AWjnDSQ9nsVJ4otNQ@mail.gmail.com>
+Subject: Re: [PATCH v4] hw/arm: Add arm SBSA reference machine
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>, Leif Lindholm <leif.lindholm@linaro.org>, 
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: JXZm0LbTXpWM
 
+On Fri, 16 Nov 2018 at 19:29, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On 16 November 2018 at 10:46, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+> > On Fri, 16 Nov 2018 at 00:05, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >> If after you've done that this patch is still more than
+> >> about 500 lines long, I would recommend that you split it
+> >> up into coherent pieces, to make it easier to review.
+>
+> > I think however I re-work this file, it is still more than 500 lines.
+> > If split it, then how? one for most basic skeleton, including memory
+> > map, class and instance init etc, and another adding peripheral
+> > devices, like pcie etc?
+>
+> Yes, that's a reasonable split.
+>
+OK, let me see how many lines left when I remove unnecessary DT and EL2/3 lines.
 
+> >> This is still generating a lot of device tree nodes.
+> >> I thought we had agreed that we were going to just have
+> >> a minimal device tree that says "here is the RAM" and nothing
+> >> else ?
+> >>
+> > If I remember correct, it was not only the RAM, but also the CPUs
+> > because it depends on the command parameters dynamically, and also the
+> > GIC as well since it depends on the CPU number.
+> > And should NUMA info if used, be added to DT?
+> > And by the way, I didn't find the RAM size info in the DT.
+>
+> You should include the absolute minimum you need that you
+> cannot either say "we know what this value is because we
+> know the board" or probe for anyway. I think that is basically
+> ram inf and number of CPUs. (Ram size and numa configuration
+> is added to the dtb by the hw/arm/boot.c code, which sets up
+> the "/memory" nodes.)
+>
+> You shouldn't need to put the GIC info into the DT, because
+> you can just hard code into UEFI where it is in memory.
+>
+I can drop GIC, since memory is handled at boot.c, then only CPU node left.
+And some items insides the CPU node can be removed too, I'll check.
 
-On 11/16/18 11:04 AM, Edgar E. Iglesias wrote:
-> On Thu, Nov 15, 2018 at 10:41:58AM +0100, Luc Michel wrote:
->> Change the thread info related packets handling to support multiproces=
-s
->> extension.
->>
->> Add the CPUs class name in the extra info to help differentiate
->> them in multiprocess mode.
->>
->> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> ---
->>  gdbstub.c | 35 +++++++++++++++++++++++++----------
->>  1 file changed, 25 insertions(+), 10 deletions(-)
->>
->> diff --git a/gdbstub.c b/gdbstub.c
->> index d19b0137e8..292dee8914 100644
->> --- a/gdbstub.c
->> +++ b/gdbstub.c
->> @@ -1260,11 +1260,10 @@ out:
->>  static int gdb_handle_packet(GDBState *s, const char *line_buf)
->>  {
->>      CPUState *cpu;
->>      CPUClass *cc;
->>      const char *p;
->> -    uint32_t thread;
->>      uint32_t pid, tid;
->>      int ch, reg_size, type, res;
->>      uint8_t mem_buf[MAX_PACKET_LENGTH];
->>      char buf[sizeof(mem_buf) + 1 /* trailing NUL */];
->>      char thread_id[16];
->> @@ -1556,30 +1555,46 @@ static int gdb_handle_packet(GDBState *s, cons=
-t char *line_buf)
->>              snprintf(buf, sizeof(buf), "QC%s",
->>                       gdb_fmt_thread_id(s, cpu, thread_id, sizeof(thre=
-ad_id)));
->>              put_packet(s, buf);
->>              break;
->>          } else if (strcmp(p,"fThreadInfo") =3D=3D 0) {
->> -            s->query_cpu =3D first_cpu;
->> +            s->query_cpu =3D gdb_first_cpu(s);
->>              goto report_cpuinfo;
->>          } else if (strcmp(p,"sThreadInfo") =3D=3D 0) {
->>          report_cpuinfo:
->>              if (s->query_cpu) {
->> -                snprintf(buf, sizeof(buf), "m%x", cpu_gdb_index(s->qu=
-ery_cpu));
->> +                snprintf(buf, sizeof(buf), "m%s",
->> +                         gdb_fmt_thread_id(s, s->query_cpu,
->> +                                       thread_id, sizeof(thread_id)))=
-;
->>                  put_packet(s, buf);
->> -                s->query_cpu =3D CPU_NEXT(s->query_cpu);
->> +                s->query_cpu =3D gdb_next_cpu(s, s->query_cpu);
->>              } else
->>                  put_packet(s, "l");
->>              break;
->>          } else if (strncmp(p,"ThreadExtraInfo,", 16) =3D=3D 0) {
->> -            thread =3D strtoull(p+16, (char **)&p, 16);
->> -            cpu =3D find_cpu(thread);
->> +            if (read_thread_id(p + 16, &p, &pid, &tid) =3D=3D GDB_REA=
-D_THREAD_ERR) {
->> +                put_packet(s, "E22");
->> +                break;
->> +            }
->> +            cpu =3D gdb_get_cpu(s, pid, tid);
->>              if (cpu !=3D NULL) {
->>                  cpu_synchronize_state(cpu);
->> -                /* memtohex() doubles the required space */
->> -                len =3D snprintf((char *)mem_buf, sizeof(buf) / 2,
->> -                               "CPU#%d [%s]", cpu->cpu_index,
->> -                               cpu->halted ? "halted " : "running");
->> +
->> +                if (s->multiprocess && (s->process_num > 1)) {
->> +                    /* Print the CPU model in multiprocess mode */
->> +                    ObjectClass *oc =3D object_get_class(OBJECT(cpu))=
-;
->> +                    const char *cpu_model =3D object_class_get_name(o=
-c);
->> +                    len =3D snprintf((char *)mem_buf, sizeof(buf) / 2=
-,
->> +                                   "CPU#%d %s [%s]", cpu->cpu_index,
->> +                                   cpu_model,
->> +                                   cpu->halted ? "halted " : "running=
-");
->=20
->=20
->=20
-> I wonder if we could also print a friendly name here deducted from QOM?
-> In some of our use-cases we have an array of MicroBlazes that all live
-> in different HW subsystems and are named differently (e.g CSU, PMU, PMC=
-,
-> PSM etc).
->=20
-> Instead of just seeing a list of MicroBlaze cores it may be more useful
-> to see the actual core name of some sort, e.g:
->=20
-> Instead of:
-> CPU#0 MicroBlaze [running]
-> CPU#1 MicroBlaze [running]
-> CPU#2 MicroBlaze [running]
-> CPU#3 MicroBlaze [running]
->=20
-> Perhaps something like:
-> CPU#0 MicroBlaze PMU [running]
-> CPU#1 MicroBlaze PMC-PPU0 [running]
-> CPU#2 MicroBlaze PMC-PPU1 [running]
-> CPU#3 MicroBlaze PSM [running]
->=20
-> Any thoughts on that?
-I wanted to avoid the ThreadExtraInfo packet to become too much cluttered=
-.
+> >> > +static void create_ehci(const VirtMachineState *vms, qemu_irq *pic)
+> >> > +{
+> >> > +    hwaddr base = vms->memmap[VIRT_EHCI].base;
+> >> > +    int irq = vms->irqmap[VIRT_EHCI];
+> >> > +    USBBus *usb_bus;
+> >> > +
+> >> > +    sysbus_create_simple("exynos4210-ehci-usb", base, pic[irq]);
+> >>
+> >> What is this using the exynos4210 USB device for? That
+> >> is definitely not correct for a generic board.
+> >>
+> > Checked the code:
+> > #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+> > #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+> > #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+> > #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+> > #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
+> >
+> > The first one seems only a parent type, not a general instance, cannot
+> > be used directly.
+> > The other four are specific instances using the first as parent type,
+> > one of them can be chosen to use.
+> > That is my understanding, any comments, or do we need to implement one
+> > which seems generic?
+>
+> You need to work out what you want and implement that;
+> I don't really know enough about USB to advise.
+> You probably also need to consider how you want
+> the USB companion chip stuff to work -- I know that
+> we've had a bug report that the Exynos4210 USB setup
+> is not getting that right, so it may be a poor example
+> to copy from.
+>
+I don't think we need to implement any new 'generic' one, if we do
+this in QEMU, we have to finish its driver in kernel too.
+For the current condition, if there is something wrong with exynos4210
+usb, we have to pick other one, such as the tegra2 one, the only issue
+for such a usb block is its name is not general.
+(But I found there is a generic 'qemu-xhci', I will check further more.)
 
-Here are some tests adding the component part of the CPU canonical name:
+> >> > +
+> >> > +    usb_bus = usb_bus_find(-1);
+> >> > +    usb_create_simple(usb_bus, "usb-kbd");
+> >> > +    usb_create_simple(usb_bus, "usb-mouse");
+> >>
+> >> Don't create USB devices by default -- let the user do it on
+> >> the command line.
+> >>
+> > Some users hope that, I can remove it if not reasonable.
+>
+> Almost no other board models do it (only a few PPC ones
+> and an sh4 board). Generally for QEMU the approach we take
+> is that we don't provide defaults, we expect the user
+> (or the 'management layer' software like libvirt) to
+> specify what they want. This allows users to specify that
+> they *don't* want a usb keyboard, for instance.
+>
+> >> > +    /* If we have an EL3 boot ROM then the assumption is that it will
+> >> > +     * implement PSCI itself, so disable QEMU's internal implementation
+> >> > +     * so it doesn't get in the way. Instead of starting secondary
+> >> > +     * CPUs in PSCI powerdown state we will start them all running and
+> >> > +     * let the boot ROM sort them out.
+> >> > +     * The usual case is that we do use QEMU's PSCI implementation;
+> >> > +     * if the guest has EL2 then we will use SMC as the conduit,
+> >> > +     * and otherwise we will use HVC (for backwards compatibility and
+> >> > +     * because if we're using KVM then we must use HVC).
+> >> > +     */
+> >> > +    if (vms->secure && firmware_loaded) {
+> >> > +        vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
+> >> > +    } else if (vms->virt) {
+> >> > +        vms->psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+> >> > +    } else {
+> >> > +        vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
+> >> > +    }
+> >>
+> >> Do you actually intend this to work in all these cases? I
+> >> thought the intention was "always start the boot rom in EL3"
+> >> for this board, like the real hardware would. In that case, most
+> >> of these if clauses are dead code.
+> >>
+> > Well, I myself prefer "always enable EL3" too.
+> > But during this work, I found that if EL2/EL3 enabled, QEMU runs much
+> > slower than without EL2/3, so I guess if there would be some user of
+> > this platform, for the reason of speed they choose to disable EL2/3,
+> > should we give them such a chance?
+> > If get confirmation that we always enable EL2/3, that is fine for me,
+> > this will make codes cleaner.
+> >
+> > (By the way, I wonder why QEMU becomes much slower with EL2/3 enabled,
+> > because when OS is running, most of the time, we don't call into
+> > EL2/3, does this mean there is a big space for us to optimize it?)
+>
+> I think users who don't care about the EL2/EL3 parts of the software
+> stack should just use the "virt" machine instead -- that is the
+> board we have for "run as fast as possible and just boot a kernel".
+>
+OK, since we have 'virt' for speed, I'll remove the EL2/3
+enable/disable codes, let it enabled always.
 
-(gdb) info threads
-  Id   Target Id         Frame
-  1.1  Thread 1.1 (CPU#0 cortex-a53-arm-cpu apu-cpu[0] [running])
-0x0000000000000000 in ?? ()
-  1.2  Thread 1.2 (CPU#1 cortex-a53-arm-cpu apu-cpu[1] [halted ])
-0x0000000000000000 in ?? ()
-  1.3  Thread 1.3 (CPU#2 cortex-a53-arm-cpu apu-cpu[2] [halted ])
-0x0000000000000000 in ?? ()
-  1.4  Thread 1.4 (CPU#3 cortex-a53-arm-cpu apu-cpu[3] [halted ])
-0x0000000000000000 in ?? ()
-* 2.1  Thread 2.5 (CPU#4 cortex-r5f-arm-cpu rpu-cpu[0] [halted ])
-0xffff0000 in ?? ()
-  2.2  Thread 2.6 (CPU#5 cortex-r5f-arm-cpu rpu-cpu[1] [halted ])
-0xffff0000 in ?? ()
+> It would be interesting at some point to find out why EL2 and EL3
+> are causing slowdowns, yes.
+>
+Hope it can be optimized too.
 
-The model name takes quite some room. The interesting info are `arm` and
-`cortex-xxx`, but AFAIK there is no way of extracting that for a CPU
-generically.
-
-In this case, having the component part of the canonical name is ok
-because self-explanatory. However we could encounter cases where the
-parent name would be necessary to discriminate the CPUs, something like:
-  cluster[0]/cpu[0]
-            /cpu[1]
-  cluster[1]/cpu[0]
-            /cpu[1]
-  ...
-
-The "safest" way would be to have the whole path:
-
-(gdb) info threads
-  Id   Target Id         Frame
-  1.1  Thread 1.1 (CPU#0 cortex-a53-arm-cpu
-/machine/soc/apu-cluster/apu-cpu[0] [running]) 0x0000000000000000 in ?? (=
-)
-  1.2  Thread 1.2 (CPU#1 cortex-a53-arm-cpu
-/machine/soc/apu-cluster/apu-cpu[1] [halted ]) 0x0000000000000000 in ?? (=
-)
-  1.3  Thread 1.3 (CPU#2 cortex-a53-arm-cpu
-/machine/soc/apu-cluster/apu-cpu[2] [halted ]) 0x0000000000000000 in ?? (=
-)
-  1.4  Thread 1.4 (CPU#3 cortex-a53-arm-cpu
-/machine/soc/apu-cluster/apu-cpu[3] [halted ]) 0x0000000000000000 in ?? (=
-)
-* 2.1  Thread 2.5 (CPU#4 cortex-r5f-arm-cpu
-/machine/soc/rpu-cluster/rpu-cpu[0] [halted ]) 0xffff0000 in ?? ()
-  2.2  Thread 2.6 (CPU#5 cortex-r5f-arm-cpu
-/machine/soc/rpu-cluster/rpu-cpu[1] [halted ]) 0xffff0000 in ?? ()
-
-But that becomes really cluttered... We could also remove the CPU model
-completely.
-
-What are your thoughts?
-
-Thanks,
-Luc
-
->=20
-> Thanks,
-> Edgar
->=20
->> +                } else {
->> +                    /* memtohex() doubles the required space */
->> +                    len =3D snprintf((char *)mem_buf, sizeof(buf) / 2=
-,
->> +                                   "CPU#%d [%s]", cpu->cpu_index,
->> +                                   cpu->halted ? "halted " : "running=
-");
->> +                }
->>                  trace_gdbstub_op_extra_info((char *)mem_buf);
->>                  memtohex(buf, mem_buf, len);
->>                  put_packet(s, buf);
->>              }
->>              break;
->> --=20
->> 2.19.1
->>
+> thanks
+> -- PMM

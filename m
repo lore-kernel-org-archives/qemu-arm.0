@@ -1,117 +1,140 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp781147wrt;
-        Mon, 19 Nov 2018 04:28:33 -0800 (PST)
-X-Google-Smtp-Source: AJdET5d9KuqdBKXh0nTOCUUWcbL/EzqTyJ8kX4MuIOdm89ymwnLyO9BvFQ3mbrc7dV2rCzx6er7a
-X-Received: by 2002:a81:4a42:: with SMTP id x63-v6mr20939710ywa.3.1542630513514;
-        Mon, 19 Nov 2018 04:28:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542630513; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp797084wrt;
+        Mon, 19 Nov 2018 04:44:26 -0800 (PST)
+X-Received: by 2002:adf:f101:: with SMTP id r1mr14985246wro.32.1542631466690;
+        Mon, 19 Nov 2018 04:44:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542631466; cv=none;
         d=google.com; s=arc-20160816;
-        b=CDSUnobh0EHczBUG+XEDHGQyL0TRJmEzfG4VyD2qM6xC3o4V+VaeqsUfF62fs/5b+U
-         Bv07kpdJFJ3iRWH/1lxGrLgqpSrCmyEohg3WZsxkugIgoPE6Ye3vxfIhptAWbJyKCrYr
-         QidMEUg9M94jBTJk3BSdnUsiB5sXwZ7F+e3aCReHLh2MWbT5eSiMhWM5dUdMWMcTjVqs
-         aWh41DNQBYexIv6ANzY7ZI3SUxIwfVqGxq64qkvzsR32xLlsAk2owLXw3a5qIGoeYtYa
-         l7dLLKd1R1YEPz+G77DhLvZ1NtoMogaHKyvbh3/gX7GL95mcsUd9gSwnl+vz+LTduxnw
-         IDVg==
+        b=lQgmgAYxLNom6KuLdu4lycEzRu1zcCu8LRyaihLyN+PHKDn8rIAxAv7+pQMP2pHPG3
+         01ahqmTShQ/tdLPqmlWneOxO/kfqMWtFBGkeSpbkgtFXfexk+wbYlHbE+HEyqyte3GYH
+         67sqA9L+uU6f8rn98zhLV04/5MzwkxP12HlobA2uuI2CUD1j1YWirZNVr7/8Z7NCYR1N
+         06UUALXu61RTy3UsyB6tQ8pg0adCLcStkqfsJ7uZSoFS8L+lTR/c9VE+EDf2jswVk/kz
+         TArOsIG3Fw7hRhe1Tx3evVlvtCxZlh8xRH48qpvBXdw1BLHsCjwCpM2XP9dw+uOft4wp
+         5tBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=GMBaGk7/c5RgE5W4sOc7ZIvOBM6+KpDFts1EBqchGzc=;
-        b=hb92/y89j/lKgZLZZxik8SRndX8xb7Xt/N9Sw/lNJnliOFyQZtyFMOR26/Ct/rFuY9
-         BQJq2UlGJpr/RR8SiXKOlTdlSMnkLm8IYeZLiUkMWYoha+qV0L98EvZiqLuam+IVWIBf
-         WxGIy8SHybNvuU9mZPEtYqVSemAbVnz5hjI+7VlpJHKl/IjhPxy6V+f/22JfG8XRKlnx
-         JQ6WwBcr1lmpesrCQ2HL2LBdXczxAgPisjJiPR45fJqWTVmS/7sfRXHnXsu2IDhKLpK9
-         73t/2DRRBQeDGItNhYNDMyv0j1S474A0P8GfGLdw9n0wtb72LN8cP1sKGVrlNq00bVdv
-         AfbQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=5ixC5v24laPHqOBTTwKKh4idTJAtKCYCKhTxpBVveYc=;
+        b=vgQnKoYP+ML5/RJUUy3qgjL6ycM3BYOcIvY/qJ2vUies97aXSAVIZjEE8OMhyyCTZC
+         kD5q91P28xlu84CLX1BNn0j2je1jT6mrvxrVc8ow8v4VFim9qE8yJilSM+ab6VgMU/FC
+         vkS996vaS0GO4ja51pTomEun5smCkRVBseoUywc4AeslVMrGWzyj7F/a/maUF09UaRtJ
+         SCohU3HSJCV6YlsZfSse0vADL8FbvIJzPOSVSTezoBNQKUpqBSda2Prz81Lc671equnL
+         GQj8ndQG9FnASyIZgiQEx4QJHpqQXgqF7cWpeaUd3fgGXU8aCuHYBcNnqwcI3+hnO+TL
+         LGIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t185-v6si6725525ywd.214.2018.11.19.04.28.33
+       dkim=pass header.i=@linaro.org header.s=google header.b=RP41MGL9;
+       spf=pass (google.com: domain of leif.lindholm@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=leif.lindholm@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <leif.lindholm@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id y5sor12745424wrs.27.2018.11.19.04.44.26
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 19 Nov 2018 04:28:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        (Google Transport Security);
+        Mon, 19 Nov 2018 04:44:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of leif.lindholm@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55683 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gOifI-00022p-T3
-	for alex.bennee@linaro.org; Mon, 19 Nov 2018 07:28:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60409)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1gOif6-00021E-Hd
-	for qemu-arm@nongnu.org; Mon, 19 Nov 2018 07:28:22 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1gOif3-0001p8-Bi
-	for qemu-arm@nongnu.org; Mon, 19 Nov 2018 07:28:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41204)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1gOif3-0001ok-3a; Mon, 19 Nov 2018 07:28:17 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0232F307D842;
-	Mon, 19 Nov 2018 12:28:16 +0000 (UTC)
-Received: from gondolin (ovpn-116-165.ams2.redhat.com [10.36.116.165])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 41C07614C2;
-	Mon, 19 Nov 2018 12:27:44 +0000 (UTC)
-Date: Mon, 19 Nov 2018 13:27:40 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
-Message-ID: <20181119132740.2e948b4a.cohuck@redhat.com>
-In-Reply-To: <20181119120820.29878-1-maozhongyi@cmss.chinamobile.com>
-References: <20181119120820.29878-1-maozhongyi@cmss.chinamobile.com>
-Organization: Red Hat GmbH
+       dkim=pass header.i=@linaro.org header.s=google header.b=RP41MGL9;
+       spf=pass (google.com: domain of leif.lindholm@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=leif.lindholm@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=5ixC5v24laPHqOBTTwKKh4idTJAtKCYCKhTxpBVveYc=;
+        b=RP41MGL9///t7zeBwFc2R7vjimdT+zO0uNqEWxas/4w3j5o3IqBEFFIOEq7wLREN1n
+         rOiVLigReFfS+ZTGhEOqSGBqkH0oLAUqsAnqnodCt3y2ubwv/nR1UX0ktyhHesUDxHa5
+         10ZTMfWTa1wFkfZMIto2Ia4/rz1uEHGKHU4hY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to:user-agent;
+        bh=5ixC5v24laPHqOBTTwKKh4idTJAtKCYCKhTxpBVveYc=;
+        b=f6lLLl9DZYtB6E2QLIo0Cz1cd8I4We79w04ybfT9hJVCMAzIzpuofkMBIpHp4eewyN
+         3t6Q74mOFyMe7PY7OgHNFglRR3Od3otIXtUZs5PP5jjORZeoew5suTev76cfrWcyvtYX
+         L9KlxIRzMAmKAJc/EcjSodAA0qtanAwhGOO1i20pFr+PsciI98mCaniy3oCXvXf8B9FO
+         SgQHgG64p9KU+VjgjI+MAOLe/Oit5wXz70M/DC4Ni4YuRrQdSwHJY5nHZoQwgnHmN0if
+         xj5yI9he1kFGivex1UXufRfDZ0sbP6SYZMmy5qoR0QsOLH/KtWyh4vEw6wzb7hZNN61T
+         vU+Q==
+X-Gm-Message-State: AA+aEWZsatybpahesdfdLg8cBCnf5QXTJ+G2kt/whrGCxYl80sh6KLhc
+	Qu18pScJpSusssVqVRzKHyI6Souqnu++1g==
+X-Google-Smtp-Source: AFSGD/V0ri/XLCDBePz2DpbmAgXZJQyRnr+h6K0LYIjPWkX1owHGXb2hTbLgK8TIVW+RlPvD8q3aZw==
+X-Received: by 2002:a5d:494a:: with SMTP id r10mr16241595wrs.272.1542631466380;
+        Mon, 19 Nov 2018 04:44:26 -0800 (PST)
+Return-Path: <leif.lindholm@linaro.org>
+Received: from bivouac.eciton.net (bivouac.eciton.net. [2a00:1098:0:86:1000:23:0:2])
+        by smtp.gmail.com with ESMTPSA id 66-v6sm26827596wmp.28.2018.11.19.04.44.25
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Nov 2018 04:44:25 -0800 (PST)
+Date: Mon, 19 Nov 2018 12:44:23 +0000
+From: Leif Lindholm <leif.lindholm@linaro.org>
+To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+	Hongbo Zhang <hongbo.zhang@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH v4] hw/arm: Add arm SBSA reference machine
+Message-ID: <20181119124423.qj3sjhhdyetrbju5@bivouac.eciton.net>
+References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org>
+ <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
+ <CAFEAcA-vF5orNpfGFe2sGWh=TxWL054PmCM-Yu4faJne+4CkbA@mail.gmail.com>
+ <CAHmQWvD1ocAfZo=9aJYeuVDWrBk=AF_D-AgHriYb3-7=n+rR6A@mail.gmail.com>
+ <20181116122705.msdb5hydmhtyzzxy@sirius.home.kraxel.org>
+ <CAKv+Gu8QXaRioVPNze_+mJg4aqjJmwn4O-1jdRcYwrkieXrBwQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Mon, 19 Nov 2018 12:28:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 00/22] QOM'ify SysBusDeviceClass->init
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, david@redhat.com, qemu-devel@nongnu.org,
-	alistair.francis@wdc.com, kraxel@redhat.com, gxt@mprc.pku.edu.cn,
-	sstabellini@kernel.org, qemu-block@nongnu.org, mst@redhat.com,
-	armbru@redhat.com, borntraeger@de.ibm.com,
-	marcel.apfelbaum@gmail.com, anthony.perard@citrix.com,
-	marcandre.lureau@redhat.com, rth@twiddle.net, thuth@redhat.com,
-	ehabkost@redhat.com, richard.henderson@linaro.org,
-	chouteau@adacore.com, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-	jan.kiszka@web.de, xen-devel@lists.xenproject.org,
-	david@gibson.dropbear.id.au, kwolf@redhat.com, f4bug@amsat.org,
-	mreitz@redhat.com, michael@walle.cc, qemu-ppc@nongnu.org,
-	pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eYy+Gdn36DKr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAKv+Gu8QXaRioVPNze_+mJg4aqjJmwn4O-1jdRcYwrkieXrBwQ@mail.gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-TUID: jKphvpC6gdZu
 
-On Mon, 19 Nov 2018 20:07:58 +0800
-Mao Zhongyi <maozhongyi@cmss.chinamobile.com> wrote:
+On Fri, Nov 16, 2018 at 02:04:07PM -0800, Ard Biesheuvel wrote:
+> > > > What is this using the exynos4210 USB device for? That
+> > > > is definitely not correct for a generic board.
+> > > >
+> > > Checked the code:
+> > > #define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+> > > #define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+> > > #define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+> > > #define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+> > > #define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
+> > >
+> > > The first one seems only a parent type, not a general instance, cannot
+> > > be used directly.
+> > > The other four are specific instances using the first as parent type,
+> > > one of them can be chosen to use.
+> > > That is my understanding, any comments, or do we need to implement one
+> > > which seems generic?
+> >
+> > I think what we *really* want is sysbus-xhci-generic.
+> >
+> > That'll be a bit more work though as xhci core and xhci pci needs to be
+> > splitted, simliar to how it was done for ehci in commit
+> > 5010d4dc618b6b8e7c21129c487c06f6493f71fc (and related patches).
+> >
+> > Or just plug qemu-xhci into a pcie slot.  Not sure which would be closer
+> > to physical hardware.
+> 
+> We don't need XHCI especially, EHCI is perfectly fine as well.
+> 
+> This is mostly about ensuring that the emulated hardware spans the
+> space of what we encounter on real hardware, and non-PCIE SATA and USB
+> controllers is something we see often.
+> 
+> So I could live with MMIO SATA and PCI USB as well, but I'd prefer it
+> if we could have both MMIO.
 
-> The SysBusDeviceClass::init() interface is considered
-> as a legacy interface and there are currently some
-> efforts going on to get rid of it. Thus convert 
-> SysBusDeviceClass::init to DeviceClass::realize.
+I would actually strongly prefer non-MMIO.
 
-In case my comment to the s390 change comes off as negative: I like
-getting rid of the legacy interface :)
+What "we see" is generally a result of embedded companies "value
+adding" in the usual way when moving from embedded to servers.
+
+I want the SBSA target to be an idealised machine, not an educational
+vehicle for showing how companies have got it wrong.
+
+Where in doubt, anything software discoverable should win over
+non-discoverable.
+
+/
+    Leif

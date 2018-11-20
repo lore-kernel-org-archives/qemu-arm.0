@@ -1,198 +1,148 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp661148wrt;
-        Tue, 20 Nov 2018 07:00:55 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XfzNYzF2PBPSCRmcrg+HcpU1OmBWuoKcT9DaI6lQ67kIFr0aFb+mbHTs2Mc4qZ/zss2q14
-X-Received: by 2002:a17:902:8214:: with SMTP id x20-v6mr2473001pln.224.1542726055617;
-        Tue, 20 Nov 2018 07:00:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542726055; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp848537wrt;
+        Tue, 20 Nov 2018 09:43:01 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XDIm78KDfUu4Atz+73gmM6WO7Aa2rQtn71jWSOUmfI9BpgVHpRQh3TzAzD6oJpRjQ+aDqg
+X-Received: by 2002:a25:5a0b:: with SMTP id o11-v6mr1771393ybb.52.1542735781836;
+        Tue, 20 Nov 2018 09:43:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542735781; cv=none;
         d=google.com; s=arc-20160816;
-        b=p7MimOnQL24+4I3BU+2d4FMbbC37EfRaxZr3GuKqsK0gRLdSlhhsHkvGZEGZY7otBV
-         4o23agoc6DwCtHuu4g/x9hbDn5+f+ZlrsRKIqIKX4khkQfCuJzuDZKCe/YXt7HF/x8On
-         MCxixGeYHmJdHTuWf811Yylnyo4NW+nzAdxrPoKt5jx92LNejDcZiabrtua26rk59j8P
-         HvYBlmN8i7Uhd6zVVIaZoRgFEslGUb9fm2I7dAa9OtzuLv32Bx5VO7Av5kLWRXKSGulV
-         hD5tu57w+HUe0FWVcelgfDyvB10swF2csjuiKphrVwv9jzAIVEpW2PSkz3XJFqN8PeMr
-         gY1Q==
+        b=cg2akNh2QUkEg0CwmM71FYGqCm7dlYCK4/LcdrtI+U1EmaoU3lSHtSYT0PsQeRxWHJ
+         KFHOnDmeYZaEHwgJQAp3oKUA8AJM0/1jON4Kn7jEdrQPgZKGUu6PzBbfPhD2IWsLVWBj
+         fGXkImKpn8HaM2uJXAfIn8NNe0aHCe3QBseCaUTK0J5EYV648amv+F0yRxGSJZHx1y1L
+         eWD3RhyUVPf1WC+v3N8UuqduVNALf4I+Yc4uHpBiiblOL7Nv0McrxThOQwUTpWpi8rgj
+         NhVD+orVJCR+1Hkc/cdKW+PmBWlj0hwMy6MeaMAqMfvHZMNdKz7quXRBuWKk5Tv3ImXS
+         dJPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=trYYq8CANwmLq539e+wtu4St1L2KJ5TUfKBq1nnQvIk=;
-        b=DvmPlAjjz5TMo0+PHj4jGK9SWczF7nGRD5W5E+U0Sc9hD5H4aPCojs98F4UGQZQL7Q
-         P3TswSSUBTB6CZCGcVybrESquZlHRZjdefoVv2Swrfbp/Pa9etTZ50n+EclQ4Azc9h7/
-         654+4DZzGb/1im4nlogNGvaLloheb6cCuYh3ygjztiVaWoCwmbrNuHUDz+7TGBR3QwBq
-         eV/84bKOPv1ejBEo7ZTPqe0Ipoivvxi+tpmTH5p9wLwRlmqEmy4l119BCSuno/Tk0cN6
-         jO7qJ739Je11susITwi48yd5Xk9CQUt5jXZ69HxpeyUR5JbJc/OPm0XWzp7ctNmxb8Et
-         0VCQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=YP5qitKgTj1Sa5UjWJwTWg8QZye/IypawmKvLpdTr7Y=;
+        b=q+YPhuzLTYOXXzchpS/c42q450G0mpa2B9UmK9C0f28ujJ0iaDvZ+qlAFiic+Db1e1
+         253fzx8BYljTxLcGTaOZKxHDAqcWaRjH2/Iw2l1WZVOjVyjnCqeK40rrRM7QuLLAUzAD
+         0ED/p1iTfEfpF4I6qbgOGCDp5Fa+1vDQ+HiA8gkOxCnhA1oTcVs5F/IsMpjjGYtRCDL9
+         sznfoZacaw0lfWt2TuBbqZX8tyLhq5EYWvgjLQ5mh2+Sc0VvADI2iuN3xSoYKkMC9xH+
+         wKDxj/GgoZzDp/hMByJqCTCvfWF9OGILOn/LAPrzVTvgHie3hxKLlcOSJ09LUiON4EZz
+         +ZNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WzGzpp1C;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id i23si37412498pgb.116.2018.11.20.07.00.55;
-        Tue, 20 Nov 2018 07:00:55 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id q17-v6si10298990ybj.396.2018.11.20.09.43.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 20 Nov 2018 09:43:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WzGzpp1C;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727565AbeKUBa1 (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Tue, 20 Nov 2018 20:30:27 -0500
-Received: from mail-ot1-f65.google.com ([209.85.210.65]:41395 "EHLO
-        mail-ot1-f65.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1725851AbeKUBa1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Nov 2018 20:30:27 -0500
-Received: by mail-ot1-f65.google.com with SMTP id u16so1896087otk.8
-        for <kvm@vger.kernel.org>; Tue, 20 Nov 2018 07:00:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=trYYq8CANwmLq539e+wtu4St1L2KJ5TUfKBq1nnQvIk=;
-        b=WzGzpp1CQJHHW5z0BQA0rEfdOCe2YKwqxlZ5lz+qDbkLljx5rQl/8rM8B1I2/9QD98
-         xM5pTlrH8VTXmqHWxjcved//MOgN26nvcA7nIkfXPPQFW40U4vvFexJJ9/O9abuwEeG5
-         ko9d6PrGZqfRWRkDF0Ca/55w0qhVy7yN8u53c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=trYYq8CANwmLq539e+wtu4St1L2KJ5TUfKBq1nnQvIk=;
-        b=rP/UhK2ntCKB5uzB/6fDyeBb8CeWeP2iUuQIpMk7BBU3U2b93jPlRvX481mSytOm3c
-         etKREjGWcjz3/Locw1AW5QuQnsGClhiZVZ4S2oIZsveLR9NTLSARzen37InnynNplKZI
-         U0rjGD7lpWCiQTlcZf58GXtCWIhqAs8XK4AezXabQ5JuhLvPCukWHk4ftBId18DYwqVI
-         1alcFFF6U13uDSuUAeP5N+ZDhEFr+Lwe4ULhB9+ej6vz6eEo2TMALDbTZD6M9tGv5yoK
-         UBOoBK+cNzsjDeJEouQYDlTJsKryuhGaNnC/OdWpO0RodS0Z5t8yPTmCoq2+Ko0nHUn3
-         /k8w==
-X-Gm-Message-State: AA+aEWaFo8MxRxl4uHMgtkSd3HvyTNROO3wbqbcTsxQRrBakAskf6wdw
-        ykvjg4Xp6a13ZcnHLSpsIGR69yV/Zn13Xvaz3HsdBA==
-X-Received: by 2002:a9d:582e:: with SMTP id r46mr1404482oth.238.1542726053032;
- Tue, 20 Nov 2018 07:00:53 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35051 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPA3A-0006kd-Te
+	for alex.bennee@linaro.org; Tue, 20 Nov 2018 12:43:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40706)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <thuth@redhat.com>) id 1gPA2x-0006jJ-Dd
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 12:42:48 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <thuth@redhat.com>) id 1gPA2w-0000l9-Hm
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 12:42:47 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:21511)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gPA2w-0000kJ-Aj; Tue, 20 Nov 2018 12:42:46 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 71B5A81DEA;
+	Tue, 20 Nov 2018 17:42:45 +0000 (UTC)
+Received: from thuth.com (ovpn-116-184.ams2.redhat.com [10.36.116.184])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4675F6A6A4;
+	Tue, 20 Nov 2018 17:42:44 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 Nov 2018 18:42:41 +0100
+Message-Id: <1542735761-16176-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Tue, 20 Nov 2018 07:00:32
- -0800 (PST)
-In-Reply-To: <1541672989-15967-10-git-send-email-gengdongjiu@huawei.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com> <1541672989-15967-10-git-send-email-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 20 Nov 2018 15:00:32 +0000
-Message-ID: <CAFEAcA_qpWcLULXza_cgB2_vKSBtP1bCwYEhFL0fydkvZ82EmA@mail.gmail.com>
-Subject: Re: [PATCH RESEND v15 09/10] hw/arm/virt: Add RAS platform version
- for migration
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        James Morse <james.morse@arm.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: jFO1NyZnL+tk
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 20 Nov 2018 17:42:45 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2] MAINTAINERS: Assign some more files in the
+ hw/arm/ directory
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XROP66CFblnF
 
-On 8 November 2018 at 10:29, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> Support this feature since version 2.12, disable it by
-> default in the old version.
->
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
-> Address Shannon's comments to add platform version in [1].
->
-> [1]: https://lkml.org/lkml/2017/8/25/821
-> ---
->  hw/arm/virt-acpi-build.c | 14 +++++++++-----
->  hw/arm/virt.c            |  4 ++++
->  include/hw/arm/virt.h    |  1 +
->  3 files changed, 14 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 19c1b7e..6f50a29 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -836,10 +836,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_spcr(tables_blob, tables->linker, vms);
->
-> -    acpi_add_table(table_offsets, tables_blob);
-> -    build_hardware_error_table(tables->hardware_errors, tables->linker);
-> -    build_apei_hest(tables_blob, tables->hardware_errors, tables->linker);
-> -
-> +    if (!vmc->no_ras) {
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_hardware_error_table(tables->hardware_errors, tables->linker);
-> +        build_apei_hest(tables_blob, tables->hardware_errors, tables->linker);
-> +    }
+I apparently missed some more files and even a complete machine (the
+"imx25-pdk") in my previous patch... but now we should hopefully have
+a completely coverage for all available ARM boards.
 
-This looks odd. If we need to gate the addition of the table
-on whether the machine type asks for it, then we need the
-patch which adds the no_ras flag to come first. Otherwise
-there's a point in the commit history where we add the tables
-even for the older machine types.
+Fixes: 95a5db3ae5698b49c63144610ad02913e780c828
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: Dropped smmu* files from this patch
 
->      if (nb_numa_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
-> @@ -926,6 +927,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
->
->  void virt_acpi_setup(VirtMachineState *vms)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->      AcpiBuildTables tables;
->      AcpiBuildState *build_state;
->
-> @@ -957,7 +959,9 @@ void virt_acpi_setup(VirtMachineState *vms)
->      fw_cfg_add_file(vms->fw_cfg, ACPI_BUILD_TPMLOG_FILE, tables.tcpalog->data,
->                      acpi_data_len(tables.tcpalog));
->
-> -    ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
-> +    if (!vmc->no_ras) {
-> +        ghes_add_fw_cfg(vms->fw_cfg, tables.hardware_errors);
-> +    }
->
->      build_state->rsdp_mr = acpi_add_rom_blob(build_state, tables.rsdp,
->                                                ACPI_BUILD_RSDP_FILE, 0);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a2b8d8f..367306b 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1920,6 +1920,10 @@ static void virt_machine_2_11_options(MachineClass *mc)
->      virt_machine_2_12_options(mc);
->      SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_11);
->      vmc->smbios_old_sys_ver = true;
-> +    /* Disable memory recovery feature for 2.11 as RAS support was
-> +     * introduced with 2.12.
-> +     */
-> +    vmc->no_ras = true;
+ MAINTAINERS | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-RAS support wasn't introduced with QEMU 2.12, or even with 3.0 or
-3.1. The earliest this will be added will be 4.0, so we need to
-update this code accordingly.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1032406..36ffc01 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -533,6 +533,18 @@ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+ F: hw/arm/gumstix.c
+=20
++i.MX25 PDK
++M: Peter Maydell <peter.maydell@linaro.org>
++R: Jean-Christophe Dubois <jcd@tribudubois.net>
++L: qemu-arm@nongnu.org
++S: Odd Fixes
++F: hw/arm/fsl-imx25.c
++F: hw/arm/imx25_pdk.c
++F: hw/misc/imx25_ccm.c
++F: include/hw/arm/fsl-imx25.h
++F: include/hw/misc/imx25_ccm.h
++F: tests/ds1338-test.c
++
+ i.MX31 (kzm)
+ M: Peter Chubb <peter.chubb@nicta.com.au>
+ M: Peter Maydell <peter.maydell@linaro.org>
+@@ -615,6 +627,7 @@ R: Andrew Baumann <Andrew.Baumann@microsoft.com>
+ R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+ L: qemu-arm@nongnu.org
+ S: Odd Fixes
++F: hw/arm/raspi.c
+ F: hw/arm/raspi_platform.h
+ F: hw/*/bcm283*
+ F: include/hw/arm/raspi*
+@@ -641,6 +654,7 @@ F: hw/arm/z2.c
+ F: hw/*/pxa2xx*
+ F: hw/misc/mst_fpga.c
+ F: include/hw/arm/pxa.h
++F: include/hw/arm/sharpsl.h
+=20
+ SABRELITE / i.MX6
+ M: Peter Maydell <peter.maydell@linaro.org>
+--=20
+1.8.3.1
 
->  }
->  DEFINE_VIRT_MACHINE(2, 11)
->
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 4cc57a7..a4490dd 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -98,6 +98,7 @@ typedef struct {
->      bool disallow_affinity_adjustment;
->      bool no_its;
->      bool no_pmu;
-> +    bool no_ras;
->      bool claim_edge_triggered_timers;
->      bool smbios_old_sys_ver;
->      bool no_highmem_ecam;
-> --
-> 1.8.3.1
->
-
-thanks
--- PMM

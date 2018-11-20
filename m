@@ -1,170 +1,178 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp680325wrt;
-        Tue, 20 Nov 2018 07:15:50 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/U7+AKSn015kYF0V1kqGS7/Mz8WnzbVw89cX1TSjFwOMD0fZqvCYYfmg1//HVbgqomCFQNZ
-X-Received: by 2002:a17:902:201:: with SMTP id 1mr1855954plc.62.1542726950208;
-        Tue, 20 Nov 2018 07:15:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542726950; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp701474wrt;
+        Tue, 20 Nov 2018 07:34:21 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/U4D2q3uDyO5uFtT1Y21wK31X2OAY7dm1AX47xLPtQtIe4iRt8WJ1nhHjw1F5DaUZN8BzJ8
+X-Received: by 2002:a25:5186:: with SMTP id f128-v6mr2234355ybb.203.1542728061593;
+        Tue, 20 Nov 2018 07:34:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542728061; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ehz0nwIojvD9RJ9ufmE8l4Tj+FbJiK+aQfJJvbH7BGT/lE4eBNzm3N7qsK6ktRr5+f
-         fp7lnpR9LTmzsK3GN0w0r6HTSTQcDxnQjzgpMtpcWdr9z5zcJqpJ+Ij3beApQRMsoR17
-         6AcvPQmEIQ+m5wOS8Ur7QHEX0cG0FCob4wLvb/LH/JHA0VnfYDHY1Rtl3yCRPlfROJ1p
-         /XHXemYR7FyfXBmqks5XP3Y2ZS0P/OdbIohEdzxbm6jdsUH86UDS/bkQRH4fSzxptBqe
-         M9e5R0bA4sz6b/OOQWAre5exw55/e+KohB6v2sr9bL2IISQZBFXmcWm1Ol0HPkaS1ns0
-         epJA==
+        b=QNs8zWx9c6O0X+vw0qIQQ2YLkbDM+1lBzwJOqrh7tB9CwZF7EpEgGAig6KsZC+m585
+         MRCkCUWnhCO3GO88RNffGMeB7BUro/PIchLxBxD5PEpCtHC4uxlaba3jrcYPmDfqBOhC
+         e5ps21oulXT0HHltLOfBhDVKMDEn3kd4sHGJEZcKso25u31iAhQ+c3GiOG+beok7vDL4
+         pFO2BCAUENRcl6wkeYpMlEubwL+oufZU7cNu8rpwT/RsbRni5FJKVU/ZUlZ0jT45ttsG
+         7fEWWozjnFPXH9HEhRt4XZpNTNGPSRLrYoszNFT3+ynvXKY5MUcTkioGRAUPxDYwFX4v
+         SBaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=nYn0eSkygK3POJn29s57zRpQ7lasw9cwgc4bQS5emXY=;
-        b=cIyLiat3UIcK3BnHjTue98tVjBe3WskozPzJv/FeR8IIh/p4LI20qc2DfvleTbP2yI
-         9Es90gy3EQMz7P9LwsWkYJHJNibmQ0yxJpr6Lq33Bs7yFS2HAsekm8dfr4UtwG8p9bpK
-         /2ENK5XVfIfSu8c0ItUTk0dYuzJ/czqWo1pa4cS9PELjyCWWsRYTPQpNyyRPO342fJQ4
-         Z3cpAW6xbKZOIqJK7Qj4l7kDrjU91SFfXDuxqJmZyijwOVR53a24E8o5L4W2VmwK0qNS
-         ukuSyqtS9LCiloaKM66JuF8++yp+8ua13bpA0hEjhDwPArICKKE59rvRLhBx3Xjxo1mm
-         corA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=Fua+oWJwOmNxIa6GdlZh0jtc/fX6o5sP8gtXMpvnAhQ=;
+        b=huau7sy5FW/EhRSw6lsaxgtyn8qyFM/6ZD/P8O70TWTJACyT85nsPU1i0fCHhY4i0S
+         c7zW60GHj9FHKPhmOppM3rSWkFwzfPg+Emwc0bbXB0Afgj3H3uJ0l3CbM0EdS4thCaLg
+         y1W4S3QykmXZKNpIMLgyyYkqZ+Vzgjj7U9kOdGuviiM2j5q3ZABpLcGv33ZEpOvPGUM3
+         GP4HSNCkkzTNAKAOtQQX8DtDEEPFZTuhzTkT6yB5lVYGOc+IVxDg+Z139xl51hXiZ0d0
+         jKTXtSeemLgivluk/wP9fdA5RTafgB9S7hp5pw/JceQBeaxvayf+WfTR6YBHCFD96jX3
+         xIKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UtXRehYD;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id c16si12504689plo.270.2018.11.20.07.15.49;
-        Tue, 20 Nov 2018 07:15:50 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id p124-v6si29628513ybp.332.2018.11.20.07.34.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 20 Nov 2018 07:34:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UtXRehYD;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726600AbeKUBpZ (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Tue, 20 Nov 2018 20:45:25 -0500
-Received: from mail-oi1-f194.google.com ([209.85.167.194]:41457 "EHLO
-        mail-oi1-f194.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726108AbeKUBpZ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Nov 2018 20:45:25 -0500
-Received: by mail-oi1-f194.google.com with SMTP id j21so1750679oii.8
-        for <kvm@vger.kernel.org>; Tue, 20 Nov 2018 07:15:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=nYn0eSkygK3POJn29s57zRpQ7lasw9cwgc4bQS5emXY=;
-        b=UtXRehYD9r3kMZ97i0GhFVv1stpBl5grV8ojYsaFK4huTPQ3yk1IK12kKl5QuCOiPp
-         BG0Go5UKGaPJ5EETOdPEPN8/qOkvoBTdkb2yR4RHK8poUKOgj4xTjEtGN2WX88oDYspU
-         NEdeD7VW7+Ds9/S/kD3FbiOzdUszHWDOwmo7I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=nYn0eSkygK3POJn29s57zRpQ7lasw9cwgc4bQS5emXY=;
-        b=rUBQ8m/C/4J5QAnIa3eJzj+BvjGEUO5vt84CsWSlyAm4sanplWgLttnQ0+jD+zxgaP
-         AoeDdpwcCwo2mcCEg2YsvcypkVFyeDHuJFc/zFWx2FGqBa1LHNl10dke4RKvpQWPNEnd
-         oO8upYXNhpB4tn7QzvZC7Nf52bHMbNKAocRnciKk+2BJUMikNSNEhA+Kz3OLuZuHQrfM
-         yjHpeRPI/a3wLX5cXcy+fauia5+F/2/eVO2R5txnKtD08gjBuMi4E0/Rq5bznIyQaxNF
-         pUNvTtbJtT4OhLs3thOSw2/1bFhtKv/vLwtiwoU60pypCNyieez1W6c/9czsKjFzUA8E
-         U6gQ==
-X-Gm-Message-State: AGRZ1gJK/iOzSntSFWMmW/Eqr87+FX+gdDEGF0lJkGTuGILukysPThK+
-        yWwFVndGiZ+RQC2e211tyCGbIX61sPKl8V/xVQA0HQ==
-X-Received: by 2002:aca:ed92:: with SMTP id l140mr1219154oih.112.1542726947183;
- Tue, 20 Nov 2018 07:15:47 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34357 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gP82f-0008ID-2N
+	for alex.bennee@linaro.org; Tue, 20 Nov 2018 10:34:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38384)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1gP82R-0008Gr-VR
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 10:34:08 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <imammedo@redhat.com>) id 1gP82N-0002P0-Li
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 10:34:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37852)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1gP82L-0002MZ-Hq; Tue, 20 Nov 2018 10:34:03 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 47A5D80467;
+	Tue, 20 Nov 2018 15:33:57 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4C45E705AA;
+	Tue, 20 Nov 2018 15:33:30 +0000 (UTC)
+Date: Tue, 20 Nov 2018 16:33:29 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20181120163329.6c960628@redhat.com>
+In-Reply-To: <20181107123652.23417-2-marcandre.lureau@redhat.com>
+References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
+	<20181107123652.23417-2-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Tue, 20 Nov 2018 07:15:26
- -0800 (PST)
-In-Reply-To: <1541672989-15967-11-git-send-email-gengdongjiu@huawei.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com> <1541672989-15967-11-git-send-email-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 20 Nov 2018 15:15:26 +0000
-Message-ID: <CAFEAcA-6UKk-WF+M+z0=AN-X7q0XRFLo2RG_yBadDeCas4A5wQ@mail.gmail.com>
-Subject: Re: [PATCH RESEND v15 10/10] target-arm: kvm64: handle SIGBUS signal
- from kernel or KVM
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        James Morse <james.morse@arm.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: TQ7I9B+AM2EO
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 20 Nov 2018 15:33:57 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v3 01/14] tests:
+ qdev_prop_check_globals() doesn't return "all_used"
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
+	qemu-ppc@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, dgilbert@redhat.com, qemu-arm@nongnu.org,
+	=?UTF-8?B?SGVy?= =?UTF-8?B?dsOp?= Poussineau <hpoussin@reactos.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Richard Henderson <rth@twiddle.net>,
+	Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Stefan Berger <stefanb@linux.ibm.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XddubGVn6nQm
 
-On 8 November 2018 at 10:29, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> Add SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-> translates the host VA delivered by host to guest PA, then fill this PA
-> to guest APEI GHES memory, then notify guest according to the SIGBUS type.
-> There are two kinds of SIGBUS that QEMU needs to handle, which are
-> BUS_MCEERR_AO and BUS_MCEERR_AR.
->
-> If guest accesses the poisoned memory, it generates Synchronous External
-> Abort(SEA). Then host kernel gets an APEI notification and call memory_failure()
-> to unmapped the affected page from the guest's stage 2, finally return
-> to guest.
->
-> Guest continues to access PG_hwpoison page, it will trap to KVM as stage2 fault,
-> then a SIGBUS_MCEERR_AR synchronous signal is delivered to Qemu, Qemu record this
-> error into guest APEI GHES memory and notify guest using Synchronous-External-Abort(SEA).
->
-> Suggested-by: James Morse <james.morse@arm.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+On Wed,  7 Nov 2018 16:36:39 +0400
+Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
+
+> Instead, it returns 1 if an error was detected, which is the case for:
+>=20
+> /qdev/properties/dynamic/global/subprocess:
+> warning: global dynamic-prop-type-bad.prop3 has invalid class name
+> warning: global nohotplug-type.prop5=3D105 not used
+> warning: global nondevice-type.prop6 has invalid class name
+>=20
+> Clarify the function return value.
+>=20
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
-> Address James's comments to record CPER and notify guest for SIGBUS signal handling.
-> Shown some discussion in [1].
->
-> [1]:
-> https://lkml.org/lkml/2017/2/27/246
-> https://lkml.org/lkml/2017/9/14/241
-> https://lkml.org/lkml/2017/9/22/499
-> ---
+>  tests/test-qdev-global-props.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/tests/test-qdev-global-props.c b/tests/test-qdev-global-prop=
+s.c
+> index d81b0862d5..ccdf6c57c1 100644
+> --- a/tests/test-qdev-global-props.c
+> +++ b/tests/test-qdev-global-props.c
+> @@ -214,7 +214,7 @@ static void test_dynamic_globalprop_subprocess(void)
+>          { TYPE_NONDEVICE, "prop6", "106", true },
+>          {}
+>      };
+> -    int all_used;
+> +    int global_error;
+> =20
+>      qdev_prop_register_global_list(props);
+> =20
+> @@ -223,8 +223,8 @@ static void test_dynamic_globalprop_subprocess(void)
+> =20
+>      g_assert_cmpuint(mt->prop1, =3D=3D, 101);
+>      g_assert_cmpuint(mt->prop2, =3D=3D, 102);
+> -    all_used =3D qdev_prop_check_globals();
+> -    g_assert_cmpuint(all_used, =3D=3D, 1);
+> +    global_error =3D qdev_prop_check_globals();
+> +    g_assert_cmpuint(global_error, =3D=3D, 1);
+>      g_assert(props[0].used);
+>      g_assert(props[1].used);
+>      g_assert(!props[2].used);
+> @@ -259,7 +259,7 @@ static void test_dynamic_globalprop_nouser_subprocess=
+(void)
+>          { TYPE_NONDEVICE, "prop6", "106" },
+>          {}
+>      };
+> -    int all_used;
+> +    int global_error;
+> =20
+>      qdev_prop_register_global_list(props);
+> =20
+> @@ -268,8 +268,8 @@ static void test_dynamic_globalprop_nouser_subprocess=
+(void)
+> =20
+>      g_assert_cmpuint(mt->prop1, =3D=3D, 101);
+>      g_assert_cmpuint(mt->prop2, =3D=3D, 102);
+> -    all_used =3D qdev_prop_check_globals();
+> -    g_assert_cmpuint(all_used, =3D=3D, 0);
+> +    global_error =3D qdev_prop_check_globals();
+> +    g_assert_cmpuint(global_error, =3D=3D, 0);
+>      g_assert(props[0].used);
+>      g_assert(props[1].used);
+>      g_assert(!props[2].used);
 
->
-> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-> +{
-> +    ram_addr_t ram_addr;
-> +    hwaddr paddr;
-> +
-> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-> +    if (addr) {
-> +        ram_addr = qemu_ram_addr_from_host(addr);
-> +        if (ram_addr != RAM_ADDR_INVALID &&
-> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-> +            kvm_hwpoison_page_add(ram_addr);
-> +            if (code == BUS_MCEERR_AR) {
-> +                kvm_cpu_synchronize_state(c);
-> +                if (ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
-> +                    kvm_inject_arm_sea(c);
-> +                } else {
-> +                    fprintf(stderr, "failed to record the error\n");
-> +                }
-
-Shouldn't there be something in here to say "only report this
-error to the guest if we are actually reporting RAS errors
-to the guest" ?
-
-> +            }
-> +            return;
-> +        }
-> +        fprintf(stderr, "Hardware memory error for memory used by "
-> +                "QEMU itself instead of guest system!\n");
-> +    }
-> +
-> +    if (code == BUS_MCEERR_AR) {
-> +        fprintf(stderr, "Hardware memory error!\n");
-> +        exit(1);
-> +    }
-> +}
-> +
->  /* C6.6.29 BRK instruction */
->  static const uint32_t brk_insn = 0xd4200000;
-
-thanks
--- PMM

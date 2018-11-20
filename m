@@ -1,138 +1,148 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4621992wrw;
-        Tue, 13 Nov 2018 09:12:59 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fc8FYtW6+FSPpiZK2MYeERRPNal50RM80hM5Pif0m8+asSNpKadFnw87DwPArRwiB+olHL
-X-Received: by 2002:ac8:7616:: with SMTP id t22mr5802166qtq.375.1542129179521;
-        Tue, 13 Nov 2018 09:12:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542129179; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp580618wrt;
+        Tue, 20 Nov 2018 05:45:38 -0800 (PST)
+X-Google-Smtp-Source: AJdET5ed0JJ/LbC5gjSf6wlnrXXzS0W+PJuaTr4/EBTrHh6fVWs8Cb02oONMfj9itnJwnA6urmq0
+X-Received: by 2002:a25:1888:: with SMTP id 130-v6mr1834119yby.276.1542721538229;
+        Tue, 20 Nov 2018 05:45:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542721538; cv=none;
         d=google.com; s=arc-20160816;
-        b=LrEEa3B/bXBaLsu/HpjFs9F5McvyUmVk2q8PvMDGR9eNdh80bzPxCgv+q181zy4XBn
-         +VSvjwyYQE7HwgC+iro/42/7IT1tS/3Qakp8UwTO3n/YjNqlBN4rafTRmls3QBJ1Ls1K
-         J2sRffTD6ZtYqwel093WsO9FCb386BrburqUL6IrNe5eJl4lzRtKnLGT4y9mxWC6mq4C
-         /VrEiRyTnzJGRQV5gvEof1uGnrlQgOcgaQy83T+dbCgT/E2NoAWV/iKdGnogxPi8FxRF
-         lVKprbNolTgnT/5a0U9rbVthhG1BTfy1ydrKQ7qsj9gua1+wn8ten++EqTOfQffYMRX7
-         07Fw==
+        b=YbH/9sbR3wIHPCKWbpTcKalElnKS95pYaw101BAvQ2oV96JRPr4JQR/rotFS7vIagv
+         7bb8ascv9+ncoGjb3QBSHvju22M3O30Db4iZY+nCSqBP6x8/U/2jwyzhZqA5T3Hxf5uN
+         cCtGyzJvoTm/ogfgJvAjtQw1pa0riW/yopOP8LMI1tiAec/nymV/UhDMmqI5z4cC1/ze
+         vC59J95qMX/8ZZmijTqwyt9l1KL61waUz8MkNg+RnWTKOUHtzXajdrGAy/uErIpzHxwR
+         hyR0JvpVN1RuGaAQMlMK74a/epxP6ZIDjdW0YNZXVvvFj6u/UZfc+dfRItYQLMNk48At
+         5jvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=sPt12d5fDz2SX0XqcXxU/3/1v95mm5ME3sBhhQTGgTs=;
-        b=Hr4aFCie0IPemyUXPdXmxYHhmQ3a+bkn759YjHLxBbLzgef1Rav7dIie21NzGsIdZD
-         fjlHVZGkLljxKiZPMoEgseEJNtnIUhv0Qxw66b90sWxlk5gnVR7dP9+IhiV4I8zw4dlW
-         fZ3W7w7RDo+LXqMzbPNz3YkObweC5MJgKP5zOYvC8kQo5+Ft2LJBLr6UPlm2AIln4MbD
-         7WjU5CAvQ33brR6inhd1Lzi5YRp96vL51r/YGcIPO5n536hLubAvUBuEz0j+vqf7wYej
-         hXJIQwLVXDB45WUN/6A38QyoT5rdSjMHaDaLXH39kvPVUVUbvw3+XxF6V402UYhKmtnd
-         u50w==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=i/nm1RW3SjSa5RNV5ad9ZPg2qRD8ZgRCLQHs7y3V0fg=;
+        b=kbd3Y+3URsuaw6r5yxgavml0iUe80IqU2fJ61QIsdmt/pR8tQPvL32efCIDJQavUKs
+         OVBUe6vkqaBIXr1TbzNkB2D5PxIx9q8j5EFOAS5fe2OSdM36kuwuTZ0l3OY9th2qcw98
+         pspM1yRhJ5RVLkJBPUD9wAO083zmBg5orVh8AhitGMucKw7S5xk4L9ImkP7fSVCQx42z
+         Om/Kr9G+gQbtYSxn0ttRU98Or0OzUi6le3wlPoAyNQoIZGXEtZGxKxCOQ6Fuphs/JWjm
+         nmn2iQ/OOtloudJhf3sSISIOZioA2tVeS6yZK+sICkV+U3mRSxhSYwsVA/N6POLFU34H
+         nVjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=UxYF2o0S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x4si7338761qtj.211.2018.11.13.09.12.59
+        by mx.google.com with ESMTPS id v4si8119461ywh.60.2018.11.20.05.45.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Nov 2018 09:12:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 20 Nov 2018 05:45:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:55197 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=UxYF2o0S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33846 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gMcFG-0003yg-OC
-	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:12:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36182)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gP6LR-0003nj-J3
+	for alex.bennee@linaro.org; Tue, 20 Nov 2018 08:45:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50637)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMcAL-0007Sq-6L
-	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 12:07:53 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gP6LK-0003nd-IH
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 08:45:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMbxD-0004AN-BF
-	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 11:54:25 -0500
-Received: from mga06.intel.com ([134.134.136.31]:62858)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gMbx7-0003pu-Th; Tue, 13 Nov 2018 11:54:17 -0500
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	13 Nov 2018 08:53:51 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922138"
-Received: from qingbai-mobl.ger.corp.intel.com (HELO
-	caravaggio.ger.corp.intel.com) ([10.249.41.239])
-	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:49 -0800
-From: Samuel Ortiz <sameo@linux.intel.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 13 Nov 2018 17:52:47 +0100
-Message-Id: <20181113165247.4806-14-sameo@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181113165247.4806-1-sameo@linux.intel.com>
-References: <20181113165247.4806-1-sameo@linux.intel.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gP6LI-0006Jz-K5
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 08:45:29 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41449)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gP6LE-0005tc-Oz
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 08:45:25 -0500
+Received: by mail-oi1-x244.google.com with SMTP id j21so1495889oii.8
+	for <qemu-arm@nongnu.org>; Tue, 20 Nov 2018 05:45:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=i/nm1RW3SjSa5RNV5ad9ZPg2qRD8ZgRCLQHs7y3V0fg=;
+	b=UxYF2o0SjrwbxJtZz+K1E/4xL0WKqiH4qAa9JkLCvmGYYVPw8RIbMrnS15llpNh1R+
+	eMNSqVvBDXrLU3TMO2bWPRJAKqwm+FJfNNGjSfrbt7PLK06aI//IlH9VZhn5PbkP3+dK
+	l4MF7K5MAm/J33/QKeOjrzzeH0nXexCbiPgGA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=i/nm1RW3SjSa5RNV5ad9ZPg2qRD8ZgRCLQHs7y3V0fg=;
+	b=KKKun+umH9q3/0JYVoWdwIJlN+hlsrpQi6nX04EcEVGLUhKp8LlXJi0E3X/8acZZdD
+	vriwuWyMQGtV4cjHES8Fmz8Uy/33AcQHOzgXJgnDz1JAD1bbU9gqUzf7BUZX6DWkz618
+	s2YrmhX6HLc1VOO+ZC2lYdeQIMgQPfp9z7yXW/u3wPme+VIU571/GEH2ZRpcjdrVUDuw
+	wQAQAegT/yIeuGJyVmZd7Yju6RYZxVEdDX0UPIe/HagMpgbj8ZAj9iyGRX8CXjjOS3rh
+	sKP4obNlBA5MMQdmRFCtUOx+vu7FTtetsFWIMxuom+hd7/jMX6n0Qi/OByYJTuXbFWWh
+	LHhw==
+X-Gm-Message-State: AGRZ1gJE62+It9QXEjTZStuprDjZhfREKG2C5EaSCEwk4LNbZ1ppgAxK
+	L7cS0+AYR/szawxk+pIGZl9w1Rct+HXB4J7FBhzYTQ==
+X-Received: by 2002:aca:f1d6:: with SMTP id
+	p205-v6mr1175746oih.332.1542721523899; 
+	Tue, 20 Nov 2018 05:45:23 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Tue, 20 Nov 2018 05:45:03
+	-0800 (PST)
+In-Reply-To: <20181113165247.4806-5-sameo@linux.intel.com>
+References: <20181113165247.4806-1-sameo@linux.intel.com>
+	<20181113165247.4806-5-sameo@linux.intel.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 Nov 2018 13:45:03 +0000
+Message-ID: <CAFEAcA9wvrnshOTYz-jZ0n6m7SfusYY+bnB-iPnQuVNqqdg5Ww@mail.gmail.com>
+To: Samuel Ortiz <sameo@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.31
-Subject: [Qemu-devel] [PATCH 13/13] target: arm: Do not build TCG objects
- when TCG is off
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-arm] [PATCH 04/13] target: arm: Move all interrupt and
+ exception handlers into their own file
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	richard.henderson@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X3YNOyEavRVD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: weuoRZQKmVix
 
-We can now safely turn all TCG dependent build off when CONFIG_TCG is
-off. This allows building ARM binaries with --disable-tcg.
+On 13 November 2018 at 16:52, Samuel Ortiz <sameo@linux.intel.com> wrote:
+> Most of them are TCG dependent so we want to be able to not build them
+> in order to support TCG disablement with ARM.
+>
+> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Robert Bradford <robert.bradford@intel.com>
+> ---
+>  target/arm/excp_helper.c | 550 +++++++++++++++++++++++++++++++++++++++
+>  target/arm/helper.c      | 531 -------------------------------------
+>  target/arm/Makefile.objs |   2 +-
+>  3 files changed, 551 insertions(+), 532 deletions(-)
+>  create mode 100644 target/arm/excp_helper.c
 
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Robert Bradford <robert.bradford@intel.com>
----
- target/arm/Makefile.objs | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+You'll find that you need to rebase as there is a recent change
+that your moved copies are missing: commit e24ad484909e7.
+(I have just discovered git diff's --color-moved option which
+is great for checking this sort of code-movement patch.)
 
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index 8e513748e3..3f59bf1685 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -1,9 +1,10 @@
- obj-y += arm-semi.o crypto_helper.o gdbstub.o helper.o cpu.o
--obj-y += translate.o op_helper.o neon_helper.o
--obj-y += iwmmxt_helper.o vec_helper.o m_helper.o
--obj-y += excp_helper.o vfp_helper.o
-+obj-$(CONFIG_TCG) += translate.o op_helper.o neon_helper.o
-+obj-$(CONFIG_TCG) += iwmmxt_helper.o vec_helper.o m_helper.o
-+obj-$(CONFIG_TCG) += excp_helper.o vfp_helper.o
- 
--obj-$(CONFIG_SOFTMMU) += machine.o psci.o arch_dump.o monitor.o arm-powerctl.o
-+obj-$(CONFIG_SOFTMMU) += machine.o arch_dump.o monitor.o arm-powerctl.o
-+obj-$(call land,$(CONFIG_TCG),$(CONFIG_SOFTMMU)) += psci.o
- obj-$(CONFIG_KVM) += kvm.o
- obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
- obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
-@@ -17,5 +18,6 @@ target/arm/decode-sve.inc.c: $(SRC_PATH)/target/arm/sve.decode $(DECODETREE)
- 	  "GEN", $(TARGET_DIR)$@)
- 
- target/arm/translate-sve.o: target/arm/decode-sve.inc.c
--obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
--obj-$(TARGET_AARCH64) += cpu64.o translate-a64.o helper-a64.o gdbstub64.o
-+obj-$(call land,$(CONFIG_TCG),$(TARGET_AARCH64)) += translate-sve.o sve_helper.o
-+obj-$(call land,$(CONFIG_TCG),$(TARGET_AARCH64)) += translate-a64.o helper-a64.o
-+obj-$(TARGET_AARCH64) += cpu64.o gdbstub64.o
--- 
-2.19.1
+What is your plan for dealing with the way that the KVM code
+for injecting a breakpoint exception into the guest works
+by calling the do_interrupt code ?
+(see target/arm/kvm64.c:kvm_arm_handle_debug(),
+which calls cc->do_interrupt(cs).) This patch moves those
+functions to a file which won't be compiled and a later one
+in the series seems to stop cc->do_interrupt being set at all
+if CONFIG_TCG is not defined. That will result in QEMU crashing
+when it tries to inject an exception, won't it?
 
+thanks
+-- PMM

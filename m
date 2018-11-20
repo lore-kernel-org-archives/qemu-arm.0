@@ -1,73 +1,73 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1077568wrt;
-        Tue, 20 Nov 2018 13:40:55 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XBzmBEkTw8p1hAtyNyzk3H9LHpU/D1y1a+1yRqVMjF8NL2LB1nixOmg5r5mVnMjZsDF8X6
-X-Received: by 2002:a25:3384:: with SMTP id z126-v6mr3737761ybz.444.1542750055795;
-        Tue, 20 Nov 2018 13:40:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542750055; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1077964wrt;
+        Tue, 20 Nov 2018 13:41:24 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/U9BBzMMV9fC+/12jGbxmNT2kxUcOlLQntrl+nXtGBqkTno3kXE2BO9tzOhQP5C8NdZtvU4
+X-Received: by 2002:a25:c2c7:: with SMTP id s190-v6mr3698055ybf.58.1542750084154;
+        Tue, 20 Nov 2018 13:41:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542750084; cv=none;
         d=google.com; s=arc-20160816;
-        b=i9mENNqj8601wa23ObC58riygJJ7MiA73xa2+lb8yedp4Zdymw7hBxy29Yh+gvb4Cs
-         9bKGpsAZVsKwsJhGHVOeobP3GEOv520I0DzzghG/yWKnkU7DKUlscWydRsvXJ7Ewzq/F
-         lgoM6zI8pjVYu5Y56k4BkXAz3AxBn1sayCXi0ylEQ5b+5FCF8w0NSsjqfqfgn6iSfEeG
-         U+oO/tEHtUjcfhhta8iiIwFWha01iUo3HvfjTxtuKBVP2Vd38ONCjsagWDqpuX2fQRAA
-         LZquZZ/UOokXtLLEXAdyUEI5mL0lfA+CpR8QzrhsR6e16Kcx3ooJuHFrCzRKx84giTOM
-         Xlrw==
+        b=KIf0iNOREX58vmpXqBLVbJxKzihwP/Sjmoni1rJM9+UwaU98/T4j69kpmCuZXDYjPZ
+         TE12kL7DJyyrOGi9By9yItzpCNVwtqM4RqSeXzA9SR0983Yene8ZQKlB38oQah+Eo20E
+         K/DX3Kl+uVfzqFMZ4YdnEEGr3cFR6LW79dsHB27sHw+INeC+/xVkkBB7IQNq3pAFHfgW
+         CCNIVsnsvDedt7SgefyuDZcPDYnnjW8kMM5q+80JiYdR6JwcVlVWajKdmqQ9zaPF58g4
+         AojBxIr3KD7vUcfKnYgs45UWN+j2EeOHB5kFI/fszbAFoVzCutPOmfmthq/8amOz8QoI
+         xttg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=B9X6B/SYGBtPB7NLgBpKGcFqrFMUMP1QxAhwO3LJ9sA=;
-        b=hqwuQnvC2uNAllSZCRHh/WC5j7do2POMJMsvymTKeDxQ/bZ2Eq2w2vqTz0z//2evGp
-         qid2MzPi0/avymjJf8+qV9HhnJjbbNte6YTCuy+00eveUjLaD3cJ4wf/ROpwB4aaa4Jx
-         G6dsOQwNe8/EFuxtXwRa5nQ8nZf5AdwbEX8dFJNLBV0SUIKMFggdRTCvVmMK9nYgE+/I
-         qzlVpplxnboUtV0PqfJhKFC+P6FbowplrpvCLz9G3oKGIj43lCarzH/9A3BbK7UW+ccb
-         nO58Hf41LJo9n+C6/5AHiWavZSd/emAqK7RCe+loU19EYsuCWVlx/09rxemzTVFcH6y5
-         0mJA==
+        bh=mr85uYYh2LskvV54OqRkcpXJbS3oWYYIVtFqI/q7voA=;
+        b=UtN0hyQfX8k/zIg9vCALr0fOPbU+2+9YVxaeMg0u5ZhoNbj7Td6+wCmIcQpv9BAixh
+         a1TfxtSz6kLx3NZlGAwtJf2P9s5ga+gKZTvFKLqFhlpaLUd7lILerk4siO5q0X6inB9/
+         i+3OfBI4J2G03JQAA+GN7durVoQHd1rvLY7lECb/ssUyl2wkamuM1kfDNT9W87VmqvPi
+         j0Gi2Y344LNttSZ1dpY9940bX7LlHYWdPZdKrcK4WGiBHyln2DDD2q5UHMHjWBgYiTTU
+         EvSxksy2F6emXUO/aybO2h3P0YUnfojkfJcTe15xjK1Vf3w24LGFfFe2Eroa9I+8RrJ0
+         Dh1A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q184-v6si14466801ybc.19.2018.11.20.13.40.55
+        by mx.google.com with ESMTPS id s203si10503904yws.274.2018.11.20.13.41.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Nov 2018 13:40:55 -0800 (PST)
+        Tue, 20 Nov 2018 13:41:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36095 helo=lists.gnu.org)
+Received: from localhost ([::1]:36097 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPDlP-0004Q3-54
-	for alex.bennee@linaro.org; Tue, 20 Nov 2018 16:40:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36542)
+	id 1gPDlr-0004hs-KV
+	for alex.bennee@linaro.org; Tue, 20 Nov 2018 16:41:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36875)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gPDgV-0007zF-Ta
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 16:35:53 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gPDgx-0008Ky-Fb
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 16:36:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gPDgR-00032s-E3
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 16:35:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40128)
+	(envelope-from <pbonzini@redhat.com>) id 1gPDgr-0003VC-NS
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 16:36:19 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:22081)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gPDgN-0002xM-JS; Tue, 20 Nov 2018 16:35:45 -0500
+	id 1gPDgp-0003T9-TF; Tue, 20 Nov 2018 16:36:13 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9E8BA356D3;
-	Tue, 20 Nov 2018 21:35:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 107B381DEC;
+	Tue, 20 Nov 2018 21:36:11 +0000 (UTC)
 Received: from [10.36.112.62] (ovpn-112-62.ams2.redhat.com [10.36.112.62])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6BF7869286;
-	Tue, 20 Nov 2018 21:35:29 +0000 (UTC)
-To: "Michael S. Tsirkin" <mst@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2FA3F692A0;
+	Tue, 20 Nov 2018 21:36:03 +0000 (UTC)
+To: Igor Mammedov <imammedo@redhat.com>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
 	<20181116172919.43f3e27d@redhat.com>
 	<d4f6f0ef-1333-a917-e3eb-d9bad47c9648@redhat.com>
 	<20181119163110.2f357f40@redhat.com>
 	<c09214f5-85fa-bb64-7c7e-2e9435ea4279@redhat.com>
-	<20181119131314-mutt-send-email-mst@kernel.org>
+	<20181120135719.3965e33b@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -105,19 +105,19 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <bca20871-c6e1-b233-4cad-236c3ab36060@redhat.com>
-Date: Tue, 20 Nov 2018 22:35:27 +0100
+Message-ID: <df790ea7-332c-66b1-63a3-052e1e7a2432@redhat.com>
+Date: Tue, 20 Nov 2018 22:36:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <20181119131314-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20181120135719.3965e33b@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Tue, 20 Nov 2018 21:35:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 20 Nov 2018 21:36:11 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 00/24] ACPI reorganization
@@ -135,23 +135,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
-	Samuel Ortiz <sameo@linux.intel.com>, qemu-devel@nongnu.org,
+	Samuel Ortiz <sameo@linux.intel.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
 	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
-	Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gaLf7YMS3xX2
+X-TUID: 4nURR5V4mA3a
 
-On 19/11/18 19:14, Michael S. Tsirkin wrote:
-> On Mon, Nov 19, 2018 at 06:14:26PM +0100, Paolo Bonzini wrote:
+On 20/11/18 13:57, Igor Mammedov wrote:
+> On Mon, 19 Nov 2018 18:14:26 +0100
+> Paolo Bonzini <pbonzini@redhat.com> wrote:
+> 
 >> On 19/11/18 16:31, Igor Mammedov wrote:
 >>> I've tried to give suggestions how to restructure series
 >>> on per patch basis. In my opinion it quite possible to split
 >>> series in several smaller ones and it should really help with
 >>> making series cleaner and easier/faster to review/amend/merge
->>> vs what we have in v5.
+>>> vs what we have in v5.  
 >>
 >> This is true, on the other hand the series makes sense together and,
 >> even if the patches are more or less independent, they also all follow
@@ -159,19 +161,13 @@ On 19/11/18 19:14, Michael S. Tsirkin wrote:
 >> diff functionality?  It can tell you which patches had comments in v5,
 >> reorder patches if applicable, and display deleted and new patches at
 >> the right point in the series.
->>
->> v4->v5 is a bit messed up because Samuel probably added a diff order
->> setup
->> (https://patchew.org/QEMU/20181101102303.16439-1-sameo@linux.intel.com/diff/20181105014047.26447-1-sameo@linux.intel.com/)
->> but it's very useful in general.
->>
->> Paolo
+> Thanks, I'll give it a try.
 > 
-> Oh I didn't realize difforder breaks patchew. Or is the problem
-> only if one switches from no order to difforder?
+> Suggestion to split series mostly comes from contributor's point of view,
+> it much easier to amend small series than a larger one.
 
-No, it's just that switching it on makes the inter-version diff much
-larger, because all hunks are reordered.  difforder is not a problem.
+That's true, on the other hand rules exist to have exceptions. :)  IIRC
+your AML builder patch was also a huge series, this is not very different.
 
 Paolo
 

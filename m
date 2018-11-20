@@ -1,81 +1,98 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp848537wrt;
-        Tue, 20 Nov 2018 09:43:01 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XDIm78KDfUu4Atz+73gmM6WO7Aa2rQtn71jWSOUmfI9BpgVHpRQh3TzAzD6oJpRjQ+aDqg
-X-Received: by 2002:a25:5a0b:: with SMTP id o11-v6mr1771393ybb.52.1542735781836;
-        Tue, 20 Nov 2018 09:43:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542735781; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1008450wrt;
+        Tue, 20 Nov 2018 12:24:10 -0800 (PST)
+X-Google-Smtp-Source: AJdET5epaMRowAJ6OeDTACQaoBSQXk9E3aLiqHT3IIC0j9Biy5mfI4fWF/UvRbNs7wSIY82AKUI/
+X-Received: by 2002:a81:85c5:: with SMTP id v188mr3546257ywf.51.1542745450723;
+        Tue, 20 Nov 2018 12:24:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542745450; cv=none;
         d=google.com; s=arc-20160816;
-        b=cg2akNh2QUkEg0CwmM71FYGqCm7dlYCK4/LcdrtI+U1EmaoU3lSHtSYT0PsQeRxWHJ
-         KFHOnDmeYZaEHwgJQAp3oKUA8AJM0/1jON4Kn7jEdrQPgZKGUu6PzBbfPhD2IWsLVWBj
-         fGXkImKpn8HaM2uJXAfIn8NNe0aHCe3QBseCaUTK0J5EYV648amv+F0yRxGSJZHx1y1L
-         eWD3RhyUVPf1WC+v3N8UuqduVNALf4I+Yc4uHpBiiblOL7Nv0McrxThOQwUTpWpi8rgj
-         NhVD+orVJCR+1Hkc/cdKW+PmBWlj0hwMy6MeaMAqMfvHZMNdKz7quXRBuWKk5Tv3ImXS
-         dJPQ==
+        b=BsY9fcgM8eeZLnXjyYZ1ahA8zCJijedxzhut+KzfsuwKT1+xJTXz3cSA4MMyRUMo6S
+         FRc/EpLgEOKC50OUSRkQ2e8vFEpsvkDtt5XOYiyXeiP+i1L3VCw82YX64k1E+I0djx38
+         9tHEGq8gjawf3jTcpH2dkAFrOGUe1A1ufZXerUcu7ZXEBS5KSKbNXCinv6O1sNQsBgJs
+         ujeE8uCS6PnysMoRe/fx8LZJCqwA0Nm+WFGucC4ObV9e+OZOxePPtwYAtVO3pCqjiFlD
+         ivh6M2sK8E6Dz6OJ3gr2NN8z+AcytWsOS76qVtpLHmHi3ZjJ6REixMcxgNKo4h8xi51r
+         OiEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=YP5qitKgTj1Sa5UjWJwTWg8QZye/IypawmKvLpdTr7Y=;
-        b=q+YPhuzLTYOXXzchpS/c42q450G0mpa2B9UmK9C0f28ujJ0iaDvZ+qlAFiic+Db1e1
-         253fzx8BYljTxLcGTaOZKxHDAqcWaRjH2/Iw2l1WZVOjVyjnCqeK40rrRM7QuLLAUzAD
-         0ED/p1iTfEfpF4I6qbgOGCDp5Fa+1vDQ+HiA8gkOxCnhA1oTcVs5F/IsMpjjGYtRCDL9
-         sznfoZacaw0lfWt2TuBbqZX8tyLhq5EYWvgjLQ5mh2+Sc0VvADI2iuN3xSoYKkMC9xH+
-         wKDxj/GgoZzDp/hMByJqCTCvfWF9OGILOn/LAPrzVTvgHie3hxKLlcOSJ09LUiON4EZz
-         +ZNQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=MPNAAPvqXle01eElIROUXvsazRGLtnCxktUzOgbxkEs=;
+        b=mtKwLkmUhOvaN3XU3O1PB6zronTF6Tt7imI/lRVjKL4mVHZ48Ddt+VbZqlKwzwo7Qw
+         3BsCvr7e5oPwdg+LikIgDzVHFyZbJNrbRmcxSTGJvjm/0K753uWsRKMQTHt6KFePrtoZ
+         5APBvEiDRPu9yQZT3wsgF59HMn9FKSAwpBfBlmusuOjx1CvBtv85WI+4n2D6RMJ+nwCa
+         A9iYzsVF6IzZwfwlqnETXuhC8+FPfn6CGf1k17MftoL5SjLHRgcyD7O0Y6Rs5iCjXhLc
+         eaCYscxtJzkCzVg6vpoSdTXc2nBu+kqIZlQ9DhhlzhPWlkdhi+VWEi91HbgS20QxVQxr
+         /atg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q17-v6si10298990ybj.396.2018.11.20.09.43.01
+        by mx.google.com with ESMTPS id k189si11973472ywc.301.2018.11.20.12.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Nov 2018 09:43:01 -0800 (PST)
+        Tue, 20 Nov 2018 12:24:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35051 helo=lists.gnu.org)
+Received: from localhost ([::1]:35745 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPA3A-0006kd-Te
-	for alex.bennee@linaro.org; Tue, 20 Nov 2018 12:43:00 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40706)
+	id 1gPCZ8-0005l4-6E
+	for alex.bennee@linaro.org; Tue, 20 Nov 2018 15:24:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40625)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gPA2x-0006jJ-Dd
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 12:42:48 -0500
+	(envelope-from <philmd@redhat.com>) id 1gPCYu-0005kN-7w
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 15:23:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gPA2w-0000l9-Hm
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 12:42:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:21511)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gPA2w-0000kJ-Aj; Tue, 20 Nov 2018 12:42:46 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 71B5A81DEA;
-	Tue, 20 Nov 2018 17:42:45 +0000 (UTC)
-Received: from thuth.com (ovpn-116-184.ams2.redhat.com [10.36.116.184])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4675F6A6A4;
-	Tue, 20 Nov 2018 17:42:44 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-arm@nongnu.org,
+	(envelope-from <philmd@redhat.com>) id 1gPCYr-0005do-H2
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 15:23:56 -0500
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:50394)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gPCYr-0005cA-9r
+	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 15:23:53 -0500
+Received: by mail-wm1-f65.google.com with SMTP id 125so3396369wmh.0
+	for <qemu-arm@nongnu.org>; Tue, 20 Nov 2018 12:23:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=MPNAAPvqXle01eElIROUXvsazRGLtnCxktUzOgbxkEs=;
+	b=mkHKdMEj90XormqWBmw48FVWWdiJEqN4Yo7+PITCZzP/LotyUF4KMD1Ck0dhIOZiCH
+	X4NUtmyeN0mOY5U5+7fmt3h1ZWYGnh1qcPjPthZWisomm5MQYxYYSHg1f51PEEuLGFAv
+	+oDxeHmv9qVyxCXdOTVhnY24P2BPNk5lhCOGVoYCGI68A7pBbiT7j48hyXwsEcrjA1lq
+	qhuU1GkPDF2PtZ+9rW6HaqxSx35C9ByuSNjFznESsPNpUdyvSjUkYXZtWk3LXG+mxz5A
+	J6LlMTAqIStN+1pde2FyQID8hX/mYKtCtjAln+9A8wIiu4gWwJUc8J+IT/ulpW5M5IdZ
+	YZDw==
+X-Gm-Message-State: AGRZ1gJo4gbPgyI1HMMbJTdazelKyP7vc5vmyEBoJZtBjLRYrM++Jfrd
+	X5aq4ABBccEBTiNSl9eVLW1Qsw==
+X-Received: by 2002:a1c:208f:: with SMTP id g137mr3279145wmg.17.1542745432189; 
+	Tue, 20 Nov 2018 12:23:52 -0800 (PST)
+Received: from [192.168.1.36] (35.red-88-21-102.staticip.rima-tde.net.
+	[88.21.102.35]) by smtp.gmail.com with ESMTPSA id
+	125-v6sm40095796wmm.25.2018.11.20.12.23.50
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 20 Nov 2018 12:23:51 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Nov 2018 18:42:41 +0100
-Message-Id: <1542735761-16176-1-git-send-email-thuth@redhat.com>
+References: <1542735761-16176-1-git-send-email-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <3bfff029-f88a-ef68-846c-1cacd0800d26@redhat.com>
+Date: Tue, 20 Nov 2018 21:23:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Tue, 20 Nov 2018 17:42:45 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <1542735761-16176-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2] MAINTAINERS: Assign some more files in the
- hw/arm/ directory
+	[fuzzy]
+X-Received-From: 209.85.128.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] MAINTAINERS: Assign some
+ more files in the hw/arm/ directory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,59 +107,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XROP66CFblnF
+X-TUID: ffPSilIJb4Y/
 
-I apparently missed some more files and even a complete machine (the
-"imx25-pdk") in my previous patch... but now we should hopefully have
-a completely coverage for all available ARM boards.
+On 20/11/18 18:42, Thomas Huth wrote:
+> I apparently missed some more files and even a complete machine (the
+> "imx25-pdk") in my previous patch... but now we should hopefully have
+> a completely coverage for all available ARM boards.
+> 
+> Fixes: 95a5db3ae5698b49c63144610ad02913e780c828
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   v2: Dropped smmu* files from this patch
+> 
+>   MAINTAINERS | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1032406..36ffc01 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -533,6 +533,18 @@ L: qemu-arm@nongnu.org
+>   S: Odd Fixes
+>   F: hw/arm/gumstix.c
+>   
+> +i.MX25 PDK
+> +M: Peter Maydell <peter.maydell@linaro.org>
+> +R: Jean-Christophe Dubois <jcd@tribudubois.net>
+> +L: qemu-arm@nongnu.org
+> +S: Odd Fixes
+> +F: hw/arm/fsl-imx25.c
+> +F: hw/arm/imx25_pdk.c
+> +F: hw/misc/imx25_ccm.c
+> +F: include/hw/arm/fsl-imx25.h
+> +F: include/hw/misc/imx25_ccm.h
 
-Fixes: 95a5db3ae5698b49c63144610ad02913e780c828
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Dropped smmu* files from this patch
+> +F: tests/ds1338-test.c
 
- MAINTAINERS | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+This last entry is weird alone (at least without the hw/timer/ds1338.c 
+device listed).
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 1032406..36ffc01 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -533,6 +533,18 @@ L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/arm/gumstix.c
-=20
-+i.MX25 PDK
-+M: Peter Maydell <peter.maydell@linaro.org>
-+R: Jean-Christophe Dubois <jcd@tribudubois.net>
-+L: qemu-arm@nongnu.org
-+S: Odd Fixes
-+F: hw/arm/fsl-imx25.c
-+F: hw/arm/imx25_pdk.c
-+F: hw/misc/imx25_ccm.c
-+F: include/hw/arm/fsl-imx25.h
-+F: include/hw/misc/imx25_ccm.h
-+F: tests/ds1338-test.c
-+
- i.MX31 (kzm)
- M: Peter Chubb <peter.chubb@nicta.com.au>
- M: Peter Maydell <peter.maydell@linaro.org>
-@@ -615,6 +627,7 @@ R: Andrew Baumann <Andrew.Baumann@microsoft.com>
- R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
-+F: hw/arm/raspi.c
- F: hw/arm/raspi_platform.h
- F: hw/*/bcm283*
- F: include/hw/arm/raspi*
-@@ -641,6 +654,7 @@ F: hw/arm/z2.c
- F: hw/*/pxa2xx*
- F: hw/misc/mst_fpga.c
- F: include/hw/arm/pxa.h
-+F: include/hw/arm/sharpsl.h
-=20
- SABRELITE / i.MX6
- M: Peter Maydell <peter.maydell@linaro.org>
---=20
-1.8.3.1
+This RTC is also used by the aspeed/realview/versatilepb boards.
 
+> +
+>   i.MX31 (kzm)
+>   M: Peter Chubb <peter.chubb@nicta.com.au>
+>   M: Peter Maydell <peter.maydell@linaro.org>
+> @@ -615,6 +627,7 @@ R: Andrew Baumann <Andrew.Baumann@microsoft.com>
+>   R: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>   L: qemu-arm@nongnu.org
+>   S: Odd Fixes
+> +F: hw/arm/raspi.c
+>   F: hw/arm/raspi_platform.h
+>   F: hw/*/bcm283*
+>   F: include/hw/arm/raspi*
+> @@ -641,6 +654,7 @@ F: hw/arm/z2.c
+>   F: hw/*/pxa2xx*
+>   F: hw/misc/mst_fpga.c
+>   F: include/hw/arm/pxa.h
+> +F: include/hw/arm/sharpsl.h
+
+I think hw/gpio/zaurus.c goes there too.
+
+>   
+>   SABRELITE / i.MX6
+>   M: Peter Maydell <peter.maydell@linaro.org>
+> 
+
+Regards,
+
+Phil.

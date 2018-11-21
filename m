@@ -1,161 +1,146 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1583425wrt;
-        Wed, 21 Nov 2018 00:36:11 -0800 (PST)
-X-Received: by 2002:a19:1901:: with SMTP id 1mr2780263lfz.99.1542789371247;
-        Wed, 21 Nov 2018 00:36:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542789371; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1809474wrt;
+        Wed, 21 Nov 2018 04:36:04 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fKcpee13W0AIkWXrrxv1RhtlEe8ZAgKbOMykohFhCbfm9/ytskGs7/kad8RedlmjPPr0dH
+X-Received: by 2002:a81:27cc:: with SMTP id n195mr6147177ywn.243.1542803764393;
+        Wed, 21 Nov 2018 04:36:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542803764; cv=none;
         d=google.com; s=arc-20160816;
-        b=d50Ey8mFqXpzVRT74w7kagMaFN+KxR3g7qdkcSHP00ZQf2X/YMHSvVMNC//uRje28t
-         2s0SPaAGiIrZEJpOx9/EmgYx3IEYLG0LVyvew8QpoU0Kqx1OpN938lt/sSZ1EV3QaF9m
-         3F2LvcSGFuYvGl2EvMAdZ2nKA9UpJmmGeH8HQswlvDAxPSSPzJuJYZhXT+wm+84s+n7G
-         sE0yPszzZKw1UqLFZ2hZhK0dDnP2M4pyjOHUvpNUsP2z0RNyjrRxuHcYjViGVvRnBoOd
-         gWZ4g/K08Qcc/ToPCLTidV709qnCsQaJ5YOIYv/ibbJ1NSxs4eP6A029Y5xy8//p1w8U
-         5Qrg==
+        b=mzvgctMqaDvh4rTvLGFw0IvTWbmrblFdsviCxR02WjTVco8YB77KgZiKhINwRZh3CJ
+         xBeNj9s44DP8p9L+YkSK24JuvDvwg92qveqn255hvJmHl8eo3qf/HV3HTXvnBWuqZdWw
+         BZ6t/YudVNFoc23XUiecTJlx1kfi6JcTCDhbKU2O0mPfiEwP7nu9vhHeY/CG1xY8ASyc
+         mJJCyiyttKt4r1fHeKyaPsb9it/Vh6jbw5hyBeZbjc3aW2AugIwGtuaRz3+WRBwMcmL4
+         G6g2v9dNkEHTcQrTZr8g8WvBqIQFnt9i1qHJLB/afSgjHUg9QHGinKiSA3PPDuoMMxDL
+         vwAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=e1NIrHG0Y1mYY107hOmeCTGf3QsQpT7j8JPS1BqjoQA=;
-        b=SVp4QOPooL8GJacQhppejtAguWnIjuZxhM9/5yN6KkDs7qlabxmDHfPX8+PdNSAVo6
-         afCy9cyd+GogjkHOkEAYBG6kFl4k6HyHu+2dXJol2aKcRM3GrOeFpXmuGVE7ICw6Gapu
-         sVh0H/0DVoUIFJk5e/2bG8ngqnvt7WTz4KBQsadIjw0cBS7/Xk4Ox4MZhY1tJTsjwh67
-         pIB0aRV2tIQYomY4Dou6aSodRnLwv1LAqP3P9riK+xOVipamnh8jRPc8U0FMb0Jt8Qek
-         RJfA4J92FE5KDPMtDrDNX5XII2GLFfTHOQm0KeqMYxRHoVO4Ov1exptIFLBXUMCEjw3/
-         Wmug==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=Ppq4NdIpNpNzwMRjifesghd5dd12vpt8XfSWDq+4Jvo=;
+        b=DN6rTW4kg5utlYcel1s28ruC7WXsm13svFxg9Dv4TJL6h6D3s+qrh2vC4ihvSu5aga
+         NC1AdWeP5MYAHeQzMw2ekX7Yi/fIm3NOYLqOutAa52mfIlkHIUN4gTTyYcWPqgP/rwkW
+         ESpe75rZ2kuCWO5IZo8RooZvmxi47DvWek/yvk2wSz3v81/87v5nSbAHfL3/s9F/QO+P
+         pE/T8Qj8ZI1TSJTVy0KrZccISM773QwZraq5nLf59BIhxiE7u3Tm7drsdUriCrijEMry
+         y7rt9xfiLzOZ7+5y00468nPaQiCUaL3zWHi1cOb+8qrqIKwhJGqR+zQTFLmIZS3LweQP
+         D2QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aciF79ph;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <hongbo.zhang@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y10sor10716817lfj.73.2018.11.21.00.36.11
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id t4-v6si28049289ybo.253.2018.11.21.04.36.04
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 21 Nov 2018 00:36:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 21 Nov 2018 04:36:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aciF79ph;
-       spf=pass (google.com: domain of hongbo.zhang@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=hongbo.zhang@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=e1NIrHG0Y1mYY107hOmeCTGf3QsQpT7j8JPS1BqjoQA=;
-        b=aciF79phBlcbcrjh81JqtNAeAr8HbTHj9YYEIjC1QV03ZiFnru/PGpXbeX0xWmyf0b
-         0H5dqeCdWQYqSqO3DQb+FlMigCnMeY8/oiKXCzyxA0R00j+WEtGRa287oxyY5bnHNhdQ
-         YbOZ2lzeuKuk4+dHnSj6qKW3IoGlVpfIplrr4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=e1NIrHG0Y1mYY107hOmeCTGf3QsQpT7j8JPS1BqjoQA=;
-        b=L/xCcM42pjFLUU5gh6IU2emcS4mgO0rzjy22UAfYBMj3dmxEq2zMnoOa3H9f9E2ghQ
-         ITQlN0AKKX1JT0Ex3YFFgpLX3zspiw8gzyvZqLWAx1u/2wN60xhOrofspbn66dnX0GHL
-         F7hva3qJ/2FhZHFQVs9GnFCEgHstfFKUoIHb7EP+VQVVjHZcgY1BoJsbVPaFGQQWjV2G
-         sTAo6wei0tkkFsADiDz3f+He0KF2zxSxjF95Kqbg5WWes/hKzzaWj4I8Zc/6YTYLn7xD
-         bxH3EoHER67nCZmSJNhITfsG4x1yxCAwSgoSy4XiK7fZM08c8cSUQ2U6Lhyz/kkP62UD
-         129w==
-X-Gm-Message-State: AGRZ1gJ/xWcSsxQ06TtQTNaLXwhCvlSY5QTNfhMgbemYvrvuBf8Nyt04
-	gVlff1yJG3IhrNmcMJmRDJrkjJf+JJbjje707rMJ/ro7
-X-Google-Smtp-Source: AJdET5crxOusUwzYmUUF66xdwtKDLXLk/t/P8YsFCmMZLx//vmqvXyKlNNNsM2zoLrZGhA//wx/ScIOyn4ZsRn/s5tA=
-X-Received: by 2002:a19:aace:: with SMTP id t197mr3039094lfe.7.1542789370682;
- Wed, 21 Nov 2018 00:36:10 -0800 (PST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38805 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPRjf-0004S2-Ri
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 07:36:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44495)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mst@redhat.com>) id 1gPRjX-0004Rm-8y
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 07:35:56 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <mst@redhat.com>) id 1gPRjT-00072I-Af
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 07:35:55 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41852)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1gPRjT-000729-5c; Wed, 21 Nov 2018 07:35:51 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 33B163086272;
+	Wed, 21 Nov 2018 12:35:50 +0000 (UTC)
+Received: from redhat.com (ovpn-120-136.rdu2.redhat.com [10.10.120.136])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 868BE60565;
+	Wed, 21 Nov 2018 12:35:47 +0000 (UTC)
+Date: Wed, 21 Nov 2018 07:35:47 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20181121072954-mutt-send-email-mst@kernel.org>
+References: <20181105014047.26447-1-sameo@linux.intel.com>
+	<20181116172919.43f3e27d@redhat.com>
+	<d4f6f0ef-1333-a917-e3eb-d9bad47c9648@redhat.com>
+	<20181119163110.2f357f40@redhat.com>
 MIME-Version: 1.0
-References: <1539939312-19713-1-git-send-email-hongbo.zhang@linaro.org>
- <1539939312-19713-2-git-send-email-hongbo.zhang@linaro.org>
- <CAFEAcA-vF5orNpfGFe2sGWh=TxWL054PmCM-Yu4faJne+4CkbA@mail.gmail.com>
- <CAHmQWvD1ocAfZo=9aJYeuVDWrBk=AF_D-AgHriYb3-7=n+rR6A@mail.gmail.com>
- <20181116122705.msdb5hydmhtyzzxy@sirius.home.kraxel.org> <CAKv+Gu8QXaRioVPNze_+mJg4aqjJmwn4O-1jdRcYwrkieXrBwQ@mail.gmail.com>
- <20181119124423.qj3sjhhdyetrbju5@bivouac.eciton.net> <CAKv+Gu_-U8BHthhen-GBkium9qJMdd-pe_PB9TPdUaP=koeajQ@mail.gmail.com>
- <20181119164421.me2j4fwzo43aghaa@bivouac.eciton.net> <CAKv+Gu9VjERXDdb=ZkvzVocL4Fd3_2e+F=H0nqEJVs4UEkYmhw@mail.gmail.com>
- <20181120081613.bezcjotqhmqflvvb@sirius.home.kraxel.org> <CAHmQWvDua+3fXT7wA2j7wDRbOi5VJWfMa_+YYt6Xjv9XZF1Skg@mail.gmail.com>
- <CAKv+Gu_hMyn0g0hV9z1nZY+neGKg_7Rjm_cS-u33HkGQra_6ng@mail.gmail.com>
-In-Reply-To: <CAKv+Gu_hMyn0g0hV9z1nZY+neGKg_7Rjm_cS-u33HkGQra_6ng@mail.gmail.com>
-From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Wed, 21 Nov 2018 16:35:58 +0800
-Message-ID: <CAHmQWvBJgyFY9Xme9k3qPA+QOXOX8KTZt+Qp0bt29cGRsEjWKQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v4] hw/arm: Add arm SBSA reference machine
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Cc: kraxel@redhat.com, Leif Lindholm <leif.lindholm@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, 
-	Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: hFVn1ptNdUtP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181119163110.2f357f40@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.49]);
+	Wed, 21 Nov 2018 12:35:50 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 00/24] ACPI reorganization
+ for hardware-reduced API addition
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Samuel Ortiz <sameo@linux.intel.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iMqVA1BGxkUC
 
-Well, considering all the comments/suggestions I received, I'd like to
-try to create a generic sysbus xhci.
-This would take some time for me, so my plan is to send out a new v5
-iteration of this sbsa-ref patch with updates according to Peter's
-comments, but without any xhci feature this time, and later I'll
-create the sysbus xhci with another patch set, including adding this
-new xhci to the sbsa-ref platform.
-Advantage of doing so: this won't make the sbsa-ref patch too
-complicated to review, and the xhci work won't block the process of
-sbsa-ref work.
+On Mon, Nov 19, 2018 at 04:31:10PM +0100, Igor Mammedov wrote:
+> On Fri, 16 Nov 2018 17:37:54 +0100
+> Paolo Bonzini <pbonzini@redhat.com> wrote:
+> 
+> > On 16/11/18 17:29, Igor Mammedov wrote:
+> > > General suggestions for this series:
+> > >   1. Preferably don't do multiple changes within a patch
+> > >      neither post huge patches (unless it's pure code movement).
+> > >      (it's easy to squash patches later it necessary)
+> > >   2. Start small, pick a table generalize it and send as
+> > >      one small patchset. Tables are often independent
+> > >      and it's much easier on both author/reviewer to agree upon
+> > >      changes and rewrite it if necessary.  
+> > 
+> > How would that be done?  This series is on the bigger side, agreed, but
+> > most of it is really just code movement.  It's a starting point, having
+> > a generic ACPI library is way beyond what this is trying to do.
+> I've tried to give suggestions how to restructure series
+> on per patch basis. In my opinion it quite possible to split
+> series in several smaller ones and it should really help with
+> making series cleaner and easier/faster to review/amend/merge
+> vs what we have in v5.
+> (it's more frustrating to rework large series vs smaller one)
+> 
+> If something isn't clear, it's easy to reach out to me here
+> or directly (email/irc/github) for clarification/feed back.
 
-On Tue, 20 Nov 2018 at 17:40, Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
->
-> On Tue, 20 Nov 2018 at 09:49, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
-> >
-> > On Tue, 20 Nov 2018 at 16:16, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> > >
-> > >   Hi,
-> > >
-> > > > > But I assume you specifically want things that do a lot of DMA, so I
-> > > > > couldn't get away with asking for keeping it to the SBSA UART(s)? :)
-> > > >
-> > > > Ideally, it would be something that supports platform MSIs as well,
-> > > > but that is unlikely to be a priority for anyone (and i would be very
-> > > > surprised if any of QEMU's sysbus host controllers implement that at
-> > > > the moment)
-> > > >
-> > > > I can live with just sysbus AHCI, though, if EHCI/XHCI are too cumbersome.
-> > >
-> > > Generic sysbus ehci should not be difficuilt, 10 lines patch or so.
-> > >
-> > > Gives you only usb2 though.  usb1 devices are handled either via ohci
-> > > companion controller (should be doable), or via integrated usb2 hub
-> > > (more common on recent hardware, but qemu usb-hub is usb1 only).
-> > >
-> > > Generic sysbus xhci would be more work.  But you'll get usb 1+2+3
-> > > support.  And wiring up platform MSIs should be possible too.
-> > >
-> > In kernel, these drivers are enabled by default:
-> > CONFIG_USB_XHCI_PLATFORM=y
-> > CONFIG_USB_EHCI_HCD_PLATFORM=y
-> > CONFIG_USB_OHCI_HCD_PLATFORM=y
-> >
-> > If we do generic EHCI or XHCI in qemu, can the driver in kernel work
-> > with it? (I guess yes?)
-> > My thought is if the available kernel driver will work without any
-> > change, then we can create it in qemu.
-> >
->
-> Yes that should work. Our MacchiatoBin DSDT has the following for its
-> XHCI controllers:
->
-> Device (XHC0)
-> {
->     Name (_HID, "PNP0D10")      // _HID: Hardware ID
->     Name (_UID, 0x00)           // _UID: Unique ID
->     Name (_CCA, 0x01)           // _CCA: Cache Coherency Attribute
->
->     Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
->     {
->         Memory32Fixed (ReadWrite,
->             0xF2500000,         // Address Base (MMIO)
->             0x00004000,         // Address Length
->             )
->         Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
->         {
->           CP_GIC_SPI_CP0_USB_H0
->         }
->     })
-> }
->
-> and this gets picked up by the kernel without problems.
->
-> Wiring up platform MSIs would involve modifying the IORT as well,
-> which is one of the reasons I'd prefer to make these fixed devices: we
-> cannot rely on qemu_fw_cfg to generate it for us, and adding a lot of
-> new code to generate this on the fly is simply not worth the effort.
+I assume the #1 goal is to add reduced HW support.  So another
+option to speed up merging is to just go ahead and duplicate a
+bunch of code e.g. in pc_virt.c acpi/reduced.c or in any other
+file.
+This way it might be easier to see what's common code and what isn't.
+And I think offline Igor said he might prefer that way. Right Igor?
+
+> > 
+> > Paolo
+> > 
+> > >   3. when you think about refactoring acpi into a generic API
+> > >      think about it as routines that go into a separate library
+> > >      (pure acpi spec code) and qemu/acpi glue routines and
+> > >       divide them correspondingly.  
+> > 

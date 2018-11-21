@@ -1,225 +1,123 @@
-Received: by 2002:a5d:6844:0:0:0:0:0 with SMTP id o4-v6csp4630104wrw;
-        Tue, 13 Nov 2018 09:19:38 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dxwoiPDBLEPUMuZXNPNidaTjJmPKekNy+e2+2bZHsQ2u2+GMCcYHSZPqKy6QhvwefNHHHk
-X-Received: by 2002:ac8:7616:: with SMTP id t22mr5832581qtq.375.1542129578254;
-        Tue, 13 Nov 2018 09:19:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542129578; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2484350wrt;
+        Wed, 21 Nov 2018 15:22:00 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dMC64OBjtndsdeq0XJ30DXXkoXWG0w7MZCG2ILRs1fF7axI68r0KktIHZ5mRfJipsf8vmv
+X-Received: by 2002:a5b:185:: with SMTP id r5-v6mr8597253ybl.404.1542842520264;
+        Wed, 21 Nov 2018 15:22:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542842520; cv=none;
         d=google.com; s=arc-20160816;
-        b=lkRZoThq5an5U6irMlPUx4nXt1NoRGSLuiN1sPQRqCMJX8GNwdwiYN6ZwAk2fQk83L
-         /YtpmM0EjPg7Q0Lt9AfJkNUcohY47Iw7Kv3zxEB3zPONcWUOnGGogeSJxVd9V2Qzr63w
-         TuiAMbFp1SSlf2TmY9+AAZv09ZqaHmjJ7QwDRPCelUnLxN/w3Y/nV0DUvrki5AQ/RdoY
-         Y6N2L4eqa/szN+SBiu+tn9tfodBYPdLv8pmzDu5+ZKGkhU87ooVlHKe0ypAhD7e+f2nU
-         RlEYH6m2rnnFnwmRCNF4fGg729AjVfcNxaw2gLJxjtyklrwfNGZxmqRI1HYhaKcMNmJ7
-         pMng==
+        b=cL9DxlgGL7A2LOtws4ge/yGIpdRM+nHqRRGB3Q0SUCG99O91BLh4uJxVRUaJfPnoYY
+         WRr0z2Xr6q46GIPh10HckQRGC5899kBZONGAN4xPdQY8TEacU8etGvaUhAiACuJuBBsO
+         nmjJQUlujKoCjB5UWu21JlpMIIUEAVbOskQeXu2RBcEqun9+RDaUxCGjrsBgiwF5+yxY
+         w9QNo8jw+i3j3whlh2Z3q3yHimjYZyAkJTNoVxTtJu3pzt+BZIZ6WZwG4Fit7umwn+WO
+         azHtvRxMHD2sBnneWIjT6+8GKNH4lrVg/N86fElAyIF5xXC4ZLRBbdgnceLo5pP/PlIh
+         Sslw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=ZMLGeh2oMmlgL9Q9sXP7EfIEjr2fpvnM/HLX2u9tHg8=;
-        b=Ax80LHoIYUbi3vHyrEscrDEQ1Rnoqv7lR59lvprbV+i/Nwl4ULlxcffaekPSoWf2MS
-         IzoIuP/F+qn7kqGOyFKAZ9dhXlxPbLyLt9mLnVsII6HH6CQbM/5AwrLPttqdoono91m3
-         Gc5o3josypw+wGY4u9t7QB2jonby+YVaLw6AqaLIL81V5Okkp7Rsk7v0CITvY1WlTGjg
-         iUKg4F9fuosMmeygf4dV0RWCSJcdT3rCwCi0GHg0Y7PLWZ/yMy2NmSxYy1PcU/v/e4uZ
-         V5Nch2rKblODJE0bxoZh1cwRehIwbcUyAzn/8qMLdmD1dAfLHOTndDZtEk/9z0EQFvDs
-         K1uw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=VDhQorVRTUYpqlC6FyFrf80+Q1nMybbWTVDM/sP2VpQ=;
+        b=NQs06FUVHSzXk04V4MJK2W8ylYrkYJ+DKqbBrr1f4sl0ogv4CQozEgs8QSo+49uFUY
+         +QM+we1ejh2zQogB9kayCF03W9rKebAgkeX8smzjRNnTu0sOQ1P5TudeD8CWSWQ6oypr
+         xnarUlMjk67MzyYPqYjj8nrfihB0Qel6OEkIxSxg01NQhOwmP4eMD6NaSnfcPoU7ej2F
+         rF2nBObeidmOoOeubzoAUFfJR08PU1YX9tQn5ru+JrzVUZMpmAe7jE7o3DrYBV8QYski
+         XZtUBmo8T3Lbs+81dMHSf32Thx2pdOgNMl/LVGzEup3R7TJjT0qeoH4FbXXLE/b9Z7Jx
+         7ocw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m25si9446530qtg.282.2018.11.13.09.19.38
+        by mx.google.com with ESMTPS id n77-v6si3088685ybf.274.2018.11.21.15.22.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 13 Nov 2018 09:19:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Wed, 21 Nov 2018 15:22:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:55240 helo=lists.gnu.org)
+Received: from localhost ([::1]:43044 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gMcLh-0001GS-Gu
-	for alex.bennee@linaro.org; Tue, 13 Nov 2018 12:19:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35107)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPbol-00043Z-L6
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 18:21:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47012)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMcAl-0006HH-Mk
-	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 12:08:23 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gPboa-00043I-Lp
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 18:21:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gMbwh-0003xD-Cq
-	for qemu-devel@nongnu.org; Tue, 13 Nov 2018 11:53:51 -0500
-Received: from mga06.intel.com ([134.134.136.31]:62850)
+	(envelope-from <sameo@linux.intel.com>) id 1gPboX-0002Qx-M6
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 18:21:48 -0500
+Received: from mga03.intel.com ([134.134.136.65]:47871)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gMbwg-0003nD-99; Tue, 13 Nov 2018 11:53:47 -0500
-X-Amp-Result: SKIPPED(no attachment in message)
+	id 1gPboX-0002P2-DI; Wed, 21 Nov 2018 18:21:45 -0500
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	13 Nov 2018 08:53:38 -0800
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+	by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	21 Nov 2018 15:21:43 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,228,1539673200"; d="scan'208";a="107922107"
-Received: from qingbai-mobl.ger.corp.intel.com (HELO
-	caravaggio.ger.corp.intel.com) ([10.249.41.239])
-	by orsmga001.jf.intel.com with ESMTP; 13 Nov 2018 08:53:36 -0800
+X-IronPort-AV: E=Sophos;i="5.56,262,1539673200"; d="scan'208";a="91165703"
+Received: from slgibson-mobl1.ger.corp.intel.com (HELO caravaggio)
+	([10.252.29.202])
+	by orsmga007.jf.intel.com with ESMTP; 21 Nov 2018 15:21:39 -0800
+Date: Thu, 22 Nov 2018 00:21:06 +0100
 From: Samuel Ortiz <sameo@linux.intel.com>
-To: qemu-devel@nongnu.org
-Date: Tue, 13 Nov 2018 17:52:40 +0100
-Message-Id: <20181113165247.4806-7-sameo@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181113165247.4806-1-sameo@linux.intel.com>
-References: <20181113165247.4806-1-sameo@linux.intel.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20181121232106.GB4450@caravaggio>
+References: <20181105014047.26447-1-sameo@linux.intel.com>
+	<20181105014047.26447-13-sameo@linux.intel.com>
+	<20181115133658.2cdbd918@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181115133658.2cdbd918@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.31
-Subject: [Qemu-devel] [PATCH 06/13] target: arm: Make ARM TLB filling
- routine static
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 134.134.136.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 12/24] hw: acpi: Export the
+ MCFG getter
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	richard.henderson@linaro.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mdNJFvB3gWW9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OAdpxeSIDe93
 
-It's only used in op_helper.c, it does not need to be exported and
-moreover it should only be build when TCG is enabled.
+Hi Igor,
 
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Robert Bradford <robert.bradford@intel.com>
----
- target/arm/internals.h |  5 -----
- target/arm/helper.c    | 37 -------------------------------------
- target/arm/op_helper.c | 38 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 38 insertions(+), 42 deletions(-)
+On Thu, Nov 15, 2018 at 01:36:58PM +0100, Igor Mammedov wrote:
+> On Mon,  5 Nov 2018 02:40:35 +0100
+> Samuel Ortiz <sameo@linux.intel.com> wrote:
+> 
+> > From: Yang Zhong <yang.zhong@intel.com>
+> > 
+> > The ACPI MCFG getter is not x86 specific and could be called from
+> > anywhere within generic ACPI API, so let's export it.
+> So far it's x86 or more exactly q35 specific thing,
+It's property based, and it's using a generic PCIE property afaict.
+So it's up to each machine type to define those properties.
+I'm curious here: What's the idiomatic way to define a machine
+setting/attribute/property, let each instance define it or not, and
+make it available at run time?
+Would you be getting the PCI host pointer from the ACPI build state and
+getting that information back from there?
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index ffb5091b1f..06439467d2 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -741,11 +741,6 @@ static inline bool arm_extabort_type(MemTxResult result)
-     return result != MEMTX_DECODE_ERROR;
- }
- 
--/* Do a page table walk and add page to TLB if possible */
--bool arm_tlb_fill(CPUState *cpu, vaddr address,
--                  MMUAccessType access_type, int mmu_idx,
--                  ARMMMUFaultInfo *fi);
--
- /* Return true if the stage 1 translation regime is using LPAE format page
-  * tables */
- bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index bc2c8cdb67..689879c23a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8855,43 +8855,6 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-     }
- }
- 
--/* Walk the page table and (if the mapping exists) add the page
-- * to the TLB. Return false on success, or true on failure. Populate
-- * fsr with ARM DFSR/IFSR fault register format value on failure.
-- */
--bool arm_tlb_fill(CPUState *cs, vaddr address,
--                  MMUAccessType access_type, int mmu_idx,
--                  ARMMMUFaultInfo *fi)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    hwaddr phys_addr;
--    target_ulong page_size;
--    int prot;
--    int ret;
--    MemTxAttrs attrs = {};
--
--    ret = get_phys_addr(env, address, access_type,
--                        core_to_arm_mmu_idx(env, mmu_idx), &phys_addr,
--                        &attrs, &prot, &page_size, fi, NULL);
--    if (!ret) {
--        /*
--         * Map a single [sub]page. Regions smaller than our declared
--         * target page size are handled specially, so for those we
--         * pass in the exact addresses.
--         */
--        if (page_size >= TARGET_PAGE_SIZE) {
--            phys_addr &= TARGET_PAGE_MASK;
--            address &= TARGET_PAGE_MASK;
--        }
--        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
--                                prot, mmu_idx, page_size);
--        return 0;
--    }
--
--    return ret;
--}
--
- hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-                                          MemTxAttrs *attrs)
- {
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index 44a74cb296..3b0459db50 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -179,6 +179,44 @@ static void deliver_fault(ARMCPU *cpu, vaddr addr, MMUAccessType access_type,
-     raise_exception(env, exc, syn, target_el);
- }
- 
-+/* Walk the page table and (if the mapping exists) add the page
-+ * to the TLB. Return false on success, or true on failure. Populate
-+ * fsr with ARM DFSR/IFSR fault register format value on failure.
-+ */
-+static bool arm_tlb_fill(CPUState *cs, vaddr address,
-+                         MMUAccessType access_type, int mmu_idx,
-+                         ARMMMUFaultInfo *fi)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    hwaddr phys_addr;
-+    target_ulong page_size;
-+    int prot;
-+    int ret;
-+    MemTxAttrs attrs = {};
-+
-+    ret = get_phys_addr(env, address, access_type,
-+                        core_to_arm_mmu_idx(env, mmu_idx), &phys_addr,
-+                        &attrs, &prot, &page_size, fi, NULL);
-+    if (!ret) {
-+        /*
-+         * Map a single [sub]page. Regions smaller than our declared
-+         * target page size are handled specially, so for those we
-+         * pass in the exact addresses.
-+         */
-+        if (page_size >= TARGET_PAGE_SIZE) {
-+            phys_addr &= TARGET_PAGE_MASK;
-+            address &= TARGET_PAGE_MASK;
-+        }
-+        tlb_set_page_with_attrs(cs, address, phys_addr, attrs,
-+                                prot, mmu_idx, page_size);
-+        return 0;
-+    }
-+
-+    return ret;
-+}
-+
-+
- /* try to fill the TLB and return an exception if error. If retaddr is
-  * NULL, it means that the function was called in C code (i.e. not
-  * from generated code or from helper.c)
--- 
-2.19.1
-
+Cheers,
+Samuel.

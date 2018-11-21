@@ -1,86 +1,98 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1614240wrt;
-        Wed, 21 Nov 2018 01:10:38 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fxGcbU4Eu4Y90CMsu6wKAfLsPAlaBw1nK2n009eRJ+aW6TBEkRPS1bqwi1kyrVUJo3TvnT
-X-Received: by 2002:a0d:f302:: with SMTP id c2-v6mr5490041ywf.337.1542791438161;
-        Wed, 21 Nov 2018 01:10:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542791438; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1747641wrt;
+        Wed, 21 Nov 2018 03:34:28 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Wk1rQEmVvHA7+/U2hzVri0PTZBoa/nbRVmRRuBFf/YMmYSsrOhOKmqg0qzWWZHwGWVBn9e
+X-Received: by 2002:a25:a246:: with SMTP id b64-v6mr5502806ybi.192.1542800068046;
+        Wed, 21 Nov 2018 03:34:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542800068; cv=none;
         d=google.com; s=arc-20160816;
-        b=SMvHR9t6mos49zwrmIC3T7w0Xg4OqAd4I57aW20Jr6xqQTqO+FvhiVcIjrGLfpgNxt
-         ta0caR0Rol//p97eQQoLH51ecZtyiZ8WY2SpOguk20Dp9JZhlwBhNfxipiGKzC7/g/3k
-         iqwyFzZn/9ilOaMH0FBULgDIXpINiWnfKD/h8oR5x7WDpnZveDuv+RLzfPiitce8UP0B
-         fyejjIJ/aZgeXFZj5itK2/LM8nIwqdE2dLIEugbHsNRviNKWVyhcEih95BhhojI+vD/B
-         O8fnuQUp6+ZcAK3dAxR1bLB7EgcQx9DH3G0RE67qt2phxHY7GmJPL3JavDa4HURKft3+
-         oJIw==
+        b=XJWdVE50mNkOkU23P4fpJeeUl2PP3DGarhzuNqU7/DaRuOJim1is84wKr8Bil+T2AD
+         E4hkaQhcvufD3rhuIm5fX12+iz/2GN2RmT8zC2Ksh5De3BoWxb0BLVfyOvv7K8JUQmpl
+         res3s88yVZzvugY2yAAcfBb2t1sy+iwbugHLeJKKQL2cNC8K0TYPDIcFteHoSIvsV/Xw
+         lS2h/ky+xuTjDnS4J7Rx7NU0ul4a29vAqbAjak/AYT3aJOrLKCTqQI6rJKkxC64xK8Lt
+         jywCzSL8Pq9oysgqHjm3d70DnRKxyRBCL1kS1S5arxnRD9RvmhzRBRRC7gkASMsTOl26
+         sDMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=0Ckx1r5ASo9TFJZqDxu4zL3htFrAmdq+2fnRoKfwONQ=;
-        b=zYOcELhOyaeW4uswh3vsJYVKtnHeULhd+2gHTjz8unVFu1QJ83bMPD3HiXNnAsGM5q
-         FGGa+yRI1npThr43sdzQjkasupjFeTz9+z5lxuZqWxLsYAhAakblPVE4akY5EymwEA7d
-         X9tQ7po1P3xZtX5XUxRIkISxLxX/b+tHI35iqUHC4ff7DWT1Z9icjnippF3cZTO9TGON
-         npbLEcFQ9szcbXEggL0lniR2ctrY+w+yhfsdSw+gg3KfmIIFm3YOCkpT0Zty+XBK0lsR
-         y/yE4SImdhaqxdmkv3XTqSNhtrK5Lt/f1Dk3N0fm2jzkYhH0dTjBv1elINGSkeE1phUB
-         uycQ==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=hNiPAm1k2NicLg9B/Uyl+VgjNK8eHbFO3pw7j+Op6Gs=;
+        b=Kmo1QvMDK0exPDfd2MRk+vLjj5JHYye+tzz6XzLBu5wiiYtBiCj31fHIU0apyQEZUx
+         6HcE9+sedf1wkBZePg8CWTzfgLPOVwXULoa7HESNdbh1psa/5693KvvwwXRPKL35a6zb
+         /AY3p5f1CZLTW7iIOgEi/WmLNIBjQFgKirDjEMw49fouWQb3LyU1uUpyTMdfMEgEaFlq
+         IvyZVkqMO65+w7SEq4IogSu8rOy7mJSCH3YmnsXdCS+13V7TIMRIaOdH7237jjqXWB9E
+         siSrmyBn9UcC3lFKX1c7gmIGC7SwFrAqGkHp51X2nyRmL4cp5D6Y1a2j8xoAS95wYm+e
+         3teg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w16-v6si7829159ybl.441.2018.11.21.01.10.38
+        by mx.google.com with ESMTPS id 12-v6si28905673yws.65.2018.11.21.03.34.27
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 21 Nov 2018 01:10:38 -0800 (PST)
+        Wed, 21 Nov 2018 03:34:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37929 helo=lists.gnu.org)
+Received: from localhost ([::1]:38587 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPOWr-0003Rh-JP
-	for alex.bennee@linaro.org; Wed, 21 Nov 2018 04:10:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34078)
+	id 1gPQm3-0003KF-H6
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 06:34:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54627)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gPOWk-0003RK-2X
-	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 04:10:30 -0500
+	(envelope-from <philmd@redhat.com>) id 1gPQlu-0003K3-GU
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 06:34:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gPOWg-0007Dx-W0
-	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 04:10:30 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:58666)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gPOWg-0007Cz-Ov; Wed, 21 Nov 2018 04:10:26 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 49409308624F;
-	Wed, 21 Nov 2018 09:10:25 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3170F18E33;
-	Wed, 21 Nov 2018 09:10:06 +0000 (UTC)
-Date: Wed, 21 Nov 2018 10:10:04 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <20181121101004.6405408a@redhat.com>
-In-Reply-To: <d84bafe2-184b-bc62-9cde-0d1421cb484d@redhat.com>
-References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
-	<20181107123652.23417-3-marcandre.lureau@redhat.com>
-	<20181120173324.64a36d8e@redhat.com>
-	<d84bafe2-184b-bc62-9cde-0d1421cb484d@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1gPQlq-0005xb-Ha
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 06:34:18 -0500
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:53351)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gPQlq-0005xO-Bi
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 06:34:14 -0500
+Received: by mail-wm1-f67.google.com with SMTP id y1so1922740wmi.3
+	for <qemu-arm@nongnu.org>; Wed, 21 Nov 2018 03:34:14 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=hNiPAm1k2NicLg9B/Uyl+VgjNK8eHbFO3pw7j+Op6Gs=;
+	b=Siq+gjxtKzWxJR2ZtwTXoVaMclBL1N8bf6TpNTNy3Q0H+Y4+vR0S7/i0Re3EQDkKBB
+	f35sgsosmFEEMbzcwoymQ+qGxxuhy+2DGjYIOj/xmVz1mCBfAfgMTwhqzWTyH1C0loc+
+	mtD10C9lhgls4Q+skNksCJOm3WBJvuR2csUt6WtaAXKEk/symHeTUL+COi6STiKnWqPX
+	5xlVGLJz3QwYJdvrCBNzu2SSZjuB8gIbJVCHL5eplO3Ej1PMfCYrpoYkkM4RnKyx5IIC
+	feX1k9GhKqR5uHly9wH6SnOWDFlCx/+7yXc9GUKQYnJOEDnPT3hzEvNjQ7IfJyTzjVQA
+	OfRQ==
+X-Gm-Message-State: AGRZ1gLObedGE21/4v41CTp7Lzu2lpNtFnHyLz5p9GKQLr96BG0yTsXI
+	T59WY059yd4aw3mrNE0R+V/JPQ==
+X-Received: by 2002:a1c:4046:: with SMTP id n67mr5281202wma.123.1542800053280; 
+	Wed, 21 Nov 2018 03:34:13 -0800 (PST)
+Received: from [192.168.1.36] (35.red-88-21-102.staticip.rima-tde.net.
+	[88.21.102.35]) by smtp.gmail.com with ESMTPSA id
+	z15sm13822750wru.42.2018.11.21.03.34.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 21 Nov 2018 03:34:12 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <1542782568-20059-1-git-send-email-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <6f2cdcdf-225b-44b8-d228-ae4ac3bfd299@redhat.com>
+Date: Wed, 21 Nov 2018 12:34:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Wed, 21 Nov 2018 09:10:25 +0000 (UTC)
+In-Reply-To: <1542782568-20059-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v3 02/14] qom: make
- interface types abstract
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-arm] [PATCH v3] MAINTAINERS: Assign some more files in
+ the hw/arm/ directory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,117 +104,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, dgilbert@redhat.com,
-	xen-devel@lists.xenproject.org, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	=?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
-	Stefan Berger <stefanb@linux.ibm.com>, Richard Henderson <rth@twiddle.net>,
-	Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	=?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>
+Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XpwOkBNuwiaQ
+X-TUID: 99RSnUiAguu1
 
-On Tue, 20 Nov 2018 19:54:23 +0100
-Laszlo Ersek <lersek@redhat.com> wrote:
+On 21/11/18 7:42, Thomas Huth wrote:
+> I apparently missed some more files and even a complete machine (the
+> "imx25-pdk") in my previous patch... but now we should hopefully have
+> a completely coverage for all available ARM boards.
+> 
+> Fixes: 95a5db3ae5698b49c63144610ad02913e780c828
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-> On 11/20/18 17:33, Igor Mammedov wrote:
-> > On Wed,  7 Nov 2018 16:36:40 +0400
-> > Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
-> >  =20
-> >> Interfaces don't have instance, let's make the interface type really
-> >> abstract to avoid confusion.
-> >>
-> >> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> >> ---
-> >>  include/hw/acpi/acpi_dev_interface.h | 6 +-----
-> >>  include/hw/arm/linux-boot-if.h       | 5 +----
-> >>  include/hw/fw-path-provider.h        | 4 +---
-> >>  include/hw/hotplug.h                 | 6 +-----
-> >>  include/hw/intc/intc.h               | 4 +---
-> >>  include/hw/ipmi/ipmi.h               | 4 +---
-> >>  include/hw/isa/isa.h                 | 4 ----
-> >>  include/hw/mem/memory-device.h       | 4 +---
-> >>  include/hw/nmi.h                     | 4 +---
-> >>  include/hw/stream.h                  | 4 +---
-> >>  include/hw/timer/m48t59.h            | 4 +---
-> >>  include/qom/object_interfaces.h      | 6 +-----
-> >>  include/sysemu/tpm.h                 | 4 +---
-> >>  target/arm/idau.h                    | 4 +---
-> >>  tests/check-qom-interface.c          | 4 +---
-> >>  15 files changed, 14 insertions(+), 53 deletions(-)
-> >>
-> >> diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/ac=
-pi_dev_interface.h
-> >> index dabf4c4fc9..43ff119179 100644
-> >> --- a/include/hw/acpi/acpi_dev_interface.h
-> >> +++ b/include/hw/acpi/acpi_dev_interface.h
-> >> @@ -25,11 +25,7 @@ typedef enum {
-> >>       INTERFACE_CHECK(AcpiDeviceIf, (obj), \
-> >>                       TYPE_ACPI_DEVICE_IF)
-> >> =20
-> >> -
-> >> -typedef struct AcpiDeviceIf {
-> >> -    /* <private> */
-> >> -    Object Parent;
-> >> -} AcpiDeviceIf;
-> >> +typedef struct AcpiDeviceIf AcpiDeviceIf;
-> >> =20
-> >>  void acpi_send_event(DeviceState *dev, AcpiEventStatusBits event);
-> >> =20
-> >> diff --git a/include/hw/arm/linux-boot-if.h b/include/hw/arm/linux-boo=
-t-if.h
-> >> index aba4479a14..7bbdfd1cc6 100644
-> >> --- a/include/hw/arm/linux-boot-if.h
-> >> +++ b/include/hw/arm/linux-boot-if.h
-> >> @@ -16,10 +16,7 @@
-> >>  #define ARM_LINUX_BOOT_IF(obj) \
-> >>      INTERFACE_CHECK(ARMLinuxBootIf, (obj), TYPE_ARM_LINUX_BOOT_IF)
-> >> =20
-> >> -typedef struct ARMLinuxBootIf {
-> >> -    /*< private >*/
-> >> -    Object parent_obj;
-> >> -} ARMLinuxBootIf;
-> >> +typedef struct ARMLinuxBootIf ARMLinuxBootIf; =20
-> > I like how it makes interface truly opaque and removes the need for
-> > structure declaration but:
-> >=20
-> >  1: I'm not sure if it's acceptable thing to do from language point of =
-view =20
->=20
-> Yeah, it's fine. If you have just
->=20
-> struct ARMLinuxBootIf;
->=20
-> (and, optionally, a typedef to it,) then this type is called an
-> "incomplete type" (for translation units that don't see the actual type
-> definition). You can't apply the "sizeof" operator to it, you can't put
-> it in other structs and arrays etc. I'm too lazy to look up the exact
-> details in the C standard now. :) But, importantly,
-> "pointer-to-ARMLinuxBootIf" is a complete type, and you can do all the
-> usual things with that. (Define variables of that pointer type, embed
-> them in other structures, use it as an array element type, pass them to
-> functions, and so on.)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Thanks Laszlo, that's the answer I was looking for.
-
-> Thanks
-> Laszlo
->=20
-> >  2: For a reader not aware of a trick, it's sort of confusing to have f=
-orward declaration but without structure itself. So if #1 is acceptable we =
-probably should document interface trick in object.h
-> >=20
-> > [...]
-> >  =20
->=20
->=20
-
+> ---
+>   v3: Dropped "ds1338-test.c", added some more pxa2xx related files instead
+> 
+>   MAINTAINERS | 16 ++++++++++++++++
+>   1 file changed, 16 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1032406..63c88e1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -533,6 +533,17 @@ L: qemu-arm@nongnu.org
+>   S: Odd Fixes
+>   F: hw/arm/gumstix.c
+>   
+> +i.MX25 PDK
+> +M: Peter Maydell <peter.maydell@linaro.org>
+> +R: Jean-Christophe Dubois <jcd@tribudubois.net>
+> +L: qemu-arm@nongnu.org
+> +S: Odd Fixes
+> +F: hw/arm/fsl-imx25.c
+> +F: hw/arm/imx25_pdk.c
+> +F: hw/misc/imx25_ccm.c
+> +F: include/hw/arm/fsl-imx25.h
+> +F: include/hw/misc/imx25_ccm.h
+> +
+>   i.MX31 (kzm)
+>   M: Peter Chubb <peter.chubb@nicta.com.au>
+>   M: Peter Maydell <peter.maydell@linaro.org>
+> @@ -615,6 +626,7 @@ R: Andrew Baumann <Andrew.Baumann@microsoft.com>
+>   R: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>   L: qemu-arm@nongnu.org
+>   S: Odd Fixes
+> +F: hw/arm/raspi.c
+>   F: hw/arm/raspi_platform.h
+>   F: hw/*/bcm283*
+>   F: include/hw/arm/raspi*
+> @@ -639,8 +651,12 @@ F: hw/arm/spitz.c
+>   F: hw/arm/tosa.c
+>   F: hw/arm/z2.c
+>   F: hw/*/pxa2xx*
+> +F: hw/display/tc6393xb.c
+> +F: hw/gpio/max7310.c
+> +F: hw/gpio/zaurus.c
+>   F: hw/misc/mst_fpga.c
+>   F: include/hw/arm/pxa.h
+> +F: include/hw/arm/sharpsl.h
+>   
+>   SABRELITE / i.MX6
+>   M: Peter Maydell <peter.maydell@linaro.org>
+> 

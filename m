@@ -1,83 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2484350wrt;
-        Wed, 21 Nov 2018 15:22:00 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dMC64OBjtndsdeq0XJ30DXXkoXWG0w7MZCG2ILRs1fF7axI68r0KktIHZ5mRfJipsf8vmv
-X-Received: by 2002:a5b:185:: with SMTP id r5-v6mr8597253ybl.404.1542842520264;
-        Wed, 21 Nov 2018 15:22:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542842520; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2489195wrt;
+        Wed, 21 Nov 2018 15:28:23 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/U7IJrOK5BBibuNI4B5RgkpnECAjlDBIXrdslJ90cBdg62a9IK8VnmOXuueAm14rHhi5ODf
+X-Received: by 2002:a25:7e46:: with SMTP id z67-v6mr8473332ybc.90.1542842903362;
+        Wed, 21 Nov 2018 15:28:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542842903; cv=none;
         d=google.com; s=arc-20160816;
-        b=cL9DxlgGL7A2LOtws4ge/yGIpdRM+nHqRRGB3Q0SUCG99O91BLh4uJxVRUaJfPnoYY
-         WRr0z2Xr6q46GIPh10HckQRGC5899kBZONGAN4xPdQY8TEacU8etGvaUhAiACuJuBBsO
-         nmjJQUlujKoCjB5UWu21JlpMIIUEAVbOskQeXu2RBcEqun9+RDaUxCGjrsBgiwF5+yxY
-         w9QNo8jw+i3j3whlh2Z3q3yHimjYZyAkJTNoVxTtJu3pzt+BZIZ6WZwG4Fit7umwn+WO
-         azHtvRxMHD2sBnneWIjT6+8GKNH4lrVg/N86fElAyIF5xXC4ZLRBbdgnceLo5pP/PlIh
-         Sslw==
+        b=D+P/h1T1JpFBZ0+0gZlPecsVpFkKRDm8txxQN/jQ/6hsUA6ON4bx1X/1vxwgS5gqW2
+         BZmKx2GCK8k5uwKSeQbrxrlIA0iuxZSQ6wJqB0jXGn5D+c5WA6fFu/uxjTmeULcYcWpn
+         G0y8yXmpz4uA5xFRpN05G0V9VXGhLJ2gXB8H8Cj+GpRNuSno7Agb/EURYWbV1cc3cSb6
+         cOBgbYwgQyMMSHnHCNdXteDF5kJcRco91UuQVvr2v2PpwcUIV8yDRw81Ziwk7+wqcJ44
+         b3JLxqfmQ+EU6985JWlLj/dQ0CzNf796IM1oWYphw34gQ0Ko+Wfdv8saAAhgOeADCP+9
+         /g8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=VDhQorVRTUYpqlC6FyFrf80+Q1nMybbWTVDM/sP2VpQ=;
-        b=NQs06FUVHSzXk04V4MJK2W8ylYrkYJ+DKqbBrr1f4sl0ogv4CQozEgs8QSo+49uFUY
-         +QM+we1ejh2zQogB9kayCF03W9rKebAgkeX8smzjRNnTu0sOQ1P5TudeD8CWSWQ6oypr
-         xnarUlMjk67MzyYPqYjj8nrfihB0Qel6OEkIxSxg01NQhOwmP4eMD6NaSnfcPoU7ej2F
-         rF2nBObeidmOoOeubzoAUFfJR08PU1YX9tQn5ru+JrzVUZMpmAe7jE7o3DrYBV8QYski
-         XZtUBmo8T3Lbs+81dMHSf32Thx2pdOgNMl/LVGzEup3R7TJjT0qeoH4FbXXLE/b9Z7Jx
-         7ocw==
+        bh=xj6G+1Tr/iODSYyHx0FXC9MAghBg9hoEiR3F+vdYt44=;
+        b=AJxbdeb3myowFujAKdcS9l/oohqSiEnzv6LjHjnkAcKmdxYMHO+SAw9XMC6UAkqVp6
+         VpV/pFRtB/4sCunbHWrxHD4kKTC0Kfjn2jWafIONLHrPSFsPMRA+97nVjpJbIbpV4wzq
+         4AUSvp837mTushL+c29kmFRkEJFz8vZzMUOxTeQvJtb/KbpMF85oNvoOtir41PZjhEia
+         LZsQFDXs+63KXi7jzBoaI0+ciCfBBq0tSdHI88+LEBfNHa3yjsFnGjZ5FQAy/3SpsTR7
+         qqtTr+r7uu0FbHBeikLluTF29OuejsgrSXo/KccwDP5MAS2NMq4UOQ8skTnCRgHWsvUv
+         2BYg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n77-v6si3088685ybf.274.2018.11.21.15.22.00
+        by mx.google.com with ESMTPS id f125si1505378ywa.280.2018.11.21.15.28.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 21 Nov 2018 15:22:00 -0800 (PST)
+        Wed, 21 Nov 2018 15:28:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:43044 helo=lists.gnu.org)
+Received: from localhost ([::1]:43071 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPbol-00043Z-L6
-	for alex.bennee@linaro.org; Wed, 21 Nov 2018 18:21:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47012)
+	id 1gPbuw-0007Sv-P1
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 18:28:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51193)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gPboa-00043I-Lp
-	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 18:21:49 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gPbup-0007Sq-Mg
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 18:28:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gPboX-0002Qx-M6
-	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 18:21:48 -0500
-Received: from mga03.intel.com ([134.134.136.65]:47871)
+	(envelope-from <sameo@linux.intel.com>) id 1gPbum-0007Go-9m
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 18:28:15 -0500
+Received: from mga05.intel.com ([192.55.52.43]:45902)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gPboX-0002P2-DI; Wed, 21 Nov 2018 18:21:45 -0500
-X-Amp-Result: UNSCANNABLE
+	id 1gPbul-00079f-Uy; Wed, 21 Nov 2018 18:28:12 -0500
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-	by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	21 Nov 2018 15:21:43 -0800
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+	by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	21 Nov 2018 15:28:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,262,1539673200"; d="scan'208";a="91165703"
+X-IronPort-AV: E=Sophos;i="5.56,262,1539673200"; d="scan'208";a="110513764"
 Received: from slgibson-mobl1.ger.corp.intel.com (HELO caravaggio)
 	([10.252.29.202])
-	by orsmga007.jf.intel.com with ESMTP; 21 Nov 2018 15:21:39 -0800
-Date: Thu, 22 Nov 2018 00:21:06 +0100
+	by orsmga002.jf.intel.com with ESMTP; 21 Nov 2018 15:28:06 -0800
+Date: Thu, 22 Nov 2018 00:27:33 +0100
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20181121232106.GB4450@caravaggio>
+Message-ID: <20181121232733.GC4450@caravaggio>
 References: <20181105014047.26447-1-sameo@linux.intel.com>
-	<20181105014047.26447-13-sameo@linux.intel.com>
-	<20181115133658.2cdbd918@redhat.com>
+	<20181105014047.26447-16-sameo@linux.intel.com>
+	<20181115142854.1c62f32f@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181115133658.2cdbd918@redhat.com>
+In-Reply-To: <20181115142854.1c62f32f@redhat.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.65
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 12/24] hw: acpi: Export the
- MCFG getter
+X-Received-From: 192.55.52.43
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 15/24] hw: i386: Export the
+ i386 ACPI SRAT build method
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -89,7 +90,7 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
@@ -98,26 +99,25 @@ Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OAdpxeSIDe93
+X-TUID: q5ojEvNP9so/
 
-Hi Igor,
-
-On Thu, Nov 15, 2018 at 01:36:58PM +0100, Igor Mammedov wrote:
-> On Mon,  5 Nov 2018 02:40:35 +0100
+On Thu, Nov 15, 2018 at 02:28:54PM +0100, Igor Mammedov wrote:
+> On Mon,  5 Nov 2018 02:40:38 +0100
 > Samuel Ortiz <sameo@linux.intel.com> wrote:
 > 
-> > From: Yang Zhong <yang.zhong@intel.com>
-> > 
-> > The ACPI MCFG getter is not x86 specific and could be called from
-> > anywhere within generic ACPI API, so let's export it.
-> So far it's x86 or more exactly q35 specific thing,
-It's property based, and it's using a generic PCIE property afaict.
-So it's up to each machine type to define those properties.
-I'm curious here: What's the idiomatic way to define a machine
-setting/attribute/property, let each instance define it or not, and
-make it available at run time?
-Would you be getting the PCI host pointer from the ACPI build state and
-getting that information back from there?
+> > This is the standard way of building SRAT on x86 platfoms. But future
+> > machine types could decide to define their own custom SRAT build method
+> > through the ACPI builder methods.
+> > Moreover, we will also need to reach build_srat() from outside of
+> > acpi-build in order to use it as the ACPI builder SRAT build method.
+> SRAT is usually highly machine specific (memory holes, layout, guest OS
+> specific quirks) so it's hard to generalize it.
+Hence the need for an SRAT builder interface.
+
+> I'd  drop SRAT related patches from this series and introduce
+> i386/virt specific SRAT when you post patches for it.
+virt uses the existing i386 build_srat() routine, there's nothing
+special about it. So this would be purely duplicated code.
 
 Cheers,
 Samuel.

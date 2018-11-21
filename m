@@ -1,141 +1,133 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1074907wrt;
-        Tue, 20 Nov 2018 13:37:48 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Xmj8OicuoJE1/0NuT6bkSKPGarM8DzqzNMwCEfUkhLpulrz0JwitgxdE4g+sDbzISqxhve
-X-Received: by 2002:a25:238c:: with SMTP id j134-v6mr3641110ybj.197.1542749868250;
-        Tue, 20 Nov 2018 13:37:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542749868; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1479361wrt;
+        Tue, 20 Nov 2018 22:25:40 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/VN9Y3G2s+2awTUaITcYwrjEmwqLF7I+vcEGBCgBg5Z2+86M3a7Otm2jkGFwnmLw4AXEFCW
+X-Received: by 2002:a25:3813:: with SMTP id f19-v6mr4879722yba.237.1542781540008;
+        Tue, 20 Nov 2018 22:25:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542781540; cv=none;
         d=google.com; s=arc-20160816;
-        b=JRbvSJXSJnXGwdcEGG5Ez2ZAd67t1S4WmsHmbM2gd1p6SrHYEOyM7MGkovmfzA8N+h
-         2q41mpF9tZSOxJkqn/DLVVFppNktNZzcN+9b2Pjpg3hGUepOhiCEz8iwTKV5hHsHyx+V
-         X22ZIOz/XH66xFgrRsLTmh9He9MwFZtnGw4zl1bCRwkC9+kCAyepvOzdCbR2ZEy8yspy
-         v0QekUKQ3mPelmavBTdGft0g2woxxMO3ge24F9bOE4WLm/Wysie3sPeQTjB0uPfEfaZ/
-         sTRnq0O7WOz+q+Th8V2qbB9TDtGHZkUoJl4FpPTmBfx7YaqvLfWY/2xHVmM4wkvGAqwB
-         vadw==
+        b=VNaeUeLVMfWxf+eRsOFDAxlBcgGUnwdC0Hg4QW/db3BSeHDsPPP1GtFdCwiL2vA4Id
+         1t1/dqwlCN6V6aygcdFGf6DNGw8O+NQmdbtg+BgP9q0lgUmCHc+P4oWu3+L1JVO/HXTD
+         EJt5WFcGxeWZGirENin9UbEOL/Ps0g/BflsGnrXcfzmMlAHJxBy8YdOWHMv78tznnTQl
+         JTyvu0g3ogOpY/01SSzbHVLTBBn/CVdZdJuDwhxKwCvAPbInhvMpNZhkBoFAfdrHVoer
+         987DlDAO278yn2oWvqxU74C98YR92EOv1e4WGROAis48lXtRughXgu25QnHvXnb+W6sE
+         ElMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
-         :references:message-id:date:thread-index:thread-topic:to:from
-         :dkim-signature;
-        bh=RO8VPOT0j8myQNx683WkyLFxGmWPrVBiugzOnzodw5g=;
-        b=HfiptSHTjO3HexjcWIw71J7iLoEH0jv6dhNojOA9MkHF1qeUQYS6WHbLgWqw5L9Ww5
-         aWLvOkosmFc6Ij96d3NZm/4S+f8dKfy3xpIJfpaz6QL5MRPzHVrm53MkjC8Tb8Kzm3JD
-         +KzjuS1HAwxg/D3TaqZq1NlVsmORgb1INGUZ/oXdc4fsiUAREVrwYVEFXi79uyRYugAb
-         DOQ6ehCbIrmT3luvNa9wLW0zXfthnym6Ja1Ean9Sl7f3uWicHdQRvhNluP3ug7rvpgNS
-         a50hcgOBHAkHTYZM9Sy9RoI66UfS5Wybj2sBCLSCVmwxxW7kHShs+T+Cu9pM+N4vuf3d
-         1L+A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=H4xewBiefxcvwuryrSRBpyCdAqj/wbW5TG6Q6/P+9E0=;
+        b=QYfkyKEGtyRcBbv9o5dOamLLHhTpbdOTQ01zSM48k4tBrFBkhCxm6P69GUNIXm3Egd
+         ZpNT7E8O0LOTiPcluk/VQlnB1w5fI1VKLhbE/grPdR4o7yP72QSr1sDATovUj2mPvMLL
+         3B1DfcxAGloZMz627rzi5sbic3n+i+fpkfZawjlrlrcI16chLSxh2DJSX37Kt49p8v4v
+         i6bbzew3BLjc6oDAGq9nBdXLwB3Y/ygOjzQeyv7Dv8Kdk0wUhsgVcDtZF6G4EEDRFBDX
+         4zItpWB/danewmlfoaa+MLgceBl4ETiIBMlorGa3OqnpRnQX4/Dmyg1Gbj79FAI9h5NP
+         7tWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=XWtkVmpv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 2-v6si1232946ybx.439.2018.11.20.13.37.48
+        by mx.google.com with ESMTPS id r26si9676468ywa.463.2018.11.20.22.25.39
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Nov 2018 13:37:48 -0800 (PST)
+        Tue, 20 Nov 2018 22:25:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=XWtkVmpv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:36072 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37425 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPDiN-0000mQ-He
-	for alex.bennee@linaro.org; Tue, 20 Nov 2018 16:37:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58052)
+	id 1gPLxD-0002A4-Do
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 01:25:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gPDXz-0000Mh-7S
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 16:27:06 -0500
+	(envelope-from <thuth@redhat.com>) id 1gPLx2-00029x-26
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 01:25:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gPDXr-00061r-An
-	for qemu-arm@nongnu.org; Tue, 20 Nov 2018 16:26:59 -0500
-Received: from mail-eopbgr740125.outbound.protection.outlook.com
-	([40.107.74.125]:18539
-	helo=NAM01-BN3-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
-	id 1gPDXq-0005b1-Dn; Tue, 20 Nov 2018 16:26:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=RO8VPOT0j8myQNx683WkyLFxGmWPrVBiugzOnzodw5g=;
-	b=XWtkVmpvXSyS5G2YouOM7DnpP0B6yYFZGbc04SFI5NAxXlQmIR4ClQL3RPdls1V6tkkxD2P6MGsqNjdZoJxSMWX0KYF6JxeAHSt5Gz+bs5wxkMVFTNgYoZxzkPVz4wrIcP3XblDEJveAkBSEbNr0uwnMLK+yrvY8eCV6u9VMuMQ=
-Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
-	DM6PR01MB5228.prod.exchangelabs.com (20.177.219.205) with Microsoft
-	SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1339.23; Tue, 20 Nov 2018 21:26:45 +0000
-Received: from DM6PR01MB4825.prod.exchangelabs.com
-	([fe80::d5ed:ce81:19eb:c9ea]) by DM6PR01MB4825.prod.exchangelabs.com
-	([fe80::d5ed:ce81:19eb:c9ea%5]) with mapi id 15.20.1294.048;
-	Tue, 20 Nov 2018 21:26:45 +0000
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Peter Maydell
-	<peter.maydell@linaro.org>,
-	Alistair Francis <alistair.francis@xilinx.com>, 
-	Wei Huang <wei@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>, 
-	Richard Henderson <richard.henderson@linaro.org>
-Thread-Topic: [PATCH v8 10/13] target/arm: PMU: Add instruction and cycle
-	events
-Thread-Index: AQHUgRe8UK9u5O7RB0mtvJqhQx2Vhw==
-Date: Tue, 20 Nov 2018 21:26:44 +0000
-Message-ID: <20181120212553.8480-11-aaron@os.amperecomputing.com>
-References: <20181120212553.8480-1-aaron@os.amperecomputing.com>
-In-Reply-To: <20181120212553.8480-1-aaron@os.amperecomputing.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: CY4PR04CA0037.namprd04.prod.outlook.com
-	(2603:10b6:903:c6::23) To DM6PR01MB4825.prod.exchangelabs.com
-	(2603:10b6:5:6b::30)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [216.85.170.155]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; DM6PR01MB5228;
-	6:NszX51UMQUztAB1m0B4Mq13JWEZqf90AEdA6wIsAykEBf7FxYzLmapqBbi0mjQTX7fK8LDGbf6F3jO9BvDsAJCdzFK1jatT2b/VwtUSB2U0+QeV5QpipJAizL9R1om3NcLfRuvb7CXXhNKuln3Ri0hdUMfzLBpM1IsNyesnsjsYyviyatHdJrXxT8W2vnqeqPeZ8+xaHDM8q2v0zJ5Zr8RCxzm3poMHcy/umC5dlE8eeIOvIjeV8/oLFthDZcTLCT5ifLjRIEeLkNz5RtMj++BOhACtryFpGWsQGQ7mjHZILePxD+SLx17eAc25V+N43wd5lMsmqC6KgSbkjs03dzaYHXixTu5OXSvhtPHvpMXhA1I1pXqfuVks00vzQD66cvlGz5VY68ugC9UlZKYgPcMLWSStw8OcUwsqDvvAzv0sm7AFrZOFG/mczalwGqYEQ8GTuBI6YHEOxhrumhfI7MA==;
-	5:NegzBKsf0fMiQzQF2LuE/QDsid9LVuG6/TU7iEcjal8iRMmWOJzV2TAD1PE9oq1TJYXkVr5inw2blYL18BHgLSS69+gQHT7lgKeLJ7/rjIo/TeP5xlaUHUzzWnHFkaKZREBQg1DUoJ89AGb1QTHL8KUy94p583V6tTE/lHRzTqs=;
-	7:A8K/50tGO29NlYapsCy0uOJkUyXfr8000ycYtlNjFxnPuroLs+s1bxrqlIYold5npXFfsq+1X8WEg6WfaPQcKpEe5bdMU9Bv9W7Pn7UvZtHlLWScsApQAZtPLdJKoV8AaqE+WI2V+z7FL0hAzGdFEA==
-x-ms-office365-filtering-correlation-id: 97b2589b-1c2f-4650-ee3c-08d64f2edef5
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600074)(711020)(2017052603328)(7153060)(7193020);
-	SRVR:DM6PR01MB5228; 
-x-ms-traffictypediagnostic: DM6PR01MB5228:
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=aaron@os.amperecomputing.com; 
-x-microsoft-antispam-prvs: <DM6PR01MB52287E8901D2736272551CD48AD90@DM6PR01MB5228.prod.exchangelabs.com>
-x-ms-exchange-senderadcheck: 1
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(3002001)(93006095)(93001095)(3231442)(944501410)(52105112)(10201501046)(148016)(149066)(150057)(6041310)(20161123558120)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(20161123564045)(201708071742011)(7699051)(76991095);
-	SRVR:DM6PR01MB5228; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB5228; 
-x-forefront-prvs: 08626BE3A5
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(346002)(376002)(39840400004)(366004)(396003)(136003)(189003)(199004)(305945005)(4326008)(39060400002)(71200400001)(7736002)(71190400001)(2906002)(6436002)(7416002)(14454004)(3846002)(6116002)(14444005)(256004)(1076002)(86362001)(316002)(575784001)(11346002)(6486002)(446003)(2616005)(53936002)(5660300001)(486006)(110136005)(6512007)(54906003)(476003)(478600001)(186003)(2501003)(66066001)(26005)(97736004)(25786009)(76176011)(68736007)(6506007)(106356001)(99286004)(105586002)(8936002)(386003)(81166006)(102836004)(81156014)(52116002)(8676002)(2900100001);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB5228;
-	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
-	PTR:InfoNoRecords; MX:1; A:0; 
-received-spf: None (protection.outlook.com: os.amperecomputing.com does not
-	designate permitted sender hosts)
-x-microsoft-antispam-message-info: K8Rs48BBx2nMHsEwOVVElek9alZJXlAx4FV8MFzZpGodUSPe/54ibFOz0f7syU+t9wG15/b7Rm+lQHW3k93xPpEqh9uRn7Ih/ACUgFG8GKpVXYdG0oECRQxq1Hv5DiiHpD0VGoIKpG+Khyy4hkqXRFWOc+B7M96kvNcFp+2h9kB5vFhd6paIsZRgUAuJxhuBfBpOZXTI6/hKt1GIL8uVqBVNTsD0fjuiFPCjfNX7Gn7u5XEYqexsTJAFaxpEZ1eZhHzzh6yMA80Euh7DKzyT0tMdozVRsq6pgzwgnN+OTTYjyNjgOTDQdxRFlmXQwkOGxXFyC51JBPsqY2INbNxwv4vfJ6a0RTSHWrWTwaq7dBg=
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+	(envelope-from <thuth@redhat.com>) id 1gPLwy-0002xF-83
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 01:25:28 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51268)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gPLwy-0002wp-0q; Wed, 21 Nov 2018 01:25:24 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E616E3084242;
+	Wed, 21 Nov 2018 06:25:22 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-140.ams2.redhat.com [10.36.116.140])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6EDCB60A9C;
+	Wed, 21 Nov 2018 06:25:17 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <1542735761-16176-1-git-send-email-thuth@redhat.com>
+	<3bfff029-f88a-ef68-846c-1cacd0800d26@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <297db2f1-e817-c155-337e-4d34553061f0@redhat.com>
+Date: Wed, 21 Nov 2018 07:25:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 97b2589b-1c2f-4650-ee3c-08d64f2edef5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Nov 2018 21:26:44.9753 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB5228
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.74.125
-Subject: [Qemu-arm] [PATCH v8 10/13] target/arm: PMU: Add instruction and
- cycle events
+In-Reply-To: <3bfff029-f88a-ef68-846c-1cacd0800d26@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Wed, 21 Nov 2018 06:25:23 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2] MAINTAINERS: Assign some
+ more files in the hw/arm/ directory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -147,202 +139,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aaron Lindsay <alindsay@codeaurora.org>,
-	Aaron Lindsay <aaron@os.amperecomputing.com>,
-	Michael Spradling <mspradli@codeaurora.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Digant Desai <digantd@codeaurora.org>
+Cc: qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d0YyvbfzeQC+
+X-TUID: v7hELL+ze0F3
 
-The instruction event is only enabled when icount is used, cycles are
-always supported. Always defining get_cycle_count (but altering its
-behavior depending on CONFIG_USER_ONLY) allows us to remove some
-CONFIG_USER_ONLY #defines throughout the rest of the code.
+On 2018-11-20 21:23, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 20/11/18 18:42, Thomas Huth wrote:
+>> I apparently missed some more files and even a complete machine (the
+>> "imx25-pdk") in my previous patch... but now we should hopefully have
+>> a completely coverage for all available ARM boards.
+>>
+>> Fixes: 95a5db3ae5698b49c63144610ad02913e780c828
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>> =C2=A0 v2: Dropped smmu* files from this patch
+>>
+>> =C2=A0 MAINTAINERS | 14 ++++++++++++++
+>> =C2=A0 1 file changed, 14 insertions(+)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 1032406..36ffc01 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -533,6 +533,18 @@ L: qemu-arm@nongnu.org
+>> =C2=A0 S: Odd Fixes
+>> =C2=A0 F: hw/arm/gumstix.c
+>> =C2=A0 +i.MX25 PDK
+>> +M: Peter Maydell <peter.maydell@linaro.org>
+>> +R: Jean-Christophe Dubois <jcd@tribudubois.net>
+>> +L: qemu-arm@nongnu.org
+>> +S: Odd Fixes
+>> +F: hw/arm/fsl-imx25.c
+>> +F: hw/arm/imx25_pdk.c
+>> +F: hw/misc/imx25_ccm.c
+>> +F: include/hw/arm/fsl-imx25.h
+>> +F: include/hw/misc/imx25_ccm.h
+>=20
+>> +F: tests/ds1338-test.c
+>=20
+> This last entry is weird alone (at least without the hw/timer/ds1338.c
+> device listed).
+>=20
+> This RTC is also used by the aspeed/realview/versatilepb boards.
 
-Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 90 ++++++++++++++++++++++-----------------------
- 1 file changed, 44 insertions(+), 46 deletions(-)
+You're right. I've added it since the test uses "-machine imx25-pdk",
+but the correct way is likely to add a separate section for the timer
+device instead. I'll remove this line in v3.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 02d12c078e..6e5f00c0d5 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -15,6 +15,7 @@
- #include "arm_ldst.h"
- #include <zlib.h> /* For crc32 */
- #include "exec/semihost.h"
-+#include "sysemu/cpus.h"
- #include "sysemu/kvm.h"
- #include "fpu/softfloat.h"
- #include "qemu/range.h"
-@@ -1021,7 +1022,48 @@ typedef struct pm_event {
-     uint64_t (*get_count)(CPUARMState *);
- } pm_event;
-=20
-+static bool event_always_supported(CPUARMState *env)
-+{
-+    return true;
-+}
-+
-+/*
-+ * Return the underlying cycle count for the PMU cycle counters. If we're =
-in
-+ * usermode, simply return 0.
-+ */
-+static uint64_t cycles_get_count(CPUARMState *env)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-+                   ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
-+#else
-+    return cpu_get_host_ticks();
-+#endif
-+}
-+
-+#ifndef CONFIG_USER_ONLY
-+static bool instructions_supported(CPUARMState *env)
-+{
-+    return use_icount =3D=3D 1 /* Precise instruction counting */;
-+}
-+
-+static uint64_t instructions_get_count(CPUARMState *env)
-+{
-+    return (uint64_t)cpu_get_icount_raw();
-+}
-+#endif
-+
- static const pm_event pm_events[] =3D {
-+#ifndef CONFIG_USER_ONLY
-+    { .number =3D 0x008, /* INST_RETIRED, Instruction architecturally exec=
-uted */
-+      .supported =3D instructions_supported,
-+      .get_count =3D instructions_get_count,
-+    },
-+    { .number =3D 0x011, /* CPU_CYCLES, Cycle */
-+      .supported =3D event_always_supported,
-+      .get_count =3D cycles_get_count,
-+    }
-+#endif
- };
-=20
- /*
-@@ -1030,7 +1072,7 @@ static const pm_event pm_events[] =3D {
-  * should first be updated to something sparse instead of the current
-  * supported_event_map[] array.
-  */
--#define MAX_EVENT_ID 0x0
-+#define MAX_EVENT_ID 0x11
- #define UNSUPPORTED_EVENT UINT16_MAX
- static uint16_t supported_event_map[MAX_EVENT_ID + 1];
-=20
-@@ -1131,8 +1173,6 @@ static CPAccessResult pmreg_access_swinc(CPUARMState =
-*env,
-     return pmreg_access(env, ri, isread);
- }
-=20
--#ifndef CONFIG_USER_ONLY
--
- static CPAccessResult pmreg_access_selr(CPUARMState *env,
-                                         const ARMCPRegInfo *ri,
-                                         bool isread)
-@@ -1243,9 +1283,7 @@ static bool pmu_counter_enabled(CPUARMState *env, uin=
-t8_t counter)
-  */
- void pmccntr_op_start(CPUARMState *env)
- {
--    uint64_t cycles =3D 0;
--    cycles =3D muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
--                          ARM_CPU_FREQ, NANOSECONDS_PER_SECOND);
-+    uint64_t cycles =3D cycles_get_count(env);
-=20
-     if (pmu_counter_enabled(env, 31)) {
-         uint64_t eff_cycles =3D cycles;
-@@ -1391,42 +1429,6 @@ static void pmccntr_write32(CPUARMState *env, const =
-ARMCPRegInfo *ri,
-     pmccntr_write(env, ri, deposit64(cur_val, 0, 32, value));
- }
-=20
--#else /* CONFIG_USER_ONLY */
--
--void pmccntr_op_start(CPUARMState *env)
--{
--}
--
--void pmccntr_op_finish(CPUARMState *env)
--{
--}
--
--void pmevcntr_op_start(CPUARMState *env, uint8_t i)
--{
--}
--
--void pmevcntr_op_finish(CPUARMState *env, uint8_t i)
--{
--}
--
--void pmu_op_start(CPUARMState *env)
--{
--}
--
--void pmu_op_finish(CPUARMState *env)
--{
--}
--
--void pmu_pre_el_change(ARMCPU *cpu, void *ignored)
--{
--}
--
--void pmu_post_el_change(ARMCPU *cpu, void *ignored)
--{
--}
--
--#endif
--
- static void pmccfiltr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                             uint64_t value)
- {
-@@ -1814,7 +1816,6 @@ static const ARMCPRegInfo v7_cp_reginfo[] =3D {
-     /* Unimplemented so WI. */
-     { .name =3D "PMSWINC", .cp =3D 15, .crn =3D 9, .crm =3D 12, .opc1 =3D =
-0, .opc2 =3D 4,
-       .access =3D PL0_W, .accessfn =3D pmreg_access_swinc, .type =3D ARM_C=
-P_NOP },
--#ifndef CONFIG_USER_ONLY
-     { .name =3D "PMSELR", .cp =3D 15, .crn =3D 9, .crm =3D 12, .opc1 =3D 0=
-, .opc2 =3D 5,
-       .access =3D PL0_RW, .type =3D ARM_CP_ALIAS,
-       .fieldoffset =3D offsetoflow32(CPUARMState, cp15.c9_pmselr),
-@@ -1836,7 +1837,6 @@ static const ARMCPRegInfo v7_cp_reginfo[] =3D {
-       .fieldoffset =3D offsetof(CPUARMState, cp15.c15_ccnt),
-       .readfn =3D pmccntr_read, .writefn =3D pmccntr_write,
-       .raw_readfn =3D raw_read, .raw_writefn =3D raw_write, },
--#endif
-     { .name =3D "PMCCFILTR", .cp =3D 15, .opc1 =3D 0, .crn =3D 14, .crm =
-=3D 15, .opc2 =3D 7,
-       .writefn =3D pmccfiltr_write_a32, .readfn =3D pmccfiltr_read_a32,
-       .access =3D PL0_RW, .accessfn =3D pmreg_access,
-@@ -5506,7 +5506,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-          * count register.
-          */
-         unsigned int i, pmcrn =3D 0;
--#ifndef CONFIG_USER_ONLY
-         ARMCPRegInfo pmcr =3D {
-             .name =3D "PMCR", .cp =3D 15, .crn =3D 9, .crm =3D 12, .opc1 =
-=3D 0, .opc2 =3D 0,
-             .access =3D PL0_RW,
-@@ -5563,7 +5562,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             g_free(pmevtyper_name);
-             g_free(pmevtyper_el0_name);
-         }
--#endif
-         ARMCPRegInfo clidr =3D {
-             .name =3D "CLIDR", .state =3D ARM_CP_STATE_BOTH,
-             .opc0 =3D 3, .crn =3D 0, .crm =3D 0, .opc1 =3D 1, .opc2 =3D 1,
---=20
-2.19.1
+>> +
+>> =C2=A0 i.MX31 (kzm)
+>> =C2=A0 M: Peter Chubb <peter.chubb@nicta.com.au>
+>> =C2=A0 M: Peter Maydell <peter.maydell@linaro.org>
+>> @@ -615,6 +627,7 @@ R: Andrew Baumann <Andrew.Baumann@microsoft.com>
+>> =C2=A0 R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>> =C2=A0 L: qemu-arm@nongnu.org
+>> =C2=A0 S: Odd Fixes
+>> +F: hw/arm/raspi.c
+>> =C2=A0 F: hw/arm/raspi_platform.h
+>> =C2=A0 F: hw/*/bcm283*
+>> =C2=A0 F: include/hw/arm/raspi*
+>> @@ -641,6 +654,7 @@ F: hw/arm/z2.c
+>> =C2=A0 F: hw/*/pxa2xx*
+>> =C2=A0 F: hw/misc/mst_fpga.c
+>> =C2=A0 F: include/hw/arm/pxa.h
+>> +F: include/hw/arm/sharpsl.h
+>=20
+> I think hw/gpio/zaurus.c goes there too.
 
+Well spotted. I'll add it in v3.
+
+And I think we should add hw/display/tc6393xb.c here as well.
+
+ Thomas

@@ -1,163 +1,154 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1080394wrt;
-        Tue, 20 Nov 2018 13:44:21 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dx8n0MCuBTE14DCeK7CP0fbviadUEcqdicew27secyQEyOJZ7SZLOlGh3muPAISU0T3lk7
-X-Received: by 2002:a25:4cca:: with SMTP id z193-v6mr3655422yba.279.1542750261847;
-        Tue, 20 Nov 2018 13:44:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542750261; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1493123wrt;
+        Tue, 20 Nov 2018 22:43:10 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dzCg61kibpR02zgFvF4tBqq9kCoCCXXlEu+RGEqGakcPSRlrJ/SGkJ5X3qrMo3yC6xpx6z
+X-Received: by 2002:a81:5482:: with SMTP id i124-v6mr4908109ywb.205.1542782590711;
+        Tue, 20 Nov 2018 22:43:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542782590; cv=none;
         d=google.com; s=arc-20160816;
-        b=jd7Q96wVb5YwXZKCwErgeWTkmVxpDd/S2WO5gaULaLRSL4i970nfZ8A0z8o1qfEwQx
-         mkVXr4IEFa2NzzmMVsFboBzoXfZ1aul0F/fzgJssZiirFEhKslw5MTSSEFCEtSNPfZzi
-         LVnc5iPwNNnytFRQC7dF1/mmfnj37qN178C45D2oYa6S5qBSLz7RXEWg100m2i+aL+eW
-         s+5UC/iJFXaguooRQ/VvIiVdCv/gBBUxqVuxAfXX75qaUihiok7yDZ4JgmAhss6co0cw
-         Ulb6mm5bN85xrMR3Brmjyjc+EEhfWhnCAPICA3aT63jsi9Ea3JC7YoateqVFGtIQiTD+
-         +uEA==
+        b=RiLuQRHRQk/kVj4NUs3S1aSLUhpJcy90WxSmL7kd4cuM21WtY6gdbVok3NuIct1kBF
+         uurfjUQqqJwj4fsedon9cw5BxEvcoe6fFJt2VH6Vx9lAn3U7pJFLpxMc3aHze2VV00Vl
+         PiOj185742Armq0dLZlesgJKUedFzmcw+lxRf4RK2qFJCu1LwSkMt1MKMfmL7U2TgeB9
+         dG1oogT/gFrTXURq/7/I5ntP6U5mUfKR7npYFuyPk9HPOrfScdn9fa3ywK9y2shPKa+O
+         Lh2un1PUCUF+iFwa46QMOG3+8eq7cczDckxz8l0mFHk/myTDpMQM4/Lp14+7kjG1ui6f
+         HRXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=prG+D6+wkLc8LyAG4pEQY0GYwm60KylvdypHCo04iwo=;
-        b=J96ZD+oNxCMFdmJsYmyCTKnU0qek/2mH7chz0VFK8YsLodk7MfLFgmNn4pDiwT97EX
-         TzlBzUb6S60XxbICpy++c901//EKIgCecaxSXLVCCXXL7EtBg/BNKFQjlYoIN3JtRnMF
-         B2Kce99GDIFymrnCMRI8cSgHWLELlMJ9zgC324MDh2TsaUYmdVIqENtc+oOLACIJX6O2
-         MNHZLMLKM8Ugo+7G5ga1l3/5AQ5h6FuEUKotHFuD8uIi4hCdMvdX7Ot6XSGQlP1iPIrn
-         9z/gqtk4KU2GQXhZqclVnXpa4i6rgqODI72V9/Cs1pd/HOXtZDdR+DHEoEy34SZykTLG
-         ZbQw==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=im5hAo0jTPJmDspoitHbBWYRkDodvEl2DWvSP0ELC/0=;
+        b=twWSMDxJomkueVkFUPuG5eYsJYWJhl/V8v1GystM5pwSwYL9xD3vHjHJXLDcDMLd3e
+         RNKQOS9FG5HDLlWOp19aVUVxkpzLz+iqYAkBzMLNYZ6PZGMSThvIpZET8E56ka4w/lfL
+         qvSy0coZCdZNJTSt72R879lmpHqXwo9Z9Tye6Yf/G36BqrgJGapshIb5+VZW7MOap8Fk
+         DB4aJYpnj/7yz0WGjqpi58VTbqjdb46+luh9rbbFd0Ispc/4T7FdhYXLcI9FkG4xLJrW
+         6o95EVhlfxUrTlU6Kge50/sYzyeM2j4FYsiITnbWRGeBu2WYlK0XEo3BPZFkjNH4vZWi
+         cKRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u4si7432008ywf.353.2018.11.20.13.44.21
+        by mx.google.com with ESMTPS id m71-v6si2897664ybf.359.2018.11.20.22.43.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 20 Nov 2018 13:44:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 20 Nov 2018 22:43:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36113 helo=lists.gnu.org)
+Received: from localhost ([::1]:37477 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPDoj-0007Ny-88
-	for alex.bennee@linaro.org; Tue, 20 Nov 2018 16:44:21 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41820)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPMEA-00018u-6j
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 01:43:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47841)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gPDoE-0007Hz-6Z
-	for qemu-devel@nongnu.org; Tue, 20 Nov 2018 16:43:51 -0500
+	(envelope-from <thuth@redhat.com>) id 1gPMDz-00017b-Ln
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 01:43:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gPDo9-0004XN-Fj
-	for qemu-devel@nongnu.org; Tue, 20 Nov 2018 16:43:50 -0500
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:45291)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gPDo9-0004Vi-7e
-	for qemu-devel@nongnu.org; Tue, 20 Nov 2018 16:43:45 -0500
-Received: by mail-wr1-f66.google.com with SMTP id v6so3517840wrr.12
-	for <qemu-devel@nongnu.org>; Tue, 20 Nov 2018 13:43:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=prG+D6+wkLc8LyAG4pEQY0GYwm60KylvdypHCo04iwo=;
-	b=bCYO4QDZdnAEaXRfVOJrnue1mGx3bevo8NbmZFryAYqSOhCzl9cw09iYxFrLEqs2it
-	hjv4/c+LpiwneTO1Co3qkU4OoemIKKHuNqUPezLmHTX0Mjz+XCT1AcQ3eZfCBXqx8uF7
-	HctRmT5olSkx9GbSxAoUGPTMeX4elkUcygAiUYzcJpRyBkmkv8SPaDMbkwLy3MmWYhSE
-	PRWF1W8iGuM1kkQtukMbbTDTYu2cjR3I7noRL4pOuGbsflnwiaHGRB/bEBDBQB0oHBZJ
-	5BxCjzrm4lRaByUVH0um+Ln9uAyfEKNQ9X3zO2647HzUVZypbFBHskpFbidyKGMbhzkb
-	1maA==
-X-Gm-Message-State: AA+aEWbMDyxF8SA38yZHLJt3fUEpsThI89GxXPTi+VOUucynsy821zPS
-	HymBplOqqL19cvzWlTJ6QQXnT9HpCek=
-X-Received: by 2002:adf:ee06:: with SMTP id y6mr3499662wrn.261.1542750224272; 
-	Tue, 20 Nov 2018 13:43:44 -0800 (PST)
-Received: from [192.168.1.36] (35.red-88-21-102.staticip.rima-tde.net.
-	[88.21.102.35]) by smtp.gmail.com with ESMTPSA id
-	3-v6sm26262106wrs.44.2018.11.20.13.43.43
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 20 Nov 2018 13:43:43 -0800 (PST)
-To: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>, qemu-devel@nongnu.org
-References: <20181119120820.29878-1-maozhongyi@cmss.chinamobile.com>
-	<20181119120820.29878-2-maozhongyi@cmss.chinamobile.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <3b623909-c4f1-e939-417d-b711e7ab8150@redhat.com>
-Date: Tue, 20 Nov 2018 22:43:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+	(envelope-from <thuth@redhat.com>) id 1gPMDw-0002FK-FX
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 01:42:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:43200)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gPMDw-0002Ck-AH; Wed, 21 Nov 2018 01:42:56 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6E9C13DDB5;
+	Wed, 21 Nov 2018 06:42:55 +0000 (UTC)
+Received: from thuth.com (ovpn-116-140.ams2.redhat.com [10.36.116.140])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F3ACB604A3;
+	Wed, 21 Nov 2018 06:42:50 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 21 Nov 2018 07:42:48 +0100
+Message-Id: <1542782568-20059-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20181119120820.29878-2-maozhongyi@cmss.chinamobile.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 21 Nov 2018 06:42:55 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-devel] [PATCH 01/22] musicpal: Convert sysbus init
- function to realize function
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v3] MAINTAINERS: Assign some more files in the
+ hw/arm/ directory
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, jan.kiszka@web.de,
-	Zhang Shengju <zhangshengju@cmss.chinamobile.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hm0da66oIoxz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Mx3uL1lCCkn2
 
-On 19/11/18 13:07, Mao Zhongyi wrote:
-> Use DeviceClass rather than SysBusDeviceClass in
-> mv88w8618_wlan_class_init().
-> 
-> Cc: jan.kiszka@web.de
-> Cc: peter.maydell@linaro.org
-> Cc: qemu-arm@nongnu.org
-> 
-> Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
-> Signed-off-by: Zhang Shengju <zhangshengju@cmss.chinamobile.com>
+I apparently missed some more files and even a complete machine (the
+"imx25-pdk") in my previous patch... but now we should hopefully have
+a completely coverage for all available ARM boards.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Fixes: 95a5db3ae5698b49c63144610ad02913e780c828
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v3: Dropped "ds1338-test.c", added some more pxa2xx related files instea=
+d
 
-> ---
->   hw/arm/musicpal.c | 9 ++++-----
->   1 file changed, 4 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index 9648b3af44..7ffcdbb097 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -1147,14 +1147,13 @@ static const MemoryRegionOps mv88w8618_wlan_ops = {
->       .endianness = DEVICE_NATIVE_ENDIAN,
->   };
->   
-> -static int mv88w8618_wlan_init(SysBusDevice *dev)
-> +static void mv88w8618_wlan_realize(DeviceState *dev, Error **errp)
->   {
->       MemoryRegion *iomem = g_new(MemoryRegion, 1);
->   
->       memory_region_init_io(iomem, OBJECT(dev), &mv88w8618_wlan_ops, NULL,
->                             "musicpal-wlan", MP_WLAN_SIZE);
-> -    sysbus_init_mmio(dev, iomem);
-> -    return 0;
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), iomem);
->   }
->   
->   /* GPIO register offsets */
-> @@ -1720,9 +1719,9 @@ DEFINE_MACHINE("musicpal", musicpal_machine_init)
->   
->   static void mv88w8618_wlan_class_init(ObjectClass *klass, void *data)
->   {
-> -    SysBusDeviceClass *sdc = SYS_BUS_DEVICE_CLASS(klass);
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
->   
-> -    sdc->init = mv88w8618_wlan_init;
-> +    dc->realize = mv88w8618_wlan_realize;
->   }
->   
->   static const TypeInfo mv88w8618_wlan_info = {
-> 
+ MAINTAINERS | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1032406..63c88e1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -533,6 +533,17 @@ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+ F: hw/arm/gumstix.c
+=20
++i.MX25 PDK
++M: Peter Maydell <peter.maydell@linaro.org>
++R: Jean-Christophe Dubois <jcd@tribudubois.net>
++L: qemu-arm@nongnu.org
++S: Odd Fixes
++F: hw/arm/fsl-imx25.c
++F: hw/arm/imx25_pdk.c
++F: hw/misc/imx25_ccm.c
++F: include/hw/arm/fsl-imx25.h
++F: include/hw/misc/imx25_ccm.h
++
+ i.MX31 (kzm)
+ M: Peter Chubb <peter.chubb@nicta.com.au>
+ M: Peter Maydell <peter.maydell@linaro.org>
+@@ -615,6 +626,7 @@ R: Andrew Baumann <Andrew.Baumann@microsoft.com>
+ R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+ L: qemu-arm@nongnu.org
+ S: Odd Fixes
++F: hw/arm/raspi.c
+ F: hw/arm/raspi_platform.h
+ F: hw/*/bcm283*
+ F: include/hw/arm/raspi*
+@@ -639,8 +651,12 @@ F: hw/arm/spitz.c
+ F: hw/arm/tosa.c
+ F: hw/arm/z2.c
+ F: hw/*/pxa2xx*
++F: hw/display/tc6393xb.c
++F: hw/gpio/max7310.c
++F: hw/gpio/zaurus.c
+ F: hw/misc/mst_fpga.c
+ F: include/hw/arm/pxa.h
++F: include/hw/arm/sharpsl.h
+=20
+ SABRELITE / i.MX6
+ M: Peter Maydell <peter.maydell@linaro.org>
+--=20
+1.8.3.1
+

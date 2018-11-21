@@ -1,154 +1,171 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1792538wrt;
-        Wed, 21 Nov 2018 04:19:17 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/VrCIC6muAA6JzGZ40R4E5u2C91JrWSyV0OtH9swrDbOHSAp+7eyGCX+XomZJeoi7J+Cj/G
-X-Received: by 2002:a17:902:3225:: with SMTP id y34-v6mr6383641plb.227.1542802757683;
-        Wed, 21 Nov 2018 04:19:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542802757; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1950414wrt;
+        Wed, 21 Nov 2018 06:39:06 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/X9jp7uC16/g2goze+N3bFoUhY4PimPHEJ/gvFaWepT4HBZ+jfUqt28VukULDD6sbjh1ohk
+X-Received: by 2002:a5b:412:: with SMTP id m18-v6mr6524013ybp.132.1542811146268;
+        Wed, 21 Nov 2018 06:39:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542811146; cv=none;
         d=google.com; s=arc-20160816;
-        b=HCVryxAgyxh+7tb0WjXFmzIRZI1Tqb3H86k0pT3nk81b8ZfDmfs890Xvjq5s26IXVW
-         vJqbDx38Kr1px00Q0flF5G982XPPL809x8ifo6lAjy4TqGLsbFMJDgvfRV811oZzBJUL
-         coz0ayd5YJyDfFiWgopl6kKlE8AHJOnaG2zD6nueciS9G54h4+cWL//E3NiaOurlsJjd
-         A4+IuX4LC865fRq+ZYK1MyMkt4Tk1aWuWtSdgb7XgBSS2D/iuJUuT5t3qk6irqr2kGn1
-         gNJfaSwrWsydYGjDORjxLebzfGLpgo1mKr5r7ZyTa2VNLjqw8U6q+VzC481VrTVMmhcf
-         C9Uw==
+        b=slk5b8Wiq3Fx3EfwgRSv6CI6o5fzCaye+QWmONEqavVOibLfs+/RdYyF3Os3iPm3nT
+         XLMTvqDsjX/wLDuBPJ2kZUIC46sQBkMhi2YmKleRcmrGBS7EN0B/R9N3V7DBzMnjGgrh
+         iHNuRwCP50Rr61Y1d3vP11hhUhi6pijqYtq8rNbkbVsqsWmA2iv0lNIvjp5GrYx6kNiP
+         PCIMMdHtBPkGK9nNByrFC4A/t6Avzg0v9Qljf2euae4jlc35mS+gA2T+rz0NUEpNpsOw
+         Rl9618c2L6eCbGkabqiVsMxpkwbX2Z1B0zqfHJIXF48HQA6tcTL4gaWV8c6Qes0IbvzJ
+         JRCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:content-transfer-encoding
-         :content-language:accept-language:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=2MAUToem/bRSkapeDwFV2UeXJH243YcoceMiqZSg+Yk=;
-        b=cjHGflEObxCkdatMpfpth4ipK+62SmjO8i5XIE95eq2lkkmgD4NXBfkiGaf0TIqPc5
-         9kc043OOmMWy0WfKAeGIfXRrgAuso+vUl+VCZC6VRzt3E0IIkAOlSkwMx/6hbKLJBolS
-         AnRIo4JLOMjJShkHL8A0mnWKEfah15ADGtWL7lI8Q6mt64YpqCE0RJAPnfJ5eQwFbU47
-         /ds7saARO+b396Wts1IUYHWdDuJ/b8EdbeXJJgIdXq9w53Lk7yPTs6ox3K3mUZQ44dDx
-         tmysaFZU5SBYARtENnE8LFTH1oEY1dCqUOPhnH+XiW2FePhQz67GUIFLb4M6/nR/MokO
-         e/Pw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=G9w2wsDqbpLj/fgNlV1c1bG4FRLBfTijgyhGSNIINFk=;
+        b=NjpqjQupCKBaCLqPcMtNLofA8RzNnMpWUQTSDvSO4ytxnga5rgMuQxbbLDpLZhDSHE
+         nd8ScJBI9UCFuHNf8O9lsSWxTK3GBNHFCvKg1rSkrmioO7YlrDXwsVoc7ke5nI1kDzwm
+         /OhuG7FxNytmva+kDdtu8z7+JXvDbRq1HO1eqWA0baVI0q8y7nom3VF4MnfWUTjNlsfJ
+         P4RQa9csnAUA09eykyGJzoFa448crg6Sf5v0oU8LbYdHHh+l2ut16x5vYfDww8OSfp+W
+         lCHBuDVtfb/yg9xyXMiIYq3GzqkvhbUuyynbht3P5PilERSrZA9mA4h4iGDEIPZ574fc
+         nfEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 85si2210637pfc.145.2018.11.21.04.19.17;
-        Wed, 21 Nov 2018 04:19:17 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id r9-v6si28513731ywc.21.2018.11.21.06.39.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Wed, 21 Nov 2018 06:39:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730184AbeKUWxZ (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Wed, 21 Nov 2018 17:53:25 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:6479 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1730016AbeKUWxZ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 21 Nov 2018 17:53:25 -0500
-Received: from DGGEMA406-HUB.china.huawei.com (unknown [172.30.72.53])
-        by Forcepoint Email with ESMTP id 8878DDD95CED3;
-        Wed, 21 Nov 2018 20:19:10 +0800 (CST)
-Received: from DGGEMA503-MBX.china.huawei.com ([169.254.1.15]) by
- DGGEMA406-HUB.china.huawei.com ([10.3.20.47]) with mapi id 14.03.0415.000;
- Wed, 21 Nov 2018 20:19:04 +0800
-From:   gengdongjiu <gengdongjiu@huawei.com>
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        James Morse <james.morse@arm.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        "Richard Henderson" <rth@twiddle.net>,
-        "zhengxiang (A)" <zhengxiang9@huawei.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH RESEND v15 09/10] hw/arm/virt: Add RAS platform version
- for migration
-Thread-Topic: [PATCH RESEND v15 09/10] hw/arm/virt: Add RAS platform version
- for migration
-Thread-Index: AdSBlGAV0b0Q7iYMQA2PC2qSN9FW+A==
-Date:   Wed, 21 Nov 2018 12:19:03 +0000
-Message-ID: <0184EA26B2509940AA629AE1405DD7F201F7B46C@DGGEMA503-MBX.china.huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.45.80.233]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:39517 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPTej-0006rf-Om
+	for alex.bennee@linaro.org; Wed, 21 Nov 2018 09:39:05 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60044)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <sameo@linux.intel.com>) id 1gPTec-0006rT-JF
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 09:38:59 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <sameo@linux.intel.com>) id 1gPTeY-0005P8-L8
+	for qemu-arm@nongnu.org; Wed, 21 Nov 2018 09:38:58 -0500
+Received: from mga03.intel.com ([134.134.136.65]:5151)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
+	id 1gPTeY-0005OH-D9; Wed, 21 Nov 2018 09:38:54 -0500
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	21 Nov 2018 06:38:53 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,261,1539673200"; d="scan'208";a="93814622"
+Received: from tterrive-mobl2.ger.corp.intel.com (HELO caravaggio)
+	([10.252.4.181])
+	by orsmga008.jf.intel.com with ESMTP; 21 Nov 2018 06:38:49 -0800
+Date: Wed, 21 Nov 2018 15:38:16 +0100
+From: Samuel Ortiz <sameo@linux.intel.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20181121143816.GD4426@caravaggio>
+References: <20181105014047.26447-1-sameo@linux.intel.com>
+	<20181116172919.43f3e27d@redhat.com>
+	<d4f6f0ef-1333-a917-e3eb-d9bad47c9648@redhat.com>
+	<20181119163110.2f357f40@redhat.com>
+	<20181121072954-mutt-send-email-mst@kernel.org>
+	<20181121151526.5785b43f@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: DwqC2egBPiLX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181121151526.5785b43f@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 00/24] ACPI reorganization
+ for hardware-reduced API addition
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+	Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yC7MExs3gthX
 
-PiANCj4gT24gOCBOb3ZlbWJlciAyMDE4IGF0IDEwOjI5LCBEb25naml1IEdlbmcgPGdlbmdkb25n
-aml1QGh1YXdlaS5jb20+IHdyb3RlOg0KPiA+IFN1cHBvcnQgdGhpcyBmZWF0dXJlIHNpbmNlIHZl
-cnNpb24gMi4xMiwgZGlzYWJsZSBpdCBieSBkZWZhdWx0IGluIHRoZQ0KPiA+IG9sZCB2ZXJzaW9u
-Lg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogRG9uZ2ppdSBHZW5nIDxnZW5nZG9uZ2ppdUBodWF3
-ZWkuY29tPg0KPiA+IC0tLQ0KPiA+IEFkZHJlc3MgU2hhbm5vbidzIGNvbW1lbnRzIHRvIGFkZCBw
-bGF0Zm9ybSB2ZXJzaW9uIGluIFsxXS4NCj4gPg0KPiA+IFsxXTogaHR0cHM6Ly9sa21sLm9yZy9s
-a21sLzIwMTcvOC8yNS84MjENCj4gPiAtLS0NCj4gPiAgaHcvYXJtL3ZpcnQtYWNwaS1idWlsZC5j
-IHwgMTQgKysrKysrKysrLS0tLS0NCj4gPiAgaHcvYXJtL3ZpcnQuYyAgICAgICAgICAgIHwgIDQg
-KysrKw0KPiA+ICBpbmNsdWRlL2h3L2FybS92aXJ0LmggICAgfCAgMSArDQo+ID4gIDMgZmlsZXMg
-Y2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkNCj4gPg0KPiA+IGRpZmYg
-LS1naXQgYS9ody9hcm0vdmlydC1hY3BpLWJ1aWxkLmMgYi9ody9hcm0vdmlydC1hY3BpLWJ1aWxk
-LmMgaW5kZXgNCj4gPiAxOWMxYjdlLi42ZjUwYTI5IDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS92
-aXJ0LWFjcGktYnVpbGQuYw0KPiA+ICsrKyBiL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYw0KPiA+
-IEBAIC04MzYsMTAgKzgzNiwxMSBAQCB2b2lkIHZpcnRfYWNwaV9idWlsZChWaXJ0TWFjaGluZVN0
-YXRlICp2bXMsIEFjcGlCdWlsZFRhYmxlcyAqdGFibGVzKQ0KPiA+ICAgICAgYWNwaV9hZGRfdGFi
-bGUodGFibGVfb2Zmc2V0cywgdGFibGVzX2Jsb2IpOw0KPiA+ICAgICAgYnVpbGRfc3Bjcih0YWJs
-ZXNfYmxvYiwgdGFibGVzLT5saW5rZXIsIHZtcyk7DQo+ID4NCj4gPiAtICAgIGFjcGlfYWRkX3Rh
-YmxlKHRhYmxlX29mZnNldHMsIHRhYmxlc19ibG9iKTsNCj4gPiAtICAgIGJ1aWxkX2hhcmR3YXJl
-X2Vycm9yX3RhYmxlKHRhYmxlcy0+aGFyZHdhcmVfZXJyb3JzLCB0YWJsZXMtPmxpbmtlcik7DQo+
-ID4gLSAgICBidWlsZF9hcGVpX2hlc3QodGFibGVzX2Jsb2IsIHRhYmxlcy0+aGFyZHdhcmVfZXJy
-b3JzLCB0YWJsZXMtPmxpbmtlcik7DQo+ID4gLQ0KPiA+ICsgICAgaWYgKCF2bWMtPm5vX3Jhcykg
-ew0KPiA+ICsgICAgICAgIGFjcGlfYWRkX3RhYmxlKHRhYmxlX29mZnNldHMsIHRhYmxlc19ibG9i
-KTsNCj4gPiArICAgICAgICBidWlsZF9oYXJkd2FyZV9lcnJvcl90YWJsZSh0YWJsZXMtPmhhcmR3
-YXJlX2Vycm9ycywgdGFibGVzLT5saW5rZXIpOw0KPiA+ICsgICAgICAgIGJ1aWxkX2FwZWlfaGVz
-dCh0YWJsZXNfYmxvYiwgdGFibGVzLT5oYXJkd2FyZV9lcnJvcnMsIHRhYmxlcy0+bGlua2VyKTsN
-Cj4gPiArICAgIH0NCj4gDQo+IFRoaXMgbG9va3Mgb2RkLiBJZiB3ZSBuZWVkIHRvIGdhdGUgdGhl
-IGFkZGl0aW9uIG9mIHRoZSB0YWJsZSBvbiB3aGV0aGVyIHRoZSBtYWNoaW5lIHR5cGUgYXNrcyBm
-b3IgaXQsIHRoZW4gd2UgbmVlZCB0aGUgcGF0Y2ggd2hpY2ggYWRkcyB0aGUNCj4gbm9fcmFzIGZs
-YWcgdG8gY29tZSBmaXJzdC4gT3RoZXJ3aXNlIHRoZXJlJ3MgYSBwb2ludCBpbiB0aGUgY29tbWl0
-IGhpc3Rvcnkgd2hlcmUgd2UgYWRkIHRoZSB0YWJsZXMgZXZlbiBmb3IgdGhlIG9sZGVyIG1hY2hp
-bmUgdHlwZXMuDQoNCk9rLCB0aGFua3MsIEkgd2lsbCBtb3ZlIHRoaXMgcGF0Y2ggdG8gdGhlIGZy
-b250Lg0KDQo+IA0KPiA+ICAgICAgaWYgKG5iX251bWFfbm9kZXMgPiAwKSB7DQo+ID4gICAgICAg
-ICAgYWNwaV9hZGRfdGFibGUodGFibGVfb2Zmc2V0cywgdGFibGVzX2Jsb2IpOyBAQCAtOTI2LDYg
-KzkyNyw3DQo+ID4gQEAgc3RhdGljIGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiB2bXN0YXRlX3Zp
-cnRfYWNwaV9idWlsZCA9IHsNCj4gPg0KPiA+ICB2b2lkIHZpcnRfYWNwaV9zZXR1cChWaXJ0TWFj
-aGluZVN0YXRlICp2bXMpICB7DQo+ID4gKyAgICBWaXJ0TWFjaGluZUNsYXNzICp2bWMgPSBWSVJU
-X01BQ0hJTkVfR0VUX0NMQVNTKHZtcyk7DQo+ID4gICAgICBBY3BpQnVpbGRUYWJsZXMgdGFibGVz
-Ow0KPiA+ICAgICAgQWNwaUJ1aWxkU3RhdGUgKmJ1aWxkX3N0YXRlOw0KPiA+DQo+ID4gQEAgLTk1
-Nyw3ICs5NTksOSBAQCB2b2lkIHZpcnRfYWNwaV9zZXR1cChWaXJ0TWFjaGluZVN0YXRlICp2bXMp
-DQo+ID4gICAgICBmd19jZmdfYWRkX2ZpbGUodm1zLT5md19jZmcsIEFDUElfQlVJTERfVFBNTE9H
-X0ZJTEUsIHRhYmxlcy50Y3BhbG9nLT5kYXRhLA0KPiA+ICAgICAgICAgICAgICAgICAgICAgIGFj
-cGlfZGF0YV9sZW4odGFibGVzLnRjcGFsb2cpKTsNCj4gPg0KPiA+IC0gICAgZ2hlc19hZGRfZndf
-Y2ZnKHZtcy0+ZndfY2ZnLCB0YWJsZXMuaGFyZHdhcmVfZXJyb3JzKTsNCj4gPiArICAgIGlmICgh
-dm1jLT5ub19yYXMpIHsNCj4gPiArICAgICAgICBnaGVzX2FkZF9md19jZmcodm1zLT5md19jZmcs
-IHRhYmxlcy5oYXJkd2FyZV9lcnJvcnMpOw0KPiA+ICsgICAgfQ0KPiA+DQo+ID4gICAgICBidWls
-ZF9zdGF0ZS0+cnNkcF9tciA9IGFjcGlfYWRkX3JvbV9ibG9iKGJ1aWxkX3N0YXRlLCB0YWJsZXMu
-cnNkcCwNCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IEFDUElfQlVJTERfUlNEUF9GSUxFLA0KPiA+IDApOyBkaWZmIC0tZ2l0IGEvaHcvYXJtL3ZpcnQu
-YyBiL2h3L2FybS92aXJ0LmMgaW5kZXggYTJiOGQ4Zi4uMzY3MzA2Yg0KPiA+IDEwMDY0NA0KPiA+
-IC0tLSBhL2h3L2FybS92aXJ0LmMNCj4gPiArKysgYi9ody9hcm0vdmlydC5jDQo+ID4gQEAgLTE5
-MjAsNiArMTkyMCwxMCBAQCBzdGF0aWMgdm9pZCB2aXJ0X21hY2hpbmVfMl8xMV9vcHRpb25zKE1h
-Y2hpbmVDbGFzcyAqbWMpDQo+ID4gICAgICB2aXJ0X21hY2hpbmVfMl8xMl9vcHRpb25zKG1jKTsN
-Cj4gPiAgICAgIFNFVF9NQUNISU5FX0NPTVBBVChtYywgVklSVF9DT01QQVRfMl8xMSk7DQo+ID4g
-ICAgICB2bWMtPnNtYmlvc19vbGRfc3lzX3ZlciA9IHRydWU7DQo+ID4gKyAgICAvKiBEaXNhYmxl
-IG1lbW9yeSByZWNvdmVyeSBmZWF0dXJlIGZvciAyLjExIGFzIFJBUyBzdXBwb3J0IHdhcw0KPiA+
-ICsgICAgICogaW50cm9kdWNlZCB3aXRoIDIuMTIuDQo+ID4gKyAgICAgKi8NCj4gPiArICAgIHZt
-Yy0+bm9fcmFzID0gdHJ1ZTsNCj4gDQo+IFJBUyBzdXBwb3J0IHdhc24ndCBpbnRyb2R1Y2VkIHdp
-dGggUUVNVSAyLjEyLCBvciBldmVuIHdpdGggMy4wIG9yIDMuMS4gVGhlIGVhcmxpZXN0IHRoaXMg
-d2lsbCBiZSBhZGRlZCB3aWxsIGJlIDQuMCwgc28gd2UgbmVlZCB0byB1cGRhdGUNCj4gdGhpcyBj
-b2RlIGFjY29yZGluZ2x5Lg0KDQpHb3QgaXQsIEkgd2lsbCBjaGFuZ2UgaXQgdG8gdGhlIGxhdGVz
-dCB2ZXJzaW9uIGluc3RlYWQgb2YgMi4xMi4NCg0KPiANCj4gPiAgfQ0KPiA+ICBERUZJTkVfVklS
-VF9NQUNISU5FKDIsIDExKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvaHcvYXJtL3Zp
-cnQuaCBiL2luY2x1ZGUvaHcvYXJtL3ZpcnQuaCBpbmRleA0KPiA+IDRjYzU3YTcuLmE0NDkwZGQg
-MTAwNjQ0DQo+ID4gLS0tIGEvaW5jbHVkZS9ody9hcm0vdmlydC5oDQo+ID4gKysrIGIvaW5jbHVk
-ZS9ody9hcm0vdmlydC5oDQo+ID4gQEAgLTk4LDYgKzk4LDcgQEAgdHlwZWRlZiBzdHJ1Y3Qgew0K
-PiA+ICAgICAgYm9vbCBkaXNhbGxvd19hZmZpbml0eV9hZGp1c3RtZW50Ow0KPiA+ICAgICAgYm9v
-bCBub19pdHM7DQo+ID4gICAgICBib29sIG5vX3BtdTsNCj4gPiArICAgIGJvb2wgbm9fcmFzOw0K
-PiA+ICAgICAgYm9vbCBjbGFpbV9lZGdlX3RyaWdnZXJlZF90aW1lcnM7DQo+ID4gICAgICBib29s
-IHNtYmlvc19vbGRfc3lzX3ZlcjsNCj4gPiAgICAgIGJvb2wgbm9faGlnaG1lbV9lY2FtOw0KPiA+
-IC0tDQo+ID4gMS44LjMuMQ0KPiA+DQo+IA0KPiB0aGFua3MNCj4gLS0gUE1NDQo=
+Igor,
+
+On Wed, Nov 21, 2018 at 03:15:26PM +0100, Igor Mammedov wrote:
+> On Wed, 21 Nov 2018 07:35:47 -0500
+> "Michael S. Tsirkin" <mst@redhat.com> wrote:
+> 
+> > On Mon, Nov 19, 2018 at 04:31:10PM +0100, Igor Mammedov wrote:
+> > > On Fri, 16 Nov 2018 17:37:54 +0100
+> > > Paolo Bonzini <pbonzini@redhat.com> wrote:
+> > >   
+> > > > On 16/11/18 17:29, Igor Mammedov wrote:  
+> > > > > General suggestions for this series:
+> > > > >   1. Preferably don't do multiple changes within a patch
+> > > > >      neither post huge patches (unless it's pure code movement).
+> > > > >      (it's easy to squash patches later it necessary)
+> > > > >   2. Start small, pick a table generalize it and send as
+> > > > >      one small patchset. Tables are often independent
+> > > > >      and it's much easier on both author/reviewer to agree upon
+> > > > >      changes and rewrite it if necessary.    
+> > > > 
+> > > > How would that be done?  This series is on the bigger side, agreed, but
+> > > > most of it is really just code movement.  It's a starting point, having
+> > > > a generic ACPI library is way beyond what this is trying to do.  
+> > > I've tried to give suggestions how to restructure series
+> > > on per patch basis. In my opinion it quite possible to split
+> > > series in several smaller ones and it should really help with
+> > > making series cleaner and easier/faster to review/amend/merge
+> > > vs what we have in v5.
+> > > (it's more frustrating to rework large series vs smaller one)
+> > > 
+> > > If something isn't clear, it's easy to reach out to me here
+> > > or directly (email/irc/github) for clarification/feed back.  
+> > 
+> > I assume the #1 goal is to add reduced HW support.  So another
+> > option to speed up merging is to just go ahead and duplicate a
+> > bunch of code e.g. in pc_virt.c acpi/reduced.c or in any other
+> > file.
+> > This way it might be easier to see what's common code and what isn't.
+> > And I think offline Igor said he might prefer that way. Right Igor?
+> You mean probably 'x86 reduced hw' support. That's was what I've
+> already suggested for PCI AML code during patch review. Just don't
+> call it generic when it's not and place code in hw/i386/ directory beside
+> acpi-build.c. It might apply to some other tables (i.e. complex cases).
+> 
+> On per patch review I gave suggestions how to amend series to make
+> it acceptable without doing complex refactoring and pointed out
+> places we probably shouldn't refactor now and just duplicate as
+> it's too complex or not clear how to generalize it yet.
+> 
+> Problem with duplication is that a random contributor is not
+> around to clean code up after a feature is merged and we end up
+> with a bunch of messy code.
+> 
+> A word to the contributors,
+> Don't do refactoring in silence, keep discussing approaches here,
+> suggest alternatives. That way it's easier to reach a compromise
+> and merge it with less iterations. And if you do split it in smaller
+> parts, the process should go even faster.
+> 
+> I'll sent a small RSDP refactoring series for reference.
+I was already working on the RSDP changes. Let me know if I should drop
+that work too.
+
+Cheers,
+Samuel.

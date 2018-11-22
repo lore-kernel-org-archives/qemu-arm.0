@@ -1,93 +1,137 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp444996wrt;
-        Thu, 22 Nov 2018 01:27:40 -0800 (PST)
-X-Google-Smtp-Source: AJdET5edXeIg29OGeNYerbmCLQmaFwl0BKq1bnbBpoS9gNt+vKqUxJt1fNPNnyz0iYKOkX3doj8e
-X-Received: by 2002:a0d:c887:: with SMTP id k129-v6mr10454446ywd.485.1542878859942;
-        Thu, 22 Nov 2018 01:27:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542878859; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp448135wrt;
+        Thu, 22 Nov 2018 01:31:22 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dL4Z3UTNjKGw8YT/J1PIXHaLpGI29MPTP3VUiMFRbe4no7wJR09PmNTZbV7fTGANby9Eg2
+X-Received: by 2002:a0d:ce87:: with SMTP id q129mr10165815ywd.493.1542879082023;
+        Thu, 22 Nov 2018 01:31:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542879082; cv=none;
         d=google.com; s=arc-20160816;
-        b=U1akOHSJdQSpWkOjI+bI8QLP2R7UIr13EdGCZlX0JqgTm6hmDl2SpAXM7UmhAmXaGZ
-         5Hg5OmB5YvfTYAqtvYBcYlPGxjPWH/MOUmwwDblityqvsVtj6ls6MUmdtJlND9iCF88U
-         TBEvwTfjRs8wnk2W9ZqA3MqDF4nDV0E9kVuIcjZW1tO/7J5jaq13yhFTpFRh3IzhxWOr
-         dJtJ9mhux7V1P9upyOU9ffOr3SFQIiE5Q6I9RF/IckydKw7g+tEnWuAxoY6ynORgTD24
-         41TZQvRKnv6ybPlo6PL0wTJPu7LZ0KoFe8oElp4gTbusgaD8zlIbayedatGY2WcBJVkM
-         bizw==
+        b=yMQ30CQLiIijapC//gUr7XSX3hj3JiM1JLIt4Wbu4zaABJW1HeaQB1ZVOuSitLdT5U
+         ItVVb/ib65jfDvcOvHRHKVn3xCz0q8bQlDbB0RdyTEwwd4w8eDJKBuymnHEJ9hNk0p7p
+         fCIgxj95RmUm0fivGwkdPAKzDNs5gvQRg+l4IAcoHw9dotbUKynlugcdaQ/S4221NBpU
+         /8tGnffl1oAINu7CQ1xO1TiYjO0svbjNZBqDQio+nYEcfFru/QHhQMSpnF0VVY7I9DlP
+         EDdLbdtQ3x9ISCqq6UHPWgxlsbd6Y4ZxzgKKf9+h6zMnWx2uQnn60eIQM5zHI2XM8y8V
+         ycXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=I9bWtsxFqTGT0KamdojSiWgUhkfwmCsWXoxMmHdRnto=;
-        b=BqfxdxMxV8NuCg1pUWzB0xcIunbSRZ6SR5rnHM2PQsHjBBjgcGvsqtxkM2evJdCudG
-         BEkJg7/QgKFpzm/59+Hh5AZ3ZnPCuovLIAVaxfKrvzvDTlH3TYHMWnKrgVVi8z7AXdlA
-         34PncnNYvoUpghhBfGFDQJddTFyZYCt6HQ5t2pZoRWawBL4cbmdWI+gLqZDOanU0BKx1
-         FsfI6b1jrhDLxrSoRxU1Hqza+Uay2+QC8Wgw/cc9E3M56ucHX5EiQ/zDI71F3SVxXIFy
-         jU+tlWbZCdQ2Vlwu+CNhRMmStVZAfbrbm1j1ZDFCtnir3c+boRTjYO5qIQRaAx3n8mWJ
-         Ed4g==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:spamdiagnosticmetadata
+         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
+         :references:message-id:date:thread-index:thread-topic:to:from
+         :dkim-signature;
+        bh=O7nFlKj7E2I7te7Vb1gKtNdzliT0vn496AqGVhBUThs=;
+        b=BOj+qvROhsXGOy2k9KopRzg6FvVYC3cy8ZF16lGLmFkIaBf54Qj122SzC3axN+wa6/
+         Ka9XoSiAs1GQaepqcYLZ+ejEBTkDkSVSxV9bEs6jqo3do8opqfOrYu1LQzwJ2YhgBfrE
+         7K/sc3OlApQ13CmVXaULwtyQ8ECAXPSco+z/P1B2+X2/C0jHR2SNGRRzxUglXUe7W2mB
+         oB9Y6cNwb1jooFRO7ZwaWUfup7yT0SZWL3+qRIiqia3FgYP4bFxwKrHN6fIu/mguu/1N
+         RafpZpTjYg/rDfdc7fQc2DqtRg4WRLZ/K+f8ln19Rls2n23qidCCmoz7fr5ZZQYnkVpL
+         A+ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=GoAxsSr9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b82si11484541ywc.407.2018.11.22.01.27.39
+        by mx.google.com with ESMTPS id 204-v6si28280358ywi.343.2018.11.22.01.31.21
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Nov 2018 01:27:39 -0800 (PST)
+        Thu, 22 Nov 2018 01:31:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@nxp.com header.s=selector1 header.b=GoAxsSr9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44833 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=nxp.com
+Received: from localhost ([::1]:44861 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPlGt-00044C-DX
-	for alex.bennee@linaro.org; Thu, 22 Nov 2018 04:27:39 -0500
+	id 1gPlKT-0007Nx-Cc
+	for alex.bennee@linaro.org; Thu, 22 Nov 2018 04:31:21 -0500
 Received: from eggs.gnu.org ([2001:4830:134:3::10]:48285)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gPlGh-000443-1g
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 04:27:30 -0500
+	(envelope-from <bharat.bhushan@nxp.com>) id 1gPlHU-000443-QE
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 04:28:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gPlEi-0007FY-Rw
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 04:25:28 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59596)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gPlEi-0007Av-Bh; Thu, 22 Nov 2018 04:25:24 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 76550C065F7A;
-	Thu, 22 Nov 2018 09:25:20 +0000 (UTC)
-Received: from [10.36.116.235] (ovpn-116-235.ams2.redhat.com [10.36.116.235])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E8F666EE31;
-	Thu, 22 Nov 2018 09:25:13 +0000 (UTC)
-To: Bharat Bhushan <bharat.bhushan@nxp.com>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"mst@redhat.com" <mst@redhat.com>,
+	(envelope-from <bharat.bhushan@nxp.com>) id 1gPl4t-0004LF-8h
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 04:15:17 -0500
+Received: from mail-eopbgr80074.outbound.protection.outlook.com
+	([40.107.8.74]:43595
+	helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <bharat.bhushan@nxp.com>)
+	id 1gPl4o-0004Aw-1E; Thu, 22 Nov 2018 04:15:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+	bh=O7nFlKj7E2I7te7Vb1gKtNdzliT0vn496AqGVhBUThs=;
+	b=GoAxsSr9LSFuyJTP7L+cAYau+1lY9XzhsBZmPOo0IPkK97JUdg0rAUOM3kDVhEEIPWoESNd/f27QyXrglYdwxAC2yBYb27spRz3+4Rnp+rABsM0XeeD6xG9tmeurC6hyuuNVWeQVZAoBFrNCuEUs17dpwwyIUKF5mepWXR3kGJw=
+Received: from VI1PR04MB4845.eurprd04.prod.outlook.com (20.177.49.14) by
+	VI1PR04MB5840.eurprd04.prod.outlook.com (20.178.204.150) with Microsoft
+	SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.1361.16; Thu, 22 Nov 2018 09:15:04 +0000
+Received: from VI1PR04MB4845.eurprd04.prod.outlook.com
+	([fe80::21f7:a45b:3d8f:d16a]) by
+	VI1PR04MB4845.eurprd04.prod.outlook.com
+	([fe80::21f7:a45b:3d8f:d16a%2]) with mapi id 15.20.1339.029;
+	Thu, 22 Nov 2018 09:15:04 +0000
+From: Bharat Bhushan <bharat.bhushan@nxp.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+	<eric.auger.pro@gmail.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
 	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>
+Thread-Topic: [RFC v8 15/18] hw/arm/virt: Add virtio-iommu to the virt board
+Thread-Index: AQHUeB+6QFtf21xyoU+WONvgDy4Pp6VbluKg
+Date: Thu, 22 Nov 2018 09:15:04 +0000
+Message-ID: <VI1PR04MB484558FC4BF5E01E9EB35E8F9ADB0@VI1PR04MB4845.eurprd04.prod.outlook.com>
 References: <20181109112957.10067-1-eric.auger@redhat.com>
 	<20181109112957.10067-16-eric.auger@redhat.com>
-	<VI1PR04MB484558FC4BF5E01E9EB35E8F9ADB0@VI1PR04MB4845.eurprd04.prod.outlook.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <3996db72-00a5-600c-a1d3-1415b2b55ebd@redhat.com>
-Date: Thu, 22 Nov 2018 10:25:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
-MIME-Version: 1.0
-In-Reply-To: <VI1PR04MB484558FC4BF5E01E9EB35E8F9ADB0@VI1PR04MB4845.eurprd04.prod.outlook.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20181109112957.10067-16-eric.auger@redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Thu, 22 Nov 2018 09:25:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=bharat.bhushan@nxp.com; 
+x-originating-ip: [14.142.187.166]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1; VI1PR04MB5840;
+	6:tODiBN5UYv8p5VwXgkyqb9XXBuDyF9sItzhlvilORzDm0fEK1kMd41jdhF24ot8QQPURo5vYlqZwnCd6xJISaSEwJWtVQWkLZA2hmJSApSZQDkFknheg4C8kEFfRpPl0rmFwWiSu3uN5ux2qa1p6IOkvRScHvg8R3Xh7OKEDMe7tUREV4UFdbx+OQkMEJB46mfIrNx0DTQi57m6BWSLW6qu/0GxkziiV9R3tld44KeGWpwfgGCt0PUYgCc5hu9sTJmYtTHZWFhRq3VI2rlGZjZpn9CaxV2BZNLYNXjGmQfIBbrSsD9vXGJYg+lTleStsF5mjQzGDk2oMFFh329jDUBpeWU6MtSvefRvrjiuNpToqtoR6ok6cKU1xgmpVhy46hHhfk8q6Y8mvhw/uH/45Y2saG8VP26scCZEw27AeYVf85/l47u+GhZCcHwwJPfDaq0mq1t3CMqTpqMWnvN9NUw==;
+	5:xHig9pZrZ/mg0xzv8SgpQy2k06NMVYFOzrgIXozG/RfLdzI+2CwaZ1hEVTVTdL2sLZlZBR/KkVbRglpfmE4NhYBQFg3UaL0kKVYIZKLHiv4x53qnsSCQaYZ6HZbB/x5bO8HQzkibwp7RsRhSiLzzJ2R3YifGNqdC10PDqjmgobg=;
+	7:d44781rA0RVhxT2zJ/p+KDE/b8XrZaG46epsP3GHSEkkUW7eNcX6ubkzm5gsH00K1/qEHXojzmDVv2zfBp++o2D7140GOin7kwIT4PdtslXycPlwWFOJTU9hPJKPo7J/bTqMxqQBIX242FKftk5OOw==
+x-ms-exchange-antispam-srfa-diagnostics: SOS;
+x-ms-office365-filtering-correlation-id: 34a71de4-565c-46c0-c956-08d6505afd41
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4618075)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060)(7193020);
+	SRVR:VI1PR04MB5840; 
+x-ms-traffictypediagnostic: VI1PR04MB5840:
+x-microsoft-antispam-prvs: <VI1PR04MB5840CBFEA3E3C07F340A91D99ADB0@VI1PR04MB5840.eurprd04.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
+	RULEID:(8211001083)(6040522)(2401047)(5005006)(8121501046)(93006095)(93001095)(3002001)(10201501046)(3231442)(944501410)(52105112)(6055026)(148016)(149066)(150057)(6041310)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123564045)(20161123558120)(20161123562045)(20161123560045)(201708071742011)(7699051)(76991095);
+	SRVR:VI1PR04MB5840; BCL:0; PCL:0; RULEID:; SRVR:VI1PR04MB5840; 
+x-forefront-prvs: 0864A36BBF
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10009020)(39860400002)(376002)(366004)(136003)(396003)(346002)(199004)(13464003)(189003)(2900100001)(7736002)(110136005)(71200400001)(71190400001)(66066001)(305945005)(74316002)(6436002)(78486014)(6116002)(33656002)(3846002)(105586002)(53936002)(5660300001)(7416002)(106356001)(229853002)(6246003)(9686003)(55016002)(39060400002)(8676002)(76176011)(102836004)(6506007)(53546011)(81156014)(55236004)(14454004)(81166006)(256004)(4326008)(99286004)(25786009)(2501003)(7696005)(68736007)(478600001)(486006)(2906002)(44832011)(97736004)(316002)(11346002)(446003)(476003)(26005)(2201001)(186003)(54906003)(8936002)(86362001);
+	DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR04MB5840;
+	H:VI1PR04MB4845.eurprd04.prod.outlook.com; FPR:; SPF:None;
+	LANG:en; PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: nxp.com does not designate
+	permitted sender hosts)
+x-microsoft-antispam-message-info: YYCes9Kd+O9f3+79aKG53dVEv62LS9zZaQL5NyQJkDSOYk8WKnaSC8Y4HOC9Y8FlOjqSp0UxJOOFy4sBBMXBzRwT3ZQ9stjBsf+/sICfQXYmhCcv6seITmV0ELVssX75B7OcSOBDUQHBFb+3YmD8V7ZJQQAKxJ7LXSvJQY7GRIWYIGMPeFZrqzvUBU/sp7VuJ5e0+pFRnfahn+T/tlIXDvQ3CMiQFGHCDp4aimccASEqW6vkiCPwyu/Y/D8rjKJ3Us737bWuaBb6/61xnE13u1xXMFWppwXBvCJtZ8FvkPHiUxeteGPa78hNtMVQpleMMuJdqMrV2UofB+GVbR3RnQ8/iE/sVorDOVBh2UmD9LU=
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 34a71de4-565c-46c0-c956-08d6505afd41
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Nov 2018 09:15:04.4635 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5840
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.8.74
 Subject: Re: [Qemu-arm] [RFC v8 15/18] hw/arm/virt: Add virtio-iommu to the
  virt board
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,148 +150,143 @@ Cc: "tn@semihalf.com" <tn@semihalf.com>,
 	"peterx@redhat.com" <peterx@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FkwHwLtVZXUK
+X-TUID: H2DOBN8MkYFZ
 
-Hi Bharat,
+Hi Eric,
 
-On 11/22/18 10:15 AM, Bharat Bhushan wrote:
-> Hi Eric,
-> 
-> 
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: Friday, November 9, 2018 5:00 PM
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
->> mst@redhat.com; jean-philippe.brucker@arm.com
->> Cc: kevin.tian@intel.com; tn@semihalf.com; Bharat Bhushan
->> <bharat.bhushan@nxp.com>; peterx@redhat.com
->> Subject: [RFC v8 15/18] hw/arm/virt: Add virtio-iommu to the virt board
->>
->> Both the virtio-iommu device and its dedicated mmio transport get
->> instantiated when requested.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v6 -> v7:
->> - align to the smmu instantiation code
->>
->> v4 -> v5:
->> - VirtMachineClass no_iommu added in this patch
->> - Use object_resolve_path_type
->> ---
->>  hw/arm/virt.c | 48
->> +++++++++++++++++++++++++++++++++++++++++++++---
->>  1 file changed, 45 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c index a2b8d8f7c2..f2994c4359
->> 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -29,6 +29,7 @@
->>   */
->>
->>  #include "qemu/osdep.h"
->> +#include "monitor/qdev.h"
->>  #include "qapi/error.h"
->>  #include "hw/sysbus.h"
->>  #include "hw/arm/arm.h"
->> @@ -49,6 +50,7 @@
->>  #include "qemu/bitops.h"
->>  #include "qemu/error-report.h"
->>  #include "hw/pci-host/gpex.h"
->> +#include "hw/virtio/virtio-pci.h"
->>  #include "hw/arm/sysbus-fdt.h"
->>  #include "hw/platform-bus.h"
->>  #include "hw/arm/fdt.h"
->> @@ -59,6 +61,7 @@
->>  #include "qapi/visitor.h"
->>  #include "standard-headers/linux/input.h"
->>  #include "hw/arm/smmuv3.h"
->> +#include "hw/virtio/virtio-iommu.h"
->>
->>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
->>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \ @@ -
->> 1085,6 +1088,33 @@ static void create_smmu(const VirtMachineState *vms,
->> qemu_irq *pic,
->>      g_free(node);
->>  }
->>
->> +static void create_virtio_iommu(VirtMachineState *vms,
->> +                                const char *pciehb_nodename, PCIBus
->> +*bus) {
->> +    const char compat[] = "virtio,pci-iommu";
->> +    uint16_t bdf = 0x8; /* 00:01.0 */
-> 
-> Why we hardcoded "bdf = 8" ?
-> When adding the VFIO support I see virtio-iommu PCI device have bdf = x010.
 
-This hardcoding has been removed. I will send a new version today.
+> -----Original Message-----
+> From: Eric Auger <eric.auger@redhat.com>
+> Sent: Friday, November 9, 2018 5:00 PM
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
+> mst@redhat.com; jean-philippe.brucker@arm.com
+> Cc: kevin.tian@intel.com; tn@semihalf.com; Bharat Bhushan
+> <bharat.bhushan@nxp.com>; peterx@redhat.com
+> Subject: [RFC v8 15/18] hw/arm/virt: Add virtio-iommu to the virt board
+>=20
+> Both the virtio-iommu device and its dedicated mmio transport get
+> instantiated when requested.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>=20
+> ---
+>=20
+> v6 -> v7:
+> - align to the smmu instantiation code
+>=20
+> v4 -> v5:
+> - VirtMachineClass no_iommu added in this patch
+> - Use object_resolve_path_type
+> ---
+>  hw/arm/virt.c | 48
+> +++++++++++++++++++++++++++++++++++++++++++++---
+>  1 file changed, 45 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c index a2b8d8f7c2..f2994c4359
+> 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -29,6 +29,7 @@
+>   */
+>=20
+>  #include "qemu/osdep.h"
+> +#include "monitor/qdev.h"
+>  #include "qapi/error.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/arm/arm.h"
+> @@ -49,6 +50,7 @@
+>  #include "qemu/bitops.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/pci-host/gpex.h"
+> +#include "hw/virtio/virtio-pci.h"
+>  #include "hw/arm/sysbus-fdt.h"
+>  #include "hw/platform-bus.h"
+>  #include "hw/arm/fdt.h"
+> @@ -59,6 +61,7 @@
+>  #include "qapi/visitor.h"
+>  #include "standard-headers/linux/input.h"
+>  #include "hw/arm/smmuv3.h"
+> +#include "hw/virtio/virtio-iommu.h"
+>=20
+>  #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+>      static void virt_##major##_##minor##_class_init(ObjectClass *oc, \ @=
+@ -
+> 1085,6 +1088,33 @@ static void create_smmu(const VirtMachineState *vms,
+> qemu_irq *pic,
+>      g_free(node);
+>  }
+>=20
+> +static void create_virtio_iommu(VirtMachineState *vms,
+> +                                const char *pciehb_nodename, PCIBus
+> +*bus) {
+> +    const char compat[] =3D "virtio,pci-iommu";
+> +    uint16_t bdf =3D 0x8; /* 00:01.0 */
+
+Why we hardcoded "bdf =3D 8" ?
+When adding the VFIO support I see virtio-iommu PCI device have bdf =3D x01=
+0.
 
 Thanks
+-Bharat
 
-Eric
-> 
-> Thanks
-> -Bharat
-> 
->> +    DeviceState *dev;
->> +    char *node;
->> +
->> +    dev = qdev_create(BUS(bus), TYPE_VIRTIO_IOMMU_PCI);
->> +    object_property_set_bool(OBJECT(dev), true, "realized",
->> + &error_fatal);
->> +
->> +    node = g_strdup_printf("%s/virtio_iommu@%d", pciehb_nodename,
->> bdf);
->> +    qemu_fdt_add_subnode(vms->fdt, node);
->> +    qemu_fdt_setprop(vms->fdt, node, "compatible", compat,
->> sizeof(compat));
->> +    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
->> +                                 1, bdf << 8 /* phys.hi */,
->> +                                 1, 0        /* phys.mid */,
->> +                                 1, 0        /* phys.lo  */,
->> +                                 1, 0        /* size.hi  */,
->> +                                 1, 0        /* size.low */);
->> +
->> +    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
->> +    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms-
->>> iommu_phandle);
->> +    g_free(node);
->> +}
->> +
->> +
->>  static void create_pcie(VirtMachineState *vms, qemu_irq *pic)  {
->>      hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base; @@ -
->> 1205,10 +1235,22 @@ static void create_pcie(VirtMachineState *vms,
->> qemu_irq *pic)
->>      if (vms->iommu) {
->>          vms->iommu_phandle = qemu_fdt_alloc_phandle(vms->fdt);
->>
->> -        create_smmu(vms, pic, pci->bus);
->> +        switch (vms->iommu) {
->> +        case VIRT_IOMMU_SMMUV3:
->> +            create_smmu(vms, pic, pci->bus);
->> +            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
->> +                                   0x0, vms->iommu_phandle, 0x0, 0x10000);
->> +            break;
->> +        case VIRT_IOMMU_VIRTIO:
->> +            create_virtio_iommu(vms, nodename, pci->bus);
->> +            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
->> +                                   0x0, vms->iommu_phandle, 0x0, 0x8,
->> +                                   0x9, vms->iommu_phandle, 0x9, 0xfff7);
->> +            break;
->> +        default:
->> +            g_assert_not_reached();
->> +        }
->>
->> -        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
->> -                               0x0, vms->iommu_phandle, 0x0, 0x10000);
->>      }
->>
->>      g_free(nodename);
->> --
->> 2.17.2
-> 
+> +    DeviceState *dev;
+> +    char *node;
+> +
+> +    dev =3D qdev_create(BUS(bus), TYPE_VIRTIO_IOMMU_PCI);
+> +    object_property_set_bool(OBJECT(dev), true, "realized",
+> + &error_fatal);
+> +
+> +    node =3D g_strdup_printf("%s/virtio_iommu@%d", pciehb_nodename,
+> bdf);
+> +    qemu_fdt_add_subnode(vms->fdt, node);
+> +    qemu_fdt_setprop(vms->fdt, node, "compatible", compat,
+> sizeof(compat));
+> +    qemu_fdt_setprop_sized_cells(vms->fdt, node, "reg",
+> +                                 1, bdf << 8 /* phys.hi */,
+> +                                 1, 0        /* phys.mid */,
+> +                                 1, 0        /* phys.lo  */,
+> +                                 1, 0        /* size.hi  */,
+> +                                 1, 0        /* size.low */);
+> +
+> +    qemu_fdt_setprop_cell(vms->fdt, node, "#iommu-cells", 1);
+> +    qemu_fdt_setprop_cell(vms->fdt, node, "phandle", vms-
+> >iommu_phandle);
+> +    g_free(node);
+> +}
+> +
+> +
+>  static void create_pcie(VirtMachineState *vms, qemu_irq *pic)  {
+>      hwaddr base_mmio =3D vms->memmap[VIRT_PCIE_MMIO].base; @@ -
+> 1205,10 +1235,22 @@ static void create_pcie(VirtMachineState *vms,
+> qemu_irq *pic)
+>      if (vms->iommu) {
+>          vms->iommu_phandle =3D qemu_fdt_alloc_phandle(vms->fdt);
+>=20
+> -        create_smmu(vms, pic, pci->bus);
+> +        switch (vms->iommu) {
+> +        case VIRT_IOMMU_SMMUV3:
+> +            create_smmu(vms, pic, pci->bus);
+> +            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
+> +                                   0x0, vms->iommu_phandle, 0x0, 0x10000=
+);
+> +            break;
+> +        case VIRT_IOMMU_VIRTIO:
+> +            create_virtio_iommu(vms, nodename, pci->bus);
+> +            qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
+> +                                   0x0, vms->iommu_phandle, 0x0, 0x8,
+> +                                   0x9, vms->iommu_phandle, 0x9, 0xfff7)=
+;
+> +            break;
+> +        default:
+> +            g_assert_not_reached();
+> +        }
+>=20
+> -        qemu_fdt_setprop_cells(vms->fdt, nodename, "iommu-map",
+> -                               0x0, vms->iommu_phandle, 0x0, 0x10000);
+>      }
+>=20
+>      g_free(nodename);
+> --
+> 2.17.2
+

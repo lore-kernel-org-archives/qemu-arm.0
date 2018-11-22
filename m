@@ -1,75 +1,72 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp695491wrt;
-        Thu, 22 Nov 2018 05:35:33 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/X8a4jhOCyEDerRBqhPHNKf4M3feJJeb4Zc7iizrxTbQuW6tLmnmOnGuY9VAnvZHIlpBBGu
-X-Received: by 2002:a81:e342:: with SMTP id w2mr1786930ywl.500.1542893733045;
-        Thu, 22 Nov 2018 05:35:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542893733; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp695880wrt;
+        Thu, 22 Nov 2018 05:35:54 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/W0F7hSUzvTDOXDVWAU6XkB+b50Rmbm4xV4+dGm6SKSTwFlNlENrrpNKHcBRZFO3xFQhW/t
+X-Received: by 2002:a25:3cc4:: with SMTP id j187-v6mr11280990yba.399.1542893754240;
+        Thu, 22 Nov 2018 05:35:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542893754; cv=none;
         d=google.com; s=arc-20160816;
-        b=tBmlZ/PE48+h3xG+IGUtYdsImos9cyaz1Beyta9WEicXof+d17BuuItNN2PwnK4sC9
-         TtTHWESswKTBuf93HoeRSLa6AzzynQahGhImFdstUxiBTWqlNpA4qsHdshPfNnKTq7EF
-         QBY6mNAFSrL7YowmN2K/85y8CxftBLtDsioo/llz87RZlXYc7P7sdPpfZ8wqZTKnURWQ
-         Kk8XE21DOg4z3bBTSqsLvHM7BBqCJI8G4EuWfeSQ9gZVDuaLRw9bbCWktcSbzaOQ6K+3
-         XvqRfbrkXFlwbPy2K0tHrH23f+DBR6x006vF0bApt9rEZY1ZC+sMx/kEGQuVbbhgbYkJ
-         RLtg==
+        b=ioNEamI5jTxEu6x6RsN6izEExvczEPmlDnGj18YhSsGVDaQY2kBGjwaHh9MoNeCyAg
+         Pp0TiI6LfNkOym00tbHBbHw1fkY+yu7FqaOhqinJPA23hoGTXGEK2DM7R1bZ+Kw2+j0f
+         nWmt0RspT9fYIRDyoRJckJ280YcaDba+TwU1r8/wStpt7RGOAEY2kDnjRJrS/8rkPcOl
+         PF+swqaY4pOrRYjf/e70AQfns9PWK3+pg52yy5JIyIqXa8ZaqfaSYGCoU6IlPeWyTgdw
+         9d4GEOTkPHbJ3JUqqbuBqUVl1k+oj8jegNTLECyuJJytbovSOIEU8rUsKCropg+/kxhr
+         JOzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=h7n0Cn+A2HvOZIXasth/mGAYtcrXaXWrYsXtxcBubLQ=;
-        b=sUzz7G3Vb0wHu8dLpIJLDO8Sp8FMeLOq0gekEFAv4cLVgRYXg8AmscrgzqEHAJ4NDZ
-         ubWY+Mimzu+iT4nY/9HVxA5aH+x+1UqJYpgYsWb+W0/9QXgPqJRnO1x05mOTGxqDQkd5
-         OAifZ2tyFB5Cy/sIL6P72kpeYZfVwplJnL0QyywNpHUK3ktZHQiqUGAywwpwyLVDRJw9
-         TAarHJP98Z2SWp6gbFWd11QsCnNcNrkwtDq/jbiZ5rL78DPXc4Esd5TMjntU2no9NX1q
-         XfgJq2pqUVEi1vrUm2PZgw3LZKcsupdyXpB9uxGJfFPsOOXpmaukO6Vrn2GrXHAGsOI/
-         Q65w==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=IaU8QCs7PfopA2eNpNs5IntveuivOXh+rCmMJvP1cJQ=;
+        b=VFfBxJY2sVJbVhHjyhaHeP4hyMJeLeCNDAOmd7wVNkz2JsR5nmFHDCd9gQy/bPZPec
+         Su5VBGD2DuLxdMvJqZp7uE8QIn/clpkoXJEkct52W+KrtR8YCv1ahsnF0/A1tohZK8mY
+         1myG05/zMD02xfnU/DIdXA0OwloMLr6+Eb+EvsqsA/4Lbv98fqQl5LDB44ek7vwRk8no
+         ndW7YFHOzliNBl237r1hZyQmg2u/adP7tMgaSi7phnNvbjbYSf7t4uNXjHmgsgi1F3md
+         jBIG4LhyRoxK3e7jIdfzeLO4Gn9TGz8BznEEEXyPGiiH3fcDMTSOLc7sTHHKoMN6pOL1
+         Pr7w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j13si15349919ywg.150.2018.11.22.05.35.32
+        by mx.google.com with ESMTPS id n189-v6si31406433ybc.385.2018.11.22.05.35.54
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Nov 2018 05:35:33 -0800 (PST)
+        Thu, 22 Nov 2018 05:35:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46613 helo=lists.gnu.org)
+Received: from localhost ([::1]:46618 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPp8m-0007v4-34
-	for alex.bennee@linaro.org; Thu, 22 Nov 2018 08:35:32 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51830)
+	id 1gPp97-00083N-41
+	for alex.bennee@linaro.org; Thu, 22 Nov 2018 08:35:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51867)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gPp8Y-0007sp-I2
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 08:35:19 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1gPp8c-0007vT-7l
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 08:35:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gPp8W-0001fX-Lz
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 08:35:18 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1gPp8a-0001hX-82
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 08:35:22 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:52746)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1gPp8W-0001bx-An; Thu, 22 Nov 2018 08:35:16 -0500
+	id 1gPp8Z-0001bx-5k; Thu, 22 Nov 2018 08:35:20 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1gPp8Q-0005AS-US; Thu, 22 Nov 2018 13:35:10 +0000
+	id 1gPp8Q-0005AF-0v; Thu, 22 Nov 2018 13:35:10 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 22 Nov 2018 13:35:06 +0000
-Message-Id: <20181122133507.30950-2-peter.maydell@linaro.org>
+Date: Thu, 22 Nov 2018 13:35:05 +0000
+Message-Id: <20181122133507.30950-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181122133507.30950-1-peter.maydell@linaro.org>
-References: <20181122133507.30950-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-4.0 1/2] exec.c: Rename
- cpu_physical_memory_write_rom_internal()
+Subject: [Qemu-arm] [PATCH for-4.0 0/2] Rename
+ cpu_physical_memory_write_rom() to address_space_write_rom()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,80 +84,35 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LyTGwION471I
+X-TUID: fPiYrkTHaRqr
 
-Rename cpu_physical_memory_write_rom_internal() to
-address_space_write_rom_internal(), and make it take
-MemTxAttrs and return a MemTxResult. This brings its
-API into line with address_space_write().
+The API of cpu_physical_memory_write_rom() is odd, because it
+takes an AddressSpace, unlike all the other cpu_physical_memory_*
+access functions. We note this oddity as a TODO in the
+docs/devel/loads-stores.rst documentation.
 
-This is an internal function to exec.c; fixing its API
-will allow us to change the global function
-cpu_physical_memory_write_rom().
+Rename cpu_physical_memory_write_rom() to address_space_write_rom(),
+and give it an API that matches address_space_write().
+We also adjest the cpu_physical_memory_write_rom_internal()
+function which is local to exec.c similarly.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- exec.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+thanks
+-- PMM
+    
+Peter Maydell (2):
+  exec.c: Rename cpu_physical_memory_write_rom_internal()
+  Rename cpu_physical_memory_write_rom() to address_space_write_rom()
 
-diff --git a/exec.c b/exec.c
-index bb6170dbffe..92679508ba3 100644
---- a/exec.c
-+++ b/exec.c
-@@ -3388,8 +3388,12 @@ enum write_rom_type {
-     FLUSH_CACHE,
- };
- 
--static inline void cpu_physical_memory_write_rom_internal(AddressSpace *as,
--    hwaddr addr, const uint8_t *buf, int len, enum write_rom_type type)
-+static inline MemTxResult address_space_write_rom_internal(AddressSpace *as,
-+                                                           hwaddr addr,
-+                                                           MemTxAttrs attrs,
-+                                                           const uint8_t *buf,
-+                                                           int len,
-+                                                           enum write_rom_type type)
- {
-     hwaddr l;
-     uint8_t *ptr;
-@@ -3399,8 +3403,7 @@ static inline void cpu_physical_memory_write_rom_internal(AddressSpace *as,
-     rcu_read_lock();
-     while (len > 0) {
-         l = len;
--        mr = address_space_translate(as, addr, &addr1, &l, true,
--                                     MEMTXATTRS_UNSPECIFIED);
-+        mr = address_space_translate(as, addr, &addr1, &l, true, attrs);
- 
-         if (!(memory_region_is_ram(mr) ||
-               memory_region_is_romd(mr))) {
-@@ -3423,13 +3426,15 @@ static inline void cpu_physical_memory_write_rom_internal(AddressSpace *as,
-         addr += l;
-     }
-     rcu_read_unlock();
-+    return MEMTX_OK;
- }
- 
- /* used for ROM loading : can write in RAM and ROM */
- void cpu_physical_memory_write_rom(AddressSpace *as, hwaddr addr,
-                                    const uint8_t *buf, int len)
- {
--    cpu_physical_memory_write_rom_internal(as, addr, buf, len, WRITE_DATA);
-+    address_space_write_rom_internal(as, addr, MEMTXATTRS_UNSPECIFIED,
-+                                     buf, len, WRITE_DATA);
- }
- 
- void cpu_flush_icache_range(hwaddr start, int len)
-@@ -3444,8 +3449,9 @@ void cpu_flush_icache_range(hwaddr start, int len)
-         return;
-     }
- 
--    cpu_physical_memory_write_rom_internal(&address_space_memory,
--                                           start, NULL, len, FLUSH_CACHE);
-+    address_space_write_rom_internal(&address_space_memory,
-+                                     start, MEMTXATTRS_UNSPECIFIED,
-+                                     NULL, len, FLUSH_CACHE);
- }
- 
- typedef struct {
+ include/exec/cpu-common.h   |  2 --
+ include/exec/memory.h       | 26 ++++++++++++++++++++++++++
+ exec.c                      | 30 +++++++++++++++++++-----------
+ hw/core/loader.c            |  4 ++--
+ hw/intc/apic.c              |  7 ++++---
+ hw/misc/tz-mpc.c            |  2 +-
+ hw/sparc/sun4m.c            |  5 +++--
+ docs/devel/loads-stores.rst | 35 ++++++++++++++++-------------------
+ 8 files changed, 71 insertions(+), 40 deletions(-)
+
 -- 
 2.19.1
 

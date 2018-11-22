@@ -1,74 +1,85 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp718649wrt;
-        Thu, 22 Nov 2018 05:58:43 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fcxjaZMuKSUSdcQqtegPyt+7Rwxho/JDzYmjZQEh0H+DsSNQLKtl1b5iO90yGJQQa+XtlH
-X-Received: by 2002:a0d:f7c3:: with SMTP id h186-v6mr11056530ywf.449.1542895123736;
-        Thu, 22 Nov 2018 05:58:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542895123; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp914988wrt;
+        Thu, 22 Nov 2018 08:48:54 -0800 (PST)
+X-Google-Smtp-Source: AJdET5eB49ppsvAx8Ld68u0snfqD90jk6VCI/yWyABuSe4QmEY7U9qF0X9xsCyYsqNcXRARK5tY5
+X-Received: by 2002:a81:1153:: with SMTP id 80-v6mr12265392ywr.302.1542905333957;
+        Thu, 22 Nov 2018 08:48:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542905333; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fwk2BCn3I5EVZtvMlpzpL77LlFxJ8rNYYY4vPsD5cfsHFGRDSHFYxDPTx+zjYATutN
-         hJJ/+tigqu/tvnCtc88+swyj3icGhCnG6EhRausGaeSbUVjx1VVv0UUYw/Ghl3qkgptF
-         MjwDrRmot/DTHYuqnhB0mHK/KC92tlLpnLrmkNt3tBhYeM7WtaWRnJ9VGYF9q/pDpGQZ
-         HFa46JiyuDaJx6aQNWHhidkHh1wdB5I72E4BFCcgXeSlJvuCM/ewqTxMBp4iLql7QQC4
-         H66blbh4P++uuW5AKJliHB8zd7GaZSWMAOXU38WZYcQczwwZ8EfI494En1LF1SIgmLO/
-         kF+g==
+        b=NNWzTKwIzBGzT5gG33JGi8YE4YhYSBU6YhftGfqsR2yKb03rmwqcciQT+HsCQei0mT
+         L9ES1GT3uktuhG2INAamjUEYocpPEapw2Nv83QVOWg9/2PYTmfpGitqPtB4G+YLAA3h6
+         hJs1FZGxN7YNXfmGlEm2xLroqFGXD9BfPhOViil8b81OzL6wZhIgAZ8jEdLJM2tlfoo+
+         yZrvde0WYTkM1C2jJoigWDu/s1M8f32iJomaz4seUhhampyhN//XBwYh/vu3JQAXxLhI
+         91CLFIi2YBcnAVeQjS9AalFwVew5/WsiebRPQa5+CFsedIseunOtUi7n3TF2Qi1MiE97
+         HvCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=NP/WSxPbU9EjvhBnya4S4sosh/b4qDv5R0TIxB4DNGg=;
-        b=Mg7VFzYBAH9dmDkdHLbEflo85uvj+N21zVuOZJTtgQUON7ouX8n7jzJVNTWOuRemKU
-         22VyAvOH+Wk5KeuF1YlZZm9vhVWmCRYomBupFCyoRMhuNeKCGP/Eu6pgNhII/jkdeuOf
-         IRoLyQN1UW3dKdM6J+IJDnmtrBywjyqvrEE0wRViURYlU9y1+XQD5dlDJq++YcrB97g1
-         XpuCz+a7hALOsu6tSbw6gBlK272a7tJ1Ve1yCnefGGFURUNk4gil0hQ5k6P4hIgC+ow3
-         MhqHl+yPXdjcBxcnP9Si4PyALlmJx6OvmYuiCECngEYth3VmgtBWQ6tgXJCXvEB9VPxl
-         XD3A==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=AH+buOi4WR3oPVU16GfxhKaKg2JzZ5GTyVK+1p9mCsg=;
+        b=JMEgWAOzhJiLbkpSe4pwmqcsL7WwNU6M2XUDUK95Ttr+u42n7wxYWza4dAjxMYM6Gm
+         0A+DKTD8l4cier6Lr8E5MScEVGQoSS6z7ANjy7cequihSmbHoSUdsDc3PdhWcFo/jz+w
+         kYlY61ts3KGb72eeopmOKXzbBcyH2Xwp3qQ9xK65RmyIDcMbxgf7ukkrlBorP9mUN8v5
+         rHmWGMnyGGWKbZtpv0Q71khojqnf8+1FRyr1bMguIqcJVGY0hLfiSW+e+BEz58lp7ri/
+         JMA5ucC1w4oFeUc0XpwfQbUJsN985g1+ZimoarATFvsZFBqcJ+vtCQO8uns8AgOiw7O6
+         QO/w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q62si2894698ywb.137.2018.11.22.05.58.43
+        by mx.google.com with ESMTPS id g125si1446729ywh.69.2018.11.22.08.48.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Nov 2018 05:58:43 -0800 (PST)
+        Thu, 22 Nov 2018 08:48:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46743 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47699 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPpVD-0000qG-8E
-	for alex.bennee@linaro.org; Thu, 22 Nov 2018 08:58:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59685)
+	id 1gPs9t-0007Yu-2h
+	for alex.bennee@linaro.org; Thu, 22 Nov 2018 11:48:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35385)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gPpV5-0000qB-1F
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 08:58:36 -0500
+	(envelope-from <pmathieu@redhat.com>) id 1gPs9e-0007YW-M8
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 11:48:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gPpV3-00070x-19
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 08:58:34 -0500
-Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:52766)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1gPpV2-0006wi-NK; Thu, 22 Nov 2018 08:58:32 -0500
-Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
-	(envelope-from <pm215@archaic.org.uk>)
-	id 1gPp8R-0005Ak-Rx; Thu, 22 Nov 2018 13:35:11 +0000
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu, 22 Nov 2018 13:35:07 +0000
-Message-Id: <20181122133507.30950-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181122133507.30950-1-peter.maydell@linaro.org>
-References: <20181122133507.30950-1-peter.maydell@linaro.org>
+	(envelope-from <pmathieu@redhat.com>) id 1gPs9a-0004YA-QW
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 11:48:38 -0500
+Received: from mail-wm1-f44.google.com ([209.85.128.44]:40598)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1gPs9a-0004Uv-Ib
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 11:48:34 -0500
+Received: by mail-wm1-f44.google.com with SMTP id q26so9693183wmf.5
+	for <qemu-arm@nongnu.org>; Thu, 22 Nov 2018 08:48:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=AH+buOi4WR3oPVU16GfxhKaKg2JzZ5GTyVK+1p9mCsg=;
+	b=aCjdYQ9gl+f9eDuVc/9ckrURWCcy7UC5yHh/MxgaaEORjAjx2+nJLFz1IMzpRSdKZH
+	dsA6+lhREspm3KIRELwUo/UQ6bPVPuy+og027z9Am3lAjByJOPPazWatB/n2QwTTB7XL
+	Qjj/7JBABu2P/g0MU8UH+0xeKwMz6wFv67x8wGgYXMpRkNyBCSEAM8aLLO7/DbZJMuBf
+	mazsStnpERZVP+0JwIPiY+0MamWAPoJ8Nh69InBBvtsz5+w7S5Rw7MBahfvAJa/ofnw+
+	Jp62M8YS0OExfNFS8gAUqiJJnjJx9WPmmP2B9IfQP2gly16IaIlEK3Myo1T/jK4+9QSp
+	mJog==
+X-Gm-Message-State: AGRZ1gKsjz5lYYtCFzuNfvlWR4zatkKmu1AGUoWJoyCCO6S3aBYg07eA
+	PGuHSeQdY7nZ5Znq6N0yBFWYrNCmO/YEskaCxLs8Dw==
+X-Received: by 2002:a1c:48d:: with SMTP id 135mr10094180wme.1.1542905311549;
+	Thu, 22 Nov 2018 08:48:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH for-4.0 2/2] Rename
+References: <20181122133507.30950-1-peter.maydell@linaro.org>
+In-Reply-To: <20181122133507.30950-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Thu, 22 Nov 2018 17:48:20 +0100
+Message-ID: <CAP+75-UQhpz3kXvGN3vP69QqyiPg0PpGLAuj+EFXsfzhoAU2CQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000047853057b43a318"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.44
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.0 0/2] Rename
  cpu_physical_memory_write_rom() to address_space_write_rom()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -81,229 +92,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>, patches@linaro.org,
+Cc: patches@linaro.org, Richard Henderson <richard.henderson@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
 	Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tXkmTgl/Rtl6
+X-TUID: tX41fJmicgNV
 
-The API of cpu_physical_memory_write_rom() is odd, because it
-takes an AddressSpace, unlike all the other cpu_physical_memory_*
-access functions. Rename it to address_space_write_rom(), and
-bring its API into line with address_space_write().
+--000000000000047853057b43a318
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/exec/cpu-common.h   |  2 --
- include/exec/memory.h       | 26 ++++++++++++++++++++++++++
- exec.c                      | 14 ++++++++------
- hw/core/loader.c            |  4 ++--
- hw/intc/apic.c              |  7 ++++---
- hw/misc/tz-mpc.c            |  2 +-
- hw/sparc/sun4m.c            |  5 +++--
- docs/devel/loads-stores.rst | 35 ++++++++++++++++-------------------
- 8 files changed, 60 insertions(+), 35 deletions(-)
+Le jeu. 22 nov. 2018 14:36, Peter Maydell <peter.maydell@linaro.org> a
+=C3=A9crit :
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 18b40d6145c..2ad2d6d86bb 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -111,8 +111,6 @@ bool cpu_physical_memory_is_io(hwaddr phys_addr);
-  */
- void qemu_flush_coalesced_mmio_buffer(void);
- 
--void cpu_physical_memory_write_rom(AddressSpace *as, hwaddr addr,
--                                   const uint8_t *buf, int len);
- void cpu_flush_icache_range(hwaddr start, int len);
- 
- extern struct MemoryRegion io_mem_rom;
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 8e61450de32..ffd23ed8d8d 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1792,6 +1792,32 @@ MemTxResult address_space_write(AddressSpace *as, hwaddr addr,
-                                 MemTxAttrs attrs,
-                                 const uint8_t *buf, int len);
- 
-+/**
-+ * address_space_write_rom: write to address space, including ROM.
-+ *
-+ * This function writes to the specified address space, but will
-+ * write data to both ROM and RAM. This is used for non-guest
-+ * writes like writes from the gdb debug stub or initial loading
-+ * of ROM contents.
-+ *
-+ * Note that portions of the write which attempt to write data to
-+ * a device will be silently ignored -- only real RAM and ROM will
-+ * be written to.
-+ *
-+ * Return a MemTxResult indicating whether the operation succeeded
-+ * or failed (eg unassigned memory, device rejected the transaction,
-+ * IOMMU fault).
-+ *
-+ * @as: #AddressSpace to be accessed
-+ * @addr: address within that address space
-+ * @attrs: memory transaction attributes
-+ * @buf: buffer with the data transferred
-+ * @len: the number of bytes to write
-+ */
-+MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
-+                                    MemTxAttrs attrs,
-+                                    const uint8_t *buf, int len);
-+
- /* address_space_ld*: load from an address space
-  * address_space_st*: store to an address space
-  *
-diff --git a/exec.c b/exec.c
-index 92679508ba3..6e875f0640a 100644
---- a/exec.c
-+++ b/exec.c
-@@ -3430,11 +3430,12 @@ static inline MemTxResult address_space_write_rom_internal(AddressSpace *as,
- }
- 
- /* used for ROM loading : can write in RAM and ROM */
--void cpu_physical_memory_write_rom(AddressSpace *as, hwaddr addr,
--                                   const uint8_t *buf, int len)
-+MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
-+                                    MemTxAttrs attrs,
-+                                    const uint8_t *buf, int len)
- {
--    address_space_write_rom_internal(as, addr, MEMTXATTRS_UNSPECIFIED,
--                                     buf, len, WRITE_DATA);
-+    return address_space_write_rom_internal(as, addr, attrs,
-+                                            buf, len, WRITE_DATA);
- }
- 
- void cpu_flush_icache_range(hwaddr start, int len)
-@@ -3879,8 +3880,9 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
-             l = len;
-         phys_addr += (addr & ~TARGET_PAGE_MASK);
-         if (is_write) {
--            cpu_physical_memory_write_rom(cpu->cpu_ases[asidx].as,
--                                          phys_addr, buf, l);
-+            address_space_write_rom(cpu->cpu_ases[asidx].as, phys_addr,
-+                                    MEMTXATTRS_UNSPECIFIED,
-+                                    buf, l);
-         } else {
-             address_space_rw(cpu->cpu_ases[asidx].as, phys_addr,
-                              MEMTXATTRS_UNSPECIFIED,
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index aa0b3fc8679..66a616608af 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -1103,8 +1103,8 @@ static void rom_reset(void *unused)
-             void *host = memory_region_get_ram_ptr(rom->mr);
-             memcpy(host, rom->data, rom->datasize);
-         } else {
--            cpu_physical_memory_write_rom(rom->as, rom->addr, rom->data,
--                                          rom->datasize);
-+            address_space_write_rom(rom->as, rom->addr, MEMTXATTRS_UNSPECIFIED,
-+                                    rom->data, rom->datasize);
-         }
-         if (rom->isrom) {
-             /* rom needs to be written only once */
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index 97ffdd820f2..c9dd65b3a03 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -122,9 +122,10 @@ static void apic_sync_vapic(APICCommonState *s, int sync_type)
-         }
-         vapic_state.irr = vector & 0xff;
- 
--        cpu_physical_memory_write_rom(&address_space_memory,
--                                      s->vapic_paddr + start,
--                                      ((void *)&vapic_state) + start, length);
-+        address_space_write_rom(&address_space_memory,
-+                                s->vapic_paddr + start,
-+                                MEMTXATTRS_UNSPECIFIED,
-+                                ((void *)&vapic_state) + start, length);
-     }
- }
- 
-diff --git a/hw/misc/tz-mpc.c b/hw/misc/tz-mpc.c
-index e0c58ba37ec..fb48a1540b9 100644
---- a/hw/misc/tz-mpc.c
-+++ b/hw/misc/tz-mpc.c
-@@ -448,7 +448,7 @@ static int tz_mpc_attrs_to_index(IOMMUMemoryRegion *iommu, MemTxAttrs attrs)
- {
-     /* We treat unspecified attributes like secure. Transactions with
-      * unspecified attributes come from places like
--     * cpu_physical_memory_write_rom() for initial image load, and we want
-+     * rom_reset() for initial image load, and we want
-      * those to pass through the from-reset "everything is secure" config.
-      * All the real during-emulation transactions from the CPU will
-      * specify attributes.
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 3c29b68e67f..639906cca30 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -559,8 +559,9 @@ static void idreg_init(hwaddr addr)
-     s = SYS_BUS_DEVICE(dev);
- 
-     sysbus_mmio_map(s, 0, addr);
--    cpu_physical_memory_write_rom(&address_space_memory,
--                                  addr, idreg_data, sizeof(idreg_data));
-+    address_space_write_rom(&address_space_memory, addr,
-+                            MEMTXATTRS_UNSPECIFIED,
-+                            idreg_data, sizeof(idreg_data));
- }
- 
- #define MACIO_ID_REGISTER(obj) \
-diff --git a/docs/devel/loads-stores.rst b/docs/devel/loads-stores.rst
-index 57d8c524bfe..c74cd090e64 100644
---- a/docs/devel/loads-stores.rst
-+++ b/docs/devel/loads-stores.rst
-@@ -253,6 +253,22 @@ Regexes for git grep
-  - ``\<address_space_ldu\?[bwql]\(_[lb]e\)\?\>``
-  - ``\<address_space_st[bwql]\(_[lb]e\)\?\>``
- 
-+``address_space_write_rom``
-+~~~~~~~~~~~~~~~~~~~~~~~~~~~
-+
-+This function performs a write by physical address like
-+``address_space_write``, except that if the write is to a ROM then
-+the ROM contents will be modified, even though a write by the guest
-+CPU to the ROM would be ignored. This is used for non-guest writes
-+like writes from the gdb debug stub or initial loading of ROM contents.
-+
-+Note that portions of the write which attempt to write data to a
-+device will be silently ignored -- only real RAM and ROM will
-+be written to.
-+
-+Regexes for git grep
-+ - ``address_space_write_rom``
-+
- ``{ld,st}*_phys``
- ~~~~~~~~~~~~~~~~~
- 
-@@ -315,25 +331,6 @@ For new code they are better avoided:
- Regexes for git grep
-  - ``\<cpu_physical_memory_\(read\|write\|rw\)\>``
- 
--``cpu_physical_memory_write_rom``
--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--
--This function performs a write by physical address like
--``address_space_write``, except that if the write is to a ROM then
--the ROM contents will be modified, even though a write by the guest
--CPU to the ROM would be ignored.
--
--Note that unlike ``cpu_physical_memory_write()`` this function takes
--an AddressSpace argument, but unlike ``address_space_write()`` this
--function does not take a ``MemTxAttrs`` or return a ``MemTxResult``.
--
--**TODO**: we should probably clean up this inconsistency and
--turn the function into ``address_space_write_rom`` with an API
--matching ``address_space_write``.
--
--``cpu_physical_memory_write_rom``
--
--
- ``cpu_memory_rw_debug``
- ~~~~~~~~~~~~~~~~~~~~~~~
- 
--- 
-2.19.1
+> The API of cpu_physical_memory_write_rom() is odd, because it
+> takes an AddressSpace, unlike all the other cpu_physical_memory_*
+> access functions. We note this oddity as a TODO in the
+> docs/devel/loads-stores.rst documentation.
+>
+> Rename cpu_physical_memory_write_rom() to address_space_write_rom(),
+> and give it an API that matches address_space_write().
+> We also adjest the cpu_physical_memory_write_rom_internal()
+> function which is local to exec.c similarly.
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (2):
+>   exec.c: Rename cpu_physical_memory_write_rom_internal()
+>   Rename cpu_physical_memory_write_rom() to address_space_write_rom()
+>
 
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+--000000000000047853057b43a318
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr">Le jeu. =
+22 nov. 2018 14:36, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org">peter.maydell@linaro.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><block=
+quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
+ solid;padding-left:1ex">The API of cpu_physical_memory_write_rom() is odd,=
+ because it<br>
+takes an AddressSpace, unlike all the other cpu_physical_memory_*<br>
+access functions. We note this oddity as a TODO in the<br>
+docs/devel/loads-stores.rst documentation.<br>
+<br>
+Rename cpu_physical_memory_write_rom() to address_space_write_rom(),<br>
+and give it an API that matches address_space_write().<br>
+We also adjest the cpu_physical_memory_write_rom_internal()<br>
+function which is local to exec.c similarly.<br>
+<br>
+thanks<br>
+-- PMM<br>
+<br>
+Peter Maydell (2):<br>
+=C2=A0 exec.c: Rename cpu_physical_memory_write_rom_internal()<br>
+=C2=A0 Rename cpu_physical_memory_write_rom() to address_space_write_rom()<=
+br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto"><=
+span style=3D"font-family:sans-serif;font-size:13.696px">Reviewed-by: Phili=
+ppe Mathieu-Daud=C3=A9 &lt;</span><a href=3D"mailto:philmd@redhat.com" styl=
+e=3D"text-decoration:none;color:rgb(66,133,244);font-family:sans-serif;font=
+-size:13.696px">philmd@redhat.com</a><span style=3D"font-family:sans-serif;=
+font-size:13.696px">&gt;</span></div></div>
+
+--000000000000047853057b43a318--

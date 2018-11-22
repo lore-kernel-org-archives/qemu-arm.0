@@ -1,144 +1,163 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp500694wrt;
-        Thu, 22 Nov 2018 02:29:19 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WJf6ygB3licEQBvVBX2QDNNqjEeXZrKWeRyY4IGE+j4ZuRyIfyp1gseaDfMS7EXM1EjSpY
-X-Received: by 2002:a62:9913:: with SMTP id d19mr5673477pfe.107.1542882559758;
-        Thu, 22 Nov 2018 02:29:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542882559; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp506773wrt;
+        Thu, 22 Nov 2018 02:35:28 -0800 (PST)
+X-Google-Smtp-Source: AJdET5czxoMmFSccBhmGy4QL873+/7oa/NrE183gZ+EDpYX6iDyayhhv9lj4ZW7fCC/GivdjK6xh
+X-Received: by 2002:a0d:e384:: with SMTP id m126-v6mr10700305ywe.503.1542882927994;
+        Thu, 22 Nov 2018 02:35:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542882927; cv=none;
         d=google.com; s=arc-20160816;
-        b=OLxv7sNV41ZXxaaXtETZOsOe1IZgFLF4FGIoUJGIhHP8e2MQNQwn0hB9HNX8gxjPhY
-         sQRURowbgurPxff4i213V7VBK65kbDVfbYlvjn1E3pbjC2+UL6H0cBr5POBG1f2cgnEV
-         U1jNy5FgZQKwPaooEwGxbcPV2ApTSaapX6lf7l0LOaR+4556jlv9+OTSKJpnrUKKwcQM
-         4YGnqxSYPR3WBrcvdQ94JrZwMDgKRmA7Kf5MF+ofHg9v79uXF8d71ECyMcpDZ0/h6Run
-         998E+JT9lHSDxzrLSJVE3VxGebMim9VYB4MD1utMqxKI55OUpBj3It+w6/LSXOwIvy/a
-         J51w==
+        b=lv69Y/amyhoZnmIFMM429T7HRhCWkTdQe0cHX1Vxbqu0xG39qATvsKGyyBPwiLqWtB
+         T4l2W+4mo11mYYMca/W7U6Z0Zt1XLMRoX819KMfXG7RfPKpULWSZD/fFr4vVGFcqkoFT
+         W3N4BqZvqROWlJ41EcvTYC1muFOJL3qBCtrroh9OeaRPDx+PFsQ/GQiD7/nHJsUXT7yt
+         beUShGeiB4Ifm+oMAJal9prfhKvVUKSjV9D8uRe3utWc9htP5XY5wqlG+tp8UN9L+Rr3
+         LpABfn5ThFIIBZJDIGwGsEKLSm1qbFYhbEJTpkfhujpiwda7n6YOo1br6JIsT+G8mO5v
+         UhwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=U7+YoIwQQDvIAKT/wdJu6PWtji967X/BWXglUk/QfHQ=;
-        b=CRkN3/ahTs2ogyQ1SUU4g97Au/ZPqDwOoOp/6+eOo96egnBviwnL/Dl0nO+oYDc2Us
-         FmmKoAzjU4w9D0JOFlR7nllZ9I5nDCbvV3YjxWEMdtcfGvxIGynRSAe4dhcnbLGuzfPY
-         /38fsB6DeleTsAN399QRW8rUQkbWdi7Lqy/j5g06c5r+TlFDrEgJemOdBLEyZmEF0WjI
-         R21aEUpZC9EVbAoBjvcZcSf/H7TUQzONfdi+59PORmJPz4YMTxN5DTsxXCMbdFC54Xdr
-         N6Au0nSRI+GMX7K0IHJEhPN2eOJPt1asU3UfoSZXB6OwGKuOK4khDnhwHrcyNHyjlyPh
-         Zy3g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=pGmirgy+QmXYHN0CH6lEVTNDwUqdWmssa9kedAUo0SE=;
+        b=W6ET4e834lihoDG8QOQ82Qgk6qBg7weq1nj2FKTdyufd4R/ZqCbUEx3496xZ3oWo9G
+         8EmD9n/bLbZMSg2WXHdnobxxIUh/8G4Wcl1dxJ8EFDN7i9zcfQLqoAxqGDGmWJ8TU3oA
+         tr01lqi9/rsqtMwrbH+PKzDlYynKOA+dbtfznH0EQ2V92fuV4KDlnh4rV2fi+SPdRbWC
+         cIMxpD0N/vuJMVyEOOVaGDEiTQ9N09FaSG94zQMqmib8W0r7vAOBkHaTJziyMGzHLE0V
+         21OLKvBh2f5TWoq7fx3MndtOivW1ECfn1Dqv2su0+wDaOtkY2e2APx1AlR+nNcBN0QfX
+         e6ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EKwRro8g;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id f34-v6si53057621ple.218.2018.11.22.02.29.19;
-        Thu, 22 Nov 2018 02:29:19 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 199si5628212ywh.362.2018.11.22.02.35.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Thu, 22 Nov 2018 02:35:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EKwRro8g;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2394359AbeKVVIG (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 22 Nov 2018 16:08:06 -0500
-Received: from mail-ot1-f65.google.com ([209.85.210.65]:44752 "EHLO
-        mail-ot1-f65.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S2390677AbeKVVIG (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 22 Nov 2018 16:08:06 -0500
-Received: by mail-ot1-f65.google.com with SMTP id f18so6054975otl.11
-        for <kvm@vger.kernel.org>; Thu, 22 Nov 2018 02:29:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=U7+YoIwQQDvIAKT/wdJu6PWtji967X/BWXglUk/QfHQ=;
-        b=EKwRro8gHH8zxSAojq4sb3aTH35kgdlAUL1MzcoQ4sqweSiXP9W0WRfER98ZiPXnh7
-         6SsBJwGoXcptM+Ux3ZsWlsYNN+0/LUG1UttiR9ZciXhIqAQwN2QB0bgZzBK39/27Zcv6
-         Ka5DTn4aHDkBRsSuL1dRfsX67OD4SATrthOaM=
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45057 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPmKV-00029Y-FT
+	for alex.bennee@linaro.org; Thu, 22 Nov 2018 05:35:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42079)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1gPmKO-00028c-0F
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 05:35:20 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <philmd@redhat.com>) id 1gPmKK-0001HQ-0e
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 05:35:19 -0500
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:35876)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gPmKJ-0001GF-QG
+	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 05:35:15 -0500
+Received: by mail-wr1-f67.google.com with SMTP id t3so8725909wrr.3
+	for <qemu-arm@nongnu.org>; Thu, 22 Nov 2018 02:35:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=U7+YoIwQQDvIAKT/wdJu6PWtji967X/BWXglUk/QfHQ=;
-        b=NCsgaauxrIWxs1AOrXhHaRxZUHdblY8WU6h+ZZI3jRHZ2G7hXCEbDU21IvXLDbHB00
-         Unz/FbUEk8lTPn69/DfXnYJJiAnK9bpBHNj8FDK9R/X6p5CB3Alr8P+JdgQJJ1T0Tov6
-         ZEtolJwnXoxyJ+lRqkZplSV1BlphycFr9/vr22nB+dClGTMH/YShks6usLCF3iMD1cfd
-         cBQuQ6TLcgmvd38CVRb/+G0UidA59RpaFcWllu9huS5T0gRZ9reuCP8fkkDQsAca6tze
-         BK04peBAiGrBvYJtWyXreaaiMFW8cR3ogu2P4CwWrsNxOD0Q4GFw3y2vRl/LjcVEni7h
-         fHkQ==
-X-Gm-Message-State: AA+aEWYNq8O/J214CpAU1xFieJno5bdMnTYO82X+E+1n1aWAicB8kH/R
-        WoYy2Qt8XS4Cvj5wAPCooClc9PkCYLIljXxGX3vfNA==
-X-Received: by 2002:a9d:5a81:: with SMTP id w1mr6320379oth.317.1542882556791;
- Thu, 22 Nov 2018 02:29:16 -0800 (PST)
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=pGmirgy+QmXYHN0CH6lEVTNDwUqdWmssa9kedAUo0SE=;
+	b=H8nZ44V+HzO7f46U9mHtxM3oJi7buwoILPHtEnSVMgz0R+NX+0CNR4cF/PWkAp/6Gw
+	LIJoro9u2qqlTCgDfcwwaS+FKZCg3ZeRcHZsyUNmdyBYQGDtHGy7GUcrJSdRENMkQyfp
+	fAjWKXutuSVooZ95xgVu0agsnjWf+qdAAltaX6IFGisbfp4TGMZIkFbdK3AeOnStgKdi
+	YdVHJGA1klZWuc67tePTT2++Db8XdMo7/yxhJ2KbYmL8Bm0MPIQy/BrtRqI9RuY7SFF8
+	adPd0ET0gm9IiU4qccEHLeSM3heSmLaTwThxpS5upPYRrFH9Zbn0O3Pffd9sUito+a2P
+	M4vg==
+X-Gm-Message-State: AA+aEWa+UY8FfZ8XBcYHZDdiWlx2hC9HNdE43smZjPfcXoXytVWXENfs
+	9b8kvp+GVLx+FhHHJ3kRsuu0Sg==
+X-Received: by 2002:adf:a20a:: with SMTP id
+	p10-v6mr1807536wra.249.1542882914790; 
+	Thu, 22 Nov 2018 02:35:14 -0800 (PST)
+Received: from [192.168.1.33] (75.red-83-57-172.dynamicip.rima-tde.net.
+	[83.57.172.75]) by smtp.gmail.com with ESMTPSA id
+	j125-v6sm3833492wmb.12.2018.11.22.02.35.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 22 Nov 2018 02:35:14 -0800 (PST)
+To: Li Qiang <liq3ea@gmail.com>, jan.kiszka@web.de, peter.maydell@linaro.org
+References: <1542880825-2604-1-git-send-email-liq3ea@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <e61b7517-a736-8cb5-ce35-815225f18c52@redhat.com>
+Date: Thu, 22 Nov 2018 11:35:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Thu, 22 Nov 2018 02:28:56
- -0800 (PST)
-In-Reply-To: <0184EA26B2509940AA629AE1405DD7F201F7D7EB@DGGEMA503-MBX.china.huawei.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
- <1541672989-15967-11-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA-6UKk-WF+M+z0=AN-X7q0XRFLo2RG_yBadDeCas4A5wQ@mail.gmail.com> <0184EA26B2509940AA629AE1405DD7F201F7D7EB@DGGEMA503-MBX.china.huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 22 Nov 2018 10:28:56 +0000
-Message-ID: <CAFEAcA_P9d=hOH6sAfdqdBEAwF_am6+Qq9XgAafxbzGfWLEhHg@mail.gmail.com>
-Subject: =?UTF-8?Q?Re=3A_=E7=AD=94=E5=A4=8D=3A_=5BPATCH_RESEND_v15_10=2F10=5D_target=2Darm=3A_kvm?=
-        =?UTF-8?Q?64=3A_handle_SIGBUS_signal_from_kernel_or_KVM?=
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        James Morse <james.morse@arm.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        "zhengxiang (A)" <zhengxiang9@huawei.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: DFa1eToewje+
+In-Reply-To: <1542880825-2604-1-git-send-email-liq3ea@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-arm] [PATCH] hw: arm: musicpal: drop TYPE_WM8750 in
+ object_property_set_link()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, maozhongyi@cmss.chinamobile.com,
+	Markus Armbruster <armbru@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gjcsw1zAVC5n
 
-On 22 November 2018 at 03:05, gengdongjiu <gengdongjiu@huawei.com> wrote:
->> >
->> > +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr) {
->> > +    ram_addr_t ram_addr;
->> > +    hwaddr paddr;
->> > +
->> > +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->> > +    if (addr) {
->> > +        ram_addr = qemu_ram_addr_from_host(addr);
->> > +        if (ram_addr != RAM_ADDR_INVALID &&
->> > +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
->> > +            kvm_hwpoison_page_add(ram_addr);
->> > +            if (code == BUS_MCEERR_AR) {
->> > +                kvm_cpu_synchronize_state(c);
->> > +                if (ghes_record_errors(ACPI_HEST_NOTIFY_SEA, paddr)) {
->> > +                    kvm_inject_arm_sea(c);
->> > +                } else {
->> > +                    fprintf(stderr, "failed to record the error\n");
->> > +                }
->>
->> Shouldn't there be something in here to say "only report this error to the guest if we are actually reporting RAS errors to the guest" ?
->
-> Yes, We can say something that such as "report this error to the guest", because this error is indeed triggered by guest, which is guest error.
+Hi Li,
 
-I'm afraid I don't really understand what you mean. Could you
-try rephrasing it?
+On 22/11/18 11:00, Li Qiang wrote:
+> The third argument of object_property_set_link() is the name of
+> property, not related with the QOM type name, using the constant
+> string instead.
 
-My understanding was:
- * we get this signal if there is a RAS error in the host memory
- * if we are exposing RAS errors to the guest (ie we have
-   told it that in the ACPI table we passed it at startup)
-   then we should pass on this error to the guest
+You are correct.
 
-but that these are two different conditions.
+> 
+> Signed-off-by: Li Qiang <liq3ea@gmail.com>
+> ---
+>  hw/arm/musicpal.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+> index 9648b3af44..726ae29394 100644
+> --- a/hw/arm/musicpal.c
+> +++ b/hw/arm/musicpal.c
+> @@ -1696,7 +1696,7 @@ static void musicpal_init(MachineState *machine)
+>      dev = qdev_create(NULL, TYPE_MV88W8618_AUDIO);
+>      s = SYS_BUS_DEVICE(dev);
+>      object_property_set_link(OBJECT(dev), OBJECT(wm8750_dev),
+> -                             TYPE_WM8750, NULL);
+> +                             "wm8750", NULL);
 
-If the host hardware detects a RAS error in memory used
-by the guest but the guest is not being told about RAS
-errors, then we cannot report the error: we have no mechanism
-to do so, and the guest is not expecting it.
+Since this property is not related to migration, maybe we can resolve
+this the other way, using TYPE_WM8750 in mv88w8618_audio_init():
 
-thanks
--- PMM
+-- >8 --
+@@ -255,3 +255,3 @@ static void mv88w8618_audio_init(Object *obj)
+
+-    object_property_add_link(OBJECT(dev), "wm8750", TYPE_WM8750,
++    object_property_add_link(OBJECT(dev), TYPE_WM8750, TYPE_WM8750,
+                              (Object **) &s->wm,
+---
+
+So using the same definition would protect someone to accidentaly rename
+the property name.
+
+What do you think?
+
+Regards,
+
+Phil.
+
+>      qdev_init_nofail(dev);
+>      sysbus_mmio_map(s, 0, MP_AUDIO_BASE);
+>      sysbus_connect_irq(s, 0, pic[MP_AUDIO_IRQ]);
+> 

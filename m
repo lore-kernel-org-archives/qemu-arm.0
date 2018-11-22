@@ -1,187 +1,256 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp954027wrt;
-        Thu, 22 Nov 2018 09:22:58 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/VtlzvJVrEsVjXLr5Zi8vXZpW7i4jcSciihzOPUoE65BVoTtH1XYZuC5lS+QHURwDWo/qz2
-X-Received: by 2002:a81:2dc4:: with SMTP id t187mr2435041ywt.304.1542907378408;
-        Thu, 22 Nov 2018 09:22:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542907378; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp954285wrt;
+        Thu, 22 Nov 2018 09:23:13 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dsXFPW+45Cq+ube6smXXjG/cmzBLuWs0aWZzJdWGYsVqy+L59DT3pFkMob8P0BxF/mugTI
+X-Received: by 2002:a81:8043:: with SMTP id q64-v6mr12009763ywf.196.1542907393061;
+        Thu, 22 Nov 2018 09:23:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542907393; cv=none;
         d=google.com; s=arc-20160816;
-        b=DlIgXMBMbSQhZXFe7OzeWl+RvW6qnoJ2EowU7aMIOVCr8XlCfPwASPbogZQWhQBHwk
-         RLDtxvg4PQI+ZNt9RNt9xTwg/66sQ6uCmvUBzKAs34dEpkdvpV1HI8SesJIeYFIVJ89r
-         2uk2Sn4iK+4Y8Op0b+M+N3xRt/EJT9GbnVth0hw2ZIUDgqhmdlf+kwr5G9C08AV1OGm0
-         Kmb4I8Y57uVDkXcOQD7Iob3VU6X/sGS67yqcUqC1Jzhebt6bDSXwvcLTumB+Y7Ua8QX1
-         jkux354T1eLP06JgFGo0ln/RHZ+plPtuAZa5/Zv8M+vZDOC+s5rGbgldtPpPnbxI8WyG
-         tP0g==
+        b=ynHnDMb1XXOhobywvKHxtw1wBy0MosW4WXSiJndE9OLd+s3MLUA6Cnr+ny20iy6q5E
+         TjULIlvjvXx4b7KeWWB0goz305UrZWCZl7Yp76jfMUXJpotxDSaTR1hfe0Uj+77h9Sdp
+         Mezd8+Sp9luAdC8qgOKSSvqyT7ZC80Wo+UTPV3d0k8YRswO2GnhjomuWYgTudY7VR2XU
+         khgDv11Rm5WNZ2893IxuBHisZPwnssnOUtlp1esu3N11F3am/IctednLSbl8NcDVmHMw
+         1Cb0JweCTM3edPTZpQPMhsUSoIx6bFGZopIGkO98cE2x6FB9GvFuU4Hw/wm0ndeRbGFR
+         ZtoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=Nv8RLXbB0Xw8InCXTBhWMTXVE2pnkGLrILWs1J/Y8fM=;
-        b=ZnbXYdgTKOad536t42gTs4ID/8DkiQA3sFNJExUeK79wVt6eKuVXYrZpPVxdFXyIQi
-         jYnPSA+gWubWL5xtBxZLAYyOwQfEIponngvuxvwJ0ZcPGddIHeTaaTJ0SsRA7UrsyIaA
-         cY7zsmikooL6ESb4dpBwx8fsEv+jz+XOReUbOAzMwhy+A3nA++ZlgM69tr6N2RyOXg2U
-         VO6RuD3StNJlBMlK2Iyn/AVM8EkdZVNcZmq6f3xjgnFTaatNn7iyzdq1ePxiM/IonRNE
-         tOA/JtBnOhtiLQA9esmJH799ITSCatUd+cxIsFrfkPUctWGD8pkkekF2HwSgUWxToMei
-         mklw==
+        bh=gWjTU8iYNkricJWPwSiqTOcCJ8ENA9zMOh8FxSPTJC0=;
+        b=b5q2K8S1cRsxTSUDKln3MawTFjJjqa0NXh5c4cDTvxuqkWzYdo0v3BhX340XZTxb7x
+         1+1w7GtpFfQJMq7mmoMIHRK/QDNd8GTzFn/k6hQ0PA0QXcsYoBd/ryVfaE1HsXyAStRv
+         XIiShGf5/mjICsuqwiFAI4oRnnVIb5b1hBQu1fj5cBQKEh6ArGie1Eq6TWF67hG7F6N8
+         nuV57CDeHr1V9rcbpsJ5GwoVdoQV3bp3QpQ+dqR+xtMKUE/YMu68WQSEAGnRqKcrkSx3
+         NUUfZQWkwtTtqdxNRFzrWIEQ+3H5ZO/yQLQYwsyTx3CtEK+bIZQeFmU3Ev+7oB5oWVoF
+         7sPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id a2-v6si1167254yba.55.2018.11.22.09.22.58
+        by mx.google.com with ESMTPS id x2-v6si14031328ybh.266.2018.11.22.09.23.12
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 22 Nov 2018 09:22:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Thu, 22 Nov 2018 09:23:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48154 helo=lists.gnu.org)
+Received: from localhost ([::1]:48152 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gPsgr-0002S3-3R
-	for alex.bennee@linaro.org; Thu, 22 Nov 2018 12:22:57 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49054)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gPsh5-0002NW-S6
+	for alex.bennee@linaro.org; Thu, 22 Nov 2018 12:23:11 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gPsaa-0004yk-Sr
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 12:16:30 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gPsbM-0005fd-9h
+	for qemu-devel@nongnu.org; Thu, 22 Nov 2018 12:17:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gPsaX-0005vJ-19
-	for qemu-arm@nongnu.org; Thu, 22 Nov 2018 12:16:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42412)
+	(envelope-from <eric.auger@redhat.com>) id 1gPsbK-00072U-D8
+	for qemu-devel@nongnu.org; Thu, 22 Nov 2018 12:17:16 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58670)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gPsaU-0005qL-Rk; Thu, 22 Nov 2018 12:16:24 -0500
+	id 1gPsbD-0006oP-Sq; Thu, 22 Nov 2018 12:17:08 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 25C6389AEF;
-	Thu, 22 Nov 2018 17:16:21 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6453F234;
+	Thu, 22 Nov 2018 17:17:06 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-235.ams2.redhat.com [10.36.116.235])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D9EF360610;
-	Thu, 22 Nov 2018 17:16:18 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1CD6C6061E;
+	Thu, 22 Nov 2018 17:17:03 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
 	jean-philippe.brucker@arm.com
-Date: Thu, 22 Nov 2018 18:15:28 +0100
-Message-Id: <20181122171538.12359-8-eric.auger@redhat.com>
+Date: Thu, 22 Nov 2018 18:15:38 +0100
+Message-Id: <20181122171538.12359-18-eric.auger@redhat.com>
 In-Reply-To: <20181122171538.12359-1-eric.auger@redhat.com>
 References: <20181122171538.12359-1-eric.auger@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 22 Nov 2018 17:16:21 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Thu, 22 Nov 2018 17:17:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v9 07/17] virtio-iommu: Implement attach/detach
- command
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v9 17/17] hw/arm/virt-acpi-build: Add
+ virtio-iommu node in IORT table
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: tn@semihalf.com, kevin.tian@intel.com, bharat.bhushan@nxp.com,
 	peterx@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: taQDbJD2zMkd
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eViKUogOZfNO
 
-This patch implements the endpoint attach/detach to/from
-a domain.
+This patch builds the virtio-iommu node in the ACPI IORT table.
+
+The RID space of the root complex, which spans 0x0-0x10000
+maps to streamid space 0x0-0x10000 in the virtio-iommu which in
+turn maps to deviceid space 0x0-0x10000 in the ITS group.
+
+The iommu RID is excluded as described in virtio-iommu
+specification.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
----
- hw/virtio/virtio-iommu.c | 40 ++++++++++++++++++++++++++++++++++------
- 1 file changed, 34 insertions(+), 6 deletions(-)
+v8 -> v9:
+- iommu RID is not fixed anymore
 
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 1b9c3ba416..5c231f865c 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -82,8 +82,8 @@ static void virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
-     ep->domain = NULL;
- }
+v7 -> v8:
+- exclude the iommu RID (0x8) in the root complex ID mapping
+---
+ hw/arm/virt-acpi-build.c    | 50 ++++++++++++++++++++++++++++++-------
+ include/hw/acpi/acpi-defs.h | 21 +++++++++++++++-
+ 2 files changed, 61 insertions(+), 10 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index ec7c4835fe..0e621f6551 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -414,14 +414,14 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiIortIdMapping *idmap;
+     AcpiIortItsGroup *its;
+     AcpiIortTable *iort;
+-    AcpiIortSmmu3 *smmu;
+-    size_t node_size, iort_node_offset, iort_length, smmu_offset = 0;
++    size_t node_size, iort_node_offset, iort_length, iommu_offset = 0;
+     AcpiIortRC *rc;
++    int nb_rc_idmappings = 1;
  
--viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id);
--viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s, uint32_t ep_id)
-+static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
-+                                                  uint32_t ep_id)
- {
-     viommu_endpoint *ep;
+     iort = acpi_data_push(table_data, sizeof(*iort));
  
-@@ -112,8 +112,8 @@ static void virtio_iommu_put_endpoint(gpointer data)
-     g_free(ep);
- }
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+-        nb_nodes = 3; /* RC, ITS, SMMUv3 */
++    if (vms->iommu) {
++        nb_nodes = 3; /* RC, ITS, IOMMU */
+     } else {
+         nb_nodes = 2; /* RC, ITS */
+     }
+@@ -446,10 +446,10 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     its->identifiers[0] = 0; /* MADT translation_id */
  
--viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id);
--viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s, uint32_t domain_id)
-+static viommu_domain *virtio_iommu_get_domain(VirtIOIOMMU *s,
-+                                              uint32_t domain_id)
- {
-     viommu_domain *domain;
+     if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++        AcpiIortSmmu3 *smmu;
+         int irq =  vms->irqmap[VIRT_SMMU];
  
-@@ -191,10 +191,27 @@ static int virtio_iommu_attach(VirtIOIOMMU *s,
- {
-     uint32_t domain_id = le32_to_cpu(req->domain);
-     uint32_t ep_id = le32_to_cpu(req->endpoint);
-+    viommu_domain *domain;
-+    viommu_endpoint *ep;
- 
-     trace_virtio_iommu_attach(domain_id, ep_id);
- 
--    return VIRTIO_IOMMU_S_UNSUPP;
-+    ep = virtio_iommu_get_endpoint(s, ep_id);
-+    if (ep->domain) {
+-        /* SMMUv3 node */
+-        smmu_offset = iort_node_offset + node_size;
++        iommu_offset = iort_node_offset + node_size;
+         node_size = sizeof(*smmu) + sizeof(*idmap);
+         iort_length += node_size;
+         smmu = acpi_data_push(table_data, node_size);
+@@ -470,16 +470,38 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+          */
+         fill_iort_idmap(smmu->id_mapping_array, 0, 0, 0xffff, 0,
+                         iort_node_offset);
++    } else if (vms->iommu == VIRT_IOMMU_VIRTIO) {
++        AcpiIortPVIommuPCI *iommu;
++
++        nb_rc_idmappings = 2;
++        iommu_offset = iort_node_offset + node_size;
++        node_size = sizeof(*iommu) + sizeof(*idmap);
++        iort_length += node_size;
++        iommu = acpi_data_push(table_data, node_size);
++
++        iommu->type = ACPI_IORT_NODE_PARAVIRT;
++        iommu->length = cpu_to_le16(node_size);
++        iommu->mapping_count = cpu_to_le32(2);
++        iommu->mapping_offset = cpu_to_le32(sizeof(*iommu));
++        iommu->devid = cpu_to_le32(vms->virtio_iommu_bdf);
++        iommu->model = cpu_to_le32(ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI);
++
 +        /*
-+         * the device is already attached to a domain,
-+         * detach it first
++         * Identity RID mapping covering the whole input RID range
++         * output IORT node is the ITS group node (the first node)
 +         */
-+        virtio_iommu_detach_endpoint_from_domain(ep);
-+    }
-+
-+    domain = virtio_iommu_get_domain(s, domain_id);
-+    QLIST_INSERT_HEAD(&domain->endpoint_list, ep, next);
-+
-+    ep->domain = domain;
-+    g_tree_ref(domain->mappings);
-+
-+    return VIRTIO_IOMMU_S_OK;
- }
++        fill_iort_idmap(iommu->id_mapping_array, 0, 0, 0xffff, 0,
++                        iort_node_offset);
+     }
  
- static int virtio_iommu_detach(VirtIOIOMMU *s,
-@@ -202,10 +219,21 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
- {
-     uint32_t domain_id = le32_to_cpu(req->domain);
-     uint32_t ep_id = le32_to_cpu(req->endpoint);
-+    viommu_endpoint *ep;
+     /* Root Complex Node */
+-    node_size = sizeof(*rc) + sizeof(*idmap);
++    node_size = sizeof(*rc) + nb_rc_idmappings * sizeof(*idmap);
+     iort_length += node_size;
+     rc = acpi_data_push(table_data, node_size);
  
-     trace_virtio_iommu_detach(domain_id, ep_id);
+     rc->type = ACPI_IORT_NODE_PCI_ROOT_COMPLEX;
+     rc->length = cpu_to_le16(node_size);
+-    rc->mapping_count = cpu_to_le32(1);
++    rc->mapping_count = cpu_to_le32(nb_rc_idmappings);
+     rc->mapping_offset = cpu_to_le32(sizeof(*rc));
  
--    return VIRTIO_IOMMU_S_UNSUPP;
-+    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(ep_id));
-+    if (!ep) {
-+        return VIRTIO_IOMMU_S_NOENT;
-+    }
+     /* fully coherent device */
+@@ -490,7 +512,17 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+         /* Identity RID mapping and output IORT node is the iommu node */
+         fill_iort_idmap(rc->id_mapping_array, 0, 0, 0xFFFF, 0,
+-                        smmu_offset);
++                        iommu_offset);
++    } else if (vms->iommu == VIRT_IOMMU_VIRTIO) {
++        /*
++         * Identity mapping with the IOMMU RID (0x8) excluded. The output
++         * IORT node is the iommu node.
++         */
++        fill_iort_idmap(rc->id_mapping_array, 0, 0, vms->virtio_iommu_bdf, 0,
++                        iommu_offset);
++        fill_iort_idmap(rc->id_mapping_array, 1, vms->virtio_iommu_bdf + 1,
++                        0xFFFF - vms->virtio_iommu_bdf,
++                        vms->virtio_iommu_bdf + 1, iommu_offset);
+     } else {
+         /*
+          * Identity RID mapping and the output IORT node is the ITS group
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index af8e023968..b14aa95dc1 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -601,7 +601,8 @@ enum {
+         ACPI_IORT_NODE_NAMED_COMPONENT = 0x01,
+         ACPI_IORT_NODE_PCI_ROOT_COMPLEX = 0x02,
+         ACPI_IORT_NODE_SMMU = 0x03,
+-        ACPI_IORT_NODE_SMMU_V3 = 0x04
++        ACPI_IORT_NODE_SMMU_V3 = 0x04,
++        ACPI_IORT_NODE_PARAVIRT = 0x80
+ };
+ 
+ struct AcpiIortIdMapping {
+@@ -628,6 +629,24 @@ struct AcpiIortItsGroup {
+ } QEMU_PACKED;
+ typedef struct AcpiIortItsGroup AcpiIortItsGroup;
+ 
++struct AcpiIortPVIommuPCI {
++    ACPI_IORT_NODE_HEADER_DEF
++    uint32_t devid;
++    uint8_t reserved2[12];
++    uint32_t model;
++    uint32_t flags;
++    uint8_t reserved3[16];
++    AcpiIortIdMapping id_mapping_array[0];
++} QEMU_PACKED;
++typedef struct AcpiIortPVIommuPCI AcpiIortPVIommuPCI;
 +
-+    if (!ep->domain) {
-+        return VIRTIO_IOMMU_S_INVAL;
-+    }
++enum {
++    ACPI_IORT_NODE_PV_VIRTIO_IOMMU     = 0x0,
++    ACPI_IORT_NODE_PV_VIRTIO_IOMMU_PCI = 0x1,
++};
 +
-+    virtio_iommu_detach_endpoint_from_domain(ep);
-+    return VIRTIO_IOMMU_S_OK;
- }
- 
- static int virtio_iommu_map(VirtIOIOMMU *s,
++#define ACPI_IORT_NODE_PV_CACHE_COHERENT    (1 << 0)
++
+ struct AcpiIortSmmu3 {
+     ACPI_IORT_NODE_HEADER_DEF
+     uint64_t base_address;
 -- 
 2.17.2
 

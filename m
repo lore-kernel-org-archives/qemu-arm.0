@@ -1,192 +1,96 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2300681wrt;
-        Fri, 23 Nov 2018 09:09:52 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WGyfY/eB9DBnY/dcLItQotYyp4+t5eLqijpLvI0SNLacEw1cDXjZ4vQugMXLYYHH9HTt5U
-X-Received: by 2002:ac8:d86:: with SMTP id s6mr15049494qti.324.1542992992377;
-        Fri, 23 Nov 2018 09:09:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542992992; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2301032wrt;
+        Fri, 23 Nov 2018 09:10:09 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fvLayviVOU3QWywmoU26O367CeIbCA7zVLRUAKRs4HMFG9Yp2dFXyFavffQF0eOYYOEu6p
+X-Received: by 2002:a81:b2c8:: with SMTP id q191-v6mr16800490ywh.313.1542993009692;
+        Fri, 23 Nov 2018 09:10:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542993009; cv=none;
         d=google.com; s=arc-20160816;
-        b=RGBpU5HA828NnxHwSsd62quJECeuKZLrc+ZbwZRe1dJCFUKkHfqaxyDR8TUEuJtXMc
-         3D+G3Eypyaggln5Rve8kYVAMmXeHtb1gfGH2rOiBR+BNPfuo7X8Rz6p3Cmv5p0XJ420N
-         u+MVL1Rm4Ke18KzkH1PFht2WzLxM9pyUChkD+nHB9z/db6CnBp2iKUx3dosBsQzlDlQs
-         V0nrb5RZxwOSsozGDS9/YGsG6sgV/ptv6gnl4UXULYUJ8CTR5XMxSAGAZpNwNJ8k+64G
-         4Zcq4NpVMowRr3Dd2Nt76ipmuCEH9j+Ud8dp6ot6sqCn1gp2zMGTjzAq3BLVtVwcqUUL
-         TAOg==
+        b=QCkii13yVfIObqDxS72DyaXsvfUTt2KIdnRnw4A5ckSAvB/bBZ8sqByTF+qxEpqP9N
+         PAI66KZV8yvgfRZsPCZ/SWcGIpvRqvUSum35CtkT+Kv9ODfEqCQv23ZYKMcW2xL/CoEO
+         pww3gNmYGZfvGzuCZ93y776Zvv5W+P4GdzoXdqG+7/X+Vrfv6ynGArguUyVE5DBA7WhA
+         ESHxb86RLNnw7cOuz/VleVU+H1koC/HYn66vOfxdB9le7S991dRKw5QImJr4FjnoJgF9
+         wcdN/TcV+tRQCWsDeWPSzBvL6LlUvATAT996ljCZIuaILQ1RlZuyw8d9OORrGo75ljJL
+         xBrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:spamdiagnosticmetadata
-         :spamdiagnosticoutput:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:to:from:date:dkim-signature;
-        bh=FYTIaT1r7KSG+ISVhTrEDtBjXoKjIaOQksqKuazGpgs=;
-        b=k1xAEw4E4bByvSoRQdhSpi0pjeznTm5LtPvCJH8VeieX1c/6hftljGP4b6rJOGyxAr
-         MyTUMOxvaCJ2RvsscouNWFQAo3cK53EL/sBJc7s/0TWpwa+CCht/8HgWlLvK/+Gdw9ck
-         mlYnj5Nq4jE/fspbsfHGzHZIeGt7NR/rhir3VNL5erQIZE6Dg3gCkI6sUBlnVqojoNZO
-         vGs1IjeZD1cUFH6PK+kUNtUQLv1bfFaoNJaqF3uZu/FIQgTxA/eMWg26psAjTXSwllQy
-         Nuu9bSEthWGZThpTaEryXQIBUZN9Lxlvq8AvY7Q5qynsV7fak1/8/K67v/NOvVOZlf95
-         Z5bw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=374TnMyyD5Zq9DqHYSz0THmoYmbcvIe24khGdy5puRs=;
+        b=B6nhF4fBUIbAfiva75aEoWBcgu2HsijCMZ9zo0evi6ZJdz6nVlI3Dinchto5FSEgBI
+         OhNxzBfKbhvEntcf+hGh6crwa9Wf9OeA19tVUGBAki31e7VsHvmfgcDqttwj98GkE9jM
+         bv9109ZH/V8QdpBuXzxPIebJuezURZw8/EaUg7yiXvtHoQndsnl9MsSDPL9SoJERcAd6
+         //VzshMKnOq6cZ9e3gPMIOMIiQj5P/4BWNOxvKAp2jrC1MDVhfBVuBwE4OZ7/EJU3Jnp
+         raX8vgdJfNfvRwY6gSNoFqx7PfQ/3WUxI07zujHdrAGgRfOYa9RGCIALnCNSwihYbSzM
+         IWkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=huMvSULu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=TRuXfJyw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t25si11384845qth.297.2018.11.23.09.09.52
+        by mx.google.com with ESMTPS id g15-v6si31927961ybq.110.2018.11.23.09.10.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Nov 2018 09:09:52 -0800 (PST)
+        Fri, 23 Nov 2018 09:10:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@xilinx.onmicrosoft.com header.s=selector1-xilinx-com header.b=huMvSULu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53594 helo=lists.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=TRuXfJyw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53596 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gQExj-0005ap-NZ
-	for alex.bennee@linaro.org; Fri, 23 Nov 2018 12:09:51 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37463)
+	id 1gQEy1-0005n4-2H
+	for alex.bennee@linaro.org; Fri, 23 Nov 2018 12:10:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39932)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1gQEqv-00081H-Hv
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 12:02:50 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gQExl-0005ka-QG
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 12:09:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgari@xilinx.com>) id 1gQEqr-0007Mg-GJ
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 12:02:49 -0500
-Received: from mail-eopbgr770047.outbound.protection.outlook.com
-	([40.107.77.47]:37952
-	helo=NAM02-SN1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <edgari@xilinx.com>)
-	id 1gQEqr-0007Jh-71; Fri, 23 Nov 2018 12:02:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=xilinx.onmicrosoft.com; s=selector1-xilinx-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=fAX/fBdioWgGrvNjRmSYldY4Qxzd2BLtRfC6YgXQoFw=;
-	b=huMvSULuTtPxHwiIGfLa5hWl529zSaigvRbmobBzUt2CntLLny5rUgw5dtBLJvAhIW7E99D1evhx9asknB3pqTsaMQey2D/o6ZwYgc791vCc8k0Q+xlySU++ogYBwm/E/iVAKXvID+kiA8gP+DbAbrbgnpEz+ky0y6Xb0FUJy1c=
-Received: from DM6PR02CA0019.namprd02.prod.outlook.com (2603:10b6:5:1c::32) by
-	DM5PR0201MB3511.namprd02.prod.outlook.com (2603:10b6:4:77::11) with
-	Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1361.18; Fri, 23 Nov 2018 17:02:42 +0000
-Received: from CY1NAM02FT022.eop-nam02.prod.protection.outlook.com
-	(2a01:111:f400:7e45::204) by DM6PR02CA0019.outlook.office365.com
-	(2603:10b6:5:1c::32) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.1361.15 via
-	Frontend Transport; Fri, 23 Nov 2018 17:02:42 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.100)
-	smtp.mailfrom=xilinx.com; kernel.org; dkim=none (message not signed)
-	header.d=none;kernel.org; dmarc=bestguesspass action=none
-	header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
-	149.199.60.100 as permitted sender) receiver=protection.outlook.com;
-	client-ip=149.199.60.100; helo=xsj-pvapsmtpgw02;
-Received: from xsj-pvapsmtpgw02 (149.199.60.100) by
-	CY1NAM02FT022.mail.protection.outlook.com (10.152.75.185) with
-	Microsoft SMTP Server (version=TLS1_0,
-	cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.1339.15
-	via Frontend Transport; Fri, 23 Nov 2018 17:02:40 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66]:34948
-	helo=xsj-pvapsmtp01) by xsj-pvapsmtpgw02 with esmtp (Exim 4.63)
-	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gQEql-0004Hb-NP; Fri, 23 Nov 2018 09:02:39 -0800
-Received: from [127.0.0.1] (helo=localhost)
-	by xsj-pvapsmtp01 with smtp (Exim 4.63)
-	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gQEqg-0006Ae-Jj; Fri, 23 Nov 2018 09:02:34 -0800
-Received: from xsj-pvapsmtp01 (mailhost.xilinx.com [149.199.38.66])
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id
-	wANH2Qe5013682; Fri, 23 Nov 2018 09:02:26 -0800
-Received: from [10.23.116.110] (helo=xsjedgari31.xlnx.xilinx.com)
-	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
-	(envelope-from <edgar.iglesias@xilinx.com>)
-	id 1gQEqY-00069d-6f; Fri, 23 Nov 2018 09:02:26 -0800
-Date: Fri, 23 Nov 2018 18:02:25 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Message-ID: <20181123170225.GJ7447@toto>
+	(envelope-from <peter.maydell@linaro.org>) id 1gQExk-0006uo-1L
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 12:09:53 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:34336)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gQExi-0006mm-1A
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 12:09:51 -0500
+Received: by mail-ot1-x344.google.com with SMTP id t5so11210383otk.1
+	for <qemu-arm@nongnu.org>; Fri, 23 Nov 2018 09:09:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=374TnMyyD5Zq9DqHYSz0THmoYmbcvIe24khGdy5puRs=;
+	b=TRuXfJywpte+w5BMvoyCuu58EoZgx6klH72bBS5GnOxbs8O2BMMBBx5KtnJSgEKkbY
+	5SFA9kC8GSJynflcQsTS+OypU4MuEaBDMH40mbf6PorDZwzEEcZ9vJDzo4P9akZTXfnq
+	WBERhFsCpctQvWk5lN+eRFEcXm9vWwiXEo1TI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=374TnMyyD5Zq9DqHYSz0THmoYmbcvIe24khGdy5puRs=;
+	b=j4BjpDUj1K7EvkKZ9rDtK0sPlCo7Z9csky6445NViB8943FqYWMLBLkKOKX5tofrZu
+	yZPznz74SQHYC8MZwfJ0fRxKLM1Qeg4JMQOy2cIdz5wrEgcWbEJjVK3T/2vIOeZe0+9c
+	pcbiIiPRx3gsB8JWCLzVaXB2aDacRLZJr6CnmsS6ooGABthR/x6eWRrhhxjyiJdB3SXf
+	phWKcT7ot1znWEEoZVComqsWdOK5ar48O6bk5y9ZLieRaZvVSgeWPZibGKqGJCAohwQZ
+	q4oV9i1+MF3g8CBgRTE6nd0MfFMG8Z63c0cDKDKvmjaEDcFguxd+b9Pag9kwhX9HQQTk
+	QAyA==
+X-Gm-Message-State: AA+aEWbod5AAzowd//ZEIrmbfX2EAi3oVaQjiZjgqdmD7CGUrgXmuYu1
+	D/SS7C5GCTWZQ1ErhevxR2/ertO2QimpGBvQqeHtww==
+X-Received: by 2002:a9d:582e:: with SMTP id r46mr9397042oth.238.1542992986685; 
+	Fri, 23 Nov 2018 09:09:46 -0800 (PST)
+MIME-Version: 1.0
 References: <20181123135450.24829-1-edgar.iglesias@gmail.com>
 	<20181123135450.24829-2-edgar.iglesias@gmail.com>
 	<75bcddbc-da2d-aeb3-71d3-52b635520d2a@redhat.com>
 	<20181123165945.GM1148@toto>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 In-Reply-To: <20181123165945.GM1148@toto>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.100; IPV:NLI; CTRY:US; EFV:NLI;
-	SFV:NSPM;
-	SFS:(10009020)(7916004)(39860400002)(136003)(396003)(376002)(346002)(2980300002)(438002)(199004)(189003)(478600001)(229853002)(39060400002)(36386004)(6916009)(5660300001)(47776003)(8936002)(356004)(81156014)(8676002)(81166006)(14444005)(305945005)(33716001)(50466002)(23756003)(9686003)(6246003)(486006)(2906002)(107886003)(1076002)(58126008)(106002)(106466001)(54906003)(336012)(186003)(77096007)(26005)(446003)(476003)(2870700001)(426003)(63266004)(11346002)(4326008)(9786002)(33656002)(7416002)(126002)(53546011)(316002)(76176011)(93886005)(18370500001)(107986001)(5001870100001);
-	DIR:OUT; SFP:1101; SCL:1; SRVR:DM5PR0201MB3511;
-	H:xsj-pvapsmtpgw02; FPR:; SPF:Pass; LANG:en;
-	PTR:xapps1.xilinx.com,unknown-60-100.xilinx.com; A:1; MX:1; 
-X-Microsoft-Exchange-Diagnostics: 1; CY1NAM02FT022;
-	1:kPVzPqvxj4DEgtZ5Fo+ZQoJShwgxKUjYNcOoRPRsW4YT1tHe67pYyfP8qzgbA/rXMC/ukFxvljX/ouVCMqbP0SNGDMJxwPyLEIYDnEFtCeCFQr56UtuWg3SH6gcV3aSJ
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 99164709-c432-4bdc-2f29-08d651657b3b
-X-Microsoft-Antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4608076)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060);
-	SRVR:DM5PR0201MB3511; 
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR0201MB3511;
-	3:6bBOnR7z0E3lpYaK9RuPiCQBd4w8mKE/Nl+wqKRAZBnsAuKMqTE9XUtcrMYZ3x0tHAIug/DNz4r0pjfgcuWfLiWMJtUy+YFC0eotWUnUvDZoaTTQKhsMj6nuavqkdatd/l7gMWq+CVLRejDUzAFPSLmRxmtNkXFPOYSJ82LZiSnU8V8bm8bObLkPuk0y9CZf5dqP/AnXB4Vq+H2hsZchkj4Q6bW1ika3mBXPTOjyprL0Fa55VaoKskM+XECS8aknAgFh07MoS4iKmQELaJv3hlEInrsxYSWr4rWwR0PsNpNFgmOKcdhXvPaogPnGLRvg9W1vxiufrdyTcnHakafxM5tHvy2FsHYs9S5BKHVKs80=;
-	25:TH+Jkjy1+esfdafhyEzkVUOo9E60DNopyU8W1/6L5sF0a854TxsvMNkSKDIjBbl7bg293ACjr7+UqjXCrntTe7FFhD0EBbwEDFqLGf0Ou1Uju6duI0a2kGnx+zxcWqoRmugsKpWct+f7E7XFgvHKC+VCqBk0HwSfCrOj+VM/sPJ6TEUxmVknzumg58KDL/waQChoG7gFeH1w7tFW5wAELERYrCCk2SvEk3Nde93xrF6nBHImHtl1le+6JN4jhP9Qr0U5YDjPgbLznNBRXPw2G9ryoL7v49Po/W4gYnw3q9ZjjdKGOKvsbWkUy/nvMHvcnILd+3cz1xfxhtgHSTP3Vw==
-X-MS-TrafficTypeDiagnostic: DM5PR0201MB3511:
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR0201MB3511;
-	31:hFtihqW4NG00amMdXHoHyYhjAnGLQzPNDFRmYmTqzUsqqaEE0Vpw3JiORaEwhw038fYJJlicsRMM7sm12oQPY7uWgcdBag/NlU3BfD90JHmGnk2nklHzzZEMfey1b41VaLpcDpREFBmZh5V/PiJ2DRgshFzFktZdwW+KgibHLeEzwvsvX5i62u59ctYIrhYppqD2HYdU05WPW+ME70wHRdbGd0x3XaYQJXe0ONG+IRw=;
-	20:gN7kdaXx7Ex3akCa6GRa2egAX558HyA408NKUYKJhWuG/vAyJFC+7ic/63ctNgjXXbNfrbhM59INYpamsS+HFviyWOXqwPuODyktwWQJsbVz3ux45QVKC6gzzx7UEFji04QEDepOHyuwEjI/SV75P0fLJc0JN67J4Bk9AAZgTABv0Mpf9vr4WMCP4fY0mNe8K9NgZyYvvY3Wh0Bcqen3FqqxXIaLu0bXbzdf5rVoMevZV3SfJj+iBAjfRORUggqRM7KM3Fu1hUTQ7v9KNeKg907/21wiNq10372LKxRh+/BDlM7eoAedYtSnLrWvtWY5I5rLhQ+5/06FTWH+v+bo1c2ijX4sLtyxLlJXNpZXZ1mf2Wh5hUoxNFB2mPMb+bY12nCVDO8c170owN6GxIi5WnCQ8Xrw1++/BaMwmJbBBjROnZysvXvVYRMH5vHzfrl4Sg0u17Mm31M161+0vYssTuwDyuV2SKA6CEN2qfz7LsCm19Nv+bd2eHjqN5QVpHah
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-Microsoft-Antispam-PRVS: <DM5PR0201MB3511FEE376E5BF6728920949ABD40@DM5PR0201MB3511.namprd02.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-Exchange-Antispam-Report-CFA-Test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(5005006)(8121501046)(93006095)(93004095)(3231442)(944501410)(52105112)(10201501046)(3002001)(6055026)(148016)(149066)(150057)(6041310)(20161123558120)(20161123564045)(20161123560045)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(20161123562045)(201708071742011)(7699051)(76991095);
-	SRVR:DM5PR0201MB3511; BCL:0; PCL:0; RULEID:;
-	SRVR:DM5PR0201MB3511; 
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR0201MB3511;
-	4:oWPZ8O0aKAmr9RvWjWtfh1bF7htECC+iZ7jrDdVUFuxA9zc45Ut74TOuUqJahXA8DaXUpLqV7Ni486eUUY6vWaz70aOsRFZO6KbMXy5sfAc37mUvHo9woZW7t2XKcfw6RC32Z2qMP87lpXDCNQZMHnWVem1fgu3OEEwAUZeKrg4lhYAAG+8xwDTp4JlvVq/xn6jUNCQYIrgY9XkU4k9gxiBoNUwvIO4XOUThul67KJGgAqHTSGgQ/R+WZtKd9hLHq00lGqcprRuUVfo2zPt/iQ==
-X-Forefront-PRVS: 086597191B
-X-Microsoft-Exchange-Diagnostics: =?us-ascii?Q?1; DM5PR0201MB3511;
-	23:HIeIsaaCFnvLJVksdlgJDqnLeDTqtbX1bqZ+jq1?=
-	=?us-ascii?Q?XOLg3KNwfJYAtxIA5bJnVkjIL1cmC9fRaaqhjg6MF420W7QHlWfiGtTqEiiK?=
-	=?us-ascii?Q?Sq9PC088rAIni6rNKdHwhFqJNxj2+WX4pj9id1cOneZa//azrpSwedLhIjnz?=
-	=?us-ascii?Q?MT3Qo35C5U5qkPqQ9qSAHsA9qe6MlYd8l5wT3voyZvXkWEWYe5YSESQ0bRaS?=
-	=?us-ascii?Q?TmrkcX2ZuSU+/ndc/pRFuNq5bbfNisYjUjpKpK+54X+aRzLetXDAzC2wqwSO?=
-	=?us-ascii?Q?NqiNlFEYTqIHwYRmF8ZfCSo5LzFSxAf2sKN8hssBnHsSLd0ZusXU0zXyrmYT?=
-	=?us-ascii?Q?nRBMFRkVDE5PHwQ8/2I/8J9GufGLjKYFtznCVTrpA1lnrwZKDScbmW3Wf8/g?=
-	=?us-ascii?Q?p+AyH7PvD7YSIfAjnoC3TCBJIV4/FkXVWWo82rXyF1nA1IhjVg382eIO/PDE?=
-	=?us-ascii?Q?ESmXmuy8bSPo28bsMJtuiBGv09OA2/2mgshVJLi+nqjfNGWhUJ5z8FpNMmr5?=
-	=?us-ascii?Q?wmnpSSXcJKI0dKnv+nCW1EuV8jBqfALwcW9BGN5vGIBBOisB8IFQt4aQWkKi?=
-	=?us-ascii?Q?xvWhcIUeeIPpiNsLwGNF1fbhiY8dlnINq5jWXY/pZtQObkveS5F0OuIX7xa8?=
-	=?us-ascii?Q?70LnIx/IpWLZMOQ453krcRF8ZuUUCyDaBi2F6qJmC5f/nRqEzK+JENkIW1+Z?=
-	=?us-ascii?Q?8aAFdowuPas4y8sIVRU6YDIRCArT6UuWgcRLMUbFUssZQA/Q8gj2eIb/Kiue?=
-	=?us-ascii?Q?WOXYcVf/Y8bdiUHoObWVWkHW5wl8/SgxAmDriTdCvM+bOComOX71Frx53LNt?=
-	=?us-ascii?Q?EdFlm0prkOtSQliUDReErE0j2A+R+cLyH48OSwxXLE5MqN8lhESyz14ctm7O?=
-	=?us-ascii?Q?1QQ4KfFEWpMkp9IxBEV6tP8y93ZEZbCxMHR6bwG7DqFhbGr3TQvr+qcNRBOA?=
-	=?us-ascii?Q?WDKwsErW7gfAIK98PKh7F9kjxWw9O/zqrhPaMgnxk/GLh7f3+n3NCI5IwsC3?=
-	=?us-ascii?Q?U/jy0ROizgyb5ANnMIRog3GKngOYNA8mkfSvEjHiEiQVxoFj06rdF2pPRjeC?=
-	=?us-ascii?Q?zBv+yUqzlHnrjeUeocbSN7VAnaibWS0rbac5UBa6sjC36+LaeJQ0vl1ekw0F?=
-	=?us-ascii?Q?zdf3qq4qxuJiOSCLklEJ//W6umOsq9UwX/KzfH1sdKnsO+aICCKDrOzv839B?=
-	=?us-ascii?Q?ox9LIF8+CssfJVqE6A0+zYM/pwj0XSgKl9swyKky7iFADvxWwtckzPLMZNOl?=
-	=?us-ascii?Q?980R96vR3KbrqGt60UROHQ61rDlGpJ0N6kzqVb9ViqUY8utrmIsSveHOjNA/?=
-	=?us-ascii?Q?QWqAY0/8YUJlUtd/Ru/+WZBs=3D?=
-X-Microsoft-Antispam-Message-Info: 0SvsNQvknVF8WmXSaOp4H6bRshRN3U/H2W5ILS06N6k9H+yBrVpoxpwXJMHScXW384/YnXjR/ZohmK2WpkzYsSZfVkgHdzJUbeawbE8j0Nboj91oaKJ7Ws9Swz+9Gy/Xl4Mo+A2yQarHyspm7Pqygv+JleeR6STnMjKVbtzD+MLgwPRZa2X7cu947ZN40At5Y/IL25+Z8zrqljzEM6jcmJhSJ/wMDnQ/6bPI+FRNjYcyqdhB0VIDKCh04NHrofHiU53kkHqaHLRVBdLJSeuvwo0hGTaBucs9pEbid9VIsh4NX0Z+9tZduermKXD0CrXG/dTGOyP7BtkumyyoQ+wW3/zQJJFMJZvcIop7ker66u0=
-X-Microsoft-Exchange-Diagnostics: 1; DM5PR0201MB3511;
-	6:DbWImGS/5y2TFKc4jMSo2tkr1ZoDEplCVQzm4Q55zlI0Ejjp3NwFk4X01C7lUvHFyLx8/FVBLQsMb6qIQCVb2PoTfimuJeLZm+/dHnjYf36tMqNtSCxnmjAbFt9Dy7lZOCqgj79goRVK4YANjctQG4Rlb5Xhj4wn8LW0SRQMx43Sx9Hx/KbNFTWrWjjao/VlugqoEcsanZOfaKxiQqpd5nyWQWfPID/8mE58ptZfrbgzIzl1pyGdCklAn7A1/Ht2Q5rKnHfX4ltcbYCuCDJA1d7MV8Saq4stWE1NunWbrtIbQ6SOlUzVTxp3V9KpWa1rduJ1hGNnBwp1ptee9zg5bN/TBmx0AtDtTAgWSrtBvE7X3V1aM9BIOxkwOnc4tf3otMV7ZclFFBeuDv/diBrfUswl7P9xcM/Z80YMJzGCIlhJBt1Mzor+0vT9sukGtetgdZ1LtnN+4B+Ln3oIAQcPDg==;
-	5:MrVKIoiere5YIWhDarRKIU5Y3//TguHxugFd2qO4z0JQHm2zGqBs7NnQKE71Y232IV98KJnXFWrEK0JbsaMbsunVUl32oh0ee47/udL1bLFaX0jfX263Zm9nbmqtE/QO8vE17TXc7sDy2HtloNJAPh6DAyKBPmGBa+1tXnKpFdM=;
-	7:vB5Yj/OMEHaNS7/7uwDrBcNouNaPn/d/vO6734WxvIJNQIIJ1EvksryXQEZPomukVQCRbzwh4pEZCmRVn58np0v8Umh19JI7ONxnZIQqky7n6GUguNRmlHiNjLa1F+SCWbHW7BYyLzJhx0DTKLFhdA==
-SpamDiagnosticOutput: 1:99
-SpamDiagnosticMetadata: NSPM
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Nov 2018 17:02:40.1464 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99164709-c432-4bdc-2f29-08d651657b3b
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;
-	Ip=[149.199.60.100]; Helo=[xsj-pvapsmtpgw02]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR0201MB3511
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.77.47
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 23 Nov 2018 17:09:35 +0000
+Message-ID: <CAFEAcA8vWT5sayyBzbU7S8BwA06Kj=G1izioufjHFJdsEkyq4g@mail.gmail.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 Subject: Re: [Qemu-arm] [PATCH v1 1/1] net: cadence_gem: Remove incorrect
  assert()
 X-BeenThere: qemu-arm@nongnu.org
@@ -200,86 +104,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
-	sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
-	alistair@alistair23.me, qemu-devel@nongnu.org,
-	frederic.konrad@adacore.com, qemu-arm@nongnu.org,
-	muhammad_bilal@mentor.com,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+	Francisco Iglesias <frasse.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	qemu-arm <qemu-arm@nongnu.org>, mbilal <muhammad_bilal@mentor.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: p1xqUHMM/RE2
+X-TUID: GnS0bMXL/Jsl
 
-On Fri, Nov 23, 2018 at 05:59:45PM +0100, Edgar E. Iglesias wrote:
-> On Fri, Nov 23, 2018 at 05:46:17PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> > Hi Edgar,
->=20
-> Hi Philippe,
->=20
-> >=20
-> > On 23/11/18 14:54, Edgar E. Iglesias wrote:
-> > > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> > >=20
-> > > Don't assert on RX descriptor settings when the receiver is
-> > > disabled. This fixes an issue with incoming packets on an
-> > > unused GEM.
-> > >=20
-> > > Reported-by: mbilal <muhammad_bilal@mentor.com>
-> > > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> > > ---
-> > >  hw/net/cadence_gem.c | 1 -
-> > >  1 file changed, 1 deletion(-)
-> > >=20
-> > > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> > > index d95cc27f58..7f63411430 100644
-> > > --- a/hw/net/cadence_gem.c
-> > > +++ b/hw/net/cadence_gem.c
-> > > @@ -979,7 +979,6 @@ static ssize_t gem_receive(NetClientState *nc, co=
-nst uint8_t *buf, size_t size)
-> > > =20
-> > >          /* Do nothing if receive is not enabled. */
-> > >          if (!gem_can_receive(nc)) {
-> > > -            assert(!first_desc);
-> >=20
-> > Maybe worth:
-> >=20
-> >                trace_gem_receive_packet_drop(size);
->=20
-> Or perhaps a generic tracepoint on packet drops for any device.
-> Anyway this is probably something for after the release.
->=20
-> Not sure if it's too late to even get the removal of the assert into this=
- release? Peter?
->=20
-> >=20
-> > >              return -1;
-> >=20
-> > Shouldn't this be 'return 0'?
-> >=20
-> > The "net/net.h" doc is scarce...
->=20
-> If we return 0 my understanding is that we later need to actively
-> call qemu_flush_or_purge_queued_packets() to renable the rx
-> path which the GEM model doesn't do. So that would mean
-> refactoring the model a bit.
+On Fri, 23 Nov 2018 at 16:59, Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+> Not sure if it's too late to even get the removal of the assert into this release? Peter?
 
-Actually, the GEM model does do that, my bad, so yes return 0 seems to be t=
-he right thing to do here.
+If you're happy that removing the assert is the correct fix,
+yes, this could go in before rc3 next week.
 
-Thanks,
-Edgar
-
-
->=20
-> Cheers,
-> Edgar
->=20
->=20
-> >=20
-> > Regards,
-> >=20
-> > Phil.
-> >=20
-> > >          }
-> > > =20
-> > >=20
+thanks
+-- PMM

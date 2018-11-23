@@ -1,87 +1,109 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1854872wrt;
-        Fri, 23 Nov 2018 03:04:37 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cAqJ+atG7g00sax8DAXgdpOSeNzQGpfup2IXe4wKNii5NKu0jPi6fFXG7OhtzEKdP7eHMU
-X-Received: by 2002:aed:23c5:: with SMTP id k5mr13812532qtc.39.1542971077322;
-        Fri, 23 Nov 2018 03:04:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542971077; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2020544wrt;
+        Fri, 23 Nov 2018 05:20:49 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fLCZVzzCJy9e9j80Qc1rY5Rqxtm1dPT+nQ4WcDN8y9yfkZhJAPajUpMdih3DS0mMt4K4RY
+X-Received: by 2002:a81:a80a:: with SMTP id f10mr16337062ywh.389.1542979249604;
+        Fri, 23 Nov 2018 05:20:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542979249; cv=none;
         d=google.com; s=arc-20160816;
-        b=qpXv35/L6lRXonScDJDg7KEnIp04Jz2cuMLTaHf4HG6SDC51jNVqAgPBl5l+mlHvh9
-         uOuxEVJlFXR+U659v/5D2urw5Xpk9s+nGOAoijgd0R9poB2THyGuw/LIoZDnLvr9N2kD
-         FdqEgwjqTUb+toBgStjS9HoZVNN3HvvxvvX2Wc6Hm/4Bepdckc1eXp2PVnFPQqN7FBBJ
-         EDNRsuBozl8o+lcfDcQbGq4OXt/1Q5DKvq8AjtlB+RUu1E3c+Ixakdw6RVQdli+h4h54
-         rEYiN+qH2K6d44PN10lml608/lT5gZd10JsxFbaWJGmDVIoWoVv+S3C8w0s34Ar3DXWo
-         /SgA==
+        b=hkSFQqFGcHcC3hvRgneHSJkkrf8yhodH6RqyAqGpefDF/osrIxa1QNvaYDH9TlbO37
+         gu8BmBezU3a+YdizOXQJGyiCTpfhMpAcCPeoj5xZNP+eIqr+i4cA+BTen09JHNP0lZCB
+         iloFytLFcuhQ6HJT76BpDqauXqL1SpeS0yK+6Edw0WVJd9wagsXZJNgsfBKDtqz5r9sd
+         ELhb3WMCttfQFYx1jKXSQch0va4TjaAs8I6uR7/r6tfFjcWMZ5POdAzbr7l0IhwmN3+Q
+         a6eSyCuYzNSGsnDTPIWr6v0HS1f6LRV3ILLvP1KXDzNPUVDs4DvMeRpIs4RhIZPgL3/d
+         p8Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=f255J9trikByGhKOgZdaT226yS1zCW9q77muEEQ9fGs=;
-        b=xuyfUThXmg53TvpLttxEaN8YK+CFYVbG3uFhkpqgH7awrSs1DmQvDxy2v4f7+poelK
-         74zuqqeMqLVOt+Yb69VIklVW0XrC+dD/8REkhsX7yoBPhMRoCJJ3oFke+tBbIpESSF67
-         9gJbPM+G4uSjvnTZ/UjDMu7O0ebvkWRlvuvybpG9Hk0krVWAi3fT2uJtDwWMugPFBWBV
-         hb2vf0U2hyCIZ5Kqik0rQqjK87SbtTotXSJdVPgnTBtWwH8BnUeBxLU22jhJ6sa80+hK
-         Bfc9mhA6O+3izfbo+FWJIwL58ucZOJ66dw2S3iE4UxwhQcMrqtRE8U1Q1lzEXV7dqs1r
-         WUzg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=thPndj0LFqQ71sWDgazer9zv4zfVadXlBPCUn+343tk=;
+        b=dtX5dmvEWL/SbZAAY/I8a4gY/RYK66xpKQEvi8F1KTXEKOkZ8HwRnkmZnF00gRJBe+
+         HCtLWl/p+zV7lU+i1/X2bjByb5r0RF/h4mDwrU4CUUaDQKotDFNhU0Pj0OoaFoRU3Wls
+         576mU81KeETIA+xKlHs9PEih9qLR4dX0NzmcYIV4VuumjGlJiGlHGOfhEUkC9QCXZ6PF
+         kAtwhakTaaZHszXDZbXex9qPJp/XETyjTtiNIbwZbFwe5Y2k+Pz3UDlT1rl6/p0CcKvn
+         mJszIoSMRpZoS1sE7tfvDxuKkQjAZdm4pA+bOaP8hOdnAvmK5IJLNyqjmSYHfi8j5E0c
+         y3Nw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=N7boHjos;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f196si7729860qka.61.2018.11.23.03.04.37
+        by mx.google.com with ESMTPS id q188si24087565ywc.111.2018.11.23.05.20.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Nov 2018 03:04:37 -0800 (PST)
+        Fri, 23 Nov 2018 05:20:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=N7boHjos;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51617 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52279 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gQ9GG-00083v-Lt
-	for alex.bennee@linaro.org; Fri, 23 Nov 2018 06:04:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33683)
+	id 1gQBO4-0001nc-5q
+	for alex.bennee@linaro.org; Fri, 23 Nov 2018 08:20:48 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:52028)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gQ9Fv-0007yM-BS
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 06:04:21 -0500
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gQBNm-0001lP-3d
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 08:20:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gQ9Fr-0005eS-94
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 06:04:15 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50424)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gQ9Fq-0005bm-VB; Fri, 23 Nov 2018 06:04:11 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 289C836807;
-	Fri, 23 Nov 2018 11:04:10 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 543B15D763;
-	Fri, 23 Nov 2018 11:04:07 +0000 (UTC)
-Date: Fri, 23 Nov 2018 12:04:05 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181123120405.4b94a220@redhat.com>
-In-Reply-To: <20181121231217.GA4450@caravaggio>
-References: <20181105014047.26447-1-sameo@linux.intel.com>
-	<20181105014047.26447-12-sameo@linux.intel.com>
-	<20181114115537.3357921b@redhat.com>
-	<20181121231217.GA4450@caravaggio>
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gQBNl-0004MH-02
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 08:20:30 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:40415)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
+	id 1gQBNd-0004CM-H3; Fri, 23 Nov 2018 08:20:21 -0500
+Received: by mail-lj1-x242.google.com with SMTP id n18-v6so10657652lji.7;
+	Fri, 23 Nov 2018 05:20:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=thPndj0LFqQ71sWDgazer9zv4zfVadXlBPCUn+343tk=;
+	b=N7boHjos0UYjC/G7a4UM66iwEjVWEuGL82WIFTQ7N3DXWCzame0OJuvMy29EInQm29
+	2UM4mHF+JWkLsssZQvIEV/Qrrl+EziVzKEBVw5uOzMhOgFhblIycuZH5wCWVN+RMvUjK
+	V258r2oz9olYJZl9+zHwUOng3L3A0X+CAdKa+9gxSNM8U0L2+tKJlP0hGhTBGEIEb8zn
+	Q8piCTCVqiMfaA3qCMFsbOffocy3J8Bu0t1dPy6ZGvkL2oVPiGsqaAImKkHFlALQ2v/l
+	wPcAZGv7ojMiOvrHUvI+hpcVARIok4xbXybpM9trRORiJOnujwN6PwL+Ioz/GkiirSiH
+	PXkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=thPndj0LFqQ71sWDgazer9zv4zfVadXlBPCUn+343tk=;
+	b=QfgToLN7PzOrUMYoeh7GfAywTTgErnN1IJo+rbEZYy428nTA00ooYoaXQDH6YeAwwD
+	HbgLBzihEN9gQvS+JQsnmxnBHWdFhpjnoOhHdyUVSzC0mQBOV72/4LJQcGXecwAdYVRJ
+	kUuyq33KCV/7sHZuJjZKaq7d4/tjzrEgoPpBQPW44y2QVw8S/+PEa0sIYAJZGuzUUrgg
+	8A2OnFHVdr3uUwUQAh5UwIgFNX3f6XXY/ZUBmvqkjHkBn3RY92L4tHRHk0AF6rqzwjhp
+	2veTRBaOP/5rsmJJHl/A10lJG1pTYWllCvalf6ljIfC1S+2X5XjzmPygDIMF+g8EusEd
+	IpBA==
+X-Gm-Message-State: AA+aEWYE1/kDAHUDSbKbwTw0BunFCn19CKX8aJZFc004ijcX7TH3Yjni
+	6oejRGIK0sICpEqiYlNtlWw=
+X-Received: by 2002:a2e:9957:: with SMTP id
+	r23-v6mr7792878ljj.98.1542979219533; 
+	Fri, 23 Nov 2018 05:20:19 -0800 (PST)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+	by smtp.gmail.com with ESMTPSA id
+	l21-v6sm7780443ljj.48.2018.11.23.05.20.17
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 23 Nov 2018 05:20:18 -0800 (PST)
+Date: Fri, 23 Nov 2018 14:20:17 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: mbilal <muhammad_bilal@mentor.com>
+Message-ID: <20181123132017.GJ1148@toto>
+References: <e8dae726-8853-4e44-1eb8-b9cfb0bc44f2@mentor.com>
+	<CAFEAcA_EM39P8HFoC=B=XP3Ax8NgNSotn=wMJJsG05P8Ywdruw@mail.gmail.com>
+	<abd7b108-4d21-9c1c-16d3-6d31d47f74eb@mentor.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Fri, 23 Nov 2018 11:04:10 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 11/24] hw: acpi: Export and
- generalize the PCI host AML API
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <abd7b108-4d21-9c1c-16d3-6d31d47f74eb@mentor.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::242
+Subject: Re: [Qemu-arm] [Qemu-discuss] How to select specific qemu net 'nic'
+ device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,98 +115,132 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Rob Bradford <robert.bradford@intel.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	qemu-discuss <qemu-discuss@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PHc9p1FoCRWb
+X-TUID: bVcqXmYJhIV2
 
-On Thu, 22 Nov 2018 00:12:17 +0100
-Samuel Ortiz <sameo@linux.intel.com> wrote:
-
-> Hi Igor,
+On Fri, Nov 23, 2018 at 02:59:32PM +0500, mbilal wrote:
+> Hi,
 > 
-> On Wed, Nov 14, 2018 at 11:55:37AM +0100, Igor Mammedov wrote:
-> > On Mon,  5 Nov 2018 02:40:34 +0100
-> > Samuel Ortiz <sameo@linux.intel.com> wrote:
-> >   
-> > > From: Yang Zhong <yang.zhong@intel.com>
-> > > 
-> > > The AML build routines for the PCI host bridge and the corresponding
-> > > DSDT addition are neither x86 nor PC machine type specific.
-> > > We can move them to the architecture agnostic hw/acpi folder, and by
-> > > carrying all the needed information through a new AcpiPciBus structure,
-> > > we can make them PC machine type independent.  
-> > 
-> > I'm don't know anything about PCI, but functional changes doesn't look
-> > correct to me.
-> >
-> > See more detailed comments below.
-> > 
-> > Marcel,
-> > could you take a look on this patch (in particular main csr changes), pls?
-> >   
-> > > 
-> > > Signed-off-by: Yang Zhong <yang.zhong@intel.com>
-> > > Signed-off-by: Rob Bradford <robert.bradford@intel.com>
-> > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> > > ---
-> > >  include/hw/acpi/aml-build.h |   8 ++
-> > >  hw/acpi/aml-build.c         | 157 ++++++++++++++++++++++++++++++++++++
-> > >  hw/i386/acpi-build.c        | 115 ++------------------------
-> > >  3 files changed, 173 insertions(+), 107 deletions(-)
-> > > 
-> > > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> > > index fde2785b9a..1861e37ebf 100644
-> > > --- a/include/hw/acpi/aml-build.h
-> > > +++ b/include/hw/acpi/aml-build.h
-> > > @@ -229,6 +229,12 @@ typedef struct AcpiMcfgInfo {
-> > >      uint32_t mcfg_size;
-> > >  } AcpiMcfgInfo;
-> > >  
-> > > +typedef struct AcpiPciBus {
-> > > +    PCIBus *pci_bus;
-> > > +    Range *pci_hole;
-> > > +    Range *pci_hole64;
-> > > +} AcpiPciBus;  
-> > Again, this and all below is not aml-build material.
-> > Consider adding/using pci specific acpi file for it.
-> > 
-> > Also even though pci AML in arm/virt is to a large degree a subset
-> > of x86 target and it would be much better to unify ARM part with x86,
-> > it probably will be to big/complex of a change if we take on it in
-> > one go.
-> > 
-> > So not to derail you from the goal too much, we probably should
-> > generalize this a little bit less, limiting refactoring to x86
-> > target for now.  
-> So keeping it under i386 means it won't be accessible through hw/acpi/,
-> which means we won't be able to have a generic hw/acpi/reduced.c
-> implementation. From our perspective, this is the problem with keeping
-> things under i386 because we're not sure yet how much generic it is: It
-> still won't be shareable for a generic hardware-reduced ACPI
-> implementation which means we'll have to temporarily have yet another
-> hardware-reduced ACPI implementation under hw/i386 this time.
-> I guess this is what Michael meant by keeping some parts of the code
-> duplicated for now.
+> Thanks for reply.
 > 
-> I feel it'd be easier to move those APIs under a shareable location, to
-> make it easier for ARM to consume it even if it's not entirely generic yet.
-> But you guys are the maintainers and if you think we should restric the
-> generalization to x86 only for now, we can go for it.
-If code is generic (you can reuse it with arm/virt in the same series)
-then place it in hw/acpi otherwise if it's semi-generic put to hw/i386.
-If it would be a separate file it would be easier to move it to generic
-place when we are able to resuse it with arm/virt.
+> According to your suggestion I've tested with 3.1 rc2 release and problem is
+> still exist in this release also.
+> 
+> Here is my reproducible scenario.
 
- 
-> Cheers,
-> Samuel.
+
+Thanks,
+
+I've had a look and the assert looks bogus to me.
+We shouldn't be asserting on RX descriptor setups when the receiver is disabled.
+
+I'll send a patch in a moment.
+
+Best regards,
+Edgar
+
+
+
+> 
+> QEMU launching
+> --------------
+> 
+> ./qemu-system-aarch64 -M xlnx-zcu102 -m 1G -kernel /dev/null -S -s  -net nic
+> -net nic -net nic -net nic -net user,hostfwd=tcp::8080-:8080 -smp 1 -serial
+> stdio -serial /dev/null
+> 
+> gdb session
+> ------------
+> 
+> (gdb) file zcu102_net_uni.out
+> Reading symbols from zcu102_net_uni.out...done.
+> (gdb) tar rem :1234
+> Remote debugging using :1234
+> _ld_text_start () at os/arch/armv8/common/arch_asm.S:381
+> 381	    MOV     X14, X0
+> (gdb) load
+> Loading section .text, size 0x59c0c lma 0x0
+> Loading section .rodata, size 0x2bbc lma 0x59c0c
+> Loading section .rtl.data, size 0x770 lma 0x5c7c8
+> Loading section .data, size 0x4dc lma 0x5cf54
+> Start address 0x0, load size 381972
+> Transfer rate: 23313 KB/sec, 2021 bytes/write.
+> (gdb) c
+> Continuing.
+> ^C
+> 
+> 
+> So any breakpoint or Ctrl-C asserts the QEMU.
+> 
+> qemu-system-aarch64: qemu-3.1.0-rc2/hw/net/cadence_gem.c:982: gem_receive:
+> Assertion `!first_desc' failed.
+> 
+> 
+> Our networking demo application running fine unless you interrupt the GDB
+> (either with breakpoints or interrupt signal).
+> You can see following message on QEMU console which is the indication of
+> demo is fine (it also well tested on actual hardware)
+> 
+> Open the following Nucleus node address in your web browser:
+>     http://127.0.0.1:8080/
+> 
+> 
+> I'm attaching demo application binary.
+> 
+> 
+> 
+> 
+> Thanks for care about this issue,
+> -Bilal
+> 
+> 
+> 
+> On 11/23/2018 01:59 PM, Peter Maydell wrote:
+> > On 23 November 2018 at 04:13, mbilal <muhammad_bilal@mentor.com> wrote:
+> > > Hi,
+> > > 
+> > > I'm using qemu emulation for xilinx zcu102 platform, this board have four
+> > > networking GEM0, GEM1, GEM2 and GEM3 devices.
+> > > 
+> > > To run network demo on this board *only* require GEM3 device to be configure
+> > > while other GEM devices don't need to be configure, that's why u-boot and
+> > > other RTOS only configure GEM3 device.
+> > > 
+> > > 
+> > > QEMU is enabling these GEM devices  with networking '-net nic' option and
+> > > QEMU consider first '-net nic' option for GEM0 and second '-net nic' option
+> > > for GEM1 and so on. that's why if need to enable GEM3 network device we must
+> > > need to give following full command line options
+> > > 
+> > > -net nic -net nic -net nic -net nic -net user, ...
+> > > 
+> > > In this way all four GEM devices would be enable but first three GEM0-GEM2
+> > > devices are un-configured and useless. In our case QEMU is being *crashed*
+> > > due to trying to use these un-configured GEM devices to o send/receive GDB
+> > > breakoint/interrupt cause. IIUC QEMU uses first device in the -nic loop
+> > > i.e
+> > > 
+> > > qemu-system-aarch64: hw/net/cadence_gem.c:921: gem_receive: Assertion
+> > > `!first_desc' failed.
+> > 
+> > If QEMU asserts like this, this is a bug in QEMU. I've cc'd
+> > the maintainers of the Xilinx board.
+> > 
+> > Could you provide a complete set of instructions to reproduce
+> > this bug, please ? (full command line, guest image, etc)
+> > 
+> > Could you also tell us which version of QEMU you are using?
+> > If possible, try with the current git master or
+> > with the 3.1 rc2 release candidate we've just put out, to
+> > see if it's already been fixed.
+> > 
+> > thanks
+> > -- PMM
+> > 
+
 

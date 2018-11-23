@@ -1,170 +1,236 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2209122wrt;
-        Fri, 23 Nov 2018 07:52:35 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XA7awQthNTxW127PzYECeXZl+AuRou3vUlasxVIjRn5TKYLErIwjn+QrM9azvwqQ7+GQ7B
-X-Received: by 2002:a25:ba04:: with SMTP id t4-v6mr17046062ybg.251.1542988355325;
-        Fri, 23 Nov 2018 07:52:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542988355; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2255053wrt;
+        Fri, 23 Nov 2018 08:28:52 -0800 (PST)
+X-Google-Smtp-Source: AJdET5e8CxGeEyMn9jUzjWabLJRnlUYygEy7BUCpnr8lnRGcVhIIBiShL0H6xlhq42bzJLdlO9Uz
+X-Received: by 2002:a81:27c9:: with SMTP id n192mr16796068ywn.504.1542990532564;
+        Fri, 23 Nov 2018 08:28:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542990532; cv=none;
         d=google.com; s=arc-20160816;
-        b=UX8SU8WRwrgLHuMEVErOV/nZB+H+TgVrWizO28n6q5sa70XkiMNytwkTL9QKvVv6jW
-         /SlcMPLTeLtBWzidXBvYrUcjIFVqF2jAASlqShM/hHyuRLzNBd0Y7N0I+MzuDNBdwPoS
-         3dTwj+tBsBTjiiddjkxtVpwv9o86lTdfRHmE0JfCKP/iiIx/+FodjzZy+F65FB5ScXTd
-         J8BBeHXRkRPGlLEPd9vvun4huvlJgy8vMrdmXcrr+nj+vOxjMNPH4w/2LHEu3G/2BhP6
-         6GGlfVfCvWEC4Z8BK1aaGl76fn6aqWcVLQabh43x0Roa5U9EOWaIBHLPB8LZTP+F5FEr
-         AFzg==
+        b=AB0y2x7EcIuHBBWXjRc8CXFhXcagFYoBAlOLURd1elvJXoBkRHTsPc8knC3AEdwNxV
+         PugLgT4fS05x94bHsVT+jXpP4CJguzwzU2e3Ua3pQCN/56KB1rnSfmBPPTrkq0po8nBx
+         1JIJSyMa1EHTvdJkyfU9l01PVfjx+wsVvGfjWp9Ie1LzObLRm9m+6eQYYvKOyjKQdGmy
+         QYVdEy/5NERVhVZ5DrNezYrElPVhXt44ePMuH2vrWwwCESLAnXeBcEmy8s2i0JTagIeU
+         J+yTwFPC+O444nr6pl+8wJmUn1Fuj4sXJFqpxfi4dz95g8F4VdVSKV3V5sBzHPH+dDmi
+         IFdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=7CfsFEMiluFUWoagD2iUrLjZOGr7LWORoCwbAIVErKw=;
-        b=vyhU0H/HnurUXeUl9uFU+yMFum5nlU1fFESMjXk6odNrdvM7Ar++5MFwPTUtopZrrn
-         rPMmYWJyHF8hmcD0l3vI6UJZzGUrnBS8Yh10amTn5L6pWYzA2iKulzHy7RkUoV8JJHFB
-         rYek6AMBbq59AP196BzY8eLVuoIElfWNSHSvffcEVQumkvFVgeTQe2b1Q8ObC24f1Erj
-         vtEHAeVnURuhDUUOs17V/z8dQRJ5ZBqaZTQk35yqk1eQhfwUQPHdmk1YkXEHVUdw6QoW
-         qJkWmp5NFV5wCAISD8Rr+YfwQ5u073WYJZ6hoMNAcFCd6LC890z4w5Y3YzZk0edEHizn
-         65Xw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=55yctG6Z7XP5EVYMbgEu+vQphN0IM+TWdrBN2vPxShY=;
+        b=cZ69q+oTHa+lXnRtRclRtAIB7MXeRhghghhn9uJvnfDIk1+07lV5CY23VQ/7e+Bf7P
+         ySOCWgKsXU0UHbAoiYljfCnZC9ndfyoqUxktya0shuBNh4IES5eTr5t2E0A4TkjmLflh
+         47wWwK+x+CfxKxS9JQt/HcC44MQNP0WWBlrXycONxFjBGuqXpi35qtqokN4y81vQQilQ
+         Juw8uiTg7f69Bs+NdzqmqP65MsVDE9+3VmyUAfK3F170YcOimsqSipA/tXFMPjgKk/i7
+         gQoMwYOw+DAO12S4zQkLeVO9fXhGB2jZUueAXCl4m98SbMINI/6XpiQXFcBWqo0HhFkd
+         2LVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id h66-v6si26634134ybh.59.2018.11.23.07.52.35
+        by mx.google.com with ESMTPS id v194-v6si15172329ybb.434.2018.11.23.08.28.52
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Nov 2018 07:52:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 23 Nov 2018 08:28:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53161 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53325 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gQDkw-0000PT-Kx
-	for alex.bennee@linaro.org; Fri, 23 Nov 2018 10:52:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34582)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gQEK4-0002cg-1N
+	for alex.bennee@linaro.org; Fri, 23 Nov 2018 11:28:52 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52412)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gQDYw-0005OC-OU
-	for qemu-devel@nongnu.org; Fri, 23 Nov 2018 10:40:12 -0500
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gQEJt-0002bs-Ss
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 11:28:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gQDYq-0002EK-FH
-	for qemu-devel@nongnu.org; Fri, 23 Nov 2018 10:40:10 -0500
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:33967)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gQDYq-0002Bu-8L
-	for qemu-devel@nongnu.org; Fri, 23 Nov 2018 10:40:04 -0500
-Received: by mail-wr1-f68.google.com with SMTP id j2so12773159wrw.1
-	for <qemu-devel@nongnu.org>; Fri, 23 Nov 2018 07:40:04 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=7CfsFEMiluFUWoagD2iUrLjZOGr7LWORoCwbAIVErKw=;
-	b=dLJwK7udPmU1Ox1URF+H7t2Fx8+3L7T43tk+upXI4vgcu8pa9zjlncnOqkI02mT+zE
-	/HWE+z+gCmhY8sr9xbtWM9DFrn/U2IXy1fSEXmV20+X8DFZhVvsNV2YZOb5Fx3jYIGjT
-	gr1A6Vj5ZCC60vn++sjJ05Sf+EVUPiKdq91rzLp+HfZbPzb3sJNYJaHVHE/cw/oVO4/D
-	i/mC9H8L546MEadG5UlVVnwdHO2/FbZRBxmI2EkLb6ohgquw+6xMzSjPiBmSU2Z68a/S
-	l+TnUl/+YyS8O0b+zdFyTtk/rUYyGLN6PzqsOczYcMgOWMsxUsbkBH0gY767T0loeDNN
-	DN3Q==
-X-Gm-Message-State: AA+aEWYPKViUhe9Li4s/g4kl4on6TWXC5artP+GXdBD8eYYW01HayJuq
-	sqE/dPlxiTUOzWG+BsEB8LaZsg==
-X-Received: by 2002:adf:ce02:: with SMTP id p2mr15696931wrn.185.1542987603105; 
-	Fri, 23 Nov 2018 07:40:03 -0800 (PST)
-Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
-	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
-	by smtp.gmail.com with ESMTPSA id
-	s66sm8134123wmf.34.2018.11.23.07.40.01
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 23 Nov 2018 07:40:02 -0800 (PST)
-To: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>, qemu-devel@nongnu.org
-References: <20181123153040.18933-1-maozhongyi@cmss.chinamobile.com>
-	<20181123153040.18933-10-maozhongyi@cmss.chinamobile.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <6d201235-0fbb-cf12-c002-7c6114d59926@redhat.com>
-Date: Fri, 23 Nov 2018 16:40:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
-MIME-Version: 1.0
-In-Reply-To: <20181123153040.18933-10-maozhongyi@cmss.chinamobile.com>
-Content-Type: text/plain; charset=utf-8
+	(envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gQEJp-00065c-Sk
+	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 11:28:41 -0500
+Received: from lhrrgout.huawei.com ([185.176.76.210]:28190 helo=huawei.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+	id 1gQEJp-0005e3-CO; Fri, 23 Nov 2018 11:28:37 -0500
+Received: from lhreml704-cah.china.huawei.com (unknown [172.18.7.108])
+	by Forcepoint Email with ESMTP id A1A77C351B3FC;
+	Fri, 23 Nov 2018 16:28:19 +0000 (GMT)
+Received: from FRAEMA701-CHM.china.huawei.com (10.206.14.50) by
+	lhreml704-cah.china.huawei.com (10.201.108.45) with Microsoft SMTP
+	Server (TLS) id 14.3.408.0; Fri, 23 Nov 2018 16:28:21 +0000
+Received: from FRAEML521-MBX.china.huawei.com ([169.254.1.76]) by
+	FRAEMA701-CHM.china.huawei.com ([169.254.1.146]) with mapi id
+	14.03.0415.000; Fri, 23 Nov 2018 17:28:14 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+	<eric.auger.pro@gmail.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>
+Thread-Topic: [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO
+	integration
+Thread-Index: AQHUUYPza2cioTCQCU2bQm3noOvi76Vd5o2g
+Date: Fri, 23 Nov 2018 16:28:13 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA8387E9A0C@FRAEML521-MBX.china.huawei.com>
+References: <20180921081819.9203-1-eric.auger@redhat.com>
+In-Reply-To: <20180921081819.9203-1-eric.auger@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-devel] [PATCH v2 09/21] input/pl050: Convert sysbus init
- function to realize function
-X-BeenThere: qemu-devel@nongnu.org
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 185.176.76.210
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage
+ VFIO integration
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	Zhang Shengju <zhangshengju@cmss.chinamobile.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KRJPR8XZQ2AN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+	"cdall@kernel.org" <cdall@kernel.org>, "mst@redhat.com" <mst@redhat.com>,
+	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>,
+	Linuxarm <linuxarm@huawei.com>, "peterx@redhat.com" <peterx@redhat.com>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"xuwei \(O\)" <xuwei5@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xvJD+Y9gNHPi
 
-On 23/11/18 16:30, Mao Zhongyi wrote:
-> Use DeviceClass rather than SysBusDeviceClass in
-> pl050_class_init().
-> 
-> Cc: peter.maydell@linaro.org
-> Cc: qemu-arm@nongnu.org
-> 
-> Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
-> Signed-off-by: Zhang Shengju <zhangshengju@cmss.chinamobile.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> ---
->  hw/input/pl050.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/input/pl050.c b/hw/input/pl050.c
-> index be9cd57b17..15bffbfcad 100644
-> --- a/hw/input/pl050.c
-> +++ b/hw/input/pl050.c
-> @@ -139,19 +139,19 @@ static const MemoryRegionOps pl050_ops = {
->      .endianness = DEVICE_NATIVE_ENDIAN,
->  };
->  
-> -static int pl050_initfn(SysBusDevice *dev)
-> +static void pl050_realize(DeviceState *dev, Error **errp)
->  {
->      PL050State *s = PL050(dev);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &pl050_ops, s, "pl050", 0x1000);
-> -    sysbus_init_mmio(dev, &s->iomem);
-> -    sysbus_init_irq(dev, &s->irq);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    sysbus_init_irq(sbd, &s->irq);
->      if (s->is_mouse) {
->          s->dev = ps2_mouse_init(pl050_update, s);
->      } else {
->          s->dev = ps2_kbd_init(pl050_update, s);
->      }
-> -    return 0;
->  }
->  
->  static void pl050_keyboard_init(Object *obj)
-> @@ -183,9 +183,8 @@ static const TypeInfo pl050_mouse_info = {
->  static void pl050_class_init(ObjectClass *oc, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(oc);
-> -    SysBusDeviceClass *sdc = SYS_BUS_DEVICE_CLASS(oc);
->  
-> -    sdc->init = pl050_initfn;
-> +    dc->realize = pl050_realize;
->      dc->vmsd = &vmstate_pl050;
->  }
->  
-> 
+> -----Original Message-----
+> From: Qemu-devel [mailto:qemu-devel-
+> bounces+shameerali.kolothum.thodi=3Dhuawei.com@nongnu.org] On Behalf Of
+> Eric Auger
+> Sent: 21 September 2018 09:18
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org
+> Cc: yi.l.liu@intel.com; cdall@kernel.org; mst@redhat.com; jean-
+> philippe.brucker@arm.com; peterx@redhat.com; alex.williamson@redhat.com
+> Subject: [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO
+> integration
+>=20
+
+[...]
+
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v3.0.0_2stage-rfc-v2
+>=20
+> Testing:
+> - For testing use my kernel branch
+>   https://github.com/eauger/linux/tree/v4.19-rc4-2stage-rfc-v2 [1]
+> - Tested on Qualcomm HW with 1/2 assigned e1000e NICs. Hotplug
+>   was also tested OK.
+> - Known limitation:
+>   - currently sending an NH_ASID command instead of NH_VA
+>     upon guest NH_VA. This may cause important perf downgrade.
+>     Propagating NH_VA does not work at the moment.
+
+Hi Eric,
+
+I had a  go with this RFC on one of our platform and noted that when the Gu=
+est=20
+boots with ACPI , the ping doesn't work with the assigned ixgbevf NIC thoug=
+h=20
+the network device gets detected and added to the iommu group.=20
+
+It's all fine when I boot the Guest with DT. Have you tested this with ACPI=
+ yet or
+am I missing anything obvious here?
+
+Please let me know.
+
+Thanks,
+Shameer
+=20
+> References:
+> - [1] [RFC v2 00/20] SMMUv3 Nested Stage Setup
+>   (https://lkml.org/lkml/2018/9/18/1087)
+>   The User API still is unstable and under discussion.
+>=20
+> History:
+> v1 -> v2:
+> - Fixed dual assignment (asid now correctly propagated on TLB invalidatio=
+ns)
+> - Integrated fault reporting
+>=20
+> Next Steps:
+> - Mature the user API with people involved in SVA work (KVM forum may be =
+a
+>   good opportunity to meet)
+> - Submit the IOMMU cfg notifier changes and some VFIO changes separately,
+> to
+>   progress independently on the kernel dependency
+>=20
+> Eric Auger (28):
+>   hw/arm/smmu-common: Fix the name of the iommu memory regions
+>   hw/arm/smmuv3: fix eventq recording and IRQ triggerring
+>   update-linux-headers: Import iommu.h
+>   linux-headers: Partial header update
+>   memory: add IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
+>   hw/arm/smmuv3: Implement get_attr API to report
+> IOMMU_ATTR_VFIO_NESTED
+>   hw/vfio/common: Refactor container initialization
+>   hw/vfio/common: Force nested if iommu requires it
+>   memory: Introduce IOMMUIOLTBNotifier
+>   memory: rename memory_region notify_iommu, notify_one
+>   memory: Add IOMMUConfigNotifier
+>   memory: Add arch_id in IOTLBEntry
+>   hw/arm/smmuv3: Store s1ctrptr in translation config data
+>   hw/arm/smmuv3: Implement dummy replay
+>   hw/arm/smmuv3: Notify on config changes
+>   hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA invalidation
+>   hw/vfio/common: Introduce vfio_alloc_guest_iommu helper
+>   hw/vfio/common: Introduce vfio_dma_(un)map_ram_section helpers
+>   hw/vfio/common: Register specific nested mode notifiers and
+>     memory_listener
+>   hw/vfio/common: Register MAP notifier for MSI binding
+>   target/arm/kvm: Notifies IOMMU on MSI stage 1 binding
+>   vfio/pci: Always set up MSI route before enabling vectors
+>   hw/arm/smmuv3: Remove warning about unsupported MAP notifiers
+>   memory: Introduce IOMMU_NOTIFIER_INIT_CFG IOMMU Config Notifier
+>   memory: Introduce IOMMU Memory Region inject_faults API
+>   hw/vfio/common: Handle fault_handler
+>   hw/arm/smmuv3: Init fault handling
+>   hw/arm/smmuv3: Implement fault injection
+>=20
+>  exec.c                          |  12 +-
+>  hw/arm/smmu-common.c            |  12 +-
+>  hw/arm/smmuv3-internal.h        |  26 +-
+>  hw/arm/smmuv3.c                 | 189 +++++++--
+>  hw/i386/intel_iommu.c           |  16 +-
+>  hw/misc/tz-mpc.c                |   8 +-
+>  hw/ppc/spapr_iommu.c            |   2 +-
+>  hw/s390x/s390-pci-inst.c        |   4 +-
+>  hw/vfio/common.c                | 666 ++++++++++++++++++++++++--------
+>  hw/vfio/pci.c                   |   1 +
+>  hw/vfio/trace-events            |   4 +-
+>  hw/virtio/vhost.c               |  12 +-
+>  include/exec/memory.h           | 140 +++++--
+>  include/hw/arm/smmu-common.h    |   1 +
+>  include/hw/vfio/vfio-common.h   |   1 +
+>  linux-headers/linux/iommu.h     | 237 ++++++++++++
+>  linux-headers/linux/vfio.h      |  48 +++
+>  memory.c                        |  66 +++-
+>  scripts/update-linux-headers.sh |   2 +-
+>  target/arm/kvm.c                |  46 +--
+>  20 files changed, 1206 insertions(+), 287 deletions(-)
+>  create mode 100644 linux-headers/linux/iommu.h
+>=20
+> --
+> 2.17.1
+>=20
+

@@ -1,133 +1,143 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp502064wrt;
-        Thu, 22 Nov 2018 02:30:40 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fsBBbCKj75cWpZ+If7nXHYnio6owbMyBRQvr+xqG9u/g15gKYr/EEB2upQxUr3AZ0zjo4C
-X-Received: by 2002:a62:f247:: with SMTP id y7mr10873735pfl.25.1542882640834;
-        Thu, 22 Nov 2018 02:30:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542882640; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2108385wrt;
+        Fri, 23 Nov 2018 06:31:30 -0800 (PST)
+X-Google-Smtp-Source: AJdET5cJMIyEyCmh4NgP/kkyXEp6XbMFH0ibKK7LIPFC4Q43ZSX0jIaX2Cc5Yf78D77O+JyM2Iaq
+X-Received: by 2002:a62:85:: with SMTP id 127-v6mr16010325pfa.24.1542983490230;
+        Fri, 23 Nov 2018 06:31:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1542983490; cv=none;
         d=google.com; s=arc-20160816;
-        b=0E+FuUJ4f3pT4XYerF+m4wPGx1GBy4IP8Zys6BPfFFJZ0cxitDc83l/8omNA9HHL2E
-         9y0T47/tjWrd3gignkrQF2S3hQOoA+VGSVrxCPRfIrayoiG744pfVAKm+sSU6lwdGQcx
-         z1ACEssdRfEpL+KAc02PRTkviJB0KnmTAYzL8lLIyJARdqFikydhMv/LBpghXYmItXnX
-         5JoGAjyBp1m6toXhxTUCuWzlBgqH8rz2/oJoDJskebwO21fNSxWGyu8wVTinA6grOEYq
-         8bKqq2n/j0j+FwIeVqpLi0ybSfru1wu0y0cDSWnScXfXMJlXf7be0RwKlFKxb8eziAJ4
-         s+Xg==
+        b=L5SZZS012EcfW+JcxGyyc8PDq0EHhSPOi0FeXLgISZd1oLhEsMQdxeqSTyy4sayDoV
+         LcNnYKoBRzN1wobafusQ3TMCXSaY/2/nPEA6CZhVSpOsTQlPR8fit/ptJMGm5WQ1p3nO
+         +hf9MQlfcV+RUjpOw+xcXwlhM60XuUnOJUJhdDwbJiZjA0729Ft6qQL9/XN3mFvZr63o
+         cgvLFMXiGMCHMKcN/kD2vcNm21qQzYc45uzE3Ae5dHCh28rH5W5oZxSRO9WEYj7xVfRr
+         NhSR8eqJb8bideFx+T20E1Bf9JifVuTzO247sOzQTDAeHJzSAejr/rlu0NaFiVgFxLXQ
+         GFTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=hrzJpSTpeHJ5HoYsvc7JBKOQFqM9b2tXgG8q/Yv/A3k=;
-        b=aRW9X4x7/+G8iwkPD37R+a+fmV0hsOW/KpKD0sBIgKu3PxN/MujkkvV2tU4cE2nZO3
-         RyLOYIXCTWtI+R6LrKZLnr0kwgWwFoBo9UbwW168iG9N7Cmzcbt8p5B5hawXro6Ji/Do
-         kgTDdQiQrvLt+RhYISBNwD58ROD7QpbmtLtbjNUuZh5UkZ7YSXRSOTLFgF0ZwpxVS+Jx
-         owRfI1Ue0t7fONMEQSKaJFsAPywGYAu3HoLYSurcgdt0aDALT/cED4fx1NZPbp9GNSmN
-         W+Hnsv+mp0Hfou+eax3eTRZeQah38q6rQSX3+QHT6urf5hxxghKQphXfOyIjGxlbV+F7
-         9iVg==
+        h=list-id:precedence:sender:mime-version:content-transfer-encoding
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=y/PmVPSyejj5AhQkB5Sa6iTew0b7rbegWRboUgKPVd8=;
+        b=nf9fqIzMVkfOrWbt2OEb7UGn9zv5TnzIdhBbKdoI/DsUR6YBXLOhwD99OuVL/tKFyV
+         qcOyIulyf+pVTYm+UcKj691l9D1ODSLN7GYe/Rvltkxehi/S2tU10EwEhYFi0Bu75wZn
+         kBDaZ19NCmQars2bQXKD5+IbQGBNS4zeaLiu1MGfDTAy58nFzBnmBtAwCV1a2V2OcLbE
+         CQR4Txd4woRb+dv3ZCVbSOc2gFp5nSK/sWAqzRqdVUrifri0/5TiNSepO1qjNQ6DA6Ef
+         na6Nz9aXV63+yEtGtQ5Le8vmFTconGtOnM2CFqiYap6SB3fuh3mjiaVOITRf1aQEB5hi
+         zj+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JRQ6v6Fi;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b15si31764408plm.431.2018.11.22.02.30.40;
-        Thu, 22 Nov 2018 02:30:40 -0800 (PST)
+        by mx.google.com with ESMTP id o9-v6si44743135plk.434.2018.11.23.06.31.30;
+        Fri, 23 Nov 2018 06:31:30 -0800 (PST)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JRQ6v6Fi;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2405219AbeKVVJ2 (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Thu, 22 Nov 2018 16:09:28 -0500
-Received: from mail-ot1-f67.google.com ([209.85.210.67]:39539 "EHLO
-        mail-ot1-f67.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S2405216AbeKVVJ1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 22 Nov 2018 16:09:27 -0500
-Received: by mail-ot1-f67.google.com with SMTP id g27so7645075oth.6
-        for <kvm@vger.kernel.org>; Thu, 22 Nov 2018 02:30:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=hrzJpSTpeHJ5HoYsvc7JBKOQFqM9b2tXgG8q/Yv/A3k=;
-        b=JRQ6v6Fi9sMy1m6M0RDA5CwvDqqqhKtTzhojHgMA7B5lX9riKQPfQT9YxvXbqB1qpB
-         8vOuWoNZCN76Jx+JGGvJeZQuQ2r76BaE4mT0bdekTdTX9dwiZ+cuZbrZ4pL5M5VcN8y5
-         oV4xA36b/BATvpXmDkmWMLkibgO68ORnb0GLQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=hrzJpSTpeHJ5HoYsvc7JBKOQFqM9b2tXgG8q/Yv/A3k=;
-        b=bdv6PQfFDMGWRF+G5g5UhmRrnxX9H1UcuZ7x10jtnSTpEDeK0/4T91juiQ6lXwqD6I
-         GELeSVKqqLWHLDKHRkmbumd8FoE8ZzZoBOmOlIerjM2aGc5oBolwhHQlKWuRyiNv4aUd
-         EY7tCdKdTRtfPq1tm8Kg8l0zAuO/n88sYb6q641gMOpYv3w+o79bnuiN9O/zQeO5Q//w
-         ZZ9UBG7JycYBDx+DZ+wtXAWHQH44XYdSE5HPorfzWECFy1Pi+wK6XOaX9doso2S0FjmH
-         FhcZobX5RHBTN8esdWYS8OzuUOr6tRk9wHd52TEROzf4tP1AWEM9Mte0kiuDArMauGwQ
-         vsKw==
-X-Gm-Message-State: AA+aEWazrm282Xv/F1IYIMc25R9RlUSanIAb+REvkERaodWXuuZ7dazx
-        8+4d/xmTgB5fzFv9UNgIG1X2NUpm31pPznuPDDARnQ==
-X-Received: by 2002:a9d:bf7:: with SMTP id 110mr4784694oth.201.1542882637591;
- Thu, 22 Nov 2018 02:30:37 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Thu, 22 Nov 2018 02:30:17
- -0800 (PST)
-In-Reply-To: <CAFEAcA_P9d=hOH6sAfdqdBEAwF_am6+Qq9XgAafxbzGfWLEhHg@mail.gmail.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com>
- <1541672989-15967-11-git-send-email-gengdongjiu@huawei.com>
- <CAFEAcA-6UKk-WF+M+z0=AN-X7q0XRFLo2RG_yBadDeCas4A5wQ@mail.gmail.com>
- <0184EA26B2509940AA629AE1405DD7F201F7D7EB@DGGEMA503-MBX.china.huawei.com> <CAFEAcA_P9d=hOH6sAfdqdBEAwF_am6+Qq9XgAafxbzGfWLEhHg@mail.gmail.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 22 Nov 2018 10:30:17 +0000
-Message-ID: <CAFEAcA_M_Lmv=zouad3FfL6o2DnOeH49xt4J3C6WyGZZ=BsQpA@mail.gmail.com>
-Subject: =?UTF-8?Q?Re=3A_=E7=AD=94=E5=A4=8D=3A_=5BPATCH_RESEND_v15_10=2F10=5D_target=2Darm=3A_kvm?=
-        =?UTF-8?Q?64=3A_handle_SIGBUS_signal_from_kernel_or_KVM?=
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
+        id S2410078AbeKXBPx (ORCPT <rfc822;francois.ozog@linaro.org>
+        + 4 others); Fri, 23 Nov 2018 20:15:53 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:55179 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S2391009AbeKXBPw (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 23 Nov 2018 20:15:52 -0500
+Received: from DGGEMA403-HUB.china.huawei.com (unknown [172.30.72.53])
+        by Forcepoint Email with ESMTP id DB34CC99A58AF;
+        Fri, 23 Nov 2018 22:31:24 +0800 (CST)
+Received: from DGGEMA421-HUB.china.huawei.com (10.1.198.154) by
+ DGGEMA403-HUB.china.huawei.com (10.3.20.44) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Fri, 23 Nov 2018 22:31:24 +0800
+Received: from DGGEMA503-MBX.china.huawei.com ([169.254.1.15]) by
+ dggema421-hub.china.huawei.com ([10.1.198.154]) with mapi id 14.03.0415.000;
+ Fri, 23 Nov 2018 22:31:18 +0800
+From:   gengdongjiu <gengdongjiu@huawei.com>
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Igor Mammedov <imammedo@redhat.com>,
         "Michael S. Tsirkin" <mst@redhat.com>,
         Laszlo Ersek <lersek@redhat.com>,
         Marc Zyngier <marc.zyngier@arm.com>,
         James Morse <james.morse@arm.com>,
         Paolo Bonzini <pbonzini@redhat.com>,
         Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
+        "Richard Henderson" <rth@twiddle.net>,
         "zhengxiang (A)" <zhengxiang9@huawei.com>,
         Eduardo Habkost <ehabkost@redhat.com>,
         kvm-devel <kvm@vger.kernel.org>,
         Shannon Zhao <shannon.zhaosl@gmail.com>,
         QEMU Developers <qemu-devel@nongnu.org>,
         qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Subject: Re: [PATCH RESEND v15 10/10] target-arm: kvm64: handle SIGBUS
+ signal from kernel or KVM
+Thread-Topic: [PATCH RESEND v15 10/10] target-arm: kvm64: handle SIGBUS
+ signal from kernel or KVM
+Thread-Index: AdSDLl0YYjb7JecJR5WF7YY6N7u3rQ==
+Date:   Fri, 23 Nov 2018 14:31:18 +0000
+Message-ID: <0184EA26B2509940AA629AE1405DD7F201F85395@DGGEMA503-MBX.china.huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.45.83.70]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: yQNMC8U27imV
+X-TUID: xscqw7p1gWrC
 
-On 22 November 2018 at 10:28, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 22 November 2018 at 03:05, gengdongjiu <gengdongjiu@huawei.com> wrote:
->>> >
->>> Shouldn't there be something in here to say "only report this error to the guest if we are actually reporting RAS errors to the guest" ?
->>
->> Yes, We can say something that such as "report this error to the guest", because this error is indeed triggered by guest, which is guest error.
->
-> I'm afraid I don't really understand what you mean. Could you
-> try rephrasing it?
->
-> My understanding was:
->  * we get this signal if there is a RAS error in the host memory
->  * if we are exposing RAS errors to the guest (ie we have
->    told it that in the ACPI table we passed it at startup)
->    then we should pass on this error to the guest
->
-> but that these are two different conditions.
->
-> If the host hardware detects a RAS error in memory used
-> by the guest but the guest is not being told about RAS
-> errors, then we cannot report the error: we have no mechanism
-> to do so, and the guest is not expecting it.
-
-If you look at the x86 version of this function you can see that
-it tests (env->mcg_cap & MCG_SER_P), which I think is the
-equivalent x86 "is the guest CPU/config one we can report
-these errors to" test.
-
-thanks
--- PMM
+SGkgUGV0ZXIsDQogIFRoYW5rcyBmb3IgdGhlIGNvbW1lbnRzIGFuZCBtYWlsLg0KDQo+IA0KPiBP
+biAyMiBOb3ZlbWJlciAyMDE4IGF0IDEwOjI4LCBQZXRlciBNYXlkZWxsIDxwZXRlci5tYXlkZWxs
+QGxpbmFyby5vcmc+IHdyb3RlOg0KPiA+IE9uIDIyIE5vdmVtYmVyIDIwMTggYXQgMDM6MDUsIGdl
+bmdkb25naml1IDxnZW5nZG9uZ2ppdUBodWF3ZWkuY29tPiB3cm90ZToNCj4gPj4+ID4NCj4gPj4+
+IFNob3VsZG4ndCB0aGVyZSBiZSBzb21ldGhpbmcgaW4gaGVyZSB0byBzYXkgIm9ubHkgcmVwb3J0
+IHRoaXMgZXJyb3IgdG8gdGhlIGd1ZXN0IGlmIHdlIGFyZSBhY3R1YWxseSByZXBvcnRpbmcgUkFT
+IGVycm9ycyB0byB0aGUgZ3Vlc3QiID8NCj4gPj4NCj4gPj4gWWVzLCBXZSBjYW4gc2F5IHNvbWV0
+aGluZyB0aGF0IHN1Y2ggYXMgInJlcG9ydCB0aGlzIGVycm9yIHRvIHRoZSBndWVzdCIsIGJlY2F1
+c2UgdGhpcyBlcnJvciBpcyBpbmRlZWQgdHJpZ2dlcmVkIGJ5IGd1ZXN0LCB3aGljaCBpcyBndWVz
+dA0KPiBlcnJvci4NCj4gPg0KPiA+IEknbSBhZnJhaWQgSSBkb24ndCByZWFsbHkgdW5kZXJzdGFu
+ZCB3aGF0IHlvdSBtZWFuLiBDb3VsZCB5b3UgdHJ5DQo+ID4gcmVwaHJhc2luZyBpdD8NCj4gPg0K
+PiA+IE15IHVuZGVyc3RhbmRpbmcgd2FzOg0KPiA+ICAqIHdlIGdldCB0aGlzIHNpZ25hbCBpZiB0
+aGVyZSBpcyBhIFJBUyBlcnJvciBpbiB0aGUgaG9zdCBtZW1vcnkNCj4gPiAgKiBpZiB3ZSBhcmUg
+ZXhwb3NpbmcgUkFTIGVycm9ycyB0byB0aGUgZ3Vlc3QgKGllIHdlIGhhdmUNCj4gPiAgICB0b2xk
+IGl0IHRoYXQgaW4gdGhlIEFDUEkgdGFibGUgd2UgcGFzc2VkIGl0IGF0IHN0YXJ0dXApDQo+ID4g
+ICAgdGhlbiB3ZSBzaG91bGQgcGFzcyBvbiB0aGlzIGVycm9yIHRvIHRoZSBndWVzdA0KPiA+DQo+
+ID4gYnV0IHRoYXQgdGhlc2UgYXJlIHR3byBkaWZmZXJlbnQgY29uZGl0aW9ucy4NCj4gPg0KPiA+
+IElmIHRoZSBob3N0IGhhcmR3YXJlIGRldGVjdHMgYSBSQVMgZXJyb3IgaW4gbWVtb3J5IHVzZWQg
+YnkgdGhlIGd1ZXN0DQo+ID4gYnV0IHRoZSBndWVzdCBpcyBub3QgYmVpbmcgdG9sZCBhYm91dCBS
+QVMgZXJyb3JzLCB0aGVuIHdlIGNhbm5vdA0KPiA+IHJlcG9ydCB0aGUgZXJyb3I6IHdlIGhhdmUg
+bm8gbWVjaGFuaXNtIHRvIGRvIHNvLCBhbmQgdGhlIGd1ZXN0IGlzIG5vdA0KPiA+IGV4cGVjdGlu
+ZyBpdC4NCj4gDQo+IElmIHlvdSBsb29rIGF0IHRoZSB4ODYgdmVyc2lvbiBvZiB0aGlzIGZ1bmN0
+aW9uIHlvdSBjYW4gc2VlIHRoYXQgaXQgdGVzdHMgKGVudi0+bWNnX2NhcCAmIE1DR19TRVJfUCks
+IHdoaWNoIEkgdGhpbmsgaXMgdGhlIGVxdWl2YWxlbnQgeDg2ICJpcw0KPiB0aGUgZ3Vlc3QgQ1BV
+L2NvbmZpZyBvbmUgd2UgY2FuIHJlcG9ydCB0aGVzZSBlcnJvcnMgdG8iIHRlc3QuDQoNCk1DR19T
+RVJfUCAoc29mdHdhcmUgZXJyb3IgcmVjb3Zlcnkgc3VwcG9ydCBwcmVzZW50KSBmbGFnIGluZGlj
+YXRlcyAod2hlbiBzZXQpIHRoYXQgdGhlIHByb2Nlc3NvciBzdXBwb3J0cyBzb2Z0d2FyZSBlcnJv
+ciByZWNvdmVyeS4NCmVudi0+bWNnX2NhcCAncyB2YWx1ZSBzaG91bGQgYmUgZ290IGZyb20gS1ZN
+IGFzIHNob3duIGluIHRoZSBRRU1VIGNvZGVbMV0sIGl0IGluZGljYXRlcyB3aGV0aGVyIHRoZSBL
+Vk0gc3VwcG9ydCBzb2Z0d2FyZSBlcnJvciByZWNvdmVyeS4NCg0KWzFdOg0KLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQ0KICByZXQgPSBrdm1fZ2V0
+X21jZV9jYXBfc3VwcG9ydGVkKGNzLT5rdm1fc3RhdGUsICZtY2dfY2FwLCAmYmFua3MpOw0KICBp
+ZiAocmV0IDwgMCkgew0KICAgICAgIGZwcmludGYoc3RkZXJyLCAia3ZtX2dldF9tY2VfY2FwX3N1
+cHBvcnRlZDogJXMiLCBzdHJlcnJvcigtcmV0KSk7DQogICAgICAgICAgIHJldHVybiByZXQ7DQog
+ICB9DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+DQoNCg0KDQoNCg0KWzJdOg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0NCnZvaWQga3ZtX2FyY2hfb25fc2lnYnVzX3ZjcHUoQ1BVU3RhdGUgKmMs
+IGludCBjb2RlLCB2b2lkICphZGRyKQ0Kew0KICAgICAgICAuLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4NCg0KICAgICAgICBpZiAocmFtX2FkZHIgIT0gUkFNX0FERFJfSU5WQUxJRCAmJg0KICAg
+ICAgICAgICAga3ZtX3BoeXNpY2FsX21lbW9yeV9hZGRyX2Zyb21faG9zdChjLT5rdm1fc3RhdGUs
+IGFkZHIsICZwYWRkcikpIHsNCiAgICAgICAgICAgIA0KICBJZiBpdCBnb3QgdG8gaGVyZSwgaXQg
+bWVhbnMgdGhlIGhvc3QgaGFyZHdhcmUgZGV0ZWN0cyBhIFJBUyBlcnJvciBpbiBtZW1vcnkgdXNl
+ZCBieSB0aGUgZ3Vlc3QgdXNpbmcgYWJvdmUgdHdvIGp1ZGdtZW50cy4NCiAgTWF5YmUgd2UgY2Fu
+IHRlc3QvY2hlY2sgd2hldGhlciBLVk0gc3VwcG9ydHMgc29mdHdhcmUgZXJyb3IgcmVjb3Zlcnkg
+aW4gWzNdDQogICAgICAgICAgICAgICAgICAgICAgIA0KICAgICAgICAgICAgfQ0KICAgICAgICAg
+ICAgcmV0dXJuOw0KICAgICAgICAgICAgLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLg0KICAgICAg
+ICB9DQp9DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0NCg0KWzNdOg0KSWYgd2UgY2hlY2sgaXQgYXMgeDg2LCB3ZSBjYW4gY2hlY2sgdGhhdCB3
+aGV0aGVyIEtWTSBzdXBwb3J0cyBzb2Z0d2FyZSByZWNvdmVyeSB0aG91Z2ggSU9DVEwsIGZvciBl
+eGFtcGxlLg0KDQppbnQgciA9IGt2bV9pb2N0bChzLCBYWFhYWFhfR0VUX1NFUl9DQVBfU1VQUE9S
+VEVELCBzZWdfY2FwKTsNCi0tLS0tLS0tLS0tLS0tDQppZiAoc2VnX2NhcCAmJiBhZGRyKSB7DQog
+ICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCn0NCg0KPiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0K

@@ -1,104 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2393091wrt;
-        Fri, 23 Nov 2018 10:33:24 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cc3MB76ZwQAMfpUjtCAGTC5SKSv/6sdd9uH5Wp9Wrq/00r+z3cu4WIM87Pw9rksKIXkt1Z
-X-Received: by 2002:a81:b382:: with SMTP id r124mr17740378ywh.102.1542998004835;
-        Fri, 23 Nov 2018 10:33:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542998004; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3048117wrt;
+        Sat, 24 Nov 2018 00:20:01 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UMOLDHmJEIwpptjZg3PrQ7a5gTtsXx6UcT0AyK1pxwcPeVhm6IrFNhWsoYIs04UyZ4TK8I
+X-Received: by 2002:a25:7507:: with SMTP id q7-v6mr20774905ybc.38.1543047601834;
+        Sat, 24 Nov 2018 00:20:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543047601; cv=none;
         d=google.com; s=arc-20160816;
-        b=NC748VxCkhYkY/TLaeTIToWNBGWW7Ga7TxzTCOk5KiKyb7uI4jg2F5g4PAFo4xpR/Y
-         4NQ0IpjNZZFI4r9TDxU2Jvi36A6EzkTaecvXEoBME3kx2V4EZ8N7uAhPm0HWYl2a2yQ8
-         tZQF0aJzzFGT35gUs5eiYT+94D7G9sIjmpW7aQlqpnt7kINFmQkmN4JKS3TNZHKi7snj
-         tWX+fCCuvuRK63d4TqBVqPQUSAWH1eYSjRe9DUTa+IS7OVvWkwsvqwwMSd1Uk+ovAH3U
-         c1Z4bu/HoWjo0rXKVW4lIY7mr6yZI0HpWwSMvqZEufLOVXbx7XUgKU8EU6/AT7028hCt
-         r+Xg==
+        b=fEE+J8HMuQwFkvOVVlOqwDiTvFpU7Un2lEEUwcCThaBWFxxizFUGhWNeTekWiyEOlA
+         DG+j5x5B9+VMv0fAiJoNP9CfR3ptqHMHiN+HOhpp8p91wMJK6HoAiKfDi+kwQFsMT0eo
+         DKmu2KV0GeAmOZ72O76kkoZkVvtJzeTjBZuYq+grFp3ckloAzWqAh4dyTNnqWlfDeV5Z
+         kMF2ulFohi+0u8CwSppgR10Y/01eXLO/dwXTi802dI6IWxasLSWK6I0cGWNORN0eJ+3V
+         vjZaAdWVuA2YDpQeha99cHFEbNFGaxqT+O712WChPW2u509N1YuOijCzDtE6cXw1Kzqd
+         ycxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=iO75zDqhkjltLE1LIR3cvE1IOkKvXiKPWqxbs8jHOLg=;
-        b=tbZLgjD0S32TjOYkr1E5tazVGgRj+rV9E5kp2yqp+X6Rbpte0Of0fRCZhIUP0cGfVv
-         nkNKONQOidwkgwSCo93jaYu5XEC5hDkvV41Gu9dZdptfGdLtk7RSqsYztJYcB1qSDcWP
-         xubh6L5NiTMq/9byCtnHSeqf7Q1dbU3wAEpsMO5Ad0xbD8zjArH2XOUYCN1tYoEe5Q5F
-         ABmE7C39GKFRc9EwSirl4tZFdxh3JEzG4O2xlsLK3HOsRf3DpWChyLzTisRGd3XpNbRN
-         PjU47S25csbsp/dLoneBCVCa1ckBG55xHPVCeL2NWMF27F1CrbIj0UtrSj35lWQocqW+
-         RqcA==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from;
+        bh=setk2ca8SkGVzbEqs1PnOZ0st8bXyEKui0VSDNsPTs0=;
+        b=qWF0Ngt7YSmFyL7pINkXMeNrtJobYJuscuWwqhu4dxixiiSr4b2u2wgPQUUxL9AYKj
+         /jFQKHfC5GQIOaL+E0KtHKY96SgaQQl77EpUQToOvR2AFCE++jCzhxH59DQYDEMU0uMX
+         xlZzBlHico5FOVEK3jaZoVISnYwbR4U/bk2GpdRZNd6JVXytXXgdSxPijEC4ryU/gYdN
+         lqItVjxkwPfI463HvpYU//ot4kYHZdyzS1xkD88aUR27HfnBnMHURjsIuNrrv52fxN3M
+         FdHYY2zWeWd6r84UqPxK8oyysVhVnNeIj8Nk0SnDxhm50oG8n6zrXNB0CfZfs14pDEbH
+         aBUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id t20si4885673ywf.315.2018.11.23.10.33.24
+        by mx.google.com with ESMTPS id l28si15481060ywk.429.2018.11.24.00.20.01
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Nov 2018 10:33:24 -0800 (PST)
+        Sat, 24 Nov 2018 00:20:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53880 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55618 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gQGGa-0006A0-7X
-	for alex.bennee@linaro.org; Fri, 23 Nov 2018 13:33:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34683)
+	id 1gQTAX-0008JC-6B
+	for alex.bennee@linaro.org; Sat, 24 Nov 2018 03:20:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47915)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gQGDH-0003sR-J9
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 13:30:03 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gQTAF-0008It-SC
+	for qemu-arm@nongnu.org; Sat, 24 Nov 2018 03:19:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gQG5p-00056b-6B
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 13:22:21 -0500
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:35450)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gQG5o-00055r-Vh
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 13:22:17 -0500
-Received: by mail-wm1-f66.google.com with SMTP id c126so12742440wmh.0
-	for <qemu-arm@nongnu.org>; Fri, 23 Nov 2018 10:22:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=iO75zDqhkjltLE1LIR3cvE1IOkKvXiKPWqxbs8jHOLg=;
-	b=Juwg8dGT2r9CrEkE9A3LfMcGcT3HhnB5VQkXy6CHJJlYdB2CkSTC+j6YRUIDqr/Zve
-	y2Blhk6oYQTSR/mW03UuynbjBDKwWK8HKuXOD8ua4Rd7VjcSlIvXlAxc8zFoc5IrqoUi
-	WnSRPHrlEsURaUQFJM3Eq+0m+W/qKxB4Y3wqKXb/KczLqeI5VVibQR41CXGnKOJRVVRh
-	lS8f60U0wqiUyUcYxQ0R7vu7KT6Ce+IWcr7pYOk6VZhq732V+6F4pK6Fn4bm62FjCMAa
-	p+cByCq7yTMyeIn0gBkO84iXun+UI1tRhbHChJhqWwaiuA87y33dflqBxFRRrezMsXOL
-	e0RA==
-X-Gm-Message-State: AA+aEWZKgZxTaBdbkOyhr6KHTjqqOEW3APRcSbh0EkRYr4KahVjudfxZ
-	zZIxldizoHBj08RzcilXmLTyjQ==
-X-Received: by 2002:a1c:e90f:: with SMTP id q15mr6968367wmc.76.1542997335610; 
-	Fri, 23 Nov 2018 10:22:15 -0800 (PST)
-Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
-	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
-	by smtp.gmail.com with ESMTPSA id
-	x79sm17981479wmd.42.2018.11.23.10.22.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 23 Nov 2018 10:22:15 -0800 (PST)
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-References: <20181123135450.24829-1-edgar.iglesias@gmail.com>
-	<20181123135450.24829-2-edgar.iglesias@gmail.com>
-	<75bcddbc-da2d-aeb3-71d3-52b635520d2a@redhat.com>
-	<20181123165945.GM1148@toto> <20181123170225.GJ7447@toto>
-	<20181123170624.GN1148@toto>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <bd302393-5220-74be-d20b-7aa741aaa347@redhat.com>
-Date: Fri, 23 Nov 2018 19:22:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
-MIME-Version: 1.0
-In-Reply-To: <20181123170624.GN1148@toto>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gQT47-0005q2-4c
+	for qemu-arm@nongnu.org; Sat, 24 Nov 2018 03:13:24 -0500
+Received: from out1.zte.com.cn ([202.103.147.172]:40536 helo=mxct.zte.com.cn)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gQT46-0005kh-PL; Sat, 24 Nov 2018 03:13:23 -0500
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id F1DE4D5EE170DA127BD0;
+	Sat, 24 Nov 2018 16:13:07 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id wAO8D2ok023478;
+	Sat, 24 Nov 2018 16:13:02 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018112416134820-12697215 ;
+	Sat, 24 Nov 2018 16:13:48 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org, drjones@redhat.com, philmd@redhat.com
+Date: Sun, 25 Nov 2018 00:34:32 +0800
+Message-Id: <1543077273-16201-9-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1543077273-16201-1-git-send-email-peng.hao2@zte.com.cn>
+References: <1543077273-16201-1-git-send-email-peng.hao2@zte.com.cn>
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-11-24 16:13:48,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-11-24 16:12:42,
+	Serialize complete at 2018-11-24 16:12:43,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-11-24 16:12:43
+X-MAIL: mse01.zte.com.cn wAO8D2ok023478
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [PATCH v1 1/1] net: cadence_gem: Remove incorrect
- assert()
+X-Received-From: 202.103.147.172
+Subject: [Qemu-arm] [PATCH] hw/misc/pvpanic: realize the configure interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,76 +90,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
-	sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
-	alistair@alistair23.me, qemu-devel@nongnu.org,
-	frederic.konrad@adacore.com, qemu-arm@nongnu.org, muhammad_bilal@mentor.com
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CFlpDLAfUw1Q
+X-TUID: MxD3wzFQ4y0I
 
-On 23/11/18 18:06, Edgar E. Iglesias wrote:
-> On Fri, Nov 23, 2018 at 06:02:25PM +0100, Edgar E. Iglesias wrote:
->> On Fri, Nov 23, 2018 at 05:59:45PM +0100, Edgar E. Iglesias wrote:
->>> On Fri, Nov 23, 2018 at 05:46:17PM +0100, Philippe Mathieu-Daudé wrote:
->>>> Hi Edgar,
->>>
->>> Hi Philippe,
->>>
->>>>
->>>> On 23/11/18 14:54, Edgar E. Iglesias wrote:
->>>>> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->>>>>
->>>>> Don't assert on RX descriptor settings when the receiver is
->>>>> disabled. This fixes an issue with incoming packets on an
->>>>> unused GEM.
->>>>>
->>>>> Reported-by: mbilal <muhammad_bilal@mentor.com>
->>>>> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->>>>> ---
->>>>>  hw/net/cadence_gem.c | 1 -
->>>>>  1 file changed, 1 deletion(-)
->>>>>
->>>>> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
->>>>> index d95cc27f58..7f63411430 100644
->>>>> --- a/hw/net/cadence_gem.c
->>>>> +++ b/hw/net/cadence_gem.c
->>>>> @@ -979,7 +979,6 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->>>>>  
->>>>>          /* Do nothing if receive is not enabled. */
->>>>>          if (!gem_can_receive(nc)) {
->>>>> -            assert(!first_desc);
->>>>
->>>> Maybe worth:
->>>>
->>>>                trace_gem_receive_packet_drop(size);
->>>
->>> Or perhaps a generic tracepoint on packet drops for any device.
->>> Anyway this is probably something for after the release.
->>>
->>> Not sure if it's too late to even get the removal of the assert into this release? Peter?
->>>
->>>>
->>>>>              return -1;
->>>>
->>>> Shouldn't this be 'return 0'?
->>>>
->>>> The "net/net.h" doc is scarce...
->>>
->>> If we return 0 my understanding is that we later need to actively
->>> call qemu_flush_or_purge_queued_packets() to renable the rx
->>> path which the GEM model doesn't do. So that would mean
->>> refactoring the model a bit.
->>
->> Actually, the GEM model does do that, my bad, so yes return 0 seems to be the right thing to do here.
-> 
-> I take that back, the GEM model only handles some of the !can_receive cases
-> with qemu_flush_queued_packets(). Not all, so return -1 is correct I think.
+Add configure interface for pvpanic-mmio. In qemu command line
+use -device pvpanic-mmio to enable the device.
 
-OK, thanks for checking this.
+Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+---
+ hw/arm/virt-acpi-build.c | 5 ++++-
+ hw/arm/virt.c            | 7 +++----
+ hw/misc/pvpanic.c        | 1 +
+ 3 files changed, 8 insertions(+), 5 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 4208e46..cbc415e 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -45,6 +45,7 @@
+ #include "hw/arm/virt.h"
+ #include "sysemu/numa.h"
+ #include "kvm_arm.h"
++#include "hw/misc/pvpanic.h"
+ 
+ #define ARM_SPI_BASE 32
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+@@ -785,7 +786,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+     acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+-    acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
++    if (pvpanic_mmio()) {
++        acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
++    }
+     acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 921220a..aeedc43 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -198,8 +198,6 @@ static void create_pvpanic_device(const VirtMachineState *vms)
+      hwaddr base = vms->memmap[VIRT_PVPANIC].base;
+      hwaddr size = vms->memmap[VIRT_PVPANIC].size;
+ 
+-     sysbus_create_simple(TYPE_PVPANIC_MMIO, base, NULL);
+-
+      nodename = g_strdup_printf("/pvpanic-mmio@%" PRIx64, base);
+      qemu_fdt_add_subnode(vms->fdt, nodename);
+      qemu_fdt_setprop_string(vms->fdt, nodename,
+@@ -1330,6 +1328,9 @@ void virt_machine_done(Notifier *notifier, void *data)
+     struct arm_boot_info *info = &vms->bootinfo;
+     AddressSpace *as = arm_boot_address_space(cpu, info);
+ 
++    if (pvpanic_mmio()) {
++        create_pvpanic_device(vms);
++    }
+     /*
+      * If the user provided a dtb, we assume the dynamic sysbus nodes
+      * already are integrated there. This corresponds to a use case where
+@@ -1551,8 +1552,6 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+ 
+-    create_pvpanic_device(vms);
+-
+     create_gic(vms, pic);
+ 
+     fdt_add_pmu_nodes(vms);
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index 6fea162..ce6f5cb 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -119,6 +119,7 @@ static void pvpanic_mmio_initfn(Object *obj)
+     memory_region_init_io(&s->mr, OBJECT(s), &pvpanic_ops, s,
+                           TYPE_PVPANIC_MMIO, 2);
+     sysbus_init_mmio(sbd, &s->mr);
++    sysbus_mmio_map(sbd, 0, s->base);
+ }
+ 
+ static Property pvpanic_mmio_properties[] = {
+-- 
+1.8.3.1
 
-Regards,
-
-Phil.

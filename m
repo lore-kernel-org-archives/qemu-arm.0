@@ -1,128 +1,143 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4706158wrt;
-        Sun, 25 Nov 2018 12:50:49 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ebuDln0RWKj7cKeCpPgBjpPtJ1J9+0eLhyYnRPYMwkF2z7Q60Q9uoEDxzC+vi6uoTEQkkL
-X-Received: by 2002:ac8:34cb:: with SMTP id x11mr22894519qtb.115.1543179049276;
-        Sun, 25 Nov 2018 12:50:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543179049; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4792886wrt;
+        Sun, 25 Nov 2018 14:51:24 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/VG/jfFf35x+eiKqjaQFOes+BVqTBThbPrKuDZeLSJbP5dzM+NQWlbk13QDLXq1bzi+UoRw
+X-Received: by 2002:a25:428b:: with SMTP id p133-v6mr25989974yba.178.1543186283965;
+        Sun, 25 Nov 2018 14:51:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543186283; cv=none;
         d=google.com; s=arc-20160816;
-        b=lWOOe3fVuxRtUFM3j4kH94HAhA1yXlmYp0TN36n48MQFnB4GeUbyyWbXSjuBlBvkHY
-         s3etqvuakId4YWhbggDZUx7PSXWbcCB3Y14GJJFNvxuyUh/h40aWDGW0bzZyo+YgoSgD
-         EkQ2HGnV8sXF1jd9/Df/06RsQ9f5FW+bSSKGjWt5CUzkXRPs9dpER7qY4qbaOmu8qdpQ
-         USR707KkHI9InL8HSNAalrlWeQAQ1EwJ9eAoBdr6UaialdceopkOl+6/wOCR/0y5VaMk
-         V7QxKtap8fgFinm/kTMDSkI9UKvPArU+c4QLkAiwWOtim2ql8+/eEzkm901NunyGth7O
-         MaAQ==
+        b=dJHn6qGs7C5FNblpV5oASaTDm1Pq6JyBvIUP9XQwN8sKNGLPqcPGFI9GKhalbDJjCL
+         2soNGg5uiyUmILr7du2gQjs2mwA5fP3vpam/QydwBCvHLJ3vEy2WMqBVQwzBkqwHEnPb
+         IKocTczIHtL8J9ra1/4ef98cxOTPeYil5ZSdLl2qe/wgras7NMdCvE2CqPKhKA/v4brg
+         gHwOt8lR3Gh3FZxnJVoH9ln9hla6idyTX9eisPaWfS6hBuK9FZO/6Go1KSq4RrSbfJ/V
+         2NsjF+0blmI6fGi0ScOLFEoYDSCNDOrs7ZumIrRUHzuNTcskiTLryKhPfdHJkx5eCJ+Y
+         /Naw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=AnTxmE++ESJ/Rj3Ct8vpNRTIkZ1jRx2Qc5XcC1Yopw0=;
-        b=ae6LzvyQyHK3Cjm4mDD2gnuOj/LM3So25UlBQScY3L4JcUA/Q/2iz1L+3OKshw6IDn
-         FTQ5TWypSyA71GrOthJCoQQMlaLM1E78ZTKjzQ6sTte9B4YpYTP/aDzm+lNDt88G4iUt
-         f93LJMpvpcx9XWaFAG+egljkfuTHzBF5H2OeIT/B3opkg78uZhnz47/cLemxN+jPN7cm
-         V0sp+tPhj+XPIT5pwLFTX/CNBN/RRmuDUfilXtI33RPtExcGKptGP0ouwVF4MmezZOja
-         qm0xN/OmMgPSPBbypNZ7wqh0tgnPaNCHRMGalzgYwIrZfL5Y0nclefh8bkGjlROvAhD8
-         6xSg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=F/zsxdFp/GNh/icUQkioxUABty2Na/KGNQ7ED4I3EuA=;
+        b=uQiuKtvBGSW8yfvPOlyFuOJjVCRz38SJopZePHmwYNKmm9zCVdMF0tR6jNs9+ARxO/
+         V2VYCDnxgQThtpMmT1dO1bDsr6DEDx+dep69yOm3TqrexZZX10IlSQqxTSAUxIXeDLx4
+         rlgntXBvDhnk3E79kjmnQAx3b6ajsK6qdtqxgRW0I0qg8wP7oMB1hfdRx4KT6NAI3gfn
+         fc16eSU+1XO1a5HpHAUFXiTCXGxnqC/ZHNS8+HYNB8URw/9Fqzi/ysoZJArbCGo7oLlP
+         a7BfoEG1EJsqxCn0dqIU3rbzxbueSYhNKU1N7uJymwN/jrpELTXdxoo/5ZTClmwn44NB
+         /w8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id k8si12589850qvp.96.2018.11.25.12.50.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 25 Nov 2018 12:50:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZRmL0GI2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
+        by mx.google.com with ESMTPS id 9-v6si11234977ybb.386.2018.11.25.14.51.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 25 Nov 2018 14:51:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C98DE85550;
-	Sun, 25 Nov 2018 20:50:47 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 20A2F5C1B2;
-	Sun, 25 Nov 2018 20:50:19 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: Aleksandar Markovic <amarkovic@wavecomp.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Fam Zheng <famz@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Helge Deller <deller@gmx.de>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Markus Armbruster <armbru@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Stefan Markovic <smarkovic@wavecomp.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Xiao Guangrong <xiaoguangrong.eric@gmail.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-trivial@nongnu.org,
-	Fam Zheng <fam@euphon.net>
-Subject: [PATCH for-3.1 00/25] MAINTAINERS: Add various missing entries
-Date: Sun, 25 Nov 2018 21:49:35 +0100
-Message-Id: <20181125205000.10324-1-philmd@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZRmL0GI2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33351 helo=lists.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gR3FL-0000u7-6T
+	for alex.bennee@linaro.org; Sun, 25 Nov 2018 17:51:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43258)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gR3F7-0000sp-Cv
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 17:51:10 -0500
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <peter.maydell@linaro.org>) id 1gR3F6-00010T-GL
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 17:51:09 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:36021)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gR3F6-0000zi-Bz
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 17:51:08 -0500
+Received: by mail-ot1-x344.google.com with SMTP id k98so14929228otk.3
+	for <qemu-arm@nongnu.org>; Sun, 25 Nov 2018 14:51:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=F/zsxdFp/GNh/icUQkioxUABty2Na/KGNQ7ED4I3EuA=;
+	b=ZRmL0GI2f+46nypFuuOUnBpC2AL0EzsVYvfeBT4wQyVUYun0a3R369WwxVEZmmWSEL
+	B/Hbxq0h5w7av1F/JNJDad3ogLWX2OxHN+omBerKsqaGds2WudNLi4S/DFIoaC7+99sH
+	kjQnZ8y6GymRF5g1JaoJN/W768l+E86fdd908=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=F/zsxdFp/GNh/icUQkioxUABty2Na/KGNQ7ED4I3EuA=;
+	b=pvbCL4S7tdVS9IL7S4IyPnLAWVPFuG9pam4H3K9430fjYhccKNVbFonilBs8uqsf9t
+	5s8KSNsle1ODdN02AVY9ISKF4u9Z0UiUrGRVLBp6g9wH9a7K8+P33SiZnnt/M5mJOZ2i
+	4wZUHSwwzT2fAg4vzy1leK+UDkPbpWcmWeeLJcO+z90bSEswaIiqetefbFYWelyQadow
+	2uCZEWHZ3JOzq4FRqpN8g3iEuE0GeN01hqXUwq9KEPMG4KZD1zRr4jfd7qJJ1Hq+Igl7
+	5TG4EXhZJvl6Akz9VNuHUPk3woe2Ibe5y5lOYTE3QROd3pdIgBrLDx1sgDCems8wc0/1
+	CX3g==
+X-Gm-Message-State: AA+aEWahGE3IUO0yeOVc2J7n9uTcdOxhp26fSoH42EXu8SByLu8GRij4
+	wlbdjdUoOD5NTPw+fX9neiemv414JNgPe48Wqs/NPA==
+X-Received: by 2002:a9d:5617:: with SMTP id e23mr12775843oti.151.1543186267893;
+	Sun, 25 Nov 2018 14:51:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Sun, 25 Nov 2018 20:50:48 +0000 (UTC)
-X-TUID: L/udHczb7xjy
+References: <20181125205000.10324-1-philmd@redhat.com>
+	<20181125205000.10324-16-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-16-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 25 Nov 2018 22:50:56 +0000
+Message-ID: <CAFEAcA8ynuCc3RGcGGLc=aKB-DRiVr2joo7BjDNHf_TvXmuRDg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH for-3.1 15/25] MAINTAINERS: Add missing
+ entries for the Canon DIGIC machine
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.21
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+	qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PLv28Z/wlx+v
 
-Hi,
+On Sun, 25 Nov 2018 at 20:52, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> This pattern now also matches:
+> - include/hw/timer/digic-timer.h
+> - include/hw/char/digic-uart.h
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index eab0fb9742..e04f2f1a44 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -527,6 +527,7 @@ L: qemu-arm@nongnu.org
+>  S: Odd Fixes
+>  F: include/hw/arm/digic.h
+>  F: hw/*/digic*
+> +F: include/hw/*/digic*
+>
+>  Gumstix
+>  M: Peter Maydell <peter.maydell@linaro.org>
 
-This cleanup effort is inspired by Markus "Full list of unmaintained files"
-from the "MAINTAINERS leaves too many files uncovered" thread:
-https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg04270.html
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (25):
-  MAINTAINERS: Fix ACPI tests data files path
-  MAINTAINERS: Add a missing entry to the SPARC CPU
-  MAINTAINERS: Add missing entries to the X86 section (AMD SEV)
-  MAINTAINERS: Add missing entries for the Xilinx ZynqMP machine
-  MAINTAINERS: Add missing entries for the Jazz machine
-  MAINTAINERS: Add a missing entry for the Xilinx S3A-DSP 1800 machine
-  MAINTAINERS: Add a missing entry for the Fulong 2E machine
-  MAINTAINERS: Add a missing entry for the Old World machines
-  MAINTAINERS: Add a missing entry for the sun4m machines
-  MAINTAINERS: Add missing entries for the sun4u machines
-  MAINTAINERS: Add missing entries for the PC machines
-  MAINTAINERS: Add missing entries to the PC Chipset section
-  MAINTAINERS: Add missing entries to VFIO
-  MAINTAINERS: Add missing entries to the vhost section
-  MAINTAINERS: Add missing entries for the Canon DIGIC machine
-  MAINTAINERS: Add missing entries for the MPS2 machine
-  MAINTAINERS: Add a missing entry to SPICE
-  MAINTAINERS: Add missing entries for the QObject section
-  MAINTAINERS: Add a missing entry to the QMP section
-  MAINTAINERS: Add missing test entries to the Cryptography section
-  MAINTAINERS: Add a missing entry for the NVDIMM device
-  MAINTAINERS: Add a missing entry to the New World machines
-  MAINTAINERS: Add an entry for the Dino machine
-  MAINTAINERS: Use my work email to review Build and test automation patches
-  MAINTAINERS: Remove duplicate entries of qemu-devel@nongnu.org
-
- MAINTAINERS | 69 ++++++++++++++++++++++++++++++++++++++++-------------
- 1 file changed, 52 insertions(+), 17 deletions(-)
-
--- 
-2.17.2
+thanks
+-- PMM

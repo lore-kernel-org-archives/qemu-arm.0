@@ -1,82 +1,87 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3070918wrt;
-        Sat, 24 Nov 2018 00:51:38 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WgP575Q/B47g7Hj1RaJN2vtMEPHnqyo+vqS2eOChO9CXotuPCarA21D3hm1vhmW+vQJSW3
-X-Received: by 2002:a25:3a47:: with SMTP id h68-v6mr19202010yba.495.1543049498335;
-        Sat, 24 Nov 2018 00:51:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543049498; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4708946wrt;
+        Sun, 25 Nov 2018 12:55:15 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XYXJYF7VVk8ngnzeUDXS/YaVH1oXoRxW7XFAfHbIRW0Cqz8akijanjD+wvYRjZ2a4OIY4L
+X-Received: by 2002:a25:6dc5:: with SMTP id i188-v6mr25222306ybc.347.1543179315333;
+        Sun, 25 Nov 2018 12:55:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543179315; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZrepPUyUuIWGphxVrWzlcjUkpnLdgr0aSFXICZ7It5+YQqZBMEaTyAgTDBK5evb6/4
-         1r/ynt4q9PFbsBpdvhrOyshGP8Z8wo0y03GAoJuj+WDPs4QOOsT61DbwlvQbWLItLnSY
-         EbSWsPGBa6rut1SuKjBRgwoGavsrbt0p/l29dkT1sVqr0LDib8f3CxWlKfE+DlcrbVk4
-         wlGA+HqPwXFKQ421Ro1CodTql3bV6ceNq5j4cwwU4ORZzUlLgWyyf3ZL/IyJmYsb2lrF
-         pxPSfxu+3BUTMTC2Ur9e8gbEs0mbby3/rhfgs4Z6CiWkyps00nY1GcBMGgWx7BBmxWa5
-         lZOQ==
+        b=Diqa+5wha124b35juxAv0frzlxtpKMF3zIen9rg6rFLgKPwAa3ni652zqD7FejR5QZ
+         kTAbSKoP4ATDGnI1Hiv/7r02Al4cokFbqWfAsyYwHSkIcMpvTshkVeZY1DvuY8Sw4wRJ
+         Um6Np7y1Fctce7/P+OAJB1lgsDFp4cZ/MEJAuwo4IJ6ThTdiwhRuAL1+XqRLVRxBv3WB
+         kmZJnNFwimqJp1PzAC8uUdtMxuFDS/8iIdfQAjuQGGZWfG/Q+F26FvDMWTX0MFFSJi0o
+         OdGfxOATGawScivgsUYRHmc9eUWAuDNmQl61eRE3St/FCg9e7xALaXN50tC7oEJaaN1L
+         2USA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
-         :references:in-reply-to:message-id:date;
-        bh=Ze6XrXFrDfMOPMzJ6uv7i8mS61VTYxgUwrR0yTgmOv8=;
-        b=wUEqrCqIyDQH0qxogVWcu8jPZFreldEVIO0MWKodTWhtc1ssRdufeJjdXW5zLYsS7C
-         Ty07TWhGjmp1OtfP49cjvO1Dr0Gpuod2a/44i79tMZfnbdiq74L4SyrOFZGUQMV6diEn
-         UOmlg7WqrzcLQGinVVosbI388SWRBJL6N8O01mC1W//vcy+isO8wIs+ootBkdjf1JLIe
-         nh8I9iyimrwQlFWvOg+dZd7nt6RiByBKmDfkKHB9w92cyFm9f40rKbs9h88dRNRmslm9
-         Cnd39s2Xe3yvjozMxssrhrioEcLu5SvV8yptpn3j8XzSduM21vwgNtQjLl+aHRsT8/a4
-         ww3g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=/30IJb4cseBlSyTK+o4srf0k1j2iT6notfSFYXm4fZU=;
+        b=XRpBNgoUwz3NJ5q0PcowCDslZZstEs8DBKxL0fVlWhS8prSZOQ0qnqQaVrII1xreb5
+         W2rN7EdLzr5siU47Tp8jKGWNPTNy5ZHKIaAZ6DjclzKqx2bpWL0/XKyMIUBMN8mDV4uY
+         /d1KhefUCGFyDgeaw0bnWZuG9rJbLKxofj5/fRij3yxMgZrkqZEt5yJQtc0qPWK718iR
+         hn1lVbSbiPWp40yZEcLCxizBHsDS1bqrAtBa87cTT5BTYCsze5A3vetdhAsEwlu/n3ez
+         h3SlYez3UWXIoCfVdYHYsipXLM9kFP4pu6HHzUpAGCnVvapYcYKfQd9wxhJaopzBlGEf
+         Dtow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c124si5056243ywf.270.2018.11.24.00.51.38
+        by mx.google.com with ESMTPS id s198si20528418ywg.402.2018.11.25.12.55.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 24 Nov 2018 00:51:38 -0800 (PST)
+        Sun, 25 Nov 2018 12:55:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55770 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32967 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gQTf7-0004dA-Qm
-	for alex.bennee@linaro.org; Sat, 24 Nov 2018 03:51:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52588)
+	id 1gR1Qw-0003nf-Mr
+	for alex.bennee@linaro.org; Sun, 25 Nov 2018 15:55:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39467)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gQTUP-0002j7-L0
-	for qemu-arm@nongnu.org; Sat, 24 Nov 2018 03:40:38 -0500
+	(envelope-from <philmd@redhat.com>) id 1gR1Nc-0000Le-Uz
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 15:51:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gQTOr-0000n4-QT
-	for qemu-arm@nongnu.org; Sat, 24 Nov 2018 03:34:55 -0500
-Received: from out1.zte.com.cn ([202.103.147.172]:53000 helo=mxct.zte.com.cn)
+	(envelope-from <philmd@redhat.com>) id 1gR1Nc-0005qF-CB
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 15:51:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40450)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gQTOj-0000gx-MY; Sat, 24 Nov 2018 03:34:42 -0500
-Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id 3AC7F4AD9911B2B6562A;
-	Sat, 24 Nov 2018 16:34:37 +0800 (CST)
-Received: from kjyxapp05.zte.com.cn ([10.30.12.204])
-	by mse01.zte.com.cn with SMTP id wAO8YVQG033327;
-	Sat, 24 Nov 2018 16:34:31 +0800 (GMT-8)
-	(envelope-from peng.hao2@zte.com.cn)
-Received: from mapi (kjyxapp05[null]) by mapi (Zmail) with MAPI id mid14;
-	Sat, 24 Nov 2018 16:34:33 +0800 (CST)
-Date: Sat, 24 Nov 2018 16:34:33 +0800 (CST)
-X-Zmail-TransId: 2b075bf90d1987bc37d6
-X-Mailer: Zmail v1.0
-Message-ID: <201811241634336661843@zte.com.cn>
-In-Reply-To: <1543077273-16201-10-git-send-email-peng.hao2@zte.com.cn>
-References: 1543077273-16201-1-git-send-email-peng.hao2@zte.com.cn,
-	1543077273-16201-10-git-send-email-peng.hao2@zte.com.cn
-Mime-Version: 1.0
-From: <peng.hao2@zte.com.cn>
-To: <peter.maydell@linaro.org>, <drjones@redhat.com>, <philmd@redhat.com>
-Content-Type: multipart/mixed;
-	boundary="=====_001_next====="
-X-MAIL: mse01.zte.com.cn wAO8YVQG033327
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1gR1Nc-0005q2-7D; Sun, 25 Nov 2018 15:51:48 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7CC5485550;
+	Sun, 25 Nov 2018 20:51:47 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0710C5C1B2;
+	Sun, 25 Nov 2018 20:51:43 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Thomas Huth <thuth@redhat.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 25 Nov 2018 21:49:41 +0100
+Message-Id: <20181125205000.10324-7-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-1-philmd@redhat.com>
+References: <20181125205000.10324-1-philmd@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Sun, 25 Nov 2018 20:51:47 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 202.103.147.172
-Subject: Re: [Qemu-arm] 
- =?utf-8?q?=5BPATCH_10/10=5D__pvpanic_=3A_update_pvpan?=
- =?utf-8?q?ic_document?=
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH for-3.1 06/25] MAINTAINERS: Add a missing entry
+ for the Xilinx S3A-DSP 1800 machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,58 +93,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: usNWV4Iinqdo
+X-TUID: QkopRjiIQQns
 
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-
---=====_001_next=====
-Content-Type: multipart/alternative;
-	boundary="=====_003_next====="
-
-
---=====_003_next=====
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
-
-SSdtIHNvcnJ5IHRvIHNlbnQgcGF0Y2hlcyB3aXRoIHVubW9kaWZpZWQgdGl0bGUuIApQbGVhc2Ug
-aWdub3JlIHBhdGNoIDEtMTAuIEkgd2lsbCByZS1zZW5kLgo+QWRkIG1taW8gc3VwcG9ydCBpbmZv
-IGluIGRvY3Mvc3BlY3MvcHZwYW5pYy50eHQuCj4KPlNpZ25lZC1vZmYtYnk6IFBlbmcgSGFvIDxw
-ZW5nLmhhbzJAenRlLmNvbS5jbj4KPi0tLQo+ZG9jcy9zcGVjcy9wdnBhbmljLnR4dCB8IDE4ICsr
-KysrKysrKysrKysrKy0tLQo+MSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKyksIDMgZGVs
-ZXRpb25zKC0pCj4KPmRpZmYgLS1naXQgYS9kb2NzL3NwZWNzL3B2cGFuaWMudHh0IGIvZG9jcy9z
-cGVjcy9wdnBhbmljLnR4dAo+aW5kZXggYzdiYmFjYy4uMmQwNmVlNSAxMDA2NDQKPi0tLSBhL2Rv
-Y3Mvc3BlY3MvcHZwYW5pYy50eHQKPisrKyBiL2RvY3Mvc3BlY3MvcHZwYW5pYy50eHQKPkBAIC0x
-LDE0ICsxLDE4IEBACj5QVlBBTklDIERFVklDRQo+PT09PT09PT09PT09PT0KPi1wdnBhbmljIGRl
-dmljZSBpcyBhIHNpbXVsYXRlZCBJU0EgZGV2aWNlLCB0aHJvdWdoIHdoaWNoIGEgZ3Vlc3QgcGFu
-aWMKPi1ldmVudCBpcyBzZW50IHRvIHFlbXUsIGFuZCBhIFFNUCBldmVudCBpcyBnZW5lcmF0ZWQu
-IFRoaXMgYWxsb3dzCj4rcHZwYW5pYyBkZXZpY2UgaXMgYSBzaW11bGF0ZWQgSVNBL1N5c0J1cyBk
-ZXZpY2UsIHRocm91Z2ggd2hpY2ggYSBndWVzdAo+K3BhbmljIGV2ZW50IGlzIHNlbnQgdG8gcWVt
-dSwgYW5kIGEgUU1QIGV2ZW50IGlzIGdlbmVyYXRlZC4gVGhpcyBhbGxvd3MKPm1hbmFnZW1lbnQg
-YXBwcyAoZS5nLiBsaWJ2aXJ0KSB0byBiZSBub3RpZmllZCBhbmQgcmVzcG9uZCB0byB0aGUgZXZl
-bnQuCj4tVGhlIG1hbmFnZW1lbnQgYXBwIGhhcyB0aGUgb3B0aW9uIG9mIHdhaXRpbmcgZm9yIEdV
-RVNUX1BBTklDS0VEIGV2ZW50cywKPitUaGUgbWE6d3FuYWdlbWVudCBhcHAgaGFzIHRoZSBvcHRp
-b24gb2Ygd2FpdGluZyBmb3IgR1VFU1RfUEFOSUNLRUQgZXZlbnRzLAo+YW5kL29yIHBvbGxpbmcg
-Zm9yIGd1ZXN0LXBhbmlja2VkIFJ1blN0YXRlLCB0byBsZWFybiB3aGVuIHRoZSBwdnBhbmljCj5k
-ZXZpY2UgaGFzIGZpcmVkIGEgcGFuaWMgZXZlbnQuCj4rV2hlbiBwdnBhbmljIGRldmljZSBpcyBp
-bXBsZW1lbnRlZCBhcyBhIElTQSBkZXZpY2UsIGl0IHN1cHBvcnRzIElPUE9SVAo+K21vZGUuIFNp
-bmNlIFFFTVUgdjMuMiBwdnBhbmljIGFsc28gc3VwcG9ydHMgTU1JTyBtb2RlLCBpdCB3aWxsIGJl
-Cj4raW1wbGVtZW50ZWQgYXMgYSBTWVNCVVMgZGV2aWNlLgo+Kwo+SVNBIEludGVyZmFjZQo+LS0t
-LS0tLS0tLS0tLQo+QEAgLTE5LDYgKzIzLDE0IEBAIFNvZnR3YXJlIHNob3VsZCBzZXQgb25seSBi
-aXRzIGJvdGggaXRzZWxmIGFuZCB0aGUgZGV2aWNlIHJlY29nbml6ZS4KPkN1cnJlbnRseSwgb25s
-eSBiaXQgMCBpcyByZWNvZ25pemVkLCBzZXR0aW5nIGl0IGluZGljYXRlcyBhIGd1ZXN0IHBhbmlj
-Cj5oYXMgaGFwcGVuZWQuCj4rU1lTQlVTIEludGVyZmFjZQo+Ky0tLS0tLS0tLS0tLS0tLS0KPisK
-PitUaGUgU1lTQlVTIGludGVyZmFjZSBpcyBzaW1pbGFyIHRvIHRoZSBJU0EgaW50ZXJmYWNlIGV4
-Y2VwdCB0aGF0IGl0IHVzZXMKPitNTUlPLiBGb3IgZXhhbXBsZSwgdGhlIGFybSB2aXJ0IG1hY2hp
-bmUgY291bGQgcHV0IHRoZSBwdnBhbmljIGRldmljZSBhdAo+K1sweDkwNzAwMDAsIDB4OTA3MDAw
-MV0gYW5kIGN1cnJlbnRseSBvbmx5IHRoZSBmaXJzdCBieXRlIGlzIHVzZWQuCj4rCj4rCj5BQ1BJ
-IEludGVyZmFjZQo+LS0tLS0tLS0tLS0tLS0KPi0tCj4xLjguMy4x
-
-
---=====_003_next=====--
-
---=====_001_next=====--
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4e396cbe71..aa17e9bbd3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -822,6 +822,7 @@ petalogix_s3adsp1800
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+ S: Maintained
+ F: hw/microblaze/petalogix_s3adsp1800_mmu.c
++include/hw/char/xilinx_uartlite.h
+=20
+ petalogix_ml605
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+--=20
+2.17.2
 

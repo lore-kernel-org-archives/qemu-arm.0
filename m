@@ -1,85 +1,101 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4719775wrt;
-        Sun, 25 Nov 2018 13:08:11 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/VGL3R6uESLYsnm0IAOf8B9v7oEfiTBeuyW8P0OkDuZRZV6w18m3dfku6kDAJvS5Y5/NW4X
-X-Received: by 2002:a25:1043:: with SMTP id 64-v6mr24977544ybq.159.1543180091204;
-        Sun, 25 Nov 2018 13:08:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543180091; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4722994wrt;
+        Sun, 25 Nov 2018 13:11:55 -0800 (PST)
+X-Google-Smtp-Source: AJdET5fvacnsW6YUwq3RRGf/uq7zH4PeqgOyzTEDj/baV+kmltOjnqFp46cSsV7qCsZ6AEyL8o/T
+X-Received: by 2002:a81:b382:: with SMTP id r124mr25889285ywh.102.1543180315337;
+        Sun, 25 Nov 2018 13:11:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543180315; cv=none;
         d=google.com; s=arc-20160816;
-        b=EBg6j9dQcLUw6VDFiZrop4V1kkDvAjUlqTp0OI0y77q3Bpql9o4futEiTBrY6AWACM
-         5SBNQb8pnlJ54E4wK1XEv/pBEomqP+Nxy+vsgZfpMxJTPFXVj/faei6+5FVzwO5YEtjR
-         akUt1hG7egk/sDkMaxshYup5Ys3QA/Pppt34Vor1xelFU7q0wv5MLSCBUu9JTZC7EjFV
-         b3PAT7i8VL6vv6faHiT3KIzp3xe0Wjm2FjA3zYNGaHFCqtyBubJP3f2hWKM7Vvr79V+v
-         rjo8sZvz+oiOlRkjnzMe8cmD+hb/rSSk06vIOCgPFbrjbKycrxo3G0LzTMTKeLg3rkHo
-         /2AA==
+        b=DTLLEg3+LnTcow8eC0L3ZwIakvSL+HyTF/GIfY45Tlo31ne+Z2PFiGQw32JrTVFUyL
+         GVNFu7IQAUSb1nhH2jHO/CvYRtXs3WmAxq97rj0Ttq2zBXGq7ZlFBn5XBl2PzVVOlciM
+         IRis2JLUq5V/rOb3HYh9vMlWmHTeB3CsmFrsVQWPLWMmXlg7mPwyncVNAuWzlYCuqcJO
+         4CdWXJJGeC5GNiaGKu+rzK331ViBgkLHswGcYL5OnShVINEX4owxH9gPPnBxDwRFIHQP
+         XB1blEk+YloC0DN5/s39TOxa5zSpD850mNvYi8Eetrz0nV/EelnDJ9i524587lbByhcv
+         eRgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=VbtaHmuAJoXCdY+iMXA//ff6kfbZRgIVVZdLS65DGEQ=;
-        b=dfwb2qxdpSu03TNhwT+BcVvV/TsyQNpng2LG6L82rqIxbipClJ5z5Bc86G8FGFbHpm
-         reTz/7ARmmoRiuIOQwxizjTAsrJTQnBg9UiBfW5rUsxVqcz1QUpuurAty7jmBW83RvCK
-         ku8eBd48ESMTUZyORjPCTPcYsBw1x0g6VzEst6XwpNJrKQFE1KA8m5m3ttKh4xMxqOsr
-         B0UDJ+EzekwxD7XEWdj1OqrCp+qzYHr5TY5PzXvQjj83jCTMmsRwIQHrvnavlLLE5zfR
-         w5m4PuClVnmTFzchly4YA71IYCI6XD1a/5LSaNO1pJEFGvK+7WnFrkv4ZAYSje4wV5V9
-         1vVg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=snL8V8mQ7ancl3qokMj+u6yKU7RsH30T8nKdx5IH4s8=;
+        b=VnPM7bUooPSW8F0f/d6MwT1Kn+YvxoXHVfqgvKQSBlQw+sFetlAwQqluCD45K4eFD6
+         hOU7Ay8CWhlAvDVpZsu9FuCYaOl1ZjDtgHkVwUExZ+aAxlf/Kb7aFKHhgzT/hgmVoPUb
+         ivWQ/+6NZ/wRhDsknPGqvvLZBwMP+CCg2hiBKP9jbGOuiozaTU8IWT3YrSmE18CsDA8s
+         XM5hcQrZDb3/9UB0GoMp3oGgBPmOx2i0mqwEurWoBoWLja+erUVj34KPGa0btQtNkL6t
+         337dndHx1vNLCX0JJh51ZqsrcbYTNroXz3ZDr2r+fm6WM7Gd6CXEc7rNpG2mACZBtUSH
+         0f4g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id c64-v6si35130856ywe.122.2018.11.25.13.08.11
+        by mx.google.com with ESMTPS id d66-v6si13457110ybd.362.2018.11.25.13.11.55
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 25 Nov 2018 13:08:11 -0800 (PST)
+        Sun, 25 Nov 2018 13:11:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33043 helo=lists.gnu.org)
+Received: from localhost ([::1]:33070 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gR1dS-0006lo-Jh
-	for alex.bennee@linaro.org; Sun, 25 Nov 2018 16:08:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39908)
+	id 1gR1h4-00021X-NJ
+	for alex.bennee@linaro.org; Sun, 25 Nov 2018 16:11:54 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gR1OK-0000wj-Os
-	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 15:52:33 -0500
+	(envelope-from <philmd@redhat.com>) id 1gR1Xj-0001yZ-Fw
+	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 16:02:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gR1OK-0006Jz-2l
-	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 15:52:32 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45744)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gR1OH-0006HM-Jr; Sun, 25 Nov 2018 15:52:29 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EA52C3078AA3;
-	Sun, 25 Nov 2018 20:52:28 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F4985C1B2;
-	Sun, 25 Nov 2018 20:52:25 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 25 Nov 2018 21:49:50 +0100
-Message-Id: <20181125205000.10324-16-philmd@redhat.com>
-In-Reply-To: <20181125205000.10324-1-philmd@redhat.com>
-References: <20181125205000.10324-1-philmd@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1gR1Xf-0004IE-7J
+	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 16:02:15 -0500
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:40412)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gR1Xd-0004H5-6u
+	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 16:02:09 -0500
+Received: by mail-wm1-f67.google.com with SMTP id q26so16282932wmf.5
+	for <qemu-devel@nongnu.org>; Sun, 25 Nov 2018 13:02:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=snL8V8mQ7ancl3qokMj+u6yKU7RsH30T8nKdx5IH4s8=;
+	b=AgumxExlYYRGPfVl6N8JLof5FLB8AuImKsIhWYLvs5UuruyWnrXe/4PEUSqLrODKUI
+	gPy2tolRnzNpTp2hkdgiLa4pqNDPOw56UFQd/ylg3oKnl/J/R4dxOgjqgPW0pgbgb2BU
+	ArfuHYyZ/kVh5E6Wvw4CzvhErF9taCfGrR6iKckSN1b6EE459dijD7PXPGiG/y9XiMDH
+	6o75qArqw8R7aHaieyR4I8+OFYo+oCMuBloOPBII9xWlh0cM/J8eUkbKRFfyaY4TxhHk
+	7SmAWdryIwMd4bNljAfRPG51Ag6FV9m0MP6sQ8chg6yjpJcRHRoo1rrsy4Vmvoph3LYC
+	Olmw==
+X-Gm-Message-State: AA+aEWbQLewwzdhIcrO6OXczu2jxoA0TuVG8AR8n8KnuNJTjV6app9IO
+	ebYdI1KCzV0EUKtedW8l8Se+FLcisyI=
+X-Received: by 2002:a1c:a9d6:: with SMTP id
+	s205mr17097983wme.131.1543179727410; 
+	Sun, 25 Nov 2018 13:02:07 -0800 (PST)
+Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
+	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
+	by smtp.gmail.com with ESMTPSA id
+	t5sm18877075wmd.15.2018.11.25.13.02.06
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 25 Nov 2018 13:02:06 -0800 (PST)
+To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
+References: <20181123091729.29921-1-luc.michel@greensocs.com>
+	<20181123091729.29921-14-luc.michel@greensocs.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <775700ee-1c92-34e4-0a19-1fc2ec466d86@redhat.com>
+Date: Sun, 25 Nov 2018 22:02:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Sun, 25 Nov 2018 20:52:29 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20181123091729.29921-14-luc.michel@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH for-3.1 15/25] MAINTAINERS: Add missing entries
- for the Canon DIGIC machine
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-devel] [PATCH v7 13/16] gdbstub: processes initialization
+ on new peer connection
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,34 +107,94 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
+	mark.burton@greensocs.com,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R1mZeO9viGW4
+X-TUID: CHMu536JcIti
 
-This pattern now also matches:
-- include/hw/timer/digic-timer.h
-- include/hw/char/digic-uart.h
+On 23/11/18 10:17, Luc Michel wrote:
+> When a new connection is established, we set the first process to be
+> attached, and the others detached. The first CPU of the first process
+> is selected as the current CPU.
+> 
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index eab0fb9742..e04f2f1a44 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -527,6 +527,7 @@ L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: include/hw/arm/digic.h
- F: hw/*/digic*
-+F: include/hw/*/digic*
-=20
- Gumstix
- M: Peter Maydell <peter.maydell@linaro.org>
---=20
-2.17.2
-
+> ---
+>  gdbstub.c | 20 +++++++++++++++-----
+>  1 file changed, 15 insertions(+), 5 deletions(-)
+> 
+> diff --git a/gdbstub.c b/gdbstub.c
+> index 69471ea914..6518324d46 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -2249,13 +2249,14 @@ static bool gdb_accept(void)
+>          close(fd);
+>          return false;
+>      }
+>  
+>      s = g_malloc0(sizeof(GDBState));
+> -    s->c_cpu = first_cpu;
+> -    s->g_cpu = first_cpu;
+>      create_unique_process(s);
+> +    s->processes[0].attached = true;
+> +    s->c_cpu = gdb_first_attached_cpu(s);
+> +    s->g_cpu = s->c_cpu;
+>      s->fd = fd;
+>      gdb_has_xml = false;
+>  
+>      gdbserver_state = s;
+>      return true;
+> @@ -2337,12 +2338,23 @@ static void gdb_chr_receive(void *opaque, const uint8_t *buf, int size)
+>      }
+>  }
+>  
+>  static void gdb_chr_event(void *opaque, int event)
+>  {
+> +    int i;
+> +    GDBState *s = (GDBState *) opaque;
+> +
+>      switch (event) {
+>      case CHR_EVENT_OPENED:
+> +        /* Start with first process attached, others detached */
+> +        for (i = 0; i < s->process_num; i++) {
+> +            s->processes[i].attached = !i;
+> +        }
+> +
+> +        s->c_cpu = gdb_first_attached_cpu(s);
+> +        s->g_cpu = s->c_cpu;
+> +
+>          vm_stop(RUN_STATE_PAUSED);
+>          gdb_has_xml = false;
+>          break;
+>      default:
+>          break;
+> @@ -2528,19 +2540,17 @@ int gdbserver_start(const char *device)
+>          mon_chr = s->mon_chr;
+>          cleanup_processes(s);
+>          memset(s, 0, sizeof(GDBState));
+>          s->mon_chr = mon_chr;
+>      }
+> -    s->c_cpu = first_cpu;
+> -    s->g_cpu = first_cpu;
+>  
+>      create_processes(s);
+>  
+>      if (chr) {
+>          qemu_chr_fe_init(&s->chr, chr, &error_abort);
+>          qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_receive,
+> -                                 gdb_chr_event, NULL, NULL, NULL, true);
+> +                                 gdb_chr_event, NULL, s, NULL, true);
+>      }
+>      s->state = chr ? RS_IDLE : RS_INACTIVE;
+>      s->mon_chr = mon_chr;
+>      s->current_syscall_cb = NULL;
+>  
+> 

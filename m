@@ -1,200 +1,324 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4722994wrt;
-        Sun, 25 Nov 2018 13:11:55 -0800 (PST)
-X-Google-Smtp-Source: AJdET5fvacnsW6YUwq3RRGf/uq7zH4PeqgOyzTEDj/baV+kmltOjnqFp46cSsV7qCsZ6AEyL8o/T
-X-Received: by 2002:a81:b382:: with SMTP id r124mr25889285ywh.102.1543180315337;
-        Sun, 25 Nov 2018 13:11:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543180315; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4726860wrt;
+        Sun, 25 Nov 2018 13:16:49 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Xx2/IuSOAFUUWDUbibHNFBmO5QZo3Zvm/OgrpUIfv9Ex8UBpD726KSy6oN70kZfUCjkeXV
+X-Received: by 2002:a25:a287:: with SMTP id c7-v6mr25244697ybi.418.1543180609825;
+        Sun, 25 Nov 2018 13:16:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543180609; cv=none;
         d=google.com; s=arc-20160816;
-        b=DTLLEg3+LnTcow8eC0L3ZwIakvSL+HyTF/GIfY45Tlo31ne+Z2PFiGQw32JrTVFUyL
-         GVNFu7IQAUSb1nhH2jHO/CvYRtXs3WmAxq97rj0Ttq2zBXGq7ZlFBn5XBl2PzVVOlciM
-         IRis2JLUq5V/rOb3HYh9vMlWmHTeB3CsmFrsVQWPLWMmXlg7mPwyncVNAuWzlYCuqcJO
-         4CdWXJJGeC5GNiaGKu+rzK331ViBgkLHswGcYL5OnShVINEX4owxH9gPPnBxDwRFIHQP
-         XB1blEk+YloC0DN5/s39TOxa5zSpD850mNvYi8Eetrz0nV/EelnDJ9i524587lbByhcv
-         eRgQ==
+        b=RCDVtNrSKF8cy8EG96zbgjHfWU7ulQ1T7tcb0rySJU2pcXTliByr1mCmacpFRL6Dyp
+         ueviFznwPijByiUBAoVJTgBCs1MXbvEK8kN/gBLlekhI9PqD+kF8XukR82rVnYINE3iw
+         bNbC4MZoV8GhEN+Jj61wF/AkNCOULiFHSv8j0h+dc2ZaZq/weag8Bcro6NlBWIDGpqwR
+         Fn1Vhomhu80XKtNv46ip39hzRcZg3DQKXSCbbbUaFEOSnxPhTt7acSUe9QGW9fstL9Yj
+         mH7ZPMo0Fg6AwFjtin0efGISzFbTih7IDUgYKz2kfzaOye9U8HyXQ6ypszPU3B2bsmzZ
+         f8kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=snL8V8mQ7ancl3qokMj+u6yKU7RsH30T8nKdx5IH4s8=;
-        b=VnPM7bUooPSW8F0f/d6MwT1Kn+YvxoXHVfqgvKQSBlQw+sFetlAwQqluCD45K4eFD6
-         hOU7Ay8CWhlAvDVpZsu9FuCYaOl1ZjDtgHkVwUExZ+aAxlf/Kb7aFKHhgzT/hgmVoPUb
-         ivWQ/+6NZ/wRhDsknPGqvvLZBwMP+CCg2hiBKP9jbGOuiozaTU8IWT3YrSmE18CsDA8s
-         XM5hcQrZDb3/9UB0GoMp3oGgBPmOx2i0mqwEurWoBoWLja+erUVj34KPGa0btQtNkL6t
-         337dndHx1vNLCX0JJh51ZqsrcbYTNroXz3ZDr2r+fm6WM7Gd6CXEc7rNpG2mACZBtUSH
-         0f4g==
+        bh=KQIaSPkG6tLj0SqBEOlWs3aKmyQyyZoGO8dDXx+z4aw=;
+        b=l/GYir33pGgGkBCbL+FsT2GdIS3EsAJH80XBQ714HqPSiQeNVOMnN8JDMfqDKPwpZ1
+         r5tcBAJUGzZQ4i+opk9OD8lT2wmE1WAKTMPGHm8eO/ln42TFszJIEqQw9HvboFcmyczr
+         SJI7i0EvL1OmtuOxGMn9ZbSQ82sn4l0JG0cYStmdiMCs9ieX+kZn6GqiREXJvQGBxV6U
+         bioN/RemXqigv6Owtw4RJxwOs+zF829kM5txjRqLbg6+sLnJ4+0CGkdxeQ5dI3ZZyfVl
+         O+QK/C2wQiMF7/nKsqK3tdo44p6PmyLLZcipUBoGtb/NLgIrOxdoViaSGHh59K1LDENd
+         PZxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d66-v6si13457110ybd.362.2018.11.25.13.11.55
+        by mx.google.com with ESMTPS id x40-v6si17687330ybd.467.2018.11.25.13.16.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sun, 25 Nov 2018 13:11:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Sun, 25 Nov 2018 13:16:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33070 helo=lists.gnu.org)
+Received: from localhost ([::1]:33105 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gR1h4-00021X-NJ
-	for alex.bennee@linaro.org; Sun, 25 Nov 2018 16:11:54 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45907)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gR1lp-0007Hs-4M
+	for alex.bennee@linaro.org; Sun, 25 Nov 2018 16:16:49 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43767)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gR1Xj-0001yZ-Fw
-	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 16:02:16 -0500
+	(envelope-from <philmd@redhat.com>) id 1gR1Tn-0006uX-13
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 15:58:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gR1Xf-0004IE-7J
-	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 16:02:15 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:40412)
+	(envelope-from <philmd@redhat.com>) id 1gR1Ti-0002HL-Q6
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 15:58:10 -0500
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:38199)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gR1Xd-0004H5-6u
-	for qemu-devel@nongnu.org; Sun, 25 Nov 2018 16:02:09 -0500
-Received: by mail-wm1-f67.google.com with SMTP id q26so16282932wmf.5
-	for <qemu-devel@nongnu.org>; Sun, 25 Nov 2018 13:02:08 -0800 (PST)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gR1Ti-0002Ge-Kp
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 15:58:06 -0500
+Received: by mail-wr1-f66.google.com with SMTP id v13so13391390wrw.5
+	for <qemu-arm@nongnu.org>; Sun, 25 Nov 2018 12:58:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=snL8V8mQ7ancl3qokMj+u6yKU7RsH30T8nKdx5IH4s8=;
-	b=AgumxExlYYRGPfVl6N8JLof5FLB8AuImKsIhWYLvs5UuruyWnrXe/4PEUSqLrODKUI
-	gPy2tolRnzNpTp2hkdgiLa4pqNDPOw56UFQd/ylg3oKnl/J/R4dxOgjqgPW0pgbgb2BU
-	ArfuHYyZ/kVh5E6Wvw4CzvhErF9taCfGrR6iKckSN1b6EE459dijD7PXPGiG/y9XiMDH
-	6o75qArqw8R7aHaieyR4I8+OFYo+oCMuBloOPBII9xWlh0cM/J8eUkbKRFfyaY4TxhHk
-	7SmAWdryIwMd4bNljAfRPG51Ag6FV9m0MP6sQ8chg6yjpJcRHRoo1rrsy4Vmvoph3LYC
-	Olmw==
-X-Gm-Message-State: AA+aEWbQLewwzdhIcrO6OXczu2jxoA0TuVG8AR8n8KnuNJTjV6app9IO
-	ebYdI1KCzV0EUKtedW8l8Se+FLcisyI=
-X-Received: by 2002:a1c:a9d6:: with SMTP id
-	s205mr17097983wme.131.1543179727410; 
-	Sun, 25 Nov 2018 13:02:07 -0800 (PST)
+	bh=KQIaSPkG6tLj0SqBEOlWs3aKmyQyyZoGO8dDXx+z4aw=;
+	b=CYBolD9LeW2vECuPqJNbIY+doPl+js4GfWBLSm4TG5LdzPpmiiaN6WtHGZAyFI6MxI
+	h6pv3rfzMhzgGL7HKEWU3YSDopcElV/2FsUMyqRMyl8SDjm1365gUKdYvU3ilJUl5Vct
+	mBGnusD3FmnaPG3a5ynt4XueQvSdLzg3COIbnrJ9I8dJMb9zEq6QlIXHHheySix4z9h9
+	T8lLVu7dE/o2g6rHS1qdurJ3PQT9342tUOc5+1UiWZfqurkrepmve6bHGOQvNXzJ97il
+	HqDymJ3w/cmlfzighIj6NqL6xW5k14dla+mNN4X6eawHQEjQ2J1STDoDUbuBbyghQjRZ
+	28wg==
+X-Gm-Message-State: AA+aEWaubGJqMY57C5mc5IK/P2temICdGYan1FWqBXbbXNqps2y/8LDY
+	F80o7D2bNT/SwJ2DV6xUhd8dGahtJ1c=
+X-Received: by 2002:adf:a357:: with SMTP id d23mr22055086wrb.195.1543179485287;
+	Sun, 25 Nov 2018 12:58:05 -0800 (PST)
 Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
 	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
 	by smtp.gmail.com with ESMTPSA id
-	t5sm18877075wmd.15.2018.11.25.13.02.06
+	g198sm16669466wmd.23.2018.11.25.12.58.02
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 25 Nov 2018 13:02:06 -0800 (PST)
+	Sun, 25 Nov 2018 12:58:04 -0800 (PST)
 To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
 References: <20181123091729.29921-1-luc.michel@greensocs.com>
-	<20181123091729.29921-14-luc.michel@greensocs.com>
+	<20181123091729.29921-3-luc.michel@greensocs.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <775700ee-1c92-34e4-0a19-1fc2ec466d86@redhat.com>
-Date: Sun, 25 Nov 2018 22:02:05 +0100
+Message-ID: <c9b126f0-2f2b-3fee-49f0-b04f11dac041@redhat.com>
+Date: Sun, 25 Nov 2018 21:58:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <20181123091729.29921-14-luc.michel@greensocs.com>
+In-Reply-To: <20181123091729.29921-3-luc.michel@greensocs.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-devel] [PATCH v7 13/16] gdbstub: processes initialization
- on new peer connection
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 02/16] gdbstub: introduce GDB
+ processes
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Eduardo Habkost <ehabkost@redhat.com>, alistair@alistair23.me,
 	mark.burton@greensocs.com,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CHMu536JcIti
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9fUaErcY11GU
 
 On 23/11/18 10:17, Luc Michel wrote:
-> When a new connection is established, we set the first process to be
-> attached, and the others detached. The first CPU of the first process
-> is selected as the current CPU.
+> Add a structure GDBProcess that represent processes from the GDB
+> semantic point of view.
+> 
+> CPUs can be split into different processes, by grouping them under
+> different cpu-cluster objects.  Each occurrence of a cpu-cluster object
+> implies the existence of the corresponding process in the GDB stub. The
+> GDB process ID is derived from the corresponding cluster ID as follows:
+> 
+>   GDB PID = cluster ID + 1
+> 
+> This is because PIDs -1 and 0 are reserved in GDB and cannot be used by
+> processes.
+> 
+> When no such container are found, all the CPUs are put in a unique GDB
+> process (create_unique_process()). This is also the case when compiled
+> in user mode, where multi-processes do not make much sense for now.
 > 
 > Signed-off-by: Luc Michel <luc.michel@greensocs.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
 > Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
 > ---
->  gdbstub.c | 20 +++++++++++++++-----
->  1 file changed, 15 insertions(+), 5 deletions(-)
+>  gdbstub.c | 87 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 87 insertions(+)
 > 
 > diff --git a/gdbstub.c b/gdbstub.c
-> index 69471ea914..6518324d46 100644
+> index c4e4f9f082..26f5a7449a 100644
 > --- a/gdbstub.c
 > +++ b/gdbstub.c
-> @@ -2249,13 +2249,14 @@ static bool gdb_accept(void)
->          close(fd);
->          return false;
+> @@ -27,10 +27,11 @@
+>  #include "monitor/monitor.h"
+>  #include "chardev/char.h"
+>  #include "chardev/char-fe.h"
+>  #include "sysemu/sysemu.h"
+>  #include "exec/gdbstub.h"
+> +#include "hw/cpu/cluster.h"
+>  #endif
+>  
+>  #define MAX_PACKET_LENGTH 4096
+>  
+>  #include "qemu/sockets.h"
+> @@ -294,10 +295,15 @@ typedef struct GDBRegisterState {
+>      gdb_reg_cb set_reg;
+>      const char *xml;
+>      struct GDBRegisterState *next;
+>  } GDBRegisterState;
+>  
+> +typedef struct GDBProcess {
+> +    uint32_t pid;
+> +    bool attached;
+> +} GDBProcess;
+> +
+>  enum RSState {
+>      RS_INACTIVE,
+>      RS_IDLE,
+>      RS_GETLINE,
+>      RS_GETLINE_ESC,
+> @@ -322,10 +328,13 @@ typedef struct GDBState {
+>      int running_state;
+>  #else
+>      CharBackend chr;
+>      Chardev *mon_chr;
+>  #endif
+> +    bool multiprocess;
+> +    GDBProcess *processes;
+> +    int process_num;
+>      char syscall_buf[256];
+>      gdb_syscall_complete_cb current_syscall_cb;
+>  } GDBState;
+>  
+>  /* By default use no IRQs and no timers while single stepping so as to
+> @@ -1749,10 +1758,24 @@ void gdb_exit(CPUArchState *env, int code)
+>  #ifndef CONFIG_USER_ONLY
+>    qemu_chr_fe_deinit(&s->chr, true);
+>  #endif
+>  }
+>  
+> +/*
+> + * Create a unique process containing all the CPUs.
+> + */
+> +static void create_unique_process(GDBState *s)
+> +{
+> +    GDBProcess *process;
+> +
+> +    s->processes = g_malloc0(sizeof(GDBProcess));
+
+good place to use:
+
+       s->processes = g_new0(GDBProcess, 1);
+
+Regardless:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> +    s->process_num = 1;
+> +    process = &s->processes[0];
+> +
+> +    process->pid = 1;
+> +}
+> +
+>  #ifdef CONFIG_USER_ONLY
+>  int
+>  gdb_handlesig(CPUState *cpu, int sig)
+>  {
+>      GDBState *s;
+> @@ -1846,10 +1869,11 @@ static bool gdb_accept(void)
 >      }
 >  
 >      s = g_malloc0(sizeof(GDBState));
-> -    s->c_cpu = first_cpu;
-> -    s->g_cpu = first_cpu;
->      create_unique_process(s);
-> +    s->processes[0].attached = true;
-> +    s->c_cpu = gdb_first_attached_cpu(s);
-> +    s->g_cpu = s->c_cpu;
+>      s->c_cpu = first_cpu;
+>      s->g_cpu = first_cpu;
+> +    create_unique_process(s);
 >      s->fd = fd;
 >      gdb_has_xml = false;
 >  
 >      gdbserver_state = s;
 >      return true;
-> @@ -2337,12 +2338,23 @@ static void gdb_chr_receive(void *opaque, const uint8_t *buf, int size)
->      }
->  }
+> @@ -2002,10 +2026,69 @@ static const TypeInfo char_gdb_type_info = {
+>      .name = TYPE_CHARDEV_GDB,
+>      .parent = TYPE_CHARDEV,
+>      .class_init = char_gdb_class_init,
+>  };
 >  
->  static void gdb_chr_event(void *opaque, int event)
+> +static int find_cpu_clusters(Object *child, void *opaque)
+> +{
+> +    if (object_dynamic_cast(child, TYPE_CPU_CLUSTER)) {
+> +        GDBState *s = (GDBState *) opaque;
+> +        CPUClusterState *cluster = CPU_CLUSTER(child);
+> +        GDBProcess *process;
+> +
+> +        s->processes = g_renew(GDBProcess, s->processes, ++s->process_num);
+> +
+> +        process = &s->processes[s->process_num - 1];
+> +
+> +        /*
+> +         * GDB process IDs -1 and 0 are reserved. To avoid subtle errors at
+> +         * runtime, we enforce here that the machine does not use a cluster ID
+> +         * that would lead to PID 0. */
+> +        assert(process->pid != UINT32_MAX);
+> +        process->pid = cluster->cluster_id + 1;
+> +        process->attached = false;
+> +
+> +        return 0;
+> +    }
+> +
+> +    return object_child_foreach(child, find_cpu_clusters, opaque);
+> +}
+> +
+> +static int pid_order(const void *a, const void *b)
+> +{
+> +    GDBProcess *pa = (GDBProcess *) a;
+> +    GDBProcess *pb = (GDBProcess *) b;
+> +
+> +    if (pa->pid < pb->pid) {
+> +        return -1;
+> +    } else if (pa->pid > pb->pid) {
+> +        return 1;
+> +    } else {
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void create_processes(GDBState *s)
+> +{
+> +    object_child_foreach(object_get_root(), find_cpu_clusters, s);
+> +
+> +    if (!s->processes) {
+> +        /* No CPU cluster specified by the machine */
+> +        create_unique_process(s);
+> +    } else {
+> +        /* Sort by PID */
+> +        qsort(s->processes, s->process_num, sizeof(s->processes[0]), pid_order);
+> +    }
+> +}
+> +
+> +static void cleanup_processes(GDBState *s)
+> +{
+> +    g_free(s->processes);
+> +    s->process_num = 0;
+> +    s->processes = NULL;
+> +}
+> +
+>  int gdbserver_start(const char *device)
 >  {
-> +    int i;
-> +    GDBState *s = (GDBState *) opaque;
-> +
->      switch (event) {
->      case CHR_EVENT_OPENED:
-> +        /* Start with first process attached, others detached */
-> +        for (i = 0; i < s->process_num; i++) {
-> +            s->processes[i].attached = !i;
-> +        }
-> +
-> +        s->c_cpu = gdb_first_attached_cpu(s);
-> +        s->g_cpu = s->c_cpu;
-> +
->          vm_stop(RUN_STATE_PAUSED);
->          gdb_has_xml = false;
->          break;
->      default:
->          break;
-> @@ -2528,19 +2540,17 @@ int gdbserver_start(const char *device)
+>      trace_gdbstub_op_start(device);
+>  
+>      GDBState *s;
+> @@ -2058,15 +2141,19 @@ int gdbserver_start(const char *device)
+>                                     NULL, &error_abort);
+>          monitor_init(mon_chr, 0);
+>      } else {
+>          qemu_chr_fe_deinit(&s->chr, true);
 >          mon_chr = s->mon_chr;
->          cleanup_processes(s);
+> +        cleanup_processes(s);
 >          memset(s, 0, sizeof(GDBState));
 >          s->mon_chr = mon_chr;
 >      }
-> -    s->c_cpu = first_cpu;
-> -    s->g_cpu = first_cpu;
->  
->      create_processes(s);
->  
+>      s->c_cpu = first_cpu;
+>      s->g_cpu = first_cpu;
+> +
+> +    create_processes(s);
+> +
 >      if (chr) {
 >          qemu_chr_fe_init(&s->chr, chr, &error_abort);
 >          qemu_chr_fe_set_handlers(&s->chr, gdb_chr_can_receive, gdb_chr_receive,
-> -                                 gdb_chr_event, NULL, NULL, NULL, true);
-> +                                 gdb_chr_event, NULL, s, NULL, true);
+>                                   gdb_chr_event, NULL, NULL, NULL, true);
 >      }
->      s->state = chr ? RS_IDLE : RS_INACTIVE;
->      s->mon_chr = mon_chr;
->      s->current_syscall_cb = NULL;
->  
 > 

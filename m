@@ -1,87 +1,101 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2637458wrt;
-        Fri, 23 Nov 2018 14:53:15 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WjW0mhjy0/mg6WYm9vtxMPHe5z76L2TNL5Ot5L5kDjVfEujk90Us3s4iMkaBQ6gC/5lcnk
-X-Received: by 2002:a25:4485:: with SMTP id r127-v6mr17709945yba.275.1543013595218;
-        Fri, 23 Nov 2018 14:53:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543013595; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4734545wrt;
+        Sun, 25 Nov 2018 13:27:25 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Wd0Y2Y3Jwpxypoe4ihqJkF3MIqFPbMHheUE3Q9w3dmR0ePsG0S7AdRB9KxkYAhrQDhhpT2
+X-Received: by 2002:a25:c484:: with SMTP id u126-v6mr23939220ybf.201.1543181245396;
+        Sun, 25 Nov 2018 13:27:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543181245; cv=none;
         d=google.com; s=arc-20160816;
-        b=G77VXxVcr+TrC0+dSdtJLsQdbcYWQ/FO6pSfVPviLkuODgR3GV/pgSB2ZZcUrZZX5N
-         eg6HHP/d5H8wFKLSvTncAScDoFeaSKoRSzlBrUtC+oatQ4hYd1drRlAXxbTiwRF9mzLs
-         qHg/YPE3kfdRhYYb/HmhxUlvzvzxKtptafnzBLDooXA/4RVOgsu8j3VZMTHaeeyCo2Ok
-         4iHXAN2UHTXD4sBPkxXNYT4yWbI6NPdU/svicv3oQAeDQzXqHlc3c78LRHKjwo5hfBC5
-         1IWpv1X7Bb/+YPjVHtUvNF7H1Gj6cQB7EcQPH3IyHG8vodxKROU9gtZikjZb/Hsqb3Oo
-         Zb5w==
+        b=su1BhXdrcMUiEaoxhLg70HD0TWtvDPwspls3JZ1jPshmEocxhv1GYShjVBe6BHPlQ+
+         sjAeULrVjKroexfZc7z2L4/tjC0z80L+ZyPcAMJtWKe12LslMg0Iz9IcSwhVDQe9XHOc
+         u8TTJgORbBdUsyr7YDG3EWHuih0HDgilWdrpJJ6jocnXcfiH0HUSTpKKAw5BMytihjjI
+         fw4ttae9Ij7kCyUgA65qxZkkp8sN/xxznwx/MgoqNp5m8SlGXFA0OMStLB4ApsdAWJIV
+         7xXAWXI2UMXe15RHqcl+2XhHCdR10G9tB8nSZWJM/6FkZU6UZ5cuLwSC+YXgkuG1tRCw
+         9ItQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=TaK+pH2V6eMalCKlyTJ4lxAFY68VviSHJj0kRzNzJfE=;
-        b=KADV4WpuYoT/n0odLCtdOG+wgqylcD0ebsCjFtr/qbmeTsmwSkh+5VPtid4xJ29yDN
-         tzCNcojiJTkPotRjcUGPS5c67/iPkcFMoapT8siBL4VWdlordjMPzFczV/1AeAstp4TG
-         /I5ChKMiaLf8sIOSB1ujCpytvBFgWPeHdD0qiKfgamgAtrBpjDJsq+agf7rGWFy/BVpM
-         axzgEGb6GMBqdTqbR/N+BHhpljPr2OZW3ZKYbBtsIT6TkBy1h0fkZtQzZuixJg7rc6L5
-         jh9bMlKmJLcTDJjcUW4QM+cDeUVorCWT+TLY2qyzkbKvD9RRHBw2rEuU74PIlqDlpZlV
-         EwyA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=gdDrGRb1PbHcYJ4HnswOtP261zieHUe4svm1pm2L0Ms=;
+        b=jLbomTvT26XK9UyCsJ/1D6W0niPsHfy5yWDO9ftxXkFAyqsmPtsLNeWGSZAdfkIyDw
+         Kw5Ps3y/lxwzRPWPursRDCZxQY7clBfe13vEvMB6pbbF71XoN4pZSEw8tBBvWND68+/c
+         WHoxFQt/fxh9keIVRA7TkRia6cxsbEEM+bQ1hBlq9tLWMXi2Kf/va/J0HA5ZOsCZG/RV
+         tKixiG5pLCUy1eY0LF4QYbbjbKuWnjsJbHZ2WfZJ/RCHdVGosx8rd6VM+XkhWXV00SIp
+         ShuyVZkV5+Z4Y8GnV5f1DH077brLg4w21JPzZ/sYD+u9Gc1fZkWN62aW2Gy7+bUIHQbA
+         N72A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d187-v6si34105848ybf.62.2018.11.23.14.53.15
+        by mx.google.com with ESMTPS id l124-v6si9801169ybl.331.2018.11.25.13.27.25
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 23 Nov 2018 14:53:15 -0800 (PST)
+        Sun, 25 Nov 2018 13:27:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54487 helo=lists.gnu.org)
+Received: from localhost ([::1]:33164 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gQKK2-0004pQ-NM
-	for alex.bennee@linaro.org; Fri, 23 Nov 2018 17:53:14 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42453)
+	id 1gR1w4-00072Z-P1
+	for alex.bennee@linaro.org; Sun, 25 Nov 2018 16:27:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54613)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gQKJl-0004hy-Rp
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 17:53:04 -0500
+	(envelope-from <philmd@redhat.com>) id 1gR1vr-00071r-Iu
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 16:27:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gQK5N-0003tI-FG
-	for qemu-arm@nongnu.org; Fri, 23 Nov 2018 17:38:10 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40540)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gQK5N-0003sv-A6; Fri, 23 Nov 2018 17:38:05 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0BF787D0DE;
-	Fri, 23 Nov 2018 22:38:04 +0000 (UTC)
-Received: from localhost (ovpn-116-21.gru2.redhat.com [10.97.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8ECCA5C227;
-	Fri, 23 Nov 2018 22:38:02 +0000 (UTC)
-Date: Fri, 23 Nov 2018 20:38:00 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20181123223800.GQ18284@habkost.net>
+	(envelope-from <philmd@redhat.com>) id 1gR1vo-0005Fq-Af
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 16:27:11 -0500
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:55513)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gR1vo-0005FD-5S
+	for qemu-arm@nongnu.org; Sun, 25 Nov 2018 16:27:08 -0500
+Received: by mail-wm1-f65.google.com with SMTP id y139so16213891wmc.5
+	for <qemu-arm@nongnu.org>; Sun, 25 Nov 2018 13:27:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=gdDrGRb1PbHcYJ4HnswOtP261zieHUe4svm1pm2L0Ms=;
+	b=Ve9Wa+OgL2h575N+fPU21lAU5skHSGdofYXrr2SZEPOYBSwpv7+1gf04d0aqiqhHrF
+	AG2nV4Wwmgu81nYQN7l2AjwHGuoGy5E6TIujk6K4yy8nJQ8kg5K5Zk62j+h8ZN5kHDR1
+	Ogw+zp1lm8l4LUawtRxFf5TvtV5wOYcl5oUX6t0dgHI1oimXZy3cty+YT0DJ120CZeY8
+	XJqscQU3cMlMLBELQAVhh4JOidtdTvyCRikZ8hEfwpMmyK5RvSnyF2SFiu+Rjp8YDsdo
+	NdND+9IgR5Xc3fq4O0tmAuN38jRCAsMrCnfFraMjgqos4g0H1A2rbROh8NLHBmrgAsHQ
+	+hfQ==
+X-Gm-Message-State: AGRZ1gLvWtzsqU3cNCp+xH9KUgMCI659cbS9jPyOACfk0ZyG91IR+piN
+	kFuoM4OME1UDXnP8QfcZM5Z51AeuNAU=
+X-Received: by 2002:a1c:3e84:: with SMTP id
+	l126-v6mr20346056wma.91.1543181226886; 
+	Sun, 25 Nov 2018 13:27:06 -0800 (PST)
+Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
+	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
+	by smtp.gmail.com with ESMTPSA id
+	k15sm40013599wru.8.2018.11.25.13.27.05
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sun, 25 Nov 2018 13:27:06 -0800 (PST)
+To: Eduardo Habkost <ehabkost@redhat.com>,
+	Luc Michel <luc.michel@greensocs.com>
 References: <20181123091729.29921-1-luc.michel@greensocs.com>
 	<20181123091729.29921-2-luc.michel@greensocs.com>
 	<20181123181059.GN18284@habkost.net>
-	<CAFEAcA_8jJz5dE7XP4R=LjEC5WzP3jzutg=YqiYjJVwZZz+jvQ@mail.gmail.com>
-	<20181123182415.GP18284@habkost.net>
-	<CAFEAcA-WwupF9Lm85+S4YSq1f5Y0AjEOtG0Uzh=7pDVdF0w38A@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <65d3a572-9a80-f332-1f88-69e43e8a3663@redhat.com>
+Date: Sun, 25 Nov 2018 22:27:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-WwupF9Lm85+S4YSq1f5Y0AjEOtG0Uzh=7pDVdF0w38A@mail.gmail.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 23 Nov 2018 22:38:04 +0000 (UTC)
+In-Reply-To: <20181123181059.GN18284@habkost.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 209.85.128.65
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 01/16] hw/cpu: introduce CPU
  clusters
 X-BeenThere: qemu-arm@nongnu.org
@@ -95,55 +109,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
-	Mark Burton <mark.burton@greensocs.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Sai Pavan Boddu <saipava@xilinx.com>, Edgar Iglesias <edgari@xilinx.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Luc Michel <luc.michel@greensocs.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, alistair@alistair23.me,
+	mark.burton@greensocs.com, qemu-devel@nongnu.org,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	saipava@xilinx.com, edgari@xilinx.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6XMJxf6YFzZx
+X-TUID: Qb9P4Fecq0ny
 
-On Fri, Nov 23, 2018 at 06:53:07PM +0000, Peter Maydell wrote:
-> On Fri, 23 Nov 2018 at 18:24, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> >
-> > On Fri, Nov 23, 2018 at 06:14:28PM +0000, Peter Maydell wrote:
-> > > One thing I would like to do with this new "cpu cluster"
-> > > concept is to use it to handle a problem we have at the
-> > > moment with TCG, where we assume all CPUs have the same
-> > > view of physical memory (and so if CPU A executes from physical
-> > > address X it can share translated code with CPU B executing
-> > > from physical address X). The idea is that we should include
-> > > the CPU cluster number in the TCG hash key that we use to
-> > > look up cached translation blocks, so that only CPUs in
-> > > the same cluster (assumed to have the same view of memory
-> > > and to be identical) share TBs.
-> > >
-> > > If we don't have a unique integer key for the cluster, what
-> > > should we use instead ?
-> >
-> > This sounds like a reasonable use of cluster_id as implemented in
-> > this patch.  The ID would be only used internally and not exposed
-> > to the outside, right?
-> 
-> It would be internal to QEMU (not exposed to the guest or
-> to the user), yes.
-> 
-> > I'm more worried about cases where we could end up exposing the
-> > ID in an external interface (either to guests, or through QMP or
-> > the command-line).  This happened to cpu_index and we took a long
-> > time to fix the mess.
-> 
-> I see, thanks.
-> 
-> My other question about this code was a slightly different one -- are
-> we guaranteed to be holding the iothread lock when we create
-> new QOM objects? (ie that we won't have races between two threads
-> which both try to create new objects and increment the variable)
+Hi Eduardo,
 
-I assume we are, because type_initialize() (called by
-object_new()) isn't thread-safe.
+On 23/11/18 19:10, Eduardo Habkost wrote:
+> Hi,
+> 
+> Sorry for not reviewing this series earlier.  I just stumbled
+> upon this part of the code:
+> 
+> On Fri, Nov 23, 2018 at 10:17:14AM +0100, Luc Michel wrote:
+>> This commit adds the cpu-cluster type. It aims at gathering CPUs from
+>> the same cluster in a machine.
+>>
+>> For now it only has a `cluster-id` property.
+>>
+>> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> [...]
+>> +static void cpu_cluster_init(Object *obj)
+>> +{
+>> +    static uint32_t cluster_id_auto_increment;
+>> +    CPUClusterState *cluster = CPU_CLUSTER(obj);
+>> +
+>> +    cluster->cluster_id = cluster_id_auto_increment++;
+> 
+> I see that you implemented this after a suggestion from Philippe,
+> but I'm worried about this kind of side-effect on object/device
+> code.  I'm afraid this will bite us back in the future.  We were
+> bitten by problems caused by automatic cpu_index assignment on
+> CPU instance_init, and we took a while to fix that.
 
--- 
-Eduardo
+Oops, thanks for catching this. I'm not aware of the cpu_index past issue.
+
+> 
+> If you really want to do this and assign cluster_id
+> automatically, please do it on realize, where it won't have
+> unexpected side-effects after a simple `qom-list-properties` QMP
+> command.
+
+This looks clean enough to me.
+Do you prefer we don't use static auto_increment at all?
+
+> 
+> I would also add a huge warning above the cluster_id field
+> declaration, mentioning that the field is not supposed to be used
+> for anything except debugging.  I think there's a large risk of
+> people trying to reuse the field incorrectly, just like cpu_index
+> was reused for multiple (conflicting) purposes in the past.
+> 
+> 
+>> +}
+>> +
+>> +static Property cpu_cluster_properties[] = {
+>> +    DEFINE_PROP_UINT32("cluster-id", CPUClusterState, cluster_id, 0),
+>> +    DEFINE_PROP_END_OF_LIST()
+>> +};
+> [...]
+> 

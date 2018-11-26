@@ -1,327 +1,112 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp670854wrt;
-        Tue, 20 Nov 2018 07:08:07 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WXWJnKCVm1NA0gE5c/g2unCEdTMyaYzMNspWjI9Mp8jJxzEClHRwr7lW9+naVb2zwBw/JF
-X-Received: by 2002:a63:d70e:: with SMTP id d14mr2241114pgg.159.1542726487815;
-        Tue, 20 Nov 2018 07:08:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1542726487; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp42598wrt;
+        Mon, 26 Nov 2018 09:25:21 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/X06qd/7h3UBvpkRGniUbHyQtfqPJ1Z2cyyIxtwR3T2U8sNcWYbHCgDjJo1oXNDMmYa8Ylu
+X-Received: by 2002:a65:4784:: with SMTP id e4mr25062709pgs.12.1543253120997;
+        Mon, 26 Nov 2018 09:25:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543253120; cv=none;
         d=google.com; s=arc-20160816;
-        b=z4MBXqzK9slNF1m5pHDsO9+iJhVTqZmgI2Fe/0pAcVsX30uHilQ9ZuMUQMosi4nbME
-         WUSJSeqYiL7+cc8/Ne8QHabSyq7C8Mg1vfHLsiBggNXzhZZGSKuSmMLtyiBxn1rUdgC6
-         78j0dxUufwDmpQWxp57g+IMTJ7/13BZQXkHGZKikBnceVYK/DSZz0bcnpGHL3xNF5+oH
-         We/x/Zi8Ts3Ezr3awBRSauyabq/XifikoM2YSzahVz+LBEX2+Fbldw9QBwVzLuuUfCRb
-         KPwDy8NVJaXe2I9fm3+zzYF6uwdwlTFR2YMdhrPSaIs2p5uyA13Gcr2hZXnM/aiVywRa
-         j21w==
+        b=iOo5dmvI+zDFiR7KgK63APM2glrsXWVB1bcnmL7/5ZWdNaex6jHh+IAj1CDNFpERY0
+         vQemzkJNitqvR0+uCeHFQfDXWXNldRoXIuEsm0twRvznqyaubDFCAuqkupa45pu+qVpI
+         vHMkLg6dtDntLuxe9eVd9nsXZ9NZCP3MuumyPtCktJtyL1rlxKzM5LqNFUwBmsDwD5pL
+         VOye+lUQE2Lyu3i1WxIbVNyHHYUvtIFUdcpfjuZ4hOBYYV3m8grjFQtsB9Sv0NX+2JpB
+         iloQDLII1wMkDZOKpYHfqRUpMJcqyDifQnhSO0sdxcbQUF6WwNJ5QNKQIFpDeDo9rqPV
+         9pCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :references:in-reply-to:mime-version:dkim-signature;
-        bh=i3D/tCFvnZC2Ezu6GfTkY91MaNC3l17VOtkrz+mH7Ds=;
-        b=rXrIeDFA5IK7NxdDsT9EjboHLYJurZOJVNzboY9umtolt8xMLCU1mOzJcKMHt5MkLz
-         XV5r5Cklt6ZxcVGKQbr97X+Wu/8+5b1GOjaAll0+niuZBABMfJaoXVlgRJplFkCmw+WY
-         8TwsjcwVf2ZdG6QnLpt1QqI26a3dCgFtBWiH1khSj/qXABexZ4R0PtQAlZjEuZwrRgDF
-         J0vUXxnxpCaQz9VHVyTPfP0YAezYejvmeR0bawkE8KHBXSpg9cAPhHfmSVR3mmLQfmit
-         kvD71cwknVVP7jKEpW88+TRqdl9l0n30WkwIandWX1AuK1w2XpIHR21TJRgFME33RABx
-         68pQ==
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :cc:to:from;
+        bh=xsss2K5Tvsk7FUrZ6+vu0iFqYjhYDsg5CF67iJwuAxI=;
+        b=EJB82VkMQa57eOdHfJ43vDBkVlVWijh3mrWosCx8TYuvCi5e5POF/mr9EFj824IQzM
+         hP1CN0PlJ33QlYtx9i+Xmy12OGwrk4Tr9j8rOLZnptzKSYT+dgwisk3WHU7PTwvsBtzC
+         0izSW5yXZq6AqMtN/XSevNdo9uWlMTKzjde274nvABdRqqqSeIVupsN/ltgHKnpp5v6y
+         g6kf56KOmgNFSIgQLkIB1KWwsDijeXvuO5PoUW+L9EuiAXfNH+vmhv/I5mpe9pIl47x3
+         YHClAI0pBhnZALP0kuNki/MJJT+5Jq4daGeWLgbDNZtXHQgb7OP0seTDzMwo0THIHLFz
+         BsBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDb8avxm;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b124-v6si47677287pfa.135.2018.11.20.07.08.07;
-        Tue, 20 Nov 2018 07:08:07 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of gengdongjiu@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=gengdongjiu@huawei.com
+Return-Path: <gengdongjiu@huawei.com>
+Received: from huawei.com (szxga01-in.huawei.com. [45.249.212.187])
+        by mx.google.com with ESMTPS id 43si864448plb.176.2018.11.26.09.25.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Nov 2018 09:25:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of gengdongjiu@huawei.com designates 45.249.212.187 as permitted sender) client-ip=45.249.212.187;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDb8avxm;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726948AbeKUBhl (ORCPT <rfc822;francois.ozog@linaro.org>
-        + 4 others); Tue, 20 Nov 2018 20:37:41 -0500
-Received: from mail-oi1-f196.google.com ([209.85.167.196]:37790 "EHLO
-        mail-oi1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1725851AbeKUBhl (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 20 Nov 2018 20:37:41 -0500
-Received: by mail-oi1-f196.google.com with SMTP id y23so1743446oia.4
-        for <kvm@vger.kernel.org>; Tue, 20 Nov 2018 07:08:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=i3D/tCFvnZC2Ezu6GfTkY91MaNC3l17VOtkrz+mH7Ds=;
-        b=TDb8avxm5G/sAkzBIQuMSQHprVODyfX9Gqt60efRdZJ+dLdARw1U8W6YCuAMbFwt6s
-         m0z+JQcab9HNWEcKs7SMEvineiRD/JlYbI2Sk36JjeMVKA90XdnursmYG6M/B0Jm5VDt
-         2WetsRLlgDEGzhYbsCfNCO/u6u940sOG3onbY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=i3D/tCFvnZC2Ezu6GfTkY91MaNC3l17VOtkrz+mH7Ds=;
-        b=GGJ1r4mzsJBlya64fznT8Fs8qtbAHOcqIUh9XFmrcLU+xCsp6dkYXS4WBDPRoDYRUB
-         QooPYJayyQE0Pp4mne0f730cDiCvplF5LDOolcd3bmpxGozB+hBtORP40g2ThMhXR8ap
-         hBHn6Gcn199vD73aE4qCgAldaelOjQeQSBXjSDkLAmxKuzhrIEqndn+qNYkA7WjW0noz
-         1/ho+dcRsvNIA5w69JIVvfxRyV87YHHrrNQsRRe7P5R7JyvXC+TWL33lHFoekjWgIAHP
-         DS0pb4FiHD2jhm4rWBABRrnRdSvLCBJJrOQ3+wZkIzr6HBN9rM3oGS6lc8yYvW82CQai
-         DS7Q==
-X-Gm-Message-State: AGRZ1gL7Lktpx/rYgX3VJBDieu4HOIO1MeNHyfamrF9YcPQoKzW7gYYX
-        /b0PseFRCUS9A5Ae7YTR4zFAoa1e6Vzc70MVKZdP0Q==
-X-Received: by 2002:aca:ed92:: with SMTP id l140mr1203629oih.112.1542726484844;
- Tue, 20 Nov 2018 07:08:04 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a9d:4b0e:0:0:0:0:0 with HTTP; Tue, 20 Nov 2018 07:07:44
- -0800 (PST)
-In-Reply-To: <1541672989-15967-9-git-send-email-gengdongjiu@huawei.com>
-References: <1541672989-15967-1-git-send-email-gengdongjiu@huawei.com> <1541672989-15967-9-git-send-email-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 20 Nov 2018 15:07:44 +0000
-Message-ID: <CAFEAcA-PWgxv7dg-=i7ms7KT_x3nPFXraLp4pu_j3_w+qZYyxQ@mail.gmail.com>
+       spf=pass (google.com: domain of gengdongjiu@huawei.com designates 45.249.212.187 as permitted sender) smtp.mailfrom=gengdongjiu@huawei.com
+Received: from DGGEMA404-HUB.china.huawei.com (unknown [172.30.72.54])
+	by Forcepoint Email with ESMTP id 4AB6246597B9F;
+	Tue, 27 Nov 2018 01:25:17 +0800 (CST)
+Received: from DGGEMA523-MBX.china.huawei.com ([169.254.5.51]) by
+ DGGEMA404-HUB.china.huawei.com ([10.3.20.45]) with mapi id 14.03.0415.000;
+ Tue, 27 Nov 2018 01:25:09 +0800
+From: gengdongjiu <gengdongjiu@huawei.com>
+To: =?utf-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, Peter Maydell
+	<peter.maydell@linaro.org>
+CC: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Laszlo Ersek <lersek@redhat.com>, Marc Zyngier
+	<marc.zyngier@arm.com>, James Morse <james.morse@arm.com>, Paolo Bonzini
+	<pbonzini@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>, "Richard
+ Henderson" <rth@twiddle.net>, "zhengxiang (A)" <zhengxiang9@huawei.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, kvm-devel <kvm@vger.kernel.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, QEMU Developers
+	<qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Subject: Re: [PATCH RESEND v15 08/10] target-arm: kvm64: inject synchronous
  External Abort
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        Marc Zyngier <marc.zyngier@arm.com>,
-        James Morse <james.morse@arm.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: BE+HYnx7VhU0
+Thread-Topic: [PATCH RESEND v15 08/10] target-arm: kvm64: inject synchronous
+ External Abort
+Thread-Index: AdSFrK1EQq5y10MUQbCUpydLAbxyUw==
+Date: Mon, 26 Nov 2018 17:25:09 +0000
+Message-ID: <0184EA26B2509940AA629AE1405DD7F201F96F02@dggema523-mbx.china.huawei.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.45.84.5]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-TUID: aXMQEngLiSnH
 
-On 8 November 2018 at 10:29, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
-> Add synchronous external abort injection logic, setup
-> exception type and syndrome value. When switch to guest,
-> guest will jump to the synchronous external abort vector
-> table entry.
->
-> The ESR_ELx.DFSC is set to synchronous external abort(0x10),
-> and ESR_ELx.FnV is set to not valid(0x1), which will tell
-> guest that FAR is not valid and holds an UNKNOWN value.
-> These value will be set to KVM register structures through
-> KVM_SET_ONE_REG IOCTL.
->
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
-> Marc is against that KVM inject the synchronous external abort(SEA) in [1],
-> so user space how to inject it. The test result that injection SEA to guest by Qemu
-> is shown in [2].
->
-> [1]: https://lkml.org/lkml/2017/3/2/110
-> [2]:
-> Taking exception 4 [Data Abort]
-> ...from EL0 to EL1
-> ...with ESR 0x24/0x92000410
-> ...with FAR 0x0
-> ...with ELR 0x40cf04
-> ...to EL1 PC 0xffffffc000084c00 PSTATE 0x3c5
-> after kvm_inject_arm_sea
-> Unhandled fault: synchronous external abort (0x92000410) at 0x0000007fa234c12c
-> CPU: 0 PID: 536 Comm: devmem Not tainted 4.1.0+ #20
-> Hardware name: linux,dummy-virt (DT)
-> task: ffffffc019ab2b00 ti: ffffffc008134000 task.ti: ffffffc008134000
-> PC is at 0x40cf04
-> LR is at 0x40cdec
-> pc : [<000000000040cf04>] lr : [<000000000040cdec>] pstate: 60000000
-> sp : 0000007ff7b24130
-> x29: 0000007ff7b24260 x28: 0000000000000000
-> x27: 00000000000000ad x26: 000000000049c000
-> x25: 000000000048904b x24: 000000000049c000
-> x23: 0000000040600000 x22: 0000007ff7b243a0
-> x21: 0000000000000002 x20: 0000000000000000
-> x19: 0000000000000020 x18: 0000000000000000
-> x17: 000000000049c6d0 x16: 0000007fa22c85c0
-> x15: 0000000000005798 x14: 0000007fa2205f1c
-> x13: 0000007fa241ccb0 x12: 0000000000000137
-> x11: 0000000000000000 x10: 0000000000000000
-> x9 : 0000000000000000 x8 : 00000000000000de
-> x7 : 0000000000000000 x6 : 0000000000002000
-> x5 : 0000000040600000 x4 : 0000000000000003
-> x3 : 0000000000000001 x2 : 0000000000000000
-> x1 : 0000000000000000 x0 : 0000007fa2418000
-> ---
->  target/arm/cpu.h       |  2 ++
->  target/arm/helper.c    | 23 +++++++++++++++++++++++
->  target/arm/internals.h |  5 +++--
->  target/arm/kvm64.c     | 39 +++++++++++++++++++++++++++++++++++++++
->  target/arm/op_helper.c |  2 +-
->  5 files changed, 68 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index b5eff79..502507d 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2331,6 +2331,8 @@ bool write_list_to_cpustate(ARMCPU *cpu);
->   */
->  bool write_cpustate_to_list(ARMCPU *cpu);
->
-> +bool write_part_cpustate_to_list(ARMCPU *cpu, ptrdiff_t fieldoffset);
-> +
->  #define ARM_CPUID_TI915T      0x54029152
->  #define ARM_CPUID_TI925T      0x54029252
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 9630193..df078ff 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -263,6 +263,29 @@ static bool raw_accessors_invalid(const ARMCPRegInfo *ri)
->      return true;
->  }
->
-> +bool write_part_cpustate_to_list(ARMCPU *cpu, ptrdiff_t fieldoffset)
-> +{
-> +    const ARMCPRegInfo *ri;
-> +    uint32_t regidx, i;
-> +
-> +    for (i = 0; i < cpu->cpreg_array_len; i++) {
-> +        regidx = kvm_to_cpreg_id(cpu->cpreg_indexes[i]);
-> +        ri = get_arm_cp_reginfo(cpu->cp_regs, regidx);
-> +        if (!ri) {
-> +            continue;
-> +        }
-> +
-> +        if (ri->type & ARM_CP_NO_RAW) {
-> +            continue;
-> +        }
-> +        if (ri->fieldoffset == fieldoffset) {
-> +            cpu->cpreg_values[i] = read_raw_cp_reg(&cpu->env, ri);
-> +            return true;
-> +        }
-> +    }
-> +    return false;
-> +}
-
-What is this about? Nothing else in QEMU needs to mess with the
-cpustate synchronization. My first assumption is that you should
-not need to do so either.
-
-> +
->  bool write_cpustate_to_list(ARMCPU *cpu)
->  {
->      /* Write the coprocessor state from cpu->env to the (index,value) list. */
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 6c2bb2d..04ea074 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -415,13 +415,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
->          | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
->  }
->
-> -static inline uint32_t syn_data_abort_no_iss(int same_el,
-> +static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
->                                               int ea, int cm, int s1ptw,
->                                               int wnr, int fsc)
->  {
->      return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
->             | ARM_EL_IL
-> -           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
-> +           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
-> +           | (wnr << 6) | fsc;
->  }
->
->  static inline uint32_t syn_data_abort_with_iss(int same_el,
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index 5de8ff0..0ca2b29 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -594,6 +594,45 @@ int kvm_arm_cpreg_level(uint64_t regidx)
->      return KVM_PUT_RUNTIME_STATE;
->  }
->
-> +/* Inject synchronous external abort */
-> +static void kvm_inject_arm_sea(CPUState *c)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(c);
-> +    CPUARMState *env = &cpu->env;
-> +    CPUClass *cc = CPU_GET_CLASS(c);
-> +    uint32_t esr;
-> +    int ret;
-> +
-> +    /* This exception is synchronous data abort */
-> +    c->exception_index = EXCP_DATA_ABORT;
-> +    /* Inject the exception to guest EL1 */
-> +    env->exception.target_el = 1;
-
-These comments don't tell us anything that the code does not.
-
-> +
-> +    /* Set the DFSC to synchronous external abort and set FnV to not valid,
-> +     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
-> +     */
-> +
-> +    /* This exception comes from lower or current exception level. */
-> +    if (arm_current_el(env) == PSTATE_MODE_EL0t) {
-
-arm_current_el() returns an integer; you should be comparing it to
-0,1,2,3, not to PSTATE_MODE_* constants.
-
-> +        esr = syn_data_abort_no_iss(0, 1, 0, 0, 0, 0, 0x10);
-> +    } else {
-> +        esr = syn_data_abort_no_iss(1, 1, 0, 0, 0, 0, 0x10);
-> +    }
-
-Better written as
-    bool same_el;
-    [...]
-
-    same_el = arm_current_el(env) == env->exception.target_el;
-    env->exception.syndrome = syn_data_abort_no_iss(same_el, 1, 0, 0,
-0, 0, 0x10);
-
-> +
-> +    env->exception.syndrome = esr;
-> +
-> +    cc->do_interrupt(c);
-
-You need to take the iothread lock before calling do_interrupt.
-Compare the code in kvm_arm_handle_debug().
-
-> +    if (kvm_enabled()) {
-
-How can we get here if KVM is not enabled ?
-
-> +        /* write ESR_EL1 from cpustate to list*/
-> +        ret = write_part_cpustate_to_list(cpu,
-> +                    offsetof(CPUARMState, cp15.esr_el[1]));
-> +        if (!ret) {
-> +            fprintf(stderr, "<%s> failed to set esr_el1\n", __func__);
-> +            abort();
-> +        }
-
-kvm_arm_handle_debug() doesn't need to do this, I don't understand
-why this would be different.
-
-> +    }
-> +}
-> +
->  #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
->                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
->
-> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-> index 90741f6..3f1d656 100644
-> --- a/target/arm/op_helper.c
-> +++ b/target/arm/op_helper.c
-> @@ -109,7 +109,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
->       * ISV field.
->       */
->      if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
-> -        syn = syn_data_abort_no_iss(same_el,
-> +        syn = syn_data_abort_no_iss(same_el, 0,
->                                      ea, 0, s1ptw, is_write, fsc);
->      } else {
->          /* Fields: IL, ISV, SAS, SSE, SRT, SF and AR come from the template
-> --
-> 1.8.3.1
->
-
-thanks
--- PMM
+PiA+Pg0KPiA+PiBIaSBQZXRlciwNCj4gPj4gICBUaGFua3MgZm9yIHRoZSByZXZpZXcgYW5kIGNv
+bW1lbnRzLg0KPiA+Pg0KPiA+PiA+DQo+ID4+ID4gT24gOCBOb3ZlbWJlciAyMDE4IGF0IDEwOjI5
+LCBEb25naml1IEdlbmcgPGdlbmdkb25naml1QGh1YXdlaS5jb20+IHdyb3RlOg0KPiA+PiA+ID4g
+K2Jvb2wgd3JpdGVfcGFydF9jcHVzdGF0ZV90b19saXN0KEFSTUNQVSAqY3B1LCBwdHJkaWZmX3QN
+Cj4gPj4gPiA+ICtmaWVsZG9mZnNldCkNCj4gPj4gPg0KPiA+PiA+IFdoYXQgaXMgdGhpcyBhYm91
+dD8gTm90aGluZyBlbHNlIGluIFFFTVUgbmVlZHMgdG8gbWVzcyB3aXRoIHRoZQ0KPiA+PiA+IGNw
+dXN0YXRlIHN5bmNocm9uaXphdGlvbi4gTXkgZmlyc3QgYXNzdW1wdGlvbiBpcyB0aGF0IHlvdSBz
+aG91bGQgbm90IG5lZWQgdG8gZG8gc28gZWl0aGVyLg0KPiA+Pg0KPiA+PiBXZSBzaG91bGQgY2hh
+bmdlIHRoZSBndWVzdCBDUDE1IEVTUl9FTDEncyB2YWx1ZSwgdGhlIG9ubHkgbWV0aG9kIGlzDQo+
+ID4+IHRvIGNoYW5nZSB0aGUgY3B1LT5jcHJlZ192YWx1ZXNbXSBpbiBRRU1VLCB0aGVuIFFFTVUg
+Y2FsbCB3cml0ZV9saXN0X3RvX2t2bXN0YXRlKCkgdG8gc2V0IHRoZSBjcHUtPmNwcmVnX3ZhbHVl
+c1tdIHRvIEtWTSB3aGljaA0KPiBpbmNsdWRlIHRoZSBzcGVjaWZpZWQgRVNSX0VMMSB2YWx1ZSwg
+S1ZNIGRvIHdvcmxkIHN3aXRjaCwgYW5kIHRoZW4gc2V0IHRoZSBzcGVjaWZpZWQgRVNSX0VMMSdz
+IHZhbHVlIHRvIGd1ZXN0IGtlcm5lbC4NCj4gPg0KPiA+IEFoLCBJIHNlZS4gVGhpcyBpcyBhIGJ1
+ZyBpbiBvdXIgY3VycmVudCBoYW5kbGluZyBvZiB0aGUgcmVnaXN0ZXINCj4gPiBzdGF0ZSwgd2hl
+cmUgd2UgaW1wbGljaXRseSBhc3N1bWUgdGhhdCBub3RoaW5nIGluIFFFTVUgd2lsbCBldmVyIHdh
+bnQNCj4gPiB0byBjaGFuZ2UgYW55IHN5c3RlbSByZWdpc3RlciB2YWx1ZXMuIFRoaXMgYXNzdW1w
+dGlvbiBpcyBub3cgZmFsc2UgLS0NCj4gPiBrdm1fYXJtX2hhbmRsZV9kZWJ1ZygpIGJyb2tlIGl0
+IC0tIHNvIHdlIG5lZWQgdG8gZml4IHRoZSBjb2RlIHRoYXQNCj4gPiBkb2VzIGt2bV9hcmNoX3B1
+dF9yZWdpc3RlcnMoKS4gVGhlcmUgaXMgYSBjb21tZW50IGluIHRoZSBrdm0zMi5jDQo+ID4gdmVy
+c2lvbiBvZiB0aGF0IGZ1bmN0aW9uIGFib3V0IHRoaXMuIChUaGUga3ZtNjQuYyB2ZXJzaW9uIGhh
+cyB0aGUgc2FtZQ0KPiA+IGFzc3VtcHRpb24gYnV0IGRvZXNuJ3QgY29tbWVudCBvbiBpdC4pDQo+
+ID4NCj4gPiBXZSBzaG91bGQgKGlkZWFsbHkpIGZpeCB0aGlzIGJ1ZyBpbiB0aGUgY29kZSB0aGF0
+IGRvZXMgcmVnaXN0ZXINCj4gPiBzeW5jaW5nLCB3aXRob3V0IHJlcXVpcmluZyBwbGFjZXMgaW4g
+UUVNVSB0aGF0IHVwZGF0ZSBzeXN0ZW0gcmVnaXN0ZXJzDQo+ID4gdG8gaGF2ZSB0byBtYW51YWxs
+eSBpbmRpY2F0ZSB3aGljaCByZWdpc3RlcnMgdGhleSBoYXZlIGNoYW5nZWQuIEknbGwNCj4gPiBo
+YXZlIGEgdGhpbmsgYWJvdXQgaG93IGJlc3QgdG8gZG8gdGhpcy4NCj4gPg0KPiA+PiBBYm91dCB0
+aGUgZGV0YWlsZWQgZXhwbGFuYXRpb24sIGFzIHNob3duIGluIFsyXS4NCj4gPj4NCj4gPj4ga3Zt
+X2FybV9oYW5kbGVfZGVidWcoKSBkb2VzIG5vdCBuZWVkIHRvIGRvIHRoaXMgYmVjYXVzZSBRRU1V
+IGRvZXMgbm90IG5lZWQgdG8gY2hhbmdlIENQMTUgcmVnaXN0ZXJzLCBzdWNoIGFzIEVTUl9FTDEu
+DQo+ID4NCj4gPiBrdm1fYXJtX2hhbmRsZV9kZWJ1ZyBkb2VzIGNoYW5nZSBFU1JfRUwxOiBpdCBp
+cyBpbmplY3RpbmcgYW4gZXhjZXB0aW9uDQo+ID4gYW5kIHNvIHNob3VsZCBzZXQgdGhlIGV4Y2Vw
+dGlvbiByZWdpc3Rlci4gVGhpcyBoYXBwZW5zIHdoZW4gaXQgY2FsbHMNCj4gPiB0aGUgZG9faW50
+ZXJydXB0KCkgaG9vaywgYmVjYXVzZSBhcm1fY3B1X2RvX2ludGVycnVwdF9hYXJjaDY0KCkgd3Jp
+dGVzDQo+ID4gdG8gZW52LT5jcDE1LmVzcl9lbFtuZXdfZWxdLg0KPiA+DQo+ID4gSSdtIG5vdCBl
+bnRpcmVseSBzdXJlIHdoeSB0aGlzIGlzIHdvcmtpbmcgdG9kYXksIGluIGZhY3QuDQo+ID4gQWxl
+eCwgZGlkIHlvdSB0ZXN0IHdoZXRoZXIgb3VyIGRlYnVnLWV4Y2VwdGlvbi1pbmplY3Rpb24gcmVw
+b3J0cyB0aGUNCj4gPiBjb3JyZWN0IEVTUl9FTDEgdG8gdGhlIGd1ZXN0ID8NCj4gPHNuaXA+DQo+
+IA0KPiBJIGRpZCBub3QgLSBJIHdhcyBtb3N0bHkgZm9jdXNpbmcgaW4gdGhlIGhvc3QtZGVidWdn
+aW5nLXRoZS1ndWVzdCB0ZXN0IGNhc2UuIEknbGwgZ2V0IGEgdGVzdCByaWcgdXAgYW5kIGNoZWNr
+Lg0KDQpUaGFua3MsIHBsZWFzZSB0ZXN0IGl0IGluIHRoZSBLVk0gbW9kZSwgbm90IGluIHRoZSBU
+Q0cgbW9kZS4gV2FpdGluZyBmb3IgeW91ciB0ZXN0IHJlc3VsdC4NCg0KPiANCj4gLS0NCj4gQWxl
+eCBCZW5uw6llDQo=

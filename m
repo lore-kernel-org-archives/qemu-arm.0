@@ -1,92 +1,102 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5746905wrt;
-        Mon, 26 Nov 2018 07:49:24 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/X9I20gsrdv5ZLVNSLw8kFJTNTEZ04NuAywPCvfN0uAnFu2w0W20fZLhOV24t29Gd91ZbfL
-X-Received: by 2002:a25:d843:: with SMTP id p64-v6mr28199467ybg.15.1543247364541;
-        Mon, 26 Nov 2018 07:49:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543247364; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5758825wrt;
+        Mon, 26 Nov 2018 07:59:42 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/VqsvCQ65Ss+WDA7ma9dTAQ0nmnCvBsRJK8G0XHp9ej3Sg9MK4MIj/RdDOwbMXEqyCDdLz9
+X-Received: by 2002:a25:4195:: with SMTP id o143-v6mr29851541yba.103.1543247982306;
+        Mon, 26 Nov 2018 07:59:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543247982; cv=none;
         d=google.com; s=arc-20160816;
-        b=IVAiUGjKNf/VGtPP3sLcfChhWSf5BJBwsBQWhf5fiIhreDCm+gU4rPjUr/7uNzbiiD
-         WymKqgRp2+4uQULUJ+qdfrqqpHsSRY1ORhjp6Oq4TOMH4ckZVbJbfSAimmvLqYwWFkYJ
-         duvkeg3okkmiPWKZA6TX2Q63YsTuYNM6CvCZepTClzjbbIeb5GfE3bJi9Fg6M9+V2uQy
-         hgK24mqviuH29oRhB6zPAQjIWfEFfesw7Jbkd/zzU1vEZruLx1s5zUbX8b/VYcFR2hbL
-         mw1GO8nktihjxr49AdBM7VI6J7Wo31ulpmrgh0xzxYm3GuX9zSPrWOD33YvsPLgfpUXg
-         M6nw==
+        b=c/LMIq+iJWAY40/J0k3pvo0EarcgWG+SgJWJcl2QGkEwYnnT/3FH4WY4Ug8dYoP0By
+         fwcgpISDqNL5gN2Gx4oIFr9ynjJl7KZOKNuZHNFEPKoA1yvf0CZOQnNtAPP//NVZLklF
+         k9mHjdUP4iVIhyIG/ZxNnGFCeCc0LNZOU+FX7Twt8sty+3ZqkbkLXyNmgvYhMywpvpxS
+         zOdHBAK7pLxAxBmT9seUMB7fVjk7LOtExlPbsfco+AJfGVE+oJqZ0I2kassWlGEb9QjN
+         JvQsnHaePFEtMrSFSSym7tuIrQN6y7GV7HlS/pHNp3jd1SWeOyKkhlPvLoWuppe0h+qG
+         8rjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=Pm6s4gtfEb6D3+afNA/XFB5S/QVMnMmAKjgqZ/uh4Wk=;
-        b=IQea2os1IEkj4PDS/ELRphn1RPARK7zh1XtC8z2GEPunJSbdbIRNHRATudsmoZkRaZ
-         nC+JicEU3PYZ4Jpe8trms/ecnUqAotmwMk/FfwHbsjgEbx0jIw1nA1M8zRqsNZLpmU5O
-         CFzyZjbui5rJPy+lgEqV+ZlBh0+XqD2jxsndxcuq1Kr4WAz1S6iiayq+MhXlHcbi5+9+
-         qfbHS3M4D0vkeCGDS+L8L4+WMiiLNF0XbX+A+vad2vgR6D10qJVjEuRuhCLOps/8ADwt
-         oCM6j9bZiWR5CrchtCErIRi5CeIeIrHwbZ/9Hhwo9J4S9K1hLfA2GuGoJkhD654LY0Hj
-         uHtw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=VT7gIq5j/tYnkWC7p5jfalCkxSsEQwgp5lWucxCm9Fw=;
+        b=rsP/Zp6JChcIKJBCQ+B1f38a4VQqW5XjxRqzqslbuyeLlBF2Pc9Bb60mRbYTkHtV4b
+         fwZ2SILvDgDBHrKE+RTUSxSe8NnxfQkOwVbvq2o5kHRPuj9p/NuypafyF8e3aIIXgylA
+         Bk41B/Z9Cdtif7uhknJM1uVdvTNXIAN8v4+OE4EwZXTk+VkKt5PHZcPAmiIUbJlMeteE
+         8oCcaITALIOQeDCHE/ytDLxRX0BF30rlRC3hpoXVjg3uCx3exlIQKCS4HKgdMPRmNEdg
+         TR3d4NnCp39jvGxIrhHU57R36Zcam5T1Y9RXvRSdgmbjKQP9be0Opguno/U/uy7M5k9v
+         lsFw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BdYGe815;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id u190si509306ywd.75.2018.11.26.07.49.24
+        by mx.google.com with ESMTPS id g30-v6si573159ybi.417.2018.11.26.07.59.42
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 07:49:24 -0800 (PST)
+        Mon, 26 Nov 2018 07:59:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BdYGe815;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37343 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37368 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRJ8V-0006l7-Vx
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 10:49:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53493)
+	id 1gRJIT-0002Mw-QH
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 10:59:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56192)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gRJ8H-0006jo-Il
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:49:11 -0500
+	(envelope-from <alistair23@gmail.com>) id 1gRJIK-0002Lr-VI
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:59:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eric.auger@redhat.com>) id 1gRJ8G-0002Yg-C6
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:49:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45070)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
-	id 1gRJ8G-0002YP-3q; Mon, 26 Nov 2018 10:49:08 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2EE48307D850;
-	Mon, 26 Nov 2018 15:49:07 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 26A1160141;
-	Mon, 26 Nov 2018 15:48:57 +0000 (UTC)
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
-	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>
-References: <20180921081819.9203-1-eric.auger@redhat.com>
-	<5FC3163CFD30C246ABAA99954A238FA8387E9A0C@FRAEML521-MBX.china.huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <59dac012-ad90-8abe-b229-a7715ca6b561@redhat.com>
-Date: Mon, 26 Nov 2018 16:48:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+	(envelope-from <alistair23@gmail.com>) id 1gRJIJ-0007iE-Mo
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:59:32 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:34068)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1gRJIH-0007gk-K0; Mon, 26 Nov 2018 10:59:29 -0500
+Received: by mail-lj1-x242.google.com with SMTP id u6-v6so17078283ljd.1;
+	Mon, 26 Nov 2018 07:59:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=VT7gIq5j/tYnkWC7p5jfalCkxSsEQwgp5lWucxCm9Fw=;
+	b=BdYGe815RI46AMvp/cqmvWwbszP7Ds0ipML+HkfaNY8LQ/g3alMHJD3wvE6V86LDJk
+	AUcVlShMM+zTP0ifZk4+T5b2eW3hHj/7MnBweOn+TARdCa5Zg609uYG+5oHH8kGhcJrJ
+	q59VH7GQ4t3rNTX+EhlGLKmSeTAIe5usnXXPXcutvlKHRj2wsVOO2+FeOp7CjdP5/AYM
+	ck/08bBYgY+hyde21ojxbdVW9/pcmw5DB3eQrahNJtPrZSJ84tGsz0o4VnVLKohBxPhW
+	hSYmOm9II4LwEiNC5yEp4QwHkpw6LYczTYzK3zgXQB77SAuaFVAph4njCfF7vBrvSasv
+	1LkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=VT7gIq5j/tYnkWC7p5jfalCkxSsEQwgp5lWucxCm9Fw=;
+	b=jfOfW5nsq8VryMpLslKZywyz8WJDJz28GfIARdT4aZ9rfapykmQGQ40fwkz0lAnEjT
+	RBNCFUaCzkAjuog8c1T6znxMHst4XKEZkBMOjMNmWgwQZYR7hm9mIUqEKi/pmre8OJpx
+	jGIbBaGqN1UmKCwqSImAdeck3gR89sMtWVr9QalcWP6mCYXifHRjSPoQ9mdAAGBbb+WP
+	FZBGq8kbRJ+IlMizEb7JsSKHS91nYu5dUFZ/ZAfjZ3YoaoQHayfpxgIquazgOTebZikS
+	l9c4JniXKQJO+hplOolb31/K0RobYVtjFH5BFgv+OY1z1E1radxytQ9LdVUN3xxiBuX7
+	BvcQ==
+X-Gm-Message-State: AA+aEWZBB/o9+B/DMP3JxZGBTjj8D789XJBTZJSGnaAUdUfKr3njAVDA
+	VlpdEAn4XkiJufXDjOSIW65jlzQgunsCmvGUpww=
+X-Received: by 2002:a2e:4218:: with SMTP id
+	p24-v6mr17248237lja.58.1543247966528; 
+	Mon, 26 Nov 2018 07:59:26 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8387E9A0C@FRAEML521-MBX.china.huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Mon, 26 Nov 2018 15:49:07 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage
- VFIO integration
+References: <20181125205000.10324-1-philmd@redhat.com>
+	<20181125205000.10324-5-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-5-philmd@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 26 Nov 2018 07:58:58 -0800
+Message-ID: <CAKmqyKPzxsj4oATNH4k5C23ShG4RUTWpFHHbq4+4GDo5wXNa=g@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.1 04/25] MAINTAINERS: Add
+ missing entries for the Xilinx ZynqMP machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,149 +108,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
-	"cdall@kernel.org" <cdall@kernel.org>, "mst@redhat.com" <mst@redhat.com>,
-	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>,
-	Linuxarm <linuxarm@huawei.com>, "peterx@redhat.com" <peterx@redhat.com>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"xuwei \(O\)" <xuwei5@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PEjQGtM8MMCE
+X-TUID: Csms1/IaAVro
 
-Hi Shameer,
+On Sun, Nov 25, 2018 at 12:54 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-On 11/23/18 5:28 PM, Shameerali Kolothum Thodi wrote:
-> 
-> 
->> -----Original Message-----
->> From: Qemu-devel [mailto:qemu-devel-
->> bounces+shameerali.kolothum.thodi=huawei.com@nongnu.org] On Behalf Of
->> Eric Auger
->> Sent: 21 September 2018 09:18
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org
->> Cc: yi.l.liu@intel.com; cdall@kernel.org; mst@redhat.com; jean-
->> philippe.brucker@arm.com; peterx@redhat.com; alex.williamson@redhat.com
->> Subject: [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO
->> integration
->>
-> 
-> [...]
-> 
->> This series can be found at:
->> https://github.com/eauger/qemu/tree/v3.0.0_2stage-rfc-v2
->>
->> Testing:
->> - For testing use my kernel branch
->>   https://github.com/eauger/linux/tree/v4.19-rc4-2stage-rfc-v2 [1]
->> - Tested on Qualcomm HW with 1/2 assigned e1000e NICs. Hotplug
->>   was also tested OK.
->> - Known limitation:
->>   - currently sending an NH_ASID command instead of NH_VA
->>     upon guest NH_VA. This may cause important perf downgrade.
->>     Propagating NH_VA does not work at the moment.
-> 
-> Hi Eric,
-> 
-> I had a  go with this RFC on one of our platform and noted that when the Guest 
-> boots with ACPI , the ping doesn't work with the assigned ixgbevf NIC though 
-> the network device gets detected and added to the iommu group. 
-> 
-> It's all fine when I boot the Guest with DT. Have you tested this with ACPI yet or
-> am I missing anything obvious here?
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-I just submitted the following QEMU patch:
+Alistair
 
-[PATCH for-3.1] hw/arm/virt-acpi-build: Fix SMMUv3 ACPI integration
-
-Please can you apply it and test it?
-
-Thank you in advance
-
-Best Regards
-
-Eric
-> 
-> Please let me know.
-> 
-> Thanks,
-> Shameer
->  
->> References:
->> - [1] [RFC v2 00/20] SMMUv3 Nested Stage Setup
->>   (https://lkml.org/lkml/2018/9/18/1087)
->>   The User API still is unstable and under discussion.
->>
->> History:
->> v1 -> v2:
->> - Fixed dual assignment (asid now correctly propagated on TLB invalidations)
->> - Integrated fault reporting
->>
->> Next Steps:
->> - Mature the user API with people involved in SVA work (KVM forum may be a
->>   good opportunity to meet)
->> - Submit the IOMMU cfg notifier changes and some VFIO changes separately,
->> to
->>   progress independently on the kernel dependency
->>
->> Eric Auger (28):
->>   hw/arm/smmu-common: Fix the name of the iommu memory regions
->>   hw/arm/smmuv3: fix eventq recording and IRQ triggerring
->>   update-linux-headers: Import iommu.h
->>   linux-headers: Partial header update
->>   memory: add IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
->>   hw/arm/smmuv3: Implement get_attr API to report
->> IOMMU_ATTR_VFIO_NESTED
->>   hw/vfio/common: Refactor container initialization
->>   hw/vfio/common: Force nested if iommu requires it
->>   memory: Introduce IOMMUIOLTBNotifier
->>   memory: rename memory_region notify_iommu, notify_one
->>   memory: Add IOMMUConfigNotifier
->>   memory: Add arch_id in IOTLBEntry
->>   hw/arm/smmuv3: Store s1ctrptr in translation config data
->>   hw/arm/smmuv3: Implement dummy replay
->>   hw/arm/smmuv3: Notify on config changes
->>   hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA invalidation
->>   hw/vfio/common: Introduce vfio_alloc_guest_iommu helper
->>   hw/vfio/common: Introduce vfio_dma_(un)map_ram_section helpers
->>   hw/vfio/common: Register specific nested mode notifiers and
->>     memory_listener
->>   hw/vfio/common: Register MAP notifier for MSI binding
->>   target/arm/kvm: Notifies IOMMU on MSI stage 1 binding
->>   vfio/pci: Always set up MSI route before enabling vectors
->>   hw/arm/smmuv3: Remove warning about unsupported MAP notifiers
->>   memory: Introduce IOMMU_NOTIFIER_INIT_CFG IOMMU Config Notifier
->>   memory: Introduce IOMMU Memory Region inject_faults API
->>   hw/vfio/common: Handle fault_handler
->>   hw/arm/smmuv3: Init fault handling
->>   hw/arm/smmuv3: Implement fault injection
->>
->>  exec.c                          |  12 +-
->>  hw/arm/smmu-common.c            |  12 +-
->>  hw/arm/smmuv3-internal.h        |  26 +-
->>  hw/arm/smmuv3.c                 | 189 +++++++--
->>  hw/i386/intel_iommu.c           |  16 +-
->>  hw/misc/tz-mpc.c                |   8 +-
->>  hw/ppc/spapr_iommu.c            |   2 +-
->>  hw/s390x/s390-pci-inst.c        |   4 +-
->>  hw/vfio/common.c                | 666 ++++++++++++++++++++++++--------
->>  hw/vfio/pci.c                   |   1 +
->>  hw/vfio/trace-events            |   4 +-
->>  hw/virtio/vhost.c               |  12 +-
->>  include/exec/memory.h           | 140 +++++--
->>  include/hw/arm/smmu-common.h    |   1 +
->>  include/hw/vfio/vfio-common.h   |   1 +
->>  linux-headers/linux/iommu.h     | 237 ++++++++++++
->>  linux-headers/linux/vfio.h      |  48 +++
->>  memory.c                        |  66 +++-
->>  scripts/update-linux-headers.sh |   2 +-
->>  target/arm/kvm.c                |  46 +--
->>  20 files changed, 1206 insertions(+), 287 deletions(-)
->>  create mode 100644 linux-headers/linux/iommu.h
->>
->> --
->> 2.17.1
->>
-> 
-> 
+> ---
+>  MAINTAINERS | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3b9996ab2c..007f89f126 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -711,6 +711,9 @@ L: qemu-arm@nongnu.org
+>  S: Maintained
+>  F: hw/*/xlnx*.c
+>  F: include/hw/*/xlnx*.h
+> +F: include/hw/ssi/xilinx_spips.h
+> +F: hw/display/dpcd.c
+> +F: include/hw/display/dpcd.h
+>
+>  ARM ACPI Subsystem
+>  M: Shannon Zhao <shannon.zhaosl@gmail.com>
+> --
+> 2.17.2
+>
+>

@@ -1,100 +1,102 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp64568wrt;
-        Mon, 26 Nov 2018 09:43:29 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XrGV65IwMVS8EPmYGathJp1FtcosA9bGfSyoTW5wFkEx//07O0nvo2xim6PEDzLQP8Hdc0
-X-Received: by 2002:a37:4892:: with SMTP id v140mr25842196qka.71.1543254209446;
-        Mon, 26 Nov 2018 09:43:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543254209; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp237719wrt;
+        Mon, 26 Nov 2018 12:12:09 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/V3pba7fMQxTm9iEeFt5pmtPAS/YfqrdhMW3PKgROeSbhtjKHN/JWTiHmrT7ZNBD/4RnBcV
+X-Received: by 2002:a25:6ac1:: with SMTP id f184-v6mr16884526ybc.435.1543263128903;
+        Mon, 26 Nov 2018 12:12:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543263128; cv=none;
         d=google.com; s=arc-20160816;
-        b=vLWxATokczSpqrmjdv1ZGmPlIC3d0MoJ1YCwC+UHdM2Ixv3dyeWLCREOOotygDTg/b
-         50aaCiFf6hi37DLb/g/KNm73gmQ0zxGAkp+CsjqzRj8JspuEzPjjJAo4B+mzjyegPL9M
-         oiYCdWF6GFpQwlkUvtA5gXqicggROv1U4YpL64g0+SGbwQLcX5m2pKOMxOyhAUAf8eBp
-         FuPwR6ILyUeW758+Nne4frz//WEntARmM6p7zPdSnKq9AxgAZ8bJQaX1Vhx91QFzpm3W
-         guOoTAsfX4KZQLN7I3W35VytMony3X6PyoK9Gx3mJ+b/zJ1frU/ZD7am/kCAkQUYP2FC
-         DDHw==
+        b=QdLj4sXy2cHEzprNMN8Il6hS7saLY4ugbwGl1RzdnjsP4+sHA616gi9Kcdpth1nLs9
+         O4rUe+sty5rRQ/Jc3J8TYjJOtg8bcIJaxT7L0UZkKZzNlWdZ/uCKgQoHgkaNcMgawAFN
+         6rWrU3yN/aQfXlrrGOtyOnnTW4hUR0QXtJqzD1COvgJhyWIZFkfdH5kyW4WCgfwdlopZ
+         P3YOoeuigEisVjUK+3+hZcDVuoVizCsizcvlW3Fz3S9BdrCpGd/8ucA0l171M+ii3/n7
+         N0tdkUa+BvNQZ4+wTpdy+TS9E5+MzuUqj1Cdus3DzFh492ZGB+YZ+lLZQL5ve7idaxC6
+         38OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=GSdZTfU0T2WwVsWfb+8N3kYu/6UO11ZPdnBxIKSDIJM=;
-        b=isKf/U1nSy4azA5uXTWqynrPDvfF6Em7LZkbOyx2t6uutJY5jmnppwvTotBRN4GuOy
-         u89svwqzjd83MbqzW4WcZxu8iAnTagghlhAT4GBwXYuT4kWrnifEKDdNzHOwSTVZN6T4
-         K/JXruhlJRsMZgB/V/xURFEIBGQItnCQ4osy2lr100ZIV0u8KW9+E3BiD3he4YIpSdZN
-         Ge7znQipKxrCsi/3hypITNhpUkLCjBmWpfPkNIUnGoq2wDIZIl8zZ69R8lWcJ/uMporv
-         n88jOM+rSCwqVMjhe37/X5QwcviyVNjWasXxnUY2YcUWeEdBaldKgXqMDZ8MZwo21GgT
-         57Hw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=vDDG8sw8/cLynP82AyxpTCVexwlosrYkbYNu/D2cZy0=;
+        b=eshuEXHNRIf8+BZGlpfcTWqJyOuOhFm6yaFDWrdWjZJPJMVFo/yW/HYc0wtQOO0yQc
+         9mxo/ggVXUctLyJC40PQ7/Rxj+qoZrf1Zw+Dqnj8AYQgE9atDo9GLiupgyg8aMbFIbRg
+         V146an5+2qDuBem4Wnl9mDJJe9CkRB9P5Uad+ztvKnn+Wpr3Tmk/smAGhZAwu3lRUMdS
+         lkqnG4AwSycQZzygUYPgWJ/VJFgiIER5DOS4fQCqirbCN/VLPoPZrsmy3FZWmm2gyN1V
+         RTETxRhefv7+zIspmwoAjRLAPpcOvo/+TArMcpc05LbrJB58xfG4Wapf/STuRCYJUbts
+         xxuA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EPBqw2Q9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f196si852045qka.61.2018.11.26.09.43.29
+        by mx.google.com with ESMTPS id x185-v6si922041ywa.178.2018.11.26.12.12.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 09:43:29 -0800 (PST)
+        Mon, 26 Nov 2018 12:12:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EPBqw2Q9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38025 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38580 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRKuu-00087I-OV
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 12:43:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34394)
+	id 1gRNEm-0007sE-6U
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 15:12:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52842)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gRKum-000878-1y
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 12:43:20 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1gRN5v-0008GY-TP
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 15:03:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gRKui-0006cR-Tb
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 12:43:20 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:39486)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1gRN5u-0008L2-I9
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 15:02:59 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36642)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gRKui-0006cD-Ni
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 12:43:16 -0500
-Received: by mail-wr1-f67.google.com with SMTP id t27so11905779wra.6
-	for <qemu-arm@nongnu.org>; Mon, 26 Nov 2018 09:43:16 -0800 (PST)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1gRN5m-0008IV-NB; Mon, 26 Nov 2018 15:02:50 -0500
+Received: by mail-wr1-x443.google.com with SMTP id t3so20294736wrr.3;
+	Mon, 26 Nov 2018 12:02:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=vDDG8sw8/cLynP82AyxpTCVexwlosrYkbYNu/D2cZy0=;
+	b=EPBqw2Q9WNRbPygYwTduKPjmnPMKIRsuanwWGQCu/DDilHQHm7j3IxF/shc5AGyHkE
+	nm9PGMt2zQm3J9z/w89EzZOwOdbLkobeehhB5ZV4YTn9WjDdlMf+uwevicc5VfplO+F/
+	nnli7V+Iiz6jDgjyNDlGxd6FCSUhjepMg191FTpUPKCtCa+o3anyYbC6poIfn8Jy5OJc
+	HU2YF+6UMKjNmiRgIDTb5AW1DWMAZRxvotQcLOpex2n66jw3W/g0qRdI6e6qan7MmWl/
+	QXdK21Z/os/KVheNjtCqXMpGnVb2lo5TAobWqvmL9+DEtjbFuYI2BGuYOQCCy9on4sOE
+	kfjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=GSdZTfU0T2WwVsWfb+8N3kYu/6UO11ZPdnBxIKSDIJM=;
-	b=l7S3ETxuhlKWQVryY+Nwi5IwS4jEWx0y5x6WEZ1Pl+Sj+/VBsARqRf+FBjJGC9BIcH
-	VPsVlM2wJHRVGAuyQpb/jFtQ5xOrOR6gIcBOG+KuprC7khT19pCQDdLLKl9ZukBldWXv
-	DoJHAQ1iFgJ7jE9ruHauaMjezowasAhjjCTEjkGG80uON46lqiZNV8Mev+myLHD4kFMx
-	kWy/TURhzxJjJ85B3F6ZwT+TodLGWmILUkyPgBBqHhLs/VsMT0GFaDfe/FbevjzhDCh9
-	i9CB71QI3NBQOIqoh6VwvsqSllkue/Ps9sljlLRNlhsM2ay5DXewMEXP6jtcXjWeGL9A
-	O5PQ==
-X-Gm-Message-State: AA+aEWYNzgfSiVEUcSs3hn26qH+l+FL6k1dJ/aHNgsZ4p35nkKU+gOCb
-	jGkdo1LvVmZrl7MVoUwW3lDwcg==
-X-Received: by 2002:a5d:684b:: with SMTP id o11mr23359416wrw.316.1543254195107;
-	Mon, 26 Nov 2018 09:43:15 -0800 (PST)
-Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
-	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
-	by smtp.gmail.com with ESMTPSA id
-	x186sm1879988wmg.41.2018.11.26.09.42.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 26 Nov 2018 09:42:52 -0800 (PST)
-To: Samuel Ortiz <sameo@linux.intel.com>, qemu-devel@nongnu.org
-References: <20181126162942.21258-1-sameo@linux.intel.com>
-	<20181126162942.21258-5-sameo@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <bf544e63-764d-6c80-35fa-3813480edb25@redhat.com>
-Date: Mon, 26 Nov 2018 18:42:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=vDDG8sw8/cLynP82AyxpTCVexwlosrYkbYNu/D2cZy0=;
+	b=Y5O9rnHQGft2QBFNPiini4wmLImmus0m4Jgg4ytCzT6UBLlGq2FGcG1Um67f5X8+dC
+	1VnYn8ByhFSW6CJfvibxdrATRmtHyRda9mFrbdLb6p7005hLnsPw54+uQ6GZAQgrrHY0
+	2Kf5iz16ObuJAjDlKCYoN72R8dCQG7AfTulL9JReMbAXIc8kfhgqOpt2QIXnPV8sN73R
+	yh9TEIu/cKDb6feQL8wXTzJdokzvwUUXKuly5RwPqGqI706eewOeuG++HKUsbkHcV2mA
+	C5p2mBcCHVrFIq8L/kvIVjidY1tQOECqi7Y0obrtu7I5UCoBvE5z7otGibdukvpQUAp6
+	FF2Q==
+X-Gm-Message-State: AA+aEWY2Y4c9lVf5cTF0fMmnVo2IkMtibz9tcb+dCGrRX/fTpYbXrFNZ
+	uNxpAjPBk1z8WTYrQ2AIzY5F7ZRaFpiVbuJQj+4=
+X-Received: by 2002:adf:f550:: with SMTP id j16mr24489059wrp.258.1543262567852;
+	Mon, 26 Nov 2018 12:02:47 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20181126162942.21258-5-sameo@linux.intel.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 4/8] hw: arm: Carry RSDP
- specific data through AcpiRsdpData
+References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
+	<20181107123652.23417-11-marcandre.lureau@redhat.com>
+	<20181126142046.07c5e227@redhat.com>
+In-Reply-To: <20181126142046.07c5e227@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 27 Nov 2018 00:02:35 +0400
+Message-ID: <CAJ+F1C+XA0hzUCOgxm8MML1QZ-VfVUAG=yq1ZHAh1+t3jMbQgQ@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::443
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v3 10/14] qdev-props:
+ call object_apply_global_props()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,123 +108,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Ben Warren <ben@skyportsystems.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Corey Minyard <minyard@acm.org>, amit@kernel.org,
+	Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	QEMU <qemu-devel@nongnu.org>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>, hpoussin@reactos.org,
+	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
+	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+	atar4qemu@gmail.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cmv6lVa1r9ij
+X-TUID: uvoyH94FvDEL
 
-On 26/11/18 17:29, Samuel Ortiz wrote:
-> That will allow us to generalize the ARM build_rsdp() routine to support
-> both legacy RSDP (The current i386 implementation) and extended RSDP
-> (The ARM implementation).
-> 
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+Hi
+On Mon, Nov 26, 2018 at 5:27 PM Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> On Wed,  7 Nov 2018 16:36:48 +0400
+> Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
+>
+> > It's now possible to use the common function.
+> >
+> > Teach object_apply_global_props() to warn if Error argument is NULL.
+> >
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >  hw/core/qdev-properties.c | 24 ++----------------------
+> >  qom/object.c              |  6 +++++-
+> >  2 files changed, 7 insertions(+), 23 deletions(-)
+> >
+> > diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+> > index 8728cbab9f..239535a4cb 100644
+> > --- a/hw/core/qdev-properties.c
+> > +++ b/hw/core/qdev-properties.c
+> > @@ -1223,28 +1223,8 @@ int qdev_prop_check_globals(void)
+> >
+> >  void qdev_prop_set_globals(DeviceState *dev)
+> >  {
+> > -    int i;
+> > -
+> > -    for (i =3D 0; i < global_props()->len; i++) {
+> > -        GlobalProperty *prop;
+> > -        Error *err =3D NULL;
+> > -
+> > -        prop =3D g_array_index(global_props(), GlobalProperty *, i);
+> > -        if (object_dynamic_cast(OBJECT(dev), prop->driver) =3D=3D NULL=
+) {
+> > -            continue;
+> > -        }
+> > -        prop->used =3D true;
+> > -        object_property_parse(OBJECT(dev), prop->value, prop->property=
+, &err);
+> > -        if (err !=3D NULL) {
+> > -            error_prepend(&err, "can't apply global %s.%s=3D%s: ",
+> > -                          prop->driver, prop->property, prop->value);
+> > -            if (!dev->hotplugged) {
+> > -                error_propagate(&error_fatal, err);
+> > -            } else {
+> > -                warn_report_err(err);
+> > -            }
+> > -        }
+> > -    }
+> > +    object_apply_global_props(OBJECT(dev), global_props(),
+> > +                              dev->hotplugged ? NULL : &error_fatal);
+> arguably, it's up to caller to decide it warn or not.
+> I'd leave it warning code out of object_apply_global_props() and let call=
+er do the job
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+The problem is that there may be multiple errors, and the remaining
+globals should be applied.
 
-> ---
->  include/hw/acpi/acpi-defs.h | 11 +++++++++++
->  hw/arm/virt-acpi-build.c    | 27 ++++++++++++++++++++++-----
->  2 files changed, 33 insertions(+), 5 deletions(-)
-> 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index af8e023968..e7fd24c6c5 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -53,6 +53,17 @@ struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
->  } QEMU_PACKED;
->  typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
->  
-> +typedef struct AcpiRsdpData {
-> +    uint8_t oem_id[6]; /* OEM identification */
-> +    uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
-> +
-> +    unsigned *rsdt_tbl_offset;
-> +    unsigned *xsdt_tbl_offset;
-> +} AcpiRsdpData;
-> +
-> +#define ACPI_RSDP_REV_1 0
-> +#define ACPI_RSDP_REV_2 2
-> +
->  /* Table structure from Linux kernel (the ACPI tables are under the
->     BSD license) */
->  
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 0835900052..2dad465ecf 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -368,7 +368,7 @@ static void acpi_dsdt_add_power_button(Aml *scope)
->  
->  /* RSDP */
->  static void
-> -build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-> +build_rsdp(GArray *rsdp_table, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
->  {
->      AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
->      unsigned xsdt_pa_size = sizeof(rsdp->xsdt_physical_address);
-> @@ -379,14 +379,14 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
->                               true /* fseg memory */);
->  
->      memcpy(&rsdp->signature, "RSD PTR ", sizeof(rsdp->signature));
-> -    memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, sizeof(rsdp->oem_id));
-> +    memcpy(rsdp->oem_id, rsdp_data->oem_id, sizeof(rsdp->oem_id));
->      rsdp->length = cpu_to_le32(sizeof(*rsdp));
-> -    rsdp->revision = 0x02;
-> +    rsdp->revision = rsdp_data->revision;
->  
->      /* Address to be filled by Guest linker */
->      bios_linker_loader_add_pointer(linker,
->          ACPI_BUILD_RSDP_FILE, xsdt_pa_offset, xsdt_pa_size,
-> -        ACPI_BUILD_TABLE_FILE, xsdt_tbl_offset);
-> +        ACPI_BUILD_TABLE_FILE, *rsdp_data->xsdt_tbl_offset);
->  
->      /* Checksum to be filled by Guest linker */
->      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
-> @@ -399,6 +399,20 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
->          (char *)&rsdp->extended_checksum - rsdp_table->data);
->  }
->  
-> +static void
-> +init_rsdp_data(AcpiRsdpData *data, const char *oem_id, uint8_t revision,
-> +               unsigned *rsdt_offset, unsigned *xsdt_offset)
-> +{
-> +    /* Caller must provide an OEM ID */
-> +    g_assert(oem_id);
-> +    g_assert(strlen(oem_id) >= 6);
-> +
-> +    memcpy(data->oem_id, oem_id, 6);
-> +    data->revision = revision;
-> +    data->rsdt_tbl_offset = rsdt_offset;
-> +    data->xsdt_tbl_offset = xsdt_offset;
-> +}
-> +
->  static void
->  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> @@ -810,6 +824,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      GArray *table_offsets;
->      unsigned dsdt, xsdt;
->      GArray *tables_blob = tables->table_data;
-> +    AcpiRsdpData rsdp;
->  
->      table_offsets = g_array_new(false, true /* clear */,
->                                          sizeof(uint32_t));
-> @@ -857,7 +872,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
->  
->      /* RSDP is in FSEG memory, so allocate it separately */
-> -    build_rsdp(tables->rsdp, tables->linker, xsdt);
-> +    init_rsdp_data(&rsdp, ACPI_BUILD_APPNAME6, ACPI_RSDP_REV_2,
-> +                   NULL, &xsdt);
-> +    build_rsdp(tables->rsdp, tables->linker, &rsdp);
->  
->      /* Cleanup memory that's no longer used. */
->      g_array_free(table_offsets, true);
-> 
+I'll add a comment.
+
+> >  }
+> >
+> >  /* --- 64bit unsigned int 'size' type --- */
+> > diff --git a/qom/object.c b/qom/object.c
+> > index 9acdf9e16d..b1a7f70550 100644
+> > --- a/qom/object.c
+> > +++ b/qom/object.c
+> > @@ -392,7 +392,11 @@ void object_apply_global_props(Object *obj, GArray=
+ *props, Error **errp)
+> >          if (err !=3D NULL) {
+> >              error_prepend(&err, "can't apply global %s.%s=3D%s: ",
+> >                            p->driver, p->property, p->value);
+> > -            error_propagate(errp, err);
+> > +            if (errp) {
+> > +                error_propagate(errp, err);
+> > +            } else {
+> > +                warn_report_err(err);
+> > +            }
+> >          }
+> >      }
+> >  }
+>
+>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau

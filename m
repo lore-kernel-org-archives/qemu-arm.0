@@ -1,81 +1,77 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5803155wrt;
-        Mon, 26 Nov 2018 08:32:03 -0800 (PST)
-X-Google-Smtp-Source: AJdET5ccn0gUQ7MZBFXn0VUNiqKTcL+HgWxKIlBQ+Yq1HPPFeqwt/pdxmhxs83Lral/4nKTRFtIx
-X-Received: by 2002:a81:49cc:: with SMTP id w195mr28127453ywa.86.1543249923242;
-        Mon, 26 Nov 2018 08:32:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543249923; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5806372wrt;
+        Mon, 26 Nov 2018 08:34:28 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XeLLLS4bqS1qKwqsREhEkzit+tM1gSoIhPPr9r6yrEhxWL/o2u3AhfwROyJeCXW8rlSVzV
+X-Received: by 2002:a25:5a0b:: with SMTP id o11-v6mr28299442ybb.52.1543250068178;
+        Mon, 26 Nov 2018 08:34:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543250068; cv=none;
         d=google.com; s=arc-20160816;
-        b=YMyfvSbBwdQqjTIfcqbIqN7X7xTzMOn8s7i/7rxstO46evUh4uyWVFfFCgS3xlqoCx
-         9fQqbfojsMqIahTKUFuahf3wfZa0DCeKpydiGFDIjT8516/aefgonXwxQYJyjKmA7JVh
-         1VJPSN6kJk20Pl2azT3ZAwTQc0G1XfMl5zpVS26shk8wjZkc0mcgB9FM/Is0Dcww8X0g
-         SajHE2UIPsaz465HMTCA9p3qCbTaqepBBZgYaAPVtNqjQJpwVkzqwVZfiqdBZ45Sr/MB
-         eKUh5cAlG8s/EMioDciomYNazqRKQ6ZGzzG5NH9h0uoEAKAyZnn4GezRDEnU1texYlhp
-         B6Vg==
+        b=kEO1vXD1BvGgzM42XPFXRl+4Awl1+oS8ufap3KqPkE+n6bz/Oj2hPbqx6zZb2xQ9Nv
+         Qv/akrMDJp0Myi6oJHMWzUgSpqUI3CtNdFqrqtKgdb3NKrlnXJ307GDpCqJKWorK2cV2
+         E0YbLoobi0dHZrQvR1nbZJbvn0hmOVd0nfJ+DDk5Rb9m9WMfn6KYMDabgRwfh1lB2vLq
+         1HYLUNFxlDCSixTBKzbr/9pO8kCq2khZn0z6dI21XDGJVh4T01dtxXA7gUeeEPnFqHZV
+         tVrUN9xPXzdYYWb8Q2PWtEaQemABFAzxkBqVRxfBEtOi7P6iCZXEaciadzm++zBhFgMH
+         qhUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=UZNKSQVZ0Sn8t1b/+qPp5+mZV9u9kn+Ynv2RDRrucz4=;
-        b=LKVYCuAKOUstamKsfB71AvEePkY4zEyxgy5h4xY5ID3536sx5agnoCOKU9gsBTQQ57
-         Sp7SZwzZwzNCMjfRXtgePE+rILcoh0yiTqBFu0nrZAh4evevW6gqDXQLMMWUCfrZjZNE
-         xPqt6phoHi+148MrsdeVZ8/+a2vJTzGHWr3N3gpEhnJPHRRwMRrI8bV8rloCsw9pX+EH
-         2FSF2zrVV4t0rXNSKBkptm8FeCITunMQVF7U6fNTtbeoVAKAYeXCUX57JPFhTIg+8et6
-         PwfXGtohmD0no7J1BGWjfCKh0de497dU0r3otoxTg4XwFqnbXHWM6U7ned6/EeO2uHAf
-         y/3w==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=rejNqgXRs+EOa0xY0Cah/apH7+GRDTCCPMo/sr4ddME=;
+        b=m3FdmZ8ZFTt4pcpLV1F0JUiz8QBtq6Non3d0ZYQBLR3Cdtq3FPCP0jsHTWREMekihs
+         WnfCH5nh2lD7oitof0i3/2XPKENd8pFVVjFVyExHY1jjpjzUHzeSjq5WAudSFSxyiRzc
+         u8wEH0HtNwp2rGM2IdVr2PNzCZtjDo+PsOoBFeJYJPRQv1o2WmoDy3lV6N+4PkcMdU5f
+         KNXnfeWHLbtzSiSQTGgbO2UmW2ijTBrJWbjJkgwhllb3BO6nk0vYhSSCLH74WeNgxlJp
+         rToPYsxKGQFMEkIplf+VoJHwch/FtfNhBNsBPhnsfuOeniHGFxgUyxANCIjLmUIUgHLk
+         36Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z67-v6si595534ybb.259.2018.11.26.08.32.03
+        by mx.google.com with ESMTPS id q37si596505ywa.288.2018.11.26.08.34.28
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 08:32:03 -0800 (PST)
+        Mon, 26 Nov 2018 08:34:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:37521 helo=lists.gnu.org)
+Received: from localhost ([::1]:37527 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRJnm-0001HE-Hx
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 11:32:02 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37792)
+	id 1gRJq7-0003ya-H6
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 11:34:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37674)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gRJmc-0000uS-4H
-	for qemu-devel@nongnu.org; Mon, 26 Nov 2018 11:30:55 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gRJmR-0000m1-J9
+	for qemu-devel@nongnu.org; Mon, 26 Nov 2018 11:30:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gRJmX-0004YY-Ay
-	for qemu-devel@nongnu.org; Mon, 26 Nov 2018 11:30:50 -0500
-Received: from mga11.intel.com ([192.55.52.93]:54537)
+	(envelope-from <sameo@linux.intel.com>) id 1gRJmM-0004PW-MA
+	for qemu-devel@nongnu.org; Mon, 26 Nov 2018 11:30:39 -0500
+Received: from mga14.intel.com ([192.55.52.115]:1699)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gRJmX-0004YC-1v; Mon, 26 Nov 2018 11:30:45 -0500
+	id 1gRJmK-0004Gc-Re; Mon, 26 Nov 2018 11:30:34 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-	by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	26 Nov 2018 08:30:44 -0800
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	26 Nov 2018 08:30:19 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,283,1539673200"; d="scan'208";a="90953223"
+X-IronPort-AV: E=Sophos;i="5.56,283,1539673200"; d="scan'208";a="90948916"
 Received: from sunandos-mobl2.ger.corp.intel.com (HELO localhost.localdomain)
 	([10.251.82.176])
-	by fmsmga008.fm.intel.com with ESMTP; 26 Nov 2018 08:30:38 -0800
+	by fmsmga008.fm.intel.com with ESMTP; 26 Nov 2018 08:30:14 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 26 Nov 2018 17:29:37 +0100
-Message-Id: <20181126162942.21258-5-sameo@linux.intel.com>
+Date: Mon, 26 Nov 2018 17:29:33 +0100
+Message-Id: <20181126162942.21258-1-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20181126162942.21258-1-sameo@linux.intel.com>
-References: <20181126162942.21258-1-sameo@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.93
-Subject: [Qemu-devel] [PATCH 4/8] hw: arm: Carry RSDP specific data through
- AcpiRsdpData
+X-Received-From: 192.55.52.115
+Subject: [Qemu-devel] [PATCH 0/8] hw: acpi: RSDP fixes and refactoring
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,111 +92,51 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FFR8RSxRc0mo
+X-TUID: ZrfFewDwuNxa
 
-That will allow us to generalize the ARM build_rsdp() routine to support
-both legacy RSDP (The current i386 implementation) and extended RSDP
-(The ARM implementation).
+This patch serie fixes a couple of RSDP checksum related issues:
 
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
----
- include/hw/acpi/acpi-defs.h | 11 +++++++++++
- hw/arm/virt-acpi-build.c    | 27 ++++++++++++++++++++++-----
- 2 files changed, 33 insertions(+), 5 deletions(-)
+- On RSDP rev2, we are not adding the extended checksum and computing
+  the checksum on the full table instead of the first 20 bytes.
+- On RSDP rev1, we are computing the checksum on 36 bytes instead of 20.
+  We're lucky enough that this is only adding zeroes to the checksum.
 
-diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-index af8e023968..e7fd24c6c5 100644
---- a/include/hw/acpi/acpi-defs.h
-+++ b/include/hw/acpi/acpi-defs.h
-@@ -53,6 +53,17 @@ struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
- } QEMU_PACKED;
- typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
- 
-+typedef struct AcpiRsdpData {
-+    uint8_t oem_id[6]; /* OEM identification */
-+    uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
-+
-+    unsigned *rsdt_tbl_offset;
-+    unsigned *xsdt_tbl_offset;
-+} AcpiRsdpData;
-+
-+#define ACPI_RSDP_REV_1 0
-+#define ACPI_RSDP_REV_2 2
-+
- /* Table structure from Linux kernel (the ACPI tables are under the
-    BSD license) */
- 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 0835900052..2dad465ecf 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -368,7 +368,7 @@ static void acpi_dsdt_add_power_button(Aml *scope)
- 
- /* RSDP */
- static void
--build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-+build_rsdp(GArray *rsdp_table, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
- {
-     AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
-     unsigned xsdt_pa_size = sizeof(rsdp->xsdt_physical_address);
-@@ -379,14 +379,14 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-                              true /* fseg memory */);
- 
-     memcpy(&rsdp->signature, "RSD PTR ", sizeof(rsdp->signature));
--    memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, sizeof(rsdp->oem_id));
-+    memcpy(rsdp->oem_id, rsdp_data->oem_id, sizeof(rsdp->oem_id));
-     rsdp->length = cpu_to_le32(sizeof(*rsdp));
--    rsdp->revision = 0x02;
-+    rsdp->revision = rsdp_data->revision;
- 
-     /* Address to be filled by Guest linker */
-     bios_linker_loader_add_pointer(linker,
-         ACPI_BUILD_RSDP_FILE, xsdt_pa_offset, xsdt_pa_size,
--        ACPI_BUILD_TABLE_FILE, xsdt_tbl_offset);
-+        ACPI_BUILD_TABLE_FILE, *rsdp_data->xsdt_tbl_offset);
- 
-     /* Checksum to be filled by Guest linker */
-     bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
-@@ -399,6 +399,20 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-         (char *)&rsdp->extended_checksum - rsdp_table->data);
- }
- 
-+static void
-+init_rsdp_data(AcpiRsdpData *data, const char *oem_id, uint8_t revision,
-+               unsigned *rsdt_offset, unsigned *xsdt_offset)
-+{
-+    /* Caller must provide an OEM ID */
-+    g_assert(oem_id);
-+    g_assert(strlen(oem_id) >= 6);
-+
-+    memcpy(data->oem_id, oem_id, 6);
-+    data->revision = revision;
-+    data->rsdt_tbl_offset = rsdt_offset;
-+    data->xsdt_tbl_offset = xsdt_offset;
-+}
-+
- static void
- build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-@@ -810,6 +824,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     GArray *table_offsets;
-     unsigned dsdt, xsdt;
-     GArray *tables_blob = tables->table_data;
-+    AcpiRsdpData rsdp;
- 
-     table_offsets = g_array_new(false, true /* clear */,
-                                         sizeof(uint32_t));
-@@ -857,7 +872,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-     build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
- 
-     /* RSDP is in FSEG memory, so allocate it separately */
--    build_rsdp(tables->rsdp, tables->linker, xsdt);
-+    init_rsdp_data(&rsdp, ACPI_BUILD_APPNAME6, ACPI_RSDP_REV_2,
-+                   NULL, &xsdt);
-+    build_rsdp(tables->rsdp, tables->linker, &rsdp);
- 
-     /* Cleanup memory that's no longer used. */
-     g_array_free(table_offsets, true);
+A guest Linux kernel does not seem to care about RSDP checksums, so
+those 2 fixes are mostly for correctness sake.
+Any machine type that generates rev2 RSDP will see its RSDP table
+modified but since x86 builds RSDP v1 and all ACPI tests only run on
+either pc or q35, the ACPI tests tables are not affected by this fix.
+
+The serie also extends the ARM virt ACPI RSDP build routine to support
+both RSDP v1 and v2, in order to share this code between x86 and
+aarch64. While extending, we also convert the routine to the latest
+build_append_foo() API. The new implementation is a closer reflection of
+the ACPI spec itself, is endian agnostic and allows for getting rid of the
+AcpiRsdpDescriptor structure.
+
+Igor Mammedov (2):
+  hw: arm: acpi: Fix incorrect checksums in RSDP
+  hw: i386: Use correct RSDT length for checksum
+
+Samuel Ortiz (6):
+  hw: acpi: The RSDP build API can return void
+  hw: arm: Carry RSDP specific data through AcpiRsdpData
+  hw: arm: Convert the RSDP build to the buid_append_foo() API
+  hw: arm: Support both legacy and current RSDP build
+  hw: acpi: Export and share the ARM RSDP build
+  hw: acpi: Remove AcpiRsdpDescriptor and fix tests
+
+ include/hw/acpi/acpi-defs.h | 44 ++++++++++++++------
+ include/hw/acpi/aml-build.h |  5 +++
+ tests/acpi-utils.h          |  5 ++-
+ hw/acpi/aml-build.c         | 81 +++++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c    | 35 ++--------------
+ hw/i386/acpi-build.c        | 31 ++------------
+ tests/acpi-utils.c          | 48 +++++++++++++++++-----
+ tests/bios-tables-test.c    | 27 +++++++++----
+ tests/vmgenid-test.c        |  8 ++--
+ 9 files changed, 193 insertions(+), 91 deletions(-)
+
 -- 
 2.19.1
 

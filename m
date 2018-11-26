@@ -1,87 +1,92 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5745607wrt;
-        Mon, 26 Nov 2018 07:48:24 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/U8DqEfnnFShgYBWJvkc9BSdyXL8PnnwJAnWSWRch3X7L2DIawAY9ikhiE/lNGtCjxYWxdg
-X-Received: by 2002:a25:ad4a:: with SMTP id l10-v6mr28601523ybe.10.1543247304134;
-        Mon, 26 Nov 2018 07:48:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543247304; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5746905wrt;
+        Mon, 26 Nov 2018 07:49:24 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/X9I20gsrdv5ZLVNSLw8kFJTNTEZ04NuAywPCvfN0uAnFu2w0W20fZLhOV24t29Gd91ZbfL
+X-Received: by 2002:a25:d843:: with SMTP id p64-v6mr28199467ybg.15.1543247364541;
+        Mon, 26 Nov 2018 07:49:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543247364; cv=none;
         d=google.com; s=arc-20160816;
-        b=VC0ko/F8pQHz25BkUO7Ebz6agpUy4TSXWWQqcR0xsGEtxofGON5LM2qlT18pIHwnk1
-         lJzbLIu2aKegA8h/DlA157QFsEKfmAi35Iyum2HBU5G+7wnXkux6M6v66lLT4UEPsCSw
-         SnDyJ40od8TzyxGYTykj/v3TlJh/Gw8rANM33uw9/gZ60Js/KALep16VjfPcKss2TmHb
-         3YpmVocJB3kZ/RToW8fhbKJzgTYinFfL8bTEvXDiCC80Eibbl+X+/X4CTYGroby3t+Rr
-         mMfaiBPsxcWScpqxjw8mCoRnb7Qq27xvRaCbZA6jS8m1FVN+p2pir1+ObYwWY5wgZBQa
-         O8jg==
+        b=IVAiUGjKNf/VGtPP3sLcfChhWSf5BJBwsBQWhf5fiIhreDCm+gU4rPjUr/7uNzbiiD
+         WymKqgRp2+4uQULUJ+qdfrqqpHsSRY1ORhjp6Oq4TOMH4ckZVbJbfSAimmvLqYwWFkYJ
+         duvkeg3okkmiPWKZA6TX2Q63YsTuYNM6CvCZepTClzjbbIeb5GfE3bJi9Fg6M9+V2uQy
+         hgK24mqviuH29oRhB6zPAQjIWfEFfesw7Jbkd/zzU1vEZruLx1s5zUbX8b/VYcFR2hbL
+         mw1GO8nktihjxr49AdBM7VI6J7Wo31ulpmrgh0xzxYm3GuX9zSPrWOD33YvsPLgfpUXg
+         M6nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=a22Efh3VWmrIv/mL2Fn7McCrW7sEvSi8YqsaRoZiYcI=;
-        b=NdIxLARDdx9QciD1aroSqSEUh2jXcw8m0ESpUSvSogg58zSHEv+plqBLBVNS+IKxR3
-         o1mjsv48kIjM7iPsU8SdHD4kk853rEDEGtal8bjpilll/+VODOuhb1DvTnkWodMO4mlr
-         fiMi2BTVDSLegCuCTNFAutDb+psNyNuZCrGGcM83X3zsEiu4iCIEokbmXCgrnO5L5ZcP
-         c+Y0mrekrIXGnrOh5nkw73RQ1qORxWij0KP1d1s2d0+P/J7FFGD359RHzPfDrJpMzrwc
-         EfeWPRO1Q8PLpRs2YlJNmUKoVymRgcLCp8ViQssjiOHDh5SHyABeVdcdrkmyysRTXUdY
-         PD0w==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=Pm6s4gtfEb6D3+afNA/XFB5S/QVMnMmAKjgqZ/uh4Wk=;
+        b=IQea2os1IEkj4PDS/ELRphn1RPARK7zh1XtC8z2GEPunJSbdbIRNHRATudsmoZkRaZ
+         nC+JicEU3PYZ4Jpe8trms/ecnUqAotmwMk/FfwHbsjgEbx0jIw1nA1M8zRqsNZLpmU5O
+         CFzyZjbui5rJPy+lgEqV+ZlBh0+XqD2jxsndxcuq1Kr4WAz1S6iiayq+MhXlHcbi5+9+
+         qfbHS3M4D0vkeCGDS+L8L4+WMiiLNF0XbX+A+vad2vgR6D10qJVjEuRuhCLOps/8ADwt
+         oCM6j9bZiWR5CrchtCErIRi5CeIeIrHwbZ/9Hhwo9J4S9K1hLfA2GuGoJkhD654LY0Hj
+         uHtw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id y1si496280ywf.391.2018.11.26.07.48.23
+        by mx.google.com with ESMTPS id u190si509306ywd.75.2018.11.26.07.49.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 07:48:24 -0800 (PST)
+        Mon, 26 Nov 2018 07:49:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37336 helo=lists.gnu.org)
+Received: from localhost ([::1]:37343 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRJ7X-00062v-KC
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 10:48:23 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53161)
+	id 1gRJ8V-0006l7-Vx
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 10:49:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53493)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gRJ7N-00061L-0a
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:48:14 -0500
+	(envelope-from <eric.auger@redhat.com>) id 1gRJ8H-0006jo-Il
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:49:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gRJ7H-00026U-4v
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:48:12 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43373)
+	(envelope-from <eric.auger@redhat.com>) id 1gRJ8G-0002Yg-C6
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 10:49:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:45070)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gRJ7E-0001si-AJ; Mon, 26 Nov 2018 10:48:04 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+	id 1gRJ8G-0002YP-3q; Mon, 26 Nov 2018 10:49:08 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4B2B1C01F621;
-	Mon, 26 Nov 2018 15:48:02 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D8C026269C;
-	Mon, 26 Nov 2018 15:47:53 +0000 (UTC)
-Date: Mon, 26 Nov 2018 16:47:51 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181126164751.4e304b46@redhat.com>
-In-Reply-To: <20181121232733.GC4450@caravaggio>
-References: <20181105014047.26447-1-sameo@linux.intel.com>
-	<20181105014047.26447-16-sameo@linux.intel.com>
-	<20181115142854.1c62f32f@redhat.com>
-	<20181121232733.GC4450@caravaggio>
+	by mx1.redhat.com (Postfix) with ESMTPS id 2EE48307D850;
+	Mon, 26 Nov 2018 15:49:07 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 26A1160141;
+	Mon, 26 Nov 2018 15:48:57 +0000 (UTC)
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>
+References: <20180921081819.9203-1-eric.auger@redhat.com>
+	<5FC3163CFD30C246ABAA99954A238FA8387E9A0C@FRAEML521-MBX.china.huawei.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <59dac012-ad90-8abe-b229-a7715ca6b561@redhat.com>
+Date: Mon, 26 Nov 2018 16:48:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA8387E9A0C@FRAEML521-MBX.china.huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 26 Nov 2018 15:48:02 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.48]);
+	Mon, 26 Nov 2018 15:49:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 15/24] hw: i386: Export the
- i386 ACPI SRAT build method
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage
+ VFIO integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,51 +98,149 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, "Michael
-	S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
-	Richard Henderson <rth@twiddle.net>
+Cc: "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+	"cdall@kernel.org" <cdall@kernel.org>, "mst@redhat.com" <mst@redhat.com>,
+	"jean-philippe.brucker@arm.com" <jean-philippe.brucker@arm.com>,
+	Linuxarm <linuxarm@huawei.com>, "peterx@redhat.com" <peterx@redhat.com>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"xuwei \(O\)" <xuwei5@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CtPmXPAg9D4X
+X-TUID: PEjQGtM8MMCE
 
-On Thu, 22 Nov 2018 00:27:33 +0100
-Samuel Ortiz <sameo@linux.intel.com> wrote:
+Hi Shameer,
 
-> On Thu, Nov 15, 2018 at 02:28:54PM +0100, Igor Mammedov wrote:
-> > On Mon,  5 Nov 2018 02:40:38 +0100
-> > Samuel Ortiz <sameo@linux.intel.com> wrote:
-> >   
-> > > This is the standard way of building SRAT on x86 platfoms. But future
-> > > machine types could decide to define their own custom SRAT build method
-> > > through the ACPI builder methods.
-> > > Moreover, we will also need to reach build_srat() from outside of
-> > > acpi-build in order to use it as the ACPI builder SRAT build method.  
-> > SRAT is usually highly machine specific (memory holes, layout, guest OS
-> > specific quirks) so it's hard to generalize it.  
-> Hence the need for an SRAT builder interface.
-so far builder interface (trying to generalize acpi_build()) looks
-not necessary.
-I'd suggest to drop and call build_start() directly.
-
-> > I'd  drop SRAT related patches from this series and introduce
-> > i386/virt specific SRAT when you post patches for it.  
-> virt uses the existing i386 build_srat() routine, there's nothing
-> special about it. So this would be purely duplicated code.
-Looking at build_srat(), it has a bunch of code to handle legacy
-PC layout. You probably don't need any of it for new is86/virt
-machine and can make simpler version of it.
-
-In addition (probably repeating question I've asked elsewhere),
-Do you have to use split initial memory model for new machine?
-Is it possible to use only pc-dimms both for initial and hotplugged memory
-at some address (4Gb?) without cutting out PCI hole or any toher holes in RAM layout?
-
-> Cheers,
-> Samuel.
+On 11/23/18 5:28 PM, Shameerali Kolothum Thodi wrote:
 > 
+> 
+>> -----Original Message-----
+>> From: Qemu-devel [mailto:qemu-devel-
+>> bounces+shameerali.kolothum.thodi=huawei.com@nongnu.org] On Behalf Of
+>> Eric Auger
+>> Sent: 21 September 2018 09:18
+>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+>> devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org
+>> Cc: yi.l.liu@intel.com; cdall@kernel.org; mst@redhat.com; jean-
+>> philippe.brucker@arm.com; peterx@redhat.com; alex.williamson@redhat.com
+>> Subject: [Qemu-devel] [RFC v2 00/28] vSMMUv3/pSMMUv3 2 stage VFIO
+>> integration
+>>
+> 
+> [...]
+> 
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/v3.0.0_2stage-rfc-v2
+>>
+>> Testing:
+>> - For testing use my kernel branch
+>>   https://github.com/eauger/linux/tree/v4.19-rc4-2stage-rfc-v2 [1]
+>> - Tested on Qualcomm HW with 1/2 assigned e1000e NICs. Hotplug
+>>   was also tested OK.
+>> - Known limitation:
+>>   - currently sending an NH_ASID command instead of NH_VA
+>>     upon guest NH_VA. This may cause important perf downgrade.
+>>     Propagating NH_VA does not work at the moment.
+> 
+> Hi Eric,
+> 
+> I had a  go with this RFC on one of our platform and noted that when the Guest 
+> boots with ACPI , the ping doesn't work with the assigned ixgbevf NIC though 
+> the network device gets detected and added to the iommu group. 
+> 
+> It's all fine when I boot the Guest with DT. Have you tested this with ACPI yet or
+> am I missing anything obvious here?
 
+I just submitted the following QEMU patch:
+
+[PATCH for-3.1] hw/arm/virt-acpi-build: Fix SMMUv3 ACPI integration
+
+Please can you apply it and test it?
+
+Thank you in advance
+
+Best Regards
+
+Eric
+> 
+> Please let me know.
+> 
+> Thanks,
+> Shameer
+>  
+>> References:
+>> - [1] [RFC v2 00/20] SMMUv3 Nested Stage Setup
+>>   (https://lkml.org/lkml/2018/9/18/1087)
+>>   The User API still is unstable and under discussion.
+>>
+>> History:
+>> v1 -> v2:
+>> - Fixed dual assignment (asid now correctly propagated on TLB invalidations)
+>> - Integrated fault reporting
+>>
+>> Next Steps:
+>> - Mature the user API with people involved in SVA work (KVM forum may be a
+>>   good opportunity to meet)
+>> - Submit the IOMMU cfg notifier changes and some VFIO changes separately,
+>> to
+>>   progress independently on the kernel dependency
+>>
+>> Eric Auger (28):
+>>   hw/arm/smmu-common: Fix the name of the iommu memory regions
+>>   hw/arm/smmuv3: fix eventq recording and IRQ triggerring
+>>   update-linux-headers: Import iommu.h
+>>   linux-headers: Partial header update
+>>   memory: add IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
+>>   hw/arm/smmuv3: Implement get_attr API to report
+>> IOMMU_ATTR_VFIO_NESTED
+>>   hw/vfio/common: Refactor container initialization
+>>   hw/vfio/common: Force nested if iommu requires it
+>>   memory: Introduce IOMMUIOLTBNotifier
+>>   memory: rename memory_region notify_iommu, notify_one
+>>   memory: Add IOMMUConfigNotifier
+>>   memory: Add arch_id in IOTLBEntry
+>>   hw/arm/smmuv3: Store s1ctrptr in translation config data
+>>   hw/arm/smmuv3: Implement dummy replay
+>>   hw/arm/smmuv3: Notify on config changes
+>>   hw/arm/smmuv3: Fill the IOTLBEntry arch_id on NH_VA invalidation
+>>   hw/vfio/common: Introduce vfio_alloc_guest_iommu helper
+>>   hw/vfio/common: Introduce vfio_dma_(un)map_ram_section helpers
+>>   hw/vfio/common: Register specific nested mode notifiers and
+>>     memory_listener
+>>   hw/vfio/common: Register MAP notifier for MSI binding
+>>   target/arm/kvm: Notifies IOMMU on MSI stage 1 binding
+>>   vfio/pci: Always set up MSI route before enabling vectors
+>>   hw/arm/smmuv3: Remove warning about unsupported MAP notifiers
+>>   memory: Introduce IOMMU_NOTIFIER_INIT_CFG IOMMU Config Notifier
+>>   memory: Introduce IOMMU Memory Region inject_faults API
+>>   hw/vfio/common: Handle fault_handler
+>>   hw/arm/smmuv3: Init fault handling
+>>   hw/arm/smmuv3: Implement fault injection
+>>
+>>  exec.c                          |  12 +-
+>>  hw/arm/smmu-common.c            |  12 +-
+>>  hw/arm/smmuv3-internal.h        |  26 +-
+>>  hw/arm/smmuv3.c                 | 189 +++++++--
+>>  hw/i386/intel_iommu.c           |  16 +-
+>>  hw/misc/tz-mpc.c                |   8 +-
+>>  hw/ppc/spapr_iommu.c            |   2 +-
+>>  hw/s390x/s390-pci-inst.c        |   4 +-
+>>  hw/vfio/common.c                | 666 ++++++++++++++++++++++++--------
+>>  hw/vfio/pci.c                   |   1 +
+>>  hw/vfio/trace-events            |   4 +-
+>>  hw/virtio/vhost.c               |  12 +-
+>>  include/exec/memory.h           | 140 +++++--
+>>  include/hw/arm/smmu-common.h    |   1 +
+>>  include/hw/vfio/vfio-common.h   |   1 +
+>>  linux-headers/linux/iommu.h     | 237 ++++++++++++
+>>  linux-headers/linux/vfio.h      |  48 +++
+>>  memory.c                        |  66 +++-
+>>  scripts/update-linux-headers.sh |   2 +-
+>>  target/arm/kvm.c                |  46 +--
+>>  20 files changed, 1206 insertions(+), 287 deletions(-)
+>>  create mode 100644 linux-headers/linux/iommu.h
+>>
+>> --
+>> 2.17.1
+>>
+> 
+> 

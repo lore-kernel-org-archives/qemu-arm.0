@@ -1,83 +1,83 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5412631wrt;
-        Mon, 26 Nov 2018 03:34:36 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XVc+zE0UA3+yi0QdYFQPmzHp9VQm5Ubzh9wDcVnX27h3Bgw3Ma2Xh7v4UfefHBC41jJ0eY
-X-Received: by 2002:a25:8809:: with SMTP id c9-v6mr14079701ybl.322.1543232076860;
-        Mon, 26 Nov 2018 03:34:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543232076; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5415284wrt;
+        Mon, 26 Nov 2018 03:37:00 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/X0owZJsTcxsljSgoxp7FbqQ0V650mQywjXARb2hKS7+ljRXYEJ2AuOrnrdHvDbZeqdwPxC
+X-Received: by 2002:a25:6ec1:: with SMTP id j184-v6mr18391481ybc.190.1543232220905;
+        Mon, 26 Nov 2018 03:37:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543232220; cv=none;
         d=google.com; s=arc-20160816;
-        b=O0may2Vsja5sPNGFjvbhlflcHT7HHB0fWWhWnTlkQWlniHiLx8aYv8E2H6TG63X3uo
-         jxI0TynYBdgUmmZI7RhkUccIIUR0DVnKhIe27ChzQBDvl9g8418hoREZftOpJoCnMAQS
-         anGSTFkU8+v1PoId/5oA6CDLNZd4CK2MOFKKqU9aGOzq4RbeqYMyQOuSsPEhGN+OkSw3
-         Jj+RWlwBbN+PcL+fgpo5st+eTdHG5bSn9PdHjBdwOyK0tLLzfwRoyZsS3lrHubEnBZTi
-         HTzqSLrDlQsa7FEzOS1uDf9mWQWA+aCCCioiUNC85l8j+qrvEMpbGOCDv10GhitrB7VQ
-         P0wA==
+        b=VO62y2kwELf4q94NxoAYO0yJSu9Ybg1teOrJgote8t3nevGASHLrD29DO1ODdpgluq
+         LqdWSBsSK/TMCESZRUtBA4sgmiqn/xqVHi78Zw/NcxvpTCt/urGKG3hqPR1olJ464GdA
+         2ZBC11xRQ656x8RCLLBMDoZ+flmHwp/DxEk+SX8m1Ift4xpw3uGq26/KV18l3ygsvGVy
+         PCWoj/1NcP9C9xGq4pUNYbHPNfz+xQe1FnCe/FsF1waJeTya3Sbz3PA/XF36gFXdXBt2
+         WfTw9/c8a3wQvGOFGkEGz7rp6eGSSuGVt/W+7ljsFECdQY/8OJWkazBi6fKYbCGlWN7A
+         9kXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=gq/FE9HfbLNYJOzjxZPi46LwEmhOmPTVZyO9wCAnN84=;
-        b=FP8Wxzd72jmoAcpQGD897I5GpcozsNU09L3STBVY6vtwLKN7vSRrRsR+N25tCXeNGb
-         +Vk2zISMlXUytbEdPj1iF6MPCo9TRWpn88RoB7Qs2AJUzGGbpJvt8NwvYNIuvU2f5bCT
-         c/MokYxbyEOaDa873xrwt/IOFeDm5PrcK5ltGzZGB7OhQEF6dqPjtFcW1fxpncaVEeTF
-         AiowymvDacCiClwiDmd5PM4JUYCeS39XillyvN/PxVFEEGWqsJKERNx57kd2QAUDk3jK
-         P5+U0eI82aiKdsiP96GlRSIpRDIzRxx1K5erFYdhYIBO0u5YzERbCnN4X2IdBIJcqK5g
-         lSBg==
+        bh=Wq79JkNsK9BzSo3es+wXSrU8W8euvYGvlwvPQzQfWjw=;
+        b=jgg7eJeaz2zwPQrLQ2w1aO1H7/oSt5yUgat1uaR5wUcoW7vkkH9UrQ7OvaDdtQ/vCv
+         2uN02Hbvz1cXfcHrpqe7o6EDJQKt+Q5pxjzPRhCiYl+eNH3hh40MPXRCnmRzHTifJe5i
+         6Tc5iyUplDyU7QGfabDME3d/uNPSQgbIkgATWsOCk5zjgP+HId4p6cKmH+30S7S3mu8u
+         Um8PXiTaa3/G3TQXGJeFBz0QRm6jSbHBN/1wbNOnHBTEfldLSA178NpNWbPJq1kU/MCi
+         yalNgFmWRUY6NPeUGxjGp9nydA4IbpZdKDN0ZPK7K2K0mXqiWPLStwulUJSF+km5mL/O
+         Vhfw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d201si43321ywe.22.2018.11.26.03.34.36
+        by mx.google.com with ESMTPS id q68-v6si23439ybq.351.2018.11.26.03.37.00
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 03:34:36 -0800 (PST)
+        Mon, 26 Nov 2018 03:37:00 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35273 helo=lists.gnu.org)
+Received: from localhost ([::1]:35289 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRF9w-00012q-3a
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 06:34:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56802)
+	id 1gRFCG-00031M-BP
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 06:37:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gRF8d-0000Em-Vx
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 06:33:18 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gRF8f-0000Gs-LT
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 06:33:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peng.hao2@zte.com.cn>) id 1gRF8c-0001vd-4U
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 06:33:15 -0500
-Received: from mxhk.zte.com.cn ([63.217.80.70]:39722)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gRF8c-0001wN-GR
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 06:33:17 -0500
+Received: from mxhk.zte.com.cn ([63.217.80.70]:51844)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
-	id 1gRF8Y-0001ro-Ds; Mon, 26 Nov 2018 06:33:12 -0500
+	id 1gRF8c-0001sk-1Y; Mon, 26 Nov 2018 06:33:14 -0500
 Received: from mse01.zte.com.cn (unknown [10.30.3.20])
-	by Forcepoint Email with ESMTPS id 3B39AD33C8E1A9C43870;
-	Mon, 26 Nov 2018 19:33:08 +0800 (CST)
+	by Forcepoint Email with ESMTPS id BF8A77ACFB77BA1B9DC7;
+	Mon, 26 Nov 2018 19:33:09 +0800 (CST)
 Received: from notes_smtp.zte.com.cn ([10.30.1.239])
-	by mse01.zte.com.cn with ESMTP id wAQBX1Vl031808;
-	Mon, 26 Nov 2018 19:33:01 +0800 (GMT-8)
+	by mse01.zte.com.cn with ESMTP id wAQBX23j031826;
+	Mon, 26 Nov 2018 19:33:02 +0800 (GMT-8)
 	(envelope-from peng.hao2@zte.com.cn)
 Received: from localhost.localdomain.localdomain ([10.74.120.59])
 	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
-	with ESMTP id 2018112619330892-13057786 ;
-	Mon, 26 Nov 2018 19:33:08 +0800 
+	with ESMTP id 2018112619330992-13057794 ;
+	Mon, 26 Nov 2018 19:33:09 +0800 
 From: Peng Hao <peng.hao2@zte.com.cn>
 To: peter.maydell@linaro.org, drjones@redhat.com, philmd@redhat.com
-Date: Tue, 27 Nov 2018 03:56:00 +0800
-Message-Id: <1543262162-6351-8-git-send-email-peng.hao2@zte.com.cn>
+Date: Tue, 27 Nov 2018 03:56:01 +0800
+Message-Id: <1543262162-6351-9-git-send-email-peng.hao2@zte.com.cn>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1543262162-6351-1-git-send-email-peng.hao2@zte.com.cn>
 References: <1543262162-6351-1-git-send-email-peng.hao2@zte.com.cn>
 X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
-	8.5.3FP6|November 21, 2013) at 2018-11-26 19:33:08,
+	8.5.3FP6|November 21, 2013) at 2018-11-26 19:33:10,
 	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
-	2016) at 2018-11-26 19:33:00,
-	Serialize complete at 2018-11-26 19:33:00
-X-MAIL: mse01.zte.com.cn wAQBX1Vl031808
+	2016) at 2018-11-26 19:33:01,
+	Serialize complete at 2018-11-26 19:33:01
+X-MAIL: mse01.zte.com.cn wAQBX23j031826
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 63.217.80.70
-Subject: [Qemu-arm] [PATCH V9 7/9] hw/misc/pvpanic: preparing for adding
- configure interface
+Subject: [Qemu-arm] [PATCH V9 8/9] hw/misc/pvpanic: realize the configure
+ interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,81 +92,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BJ0RcD58LsT3
+X-TUID: dW/wfD+7NZwq
 
-Prepare for pvpanic-mmio configure interface.
+Add configure interface for pvpanic-mmio. In qemu command line
+use -device pvpanic-mmio to enable the device.
 
 Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
 ---
- hw/arm/sysbus-fdt.c |  2 ++
- hw/arm/virt.c       |  1 +
- hw/misc/pvpanic.c   | 10 +++++++++-
- 3 files changed, 12 insertions(+), 1 deletion(-)
+ hw/arm/virt-acpi-build.c | 4 +++-
+ hw/arm/virt.c            | 9 ++++-----
+ hw/misc/pvpanic.c        | 1 +
+ 3 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index ad698d4..34577f3 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -38,6 +38,7 @@
- #include "hw/vfio/vfio-amd-xgbe.h"
- #include "hw/display/ramfb.h"
- #include "hw/arm/fdt.h"
-+#include "hw/misc/pvpanic.h"
- 
- /*
-  * internal struct that contains the information to create dynamic
-@@ -459,6 +460,7 @@ static const BindingEntry bindings[] = {
-     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
- #endif
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-+    TYPE_BINDING(TYPE_PVPANIC_MMIO, no_fdt_node),
-     TYPE_BINDING("", NULL), /* last element */
- };
- 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 2adba60..50cea23 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -785,7 +785,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+     acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+-    acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
++    if (pvpanic_mmio()) {
++        acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
++    }
+     acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f2cb5de..bb756a6 100644
+index bb756a6..fcaa597 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1783,6 +1783,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_PVPANIC_MMIO);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-     mc->block_default_type = IF_VIRTIO;
-     mc->no_cdrom = 1;
+@@ -197,8 +197,6 @@ static void create_pvpanic_device(const VirtMachineState *vms)
+      hwaddr base = vms->memmap[VIRT_PVPANIC].base;
+      hwaddr size = vms->memmap[VIRT_PVPANIC].size;
+ 
+-     sysbus_create_simple(TYPE_PVPANIC_MMIO, base, NULL);
+-
+      nodename = g_strdup_printf("/pvpanic-mmio@%" PRIx64, base);
+      qemu_fdt_add_subnode(vms->fdt, nodename);
+      qemu_fdt_setprop_string(vms->fdt, nodename,
+@@ -1329,6 +1327,9 @@ void virt_machine_done(Notifier *notifier, void *data)
+     struct arm_boot_info *info = &vms->bootinfo;
+     AddressSpace *as = arm_boot_address_space(cpu, info);
+ 
++    if (pvpanic_mmio()) {
++        create_pvpanic_device(vms);
++    }
+     /*
+      * If the user provided a dtb, we assume the dynamic sysbus nodes
+      * already are integrated there. This corresponds to a use case where
+@@ -1548,9 +1549,7 @@ static void machvirt_init(MachineState *machine)
+                                          machine->ram_size);
+     memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base, ram);
+ 
+-    create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+-
+-    create_pvpanic_device(vms);
++    create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
+ 
+     create_gic(vms, pic);
+ 
 diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
-index c9382a8..08263ed 100644
+index 08263ed..f199173 100644
 --- a/hw/misc/pvpanic.c
 +++ b/hw/misc/pvpanic.c
-@@ -67,7 +67,7 @@ typedef struct PVPanicISAState {
- typedef struct PVPanicMMIOState {
-     SysBusDevice parent_obj;
-     /*<private>*/
--
-+    uint32_t base;
-     /* public */
-     MemoryRegion mr;
- } PVPanicMMIOState;
-@@ -151,10 +151,18 @@ static void pvpanic_mmio_initfn(Object *obj)
+@@ -149,6 +149,7 @@ static void pvpanic_mmio_initfn(Object *obj)
+     memory_region_init_io(&s->mr, OBJECT(s), &pvpanic_ops, s,
+                           TYPE_PVPANIC_MMIO, 2);
      sysbus_init_mmio(sbd, &s->mr);
++    sysbus_mmio_map(sbd, 0, s->base);
  }
  
-+static Property pvpanic_mmio_properties[] = {
-+    DEFINE_PROP_UINT32("mmio", PVPanicMMIOState, base, 0x09070000),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+
- static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->user_creatable = true;
-+    dc->props = pvpanic_mmio_properties;
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
+ static Property pvpanic_mmio_properties[] = {
 -- 
 1.8.3.1
 

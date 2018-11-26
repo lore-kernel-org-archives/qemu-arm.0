@@ -1,85 +1,94 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5557877wrt;
-        Mon, 26 Nov 2018 05:27:16 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/V6ntn+FzbIkyHxVfR6N8j3+Xa/BqO4Q2D0a04IAjAJ7lgpG/d7KHoCduDOvsBIAbInVfGN
-X-Received: by 2002:a81:ec0f:: with SMTP id j15mr19376449ywm.214.1543238836478;
-        Mon, 26 Nov 2018 05:27:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543238836; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp5576709wrt;
+        Mon, 26 Nov 2018 05:41:41 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WKVkVFoNoRafTmZb+23gtqR+2TD32YgP1HTCaioIp/hrGXaqWzA+gQqJ2snBQpoeNJkxGO
+X-Received: by 2002:a0d:c045:: with SMTP id b66mr14091384ywd.321.1543239701523;
+        Mon, 26 Nov 2018 05:41:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543239701; cv=none;
         d=google.com; s=arc-20160816;
-        b=oRD7MxwbB3QXiOIfB6jmfSFMwCwNXdmXohtIRYMnLJT6fNC/bXptnu8Md+6cS2ckda
-         7E/QFKuTi4CfquAi32mdsJw31LwBcthq5fE3BbFhUpW7hjdSZsyN9BtXfxpt3vmTUlDl
-         sh73CNLTfpZCDPc1qYvQR/IbclKprvFBNPB38B7Uft9cYHhXrEK5rk/blVVTryBzQDix
-         Gk+UC3isv6lWBraGRHCqNdtsJ8C2aw3vsn1/Hd+1E0eokO9zogeyLtYmKeQEB9lhRiq1
-         9vjb75m5ICuvzPAw0SZO7O1QzceLLyvzVf+kNaVgn8dnmAkIlIaH1n+1m6fvo5PwkV8n
-         c6hw==
+        b=ayB3t7pKP7ERd+RsloGTxv4FrXB/g9o9oXRLJVWMkMZIvcuudSlVbVJIQnkFnao5kh
+         3LVw8uqwKvBmmmRq0jPQBIptgNnFj/l92kf4GL1euEyPGqvmd1yxCaQ2/TvnM9mVJD8V
+         PuKexPLmAJApibLoYlJEPP90ZZO+RzCx4hl/KLpnJ7xcTqTarYWJl4Whs5YlKPzY+UDk
+         AgjYRvNqnafKMB2mHI5wONoxw3w4ZdYKPdiHVnS9aFofSBxgCjLdnnz/mx+lVUue3f5H
+         JX3De64kHeytwDArGKkMMcOX4QucQZHEwv+otfNxQ6OJ/d0toVfodvUK6VaXf4rL3Gi+
+         rKdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=RhS2s6xxI9YoGo2pgFI5LT/bkTJlci9yyC4M+lzCe2A=;
-        b=fZmbYOgdeYaZIpZBRIUZzCiNr97aWXNDaJHLjajjx8grOfU8GPHIwhhxucLVgR6xIf
-         uLlvgorJxF8w9EgSGyy49GhASzMdkBBV9KgREZynW+wcZps3ggAgQ4vTwy9Jftb9yYxK
-         ZVJzqgquV+Sa6ybxgccypI1W34NjihtLOjT9Vo055Q3fYtXGzeuXIUGYlociLyaS/rxI
-         VwPHMbjnqPdiCbnvwWmAKGcGE4UmEXhRorZOSxxuLFb4LJqZXmjy44Edw4VJeQ2Z8LW8
-         6gvi2mbrspCM2LCl48t6KL00mtWVnuULyRK9YFteb9RWWA+6cwtDqO/WOI9EfC8wzHtJ
-         Jodg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=fQx4DgoOuteqpXCW4Q8FGi049W7pdtl9K1PlipSu/1o=;
+        b=sWuD1e7mv/24wVhCtJWVJCo4OUxg2D+qQKJURE10eWqmTvNIAJIPPCqTv6Ec5mh0p5
+         5y955jtf+5tExvaNgo2Bq3Az8srCmJHyEW0lPuvOCLUtXVSg84VDoy9LCr9XeI4UBllA
+         dlLJizYKz2/6rMaSH6xdKBkNYo6MTXq9e3ms3UVI4BQeSEEoyPW2OVNJk0KoCfFSMN2N
+         00fsQXynRyFMLOvx61SVl0OaVz9Dlu41ZMZyELfCdq93q8eDsyWbf+Hv3KIRwcgoDBk+
+         tpNKuO5ad7KzwidNVjj4nu5uxolR6Y5VQ4B1aGwsvwxEtw9nMeltppXc2uPDa1TZG9ju
+         N8hA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EMu+DQlm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id s184-v6si255436ybb.25.2018.11.26.05.27.16
+        by mx.google.com with ESMTPS id o79-v6si283359ybg.10.2018.11.26.05.41.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 05:27:16 -0800 (PST)
+        Mon, 26 Nov 2018 05:41:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EMu+DQlm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35945 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36016 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRGux-0002LZ-S0
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 08:27:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60123)
+	id 1gRH8v-0000aP-0l
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 08:41:41 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37510)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gRGoz-0005Ai-DS
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 08:21:12 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gRH8i-0000aG-IQ
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 08:41:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gRGou-00087Y-C3
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 08:21:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47466)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gRGou-00086t-4z; Mon, 26 Nov 2018 08:21:00 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 037603154862;
-	Mon, 26 Nov 2018 13:20:59 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DA64B1F8;
-	Mon, 26 Nov 2018 13:20:47 +0000 (UTC)
-Date: Mon, 26 Nov 2018 14:20:46 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>
-Message-ID: <20181126142046.07c5e227@redhat.com>
-In-Reply-To: <20181107123652.23417-11-marcandre.lureau@redhat.com>
-References: <20181107123652.23417-1-marcandre.lureau@redhat.com>
-	<20181107123652.23417-11-marcandre.lureau@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gRH8h-0008Bm-RZ
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 08:41:28 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:44498)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gRH8h-0008BA-EM
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 08:41:27 -0500
+Received: by mail-oi1-x242.google.com with SMTP id m6so4146331oig.11
+	for <qemu-arm@nongnu.org>; Mon, 26 Nov 2018 05:41:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=fQx4DgoOuteqpXCW4Q8FGi049W7pdtl9K1PlipSu/1o=;
+	b=EMu+DQlm58SVGF8D2iSVNPSDSRSaFYnd963diwoPbR3UCunEAMe2ZX4RVVxd/+4/q/
+	1KONUQMlmm7n7icvIQ+6do0+lhOYF6lOJHyqqzFJEvoFLuAsOVCqSPu9kRxq1xbju3uG
+	gwbbMWon2KGgtFNHA8iGlu55T7pvHPGMmmtvA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=fQx4DgoOuteqpXCW4Q8FGi049W7pdtl9K1PlipSu/1o=;
+	b=dXMn2Qq7MvhFMya510FMX1PMKv7Qdn57z7y8LhgFEo22zCqHTJVLTKYgjHk7gfO2Pc
+	MkH5C9ZsMFp5PUxKrDqwnqexjTqo0NSAUAiAtZGW8187mqavgaHbRs/KN68ocRqHD62Q
+	efvpoYx1yXoLGlUpax3g1IHSkW+Z1K7Uv89lJwPUuAFkSBz7hQtvG30iv1qT7NsqyIeG
+	jytiAN6bajJQr0eoJhI/7RkAIdPlS9PfPOmimT6rhroC4YJ9VBGNpgAqixLqCOQ3K72E
+	dl8YkvogssuxRpjDi5+luxbnQMaWDwMPrNJymW4DZUOKhLIOki1wSHOGLl83ixIkL+PJ
+	S1OQ==
+X-Gm-Message-State: AGRZ1gLodHQyYr+dmQJjxmXL9eE0RaHZPTLLGdLN3zcSGKtuPGLMkTgB
+	4yiHXY2fQ54DTRRQerWbbyvPvApJxvIEGmqM3XTy5g==
+X-Received: by 2002:aca:c501:: with SMTP id v1mr14308739oif.48.1543239686668; 
+	Mon, 26 Nov 2018 05:41:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Mon, 26 Nov 2018 13:20:59 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-3.2 v3 10/14] qdev-props: call
- object_apply_global_props()
+References: <20181122180143.14237-1-eric.auger@redhat.com>
+In-Reply-To: <20181122180143.14237-1-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 26 Nov 2018 13:41:15 +0000
+Message-ID: <CAFEAcA-dFhqCOdp=FHVO1+2kZXS9-jPHcRXfRLpiaYs1jEExLg@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-arm] [PATCH for-3.1] MAINTAINERS: Add an ARM SMMU section
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,92 +100,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Corey Minyard <minyard@acm.org>, Amit Shah <amit@kernel.org>,
-	=?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org, dgilbert@redhat.com, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>,
-	Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6o9ZLKmwXIJX
+X-TUID: +ep4GNrUXR50
 
-On Wed,  7 Nov 2018 16:36:48 +0400
-Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
-
-> It's now possible to use the common function.
->=20
-> Teach object_apply_global_props() to warn if Error argument is NULL.
->=20
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+On Thu, 22 Nov 2018 at 18:01, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Add a new ARM SMMU section and set Eric Auger as the maintainer
+> for ARM SMMU emulation sources.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/core/qdev-properties.c | 24 ++----------------------
->  qom/object.c              |  6 +++++-
->  2 files changed, 7 insertions(+), 23 deletions(-)
->=20
-> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-> index 8728cbab9f..239535a4cb 100644
-> --- a/hw/core/qdev-properties.c
-> +++ b/hw/core/qdev-properties.c
-> @@ -1223,28 +1223,8 @@ int qdev_prop_check_globals(void)
-> =20
->  void qdev_prop_set_globals(DeviceState *dev)
->  {
-> -    int i;
-> -
-> -    for (i =3D 0; i < global_props()->len; i++) {
-> -        GlobalProperty *prop;
-> -        Error *err =3D NULL;
-> -
-> -        prop =3D g_array_index(global_props(), GlobalProperty *, i);
-> -        if (object_dynamic_cast(OBJECT(dev), prop->driver) =3D=3D NULL) {
-> -            continue;
-> -        }
-> -        prop->used =3D true;
-> -        object_property_parse(OBJECT(dev), prop->value, prop->property, =
-&err);
-> -        if (err !=3D NULL) {
-> -            error_prepend(&err, "can't apply global %s.%s=3D%s: ",
-> -                          prop->driver, prop->property, prop->value);
-> -            if (!dev->hotplugged) {
-> -                error_propagate(&error_fatal, err);
-> -            } else {
-> -                warn_report_err(err);
-> -            }
-> -        }
-> -    }
-> +    object_apply_global_props(OBJECT(dev), global_props(),
-> +                              dev->hotplugged ? NULL : &error_fatal);
-arguably, it's up to caller to decide it warn or not.
-I'd leave it warning code out of object_apply_global_props() and let caller=
- do the job
+>  MAINTAINERS | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1032406c56..3cac9f0a0c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -151,6 +151,13 @@ F: disas/arm.c
+>  F: disas/arm-a64.cc
+>  F: disas/libvixl/
+>
+> +ARM SMMU
+> +M: Eric Auger <eric.auger@redhat.com>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/arm/smmu*
+> +F: include/hw/arm/smmu*
+> +
+>  CRIS
+>  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+>  S: Maintained
 
->  }
-> =20
->  /* --- 64bit unsigned int 'size' type --- */
-> diff --git a/qom/object.c b/qom/object.c
-> index 9acdf9e16d..b1a7f70550 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -392,7 +392,11 @@ void object_apply_global_props(Object *obj, GArray *=
-props, Error **errp)
->          if (err !=3D NULL) {
->              error_prepend(&err, "can't apply global %s.%s=3D%s: ",
->                            p->driver, p->property, p->value);
-> -            error_propagate(errp, err);
-> +            if (errp) {
-> +                error_propagate(errp, err);
-> +            } else {
-> +                warn_report_err(err);
-> +            }
->          }
->      }
->  }
+Applied to target-arm.next, thanks.
 
+-- PMM

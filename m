@@ -1,84 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1044682wrt;
-        Tue, 27 Nov 2018 01:44:15 -0800 (PST)
-X-Google-Smtp-Source: AJdET5cjQtmvzvF3nQbVehTXsmdwSVFeLfnsvA/ZeKLTkisU/jPpDeIp78nmq4FjX6ZpzRxxEMLE
-X-Received: by 2002:a81:99d6:: with SMTP id q205mr33263755ywg.106.1543311855654;
-        Tue, 27 Nov 2018 01:44:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543311855; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1045477wrt;
+        Tue, 27 Nov 2018 01:45:14 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XiFzM1gMmXDvZGBqepnGzRXct/xXXr04kWjVYqoPEJt/kAYDCp7y2pfQ7DpoRFYk/fhVV3
+X-Received: by 2002:a81:e903:: with SMTP id d3mr22578077ywm.53.1543311913994;
+        Tue, 27 Nov 2018 01:45:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543311913; cv=none;
         d=google.com; s=arc-20160816;
-        b=WFX/n/fQ3qgMKY0AEVgUmVq34HCYBAoe5WqgBcd4a1yplacjLkn2fb3DTbNLSL6KXS
-         krhEd/iVb2PTOt40o4r+vXo2GsRooeiTGflsMyjQqy+10zp9Kvbva1u0+43/z9vMLRlF
-         4D1YP1HKN+a5rnyXKnEw1w2d2bS2VTPMvEWTMfWPupvKRUPv+sOLI8E2082XUiB6NjTH
-         F+3St9E60KMqkQDe+uZd1ZyW3vagG4Cn77k9bRET3HaT4Tf0uFi207xYV3zjhsnIZFFM
-         e77+S7hYlP6hH5DrYm5PejrVq6bz5Vawf9P9wjavJDG6pgUPc8HV2NVhuLIFCjAVUP0M
-         XKFA==
+        b=tSaPEEZIqQ9MbLRZh26QTZ3nGPjVVYaqghsTjBLRbgHYz8d0pKzYj6Vcv7d+h4EW68
+         CPIkmaEB5dfzByekaMGd/TgBD+rCX1O2QfQcQ87wJyJZT0KMbdCZsI2GDvSFKWcGvkRe
+         w63y2+rQqBU4O7M/DG8VIUmWFFvSmuiCAsQpDIj001W3WEmC/hdzLvitxGEN+seqVkCS
+         BFkNMg1/rTP8J03oNCpZf5Xe+7RyBTJqNYVijAZPxgkZYz2vakmWYaIrGKIGLiYYVAOa
+         ZgU1DowCVgzf989SX2Kpe/UQ9iQhhrS2tv0RDmCpmFUDsuKma3agK2GZ+j8XZnObZXPx
+         IMmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=B0gAPNOGUNksF41Ib/lxSAC2ZMRbeD+VVJTNzQyDp+4=;
-        b=VZYlP2r56ekgSUSzakF0qrq0vNd9CpUFztUVrp3gc04uD7sQTlgMotvIJCQYc82cVy
-         eVJtglonRAxxGZaKMz5Ga+Yl+xfqf/oHBDKL9vBozALeBX3tcrB+Rfh5ekhPGr1vl2X3
-         RUHkYWf4KaTz5aMLeM8oTBdf2p2C9cYS+p28uQES9aFYUD0nlfSiUtriEt1UJzq7HJZS
-         ehmSxYSpxqUxJurA96zQ92ZkR12d8wz4zJ27i92XiNR9rtn1YL7y1VOR88TaF15kJNth
-         j++KjYRaqANUsWmqhJChBeXMnL7jD6MPtgsGf4OFg/rYogr5K7hbwKw/Thdlf+fpmzZh
-         HxSw==
+        bh=to0lLBaQMWzlVE0OTn0r23vj5BmKGN5S6J4WQXZz0bw=;
+        b=J140ebYV4p9miPLBg32tPlX2HC/tVzc5JoOIWp7cSHyz1/YuhbVPMYGiGuf3nysex+
+         L0u9ITDmB22SgRMUAyePNdzSR9B1dje37qMtalas5hF++Do0e3KH2P5rqYHL8G6IxwQy
+         fdi5+2Uy2NEmmNS+m+Os/yGWuhN/yJfFp2Y3NUb0GVay3iYr/DSc66W2yc7ax5UkwjeB
+         afPI75hBrDiy2xx+eBXZA2kwjr4v0/asjwUfWPJ57XJuNM/VOQgOKElJf5UuvVxRURr4
+         YEmanA6gudYsAXPwS711bislIi/pT3eqXqXkcTHhcq/mweFs+952UjjPPnZlZo33dffa
+         4ylA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id f125si2264596ywa.280.2018.11.27.01.44.15
+        by mx.google.com with ESMTPS id h17-v6si2203905ybq.22.2018.11.27.01.45.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Nov 2018 01:44:15 -0800 (PST)
+        Tue, 27 Nov 2018 01:45:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40930 helo=lists.gnu.org)
+Received: from localhost ([::1]:40941 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRZug-0000Td-VI
-	for alex.bennee@linaro.org; Tue, 27 Nov 2018 04:44:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47725)
+	id 1gRZvd-0001CB-DQ
+	for alex.bennee@linaro.org; Tue, 27 Nov 2018 04:45:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48312)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gRZhf-0004LS-O9
-	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 04:30:51 -0500
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gRZiw-0005JB-Dt
+	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 04:32:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@redhat.com>) id 1gRZhc-00063v-5c
-	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 04:30:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35316)
+	(envelope-from <marcandre.lureau@redhat.com>) id 1gRZit-0006bK-9y
+	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 04:32:06 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50336)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
-	id 1gRZhb-0005zK-UO; Tue, 27 Nov 2018 04:30:44 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	id 1gRZit-0006bC-55; Tue, 27 Nov 2018 04:32:03 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 078083082A46;
-	Tue, 27 Nov 2018 09:30:43 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7791B3138B83;
+	Tue, 27 Nov 2018 09:32:02 +0000 (UTC)
 Received: from localhost (ovpn-112-28.ams2.redhat.com [10.36.112.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9F1C0101E597;
-	Tue, 27 Nov 2018 09:30:10 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7B9385D6A9;
+	Tue, 27 Nov 2018 09:32:01 +0000 (UTC)
 From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 27 Nov 2018 13:27:49 +0400
-Message-Id: <20181127092801.21777-17-marcandre.lureau@redhat.com>
+Date: Tue, 27 Nov 2018 13:28:00 +0400
+Message-Id: <20181127092801.21777-28-marcandre.lureau@redhat.com>
 In-Reply-To: <20181127092801.21777-1-marcandre.lureau@redhat.com>
 References: <20181127092801.21777-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Tue, 27 Nov 2018 09:30:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Tue, 27 Nov 2018 09:32:02 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH for-3.2 v4 16/28] hw: apply machine compat
- properties without touching globals
+Subject: [Qemu-arm] [PATCH for-3.2 v4 27/28] hw/arm/virt: add virt-3.2
+ machine type
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -90,857 +90,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, imammedo@redhat.com,
 	"open list:Virt" <qemu-arm@nongnu.org>,
-	"open list:sPAPR" <qemu-ppc@nongnu.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, imammedo@redhat.com,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Richard Henderson <rth@twiddle.net>
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8v5PdTyKNyWd
-
-Similarly to accel properties, move compat properties out of globals
-registration, and apply the machine compat properties during
-device_post_init().
+X-TUID: K8alwKK1pcW8
 
 Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/boards.h        |  3 +-
- include/hw/qdev-core.h     |  1 +
- hw/arm/virt.c              | 16 +++++------
- hw/core/machine.c          | 19 +------------
- hw/core/qdev.c             |  9 ++++++
- hw/i386/pc_piix.c          | 56 +++++++++++++++++++-------------------
- hw/i386/pc_q35.c           | 20 +++++++-------
- hw/ppc/spapr.c             | 26 +++++++++---------
- hw/s390x/s390-virtio-ccw.c | 20 +++++++-------
- vl.c                       |  2 +-
- 10 files changed, 82 insertions(+), 90 deletions(-)
+ hw/arm/virt.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index f82f28468b..28c2b0af41 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -69,7 +69,6 @@ int machine_kvm_shadow_mem(MachineState *machine);
- int machine_phandle_start(MachineState *machine);
- bool machine_dump_guest_core(MachineState *machine);
- bool machine_mem_merge(MachineState *machine);
--void machine_register_compat_props(MachineState *machine);
- HotpluggableCPUList *machine_query_hotpluggable_cpus(MachineState *machi=
-ne);
- void machine_set_cpu_numa_node(MachineState *machine,
-                                const CpuInstanceProperties *props,
-@@ -191,7 +190,7 @@ struct MachineClass {
-     const char *default_machine_opts;
-     const char *default_boot_order;
-     const char *default_display;
--    GArray *compat_props;
-+    GPtrArray *compat_props;
-     const char *hw_version;
-     ram_addr_t default_ram_size;
-     const char *default_cpu_type;
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 82afd3c50d..f6a9503e23 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -279,6 +279,7 @@ typedef struct GlobalProperty {
-     } while (0)
-=20
- void accel_register_compat_props(const GPtrArray *props);
-+void machine_register_compat_props(const GPtrArray *props);
-=20
- /*** Board API.  This should go away once we have a machine config file.=
-  ***/
-=20
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a2b8d8f7c2..d106a8a8c7 100644
+index d106a8a8c7..22343db485 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1882,7 +1882,7 @@ static void virt_3_0_instance_init(Object *obj)
- static void virt_machine_3_0_options(MachineClass *mc)
+@@ -1796,7 +1796,7 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
+=20
+-static void virt_3_1_instance_init(Object *obj)
++static void virt_3_2_instance_init(Object *obj)
  {
-     virt_machine_3_1_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_3_0);
-+    SET_COMPAT(mc, VIRT_COMPAT_3_0);
- }
- DEFINE_VIRT_MACHINE(3, 0)
-=20
-@@ -1899,7 +1899,7 @@ static void virt_machine_2_12_options(MachineClass =
-*mc)
-     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-=20
-     virt_machine_3_0_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_12);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_12);
-     vmc->no_highmem_ecam =3D true;
-     mc->max_cpus =3D 255;
- }
-@@ -1918,7 +1918,7 @@ static void virt_machine_2_11_options(MachineClass =
-*mc)
-     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-=20
-     virt_machine_2_12_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_11);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_11);
-     vmc->smbios_old_sys_ver =3D true;
- }
- DEFINE_VIRT_MACHINE(2, 11)
-@@ -1934,7 +1934,7 @@ static void virt_2_10_instance_init(Object *obj)
- static void virt_machine_2_10_options(MachineClass *mc)
- {
-     virt_machine_2_11_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_10);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_10);
-     /* before 2.11 we never faulted accesses to bad addresses */
-     mc->ignore_memory_transaction_failures =3D true;
- }
-@@ -1951,7 +1951,7 @@ static void virt_2_9_instance_init(Object *obj)
- static void virt_machine_2_9_options(MachineClass *mc)
- {
-     virt_machine_2_10_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_9);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_9);
- }
- DEFINE_VIRT_MACHINE(2, 9)
-=20
-@@ -1968,7 +1968,7 @@ static void virt_machine_2_8_options(MachineClass *=
-mc)
-     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-=20
-     virt_machine_2_9_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_8);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_8);
-     /* For 2.8 and earlier we falsely claimed in the DT that
-      * our timers were edge-triggered, not level-triggered.
-      */
-@@ -1989,7 +1989,7 @@ static void virt_machine_2_7_options(MachineClass *=
-mc)
-     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-=20
-     virt_machine_2_8_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_7);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_7);
-     /* ITS was introduced with 2.8 */
-     vmc->no_its =3D true;
-     /* Stick with 1K pages for migration compatibility */
-@@ -2010,7 +2010,7 @@ static void virt_machine_2_6_options(MachineClass *=
-mc)
-     VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-=20
-     virt_machine_2_7_options(mc);
--    SET_MACHINE_COMPAT(mc, VIRT_COMPAT_2_6);
-+    SET_COMPAT(mc, VIRT_COMPAT_2_6);
-     vmc->disallow_affinity_adjustment =3D true;
-     /* Disable PMU for 2.6 as PMU support was first introduced in 2.7 */
-     vmc->no_pmu =3D true;
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index c51423b647..6e24924aba 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -647,6 +647,7 @@ static void machine_class_base_init(ObjectClass *oc, =
-void *data)
-         assert(g_str_has_suffix(cname, TYPE_MACHINE_SUFFIX));
-         mc->name =3D g_strndup(cname,
-                             strlen(cname) - strlen(TYPE_MACHINE_SUFFIX))=
-;
-+        mc->compat_props =3D g_ptr_array_new();
-     }
+     VirtMachineState *vms =3D VIRT_MACHINE(obj);
+     VirtMachineClass *vmc =3D VIRT_MACHINE_GET_CLASS(vms);
+@@ -1866,10 +1866,26 @@ static void virt_3_1_instance_init(Object *obj)
+     vms->irqmap =3D a15irqmap;
  }
 =20
-@@ -834,24 +835,6 @@ void machine_run_board_init(MachineState *machine)
-     machine_class->init(machine);
- }
-=20
--void machine_register_compat_props(MachineState *machine)
--{
--    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
--    int i;
--    GlobalProperty *p;
--
--    if (!mc->compat_props) {
--        return;
--    }
--
--    for (i =3D 0; i < mc->compat_props->len; i++) {
--        p =3D g_array_index(mc->compat_props, GlobalProperty *, i);
--        /* Machine compat_props must never cause errors: */
--        p->errp =3D &error_abort;
--        qdev_prop_register_global(p);
--    }
--}
--
- static const TypeInfo machine_info =3D {
-     .name =3D TYPE_MACHINE,
-     .parent =3D TYPE_OBJECT,
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 7066d28271..3b31b2c025 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -971,17 +971,26 @@ static void device_initfn(Object *obj)
- }
-=20
- static const GPtrArray *ac_compat_props;
-+static const GPtrArray *mc_compat_props;
-=20
- void accel_register_compat_props(const GPtrArray *props)
- {
-     ac_compat_props =3D props;
- }
-=20
-+void machine_register_compat_props(const GPtrArray *props)
++static void virt_machine_3_2_options(MachineClass *mc)
 +{
-+    mc_compat_props =3D props;
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(3, 2)
++
++#define VIRT_COMPAT_3_1 \
++    HW_COMPAT_3_1
++
++static void virt_3_1_instance_init(Object *obj)
++{
++    virt_3_2_instance_init(obj);
 +}
 +
- static void device_post_init(Object *obj)
+ static void virt_machine_3_1_options(MachineClass *mc)
  {
-     if (ac_compat_props) {
-         object_apply_global_props(obj, ac_compat_props, &error_abort);
-     }
-+    if (mc_compat_props) {
-+        object_apply_global_props(obj, mc_compat_props, &error_abort);
-+    }
-=20
-     qdev_prop_set_globals(DEVICE(obj));
++    virt_machine_3_2_options(mc);
++    SET_COMPAT(mc, VIRT_COMPAT_3_1);
  }
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 7092d6d13f..3cc92b8eec 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -443,7 +443,7 @@ static void pc_i440fx_3_0_machine_options(MachineClas=
-s *m)
-     pc_i440fx_3_1_machine_options(m);
-     m->is_default =3D 0;
-     m->alias =3D NULL;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_3_0);
-+    SET_COMPAT(m, PC_COMPAT_3_0);
- }
-=20
- DEFINE_I440FX_MACHINE(v3_0, "pc-i440fx-3.0", NULL,
-@@ -452,7 +452,7 @@ DEFINE_I440FX_MACHINE(v3_0, "pc-i440fx-3.0", NULL,
- static void pc_i440fx_2_12_machine_options(MachineClass *m)
- {
-     pc_i440fx_3_0_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_12);
-+    SET_COMPAT(m, PC_COMPAT_2_12);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_12, "pc-i440fx-2.12", NULL,
-@@ -461,7 +461,7 @@ DEFINE_I440FX_MACHINE(v2_12, "pc-i440fx-2.12", NULL,
- static void pc_i440fx_2_11_machine_options(MachineClass *m)
- {
-     pc_i440fx_2_12_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_11);
-+    SET_COMPAT(m, PC_COMPAT_2_11);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_11, "pc-i440fx-2.11", NULL,
-@@ -470,7 +470,7 @@ DEFINE_I440FX_MACHINE(v2_11, "pc-i440fx-2.11", NULL,
- static void pc_i440fx_2_10_machine_options(MachineClass *m)
- {
-     pc_i440fx_2_11_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_10);
-+    SET_COMPAT(m, PC_COMPAT_2_10);
-     m->auto_enable_numa_with_memhp =3D false;
- }
-=20
-@@ -480,7 +480,7 @@ DEFINE_I440FX_MACHINE(v2_10, "pc-i440fx-2.10", NULL,
- static void pc_i440fx_2_9_machine_options(MachineClass *m)
- {
-     pc_i440fx_2_10_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_9);
-+    SET_COMPAT(m, PC_COMPAT_2_9);
-     m->numa_auto_assign_ram =3D numa_legacy_auto_assign_ram;
- }
-=20
-@@ -490,7 +490,7 @@ DEFINE_I440FX_MACHINE(v2_9, "pc-i440fx-2.9", NULL,
- static void pc_i440fx_2_8_machine_options(MachineClass *m)
- {
-     pc_i440fx_2_9_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_8);
-+    SET_COMPAT(m, PC_COMPAT_2_8);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_8, "pc-i440fx-2.8", NULL,
-@@ -500,7 +500,7 @@ DEFINE_I440FX_MACHINE(v2_8, "pc-i440fx-2.8", NULL,
- static void pc_i440fx_2_7_machine_options(MachineClass *m)
- {
-     pc_i440fx_2_8_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_7);
-+    SET_COMPAT(m, PC_COMPAT_2_7);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_7, "pc-i440fx-2.7", NULL,
-@@ -513,7 +513,7 @@ static void pc_i440fx_2_6_machine_options(MachineClas=
-s *m)
-     pc_i440fx_2_7_machine_options(m);
-     pcmc->legacy_cpu_hotplug =3D true;
-     pcmc->linuxboot_dma_enabled =3D false;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_6);
-+    SET_COMPAT(m, PC_COMPAT_2_6);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_6, "pc-i440fx-2.6", NULL,
-@@ -526,7 +526,7 @@ static void pc_i440fx_2_5_machine_options(MachineClas=
-s *m)
-     pc_i440fx_2_6_machine_options(m);
-     pcmc->save_tsc_khz =3D false;
-     m->legacy_fw_cfg_order =3D 1;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_5);
-+    SET_COMPAT(m, PC_COMPAT_2_5);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_5, "pc-i440fx-2.5", NULL,
-@@ -539,7 +539,7 @@ static void pc_i440fx_2_4_machine_options(MachineClas=
-s *m)
-     pc_i440fx_2_5_machine_options(m);
-     m->hw_version =3D "2.4.0";
-     pcmc->broken_reserved_end =3D true;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_4);
-+    SET_COMPAT(m, PC_COMPAT_2_4);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_4, "pc-i440fx-2.4", NULL,
-@@ -550,7 +550,7 @@ static void pc_i440fx_2_3_machine_options(MachineClas=
-s *m)
- {
-     pc_i440fx_2_4_machine_options(m);
-     m->hw_version =3D "2.3.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_3);
-+    SET_COMPAT(m, PC_COMPAT_2_3);
- }
-=20
- DEFINE_I440FX_MACHINE(v2_3, "pc-i440fx-2.3", pc_compat_2_3,
-@@ -562,7 +562,7 @@ static void pc_i440fx_2_2_machine_options(MachineClas=
-s *m)
-     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-     pc_i440fx_2_3_machine_options(m);
-     m->hw_version =3D "2.2.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_2);
-+    SET_COMPAT(m, PC_COMPAT_2_2);
-     pcmc->rsdp_in_ram =3D false;
- }
-=20
-@@ -576,7 +576,7 @@ static void pc_i440fx_2_1_machine_options(MachineClas=
-s *m)
-     pc_i440fx_2_2_machine_options(m);
-     m->hw_version =3D "2.1.0";
-     m->default_display =3D NULL;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_1);
-+    SET_COMPAT(m, PC_COMPAT_2_1);
-     pcmc->smbios_uuid_encoded =3D false;
-     pcmc->enforce_aligned_dimm =3D false;
- }
-@@ -591,7 +591,7 @@ static void pc_i440fx_2_0_machine_options(MachineClas=
-s *m)
-     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-     pc_i440fx_2_1_machine_options(m);
-     m->hw_version =3D "2.0.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_0);
-+    SET_COMPAT(m, PC_COMPAT_2_0);
-     pcmc->smbios_legacy_mode =3D true;
-     pcmc->has_reserved_memory =3D false;
-     /* This value depends on the actual DSDT and SSDT compiled into
-@@ -625,7 +625,7 @@ static void pc_i440fx_1_7_machine_options(MachineClas=
-s *m)
-     m->hw_version =3D "1.7.0";
-     m->default_machine_opts =3D NULL;
-     m->option_rom_has_mr =3D true;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_7);
-+    SET_COMPAT(m, PC_COMPAT_1_7);
-     pcmc->smbios_defaults =3D false;
-     pcmc->gigabyte_align =3D false;
-     pcmc->legacy_acpi_table_size =3D 6414;
-@@ -641,7 +641,7 @@ static void pc_i440fx_1_6_machine_options(MachineClas=
-s *m)
-     pc_i440fx_1_7_machine_options(m);
-     m->hw_version =3D "1.6.0";
-     m->rom_file_has_mr =3D false;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_6);
-+    SET_COMPAT(m, PC_COMPAT_1_6);
-     pcmc->has_acpi_build =3D false;
- }
-=20
-@@ -653,7 +653,7 @@ static void pc_i440fx_1_5_machine_options(MachineClas=
-s *m)
- {
-     pc_i440fx_1_6_machine_options(m);
-     m->hw_version =3D "1.5.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_5);
-+    SET_COMPAT(m, PC_COMPAT_1_5);
- }
-=20
- DEFINE_I440FX_MACHINE(v1_5, "pc-i440fx-1.5", pc_compat_1_5,
-@@ -665,7 +665,7 @@ static void pc_i440fx_1_4_machine_options(MachineClas=
-s *m)
-     pc_i440fx_1_5_machine_options(m);
-     m->hw_version =3D "1.4.0";
-     m->hot_add_cpu =3D NULL;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_4);
-+    SET_COMPAT(m, PC_COMPAT_1_4);
- }
-=20
- DEFINE_I440FX_MACHINE(v1_4, "pc-i440fx-1.4", pc_compat_1_4,
-@@ -697,7 +697,7 @@ static void pc_i440fx_1_3_machine_options(MachineClas=
-s *m)
- {
-     pc_i440fx_1_4_machine_options(m);
-     m->hw_version =3D "1.3.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_3);
-+    SET_COMPAT(m, PC_COMPAT_1_3);
- }
-=20
- DEFINE_I440FX_MACHINE(v1_3, "pc-1.3", pc_compat_1_3,
-@@ -736,7 +736,7 @@ static void pc_i440fx_1_2_machine_options(MachineClas=
-s *m)
- {
-     pc_i440fx_1_3_machine_options(m);
-     m->hw_version =3D "1.2.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_2);
-+    SET_COMPAT(m, PC_COMPAT_1_2);
- }
-=20
- DEFINE_I440FX_MACHINE(v1_2, "pc-1.2", pc_compat_1_2,
-@@ -779,7 +779,7 @@ static void pc_i440fx_1_1_machine_options(MachineClas=
-s *m)
- {
-     pc_i440fx_1_2_machine_options(m);
-     m->hw_version =3D "1.1.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_1);
-+    SET_COMPAT(m, PC_COMPAT_1_1);
- }
-=20
- DEFINE_I440FX_MACHINE(v1_1, "pc-1.1", pc_compat_1_2,
-@@ -810,7 +810,7 @@ static void pc_i440fx_1_0_machine_options(MachineClas=
-s *m)
- {
-     pc_i440fx_1_1_machine_options(m);
-     m->hw_version =3D "1.0";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_1_0);
-+    SET_COMPAT(m, PC_COMPAT_1_0);
- }
-=20
- DEFINE_I440FX_MACHINE(v1_0, "pc-1.0", pc_compat_1_2,
-@@ -824,7 +824,7 @@ static void pc_i440fx_0_15_machine_options(MachineCla=
-ss *m)
- {
-     pc_i440fx_1_0_machine_options(m);
-     m->hw_version =3D "0.15";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_0_15);
-+    SET_COMPAT(m, PC_COMPAT_0_15);
- }
-=20
- DEFINE_I440FX_MACHINE(v0_15, "pc-0.15", pc_compat_1_2,
-@@ -863,7 +863,7 @@ static void pc_i440fx_0_14_machine_options(MachineCla=
-ss *m)
- {
-     pc_i440fx_0_15_machine_options(m);
-     m->hw_version =3D "0.14";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_0_14);
-+    SET_COMPAT(m, PC_COMPAT_0_14);
- }
-=20
- DEFINE_I440FX_MACHINE(v0_14, "pc-0.14", pc_compat_1_2,
-@@ -899,7 +899,7 @@ static void pc_i440fx_0_13_machine_options(MachineCla=
-ss *m)
-     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-     pc_i440fx_0_14_machine_options(m);
-     m->hw_version =3D "0.13";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_0_13);
-+    SET_COMPAT(m, PC_COMPAT_0_13);
-     pcmc->kvmclock_enabled =3D false;
- }
-=20
-@@ -935,7 +935,7 @@ static void pc_i440fx_0_12_machine_options(MachineCla=
-ss *m)
- {
-     pc_i440fx_0_13_machine_options(m);
-     m->hw_version =3D "0.12";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_0_12);
-+    SET_COMPAT(m, PC_COMPAT_0_12);
- }
-=20
- DEFINE_I440FX_MACHINE(v0_12, "pc-0.12", pc_compat_0_13,
-@@ -967,7 +967,7 @@ static void pc_i440fx_0_11_machine_options(MachineCla=
-ss *m)
-     pc_i440fx_0_12_machine_options(m);
-     m->hw_version =3D "0.11";
-     m->deprecation_reason =3D "use a newer machine type instead";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_0_11);
-+    SET_COMPAT(m, PC_COMPAT_0_11);
- }
-=20
- DEFINE_I440FX_MACHINE(v0_11, "pc-0.11", pc_compat_0_13,
-@@ -1002,7 +1002,7 @@ static void pc_i440fx_0_10_machine_options(MachineC=
-lass *m)
- {
-     pc_i440fx_0_11_machine_options(m);
-     m->hw_version =3D "0.10";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_0_10);
-+    SET_COMPAT(m, PC_COMPAT_0_10);
- }
-=20
- DEFINE_I440FX_MACHINE(v0_10, "pc-0.10", pc_compat_0_13,
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 4702bb13c4..19e6ec6675 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -324,7 +324,7 @@ static void pc_q35_3_0_machine_options(MachineClass *=
-m)
- {
-     pc_q35_3_1_machine_options(m);
-     m->alias =3D NULL;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_3_0);
-+    SET_COMPAT(m, PC_COMPAT_3_0);
- }
-=20
- DEFINE_Q35_MACHINE(v3_0, "pc-q35-3.0", NULL,
-@@ -333,7 +333,7 @@ DEFINE_Q35_MACHINE(v3_0, "pc-q35-3.0", NULL,
- static void pc_q35_2_12_machine_options(MachineClass *m)
- {
-     pc_q35_3_0_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_12);
-+    SET_COMPAT(m, PC_COMPAT_2_12);
- }
-=20
- DEFINE_Q35_MACHINE(v2_12, "pc-q35-2.12", NULL,
-@@ -345,7 +345,7 @@ static void pc_q35_2_11_machine_options(MachineClass =
-*m)
-=20
-     pc_q35_2_12_machine_options(m);
-     pcmc->default_nic_model =3D "e1000";
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_11);
-+    SET_COMPAT(m, PC_COMPAT_2_11);
- }
-=20
- DEFINE_Q35_MACHINE(v2_11, "pc-q35-2.11", NULL,
-@@ -354,7 +354,7 @@ DEFINE_Q35_MACHINE(v2_11, "pc-q35-2.11", NULL,
- static void pc_q35_2_10_machine_options(MachineClass *m)
- {
-     pc_q35_2_11_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_10);
-+    SET_COMPAT(m, PC_COMPAT_2_10);
-     m->numa_auto_assign_ram =3D numa_legacy_auto_assign_ram;
-     m->auto_enable_numa_with_memhp =3D false;
- }
-@@ -365,7 +365,7 @@ DEFINE_Q35_MACHINE(v2_10, "pc-q35-2.10", NULL,
- static void pc_q35_2_9_machine_options(MachineClass *m)
- {
-     pc_q35_2_10_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_9);
-+    SET_COMPAT(m, PC_COMPAT_2_9);
- }
-=20
- DEFINE_Q35_MACHINE(v2_9, "pc-q35-2.9", NULL,
-@@ -374,7 +374,7 @@ DEFINE_Q35_MACHINE(v2_9, "pc-q35-2.9", NULL,
- static void pc_q35_2_8_machine_options(MachineClass *m)
- {
-     pc_q35_2_9_machine_options(m);
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_8);
-+    SET_COMPAT(m, PC_COMPAT_2_8);
- }
-=20
- DEFINE_Q35_MACHINE(v2_8, "pc-q35-2.8", NULL,
-@@ -384,7 +384,7 @@ static void pc_q35_2_7_machine_options(MachineClass *=
-m)
- {
-     pc_q35_2_8_machine_options(m);
-     m->max_cpus =3D 255;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_7);
-+    SET_COMPAT(m, PC_COMPAT_2_7);
- }
-=20
- DEFINE_Q35_MACHINE(v2_7, "pc-q35-2.7", NULL,
-@@ -396,7 +396,7 @@ static void pc_q35_2_6_machine_options(MachineClass *=
-m)
-     pc_q35_2_7_machine_options(m);
-     pcmc->legacy_cpu_hotplug =3D true;
-     pcmc->linuxboot_dma_enabled =3D false;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_6);
-+    SET_COMPAT(m, PC_COMPAT_2_6);
- }
-=20
- DEFINE_Q35_MACHINE(v2_6, "pc-q35-2.6", NULL,
-@@ -408,7 +408,7 @@ static void pc_q35_2_5_machine_options(MachineClass *=
-m)
-     pc_q35_2_6_machine_options(m);
-     pcmc->save_tsc_khz =3D false;
-     m->legacy_fw_cfg_order =3D 1;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_5);
-+    SET_COMPAT(m, PC_COMPAT_2_5);
- }
-=20
- DEFINE_Q35_MACHINE(v2_5, "pc-q35-2.5", NULL,
-@@ -420,7 +420,7 @@ static void pc_q35_2_4_machine_options(MachineClass *=
-m)
-     pc_q35_2_5_machine_options(m);
-     m->hw_version =3D "2.4.0";
-     pcmc->broken_reserved_end =3D true;
--    SET_MACHINE_COMPAT(m, PC_COMPAT_2_4);
-+    SET_COMPAT(m, PC_COMPAT_2_4);
- }
-=20
- DEFINE_Q35_MACHINE(v2_4, "pc-q35-2.4", NULL,
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 7afd1a175b..f36554687f 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3986,7 +3986,7 @@ static void spapr_machine_3_0_class_options(Machine=
-Class *mc)
-     sPAPRMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
-=20
-     spapr_machine_3_1_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_3_0);
-+    SET_COMPAT(mc, SPAPR_COMPAT_3_0);
-=20
-     smc->legacy_irq_allocation =3D true;
-     smc->irq =3D &spapr_irq_xics_legacy;
-@@ -4020,7 +4020,7 @@ static void spapr_machine_2_12_class_options(Machin=
-eClass *mc)
-     sPAPRMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
-=20
-     spapr_machine_3_0_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_12);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_12);
-=20
-     /* We depend on kvm_enabled() to choose a default value for the
-      * hpt-max-page-size capability. Of course we can't do it here
-@@ -4066,7 +4066,7 @@ static void spapr_machine_2_11_class_options(Machin=
-eClass *mc)
-=20
-     spapr_machine_2_12_class_options(mc);
-     smc->default_caps.caps[SPAPR_CAP_HTM] =3D SPAPR_CAP_ON;
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_11);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_11);
- }
-=20
- DEFINE_SPAPR_MACHINE(2_11, "2.11", false);
-@@ -4085,7 +4085,7 @@ static void spapr_machine_2_10_instance_options(Mac=
-hineState *machine)
- static void spapr_machine_2_10_class_options(MachineClass *mc)
- {
-     spapr_machine_2_11_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_10);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_10);
- }
-=20
- DEFINE_SPAPR_MACHINE(2_10, "2.10", false);
-@@ -4111,7 +4111,7 @@ static void spapr_machine_2_9_class_options(Machine=
-Class *mc)
-     sPAPRMachineClass *smc =3D SPAPR_MACHINE_CLASS(mc);
-=20
-     spapr_machine_2_10_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_9);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_9);
-     mc->numa_auto_assign_ram =3D numa_legacy_auto_assign_ram;
-     smc->pre_2_10_has_unused_icps =3D true;
-     smc->resize_hpt_default =3D SPAPR_RESIZE_HPT_DISABLED;
-@@ -4138,7 +4138,7 @@ static void spapr_machine_2_8_instance_options(Mach=
-ineState *machine)
- static void spapr_machine_2_8_class_options(MachineClass *mc)
- {
-     spapr_machine_2_9_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_8);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_8);
-     mc->numa_mem_align_shift =3D 23;
- }
-=20
-@@ -4233,7 +4233,7 @@ static void spapr_machine_2_7_class_options(Machine=
-Class *mc)
-=20
-     spapr_machine_2_8_class_options(mc);
-     mc->default_cpu_type =3D POWERPC_CPU_TYPE_NAME("power7_v2.3");
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_7);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_7);
-     smc->phb_placement =3D phb_placement_2_7;
- }
-=20
-@@ -4259,7 +4259,7 @@ static void spapr_machine_2_6_class_options(Machine=
-Class *mc)
- {
-     spapr_machine_2_7_class_options(mc);
-     mc->has_hotpluggable_cpus =3D false;
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_6);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_6);
- }
-=20
- DEFINE_SPAPR_MACHINE(2_6, "2.6", false);
-@@ -4286,7 +4286,7 @@ static void spapr_machine_2_5_class_options(Machine=
-Class *mc)
-=20
-     spapr_machine_2_6_class_options(mc);
-     smc->use_ohci_by_default =3D true;
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_5);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_5);
- }
-=20
- DEFINE_SPAPR_MACHINE(2_5, "2.5", false);
-@@ -4308,7 +4308,7 @@ static void spapr_machine_2_4_class_options(Machine=
-Class *mc)
-=20
-     spapr_machine_2_5_class_options(mc);
-     smc->dr_lmb_enabled =3D false;
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_4);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_4);
- }
-=20
- DEFINE_SPAPR_MACHINE(2_4, "2.4", false);
-@@ -4332,7 +4332,7 @@ static void spapr_machine_2_3_instance_options(Mach=
-ineState *machine)
- static void spapr_machine_2_3_class_options(MachineClass *mc)
- {
-     spapr_machine_2_4_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_3);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_3);
- }
- DEFINE_SPAPR_MACHINE(2_3, "2.3", false);
-=20
-@@ -4357,7 +4357,7 @@ static void spapr_machine_2_2_instance_options(Mach=
-ineState *machine)
- static void spapr_machine_2_2_class_options(MachineClass *mc)
- {
-     spapr_machine_2_3_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_2);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_2);
- }
- DEFINE_SPAPR_MACHINE(2_2, "2.2", false);
-=20
-@@ -4375,7 +4375,7 @@ static void spapr_machine_2_1_instance_options(Mach=
-ineState *machine)
- static void spapr_machine_2_1_class_options(MachineClass *mc)
- {
-     spapr_machine_2_2_class_options(mc);
--    SET_MACHINE_COMPAT(mc, SPAPR_COMPAT_2_1);
-+    SET_COMPAT(mc, SPAPR_COMPAT_2_1);
- }
- DEFINE_SPAPR_MACHINE(2_1, "2.1", false);
-=20
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index a0615a8b35..41b72356e9 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -762,7 +762,7 @@ static void ccw_machine_3_0_class_options(MachineClas=
-s *mc)
-=20
-     s390mc->hpage_1m_allowed =3D false;
-     ccw_machine_3_1_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_3_0);
-+    SET_COMPAT(mc, CCW_COMPAT_3_0);
- }
- DEFINE_CCW_MACHINE(3_0, "3.0", false);
-=20
-@@ -776,7 +776,7 @@ static void ccw_machine_2_12_instance_options(Machine=
-State *machine)
- static void ccw_machine_2_12_class_options(MachineClass *mc)
- {
-     ccw_machine_3_0_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_12);
-+    SET_COMPAT(mc, CCW_COMPAT_2_12);
- }
- DEFINE_CCW_MACHINE(2_12, "2.12", false);
-=20
-@@ -792,7 +792,7 @@ static void ccw_machine_2_11_instance_options(Machine=
-State *machine)
- static void ccw_machine_2_11_class_options(MachineClass *mc)
- {
-     ccw_machine_2_12_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_11);
-+    SET_COMPAT(mc, CCW_COMPAT_2_11);
- }
- DEFINE_CCW_MACHINE(2_11, "2.11", false);
-=20
-@@ -804,7 +804,7 @@ static void ccw_machine_2_10_instance_options(Machine=
-State *machine)
- static void ccw_machine_2_10_class_options(MachineClass *mc)
- {
-     ccw_machine_2_11_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_10);
-+    SET_COMPAT(mc, CCW_COMPAT_2_10);
- }
- DEFINE_CCW_MACHINE(2_10, "2.10", false);
-=20
-@@ -823,7 +823,7 @@ static void ccw_machine_2_9_class_options(MachineClas=
-s *mc)
-     S390CcwMachineClass *s390mc =3D S390_MACHINE_CLASS(mc);
-=20
-     ccw_machine_2_10_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_9);
-+    SET_COMPAT(mc, CCW_COMPAT_2_9);
-     s390mc->css_migration_enabled =3D false;
- }
- DEFINE_CCW_MACHINE(2_9, "2.9", false);
-@@ -836,7 +836,7 @@ static void ccw_machine_2_8_instance_options(MachineS=
-tate *machine)
- static void ccw_machine_2_8_class_options(MachineClass *mc)
- {
-     ccw_machine_2_9_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_8);
-+    SET_COMPAT(mc, CCW_COMPAT_2_8);
- }
- DEFINE_CCW_MACHINE(2_8, "2.8", false);
-=20
-@@ -851,7 +851,7 @@ static void ccw_machine_2_7_class_options(MachineClas=
-s *mc)
-=20
-     s390mc->cpu_model_allowed =3D false;
-     ccw_machine_2_8_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_7);
-+    SET_COMPAT(mc, CCW_COMPAT_2_7);
- }
- DEFINE_CCW_MACHINE(2_7, "2.7", false);
-=20
-@@ -866,7 +866,7 @@ static void ccw_machine_2_6_class_options(MachineClas=
-s *mc)
-=20
-     s390mc->ri_allowed =3D false;
-     ccw_machine_2_7_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_6);
-+    SET_COMPAT(mc, CCW_COMPAT_2_6);
- }
- DEFINE_CCW_MACHINE(2_6, "2.6", false);
-=20
-@@ -878,7 +878,7 @@ static void ccw_machine_2_5_instance_options(MachineS=
-tate *machine)
- static void ccw_machine_2_5_class_options(MachineClass *mc)
- {
-     ccw_machine_2_6_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_5);
-+    SET_COMPAT(mc, CCW_COMPAT_2_5);
- }
- DEFINE_CCW_MACHINE(2_5, "2.5", false);
-=20
-@@ -890,7 +890,7 @@ static void ccw_machine_2_4_instance_options(MachineS=
-tate *machine)
- static void ccw_machine_2_4_class_options(MachineClass *mc)
- {
-     ccw_machine_2_5_class_options(mc);
--    SET_MACHINE_COMPAT(mc, CCW_COMPAT_2_4);
-+    SET_COMPAT(mc, CCW_COMPAT_2_4);
- }
- DEFINE_CCW_MACHINE(2_4, "2.4", false);
-=20
-diff --git a/vl.c b/vl.c
-index c06e94271c..943e9b6a69 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2964,7 +2964,7 @@ static void user_register_global_props(void)
- static void register_global_properties(MachineState *ms)
- {
-     accel_register_compat_props(ACCEL_GET_CLASS(ms->accelerator)->compat=
-_props);
--    machine_register_compat_props(ms);
-+    machine_register_compat_props(MACHINE_GET_CLASS(ms)->compat_props);
-     user_register_global_props();
- }
-=20
+-DEFINE_VIRT_MACHINE_AS_LATEST(3, 1)
++
++DEFINE_VIRT_MACHINE(3, 1)
+=20
+ #define VIRT_COMPAT_3_0 \
+     HW_COMPAT_3_0
 --=20
 2.20.0.rc1
 

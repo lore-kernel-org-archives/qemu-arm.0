@@ -1,64 +1,63 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1149794wrt;
-        Tue, 27 Nov 2018 03:38:29 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XgLBn55bn58F+DGbEcGR/x5bnDb/IOllMQX6FZS6nU9ABfZaIM2oWy8B7m75fbUfejXvw6
-X-Received: by 2002:a25:4509:: with SMTP id s9-v6mr32371861yba.51.1543318709367;
-        Tue, 27 Nov 2018 03:38:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543318709; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1156578wrt;
+        Tue, 27 Nov 2018 03:45:39 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Vvanfu+508u7FME5fwa+bmiUgNm3FSSBRpU1SY/lKbPeQOTjm1YTWi5LK/aPab+qUR0KsQ
+X-Received: by 2002:a25:220a:: with SMTP id i10-v6mr32222612ybi.185.1543319139105;
+        Tue, 27 Nov 2018 03:45:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543319139; cv=none;
         d=google.com; s=arc-20160816;
-        b=d8o58Q6Uri5p31iQpypwF1X9gGq+N2agdMKfkwbyWAcJGVgqZxvKFl3+abfAN88MVt
-         rYbyT8mLyXyxmqFAiqkeWbW2HNCyu738E+bAnF0gUAuIZZOx+ssdj0GhJB1g6pFAZjOB
-         3w229LexDAioOM1xL7pGE6Hd4afs3ORfiaEEp1AzvNKkDS0fGCYsQJ8u4ZEOw2SSzFuq
-         S+2/EqTPzCY9aJYHoZ86ojV++OIqVj17MJrp+0LTCENDOprm2L5X/bluEi6eJKh0HqUd
-         WXsts+ehzHs1WjunJEB8dGJdDD1C1udT1Gy0WxHV3ru3ZphFt9JMXmeXzTNBFeQ5injN
-         sWeQ==
+        b=XTc1iyLCI26iSgIFdPLIYPumAPfcbyH9qyX+yhXX2euZ2JPIxAdhzbmDwdw3EMMsEI
+         Xrjbz685cPzD4eyWg9/AZonrdo2wolgJ6VvRHF4nuvq+eWyWLN8Rmhh1R0irXMfkKrN7
+         djXADOCygr8ERF/KycUZ9xKaskdsnPiqxozep8DAuaaHFtM8ixlLd1YqrWlOg/R2DVwu
+         TEhDqGC9IEFA4mzhR3UTjphOMCqnwUWZpXnK/oWFcSQpR62R5ascxk6HwEoQoq2z06ff
+         LsC2oafr4QSjI73E0Yz3EhD3wUUdq+A1JO92O4KoIdG1TnaFi2CbMDZq1C2y4EILXuhK
+         7DsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=Wv+MULaM66O+Gsqmx0Rz6K3p1VUgwLaOEv+Prx2+7jc=;
-        b=iYiKW52eRfhIP01LAYm7NfJb58i6TCVsXEVuEkUkbRSHeh8uV4mhLlKCNqV0sWxy1E
-         DDbOxVnxyV3QJ6QOPLDaNnLgGiSYoHHc/gl+jSrGgqcvRtI3HPT4HGxG04/Gk2TdIyky
-         Lj77x+VDwqowd6dVIJqCEwmoY3p5I/MMcrDQhUyhWoT/p9FSkGLwHIZ6kX2YPSz0umWz
-         91mnk2b/V/RXYDIy8KJG+kMJFxGyxlvKoxc4g8hkGgpxr/jzUxziLj9yhZOn6FyHd4p1
-         AZuN09sC1kp4AJE5Drqw4lBZj2g58CX3QjnnJUuzeBN82JtoYHrTWRTDHurdLR3loDKO
-         RONg==
+        bh=6B57lzkzcTGKnJRmfzVMrZl3QvKBvGnqzHxwvhaQbf0=;
+        b=L7rr9KUivVh61S+3cqv3To7L0ZazBCOm+SzHlDV3pL/7AG13oAEEKq878gEFb3osLz
+         m4SyWEoHnep0ROe7UxakADWL+/7T9521MAKODgAoWBGXw0ugyKaa/hMXuAzt4Lj+gHro
+         GIrM00LaqbnbqQ0mWuc7xuylT9qOOpp8GTcz9qpYrA6ORrvda0Jweg5ftTPxH+3aKrUu
+         L6lyYlvmbi7XeN3HtQM1jecVSWrC4xtJTb9HWkduCWZgeI3h/dWxNAePSTtdxA9uBPDv
+         0N1yc+2dMc6eDliduFHqxP73adRkZKUKAHcmIb6/aGJJ245ZCAgobO7uYGX1+buCXkCL
+         WnaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 127-v6si2551572ybh.412.2018.11.27.03.38.29
+        by mx.google.com with ESMTPS id b5-v6si2473466yba.391.2018.11.27.03.45.38
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Nov 2018 03:38:29 -0800 (PST)
+        Tue, 27 Nov 2018 03:45:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41568 helo=lists.gnu.org)
+Received: from localhost ([::1]:41621 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRbhE-0003oW-Fo
-	for alex.bennee@linaro.org; Tue, 27 Nov 2018 06:38:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60065)
+	id 1gRboA-0001DV-HX
+	for alex.bennee@linaro.org; Tue, 27 Nov 2018 06:45:38 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbgy-0003iv-V8
-	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 06:38:18 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gRbo0-0001BM-JK
+	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 06:45:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbgw-0005lU-RI
-	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 06:38:12 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:39425)
+	(envelope-from <laurent@vivier.eu>) id 1gRbnw-00025S-KR
+	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 06:45:28 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:59913)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gRbgq-0005i5-0l; Tue, 27 Nov 2018 06:38:05 -0500
+	id 1gRbnw-00024x-BK; Tue, 27 Nov 2018 06:45:24 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MeCxd-1friho1PHD-00bJGo; Tue, 27 Nov 2018 12:37:55 +0100
+	1MpUQk-1fc1JL0xqu-00prVv; Tue, 27 Nov 2018 12:45:19 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, "Edgar E . Iglesias"
-	<edgar.iglesias@gmail.com>, Alistair Francis <alistair@alistair23.me>, 
+	Thomas Huth <thuth@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-7-philmd@redhat.com>
+	<20181125205000.10324-16-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -103,36 +102,39 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <bbd65041-d216-f063-8d94-a11db5d730c9@vivier.eu>
-Date: Tue, 27 Nov 2018 12:37:53 +0100
+Message-ID: <8d624826-9dc0-472b-0b1a-d0695ef507d8@vivier.eu>
+Date: Tue, 27 Nov 2018 12:45:18 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-7-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-16-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZxlbSKwcto2jkl1DWDBPmCkC3ggBH76I6ILflPtr3103swNC7bP
-	zr5dGETbBT5+RjPfT/JQNWgR3ztZjUNoLePNm7Uaz8Z5JnMQDK0JEZL7PbN/bDOR29oTp9C
-	H3hcw/Hb7G3WdJOgC0zGGD4uQbVgLg7qQ3UQS/ZkM+emmhKoGDkoTZQlfvNJGzkltMQ9T5s
-	Bzka8X8WdYEnP3BxpStpQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sKusO2esoxE=:bulM+LHT6llylvrVYPelU1
-	HVV+1D85FxJWwvAMYli4WLcqhEiVMumVVkfhdD/N1e6bFQXy5A524lYcQUmBQRfteKVN6fUrO
-	fqC1xMXYIc4fSB4dPZ5TYPvg+El7Pg4eS7YIL7Gn2LDK/fKbEqiJieP85vQsDatgDdJgUrZlY
-	QU4dKs6jJp0fH+7EZhy8OsFG20blZ256noJ9eKmczRA3S5HD2GsfZ0Zc2QzzyfQ51aZI1405n
-	r2QbeOcJTI3trUBYnXjfJ/s1iv2LVJTLrKrv28bF2KfsDKo90eWTDs1G4GHxJFB/X9k3KNEu4
-	EGTee+cNjZEXOte/Bbz4V/zRNorsUvj9Iy4VnajR21MvLqPdM/Wg5gWB58JPVySlIxWo6lVZR
-	bkERt3iSukywbGrz64ucUcAzvcpNtxrEXLiflTv0Q0LF1VCVy9RwmHpGFaEqduSvkkZfoInn9
-	GC05+hUWVe//rgocY5zzsS72FvaGqMN1YG4WjORsPrade46hQtnTKxFnFWJR5fcCvBTK+ccD4
-	Ov0PLIWo8wjNB+K7vL21kQQ3zUIdU85ke0cgJVPE4QZa2Emue2TEjkKM8LpyfE5HGBDfrZpWD
-	6L1oLs1r/KN6Sd87owUFY5NpGR7g34tH2dwb4oRU1YEq1eUXNU4Vn5Qlxrehbo+Pg3XR1LAcc
-	VKQlNBMGqEg/OeU8n1j/9UJDgDSUdFNXxgH4U87JoVxV1K+hc/+eJFQrIWcM9cVOPSkRTTxDZ
-	frOf20Q5H/Ak6f3y5VkUTXkhzqrkXlJy+QCqUHRlYhb0ExQB5aG4okmm5C1W4CpMA3u45MGqH
-	7gdXPqxMhAe9gAko9jaO+GkokAgkw==
+X-Provags-ID: V03:K1:VbVm4USnYpS6xw6rLqnxvR0/Av4C1j7YF/qTXxld9QKDzZQgc+M
+	LoO0d4LkZSuwoPfLi5ecqrcrUKL3mwUvnnJ+sPhTZPBdYqYUc6Gz+cuCZUgoMhmN5MIetqa
+	xT22P3po/Z/v6IWCDXInBWynFbE6dHzNbQBQjQnVNcLz5dIeou74cF+2DGUwjtS98rI7zQD
+	YXIN7iwj6mLbdPX3coS3Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XzZ16+lbDxg=:EtxCNwLWzEWa0EPNyVk9/B
+	xBm9o/8Si+r/4W3buDPnKL4kRh3tHjNMbplwj/T9cok8iFpFH9MjRl7UapHhYBBNDKJV54CD5
+	eJKN0ds6cbSy4e1T6Z+sjkRi06O23s9KGPAASMydmAEVlqR+hxUL36vX6HYHZaOC9m0lTSutG
+	sKMxXaMIFC0P1wu0DIJkNF97bQtqOMdiL2k6OM3yOAdcwOyczVbyh0Z+2raxG5dw8DUnJwm/Z
+	D3qroXYfVylkZVwdevKRztLMvFuun0EzMbRbFeo9dInUNlzc2F2QU7KI3L133uVgzUNSYb8c8
+	GxSEO5uRRSK3IAoZMIeqFYvFOE7M9tgXNz3xzFr7EIp0Wq8DJ2NqHtcTnk1TVn3tGxT9W3Icb
+	gA3pUV++nLcxrGZVSNrhjzpOn8kRmF8P6a4ff5zcjgNJtd4RWoYtErBERSsJWyEq3mLjZA+F5
+	WI3F/cqzmifxxy2ZPxTVKBR9DAmT/SN/0C87FKOlTjqYINP7IIcjieEn4pwKeNf5agS30fZYN
+	ihc/k/HbTayBjmiqsg9ClNurU/Bj3rgi/7jx2xyAcTmqJ3HxSBvy7FcFX5nudy84aaACl1GRX
+	2JVVPcA9raWSGvt8DpXJMWIt1CPcgw1XDwV7rRl0tUlKT0mLeKW8hVzHDqnneVAtHU7R/mNnS
+	7pYekHxK+5aiBtO4xRUTrHPlGg0VJ5TdUsZZdZfth0Z22ofd/DX0KPNE5M8dj+YhVzq/TqWq0
+	jS3haUS/jmYTR8gZYqBvfG6qoH4NnGTO+54IhkuTjjTe+2HUCxITGX8IpYOObOetX5Kt9+oXX
+	rVMoD5PPiRQXkWb7gCHQ79ZGLv3E9SZaPhOhIY2rNuWtXjla48VQGKONNfZ8eF7YyhDbl/Vww
+	xTwJNA8PLEpT6fs1D6Xvfm7sjrf/YuDLAWYUw6bG4+AxI/JaBuPDdxmxjW0nxxvZRx4gH5CZC
+	ZIrnkYP4lQEkzOriDHHVHfwBFZa3IRDgdUzzA5IgEBtjAL1K8tTKMLhV3W9qJ+eTsfIH8IsCa
+	0Q==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-arm] [Qemu-trivial] [PATCH for-3.1 06/25] MAINTAINERS:
- Add a missing entry for the Xilinx S3A-DSP 1800 machine
+Subject: Re: [Qemu-arm] [Qemu-trivial] [PATCH for-3.1 15/25] MAINTAINERS:
+ Add missing entries for the Canon DIGIC machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -147,29 +149,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t9aHlu+90cSb
+X-TUID: 0expAUnu4wgM
 
 On 25/11/2018 21:49, Philippe Mathieu-Daudé wrote:
+> This pattern now also matches:
+> - include/hw/timer/digic-timer.h
+> - include/hw/char/digic-uart.h
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 4e396cbe71..aa17e9bbd3 100644
+> index eab0fb9742..e04f2f1a44 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -822,6 +822,7 @@ petalogix_s3adsp1800
->  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
->  S: Maintained
->  F: hw/microblaze/petalogix_s3adsp1800_mmu.c
-> +include/hw/char/xilinx_uartlite.h
+> @@ -527,6 +527,7 @@ L: qemu-arm@nongnu.org
+>  S: Odd Fixes
+>  F: include/hw/arm/digic.h
+>  F: hw/*/digic*
+> +F: include/hw/*/digic*
 >  
->  petalogix_ml605
->  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+>  Gumstix
+>  M: Peter Maydell <peter.maydell@linaro.org>
 > 
-
-I've added the missing 'F:' field.
 
 Applied to my trivial-patches branch.
 

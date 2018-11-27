@@ -1,112 +1,82 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1812970wrt;
-        Wed, 28 Nov 2018 18:25:10 -0800 (PST)
-X-Google-Smtp-Source: AJdET5dhWTgcBhpwpI1MosLULcLL4sVlFDwsQhrWLA/W7XATDXkFN9KrFe7wG95wxZa5tGJOHJvC
-X-Received: by 2002:a81:8412:: with SMTP id u18mr40913882ywf.289.1543458309929;
-        Wed, 28 Nov 2018 18:25:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543458309; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp581416wrt;
+        Mon, 26 Nov 2018 16:47:34 -0800 (PST)
+X-Google-Smtp-Source: AJdET5earstMcuG0zzF/y/s8TMmq9ZOLE9+0kt+LwScFrTd72aqWg/lF+YPsB/CqW9pGMqL+GGiq
+X-Received: by 2002:a81:a311:: with SMTP id a17-v6mr31836064ywh.240.1543279654266;
+        Mon, 26 Nov 2018 16:47:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543279654; cv=none;
         d=google.com; s=arc-20160816;
-        b=RVWSD6jvHjmV9/ZgVZJMM3TkFvKPJSgwmZBIJ4ZKptbRWEMDDvs2kJ75pwXfAjYIx0
-         2+aJsqeanb+BZtg+gfztEl7WfD/Nq+8oxDazrFUqqwe5ozx5u+z1+3PdwiOdunqA6alO
-         LD+T1BGci66kpgHnjKiPmIyPC/+SvgwC8xNil2PuyVLGTjtetgLD+4EGiORrc5NlkBO4
-         gXkyMJKoHg3/tXQvicTLnIVEfRA1aiY1HMEwdJ7LHff9OVB0I1obHAh82nct4CUvpJal
-         cKxIIMfrbltzlBRjecw6JUUlvU3VTYCjR5V7zd0s9Jvk3ENx+A3gl4KcDm0XUpDDgr3R
-         Jqnw==
+        b=zMZsUlS1g0KIAXwZ0ciDFX8q8k4+qsKZQQO/Mdn58cVri7Q4TI9F4RJcHM9ci3UoAI
+         gDK4izkrRgm4PuXUmhR5gNkqy0VeXi/E8Z/2YpwUoPrk8KC1g0AVomCNBd3aDdfcK6AZ
+         9cw/Xn8uv6OgEGCVDUb5DmsiW1KXzbAc1T6yfzUVmgFj+TduZA5hEDV9Ll91Ltyz0ju2
+         vaJcyedSELkrZySFr9X0EI2o9Ab5EI8MEr2NbUFgfgx5zTKPhDf7/gzWqYL/Sd1yPe2M
+         HxEY7q16x2qqpgCJZLTgeFfZn2pJjxsoHkjIskx5CDA7NFwPe8d8pU1D7NKT03exz5kr
+         Ez8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-signature;
-        bh=ZzimebbKApz7gujmtn1NE2Icpos/CMAsW+IxoUaN3kU=;
-        b=DQGktI6pFVlTYH0hVqFguYax1nqsJPMWvy0cWww+/rx8uVbAbFzfPKeLbgC8QXTWru
-         O6cxVLZ7M6zljeFGZBhTiw31jBQ7nApf4wUDeM418RrWiSbv+YMkitVlJr7kxDz0gJzi
-         ijfzf14fx6jq17dmVIAm/sae382lq7ASR7aSCzh0I/K9KvMzm4euuCsFbSUYuEvQ6j4c
-         FQYwGRadhTuE7CPA72kcchMvzliWMN+fg9zKxBoh4IllxNMZrD9bFa3ZIG0t+cYKVFsu
-         2CBzu/M+E20cNmAYHUdrFkaN1Vo0xSPsWJJpDH6apKclC6X9IGNLyOjzQaLRw9C3iZDc
-         aVPA==
+         :list-unsubscribe:list-id:precedence:subject:to:from:mime-version
+         :references:in-reply-to:message-id:date;
+        bh=evTzWFZyBMKZEQmxv7FKf+tYAY2kT2FFRdhdM4vrcuo=;
+        b=Czl3GqP2nI+rLcYha/y+ADXvGYJegCi422QHkk9q7UgngvQaDSgHtOqIzVq03+pVDK
+         5LzGTJWM792Lyboc89o37lykCFOZfJLkusWahaIJs7qROTr2zQ8S35x/R7ZcUlYtIkT7
+         YII/dKJHsoMVhLkw6W/mSY2HDguKUKNSG4WUBHpzCmh0SnNWp2pT9sOLMiRzrubIZrFF
+         xW3QWKW5h3TvupxQ37ipXgyKPq1pPU+VKj2DuGX1S1SkA0PhWghtGYb4rBQzTatCPqfp
+         p1kceHLyzVsJPS8Ah+Nt7uuuzGqksTB/H1OGphHj5uoXhi2TXHKMnbIPkER0pPnreAdV
+         UDDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UQ2kUKGc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id k128-v6si250009yba.363.2018.11.28.18.25.09
+        by mx.google.com with ESMTPS id p2-v6si1523450ybk.262.2018.11.26.16.47.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Wed, 28 Nov 2018 18:25:09 -0800 (PST)
+        Mon, 26 Nov 2018 16:47:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UQ2kUKGc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51544 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39509 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSC0r-0007d7-DH
-	for alex.bennee@linaro.org; Wed, 28 Nov 2018 21:25:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46850)
+	id 1gRRXJ-0004T3-Nl
+	for alex.bennee@linaro.org; Mon, 26 Nov 2018 19:47:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60374)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhaosl@gmail.com>) id 1gSC0i-0007bz-Up
-	for qemu-arm@nongnu.org; Wed, 28 Nov 2018 21:25:01 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gRRUn-0000wU-3x
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 19:44:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhaosl@gmail.com>) id 1gSC0e-0006dh-Q6
-	for qemu-arm@nongnu.org; Wed, 28 Nov 2018 21:25:00 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37652)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shannon.zhaosl@gmail.com>)
-	id 1gSC0e-0006cD-EE; Wed, 28 Nov 2018 21:24:56 -0500
-Received: by mail-ot1-x343.google.com with SMTP id 40so366753oth.4;
-	Wed, 28 Nov 2018 18:24:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ZzimebbKApz7gujmtn1NE2Icpos/CMAsW+IxoUaN3kU=;
-	b=UQ2kUKGc5tr/7dYs/maFXMlFfUkjEiLWjKjglU+xbxyvaGBXyGkkU4yzQpLZ6pd3jc
-	WcPjJH0CcYdV4vtcXNaL+x5Mzmit2OEJJ8TkF+7gP+4aDXaxokkVDjFySjM3XIflogwn
-	uaSjOmv0xoi7SkNWjRBTsIOteGJ661DcfkdHiDYsACtOGrevKhR2TDDVneLDOMFZAst8
-	oZ3lYJk1l1r/ii0kp50aWVVs8/qfLV2nmGI/5jVksXQnORtfzRdbbKIKHfNThYvdRodB
-	EPX7JOThwIgNKCTFoztnkklorOieQboB59UDvuqbgxXt1k9chGR1im1thD/Jeqqj6HtE
-	fy4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ZzimebbKApz7gujmtn1NE2Icpos/CMAsW+IxoUaN3kU=;
-	b=WorE3qPKFDauZJ/v0/GIAx0RzLU6GcPVOvOrNY/JzyS2g87MZOedhWy7OaXrV7to6N
-	fS2oNsvmM3VuZadieVY5WK6VCRKZrlKCjs7PJWU5Zr754RJj8HdpLONVa+axpN6IJOx6
-	pRRNeJxXGv57FGFS1JUrGjzDvg0ubT1eC6GfdGhcBkfil5BmTMSdGdVolpOZpwpH5e0Q
-	CDU3FtjGtgFExvEnSl12I4Uft4iR3MjkVMlV0RoWn4Bk93TZ0OmKRNqHymb1DSt+rbOn
-	sfCawKb4zq+7V+D1rVbLO7sPylctkVwexq8rF4zJ0C0nlHWA+/m2rjSLGZiXgKeSn8pM
-	DnRQ==
-X-Gm-Message-State: AA+aEWbCAHGq9tjrGXYcI2ZjXom9oElx55jPMVPGvwnMRyVEmK6OVS1b
-	nY1W76c6LIfZ+vPxHsCwm9E=
-X-Received: by 2002:a9d:ac3:: with SMTP id 61mr21914565otq.272.1543458295556; 
-	Wed, 28 Nov 2018 18:24:55 -0800 (PST)
-Received: from [30.43.80.46] ([47.89.83.32])
-	by smtp.gmail.com with ESMTPSA id a21sm170339otr.3.2018.11.28.18.24.52
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 28 Nov 2018 18:24:54 -0800 (PST)
-To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20181126154616.18173-1-eric.auger@redhat.com>
-	<b3c22264-2a95-b851-025c-b8ff0f38f269@redhat.com>
-	<65b68704-2c0b-e9b9-2cde-fea5c32161b3@gmail.com>
-	<a6e27638-1695-9608-366a-83bbbe873e55@redhat.com>
-From: Shannon Zhao <shannon.zhaosl@gmail.com>
-Message-ID: <2c6469e1-4da1-7f9d-4525-892287c4c5c1@gmail.com>
-Date: Thu, 29 Nov 2018 10:24:50 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
-MIME-Version: 1.0
-In-Reply-To: <a6e27638-1695-9608-366a-83bbbe873e55@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.1] hw/arm/virt-acpi-build:
- Fix SMMUv3 ACPI integration
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gRRGM-0001hU-7m
+	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 19:30:06 -0500
+Received: from mx7.zte.com.cn ([202.103.147.169]:37412 helo=mxct.zte.com.cn)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gRRGL-0001dT-TX; Mon, 26 Nov 2018 19:30:02 -0500
+Received: from mse02.zte.com.cn (unknown [10.30.3.21])
+	by Forcepoint Email with ESMTPS id 4FE77C73C682F17649CA;
+	Tue, 27 Nov 2018 08:29:57 +0800 (CST)
+Received: from kjyxapp02.zte.com.cn ([10.30.12.201])
+	by mse02.zte.com.cn with SMTP id wAR0TsZM066246;
+	Tue, 27 Nov 2018 08:29:54 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from mapi (kjyxapp05[null]) by mapi (Zmail) with MAPI id mid14;
+	Tue, 27 Nov 2018 08:29:55 +0800 (CST)
+Date: Tue, 27 Nov 2018 08:29:55 +0800 (CST)
+X-Zmail-TransId: 2b075bfc9003d712f36a
+X-Mailer: Zmail v1.0
+Message-ID: <201811270829554678209@zte.com.cn>
+In-Reply-To: <48580284-d439-456b-2c6a-a10c0a9280ea@redhat.com>
+References: 1543262162-6351-1-git-send-email-peng.hao2@zte.com.cn,
+	48580284-d439-456b-2c6a-a10c0a9280ea@redhat.com
+Mime-Version: 1.0
+From: <peng.hao2@zte.com.cn>
+To: <eblake@redhat.com>
+Content-Type: multipart/mixed;
+	boundary="=====_001_next====="
+X-MAIL: mse02.zte.com.cn wAR0TsZM066246
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 202.103.147.169
+Subject: Re: [Qemu-arm] 
+ =?utf-8?q?=5BQemu-devel=5D_=5BPATCH_V9_9/9=5D_pvpanic?=
+ =?utf-8?q?_=3A_update_pvpanic_document?=
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,46 +88,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: shameerali.kolothum.thodi@huawei.com
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
+	philmd@redhat.com, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R2+qVLxZ8ZBU
+X-TUID: AggDe+Sv2bmL
 
 
 
-On 2018/11/29 1:26, Auger Eric wrote:
->>>>    struct AcpiIortSmmu3 {
->>>>        ACPI_IORT_NODE_HEADER_DEF
->>>>        uint64_t base_address;
->>>> @@ -639,6 +645,8 @@ struct AcpiIortSmmu3 {
->>>>        uint32_t pri_gsiv;
->>>>        uint32_t gerr_gsiv;
->>>>        uint32_t sync_gsiv;
->>>> +    uint32_t pxm;
->> So if we use this field ,we need to set the flags with
->> ACPI_IORT_SMMU_V3_PXM_VALID
->>>> +    uint32_t id_mapping_index;
->> And if we use this field, it needs to set the revision to at least 1.
-> But is it harmful to add those fields in the struct as this patch does?
-> 
-> - in our case ACPI_IORT_SMMU_V3_PXM_VALID flag is not set so the field
-> value is ignored according to the spec and arm_smmu_v3_set_proximity()
-> will not do anything.
-> 
-> - SMMU control interrupts are all GSIV based so spec says that deviceID
-> index is ignored.
-> 
-> So eventually the fact the struct size is changing over the revisions
-> does not look a problem because the node length is part of the struct
-> and the offset to the ID array also is part of the structure.
-> 
-> So I could have left the structure as before (because we don't use the
-> functionalities associated to those fields). But on the other hand it's
-> good to upgrade the struct according to Rev D now.
-> 
-> So I think the patch is correct, isn't?
-Yes, I think it's not harmful but it would be better to add some 
-comments to explain why we don't increase the revision number ATM.
+--=====_001_next=====
+Content-Type: multipart/alternative;
+	boundary="=====_003_next====="
 
-Thanks,
-Shannon
+
+--=====_003_next=====
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+Pj4gQWRkIG1taW8gc3VwcG9ydCBpbmZvIGluIGRvY3Mvc3BlY3MvcHZwYW5pYy50eHQuCj4+Cj4+
+IFNpZ25lZC1vZmYtYnk6IFBlbmcgSGFvIDxwZW5nLmhhbzJAenRlLmNvbS5jbj4KPj4gLS0tCj4+
+ICAgZG9jcy9zcGVjcy9wdnBhbmljLnR4dCB8IDE1ICsrKysrKysrKysrKystLQo+PiAgIDEgZmls
+ZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0t
+Z2l0IGEvZG9jcy9zcGVjcy9wdnBhbmljLnR4dCBiL2RvY3Mvc3BlY3MvcHZwYW5pYy50eHQKPj4g
+aW5kZXggYzdiYmFjYy4uNjdmNTU5MSAxMDA2NDQKPj4gLS0tIGEvZG9jcy9zcGVjcy9wdnBhbmlj
+LnR4dAo+PiArKysgYi9kb2NzL3NwZWNzL3B2cGFuaWMudHh0Cj4+IEBAIC0xLDE0ICsxLDE4IEBA
+Cj4+ICAgUFZQQU5JQyBERVZJQ0UKPj4gICA9PT09PT09PT09PT09PQpbLi4uXQo+PiArV2hlbiBw
+dnBhbmljIGRldmljZSBpcyBpbXBsZW1lbnRlZCBhcyBhIElTQSBkZXZpY2UsIGl0IHN1cHBvcnRz
+IElPUE9SVAo+PiArbW9kZS4gU2luY2UgUUVNVSB2My4yIHB2cGFuaWMgYWxzbyBzdXBwb3J0cyBN
+TUlPIG1vZGUsIGl0IHdpbGwgYmUKPgo+VGhlIG5leHQgcWVtdSByZWxlYXNlIHdpbGwgYmUgNC4w
+LCBub3QgMy4yLgo+CgpJIHdpbGwgY2hhbmdlLgoKPj4gK2ltcGxlbWVudGVkIGFzIGEgU1lTQlVT
+IGRldmljZS4KPgo+R3JhbW1hciBzdWdnZXN0aW9uOgo+Cj5UaGUgcHZwYW5pYyBkZXZpY2UgY2Fu
+IGJlIGltcGxlbWVudGVkIGFzIGFuIElTQSBkZXZpY2UgKHVzaW5nIElPUE9SVCksCj5vciwgc2lu
+Y2UgcWVtdSA0LjAsIGFzIGEgU1lTQlVTIGRldmljZSAodXNpbmcgTU1JTykuCj4KCkl0J3MgZmlu
+ZS4gCnRoYW5rcy4KCj4+ICsKPj4gICBJU0EgSW50ZXJmYWNlCj4+ICAgLS0tLS0tLS0tLS0tLQo+
+Cj4tLQo+RXJpYyBCbGFrZSwgUHJpbmNpcGFsIFNvZnR3YXJlIEVuZ2luZWVyCj5SZWQgSGF0LCBJ
+bmMuICAgICAgICAgICArMS05MTktMzAxLTMyNjYKPlZpcnR1YWxpemF0aW9uOiAgcWVtdS5vcmcg
+fCBsaWJ2aXJ0Lm9yZw==
+
+
+--=====_003_next=====--
+
+--=====_001_next=====--
+

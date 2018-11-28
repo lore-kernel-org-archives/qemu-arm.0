@@ -1,87 +1,85 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp532467wrt;
-        Tue, 27 Nov 2018 19:26:49 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/U0OkkaCmdwht7uxXe49oSfUdlTzLxjYvKyhJCitw3o2HGtdO9jaXTLTOBY3COeNkc5z69Q
-X-Received: by 2002:a81:4506:: with SMTP id s6mr32497328ywa.200.1543375609811;
-        Tue, 27 Nov 2018 19:26:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543375609; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp548338wrt;
+        Tue, 27 Nov 2018 19:50:24 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WevdSMHhJ9cnkp8BZ/y2oI8LD/PfYyJb9ajQg1fvT1O7VbJi1kxCWJtWAPu6lSNDN/eWcq
+X-Received: by 2002:a25:5443:: with SMTP id i64-v6mr38092005ybb.287.1543377023946;
+        Tue, 27 Nov 2018 19:50:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543377023; cv=none;
         d=google.com; s=arc-20160816;
-        b=rKdzNqMwrqyay3/ScovdOHprD2YNDpfujIhuBPW3ndK8x5TNtmzCjEFnVOUpOiqaMq
-         f/bSFv/J47SqYEpAIsDeO+1hiTWMt04x8680XXL1oK8mustO3aQwggV8AyqyNl7YhC/x
-         30i+UhqWbly78uTIClQJ3d4fJcE/vyNDDhHGskGrAHtyMMoxfq7Ssd/nuNA0xBj2ME82
-         WIaY/NCJ/OHurYnMHJfhDKAGy/ZQcpKuPzEWNOOwmmjel4yIoIbdGuXB86X2BAfuES/2
-         G85w+Q9NMUSSv5bYcx3sMlq/wIlSCpd5W38BYydmMGoNFJ8Y/bOILjZUGqWvBMpsEzFV
-         mjEg==
+        b=pYhdlsGFnplIbLBBGulyw2hCh2oPd+CSobhKQ51Lo2HHuM5egniK2zxa1uHrKZWMNN
+         g+IZoxGJMpfw+x0hOVl7CmU/9Ht5hctEkfBqBOUlludZQWu8Q2dtOR4jbnPd2e6OnpPt
+         c1g6Iex8Qnit/2rKBo8P7KTjGYiHnwHy2ATZtfEEE5UDBRv4SyU/OJjF7VJdhYgoAOIa
+         E0xgQP7qv0luUMqO2h+VVsY0ijMM3uh0IJCT6KxyRM+aAtJ4YeYLRtOf00sQOPTv5VLF
+         gTegj4Vk6y3OyMpZXf75bXX5LzwOs48syf4nb55klUPev2ZTGD2ICW+8IhX2ecOkqCsS
+         xkYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=xKWZuN/zA4BXPTdN6tHOmlOAEfO6qDzDlaHt9UEd7RE=;
-        b=RN2k+f7QOTdiF3FrfCAFXaKw0VIw6SFzwhaG09z8rDL5+OF17YuIrvKAPjbqBxH+F2
-         vNUUmTfzJFDgJAOCEx6iFjOWdLKjA+skjWu9DcpUkQKy76UboPvKdSBLrKnm2oD9mxR7
-         Ydd/SoeZ/jzO06E7FNsvguDcDJDjk11aKZF1nln/sibR51ayiJaeKKzJdGA5fw3G9VKX
-         l+EObJSDiQd62KNWyY41SbVpAgRaUgt7agsiRg838+qOBAOKkP4Y1/7xqpb32WtY78SV
-         HRWSgdi1qIl6WLBlfLirI1LyCY9kyuXanGy/WScDC1EcgV4n07bgzJ6QEthP9wpHHpzx
-         F78A==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=DBqjQXLjPi8KkD19v3IMd7joKj9LAz8fu/GMzU6tKj4=;
+        b=LL5NoNsvwfwa04FEOSnTEvGkmb/Su6blcZqI6MLv8Rb4zikffhHZJZ5//jxf+sGWnB
+         Vh0yM7kVKMPvzbPzYSHzGhzzMSE6i70h2LElkzvPj/0mUVVW+ui+IWbcyz+jbwuFIypl
+         QaeFdy6SrIvcsr8T5lXY11HBSCEhmnhUtnizWxbLJMqUs0q67x0H1RZdVHAWXhQkDijX
+         6QuY3VXha2ODUDZupMlGXmeTyUfxKqWAwU/2FiFF0O8wlQBj/jEa/D8kV6FdoDH+5p1k
+         LyfcooEP8janEmC28Gpa/FWHA9t9mrYx8syaCq/X6szyhqG9n2Z6AQ5xxIkoxGsnLBUA
+         bGHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z124-v6si3798519yba.78.2018.11.27.19.26.49
+        by mx.google.com with ESMTPS id i9-v6si4275494ybp.411.2018.11.27.19.50.23
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 27 Nov 2018 19:26:49 -0800 (PST)
+        Tue, 27 Nov 2018 19:50:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45670 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45732 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRqUz-0000zP-8t
-	for alex.bennee@linaro.org; Tue, 27 Nov 2018 22:26:49 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45758)
+	id 1gRqrn-0002Yd-BY
+	for alex.bennee@linaro.org; Tue, 27 Nov 2018 22:50:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51392)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gRqUs-0000z7-Cm
-	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 22:26:43 -0500
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gRqrY-0002YA-0p
+	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 22:50:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gRqUn-0001p2-Ik
-	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 22:26:42 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43726)
+	(envelope-from <peng.hao2@zte.com.cn>) id 1gRqrV-0003WE-1J
+	for qemu-arm@nongnu.org; Tue, 27 Nov 2018 22:50:07 -0500
+Received: from mxhk.zte.com.cn ([63.217.80.70]:65472)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1gRqUn-0001oX-BF; Tue, 27 Nov 2018 22:26:37 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 290C330820EE;
-	Wed, 28 Nov 2018 03:26:36 +0000 (UTC)
-Received: from redhat.com (ovpn-121-88.rdu2.redhat.com [10.10.121.88])
-	by smtp.corp.redhat.com (Postfix) with SMTP id 0A54C600C0;
-	Wed, 28 Nov 2018 03:26:30 +0000 (UTC)
-Date: Tue, 27 Nov 2018 22:26:30 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20181127221515-mutt-send-email-mst@kernel.org>
-References: <20181126162942.21258-1-sameo@linux.intel.com>
-	<20181126162942.21258-5-sameo@linux.intel.com>
-	<20181127162551.29608eeb@redhat.com>
-	<20181127154218.GA5677@caravaggio>
-	<20181127172749.75a036b4@redhat.com>
+	(Exim 4.71) (envelope-from <peng.hao2@zte.com.cn>)
+	id 1gRqrU-0003SF-MN; Tue, 27 Nov 2018 22:50:04 -0500
+Received: from mse01.zte.com.cn (unknown [10.30.3.20])
+	by Forcepoint Email with ESMTPS id 96F546523DDA42E4EB5D;
+	Wed, 28 Nov 2018 11:49:58 +0800 (CST)
+Received: from notes_smtp.zte.com.cn ([10.30.1.239])
+	by mse01.zte.com.cn with ESMTP id wAS3noB8058585;
+	Wed, 28 Nov 2018 11:49:50 +0800 (GMT-8)
+	(envelope-from peng.hao2@zte.com.cn)
+Received: from localhost.localdomain.localdomain ([10.74.120.59])
+	by szsmtp06.zte.com.cn (Lotus Domino Release 8.5.3FP6)
+	with ESMTP id 2018112811501044-13417634 ;
+	Wed, 28 Nov 2018 11:50:10 +0800 
+From: Peng Hao <peng.hao2@zte.com.cn>
+To: peter.maydell@linaro.org, drjones@redhat.com, philmd@redhat.com
+Date: Wed, 28 Nov 2018 20:12:45 +0800
+Message-Id: <1543407172-16175-3-git-send-email-peng.hao2@zte.com.cn>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1543407172-16175-1-git-send-email-peng.hao2@zte.com.cn>
+References: <1543407172-16175-1-git-send-email-peng.hao2@zte.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20181127172749.75a036b4@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Wed, 28 Nov 2018 03:26:36 +0000 (UTC)
+X-MIMETrack: Itemize by SMTP Server on SZSMTP06/server/zte_ltd(Release
+	8.5.3FP6|November 21, 2013) at 2018-11-28 11:50:10,
+	Serialize by Router on notes_smtp/zte_ltd(Release 9.0.1FP7|August  17,
+	2016) at 2018-11-28 11:49:42
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-MAIL: mse01.zte.com.cn wAS3noB8058585
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 4/8] hw: arm: Carry RSDP specific data
- through AcpiRsdpData
+X-Received-From: 63.217.80.70
+Subject: [Qemu-arm] [PATCH V10 2/9]  hw/misc/pvpanic: Cosmetic renaming
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -93,199 +91,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Samuel Ortiz <sameo@linux.intel.com>,
-	Ben Warren <ben@skyportsystems.com>, qemu-devel@nongnu.org,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peng Hao <peng.hao2@zte.com.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: imXmVtfFve+Y
+X-TUID: nCO8NHmqOZvz
 
-On Tue, Nov 27, 2018 at 05:27:49PM +0100, Igor Mammedov wrote:
-> On Tue, 27 Nov 2018 16:42:18 +0100
-> Samuel Ortiz <sameo@linux.intel.com> wrote:
-> 
-> > Hi Igor,
-> > 
-> > On Tue, Nov 27, 2018 at 04:25:51PM +0100, Igor Mammedov wrote:
-> > > On Mon, 26 Nov 2018 17:29:37 +0100
-> > > Samuel Ortiz <sameo@linux.intel.com> wrote:
-> > >   
-> > > > That will allow us to generalize the ARM build_rsdp() routine to support
-> > > > both legacy RSDP (The current i386 implementation) and extended RSDP
-> > > > (The ARM implementation).
-> > > > 
-> > > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> > > > ---
-> > > >  include/hw/acpi/acpi-defs.h | 11 +++++++++++
-> > > >  hw/arm/virt-acpi-build.c    | 27 ++++++++++++++++++++++-----
-> > > >  2 files changed, 33 insertions(+), 5 deletions(-)
-> > > > 
-> > > > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> > > > index af8e023968..e7fd24c6c5 100644
-> > > > --- a/include/hw/acpi/acpi-defs.h
-> > > > +++ b/include/hw/acpi/acpi-defs.h
-> > > > @@ -53,6 +53,17 @@ struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
-> > > >  } QEMU_PACKED;
-> > > >  typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
-> > > >  
-> > > > +typedef struct AcpiRsdpData {
-> > > > +    uint8_t oem_id[6]; /* OEM identification */
-> > > > +    uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
-> > > > +
-> > > > +    unsigned *rsdt_tbl_offset;
-> > > > +    unsigned *xsdt_tbl_offset;
-> > > > +} AcpiRsdpData;
-> > > > +  
-> > >   
-> > > > +#define ACPI_RSDP_REV_1 0
-> > > > +#define ACPI_RSDP_REV_2 2  
-> > > it's one time used spec defined values so just use values directly
-> > > in place with a comment, so reader won't have to jump around code
-> > > when comparing to spec.  
-> > It's also used in the ACPI tests fix patch.
-> it's better to use in test it's own version (we just opencode them there)
-> see fadt_fetch_facs_and_dsdt_ptrs()/sanitize_fadt_ptrs()
-> same applies for length.
-> that way if we break it in qemu's code test would catch the thing
-> 
-> > Also the 0 for revision 1 is a little confusing, I feel the above
-> > definition is clearer.
-> that's confusion is in the spec, so we just mimic it, no need to add more on top
+From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-To be more precise, there is a huge number of constants in ACPI
-such that adding defines for them all would be a huge burden,
-and will not make it easy to check values against the
-spec at all (case in point ACPI_RSDP_REV_2 is actually wrong,
-2 is version 3 and up).
+To ease the MMIO device addition in the next patch, rename:
+- ISA=5FPVPANIC=5FDEVICE -> PVPANIC=5FISA=5FDEVICE.
+- MemoryRegion io -> mr.
 
-Thus the preferred style is to add a comment near the value
-matching spec name verbatim, so one can copy it and
-look it up in the spec. Sometimes one needs to reference
-specific spec version.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
+---
+ hw/misc/pvpanic.c | 28 ++++++++++++++++------------
+ 1 file changed, 16 insertions(+), 12 deletions(-)
 
-0 /* Revision: ACPI version 1.0 */
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index 9d8961b..0f23a67 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -25,8 +25,8 @@
+ /* The pv event value */
+ #define PVPANIC=5FPANICKED        (1 << PVPANIC=5FF=5FPANICKED)
+=20
+-#define ISA=5FPVPANIC=5FDEVICE(obj)    \
+-    OBJECT=5FCHECK(PVPanicState, (obj), TYPE=5FPVPANIC)
++#define PVPANIC=5FISA=5FDEVICE(obj)    \
++    OBJECT=5FCHECK(PVPanicISAState, (obj), TYPE=5FPVPANIC)
+=20
+ static void handle=5Fevent(int event)
+ {
+@@ -45,12 +45,16 @@ static void handle=5Fevent(int event)
+=20
+ #include "hw/isa/isa.h"
+=20
+-typedef struct PVPanicState {
++/* PVPanicISAState for ISA device and
++ * use ioport.
++ */
++typedef struct PVPanicISAState {
+     ISADevice parent=5Fobj;
+-
+-    MemoryRegion io;
++    /*< private>*/
+     uint16=5Ft ioport;
+-} PVPanicState;
++    /*<public>*/
++    MemoryRegion mr;
++} PVPanicISAState;
+=20
+ /* return supported events on read */
+ static uint64=5Ft pvpanic=5Fioport=5Fread(void *opaque, hwaddr addr, unsig=
+ned size)
+@@ -75,15 +79,15 @@ static const MemoryRegionOps pvpanic=5Fops =3D {
+=20
+ static void pvpanic=5Fisa=5Finitfn(Object *obj)
+ {
+-    PVPanicState *s =3D ISA=5FPVPANIC=5FDEVICE(obj);
++    PVPanicISAState *s =3D PVPANIC=5FISA=5FDEVICE(obj);
+=20
+-    memory=5Fregion=5Finit=5Fio(&s->io, OBJECT(s), &pvpanic=5Fops, s, "pvp=
+anic", 1);
++    memory=5Fregion=5Finit=5Fio(&s->mr, OBJECT(s), &pvpanic=5Fops, s, "pvp=
+anic", 1);
+ }
+=20
+ static void pvpanic=5Fisa=5Frealizefn(DeviceState *dev, Error **errp)
+ {
+     ISADevice *d =3D ISA=5FDEVICE(dev);
+-    PVPanicState *s =3D ISA=5FPVPANIC=5FDEVICE(dev);
++    PVPanicISAState *s =3D PVPANIC=5FISA=5FDEVICE(dev);
+     FWCfgState *fw=5Fcfg =3D fw=5Fcfg=5Ffind();
+     uint16=5Ft *pvpanic=5Fport;
+=20
+@@ -96,11 +100,11 @@ static void pvpanic=5Fisa=5Frealizefn(DeviceState *dev=
+, Error **errp)
+     fw=5Fcfg=5Fadd=5Ffile(fw=5Fcfg, "etc/pvpanic-port", pvpanic=5Fport,
+                     sizeof(*pvpanic=5Fport));
+=20
+-    isa=5Fregister=5Fioport(d, &s->io, s->ioport);
++    isa=5Fregister=5Fioport(d, &s->mr, s->ioport);
+ }
+=20
+ static Property pvpanic=5Fisa=5Fproperties[] =3D {
+-    DEFINE=5FPROP=5FUINT16(PVPANIC=5FIOPORT=5FPROP, PVPanicState, ioport, =
+0x505),
++    DEFINE=5FPROP=5FUINT16(PVPANIC=5FIOPORT=5FPROP, PVPanicISAState, iopor=
+t, 0x505),
+     DEFINE=5FPROP=5FEND=5FOF=5FLIST(),
+ };
+=20
+@@ -116,7 +120,7 @@ static void pvpanic=5Fisa=5Fclass=5Finit(ObjectClass *k=
+lass, void *data)
+ static TypeInfo pvpanic=5Fisa=5Finfo =3D {
+     .name          =3D TYPE=5FPVPANIC,
+     .parent        =3D TYPE=5FISA=5FDEVICE,
+-    .instance=5Fsize =3D sizeof(PVPanicState),
++    .instance=5Fsize =3D sizeof(PVPanicISAState),
+     .instance=5Finit =3D pvpanic=5Fisa=5Finitfn,
+     .class=5Finit    =3D pvpanic=5Fisa=5Fclass=5Finit,
+ };
+--=20
+1.8.3.1
 
-and
-
-1 /* Revision: ACPI 2.0 */
-
-and
-
-2 /* Revision: ACPI 3.0a */
-
-For style consistency, if the value is used multiple times, we avoid
-duplication by using an inline function and not a macro.
-
-> > 
-> > 
-> > > > +
-> > > >  /* Table structure from Linux kernel (the ACPI tables are under the
-> > > >     BSD license) */
-> > > >  
-> > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > > > index 0835900052..2dad465ecf 100644
-> > > > --- a/hw/arm/virt-acpi-build.c
-> > > > +++ b/hw/arm/virt-acpi-build.c
-> > > > @@ -368,7 +368,7 @@ static void acpi_dsdt_add_power_button(Aml *scope)
-> > > >  
-> > > >  /* RSDP */
-> > > >  static void
-> > > > -build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-> > > > +build_rsdp(GArray *rsdp_table, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
-> > > >  {
-> > > >      AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
-> > > >      unsigned xsdt_pa_size = sizeof(rsdp->xsdt_physical_address);
-> > > > @@ -379,14 +379,14 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-> > > >                               true /* fseg memory */);
-> > > >  
-> > > >      memcpy(&rsdp->signature, "RSD PTR ", sizeof(rsdp->signature));
-> > > > -    memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, sizeof(rsdp->oem_id));
-> > > > +    memcpy(rsdp->oem_id, rsdp_data->oem_id, sizeof(rsdp->oem_id));
-> > > >      rsdp->length = cpu_to_le32(sizeof(*rsdp));
-> > > > -    rsdp->revision = 0x02;
-> > > > +    rsdp->revision = rsdp_data->revision;
-> > > >  
-> > > >      /* Address to be filled by Guest linker */
-> > > >      bios_linker_loader_add_pointer(linker,
-> > > >          ACPI_BUILD_RSDP_FILE, xsdt_pa_offset, xsdt_pa_size,
-> > > > -        ACPI_BUILD_TABLE_FILE, xsdt_tbl_offset);
-> > > > +        ACPI_BUILD_TABLE_FILE, *rsdp_data->xsdt_tbl_offset);
-> > > >  
-> > > >      /* Checksum to be filled by Guest linker */
-> > > >      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
-> > > > @@ -399,6 +399,20 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
-> > > >          (char *)&rsdp->extended_checksum - rsdp_table->data);
-> > > >  }
-> > > >  
-> > > > +static void
-> > > > +init_rsdp_data(AcpiRsdpData *data, const char *oem_id, uint8_t revision,
-> > > > +               unsigned *rsdt_offset, unsigned *xsdt_offset)
-> > > > +{
-> > > > +    /* Caller must provide an OEM ID */
-> > > > +    g_assert(oem_id);
-> > > > +    g_assert(strlen(oem_id) >= 6);
-> > > > +
-> > > > +    memcpy(data->oem_id, oem_id, 6);
-> > > > +    data->revision = revision;
-> > > > +    data->rsdt_tbl_offset = rsdt_offset;
-> > > > +    data->xsdt_tbl_offset = xsdt_offset;
-> > > > +}
-> > > > +
-> > > >  static void
-> > > >  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> > > >  {
-> > > > @@ -810,6 +824,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> > > >      GArray *table_offsets;
-> > > >      unsigned dsdt, xsdt;
-> > > >      GArray *tables_blob = tables->table_data;
-> > > > +    AcpiRsdpData rsdp;  
-> > > s/rsdp/rsdp_info/
-> > >   
-> > > >  
-> > > >      table_offsets = g_array_new(false, true /* clear */,
-> > > >                                          sizeof(uint32_t));
-> > > > @@ -857,7 +872,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> > > >      build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
-> > > >  
-> > > >      /* RSDP is in FSEG memory, so allocate it separately */
-> > > > -    build_rsdp(tables->rsdp, tables->linker, xsdt);
-> > > > +    init_rsdp_data(&rsdp, ACPI_BUILD_APPNAME6, ACPI_RSDP_REV_2,
-> > > > +                   NULL, &xsdt);  
-> > > It would be more concise to use declarative style without extra clutter:
-> > > 
-> > > -    init_rsdp_data(&rsdp, ACPI_BUILD_APPNAME6, ACPI_RSDP_REV_2,
-> > > -                   NULL, &xsdt);
-> > > -    build_rsdp(tables->rsdp, tables->linker, &rsdp);
-> > > +    {
-> > > +       AcpiRsdpData rsdp = {
-> > > +           .revision = 2,
-> > > +           .oem_id = ACPI_BUILD_APPNAME6,
-> > > +           .xsdt_tbl_offset = &xsdt,
-> > > +           .rsdt_tbl_offset = NULL,
-> > > +       };
-> > > +       build_rsdp(tables->rsdp, tables->linker, &rsdp);
-> > > +    }  
-> > 2 things here, imo:
-> > 
-> > - This is not more concise.
-> with function, one have to jump to it's definition/body to find out what
-> each argument is, with declaration + initialization inplace it's clear
-> what values mean as you see fields right there as well.
-> 
-> If it's simple structure it is clearer to use initializer, instead of
-> wrapper helper. With complex structure it could be other way around.
-> 
-> > - It's code duplication as almost the same snippet is going to be used
-> >   for i386/acpi-build.c
-> the same goes for init_rsdp_data(...), the only difference
-> the declaration isn't folded in 2 lines to be more readable and there is
-> boiler plate helper function adds.
-> 
-> > 
-> > Cheers,
-> > Samuel.

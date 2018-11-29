@@ -1,85 +1,87 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2451109wrt;
-        Thu, 29 Nov 2018 07:09:04 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XqJ4FUQ0vOGmpOGQXJm+ek3HCzLfU3ZJBTQAZdvg8Ht5pN1y8Y5wI7DVOplY8SnrCn5iVy
-X-Received: by 2002:a81:120c:: with SMTP id 12-v6mr1781590yws.134.1543504144872;
-        Thu, 29 Nov 2018 07:09:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543504144; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2455512wrt;
+        Thu, 29 Nov 2018 07:12:32 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UDLePlC1jdhwh6GTA6xayHNKFTBT58MWx8YaMzl8kSVXSTfXwleyz0N8ZWRgYQDPOfh+7v
+X-Received: by 2002:a25:b944:: with SMTP id s4-v6mr1698776ybm.130.1543504352441;
+        Thu, 29 Nov 2018 07:12:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543504352; cv=none;
         d=google.com; s=arc-20160816;
-        b=LxJIhId+Sh2itWFIDl3/HwgWFn+hYxjU0EyxnJd/Ihl20RgO+lUbwTsDaFrBA62ry3
-         ocGRMn+/iy3zehszJOrQENMJ+KgI+Kb7+VuLQMSAjjIpQzpDifI4I6+y8HikTVVJMzbX
-         8DEbQ+UnGpRiADmhP37jFxyOcwOziWfWCZwUlZeDdKhUq+89chrfj02LPnU01QVfBUwF
-         /kLFtDI92H8j0MYNJX+DcgxrN6K6yA0/fCS2LyVNlyxKJamveLZwSAHKkVAixo4yquoy
-         x5+HnH57LNH4hmeIltGqOZupFZ9iCOp6zzvpFRsCyXTQ+a66fWcF/rXUhgfzEu1TgEc7
-         HT8A==
+        b=hfxKwUW7UmC5QcAcE8f1M9pyV0DkcYzy6vZjyNEzEAn4I0sN/xW9IGEZzUzdmrcYs6
+         0939vgiowINE60Pz3E8/KAhlF5ySm30tuUhQ4IgSD1mOzqN9uKQiyskIUO5CYto+iW41
+         HP0vvATATCSC42tG70i0PjP9YvcGEXnJhL0ztqAVMSEliNNXoG0yByZYHJdhh5rC7Qfv
+         BIAcK672bxSkBXZi+tXFM3JIN/BPrYfzZo3Ta98XoO7M+1AT8rV0q+kFgz9WWenxB4np
+         WcQ7zPAimcQpC4gzZaktCt3vORTrFfF+NHkftf0h2TljDIm4xSDNNX4d2+AzF9D/RCsk
+         AlnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=emD5wOYzdgfoScope+UoS39PvFEh5HotE8oWvckzpEA=;
-        b=KATZjhNFKZouB37WX6qgwrxRfcNLL/TCtHJfNCP0BplaKvq5u4FLaszBcSVhZGaBS7
-         rNpQSJlklNbnZqlVcf/QjniCikiQf60whNRH9hgm/7TboCc/FrelWzL0M5jnfznR0FCG
-         xCp3A+/ghrFnDANH/nRJA0NuVkP7vZldSMDt9THii0cmVS5nZlt/7pokDPX6/WR9JLl8
-         D9eWcqupzAjlpdd5zGbjG0jVB+2IRbdNk3Nco3OpEo/jcttuLdie78T9Cie/41R8ebAV
-         wkdSPR6ucVo+CYGrvviW4zcwdt3FzVEWMu6/Jv2HH4fZ11IxMq3uVWyD+8XKu99yPFDo
-         2fGA==
+        bh=GjmOtnl0+ljVXRiWScvEip/HSpzT2JuHB7/YYaYKSck=;
+        b=HrM3jahBT23S4GTRJbyeiyqgVZ5Uygqn8wfeu/y4DllKSz+nxBrB/P8mPROqgMZMtf
+         wXTyZI4wwYH4HwP7REpr8X/NxJaYAb4V5TN16PWZ1wRxnpe3GFm61m6tTqJFIKlw56em
+         8839+e0bnOl2GKpMDkBBrt9fvTAyIC44rwVGKwpkIdbQk8OYrj/wnopDASQxabPILiEv
+         mq7kToD3KHnNY7fydjgw84ts2Jh5Io+JqKxMk5hRgJWs/Sa/iu7UL20ek4V7nhXBeIMY
+         rQ7vXhTwnVgNeI++YTzQpT0y9RfUH369tS8qKOSCywsquoFg97BxFAcsoOogYO9KdtU6
+         YcQA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id z17-v6si1222672ybk.36.2018.11.29.07.09.04
+        by mx.google.com with ESMTPS id p131si1359533ywe.5.2018.11.29.07.12.32
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 29 Nov 2018 07:09:04 -0800 (PST)
+        Thu, 29 Nov 2018 07:12:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54693 helo=lists.gnu.org)
+Received: from localhost ([::1]:54718 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSNw8-0000mG-5q
-	for alex.bennee@linaro.org; Thu, 29 Nov 2018 10:09:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38467)
+	id 1gSNzT-0003zq-Sg
+	for alex.bennee@linaro.org; Thu, 29 Nov 2018 10:12:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gSNvF-0000hq-7n
-	for qemu-devel@nongnu.org; Thu, 29 Nov 2018 10:08:10 -0500
+	(envelope-from <drjones@redhat.com>) id 1gSNx5-0002H9-QG
+	for qemu-devel@nongnu.org; Thu, 29 Nov 2018 10:10:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gSNvE-0006iD-1f
-	for qemu-devel@nongnu.org; Thu, 29 Nov 2018 10:08:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49462)
+	(envelope-from <drjones@redhat.com>) id 1gSNx3-0000RK-SB
+	for qemu-devel@nongnu.org; Thu, 29 Nov 2018 10:10:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42178)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1gSNv8-0006e5-58; Thu, 29 Nov 2018 10:08:02 -0500
+	id 1gSNwy-0000MX-BJ; Thu, 29 Nov 2018 10:09:56 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5637E31256A3;
-	Thu, 29 Nov 2018 15:08:01 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 85DA830833A6;
+	Thu, 29 Nov 2018 15:09:55 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9826818EE0;
-	Thu, 29 Nov 2018 15:07:45 +0000 (UTC)
-Date: Thu, 29 Nov 2018 16:07:43 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 21A2F18BAB;
+	Thu, 29 Nov 2018 15:09:49 +0000 (UTC)
+Date: Thu, 29 Nov 2018 16:09:47 +0100
 From: Andrew Jones <drjones@redhat.com>
 To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181129150743.rsrrtsplzvzqie7o@kamzik.brq.redhat.com>
+Message-ID: <20181129150947.hqsnpf653vs53uci@kamzik.brq.redhat.com>
 References: <20181129132428.333-1-sameo@linux.intel.com>
-	<20181129132428.333-9-sameo@linux.intel.com>
+	<20181129132428.333-7-sameo@linux.intel.com>
+	<20181129144243.so22d2igis7a24xp@kamzik.brq.redhat.com>
+	<20181129145942.GB4691@caravaggio>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181129132428.333-9-sameo@linux.intel.com>
+In-Reply-To: <20181129145942.GB4691@caravaggio>
 User-Agent: NeoMutt/20180716
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 29 Nov 2018 15:08:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 29 Nov 2018 15:09:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v2 8/8] hw: acpi: Remove AcpiRsdpDescriptor
- and fix tests
+Subject: Re: [Qemu-devel] [PATCH v2 6/8] hw: arm: Support both legacy and
+ current RSDP build
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,221 +102,83 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d49i698+ZSsk
+X-TUID: t7OhUq6WDRus
 
-On Thu, Nov 29, 2018 at 02:24:28PM +0100, Samuel Ortiz wrote:
-> The only remaining AcpiRsdpDescriptor users are the ACPI utils for the
-> BIOS table tests.
-> We remove that dependency and can thus remove the structure itself.
+On Thu, Nov 29, 2018 at 03:59:42PM +0100, Samuel Ortiz wrote:
+> On Thu, Nov 29, 2018 at 03:42:43PM +0100, Andrew Jones wrote:
+> > On Thu, Nov 29, 2018 at 02:24:26PM +0100, Samuel Ortiz wrote:
+> > > We add the ability to build legacy or current RSDP tables, based on the
+> > > AcpiRsdpData revision field passed to build_rsdp().
+> > > Although arm/virt only uses RSDP v2, adding that capability to
+> > > build_rsdp will allow us to share the RSDP build code between ARM and x86.
+> > > 
+> > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+> > > ---
+> > >  hw/arm/virt-acpi-build.c | 37 ++++++++++++++++++++++++++-----------
+> > >  1 file changed, 26 insertions(+), 11 deletions(-)
+> > > 
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index 4782aea4fe..e1338b6f5a 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -378,23 +378,38 @@ build_rsdp(GArray *tbl, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
+> > >      g_array_append_vals(tbl, rsdp_data->oem_id, 6); /* OEMID */
+> > >      build_append_int_noprefix(tbl, rsdp_data->revision, 1); /* Revision */
+> > >      build_append_int_noprefix(tbl, 0, 4); /* RsdtAddress */
+> > > -    build_append_int_noprefix(tbl, 36, 4); /* Length */
+> > > -
+> > > -    /* XSDT address to be filled by guest linker */
+> > > -    build_append_int_noprefix(tbl, 0, 8); /* XsdtAddress */
+> > > -    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
+> > > -                                   24, 8,
+> > > -                                   ACPI_BUILD_TABLE_FILE,
+> > > -                                   *rsdp_data->xsdt_tbl_offset);
+> > > -
+> > > -    build_append_int_noprefix(tbl, 0, 1); /* Extended Checksum */
+> > > -    build_append_int_noprefix(tbl, 0, 3); /* Reserved */
+> > > +    if (rsdp_data->rsdt_tbl_offset) {
+> > 
+> > I see why a pointer was used now. Using a pointer ensures a zero
+> > offset won't fail this test. However the test could be replaced with
+> > rsdp_data->revision == 0.
+> > 
+> > > +        /* RSDT address to be filled by guest linker */
+> > > +        bios_linker_loader_add_pointer(linker,
+> > > +                                       ACPI_BUILD_RSDP_FILE, 16, 4,
+> > > +                                       ACPI_BUILD_TABLE_FILE,
+> > > +                                       *rsdp_data->rsdt_tbl_offset);
+> > > +    }
+> > >  
+> > >      /* Checksum to be filled by guest linker */
+> > >      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
+> > >                                      0, 20, /* ACPI rev 1.0 RSDP size */
+> > >                                      8);
+> > >  
+> > > +    if (rsdp_data->revision == 0) {
+> > > +        /* ACPI 1.0 RSDP, we're done */
+> > > +        return;
+> > > +    }
+> > > +
+> > > +    /* The RSDP revision is 2 and later, we must have an XSDT pointer */
+> > > +    g_assert(rsdp_data->xsdt_tbl_offset != NULL);
+> > 
+> > So here's the justification for the pointers. We sanity check the callers.
+> We could sanity check the callers without pointers as well, I don't
+> think there's a strong advantage for pointers here, except consistence.
 > 
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> ---
->  include/hw/acpi/acpi-defs.h | 13 -----------
->  tests/acpi-utils.h          |  5 +++-
->  tests/acpi-utils.c          | 46 ++++++++++++++++++++++++++++++-------
->  tests/bios-tables-test.c    | 27 +++++++++++++++-------
->  tests/vmgenid-test.c        |  8 ++++---
->  5 files changed, 66 insertions(+), 33 deletions(-)
 > 
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index 8425ecb8c6..5021cb9e79 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -40,19 +40,6 @@ enum {
->      ACPI_FADT_F_LOW_POWER_S0_IDLE_CAPABLE,
->  };
->  
-> -struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
-> -    uint64_t signature;              /* ACPI signature, contains "RSD PTR " */
-> -    uint8_t  checksum;               /* To make sum of struct == 0 */
-> -    uint8_t  oem_id [6];             /* OEM identification */
-> -    uint8_t  revision;               /* Must be 0 for 1.0, 2 for 2.0 */
-> -    uint32_t rsdt_physical_address;  /* 32-bit physical address of RSDT */
-> -    uint32_t length;                 /* XSDT Length in bytes including hdr */
-> -    uint64_t xsdt_physical_address;  /* 64-bit physical address of XSDT */
-> -    uint8_t  extended_checksum;      /* Checksum of entire table */
-> -    uint8_t  reserved [3];           /* Reserved field must be 0 */
-> -} QEMU_PACKED;
-> -typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
-> -
->  typedef struct AcpiRsdpData {
->      uint8_t oem_id[6]; /* OEM identification */
->      uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
-> diff --git a/tests/acpi-utils.h b/tests/acpi-utils.h
-> index ac52abd0dd..c26c8976a6 100644
-> --- a/tests/acpi-utils.h
-> +++ b/tests/acpi-utils.h
-> @@ -82,6 +82,9 @@ typedef struct {
->  
->  uint8_t acpi_calc_checksum(const uint8_t *data, int len);
->  uint32_t acpi_find_rsdp_address(void);
-> -void acpi_parse_rsdp_table(uint32_t addr, AcpiRsdpDescriptor *rsdp_table);
-> +uint32_t acpi_get_rsdt_address(uint8_t *rsdp_table);
-> +uint64_t acpi_get_xsdt_address(uint8_t *rsdp_table);
-> +void acpi_parse_rsdp_table(uint32_t addr, uint8_t *rsdp_table,
-> +                           uint8_t revision);
->  
->  #endif  /* TEST_ACPI_UTILS_H */
-> diff --git a/tests/acpi-utils.c b/tests/acpi-utils.c
-> index 41dc1ea9b4..b1113bda8b 100644
-> --- a/tests/acpi-utils.c
-> +++ b/tests/acpi-utils.c
-> @@ -52,14 +52,44 @@ uint32_t acpi_find_rsdp_address(void)
->      return off;
->  }
->  
-> -void acpi_parse_rsdp_table(uint32_t addr, AcpiRsdpDescriptor *rsdp_table)
-> +uint32_t acpi_get_rsdt_address(uint8_t *rsdp_table)
->  {
-> -    ACPI_READ_FIELD(rsdp_table->signature, addr);
-> -    ACPI_ASSERT_CMP64(rsdp_table->signature, "RSD PTR ");
-> +    uint32_t rsdt_physical_address;
-> +    uint8_t revision = rsdp_table[15 /* Revision offset */];
->  
-> -    ACPI_READ_FIELD(rsdp_table->checksum, addr);
-> -    ACPI_READ_ARRAY(rsdp_table->oem_id, addr);
-> -    ACPI_READ_FIELD(rsdp_table->revision, addr);
-> -    ACPI_READ_FIELD(rsdp_table->rsdt_physical_address, addr);
-> -    ACPI_READ_FIELD(rsdp_table->length, addr);
-> +    if (revision != 0) { /* ACPI 1.0 RSDP */
-> +        return 0;
-> +    }
+> > We're missing the (rsdp_data->revision == 0 && rsdp_data->rsdt_tbl_offset)
+> > sanity check though.
+> I think there's nothing preventing a caller to include both rsdt and
+> xsdt if it wants to be able to run on both < 2.0 and 2.0+ platforms with
+> the same table. So if rsdt is set we should add it, regardless of the revision.
 
-So now we assume a zero offset can't be valid, which means we don't need
-pointers in the struct. Your answer that pointers are used for consistency
-is good enough for me though.
-
-> +
-> +    memcpy(&rsdt_physical_address, &rsdp_table[16 /* RsdtAddress offset */], 4);
-> +    return le32_to_cpu(rsdt_physical_address);
-> +}
-> +
-> +uint64_t acpi_get_xsdt_address(uint8_t *rsdp_table)
-> +{
-> +    uint64_t xsdt_physical_address;
-> +    uint8_t revision = rsdp_table[15 /* Revision offset */];
-> +
-> +    if (revision != 2) { /* ACPI 2.0+ RSDP */
-
-revision < 2
-
-> +        return 0;
-> +    }
-> +
-> +    memcpy(&xsdt_physical_address, &rsdp_table[24 /* XsdtAddress offset */], 8);
-> +    return le64_to_cpu(xsdt_physical_address);
-> +}
-> +
-> +void acpi_parse_rsdp_table(uint32_t addr, uint8_t *rsdp_table, uint8_t revision)
-> +{
-> +    switch (revision) {
-> +    case 0: /* ACPI 1.0 RSDP */
-> +        memread(addr, rsdp_table, 20);
-> +        break;
-> +    case 2: /* ACPI 2.0+ RSDP */
-> +        memread(addr, rsdp_table, 36);
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +
-> +    ACPI_ASSERT_CMP64(*((uint64_t *)(rsdp_table)), "RSD PTR ");
->  }
-> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> index d661d9be62..84f1500920 100644
-> --- a/tests/bios-tables-test.c
-> +++ b/tests/bios-tables-test.c
-> @@ -27,7 +27,8 @@ typedef struct {
->      const char *machine;
->      const char *variant;
->      uint32_t rsdp_addr;
-> -    AcpiRsdpDescriptor rsdp_table;
-> +    uint8_t rsdp_table[36 /* ACPI 2.0+ RSDP size */];
-> +    uint32_t rsdt_physical_address;
-
-I don't see rsdt_physical_address getting used anyway.
-
->      AcpiRsdtDescriptorRev1 rsdt_table;
->      uint32_t dsdt_addr;
->      uint32_t facs_addr;
-> @@ -83,21 +84,31 @@ static void test_acpi_rsdp_address(test_data *data)
->      data->rsdp_addr = off;
->  }
->  
-> -static void test_acpi_rsdp_table(test_data *data)
-> +static void test_acpi_rsdp_table(test_data *data, uint8_t revision)
->  {
-> -    AcpiRsdpDescriptor *rsdp_table = &data->rsdp_table;
-> +    uint8_t *rsdp_table = data->rsdp_table;
->      uint32_t addr = data->rsdp_addr;
->  
-> -    acpi_parse_rsdp_table(addr, rsdp_table);
-> +    acpi_parse_rsdp_table(addr, rsdp_table, revision);
->  
-> -    /* rsdp checksum is not for the whole table, but for the first 20 bytes */
-> -    g_assert(!acpi_calc_checksum((uint8_t *)rsdp_table, 20));
-> +    switch (revision) {
-> +    case 0: /* ACPI 1.0 RSDP */
-> +        /* With rev 1, checksum is only for the first 20 bytes */
-> +        g_assert(!acpi_calc_checksum(rsdp_table,  20));
-> +        break;
-> +    case 2: /* ACPI 2.0+ RSDP */
-> +        /* With revision 2, we have 2 checksums */
-> +        g_assert(!acpi_calc_checksum(rsdp_table, 20));
-> +        g_assert(!acpi_calc_checksum(rsdp_table, 36));
-> +    default:
-> +        g_assert_not_reached();
-> +    }
->  }
->  
->  static void test_acpi_rsdt_table(test_data *data)
->  {
->      AcpiRsdtDescriptorRev1 *rsdt_table = &data->rsdt_table;
-> -    uint32_t addr = le32_to_cpu(data->rsdp_table.rsdt_physical_address);
-> +    uint32_t addr = acpi_get_rsdt_address(data->rsdp_table);
->      uint32_t *tables;
->      int tables_nr;
->      uint8_t checksum;
-> @@ -626,7 +637,7 @@ static void test_acpi_one(const char *params, test_data *data)
->  
->      data->tables = g_array_new(false, true, sizeof(AcpiSdtTable));
->      test_acpi_rsdp_address(data);
-> -    test_acpi_rsdp_table(data);
-> +    test_acpi_rsdp_table(data, 0); /* ACPI 1.0 RSDP */
->      test_acpi_rsdt_table(data);
->      fadt_fetch_facs_and_dsdt_ptrs(data);
->      test_acpi_facs_table(data);
-> diff --git a/tests/vmgenid-test.c b/tests/vmgenid-test.c
-> index 0a6fb55f2e..5f30dee059 100644
-> --- a/tests/vmgenid-test.c
-> +++ b/tests/vmgenid-test.c
-> @@ -35,7 +35,7 @@ static uint32_t acpi_find_vgia(void)
->  {
->      uint32_t rsdp_offset;
->      uint32_t guid_offset = 0;
-> -    AcpiRsdpDescriptor rsdp_table;
-> +    uint8_t rsdp_table[36 /* ACPI 2.0+ RSDP size */];
->      uint32_t rsdt, rsdt_table_length;
->      AcpiRsdtDescriptorRev1 rsdt_table;
->      size_t tables_nr;
-> @@ -52,9 +52,11 @@ static uint32_t acpi_find_vgia(void)
->  
->      g_assert_cmphex(rsdp_offset, <, RSDP_ADDR_INVALID);
->  
-> -    acpi_parse_rsdp_table(rsdp_offset, &rsdp_table);
-> +    acpi_parse_rsdp_table(rsdp_offset, rsdp_table, 0);
-> +
-> +    rsdt = acpi_get_rsdt_address(rsdp_table);
-> +    g_assert(rsdt);
->  
-> -    rsdt = le32_to_cpu(rsdp_table.rsdt_physical_address);
->      /* read the header */
->      ACPI_READ_TABLE_HEADER(&rsdt_table, rsdt);
->      ACPI_ASSERT_CMP(rsdt_table.signature, "RSDT");
-> -- 
-> 2.19.2
-> 
->
+True, but if revision is zero, then we *must* have it. Otherwise we'll
+silently return from this function with neither an rsdt nor xsdt linked.
 
 Thanks,
-drew 
+drew
+
+> 
+> Cheers,
+> Samuel.

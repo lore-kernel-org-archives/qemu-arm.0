@@ -1,85 +1,84 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2415161wrt;
-        Thu, 29 Nov 2018 06:37:32 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UcyU6Fwxw2V5r2+EwJxGh7Uw35xYQRYEMu0ZeptZwCxlGB14wL7Oe4oMXy1Ki6wG0wYA5A
-X-Received: by 2002:a25:9342:: with SMTP id g2-v6mr1546243ybo.248.1543502252447;
-        Thu, 29 Nov 2018 06:37:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543502252; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2439790wrt;
+        Thu, 29 Nov 2018 07:00:45 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/V+k9LXGenHfsvUnoFmn5DqXj6xRpV3WOe+nV0Dq+pizmE0OhmyyFlkmoLEGdIzfhGGtJZH
+X-Received: by 2002:a37:5107:: with SMTP id f7mr1677964qkb.124.1543503645837;
+        Thu, 29 Nov 2018 07:00:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543503645; cv=none;
         d=google.com; s=arc-20160816;
-        b=fjqNdf7n3gMhCQfLSyGnr2sy9brDyBIVgonmIrQ83rh6JOuciPgbB4WKqVuvCfRK8s
-         iFci+5QwEuymGTYqyTZ/5hx61oLPw7gIjl1J/t7VCRkL7WIaZXM5H6KH+80jEESc+tIK
-         08Mr/13qQgQSMwXp+EuyjCPgeW+ONNF1/iIHiHbNQDL+y3bZ0B1opmO/YAmff44lMBca
-         pNCOYSN8L1/6s1r0641jZ56sL4QjU73KS89QH2mzj4/blHDEb6dfsAf/Iwn59d7K6Edm
-         C41I7jkdVSrPpsqfnho8rc2eYOekzt/QX6b0IgDT3IbW2vOKf90CzWGc16SzRP6eVtp8
-         7EzQ==
+        b=Uipq1NdHOn4f3Lgk1vDKSvVnpNSDLyjQgjxH/6gKn+oKkTd4639k2WEglPYYHDnUy9
+         JJfTRJHcaYoGfukzexo6R468ZeWBmZdP3gNhgHquLUkFeTM2H27mHQdwT9VLvcngOsGo
+         yk4DZOecroq8RFRLae2UbzWCuVaLMULR6QHKLYkIZv1i+kz+YJJRjnLzQKtsvpSgRg7P
+         2eDisE3yobsy3DX0flAuPDlyLvsS83Kh4J5sPAq3UCIqC5Ucp16Ks/W1eZqiRRDF+4U+
+         vMFW7YijwU+655kHgejhGjz9VuFiRbvymB4dLeZmzyW/optsYQmldcYcqvYhI9XV7l5K
+         2Nnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=c1gwKVMGPL9Oc23IN7Wk9tNVrBNElKDuBcn2V5CEptI=;
-        b=p8kEASupBktbQH590Lm5ShV040ybrUDbrOWSGg93GxZjSpzxv6IWvd/XxRhyPtKmid
-         J/UG/yjRDrP917xKJpz5jLTA2eR1bZX3dt2IGUUvJfcG8dAhAKlZZxDvlIMy0YrXwLE2
-         HlPJL1EBD8QSk25lwy3oiTPYaystQNbxvtFQYYxQidirNQh8UgGiwcWz46cxyzbVbN32
-         AEzwGgpWm6z7KzKC2Qb4kHalj5ZCPRK6CMNmzHLM1wohBF9EvYNwSWu+mi4AZhyMRYYS
-         JkK2YJLbHRSq7iMWKjPPY820Or7v13aN7BjmyS1YvwClC2HOLTAwosqc2BZfpxLFTDHy
-         kF5Q==
+        bh=GVDKjpN2lTw31Tr4+YTOAmu8TeizdVosO4OnlvEtdUI=;
+        b=X6W/AByIcCgcpP+l8aELuITrizHrhW8M9GUkBsW1ZsomtX8CTZIxYK2ErsXE/iLRoV
+         0FS8ZrU0YtnWb/bWjcZhRGji2bpzKnq1oTLIoaphVVCmVVKkM6FFfeXfZJ6+SmvmJIyh
+         5bobu8olX82JmfR+f7TrBkya6nwYP55byi8VfCUxT+J7gEzoRaH2DfCHnwJkvpGoK04p
+         K0kLw7uNg2yMekT4IAgkToLKRETQS6O9oLWCRDKUVMJKdGFn0FE8UqxESJtT2bUFpkIx
+         dylJkq7BgXAAHBOU4b7BXIX2UaAnVD+COdiKxDq0u3vsi3ndMbssMcdimha2zl+fIh+I
+         Fbag==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id w199si1309484ywd.45.2018.11.29.06.37.32
+        by mx.google.com with ESMTPS id c26si915444qtm.398.2018.11.29.07.00.45
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 29 Nov 2018 06:37:32 -0800 (PST)
+        Thu, 29 Nov 2018 07:00:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54499 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:54638 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSNRb-00048v-Nr
-	for alex.bennee@linaro.org; Thu, 29 Nov 2018 09:37:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53144)
+	id 1gSNo4-0002dR-Ry
+	for alex.bennee@linaro.org; Thu, 29 Nov 2018 10:00:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36179)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gSNJT-0004zf-A5
-	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 09:29:11 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gSNno-0002bg-MY
+	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 10:00:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <drjones@redhat.com>) id 1gSNJP-0006lJ-9j
-	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 09:29:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47991)
+	(envelope-from <sameo@linux.intel.com>) id 1gSNnj-0007Qu-Ng
+	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 10:00:28 -0500
+Received: from mga14.intel.com ([192.55.52.115]:34996)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <drjones@redhat.com>)
-	id 1gSNJP-0006i5-1M; Thu, 29 Nov 2018 09:29:03 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0A6D558E27;
-	Thu, 29 Nov 2018 14:29:02 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 89E69ABB9D;
-	Thu, 29 Nov 2018 14:28:59 +0000 (UTC)
-Date: Thu, 29 Nov 2018 15:28:57 +0100
-From: Andrew Jones <drjones@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181129142857.f6k343h2zys2zkor@kamzik.brq.redhat.com>
+	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
+	id 1gSNne-0007Nf-Pv; Thu, 29 Nov 2018 10:00:22 -0500
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	29 Nov 2018 07:00:16 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,295,1539673200"; d="scan'208";a="113710530"
+Received: from hharjula-mobl.ger.corp.intel.com (HELO caravaggio)
+	([10.252.29.114])
+	by orsmga001.jf.intel.com with ESMTP; 29 Nov 2018 07:00:11 -0800
+Date: Thu, 29 Nov 2018 15:59:42 +0100
+From: Samuel Ortiz <sameo@linux.intel.com>
+To: Andrew Jones <drjones@redhat.com>
+Message-ID: <20181129145942.GB4691@caravaggio>
 References: <20181129132428.333-1-sameo@linux.intel.com>
-	<20181129132428.333-6-sameo@linux.intel.com>
+	<20181129132428.333-7-sameo@linux.intel.com>
+	<20181129144243.so22d2igis7a24xp@kamzik.brq.redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181129132428.333-6-sameo@linux.intel.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 29 Nov 2018 14:29:02 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 5/8] hw: arm: Convert the
- RSDP build to the buid_append_foo() API
+In-Reply-To: <20181129144243.so22d2igis7a24xp@kamzik.brq.redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.115
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 6/8] hw: arm: Support both
+ legacy and current RSDP build
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,20 +99,75 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MLe0NvGSqHby
+X-TUID: qJ3cfYk2H0Ee
 
-On Thu, Nov 29, 2018 at 02:24:25PM +0100, Samuel Ortiz wrote:
-> Instead of filling a mapped and packed C structure field in random order
-> and being careful about endianness and sizes, build_rsdp() now uses
-> build_append_int_noprefix() to compose RSDP table.
+On Thu, Nov 29, 2018 at 03:42:43PM +0100, Andrew Jones wrote:
+> On Thu, Nov 29, 2018 at 02:24:26PM +0100, Samuel Ortiz wrote:
+> > We add the ability to build legacy or current RSDP tables, based on the
+> > AcpiRsdpData revision field passed to build_rsdp().
+> > Although arm/virt only uses RSDP v2, adding that capability to
+> > build_rsdp will allow us to share the RSDP build code between ARM and x86.
+> > 
+> > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+> > ---
+> >  hw/arm/virt-acpi-build.c | 37 ++++++++++++++++++++++++++-----------
+> >  1 file changed, 26 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 4782aea4fe..e1338b6f5a 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -378,23 +378,38 @@ build_rsdp(GArray *tbl, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
+> >      g_array_append_vals(tbl, rsdp_data->oem_id, 6); /* OEMID */
+> >      build_append_int_noprefix(tbl, rsdp_data->revision, 1); /* Revision */
+> >      build_append_int_noprefix(tbl, 0, 4); /* RsdtAddress */
+> > -    build_append_int_noprefix(tbl, 36, 4); /* Length */
+> > -
+> > -    /* XSDT address to be filled by guest linker */
+> > -    build_append_int_noprefix(tbl, 0, 8); /* XsdtAddress */
+> > -    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
+> > -                                   24, 8,
+> > -                                   ACPI_BUILD_TABLE_FILE,
+> > -                                   *rsdp_data->xsdt_tbl_offset);
+> > -
+> > -    build_append_int_noprefix(tbl, 0, 1); /* Extended Checksum */
+> > -    build_append_int_noprefix(tbl, 0, 3); /* Reserved */
+> > +    if (rsdp_data->rsdt_tbl_offset) {
 > 
-> This makes for an easier to review and maintain code that is almost
-> matching 1:1 the ACPI spec itself.
+> I see why a pointer was used now. Using a pointer ensures a zero
+> offset won't fail this test. However the test could be replaced with
+> rsdp_data->revision == 0.
 > 
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> ---
->  hw/arm/virt-acpi-build.c | 42 +++++++++++++++++++++-------------------
->  1 file changed, 22 insertions(+), 20 deletions(-)
+> > +        /* RSDT address to be filled by guest linker */
+> > +        bios_linker_loader_add_pointer(linker,
+> > +                                       ACPI_BUILD_RSDP_FILE, 16, 4,
+> > +                                       ACPI_BUILD_TABLE_FILE,
+> > +                                       *rsdp_data->rsdt_tbl_offset);
+> > +    }
+> >  
+> >      /* Checksum to be filled by guest linker */
+> >      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
+> >                                      0, 20, /* ACPI rev 1.0 RSDP size */
+> >                                      8);
+> >  
+> > +    if (rsdp_data->revision == 0) {
+> > +        /* ACPI 1.0 RSDP, we're done */
+> > +        return;
+> > +    }
+> > +
+> > +    /* The RSDP revision is 2 and later, we must have an XSDT pointer */
+> > +    g_assert(rsdp_data->xsdt_tbl_offset != NULL);
+> 
+> So here's the justification for the pointers. We sanity check the callers.
+We could sanity check the callers without pointers as well, I don't
+think there's a strong advantage for pointers here, except consistence.
 
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+> We're missing the (rsdp_data->revision == 0 && rsdp_data->rsdt_tbl_offset)
+> sanity check though.
+I think there's nothing preventing a caller to include both rsdt and
+xsdt if it wants to be able to run on both < 2.0 and 2.0+ platforms with
+the same table. So if rsdt is set we should add it, regardless of the revision.
+
+Cheers,
+Samuel.

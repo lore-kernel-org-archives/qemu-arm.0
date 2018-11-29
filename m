@@ -1,90 +1,112 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp255800wrt;
-        Mon, 26 Nov 2018 12:27:28 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WruQJyDvpM48nInOkuNrs/nKdhVubYz8wRyx1AHfHbXupp5Vwf0X6ZCJ76E+pnv8qLtkWB
-X-Received: by 2002:a81:d201:: with SMTP id x1mr21188266ywi.9.1543264048761;
-        Mon, 26 Nov 2018 12:27:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543264048; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp1812970wrt;
+        Wed, 28 Nov 2018 18:25:10 -0800 (PST)
+X-Google-Smtp-Source: AJdET5dhWTgcBhpwpI1MosLULcLL4sVlFDwsQhrWLA/W7XATDXkFN9KrFe7wG95wxZa5tGJOHJvC
+X-Received: by 2002:a81:8412:: with SMTP id u18mr40913882ywf.289.1543458309929;
+        Wed, 28 Nov 2018 18:25:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543458309; cv=none;
         d=google.com; s=arc-20160816;
-        b=izQTY0HXdoiOChygj16Le66ui60W3aiKTfAKbpp3WuftBNoh0IVNxEHglOElymsGkK
-         xJdrAdaQWUfIfqs/OU3UKLx0Ea+aX297BfxvHLvhXUjjYCiCut2WmVxR6mwZXfCWenyj
-         2MriciO93MIblKm/PL3/kdHrFt31m4KdFzmxxpuOl6Jq5hVemCodCwPgyxLjQP7kJGrY
-         0/3RMA3UbsEIBH0kVN1Y1ewd2yThoPp8qSGlE8BiqgUyBjrYUWn65lfUKgSCxX400C8R
-         B1Vm6jS9ZTaMduu8AoYVxSl52OS4wXE8X1ffC7JBLZPCwWnETdZLTpOhTAOgCDeE2HLk
-         l4Pw==
+        b=RVWSD6jvHjmV9/ZgVZJMM3TkFvKPJSgwmZBIJ4ZKptbRWEMDDvs2kJ75pwXfAjYIx0
+         2+aJsqeanb+BZtg+gfztEl7WfD/Nq+8oxDazrFUqqwe5ozx5u+z1+3PdwiOdunqA6alO
+         LD+T1BGci66kpgHnjKiPmIyPC/+SvgwC8xNil2PuyVLGTjtetgLD+4EGiORrc5NlkBO4
+         gXkyMJKoHg3/tXQvicTLnIVEfRA1aiY1HMEwdJ7LHff9OVB0I1obHAh82nct4CUvpJal
+         cKxIIMfrbltzlBRjecw6JUUlvU3VTYCjR5V7zd0s9Jvk3ENx+A3gl4KcDm0XUpDDgr3R
+         Jqnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:to;
-        bh=JNCDjlbTfQ04lD5aj24b6mndT7e/YpIy+bH4lPAjtYc=;
-        b=nPcMp8LmQ+EoOuPSSd89PcFaFe+BLFgt5u2x17aJyidv49PjMh4ETj6bT8lb/GxAIp
-         rAR5oOsIhj6jsxEg0LeoNIWkqmUiYLlkjKBSYZGmiVcrVJgXNDlu/hoqW6reVTC9Uly6
-         U1HGG69xLHDnstXbqOp7osIWwIDlpohWBtEKqYLl4BcUOiohuEwTDlhTBgzScgUrp87e
-         L15wV3vKy2behEuLwDdnjNMZlYM0erqU+Wj4zSEMeUvfTCFijN+iWbHilhZmOOfNGile
-         pDasSR9XSZgw6vxoprRxLvnvs1h6BojSNLie3g92wLf30IQL7KJ+1cIC3AEsbKCKvwbU
-         gMcA==
+         :user-agent:date:message-id:from:references:to:dkim-signature;
+        bh=ZzimebbKApz7gujmtn1NE2Icpos/CMAsW+IxoUaN3kU=;
+        b=DQGktI6pFVlTYH0hVqFguYax1nqsJPMWvy0cWww+/rx8uVbAbFzfPKeLbgC8QXTWru
+         O6cxVLZ7M6zljeFGZBhTiw31jBQ7nApf4wUDeM418RrWiSbv+YMkitVlJr7kxDz0gJzi
+         ijfzf14fx6jq17dmVIAm/sae382lq7ASR7aSCzh0I/K9KvMzm4euuCsFbSUYuEvQ6j4c
+         FQYwGRadhTuE7CPA72kcchMvzliWMN+fg9zKxBoh4IllxNMZrD9bFa3ZIG0t+cYKVFsu
+         2CBzu/M+E20cNmAYHUdrFkaN1Vo0xSPsWJJpDH6apKclC6X9IGNLyOjzQaLRw9C3iZDc
+         aVPA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UQ2kUKGc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id m39si1025251ywh.329.2018.11.26.12.27.28
+        by mx.google.com with ESMTPS id k128-v6si250009yba.363.2018.11.28.18.25.09
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 26 Nov 2018 12:27:28 -0800 (PST)
+        Wed, 28 Nov 2018 18:25:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UQ2kUKGc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38676 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51544 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gRNTc-0004u6-88
-	for alex.bennee@linaro.org; Mon, 26 Nov 2018 15:27:28 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54939)
+	id 1gSC0r-0007d7-DH
+	for alex.bennee@linaro.org; Wed, 28 Nov 2018 21:25:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gRNCB-0005yc-0c
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 15:09:27 -0500
+	(envelope-from <shannon.zhaosl@gmail.com>) id 1gSC0i-0007bz-Up
+	for qemu-arm@nongnu.org; Wed, 28 Nov 2018 21:25:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gRNC6-0002CO-UK
-	for qemu-arm@nongnu.org; Mon, 26 Nov 2018 15:09:27 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38860)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gRNC3-0002Bb-48; Mon, 26 Nov 2018 15:09:21 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1F3B0C0495A2;
-	Mon, 26 Nov 2018 20:09:16 +0000 (UTC)
-Received: from [10.10.124.147] (ovpn-124-147.rdu2.redhat.com [10.10.124.147])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5EA7C5C63A;
-	Mon, 26 Nov 2018 20:09:11 +0000 (UTC)
-To: Peng Hao <peng.hao2@zte.com.cn>, peter.maydell@linaro.org,
-	drjones@redhat.com, philmd@redhat.com
-References: <1543262162-6351-1-git-send-email-peng.hao2@zte.com.cn>
-	<1543262162-6351-10-git-send-email-peng.hao2@zte.com.cn>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <48580284-d439-456b-2c6a-a10c0a9280ea@redhat.com>
-Date: Mon, 26 Nov 2018 14:09:10 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+	(envelope-from <shannon.zhaosl@gmail.com>) id 1gSC0e-0006dh-Q6
+	for qemu-arm@nongnu.org; Wed, 28 Nov 2018 21:25:00 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37652)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <shannon.zhaosl@gmail.com>)
+	id 1gSC0e-0006cD-EE; Wed, 28 Nov 2018 21:24:56 -0500
+Received: by mail-ot1-x343.google.com with SMTP id 40so366753oth.4;
+	Wed, 28 Nov 2018 18:24:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=ZzimebbKApz7gujmtn1NE2Icpos/CMAsW+IxoUaN3kU=;
+	b=UQ2kUKGc5tr/7dYs/maFXMlFfUkjEiLWjKjglU+xbxyvaGBXyGkkU4yzQpLZ6pd3jc
+	WcPjJH0CcYdV4vtcXNaL+x5Mzmit2OEJJ8TkF+7gP+4aDXaxokkVDjFySjM3XIflogwn
+	uaSjOmv0xoi7SkNWjRBTsIOteGJ661DcfkdHiDYsACtOGrevKhR2TDDVneLDOMFZAst8
+	oZ3lYJk1l1r/ii0kp50aWVVs8/qfLV2nmGI/5jVksXQnORtfzRdbbKIKHfNThYvdRodB
+	EPX7JOThwIgNKCTFoztnkklorOieQboB59UDvuqbgxXt1k9chGR1im1thD/Jeqqj6HtE
+	fy4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=ZzimebbKApz7gujmtn1NE2Icpos/CMAsW+IxoUaN3kU=;
+	b=WorE3qPKFDauZJ/v0/GIAx0RzLU6GcPVOvOrNY/JzyS2g87MZOedhWy7OaXrV7to6N
+	fS2oNsvmM3VuZadieVY5WK6VCRKZrlKCjs7PJWU5Zr754RJj8HdpLONVa+axpN6IJOx6
+	pRRNeJxXGv57FGFS1JUrGjzDvg0ubT1eC6GfdGhcBkfil5BmTMSdGdVolpOZpwpH5e0Q
+	CDU3FtjGtgFExvEnSl12I4Uft4iR3MjkVMlV0RoWn4Bk93TZ0OmKRNqHymb1DSt+rbOn
+	sfCawKb4zq+7V+D1rVbLO7sPylctkVwexq8rF4zJ0C0nlHWA+/m2rjSLGZiXgKeSn8pM
+	DnRQ==
+X-Gm-Message-State: AA+aEWbCAHGq9tjrGXYcI2ZjXom9oElx55jPMVPGvwnMRyVEmK6OVS1b
+	nY1W76c6LIfZ+vPxHsCwm9E=
+X-Received: by 2002:a9d:ac3:: with SMTP id 61mr21914565otq.272.1543458295556; 
+	Wed, 28 Nov 2018 18:24:55 -0800 (PST)
+Received: from [30.43.80.46] ([47.89.83.32])
+	by smtp.gmail.com with ESMTPSA id a21sm170339otr.3.2018.11.28.18.24.52
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 28 Nov 2018 18:24:54 -0800 (PST)
+To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20181126154616.18173-1-eric.auger@redhat.com>
+	<b3c22264-2a95-b851-025c-b8ff0f38f269@redhat.com>
+	<65b68704-2c0b-e9b9-2cde-fea5c32161b3@gmail.com>
+	<a6e27638-1695-9608-366a-83bbbe873e55@redhat.com>
+From: Shannon Zhao <shannon.zhaosl@gmail.com>
+Message-ID: <2c6469e1-4da1-7f9d-4525-892287c4c5c1@gmail.com>
+Date: Thu, 29 Nov 2018 10:24:50 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <1543262162-6351-10-git-send-email-peng.hao2@zte.com.cn>
+In-Reply-To: <a6e27638-1695-9608-366a-83bbbe873e55@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Mon, 26 Nov 2018 20:09:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V9 9/9] pvpanic : update pvpanic
- document
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.1] hw/arm/virt-acpi-build:
+ Fix SMMUv3 ACPI integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,70 +118,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: shameerali.kolothum.thodi@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tduGb2i59JNU
+X-TUID: R2+qVLxZ8ZBU
 
-On 11/26/18 1:56 PM, Peng Hao wrote:
-> Add mmio support info in docs/specs/pvpanic.txt.
+
+
+On 2018/11/29 1:26, Auger Eric wrote:
+>>>>    struct AcpiIortSmmu3 {
+>>>>        ACPI_IORT_NODE_HEADER_DEF
+>>>>        uint64_t base_address;
+>>>> @@ -639,6 +645,8 @@ struct AcpiIortSmmu3 {
+>>>>        uint32_t pri_gsiv;
+>>>>        uint32_t gerr_gsiv;
+>>>>        uint32_t sync_gsiv;
+>>>> +    uint32_t pxm;
+>> So if we use this field ,we need to set the flags with
+>> ACPI_IORT_SMMU_V3_PXM_VALID
+>>>> +    uint32_t id_mapping_index;
+>> And if we use this field, it needs to set the revision to at least 1.
+> But is it harmful to add those fields in the struct as this patch does?
 > 
-> Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
-> ---
->   docs/specs/pvpanic.txt | 15 +++++++++++++--
->   1 file changed, 13 insertions(+), 2 deletions(-)
+> - in our case ACPI_IORT_SMMU_V3_PXM_VALID flag is not set so the field
+> value is ignored according to the spec and arm_smmu_v3_set_proximity()
+> will not do anything.
 > 
-> diff --git a/docs/specs/pvpanic.txt b/docs/specs/pvpanic.txt
-> index c7bbacc..67f5591 100644
-> --- a/docs/specs/pvpanic.txt
-> +++ b/docs/specs/pvpanic.txt
-> @@ -1,14 +1,18 @@
->   PVPANIC DEVICE
->   ==============
->   
-> -pvpanic device is a simulated ISA device, through which a guest panic
-> -event is sent to qemu, and a QMP event is generated. This allows
-> +pvpanic device is a simulated ISA/SysBus device, through which a guest
-> +panic event is sent to qemu, and a QMP event is generated. This allows
->   management apps (e.g. libvirt) to be notified and respond to the event.
->   
->   The management app has the option of waiting for GUEST_PANICKED events,
->   and/or polling for guest-panicked RunState, to learn when the pvpanic
->   device has fired a panic event.
->   
-> +When pvpanic device is implemented as a ISA device, it supports IOPORT
-> +mode. Since QEMU v3.2 pvpanic also supports MMIO mode, it will be
-
-The next qemu release will be 4.0, not 3.2.
-
-> +implemented as a SYSBUS device.
-
-Grammar suggestion:
-
-The pvpanic device can be implemented as an ISA device (using IOPORT), 
-or, since qemu 4.0, as a SYSBUS device (using MMIO).
-
-> +
->   ISA Interface
->   -------------
->   
-> @@ -19,6 +23,13 @@ Software should set only bits both itself and the device recognize.
->   Currently, only bit 0 is recognized, setting it indicates a guest panic
->   has happened.
->   
-> +SYSBUS Interface
-> +----------------
-> +
-> +The SYSBUS interface is similar to the ISA interface except that it uses
-> +MMIO. For example, the arm virt machine could put the pvpanic device at
-> +[0x9070000, 0x9070001] and currently only the first byte is used.
-> +
->   ACPI Interface
->   --------------
->   
+> - SMMU control interrupts are all GSIV based so spec says that deviceID
+> index is ignored.
 > 
+> So eventually the fact the struct size is changing over the revisions
+> does not look a problem because the node length is part of the struct
+> and the offset to the ID array also is part of the structure.
+> 
+> So I could have left the structure as before (because we don't use the
+> functionalities associated to those fields). But on the other hand it's
+> good to upgrade the struct according to Rev D now.
+> 
+> So I think the patch is correct, isn't?
+Yes, I think it's not harmful but it would be better to add some 
+comments to explain why we don't increase the revision number ATM.
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+Thanks,
+Shannon

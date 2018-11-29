@@ -1,102 +1,99 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2551625wrt;
-        Thu, 29 Nov 2018 08:38:08 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XuxPminmAOOdvgzF+I/M+BWeStAkRXwsjPqmGTf5fhKhghoMBtcLRfjJlLb76GaRYYTslI
-X-Received: by 2002:a81:49cc:: with SMTP id w195mr2004334ywa.86.1543509488726;
-        Thu, 29 Nov 2018 08:38:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543509488; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2552987wrt;
+        Thu, 29 Nov 2018 08:39:30 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Un8EerIhmLcDZqx6AiknuZQA3W8TNQpnkDTy4iWZlYouR3rnrhy8TVuuShGj3AAeRDpOLq
+X-Received: by 2002:a25:7bc3:: with SMTP id w186-v6mr1957189ybc.18.1543509570730;
+        Thu, 29 Nov 2018 08:39:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543509570; cv=none;
         d=google.com; s=arc-20160816;
-        b=vNekFjfFrSod4UkTUQA5WlSyuwygl+56CXS+G0sTRcm9jGbirz8BsrNKuPUgSXCUnX
-         hfl7zW6981BQlgC2gdcqYPqP7rg8FmUIFTSy+ky55K3JayXdw7dgRcKJfBKp6KdlW3/P
-         Up7B5J0ECrY4lFxTXhCSA+pGEaSze0KpARp0WY9zebwZZ5qDD7nyVmO5nGc++uVO0Sf7
-         iU6sqjQF2vf+HTsbt0cI6V06iGstHjV2rwe3vL1fbZRSSYWzOCEuIO5PbUT6L65scq9t
-         XVF1z/K8GgwScTrZYu1kgTLPPVmjC/5aDC4TcuU33xXDeeytJ2fOIj0XSPUjLuUscUnU
-         lvPg==
+        b=IQ7z4wUjs0PZMHlcPZ0gPp2tK4Ct/pec34uQqffdEfuyibzKMvW4BeDgUIKuNohDUH
+         br6vu/FG7qp8RdeEe/zdWT9idgXeUrI/aJ7/9/B2o9Fv3GCs5l2gZOlriDTfdiRNbf6g
+         9bS69ZGS/uMTITvzTUCsm7Q2veZKEVXlTplAsqOCrtFwhoXIdh9W4RDls0apaLJ4E5V3
+         LkxQXe2SVubLM0EAGGe9EulciGFxeiPCrDRzocNoq+2AUbhSFNnU5byxph1B3y8/Nl+e
+         kV9Ac4uSWdXMsDGoZYE0EMO46jVajgO4YfKT/Q2WiLyDxQDU5rJadFvON6gl2HCUrFRA
+         /6Ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=t6KRhI6CRUiX6rByVIxTuBflTt5STUj4GMogPxTTi8U=;
-        b=xS3icwAN7QwUz8YD2RJ1Tuu42fyA7RSErSkzQ778wcjRVcz1i+fPloqJhbR87Vt6Ak
-         f9uXdEdwSyYdQUZcuRqswcSRonwC0vUkK0+5J4nWHr0GD1p0shSGgGgzj7BjOAzD3Wha
-         cgrEWURYQsxptjGFmz8qqL5UAVCXIquoMTisowC1fjDX2v0hP/gri8s1t9TjDdNUyidb
-         zbNEJJYj8iNxDUBpHsiyEHh69a78NnkPa269cImGGgASA+QxlTn0WWGnpUcE8poe6QYX
-         MPhVZANYNNeNwvqARu8GmQ52PWxwJ4TWTNb8HRQhZ31d/51tFVy2xYZM8g9BqBNpGZwL
-         qeLA==
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
+         :dkim-signature;
+        bh=YyTAzRmStxGsPV70TlxpA+Dw7+Mlr40jRCad/3fGb3k=;
+        b=SBohSaMLmSVquiShBfyw2H0wYBBCvOdkv/vRp2CJUw3WbUWvnx7M5xYD03xXQoQ5fG
+         iuxJFFCZXmRtXrrii82P3EBxspIyCvVxH/APvdVCtuGIYt84d1Q3AXDO6h0i55NK/L3j
+         7QJ2NAAEdMi5vrA2H/sziprASgosawu0StsPw9yfVJqQiMWi3s+NyqwyMy7d3TppTfZg
+         aswPfy7/4yqr9pDXYmaT9TjPQZa1qKvfusDiYW5LF2tP7hTk/xP7RE1MFsKXtIhnVmjh
+         mNHuA6wT9/L0Lm5QUoiVBR/prkrW3OWFqvJEn0uu6iJ+nzd3VzBiT/PlwRgDciZdVIcj
+         O6Jw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nvpa7gjo;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DLFH0dkM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id x194-v6si1497068ybe.202.2018.11.29.08.38.08
+        by mx.google.com with ESMTPS id s126-v6si1531773yba.267.2018.11.29.08.39.30
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 29 Nov 2018 08:38:08 -0800 (PST)
+        Thu, 29 Nov 2018 08:39:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nvpa7gjo;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DLFH0dkM;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55163 helo=lists.gnu.org)
+Received: from localhost ([::1]:55169 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSPKK-0006rs-5m
-	for alex.bennee@linaro.org; Thu, 29 Nov 2018 11:38:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37050)
+	id 1gSPLd-0008IT-OY
+	for alex.bennee@linaro.org; Thu, 29 Nov 2018 11:39:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37046)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1gSPJI-0006px-Ps
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gSPJI-0006pv-Oq
 	for qemu-devel@nongnu.org; Thu, 29 Nov 2018 11:37:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <edgar.iglesias@gmail.com>) id 1gSPJF-0007Fk-CQ
+	(envelope-from <edgar.iglesias@gmail.com>) id 1gSPJD-0007Ez-N9
 	for qemu-devel@nongnu.org; Thu, 29 Nov 2018 11:37:04 -0500
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:33270)
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132]:41452)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
-	id 1gSPJF-0007FJ-4G; Thu, 29 Nov 2018 11:37:01 -0500
-Received: by mail-lf1-x142.google.com with SMTP id i26so1944190lfc.0;
-	Thu, 29 Nov 2018 08:37:01 -0800 (PST)
+	id 1gSPJD-0007CX-Fd; Thu, 29 Nov 2018 11:36:59 -0500
+Received: by mail-lf1-x132.google.com with SMTP id c16so1917565lfj.8;
+	Thu, 29 Nov 2018 08:36:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:in-reply-to:references;
-	bh=t6KRhI6CRUiX6rByVIxTuBflTt5STUj4GMogPxTTi8U=;
-	b=nvpa7gjoeegdDgSfjBDqTVlo6HMKS7F+Gyg+cLroYPBw9cbf8swKIskmYd+QNC9CV6
-	URq9G74BlRlprCZHo+eR/eG7xgOV7dJDJsGajnh+5Iqld8iQvsxKbqWz6SLQy2C22Ni4
-	ZJiILBx931EjezK5xXgwZeNf5YsmBo9lpHGhryonEJX/sMbfQpHjlSSTYi/kBlZs5vSk
-	HBzu5TUXaquY5gr2p+6/179EI+FopVulqtJypOfpoGTVz/5MhHg7Q9nss74hu27qt+u+
-	vcrtEvbvX6FcZgOeEqSkmPpHLoeUzefMAgTaF8G5wZynCCORX2RhQ2Rj0GseWMnVT33i
-	p6fA==
+	h=from:to:cc:subject:date:message-id;
+	bh=YyTAzRmStxGsPV70TlxpA+Dw7+Mlr40jRCad/3fGb3k=;
+	b=DLFH0dkMe6VdsPkgd/FUz8XXLgsfvQV6Qbzse79D4N0iS9ZDk/9IMAotGRAPqGR/jP
+	HEhEID7SA20nucPxeOQarp2r3cybmkTLMnDjG5jefVDb+H9Azus0oCxtI4yF/piNRFMv
+	eA1bQoCgxwSIjSOFuX4H1jb5O6sQmGG45h698sRmjLi3BXdli8Ll6PCd1mqZJZx7Y8NA
+	wul5wpanf31t1hVA3nEMfBe+6InyJygcYGrfdCACqfKuti70UmEp8xT8FnukACmMIwvF
+	PlT+IbC1gyR2siU9L3bWeR/31VUbFHegMwiAv/9ruk4vOOQXEYghMG0iCsDEjJhLk+HG
+	3HRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-	:references;
-	bh=t6KRhI6CRUiX6rByVIxTuBflTt5STUj4GMogPxTTi8U=;
-	b=SdMLlT4oGbxZlPdPhT1Vthyq7L1HmZaJe8AsJvNRMVUsLNSr0/wjw2UkARC+js8TcR
-	drHwN+zJFXDyiYuvYSfNWQUUci8bH4QpysUfLDskVwqhu7dPYoG/icUtfWNnYUTfveYQ
-	8V6FkJHS0FNA+LySI54QyRCsbguRFH52JrzHM3v+HnzYL7oM4kEGiS7XezikLpM0O1eI
-	W1Hcv1q69P0CYqNZfNvTIxK6RMYdoF3KLz+yBkMd2UZSliO/X0wT1KV6ZuIGS1WsOZNy
-	kjBTCJEhVd/avfc/WoknG3VkgLSvB44nZ+OoagzpQRNSng2EpwCl/wuZ4XoXsvEsfaw6
-	3RXg==
-X-Gm-Message-State: AA+aEWbcQL8zvbcTMDh1DCbCIn5ylY9AaJcG77BAK7BEOQonqld4Z/4I
-	OpT9I4QHsg/mUX2xpXFcTMbTMJ51
-X-Received: by 2002:a19:641d:: with SMTP id y29mr677130lfb.14.1543509419443;
-	Thu, 29 Nov 2018 08:36:59 -0800 (PST)
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=YyTAzRmStxGsPV70TlxpA+Dw7+Mlr40jRCad/3fGb3k=;
+	b=jvzb4pjaWvxKFzA1gVUODC0L5I9+iA8G8e88UtNXMkH+IskOmhIhDS+iFiU2g1glXh
+	YboL2Arm4gboNpkELINiknk6HRWq+xKK3DON5qlB9rwzWgtFtKaqd9mC+ulkLoNm4KjF
+	64d5xAmitAIxg3RJY8ATU+y77Vnq0yAmvgCP3Q+/KzG5ag236Fk59VS8i2vyX3/G+zka
+	U3wWhmxtIHl2plh+2uMDHEXuh39r56pEcJ/Qebxy77zvCATzED7LGmCfuUEx6Zsi4a+G
+	M1U2CSilh2WWlbMqo5bn6Af8ghOXIOXcW9jqtlfpsVVDtq0IBLGCha0ZS9E6tegqzFuC
+	sxgw==
+X-Gm-Message-State: AA+aEWbzU1WjjjwvoVssjykPFggOzmS2a4Su8wRTsJneGVR3qwccKdfi
+	6BnroU+ISK8kGEmS458A+jhupEAz
+X-Received: by 2002:a19:2d16:: with SMTP id k22mr1436236lfj.12.1543509417461; 
+	Thu, 29 Nov 2018 08:36:57 -0800 (PST)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
 	by smtp.gmail.com with ESMTPSA id
-	j18-v6sm363987ljc.52.2018.11.29.08.36.57
+	b128sm382758lfe.91.2018.11.29.08.36.56
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 29 Nov 2018 08:36:58 -0800 (PST)
+	Thu, 29 Nov 2018 08:36:56 -0800 (PST)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Date: Thu, 29 Nov 2018 17:36:52 +0100
-Message-Id: <20181129163655.20370-2-edgar.iglesias@gmail.com>
+Date: Thu, 29 Nov 2018 17:36:51 +0100
+Message-Id: <20181129163655.20370-1-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20181129163655.20370-1-edgar.iglesias@gmail.com>
-References: <20181129163655.20370-1-edgar.iglesias@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::142
-Subject: [Qemu-devel] [PATCH v1 1/4] hw/arm: versal: Remove bogus
- virtio-mmio creation
+X-Received-From: 2a00:1450:4864:20::132
+Subject: [Qemu-devel] [PATCH v1 0/4] hw/arm: versal: Correct number of IRQs
+ in GIC setup
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,30 +112,31 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
 	philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /BBE3r5nhBrf
+X-TUID: QkPumzLuWSHl
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Remove bogus virtio-mmio creation. This was an accidental
-left-over an experiment.
+The Versal GIC has 192 IRQs not 256 as we previously had setup.
+This series fixes the setup and moves the virtio-mmio nodes
+to use other reserved interrupts.
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/xlnx-versal-virt.c | 1 -
- 1 file changed, 1 deletion(-)
+Since we don't have 32 reserved lines, we also reduce the number of
+virtio-mmio regions to 8 (we do have some more lines free but let's
+leave some for future use).
 
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 1e31a3f442..41b8d801c8 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -364,7 +364,6 @@ static void create_virtio_regions(VersalVirt *s)
-         sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic_irq);
-         mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-         memory_region_add_subregion(&s->soc.mr_ps, base, mr);
--        sysbus_create_simple("virtio-mmio", base, pic_irq);
-     }
- 
-     for (i = 0; i < NUM_VIRTIO_TRANSPORT; i++) {
+Cheers,
+Edgar
+
+Edgar E. Iglesias (4):
+  hw/arm: versal: Remove bogus virtio-mmio creation
+  hw/arm: versal: Reduce number of virtio-mmio instances
+  hw/arm: versal: Use IRQs 111 - 118 for virtio-mmio
+  hw/arm: versal: Correct the nr of IRQs to 192
+
+ hw/arm/xlnx-versal-virt.c    | 7 +++----
+ include/hw/arm/xlnx-versal.h | 8 ++++----
+ 2 files changed, 7 insertions(+), 8 deletions(-)
+
 -- 
 2.17.1
 

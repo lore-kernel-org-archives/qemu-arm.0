@@ -1,107 +1,99 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2843850wrt;
-        Thu, 29 Nov 2018 13:36:48 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UhIC5x8QGNvOVseWUqSxpj5JYiQC6RJxs50vWK5SKqvyg5p4OxtzXOVZ0tqFWFkZUF8ZeH
-X-Received: by 2002:a25:b3c6:: with SMTP id x6-v6mr3006905ybf.508.1543527408520;
-        Thu, 29 Nov 2018 13:36:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543527408; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp2997668wrt;
+        Thu, 29 Nov 2018 16:44:14 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XfnjFlP1LwbxDRvGsLT1rLiQA7N2dGAxodTceIpdvHyU71a8HdQ4QYZ5aClzLpnXwah27K
+X-Received: by 2002:a81:6c51:: with SMTP id h78mr3753244ywc.116.1543538654104;
+        Thu, 29 Nov 2018 16:44:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543538654; cv=none;
         d=google.com; s=arc-20160816;
-        b=rgS6aDqAxNtoT5VCeKwGHsZ/fbHu7s7q2m3kL11o/jujdtfLIODrdXyUntO75H6IoJ
-         So6y5eUwYtY72WdhnRp0T56d+g6gK+jBn4ty6eeKXF2b7CQ/l4uXqWa9wVZJM/UGRHdl
-         PajeXy2WUk5zb2xYtig4TZ14QRQYR09KMOF7WHqwlJKohacPRgP0NYob7VxCJkr3F2k9
-         99jA4Zto+YW4Dm6LIYPgETGU69kIvD4TD/6NdF3pq+LHy/XZPpoSgdGheD/YDlQT0rZl
-         uGnTfLj+7eQSxSuP5sZR5aDfx4IOjeTjcbUnAzaORBHd4lMSpz19+L2hXYF+qrsTZHya
-         gE1Q==
+        b=kDvdq8f38LDj9R87Aai3T3V7GUnwQgglh9u4FqF8aUGANDXeae9Px6TLhA1zpCeBdr
+         DNbsGybKGRbgDtClPfARDCBkTuhixmj9Jntekkui9XG3W+2IqL6H7rXJrqiXrS+Ln/pd
+         xOQldOzKqx6w8Wl4XRQWv1EPLumd2jH/YfC5TbZ6i/FtMsGj7bx7KP5TvGzLyTF5BATe
+         aEzElQL1GzMM/KNeSAwPGrrHKOHWIcdoFSUHXZuYwFyjT1Nrnozosxl7O4ewSf2LOfyL
+         ov6UemlUA/U2CMg8W9hwlfMQJRIeewXSvr/JdtSl7/7u6zCfHApzWsDALOxn51mDAylP
+         ipwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=SBTCtjLw0QfHv8iwF93UeoNfX4GNnzVvsqCVMMnGFyM=;
-        b=DlCShLIhxpV4SDy6fBHLPzBW4uM0RolimsnCzdZgOUwEFD2+n5T0nLQZNWqgZeB563
-         gx3PP0GBj01SaE18iAZ+GqNlYITZ3CfiIVM6BftqhiHtGiNS/vl4/Lm908xQDv7osLKp
-         uv3ljyFzh4mQ9JzN3lLs551KmjF1nH04zQyDYtC1YBh5ska6H4kd4vdg7dBWkK8UrlFh
-         E49fBvg1rtLmbH20jCc0fW4d1R7/HUiPb6TtazI/dqcd+qE8xBdUI8uxxjlLzKo3evrM
-         5uimBYjpXLQlbSgpXjxnjIF5BewOUodZIB1EG3BlIY3MJlle39IXVBqAyfGpAKJn9yuJ
-         2YUg==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=YyLq1WRaX0EThtVpyBfB9rQQU1GPf9Dd5tT19c/CUzs=;
+        b=h7aP8toW7la15p06LNBaXlKAiOjWTU1SA9bCM7bfH5nNm6E2kH/aCnmgs0HNGQCCOx
+         HP1wdI5v4zab9BboyZWEm+5NP1HfXc9+WnR3NdnJTj45VtTbZScGXLef8KBuKhIrZMKA
+         Wi/xH5FDMTZpUi6oquKHZqHkAtNaLD1oJwtIwFjm9QRQWEeB5awJIgGYwo4HftG3lDNO
+         8n0Y6HukCUVbEq0jrDcH3yz0BIPDMWzSoc0zcjKOcIec1U8iy4XNbE7i+yC3GSTDNnEW
+         ILkjZKmqeLg9ZSzvkSfjn6T9zBnRTNe0a+7gRN7NP8kcuZ+x7CC2hIzCL9TzBk7X9U29
+         Dn+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IUAU3P8T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b14-v6si1880382ybn.14.2018.11.29.13.36.48
+        by mx.google.com with ESMTPS id y12-v6si2100435ybp.309.2018.11.29.16.44.13
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 29 Nov 2018 13:36:48 -0800 (PST)
+        Thu, 29 Nov 2018 16:44:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IUAU3P8T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56561 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57293 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSTzL-0003wF-RQ
-	for alex.bennee@linaro.org; Thu, 29 Nov 2018 16:36:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60311)
+	id 1gSWuj-0006r7-Ee
+	for alex.bennee@linaro.org; Thu, 29 Nov 2018 19:44:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54275)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1gSTz5-0003uN-6c
-	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 16:36:33 -0500
+	(envelope-from <philmd@redhat.com>) id 1gSWuZ-0006qx-2e
+	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 19:44:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcandre.lureau@gmail.com>) id 1gSTz3-000166-4S
-	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 16:36:30 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37033)
+	(envelope-from <philmd@redhat.com>) id 1gSWuU-00058i-3L
+	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 19:44:03 -0500
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:39071)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
-	id 1gSTyr-0000Ub-BZ; Thu, 29 Nov 2018 16:36:17 -0500
-Received: by mail-wm1-x344.google.com with SMTP id g67so3723645wmd.2;
-	Thu, 29 Nov 2018 13:36:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=SBTCtjLw0QfHv8iwF93UeoNfX4GNnzVvsqCVMMnGFyM=;
-	b=IUAU3P8TsdPdtJtfWajH6iEA/zUQATLq74dpbVquVDS4wqdo52LdF3HFrJ0shateX/
-	+IKOUxTpl39kFTTn9iXoHSQS+CASvFMBE31Jl2V8VO0IAFma7OsB++1shkvGj4cTWfXE
-	pK81BJRJgoNkV4wLiNdxQ+bxplKmkQLa7ALBfuo4YHeCcUnzGxfKAUWR2moQlBFK+PNm
-	ZwmceX0Gyk/NrmPmMpMPVlGzOltAQu2buUVYK+B31a+340ogdNwcTK3uXMqN9512k3e1
-	ipKfFP6m8G8LL0+MhoHK1+e14XKetWa3HtBwyAJ1iLSQfMGTv6ALFpCNsO2X7KsFwa+t
-	GnNg==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gSWuT-00057v-O6
+	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 19:43:57 -0500
+Received: by mail-wr1-f68.google.com with SMTP id t27so3674824wra.6
+	for <qemu-arm@nongnu.org>; Thu, 29 Nov 2018 16:43:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=SBTCtjLw0QfHv8iwF93UeoNfX4GNnzVvsqCVMMnGFyM=;
-	b=XQGLWzjGtY5zSixsyWB4wXRYNu8xFHGV+bUqwflI6sFuInkIQPR4EO7AwJ+LZoC77f
-	muv6tL9jWBOpB//eSUSJ7p0ivgP1O7PE9e+UkWjuGGjfgPJBqtmdA6R5SuxsiIDDd2d4
-	Bh+SAEu4iBHCwcFF/0r+odw0kwaN5MUQHCi4ZMlo0SGxsLkEG0HWa7aLmn42NdTZ4oe6
-	aJtRfaJhOxLkY3ujJk9CCsni8YX3gBQz+YQpiDM+mU+h6H+nZi0YCdrXEqKm1118jSPf
-	p0ypJSWCwb1KRYv2jgi0XtwKJa+JKV7emfYM26nVQU+yoDmIpO3bWLeYyVvz5Fnwl+uv
-	6jSQ==
-X-Gm-Message-State: AA+aEWaQQqsB0Err/gJma7rsr9X6h5S5mVbmCJvlQsOVR5SLSIScEIVm
-	EB+dZRljlBD2MgbMfVYSMF9JljIL8SEEsmm6yqs=
-X-Received: by 2002:a1c:2981:: with SMTP id p123mr3132523wmp.19.1543527375059; 
-	Thu, 29 Nov 2018 13:36:15 -0800 (PST)
+	h=x-gm-message-state:subject:to:references:from:openpgp:cc:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=YyLq1WRaX0EThtVpyBfB9rQQU1GPf9Dd5tT19c/CUzs=;
+	b=rAB0DEqtuBtIpGryK8euKLrTXcLeeYUz4XQ5sXZKSxmNEx6duDPVwSJM5Ggakqqurg
+	Ow7lFkj+VglNCVrUdW9CPAD0Jrq9SLZnQGaBkTjAqvmmBvLshwBEHTC514TU7PHDyLnP
+	TvY1NnOSBxlniqC9gbbeq5vYpL2Nmn/9rkgl72BFxn8QXBzy9pqvlFxa0YfCX5KoZoxs
+	V+QIg3JTLY5vFLwRqDVnYElAvTvLxGE4X5CC7K5MLEj0Qzv+xJGeiYaHCAvtmfNSeFkR
+	vs3i/mLHjpTd2UZdNqx34w17mPlg4lheo2e50D+82mphg97ze7IrvuOGPhaXS97u+6+m
+	BBlQ==
+X-Gm-Message-State: AA+aEWYzLMicnFPG8gjcEJmGs3ZBgjyQd0VZg7KDjfDgTU4FEoHKHkDO
+	OHKb03O8lTYk1+6calE4QZX1Nw==
+X-Received: by 2002:adf:9542:: with SMTP id 60mr3024271wrs.60.1543538636456;
+	Thu, 29 Nov 2018 16:43:56 -0800 (PST)
+Received: from ?IPv6:2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9?
+	([2a01:cb1d:8a0a:f500:48c1:8eab:256a:caf9])
+	by smtp.gmail.com with ESMTPSA id s3sm2999016wmj.23.2018.11.29.16.43.55
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 29 Nov 2018 16:43:55 -0800 (PST)
+To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+	qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>
+References: <alpine.BSF.2.21.9999.1811292101280.5887@zero.eik.bme.hu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <a05ba14f-b261-bb8c-12a1-4c91d005961f@redhat.com>
+Date: Fri, 30 Nov 2018 01:43:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
-References: <20181127092801.21777-1-marcandre.lureau@redhat.com>
-	<20181127092801.21777-17-marcandre.lureau@redhat.com>
-	<20181127125644.GB18284@habkost.net>
-	<CAMxuvaySoJ2TokV8M81CVU3Hp4dC25c+PW_p2kk+V88-88U-CQ@mail.gmail.com>
-	<20181127133527.GI18284@habkost.net>
-	<20181128184027.7d584eaa@redhat.com>
-	<CAJ+F1CK5NkgsJWFGZ7kvR81KyeOPE_ytk=tOjKqTUGtbfywmJQ@mail.gmail.com>
-	<20181129175055.GQ18284@habkost.net>
-In-Reply-To: <20181129175055.GQ18284@habkost.net>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Fri, 30 Nov 2018 01:36:03 +0400
-Message-ID: <CAJ+F1CJBKVibRrgjiNKjSJ5ufK=CUodx26aHnKzeL3Cs7adbeA@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v4 16/28] hw: apply
- machine compat properties without touching globals
+In-Reply-To: <alpine.BSF.2.21.9999.1811292101280.5887@zero.eik.bme.hu>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] Booting Raspbian on RPi emulation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,125 +105,402 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>, QEMU <qemu-devel@nongnu.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Qemu-s390x list <qemu-s390x@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>
+Cc: Clement Deschamps <clement.deschamps@antfield.fr>,
+	Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W1IssRap4icP
+X-TUID: gI0/L5rr/BTS
 
-Hi
+Hi Zoltan,
 
-On Thu, Nov 29, 2018 at 9:51 PM Eduardo Habkost <ehabkost@redhat.com> wrote=
-:
->
-> On Thu, Nov 29, 2018 at 02:32:18PM +0400, Marc-Andr=C3=A9 Lureau wrote:
-> > Hi
-> > On Wed, Nov 28, 2018 at 9:53 PM Igor Mammedov <imammedo@redhat.com> wro=
-te:
-> > >
-> > > On Tue, 27 Nov 2018 11:35:27 -0200
-> > > Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > >
-> > > > On Tue, Nov 27, 2018 at 05:10:05PM +0400, Marc-Andr=C3=A9 Lureau wr=
-ote:
-> > > > > On Tue, Nov 27, 2018 at 4:57 PM Eduardo Habkost <ehabkost@redhat.=
-com> wrote:
-> > > > > >
-> > > > > > On Tue, Nov 27, 2018 at 01:27:49PM +0400, Marc-Andr=C3=A9 Lurea=
-u wrote:
-> > > > > > > Similarly to accel properties, move compat properties out of =
-globals
-> > > > > > > registration, and apply the machine compat properties during
-> > > > > > > device_post_init().
-> > > > > > >
-> > > > > > > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redha=
-t.com>
-> > > > > > [...]
-> > > > > > > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> > > > > > > index 7066d28271..3b31b2c025 100644
-> > > > > > > --- a/hw/core/qdev.c
-> > > > > > > +++ b/hw/core/qdev.c
-> > > > > > > @@ -971,17 +971,26 @@ static void device_initfn(Object *obj)
-> > > > > > >  }
-> > > > > > >
-> > > > > > >  static const GPtrArray *ac_compat_props;
-> > > > > > > +static const GPtrArray *mc_compat_props;
-> > > why you didn't use just 'compat_props' for both?
-> > > (it would be cleaner have single registry for compat
-> > > properties, and the place that takes care of registration
-> > > will take care of necessary ordering)
-> >
-> > There are two arrays, one from the accelerator class, the other from
-> > the machine class. We can't make it a singleton (all compats props for
-> > the various machines would be mixed).
-> >
-> > We could create a third array that would be the set of both, but that
-> > would require more copy/allocation.
->
-> I am failing to see the advantage of replacing the `global_props`
-> static variable from qdev-properties.c with a collection of
-> separate static variables scattered around the code.  I thought
-> the main point of the changes was to reduce the amount of
-> duplicate data stored in static variables.
->
-> I was expecting something like this:
->
-> accel.c:
->
->   void accel_apply_compat_props(AccelState *accel, Object *obj)
->   {
->       object_apply_global_props(obj, ACCEL_GET_CLASS(accel)->compat_props=
-, &error_abort);
->   }
->
-> machine.c:
->
->   /* Apply compat properties and global properties to an object */
->   void machine_apply_compat_props(MachineState *ms, Object *obj)
->   {
->       accel_apply_compat_props(ms->accel, obj);
->       object_apply_global_props(obj, MACHINE_GET_CLASS(ms)->compat_props,=
- &error_abort);
->   }
->
-> compat-props.c:
->
->   static void object_apply_compat_props(Object *obj)
->   {
->       MachineState *machine =3D MACHINE(qdev_get_machine());
->       machine_apply_compat_props(machine, obj);
->   }
->
-> qdev.c:
->
->   static void device_post_init(Object *obj)
->   {
->       object_apply_compat_props(obj);
->       apply_user_provided_globals(obj);
->   }
->
-> object_interface.c:
->
->   void user_creatable_complete(Object *obj, Error **errp)
->   {
->       object_apply_compat_props(obj);
->       ...
->       ucc->complete(...)
->   }
->
+On 29/11/18 21:29, BALATON Zoltan wrote:
+> Hello,
+> 
+> I could not boot Raspbian on QEMU's raspi emulation and I'm not sure why
+> it fails. So question is if this is supposed to work or am I doing
+> something wrong or any clues what may be missing? I'm trying with this
+> command line with v3.1.0-rc3:
+> 
+> qemu-system-arm -M raspi2 -serial stdio \
+> -kernel rpi-kernel7.img -dtb bcm2709-rpi-2-b.dtb \
+> -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200
+> dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2" \
+> -drive file=2018-10-09-raspbian-stretch-lite.img,format=raw,if=sd
+> 
+> Kernel starts to boot, I see raspberries on the guest screen and log
+> output to serial:
+> 
+> Booting Linux on physical CPU 0xf00
+> Linux version 4.14.71-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3
+> (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1145 SMP Fri Sep 21
+> 15:38:35 BST 2018
+> CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
+> [...]
+> 
+> I get a lot of warnings like these:
+> 
+> bcm2835-clk 3f101000.cprman: plla: couldn't lock PLL
+> 
+> which I think are due to missing clock part emulation and I've also
+> tried with the corresponding patch that got rid of these but apart from
+> that failed similarly (see below).
+> 
+> The problem seems to be that the SD card with the root filesystem is not
+> found. I get these mmc related logs:
+> 
+> sdhost-bcm2835 3f202000.mmc: could not get clk, deferring probe
+> mmc0: sdhost-bcm2835 loaded - DMA enabled (>1)
+> 
+> and then eventually ends with:
+> 
+> mmc0: host does not support reading read-only switch, assuming write-enable
+> mmc0: Problem switching card into high-speed mode!
+> mmc0: new SDHC card at address 4567
+> VFS: Cannot open root device "mmcblk0p2" or unknown-block(0,0): error -6
+> Please append a correct "root=" boot option; here are the available
+> partitions:
+> 0100            4096 ram0
+>  (driver?)
+> 0101            4096 ram1
+>  (driver?)
+> 0102            4096 ram2
+>  (driver?)
+> 0103            4096 ram3
+>  (driver?)
+> 0104            4096 ram4
+>  (driver?)
+> 0105            4096 ram5
+>  (driver?)
+> 0106            4096 ram6
+>  (driver?)
+> 0107            4096 ram7
+>  (driver?)
+> 0108            4096 ram8
+>  (driver?)
+> mmcblk0: mmc0:4567 QEMU! 1.74 GiB
+> 0109            4096 ram9
+>  (driver?)
+> 010a            4096 ram10
+>  (driver?)
+> 010b            4096 ram11
+>  (driver?)
+> 010c            4096 ram12
+>  (driver?)
+> 010d            4096 ram13
+>  (driver?)
+> 010e            4096 ram14
+>  (driver?)
+> 010f            4096 ram15
+>  (driver?)
+> b300         1822720 mmcblk0
+>  driver: mmcblk
+> Kernel panic - not syncing: VFS: Unable to mount root fs on
+> unknown-block(0,0)
+> CPU: 3 PID: 1 Comm: swapper/0 Tainted: G        W       4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8011dcb4>] (panic+0xf0/0x274)
+> [<8011dcb4>] (panic) from [<80b014f8>] (mount_block_root+0x1e8/0x2b8)
+> [<80b014f8>] (mount_block_root) from [<80b017e8>] (mount_root+0x12c/0x134)
+> [<80b017e8>] (mount_root) from [<80b01990>] (prepare_namespace+0x1a0/0x1e8)
+> [<80b01990>] (prepare_namespace) from [<80b010ac>]
+> (kernel_init_freeable+0x2a8/0x2bc)
+> [<80b010ac>] (kernel_init_freeable) from [<8079cf80>]
+> (kernel_init+0x18/0x128)
+> [<8079cf80>] (kernel_init) from [<8010810c>] (ret_from_fork+0x14/0x28)
+> CPU0: stopping
+> CPU: 0 PID: 61 Comm: mmcqd/0 Tainted: G        W       4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8010e458>] (handle_IPI+0x2bc/0x33c)
+> [<8010e458>] (handle_IPI) from [<801014d8>]
+> (bcm2836_arm_irqchip_handle_irq+0x7c/0xac)
+> [<801014d8>] (bcm2836_arm_irqchip_handle_irq) from [<807a3abc>]
+> (__irq_svc+0x5c/0x7c)
+> Exception stack(0xba283ca0 to 0xba283ce8)
+> 3ca0: ba9fa1c0 ba9fa200 a0000013 ba9fa240 ba9fa1c0 ba158580 014000c0
+> ba158588
+> 3cc0: 000d0418 ba9f9548 00000000 ba283d3c ba283ca8 ba283cf0 80277598
+> 80272874
+> 3ce0: 40000013 ffffffff
+> [<807a3abc>] (__irq_svc) from [<80272874>] (dma_pool_alloc+0x9c/0x23c)
+> [<80272874>] (dma_pool_alloc) from [<804fb694>]
+> (bcm2835_dma_create_cb_chain+0x1b4/0x214)
+> [<804fb694>] (bcm2835_dma_create_cb_chain) from [<804fbb9c>]
+> (bcm2835_dma_prep_slave_sg+0x12c/0x2a8)
+> [<804fbb9c>] (bcm2835_dma_prep_slave_sg) from [<806385d8>]
+> (bcm2835_sdhost_request+0x418/0x5fc)
+> [<806385d8>] (bcm2835_sdhost_request) from [<806194bc>]
+> (__mmc_start_request+0x78/0x1a8)
+> [<806194bc>] (__mmc_start_request) from [<8061a030>]
+> (mmc_start_request+0x158/0x184)
+> [<8061a030>] (mmc_start_request) from [<8061a2d8>]
+> (mmc_start_areq+0x27c/0x3d0)
+> [<8061a2d8>] (mmc_start_areq) from [<8062b864>]
+> (mmc_blk_issue_rw_rq+0xa8/0x3ac)
+> [<8062b864>] (mmc_blk_issue_rw_rq) from [<8062c838>]
+> (mmc_blk_issue_rq+0x2b4/0x74c)
+> [<8062c838>] (mmc_blk_issue_rq) from [<8062cd48>]
+> (mmc_queue_thread+0x78/0x14c)
+> [<8062cd48>] (mmc_queue_thread) from [<8013dad4>] (kthread+0x13c/0x16c)
+> [<8013dad4>] (kthread) from [<8010810c>] (ret_from_fork+0x14/0x28)
+> CPU1: stopping
+> CPU: 1 PID: 0 Comm: swapper/1 Tainted: G        W       4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8010e458>] (handle_IPI+0x2bc/0x33c)
+> [<8010e458>] (handle_IPI) from [<801014d8>]
+> (bcm2836_arm_irqchip_handle_irq+0x7c/0xac)
+> [<801014d8>] (bcm2836_arm_irqchip_handle_irq) from [<807a3abc>]
+> (__irq_svc+0x5c/0x7c)
+> Exception stack(0xba925f38 to 0xba925f80)
+> 5f20:                                                       00000000
+> 000007b8
+> 5f40: 3a3b9000 00000000 ba924000 80c03dcc 80c03d68 80c885b2 00000001
+> 410fc075
+> 5f60: 00000000 ba925f94 80c04174 ba925f88 80108a4c 80108a50 60000013
+> ffffffff
+> [<807a3abc>] (__irq_svc) from [<80108a50>] (arch_cpu_idle+0x34/0x4c)
+> [<80108a50>] (arch_cpu_idle) from [<807a323c>]
+> (default_idle_call+0x34/0x48)
+> [<807a323c>] (default_idle_call) from [<80161494>] (do_idle+0xd8/0x150)
+> [<80161494>] (do_idle) from [<801617a8>] (cpu_startup_entry+0x28/0x2c)
+> [<801617a8>] (cpu_startup_entry) from [<8010df50>]
+> (secondary_start_kernel+0x130/0x13c)
+> [<8010df50>] (secondary_start_kernel) from [<0010196c>] (0x10196c)
+> CPU2: stopping
+> CPU: 2 PID: 0 Comm: swapper/2 Tainted: G        W       4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8010e458>] (handle_IPI+0x2bc/0x33c)
+> [<8010e458>] (handle_IPI) from [<801014d8>]
+> (bcm2836_arm_irqchip_handle_irq+0x7c/0xac)
+> [<801014d8>] (bcm2836_arm_irqchip_handle_irq) from [<807a3abc>]
+> (__irq_svc+0x5c/0x7c)
+> Exception stack(0xba927f38 to 0xba927f80)
+> 7f20:                                                       00000000
+> 0000065c
+> 7f40: 3a3ca000 00000000 ba926000 80c03dcc 80c03d68 80c885b2 00000001
+> 410fc075
+> 7f60: 00000000 ba927f94 80c04174 ba927f88 80108a4c 80108a50 60000013
+> ffffffff
+> [<807a3abc>] (__irq_svc) from [<80108a50>] (arch_cpu_idle+0x34/0x4c)
+> [<80108a50>] (arch_cpu_idle) from [<807a323c>]
+> (default_idle_call+0x34/0x48)
+> [<807a323c>] (default_idle_call) from [<80161494>] (do_idle+0xd8/0x150)
+> [<80161494>] (do_idle) from [<801617a8>] (cpu_startup_entry+0x28/0x2c)
+> [<801617a8>] (cpu_startup_entry) from [<8010df50>]
+> (secondary_start_kernel+0x130/0x13c)
+> [<8010df50>] (secondary_start_kernel) from [<0010196c>] (0x10196c)
+> ---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on
+> unknown-block(0,0)
+> 
+> Not sure what this means but looks like mmcblk0 was found too late for
+> some reason? (And its partitions are not found.)
 
-I like that solution too (which you also proposed in the other
-thread). But we have to decide whether it's acceptable to reference
-MachineState, or if the compat properties should be registered.
+I'd say Linux now wants to use DMA which aren't configured in
+bcm2835_peripherals.c for the SDHC.
 
+> 
+> Then I've tried the same with the pll patches posted by Philippe
+> Mathieu-Daudé here:
+> 
+> http://lists.nongnu.org/archive/html/qemu-devel/2018-11/msg00191.html
+> 
+> on top of v3.1.0-rc3 which helped to get rid of the cprman warnings but
+> did not help with the mmc problem. In fact now also mmcblk0 is gone and
+> log ends with:
+> 
+> mmc0: sdhost-bcm2835 loaded - DMA enabled (>1)
+> of_cfs_init
+> of_cfs_init: OK
+> uart-pl011 3f201000.serial: no DMA platform data
+> VFS: Cannot open root device "mmcblk0p2" or unknown-block(0,0): error -6
+> Please append a correct "root=" boot option; here are the available
+> partitions:
+> 0100            4096 ram0
+>  (driver?)
+> 0101            4096 ram1
+>  (driver?)
+> 0102            4096 ram2
+>  (driver?)
+> 0103            4096 ram3
+>  (driver?)
+> 0104            4096 ram4
+>  (driver?)
+> 0105            4096 ram5
+>  (driver?)
+> 0106            4096 ram6
+>  (driver?)
+> 0107            4096 ram7
+>  (driver?)
+> 0108            4096 ram8
+>  (driver?)
+> 0109            4096 ram9
+>  (driver?)
+> 010a            4096 ram10
+>  (driver?)
+> 010b            4096 ram11
+>  (driver?)
+> 010c            4096 ram12
+>  (driver?)
+> 010d            4096 ram13
+>  (driver?)
+> 010e            4096 ram14
+>  (driver?)
+> 010f            4096 ram15
+>  (driver?)
+> NOHZ: local_softirq_pending 80
+> Kernel panic - not syncing: VFS: Unable to mount root fs on
+> unknown-block(0,0)
+> CPU: 2 PID: 1 Comm: swapper/0 Not tainted 4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> mmc0: host does not support reading read-only switch, assuming write-enable
+> mmc0: Problem switching card into high-speed mode!
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> mmc0: new SDHC card at address 4567
+> [<80787f24>] (dump_stack) from [<8011dcb4>] (panic+0xf0/0x274)
+> [<8011dcb4>] (panic) from [<80b014f8>] (mount_block_root+0x1e8/0x2b8)
+> [<80b014f8>] (mount_block_root) from [<80b017e8>] (mount_root+0x12c/0x134)
+> [<80b017e8>] (mount_root) from [<80b01990>] (prepare_namespace+0x1a0/0x1e8)
+> [<80b01990>] (prepare_namespace) from [<80b010ac>]
+> (kernel_init_freeable+0x2a8/0x2bc)
+> [<80b010ac>] (kernel_init_freeable) from [<8079cf80>]
+> (kernel_init+0x18/0x128)
+> [<8079cf80>] (kernel_init) from [<8010810c>] (ret_from_fork+0x14/0x28)
+> CPU1: stopping
+> CPU: 1 PID: 0 Comm: swapper/1 Not tainted 4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8010e458>] (handle_IPI+0x2bc/0x33c)
+> [<8010e458>] (handle_IPI) from [<801014d8>]
+> (bcm2836_arm_irqchip_handle_irq+0x7c/0xac)
+> [<801014d8>] (bcm2836_arm_irqchip_handle_irq) from [<807a3abc>]
+> (__irq_svc+0x5c/0x7c)
+> Exception stack(0xba925f38 to 0xba925f80)
+> 5f20:                                                       00000000
+> 000003c4
+> 5f40: 3a3b9000 00000000 ba924000 80c03dcc 80c03d68 80c885b2 00000001
+> 410fc075
+> 5f60: 00000000 ba925f94 80c04174 ba925f88 80108a4c 80108a50 60000013
+> ffffffff
+> [<807a3abc>] (__irq_svc) from [<80108a50>] (arch_cpu_idle+0x34/0x4c)
+> [<80108a50>] (arch_cpu_idle) from [<807a323c>]
+> (default_idle_call+0x34/0x48)
+> [<807a323c>] (default_idle_call) from [<80161494>] (do_idle+0xd8/0x150)
+> [<80161494>] (do_idle) from [<801617a8>] (cpu_startup_entry+0x28/0x2c)
+> [<801617a8>] (cpu_startup_entry) from [<8010df50>]
+> (secondary_start_kernel+0x130/0x13c)
+> [<8010df50>] (secondary_start_kernel) from [<0010196c>] (0x10196c)
+> CPU3: stopping
+> CPU: 3 PID: 0 Comm: swapper/3 Not tainted 4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8010e458>] (handle_IPI+0x2bc/0x33c)
+> [<8010e458>] (handle_IPI) from [<801014d8>]
+> (bcm2836_arm_irqchip_handle_irq+0x7c/0xac)
+> [<801014d8>] (bcm2836_arm_irqchip_handle_irq) from [<807a3abc>]
+> (__irq_svc+0x5c/0x7c)
+> Exception stack(0xba929f38 to 0xba929f80)
+> 9f20:                                                       00000000
+> 0000031c
+> 9f40: 3a3db000 00000000 ba928000 80c03dcc 80c03d68 80c885b2 00000001
+> 410fc075
+> 9f60: 00000000 ba929f94 80c04174 ba929f88 80108a4c 80108a50 60000013
+> ffffffff
+> [<807a3abc>] (__irq_svc) from [<80108a50>] (arch_cpu_idle+0x34/0x4c)
+> [<80108a50>] (arch_cpu_idle) from [<807a323c>]
+> (default_idle_call+0x34/0x48)
+> [<807a323c>] (default_idle_call) from [<80161494>] (do_idle+0xd8/0x150)
+> [<80161494>] (do_idle) from [<801617a8>] (cpu_startup_entry+0x28/0x2c)
+> [<801617a8>] (cpu_startup_entry) from [<8010df50>]
+> (secondary_start_kernel+0x130/0x13c)
+> [<8010df50>] (secondary_start_kernel) from [<0010196c>] (0x10196c)
+> CPU0: stopping
+> CPU: 0 PID: 29 Comm: kworker/0:1 Not tainted 4.14.71-v7+ #1145
+> Hardware name: BCM2835
+> Workqueue: events_freezable mmc_rescan
+> [<8010ffd4>] (unwind_backtrace) from [<8010c240>] (show_stack+0x20/0x24)
+> [<8010c240>] (show_stack) from [<80787f24>] (dump_stack+0xd4/0x118)
+> [<80787f24>] (dump_stack) from [<8010e458>] (handle_IPI+0x2bc/0x33c)
+> [<8010e458>] (handle_IPI) from [<801014d8>]
+> (bcm2836_arm_irqchip_handle_irq+0x7c/0xac)
+> [<801014d8>] (bcm2836_arm_irqchip_handle_irq) from [<807a3abc>]
+> (__irq_svc+0x5c/0x7c)
+> Exception stack(0xbaa55b80 to 0xbaa55bc8)
+> 5b80: ba270458 00000000 ba128300 00000000 ba27045c 00000000 ba81c800
+> ba270000
+> 5ba0: 80c57084 ba270460 00000000 baa55bf4 80c04174 baa55bd0 80491f2c
+> 80491f30
+> 5bc0: 60000013 ffffffff
+> [<807a3abc>] (__irq_svc) from [<80491f30>]
+> (blkcg_activate_policy+0x188/0x218)
+> [<80491f30>] (blkcg_activate_policy) from [<804993ec>]
+> (cfq_init_queue+0xd0/0x340)
+> [<804993ec>] (cfq_init_queue) from [<8046ab70>] (elevator_init+0x78/0x174)
+> [<8046ab70>] (elevator_init) from [<80471e80>]
+> (blk_init_allocated_queue+0xe8/0x174)
+> [<80471e80>] (blk_init_allocated_queue) from [<8062d070>]
+> (mmc_init_queue+0xd0/0x29c)
+> [<8062d070>] (mmc_init_queue) from [<80629fb8>]
+> (mmc_blk_alloc_req+0xe8/0x2e4)
+> [<80629fb8>] (mmc_blk_alloc_req) from [<8062a838>]
+> (mmc_blk_probe+0xbc/0x520)
+> [<8062a838>] (mmc_blk_probe) from [<8061c828>] (mmc_bus_probe+0x28/0x2c)
+> [<8061c828>] (mmc_bus_probe) from [<80544b4c>]
+> (driver_probe_device+0x244/0x300)
+> [<80544b4c>] (driver_probe_device) from [<80544db4>]
+> (__device_attach_driver+0xa4/0xbc)
+> [<80544db4>] (__device_attach_driver) from [<80542c3c>]
+> (bus_for_each_drv+0x74/0xa8)
+> [<80542c3c>] (bus_for_each_drv) from [<805447c0>]
+> (__device_attach+0xc0/0x120)
+> [<805447c0>] (__device_attach) from [<80544de8>]
+> (device_initial_probe+0x1c/0x20)
+> [<80544de8>] (device_initial_probe) from [<80543cb0>]
+> (bus_probe_device+0x94/0x9c)
+> [<80543cb0>] (bus_probe_device) from [<80541cd4>] (device_add+0x400/0x588)
+> [<80541cd4>] (device_add) from [<8061cce0>] (mmc_add_card+0x120/0x2bc)
+> [<8061cce0>] (mmc_add_card) from [<806237f0>] (mmc_attach_sd+0xa4/0x150)
+> [<806237f0>] (mmc_attach_sd) from [<8061c500>] (mmc_rescan+0x328/0x394)
+> [<8061c500>] (mmc_rescan) from [<801376f0>] (process_one_work+0x158/0x454)
+> [<801376f0>] (process_one_work) from [<80137a50>]
+> (worker_thread+0x64/0x5b8)
+> [<80137a50>] (worker_thread) from [<8013dad4>] (kthread+0x13c/0x16c)
+> [<8013dad4>] (kthread) from [<8010810c>] (ret_from_fork+0x14/0x28)
+> ---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on
+> unknown-block(0,0)
+> 
+> Any ideas why this happens and what's needed to get this image booted?
 
---
-Marc-Andr=C3=A9 Lureau
+The clock patch you mentioned is very trivial and was put together to
+have the UART working, which uses very little of the clock tree. For the
+MMC we probably need more work.
+
+> 
+> (I've also tried with raspi3 like this:
+> 
+> qemu-system-aarch64 -M raspi3 -serial stdio \
+> -kernel rpi-kernel7.img -dtb bcm2710-rpi-3-b-plus.dtb \
+> -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200
+> dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2" \
+> -drive file=2018-10-09-raspbian-stretch-lite.img,format=raw,if=sd
+> 
+> but did not get any serial output and only black guest window without
+> berries so not sure where did it hang. Same result even with these
+> different serial options I've found somewhere:
+> 
+> -append "rw earlycon=uart8250,mmio32,0x3f215040 loglevel=8
+> console=ttyS1,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2" \
+> 
+> but no serial output and black screen with this too.)
+> 
+> Thanks,
+> BALATON Zoltan

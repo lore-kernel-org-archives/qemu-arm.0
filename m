@@ -1,107 +1,87 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3120463wrt;
-        Thu, 29 Nov 2018 19:40:14 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/X99358/u6GW/Wd+FJ6bD15MgNYg27Hw13ZQCXgazcvblYcR5/Wq2N3XvFGWyVX4RwMLMYK
-X-Received: by 2002:a0d:fd82:: with SMTP id n124mr4142070ywf.369.1543549213983;
-        Thu, 29 Nov 2018 19:40:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543549213; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3270440wrt;
+        Thu, 29 Nov 2018 23:26:41 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WoNMq98FCMrpe3U08YKPMZbXcoU43uSG3j71bHY8Fu14J66nPs0g57tntCthb0XF4jYIS/
+X-Received: by 2002:a81:ec04:: with SMTP id j4mr4544131ywm.230.1543562801315;
+        Thu, 29 Nov 2018 23:26:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543562801; cv=none;
         d=google.com; s=arc-20160816;
-        b=SE1VLo5qSUHqM8ipLUJE6EYpLiXRcqchQDBSSnTWNXPEUjYbhRd4bwnfZH9oeV0ZWD
-         jX4IcYyiutHUuR+2W9v2MlMrpQAqxR/hdoaHVOFRTHPmLRetiVjMlZyd9zYMNLLFfcSX
-         o6YqRSo4Pvzn/d3TcyyPbon+5JRyMXOFm0cUZ2hn01Xd2RTMtz1feN6xPpEd8DspQ7mq
-         QVpVmaDblW1rX9XBJAaAD/cZnJLMTlEnYrom9LPv4AOD8ziME8sfpAxlbSsJxm+Tux0y
-         ZuIjxXUvXpGuqEt+H4Y4qZdyYtHr7ME/I+f3bKnovGRTNYgsd8YTChYB0ZROhMSems0Z
-         XO5w==
+        b=solPj5uh1u/q5FlfWWqyKB0dmtqPAg7MhCe2QZg7V4JoGk94DyG0CvaO9l2Ogg5SPN
+         Q6a01TnXbVN7Hc5CC5oLN2OFnCeaapMLLMV/J42osINFrsFAvkpaDthLv7gIXhAjbRxh
+         uZgTXbf/3VNvGHJhoLfsdbzvvTKqgH/2j+q+hvGmZNDp0ui8SeJAmZu4wdD3QfgtpJc+
+         8Xz8ym2br6PkvwOlSAc/l3qwvGV9NGqvIgrihBbl2WfGy5p64p198+yup5gKSCuf5DnR
+         Lap1sIRsLyQVEVfgybxJ9NYLvNmPT66mhqx3CFXe7TNLDeFhJmLge03vAJ5oTrnqx+2I
+         cOvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:dkim-signature;
-        bh=lSrmwuWM/g/uNuiJW75yWLVb8ssXVLT7sKUtkoH0IJM=;
-        b=V5C3fg/gcUf5v+Z0r0rqlpVyB88LjjzX6++oKEhgXBHyHEe3h5lAf3Xg2mjg1oiPoh
-         yv+YVqI4nagTUpSZfDirPtA2QqGRDWMkDr2TIDpX+nKbkaQzO+j3dh/x0uosnCV8fNPZ
-         gFhTPR59vjG5DlMx6Q4vPqc2d0r1hl8uBhjFY+Ity1vyCE/8MhNP3457fLzyjE/Jk95l
-         1uHh2bu6rexLEBp9OSBzy0AvSA1hJhHUekMz2rvC5FZZMVxfBxp+4LttRCYUsGNrw79D
-         gl2UaTi6CWBus0XKrK2gleQWTTGIfPV7Rh6vMW2Z8J5oLYVKAtT1m2GdPRBoGURPoJwu
-         VoxA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=5+Ej/41hmD0BEUhaU6346X+s3wuHoiRCU9PIrt5cArQ=;
+        b=HMllxExUHjaQTwy+3kqK8gNbLlXDLdc1iM0EWKCnHtR7BerWYLuTzhGI5FWkjrnXY1
+         0FUudPJo3AxOrNvT9D6kYX/LYYbHqc1ZAzroEPusBMqCufdbTcG+fTqFZYa4w1ln5d3r
+         9HJey4yqgqE/4Q3mFDMDVmDjQPe0odd+J7aj93IXsSc0gaqGsKc6eKkwMqIP+6zRfKil
+         l28pC5bDCzU95jLoiO2MlXuuddu0NsrY7pidmquAJwa1rU4p45Dx9HPMdL0/wB3YQbBs
+         FODaLK4OvhxByjYyHhzvOnw0d+N55WsBj/23sPb0w6GYBMQ1UizuHmJDyLVgNO8UVzGW
+         ff8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c+2182rs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 201-v6si2264886ybe.460.2018.11.29.19.40.13
+        by mx.google.com with ESMTPS id c8-v6si2496002ybb.314.2018.11.29.23.26.41
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Thu, 29 Nov 2018 19:40:13 -0800 (PST)
+        Thu, 29 Nov 2018 23:26:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c+2182rs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57939 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58451 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSZf3-0001kW-D8
-	for alex.bennee@linaro.org; Thu, 29 Nov 2018 22:40:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39121)
+	id 1gSdCC-0006BN-Kf
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 02:26:40 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55074)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1gSZeo-0001kJ-SC
-	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 22:40:01 -0500
+	(envelope-from <imammedo@redhat.com>) id 1gSdC5-0006A4-AE
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 02:26:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groeck7@gmail.com>) id 1gSZem-0005J8-H5
-	for qemu-arm@nongnu.org; Thu, 29 Nov 2018 22:39:58 -0500
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:42341)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <groeck7@gmail.com>)
-	id 1gSZem-0005Ij-3P; Thu, 29 Nov 2018 22:39:56 -0500
-Received: by mail-pf1-x444.google.com with SMTP id 64so2078918pfr.9;
-	Thu, 29 Nov 2018 19:39:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language;
-	bh=lSrmwuWM/g/uNuiJW75yWLVb8ssXVLT7sKUtkoH0IJM=;
-	b=c+2182rstyyARVg2XE7Au9jh2LypX22sfY8O+wQBUV6FWqm6TekuIpZgYJTAJGv0gk
-	QyW3ZZ7Mw692QrXp/EykMYPizfIp88AZ0zX/UrzVVCniPe1Q8ulCesb4RM5N8+Qgk/VT
-	iwnyHHZUFsJ7/IloDKfRZ/WwIXhkGzHQKYYb0dWW5HAwRt3ylQ5q3YMpCAvrUHlGHcSF
-	mcEJqcylZXYszMITtkccEG8BYyJqLlPPQzzEQGQVTEZhd30D3WZxZ6ZP83RE3Wm8sWY0
-	bOWShV2qC83qiIlCoKJ9r3ZkVIpo0GjseNbI8tbvSUANghEl2NArzmy9rIHNFfD6pT1I
-	LuAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language;
-	bh=lSrmwuWM/g/uNuiJW75yWLVb8ssXVLT7sKUtkoH0IJM=;
-	b=e8F/1raLxl3FErRn65HdNvx4w68FSFPeRrP8qZpLDrEqKr/eGpbnNlQyqBGsfdsg6/
-	1jOlzCrLNTwhOS0dszqCHi7+I7QL3cIorTmsGmDenZZu1DRGLoUXUCZKNedUAV9gOmIy
-	9lFO1ob0pq1uOaPYKRGaoea98svOAw+q3XgROIv5MKUr9Iep3TXbgzL/YLcxDFfnK4FV
-	6ZouD79mXw87JDeGv9clCbu18FYxMXTHA4JAgHUGCZG98wQfndRwuoByrK85tyGMSmu5
-	Jx/xKmj8k9hi+8f6GqhFUsPC2eaHRnuZRju/fc4eABnDfkDzasdZ2yQU94hf5hGJGDbC
-	KF9Q==
-X-Gm-Message-State: AA+aEWZHUC060dTbz2ICQIkYGVh0/1CNOe56vG8w5+JkUwWhKPmbhg74
-	1LWkTJ9MpeN0sLQ5XG36O2E=
-X-Received: by 2002:a62:6cc8:: with SMTP id h191mr4024934pfc.89.1543549195063; 
-	Thu, 29 Nov 2018 19:39:55 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
-	by smtp.gmail.com with ESMTPSA id
-	69sm3452802pgg.86.2018.11.29.19.39.52
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 29 Nov 2018 19:39:53 -0800 (PST)
-To: BALATON Zoltan <balaton@eik.bme.hu>
-References: <alpine.BSF.2.21.9999.1811292101280.5887@zero.eik.bme.hu>
-	<a05ba14f-b261-bb8c-12a1-4c91d005961f@redhat.com>
-	<71296170-f917-2b24-e1e6-1c525265c2a6@roeck-us.net>
-	<alpine.BSF.2.21.9999.1811300305450.787@zero.eik.bme.hu>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <a1b3027f-702a-5abb-ad93-8499f1e5e890@roeck-us.net>
-Date: Thu, 29 Nov 2018 19:39:51 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	(envelope-from <imammedo@redhat.com>) id 1gSdC2-000191-0R
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 02:26:33 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55094)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1gSdC1-00014R-Nv; Fri, 30 Nov 2018 02:26:29 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0C2817F6D0;
+	Fri, 30 Nov 2018 07:26:28 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5CE3D6013E;
+	Fri, 30 Nov 2018 07:26:23 +0000 (UTC)
+Date: Fri, 30 Nov 2018 08:26:21 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Samuel Ortiz <sameo@linux.intel.com>
+Message-ID: <20181130082621.6afb2d0a@redhat.com>
+In-Reply-To: <20181129142627.GA4691@caravaggio>
+References: <20181129132428.333-1-sameo@linux.intel.com>
+	<20181129132428.333-5-sameo@linux.intel.com>
+	<20181129140932.2yl75vsq2ohmuzx6@kamzik.brq.redhat.com>
+	<20181129142627.GA4691@caravaggio>
 MIME-Version: 1.0
-In-Reply-To: <alpine.BSF.2.21.9999.1811300305450.787@zero.eik.bme.hu>
-Content-Type: multipart/mixed; boundary="------------7E46617711AF0150C02FFF2A"
-Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::444
-Subject: Re: [Qemu-arm] Booting Raspbian on RPi emulation
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Fri, 30 Nov 2018 07:26:28 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 4/8] hw: arm: Carry RSDP
+ specific data through AcpiRsdpData
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,996 +93,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Clement Deschamps <clement.deschamps@antfield.fr>,
-	qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Jones <drjones@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Ben Warren <ben@skyportsystems.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zL6RJzvOUGmB
+X-TUID: pnFDlQHdAh7W
 
-This is a multi-part message in MIME format.
---------------7E46617711AF0150C02FFF2A
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Transfer-Encoding: 8bit
+On Thu, 29 Nov 2018 15:26:27 +0100
+Samuel Ortiz <sameo@linux.intel.com> wrote:
 
-On 11/29/18 6:42 PM, BALATON Zoltan wrote:
-> On Thu, 29 Nov 2018, Guenter Roeck wrote:
->> On 11/29/18 4:43 PM, Philippe Mathieu-Daudé wrote:
->>> Hi Zoltan,
->>>
->>> On 29/11/18 21:29, BALATON Zoltan wrote:
->>>> Hello,
->>>>
->>>> I could not boot Raspbian on QEMU's raspi emulation and I'm not sure why
->>>> it fails. So question is if this is supposed to work or am I doing
->>>> something wrong or any clues what may be missing? I'm trying with this
->>>> command line with v3.1.0-rc3:
->>>>
->>>> qemu-system-arm -M raspi2 -serial stdio \
->>>> -kernel rpi-kernel7.img -dtb bcm2709-rpi-2-b.dtb \
->>>> -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200
->>>> dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2" \
->>>> -drive file=2018-10-09-raspbian-stretch-lite.img,format=raw,if=sd
->>>>
->>>> Kernel starts to boot, I see raspberries on the guest screen and log
->>>> output to serial:
->>>>
->>>> Booting Linux on physical CPU 0xf00
->>>> Linux version 4.14.71-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3
->>>> (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1145 SMP Fri Sep 21
->>>> 15:38:35 BST 2018
->>>> CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
->>>> [...]
->>>>
->>>
->>
->> My version (https://github.com/groeck/qemu) seems to work, using
+> On Thu, Nov 29, 2018 at 03:09:32PM +0100, Andrew Jones wrote:
+> > On Thu, Nov 29, 2018 at 02:24:24PM +0100, Samuel Ortiz wrote:  
+> > > That will allow us to generalize the ARM build_rsdp() routine to support
+> > > both legacy RSDP (The current i386 implementation) and extended RSDP
+> > > (The ARM implementation).
+> > > 
+> > > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+> > > ---
+> > >  include/hw/acpi/acpi-defs.h |  8 ++++++++
+> > >  hw/arm/virt-acpi-build.c    | 18 +++++++++++++-----
+> > >  2 files changed, 21 insertions(+), 5 deletions(-)
+> > > 
+> > > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> > > index af8e023968..8425ecb8c6 100644
+> > > --- a/include/hw/acpi/acpi-defs.h
+> > > +++ b/include/hw/acpi/acpi-defs.h
+> > > @@ -53,6 +53,14 @@ struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
+> > >  } QEMU_PACKED;
+> > >  typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
+> > >  
+> > > +typedef struct AcpiRsdpData {
+> > > +    uint8_t oem_id[6]; /* OEM identification */
+> > > +    uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
+> > > +
+> > > +    unsigned *rsdt_tbl_offset;
+> > > +    unsigned *xsdt_tbl_offset;  
+> > 
+> > Why use pointers?  
+> Mostly to be consistent with the FADT data structure (AcpiFadtData).
+My guess would be that's for detecting an optional field and
+skipping setting it in build_rsdp(). But it's mostly for
+consistence with current code.
+
 > 
-> Tried with your v3.1.0-local branch but got same results (does not find mmcblk0 on raspi2, nothing on raspi3) so probably it's not one of the patches in your tree that's missing.
+> > > +} AcpiRsdpData;
+> > > +
+> > >  /* Table structure from Linux kernel (the ACPI tables are under the
+> > >     BSD license) */
+> > >  
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index 0835900052..ce8bfa5a37 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -368,7 +368,7 @@ static void acpi_dsdt_add_power_button(Aml *scope)
+> > >  
+> > >  /* RSDP */
+> > >  static void
+> > > -build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
+> > > +build_rsdp(GArray *rsdp_table, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
+> > >  {
+> > >      AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
+> > >      unsigned xsdt_pa_size = sizeof(rsdp->xsdt_physical_address);
+> > > @@ -379,14 +379,14 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
+> > >                               true /* fseg memory */);
+> > >  
+> > >      memcpy(&rsdp->signature, "RSD PTR ", sizeof(rsdp->signature));
+> > > -    memcpy(rsdp->oem_id, ACPI_BUILD_APPNAME6, sizeof(rsdp->oem_id));
+> > > +    memcpy(rsdp->oem_id, rsdp_data->oem_id, sizeof(rsdp->oem_id));  
+> > 
+> > sizeof(rsdp_data->oem_id)  
+> Which is the same thing. Note that this piece of code eventually gets
+> removed later in the serie.
 > 
->> multi_v7_defconfig.
 > 
-> Then maybe it's your kernel config that's different? Do you have compiled kernels available that I could try?
 > 
+> > >      rsdp->length = cpu_to_le32(sizeof(*rsdp));
+> > > -    rsdp->revision = 0x02;
+> > > +    rsdp->revision = rsdp_data->revision;
+> > >  
+> > >      /* Address to be filled by Guest linker */
+> > >      bios_linker_loader_add_pointer(linker,
+> > >          ACPI_BUILD_RSDP_FILE, xsdt_pa_offset, xsdt_pa_size,
+> > > -        ACPI_BUILD_TABLE_FILE, xsdt_tbl_offset);
+> > > +        ACPI_BUILD_TABLE_FILE, *rsdp_data->xsdt_tbl_offset);
+> > >  
+> > >      /* Checksum to be filled by Guest linker */
+> > >      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
+> > > @@ -857,7 +857,15 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> > >      build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
+> > >  
+> > >      /* RSDP is in FSEG memory, so allocate it separately */
+> > > -    build_rsdp(tables->rsdp, tables->linker, xsdt);
+> > > +    {
+> > > +        AcpiRsdpData rsdp_data = {
+> > > +            .revision = 2,
+> > > +            .oem_id = ACPI_BUILD_APPNAME6,
+> > > +            .xsdt_tbl_offset = &xsdt,
+> > > +            .rsdt_tbl_offset = NULL,  
+> > 
+> > nit: no need for this explicit NULLing  
+then one would get random junk from the stack this variable is allocate from
+in this field.
 
-Shouldn't be, but I attached my configuration. This time with v4.14.84 and
-"make ARCH-arm savedefconfig" after building the image. The output is identical
-to "make ARCH=arm multi_v7_defconfig; make ARCH=arm savedefconfig".
+> Unfortunately, yes.
+> 
+> Cheers,
+> Samuel.
 
-Oh, and here is my qemu configuration.
-
---disable-user --disable-gnutls --disable-docs \
-         --disable-nettle --disable-gcrypt --disable-vnc-png \
-         --disable-xen --disable-xen-pci-passthrough \
-         --enable-debug --disable-strip
-
-That should not make a difference either, but who knows.
-Just to be sure, I copied a kernel and a root file system
-to http://server.roeck-us.net/qemu/arm-raspi2/
-
-Hope it helps.
-
-Guenter
-
---------------7E46617711AF0150C02FFF2A
-Content-Type: text/plain; charset=UTF-8;
- name="defconfig"
-Content-Transfer-Encoding: 7bit
-Content-Disposition: attachment;
- filename="defconfig"
-
-CONFIG_SYSVIPC=y
-CONFIG_IRQ_DOMAIN_DEBUG=y
-CONFIG_NO_HZ=y
-CONFIG_HIGH_RES_TIMERS=y
-CONFIG_CGROUPS=y
-CONFIG_BLK_DEV_INITRD=y
-CONFIG_EMBEDDED=y
-CONFIG_PERF_EVENTS=y
-CONFIG_MODULES=y
-CONFIG_MODULE_UNLOAD=y
-CONFIG_PARTITION_ADVANCED=y
-CONFIG_CMDLINE_PARTITION=y
-CONFIG_ARCH_VIRT=y
-CONFIG_ARCH_MVEBU=y
-CONFIG_MACH_ARMADA_370=y
-CONFIG_MACH_ARMADA_375=y
-CONFIG_MACH_ARMADA_38X=y
-CONFIG_MACH_ARMADA_39X=y
-CONFIG_MACH_ARMADA_XP=y
-CONFIG_MACH_DOVE=y
-CONFIG_ARCH_ALPINE=y
-CONFIG_ARCH_ARTPEC=y
-CONFIG_MACH_ARTPEC6=y
-CONFIG_ARCH_AT91=y
-CONFIG_SOC_SAMA5D2=y
-CONFIG_SOC_SAMA5D3=y
-CONFIG_SOC_SAMA5D4=y
-CONFIG_ARCH_BCM=y
-CONFIG_ARCH_BCM_CYGNUS=y
-CONFIG_ARCH_BCM_NSP=y
-CONFIG_ARCH_BCM_5301X=y
-CONFIG_ARCH_BCM_281XX=y
-CONFIG_ARCH_BCM_21664=y
-CONFIG_ARCH_BCM2835=y
-CONFIG_ARCH_BCM_63XX=y
-CONFIG_ARCH_BRCMSTB=y
-CONFIG_ARCH_BERLIN=y
-CONFIG_MACH_BERLIN_BG2=y
-CONFIG_MACH_BERLIN_BG2CD=y
-CONFIG_MACH_BERLIN_BG2Q=y
-CONFIG_ARCH_DIGICOLOR=y
-CONFIG_ARCH_HIGHBANK=y
-CONFIG_ARCH_HISI=y
-CONFIG_ARCH_HI3xxx=y
-CONFIG_ARCH_HIP01=y
-CONFIG_ARCH_HIP04=y
-CONFIG_ARCH_HIX5HD2=y
-CONFIG_ARCH_KEYSTONE=y
-CONFIG_ARCH_MESON=y
-CONFIG_ARCH_MXC=y
-CONFIG_SOC_IMX50=y
-CONFIG_SOC_IMX51=y
-CONFIG_SOC_IMX53=y
-CONFIG_SOC_IMX6Q=y
-CONFIG_SOC_IMX6SL=y
-CONFIG_SOC_IMX6SX=y
-CONFIG_SOC_IMX6UL=y
-CONFIG_SOC_IMX7D=y
-CONFIG_SOC_LS1021A=y
-CONFIG_SOC_VF610=y
-CONFIG_ARCH_MEDIATEK=y
-CONFIG_ARCH_OMAP3=y
-CONFIG_ARCH_OMAP4=y
-CONFIG_SOC_OMAP5=y
-CONFIG_SOC_AM33XX=y
-CONFIG_SOC_AM43XX=y
-CONFIG_SOC_DRA7XX=y
-CONFIG_ARCH_QCOM=y
-CONFIG_ARCH_MSM8X60=y
-CONFIG_ARCH_MSM8960=y
-CONFIG_ARCH_MSM8974=y
-CONFIG_ARCH_ROCKCHIP=y
-CONFIG_ARCH_SOCFPGA=y
-CONFIG_PLAT_SPEAR=y
-CONFIG_ARCH_SPEAR13XX=y
-CONFIG_MACH_SPEAR1310=y
-CONFIG_MACH_SPEAR1340=y
-CONFIG_ARCH_STI=y
-CONFIG_ARCH_EXYNOS=y
-CONFIG_EXYNOS5420_MCPM=y
-CONFIG_ARCH_RENESAS=y
-CONFIG_ARCH_EMEV2=y
-CONFIG_ARCH_R7S72100=y
-CONFIG_ARCH_R8A73A4=y
-CONFIG_ARCH_R8A7740=y
-CONFIG_ARCH_R8A7743=y
-CONFIG_ARCH_R8A7745=y
-CONFIG_ARCH_R8A7778=y
-CONFIG_ARCH_R8A7779=y
-CONFIG_ARCH_R8A7790=y
-CONFIG_ARCH_R8A7791=y
-CONFIG_ARCH_R8A7792=y
-CONFIG_ARCH_R8A7793=y
-CONFIG_ARCH_R8A7794=y
-CONFIG_ARCH_SH73A0=y
-CONFIG_ARCH_SUNXI=y
-CONFIG_ARCH_SIRF=y
-CONFIG_ARCH_TEGRA=y
-CONFIG_ARCH_UNIPHIER=y
-CONFIG_ARCH_U8500=y
-CONFIG_MACH_HREFV60=y
-CONFIG_MACH_SNOWBALL=y
-CONFIG_ARCH_VEXPRESS=y
-CONFIG_ARCH_VEXPRESS_TC2_PM=y
-CONFIG_ARCH_WM8850=y
-CONFIG_ARCH_ZYNQ=y
-CONFIG_PCI_KEYSTONE=y
-CONFIG_PCI_MVEBU=y
-CONFIG_PCI_TEGRA=y
-CONFIG_PCI_RCAR_GEN2=y
-CONFIG_PCIE_RCAR=y
-CONFIG_SMP=y
-CONFIG_NR_CPUS=16
-CONFIG_CMA=y
-CONFIG_SECCOMP=y
-CONFIG_ARM_APPENDED_DTB=y
-CONFIG_ARM_ATAG_DTB_COMPAT=y
-CONFIG_KEXEC=y
-CONFIG_EFI=y
-CONFIG_CPU_FREQ=y
-CONFIG_CPU_FREQ_STAT=y
-CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND=y
-CONFIG_CPU_FREQ_GOV_POWERSAVE=m
-CONFIG_CPU_FREQ_GOV_USERSPACE=m
-CONFIG_CPU_FREQ_GOV_CONSERVATIVE=m
-CONFIG_CPU_FREQ_GOV_SCHEDUTIL=y
-CONFIG_CPUFREQ_DT=y
-CONFIG_ARM_IMX6Q_CPUFREQ=y
-CONFIG_QORIQ_CPUFREQ=y
-CONFIG_CPU_IDLE=y
-CONFIG_ARM_CPUIDLE=y
-CONFIG_ARM_ZYNQ_CPUIDLE=y
-CONFIG_ARM_EXYNOS_CPUIDLE=y
-CONFIG_KERNEL_MODE_NEON=y
-CONFIG_NET=y
-CONFIG_PACKET=y
-CONFIG_UNIX=y
-CONFIG_INET=y
-CONFIG_IP_PNP=y
-CONFIG_IP_PNP_DHCP=y
-CONFIG_IP_PNP_BOOTP=y
-CONFIG_IP_PNP_RARP=y
-CONFIG_IPV6_ROUTER_PREF=y
-CONFIG_IPV6_OPTIMISTIC_DAD=y
-CONFIG_INET6_AH=m
-CONFIG_INET6_ESP=m
-CONFIG_INET6_IPCOMP=m
-CONFIG_IPV6_MIP6=m
-CONFIG_IPV6_TUNNEL=m
-CONFIG_IPV6_MULTIPLE_TABLES=y
-CONFIG_NET_DSA=m
-CONFIG_CAN=y
-CONFIG_CAN_AT91=m
-CONFIG_CAN_SUN4I=y
-CONFIG_CAN_XILINXCAN=y
-CONFIG_CAN_RCAR=m
-CONFIG_CAN_MCP251X=y
-CONFIG_BT=m
-CONFIG_BT_MRVL=m
-CONFIG_BT_MRVL_SDIO=m
-CONFIG_CFG80211=m
-CONFIG_MAC80211=m
-CONFIG_RFKILL=y
-CONFIG_RFKILL_INPUT=y
-CONFIG_RFKILL_GPIO=y
-CONFIG_DEVTMPFS=y
-CONFIG_DEVTMPFS_MOUNT=y
-CONFIG_DMA_CMA=y
-CONFIG_CMA_SIZE_MBYTES=64
-CONFIG_OMAP_OCP2SCP=y
-CONFIG_SIMPLE_PM_BUS=y
-CONFIG_MTD=y
-CONFIG_MTD_CMDLINE_PARTS=y
-CONFIG_MTD_BLOCK=y
-CONFIG_MTD_M25P80=y
-CONFIG_MTD_NAND=y
-CONFIG_MTD_NAND_DENALI_DT=y
-CONFIG_MTD_NAND_OMAP2=y
-CONFIG_MTD_NAND_OMAP_BCH=y
-CONFIG_MTD_NAND_ATMEL=y
-CONFIG_MTD_NAND_BRCMNAND=y
-CONFIG_MTD_NAND_VF610_NFC=y
-CONFIG_MTD_NAND_DAVINCI=y
-CONFIG_MTD_SPI_NOR=y
-CONFIG_SPI_FSL_QUADSPI=m
-CONFIG_MTD_UBI=y
-CONFIG_BLK_DEV_LOOP=y
-CONFIG_BLK_DEV_RAM=y
-CONFIG_BLK_DEV_RAM_SIZE=65536
-CONFIG_VIRTIO_BLK=y
-CONFIG_AD525X_DPOT=y
-CONFIG_AD525X_DPOT_I2C=y
-CONFIG_ATMEL_TCLIB=y
-CONFIG_ICS932S401=y
-CONFIG_ATMEL_SSC=m
-CONFIG_QCOM_COINCELL=m
-CONFIG_APDS9802ALS=y
-CONFIG_ISL29003=y
-CONFIG_EEPROM_AT24=y
-CONFIG_BLK_DEV_SD=y
-CONFIG_BLK_DEV_SR=y
-CONFIG_ATA=y
-CONFIG_SATA_AHCI=y
-CONFIG_SATA_AHCI_PLATFORM=y
-CONFIG_AHCI_BRCM=y
-CONFIG_AHCI_DM816=y
-CONFIG_AHCI_ST=y
-CONFIG_AHCI_IMX=y
-CONFIG_AHCI_SUNXI=y
-CONFIG_AHCI_TEGRA=y
-CONFIG_SATA_HIGHBANK=y
-CONFIG_SATA_MV=y
-CONFIG_SATA_RCAR=y
-CONFIG_NETDEVICES=y
-CONFIG_VIRTIO_NET=y
-CONFIG_B53_SPI_DRIVER=m
-CONFIG_B53_MDIO_DRIVER=m
-CONFIG_B53_MMAP_DRIVER=m
-CONFIG_B53_SRAB_DRIVER=m
-CONFIG_NET_DSA_BCM_SF2=m
-CONFIG_SUN4I_EMAC=y
-CONFIG_MACB=y
-CONFIG_BCMGENET=m
-CONFIG_BGMAC_BCMA=y
-CONFIG_SYSTEMPORT=m
-CONFIG_NET_CALXEDA_XGMAC=y
-CONFIG_GIANFAR=y
-CONFIG_HIX5HD2_GMAC=y
-CONFIG_E1000E=y
-CONFIG_IGB=y
-CONFIG_MV643XX_ETH=y
-CONFIG_MVNETA=y
-CONFIG_PXA168_ETH=m
-CONFIG_KS8851=y
-CONFIG_R8169=y
-CONFIG_SH_ETH=y
-CONFIG_SMSC911X=y
-CONFIG_STMMAC_ETH=y
-CONFIG_DWMAC_DWC_QOS_ETH=y
-CONFIG_TI_CPSW=y
-CONFIG_XILINX_EMACLITE=y
-CONFIG_AT803X_PHY=y
-CONFIG_BROADCOM_PHY=y
-CONFIG_ICPLUS_PHY=y
-CONFIG_MARVELL_PHY=y
-CONFIG_MICREL_PHY=y
-CONFIG_REALTEK_PHY=y
-CONFIG_ROCKCHIP_PHY=y
-CONFIG_SMSC_PHY=y
-CONFIG_USB_PEGASUS=y
-CONFIG_USB_RTL8152=m
-CONFIG_USB_USBNET=y
-CONFIG_USB_NET_SMSC75XX=y
-CONFIG_USB_NET_SMSC95XX=y
-CONFIG_BRCMFMAC=m
-CONFIG_MWIFIEX=m
-CONFIG_MWIFIEX_SDIO=m
-CONFIG_RT2X00=m
-CONFIG_RT2800USB=m
-CONFIG_INPUT_JOYDEV=y
-CONFIG_INPUT_EVDEV=y
-CONFIG_KEYBOARD_QT1070=m
-CONFIG_KEYBOARD_GPIO=y
-CONFIG_KEYBOARD_TEGRA=y
-CONFIG_KEYBOARD_SAMSUNG=m
-CONFIG_KEYBOARD_ST_KEYSCAN=y
-CONFIG_KEYBOARD_SPEAR=y
-CONFIG_KEYBOARD_CROS_EC=m
-CONFIG_MOUSE_PS2_ELANTECH=y
-CONFIG_MOUSE_CYAPA=m
-CONFIG_MOUSE_ELAN_I2C=y
-CONFIG_INPUT_TOUCHSCREEN=y
-CONFIG_TOUCHSCREEN_ATMEL_MXT=m
-CONFIG_TOUCHSCREEN_MMS114=m
-CONFIG_TOUCHSCREEN_WM97XX=m
-CONFIG_TOUCHSCREEN_ST1232=m
-CONFIG_TOUCHSCREEN_STMPE=y
-CONFIG_TOUCHSCREEN_SUN4I=y
-CONFIG_INPUT_MISC=y
-CONFIG_INPUT_MAX77693_HAPTIC=m
-CONFIG_INPUT_MAX8997_HAPTIC=m
-CONFIG_INPUT_AXP20X_PEK=m
-CONFIG_INPUT_ADXL34X=m
-CONFIG_SERIO_AMBAKMI=y
-CONFIG_SERIAL_8250=y
-CONFIG_SERIAL_8250_CONSOLE=y
-CONFIG_SERIAL_8250_DW=y
-CONFIG_SERIAL_8250_EM=y
-CONFIG_SERIAL_8250_MT6577=y
-CONFIG_SERIAL_8250_UNIPHIER=y
-CONFIG_SERIAL_OF_PLATFORM=y
-CONFIG_SERIAL_AMBA_PL011=y
-CONFIG_SERIAL_AMBA_PL011_CONSOLE=y
-CONFIG_SERIAL_ATMEL=y
-CONFIG_SERIAL_ATMEL_CONSOLE=y
-CONFIG_SERIAL_ATMEL_TTYAT=y
-CONFIG_SERIAL_MESON=y
-CONFIG_SERIAL_MESON_CONSOLE=y
-CONFIG_SERIAL_SAMSUNG=y
-CONFIG_SERIAL_SAMSUNG_CONSOLE=y
-CONFIG_SERIAL_SIRFSOC=y
-CONFIG_SERIAL_SIRFSOC_CONSOLE=y
-CONFIG_SERIAL_TEGRA=y
-CONFIG_SERIAL_IMX=y
-CONFIG_SERIAL_IMX_CONSOLE=y
-CONFIG_SERIAL_SH_SCI=y
-CONFIG_SERIAL_SH_SCI_NR_UARTS=20
-CONFIG_SERIAL_SH_SCI_CONSOLE=y
-CONFIG_SERIAL_SH_SCI_DMA=y
-CONFIG_SERIAL_MSM=y
-CONFIG_SERIAL_MSM_CONSOLE=y
-CONFIG_SERIAL_VT8500=y
-CONFIG_SERIAL_VT8500_CONSOLE=y
-CONFIG_SERIAL_OMAP=y
-CONFIG_SERIAL_OMAP_CONSOLE=y
-CONFIG_SERIAL_BCM63XX=y
-CONFIG_SERIAL_BCM63XX_CONSOLE=y
-CONFIG_SERIAL_XILINX_PS_UART=y
-CONFIG_SERIAL_XILINX_PS_UART_CONSOLE=y
-CONFIG_SERIAL_FSL_LPUART=y
-CONFIG_SERIAL_FSL_LPUART_CONSOLE=y
-CONFIG_SERIAL_CONEXANT_DIGICOLOR=y
-CONFIG_SERIAL_CONEXANT_DIGICOLOR_CONSOLE=y
-CONFIG_SERIAL_ST_ASC=y
-CONFIG_SERIAL_ST_ASC_CONSOLE=y
-CONFIG_VIRTIO_CONSOLE=y
-CONFIG_HW_RANDOM=y
-CONFIG_HW_RANDOM_ST=y
-CONFIG_I2C_CHARDEV=y
-CONFIG_I2C_ARB_GPIO_CHALLENGE=m
-CONFIG_I2C_MUX_PCA954x=y
-CONFIG_I2C_MUX_PINCTRL=y
-CONFIG_I2C_DEMUX_PINCTRL=y
-CONFIG_I2C_AT91=m
-CONFIG_I2C_BCM2835=y
-CONFIG_I2C_CADENCE=y
-CONFIG_I2C_DAVINCI=y
-CONFIG_I2C_DESIGNWARE_PLATFORM=y
-CONFIG_I2C_DIGICOLOR=m
-CONFIG_I2C_EMEV2=m
-CONFIG_I2C_GPIO=m
-CONFIG_I2C_IMX=m
-CONFIG_I2C_MV64XXX=y
-CONFIG_I2C_RIIC=y
-CONFIG_I2C_RK3X=y
-CONFIG_I2C_S3C2410=y
-CONFIG_I2C_SH_MOBILE=y
-CONFIG_I2C_SIRF=y
-CONFIG_I2C_ST=y
-CONFIG_I2C_SUN6I_P2WI=y
-CONFIG_I2C_TEGRA=y
-CONFIG_I2C_UNIPHIER=y
-CONFIG_I2C_UNIPHIER_F=y
-CONFIG_I2C_XILINX=y
-CONFIG_I2C_RCAR=y
-CONFIG_I2C_CROS_EC_TUNNEL=m
-CONFIG_I2C_SLAVE_EEPROM=y
-CONFIG_SPI=y
-CONFIG_SPI_ATMEL=m
-CONFIG_SPI_BCM2835=y
-CONFIG_SPI_BCM2835AUX=y
-CONFIG_SPI_CADENCE=y
-CONFIG_SPI_DAVINCI=y
-CONFIG_SPI_GPIO=m
-CONFIG_SPI_FSL_DSPI=m
-CONFIG_SPI_OMAP24XX=y
-CONFIG_SPI_ORION=y
-CONFIG_SPI_PL022=y
-CONFIG_SPI_ROCKCHIP=m
-CONFIG_SPI_RSPI=y
-CONFIG_SPI_S3C64XX=m
-CONFIG_SPI_SH_MSIOF=m
-CONFIG_SPI_SH_HSPI=y
-CONFIG_SPI_SIRF=y
-CONFIG_SPI_SUN4I=y
-CONFIG_SPI_SUN6I=y
-CONFIG_SPI_TEGRA114=y
-CONFIG_SPI_TEGRA20_SFLASH=y
-CONFIG_SPI_TEGRA20_SLINK=y
-CONFIG_SPI_XILINX=y
-CONFIG_SPI_SPIDEV=y
-CONFIG_SPMI=y
-CONFIG_PINCTRL_AS3722=y
-CONFIG_PINCTRL_PALMAS=y
-CONFIG_PINCTRL_APQ8064=y
-CONFIG_PINCTRL_APQ8084=y
-CONFIG_PINCTRL_IPQ8064=y
-CONFIG_PINCTRL_MSM8660=y
-CONFIG_PINCTRL_MSM8960=y
-CONFIG_PINCTRL_MSM8X74=y
-CONFIG_PINCTRL_MSM8916=y
-CONFIG_PINCTRL_QCOM_SPMI_PMIC=y
-CONFIG_PINCTRL_QCOM_SSBI_PMIC=y
-CONFIG_GPIO_DAVINCI=y
-CONFIG_GPIO_DWAPB=y
-CONFIG_GPIO_EM=y
-CONFIG_GPIO_RCAR=y
-CONFIG_GPIO_SYSCON=y
-CONFIG_GPIO_XILINX=y
-CONFIG_GPIO_ZYNQ=y
-CONFIG_GPIO_PCA953X=y
-CONFIG_GPIO_PCA953X_IRQ=y
-CONFIG_GPIO_PCF857X=y
-CONFIG_GPIO_PALMAS=y
-CONFIG_GPIO_TPS6586X=y
-CONFIG_GPIO_TPS65910=y
-CONFIG_GPIO_TWL4030=y
-CONFIG_POWER_AVS=y
-CONFIG_ROCKCHIP_IODOMAIN=y
-CONFIG_POWER_RESET_AS3722=y
-CONFIG_POWER_RESET_GPIO=y
-CONFIG_POWER_RESET_GPIO_RESTART=y
-CONFIG_POWER_RESET_ST=y
-CONFIG_POWER_RESET_KEYSTONE=y
-CONFIG_POWER_RESET_RMOBILE=y
-CONFIG_BATTERY_ACT8945A=y
-CONFIG_BATTERY_SBS=y
-CONFIG_AXP20X_POWER=m
-CONFIG_BATTERY_MAX17040=m
-CONFIG_BATTERY_MAX17042=m
-CONFIG_CHARGER_MAX14577=m
-CONFIG_CHARGER_MAX77693=m
-CONFIG_CHARGER_MAX8997=m
-CONFIG_CHARGER_MAX8998=m
-CONFIG_CHARGER_TPS65090=y
-CONFIG_SENSORS_IIO_HWMON=y
-CONFIG_SENSORS_LM90=y
-CONFIG_SENSORS_LM95245=y
-CONFIG_SENSORS_NTC_THERMISTOR=m
-CONFIG_SENSORS_PWM_FAN=m
-CONFIG_SENSORS_INA2XX=m
-CONFIG_CPU_THERMAL=y
-CONFIG_ROCKCHIP_THERMAL=y
-CONFIG_RCAR_THERMAL=y
-CONFIG_ARMADA_THERMAL=y
-CONFIG_ST_THERMAL_MEMMAP=y
-CONFIG_WATCHDOG=y
-CONFIG_DA9063_WATCHDOG=m
-CONFIG_XILINX_WATCHDOG=y
-CONFIG_ARM_SP805_WATCHDOG=y
-CONFIG_AT91SAM9X_WATCHDOG=y
-CONFIG_SAMA5D4_WATCHDOG=y
-CONFIG_DW_WATCHDOG=y
-CONFIG_DAVINCI_WATCHDOG=m
-CONFIG_ORION_WATCHDOG=y
-CONFIG_SUNXI_WATCHDOG=y
-CONFIG_IMX2_WDT=y
-CONFIG_ST_LPC_WATCHDOG=y
-CONFIG_TEGRA_WATCHDOG=m
-CONFIG_MESON_WATCHDOG=y
-CONFIG_DIGICOLOR_WATCHDOG=y
-CONFIG_BCM47XX_WDT=y
-CONFIG_BCM2835_WDT=y
-CONFIG_BCM_KONA_WDT=y
-CONFIG_BCM7038_WDT=m
-CONFIG_BCMA_HOST_SOC=y
-CONFIG_BCMA_DRIVER_GMAC_CMN=y
-CONFIG_BCMA_DRIVER_GPIO=y
-CONFIG_MFD_ACT8945A=y
-CONFIG_MFD_AS3711=y
-CONFIG_MFD_AS3722=y
-CONFIG_MFD_ATMEL_FLEXCOM=y
-CONFIG_MFD_ATMEL_HLCDC=m
-CONFIG_MFD_BCM590XX=y
-CONFIG_MFD_AC100=y
-CONFIG_MFD_AXP20X_I2C=y
-CONFIG_MFD_AXP20X_RSB=y
-CONFIG_MFD_CROS_EC=m
-CONFIG_MFD_CROS_EC_I2C=m
-CONFIG_MFD_CROS_EC_SPI=m
-CONFIG_MFD_DA9063=m
-CONFIG_MFD_MAX14577=y
-CONFIG_MFD_MAX77686=y
-CONFIG_MFD_MAX77693=m
-CONFIG_MFD_MAX8907=y
-CONFIG_MFD_MAX8997=y
-CONFIG_MFD_MAX8998=y
-CONFIG_MFD_PM8XXX=y
-CONFIG_MFD_QCOM_RPM=y
-CONFIG_MFD_SPMI_PMIC=y
-CONFIG_MFD_RK808=y
-CONFIG_MFD_SEC_CORE=y
-CONFIG_MFD_STMPE=y
-CONFIG_MFD_PALMAS=y
-CONFIG_MFD_TPS65090=y
-CONFIG_MFD_TPS65217=y
-CONFIG_MFD_TPS65218=y
-CONFIG_MFD_TPS6586X=y
-CONFIG_MFD_TPS65910=y
-CONFIG_REGULATOR_ACT8865=y
-CONFIG_REGULATOR_ACT8945A=y
-CONFIG_REGULATOR_ANATOP=y
-CONFIG_REGULATOR_AB8500=y
-CONFIG_REGULATOR_AS3711=y
-CONFIG_REGULATOR_AS3722=y
-CONFIG_REGULATOR_AXP20X=y
-CONFIG_REGULATOR_BCM590XX=y
-CONFIG_REGULATOR_DA9210=y
-CONFIG_REGULATOR_FAN53555=y
-CONFIG_REGULATOR_GPIO=y
-CONFIG_REGULATOR_LP872X=y
-CONFIG_REGULATOR_MAX14577=m
-CONFIG_REGULATOR_MAX8907=y
-CONFIG_REGULATOR_MAX8973=y
-CONFIG_REGULATOR_MAX8997=m
-CONFIG_REGULATOR_MAX8998=m
-CONFIG_REGULATOR_MAX77686=y
-CONFIG_REGULATOR_MAX77693=m
-CONFIG_REGULATOR_MAX77802=m
-CONFIG_REGULATOR_PALMAS=y
-CONFIG_REGULATOR_PBIAS=y
-CONFIG_REGULATOR_PWM=y
-CONFIG_REGULATOR_QCOM_RPM=y
-CONFIG_REGULATOR_QCOM_SMD_RPM=m
-CONFIG_REGULATOR_RK808=y
-CONFIG_REGULATOR_S2MPS11=y
-CONFIG_REGULATOR_S5M8767=y
-CONFIG_REGULATOR_TI_ABB=y
-CONFIG_REGULATOR_TPS51632=y
-CONFIG_REGULATOR_TPS62360=y
-CONFIG_REGULATOR_TPS65090=y
-CONFIG_REGULATOR_TPS65217=y
-CONFIG_REGULATOR_TPS65218=y
-CONFIG_REGULATOR_TPS6586X=y
-CONFIG_REGULATOR_TPS65910=y
-CONFIG_REGULATOR_TWL4030=y
-CONFIG_REGULATOR_VEXPRESS=y
-CONFIG_REGULATOR_WM8994=m
-CONFIG_MEDIA_SUPPORT=m
-CONFIG_MEDIA_CAMERA_SUPPORT=y
-CONFIG_MEDIA_CONTROLLER=y
-CONFIG_VIDEO_V4L2_SUBDEV_API=y
-CONFIG_MEDIA_USB_SUPPORT=y
-CONFIG_USB_VIDEO_CLASS=m
-CONFIG_V4L_PLATFORM_DRIVERS=y
-CONFIG_SOC_CAMERA=m
-CONFIG_SOC_CAMERA_PLATFORM=m
-CONFIG_VIDEO_SAMSUNG_EXYNOS4_IS=m
-CONFIG_VIDEO_S5P_FIMC=m
-CONFIG_VIDEO_S5P_MIPI_CSIS=m
-CONFIG_VIDEO_EXYNOS_FIMC_LITE=m
-CONFIG_VIDEO_EXYNOS4_FIMC_IS=m
-CONFIG_VIDEO_RCAR_VIN=m
-CONFIG_VIDEO_ATMEL_ISI=m
-CONFIG_V4L_MEM2MEM_DRIVERS=y
-CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
-CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
-CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
-CONFIG_VIDEO_STI_BDISP=m
-CONFIG_VIDEO_STI_HVA=m
-CONFIG_VIDEO_STI_DELTA=m
-CONFIG_VIDEO_RENESAS_JPU=m
-CONFIG_VIDEO_RENESAS_VSP1=m
-CONFIG_V4L_TEST_DRIVERS=y
-CONFIG_VIDEO_VIVID=m
-# CONFIG_MEDIA_SUBDRV_AUTOSELECT is not set
-CONFIG_VIDEO_ADV7180=m
-CONFIG_VIDEO_ML86V7667=m
-CONFIG_DRM=y
-# CONFIG_DRM_I2C_CH7006 is not set
-# CONFIG_DRM_I2C_SIL164 is not set
-CONFIG_DRM_NOUVEAU=m
-CONFIG_DRM_EXYNOS=m
-CONFIG_DRM_EXYNOS_FIMD=y
-CONFIG_DRM_EXYNOS_MIXER=y
-CONFIG_DRM_EXYNOS_DPI=y
-CONFIG_DRM_EXYNOS_DSI=y
-CONFIG_DRM_EXYNOS_HDMI=y
-CONFIG_DRM_ROCKCHIP=m
-CONFIG_ROCKCHIP_ANALOGIX_DP=y
-CONFIG_ROCKCHIP_DW_HDMI=y
-CONFIG_ROCKCHIP_DW_MIPI_DSI=y
-CONFIG_ROCKCHIP_INNO_HDMI=y
-CONFIG_DRM_ATMEL_HLCDC=m
-CONFIG_DRM_RCAR_DU=m
-CONFIG_DRM_RCAR_LVDS=y
-CONFIG_DRM_SUN4I=m
-CONFIG_DRM_TEGRA=y
-CONFIG_DRM_PANEL_SIMPLE=y
-CONFIG_DRM_PANEL_SAMSUNG_LD9040=m
-CONFIG_DRM_PANEL_SAMSUNG_S6E8AA0=m
-CONFIG_DRM_DUMB_VGA_DAC=m
-CONFIG_DRM_NXP_PTN3460=m
-CONFIG_DRM_PARADE_PS8622=m
-CONFIG_DRM_I2C_ADV7511=m
-CONFIG_DRM_I2C_ADV7511_AUDIO=y
-CONFIG_DRM_STI=m
-CONFIG_DRM_VC4=m
-CONFIG_FB_ARMCLCD=y
-CONFIG_FB_EFI=y
-CONFIG_FB_WM8505=y
-CONFIG_FB_SH_MOBILE_LCDC=y
-CONFIG_FB_SIMPLE=y
-CONFIG_FB_SH_MOBILE_MERAM=y
-CONFIG_LCD_PLATFORM=m
-CONFIG_BACKLIGHT_PWM=y
-CONFIG_BACKLIGHT_AS3711=y
-CONFIG_FRAMEBUFFER_CONSOLE=y
-CONFIG_FRAMEBUFFER_CONSOLE_ROTATION=y
-CONFIG_SOUND=m
-CONFIG_SND=m
-CONFIG_SND_DYNAMIC_MINORS=y
-CONFIG_SND_HDA_TEGRA=m
-CONFIG_SND_HDA_INPUT_BEEP=y
-CONFIG_SND_HDA_PATCH_LOADER=y
-CONFIG_SND_HDA_CODEC_REALTEK=m
-CONFIG_SND_HDA_CODEC_HDMI=m
-CONFIG_SND_USB_AUDIO=m
-CONFIG_SND_SOC=m
-CONFIG_SND_ATMEL_SOC=m
-CONFIG_SND_ATMEL_SOC_WM8904=m
-CONFIG_SND_ATMEL_SOC_PDMIC=m
-CONFIG_SND_BCM2835_SOC_I2S=m
-CONFIG_SND_SOC_FSL_SAI=m
-CONFIG_SND_SOC_ROCKCHIP=m
-CONFIG_SND_SOC_ROCKCHIP_SPDIF=m
-CONFIG_SND_SOC_ROCKCHIP_MAX98090=m
-CONFIG_SND_SOC_ROCKCHIP_RT5645=m
-CONFIG_SND_SOC_SAMSUNG=m
-CONFIG_SND_SOC_SAMSUNG_SMDK_WM8994=m
-CONFIG_SND_SOC_SMDK_WM8994_PCM=m
-CONFIG_SND_SOC_SNOW=m
-CONFIG_SND_SOC_SH4_FSI=m
-CONFIG_SND_SOC_RCAR=m
-CONFIG_SND_SOC_STI=m
-CONFIG_SND_SUN4I_CODEC=m
-CONFIG_SND_SOC_TEGRA=m
-CONFIG_SND_SOC_TEGRA20_I2S=m
-CONFIG_SND_SOC_TEGRA30_I2S=m
-CONFIG_SND_SOC_TEGRA_RT5640=m
-CONFIG_SND_SOC_TEGRA_WM8753=m
-CONFIG_SND_SOC_TEGRA_WM8903=m
-CONFIG_SND_SOC_TEGRA_WM9712=m
-CONFIG_SND_SOC_TEGRA_TRIMSLICE=m
-CONFIG_SND_SOC_TEGRA_ALC5632=m
-CONFIG_SND_SOC_TEGRA_MAX98090=m
-CONFIG_SND_SOC_AK4642=m
-CONFIG_SND_SOC_SGTL5000=m
-CONFIG_SND_SOC_SPDIF=m
-CONFIG_SND_SOC_STI_SAS=m
-CONFIG_SND_SOC_WM8978=m
-CONFIG_SND_SIMPLE_SCU_CARD=m
-CONFIG_USB=y
-CONFIG_USB_XHCI_HCD=y
-CONFIG_USB_XHCI_MVEBU=y
-CONFIG_USB_XHCI_TEGRA=m
-CONFIG_USB_EHCI_HCD=y
-CONFIG_USB_EHCI_HCD_STI=y
-CONFIG_USB_EHCI_MSM=m
-CONFIG_USB_EHCI_TEGRA=y
-CONFIG_USB_EHCI_EXYNOS=y
-CONFIG_USB_OHCI_HCD=y
-CONFIG_USB_OHCI_HCD_STI=y
-CONFIG_USB_OHCI_EXYNOS=m
-CONFIG_USB_R8A66597_HCD=m
-CONFIG_USB_RENESAS_USBHS=m
-CONFIG_USB_STORAGE=y
-CONFIG_USB_MUSB_HDRC=m
-CONFIG_USB_DWC3=y
-CONFIG_USB_DWC2=y
-CONFIG_USB_CHIPIDEA=y
-CONFIG_USB_CHIPIDEA_UDC=y
-CONFIG_USB_CHIPIDEA_HOST=y
-CONFIG_USB_ISP1760=y
-CONFIG_AB8500_USB=y
-CONFIG_USB_GPIO_VBUS=y
-CONFIG_USB_ISP1301=y
-CONFIG_USB_MSM_OTG=m
-CONFIG_USB_MXS_PHY=y
-CONFIG_USB_GADGET=y
-CONFIG_USB_FSL_USB2=y
-CONFIG_USB_RENESAS_USBHS_UDC=m
-CONFIG_USB_ETH=m
-CONFIG_MMC=y
-CONFIG_MMC_BLOCK_MINORS=16
-CONFIG_MMC_ARMMMCI=y
-CONFIG_MMC_SDHCI=y
-CONFIG_MMC_SDHCI_PLTFM=y
-CONFIG_MMC_SDHCI_OF_ARASAN=y
-CONFIG_MMC_SDHCI_OF_AT91=y
-CONFIG_MMC_SDHCI_OF_ESDHC=y
-CONFIG_MMC_SDHCI_ESDHC_IMX=y
-CONFIG_MMC_SDHCI_DOVE=y
-CONFIG_MMC_SDHCI_TEGRA=y
-CONFIG_MMC_SDHCI_S3C=y
-CONFIG_MMC_SDHCI_PXAV3=y
-CONFIG_MMC_SDHCI_SPEAR=y
-CONFIG_MMC_SDHCI_S3C_DMA=y
-CONFIG_MMC_SDHCI_BCM_KONA=y
-CONFIG_MMC_SDHCI_ST=y
-CONFIG_MMC_OMAP=y
-CONFIG_MMC_OMAP_HS=y
-CONFIG_MMC_ATMELMCI=y
-CONFIG_MMC_SDHCI_MSM=y
-CONFIG_MMC_MVSDIO=y
-CONFIG_MMC_SDHI=y
-CONFIG_MMC_DW=y
-CONFIG_MMC_DW_EXYNOS=y
-CONFIG_MMC_DW_ROCKCHIP=y
-CONFIG_MMC_SH_MMCIF=y
-CONFIG_MMC_SUNXI=y
-CONFIG_MMC_BCM2835=y
-CONFIG_NEW_LEDS=y
-CONFIG_LEDS_CLASS=y
-CONFIG_LEDS_CLASS_FLASH=m
-CONFIG_LEDS_GPIO=y
-CONFIG_LEDS_PWM=y
-CONFIG_LEDS_MAX77693=m
-CONFIG_LEDS_MAX8997=m
-CONFIG_LEDS_TRIGGERS=y
-CONFIG_LEDS_TRIGGER_TIMER=y
-CONFIG_LEDS_TRIGGER_ONESHOT=y
-CONFIG_LEDS_TRIGGER_HEARTBEAT=y
-CONFIG_LEDS_TRIGGER_BACKLIGHT=y
-CONFIG_LEDS_TRIGGER_CPU=y
-CONFIG_LEDS_TRIGGER_GPIO=y
-CONFIG_LEDS_TRIGGER_DEFAULT_ON=y
-CONFIG_LEDS_TRIGGER_TRANSIENT=y
-CONFIG_LEDS_TRIGGER_CAMERA=y
-CONFIG_EDAC=y
-CONFIG_EDAC_HIGHBANK_MC=y
-CONFIG_EDAC_HIGHBANK_L2=y
-CONFIG_RTC_CLASS=y
-CONFIG_RTC_DRV_AC100=y
-CONFIG_RTC_DRV_AS3722=y
-CONFIG_RTC_DRV_DS1307=y
-CONFIG_RTC_DRV_HYM8563=m
-CONFIG_RTC_DRV_MAX8907=y
-CONFIG_RTC_DRV_MAX8998=m
-CONFIG_RTC_DRV_MAX8997=m
-CONFIG_RTC_DRV_MAX77686=y
-CONFIG_RTC_DRV_RK808=m
-CONFIG_RTC_DRV_RS5C372=m
-CONFIG_RTC_DRV_TWL4030=y
-CONFIG_RTC_DRV_PALMAS=y
-CONFIG_RTC_DRV_TPS6586X=y
-CONFIG_RTC_DRV_TPS65910=y
-CONFIG_RTC_DRV_S35390A=m
-CONFIG_RTC_DRV_RX8581=m
-CONFIG_RTC_DRV_EM3027=y
-CONFIG_RTC_DRV_S5M=m
-CONFIG_RTC_DRV_DA9063=m
-CONFIG_RTC_DRV_EFI=m
-CONFIG_RTC_DRV_DIGICOLOR=m
-CONFIG_RTC_DRV_S3C=m
-CONFIG_RTC_DRV_PL031=y
-CONFIG_RTC_DRV_AT91RM9200=m
-CONFIG_RTC_DRV_AT91SAM9=m
-CONFIG_RTC_DRV_VT8500=y
-CONFIG_RTC_DRV_SUNXI=y
-CONFIG_RTC_DRV_MV=y
-CONFIG_RTC_DRV_TEGRA=y
-CONFIG_RTC_DRV_ST_LPC=y
-CONFIG_DMADEVICES=y
-CONFIG_AT_HDMAC=y
-CONFIG_AT_XDMAC=y
-CONFIG_DMA_BCM2835=y
-CONFIG_DMA_OMAP=y
-CONFIG_DMA_SUN6I=y
-CONFIG_FSL_EDMA=y
-CONFIG_IMX_DMA=y
-CONFIG_IMX_SDMA=y
-CONFIG_MV_XOR=y
-CONFIG_MXS_DMA=y
-CONFIG_PL330_DMA=y
-CONFIG_SIRF_DMA=y
-CONFIG_STE_DMA40=y
-CONFIG_ST_FDMA=m
-CONFIG_TEGRA20_APB_DMA=y
-CONFIG_TI_EDMA=y
-CONFIG_XILINX_DMA=y
-CONFIG_QCOM_BAM_DMA=y
-CONFIG_DW_DMAC=y
-CONFIG_SH_DMAE=y
-CONFIG_RCAR_DMAC=y
-CONFIG_RENESAS_USB_DMAC=m
-CONFIG_VIRTIO_PCI=y
-CONFIG_VIRTIO_MMIO=y
-CONFIG_STAGING=y
-CONFIG_MFD_NVEC=y
-CONFIG_KEYBOARD_NVEC=y
-CONFIG_SERIO_NVEC_PS2=y
-CONFIG_NVEC_POWER=y
-CONFIG_NVEC_PAZ00=y
-CONFIG_STAGING_BOARD=y
-CONFIG_CROS_EC_CHARDEV=m
-CONFIG_COMMON_CLK_MAX77686=y
-CONFIG_COMMON_CLK_RK808=m
-CONFIG_COMMON_CLK_S2MPS11=m
-CONFIG_COMMON_CLK_QCOM=y
-CONFIG_QCOM_CLK_RPM=y
-CONFIG_APQ_MMCC_8084=y
-CONFIG_MSM_GCC_8660=y
-CONFIG_MSM_MMCC_8960=y
-CONFIG_MSM_MMCC_8974=y
-CONFIG_BCM2835_MBOX=y
-CONFIG_ROCKCHIP_IOMMU=y
-CONFIG_TEGRA_IOMMU_GART=y
-CONFIG_TEGRA_IOMMU_SMMU=y
-CONFIG_REMOTEPROC=m
-CONFIG_ST_REMOTEPROC=m
-CONFIG_RASPBERRYPI_POWER=y
-CONFIG_QCOM_GSBI=y
-CONFIG_QCOM_PM=y
-CONFIG_QCOM_SMD_RPM=m
-CONFIG_QCOM_WCNSS_CTRL=m
-CONFIG_ROCKCHIP_PM_DOMAINS=y
-CONFIG_ARCH_TEGRA_2x_SOC=y
-CONFIG_ARCH_TEGRA_3x_SOC=y
-CONFIG_ARCH_TEGRA_114_SOC=y
-CONFIG_ARCH_TEGRA_124_SOC=y
-CONFIG_PM_DEVFREQ=y
-CONFIG_ARM_TEGRA_DEVFREQ=m
-CONFIG_TI_AEMIF=y
-CONFIG_IIO=y
-CONFIG_IIO_SW_TRIGGER=y
-CONFIG_AT91_ADC=m
-CONFIG_AT91_SAMA5D2_ADC=m
-CONFIG_BERLIN2_ADC=m
-CONFIG_EXYNOS_ADC=m
-CONFIG_VF610_ADC=m
-CONFIG_XILINX_XADC=y
-CONFIG_MPU3050_I2C=y
-CONFIG_CM36651=m
-CONFIG_SENSORS_ISL29018=y
-CONFIG_SENSORS_ISL29028=y
-CONFIG_AK8975=y
-CONFIG_IIO_HRTIMER_TRIGGER=y
-CONFIG_PWM=y
-CONFIG_PWM_ATMEL=m
-CONFIG_PWM_ATMEL_HLCDC_PWM=m
-CONFIG_PWM_ATMEL_TCB=m
-CONFIG_PWM_BCM2835=y
-CONFIG_PWM_BRCMSTB=m
-CONFIG_PWM_FSL_FTM=m
-CONFIG_PWM_RENESAS_TPU=y
-CONFIG_PWM_ROCKCHIP=m
-CONFIG_PWM_SAMSUNG=m
-CONFIG_PWM_STI=y
-CONFIG_PWM_SUN4I=y
-CONFIG_PWM_TEGRA=y
-CONFIG_PWM_VT8500=y
-CONFIG_KEYSTONE_IRQ=y
-CONFIG_PHY_SUN4I_USB=y
-CONFIG_PHY_SUN9I_USB=y
-CONFIG_PHY_HIX5HD2_SATA=y
-CONFIG_PHY_BERLIN_SATA=y
-CONFIG_PHY_BERLIN_USB=y
-CONFIG_PHY_QCOM_APQ8064_SATA=m
-CONFIG_PHY_RCAR_GEN2=m
-CONFIG_PHY_ROCKCHIP_DP=m
-CONFIG_PHY_ROCKCHIP_USB=y
-CONFIG_PHY_SAMSUNG_USB2=m
-CONFIG_PHY_MIPHY28LP=y
-CONFIG_PHY_STIH407_USB=y
-CONFIG_PHY_TEGRA_XUSB=y
-CONFIG_OMAP_USB2=y
-CONFIG_TI_PIPE3=y
-CONFIG_NVMEM_SUNXI_SID=y
-CONFIG_RASPBERRYPI_FIRMWARE=y
-CONFIG_BCM47XX_NVRAM=y
-CONFIG_BCM47XX_SPROM=y
-CONFIG_EFI_VARS=m
-CONFIG_EFI_CAPSULE_LOADER=m
-CONFIG_EXT4_FS=y
-CONFIG_AUTOFS4_FS=y
-CONFIG_MSDOS_FS=y
-CONFIG_VFAT_FS=y
-CONFIG_NTFS_FS=y
-CONFIG_TMPFS_POSIX_ACL=y
-CONFIG_UBIFS_FS=y
-CONFIG_SQUASHFS=y
-CONFIG_SQUASHFS_LZO=y
-CONFIG_SQUASHFS_XZ=y
-CONFIG_PSTORE=y
-CONFIG_PSTORE_CONSOLE=y
-CONFIG_PSTORE_PMSG=y
-CONFIG_PSTORE_RAM=y
-CONFIG_NFS_FS=y
-CONFIG_NFS_V3_ACL=y
-CONFIG_NFS_V4=y
-CONFIG_ROOT_NFS=y
-CONFIG_NLS_CODEPAGE_437=y
-CONFIG_NLS_ISO8859_1=y
-CONFIG_NLS_UTF8=y
-CONFIG_PRINTK_TIME=y
-CONFIG_MAGIC_SYSRQ=y
-CONFIG_CRYPTO_USER=m
-CONFIG_CRYPTO_USER_API_HASH=m
-CONFIG_CRYPTO_USER_API_SKCIPHER=m
-CONFIG_CRYPTO_USER_API_RNG=m
-CONFIG_CRYPTO_USER_API_AEAD=m
-CONFIG_CRYPTO_DEV_MARVELL_CESA=m
-CONFIG_CRYPTO_DEV_EXYNOS_RNG=m
-CONFIG_CRYPTO_DEV_S5P=m
-CONFIG_CRYPTO_DEV_ATMEL_AES=m
-CONFIG_CRYPTO_DEV_ATMEL_TDES=m
-CONFIG_CRYPTO_DEV_ATMEL_SHA=m
-CONFIG_CRYPTO_DEV_SUN4I_SS=m
-CONFIG_CRYPTO_DEV_ROCKCHIP=m
-CONFIG_ARM_CRYPTO=y
-CONFIG_CRYPTO_SHA1_ARM_NEON=m
-CONFIG_CRYPTO_SHA1_ARM_CE=m
-CONFIG_CRYPTO_SHA2_ARM_CE=m
-CONFIG_CRYPTO_SHA512_ARM=m
-CONFIG_CRYPTO_AES_ARM=m
-CONFIG_CRYPTO_AES_ARM_BS=m
-CONFIG_CRYPTO_AES_ARM_CE=m
-CONFIG_CRYPTO_GHASH_ARM_CE=m
-CONFIG_CRYPTO_CRC32_ARM_CE=m
-CONFIG_CRYPTO_CHACHA20_NEON=m
-
---------------7E46617711AF0150C02FFF2A--

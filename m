@@ -1,136 +1,110 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3854365wrt;
-        Fri, 30 Nov 2018 09:57:05 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UwZfGJOhlNoTL7ZGf28HJ2zOHNsX7VuCXCRyyRTKcLtj4VNgEJOdiHpkZfLIYcjif15udt
-X-Received: by 2002:a0d:dc42:: with SMTP id f63-v6mr6770533ywe.62.1543600625788;
-        Fri, 30 Nov 2018 09:57:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543600625; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3877587wrt;
+        Fri, 30 Nov 2018 10:19:29 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/WbeV2SSVXmcImkGc5nj8xUauBYInEbr1NpvJ1lQVVps36T58QKt7dNjZirTHa25ya8Evhf
+X-Received: by 2002:a81:5791:: with SMTP id l139mr6713741ywb.413.1543601969768;
+        Fri, 30 Nov 2018 10:19:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543601969; cv=none;
         d=google.com; s=arc-20160816;
-        b=glZt5rpIYtjdYUIGheJHDOkbolGU1UpxCKnPyO/eABertbjXGpc6mNPvm3FynGWFIv
-         72G6j9PFUuSr396rTznVRBJwsDEEfeEdr1y1MWi0FjnmThLis+HIuLTU52oWhhevuOIW
-         s3/a4u3AWHvJWN7XOROIZpznmjV2M3Xn2gQubnqWyCkeWd0udTzheiU9ZUVfCwoupyMa
-         AVb7NJgiPhf6Zey8jt8eXcV4OjzT0S17Fa8PnHZt0IDa/w48dV29j1l8FqsAHYDXSRA3
-         5uD0dutrnQBHfRdoD3LfciBKILaxIq1bdojhfmsGNRtD96dW8DBq5a+mt2BlN+Zfhe0V
-         af3w==
+        b=GnRM++nZpeXAzu3qwUFRH62KA2/SpwoTCAlgVwh1G8lMgDzj8IxnifHvF/k1dJou59
+         SdVqRP9tKaV2ihN3Us7Rz7pgQkd6OoU/qdJOMZbJvuEZcjE4LfCEm/zFJ8IgSVyzeC/m
+         Nm7EnlgSLdkd1qRfUDxjHt/iMhi9h67HTmnCZj60JA/JDiUtPnW+iT8QZNqRWSCi1VyU
+         e2qe+Ug09iRblENJ/iJGkIAUkFTz1sDdp8PSRjM/KH2t1AXUVIo/OqeCC9Q6Uz4oyKzm
+         BLr58UUcC8e0O2LAQ5b2Y7qt9bOye3KYRTqryHMXxsPQzMu5YJbe7BAnLJPCQ6IE9Mud
+         rgwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-id:spamdiagnosticmetadata
-         :spamdiagnosticoutput:content-language:accept-language:in-reply-to
-         :references:message-id:date:thread-index:thread-topic:to:from
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature;
-        bh=MKt1V1ZedI76thyhWxN+F7CX0b5vnX+6KzUmrVci0RI=;
-        b=izu1LI2s3U/rUwxGwNBooAB6xjXRWx+gQAid680yNJjFJ2jdY90DsPCQlpLtAzbNj5
-         JR3L1xOB0B1IqJQxdhkN2KYH1bbWRKCRQHbIb21rvPYnZpKjT9SU3dcqupOC0BkuJXeC
-         6nQHj5gWQdT8IRuGueRQ2u1k9AvNrbwIRV2JI4S1XpGxEv5oPXU1capE/Sg0iUCaihp6
-         io4CmnY7qRA++Wn8F2oCA4us8bdPB3ZOzSq9jxbRDzmMjskopRGPbz43zEI1gWrRWq3N
-         xECrgO8+SVQtAqeWqG76OtFKbrx8bbjnFtOzr+z1PvyY6tiD8Ikl9clLkc9bJ1MkUXkk
-         d/bA==
+        bh=fxTHUAXfp4CpxDcb1yaveak3i7CCrtjHPdlyFC29K+o=;
+        b=UJtxZzjbe6kqw14ZnbVJBAfsGaDilTeVlLwaT0NndF4VO1tjt4Q0cyB+4zFQ0Z7XE5
+         YMxD1PxUdfu2Dv11SJfbQpaXF5/nFBoOsUgwMHN8BQ8fcRkk0GevRsfpUEjcpjPE0pi9
+         lt9LAsrfQnOvJUSkqOq3BYguMbJA5E0C08sKNOGkljI7YX+kuyf0+mW1ERiBVh3m4b/4
+         3GA/+aIxL751Ky3nwy29rPDsjtayFjs8pVW3liskgRq3+f8gxG0GgyANpeJun76lRm7L
+         pqoIhsanqM7dbK1wLP30Vrg6mIVdoxvC9UO7EV5xNS4e4QvW3UxTHFUGCsnDrRYfsVNa
+         JU/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=ndy1usaD;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HXJAJfj4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id n128-v6si3461609ybb.397.2018.11.30.09.57.05
+        by mx.google.com with ESMTPS id u65si3547971ywa.410.2018.11.30.10.19.29
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Nov 2018 09:57:05 -0800 (PST)
+        Fri, 30 Nov 2018 10:19:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@amperemail.onmicrosoft.com header.s=selector1-os-amperecomputing-com header.b=ndy1usaD;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HXJAJfj4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1]:34049 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34145 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSn2G-0004qJ-UX
-	for alex.bennee@linaro.org; Fri, 30 Nov 2018 12:57:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43713)
+	id 1gSnNx-0007Qw-6k
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 13:19:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52319)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gSn1z-0004oe-Nh
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 12:56:51 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gSnNh-0007Qm-MY
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 13:19:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <aaron@os.amperecomputing.com>) id 1gSn1w-0001q1-AU
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 12:56:47 -0500
-Received: from mail-eopbgr760121.outbound.protection.outlook.com
-	([40.107.76.121]:59712
-	helo=NAM02-CY1-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
-	id 1gSn1w-0001nv-1m; Fri, 30 Nov 2018 12:56:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=amperemail.onmicrosoft.com; s=selector1-os-amperecomputing-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=MKt1V1ZedI76thyhWxN+F7CX0b5vnX+6KzUmrVci0RI=;
-	b=ndy1usaDRgmrPWqNEP++22Y1WwcULhZjUYatxjsckfpUdvH0Y7bBN3ksv+hTNUij00sjxPnvJncFbQUaLPHC0teOgOPqcGLTfAKyvkF2ebLInA0uV9Q/X2/J3HYqwdSXrM0e+QR4nntldCkqQyfhYx6/1HUkssGqq171Cp0JLuU=
-Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
-	DM6PR01MB4954.prod.exchangelabs.com (20.176.120.14) with Microsoft SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1361.20; Fri, 30 Nov 2018 17:56:39 +0000
-Received: from DM6PR01MB4825.prod.exchangelabs.com
-	([fe80::d5ed:ce81:19eb:c9ea]) by DM6PR01MB4825.prod.exchangelabs.com
-	([fe80::d5ed:ce81:19eb:c9ea%6]) with mapi id 15.20.1382.020;
-	Fri, 30 Nov 2018 17:56:39 +0000
-From: Aaron Lindsay <aaron@os.amperecomputing.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Thread-Topic: [PATCH v8 13/13] target/arm: Send interrupts on PMU counter
-	overflow
-Thread-Index: AQHUgRe/RrVDSDGCp06ElHLXrFt0RKVonbWAgAAMJYA=
-Date: Fri, 30 Nov 2018 17:56:39 +0000
-Message-ID: <20181130175629.GB24714@quinoa.localdomain>
+	(envelope-from <richard.henderson@linaro.org>) id 1gSnNd-0007OA-F4
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 13:19:13 -0500
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:46114)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1gSnNc-0007MC-SY
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 13:19:09 -0500
+Received: by mail-pg1-x542.google.com with SMTP id w7so2825450pgp.13
+	for <qemu-arm@nongnu.org>; Fri, 30 Nov 2018 10:19:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=fxTHUAXfp4CpxDcb1yaveak3i7CCrtjHPdlyFC29K+o=;
+	b=HXJAJfj4NJxiHQyXKDz3OdJhq4NA31ph3ivV2/i7I8yR/8DCOENmaUxd7+poU+XDjx
+	aNICSnO6SM8elA9iGJuJhXf3w9iayztRhh7JQBmQou+nSVeJpVGbdHkBvWgaPuVmt79w
+	0GWosSrpCF1XnCxDwg4RozMtXnJW30FBXCJw8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=fxTHUAXfp4CpxDcb1yaveak3i7CCrtjHPdlyFC29K+o=;
+	b=s4gGzQjqXFj6AbhLFJcK2OjPmQBSAiUmUi8f9oqUxjLOch02eV+yJtzBp1NIFhgT8P
+	Uz03BLRY9NRULHUXv5eymF9Uidj0YvdKtQEqD2f1bK4ncs9yLeGfWO5yYM/2arylwY9E
+	ZKjqDwdXyKVZ1fF4jbSHox8AFpsRGwp9skw29qMWS2nDZ66XbE6jJQyUPRa3LROuGR1e
+	IElSVde0+mOtPI7lQPaA0/Bw1WKEqmcmCZjoPoeY3H54Gtkj2F65Ksd0Q1SSVDsf4M81
+	cqKn4tjnr5qDYrnJC9Bo7PGSvzmqDr+u7/XxpRdHq0UDTSOZsnjsm3rIJf9+EFaUdvG1
+	jH/w==
+X-Gm-Message-State: AA+aEWaZMcUNwaXr/XoVk388oWoXruqO1e+mQXnK2vAdoIzD6V+rLTFN
+	K54/SwjFF2Oh3Yr80FGD8DinbQ==
+X-Received: by 2002:a63:2263:: with SMTP id t35mr5673205pgm.69.1543601946487; 
+	Fri, 30 Nov 2018 10:19:06 -0800 (PST)
+Received: from cloudburst.twiddle.net (97-113-170-180.tukw.qwest.net.
+	[97.113.170.180]) by smtp.gmail.com with ESMTPSA id
+	i4sm12854722pfj.82.2018.11.30.10.19.05
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 30 Nov 2018 10:19:05 -0800 (PST)
+To: Aaron Lindsay <aaron@os.amperecomputing.com>
 References: <20181120212553.8480-1-aaron@os.amperecomputing.com>
 	<20181120212553.8480-14-aaron@os.amperecomputing.com>
 	<d6fde9c7-b72e-ae9d-817b-71c3d6369dbc@linaro.org>
-In-Reply-To: <d6fde9c7-b72e-ae9d-817b-71c3d6369dbc@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: BN6PR1801CA0010.namprd18.prod.outlook.com
-	(2603:10b6:405:5f::23) To DM6PR01MB4825.prod.exchangelabs.com
-	(2603:10b6:5:6b::30)
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=aaron@os.amperecomputing.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [216.85.170.154]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; DM6PR01MB4954;
-	6:EjprfdhfTahxHTv9Nr0JTEA44BPDdgXXIcLkpUjTfkKQJ+fSYNzvbQem6sfvtNUYyXIXLOyb2/65mnOuCugpxun/7vgyhLuE3NWUYHyhqE1rKPERqZPCDG8l26209YvPW+OnYXGCUyaaF5l1v/vdt10diXo9jU3SfPGVkS6jvRSb+Bc/p/DNOakmMqqFvaX9rN/PH7t50fgwudzjcRBci7OliKQaTcsbj2eugHbMBHHRSgEMi638jlP0QXmajbaBAvySr0zKoaaO3twX2FB/qbAOcRjasABFkgqBV5Zj7mpLMRPEg+9wUPqNjso1DLODB93DRvGxOnHmPbQkPgl9M8xDrolC1jqIGn7EbD5ZEIx6YoId+3s/87r6ydh5yl9VxImnq1fmBTt6ppf8zG/ckXp+JIvmMvcqz3NZExYgO06j9xbhLC6rd529MjKwQ8ZEnOaN9LurTcjWWs+ZJ6tvUA==;
-	5:0U75E1y4suUZ9SGYc95MIBNeGRI4/wQx20aJ2bQcOHzP8clJaj2wnBkvcvP+SKULZ/n287bYb/aHBpIdZSxdH4sQuAESlIhsIn0BWHF8OUrgWPhpfK7tJVR8YB+4bvNBRpeb/pEyuLBwvpN/oHgKyZd76HjhY712cLs2w7+1r2k=;
-	7:j/URA8d8hIhx5hxeZDLkybEYs2lMxTKU81e8fyka6v5iQTO4pfn0Ht4XpwebBHAhCF6r2X/sLUNvQqiKsucwCt5mbFdpxrW9pqAW4Zsce3kM5afhNDll6RLr078rc87/a7aYVJG6MjQsHEcUE3De7A==
-x-ms-office365-filtering-correlation-id: 554a9217-c72d-4b18-b43a-08d656ed2d7a
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(8989299)(5600074)(711020)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328)(7153060)(7193020);
-	SRVR:DM6PR01MB4954; 
-x-ms-traffictypediagnostic: DM6PR01MB4954:
-x-microsoft-antispam-prvs: <DM6PR01MB4954703311E7BC2054F9209D8AD30@DM6PR01MB4954.prod.exchangelabs.com>
-x-ms-exchange-senderadcheck: 1
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(8211001083)(6040522)(2401047)(8121501046)(5005006)(10201501046)(93006095)(93001095)(3231453)(999002)(944501410)(52105112)(3002001)(148016)(149066)(150057)(6041310)(20161123560045)(20161123564045)(20161123562045)(20161123558120)(201703131423095)(201702281528075)(20161123555045)(201703061421075)(201703061406153)(201708071742011)(7699051)(76991095);
-	SRVR:DM6PR01MB4954; BCL:0; PCL:0; RULEID:; SRVR:DM6PR01MB4954; 
-x-forefront-prvs: 087223B4DA
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(396003)(346002)(376002)(136003)(39840400004)(366004)(189003)(199004)(8936002)(9686003)(6512007)(54906003)(53936002)(102836004)(33656002)(446003)(6916009)(11346002)(52116002)(26005)(386003)(6506007)(53546011)(99286004)(316002)(97736004)(33896004)(186003)(105586002)(6116002)(106356001)(3846002)(7416002)(14454004)(256004)(6436002)(66066001)(1076002)(76176011)(4326008)(71190400001)(81156014)(81166006)(6486002)(71200400001)(25786009)(86362001)(8676002)(68736007)(476003)(6246003)(229853002)(5660300001)(39060400002)(486006)(107886003)(478600001)(305945005)(7736002)(2906002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB4954;
-	H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
-	PTR:InfoNoRecords; MX:1; A:0; 
-received-spf: None (protection.outlook.com: os.amperecomputing.com does not
-	designate permitted sender hosts)
-x-microsoft-antispam-message-info: MnFtWklGLOJgpIqodInJtRQp/6aiPiGrSuKK8pnE0lxHFJfQgA7xbLUFtruqAO4gfh05QSow7g3lf2v0szQDV2i3aLMbugeoc2PknmrMZBZcOevYgIa4bHnrDnDlfJSTwNmAm24FtkT5ZXZfYU1JxIoV5iv36jy+a8o7q0vf2ZzMkNKwU2NIFvEXvKyI83tKxLwE8Kc92LKmhKrAIzUSb7cBvTWBEE8dziwcDXLQSkBqJP9KpUFuty8MDynGY3+ivWwADF0uEGI543rGwz2mjzv31FkCvH4C1XBU3hECFeIY1wSdCZZj2ddpY88J6Ie4y05Ot5w5UyAM5TdVkHGobLRVe+qeYSNFw4PjWlFB0PM=
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <3563D728BFF6C4438BC3565134293EC8@prod.exchangelabs.com>
-Content-Transfer-Encoding: quoted-printable
+	<20181130175629.GB24714@quinoa.localdomain>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <fb2e45b2-463d-aefe-e3d7-f3027f662c12@linaro.org>
+Date: Fri, 30 Nov 2018 10:19:03 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 554a9217-c72d-4b18-b43a-08d656ed2d7a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Nov 2018 17:56:39.2329 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB4954
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.76.121
+In-Reply-To: <20181130175629.GB24714@quinoa.localdomain>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::542
 Subject: Re: [Qemu-arm] [PATCH v8 13/13] target/arm: Send interrupts on PMU
  counter overflow
 X-BeenThere: qemu-arm@nongnu.org
@@ -154,87 +128,71 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	SM-Aaron Lindsay <alindsay@os.amperecomputing.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i7Nqs/qLx7kV
+X-TUID: b3e+siN+eWCn
 
-On Nov 30 09:13, Richard Henderson wrote:
-> On 11/20/18 1:26 PM, Aaron Lindsay wrote:
-> > Setup a QEMUTimer to get a callback when we expect counters to next
-> > overflow and trigger an interrupt at that time.
-> >=20
-> > Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
-> > Signed-off-by: Aaron Lindsay <alindsay@os.amperecomputing.com>
-> > ---
-> >  target/arm/cpu.c    |  12 +++++
-> >  target/arm/cpu.h    |   7 +++
-> >  target/arm/helper.c | 126 +++++++++++++++++++++++++++++++++++++++++---
-> >  3 files changed, 139 insertions(+), 6 deletions(-)
-> >=20
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 208a08e867..7311a48e3c 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -827,6 +827,13 @@ static void arm_cpu_finalizefn(Object *obj)
-> >          QLIST_REMOVE(hook, node);
-> >          g_free(hook);
-> >      }
-> > +#ifndef CONFIG_USER_ONLY
-> > +    if (arm_feature(&cpu->env, ARM_FEATURE_PMU) && cpu->pmu_timer) {
->=20
-> No need for two tests here.  Just check cpu->pmu_timer.
-> (If it's set for any reason it should be freed, surely.)
->=20
-> > @@ -1305,7 +1338,18 @@ void pmccntr_op_start(CPUARMState *env)
-> >              eff_cycles /=3D 64;
-> >          }
-> > =20
-> > -        env->cp15.c15_ccnt =3D eff_cycles - env->cp15.c15_ccnt_delta;
-> > +        uint64_t new_pmccntr =3D eff_cycles - env->cp15.c15_ccnt_delta=
-;
-> > +
-> > +        unsigned int overflow_bit =3D (env->cp15.c9_pmcr & PMCRLC) ? 6=
-3 : 31;
-> > +        uint64_t overflow_mask =3D (uint64_t)1 << overflow_bit;
-> > +        if (!(new_pmccntr & overflow_mask) &&
-> > +                (env->cp15.c15_ccnt & overflow_mask)) {
->=20
-> Fyi, this expression is
->=20
->     env->cp15.c15_ccnt & ~new_pmccntr & overflow_mask
->=20
-> > +            env->cp15.c9_pmovsr |=3D (1 << 31);
-> > +            new_pmccntr &=3D ~overflow_mask;
->=20
-> Why this line?  You just checked that overflow_mask was unset in new_pmcc=
-ntr above.
+On 11/30/18 9:56 AM, Aaron Lindsay wrote:
+> On Nov 30 09:13, Richard Henderson wrote:
+>> On 11/20/18 1:26 PM, Aaron Lindsay wrote:
+>>> Setup a QEMUTimer to get a callback when we expect counters to next
+>>> overflow and trigger an interrupt at that time.
+>>>
+>>> Signed-off-by: Aaron Lindsay <alindsay@codeaurora.org>
+>>> Signed-off-by: Aaron Lindsay <alindsay@os.amperecomputing.com>
+>>> ---
+>>>  target/arm/cpu.c    |  12 +++++
+>>>  target/arm/cpu.h    |   7 +++
+>>>  target/arm/helper.c | 126 +++++++++++++++++++++++++++++++++++++++++---
+>>>  3 files changed, 139 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>>> index 208a08e867..7311a48e3c 100644
+>>> --- a/target/arm/cpu.c
+>>> +++ b/target/arm/cpu.c
+>>> @@ -827,6 +827,13 @@ static void arm_cpu_finalizefn(Object *obj)
+>>>          QLIST_REMOVE(hook, node);
+>>>          g_free(hook);
+>>>      }
+>>> +#ifndef CONFIG_USER_ONLY
+>>> +    if (arm_feature(&cpu->env, ARM_FEATURE_PMU) && cpu->pmu_timer) {
+>>
+>> No need for two tests here.  Just check cpu->pmu_timer.
+>> (If it's set for any reason it should be freed, surely.)
+>>
+>>> @@ -1305,7 +1338,18 @@ void pmccntr_op_start(CPUARMState *env)
+>>>              eff_cycles /= 64;
+>>>          }
+>>>  
+>>> -        env->cp15.c15_ccnt = eff_cycles - env->cp15.c15_ccnt_delta;
+>>> +        uint64_t new_pmccntr = eff_cycles - env->cp15.c15_ccnt_delta;
+>>> +
+>>> +        unsigned int overflow_bit = (env->cp15.c9_pmcr & PMCRLC) ? 63 : 31;
+>>> +        uint64_t overflow_mask = (uint64_t)1 << overflow_bit;
+>>> +        if (!(new_pmccntr & overflow_mask) &&
+>>> +                (env->cp15.c15_ccnt & overflow_mask)) {
+>>
+>> Fyi, this expression is
+>>
+>>     env->cp15.c15_ccnt & ~new_pmccntr & overflow_mask
+>>
+>>> +            env->cp15.c9_pmovsr |= (1 << 31);
+>>> +            new_pmccntr &= ~overflow_mask;
+>>
+>> Why this line?  You just checked that overflow_mask was unset in new_pmccntr above.
+> 
+> This ensures that when overflow_bit == 31 (because PMCR.LC is not set)
+> the high 32 bits remain 0 even after an overflow has occurred. As you
+> point out, it's silly when overflow_bit == 64, but I didn't think it was
+> worth the extra conditional to avoid it.
 
-This ensures that when overflow_bit =3D=3D 31 (because PMCR.LC is not set)
-the high 32 bits remain 0 even after an overflow has occurred. As you
-point out, it's silly when overflow_bit =3D=3D 64, but I didn't think it wa=
-s
-worth the extra conditional to avoid it.
+Eh?  But we've set overflow_mask based on PMCR.LC, so what you say here doesn't
+make sense.
 
-> > @@ -1318,13 +1362,28 @@ void pmccntr_op_start(CPUARMState *env)
-> >  void pmccntr_op_finish(CPUARMState *env)
-> >  {
-> >      if (pmu_counter_enabled(env, 31)) {
-> > -        uint64_t prev_cycles =3D env->cp15.c15_ccnt_delta;
-> > +#ifndef CONFIG_USER_ONLY
-> > +        uint64_t delta;
-> > +        if (env->cp15.c9_pmcr & PMCRLC) {
-> > +            delta =3D UINT64_MAX - env->cp15.c15_ccnt + 1;
-> > +        } else {
-> > +            delta =3D UINT32_MAX - (uint32_t)env->cp15.c15_ccnt + 1;
-> > +        }
->=20
-> FWIW, this is the same as
->=20
->     delta =3D -env->cp15.c15_ccnt;
->     if (!(env->cp15.c9_pmcr & PMCRLC)) {
->         delta =3D (uint32_t)delta;
->     }
+> Thanks for your review. I'll take a look at your suggested logic
+> simplifications for v9, do you think that this patch looks OK at the
+> big-picture level?
 
-Thanks for your review. I'll take a look at your suggested logic
-simplifications for v9, do you think that this patch looks OK at the
-big-picture level?
+Yes, big picture looks good.
 
--Aaron
+
+r~
+

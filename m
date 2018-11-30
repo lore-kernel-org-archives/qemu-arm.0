@@ -1,85 +1,79 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3476012wrt;
-        Fri, 30 Nov 2018 03:48:43 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WXcFbg3RV2GdXVUHbKje7Ub+LKvZt+APV9gqDCODKsHrB37D//2PqYnw7p9+PYubx26Du+
-X-Received: by 2002:a81:c808:: with SMTP id n8mr4570632ywi.20.1543578523670;
-        Fri, 30 Nov 2018 03:48:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543578523; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3539539wrt;
+        Fri, 30 Nov 2018 04:54:07 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UcuMxzOqmYLvqwNi8w/KcCnHJRY4JABBbzXiUKmGli2oKflNkqiDk7/Uc0yr2t4Yy8nRmv
+X-Received: by 2002:a81:2548:: with SMTP id l69mr5381843ywl.397.1543582447307;
+        Fri, 30 Nov 2018 04:54:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543582447; cv=none;
         d=google.com; s=arc-20160816;
-        b=aTLR3a0qMjDWkd6B7fNx/ByZdAhPMjSlyJJPpV6n4lufFkC9qfn0d7aeJYl+59JbQY
-         fAVRk5/Ud00VZfe0r4aj5U7bca7laNYmx/D/9F+JQ9TA83HBCADCuWxP6Q+o86SSstYN
-         DKyiIx8f6JUpfyEpZbETx4xjsDnF0cyFIc2WZhoofsHVUrUz3gvQGOBrF/plD32Nqfsp
-         P/C5BDeuDDMk25CAJQNutvnJjeM+Cba+oTppLl1tZVbBZo2r28q7ChJQCiVQwzbkuSo5
-         CksQ52Mg5M4lQWySl0o/+9vp/QkT8nWmzrY01vZ2FVU2jlTpKT8WWqUbXW6vs5wllvY8
-         JeMw==
+        b=xxZ9wRtzlmriOq6/TpXJXExdUIq7i5rfDJNGWxt/5D9UfUtjSxF6lL4YkZ8T4rvMJf
+         jjGgKQhAu33fYJHHFWYqE3jsq6/fSQqKUIT0mrH5pUo2PeSuWsgi9rRo7hPOzNp4pg8k
+         O4DL4gvpOL57xUV0VZcAEVIRtAXQhnQ8S5ouq5/wRZcTRXKJs9mlBO+tNwSr5vmVE+23
+         EDoq+5LutzBOnJWkwMTaIaXrhUnSx22VgUrk8b0+MdarYf+ganbs+00KJ9Fc+7pfxLWZ
+         NWXor6oLt0TP3Sfxdzl+i2FCBULGfOozE7kxoHzmj0/JVsHsrz5XOYIXiW4+eUgWn9x9
+         OqEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=gYFR/iv2W1roFNY9RyXmayEBrelXtCZXskrXuiYKdk0=;
-        b=Wc0VPPTwpzsVk4KP5GsdsP5pHf/VH1A5A/xCsO8v04JBN3xUt0uvkYbflYAKMraEdv
-         4F2Y8O8tVD/djvy+QY+uFMz77ArTrbfRjvJgJpQwVnNqLEazRRnLOsfhNwgLMUuQxI1y
-         FGXa6NfQAs9qPyinrpBf3dou13qSa9HfWvIjj+V89cuyD69kWEWF5JdJQTJdzzUH7ZVm
-         9GLRAp3FcNLNFhvlYrvMWRiLcHtFZfq0mXDKZQRZGkhHMCKyoEfvkLdP4+vLvIGWT5Zs
-         8mpNyU3TfgrIOQRfSQB+XmILF+hHeh9PXqKUr8w+W90nW08u4v43LZZ0UCe7KRVKHszC
-         N5ew==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date;
+        bh=v6ovxxqe5a885GyDorOfdFYpCmKMKge3JhslzULPwaQ=;
+        b=SR27Fj1MLKpBWbPtbM6UIs0e8F+7tEIacamMpFhtJ/ZDeJWIYn9zAfmzZoMUiFAbvf
+         Naxgp8LTCeEfwd8x6UTIHsV4XSvsSkIc5JBy6VOcP5IxpbsXNS+5ZiVuBTJsKz11tTSJ
+         JwKp6I9dDDdB+gOxJGagIi+maMo6S1rTjmlf+/kShklIJy0FISStWXiTxE4G5xLfvFeY
+         NdZNfYu0B9gLmJ8VqDrueh8F9MkB9BFhUTiVl3Xi0EgqQQw1x/2Njs8D8fO//sWkgDGw
+         JVRQ8GD3m9jVceBJpDsc+Z4Hwlt6b6wxaFkeubSsoxQ0+EoG8cFcPfOkaoTAe5EmEIwB
+         hQFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id l8-v6si2705290ybp.221.2018.11.30.03.48.43
+        by mx.google.com with ESMTPS id y18si3124974ywg.82.2018.11.30.04.54.07
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Nov 2018 03:48:43 -0800 (PST)
+        Fri, 30 Nov 2018 04:54:07 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59488 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59696 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gShHn-0001z2-5S
-	for alex.bennee@linaro.org; Fri, 30 Nov 2018 06:48:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46194)
+	id 1gSiJ4-0005Jm-Ng
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 07:54:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gShHb-0001yP-3e
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 06:48:31 -0500
+	(envelope-from <balaton@eik.bme.hu>) id 1gSiFj-0008I7-Lb
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 07:50:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gShHX-0007ps-Vk
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 06:48:31 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51356)
+	(envelope-from <balaton@eik.bme.hu>) id 1gSi2I-0003H5-OF
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 07:36:53 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2]:39919)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gShHX-0007pM-Na; Fri, 30 Nov 2018 06:48:27 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F002B394D48;
-	Fri, 30 Nov 2018 11:48:26 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C330626540;
-	Fri, 30 Nov 2018 11:48:22 +0000 (UTC)
-Date: Fri, 30 Nov 2018 12:48:21 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>
-Message-ID: <20181130124821.292bd5c9@redhat.com>
-In-Reply-To: <20181127092801.21777-25-marcandre.lureau@redhat.com>
-References: <20181127092801.21777-1-marcandre.lureau@redhat.com>
-	<20181127092801.21777-25-marcandre.lureau@redhat.com>
+	(Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+	id 1gSi2I-0003Gq-DK; Fri, 30 Nov 2018 07:36:46 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+	by localhost (Postfix) with SMTP id 44C18745703;
+	Fri, 30 Nov 2018 13:36:45 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+	id 1B83E7456E5; Fri, 30 Nov 2018 13:36:45 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+	by zero.eik.bme.hu (Postfix) with ESMTP id 1A9D37456E4;
+	Fri, 30 Nov 2018 13:36:45 +0100 (CET)
+Date: Fri, 30 Nov 2018 13:36:45 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Guenter Roeck <linux@roeck-us.net>
+In-Reply-To: <a1b3027f-702a-5abb-ad93-8499f1e5e890@roeck-us.net>
+Message-ID: <alpine.BSF.2.21.9999.1811301330340.67368@zero.eik.bme.hu>
+References: <alpine.BSF.2.21.9999.1811292101280.5887@zero.eik.bme.hu>
+	<a05ba14f-b261-bb8c-12a1-4c91d005961f@redhat.com>
+	<71296170-f917-2b24-e1e6-1c525265c2a6@roeck-us.net>
+	<alpine.BSF.2.21.9999.1811300305450.787@zero.eik.bme.hu>
+	<a1b3027f-702a-5abb-ad93-8499f1e5e890@roeck-us.net>
+User-Agent: Alpine 2.21.9999 (BSF 287 2018-06-16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Fri, 30 Nov 2018 11:48:27 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v4 24/28] arm: replace
- instance_post_init()
+Content-Type: multipart/mixed;
+	boundary="3866299591-990447038-1543581405=:67368"
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+Subject: Re: [Qemu-arm] Booting Raspbian on RPi emulation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,144 +85,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, "open
-	list:ARM" <qemu-arm@nongnu.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Clement Deschamps <clement.deschamps@antfield.fr>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	=?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3v5UDMEFE6y0
+X-TUID: qR5bq2v0D3ak
 
-On Tue, 27 Nov 2018 13:27:57 +0400
-Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> Replace arm_cpu_post_init() instance callback by calling it from leaf
-> classes, to avoid potential the ordering issue with interfaces
-> post-init.
->=20
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->  target/arm/cpu.h   |  2 ++
->  target/arm/cpu.c   | 15 ++++++++++++---
->  target/arm/cpu64.c | 11 ++++++++++-
->  3 files changed, 24 insertions(+), 4 deletions(-)
->=20
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 2a73fed9a0..84fba2b24b 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -884,6 +884,8 @@ static inline ARMCPU *arm_env_get_cpu(CPUARMState *en=
-v)
->      return container_of(env, ARMCPU, env);
->  }
-> =20
-> +void arm_cpu_post_init(Object *obj);
-> +
->  uint64_t arm_cpu_mp_affinity(int idx, uint8_t clustersz);
-> =20
->  #define ENV_GET_CPU(e) CPU(arm_env_get_cpu(e))
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 60411f6bfe..8a4aae7438 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -734,7 +734,7 @@ static Property arm_cpu_pmsav7_dregion_property =3D
->  static Property arm_cpu_initsvtor_property =3D
->              DEFINE_PROP_UINT32("init-svtor", ARMCPU, init_svtor, 0);
-> =20
-> -static void arm_cpu_post_init(Object *obj)
-> +void arm_cpu_post_init(Object *obj)
->  {
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> =20
-> @@ -2094,6 +2094,7 @@ static void arm_host_initfn(Object *obj)
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> =20
->      kvm_arm_set_cpu_features_from_host(cpu);
-> +    arm_cpu_post_init(ARM_CPU(obj));
->  }
-> =20
->  static const TypeInfo host_arm_cpu_type_info =3D {
-> @@ -2108,14 +2109,23 @@ static const TypeInfo host_arm_cpu_type_info =3D {
-> =20
->  #endif
-> =20
-> +static void arm_cpu_instance_init(Object *obj)
-> +{
-> +    const ARMCPUInfo *info =3D object_class_get_class_data(object_get_cl=
-ass(obj));
-> +
-> +    info->initfn(obj);
-> +    arm_cpu_post_init(obj);
-> +}
-now imagine leaf cpu class call chain:
-before patch:
-   arm-cpu::initfn()
-   cortex-a8::initfn()
-      set feature AAA
-   device_post_init()
-     -> arm_cpu_post_init()
-          if (AAA)
-             do something  =20
+--3866299591-990447038-1543581405=:67368
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+Content-Transfer-Encoding: quoted-printable
 
-after patch:
-   arm-cpu::initfn()
-      -> arm_cpu_post_init()
-            if (AAA)
-               do something  <--- won't happen anymore
-   cortex-a8::initfn()
+On Thu, 29 Nov 2018, Guenter Roeck wrote:
+> On 11/29/18 6:42 PM, BALATON Zoltan wrote:
+>> On Thu, 29 Nov 2018, Guenter Roeck wrote:
+>>> On 11/29/18 4:43 PM, Philippe Mathieu-Daud=E9 wrote:
+>>>> Hi Zoltan,
+>>>>=20
+>>>> On 29/11/18 21:29, BALATON Zoltan wrote:
+>>>>> Hello,
+>>>>>=20
+>>>>> I could not boot Raspbian on QEMU's raspi emulation and I'm not sur=
+e why
+>>>>> it fails. So question is if this is supposed to work or am I doing
+>>>>> something wrong or any clues what may be missing? I'm trying with t=
+his
+>>>>> command line with v3.1.0-rc3:
+>>>>>=20
+>>>>> qemu-system-arm -M raspi2 -serial stdio \
+>>>>> -kernel rpi-kernel7.img -dtb bcm2709-rpi-2-b.dtb \
+>>>>> -append "rw earlyprintk loglevel=3D8 console=3DttyAMA0,115200
+>>>>> dwc_otg.lpm_enable=3D0 root=3D/dev/mmcblk0p2" \
+>>>>> -drive file=3D2018-10-09-raspbian-stretch-lite.img,format=3Draw,if=3D=
+sd
+>>>>>=20
+>>>>> Kernel starts to boot, I see raspberries on the guest screen and lo=
+g
+>>>>> output to serial:
+>>>>>=20
+>>>>> Booting Linux on physical CPU 0xf00
+>>>>> Linux version 4.14.71-v7+ (dc4@dc4-XPS13-9333) (gcc version 4.9.3
+>>>>> (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1145 SMP Fri Sep 2=
+1
+>>>>> 15:38:35 BST 2018
+>>>>> CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=3D10c5387d
+>>>>> [...]
+>>>>>=20
+>>>>=20
+>>>=20
+>>> My version (https://github.com/groeck/qemu) seems to work, using
+>>=20
+>> Tried with your v3.1.0-local branch but got same results (does not fin=
+d=20
+>> mmcblk0 on raspi2, nothing on raspi3) so probably it's not one of the=20
+>> patches in your tree that's missing.
+>>=20
+>>> multi_v7_defconfig.
+>>=20
+>> Then maybe it's your kernel config that's different? Do you have compi=
+led=20
+>> kernels available that I could try?
+>>=20
+>
+> Shouldn't be, but I attached my configuration. This time with v4.14.84 =
+and
+> "make ARCH-arm savedefconfig" after building the image. The output is=20
+> identical
+> to "make ARCH=3Darm multi_v7_defconfig; make ARCH=3Darm savedefconfig".
+>
+> Oh, and here is my qemu configuration.
+>
+> --disable-user --disable-gnutls --disable-docs \
+>        --disable-nettle --disable-gcrypt --disable-vnc-png \
+>        --disable-xen --disable-xen-pci-passthrough \
+>        --enable-debug --disable-strip
+>
+> That should not make a difference either, but who knows.
+> Just to be sure, I copied a kernel and a root file system
+> to http://server.roeck-us.net/qemu/arm-raspi2/
 
-arm_cpu_post_init() helper has to go to leaf classes only
+It boots with your kernel (also the raspbian-lite image) so it's likely=20
+that the config of the Raspbian kernel is different and that causes the=20
+problem. Unfortunately I don't know what config their kernels use. If I'm=
+=20
+not mistaken this is the raspbian kernel repo:
 
-> +
->  static void cpu_register(const ARMCPUInfo *info)
->  {
->      TypeInfo type_info =3D {
->          .parent =3D TYPE_ARM_CPU,
->          .instance_size =3D sizeof(ARMCPU),
-> -        .instance_init =3D info->initfn,
-> +        .instance_init =3D arm_cpu_instance_init,
->          .class_size =3D sizeof(ARMCPUClass),
->          .class_init =3D info->class_init,
-> +        .class_data =3D (void *)info,
->      };
-> =20
->      type_info.name =3D g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
-> @@ -2128,7 +2138,6 @@ static const TypeInfo arm_cpu_type_info =3D {
->      .parent =3D TYPE_CPU,
->      .instance_size =3D sizeof(ARMCPU),
->      .instance_init =3D arm_cpu_initfn,
-> -    .instance_post_init =3D arm_cpu_post_init,
->      .instance_finalize =3D arm_cpu_finalizefn,
->      .abstract =3D true,
->      .class_size =3D sizeof(ARMCPUClass),
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 873f059bf2..dbfc3ee490 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -447,14 +447,23 @@ static void aarch64_cpu_class_init(ObjectClass *oc,=
- void *data)
->      cc->gdb_arch_name =3D aarch64_gdb_arch_name;
->  }
-> =20
-> +static void aarch64_cpu_instance_init(Object *obj)
-> +{
-> +    const ARMCPUInfo *info =3D object_class_get_class_data(object_get_cl=
-ass(obj));
-> +
-> +    info->initfn(obj);
-> +    arm_cpu_post_init(obj);
-> +}
-> +
->  static void aarch64_cpu_register(const ARMCPUInfo *info)
->  {
->      TypeInfo type_info =3D {
->          .parent =3D TYPE_AARCH64_CPU,
->          .instance_size =3D sizeof(ARMCPU),
-> -        .instance_init =3D info->initfn,
-> +        .instance_init =3D aarch64_cpu_instance_init,
->          .class_size =3D sizeof(ARMCPUClass),
->          .class_init =3D info->class_init,
-> +        .class_data =3D (void *)info,
->      };
-> =20
->      type_info.name =3D g_strdup_printf("%s-" TYPE_ARM_CPU, info->name);
+https://github.com/raspberrypi/linux/
 
+My guesses would be bcm2835_defconfig or some other bcm*config? Or=20
+something completely different?
+
+Regards,
+BALATON Zoltan
+--3866299591-990447038-1543581405=:67368--

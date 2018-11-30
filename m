@@ -1,71 +1,71 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3547475wrt;
-        Fri, 30 Nov 2018 05:02:21 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/WqOy+PJQZ2H6Q2hNhh0ekWkN+SPcAg2GWgfIPzeUPo0+gt3t+OT/EtDjQSsgBj0wmcmFUY
-X-Received: by 2002:a81:ec12:: with SMTP id j18mr5423283ywm.17.1543582941847;
-        Fri, 30 Nov 2018 05:02:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543582941; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3549993wrt;
+        Fri, 30 Nov 2018 05:04:15 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XeqUTj5tGvKxAyu53ERv2hhwLWzCMssrtdB9Vu3iceno1/4dJU3ChgbZtJNLEqShG2aC3B
+X-Received: by 2002:a25:5c88:: with SMTP id q130-v6mr5299008ybb.236.1543583055740;
+        Fri, 30 Nov 2018 05:04:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543583055; cv=none;
         d=google.com; s=arc-20160816;
-        b=MMd2bF5fVcrDPMTqwZ+E6Fnx32jv2IEBq7ldngY2w83o4jJroFBZSrPmrLS0AYO3WH
-         DfEyKmuo5BsY97eUkZP2JeKn2cedegbZnp0zhOKFf5ccJFqcT/hLjsg6nIRsghng/+ut
-         uPNH0/utNnnayOCpHLfeUa79t+WyxY2OEDxbdeYTKKu8peBSAIGuXvauRMDSsOSfKGyx
-         XAomePHdwk+3mU2mnqtV2tEUHU1WwE5Pd6FEf1Ix7/9i+jXBcoOLhHd+jFrEYT65STqF
-         qbEnPxkgiLutVvrcrQTqcaZN3NX43Xp0HCnG6yskksafsUJRpwP7WlnXa+r1HoWt5wJP
-         MSvw==
+        b=vU07VdQftcaMlIzb+3CLC7cNnX52T5/5LgYdZ5G3ymP5sxLYQn7WqL6ud9oV8fl1Uz
+         hY1I8ZXGDlu0gePfX6bPSGEb7i36dCUXJQBZJV42KoLIS3evz8vWNY8hgK3O/BAKuZEE
+         A6HZxTnsrkdthkffhmqT7smQ6g64/jA7LVlXRGtJxJM0X+csVRoGyQsYCK+bpB1bGGio
+         LsR0j1kLm30Ii7LeiXHx94TlWzpntxOwd8q8L5qdXenKbZsPW9e4daj3mSUr4VuWWCGY
+         7F7zbUYQDi3q+GMwRe/G3MrYe/5IXdKcvMwuzBKlYHs8HOHYG3Vbj5mOAc/WXknWEoKJ
+         yLNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=gWxK1Xw55GfTyyVKAcxh6Y6Hwi2eEbmX+L8xg3FuKrQ=;
-        b=BvOq6CyjlQHK3BAwBe6WLqAS4vNkv4QSp7fbqi67ujZm9S6Iz3fJJx0XWsXcqInXmT
-         fJD92JaUc+crHDI7GzU0D3AQYoGYvszWdUznBgxkLdvdAwElWvb6DoqCsnkC+wiggErS
-         ktWx/S9DxRUtwiKOIP/hflmlP8v5oxk69eud6bx5SIkX6zDr0hQ3I64vN8JRr0T3AIR6
-         QPKTUQPzF0zE8hglE7uOn7RtOVSSbTUHKjaJVTw621f4dPZkdAUOq796fG4yp08Ji1jD
-         vHK/mhKunBzVylk3LakQmooEeloW517qPcsBr1+hitRkNqPY9xjeEDqIcvlxwhBX8sOl
-         aVxQ==
+        bh=0E03appgn/L0OTMzwT/dSihj44/ev4jm7kRQ6gs6+Fw=;
+        b=APte/3URujddXALM1XqSeXtO1W1wi8pIT0oYr4Oi7moa/p41+HmJ/oDGuyNUc26LDX
+         ndybE1JkkYQzg8xHk0E5LmYGRXDhi/QdEvJLd/E5NJlsnX1rDBPtVFxU/6S88IL0PXS/
+         eFDA+NQfUdXdStywLvS4ATuVb9V40paMpzXfoRY4ouqbB8END/ahnb9KgH+OsrERyAyT
+         ctWRg6RpTmE19PmI70dTDX5irlw2ZVSHb0X68sG5aTyxC/KxNINjmtLF03Dec98fbnKk
+         J8q0g4Ne3AKuzBrBOUlbNovfQcexpLMZ/gHcdSaVsrwu2CJgx2cCNjsCfFA2ulDkm2oi
+         FnAg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id e3-v6si2927614ybq.143.2018.11.30.05.02.21
+        by mx.google.com with ESMTPS id x63-v6si2980766ybb.269.2018.11.30.05.04.15
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Nov 2018 05:02:21 -0800 (PST)
+        Fri, 30 Nov 2018 05:04:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:59846 helo=lists.gnu.org)
+Received: from localhost ([::1]:59851 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSiR2-0004E1-TM
-	for alex.bennee@linaro.org; Fri, 30 Nov 2018 08:02:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33481)
+	id 1gSiSt-0006n7-6d
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 08:04:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33538)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gSiQH-00042v-S5
-	for qemu-devel@nongnu.org; Fri, 30 Nov 2018 08:01:34 -0500
+	(envelope-from <sameo@linux.intel.com>) id 1gSiQL-00047A-21
+	for qemu-devel@nongnu.org; Fri, 30 Nov 2018 08:01:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sameo@linux.intel.com>) id 1gSiQE-0004x9-OD
-	for qemu-devel@nongnu.org; Fri, 30 Nov 2018 08:01:33 -0500
-Received: from mga09.intel.com ([134.134.136.24]:51030)
+	(envelope-from <sameo@linux.intel.com>) id 1gSiQE-0004xL-R0
+	for qemu-devel@nongnu.org; Fri, 30 Nov 2018 08:01:36 -0500
+Received: from mga09.intel.com ([134.134.136.24]:51026)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <sameo@linux.intel.com>)
-	id 1gSiQE-0004qM-EQ; Fri, 30 Nov 2018 08:01:30 -0500
+	id 1gSiQE-0004nX-Fn; Fri, 30 Nov 2018 08:01:30 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
 	by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	30 Nov 2018 05:01:24 -0800
+	30 Nov 2018 05:01:21 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,298,1539673200"; d="scan'208";a="293507397"
+X-IronPort-AV: E=Sophos;i="5.56,298,1539673200"; d="scan'208";a="293506517"
 Received: from ppkrause-mobl.ger.corp.intel.com (HELO localhost.localdomain)
 	([10.251.84.55])
-	by fmsmga005.fm.intel.com with ESMTP; 30 Nov 2018 05:01:21 -0800
+	by fmsmga005.fm.intel.com with ESMTP; 30 Nov 2018 05:01:16 -0800
 From: Samuel Ortiz <sameo@linux.intel.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 30 Nov 2018 14:00:27 +0100
-Message-Id: <20181130130032.11835-4-sameo@linux.intel.com>
+Date: Fri, 30 Nov 2018 14:00:26 +0100
+Message-Id: <20181130130032.11835-3-sameo@linux.intel.com>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20181130130032.11835-1-sameo@linux.intel.com>
 References: <20181130130032.11835-1-sameo@linux.intel.com>
@@ -74,8 +74,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 134.134.136.24
-Subject: [Qemu-devel] [PATCH v3 3/8] hw: i386: Use correct RSDT length for
- checksum
+Subject: [Qemu-devel] [PATCH v3 2/8] hw: arm: acpi: Fix incorrect checksums
+ in RSDP
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,62 +91,62 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, Ben Warren <ben@skyportsystems.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
+	Ard Biesheuvel <ard.biesheuvel@linaro.org>,
 	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
 	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2C69NANRp1mN
+X-TUID: zJ8HiY94GRU8
 
 From: Igor Mammedov <imammedo@redhat.com>
 
-AcpiRsdpDescriptor describes revision 2 RSDP table so using sizeof(*rsdp)
-for checksum calculation isn't correct since we are adding extra 16 bytes.
-But acpi_data_push() zeroes out table, so just by luck we are summing up
-exta zeros which still yelds correct checksum.
+When RSDP table was introduced (d4bec5d87), we calculated only legacy
+checksum, and that was incorrect as it
+ - specified rev=2 and forgot about extended checksum.
+ - legacy checksum calculated on full table instead of the 1st 20 bytes
 
-Fix it up by explicitly stating table size instead of using
-pointer arithmetics on stucture.
+Fix it by adding extended checksum calculation and using correct
+size for legacy checksum.
 
-PS:
-Extra 16 bytes are still wasted, but droping them will break migration
-for machines older than 2.3 due to size mismatch, for 2.3 and older it's
-not an issue since they are using resizable memory regions (a1666142d)
-for ACPI blobs. So keep wasting memory to avoid breaking old machines.
+While at it use explicit constants to specify sub/full tables
+sizes instead of relying on AcpiRsdpDescriptor size and fields offsets.
+The follow up commits will convert this table to build_append_int_noprefix() API,
+will use constants anyway and remove unused AcpiRsdpDescriptor structure.
 
-Fixes: 72c194f7e (i386: ACPI table generation code from seabios)
+Based on "[PATCH v5 05/24] hw: acpi: Implement XSDT support for  RSDP"
+by Samuel Ortiz, who did it right in his impl.
+
+Fixes: d4bec5d87 (hw/arm/virt-acpi-build: Generate RSDP table)
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+CC: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+CC: Shannon Zhao <shannon.zhaosl@gmail.com>
 Reviewed-by: Samuel Ortiz <sameo@linux.intel.com>
+Reviewed-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
 ---
- hw/i386/acpi-build.c | 7 ++++++-
+ hw/arm/virt-acpi-build.c | 7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 35f17d0d91..fb877648ac 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2550,6 +2550,11 @@ build_amd_iommu(GArray *table_data, BIOSLinker *linker)
- static void
- build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
- {
-+    /* AcpiRsdpDescriptor describes revision 2 RSDP table and as result we
-+     * allocate extra 16 bytes for pc/q35 RSDP rev1 as well. Keep extra 16 bytes
-+     * wasted to make sure we won't breake migration for machine types older
-+     * than 2.3 due to size mismatch.
-+     */
-     AcpiRsdpDescriptor *rsdp = acpi_data_push(rsdp_table, sizeof *rsdp);
-     unsigned rsdt_pa_size = sizeof(rsdp->rsdt_physical_address);
-     unsigned rsdt_pa_offset =
-@@ -2567,7 +2572,7 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned rsdt_tbl_offset)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index fcaa350892..0835900052 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -390,8 +390,13 @@ build_rsdp(GArray *rsdp_table, BIOSLinker *linker, unsigned xsdt_tbl_offset)
  
      /* Checksum to be filled by Guest linker */
      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
 -        (char *)rsdp - rsdp_table->data, sizeof *rsdp,
 +        (char *)rsdp - rsdp_table->data, 20 /* ACPI rev 1.0 RSDP size */,
          (char *)&rsdp->checksum - rsdp_table->data);
++
++    /* Extended checksum to be filled by Guest linker */
++    bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
++        (char *)rsdp - rsdp_table->data, 36 /* ACPI rev 2.0 RSDP size */,
++        (char *)&rsdp->extended_checksum - rsdp_table->data);
  }
  
+ static void
 -- 
 2.19.2
 

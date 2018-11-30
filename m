@@ -1,175 +1,151 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3368425wrt;
-        Fri, 30 Nov 2018 01:40:25 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/X2gFZeUl/hx4+3R2t9COjfaYhUW+rtXGZuaQEzfKH5tcMxKc47TQoqq+py0ElRswCOVC8I
-X-Received: by 2002:a25:8710:: with SMTP id a16-v6mr4731656ybl.253.1543570825566;
-        Fri, 30 Nov 2018 01:40:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543570825; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3370713wrt;
+        Fri, 30 Nov 2018 01:43:10 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/W7qmuNpkpTOyYOrJpYlOnzPJ4m2kF3iNGbder/A4jc+4VDxShrZIcKzmCykUoL7LMHkdY+
+X-Received: by 2002:a81:4506:: with SMTP id s6mr4867329ywa.200.1543570990834;
+        Fri, 30 Nov 2018 01:43:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543570990; cv=none;
         d=google.com; s=arc-20160816;
-        b=aVrye4erbiEdDQ1Fw1mbqYpRVwzSWACnfwW07rSd1b8Oy8F64INwOGhMKN7cDfv2/c
-         qhdQW8DnxA/Plf/0Q1UCF61Vj2CxZS1es25Tq6a7WkOvaLovFUFGyAKVwCVb3Ubqfrmm
-         AEMC2Z/e2aKlKFxkNPey3638xI2g7TslsArizuddj0M5CRi5FOiFobe5FWrWgMZRQPv6
-         43P1QSYKfIsip3BV7HoKtPIzppLS61f8NWAvVEk+we1EBa1pMMK98EbhgVuPZMb0bt62
-         gmVwVFvC+QSx0QD+RrqmFVNgVWRspYOXD5L5r9jPpmSmW7/MSUSEIe88Vg20m1CxLnz4
-         oF/w==
+        b=LFKtobXzW0e0JyXqm+sEA2TEsSfD2lSpRBkxnFB6l1HngLLQyfms/lzzAW9WHM+Shr
+         P8LkR5jy6EKFbkFYIOJFqQdVbRhZ7Mbk9K0R5IukYpcGZiGPg50/EWm6qvSL9GYlkSuK
+         hPVCQ27XD6mnKhw5/s4C3tGePKR6XXTwZWWXNiKSPZI4i4J2y1Dxdn+8+IWRKUC6Ny8+
+         q5pPNylT21h8XUgrQRID/fONn/5X1L6QW8Gwzz2P5rG8Z2PjnFt6QSBWbHSu3iIAgVfl
+         Bt0ZJFN4wk3+9hNGtshLfbbji4Jx3nudfmplB0Jwf3qqrvfSkAgwzHSACmEHTQZaqLfQ
+         8DeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=cNwt0kmwUrA8irwgDm5nQzNp40NsgfYQNOoweYaMykY=;
-        b=HNGsBZ2DC8KoGepQN7WHyumAfScmjQ2GXTNqWtAVrdRfNARj6HT9/8RQlx8+zUs3+k
-         TJX8/y/siEd9vjUQRNhFuO0NZFkXHJ2PTssPH83o3FhyZiC6LWJZpbsUK1ElBNwRejd9
-         z5FN3YQ8gWxlbs7/ZWqQ8Ppjm0lDrAnk2vM0zN9gEjdY1FIlYSfWJbtx+3nSJQV24arG
-         MWT3K1T+lAARXzaoYw2UBbSKvr55FEcizPGQGx0RDqgbDa2m+3n1wM5vhyIkoExUejpQ
-         sMZjM16GCwOJmRUQGNAVcvSCGZFEqn+RtPUhjTS3P/Rk5XC4131FVp1/8WLhQuwzjmVN
-         M0xQ==
+         :message-id:date:to:from;
+        bh=kLjg3B1CcVlKmtZS0hYQKVnLnUmdtvAChQBrffzF8DE=;
+        b=RbhDGEtbrrcItYY6uBoOw+68HdnL9FjgjG2DYN5dUFpOFudeq4xYiPqQU7zBbBS03q
+         E2ACDrbBuKt9ecUT8EuIn5Ca6Kg9L7v9O/yaYzEoWt+04A93rT5MZy3hfvuxXL4ItBTq
+         B2qkO7f1mg7CyTj7Xc9M/m8dSKPEqA6UYh3rUj3EEMEyw+7xVZlgwDysUZlyk85KT+Gt
+         fak/vnfPFz1grzWRE5LKE4dSW8cENsRsx9xZLRlATkGF4u48NgM6MgrcXCoYOWdP9CA4
+         AHNDNwOzzHD8WO1FOwfutRnq+SqbRjdwFZzxfpHTErG2nkXNsUIuf7FM/MgRAiBHTV+t
+         RqNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id q81-v6si2775512ybc.394.2018.11.30.01.40.25
+        by mx.google.com with ESMTPS id p205-v6si2813870ybc.254.2018.11.30.01.43.10
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Nov 2018 01:40:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Fri, 30 Nov 2018 01:43:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58969 helo=lists.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58981 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSfHc-0006oT-VB
-	for alex.bennee@linaro.org; Fri, 30 Nov 2018 04:40:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37852)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gSfKI-0000Ji-6q
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 04:43:10 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38520)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gSfFq-0005fB-8P
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 04:38:35 -0500
+	(envelope-from <maozhongyi@cmss.chinamobile.com>) id 1gSfGj-0006Ax-OX
+	for qemu-devel@nongnu.org; Fri, 30 Nov 2018 04:39:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gSfFm-0001vy-Rf
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 04:38:34 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38140)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gSfFm-0001v2-EX; Fri, 30 Nov 2018 04:38:30 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F3B6C88E63;
-	Fri, 30 Nov 2018 09:38:28 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BD6531019637;
-	Fri, 30 Nov 2018 09:38:23 +0000 (UTC)
-Date: Fri, 30 Nov 2018 10:38:22 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Samuel Ortiz <sameo@linux.intel.com>
-Message-ID: <20181130103822.6b9a6919@redhat.com>
-In-Reply-To: <20181129132428.333-7-sameo@linux.intel.com>
-References: <20181129132428.333-1-sameo@linux.intel.com>
-	<20181129132428.333-7-sameo@linux.intel.com>
+	(envelope-from <maozhongyi@cmss.chinamobile.com>) id 1gSfGh-0002Up-6p
+	for qemu-devel@nongnu.org; Fri, 30 Nov 2018 04:39:29 -0500
+Received: from cmccmta1.chinamobile.com ([221.176.66.79]:33835)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <maozhongyi@cmss.chinamobile.com>)
+	id 1gSfGf-0002My-OR; Fri, 30 Nov 2018 04:39:27 -0500
+Received: from spf.mail.chinamobile.com (unknown[172.16.121.13]) by
+	rmmx-syy-dmz-app03-12003 (RichMail) with SMTP id
+	2ee35c0105405de-a2243; Fri, 30 Nov 2018 17:39:12 +0800 (CST)
+X-RM-TRANSID: 2ee35c0105405de-a2243
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from maozy-host.lan (unknown[112.25.154.148])
+	by rmsmtp-syy-appsvr07-12007 (RichMail) with SMTP id
+	2ee75c01052eaec-4859a; Fri, 30 Nov 2018 17:39:12 +0800 (CST)
+X-RM-TRANSID: 2ee75c01052eaec-4859a
+From: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 30 Nov 2018 17:38:40 +0800
+Message-Id: <20181130093852.20739-10-maozhongyi@cmss.chinamobile.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20181130093852.20739-1-maozhongyi@cmss.chinamobile.com>
+References: <20181130093852.20739-1-maozhongyi@cmss.chinamobile.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 30 Nov 2018 09:38:29 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 6/8] hw: arm: Support both legacy and
- current RSDP build
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 221.176.66.79
+Subject: [Qemu-devel] [PATCH v3 09/21] input/pl050: Convert sysbus init
+ function to realize function
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Ben Warren <ben@skyportsystems.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uz2i+wCu4t2X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	Zhang Shengju <zhangshengju@cmss.chinamobile.com>,
+	Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: w3ckD3JnqD9/
 
-On Thu, 29 Nov 2018 14:24:26 +0100
-Samuel Ortiz <sameo@linux.intel.com> wrote:
+Use DeviceClass rather than SysBusDeviceClass in
+pl050_class_init().
 
-> We add the ability to build legacy or current RSDP tables, based on the
-> AcpiRsdpData revision field passed to build_rsdp().
-> Although arm/virt only uses RSDP v2, adding that capability to
-> build_rsdp will allow us to share the RSDP build code between ARM and x86.
-> 
-> Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
+Cc: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+Signed-off-by: Zhang Shengju <zhangshengju@cmss.chinamobile.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/input/pl050.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-> ---
->  hw/arm/virt-acpi-build.c | 37 ++++++++++++++++++++++++++-----------
->  1 file changed, 26 insertions(+), 11 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 4782aea4fe..e1338b6f5a 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -378,23 +378,38 @@ build_rsdp(GArray *tbl, BIOSLinker *linker, AcpiRsdpData *rsdp_data)
->      g_array_append_vals(tbl, rsdp_data->oem_id, 6); /* OEMID */
->      build_append_int_noprefix(tbl, rsdp_data->revision, 1); /* Revision */
->      build_append_int_noprefix(tbl, 0, 4); /* RsdtAddress */
-> -    build_append_int_noprefix(tbl, 36, 4); /* Length */
-> -
-> -    /* XSDT address to be filled by guest linker */
-> -    build_append_int_noprefix(tbl, 0, 8); /* XsdtAddress */
-> -    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE,
-> -                                   24, 8,
-> -                                   ACPI_BUILD_TABLE_FILE,
-> -                                   *rsdp_data->xsdt_tbl_offset);
-> -
-> -    build_append_int_noprefix(tbl, 0, 1); /* Extended Checksum */
-> -    build_append_int_noprefix(tbl, 0, 3); /* Reserved */
-> +    if (rsdp_data->rsdt_tbl_offset) {
-> +        /* RSDT address to be filled by guest linker */
-> +        bios_linker_loader_add_pointer(linker,
-> +                                       ACPI_BUILD_RSDP_FILE, 16, 4,
-> +                                       ACPI_BUILD_TABLE_FILE,
-> +                                       *rsdp_data->rsdt_tbl_offset);
-> +    }
->  
->      /* Checksum to be filled by guest linker */
->      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
->                                      0, 20, /* ACPI rev 1.0 RSDP size */
->                                      8);
->  
-> +    if (rsdp_data->revision == 0) {
-> +        /* ACPI 1.0 RSDP, we're done */
-> +        return;
-> +    }
-> +
-> +    /* The RSDP revision is 2 and later, we must have an XSDT pointer */
-> +    g_assert(rsdp_data->xsdt_tbl_offset != NULL);
-> +
-> +    build_append_int_noprefix(tbl, 36, 4); /* Length */
-> +
-> +    /* XSDT address to be filled by guest linker */
-> +    build_append_int_noprefix(tbl, 0, 8); /* XsdtAddress */
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_RSDP_FILE, 24, 8,
-> +                                   ACPI_BUILD_TABLE_FILE,
-> +                                   *rsdp_data->xsdt_tbl_offset);
-> +
-> +    build_append_int_noprefix(tbl, 0, 1); /* Extended Checksum */
-> +    build_append_int_noprefix(tbl, 0, 3); /* Reserved */
-> +
->      /* Extended checksum to be filled by Guest linker */
->      bios_linker_loader_add_checksum(linker, ACPI_BUILD_RSDP_FILE,
->                                      0, 36, /* ACPI rev 2.0 RSDP size */
+diff --git a/hw/input/pl050.c b/hw/input/pl050.c
+index be9cd57b17..15bffbfcad 100644
+--- a/hw/input/pl050.c
++++ b/hw/input/pl050.c
+@@ -139,19 +139,19 @@ static const MemoryRegionOps pl050_ops = {
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
+-static int pl050_initfn(SysBusDevice *dev)
++static void pl050_realize(DeviceState *dev, Error **errp)
+ {
+     PL050State *s = PL050(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &pl050_ops, s, "pl050", 0x1000);
+-    sysbus_init_mmio(dev, &s->iomem);
+-    sysbus_init_irq(dev, &s->irq);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
+     if (s->is_mouse) {
+         s->dev = ps2_mouse_init(pl050_update, s);
+     } else {
+         s->dev = ps2_kbd_init(pl050_update, s);
+     }
+-    return 0;
+ }
+ 
+ static void pl050_keyboard_init(Object *obj)
+@@ -183,9 +183,8 @@ static const TypeInfo pl050_mouse_info = {
+ static void pl050_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+-    SysBusDeviceClass *sdc = SYS_BUS_DEVICE_CLASS(oc);
+ 
+-    sdc->init = pl050_initfn;
++    dc->realize = pl050_realize;
+     dc->vmsd = &vmstate_pl050;
+ }
+ 
+-- 
+2.17.1
+
+
 

@@ -1,96 +1,96 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3730752wrt;
-        Fri, 30 Nov 2018 07:54:25 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XCRAb1AdM8P9SfFe2TRjFSKodFRPazurUZjmQDnO/ViWwXLNjb25WccY4F80t5omR4PPQO
-X-Received: by 2002:a25:a08a:: with SMTP id y10-v6mr5857409ybh.378.1543593265110;
-        Fri, 30 Nov 2018 07:54:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543593265; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3732644wrt;
+        Fri, 30 Nov 2018 07:56:34 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Udp5nLiroRx1sPmeGo0eLSqUumHWnXA2zzbPaEefCV2ktgq40CspF5n4+QETgNNcabnB3K
+X-Received: by 2002:a81:af58:: with SMTP id x24mr6334229ywj.362.1543593394427;
+        Fri, 30 Nov 2018 07:56:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543593394; cv=none;
         d=google.com; s=arc-20160816;
-        b=eUbfRP5dwmqdndNM1Mls+NaNZOSAv+tulzopbYHIlPMAAX9FVNwloSRPKU+Fblnz+J
-         ezSKqxBBLhRy5LoIjjsi3Ken//hsdYNRDIsRoFaqOKoXQ5rSvfNU/aRVlXuBxRXLZiDB
-         WimJ86E3WAFDHhC++UoALAjiDRfp6jdhtGDz+u4hlYVuH4HXf7nYs7bAWYFykh5qBUVe
-         nOq7JLAsrYgxhpDRK/3Xq/MD4569Y3SWIMl3YOd423AmmzLMPRnqXpi83YBLTxkeaBDf
-         TMfhEaFt1vW2Ea3qCVJD5jvSfxp+rpsrbGiur+cG91Y+TIVEWpiK/+UV+hfEGc9Mr2Xs
-         5lfg==
+        b=etMB7XsDAOMFbZpBlAHVl/kqexDm/f9ELAzACakbMEiJZEZxz4DVmqI/jUEi/SWMMx
+         nmPzvE/kTBBZqmZVLiSDx6UBB5zqu0ncZ6TfJQv4flHmb1o8Nhd0cEk9o+/4V7qqht5U
+         /AMZ2L4ngpt8xgm2Gm3BSzL2h/bze6FxMiNWAagtGg80CEiNMwNRYPMHJvjUp9rzcp+g
+         RbXWpjWYKYT+MmPt714HQW7Say06HmZoB+lp2JLLQIxRM3h+oyhKqlLTDN0u/bwYh72s
+         p+aooz/rLNvERpTllVCDkbKuoYFGG0ZAGXDRiDfWcLDC8/i3SDg30Sg8TQNOTknJ6rcG
+         Lk6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=g3VqBBLZrcIQDC9GG5PTQlbzzoYz66oFznqVQbnb0uo=;
-        b=Jm2qrwRiwrj4opa0A046fedzYtDLkygHqe80mKggNQLj+5iamzr4sQAY/6FU9nXXaL
-         YXnZGkFyzeOFfWuVrsJwcDpfr9+1/1VuH8jXEMzlPw/Q2iqRmRgeV0wVqUxD9OnBf1vZ
-         +M2wVXY7Sr+Jm4UsqabcrkDyaOOkf73f/rOoJlI30vgUgdPRW0e2hRa/UIbHh+wVcRTX
-         g7FEf+BV27UNTZAKDtISenT0i2BhP70nArD+rW2RILb1XgI0vUX4odIGUgzPkwq/X7Ob
-         xmuuogInTDfAkIZb2gCEjYCRqFD+IgbiZtNclCcc3T7P/mwTqIA/CE5LT4xqaovF+oq/
-         NGKQ==
+        bh=6Flt5e4y7rWLhGiVRH9VCmmZ7/N94rN5WH18R40jjdI=;
+        b=tEQPurzGzvcTuSghsIy+8svTA77OXWk477lkzC6+dbpf8M52AjltU7I8B/qaw2yPwY
+         dcHTDpu+vhZsuBLmoM0+3NNBD6xK/8vFK6xEJ3rwONFNplnclhwZ4aW3U5RxvsAjlJMh
+         h5RbsvTxK+b0H5NZUmXbr3QJ/kniDwSZWdEpX612yfxSz0TaXVDpznX1Bt4Mm6ZFCJIF
+         Fe0e94G2/WdjKEWmyhzmV9I6oM3UFcBHIe3tuxxjM8qwFODqrmKhdxuSCPxPTQU5I24I
+         pEeQ/AGU+swERti0pDo05Pgp/bvHV0GTbIqIkoFUtsMcott/jBH4XLmdnnrZn6e+YtzU
+         SVMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AcHZ66Ma;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kjec98Dh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id b6-v6si3086400ybh.426.2018.11.30.07.54.24
+        by mx.google.com with ESMTPS id i65-v6si3328928ywd.240.2018.11.30.07.56.34
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Nov 2018 07:54:25 -0800 (PST)
+        Fri, 30 Nov 2018 07:56:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AcHZ66Ma;
+       dkim=fail header.i=@linaro.org header.s=google header.b=kjec98Dh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33487 helo=lists.gnu.org)
+Received: from localhost ([::1]:33498 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSl7Y-0008Gt-Fz
-	for alex.bennee@linaro.org; Fri, 30 Nov 2018 10:54:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37018)
+	id 1gSl9d-0001N8-Tl
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 10:56:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37362)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gSl7M-0008EW-5x
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:54:13 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gSl9U-0001Mv-Q0
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:56:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gSl7L-0007BU-Ad
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:54:12 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:45646)
+	(envelope-from <peter.maydell@linaro.org>) id 1gSl9T-00009i-0O
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:56:24 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:33331)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gSl7L-0007B5-3q
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:54:11 -0500
-Received: by mail-oi1-x244.google.com with SMTP id b141so5074076oii.12
-	for <qemu-arm@nongnu.org>; Fri, 30 Nov 2018 07:54:10 -0800 (PST)
+	id 1gSl9S-000090-Pg
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:56:22 -0500
+Received: by mail-ot1-x341.google.com with SMTP id i20so5535413otl.0
+	for <qemu-arm@nongnu.org>; Fri, 30 Nov 2018 07:56:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=g3VqBBLZrcIQDC9GG5PTQlbzzoYz66oFznqVQbnb0uo=;
-	b=AcHZ66MaUnln9Ea1ISZKMaCbibhBuwxbs80B65KoLt9zbwGFKYLnck0Iqlrc/vWSZb
-	PwOfIBQVlvY759x1C+nuV2SEGDxmfFwuI9Yzxfsrt1tw9sZ/tJ5RUQk8b0l3SKL43oCX
-	pCUbmHj6IzDXfg5yCiLPWphvJosP0Sx6Anflk=
+	:cc; bh=6Flt5e4y7rWLhGiVRH9VCmmZ7/N94rN5WH18R40jjdI=;
+	b=kjec98DhnV2VSaRRiQrG5KTZ3ANatToFuKWz786nu4DyEPYX7HmbHlR24mUvr36ATg
+	doZa4MY5FJ55c9oT8vcVQElK/H55Rr7q/WqkdRBcUOT6FW2JXZL7oDUUkGsNzAAi1vL2
+	WWLFW0zQwhf1SRf8Rhy3/+L3I8MMg07aQCklE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=g3VqBBLZrcIQDC9GG5PTQlbzzoYz66oFznqVQbnb0uo=;
-	b=P/KKs8zGz7mdhuhk07nonEHIU567cjo+DzyvZiaMrgKXGYLgEDsZGMjlzzI4g99Iji
-	2dkJ5IxIzyBv8MFnWmgXfTjj3nH+m2xZV/UumKFEDJsINoqZMSPEwZorXHMJhiaKq2X1
-	AClzp8NRSp5PQJTl7UcQFGHPhpjRqf6qI7Tp7UzrQ01zPaBVVZDSNkRrl8C/u1kDgkfS
-	r+7pxDq1aj21pKioxZYAQqoJoqr08qIrbvNzQU2fZXGFZCFPEmLJrn1wrVZkN0l1ctZC
-	rLtCT/JC6hPRcirHGiwbKo68+llZpzIIbfifeUgpN19t72P7oTiuFEvAIroovSfPjC5r
-	iWUg==
-X-Gm-Message-State: AA+aEWb8vD969cWv03wUqhpfd8huLkOFCNNpeoxp9TePlVavN0fUnK8o
-	oF8694ZInJZIkGUmLqN/xJjV/hCXXsuzSet4PsZEIw==
-X-Received: by 2002:aca:2dc9:: with SMTP id t192mr3807149oit.325.1543593250404;
-	Fri, 30 Nov 2018 07:54:10 -0800 (PST)
+	bh=6Flt5e4y7rWLhGiVRH9VCmmZ7/N94rN5WH18R40jjdI=;
+	b=fxkbr9eEBW/DIi95Gkpl0PovxTXobe7M8vmiyP1SobbrswkjNDxVBtBdKb6Y8HuQNd
+	toj9LdYkVKZqu40L1i72BP7cFObwDMoYHeFWl/77Z58WrnefFsfQqfIJX6YefjaROwHR
+	JQf3Yad+NF2kpBJgGNsKxYvXaPb25HYI99CV1QO3gdeYej75LSqgHrUuXehYN5djiAMV
+	jqAxhCUJbUzoqAnmi1kwKt5wopNY3OitxJGQ1FdC5LFuXkxTEPgEYqjlU95xRSQij5LI
+	WJV165ogVMfLBATtU80Sx0XsfPvmhUee5xVEEwybod1PbIAsKZExCgR5iftETIuTwUnA
+	+rLQ==
+X-Gm-Message-State: AA+aEWYQftzPOhuzVUeF08d90PtE297T3BT2XfOSX8DmqCcH2WjHnc6U
+	wO5UUfcHhxwuWPZ9Vsb2nJj5QW+yowNElCqI8gm8pw==
+X-Received: by 2002:a9d:3d44:: with SMTP id a62mr3555325otc.363.1543593381508; 
+	Fri, 30 Nov 2018 07:56:21 -0800 (PST)
 MIME-Version: 1.0
 References: <1543407172-16175-1-git-send-email-peng.hao2@zte.com.cn>
-	<1543407172-16175-9-git-send-email-peng.hao2@zte.com.cn>
-In-Reply-To: <1543407172-16175-9-git-send-email-peng.hao2@zte.com.cn>
+	<1543407172-16175-8-git-send-email-peng.hao2@zte.com.cn>
+In-Reply-To: <1543407172-16175-8-git-send-email-peng.hao2@zte.com.cn>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Nov 2018 15:53:59 +0000
-Message-ID: <CAFEAcA91j803VhAKrey3pvHC+L139EGVvkN1rULbUD-JAFWBdA@mail.gmail.com>
+Date: Fri, 30 Nov 2018 15:56:10 +0000
+Message-ID: <CAFEAcA83C_Eic3K4yY5bGeEKJpY2uf26diFtDJ5r+W71jcX2DQ@mail.gmail.com>
 To: Peng Hao <peng.hao2@zte.com.cn>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH V10 8/9] hw/misc/pvpanic: realize the
- configure interface
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH V10 7/9] hw/misc/pvpanic: preparing for
+ adding configure interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,41 +107,31 @@ Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ieWXQEEKWMms
+X-TUID: x+ZbG+vxJSJe
 
 On Wed, 28 Nov 2018 at 03:50, Peng Hao <peng.hao2@zte.com.cn> wrote:
 >
-> Add configure interface for pvpanic-mmio. In qemu command line
-> use -device pvpanic-mmio to enable the device.
+> Prepare for pvpanic-mmio configure interface.
 >
 > Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
 > ---
->  hw/arm/virt-acpi-build.c | 5 ++++-
->  hw/arm/virt.c            | 7 +++----
->  hw/misc/pvpanic.c        | 1 +
->  3 files changed, 8 insertions(+), 5 deletions(-)
+>  hw/arm/sysbus-fdt.c |  2 ++
+>  hw/arm/virt.c       |  2 ++
+>  hw/misc/pvpanic.c   | 11 +++++++++--
+>  3 files changed, 13 insertions(+), 2 deletions(-)
 
+This looks rather odd. The sysbus-fdt.c code is for
+handling devices that we must pass through from the
+host system (including pulling in device tree fragments
+from the host). The pvpanic device isn't a host pass
+through device so I don't think it should be touching
+that code at all. It's just a simple MMIO device.
 
-> @@ -1330,6 +1328,9 @@ void virt_machine_done(Notifier *notifier, void *data)
->      struct arm_boot_info *info = &vms->bootinfo;
->      AddressSpace *as = arm_boot_address_space(cpu, info);
->
-> +    if (pvpanic_mmio()) {
-> +        create_pvpanic_device(vms);
-> +    }
->      /*
->       * If the user provided a dtb, we assume the dynamic sysbus nodes
->       * already are integrated there. This corresponds to a use case where
-> @@ -1551,8 +1552,6 @@ static void machvirt_init(MachineState *machine)
->
->      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
->
-> -    create_pvpanic_device(vms);
-> -
-
-Please don't make changes in on patch of a patchset
-and then undo them in a later patch. It makes the
-patchset harder to read and review.
+I suspect the reason you've done this is that you're
+trying to get "-device pvpanic" to work on the command
+line. I recommend not trying to get that to work.
+MMIO devices are not pluggable devices, and -device
+is not expected to work with them.
 
 thanks
 -- PMM

@@ -1,96 +1,96 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3728631wrt;
-        Fri, 30 Nov 2018 07:51:53 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XuKyb1TJhyscssAGE0pw/oCHPs5tOGJNTINCHaeiBItobbMmqQmy/QFMVQvKOJmoaoG3c7
-X-Received: by 2002:a25:5a0b:: with SMTP id o11-v6mr6047634ybb.52.1543593113576;
-        Fri, 30 Nov 2018 07:51:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543593113; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp3730752wrt;
+        Fri, 30 Nov 2018 07:54:25 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/XCRAb1AdM8P9SfFe2TRjFSKodFRPazurUZjmQDnO/ViWwXLNjb25WccY4F80t5omR4PPQO
+X-Received: by 2002:a25:a08a:: with SMTP id y10-v6mr5857409ybh.378.1543593265110;
+        Fri, 30 Nov 2018 07:54:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543593265; cv=none;
         d=google.com; s=arc-20160816;
-        b=ttjBH1cyU5mNyj3rL3sE/VUoWfLjnJHEtYXKMHmCixrJMtdCGY0q4/p/EFsmtkptHQ
-         gOJfFivpqxCB+/DfcOxYWfzivgXe0c/t3e6l4O9zZev5Xlc2ucHApSo6yzAFpU2/dzID
-         JLr6GsJENP6tXRmMq2vhuZlk+mtlhxuEFYR2oxbuBchSflycyn+C+G+7Xy0bCDtiBpDo
-         9LRzn0A48HihQ73NH7305wdv66WWlauYSZRHXjfy1jTzEGb64qlcl0a+/rhAb/c3PMas
-         9ZU8JmcaLV2Vr6NFrUi9nKpR6j068flZYoZEXAkRrKKaARV4d3++qM9wNWZ+EK8nR4lK
-         ZV+Q==
+        b=eUbfRP5dwmqdndNM1Mls+NaNZOSAv+tulzopbYHIlPMAAX9FVNwloSRPKU+Fblnz+J
+         ezSKqxBBLhRy5LoIjjsi3Ken//hsdYNRDIsRoFaqOKoXQ5rSvfNU/aRVlXuBxRXLZiDB
+         WimJ86E3WAFDHhC++UoALAjiDRfp6jdhtGDz+u4hlYVuH4HXf7nYs7bAWYFykh5qBUVe
+         nOq7JLAsrYgxhpDRK/3Xq/MD4569Y3SWIMl3YOd423AmmzLMPRnqXpi83YBLTxkeaBDf
+         TMfhEaFt1vW2Ea3qCVJD5jvSfxp+rpsrbGiur+cG91Y+TIVEWpiK/+UV+hfEGc9Mr2Xs
+         5lfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=pzHTXg1zBHih6DA7EudvDcfoqFZ4tw3oKKcI7yvarJk=;
-        b=iAydEAUjNCAsjbEjwbx9uLLYyJF1RDlBORInhM0DzrVAKLOzZ5ScG8lWaU3NDAMSji
-         7pi0CbnEzZI20UB2XB9GhdMt0uzxK0Vzxa8v1lH8G5RVYss04F3es8JKI0r/cJJTTVE/
-         JRGfT19Q+2/87W0lXOEpI1jjtHJQj2pIWVTyeaCcg1pDHCjryrBcyVkXawTYzOFA+dYl
-         3PO3p/mzVAPrhqYPGOum6TE3jS2hza0PNeCsc3HAm9jkgByWdV6K2X23ilicyRlASci2
-         Zi4iepXzUFmXzyziniAHnKW2v2PXyGc+4P1Ndwf2wEV3tu4sCQGwslZ9Bc5jEOLyT0qe
-         xPJA==
+        bh=g3VqBBLZrcIQDC9GG5PTQlbzzoYz66oFznqVQbnb0uo=;
+        b=Jm2qrwRiwrj4opa0A046fedzYtDLkygHqe80mKggNQLj+5iamzr4sQAY/6FU9nXXaL
+         YXnZGkFyzeOFfWuVrsJwcDpfr9+1/1VuH8jXEMzlPw/Q2iqRmRgeV0wVqUxD9OnBf1vZ
+         +M2wVXY7Sr+Jm4UsqabcrkDyaOOkf73f/rOoJlI30vgUgdPRW0e2hRa/UIbHh+wVcRTX
+         g7FEf+BV27UNTZAKDtISenT0i2BhP70nArD+rW2RILb1XgI0vUX4odIGUgzPkwq/X7Ob
+         xmuuogInTDfAkIZb2gCEjYCRqFD+IgbiZtNclCcc3T7P/mwTqIA/CE5LT4xqaovF+oq/
+         NGKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=S+pxTDnw;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AcHZ66Ma;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id 10-v6si3157556yww.167.2018.11.30.07.51.53
+        by mx.google.com with ESMTPS id b6-v6si3086400ybh.426.2018.11.30.07.54.24
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Nov 2018 07:51:53 -0800 (PST)
+        Fri, 30 Nov 2018 07:54:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=S+pxTDnw;
+       dkim=fail header.i=@linaro.org header.s=google header.b=AcHZ66Ma;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33476 helo=lists.gnu.org)
+Received: from localhost ([::1]:33487 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gSl56-0005dH-IY
-	for alex.bennee@linaro.org; Fri, 30 Nov 2018 10:51:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36272)
+	id 1gSl7Y-0008Gt-Fz
+	for alex.bennee@linaro.org; Fri, 30 Nov 2018 10:54:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37018)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gSl4r-0005bh-CX
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:51:38 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gSl7M-0008EW-5x
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:54:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gSl4q-0005YR-Jq
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:51:37 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:42807)
+	(envelope-from <peter.maydell@linaro.org>) id 1gSl7L-0007BU-Ad
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:54:12 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:45646)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gSl4q-0005Y7-E1
-	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:51:36 -0500
-Received: by mail-ot1-x344.google.com with SMTP id v23so5471699otk.9
-	for <qemu-arm@nongnu.org>; Fri, 30 Nov 2018 07:51:36 -0800 (PST)
+	id 1gSl7L-0007B5-3q
+	for qemu-arm@nongnu.org; Fri, 30 Nov 2018 10:54:11 -0500
+Received: by mail-oi1-x244.google.com with SMTP id b141so5074076oii.12
+	for <qemu-arm@nongnu.org>; Fri, 30 Nov 2018 07:54:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=pzHTXg1zBHih6DA7EudvDcfoqFZ4tw3oKKcI7yvarJk=;
-	b=S+pxTDnwBnH8IIFOe0700kgsZt4IUutiRGc+igMAPuXhSjJNrBNUzO5Khn4QsAeBa0
-	bZSaVtk4smgcPUbb+XKa9z5XqPlQO+VJ0o/yvDN0whLW2X5A6ZIo/rGBqnMSe/LfJWrk
-	LaQFY613uR1wakr4nyRg5sTDdrLnn1LH4OPcI=
+	:cc; bh=g3VqBBLZrcIQDC9GG5PTQlbzzoYz66oFznqVQbnb0uo=;
+	b=AcHZ66MaUnln9Ea1ISZKMaCbibhBuwxbs80B65KoLt9zbwGFKYLnck0Iqlrc/vWSZb
+	PwOfIBQVlvY759x1C+nuV2SEGDxmfFwuI9Yzxfsrt1tw9sZ/tJ5RUQk8b0l3SKL43oCX
+	pCUbmHj6IzDXfg5yCiLPWphvJosP0Sx6Anflk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=pzHTXg1zBHih6DA7EudvDcfoqFZ4tw3oKKcI7yvarJk=;
-	b=OAWeKiU1fi42vw0VHI6n3gl4d9plSnVfmxZTEOU7zOBdSD/20jPfPYZDSA/oqYXIPy
-	Q/BIIKuTlybiUZ90KtxU49fuKtF9sGuyleyWaWnKI16M4hj/faPXdx0RSIQvHkxDYr2N
-	Fle9vXnvER/RFv+utFHkHxEBt70YbP70FumkS/H3WehfzSZS6sX83KYptjLul45ILeSM
-	kwou3CA4WxyZakyiB8PoLyVOYwGuCygJUJMUdaDw77v5ydFgaDH45xVtZ/R0opmGMdwd
-	MtJtKzoIlDNwRv9HuY7xHA6IfkdBCooUz/h3BzZ04pMzR6mXRcgfXIi3DSBNo0ttqn3Z
-	OJKw==
-X-Gm-Message-State: AA+aEWbFMGuYWGqkdJ7HXBa1kdjNYwQ6aleKfuAwwT4rbaR77cQuux48
-	kUq7/w7tHIoafcsjkv+ZXBD3F5tBeujd8nFIHzeKWg==
-X-Received: by 2002:a9d:bf7:: with SMTP id 110mr3991759oth.201.1543593095833; 
-	Fri, 30 Nov 2018 07:51:35 -0800 (PST)
+	bh=g3VqBBLZrcIQDC9GG5PTQlbzzoYz66oFznqVQbnb0uo=;
+	b=P/KKs8zGz7mdhuhk07nonEHIU567cjo+DzyvZiaMrgKXGYLgEDsZGMjlzzI4g99Iji
+	2dkJ5IxIzyBv8MFnWmgXfTjj3nH+m2xZV/UumKFEDJsINoqZMSPEwZorXHMJhiaKq2X1
+	AClzp8NRSp5PQJTl7UcQFGHPhpjRqf6qI7Tp7UzrQ01zPaBVVZDSNkRrl8C/u1kDgkfS
+	r+7pxDq1aj21pKioxZYAQqoJoqr08qIrbvNzQU2fZXGFZCFPEmLJrn1wrVZkN0l1ctZC
+	rLtCT/JC6hPRcirHGiwbKo68+llZpzIIbfifeUgpN19t72P7oTiuFEvAIroovSfPjC5r
+	iWUg==
+X-Gm-Message-State: AA+aEWb8vD969cWv03wUqhpfd8huLkOFCNNpeoxp9TePlVavN0fUnK8o
+	oF8694ZInJZIkGUmLqN/xJjV/hCXXsuzSet4PsZEIw==
+X-Received: by 2002:aca:2dc9:: with SMTP id t192mr3807149oit.325.1543593250404;
+	Fri, 30 Nov 2018 07:54:10 -0800 (PST)
 MIME-Version: 1.0
 References: <1543407172-16175-1-git-send-email-peng.hao2@zte.com.cn>
-	<1543407172-16175-6-git-send-email-peng.hao2@zte.com.cn>
-In-Reply-To: <1543407172-16175-6-git-send-email-peng.hao2@zte.com.cn>
+	<1543407172-16175-9-git-send-email-peng.hao2@zte.com.cn>
+In-Reply-To: <1543407172-16175-9-git-send-email-peng.hao2@zte.com.cn>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Nov 2018 15:51:24 +0000
-Message-ID: <CAFEAcA_+JB43Q=O2jVZ6Rr1brawaH1QcmFWWQ2UXevdqr173fg@mail.gmail.com>
+Date: Fri, 30 Nov 2018 15:53:59 +0000
+Message-ID: <CAFEAcA91j803VhAKrey3pvHC+L139EGVvkN1rULbUD-JAFWBdA@mail.gmail.com>
 To: Peng Hao <peng.hao2@zte.com.cn>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-arm] [PATCH V10 5/9] hw/arm/virt: add pvpanic device in
- virt acpi table
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-arm] [PATCH V10 8/9] hw/misc/pvpanic: realize the
+ configure interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,58 +107,41 @@ Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
 	QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t8uK0fbX6DqI
+X-TUID: ieWXQEEKWMms
 
 On Wed, 28 Nov 2018 at 03:50, Peng Hao <peng.hao2@zte.com.cn> wrote:
 >
-> Add pvpanic device in virt acpi table, so when kenrel command line
-
-typo: "kernel". I'll leave it to the ACPI experts to review the
-meat of this patch.
-
-> uses acpi=force, kernel can get info from acpi table.
+> Add configure interface for pvpanic-mmio. In qemu command line
+> use -device pvpanic-mmio to enable the device.
 >
 > Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
 > ---
->  hw/arm/virt-acpi-build.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+>  hw/arm/virt-acpi-build.c | 5 ++++-
+>  hw/arm/virt.c            | 7 +++----
+>  hw/misc/pvpanic.c        | 1 +
+>  3 files changed, 8 insertions(+), 5 deletions(-)
+
+
+> @@ -1330,6 +1328,9 @@ void virt_machine_done(Notifier *notifier, void *data)
+>      struct arm_boot_info *info = &vms->bootinfo;
+>      AddressSpace *as = arm_boot_address_space(cpu, info);
 >
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 5785fb6..2adba60 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -84,6 +84,20 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->      aml_append(scope, dev);
->  }
+> +    if (pvpanic_mmio()) {
+> +        create_pvpanic_device(vms);
+> +    }
+>      /*
+>       * If the user provided a dtb, we assume the dynamic sysbus nodes
+>       * already are integrated there. This corresponds to a use case where
+> @@ -1551,8 +1552,6 @@ static void machvirt_init(MachineState *machine)
 >
-> +static void acpi_dsdt_add_pvpanic(Aml *scope, const MemMapEntry *pvpanic_memmap)
-> +{
-> +    Aml *dev = aml_device("PEVT");
-> +    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0001")));
-> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-> +
-> +    Aml *crs = aml_resource_template();
-> +    aml_append(crs, aml_memory32_fixed(pvpanic_memmap->base,
-> +                                       pvpanic_memmap->size, AML_READ_WRITE));
-> +
-> +    aml_append(dev, aml_name_decl("_CRS", crs));
-> +    aml_append(scope, dev);
-> +}
-> +
->  static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
->  {
->      Aml *dev = aml_device("FWCF");
-> @@ -771,6 +785,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
->      acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> +    acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
->      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
-> --
-> 1.8.3.1
+>      create_flash(vms, sysmem, secure_sysmem ? secure_sysmem : sysmem);
 >
+> -    create_pvpanic_device(vms);
+> -
+
+Please don't make changes in on patch of a patchset
+and then undo them in a later patch. It makes the
+patchset harder to read and review.
 
 thanks
 -- PMM

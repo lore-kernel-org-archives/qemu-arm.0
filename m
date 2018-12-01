@@ -1,96 +1,111 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4695647wrt;
-        Sat, 1 Dec 2018 04:05:26 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/XAfSV3ReWHhsa8M23W1tuSO9qWN1PRgDD1B8meMAcOisrsB2osIN62mBbBwALsFBvLWAIJ
-X-Received: by 2002:a0d:c306:: with SMTP id f6-v6mr9257996ywd.356.1543665926069;
-        Sat, 01 Dec 2018 04:05:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543665926; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp4807928wrt;
+        Sat, 1 Dec 2018 06:10:09 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/W4dGYIY5X/up+MEnU8xOoDxT6tbrnWRfCZC0cdHx+kV2qvytHe210A0oglm921bdqBWmsX
+X-Received: by 2002:a81:ae1b:: with SMTP id m27mr9636489ywh.159.1543673408990;
+        Sat, 01 Dec 2018 06:10:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543673408; cv=none;
         d=google.com; s=arc-20160816;
-        b=cwgFfCTotrFAQHW4k4T9lR9v6TKeNvNUQr8ljvr1wdDJEqmNI2XN5gGbolfvMg6wkj
-         /9WJeF/g1fj3WIL/vgqv/hu0EAi95Sw27tWaUHnAkRR0JYjYaxPfa8Bs9CYWplhcL+4Q
-         ZXwKuOWARugF41uNx4hqRGQF7VIq9Tn3f6ImSt2fsAYaaUMhxa2vYZSdZ844zdeAczoB
-         BO5hR8272WHJWdpaNKypiibgXJnji1R3LObuYytF1nPWHBLeMrg0YyLqdMztOGHSCRxC
-         W9T2PxycRTDuxfWrzej0CE/r2p4q596YeDZEbm8sTOw7hdG6rpsOTesfyLO1ioa9SlVq
-         jntw==
+        b=iYnY+0xiJ350JNs6q/gc+DWrAEQZIh5YbH4G+swVB8I6yWkzUk7amKd/tTnQ1VIGW2
+         Jmbk8IjEespRfj4EWJdZW0tBAyC1t/s50lRf0NHcmU4aPQq6Y+cnPDgEQHRhNrX01kf0
+         NVpmr7O0U4u5tZqlTLYfx3WGBYe4nnZtEHP+zA5X5gJEuKZ+rugbOJ+4aG9fiS1aXPIP
+         mJY561q97Q4Fzw2nRPdV+mTtKAUEEYTX6ga9gTN6C/U8B0WcqWNqfJPvL3YcI/HEEHPQ
+         hK4VXAWEQJa2Clpr44MrOhJL+CN6K4oBnt6oxKs2N057CEK1IbA6W2ZCkllcaUZ0G/Rn
+         40kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=eihTjDnGdFn3dD/GVopIa7vai10Y0+6h83aCf2K6jtc=;
-        b=WrfSdx1dEz+lCvcgcvIh5PW+ZtM/FsFXqjqq7ywp41AIcHTqtPQy5KND7JSn0qfofv
-         t6PEAhDrYLs9oWp4dCIaK/wGzCEGKcBMTeTPj7MkdZKwupr9MMt1FHOp+ULZZRnDDPv0
-         hJ/4NBQ78/wEr8cAABMOLkXEx3d79PSrpYONJwj9eZRrPvHT2BuN5xx4vzlPFmZ7ehAz
-         RXt+wae9IkSUXdmvLz5/mjyawZKrAqTY2qxt2XHVGmcir5LzThQnk1/G/EM3f4ui++b/
-         UXeoLSsE87RATcxTF/egBfBkDIKQAJLo5PeEQp0QG4mmozdSk/kAIYUr7QJa5YSTSMIZ
-         ItWw==
+         :list-unsubscribe:list-id:precedence:subject:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:dkim-signature;
+        bh=0rXyNv4jRGxCzRY+9DnztpGyqokX9H0w62jZrVVoTBU=;
+        b=CIw93YUCOIk1u9DL6uxoqsK8iSlY1ErumBFRdfXkzjPhIMLLatHwt0uhc2pbymSNoh
+         OJyQRYinli/0VCuwF5yv4eF9vHjkU0XGXaRmDmrt8a6xX7ZuCXr9xfNOpr8Mq1MxJsgZ
+         6AgsIA+ikFZBcvd3yjnIv5N8MkoF3AurmoEujAcyIeH/jFqN+rErDB+ziijC7RrxhDSd
+         QcT+RqldrCokhetUaOe1+3a3vyPQeK7++LDsxbU1fuj5953lCQdi1EArgKrSMmhWsNAs
+         1lTIR15CIhcRnqA3MvGCSg65nWCPMYSUE2NXklAUZS7O3Rk/mmUXou8vdZVi1gtn3RKG
+         p1nQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WnXa0jYl;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ddda+yST;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id d10si4851623ywe.426.2018.12.01.04.05.25
+        by mx.google.com with ESMTPS id h184-v6si4769277ybc.239.2018.12.01.06.10.08
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Sat, 01 Dec 2018 04:05:26 -0800 (PST)
+        Sat, 01 Dec 2018 06:10:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WnXa0jYl;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ddda+yST;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40949 helo=lists.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41434 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gT41V-0002Kd-Hz
-	for alex.bennee@linaro.org; Sat, 01 Dec 2018 07:05:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47679)
+	id 1gT5yC-0008QT-Dd
+	for alex.bennee@linaro.org; Sat, 01 Dec 2018 09:10:08 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41088)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gT41M-0002KN-AA
-	for qemu-arm@nongnu.org; Sat, 01 Dec 2018 07:05:17 -0500
+	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gT5y1-0008La-1y
+	for qemu-arm@nongnu.org; Sat, 01 Dec 2018 09:09:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gT41L-00057y-4E
-	for qemu-arm@nongnu.org; Sat, 01 Dec 2018 07:05:16 -0500
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37109)
+	(envelope-from <nicholas.a.hudson@gmail.com>) id 1gT5y0-000568-7E
+	for qemu-arm@nongnu.org; Sat, 01 Dec 2018 09:09:57 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53254)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gT41K-00057d-Vd
-	for qemu-arm@nongnu.org; Sat, 01 Dec 2018 07:05:15 -0500
-Received: by mail-oi1-x241.google.com with SMTP id y23so7092007oia.4
-	for <qemu-arm@nongnu.org>; Sat, 01 Dec 2018 04:05:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=eihTjDnGdFn3dD/GVopIa7vai10Y0+6h83aCf2K6jtc=;
-	b=WnXa0jYlCzIROCLeFe+zzNTkSUJRr5kux8uWZBT4MeiJou/gBF9ES6TYkkn+LVxyat
-	L3ZxKXr4UbjT2GoNIowpHEZM7h8Fl3M1zypx7SGO3vG5d9jDcXDzMTVMuF9b/v4Az9L5
-	Iz8rzVcBhfuOdVMPvh1ylZHsEfjR6r3w8qo6w=
+	(Exim 4.71) (envelope-from <nicholas.a.hudson@gmail.com>)
+	id 1gT5y0-00055S-0p; Sat, 01 Dec 2018 09:09:56 -0500
+Received: by mail-wm1-x343.google.com with SMTP id y1so1594777wmi.3;
+	Sat, 01 Dec 2018 06:09:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding:content-language;
+	bh=0rXyNv4jRGxCzRY+9DnztpGyqokX9H0w62jZrVVoTBU=;
+	b=ddda+ySTHM7UPlu43YaVRGgCvyL/09b4D5C7LF2h+ToQsCVMJTqVY1NwwVPCILbTw7
+	8FxZbVKBXAeQ0TQT6gApaSIg8cB+Ni3Oza59+RB9YhGik7lP0KlLB7dH/iISi5bfy+Df
+	v20QfJFKUUkt0nr732f4+DAUlRUpf2gH2qiF8ykc2qGh+gKSUGdkVQORyJ6mRGP+Skua
+	bgjmdoO2bAB80GJ6Ay5soIOVMdVjKyMJ770TqpEt2re1oT4UpnKPAUQ8KToWuFeKB1m8
+	35IZ+216lOpCG+0B4mWPePRrc17ywXVtbqvW36trqMNGqh7OmI00ZVJneDj/oMH8zmSz
+	Yyfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=eihTjDnGdFn3dD/GVopIa7vai10Y0+6h83aCf2K6jtc=;
-	b=RmR6JB5LV1rwJkDQJBIkibSUTWTZIYv8jzNINAZpP0uc/JY9zFvp5rnpfwHsVBUBmI
-	Txy5ppuDJDfcUCE5HyonwWdekvlHO2oGBOGanb7iWPOUouGgCVQJzrsKY5iDH3iJVfOk
-	f+qIP9zr40AzWuO56D/w8CBAOYFnRiD9BdHjpzIxf4V6nTaUO/KmBPOQGAvkO7RUWY3x
-	DYhWO7vZczt2yB9/MAqsS/ypP7q1pfWQatcOXHqarbGcn7MVoSSENgmk160hXoI2wIqh
-	9GrIECpcndVeuHWwT38ZjXTvQ1lyE7lH20ARmFjPKvl04M0slzKQPzcyWvMGfcbnxDXb
-	TAYw==
-X-Gm-Message-State: AA+aEWZRVVzr8jM+OH0FWccxGMrciHtDGNFskhz4vggtHznuBzFjbH/e
-	3p1ahLejDZdRKZae/weip3fPZRlRjuuqKHeC2gLueQ==
-X-Received: by 2002:aca:5c05:: with SMTP id q5mr5290127oib.146.1543665914233; 
-	Sat, 01 Dec 2018 04:05:14 -0800 (PST)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding
+	:content-language;
+	bh=0rXyNv4jRGxCzRY+9DnztpGyqokX9H0w62jZrVVoTBU=;
+	b=tz3t7cwfjGWIvAT8BmKBMpb/P32F0zA4+l1BoSCRzyKXDOmwe8/SzUznCCDFzEiHij
+	qJBeqb4dGAfYDQg9UMUipxj74WjbOZ9wOOzATvwOhH9RWrrHjpaGxZCo1SI7f3DPjZnk
+	JJn50xo99lqBnvP3B2jjDORpv+Aumfx4t0LFXmRaiPBtQy/J1/x6HdIulEdAkSWURooP
+	1B2+px4OeZfXPJMrYf+/eUrVCxVQ/EMyi2j831ROuwqRQjvghSfpFlH80O3NCQ97fkUU
+	md3WUkoahsQ4qE9zVIYIW/7rAKHl0WgeDDvDV1tIszlctIQ/GDwbUjDvMBuIHs0KPuW5
+	BmpQ==
+X-Gm-Message-State: AA+aEWYndhWWYZaTGnxYiNY9tGGBxwBzfFJgDvHYZ2opXiSSrfOCQ4JC
+	XRBB81NyzGet8lDxZ9yaezdjyUBwots=
+X-Received: by 2002:a1c:9513:: with SMTP id x19mr2312755wmd.112.1543673394622; 
+	Sat, 01 Dec 2018 06:09:54 -0800 (PST)
+Received: from ?IPv6:2a02:c7d:860f:7601:9c88:3870:2a8a:d4f5?
+	([2a02:c7d:860f:7601:9c88:3870:2a8a:d4f5])
+	by smtp.gmail.com with ESMTPSA id
+	w80sm1817776wme.38.2018.12.01.06.09.53
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 01 Dec 2018 06:09:54 -0800 (PST)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <fe1367d1-33f7-21fa-be84-20b9795a2157@gmail.com>
+	<CAFEAcA_K6S2pB6cP+RHDZjeACU_ROJ6jkkG-2h7TCyiCkejRug@mail.gmail.com>
+From: Nick Hudson <nicholas.a.hudson@gmail.com>
+Message-ID: <da2ed5e8-d01b-2887-6015-d26e44eae095@gmail.com>
+Date: Sat, 1 Dec 2018 14:09:52 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-References: <CAFEAcA9Od4vjo2EeEXhP1iE_XONaK8H22L9eq1qw3w6C2nR_cQ@mail.gmail.com>
-	<201812011728499706543@zte.com.cn>
-In-Reply-To: <201812011728499706543@zte.com.cn>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 1 Dec 2018 12:05:02 +0000
-Message-ID: <CAFEAcA-0DPo=4vzHtfD-bmAsfguOd7RiQUnHMpg0Q0e8aNZ_vA@mail.gmail.com>
-To: Peng Hao <peng.hao2@zte.com.cn>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA_K6S2pB6cP+RHDZjeACU_ROJ6jkkG-2h7TCyiCkejRug@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V10 7/9] hw/misc/pvpanic:
- preparing foradding configure interface
+X-Received-From: 2a00:1450:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH v2] Support u-boot noload images for arm as
+ used by, NetBSD/evbarm GENERIC kernel.
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,39 +117,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RPo+D2TIC37F
+X-TUID: CV8Ww4/GckEJ
 
-On Sat, 1 Dec 2018 at 09:28, <peng.hao2@zte.com.cn> wrote:
-> Peter Maydell wrote:
-> >This kind of thing is why a PCI device is cleaner -- it just
-> >works on any machine with a PCI controller, it by default is
-> >something that the user can provide if they want to and not if
-> >they don't, and it's not a custom UI that management layers
-> >might need to special-case. The guest does need to do a bit
-> >of PCI probing and setup initially, but then it can just leave
-> >the MMIO BAR permanently mapped and write to that address
-> >when the guest panics.
 
-> Usually, it doesn't matter if there is this pvpanic device or not, so I
-> haven't considered configurability from the beginning.
+On 30/11/2018 17:18, Peter Maydell wrote:
+> On Thu, 29 Nov 2018 at 20:22, Nick Hudson <nicholas.a.hudson@gmail.com> wrote:
+>> noload kernels are loaded with the u-boot image header and as a result
+>> the header size needs adding to the entry point.  Fake up a hdr so the
+>> kernel image is loaded at the right address and the entry point is
+>> adjusted appropriately.
+>>
+>> The bootloader fits in the space that the uboot header would have occupied.
+>>
+>> Update the load_uimage API to allow passing of load address when an image
+>> doesn't specify one.
+>>
+>> Signed-off-by: Nick Hudson <skrll@netbsd.org>
+>> ---
+>> diff --git a/include/hw/loader.h b/include/hw/loader.h
+>> index 67a0af84ac..10ff0ff76d 100644
+>> --- a/include/hw/loader.h
+>> +++ b/include/hw/loader.h
+>> @@ -163,7 +163,8 @@ int load_aout(const char *filename, hwaddr addr, int max_sz,
+>>   /** load_uimage_as:
+>>    * @filename: Path of uimage file
+>>    * @ep: Populated with program entry point. Ignored if NULL.
+>> - * @loadaddr: Populated with the load address. Ignored if NULL.
+>> + * @loadaddr: load address if none specified in the image. Populated with the
+>> + *            load address. Ignored if NULL.
+> This API change will break some existing users. For instance
+> hw/microblaze/boot.c does this:
+>              hwaddr uentry, loadaddr;
+>
+>              kernel_size = load_uimage(kernel_filename, &uentry, &loadaddr, 0,
+>                                        NULL, NULL);
 
-It matters to people who don't want it, because it increases
-the attack surface presented to the guest.
+I did a bit more digging and the same (ab)use of loadaddr to pass
 
->  I didn't expect you to strongly recommend the use of PCI devices.
-> Doing so is not just going to roll back some of the code in the kernel...
-> I'll think about your suggestions.
+a value is used by load_ramdisk{,_as}.  Hopefully, I can do the same
 
-My view on this hasn't changed since October:
-https://lists.nongnu.org/archive/html/qemu-devel/2018-10/msg03861.html
-if this really really needs to be an MMIO device then it can
-be done, but a PCI device is a much cleaner interface which
-is more widely usable than just the virt board.
+for kernel_noload?
 
-thanks
--- PMM
+
+
+> which is a legitimate use of the current API, but your changes will
+> mean that load_uboot_image() will be using an uninitialized
+> variable. Getting every call site that cares about the returned
+> result from loadaddr to also provide a valid default load
+> address as input is going to be really painful, so I think we
+> need to figure out an API for this function that doesn't
+> make the input (default load address) argument the same
+> parameter as the output (where we actually loaded the image)
+> argument.
+
+I have version 3 ready with fixing these callers.
+
+
+>
+> We should also make the load_uboot_image() function print an
+> error message if we don't load the file because it needs a
+> default load address and the caller didn't pass one
+> ("this image format cannot be loaded on this machine type",
+> or similar).
+Fixed in version 3.
+>
+> PS: our coding style wants {} on all if()s -- scripts/checkpatch.pl
+> can help catch this kind of nit.
+
+There are lots of errors from this without my changes :(
+
+
+> thanks
+> -- PMM
+
+
+Thanks,
+
+Nick
+

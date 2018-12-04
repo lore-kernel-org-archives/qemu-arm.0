@@ -1,71 +1,75 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8070078wrt;
-        Tue, 4 Dec 2018 05:30:40 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Uk3/zueLHnONVZrFW718sVMO0yYMIqKtefWQx5inuK6YPBaC0Akr0za9Xm0lFOE/bI5fFp
-X-Received: by 2002:ac8:2a06:: with SMTP id k6mr19658283qtk.245.1543930240501;
-        Tue, 04 Dec 2018 05:30:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543930240; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8070251wrt;
+        Tue, 4 Dec 2018 05:30:49 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/VyCTzmBdJkwtz5Pp7D11myRglwtDS3Nx3Ge/0fqOHUaM2WAakE3ctaHSq7jG6HRkgeH/BV
+X-Received: by 2002:a37:4f8a:: with SMTP id d132mr18211486qkb.17.1543930249306;
+        Tue, 04 Dec 2018 05:30:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543930249; cv=none;
         d=google.com; s=arc-20160816;
-        b=VH83fx83D4PTZCSCdJQsydsz8mZxjG8pAYCKOD8dqpMw2GxpWVYXCxJwPY5bJvjNhf
-         DpjJMuM+UncAk+0tlJFLENMvz11FOUOhCK0hiM0VF45PPNWGLzKclTOmotVEz92VrvXa
-         rvf83SgURGRkjocaxwZybVMRNUegDS90JsBegWCb48mBKP03ZTvMUs8SG07M7sVZ7f5I
-         N6q9tdm1zNwwSOznHxnJvgcnryImtcv6nH5dr9AUYnyyyAiRlddwk0D5dQpdbrVh5U+c
-         zsgYm90Ki7klOvsuxhNBHU/1UiKLSDQzF50eg4r7LbkUPum+4kZJv7CTpkN/TATtifKL
-         Ah9g==
+        b=G2Y1boSeYlr0sEd9u7m2bNjfgrqd/hPmRdXIBcgO3rF9L34JfL2EBKBsma90dr+d2b
+         15k47eveO6m9LImUhecG9E2MEwLQ+aO1SfyLj72lh+hjbnYF/jIZhofuey1Xwvwmb5fD
+         bJxPuAxxUL4bqVdI8BuKI3Z5A1ERwANxiQConFZ+r8HED0rDjRLHofn4dG/gSUrOgh+9
+         H9YUsNv2/8++PFaY/8T/P9a00npMLiZvVRdNZVizRH88CWfXLmkzwQDRCHjiQQ3ZBEy4
+         OhJzbM9blpLNLMgDHOWHK0rYK675MTMO0XJtZTobHAZQ8xfS1AoNRPgaGH68OxOk7mFJ
+         UWwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=uc8Sm2YkT2hhR55T9E46ZmY31pRXt1gvE10KJXVZll4=;
-        b=ntXldXI08ZDV5GDcJcxqE8f3x70LwYvcAdBSFADWCpJ7V4+gWwxKXtbOC6oC8x0BHL
-         sXO18cXk4tCcxWIEdFI5w3/r+m7wdyWugbkUJV1IURqfn1EGjP6dlL70Xtm0yvQ3KGKE
-         uNNqXK68qqZu1u8IY15XNwH+UP40VcgCvkmC30NY+y7N+gSxNlH++7qsMqUrnFeCOTwF
-         oyzEhOs6Sc8x3y9T573lMWj9cUk9LLdDSByuaYYFjOJ8T29ofSN95spWgvH/wktSVW3D
-         sncr8M356OTJw3T3CFSzetOEQVy4u8l6asLh7n4es+8ArnRIyM0AEiPUOEkQqN17/iey
-         lVow==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=dVUOj6WpfKVEYGsvW2icnxFYs7HyXKfbA4YvqKiZlg0=;
+        b=oyoaBiwV491FCIc+fG8nm3XFUlaZYxGo2ZRV1KOz7LfS4wPWnbsgxBwtvxGYR9BqVe
+         +caVNrwpvjeonSECtU7F7h+LBYb0dLN+DcjSGOjJpUEbrACKa/0vOv4fuehEb8WlUCZw
+         aH4FuMm3PqNCIO0n0D6mG/4uBPw9kFxYhOhnX5n1aJB2gBk8u+G20ZJjybEwxlBO39GK
+         Zge2icVbGEf3saxf9eJeVkcbUP7A/uryp8sG2G5cFAuyJlm4J7e5e/JlMTPbPGvjWCuK
+         4bLRigjPHOy7Vnj+uKPI2wAjzb0dMpBiGrOTnRF7fNhBlrWunk+JjVmkMOQ2c94oFTPT
+         lkvA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id g30si1816350qtk.14.2018.12.04.05.30.40
+        by mx.google.com with ESMTPS id l2si54883qtf.302.2018.12.04.05.30.49
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Dec 2018 05:30:40 -0800 (PST)
+        Tue, 04 Dec 2018 05:30:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56756 helo=lists.gnu.org)
+Received: from localhost ([::1]:56757 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUAmd-000812-KD
-	for alex.bennee@linaro.org; Tue, 04 Dec 2018 08:30:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58104)
+	id 1gUAmm-00086N-HG
+	for alex.bennee@linaro.org; Tue, 04 Dec 2018 08:30:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58102)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gUAm9-0007jJ-18
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:30:11 -0500
+	(envelope-from <pm215@archaic.org.uk>) id 1gUAm9-0007jH-0Z
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:30:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pm215@archaic.org.uk>) id 1gUAm2-0000wV-3n
+	(envelope-from <pm215@archaic.org.uk>) id 1gUAm6-00011j-Cc
 	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:30:08 -0500
 Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:53236)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
-	id 1gUAm1-0000pO-T1; Tue, 04 Dec 2018 08:30:02 -0500
+	id 1gUAm6-0000pO-4y; Tue, 04 Dec 2018 08:30:06 -0500
 Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
 	(envelope-from <pm215@archaic.org.uk>)
-	id 1gUAlt-0008BZ-1w; Tue, 04 Dec 2018 13:29:53 +0000
+	id 1gUAlu-0008C3-3R; Tue, 04 Dec 2018 13:29:54 +0000
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue,  4 Dec 2018 13:29:47 +0000
-Message-Id: <20181204132952.2601-1-peter.maydell@linaro.org>
+Date: Tue,  4 Dec 2018 13:29:49 +0000
+Message-Id: <20181204132952.2601-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.19.2
+In-Reply-To: <20181204132952.2601-1-peter.maydell@linaro.org>
+References: <20181204132952.2601-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2001:8b0:1d0::2
-Subject: [Qemu-arm] [PATCH 0/5] arm: five simple memory leak fixes
+Subject: [Qemu-arm] [PATCH 2/5] hw/arm/mps2-tz.c: Free mscname string in
+ make_dma()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,37 +84,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: patches@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lrTxd8S5mhh9
+X-TUID: 5rFNefoi3tps
 
-I ran 'make check' with the clang sanitizers enabled, which
-it turns out these days includes LeakSanitizer. That points
-out a fair number of memory leaks, most of which are not
-terribly significant. This patchset fixes five of them (there
-are plenty more to do).
+The clang leak sanitizer spots a (one-off, trivial) memory
+leak in make_dma() due to a missing free.
 
-The "device does timer_new() in its instance_init function"
-leak seems to be a common one with multiple other devices
-showing up as having the same problem. Switching timer_init()
-is probably a nicer fix than just moving timer_new() to realize,
-but I wasn't sure if going from VMSTATE_TIMER_PTR to
-VMSTATE_TIMER would be a migration compat break.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/mps2-tz.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-thanks
--- PMM
-
-Peter Maydell (5):
-  target/arm: Free name string in ARMCPRegInfo hashtable entries
-  hw/arm/mps2-tz.c: Free mscname string in make_dma()
-  hw/sd/sdhci: Don't leak memory region in sdhci_sysbus_realize()
-  tests/test-arm-mptimer: Don't leak string memory
-  target/arm: Create timers in realize, not init
-
- hw/arm/mps2-tz.c         |   1 +
- hw/sd/sdhci.c            |   5 +-
- target/arm/cpu.c         |  33 ++++++---
- tests/test-arm-mptimer.c | 153 ++++++++++++++++++---------------------
- 4 files changed, 95 insertions(+), 97 deletions(-)
-
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index 6dd02ae47e8..82b1d020a58 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -322,6 +322,7 @@ static MemoryRegion *make_dma(MPS2TZMachineState *mms, void *opaque,
+     sysbus_connect_irq(s, 2, qdev_get_gpio_in_named(iotkitdev,
+                                                     "EXP_IRQ", 57 + i * 3));
+ 
++    g_free(mscname);
+     return sysbus_mmio_get_region(s, 0);
+ }
+ 
 -- 
 2.19.2
 

@@ -1,86 +1,95 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8287778wrt;
-        Tue, 4 Dec 2018 08:46:13 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/UkX94eh4sqJtVbHq0Gd8NZiAUhjM99w3GCYeX4BTKpcxI00Xc/1zMvjWCmGCdmOKpsa8no
-X-Received: by 2002:ac8:44d3:: with SMTP id b19mr20787065qto.107.1543941973135;
-        Tue, 04 Dec 2018 08:46:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543941973; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8416797wrt;
+        Tue, 4 Dec 2018 10:44:02 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Vb2OI5MkIUgFy3I3siwHYPJ9yKXyGCoA7dJVJy8urNONpv0wlHyniLU3Qeuf46XvuU57iC
+X-Received: by 2002:a0c:d40f:: with SMTP id t15mr21132735qvh.117.1543949042438;
+        Tue, 04 Dec 2018 10:44:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543949042; cv=none;
         d=google.com; s=arc-20160816;
-        b=lKE4keSZQ5LMN+E/r2bJ3Pnadgp/UyNMhdDYUNpzdAyrMjGmwy9kq9pw4y6iJ6/9xw
-         Jod7Z2lzJpN65G+QZAP1dIt3rpq0F5C1i7u+qQsJR3gOf2OX8+QbibXmR/AxkDVZAxqv
-         BTei/PapAL0AlvHnQEU9XLlVbUpSnguH6einZmdRIK2K3gU/RSbR1j4PgV+KSPiHQDa9
-         b6azpntGswfHA5sATOIuBP6yldrXpwPi8BPBSI48Gj57kgW82HCTXaa8lh2Kvw3t1ycn
-         4OMOLho5GEu0t2MuhmJRiU5NAslsHRXL9gAQ/bo+SAAdSdlbGkq6pNoJbe8mpQKpDKjl
-         Xrag==
+        b=cBnh0U0iAdk4mHH+P4CVxmLIloh3/vzd6lP4xxNOk9VBp5+1lkiitTinsQ5PPVxG20
+         NSYlIm74deHRNPxJwH98Q8vpc05ooOgJGstsM/aGFucEJWAtvQBIXMBfj0vBc2gPGyzj
+         dpRGQ9h57g+5BkXk7fq68boiHYaS2NC9s/u2n4Z17rHOj43i+nH3bGj0mi+a/aioxrPr
+         JrOfKLcXg0VQH1x/5jSSU1x5LppIilRRtal3lyYYG98A1hiqmcO9THACHpAEZexcbB5J
+         BwwzmUlGFNNm7xCt7R9vOmiz+ztN/lSG/Y45kzbnzKfzjFgTz/OyRLVp83HiSj0ooCoY
+         wSyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=GBvv2K4xjkeIPe+S9l/2/PJpVux6cAqrIu9mUK+nK7g=;
-        b=Mpntvb+bvojLDzwsygK2K0OEEvW6xqjwZVLRIos/WxTTK7PD0d1kiJhGSwWaE2xMm6
-         B+CO9sHF+tqcuynuaMLcUfRoP8lzPym8v771dyee8OZe3SQd2JsFS9NbO3+5VFxbyJx3
-         U8N6hCGSD9dLq0J3fm1HWbK3OrhE01omTJenHMiGvAh4fFj1hacBBomuieXBs4AWx5ci
-         zotj8UevVbwqRGH84Gyavp4pSH2Qh60tDJ17Z07Wj5YFou3gov/QG0UEPAeUL84opvN2
-         GOqvp2HTuwnQ3FQ7vr6rqN/9z03zLalRzUP5OKXulE1pcKLFE2peAzW1kph4Lm2eiZp8
-         GSBA==
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=BHDmoWNGVSg33lkojF1J5ddpx0x32yzGQjK6DiC9wO4=;
+        b=qG2jB2wS6XPyMHLeGQxhWKkg6Jz3UrrkkZZj488LNwjcpLrkZdjN17bPpjDQsHfy3l
+         h71hGUX9Nx0ds/3bsSUaiX8ny8I0imjlbevLpLo6KD/kIf8ceVbsiwXDCtpv7fzV6Xut
+         j7JyPYuH6LZwp70uZMWrTxISlaxsGebQJ8TxCKr7gcbTFW4RthS/6rJGn8erTY6Y2nd5
+         AFzPjeyY4iRcfAAF2jow+qS8A7/YV7ferxX3KKYT6aqUlXlmFUjbqyOzmnIFMy9bwSv9
+         6FTFhCXilZvaGbCwywXLH9yb0Z7f19DPRGoF35NINt6KnF8fxeNT8+/URCCTIwJxDk9r
+         VK4g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id j13si525825qtk.203.2018.12.04.08.46.12
+        by mx.google.com with ESMTPS id p33si2807118qte.43.2018.12.04.10.44.02
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Dec 2018 08:46:13 -0800 (PST)
+        Tue, 04 Dec 2018 10:44:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57862 helo=lists.gnu.org)
+Received: from localhost ([::1]:58474 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUDps-0004lu-HW
-	for alex.bennee@linaro.org; Tue, 04 Dec 2018 11:46:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39253)
+	id 1gUFft-0001aI-Jz
+	for alex.bennee@linaro.org; Tue, 04 Dec 2018 13:44:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48625)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gUDnG-0001Fb-Hn
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 11:43:33 -0500
+	(envelope-from <ehabkost@redhat.com>) id 1gUFfh-0001Z0-VH
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 13:43:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gUDn6-0000zm-Tr
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 11:43:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40226)
+	(envelope-from <ehabkost@redhat.com>) id 1gUFfd-0007XL-SI
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 13:43:50 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53950)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gUDn2-0000qw-Hs; Tue, 04 Dec 2018 11:43:18 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1gUFfd-0007Wx-KV; Tue, 04 Dec 2018 13:43:45 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 91F0B96E9;
-	Tue,  4 Dec 2018 16:43:12 +0000 (UTC)
-Received: from localhost (unknown [10.40.205.13])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 415557F1BF;
-	Tue,  4 Dec 2018 16:43:07 +0000 (UTC)
-Date: Tue, 4 Dec 2018 17:43:05 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Message-ID: <20181204174305.34a8644d@redhat.com>
-In-Reply-To: <20181204151052.otrsahh4dqehiwif@kamzik.brq.redhat.com>
-References: <20181130130032.11835-1-sameo@linux.intel.com>
-	<20181130130032.11835-9-sameo@linux.intel.com>
-	<20181204151052.otrsahh4dqehiwif@kamzik.brq.redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id BD1A53001572;
+	Tue,  4 Dec 2018 18:43:44 +0000 (UTC)
+Received: from localhost (ovpn-116-33.gru2.redhat.com [10.97.116.33])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 293E11948B;
+	Tue,  4 Dec 2018 18:43:36 +0000 (UTC)
+Date: Tue, 4 Dec 2018 16:43:35 -0200
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20181204184335.GF18284@habkost.net>
+References: <20181127125644.GB18284@habkost.net>
+	<CAMxuvaySoJ2TokV8M81CVU3Hp4dC25c+PW_p2kk+V88-88U-CQ@mail.gmail.com>
+	<20181127133527.GI18284@habkost.net>
+	<20181128184027.7d584eaa@redhat.com>
+	<CAJ+F1CK5NkgsJWFGZ7kvR81KyeOPE_ytk=tOjKqTUGtbfywmJQ@mail.gmail.com>
+	<20181129175055.GQ18284@habkost.net>
+	<CAJ+F1CJBKVibRrgjiNKjSJ5ufK=CUodx26aHnKzeL3Cs7adbeA@mail.gmail.com>
+	<20181130115526.5974ca7a@redhat.com>
+	<20181130114142.GV18284@habkost.net>
+	<20181204141724.5f06bd1b@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20181204141724.5f06bd1b@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 04 Dec 2018 16:43:12 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.46]);
+	Tue, 04 Dec 2018 18:43:44 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 8/8] hw: acpi: Remove
- AcpiRsdpDescriptor and fix tests
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v4 16/28] hw: apply
+ machine compat properties without touching globals
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,218 +101,203 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	Samuel Ortiz <sameo@linux.intel.com>, Ben Warren <ben@skyportsystems.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
-	Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, QEMU <qemu-devel@nongnu.org>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Qemu-s390x list <qemu-s390x@nongnu.org>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uqlOmmJRnRhE
+X-TUID: c08OV47gbZx6
 
-On Tue, 4 Dec 2018 16:10:52 +0100
-Andrew Jones <drjones@redhat.com> wrote:
+On Tue, Dec 04, 2018 at 02:17:24PM +0100, Igor Mammedov wrote:
+> On Fri, 30 Nov 2018 09:41:42 -0200
+> Eduardo Habkost <ehabkost@redhat.com> wrote:
+>=20
+> > On Fri, Nov 30, 2018 at 11:55:26AM +0100, Igor Mammedov wrote:
+> > > On Fri, 30 Nov 2018 01:36:03 +0400
+> > > Marc-Andr=E9 Lureau <marcandre.lureau@gmail.com> wrote:
+> > >  =20
+> > > > Hi
+> > > >=20
+> > > > On Thu, Nov 29, 2018 at 9:51 PM Eduardo Habkost <ehabkost@redhat.=
+com> wrote: =20
+> > > > >
+> > > > > On Thu, Nov 29, 2018 at 02:32:18PM +0400, Marc-Andr=E9 Lureau w=
+rote:   =20
+> > > > > > Hi
+> > > > > > On Wed, Nov 28, 2018 at 9:53 PM Igor Mammedov <imammedo@redha=
+t.com> wrote:   =20
+> > > > > > >
+> > > > > > > On Tue, 27 Nov 2018 11:35:27 -0200
+> > > > > > > Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > > > > > >   =20
+> > > > > > > > On Tue, Nov 27, 2018 at 05:10:05PM +0400, Marc-Andr=E9 Lu=
+reau wrote:   =20
+> > > > > > > > > On Tue, Nov 27, 2018 at 4:57 PM Eduardo Habkost <ehabko=
+st@redhat.com> wrote:   =20
+> > > > > > > > > >
+> > > > > > > > > > On Tue, Nov 27, 2018 at 01:27:49PM +0400, Marc-Andr=E9=
+ Lureau wrote:   =20
+> > > > > > > > > > > Similarly to accel properties, move compat properti=
+es out of globals
+> > > > > > > > > > > registration, and apply the machine compat properti=
+es during
+> > > > > > > > > > > device_post_init().
+> > > > > > > > > > >
+> > > > > > > > > > > Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lurea=
+u@redhat.com>   =20
+> > > > > > > > > > [...]   =20
+> > > > > > > > > > > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> > > > > > > > > > > index 7066d28271..3b31b2c025 100644
+> > > > > > > > > > > --- a/hw/core/qdev.c
+> > > > > > > > > > > +++ b/hw/core/qdev.c
+> > > > > > > > > > > @@ -971,17 +971,26 @@ static void device_initfn(Obj=
+ect *obj)
+> > > > > > > > > > >  }
+> > > > > > > > > > >
+> > > > > > > > > > >  static const GPtrArray *ac_compat_props;
+> > > > > > > > > > > +static const GPtrArray *mc_compat_props;   =20
+> > > > > > > why you didn't use just 'compat_props' for both?
+> > > > > > > (it would be cleaner have single registry for compat
+> > > > > > > properties, and the place that takes care of registration
+> > > > > > > will take care of necessary ordering)   =20
+> > > > > >
+> > > > > > There are two arrays, one from the accelerator class, the oth=
+er from
+> > > > > > the machine class. We can't make it a singleton (all compats =
+props for
+> > > > > > the various machines would be mixed).
+> > > > > >
+> > > > > > We could create a third array that would be the set of both, =
+but that
+> > > > > > would require more copy/allocation.   =20
+> > > > >
+> > > > > I am failing to see the advantage of replacing the `global_prop=
+s`
+> > > > > static variable from qdev-properties.c with a collection of
+> > > > > separate static variables scattered around the code.  I thought
+> > > > > the main point of the changes was to reduce the amount of
+> > > > > duplicate data stored in static variables. =20
+> > > Main point was to use compats for backends then on top of that=20
+> > > we added split global from compat properties goal.
+> > >  =20
+> > > > > I was expecting something like this:
+> > > > >
+> > > > > accel.c:
+> > > > >
+> > > > >   void accel_apply_compat_props(AccelState *accel, Object *obj)
+> > > > >   {
+> > > > >       object_apply_global_props(obj, ACCEL_GET_CLASS(accel)->co=
+mpat_props, &error_abort);
+> > > > >   }
+> > > > >
+> > > > > machine.c:
+> > > > >
+> > > > >   /* Apply compat properties and global properties to an object=
+ */
+> > > > >   void machine_apply_compat_props(MachineState *ms, Object *obj=
+)
+> > > > >   {
+> > > > >       accel_apply_compat_props(ms->accel, obj);
+> > > > >       object_apply_global_props(obj, MACHINE_GET_CLASS(ms)->com=
+pat_props, &error_abort);
+> > > > >   }
+> > > > >
+> > > > > compat-props.c:
+> > > > >
+> > > > >   static void object_apply_compat_props(Object *obj)
+> > > > >   {
+> > > > >       MachineState *machine =3D MACHINE(qdev_get_machine());
+> > > > >       machine_apply_compat_props(machine, obj);
+> > > > >   }
+> > > > >
+> > > > > qdev.c:
+> > > > >
+> > > > >   static void device_post_init(Object *obj)
+> > > > >   {
+> > > > >       object_apply_compat_props(obj);
+> > > > >       apply_user_provided_globals(obj);
+> > > > >   }
+> > > > >
+> > > > > object_interface.c:
+> > > > >
+> > > > >   void user_creatable_complete(Object *obj, Error **errp)
+> > > > >   {
+> > > > >       object_apply_compat_props(obj);
+> > > > >       ...
+> > > > >       ucc->complete(...)
+> > > > >   }
+> > > > >   =20
+> > > >=20
+> > > > I like that solution too (which you also proposed in the other
+> > > > thread). But we have to decide whether it's acceptable to referen=
+ce
+> > > > MachineState, or if the compat properties should be registered. =20
+> > > I dislike pulling in machine into basic object code and
+> > > I think a separate compats would be cleaner interface without
+> > > layer violation. But to unstuck, lets go with qdev_get_machine()
+> > > for now. =20
+> >=20
+> > Which basic object code?  The only reference to machine above is
+> > at compat-props.c.  I don't see any layering violation here.
+> I see compat properties as just a set of arbitrary properties
+> that's applied to objects depending on configuration.
+> Which currently includes machine version and accel type
+> but in no way inherently tied to them.
 
-> On Fri, Nov 30, 2018 at 02:00:32PM +0100, Samuel Ortiz wrote:
-> > The only remaining AcpiRsdpDescriptor users are the ACPI utils for the
-> > BIOS table tests.
-> > We remove that dependency and can thus remove the structure itself.
-> > 
-> > Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
-> > ---
-> >  include/hw/acpi/acpi-defs.h | 13 -----------
-> >  tests/acpi-utils.h          |  4 +++-
-> >  tests/acpi-utils.c          | 46 ++++++++++++++++++++++++++++++-------
-> >  tests/bios-tables-test.c    | 21 +++++++++++++----
-> >  tests/vmgenid-test.c        |  8 ++++---
-> >  5 files changed, 62 insertions(+), 30 deletions(-)
-> > 
-> > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> > index 8425ecb8c6..5021cb9e79 100644
-> > --- a/include/hw/acpi/acpi-defs.h
-> > +++ b/include/hw/acpi/acpi-defs.h
-> > @@ -40,19 +40,6 @@ enum {
-> >      ACPI_FADT_F_LOW_POWER_S0_IDLE_CAPABLE,
-> >  };
-> >  
-> > -struct AcpiRsdpDescriptor {        /* Root System Descriptor Pointer */
-> > -    uint64_t signature;              /* ACPI signature, contains "RSD PTR " */
-> > -    uint8_t  checksum;               /* To make sum of struct == 0 */
-> > -    uint8_t  oem_id [6];             /* OEM identification */
-> > -    uint8_t  revision;               /* Must be 0 for 1.0, 2 for 2.0 */
-> > -    uint32_t rsdt_physical_address;  /* 32-bit physical address of RSDT */
-> > -    uint32_t length;                 /* XSDT Length in bytes including hdr */
-> > -    uint64_t xsdt_physical_address;  /* 64-bit physical address of XSDT */
-> > -    uint8_t  extended_checksum;      /* Checksum of entire table */
-> > -    uint8_t  reserved [3];           /* Reserved field must be 0 */
-> > -} QEMU_PACKED;
-> > -typedef struct AcpiRsdpDescriptor AcpiRsdpDescriptor;
-> > -
-> >  typedef struct AcpiRsdpData {
-> >      uint8_t oem_id[6]; /* OEM identification */
-> >      uint8_t revision;  /* Must be 0 for 1.0, 2 for 2.0 */
-> > diff --git a/tests/acpi-utils.h b/tests/acpi-utils.h
-> > index ac52abd0dd..4f4899deb5 100644
-> > --- a/tests/acpi-utils.h
-> > +++ b/tests/acpi-utils.h
-> > @@ -82,6 +82,8 @@ typedef struct {
-> >  
-> >  uint8_t acpi_calc_checksum(const uint8_t *data, int len);
-> >  uint32_t acpi_find_rsdp_address(void);
-> > -void acpi_parse_rsdp_table(uint32_t addr, AcpiRsdpDescriptor *rsdp_table);
-> > +uint32_t acpi_get_rsdt_address(uint8_t *rsdp_table);
-> > +uint64_t acpi_get_xsdt_address(uint8_t *rsdp_table);
-> > +void acpi_parse_rsdp_table(uint32_t addr, uint8_t *rsdp_table);
-> >  
-> >  #endif  /* TEST_ACPI_UTILS_H */
-> > diff --git a/tests/acpi-utils.c b/tests/acpi-utils.c
-> > index 41dc1ea9b4..d07f7487e2 100644
-> > --- a/tests/acpi-utils.c
-> > +++ b/tests/acpi-utils.c
-> > @@ -52,14 +52,44 @@ uint32_t acpi_find_rsdp_address(void)
-> >      return off;
-> >  }
-> >  
-> > -void acpi_parse_rsdp_table(uint32_t addr, AcpiRsdpDescriptor *rsdp_table)
-> > +uint32_t acpi_get_rsdt_address(uint8_t *rsdp_table)
-> >  {
-> > -    ACPI_READ_FIELD(rsdp_table->signature, addr);
-> > -    ACPI_ASSERT_CMP64(rsdp_table->signature, "RSD PTR ");
-> > +    uint32_t rsdt_physical_address;
-> >  
-> > -    ACPI_READ_FIELD(rsdp_table->checksum, addr);
-> > -    ACPI_READ_ARRAY(rsdp_table->oem_id, addr);
-> > -    ACPI_READ_FIELD(rsdp_table->revision, addr);
-> > -    ACPI_READ_FIELD(rsdp_table->rsdt_physical_address, addr);
-> > -    ACPI_READ_FIELD(rsdp_table->length, addr);
-> > +    memcpy(&rsdt_physical_address, &rsdp_table[16 /* RsdtAddress offset */], 4);
-> > +    return le32_to_cpu(rsdt_physical_address);
-> > +}
-> > +
-> > +uint64_t acpi_get_xsdt_address(uint8_t *rsdp_table)
-> > +{
-> > +    uint64_t xsdt_physical_address;
-> > +    uint8_t revision = rsdp_table[15 /* Revision offset */];
-> > +
-> > +    /* We must have revision 2 if we're looking for an XSDT pointer */
-> > +    g_assert(revision == 2);
-> > +
-> > +    memcpy(&xsdt_physical_address, &rsdp_table[24 /* XsdtAddress offset */], 8);
-> > +    return le64_to_cpu(xsdt_physical_address);
-> > +}
-> > +
-> > +void acpi_parse_rsdp_table(uint32_t addr, uint8_t *rsdp_table)
-> > +{
-> > +    uint8_t revision;
-> > +
-> > +    /* Read mandatory revision 0 table data (20 bytes) first */
-> > +    memread(addr, rsdp_table, 20);
-> > +    revision = rsdp_table[15 /* Revision offset */];
-> > +
-> > +    switch (revision) {
-> > +    case 0: /* ACPI 1.0 RSDP */
-> > +        break;
-> > +    case 2: /* ACPI 2.0+ RSDP */
-> > +        /* Read the rest of the RSDP table */
-> > +        memread(addr + 20, rsdp_table + 20, 16);
-> > +        break;
-> > +    default:
-> > +        g_assert_not_reached();
-> > +    }
-> > +
-> > +    ACPI_ASSERT_CMP64(*((uint64_t *)(rsdp_table)), "RSD PTR ");
-> >  }
-> > diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> > index d661d9be62..8749b77b36 100644
-> > --- a/tests/bios-tables-test.c
-> > +++ b/tests/bios-tables-test.c
-> > @@ -27,7 +27,7 @@ typedef struct {
-> >      const char *machine;
-> >      const char *variant;
-> >      uint32_t rsdp_addr;
-> > -    AcpiRsdpDescriptor rsdp_table;
-> > +    uint8_t rsdp_table[36 /* ACPI 2.0+ RSDP size */];
-> >      AcpiRsdtDescriptorRev1 rsdt_table;
-> >      uint32_t dsdt_addr;
-> >      uint32_t facs_addr;
-> > @@ -85,19 +85,30 @@ static void test_acpi_rsdp_address(test_data *data)
-> >  
-> >  static void test_acpi_rsdp_table(test_data *data)
-> >  {
-> > -    AcpiRsdpDescriptor *rsdp_table = &data->rsdp_table;
-> > +    uint8_t *rsdp_table = data->rsdp_table, revision;
-> >      uint32_t addr = data->rsdp_addr;
-> >  
-> >      acpi_parse_rsdp_table(addr, rsdp_table);
-> > +    revision = rsdp_table[15 /* Revision offset */];
-> >  
-> > -    /* rsdp checksum is not for the whole table, but for the first 20 bytes */
-> > -    g_assert(!acpi_calc_checksum((uint8_t *)rsdp_table, 20));
-> > +    switch (revision) {
-> > +    case 0: /* ACPI 1.0 RSDP */
-> > +        /* With rev 1, checksum is only for the first 20 bytes */
-> > +        g_assert(!acpi_calc_checksum(rsdp_table,  20));
-> > +        break;
-> > +    case 2: /* ACPI 2.0+ RSDP */
-> > +        /* With revision 2, we have 2 checksums */
-> > +        g_assert(!acpi_calc_checksum(rsdp_table, 20));
-> > +        g_assert(!acpi_calc_checksum(rsdp_table, 36));  
-> 
-> Missing break. I guess this wasn't yet tested with ACPI 2.0+?
-> Are we going to extend the tests to do that?
-I'm working on adding arm/virt board to these tests,
-so that will use this 2.0 path
+I understand you want to have a more generic abstraction layer,
+but my question is: why do we need it?  I still don't see which
+problems it would solve.
 
-> 
-> > +    default:
-> > +        g_assert_not_reached();
-> > +    }
-> >  }
-> >  
-> >  static void test_acpi_rsdt_table(test_data *data)
-> >  {
-> >      AcpiRsdtDescriptorRev1 *rsdt_table = &data->rsdt_table;
-> > -    uint32_t addr = le32_to_cpu(data->rsdp_table.rsdt_physical_address);
-> > +    uint32_t addr = acpi_get_rsdt_address(data->rsdp_table);
-> >      uint32_t *tables;
-> >      int tables_nr;
-> >      uint8_t checksum;
-> > diff --git a/tests/vmgenid-test.c b/tests/vmgenid-test.c
-> > index 0a6fb55f2e..97219ae86c 100644
-> > --- a/tests/vmgenid-test.c
-> > +++ b/tests/vmgenid-test.c
-> > @@ -35,7 +35,7 @@ static uint32_t acpi_find_vgia(void)
-> >  {
-> >      uint32_t rsdp_offset;
-> >      uint32_t guid_offset = 0;
-> > -    AcpiRsdpDescriptor rsdp_table;
-> > +    uint8_t rsdp_table[36 /* ACPI 2.0+ RSDP size */];
-> >      uint32_t rsdt, rsdt_table_length;
-> >      AcpiRsdtDescriptorRev1 rsdt_table;
-> >      size_t tables_nr;
-> > @@ -52,9 +52,11 @@ static uint32_t acpi_find_vgia(void)
-> >  
-> >      g_assert_cmphex(rsdp_offset, <, RSDP_ADDR_INVALID);
-> >  
-> > -    acpi_parse_rsdp_table(rsdp_offset, &rsdp_table);
-> > +    acpi_parse_rsdp_table(rsdp_offset, rsdp_table);
-> > +
-> > +    rsdt = acpi_get_rsdt_address(rsdp_table);
-> > +    g_assert(rsdt);
-> >  
-> > -    rsdt = le32_to_cpu(rsdp_table.rsdt_physical_address);
-> >      /* read the header */
-> >      ACPI_READ_TABLE_HEADER(&rsdt_table, rsdt);
-> >      ACPI_ASSERT_CMP(rsdt_table.signature, "RSDT");
-> > -- 
-> > 2.19.2
-> > 
-> >  
-> 
-> Besides the missing break
-> 
-> Reviewed-by: Andrew Jones <drjones@redhat.com>
-> 
+>=20
+> As for layering violation, we do it in device model cases
+> as it's machine related (ugly 'acceptable' but helps to cut corners)
+> and with new interface it will be used wit backends which are not
+> machine related at all.
 
+I don't see why it's ugly to have QEMU backend object code use
+machine core code.  What problems does it cause?
+
+
+>=20
+> Doing like you suggest would make it usable with current machine
+> initialization order (with some fixes) but if one would consider
+> a bit earlier time (preconfig time) and creating machine step by
+> step from there it might be less usable (as it needs machine instance,
+> it still would be possible but probably more tricky (pure speculation))=
+.
+
+I agree that this is a problem: we really have a
+backend -> compat_props -> current_machine dependency chain here.
+
+Using a registration mechanism that copies data, the dependency
+would still exists, but be implicit in the initialization
+ordering.  Then the system would silently break as soon as we
+reorder the code.
+
+>=20
+> So I'd vote for abstracted from machine compat props that could be
+> called from any object that implements interface and explicit
+> compats registration (like we do now) and explicit registration failure
+> if compats happend to be applied to any object. But in case of this
+> series I'm fine with any approach just to get compat properties work
+> with backends for now.
+
+Thanks.  I agree we'll want to refactor this later.  We may want
+to be able to apply compat properties to backend objects before
+creating machine and accel instances.
+
+Or maybe we will want to apply only MachineClass::compat_props to
+backend objects, and not AccelClass::compat_props?  This is not
+clear to me yet.
+
+--=20
+Eduardo

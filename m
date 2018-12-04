@@ -1,135 +1,167 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8027309wrt;
-        Tue, 4 Dec 2018 04:50:09 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/X+50+eKmHhnu7fLhPcAxw6Lo9gckXkLiiE5jqJO5+I0vMze2Bd7tLoRQ8KiIJqLmO+sYkk
-X-Received: by 2002:a37:9584:: with SMTP id x126mr18391671qkd.36.1543927809081;
-        Tue, 04 Dec 2018 04:50:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543927809; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8035992wrt;
+        Tue, 4 Dec 2018 05:00:17 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/Wb9jv5YfEJ0iZX/s8twCx4d2POKOlvuChO3uqP2NfBrJTTFgHbdam1IjG3YV2PXxJs5Pws
+X-Received: by 2002:ac8:6892:: with SMTP id m18mr18728336qtq.157.1543928417846;
+        Tue, 04 Dec 2018 05:00:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543928417; cv=none;
         d=google.com; s=arc-20160816;
-        b=ltMbTii++wkb6myYeVab9HdN8OfzL2r2+ZXVVyMchrywNr2AHigD32/xvMOeu1z16n
-         cKJAtLp88Sp7h5dBL1aD7M4u1MZWKBASpoRucA9Fe/T5FAJuxjtBp8kcJjmjiXWrr2/R
-         qObelguDHNLJJYvLiz/al20DQq4l8MH8aSGU6vqWmrU770jnqpc4RFFrDapnbaU1LgBn
-         XiZjfYQU5D9z14GAqqgXPDnqqfVzMWz6HPtpfXc0YgxTlD3UFLdJ1xX4AxmvH9Bt939V
-         ASrfZfwip7BwRuwKAh8Gm2DBJdZUZ9+olFv0a/Tq2kgOCJoREEmKxd+tupI2dNuKnt6P
-         d/yQ==
+        b=OHCMxKkqfUtC+5iSpnv9lTaR8nf1MAPWmt7zr/sQ3FpDebV7N4I9jM3sV+E0+XVeJG
+         iTliUf8DK/MyTdrmebhN5cdS140c9BBr2RZi1VkmARL47hRHcycETEhwZL0j6BaWPmBR
+         vzXjKTe0Zvjsz6fflIdC9O0UxYK3Xx3Jdr8Km7nuw+ox9nE1NjrvD6vabs37A4lqbBVj
+         VTCrzd3gvwdIL4AudwjdD8gYCc/JbQuKFK7R34ka7C4Hgh5SL9IaH46L1EH7hpdUKKMp
+         xw7omWCqxmez3rmlYaBOln7wQRWKs5SRKHJqwmvw+LBHIuNUMPd1pa72PCmNsP5ow8Sw
+         yORw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=HR6rph7KiKkYsAzqjwzf6HSX2uxFv8Z/FYJMos7bSok=;
-        b=qmwW1WQQUo7xZSGVudyzgumnnvaK4mxexV/EGTMo3Lk0Cb09wIoYlD/BmgHdJioMBV
-         2tiC13UK6kM88MJx69Vg3GfBPjboQFnYIanmBZvq7IqdeS99EeurNBw3mL0QMFwHudAo
-         NvZqlP6HvfNJ+eaYij6wrLS674xTbNaqmJMuz/3j3VJnCMieXVawqro+/Wfb5ESSNhyx
-         5wGln0Muzu0eh9lg4kx0E5KFiNwaAZuQczxGOUTImpHJ/FQ1MNL65wt5+Nv6ErnC632a
-         iahb3zE43WQLXQlsaEjzzeALWGfMwc3BdXbk0yg3JZYVXqr3Dtz6zgsbxIL/OLVAB8Zx
-         9W1Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=7EEUyC3IOHc4SAK7Nfx+TH26nK54XKVhRJrRw35sT/0=;
+        b=VSG9vlfGDNBguyncyJn/EOSNoEC06TVhH7BvA0cnlJ44FLxqk5uhbneYLgnbULdzgq
+         VQhj+Z2/+3EGqLord8TqzcOiN2HkQqIpBrzIJjlgyxHi1zpuybVT0mN6xjNKMR0dx6Up
+         aEprWyQ8fNI1BC/MgIchzgMP24BX+wqfA1Ao7/cWlEy4s4Q6cNphG/tm+4l7LvKZ8Mlt
+         sU1OUsbN8v4dyEoRi/8sABWBX2D5mnI66B4O8VKlLmyTFGpXWxtdG/TeaGxYzU1hAU/k
+         kCWWxNU3dJUrO5v2UKp46EkJmethUrzROszkg9LmLe3F/FXq+T5tIWWXbFpN6pYURJLU
+         vC1A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UqkoDOJm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=RVbEYcvn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id o3si7759817qvl.30.2018.12.04.04.50.08
+        by mx.google.com with ESMTPS id e7si3008716qvp.159.2018.12.04.05.00.17
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Dec 2018 04:50:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
+        Tue, 04 Dec 2018 05:00:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UqkoDOJm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=RVbEYcvn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56397 helo=lists.gnu.org)
+Received: from localhost ([::1]:56470 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUA9Q-00088z-Gp
-	for alex.bennee@linaro.org; Tue, 04 Dec 2018 07:50:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45998)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1gUAJE-0003uI-VB
+	for alex.bennee@linaro.org; Tue, 04 Dec 2018 08:00:17 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49213)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gUA7x-0007Xl-3H
-	for qemu-devel@nongnu.org; Tue, 04 Dec 2018 07:48:37 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gUAJ2-0003qY-F0
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:00:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gUA7w-0003yk-C0
-	for qemu-devel@nongnu.org; Tue, 04 Dec 2018 07:48:37 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:40173)
+	(envelope-from <peter.maydell@linaro.org>) id 1gUAJ1-0003b1-E1
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:00:04 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:34227)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gUA7w-0003y7-0B
-	for qemu-devel@nongnu.org; Tue, 04 Dec 2018 07:48:36 -0500
-Received: by mail-ot1-x344.google.com with SMTP id s5so15003593oth.7
-	for <qemu-devel@nongnu.org>; Tue, 04 Dec 2018 04:48:35 -0800 (PST)
+	id 1gUAJ1-0003a2-8S
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 08:00:03 -0500
+Received: by mail-ot1-x343.google.com with SMTP id t5so15087737otk.1
+	for <qemu-arm@nongnu.org>; Tue, 04 Dec 2018 05:00:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=HR6rph7KiKkYsAzqjwzf6HSX2uxFv8Z/FYJMos7bSok=;
-	b=UqkoDOJmbXs3nKUG7HkYK4O7h0tfoPJBllMBWg4knC32OrteRrAlDYPslP5OE0CPJJ
-	/yVUlq+BOMuznySrVoavbYavZGVpj3HSkyGVZZYiel6AuaRjPUSprXkeOiyiWrZ+vi+5
-	X0XdeGYU3OS3dl5rmV5b6Um65OkvSUXcwtahs=
+	:cc:content-transfer-encoding;
+	bh=7EEUyC3IOHc4SAK7Nfx+TH26nK54XKVhRJrRw35sT/0=;
+	b=RVbEYcvnmFUV09BqXT7jyCnnO8S/wx9vvDwxHjIbJ1Db7ZAyz/iIkh8epEygfb+RIq
+	dcfSfyWN6fzLELP/SJCuhgL43hxrqUjziXyi7tGlW+ydwKAamLxCv+iisZFE974Muj5d
+	YO1lEXUdlYx8JKZdigE7usmESXxc9ioUgKJ3g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=HR6rph7KiKkYsAzqjwzf6HSX2uxFv8Z/FYJMos7bSok=;
-	b=OQ7+1GiEHrGYnuWw0B362Oj8feLz4WacGwYzbqR6cYP0qjkJFrqlto57u0oV4VOXXz
-	OKCNxPI+0NTHbx6jJo9g5X9LtnGgEQjMUmf0wehlMZsShB/1ledabCmd6VFY94BxUiUT
-	bmTxLSKaT8ugjwzEvWLT78DVQoYXCPJe7ozesJdlcMs7wF2IvecIscP8DT/C5WKWn5wO
-	oC0d64yhHcP0IY1/qg0RVhxPIilPFHXL5yTeEsuMvrrBtYEZWAPKOZ2LUKDSleCNOcyj
-	KHc9dtE8QndQUNMJVCIyHavz6fCTWfMa7fFXT0q8Vqw4bE6I90HdlC//eiR/DYwQTueO
-	aopQ==
-X-Gm-Message-State: AA+aEWaN8sC3iyuqwXp4O66AUitbfeCaIttEUNPJtcQF/RMwVCm9KVVr
-	8cmsgTNPzwlxhgLIXOjImwHUSel/dlcOkdR7SxCmsg==
-X-Received: by 2002:a9d:5617:: with SMTP id e23mr11726798oti.151.1543927715333;
-	Tue, 04 Dec 2018 04:48:35 -0800 (PST)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=7EEUyC3IOHc4SAK7Nfx+TH26nK54XKVhRJrRw35sT/0=;
+	b=Mo/P/59/bTOaL6prwl99TRwoTzc20J1eEZO8Qt4k93oqH6y7p8gwbeDIP45kLMweNu
+	A0tjULMq73Md3qmtPZL0/BojbmKM1hMsv90GJMqz8OYlTRQS67Dy2dSZcdsTCyGCnNui
+	FCykNb3Uq0wPtyjikxtW8gERpgGCZMKT54UG6qAbFLJCs6PJkd/sS9z0iTrLrx1taNv7
+	vrcGH9s9DYE9awZTTpKVjwm46In7NFlka1oCR14RZPMzyhVvyqyP7dvE7su9g294YH3M
+	FePO259Wh25B3ybmlfSZU3/fvlNX3bq1UtVymZnwQqAW/1dyl5z76ol+8umWIRN+fc9w
+	/dbw==
+X-Gm-Message-State: AA+aEWZmPeDgLgzT6NLjbMkjllWNkc2w9RZYS54tAm4CZYFJviZityLm
+	a2Kn7S8DTosWIXddjG+8Kb2sQ2AO97AatN0q+pkmZA==
+X-Received: by 2002:a9d:3d44:: with SMTP id a62mr11755841otc.363.1543928402505;
+	Tue, 04 Dec 2018 05:00:02 -0800 (PST)
 MIME-Version: 1.0
-References: <CAFEAcA-oFFz-NtfwHmORxQd4rHsfKa1=tV1kyvPuGQoOZwDB3A@mail.gmail.com>
-	<201812040841510784684@zte.com.cn>
-	<CAFEAcA8hw_PHrBTC+v9rr8VoeU5uiV3Z6nMRknDM7WWdG1Ti5g@mail.gmail.com>
-	<20181204120547.x5qa7q6usq6bfgkw@kamzik.brq.redhat.com>
-In-Reply-To: <20181204120547.x5qa7q6usq6bfgkw@kamzik.brq.redhat.com>
+References: <1543865209-50994-1-git-send-email-peng.hao2@zte.com.cn>
+	<CAFEAcA-oFFz-NtfwHmORxQd4rHsfKa1=tV1kyvPuGQoOZwDB3A@mail.gmail.com>
+	<20181204124739.GA17825@redhat.com>
+In-Reply-To: <20181204124739.GA17825@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Dec 2018 12:48:23 +0000
-Message-ID: <CAFEAcA-JCAvgGCLVPRHGRM47Mw_G_9utG3NUn-FRaT+txJSfXQ@mail.gmail.com>
-To: Andrew Jones <drjones@redhat.com>
+Date: Tue, 4 Dec 2018 12:59:51 +0000
+Message-ID: <CAFEAcA_ovMgKPPjtYVASFqhzM7MX79EJYMZuFY4-FGRh4oqN8A@mail.gmail.com>
+To: "Daniel P. Berrange" <berrange@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-devel] [PATCH V11 0/8] add pvpanic mmio support
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH V11 0/8] add pvpanic mmio support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-devel/>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
-	<mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peng Hao <peng.hao2@zte.com.cn>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jones <drjones@redhat.com>, Peng Hao <peng.hao2@zte.com.cn>,
 	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
 	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gSVC83ecoDNy
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HEU6NTt3264D
 
-On Tue, 4 Dec 2018 at 12:05, Andrew Jones <drjones@redhat.com> wrote:
-> To muddy the waters a bit more, while I'm not opposed to this device
-> being a PCI device, there is a chance that someone will still want a
-> platform-mmio version as well. I'm not sure how everything will
-> eventually fall into place, but I've seen some super minimal guest
-> configs proposed for the VMs-used-like-containers use cases, even
-> configs that choose to use virtio-mmio over virtio-pci, and then not
-> provide a PCI bus at all to the vm.
+On Tue, 4 Dec 2018 at 12:47, Daniel P. Berrang=C3=A9 <berrange@redhat.com> =
+wrote:
+> After it had merged there were some changes and the question of turning
+> it into a PCI device was raised. Paolo was concerned that the guest OS
+> is in an unknown state (arbitrary locks held, data structures corrupt,
+> etc) when panic is fired, so simplicity of the I/O port was desirable:
 >
-> Maybe this series and the current kernel series can be allowed to
-> continue as they are, and if later there's a demand for a pci version,
-> it could just be yet another variant added later?
+>   https://lists.gnu.org/archive/html/qemu-devel/2013-08/msg03309.html
+>
+> Anthony countered that even a PCI device could simply do an outb() in
+> config space:
+>
+>   https://lists.gnu.org/archive/html/qemu-devel/2013-08/msg03325.html
+>
+> So it is not clear using a PCI device is in fact a problem in terms of
+> reliability at time of firing.
 
-I like the PCI device idea because it avoids adding yet
-another complication to the virt board. Adding the MMIO
-variant now and the PCI device later doesn't let us avoid
-the complication or even remove it in the future.
+...and if we'd done it that way in the first place for x86 then
+we wouldn't be having to do anything at all now for Arm.
+That suggests to me that we should do it that way now, and then we
+can avoid having to do a bunch of extra development work for the
+next architecture, or the next interesting Arm board model.
 
-The last I heard we were still thinking about deprecating
-virtio-mmio entirely.
+> Perhaps more relevant is the question of how easily it can be initialized=
+,
+> as that affects whether it can be used for panics during very early boot,
+> or from firmware:
+>
+>   https://lists.gnu.org/archive/html/qemu-devel/2013-08/msg03296.html
+
+Mmm, firmware and early boot panic is potentially an interesting
+use case. Does UEFI actually make use of it, though? A quick look
+at the kernel source for the x86 pvpanic driver suggests it doesn't
+take any particular steps to ensure that it is initialized early,
+though I guess acpi drivers probably init before PCI.
+
+I notice also that there's a mention in that thread that the pvpanic
+ACPI table entry on x86 resulted in unhelpful Windows notifications
+about new devices it didn't understand. Is that going to be an issue
+for Arm with this mmio pvpanic ?
+
+> Finally, there is also the point that PCI slots are precious, and this
+> is something to be enabled out of the box on all VMs, so you'd be removin=
+g
+> one extra PCI slot from general usage. Thus mgmt apps would need to start
+> adding PCI bridges sooner. Not a blocker but something to bear in mind
+> when weighing up options.
+
+Space in the 'virt' memory map for random MMIO devices is also a limited
+resource, especially if you want something in the <4GB space.
 
 thanks
 -- PMM

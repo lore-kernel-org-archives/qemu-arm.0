@@ -1,95 +1,88 @@
-Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8416797wrt;
-        Tue, 4 Dec 2018 10:44:02 -0800 (PST)
-X-Google-Smtp-Source: AFSGD/Vb2OI5MkIUgFy3I3siwHYPJ9yKXyGCoA7dJVJy8urNONpv0wlHyniLU3Qeuf46XvuU57iC
-X-Received: by 2002:a0c:d40f:: with SMTP id t15mr21132735qvh.117.1543949042438;
-        Tue, 04 Dec 2018 10:44:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1543949042; cv=none;
+Received: by 2002:a5d:6089:0:0:0:0:0 with SMTP id w9csp8442990wrt;
+        Tue, 4 Dec 2018 11:10:53 -0800 (PST)
+X-Google-Smtp-Source: AFSGD/UMjuMaO9U/PEymqjUx5vvdNrnfuKF9U+5SPQa3E8oCYpxpxP1EynBzEJXKWxJO7Ef2NDta
+X-Received: by 2002:ac8:3065:: with SMTP id g34mr21304703qte.136.1543950653416;
+        Tue, 04 Dec 2018 11:10:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1543950653; cv=none;
         d=google.com; s=arc-20160816;
-        b=cBnh0U0iAdk4mHH+P4CVxmLIloh3/vzd6lP4xxNOk9VBp5+1lkiitTinsQ5PPVxG20
-         NSYlIm74deHRNPxJwH98Q8vpc05ooOgJGstsM/aGFucEJWAtvQBIXMBfj0vBc2gPGyzj
-         dpRGQ9h57g+5BkXk7fq68boiHYaS2NC9s/u2n4Z17rHOj43i+nH3bGj0mi+a/aioxrPr
-         JrOfKLcXg0VQH1x/5jSSU1x5LppIilRRtal3lyYYG98A1hiqmcO9THACHpAEZexcbB5J
-         BwwzmUlGFNNm7xCt7R9vOmiz+ztN/lSG/Y45kzbnzKfzjFgTz/OyRLVp83HiSj0ooCoY
-         wSyA==
+        b=nHxJmAZFf8JtGljBwL1eeHob8KJ2iAfNqGBlB68po4WUAP434sluVnFDXx/z2JEDeW
+         P9KY3PbGGmnnCOHalxGX2NG44QwTFVl/KlA2b6/JNuE+pyGEED40mmlkdlEG8Szo+8+g
+         ZJu4ACBIDU8dfBcZ2Wv2zR0X+VA634mexw8ZMwiH0LIXbEapFtmC4M5KWNuwY2N6+SuH
+         l0rEMZWqXAK0fZEro693zxw0o1XuZWqgB8/5iSg6bzArbM2nbI0BtccbvFcTWYktWb0i
+         2iT0zlzBa/G4jPxISChUtzvvzyqEDN64Dd7d5mQAwPhnm6SGZ3SRWZ+M97kLqTloJ9i9
+         Qahg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=BHDmoWNGVSg33lkojF1J5ddpx0x32yzGQjK6DiC9wO4=;
-        b=qG2jB2wS6XPyMHLeGQxhWKkg6Jz3UrrkkZZj488LNwjcpLrkZdjN17bPpjDQsHfy3l
-         h71hGUX9Nx0ds/3bsSUaiX8ny8I0imjlbevLpLo6KD/kIf8ceVbsiwXDCtpv7fzV6Xut
-         j7JyPYuH6LZwp70uZMWrTxISlaxsGebQJ8TxCKr7gcbTFW4RthS/6rJGn8erTY6Y2nd5
-         AFzPjeyY4iRcfAAF2jow+qS8A7/YV7ferxX3KKYT6aqUlXlmFUjbqyOzmnIFMy9bwSv9
-         6FTFhCXilZvaGbCwywXLH9yb0Z7f19DPRGoF35NINt6KnF8fxeNT8+/URCCTIwJxDk9r
-         VK4g==
+        bh=4ykUOUaB4DVIq9evg7r1qeAppCJA5mC8erz5CAEVDjU=;
+        b=l0Ym+BQhmgtoLBzGqlB/fs2qna2voSadIcp56iqpPsg8MfFLMA5AC6XScToGeMro6v
+         +2w6wyUN9ypFo50KRNa3NvC+PtbEAESpA+xYVuodU/oolvotSbgZJm9JeKghF93iEKQF
+         FMWHZfo9VkflqKZlLE1rPKD4reEDrvU4U7yAHlNvhbIOAHqXaPN7oL2PZRPE7a52gtDZ
+         sqQvCDfb+vw61js0J6yZhdta7QamcB3OEeSW0PjF16byjTO/y2sxbjaaBqENYkBOhe/V
+         Aze67m031ENvzyjxH6ciL+O9Lkj94LpAD3JuYnjylIEHeXS+AAP3E/wCx4FD+hsdWbkB
+         g2QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:4830:134:3::11])
-        by mx.google.com with ESMTPS id p33si2807118qte.43.2018.12.04.10.44.02
+        by mx.google.com with ESMTPS id o5si143468qkc.148.2018.12.04.11.10.53
         for <alex.bennee@linaro.org>
         (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Tue, 04 Dec 2018 10:44:02 -0800 (PST)
+        Tue, 04 Dec 2018 11:10:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) client-ip=2001:4830:134:3::11;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:4830:134:3::11 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58474 helo=lists.gnu.org)
+Received: from localhost ([::1]:58632 helo=lists.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1gUFft-0001aI-Jz
-	for alex.bennee@linaro.org; Tue, 04 Dec 2018 13:44:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48625)
+	id 1gUG5t-0003ps-0t
+	for alex.bennee@linaro.org; Tue, 04 Dec 2018 14:10:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58268)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gUFfh-0001Z0-VH
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 13:43:51 -0500
+	(envelope-from <mst@redhat.com>) id 1gUG5j-0003pk-JE
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 14:10:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gUFfd-0007XL-SI
-	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 13:43:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53950)
+	(envelope-from <mst@redhat.com>) id 1gUG5g-0007ZA-S6
+	for qemu-arm@nongnu.org; Tue, 04 Dec 2018 14:10:43 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53634)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gUFfd-0007Wx-KV; Tue, 04 Dec 2018 13:43:45 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1gUG5g-0007YC-L0; Tue, 04 Dec 2018 14:10:40 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BD1A53001572;
-	Tue,  4 Dec 2018 18:43:44 +0000 (UTC)
-Received: from localhost (ovpn-116-33.gru2.redhat.com [10.97.116.33])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 293E11948B;
-	Tue,  4 Dec 2018 18:43:36 +0000 (UTC)
-Date: Tue, 4 Dec 2018 16:43:35 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20181204184335.GF18284@habkost.net>
-References: <20181127125644.GB18284@habkost.net>
-	<CAMxuvaySoJ2TokV8M81CVU3Hp4dC25c+PW_p2kk+V88-88U-CQ@mail.gmail.com>
-	<20181127133527.GI18284@habkost.net>
-	<20181128184027.7d584eaa@redhat.com>
-	<CAJ+F1CK5NkgsJWFGZ7kvR81KyeOPE_ytk=tOjKqTUGtbfywmJQ@mail.gmail.com>
-	<20181129175055.GQ18284@habkost.net>
-	<CAJ+F1CJBKVibRrgjiNKjSJ5ufK=CUodx26aHnKzeL3Cs7adbeA@mail.gmail.com>
-	<20181130115526.5974ca7a@redhat.com>
-	<20181130114142.GV18284@habkost.net>
-	<20181204141724.5f06bd1b@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 95BB5308403D;
+	Tue,  4 Dec 2018 19:10:39 +0000 (UTC)
+Received: from redhat.com (ovpn-125-67.rdu2.redhat.com [10.10.125.67])
+	by smtp.corp.redhat.com (Postfix) with SMTP id 436EC100034B;
+	Tue,  4 Dec 2018 19:10:36 +0000 (UTC)
+Date: Tue, 4 Dec 2018 14:10:35 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20181204140755-mutt-send-email-mst@kernel.org>
+References: <1543865209-50994-1-git-send-email-peng.hao2@zte.com.cn>
+	<CAFEAcA-oFFz-NtfwHmORxQd4rHsfKa1=tV1kyvPuGQoOZwDB3A@mail.gmail.com>
+	<20181204124739.GA17825@redhat.com>
+	<CAFEAcA_ovMgKPPjtYVASFqhzM7MX79EJYMZuFY4-FGRh4oqN8A@mail.gmail.com>
+	<9ad451bd-7eb1-902f-6023-4b48bb84249c@redhat.com>
+	<CAFEAcA-tzZVVXk+vV=uWOeL6dU3EnFiFRzLu8KR69Ju4PsPrJg@mail.gmail.com>
+	<149484eb-c59f-2b22-aa45-d4e5f0abac07@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20181204141724.5f06bd1b@redhat.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <149484eb-c59f-2b22-aa45-d4e5f0abac07@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Tue, 04 Dec 2018 18:43:44 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.40]);
+	Tue, 04 Dec 2018 19:10:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-3.2 v4 16/28] hw: apply
- machine compat properties without touching globals
+Subject: Re: [Qemu-arm] [PATCH V11 0/8] add pvpanic mmio support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,203 +94,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, QEMU <qemu-devel@nongnu.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Qemu-s390x list <qemu-s390x@nongnu.org>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	=?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	"open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+	Peng Hao <peng.hao2@zte.com.cn>, QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-arm <qemu-arm@nongnu.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c08OV47gbZx6
+X-TUID: LNwjiFiV0xt6
 
-On Tue, Dec 04, 2018 at 02:17:24PM +0100, Igor Mammedov wrote:
-> On Fri, 30 Nov 2018 09:41:42 -0200
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
->=20
-> > On Fri, Nov 30, 2018 at 11:55:26AM +0100, Igor Mammedov wrote:
-> > > On Fri, 30 Nov 2018 01:36:03 +0400
-> > > Marc-Andr=E9 Lureau <marcandre.lureau@gmail.com> wrote:
-> > >  =20
-> > > > Hi
-> > > >=20
-> > > > On Thu, Nov 29, 2018 at 9:51 PM Eduardo Habkost <ehabkost@redhat.=
-com> wrote: =20
-> > > > >
-> > > > > On Thu, Nov 29, 2018 at 02:32:18PM +0400, Marc-Andr=E9 Lureau w=
-rote:   =20
-> > > > > > Hi
-> > > > > > On Wed, Nov 28, 2018 at 9:53 PM Igor Mammedov <imammedo@redha=
-t.com> wrote:   =20
-> > > > > > >
-> > > > > > > On Tue, 27 Nov 2018 11:35:27 -0200
-> > > > > > > Eduardo Habkost <ehabkost@redhat.com> wrote:
-> > > > > > >   =20
-> > > > > > > > On Tue, Nov 27, 2018 at 05:10:05PM +0400, Marc-Andr=E9 Lu=
-reau wrote:   =20
-> > > > > > > > > On Tue, Nov 27, 2018 at 4:57 PM Eduardo Habkost <ehabko=
-st@redhat.com> wrote:   =20
-> > > > > > > > > >
-> > > > > > > > > > On Tue, Nov 27, 2018 at 01:27:49PM +0400, Marc-Andr=E9=
- Lureau wrote:   =20
-> > > > > > > > > > > Similarly to accel properties, move compat properti=
-es out of globals
-> > > > > > > > > > > registration, and apply the machine compat properti=
-es during
-> > > > > > > > > > > device_post_init().
-> > > > > > > > > > >
-> > > > > > > > > > > Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lurea=
-u@redhat.com>   =20
-> > > > > > > > > > [...]   =20
-> > > > > > > > > > > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> > > > > > > > > > > index 7066d28271..3b31b2c025 100644
-> > > > > > > > > > > --- a/hw/core/qdev.c
-> > > > > > > > > > > +++ b/hw/core/qdev.c
-> > > > > > > > > > > @@ -971,17 +971,26 @@ static void device_initfn(Obj=
-ect *obj)
-> > > > > > > > > > >  }
-> > > > > > > > > > >
-> > > > > > > > > > >  static const GPtrArray *ac_compat_props;
-> > > > > > > > > > > +static const GPtrArray *mc_compat_props;   =20
-> > > > > > > why you didn't use just 'compat_props' for both?
-> > > > > > > (it would be cleaner have single registry for compat
-> > > > > > > properties, and the place that takes care of registration
-> > > > > > > will take care of necessary ordering)   =20
-> > > > > >
-> > > > > > There are two arrays, one from the accelerator class, the oth=
-er from
-> > > > > > the machine class. We can't make it a singleton (all compats =
-props for
-> > > > > > the various machines would be mixed).
-> > > > > >
-> > > > > > We could create a third array that would be the set of both, =
-but that
-> > > > > > would require more copy/allocation.   =20
-> > > > >
-> > > > > I am failing to see the advantage of replacing the `global_prop=
-s`
-> > > > > static variable from qdev-properties.c with a collection of
-> > > > > separate static variables scattered around the code.  I thought
-> > > > > the main point of the changes was to reduce the amount of
-> > > > > duplicate data stored in static variables. =20
-> > > Main point was to use compats for backends then on top of that=20
-> > > we added split global from compat properties goal.
-> > >  =20
-> > > > > I was expecting something like this:
-> > > > >
-> > > > > accel.c:
-> > > > >
-> > > > >   void accel_apply_compat_props(AccelState *accel, Object *obj)
-> > > > >   {
-> > > > >       object_apply_global_props(obj, ACCEL_GET_CLASS(accel)->co=
-mpat_props, &error_abort);
-> > > > >   }
-> > > > >
-> > > > > machine.c:
-> > > > >
-> > > > >   /* Apply compat properties and global properties to an object=
- */
-> > > > >   void machine_apply_compat_props(MachineState *ms, Object *obj=
-)
-> > > > >   {
-> > > > >       accel_apply_compat_props(ms->accel, obj);
-> > > > >       object_apply_global_props(obj, MACHINE_GET_CLASS(ms)->com=
-pat_props, &error_abort);
-> > > > >   }
-> > > > >
-> > > > > compat-props.c:
-> > > > >
-> > > > >   static void object_apply_compat_props(Object *obj)
-> > > > >   {
-> > > > >       MachineState *machine =3D MACHINE(qdev_get_machine());
-> > > > >       machine_apply_compat_props(machine, obj);
-> > > > >   }
-> > > > >
-> > > > > qdev.c:
-> > > > >
-> > > > >   static void device_post_init(Object *obj)
-> > > > >   {
-> > > > >       object_apply_compat_props(obj);
-> > > > >       apply_user_provided_globals(obj);
-> > > > >   }
-> > > > >
-> > > > > object_interface.c:
-> > > > >
-> > > > >   void user_creatable_complete(Object *obj, Error **errp)
-> > > > >   {
-> > > > >       object_apply_compat_props(obj);
-> > > > >       ...
-> > > > >       ucc->complete(...)
-> > > > >   }
-> > > > >   =20
-> > > >=20
-> > > > I like that solution too (which you also proposed in the other
-> > > > thread). But we have to decide whether it's acceptable to referen=
-ce
-> > > > MachineState, or if the compat properties should be registered. =20
-> > > I dislike pulling in machine into basic object code and
-> > > I think a separate compats would be cleaner interface without
-> > > layer violation. But to unstuck, lets go with qdev_get_machine()
-> > > for now. =20
-> >=20
-> > Which basic object code?  The only reference to machine above is
-> > at compat-props.c.  I don't see any layering violation here.
-> I see compat properties as just a set of arbitrary properties
-> that's applied to objects depending on configuration.
-> Which currently includes machine version and accel type
-> but in no way inherently tied to them.
+On Tue, Dec 04, 2018 at 02:53:26PM +0100, Paolo Bonzini wrote:
+> On 04/12/18 14:43, Peter Maydell wrote:
+> > The point about PCI is that it is the same everywhere and
+> > discoverable, and easy for the user to add to the system or not.
+> > MMIO requires extra work for every board model that we want to
+> > put the device into, plus extra on both kernel and QEMU side
+> > for every system description mechanism (ACPI, dtb, whatever
+> > some future architecture might use), even if we have the basic
+> > "mmio pvpanic" device code already.
+> 
+> Looks like dtb is becoming a standard?  Even RISC-V switched from their
+> own system description to device tree.  Anyway, this is not too
+> important.  I agree with you about discoverability, on the other hand if
+> we could have something defined by the vendor rather than QEMU it would
+> be even better.  (Even better would be something that distro kernels
+> already have support for, but that would be asking too much probably).
+> 
+> >> Also, while reusing code in general is nice, sometimes there are
+> >> platform-specific ways to do it.  For ARM, for example, would it make
+> >> sense to use an HVC/SMC that "extends" the PSCI, and pass the number in
+> >> the PSCI device tree node?
+> > 
+> > If you want a hypercall then these days the arm HVC calling convention
+> > includes mechanisms for discoverably determining whether a particular
+> > hypercall is supported, so you wouldn't need to pass anything in the
+> > ACPI or dtb. But I didn't get the impression that anybody wanted a
+> > hypercall for this particularly.
+> 
+> Not for x86, where each hypervisor has its own hypercall number and even
+> its calling convention.  But for ARM it already makes more sense.
+> 
+> >> Related to this, is there a more or less "standard" watchdog device on
+> >> ARM that could be added to virt?  There is the SBSA watchdog, but it's
+> >> ugly for implementation in KVM because it counts down with frequency
+> >> equal to CNTFRQ (which I'm not sure if QEMU has access too, and also it
+> >> doesn't play well with live migration).
+> > 
+> > The i6300esb is PCI, presumably that would work?
+> 
+> Yeah, I was wondering if there was something in PrimeCell.  I found
+> SP805 exists now.
+> 
+> >>> I notice also that there's a mention in that thread that the pvpanic
+> >>> ACPI table entry on x86 resulted in unhelpful Windows notifications
+> >>> about new devices it didn't understand. Is that going to be an issue
+> >>> for Arm with this mmio pvpanic ?
+> >>
+> >> Yes, it is probably the same as for x86.
+> > 
+> > I guess we need to find out if that is a problem before we can
+> > merge this, then.
+> 
+> As long as the pvpanic device is not added by default it's okay.
+> 
+> Paolo
 
-I understand you want to have a more generic abstraction layer,
-but my question is: why do we need it?  I still don't see which
-problems it would solve.
+It isn't too bad, you just include a driver and then it's happy.
 
->=20
-> As for layering violation, we do it in device model cases
-> as it's machine related (ugly 'acceptable' but helps to cut corners)
-> and with new interface it will be used wit backends which are not
-> machine related at all.
+Isn't a device just for panic going too far though?
+Should it be some kind of PV device that we
+can use to add more pv stuff in the future, with
+a panic option?
 
-I don't see why it's ugly to have QEMU backend object code use
-machine core code.  What problems does it cause?
-
-
->=20
-> Doing like you suggest would make it usable with current machine
-> initialization order (with some fixes) but if one would consider
-> a bit earlier time (preconfig time) and creating machine step by
-> step from there it might be less usable (as it needs machine instance,
-> it still would be possible but probably more tricky (pure speculation))=
-.
-
-I agree that this is a problem: we really have a
-backend -> compat_props -> current_machine dependency chain here.
-
-Using a registration mechanism that copies data, the dependency
-would still exists, but be implicit in the initialization
-ordering.  Then the system would silently break as soon as we
-reorder the code.
-
->=20
-> So I'd vote for abstracted from machine compat props that could be
-> called from any object that implements interface and explicit
-> compats registration (like we do now) and explicit registration failure
-> if compats happend to be applied to any object. But in case of this
-> series I'm fine with any approach just to get compat properties work
-> with backends for now.
-
-Thanks.  I agree we'll want to refactor this later.  We may want
-to be able to apply compat properties to backend objects before
-creating machine and accel instances.
-
-Or maybe we will want to apply only MachineClass::compat_props to
-backend objects, and not AccelClass::compat_props?  This is not
-clear to me yet.
-
---=20
-Eduardo
+-- 
+MST
